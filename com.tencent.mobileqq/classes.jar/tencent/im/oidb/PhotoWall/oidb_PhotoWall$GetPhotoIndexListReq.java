@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_PhotoWall$GetPhotoIndexListReq
   extends MessageMicro<GetPhotoIndexListReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 64, 80072 }, new String[] { "uin", "offset", "num", "photo_source", "uptime", "opuin", "last_filekey", "last_ctime", "base_time" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", Integer.valueOf(0), Long.valueOf(0L) }, GetPhotoIndexListReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field base_time = PBField.initUInt64(0L);
   public final PBUInt32Field last_ctime = PBField.initUInt32(0);
   public final PBStringField last_filekey = PBField.initString("");
@@ -21,10 +21,17 @@ public final class oidb_PhotoWall$GetPhotoIndexListReq
   public final PBUInt32Field photo_source = PBField.initUInt32(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
   public final PBUInt32Field uptime = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 64, 80072 }, new String[] { "uin", "offset", "num", "photo_source", "uptime", "opuin", "last_filekey", "last_ctime", "base_time" }, new Object[] { localLong, localInteger, localInteger, localInteger, localInteger, localLong, "", localInteger, localLong }, GetPhotoIndexListReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.PhotoWall.oidb_PhotoWall.GetPhotoIndexListReq
  * JD-Core Version:    0.7.0.1
  */

@@ -22,20 +22,26 @@ public class NetStatusReceiver
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool1;
+    boolean bool1 = paramFromServiceMsg.isSuccess();
+    boolean bool4 = true;
     boolean bool2;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
-      bool1 = true;
-      bool2 = paramToServiceMsg.extraData.getBoolean("key_show_to_friends", true);
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "set network switch isSuccess = " + bool1 + "; isShowedToFriends = " + bool2);
-      }
-      if (!bool1) {
-        break label188;
-      }
+    if ((bool1) && (paramObject != null)) {
+      bool2 = true;
+    } else {
+      bool2 = false;
     }
-    label188:
+    boolean bool3 = paramToServiceMsg.extraData.getBoolean("key_show_to_friends", true);
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("set network switch isSuccess = ");
+      paramToServiceMsg.append(bool2);
+      paramToServiceMsg.append("; isShowedToFriends = ");
+      paramToServiceMsg.append(bool3);
+      QLog.i("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg.toString());
+    }
+    bool1 = bool2;
+    if (bool2) {}
     for (;;)
     {
       try
@@ -43,103 +49,102 @@ public class NetStatusReceiver
         paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
         paramToServiceMsg.mergeFrom((byte[])paramObject);
         if (paramToServiceMsg.uint32_result.get() != 0) {
-          continue;
+          break label208;
         }
-        bool1 = true;
+        bool1 = bool4;
         if (bool1) {
-          this.a.setVisibilityForNetWorkStatus(bool2, false);
+          this.a.setVisibilityForNetWorkStatus(bool3, false);
         }
       }
       catch (Exception paramToServiceMsg)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("handleSetShowNetworkToFriendResp", 2, paramToServiceMsg.getMessage());
         }
-        QLog.d("handleSetShowNetworkToFriendResp", 2, paramToServiceMsg.getMessage());
         bool1 = false;
-        continue;
-        continue;
       }
-      if (!bool1)
-      {
+      bool2 = bool3;
+      if (!bool1) {
         bool2 = this.a.getVisibilityForNetWorkStatus(false);
-        a(76, bool1, Boolean.valueOf(bool2));
-        return;
-        bool1 = false;
-        break;
-        bool1 = false;
-        continue;
       }
+      a(75, bool1, Boolean.valueOf(bool2));
+      return;
+      label208:
+      bool1 = false;
     }
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool5 = true;
+    boolean bool2 = paramFromServiceMsg.isSuccess();
     boolean bool6 = true;
+    boolean bool5 = true;
+    boolean bool1 = true;
     boolean bool4 = true;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
+    boolean bool3;
+    if ((bool2) && (paramObject != null)) {
       bool3 = true;
-      bool1 = bool5;
-      bool2 = bool3;
-      if (bool3) {
-        bool2 = bool6;
-      }
+    } else {
+      bool3 = false;
+    }
+    bool2 = bool3;
+    if (bool3) {
+      bool3 = bool5;
     }
     for (;;)
     {
       try
       {
         paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        bool2 = bool6;
+        bool3 = bool5;
         paramToServiceMsg.mergeFrom((byte[])paramObject);
-        bool2 = bool6;
+        bool3 = bool5;
         if (paramToServiceMsg.uint32_result.get() != 0) {
-          continue;
+          break label269;
         }
-        bool3 = true;
-        bool1 = bool5;
-        bool2 = bool3;
-        if (bool3)
+        bool2 = true;
+        bool1 = bool6;
+        if (bool2)
         {
-          bool2 = bool6;
+          bool3 = bool5;
           paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          bool2 = bool6;
-          long l = paramToServiceMsg.getInt();
-          bool2 = bool6;
+          bool3 = bool5;
+          paramToServiceMsg.getInt();
+          bool3 = bool5;
           if (paramToServiceMsg.get() != 0) {
-            continue;
+            break label275;
           }
           bool1 = bool4;
-          bool2 = bool1;
+          bool3 = bool1;
           this.a.setVisibilityForNetWorkStatus(bool1, false);
-          bool2 = bool3;
         }
       }
       catch (Exception paramToServiceMsg)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("handleGetShowNetworkToFriendResp", 2, paramToServiceMsg.getMessage());
         }
-        QLog.d("handleGetShowNetworkToFriendResp", 2, paramToServiceMsg.getMessage());
-        bool3 = false;
-        bool1 = bool2;
-        bool2 = bool3;
-        continue;
+        bool2 = false;
+        bool1 = bool3;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "get network switch isSuccess = " + bool2 + "; isShowedToFriends = " + bool1);
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("get network switch isSuccess = ");
+        paramToServiceMsg.append(bool2);
+        paramToServiceMsg.append("; isShowedToFriends = ");
+        paramToServiceMsg.append(bool1);
+        QLog.i("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg.toString());
       }
       if (!bool2) {
         bool1 = this.a.getVisibilityForNetWorkStatus(false);
       }
-      a(77, bool2, Boolean.valueOf(bool1));
+      a(76, bool2, Boolean.valueOf(bool1));
       return;
-      bool3 = false;
-      break;
-      bool3 = false;
+      label269:
+      bool2 = false;
       continue;
+      label275:
       bool1 = false;
     }
   }
@@ -152,18 +157,19 @@ public class NetStatusReceiver
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     String str = paramFromServiceMsg.getServiceCmd();
-    if ("OidbSvc.0x491_107".equals(str)) {
+    if ("OidbSvc.0x491_107".equals(str))
+    {
       c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    while (!"OidbSvc.0x490_107".equals(str)) {
       return;
     }
-    d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    if ("OidbSvc.0x490_107".equals(str)) {
+      d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.NetStatusReceiver
  * JD-Core Version:    0.7.0.1
  */

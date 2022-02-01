@@ -20,14 +20,15 @@ public final class GetLuxuryGiftVideoConfigByCategoryReq
   
   public static GetLuxuryGiftVideoConfigByCategoryReq[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new GetLuxuryGiftVideoConfigByCategoryReq[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new GetLuxuryGiftVideoConfigByCategoryReq[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static GetLuxuryGiftVideoConfigByCategoryReq parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -48,16 +49,18 @@ public final class GetLuxuryGiftVideoConfigByCategoryReq
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.category;
     int i = j;
-    if (this.category != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.category);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
+    k = this.level;
     j = i;
-    if (this.level != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, this.level);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, k);
     }
     return j;
   }
@@ -67,36 +70,44 @@ public final class GetLuxuryGiftVideoConfigByCategoryReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.category = paramCodedInputByteBufferNano.readUInt32();
+      if (i == 0) {
         break;
       }
-      this.level = paramCodedInputByteBufferNano.readUInt32();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+            return this;
+          }
+        }
+        else {
+          this.level = paramCodedInputByteBufferNano.readUInt32();
+        }
+      }
+      else {
+        this.category = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.category != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.category);
+    int i = this.category;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
-    if (this.level != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(2, this.level);
+    i = this.level;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(2, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveLuxuryGiftVideoSvr.nano.GetLuxuryGiftVideoConfigByCategoryReq
  * JD-Core Version:    0.7.0.1
  */

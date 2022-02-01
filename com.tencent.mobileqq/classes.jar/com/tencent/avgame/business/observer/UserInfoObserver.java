@@ -15,26 +15,28 @@ public class UserInfoObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (UserInfo)paramObject[2]);
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), (HashMap)paramObject[1]);
+        return;
+      }
       paramObject = (Object[])paramObject;
       a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Integer)paramObject[2]).intValue());
       return;
     }
     paramObject = (Object[])paramObject;
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (HashMap)paramObject[1]);
+    a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (UserInfo)paramObject[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.business.observer.UserInfoObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -51,22 +51,24 @@ public final class CGetMoreReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stLogin != null) {
-      paramJceOutputStream.write(this.stLogin, 0);
+    Object localObject = this.stLogin;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.appid, 1);
     paramJceOutputStream.write(this.locationtype, 2);
     paramJceOutputStream.write(this.lUid, 3);
     paramJceOutputStream.write(this.listindex, 4);
     paramJceOutputStream.write(this.pagesize, 5);
-    if (this.mParams != null) {
-      paramJceOutputStream.write(this.mParams, 6);
+    localObject = this.mParams;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.CGetMoreReq
  * JD-Core Version:    0.7.0.1
  */

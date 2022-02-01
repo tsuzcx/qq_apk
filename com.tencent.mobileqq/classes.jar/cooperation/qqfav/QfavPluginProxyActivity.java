@@ -50,6 +50,10 @@ public class QfavPluginProxyActivity
         return null;
       }
       break;
+    case 9: 
+      return "com.qqfav.group.activity.QfavGroupActivity";
+    case 2: 
+      return "com.qqfav.activity.FavoritesListActivity";
     case 0: 
     case 1: 
     case 3: 
@@ -58,10 +62,6 @@ public class QfavPluginProxyActivity
     case 8: 
     case 11: 
       return "com.qqfav.FavoriteIpcDelegate";
-    case 9: 
-      return "com.qqfav.group.activity.QfavGroupActivity";
-    case 2: 
-      return "com.qqfav.activity.FavoritesListActivity";
     }
     return paramIntent.getClassName();
   }
@@ -74,31 +74,36 @@ public class QfavPluginProxyActivity
   public static boolean a(Context paramContext, String paramString, Intent paramIntent, int paramInt, boolean paramBoolean)
   {
     QfavPluginProxyService.a();
-    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!QfavHelper.a(paramContext))) {}
-    for (QfavLoadingDialog localQfavLoadingDialog = new QfavLoadingDialog(paramContext);; localQfavLoadingDialog = null)
-    {
-      String str = a(paramIntent);
-      paramIntent.putExtra("useSkinEngine", true);
-      paramIntent.putExtra("userQqResources", 1);
-      if ((paramBoolean) || (!(paramContext instanceof Activity))) {
-        paramIntent.addFlags(268435456);
-      }
-      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-      localPluginParams.jdField_b_of_type_JavaLangString = "qqfav.apk";
-      localPluginParams.e = "qqfav.apk";
-      localPluginParams.jdField_a_of_type_JavaLangString = paramString;
-      localPluginParams.f = str;
-      localPluginParams.jdField_a_of_type_JavaLangClass = a(paramIntent);
-      localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localPluginParams.c = paramInt;
-      localPluginParams.jdField_a_of_type_AndroidAppDialog = localQfavLoadingDialog;
-      localPluginParams.d = 30000;
-      localPluginParams.g = null;
-      localPluginParams.jdField_b_of_type_Boolean = false;
-      IPluginManager.a(paramContext, localPluginParams);
-      QLog.i("qqfav", 2, "QfavPluginProxyActivity: openPluginActivityForResult: " + str);
-      return true;
+    QfavLoadingDialog localQfavLoadingDialog;
+    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!QfavHelper.a(paramContext))) {
+      localQfavLoadingDialog = new QfavLoadingDialog(paramContext);
+    } else {
+      localQfavLoadingDialog = null;
     }
+    String str = a(paramIntent);
+    paramIntent.putExtra("useSkinEngine", true);
+    paramIntent.putExtra("userQqResources", 1);
+    if ((paramBoolean) || (!(paramContext instanceof Activity))) {
+      paramIntent.addFlags(268435456);
+    }
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+    localPluginParams.jdField_b_of_type_JavaLangString = "qqfav.apk";
+    localPluginParams.e = "qqfav.apk";
+    localPluginParams.jdField_a_of_type_JavaLangString = paramString;
+    localPluginParams.f = str;
+    localPluginParams.jdField_a_of_type_JavaLangClass = a(paramIntent);
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localPluginParams.c = paramInt;
+    localPluginParams.jdField_a_of_type_AndroidAppDialog = localQfavLoadingDialog;
+    localPluginParams.d = 30000;
+    localPluginParams.g = null;
+    localPluginParams.jdField_b_of_type_Boolean = false;
+    IPluginManager.a(paramContext, localPluginParams);
+    paramContext = new StringBuilder();
+    paramContext.append("QfavPluginProxyActivity: openPluginActivityForResult: ");
+    paramContext.append(str);
+    QLog.i("qqfav", 2, paramContext.toString());
+    return true;
   }
   
   @Override
@@ -115,7 +120,7 @@ public class QfavPluginProxyActivity
     return "qqfav.apk";
   }
   
-  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
+  protected Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     if (paramString.equals("com.qqfav.activity.ImageDetailActivity")) {
       return QfavPluginProxyActivity.ImageViewer.class;
@@ -127,13 +132,14 @@ public class QfavPluginProxyActivity
       }
       return QfavPluginProxyActivity.DetailProxy.class;
     }
-    if ((paramString.equals("com.qqfav.activity.AddPhotosFavActivity")) || (paramString.equals("com.qqfav.activity.AddLocationFavActivity")) || (paramString.equals("com.qqfav.edit.QfavTitleEditActivity")) || (paramString.equals("com.qqfav.FavoriteIpcDelegate")) || (paramString.equals("com.qqfav.edit.EditPhotosActivity")) || (paramString.equals("com.qqfav.group.activity.QfavGroupActivity")) || (paramString.equals("com.qqfav.file.activity.QfavFileBrowserActivity"))) {
-      return QfavPluginProxyActivity.SingleTop.class;
+    if ((!paramString.equals("com.qqfav.activity.AddPhotosFavActivity")) && (!paramString.equals("com.qqfav.activity.AddLocationFavActivity")) && (!paramString.equals("com.qqfav.edit.QfavTitleEditActivity")) && (!paramString.equals("com.qqfav.FavoriteIpcDelegate")) && (!paramString.equals("com.qqfav.edit.EditPhotosActivity")) && (!paramString.equals("com.qqfav.group.activity.QfavGroupActivity")) && (!paramString.equals("com.qqfav.file.activity.QfavFileBrowserActivity")))
+    {
+      if (paramString.equals("com.qqfav.edit.QfavEditActivity")) {
+        return QfavPluginProxyActivity.DetailProxy.class;
+      }
+      return super.getProxyActivity(paramString);
     }
-    if (paramString.equals("com.qqfav.edit.QfavEditActivity")) {
-      return QfavPluginProxyActivity.DetailProxy.class;
-    }
-    return super.getProxyActivity(paramString);
+    return QfavPluginProxyActivity.SingleTop.class;
   }
   
   @Override
@@ -149,13 +155,13 @@ public class QfavPluginProxyActivity
     super.onCreate(paramBundle);
     paramBundle = getIntent().getExtras();
     if ((paramBundle != null) && (paramBundle.getInt("nOperation") == 6)) {
-      super.overridePendingTransition(2130771994, 2130771995);
+      super.overridePendingTransition(2130772006, 2130772007);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.QfavPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

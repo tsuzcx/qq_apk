@@ -16,7 +16,11 @@ public class FragmentFactory
       boolean bool = Fragment.class.isAssignableFrom(loadClass(paramClassLoader, paramString));
       return bool;
     }
-    catch (ClassNotFoundException paramClassLoader) {}
+    catch (ClassNotFoundException paramClassLoader)
+    {
+      label13:
+      break label13;
+    }
     return false;
   }
   
@@ -41,13 +45,21 @@ public class FragmentFactory
       paramClassLoader = loadClass(paramClassLoader, paramString);
       return paramClassLoader;
     }
-    catch (ClassNotFoundException paramClassLoader)
-    {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class name exists", paramClassLoader);
-    }
     catch (ClassCastException paramClassLoader)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class is a valid subclass of Fragment", paramClassLoader);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to instantiate fragment ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": make sure class is a valid subclass of Fragment");
+      throw new Fragment.InstantiationException(localStringBuilder.toString(), paramClassLoader);
+    }
+    catch (ClassNotFoundException paramClassLoader)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to instantiate fragment ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": make sure class name exists");
+      throw new Fragment.InstantiationException(localStringBuilder.toString(), paramClassLoader);
     }
   }
   
@@ -59,27 +71,43 @@ public class FragmentFactory
       paramClassLoader = (Fragment)loadFragmentClass(paramClassLoader, paramString).getConstructor(new Class[0]).newInstance(new Object[0]);
       return paramClassLoader;
     }
-    catch (InstantiationException paramClassLoader)
+    catch (InvocationTargetException paramClassLoader)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an empty constructor that is public", paramClassLoader);
-    }
-    catch (IllegalAccessException paramClassLoader)
-    {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an empty constructor that is public", paramClassLoader);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to instantiate fragment ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": calling Fragment constructor caused an exception");
+      throw new Fragment.InstantiationException(localStringBuilder.toString(), paramClassLoader);
     }
     catch (NoSuchMethodException paramClassLoader)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": could not find Fragment constructor", paramClassLoader);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to instantiate fragment ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": could not find Fragment constructor");
+      throw new Fragment.InstantiationException(localStringBuilder.toString(), paramClassLoader);
     }
-    catch (InvocationTargetException paramClassLoader)
+    catch (IllegalAccessException paramClassLoader)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": calling Fragment constructor caused an exception", paramClassLoader);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to instantiate fragment ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": make sure class name exists, is public, and has an empty constructor that is public");
+      throw new Fragment.InstantiationException(localStringBuilder.toString(), paramClassLoader);
+    }
+    catch (InstantiationException paramClassLoader)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to instantiate fragment ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": make sure class name exists, is public, and has an empty constructor that is public");
+      throw new Fragment.InstantiationException(localStringBuilder.toString(), paramClassLoader);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentFactory
  * JD-Core Version:    0.7.0.1
  */

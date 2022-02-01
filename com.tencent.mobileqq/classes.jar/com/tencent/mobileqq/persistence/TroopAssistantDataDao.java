@@ -23,29 +23,23 @@ public class TroopAssistantDataDao
       return paramEntity;
     }
     int i = paramCursor.getColumnIndex("troopUin");
-    if (i == -1)
-    {
+    if (i == -1) {
       paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopUin", String.class));
-      i = paramCursor.getColumnIndex("lastmsgtime");
-      if (i != -1) {
-        break label187;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("lastmsgtime", Long.TYPE));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("lastdrafttime");
-      if (i != -1) {
-        break label202;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("lastdrafttime", Long.TYPE));
-      return paramEntity;
+    } else {
       paramEntity.troopUin = paramCursor.getString(i);
-      break;
-      label187:
+    }
+    i = paramCursor.getColumnIndex("lastmsgtime");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("lastmsgtime", Long.TYPE));
+    } else {
       paramEntity.lastmsgtime = paramCursor.getLong(i);
     }
-    label202:
+    i = paramCursor.getColumnIndex("lastdrafttime");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("lastdrafttime", Long.TYPE));
+      return paramEntity;
+    }
     paramEntity.lastdrafttime = paramCursor.getLong(i);
     return paramEntity;
   }
@@ -68,7 +62,7 @@ public class TroopAssistantDataDao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.TroopAssistantDataDao
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,8 @@ public abstract class AbstractImageAdapter
   
   private AbstractProgressView a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel != null) && (paramInt == this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.b())) {
+    AbstractImageListModel localAbstractImageListModel = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
+    if ((localAbstractImageListModel != null) && (paramInt == localAbstractImageListModel.b())) {
       return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
     }
     return null;
@@ -20,32 +21,27 @@ public abstract class AbstractImageAdapter
   
   public static void a(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    boolean bool = true;
-    switch (paramInt)
+    if (paramInt != 3)
     {
-    case 4: 
-    case 5: 
-    case 7: 
-    default: 
-      paramInt = 0;
-      if (paramURLDrawable.isAnim()) {
-        break;
+      if (paramInt != 6)
+      {
+        if (paramInt != 8) {
+          paramInt = 0;
+        } else {
+          paramInt = 3;
+        }
+      }
+      else {
+        paramInt = 1;
       }
     }
-    for (;;)
-    {
-      paramView.setTag(2131296390, Boolean.valueOf(bool));
-      if (bool) {
-        paramView.setTag(2131296389, Integer.valueOf(paramInt));
-      }
-      return;
-      paramInt = 1;
-      break;
+    else {
       paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      bool = false;
+    }
+    boolean bool = paramURLDrawable.isAnim() ^ true;
+    paramView.setTag(2131296390, Boolean.valueOf(bool));
+    if (bool) {
+      paramView.setTag(2131296389, Integer.valueOf(paramInt));
     }
   }
   
@@ -92,18 +88,20 @@ public abstract class AbstractImageAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel == null) {
+    AbstractImageListModel localAbstractImageListModel = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
+    if (localAbstractImageListModel == null) {
       return 0;
     }
-    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a();
+    return localAbstractImageListModel.a();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel == null) {
+    AbstractImageListModel localAbstractImageListModel = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
+    if (localAbstractImageListModel == null) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a(paramInt);
+    return localAbstractImageListModel.a(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -113,7 +111,7 @@ public abstract class AbstractImageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AbstractImageAdapter
  * JD-Core Version:    0.7.0.1
  */

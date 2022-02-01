@@ -35,12 +35,13 @@ public class EmotionPanelListView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!this.enableExtendPanle) || (paramMotionEvent.getAction() != 0)) {
+    if ((this.enableExtendPanle) && (paramMotionEvent.getAction() == 0))
+    {
+      AbsListView.OnScrollListener localOnScrollListener = getOnScrollListener();
+      if ((localOnScrollListener instanceof EmoticonPanelOnScrollListener)) {
+        ((EmoticonPanelOnScrollListener)localOnScrollListener).onTouch(this, paramMotionEvent);
+      }
       return super.dispatchTouchEvent(paramMotionEvent);
-    }
-    AbsListView.OnScrollListener localOnScrollListener = getOnScrollListener();
-    if ((localOnScrollListener instanceof EmoticonPanelOnScrollListener)) {
-      ((EmoticonPanelOnScrollListener)localOnScrollListener).onTouch(this, paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -92,7 +93,7 @@ public class EmotionPanelListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelListView
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,6 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ShieldListInfo;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,10 +27,12 @@ public class ShieldMsgManger
   public ShieldMsgManger(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      throw new IllegalArgumentException("ShieldMsgManger this.app = null");
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      ThreadManager.post(new ShieldMsgManger.1(this), 2, null, false);
+      return;
     }
-    ThreadManager.post(new ShieldMsgManger.1(this), 2, null, false);
+    throw new IllegalArgumentException("ShieldMsgManger this.app = null");
   }
   
   private ShieldListInfo a(int paramInt, String paramString)
@@ -48,8 +48,8 @@ public class ShieldMsgManger
         {
           if (paramInt == 2)
           {
-            str = a(paramString);
-            paramString = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str);
+            paramString = a(paramString);
+            paramString = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(paramString);
             return paramString;
           }
         }
@@ -57,117 +57,183 @@ public class ShieldMsgManger
           return null;
         }
       }
-      String str = paramString;
-      if (paramInt == 1) {
-        str = paramString;
-      }
     }
   }
   
   private String a(String paramString)
   {
-    String str2 = paramString.trim();
-    String str1 = str2;
-    if (!str2.startsWith("+"))
+    String str = paramString.trim();
+    Object localObject = str;
+    if (!str.startsWith("+"))
     {
-      str1 = str2;
-      if (str2.length() == 11) {
-        str1 = "+86" + paramString;
+      localObject = str;
+      if (str.length() == 11)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("+86");
+        ((StringBuilder)localObject).append(paramString);
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    return str1;
+    return localObject;
   }
   
   private void a() {}
   
   private boolean a(int paramInt, String paramString)
   {
-    boolean bool = false;
     paramString = a(paramInt, paramString);
     if (paramString != null) {
-      bool = paramString.isShieldMsg();
+      return paramString.isShieldMsg();
     }
-    return bool;
+    return false;
   }
   
   private boolean a(EntityManager paramEntityManager, Entity paramEntity)
   {
+    int i = paramEntity.getStatus();
     boolean bool = false;
-    if (paramEntity.getStatus() == 1000)
+    if (i == 1000)
     {
       paramEntityManager.persistOrReplace(paramEntity);
       if (paramEntity.getStatus() == 1001) {
         bool = true;
       }
-    }
-    while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
       return bool;
+    }
+    if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
+      return false;
     }
     return paramEntityManager.update(paramEntity);
   }
   
+  /* Error */
   private void b()
   {
-    for (;;)
-    {
-      EntityManager localEntityManager;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        try
-        {
-          QQConcurrentHashMap localQQConcurrentHashMap = new QQConcurrentHashMap(1006, 0, 36);
-          List localList = localEntityManager.query(ShieldListInfo.class);
-          int i;
-          if (localList == null)
-          {
-            i = 0;
-            break label169;
-            if (j < i)
-            {
-              ShieldListInfo localShieldListInfo = (ShieldListInfo)localList.get(j);
-              if ((localShieldListInfo == null) || (localShieldListInfo.uin == null)) {
-                break label174;
-              }
-              localQQConcurrentHashMap.put(localShieldListInfo.uin, localShieldListInfo);
-              break label174;
-            }
-          }
-          else
-          {
-            i = localList.size();
-            break label169;
-          }
-          this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap = localQQConcurrentHashMap;
-        }
-        catch (Exception localException)
-        {
-          if (!QLog.isColorLevel()) {
-            break label144;
-          }
-          QLog.d("ShieldMsgManger", 2, localException.toString());
-          localEntityManager.close();
-          continue;
-          localObject2 = finally;
-          throw localObject2;
-        }
-        finally
-        {
-          localObject2.close();
-        }
-        return;
-      }
-      label144:
-      label169:
-      int j = 0;
-      continue;
-      label174:
-      j += 1;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 18	com/tencent/mobileqq/managers/ShieldMsgManger:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   4: astore_3
+    //   5: aload_3
+    //   6: monitorenter
+    //   7: aload_0
+    //   8: getfield 20	com/tencent/mobileqq/managers/ShieldMsgManger:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   11: invokevirtual 115	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   14: invokevirtual 121	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   17: astore 4
+    //   19: iconst_0
+    //   20: istore_2
+    //   21: new 56	com/tencent/commonsdk/cache/QQConcurrentHashMap
+    //   24: dup
+    //   25: sipush 1006
+    //   28: iconst_0
+    //   29: bipush 36
+    //   31: invokespecial 124	com/tencent/commonsdk/cache/QQConcurrentHashMap:<init>	(III)V
+    //   34: astore 5
+    //   36: aload 4
+    //   38: ldc 62
+    //   40: invokevirtual 128	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;)Ljava/util/List;
+    //   43: astore 6
+    //   45: aload 6
+    //   47: ifnonnull +8 -> 55
+    //   50: iconst_0
+    //   51: istore_1
+    //   52: goto +11 -> 63
+    //   55: aload 6
+    //   57: invokeinterface 133 1 0
+    //   62: istore_1
+    //   63: iload_2
+    //   64: iload_1
+    //   65: if_icmpge +45 -> 110
+    //   68: aload 6
+    //   70: iload_2
+    //   71: invokeinterface 136 2 0
+    //   76: checkcast 62	com/tencent/mobileqq/data/ShieldListInfo
+    //   79: astore 7
+    //   81: aload 7
+    //   83: ifnull +92 -> 175
+    //   86: aload 7
+    //   88: getfield 140	com/tencent/mobileqq/data/ShieldListInfo:uin	Ljava/lang/String;
+    //   91: ifnull +84 -> 175
+    //   94: aload 5
+    //   96: aload 7
+    //   98: getfield 140	com/tencent/mobileqq/data/ShieldListInfo:uin	Ljava/lang/String;
+    //   101: aload 7
+    //   103: invokevirtual 144	com/tencent/commonsdk/cache/QQConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   106: pop
+    //   107: goto +68 -> 175
+    //   110: aload_0
+    //   111: aload 5
+    //   113: putfield 42	com/tencent/mobileqq/managers/ShieldMsgManger:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   116: aload 4
+    //   118: invokevirtual 147	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   121: goto +30 -> 151
+    //   124: astore 5
+    //   126: goto +28 -> 154
+    //   129: astore 5
+    //   131: invokestatic 152	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   134: ifeq -18 -> 116
+    //   137: ldc 154
+    //   139: iconst_2
+    //   140: aload 5
+    //   142: invokevirtual 155	java/lang/Exception:toString	()Ljava/lang/String;
+    //   145: invokestatic 159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   148: goto -32 -> 116
+    //   151: aload_3
+    //   152: monitorexit
+    //   153: return
+    //   154: aload 4
+    //   156: invokevirtual 147	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   159: aload 5
+    //   161: athrow
+    //   162: astore 4
+    //   164: aload_3
+    //   165: monitorexit
+    //   166: goto +6 -> 172
+    //   169: aload 4
+    //   171: athrow
+    //   172: goto -3 -> 169
+    //   175: iload_2
+    //   176: iconst_1
+    //   177: iadd
+    //   178: istore_2
+    //   179: goto -116 -> 63
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	182	0	this	ShieldMsgManger
+    //   51	15	1	i	int
+    //   20	159	2	j	int
+    //   4	161	3	localObject1	Object
+    //   17	138	4	localEntityManager	EntityManager
+    //   162	8	4	localObject2	Object
+    //   34	78	5	localQQConcurrentHashMap	QQConcurrentHashMap
+    //   124	1	5	localObject3	Object
+    //   129	31	5	localException	java.lang.Exception
+    //   43	26	6	localList	List
+    //   79	23	7	localShieldListInfo	ShieldListInfo
+    // Exception table:
+    //   from	to	target	type
+    //   21	45	124	finally
+    //   55	63	124	finally
+    //   68	81	124	finally
+    //   86	107	124	finally
+    //   110	116	124	finally
+    //   131	148	124	finally
+    //   21	45	129	java/lang/Exception
+    //   55	63	129	java/lang/Exception
+    //   68	81	129	java/lang/Exception
+    //   86	107	129	java/lang/Exception
+    //   110	116	129	java/lang/Exception
+    //   7	19	162	finally
+    //   116	121	162	finally
+    //   151	153	162	finally
+    //   154	162	162	finally
+    //   164	166	162	finally
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
+    label115:
     for (;;)
     {
       synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -178,24 +244,19 @@ public class ShieldMsgManger
         if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap != null) && (paramString != null) && (paramString.length() > 0))
         {
           if (paramInt2 != 2) {
-            break label114;
+            break label115;
           }
-          localObject1 = a(paramString);
-          paramString = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject1);
+          paramString = a(paramString);
+          paramString = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(paramString);
           if (paramString != null)
           {
             paramString.flags = paramInt1;
-            localObject1 = new ArrayList();
-            ((ArrayList)localObject1).add(paramString);
-            ThreadManager.post(new ShieldMsgManger.2(this, (ArrayList)localObject1), 5, null, false);
+            ArrayList localArrayList = new ArrayList();
+            localArrayList.add(paramString);
+            ThreadManager.post(new ShieldMsgManger.2(this, localArrayList), 5, null, false);
           }
         }
         return;
-      }
-      label114:
-      Object localObject1 = paramString;
-      if (paramInt2 == 1) {
-        localObject1 = paramString;
       }
     }
   }
@@ -223,86 +284,224 @@ public class ShieldMsgManger
   {
     a();
     boolean bool = a(1, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShieldMsgManger", 2, "isUinInShieldList:" + paramString + ",result:" + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isUinInShieldList:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",result:");
+      localStringBuilder.append(bool);
+      QLog.d("ShieldMsgManger", 2, localStringBuilder.toString());
     }
     return bool;
   }
   
+  /* Error */
   public boolean a(List<ShieldListInfo> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return true;
-    }
-    for (;;)
-    {
-      EntityManager localEntityManager;
-      EntityTransaction localEntityTransaction;
-      int i;
-      ShieldListInfo localShieldListInfo1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap == null) {
-          b();
-        }
-        localEntityTransaction = localEntityManager.getTransaction();
-        try
-        {
-          localEntityTransaction.begin();
-          int j = paramList.size();
-          i = 0;
-          if (i >= j) {
-            break label333;
-          }
-          localShieldListInfo1 = (ShieldListInfo)paramList.get(i);
-          localShieldListInfo2 = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localShieldListInfo1.uin);
-          if ((localShieldListInfo1.flags == 0) && (localShieldListInfo2 == null)) {
-            break label349;
-          }
-          if ((localShieldListInfo2 != null) && ((localShieldListInfo2.getStatus() == 1001) || (localShieldListInfo2.getStatus() == 1002))) {
-            if (localShieldListInfo1.flags != localShieldListInfo2.flags)
-            {
-              localShieldListInfo2.flags = localShieldListInfo1.flags;
-              localShieldListInfo2.source_id = localShieldListInfo1.source_id;
-              localShieldListInfo2.source_sub_id = localShieldListInfo1.source_sub_id;
-              a(localEntityManager, localShieldListInfo2);
-            }
-          }
-        }
-        catch (Exception paramList)
-        {
-          ShieldListInfo localShieldListInfo2;
-          paramList.printStackTrace();
-          localEntityTransaction.end();
-          bool = false;
-          localEntityManager.close();
-          a();
-          return bool;
-          if ((localShieldListInfo1.flags != 1) || (localShieldListInfo2.source_id == localShieldListInfo1.source_id)) {
-            break label349;
-          }
-          localShieldListInfo2.flags = localShieldListInfo1.flags;
-          localShieldListInfo2.source_id = localShieldListInfo1.source_id;
-          localShieldListInfo2.source_sub_id = localShieldListInfo1.source_sub_id;
-          a(localEntityManager, localShieldListInfo2);
-        }
-        finally
-        {
-          localEntityTransaction.end();
-        }
-      }
-      a(localEntityManager, localShieldListInfo1);
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(localShieldListInfo1.uin, localShieldListInfo1);
-      break label349;
-      label333:
-      localEntityTransaction.commit();
-      localEntityTransaction.end();
-      boolean bool = true;
-      continue;
-      label349:
-      i += 1;
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore 4
+    //   3: aload_1
+    //   4: ifnull +348 -> 352
+    //   7: aload_1
+    //   8: invokeinterface 133 1 0
+    //   13: ifgt +5 -> 18
+    //   16: iconst_1
+    //   17: ireturn
+    //   18: aload_0
+    //   19: getfield 18	com/tencent/mobileqq/managers/ShieldMsgManger:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   22: astore 5
+    //   24: aload 5
+    //   26: monitorenter
+    //   27: aload_0
+    //   28: getfield 20	com/tencent/mobileqq/managers/ShieldMsgManger:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   31: invokevirtual 115	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   34: invokevirtual 121	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   37: astore 7
+    //   39: aload_0
+    //   40: getfield 42	com/tencent/mobileqq/managers/ShieldMsgManger:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   43: ifnonnull +7 -> 50
+    //   46: aload_0
+    //   47: invokespecial 45	com/tencent/mobileqq/managers/ShieldMsgManger:b	()V
+    //   50: aload 7
+    //   52: invokevirtual 219	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   55: astore 6
+    //   57: aload 6
+    //   59: invokevirtual 224	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   62: aload_1
+    //   63: invokeinterface 133 1 0
+    //   68: istore_3
+    //   69: iconst_0
+    //   70: istore_2
+    //   71: iload_2
+    //   72: iload_3
+    //   73: if_icmpge +221 -> 294
+    //   76: aload_1
+    //   77: iload_2
+    //   78: invokeinterface 136 2 0
+    //   83: checkcast 62	com/tencent/mobileqq/data/ShieldListInfo
+    //   86: astore 8
+    //   88: aload_0
+    //   89: getfield 42	com/tencent/mobileqq/managers/ShieldMsgManger:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   92: aload 8
+    //   94: getfield 140	com/tencent/mobileqq/data/ShieldListInfo:uin	Ljava/lang/String;
+    //   97: invokevirtual 60	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   100: checkcast 62	com/tencent/mobileqq/data/ShieldListInfo
+    //   103: astore 9
+    //   105: aload 8
+    //   107: getfield 164	com/tencent/mobileqq/data/ShieldListInfo:flags	I
+    //   110: ifne +11 -> 121
+    //   113: aload 9
+    //   115: ifnonnull +6 -> 121
+    //   118: goto +236 -> 354
+    //   121: aload 9
+    //   123: ifnull +144 -> 267
+    //   126: aload 9
+    //   128: invokevirtual 225	com/tencent/mobileqq/data/ShieldListInfo:getStatus	()I
+    //   131: sipush 1001
+    //   134: if_icmpeq +14 -> 148
+    //   137: aload 9
+    //   139: invokevirtual 225	com/tencent/mobileqq/data/ShieldListInfo:getStatus	()I
+    //   142: sipush 1002
+    //   145: if_icmpne +122 -> 267
+    //   148: aload 8
+    //   150: getfield 164	com/tencent/mobileqq/data/ShieldListInfo:flags	I
+    //   153: aload 9
+    //   155: getfield 164	com/tencent/mobileqq/data/ShieldListInfo:flags	I
+    //   158: if_icmpeq +45 -> 203
+    //   161: aload 9
+    //   163: aload 8
+    //   165: getfield 164	com/tencent/mobileqq/data/ShieldListInfo:flags	I
+    //   168: putfield 164	com/tencent/mobileqq/data/ShieldListInfo:flags	I
+    //   171: aload 9
+    //   173: aload 8
+    //   175: getfield 228	com/tencent/mobileqq/data/ShieldListInfo:source_id	I
+    //   178: putfield 228	com/tencent/mobileqq/data/ShieldListInfo:source_id	I
+    //   181: aload 9
+    //   183: aload 8
+    //   185: getfield 231	com/tencent/mobileqq/data/ShieldListInfo:source_sub_id	I
+    //   188: putfield 231	com/tencent/mobileqq/data/ShieldListInfo:source_sub_id	I
+    //   191: aload_0
+    //   192: aload 7
+    //   194: aload 9
+    //   196: invokespecial 233	com/tencent/mobileqq/managers/ShieldMsgManger:a	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   199: pop
+    //   200: goto +154 -> 354
+    //   203: aload 8
+    //   205: getfield 164	com/tencent/mobileqq/data/ShieldListInfo:flags	I
+    //   208: iconst_1
+    //   209: if_icmpne +145 -> 354
+    //   212: aload 9
+    //   214: getfield 228	com/tencent/mobileqq/data/ShieldListInfo:source_id	I
+    //   217: aload 8
+    //   219: getfield 228	com/tencent/mobileqq/data/ShieldListInfo:source_id	I
+    //   222: if_icmpeq +132 -> 354
+    //   225: aload 9
+    //   227: aload 8
+    //   229: getfield 164	com/tencent/mobileqq/data/ShieldListInfo:flags	I
+    //   232: putfield 164	com/tencent/mobileqq/data/ShieldListInfo:flags	I
+    //   235: aload 9
+    //   237: aload 8
+    //   239: getfield 228	com/tencent/mobileqq/data/ShieldListInfo:source_id	I
+    //   242: putfield 228	com/tencent/mobileqq/data/ShieldListInfo:source_id	I
+    //   245: aload 9
+    //   247: aload 8
+    //   249: getfield 231	com/tencent/mobileqq/data/ShieldListInfo:source_sub_id	I
+    //   252: putfield 231	com/tencent/mobileqq/data/ShieldListInfo:source_sub_id	I
+    //   255: aload_0
+    //   256: aload 7
+    //   258: aload 9
+    //   260: invokespecial 233	com/tencent/mobileqq/managers/ShieldMsgManger:a	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   263: pop
+    //   264: goto +90 -> 354
+    //   267: aload_0
+    //   268: aload 7
+    //   270: aload 8
+    //   272: invokespecial 233	com/tencent/mobileqq/managers/ShieldMsgManger:a	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   275: pop
+    //   276: aload_0
+    //   277: getfield 42	com/tencent/mobileqq/managers/ShieldMsgManger:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   280: aload 8
+    //   282: getfield 140	com/tencent/mobileqq/data/ShieldListInfo:uin	Ljava/lang/String;
+    //   285: aload 8
+    //   287: invokevirtual 144	com/tencent/commonsdk/cache/QQConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   290: pop
+    //   291: goto +63 -> 354
+    //   294: aload 6
+    //   296: invokevirtual 236	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   299: aload 6
+    //   301: invokevirtual 239	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   304: goto +20 -> 324
+    //   307: astore_1
+    //   308: goto +31 -> 339
+    //   311: astore_1
+    //   312: aload_1
+    //   313: invokevirtual 242	java/lang/Exception:printStackTrace	()V
+    //   316: aload 6
+    //   318: invokevirtual 239	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   321: iconst_0
+    //   322: istore 4
+    //   324: aload 7
+    //   326: invokevirtual 147	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   329: aload 5
+    //   331: monitorexit
+    //   332: aload_0
+    //   333: invokespecial 205	com/tencent/mobileqq/managers/ShieldMsgManger:a	()V
+    //   336: iload 4
+    //   338: ireturn
+    //   339: aload 6
+    //   341: invokevirtual 239	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   344: aload_1
+    //   345: athrow
+    //   346: astore_1
+    //   347: aload 5
+    //   349: monitorexit
+    //   350: aload_1
+    //   351: athrow
+    //   352: iconst_1
+    //   353: ireturn
+    //   354: iload_2
+    //   355: iconst_1
+    //   356: iadd
+    //   357: istore_2
+    //   358: goto -287 -> 71
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	361	0	this	ShieldMsgManger
+    //   0	361	1	paramList	List<ShieldListInfo>
+    //   70	288	2	i	int
+    //   68	6	3	j	int
+    //   1	336	4	bool	boolean
+    //   22	326	5	localObject	Object
+    //   55	285	6	localEntityTransaction	com.tencent.mobileqq.persistence.EntityTransaction
+    //   37	288	7	localEntityManager	EntityManager
+    //   86	200	8	localShieldListInfo1	ShieldListInfo
+    //   103	156	9	localShieldListInfo2	ShieldListInfo
+    // Exception table:
+    //   from	to	target	type
+    //   57	69	307	finally
+    //   76	113	307	finally
+    //   126	148	307	finally
+    //   148	200	307	finally
+    //   203	264	307	finally
+    //   267	291	307	finally
+    //   294	299	307	finally
+    //   312	316	307	finally
+    //   57	69	311	java/lang/Exception
+    //   76	113	311	java/lang/Exception
+    //   126	148	311	java/lang/Exception
+    //   148	200	311	java/lang/Exception
+    //   203	264	311	java/lang/Exception
+    //   267	291	311	java/lang/Exception
+    //   294	299	311	java/lang/Exception
+    //   27	50	346	finally
+    //   50	57	346	finally
+    //   299	304	346	finally
+    //   316	321	346	finally
+    //   324	332	346	finally
+    //   339	346	346	finally
+    //   347	350	346	finally
   }
   
   public boolean a(ConcurrentHashMap<String, ShieldListInfo> paramConcurrentHashMap)
@@ -310,26 +509,32 @@ public class ShieldMsgManger
     if (QLog.isColorLevel()) {
       QLog.d("ShieldMsgManger", 2, "<---saveShieldListTotal : begin....");
     }
-    Object localObject2;
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getWritableDatabase();
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getWritableDatabase();
       if (localObject2 != null)
       {
         localObject3 = new ShieldListInfo().getTableName();
-        ((SQLiteDatabase)localObject2).execSQL("delete from " + (String)localObject3);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("delete from ");
+        localStringBuilder.append((String)localObject3);
+        ((SQLiteDatabase)localObject2).execSQL(localStringBuilder.toString());
       }
       if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap != null) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.size() > 0)) {
         this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.clear();
       }
       localObject2 = new ArrayList();
       Object localObject3 = paramConcurrentHashMap.keySet().iterator();
-      if (((Iterator)localObject3).hasNext()) {
+      while (((Iterator)localObject3).hasNext()) {
         ((ArrayList)localObject2).add(paramConcurrentHashMap.get((String)((Iterator)localObject3).next()));
       }
+      boolean bool = a((List)localObject2);
+      return bool;
     }
-    boolean bool = a((List)localObject2);
-    return bool;
+    for (;;)
+    {
+      throw paramConcurrentHashMap;
+    }
   }
   
   public void b(int paramInt, List<Long> paramList)
@@ -355,7 +560,7 @@ public class ShieldMsgManger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.ShieldMsgManger
  * JD-Core Version:    0.7.0.1
  */

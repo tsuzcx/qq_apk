@@ -44,11 +44,35 @@ public class RingView$DrawInfo
   
   private void b()
   {
-    if ((this.jdField_a_of_type_Int <= 0) && ((this.jdField_a_of_type_Float <= 0.0F) || (this.jdField_a_of_type_Float > 1.0F))) {
-      throw new IllegalArgumentException("radius/radiusRatio = " + this.jdField_a_of_type_Int + "/" + this.jdField_a_of_type_Float + " is invalid !");
+    float f1;
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_Int <= 0)
+    {
+      f1 = this.jdField_a_of_type_Float;
+      if ((f1 <= 0.0F) || (f1 > 1.0F))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("radius/radiusRatio = ");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append("/");
+        localStringBuilder.append(this.jdField_a_of_type_Float);
+        localStringBuilder.append(" is invalid !");
+        throw new IllegalArgumentException(localStringBuilder.toString());
+      }
     }
-    if ((this.jdField_b_of_type_Int <= 0) && ((this.jdField_b_of_type_Float <= 0.0F) || (this.jdField_b_of_type_Float > 1.0F))) {
-      throw new IllegalArgumentException("mThickness/mThicknessRatio = " + this.jdField_b_of_type_Int + "/" + this.jdField_b_of_type_Float + " is invalid !");
+    if (this.jdField_b_of_type_Int <= 0)
+    {
+      f1 = this.jdField_b_of_type_Float;
+      if ((f1 > 0.0F) && (f1 <= 1.0F)) {
+        return;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mThickness/mThicknessRatio = ");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append("/");
+      localStringBuilder.append(this.jdField_b_of_type_Float);
+      localStringBuilder.append(" is invalid !");
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
   }
   
@@ -61,27 +85,39 @@ public class RingView$DrawInfo
   {
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_Float = paramFloat;
-    if ((this.jdField_a_of_type_Int <= 0) && ((this.jdField_a_of_type_Float <= 0.0F) || (this.jdField_a_of_type_Float > 1.0F))) {
-      throw new IllegalArgumentException("radius/radiusRatio = " + this.jdField_a_of_type_Int + "/" + this.jdField_a_of_type_Float + " is invalid !");
+    if (this.jdField_a_of_type_Int <= 0)
+    {
+      paramFloat = this.jdField_a_of_type_Float;
+      if ((paramFloat <= 0.0F) || (paramFloat > 1.0F))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("radius/radiusRatio = ");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append("/");
+        localStringBuilder.append(this.jdField_a_of_type_Float);
+        localStringBuilder.append(" is invalid !");
+        throw new IllegalArgumentException(localStringBuilder.toString());
+      }
     }
     this.jdField_a_of_type_Boolean = true;
   }
   
   protected void a(Canvas paramCanvas)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      if (this.jdField_a_of_type_AndroidGraphicsPaint.getStyle() == Paint.Style.STROKE) {
-        break label89;
-      }
-    }
-    label89:
-    for (boolean bool = true;; bool = false)
+    if (!this.jdField_b_of_type_Boolean)
     {
+      boolean bool;
+      if (this.jdField_a_of_type_AndroidGraphicsPaint.getStyle() != Paint.Style.STROKE) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
       paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, 360.0F, bool, this.jdField_a_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, this.c, this.d - this.c, bool, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
+      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+      int j = this.c;
+      paramCanvas.drawArc(localRectF, j, this.d - j, bool, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
@@ -93,36 +129,44 @@ public class RingView$DrawInfo
     this.g = paramInt1;
     this.h = paramInt2;
     this.i = paramInt3;
-    int j;
-    if (this.jdField_a_of_type_Int > 0)
-    {
-      j = this.jdField_a_of_type_Int;
-      if (this.jdField_b_of_type_Int <= 0) {
-        break label153;
-      }
-    }
-    label153:
-    for (paramInt3 = this.jdField_b_of_type_Int;; paramInt3 = (int)(this.jdField_b_of_type_Float * paramInt3))
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(paramInt3);
-      paramInt3 = j - paramInt3 / 2;
-      this.jdField_a_of_type_AndroidGraphicsRectF.left = (paramInt1 - paramInt3);
-      this.jdField_a_of_type_AndroidGraphicsRectF.right = (paramInt1 + paramInt3);
-      this.jdField_a_of_type_AndroidGraphicsRectF.top = (paramInt2 - paramInt3);
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (paramInt3 + paramInt2);
-      this.jdField_a_of_type_Boolean = false;
-      return true;
+    int j = this.jdField_a_of_type_Int;
+    if (j <= 0) {
       j = (int)(this.jdField_a_of_type_Float * paramInt3);
-      break;
     }
+    int k = this.jdField_b_of_type_Int;
+    if (k > 0) {
+      paramInt3 = k;
+    } else {
+      paramInt3 = (int)(this.jdField_b_of_type_Float * paramInt3);
+    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(paramInt3);
+    paramInt3 = j - paramInt3 / 2;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localRectF.left = (paramInt1 - paramInt3);
+    localRectF.right = (paramInt1 + paramInt3);
+    localRectF.top = (paramInt2 - paramInt3);
+    localRectF.bottom = (paramInt2 + paramInt3);
+    this.jdField_a_of_type_Boolean = false;
+    return true;
   }
   
   public void b(int paramInt, float paramFloat)
   {
     this.jdField_b_of_type_Int = paramInt;
     this.jdField_b_of_type_Float = paramFloat;
-    if ((this.jdField_b_of_type_Int <= 0) && ((this.jdField_b_of_type_Float <= 0.0F) || (this.jdField_b_of_type_Float > 1.0F))) {
-      throw new IllegalArgumentException("mThickness/mThicknessRatio = " + this.jdField_b_of_type_Int + "/" + this.jdField_b_of_type_Float + " is invalid !");
+    if (this.jdField_b_of_type_Int <= 0)
+    {
+      paramFloat = this.jdField_b_of_type_Float;
+      if ((paramFloat <= 0.0F) || (paramFloat > 1.0F))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mThickness/mThicknessRatio = ");
+        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append("/");
+        localStringBuilder.append(this.jdField_b_of_type_Float);
+        localStringBuilder.append(" is invalid !");
+        throw new IllegalArgumentException(localStringBuilder.toString());
+      }
     }
     this.jdField_a_of_type_Boolean = true;
   }
@@ -139,12 +183,30 @@ public class RingView$DrawInfo
   
   public String toString()
   {
-    return "DrawInfo{mAngleStart=" + this.c + ", mAngleEnd=" + this.d + ", mRadius=" + this.jdField_a_of_type_Int + ", mRadiusRatio=" + this.jdField_a_of_type_Float + ", mThickness=" + this.jdField_b_of_type_Int + ", mThicknessRatio=" + this.jdField_b_of_type_Float + ", mForeground=" + this.e + ", mBackground=" + this.f + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DrawInfo{mAngleStart=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", mAngleEnd=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", mRadius=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mRadiusRatio=");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", mThickness=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mThicknessRatio=");
+    localStringBuilder.append(this.jdField_b_of_type_Float);
+    localStringBuilder.append(", mForeground=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", mBackground=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.RingView.DrawInfo
  * JD-Core Version:    0.7.0.1
  */

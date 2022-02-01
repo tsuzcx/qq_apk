@@ -11,15 +11,16 @@ final class DialogUtil$7
   
   public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.dismiss();
+    QQCustomDialog localQQCustomDialog = this.a;
+    if (localQQCustomDialog != null) {
+      localQQCustomDialog.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.DialogUtil.7
  * JD-Core Version:    0.7.0.1
  */

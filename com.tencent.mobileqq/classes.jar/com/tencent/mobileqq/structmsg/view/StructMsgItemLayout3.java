@@ -22,7 +22,7 @@ import java.util.Iterator;
 public class StructMsgItemLayout3
   extends AbsStructMsgItem
 {
-  public int b()
+  protected int b()
   {
     return 3;
   }
@@ -30,224 +30,217 @@ public class StructMsgItemLayout3
   @TargetApi(16)
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    int j = 0;
     Resources localResources = paramContext.getResources();
     Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     int i = 0;
-    if (((Iterator)localObject1).hasNext())
-    {
-      if (!((AbsStructMsgElement)((Iterator)localObject1).next() instanceof StructMsgItemButton)) {
-        break label944;
+    while (((Iterator)localObject1).hasNext()) {
+      if (((AbsStructMsgElement)((Iterator)localObject1).next() instanceof StructMsgItemButton)) {
+        i += 1;
       }
-      i += 1;
     }
-    label428:
-    label944:
-    for (;;)
+    paramBundle.putInt("Layout3ButtonCount", i);
+    int m;
+    int j;
+    int k;
+    Object localObject2;
+    int n;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-      break;
-      paramBundle.putInt("Layout3ButtonCount", i);
-      int m;
-      int k;
-      Object localObject2;
-      if ((paramView != null) && ((paramView instanceof LinearLayout)))
+      localObject1 = (LinearLayout)paramView;
+      m = this.jdField_a_of_type_JavaUtilArrayList.size();
+      j = 0;
+      for (i = 0;; i = k)
       {
-        localObject1 = (LinearLayout)paramView;
-        m = this.jdField_a_of_type_JavaUtilArrayList.size();
-        i = 0;
-        j = 0;
-        k = i;
         paramView = (View)localObject1;
+        k = i;
         if (j >= m) {
-          break label798;
+          break;
         }
         paramView = (AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(j);
         paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
         localObject2 = paramView.jdField_a_of_type_JavaLangString;
-        if (("picture".equals(localObject2)) || ("video".equals(localObject2)))
+        if ((!"picture".equals(localObject2)) && (!"video".equals(localObject2)))
+        {
+          k = i;
+          if ("button".equals(localObject2))
+          {
+            paramBundle.putInt("Layout3ButtonIndex", j);
+            paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+            paramView.a(paramContext, ((LinearLayout)localObject1).getChildAt(j * 2), paramBundle);
+            k = i;
+            if (i == 0) {
+              k = 1;
+            }
+          }
+        }
+        else
         {
           paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
           paramView = paramView.a(paramContext, ((LinearLayout)localObject1).getChildAt(j), paramBundle);
-          if ((paramView instanceof PAHighLightImageView)) {
+          k = i;
+          if ((paramView instanceof PAHighLightImageView))
+          {
             paramView = (PAHighLightImageView)paramView;
+            k = i;
           }
         }
+        j += 1;
       }
+      i = 0;
+    }
+    else
+    {
+      localObject1 = new LinearLayout(paramContext);
+      localObject2 = new ArrayList();
+      int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
+      k = 0;
+      m = 0;
+      for (j = 0; k < i1; j = n)
+      {
+        paramView = (AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(k);
+        paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        String str = paramView.jdField_a_of_type_JavaLangString;
+        if ((!"picture".equals(str)) && (!"video".equals(str)))
+        {
+          i = m;
+          n = j;
+          if ("button".equals(str))
+          {
+            paramBundle.putInt("Layout3ButtonIndex", k);
+            paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+            paramView = paramView.a(paramContext, null, paramBundle);
+            if (k == 0) {
+              i = 2131377964;
+            } else if (k == 1) {
+              i = 2131377965;
+            } else if (k == 2) {
+              i = 2131377966;
+            } else {
+              i = 0;
+            }
+            paramView.setId(i);
+            ((ArrayList)localObject2).add(paramView);
+            m += 1;
+            i = m;
+            n = j;
+            if (j == 0)
+            {
+              n = 1;
+              i = m;
+            }
+          }
+        }
+        else
+        {
+          if (m >= 3) {
+            break;
+          }
+          paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          paramView = paramView.a(paramContext, null, paramBundle);
+          if (k == 0) {
+            i = 2131377964;
+          } else if (k == 1) {
+            i = 2131377965;
+          } else if (k == 2) {
+            i = 2131377966;
+          } else {
+            i = 0;
+          }
+          paramView.setId(i);
+          ((ArrayList)localObject2).add(paramView);
+          i = m + 1;
+          n = j;
+        }
+        k += 1;
+        m = i;
+      }
+      if (((ArrayList)localObject2).size() == 0)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("generate 3 item failed,item is:");
+          paramContext.append(this.jdField_a_of_type_JavaUtilArrayList);
+          QLog.e("StructMsg", 2, paramContext.toString());
+        }
+        return null;
+      }
+      i = AIOUtils.b(10.0F, localResources);
+      n = ((ArrayList)localObject2).size();
+      m = (int)((BaseChatItemLayout.f - i - i - 2) / 3.0F);
+      i = 0;
       for (;;)
       {
-        j += 1;
-        break;
-        if ("button".equals(localObject2))
+        paramView = (View)localObject1;
+        k = j;
+        if (i >= n) {
+          break;
+        }
+        paramView = (View)((ArrayList)localObject2).get(i);
+        paramBundle = new LinearLayout.LayoutParams(-1, -2);
+        paramBundle.weight = 1.0F;
+        paramBundle.width = 0;
+        paramBundle.height = m;
+        if ((paramView instanceof TextView))
         {
-          paramBundle.putInt("Layout3ButtonIndex", j);
-          paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-          paramView.a(paramContext, ((LinearLayout)localObject1).getChildAt(j * 2), paramBundle);
-          if (i == 0)
+          m = AIOUtils.b(45.0F, localResources);
+          paramBundle.height = m;
+          ((LinearLayout)localObject1).addView(paramView, paramBundle);
+          if (i != n - 1)
           {
-            i = 1;
-            continue;
-            paramView = new LinearLayout(paramContext);
-            localObject1 = new ArrayList();
-            int n = this.jdField_a_of_type_JavaUtilArrayList.size();
-            k = 0;
-            m = 0;
-            i = j;
-            String str;
-            if (m < n)
-            {
-              localObject2 = (AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(m);
-              ((AbsStructMsgElement)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-              str = ((AbsStructMsgElement)localObject2).jdField_a_of_type_JavaLangString;
-              if ((!"picture".equals(str)) && (!"video".equals(str))) {
-                break label488;
-              }
-              if (k < 3) {}
-            }
-            else
-            {
-              if (((ArrayList)localObject1).size() != 0) {
-                break label595;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.e("StructMsg", 2, "generate 3 item failed,item is:" + this.jdField_a_of_type_JavaUtilArrayList);
-              }
-              return null;
-            }
-            ((AbsStructMsgElement)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-            localObject2 = ((AbsStructMsgElement)localObject2).a(paramContext, null, paramBundle);
-            j = 0;
-            if (m == 0)
-            {
-              j = 2131378553;
-              ((View)localObject2).setId(j);
-              ((ArrayList)localObject1).add(localObject2);
-              j = k + 1;
-            }
-            label595:
-            for (;;)
-            {
-              m += 1;
-              k = j;
-              break;
-              if (m == 1)
-              {
-                j = 2131378554;
-                break label428;
-              }
-              if (m != 2) {
-                break label428;
-              }
-              j = 2131378555;
-              break label428;
-              label488:
-              if ("button".equals(str))
-              {
-                paramBundle.putInt("Layout3ButtonIndex", m);
-                ((AbsStructMsgElement)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-                localObject2 = ((AbsStructMsgElement)localObject2).a(paramContext, null, paramBundle);
-                j = 0;
-                if (m == 0) {
-                  j = 2131378553;
-                }
-                for (;;)
-                {
-                  ((View)localObject2).setId(j);
-                  ((ArrayList)localObject1).add(localObject2);
-                  j = k + 1;
-                  if (i != 0) {
-                    break label931;
-                  }
-                  i = 1;
-                  break;
-                  if (m == 1) {
-                    j = 2131378554;
-                  } else if (m == 2) {
-                    j = 2131378555;
-                  }
-                }
-                j = AIOUtils.a(10.0F, localResources);
-                n = ((ArrayList)localObject1).size();
-                j = (int)((BaseChatItemLayout.f - j - j - 2) / 3.0F);
-                k = 0;
-                if (k < n)
-                {
-                  paramBundle = (View)((ArrayList)localObject1).get(k);
-                  localObject2 = new LinearLayout.LayoutParams(-1, -2);
-                  ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-                  ((LinearLayout.LayoutParams)localObject2).width = 0;
-                  ((LinearLayout.LayoutParams)localObject2).height = j;
-                  if ((paramBundle instanceof TextView))
-                  {
-                    m = AIOUtils.a(45.0F, localResources);
-                    ((LinearLayout.LayoutParams)localObject2).height = m;
-                    paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject2);
-                    j = m;
-                    if (k == n - 1) {
-                      break label791;
-                    }
-                    paramBundle = new ImageView(paramContext);
-                    paramBundle.setLayoutParams(new ViewGroup.LayoutParams(1, m - 2));
-                    paramBundle.setBackgroundColor(-2170912);
-                    paramView.addView(paramBundle);
-                    j = m;
-                  }
-                  for (;;)
-                  {
-                    k += 1;
-                    break;
-                    if (k > 0) {
-                      ((LinearLayout.LayoutParams)localObject2).leftMargin = 1;
-                    }
-                    paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject2);
-                  }
-                }
-                k = i;
-                a(paramView);
-                d(paramView);
-                if (k == 0)
-                {
-                  i = AIOUtils.a(10.0F, localResources);
-                  if (a(1))
-                  {
-                    j = i;
-                    if (!a(2)) {
-                      break label888;
-                    }
-                    m = i;
-                    n = i;
-                    k = j;
-                    j = i;
-                    i = n;
-                  }
-                }
-                for (;;)
-                {
-                  paramView.setPadding(m, k, i, j);
-                  return paramView;
-                  j = AIOUtils.a(5.0F, localResources);
-                  break;
-                  label888:
-                  k = AIOUtils.a(5.0F, localResources);
-                  m = i;
-                  n = j;
-                  j = k;
-                  k = n;
-                  continue;
-                  j = 0;
-                  i = 0;
-                  k = 0;
-                  m = 0;
-                }
-              }
-              else
-              {
-                j = k;
-              }
-            }
+            paramView = new ImageView(paramContext);
+            paramView.setLayoutParams(new ViewGroup.LayoutParams(1, m - 2));
+            paramView.setBackgroundColor(-2170912);
+            ((LinearLayout)localObject1).addView(paramView);
           }
         }
+        else
+        {
+          if (i > 0) {
+            paramBundle.leftMargin = 1;
+          }
+          ((LinearLayout)localObject1).addView(paramView, paramBundle);
+        }
+        i += 1;
       }
     }
+    a(paramView);
+    d(paramView);
+    if (k == 0)
+    {
+      i = AIOUtils.b(10.0F, localResources);
+      if (a(1)) {
+        j = i;
+      } else {
+        j = AIOUtils.b(5.0F, localResources);
+      }
+      if (a(2))
+      {
+        k = i;
+        n = k;
+        m = j;
+        j = k;
+        k = i;
+        i = n;
+      }
+      else
+      {
+        k = AIOUtils.b(5.0F, localResources);
+        n = i;
+        m = j;
+        j = k;
+        k = i;
+        i = n;
+      }
+    }
+    else
+    {
+      m = 0;
+      j = 0;
+      k = 0;
+    }
+    paramView.setPadding(k, m, i, j);
+    return paramView;
   }
   
   public String b()
@@ -257,7 +250,7 @@ public class StructMsgItemLayout3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout3
  * JD-Core Version:    0.7.0.1
  */

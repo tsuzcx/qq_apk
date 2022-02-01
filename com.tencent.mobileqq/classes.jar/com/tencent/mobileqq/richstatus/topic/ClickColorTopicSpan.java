@@ -42,15 +42,18 @@ public class ClickColorTopicSpan
   
   public void onClick(View paramView)
   {
-    if ((paramView instanceof ClickPreventableTextView)) {
-      if (!((ClickPreventableTextView)paramView).a()) {}
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqTextITopic$OnTopicClickListener == null)
+    if ((paramView instanceof ClickPreventableTextView))
     {
-      return;
-      ((ClickPreventableTextView)paramView).a();
+      localObject = (ClickPreventableTextView)paramView;
+      if (((ClickPreventableTextView)localObject).a()) {
+        return;
+      }
+      ((ClickPreventableTextView)localObject).a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqTextITopic$OnTopicClickListener.onClick(this, paramView);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTextITopic$OnTopicClickListener;
+    if (localObject != null) {
+      ((ITopic.OnTopicClickListener)localObject).onClick(this, paramView);
+    }
   }
   
   public void setCustomFont(boolean paramBoolean)
@@ -76,11 +79,16 @@ public class ClickColorTopicSpan
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if ((this.jdField_a_of_type_JavaLangObject instanceof Pair))
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    if ((localObject instanceof Pair))
     {
-      Pair localPair = (Pair)this.jdField_a_of_type_JavaLangObject;
-      localStringBuilder.append("id=").append(localPair.first).append(",");
-      localStringBuilder.append("topic=").append((String)localPair.second).append(",");
+      localObject = (Pair)localObject;
+      localStringBuilder.append("id=");
+      localStringBuilder.append(((Pair)localObject).first);
+      localStringBuilder.append(",");
+      localStringBuilder.append("topic=");
+      localStringBuilder.append((String)((Pair)localObject).second);
+      localStringBuilder.append(",");
     }
     return localStringBuilder.toString();
   }
@@ -92,37 +100,38 @@ public class ClickColorTopicSpan
       return;
     }
     paramTextPaint.setUnderlineText(false);
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);
-        paramTextPaint.setColor(i);
-        label54:
-        if (this.jdField_b_of_type_AndroidContentResColorStateList == null) {
-          break label130;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label115;
-        }
-      }
-    }
-    label115:
-    for (int i = this.jdField_b_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);; i = this.jdField_b_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0))
+    ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+    int i;
+    if (localColorStateList != null)
     {
+      if (this.jdField_a_of_type_Boolean) {
+        i = localColorStateList.getColorForState(new int[] { 16842919 }, 0);
+      } else {
+        i = localColorStateList.getColorForState(new int[0], 0);
+      }
+      paramTextPaint.setColor(i);
+    }
+    else
+    {
+      paramTextPaint.setColor(-16777216);
+    }
+    localColorStateList = this.jdField_b_of_type_AndroidContentResColorStateList;
+    if (localColorStateList != null)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        i = localColorStateList.getColorForState(new int[] { 16842919 }, 0);
+      } else {
+        i = localColorStateList.getColorForState(new int[0], 0);
+      }
       paramTextPaint.bgColor = i;
       return;
-      i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0);
-      break;
-      paramTextPaint.setColor(-16777216);
-      break label54;
     }
-    label130:
     paramTextPaint.bgColor = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.topic.ClickColorTopicSpan
  * JD-Core Version:    0.7.0.1
  */

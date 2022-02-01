@@ -8,16 +8,22 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 public final class oidb_0xdb1$Cell
   extends MessageMicro<Cell>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40 }, new String[] { "int32_mcc", "int32_mnc", "int32_lac", "int32_cellid", "int32_rssi" }, new Object[] { Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(0) }, Cell.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field int32_cellid = PBField.initInt32(-1);
   public final PBInt32Field int32_lac = PBField.initInt32(-1);
   public final PBInt32Field int32_mcc = PBField.initInt32(-1);
   public final PBInt32Field int32_mnc = PBField.initInt32(-1);
   public final PBInt32Field int32_rssi = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(-1);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40 }, new String[] { "int32_mcc", "int32_mnc", "int32_lac", "int32_cellid", "int32_rssi" }, new Object[] { localInteger, localInteger, localInteger, localInteger, Integer.valueOf(0) }, Cell.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xdb1.oidb_0xdb1.Cell
  * JD-Core Version:    0.7.0.1
  */

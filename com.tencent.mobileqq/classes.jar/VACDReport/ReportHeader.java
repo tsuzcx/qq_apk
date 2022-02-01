@@ -40,39 +40,63 @@ public final class ReportHeader
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.result).append("|").append(this.seqno).append("|").append(this.uin).append("|").append(this.platform).append("|").append(this.version).append("|").append(this.sModule).append("|").append(this.sAction).append("|").append(this.iNetType).append("|").append(this.imei).append("|").append(this.guid);
+    localStringBuilder.append(this.result);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.seqno);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.platform);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.sModule);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.sAction);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.iNetType);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.imei);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.guid);
     return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.platform != null) {
-      paramJceOutputStream.write(this.platform, 0);
+    String str = this.platform;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 1);
+    str = this.version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.uin, 2);
     paramJceOutputStream.write(this.seqno, 3);
-    if (this.sModule != null) {
-      paramJceOutputStream.write(this.sModule, 4);
+    str = this.sModule;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.sAction != null) {
-      paramJceOutputStream.write(this.sAction, 5);
+    str = this.sAction;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.iNetType, 6);
     paramJceOutputStream.write(this.result, 7);
-    if (this.imei != null) {
-      paramJceOutputStream.write(this.imei, 8);
+    str = this.imei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.guid != null) {
-      paramJceOutputStream.write(this.guid, 9);
+    str = this.guid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VACDReport.ReportHeader
  * JD-Core Version:    0.7.0.1
  */

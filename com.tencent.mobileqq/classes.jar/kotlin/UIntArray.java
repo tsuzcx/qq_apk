@@ -43,19 +43,28 @@ public final class UIntArray
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "elements");
     paramCollection = (Iterable)paramCollection;
-    if (((Collection)paramCollection).isEmpty()) {
+    boolean bool1 = ((Collection)paramCollection).isEmpty();
+    boolean bool2 = true;
+    if (bool1) {
       return true;
     }
     paramCollection = paramCollection.iterator();
-    while (paramCollection.hasNext())
+    int i;
+    do
     {
-      Object localObject = paramCollection.next();
-      if (((localObject instanceof UInt)) && (ArraysKt.contains(paramArrayOfInt, ((UInt)localObject).unbox-impl()))) {}
-      for (int i = 1; i == 0; i = 0) {
-        return false;
+      bool1 = bool2;
+      if (!paramCollection.hasNext()) {
+        break;
       }
-    }
-    return true;
+      Object localObject = paramCollection.next();
+      if (((localObject instanceof UInt)) && (ArraysKt.contains(paramArrayOfInt, ((UInt)localObject).unbox-impl()))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+    } while (i != 0);
+    bool1 = false;
+    return bool1;
   }
   
   public static boolean equals-impl(int[] paramArrayOfInt, @Nullable Object paramObject)
@@ -105,7 +114,11 @@ public final class UIntArray
   @NotNull
   public static String toString-impl(int[] paramArrayOfInt)
   {
-    return "UIntArray(storage=" + Arrays.toString(paramArrayOfInt) + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UIntArray(storage=");
+    localStringBuilder.append(Arrays.toString(paramArrayOfInt));
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public boolean add-WZ4Q5Ns(int paramInt)
@@ -204,7 +217,7 @@ public final class UIntArray
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.UIntArray
  * JD-Core Version:    0.7.0.1
  */

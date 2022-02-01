@@ -69,13 +69,20 @@ public class AnimatingBall
     this.mInitialY = (INITIAL_Y + (3 - paramInt) * ImmersiveUtils.dpToPx(8.0F));
     this.mOffsetY = this.mInitialY;
     int i = Math.abs(TARGET_Y);
-    if (paramInt == 0) {}
-    for (this.mStartAnimationY = 0;; this.mStartAnimationY = ((CONTENT_HEIGHT - i) / 2 * (paramInt - 1) + i))
-    {
-      this.mEndAnimationY = (i + (CONTENT_HEIGHT - i) / 2 * paramInt);
-      Log.d("AnimatingBall", "index=" + paramInt + ",mStart=" + this.mStartAnimationY + ",mEnd=" + this.mEndAnimationY);
-      return;
+    if (paramInt == 0) {
+      this.mStartAnimationY = 0;
+    } else {
+      this.mStartAnimationY = ((CONTENT_HEIGHT - i) / 2 * (paramInt - 1) + i);
     }
+    this.mEndAnimationY = (i + (CONTENT_HEIGHT - i) / 2 * paramInt);
+    paramHippyTKDInvalidateCallback = new StringBuilder();
+    paramHippyTKDInvalidateCallback.append("index=");
+    paramHippyTKDInvalidateCallback.append(paramInt);
+    paramHippyTKDInvalidateCallback.append(",mStart=");
+    paramHippyTKDInvalidateCallback.append(this.mStartAnimationY);
+    paramHippyTKDInvalidateCallback.append(",mEnd=");
+    paramHippyTKDInvalidateCallback.append(this.mEndAnimationY);
+    Log.d("AnimatingBall", paramHippyTKDInvalidateCallback.toString());
   }
   
   public void animateRefresh()
@@ -87,91 +94,93 @@ public class AnimatingBall
   
   void calculateTransforms(long paramLong)
   {
-    if (this.mRefreshStartTime == -1L) {}
-    label519:
-    for (;;)
-    {
+    if (this.mRefreshStartTime == -1L) {
       return;
-      int m = this.mAlphaValues.length;
-      int k = this.mScaleValues.length;
-      int j = 0;
-      int i = 1;
-      for (float f2 = 0.0F; (j < m) && (i < m); f2 = f1 + f2)
+    }
+    int n = this.mAlphaValues.length;
+    int m = this.mScaleValues.length;
+    int k = 1;
+    int j = 0;
+    int i = 1;
+    float f2 = 0.0F;
+    float[] arrayOfFloat;
+    while ((j < n) && (i < n))
+    {
+      arrayOfFloat = this.mAlphaValues;
+      f2 += Math.abs(arrayOfFloat[j] - arrayOfFloat[i]);
+      j += 1;
+      i += 1;
+    }
+    j = 0;
+    i = 1;
+    float f1 = 0.0F;
+    while ((j < m) && (i < m))
+    {
+      arrayOfFloat = this.mScaleValues;
+      f1 += Math.abs(arrayOfFloat[j] - arrayOfFloat[i]);
+      j += 1;
+      i += 1;
+    }
+    long l1 = this.mRefreshStartDelay;
+    long l2 = this.mAlphaDuration;
+    float f3;
+    if (l2 != 0L) {
+      f3 = (float)((paramLong - (this.mRefreshStartTime + l1)) % l2) / (float)l2;
+    } else {
+      f3 = 0.0F;
+    }
+    if ((f3 >= 0.0F) && (f3 < 1.0F))
+    {
+      f2 = this.mAlphaInterpolator.getInterpolation(f3) * f2;
+      i = 0;
+      j = 1;
+      while ((i < n) && (j < n))
       {
-        f1 = Math.abs(this.mAlphaValues[j] - this.mAlphaValues[i]);
-        j += 1;
-        i += 1;
-      }
-      j = 0;
-      i = 1;
-      for (float f1 = 0.0F; (j < k) && (i < k); f1 = f3 + f1)
-      {
-        f3 = Math.abs(this.mScaleValues[j] - this.mScaleValues[i]);
-        j += 1;
-        i += 1;
-      }
-      float f3 = 0.0F;
-      long l = this.mRefreshStartDelay;
-      if (this.mAlphaDuration != 0L) {
-        f3 = (float)((paramLong - (this.mRefreshStartTime + l)) % this.mAlphaDuration) / (float)this.mAlphaDuration;
-      }
-      if ((f3 >= 0.0F) && (f3 < 1.0F))
-      {
-        f2 = this.mAlphaInterpolator.getInterpolation(f3) * f2;
-        i = 0;
-        j = 1;
-        if ((i < m) && (j < m))
+        arrayOfFloat = this.mAlphaValues;
+        f3 = Math.abs(arrayOfFloat[i] - arrayOfFloat[j]);
+        if (f2 <= f3)
         {
-          f3 = Math.abs(this.mAlphaValues[i] - this.mAlphaValues[j]);
-          if (f2 > f3) {
-            break label473;
+          arrayOfFloat = this.mAlphaValues;
+          if (arrayOfFloat[i] > arrayOfFloat[j]) {
+            j = -1;
+          } else {
+            j = 1;
           }
-          if (this.mAlphaValues[i] <= this.mAlphaValues[j]) {
-            break label467;
-          }
-          j = -1;
-          label292:
-          f3 = this.mAlphaValues[i];
-          setAlpha(j * f2 + f3);
+          setAlpha(this.mAlphaValues[i] + j * f2);
+          break;
         }
+        f2 -= f3;
+        i += 1;
+        j += 1;
       }
+    }
+    l2 = this.mScaleDuration;
+    if (l2 != 0L) {
+      f2 = (float)((paramLong - (this.mRefreshStartTime + l1)) % l2) / (float)l2;
+    } else {
       f2 = 0.0F;
-      if (this.mScaleDuration != 0L) {
-        f2 = (float)((paramLong - (this.mRefreshStartTime + l)) % this.mScaleDuration) / (float)this.mScaleDuration;
-      }
-      if ((f2 >= 0.0F) && (f2 < 1.0F))
+    }
+    if ((f2 >= 0.0F) && (f2 < 1.0F))
+    {
+      f1 = this.mScaleInterpolator.getInterpolation(f2) * f1;
+      i = 0;
+      j = 1;
+      while ((i < m) && (j < m))
       {
-        f1 = this.mScaleInterpolator.getInterpolation(f2) * f1;
-        i = 0;
-        j = 1;
-        for (;;)
+        arrayOfFloat = this.mScaleValues;
+        f2 = Math.abs(arrayOfFloat[i] - arrayOfFloat[j]);
+        if (f1 <= f2)
         {
-          if ((i >= k) || (j >= k)) {
-            break label519;
+          arrayOfFloat = this.mScaleValues;
+          if (arrayOfFloat[i] > arrayOfFloat[j]) {
+            k = -1;
           }
-          f2 = Math.abs(this.mScaleValues[i] - this.mScaleValues[j]);
-          if (f1 <= f2)
-          {
-            if (this.mScaleValues[i] > this.mScaleValues[j]) {}
-            for (j = -1;; j = 1)
-            {
-              f2 = this.mScaleValues[i];
-              setScale(j * f1 + f2);
-              return;
-              label467:
-              j = 1;
-              break label292;
-              label473:
-              f2 -= f3;
-              i += 1;
-              j += 1;
-              break;
-            }
-          }
-          f1 -= f2;
-          i += 1;
-          j += 1;
+          setScale(this.mScaleValues[i] + k * f1);
+          return;
         }
+        f1 -= f2;
+        i += 1;
+        j += 1;
       }
     }
   }
@@ -179,32 +188,28 @@ public class AnimatingBall
   public void draw(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3)
   {
     int i;
-    float f2;
-    if (paramInt2 != 2147483647)
-    {
+    if (paramInt2 != 2147483647) {
       i = 1;
-      if (i == 0) {
-        onScroll(paramInt1);
-      }
-      calculateTransforms(System.currentTimeMillis());
-      paramCanvas.save();
-      this.sPaint.setColor(this.mBallColor);
-      f2 = this.mOffsetX + paramInt3;
-      if (i != 0) {
-        break label120;
-      }
-    }
-    label120:
-    for (float f1 = this.mOffsetY - paramInt1;; f1 = paramInt2)
-    {
-      paramCanvas.drawCircle(f2, f1, this.mBallSize, this.sPaint);
-      paramCanvas.restore();
-      if ((this.mRefreshing) && (this.mRefreshStartTime != -1L)) {
-        this.mCb.postInvalidate();
-      }
-      return;
+    } else {
       i = 0;
-      break;
+    }
+    if (i == 0) {
+      onScroll(paramInt1);
+    }
+    calculateTransforms(System.currentTimeMillis());
+    paramCanvas.save();
+    this.sPaint.setColor(this.mBallColor);
+    float f2 = paramInt3 + this.mOffsetX;
+    float f1;
+    if (i == 0) {
+      f1 = this.mOffsetY - paramInt1;
+    } else {
+      f1 = paramInt2;
+    }
+    paramCanvas.drawCircle(f2, f1, this.mBallSize, this.sPaint);
+    paramCanvas.restore();
+    if ((this.mRefreshing) && (this.mRefreshStartTime != -1L)) {
+      this.mCb.postInvalidate();
     }
   }
   
@@ -225,14 +230,20 @@ public class AnimatingBall
   
   public void onScroll(int paramInt)
   {
-    if ((-paramInt > this.mStartAnimationY) && (-paramInt < this.mEndAnimationY))
+    paramInt = -paramInt;
+    int i = this.mStartAnimationY;
+    if (paramInt > i)
     {
-      float f1 = (-paramInt - this.mStartAnimationY) / (this.mEndAnimationY - this.mStartAnimationY);
-      float f2 = this.mInitialY;
-      this.mOffsetY = (f1 * (TARGET_Y - this.mInitialY) + f2);
-      return;
+      int j = this.mEndAnimationY;
+      if (paramInt < j)
+      {
+        float f1 = (paramInt - i) / (j - i);
+        float f2 = this.mInitialY;
+        this.mOffsetY = (f2 + (TARGET_Y - f2) * f1);
+        return;
+      }
     }
-    if (-paramInt <= this.mStartAnimationY)
+    if (paramInt <= this.mStartAnimationY)
     {
       this.mOffsetY = this.mInitialY;
       return;
@@ -274,20 +285,27 @@ public class AnimatingBall
   public void setScale(float paramFloat)
   {
     this.mScale = paramFloat;
-    this.mBallSize = (BALL_SIZE * paramFloat);
+    this.mBallSize = (paramFloat * BALL_SIZE);
   }
   
   public void setTargetY(int paramInt1, int paramInt2)
   {
     TARGET_Y = paramInt1;
     paramInt1 = Math.abs(TARGET_Y);
-    if (paramInt2 == 0) {}
-    for (this.mStartAnimationY = 0;; this.mStartAnimationY = ((CONTENT_HEIGHT - paramInt1) / 2 * (paramInt2 - 1) + paramInt1))
-    {
-      this.mEndAnimationY = (paramInt1 + (CONTENT_HEIGHT - paramInt1) / 2 * paramInt2);
-      Log.d("AnimatingBall", "index=" + paramInt2 + ",mStart=" + this.mStartAnimationY + ",mEnd=" + this.mEndAnimationY);
-      return;
+    if (paramInt2 == 0) {
+      this.mStartAnimationY = 0;
+    } else {
+      this.mStartAnimationY = ((CONTENT_HEIGHT - paramInt1) / 2 * (paramInt2 - 1) + paramInt1);
     }
+    this.mEndAnimationY = (paramInt1 + (CONTENT_HEIGHT - paramInt1) / 2 * paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("index=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(",mStart=");
+    localStringBuilder.append(this.mStartAnimationY);
+    localStringBuilder.append(",mEnd=");
+    localStringBuilder.append(this.mEndAnimationY);
+    Log.d("AnimatingBall", localStringBuilder.toString());
   }
   
   public void stopAllAnimators()
@@ -301,7 +319,7 @@ public class AnimatingBall
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.AnimatingBall
  * JD-Core Version:    0.7.0.1
  */

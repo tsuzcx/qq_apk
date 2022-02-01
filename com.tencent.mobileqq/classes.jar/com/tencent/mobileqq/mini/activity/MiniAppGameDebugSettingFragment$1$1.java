@@ -11,13 +11,13 @@ class MiniAppGameDebugSettingFragment$1$1
   
   public void run()
   {
-    QbSdk.reset(this.this$1.this$0.getActivity());
+    QbSdk.reset(this.this$1.this$0.getBaseActivity());
     ThreadManagerV2.getUIHandlerV2().post(new MiniAppGameDebugSettingFragment.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.MiniAppGameDebugSettingFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

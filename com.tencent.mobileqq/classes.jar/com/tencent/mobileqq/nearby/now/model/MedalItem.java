@@ -45,11 +45,13 @@ public class MedalItem
   
   public boolean a(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) && (paramString2 != null)) {}
-    while (((paramString1 != null) && (paramString2 == null)) || ((paramString1 != null) && (!paramString1.equals(paramString2)))) {
+    if ((paramString1 == null) && (paramString2 != null)) {
       return false;
     }
-    return true;
+    if ((paramString1 != null) && (paramString2 == null)) {
+      return false;
+    }
+    return (paramString1 == null) || (paramString1.equals(paramString2));
   }
   
   public int describeContents()
@@ -59,12 +61,13 @@ public class MedalItem
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof MedalItem)) {}
-    do
-    {
+    if (!(paramObject instanceof MedalItem)) {
       return false;
-      paramObject = (MedalItem)paramObject;
-    } while (paramObject.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
+    }
+    paramObject = (MedalItem)paramObject;
+    if (paramObject.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
+      return false;
+    }
     return a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
   }
   
@@ -88,7 +91,7 @@ public class MedalItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.MedalItem
  * JD-Core Version:    0.7.0.1
  */

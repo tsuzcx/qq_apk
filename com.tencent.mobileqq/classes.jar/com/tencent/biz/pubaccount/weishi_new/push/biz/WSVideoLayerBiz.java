@@ -7,6 +7,7 @@ import com.tencent.biz.pubaccount.weishi_new.WeishiActivityHelper;
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageOpenParams;
 
 public class WSVideoLayerBiz
   extends WSBasePushBiz<WSRedDotPushMsg, WSPushStrategyInfo>
@@ -23,22 +24,23 @@ public class WSVideoLayerBiz
   
   public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Int == 2)
+    int i = this.jdField_a_of_type_Int;
+    if (i == 2)
     {
-      WSVerticalPageFragment.a(paramContext, "aio_new_msg", "direct", null, 0);
-      bool = true;
+      WSVerticalPageFragment.a(new WSVerticalPageOpenParams(paramContext, "aio_new_msg", "direct"));
+      return true;
     }
-    while (this.jdField_a_of_type_Int != 6) {
-      return bool;
+    if (i == 6)
+    {
+      WeishiActivityHelper.a((Activity)paramContext, this.jdField_a_of_type_AndroidContentIntent, (WSRedDotPushMsg)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSBasePushMsg);
+      return true;
     }
-    WeishiActivityHelper.a((Activity)paramContext, this.jdField_a_of_type_AndroidContentIntent, (WSRedDotPushMsg)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSBasePushMsg);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.biz.WSVideoLayerBiz
  * JD-Core Version:    0.7.0.1
  */

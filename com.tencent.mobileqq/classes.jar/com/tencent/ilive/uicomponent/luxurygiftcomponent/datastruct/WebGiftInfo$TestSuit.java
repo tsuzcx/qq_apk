@@ -8,7 +8,7 @@ public class WebGiftInfo$TestSuit
   
   public static WebGiftInfo obtain(int paramInt)
   {
-    if (paramInt >= EFFECT_ID.length) {}
+    paramInt = EFFECT_ID.length;
     WebGiftInfo localWebGiftInfo = new WebGiftInfo();
     localWebGiftInfo.senderName = "枫叶飘飘";
     localWebGiftInfo.senderHeadUrl = "";
@@ -20,7 +20,7 @@ public class WebGiftInfo$TestSuit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.WebGiftInfo.TestSuit
  * JD-Core Version:    0.7.0.1
  */

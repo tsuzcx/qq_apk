@@ -11,14 +11,14 @@ class CreateFaceToFaceDiscussionActivity$3
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.app != null)) {
-      this.this$0.a.str_nick.set(this.this$0.app.getCurrentNickname());
+    if ((this.this$0.mSelf != null) && (this.this$0.app != null)) {
+      this.this$0.mSelf.str_nick.set(this.this$0.app.getCurrentNickname());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.3
  * JD-Core Version:    0.7.0.1
  */

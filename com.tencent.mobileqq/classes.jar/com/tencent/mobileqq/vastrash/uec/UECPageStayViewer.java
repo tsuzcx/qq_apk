@@ -33,12 +33,12 @@ public class UECPageStayViewer
   public UECPageStayViewer(Context paramContext)
   {
     super(paramContext);
-    LayoutInflater.from(paramContext).inflate(2131561651, this);
+    LayoutInflater.from(paramContext).inflate(2131561502, this);
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131378860));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368428));
-    this.b = ((Button)findViewById(2131364777));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131366064));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131378249));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368179));
+    this.b = ((Button)findViewById(2131364665));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365894));
     this.jdField_a_of_type_ComTencentMobileqqVastrashUecUECPageStayViewer$TableQueryAdapter = new UECPageStayViewer.TableQueryAdapter(this);
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqVastrashUecUECPageStayViewer$TableQueryAdapter);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -74,22 +74,22 @@ public class UECPageStayViewer
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131364665)
     {
+      if (i == 2131368179) {
+        UECPageStayController.a().a();
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      UECPageStayController.a().a();
-      continue;
+    else {
       a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.uec.UECPageStayViewer
  * JD-Core Version:    0.7.0.1
  */

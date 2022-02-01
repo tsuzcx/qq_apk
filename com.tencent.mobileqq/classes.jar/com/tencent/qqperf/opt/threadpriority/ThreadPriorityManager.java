@@ -15,12 +15,13 @@ public class ThreadPriorityManager
   public static void a(boolean paramBoolean)
   {
     Handler localHandler = jdField_a_of_type_AndroidOsHandler;
-    if (paramBoolean) {}
-    for (int i = 2;; i = 1)
-    {
-      localHandler.sendEmptyMessage(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 2;
+    } else {
+      i = 1;
     }
+    localHandler.sendEmptyMessage(i);
   }
   
   private static Thread[] a()
@@ -45,54 +46,50 @@ public class ThreadPriorityManager
   {
     jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 30000L);
-    if (jdField_a_of_type_JavaUtilHashMap.size() > 0) {}
-    Thread[] arrayOfThread;
-    Thread localThread1;
-    Thread localThread2;
-    int j;
-    int i;
-    do
-    {
+    if (jdField_a_of_type_JavaUtilHashMap.size() > 0) {
       return;
-      arrayOfThread = a();
-      if (arrayOfThread.length < 2)
-      {
-        jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        return;
-      }
-      localThread1 = Looper.getMainLooper().getThread();
-      localThread2 = ThreadManager.getSubThread();
-      j = arrayOfThread.length;
-      i = 0;
-    } while (i >= j);
-    Thread localThread3 = arrayOfThread[i];
-    if ((localThread3 != null) && (localThread1 != null) && (localThread2 != null) && (localThread3.getId() != localThread2.getId()) && (localThread3.getId() != localThread1.getId()) && (localThread3.isAlive())) {}
-    for (;;)
+    }
+    Thread[] arrayOfThread = a();
+    if (arrayOfThread.length < 2)
     {
+      jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      return;
+    }
+    Thread localThread1 = Looper.getMainLooper().getThread();
+    Thread localThread2 = ThreadManager.getSubThread();
+    int j = arrayOfThread.length;
+    int i = 0;
+    while (i < j)
+    {
+      Thread localThread3 = arrayOfThread[i];
+      if ((localThread3 != null) && (localThread1 != null) && (localThread2 != null) && (localThread3.getId() != localThread2.getId()) && (localThread3.getId() != localThread1.getId()) && (localThread3.isAlive())) {}
       try
       {
         l = localThread3.getId();
       }
       catch (IllegalArgumentException localIllegalArgumentException1)
       {
-        try
-        {
-          jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), Integer.valueOf(localThread3.getPriority()));
-          localThread3.setPriority(jdField_a_of_type_Int);
-          i += 1;
-        }
-        catch (IllegalArgumentException localIllegalArgumentException2)
-        {
-          long l;
-          break label175;
-        }
-        localIllegalArgumentException1 = localIllegalArgumentException1;
-        l = -1L;
+        long l;
+        label165:
+        label168:
+        label172:
+        break label168;
       }
-      label175:
+      try
+      {
+        jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), Integer.valueOf(localThread3.getPriority()));
+        localThread3.setPriority(jdField_a_of_type_Int);
+      }
+      catch (IllegalArgumentException localIllegalArgumentException2)
+      {
+        break label165;
+      }
+      break label172;
+      l = -1L;
       if (l != -1L) {
         jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(l));
       }
+      i += 1;
     }
   }
   
@@ -102,49 +99,49 @@ public class ThreadPriorityManager
       return;
     }
     Thread[] arrayOfThread = a();
-    int k = arrayOfThread.length;
+    int m = arrayOfThread.length;
     int j = 0;
-    int i = 0;
-    for (;;)
+    int k;
+    for (int i = 0; j < m; i = k)
     {
-      Thread localThread;
-      if (j < k)
+      Thread localThread = arrayOfThread[j];
+      k = i;
+      if (localThread != null)
       {
-        localThread = arrayOfThread[j];
-        if ((localThread == null) || (!localThread.isAlive())) {
-          break label130;
+        k = i;
+        if (localThread.isAlive())
+        {
+          Integer localInteger = (Integer)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(localThread.getId()));
+          if (localInteger != null) {
+            i = localInteger.intValue();
+          }
+          if ((i == 0) || (i > 10) || (i < 1)) {}
         }
-        Integer localInteger = (Integer)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(localThread.getId()));
-        if (localInteger == null) {
-          break label127;
-        }
-        i = localInteger.intValue();
       }
-      label127:
-      for (;;)
+      try
       {
-        if ((i != 0) && (i <= 10) && (i >= 1)) {}
-        try
-        {
-          localThread.setPriority(i);
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          QLog.e("ThreadPriorityManager", 1, "setPriority error");
-        }
-        localThread.setPriority(5);
-        break;
-        jdField_a_of_type_JavaUtilHashMap.clear();
-        return;
+        localThread.setPriority(i);
+        k = i;
       }
-      label130:
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        break label118;
+      }
+      localThread.setPriority(5);
+      k = i;
+      break label128;
+      label118:
+      QLog.e("ThreadPriorityManager", 1, "setPriority error");
+      k = i;
+      label128:
       j += 1;
     }
+    jdField_a_of_type_JavaUtilHashMap.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.threadpriority.ThreadPriorityManager
  * JD-Core Version:    0.7.0.1
  */

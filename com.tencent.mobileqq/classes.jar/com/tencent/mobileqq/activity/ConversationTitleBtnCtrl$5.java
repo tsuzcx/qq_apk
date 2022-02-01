@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
-import com.tencent.mobileqq.qcircle.api.IQCircleRedPointService;
-
 class ConversationTitleBtnCtrl$5
   implements Runnable
 {
@@ -10,12 +7,12 @@ class ConversationTitleBtnCtrl$5
   
   public void run()
   {
-    QCircleUtils.a().onSmallRedPointClick("circle_entrance", null);
+    this.this$0.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationTitleBtnCtrl.5
  * JD-Core Version:    0.7.0.1
  */

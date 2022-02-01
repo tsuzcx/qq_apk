@@ -1,32 +1,29 @@
 package com.tencent.xaction.api;
 
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.xaction.impl.XAEngine;
+import com.tencent.xaction.openapi.api.IPublicDecorView;
+import com.tencent.xaction.openapi.api.IXAEngine;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/IDecorView;", "Lcom/tencent/xaction/api/IStyle;", "drawable", "Landroid/graphics/drawable/Drawable;", "getDrawable", "()Landroid/graphics/drawable/Drawable;", "setDrawable", "(Landroid/graphics/drawable/Drawable;)V", "getProxy", "Landroid/view/View;", "init", "", "engine", "Lcom/tencent/xaction/impl/XAEngine;", "viewLayout", "Landroid/view/ViewGroup;", "setProxy", "view", "isStyle", "", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/IDecorView;", "Lcom/tencent/xaction/openapi/api/IPublicDecorView;", "Lcom/tencent/xaction/api/IStyle;", "bindData", "", "destroy", "getProxy", "Landroid/view/View;", "init", "engine", "Lcom/tencent/xaction/openapi/api/IXAEngine;", "viewLayout", "Landroid/view/ViewGroup;", "setProxy", "view", "isStyle", "", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public abstract interface IDecorView
-  extends IStyle
+  extends IStyle, IPublicDecorView
 {
-  @Nullable
-  public abstract Drawable a();
+  public abstract void destroy();
   
   @Nullable
-  public abstract View a();
+  public abstract View getProxy();
   
-  public abstract void a(@Nullable Drawable paramDrawable);
+  public abstract void init(@NotNull IXAEngine paramIXAEngine, @Nullable ViewGroup paramViewGroup);
   
-  public abstract void a(@Nullable View paramView, boolean paramBoolean);
-  
-  public abstract void a(@NotNull XAEngine paramXAEngine, @Nullable ViewGroup paramViewGroup);
+  public abstract void setProxy(@Nullable View paramView, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.IDecorView
  * JD-Core Version:    0.7.0.1
  */

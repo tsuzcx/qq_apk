@@ -10,15 +10,15 @@ public class ProxyObserver
   
   public void notifyEvent(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1000)
     {
-    default: 
-      return;
-    case 1000: 
-      onProxySaveToDbFinished();
+      if (paramInt != 2000) {
+        return;
+      }
+      onProxyUpdataTroopMember();
       return;
     }
-    onProxyUpdataTroopMember();
+    onProxySaveToDbFinished();
   }
   
   public void onProxySaveToDbError() {}
@@ -29,7 +29,7 @@ public class ProxyObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.ProxyObserver
  * JD-Core Version:    0.7.0.1
  */

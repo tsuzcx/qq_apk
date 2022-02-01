@@ -2,7 +2,7 @@ package com.tencent.mobileqq.teamwork.fragment;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class TeamWorkAuthorizeSettingFragment$7
   implements DialogInterface.OnClickListener
@@ -11,12 +11,12 @@ class TeamWorkAuthorizeSettingFragment$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.getActivity().finish();
+    this.a.getBaseActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment.7
  * JD-Core Version:    0.7.0.1
  */

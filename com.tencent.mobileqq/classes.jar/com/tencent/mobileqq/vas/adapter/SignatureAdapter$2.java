@@ -22,21 +22,19 @@ class SignatureAdapter$2
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo.a[0];
       localObject2 = SignatureAdapter.a(this.this$0);
       int i;
-      if (((SignatureTemplateInfo.DynamicItem)localObject1).c != 0)
-      {
+      if (((SignatureTemplateInfo.DynamicItem)localObject1).c != 0) {
         i = ((SignatureTemplateInfo.DynamicItem)localObject1).c;
-        if (!SignatureAdapter.a(this.this$0)) {
-          break label96;
-        }
-      }
-      label96:
-      for (int j = -1;; j = ((SignatureTemplateInfo.DynamicItem)localObject1).b)
-      {
-        ((VasResController)localObject2).a(str, i, j);
-        return;
+      } else {
         i = 50;
-        break;
       }
+      int j;
+      if (SignatureAdapter.a(this.this$0)) {
+        j = -1;
+      } else {
+        j = ((SignatureTemplateInfo.DynamicItem)localObject1).b;
+      }
+      ((VasResController)localObject2).a(str, i, j);
+      return;
     }
     String str = this.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo.a[0].a;
     Object localObject1 = SignatureManagerForTool.a(this.jdField_a_of_type_Int, str);
@@ -51,7 +49,7 @@ class SignatureAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.SignatureAdapter.2
  * JD-Core Version:    0.7.0.1
  */

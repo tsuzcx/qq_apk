@@ -20,15 +20,24 @@ class TCProgressBar$Draw
   
   boolean a(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkBounds,x = ");
+      localStringBuilder.append(paramFloat);
+      localStringBuilder.append(",x_coord = ");
+      localStringBuilder.append(this.jdField_f_of_type_Int);
+      localStringBuilder.append(",x_coord + length = ");
+      localStringBuilder.append(this.jdField_f_of_type_Int + this.g);
+      QLog.d("TCProgressBar", 2, localStringBuilder.toString());
     }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
+    int i = this.jdField_f_of_type_Int;
+    return (paramFloat > i) && (paramFloat < i + this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.TCProgressBar.Draw
  * JD-Core Version:    0.7.0.1
  */

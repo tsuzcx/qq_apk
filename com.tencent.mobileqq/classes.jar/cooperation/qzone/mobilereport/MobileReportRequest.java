@@ -26,16 +26,13 @@ public class MobileReportRequest
   public static UserActionReportRsp onResponse(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
-    UserActionReportRsp localUserActionReportRsp;
-    do
-    {
-      return paramArrayOfByte;
-      localUserActionReportRsp = (UserActionReportRsp)decode(paramArrayOfByte, "UserActionReport");
-      paramArrayOfByte = localUserActionReportRsp;
-    } while (localUserActionReportRsp != null);
-    return null;
+    paramArrayOfByte = (UserActionReportRsp)decode(paramArrayOfByte, "UserActionReport");
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return paramArrayOfByte;
   }
   
   public String getCmdString()
@@ -55,7 +52,7 @@ public class MobileReportRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.mobilereport.MobileReportRequest
  * JD-Core Version:    0.7.0.1
  */

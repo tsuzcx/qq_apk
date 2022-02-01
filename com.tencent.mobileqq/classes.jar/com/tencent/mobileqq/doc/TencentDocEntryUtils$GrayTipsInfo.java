@@ -18,17 +18,27 @@ public class TencentDocEntryUtils$GrayTipsInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("enable:").append(this.jdField_a_of_type_Boolean).append(",");
-    localStringBuilder.append("mPlainContent:").append(this.jdField_a_of_type_JavaLangString).append(",");
-    localStringBuilder.append("mHighLightContent:").append(this.b).append(",");
-    localStringBuilder.append("times:").append(this.jdField_a_of_type_Int).append(",");
-    localStringBuilder.append("mJumpLinkUrls:").append(this.c).append(",");
+    localStringBuilder.append("enable:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",");
+    localStringBuilder.append("mPlainContent:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append("mHighLightContent:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append("times:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append("mJumpLinkUrls:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.doc.TencentDocEntryUtils.GrayTipsInfo
  * JD-Core Version:    0.7.0.1
  */

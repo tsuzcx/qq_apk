@@ -35,9 +35,11 @@ public final class d
     super.a(parame);
   }
   
-  public final void a(Exception paramException)
+  protected final void a(Exception paramException)
   {
-    a(301, "Failed to wait for DEPS installation lock " + this.g, paramException);
+    StringBuilder localStringBuilder = new StringBuilder("Failed to wait for DEPS installation lock ");
+    localStringBuilder.append(this.g);
+    a(301, localStringBuilder.toString(), paramException);
   }
   
   public final void b()
@@ -46,39 +48,34 @@ public final class d
     this.f.b();
   }
   
-  public final void c()
+  protected final void c()
   {
     File localFile = this.g;
-    if (f.g(localFile))
+    if ((!f.g(localFile)) || ((!localFile.exists()) || (!this.e))) {}
+    try
     {
-      if (localFile.exists())
-      {
-        if (!this.e) {
-          try
-          {
-            com.tencent.tbs.one.impl.common.d locald = com.tencent.tbs.one.impl.common.d.a(localFile);
-            a(e.a(e.a.a, locald));
-            return;
-          }
-          catch (TBSOneException localTBSOneException) {}
-        }
-        c.c(localFile);
-      }
-      f.e(localFile);
-    }
-    for (;;)
-    {
-      this.f.a(new d.1(this));
+      com.tencent.tbs.one.impl.common.d locald = com.tencent.tbs.one.impl.common.d.a(localFile);
+      a(e.a(e.a.a, locald));
       return;
-      if (localFile.exists()) {
-        c.c(localFile);
-      }
     }
+    catch (TBSOneException localTBSOneException)
+    {
+      label43:
+      break label43;
+    }
+    c.c(localFile);
+    f.e(localFile);
+    break label65;
+    if (localFile.exists()) {
+      c.c(localFile);
+    }
+    label65:
+    this.f.a(new d.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.d
  * JD-Core Version:    0.7.0.1
  */

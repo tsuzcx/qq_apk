@@ -11,13 +11,22 @@ public class ARMIGObjectClassifyResult$JDSearchItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("skuId:").append(this.c).append(",skuName:").append(this.d).append(",skuPrice:").append(this.e).append(",imageUrl:").append(this.b).append(",detailUrl:").append(this.a);
+    localStringBuilder.append("skuId:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",skuName:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",skuPrice:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",imageUrl:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",detailUrl:");
+    localStringBuilder.append(this.a);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARMIGObjectClassifyResult.JDSearchItem
  * JD-Core Version:    0.7.0.1
  */

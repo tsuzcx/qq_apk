@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.doodle;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseAIOContext;
 import com.tencent.mobileqq.statistics.ReportController;
 
 class DoodlePanel$7
@@ -12,21 +12,21 @@ class DoodlePanel$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      ReportController.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      if (paramInt != 1) {
+        return;
+      }
+      ReportController.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+      DoodlePanel.a(this.a).a(1);
       return;
     }
-    ReportController.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
-    DoodlePanel.a(this.a).b(1);
+    ReportController.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodlePanel.7
  * JD-Core Version:    0.7.0.1
  */

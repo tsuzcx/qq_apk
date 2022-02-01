@@ -11,16 +11,23 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class submsgtype0xa1$MsgBody
   extends MessageMicro<MsgBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 29, 32, 40 }, new String[] { "uint32_sub_cmd", "uint64_qid", "fixed32_update_time", "uint32_team_created_destroied", "rpt_uint64_office_face_changed_uins" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, MsgBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBFixed32Field fixed32_update_time = PBField.initFixed32(0);
   public final PBRepeatField<Long> rpt_uint64_office_face_changed_uins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field uint32_sub_cmd = PBField.initUInt32(0);
   public final PBUInt32Field uint32_team_created_destroied = PBField.initUInt32(0);
   public final PBUInt64Field uint64_qid = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 29, 32, 40 }, new String[] { "uint32_sub_cmd", "uint64_qid", "fixed32_update_time", "uint32_team_created_destroied", "rpt_uint64_office_face_changed_uins" }, new Object[] { localInteger, localLong, localInteger, localInteger, localLong }, MsgBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0xa1.submsgtype0xa1.MsgBody
  * JD-Core Version:    0.7.0.1
  */

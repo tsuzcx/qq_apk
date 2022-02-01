@@ -8,19 +8,20 @@ public class StandardHeapDumper
   implements IHeapDumper
 {
   private static final String TAG = "QAPM_memory_StandardHeapDumper";
-  private static volatile StandardHeapDumper instance = null;
+  private static volatile StandardHeapDumper instance;
   
   public static StandardHeapDumper getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new StandardHeapDumper();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new StandardHeapDumper();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   public boolean dump(String paramString)
@@ -44,7 +45,7 @@ public class StandardHeapDumper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.memorydump.StandardHeapDumper
  * JD-Core Version:    0.7.0.1
  */

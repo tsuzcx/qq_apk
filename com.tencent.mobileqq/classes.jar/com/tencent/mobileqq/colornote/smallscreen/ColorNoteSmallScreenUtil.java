@@ -8,22 +8,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.os.Build;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
 import com.tencent.mobileqq.colornote.ColorNoteRecentView;
+import com.tencent.mobileqq.colornote.api.IColorNoteDataService;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.data.ColorNoteProxy;
 import com.tencent.mobileqq.colornote.data.ColorNoteUtils;
-import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class ColorNoteSmallScreenUtil
 {
@@ -42,213 +45,390 @@ public class ColorNoteSmallScreenUtil
     return 1;
   }
   
-  public static Point a(QQAppInterface paramQQAppInterface)
+  public static int a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return -1;
+    }
+    paramString = paramString.split("@");
+    if ((paramString != null) && (paramString.length > 0))
+    {
+      paramString = paramString[0];
+      if (!TextUtils.isEmpty(paramString)) {
+        return Integer.parseInt(paramString);
+      }
+    }
+    return -1;
+  }
+  
+  public static SharedPreferences a(Context paramContext, String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("color_note_");
+    localStringBuilder.append(paramString);
+    return paramContext.getSharedPreferences(localStringBuilder.toString(), 4);
+  }
+  
+  public static Point a(AppRuntime paramAppRuntime)
   {
     if ((jdField_a_of_type_AndroidGraphicsPoint.x == -1) || (jdField_a_of_type_AndroidGraphicsPoint.y == -1))
     {
-      paramQQAppInterface = SharedPreUtils.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin());
-      int j = paramQQAppInterface.getInt("colornote_windows_x", -1);
-      int k = paramQQAppInterface.getInt("colornote_windows_y", -1);
-      int i;
-      if (j != -1)
-      {
-        i = k;
-        if (k != -1) {}
+      paramAppRuntime = a(paramAppRuntime.getApp(), paramAppRuntime.getCurrentUin());
+      int j = paramAppRuntime.getInt("colornote_windows_x", -1);
+      int i = paramAppRuntime.getInt("colornote_windows_y", -1);
+      if ((j != -1) && (i != -1)) {
+        break label92;
       }
-      else
-      {
-        j = ViewUtils.a() - ViewUtils.a(25.0F);
-        i = ViewUtils.b() / 2 + ViewUtils.a(25.0F);
-      }
-      jdField_a_of_type_AndroidGraphicsPoint.x = j;
-      jdField_a_of_type_AndroidGraphicsPoint.y = i;
+      j = ViewUtils.a() - ViewUtils.a(25.0F);
+      i = ViewUtils.b() / 2;
+      i = ViewUtils.a(25.0F) + i;
+      label92:
+      paramAppRuntime = jdField_a_of_type_AndroidGraphicsPoint;
+      paramAppRuntime.x = j;
+      paramAppRuntime.y = i;
     }
     return jdField_a_of_type_AndroidGraphicsPoint;
   }
   
+  public static UpComingMsgModel a(ColorNote paramColorNote)
+  {
+    if ((paramColorNote != null) && (paramColorNote.getServiceType() == 17235968))
+    {
+      paramColorNote = new String(paramColorNote.getReserve());
+      UpComingMsgModel localUpComingMsgModel = new UpComingMsgModel();
+      localUpComingMsgModel.parseFromJson(paramColorNote);
+      return localUpComingMsgModel;
+    }
+    return new UpComingMsgModel();
+  }
+  
   protected static void a(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_AndroidGraphicsPoint.x = paramInt1;
-    jdField_a_of_type_AndroidGraphicsPoint.y = paramInt2;
+    Point localPoint = jdField_a_of_type_AndroidGraphicsPoint;
+    localPoint.x = paramInt1;
+    localPoint.y = paramInt2;
   }
   
   public static void a(Context paramContext)
   {
-    Intent localIntent;
     if (!jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_Boolean = true;
-      localIntent = new Intent(paramContext, ColorNoteSmallScreenService.class);
-    }
-    try
-    {
-      paramContext.startService(localIntent);
-      a(paramContext, 3, true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      Intent localIntent = new Intent(paramContext, ColorNoteSmallScreenService.class);
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ColorNoteSmallScreenUtil", 2, "actionOn e = " + localException);
+        paramContext.startService(localIntent);
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("actionOn e = ");
+          localStringBuilder.append(localException);
+          QLog.d("ColorNoteSmallScreenUtil", 2, localStringBuilder.toString());
         }
         jdField_a_of_type_Boolean = false;
       }
     }
-  }
-  
-  private static void a(Context paramContext, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ColorNoteSmallScreenUtil", 2, "showPermissionDialog in");
-    }
-    paramContext = new Intent();
-    paramContext.putExtra("public_fragment_window_feature", 1);
-    paramContext.putExtra("key_permission_from", paramInt);
-    if ((paramInt == 3) && (ColorNoteRecentView.c())) {}
-    while (ColorNoteSmallScreenPermissionDialogFragment.jdField_a_of_type_Boolean) {
-      return;
-    }
-    PublicFragmentActivity.Launcher.a(paramContext, PublicTransFragmentActivity.class, ColorNoteSmallScreenPermissionDialogFragment.class);
+    a(paramContext, 3, true);
   }
   
   public static void a(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenUtil", 1, "sendUpdateSmallScreenStateBroadcast sHasServiceExit = " + jdField_a_of_type_Boolean + ", from = " + paramInt + ", shouldShow = " + paramBoolean);
-    }
-    Intent localIntent1 = new Intent("action_update_cn_smallscreen_state");
-    localIntent1.setPackage(paramContext.getPackageName());
-    localIntent1.putExtra("param_from", paramInt);
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendUpdateSmallScreenStateBroadcast sHasServiceExit = ");
+      ((StringBuilder)localObject).append(jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(", from = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", shouldShow = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("ColorNoteSmallScreenUtil", 1, ((StringBuilder)localObject).toString());
     }
-    for (;;)
+    Object localObject = new Intent("action_update_cn_smallscreen_state");
+    ((Intent)localObject).setPackage(paramContext.getPackageName());
+    ((Intent)localObject).putExtra("param_from", paramInt);
+    if (paramInt != 1)
     {
-      paramContext.sendBroadcast(localIntent1);
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteSmallScreenUtil", 2, "sendUpdateSmallScreenStateBroadcast:" + paramBoolean);
-      }
-      return;
-      localIntent1.putExtra("param_not_in_colornote_list", paramBoolean);
-      continue;
-      localIntent1.putExtra("param_shoule_show_smallscreen", paramBoolean);
-      continue;
-      Intent localIntent2;
-      if (paramBoolean) {
-        localIntent2 = new Intent(paramContext, ColorNoteSmallScreenService.class);
-      }
-      try
+      if (paramInt != 2)
       {
-        paramContext.startService(localIntent2);
-        localIntent1.putExtra("param_is_app_foreground", paramBoolean);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ColorNoteSmallScreenUtil", 2, "actionOn e = " + localException);
+        if (paramInt != 3) {
+          if (paramInt != 4)
+          {
+            if (paramInt == 6) {
+              ((Intent)localObject).putExtra("param_custom_night_mode", paramBoolean);
+            }
+          }
+          else
+          {
+            if (paramBoolean)
+            {
+              Intent localIntent = new Intent(paramContext, ColorNoteSmallScreenService.class);
+              try
+              {
+                paramContext.startService(localIntent);
+              }
+              catch (Exception localException)
+              {
+                if (QLog.isColorLevel())
+                {
+                  StringBuilder localStringBuilder = new StringBuilder();
+                  localStringBuilder.append("actionOn e = ");
+                  localStringBuilder.append(localException);
+                  QLog.d("ColorNoteSmallScreenUtil", 2, localStringBuilder.toString());
+                }
+              }
+            }
+            ((Intent)localObject).putExtra("param_is_app_foreground", paramBoolean);
           }
         }
       }
-      localIntent1.putExtra("param_custom_night_mode", paramBoolean);
+      else {
+        ((Intent)localObject).putExtra("param_shoule_show_smallscreen", paramBoolean);
+      }
+    }
+    else {
+      ((Intent)localObject).putExtra("param_not_in_colornote_list", paramBoolean);
+    }
+    paramContext.sendBroadcast((Intent)localObject);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("sendUpdateSmallScreenStateBroadcast:");
+      paramContext.append(paramBoolean);
+      QLog.d("ColorNoteSmallScreenUtil", 2, paramContext.toString());
     }
   }
   
   public static void a(Context paramContext, boolean paramBoolean)
   {
-    if (BaseApplicationImpl.getApplication().getRuntime().isLogin())
+    Intent localIntent = new Intent(paramContext, ColorNoteSmallScreenService.class);
+    localIntent.putExtra("KEY_CMD_SHOW_LIST", 1);
+    localIntent.putExtra("KEY_SHOW_LIST_LAND", paramBoolean);
+    paramContext.startService(localIntent);
+  }
+  
+  public static void a(TextView paramTextView, String paramString1, int paramInt1, TextUtils.TruncateAt paramTruncateAt, String paramString2, int paramInt2)
+  {
+    if (paramTextView != null)
     {
-      Intent localIntent = new Intent(paramContext, ColorNoteSmallScreenService.class);
-      localIntent.putExtra("KEY_CMD_SHOW_LIST", 1);
-      localIntent.putExtra("KEY_SHOW_LIST_LAND", paramBoolean);
-      paramContext.startService(localIntent);
+      if (TextUtils.isEmpty(paramString1)) {
+        return;
+      }
+      float f1 = paramTextView.getPaint().measureText(paramString1);
+      float f2 = paramInt1 - paramInt2;
+      if (f2 >= f1)
+      {
+        paramTextView.setText(paramString1);
+        return;
+      }
+      float f3;
+      if (paramTruncateAt == TextUtils.TruncateAt.END)
+      {
+        CharSequence localCharSequence = TextUtils.ellipsize(paramString1, paramTextView.getPaint(), f2, paramTruncateAt);
+        f1 = paramTextView.getPaint().measureText((String)localCharSequence);
+        f3 = paramTextView.getPaint().measureText("的");
+        paramString2 = localCharSequence;
+        if (f2 - f1 > f3 / 2.0F)
+        {
+          paramString2 = localCharSequence;
+          if (paramInt2 != 0)
+          {
+            paramInt2 = (int)(f2 + f3);
+            paramTextView.setMaxWidth((int)(paramInt1 + f3));
+            paramString2 = TextUtils.ellipsize(paramString1, paramTextView.getPaint(), paramInt2, paramTruncateAt);
+          }
+        }
+        paramTextView.setText(paramString2);
+        return;
+      }
+      if ((paramTruncateAt == TextUtils.TruncateAt.MIDDLE) && (!TextUtils.isEmpty(paramString2)))
+      {
+        paramInt1 = paramString1.lastIndexOf(paramString2);
+        if (paramInt1 == -1)
+        {
+          paramTextView.setText(paramString1);
+          return;
+        }
+        paramTruncateAt = paramString1.substring(0, paramInt1);
+        paramString2 = new StringBuilder();
+        paramString2.append("…");
+        paramString2.append(paramString1.substring(paramInt1));
+        paramString2 = paramString2.toString();
+        f1 = paramTextView.getPaint().measureText(paramTruncateAt);
+        f3 = paramTextView.getPaint().measureText(paramString2);
+        if (f3 > f2)
+        {
+          paramTextView.setText(paramString1);
+          return;
+        }
+        while (f2 - f1 < f3)
+        {
+          paramTruncateAt = paramTruncateAt.substring(0, paramTruncateAt.length() - 1);
+          f1 = paramTextView.getPaint().measureText(paramTruncateAt);
+        }
+        paramString1 = new StringBuilder();
+        paramString1.append(paramTruncateAt);
+        paramString1.append(paramString2);
+        paramTextView.setText(paramString1.toString());
+        return;
+      }
+      paramTextView.setEllipsize(paramTruncateAt);
     }
   }
   
-  public static void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  private static void a(AppRuntime paramAppRuntime, int paramInt)
   {
-    try
-    {
-      a(paramContext, paramBoolean1, paramBoolean2, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("ColorNoteSmallScreenUtil", 2, "showPermissionDialog in");
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    localIntent.putExtra("key_permission_from", paramInt);
+    if ((paramInt == 3) && (ColorNoteRecentView.b(paramAppRuntime))) {
       return;
     }
-    finally
-    {
-      paramContext = finally;
-      throw paramContext;
+    if (!ColorNoteSmallScreenPermissionDialogFragment.jdField_a_of_type_Boolean) {
+      QPublicFragmentActivity.Launcher.a(localIntent, QPublicTransFragmentActivity.class, ColorNoteSmallScreenPermissionDialogFragment.class);
     }
   }
   
-  public static void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, ColorNote paramColorNote)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ColorNoteSmallScreenUtil", 1, "showColorNoteSmallScreen , idAdd = " + paramBoolean1 + ", sHasServiceExit = " + jdField_a_of_type_Boolean + ", force = " + paramBoolean2);
-        }
-        int i = a(paramColorNote);
-        if ((!ColorNoteSmallScreenPermissionUtil.a(paramContext)) && (paramBoolean1)) {
-          a(paramContext, i);
-        }
-        if ((!jdField_a_of_type_Boolean) || (paramBoolean2))
-        {
-          jdField_a_of_type_Boolean = true;
-          paramColorNote = new Intent(paramContext, ColorNoteSmallScreenService.class);
-          try
-          {
-            paramContext.startService(paramColorNote);
-            return;
-          }
-          catch (Exception paramContext)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ColorNoteSmallScreenUtil", 2, "actionOn e = " + paramContext);
-            }
-            jdField_a_of_type_Boolean = false;
-            continue;
-          }
-        }
-        a(paramContext, 3, true);
-      }
-      finally {}
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
+  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
     boolean bool = paramBoolean;
     if (!paramBoolean)
     {
       bool = paramBoolean;
-      if (b(BaseApplicationImpl.getContext())) {
+      if (b(MobileQQ.getContext())) {
         bool = true;
       }
     }
     if ((bool) && (b))
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if (((localAppRuntime instanceof QQAppInterface)) && (localAppRuntime.isLogin()) && (((QQAppInterface)localAppRuntime).getProxyManager().a().a() > 0)) {
-        a(((QQAppInterface)localAppRuntime).getApp(), false, true);
+      IColorNoteDataService localIColorNoteDataService = (IColorNoteDataService)paramAppRuntime.getRuntimeService(IColorNoteDataService.class, "all");
+      if ((paramAppRuntime.isLogin()) && (localIColorNoteDataService.getCurrentColorNoteCount() > 0)) {
+        a(paramAppRuntime, false, true);
       }
     }
   }
   
+  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    try
+    {
+      a(paramAppRuntime, paramBoolean1, paramBoolean2, null);
+      return;
+    }
+    finally
+    {
+      paramAppRuntime = finally;
+      throw paramAppRuntime;
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean1, boolean paramBoolean2, ColorNote paramColorNote)
+  {
+    try
+    {
+      BaseApplication localBaseApplication = paramAppRuntime.getApp();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showColorNoteSmallScreen , idAdd = ");
+        localStringBuilder.append(paramBoolean1);
+        localStringBuilder.append(", sHasServiceExit = ");
+        localStringBuilder.append(jdField_a_of_type_Boolean);
+        localStringBuilder.append(", force = ");
+        localStringBuilder.append(paramBoolean2);
+        QLog.d("ColorNoteSmallScreenUtil", 1, localStringBuilder.toString());
+      }
+      int i = a(paramColorNote);
+      if ((!ColorNoteSmallScreenPermissionUtil.a(localBaseApplication)) && (paramBoolean1)) {
+        a(paramAppRuntime, i);
+      }
+      if ((jdField_a_of_type_Boolean) && (!paramBoolean2))
+      {
+        a(localBaseApplication, 3, true);
+      }
+      else
+      {
+        jdField_a_of_type_Boolean = true;
+        paramAppRuntime = new Intent(localBaseApplication, ColorNoteSmallScreenService.class);
+        try
+        {
+          localBaseApplication.startService(paramAppRuntime);
+        }
+        catch (Exception paramAppRuntime)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramColorNote = new StringBuilder();
+            paramColorNote.append("actionOn e = ");
+            paramColorNote.append(paramAppRuntime);
+            QLog.d("ColorNoteSmallScreenUtil", 2, paramColorNote.toString());
+          }
+          jdField_a_of_type_Boolean = false;
+        }
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    try
+    {
+      b = paramBoolean;
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("setAfterSyncMsg ");
+        ((StringBuilder)localObject1).append(b);
+        QLog.d("ColorNoteSmallScreenUtil", 2, ((StringBuilder)localObject1).toString());
+      }
+      Object localObject1 = new Intent("key_after_sync_msg");
+      ((Intent)localObject1).putExtra("extra_after_sync_msg", b);
+      MobileQQ.getContext().sendBroadcast((Intent)localObject1);
+      return;
+    }
+    finally {}
+  }
+  
   public static boolean a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ColorNoteSmallScreenUtil", 2, "isAfterSyncMsg() " + b);
+    boolean bool1 = Build.MANUFACTURER.equalsIgnoreCase("meizu");
+    boolean bool3 = false;
+    boolean bool2 = bool3;
+    if (bool1) {}
+    try
+    {
+      bool1 = ((Boolean)Class.forName("android.os.Build").getMethod("hasSmartBar", new Class[0]).invoke(null, new Object[0])).booleanValue();
     }
-    return b;
+    catch (Exception localException)
+    {
+      label52:
+      break label52;
+    }
+    bool1 = false;
+    if (Build.DEVICE.equals("mx2")) {
+      return true;
+    }
+    bool2 = bool3;
+    if (!Build.DEVICE.equals("mx"))
+    {
+      if (Build.DEVICE.equals("m9")) {
+        return false;
+      }
+      bool2 = bool1;
+    }
+    return bool2;
   }
   
   public static boolean a(Context paramContext)
   {
-    boolean bool2 = false;
     String str = paramContext.getPackageName();
     for (;;)
     {
@@ -256,161 +436,128 @@ public class ColorNoteSmallScreenUtil
       {
         localActivityManager = (ActivityManager)paramContext.getSystemService("activity");
         List localList = localActivityManager.getRunningTasks(1);
-        localRunningAppProcessInfo = null;
-        paramContext = localRunningAppProcessInfo;
+        localObject = null;
+        paramContext = (Context)localObject;
         if (localList != null)
         {
-          paramContext = localRunningAppProcessInfo;
+          paramContext = (Context)localObject;
           if (localList.size() > 0) {
             paramContext = ((ActivityManager.RunningTaskInfo)localList.get(0)).topActivity;
           }
         }
         if ((paramContext == null) || (!paramContext.getPackageName().startsWith(str))) {
-          break label260;
+          break label268;
         }
         if (!QLog.isDevelopLevel()) {
-          break label265;
+          break label263;
         }
-        QLog.d("ColorNoteSmallScreenUtil", 2, "isAppOnForeground componentName = " + paramContext);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isAppOnForeground componentName = ");
+        ((StringBuilder)localObject).append(paramContext);
+        QLog.d("ColorNoteSmallScreenUtil", 2, ((StringBuilder)localObject).toString());
       }
       catch (Throwable paramContext)
       {
         ActivityManager localActivityManager;
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
-        bool1 = bool2;
         if (!QLog.isDevelopLevel()) {
-          continue;
+          break label261;
         }
-        QLog.d("ColorNoteSmallScreenUtil", 2, "isAppOnForeground e = " + paramContext);
-        return false;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isAppOnForeground e = ");
+        ((StringBuilder)localObject).append(paramContext);
+        QLog.d("ColorNoteSmallScreenUtil", 2, ((StringBuilder)localObject).toString());
       }
-      if (bool1)
+      if (bool)
       {
         paramContext = localActivityManager.getRunningAppProcesses();
         if (paramContext != null)
         {
-          paramContext = paramContext.iterator();
-          if (paramContext.hasNext())
+          localObject = paramContext.iterator();
+          if (((Iterator)localObject).hasNext())
           {
-            localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-            if ((localRunningAppProcessInfo.importance != 100) || (!localRunningAppProcessInfo.processName.startsWith(str))) {
+            paramContext = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+            if ((paramContext.importance != 100) || (!paramContext.processName.startsWith(str))) {
               continue;
             }
-            if (QLog.isDevelopLevel()) {
-              QLog.d("ColorNoteSmallScreenUtil", 2, "isAppOnForeground appProcess.processName = " + localRunningAppProcessInfo.processName);
+            if (QLog.isDevelopLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("isAppOnForeground appProcess.processName = ");
+              ((StringBuilder)localObject).append(paramContext.processName);
+              QLog.d("ColorNoteSmallScreenUtil", 2, ((StringBuilder)localObject).toString());
             }
-            bool1 = true;
-            return bool1;
+            return true;
           }
         }
-        bool1 = false;
-        continue;
       }
+      else
+      {
+        return bool;
+      }
+      label261:
+      return false;
+      label263:
+      boolean bool = true;
       continue;
-      label260:
-      boolean bool1 = false;
-      continue;
-      label265:
-      bool1 = true;
+      label268:
+      bool = false;
     }
   }
   
-  /* Error */
   public static void b(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 103	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +31 -> 37
-    //   9: ldc 105
-    //   11: iconst_1
-    //   12: new 107	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 332
-    //   22: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: getstatic 12	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenUtil:jdField_a_of_type_Boolean	Z
-    //   28: invokevirtual 158	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   31: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   34: invokestatic 123	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   37: new 83	android/content/Intent
-    //   40: dup
-    //   41: aload_0
-    //   42: ldc 85
-    //   44: invokespecial 88	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   47: astore_1
-    //   48: iconst_0
-    //   49: putstatic 12	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenUtil:jdField_a_of_type_Boolean	Z
-    //   52: aload_0
-    //   53: aload_1
-    //   54: invokevirtual 336	android/content/Context:stopService	(Landroid/content/Intent;)Z
-    //   57: pop
-    //   58: ldc 2
-    //   60: monitorexit
-    //   61: return
-    //   62: astore_0
-    //   63: invokestatic 103	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   66: ifeq -8 -> 58
-    //   69: ldc 105
-    //   71: iconst_2
-    //   72: new 107	java/lang/StringBuilder
-    //   75: dup
-    //   76: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   79: ldc_w 338
-    //   82: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: aload_0
-    //   86: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: invokestatic 341	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   95: goto -37 -> 58
-    //   98: astore_0
-    //   99: ldc 2
-    //   101: monitorexit
-    //   102: aload_0
-    //   103: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	104	0	paramContext	Context
-    //   47	7	1	localIntent	Intent
-    // Exception table:
-    //   from	to	target	type
-    //   48	58	62	java/lang/Exception
-    //   3	37	98	finally
-    //   37	48	98	finally
-    //   48	58	98	finally
-    //   63	95	98	finally
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("hideColorNoteSmallScreen sHasServiceExit = ");
+        ((StringBuilder)localObject).append(jdField_a_of_type_Boolean);
+        QLog.d("ColorNoteSmallScreenUtil", 1, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = new Intent(paramContext, ColorNoteSmallScreenService.class);
+      try
+      {
+        jdField_a_of_type_Boolean = false;
+        paramContext.stopService((Intent)localObject);
+      }
+      catch (Exception paramContext)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("actionOff e = ");
+          ((StringBuilder)localObject).append(paramContext);
+          QLog.e("ColorNoteSmallScreenUtil", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
   public static void b(Context paramContext, boolean paramBoolean)
   {
-    if (BaseApplicationImpl.getApplication().getRuntime().isLogin())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteSmallScreenUtil", 2, "[showListFromAddTodo], is called");
-      }
-      Intent localIntent = new Intent(paramContext, ColorNoteSmallScreenService.class);
-      localIntent.putExtra("KEY_CMD_SHOW_LIST", 1);
-      localIntent.putExtra("key_upcoming_notify", 2);
-      localIntent.putExtra("KEY_SHOW_LIST_LAND", paramBoolean);
-      paramContext.startService(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenUtil", 2, "[showListFromAddTodo], is called");
     }
+    Intent localIntent = new Intent(paramContext, ColorNoteSmallScreenService.class);
+    localIntent.putExtra("KEY_CMD_SHOW_LIST", 1);
+    localIntent.putExtra("key_upcoming_notify", 2);
+    localIntent.putExtra("KEY_SHOW_LIST_LAND", paramBoolean);
+    paramContext.startService(localIntent);
   }
   
-  public static void b(boolean paramBoolean)
+  public static boolean b()
   {
-    try
+    if (QLog.isDevelopLevel())
     {
-      b = paramBoolean;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("ColorNoteSmallScreenUtil", 2, "setAfterSyncMsg " + b);
-      }
-      Intent localIntent = new Intent("key_after_sync_msg");
-      localIntent.putExtra("extra_after_sync_msg", b);
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isAfterSyncMsg() ");
+      localStringBuilder.append(b);
+      QLog.d("ColorNoteSmallScreenUtil", 2, localStringBuilder.toString());
     }
-    finally {}
+    return b;
   }
   
   private static boolean b(Context paramContext)
@@ -431,7 +578,7 @@ public class ColorNoteSmallScreenUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil
  * JD-Core Version:    0.7.0.1
  */

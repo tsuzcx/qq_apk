@@ -74,7 +74,7 @@ public class StoryDownloadView
   
   private float a(float paramFloat1, float paramFloat2)
   {
-    return (super.getContext().getResources().getDisplayMetrics().density * paramFloat1 + 0.5F) * paramFloat2;
+    return (paramFloat1 * super.getContext().getResources().getDisplayMetrics().density + 0.5F) * paramFloat2;
   }
   
   private void a(float paramFloat)
@@ -108,51 +108,65 @@ public class StoryDownloadView
   public void a(Canvas paramCanvas)
   {
     Paint localPaint = new Paint();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i1 = jdField_a_of_type_Int;; i1 = jdField_c_of_type_Int)
-    {
-      localPaint.setColor(i1);
-      localPaint.setAntiAlias(true);
-      Object localObject = new Path();
-      ((Path)localObject).moveTo(this.jdField_b_of_type_Float / 2.0F - this.h / 2.0F, this.p + this.i);
-      ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F - this.h / 2.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
-      ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F - this.h / 2.0F - this.jdField_b_of_type_Float * 8.0F / 46.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
-      ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F, this.p + this.i + this.jdField_c_of_type_Float * 25.0F / 46.0F);
-      ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F + this.h / 2.0F + this.jdField_b_of_type_Float * 8.0F / 46.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
-      ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F + this.h / 2.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
-      ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F + this.h / 2.0F, this.p + this.i);
-      localPaint.setStyle(Paint.Style.FILL);
-      paramCanvas.drawPath((Path)localObject, localPaint);
-      paramCanvas.drawArc(new RectF(this.jdField_b_of_type_Float / 2.0F - this.h / 2.0F, this.p, this.jdField_b_of_type_Float / 2.0F + this.h / 2.0F, this.p + this.i * 2.0F), 180.0F, 360.0F, true, localPaint);
-      float f1 = this.jdField_b_of_type_Float - this.e - this.i;
-      float f2 = this.jdField_c_of_type_Float - this.g - this.h;
-      float f3 = this.jdField_c_of_type_Float - this.g;
-      localObject = new Path();
-      ((Path)localObject).moveTo(this.jdField_d_of_type_Float + this.i, this.jdField_c_of_type_Float - this.g - this.h / 2.0F);
-      ((Path)localObject).quadTo(this.jdField_b_of_type_Float / 2.0F, this.q, f1, this.jdField_c_of_type_Float - this.g - this.h / 2.0F);
-      localPaint.setStyle(Paint.Style.STROKE);
-      localPaint.setStrokeWidth(this.h);
-      paramCanvas.drawPath((Path)localObject, localPaint);
-      localObject = new RectF(this.jdField_d_of_type_Float, f2, this.jdField_d_of_type_Float + this.i * 2.0F, f3);
-      RectF localRectF = new RectF(f1 - this.i, f2, f1 + this.i, f3);
-      localPaint.setStyle(Paint.Style.FILL);
-      paramCanvas.drawArc((RectF)localObject, 90.0F, 360.0F, true, localPaint);
-      paramCanvas.drawArc(localRectF, -90.0F, 360.0F, true, localPaint);
-      return;
+    int i1;
+    if (this.jdField_a_of_type_Boolean) {
+      i1 = jdField_a_of_type_Int;
+    } else {
+      i1 = jdField_c_of_type_Int;
     }
+    localPaint.setColor(i1);
+    localPaint.setAntiAlias(true);
+    Object localObject = new Path();
+    ((Path)localObject).moveTo(this.jdField_b_of_type_Float / 2.0F - this.h / 2.0F, this.p + this.i);
+    ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F - this.h / 2.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
+    float f1 = this.jdField_b_of_type_Float;
+    ((Path)localObject).lineTo(f1 / 2.0F - this.h / 2.0F - f1 * 8.0F / 46.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
+    ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F, this.p + this.i + this.jdField_c_of_type_Float * 25.0F / 46.0F);
+    f1 = this.jdField_b_of_type_Float;
+    ((Path)localObject).lineTo(f1 / 2.0F + this.h / 2.0F + f1 * 8.0F / 46.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
+    ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F + this.h / 2.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
+    ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F + this.h / 2.0F, this.p + this.i);
+    localPaint.setStyle(Paint.Style.FILL);
+    paramCanvas.drawPath((Path)localObject, localPaint);
+    f1 = this.jdField_b_of_type_Float;
+    float f2 = f1 / 2.0F;
+    float f3 = this.h;
+    float f4 = f3 / 2.0F;
+    float f5 = this.p;
+    paramCanvas.drawArc(new RectF(f2 - f4, f5, f1 / 2.0F + f3 / 2.0F, this.i * 2.0F + f5), 180.0F, 360.0F, true, localPaint);
+    f1 = this.jdField_b_of_type_Float - this.e - this.i;
+    f3 = this.jdField_c_of_type_Float;
+    f4 = this.g;
+    f2 = f3 - f4 - this.h;
+    f3 -= f4;
+    localObject = new Path();
+    ((Path)localObject).moveTo(this.jdField_d_of_type_Float + this.i, this.jdField_c_of_type_Float - this.g - this.h / 2.0F);
+    ((Path)localObject).quadTo(this.jdField_b_of_type_Float / 2.0F, this.q, f1, this.jdField_c_of_type_Float - this.g - this.h / 2.0F);
+    localPaint.setStyle(Paint.Style.STROKE);
+    localPaint.setStrokeWidth(this.h);
+    paramCanvas.drawPath((Path)localObject, localPaint);
+    f4 = this.jdField_d_of_type_Float;
+    localObject = new RectF(f4, f2, this.i * 2.0F + f4, f3);
+    f4 = this.i;
+    RectF localRectF = new RectF(f1 - f4, f2, f1 + f4, f3);
+    localPaint.setStyle(Paint.Style.FILL);
+    paramCanvas.drawArc((RectF)localObject, 90.0F, 360.0F, true, localPaint);
+    paramCanvas.drawArc(localRectF, -90.0F, 360.0F, true, localPaint);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+    AnimatorSet localAnimatorSet = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null)
     {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
+      localAnimatorSet.end();
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
       this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
     }
-    if (this.jdField_b_of_type_AndroidAnimationAnimatorSet != null)
+    localAnimatorSet = this.jdField_b_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null)
     {
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet.end();
+      localAnimatorSet.end();
       this.jdField_b_of_type_AndroidAnimationAnimatorSet.cancel();
       this.jdField_b_of_type_AndroidAnimationAnimatorSet = null;
     }
@@ -162,91 +176,64 @@ public class StoryDownloadView
   {
     Paint localPaint = new Paint();
     Path localPath = new Path();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i1 = jdField_a_of_type_Int;; i1 = jdField_c_of_type_Int)
-    {
-      localPaint.setColor(i1);
-      localPaint.setAntiAlias(true);
-      localPaint.setStrokeWidth(this.h);
-      localPaint.setStyle(Paint.Style.STROKE);
-      paramCanvas.save();
-      paramCanvas.rotate(this.r, this.j, this.k);
-      paramCanvas.scale(this.s, this.s, this.j, this.k);
-      localPath.moveTo(this.l, this.m);
-      localPath.lineTo(this.j, this.k);
-      localPath.moveTo(this.j, this.k);
-      localPath.lineTo(this.n, this.o);
-      paramCanvas.drawPath(localPath, localPaint);
-      localPaint.setStyle(Paint.Style.FILL);
-      paramCanvas.drawCircle(this.l, this.m, this.h / 2.0F, localPaint);
-      paramCanvas.drawCircle(this.n, this.o, this.h / 2.0F, localPaint);
-      paramCanvas.drawCircle(this.j, this.k, this.h / 2.0F, localPaint);
-      paramCanvas.restore();
-      return;
+    int i1;
+    if (this.jdField_a_of_type_Boolean) {
+      i1 = jdField_a_of_type_Int;
+    } else {
+      i1 = jdField_c_of_type_Int;
     }
+    localPaint.setColor(i1);
+    localPaint.setAntiAlias(true);
+    localPaint.setStrokeWidth(this.h);
+    localPaint.setStyle(Paint.Style.STROKE);
+    paramCanvas.save();
+    paramCanvas.rotate(this.r, this.j, this.k);
+    float f1 = this.s;
+    paramCanvas.scale(f1, f1, this.j, this.k);
+    localPath.moveTo(this.l, this.m);
+    localPath.lineTo(this.j, this.k);
+    localPath.moveTo(this.j, this.k);
+    localPath.lineTo(this.n, this.o);
+    paramCanvas.drawPath(localPath, localPaint);
+    localPaint.setStyle(Paint.Style.FILL);
+    paramCanvas.drawCircle(this.l, this.m, this.h / 2.0F, localPaint);
+    paramCanvas.drawCircle(this.n, this.o, this.h / 2.0F, localPaint);
+    paramCanvas.drawCircle(this.j, this.k, this.h / 2.0F, localPaint);
+    paramCanvas.restore();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     paramCanvas.translate(super.getPaddingLeft(), super.getPaddingTop());
-    if (this.jdField_d_of_type_Int == 2) {
-      b(paramCanvas);
-    }
-    do
+    int i1 = this.jdField_d_of_type_Int;
+    if (i1 == 2)
     {
+      b(paramCanvas);
       return;
-      if ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 0))
-      {
-        a(paramCanvas);
-        return;
-      }
-    } while (this.jdField_d_of_type_Int != 3);
+    }
+    if ((i1 == 1) || (i1 == 0)) {
+      a(paramCanvas);
+    }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    float f3 = 1.0F;
     int i1 = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     int i2 = View.MeasureSpec.getMode(paramInt2);
     paramInt2 = View.MeasureSpec.getSize(paramInt2);
+    float f2 = 1.0F;
     float f1;
     if (i1 == 1073741824) {
       f1 = paramInt1 / a(46.0F, 1.0F);
-    }
-    for (;;)
-    {
-      float f2;
-      if (i2 == 1073741824) {
-        f2 = paramInt2 / a(46.0F, 1.0F);
-      }
-      for (;;)
-      {
-        a(Math.min(f1, f2));
-        super.setMeasuredDimension(super.getPaddingLeft() + (int)this.jdField_b_of_type_Float + super.getPaddingRight(), super.getPaddingTop() + (int)this.jdField_c_of_type_Float + super.getPaddingBottom());
-        return;
-        if (i1 == -2147483648)
-        {
-          f1 = 1.0F;
-          break;
-        }
-        if (i1 != 0) {
-          break label160;
-        }
-        f1 = 1.0F;
-        break;
-        f2 = f3;
-        if (i2 != -2147483648)
-        {
-          f2 = f3;
-          if (i2 == 0) {
-            f2 = f3;
-          }
-        }
-      }
-      label160:
+    } else {
       f1 = 1.0F;
     }
+    if (i2 == 1073741824) {
+      f2 = paramInt2 / a(46.0F, 1.0F);
+    }
+    a(Math.min(f1, f2));
+    super.setMeasuredDimension(super.getPaddingLeft() + (int)this.jdField_b_of_type_Float + super.getPaddingRight(), super.getPaddingTop() + (int)this.jdField_c_of_type_Float + super.getPaddingBottom());
   }
   
   public void setWhiteMode(boolean paramBoolean)
@@ -256,7 +243,7 @@ public class StoryDownloadView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView
  * JD-Core Version:    0.7.0.1
  */

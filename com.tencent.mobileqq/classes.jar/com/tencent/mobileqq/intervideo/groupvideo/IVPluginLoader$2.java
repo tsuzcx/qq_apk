@@ -3,7 +3,8 @@ package com.tencent.mobileqq.intervideo.groupvideo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
+import com.tencent.mobileqq.intervideo.huayang.IHuayangJsPlugin;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -19,32 +20,32 @@ class IVPluginLoader$2
     if (IVPluginLoader.a(this.a)) {
       IVPluginLoader.a(this.a, j);
     }
-    if (paramContext.equals(HuayangJsPlugin.a(IVPluginLoader.a(this.a))))
+    if (paramContext.equals(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getDownloadNotifyAction(IVPluginLoader.a(this.a))))
     {
       paramContext = (PluginLoadListener)IVPluginLoader.a(this.a).get();
       if (paramContext != null) {
         paramContext.a(j, paramIntent.getExtras());
+      } else if (QLog.isColorLevel()) {
+        QLog.e("GroupVideoManager.IVPluginLoader", 2, "loadListener null");
       }
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("GroupVideoManager.IVPluginLoader", 2, "state:" + j);
-        }
-        paramContext = IVPluginLoader.jdField_a_of_type_ArrayOfInt;
-        int k = paramContext.length;
-        int i = 0;
-        while (i < k)
+        paramContext = new StringBuilder();
+        paramContext.append("state:");
+        paramContext.append(j);
+        QLog.d("GroupVideoManager.IVPluginLoader", 2, paramContext.toString());
+      }
+      paramContext = IVPluginLoader.jdField_a_of_type_ArrayOfInt;
+      int k = paramContext.length;
+      int i = 0;
+      while (i < k)
+      {
+        if ((j == paramContext[i]) && (IVPluginLoader.b(this.a)))
         {
-          if ((j == paramContext[i]) && (IVPluginLoader.b(this.a)))
-          {
-            IVPluginLoader.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-            IVPluginLoader.a(this.a, false);
-          }
-          i += 1;
+          IVPluginLoader.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+          IVPluginLoader.a(this.a, false);
         }
-        if (QLog.isColorLevel()) {
-          QLog.e("GroupVideoManager.IVPluginLoader", 2, "loadListener null");
-        }
+        i += 1;
       }
       if ((IVPluginLoader.c(this.a)) && (j == 4))
       {
@@ -56,7 +57,7 @@ class IVPluginLoader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader.2
  * JD-Core Version:    0.7.0.1
  */

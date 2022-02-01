@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class readItemInfoRsp
   extends JceStruct
@@ -47,22 +48,25 @@ public final class readItemInfoRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.emojilist != null) {
-      paramJceOutputStream.write(this.emojilist, 0);
+    Object localObject = this.emojilist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.itemlist != null) {
-      paramJceOutputStream.write(this.itemlist, 1);
+    localObject = this.itemlist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.index, 2);
     paramJceOutputStream.write(this.left, 3);
-    if (this.urlprefix != null) {
-      paramJceOutputStream.write(this.urlprefix, 4);
+    localObject = this.urlprefix;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ColorNick.QC.readItemInfoRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -16,71 +16,6 @@ public class MQQProfileName
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public int a(MQQProfileName paramMQQProfileName)
-  {
-    int j;
-    int i;
-    label22:
-    int k;
-    if (paramMQQProfileName != null) {
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        j = 0;
-        if (paramMQQProfileName.jdField_a_of_type_JavaUtilList != null) {
-          break label100;
-        }
-        i = 0;
-        if (j != i) {
-          break label144;
-        }
-        k = 0;
-        i = 1;
-        label32:
-        if ((i == 0) || (k >= j)) {
-          break label113;
-        }
-        if (Utils.a((MQQName)this.jdField_a_of_type_JavaUtilList.get(k), (MQQName)paramMQQProfileName.jdField_a_of_type_JavaUtilList.get(k))) {
-          break label161;
-        }
-        i = 0;
-      }
-    }
-    label144:
-    label161:
-    for (;;)
-    {
-      k += 1;
-      break label32;
-      j = this.jdField_a_of_type_JavaUtilList.size();
-      break;
-      label100:
-      i = paramMQQProfileName.jdField_a_of_type_JavaUtilList.size();
-      break label22;
-      label113:
-      if (i != 0) {
-        i = 0;
-      }
-      while (Utils.a(paramMQQProfileName.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQName, this.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQName)) {
-        if (i == 0)
-        {
-          return 0;
-          i = 3;
-          continue;
-          i = 3;
-        }
-        else
-        {
-          return 1;
-        }
-      }
-      if (i == 0) {
-        return 2;
-      }
-      return 3;
-      return 3;
-    }
-  }
-  
   public Object clone()
   {
     MQQProfileName localMQQProfileName = new MQQProfileName();
@@ -97,53 +32,45 @@ public class MQQProfileName
   
   public boolean equals(Object paramObject)
   {
+    boolean bool3 = paramObject instanceof MQQProfileName;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    int i;
-    int j;
-    if ((paramObject instanceof MQQProfileName))
+    if (bool3)
     {
       paramObject = (MQQProfileName)paramObject;
       bool1 = bool2;
-      if (Utils.a(paramObject.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQName, this.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQName)) {
-        if (this.jdField_a_of_type_JavaUtilList == null)
-        {
+      if (Utils.a(paramObject.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQName, this.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQName))
+      {
+        List localList = this.jdField_a_of_type_JavaUtilList;
+        int i;
+        if (localList == null) {
           i = 0;
-          if (paramObject.jdField_a_of_type_JavaUtilList != null) {
-            break label134;
-          }
+        } else {
+          i = localList.size();
+        }
+        localList = paramObject.jdField_a_of_type_JavaUtilList;
+        int j;
+        if (localList == null) {
           j = 0;
-          label55:
-          bool1 = bool2;
-          if (i != j) {
-            break label147;
-          }
+        } else {
+          j = localList.size();
+        }
+        bool1 = bool2;
+        if (i == j)
+        {
           bool1 = true;
           j = 0;
-          label69:
-          if ((!bool1) || (j >= i)) {
-            break label147;
+          while ((bool1) && (j < i))
+          {
+            if (!Utils.a((MQQName)this.jdField_a_of_type_JavaUtilList.get(j), (MQQName)paramObject.jdField_a_of_type_JavaUtilList.get(j))) {
+              bool1 = false;
+            }
+            j += 1;
           }
-          if (Utils.a((MQQName)this.jdField_a_of_type_JavaUtilList.get(j), (MQQName)paramObject.jdField_a_of_type_JavaUtilList.get(j))) {
-            break label150;
-          }
-          bool1 = false;
         }
       }
     }
-    label134:
-    label147:
-    label150:
-    for (;;)
-    {
-      j += 1;
-      break label69;
-      i = this.jdField_a_of_type_JavaUtilList.size();
-      break;
-      j = paramObject.jdField_a_of_type_JavaUtilList.size();
-      break label55;
-      return bool1;
-    }
+    return bool1;
   }
   
   public String toString()
@@ -172,7 +99,7 @@ public class MQQProfileName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedname.MQQProfileName
  * JD-Core Version:    0.7.0.1
  */

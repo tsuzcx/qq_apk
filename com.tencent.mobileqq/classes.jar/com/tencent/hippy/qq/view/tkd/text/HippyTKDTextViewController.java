@@ -19,12 +19,12 @@ public class HippyTKDTextViewController
 {
   public static final String EMOJI_MODE = "emojiMode";
   
-  public StyleNode createNode(boolean paramBoolean)
+  protected StyleNode createNode(boolean paramBoolean)
   {
     return new TextNode(paramBoolean);
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyTKDTextView(paramContext);
   }
@@ -50,19 +50,18 @@ public class HippyTKDTextViewController
   {
     if ((paramHippyTextView instanceof HippyTKDTextView))
     {
-      if ((paramHippyMap != null) && ((paramHippyMap.get("enable") instanceof Boolean))) {
+      if ((paramHippyMap != null) && ((paramHippyMap.get("enable") instanceof Boolean)))
+      {
         ((HippyTKDTextView)paramHippyTextView).setEmojiEnable(paramHippyMap.getBoolean("enable"));
+        return;
       }
+      ((HippyTKDTextView)paramHippyTextView).setEmojiEnable(false);
     }
-    else {
-      return;
-    }
-    ((HippyTKDTextView)paramHippyTextView).setEmojiEnable(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.text.HippyTKDTextViewController
  * JD-Core Version:    0.7.0.1
  */

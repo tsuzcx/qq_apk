@@ -13,29 +13,38 @@ class PubAccountMailJsPlugin$1
   public void OnClick(View paramView, int paramInt)
   {
     this.a.a.dismiss();
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
+            }
+          }
+          else {
+            PubAccountMailJsPlugin.d(this.a);
+          }
+        }
+        else {
+          PubAccountMailJsPlugin.c(this.a);
+        }
       }
-      return;
-    case 0: 
-      PubAccountMailJsPlugin.a(this.a);
-      return;
-    case 1: 
-      PubAccountMailJsPlugin.b(this.a);
-      return;
-    case 2: 
-      PubAccountMailJsPlugin.c(this.a);
-      return;
+      else {
+        PubAccountMailJsPlugin.b(this.a);
+      }
     }
-    PubAccountMailJsPlugin.d(this.a);
+    else {
+      PubAccountMailJsPlugin.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountMailJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

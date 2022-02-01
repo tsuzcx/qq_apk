@@ -25,19 +25,18 @@ class QQStoryBaseFragment$2
       this.this$0.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
       this.this$0.jdField_a_of_type_AndroidAppDialog.setContentView(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseFragment$ProgressView);
     }
-    for (;;)
+    else
     {
-      this.this$0.jdField_a_of_type_AndroidAppDialog.setCancelable(this.jdField_a_of_type_Boolean);
-      this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseFragment$ProgressView.a(this.jdField_a_of_type_JavaLangCharSequence);
-      this.this$0.jdField_a_of_type_AndroidAppDialog.show();
-      return;
       this.this$0.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
+    this.this$0.jdField_a_of_type_AndroidAppDialog.setCancelable(this.jdField_a_of_type_Boolean);
+    this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseFragment$ProgressView.a(this.jdField_a_of_type_JavaLangCharSequence);
+    this.this$0.jdField_a_of_type_AndroidAppDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

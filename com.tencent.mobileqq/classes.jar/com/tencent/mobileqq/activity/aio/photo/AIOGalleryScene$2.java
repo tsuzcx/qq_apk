@@ -14,46 +14,52 @@ class AIOGalleryScene$2
   public void run()
   {
     Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a();
-    if ((localObject == null) || (((AIORichMediaInfo)localObject).a == null)) {}
-    ImageView localImageView;
-    do
+    if (localObject != null)
     {
-      do
-      {
-        do
-        {
-          return;
-          localImageView = (ImageView)this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131372608);
-          if ((!(((AIORichMediaInfo)localObject).a instanceof AIOShortVideoData)) || (((AIOShortVideoData)((AIORichMediaInfo)localObject).a).b != 1)) {
-            break;
-          }
-          localObject = AIOGalleryScene.a(this.this$0);
-        } while ((localImageView == null) || (localObject == null));
-        localObject = ((AIOGalleryAdapter.GalleryImageStruct)localObject).a();
-      } while (!(localObject instanceof URLDrawable));
-      if (((URLDrawable)localObject).getPlayState() == 2)
-      {
-        localImageView.setImageResource(2130846433);
+      if (((AIORichMediaInfo)localObject).a == null) {
         return;
       }
-      localImageView.setImageResource(2130846432);
-      return;
-    } while ((localImageView == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO == null));
-    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "mVideoStateChecker, long video，videoState =  " + i);
+      ImageView localImageView = (ImageView)this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131372192);
+      if (((((AIORichMediaInfo)localObject).a instanceof AIOShortVideoData)) && (((AIOShortVideoData)((AIORichMediaInfo)localObject).a).b == 1))
+      {
+        localObject = AIOGalleryScene.a(this.this$0);
+        if ((localImageView != null) && (localObject != null))
+        {
+          localObject = ((AIOGalleryAdapter.GalleryImageStruct)localObject).a();
+          if ((localObject instanceof URLDrawable))
+          {
+            if (((URLDrawable)localObject).getPlayState() == 2)
+            {
+              localImageView.setImageResource(2130846309);
+              return;
+            }
+            localImageView.setImageResource(2130846308);
+          }
+        }
+      }
+      else if ((localImageView != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO != null))
+      {
+        int i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO.a();
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mVideoStateChecker, long video，videoState =  ");
+          ((StringBuilder)localObject).append(i);
+          QLog.d("AIOGalleryScene", 2, ((StringBuilder)localObject).toString());
+        }
+        if ((i != 1) && (i != 2) && (i != 3) && (i != 7))
+        {
+          localImageView.setImageResource(2130846308);
+          return;
+        }
+        localImageView.setImageResource(2130846309);
+      }
     }
-    if ((i == 1) || (i == 2) || (i == 3) || (i == 7))
-    {
-      localImageView.setImageResource(2130846433);
-      return;
-    }
-    localImageView.setImageResource(2130846432);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.2
  * JD-Core Version:    0.7.0.1
  */

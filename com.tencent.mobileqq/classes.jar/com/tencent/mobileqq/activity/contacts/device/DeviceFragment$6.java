@@ -7,7 +7,7 @@ class DeviceFragment$6
 {
   DeviceFragment$6(DeviceFragment paramDeviceFragment) {}
   
-  public void onPullIpad()
+  protected void onPullIpad()
   {
     if (this.a.a == null) {
       return;
@@ -18,7 +18,7 @@ class DeviceFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.device.DeviceFragment.6
  * JD-Core Version:    0.7.0.1
  */

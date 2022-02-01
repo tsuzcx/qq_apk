@@ -39,14 +39,15 @@ public final class cell_diss
   {
     paramJceOutputStream.write(this.num, 0);
     paramJceOutputStream.write(this.isdissed, 1);
-    if (this.dissmans != null) {
-      paramJceOutputStream.write(this.dissmans, 2);
+    ArrayList localArrayList = this.dissmans;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_diss
  * JD-Core Version:    0.7.0.1
  */

@@ -38,87 +38,85 @@ public class AVGameShowScreenLayout
   
   public void a(AVGameVideoView[] paramArrayOfAVGameVideoView1, AVGameVideoView[] paramArrayOfAVGameVideoView2, int paramInt1, int paramInt2, List<MemberVideoDisplayInfo> paramList)
   {
-    for (;;)
+    try
     {
-      MemberVideoDisplayInfo localMemberVideoDisplayInfo;
-      AVGameVideoView localAVGameVideoView;
-      int i;
-      int j;
-      int k;
-      try
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = paramList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localMemberVideoDisplayInfo = (MemberVideoDisplayInfo)localIterator.next();
-        if ((!localMemberVideoDisplayInfo.jdField_a_of_type_Boolean) && (!localMemberVideoDisplayInfo.jdField_c_of_type_Boolean)) {
-          break label307;
-        }
-        if (localMemberVideoDisplayInfo.jdField_a_of_type_Boolean)
+        MemberVideoDisplayInfo localMemberVideoDisplayInfo = (MemberVideoDisplayInfo)localIterator.next();
+        Object localObject;
+        if ((!localMemberVideoDisplayInfo.jdField_a_of_type_Boolean) && (!localMemberVideoDisplayInfo.jdField_c_of_type_Boolean))
         {
           paramInt1 = a(paramArrayOfAVGameVideoView1, String.valueOf(localMemberVideoDisplayInfo.jdField_a_of_type_Long), localMemberVideoDisplayInfo.e);
+          if (paramInt1 >= 0) {
+            paramArrayOfAVGameVideoView1[paramInt1].a(0, 0, 0, 0);
+          }
+          paramInt1 = a(paramArrayOfAVGameVideoView2, String.valueOf(localMemberVideoDisplayInfo.jdField_a_of_type_Long), localMemberVideoDisplayInfo.e);
           if (paramInt1 >= 0)
           {
-            localAVGameVideoView = paramArrayOfAVGameVideoView1[paramInt1];
-            localAVGameVideoView.a(localMemberVideoDisplayInfo.jdField_a_of_type_Int, localMemberVideoDisplayInfo.b, localMemberVideoDisplayInfo.jdField_a_of_type_Int + localMemberVideoDisplayInfo.jdField_c_of_type_Int, localMemberVideoDisplayInfo.b + localMemberVideoDisplayInfo.d);
-            localAVGameVideoView.a(0, 0, 0, 0);
+            localObject = paramArrayOfAVGameVideoView2[paramInt1];
+            ((AVGameVideoView)localObject).a(localMemberVideoDisplayInfo.jdField_a_of_type_Int, localMemberVideoDisplayInfo.b, localMemberVideoDisplayInfo.jdField_a_of_type_Int + localMemberVideoDisplayInfo.jdField_c_of_type_Int, localMemberVideoDisplayInfo.b + localMemberVideoDisplayInfo.d);
+            ((AVGameVideoView)localObject).a(0, 0, 0, 0);
+          }
+          else
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("layout AudioView fail uin:=");
+            ((StringBuilder)localObject).append(localMemberVideoDisplayInfo.jdField_a_of_type_Long);
+            AVLog.d("AVGameShowScreenLayout", ((StringBuilder)localObject).toString());
           }
         }
         else
         {
-          if (!localMemberVideoDisplayInfo.jdField_c_of_type_Boolean) {
-            continue;
+          if (localMemberVideoDisplayInfo.jdField_a_of_type_Boolean)
+          {
+            paramInt1 = a(paramArrayOfAVGameVideoView1, String.valueOf(localMemberVideoDisplayInfo.jdField_a_of_type_Long), localMemberVideoDisplayInfo.e);
+            if (paramInt1 >= 0)
+            {
+              localObject = paramArrayOfAVGameVideoView1[paramInt1];
+              ((AVGameVideoView)localObject).a(localMemberVideoDisplayInfo.jdField_a_of_type_Int, localMemberVideoDisplayInfo.b, localMemberVideoDisplayInfo.jdField_a_of_type_Int + localMemberVideoDisplayInfo.jdField_c_of_type_Int, localMemberVideoDisplayInfo.b + localMemberVideoDisplayInfo.d);
+              ((AVGameVideoView)localObject).a(0, 0, 0, 0);
+            }
+            else
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("layout VideoView fail uin:=");
+              ((StringBuilder)localObject).append(localMemberVideoDisplayInfo.jdField_a_of_type_Long);
+              AVLog.d("AVGameShowScreenLayout", ((StringBuilder)localObject).toString());
+            }
           }
-          paramInt1 = a(paramArrayOfAVGameVideoView1, String.valueOf(localMemberVideoDisplayInfo.jdField_a_of_type_Long), 2);
-          if (paramInt1 < 0) {
-            break label276;
+          if (localMemberVideoDisplayInfo.jdField_c_of_type_Boolean)
+          {
+            paramInt1 = a(paramArrayOfAVGameVideoView1, String.valueOf(localMemberVideoDisplayInfo.jdField_a_of_type_Long), 2);
+            if (paramInt1 >= 0)
+            {
+              localObject = paramArrayOfAVGameVideoView1[paramInt1];
+              ((AVGameVideoView)localObject).g(false);
+              ((AVGameVideoView)localObject).a(localMemberVideoDisplayInfo.f, localMemberVideoDisplayInfo.g, localMemberVideoDisplayInfo.f + localMemberVideoDisplayInfo.h, localMemberVideoDisplayInfo.g + localMemberVideoDisplayInfo.i);
+              ((AVGameVideoView)localObject).a(0, 0, 0, 0);
+            }
+            else
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("layout VideoView fail uin:=");
+              ((StringBuilder)localObject).append(localMemberVideoDisplayInfo.jdField_a_of_type_Long);
+              AVLog.d("AVGameShowScreenLayout", ((StringBuilder)localObject).toString());
+            }
           }
-          localAVGameVideoView = paramArrayOfAVGameVideoView1[paramInt1];
-          localAVGameVideoView.g(false);
-          paramInt1 = localMemberVideoDisplayInfo.f;
-          paramInt2 = localMemberVideoDisplayInfo.g;
-          i = localMemberVideoDisplayInfo.f;
-          j = localMemberVideoDisplayInfo.h;
-          k = localMemberVideoDisplayInfo.g;
-          localAVGameVideoView.a(paramInt1, paramInt2, i + j, localMemberVideoDisplayInfo.i + k);
-          localAVGameVideoView.a(0, 0, 0, 0);
-          continue;
         }
-        AVLog.d("AVGameShowScreenLayout", "layout VideoView fail uin:=" + localMemberVideoDisplayInfo.jdField_a_of_type_Long);
       }
-      finally {}
-      continue;
-      label276:
-      AVLog.d("AVGameShowScreenLayout", "layout VideoView fail uin:=" + localMemberVideoDisplayInfo.jdField_a_of_type_Long);
-      continue;
-      label307:
-      paramInt1 = a(paramArrayOfAVGameVideoView1, String.valueOf(localMemberVideoDisplayInfo.jdField_a_of_type_Long), localMemberVideoDisplayInfo.e);
-      if (paramInt1 >= 0) {
-        paramArrayOfAVGameVideoView1[paramInt1].a(0, 0, 0, 0);
-      }
-      paramInt1 = a(paramArrayOfAVGameVideoView2, String.valueOf(localMemberVideoDisplayInfo.jdField_a_of_type_Long), localMemberVideoDisplayInfo.e);
-      if (paramInt1 >= 0)
-      {
-        localAVGameVideoView = paramArrayOfAVGameVideoView2[paramInt1];
-        paramInt1 = localMemberVideoDisplayInfo.jdField_a_of_type_Int;
-        paramInt2 = localMemberVideoDisplayInfo.b;
-        i = localMemberVideoDisplayInfo.jdField_a_of_type_Int;
-        j = localMemberVideoDisplayInfo.jdField_c_of_type_Int;
-        k = localMemberVideoDisplayInfo.b;
-        localAVGameVideoView.a(paramInt1, paramInt2, i + j, localMemberVideoDisplayInfo.d + k);
-        localAVGameVideoView.a(0, 0, 0, 0);
-      }
-      else
-      {
-        AVLog.d("AVGameShowScreenLayout", "layout AudioView fail uin:=" + localMemberVideoDisplayInfo.jdField_a_of_type_Long);
-      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramArrayOfAVGameVideoView1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameShowScreenLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -75,11 +75,16 @@ public class QQDeviceInfo
   {
     synchronized (mDeviceIDCache)
     {
-      if (mDeviceIDCache.indexOfKey(paramInt) < 0) {
-        mDeviceIDCache.put(paramInt, getIMEIFromSp("device_id_cache_" + paramInt));
+      if (mDeviceIDCache.indexOfKey(paramInt) < 0)
+      {
+        localObject1 = mDeviceIDCache;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("device_id_cache_");
+        localStringBuilder.append(paramInt);
+        ((SparseArray)localObject1).put(paramInt, getIMEIFromSp(localStringBuilder.toString()));
       }
-      String str = (String)mDeviceIDCache.get(paramInt);
-      return str;
+      Object localObject1 = (String)mDeviceIDCache.get(paramInt);
+      return localObject1;
     }
   }
   
@@ -92,13 +97,12 @@ public class QQDeviceInfo
   private static String getHuaweiOaid()
   {
     Object localObject;
-    if (!TextUtils.isEmpty(mHuaweiOaid)) {
+    if (!TextUtils.isEmpty(mHuaweiOaid))
+    {
       localObject = mHuaweiOaid;
     }
-    for (;;)
+    else
     {
-      reportGetHuaweiOaid();
-      return localObject;
       String str = getAndroidID();
       localObject = str;
       if (QLog.isColorLevel())
@@ -107,6 +111,8 @@ public class QQDeviceInfo
         localObject = str;
       }
     }
+    reportGetHuaweiOaid();
+    return localObject;
   }
   
   private static String getIMEI()
@@ -115,31 +121,31 @@ public class QQDeviceInfo
     if (!TextUtils.isEmpty(mImei)) {
       return mImei;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        localTelephonyManager = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
-        if (Build.VERSION.SDK_INT >= 26) {
-          continue;
-        }
+      TelephonyManager localTelephonyManager = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
+      if (Build.VERSION.SDK_INT < 26) {
         mImei = localTelephonyManager.getDeviceId();
-        saveIMEI2Sp("imei", mImei);
+      } else {
+        mImei = localTelephonyManager.getImei();
       }
-      catch (SecurityException localSecurityException)
-      {
-        TelephonyManager localTelephonyManager;
-        mImei = "";
-        continue;
-      }
-      catch (Throwable localThrowable)
-      {
-        mImei = "";
-        continue;
-      }
-      return mImei;
-      mImei = localTelephonyManager.getImei();
+      saveIMEI2Sp("imei", mImei);
     }
+    catch (SecurityException localSecurityException)
+    {
+      break label72;
+    }
+    catch (Throwable localThrowable)
+    {
+      label64:
+      break label64;
+    }
+    mImei = "";
+    break label77;
+    label72:
+    mImei = "";
+    label77:
+    return mImei;
   }
   
   public static String getIMEI(String paramString)
@@ -149,58 +155,58 @@ public class QQDeviceInfo
   
   public static String getIMEI(String paramString, int paramInt)
   {
-    int j = getLevelByBIdAndVerify(paramString);
-    int i = paramInt;
+    int i = getLevelByBIdAndVerify(paramString);
     if (paramInt == -1) {
-      i = j;
+      paramInt = i;
     }
-    String str2 = getDeviceIDCache(i);
-    if (!TextUtils.isEmpty(str2))
-    {
-      paramString = str2;
-      return paramString;
+    String str2 = getDeviceIDCache(paramInt);
+    if (!TextUtils.isEmpty(str2)) {
+      return str2;
     }
     initIMEI();
     initHuaweiOaid(true);
-    if (((Build.VERSION.SDK_INT > 28) || ((Build.VERSION.SDK_INT >= 23) && (BaseApplication.getContext().checkSelfPermission("android.permission.READ_PHONE_STATE") != 0))) && (TextUtils.isEmpty(mImei))) {
-      if (i >= 5) {
-        paramString = getQIMEI();
-      }
-    }
-    for (;;)
+    if (((Build.VERSION.SDK_INT > 28) || ((Build.VERSION.SDK_INT >= 23) && (BaseApplication.getContext().checkSelfPermission("android.permission.READ_PHONE_STATE") != 0))) && (TextUtils.isEmpty(mImei)))
     {
-      String str1 = paramString;
-      if (paramString == null) {
-        str1 = "";
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(TAG, 2, "getIMEI, level = " + i + "; result = " + str1);
-      }
-      paramString = str1;
-      if (str1.equals(str2)) {
-        break;
-      }
-      saveIMEI2Sp("device_id_cache_" + i, str1);
-      return str1;
-      if (("huawei".equalsIgnoreCase(Build.MANUFACTURER)) && (!TextUtils.isEmpty(mHuaweiOaid)))
-      {
+      if (paramInt >= 5) {
+        paramString = getQIMEI();
+      } else if (("huawei".equalsIgnoreCase(Build.MANUFACTURER)) && (!TextUtils.isEmpty(mHuaweiOaid))) {
         paramString = mHuaweiOaid;
-      }
-      else
-      {
+      } else {
         paramString = getAndroidID();
-        continue;
-        paramString = getIMEI();
       }
     }
+    else {
+      paramString = getIMEI();
+    }
+    String str1 = paramString;
+    if (paramString == null) {
+      str1 = "";
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getIMEI, level = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("; result = ");
+      localStringBuilder.append(str1);
+      QLog.d(paramString, 2, localStringBuilder.toString());
+    }
+    if (!str1.equals(str2))
+    {
+      paramString = new StringBuilder();
+      paramString.append("device_id_cache_");
+      paramString.append(paramInt);
+      saveIMEI2Sp(paramString.toString(), str1);
+    }
+    return str1;
   }
   
   private static String getIMEIFromSp(String paramString)
   {
-    String str = BaseApplication.getContext().getSharedPreferences("authority", 4).getString(paramString, "");
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = "";
+    paramString = BaseApplication.getContext().getSharedPreferences("authority", 4).getString(paramString, "");
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
     return paramString;
   }
@@ -214,11 +220,7 @@ public class QQDeviceInfo
       paramString = paramString.getSubscriberId();
       return paramString;
     }
-    catch (SecurityException paramString)
-    {
-      return "";
-    }
-    catch (Throwable paramString) {}
+    catch (SecurityException|Throwable paramString) {}
     return "";
   }
   
@@ -229,28 +231,29 @@ public class QQDeviceInfo
   
   private static int getLevelByBIdAndVerify(String paramString)
   {
-    if (mBusiIdCache == null) {}
-    do
-    {
+    if (mBusiIdCache == null) {
       synchronized (mCacheOj)
       {
         if (mBusiIdCache == null) {
           initBusiIdData();
         }
-        if (mBusiIdCache == null) {
-          return 4;
-        }
       }
-      if (mBusiIdCache.containsKey(paramString)) {
-        break;
-      }
-    } while (!mSwitch);
-    throw new IllegalArgumentException("busiId not registed ,please first regist");
-    paramString = (Integer)mBusiIdCache.get(paramString);
-    if (paramString == null) {}
-    for (int i = 4;; i = paramString.intValue()) {
-      return i;
     }
+    if (mBusiIdCache == null) {
+      return 4;
+    }
+    if (!mBusiIdCache.containsKey(paramString))
+    {
+      if (!mSwitch) {
+        return 4;
+      }
+      throw new IllegalArgumentException("busiId not registed ,please first regist");
+    }
+    paramString = (Integer)mBusiIdCache.get(paramString);
+    if (paramString == null) {
+      return 4;
+    }
+    return paramString.intValue();
   }
   
   public static String getMAC(String paramString)
@@ -262,13 +265,16 @@ public class QQDeviceInfo
       paramString = paramString.getConnectionInfo().getMacAddress();
       return paramString;
     }
-    catch (Exception localException)
+    catch (Exception paramString)
     {
-      do
+      if (QLog.isDevelopLevel())
       {
-        paramString = "";
-      } while (!QLog.isDevelopLevel());
-      QLog.d(TAG, 2, " getMacAddr exception = " + localException);
+        String str = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" getMacAddr exception = ");
+        localStringBuilder.append(paramString);
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
     }
     return "";
   }
@@ -276,25 +282,28 @@ public class QQDeviceInfo
   public static String getNoLoginUserId()
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    String str2 = (String)BaseSharedPreUtil.a(localBaseApplication, "0", "key_no_login_user_id", "");
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
+    String str2 = "";
+    Object localObject2 = (String)BaseSharedPreUtil.a(localBaseApplication, "0", "key_no_login_user_id", "");
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {}
     try
     {
-      str2 = Settings.Secure.getString(localBaseApplication.getContentResolver(), "android_id");
-      str1 = str2;
+      localObject1 = Settings.Secure.getString(localBaseApplication.getContentResolver(), "android_id");
+      str2 = UUID.randomUUID().toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(str2);
+      localObject1 = MD5.toMD5(((StringBuilder)localObject2).toString());
+      BaseSharedPreUtil.a(localBaseApplication, "0", false, "key_no_login_user_id", localObject1);
+      return localObject1;
     }
     catch (Exception localException)
     {
-      label43:
-      break label43;
+      for (;;)
+      {
+        String str1 = str2;
+      }
     }
-    str2 = UUID.randomUUID().toString();
-    str1 = MD5.toMD5(str1 + str2);
-    BaseSharedPreUtil.a(localBaseApplication, "0", false, "key_no_login_user_id", str1);
-    return str1;
   }
   
   public static String getQIMEI()
@@ -308,80 +317,91 @@ public class QQDeviceInfo
     if (Build.VERSION.SDK_INT < 26) {
       return Build.SERIAL;
     }
-    if ((Build.VERSION.SDK_INT <= 28) || (paramActivity == null)) {
+    int i = Build.VERSION.SDK_INT;
+    if (paramActivity == null) {
       return "unknown";
     }
-    if (paramActivity.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0) {
-      paramActivity.requestPermissions(new String[] { "android.permission.READ_PHONE_STATE" }, 1);
-    }
-    for (;;)
+    if (paramActivity.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0)
     {
+      paramActivity.requestPermissions(new String[] { "android.permission.READ_PHONE_STATE" }, 1);
       return "unknown";
-      try
-      {
-        paramActivity = Build.getSerial();
-        return paramActivity;
-      }
-      catch (SecurityException paramActivity)
-      {
-        QLog.e(TAG, 2, paramActivity, new Object[0]);
-      }
     }
+    try
+    {
+      paramActivity = Build.getSerial();
+      return paramActivity;
+    }
+    catch (SecurityException paramActivity)
+    {
+      QLog.e(TAG, 2, paramActivity, new Object[0]);
+    }
+    return "unknown";
   }
   
   private static void initBusiIdData()
   {
-    localHashMap = new HashMap();
+    HashMap localHashMap = new HashMap();
     Object localObject = BaseApplication.getContext();
+    int i;
+    try
+    {
+      localObject = ((Context)localObject).getResources().getAssets().open("SensiveAuthorityFile.xml");
+      localXmlPullParser = Xml.newPullParser();
+      localXmlPullParser.setInput((InputStream)localObject, "utf-8");
+      i = localXmlPullParser.getEventType();
+    }
+    catch (XmlPullParserException localXmlPullParserException)
+    {
+      XmlPullParser localXmlPullParser;
+      String str1;
+      String str2;
+      localXmlPullParserException.printStackTrace();
+      break label214;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+    if (localXmlPullParser.getName().equalsIgnoreCase("business"))
+    {
+      str1 = localXmlPullParser.getAttributeValue(null, "id");
+      str2 = localXmlPullParser.getAttributeValue(null, "level");
+      if (TextUtils.isEmpty(str2)) {
+        break label236;
+      }
+      i = stringToInt(str2, 4);
+    }
     for (;;)
     {
-      try
+      localHashMap.put(str1, Integer.valueOf(i));
+      if (QLog.isDevelopLevel())
       {
-        localObject = ((Context)localObject).getResources().getAssets().open("SensiveAuthorityFile.xml");
-        localXmlPullParser = Xml.newPullParser();
-        localXmlPullParser.setInput((InputStream)localObject, "utf-8");
-        i = localXmlPullParser.getEventType();
+        str2 = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("init sensitive au, busiId = ");
+        localStringBuilder.append(str1);
+        localStringBuilder.append("; level = ");
+        localStringBuilder.append(i);
+        QLog.d(str2, 4, localStringBuilder.toString());
       }
-      catch (IOException localIOException)
+      for (;;)
       {
-        XmlPullParser localXmlPullParser;
-        String str1;
-        String str2;
-        localIOException.printStackTrace();
-        mBusiIdCache = localHashMap;
-        return;
-        localIOException.close();
-        continue;
-      }
-      catch (XmlPullParserException localXmlPullParserException)
-      {
-        localXmlPullParserException.printStackTrace();
-        continue;
-        int i = 4;
-        continue;
-        if (i == 1) {
-          continue;
-        }
-        switch (i)
+        i = localXmlPullParser.next();
+        label214:
+        while (i == 1)
         {
+          ((InputStream)localObject).close();
+          mBusiIdCache = localHashMap;
+          return;
         }
-        continue;
-      }
-      i = localXmlPullParser.next();
-      continue;
-      if (localXmlPullParser.getName().equalsIgnoreCase("business"))
-      {
-        str1 = localXmlPullParser.getAttributeValue(null, "id");
-        str2 = localXmlPullParser.getAttributeValue(null, "level");
-        if (TextUtils.isEmpty(str2)) {
-          continue;
-        }
-        i = stringToInt(str2, 4);
-        localHashMap.put(str1, Integer.valueOf(i));
-        if (QLog.isDevelopLevel()) {
-          QLog.d(TAG, 4, "init sensitive au, busiId = " + str1 + "; level = " + i);
+        if (i != 0) {
+          if (i == 2) {
+            break;
+          }
         }
       }
+      label236:
+      i = 4;
     }
   }
   
@@ -392,13 +412,20 @@ public class QQDeviceInfo
   
   public static void initHuaweiOaid(boolean paramBoolean)
   {
-    if ((Build.VERSION.SDK_INT <= 28) || (!"huawei".equalsIgnoreCase(Build.MANUFACTURER))) {}
-    do
+    if (Build.VERSION.SDK_INT > 28)
     {
-      return;
+      if (!"huawei".equalsIgnoreCase(Build.MANUFACTURER)) {
+        return;
+      }
       mHuaweiOaid = getIMEIFromSp("huawei_oaid");
-    } while ((paramBoolean) || (!TextUtils.isEmpty(mHuaweiOaid)));
-    ThreadManager.getFileThreadHandler().post(new QQDeviceInfo.1());
+      if (!paramBoolean)
+      {
+        if (!TextUtils.isEmpty(mHuaweiOaid)) {
+          return;
+        }
+        ThreadManager.getFileThreadHandler().post(new QQDeviceInfo.1());
+      }
+    }
   }
   
   private static void initIMEI()
@@ -412,9 +439,12 @@ public class QQDeviceInfo
   private static void reportGetHuaweiOaid()
   {
     HashMap localHashMap = new HashMap();
-    String str = TAG + "_getHuaweiOaid";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(TAG);
+    ((StringBuilder)localObject).append("_getHuaweiOaid");
+    localObject = ((StringBuilder)localObject).toString();
     localHashMap.put("huawei_oaid", mHuaweiOaid);
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject, true, 0L, 0L, localHashMap, null);
   }
   
   private static void saveIMEI2Sp(String paramString1, String paramString2)
@@ -438,7 +468,7 @@ public class QQDeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.QQDeviceInfo
  * JD-Core Version:    0.7.0.1
  */

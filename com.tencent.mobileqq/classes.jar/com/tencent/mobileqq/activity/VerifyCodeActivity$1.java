@@ -17,25 +17,26 @@ class VerifyCodeActivity$1
   public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
   {
     QLog.d("VerifyCodeActivity", 1, "onReceiveVerifyCode");
-    this.a.b = false;
-    if (this.a.jdField_a_of_type_Boolean)
+    paramString2 = this.a;
+    paramString2.isRefresh = false;
+    if (paramString2.isSend)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131720472), 0).a();
+      this.a.ed.setText("");
+      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131720187), 0).a();
     }
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
-      VerifyCodeActivity.a(this.a, true);
+    this.a.serverNotifyObserver.setKey(paramString1);
+    this.a.serverNotifyObserver.setSeq(paramInt);
+    this.a.tvRefresh.setEnabled(true);
+    if ((this.a.ed.getText().toString() != null) && (this.a.ed.getText().toString().length() > 4)) {
+      VerifyCodeActivity.access$000(this.a, true);
     }
     if (paramArrayOfByte != null)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapManager.a(paramArrayOfByte, 0, paramArrayOfByte.length));
-      this.a.a(false);
+      this.a.mVerifyCodeImageView.setImageBitmap(BitmapManager.a(paramArrayOfByte, 0, paramArrayOfByte.length));
+      this.a.showWaitting(false);
       return;
     }
-    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131720469), 1).show();
+    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131720184), 1).show();
   }
   
   public void onVerifyClose()
@@ -45,7 +46,7 @@ class VerifyCodeActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyCodeActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.os.SystemClock;
-import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -54,26 +53,29 @@ public final class ListenTogetherHeartBeatController
   
   private final void f()
   {
-    for (;;)
+    try
     {
-      try
+      boolean bool = this.jdField_a_of_type_Boolean;
+      if (bool) {
+        return;
+      }
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.LISTEN_TOGETHER_HANDLER);
+      if (localObject1 != null)
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (bool) {
-          return;
+        ((ListenTogetherHandler)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a(), this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a());
+        e();
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("doHeartBeat uin=");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a());
+          QLog.d("ListenTogetherHeartBeatController", 2, ((StringBuilder)localObject1).toString());
         }
-        BusinessHandler localBusinessHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.LISTEN_TOGETHER_HANDLER);
-        if (localBusinessHandler == null) {
-          throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.listentogether.ListenTogetherHandler");
-        }
+        return;
       }
-      finally {}
-      ((ListenTogetherHandler)localObject).a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a(), this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a());
-      e();
-      if (QLog.isColorLevel()) {
-        QLog.d("ListenTogetherHeartBeatController", 2, "doHeartBeat uin=" + this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a());
-      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.listentogether.ListenTogetherHandler");
     }
+    finally {}
   }
   
   public final void a()
@@ -85,7 +87,6 @@ public final class ListenTogetherHeartBeatController
   
   protected void a(@NotNull ListenTogetherSession paramListenTogetherSession)
   {
-    boolean bool1 = true;
     for (;;)
     {
       try
@@ -95,6 +96,7 @@ public final class ListenTogetherHeartBeatController
         Intrinsics.checkExpressionValueIsNotNull(localObject, "mgr");
         boolean bool2 = ((ListenTogetherManager)localObject).a();
         boolean bool3 = ((ListenTogetherManager)localObject).b(paramListenTogetherSession.f, paramListenTogetherSession.e);
+        bool1 = true;
         if (bool3)
         {
           localObject = this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data;
@@ -106,42 +108,52 @@ public final class ListenTogetherHeartBeatController
             this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a(paramListenTogetherSession.f);
             this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a(paramListenTogetherSession.e);
             i = 1;
-            if (this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a() != 2) {
-              break label283;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("ListenTogetherHeartBeatController", 2, "onUIModuleNeedRefresh joinState=" + paramListenTogetherSession.i + " isJoin=" + bool2 + " isJoinThisSession=" + bool3 + " isJoinedSessionC2c=" + bool1);
-            }
-            if (!bool2) {
-              continue;
-            }
-            if ((i != 0) && (!this.jdField_a_of_type_Boolean)) {
-              a();
-            }
-            if (this.jdField_a_of_type_Boolean) {
-              b();
-            }
-            return;
+            continue;
           }
         }
         if (!bool2)
         {
           this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a(0);
           this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a("");
-          break label278;
-          if ((this.jdField_a_of_type_Boolean) || (bool2)) {
-            continue;
+          break label312;
+          if (this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHeartBeatController$Data.a() != 2) {
+            break label317;
           }
-          a();
-          continue;
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("onUIModuleNeedRefresh joinState=");
+            ((StringBuilder)localObject).append(paramListenTogetherSession.i);
+            ((StringBuilder)localObject).append(" isJoin=");
+            ((StringBuilder)localObject).append(bool2);
+            ((StringBuilder)localObject).append(" isJoinThisSession=");
+            ((StringBuilder)localObject).append(bool3);
+            ((StringBuilder)localObject).append(" isJoinedSessionC2c=");
+            ((StringBuilder)localObject).append(bool1);
+            QLog.d("ListenTogetherHeartBeatController", 2, ((StringBuilder)localObject).toString());
+          }
+          if (bool2)
+          {
+            if ((i != 0) && (!this.jdField_a_of_type_Boolean)) {
+              a();
+            }
+            if (this.jdField_a_of_type_Boolean) {
+              b();
+            }
+          }
+          else if ((!this.jdField_a_of_type_Boolean) && (!bool2))
+          {
+            a();
+          }
+          return;
         }
-        int i = 0;
       }
       finally {}
-      label278:
+      label312:
+      int i = 0;
       continue;
-      label283:
-      bool1 = false;
+      label317:
+      boolean bool1 = false;
     }
   }
   
@@ -149,41 +161,46 @@ public final class ListenTogetherHeartBeatController
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "uin");
     Intrinsics.checkParameterIsNotNull(paramString2, "errWording");
-    if (this.jdField_a_of_type_Boolean) {}
-    label38:
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      boolean bool;
-      if (SystemClock.elapsedRealtime() - paramLong > 30000)
-      {
-        bool = true;
-        if ((paramBoolean) && (!bool)) {
-          break label148;
-        }
-      }
-      for (this.b += 1;; this.b = 0)
-      {
-        if (this.b > 15)
-        {
-          QLog.d("ListenTogetherHeartBeatController", 1, "onHeartBeat isTimeout=" + bool + " errCount=" + this.b + " stop");
-          a();
-        }
-        if (paramBoolean != true) {
-          break label156;
-        }
-        if ((paramInt2 <= 0) || (paramInt2 == this.jdField_a_of_type_Int)) {
-          break;
-        }
+    }
+    boolean bool;
+    if (SystemClock.elapsedRealtime() - paramLong > 30000) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if ((paramBoolean) && (!bool)) {
+      this.b = 0;
+    } else {
+      this.b += 1;
+    }
+    if (this.b > 15)
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("onHeartBeat isTimeout=");
+      paramString1.append(bool);
+      paramString1.append(" errCount=");
+      paramString1.append(this.b);
+      paramString1.append(" stop");
+      QLog.d("ListenTogetherHeartBeatController", 1, paramString1.toString());
+      a();
+    }
+    if (paramBoolean == true)
+    {
+      if ((paramInt2 > 0) && (paramInt2 != this.jdField_a_of_type_Int)) {
         this.jdField_a_of_type_Int = paramInt2;
-        return;
-        bool = false;
-        break label38;
       }
-    } while (paramBoolean);
-    label148:
-    label156:
-    QLog.d("ListenTogetherHeartBeatController", 1, "onHeartBeat failed errCode=" + paramInt3 + " errWordig=" + paramString2);
+    }
+    else if (!paramBoolean)
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("onHeartBeat failed errCode=");
+      paramString1.append(paramInt3);
+      paramString1.append(" errWordig=");
+      paramString1.append(paramString2);
+      QLog.d("ListenTogetherHeartBeatController", 1, paramString1.toString());
+    }
   }
   
   public final void b()
@@ -204,19 +221,15 @@ public final class ListenTogetherHeartBeatController
   public boolean handleMessage(@NotNull Message paramMessage)
   {
     Intrinsics.checkParameterIsNotNull(paramMessage, "msg");
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
+    if (paramMessage.what == 0) {
       f();
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherHeartBeatController
  * JD-Core Version:    0.7.0.1
  */

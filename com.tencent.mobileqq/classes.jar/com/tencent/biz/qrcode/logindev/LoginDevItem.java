@@ -22,18 +22,20 @@ public class LoginDevItem
     {
     default: 
       return;
-    case 65793: 
-      this.c = 1;
+    case 77313: 
+      this.c = 6;
       this.jdField_a_of_type_JavaLangString = "Windows";
+      this.jdField_b_of_type_JavaLangString = "TIM";
       this.jdField_a_of_type_Long = 1L;
       this.jdField_b_of_type_Int = 1;
       return;
-    case 66818: 
-    case 66831: 
-    case 81154: 
-      this.c = 2;
-      this.jdField_a_of_type_JavaLangString = "Mac";
-      this.jdField_b_of_type_Int = 1;
+    case 75023: 
+    case 78082: 
+    case 78096: 
+      this.c = 5;
+      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131706410);
+      this.jdField_b_of_type_Int = 3;
+      this.d = 3;
       return;
     case 68361: 
     case 72194: 
@@ -42,6 +44,13 @@ public class LoginDevItem
       this.jdField_b_of_type_Int = 2;
       this.d = 2;
       return;
+    case 66818: 
+    case 66831: 
+    case 81154: 
+      this.c = 2;
+      this.jdField_a_of_type_JavaLangString = "Mac";
+      this.jdField_b_of_type_Int = 1;
+      return;
     case 65805: 
     case 68104: 
       this.c = 4;
@@ -49,18 +58,9 @@ public class LoginDevItem
       this.jdField_b_of_type_Int = 2;
       this.d = 2;
       return;
-    case 75023: 
-    case 78082: 
-    case 78096: 
-      this.c = 5;
-      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131706359);
-      this.jdField_b_of_type_Int = 3;
-      this.d = 3;
-      return;
     }
-    this.c = 6;
+    this.c = 1;
     this.jdField_a_of_type_JavaLangString = "Windows";
-    this.jdField_b_of_type_JavaLangString = "TIM";
     this.jdField_a_of_type_Long = 1L;
     this.jdField_b_of_type_Int = 1;
   }
@@ -68,13 +68,21 @@ public class LoginDevItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("LoginDevItem[").append(this.jdField_b_of_type_JavaLangString).append("|").append(this.jdField_a_of_type_Int).append("|").append(this.jdField_a_of_type_Long).append("|").append(this.d).append("]");
+    localStringBuilder.append("LoginDevItem[");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.logindev.LoginDevItem
  * JD-Core Version:    0.7.0.1
  */

@@ -18,27 +18,35 @@ final class InnerAudioPlayer$mOnCompletionListener$1
   public final void onCompletion(MediaPlayer paramMediaPlayer)
   {
     paramMediaPlayer = InnerAudioPlayer.access$getLogger$p(this.this$0);
-    if (paramMediaPlayer != null) {
-      LogDelegate.DefaultImpls.printLog$default(paramMediaPlayer, LogDelegate.Level.INFO, InnerAudioPlayer.access$getTAG$cp(), "onCompletion audioId=" + this.this$0.getAudioId() + " path=" + this.this$0.getAudioPath() + ", duration=" + this.this$0.getDuration(), null, 8, null);
+    if (paramMediaPlayer != null)
+    {
+      LogDelegate.Level localLevel = LogDelegate.Level.INFO;
+      String str = InnerAudioPlayer.access$getTAG$cp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCompletion audioId=");
+      localStringBuilder.append(this.this$0.getAudioId());
+      localStringBuilder.append(" path=");
+      localStringBuilder.append(this.this$0.getAudioPath());
+      localStringBuilder.append(", duration=");
+      localStringBuilder.append(this.this$0.getDuration());
+      LogDelegate.DefaultImpls.printLog$default(paramMediaPlayer, localLevel, str, localStringBuilder.toString(), null, 8, null);
     }
-    paramMediaPlayer = new InnerAudioPlayer.ResetTask(this.this$0, this.this$0.getAudioId(), this.this$0.getAudioPath());
+    paramMediaPlayer = this.this$0;
+    paramMediaPlayer = new InnerAudioPlayer.ResetTask(paramMediaPlayer, paramMediaPlayer.getAudioId(), this.this$0.getAudioPath());
     if (this.this$0.getDuration() < 500) {
       TritonAudioThreadPool.getAudioThreadPool().schedule((Runnable)paramMediaPlayer, this.this$0.getDuration() * 2, TimeUnit.MILLISECONDS);
-    }
-    for (;;)
-    {
-      paramMediaPlayer = this.this$0.getStateChangeListener();
-      if (paramMediaPlayer != null) {
-        paramMediaPlayer.onEnded();
-      }
-      return;
+    } else {
       paramMediaPlayer.run();
+    }
+    paramMediaPlayer = this.this$0.getStateChangeListener();
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.onEnded();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.inneraudio.InnerAudioPlayer.mOnCompletionListener.1
  * JD-Core Version:    0.7.0.1
  */

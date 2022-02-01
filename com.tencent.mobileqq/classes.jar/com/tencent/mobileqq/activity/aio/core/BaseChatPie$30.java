@@ -1,26 +1,30 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.view.View;
-import android.widget.TextView;
+import android.provider.Settings.System;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class BaseChatPie$30
   implements Runnable
 {
-  BaseChatPie$30(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$30(BaseChatPie paramBaseChatPie, int paramInt) {}
   
   public void run()
   {
-    if (this.this$0.i != null) {
-      this.this$0.i.setVisibility(8);
+    try
+    {
+      Settings.System.putInt(this.this$0.a.getApp().getContentResolver(), "listview_oversroll", this.a);
+      return;
     }
-    if (BaseChatPie.a(this.this$0) != null) {
-      BaseChatPie.a(this.this$0).setVisibility(8);
+    catch (SecurityException localSecurityException)
+    {
+      localSecurityException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.30
  * JD-Core Version:    0.7.0.1
  */

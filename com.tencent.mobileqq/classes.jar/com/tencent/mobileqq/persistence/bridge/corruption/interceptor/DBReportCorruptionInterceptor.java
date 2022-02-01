@@ -24,52 +24,81 @@ public class DBReportCorruptionInterceptor
 {
   public Void a(Interceptor.Chain<Void> paramChain)
   {
-    long l1 = 0L;
-    Object localObject2 = a();
-    if (localObject2 == null) {
+    Object localObject1 = a();
+    if (localObject1 == null) {
       return null;
     }
-    SharedPreferences localSharedPreferences = ((AppRuntime)localObject2).getApplication().getSharedPreferences(DBFixManager.b, 0);
-    Object localObject1 = ((AppRuntime)localObject2).getApplication().getDatabasePath(((AppRuntime)localObject2).getAccount() + ".db");
-    long l2;
-    boolean bool;
-    if (!localSharedPreferences.contains(((AppRuntime)localObject2).getAccount() + DBFixManager.g))
+    Object localObject3 = ((AppRuntime)localObject1).getApplication().getSharedPreferences(DBFixManager.b, 0);
+    Object localObject2 = ((AppRuntime)localObject1).getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((AppRuntime)localObject1).getAccount());
+    localStringBuilder.append(".db");
+    localObject2 = ((MobileQQ)localObject2).getDatabasePath(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((AppRuntime)localObject1).getAccount());
+    localStringBuilder.append(DBFixManager.g);
+    if (!((SharedPreferences)localObject3).contains(localStringBuilder.toString()))
     {
-      localSharedPreferences.edit().putBoolean(((AppRuntime)localObject2).getAccount() + DBFixManager.g, true).apply();
+      localObject3 = ((SharedPreferences)localObject3).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((AppRuntime)localObject1).getAccount());
+      localStringBuilder.append(DBFixManager.g);
+      ((SharedPreferences.Editor)localObject3).putBoolean(localStringBuilder.toString(), true).apply();
       EntityManagerFactory.corruptedTime = System.currentTimeMillis();
-      if (!(localObject2 instanceof QQAppInterface)) {
-        break label384;
+      boolean bool = localObject1 instanceof QQAppInterface;
+      long l3 = 0L;
+      long l1;
+      if (bool)
+      {
+        l2 = ((File)localObject2).length();
+        l1 = l2;
+        if (((File)localObject2).exists())
+        {
+          l1 = l2;
+          if (((File)localObject2).length() > 0L)
+          {
+            l1 = l2;
+            if (SystemUtil.a())
+            {
+              l1 = l2;
+              if (SystemUtil.a() > ((File)localObject2).length())
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getPath());
+                ((StringBuilder)localObject1).append("/tencent/msflogs/corruptInfo");
+                localObject1 = new File(((StringBuilder)localObject1).toString());
+                l1 = l2;
+                if (!((File)localObject1).exists())
+                {
+                  bool = FileUtils.copyFile((File)localObject2, (File)localObject1);
+                  l3 = ((File)localObject1).length();
+                  l1 = l2;
+                  l2 = l3;
+                  break label335;
+                }
+              }
+            }
+          }
+        }
       }
-      l2 = ((File)localObject1).length();
-      if ((!((File)localObject1).exists()) || (((File)localObject1).length() <= 0L) || (!SystemUtil.a()) || (SystemUtil.a() <= ((File)localObject1).length())) {
-        break label378;
+      else
+      {
+        l1 = 0L;
       }
-      localObject2 = new File(Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/corruptInfo");
-      if (((File)localObject2).exists()) {
-        break label378;
-      }
-      bool = FileUtils.a((File)localObject1, (File)localObject2);
-      l1 = ((File)localObject2).length();
-    }
-    for (;;)
-    {
+      bool = false;
+      long l2 = l3;
+      label335:
       localObject1 = EntityManagerFactory.getSqliteLibraryVersion();
       localObject2 = new HashMap();
       ((HashMap)localObject2).put("param_ROM", DeviceInfoUtil.j());
       ((HashMap)localObject2).put("isCopySucc", String.valueOf(bool));
-      ((HashMap)localObject2).put("totalLen", String.valueOf(l2));
-      ((HashMap)localObject2).put("copyLen", String.valueOf(l1));
+      ((HashMap)localObject2).put("totalLen", String.valueOf(l1));
+      ((HashMap)localObject2).put("copyLen", String.valueOf(l2));
       ((HashMap)localObject2).put("sqliteVer", localObject1);
-      QLog.i("DataReportCorruptionHandler", 1, String.format(Locale.getDefault(), "db corrupt, totalLen:%d, clen:%d, sqliteVer:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l1), localObject1 }));
+      QLog.i("DataReportCorruptionHandler", 1, String.format(Locale.getDefault(), "db corrupt, totalLen:%d, clen:%d, sqliteVer:%s", new Object[] { Long.valueOf(l1), Long.valueOf(l2), localObject1 }));
       a((HashMap)localObject2);
-      return (Void)paramChain.proceed();
-      label378:
-      bool = false;
-      continue;
-      label384:
-      l2 = 0L;
-      bool = false;
     }
+    return (Void)paramChain.proceed();
   }
   
   void a(HashMap<String, String> paramHashMap)
@@ -79,7 +108,7 @@ public class DBReportCorruptionInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.corruption.interceptor.DBReportCorruptionInterceptor
  * JD-Core Version:    0.7.0.1
  */

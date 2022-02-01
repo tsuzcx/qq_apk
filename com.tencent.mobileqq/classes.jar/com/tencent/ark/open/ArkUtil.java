@@ -2,12 +2,11 @@ package com.tencent.ark.open;
 
 import android.os.Build;
 import android.text.TextUtils;
-import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.Logger;
 import java.io.File;
 
 public class ArkUtil
 {
-  private static final ArkEnvironmentManager ENV = ;
   private static final String TAG = "ArkApp.ArkUtil";
   public static volatile boolean sARMv7Compatible = false;
   
@@ -21,23 +20,27 @@ public class ArkUtil
     if ((sARMv7Compatible) && (Build.MODEL.contains("Android SDK built for x86")))
     {
       sARMv7Compatible = false;
-      ENV.logI("ArkApp.ArkUtil", new Object[] { "sARMv7Compatible set false for MODEL: ", Build.MODEL });
+      Logger.logI("ArkApp.ArkUtil", new Object[] { "sARMv7Compatible set false for MODEL: ", Build.MODEL });
     }
   }
   
   public static void assertTrue(boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      throw new AssertionError();
+    if (paramBoolean) {
+      return;
     }
+    throw new AssertionError();
   }
   
   private static Boolean checkCPUABIStringV7(String paramString)
   {
-    if ((paramString.equalsIgnoreCase("armeabi-v7a")) || (paramString.equalsIgnoreCase("arm64-v8a"))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    boolean bool;
+    if ((!paramString.equalsIgnoreCase("armeabi-v7a")) && (!paramString.equalsIgnoreCase("arm64-v8a"))) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    return Boolean.valueOf(bool);
   }
   
   public static void checkVersion(boolean paramBoolean)
@@ -45,69 +48,64 @@ public class ArkUtil
     if ((sARMv7Compatible) && (Build.MODEL.contains("Android SDK built for x86")) && (!paramBoolean))
     {
       sARMv7Compatible = false;
-      ENV.logI("ArkApp.ArkUtil", new Object[] { "checkVersion sARMv7Compatible set false for MODEL: ", Build.MODEL, ",isdebug=", Boolean.valueOf(paramBoolean) });
+      Logger.logI("ArkApp.ArkUtil", new Object[] { "checkVersion sARMv7Compatible set false for MODEL: ", Build.MODEL, ",isdebug=", Boolean.valueOf(paramBoolean) });
     }
   }
   
   public static void createDir(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      ENV.logE("ArkApp.ArkUtil", "create dir path is empty");
-    }
-    File localFile;
-    do
+    if (TextUtils.isEmpty(paramString))
     {
+      Logger.logE("ArkApp.ArkUtil", "create dir path is empty");
       return;
-      localFile = new File(paramString);
-      if ((localFile.exists()) && (localFile.isFile()))
-      {
-        ENV.logE("ArkApp.ArkUtil", new Object[] { "create dir find dir path is file need to delte, path = ", paramString });
-        localFile.delete();
-      }
-    } while (localFile.exists());
-    localFile.mkdirs();
+    }
+    File localFile = new File(paramString);
+    if ((localFile.exists()) && (localFile.isFile()))
+    {
+      Logger.logE("ArkApp.ArkUtil", new Object[] { "create dir find dir path is file need to delte, path = ", paramString });
+      localFile.delete();
+    }
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
   }
   
   public static void delete(String paramString, boolean paramBoolean)
   {
-    if (paramString == null) {}
-    do
+    if (paramString == null) {
+      return;
+    }
+    paramString = new File(paramString);
+    if (!paramString.exists()) {
+      return;
+    }
+    if (paramString.isFile())
     {
-      File[] arrayOfFile;
-      do
-      {
-        do
-        {
-          return;
-          paramString = new File(paramString);
-        } while ((paramString == null) || (!paramString.exists()));
-        if (paramString.isFile())
-        {
-          paramString.delete();
-          return;
-        }
-        arrayOfFile = paramString.listFiles();
-      } while (arrayOfFile == null);
-      int j = arrayOfFile.length;
-      int i = 0;
-      while (i < j)
-      {
-        delete(arrayOfFile[i].getAbsolutePath(), paramBoolean);
-        i += 1;
-      }
-    } while (paramBoolean);
-    paramString.delete();
+      paramString.delete();
+      return;
+    }
+    File[] arrayOfFile = paramString.listFiles();
+    if (arrayOfFile == null) {
+      return;
+    }
+    int j = arrayOfFile.length;
+    int i = 0;
+    while (i < j)
+    {
+      delete(arrayOfFile[i].getAbsolutePath(), paramBoolean);
+      i += 1;
+    }
+    if (!paramBoolean) {
+      paramString.delete();
+    }
   }
   
   public static boolean fileExists(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return false;
-      paramString = new File(paramString);
-    } while ((paramString == null) || (!paramString.exists()));
-    return true;
+    }
+    return new File(paramString).exists();
   }
   
   public static String filterKeyForLog(String paramString, String... paramVarArgs)
@@ -125,13 +123,20 @@ public class ArkUtil
   
   public static boolean rename(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {}
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString1 != null)
     {
-      return false;
+      if (paramString2 == null) {
+        return false;
+      }
       paramString1 = new File(paramString1);
-    } while (!paramString1.exists());
-    return paramString1.renameTo(new File(paramString2));
+      bool1 = bool2;
+      if (paramString1.exists()) {
+        bool1 = paramString1.renameTo(new File(paramString2));
+      }
+    }
+    return bool1;
   }
 }
 

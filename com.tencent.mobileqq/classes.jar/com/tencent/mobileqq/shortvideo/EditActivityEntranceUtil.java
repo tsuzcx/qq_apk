@@ -6,27 +6,25 @@ public class EditActivityEntranceUtil
 {
   private static int a(int paramInt)
   {
-    int i = 100;
     if (a(paramInt)) {
-      i = 1;
+      return 1;
     }
-    do
-    {
-      return i;
-      if (b(paramInt)) {
-        return 2;
-      }
-      if (paramInt == 140) {
-        return 3;
-      }
-      if (paramInt == 141) {
-        return 4;
-      }
-      if (paramInt == 142) {
-        return 5;
-      }
-    } while (paramInt != 143);
-    return 6;
+    if (b(paramInt)) {
+      return 2;
+    }
+    if (paramInt == 140) {
+      return 3;
+    }
+    if (paramInt == 141) {
+      return 4;
+    }
+    if (paramInt == 142) {
+      return 5;
+    }
+    if (paramInt == 143) {
+      return 6;
+    }
+    return 100;
   }
   
   public static void a(String paramString, int paramInt)
@@ -46,7 +44,7 @@ public class EditActivityEntranceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.EditActivityEntranceUtil
  * JD-Core Version:    0.7.0.1
  */

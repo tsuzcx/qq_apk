@@ -27,17 +27,18 @@ public abstract class ColorNickColorPanelAdapter$EndlessRecyclerOnScrollListener
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.a = bool;
-      return;
+    boolean bool;
+    if (paramInt2 > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.a = bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickColorPanelAdapter.EndlessRecyclerOnScrollListener
  * JD-Core Version:    0.7.0.1
  */

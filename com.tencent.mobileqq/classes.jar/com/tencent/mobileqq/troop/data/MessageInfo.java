@@ -31,21 +31,26 @@ public class MessageInfo
   {
     int i = paramInt1;
     if (paramInt1 == 11) {
-      i = 31;
+      i = 30;
     }
     paramInt1 = paramInt2;
     if (paramInt2 == 11) {
-      paramInt1 = 31;
+      paramInt1 = 30;
     }
-    if ((i == 2) || (i == 16)) {
-      if (i + 1 < paramInt1) {}
-    }
-    while (i >= paramInt1)
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if ((i != 2) && (i != 16))
     {
-      return true;
-      return false;
+      if (i >= paramInt1) {
+        bool1 = true;
+      }
+      return bool1;
     }
-    return false;
+    bool1 = bool2;
+    if (i + 1 >= paramInt1) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public int a()
@@ -108,7 +113,7 @@ public class MessageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.MessageInfo
  * JD-Core Version:    0.7.0.1
  */

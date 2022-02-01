@@ -33,15 +33,16 @@ public final class SetRichSigReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vbSignature != null) {
-      paramJceOutputStream.write(this.vbSignature, 1);
+    byte[] arrayOfByte = this.vbSignature;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
     paramJceOutputStream.write(this.eSourceID, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.SetRichSigReq
  * JD-Core Version:    0.7.0.1
  */

@@ -22,20 +22,22 @@ public class DiscussionMemberInfo
   
   public String getDiscussionMemberName()
   {
-    if (!TextUtils.isEmpty(this.inteRemark)) {}
-    for (String str1 = this.inteRemark;; str1 = this.memberName)
-    {
-      String str2 = str1;
-      if (TextUtils.isEmpty(str1)) {
-        str2 = this.memberUin;
-      }
-      return str2;
+    String str1;
+    if (!TextUtils.isEmpty(this.inteRemark)) {
+      str1 = this.inteRemark;
+    } else {
+      str1 = this.memberName;
     }
+    String str2 = str1;
+    if (TextUtils.isEmpty(str1)) {
+      str2 = this.memberUin;
+    }
+    return str2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.DiscussionMemberInfo
  * JD-Core Version:    0.7.0.1
  */

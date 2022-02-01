@@ -11,23 +11,24 @@ class StoryMessageListActivity$3$1
   
   public void run()
   {
-    boolean bool2 = false;
     StoryMessageListActivity localStoryMessageListActivity = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity$3.a;
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.get() != 0)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.has_read_msg.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.has_read_msg.get() != 0)) {
-        bool2 = true;
-      }
-      localStoryMessageListActivity.a(localArrayList, bool1, bool2);
-      return;
+    boolean bool1 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.has();
+    boolean bool2 = false;
+    if ((bool1) && (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.get() == 0)) {
+      bool1 = false;
+    } else {
+      bool1 = true;
     }
+    if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.has_read_msg.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.has_read_msg.get() != 0)) {
+      bool2 = true;
+    }
+    localStoryMessageListActivity.a(localArrayList, bool1, bool2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

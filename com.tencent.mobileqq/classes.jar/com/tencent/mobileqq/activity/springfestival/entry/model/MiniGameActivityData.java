@@ -17,25 +17,32 @@ public class MiniGameActivityData
   
   public void parseJson(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    do
-    {
+    if (paramJSONObject == null) {
       return;
-      super.parseJson(paramJSONObject);
-      paramJSONObject = paramJSONObject.optJSONObject("MiniGameActivity");
-    } while (paramJSONObject == null);
-    paramJSONObject = paramJSONObject.optJSONObject("MiniAppEntry");
-    this.miniAppEntryData.parseJson(paramJSONObject);
+    }
+    super.parseJson(paramJSONObject);
+    paramJSONObject = paramJSONObject.optJSONObject("MiniGameActivity");
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("MiniAppEntry");
+      this.miniAppEntryData.parseJson(paramJSONObject);
+    }
   }
   
   public String toString()
   {
-    return "MiniGameActivityData{superData=" + super.toString() + ", miniAppEntryData=" + this.miniAppEntryData + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniGameActivityData{superData=");
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(", miniAppEntryData=");
+    localStringBuilder.append(this.miniAppEntryData);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.MiniGameActivityData
  * JD-Core Version:    0.7.0.1
  */

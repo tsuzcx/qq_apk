@@ -41,67 +41,79 @@ public class AnimationView
   
   public void pause()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
+    AnimationView.Player localPlayer = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player;
+    if (localPlayer == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.pause();
+    localPlayer.pause();
   }
   
   public void play()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
+    AnimationView.Player localPlayer = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player;
+    if (localPlayer == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.play();
+    localPlayer.play();
   }
   
   public void resume()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
+    AnimationView.Player localPlayer = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player;
+    if (localPlayer == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.resume();
+    localPlayer.resume();
   }
   
   public void setAnimationFromBitmaps(ArrayList<Bitmap> paramArrayList, int paramInt1, int paramInt2)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList.size())
+    if (paramArrayList != null)
     {
-      localArrayList.add(new BitmapDrawable(getResources(), (Bitmap)paramArrayList.get(i)));
-      i += 1;
+      if (paramArrayList.size() <= 0) {
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        localArrayList.add(new BitmapDrawable(getResources(), (Bitmap)paramArrayList.get(i)));
+        i += 1;
+      }
+      setAnimationFromDrawabs(localArrayList, paramInt1, paramInt2);
     }
-    setAnimationFromDrawabs(localArrayList, paramInt1, paramInt2);
   }
   
   public void setAnimationFromDrawabs(ArrayList<Drawable> paramArrayList, int paramInt1, int paramInt2)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (paramInt1 <= 0)) {}
-    do
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      return;
+      if (paramInt1 <= 0) {
+        return;
+      }
       this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = AnimationView.AnimationInfo.loadFromFrames(paramArrayList, paramInt1, paramInt2);
-    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player != null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player = new AnimationView.Player(this);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player = new AnimationView.Player(this);
+      }
+    }
   }
   
   public void setAnimationFromDrawabs(Drawable[] paramArrayOfDrawable, int paramInt1, int paramInt2)
   {
-    if ((paramArrayOfDrawable == null) || (paramArrayOfDrawable.length <= 0) || (paramInt1 <= 0)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayOfDrawable.length)
+    if ((paramArrayOfDrawable != null) && (paramArrayOfDrawable.length > 0))
     {
-      localArrayList.add(paramArrayOfDrawable[i]);
-      i += 1;
+      if (paramInt1 <= 0) {
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramArrayOfDrawable.length)
+      {
+        localArrayList.add(paramArrayOfDrawable[i]);
+        i += 1;
+      }
+      setAnimationFromDrawabs(localArrayList, paramInt1, paramInt2);
     }
-    setAnimationFromDrawabs(localArrayList, paramInt1, paramInt2);
   }
   
   public void setAnimationFromInfo(AnimationView.AnimationInfo paramAnimationInfo)
@@ -124,15 +136,16 @@ public class AnimationView
   
   public void stop()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
+    AnimationView.Player localPlayer = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player;
+    if (localPlayer == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.stop();
+    localPlayer.stop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView
  * JD-Core Version:    0.7.0.1
  */

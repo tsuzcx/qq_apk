@@ -10,7 +10,7 @@ public class Base64
   private final int jdField_b_of_type_Int;
   private final int jdField_c_of_type_Int;
   private final byte[] e;
-  private final byte[] f;
+  private final byte[] f = d;
   private final byte[] g;
   
   public Base64()
@@ -28,7 +28,48 @@ public class Base64
     this(paramInt, paramArrayOfByte, false);
   }
   
-  public Base64(int paramInt, byte[] paramArrayOfByte, boolean paramBoolean) {}
+  public Base64(int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
+  {
+    super(3, 4, paramInt, i);
+    if (paramArrayOfByte != null)
+    {
+      if (!a(paramArrayOfByte))
+      {
+        if (paramInt > 0)
+        {
+          this.jdField_c_of_type_Int = (paramArrayOfByte.length + 4);
+          this.g = new byte[paramArrayOfByte.length];
+          System.arraycopy(paramArrayOfByte, 0, this.g, 0, paramArrayOfByte.length);
+        }
+        else
+        {
+          this.jdField_c_of_type_Int = 4;
+          this.g = null;
+        }
+      }
+      else
+      {
+        paramArrayOfByte = new String(paramArrayOfByte);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("lineSeparator must not contain base64 characters: [");
+        localStringBuilder.append(paramArrayOfByte);
+        localStringBuilder.append("]");
+        throw new IllegalArgumentException(localStringBuilder.toString());
+      }
+    }
+    else
+    {
+      this.jdField_c_of_type_Int = 4;
+      this.g = null;
+    }
+    this.jdField_b_of_type_Int = (this.jdField_c_of_type_Int - 1);
+    if (paramBoolean) {
+      paramArrayOfByte = jdField_c_of_type_ArrayOfByte;
+    } else {
+      paramArrayOfByte = jdField_b_of_type_ArrayOfByte;
+    }
+    this.e = paramArrayOfByte;
+  }
   
   public static byte[] a(String paramString)
   {
@@ -44,77 +85,90 @@ public class Base64
       paramContext.jdField_a_of_type_Boolean = true;
     }
     int i = 0;
-    for (;;)
+    while (i < paramInt2)
     {
-      byte[] arrayOfByte;
-      int j;
-      if (i < paramInt2)
+      byte[] arrayOfByte1 = a(this.jdField_b_of_type_Int, paramContext);
+      int j = paramArrayOfByte[paramInt1];
+      if (j == 61)
       {
-        arrayOfByte = a(this.jdField_b_of_type_Int, paramContext);
-        j = paramArrayOfByte[paramInt1];
-        if (j == 61) {
-          paramContext.jdField_a_of_type_Boolean = true;
-        }
+        paramContext.jdField_a_of_type_Boolean = true;
+        break;
       }
-      else
+      if (j >= 0)
       {
-        if ((!paramContext.jdField_a_of_type_Boolean) || (paramContext.d == 0)) {
-          break;
-        }
-        paramArrayOfByte = a(this.jdField_b_of_type_Int, paramContext);
-      }
-      switch (paramContext.d)
-      {
-      case 1: 
-      default: 
-        throw new IllegalStateException("Impossible modulus " + paramContext.d);
-        if ((j >= 0) && (j < d.length))
+        byte[] arrayOfByte2 = d;
+        if (j < arrayOfByte2.length)
         {
-          j = d[j];
+          j = arrayOfByte2[j];
           if (j >= 0)
           {
             paramContext.d = ((paramContext.d + 1) % 4);
-            paramContext.jdField_a_of_type_Int = (j + (paramContext.jdField_a_of_type_Int << 6));
+            paramContext.jdField_a_of_type_Int = ((paramContext.jdField_a_of_type_Int << 6) + j);
             if (paramContext.d == 0)
             {
               j = paramContext.jdField_b_of_type_Int;
               paramContext.jdField_b_of_type_Int = (j + 1);
-              arrayOfByte[j] = ((byte)(paramContext.jdField_a_of_type_Int >> 16 & 0xFF));
+              arrayOfByte1[j] = ((byte)(paramContext.jdField_a_of_type_Int >> 16 & 0xFF));
               j = paramContext.jdField_b_of_type_Int;
               paramContext.jdField_b_of_type_Int = (j + 1);
-              arrayOfByte[j] = ((byte)(paramContext.jdField_a_of_type_Int >> 8 & 0xFF));
+              arrayOfByte1[j] = ((byte)(paramContext.jdField_a_of_type_Int >> 8 & 0xFF));
               j = paramContext.jdField_b_of_type_Int;
               paramContext.jdField_b_of_type_Int = (j + 1);
-              arrayOfByte[j] = ((byte)(paramContext.jdField_a_of_type_Int & 0xFF));
+              arrayOfByte1[j] = ((byte)(paramContext.jdField_a_of_type_Int & 0xFF));
             }
           }
         }
-        i += 1;
-        paramInt1 += 1;
+      }
+      i += 1;
+      paramInt1 += 1;
+    }
+    if ((paramContext.jdField_a_of_type_Boolean) && (paramContext.d != 0))
+    {
+      paramArrayOfByte = a(this.jdField_b_of_type_Int, paramContext);
+      paramInt1 = paramContext.d;
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 != 2)
+        {
+          if (paramInt1 == 3)
+          {
+            paramContext.jdField_a_of_type_Int >>= 2;
+            paramInt1 = paramContext.jdField_b_of_type_Int;
+            paramContext.jdField_b_of_type_Int = (paramInt1 + 1);
+            paramArrayOfByte[paramInt1] = ((byte)(paramContext.jdField_a_of_type_Int >> 8 & 0xFF));
+            paramInt1 = paramContext.jdField_b_of_type_Int;
+            paramContext.jdField_b_of_type_Int = (paramInt1 + 1);
+            paramArrayOfByte[paramInt1] = ((byte)(paramContext.jdField_a_of_type_Int & 0xFF));
+            return;
+          }
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("Impossible modulus ");
+          paramArrayOfByte.append(paramContext.d);
+          throw new IllegalStateException(paramArrayOfByte.toString());
+        }
+        paramContext.jdField_a_of_type_Int >>= 4;
+        paramInt1 = paramContext.jdField_b_of_type_Int;
+        paramContext.jdField_b_of_type_Int = (paramInt1 + 1);
+        paramArrayOfByte[paramInt1] = ((byte)(paramContext.jdField_a_of_type_Int & 0xFF));
       }
     }
-    paramContext.jdField_a_of_type_Int >>= 4;
-    paramInt1 = paramContext.jdField_b_of_type_Int;
-    paramContext.jdField_b_of_type_Int = (paramInt1 + 1);
-    paramArrayOfByte[paramInt1] = ((byte)(paramContext.jdField_a_of_type_Int & 0xFF));
-    return;
-    paramContext.jdField_a_of_type_Int >>= 2;
-    paramInt1 = paramContext.jdField_b_of_type_Int;
-    paramContext.jdField_b_of_type_Int = (paramInt1 + 1);
-    paramArrayOfByte[paramInt1] = ((byte)(paramContext.jdField_a_of_type_Int >> 8 & 0xFF));
-    paramInt1 = paramContext.jdField_b_of_type_Int;
-    paramContext.jdField_b_of_type_Int = (paramInt1 + 1);
-    paramArrayOfByte[paramInt1] = ((byte)(paramContext.jdField_a_of_type_Int & 0xFF));
   }
   
   protected boolean a(byte paramByte)
   {
-    return (paramByte >= 0) && (paramByte < this.f.length) && (this.f[paramByte] != -1);
+    if (paramByte >= 0)
+    {
+      byte[] arrayOfByte = this.f;
+      if ((paramByte < arrayOfByte.length) && (arrayOfByte[paramByte] != -1)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.jwt.Base64
  * JD-Core Version:    0.7.0.1
  */

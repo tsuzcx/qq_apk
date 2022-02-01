@@ -32,9 +32,14 @@ public class MiniGdtReporter
   
   public static void report(MiniAppInfo paramMiniAppInfo, int paramInt)
   {
-    if (!sNoNeedReport.compareAndSet(false, true))
+    Object localObject1 = sNoNeedReport;
+    int i = 1;
+    if (!((AtomicBoolean)localObject1).compareAndSet(false, true))
     {
-      QMLog.w("MiniGdtReporter", "report: no need report now " + paramInt);
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("report: no need report now ");
+      paramMiniAppInfo.append(paramInt);
+      QMLog.w("MiniGdtReporter", paramMiniAppInfo.toString());
       return;
     }
     if (paramMiniAppInfo == null)
@@ -45,79 +50,94 @@ public class MiniGdtReporter
     LaunchParam localLaunchParam = paramMiniAppInfo.launchParam;
     if (localLaunchParam == null)
     {
-      QMLog.w("MiniGdtReporter", "report: null param " + paramMiniAppInfo, new Throwable());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("report: null param ");
+      ((StringBuilder)localObject1).append(paramMiniAppInfo);
+      QMLog.w("MiniGdtReporter", ((StringBuilder)localObject1).toString(), new Throwable());
       return;
     }
     if (localLaunchParam.scene != 1095)
     {
-      QMLog.d("MiniGdtReporter", "report: not form ad " + localLaunchParam.scene);
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("report: not form ad ");
+      paramMiniAppInfo.append(localLaunchParam.scene);
+      QMLog.d("MiniGdtReporter", paramMiniAppInfo.toString());
       return;
     }
     if (localLaunchParam.timestamp == 0L)
     {
-      QMLog.w("MiniGdtReporter", "report: no timestamp " + paramMiniAppInfo, new Throwable());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("report: no timestamp ");
+      ((StringBuilder)localObject1).append(paramMiniAppInfo);
+      QMLog.w("MiniGdtReporter", ((StringBuilder)localObject1).toString(), new Throwable());
       return;
     }
-    String str = null;
-    paramMiniAppInfo = str;
-    if (!TextUtils.isEmpty(localLaunchParam.navigateExtData)) {}
+    paramMiniAppInfo = null;
+    localObject1 = paramMiniAppInfo;
+    StringBuilder localStringBuilder2;
+    Object localObject2;
+    if (!TextUtils.isEmpty(localLaunchParam.navigateExtData)) {
+      try
+      {
+        localObject1 = new JSONObject(localLaunchParam.navigateExtData).optString("reportUrl");
+      }
+      catch (JSONException localJSONException)
+      {
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("report: failed to read ext data ");
+        localStringBuilder2.append(localLaunchParam);
+        QMLog.w("MiniGdtReporter", localStringBuilder2.toString(), localJSONException);
+        localObject2 = paramMiniAppInfo;
+      }
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("report: empty url ");
+      paramMiniAppInfo.append(localLaunchParam);
+      QMLog.w("MiniGdtReporter", paramMiniAppInfo.toString(), new Throwable());
+      return;
+    }
+    if (paramInt == 0) {
+      paramMiniAppInfo = (MiniAppInfo)localObject2;
+    }
     try
     {
-      paramMiniAppInfo = new JSONObject(localLaunchParam.navigateExtData).optString("reportUrl");
-      if (TextUtils.isEmpty(paramMiniAppInfo))
-      {
-        QMLog.w("MiniGdtReporter", "report: empty url " + localLaunchParam, new Throwable());
-        return;
-      }
+      localObject2 = ((String)localObject2).replace("__PAGE_ACTION_ID__", Integer.toString(51)).replace("__PAGE_TIME__", Long.toString(System.currentTimeMillis() - localLaunchParam.timestamp));
+      break label390;
+      paramMiniAppInfo = (MiniAppInfo)localObject2;
+      localObject2 = ((String)localObject2).replace("__PAGE_ACTION_ID__", Integer.toString(52)).replace("__LANDING_ERROR_CODE__", Integer.toString(paramInt));
+      label390:
+      paramMiniAppInfo = (MiniAppInfo)localObject2;
+      localObject2 = ((String)localObject2).replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("1.15.0", "utf-8"));
+      paramInt = i;
+      paramMiniAppInfo = (MiniAppInfo)localObject2;
     }
-    catch (JSONException paramMiniAppInfo)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        QMLog.w("MiniGdtReporter", "report: failed to read ext data " + localLaunchParam, paramMiniAppInfo);
-        paramMiniAppInfo = str;
-      }
-    }
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      for (;;)
-      {
-        try
-        {
-          str = paramMiniAppInfo.replace("__PAGE_ACTION_ID__", Integer.toString(51)).replace("__PAGE_TIME__", Long.toString(System.currentTimeMillis() - localLaunchParam.timestamp));
-          paramMiniAppInfo = str;
-        }
-        catch (Exception localException1) {}
-        try
-        {
-          str = paramMiniAppInfo.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("1.12.1", "utf-8"));
-          paramMiniAppInfo = str;
-          paramInt = 1;
-          if (paramInt == 0) {
-            break;
-          }
-          QMLog.i("MiniGdtReporter", "report: get report url " + paramMiniAppInfo + " " + localLaunchParam.timestamp);
-          GdtReporter.doCgiReport(paramMiniAppInfo);
-          return;
-        }
-        catch (Exception localException2)
-        {
-          label409:
-          break label409;
-        }
-      }
-      str = paramMiniAppInfo.replace("__PAGE_ACTION_ID__", Integer.toString(52)).replace("__LANDING_ERROR_CODE__", Integer.toString(paramInt));
-      paramMiniAppInfo = str;
-      continue;
-      QMLog.w("MiniGdtReporter", "report: failed to convert report url " + paramMiniAppInfo + " " + paramInt, localException1);
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("report: failed to convert report url ");
+      localStringBuilder2.append(paramMiniAppInfo);
+      localStringBuilder2.append(" ");
+      localStringBuilder2.append(paramInt);
+      QMLog.w("MiniGdtReporter", localStringBuilder2.toString(), localException);
       paramInt = 0;
     }
+    if (paramInt == 0) {
+      return;
+    }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("report: get report url ");
+    localStringBuilder1.append(paramMiniAppInfo);
+    localStringBuilder1.append(" ");
+    localStringBuilder1.append(localLaunchParam.timestamp);
+    QMLog.i("MiniGdtReporter", localStringBuilder1.toString());
+    GdtReporter.doCgiReport(paramMiniAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniGdtReporter
  * JD-Core Version:    0.7.0.1
  */

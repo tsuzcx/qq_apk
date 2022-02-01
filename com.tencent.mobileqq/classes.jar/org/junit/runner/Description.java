@@ -25,16 +25,19 @@ public class Description
   
   private Description(Class<?> paramClass, String paramString, Serializable paramSerializable, Annotation... paramVarArgs)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      throw new IllegalArgumentException("The display name must not be empty.");
-    }
-    if (paramSerializable == null) {
+    if ((paramString != null) && (paramString.length() != 0))
+    {
+      if (paramSerializable != null)
+      {
+        this.fTestClass = paramClass;
+        this.fDisplayName = paramString;
+        this.fUniqueId = paramSerializable;
+        this.fAnnotations = paramVarArgs;
+        return;
+      }
       throw new IllegalArgumentException("The unique id must not be null.");
     }
-    this.fTestClass = paramClass;
-    this.fDisplayName = paramString;
-    this.fUniqueId = paramSerializable;
-    this.fAnnotations = paramVarArgs;
+    throw new IllegalArgumentException("The display name must not be empty.");
   }
   
   private Description(Class<?> paramClass, String paramString, Annotation... paramVarArgs)
@@ -156,21 +159,18 @@ public class Description
   
   public Class<?> getTestClass()
   {
-    Class localClass = null;
     if (this.fTestClass != null) {
-      localClass = this.fTestClass;
+      return this.fTestClass;
     }
-    String str;
-    do
-    {
-      return localClass;
-      str = getClassName();
-    } while (str == null);
+    Object localObject = getClassName();
+    if (localObject == null) {
+      return null;
+    }
     try
     {
-      this.fTestClass = Class.forName(str, false, getClass().getClassLoader());
-      localClass = this.fTestClass;
-      return localClass;
+      this.fTestClass = Class.forName((String)localObject, false, getClass().getClassLoader());
+      localObject = this.fTestClass;
+      return localObject;
     }
     catch (ClassNotFoundException localClassNotFoundException) {}
     return null;
@@ -188,7 +188,7 @@ public class Description
   
   public boolean isSuite()
   {
-    return !isTest();
+    return isTest() ^ true;
   }
   
   public boolean isTest()
@@ -198,20 +198,15 @@ public class Description
   
   public int testCount()
   {
-    int j;
-    if (isTest())
-    {
-      j = 1;
-      return j;
+    if (isTest()) {
+      return 1;
     }
+    int i = 0;
     Iterator localIterator = this.fChildren.iterator();
-    for (int i = 0;; i = ((Description)localIterator.next()).testCount() + i)
-    {
-      j = i;
-      if (!localIterator.hasNext()) {
-        break;
-      }
+    while (localIterator.hasNext()) {
+      i += ((Description)localIterator.next()).testCount();
     }
+    return i;
   }
   
   public String toString()
@@ -221,7 +216,7 @@ public class Description
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.runner.Description
  * JD-Core Version:    0.7.0.1
  */

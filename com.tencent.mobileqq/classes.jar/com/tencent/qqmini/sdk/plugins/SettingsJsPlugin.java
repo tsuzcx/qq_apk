@@ -62,109 +62,112 @@ public class SettingsJsPlugin
       return;
     }
     Object localObject2 = paramAuthState.getAuthStateList(6);
-    Object localObject1;
-    Object localObject3;
-    Object localObject4;
     for (;;)
     {
       try
       {
         paramAuthState = new JSONObject();
-        localObject1 = new JSONArray();
+        Object localObject1 = new JSONArray();
         localObject2 = ((List)localObject2).iterator();
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        localObject3 = (AuthStateItem)((Iterator)localObject2).next();
-        localObject4 = new JSONObject();
-        ((JSONObject)localObject4).put("scope", ((AuthStateItem)localObject3).scopeName);
-        int i;
-        if (((AuthStateItem)localObject3).authFlag == 2)
+        Object localObject3;
+        Object localObject4;
+        if (((Iterator)localObject2).hasNext())
         {
-          i = 1;
-          ((JSONObject)localObject4).put("state", i);
-          ((JSONArray)localObject1).put(localObject4);
+          localObject3 = (AuthStateItem)((Iterator)localObject2).next();
+          localObject4 = new JSONObject();
+          ((JSONObject)localObject4).put("scope", ((AuthStateItem)localObject3).scopeName);
+          if (((AuthStateItem)localObject3).authFlag == 2)
+          {
+            i = 1;
+            ((JSONObject)localObject4).put("state", i);
+            ((JSONArray)localObject1).put(localObject4);
+          }
         }
         else
         {
-          i = 0;
+          paramAuthState.put("authSetting", localObject1);
+          if (paramBoolean)
+          {
+            localObject1 = new JSONObject();
+            localObject2 = new JSONObject();
+            if ((paramMap != null) && (paramMap.size() > 0))
+            {
+              localObject3 = paramMap.keySet().iterator();
+              if (((Iterator)localObject3).hasNext())
+              {
+                localObject4 = (String)((Iterator)localObject3).next();
+                ((JSONObject)localObject2).put((String)localObject4, paramMap.get(localObject4));
+                continue;
+              }
+            }
+            ((JSONObject)localObject1).put("itemSettings", localObject2);
+            paramAuthState.put("subscriptionsSetting", localObject1);
+          }
+          paramRequestEvent.ok(paramAuthState);
+          return;
         }
       }
       catch (JSONException paramAuthState)
       {
-        QMLog.e("SettingsJsPlugin", paramRequestEvent.event + " error.", paramAuthState);
+        paramMap = new StringBuilder();
+        paramMap.append(paramRequestEvent.event);
+        paramMap.append(" error.");
+        QMLog.e("SettingsJsPlugin", paramMap.toString(), paramAuthState);
         paramRequestEvent.fail();
         return;
       }
+      int i = 0;
     }
-    paramAuthState.put("authSetting", localObject1);
-    if (paramBoolean)
-    {
-      localObject1 = new JSONObject();
-      localObject2 = new JSONObject();
-      if ((paramMap != null) && (paramMap.size() > 0))
-      {
-        localObject3 = paramMap.keySet().iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (String)((Iterator)localObject3).next();
-          ((JSONObject)localObject2).put((String)localObject4, paramMap.get(localObject4));
-        }
-      }
-      ((JSONObject)localObject1).put("itemSettings", localObject2);
-      paramAuthState.put("subscriptionsSetting", localObject1);
-    }
-    paramRequestEvent.ok(paramAuthState);
   }
   
   private void callbackSettingEvent(RequestEvent paramRequestEvent)
   {
     AuthState localAuthState = MiniAppEnv.g().getAuthSate(this.mApkgInfo.appId);
-    if (!TextUtils.isEmpty(paramRequestEvent.jsonParams)) {}
     boolean bool;
-    for (;;)
-    {
+    if (!TextUtils.isEmpty(paramRequestEvent.jsonParams)) {
       try
       {
         bool = new JSONObject(paramRequestEvent.jsonParams).optBoolean("withSubscriptions");
-        if (!bool) {
-          break;
-        }
-        requestAuthList(bool, paramRequestEvent, this.mApkgInfo.appId, localAuthState);
-        return;
       }
       catch (JSONException localJSONException)
       {
         QMLog.e("SettingsJsPlugin", "openSetting parse jsonParams exception", localJSONException);
       }
+    } else {
       bool = false;
+    }
+    if (bool)
+    {
+      requestAuthList(bool, paramRequestEvent, this.mApkgInfo.appId, localAuthState);
+      return;
     }
     callbackSettingEvent(localAuthState, paramRequestEvent, bool, null);
   }
   
   private Map<String, String> getInteractiveSubscribeList(List<SubscribeMessage> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    HashMap localHashMap = new HashMap();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      SubscribeMessage localSubscribeMessage = (SubscribeMessage)paramList.next();
-      if (localSubscribeMessage.authState != 0)
+      HashMap localHashMap = new HashMap();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        String str = localSubscribeMessage.templateId;
-        if (localSubscribeMessage.authState == 1) {
-          localHashMap.put(str, "accept");
-        } else if (localSubscribeMessage.authState == 2) {
-          localHashMap.put(str, "reject");
-        } else if (localSubscribeMessage.authState == 3) {
-          localHashMap.put(str, "ban");
+        SubscribeMessage localSubscribeMessage = (SubscribeMessage)paramList.next();
+        if (localSubscribeMessage.authState != 0)
+        {
+          String str = localSubscribeMessage.templateId;
+          if (localSubscribeMessage.authState == 1) {
+            localHashMap.put(str, "accept");
+          } else if (localSubscribeMessage.authState == 2) {
+            localHashMap.put(str, "reject");
+          } else if (localSubscribeMessage.authState == 3) {
+            localHashMap.put(str, "ban");
+          }
         }
       }
+      return localHashMap;
     }
-    return localHashMap;
+    return null;
   }
   
   private void launchChooseAddressH5(String paramString)
@@ -189,7 +192,10 @@ public class SettingsJsPlugin
   {
     if (paramApkgInfo == null)
     {
-      QMLog.e("SettingsJsPlugin", "openSettingActivity, appInfo:" + paramApkgInfo);
+      paramActivity = new StringBuilder();
+      paramActivity.append("openSettingActivity, appInfo:");
+      paramActivity.append(paramApkgInfo);
+      QMLog.e("SettingsJsPlugin", paramActivity.toString());
       return;
     }
     ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(paramActivity, paramApkgInfo.appId, paramApkgInfo.apkgName);
@@ -213,11 +219,14 @@ public class SettingsJsPlugin
   
   private void unregisterChooseAddressReceiver()
   {
-    if ((!this.receiverRegistered) || (this.addressReceiver == null)) {
-      return;
+    if (this.receiverRegistered)
+    {
+      if (this.addressReceiver == null) {
+        return;
+      }
+      this.mMiniAppContext.getAttachedActivity().unregisterReceiver(this.addressReceiver);
+      this.receiverRegistered = false;
     }
-    this.mMiniAppContext.getAttachedActivity().unregisterReceiver(this.addressReceiver);
-    this.receiverRegistered = false;
   }
   
   @JsEvent({"getSetting"})
@@ -232,24 +241,23 @@ public class SettingsJsPlugin
     }
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramRequestEvent.jsonParams)) {}
-    try
-    {
-      bool1 = new JSONObject(paramRequestEvent.jsonParams).optBoolean("withSubscriptions");
-      if (localAuthState.isSynchronized()) {
-        if (bool1)
-        {
-          requestAuthList(bool1, paramRequestEvent, str, localAuthState);
-          return;
-        }
+    if (!TextUtils.isEmpty(paramRequestEvent.jsonParams)) {
+      try
+      {
+        bool1 = new JSONObject(paramRequestEvent.jsonParams).optBoolean("withSubscriptions");
       }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      catch (JSONException localJSONException)
       {
         QMLog.e("SettingsJsPlugin", "getSetting parse jsonParams exception", localJSONException);
         bool1 = bool2;
+      }
+    }
+    if (localAuthState.isSynchronized())
+    {
+      if (bool1)
+      {
+        requestAuthList(bool1, paramRequestEvent, str, localAuthState);
+        return;
       }
       callbackSettingEvent(localAuthState, paramRequestEvent, bool1, null);
       return;
@@ -272,7 +280,7 @@ public class SettingsJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SettingsJsPlugin
  * JD-Core Version:    0.7.0.1
  */

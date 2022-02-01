@@ -16,9 +16,12 @@ class VideoPlayerView$7
     if (FastClickUtils.a("mLLSkipForwardWrapper", 500L))
     {
       VideoPlayerView.e(this.a);
-      VideoPlayerView.a(this.a, VideoPlayerView.c(this.a), 0, 1, true);
-      if (this.a.a() != null) {
-        this.a.a(this.a.a().getCurrentPositionMs() + 10000L);
+      VideoPlayerView localVideoPlayerView = this.a;
+      VideoPlayerView.a(localVideoPlayerView, VideoPlayerView.c(localVideoPlayerView), 0, 1, true);
+      if (this.a.a() != null)
+      {
+        localVideoPlayerView = this.a;
+        localVideoPlayerView.a(localVideoPlayerView.a().getCurrentPositionMs() + 10000L);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -26,7 +29,7 @@ class VideoPlayerView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.7
  * JD-Core Version:    0.7.0.1
  */

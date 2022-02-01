@@ -21,31 +21,34 @@ class AutoScrollHelper$ClampedScroller
     if (paramLong < this.mStartTime) {
       return 0.0F;
     }
-    if ((this.mStopTime < 0L) || (paramLong < this.mStopTime)) {
-      return AutoScrollHelper.access$900((float)(paramLong - this.mStartTime) / this.mRampUpDuration, 0.0F, 1.0F) * 0.5F;
-    }
     long l = this.mStopTime;
-    float f1 = this.mStopValue;
-    float f2 = this.mStopValue;
-    return AutoScrollHelper.access$900((float)(paramLong - l) / this.mEffectiveRampDown, 0.0F, 1.0F) * f2 + (1.0F - f1);
+    if ((l >= 0L) && (paramLong >= l))
+    {
+      float f = this.mStopValue;
+      return 1.0F - f + f * AutoScrollHelper.access$900((float)(paramLong - l) / this.mEffectiveRampDown, 0.0F, 1.0F);
+    }
+    return AutoScrollHelper.access$900((float)(paramLong - this.mStartTime) / this.mRampUpDuration, 0.0F, 1.0F) * 0.5F;
   }
   
   private float interpolateValue(float paramFloat)
   {
-    return -4.0F * paramFloat * paramFloat + 4.0F * paramFloat;
+    return -4.0F * paramFloat * paramFloat + paramFloat * 4.0F;
   }
   
   public void computeScrollDelta()
   {
-    if (this.mDeltaTime == 0L) {
-      throw new RuntimeException("Cannot compute scroll delta before calling start()");
+    if (this.mDeltaTime != 0L)
+    {
+      long l1 = AnimationUtils.currentAnimationTimeMillis();
+      float f = interpolateValue(getValueAt(l1));
+      long l2 = this.mDeltaTime;
+      this.mDeltaTime = l1;
+      f = (float)(l1 - l2) * f;
+      this.mDeltaX = ((int)(this.mTargetVelocityX * f));
+      this.mDeltaY = ((int)(f * this.mTargetVelocityY));
+      return;
     }
-    long l1 = AnimationUtils.currentAnimationTimeMillis();
-    float f = interpolateValue(getValueAt(l1));
-    long l2 = l1 - this.mDeltaTime;
-    this.mDeltaTime = l1;
-    this.mDeltaX = ((int)((float)l2 * f * this.mTargetVelocityX));
-    this.mDeltaY = ((int)((float)l2 * f * this.mTargetVelocityY));
+    throw new RuntimeException("Cannot compute scroll delta before calling start()");
   }
   
   public int getDeltaX()
@@ -60,12 +63,14 @@ class AutoScrollHelper$ClampedScroller
   
   public int getHorizontalDirection()
   {
-    return (int)(this.mTargetVelocityX / Math.abs(this.mTargetVelocityX));
+    float f = this.mTargetVelocityX;
+    return (int)(f / Math.abs(f));
   }
   
   public int getVerticalDirection()
   {
-    return (int)(this.mTargetVelocityY / Math.abs(this.mTargetVelocityY));
+    float f = this.mTargetVelocityY;
+    return (int)(f / Math.abs(f));
   }
   
   public boolean isFinished()

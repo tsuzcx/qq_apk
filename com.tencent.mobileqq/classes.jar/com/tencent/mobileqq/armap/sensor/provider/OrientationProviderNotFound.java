@@ -5,12 +5,12 @@ public class OrientationProviderNotFound
 {
   public OrientationProviderNotFound(String paramString)
   {
-    super("sensor type:" + paramString + " not found");
+    super(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound
  * JD-Core Version:    0.7.0.1
  */

@@ -27,10 +27,11 @@ class DisplayListenerProxy
       paramDisplayManager = ((Field)localObject1).get(paramDisplayManager);
       localObject1 = paramDisplayManager.getClass().getDeclaredField("mDisplayListeners");
       ((Field)localObject1).setAccessible(true);
-      paramDisplayManager = (ArrayList)((Field)localObject1).get(paramDisplayManager);
+      localObject1 = (ArrayList)((Field)localObject1).get(paramDisplayManager);
+      paramDisplayManager = null;
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = paramDisplayManager.iterator();
-      for (paramDisplayManager = null; localIterator.hasNext(); paramDisplayManager = (DisplayManager)localObject1)
+      Iterator localIterator = ((ArrayList)localObject1).iterator();
+      while (localIterator.hasNext())
       {
         Object localObject2 = localIterator.next();
         localObject1 = paramDisplayManager;
@@ -40,38 +41,30 @@ class DisplayListenerProxy
           ((Field)localObject1).setAccessible(true);
         }
         localArrayList.add((DisplayManager.DisplayListener)((Field)localObject1).get(localObject2));
+        paramDisplayManager = (DisplayManager)localObject1;
       }
       return localArrayList;
     }
-    catch (NoSuchFieldException paramDisplayManager)
-    {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("Could not extract WebView's display listeners. ");
-      ((StringBuilder)localObject1).append(paramDisplayManager);
-      Log.w("DisplayListenerProxy", ((StringBuilder)localObject1).toString());
-      return new ArrayList();
-    }
-    catch (IllegalAccessException paramDisplayManager)
-    {
-      label135:
-      break label135;
-    }
+    catch (IllegalAccessException paramDisplayManager) {}catch (NoSuchFieldException paramDisplayManager) {}
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Could not extract WebView's display listeners. ");
+    ((StringBuilder)localObject1).append(paramDisplayManager);
+    Log.w("DisplayListenerProxy", ((StringBuilder)localObject1).toString());
+    return new ArrayList();
   }
   
   void onPostWebViewInitialization(DisplayManager paramDisplayManager)
   {
     ArrayList localArrayList = yoinkDisplayListeners(paramDisplayManager);
     localArrayList.removeAll(this.listenersBeforeWebView);
-    if (localArrayList.isEmpty()) {}
-    for (;;)
-    {
+    if (localArrayList.isEmpty()) {
       return;
-      Iterator localIterator = localArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        paramDisplayManager.unregisterDisplayListener((DisplayManager.DisplayListener)localIterator.next());
-        paramDisplayManager.registerDisplayListener(new DisplayListenerProxy.1(this, localArrayList, paramDisplayManager), null);
-      }
+    }
+    Iterator localIterator = localArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      paramDisplayManager.unregisterDisplayListener((DisplayManager.DisplayListener)localIterator.next());
+      paramDisplayManager.registerDisplayListener(new DisplayListenerProxy.1(this, localArrayList, paramDisplayManager), null);
     }
   }
   
@@ -82,7 +75,7 @@ class DisplayListenerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugins.webviewflutter.DisplayListenerProxy
  * JD-Core Version:    0.7.0.1
  */

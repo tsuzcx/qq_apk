@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import GROUP.MessageRemindRsp;
 import MQQ.GetRoamToastRsp;
 import QC.BubbleRecommendRsp;
 import QC.FaceRsp;
@@ -24,7 +23,7 @@ public class SVIPObserver
   
   public void onFriendCloneAuth(boolean paramBoolean, Object paramObject) {}
   
-  public void onGetBigTroopExpiredInfo(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp) {}
+  public void onGetBigTroopExpiredInfo(boolean paramBoolean, Object paramObject) {}
   
   public void onGetBubbleRecommend(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp) {}
   
@@ -47,68 +46,69 @@ public class SVIPObserver
     switch (paramInt)
     {
     default: 
-    case 101: 
-      do
-      {
-        return;
-        if ((paramObject instanceof Integer))
-        {
-          onBubbleChanged(((Integer)paramObject).intValue());
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("SVIPObserver", 2, "NOTIFY_TYPE_SVIP_BUBBLE_CHANGE param error");
-      return;
-    case 100: 
-      onVipStatusChanged();
-      return;
-    case 102: 
-      onAuthHiBoom(paramBoolean, paramObject);
-      return;
-    case 103: 
-      onSetHiBoom(paramBoolean, paramObject);
-      return;
-    case 104: 
-      onFriendCloneAuth(paramBoolean, paramObject);
-      return;
-    case 105: 
-      onGetColorNickData(paramBoolean, paramObject);
-      return;
-    case 106: 
-      onDefaultCardRsp(paramBoolean, paramObject);
+    case 114: 
+      paramObject = (Object[])paramObject;
+      onGetRoamType((String)paramObject[0], ((Integer)paramObject[1]).intValue());
       return;
     case 113: 
-      onGetBigTroopExpiredInfo(paramBoolean, (MessageRemindRsp)paramObject);
+      onGetBigTroopExpiredInfo(paramBoolean, paramObject);
       return;
-    case 107: 
-      onGetFontRecommend(paramBoolean, (FontRecommendRsp)paramObject);
+    case 112: 
+      onSetFace(paramBoolean, (FaceRsp)paramObject);
       return;
-    case 108: 
-      onGetBubbleRecommend(paramBoolean, (BubbleRecommendRsp)paramObject);
+    case 111: 
+      onGetRoamToast(paramBoolean, (GetRoamToastRsp)paramObject);
+      return;
+    case 110: 
+      onFontBubblePaySuccess((Bundle)paramObject);
       return;
     case 109: 
       paramObject = (Object[])paramObject;
       onSetFontBubble(paramBoolean, (SetFontBubbleRsp)paramObject[0], ((Integer)paramObject[1]).intValue());
       return;
-    case 110: 
-      onFontBubblePaySuccess((Bundle)paramObject);
+    case 108: 
+      onGetBubbleRecommend(paramBoolean, (BubbleRecommendRsp)paramObject);
       return;
-    case 111: 
-      onGetRoamToast(paramBoolean, (GetRoamToastRsp)paramObject);
+    case 107: 
+      onGetFontRecommend(paramBoolean, (FontRecommendRsp)paramObject);
       return;
-    case 112: 
-      onSetFace(paramBoolean, (FaceRsp)paramObject);
+    case 106: 
+      onDefaultCardRsp(paramBoolean, paramObject);
       return;
+    case 105: 
+      onGetColorNickData(paramBoolean, paramObject);
+      return;
+    case 104: 
+      onFriendCloneAuth(paramBoolean, paramObject);
+      return;
+    case 103: 
+      onSetHiBoom(paramBoolean, paramObject);
+      return;
+    case 102: 
+      onAuthHiBoom(paramBoolean, paramObject);
+      return;
+    case 101: 
+      if ((paramObject instanceof Integer))
+      {
+        onBubbleChanged(((Integer)paramObject).intValue());
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.e("SVIPObserver", 2, "NOTIFY_TYPE_SVIP_BUBBLE_CHANGE param error");
+        return;
+      }
+      break;
+    case 100: 
+      onVipStatusChanged();
     }
-    paramObject = (Object[])paramObject;
-    onGetRoamType((String)paramObject[0], ((Integer)paramObject[1]).intValue());
   }
   
   public void onVipStatusChanged() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SVIPObserver
  * JD-Core Version:    0.7.0.1
  */

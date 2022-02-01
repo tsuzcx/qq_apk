@@ -6,19 +6,18 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import com.tencent.mobileqq.emosm.api.ICameraEmotionRoamingDBManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
 import com.tencent.mobileqq.emoticonview.CameraEmoticonInfo;
 import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
 import com.tencent.mobileqq.emoticonview.ICustomEmotionInfo;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.IFavoriteEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.IPicEmoticonInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -36,86 +35,85 @@ public class FavEmoticonPreviewData
   public int a(List<EmoticonPreviewData> paramList)
   {
     int i = 0;
-    if (i < paramList.size())
+    while (i < paramList.size())
     {
       Object localObject1 = (EmoticonPreviewData)paramList.get(i);
-      Object localObject2;
       if ((localObject1 instanceof FavEmoticonPreviewData))
       {
         localObject1 = ((FavEmoticonPreviewData)localObject1).a;
-        if ((!(localObject1 instanceof FavoriteEmoticonInfo)) || (!(this.a instanceof FavoriteEmoticonInfo))) {
-          break label133;
+        Object localObject2;
+        if (((localObject1 instanceof IFavoriteEmoticonInfo)) && ((this.a instanceof IFavoriteEmoticonInfo)))
+        {
+          localObject1 = (IFavoriteEmoticonInfo)localObject1;
+          localObject2 = ((IFavoriteEmoticonInfo)localObject1).getUrl();
+          String str = ((IFavoriteEmoticonInfo)this.a).getUrl();
+          if ((localObject2 != null) && (((String)localObject2).equals(str))) {
+            return i;
+          }
+          localObject1 = ((IFavoriteEmoticonInfo)localObject1).getPath();
+          localObject2 = ((IFavoriteEmoticonInfo)this.a).getPath();
+          if ((localObject1 != null) && (((String)localObject1).equals(localObject2))) {
+            return i;
+          }
         }
-        localObject2 = ((FavoriteEmoticonInfo)localObject1).url;
-        String str = ((FavoriteEmoticonInfo)this.a).url;
-        if ((localObject2 != null) && (((String)localObject2).equals(str))) {}
-        do
+        else if (((localObject1 instanceof IPicEmoticonInfo)) && ((this.a instanceof IPicEmoticonInfo)))
+        {
+          localObject1 = ((IPicEmoticonInfo)localObject1).getEmoticon();
+          localObject2 = ((IPicEmoticonInfo)this.a).getEmoticon();
+          if ((localObject1 != null) && (localObject2 != null) && (((Emoticon)localObject1).eId != null) && (((Emoticon)localObject1).eId.equals(((Emoticon)localObject2).eId))) {
+            return i;
+          }
+        }
+        else if (((localObject1 instanceof CameraEmoticonInfo)) && ((this.a instanceof CameraEmoticonInfo)) && (((CameraEmoticonInfo)localObject1).emoId == ((CameraEmoticonInfo)this.a).emoId))
         {
           return i;
-          localObject1 = ((FavoriteEmoticonInfo)localObject1).path;
-          localObject2 = ((FavoriteEmoticonInfo)this.a).path;
-        } while ((localObject1 != null) && (((String)localObject1).equals(localObject2)));
+        }
       }
-      label133:
-      label203:
-      do
-      {
-        do
-        {
-          i += 1;
-          break;
-          if ((!(localObject1 instanceof PicEmoticonInfo)) || (!(this.a instanceof PicEmoticonInfo))) {
-            break label203;
-          }
-          localObject1 = ((PicEmoticonInfo)localObject1).emoticon;
-          localObject2 = ((PicEmoticonInfo)this.a).emoticon;
-        } while ((localObject1 == null) || (localObject2 == null) || (((Emoticon)localObject1).eId == null) || (!((Emoticon)localObject1).eId.equals(((Emoticon)localObject2).eId)));
-        return i;
-      } while ((!(localObject1 instanceof CameraEmoticonInfo)) || (!(this.a instanceof CameraEmoticonInfo)) || (((CameraEmoticonInfo)localObject1).emoId != ((CameraEmoticonInfo)this.a).emoId));
-      return i;
+      i += 1;
     }
     return 0;
   }
   
   public long a()
   {
-    if ((this.a instanceof ICustomEmotionInfo)) {
-      return ((ICustomEmotionInfo)this.a).getEmoId();
+    EmoticonInfo localEmoticonInfo = this.a;
+    if ((localEmoticonInfo instanceof ICustomEmotionInfo)) {
+      return ((ICustomEmotionInfo)localEmoticonInfo).getEmoId();
     }
     return 0L;
   }
   
   public Drawable a(Context paramContext)
   {
-    URLDrawable localURLDrawable = null;
-    if ((this.a instanceof PicEmoticonInfo)) {
-      localURLDrawable = ((PicEmoticonInfo)this.a).getLoadingDrawable("fromAIO", true);
+    EmoticonInfo localEmoticonInfo = this.a;
+    if ((localEmoticonInfo instanceof IPicEmoticonInfo)) {
+      return ((IPicEmoticonInfo)localEmoticonInfo).getLoadingDrawable("fromAIO", true);
     }
-    do
-    {
-      return localURLDrawable;
-      if ((this.a instanceof FavoriteEmoticonInfo)) {
-        return ((FavoriteEmoticonInfo)this.a).getBigDrawable(paramContext, paramContext.getResources().getDisplayMetrics().density, paramContext.getResources().getDisplayMetrics().widthPixels, paramContext.getResources().getDisplayMetrics().heightPixels);
-      }
-    } while (!(this.a instanceof CameraEmoticonInfo));
-    return ((CameraEmoticonInfo)this.a).getBigDrawable(paramContext, paramContext.getResources().getDisplayMetrics().widthPixels, paramContext.getResources().getDisplayMetrics().heightPixels);
+    if ((localEmoticonInfo instanceof IFavoriteEmoticonInfo)) {
+      return ((IFavoriteEmoticonInfo)localEmoticonInfo).getBigDrawable(paramContext, paramContext.getResources().getDisplayMetrics().density, paramContext.getResources().getDisplayMetrics().widthPixels, paramContext.getResources().getDisplayMetrics().heightPixels);
+    }
+    if ((localEmoticonInfo instanceof CameraEmoticonInfo)) {
+      return ((CameraEmoticonInfo)localEmoticonInfo).getBigDrawable(paramContext, paramContext.getResources().getDisplayMetrics().widthPixels, paramContext.getResources().getDisplayMetrics().heightPixels);
+    }
+    return null;
   }
   
   public CustomEmotionData a()
   {
-    if (((this.a instanceof FavoriteEmoticonInfo)) && (((FavoriteEmoticonInfo)this.a).resID != null))
+    Object localObject = this.a;
+    if (((localObject instanceof IFavoriteEmoticonInfo)) && (((IFavoriteEmoticonInfo)localObject).getResID() != null))
     {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject instanceof QQAppInterface))
       {
-        localObject = ((FavroamingDBManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FAVROAMING_DB_MANAGER)).a();
+        localObject = ((IFavroamingDBManagerService)((QQAppInterface)localObject).getRuntimeService(IFavroamingDBManagerService.class)).getEmoticonDataList();
         if (localObject != null)
         {
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
             CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
-            if (((FavoriteEmoticonInfo)this.a).resID.equalsIgnoreCase(localCustomEmotionData.resid)) {
+            if (((IFavoriteEmoticonInfo)this.a).getResID().equalsIgnoreCase(localCustomEmotionData.resid)) {
               return localCustomEmotionData;
             }
           }
@@ -134,45 +132,79 @@ public class FavEmoticonPreviewData
   {
     super.a(paramBundle, paramInt);
     paramBundle.putInt("cur_emotion_id", (int)a());
-    if ((this.a instanceof CameraEmoticonInfo)) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramBundle.putInt("cur_emotion_type", paramInt);
-      return;
+    if ((this.a instanceof CameraEmoticonInfo)) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
     }
+    paramBundle.putInt("cur_emotion_type", paramInt);
   }
   
   public boolean a()
   {
-    return this.a instanceof PicEmoticonInfo;
+    return this.a instanceof IPicEmoticonInfo;
   }
   
   public boolean a(EmoticonPreviewData paramEmoticonPreviewData)
   {
-    boolean bool = true;
-    if ((paramEmoticonPreviewData instanceof FavEmoticonPreviewData))
+    boolean bool4 = paramEmoticonPreviewData instanceof FavEmoticonPreviewData;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (bool4)
     {
       paramEmoticonPreviewData = ((FavEmoticonPreviewData)paramEmoticonPreviewData).a;
       Object localObject;
-      if (((paramEmoticonPreviewData instanceof FavoriteEmoticonInfo)) && ((this.a instanceof FavoriteEmoticonInfo)))
+      if (((paramEmoticonPreviewData instanceof IFavoriteEmoticonInfo)) && ((this.a instanceof IFavoriteEmoticonInfo)))
       {
-        paramEmoticonPreviewData = ((FavoriteEmoticonInfo)paramEmoticonPreviewData).resID;
-        localObject = ((FavoriteEmoticonInfo)this.a).resID;
-        return (paramEmoticonPreviewData != null) && (paramEmoticonPreviewData.equals(localObject));
-      }
-      if (((paramEmoticonPreviewData instanceof PicEmoticonInfo)) && ((this.a instanceof PicEmoticonInfo)))
-      {
-        paramEmoticonPreviewData = ((PicEmoticonInfo)paramEmoticonPreviewData).emoticon;
-        localObject = ((PicEmoticonInfo)this.a).emoticon;
-        if ((paramEmoticonPreviewData != null) && (localObject != null) && (paramEmoticonPreviewData.eId != null) && (paramEmoticonPreviewData.eId.equals(((Emoticon)localObject).eId)) && (paramEmoticonPreviewData.epId != null) && (paramEmoticonPreviewData.epId.equals(((Emoticon)localObject).epId))) {}
-        for (;;)
+        paramEmoticonPreviewData = ((IFavoriteEmoticonInfo)paramEmoticonPreviewData).getResID();
+        localObject = ((IFavoriteEmoticonInfo)this.a).getResID();
+        bool1 = bool2;
+        if (paramEmoticonPreviewData != null)
         {
-          return bool;
-          bool = false;
+          bool1 = bool2;
+          if (paramEmoticonPreviewData.equals(localObject)) {
+            bool1 = true;
+          }
+        }
+        return bool1;
+      }
+      bool1 = bool3;
+      if ((paramEmoticonPreviewData instanceof IPicEmoticonInfo))
+      {
+        bool1 = bool3;
+        if ((this.a instanceof IPicEmoticonInfo))
+        {
+          paramEmoticonPreviewData = ((IPicEmoticonInfo)paramEmoticonPreviewData).getEmoticon();
+          localObject = ((IPicEmoticonInfo)this.a).getEmoticon();
+          bool1 = bool3;
+          if (paramEmoticonPreviewData != null)
+          {
+            bool1 = bool3;
+            if (localObject != null)
+            {
+              bool1 = bool3;
+              if (paramEmoticonPreviewData.eId != null)
+              {
+                bool1 = bool3;
+                if (paramEmoticonPreviewData.eId.equals(((Emoticon)localObject).eId))
+                {
+                  bool1 = bool3;
+                  if (paramEmoticonPreviewData.epId != null)
+                  {
+                    bool1 = bool3;
+                    if (paramEmoticonPreviewData.epId.equals(((Emoticon)localObject).epId)) {
+                      bool1 = true;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
-    return false;
+    return bool1;
   }
   
   public EmoticonPreviewData b(Bundle paramBundle)
@@ -185,25 +217,24 @@ public class FavEmoticonPreviewData
       paramBundle = BaseApplicationImpl.getApplication().getRuntime();
       if ((paramBundle instanceof QQAppInterface))
       {
-        paramBundle = (QQAppInterface)paramBundle;
-        if (i == 1) {}
-        for (i = QQManagerFactory.CAMERA_EMOTION_DB_MANAGER;; i = QQManagerFactory.FAVROAMING_DB_MANAGER)
+        Object localObject = (QQAppInterface)paramBundle;
+        if (i == 1) {
+          paramBundle = ICameraEmotionRoamingDBManagerService.class;
+        } else {
+          paramBundle = IFavroamingDBManagerService.class;
+        }
+        paramBundle = (CustomEmotionRoamingDBManagerBase)((QQAppInterface)localObject).getRuntimeService(paramBundle);
+        localObject = paramBundle.getEmoticonDataList();
+        if ((localObject != null) && (!((List)localObject).isEmpty()))
         {
-          paramBundle = (CustomEmotionRoamingDBManagerBase)paramBundle.getManager(i);
-          Object localObject = paramBundle.a();
-          if ((localObject == null) || (((List)localObject).isEmpty())) {
-            break;
-          }
           localObject = ((List)localObject).iterator();
-          CustomEmotionBase localCustomEmotionBase;
-          do
+          while (((Iterator)localObject).hasNext())
           {
-            if (!((Iterator)localObject).hasNext()) {
-              break;
+            CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)((Iterator)localObject).next();
+            if (localCustomEmotionBase.emoId == j) {
+              return new FavEmoticonPreviewData(paramBundle.convertEmotionDataToInfo(localCustomEmotionBase));
             }
-            localCustomEmotionBase = (CustomEmotionBase)((Iterator)localObject).next();
-          } while (localCustomEmotionBase.emoId != j);
-          return new FavEmoticonPreviewData(paramBundle.a(localCustomEmotionBase));
+          }
         }
       }
     }
@@ -227,7 +258,7 @@ public class FavEmoticonPreviewData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.FavEmoticonPreviewData
  * JD-Core Version:    0.7.0.1
  */

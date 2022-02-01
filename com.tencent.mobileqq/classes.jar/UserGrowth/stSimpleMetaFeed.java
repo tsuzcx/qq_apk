@@ -11,17 +11,21 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class stSimpleMetaFeed
   extends JceStruct
 {
+  static stVideoTag cache_bottomTag;
   static ArrayList<stMagicBrand> cache_brands;
   static stMetaTag cache_bt_style;
-  static stCardInfo cache_cardInfo = new stCardInfo();
+  static stCardInfo cache_cardInfo;
   static stCollection cache_collection;
   static ArrayList<stMetaComment> cache_comments;
+  static stDramaFall cache_dramaInfo;
+  static stFeedBarInfo cache_feedBarInfo = new stFeedBarInfo();
   static stFloatingLayerCardStyle cache_floatingLayerCardStyle;
   static stFriendLikes cache_friendLikes;
   static stMetaGeoInfo cache_geoInfo;
@@ -45,6 +49,8 @@ public final class stSimpleMetaFeed
   static stVideoTag cache_videoTag;
   static stWaterFallCardStyle cache_waterFallCardStyle;
   static stWaterFallItemStrategy cache_waterFallItemStrategy;
+  static stCallWeishiButton cache_weishiButton;
+  public stVideoTag bottomTag = null;
   public String bottom_img_url = "";
   public ArrayList<stMagicBrand> brands = null;
   public stMetaTag bt_style = null;
@@ -53,6 +59,8 @@ public final class stSimpleMetaFeed
   public ArrayList<stMetaComment> comments = null;
   public int createTime = 0;
   public int ding_count = 0;
+  public stDramaFall dramaInfo = null;
+  public stFeedBarInfo feedBarInfo = null;
   public String feed_desc = "";
   public String feed_material_jump_url = "";
   public stFloatingLayerCardStyle floatingLayerCardStyle = null;
@@ -97,6 +105,7 @@ public final class stSimpleMetaFeed
   public String video_url = "";
   public stWaterFallCardStyle waterFallCardStyle = null;
   public stWaterFallItemStrategy waterFallItemStrategy = null;
+  public stCallWeishiButton weishiButton = null;
   public String weishi_jump_url = "";
   public String wording = "";
   
@@ -145,11 +154,15 @@ public final class stSimpleMetaFeed
     cache_qqGroups.add(localObject);
     cache_live = new stLive();
     cache_opInfo = new stFeedOpInfo();
+    cache_cardInfo = new stCardInfo();
+    cache_dramaInfo = new stDramaFall();
+    cache_bottomTag = new stVideoTag();
+    cache_weishiButton = new stCallWeishiButton();
   }
   
   public stSimpleMetaFeed() {}
   
-  public stSimpleMetaFeed(String paramString1, String paramString2, String paramString3, stSimpleMetaPerson paramstSimpleMetaPerson, stMetaUgcVideoSeg paramstMetaUgcVideoSeg, ArrayList<stMetaUgcImage> paramArrayList, int paramInt1, int paramInt2, ArrayList<stMetaComment> paramArrayList1, String paramString4, String paramString5, int paramInt3, int paramInt4, String paramString6, String paramString7, stShareInfo paramstShareInfo, String paramString8, long paramLong1, long paramLong2, stMusicFullInfo paramstMusicFullInfo, String paramString9, ArrayList<stMetaTag> paramArrayList2, Map<Integer, byte[]> paramMap, int paramInt5, String paramString10, stMetaTag paramstMetaTag, stH5OpInfo paramstH5OpInfo, int paramInt6, Map<String, String> paramMap1, String paramString11, String paramString12, stNewIconStyle paramstNewIconStyle, String paramString13, stWaterFallItemStrategy paramstWaterFallItemStrategy, stWaterFallCardStyle paramstWaterFallCardStyle, int paramInt7, ArrayList<stImgReplacement> paramArrayList3, stOpVideo paramstOpVideo, String paramString14, stMetaGeoInfo paramstMetaGeoInfo, stMagicBrand paramstMagicBrand, ArrayList<stSimpleComment> paramArrayList4, int paramInt8, stVideoTag paramstVideoTag, stFloatingLayerCardStyle paramstFloatingLayerCardStyle, stCollection paramstCollection, stFriendLikes paramstFriendLikes, ArrayList<stMagicBrand> paramArrayList5, ArrayList<stQQGroupInfo> paramArrayList6, boolean paramBoolean, stLive paramstLive, int paramInt9, stFeedOpInfo paramstFeedOpInfo, stCardInfo paramstCardInfo)
+  public stSimpleMetaFeed(String paramString1, String paramString2, String paramString3, stSimpleMetaPerson paramstSimpleMetaPerson, stMetaUgcVideoSeg paramstMetaUgcVideoSeg, ArrayList<stMetaUgcImage> paramArrayList, int paramInt1, int paramInt2, ArrayList<stMetaComment> paramArrayList1, String paramString4, String paramString5, int paramInt3, int paramInt4, String paramString6, String paramString7, stShareInfo paramstShareInfo, String paramString8, long paramLong1, long paramLong2, stMusicFullInfo paramstMusicFullInfo, String paramString9, ArrayList<stMetaTag> paramArrayList2, Map<Integer, byte[]> paramMap, int paramInt5, String paramString10, stMetaTag paramstMetaTag, stH5OpInfo paramstH5OpInfo, int paramInt6, Map<String, String> paramMap1, String paramString11, String paramString12, stNewIconStyle paramstNewIconStyle, String paramString13, stWaterFallItemStrategy paramstWaterFallItemStrategy, stWaterFallCardStyle paramstWaterFallCardStyle, int paramInt7, ArrayList<stImgReplacement> paramArrayList3, stOpVideo paramstOpVideo, String paramString14, stMetaGeoInfo paramstMetaGeoInfo, stMagicBrand paramstMagicBrand, ArrayList<stSimpleComment> paramArrayList4, int paramInt8, stVideoTag paramstVideoTag1, stFloatingLayerCardStyle paramstFloatingLayerCardStyle, stCollection paramstCollection, stFriendLikes paramstFriendLikes, ArrayList<stMagicBrand> paramArrayList5, ArrayList<stQQGroupInfo> paramArrayList6, boolean paramBoolean, stLive paramstLive, int paramInt9, stFeedOpInfo paramstFeedOpInfo, stCardInfo paramstCardInfo, stDramaFall paramstDramaFall, stVideoTag paramstVideoTag2, stCallWeishiButton paramstCallWeishiButton, stFeedBarInfo paramstFeedBarInfo)
   {
     this.id = paramString1;
     this.wording = paramString2;
@@ -194,7 +207,7 @@ public final class stSimpleMetaFeed
     this.magicBrand = paramstMagicBrand;
     this.simpleComments = paramArrayList4;
     this.createTime = paramInt8;
-    this.videoTag = paramstVideoTag;
+    this.videoTag = paramstVideoTag1;
     this.floatingLayerCardStyle = paramstFloatingLayerCardStyle;
     this.collection = paramstCollection;
     this.friendLikes = paramstFriendLikes;
@@ -205,6 +218,10 @@ public final class stSimpleMetaFeed
     this.scaleType = paramInt9;
     this.opInfo = paramstFeedOpInfo;
     this.cardInfo = paramstCardInfo;
+    this.dramaInfo = paramstDramaFall;
+    this.bottomTag = paramstVideoTag2;
+    this.weishiButton = paramstCallWeishiButton;
+    this.feedBarInfo = paramstFeedBarInfo;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -263,153 +280,215 @@ public final class stSimpleMetaFeed
     this.scaleType = paramJceInputStream.read(this.scaleType, 51, false);
     this.opInfo = ((stFeedOpInfo)paramJceInputStream.read(cache_opInfo, 52, false));
     this.cardInfo = ((stCardInfo)paramJceInputStream.read(cache_cardInfo, 53, false));
+    this.dramaInfo = ((stDramaFall)paramJceInputStream.read(cache_dramaInfo, 54, false));
+    this.bottomTag = ((stVideoTag)paramJceInputStream.read(cache_bottomTag, 55, false));
+    this.weishiButton = ((stCallWeishiButton)paramJceInputStream.read(cache_weishiButton, 56, false));
+    this.feedBarInfo = ((stFeedBarInfo)paramJceInputStream.read(cache_feedBarInfo, 57, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.wording != null) {
-      paramJceOutputStream.write(this.wording, 1);
+    localObject = this.wording;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.poster_id != null) {
-      paramJceOutputStream.write(this.poster_id, 2);
+    localObject = this.poster_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.poster != null) {
-      paramJceOutputStream.write(this.poster, 3);
+    localObject = this.poster;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.video != null) {
-      paramJceOutputStream.write(this.video, 4);
+    localObject = this.video;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.images != null) {
-      paramJceOutputStream.write(this.images, 5);
+    localObject = this.images;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
     paramJceOutputStream.write(this.ding_count, 6);
     paramJceOutputStream.write(this.total_comment_num, 7);
-    if (this.comments != null) {
-      paramJceOutputStream.write(this.comments, 8);
+    localObject = this.comments;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
-    if (this.material_id != null) {
-      paramJceOutputStream.write(this.material_id, 9);
+    localObject = this.material_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.material_desc != null) {
-      paramJceOutputStream.write(this.material_desc, 10);
+    localObject = this.material_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.is_ding, 11);
     paramJceOutputStream.write(this.playNum, 12);
-    if (this.video_url != null) {
-      paramJceOutputStream.write(this.video_url, 13);
+    localObject = this.video_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
-    if (this.material_thumburl != null) {
-      paramJceOutputStream.write(this.material_thumburl, 14);
+    localObject = this.material_thumburl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.share_info != null) {
-      paramJceOutputStream.write(this.share_info, 15);
+    localObject = this.share_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
     }
-    if (this.feed_desc != null) {
-      paramJceOutputStream.write(this.feed_desc, 16);
+    localObject = this.feed_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
     paramJceOutputStream.write(this.music_begin_time, 17);
     paramJceOutputStream.write(this.music_end_time, 18);
-    if (this.music_info != null) {
-      paramJceOutputStream.write(this.music_info, 19);
+    localObject = this.music_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 19);
     }
-    if (this.music_id != null) {
-      paramJceOutputStream.write(this.music_id, 20);
+    localObject = this.music_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.tags != null) {
-      paramJceOutputStream.write(this.tags, 21);
+    localObject = this.tags;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 21);
     }
-    if (this.map_pass_back != null) {
-      paramJceOutputStream.write(this.map_pass_back, 22);
+    localObject = this.map_pass_back;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 22);
     }
     paramJceOutputStream.write(this.gdt_ad_type, 23);
-    if (this.gdt_ad_info != null) {
-      paramJceOutputStream.write(this.gdt_ad_info, 24);
+    localObject = this.gdt_ad_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 24);
     }
-    if (this.bt_style != null) {
-      paramJceOutputStream.write(this.bt_style, 25);
+    localObject = this.bt_style;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 25);
     }
-    if (this.h5_op_info != null) {
-      paramJceOutputStream.write(this.h5_op_info, 26);
+    localObject = this.h5_op_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 26);
     }
     paramJceOutputStream.write(this.video_type, 27);
-    if (this.map_ext != null) {
-      paramJceOutputStream.write(this.map_ext, 28);
+    localObject = this.map_ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 28);
     }
-    if (this.weishi_jump_url != null) {
-      paramJceOutputStream.write(this.weishi_jump_url, 29);
+    localObject = this.weishi_jump_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 29);
     }
-    if (this.bottom_img_url != null) {
-      paramJceOutputStream.write(this.bottom_img_url, 30);
+    localObject = this.bottom_img_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 30);
     }
-    if (this.new_icon != null) {
-      paramJceOutputStream.write(this.new_icon, 31);
+    localObject = this.new_icon;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 31);
     }
-    if (this.feed_material_jump_url != null) {
-      paramJceOutputStream.write(this.feed_material_jump_url, 32);
+    localObject = this.feed_material_jump_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 32);
     }
-    if (this.waterFallItemStrategy != null) {
-      paramJceOutputStream.write(this.waterFallItemStrategy, 33);
+    localObject = this.waterFallItemStrategy;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 33);
     }
-    if (this.waterFallCardStyle != null) {
-      paramJceOutputStream.write(this.waterFallCardStyle, 34);
+    localObject = this.waterFallCardStyle;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 34);
     }
     paramJceOutputStream.write(this.videoPoolType, 35);
-    if (this.imgReplacements != null) {
-      paramJceOutputStream.write(this.imgReplacements, 36);
+    localObject = this.imgReplacements;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 36);
     }
-    if (this.opVideo != null) {
-      paramJceOutputStream.write(this.opVideo, 37);
+    localObject = this.opVideo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 37);
     }
-    if (this.traceId != null) {
-      paramJceOutputStream.write(this.traceId, 38);
+    localObject = this.traceId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 38);
     }
-    if (this.geoInfo != null) {
-      paramJceOutputStream.write(this.geoInfo, 39);
+    localObject = this.geoInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 39);
     }
-    if (this.magicBrand != null) {
-      paramJceOutputStream.write(this.magicBrand, 40);
+    localObject = this.magicBrand;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 40);
     }
-    if (this.simpleComments != null) {
-      paramJceOutputStream.write(this.simpleComments, 41);
+    localObject = this.simpleComments;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 41);
     }
     paramJceOutputStream.write(this.createTime, 42);
-    if (this.videoTag != null) {
-      paramJceOutputStream.write(this.videoTag, 43);
+    localObject = this.videoTag;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 43);
     }
-    if (this.floatingLayerCardStyle != null) {
-      paramJceOutputStream.write(this.floatingLayerCardStyle, 44);
+    localObject = this.floatingLayerCardStyle;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 44);
     }
-    if (this.collection != null) {
-      paramJceOutputStream.write(this.collection, 45);
+    localObject = this.collection;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 45);
     }
-    if (this.friendLikes != null) {
-      paramJceOutputStream.write(this.friendLikes, 46);
+    localObject = this.friendLikes;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 46);
     }
-    if (this.brands != null) {
-      paramJceOutputStream.write(this.brands, 47);
+    localObject = this.brands;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 47);
     }
-    if (this.qqGroups != null) {
-      paramJceOutputStream.write(this.qqGroups, 48);
+    localObject = this.qqGroups;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 48);
     }
     paramJceOutputStream.write(this.isLoop, 49);
-    if (this.live != null) {
-      paramJceOutputStream.write(this.live, 50);
+    localObject = this.live;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 50);
     }
     paramJceOutputStream.write(this.scaleType, 51);
-    if (this.opInfo != null) {
-      paramJceOutputStream.write(this.opInfo, 52);
+    localObject = this.opInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 52);
     }
-    if (this.cardInfo != null) {
-      paramJceOutputStream.write(this.cardInfo, 53);
+    localObject = this.cardInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 53);
+    }
+    localObject = this.dramaInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 54);
+    }
+    localObject = this.bottomTag;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 55);
+    }
+    localObject = this.weishiButton;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 56);
+    }
+    localObject = this.feedBarInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 57);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stSimpleMetaFeed
  * JD-Core Version:    0.7.0.1
  */

@@ -75,35 +75,34 @@ public class VImage
       return localScaleType;
     }
     int i = -1;
-    switch (paramString.hashCode())
+    int j = paramString.hashCode();
+    if (j != -1881872635)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if (j != 94852023)
       {
-      default: 
-        return localScaleType;
-      case 0: 
-        return ImageView.ScaleType.CENTER_CROP;
-        if (paramString.equals("cover"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("contain"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("stretch")) {
-              i = 2;
-            }
-          }
+        if ((j == 951526612) && (paramString.equals("contain"))) {
+          i = 1;
         }
-        break;
+      }
+      else if (paramString.equals("cover")) {
+        i = 0;
       }
     }
-    return ImageView.ScaleType.FIT_CENTER;
-    return ImageView.ScaleType.FIT_XY;
+    else if (paramString.equals("stretch")) {
+      i = 2;
+    }
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2) {
+          return localScaleType;
+        }
+        return ImageView.ScaleType.FIT_XY;
+      }
+      return ImageView.ScaleType.FIT_CENTER;
+    }
+    return ImageView.ScaleType.CENTER_CROP;
   }
   
   private void initHandler()
@@ -116,128 +115,151 @@ public class VImage
   
   private void setImgAutoSize()
   {
-    if (!getDomObject().getAttributes().containsKey("autosize")) {}
-    for (;;)
-    {
+    if (!getDomObject().getAttributes().containsKey("autosize")) {
       return;
-      if ((getDomObject().getStyle().containsKey("width")) && (getDomObject().getStyle().containsKey("height"))) {
-        continue;
-      }
-      try
+    }
+    if ((getDomObject().getStyle().containsKey("width")) && (getDomObject().getStyle().containsKey("height"))) {
+      return;
+    }
+    try
+    {
+      Object localObject1 = new JSONObject();
+      this.autoSize = getDomObject().getAttributes().get("autosize").toString();
+      if ((!AUTOSIZE_NONE.equals(this.autoSize)) && (this.imgRealWidth > 0))
       {
-        Object localObject1 = new JSONObject();
-        this.autoSize = getDomObject().getAttributes().get("autosize").toString();
-        if ((AUTOSIZE_NONE.equals(this.autoSize)) || (this.imgRealWidth <= 0)) {
-          continue;
-        }
-        ViolaLogUtils.d("VComponent", "setImgAutoSize :" + this.autoSize);
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("setImgAutoSize :");
+        ((StringBuilder)localObject2).append(this.autoSize);
+        ViolaLogUtils.d("VComponent", ((StringBuilder)localObject2).toString());
         int k = (int)getDomObject().getLayoutWidth();
-        int i = (int)getDomObject().getLayoutHeight();
-        JSONObject localJSONObject = new JSONObject();
-        int j;
-        if (AUTOSIZE_WIDTH.equals(this.autoSize))
+        int j = (int)getDomObject().getLayoutHeight();
+        localObject2 = new JSONObject();
+        boolean bool = AUTOSIZE_WIDTH.equals(this.autoSize);
+        int m;
+        float f1;
+        int i;
+        float f2;
+        Object localObject3;
+        if (bool)
         {
-          j = (int)getDomObject().flexStyle.maxHeight;
-          if (Float.isNaN(j)) {
-            break label770;
-          }
-          if (this.imgReadHeight <= j) {
-            break label620;
-          }
-          this.imgRealWidth = ((int)(j / this.imgReadHeight * this.imgRealWidth));
-          this.imgReadHeight = j;
-          if (i != 0) {
-            break label770;
-          }
+          m = (int)getDomObject().flexStyle.maxHeight;
+          f1 = m;
           i = j;
-        }
-        label770:
-        for (;;)
-        {
-          label219:
-          j = (int)(i / this.imgReadHeight * this.imgRealWidth);
-          int m = (int)FlexConvertUtils.px2dip(j);
-          localJSONObject.put("width", m + "dp");
-          localJSONObject.put("height", (int)FlexConvertUtils.px2dip(i) + "dp");
-          if ((j == getDomObject().getLayoutWidth()) && (i == getDomObject().getLayoutHeight())) {
-            break;
-          }
-          if (AUTOSIZE_HEIGHT.equals(this.autoSize))
-          {
-            m = (int)getDomObject().flexStyle.maxWidth;
-            i = k;
-            if (!Float.isNaN(m))
+          if (!Float.isNaN(f1)) {
+            if (this.imgReadHeight > m)
             {
-              if (this.imgRealWidth <= m) {
-                break label632;
+              this.imgRealWidth = ((int)(f1 / this.imgReadHeight * this.imgRealWidth));
+              this.imgReadHeight = m;
+              i = j;
+              if (j == 0) {
+                i = m;
               }
-              this.imgReadHeight = ((int)(m / this.imgRealWidth * this.imgReadHeight));
+            }
+            else
+            {
+              i = j;
+              if (j == 0) {
+                i = this.imgReadHeight;
+              }
+            }
+          }
+          f1 = i;
+          f2 = (int)(f1 / this.imgReadHeight * this.imgRealWidth);
+          i = (int)FlexConvertUtils.px2dip(f2);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append("dp");
+          ((JSONObject)localObject2).put("width", ((StringBuilder)localObject3).toString());
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((int)FlexConvertUtils.px2dip(f1));
+          ((StringBuilder)localObject3).append("dp");
+          ((JSONObject)localObject2).put("height", ((StringBuilder)localObject3).toString());
+          if ((f2 == getDomObject().getLayoutWidth()) && (f1 == getDomObject().getLayoutHeight())) {
+            return;
+          }
+        }
+        if (AUTOSIZE_HEIGHT.equals(this.autoSize))
+        {
+          m = (int)getDomObject().flexStyle.maxWidth;
+          f1 = m;
+          i = k;
+          if (!Float.isNaN(f1)) {
+            if (this.imgRealWidth > m)
+            {
+              this.imgReadHeight = ((int)(f1 / this.imgRealWidth * this.imgReadHeight));
               this.imgRealWidth = m;
               i = k;
               if (k == 0) {
                 i = m;
               }
             }
-          }
-          for (;;)
-          {
-            j = (int)(i / this.imgRealWidth * this.imgReadHeight);
-            k = (int)FlexConvertUtils.px2dip(j);
-            localJSONObject.put("width", (int)FlexConvertUtils.px2dip(i) + "dp");
-            localJSONObject.put("height", k + "dp");
-            if ((j == getDomObject().getLayoutHeight()) && (i == getDomObject().getLayoutWidth())) {
-              break;
-            }
-            ((JSONObject)localObject1).put("style", localJSONObject);
-            localObject1 = new MethodUpdateElement(getRef(), (JSONObject)localObject1);
-            if ((localObject1 instanceof DOMAction)) {
-              ViolaSDKManager.getInstance().getDomManager().postAction(getInstance().getInstanceId(), (DOMAction)localObject1, false);
-            }
-            ViolaLogUtils.d("VComponent", " for image width :" + this.imgRealWidth + ",height:" + this.imgReadHeight);
-            return;
-            label620:
-            if (i != 0) {
-              break label770;
-            }
-            i = this.imgReadHeight;
-            break label219;
-            label632:
-            j = k;
-            if (k == 0) {
-              j = this.imgRealWidth;
-            }
-            i = j;
-            if (getDomObject().getAttributes().containsKey("autoScaleWidth"))
+            else
             {
-              Object localObject2 = getDomObject().getAttributes().get("autoScaleWidth");
+              j = k;
+              if (k == 0) {
+                j = this.imgRealWidth;
+              }
               i = j;
-              if (localObject2 != null)
+              if (getDomObject().getAttributes().containsKey("autoScaleWidth"))
               {
-                boolean bool = TextUtils.isEmpty(localObject2.toString());
+                localObject3 = getDomObject().getAttributes().get("autoScaleWidth");
                 i = j;
-                if (!bool)
+                if (localObject3 != null)
                 {
+                  bool = TextUtils.isEmpty(localObject3.toString());
                   i = j;
-                  try
+                  if (!bool)
                   {
-                    if (j >= Integer.parseInt(localObject2.toString())) {
-                      i = Math.min((int)getDomObject().getParent().getLayoutWidth(), m);
-                    }
-                  }
-                  catch (NumberFormatException localNumberFormatException)
-                  {
-                    ViolaLogUtils.e("VComponent", "AUTO_SCALE_WIDTH NumberFormatException" + localNumberFormatException.getMessage());
                     i = j;
+                    try
+                    {
+                      if (j >= Integer.parseInt(localObject3.toString())) {
+                        i = Math.min((int)getDomObject().getParent().getLayoutWidth(), m);
+                      }
+                    }
+                    catch (NumberFormatException localNumberFormatException)
+                    {
+                      StringBuilder localStringBuilder2 = new StringBuilder();
+                      localStringBuilder2.append("AUTO_SCALE_WIDTH NumberFormatException");
+                      localStringBuilder2.append(localNumberFormatException.getMessage());
+                      ViolaLogUtils.e("VComponent", localStringBuilder2.toString());
+                      i = j;
+                    }
                   }
                 }
               }
             }
           }
+          f1 = i;
+          f2 = (int)(f1 / this.imgRealWidth * this.imgReadHeight);
+          i = (int)FlexConvertUtils.px2dip(f2);
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append((int)FlexConvertUtils.px2dip(f1));
+          localStringBuilder1.append("dp");
+          ((JSONObject)localObject2).put("width", localStringBuilder1.toString());
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append(i);
+          localStringBuilder1.append("dp");
+          ((JSONObject)localObject2).put("height", localStringBuilder1.toString());
+          if ((f2 == getDomObject().getLayoutHeight()) && (f1 == getDomObject().getLayoutWidth())) {
+            return;
+          }
         }
-        return;
+        ((JSONObject)localObject1).put("style", localObject2);
+        localObject1 = new MethodUpdateElement(getRef(), (JSONObject)localObject1);
+        if ((localObject1 instanceof DOMAction)) {
+          ViolaSDKManager.getInstance().getDomManager().postAction(getInstance().getInstanceId(), (DOMAction)localObject1, false);
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" for image width :");
+        ((StringBuilder)localObject1).append(this.imgRealWidth);
+        ((StringBuilder)localObject1).append(",height:");
+        ((StringBuilder)localObject1).append(this.imgReadHeight);
+        ViolaLogUtils.d("VComponent", ((StringBuilder)localObject1).toString());
       }
-      catch (JSONException localJSONException) {}
+      return;
     }
+    catch (JSONException localJSONException) {}
   }
   
   private boolean shouldSetSrc()
@@ -245,33 +267,36 @@ public class VImage
     if (!isMounted()) {
       return false;
     }
-    if ((getDomObject().getLayoutWidth() == 0.0F) || (getDomObject().getLayoutHeight() == 0.0F)) {
-      return false;
-    }
-    if (getDomObject().getStyle().containsKey("borderRadius"))
+    if (getDomObject().getLayoutWidth() != 0.0F)
     {
-      if (getHostView() == null) {
+      if (getDomObject().getLayoutHeight() == 0.0F) {
         return false;
       }
-      if ((((VImageView)getHostView()).getWidth() == 0) && (((VImageView)getHostView()).getHeight() == 0)) {
-        return false;
+      if (getDomObject().getStyle().containsKey("borderRadius"))
+      {
+        if (getHostView() == null) {
+          return false;
+        }
+        if ((((VImageView)getHostView()).getWidth() == 0) && (((VImageView)getHostView()).getHeight() == 0)) {
+          return false;
+        }
       }
+      return true;
     }
-    return true;
+    return false;
   }
   
   public void autoRecoverImage()
   {
     if (this.mAutoRecycle)
     {
-      if (this.mIsSetSrc.get()) {
+      if (this.mIsSetSrc.get())
+      {
         setImageSrc(this.mSrc, true);
+        return;
       }
+      setRemoteSrc(this.mPlaceHolderUrl, false, false);
     }
-    else {
-      return;
-    }
-    setRemoteSrc(this.mPlaceHolderUrl, false, false);
   }
   
   public void autoReleaseImage()
@@ -308,7 +333,8 @@ public class VImage
   public boolean isNeedDoAlpha()
   {
     this.mLoadImageUrlEndTime = System.currentTimeMillis();
-    if ((this.mLoadImageUrlStartTime != 0L) && (this.mLoadImageUrlEndTime - this.mLoadImageUrlStartTime > 250L))
+    long l = this.mLoadImageUrlStartTime;
+    if ((l != 0L) && (this.mLoadImageUrlEndTime - l > 250L))
     {
       this.mLoadImageUrlStartTime = 0L;
       this.mNeedDoAlpha = true;
@@ -331,7 +357,7 @@ public class VImage
     this.mNeedDoAlpha = false;
   }
   
-  public boolean resetAttr(String paramString)
+  protected boolean resetAttr(String paramString)
   {
     if ((!super.resetAttr(paramString)) && (paramString.equals("resize")))
     {
@@ -364,37 +390,30 @@ public class VImage
     ((VImageView)getHostView()).reset();
   }
   
-  public boolean resetStyle(String paramString)
+  protected boolean resetStyle(String paramString)
   {
-    int i;
     if (!super.resetStyle(paramString))
     {
-      i = -1;
-      switch (paramString.hashCode())
+      int i = -1;
+      int j = paramString.hashCode();
+      if (j != -1428201511)
       {
-      }
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return false;
-        if (paramString.equals("blur"))
-        {
+        if ((j == 3027047) && (paramString.equals("blur"))) {
           i = 0;
-          continue;
-          if (paramString.equals("blurRadius")) {
-            i = 1;
-          }
         }
-        break;
       }
+      else if (paramString.equals("blurRadius")) {
+        i = 1;
+      }
+      if ((i != 0) && (i != 1)) {
+        return false;
+      }
+      if (this.mHost != null) {
+        ((VImageView)this.mHost).setBlurRadius(0);
+      }
+      return true;
     }
-    if (this.mHost != null) {
-      ((VImageView)this.mHost).setBlurRadius(0);
-    }
-    return true;
+    return false;
   }
   
   @VComponentProp(name="alphaAnim")
@@ -454,12 +473,12 @@ public class VImage
   
   public void setImageSrc(String paramString, boolean paramBoolean)
   {
-    if ((paramString == null) || (getDomObject().getLayoutWidth() == 0.0F) || (getDomObject().getLayoutHeight() == 0.0F)) {}
-    ImageView localImageView;
-    do
+    if ((paramString != null) && (getDomObject().getLayoutWidth() != 0.0F))
     {
-      return;
-      localImageView = (ImageView)getHostView();
+      if (getDomObject().getLayoutHeight() == 0.0F) {
+        return;
+      }
+      ImageView localImageView = (ImageView)getHostView();
       if (("".equals(paramString)) && (localImageView != null))
       {
         localImageView.setImageDrawable(null);
@@ -475,14 +494,17 @@ public class VImage
         setRemoteSrc(this.mSrc, false, false);
         return;
       }
-    } while (paramString.equals(this.mSrc));
-    if ((localImageView != null) && (localImageView.getDrawable() != null)) {
-      localImageView.setImageDrawable(null);
+      if (paramString.equals(this.mSrc)) {
+        return;
+      }
+      if ((localImageView != null) && (localImageView.getDrawable() != null)) {
+        localImageView.setImageDrawable(null);
+      }
+      this.mSrc = paramString;
+      this.mIsSetSrc.set(true);
+      this.mLoadImageUrlStartTime = System.currentTimeMillis();
+      setRemoteSrc(this.mSrc, true, false);
     }
-    this.mSrc = paramString;
-    this.mIsSetSrc.set(true);
-    this.mLoadImageUrlStartTime = System.currentTimeMillis();
-    setRemoteSrc(this.mSrc, true, false);
   }
   
   @VComponentProp(name="placeholder")
@@ -491,15 +513,13 @@ public class VImage
     if ((!this.mIsSetSrc.get()) && (!TextUtils.isEmpty(paramString)))
     {
       this.mPlaceHolderUrl = paramString;
-      if (shouldSetSrc()) {
+      if (shouldSetSrc())
+      {
         setRemoteSrc(paramString, false, false);
+        return;
       }
+      this.mHandler.post(this.mHolderRunnable);
     }
-    else
-    {
-      return;
-    }
-    this.mHandler.post(this.mHolderRunnable);
   }
   
   public boolean setProperty(String paramString, Object paramObject)
@@ -508,31 +528,33 @@ public class VImage
     if (!TextUtils.isEmpty(str))
     {
       int i = -1;
-      switch (paramString.hashCode())
+      int j = paramString.hashCode();
+      if (j != -1428201511)
       {
-      }
-      for (;;)
-      {
-        switch (i)
-        {
-        default: 
-          return super.setProperty(paramString, paramObject);
-          if (paramString.equals("blur"))
-          {
-            i = 0;
-            continue;
-            if (paramString.equals("blurRadius")) {
-              i = 1;
-            }
-          }
-          break;
+        if ((j == 3027047) && (paramString.equals("blur"))) {
+          i = 0;
         }
       }
+      else if (paramString.equals("blurRadius")) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        if (i != 1) {
+          return super.setProperty(paramString, paramObject);
+        }
+        i = (int)FlexConvertUtils.converPxByViewportToRealPx(str, 750);
+        paramString = (VImageView)getHostView();
+        d = i;
+        Double.isNaN(d);
+        paramString.setBlurRadius((int)(d * 2.3D));
+        return true;
+      }
       i = (int)FlexConvertUtils.converPxByViewportToRealPx(str, 750);
-      ((VImageView)getHostView()).setBlurRadius((int)(i * 2.3D));
-      return true;
-      i = (int)FlexConvertUtils.converPxByViewportToRealPx(str, 750);
-      ((VImageView)getHostView()).setBlurRadius((int)(i * 2.3D));
+      paramString = (VImageView)getHostView();
+      double d = i;
+      Double.isNaN(d);
+      paramString.setBlurRadius((int)(d * 2.3D));
       return true;
     }
     return super.setProperty(paramString, paramObject);
@@ -565,20 +587,18 @@ public class VImage
     if (!TextUtils.isEmpty(paramString))
     {
       this.mUrl = paramString;
-      if (shouldSetSrc()) {
+      if (shouldSetSrc())
+      {
         setImageSrc(paramString, false);
+        return;
       }
+      this.mHandler.post(this.mRunnable);
     }
-    else
-    {
-      return;
-    }
-    this.mHandler.post(this.mRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VImage
  * JD-Core Version:    0.7.0.1
  */

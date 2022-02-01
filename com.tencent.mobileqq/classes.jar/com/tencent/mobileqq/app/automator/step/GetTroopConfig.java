@@ -2,24 +2,24 @@ package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.troop.troopconfig.api.ITroopConfigHandler;
 
 public class GetTroopConfig
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    if (this.a.a != null) {
-      ((TroopHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).c();
+    if (this.mAutomator.a != null) {
+      ((ITroopConfigHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.TROOP_CONFIG_HANDLER)).a();
     }
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetTroopConfig
  * JD-Core Version:    0.7.0.1
  */

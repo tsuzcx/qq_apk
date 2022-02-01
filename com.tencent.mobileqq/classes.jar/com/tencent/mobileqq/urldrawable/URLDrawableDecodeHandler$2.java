@@ -18,17 +18,19 @@ final class URLDrawableDecodeHandler$2
       return null;
     }
     paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
+    if ((paramDownloadParams instanceof int[]))
     {
       paramDownloadParams = (int[])paramDownloadParams;
-      return ImageUtil.a(paramBitmap, 0.0F, paramDownloadParams[0], paramDownloadParams[1]);
+      if (paramDownloadParams.length == 2) {
+        return ImageUtil.a(paramBitmap, 0.0F, paramDownloadParams[0], paramDownloadParams[1]);
+      }
     }
     return ImageUtil.c(paramBitmap, 50, 50);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler.2
  * JD-Core Version:    0.7.0.1
  */

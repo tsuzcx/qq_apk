@@ -59,46 +59,47 @@ public class MonitorThreadPoolExecutor
       return;
     }
     Object localObject3 = null;
-    Object localObject4;
-    Object localObject2;
-    for (Runnable localRunnable = null;; localObject2 = localObject4) {
-      synchronized (this.mWorkingRunnables)
+    Object localObject1 = null;
+    synchronized (this.mWorkingRunnables)
+    {
+      if (this.mWorkingRunnables.size() > 0)
       {
-        if (this.mWorkingRunnables.size() > 0)
+        Iterator localIterator = this.mWorkingRunnables.iterator();
+        for (;;)
         {
-          Iterator localIterator = this.mWorkingRunnables.iterator();
-          localObject3 = localRunnable;
-          if (localIterator.hasNext())
+          localObject3 = localObject1;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          Object localObject4 = (MonitorThreadPoolExecutor.WorkerHolder)localIterator.next();
+          if (((MonitorThreadPoolExecutor.WorkerHolder)localObject4).getExecuteTime() > this.mRunTimeLimit)
           {
-            MonitorThreadPoolExecutor.WorkerHolder localWorkerHolder = (MonitorThreadPoolExecutor.WorkerHolder)localIterator.next();
-            localObject4 = localRunnable;
-            if (localWorkerHolder.getExecuteTime() <= this.mRunTimeLimit) {
-              continue;
-            }
-            localObject3 = localRunnable;
-            if (localRunnable == null) {
+            localObject3 = localObject1;
+            if (localObject1 == null) {
               localObject3 = new ArrayList(this.mWorkingRunnables.size());
             }
-            localRunnable = (Runnable)localWorkerHolder.get();
-            localObject4 = localObject3;
-            if (localRunnable == null) {
-              continue;
+            localObject4 = (Runnable)((MonitorThreadPoolExecutor.WorkerHolder)localObject4).get();
+            localObject1 = localObject3;
+            if (localObject4 != null)
+            {
+              ((List)localObject3).add(localObject4);
+              localObject1 = localObject3;
             }
-            ((List)localObject3).add(localRunnable);
-            localObject4 = localObject3;
-            continue;
           }
         }
-        int i = this.mWorkerQueue.size();
-        if ((localObject3 != null) && (((List)localObject3).size() > 0)) {
-          this.mMonitorListener.onWorkerExceedTime(this.mName, (List)localObject3, i);
-        }
-        if (i <= this.mQueueSizeLimit) {
-          break;
-        }
-        this.mMonitorListener.onQueueExceedLimit(this.mName, i);
-        return;
       }
+      int i = this.mWorkerQueue.size();
+      if ((localObject3 != null) && (((List)localObject3).size() > 0)) {
+        this.mMonitorListener.onWorkerExceedTime(this.mName, (List)localObject3, i);
+      }
+      if (i > this.mQueueSizeLimit) {
+        this.mMonitorListener.onQueueExceedLimit(this.mName, i);
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -153,12 +154,15 @@ public class MonitorThreadPoolExecutor
   
   protected void terminated()
   {
-    SLog.e("async.boss.MonitorThreadPoolExecutor", this.mName + " is terminated!");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mName);
+    localStringBuilder.append(" is terminated!");
+    SLog.e("async.boss.MonitorThreadPoolExecutor", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.MonitorThreadPoolExecutor
  * JD-Core Version:    0.7.0.1
  */

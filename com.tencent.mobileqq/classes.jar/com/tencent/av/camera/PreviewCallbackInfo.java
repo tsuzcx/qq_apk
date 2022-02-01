@@ -23,25 +23,73 @@ public class PreviewCallbackInfo
   
   void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
   {
-    long l = this.j;
-    if (paramInt1 <= -99) {}
-    for (this.j = 0;; this.j += 1)
-    {
-      if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.jdField_a_of_type_Boolean != paramBoolean) || (this.d != paramInt4) || (this.e != paramInt5) || (this.f != paramInt6) || (this.g != paramInt7) || (this.h != paramInt8) || (this.i != paramInt9)) {
-        QLog.w("PreviewCallbackInfo", 1, "PREVIEW_CALLBACK, Index[" + l + "->" + this.j + "], degree[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], mCurCamera[" + this.b + "->" + paramInt2 + "], nInFPS[" + this.c + "->" + paramInt3 + "], mSupportLandscape[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "], cameraImageOrientation[" + this.d + "->" + paramInt4 + "], displayRotation[" + this.e + "->" + paramInt5 + "], mobileRotation[" + this.f + "->" + paramInt6 + "], dataLength[" + this.g + "->" + paramInt7 + "], w[" + this.h + "->" + paramInt8 + "], h[" + this.i + "->" + paramInt9 + "]");
-      }
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
-      this.c = paramInt3;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.d = paramInt4;
-      this.e = paramInt5;
-      this.f = paramInt6;
-      this.g = paramInt7;
-      this.h = paramInt8;
-      this.i = paramInt9;
-      return;
+    int k = this.j;
+    long l = k;
+    if (paramInt1 <= -99) {
+      this.j = 0;
+    } else {
+      this.j = (k + 1);
     }
+    if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.jdField_a_of_type_Boolean != paramBoolean) || (this.d != paramInt4) || (this.e != paramInt5) || (this.f != paramInt6) || (this.g != paramInt7) || (this.h != paramInt8) || (this.i != paramInt9))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PREVIEW_CALLBACK, Index[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("->");
+      localStringBuilder.append(this.j);
+      localStringBuilder.append("], degree[");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("], mCurCamera[");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("], nInFPS[");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append("], mSupportLandscape[");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], cameraImageOrientation[");
+      localStringBuilder.append(this.d);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt4);
+      localStringBuilder.append("], displayRotation[");
+      localStringBuilder.append(this.e);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt5);
+      localStringBuilder.append("], mobileRotation[");
+      localStringBuilder.append(this.f);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt6);
+      localStringBuilder.append("], dataLength[");
+      localStringBuilder.append(this.g);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt7);
+      localStringBuilder.append("], w[");
+      localStringBuilder.append(this.h);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt8);
+      localStringBuilder.append("], h[");
+      localStringBuilder.append(this.i);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt9);
+      localStringBuilder.append("]");
+      QLog.w("PreviewCallbackInfo", 1, localStringBuilder.toString());
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.f = paramInt6;
+    this.g = paramInt7;
+    this.h = paramInt8;
+    this.i = paramInt9;
   }
   
   void b()
@@ -51,7 +99,7 @@ public class PreviewCallbackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.camera.PreviewCallbackInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,21 +13,19 @@ class AddPhoneNumberFragment$6
   
   public void onClick(View paramView)
   {
-    AddPhoneNumberFragment localAddPhoneNumberFragment = this.this$0;
-    if (!AddPhoneNumberFragment.access$600(this.this$0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AddPhoneNumberFragment.access$602(localAddPhoneNumberFragment, bool);
-      AddPhoneNumberFragment.access$700(this.this$0).setChecked(AddPhoneNumberFragment.access$600(this.this$0));
-      QMLog.d("AddPhoneNumberFragment", "isSave : " + AddPhoneNumberFragment.access$600(this.this$0));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    Object localObject = this.this$0;
+    AddPhoneNumberFragment.access$602((AddPhoneNumberFragment)localObject, AddPhoneNumberFragment.access$600((AddPhoneNumberFragment)localObject) ^ true);
+    AddPhoneNumberFragment.access$700(this.this$0).setChecked(AddPhoneNumberFragment.access$600(this.this$0));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("isSave : ");
+    ((StringBuilder)localObject).append(AddPhoneNumberFragment.access$600(this.this$0));
+    QMLog.d("AddPhoneNumberFragment", ((StringBuilder)localObject).toString());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.AddPhoneNumberFragment.6
  * JD-Core Version:    0.7.0.1
  */

@@ -17,10 +17,13 @@ public class MsgTabNodeVidListEntity
   public static String[] getArgs(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     int i = paramMsgTabNodeInfo.jdField_a_of_type_Int;
-    if (paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString == null) {}
-    for (String str = "";; str = paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString) {
-      return new String[] { String.valueOf(i), str, String.valueOf(paramMsgTabNodeInfo.f) };
+    String str;
+    if (paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString == null) {
+      str = "";
+    } else {
+      str = paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString;
     }
+    return new String[] { String.valueOf(i), str, String.valueOf(paramMsgTabNodeInfo.f) };
   }
   
   public static String getSelection()
@@ -30,7 +33,7 @@ public class MsgTabNodeVidListEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVidListEntity
  * JD-Core Version:    0.7.0.1
  */

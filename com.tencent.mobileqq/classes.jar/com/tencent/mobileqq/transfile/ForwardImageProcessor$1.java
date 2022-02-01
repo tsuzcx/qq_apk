@@ -14,36 +14,44 @@ class ForwardImageProcessor$1
   {
     int i = paramMessage.what;
     FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((i == 2002) || ((ForwardImageProcessor.access$000(this.this$0).equals(localFileMsg.mUin)) && (localFileMsg.fileType == 1) && (i != 2002)))
-    {
-      if ((localFileMsg.forwardTaskKey == null) || (!localFileMsg.forwardTaskKey.equals(ForwardImageProcessor.access$100(this.this$0)))) {
-        return;
-      }
-      switch (i)
+    if ((ForwardImageProcessor.access$000(this.this$0).equals(localFileMsg.mUin)) && (localFileMsg.fileType == 1) && (i != 2002)) {
+      if (localFileMsg.forwardTaskKey != null)
       {
-      }
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      ForwardImageProcessor.access$200(this.this$0);
-      continue;
-      if (FileUtils.b(ForwardImageProcessor.access$300(this.this$0)))
-      {
-        ((ITransFileController)ForwardImageProcessor.access$400(this.this$0).getRuntimeService(ITransFileController.class)).removeHandle(this);
-        ForwardImageProcessor.access$500(this.this$0);
+        if (!localFileMsg.forwardTaskKey.equals(ForwardImageProcessor.access$100(this.this$0))) {
+          return;
+        }
+        switch (i)
+        {
+        default: 
+          break;
+        case 2004: 
+        case 2005: 
+          ForwardImageProcessor.access$200(this.this$0);
+          break;
+        case 2003: 
+          if (FileUtils.fileExistsAndNotEmpty(ForwardImageProcessor.access$300(this.this$0)))
+          {
+            ((ITransFileController)ForwardImageProcessor.access$400(this.this$0).getRuntimeService(ITransFileController.class)).removeHandle(this);
+            ForwardImageProcessor.access$500(this.this$0);
+          }
+          else
+          {
+            ForwardImageProcessor.access$200(this.this$0);
+          }
+          break;
+        }
       }
       else
       {
-        ForwardImageProcessor.access$200(this.this$0);
+        return;
       }
     }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardImageProcessor.1
  * JD-Core Version:    0.7.0.1
  */

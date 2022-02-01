@@ -51,30 +51,28 @@ public class QQAvatarDataServiceImpl
   private String getFaceFilePathPrefix(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (paramInt == 32) {
+    if (paramInt == 32)
+    {
       if (SystemUtil.a()) {
         localStringBuilder.append(AppConstants.PATH_HEAD_STRANGER);
-      }
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append("/data/data/com.tencent.mobileqq/files/head/_stranger/");
-      continue;
-      if (paramInt == 116)
-      {
-        if (SystemUtil.a()) {
-          localStringBuilder.append(AppConstants.PATH_HEAD_APOLLO);
-        } else {
-          localStringBuilder.append("/data/data/com.tencent.mobileqq/files/head/_apollo/");
-        }
-      }
-      else if (SystemUtil.a()) {
-        localStringBuilder.append(AppConstants.PATH_HEAD_HD);
       } else {
-        localStringBuilder.append("/data/data/com.tencent.mobileqq/files/head/_hd/");
+        localStringBuilder.append("/data/data/com.tencent.mobileqq/files/head/_stranger/");
       }
     }
+    else if (paramInt == 116)
+    {
+      if (SystemUtil.a()) {
+        localStringBuilder.append(AppConstants.PATH_HEAD_APOLLO);
+      } else {
+        localStringBuilder.append("/data/data/com.tencent.mobileqq/files/head/_apollo/");
+      }
+    }
+    else if (SystemUtil.a()) {
+      localStringBuilder.append(AppConstants.PATH_HEAD_HD);
+    } else {
+      localStringBuilder.append("/data/data/com.tencent.mobileqq/files/head/_hd/");
+    }
+    return localStringBuilder.toString();
   }
   
   private Object[] getNewFaceTypeBySetting(Setting paramSetting, String paramString, int paramInt)
@@ -104,26 +102,20 @@ public class QQAvatarDataServiceImpl
               if (paramSetting.bHeadType == 0)
               {
                 str = String.valueOf(paramSetting.systemHeadID);
-                if (paramInt != 4) {
-                  break label106;
+                if (paramInt == 4) {
+                  i = -56;
+                } else if (paramInt == 16) {
+                  i = 16;
+                } else {
+                  i = -55;
                 }
-                i = -56;
               }
             }
           }
         }
       }
     }
-    for (;;)
-    {
-      return new Object[] { Integer.valueOf(i), str };
-      label106:
-      if (paramInt == 16) {
-        i = 16;
-      } else {
-        i = -55;
-      }
-    }
+    return new Object[] { Integer.valueOf(i), str };
   }
   
   public Bitmap getBitmapFromCache(String paramString)
@@ -167,38 +159,95 @@ public class QQAvatarDataServiceImpl
     paramSetting = new StringBuilder(256);
     paramSetting.append(getFaceFilePathPrefix(paramInt1));
     localObject = getNewFaceTypeBySetting((Setting)localObject, paramString, paramInt1);
-    switch (((Integer)localObject[0]).intValue())
+    paramInt1 = ((Integer)localObject[0]).intValue();
+    if (paramInt1 != -56)
     {
+      if (paramInt1 != -55)
+      {
+        if (paramInt1 != 4)
+        {
+          if (paramInt1 != 16)
+          {
+            if (paramInt1 != 32)
+            {
+              if (paramInt1 != 101)
+              {
+                if (paramInt1 != 113)
+                {
+                  if (paramInt1 != 116)
+                  {
+                    if (paramInt1 == 1001)
+                    {
+                      paramSetting.append("dis_pstn_g_");
+                      localObject = new StringBuilder();
+                      ((StringBuilder)localObject).append(this.mApp.getAccount());
+                      ((StringBuilder)localObject).append(paramString);
+                      paramString = ((StringBuilder)localObject).toString();
+                    }
+                  }
+                  else
+                  {
+                    paramSetting.append("apollo_");
+                    paramSetting.append(paramInt3);
+                    paramSetting.append("_");
+                  }
+                }
+                else {
+                  paramSetting.append("new_troop_b_");
+                }
+              }
+              else
+              {
+                paramSetting.append("dis_g_");
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append(this.mApp.getAccount());
+                ((StringBuilder)localObject).append(paramString);
+                paramString = ((StringBuilder)localObject).toString();
+              }
+            }
+            else
+            {
+              paramSetting.append("stranger_");
+              paramSetting.append(Integer.toString(paramInt2));
+              paramSetting.append("_");
+            }
+          }
+          else
+          {
+            paramSetting.append("qcall_");
+            paramSetting.append(Integer.toString(paramInt2));
+            paramSetting.append("_");
+          }
+        }
+        else {
+          paramSetting.append("troop_");
+        }
+      }
+      else
+      {
+        paramSetting.append("sys_");
+        paramString = (String)localObject[1];
+      }
     }
-    for (;;)
+    else
     {
-      localObject = MD5.a(paramString);
-      localObject = MD5.a((String)localObject + paramString);
-      paramSetting.append(MD5.a((String)localObject + paramString));
-      paramSetting.append(".jpg_");
-      return paramSetting.toString();
       paramSetting.append("troop_sys_b_");
       paramString = (String)localObject[1];
-      continue;
-      paramSetting.append("sys_");
-      paramString = (String)localObject[1];
-      continue;
-      paramSetting.append("dis_g_");
-      paramString = this.mApp.getAccount() + paramString;
-      continue;
-      paramSetting.append("dis_pstn_g_");
-      paramString = this.mApp.getAccount() + paramString;
-      continue;
-      paramSetting.append("troop_");
-      continue;
-      paramSetting.append("new_troop_b_");
-      continue;
-      paramSetting.append("stranger_").append(Integer.toString(paramInt2)).append("_");
-      continue;
-      paramSetting.append("qcall_").append(Integer.toString(paramInt2)).append("_");
-      continue;
-      paramSetting.append("apollo_").append(paramInt3).append("_");
     }
+    if (paramString != null)
+    {
+      localObject = MD5.a(paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(paramString);
+      localObject = MD5.a(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(paramString);
+      paramSetting.append(MD5.a(localStringBuilder.toString()));
+    }
+    paramSetting.append(".jpg_");
+    return paramSetting.toString();
   }
   
   public String getCustomFaceFilePath(boolean paramBoolean, String paramString)
@@ -224,10 +273,12 @@ public class QQAvatarDataServiceImpl
   
   protected EntityManager getEntityManager()
   {
-    if ((!this.mApp.isLogin()) || (this.mApp.getAccount() == null)) {
-      return null;
+    if ((this.mApp.isLogin()) && (this.mApp.getAccount() != null))
+    {
+      AppRuntime localAppRuntime = this.mApp;
+      return localAppRuntime.getEntityManagerFactory(localAppRuntime.getAccount()).createEntityManager();
     }
-    return this.mApp.getEntityManagerFactory(this.mApp.getAccount()).createEntityManager();
+    return null;
   }
   
   public String getFaceBitmapCacheKey(int paramInt1, String paramString, byte paramByte, int paramInt2)
@@ -238,111 +289,155 @@ public class QQAvatarDataServiceImpl
   public String getFaceBitmapCacheKey(int paramInt1, String paramString, byte paramByte, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder(16);
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt1 != 101)
+    if ((paramInt1 != 101) && (paramInt1 != 1001) && (paramString != null))
     {
-      localObject1 = localObject2;
-      if (paramInt1 != 1001)
+      if (paramBoolean) {
+        localObject = getFaceSetting(AvatarUtil.a(paramInt1, paramString, paramInt2));
+      } else {
+        localObject = (Setting)getQQHeadSetting(paramInt1, paramString, paramInt2).second;
+      }
+    }
+    else {
+      localObject = null;
+    }
+    Object localObject = getNewFaceTypeBySetting((Setting)localObject, paramString, paramInt1);
+    paramInt1 = ((Integer)localObject[0]).intValue();
+    if (paramInt1 != -56)
+    {
+      if (paramInt1 != -55)
       {
-        localObject1 = localObject2;
-        if (paramString != null)
+        if (paramInt1 != 4)
         {
-          if (!paramBoolean) {
-            break label201;
+          if (paramInt1 != 16)
+          {
+            if (paramInt1 != 32)
+            {
+              if (paramInt1 != 101)
+              {
+                if (paramInt1 != 103)
+                {
+                  if (paramInt1 != 113)
+                  {
+                    if (paramInt1 != 116)
+                    {
+                      if (paramInt1 == 1001) {
+                        localStringBuilder.append("dis_pstn_g_");
+                      }
+                    }
+                    else
+                    {
+                      localStringBuilder.append("apollo_");
+                      localStringBuilder.append(paramInt3);
+                      localStringBuilder.append("_");
+                    }
+                  }
+                  else {
+                    localStringBuilder.append("new_troop_b_");
+                  }
+                }
+                else {
+                  localStringBuilder.append("sub_");
+                }
+              }
+              else {
+                localStringBuilder.append("dis_g_");
+              }
+            }
+            else
+            {
+              localStringBuilder.append("stranger_");
+              localStringBuilder.append(Integer.toString(paramInt2));
+              localStringBuilder.append("_");
+            }
           }
-          localObject1 = getFaceSetting(AvatarUtil.a(paramInt1, paramString, paramInt2));
+          else
+          {
+            localStringBuilder.append("qcall_");
+            localStringBuilder.append(Integer.toString(paramInt2));
+            localStringBuilder.append("_");
+          }
+        }
+        else {
+          localStringBuilder.append("troop_");
         }
       }
-    }
-    localObject1 = getNewFaceTypeBySetting((Setting)localObject1, paramString, paramInt1);
-    switch (((Integer)localObject1[0]).intValue())
-    {
-    }
-    for (;;)
-    {
-      localStringBuilder.append(paramString);
-      if (paramByte > 0) {
-        localStringBuilder.append("_").append(paramByte);
+      else
+      {
+        localStringBuilder.append("sys_");
+        paramString = (String)localObject[1];
       }
-      return localStringBuilder.toString();
-      label201:
-      localObject1 = (Setting)getQQHeadSetting(paramInt1, paramString, paramInt2).second;
-      break;
-      localStringBuilder.append("troop_sys_b_");
-      paramString = (String)localObject1[1];
-      continue;
-      localStringBuilder.append("sys_");
-      paramString = (String)localObject1[1];
-      continue;
-      localStringBuilder.append("dis_g_");
-      continue;
-      localStringBuilder.append("dis_pstn_g_");
-      continue;
-      localStringBuilder.append("troop_");
-      continue;
-      localStringBuilder.append("sub_");
-      continue;
-      localStringBuilder.append("stranger_").append(Integer.toString(paramInt2)).append("_");
-      continue;
-      localStringBuilder.append("qcall_").append(Integer.toString(paramInt2)).append("_");
-      continue;
-      localStringBuilder.append("new_troop_b_");
-      continue;
-      localStringBuilder.append("apollo_").append(paramInt3).append("_");
     }
+    else
+    {
+      localStringBuilder.append("troop_sys_b_");
+      paramString = (String)localObject[1];
+    }
+    localStringBuilder.append(paramString);
+    if (paramByte > 0)
+    {
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramByte);
+    }
+    return localStringBuilder.toString();
   }
   
   public Setting getFaceSetting(String paramString)
   {
-    if (this.mAvatarSettingCache == null) {
+    MemoryCache localMemoryCache = this.mAvatarSettingCache;
+    if (localMemoryCache == null) {
       return null;
     }
-    return (Setting)this.mAvatarSettingCache.a(paramString);
+    return (Setting)localMemoryCache.a(paramString);
   }
   
   public String getOldCustomFaceFilePath(int paramInt, String paramString)
   {
     Object localObject = MD5.a(paramString);
-    localObject = MD5.a((String)localObject + paramString);
-    paramString = MD5.a((String)localObject + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(paramString);
+    localObject = MD5.a(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(paramString);
+    paramString = MD5.a(localStringBuilder.toString());
     localObject = new StringBuilder(256);
-    if (paramInt == 4) {
+    if (paramInt == 4)
+    {
       if (SystemUtil.a()) {
         ((StringBuilder)localObject).append(AppConstants.PATH_HEAD_THD);
-      }
-    }
-    for (;;)
-    {
-      if (paramInt == 101) {
-        ((StringBuilder)localObject).append("discussion_");
-      }
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(".png");
-      return ((StringBuilder)localObject).toString();
-      ((StringBuilder)localObject).append("/data/data/com.tencent.mobileqq/files/head/_thd/");
-      continue;
-      if (SystemUtil.a()) {
-        ((StringBuilder)localObject).append(AppConstants.PATH_HEAD_HD);
       } else {
-        ((StringBuilder)localObject).append("/data/data/com.tencent.mobileqq/files/head/_hd/");
+        ((StringBuilder)localObject).append("/data/data/com.tencent.mobileqq/files/head/_thd/");
       }
     }
+    else if (SystemUtil.a()) {
+      ((StringBuilder)localObject).append(AppConstants.PATH_HEAD_HD);
+    } else {
+      ((StringBuilder)localObject).append("/data/data/com.tencent.mobileqq/files/head/_hd/");
+    }
+    if (paramInt == 101) {
+      ((StringBuilder)localObject).append("discussion_");
+    }
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(".png");
+    return ((StringBuilder)localObject).toString();
   }
   
   public Pair<Boolean, Setting> getQQHeadSetting(int paramInt1, String paramString, int paramInt2)
   {
-    Object localObject2 = null;
     String str = AvatarUtil.a(paramInt1, paramString, paramInt2);
-    Object localObject1 = localObject2;
     if (!TextUtils.isEmpty(str))
     {
-      localObject1 = localObject2;
-      if (this.mAvatarSettingCache != null) {
-        localObject1 = (Setting)this.mAvatarSettingCache.a(str);
+      localObject1 = this.mAvatarSettingCache;
+      if (localObject1 != null)
+      {
+        localObject1 = (Setting)((MemoryCache)localObject1).a(str);
+        break label47;
       }
     }
-    localObject2 = localObject1;
+    Object localObject1 = null;
+    label47:
+    Object localObject2 = localObject1;
     if (localObject1 == null)
     {
       if (this.mEntityManager == null) {
@@ -367,53 +462,108 @@ public class QQAvatarDataServiceImpl
     }
     if (localObject2 == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.", 2, "getQQHeadSetting. qqset is null, | uin=" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getQQHeadSetting. qqset is null, | uin=");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.i("Q.qqhead.", 2, ((StringBuilder)localObject1).toString());
       }
       return new Pair(Boolean.valueOf(true), localObject2);
     }
-    boolean bool;
-    switch (paramInt1)
-    {
-    default: 
-      bool = false;
+    boolean bool = false;
+    if (((paramInt1 == 1) || (paramInt1 == 4) || (paramInt1 == 11) || (paramInt1 == 16) || (paramInt1 == 32) || (paramInt1 == 116)) && ((localObject2 == null) || (System.currentTimeMillis() - localObject2.updateTimestamp > 86400000L))) {
+      bool = true;
     }
-    for (;;)
+    if ((QLog.isColorLevel()) && (bool))
     {
-      if ((QLog.isColorLevel()) && (bool)) {
-        QLog.i("Q.qqhead.", 2, "getQQHeadSetting. | uin=" + paramString + ", isNeedCheckQQHead=" + bool + ", updateTimestamp=" + localObject2.updateTimestamp + ", headImgTimestamp=" + localObject2.headImgTimestamp + ", status=" + localObject2.getStatus() + ", id=" + localObject2.getId() + ", currentTimeMillis=" + System.currentTimeMillis());
-      }
-      return new Pair(Boolean.valueOf(bool), localObject2);
-      if ((localObject2 == null) || (System.currentTimeMillis() - localObject2.updateTimestamp > 86400000L)) {
-        bool = true;
-      } else {
-        bool = false;
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getQQHeadSetting. | uin=");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(", isNeedCheckQQHead=");
+      ((StringBuilder)localObject1).append(bool);
+      ((StringBuilder)localObject1).append(", updateTimestamp=");
+      ((StringBuilder)localObject1).append(localObject2.updateTimestamp);
+      ((StringBuilder)localObject1).append(", headImgTimestamp=");
+      ((StringBuilder)localObject1).append(localObject2.headImgTimestamp);
+      ((StringBuilder)localObject1).append(", status=");
+      ((StringBuilder)localObject1).append(localObject2.getStatus());
+      ((StringBuilder)localObject1).append(", id=");
+      ((StringBuilder)localObject1).append(localObject2.getId());
+      ((StringBuilder)localObject1).append(", currentTimeMillis=");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      QLog.i("Q.qqhead.", 2, ((StringBuilder)localObject1).toString());
     }
+    return new Pair(Boolean.valueOf(bool), localObject2);
   }
   
+  /* Error */
   public Setting getQQHeadSettingFromDB(String paramString)
   {
-    try
-    {
-      if (this.mEntityManager == null) {
-        this.mEntityManager = getEntityManager();
-      }
-      paramString = (Setting)this.mEntityManager.find(Setting.class, paramString);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-    }
-    finally
-    {
-      if (this.mEntityManager != null) {
-        this.mEntityManager.close();
-      }
-    }
-    return null;
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   4: ifnonnull +11 -> 15
+    //   7: aload_0
+    //   8: aload_0
+    //   9: invokevirtual 235	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:getEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   12: putfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   15: aload_0
+    //   16: getfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   19: ldc 76
+    //   21: aload_1
+    //   22: invokevirtual 243	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   25: checkcast 76	com/tencent/mobileqq/data/Setting
+    //   28: astore_2
+    //   29: aload_0
+    //   30: getfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   33: astore_3
+    //   34: aload_2
+    //   35: astore_1
+    //   36: aload_3
+    //   37: ifnull +33 -> 70
+    //   40: aload_3
+    //   41: invokevirtual 316	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   44: aload_2
+    //   45: areturn
+    //   46: astore_1
+    //   47: goto +25 -> 72
+    //   50: astore_1
+    //   51: aload_1
+    //   52: invokevirtual 319	java/lang/Exception:printStackTrace	()V
+    //   55: aload_0
+    //   56: getfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   59: astore_1
+    //   60: aload_1
+    //   61: ifnull +7 -> 68
+    //   64: aload_1
+    //   65: invokevirtual 316	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   68: aconst_null
+    //   69: astore_1
+    //   70: aload_1
+    //   71: areturn
+    //   72: aload_0
+    //   73: getfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   76: astore_2
+    //   77: aload_2
+    //   78: ifnull +7 -> 85
+    //   81: aload_2
+    //   82: invokevirtual 316	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   85: aload_1
+    //   86: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	87	0	this	QQAvatarDataServiceImpl
+    //   0	87	1	paramString	String
+    //   28	54	2	localObject	Object
+    //   33	8	3	localEntityManager	EntityManager
+    // Exception table:
+    //   from	to	target	type
+    //   0	15	46	finally
+    //   15	29	46	finally
+    //   51	55	46	finally
+    //   0	15	50	java/lang/Exception
+    //   15	29	50	java/lang/Exception
   }
   
   public Drawable getRoundFaceDrawable(Bitmap paramBitmap)
@@ -426,10 +576,11 @@ public class QQAvatarDataServiceImpl
     if (this.mEntityManager == null) {
       this.mEntityManager = getEntityManager();
     }
-    if (this.mEntityManager == null) {
+    EntityManager localEntityManager = this.mEntityManager;
+    if (localEntityManager == null) {
       return null;
     }
-    return (Setting)this.mEntityManager.find(Setting.class, paramString);
+    return (Setting)localEntityManager.find(Setting.class, paramString);
   }
   
   void init(AppRuntime paramAppRuntime)
@@ -442,122 +593,109 @@ public class QQAvatarDataServiceImpl
   
   public void initFaceSettingCache()
   {
-    int k = 0;
-    int i1 = 0;
     checkAndCreateFaceSettingCache();
     this.mAvatarSettingCache.a();
     if (this.mEntityManager == null) {
       this.mEntityManager = getEntityManager();
     }
-    if (this.mEntityManager == null) {
+    Object localObject1 = this.mEntityManager;
+    if (localObject1 == null) {
       return;
     }
-    Object localObject = this.mEntityManager.query(Setting.class, new Setting().getTableName(), false, null, null, null, null, "updateTimestamp desc", null);
-    int j;
+    Object localObject2 = ((EntityManager)localObject1).query(Setting.class, new Setting().getTableName(), false, null, null, null, null, "updateTimestamp desc", null);
+    int j = 0;
+    int i2 = 0;
     int i;
-    int n;
-    if (localObject != null)
+    if (localObject2 != null)
     {
-      k = ((List)localObject).size();
+      k = ((List)localObject2).size();
+      i = k;
       if (k > 0)
       {
-        ArrayList localArrayList = new ArrayList();
-        int m = 0;
+        localObject1 = new ArrayList();
+        m = 0;
         j = 0;
-        i = 0;
-        if (m < k)
+        int i1;
+        for (i = 0; m < k; i = i1)
         {
-          Setting localSetting = (Setting)((List)localObject).get(m);
-          if ((localSetting != null) && (!TextUtils.isEmpty(localSetting.uin)))
+          Setting localSetting = (Setting)((List)localObject2).get(m);
+          n = j;
+          i1 = i;
+          if (localSetting != null)
           {
-            if (i >= 4000)
-            {
-              n = j;
-              j = i;
-              i = n;
-            }
-            for (;;)
-            {
-              n = m + 1;
-              m = j;
-              j = i;
-              i = m;
-              m = n;
-              break;
-              localSetting.url = null;
-              if (((localSetting.bSourceType == 1) || (localSetting.bUsrType == 32)) && (j <= 100))
+            n = j;
+            i1 = i;
+            if (!TextUtils.isEmpty(localSetting.uin)) {
+              if (j >= 4000)
               {
-                localArrayList.add(localSetting);
-                n = j + 1;
-                j = i;
-                i = n;
+                n = j;
+                i1 = i;
               }
               else
               {
-                this.mAvatarSettingCache.a(localSetting.uin, localSetting);
-                n = i + 1;
-                i = j;
-                j = n;
+                localSetting.url = null;
+                if (((localSetting.bSourceType == 1) || (localSetting.bUsrType == 32)) && (i <= 100))
+                {
+                  ((List)localObject1).add(localSetting);
+                  i1 = i + 1;
+                  n = j;
+                }
+                else
+                {
+                  this.mAvatarSettingCache.a(localSetting.uin, localSetting);
+                  n = j + 1;
+                  i1 = i;
+                }
               }
             }
           }
+          m += 1;
+          j = n;
         }
-        else
+        int n = Math.min(100, Math.min(4000 - j, ((List)localObject1).size()));
+        if (n > 0)
         {
-          n = Math.min(100, Math.min(4000 - i, localArrayList.size()));
-          if (n > 0)
+          m = i2;
+          while (m < n)
           {
-            m = i1;
-            if (m < n)
-            {
-              localObject = (Setting)localArrayList.get(m);
-              if ((localObject == null) || (TextUtils.isEmpty(((Setting)localObject).uin))) {}
-              for (;;)
-              {
-                m += 1;
-                break;
-                this.mAvatarSettingCache.a(((Setting)localObject).uin, localObject);
-              }
+            localObject2 = (Setting)((List)localObject1).get(m);
+            if ((localObject2 != null) && (!TextUtils.isEmpty(((Setting)localObject2).uin))) {
+              this.mAvatarSettingCache.a(((Setting)localObject2).uin, localObject2);
             }
+            m += 1;
           }
         }
+        m = i;
+        break label374;
       }
     }
-    for (;;)
+    else
     {
-      QLog.d("QQAvatarDataServiceImpl", 1, "initFaceSettingCache," + k + "," + i + "," + j);
-      return;
-      n = i;
-      i = j;
-      j = n;
-      break;
-      j = 0;
-      i = 0;
-      continue;
-      j = 0;
       i = 0;
     }
+    int m = 0;
+    int k = i;
+    label374:
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("initFaceSettingCache,");
+    ((StringBuilder)localObject1).append(k);
+    ((StringBuilder)localObject1).append(",");
+    ((StringBuilder)localObject1).append(j);
+    ((StringBuilder)localObject1).append(",");
+    ((StringBuilder)localObject1).append(m);
+    QLog.d("QQAvatarDataServiceImpl", 1, ((StringBuilder)localObject1).toString());
   }
   
   public boolean isFaceFileExist(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    boolean bool2 = false;
-    if (paramInt1 == 101) {}
     String str = getFaceBitmapCacheKey(paramInt1, paramString, (byte)3, paramInt2, paramInt3, false);
     checkAndInitAvatarCache();
-    if ((this.mAvatarCache != null) && (this.mAvatarCache.a(str) != null)) {
+    MemoryCache localMemoryCache = this.mAvatarCache;
+    if ((localMemoryCache != null) && (localMemoryCache.a(str) != null)) {
       return true;
     }
     paramString = new File(getCustomFaceFilePath(paramInt1, paramString, paramInt2, paramInt3));
-    boolean bool1 = bool2;
-    if (paramString.exists())
-    {
-      bool1 = bool2;
-      if (paramString.isFile()) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (paramString.exists()) && (paramString.isFile());
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -579,27 +717,49 @@ public class QQAvatarDataServiceImpl
     if (paramBitmap != null)
     {
       paramBitmap = AvatarUtil.a(paramByte, paramBitmap, paramString1, paramInt2);
-      if (paramBitmap == null) {
-        break label129;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.", 2, "getFaceBitmap decode success, faceType=" + paramInt1 + ", uin=" + paramString1 + ", shape=" + paramByte + ", headType=" + paramInt2 + ", path=" + paramString3 + ", bmp=" + paramBitmap);
-      }
-      putBitmapToCache(paramString2, paramBitmap, AvatarImplUtil.a(paramInt1));
-      localBitmap = paramBitmap;
-    }
-    label129:
-    do
-    {
-      do
+      if (paramBitmap != null)
       {
-        return localBitmap;
-        localBitmap = paramBitmap;
-      } while (!QLog.isColorLevel());
+        if (QLog.isColorLevel())
+        {
+          paramBitmapDecodeResult = new StringBuilder();
+          paramBitmapDecodeResult.append("getFaceBitmap decode success, faceType=");
+          paramBitmapDecodeResult.append(paramInt1);
+          paramBitmapDecodeResult.append(", uin=");
+          paramBitmapDecodeResult.append(paramString1);
+          paramBitmapDecodeResult.append(", shape=");
+          paramBitmapDecodeResult.append(paramByte);
+          paramBitmapDecodeResult.append(", headType=");
+          paramBitmapDecodeResult.append(paramInt2);
+          paramBitmapDecodeResult.append(", path=");
+          paramBitmapDecodeResult.append(paramString3);
+          paramBitmapDecodeResult.append(", bmp=");
+          paramBitmapDecodeResult.append(paramBitmap);
+          QLog.i("Q.qqhead.", 2, paramBitmapDecodeResult.toString());
+        }
+        putBitmapToCache(paramString2, paramBitmap, AvatarImplUtil.a(paramInt1));
+        return paramBitmap;
+      }
       localBitmap = paramBitmap;
-    } while (paramBitmapDecodeResult.a != 0);
-    QLog.i("Q.qqhead.", 2, "getFaceBitmap decode shape fail, faceType=" + paramInt1 + ", uin=" + paramString1 + ", shape=" + paramByte + ", headType=" + paramInt2);
-    return paramBitmap;
+      if (QLog.isColorLevel())
+      {
+        localBitmap = paramBitmap;
+        if (paramBitmapDecodeResult.a == 0)
+        {
+          paramString2 = new StringBuilder();
+          paramString2.append("getFaceBitmap decode shape fail, faceType=");
+          paramString2.append(paramInt1);
+          paramString2.append(", uin=");
+          paramString2.append(paramString1);
+          paramString2.append(", shape=");
+          paramString2.append(paramByte);
+          paramString2.append(", headType=");
+          paramString2.append(paramInt2);
+          QLog.i("Q.qqhead.", 2, paramString2.toString());
+          localBitmap = paramBitmap;
+        }
+      }
+    }
+    return localBitmap;
   }
   
   public void removeBitmapFromCache(String paramString)
@@ -615,7 +775,11 @@ public class QQAvatarDataServiceImpl
     paramInt1 = i;
     while (paramInt1 <= 5)
     {
-      removeBitmapFromCache(paramString + "_" + paramInt1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt1);
+      removeBitmapFromCache(localStringBuilder.toString());
       paramInt1 += 1;
     }
   }
@@ -659,7 +823,7 @@ public class QQAvatarDataServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.impl.QQAvatarDataServiceImpl
  * JD-Core Version:    0.7.0.1
  */

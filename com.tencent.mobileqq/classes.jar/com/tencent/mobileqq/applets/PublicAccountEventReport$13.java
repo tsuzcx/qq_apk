@@ -14,15 +14,20 @@ final class PublicAccountEventReport$13
   public void run()
   {
     TianShuReportData localTianShuReportData = new TianShuReportData();
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String str = "";
-    if (localAppRuntime != null) {
-      str = localAppRuntime.getAccount();
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getAccount();
+    } else {
+      localObject = "";
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
     localTianShuReportData.jdField_e_of_type_JavaLangString = "vab_push";
     localTianShuReportData.jdField_f_of_type_JavaLangString = "vab_push";
-    localTianShuReportData.jdField_b_of_type_JavaLangString = (str + "_" + l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("_");
+    localStringBuilder.append(l);
+    localTianShuReportData.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     localTianShuReportData.jdField_a_of_type_Int = 1;
     localTianShuReportData.g = this.jdField_a_of_type_JavaLangString;
     localTianShuReportData.h = "";
@@ -37,7 +42,7 @@ final class PublicAccountEventReport$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport.13
  * JD-Core Version:    0.7.0.1
  */

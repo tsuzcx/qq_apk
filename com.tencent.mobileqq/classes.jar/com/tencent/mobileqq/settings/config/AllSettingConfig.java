@@ -12,11 +12,14 @@ public class AllSettingConfig
   
   public static AllSettingConfig a(String paramString)
   {
-    int i = 0;
-    QLog.d("AllSettingConfig", 1, "parse, newConf = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parse, newConf = ");
+    localStringBuilder.append(paramString);
+    QLog.d("AllSettingConfig", 1, localStringBuilder.toString());
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
+    int i = 0;
     try
     {
       int j = new JSONObject(paramString).optInt("useNewMode", 0);
@@ -24,10 +27,7 @@ public class AllSettingConfig
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
     paramString = new AllSettingConfig();
     paramString.a = i;
@@ -42,12 +42,16 @@ public class AllSettingConfig
   @NotNull
   public String toString()
   {
-    return "TroopNotificationEntryConfig{useNewMode = " + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TroopNotificationEntryConfig{useNewMode = ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.config.AllSettingConfig
  * JD-Core Version:    0.7.0.1
  */

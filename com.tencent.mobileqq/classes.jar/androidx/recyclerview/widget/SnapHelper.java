@@ -22,26 +22,28 @@ public abstract class SnapHelper
   
   private void setupCallbacks()
   {
-    if (this.mRecyclerView.getOnFlingListener() != null) {
-      throw new IllegalStateException("An instance of OnFlingListener already set.");
+    if (this.mRecyclerView.getOnFlingListener() == null)
+    {
+      this.mRecyclerView.addOnScrollListener(this.mScrollListener);
+      this.mRecyclerView.setOnFlingListener(this);
+      return;
     }
-    this.mRecyclerView.addOnScrollListener(this.mScrollListener);
-    this.mRecyclerView.setOnFlingListener(this);
+    throw new IllegalStateException("An instance of OnFlingListener already set.");
   }
   
   private boolean snapFromFling(@NonNull RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
   {
-    if (!(paramLayoutManager instanceof RecyclerView.SmoothScroller.ScrollVectorProvider)) {}
-    RecyclerView.SmoothScroller localSmoothScroller;
-    do
-    {
-      do
-      {
-        return false;
-        localSmoothScroller = createScroller(paramLayoutManager);
-      } while (localSmoothScroller == null);
-      paramInt1 = findTargetSnapPosition(paramLayoutManager, paramInt1, paramInt2);
-    } while (paramInt1 == -1);
+    if (!(paramLayoutManager instanceof RecyclerView.SmoothScroller.ScrollVectorProvider)) {
+      return false;
+    }
+    RecyclerView.SmoothScroller localSmoothScroller = createScroller(paramLayoutManager);
+    if (localSmoothScroller == null) {
+      return false;
+    }
+    paramInt1 = findTargetSnapPosition(paramLayoutManager, paramInt1, paramInt2);
+    if (paramInt1 == -1) {
+      return false;
+    }
     localSmoothScroller.setTargetPosition(paramInt1);
     paramLayoutManager.startSmoothScroll(localSmoothScroller);
     return true;
@@ -49,18 +51,20 @@ public abstract class SnapHelper
   
   public void attachToRecyclerView(@Nullable RecyclerView paramRecyclerView)
   {
-    if (this.mRecyclerView == paramRecyclerView) {}
-    do
-    {
+    RecyclerView localRecyclerView = this.mRecyclerView;
+    if (localRecyclerView == paramRecyclerView) {
       return;
-      if (this.mRecyclerView != null) {
-        destroyCallbacks();
-      }
-      this.mRecyclerView = paramRecyclerView;
-    } while (this.mRecyclerView == null);
-    setupCallbacks();
-    this.mGravityScroller = new Scroller(this.mRecyclerView.getContext(), new DecelerateInterpolator());
-    snapToTargetExistingView();
+    }
+    if (localRecyclerView != null) {
+      destroyCallbacks();
+    }
+    this.mRecyclerView = paramRecyclerView;
+    if (this.mRecyclerView != null)
+    {
+      setupCallbacks();
+      this.mGravityScroller = new Scroller(this.mRecyclerView.getContext(), new DecelerateInterpolator());
+      snapToTargetExistingView();
+    }
   }
   
   @Nullable
@@ -96,43 +100,53 @@ public abstract class SnapHelper
   public boolean onFling(int paramInt1, int paramInt2)
   {
     RecyclerView.LayoutManager localLayoutManager = this.mRecyclerView.getLayoutManager();
-    if (localLayoutManager == null) {}
-    int i;
-    do
+    boolean bool2 = false;
+    if (localLayoutManager == null) {
+      return false;
+    }
+    if (this.mRecyclerView.getAdapter() == null) {
+      return false;
+    }
+    int i = this.mRecyclerView.getMinFlingVelocity();
+    boolean bool1;
+    if (Math.abs(paramInt2) <= i)
     {
-      do
-      {
-        return false;
-      } while (this.mRecyclerView.getAdapter() == null);
-      i = this.mRecyclerView.getMinFlingVelocity();
-    } while (((Math.abs(paramInt2) <= i) && (Math.abs(paramInt1) <= i)) || (!snapFromFling(localLayoutManager, paramInt1, paramInt2)));
-    return true;
+      bool1 = bool2;
+      if (Math.abs(paramInt1) <= i) {}
+    }
+    else
+    {
+      bool1 = bool2;
+      if (snapFromFling(localLayoutManager, paramInt1, paramInt2)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   void snapToTargetExistingView()
   {
-    if (this.mRecyclerView == null) {}
-    Object localObject;
-    do
-    {
-      View localView;
-      do
-      {
-        do
-        {
-          return;
-          localObject = this.mRecyclerView.getLayoutManager();
-        } while (localObject == null);
-        localView = findSnapView((RecyclerView.LayoutManager)localObject);
-      } while (localView == null);
-      localObject = calculateDistanceToFinalSnap((RecyclerView.LayoutManager)localObject, localView);
-    } while ((localObject[0] == 0) && (localObject[1] == 0));
-    this.mRecyclerView.smoothScrollBy(localObject[0], localObject[1]);
+    Object localObject = this.mRecyclerView;
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((RecyclerView)localObject).getLayoutManager();
+    if (localObject == null) {
+      return;
+    }
+    View localView = findSnapView((RecyclerView.LayoutManager)localObject);
+    if (localView == null) {
+      return;
+    }
+    localObject = calculateDistanceToFinalSnap((RecyclerView.LayoutManager)localObject, localView);
+    if ((localObject[0] != 0) || (localObject[1] != 0)) {
+      this.mRecyclerView.smoothScrollBy(localObject[0], localObject[1]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.SnapHelper
  * JD-Core Version:    0.7.0.1
  */

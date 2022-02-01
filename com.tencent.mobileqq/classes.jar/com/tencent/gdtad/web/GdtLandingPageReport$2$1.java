@@ -10,7 +10,14 @@ class GdtLandingPageReport$2$1
   
   public void a(String paramString)
   {
-    GdtLog.a("GdtLandingPageReport", " injectScript scene: " + this.a.jdField_a_of_type_Int + " 回调耗时: " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long) + " 回调. resp: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" injectScript scene: ");
+    localStringBuilder.append(this.a.jdField_a_of_type_Int);
+    localStringBuilder.append(" 回调耗时: ");
+    localStringBuilder.append(System.currentTimeMillis() - this.a.jdField_a_of_type_Long);
+    localStringBuilder.append(" 回调. resp: ");
+    localStringBuilder.append(paramString);
+    GdtLog.a("GdtLandingPageReport", localStringBuilder.toString());
     if (this.a.jdField_a_of_type_ComTencentGdtadWebGdtLandingPageReport$WebviewEvaluateListener != null) {
       this.a.jdField_a_of_type_ComTencentGdtadWebGdtLandingPageReport$WebviewEvaluateListener.a(paramString);
     }
@@ -24,7 +31,7 @@ class GdtLandingPageReport$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.web.GdtLandingPageReport.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.troop.data;
 
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.troop.troopfriend.api.ITroopBatchAddFriendService;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
+import mqq.app.AppRuntime;
 
 class TroopMessageManager$1
   implements Runnable
@@ -12,10 +11,10 @@ class TroopMessageManager$1
   
   public void run()
   {
-    Object localObject = (TroopHandler)TroopMessageManager.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+    Object localObject = (ITroopBatchAddFriendService)this.this$0.a.getRuntimeService(ITroopBatchAddFriendService.class, "");
     if (localObject != null)
     {
-      localObject = ((TroopHandler)localObject).a();
+      localObject = ((ITroopBatchAddFriendService)localObject).getTroopBatchAddFriendMgr();
       if (localObject != null) {
         ((TroopBatchAddFriendMgr)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
       }
@@ -24,7 +23,7 @@ class TroopMessageManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopMessageManager.1
  * JD-Core Version:    0.7.0.1
  */

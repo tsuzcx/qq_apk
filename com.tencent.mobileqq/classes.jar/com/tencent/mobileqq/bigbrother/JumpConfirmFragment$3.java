@@ -2,7 +2,7 @@ package com.tencent.mobileqq.bigbrother;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.QFragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.mobileqq.haoliyou.JefsClass;
 
 class JumpConfirmFragment$3
@@ -22,7 +22,7 @@ class JumpConfirmFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.JumpConfirmFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,101 +1,194 @@
 package com.tencent.turingfd.sdk.xq;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.text.TextUtils;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Set;
 
-public final class Bootes
-  extends case
-  implements Cloneable
+public class Bootes
 {
-  public static Map<String, String> C;
-  public static Map<Integer, Integer> D;
-  public static Map<String, String> F;
-  public long G = 0L;
-  public boolean H = true;
-  public Map<Integer, Integer> I = null;
-  public long J = 0L;
-  public Map<String, String> K = null;
-  public Map<String, String> path = null;
-  public long version = 0L;
+  public static final String FILE_NAME;
+  public Handler ch;
   
   static
   {
-    C = new HashMap();
-    C.put("", "");
-    D = new HashMap();
-    D.put(Integer.valueOf(0), Integer.valueOf(0));
-    F = new HashMap();
-    F.put("", "");
+    StringBuilder localStringBuilder = do.b("ias_");
+    localStringBuilder.append(float.rf);
+    localStringBuilder.append("_");
+    localStringBuilder.append("xqFull");
+    FILE_NAME = localStringBuilder.toString();
   }
   
-  public void a(byte parambyte)
+  public Bootes(Handler paramHandler)
   {
-    parambyte.a(this.G, 0);
-    parambyte.a(this.H, 1);
-    parambyte.a(this.version, 2);
-    parambyte.a(this.path, 3);
-    parambyte.a(this.I, 4);
-    parambyte.a(this.J, 5);
-    Map localMap = this.K;
-    if (localMap != null) {
-      parambyte.a(localMap, 6);
-    }
+    this.ch = paramHandler;
   }
   
-  public void a(try paramtry)
-  {
-    this.G = paramtry.a(this.G, 0, true);
-    this.H = paramtry.a(this.H, 1, true);
-    this.version = paramtry.a(this.version, 2, true);
-    this.path = ((Map)paramtry.a(C, 3, true));
-    this.I = ((Map)paramtry.a(D, 4, true));
-    this.J = paramtry.a(this.J, 5, true);
-    this.K = ((Map)paramtry.a(F, 6, false));
-  }
-  
-  public Object clone()
-  {
-    Object localObject1 = null;
-    try
-    {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      while (m) {}
-      throw new AssertionError();
-    }
-    return localObject1;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      return false;
-      paramObject = (Bootes)paramObject;
-    } while ((!char.a(this.G, paramObject.G)) || (!char.a(this.H, paramObject.H)) || (!char.a(this.version, paramObject.version)) || (!char.equals(this.path, paramObject.path)) || (!char.equals(this.I, paramObject.I)) || (!char.a(this.J, paramObject.J)) || (!char.equals(this.K, paramObject.K)));
-    return true;
-  }
-  
-  public int hashCode()
+  public static String e(Context paramContext, String paramString)
   {
     try
     {
-      throw new Exception("");
+      paramContext = paramContext.getSharedPreferences(FILE_NAME, 0);
     }
-    catch (Exception localException)
+    catch (Throwable paramContext)
     {
-      localException.printStackTrace();
+      for (;;)
+      {
+        try
+        {
+          paramContext = void.a(void.e(paramContext), void.m());
+          paramContext = new String(paramContext, "UTF-8");
+          return paramContext;
+        }
+        catch (Throwable paramContext) {}
+        paramContext = paramContext;
+      }
     }
-    return 0;
+    paramContext = null;
+    if (paramContext == null) {
+      return "";
+    }
+    paramContext = paramContext.getString(paramString, "");
+    if (TextUtils.isEmpty(paramContext)) {
+      return paramContext;
+    }
+    return "";
+  }
+  
+  public long A(Context paramContext)
+  {
+    paramContext = e(paramContext, "201");
+    try
+    {
+      long l = Long.valueOf(paramContext).longValue();
+      return l;
+    }
+    catch (Throwable paramContext)
+    {
+      label17:
+      break label17;
+    }
+    return 0L;
+  }
+  
+  public continue<Long> B(Context paramContext)
+  {
+    System.currentTimeMillis();
+    continue localcontinue = new continue(6);
+    paramContext = e(paramContext, "101").split("_");
+    int j = paramContext.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = paramContext[i];
+      try
+      {
+        long l = Long.valueOf(str).longValue();
+        localcontinue.offer(Long.valueOf(l));
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        label62:
+        break label62;
+      }
+      i += 1;
+    }
+    return localcontinue;
+  }
+  
+  public void a(Context paramContext, long paramLong)
+  {
+    long l = paramLong;
+    if (paramLong >= 9223372036854775807L) {
+      l = 9223372036854775807L;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(l);
+    a(paramContext, "201", localStringBuilder.toString(), true);
+  }
+  
+  public void a(Context paramContext, continue<Long> paramcontinue)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < paramcontinue.size())
+    {
+      localStringBuilder.append(paramcontinue.qg.get(i));
+      if (i != paramcontinue.size() - 1) {
+        localStringBuilder.append("_");
+      }
+      i += 1;
+    }
+    a(paramContext, "101", localStringBuilder.toString(), true);
+  }
+  
+  public final void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(paramString1, paramString2);
+    if (paramBoolean)
+    {
+      a(paramContext, localHashMap);
+      return;
+    }
+    this.ch.post(new Auriga(this, paramContext, localHashMap));
+  }
+  
+  public final void a(Context paramContext, Map<String, String> paramMap)
+  {
+    try
+    {
+      paramContext = paramContext.getSharedPreferences(FILE_NAME, 0);
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        try
+        {
+          Iterator localIterator;
+          label102:
+          paramContext.commit();
+          return;
+        }
+        catch (Throwable paramContext) {}
+        paramContext = paramContext;
+      }
+    }
+    paramContext = null;
+    if (paramContext == null) {
+      return;
+    }
+    paramContext = paramContext.edit();
+    if (paramContext == null) {
+      return;
+    }
+    localIterator = paramMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramMap.get(str1);
+      try
+      {
+        paramContext.putString(str1, void.b(void.b(str2.getBytes(), void.m())));
+      }
+      catch (Throwable localThrowable)
+      {
+        break label102;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Bootes
  * JD-Core Version:    0.7.0.1
  */

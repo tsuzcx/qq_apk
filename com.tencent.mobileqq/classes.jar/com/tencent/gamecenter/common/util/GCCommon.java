@@ -18,17 +18,32 @@ public class GCCommon
   
   public static String a()
   {
-    return b + File.separator + ".GameCenterWebBuffer" + File.separator + "Images/games";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(".GameCenterWebBuffer");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("Images/games");
+    return localStringBuilder.toString();
   }
   
   public static String a(Context paramContext)
   {
-    Object localObject = (TelephonyManager)paramContext.getSystemService("phone");
-    String str = "" + ((TelephonyManager)localObject).getDeviceId();
-    localObject = "" + ((TelephonyManager)localObject).getSimSerialNumber();
-    long l1 = ("" + Settings.Secure.getString(paramContext.getContentResolver(), "android_id")).hashCode();
-    long l2 = str.hashCode();
-    return new UUID(l1, ((String)localObject).hashCode() | l2 << 32).toString();
+    Object localObject2 = (TelephonyManager)paramContext.getSystemService("phone");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append(((TelephonyManager)localObject2).getDeviceId());
+    localObject1 = ((StringBuilder)localObject1).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(((TelephonyManager)localObject2).getSimSerialNumber());
+    localObject2 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(Settings.Secure.getString(paramContext.getContentResolver(), "android_id"));
+    long l1 = localStringBuilder.toString().hashCode();
+    long l2 = ((String)localObject1).hashCode();
+    return new UUID(l1, ((String)localObject2).hashCode() | l2 << 32).toString();
   }
   
   public static String b()
@@ -52,13 +67,17 @@ public class GCCommon
       Object localObject = localInetAddress.getHostAddress().toString();
       return localObject;
     }
-    catch (SocketException localSocketException) {}
+    catch (SocketException localSocketException)
+    {
+      label62:
+      break label62;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GCCommon
  * JD-Core Version:    0.7.0.1
  */

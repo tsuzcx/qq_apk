@@ -7,7 +7,7 @@ public class TRSilkEncoder
 {
   private static int a = 24000;
   private static int b = 16000;
-  private static TRSilk c = null;
+  private static TRSilk c;
   
   public TRSilkEncoder()
   {
@@ -16,49 +16,39 @@ public class TRSilkEncoder
   
   private static byte[] a(byte[] paramArrayOfByte, int paramInt)
   {
-    byte[] arrayOfByte = null;
-    Object localObject = arrayOfByte;
-    int i;
-    if (paramArrayOfByte != null)
+    if ((paramArrayOfByte != null) && (paramInt > 0))
     {
-      localObject = arrayOfByte;
-      if (paramInt > 0)
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      int i = 0;
+      for (;;)
       {
-        localObject = new ByteArrayOutputStream();
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (i >= paramInt) {}
-      try
-      {
-        ((ByteArrayOutputStream)localObject).flush();
-        localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-        return localObject;
-        arrayOfByte = c.silkEncode(paramArrayOfByte, i, Math.min(1024, paramInt - i));
-        if (arrayOfByte != null) {}
-        try
+        if (i >= paramInt)
         {
-          ((ByteArrayOutputStream)localObject).write(arrayOfByte);
-          i += 1024;
+          try
+          {
+            localByteArrayOutputStream.flush();
+          }
+          catch (IOException paramArrayOfByte)
+          {
+            paramArrayOfByte.printStackTrace();
+          }
+          return localByteArrayOutputStream.toByteArray();
         }
-        catch (IOException localIOException)
-        {
-          for (;;)
+        byte[] arrayOfByte = c.silkEncode(paramArrayOfByte, i, Math.min(1024, paramInt - i));
+        if (arrayOfByte != null) {
+          try
+          {
+            localByteArrayOutputStream.write(arrayOfByte);
+          }
+          catch (IOException localIOException)
           {
             localIOException.printStackTrace();
           }
         }
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
+        i += 1024;
       }
     }
+    return null;
   }
   
   public static byte[] processPCMToSilk(byte[] paramArrayOfByte)
@@ -71,17 +61,14 @@ public class TRSilkEncoder
     try
     {
       paramArrayOfByte = a(paramArrayOfByte, paramArrayOfByte.length);
-      c.silkRelease();
-      return paramArrayOfByte;
     }
     catch (TRSilkException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        paramArrayOfByte = localObject;
-      }
+      paramArrayOfByte.printStackTrace();
+      paramArrayOfByte = localObject;
     }
+    c.silkRelease();
+    return paramArrayOfByte;
   }
 }
 

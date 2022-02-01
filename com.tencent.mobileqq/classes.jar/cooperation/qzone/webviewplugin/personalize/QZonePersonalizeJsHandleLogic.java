@@ -1,12 +1,6 @@
 package cooperation.qzone.webviewplugin.personalize;
 
-import android.content.Intent;
-import android.os.Bundle;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class QZonePersonalizeJsHandleLogic
 {
@@ -14,47 +8,12 @@ public class QZonePersonalizeJsHandleLogic
   
   public static void handleSwitchFinished(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    int i = 0;
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      return;
-    }
-    try
-    {
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      int k = paramVarArgs.optInt("facade", -1);
-      int m = paramVarArgs.optInt("feedskin", -1);
-      int n = paramVarArgs.optInt("avatar", -1);
-      int i1 = paramVarArgs.optInt("float", -1);
-      int i2 = paramVarArgs.optInt("customvip", -1);
-      int i3 = paramVarArgs.optInt("praise", -1);
-      int i4 = paramVarArgs.optInt("player", -1);
-      boolean bool = paramVarArgs.optBoolean("isAfter785", false);
-      int j = paramVarArgs.optInt("diyHome", -1);
-      paramVarArgs = new Intent("action_personalize_js2qzone");
-      Bundle localBundle = new Bundle();
-      localBundle.putString("cmd", "SetPersonalizeFinished");
-      localBundle.putInt("facade", k);
-      localBundle.putInt("feedskin", m);
-      localBundle.putInt("avatar", n);
-      localBundle.putInt("floatObject", i1);
-      localBundle.putInt("customvip", i2);
-      localBundle.putInt("praise", i3);
-      localBundle.putInt("player", i4);
-      if (bool) {
-        i = 1;
-      }
-      localBundle.putInt("isAfter785", i);
-      localBundle.putInt("diyHome", j);
-      paramVarArgs.putExtras(localBundle);
-      QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
-      return;
-    }
-    catch (JSONException paramPluginRuntime) {}
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZonePersonalizeJsHandleLogic
  * JD-Core Version:    0.7.0.1
  */

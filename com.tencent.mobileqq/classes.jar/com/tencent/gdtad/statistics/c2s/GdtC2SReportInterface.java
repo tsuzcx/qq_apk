@@ -41,98 +41,151 @@ public final class GdtC2SReportInterface
   {
     long l = System.currentTimeMillis();
     GdtReporterForAnalysis.a(BaseApplicationImpl.getApplication(), this, paramString);
-    j = -1;
-    i = j;
+    int j = -1;
+    int i = j;
     for (;;)
     {
       try
       {
-        GdtLog.a("GdtC2SReporter", "index: " + paramInt + " mOpeType " + this.jdField_a_of_type_Int);
+        Object localObject = new StringBuilder();
         i = j;
-        HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
+        ((StringBuilder)localObject).append("index: ");
         i = j;
-        localHttpURLConnection.setRequestMethod("GET");
+        ((StringBuilder)localObject).append(paramInt);
         i = j;
-        localHttpURLConnection.setConnectTimeout(10000);
+        ((StringBuilder)localObject).append(" mOpeType ");
         i = j;
-        localHttpURLConnection.setReadTimeout(10000);
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
         i = j;
-        localHttpURLConnection.setUseCaches(false);
+        GdtLog.a("GdtC2SReporter", ((StringBuilder)localObject).toString());
         i = j;
-        localHttpURLConnection.setInstanceFollowRedirects(true);
+        localObject = (HttpURLConnection)new URL(paramString).openConnection();
         i = j;
-        localHttpURLConnection.connect();
+        ((HttpURLConnection)localObject).setRequestMethod("GET");
         i = j;
-        j = localHttpURLConnection.getResponseCode();
+        ((HttpURLConnection)localObject).setConnectTimeout(10000);
         i = j;
-        GdtLog.a("GdtC2SReporter", "rspCode:  " + j + " index: " + paramInt + " mOpeType " + this.jdField_a_of_type_Int + " reportUrl =" + paramString);
+        ((HttpURLConnection)localObject).setReadTimeout(10000);
+        i = j;
+        ((HttpURLConnection)localObject).setUseCaches(false);
+        i = j;
+        ((HttpURLConnection)localObject).setInstanceFollowRedirects(true);
+        i = j;
+        ((HttpURLConnection)localObject).connect();
+        i = j;
+        j = ((HttpURLConnection)localObject).getResponseCode();
+        i = j;
+        localObject = new StringBuilder();
+        i = j;
+        ((StringBuilder)localObject).append("rspCode:  ");
+        i = j;
+        ((StringBuilder)localObject).append(j);
+        i = j;
+        ((StringBuilder)localObject).append(" index: ");
+        i = j;
+        ((StringBuilder)localObject).append(paramInt);
+        i = j;
+        ((StringBuilder)localObject).append(" mOpeType ");
+        i = j;
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        i = j;
+        ((StringBuilder)localObject).append(" reportUrl =");
+        i = j;
+        ((StringBuilder)localObject).append(paramString);
+        i = j;
+        GdtLog.a("GdtC2SReporter", ((StringBuilder)localObject).toString());
         i = j;
         int k = this.jdField_a_of_type_Int;
         if (j != 200) {
-          continue;
+          break label400;
         }
         paramInt = 0;
         i = j;
         ReportController.a(null, "dc00898", "", "", "0X8009B97", "0X8009B97", k, paramInt, "", "", this.jdField_a_of_type_JavaLangString, paramString);
+        i = j;
       }
       catch (Throwable localThrowable)
       {
-        GdtLog.d("GdtC2SReporter", "c2sReport excetpion: " + localThrowable.getMessage());
-        j = i;
-        continue;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("c2sReport excetpion: ");
+        localStringBuilder.append(localThrowable.getMessage());
+        GdtLog.d("GdtC2SReporter", localStringBuilder.toString());
       }
-      GdtReporterForAnalysis.a(BaseApplicationImpl.getApplication(), this, paramString, j, System.currentTimeMillis() - l);
-      return j;
+      GdtReporterForAnalysis.a(BaseApplicationImpl.getApplication(), this, paramString, i, System.currentTimeMillis() - l);
+      return i;
+      label400:
       paramInt = 1;
     }
   }
   
   private void a(List<String> paramList)
   {
-    int i = -1;
     paramList = paramList.iterator();
-    int j = 0;
+    int i = 0;
+    int j = -1;
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      j += 1;
-      int k = a(str, j);
-      i = k;
-      if (k < 0) {
-        i = a(str, j);
+      int k = i + 1;
+      j = a(str, k);
+      i = j;
+      if (j < 0) {
+        i = a(str, k);
       }
-      GdtReporterForAnalysis.a(BaseApplicationImpl.getApplication(), this, str, i);
+      j = i;
+      GdtReporterForAnalysis.a(BaseApplicationImpl.getApplication(), this, str, j);
+      i = k;
     }
-    ReportController.a(null, "dc00898", "", "", "0X8009EBF", "0X8009EBF", this.jdField_a_of_type_Int, i, "", "", this.jdField_a_of_type_JavaLangString, "");
+    ReportController.a(null, "dc00898", "", "", "0X8009EBF", "0X8009EBF", this.jdField_a_of_type_Int, j, "", "", this.jdField_a_of_type_JavaLangString, "");
   }
   
   public void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = paramAdInfo;
-    if (paramAdInfo == null) {}
-    do
+    if (paramAdInfo != null)
     {
-      do
+      this.jdField_a_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_exposure_monitor_url.get();
+      this.jdField_b_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_click_monitor_url.get();
+      this.c = paramAdInfo.report_info.thirdparty_monitor_urls.video_play_monitor_url.get();
+      this.jdField_a_of_type_JavaLangString = Long.toString(paramAdInfo.report_info.trace_info.aid.get());
+      if (this.jdField_a_of_type_JavaLangString != null)
       {
-        GdtReporterForAnalysis.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
-        return;
-        this.jdField_a_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_exposure_monitor_url.get();
-        this.jdField_b_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_click_monitor_url.get();
-        this.c = paramAdInfo.report_info.thirdparty_monitor_urls.video_play_monitor_url.get();
-        this.jdField_a_of_type_JavaLangString = Long.toString(paramAdInfo.report_info.trace_info.aid.get());
-      } while (this.jdField_a_of_type_JavaLangString == null);
-      if ((paramInt1 == 0) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-        this.jdField_a_of_type_Int = paramInt1;
+        if (paramInt1 == 0)
+        {
+          localObject = this.jdField_a_of_type_JavaUtilList;
+          if ((localObject != null) && (((List)localObject).size() > 0)) {
+            this.jdField_a_of_type_Int = paramInt1;
+          }
+        }
+        if (paramInt1 == 1)
+        {
+          localObject = this.jdField_b_of_type_JavaUtilList;
+          if ((localObject != null) && (((List)localObject).size() > 0)) {
+            this.jdField_a_of_type_Int = paramInt1;
+          }
+        }
+        if (paramInt1 == 2)
+        {
+          localObject = this.c;
+          if ((localObject != null) && (((List)localObject).size() > 0)) {
+            this.jdField_a_of_type_Int = paramInt1;
+          }
+        }
+        if (this.jdField_a_of_type_Int != -1) {
+          break label216;
+        }
       }
-      if ((paramInt1 == 1) && (this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0)) {
-        this.jdField_a_of_type_Int = paramInt1;
-      }
-      if ((paramInt1 == 2) && (this.c != null) && (this.c.size() > 0)) {
-        this.jdField_a_of_type_Int = paramInt1;
-      }
-    } while (this.jdField_a_of_type_Int == -1);
-    GdtLog.a("GdtC2SReporter", "reportAsync for ADID: " + this.jdField_a_of_type_JavaLangString + ", operationType: " + paramInt1);
+    }
+    GdtReporterForAnalysis.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
+    return;
+    label216:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("reportAsync for ADID: ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(", operationType: ");
+    ((StringBuilder)localObject).append(paramInt1);
+    GdtLog.a("GdtC2SReporter", ((StringBuilder)localObject).toString());
     GdtReporterForAnalysis.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, true);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     ThreadManager.executeOnNetWorkThread(new GdtC2SReportInterface.1(this));
@@ -141,7 +194,7 @@ public final class GdtC2SReportInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -60,18 +60,20 @@ public class HLSMediaPlayer
   
   public void setDataSource(SegmentVideoInfo.StreamInfo paramStreamInfo)
   {
-    if (paramStreamInfo.getCount() > 1) {
-      throw new IOException("streamInfo size error");
-    }
-    String str = paramStreamInfo.getSegment(0).url;
-    this.mProxyUrl = VideoManager.getInstance().getUrl(str);
-    if (PlayerUtils.isHLSStream(this.mProxyUrl)) {}
-    for (this.isAllowLooping = false;; this.isAllowLooping = true)
+    if (paramStreamInfo.getCount() <= 1)
     {
+      String str = paramStreamInfo.getSegment(0).url;
+      this.mProxyUrl = VideoManager.getInstance().getUrl(str);
+      if (PlayerUtils.isHLSStream(this.mProxyUrl)) {
+        this.isAllowLooping = false;
+      } else {
+        this.isAllowLooping = true;
+      }
       this.isHLSLive = paramStreamInfo.isHLSLive;
       getInternalMediaPlayer().setDataSource(this.mProxyUrl);
       return;
     }
+    throw new IOException("streamInfo size error");
   }
   
   public void setDataSource(SegmentVideoInfo.StreamInfo paramStreamInfo, int paramInt)
@@ -88,7 +90,7 @@ public class HLSMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.player.HLSMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

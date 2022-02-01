@@ -13,12 +13,21 @@ public class c
   
   public String toString()
   {
-    return "IpCachedItem{ip='" + this.a + '\'' + ", hitTime=" + this.b + ", avgElapse=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("IpCachedItem{ip='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", hitTime=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", avgElapse=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.dns.b.c
  * JD-Core Version:    0.7.0.1
  */

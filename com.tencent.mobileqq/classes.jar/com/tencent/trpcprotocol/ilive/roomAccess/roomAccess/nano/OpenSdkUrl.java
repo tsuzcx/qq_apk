@@ -24,14 +24,15 @@ public final class OpenSdkUrl
   
   public static OpenSdkUrl[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new OpenSdkUrl[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new OpenSdkUrl[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static OpenSdkUrl parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -56,7 +57,7 @@ public final class OpenSdkUrl
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
     int i = j;
@@ -91,32 +92,50 @@ public final class OpenSdkUrl
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 10: 
-        this.raw = paramCodedInputByteBufferNano.readString();
-        break;
-      case 18: 
-        this.hd = paramCodedInputByteBufferNano.readString();
-        break;
-      case 26: 
-        this.sd = paramCodedInputByteBufferNano.readString();
-        break;
-      case 34: 
-        this.ld = paramCodedInputByteBufferNano.readString();
-        break;
-      case 42: 
-        this.sound = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      this.h265 = paramCodedInputByteBufferNano.readString();
+      if (i != 10)
+      {
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (i != 34)
+            {
+              if (i != 42)
+              {
+                if (i != 50)
+                {
+                  if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                    return this;
+                  }
+                }
+                else {
+                  this.h265 = paramCodedInputByteBufferNano.readString();
+                }
+              }
+              else {
+                this.sound = paramCodedInputByteBufferNano.readString();
+              }
+            }
+            else {
+              this.ld = paramCodedInputByteBufferNano.readString();
+            }
+          }
+          else {
+            this.sd = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.hd = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.raw = paramCodedInputByteBufferNano.readString();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -144,7 +163,7 @@ public final class OpenSdkUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.roomAccess.roomAccess.nano.OpenSdkUrl
  * JD-Core Version:    0.7.0.1
  */

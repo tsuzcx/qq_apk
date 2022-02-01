@@ -16,17 +16,20 @@ class ApkForAppStoreFilePresenter$2
   public void onClick(View paramView)
   {
     int i = QFileUtils.b(this.a.a.e());
-    ReportController.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
-    IDownloadController localIDownloadController = this.a.a.a();
-    if (localIDownloadController != null) {
-      localIDownloadController.a();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("");
+    ReportController.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, ((StringBuilder)localObject).toString(), "", "", "");
+    localObject = this.a.a.a();
+    if (localObject != null) {
+      ((IDownloadController)localObject).a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.ApkForAppStoreFilePresenter.2
  * JD-Core Version:    0.7.0.1
  */

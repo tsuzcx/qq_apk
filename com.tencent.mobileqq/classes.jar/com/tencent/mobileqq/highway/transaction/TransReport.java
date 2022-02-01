@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.highway.transaction;
 
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TransReport
@@ -82,138 +80,18 @@ public class TransReport
   
   public HashMap<String, String> getReportInfo()
   {
-    int j = 1;
-    HashMap localHashMap = new HashMap();
-    String str;
-    switch (this.netType)
-    {
-    default: 
-      str = "UnKnow";
-    }
-    StringBuilder localStringBuilder;
-    for (;;)
-    {
-      localStringBuilder = new StringBuilder("");
-      localObject1 = this.mDataFlowOfChannel.values().iterator();
-      i = 0;
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (AtomicInteger)((Iterator)localObject1).next();
-        if (i >= 5) {
-          break;
-        }
-        if (i > 0) {
-          localStringBuilder.append("_");
-        }
-        localStringBuilder.append(((AtomicInteger)localObject2).get());
-        i += 1;
-      }
-      str = "WiFi";
-      continue;
-      str = "3G";
-      continue;
-      str = "2G";
-      continue;
-      str = "4G";
-      continue;
-      str = "CABLE";
-    }
-    Object localObject1 = new StringBuilder("");
-    ((StringBuilder)localObject1).append("sn:").append(this.sliceNum).append(";");
-    ((StringBuilder)localObject1).append("tc_s:").append(this.timeCost_Send).append(";");
-    ((StringBuilder)localObject1).append("tc_h:").append(this.timeCost_Ht).append(";");
-    ((StringBuilder)localObject1).append("tc_p:").append(this.timeCost_Cache).append(";");
-    ((StringBuilder)localObject1).append("net:").append(str).append(";");
-    ((StringBuilder)localObject1).append("ip").append(":").append(this.ipAddr).append(";");
-    ((StringBuilder)localObject1).append("port").append(":").append(this.port).append(";");
-    ((StringBuilder)localObject1).append("connNum:").append(this.connNum).append(";");
-    Object localObject2 = ((StringBuilder)localObject1).append("PreConn:");
-    if (this.mIsPreConnExist)
-    {
-      str = "1";
-      ((StringBuilder)localObject2).append(str).append(";");
-      ((StringBuilder)localObject1).append("param_conf_segSize").append(":").append(this.confSegSize).append(";");
-      ((StringBuilder)localObject1).append("param_conf_segNum").append(":").append(this.confSegNum).append(";");
-      ((StringBuilder)localObject1).append("param_conf_connNum").append(":").append(this.confConnNum).append(";");
-      ((StringBuilder)localObject1).append("proto").append(":").append(this.protoType).append(";");
-      localObject2 = ((StringBuilder)localObject1).append("hasNet").append(":");
-      if (!this.bHasNet) {
-        break label965;
-      }
-      str = "true";
-      label524:
-      ((StringBuilder)localObject2).append(str).append(";");
-      ((StringBuilder)localObject1).append("progress").append(":").append(this.mTransferedSize).append(";");
-      ((StringBuilder)localObject1).append("param_BDH_Reason").append(this.failReason).append(";");
-      localHashMap.put("upFlow_WiFi", String.valueOf(this.dataFlow[0]));
-      localHashMap.put("dwFlow_WiFi", String.valueOf(this.dataFlow[1]));
-      localHashMap.put("upFlow_Xg", String.valueOf(this.dataFlow[2]));
-      localHashMap.put("dwFlow_Xg", String.valueOf(this.dataFlow[3]));
-      localHashMap.put("tc_p:", String.valueOf(this.timeCost_Cache));
-      localHashMap.put("rep_bdhTrans", ((StringBuilder)localObject1).toString());
-      localHashMap.put("param_conf_segSize", String.valueOf(this.confSegSize));
-      localHashMap.put("param_conf_segNum", String.valueOf(this.confSegNum));
-      localHashMap.put("param_conf_connNum", String.valueOf(this.confConnNum));
-      localHashMap.put("segspercnt", localStringBuilder.toString());
-      if (!this.bFINLost) {
-        break label972;
-      }
-      str = String.valueOf(true);
-      label751:
-      localHashMap.put("param_fin_lost", str);
-      localHashMap.put("param_retry_seg_count", String.valueOf(this.mRetryTimes_SegsNum));
-      localHashMap.put("param_total_retry_times", String.valueOf(this.mRetryTimes_SegsTotal));
-      localHashMap.put("param_max_retry_times", String.valueOf(this.mRetryTimes_SegsMax));
-      localHashMap.put("param_retry_code", String.valueOf(this.mRetryCode));
-      localHashMap.put("param_ip_index", String.valueOf(this.ipIndex));
-      localHashMap.put("param_Ip_ConnCost", String.valueOf(this.ipConnCost));
-      localHashMap.put("ip", String.valueOf(this.ipAddr));
-      localHashMap.put("port", this.port);
-      localHashMap.put("param_BDH_Cache_Diff", String.valueOf(this.bCacheDiff));
-      if (!this.isIpv6) {
-        break label980;
-      }
-      i = 1;
-      label901:
-      localHashMap.put("param_is_ipv6", String.valueOf(i));
-      if (!this.mIPv6Fast) {
-        break label985;
-      }
-      i = 1;
-      label922:
-      localHashMap.put("param_ipv6First", String.valueOf(i));
-      if (!this.mHasIpv6List) {
-        break label990;
-      }
-    }
-    label965:
-    label972:
-    label980:
-    label985:
-    label990:
-    for (int i = j;; i = 0)
-    {
-      localHashMap.put("param_hasV6List", String.valueOf(i));
-      return localHashMap;
-      str = "0";
-      break;
-      str = "false";
-      break label524;
-      str = String.valueOf(false);
-      break label751;
-      i = 0;
-      break label901;
-      i = 0;
-      break label922;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setFailReason(int paramInt, String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder("BDH");
-    localStringBuilder.append("_E_").append(paramInt);
-    localStringBuilder.append("_N_").append(this.connErrCode);
-    localStringBuilder.append("_D_").append(paramString);
+    localStringBuilder.append("_E_");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_N_");
+    localStringBuilder.append(this.connErrCode);
+    localStringBuilder.append("_D_");
+    localStringBuilder.append(paramString);
     this.failReason = localStringBuilder.toString();
   }
   
@@ -231,7 +109,7 @@ public class TransReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.transaction.TransReport
  * JD-Core Version:    0.7.0.1
  */

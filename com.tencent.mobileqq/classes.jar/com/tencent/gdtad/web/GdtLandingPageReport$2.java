@@ -10,13 +10,16 @@ class GdtLandingPageReport$2
   
   public void run()
   {
-    GdtLog.a("GdtLandingPageReport", " injectScript start script =" + this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" injectScript start script =");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    GdtLog.a("GdtLandingPageReport", localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.evaluateJavascript(this.jdField_a_of_type_JavaLangString, new GdtLandingPageReport.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.web.GdtLandingPageReport.2
  * JD-Core Version:    0.7.0.1
  */

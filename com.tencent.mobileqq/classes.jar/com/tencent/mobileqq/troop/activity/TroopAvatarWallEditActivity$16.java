@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import com.tencent.mobileqq.activity.photo.TroopPhotoController;
+import com.tencent.mobileqq.troop.avatar.TroopPhotoController;
 
 class TroopAvatarWallEditActivity$16
   implements Runnable
@@ -10,13 +10,13 @@ class TroopAvatarWallEditActivity$16
   public void run()
   {
     if (this.this$0.a != null) {
-      this.this$0.a.onInsertAvatarFailed(this.a);
+      this.this$0.a.d(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.16
  * JD-Core Version:    0.7.0.1
  */

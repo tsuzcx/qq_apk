@@ -3,7 +3,8 @@ package com.tencent.mobileqq.profile.PersonalityLabel;
 import android.text.TextUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.pic.api.ICompressOperator;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -20,7 +21,7 @@ class PersonalityLabelGalleryActivity$4
   {
     ArrayList localArrayList = new ArrayList(9);
     int i = PersonalityLabelGalleryActivity.a(this.this$0).size() - 1;
-    if (i >= 0)
+    while (i >= 0)
     {
       Object localObject = (String)PersonalityLabelGalleryActivity.a(this.this$0).get(i);
       if (this.this$0.e)
@@ -30,31 +31,38 @@ class PersonalityLabelGalleryActivity$4
       }
       localObject = new CompressInfo((String)localObject, 0);
       ((CompressInfo)localObject).f = 0;
-      CompressOperator.b((CompressInfo)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label uploadPhoto(), thumb_path = " + ((CompressInfo)localObject).e);
+      ((ICompressOperator)QRoute.api(ICompressOperator.class)).startThumbnail((CompressInfo)localObject);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("personality_label uploadPhoto(), thumb_path = ");
+        localStringBuilder.append(((CompressInfo)localObject).e);
+        QLog.i("PersonalityLabelGalleryActivity", 2, localStringBuilder.toString());
       }
       if (!TextUtils.isEmpty(((CompressInfo)localObject).e))
       {
         localArrayList.add(localObject);
         localObject = new File(((CompressInfo)localObject).e);
-      }
-      for (;;)
-      {
         try
         {
-          localObject = new URL("file:///" + ((File)localObject).getAbsolutePath());
-          int j = (int)(120.0F * PersonalityLabelGalleryActivity.a(this.this$0));
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("file:///");
+          localStringBuilder.append(((File)localObject).getAbsolutePath());
+          localObject = new URL(localStringBuilder.toString());
+          int j = (int)(PersonalityLabelGalleryActivity.a(this.this$0) * 120.0F);
           URLDrawable.getDrawable((URL)localObject, j, j, this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable).startDownload();
-          i -= 1;
         }
         catch (MalformedURLException localMalformedURLException)
         {
           localMalformedURLException.printStackTrace();
-          continue;
         }
+      }
+      else
+      {
         this.this$0.runOnUiThread(new PersonalityLabelGalleryActivity.4.2(this, i));
       }
+      i -= 1;
     }
     if (localArrayList.size() > 0) {
       this.this$0.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a(localArrayList, PersonalityLabelGalleryActivity.a(this.this$0));
@@ -64,7 +72,7 @@ class PersonalityLabelGalleryActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.4
  * JD-Core Version:    0.7.0.1
  */

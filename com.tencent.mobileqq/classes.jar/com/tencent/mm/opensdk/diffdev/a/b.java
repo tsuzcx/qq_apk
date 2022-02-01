@@ -27,8 +27,10 @@ final class b
   
   public final void onAuthGotQrcode(String paramString, byte[] paramArrayOfByte)
   {
-    Log.d("MicroMsg.SDK.ListenerWrapper", "onAuthGotQrcode, qrcodeImgPath = " + paramString);
-    Object localObject = new ArrayList();
+    Object localObject = new StringBuilder("onAuthGotQrcode, qrcodeImgPath = ");
+    ((StringBuilder)localObject).append(paramString);
+    Log.d("MicroMsg.SDK.ListenerWrapper", ((StringBuilder)localObject).toString());
+    localObject = new ArrayList();
     ((List)localObject).addAll(a.a(this.f));
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -46,7 +48,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.b
  * JD-Core Version:    0.7.0.1
  */

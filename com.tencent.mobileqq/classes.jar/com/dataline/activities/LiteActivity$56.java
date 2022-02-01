@@ -20,13 +20,19 @@ class LiteActivity$56
     int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      FMToastUtil.b(FileManagerUtil.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692731));
-      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getFileManagerEngine().a(this.b, null, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
-      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = localFileManagerEntity.nSessionId;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(FileManagerUtil.c(this.jdField_a_of_type_JavaLangString));
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692688));
+      FMToastUtil.b(((StringBuilder)localObject).toString());
+      localObject = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getFileManagerEngine().a(this.b, null, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
+      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = ((FileManagerEntity)localObject).nSessionId;
       this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getMessageFacade().a(i).d(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId);
       return;
     }
-    FMToastUtil.b(FileManagerUtil.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692731));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(FileManagerUtil.c(this.jdField_a_of_type_JavaLangString));
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692688));
+    FMToastUtil.b(((StringBuilder)localObject).toString());
     this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId);
   }
   
@@ -34,7 +40,7 @@ class LiteActivity$56
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.56
  * JD-Core Version:    0.7.0.1
  */

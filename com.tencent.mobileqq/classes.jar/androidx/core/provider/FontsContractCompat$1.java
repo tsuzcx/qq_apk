@@ -4,7 +4,7 @@ import android.content.Context;
 import androidx.collection.LruCache;
 import java.util.concurrent.Callable;
 
-final class FontsContractCompat$1
+class FontsContractCompat$1
   implements Callable<FontsContractCompat.TypefaceResult>
 {
   FontsContractCompat$1(Context paramContext, FontRequest paramFontRequest, int paramInt, String paramString) {}
@@ -20,7 +20,7 @@ final class FontsContractCompat$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.provider.FontsContractCompat.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,23 +13,25 @@ public class InputStatusObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return;
+        }
+        a(paramBoolean, ((Boolean)paramObject).booleanValue());
+        return;
+      }
       b(paramBoolean, ((Boolean)paramObject).booleanValue());
       return;
     }
-    a(paramBoolean, ((Boolean)paramObject).booleanValue());
+    a(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.inputstatus.InputStatusObserver
  * JD-Core Version:    0.7.0.1
  */

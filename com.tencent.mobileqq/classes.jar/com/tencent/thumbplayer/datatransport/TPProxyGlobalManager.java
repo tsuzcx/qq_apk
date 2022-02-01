@@ -3,6 +3,7 @@ package com.tencent.thumbplayer.datatransport;
 import com.tencent.thumbplayer.api.TPPlayerMgr;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPDownloadProxy;
 import com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxyFactory;
+import com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager;
 import com.tencent.thumbplayer.utils.TPGlobalEventNofication;
 import com.tencent.thumbplayer.utils.TPGlobalEventNofication.OnGlobalEventChangeListener;
 import com.tencent.thumbplayer.utils.TPLogUtil;
@@ -58,74 +59,85 @@ public class TPProxyGlobalManager
   
   public ITPProxyManagerAdapter getPlayerProxy(int paramInt)
   {
-    if (paramInt < 0) {}
-    ITPDownloadProxy localITPDownloadProxy;
-    do
-    {
-      return null;
-      if (this.mServiceTypeDownloadProxyMap.containsKey(Integer.valueOf(paramInt))) {
-        return (ITPProxyManagerAdapter)this.mServiceTypeDownloadProxyMap.get(Integer.valueOf(paramInt));
-      }
-      localITPDownloadProxy = TPDownloadProxyFactory.getTPDownloadProxy(paramInt);
-    } while (localITPDownloadProxy == null);
-    try
-    {
-      if (localITPDownloadProxy.init(TPPlayerMgr.getAppContext(), TPProxyUtils.getProxyInitParam(TPPlayerMgr.getAppContext(), paramInt)) < 0)
-      {
-        TPLogUtil.i("TPProxyGlobalManager", "downloadProxy init failed with status:" + localITPDownloadProxy);
-        return null;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      TPLogUtil.i("TPProxyGlobalManager", "init proxy failed:" + localThrowable);
+    if (paramInt < 0) {
       return null;
     }
-    localThrowable.setLogListener(new TPProxyGlobalManager.1(this));
-    int i = TPNetworkChangeMonitor.getNetworkStatus();
-    if (i == 1)
-    {
-      localThrowable.pushEvent(1);
-      localThrowable.pushEvent(10);
+    if (this.mServiceTypeDownloadProxyMap.containsKey(Integer.valueOf(paramInt))) {
+      return (ITPProxyManagerAdapter)this.mServiceTypeDownloadProxyMap.get(Integer.valueOf(paramInt));
     }
-    for (;;)
-    {
-      localThrowable.pushEvent(this.mAppBackOrFront);
-      localThrowable.setUserData("carrier_pesudo_code", this.mUpc);
-      localThrowable.setUserData("carrier_pesudo_state", Integer.valueOf(this.mUpcState));
-      TPProxyManagerAdapterImpl localTPProxyManagerAdapterImpl = new TPProxyManagerAdapterImpl(localThrowable);
-      this.mServiceTypeDownloadProxyMap.put(Integer.valueOf(paramInt), localTPProxyManagerAdapterImpl);
-      return localTPProxyManagerAdapterImpl;
-      if (i == 2)
+    Object localObject = TPDownloadProxyFactory.getTPDownloadProxy(paramInt);
+    if (localObject != null) {
+      try
       {
-        localTPProxyManagerAdapterImpl.pushEvent(2);
-        localTPProxyManagerAdapterImpl.pushEvent(9);
+        if (((ITPDownloadProxy)localObject).init(TPPlayerMgr.getAppContext(), TPProxyUtils.getProxyInitParam(TPPlayerMgr.getAppContext(), paramInt)) < 0)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("downloadProxy init failed with status:");
+          localStringBuilder.append(localObject);
+          TPLogUtil.i("TPProxyGlobalManager", localStringBuilder.toString());
+          return null;
+        }
+        ((ITPDownloadProxy)localObject).setLogListener(new TPProxyGlobalManager.1(this));
+        int i = TPNetworkChangeMonitor.getNetworkStatus();
+        if (i == 1)
+        {
+          ((ITPDownloadProxy)localObject).pushEvent(1);
+          ((ITPDownloadProxy)localObject).pushEvent(10);
+        }
+        else if (i == 2)
+        {
+          ((ITPDownloadProxy)localObject).pushEvent(2);
+          ((ITPDownloadProxy)localObject).pushEvent(9);
+        }
+        else if (i == 3)
+        {
+          ((ITPDownloadProxy)localObject).pushEvent(2);
+          ((ITPDownloadProxy)localObject).pushEvent(10);
+        }
+        ((ITPDownloadProxy)localObject).pushEvent(this.mAppBackOrFront);
+        ((ITPDownloadProxy)localObject).setUserData("carrier_pesudo_code", this.mUpc);
+        ((ITPDownloadProxy)localObject).setUserData("carrier_pesudo_state", Integer.valueOf(this.mUpcState));
+        localObject = new TPProxyManagerAdapterImpl((ITPDownloadProxy)localObject);
+        this.mServiceTypeDownloadProxyMap.put(Integer.valueOf(paramInt), localObject);
+        return localObject;
       }
-      else if (i == 3)
+      catch (Throwable localThrowable)
       {
-        localTPProxyManagerAdapterImpl.pushEvent(2);
-        localTPProxyManagerAdapterImpl.pushEvent(10);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("init proxy failed:");
+        localStringBuilder.append(localThrowable);
+        TPLogUtil.i("TPProxyGlobalManager", localStringBuilder.toString());
       }
     }
+    return null;
   }
   
   public void onEvent(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    TPLogUtil.i("TPProxyGlobalManager", "onEvent eventId: " + paramInt1 + ", arg1: " + paramInt2 + ", arg2: " + paramInt3 + ", object" + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEvent eventId: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", arg1: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", arg2: ");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(", object");
+    localStringBuilder.append(paramObject);
+    TPLogUtil.i("TPProxyGlobalManager", localStringBuilder.toString());
     switch (paramInt1)
     {
     default: 
       return;
-    case 100001: 
-      this.mAppBackOrFront = 13;
-      pushAllProxyManagerEvent(13);
+    case 100003: 
+      pushAllProxyManagerUpcChanged((String)paramObject, paramInt2);
       return;
     case 100002: 
       this.mAppBackOrFront = 14;
       pushAllProxyManagerEvent(14);
       return;
     }
-    pushAllProxyManagerUpcChanged((String)paramObject, paramInt2);
+    this.mAppBackOrFront = 13;
+    pushAllProxyManagerEvent(13);
   }
   
   public void onStatusChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -134,24 +146,29 @@ public class TPProxyGlobalManager
     {
       pushAllProxyManagerEvent(1);
       pushAllProxyManagerEvent(10);
-    }
-    do
-    {
       return;
-      if (paramInt2 == 2)
-      {
-        pushAllProxyManagerEvent(2);
-        pushAllProxyManagerEvent(9);
-        return;
-      }
-    } while (paramInt2 != 3);
-    pushAllProxyManagerEvent(2);
-    pushAllProxyManagerEvent(10);
+    }
+    if (paramInt2 == 2)
+    {
+      pushAllProxyManagerEvent(2);
+      pushAllProxyManagerEvent(9);
+      return;
+    }
+    if (paramInt2 == 3)
+    {
+      pushAllProxyManagerEvent(2);
+      pushAllProxyManagerEvent(10);
+    }
+  }
+  
+  public void setUpdatePlayerInfoInterval(int paramInt)
+  {
+    TPListenerManager.getInstance().setUpdatePlayerInfoInterval(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPProxyGlobalManager
  * JD-Core Version:    0.7.0.1
  */

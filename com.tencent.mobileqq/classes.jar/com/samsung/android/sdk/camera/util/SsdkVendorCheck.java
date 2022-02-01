@@ -9,13 +9,14 @@ public class SsdkVendorCheck
   
   public static boolean isSamsungDevice()
   {
+    String str = strBrand;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (strBrand != null)
+    if (str != null)
     {
       bool1 = bool2;
       if (strManufacturer != null) {
-        if (strBrand.compareToIgnoreCase("Samsung") != 0)
+        if (str.compareToIgnoreCase("Samsung") != 0)
         {
           bool1 = bool2;
           if (strManufacturer.compareToIgnoreCase("Samsung") != 0) {}

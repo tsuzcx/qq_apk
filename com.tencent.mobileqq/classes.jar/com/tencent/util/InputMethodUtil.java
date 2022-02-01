@@ -15,15 +15,17 @@ public class InputMethodUtil
     try
     {
       InputMethodManager localInputMethodManager = (InputMethodManager)paramActivity.getSystemService("input_method");
-      if (localInputMethodManager.isActive()) {
+      if (localInputMethodManager.isActive())
+      {
         localInputMethodManager.hideSoftInputFromWindow(paramActivity.getWindow().getDecorView().getWindowToken(), 0);
+        return;
       }
-      return;
     }
     catch (Exception paramActivity)
     {
-      while (!QLog.isDevelopLevel()) {}
-      paramActivity.printStackTrace();
+      if (QLog.isDevelopLevel()) {
+        paramActivity.printStackTrace();
+      }
     }
   }
   
@@ -34,32 +36,21 @@ public class InputMethodUtil
   
   public static boolean a(Context paramContext)
   {
-    boolean bool2 = false;
     try
     {
       paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "default_input_method");
-      bool1 = bool2;
-      if (paramContext != null) {
-        if ((!paramContext.contains("com.sohu.inputmethod.sogou")) && (!paramContext.contains("com.tencent.qqpinyin")))
-        {
-          bool1 = bool2;
-          if (!paramContext.contains("com.sogou.zhuyininput")) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
+      return (paramContext != null) && ((paramContext.contains("com.sohu.inputmethod.sogou")) || (paramContext.contains("com.tencent.qqpinyin")) || (paramContext.contains("com.sogou.zhuyininput")));
     }
     catch (NullPointerException paramContext)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        boolean bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("InputMethodUtil", 2, "checkSogouInputDefault(), e = " + paramContext.getStackTrace());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkSogouInputDefault(), e = ");
+        localStringBuilder.append(paramContext.getStackTrace());
+        QLog.d("InputMethodUtil", 2, localStringBuilder.toString());
+      }
     }
-    return bool1;
     return false;
   }
   
@@ -73,7 +64,7 @@ public class InputMethodUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.InputMethodUtil
  * JD-Core Version:    0.7.0.1
  */

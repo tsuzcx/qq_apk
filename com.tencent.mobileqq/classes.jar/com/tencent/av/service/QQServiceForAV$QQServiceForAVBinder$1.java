@@ -11,10 +11,16 @@ class QQServiceForAV$QQServiceForAVBinder$1
 {
   QQServiceForAV$QQServiceForAVBinder$1(QQServiceForAV.QQServiceForAVBinder paramQQServiceForAVBinder, String paramString, int paramInt) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ???.append("sendNearbyVideoChatPbReq, cmd ");
+      ???.append(this.jdField_a_of_type_JavaLangString);
+      ???.append("==>onResult, errorCode:");
+      ???.append(paramInt);
+      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, ???.toString());
     }
     synchronized (this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV$QQServiceForAVBinder.a.a)
     {
@@ -39,11 +45,15 @@ class QQServiceForAV$QQServiceForAVBinder$1
       this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV$QQServiceForAVBinder.a.a.finishBroadcast();
       return;
     }
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.QQServiceForAV.QQServiceForAVBinder.1
  * JD-Core Version:    0.7.0.1
  */

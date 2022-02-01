@@ -11,7 +11,7 @@ class QCircleShadow$1
   
   public void onQQEnterBackground()
   {
-    if ((QCircleShadow.a(this.a)) && (QCircleShadow.b(this.a)) && (!QCircleShadow.c(this.a)))
+    if (QCircleShadow.a(this.a))
     {
       long l = System.currentTimeMillis();
       QLog.d("QCIRCLE_PLUGIN", 4, "on QQ background start");
@@ -23,7 +23,7 @@ class QCircleShadow$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCircleShadow.1
  * JD-Core Version:    0.7.0.1
  */

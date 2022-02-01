@@ -26,7 +26,13 @@ public class LbsDataV2$WifiInfo
   
   public String toString()
   {
-    return "WifiInfo [mac=" + this.mac + ", rssi=" + this.rssi + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WifiInfo [mac=");
+    localStringBuilder.append(this.mac);
+    localStringBuilder.append(", rssi=");
+    localStringBuilder.append(this.rssi);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -37,7 +43,7 @@ public class LbsDataV2$WifiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.WifiInfo
  * JD-Core Version:    0.7.0.1
  */

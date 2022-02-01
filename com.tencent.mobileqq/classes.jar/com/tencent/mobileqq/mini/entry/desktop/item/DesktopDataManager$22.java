@@ -18,18 +18,15 @@ class DesktopDataManager$22
   public void run()
   {
     Object localObject1 = MiniAppUtils.getAppInterface();
-    if (localObject1 == null) {
-      QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
-    }
-    StringBuilder localStringBuilder;
-    do
+    if (localObject1 == null)
     {
-      do
-      {
-        return;
-        localObject1 = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-      } while (localObject1 == null);
-      localStringBuilder = new StringBuilder();
+      QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
+      return;
+    }
+    localObject1 = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    if (localObject1 != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
       Iterator localIterator = this.val$moduleInfoList.iterator();
       while (localIterator.hasNext())
       {
@@ -39,16 +36,21 @@ class DesktopDataManager$22
           localObject2 = new DesktopCardEntity((INTERFACE.StModuleInfo)localObject2);
           ((DesktopCardEntity)localObject2).setStatus(1000);
           DesktopDataManager.access$3100(this.this$0, (EntityManager)localObject1, (Entity)localObject2);
-          localStringBuilder.append(((DesktopCardEntity)localObject2).moduleType).append(":").append(((DesktopCardEntity)localObject2).title).append(", ");
+          localStringBuilder.append(((DesktopCardEntity)localObject2).moduleType);
+          localStringBuilder.append(":");
+          localStringBuilder.append(((DesktopCardEntity)localObject2).title);
+          localStringBuilder.append(", ");
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("DesktopDataManager", 2, new Object[] { "saveCardModuleData : ", localStringBuilder.toString() });
+      if (QLog.isColorLevel()) {
+        QLog.d("DesktopDataManager", 2, new Object[] { "saveCardModuleData : ", localStringBuilder.toString() });
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.22
  * JD-Core Version:    0.7.0.1
  */

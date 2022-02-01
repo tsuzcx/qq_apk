@@ -2,6 +2,7 @@ package com.tencent.mobileqq.bubble;
 
 import android.os.Handler;
 import android.os.Looper;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -20,34 +21,44 @@ class BubbleManager$HandleBubbleConfigRunnable
   
   public void run()
   {
-    Object localObject = this.this$0.a(this.jdField_a_of_type_Int).getAbsolutePath() + File.separatorChar + "config.json";
+    Object localObject = AIOUtils.a();
+    ((StringBuilder)localObject).append(this.this$0.a(this.jdField_a_of_type_Int).getAbsolutePath());
+    ((StringBuilder)localObject).append(File.separatorChar);
+    ((StringBuilder)localObject).append("config.json");
+    localObject = ((StringBuilder)localObject).toString();
     this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig = this.this$0.a(this.jdField_a_of_type_Int, (String)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("BubbleManager", 2, "getBubbleConfig bubbleId=" + this.jdField_a_of_type_Int + ",filePath=" + (String)localObject + ",bubbleConfig=" + this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getBubbleConfig bubbleId=");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(",filePath=");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(",bubbleConfig=");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig);
+      QLog.d("BubbleManager", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig != null)
+    {
       this.this$0.a.put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig);
     }
-    for (;;)
+    else if (this.jdField_a_of_type_Boolean)
     {
-      localObject = new BubbleManager.HandleBubbleConfigRunnable.1(this);
-      if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-        break;
-      }
+      this.this$0.a(this.jdField_a_of_type_Int, "config.json", "0");
+      BubbleManager.a(this.this$0, this.jdField_a_of_type_Int);
+    }
+    localObject = new BubbleManager.HandleBubbleConfigRunnable.1(this);
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
       ((Runnable)localObject).run();
       return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.this$0.a(this.jdField_a_of_type_Int, "config.json", "0");
-        BubbleManager.a(this.this$0, this.jdField_a_of_type_Int);
-      }
     }
     new Handler(Looper.getMainLooper()).post((Runnable)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleManager.HandleBubbleConfigRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,11 @@ import mqq.app.MobileQQ;
 public class ReportLoginInfo
   extends AsyncStep
 {
-  private String b = "mark_time_";
-  private String c = "byte_data_time_stamp";
+  private String a = "mark_time_";
+  private String b = "byte_data_time_stamp";
   
   private String a(String paramString)
   {
-    int i = 0;
     try
     {
       Object localObject = MessageDigest.getInstance("MD5");
@@ -28,6 +27,7 @@ public class ReportLoginInfo
       paramString = new StringBuilder();
       localObject = ((MessageDigest)localObject).digest();
       int j = localObject.length;
+      int i = 0;
       while (i < j)
       {
         paramString.append(String.format("%02x", new Object[] { Integer.valueOf(localObject[i] & 0xFF) }));
@@ -47,18 +47,30 @@ public class ReportLoginInfo
   {
     try
     {
-      String str2 = this.a.a.getCurrentAccountUin();
-      String str1 = str2;
-      if (str2 == null) {
-        str1 = "";
+      Object localObject2 = this.mAutomator.a.getCurrentAccountUin();
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
       }
-      str2 = a(str1);
-      long l = this.a.a.getApplication().getSharedPreferences(this.b + str2, 0).getLong(this.c, 0L);
-      ReportController.a(this.a.a, "dc00899", "TSTViewTime", str1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", String.valueOf(l));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportLoginInfo", 2, "---> report login! --- uin: " + str1 + " Guid: " + SecUtil.toHexString(NetConnInfoCenter.GUID) + " reportID： " + l);
+      localObject2 = a((String)localObject1);
+      MobileQQ localMobileQQ = this.mAutomator.a.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a);
+      localStringBuilder.append((String)localObject2);
+      long l = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getLong(this.b, 0L);
+      ReportController.a(this.mAutomator.a, "dc00899", "TSTViewTime", (String)localObject1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", String.valueOf(l));
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("---> report login! --- uin: ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" Guid: ");
+        ((StringBuilder)localObject2).append(SecUtil.toHexString(NetConnInfoCenter.GUID));
+        ((StringBuilder)localObject2).append(" reportID： ");
+        ((StringBuilder)localObject2).append(l);
+        QLog.d("ReportLoginInfo", 2, ((StringBuilder)localObject2).toString());
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -66,7 +78,7 @@ public class ReportLoginInfo
     }
   }
   
-  public int a()
+  protected int doStep()
   {
     a();
     return 7;
@@ -74,7 +86,7 @@ public class ReportLoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.ReportLoginInfo
  * JD-Core Version:    0.7.0.1
  */

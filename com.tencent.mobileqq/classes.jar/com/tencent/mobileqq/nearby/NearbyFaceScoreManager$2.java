@@ -13,7 +13,7 @@ import tencent.im.oidb.cmd0x938.cmd0x938.RspBody;
 class NearbyFaceScoreManager$2
   extends ProtoUtils.AppProtocolObserver
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if ((paramInt == 0) && (paramArrayOfByte != null)) {
       try
@@ -26,8 +26,17 @@ class NearbyFaceScoreManager$2
         int j = paramBundle.uint32_like_count.get();
         paramArrayOfByte = paramBundle.bytes_button_wording.get().toStringUtf8();
         paramBundle = paramBundle.bytes_button_image_url.get().toStringUtf8();
-        if (QLog.isColorLevel()) {
-          QLog.e("Q..troop.faceScore", 2, "fetchEntranceConfig onResult entranceTextColor=" + paramInt + "  entranceBgColor=" + i + "  entranceWording=" + paramArrayOfByte);
+        boolean bool = QLog.isColorLevel();
+        if (bool)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("fetchEntranceConfig onResult entranceTextColor=");
+          localStringBuilder.append(paramInt);
+          localStringBuilder.append("  entranceBgColor=");
+          localStringBuilder.append(i);
+          localStringBuilder.append("  entranceWording=");
+          localStringBuilder.append(paramArrayOfByte);
+          QLog.e("Q..troop.faceScore", 2, localStringBuilder.toString());
         }
         if (this.a != null)
         {
@@ -46,7 +55,7 @@ class NearbyFaceScoreManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFaceScoreManager.2
  * JD-Core Version:    0.7.0.1
  */

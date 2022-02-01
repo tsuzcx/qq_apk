@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class hd_video_voip2$CmdPhoneSpeedTestRsp
   extends MessageMicro<CmdPhoneSpeedTestRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 82 }, new String[] { "uint32_result", "uint32_test_type", "uint32_pkglen", "uint32_pkgnum_per_second", "uint32_sendpkg_keep_time", "uint32_ping_interval_time", "uint32_ping_cnt", "uint32_ping_packet_size", "uint32_server_interval", "rpt_msg_ipspeed_info_list" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, CmdPhoneSpeedTestRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatMessageField<hd_video_voip2.CmdPhoneSpeedTestRsp.IPSpeedSvrInfo> rpt_msg_ipspeed_info_list = PBField.initRepeatMessage(hd_video_voip2.CmdPhoneSpeedTestRsp.IPSpeedSvrInfo.class);
   public final PBUInt32Field uint32_ping_cnt = PBField.initUInt32(0);
   public final PBUInt32Field uint32_ping_interval_time = PBField.initUInt32(0);
@@ -20,10 +20,16 @@ public final class hd_video_voip2$CmdPhoneSpeedTestRsp
   public final PBUInt32Field uint32_sendpkg_keep_time = PBField.initUInt32(0);
   public final PBUInt32Field uint32_server_interval = PBField.initUInt32(0);
   public final PBUInt32Field uint32_test_type = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 82 }, new String[] { "uint32_result", "uint32_test_type", "uint32_pkglen", "uint32_pkgnum_per_second", "uint32_sendpkg_keep_time", "uint32_ping_interval_time", "uint32_ping_cnt", "uint32_ping_packet_size", "uint32_server_interval", "rpt_msg_ipspeed_info_list" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, null }, CmdPhoneSpeedTestRsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.video.voip.hd_video_voip2.CmdPhoneSpeedTestRsp
  * JD-Core Version:    0.7.0.1
  */

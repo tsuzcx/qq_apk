@@ -20,53 +20,40 @@ class AboutConfig$2
   
   public void onGetPluginConfig(boolean paramBoolean, int paramInt, GetResourceRespV2 paramGetResourceRespV2)
   {
-    int i = 0;
-    int m = 0;
     if ((paramInt & 0x20) == 0) {
       return;
     }
+    int i = 0;
+    int k = 0;
     paramInt = i;
-    Object localObject1;
-    Object localObject2;
-    int j;
-    label60:
-    GetResourceRespInfoV2 localGetResourceRespInfoV2;
     if (paramBoolean)
     {
       paramInt = i;
       if (paramGetResourceRespV2 != null)
       {
-        localObject1 = AboutConfig.a(this.a).getEntityManagerFactory().createEntityManager();
-        localObject2 = paramGetResourceRespV2.vecAddedResInfo.iterator();
+        Object localObject1 = AboutConfig.a(this.a).getEntityManagerFactory().createEntityManager();
+        Object localObject2 = paramGetResourceRespV2.vecAddedResInfo.iterator();
         paramInt = 0;
-        j = 0;
         i = 0;
+        int j = 0;
+        GetResourceRespInfoV2 localGetResourceRespInfoV2;
         while (((Iterator)localObject2).hasNext())
         {
           localGetResourceRespInfoV2 = (GetResourceRespInfoV2)((Iterator)localObject2).next();
-          if (localGetResourceRespInfoV2.iPluginType == 32)
-          {
-            if ((localGetResourceRespInfoV2.sResSubType != 0) && (localGetResourceRespInfoV2.sResSubType != 2)) {
-              break label524;
+          if ((localGetResourceRespInfoV2.iPluginType == 32) && ((localGetResourceRespInfoV2.sResSubType == 0) || (localGetResourceRespInfoV2.sResSubType == 2))) {
+            if (ConfigManager.a((EntityManager)localObject1, AboutConfig.a(this.a), localGetResourceRespInfoV2).cDefaultState == 0)
+            {
+              paramInt = 1;
+              i = 1;
+              j = 1;
             }
-            if (ConfigManager.a((EntityManager)localObject1, AboutConfig.a(this.a), localGetResourceRespInfoV2).cDefaultState != 0) {
-              break label515;
+            else
+            {
+              paramInt = 1;
+              i = 1;
             }
-            paramInt = 1;
-            i = 1;
-            j = 1;
           }
         }
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        k = j;
-        j = i;
-        i = k;
-        break label60;
         localObject2 = paramGetResourceRespV2.vecDeletedResInfo.iterator();
         while (((Iterator)localObject2).hasNext())
         {
@@ -74,7 +61,7 @@ class AboutConfig$2
           if ((localGetResourceRespInfoV2.iPluginType == 32) && ((localGetResourceRespInfoV2.sResSubType == 0) || (localGetResourceRespInfoV2.sResSubType == 2)))
           {
             ResourcePluginInfo.remove((EntityManager)localObject1, localGetResourceRespInfoV2.strPkgName);
-            i = 1;
+            paramInt = 1;
           }
         }
         paramGetResourceRespV2 = paramGetResourceRespV2.vecUpdatedResInfo.iterator();
@@ -84,22 +71,21 @@ class AboutConfig$2
           if ((((GetResourceRespInfoV2)localObject2).iPluginType == 32) && ((((GetResourceRespInfoV2)localObject2).sResSubType == 0) || (((GetResourceRespInfoV2)localObject2).sResSubType == 2)))
           {
             ConfigManager.a((EntityManager)localObject1, AboutConfig.a(this.a), (GetResourceRespInfoV2)localObject2);
-            i = 1;
+            paramInt = 1;
           }
         }
         ((EntityManager)localObject1).close();
         this.a.a(true, false);
-        k = m;
-        if (i != 0)
+        if (paramInt != 0)
         {
           paramGetResourceRespV2 = new ArrayList(AboutConfig.a(this.a)).iterator();
           while (paramGetResourceRespV2.hasNext())
           {
             localObject1 = (ResourcePluginListener)paramGetResourceRespV2.next();
-            if (j != 0)
+            if (i != 0)
             {
               ResourcePluginListener.a((ResourcePluginListener)localObject1, (byte)3, 2);
-              if (paramInt != 0)
+              if (j != 0)
               {
                 if (QLog.isColorLevel()) {
                   QLog.d("AboutConfig", 2, "inform STATE_NEW_OPEN_PLUGIN");
@@ -112,50 +98,43 @@ class AboutConfig$2
               ResourcePluginListener.a((ResourcePluginListener)localObject1, (byte)2, 2);
             }
           }
-          break;
         }
-        label415:
-        if (k >= AboutConfig.a(this.a).size()) {
-          break;
-        }
+      }
+    }
+    for (;;)
+    {
+      if (k < AboutConfig.a(this.a).size()) {}
+      try
+      {
+        ResourcePluginListener.a((ResourcePluginListener)AboutConfig.a(this.a).get(k), (byte)1, 2);
+        k += 1;
+        continue;
+        if (paramInt >= AboutConfig.a(this.a).size()) {}
+      }
+      catch (Exception paramGetResourceRespV2)
+      {
         try
         {
-          ResourcePluginListener.a((ResourcePluginListener)AboutConfig.a(this.a).get(k), (byte)1, 2);
-          label454:
-          k += 1;
-          break label415;
-          while (paramInt < AboutConfig.a(this.a).size()) {
-            try
-            {
-              ResourcePluginListener.a((ResourcePluginListener)AboutConfig.a(this.a).get(paramInt), (byte)-1, 2);
-              label500:
-              paramInt += 1;
-            }
-            catch (Exception paramGetResourceRespV2)
-            {
-              break label500;
-            }
+          for (;;)
+          {
+            ResourcePluginListener.a((ResourcePluginListener)AboutConfig.a(this.a).get(paramInt), (byte)-1, 2);
+            label499:
+            paramInt += 1;
           }
+          return;
+          paramGetResourceRespV2 = paramGetResourceRespV2;
         }
         catch (Exception paramGetResourceRespV2)
         {
-          break label454;
+          break label499;
         }
       }
-      label515:
-      j = 1;
-      i = 1;
-      continue;
-      label524:
-      int k = i;
-      i = j;
-      j = k;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.AboutConfig.2
  * JD-Core Version:    0.7.0.1
  */

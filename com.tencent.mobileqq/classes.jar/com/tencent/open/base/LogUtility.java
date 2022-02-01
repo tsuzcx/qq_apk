@@ -4,89 +4,123 @@ import com.tencent.qphone.base.util.QLog;
 
 public class LogUtility
 {
-  protected static String a;
-  protected static boolean a;
+  protected static String a = "";
+  protected static boolean a = true;
   
   static
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_JavaLangString += ".*[S|s][I|i][D|d].*";
-    jdField_a_of_type_JavaLangString += "|.*==.*";
-    jdField_a_of_type_JavaLangString += "|.*[U|u][I|i][N|n].*";
-    jdField_a_of_type_JavaLangString += "|.*%3d%3d.*";
-    jdField_a_of_type_JavaLangString += "|.*[V|v][K|k][E|e][Y|y]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(".*[S|s][I|i][D|d].*");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("|.*==.*");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("|.*[U|u][I|i][N|n].*");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("|.*%3d%3d.*");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("|.*[V|v][K|k][E|e][Y|y]");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   protected static void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (jdField_a_of_type_Boolean) {
-      if (paramInt == 1)
-      {
-        if (paramThrowable != null) {
-          break label187;
+    if (jdField_a_of_type_Boolean)
+    {
+      StringBuilder localStringBuilder;
+      if (paramInt == 1) {
+        if (paramThrowable == null)
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("");
+            localStringBuilder.append("::");
+            localStringBuilder.append(paramString2);
+            QLog.i(paramString1, 2, localStringBuilder.toString());
+          }
         }
-        if (QLog.isColorLevel()) {
-          QLog.i(paramString1, 2, "" + "::" + paramString2);
+        else if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append("::");
+          localStringBuilder.append(paramString2);
+          QLog.i(paramString1, 2, localStringBuilder.toString(), paramThrowable);
+        }
+      }
+      if ((paramInt == 2) || (paramInt == 0)) {
+        if (paramThrowable == null)
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("");
+            localStringBuilder.append("::");
+            localStringBuilder.append(paramString2);
+            QLog.d(paramString1, 2, localStringBuilder.toString());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append("::");
+          localStringBuilder.append(paramString2);
+          QLog.d(paramString1, 2, localStringBuilder.toString(), paramThrowable);
+        }
+      }
+      if (paramInt == 3) {
+        if (paramThrowable == null)
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("");
+            localStringBuilder.append("::");
+            localStringBuilder.append(paramString2);
+            QLog.w(paramString1, 2, localStringBuilder.toString());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append("::");
+          localStringBuilder.append(paramString2);
+          QLog.w(paramString1, 2, localStringBuilder.toString(), paramThrowable);
+        }
+      }
+      if (paramInt == 4) {
+        if (paramThrowable == null)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramThrowable = new StringBuilder();
+            paramThrowable.append("");
+            paramThrowable.append("::");
+            paramThrowable.append(paramString2);
+            QLog.e(paramString1, 2, paramThrowable.toString());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append("::");
+          localStringBuilder.append(paramString2);
+          QLog.e(paramString1, 2, localStringBuilder.toString(), paramThrowable);
         }
       }
     }
-    label98:
-    do
-    {
-      break label186;
-      if ((paramInt == 2) || (paramInt == 0))
-      {
-        if (paramThrowable != null) {
-          break label226;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-      if (paramInt == 3)
-      {
-        if (paramThrowable != null) {
-          break label265;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-      for (;;)
-      {
-        if (paramInt == 4)
-        {
-          if (paramThrowable != null) {
-            break label304;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.e(paramString1, 2, "" + "::" + paramString2);
-          }
-        }
-        return;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        break;
-        if (!QLog.isColorLevel()) {
-          break label98;
-        }
-        QLog.d(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        break label98;
-        if (QLog.isColorLevel()) {
-          QLog.w(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        }
-      }
-    } while (!QLog.isColorLevel());
-    label186:
-    label187:
-    label226:
-    QLog.e(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-    label265:
-    label304:
-    return;
   }
   
   public static void a(String paramString1, String paramString2)
@@ -136,7 +170,7 @@ public class LogUtility
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.LogUtility
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,14 @@ class StoryShareEncryptHelper$2$1
   
   public void a(@NonNull StoryShareTranslateTokenRequest paramStoryShareTranslateTokenRequest, @Nullable StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse paramStoryShareTranslateTokenResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramStoryShareTranslateTokenResponse);
+    if (QLog.isColorLevel())
+    {
+      paramStoryShareTranslateTokenRequest = new StringBuilder();
+      paramStoryShareTranslateTokenRequest.append("decrypt done costTime = ");
+      paramStoryShareTranslateTokenRequest.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      paramStoryShareTranslateTokenRequest.append(", resp:");
+      paramStoryShareTranslateTokenRequest.append(paramStoryShareTranslateTokenResponse);
+      QLog.d("Q.qqstory.share.trans.helper", 2, paramStoryShareTranslateTokenRequest.toString());
     }
     StoryReportor.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
     this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$2.a.a(paramStoryShareTranslateTokenResponse, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
@@ -26,7 +32,7 @@ class StoryShareEncryptHelper$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

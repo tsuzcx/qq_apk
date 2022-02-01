@@ -41,76 +41,83 @@ public abstract class aq
   
   private void a(boolean paramBoolean)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       this.f.postDelayed(new au(this), 5000L);
-    }
-    while ((this.d == 0L) || (SystemClock.elapsedRealtime() - this.d <= 1800000L)) {
       return;
     }
-    e();
+    if ((this.d != 0L) && (SystemClock.elapsedRealtime() - this.d > 1800000L)) {
+      e();
+    }
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    for (;;)
+    label129:
+    try
     {
-      try
+      a(false);
+      if ((paramBoolean1) && (paramBoolean2)) {
+        b(false, true);
+      } else {
+        b(false, false);
+      }
+      if (this.j)
       {
-        a(false);
-        if ((paramBoolean1) && (paramBoolean2))
+        if (paramBoolean1) {
+          this.k = true;
+        }
+      }
+      else
+      {
+        if (!paramBoolean1) {
+          this.h.set(0);
+        }
+        if (this.m != 0L)
         {
-          b(false, true);
-          if (this.j) {
-            if (paramBoolean1) {
-              this.k = true;
-            }
+          long l1 = SystemClock.elapsedRealtime();
+          long l2 = this.m;
+          int i1 = this.l;
+          if (l1 - l2 < i1 * 60 * 1000) {
+            return;
           }
         }
-        else
-        {
-          b(false, false);
-          continue;
-        }
-        if (paramBoolean1) {
-          break label66;
-        }
-      }
-      finally {}
-      this.h.set(0);
-      label66:
-      if ((this.m == 0L) || (SystemClock.elapsedRealtime() - this.m >= this.l * 60 * 1000))
-      {
         this.j = true;
-        try
-        {
-          new aq.d(this, paramBoolean1, paramBoolean2).a(true);
-        }
-        catch (Throwable localThrowable)
-        {
-          this.j = false;
-        }
       }
     }
+    finally {}
+    try
+    {
+      new aq.d(this, paramBoolean1, paramBoolean2).a(true);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label129;
+    }
+    this.j = false;
   }
   
   private void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramBoolean2) {
-      if (this.n.get() > 3) {
-        this.n.set(0);
-      }
-    }
-    do
+    if (paramBoolean2)
     {
-      return;
-      af.a().a(this.q, false, x.a.a("report_real_timer_interval", 1, 60, 5) * 1000);
-      return;
-      if (paramBoolean1)
+      if (this.n.get() > 3)
       {
-        af.a().a(this.r, false, 10000L);
+        this.n.set(0);
         return;
       }
-    } while (this.o);
+      af.a().a(this.q, false, x.a.a("report_real_timer_interval", 1, 60, 5) * 1000);
+      return;
+    }
+    if (paramBoolean1)
+    {
+      af.a().a(this.r, false, 10000L);
+      return;
+    }
+    if (this.o) {
+      return;
+    }
     af.a().a(this.r, false, x.a.a("report_timer_interval", 30000, 600000, 300000));
   }
   
@@ -133,26 +140,23 @@ public abstract class aq
     HashMap localHashMap = new HashMap();
     localHashMap.put("B110", String.valueOf(i2));
     String str;
-    if (l1 < 0L)
-    {
+    if (l1 < 0L) {
       str = "0";
-      localHashMap.put("B112", str);
-      if (i1 != 0) {
-        break label157;
-      }
+    } else {
+      str = String.valueOf(l1);
+    }
+    localHashMap.put("B112", str);
+    if (i1 == 0)
+    {
       q.b("HLReportEvent", m.c(), 0, "", localHashMap, null, false);
     }
-    for (;;)
+    else
     {
-      ck.a("report_using_traffic", 0);
-      return;
-      str = String.valueOf(l1);
-      break;
-      label157:
       localHashMap.put("B111", String.valueOf(i1));
       q.b("HLReportEvent", m.c(), -500, "", localHashMap, null, false);
       ck.a("report_missing_event", 0);
     }
+    ck.a("report_using_traffic", 0);
   }
   
   public abstract int a();
@@ -161,7 +165,7 @@ public abstract class aq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.aq
  * JD-Core Version:    0.7.0.1
  */

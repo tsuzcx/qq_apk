@@ -11,29 +11,31 @@ final class NativeAdUtils$2
 {
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+    if (paramBoolean) {
+      try
       {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0)) {
-          NativeAdUtils.a("nativeEngineAdReport success!", localWebSsoResponseBody.data.get());
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+          localWebSsoResponseBody.mergeFrom(paramBundle);
+          if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0))
+          {
+            NativeAdUtils.a("nativeEngineAdReport success!", localWebSsoResponseBody.data.get());
+            return;
+          }
         }
       }
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,11 +5,11 @@ import java.util.Locale;
 
 public class ABTestLog
 {
-  public static final String LOG_API_TAG = "tab_test_api";
-  public static final String LOG_BUF_TAG = "tab_test_buffer";
-  public static final String LOG_REP_TAG = "tab_test_report";
-  public static final String LOG_TAG = "tab_test";
-  public static final String LOG_UP_TAG = "tab_test_upload";
+  public static final String LOG_CONFIG_TAG = "tab_config";
+  public static final String LOG_EXP_TAG = "tab_exp";
+  public static final String LOG_FEATURE_TAG = "tab_feature";
+  public static final String LOG_REP_TAG = "tab_report";
+  public static final String LOG_TAG = "tab";
   private static final int MIN_STACK_OFFSET = 5;
   private static boolean logAble = false;
   public static boolean useFuncTag = false;
@@ -19,30 +19,62 @@ public class ABTestLog
     return isLogAble();
   }
   
+  public static void configUpload(String paramString, Object... paramVarArgs)
+  {
+    if (check()) {
+      Log.d("tab_config", format(paramString, paramVarArgs));
+    }
+  }
+  
   public static void debug(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.d("tab_test", format(paramString, paramVarArgs));
+      Log.d("tab", format(paramString, paramVarArgs));
     }
   }
   
   public static void error(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.e("tab_test", format(paramString, paramVarArgs));
+      Log.e("tab", format(paramString, paramVarArgs));
+    }
+  }
+  
+  public static void expUpload(String paramString, Object... paramVarArgs)
+  {
+    if (check()) {
+      Log.d("tab_exp", format(paramString, paramVarArgs));
+    }
+  }
+  
+  public static void featureUpload(String paramString, Object... paramVarArgs)
+  {
+    if (check()) {
+      Log.d("tab_feature", format(paramString, paramVarArgs));
     }
   }
   
   private static String format(String paramString, Object... paramVarArgs)
   {
     String str = getFuncTag();
-    if (paramString == null) {
-      return str + " msg is null";
+    if (paramString == null)
+    {
+      paramString = new StringBuilder();
+      paramString.append(str);
+      paramString.append(" msg is null");
+      return paramString.toString();
     }
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return str + paramString;
+    if ((paramVarArgs != null) && (paramVarArgs.length != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(String.format(Locale.US, paramString, paramVarArgs));
+      return localStringBuilder.toString();
     }
-    return str + String.format(Locale.US, paramString, paramVarArgs);
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append(str);
+    paramVarArgs.append(paramString);
+    return paramVarArgs.toString();
   }
   
   private static StackTraceElement getCurrentStackTrace()
@@ -63,17 +95,26 @@ public class ABTestLog
   
   private static String getFuncTag()
   {
-    if (isUseFuncTag())
+    boolean bool = isUseFuncTag();
+    Object localObject1 = "";
+    if (bool)
     {
       StackTraceElement localStackTraceElement = getCurrentStackTrace();
       if (localStackTraceElement != null)
       {
-        String str2 = localStackTraceElement.getFileName();
-        String str1 = str2;
-        if (str2 == null) {
-          str1 = "";
+        Object localObject2 = localStackTraceElement.getFileName();
+        if (localObject2 != null) {
+          localObject1 = localObject2;
         }
-        return "(" + str1 + ":" + localStackTraceElement.getLineNumber() + ")" + localStackTraceElement.getMethodName() + " ";
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("(");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append(localStackTraceElement.getLineNumber());
+        ((StringBuilder)localObject2).append(")");
+        ((StringBuilder)localObject2).append(localStackTraceElement.getMethodName());
+        ((StringBuilder)localObject2).append(" ");
+        return ((StringBuilder)localObject2).toString();
       }
     }
     return "";
@@ -82,16 +123,13 @@ public class ABTestLog
   private static int getStackOffset(StackTraceElement[] paramArrayOfStackTraceElement, Class paramClass)
   {
     int i = 5;
-    if (i < paramArrayOfStackTraceElement.length)
+    while (i < paramArrayOfStackTraceElement.length)
     {
       String str = paramArrayOfStackTraceElement[i].getClassName();
-      if ((paramClass.equals(Log.class)) && (i < paramArrayOfStackTraceElement.length - 1) && (paramArrayOfStackTraceElement[(i + 1)].getClassName().equals(Log.class.getName()))) {}
-      while (!str.equals(paramClass.getName()))
-      {
-        i += 1;
-        break;
+      if (((!paramClass.equals(Log.class)) || (i >= paramArrayOfStackTraceElement.length - 1) || (!paramArrayOfStackTraceElement[(i + 1)].getClassName().equals(Log.class.getName()))) && (str.equals(paramClass.getName()))) {
+        return i + 1;
       }
-      return i + 1;
+      i += 1;
     }
     return -1;
   }
@@ -99,7 +137,7 @@ public class ABTestLog
   public static void info(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.i("tab_test", format(paramString, paramVarArgs));
+      Log.i("tab", format(paramString, paramVarArgs));
     }
   }
   
@@ -117,14 +155,13 @@ public class ABTestLog
   {
     if (paramThrowable != null)
     {
-      if (check()) {
+      if (check())
+      {
         paramThrowable.printStackTrace();
+        return;
       }
+      error(paramThrowable.getMessage(), new Object[0]);
     }
-    else {
-      return;
-    }
-    error(paramThrowable.getMessage(), new Object[0]);
   }
   
   public static void setLogAble(boolean paramBoolean)
@@ -137,44 +174,23 @@ public class ABTestLog
     useFuncTag = paramBoolean;
   }
   
-  public static void stepAPI(String paramString, Object... paramVarArgs)
-  {
-    if (check()) {
-      Log.d("tab_test_api", format(paramString, paramVarArgs));
-    }
-  }
-  
-  public static void stepBuffer(String paramString, Object... paramVarArgs)
-  {
-    if (check()) {
-      Log.d("tab_test_buffer", format(paramString, paramVarArgs));
-    }
-  }
-  
   public static void stepReport(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.d("tab_test_report", format(paramString, paramVarArgs));
-    }
-  }
-  
-  public static void stepUpload(String paramString, Object... paramVarArgs)
-  {
-    if (check()) {
-      Log.d("tab_test_upload", format(paramString, paramVarArgs));
+      Log.d("tab_report", format(paramString, paramVarArgs));
     }
   }
   
   public static void warn(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.w("tab_test", format(paramString, paramVarArgs));
+      Log.w("tab", format(paramString, paramVarArgs));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.utils.ABTestLog
  * JD-Core Version:    0.7.0.1
  */

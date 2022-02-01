@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class UniformDownloaderAssinfo
 {
-  public static String a;
+  public static String a = "UniformDownloaderAssinfo";
   protected int a;
   protected Object a;
   protected int b;
@@ -19,11 +19,6 @@ public class UniformDownloaderAssinfo
   protected String d;
   protected String e;
   protected String f = null;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "UniformDownloaderAssinfo";
-  }
   
   public UniformDownloaderAssinfo(long paramLong)
   {
@@ -43,23 +38,35 @@ public class UniformDownloaderAssinfo
     if (a()) {
       return 0;
     }
-    if ((paramString == null) || (paramBundle == null)) {
-      try
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. init param error");
-        return -1;
-      }
-      finally {}
+    if ((paramString != null) && (paramBundle != null)) {}
+    try
+    {
+      this.jdField_b_of_type_JavaLangString = paramString;
+      this.d = paramBundle.getString("_PARAM_FILEPATH");
+      this.e = paramBundle.getString("_PARAM_TMP_FILEPATH");
+      this.jdField_c_of_type_JavaLangString = paramBundle.getString("_PARAM_FILENAME");
+      this.jdField_b_of_type_Long = paramBundle.getLong("_PARAM_FILESIZE");
+      this.f = paramBundle.getString("_PARAM_COOKIE");
+      paramString = jdField_a_of_type_JavaLangString;
+      paramBundle = new StringBuilder();
+      paramBundle.append("[UniformDL][");
+      paramBundle.append(this.jdField_c_of_type_Long);
+      paramBundle.append("] init. ST:");
+      paramBundle.append(e());
+      paramBundle.append(" PGR:");
+      paramBundle.append(h());
+      QLog.i(paramString, 1, paramBundle.toString());
+      c(1);
+      return 0;
     }
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramBundle.getString("_PARAM_FILEPATH");
-    this.e = paramBundle.getString("_PARAM_TMP_FILEPATH");
-    this.jdField_c_of_type_JavaLangString = paramBundle.getString("_PARAM_FILENAME");
-    this.jdField_b_of_type_Long = paramBundle.getLong("_PARAM_FILESIZE");
-    this.f = paramBundle.getString("_PARAM_COOKIE");
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] init. ST:" + e() + " PGR:" + h());
-    c(1);
-    return 0;
+    finally {}
+    paramString = jdField_a_of_type_JavaLangString;
+    paramBundle = new StringBuilder();
+    paramBundle.append("[UniformDL][");
+    paramBundle.append(this.jdField_c_of_type_Long);
+    paramBundle.append("]. init param error");
+    QLog.e(paramString, 1, paramBundle.toString());
+    return -1;
   }
   
   protected void a(int paramInt)
@@ -89,7 +96,15 @@ public class UniformDownloaderAssinfo
   {
     synchronized (this.jdField_c_of_type_JavaLangObject)
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] setStatus. " + this.jdField_c_of_type_Int + "->" + paramInt);
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL][");
+      localStringBuilder.append(this.jdField_c_of_type_Long);
+      localStringBuilder.append("] setStatus. ");
+      localStringBuilder.append(this.jdField_c_of_type_Int);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt);
+      QLog.i(str, 1, localStringBuilder.toString());
       this.jdField_c_of_type_Int = paramInt;
       return;
     }
@@ -124,7 +139,7 @@ public class UniformDownloaderAssinfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloaderAssinfo
  * JD-Core Version:    0.7.0.1
  */

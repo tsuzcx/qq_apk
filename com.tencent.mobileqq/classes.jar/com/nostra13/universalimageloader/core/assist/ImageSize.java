@@ -47,12 +47,16 @@ public class ImageSize
   
   public String toString()
   {
-    return 9 + this.width + "x" + this.height;
+    StringBuilder localStringBuilder = new StringBuilder(9);
+    localStringBuilder.append(this.width);
+    localStringBuilder.append("x");
+    localStringBuilder.append(this.height);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.assist.ImageSize
  * JD-Core Version:    0.7.0.1
  */

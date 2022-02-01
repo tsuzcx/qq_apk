@@ -2,6 +2,9 @@ package com.tencent.mobileqq.config;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.mobileqq.utils.abtest.ABTestController;
+import com.tencent.mobileqq.utils.abtest.ABTestUtil;
+import com.tencent.mobileqq.utils.abtest.ExpEntityInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public abstract class IQConfigProcessor<T>
@@ -20,6 +23,11 @@ public abstract class IQConfigProcessor<T>
   }
   
   public abstract boolean isNeedCompressed();
+  
+  public boolean isNeedReloadConf()
+  {
+    return false;
+  }
   
   public abstract boolean isNeedStoreLargeFile();
   
@@ -42,8 +50,12 @@ public abstract class IQConfigProcessor<T>
   
   public void onReqNoReceive()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IQConfigProcessor", 2, "onReqNoReceive: type=" + type());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqNoReceive: type=");
+      localStringBuilder.append(type());
+      QLog.d("IQConfigProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -54,11 +66,35 @@ public abstract class IQConfigProcessor<T>
   
   public abstract void onUpdate(T paramT);
   
+  public String tabExperimentId()
+  {
+    if (ABTestController.a().a())
+    {
+      ExpEntityInfo localExpEntityInfo = ABTestController.a().a(type());
+      if ((localExpEntityInfo.c()) && (!localExpEntityInfo.b()) && (ABTestUtil.a(localExpEntityInfo.getExpName()))) {
+        return localExpEntityInfo.getExpName();
+      }
+    }
+    return "";
+  }
+  
+  public String tabGroupId()
+  {
+    if (ABTestController.a().a())
+    {
+      ExpEntityInfo localExpEntityInfo = ABTestController.a().a(type());
+      if ((localExpEntityInfo.c()) && (!localExpEntityInfo.b()) && (ABTestUtil.a(localExpEntityInfo.getAssignment()))) {
+        return localExpEntityInfo.getAssignment();
+      }
+    }
+    return "";
+  }
+  
   public abstract int type();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.IQConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

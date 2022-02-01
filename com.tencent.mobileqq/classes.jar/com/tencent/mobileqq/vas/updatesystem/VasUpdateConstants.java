@@ -8,12 +8,25 @@ import mqq.app.MobileQQ;
 
 public class VasUpdateConstants
 {
-  public static final String a = MobileQQ.getContext().getFilesDir().getAbsolutePath() + File.separator + "quickupdate";
-  public static final String b = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".vas_quickupdate_test/");
+  public static final String a;
+  public static final String b;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MobileQQ.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("quickupdate");
+    a = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append(".vas_quickupdate_test/");
+    b = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.VasUpdateConstants
  * JD-Core Version:    0.7.0.1
  */

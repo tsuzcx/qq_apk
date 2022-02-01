@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.msf.core.auth;
 
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
@@ -41,16 +39,20 @@ public class c
   
   private void a(ToServiceMsg paramToServiceMsg)
   {
-    QLog.d(a, 2, "received accountSyncReq " + paramToServiceMsg);
-    String str = this.d.n(paramToServiceMsg.getUin());
-    FromServiceMsg localFromServiceMsg = new FromServiceMsg(paramToServiceMsg.getUin(), paramToServiceMsg.getServiceCmd());
-    localFromServiceMsg.addAttribute(paramToServiceMsg.getServiceCmd(), str);
-    localFromServiceMsg.addAttribute("cmd_sync_syncuser_service", "");
-    localFromServiceMsg.setMsgSuccess();
-    localFromServiceMsg.setFromVersion((byte)0);
+    String str = a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("received accountSyncReq ");
+    ((StringBuilder)localObject).append(paramToServiceMsg);
+    QLog.d(str, 2, ((StringBuilder)localObject).toString());
+    str = this.d.n(paramToServiceMsg.getUin());
+    localObject = new FromServiceMsg(paramToServiceMsg.getUin(), paramToServiceMsg.getServiceCmd());
+    ((FromServiceMsg)localObject).addAttribute(paramToServiceMsg.getServiceCmd(), str);
+    ((FromServiceMsg)localObject).addAttribute("cmd_sync_syncuser_service", "");
+    ((FromServiceMsg)localObject).setMsgSuccess();
+    ((FromServiceMsg)localObject).setFromVersion((byte)0);
     try
     {
-      paramToServiceMsg.actionListener.onActionResult(localFromServiceMsg);
+      paramToServiceMsg.actionListener.onActionResult((FromServiceMsg)localObject);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -61,11 +63,11 @@ public class c
   
   private void a(ToServiceMsg paramToServiceMsg, int paramInt)
   {
-    int j = 0;
     Object localObject1 = a(BaseApplication.getContext().getPackageManager(), paramInt);
     if ((localObject1 != null) && (localObject1.length > 0))
     {
       Object localObject2 = new String[localObject1.length];
+      int j = 0;
       int i = 0;
       while (i < localObject1.length)
       {
@@ -141,37 +143,65 @@ public class c
     return null;
   }
   
+  /* Error */
   public static Signature[] a(PackageManager paramPackageManager, String[] paramArrayOfString)
   {
-    try
-    {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramArrayOfString[i];
-        try
-        {
-          localObject = paramPackageManager.getPackageInfo((String)localObject, 64).signatures;
-          if (localObject != null)
-          {
-            int k = localObject.length;
-            if (k > 0) {
-              return localObject;
-            }
-          }
-        }
-        catch (PackageManager.NameNotFoundException localNameNotFoundException)
-        {
-          i += 1;
-        }
-      }
-      return null;
-    }
-    catch (Exception paramPackageManager)
-    {
-      paramPackageManager.printStackTrace();
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: arraylength
+    //   2: istore_3
+    //   3: iconst_0
+    //   4: istore_2
+    //   5: iload_2
+    //   6: iload_3
+    //   7: if_icmpge +51 -> 58
+    //   10: aload_1
+    //   11: iload_2
+    //   12: aaload
+    //   13: astore 5
+    //   15: aload_0
+    //   16: aload 5
+    //   18: bipush 64
+    //   20: invokevirtual 296	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    //   23: getfield 302	android/content/pm/PackageInfo:signatures	[Landroid/content/pm/Signature;
+    //   26: astore 5
+    //   28: aload 5
+    //   30: ifnull +16 -> 46
+    //   33: aload 5
+    //   35: arraylength
+    //   36: istore 4
+    //   38: iload 4
+    //   40: ifle +6 -> 46
+    //   43: aload 5
+    //   45: areturn
+    //   46: iload_2
+    //   47: iconst_1
+    //   48: iadd
+    //   49: istore_2
+    //   50: goto -45 -> 5
+    //   53: astore_0
+    //   54: aload_0
+    //   55: invokevirtual 290	java/lang/Exception:printStackTrace	()V
+    //   58: aconst_null
+    //   59: areturn
+    //   60: astore 5
+    //   62: goto -16 -> 46
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	65	0	paramPackageManager	PackageManager
+    //   0	65	1	paramArrayOfString	String[]
+    //   4	46	2	i	int
+    //   2	6	3	j	int
+    //   36	3	4	k	int
+    //   13	31	5	localObject	Object
+    //   60	1	5	localNameNotFoundException	android.content.pm.PackageManager.NameNotFoundException
+    // Exception table:
+    //   from	to	target	type
+    //   0	3	53	java/lang/Exception
+    //   15	28	53	java/lang/Exception
+    //   33	38	53	java/lang/Exception
+    //   15	28	60	android/content/pm/PackageManager$NameNotFoundException
+    //   33	38	60	android/content/pm/PackageManager$NameNotFoundException
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -179,50 +209,54 @@ public class c
     if (paramFromServiceMsg.isSuccess())
     {
       paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
-      localUniPacket = new UniPacket(true);
-      localUniPacket.decode(paramFromServiceMsg);
-      paramFromServiceMsg = (i)localUniPacket.getByClass("res", new i());
-      i = ((Integer)paramToServiceMsg.getAttribute("arrtibute_uid")).intValue();
-      QLog.d(a, 2, i + "role " + paramFromServiceMsg.a);
+      Object localObject = new UniPacket(true);
+      ((UniPacket)localObject).decode(paramFromServiceMsg);
+      paramFromServiceMsg = (i)((UniPacket)localObject).getByClass("res", new i());
+      int i = ((Integer)paramToServiceMsg.getAttribute("arrtibute_uid")).intValue();
+      localObject = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(i);
+      localStringBuilder.append("role ");
+      localStringBuilder.append(paramFromServiceMsg.a);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
       paramToServiceMsg.setUin((String)paramToServiceMsg.getAttribute("checkSign_ReqUin"));
       if (paramFromServiceMsg.a == 1)
       {
         b.add(Integer.valueOf(i));
         a(paramToServiceMsg);
-      }
-    }
-    while (paramFromServiceMsg.getResultCode() != 1002) {
-      for (;;)
-      {
-        UniPacket localUniPacket;
-        int i;
         return;
-        a(paramToServiceMsg, 2014, "signError");
-        c.add(Integer.valueOf(i));
-        try
-        {
-          paramFromServiceMsg = new HashMap();
-          paramFromServiceMsg.put("param_Reason", (String)paramToServiceMsg.getAttribute("invalidPackageName", ""));
-          paramFromServiceMsg.put("method", "accountSync");
-          if (this.d.a.getStatReporter() != null)
-          {
-            this.d.a.getStatReporter().a("dim.Msf.invaildAppCall", true, 0L, 0L, paramFromServiceMsg, false, false);
-            return;
-          }
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          QLog.d(a, 2, "send invaild call error " + paramToServiceMsg, paramToServiceMsg);
+      }
+      a(paramToServiceMsg, 2014, "signError");
+      c.add(Integer.valueOf(i));
+      try
+      {
+        paramFromServiceMsg = new HashMap();
+        paramFromServiceMsg.put("param_Reason", (String)paramToServiceMsg.getAttribute("invalidPackageName", ""));
+        paramFromServiceMsg.put("method", "accountSync");
+        if (this.d.a.getStatReporter() == null) {
           return;
         }
+        this.d.a.getStatReporter().a("dim.Msf.invaildAppCall", true, 0L, 0L, paramFromServiceMsg, false, false);
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        paramFromServiceMsg = a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("send invaild call error ");
+        ((StringBuilder)localObject).append(paramToServiceMsg);
+        QLog.d(paramFromServiceMsg, 2, ((StringBuilder)localObject).toString(), paramToServiceMsg);
+        return;
       }
     }
-    a(paramToServiceMsg, 1002, "timeout");
+    else if (paramFromServiceMsg.getResultCode() == 1002)
+    {
+      a(paramToServiceMsg, 1002, "timeout");
+    }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, String[] paramArrayOfString, String paramString, int paramInt)
   {
-    int j = 0;
     if (c.contains(Integer.valueOf(paramInt))) {
       return;
     }
@@ -232,6 +266,7 @@ public class c
       return;
     }
     int k = paramArrayOfString.length;
+    int j = 0;
     int i = 0;
     while (i < k)
     {
@@ -257,7 +292,12 @@ public class c
           break;
         }
         str = paramArrayOfString[i];
-        paramString = paramString + " " + str + ";";
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(str);
+        localStringBuilder.append(";");
+        paramString = localStringBuilder.toString();
         i += 1;
       }
     }
@@ -267,7 +307,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.c
  * JD-Core Version:    0.7.0.1
  */

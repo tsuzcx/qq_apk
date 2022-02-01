@@ -17,15 +17,26 @@ public class MsgLruCache$MsgCacheInfo
   
   public String toString()
   {
-    if (this.jdField_a_of_type_Int == CacheConstants.c) {}
-    for (String str = "A";; str = "B") {
-      return this.jdField_a_of_type_JavaLangString + "_" + this.c + "_" + str + "_" + this.b;
+    String str;
+    if (this.jdField_a_of_type_Int == CacheConstants.c) {
+      str = "A";
+    } else {
+      str = "B";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("_");
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgcache.MsgLruCache.MsgCacheInfo
  * JD-Core Version:    0.7.0.1
  */

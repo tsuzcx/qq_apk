@@ -30,15 +30,15 @@ public class TimDouFuGuideItemBuilder
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  public View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramLinearLayout = (TimDouFuGuideItemBuilder.Holder)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.a).inflate(2131558965, null);
-      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131379432));
-      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131365294));
+      paramViewHolder = LayoutInflater.from(this.a).inflate(2131558863, null);
+      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131378784));
+      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131365169));
     }
     if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForTimDouFuGuide)))
     {
@@ -46,9 +46,12 @@ public class TimDouFuGuideItemBuilder
       if (paramMessageRecord != null)
       {
         paramLinearLayout.b.setText(paramMessageRecord.tipsHighLight);
-        paramView = new SpannableString(paramMessageRecord.tipsMsg + HardCodeUtil.a(2131714810));
+        paramView = new StringBuilder();
+        paramView.append(paramMessageRecord.tipsMsg);
+        paramView.append(HardCodeUtil.a(2131714740));
+        paramView = new SpannableString(paramView.toString());
         int i = paramView.length();
-        paramView.setSpan(new ForegroundColorSpan(paramViewHolder.getResources().getColor(2131167045)), i - 4, i, 33);
+        paramView.setSpan(new ForegroundColorSpan(paramViewHolder.getResources().getColor(2131167068)), i - 4, i, 33);
         paramLinearLayout.c.setText(paramView);
         paramViewHolder.setOnClickListener(new TimDouFuGuideItemBuilder.1(this, paramMessageRecord));
       }
@@ -56,7 +59,7 @@ public class TimDouFuGuideItemBuilder
     return paramViewHolder;
   }
   
-  public AbstractChatItemBuilder.ViewHolder a()
+  protected AbstractChatItemBuilder.ViewHolder a()
   {
     return new TimDouFuGuideItemBuilder.Holder(this);
   }
@@ -70,7 +73,7 @@ public class TimDouFuGuideItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TimDouFuGuideItemBuilder
  * JD-Core Version:    0.7.0.1
  */

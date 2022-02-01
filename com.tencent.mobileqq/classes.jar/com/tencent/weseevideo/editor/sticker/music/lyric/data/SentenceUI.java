@@ -27,57 +27,73 @@ public class SentenceUI
     this.mHighLightOffsetX = paramInt2;
     this.mText = paramString;
     this.mCharacters = paramArrayList;
-    if ((this.mCharacters != null) && (this.mCharacters.size() > 0))
+    paramString = this.mCharacters;
+    if ((paramString != null) && (paramString.size() > 0))
     {
       this.mStartTime = ((LyricCharacter)this.mCharacters.get(0)).mStartTime;
-      paramString = (LyricCharacter)this.mCharacters.get(this.mCharacters.size() - 1);
-      long l = paramString.mStartTime;
-      this.mEndTime = (paramString.mDuration + l);
+      paramString = this.mCharacters;
+      paramString = (LyricCharacter)paramString.get(paramString.size() - 1);
+      this.mEndTime = (paramString.mStartTime + paramString.mDuration);
     }
   }
   
   private void drawAttachInfo(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint)
   {
-    paramInt1 = this.mNormalOffsetX + paramInt1;
-    if ((this.mLeftAttachInfo != null) && (this.mLeftAttachInfo.mBitmap != null) && (!this.mLeftAttachInfo.mBitmap.isRecycled()))
+    paramInt1 += this.mNormalOffsetX;
+    SentenceAttachInfo localSentenceAttachInfo = this.mLeftAttachInfo;
+    if ((localSentenceAttachInfo != null) && (localSentenceAttachInfo.mBitmap != null) && (!this.mLeftAttachInfo.mBitmap.isRecycled()))
     {
-      paramPaint = new Rect(paramInt1 - this.mLeftAttachInfo.mPadding - this.mLeftAttachInfo.mBitmap.getWidth(), (int)(paramInt2 - paramPaint.getTextSize() + 2.0F), paramInt1 - this.mLeftAttachInfo.mPadding, (int)(this.mLeftAttachInfo.mBitmap.getHeight() + paramInt2 - paramPaint.getTextSize() + 2.0F));
+      paramPaint = new Rect(paramInt1 - this.mLeftAttachInfo.mPadding - this.mLeftAttachInfo.mBitmap.getWidth(), (int)(paramInt2 - paramPaint.getTextSize() + 2.0F), paramInt1 - this.mLeftAttachInfo.mPadding, (int)(paramInt2 + this.mLeftAttachInfo.mBitmap.getHeight() - paramPaint.getTextSize() + 2.0F));
       paramCanvas.drawBitmap(this.mLeftAttachInfo.mBitmap, null, paramPaint, null);
     }
   }
   
   public void drawLyricContour(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = this.mHighLightOffsetX;; i = this.mNormalOffsetX)
-    {
-      paramInt1 = i + paramInt1;
-      paramCanvas.drawText(this.mText, paramInt1 - 1, paramInt2 - 1, paramPaint);
-      paramCanvas.drawText(this.mText, paramInt1, paramInt2 - 1, paramPaint);
-      paramCanvas.drawText(this.mText, paramInt1 + 1, paramInt2 - 1, paramPaint);
-      paramCanvas.drawText(this.mText, paramInt1 + 1, paramInt2, paramPaint);
-      paramCanvas.drawText(this.mText, paramInt1 + 1, paramInt2 + 1, paramPaint);
-      paramCanvas.drawText(this.mText, paramInt1, paramInt2 + 1, paramPaint);
-      paramCanvas.drawText(this.mText, paramInt1 - 1, paramInt2 + 1, paramPaint);
-      paramCanvas.drawText(this.mText, paramInt1 - 1, paramInt2, paramPaint);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = this.mHighLightOffsetX;
+    } else {
+      i = this.mNormalOffsetX;
     }
+    paramInt1 += i;
+    String str = this.mText;
+    float f1 = paramInt1 - 1;
+    float f4 = paramInt2 - 1;
+    paramCanvas.drawText(str, f1, f4, paramPaint);
+    str = this.mText;
+    float f2 = paramInt1;
+    paramCanvas.drawText(str, f2, f4, paramPaint);
+    str = this.mText;
+    float f3 = paramInt1 + 1;
+    paramCanvas.drawText(str, f3, f4, paramPaint);
+    str = this.mText;
+    f4 = paramInt2;
+    paramCanvas.drawText(str, f3, f4, paramPaint);
+    str = this.mText;
+    float f5 = paramInt2 + 1;
+    paramCanvas.drawText(str, f3, f5, paramPaint);
+    paramCanvas.drawText(this.mText, f2, f5, paramPaint);
+    paramCanvas.drawText(this.mText, f1, f5, paramPaint);
+    paramCanvas.drawText(this.mText, f1, f4, paramPaint);
   }
   
   public long getEndTime()
   {
-    if ((this.mCharacters != null) && (this.mCharacters.size() > 0))
+    Object localObject = this.mCharacters;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      LyricCharacter localLyricCharacter = (LyricCharacter)this.mCharacters.get(this.mCharacters.size() - 1);
-      long l = localLyricCharacter.mStartTime;
-      return localLyricCharacter.mDuration + l;
+      localObject = this.mCharacters;
+      localObject = (LyricCharacter)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
+      return ((LyricCharacter)localObject).mStartTime + ((LyricCharacter)localObject).mDuration;
     }
     return 0L;
   }
   
   public long getStartTime()
   {
-    if ((this.mCharacters != null) && (this.mCharacters.size() > 0)) {
+    ArrayList localArrayList = this.mCharacters;
+    if ((localArrayList != null) && (localArrayList.size() > 0)) {
       return ((LyricCharacter)this.mCharacters.get(0)).mStartTime;
     }
     return 0L;
@@ -86,83 +102,83 @@ public class SentenceUI
   public void paint(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2, Paint paramPaint3, int paramInt3, float paramFloat1, float paramFloat2, int[] paramArrayOfInt, float[] paramArrayOfFloat)
   {
     int i = this.mHighLightOffsetX;
-    paramFloat2 += this.mHighLightOffsetX;
-    paramPaint3.setShader(new LinearGradient(paramFloat2, paramInt2, paramFloat2 + paramFloat1, paramInt2, paramArrayOfInt, paramArrayOfFloat, Shader.TileMode.CLAMP));
+    paramFloat2 += i;
+    float f = paramInt2;
+    paramFloat1 = paramFloat2 + paramFloat1;
+    paramPaint3.setShader(new LinearGradient(paramFloat2, f, paramFloat1, f, paramArrayOfInt, paramArrayOfFloat, Shader.TileMode.CLAMP));
     if (paramInt3 > 0)
     {
       paramArrayOfInt = (LyricCharacter)this.mCharacters.get(paramInt3 - 1);
-      paramCanvas.drawText(this.mText.substring(0, Math.min(paramArrayOfInt.mEnd, this.mText.length())), paramInt1 + i, paramInt2, paramPaint2);
+      paramCanvas.drawText(this.mText.substring(0, Math.min(paramArrayOfInt.mEnd, this.mText.length())), paramInt1 + i, f, paramPaint2);
     }
     paramPaint2 = (LyricCharacter)this.mCharacters.get(paramInt3);
-    if (paramInt3 == this.mCharacters.size() - 1) {}
-    for (paramPaint2 = this.mText.substring(paramPaint2.mStart, this.mText.length());; paramPaint2 = this.mText.substring(paramPaint2.mStart, Math.min(paramPaint2.mEnd, this.mText.length())))
+    if (paramInt3 == this.mCharacters.size() - 1) {
+      paramPaint2 = this.mText.substring(paramPaint2.mStart, this.mText.length());
+    } else {
+      paramPaint2 = this.mText.substring(paramPaint2.mStart, Math.min(paramPaint2.mEnd, this.mText.length()));
+    }
+    paramCanvas.drawText(paramPaint2, paramFloat2, f, paramPaint3);
+    if (paramInt3 < this.mCharacters.size() - 1)
     {
-      paramCanvas.drawText(paramPaint2, paramFloat2, paramInt2, paramPaint3);
-      if (paramInt3 < this.mCharacters.size() - 1)
-      {
-        paramPaint2 = (LyricCharacter)this.mCharacters.get(paramInt3 + 1);
-        paramCanvas.drawText(this.mText.substring(paramPaint2.mStart, this.mText.length()), paramFloat2 + paramFloat1, paramInt2, paramPaint1);
-      }
-      return;
+      paramPaint2 = (LyricCharacter)this.mCharacters.get(paramInt3 + 1);
+      paramCanvas.drawText(this.mText.substring(paramPaint2.mStart, this.mText.length()), paramFloat1, f, paramPaint1);
     }
   }
   
   public void paint(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = this.mHighLightOffsetX;; i = this.mNormalOffsetX)
-    {
-      paramCanvas.drawText(this.mText, i + paramInt1, paramInt2, paramPaint);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = this.mHighLightOffsetX;
+    } else {
+      i = this.mNormalOffsetX;
     }
+    paramCanvas.drawText(this.mText, paramInt1 + i, paramInt2, paramPaint);
   }
   
   public void paintMarkCharacter(Canvas paramCanvas, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, Paint paramPaint1, Paint paramPaint2, Paint paramPaint3, Paint paramPaint4, boolean paramBoolean, float paramFloat)
   {
+    Object localObject1 = this;
     if (paramArrayOfInt == null) {
       return;
     }
-    int i;
-    label16:
-    label39:
-    Object localObject;
-    float f1;
-    if (paramBoolean)
-    {
-      i = this.mHighLightOffsetX;
-      Paint.FontMetrics localFontMetrics = paramPaint2.getFontMetrics();
-      int j = 0;
-      i = paramInt2 + i;
-      paramInt2 = paramInt1;
-      paramInt1 = j;
-      if (paramInt1 < this.mCharacters.size())
-      {
-        localObject = (LyricCharacter)this.mCharacters.get(paramInt1);
-        localObject = this.mText.substring(((LyricCharacter)localObject).mStart, ((LyricCharacter)localObject).mEnd);
-        f1 = paramPaint2.measureText((String)localObject);
-        float f2 = paramPaint2.getTextSize();
-        if (paramArrayOfInt[paramInt2] == PractiveConst.NO_MARK_CHARACTER) {
-          break label207;
-        }
-        paramCanvas.drawRect(i, paramInt3 + localFontMetrics.top + localFontMetrics.bottom - paramFloat, i + f1, f2 + paramInt3 + localFontMetrics.top + localFontMetrics.bottom + paramFloat, paramPaint1);
-        paramCanvas.drawText((String)localObject, i, paramInt3, paramPaint2);
-      }
+    if (paramBoolean) {
+      i = ((SentenceUI)localObject1).mHighLightOffsetX;
+    } else {
+      i = ((SentenceUI)localObject1).mNormalOffsetX;
     }
+    localObject1 = paramPaint2.getFontMetrics();
+    int i = paramInt2 + i;
+    paramInt2 = 0;
     for (;;)
     {
+      Object localObject2 = this;
+      if (paramInt2 >= ((SentenceUI)localObject2).mCharacters.size()) {
+        break;
+      }
+      LyricCharacter localLyricCharacter = (LyricCharacter)((SentenceUI)localObject2).mCharacters.get(paramInt2);
+      localObject2 = ((SentenceUI)localObject2).mText.substring(localLyricCharacter.mStart, localLyricCharacter.mEnd);
+      float f1 = paramPaint2.measureText((String)localObject2);
+      float f2 = paramPaint2.getTextSize();
+      if (paramArrayOfInt[paramInt1] != PractiveConst.NO_MARK_CHARACTER)
+      {
+        float f3 = i;
+        float f4 = paramInt3;
+        paramCanvas.drawRect(f3, ((Paint.FontMetrics)localObject1).top + f4 + ((Paint.FontMetrics)localObject1).bottom - paramFloat, f3 + f1, f2 + f4 + ((Paint.FontMetrics)localObject1).top + ((Paint.FontMetrics)localObject1).bottom + paramFloat, paramPaint1);
+        paramCanvas.drawText((String)localObject2, f3, f4, paramPaint2);
+      }
+      for (;;)
+      {
+        break;
+        if (paramBoolean) {
+          paramCanvas.drawText((String)localObject2, i, paramInt3, paramPaint3);
+        } else {
+          paramCanvas.drawText((String)localObject2, i, paramInt3, paramPaint4);
+        }
+      }
       i = (int)(i + f1);
       paramInt2 += 1;
       paramInt1 += 1;
-      break label39;
-      break;
-      i = this.mNormalOffsetX;
-      break label16;
-      label207:
-      if (paramBoolean) {
-        paramCanvas.drawText((String)localObject, i, paramInt3, paramPaint3);
-      } else {
-        paramCanvas.drawText((String)localObject, i, paramInt3, paramPaint4);
-      }
     }
   }
   
@@ -187,7 +203,7 @@ public class SentenceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.music.lyric.data.SentenceUI
  * JD-Core Version:    0.7.0.1
  */

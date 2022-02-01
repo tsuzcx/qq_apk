@@ -15,12 +15,23 @@ public class MiniAppInfoByIdEntity
   
   public String toString()
   {
-    return "MiniAppInfoByIdEntity{appId='" + this.appId + '\'' + "entryPath='" + this.entryPath + '\'' + ", timeStamp='" + this.timeStamp + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniAppInfoByIdEntity{appId='");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("entryPath='");
+    localStringBuilder.append(this.entryPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", timeStamp='");
+    localStringBuilder.append(this.timeStamp);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoByIdEntity
  * JD-Core Version:    0.7.0.1
  */

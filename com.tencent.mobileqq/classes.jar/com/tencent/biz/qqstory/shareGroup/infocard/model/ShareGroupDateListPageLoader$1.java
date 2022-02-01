@@ -15,17 +15,20 @@ class ShareGroupDateListPageLoader$1
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.a.a == null) {
-      this.a.a = new ShareGroupDateListPageLoader.CacheContext(this.a, this.a.d);
+    if (this.a.a == null)
+    {
+      paramJobContext = this.a;
+      paramJobContext.a = new ShareGroupDateListPageLoader.CacheContext(paramJobContext, paramJobContext.d);
     }
-    this.a.e = "";
-    ShareGroupDateListPageLoader.a(this.a);
+    paramJobContext = this.a;
+    paramJobContext.e = "";
+    ShareGroupDateListPageLoader.a(paramJobContext);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader.1
  * JD-Core Version:    0.7.0.1
  */

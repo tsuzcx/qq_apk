@@ -32,17 +32,16 @@ public class WXVideoFileObject
   
   public boolean checkArgs()
   {
-    if ((this.filePath == null) || (this.filePath.length() == 0))
-    {
-      Log.e("MicroMsg.SDK.WXVideoFileObject", "checkArgs fail, filePath is null");
-      return false;
+    String str = this.filePath;
+    if ((str != null) && (str.length() != 0)) {
+      if (getFileSize(this.filePath) <= 104857600) {}
     }
-    if (getFileSize(this.filePath) > 104857600)
+    for (str = "checkArgs fail, video file size is too large";; str = "checkArgs fail, filePath is null")
     {
-      Log.e("MicroMsg.SDK.WXVideoFileObject", "checkArgs fail, video file size is too large");
+      Log.e("MicroMsg.SDK.WXVideoFileObject", str);
       return false;
+      return true;
     }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)
@@ -66,7 +65,7 @@ public class WXVideoFileObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXVideoFileObject
  * JD-Core Version:    0.7.0.1
  */

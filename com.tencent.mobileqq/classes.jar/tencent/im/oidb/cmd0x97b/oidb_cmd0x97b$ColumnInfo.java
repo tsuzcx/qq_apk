@@ -20,15 +20,16 @@ public final class oidb_cmd0x97b$ColumnInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 90, 98, 106 }, new String[] { "uint32_video_count", "uint32_column_count", "uint32_subscribe_count", "bytes_video_jump_url", "bytes_column_jump_url", "bytes_subscribe_jump_url" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3 }, ColumnInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 90, 98, 106 }, new String[] { "uint32_video_count", "uint32_column_count", "uint32_subscribe_count", "bytes_video_jump_url", "bytes_column_jump_url", "bytes_subscribe_jump_url" }, new Object[] { localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3 }, ColumnInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x97b.oidb_cmd0x97b.ColumnInfo
  * JD-Core Version:    0.7.0.1
  */

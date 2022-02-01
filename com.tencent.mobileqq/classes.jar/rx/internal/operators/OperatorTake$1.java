@@ -22,17 +22,18 @@ class OperatorTake$1
   
   public void onError(Throwable paramThrowable)
   {
-    if (!this.completed) {
+    if (!this.completed)
+    {
       this.completed = true;
-    }
-    try
-    {
-      this.val$child.onError(paramThrowable);
-      return;
-    }
-    finally
-    {
-      unsubscribe();
+      try
+      {
+        this.val$child.onError(paramThrowable);
+        return;
+      }
+      finally
+      {
+        unsubscribe();
+      }
     }
   }
   
@@ -40,29 +41,29 @@ class OperatorTake$1
   {
     if (!isUnsubscribed())
     {
-      i = this.count;
+      int i = this.count;
       this.count = (i + 1);
-      if (i < this.this$0.limit) {
-        if (this.count != this.this$0.limit) {
-          break label82;
+      if (i < this.this$0.limit)
+      {
+        if (this.count == this.this$0.limit) {
+          i = 1;
+        } else {
+          i = 0;
         }
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      this.val$child.onNext(paramT);
-      if ((i != 0) && (!this.completed)) {
-        this.completed = true;
-      }
-      try
-      {
-        this.val$child.onCompleted();
-        return;
-      }
-      finally
-      {
-        label82:
-        unsubscribe();
+        this.val$child.onNext(paramT);
+        if ((i != 0) && (!this.completed))
+        {
+          this.completed = true;
+          try
+          {
+            this.val$child.onCompleted();
+            return;
+          }
+          finally
+          {
+            unsubscribe();
+          }
+        }
       }
     }
   }
@@ -74,7 +75,7 @@ class OperatorTake$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorTake.1
  * JD-Core Version:    0.7.0.1
  */

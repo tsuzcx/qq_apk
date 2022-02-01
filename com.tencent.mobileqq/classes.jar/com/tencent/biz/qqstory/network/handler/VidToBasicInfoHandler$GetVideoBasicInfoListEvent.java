@@ -11,12 +11,16 @@ public class VidToBasicInfoHandler$GetVideoBasicInfoListEvent
   
   public String toString()
   {
-    return "GetVideoBasicInfoListEvent{, mVideoList=" + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetVideoBasicInfoListEvent{, mVideoList=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.VidToBasicInfoHandler.GetVideoBasicInfoListEvent
  * JD-Core Version:    0.7.0.1
  */

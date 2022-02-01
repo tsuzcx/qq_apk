@@ -18,8 +18,12 @@ class QQToast$ToastHandler
   
   private void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQToast", 2, "scheduleNextToast to " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("scheduleNextToast to ");
+      localStringBuilder.append(paramLong);
+      QLog.d("QQToast", 2, localStringBuilder.toString());
     }
     removeMessages(1);
     sendEmptyMessageDelayed(1, paramLong);
@@ -27,68 +31,66 @@ class QQToast$ToastHandler
   
   private void a(QQToast.ShowToastMessage paramShowToastMessage)
   {
-    long l2 = 0L;
     paramShowToastMessage = paramShowToastMessage.a();
+    long l2 = 0L;
     long l1;
     int i;
     if (paramShowToastMessage != null)
     {
       paramShowToastMessage.a();
-      if (QQToast.a(paramShowToastMessage) == 0)
-      {
+      if (QQToast.a(paramShowToastMessage) == 0) {
         l1 = 2000L;
-        this.a = (System.currentTimeMillis() + l1);
-        i = 1;
+      } else {
+        l1 = 3500L;
       }
+      this.a = (System.currentTimeMillis() + l1);
+      i = 1;
     }
-    for (;;)
+    else
     {
-      if (!QQToast.a().isEmpty())
-      {
-        if (i != 0) {
-          l2 = 100L + l1;
-        }
-        a(l2);
-      }
-      return;
-      l1 = 3500L;
-      break;
       i = 0;
       l1 = 0L;
+    }
+    if (!QQToast.a().isEmpty())
+    {
+      if (i != 0) {
+        l2 = 100L + l1;
+      }
+      a(l2);
     }
   }
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    long l;
-    do
-    {
+    if (paramMessage.what != 1) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "MSG_SHOW_TOAST received");
-      }
-      l = System.currentTimeMillis();
-      if (l <= this.a + 100L) {
-        break;
-      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQToast", 2, "MSG_SHOW_TOAST received");
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = this.a;
+    if (l1 > l2 + 100L)
+    {
       paramMessage = (QQToast.ShowToastMessage)QQToast.a().poll();
       if (paramMessage != null)
       {
         a(paramMessage);
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQToast", 2, "MSG_SHOW_TOAST but no message to show");
-    return;
-    a(this.a - l + 100L);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, "MSG_SHOW_TOAST but no message to show");
+      }
+    }
+    else
+    {
+      a(l2 - l1 + 100L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToast.ToastHandler
  * JD-Core Version:    0.7.0.1
  */

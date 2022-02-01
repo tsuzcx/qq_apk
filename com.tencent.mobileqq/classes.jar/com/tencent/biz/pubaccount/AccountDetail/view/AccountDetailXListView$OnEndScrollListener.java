@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
 public abstract interface AccountDetailXListView$OnEndScrollListener
 {
@@ -6,7 +6,7 @@ public abstract interface AccountDetailXListView$OnEndScrollListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView.OnEndScrollListener
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailXListView.OnEndScrollListener
  * JD-Core Version:    0.7.0.1
  */

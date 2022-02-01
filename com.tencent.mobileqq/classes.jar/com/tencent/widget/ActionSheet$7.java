@@ -10,7 +10,8 @@ class ActionSheet$7
   
   public void run()
   {
-    ActionSheet.access$402(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, ActionSheet.access$500(this.this$0).getHeight()));
+    ActionSheet localActionSheet = this.this$0;
+    ActionSheet.access$402(localActionSheet, new TranslateAnimation(0.0F, 0.0F, 0.0F, ActionSheet.access$500(localActionSheet).getHeight()));
     ActionSheet.access$400(this.this$0).setDuration(200L);
     ActionSheet.access$400(this.this$0).setFillAfter(true);
     ActionSheet.access$500(this.this$0).startAnimation(ActionSheet.access$400(this.this$0));
@@ -19,7 +20,7 @@ class ActionSheet$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ActionSheet.7
  * JD-Core Version:    0.7.0.1
  */

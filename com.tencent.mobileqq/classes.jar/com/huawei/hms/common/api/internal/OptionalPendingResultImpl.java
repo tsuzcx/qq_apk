@@ -11,23 +11,23 @@ import java.util.concurrent.TimeUnit;
 public final class OptionalPendingResultImpl<R extends Result>
   extends OptionalPendingResult<R>
 {
-  private final PendingResult<R> a;
+  private final PendingResult<R> pendingResult;
   
   public OptionalPendingResultImpl(PendingResult<R> paramPendingResult)
   {
-    this.a = paramPendingResult;
+    this.pendingResult = paramPendingResult;
   }
   
   public final void addStatusListener() {}
   
   public final R await()
   {
-    return this.a.await();
+    return this.pendingResult.await();
   }
   
   public final R await(long paramLong, TimeUnit paramTimeUnit)
   {
-    return this.a.await(paramLong, paramTimeUnit);
+    return this.pendingResult.await(paramLong, paramTimeUnit);
   }
   
   public final void cancel() {}
@@ -49,12 +49,12 @@ public final class OptionalPendingResultImpl<R extends Result>
   
   public void setResultCallback(Looper paramLooper, ResultCallback<R> paramResultCallback)
   {
-    this.a.setResultCallback(paramLooper, paramResultCallback);
+    this.pendingResult.setResultCallback(paramLooper, paramResultCallback);
   }
   
   public final void setResultCallback(ResultCallback<R> paramResultCallback)
   {
-    this.a.setResultCallback(paramResultCallback);
+    this.pendingResult.setResultCallback(paramResultCallback);
   }
   
   public final void setResultCallback(ResultCallback<R> paramResultCallback, long paramLong, TimeUnit paramTimeUnit)
@@ -64,7 +64,7 @@ public final class OptionalPendingResultImpl<R extends Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.api.internal.OptionalPendingResultImpl
  * JD-Core Version:    0.7.0.1
  */

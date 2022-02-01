@@ -13,7 +13,11 @@ class DownloadManagerV2$21
   {
     try
     {
-      LogUtility.b("DownloadManagerV2", "[getApkCodeAsync]" + this.a.e + " begin getApkCode ......");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[getApkCodeAsync]");
+      localStringBuilder.append(this.a.e);
+      localStringBuilder.append(" begin getApkCode ......");
+      LogUtility.b("DownloadManagerV2", localStringBuilder.toString());
       DownloadManagerV2.a(this.this$0).a(this.a.jdField_b_of_type_JavaLangString, this.a.e, this.a.jdField_b_of_type_Int, DownloadManagerV2.a(this.this$0));
       return;
     }
@@ -25,7 +29,7 @@ class DownloadManagerV2$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.21
  * JD-Core Version:    0.7.0.1
  */

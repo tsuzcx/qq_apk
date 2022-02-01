@@ -1,28 +1,25 @@
 package com.tencent.mobileqq.richstatus;
 
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SignatureHistoryFragment$19
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
   SignatureHistoryFragment$19(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    if ((paramInt2 < paramInt6) && (this.a.a != null))
-    {
-      paramInt1 = SignatureHistoryFragment.a(this.a, this.a.a);
-      paramInt3 = this.a.a.getHeight();
-      if (paramInt1 + paramInt3 > paramInt2) {
-        SignatureHistoryFragment.a(this.a, paramInt1, paramInt3, false);
-      }
-    }
+    ReportController.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 1, 0, "0", "0", "", "");
+    SignatureHistoryFragment.d(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.19
  * JD-Core Version:    0.7.0.1
  */

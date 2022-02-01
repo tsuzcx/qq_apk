@@ -1,87 +1,49 @@
 package com.tencent.mobileqq.troop.utils;
 
-import android.content.Context;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.AbsStructMsg.XmlSerializerWithFilter;
+import com.tencent.mobileqq.structmsg.QQXmlSerializer;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.io.ByteArrayOutputStream;
 
 final class TroopUtils$5
-  implements Runnable
+  extends StructMsgForGeneralShare
 {
-  TroopUtils$5(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, Context paramContext) {}
-  
-  public void run()
+  protected void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    TroopMemberInfo localTroopMemberInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_JavaLangString, this.b);
-    int j = 0;
-    for (;;)
+    AbsStructMsg.XmlSerializerWithFilter localXmlSerializerWithFilter = new AbsStructMsg.XmlSerializerWithFilter(this, new QQXmlSerializer());
+    try
     {
-      try
-      {
-        String[] arrayOfString = this.c.split("_");
-        i = j;
-        if (arrayOfString != null)
-        {
-          i = j;
-          if (arrayOfString.length > 2)
-          {
-            j = Integer.parseInt(arrayOfString[0]);
-            i = Integer.parseInt(arrayOfString[1]);
-          }
-        }
-        long l;
-        j = i;
+      localXmlSerializerWithFilter.setOutput(paramByteArrayOutputStream, paramString);
+      localXmlSerializerWithFilter.startDocument(paramString, null);
+      localXmlSerializerWithFilter.startTag(null, "msg");
+      localXmlSerializerWithFilter.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localXmlSerializerWithFilter.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
+      if (this.mMsgBrief == null) {
+        paramByteArrayOutputStream = "";
+      } else {
+        paramByteArrayOutputStream = this.mMsgBrief;
       }
-      catch (Exception localException1)
-      {
-        try
-        {
-          l = Long.parseLong(arrayOfString[2]);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4F", "0X800AD4F", (int)l, 0, String.valueOf(i), "", "", "");
-          ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).c(this.jdField_a_of_type_JavaLangString, 2, j);
-          j = i;
-          if (localTroopMemberInfo == null) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("TroopUtils", 2, "checkAndOpenMemberProfileForRecommendTipsClick open card " + this.b + " " + this.c);
-          }
-          if (this.jdField_a_of_type_AndroidContentContext != null) {
-            TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, j, this.jdField_a_of_type_JavaLangString);
-          }
-          return;
-        }
-        catch (Exception localException2)
-        {
-          int i;
-          break label216;
-        }
-        localException1 = localException1;
-        i = 0;
-      }
-      label216:
-      if (QLog.isColorLevel())
-      {
-        QLog.i("TroopUtils", 2, "checkAndOpenMemberProfileForRecommendTipsClick " + localException1);
-        j = i;
+      localXmlSerializerWithFilter.attribute(null, "brief", paramByteArrayOutputStream);
+      toContentXml(localXmlSerializerWithFilter);
+      localXmlSerializerWithFilter.startTag(null, "source");
+      localXmlSerializerWithFilter.endTag(null, "source");
+      localXmlSerializerWithFilter.endTag(null, "msg");
+      localXmlSerializerWithFilter.endDocument();
+      localXmlSerializerWithFilter.flush();
+      return;
+    }
+    catch (Exception paramByteArrayOutputStream)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberUtil", 2, paramByteArrayOutputStream.getMessage(), paramByteArrayOutputStream);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopUtils", 2, "checkAndOpenMemberProfileForRecommendTipsClick no member " + this.b);
-    }
-    ThreadManager.getUIHandler().post(new TroopUtils.5.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopUtils.5
  * JD-Core Version:    0.7.0.1
  */

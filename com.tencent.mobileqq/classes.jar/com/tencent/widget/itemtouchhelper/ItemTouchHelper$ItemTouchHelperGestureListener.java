@@ -22,32 +22,32 @@ class ItemTouchHelper$ItemTouchHelperGestureListener
     if (localObject != null)
     {
       localObject = this.this$0.mRecyclerView.getChildViewHolder((View)localObject);
-      if ((localObject != null) && (this.this$0.mCallback.hasDragFlag(this.this$0.mRecyclerView, (RecyclerView.ViewHolder)localObject))) {
-        break label57;
+      if (localObject != null)
+      {
+        if (!this.this$0.mCallback.hasDragFlag(this.this$0.mRecyclerView, (RecyclerView.ViewHolder)localObject)) {
+          return;
+        }
+        if (paramMotionEvent.getPointerId(0) == this.this$0.mActivePointerId)
+        {
+          int i = paramMotionEvent.findPointerIndex(this.this$0.mActivePointerId);
+          float f1 = paramMotionEvent.getX(i);
+          float f2 = paramMotionEvent.getY(i);
+          paramMotionEvent = this.this$0;
+          paramMotionEvent.mInitialTouchX = f1;
+          paramMotionEvent.mInitialTouchY = f2;
+          paramMotionEvent.mDy = 0.0F;
+          paramMotionEvent.mDx = 0.0F;
+          if (paramMotionEvent.mCallback.isLongPressDragEnabled()) {
+            this.this$0.select((RecyclerView.ViewHolder)localObject, 2);
+          }
+        }
       }
     }
-    label57:
-    do
-    {
-      do
-      {
-        return;
-      } while (paramMotionEvent.getPointerId(0) != this.this$0.mActivePointerId);
-      int i = paramMotionEvent.findPointerIndex(this.this$0.mActivePointerId);
-      float f1 = paramMotionEvent.getX(i);
-      float f2 = paramMotionEvent.getY(i);
-      this.this$0.mInitialTouchX = f1;
-      this.this$0.mInitialTouchY = f2;
-      paramMotionEvent = this.this$0;
-      this.this$0.mDy = 0.0F;
-      paramMotionEvent.mDx = 0.0F;
-    } while (!this.this$0.mCallback.isLongPressDragEnabled());
-    this.this$0.select((RecyclerView.ViewHolder)localObject, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.itemtouchhelper.ItemTouchHelper.ItemTouchHelperGestureListener
  * JD-Core Version:    0.7.0.1
  */

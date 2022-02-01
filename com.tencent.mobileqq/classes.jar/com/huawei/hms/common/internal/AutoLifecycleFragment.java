@@ -12,8 +12,9 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment;
 public class AutoLifecycleFragment
   extends ReportFragment
 {
-  private final SparseArray<AutoLifecycleFragment.a> a = new SparseArray();
-  private boolean b;
+  private static final String TAG = "HmsAutoLifecycleFrag";
+  private final SparseArray<AutoLifecycleFragment.ClientInfo> mAutoClientInfoMap = new SparseArray();
+  private boolean mStarted;
   
   public static AutoLifecycleFragment getInstance(Activity paramActivity)
   {
@@ -45,11 +46,11 @@ public class AutoLifecycleFragment
   public void onStart()
   {
     super.onStart();
-    this.b = true;
+    this.mStarted = true;
     int i = 0;
-    while (i < this.a.size())
+    while (i < this.mAutoClientInfoMap.size())
     {
-      ((AutoLifecycleFragment.a)this.a.valueAt(i)).a.connect(null);
+      ((AutoLifecycleFragment.ClientInfo)this.mAutoClientInfoMap.valueAt(i)).apiClient.connect(null);
       i += 1;
     }
   }
@@ -57,11 +58,11 @@ public class AutoLifecycleFragment
   public void onStop()
   {
     super.onStop();
-    this.b = false;
     int i = 0;
-    while (i < this.a.size())
+    this.mStarted = false;
+    while (i < this.mAutoClientInfoMap.size())
     {
-      ((AutoLifecycleFragment.a)this.a.valueAt(i)).a.disconnect();
+      ((AutoLifecycleFragment.ClientInfo)this.mAutoClientInfoMap.valueAt(i)).apiClient.disconnect();
       i += 1;
     }
   }
@@ -69,30 +70,34 @@ public class AutoLifecycleFragment
   public void startAutoMange(int paramInt, HuaweiApiClient paramHuaweiApiClient)
   {
     Preconditions.checkNotNull(paramHuaweiApiClient, "HuaweiApiClient instance cannot be null");
-    if (this.a.indexOfKey(paramInt) < 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Preconditions.checkState(bool, "Already managing a HuaweiApiClient with this clientId: " + paramInt);
-      this.a.put(paramInt, new AutoLifecycleFragment.a(this, paramInt, paramHuaweiApiClient));
-      if (this.b) {
-        paramHuaweiApiClient.connect(null);
-      }
-      return;
+    boolean bool;
+    if (this.mAutoClientInfoMap.indexOfKey(paramInt) < 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Already managing a HuaweiApiClient with this clientId: ");
+    localStringBuilder.append(paramInt);
+    Preconditions.checkState(bool, localStringBuilder.toString());
+    this.mAutoClientInfoMap.put(paramInt, new AutoLifecycleFragment.ClientInfo(this, paramInt, paramHuaweiApiClient));
+    if (this.mStarted) {
+      paramHuaweiApiClient.connect(null);
     }
   }
   
   public void stopAutoManage(int paramInt)
   {
-    AutoLifecycleFragment.a locala = (AutoLifecycleFragment.a)this.a.get(paramInt);
-    this.a.remove(paramInt);
-    if (locala != null) {
-      locala.a();
+    AutoLifecycleFragment.ClientInfo localClientInfo = (AutoLifecycleFragment.ClientInfo)this.mAutoClientInfoMap.get(paramInt);
+    this.mAutoClientInfoMap.remove(paramInt);
+    if (localClientInfo != null) {
+      localClientInfo.stopAutoManage();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.AutoLifecycleFragment
  * JD-Core Version:    0.7.0.1
  */

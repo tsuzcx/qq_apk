@@ -20,42 +20,50 @@ class VipDownloadInterface$1
   
   public void a(List<DownloadInfo> paramList)
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
+    Object localObject1 = this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getQueryDownloadAction onResult = ");
+    ((StringBuilder)localObject2).append(paramList.size());
+    LogUtility.c((String)localObject1, ((StringBuilder)localObject2).toString());
+    localObject1 = new JSONArray();
     int j = paramList.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      localObject2 = new JSONObject();
+      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+      try
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
+        ((JSONObject)localObject2).put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+        ((JSONObject)localObject2).put("pro", localDownloadInfo.f);
+        ((JSONObject)localObject2).put("state", localDownloadInfo.a());
+        ((JSONObject)localObject2).put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
       }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      ((JSONArray)localObject1).put(localObject2);
+      i += 1;
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "querySucess : " + paramList);
+    paramList = new StringBuilder();
+    paramList.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": ");
+    paramList.append(this.jdField_a_of_type_JavaLangString);
+    paramList.append(", \"r\" : 0, \"data\":");
+    paramList.append(((JSONArray)localObject1).toString());
+    paramList.append("});}void(0);");
+    paramList = paramList.toString();
+    localObject1 = this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("querySucess : ");
+    ((StringBuilder)localObject2).append(paramList);
+    LogUtility.c((String)localObject1, ((StringBuilder)localObject2).toString());
     this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.export.js.VipDownloadInterface.1
  * JD-Core Version:    0.7.0.1
  */

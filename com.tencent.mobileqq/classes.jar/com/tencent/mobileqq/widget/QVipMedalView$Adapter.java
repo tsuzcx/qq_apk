@@ -10,15 +10,17 @@ public class QVipMedalView$Adapter
   
   public int a()
   {
-    if (this.a != null) {
-      return this.a.infoList.size();
+    MedalList localMedalList = this.a;
+    if (localMedalList != null) {
+      return localMedalList.infoList.size();
     }
     return 0;
   }
   
   public int a(int paramInt)
   {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+    MedalList localMedalList = this.a;
+    if ((localMedalList != null) && (localMedalList.infoList.size() > paramInt)) {
       return ((MedalList.Info)this.a.infoList.get(paramInt)).type;
     }
     return 0;
@@ -26,7 +28,8 @@ public class QVipMedalView$Adapter
   
   public String a(int paramInt)
   {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+    MedalList localMedalList = this.a;
+    if ((localMedalList != null) && (localMedalList.infoList.size() > paramInt)) {
       return ((MedalList.Info)this.a.infoList.get(paramInt)).value;
     }
     return null;
@@ -39,7 +42,8 @@ public class QVipMedalView$Adapter
   
   public int b(int paramInt)
   {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+    MedalList localMedalList = this.a;
+    if ((localMedalList != null) && (localMedalList.infoList.size() > paramInt)) {
       return ((MedalList.Info)this.a.infoList.get(paramInt)).isRemind;
     }
     return 0;
@@ -47,7 +51,8 @@ public class QVipMedalView$Adapter
   
   public int c(int paramInt)
   {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+    MedalList localMedalList = this.a;
+    if ((localMedalList != null) && (localMedalList.infoList.size() > paramInt)) {
       return ((MedalList.Info)this.a.infoList.get(paramInt)).tipsTimes;
     }
     return 0;
@@ -55,7 +60,7 @@ public class QVipMedalView$Adapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QVipMedalView.Adapter
  * JD-Core Version:    0.7.0.1
  */

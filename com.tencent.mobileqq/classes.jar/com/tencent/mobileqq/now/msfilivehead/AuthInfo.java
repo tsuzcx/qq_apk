@@ -21,14 +21,15 @@ public final class AuthInfo
   
   public static AuthInfo[] a()
   {
-    if (jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo == null) {
-        jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo = new AuthInfo[0];
+    if (jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo == null) {
+          jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo = new AuthInfo[0];
+        }
       }
-      return jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo;
     }
+    return jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo;
   }
   
   public AuthInfo a()
@@ -45,41 +46,51 @@ public final class AuthInfo
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 10: 
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
-        break;
-      case 18: 
-        this.b = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+      if (i != 10)
+      {
+        if (i != 18)
+        {
+          if (i != 24)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+          }
+        }
+        else {
+          this.b = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
-    int j = super.computeSerializedSize();
-    int i = j;
+    int i = super.computeSerializedSize();
+    int j = i;
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(1, this.jdField_a_of_type_JavaLangString);
-    }
-    j = i;
-    if (!this.b.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.b);
+      j = i + CodedOutputByteBufferNano.computeStringSize(1, this.jdField_a_of_type_JavaLangString);
     }
     i = j;
-    if (this.jdField_a_of_type_Int != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(3, this.jdField_a_of_type_Int);
+    if (!this.b.equals("")) {
+      i = j + CodedOutputByteBufferNano.computeStringSize(2, this.b);
     }
-    return i;
+    int k = this.jdField_a_of_type_Int;
+    j = i;
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(3, k);
+    }
+    return j;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -90,15 +101,16 @@ public final class AuthInfo
     if (!this.b.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.b);
     }
-    if (this.jdField_a_of_type_Int != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(3, this.jdField_a_of_type_Int);
+    int i = this.jdField_a_of_type_Int;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(3, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.msfilivehead.AuthInfo
  * JD-Core Version:    0.7.0.1
  */

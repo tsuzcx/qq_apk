@@ -24,13 +24,14 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.game.api.ICmGameHelper;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.QQBlurView;
 import com.tencent.mobileqq.widget.RoundImageView;
 import com.tencent.qphone.base.util.QLog;
@@ -85,12 +86,13 @@ public class GameMakeTeamTipBar
   
   private void a(GameMakeTeamTipBar.TeamInfoWrapper paramTeamInfoWrapper)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper == null)
+    GameMakeTeamTipBar.TeamInfoWrapper localTeamInfoWrapper = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper;
+    if (localTeamInfoWrapper == null)
     {
       b(paramTeamInfoWrapper);
       return;
     }
-    if (!QQGamePubAIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo).equals(QQGamePubAIOHelper.a(paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo)))
+    if (!QQGamePubAIOHelper.a(localTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo).equals(QQGamePubAIOHelper.a(paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo)))
     {
       a(2);
       b(paramTeamInfoWrapper);
@@ -106,7 +108,7 @@ public class GameMakeTeamTipBar
     }
     paramImageView.setVisibility(0);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    Drawable localDrawable = paramImageView.getContext().getResources().getDrawable(2130840535);
+    Drawable localDrawable = paramImageView.getContext().getResources().getDrawable(2130840405);
     localURLDrawableOptions.mLoadingDrawable = localDrawable;
     localURLDrawableOptions.mFailedDrawable = localDrawable;
     paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
@@ -114,149 +116,161 @@ public class GameMakeTeamTipBar
   
   private boolean a(QQGameMakeTeamInfo.TeamInfo paramTeamInfo)
   {
-    boolean bool2 = false;
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper != null) && (paramTeamInfo.msg_seq.get().equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.msg_seq.get())) && (paramTeamInfo.status.get() == this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.status.get()) && (paramTeamInfo.main_text.get().equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.main_text.get())) && (paramTeamInfo.sub_text.get().equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.sub_text.get())) && (paramTeamInfo.jump_url.get().equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.jump_url.get())) && (paramTeamInfo.icons.get().size() == this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.icons.get().size()))
     {
       int i = 0;
-      for (;;)
+      while (i < paramTeamInfo.icons.get().size())
       {
-        boolean bool1 = bool2;
-        if (i < paramTeamInfo.icons.get().size())
-        {
-          String str = (String)paramTeamInfo.icons.get().get(i);
-          if ((str != null) && (!str.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.icons.get().get(i)))) {
-            bool1 = true;
-          }
-        }
-        else
-        {
-          return bool1;
+        String str = (String)paramTeamInfo.icons.get().get(i);
+        if ((str != null) && (!str.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.icons.get().get(i)))) {
+          return true;
         }
         i += 1;
       }
+      return false;
     }
     return true;
   }
   
   private void b(GameMakeTeamTipBar.TeamInfoWrapper paramTeamInfoWrapper)
   {
-    try
+    for (;;)
     {
-      paramTeamInfoWrapper.jdField_a_of_type_Long = System.currentTimeMillis();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put(Integer.valueOf(4), "8");
-      localHashMap.put(Integer.valueOf(2), paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.team_id.get());
-      JSONObject localJSONObject;
-      if (paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get() == null)
+      try
       {
-        str = "";
-        localHashMap.put(Integer.valueOf(6), str);
-        localJSONObject = new JSONObject();
+        paramTeamInfoWrapper.jdField_a_of_type_Long = System.currentTimeMillis();
+        HashMap localHashMap = new HashMap();
+        localHashMap.put(Integer.valueOf(4), "8");
+        localHashMap.put(Integer.valueOf(2), paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.team_id.get());
+        localObject = paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get();
+        if (localObject == null) {
+          localObject = "";
+        } else {
+          localObject = paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get();
+        }
+        localHashMap.put(Integer.valueOf(6), localObject);
+        JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("groupid", paramTeamInfoWrapper.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
         localJSONObject.put("battletype", paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.sub_text.get().replace("|", "-"));
-        if (!TextUtils.isEmpty(paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get())) {
-          break label261;
+        if (TextUtils.isEmpty(paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get()))
+        {
+          localObject = "1";
+          localJSONObject.put("roomtype", localObject);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.icons.size());
+          ((StringBuilder)localObject).append("");
+          localJSONObject.put("roomnum", ((StringBuilder)localObject).toString());
+          localHashMap.put(Integer.valueOf(27), localJSONObject.toString());
+          GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "1006", "207623", paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.appid.get(), "100601", "1", "145", localHashMap);
+          return;
         }
       }
-      label261:
-      for (String str = "1";; str = "2")
+      catch (Throwable paramTeamInfoWrapper)
       {
-        localJSONObject.put("roomtype", str);
-        localJSONObject.put("roomnum", paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.icons.size() + "");
-        localHashMap.put(Integer.valueOf(27), localJSONObject.toString());
-        GameCenterUtils.a(CmGameUtil.a(), "1006", "207623", paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.appid.get(), "100601", "1", "145", localHashMap);
+        QLog.e("GameMakeTeamTipBar", 1, paramTeamInfoWrapper, new Object[0]);
         return;
-        str = paramTeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get();
-        break;
       }
-      return;
-    }
-    catch (Throwable paramTeamInfoWrapper)
-    {
-      QLog.e("GameMakeTeamTipBar", 1, paramTeamInfoWrapper, new Object[0]);
+      Object localObject = "2";
     }
   }
   
   @TargetApi(19)
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372715));
-    if (this.jdField_a_of_type_Boolean) {}
-    do
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372292));
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    if (localObject != null)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView == null);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView);
+      ((QQBlurView)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+      ((QQBlurView)localObject).b((View)localObject);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(4);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
       this.jdField_a_of_type_Boolean = true;
-    } while (!QLog.isColorLevel());
-    QLog.d("GameMakeTeamTipBar", 2, "initBlurView called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initBlurView called mBlurBgView = ");
+        ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+        QLog.d("GameMakeTeamTipBar", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
   
   private void e()
   {
     d();
-    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372638);
-    if ((ThemeUtil.isDefaultOrDIYTheme(false)) || (ThemeUtil.isSimpleDayTheme(false)))
+    Object localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131372219);
+    if ((!ThemeUtil.isDefaultOrDIYTheme(false)) && (!ThemeUtil.isSimpleDayTheme(false)))
     {
-      localView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
-      if (QLog.isColorLevel()) {
-        QLog.d("GameMakeTeamTipBar", 2, "showBlurView() visibility called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+      ((View)localObject).setBackgroundColor(this.jdField_a_of_type_AndroidViewView.getResources().getColor(2131167028));
+      ((View)localObject).setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(8);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showBlurView() gone called mBlurBgView = ");
+        ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+        QLog.d("GameMakeTeamTipBar", 2, ((StringBuilder)localObject).toString());
       }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
       return;
     }
-    localView.setBackgroundColor(this.jdField_a_of_type_AndroidViewView.getResources().getColor(2131167005));
-    localView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.d("GameMakeTeamTipBar", 2, "showBlurView() gone called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+    ((View)localObject).setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showBlurView() visibility called mBlurBgView = ");
+      ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+      QLog.d("GameMakeTeamTipBar", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
   }
   
   private void f()
   {
-    try
+    for (;;)
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put(Integer.valueOf(4), "20");
-      localHashMap.put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.team_id.get());
-      JSONObject localJSONObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get() == null)
+      try
       {
-        str = "";
-        localHashMap.put(Integer.valueOf(6), str);
-        localJSONObject = new JSONObject();
+        HashMap localHashMap = new HashMap();
+        localHashMap.put(Integer.valueOf(4), "20");
+        localHashMap.put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.team_id.get());
+        Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get();
+        if (localObject == null) {
+          localObject = "";
+        } else {
+          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get();
+        }
+        localHashMap.put(Integer.valueOf(6), localObject);
+        JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("groupid", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
         localJSONObject.put("battletype", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.sub_text.get().replace("|", "-"));
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get())) {
-          break label273;
+        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get()))
+        {
+          localObject = "1";
+          localJSONObject.put("roomtype", localObject);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.icons.size());
+          ((StringBuilder)localObject).append("");
+          localJSONObject.put("roomnum", ((StringBuilder)localObject).toString());
+          localHashMap.put(Integer.valueOf(27), localJSONObject.toString());
+          GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "1006", "207624", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.appid.get(), "100601", "1", "145", localHashMap);
+          return;
         }
       }
-      label273:
-      for (String str = "1";; str = "2")
+      catch (Throwable localThrowable)
       {
-        localJSONObject.put("roomtype", str);
-        localJSONObject.put("roomnum", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.icons.size() + "");
-        localHashMap.put(Integer.valueOf(27), localJSONObject.toString());
-        GameCenterUtils.a(CmGameUtil.a(), "1006", "207624", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.appid.get(), "100601", "1", "145", localHashMap);
+        QLog.e("GameMakeTeamTipBar", 1, localThrowable, new Object[0]);
         return;
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get();
-        break;
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("GameMakeTeamTipBar", 1, localThrowable, new Object[0]);
+      String str = "2";
     }
   }
   
@@ -269,7 +283,7 @@ public class GameMakeTeamTipBar
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a()).inflate(2131559292, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a()).inflate(2131559166, null);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     }
     a();
@@ -283,21 +297,25 @@ public class GameMakeTeamTipBar
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GameMakeTeamTipBar", 1, "initView..view:" + this.jdField_a_of_type_AndroidViewView);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initView..view:");
+      localStringBuilder.append(this.jdField_a_of_type_AndroidViewView);
+      QLog.i("GameMakeTeamTipBar", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838066);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130837913);
     e();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379630));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379629));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131379628).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377149));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377150));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377151));
-    this.d = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377152));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131367108));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380638));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131377243));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378974));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378973));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131378972).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376630));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376631));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376632));
+    this.d = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376633));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366945));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379919));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376701));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(a());
     this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper = null;
   }
@@ -315,23 +333,34 @@ public class GameMakeTeamTipBar
         HashMap localHashMap = new HashMap();
         localHashMap.put(Integer.valueOf(4), "18");
         localHashMap.put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.team_id.get());
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get() == null)
+        Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get();
+        if (localObject == null) {
+          localObject = "";
+        } else {
+          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get();
+        }
+        localHashMap.put(Integer.valueOf(6), localObject);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("groupid", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("battletype", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.sub_text.get().replace("|", "-"));
+        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get()))
         {
-          String str1 = "";
-          localHashMap.put(Integer.valueOf(6), str1);
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("groupid", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-          localJSONObject.put("battletype", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.sub_text.get().replace("|", "-"));
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get())) {
-            break label391;
-          }
-          str1 = "1";
-          localJSONObject.put("roomtype", str1);
-          localJSONObject.put("roomnum", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.icons.size() + "");
-          localJSONObject.put("disapres", paramInt + "");
-          localJSONObject.put("existtime", l + "");
+          localObject = "1";
+          localJSONObject.put("roomtype", localObject);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.icons.size());
+          ((StringBuilder)localObject).append("");
+          localJSONObject.put("roomnum", ((StringBuilder)localObject).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append("");
+          localJSONObject.put("disapres", ((StringBuilder)localObject).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(l);
+          ((StringBuilder)localObject).append("");
+          localJSONObject.put("existtime", ((StringBuilder)localObject).toString());
           localHashMap.put(Integer.valueOf(27), localJSONObject.toString());
-          GameCenterUtils.a(CmGameUtil.a(), "1006", "207698", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.appid.get(), "100601", "1", "145", localHashMap);
+          GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "1006", "207698", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.appid.get(), "100601", "1", "145", localHashMap);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper = null;
           return;
         }
@@ -341,93 +370,99 @@ public class GameMakeTeamTipBar
         QLog.e("GameMakeTeamTipBar", 1, localThrowable, new Object[0]);
         return;
       }
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo.subscribe_id.get();
-      continue;
-      label391:
-      str2 = "2";
+      String str = "2";
     }
   }
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    if (paramInt == 1000) {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null)
+    if (paramInt == 1000)
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+      if (paramVarArgs != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("GameMakeTeamTipBar", 2, "resumeBlurView called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+        paramVarArgs.a();
+        if (QLog.isColorLevel())
+        {
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append("resumeBlurView called mBlurBgView = ");
+          paramVarArgs.append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+          QLog.d("GameMakeTeamTipBar", 2, paramVarArgs.toString());
         }
       }
     }
-    do
+    else if (paramInt == 1003)
     {
-      do
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+      if (paramVarArgs != null)
       {
-        do
+        paramVarArgs.b();
+        if (QLog.isColorLevel())
         {
-          return;
-          if (paramInt != 1003) {
-            break;
-          }
-        } while (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView == null);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b();
-      } while (!QLog.isColorLevel());
-      QLog.d("GameMakeTeamTipBar", 2, "pauseBlurView called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
-      return;
-    } while (paramInt != 1004);
-    c();
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append("pauseBlurView called mBlurBgView = ");
+          paramVarArgs.append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+          QLog.d("GameMakeTeamTipBar", 2, paramVarArgs.toString());
+        }
+      }
+    }
+    else if (paramInt == 1004)
+    {
+      c();
+    }
   }
   
   public void a(QQGameMakeTeamInfo.TeamInfo paramTeamInfo, SessionInfo paramSessionInfo)
   {
-    for (;;)
+    try
     {
-      try
+      if (!a(paramTeamInfo)) {
+        return;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramTeamInfo.main_text.get());
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramTeamInfo.sub_text.get());
+      this.jdField_a_of_type_JavaLangString = paramTeamInfo.jump_url.get();
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetRoundImageView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      Object localObject = paramTeamInfo.icons.get();
+      int i = ((List)localObject).size();
+      if ((i > 0) && (!TextUtils.isEmpty((CharSequence)((List)localObject).get(0))))
       {
-        if (!a(paramTeamInfo)) {
-          return;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramTeamInfo.main_text.get());
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(paramTeamInfo.sub_text.get());
-        this.jdField_a_of_type_JavaLangString = paramTeamInfo.jump_url.get();
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        this.jdField_b_of_type_ComTencentMobileqqWidgetRoundImageView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-        List localList = paramTeamInfo.icons.get();
-        int i = localList.size();
-        if ((i > 0) && (!TextUtils.isEmpty((CharSequence)localList.get(0))))
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        a((String)((List)localObject).get(0), this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView);
+      }
+      if ((i > 1) && (!TextUtils.isEmpty((CharSequence)((List)localObject).get(1)))) {
+        a((String)((List)localObject).get(1), this.jdField_b_of_type_ComTencentMobileqqWidgetRoundImageView);
+      }
+      if ((i > 2) && (!TextUtils.isEmpty((CharSequence)((List)localObject).get(2))))
+      {
+        a((String)((List)localObject).get(2), this.jdField_c_of_type_ComTencentMobileqqWidgetRoundImageView);
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+        if (i > 3)
         {
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-          a((String)localList.get(0), this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView);
-        }
-        if ((i > 1) && (!TextUtils.isEmpty((CharSequence)localList.get(1)))) {
-          a((String)localList.get(1), this.jdField_b_of_type_ComTencentMobileqqWidgetRoundImageView);
-        }
-        if ((i > 2) && (!TextUtils.isEmpty((CharSequence)localList.get(2))))
-        {
-          a((String)localList.get(2), this.jdField_c_of_type_ComTencentMobileqqWidgetRoundImageView);
-          this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-          if (i > 3)
-          {
-            this.d.setVisibility(0);
-            this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-            this.jdField_c_of_type_AndroidWidgetTextView.setText("+" + (i - 2));
-          }
+          this.d.setVisibility(0);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+          localObject = this.jdField_c_of_type_AndroidWidgetTextView;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("+");
+          localStringBuilder.append(i - 2);
+          ((TextView)localObject).setText(localStringBuilder.toString());
         }
         else
         {
-          paramTeamInfo = new GameMakeTeamTipBar.TeamInfoWrapper(paramTeamInfo, paramSessionInfo);
-          a(paramTeamInfo);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper = paramTeamInfo;
-          return;
+          this.d.setVisibility(4);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
         }
       }
-      catch (Throwable paramTeamInfo)
-      {
-        throw new Exception(paramTeamInfo);
-      }
-      this.d.setVisibility(4);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
+      paramTeamInfo = new GameMakeTeamTipBar.TeamInfoWrapper(paramTeamInfo, paramSessionInfo);
+      a(paramTeamInfo);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper = paramTeamInfo;
+      return;
+    }
+    catch (Throwable paramTeamInfo)
+    {
+      throw new Exception(paramTeamInfo);
     }
   }
   
@@ -451,14 +486,19 @@ public class GameMakeTeamTipBar
     this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGameMakeTeamTipBar$TeamInfoWrapper = null;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372715));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372292));
       this.jdField_a_of_type_Boolean = false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("GameMakeTeamTipBar", 2, "destroyBlurView called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+      ((QQBlurView)localObject).c();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("destroyBlurView called mBlurBgView = ");
+        ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+        QLog.d("GameMakeTeamTipBar", 2, ((StringBuilder)localObject).toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
     }
@@ -466,11 +506,8 @@ public class GameMakeTeamTipBar
   
   public void onClick(View paramView)
   {
-    if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) < 500L) {}
-    for (;;)
+    if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) >= 500L)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       if (!StringUtil.a(this.jdField_a_of_type_JavaLangString))
       {
@@ -481,11 +518,12 @@ public class GameMakeTeamTipBar
         f();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.GameMakeTeamTipBar
  * JD-Core Version:    0.7.0.1
  */

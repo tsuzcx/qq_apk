@@ -27,12 +27,30 @@ public class FontBubble
   
   public String toString()
   {
-    return "FontBubble{viewType=" + this.viewType + ", fontId=" + this.fontId + ", bubbleId=" + this.bubbleId + ", engine=" + this.engine + ", feeType=" + this.feeType + ", name='" + this.name + '\'' + ", msg='" + this.msg + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FontBubble{viewType=");
+    localStringBuilder.append(this.viewType);
+    localStringBuilder.append(", fontId=");
+    localStringBuilder.append(this.fontId);
+    localStringBuilder.append(", bubbleId=");
+    localStringBuilder.append(this.bubbleId);
+    localStringBuilder.append(", engine=");
+    localStringBuilder.append(this.engine);
+    localStringBuilder.append(", feeType=");
+    localStringBuilder.append(this.feeType);
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", msg='");
+    localStringBuilder.append(this.msg);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubble
  * JD-Core Version:    0.7.0.1
  */

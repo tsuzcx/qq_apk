@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio.helper;
 import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.utils.TroopReportor;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class TroopGameGuideHelper$4
@@ -20,7 +20,7 @@ class TroopGameGuideHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopGameGuideHelper.4
  * JD-Core Version:    0.7.0.1
  */

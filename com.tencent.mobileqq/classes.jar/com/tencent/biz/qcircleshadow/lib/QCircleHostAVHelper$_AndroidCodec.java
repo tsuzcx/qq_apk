@@ -1,23 +1,20 @@
 package com.tencent.biz.qcircleshadow.lib;
 
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQQBaseService;
-
 public class QCircleHostAVHelper$_AndroidCodec
 {
   public static int SUPPORT_AVC_DEC()
   {
-    return QCircleServiceImpl.getQQService().SUPPORT_AVC_DEC();
+    return 1;
   }
   
   public static int SUPPORT_AVC_ENC()
   {
-    return QCircleServiceImpl.getQQService().SUPPORT_AVC_ENC();
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostAVHelper._AndroidCodec
  * JD-Core Version:    0.7.0.1
  */

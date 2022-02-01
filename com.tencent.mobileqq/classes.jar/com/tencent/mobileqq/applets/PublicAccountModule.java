@@ -20,57 +20,66 @@ public class PublicAccountModule
   
   public static PublicAccountModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new PublicAccountModule("PublicAccountModule");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new PublicAccountModule("PublicAccountModule");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountModule", 2, new Object[] { "PublicAccountModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PublicAccountModule : ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(paramBundle.toString());
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramInt);
+      QLog.d("PublicAccountModule", 2, new Object[] { localObject, localStringBuilder.toString() });
     }
-    String str;
-    boolean bool;
     if ("ACTION_REPORT_PUBLIC_ACCOUNT_FOLLOW_INFO_IN_WEBVIEW".equalsIgnoreCase(paramString))
     {
       paramInt = paramBundle.getInt("BUNDLE_KEY_REPORT_INFO_SOURCE", -1);
-      str = paramBundle.getString("BUNDLE_KEY_REPORT_INFO_PUIN", "");
-      bool = paramBundle.getBoolean("BUNDLE_KEY_REPORT_INFO_IS_FOLLOW", false);
-      if ((paramInt != -1) && (!TextUtils.isEmpty(str))) {
-        break label161;
+      localObject = paramBundle.getString("BUNDLE_KEY_REPORT_INFO_PUIN", "");
+      boolean bool = paramBundle.getBoolean("BUNDLE_KEY_REPORT_INFO_IS_FOLLOW", false);
+      if ((paramInt != -1) && (!TextUtils.isEmpty((CharSequence)localObject)))
+      {
+        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+          paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        } else {
+          paramString = null;
+        }
+        if (paramString == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PublicAccountModule", 2, "app is null!");
+          }
+          return null;
+        }
+        PublicAccountStateReporter.a(paramString, bool, (String)localObject, paramInt);
+        return null;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountModule", 2, new Object[] { "empty error: source=", Integer.valueOf(paramInt), " uin=", str });
+        QLog.d("PublicAccountModule", 2, new Object[] { "empty error: source=", Integer.valueOf(paramInt), " uin=", localObject });
       }
     }
     return null;
-    label161:
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
-    {
-      if (paramString == null)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("PublicAccountModule", 2, "app is null!");
-        return null;
-      }
-      PublicAccountStateReporter.a(paramString, bool, str, paramInt);
-      return null;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountModule
  * JD-Core Version:    0.7.0.1
  */

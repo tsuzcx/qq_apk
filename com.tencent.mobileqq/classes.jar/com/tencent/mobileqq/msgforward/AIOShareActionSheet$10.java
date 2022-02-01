@@ -21,27 +21,32 @@ class AIOShareActionSheet$10
   
   public void a(FileSaveResult paramFileSaveResult)
   {
-    if ((paramFileSaveResult != null) && (AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet) != null) && (AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet).t())) {
-      switch (paramFileSaveResult.a)
-      {
-      }
-    }
-    for (;;)
+    if ((paramFileSaveResult != null) && (AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet) != null) && (AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet).l()))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.dismiss();
+      int i = paramFileSaveResult.a;
+      if (i != -1)
+      {
+        if (i != 0)
+        {
+          if (i == 3) {
+            FileSaveToastUtils.c(AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet));
+          }
+        }
+        else {
+          FileSaveToastUtils.a(AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet));
+        }
       }
-      if (AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet) != null) {
-        AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet).a(false, null, false);
+      else {
+        FileSaveToastUtils.b(AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet));
       }
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.b();
-      return;
-      FileSaveToastUtils.a(AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet));
-      continue;
-      FileSaveToastUtils.b(AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet));
-      continue;
-      FileSaveToastUtils.c(AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet));
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.isShowing()) {
+      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.dismiss();
+    }
+    if (AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet) != null) {
+      AIOShareActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet).a(false, null, false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.b();
   }
   
   public void a(FileSaveResult paramFileSaveResult, int paramInt)
@@ -67,7 +72,7 @@ class AIOShareActionSheet$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgforward.AIOShareActionSheet.10
  * JD-Core Version:    0.7.0.1
  */

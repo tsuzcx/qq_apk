@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.Advertisement.data;
 
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 import com.tencent.mobileqq.pb.PBStringField;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,7 +8,7 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xf9.submsgtype0xf9.Video;
 public class VideoCoverItem
 {
   public int a;
-  public VideoCoverView a;
+  public Object a;
   public String a;
   public String b;
   
@@ -101,12 +100,19 @@ public class VideoCoverItem
   
   public String toString()
   {
-    return "mVideoSrc " + this.b + " mVideoCoverPic " + this.jdField_a_of_type_JavaLangString + " mVideoIndex " + this.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mVideoSrc ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" mVideoCoverPic ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mVideoIndex ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem
  * JD-Core Version:    0.7.0.1
  */

@@ -49,6 +49,7 @@ final class BlockingOperatorNext$NextIterator<T>
         this.error = localNotification.getThrowable();
         throw Exceptions.propagate(this.error);
       }
+      throw new IllegalStateException("Should not reach here");
     }
     catch (InterruptedException localInterruptedException)
     {
@@ -57,34 +58,37 @@ final class BlockingOperatorNext$NextIterator<T>
       this.error = localInterruptedException;
       throw Exceptions.propagate(this.error);
     }
-    throw new IllegalStateException("Should not reach here");
   }
   
   public boolean hasNext()
   {
-    if (this.error != null) {
-      throw Exceptions.propagate(this.error);
+    Throwable localThrowable = this.error;
+    if (localThrowable == null)
+    {
+      if (!this.hasNext) {
+        return false;
+      }
+      if (!this.isNextConsumed) {
+        return true;
+      }
+      return moveToNext();
     }
-    if (!this.hasNext) {
-      return false;
-    }
-    if (!this.isNextConsumed) {
-      return true;
-    }
-    return moveToNext();
+    throw Exceptions.propagate(localThrowable);
   }
   
   public T next()
   {
-    if (this.error != null) {
-      throw Exceptions.propagate(this.error);
-    }
-    if (hasNext())
+    Throwable localThrowable = this.error;
+    if (localThrowable == null)
     {
-      this.isNextConsumed = true;
-      return this.next;
+      if (hasNext())
+      {
+        this.isNextConsumed = true;
+        return this.next;
+      }
+      throw new NoSuchElementException("No more elements");
     }
-    throw new NoSuchElementException("No more elements");
+    throw Exceptions.propagate(localThrowable);
   }
   
   public void remove()
@@ -94,7 +98,7 @@ final class BlockingOperatorNext$NextIterator<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.BlockingOperatorNext.NextIterator
  * JD-Core Version:    0.7.0.1
  */

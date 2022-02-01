@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.service.message.codec.decoder.msgType0x210;
 
-import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxManager;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxManager;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -28,27 +27,28 @@ public class FilterMsgDecoder
     try
     {
       localMsgBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (TempMsgBoxManager)paramQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX);
+      paramQQAppInterface = (ITempMsgBoxManager)paramQQAppInterface.getRuntimeService(ITempMsgBoxManager.class, "");
       if ((localMsgBody.op.has()) && (localMsgBody.uint64_mute_friend.has()))
       {
         long l = localMsgBody.uint64_mute_friend.get();
         if (localMsgBody.op.get() == 2)
         {
-          paramArrayOfByte.a(String.valueOf(l), paramQQAppInterface);
-          paramArrayOfByte.b(String.valueOf(l));
+          paramQQAppInterface.addToFilterList(String.valueOf(l));
+          paramQQAppInterface.removeFromWhiteList(String.valueOf(l));
         }
         if (localMsgBody.op.get() == 3)
         {
-          paramArrayOfByte.c(String.valueOf(l));
-          paramArrayOfByte.a(String.valueOf(l));
+          paramQQAppInterface.removeFromFilterList(String.valueOf(l));
+          paramQQAppInterface.addToWhiteList(String.valueOf(l));
+          return;
         }
       }
-      return;
     }
     catch (Exception paramQQAppInterface)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("FilterMsgDecoder", 2, "parse error.", paramQQAppInterface);
+      if (QLog.isColorLevel()) {
+        QLog.d("FilterMsgDecoder", 2, "parse error.", paramQQAppInterface);
+      }
     }
   }
   
@@ -59,7 +59,7 @@ public class FilterMsgDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.FilterMsgDecoder
  * JD-Core Version:    0.7.0.1
  */

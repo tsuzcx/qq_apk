@@ -12,80 +12,134 @@ final class ShortVideoSoCompressUtil$1
     String str2 = ShortVideoSoManager.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int i = ShortVideoSoCompressUtil.a().length;
-    int j;
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    int m;
     if ((arrayOfFile != null) && (arrayOfFile.length > i + 3))
     {
-      j = 2147483647;
-      localObject1 = "unknown";
-      int n = arrayOfFile.length;
+      int i1 = arrayOfFile.length;
       int k = 0;
-      i = 0;
-      if (k < n)
+      Object localObject1 = "unknown";
+      int m = 0;
+      int j;
+      for (i = 2147483647; k < i1; i = j)
       {
         localObject2 = arrayOfFile[k];
-        if (localObject2 == null) {}
-        for (;;)
+        int n;
+        if (localObject2 == null)
         {
-          k += 1;
-          break;
+          n = m;
+          localObject2 = localObject1;
+          j = i;
+        }
+        else
+        {
           localObject2 = ((File)localObject2).getName();
-          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!ShortVideoSoCompressUtil.a((String)localObject2)))
+          if (str2.equalsIgnoreCase((String)localObject2))
           {
-            localObject3 = ShortVideoSoManager.a((String)localObject2);
-            m = ((ShortVideoSoManager.CfgParser)localObject3).a();
-            if (m == 0) {
-              break label223;
+            n = m;
+            localObject2 = localObject1;
+            j = i;
+          }
+          else if (ShortVideoSoCompressUtil.a((String)localObject2))
+          {
+            n = m;
+            localObject2 = localObject1;
+            j = i;
+          }
+          else
+          {
+            Object localObject3 = ShortVideoSoManager.a((String)localObject2);
+            j = ((ShortVideoSoManager.CfgParser)localObject3).a();
+            if (j != 0)
+            {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("[executeClearHistorySOLibFile] errorCodec=");
+              ((StringBuilder)localObject3).append(j);
+              ((StringBuilder)localObject3).append("  filename=");
+              ((StringBuilder)localObject3).append((String)localObject2);
+              ShortVideoSoCompressUtil.a(((StringBuilder)localObject3).toString());
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append(str1);
+              ((StringBuilder)localObject3).append((String)localObject2);
+              localObject3 = new File(((StringBuilder)localObject3).toString());
+              n = m;
+              localObject2 = localObject1;
+              j = i;
+              if (((File)localObject3).exists())
+              {
+                n = m;
+                localObject2 = localObject1;
+                j = i;
+                if (((File)localObject3).isFile())
+                {
+                  ((File)localObject3).delete();
+                  n = m;
+                  localObject2 = localObject1;
+                  j = i;
+                }
+              }
             }
-            ShortVideoSoCompressUtil.a("[executeClearHistorySOLibFile] errorCodec=" + m + "  filename=" + (String)localObject2);
-            localObject2 = new File(str1 + (String)localObject2);
-            if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
-              ((File)localObject2).delete();
+            else
+            {
+              localObject3 = ((ShortVideoSoManager.CfgParser)localObject3).b();
+              try
+              {
+                n = Integer.parseInt((String)localObject3);
+                j = i;
+                if (n < i)
+                {
+                  localObject1 = localObject2;
+                  j = n;
+                }
+                n = m + 1;
+                localObject2 = localObject1;
+              }
+              catch (NumberFormatException localNumberFormatException)
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("[executeClearHistorySOLibFile] filename=");
+                localStringBuilder.append((String)localObject2);
+                localStringBuilder.append("  tempVersion=");
+                localStringBuilder.append((String)localObject3);
+                ShortVideoSoCompressUtil.a("ShortVideoSoCompressUtil", localStringBuilder.toString(), localNumberFormatException);
+                j = i;
+                localObject2 = localObject1;
+                n = m;
+              }
             }
           }
         }
-        label223:
-        localObject3 = ((ShortVideoSoManager.CfgParser)localObject3).b();
-      }
-    }
-    label423:
-    for (;;)
-    {
-      try
-      {
-        m = Integer.parseInt((String)localObject3);
-        if (m >= j) {
-          break label423;
-        }
-        j = m;
+        k += 1;
+        m = n;
         localObject1 = localObject2;
-        i += 1;
       }
-      catch (NumberFormatException localNumberFormatException)
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[executeClearHistorySOLibFile] deleteName=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("  validNumLibSo=");
+      ((StringBuilder)localObject2).append(m);
+      ((StringBuilder)localObject2).append(" leastVersion=");
+      ((StringBuilder)localObject2).append(i);
+      ShortVideoSoCompressUtil.a(((StringBuilder)localObject2).toString());
+      if (m >= 3)
       {
-        ShortVideoSoCompressUtil.a("ShortVideoSoCompressUtil", "[executeClearHistorySOLibFile] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
-      }
-      break;
-      ShortVideoSoCompressUtil.a("[executeClearHistorySOLibFile] deleteName=" + (String)localObject1 + "  validNumLibSo=" + i + " leastVersion=" + j);
-      if (i >= 3)
-      {
-        localObject1 = new File(str1 + (String)localObject1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(str1);
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject1 = new File(((StringBuilder)localObject2).toString());
         if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
         {
-          ShortVideoSoCompressUtil.a("[executeClearHistorySOLibFile] deletePath=" + ((File)localObject1).getAbsolutePath());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[executeClearHistorySOLibFile] deletePath=");
+          ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+          ShortVideoSoCompressUtil.a(((StringBuilder)localObject2).toString());
           ((File)localObject1).delete();
         }
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoSoCompressUtil.1
  * JD-Core Version:    0.7.0.1
  */

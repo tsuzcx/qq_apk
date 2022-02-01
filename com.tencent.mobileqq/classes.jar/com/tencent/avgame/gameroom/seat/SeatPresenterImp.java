@@ -3,7 +3,6 @@ package com.tencent.avgame.gameroom.seat;
 import android.app.Activity;
 import android.graphics.RectF;
 import android.os.Handler;
-import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.business.handler.UserInfoHandler;
 import com.tencent.avgame.gamelogic.GameEngine;
 import com.tencent.avgame.gamelogic.data.EngineData;
@@ -15,12 +14,13 @@ import com.tencent.avgame.gameroom.overlay.IOverlayPresenter;
 import com.tencent.avgame.ipc.UserInfo;
 import com.tencent.avgame.session.AVGameUserInfo;
 import com.tencent.avgame.ui.AVGameHandler;
-import com.tencent.avgame.util.AVGameUtils;
+import com.tencent.avgame.util.AVGameUtil;
 import com.tencent.biz.webviewplugin.NewReportPlugin;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.business.BaseAVGameAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.avgameshare.AVGameShareUtil;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,17 +60,20 @@ public class SeatPresenterImp
   
   public List<SeatMemberInfo> a()
   {
-    int i4 = 0;
     ArrayList localArrayList = new ArrayList();
     List localList = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.c();
+    int i4 = 0;
     int i1 = 0;
-    int i2 = 0;
-    int i = 0;
     int k = 0;
-    int j = i4;
+    int i = 0;
+    int j;
     int m;
-    if (i1 < localList.size())
+    for (int i2 = 0;; i2 = j)
     {
+      j = i4;
+      if (i1 >= localList.size()) {
+        break;
+      }
       SeatMemberInfo localSeatMemberInfo = new SeatMemberInfo();
       localSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = ((Player)localList.get(i1));
       localArrayList.add(localSeatMemberInfo);
@@ -83,41 +86,32 @@ public class SeatPresenterImp
         n = k;
         j = i;
       }
-      for (;;)
+      else if (m > i)
       {
-        i1 += 1;
-        i2 = j;
-        i = n;
-        k = i3;
-        break;
-        if (m > i)
+        i3 = k;
+        n = m;
+        j = i;
+      }
+      else
+      {
+        i3 = k;
+        n = i;
+        j = i2;
+        if (m > i2)
         {
-          j = i;
-          n = m;
-          i3 = k;
-        }
-        else
-        {
-          j = i2;
+          j = m;
           n = i;
           i3 = k;
-          if (m > i2)
-          {
-            j = m;
-            n = i;
-            i3 = k;
-          }
         }
       }
+      i1 += 1;
+      k = i3;
+      i = n;
     }
-    if (j < localArrayList.size())
+    while (j < localArrayList.size())
     {
       m = a(((SeatMemberInfo)localArrayList.get(j)).jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin);
-      if (m <= 0) {}
-      for (;;)
-      {
-        j += 1;
-        break;
+      if (m > 0) {
         if (m == k) {
           ((SeatMemberInfo)localArrayList.get(j)).jdField_a_of_type_Int = 1;
         } else if (m == i) {
@@ -126,20 +120,21 @@ public class SeatPresenterImp
           ((SeatMemberInfo)localArrayList.get(j)).jdField_a_of_type_Int = 3;
         }
       }
+      j += 1;
     }
     return localArrayList;
   }
   
   public void a()
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a();
-    AVGameAppInterface localAVGameAppInterface = GameEngine.a().a();
-    String str1 = localAVGameAppInterface.getCurrentAccountUin();
+    QBaseActivity localQBaseActivity = (QBaseActivity)this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a();
+    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().a();
+    String str1 = localBaseAVGameAppInterface.getCurrentAccountUin();
     EngineData localEngineData = GameEngine.a().a();
     long l = localEngineData.a();
     String str2 = localEngineData.a().getNick(str1);
-    AVGameShareUtil.a().a(localAVGameAppInterface, localBaseActivity, l, Long.valueOf(str1).longValue(), str2, localEngineData.d());
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().getString(2131690425));
+    AVGameShareUtil.a().a(localBaseAVGameAppInterface, localQBaseActivity, l, Long.valueOf(str1).longValue(), str2, localEngineData.d());
+    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().getString(2131690349));
   }
   
   public void a(long paramLong, boolean paramBoolean)
@@ -154,13 +149,20 @@ public class SeatPresenterImp
   
   public void a(Player paramPlayer)
   {
-    if ((GameEngine.a().a() == null) || (paramPlayer == null)) {
-      return;
+    if (GameEngine.a().a() != null)
+    {
+      if (paramPlayer == null) {
+        return;
+      }
+      EngineData localEngineData = GameEngine.a().a();
+      Object localObject = GameEngine.a().a().getCurrentAccountUin();
+      GameEngine.a().c(localEngineData.a(), (String)localObject, paramPlayer.uin);
+      paramPlayer = paramPlayer.uin;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(localEngineData.a());
+      ReportController.b(null, "dc00898", "", "", "0X800B02D", "0X800B02D", 0, 0, paramPlayer, ((StringBuilder)localObject).toString(), "", "");
     }
-    EngineData localEngineData = GameEngine.a().a();
-    String str = GameEngine.a().a().getCurrentAccountUin();
-    GameEngine.a().c(localEngineData.a(), str, paramPlayer.uin);
-    ReportController.b(null, "dc00898", "", "", "0X800B02D", "0X800B02D", 0, 0, paramPlayer.uin, "" + localEngineData.a(), "", "");
   }
   
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
@@ -182,16 +184,22 @@ public class SeatPresenterImp
   public boolean a()
   {
     EngineData localEngineData = GameEngine.a().a();
-    if ((AVGameUtils.b() == 2) && (GameEngine.a().e())) {}
-    RoomInfo localRoomInfo;
-    int i;
-    do
-    {
+    int i = AVGameUtil.b();
+    boolean bool2 = false;
+    if ((i == 2) && (GameEngine.a().e())) {
       return false;
-      localRoomInfo = localEngineData.a();
-      i = localEngineData.a();
-    } while ((localRoomInfo.getPlayers().size() >= 8) || (i != 0));
-    return true;
+    }
+    RoomInfo localRoomInfo = localEngineData.a();
+    i = localEngineData.a();
+    boolean bool1 = bool2;
+    if (localRoomInfo.getPlayers().size() < 8)
+    {
+      bool1 = bool2;
+      if (i == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public List<MemberVideoDisplayInfo> b()
@@ -206,32 +214,38 @@ public class SeatPresenterImp
   
   public void b(Player paramPlayer)
   {
-    int i = 1;
-    if ((GameEngine.a().a() == null) || (paramPlayer == null)) {
-      return;
+    if (GameEngine.a().a() != null) {
+      if (paramPlayer == null) {
+        return;
+      }
     }
     for (;;)
     {
       try
       {
         paramPlayer = paramPlayer.uin;
-        Object localObject = new ProfileActivity.AllInOne(paramPlayer, 118);
-        ((ProfileActivity.AllInOne)localObject).h = 999;
-        ((ProfileActivity.AllInOne)localObject).d = 1;
-        ProfileActivity.b(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a(), (ProfileActivity.AllInOne)localObject);
+        Object localObject = new AllInOne(paramPlayer, 118);
+        ((AllInOne)localObject).profileEntryType = 999;
+        ((AllInOne)localObject).chatAbility = 1;
+        ProfileUtils.openProfileCard(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a(), (AllInOne)localObject);
         localObject = UserInfoHandler.b(paramPlayer);
-        if ((localObject != null) && (((UserInfo)localObject).a))
-        {
-          ReportController.b(null, "dc00898", "", "", "0X800B02B", "0X800B02B", i, 0, paramPlayer, "" + GameEngine.a().a().a(), "", "");
-          return;
+        if ((localObject == null) || (!((UserInfo)localObject).a)) {
+          break label139;
         }
+        i = 1;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append(GameEngine.a().a().a());
+        ReportController.b(null, "dc00898", "", "", "0X800B02B", "0X800B02B", i, 0, paramPlayer, ((StringBuilder)localObject).toString(), "", "");
+        return;
       }
       catch (Exception paramPlayer)
       {
         paramPlayer.printStackTrace();
-        return;
       }
-      i = 2;
+      return;
+      label139:
+      int i = 2;
     }
   }
   
@@ -242,20 +256,28 @@ public class SeatPresenterImp
   
   public void c(Player paramPlayer)
   {
-    if ((GameEngine.a().a() == null) || (paramPlayer == null)) {
+    if ((GameEngine.a().a() != null) && (paramPlayer != null))
+    {
+      Object localObject1 = (QBaseActivity)this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a();
+      String str = GameEngine.a().a().getCurrentAccountUin();
+      EngineData localEngineData = GameEngine.a().a();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("roomid=");
+      ((StringBuilder)localObject2).append(localEngineData.a());
+      localObject2 = ((StringBuilder)localObject2).toString();
+      NewReportPlugin.a((QBaseActivity)localObject1, paramPlayer.uin, "", (String)localObject2, str, 25031, null);
+      paramPlayer = paramPlayer.uin;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(localEngineData.a());
+      ReportController.b(null, "dc00898", "", "", "0X800B02C", "0X800B02C", 0, 0, paramPlayer, ((StringBuilder)localObject1).toString(), "", "");
       return;
     }
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a();
-    String str1 = GameEngine.a().a().getCurrentAccountUin();
-    EngineData localEngineData = GameEngine.a().a();
-    String str2 = "roomid=" + localEngineData.a();
-    NewReportPlugin.a(localBaseActivity, paramPlayer.uin, "", str2, str1, 25031, null);
-    ReportController.b(null, "dc00898", "", "", "0X800B02C", "0X800B02C", 0, 0, paramPlayer.uin, "" + localEngineData.a(), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.SeatPresenterImp
  * JD-Core Version:    0.7.0.1
  */

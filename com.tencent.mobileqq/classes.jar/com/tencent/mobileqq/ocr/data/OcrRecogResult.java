@@ -41,22 +41,19 @@ public class OcrRecogResult
     {
       this.language = null;
       this.ocr_languages = null;
-      QLog.e("OcrRecogResult", 1, "OcrRecogResult(Parcel in) e:" + paramParcel.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OcrRecogResult(Parcel in) e:");
+      localStringBuilder.append(paramParcel.getMessage());
+      QLog.e("OcrRecogResult", 1, localStringBuilder.toString());
     }
   }
   
   public static OcrRecogResult find(EntityManager paramEntityManager, String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramEntityManager != null)
-    {
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty(paramString)) {
-        localObject1 = (OcrRecogResult)paramEntityManager.find(OcrRecogResult.class, "filename=?", new String[] { String.valueOf(paramString) });
-      }
+    if ((paramEntityManager != null) && (!TextUtils.isEmpty(paramString))) {
+      return (OcrRecogResult)paramEntityManager.find(OcrRecogResult.class, "filename=?", new String[] { String.valueOf(paramString) });
     }
-    return localObject1;
+    return null;
   }
   
   public static void persistOrReplace(EntityManager paramEntityManager, OcrRecogResult paramOcrRecogResult)
@@ -68,21 +65,14 @@ public class OcrRecogResult
   
   public static boolean remove(EntityManager paramEntityManager, String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramEntityManager != null)
+    if ((paramEntityManager != null) && (!TextUtils.isEmpty(paramString)))
     {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = find(paramEntityManager, paramString);
-        bool1 = bool2;
-        if (paramString != null) {
-          bool1 = paramEntityManager.remove(paramString);
-        }
+      paramString = find(paramEntityManager, paramString);
+      if (paramString != null) {
+        return paramEntityManager.remove(paramString);
       }
     }
-    return bool1;
+    return false;
   }
   
   public static void removeCache(EntityManager paramEntityManager)
@@ -94,7 +84,10 @@ public class OcrRecogResult
       while (localIterator.hasNext()) {
         paramEntityManager.remove((OcrRecogResult)localIterator.next());
       }
-      QLog.d("Q.ocr", 1, "removeCache size:" + localList.size());
+      paramEntityManager = new StringBuilder();
+      paramEntityManager.append("removeCache size:");
+      paramEntityManager.append(localList.size());
+      QLog.d("Q.ocr", 1, paramEntityManager.toString());
     }
   }
   
@@ -111,7 +104,20 @@ public class OcrRecogResult
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("OcrRecogResult ocrContent = ").append(this.ocrContent).append("\n").append("language = ").append(this.language).append("\n").append("ocr_languages = ").append(this.ocr_languages).append("\n").append("filename = ").append(this.filename).append("\n").append("saveTime = ").append(this.saveTime);
+    localStringBuilder.append("OcrRecogResult ocrContent = ");
+    localStringBuilder.append(this.ocrContent);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("language = ");
+    localStringBuilder.append(this.language);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("ocr_languages = ");
+    localStringBuilder.append(this.ocr_languages);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("filename = ");
+    localStringBuilder.append(this.filename);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("saveTime = ");
+    localStringBuilder.append(this.saveTime);
     return localStringBuilder.toString();
   }
   
@@ -128,13 +134,16 @@ public class OcrRecogResult
     }
     catch (Throwable paramParcel)
     {
-      QLog.e("OcrRecogResult", 1, "writeToParcel() e:" + paramParcel.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("writeToParcel() e:");
+      localStringBuilder.append(paramParcel.getMessage());
+      QLog.e("OcrRecogResult", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.data.OcrRecogResult
  * JD-Core Version:    0.7.0.1
  */

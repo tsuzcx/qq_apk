@@ -9,63 +9,69 @@ public class ParseUtil
 {
   public static double a(String paramString, double paramDouble)
   {
-    double d = paramDouble;
     try
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        d = Double.valueOf(paramString.trim()).doubleValue();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        double d = Double.valueOf(paramString.trim()).doubleValue();
+        return d;
       }
-      return d;
     }
     catch (Exception paramString)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        d = paramDouble;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseDouble error message=" + paramString.getMessage());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" parseDouble error message=");
+        localStringBuilder.append(paramString.getMessage());
+        QLog.d("ParseUtil", 2, localStringBuilder.toString());
+      }
     }
     return paramDouble;
   }
   
   public static float a(String paramString, float paramFloat)
   {
-    float f = paramFloat;
     try
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        f = Float.valueOf(paramString.trim()).floatValue();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        float f = Float.valueOf(paramString.trim()).floatValue();
+        return f;
       }
-      return f;
     }
     catch (Exception paramString)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        f = paramFloat;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseFloat error message=" + paramString.getMessage());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" parseFloat error message=");
+        localStringBuilder.append(paramString.getMessage());
+        QLog.d("ParseUtil", 2, localStringBuilder.toString());
+      }
     }
     return paramFloat;
   }
   
   public static int a(String paramString, int paramInt)
   {
-    int i = paramInt;
     try
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        i = Integer.valueOf(paramString.trim()).intValue();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        int i = Integer.valueOf(paramString.trim()).intValue();
+        return i;
       }
-      return i;
     }
     catch (Exception paramString)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        i = paramInt;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseInteger error message=" + paramString.getMessage());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" parseInteger error message=");
+        localStringBuilder.append(paramString.getMessage());
+        QLog.d("ParseUtil", 2, localStringBuilder.toString());
+      }
     }
     return paramInt;
   }
@@ -82,8 +88,12 @@ public class ParseUtil
     }
     catch (Exception paramString1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ParseUtil", 2, " parseColor error message=" + paramString1.getMessage());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" parseColor error message=");
+        localStringBuilder.append(paramString1.getMessage());
+        QLog.d("ParseUtil", 2, localStringBuilder.toString());
       }
     }
     return Color.parseColor(paramString2);
@@ -91,39 +101,46 @@ public class ParseUtil
   
   public static long a(String paramString, long paramLong)
   {
-    long l = paramLong;
     try
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        l = Long.valueOf(paramString.trim()).longValue();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        long l = Long.valueOf(paramString.trim()).longValue();
+        return l;
       }
-      return l;
     }
     catch (Exception paramString)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        l = paramLong;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseLong error message=" + paramString.getMessage());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" parseLong error message=");
+        localStringBuilder.append(paramString.getMessage());
+        QLog.d("ParseUtil", 2, localStringBuilder.toString());
+      }
     }
     return paramLong;
   }
   
   public static String a(JSONObject paramJSONObject, String paramString1, String paramString2)
   {
-    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramString1))) {}
-    do
+    if (paramJSONObject != null)
     {
-      return paramString2;
+      if (TextUtils.isEmpty(paramString1)) {
+        return paramString2;
+      }
       paramJSONObject = paramJSONObject.optString(paramString1);
-    } while (TextUtils.isEmpty(paramJSONObject));
-    return paramJSONObject;
+      if (TextUtils.isEmpty(paramJSONObject)) {
+        return paramString2;
+      }
+      return paramJSONObject;
+    }
+    return paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ParseUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -60,57 +60,61 @@ public class AsyncHttpClient
     {
       ConnManagerParams.setMaxConnectionsPerRoute(localBasicHttpParams, new ConnPerRouteBean(jdField_a_of_type_Int));
       ConnManagerParams.setMaxTotalConnections(localBasicHttpParams, 6);
+    }
+    catch (NoSuchMethodError localNoSuchMethodError1)
+    {
       try
       {
-        label40:
-        HttpConnectionParams.setSoTimeout(localBasicHttpParams, jdField_b_of_type_Int);
-        HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, jdField_b_of_type_Int);
-        HttpConnectionParams.setTcpNoDelay(localBasicHttpParams, true);
-        HttpConnectionParams.setSocketBufferSize(localBasicHttpParams, 8192);
-        HttpProtocolParams.setVersion(localBasicHttpParams, HttpVersion.HTTP_1_1);
-        label73:
-        Object localObject1 = new SchemeRegistry();
-        ((SchemeRegistry)localObject1).register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-        if (Build.VERSION.SDK_INT < 11) {}
         for (;;)
         {
-          try
-          {
-            Object localObject2 = KeyStore.getInstance(KeyStore.getDefaultType());
-            ((KeyStore)localObject2).load(null, null);
-            localObject2 = new CustomSSLSocketFactory((KeyStore)localObject2);
-            ((SSLSocketFactory)localObject2).setHostnameVerifier(new AsyncHttpClient.1(this));
-            ((SchemeRegistry)localObject1).register(new Scheme("https", (SocketFactory)localObject2, 443));
-            localObject1 = new ThreadSafeClientConnManager(localBasicHttpParams, (SchemeRegistry)localObject1);
-            this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext = new SyncBasicHttpContext(new BasicHttpContext());
-            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient = new DefaultHttpClient((ClientConnectionManager)localObject1, localBasicHttpParams);
-            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addRequestInterceptor(new AsyncHttpClient.2(this));
-            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addResponseInterceptor(new AsyncHttpClient.3(this));
-            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.setHttpRequestRetryHandler(new RetryHandler(3));
-            this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = ((ThreadPoolExecutor)Executors.newCachedThreadPool());
-            this.jdField_a_of_type_JavaUtilMap = new WeakHashMap();
-            this.jdField_b_of_type_JavaUtilMap = new HashMap();
-            return;
-          }
-          catch (Exception localException)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("Translator", 2, "accept all ssl factory error" + localException);
+          HttpConnectionParams.setSoTimeout(localBasicHttpParams, jdField_b_of_type_Int);
+          HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, jdField_b_of_type_Int);
+          HttpConnectionParams.setTcpNoDelay(localBasicHttpParams, true);
+          HttpConnectionParams.setSocketBufferSize(localBasicHttpParams, 8192);
+          HttpProtocolParams.setVersion(localBasicHttpParams, HttpVersion.HTTP_1_1);
+          label73:
+          Object localObject1 = new SchemeRegistry();
+          ((SchemeRegistry)localObject1).register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+          if (Build.VERSION.SDK_INT < 11) {
+            try
+            {
+              Object localObject2 = KeyStore.getInstance(KeyStore.getDefaultType());
+              ((KeyStore)localObject2).load(null, null);
+              localObject2 = new CustomSSLSocketFactory((KeyStore)localObject2);
+              ((SSLSocketFactory)localObject2).setHostnameVerifier(new AsyncHttpClient.1(this));
+              ((SchemeRegistry)localObject1).register(new Scheme("https", (SocketFactory)localObject2, 443));
             }
+            catch (Exception localException)
+            {
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("accept all ssl factory error");
+                localStringBuilder.append(localException);
+                QLog.e("Translator", 2, localStringBuilder.toString());
+              }
+              ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+            }
+          } else {
             ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
-            continue;
           }
-          ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+          localObject1 = new ThreadSafeClientConnManager(localBasicHttpParams, (SchemeRegistry)localObject1);
+          this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext = new SyncBasicHttpContext(new BasicHttpContext());
+          this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient = new DefaultHttpClient((ClientConnectionManager)localObject1, localBasicHttpParams);
+          this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addRequestInterceptor(new AsyncHttpClient.2(this));
+          this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addResponseInterceptor(new AsyncHttpClient.3(this));
+          this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.setHttpRequestRetryHandler(new RetryHandler(3));
+          this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = ((ThreadPoolExecutor)Executors.newCachedThreadPool());
+          this.jdField_a_of_type_JavaUtilMap = new WeakHashMap();
+          this.jdField_b_of_type_JavaUtilMap = new HashMap();
+          return;
+          localNoSuchMethodError1 = localNoSuchMethodError1;
         }
       }
-      catch (NoSuchMethodError localNoSuchMethodError1)
+      catch (NoSuchMethodError localNoSuchMethodError2)
       {
         break label73;
       }
-    }
-    catch (NoSuchMethodError localNoSuchMethodError2)
-    {
-      break label40;
     }
   }
   
@@ -127,15 +131,21 @@ public class AsyncHttpClient
         ((List)localObject).add(new BasicNameValuePair((String)localPair.first, (String)localPair.second));
       }
       paramList = URLEncodedUtils.format((List)localObject, jdField_a_of_type_JavaLangString);
-      if (paramString.indexOf("?") == -1) {
-        localObject = paramString + "?" + paramList;
+      if (paramString.indexOf("?") == -1)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("?");
+        ((StringBuilder)localObject).append(paramList);
+        return ((StringBuilder)localObject).toString();
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("&");
+      ((StringBuilder)localObject).append(paramList);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    else
-    {
-      return localObject;
-    }
-    return paramString + "&" + paramList;
+    return localObject;
   }
   
   public void a(Context paramContext, String paramString, Header[] paramArrayOfHeader, List<Pair<String, String>> paramList, AsyncHttpResponseHandler paramAsyncHttpResponseHandler)
@@ -150,10 +160,10 @@ public class AsyncHttpClient
   public void a(Context paramContext, String paramString1, Header[] paramArrayOfHeader, HttpEntity paramHttpEntity, String paramString2, AsyncHttpResponseHandler paramAsyncHttpResponseHandler)
   {
     paramString1 = new HttpPost(paramString1);
-    if ((paramHttpEntity != null) && (paramString1 != null)) {
+    if (paramHttpEntity != null) {
       paramString1.setEntity(paramHttpEntity);
     }
-    if ((paramArrayOfHeader != null) && (paramString1 != null)) {
+    if (paramArrayOfHeader != null) {
       paramString1.setHeaders(paramArrayOfHeader);
     }
     a(this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext, paramString1, paramString2, paramAsyncHttpResponseHandler, paramContext);
@@ -171,8 +181,12 @@ public class AsyncHttpClient
         if (localFuture != null)
         {
           localFuture.cancel(paramBoolean);
-          if (QLog.isColorLevel()) {
-            QLog.e("Translator", 2, "[cancel] cancel task" + localFuture.toString());
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[cancel] cancel task");
+            localStringBuilder.append(localFuture.toString());
+            QLog.e("Translator", 2, localStringBuilder.toString());
           }
         }
       }

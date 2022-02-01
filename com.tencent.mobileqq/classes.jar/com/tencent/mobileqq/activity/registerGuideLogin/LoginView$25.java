@@ -22,51 +22,48 @@ class LoginView$25
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject;
-    if (paramCharSequence.length() > 0) {
+    if (paramCharSequence.length() > 0)
+    {
       if (this.a.b != null)
       {
-        localObject = (LoginView.AccountAdapter)this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getAdapter();
-        if ((localObject != null) && (((LoginView.AccountAdapter)localObject).getCount() != 0)) {
-          break label139;
-        }
-        localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-        paramInt1 = (int)(15.0F * LoginView.a(this.a) + 0.5F);
-        if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
+        Object localObject = (LoginView.AccountAdapter)this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getAdapter();
+        if ((localObject != null) && (((LoginView.AccountAdapter)localObject).getCount() != 0))
         {
-          ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-          this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+          paramInt1 = (int)(LoginView.a(this.a) * 40.0F + 0.5F);
+          if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
+          {
+            ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
+            this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          }
+        }
+        else
+        {
+          localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+          paramInt1 = (int)(LoginView.a(this.a) * 15.0F + 0.5F);
+          if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
+          {
+            ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
+            this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          }
         }
         this.a.b.setVisibility(0);
       }
     }
-    for (;;)
+    else if ((this.a.b != null) && (this.a.b.isShown())) {
+      this.a.b.setVisibility(8);
+    }
+    if (paramCharSequence.length() > 4)
     {
-      if (paramCharSequence.length() <= 4) {
-        break label237;
-      }
       this.a.a(paramCharSequence.toString());
       return;
-      label139:
-      localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-      paramInt1 = (int)(40.0F * LoginView.a(this.a) + 0.5F);
-      if (((RelativeLayout.LayoutParams)localObject).rightMargin == paramInt1) {
-        break;
-      }
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-      this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      break;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
-      }
     }
-    label237:
     this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.25
  * JD-Core Version:    0.7.0.1
  */

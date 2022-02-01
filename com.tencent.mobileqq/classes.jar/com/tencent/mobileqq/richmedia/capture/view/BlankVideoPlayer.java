@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
+import com.tencent.mobileqq.activity.aio.Callback;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.transfile.FileMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ import mqq.os.MqqHandler;
 
 public class BlankVideoPlayer
   extends LinearLayout
-  implements FileTransferManager.Callback, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
+  implements Callback, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
 {
   private GuideVideoView.OnCloseListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCloseListener;
   private GuideVideoView.OnCompleteListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener;
@@ -40,12 +40,16 @@ public class BlankVideoPlayer
   
   public void OnDownloadCallback(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlankVideoPlayer", 2, "OnDownloadCallback " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnDownloadCallback ");
+      localStringBuilder.append(paramString);
+      QLog.d("BlankVideoPlayer", 2, localStringBuilder.toString());
     }
   }
   
-  public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
+  public void handleMessage(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
       QLog.d("BlankVideoPlayer", 2, "handleMessage");
@@ -54,15 +58,23 @@ public class BlankVideoPlayer
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener.a();
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener;
+    if (paramTVK_IMediaPlayer != null) {
+      paramTVK_IMediaPlayer.a();
     }
   }
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnErrorListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnErrorListener.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnErrorListener;
+    if (paramTVK_IMediaPlayer != null)
+    {
+      paramString = new StringBuilder();
+      paramString.append("onError sdkError : ");
+      paramString.append(paramInt1);
+      paramString.append("  sdkDetailError : ");
+      paramString.append(paramInt2);
+      paramTVK_IMediaPlayer.a(paramString.toString());
     }
     return false;
   }
@@ -133,7 +145,7 @@ public class BlankVideoPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.BlankVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

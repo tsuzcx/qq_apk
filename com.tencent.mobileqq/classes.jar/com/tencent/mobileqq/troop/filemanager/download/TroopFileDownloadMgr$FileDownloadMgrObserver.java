@@ -14,9 +14,7 @@ public class TroopFileDownloadMgr$FileDownloadMgrObserver
     paramObject = (Object[])paramObject;
     int i = ((Integer)paramObject[0]).intValue();
     paramObject = (Object[])paramObject[1];
-    switch (i)
-    {
-    default: 
+    if (i != 1) {
       return;
     }
     a((Set)paramObject[0]);
@@ -40,7 +38,7 @@ public class TroopFileDownloadMgr$FileDownloadMgrObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver
  * JD-Core Version:    0.7.0.1
  */

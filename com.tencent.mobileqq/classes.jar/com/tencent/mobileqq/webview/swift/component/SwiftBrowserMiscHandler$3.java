@@ -13,22 +13,34 @@ class SwiftBrowserMiscHandler$3
   
   public void run()
   {
-    Object localObject = "";
+    Object localObject1;
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      localObject = new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory() + "/tencent/MobileQQ/ShareScreenShots"));
-      String str = "ShareScreenShot_" + System.currentTimeMillis() + ".jpg";
-      localObject = ScreenShotUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject, str);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory());
+      ((StringBuilder)localObject1).append("/tencent/MobileQQ/ShareScreenShots");
+      localObject1 = new File(VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject1).toString()));
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("ShareScreenShot_");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis());
+      ((StringBuilder)localObject2).append(".jpg");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject1 = ScreenShotUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject1, (String)localObject2);
       this.this$0.a = true;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserMiscHandler$ScreenShotCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserMiscHandler$ScreenShotCallback.a((String)localObject);
+    else
+    {
+      localObject1 = "";
+    }
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserMiscHandler$ScreenShotCallback;
+    if (localObject2 != null) {
+      ((SwiftBrowserMiscHandler.ScreenShotCallback)localObject2).a((String)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler.3
  * JD-Core Version:    0.7.0.1
  */

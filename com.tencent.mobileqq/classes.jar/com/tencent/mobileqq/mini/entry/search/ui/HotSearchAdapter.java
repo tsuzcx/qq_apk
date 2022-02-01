@@ -62,27 +62,30 @@ public class HotSearchAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559518, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559392, paramViewGroup, false);
       paramViewGroup = new HotSearchAdapter.HotSearchViewHolder();
-      paramViewGroup.icon = ((ImageView)paramView.findViewById(2131371600));
-      paramViewGroup.ranking = ((ImageView)paramView.findViewById(2131371602));
-      paramViewGroup.name = ((TextView)paramView.findViewById(2131371604));
-      paramViewGroup.category = ((TextView)paramView.findViewById(2131371605));
+      paramViewGroup.icon = ((ImageView)paramView.findViewById(2131371220));
+      paramViewGroup.ranking = ((ImageView)paramView.findViewById(2131371222));
+      paramViewGroup.name = ((TextView)paramView.findViewById(2131371224));
+      paramViewGroup.category = ((TextView)paramView.findViewById(2131371225));
       paramView.setTag(paramViewGroup);
     }
-    for (;;)
+    else
     {
-      SearchInfo localSearchInfo = (SearchInfo)this.appList.get(paramInt);
-      try
-      {
-        paramViewGroup.update(paramView, localSearchInfo, (Activity)this.mActivityReference.get(), paramInt, this.mRefer);
-        return paramView;
-      }
-      catch (Exception paramViewGroup)
-      {
-        QLog.e("HotSearchAdapter", 1, "getView exception: " + Log.getStackTraceString(paramViewGroup));
-      }
       paramViewGroup = (HotSearchAdapter.HotSearchViewHolder)paramView.getTag();
+    }
+    Object localObject = (SearchInfo)this.appList.get(paramInt);
+    try
+    {
+      paramViewGroup.update(paramView, (SearchInfo)localObject, (Activity)this.mActivityReference.get(), paramInt, this.mRefer);
+      return paramView;
+    }
+    catch (Exception paramViewGroup)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getView exception: ");
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramViewGroup));
+      QLog.e("HotSearchAdapter", 1, ((StringBuilder)localObject).toString());
     }
     return paramView;
   }
@@ -113,7 +116,7 @@ public class HotSearchAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.HotSearchAdapter
  * JD-Core Version:    0.7.0.1
  */

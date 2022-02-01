@@ -11,47 +11,54 @@ final class RemindHelper$1
 {
   public long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt)
   {
-    Object localObject2 = null;
-    if ((paramArrayOfInt.length != 3) || (paramArrayOfWheelView.length != 3)) {
-      return -1L;
-    }
-    String str2;
-    if (AppSetting.d)
+    if ((paramArrayOfInt.length == 3) && (paramArrayOfWheelView.length == 3))
     {
-      str2 = TimeHelper.a(paramArrayOfInt[0]);
-      if ((paramArrayOfInt[1] < 0) || (paramArrayOfInt[1] >= TimeHelper.a.length)) {
-        break label206;
-      }
-    }
-    label206:
-    for (String str1 = TimeHelper.a[paramArrayOfInt[1]];; str1 = null)
-    {
-      Object localObject1 = localObject2;
-      if (paramArrayOfInt[2] >= 0)
+      if (AppSetting.d)
       {
-        localObject1 = localObject2;
-        if (paramArrayOfInt[2] < TimeHelper.b.length) {
-          localObject1 = TimeHelper.b[paramArrayOfInt[2]];
+        String str2 = TimeHelper.a(paramArrayOfInt[0]);
+        int i = paramArrayOfInt[1];
+        StringBuilder localStringBuilder = null;
+        String str1;
+        if ((i >= 0) && (paramArrayOfInt[1] < TimeHelper.a.length)) {
+          str1 = TimeHelper.a[paramArrayOfInt[1]];
+        } else {
+          str1 = null;
         }
-      }
-      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
-      {
-        str1 = HardCodeUtil.a(2131713347) + str2 + str1 + HardCodeUtil.a(2131713345) + (String)localObject1 + HardCodeUtil.a(2131713346);
-        int j = paramArrayOfWheelView.length;
-        int i = 0;
-        while (i < j)
+        Object localObject = localStringBuilder;
+        if (paramArrayOfInt[2] >= 0)
         {
-          paramArrayOfWheelView[i].setContentDescription(str1);
-          i += 1;
+          localObject = localStringBuilder;
+          if (paramArrayOfInt[2] < TimeHelper.b.length) {
+            localObject = TimeHelper.b[paramArrayOfInt[2]];
+          }
+        }
+        if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(HardCodeUtil.a(2131713315));
+          localStringBuilder.append(str2);
+          localStringBuilder.append(str1);
+          localStringBuilder.append(HardCodeUtil.a(2131713313));
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(HardCodeUtil.a(2131713314));
+          str1 = localStringBuilder.toString();
+          int j = paramArrayOfWheelView.length;
+          i = 0;
+          while (i < j)
+          {
+            paramArrayOfWheelView[i].setContentDescription(str1);
+            i += 1;
+          }
         }
       }
       return TimeHelper.a(paramArrayOfInt[0], paramArrayOfInt[1], paramArrayOfInt[2]);
     }
+    return -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.remind.RemindHelper.1
  * JD-Core Version:    0.7.0.1
  */

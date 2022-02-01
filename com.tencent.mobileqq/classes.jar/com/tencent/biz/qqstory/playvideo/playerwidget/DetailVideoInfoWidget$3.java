@@ -15,21 +15,17 @@ class DetailVideoInfoWidget$3
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
       PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetDetailVideoInfoWidget.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new DetailVideoInfoWidget.3.1(this));
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.DetailVideoInfoWidget.3
  * JD-Core Version:    0.7.0.1
  */

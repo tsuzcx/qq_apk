@@ -14,12 +14,15 @@ final class MiniTianShuManager$1
   {
     this.val$tianShuGetAdvCallback.onGetAdvs(paramBoolean, paramGetAdsRsp);
     MiniTianShuManager.access$000().remove(this);
-    QLog.i("MiniTianShuManager", 1, "remove callback " + MiniTianShuManager.access$000().size());
+    paramGetAdsRsp = new StringBuilder();
+    paramGetAdsRsp.append("remove callback ");
+    paramGetAdsRsp.append(MiniTianShuManager.access$000().size());
+    QLog.i("MiniTianShuManager", 1, paramGetAdsRsp.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.manager.MiniTianShuManager.1
  * JD-Core Version:    0.7.0.1
  */

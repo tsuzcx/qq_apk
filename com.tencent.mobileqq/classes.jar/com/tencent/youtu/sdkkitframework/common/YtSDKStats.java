@@ -9,7 +9,7 @@ import java.util.Set;
 public class YtSDKStats
   extends YtFSMBaseState
 {
-  private static YtSDKStats ytSDKStats = null;
+  private static YtSDKStats ytSDKStats;
   private String currentAction;
   private long currentEnterTimeStampMS;
   private String currentState;
@@ -33,40 +33,20 @@ public class YtSDKStats
     }
   }
   
-  /* Error */
   public static YtSDKStats getInstance()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 20	com/tencent/youtu/sdkkitframework/common/YtSDKStats:ytSDKStats	Lcom/tencent/youtu/sdkkitframework/common/YtSDKStats;
-    //   6: ifnonnull +22 -> 28
-    //   9: new 2	com/tencent/youtu/sdkkitframework/common/YtSDKStats
-    //   12: dup
-    //   13: invokespecial 33	com/tencent/youtu/sdkkitframework/common/YtSDKStats:<init>	()V
-    //   16: putstatic 20	com/tencent/youtu/sdkkitframework/common/YtSDKStats:ytSDKStats	Lcom/tencent/youtu/sdkkitframework/common/YtSDKStats;
-    //   19: getstatic 20	com/tencent/youtu/sdkkitframework/common/YtSDKStats:ytSDKStats	Lcom/tencent/youtu/sdkkitframework/common/YtSDKStats;
-    //   22: astore_0
-    //   23: ldc 2
-    //   25: monitorexit
-    //   26: aload_0
-    //   27: areturn
-    //   28: getstatic 20	com/tencent/youtu/sdkkitframework/common/YtSDKStats:ytSDKStats	Lcom/tencent/youtu/sdkkitframework/common/YtSDKStats;
-    //   31: astore_0
-    //   32: goto -9 -> 23
-    //   35: astore_0
-    //   36: ldc 2
-    //   38: monitorexit
-    //   39: aload_0
-    //   40: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   22	10	0	localYtSDKStats	YtSDKStats
-    //   35	5	0	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	23	35	finally
-    //   28	32	35	finally
+    try
+    {
+      if (ytSDKStats == null)
+      {
+        ytSDKStats = new YtSDKStats();
+        localYtSDKStats = ytSDKStats;
+        return localYtSDKStats;
+      }
+      YtSDKStats localYtSDKStats = ytSDKStats;
+      return localYtSDKStats;
+    }
+    finally {}
   }
   
   public static String getNowTimeStamp()
@@ -147,7 +127,8 @@ public class YtSDKStats
   
   public void reportInfo(String paramString)
   {
-    if ((this.preInfo == null) || (!this.preInfo.equals(paramString))) {
+    String str = this.preInfo;
+    if ((str == null) || (!str.equals(paramString))) {
       this.preInfo = paramString;
     }
     makeReport(this.currentState, this.currentAction, null, null, paramString);
@@ -169,16 +150,18 @@ public class YtSDKStats
   public void updateState(String paramString)
   {
     this.currentAction = "update";
-    if ((this.preUpdateState == null) || (!this.preUpdateState.equals(this.currentState)))
+    paramString = this.preUpdateState;
+    if ((paramString == null) || (!paramString.equals(this.currentState)))
     {
-      this.preUpdateState = this.currentState;
-      makeReport(this.currentState, this.currentAction, null, null, null);
+      paramString = this.currentState;
+      this.preUpdateState = paramString;
+      makeReport(paramString, this.currentAction, null, null, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtSDKStats
  * JD-Core Version:    0.7.0.1
  */

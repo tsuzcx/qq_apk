@@ -12,52 +12,57 @@ class AITranslator$3
   
   public void a(int paramInt, Header[] paramArrayOfHeader, String paramString)
   {
-    if (paramString.equalsIgnoreCase("1"))
+    boolean bool = paramString.equalsIgnoreCase("1");
+    paramArrayOfHeader = Boolean.valueOf(true);
+    if (bool)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Translator", 2, "[policy update]: GOOGLE");
       }
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(true));
+      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, paramArrayOfHeader);
       AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.GOOGLE, 0L);
       AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.MS, 200000L);
-    }
-    do
-    {
       return;
-      if (paramString.equals("2"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Translator", 2, "[policy update]: MS");
-        }
-        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(true));
-        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.MS, 0L);
-        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.GOOGLE, 200000L);
-        return;
+    }
+    if (paramString.equals("2"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Translator", 2, "[policy update]: MS");
       }
-      if (paramString.equals("0"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Translator", 2, "[policy update]: stop service");
-        }
-        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(false));
-        return;
+      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, paramArrayOfHeader);
+      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.MS, 0L);
+      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.GOOGLE, 200000L);
+      return;
+    }
+    if (paramString.equals("0"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Translator", 2, "[policy update]: stop service");
       }
-      if (paramString.equals("3"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Translator", 2, "[policy update]: decide by Client");
-        }
-        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(true));
-        return;
+      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(false));
+      return;
+    }
+    if (paramString.equals("3"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Translator", 2, "[policy update]: decide by Client");
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("Translator", 2, "[policy update]: Update Failed");
+      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, paramArrayOfHeader);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("Translator", 2, "[policy update]: Update Failed");
+    }
   }
   
   public void a(Throwable paramThrowable, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Translator", 2, "update policy error" + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramThrowable = new StringBuilder();
+      paramThrowable.append("update policy error");
+      paramThrowable.append(paramString);
+      QLog.e("Translator", 2, paramThrowable.toString());
     }
   }
 }

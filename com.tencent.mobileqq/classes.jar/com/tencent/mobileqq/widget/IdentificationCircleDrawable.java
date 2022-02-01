@@ -40,64 +40,52 @@ public class IdentificationCircleDrawable
     this.c.setColor(0);
   }
   
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-    invalidateSelf();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c.setColor(paramInt);
-    invalidateSelf();
-  }
-  
-  public void a(ColorMatrixColorFilter paramColorMatrixColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter = paramColorMatrixColorFilter;
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColorFilter(paramColorMatrixColorFilter);
-    invalidateSelf();
-  }
-  
   public void draw(Canvas paramCanvas)
   {
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     this.jdField_b_of_type_AndroidGraphicsPath.reset();
-    Rect localRect = getBounds();
-    int i = localRect.width();
-    int j = localRect.height();
-    if (this.jdField_a_of_type_Float > Math.min(i, j)) {}
-    do
-    {
+    Object localObject = getBounds();
+    int i = ((Rect)localObject).width();
+    int j = ((Rect)localObject).height();
+    if (this.jdField_a_of_type_Float > Math.min(i, j)) {
       return;
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (j / 2.0F + this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsRectF.top = (j / 2.0F - this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsRectF.left = (i / 2.0F - this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsRectF.right = (i / 2.0F + this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, j / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i, j / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.right, j / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, -180.0F, true);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.left, j / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.close();
-      this.jdField_b_of_type_AndroidGraphicsPath.moveTo(0.0F, j / 2.0F);
-      this.jdField_b_of_type_AndroidGraphicsPath.lineTo(0.0F, j);
-      this.jdField_b_of_type_AndroidGraphicsPath.lineTo(i, j);
-      this.jdField_b_of_type_AndroidGraphicsPath.lineTo(i, j / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.right, j / 2.0F);
-      this.jdField_b_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, 180.0F, true);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.left, j / 2.0F);
-      this.jdField_b_of_type_AndroidGraphicsPath.close();
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.c.getColor() != 0) {
-        paramCanvas.drawCircle(i / 2.0F, j / 2.0F, this.jdField_a_of_type_Float, this.c);
-      }
-    } while (this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter == null);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+    }
+    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    float f1 = j;
+    float f2 = f1 / 2.0F;
+    float f3 = this.jdField_a_of_type_Float;
+    ((RectF)localObject).bottom = (f2 + f3);
+    ((RectF)localObject).top = (f2 - f3);
+    float f4 = i;
+    float f5 = f4 / 2.0F;
+    ((RectF)localObject).left = (f5 - f3);
+    ((RectF)localObject).right = (f3 + f5);
+    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, f2);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, 0.0F);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f4, 0.0F);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f4, f2);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.right, f2);
+    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, -180.0F, true);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.left, f2);
+    this.jdField_a_of_type_AndroidGraphicsPath.close();
+    this.jdField_b_of_type_AndroidGraphicsPath.moveTo(0.0F, f2);
+    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(0.0F, f1);
+    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(f4, f1);
+    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(f4, f2);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.right, f2);
+    this.jdField_b_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, 180.0F, true);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.left, f2);
+    this.jdField_b_of_type_AndroidGraphicsPath.close();
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.c.getColor() != 0) {
+      paramCanvas.drawCircle(f5, f2, this.jdField_a_of_type_Float, this.c);
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter != null)
+    {
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+    }
   }
   
   public int getOpacity()
@@ -111,7 +99,7 @@ public class IdentificationCircleDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.IdentificationCircleDrawable
  * JD-Core Version:    0.7.0.1
  */

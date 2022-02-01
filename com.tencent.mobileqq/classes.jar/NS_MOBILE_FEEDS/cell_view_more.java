@@ -40,21 +40,24 @@ public final class cell_view_more
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.guide_content != null) {
-      paramJceOutputStream.write(this.guide_content, 0);
+    Object localObject = this.guide_content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 1);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
     paramJceOutputStream.write(this.actiontype, 2);
-    if (this.jump_url != null) {
-      paramJceOutputStream.write(this.jump_url, 3);
+    localObject = this.jump_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_view_more
  * JD-Core Version:    0.7.0.1
  */

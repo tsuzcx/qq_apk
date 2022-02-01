@@ -8,39 +8,27 @@ import mqq.observer.BusinessObserver;
 public class QZoneObserver
   implements BusinessObserver
 {
-  public static final int QZONE_GET_ALBUM_LIST_NUM = 1002;
-  public static final int QZONE_GET_BIRTHDAY_DATA = 1009;
-  public static final int QZONE_GET_FEEDLIST_INFO = 1003;
-  public static final int QZONE_GET_GROUP_COUNT = 1006;
-  public static final int QZONE_GET_NESTED_STORY_FEED = 1010;
-  public static final int QZONE_GET_NEWEST_FEED = 1001;
-  public static final int QZONE_GET_PUBLIC_MSG = 1004;
-  public static final int QZONE_GET_PUBLIC_MSG_V2 = 1005;
-  public static final int QZONE_GET_QBOSS_DATA = 1007;
-  public static final int QZONE_GET_UNREAD = 1000;
-  public static final int QZONE_REPORT_QBOSS = 1008;
-  public static final String SQDYMAIC = "sqDyncFeedsJson";
-  public static final String TAG = "UndealCount.QZoneObserver";
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void onGetBirthDayNoticeData(boolean paramBoolean, Bundle paramBundle) {}
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong) {}
   
-  protected void onGetGroupEntrance(boolean paramBoolean, Bundle paramBundle) {}
+  protected void b(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void onGetNewestStoryFeed(boolean paramBoolean, Bundle paramBundle) {}
+  protected void c(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void onGetQZoneAlbumListNum(boolean paramBoolean, Bundle paramBundle) {}
+  protected void d(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void onGetQZoneFeedCountFin(boolean paramBoolean1, boolean paramBoolean2, long paramLong) {}
+  protected void e(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void onGetQZoneNewestFeed(boolean paramBoolean, Bundle paramBundle) {}
+  protected void f(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void onGetQbossData(boolean paramBoolean, Bundle paramBundle) {}
+  protected void g(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void onGetQzoneFeedListInfo(boolean paramBoolean, Bundle paramBundle) {}
+  protected void h(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void onGetQzonePublicMsg(boolean paramBoolean, Bundle paramBundle) {}
+  protected void i(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void onGetQzonePublicMsgV2(boolean paramBoolean, Bundle paramBundle) {}
+  protected void j(boolean paramBoolean, Bundle paramBundle) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
@@ -50,70 +38,80 @@ public class QZoneObserver
       long l = paramBundle.getLong("notify_type", 0L);
       if (QLog.isColorLevel())
       {
-        if ((l >>> 17 & 1L) != 0L) {
-          QLog.d("ZebraAlbum.UndealCount.QZoneObserver", 2, "onReceive QZONE_GET_UNREAD hasNew: " + bool + "type:" + l + "and then call onGetQZoneFeedCountFin");
+        if ((l >>> 17 & 1L) != 0L)
+        {
+          paramBundle = new StringBuilder();
+          paramBundle.append("onReceive QZONE_GET_UNREAD hasNew: ");
+          paramBundle.append(bool);
+          paramBundle.append("type:");
+          paramBundle.append(l);
+          paramBundle.append("and then call onGetQZoneFeedCountFin");
+          QLog.d("ZebraAlbum.UndealCount.QZoneObserver", 2, paramBundle.toString());
         }
-        QLog.d("UndealCount.UndealCount.QZoneObserver", 2, "qzone redtypeinfo:onReceive QZONE_GET_UNREAD hasNew: " + bool + ",type:" + l + " and then call onGetQZoneFeedCountFin");
+        paramBundle = new StringBuilder();
+        paramBundle.append("qzone redtypeinfo:onReceive QZONE_GET_UNREAD hasNew: ");
+        paramBundle.append(bool);
+        paramBundle.append(",type:");
+        paramBundle.append(l);
+        paramBundle.append(" and then call onGetQZoneFeedCountFin");
+        QLog.d("UndealCount.UndealCount.QZoneObserver", 2, paramBundle.toString());
       }
-      onGetQZoneFeedCountFin(paramBoolean, bool, l);
-    }
-    do
-    {
+      a(paramBoolean, bool, l);
       return;
-      if (paramInt == 1001)
-      {
-        ThreadManagerV2.executeOnSubThread(new QZoneObserver.1(this, paramBoolean, paramBundle));
-        return;
-      }
-      if (paramInt == 1002)
-      {
-        onGetQZoneAlbumListNum(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1003)
-      {
-        onGetQzoneFeedListInfo(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1004)
-      {
-        onGetQzonePublicMsg(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1005)
-      {
-        onGetQzonePublicMsgV2(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1006)
-      {
-        onGetGroupEntrance(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1007)
-      {
-        ThreadManagerV2.executeOnSubThread(new QZoneObserver.2(this, paramBoolean, paramBundle));
-        return;
-      }
-      if (paramInt == 1008)
-      {
-        onReportQbossResponse(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1009)
-      {
-        onGetBirthDayNoticeData(paramBoolean, paramBundle);
-        return;
-      }
-    } while (paramInt != 1010);
-    onGetNewestStoryFeed(paramBoolean, paramBundle);
+    }
+    if (paramInt == 1001)
+    {
+      ThreadManagerV2.executeOnSubThread(new QZoneObserver.1(this, paramBoolean, paramBundle));
+      return;
+    }
+    if (paramInt == 1002)
+    {
+      c(paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1003)
+    {
+      d(paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1004)
+    {
+      e(paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1005)
+    {
+      f(paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1006)
+    {
+      g(paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1007)
+    {
+      ThreadManagerV2.executeOnSubThread(new QZoneObserver.2(this, paramBoolean, paramBundle));
+      return;
+    }
+    if (paramInt == 1008)
+    {
+      i(paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1009)
+    {
+      j(paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1010) {
+      a(paramBoolean, paramBundle);
+    }
   }
-  
-  protected void onReportQbossResponse(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.observer.QZoneObserver
  * JD-Core Version:    0.7.0.1
  */

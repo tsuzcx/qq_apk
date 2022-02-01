@@ -14,8 +14,8 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.widget.CustomFastOnClickListener;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.QQBlurView;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class ChatHistorySelectBottomBar
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewView = paramViewGroup;
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560901, null, false);
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560775, null, false);
     Object localObject = paramViewGroup;
     if (!(paramViewGroup instanceof RelativeLayout))
     {
@@ -52,12 +52,12 @@ public class ChatHistorySelectBottomBar
     paramContext = new RelativeLayout.LayoutParams(-2, -2);
     paramContext.addRule(12);
     ((ViewGroup)localObject).addView(this.jdField_b_of_type_AndroidViewView, paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366119));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366118));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366123));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366120));
-    this.e = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366117));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131366114);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366036));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366035));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366040));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366037));
+    this.e = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366034));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131366031);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -75,23 +75,18 @@ public class ChatHistorySelectBottomBar
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramView);
-    for (;;)
+    while (!localArrayList.isEmpty())
     {
-      if (!localArrayList.isEmpty())
+      int i = 0;
+      paramView = (View)localArrayList.remove(0);
+      if ((paramView instanceof ListView))
       {
-        paramView = (View)localArrayList.remove(0);
-        if ((paramView instanceof ListView)) {
-          this.jdField_d_of_type_AndroidViewView = paramView;
-        }
-      }
-      else
-      {
+        this.jdField_d_of_type_AndroidViewView = paramView;
         return;
       }
       if ((paramView instanceof ViewGroup))
       {
         paramView = (ViewGroup)paramView;
-        int i = 0;
         while (i < paramView.getChildCount())
         {
           localArrayList.add(paramView.getChildAt(i));
@@ -103,9 +98,9 @@ public class ChatHistorySelectBottomBar
   
   private boolean a()
   {
-    if (!NetworkUtil.d(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
     {
-      FileManagerUtil.c(this.jdField_a_of_type_AndroidContentContext.getString(2131693237));
+      FileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext.getString(2131693191));
       return false;
     }
     return true;
@@ -113,7 +108,7 @@ public class ChatHistorySelectBottomBar
   
   public int a()
   {
-    return AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    return AIOUtils.b(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   public void a()
@@ -136,24 +131,30 @@ public class ChatHistorySelectBottomBar
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.jdField_b_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return;
+            }
+            this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
+            return;
+          }
+          this.e.setEnabled(paramBoolean);
+          return;
+        }
+        this.jdField_c_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
+        return;
+      }
       this.jdField_d_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
       return;
-    case 3: 
-      this.jdField_c_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
-      return;
-    case 4: 
-      this.e.setEnabled(paramBoolean);
-      return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
+    this.jdField_b_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
   }
   
   public void a(ChatHistorySelectBottomBar.OnActionListener paramOnActionListener)
@@ -163,31 +164,39 @@ public class ChatHistorySelectBottomBar
   
   public void a(List<Integer> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        switch (((Integer)paramList.next()).intValue())
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      int i = ((Integer)paramList.next()).intValue();
+      if (i != 1)
+      {
+        if (i != 2)
         {
-        default: 
-          break;
-        case 1: 
-          this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          break;
-        case 2: 
-          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-          break;
-        case 3: 
-          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-          break;
-        case 4: 
-          this.e.setVisibility(0);
-          break;
-        case 5: 
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i == 5) {
+                this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+              }
+            }
+            else {
+              this.e.setVisibility(0);
+            }
+          }
+          else {
+            this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+          }
         }
+        else {
+          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+      }
+      else {
+        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       }
     }
   }
@@ -204,9 +213,10 @@ public class ChatHistorySelectBottomBar
   public void b()
   {
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null)
+    QQBlurView localQQBlurView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    if (localQQBlurView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
+      localQQBlurView.c();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
     }
   }
@@ -214,9 +224,10 @@ public class ChatHistorySelectBottomBar
   @TargetApi(19)
   protected void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null)
+    QQBlurView localQQBlurView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    if (localQQBlurView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
+      localQQBlurView.c();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
     }
     if (this.jdField_d_of_type_AndroidViewView == null) {
@@ -224,13 +235,14 @@ public class ChatHistorySelectBottomBar
     }
     if (!ThemeUtil.isDefaultOrDIYTheme(false))
     {
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130844402);
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130844308);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_b_of_type_AndroidViewView.findViewById(2131381097));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_b_of_type_AndroidViewView.findViewById(2131380356));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(this.jdField_d_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView);
+    localQQBlurView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    localQQBlurView.b(localQQBlurView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(new ColorDrawable(Color.parseColor("#E5EBEDF5")));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c(-1);
@@ -243,7 +255,7 @@ public class ChatHistorySelectBottomBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.widget.ChatHistorySelectBottomBar
  * JD-Core Version:    0.7.0.1
  */

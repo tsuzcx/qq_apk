@@ -17,7 +17,11 @@ public final class jg$e
       localJSONObject.put("time", this.b);
       return localJSONObject;
     }
-    catch (JSONException localJSONException) {}
+    catch (JSONException localJSONException)
+    {
+      label32:
+      break label32;
+    }
     return null;
   }
   
@@ -35,15 +39,16 @@ public final class jg$e
   
   public final int hashCode()
   {
-    if (this.a == null) {
+    String str = this.a;
+    if (str == null) {
       return super.hashCode();
     }
-    return this.a.hashCode();
+    return str.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.jg.e
  * JD-Core Version:    0.7.0.1
  */

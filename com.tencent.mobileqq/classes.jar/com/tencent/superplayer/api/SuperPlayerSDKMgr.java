@@ -6,9 +6,11 @@ import com.tencent.superplayer.config.ConfigManager;
 import com.tencent.superplayer.datatransport.SPProxyConfig;
 import com.tencent.superplayer.player.SuperPlayerPool;
 import com.tencent.superplayer.report.SPBeaconReporter;
+import com.tencent.superplayer.utils.LogUtil;
 import com.tencent.thumbplayer.api.ITPModuleLoader;
 import com.tencent.thumbplayer.api.TPPlayerMgr;
 import com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative;
+import com.tencent.thumbplayer.datatransport.TPProxyGlobalManager;
 import com.tencent.thumbplayer.tplayer.plugins.report.BeaconAdapter;
 import com.tencent.tmediacodec.TCodecManager;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -95,24 +97,24 @@ public class SuperPlayerSDKMgr
     }
     sSdkOption = paramContext;
     sUid = sSdkOption.uid;
-    if (sSdkOption.deviceId.isEmpty()) {}
-    for (paramContext = BeaconAdapter.getQIMEI();; paramContext = sSdkOption.deviceId)
-    {
-      sDeviceId = paramContext;
-      SPProxyConfig.init(sSdkOption);
-      SPBeaconReporter.init();
-      innerInitTVideoMgr();
-      innerInitTPPlayerMgr();
-      initTMediaCodecComponent();
-      initConfigComponent();
-      return;
+    if (sSdkOption.deviceId.isEmpty()) {
+      paramContext = BeaconAdapter.getQIMEI();
+    } else {
+      paramContext = sSdkOption.deviceId;
     }
+    sDeviceId = paramContext;
+    sSdkOption.loadConfigFromConfigManager();
+    SPProxyConfig.init(sSdkOption);
+    SPBeaconReporter.init();
+    innerInitTVideoMgr();
+    innerInitTPPlayerMgr();
+    initTMediaCodecComponent();
+    initConfigComponent();
   }
   
   private static void initTMediaCodecComponent()
   {
     TCodecManager.getInstance().setGlobalReuseEnable(true);
-    TCodecManager.getInstance().setLogEnable(true);
     TCodecManager.getInstance().setLogLevel(2);
     TCodecManager.getInstance().setLogProxy(new SuperPlayerSDKMgr.1());
   }
@@ -128,7 +130,17 @@ public class SuperPlayerSDKMgr
   
   private static void innerInitTVideoMgr()
   {
-    TVideoMgr.init(sAppContext, getPlatform());
+    try
+    {
+      TVideoMgr.init(sAppContext, getPlatform());
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("innerInitTVideoMgr error, ");
+      localStringBuilder.append(localThrowable.toString());
+      LogUtil.e("SuperPlayerSDKMgr", localStringBuilder.toString());
+    }
     TVideoMgr.setOnLogListener(sInnerLogListener);
   }
   
@@ -152,6 +164,11 @@ public class SuperPlayerSDKMgr
     TPPlayerMgr.setUpcInfo(paramString, paramInt);
   }
   
+  public static void setUpdatePlayerInfoInterval(int paramInt)
+  {
+    TPProxyGlobalManager.getInstance().setUpdatePlayerInfoInterval(paramInt);
+  }
+  
   public static void setsUid(String paramString)
   {
     sUid = paramString;
@@ -159,7 +176,7 @@ public class SuperPlayerSDKMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerSDKMgr
  * JD-Core Version:    0.7.0.1
  */

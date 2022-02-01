@@ -36,279 +36,298 @@ public class cr
   
   public static int a(NetworkInfo.DetailedState paramDetailedState)
   {
-    if (paramDetailedState == null) {}
-    do
-    {
+    if (paramDetailedState == null) {
       return -1;
-      switch (cr.3.hZ[paramDetailedState.ordinal()])
-      {
-      default: 
-        if (paramDetailedState.ordinal() == 10) {
-          return 4;
-        }
+    }
+    switch (cr.3.hZ[paramDetailedState.ordinal()])
+    {
+    default: 
+      if (paramDetailedState.ordinal() != 10) {
         break;
-      case 1: 
-      case 2: 
-      case 3: 
-        return 0;
-      case 4: 
-        return 1;
-      case 5: 
-      case 6: 
-      case 7: 
-      case 8: 
-      case 9: 
-      case 10: 
-        return 4;
       }
-      if (paramDetailedState.ordinal() == 11) {
-        return 0;
-      }
-    } while (paramDetailedState.ordinal() != 12);
-    return 0;
+    case 5: 
+    case 6: 
+    case 7: 
+    case 8: 
+    case 9: 
+    case 10: 
+      return 4;
+    case 4: 
+      return 1;
+    case 1: 
+    case 2: 
+    case 3: 
+      return 0;
+    }
+    if (paramDetailedState.ordinal() == 11) {
+      return 0;
+    }
+    if (paramDetailedState.ordinal() == 12) {
+      return 0;
+    }
+    return -1;
   }
   
   private void a(long paramLong, NetworkInfo.DetailedState paramDetailedState, WifiInfo paramWifiInfo)
   {
     int j = a(paramDetailedState);
     int i = b(paramDetailedState);
-    if (j == 0) {
+    if (j == 0)
+    {
       i = b(paramDetailedState);
     }
-    label401:
-    label403:
-    for (;;)
+    else if (j == 1)
     {
-      n(paramLong + " handleWifiEvent state:" + CurrentSessionItem.o(j));
-      n(paramLong + " handleWifiEvent detailState:" + CurrentSessionItem.a(j, i));
-      CurrentSessionItem localCurrentSessionItem = new CurrentSessionItem();
-      localCurrentSessionItem.ey = cl.b(paramWifiInfo);
-      paramDetailedState = ((bq)ao.c().i(1)).a(paramWifiInfo);
-      if (paramDetailedState != null)
-      {
-        localCurrentSessionItem.eV = paramDetailedState.ab();
-        localCurrentSessionItem.eY = paramDetailedState.ae().i();
-        localCurrentSessionItem.fa = paramDetailedState.ac().am();
-      }
-      for (;;)
-      {
-        localCurrentSessionItem.eW = j;
-        localCurrentSessionItem.eX = i;
-        localCurrentSessionItem.eZ = false;
-        if ((localCurrentSessionItem.eW == 1) && (this.hV.eW == 1) && (this.hV.eX > 4097) && (cb.c(this.hV.ey, localCurrentSessionItem.ey)))
-        {
-          return;
-          if (j == 1)
-          {
-            paramDetailedState = bu.ar();
-            if ((paramDetailedState != null) && (paramDetailedState.isAvailable())) {}
-            for (i = 4097;; i = 4096) {
-              break;
-            }
-          }
-          if (j != 4) {
-            break label403;
-          }
-          i = 8;
-          break;
-          paramDetailedState = bw.as().at();
-          if ((paramWifiInfo != null) && (paramWifiInfo.getNetworkId() != bx.gI)) {
-            paramDetailedState = bw.a(paramWifiInfo.getNetworkId(), paramDetailedState);
-          }
-        }
-        for (;;)
-        {
-          if (paramDetailedState == null) {
-            break label401;
-          }
-          localCurrentSessionItem.eV = cb.d(paramDetailedState);
-          break;
-          if (paramDetailedState != null)
-          {
-            Iterator localIterator = paramDetailedState.iterator();
-            for (;;)
-            {
-              if (localIterator.hasNext())
-              {
-                paramDetailedState = (WifiConfiguration)localIterator.next();
-                if ((paramWifiInfo != null) && (cb.c(paramDetailedState.SSID, paramWifiInfo.getSSID())))
-                {
-                  break;
-                  c(localCurrentSessionItem);
-                  return;
-                }
-              }
-            }
-          }
-          paramDetailedState = null;
-        }
+      paramDetailedState = bu.ar();
+      if ((paramDetailedState != null) && (paramDetailedState.isAvailable())) {
+        i = 4097;
+      } else {
+        i = 4096;
       }
     }
+    else if (j == 4)
+    {
+      i = 8;
+    }
+    paramDetailedState = new StringBuilder();
+    paramDetailedState.append(paramLong);
+    paramDetailedState.append(" handleWifiEvent state:");
+    paramDetailedState.append(CurrentSessionItem.o(j));
+    n(paramDetailedState.toString());
+    paramDetailedState = new StringBuilder();
+    paramDetailedState.append(paramLong);
+    paramDetailedState.append(" handleWifiEvent detailState:");
+    paramDetailedState.append(CurrentSessionItem.a(j, i));
+    n(paramDetailedState.toString());
+    CurrentSessionItem localCurrentSessionItem = new CurrentSessionItem();
+    localCurrentSessionItem.ey = cl.b(paramWifiInfo);
+    paramDetailedState = ((bq)ao.c().i(1)).a(paramWifiInfo);
+    if (paramDetailedState != null)
+    {
+      localCurrentSessionItem.eV = paramDetailedState.ab();
+      localCurrentSessionItem.eY = paramDetailedState.ae().i();
+      localCurrentSessionItem.fa = paramDetailedState.ac().am();
+    }
+    else
+    {
+      Object localObject2 = bw.as().at();
+      Object localObject1 = null;
+      if ((paramWifiInfo != null) && (paramWifiInfo.getNetworkId() != bx.gI))
+      {
+        paramDetailedState = bw.a(paramWifiInfo.getNetworkId(), (List)localObject2);
+      }
+      else
+      {
+        paramDetailedState = localObject1;
+        if (localObject2 != null)
+        {
+          localObject2 = ((List)localObject2).iterator();
+          do
+          {
+            paramDetailedState = localObject1;
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+            paramDetailedState = (WifiConfiguration)((Iterator)localObject2).next();
+          } while ((paramWifiInfo == null) || (!cb.c(paramDetailedState.SSID, paramWifiInfo.getSSID())));
+        }
+      }
+      if (paramDetailedState != null) {
+        localCurrentSessionItem.eV = cb.d(paramDetailedState);
+      }
+    }
+    localCurrentSessionItem.eW = j;
+    localCurrentSessionItem.eX = i;
+    localCurrentSessionItem.eZ = false;
+    if ((localCurrentSessionItem.eW == 1) && (this.hV.eW == 1) && (this.hV.eX > 4097) && (cb.c(this.hV.ey, localCurrentSessionItem.ey))) {
+      return;
+    }
+    c(localCurrentSessionItem);
   }
   
   private void aY()
   {
-    switch (this.hV.eW)
-    {
-    }
-    if (this.hU != null) {
-      this.hU.a(this.hV.l());
+    int i = this.hV.eW;
+    if ((i != 0) && (i != 1)) {}
+    a locala = this.hU;
+    if (locala != null) {
+      locala.a(this.hV.l());
     }
   }
   
   private int b(NetworkInfo.DetailedState paramDetailedState)
   {
-    if (paramDetailedState == null) {}
-    do
-    {
+    if (paramDetailedState == null) {
       return -1;
-      switch (cr.3.hZ[paramDetailedState.ordinal()])
-      {
-      default: 
-        if (paramDetailedState.ordinal() == 10) {
-          return 10;
-        }
-        break;
-      case 1: 
-        return 3;
-      case 2: 
-        return 4;
-      case 5: 
-        return 0;
-      case 6: 
-        return 1;
-      case 3: 
-        return 2;
-      case 4: 
-        return 5;
-      case 7: 
-        return 8;
-      case 8: 
-        return 7;
-      case 9: 
-        return 9;
-      case 10: 
-        return 6;
+    }
+    switch (cr.3.hZ[paramDetailedState.ordinal()])
+    {
+    default: 
+      if (paramDetailedState.ordinal() == 10) {
+        return 10;
       }
-      if (paramDetailedState.ordinal() == 11) {
-        return 12;
-      }
-    } while (paramDetailedState.ordinal() != 12);
-    return 11;
+      break;
+    case 10: 
+      return 6;
+    case 9: 
+      return 9;
+    case 8: 
+      return 7;
+    case 7: 
+      return 8;
+    case 6: 
+      return 1;
+    case 5: 
+      return 0;
+    case 4: 
+      return 5;
+    case 3: 
+      return 2;
+    case 2: 
+      return 4;
+    case 1: 
+      return 3;
+    }
+    if (paramDetailedState.ordinal() == 11) {
+      return 12;
+    }
+    if (paramDetailedState.ordinal() == 12) {
+      return 11;
+    }
+    return -1;
   }
   
   private void n(String paramString) {}
   
   public void a(Intent paramIntent)
   {
-    int i = -1;
     long l = System.currentTimeMillis();
     if (((d)ao.c().i(4)).k())
     {
-      n(l + " handleSupplicantStateChange|wifimanager connecting , ignore");
+      paramIntent = new StringBuilder();
+      paramIntent.append(l);
+      paramIntent.append(" handleSupplicantStateChange|wifimanager connecting , ignore");
+      n(paramIntent.toString());
       return;
     }
-    for (;;)
+    int i = -1;
+    try
     {
-      try
-      {
-        localObject1 = (SupplicantState)paramIntent.getParcelableExtra("newState");
-        localObject1 = paramIntent;
+      localObject1 = (SupplicantState)paramIntent.getParcelableExtra("newState");
+    }
+    catch (Exception paramIntent)
+    {
+      int j;
+      label155:
+      label157:
+      boolean bool;
+      Object localObject2;
+      StringBuilder localStringBuilder;
+      break label155;
+    }
+    try
+    {
+      j = paramIntent.getIntExtra("supplicantError", -1);
+      i = j;
+      paramIntent = new StringBuilder();
+      i = j;
+      paramIntent.append(l);
+      i = j;
+      paramIntent.append(" state: ");
+      i = j;
+      paramIntent.append(((SupplicantState)localObject1).toString());
+      i = j;
+      paramIntent.append(", suplError: ");
+      i = j;
+      paramIntent.append(j);
+      i = j;
+      n(paramIntent.toString());
+      i = j;
+      paramIntent = (Intent)localObject1;
+    }
+    catch (Exception paramIntent)
+    {
+      paramIntent = (Intent)localObject1;
+      break label157;
+    }
+    paramIntent = null;
+    bool = true;
+    if (i == 1)
+    {
+      paramIntent = new CurrentSessionItem();
+      paramIntent.eW = 3;
+      paramIntent.eX = 3;
+      paramIntent.eZ = false;
+      localObject1 = ca.getConnectionInfo();
+      localObject1 = ((bq)ao.c().i(1)).a((WifiInfo)localObject1);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append("handleSupplicantStateChange  ap == null ? ");
+      if (localObject1 == null) {
+        bool = false;
       }
-      catch (Exception paramIntent)
+      ((StringBuilder)localObject2).append(bool);
+      n(((StringBuilder)localObject2).toString());
+      if (localObject1 != null)
       {
-        try
-        {
-          j = paramIntent.getIntExtra("supplicantError", -1);
-          i = j;
-          n(l + " state: " + ((SupplicantState)localObject1).toString() + ", suplError: " + j);
-          if (j != 1) {
-            break;
-          }
-          paramIntent = new CurrentSessionItem();
-          paramIntent.eW = 3;
-          paramIntent.eX = 3;
-          paramIntent.eZ = false;
-          localObject1 = ca.getConnectionInfo();
-          localObject1 = ((bq)ao.c().i(1)).a((WifiInfo)localObject1);
-          localObject2 = new StringBuilder().append(l).append("handleSupplicantStateChange  ap == null ? ");
-          if (localObject1 == null) {
-            break label287;
-          }
-          bool = true;
-          n(bool);
-          if (localObject1 == null) {
-            break label293;
-          }
-          paramIntent.ey = ((bn)localObject1).Z();
-          paramIntent.eV = ((bn)localObject1).ab();
-          paramIntent.fa = ((bn)localObject1).ac().am();
-          if (!cb.l(paramIntent.ey))
-          {
-            paramIntent.eW = 4;
-            paramIntent.eX = 8;
-          }
-          c(paramIntent);
-          return;
-        }
-        catch (Exception paramIntent)
-        {
-          for (;;)
-          {
-            Object localObject1;
-            int j;
-            Object localObject2;
-            boolean bool;
-            paramIntent = (Intent)localObject1;
-          }
-        }
-        paramIntent = paramIntent;
-        i = -1;
-        paramIntent = null;
+        paramIntent.ey = ((bn)localObject1).Z();
+        paramIntent.eV = ((bn)localObject1).ab();
+        paramIntent.fa = ((bn)localObject1).ac().am();
       }
-      j = i;
-      continue;
-      label287:
-      bool = false;
-      continue;
-      label293:
-      paramIntent.ey = this.hV.ey;
-      paramIntent.eV = this.hV.eV;
+      else
+      {
+        paramIntent.ey = this.hV.ey;
+        paramIntent.eV = this.hV.eV;
+      }
+      if (!cb.l(paramIntent.ey))
+      {
+        paramIntent.eW = 4;
+        paramIntent.eX = 8;
+      }
+      c(paramIntent);
+      return;
     }
     localObject2 = ca.getConnectionInfo();
-    paramIntent = bu.ar();
-    n(l + " currentWifiInfo:" + localObject2);
-    if ((paramIntent != null) && (paramIntent.isConnected()) && (paramIntent.getType() == 1))
+    localObject1 = bu.ar();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(l);
+    localStringBuilder.append(" currentWifiInfo:");
+    localStringBuilder.append(localObject2);
+    n(localStringBuilder.toString());
+    if ((localObject1 != null) && (((NetworkInfo)localObject1).isConnected()) && (((NetworkInfo)localObject1).getType() == 1))
     {
-      localObject1 = new CurrentSessionItem();
+      paramIntent = new CurrentSessionItem();
       localObject2 = ((bq)ao.c().i(1)).a((WifiInfo)localObject2);
       if (localObject2 != null)
       {
-        ((CurrentSessionItem)localObject1).ey = ((bn)localObject2).Z();
-        ((CurrentSessionItem)localObject1).eV = ((bn)localObject2).ab();
-        ((CurrentSessionItem)localObject1).eY = ((bn)localObject2).ae().i();
-        ((CurrentSessionItem)localObject1).fa = ((bn)localObject2).ac().am();
-        if (!paramIntent.isAvailable()) {
-          break label500;
-        }
+        paramIntent.ey = ((bn)localObject2).Z();
+        paramIntent.eV = ((bn)localObject2).ab();
+        paramIntent.eY = ((bn)localObject2).ae().i();
+        paramIntent.fa = ((bn)localObject2).ac().am();
       }
-      label500:
-      for (i = 4097;; i = 4096)
+      else
       {
-        ((CurrentSessionItem)localObject1).eX = i;
-        return;
-        ((CurrentSessionItem)localObject1).ey = this.hV.ey;
-        ((CurrentSessionItem)localObject1).eV = this.hV.eV;
-        break;
+        paramIntent.ey = this.hV.ey;
+        paramIntent.eV = this.hV.eV;
       }
+      if (((NetworkInfo)localObject1).isAvailable()) {
+        i = 4097;
+      } else {
+        i = 4096;
+      }
+      paramIntent.eX = i;
+      return;
     }
-    a(l, cl.a((SupplicantState)localObject1, (WifiInfo)localObject2), (WifiInfo)localObject2);
+    a(l, cl.a(paramIntent, (WifiInfo)localObject2), (WifiInfo)localObject2);
   }
   
   public void aW()
   {
     long l = System.currentTimeMillis();
-    n("syncCurrentSession | logIdGroupId=" + l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("syncCurrentSession | logIdGroupId=");
+    localStringBuilder.append(l);
+    n(localStringBuilder.toString());
     bz.av().ax().post(new cr.2(this, l));
   }
   
@@ -317,29 +336,53 @@ public class cr
     long l = System.currentTimeMillis();
     if (((d)ao.c().i(4)).k())
     {
-      n(l + " handleNetworkStateChange|wifimanager connecting , ignore");
+      paramIntent = new StringBuilder();
+      paramIntent.append(l);
+      paramIntent.append(" handleNetworkStateChange|wifimanager connecting , ignore");
+      n(paramIntent.toString());
       return;
     }
-    n(l + " ----------start NETWORK_STATE_CHANGED_ACTION----------");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(" ----------start NETWORK_STATE_CHANGED_ACTION----------");
+    n(((StringBuilder)localObject).toString());
     paramIntent = (NetworkInfo)paramIntent.getParcelableExtra("networkInfo");
-    n(l + " getParcelableExtra NetworkInfo:" + paramIntent);
-    WifiInfo localWifiInfo = ca.getConnectionInfo();
-    n(l + " currentWifiInfo:" + localWifiInfo);
-    a(l, cl.a(paramIntent, localWifiInfo), localWifiInfo);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(" getParcelableExtra NetworkInfo:");
+    ((StringBuilder)localObject).append(paramIntent);
+    n(((StringBuilder)localObject).toString());
+    localObject = ca.getConnectionInfo();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(l);
+    localStringBuilder.append(" currentWifiInfo:");
+    localStringBuilder.append(localObject);
+    n(localStringBuilder.toString());
+    a(l, cl.a(paramIntent, (WifiInfo)localObject), (WifiInfo)localObject);
     int i = cb.gI;
-    if (localWifiInfo != null) {
-      localWifiInfo.getNetworkId();
+    if (localObject != null) {
+      ((WifiInfo)localObject).getNetworkId();
     }
     paramIntent = getActiveNetworkInfo();
-    if (paramIntent != null) {
-      n(l + " activeNetworkInfo:" + paramIntent);
-    }
-    for (;;)
+    if (paramIntent != null)
     {
-      n(l + " ----------finish NETWORK_STATE_CHANGED_ACTION----------");
-      return;
-      n(l + " activeNetworkInfo == null");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append(" activeNetworkInfo:");
+      ((StringBuilder)localObject).append(paramIntent);
+      n(((StringBuilder)localObject).toString());
     }
+    else
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append(l);
+      paramIntent.append(" activeNetworkInfo == null");
+      n(paramIntent.toString());
+    }
+    paramIntent = new StringBuilder();
+    paramIntent.append(l);
+    paramIntent.append(" ----------finish NETWORK_STATE_CHANGED_ACTION----------");
+    n(paramIntent.toString());
   }
   
   public void c(Intent paramIntent)
@@ -347,65 +390,86 @@ public class cr
     long l = System.currentTimeMillis();
     if (((d)ao.c().i(4)).k())
     {
-      n(l + " handleConnectivityChange|wifimanager connecting , ignore");
+      paramIntent = new StringBuilder();
+      paramIntent.append(l);
+      paramIntent.append(" handleConnectivityChange|wifimanager connecting , ignore");
+      n(paramIntent.toString());
       return;
     }
-    n(l + " ----------start CONNECTIVITY_ACTION----------");
-    Object localObject = ca.getConnectionInfo();
-    n(l + " WifiInfo:" + localObject);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(" ----------start CONNECTIVITY_ACTION----------");
+    n(((StringBuilder)localObject).toString());
+    WifiInfo localWifiInfo = ca.getConnectionInfo();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(" WifiInfo:");
+    ((StringBuilder)localObject).append(localWifiInfo);
+    n(((StringBuilder)localObject).toString());
     NetworkInfo localNetworkInfo = (NetworkInfo)paramIntent.getParcelableExtra("networkInfo");
-    n(l + " NetworkInfo getParcelableExtra:" + localNetworkInfo);
-    int j;
-    int i;
-    if ((localNetworkInfo != null) && (localNetworkInfo.getType() == 1))
+    paramIntent = new StringBuilder();
+    paramIntent.append(l);
+    paramIntent.append(" NetworkInfo getParcelableExtra:");
+    paramIntent.append(localNetworkInfo);
+    n(paramIntent.toString());
+    localObject = null;
+    paramIntent = (Intent)localObject;
+    if (localNetworkInfo != null)
     {
-      paramIntent = new CurrentSessionItem();
-      NetworkInfo.DetailedState localDetailedState = cl.a(localNetworkInfo, (WifiInfo)localObject);
-      j = a(localDetailedState);
-      i = b(localDetailedState);
-      if (j == 1)
+      paramIntent = (Intent)localObject;
+      if (localNetworkInfo.getType() == 1)
       {
-        localObject = ((bq)ao.c().i(1)).a((WifiInfo)localObject);
-        if (localObject != null)
+        paramIntent = new CurrentSessionItem();
+        localObject = cl.a(localNetworkInfo, localWifiInfo);
+        int j = a((NetworkInfo.DetailedState)localObject);
+        int i = b((NetworkInfo.DetailedState)localObject);
+        if (j == 1)
         {
-          paramIntent.ey = ((bn)localObject).Z();
-          paramIntent.eV = ((bn)localObject).ab();
-          paramIntent.eY = ((bn)localObject).ae().i();
-          paramIntent.fa = ((bn)localObject).ac().am();
-          if (!localNetworkInfo.isAvailable()) {
-            break label415;
+          localObject = ((bq)ao.c().i(1)).a(localWifiInfo);
+          if (localObject != null)
+          {
+            paramIntent.ey = ((bn)localObject).Z();
+            paramIntent.eV = ((bn)localObject).ab();
+            paramIntent.eY = ((bn)localObject).ae().i();
+            paramIntent.fa = ((bn)localObject).ac().am();
           }
-          i = 4097;
-          label278:
-          n(l + " getParcelableExtra NetworkInfo state:" + CurrentSessionItem.o(j));
-          n(l + " getParcelableExtra NetworkInfo detailState:" + CurrentSessionItem.a(j, i));
-          paramIntent.eW = j;
-          paramIntent.eX = i;
-          paramIntent.eZ = false;
+          else
+          {
+            paramIntent.ey = this.hV.ey;
+            paramIntent.eV = this.hV.eV;
+          }
+          if (localNetworkInfo.isAvailable()) {
+            i = 4097;
+          } else {
+            i = 4096;
+          }
         }
+        else if (j == 4)
+        {
+          paramIntent.ey = this.hV.ey;
+          paramIntent.eV = this.hV.eV;
+          i = 8;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(" getParcelableExtra NetworkInfo state:");
+        ((StringBuilder)localObject).append(CurrentSessionItem.o(j));
+        n(((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(" getParcelableExtra NetworkInfo detailState:");
+        ((StringBuilder)localObject).append(CurrentSessionItem.a(j, i));
+        n(((StringBuilder)localObject).toString());
+        paramIntent.eW = j;
+        paramIntent.eX = i;
+        paramIntent.eZ = false;
       }
     }
-    for (;;)
-    {
-      c(paramIntent);
-      n(l + " ----------finish CONNECTIVITY_ACTION----------");
-      return;
-      paramIntent.ey = this.hV.ey;
-      paramIntent.eV = this.hV.eV;
-      break;
-      label415:
-      i = 4096;
-      break label278;
-      if (j == 4)
-      {
-        paramIntent.ey = this.hV.ey;
-        paramIntent.eV = this.hV.eV;
-        i = 8;
-        break label278;
-      }
-      break label278;
-      paramIntent = null;
-    }
+    c(paramIntent);
+    paramIntent = new StringBuilder();
+    paramIntent.append(l);
+    paramIntent.append(" ----------finish CONNECTIVITY_ACTION----------");
+    n(paramIntent.toString());
   }
   
   public void c(a parama)
@@ -443,7 +507,11 @@ public class cr
       NetworkInfo localNetworkInfo = this.hT.getActiveNetworkInfo();
       return localNetworkInfo;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
   
@@ -459,7 +527,7 @@ public class cr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.cr
  * JD-Core Version:    0.7.0.1
  */

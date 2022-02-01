@@ -19,15 +19,16 @@ public class QIPCServerModulePlugin
   
   public static QIPCServerModulePlugin getInstance()
   {
-    if (sPluginServer == null) {}
-    try
-    {
-      if (sPluginServer == null) {
-        sPluginServer = new QIPCServerModulePlugin();
+    if (sPluginServer == null) {
+      try
+      {
+        if (sPluginServer == null) {
+          sPluginServer = new QIPCServerModulePlugin();
+        }
       }
-      return sPluginServer;
+      finally {}
     }
-    finally {}
+    return sPluginServer;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -43,7 +44,7 @@ public class QIPCServerModulePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.QIPCServerModulePlugin
  * JD-Core Version:    0.7.0.1
  */

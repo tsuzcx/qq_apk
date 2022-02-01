@@ -27,15 +27,14 @@ public class LightSurface
     {
       l1 = l2;
       if (paramEGLContext != EGL14.EGL_NO_CONTEXT) {
-        if (Build.VERSION.SDK_INT < 21) {
-          break label45;
+        if (Build.VERSION.SDK_INT >= 21) {
+          l1 = paramEGLContext.getNativeHandle();
+        } else {
+          l1 = paramEGLContext.getHandle();
         }
       }
     }
-    label45:
-    for (l1 = paramEGLContext.getNativeHandle();; l1 = paramEGLContext.getHandle()) {
-      return MakeFromSurface(paramSurface, l1);
-    }
+    return MakeFromSurface(paramSurface, l1);
   }
   
   public static LightSurface FromSurfaceTexture(SurfaceTexture paramSurfaceTexture)
@@ -83,7 +82,7 @@ public class LightSurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.LightSurface
  * JD-Core Version:    0.7.0.1
  */

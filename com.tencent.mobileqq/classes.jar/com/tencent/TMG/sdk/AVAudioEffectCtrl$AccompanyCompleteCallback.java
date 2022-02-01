@@ -8,7 +8,10 @@ public class AVAudioEffectCtrl$AccompanyCompleteCallback
   
   protected void onComplete(int paramInt, String paramString)
   {
-    Log.d("SdkJni", "AccompanyCompleteCallback.OnComplete. result = " + paramInt);
+    paramString = new StringBuilder();
+    paramString.append("AccompanyCompleteCallback.OnComplete. result = ");
+    paramString.append(paramInt);
+    Log.d("SdkJni", paramString.toString());
   }
 }
 

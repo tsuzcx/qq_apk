@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class RequestBindMobileV2
   extends JceStruct
 {
-  static byte[] cache_encrptBindMobileInfo;
-  static int cache_type = 0;
+  static byte[] cache_encrptBindMobileInfo = (byte[])new byte[1];
+  static int cache_type;
   public byte[] encrptBindMobileInfo = null;
   public boolean isChangeBind = false;
   public boolean isFromChangeBind = false;
@@ -21,7 +21,6 @@ public final class RequestBindMobileV2
   
   static
   {
-    cache_encrptBindMobileInfo = (byte[])new byte[1];
     ((byte[])cache_encrptBindMobileInfo)[0] = 0;
   }
   
@@ -63,14 +62,15 @@ public final class RequestBindMobileV2
     paramJceOutputStream.write(this.isFromChangeBind, 5);
     paramJceOutputStream.write(this.isChangeBind, 6);
     paramJceOutputStream.write(this.isSecNewReq, 7);
-    if (this.encrptBindMobileInfo != null) {
-      paramJceOutputStream.write(this.encrptBindMobileInfo, 8);
+    byte[] arrayOfByte = this.encrptBindMobileInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestBindMobileV2
  * JD-Core Version:    0.7.0.1
  */

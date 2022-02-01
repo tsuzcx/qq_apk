@@ -48,10 +48,11 @@ public class MultilScreenlLayout
   
   private int a()
   {
-    if (this.f == 0) {
+    int n = this.f;
+    if (n == 0) {
       return getWidth();
     }
-    return this.f + this.g;
+    return n + this.g;
   }
   
   private void b()
@@ -70,32 +71,37 @@ public class MultilScreenlLayout
   
   public void a(int paramInt)
   {
-    int n = 300;
-    if (QLog.isColorLevel()) {
-      QLog.d("MutilScreenlLayout", 2, "snapToScreen before change whichScreen:" + paramInt);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("snapToScreen before change whichScreen:");
+      localStringBuilder.append(paramInt);
+      QLog.d("MutilScreenlLayout", 2, localStringBuilder.toString());
     }
-    int i1 = Math.max(0, Math.min(paramInt, super.getChildCount() - 1));
-    paramInt = a() * i1;
-    if (QLog.isColorLevel()) {
-      QLog.d("MutilScreenlLayout", 2, "snapToScreen dest:" + paramInt + " getScrollX():" + getScrollX() + " afterchange whichScreen:" + i1);
+    int n = Math.max(0, Math.min(paramInt, super.getChildCount() - 1));
+    paramInt = a() * n;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("snapToScreen dest:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" getScrollX():");
+      localStringBuilder.append(getScrollX());
+      localStringBuilder.append(" afterchange whichScreen:");
+      localStringBuilder.append(n);
+      QLog.d("MutilScreenlLayout", 2, localStringBuilder.toString());
     }
-    int i2;
     if (getScrollX() != paramInt)
     {
-      i2 = paramInt - getScrollX();
-      paramInt = Math.abs(i2) / 2;
-      if (paramInt >= 300) {
-        break label168;
+      int i1 = paramInt - getScrollX();
+      paramInt = Math.abs(i1) / 2;
+      if (paramInt < 300) {
+        paramInt = 300;
       }
-      paramInt = n;
-    }
-    label168:
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(getScrollX(), 0, i2, 0, paramInt);
-      this.jdField_a_of_type_Int = i1;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(getScrollX(), 0, i1, 0, paramInt);
+      this.jdField_a_of_type_Int = n;
       invalidate();
-      return;
     }
   }
   
@@ -116,52 +122,58 @@ public class MultilScreenlLayout
     }
     float f1 = paramMotionEvent.getX();
     paramMotionEvent.getY();
-    switch (n)
+    boolean bool2 = false;
+    if (n != 0)
     {
-    default: 
-      label60:
-      if (QLog.isColorLevel())
-      {
-        paramMotionEvent = new StringBuilder().append("onInterceptTouchEvent mTouchState != TOUCH_STATE_REST ");
-        if (this.d == 0) {
-          break label176;
+      if (n != 1) {
+        if (n != 2)
+        {
+          if (n != 3) {
+            break label105;
+          }
+        }
+        else
+        {
+          if ((int)Math.abs(this.jdField_a_of_type_Float - f1) <= this.e) {
+            break label105;
+          }
+          this.d = 1;
+          break label105;
         }
       }
-      break;
-    }
-    label176:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("MutilScreenlLayout", 2, bool);
-      if (this.d != 0) {
-        break;
-      }
-      return false;
-      if ((int)Math.abs(this.jdField_a_of_type_Float - f1) <= this.e) {
-        break label60;
-      }
-      this.d = 1;
-      break label60;
-      this.jdField_a_of_type_Float = f1;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a()) {}
-      for (n = 0;; n = 1)
-      {
-        this.d = n;
-        break;
-      }
       this.d = 0;
-      break label60;
     }
+    else
+    {
+      this.jdField_a_of_type_Float = f1;
+      this.d = (this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a() ^ true);
+    }
+    label105:
+    if (QLog.isColorLevel())
+    {
+      paramMotionEvent = new StringBuilder();
+      paramMotionEvent.append("onInterceptTouchEvent mTouchState != TOUCH_STATE_REST ");
+      if (this.d != 0) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      paramMotionEvent.append(bool1);
+      QLog.d("MutilScreenlLayout", 2, paramMotionEvent.toString());
+    }
+    boolean bool1 = bool2;
+    if (this.d != 0) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (this.k == 1)
     {
-      paramInt1 = this.h;
-      paramInt2 = this.g;
+      paramInt2 = this.h + this.g;
       paramInt4 = super.getChildCount();
-      paramInt2 += paramInt1;
       paramInt1 = 0;
       while (paramInt1 < paramInt4)
       {
@@ -170,7 +182,8 @@ public class MultilScreenlLayout
         if (localView.getVisibility() != 8)
         {
           paramInt3 = a();
-          localView.layout(paramInt2, this.m, this.f + paramInt2, this.m + this.l);
+          int n = this.m;
+          localView.layout(paramInt2, n, this.f + paramInt2, this.l + n);
           paramInt3 = paramInt2 + paramInt3;
         }
         paramInt1 += 1;
@@ -184,7 +197,6 @@ public class MultilScreenlLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i1 = 0;
     if (this.k == 0) {
       return true;
     }
@@ -195,135 +207,164 @@ public class MultilScreenlLayout
     int n = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    switch (n)
+    int i2 = 0;
+    int i1 = 0;
+    if (n != 0)
     {
-    default: 
-    case 0: 
-    case 2: 
-    case 1: 
-      for (;;)
+      int i3;
+      if (n != 1)
       {
-        label84:
-        if (QLog.isColorLevel())
+        if (n != 2)
         {
-          QLog.d("MutilScreenlLayout", 2, "onTouchEvent ");
-          return true;
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a()) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a();
+          if (n == 3) {
+            this.d = 0;
           }
-          this.jdField_a_of_type_Float = f1;
-          this.jdField_c_of_type_Float = f1;
-          this.jdField_b_of_type_Float = f2;
-          this.jdField_a_of_type_Boolean = false;
-          continue;
+        }
+        else
+        {
           i1 = (int)(this.jdField_a_of_type_Float - f1);
           this.jdField_a_of_type_Float = f1;
-          int i2 = super.getScrollX();
+          i2 = super.getScrollX();
           n = i1;
           if (i2 + i1 <= 0) {
             n = -i2;
           }
+          i3 = this.j;
           i1 = n;
-          if (i2 + n >= this.j) {
-            i1 = this.j - i2;
+          if (i2 + n >= i3) {
+            i1 = i3 - i2;
           }
           if (i1 != 0) {
             scrollBy(i1, 0);
           }
-          if (Math.hypot(Math.abs(this.jdField_c_of_type_Float - f1), Math.abs(this.jdField_b_of_type_Float - f2)) > this.e)
-          {
+          if (Math.hypot(Math.abs(this.jdField_c_of_type_Float - f1), Math.abs(this.jdField_b_of_type_Float - f2)) > this.e) {
             this.jdField_a_of_type_Boolean = true;
-            continue;
-            paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
-            paramMotionEvent.computeCurrentVelocity(1000);
-            n = (int)paramMotionEvent.getXVelocity();
-            if ((n > this.jdField_c_of_type_Int) && (this.jdField_a_of_type_Int > 0))
+          }
+        }
+      }
+      else
+      {
+        paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
+        paramMotionEvent.computeCurrentVelocity(1000);
+        n = (int)paramMotionEvent.getXVelocity();
+        if ((n > this.jdField_c_of_type_Int) && (this.jdField_a_of_type_Int > 0))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramMotionEvent = new StringBuilder();
+            paramMotionEvent.append("onTouchEvent velocityX > mMinVelocity mCurScreen:");
+            paramMotionEvent.append(this.jdField_a_of_type_Int);
+            paramMotionEvent.append(" velocityX:");
+            paramMotionEvent.append(n);
+            QLog.d("MutilScreenlLayout", 2, paramMotionEvent.toString());
+          }
+          a(this.jdField_a_of_type_Int - 1);
+        }
+        else if ((n < -this.jdField_c_of_type_Int) && (this.jdField_a_of_type_Int < super.getChildCount() - 1))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramMotionEvent = new StringBuilder();
+            paramMotionEvent.append("onTouchEvent velocityX < -mMinVelocity mCurScreen:");
+            paramMotionEvent.append(this.jdField_a_of_type_Int);
+            paramMotionEvent.append(" velocityX:");
+            paramMotionEvent.append(n);
+            QLog.d("MutilScreenlLayout", 2, paramMotionEvent.toString());
+          }
+          a(this.jdField_a_of_type_Int + 1);
+        }
+        else
+        {
+          a();
+          if (QLog.isColorLevel())
+          {
+            paramMotionEvent = new StringBuilder();
+            paramMotionEvent.append("onTouchEvent velocityX:");
+            paramMotionEvent.append(n);
+            QLog.d("MutilScreenlLayout", 2, paramMotionEvent.toString());
+          }
+        }
+        paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
+        if (paramMotionEvent != null)
+        {
+          paramMotionEvent.recycle();
+          this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+        }
+        this.d = 0;
+        if (Math.hypot(Math.abs(this.jdField_c_of_type_Float - f1), Math.abs(this.jdField_b_of_type_Float - f2)) > this.e) {
+          this.jdField_a_of_type_Boolean = true;
+        }
+        if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultilScreenlLayout$OnClickScrollLayoutListener != null))
+        {
+          i3 = super.getChildCount();
+          int i4 = this.jdField_a_of_type_Int;
+          n = i2;
+          if (i4 >= 0)
+          {
+            n = i2;
+            if (i4 < i3)
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("MutilScreenlLayout", 2, "onTouchEvent velocityX > mMinVelocity mCurScreen:" + this.jdField_a_of_type_Int + " velocityX:" + n);
-              }
-              a(this.jdField_a_of_type_Int - 1);
-              label343:
-              if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
-              {
-                this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-                this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-              }
-              this.d = 0;
-              if (Math.hypot(Math.abs(this.jdField_c_of_type_Float - f1), Math.abs(this.jdField_b_of_type_Float - f2)) > this.e) {
-                this.jdField_a_of_type_Boolean = true;
-              }
-              if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultilScreenlLayout$OnClickScrollLayoutListener == null)) {
-                continue;
-              }
-              i2 = super.getChildCount();
+              paramMotionEvent = super.getChildAt(i4);
+              i2 = paramMotionEvent.getLeft() - super.getScrollX();
               n = i1;
-              if (this.jdField_a_of_type_Int >= 0)
+              if (f1 < i2)
               {
                 n = i1;
-                if (this.jdField_a_of_type_Int < i2)
+                if (f1 > i2 - this.g) {
+                  n = 1;
+                }
+              }
+              i2 = paramMotionEvent.getRight() - super.getScrollX();
+              i1 = n;
+              if (n == 0)
+              {
+                i1 = n;
+                if (f1 > i2)
                 {
-                  paramMotionEvent = super.getChildAt(this.jdField_a_of_type_Int);
-                  n = paramMotionEvent.getLeft() - super.getScrollX();
-                  if ((f1 >= n) || (f1 <= n - this.g)) {
-                    break label755;
+                  i1 = n;
+                  if (f1 < i2 + this.g) {
+                    i1 = 1;
                   }
+                }
+              }
+              i2 = i1;
+              if (i1 == 0)
+              {
+                i2 = i1;
+                if (f1 < this.h - super.getScrollX()) {
+                  i2 = 1;
+                }
+              }
+              n = i2;
+              if (i2 == 0)
+              {
+                n = i2;
+                if (f1 > this.j + super.getWidth() - super.getScrollX() - this.h) {
+                  n = 1;
                 }
               }
             }
           }
+          if (n != 0) {
+            this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultilScreenlLayout$OnClickScrollLayoutListener.a(f1, f2);
+          }
         }
       }
     }
-    label755:
-    for (n = 1;; n = 0)
+    else
     {
-      i1 = paramMotionEvent.getRight() - super.getScrollX();
-      if ((n == 0) && (f1 > i1) && (f1 < i1 + this.g)) {
-        n = 1;
+      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a()) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a();
       }
-      for (;;)
-      {
-        i1 = n;
-        if (n == 0)
-        {
-          i1 = n;
-          if (f1 < this.h - super.getScrollX()) {
-            i1 = 1;
-          }
-        }
-        n = i1;
-        if (i1 == 0)
-        {
-          n = i1;
-          if (f1 > this.j + super.getWidth() - super.getScrollX() - this.h) {
-            n = 1;
-          }
-        }
-        if (n == 0) {
-          break label84;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultilScreenlLayout$OnClickScrollLayoutListener.a(f1, f2);
-        break label84;
-        if ((n < -this.jdField_c_of_type_Int) && (this.jdField_a_of_type_Int < super.getChildCount() - 1))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MutilScreenlLayout", 2, "onTouchEvent velocityX < -mMinVelocity mCurScreen:" + this.jdField_a_of_type_Int + " velocityX:" + n);
-          }
-          a(this.jdField_a_of_type_Int + 1);
-          break label343;
-        }
-        a();
-        if (!QLog.isColorLevel()) {
-          break label343;
-        }
-        QLog.d("MutilScreenlLayout", 2, "onTouchEvent velocityX:" + n);
-        break label343;
-        this.d = 0;
-        break label84;
-        break;
-      }
+      this.jdField_a_of_type_Float = f1;
+      this.jdField_c_of_type_Float = f1;
+      this.jdField_b_of_type_Float = f2;
+      this.jdField_a_of_type_Boolean = false;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("MutilScreenlLayout", 2, "onTouchEvent ");
+    }
+    return true;
   }
   
   public void setClickLayoutListener(MultilScreenlLayout.OnClickScrollLayoutListener paramOnClickScrollLayoutListener)
@@ -334,7 +375,7 @@ public class MultilScreenlLayout
   public void setCurrentFrame(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    super.scrollTo(a() * paramInt, 0);
+    super.scrollTo(paramInt * a(), 0);
   }
   
   public void setFrameWidth(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
@@ -358,7 +399,7 @@ public class MultilScreenlLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.MultilScreenlLayout
  * JD-Core Version:    0.7.0.1
  */

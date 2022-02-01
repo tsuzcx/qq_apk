@@ -36,8 +36,12 @@ public class StubJobContext
   void setCanceled(boolean paramBoolean)
   {
     this.mCanceled = paramBoolean;
-    if ((paramBoolean) && (this.mCancelListener != null)) {
-      this.mCancelListener.onCancel();
+    if (paramBoolean)
+    {
+      JobContext.CancelListener localCancelListener = this.mCancelListener;
+      if (localCancelListener != null) {
+        localCancelListener.onCancel();
+      }
     }
   }
   
@@ -53,7 +57,7 @@ public class StubJobContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.StubJobContext
  * JD-Core Version:    0.7.0.1
  */

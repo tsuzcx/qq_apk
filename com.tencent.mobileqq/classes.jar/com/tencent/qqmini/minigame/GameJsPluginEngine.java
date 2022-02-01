@@ -95,40 +95,34 @@ public final class GameJsPluginEngine
     Intrinsics.checkParameterIsNotNull(paramArgument, "arguments");
     cacheCommonJsService(paramArgument);
     Object localObject;
-    PluginLogger localPluginLogger;
-    ScriptContextType localScriptContextType;
-    String str;
-    int i;
     if (this.innerAudio.support(paramString))
     {
       localObject = this.innerAudio.onCall(paramString, paramArgument);
-      localPluginLogger = this.logger;
-      localScriptContextType = paramArgument.getContextType();
-      str = paramArgument.getRawParams();
-      i = paramArgument.getCallbackId();
-      if (localObject == null) {
-        break label171;
-      }
     }
-    label171:
-    for (paramArgument = (Argument)localObject;; paramArgument = "{}")
+    else if (this.webAudio.support(paramString))
     {
-      localPluginLogger.printStartLog(localScriptContextType, paramString, str, i, paramArgument);
-      return localObject;
-      if (this.webAudio.support(paramString))
-      {
-        localObject = this.webAudio.onCall(paramString, paramArgument);
-        break;
-      }
-      localObject = this.jsPluginEngine;
-      if (localObject != null)
-      {
-        localObject = ((JsPluginEngine)localObject).handleNativeRequest(paramString, paramArgument.getRawParams(), (IJsService)new GameJsService(paramArgument, this.logger), paramArgument.getCallbackId());
-        break;
-      }
-      localObject = null;
-      break;
+      localObject = this.webAudio.onCall(paramString, paramArgument);
     }
+    else
+    {
+      localObject = this.jsPluginEngine;
+      if (localObject != null) {
+        localObject = ((JsPluginEngine)localObject).handleNativeRequest(paramString, paramArgument.getRawParams(), (IJsService)new GameJsService(paramArgument, this.logger), paramArgument.getCallbackId());
+      } else {
+        localObject = null;
+      }
+    }
+    PluginLogger localPluginLogger = this.logger;
+    ScriptContextType localScriptContextType = paramArgument.getContextType();
+    String str = paramArgument.getRawParams();
+    int i = paramArgument.getCallbackId();
+    if (localObject != null) {
+      paramArgument = (Argument)localObject;
+    } else {
+      paramArgument = "{}";
+    }
+    localPluginLogger.printStartLog(localScriptContextType, paramString, str, i, paramArgument);
+    return localObject;
   }
   
   public void onCreate(@NotNull TritonEngine paramTritonEngine)
@@ -138,26 +132,28 @@ public final class GameJsPluginEngine
     Class localClass = Class.forName("com.tencent.qqmini.minigame.GameRuntime");
     Intrinsics.checkExpressionValueIsNotNull(localClass, "Class.forName(\"com.tence…ni.minigame.GameRuntime\")");
     localObject = ((EngineData)localObject).get(localClass);
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.qqmini.minigame.GameRuntime");
+    if (localObject != null)
+    {
+      this.gameRuntime = ((GameRuntime)localObject);
+      this.jsPluginEngine = new JsPluginEngine(paramTritonEngine.getData().getContext());
+      localObject = this.jsPluginEngine;
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
+      ((JsPluginEngine)localObject).onCreate((IMiniAppContext)this.gameRuntime);
+      localObject = this.gameRuntime;
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
+      ((GameRuntime)localObject).setJsPluginEngine(this);
+      this.innerAudio.onCreate(paramTritonEngine);
+      this.webAudio.onCreate(paramTritonEngine);
+      paramTritonEngine = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
+      paramTritonEngine.getWebAudioDownloadPath((DownloaderProxy.WebAudioDownloadListener)new GameJsPluginEngine.onCreate.webAudioDownloadListener.1(this));
+      paramTritonEngine.getLameMp3SoDownloadPath((DownloaderProxy.LameMp3SoDownloadListener)new GameJsPluginEngine.onCreate.lameMp3SoDownloadListener.1(this));
+      return;
     }
-    this.gameRuntime = ((GameRuntime)localObject);
-    this.jsPluginEngine = new JsPluginEngine(paramTritonEngine.getData().getContext());
-    localObject = this.jsPluginEngine;
-    if (localObject == null) {
-      Intrinsics.throwNpe();
-    }
-    ((JsPluginEngine)localObject).onCreate((IMiniAppContext)this.gameRuntime);
-    localObject = this.gameRuntime;
-    if (localObject == null) {
-      Intrinsics.throwNpe();
-    }
-    ((GameRuntime)localObject).setJsPluginEngine(this);
-    this.innerAudio.onCreate(paramTritonEngine);
-    this.webAudio.onCreate(paramTritonEngine);
-    paramTritonEngine = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
-    paramTritonEngine.getWebAudioDownloadPath((DownloaderProxy.WebAudioDownloadListener)new GameJsPluginEngine.onCreate.webAudioDownloadListener.1(this));
-    paramTritonEngine.getLameMp3SoDownloadPath((DownloaderProxy.LameMp3SoDownloadListener)new GameJsPluginEngine.onCreate.lameMp3SoDownloadListener.1(this));
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.qqmini.minigame.GameRuntime");
   }
   
   public void onDestroy()
@@ -208,7 +204,7 @@ public final class GameJsPluginEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GameJsPluginEngine
  * JD-Core Version:    0.7.0.1
  */

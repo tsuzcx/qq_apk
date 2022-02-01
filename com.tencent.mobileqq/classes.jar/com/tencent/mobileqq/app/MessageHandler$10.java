@@ -22,14 +22,17 @@ class MessageHandler$10
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
+      label42:
+      break label42;
+    }
+    if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "IPADonline thread Interrupt");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.10
  * JD-Core Version:    0.7.0.1
  */

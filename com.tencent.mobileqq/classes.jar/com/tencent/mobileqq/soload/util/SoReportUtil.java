@@ -2,19 +2,18 @@ package com.tencent.mobileqq.soload.util;
 
 import com.tencent.gamecenter.wadl.biz.entity.WadlReportBuilder;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soload.api.ISoLoaderBaseCommonetService;
 import com.tencent.mobileqq.soload.biz.entity.LoadParam;
-import com.tencent.mobileqq.soload.temp.api.ISoloadOtherService;
 import com.tencent.mobileqq.statistics.ReportController;
 import mqq.app.AppRuntime;
 
 public class SoReportUtil
 {
-  private static ISoloadOtherService a = (ISoloadOtherService)QRoute.api(ISoloadOtherService.class);
+  private static ISoLoaderBaseCommonetService a = (ISoLoaderBaseCommonetService)QRoute.api(ISoLoaderBaseCommonetService.class);
   
   public static long a(LoadParam paramLoadParam)
   {
     int i = LoadParam.getItemSize(paramLoadParam);
-    if (a != null) {}
     long l = a(paramLoadParam, null, "SoLoadModule", "SoLoad", "load.start", LoadParam.getReportStr(paramLoadParam), i, null);
     paramLoadParam.mReportSeq = l;
     return l;
@@ -22,35 +21,42 @@ public class SoReportUtil
   
   public static long a(LoadParam paramLoadParam, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6)
   {
-    if (LoadParam.isCloseReport(paramLoadParam)) {}
-    while (a == null) {
+    if (LoadParam.isCloseReport(paramLoadParam)) {
       return 0L;
     }
-    return a.startReport(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt, paramString6);
+    paramLoadParam = a;
+    if (paramLoadParam != null) {
+      return paramLoadParam.startReport(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt, paramString6);
+    }
+    return 0L;
   }
   
   public static void a(LoadParam paramLoadParam, long paramLong, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    if (LoadParam.isCloseReport(paramLoadParam)) {}
-    while (a == null) {
+    if (LoadParam.isCloseReport(paramLoadParam)) {
       return;
     }
-    a.endReport(paramLong, paramString1, paramString2, paramInt, paramString3);
+    paramLoadParam = a;
+    if (paramLoadParam != null) {
+      paramLoadParam.endReport(paramLong, paramString1, paramString2, paramInt, paramString3);
+    }
   }
   
   public static void a(LoadParam paramLoadParam, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
-    if (LoadParam.isCloseReport(paramLoadParam)) {}
-    while (a == null) {
+    if (LoadParam.isCloseReport(paramLoadParam)) {
       return;
     }
-    a.addReportItem(paramLong, paramString1, paramString2, paramString3, paramInt, paramString4);
+    paramLoadParam = a;
+    if (paramLoadParam != null) {
+      paramLoadParam.addReportItem(paramLong, paramString1, paramString2, paramString3, paramInt, paramString4);
+    }
   }
   
   public static void a(String paramString)
   {
     WadlReportBuilder localWadlReportBuilder = new WadlReportBuilder();
-    localWadlReportBuilder.a("dc00087").g("10").c("202528").a(32, paramString);
+    localWadlReportBuilder.a("dc00087").h("10").c("202528").a(32, paramString);
     localWadlReportBuilder.a();
   }
   
@@ -62,8 +68,9 @@ public class SoReportUtil
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6)
   {
-    if (a != null) {
-      a.singleReport(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt, paramString6);
+    ISoLoaderBaseCommonetService localISoLoaderBaseCommonetService = a;
+    if (localISoLoaderBaseCommonetService != null) {
+      localISoLoaderBaseCommonetService.singleReport(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt, paramString6);
     }
   }
   
@@ -74,7 +81,7 @@ public class SoReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.util.SoReportUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.VideoViewHolder;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.ThreadOffFunction;
@@ -27,7 +27,7 @@ public class VideoInfo
   
   public VideoInfo(String paramString)
   {
-    this.f = paramString;
+    this.jdField_f_of_type_JavaLangString = paramString;
     b();
     this.jdField_d_of_type_JavaLangString = String.valueOf(hashCode());
   }
@@ -45,318 +45,270 @@ public class VideoInfo
     //   0: invokestatic 46	java/lang/System:currentTimeMillis	()J
     //   3: lstore_2
     //   4: aload_0
-    //   5: getfield 15	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:f	Ljava/lang/String;
-    //   8: invokestatic 51	com/tencent/mobileqq/filemanager/util/FileUtil:b	(Ljava/lang/String;)Z
-    //   11: ifeq +386 -> 397
+    //   5: getfield 15	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   8: invokestatic 52	com/tencent/mobileqq/utils/FileUtils:fileExistsAndNotEmpty	(Ljava/lang/String;)Z
+    //   11: ifeq +388 -> 399
     //   14: aconst_null
-    //   15: astore 4
-    //   17: new 53	android/media/MediaMetadataRetriever
-    //   20: dup
-    //   21: invokespecial 54	android/media/MediaMetadataRetriever:<init>	()V
-    //   24: astore 5
-    //   26: aload 5
-    //   28: astore 4
-    //   30: aload 5
-    //   32: aload_0
-    //   33: getfield 15	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:f	Ljava/lang/String;
-    //   36: invokevirtual 57	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
-    //   39: aload 5
-    //   41: astore 4
-    //   43: aload_0
-    //   44: aload 5
-    //   46: bipush 18
-    //   48: invokevirtual 60	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
-    //   51: invokestatic 65	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   54: invokevirtual 68	java/lang/Integer:intValue	()I
-    //   57: putfield 71	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
-    //   60: aload 5
-    //   62: astore 4
-    //   64: aload_0
-    //   65: aload 5
-    //   67: bipush 19
-    //   69: invokevirtual 60	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
-    //   72: invokestatic 65	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   75: invokevirtual 68	java/lang/Integer:intValue	()I
-    //   78: putfield 73	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
-    //   81: aload 5
-    //   83: astore 4
-    //   85: getstatic 78	android/os/Build$VERSION:SDK_INT	I
-    //   88: bipush 17
-    //   90: if_icmplt +104 -> 194
-    //   93: aload 5
-    //   95: astore 4
-    //   97: aload 5
-    //   99: bipush 24
-    //   101: invokevirtual 60	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
-    //   104: invokestatic 65	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   107: invokevirtual 68	java/lang/Integer:intValue	()I
-    //   110: istore_1
-    //   111: aload 5
-    //   113: astore 4
-    //   115: invokestatic 84	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   118: ifeq +347 -> 465
-    //   121: aload 5
-    //   123: astore 4
-    //   125: ldc 86
-    //   127: iconst_2
-    //   128: iconst_4
-    //   129: anewarray 20	java/lang/Object
-    //   132: dup
-    //   133: iconst_0
-    //   134: ldc 88
-    //   136: aastore
-    //   137: dup
-    //   138: iconst_1
-    //   139: getstatic 78	android/os/Build$VERSION:SDK_INT	I
-    //   142: invokestatic 91	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   145: aastore
-    //   146: dup
-    //   147: iconst_2
-    //   148: ldc 93
-    //   150: aastore
-    //   151: dup
-    //   152: iconst_3
+    //   15: astore 7
+    //   17: aconst_null
+    //   18: astore 5
+    //   20: new 54	android/media/MediaMetadataRetriever
+    //   23: dup
+    //   24: invokespecial 55	android/media/MediaMetadataRetriever:<init>	()V
+    //   27: astore 6
+    //   29: aload 6
+    //   31: aload_0
+    //   32: getfield 15	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   35: invokevirtual 58	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   38: aload_0
+    //   39: aload 6
+    //   41: bipush 18
+    //   43: invokevirtual 61	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   46: invokestatic 66	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   49: invokevirtual 69	java/lang/Integer:intValue	()I
+    //   52: putfield 72	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
+    //   55: aload_0
+    //   56: aload 6
+    //   58: bipush 19
+    //   60: invokevirtual 61	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   63: invokestatic 66	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   66: invokevirtual 69	java/lang/Integer:intValue	()I
+    //   69: putfield 74	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
+    //   72: getstatic 79	android/os/Build$VERSION:SDK_INT	I
+    //   75: bipush 17
+    //   77: if_icmplt +80 -> 157
+    //   80: aload 6
+    //   82: bipush 24
+    //   84: invokevirtual 61	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   87: invokestatic 66	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   90: invokevirtual 69	java/lang/Integer:intValue	()I
+    //   93: istore_1
+    //   94: invokestatic 85	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   97: ifeq +317 -> 414
+    //   100: ldc 87
+    //   102: iconst_2
+    //   103: iconst_4
+    //   104: anewarray 20	java/lang/Object
+    //   107: dup
+    //   108: iconst_0
+    //   109: ldc 89
+    //   111: aastore
+    //   112: dup
+    //   113: iconst_1
+    //   114: getstatic 79	android/os/Build$VERSION:SDK_INT	I
+    //   117: invokestatic 92	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   120: aastore
+    //   121: dup
+    //   122: iconst_2
+    //   123: ldc 94
+    //   125: aastore
+    //   126: dup
+    //   127: iconst_3
+    //   128: iload_1
+    //   129: invokestatic 92	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   132: aastore
+    //   133: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   136: goto +278 -> 414
+    //   139: aload_0
+    //   140: getfield 72	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
+    //   143: istore_1
+    //   144: aload_0
+    //   145: aload_0
+    //   146: getfield 74	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
+    //   149: putfield 72	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
+    //   152: aload_0
     //   153: iload_1
-    //   154: invokestatic 91	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   157: aastore
-    //   158: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   161: goto +304 -> 465
-    //   164: aload 5
-    //   166: astore 4
-    //   168: aload_0
-    //   169: getfield 71	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
-    //   172: istore_1
-    //   173: aload 5
-    //   175: astore 4
-    //   177: aload_0
-    //   178: aload_0
-    //   179: getfield 73	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
-    //   182: putfield 71	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
-    //   185: aload 5
-    //   187: astore 4
-    //   189: aload_0
-    //   190: iload_1
-    //   191: putfield 73	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
-    //   194: aload 5
-    //   196: astore 4
-    //   198: invokestatic 84	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   201: ifeq +78 -> 279
-    //   204: aload 5
-    //   206: astore 4
-    //   208: ldc 86
-    //   210: iconst_2
-    //   211: bipush 8
-    //   213: anewarray 20	java/lang/Object
-    //   216: dup
-    //   217: iconst_0
-    //   218: ldc 98
-    //   220: aastore
-    //   221: dup
-    //   222: iconst_1
-    //   223: aload_0
-    //   224: getfield 15	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:f	Ljava/lang/String;
-    //   227: aastore
-    //   228: dup
-    //   229: iconst_2
-    //   230: ldc 100
-    //   232: aastore
-    //   233: dup
-    //   234: iconst_3
-    //   235: aload_0
-    //   236: getfield 71	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
-    //   239: invokestatic 91	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   242: aastore
-    //   243: dup
-    //   244: iconst_4
-    //   245: ldc 102
-    //   247: aastore
-    //   248: dup
-    //   249: iconst_5
-    //   250: aload_0
-    //   251: getfield 73	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
-    //   254: invokestatic 91	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   257: aastore
-    //   258: dup
-    //   259: bipush 6
-    //   261: ldc 104
-    //   263: aastore
-    //   264: dup
-    //   265: bipush 7
-    //   267: invokestatic 46	java/lang/System:currentTimeMillis	()J
-    //   270: lload_2
-    //   271: lsub
-    //   272: invokestatic 109	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   275: aastore
-    //   276: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   279: aload 5
-    //   281: astore 4
-    //   283: aload_0
-    //   284: getfield 71	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
-    //   287: ifle +14 -> 301
-    //   290: aload 5
-    //   292: astore 4
-    //   294: aload_0
-    //   295: getfield 73	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
-    //   298: ifgt +89 -> 387
-    //   301: aload 5
-    //   303: astore 4
-    //   305: aload_0
-    //   306: aload_0
-    //   307: getfield 111	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_d_of_type_Int	I
-    //   310: putfield 71	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
-    //   313: aload 5
-    //   315: astore 4
-    //   317: aload_0
-    //   318: aload_0
-    //   319: getfield 111	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_d_of_type_Int	I
-    //   322: bipush 9
-    //   324: imul
-    //   325: i2f
-    //   326: ldc 112
-    //   328: fdiv
-    //   329: f2i
-    //   330: putfield 73	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
-    //   333: aload 5
-    //   335: astore 4
-    //   337: invokestatic 84	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   340: ifeq +47 -> 387
-    //   343: aload 5
-    //   345: astore 4
-    //   347: ldc 86
-    //   349: iconst_2
-    //   350: iconst_4
-    //   351: anewarray 20	java/lang/Object
-    //   354: dup
-    //   355: iconst_0
-    //   356: ldc 114
-    //   358: aastore
-    //   359: dup
-    //   360: iconst_1
-    //   361: aload_0
-    //   362: getfield 71	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
-    //   365: invokestatic 91	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   368: aastore
-    //   369: dup
-    //   370: iconst_2
-    //   371: ldc 102
-    //   373: aastore
-    //   374: dup
-    //   375: iconst_3
-    //   376: aload_0
-    //   377: getfield 73	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
-    //   380: invokestatic 91	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   383: aastore
-    //   384: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   387: aload 5
-    //   389: ifnull +8 -> 397
-    //   392: aload 5
-    //   394: invokevirtual 117	android/media/MediaMetadataRetriever:release	()V
-    //   397: return
-    //   398: astore 4
-    //   400: aconst_null
-    //   401: astore 5
-    //   403: aload 5
-    //   405: astore 4
-    //   407: ldc 86
-    //   409: iconst_1
-    //   410: iconst_2
-    //   411: anewarray 20	java/lang/Object
-    //   414: dup
-    //   415: iconst_0
-    //   416: ldc 119
-    //   418: aastore
-    //   419: dup
-    //   420: iconst_1
-    //   421: aload_0
-    //   422: getfield 15	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:f	Ljava/lang/String;
-    //   425: aastore
-    //   426: invokestatic 121	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   429: aload 5
-    //   431: ifnull -34 -> 397
-    //   434: aload 5
-    //   436: invokevirtual 117	android/media/MediaMetadataRetriever:release	()V
-    //   439: return
-    //   440: astore 5
-    //   442: aload 4
-    //   444: ifnull +8 -> 452
-    //   447: aload 4
-    //   449: invokevirtual 117	android/media/MediaMetadataRetriever:release	()V
-    //   452: aload 5
-    //   454: athrow
-    //   455: astore 5
-    //   457: goto -15 -> 442
-    //   460: astore 4
-    //   462: goto -59 -> 403
-    //   465: iload_1
-    //   466: bipush 90
-    //   468: if_icmpeq -304 -> 164
-    //   471: iload_1
-    //   472: sipush 270
-    //   475: if_icmpne -281 -> 194
-    //   478: goto -314 -> 164
+    //   154: putfield 74	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
+    //   157: invokestatic 85	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   160: istore 4
+    //   162: iload 4
+    //   164: ifeq +74 -> 238
+    //   167: ldc 87
+    //   169: iconst_2
+    //   170: bipush 8
+    //   172: anewarray 20	java/lang/Object
+    //   175: dup
+    //   176: iconst_0
+    //   177: ldc 99
+    //   179: aastore
+    //   180: dup
+    //   181: iconst_1
+    //   182: aload_0
+    //   183: getfield 15	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   186: aastore
+    //   187: dup
+    //   188: iconst_2
+    //   189: ldc 101
+    //   191: aastore
+    //   192: dup
+    //   193: iconst_3
+    //   194: aload_0
+    //   195: getfield 72	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
+    //   198: invokestatic 92	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   201: aastore
+    //   202: dup
+    //   203: iconst_4
+    //   204: ldc 103
+    //   206: aastore
+    //   207: dup
+    //   208: iconst_5
+    //   209: aload_0
+    //   210: getfield 74	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
+    //   213: invokestatic 92	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   216: aastore
+    //   217: dup
+    //   218: bipush 6
+    //   220: ldc 105
+    //   222: aastore
+    //   223: dup
+    //   224: bipush 7
+    //   226: invokestatic 46	java/lang/System:currentTimeMillis	()J
+    //   229: lload_2
+    //   230: lsub
+    //   231: invokestatic 110	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   234: aastore
+    //   235: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   238: aload_0
+    //   239: getfield 72	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
+    //   242: ifle +10 -> 252
+    //   245: aload_0
+    //   246: getfield 74	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
+    //   249: ifgt +73 -> 322
+    //   252: aload_0
+    //   253: aload_0
+    //   254: getfield 112	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_d_of_type_Int	I
+    //   257: putfield 72	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
+    //   260: aload_0
+    //   261: aload_0
+    //   262: getfield 112	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_d_of_type_Int	I
+    //   265: bipush 9
+    //   267: imul
+    //   268: i2f
+    //   269: ldc 113
+    //   271: fdiv
+    //   272: f2i
+    //   273: putfield 74	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
+    //   276: invokestatic 85	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   279: ifeq +43 -> 322
+    //   282: ldc 87
+    //   284: iconst_2
+    //   285: iconst_4
+    //   286: anewarray 20	java/lang/Object
+    //   289: dup
+    //   290: iconst_0
+    //   291: ldc 115
+    //   293: aastore
+    //   294: dup
+    //   295: iconst_1
+    //   296: aload_0
+    //   297: getfield 72	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_a_of_type_Int	I
+    //   300: invokestatic 92	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   303: aastore
+    //   304: dup
+    //   305: iconst_2
+    //   306: ldc 103
+    //   308: aastore
+    //   309: dup
+    //   310: iconst_3
+    //   311: aload_0
+    //   312: getfield 74	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_b_of_type_Int	I
+    //   315: invokestatic 92	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   318: aastore
+    //   319: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   322: aload 6
+    //   324: invokevirtual 118	android/media/MediaMetadataRetriever:release	()V
+    //   327: return
+    //   328: astore 5
+    //   330: goto +56 -> 386
+    //   333: goto +16 -> 349
+    //   336: astore 7
+    //   338: aload 5
+    //   340: astore 6
+    //   342: aload 7
+    //   344: astore 5
+    //   346: goto +40 -> 386
+    //   349: aload 6
+    //   351: astore 5
+    //   353: ldc 87
+    //   355: iconst_1
+    //   356: iconst_2
+    //   357: anewarray 20	java/lang/Object
+    //   360: dup
+    //   361: iconst_0
+    //   362: ldc 120
+    //   364: aastore
+    //   365: dup
+    //   366: iconst_1
+    //   367: aload_0
+    //   368: getfield 15	com/tencent/mobileqq/troop/homework/xmediaeditor/model/VideoInfo:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   371: aastore
+    //   372: invokestatic 122	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   375: aload 6
+    //   377: ifnull +22 -> 399
+    //   380: aload 6
+    //   382: invokevirtual 118	android/media/MediaMetadataRetriever:release	()V
+    //   385: return
+    //   386: aload 6
+    //   388: ifnull +8 -> 396
+    //   391: aload 6
+    //   393: invokevirtual 118	android/media/MediaMetadataRetriever:release	()V
+    //   396: aload 5
+    //   398: athrow
+    //   399: return
+    //   400: astore 5
+    //   402: aload 7
+    //   404: astore 6
+    //   406: goto -57 -> 349
+    //   409: astore 5
+    //   411: goto -78 -> 333
+    //   414: iload_1
+    //   415: bipush 90
+    //   417: if_icmpeq -278 -> 139
+    //   420: iload_1
+    //   421: sipush 270
+    //   424: if_icmpne -267 -> 157
+    //   427: goto -288 -> 139
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	481	0	this	VideoInfo
-    //   110	366	1	i	int
-    //   3	268	2	l	long
-    //   15	331	4	localObject1	Object
-    //   398	1	4	localException1	java.lang.Exception
-    //   405	43	4	localObject2	Object
-    //   460	1	4	localException2	java.lang.Exception
-    //   24	411	5	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
-    //   440	13	5	localObject3	Object
-    //   455	1	5	localObject4	Object
+    //   0	430	0	this	VideoInfo
+    //   93	332	1	i	int
+    //   3	227	2	l	long
+    //   160	3	4	bool	boolean
+    //   18	1	5	localObject1	Object
+    //   328	11	5	localObject2	Object
+    //   344	53	5	localObject3	Object
+    //   400	1	5	localException1	java.lang.Exception
+    //   409	1	5	localException2	java.lang.Exception
+    //   27	378	6	localObject4	Object
+    //   15	1	7	localObject5	Object
+    //   336	67	7	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   17	26	398	java/lang/Exception
-    //   17	26	440	finally
-    //   30	39	455	finally
-    //   43	60	455	finally
-    //   64	81	455	finally
-    //   85	93	455	finally
-    //   97	111	455	finally
-    //   115	121	455	finally
-    //   125	161	455	finally
-    //   168	173	455	finally
-    //   177	185	455	finally
-    //   189	194	455	finally
-    //   198	204	455	finally
-    //   208	279	455	finally
-    //   283	290	455	finally
-    //   294	301	455	finally
-    //   305	313	455	finally
-    //   317	333	455	finally
-    //   337	343	455	finally
-    //   347	387	455	finally
-    //   407	429	455	finally
-    //   30	39	460	java/lang/Exception
-    //   43	60	460	java/lang/Exception
-    //   64	81	460	java/lang/Exception
-    //   85	93	460	java/lang/Exception
-    //   97	111	460	java/lang/Exception
-    //   115	121	460	java/lang/Exception
-    //   125	161	460	java/lang/Exception
-    //   168	173	460	java/lang/Exception
-    //   177	185	460	java/lang/Exception
-    //   189	194	460	java/lang/Exception
-    //   198	204	460	java/lang/Exception
-    //   208	279	460	java/lang/Exception
-    //   283	290	460	java/lang/Exception
-    //   294	301	460	java/lang/Exception
-    //   305	313	460	java/lang/Exception
-    //   317	333	460	java/lang/Exception
-    //   337	343	460	java/lang/Exception
-    //   347	387	460	java/lang/Exception
+    //   29	136	328	finally
+    //   139	157	328	finally
+    //   157	162	328	finally
+    //   167	238	328	finally
+    //   238	252	328	finally
+    //   252	322	328	finally
+    //   20	29	336	finally
+    //   353	375	336	finally
+    //   20	29	400	java/lang/Exception
+    //   29	136	409	java/lang/Exception
+    //   139	157	409	java/lang/Exception
+    //   157	162	409	java/lang/Exception
+    //   167	238	409	java/lang/Exception
+    //   238	252	409	java/lang/Exception
+    //   252	322	409	java/lang/Exception
   }
   
   public Stream<ImageInfo> a(XMediaEditor paramXMediaEditor)
   {
     Object localObject2 = Stream.of(this).map(new ThreadOffFunction("VideoInfo", 2));
     Object localObject1 = localObject2;
-    if (!FileUtil.b(this.jdField_g_of_type_JavaLangString))
+    if (!FileUtils.fileExistsAndNotEmpty(this.g))
     {
-      if (this.jdField_g_of_type_Int >= 0) {
-        this.jdField_g_of_type_Int = -2147483646;
+      if (this.jdField_f_of_type_Int >= 0) {
+        this.jdField_f_of_type_Int = -2147483646;
       }
       localObject1 = ((Stream)localObject2).map(new VideoInfo.CompressVideoSegment(paramXMediaEditor));
     }
@@ -364,36 +316,36 @@ public class VideoInfo
     localObject2 = localObject1;
     if (TextUtils.isEmpty(this.e))
     {
-      if (this.jdField_g_of_type_Int >= 0) {
-        this.jdField_g_of_type_Int = -2147483647;
+      if (this.jdField_f_of_type_Int >= 0) {
+        this.jdField_f_of_type_Int = -2147483647;
       }
       localObject2 = ((Stream)localObject1).map(new ImageInfo.UploadMediaSegment(1, paramXMediaEditor, str));
     }
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      if (this.jdField_g_of_type_Int >= 0) {
-        this.jdField_g_of_type_Int = -2147483648;
-      }
-    }
-    for (localObject1 = ((Stream)localObject2).map(new ImageInfo.UploadMediaSegment(2, paramXMediaEditor, str));; localObject1 = localObject2)
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      localObject2 = paramXMediaEditor.findViewHolderForLayoutPosition(this.c);
-      if ((localObject2 instanceof VideoItem.VideoViewHolder))
-      {
-        localObject2 = (VideoItem.VideoViewHolder)localObject2;
-        if (this.jdField_d_of_type_JavaLangString.equals(((VideoItem.VideoViewHolder)localObject2).a.getTag())) {
-          ((VideoItem)((XMediaEditorAdapter)paramXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject2, this, 0);
-        }
+      if (this.jdField_f_of_type_Int >= 0) {
+        this.jdField_f_of_type_Int = -2147483648;
       }
-      return ((Stream)localObject1).map(new UIThreadOffFunction(null));
+      localObject1 = ((Stream)localObject2).map(new ImageInfo.UploadMediaSegment(2, paramXMediaEditor, str));
     }
+    localObject2 = paramXMediaEditor.findViewHolderForLayoutPosition(this.c);
+    if ((localObject2 instanceof VideoItem.VideoViewHolder))
+    {
+      localObject2 = (VideoItem.VideoViewHolder)localObject2;
+      if (this.jdField_d_of_type_JavaLangString.equals(((VideoItem.VideoViewHolder)localObject2).a.getTag())) {
+        ((VideoItem)((XMediaEditorAdapter)paramXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject2, this, 0);
+      }
+    }
+    return ((Stream)localObject1).map(new UIThreadOffFunction(null));
   }
   
   public String a()
   {
-    if (TextUtils.isEmpty(this.f)) {
+    if (TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
       return this.e;
     }
-    return this.f;
+    return this.jdField_f_of_type_JavaLangString;
   }
   
   public JSONObject a()
@@ -410,7 +362,10 @@ public class VideoInfo
     }
     catch (JSONException localJSONException)
     {
-      while (!QLog.isColorLevel()) {}
+      label63:
+      break label63;
+    }
+    if (QLog.isColorLevel()) {
       QLog.e("VideoInfo", 2, "VideoInfo getContent exception.");
     }
     return localJSONObject;
@@ -422,7 +377,7 @@ public class VideoInfo
       QLog.d("VideoInfo", 2, new Object[] { "VideoInfo createFrom json: ", paramJSONObject });
     }
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    c(paramJSONObject.optString("poster"));
+    b(paramJSONObject.optString("poster"));
     this.jdField_a_of_type_Int = paramJSONObject.optInt("width");
     this.jdField_b_of_type_Int = paramJSONObject.optInt("height");
     this.e = paramJSONObject.optString("url");
@@ -433,7 +388,7 @@ public class VideoInfo
   
   public boolean a()
   {
-    return !TextUtils.isEmpty(this.e);
+    return TextUtils.isEmpty(this.e) ^ true;
   }
   
   public int b()
@@ -443,36 +398,21 @@ public class VideoInfo
   
   public Stream<VideoInfo> b(XMediaEditor paramXMediaEditor)
   {
-    this.jdField_g_of_type_Int = 1;
-    Object localObject;
-    if (FileUtil.b(this.c)) {
-      localObject = null;
+    this.jdField_f_of_type_Int = 1;
+    if (FileUtils.fileExistsAndNotEmpty(this.c)) {
+      return null;
     }
-    Stream localStream;
-    do
+    Stream localStream2 = Stream.of(this).map(new ThreadOffFunction("VideoInfo", 2));
+    Stream localStream1 = localStream2;
+    if (!FileUtils.fileExistsAndNotEmpty(this.c))
     {
-      return localObject;
-      localStream = Stream.of(this).map(new ThreadOffFunction("VideoInfo", 2));
-      localObject = localStream;
-    } while (FileUtil.b(this.c));
-    this.jdField_g_of_type_Int = -2147483645;
-    return localStream.map(new VideoInfo.GenerateVideoPosterSegment(paramXMediaEditor, this.jdField_d_of_type_Int)).map(new UIThreadOffFunction(null));
-  }
-  
-  public boolean b()
-  {
-    return (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
-  }
-  
-  public String c()
-  {
-    if (TextUtils.isEmpty(this.f)) {
-      return this.e;
+      this.jdField_f_of_type_Int = -2147483645;
+      localStream1 = localStream2.map(new VideoInfo.GenerateVideoPosterSegment(paramXMediaEditor, this.jdField_d_of_type_Int)).map(new UIThreadOffFunction(null));
     }
-    return this.f;
+    return localStream1;
   }
   
-  public void c(String paramString)
+  public void b(String paramString)
   {
     try
     {
@@ -482,23 +422,38 @@ public class VideoInfo
     }
     catch (MalformedURLException paramString)
     {
-      QLog.e("VideoInfo", 1, "Video setURLFromContentUrl exception.");
+      label18:
+      break label18;
     }
+    QLog.e("VideoInfo", 1, "Video setURLFromContentUrl exception.");
   }
   
-  public int e()
+  public boolean b()
   {
-    switch (this.jdField_g_of_type_Int)
+    return (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
+  }
+  
+  public int c()
+  {
+    switch (this.jdField_f_of_type_Int)
     {
     default: 
-      return this.jdField_g_of_type_Int;
+      return this.jdField_f_of_type_Int;
     }
     return 1;
+  }
+  
+  public String c()
+  {
+    if (TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
+      return this.e;
+    }
+    return this.jdField_f_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

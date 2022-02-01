@@ -19,10 +19,11 @@ public class AIOMessageRecordExposeDataReportHelper
   
   private ListView a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof MultiForwardChatPie)) {
-      return ((MultiForwardChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).a();
+    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if ((localBaseChatPie instanceof MultiForwardChatPie)) {
+      return ((MultiForwardChatPie)localBaseChatPie).a();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+    return localBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
   }
   
   public String getTag()
@@ -32,36 +33,44 @@ public class AIOMessageRecordExposeDataReportHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 8, 14, 20 };
+    return new int[] { 4, 9, 15, 20 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    default: 
-    case 4: 
-    case 8: 
-    case 20: 
-      do
+      if (paramInt != 9)
       {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic = new AIOMessageRecordExposeLogic();
-        return;
+        if (paramInt != 15)
+        {
+          if (paramInt != 20) {
+            return;
+          }
+          if (this.jdField_a_of_type_Boolean) {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_Boolean = false;
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic = null;
+        }
+      }
+      else
+      {
         this.jdField_a_of_type_Boolean = true;
         this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
-      return;
+      }
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic = null;
+    else {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic = new AIOMessageRecordExposeLogic();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.messageexpose.AIOMessageRecordExposeDataReportHelper
  * JD-Core Version:    0.7.0.1
  */

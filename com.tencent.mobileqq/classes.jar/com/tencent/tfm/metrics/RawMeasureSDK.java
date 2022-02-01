@@ -14,9 +14,10 @@ public class RawMeasureSDK
   {
     super(paramString);
     this.policies = paramVarArgs;
-    if (paramVarArgs.length <= 0) {
-      throw new IllegalArgumentException("no policy for RawMeasure");
+    if (paramVarArgs.length > 0) {
+      return;
     }
+    throw new IllegalArgumentException("no policy for RawMeasure");
   }
   
   public RawMeasure.Recorder newRecorder()
@@ -26,7 +27,7 @@ public class RawMeasureSDK
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.RawMeasureSDK
  * JD-Core Version:    0.7.0.1
  */

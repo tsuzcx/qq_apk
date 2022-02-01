@@ -33,18 +33,18 @@ public class TargetJumpInfo
       localTargetJumpInfo.jdField_a_of_type_Int = 2;
       return localTargetJumpInfo;
     }
-    if ((!WifiSdkUtil.a(localBaseApplication)) || (!WifiSdkUtil.b(localBaseApplication)) || (!WifiSdkUtil.c(localBaseApplication)))
+    if ((WifiSdkUtil.a(localBaseApplication)) && (WifiSdkUtil.b(localBaseApplication)) && (WifiSdkUtil.c(localBaseApplication)))
     {
-      if (i == 3)
-      {
-        localTargetJumpInfo.jdField_a_of_type_Int = 3;
-        localTargetJumpInfo.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
-        return localTargetJumpInfo;
-      }
-      localTargetJumpInfo.jdField_a_of_type_Int = 5;
+      localTargetJumpInfo.jdField_a_of_type_Int = 4;
       return localTargetJumpInfo;
     }
-    localTargetJumpInfo.jdField_a_of_type_Int = 4;
+    if (i == 3)
+    {
+      localTargetJumpInfo.jdField_a_of_type_Int = 3;
+      localTargetJumpInfo.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
+      return localTargetJumpInfo;
+    }
+    localTargetJumpInfo.jdField_a_of_type_Int = 5;
     return localTargetJumpInfo;
   }
   
@@ -60,7 +60,7 @@ public class TargetJumpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.TargetJumpInfo
  * JD-Core Version:    0.7.0.1
  */

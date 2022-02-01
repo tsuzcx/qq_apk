@@ -65,22 +65,22 @@ public class b
     if (!TextUtils.isEmpty(this.mClientKey))
     {
       BaseService localBaseService = (BaseService)super.getServiceInterface();
-      ab.c("TMAssistantDownloadOpenSDKClient", "sendAsyncData baseService:" + localBaseService);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendAsyncData baseService:");
+      localStringBuilder.append(localBaseService);
+      ab.c("TMAssistantDownloadOpenSDKClient", localStringBuilder.toString());
       if (localBaseService != null)
       {
         ab.c("TMAssistantDownloadOpenSDKClient", "baseService sendAsyncData");
         localBaseService.sendAsyncData(this.mClientKey, paramArrayOfByte);
+        return;
       }
+      super.initTMAssistantDownloadSDK();
+      ab.c("TMAssistantDownloadOpenSDKClient", "initTMAssistantDownloadSDK");
     }
-    else
-    {
-      return;
-    }
-    super.initTMAssistantDownloadSDK();
-    ab.c("TMAssistantDownloadOpenSDKClient", "initTMAssistantDownloadSDK");
   }
   
-  public Intent getBindServiceIntent()
+  protected Intent getBindServiceIntent()
   {
     Intent localIntent = new Intent(this.mServiceName).setClassName("com.tencent.android.qqdownloader", "com.tencent.assistant.sdk.SDKSupportService");
     if (OuterCallReportModel.isYYBSupportOutcallReport())
@@ -97,14 +97,15 @@ public class b
     return super.getServiceInterface();
   }
   
-  public void onDownloadSDKServiceInvalid()
+  protected void onDownloadSDKServiceInvalid()
   {
-    if ((this.a != null) && (this.a.size() > 0))
+    Object localObject = this.a;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
+      localObject = this.a.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        a locala = (a)localIterator.next();
+        a locala = (a)((Iterator)localObject).next();
         if (locala != null) {
           locala.a();
         }
@@ -112,18 +113,30 @@ public class b
     }
   }
   
-  public void registerServiceCallback()
+  protected void registerServiceCallback()
   {
     Object localObject = String.valueOf(System.currentTimeMillis()).getBytes();
     localObject = com.tencent.tmassistantbase.util.a.a(new e().b((byte[])localObject, this.mClientKey.getBytes()), 0);
     try
     {
       int i = ((BaseService)this.mServiceInterface).registerActionCallback(this.mClientKey, (String)localObject, (SDKActionCallback)this.mServiceCallback);
-      ab.c("TMAssistantDownloadOpenSDKClient", "onServiceConnected,registerActionCallback:" + this.mClientKey + ",tokenString:" + (String)localObject + ",threadId:" + Thread.currentThread().getId() + ",mServiceCallback:" + this.mServiceCallback + ",registed result:" + i);
-      if (i == 2) {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onServiceConnected,registerActionCallback:");
+      localStringBuilder.append(this.mClientKey);
+      localStringBuilder.append(",tokenString:");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(",threadId:");
+      localStringBuilder.append(Thread.currentThread().getId());
+      localStringBuilder.append(",mServiceCallback:");
+      localStringBuilder.append(this.mServiceCallback);
+      localStringBuilder.append(",registed result:");
+      localStringBuilder.append(i);
+      ab.c("TMAssistantDownloadOpenSDKClient", localStringBuilder.toString());
+      if (i == 2)
+      {
         onDownloadSDKServiceInvalid();
+        return;
       }
-      return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
@@ -131,12 +144,12 @@ public class b
     }
   }
   
-  public void stubAsInterface(IBinder paramIBinder)
+  protected void stubAsInterface(IBinder paramIBinder)
   {
     this.mServiceInterface = BaseService.Stub.asInterface(paramIBinder);
   }
   
-  public void unRegisterServiceCallback()
+  protected void unRegisterServiceCallback()
   {
     if (((BaseService)this.mServiceInterface).unregisterActionCallback((SDKActionCallback)this.mServiceCallback) == 2) {
       onDownloadSDKServiceInvalid();
@@ -145,7 +158,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.b.b
  * JD-Core Version:    0.7.0.1
  */

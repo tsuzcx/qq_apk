@@ -2,25 +2,27 @@ package com.tencent.common.app;
 
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.gamecenter.wadl.api.IQQGameCommApi;
 import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.microapp.MiniAppInterface;
 import com.tencent.mobileqq.mini.api.QQMiniManager;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.weiyun.api.IWeiyunHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.groupvideo.GroupVideoHelper;
+import cooperation.groupvideo.api.IGroupVideoHelper;
 import cooperation.pluginbridge.BridgeHelper;
 import cooperation.qlink.QlinkHelper;
 import cooperation.qqdataline.DatalineHelper;
 import cooperation.qqfav.QfavHelper;
-import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
+import cooperation.qwallet.plugin.IQWalletHelper;
 import cooperation.qzone.QZoneHelper;
 import cooperation.smartdevice.SmartDevicePluginLoader;
 import cooperation.troop.NearbyVideoChatProxyActivity;
 import cooperation.troop.TroopPluginHelper;
-import cooperation.weiyun.WeiyunHelper;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
@@ -28,199 +30,440 @@ public class AppInterfaceFactory
 {
   public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    String str1 = null;
-    String str2 = paramBaseApplicationImpl.getPackageName();
-    Object localObject;
-    if (str2.equals(paramString)) {
-      localObject = new QQAppInterface(paramBaseApplicationImpl, paramString);
+    String str = paramBaseApplicationImpl.getPackageName();
+    if (QLog.isColorLevel()) {
+      QLog.d("AppInterfaceFactory", 2, new Object[] { "getAppRuntime processname=", paramString, " package=", str });
     }
-    for (;;)
+    if (str.equals(paramString))
     {
-      if (localObject != null)
+      paramBaseApplicationImpl = new QQAppInterface(paramBaseApplicationImpl, paramString);
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append("MSF");
+      if (!paramString.equals(((StringBuilder)localObject).toString()))
       {
-        paramBaseApplicationImpl = MobileQQ.getProcessSuffix(paramString, str2);
-        ((AppRuntime)localObject).setProcessName(paramBaseApplicationImpl);
-        if (QLog.isColorLevel()) {
-          QLog.d("AppInterfaceFactory", 2, new Object[] { "process ", paramString, " package ", str2, " suffix ", paramBaseApplicationImpl });
-        }
-      }
-      return localObject;
-      localObject = str1;
-      if (!paramString.equals(str2 + ":" + "MSF"))
-      {
-        localObject = str1;
-        if (!paramString.equals(str2 + ":" + "notifypush")) {
-          if (paramString.equals(str2 + ":" + "video"))
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append("notifypush");
+        if (!paramString.equals(((StringBuilder)localObject).toString()))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("video");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = new VideoAppInterface(paramBaseApplicationImpl, "video");
+            paramBaseApplicationImpl = new VideoAppInterface(paramBaseApplicationImpl, "video");
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "qzone"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("qzone");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = QZoneHelper.createQZoneMainRuntime(paramBaseApplicationImpl, "qzone");
-            ((AppRuntime)localObject).setAsToolRuntime();
+            paramBaseApplicationImpl = QZoneHelper.createQZoneMainRuntime(paramBaseApplicationImpl, "qzone");
+            paramBaseApplicationImpl.setAsToolRuntime();
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "qzonevideo"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("qzonevideo");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = QZoneHelper.createQZoneVideoAppInterface(paramBaseApplicationImpl, "qzonevideo");
+            paramBaseApplicationImpl = QZoneHelper.createQZoneVideoAppInterface(paramBaseApplicationImpl, "qzonevideo");
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "qzonelive"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("qzonelive");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = QZoneHelper.createQZoneLiveMainRuntime(paramBaseApplicationImpl, "qzonelive");
+            paramBaseApplicationImpl = QZoneHelper.createQZoneLiveMainRuntime(paramBaseApplicationImpl, "qzonelive");
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "picture"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("picture");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = QZoneHelper.createQZonePictureAppInterface(paramBaseApplicationImpl, "picture");
+            paramBaseApplicationImpl = QZoneHelper.createQZonePictureAppInterface(paramBaseApplicationImpl, "picture");
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "openSdk"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("openSdk");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = new OpenSDKAppInterface(paramBaseApplicationImpl, "openSdk");
+            paramBaseApplicationImpl = new OpenSDKAppInterface(paramBaseApplicationImpl, "openSdk");
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "photoedit"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("photoedit");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = new PluginRuntime();
-            ReportController.a((PluginRuntime)localObject);
+            paramBaseApplicationImpl = new PluginRuntime();
+            ReportController.a(paramBaseApplicationImpl);
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "zebra"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("zebra");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = new PluginRuntime();
+            paramBaseApplicationImpl = new PluginRuntime();
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "demoji"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("demoji");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = new PluginRuntime();
-            ReportController.a((PluginRuntime)localObject);
+            paramBaseApplicationImpl = new PluginRuntime();
+            ReportController.a(paramBaseApplicationImpl);
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "map"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("map");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = new QQMapActivity.MapRuntime();
+            paramBaseApplicationImpl = new QQMapActivity.MapRuntime();
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "weiyun"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("weiyun");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = WeiyunHelper.a(paramBaseApplicationImpl);
-            if (localObject != null) {
-              ReportController.a((PluginRuntime)localObject);
-            } else {
-              QLog.e("AppInterfaceFactory", 1, "WeiyunHelper.createRuntime return null!");
-            }
-          }
-          else if (paramString.equals(str2 + ":" + "qwallet"))
-          {
-            paramBaseApplicationImpl = QWalletHelperImpl.createQWalletAppInterface(paramBaseApplicationImpl, "qwallet");
-            localObject = paramBaseApplicationImpl;
+            paramBaseApplicationImpl = ((IWeiyunHelper)QRoute.api(IWeiyunHelper.class)).createRuntime(paramBaseApplicationImpl);
             if (paramBaseApplicationImpl != null)
             {
-              ReportController.a((PluginRuntime)paramBaseApplicationImpl);
-              localObject = paramBaseApplicationImpl;
+              ReportController.a(paramBaseApplicationImpl);
+              break label2148;
             }
+            QLog.e("AppInterfaceFactory", 1, "WeiyunHelper.createRuntime return null!");
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "qqfav"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("qwallet");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = QfavHelper.a(paramBaseApplicationImpl);
+            localObject = ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).createQWalletAppInterface(paramBaseApplicationImpl, "qwallet");
+            paramBaseApplicationImpl = (BaseApplicationImpl)localObject;
+            if (localObject == null) {
+              break label2148;
+            }
+            ReportController.a((PluginRuntime)localObject);
+            paramBaseApplicationImpl = (BaseApplicationImpl)localObject;
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "qlink"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("TMAssistantDownloadSDKService");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = QlinkHelper.a(paramBaseApplicationImpl, "qlink");
+            localObject = ((IQQGameCommApi)QRoute.api(IQQGameCommApi.class)).createAppRuntime(paramBaseApplicationImpl, "TMAssistantDownloadSDKService");
+            paramBaseApplicationImpl = (BaseApplicationImpl)localObject;
+            if (localObject == null) {
+              break label2148;
+            }
+            ReportController.a((PluginRuntime)localObject);
+            paramBaseApplicationImpl = (BaseApplicationImpl)localObject;
+            break label2148;
           }
-          else if (paramString.equals(str2 + ":" + "miniapp"))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("qqfav");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = new MiniAppInterface(paramBaseApplicationImpl, "miniapp");
+            paramBaseApplicationImpl = QfavHelper.a(paramBaseApplicationImpl);
+            break label2148;
           }
-          else if ((paramString.equals(str2 + ":" + "mini")) || (paramString.equals(str2 + ":" + "mini1")) || (paramString.equals(str2 + ":" + "mini2")) || (paramString.equals(str2 + ":" + "mini3")) || (paramString.equals(str2 + ":" + "mini4")) || (paramString.equals(str2 + ":" + "mini5")) || (paramString.equals(str2 + ":" + "mini6")) || (paramString.equals(str2 + ":" + "mini7")) || (paramString.equals(str2 + ":" + "mini_internal")))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("qlink");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = "mini";
+            paramBaseApplicationImpl = QlinkHelper.a(paramBaseApplicationImpl, "qlink");
+            break label2148;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("miniapp");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
+          {
+            paramBaseApplicationImpl = new MiniAppInterface(paramBaseApplicationImpl, "miniapp");
+            break label2148;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("mini");
+          if (paramString.equals(((StringBuilder)localObject).toString())) {
+            break label2125;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("mini1");
+          if (paramString.equals(((StringBuilder)localObject).toString())) {
+            break label2125;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("mini2");
+          if (paramString.equals(((StringBuilder)localObject).toString())) {
+            break label2125;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("mini3");
+          if (paramString.equals(((StringBuilder)localObject).toString())) {
+            break label2125;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("mini4");
+          if (paramString.equals(((StringBuilder)localObject).toString())) {
+            break label2125;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("mini5");
+          if (paramString.equals(((StringBuilder)localObject).toString())) {
+            break label2125;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("mini6");
+          if (paramString.equals(((StringBuilder)localObject).toString())) {
+            break label2125;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("mini7");
+          if (paramString.equals(((StringBuilder)localObject).toString())) {
+            break label2125;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("mini_internal");
+          if (paramString.equals(((StringBuilder)localObject).toString())) {
+            break label2125;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("qqwifi");
+          if (!paramString.equals(((StringBuilder)localObject).toString()))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(str);
+            ((StringBuilder)localObject).append(":");
+            ((StringBuilder)localObject).append("qqwifiditu");
+            if (!paramString.equals(((StringBuilder)localObject).toString()))
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(str);
+              ((StringBuilder)localObject).append(":");
+              ((StringBuilder)localObject).append("dataline");
+              if (paramString.equals(((StringBuilder)localObject).toString()))
+              {
+                paramBaseApplicationImpl = DatalineHelper.a(paramBaseApplicationImpl, "dataline");
+                break label2148;
+              }
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(str);
+              ((StringBuilder)localObject).append(":");
+              ((StringBuilder)localObject).append("smartdevice");
+              if (paramString.equals(((StringBuilder)localObject).toString()))
+              {
+                paramBaseApplicationImpl = SmartDevicePluginLoader.a(paramBaseApplicationImpl, "smartdevice");
+                break label2148;
+              }
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(str);
+              ((StringBuilder)localObject).append(":");
+              ((StringBuilder)localObject).append("readinjoy");
+              if (!paramString.equals(((StringBuilder)localObject).toString())) {
+                break label1611;
+              }
+            }
           }
         }
       }
-      try
+      paramBaseApplicationImpl = null;
+      break label2148;
+      label1611:
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append("troopmemcard");
+      if (paramString.equals(((StringBuilder)localObject).toString()))
       {
-        str1 = paramString.substring(str2.length() + 1);
-        localObject = str1;
+        paramBaseApplicationImpl = TroopPluginHelper.a(paramBaseApplicationImpl, "troop_member_card_plugin.apk");
+        ReportController.a((PluginRuntime)paramBaseApplicationImpl);
       }
-      catch (Exception localException)
+      else
       {
-        label1151:
-        break label1151;
-      }
-      localObject = QQMiniManager.createMiniAppInterface(paramBaseApplicationImpl, (String)localObject);
-      continue;
-      localObject = str1;
-      if (!paramString.equals(str2 + ":" + "qqwifi"))
-      {
-        localObject = str1;
-        if (!paramString.equals(str2 + ":" + "qqwifiditu")) {
-          if (paramString.equals(str2 + ":" + "dataline"))
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append("troopmanage");
+        if (paramString.equals(((StringBuilder)localObject).toString()))
+        {
+          paramBaseApplicationImpl = TroopPluginHelper.a(paramBaseApplicationImpl, "troop_manage_plugin.apk");
+          ReportController.a((PluginRuntime)paramBaseApplicationImpl);
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append("pluginbridge");
+          if (paramString.equals(((StringBuilder)localObject).toString()))
           {
-            localObject = DatalineHelper.a(paramBaseApplicationImpl, "dataline");
-          }
-          else if (paramString.equals(str2 + ":" + "smartdevice"))
-          {
-            localObject = SmartDevicePluginLoader.a(paramBaseApplicationImpl, "smartdevice");
+            localObject = BridgeHelper.a(paramBaseApplicationImpl, "pluginbridge");
+            paramBaseApplicationImpl = (BaseApplicationImpl)localObject;
+            if (localObject != null)
+            {
+              ReportController.a((PluginRuntime)localObject);
+              paramBaseApplicationImpl = (BaseApplicationImpl)localObject;
+            }
           }
           else
           {
-            localObject = str1;
-            if (!paramString.equals(str2 + ":" + "readinjoy")) {
-              if (paramString.equals(str2 + ":" + "troopmemcard"))
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(str);
+            ((StringBuilder)localObject).append(":");
+            ((StringBuilder)localObject).append("groupvideo");
+            if (paramString.equals(((StringBuilder)localObject).toString()))
+            {
+              paramBaseApplicationImpl = ((IGroupVideoHelper)QRoute.api(IGroupVideoHelper.class)).createAppInterface(paramBaseApplicationImpl, "groupvideo");
+            }
+            else
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(str);
+              ((StringBuilder)localObject).append(":");
+              ((StringBuilder)localObject).append("tool");
+              if (paramString.equals(((StringBuilder)localObject).toString()))
               {
-                localObject = TroopPluginHelper.a(paramBaseApplicationImpl, "troop_member_card_plugin.apk");
-                ReportController.a((PluginRuntime)localObject);
-              }
-              else if (paramString.equals(str2 + ":" + "troopmanage"))
-              {
-                localObject = TroopPluginHelper.a(paramBaseApplicationImpl, "troop_manage_plugin.apk");
-                ReportController.a((PluginRuntime)localObject);
-              }
-              else if (paramString.equals(str2 + ":" + "pluginbridge"))
-              {
-                paramBaseApplicationImpl = BridgeHelper.a(paramBaseApplicationImpl, "pluginbridge");
-                localObject = paramBaseApplicationImpl;
-                if (paramBaseApplicationImpl != null)
-                {
-                  ReportController.a((PluginRuntime)paramBaseApplicationImpl);
-                  localObject = paramBaseApplicationImpl;
-                }
-              }
-              else if (paramString.equals(str2 + ":" + "groupvideo"))
-              {
-                localObject = GroupVideoHelper.a(paramBaseApplicationImpl, "groupvideo");
-              }
-              else if (paramString.equals(str2 + ":" + "tool"))
-              {
-                localObject = new ToolAppRuntime();
-                ((AppRuntime)localObject).setAsToolRuntime();
-              }
-              else if (paramString.equals(str2 + ":" + "peak"))
-              {
-                localObject = new ToolRuntimePeak();
-                ((AppRuntime)localObject).setAsToolRuntime();
-              }
-              else if (paramString.equals(str2 + ":" + "nearby_video"))
-              {
-                localObject = NearbyVideoChatProxyActivity.a(paramBaseApplicationImpl, "nearby_video");
-              }
-              else if (paramString.equals(str2 + ":" + "avgame"))
-              {
-                localObject = new AVGameAppInterface(paramBaseApplicationImpl, "avgame");
-              }
-              else if (paramString.equals(str2 + ":" + "plugins"))
-              {
-                localObject = new PluginRuntime();
-                ((PluginRuntime)localObject).setAsToolRuntime();
+                paramBaseApplicationImpl = new ToolAppRuntime();
+                paramBaseApplicationImpl.setAsToolRuntime();
               }
               else
               {
-                localObject = new PluginRuntime();
-                ReportController.a((PluginRuntime)localObject);
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append(str);
+                ((StringBuilder)localObject).append(":");
+                ((StringBuilder)localObject).append("peak");
+                if (paramString.equals(((StringBuilder)localObject).toString()))
+                {
+                  paramBaseApplicationImpl = new ToolRuntimePeak();
+                  paramBaseApplicationImpl.setAsToolRuntime();
+                }
+                else
+                {
+                  localObject = new StringBuilder();
+                  ((StringBuilder)localObject).append(str);
+                  ((StringBuilder)localObject).append(":");
+                  ((StringBuilder)localObject).append("nearby_video");
+                  if (paramString.equals(((StringBuilder)localObject).toString()))
+                  {
+                    paramBaseApplicationImpl = NearbyVideoChatProxyActivity.a(paramBaseApplicationImpl, "nearby_video");
+                  }
+                  else
+                  {
+                    localObject = new StringBuilder();
+                    ((StringBuilder)localObject).append(str);
+                    ((StringBuilder)localObject).append(":");
+                    ((StringBuilder)localObject).append("avgame");
+                    if (paramString.equals(((StringBuilder)localObject).toString()))
+                    {
+                      paramBaseApplicationImpl = new AVGameAppInterface(paramBaseApplicationImpl, "avgame");
+                    }
+                    else
+                    {
+                      paramBaseApplicationImpl = new StringBuilder();
+                      paramBaseApplicationImpl.append(str);
+                      paramBaseApplicationImpl.append(":");
+                      paramBaseApplicationImpl.append("plugins");
+                      if (paramString.equals(paramBaseApplicationImpl.toString()))
+                      {
+                        paramBaseApplicationImpl = new PluginRuntime();
+                        paramBaseApplicationImpl.setAsToolRuntime();
+                      }
+                      else
+                      {
+                        paramBaseApplicationImpl = new PluginRuntime();
+                        ReportController.a(paramBaseApplicationImpl);
+                      }
+                    }
+                  }
+                }
               }
             }
           }
         }
       }
     }
+    try
+    {
+      label2125:
+      localObject = paramString.substring(str.length() + 1);
+    }
+    catch (Exception localException)
+    {
+      label2139:
+      label2148:
+      break label2139;
+    }
+    Object localObject = "mini";
+    paramBaseApplicationImpl = QQMiniManager.createMiniAppInterface(paramBaseApplicationImpl, (String)localObject);
+    if (paramBaseApplicationImpl != null)
+    {
+      localObject = MobileQQ.getProcessSuffix(paramString, str);
+      paramBaseApplicationImpl.setProcessName((String)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("AppInterfaceFactory", 2, new Object[] { "process ", paramString, " package ", str, " suffix ", localObject });
+      }
+    }
+    return paramBaseApplicationImpl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.AppInterfaceFactory
  * JD-Core Version:    0.7.0.1
  */

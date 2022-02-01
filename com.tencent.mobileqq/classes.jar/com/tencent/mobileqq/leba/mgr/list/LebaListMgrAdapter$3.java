@@ -15,7 +15,7 @@ class LebaListMgrAdapter$3
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
     if (paramView != null)
     {
-      paramView = (Switch)paramView.findViewById(2131364157);
+      paramView = (Switch)paramView.findViewById(2131364078);
       if ((paramView != null) && (paramView.getVisibility() != 8))
       {
         paramAccessibilityNodeInfo.setCheckable(true);
@@ -27,7 +27,7 @@ class LebaListMgrAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.mgr.list.LebaListMgrAdapter.3
  * JD-Core Version:    0.7.0.1
  */

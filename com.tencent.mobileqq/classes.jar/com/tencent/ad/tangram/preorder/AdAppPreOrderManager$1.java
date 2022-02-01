@@ -10,7 +10,10 @@ class AdAppPreOrderManager$1
   
   public void onAccountStatusChanged(String paramString1, String paramString2)
   {
-    AdLog.i("AdAppPreOrderManager", "onAccountStatusChanged:" + paramString1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAccountStatusChanged:");
+    localStringBuilder.append(paramString1);
+    AdLog.i("AdAppPreOrderManager", localStringBuilder.toString());
     this.this$0.stopTasks(paramString2);
   }
 }

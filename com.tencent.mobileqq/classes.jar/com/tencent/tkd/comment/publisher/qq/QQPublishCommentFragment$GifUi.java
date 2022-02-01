@@ -6,10 +6,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tkd.comment.publisher.qq.bridge.QQViewBridge;
 import com.tencent.tkd.comment.publisher.qq.model.TkdQQArgument;
-import com.tencent.tkd.comment.publisher.qq.util.TkdQQReport;
-import com.tencent.tkd.comment.publisher.qq.util.TkdQQView;
 
 class QQPublishCommentFragment$GifUi
   implements View.OnClickListener
@@ -24,11 +22,11 @@ class QQPublishCommentFragment$GifUi
   
   QQPublishCommentFragment$GifUi(QQPublishCommentFragment paramQQPublishCommentFragment, Dialog paramDialog)
   {
-    this.vGifButton = ((ImageView)paramDialog.findViewById(2131367913));
+    this.vGifButton = ((ImageView)paramDialog.findViewById(R.id.r));
     this.vGifButton.setOnClickListener(this);
-    this.vGifImageContainer = ((RelativeLayout)paramDialog.findViewById(2131368801));
-    this.vGifImageView = ((ImageView)paramDialog.findViewById(2131368802));
-    this.vDelete = paramDialog.findViewById(2131368805);
+    this.vGifImageContainer = ((RelativeLayout)paramDialog.findViewById(R.id.t));
+    this.vGifImageView = ((ImageView)paramDialog.findViewById(R.id.u));
+    this.vDelete = paramDialog.findViewById(R.id.v);
     this.vDelete.setOnClickListener(this);
   }
   
@@ -37,51 +35,55 @@ class QQPublishCommentFragment$GifUi
     this.vGifImageView.setImageDrawable(paramDrawable);
     this.vGifImageContainer.setVisibility(0);
     QQPublishCommentFragment.access$800(this.this$0);
-    if ((this.onGifChangeListener != null) && (this.onGifChangeListener.onGifSelected())) {
+    paramDrawable = this.onGifChangeListener;
+    if ((paramDrawable != null) && (paramDrawable.onGifSelected())) {
       this.isSelectedBeforeImage = true;
     }
   }
   
   private void onGifBtn()
   {
-    if ((QQPublishCommentFragment.access$2100(this.this$0) == 2) && (QQPublishCommentFragment.access$1500(this.this$0) == 2))
+    if ((QQPublishCommentFragment.access$2200(this.this$0) == 2) && (QQPublishCommentFragment.access$1600(this.this$0) == 2))
     {
-      QQPublishCommentFragment.access$2200(this.this$0, 1);
+      QQPublishCommentFragment.access$2300(this.this$0, 1);
       return;
     }
-    QQPublishCommentFragment.access$1502(this.this$0, 2);
-    QQPublishCommentFragment.access$2300(this.this$0, 2);
+    QQPublishCommentFragment.access$1602(this.this$0, 2);
+    QQPublishCommentFragment.access$2400(this.this$0, 2);
     reportOpenGifPanel();
   }
   
   private void onGifDelete()
   {
     this.vGifImageContainer.setVisibility(8);
-    if (TkdQQView.hasGif()) {
+    if (this.this$0.viewBridge.hasGif()) {
       reportDeleteGif();
     }
-    TkdQQView.deleteGif();
+    this.this$0.viewBridge.deleteGif();
     QQPublishCommentFragment.access$800(this.this$0);
-    if (this.onGifChangeListener != null) {
-      this.onGifChangeListener.onGifDelete(this.isSelectedBeforeImage);
+    QQPublishCommentFragment.OnGifChangeListener localOnGifChangeListener = this.onGifChangeListener;
+    if (localOnGifChangeListener != null) {
+      localOnGifChangeListener.onGifDelete(this.isSelectedBeforeImage);
     }
     this.isSelectedBeforeImage = false;
   }
   
   private void reportDeleteGif()
   {
-    TkdQQReport.publicAccountReportClickEvent("", "0X800844D", "0X800844D", "", "", "", QQPublishCommentFragment.access$1800(this.this$0, false));
+    QQPublishCommentFragment localQQPublishCommentFragment = this.this$0;
+    QQPublishCommentFragment.access$1400(localQQPublishCommentFragment, "", "0X800844D", "0X800844D", "", "", "", QQPublishCommentFragment.access$1900(localQQPublishCommentFragment, false));
   }
   
   private void reportOpenGifPanel()
   {
-    TkdQQReport.publicAccountReportClickEvent("", "0X800844C", "0X800844C", "", "", "", QQPublishCommentFragment.access$1800(this.this$0, false));
+    QQPublishCommentFragment localQQPublishCommentFragment = this.this$0;
+    QQPublishCommentFragment.access$1400(localQQPublishCommentFragment, "", "0X800844C", "0X800844C", "", "", "", QQPublishCommentFragment.access$1900(localQQPublishCommentFragment, false));
   }
   
   public View getGifPanel()
   {
     if (this.vGifPanel == null) {
-      this.vGifPanel = TkdQQView.getGifPanel(QQPublishCommentFragment.access$2000(this.this$0));
+      this.vGifPanel = this.this$0.viewBridge.getGifPanel(QQPublishCommentFragment.access$2100(this.this$0));
     }
     return this.vGifPanel;
   }
@@ -89,38 +91,37 @@ class QQPublishCommentFragment$GifUi
   void initData()
   {
     ImageView localImageView = this.vGifButton;
-    if (QQPublishCommentFragment.access$1200(this.this$0).showGif) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
+    int i;
+    if (QQPublishCommentFragment.access$1200(this.this$0).showGif) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localImageView.setVisibility(i);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.vGifButton) {
-      onGifBtn();
-    }
-    for (;;)
+    if (paramView == this.vGifButton)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      onGifBtn();
       return;
-      if (paramView == this.vDelete) {
-        onGifDelete();
-      }
+    }
+    if (paramView == this.vDelete) {
+      onGifDelete();
     }
   }
   
   void onStatusChanged()
   {
     ImageView localImageView = this.vGifButton;
-    if ((QQPublishCommentFragment.access$2400(this.this$0) == 2) && (QQPublishCommentFragment.access$1500(this.this$0) == 2)) {}
-    for (int i = 2130851091;; i = 2130851089)
-    {
-      localImageView.setImageResource(i);
-      return;
+    int i;
+    if ((QQPublishCommentFragment.access$2500(this.this$0) == 2) && (QQPublishCommentFragment.access$1600(this.this$0) == 2)) {
+      i = R.drawable.e;
+    } else {
+      i = R.drawable.d;
     }
+    localImageView.setImageResource(i);
   }
   
   public void setOnGifChangeListener(QQPublishCommentFragment.OnGifChangeListener paramOnGifChangeListener)
@@ -130,7 +131,7 @@ class QQPublishCommentFragment$GifUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment.GifUi
  * JD-Core Version:    0.7.0.1
  */

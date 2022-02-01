@@ -43,21 +43,16 @@ public class QSecRuntimeImpl
     if (paramString == null) {
       return null;
     }
-    IRuntimeInterface localIRuntimeInterface2 = (IRuntimeInterface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    IRuntimeInterface localIRuntimeInterface1 = localIRuntimeInterface2;
-    if (localIRuntimeInterface2 != null)
-    {
-      localIRuntimeInterface1 = localIRuntimeInterface2;
-      if (!paramString.equals(localIRuntimeInterface2.getInterfaceName())) {
-        localIRuntimeInterface1 = null;
-      }
+    IRuntimeInterface localIRuntimeInterface = (IRuntimeInterface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localIRuntimeInterface != null) && (!paramString.equals(localIRuntimeInterface.getInterfaceName()))) {
+      return null;
     }
-    return localIRuntimeInterface1;
+    return localIRuntimeInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecRuntimeImpl
  * JD-Core Version:    0.7.0.1
  */

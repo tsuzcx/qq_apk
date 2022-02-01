@@ -44,38 +44,47 @@ public class ByteBuffer
   
   public boolean Consume(int paramInt)
   {
-    if ((paramInt <= 0) || (length() < paramInt)) {
-      return false;
+    if (paramInt > 0)
+    {
+      if (length() < paramInt) {
+        return false;
+      }
+      byte[] arrayOfByte = new byte[paramInt];
+      System.arraycopy(this.buffer, this.curIndex, arrayOfByte, 0, paramInt);
+      this.curIndex += paramInt;
+      return true;
     }
-    byte[] arrayOfByte = new byte[paramInt];
-    System.arraycopy(this.buffer, this.curIndex, arrayOfByte, 0, paramInt);
-    this.curIndex += paramInt;
-    return true;
+    return false;
   }
   
   public byte[] Data()
   {
-    byte[] arrayOfByte = new byte[this.bufferSize];
-    System.arraycopy(this.buffer, 0, arrayOfByte, 0, this.bufferSize);
+    int i = this.bufferSize;
+    byte[] arrayOfByte = new byte[i];
+    System.arraycopy(this.buffer, 0, arrayOfByte, 0, i);
     return arrayOfByte;
   }
   
   public String ReadString(int paramInt)
   {
-    if ((paramInt <= 0) || (length() < paramInt)) {
-      return null;
-    }
-    Object localObject = new byte[paramInt];
-    System.arraycopy(this.buffer, this.curIndex, localObject, 0, paramInt);
-    this.curIndex += paramInt;
-    try
+    if (paramInt > 0)
     {
-      localObject = new String((byte[])localObject, "GBK");
-      return localObject;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      localUnsupportedEncodingException.printStackTrace();
+      if (length() < paramInt) {
+        return null;
+      }
+      Object localObject = new byte[paramInt];
+      System.arraycopy(this.buffer, this.curIndex, localObject, 0, paramInt);
+      this.curIndex += paramInt;
+      try
+      {
+        localObject = new String((byte[])localObject, "GBK");
+        return localObject;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+        return null;
+      }
     }
     return null;
   }
@@ -90,12 +99,10 @@ public class ByteBuffer
     int i = this.curIndex;
     this.curIndex = (i + 1);
     arrayOfByte1[0] = arrayOfByte2[i];
-    arrayOfByte2 = this.buffer;
     i = this.curIndex;
     this.curIndex = (i + 1);
     arrayOfByte1[1] = arrayOfByte2[i];
-    i = arrayOfByte1[0];
-    return (short)(arrayOfByte1[1] + i * 256);
+    return (short)(arrayOfByte1[0] * 256 + arrayOfByte1[1]);
   }
   
   public short ReadUInt16Length()
@@ -107,7 +114,6 @@ public class ByteBuffer
     int i = this.curIndex;
     this.curIndex = (i + 1);
     i = (short)(arrayOfByte[i] << 8);
-    arrayOfByte = this.buffer;
     int j = this.curIndex;
     this.curIndex = (j + 1);
     return (short)(i + (short)(arrayOfByte[j] & 0xFF));
@@ -115,41 +121,30 @@ public class ByteBuffer
   
   public int ReadUInt32()
   {
-    int n = 0;
-    int i2;
-    if (length() < 4)
-    {
-      i2 = -1;
-      return i2;
+    if (length() < 4) {
+      return -1;
     }
     byte[] arrayOfByte = this.buffer;
+    int n = this.curIndex;
+    this.curIndex = (n + 1);
+    int i = arrayOfByte[n];
+    n = 0;
     int i1 = this.curIndex;
     this.curIndex = (i1 + 1);
-    int i = arrayOfByte[i1];
-    arrayOfByte = this.buffer;
-    i1 = this.curIndex;
-    this.curIndex = (i1 + 1);
     int j = arrayOfByte[i1];
-    arrayOfByte = this.buffer;
     i1 = this.curIndex;
     this.curIndex = (i1 + 1);
     int k = arrayOfByte[i1];
-    arrayOfByte = this.buffer;
     i1 = this.curIndex;
     this.curIndex = (i1 + 1);
     int m = arrayOfByte[i1];
     i1 = 0;
-    for (;;)
+    while (n < 4)
     {
-      i2 = n;
-      if (i1 >= 4) {
-        break;
-      }
-      i2 = new byte[] { i, j, k, m }[(3 - i1)];
-      int i3 = Common.intPow(16, i1 * 2);
-      i1 += 1;
-      n = i2 * i3 + n;
+      i1 += new byte[] { i, j, k, m }[(3 - n)] * Common.intPow(16, n * 2);
+      n += 1;
     }
+    return i1;
   }
   
   public byte ReadUInt8()
@@ -165,31 +160,36 @@ public class ByteBuffer
   
   public void WriteByteBuffer(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 1)) {
-      return;
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length < 1) {
+        return;
+      }
+      System.arraycopy(paramArrayOfByte, 0, this.buffer, this.curIndex, paramArrayOfByte.length);
+      this.curIndex += paramArrayOfByte.length;
+      this.bufferSize += paramArrayOfByte.length;
     }
-    System.arraycopy(paramArrayOfByte, 0, this.buffer, this.curIndex, paramArrayOfByte.length);
-    this.curIndex += paramArrayOfByte.length;
-    this.bufferSize += paramArrayOfByte.length;
   }
   
   public void WriteString(String paramString)
   {
-    if ((paramString == null) || (paramString.length() < 1)) {
-      return;
-    }
-    try
+    if (paramString != null)
     {
-      paramString = paramString.getBytes("GBK");
-      System.arraycopy(paramString, 0, this.buffer, this.curIndex, paramString.length);
-      this.curIndex += paramString.length;
-      int i = this.bufferSize;
-      this.bufferSize = (paramString.length + i);
-      return;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      paramString.printStackTrace();
+      if (paramString.length() < 1) {
+        return;
+      }
+      try
+      {
+        paramString = paramString.getBytes("GBK");
+        System.arraycopy(paramString, 0, this.buffer, this.curIndex, paramString.length);
+        this.curIndex += paramString.length;
+        this.bufferSize += paramString.length;
+        return;
+      }
+      catch (UnsupportedEncodingException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
@@ -219,8 +219,10 @@ public class ByteBuffer
   
   public void WriteUInt8(byte paramByte)
   {
-    this.buffer[this.curIndex] = paramByte;
-    this.curIndex += 1;
+    byte[] arrayOfByte = this.buffer;
+    int i = this.curIndex;
+    arrayOfByte[i] = paramByte;
+    this.curIndex = (i + 1);
     this.bufferSize += 1;
   }
   

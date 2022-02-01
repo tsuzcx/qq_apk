@@ -16,12 +16,14 @@ class PkSeatView$1
   {
     if ((PkSeatView.a(this.a) != null) && (PkSeatView.a(this.a).b != null))
     {
-      int[] arrayOfInt1 = new int[2];
-      this.a.getLocationInWindow(arrayOfInt1);
-      int[] arrayOfInt2 = new int[2];
-      PkSeatView.a(this.a).b.getLocationInWindow(arrayOfInt2);
-      PkSeatView.a(this.a, new RoundEmptyRectRelativeLayout.ClipRoundRect(arrayOfInt2[0] - arrayOfInt1[0], arrayOfInt2[1] - arrayOfInt1[1], PkSeatView.a(this.a).b.getWidth(), PkSeatView.a(this.a).b.getHeight(), ViewUtils.a(12.0F)));
-      this.a.a(PkSeatView.a(this.a));
+      Object localObject = new int[2];
+      this.a.getLocationInWindow((int[])localObject);
+      int[] arrayOfInt = new int[2];
+      PkSeatView.a(this.a).b.getLocationInWindow(arrayOfInt);
+      PkSeatView localPkSeatView = this.a;
+      PkSeatView.a(localPkSeatView, new RoundEmptyRectRelativeLayout.ClipRoundRect(arrayOfInt[0] - localObject[0], arrayOfInt[1] - localObject[1], PkSeatView.a(localPkSeatView).b.getWidth(), PkSeatView.a(this.a).b.getHeight(), ViewUtils.a(12.0F)));
+      localObject = this.a;
+      ((PkSeatView)localObject).a(PkSeatView.a((PkSeatView)localObject));
       if (Build.VERSION.SDK_INT >= 16) {
         PkSeatView.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
       }
@@ -30,7 +32,7 @@ class PkSeatView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.PkSeatView.1
  * JD-Core Version:    0.7.0.1
  */

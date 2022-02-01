@@ -29,53 +29,62 @@ public class AutoGoneRelativeLayout
   
   public AccessibilityNodeInfo createAccessibilityNodeInfo()
   {
-    boolean bool2 = false;
     long l = SystemClock.uptimeMillis();
     if (QLog.isColorLevel()) {
       QLog.d("AutoGoneRelativeLayout", 2, "createAccessibilityNodeInfo() called");
     }
-    StackTraceElement[] arrayOfStackTraceElement;
-    int k;
-    int i;
-    int j;
     if ("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER))
     {
-      arrayOfStackTraceElement = new Throwable().getStackTrace();
-      k = arrayOfStackTraceElement.length;
-      i = 0;
-      j = 0;
-    }
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < k)
+      Object localObject1 = new Throwable().getStackTrace();
+      int k = localObject1.length;
+      boolean bool2 = false;
+      int i = 0;
+      int j = 0;
+      boolean bool1;
+      for (;;)
       {
-        StackTraceElement localStackTraceElement = arrayOfStackTraceElement[i];
-        if (QLog.isColorLevel()) {
-          QLog.d("AutoGoneRelativeLayout", 2, "createAccessibilityNodeInfo() i = [" + j + "], " + localStackTraceElement.toString());
+        bool1 = bool2;
+        if (i >= k) {
+          break;
+        }
+        Object localObject2 = localObject1[i];
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("createAccessibilityNodeInfo() i = [");
+          localStringBuilder.append(j);
+          localStringBuilder.append("], ");
+          localStringBuilder.append(localObject2.toString());
+          QLog.d("AutoGoneRelativeLayout", 2, localStringBuilder.toString());
         }
         j += 1;
-        if (localStackTraceElement.getClassName().contains("AccessibilityInteractionController")) {
+        if (localObject2.getClassName().contains("AccessibilityInteractionController"))
+        {
           bool1 = true;
+          break;
         }
+        i += 1;
       }
-      else
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AutoGoneRelativeLayout", 2, "createAccessibilityNodeInfo() isFromAccessibilityService = [" + bool1 + "], cost time = [" + (SystemClock.uptimeMillis() - l) + "]");
-        }
-        if (bool1) {
-          ScreenShotHelper.a((Activity)getContext());
-        }
-        return super.createAccessibilityNodeInfo();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("createAccessibilityNodeInfo() isFromAccessibilityService = [");
+        ((StringBuilder)localObject1).append(bool1);
+        ((StringBuilder)localObject1).append("], cost time = [");
+        ((StringBuilder)localObject1).append(SystemClock.uptimeMillis() - l);
+        ((StringBuilder)localObject1).append("]");
+        QLog.d("AutoGoneRelativeLayout", 2, ((StringBuilder)localObject1).toString());
       }
-      i += 1;
+      if (bool1) {
+        ScreenShotHelper.a((Activity)getContext());
+      }
     }
+    return super.createAccessibilityNodeInfo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.AutoGoneRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

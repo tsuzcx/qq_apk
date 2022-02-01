@@ -28,31 +28,28 @@ class ContactsTroopAdapter$LoadTroopDiscussInfoSubRunnable
     TroopManager localTroopManager = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     RecentUserProxy localRecentUserProxy = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
     ArrayList localArrayList1 = localTroopManager.b();
-    Object localObject = ((DiscussionManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a();
+    Object localObject1 = ((DiscussionManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a();
     ArrayList localArrayList2 = new ArrayList();
-    Iterator localIterator = ((List)localObject).iterator();
+    Object localObject2 = ((List)localObject1).iterator();
     int i = 0;
-    if (localIterator.hasNext())
+    while (((Iterator)localObject2).hasNext())
     {
-      DiscussionInfo localDiscussionInfo = (DiscussionInfo)localIterator.next();
-      int j = i;
-      if (localDiscussionInfo != null)
+      DiscussionInfo localDiscussionInfo = (DiscussionInfo)((Iterator)localObject2).next();
+      if ((localDiscussionInfo != null) && (!TextUtils.isEmpty(localDiscussionInfo.uin)))
       {
-        j = i;
-        if (!TextUtils.isEmpty(localDiscussionInfo.uin))
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("ContactsTroopAdapter", 2, "load data asyncLoadTroopListAndNotifyUi discussion : " + localDiscussionInfo);
-          }
-          if (!TextUtils.isEmpty(localDiscussionInfo.discussionName)) {
-            localArrayList2.add(localDiscussionInfo);
-          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("load data asyncLoadTroopListAndNotifyUi discussion : ");
+          localStringBuilder.append(localDiscussionInfo);
+          QLog.d("ContactsTroopAdapter", 2, localStringBuilder.toString());
         }
-      }
-      for (;;)
-      {
-        break;
-        if (i >= 40)
+        if (!TextUtils.isEmpty(localDiscussionInfo.discussionName))
+        {
+          localArrayList2.add(localDiscussionInfo);
+        }
+        else if (i >= 40)
         {
           localArrayList2.add(localDiscussionInfo);
         }
@@ -63,24 +60,33 @@ class ContactsTroopAdapter$LoadTroopDiscussInfoSubRunnable
         }
         else
         {
-          j = i + 1;
-          QLog.d("ContactsTroopAdapter", 1, "load data asyncLoadTroopListAndNotifyUi discussion skiped : " + localDiscussionInfo);
-          i = j;
+          i += 1;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("load data asyncLoadTroopListAndNotifyUi discussion skiped : ");
+          localStringBuilder.append(localDiscussionInfo);
+          QLog.d("ContactsTroopAdapter", 1, localStringBuilder.toString());
         }
       }
     }
-    QLog.d("ContactsTroopAdapter", 1, "load data asyncLoadTroopListAndNotifyUi count: " + i + "  org_discussions.size:" + ((List)localObject).size() + "  discussions.size:" + localArrayList2.size());
-    localObject = new ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable(this.this$0, null);
-    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject).jdField_a_of_type_ComTencentMobileqqAppTroopManager = localTroopManager;
-    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject).jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy = localRecentUserProxy;
-    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject).jdField_a_of_type_JavaUtilArrayList = localArrayList1;
-    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject).jdField_a_of_type_JavaUtilList = localArrayList2;
-    ThreadManager.getUIHandler().post((Runnable)localObject);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("load data asyncLoadTroopListAndNotifyUi count: ");
+    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append("  org_discussions.size:");
+    ((StringBuilder)localObject2).append(((List)localObject1).size());
+    ((StringBuilder)localObject2).append("  discussions.size:");
+    ((StringBuilder)localObject2).append(localArrayList2.size());
+    QLog.d("ContactsTroopAdapter", 1, ((StringBuilder)localObject2).toString());
+    localObject1 = new ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable(this.this$0);
+    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).jdField_a_of_type_ComTencentMobileqqAppTroopManager = localTroopManager;
+    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy = localRecentUserProxy;
+    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).jdField_a_of_type_JavaUtilArrayList = localArrayList1;
+    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).jdField_a_of_type_JavaUtilList = localArrayList2;
+    ThreadManager.getUIHandler().post((Runnable)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter.LoadTroopDiscussInfoSubRunnable
  * JD-Core Version:    0.7.0.1
  */

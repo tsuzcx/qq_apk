@@ -2,16 +2,16 @@ package com.tencent.mobileqq.troop.navigatebar;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 public class TroopAioMsgNavigateEffectPic
   extends BaseTroopAioMsgNavigateBarDelegate
 {
-  public TroopAioMsgNavigateEffectPic(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public TroopAioMsgNavigateEffectPic(QQAppInterface paramQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    super(paramQQAppInterface, paramContext, paramBaseSessionInfo);
     this.a = 7;
   }
   
@@ -37,7 +37,7 @@ public class TroopAioMsgNavigateEffectPic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateEffectPic
  * JD-Core Version:    0.7.0.1
  */

@@ -18,27 +18,26 @@ public final class PhoneRomUtils
   @JvmStatic
   public static final double getEmuiVersion()
   {
-    int i;
     try
     {
-      String str1 = getSystemProperty("ro.build.version.emui");
-      if (str1 == null) {
+      String str = getSystemProperty("ro.build.version.emui");
+      if (str == null) {
         Intrinsics.throwNpe();
       }
-      i = StringsKt.indexOf$default((CharSequence)str1, "_", 0, false, 6, null);
-      if (str1 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+      int i = StringsKt.indexOf$default((CharSequence)str, "_", 0, false, 6, null);
+      if (str != null)
+      {
+        str = str.substring(i + 1);
+        Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.String).substring(startIndex)");
+        return Double.parseDouble(str);
       }
+      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      return 4.0D;
     }
-    String str2 = localException.substring(i + 1);
-    Intrinsics.checkExpressionValueIsNotNull(str2, "(this as java.lang.String).substring(startIndex)");
-    double d = Double.parseDouble(str2);
-    return d;
+    return 4.0D;
   }
   
   /* Error */
@@ -47,161 +46,205 @@ public final class PhoneRomUtils
   public static final String getSystemProperty(@org.jetbrains.annotations.NotNull String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_0
-    //   3: ldc 102
-    //   5: invokestatic 105	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   8: aconst_null
-    //   9: checkcast 107	java/io/BufferedReader
-    //   12: astore_2
+    //   0: aload_0
+    //   1: ldc 102
+    //   3: invokestatic 105	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   6: aconst_null
+    //   7: checkcast 107	java/io/BufferedReader
+    //   10: astore_2
+    //   11: aload_2
+    //   12: astore_1
     //   13: invokestatic 113	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   16: new 115	java/lang/StringBuilder
-    //   19: dup
-    //   20: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   23: ldc 118
-    //   25: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: aload_0
-    //   29: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: invokevirtual 130	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   38: astore_1
-    //   39: aload_1
-    //   40: ldc 132
-    //   42: invokestatic 90	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   45: new 107	java/io/BufferedReader
-    //   48: dup
-    //   49: new 134	java/io/InputStreamReader
-    //   52: dup
-    //   53: aload_1
-    //   54: invokevirtual 140	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   57: invokespecial 143	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   60: checkcast 145	java/io/Reader
-    //   63: sipush 1024
-    //   66: invokespecial 148	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   69: astore_1
-    //   70: aload_1
-    //   71: invokevirtual 151	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   74: astore_2
-    //   75: aload_2
-    //   76: ldc 153
-    //   78: invokestatic 90	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   81: aload_1
-    //   82: invokevirtual 156	java/io/BufferedReader:close	()V
-    //   85: aload_1
-    //   86: invokevirtual 156	java/io/BufferedReader:close	()V
-    //   89: aload_2
-    //   90: astore_0
-    //   91: aload_0
-    //   92: areturn
-    //   93: astore_0
-    //   94: ldc 34
-    //   96: ldc 158
-    //   98: aload_0
-    //   99: checkcast 160	java/lang/Throwable
-    //   102: invokestatic 166	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   105: pop
-    //   106: goto -17 -> 89
-    //   109: astore 4
-    //   111: aload_2
-    //   112: astore_1
-    //   113: aload 4
-    //   115: astore_2
+    //   16: astore_3
+    //   17: aload_2
+    //   18: astore_1
+    //   19: new 115	java/lang/StringBuilder
+    //   22: dup
+    //   23: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   26: astore 4
+    //   28: aload_2
+    //   29: astore_1
+    //   30: aload 4
+    //   32: ldc 118
+    //   34: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: pop
+    //   38: aload_2
+    //   39: astore_1
+    //   40: aload 4
+    //   42: aload_0
+    //   43: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: pop
+    //   47: aload_2
+    //   48: astore_1
+    //   49: aload_3
+    //   50: aload 4
+    //   52: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: invokevirtual 130	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   58: astore_3
+    //   59: aload_2
+    //   60: astore_1
+    //   61: aload_3
+    //   62: ldc 132
+    //   64: invokestatic 78	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   67: aload_2
+    //   68: astore_1
+    //   69: new 107	java/io/BufferedReader
+    //   72: dup
+    //   73: new 134	java/io/InputStreamReader
+    //   76: dup
+    //   77: aload_3
+    //   78: invokevirtual 140	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   81: invokespecial 143	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   84: checkcast 145	java/io/Reader
+    //   87: sipush 1024
+    //   90: invokespecial 148	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   93: astore_3
+    //   94: aload_3
+    //   95: invokevirtual 151	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   98: astore_1
+    //   99: aload_1
+    //   100: ldc 153
+    //   102: invokestatic 78	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   105: aload_3
+    //   106: invokevirtual 156	java/io/BufferedReader:close	()V
+    //   109: aload_3
+    //   110: invokevirtual 156	java/io/BufferedReader:close	()V
+    //   113: aload_1
+    //   114: areturn
+    //   115: astore_0
     //   116: ldc 34
-    //   118: new 115	java/lang/StringBuilder
-    //   121: dup
-    //   122: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   125: ldc 168
-    //   127: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: aload_0
-    //   131: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   137: aload_2
-    //   138: checkcast 160	java/lang/Throwable
-    //   141: invokestatic 166	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   144: pop
-    //   145: aload_3
-    //   146: astore_0
-    //   147: aload_1
-    //   148: ifnull -57 -> 91
-    //   151: aload_1
-    //   152: invokevirtual 156	java/io/BufferedReader:close	()V
-    //   155: aconst_null
-    //   156: areturn
-    //   157: astore_0
-    //   158: ldc 34
-    //   160: ldc 158
-    //   162: aload_0
-    //   163: checkcast 160	java/lang/Throwable
-    //   166: invokestatic 166	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   118: ldc 158
+    //   120: aload_0
+    //   121: checkcast 160	java/lang/Throwable
+    //   124: invokestatic 166	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   127: pop
+    //   128: aload_1
+    //   129: areturn
+    //   130: astore_0
+    //   131: aload_3
+    //   132: astore_1
+    //   133: goto +88 -> 221
+    //   136: astore_1
+    //   137: aload_3
+    //   138: astore_2
+    //   139: aload_1
+    //   140: astore_3
+    //   141: goto +8 -> 149
+    //   144: astore_0
+    //   145: goto +76 -> 221
+    //   148: astore_3
+    //   149: aload_2
+    //   150: astore_1
+    //   151: new 115	java/lang/StringBuilder
+    //   154: dup
+    //   155: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   158: astore 4
+    //   160: aload_2
+    //   161: astore_1
+    //   162: aload 4
+    //   164: ldc 168
+    //   166: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   169: pop
-    //   170: aconst_null
-    //   171: areturn
-    //   172: astore_1
-    //   173: aload_2
-    //   174: astore_0
-    //   175: aload_0
-    //   176: ifnull +7 -> 183
-    //   179: aload_0
-    //   180: invokevirtual 156	java/io/BufferedReader:close	()V
-    //   183: aload_1
-    //   184: athrow
-    //   185: astore_0
-    //   186: ldc 34
-    //   188: ldc 158
-    //   190: aload_0
-    //   191: checkcast 160	java/lang/Throwable
-    //   194: invokestatic 166	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   197: pop
-    //   198: goto -15 -> 183
-    //   201: astore_2
-    //   202: aload_1
-    //   203: astore_0
-    //   204: aload_2
-    //   205: astore_1
-    //   206: goto -31 -> 175
-    //   209: astore_2
-    //   210: aload_1
-    //   211: astore_0
-    //   212: aload_2
-    //   213: astore_1
-    //   214: goto -39 -> 175
-    //   217: astore_2
-    //   218: goto -102 -> 116
+    //   170: aload_2
+    //   171: astore_1
+    //   172: aload 4
+    //   174: aload_0
+    //   175: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: pop
+    //   179: aload_2
+    //   180: astore_1
+    //   181: ldc 34
+    //   183: aload 4
+    //   185: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   188: aload_3
+    //   189: checkcast 160	java/lang/Throwable
+    //   192: invokestatic 166	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   195: pop
+    //   196: aload_2
+    //   197: ifnull +22 -> 219
+    //   200: aload_2
+    //   201: invokevirtual 156	java/io/BufferedReader:close	()V
+    //   204: aconst_null
+    //   205: areturn
+    //   206: astore_0
+    //   207: ldc 34
+    //   209: ldc 158
+    //   211: aload_0
+    //   212: checkcast 160	java/lang/Throwable
+    //   215: invokestatic 166	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   218: pop
+    //   219: aconst_null
+    //   220: areturn
+    //   221: aload_1
+    //   222: ifnull +23 -> 245
+    //   225: aload_1
+    //   226: invokevirtual 156	java/io/BufferedReader:close	()V
+    //   229: goto +16 -> 245
+    //   232: astore_1
+    //   233: ldc 34
+    //   235: ldc 158
+    //   237: aload_1
+    //   238: checkcast 160	java/lang/Throwable
+    //   241: invokestatic 166	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   244: pop
+    //   245: aload_0
+    //   246: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	221	0	paramString	String
-    //   38	114	1	localObject1	Object
-    //   172	31	1	localObject2	Object
-    //   205	9	1	localObject3	Object
-    //   12	162	2	localObject4	Object
-    //   201	4	2	localObject5	Object
-    //   209	4	2	localObject6	Object
-    //   217	1	2	localIOException1	java.io.IOException
-    //   1	145	3	localObject7	Object
-    //   109	5	4	localIOException2	java.io.IOException
+    //   0	247	0	paramString	String
+    //   12	121	1	localObject1	Object
+    //   136	4	1	localIOException1	java.io.IOException
+    //   150	76	1	localObject2	Object
+    //   232	6	1	localIOException2	java.io.IOException
+    //   10	191	2	localObject3	Object
+    //   16	125	3	localObject4	Object
+    //   148	41	3	localIOException3	java.io.IOException
+    //   26	158	4	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   85	89	93	java/io/IOException
-    //   13	70	109	java/io/IOException
-    //   151	155	157	java/io/IOException
-    //   13	70	172	finally
-    //   179	183	185	java/io/IOException
-    //   70	85	201	finally
-    //   116	145	209	finally
-    //   70	85	217	java/io/IOException
+    //   109	113	115	java/io/IOException
+    //   94	109	130	finally
+    //   94	109	136	java/io/IOException
+    //   13	17	144	finally
+    //   19	28	144	finally
+    //   30	38	144	finally
+    //   40	47	144	finally
+    //   49	59	144	finally
+    //   61	67	144	finally
+    //   69	94	144	finally
+    //   151	160	144	finally
+    //   162	170	144	finally
+    //   172	179	144	finally
+    //   181	196	144	finally
+    //   13	17	148	java/io/IOException
+    //   19	28	148	java/io/IOException
+    //   30	38	148	java/io/IOException
+    //   40	47	148	java/io/IOException
+    //   49	59	148	java/io/IOException
+    //   61	67	148	java/io/IOException
+    //   69	94	148	java/io/IOException
+    //   200	204	206	java/io/IOException
+    //   225	229	232	java/io/IOException
   }
   
   public final boolean checkIs360Rom()
   {
-    String str = Build.MANUFACTURER;
-    Intrinsics.checkExpressionValueIsNotNull(str, "Build.MANUFACTURER");
-    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"QiKU", false, 2, null))
+    Object localObject = Build.MANUFACTURER;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "Build.MANUFACTURER");
+    localObject = (CharSequence)localObject;
+    CharSequence localCharSequence = (CharSequence)"QiKU";
+    boolean bool = false;
+    if (!StringsKt.contains$default((CharSequence)localObject, localCharSequence, false, 2, null))
     {
-      str = Build.MANUFACTURER;
-      Intrinsics.checkExpressionValueIsNotNull(str, "Build.MANUFACTURER");
+      localObject = Build.MANUFACTURER;
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "Build.MANUFACTURER");
+      if (!StringsKt.contains$default((CharSequence)localObject, (CharSequence)"360", false, 2, null)) {}
     }
-    return StringsKt.contains$default((CharSequence)str, (CharSequence)"360", false, 2, null);
+    else
+    {
+      bool = true;
+    }
+    return bool;
   }
   
   public final boolean checkIsHuaweiRom()
@@ -214,71 +257,100 @@ public final class PhoneRomUtils
   public final boolean checkIsMeizuRom()
   {
     String str = getSystemProperty("ro.build.display.id");
-    if (TextUtils.isEmpty((CharSequence)str)) {
+    CharSequence localCharSequence = (CharSequence)str;
+    boolean bool2 = TextUtils.isEmpty(localCharSequence);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
     if (str == null) {
       Intrinsics.throwNpe();
     }
-    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"flyme", false, 2, null))
+    if (!StringsKt.contains$default(localCharSequence, (CharSequence)"flyme", false, 2, null))
     {
       str = str.toLowerCase();
       Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.String).toLowerCase()");
+      if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"flyme", false, 2, null)) {}
     }
-    return StringsKt.contains$default((CharSequence)str, (CharSequence)"flyme", false, 2, null);
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public final boolean checkIsMiuiRom()
   {
-    return !TextUtils.isEmpty((CharSequence)getSystemProperty("ro.miui.ui.version.name"));
+    return TextUtils.isEmpty((CharSequence)getSystemProperty("ro.miui.ui.version.name")) ^ true;
   }
   
   public final boolean checkIsOppoRom()
   {
-    String str = Build.MANUFACTURER;
-    Intrinsics.checkExpressionValueIsNotNull(str, "Build.MANUFACTURER");
-    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"OPPO", false, 2, null))
+    Object localObject = Build.MANUFACTURER;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "Build.MANUFACTURER");
+    localObject = (CharSequence)localObject;
+    CharSequence localCharSequence = (CharSequence)"OPPO";
+    boolean bool = false;
+    if (!StringsKt.contains$default((CharSequence)localObject, localCharSequence, false, 2, null))
     {
-      str = Build.MANUFACTURER;
-      Intrinsics.checkExpressionValueIsNotNull(str, "Build.MANUFACTURER");
+      localObject = Build.MANUFACTURER;
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "Build.MANUFACTURER");
+      if (!StringsKt.contains$default((CharSequence)localObject, (CharSequence)"oppo", false, 2, null)) {}
     }
-    return StringsKt.contains$default((CharSequence)str, (CharSequence)"oppo", false, 2, null);
+    else
+    {
+      bool = true;
+    }
+    return bool;
   }
   
   public final boolean checkIsVivoRom()
   {
-    String str = Build.MANUFACTURER;
-    Intrinsics.checkExpressionValueIsNotNull(str, "Build.MANUFACTURER");
-    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"VIVO", false, 2, null))
+    Object localObject = Build.MANUFACTURER;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "Build.MANUFACTURER");
+    localObject = (CharSequence)localObject;
+    CharSequence localCharSequence = (CharSequence)"VIVO";
+    boolean bool = false;
+    if (!StringsKt.contains$default((CharSequence)localObject, localCharSequence, false, 2, null))
     {
-      str = Build.MANUFACTURER;
-      Intrinsics.checkExpressionValueIsNotNull(str, "Build.MANUFACTURER");
+      localObject = Build.MANUFACTURER;
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "Build.MANUFACTURER");
+      if (!StringsKt.contains$default((CharSequence)localObject, (CharSequence)"vivo", false, 2, null)) {}
     }
-    return StringsKt.contains$default((CharSequence)str, (CharSequence)"vivo", false, 2, null);
+    else
+    {
+      bool = true;
+    }
+    return bool;
   }
   
   public final int getMiuiVersion()
   {
-    String str1 = getSystemProperty("ro.miui.ui.version.name");
-    if (str1 != null) {
-      try
-      {
-        String str2 = str1.substring(1);
-        Intrinsics.checkExpressionValueIsNotNull(str2, "(this as java.lang.String).substring(startIndex)");
-        int i = Integer.parseInt(str2);
-        return i;
-      }
-      catch (Exception localException)
-      {
-        Log.e("PhoneRomUtils", "get miui version code error, version : " + str1);
-      }
+    String str = getSystemProperty("ro.miui.ui.version.name");
+    if (str != null) {}
+    try
+    {
+      localObject = str.substring(1);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "(this as java.lang.String).substring(startIndex)");
+      int i = Integer.parseInt((String)localObject);
+      return i;
     }
+    catch (Exception localException)
+    {
+      Object localObject;
+      label29:
+      break label29;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("get miui version code error, version : ");
+    ((StringBuilder)localObject).append(str);
+    Log.e("PhoneRomUtils", ((StringBuilder)localObject).toString());
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.permission.romutils.PhoneRomUtils
  * JD-Core Version:    0.7.0.1
  */

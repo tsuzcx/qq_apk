@@ -31,13 +31,11 @@ public class MagicfacePlayer
       {
         this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder = new MagicfaceNormalDecoder();
         AVLog.printErrorLog("AVMagicfacePlayer", "initDecoder| use [MagicfaceNormalDecoder]");
+        return;
       }
+      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder = new MagicfaceNormalDecoder();
+      AVLog.printErrorLog("AVMagicfacePlayer", "initDecoder|use [MagicfaceNormalDecoder]");
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder = new MagicfaceNormalDecoder();
-    AVLog.printErrorLog("AVMagicfacePlayer", "initDecoder|use [MagicfaceNormalDecoder]");
   }
   
   public void a(long paramLong, String paramString, MagicfaceData paramMagicfaceData, MagicfaceBaseDecoder.MagicfaceRenderListener paramMagicfaceRenderListener, MagicfaceBaseDecoder.MagicPlayListener paramMagicPlayListener)
@@ -54,10 +52,21 @@ public class MagicfacePlayer
       }
       finally {}
     }
-    QLog.w("AVMagicfacePlayer", 1, "playMagicface, srcPath[" + paramString + "], seq[" + paramLong + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("playMagicface, srcPath[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w("AVMagicfacePlayer", 1, localStringBuilder.toString());
     try
     {
-      this.jdField_a_of_type_JavaLangString = (paramString + "audio" + File.separator + paramMagicfaceData.a.src);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("audio");
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(paramMagicfaceData.a.src);
+      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
       this.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener = paramMagicPlayListener;
       this.jdField_b_of_type_JavaLangString = null;
       this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData = null;
@@ -78,16 +87,23 @@ public class MagicfacePlayer
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a(paramString);
+    SoundPoolUtil localSoundPoolUtil = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil;
+    if (localSoundPoolUtil != null) {
+      localSoundPoolUtil.a(paramString);
     }
   }
   
   public void a(String paramString, int paramInt)
   {
-    AVLog.printColorLog("AVMagicfacePlayer", "playSound soundSrc = " + paramString + ", loop = " + paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a(paramString, paramInt, 0);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("playSound soundSrc = ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(", loop = ");
+    ((StringBuilder)localObject).append(paramInt);
+    AVLog.printColorLog("AVMagicfacePlayer", ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil;
+    if (localObject != null) {
+      ((SoundPoolUtil)localObject).a(paramString, paramInt, 0);
     }
   }
   
@@ -112,7 +128,7 @@ public class MagicfacePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfacePlayer
  * JD-Core Version:    0.7.0.1
  */

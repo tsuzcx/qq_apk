@@ -17,14 +17,18 @@ public class GuideHelper$LottieDrawableHelper
     }
     catch (Exception paramContext)
     {
-      QLog.e("GuideHelper", 1, "fromAssetFileName fail, seq[" + paramLong + "]", paramContext);
+      paramString = new StringBuilder();
+      paramString.append("fromAssetFileName fail, seq[");
+      paramString.append(paramLong);
+      paramString.append("]");
+      QLog.e("GuideHelper", 1, paramString.toString(), paramContext);
       ThreadManager.a().post(new GuideHelper.LottieDrawableHelper.2(this, paramLottieDrawableLoadedListener));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.guide.GuideHelper.LottieDrawableHelper
  * JD-Core Version:    0.7.0.1
  */

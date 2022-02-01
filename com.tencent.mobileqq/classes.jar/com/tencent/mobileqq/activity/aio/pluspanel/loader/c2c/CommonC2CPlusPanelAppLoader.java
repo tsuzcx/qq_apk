@@ -10,12 +10,16 @@ import com.tencent.mobileqq.activity.aio.pluspanel.loader.PlusPanelAppLoader.Scr
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.ark.ArkAiAppCenter;
+import com.tencent.mobileqq.ark.api.IArkConfig;
+import com.tencent.mobileqq.ark.config.bean.ArkMsgAIDisableConfBean;
+import com.tencent.mobileqq.ark.config.config.ArkMsgAIDisableConfig;
 import com.tencent.mobileqq.hotpic.HotPicManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.receipt.ReceiptUtil;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.teamwork.TeamWorkManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,6 +32,7 @@ public class CommonC2CPlusPanelAppLoader
     c(paramBaseChatPie, paramQQAppInterface);
     c(paramBaseChatPie);
     d(paramBaseChatPie, paramQQAppInterface);
+    QLog.d("CommonC2CPlusPanelAppLoader", 1, new Object[] { "fillDefaultAppInfo appInfo size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
   }
   
   private void a(BaseChatPie paramBaseChatPie, List<PlusPanelAppInfo> paramList)
@@ -41,7 +46,7 @@ public class CommonC2CPlusPanelAppLoader
         if (localPlusPanelAppInfo.getAppID() == 215)
         {
           IApolloManagerService localIApolloManagerService = (IApolloManagerService)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-          if ((localIApolloManagerService.isApolloFuncOpen(paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, Boolean.valueOf(false))) && (localIApolloManagerService.queryStatusInConfig(paramBaseChatPie.a(), "aio", null) > 0)) {
+          if ((localIApolloManagerService.isApolloSupport(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, Boolean.valueOf(false))) && (localIApolloManagerService.queryStatusInConfig("aio", null) > 0)) {
             a(localPlusPanelAppInfo);
           }
         }
@@ -77,7 +82,8 @@ public class CommonC2CPlusPanelAppLoader
   
   private void c(BaseChatPie paramBaseChatPie)
   {
-    if (!ArkAiAppCenter.jdField_a_of_type_Boolean) {
+    ArkMsgAIDisableConfBean localArkMsgAIDisableConfBean = (ArkMsgAIDisableConfBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkMsgAIDisableConfBean.class);
+    if ((localArkMsgAIDisableConfBean != null) && (localArkMsgAIDisableConfBean.a() != null) && (!localArkMsgAIDisableConfBean.a().jdField_a_of_type_Boolean)) {
       a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1000000001);
     }
   }
@@ -99,9 +105,18 @@ public class CommonC2CPlusPanelAppLoader
       a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 214);
       AIOPanelUtiles.a(paramQQAppInterface, "0X80093F3", paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
     }
-    IApolloManagerService localIApolloManagerService = (IApolloManagerService)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-    if ((localIApolloManagerService.isApolloFuncOpen(paramBaseChatPie.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(false))) && (localIApolloManagerService.queryStatusInConfig(paramQQAppInterface, "aio", null) > 0)) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 215);
+    try
+    {
+      paramQQAppInterface = (IApolloManagerService)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
+      if ((paramQQAppInterface.isApolloSupport(paramBaseChatPie.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(false))) && (paramQQAppInterface.queryStatusInConfig("aio", null) > 0))
+      {
+        a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 215);
+        return;
+      }
+    }
+    catch (Exception paramBaseChatPie)
+    {
+      QLog.e("CommonC2CPlusPanelAppLoader", 2, "[addSecondScreenApp] apollo error! ", paramBaseChatPie);
     }
   }
   
@@ -138,6 +153,7 @@ public class CommonC2CPlusPanelAppLoader
     {
       this.jdField_a_of_type_Boolean = true;
       a(paramBaseChatPie, localList);
+      QLog.d("CommonC2CPlusPanelAppLoader", 1, new Object[] { "fillAppList appear manage config, appInfoList size: ", Integer.valueOf(localList.size()), ", after adapt size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
       return;
     }
     a(paramBaseChatPie, localQQAppInterface);
@@ -145,7 +161,7 @@ public class CommonC2CPlusPanelAppLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.CommonC2CPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,11 @@ public class NougatPolicy
       }
       boolean bool = ((Boolean)localObject.getClass().getDeclaredMethod("performDexOptMode", new Class[] { String.class, Boolean.TYPE, String.class, Boolean.TYPE }).invoke(localObject, new Object[] { paramContext.getPackageName(), Boolean.valueOf(false), "speed", Boolean.valueOf(true) })).booleanValue();
       long l2 = SystemClock.elapsedRealtime();
-      Log.i("NougatPolicy", "full Compile cost: " + (l2 - l1) + " result:" + bool);
+      paramContext = new StringBuilder("full Compile cost: ");
+      paramContext.append(l2 - l1);
+      paramContext.append(" result:");
+      paramContext.append(bool);
+      Log.i("NougatPolicy", paramContext.toString());
       return bool;
     }
     catch (Throwable paramContext)

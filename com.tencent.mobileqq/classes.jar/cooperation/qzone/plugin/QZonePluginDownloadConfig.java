@@ -95,8 +95,12 @@ class QZonePluginDownloadConfig
   public int getOperator()
   {
     int i = ExtraConfig.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginDownloadConfig", 2, "QzoneDownloadConfig ():WiFiCrarryType=" + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QzoneDownloadConfig ():WiFiCrarryType=");
+      localStringBuilder.append(i);
+      QLog.i("QZonePluginDownloadConfig", 2, localStringBuilder.toString());
     }
     return i;
   }
@@ -165,7 +169,7 @@ class QZonePluginDownloadConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginDownloadConfig
  * JD-Core Version:    0.7.0.1
  */

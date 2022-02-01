@@ -71,15 +71,17 @@ public final class UploadGlobalConfig
   
   public static void init(Context paramContext, IUploadConfig paramIUploadConfig, IUploadLog paramIUploadLog, IUploadReport paramIUploadReport, IUploadEnv paramIUploadEnv, IUploadSoLoader paramIUploadSoLoader)
   {
-    if ((paramContext == null) || (paramIUploadConfig == null) || (paramIUploadEnv == null) || (paramIUploadSoLoader == null)) {
-      throw new RuntimeException("upload组件init初始化参数错误！");
+    if ((paramContext != null) && (paramIUploadConfig != null) && (paramIUploadEnv != null) && (paramIUploadSoLoader != null))
+    {
+      sContext = paramContext;
+      sConfig = paramIUploadConfig;
+      sUploadReport = paramIUploadReport;
+      sUploadLog = paramIUploadLog;
+      sUploadEnv = paramIUploadEnv;
+      sUploadSoLoader = paramIUploadSoLoader;
+      return;
     }
-    sContext = paramContext;
-    sConfig = paramIUploadConfig;
-    sUploadReport = paramIUploadReport;
-    sUploadLog = paramIUploadLog;
-    sUploadEnv = paramIUploadEnv;
-    sUploadSoLoader = paramIUploadSoLoader;
+    throw new RuntimeException("upload组件init初始化参数错误！");
   }
   
   public static void keepImageTmpFile(boolean paramBoolean)
@@ -97,7 +99,7 @@ public final class UploadGlobalConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.common.UploadGlobalConfig
  * JD-Core Version:    0.7.0.1
  */

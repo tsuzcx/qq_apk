@@ -4,7 +4,7 @@ import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tavsticker.model.TAVStickerLayerInfo.TAVStickerTimeEffect;
 import java.util.Comparator;
 
-final class TAVStickerParser$1
+class TAVStickerParser$1
   implements Comparator<TAVStickerLayerInfo.TAVStickerTimeEffect>
 {
   public int compare(TAVStickerLayerInfo.TAVStickerTimeEffect paramTAVStickerTimeEffect1, TAVStickerLayerInfo.TAVStickerTimeEffect paramTAVStickerTimeEffect2)
@@ -17,7 +17,7 @@ final class TAVStickerParser$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerParser.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,26 +11,31 @@ class PhotoCropActivity$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1002)
     {
+      if (i != 1003) {
+        return;
+      }
+      if (!this.a.isFinishing())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
+        }
+        PhotoCropActivity.a(this.a, 2131716831);
+        this.a.c();
+      }
     }
-    do
+    else
     {
-      return;
       this.a.b();
       this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
-      return;
-    } while (this.a.isFinishing());
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
     }
-    PhotoCropActivity.a(this.a, 2131717172);
-    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoCropActivity.1
  * JD-Core Version:    0.7.0.1
  */

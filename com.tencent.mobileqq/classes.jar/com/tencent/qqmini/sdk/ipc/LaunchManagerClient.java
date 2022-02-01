@@ -79,57 +79,45 @@ public class LaunchManagerClient
   
   private boolean ensureService()
   {
-    boolean bool2 = false;
-    for (;;)
+    try
     {
-      boolean bool1;
-      try
+      boolean bool = isMainProcess();
+      if (bool) {
+        return false;
+      }
+      Object localObject1 = this.mService;
+      if (localObject1 != null) {
+        return true;
+      }
+      bool = this.isConnecting;
+      if (bool) {
+        return false;
+      }
+      if (this.mService == null)
       {
-        bool1 = isMainProcess();
-        if (bool1)
-        {
-          bool1 = bool2;
-          return bool1;
-        }
-        if (this.mService != null)
-        {
-          bool1 = true;
-          continue;
-        }
-        bool1 = bool2;
-        if (this.isConnecting) {
-          continue;
-        }
-        bool1 = bool2;
-        if (this.mService != null) {
-          continue;
-        }
         QMLog.w("minisdk-start_AppBrandProxy", "mService is null! Begin Bind Service!");
-        Class localClass1 = AppLoaderFactory.g().findClass("com.tencent.qqmini.sdk.server.AppMainService");
-        if (localClass1 == null)
+        localObject1 = AppLoaderFactory.g().findClass("com.tencent.qqmini.sdk.server.AppMainService");
+        if (localObject1 == null)
         {
           QMLog.e("minisdk-start_AppBrandProxy", "Can not find AppMainService");
-          bool1 = bool2;
-          continue;
+          return false;
         }
-        localIntent = new Intent(this.mContext, localClass2);
+        localObject1 = new Intent(this.mContext, (Class)localObject1);
+        ((Intent)localObject1).putExtra("mini_process_name", AppLoaderFactory.g().getCurrentProcessName());
+        ((Intent)localObject1).putExtra("mini_process_messenger", this.mClientMessenger);
+        this.isConnecting = true;
+        try
+        {
+          this.mContext.bindService((Intent)localObject1, this.mConnection, 1);
+        }
+        catch (Throwable localThrowable)
+        {
+          QMLog.w("minisdk-start_AppBrandProxy", "exception when bind lbs service!!!", localThrowable);
+        }
       }
-      finally {}
-      Intent localIntent;
-      localIntent.putExtra("mini_process_name", AppLoaderFactory.g().getCurrentProcessName());
-      localIntent.putExtra("mini_process_messenger", this.mClientMessenger);
-      this.isConnecting = true;
-      try
-      {
-        this.mContext.bindService(localIntent, this.mConnection, 1);
-        bool1 = bool2;
-      }
-      catch (Throwable localThrowable)
-      {
-        QMLog.w("minisdk-start_AppBrandProxy", "exception when bind lbs service!!!", localThrowable);
-        bool1 = bool2;
-      }
+      return false;
     }
+    finally {}
   }
   
   private static BaseRuntime getBaseRuntime(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
@@ -153,28 +141,31 @@ public class LaunchManagerClient
   
   private void handleCmdFromMainProcess(int paramInt, Bundle paramBundle, MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver)
   {
-    QMLog.i("minisdk-start_AppBrandProxy", "Messenger handleCmdFromMainProcess cmd=" + paramInt);
-    switch (paramInt)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Messenger handleCmdFromMainProcess cmd=");
+    localStringBuilder.append(paramInt);
+    QMLog.i("minisdk-start_AppBrandProxy", localStringBuilder.toString());
+    if (paramInt != 1001)
     {
-    default: 
-      return;
-    case 1001: 
+      if (paramInt != 1002) {
+        return;
+      }
       if (paramBundle == null)
       {
-        QMLog.w("minisdk-start_AppBrandProxy", "handleCmdFromMainProcess. Ignore MESSENGER_CMD_NOTIFY_SHARE_RESULT. bundle is null");
+        QMLog.w("minisdk-start_AppBrandProxy", "handleCmdFromMainProcess. Ignore MESSENGER_CMD_NOTIFY_PERIODIC_CACHE_UPDATE. bundle is null");
         sendResult(paramResultReceiver, -1, paramBundle);
         return;
       }
-      notifyShareResult(paramMiniAppInfo, paramBundle, paramResultReceiver);
+      notifyPeriodicCacheUpdate(paramMiniAppInfo, paramBundle, paramResultReceiver);
       return;
     }
     if (paramBundle == null)
     {
-      QMLog.w("minisdk-start_AppBrandProxy", "handleCmdFromMainProcess. Ignore MESSENGER_CMD_NOTIFY_PERIODIC_CACHE_UPDATE. bundle is null");
+      QMLog.w("minisdk-start_AppBrandProxy", "handleCmdFromMainProcess. Ignore MESSENGER_CMD_NOTIFY_SHARE_RESULT. bundle is null");
       sendResult(paramResultReceiver, -1, paramBundle);
       return;
     }
-    notifyPeriodicCacheUpdate(paramMiniAppInfo, paramBundle, paramResultReceiver);
+    notifyShareResult(paramMiniAppInfo, paramBundle, paramResultReceiver);
   }
   
   private boolean isMainProcess()
@@ -196,41 +187,37 @@ public class LaunchManagerClient
   
   private void notifyToService()
   {
-    for (;;)
+    try
     {
+      boolean bool = this.mNeedSyncStatus;
+      if (!bool) {
+        return;
+      }
+      this.mNeedSyncStatus = false;
       try
       {
-        boolean bool = this.mNeedSyncStatus;
-        if (!bool) {
-          return;
-        }
-        this.mNeedSyncStatus = false;
-        try
+        String str = AppLoaderFactory.g().getCurrentProcessName();
+        if (queryIsMiniProcess())
         {
-          String str1 = AppLoaderFactory.g().getCurrentProcessName();
-          if (!queryIsMiniProcess()) {
-            continue;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Sync Process Status=");
+          localStringBuilder.append(this.mMiniAppStatus);
+          QMLog.w("minisdk-start_AppBrandProxy", localStringBuilder.toString());
+          notifyLifeCycleLocked(1, str, this.mAppConfig, this.mStartBundle);
+          if (this.mMiniAppStatus == 3) {
+            notifyLifeCycleLocked(3, str, this.mAppConfig, null);
+          } else if (this.mMiniAppStatus == 2) {
+            notifyLifeCycleLocked(2, str, this.mAppConfig, null);
           }
-          QMLog.w("minisdk-start_AppBrandProxy", "Sync Process Status=" + this.mMiniAppStatus);
-          notifyLifeCycleLocked(1, str1, this.mAppConfig, this.mStartBundle);
-          if (this.mMiniAppStatus != 3) {
-            break label115;
-          }
-          notifyLifeCycleLocked(3, str1, this.mAppConfig, null);
-        }
-        catch (Throwable localThrowable)
-        {
-          QMLog.e("minisdk-start_AppBrandProxy", "onAppStart exception.", localThrowable);
-        }
-        continue;
-        if (this.mMiniAppStatus != 2) {
-          continue;
         }
       }
-      finally {}
-      label115:
-      notifyLifeCycleLocked(2, str2, this.mAppConfig, null);
+      catch (Throwable localThrowable)
+      {
+        QMLog.e("minisdk-start_AppBrandProxy", "onAppStart exception.", localThrowable);
+      }
+      return;
     }
+    finally {}
   }
   
   private void performStartMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
@@ -254,43 +241,20 @@ public class LaunchManagerClient
     paramResultReceiver.send(paramInt, paramBundle);
   }
   
-  /* Error */
   public ILaunchManager getService()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 101	com/tencent/qqmini/sdk/ipc/LaunchManagerClient:mService	Lcom/tencent/qqmini/sdk/launcher/ipc/ILaunchManager;
-    //   6: ifnull +12 -> 18
-    //   9: aload_0
-    //   10: getfield 101	com/tencent/qqmini/sdk/ipc/LaunchManagerClient:mService	Lcom/tencent/qqmini/sdk/launcher/ipc/ILaunchManager;
-    //   13: astore_1
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: aload_1
-    //   17: areturn
-    //   18: aload_0
-    //   19: invokespecial 89	com/tencent/qqmini/sdk/ipc/LaunchManagerClient:ensureService	()Z
-    //   22: pop
-    //   23: aload_0
-    //   24: getfield 101	com/tencent/qqmini/sdk/ipc/LaunchManagerClient:mService	Lcom/tencent/qqmini/sdk/launcher/ipc/ILaunchManager;
-    //   27: astore_1
-    //   28: goto -14 -> 14
-    //   31: astore_1
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: aload_1
-    //   35: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	36	0	this	LaunchManagerClient
-    //   13	15	1	localILaunchManager	ILaunchManager
-    //   31	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	31	finally
-    //   18	28	31	finally
+    try
+    {
+      if (this.mService != null)
+      {
+        localILaunchManager = this.mService;
+        return localILaunchManager;
+      }
+      ensureService();
+      ILaunchManager localILaunchManager = this.mService;
+      return localILaunchManager;
+    }
+    finally {}
   }
   
   public void notifyPeriodicCacheUpdate(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
@@ -316,7 +280,10 @@ public class LaunchManagerClient
       sendResult(paramResultReceiver, -1, paramBundle);
       return;
     }
-    QMLog.i("minisdk-start_AppBrandProxy", "evaluateSubscribeJS ON_BACKGROUND_FETCH_DATA appid:" + paramMiniAppInfo.appId);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("evaluateSubscribeJS ON_BACKGROUND_FETCH_DATA appid:");
+    localStringBuilder.append(paramMiniAppInfo.appId);
+    QMLog.i("minisdk-start_AppBrandProxy", localStringBuilder.toString());
     ((IJsService)localObject).evaluateSubscribeJS("onBackgroundFetchData", new JSONObject().toString(), 0);
     sendResult(paramResultReceiver, 0, paramBundle);
   }
@@ -338,19 +305,23 @@ public class LaunchManagerClient
       return;
     }
     ShareState localShareState = GetShareState.obtain(paramMiniAppInfo);
-    if (localShareState.requestEvent != null) {}
-    for (paramMiniAppInfo = localShareState.requestEvent.jsService; paramMiniAppInfo == null; paramMiniAppInfo = paramMiniAppInfo.getJsService())
+    if (localShareState.requestEvent != null) {
+      paramMiniAppInfo = localShareState.requestEvent.jsService;
+    } else {
+      paramMiniAppInfo = paramMiniAppInfo.getJsService();
+    }
+    if (paramMiniAppInfo == null)
     {
       QMLog.w("minisdk-start_AppBrandProxy", "handleCmdFromMainProcess. Ignore, jsService is null");
       sendResult(paramResultReceiver, -1, paramBundle);
       return;
     }
-    if (paramBundle.getInt("key_share_result") == 0) {}
-    for (paramBundle = ApiUtil.wrapCallbackOk(localShareState.shareEvent, null);; paramBundle = ApiUtil.wrapCallbackFail(localShareState.shareEvent, null))
-    {
-      paramMiniAppInfo.evaluateCallbackJs(localShareState.shareCallbackId, paramBundle.toString());
-      return;
+    if (paramBundle.getInt("key_share_result") == 0) {
+      paramBundle = ApiUtil.wrapCallbackOk(localShareState.shareEvent, null);
+    } else {
+      paramBundle = ApiUtil.wrapCallbackFail(localShareState.shareEvent, null);
     }
+    paramMiniAppInfo.evaluateCallbackJs(localShareState.shareCallbackId, paramBundle.toString());
   }
   
   public void onAppLifecycle(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
@@ -366,17 +337,14 @@ public class LaunchManagerClient
         this.mNeedSyncStatus = true;
         this.mStartBundle = paramBundle;
         QMLog.e("minisdk-start_AppBrandProxy", "onAppStart IAppBrandService Connection is Null.");
+        return;
       }
-    }
-    for (;;)
-    {
-      return;
       try
       {
         QMLog.i("minisdk-start_AppBrandProxy", "notify onAppStart");
         notifyLifeCycleLocked(1, paramString, paramMiniAppInfo, paramBundle);
         if (paramMiniAppInfo == null) {
-          continue;
+          return;
         }
         QMLog.i("minisdk-start_AppBrandProxy", "notify onAppForeground after onAppStart");
         notifyLifeCycleLocked(2, paramString, paramMiniAppInfo, paramBundle);
@@ -387,15 +355,24 @@ public class LaunchManagerClient
         QMLog.e("minisdk-start_AppBrandProxy", "onAppStart exception.", paramString);
         return;
       }
+    }
+    else
+    {
       this.mMiniAppStatus = paramInt;
       if (getService() == null)
       {
-        QMLog.e("minisdk-start_AppBrandProxy", "onAppLifecycle IAppBrandService Connection is Null. lifecycle:" + paramInt);
+        paramString = new StringBuilder();
+        paramString.append("onAppLifecycle IAppBrandService Connection is Null. lifecycle:");
+        paramString.append(paramInt);
+        QMLog.e("minisdk-start_AppBrandProxy", paramString.toString());
         return;
       }
       try
       {
-        QMLog.i("minisdk-start_AppBrandProxy", "notify lifecycle:" + paramInt);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("notify lifecycle:");
+        localStringBuilder.append(paramInt);
+        QMLog.i("minisdk-start_AppBrandProxy", localStringBuilder.toString());
         notifyLifeCycleLocked(paramInt, paramString, paramMiniAppInfo, paramBundle);
         if (paramInt == 4)
         {
@@ -405,7 +382,10 @@ public class LaunchManagerClient
       }
       catch (Throwable paramString)
       {
-        QMLog.e("minisdk-start_AppBrandProxy", "onAppLifecycle exception. lifecycle:" + paramInt, paramString);
+        paramMiniAppInfo = new StringBuilder();
+        paramMiniAppInfo.append("onAppLifecycle exception. lifecycle:");
+        paramMiniAppInfo.append(paramInt);
+        QMLog.e("minisdk-start_AppBrandProxy", paramMiniAppInfo.toString(), paramString);
       }
     }
   }
@@ -424,29 +404,31 @@ public class LaunchManagerClient
   
   public boolean queryIsMiniProcess()
   {
-    bool2 = false;
-    if (getService() == null)
+    Object localObject = getService();
+    boolean bool2 = false;
+    if (localObject == null)
     {
       QMLog.e("minisdk-start_AppBrandProxy", "queryIsMiniProcess IAppBrandService Connection is Null.");
       return false;
     }
+    boolean bool1;
     try
     {
-      Bundle localBundle = this.mService.requestAync("query_mini_process", AppLoaderFactory.g().getCurrentProcessName(), null);
+      localObject = this.mService.requestAync("query_mini_process", AppLoaderFactory.g().getCurrentProcessName(), null);
       bool1 = bool2;
-      if (localBundle != null) {
-        bool1 = localBundle.getBoolean("key_result");
+      if (localObject != null) {
+        bool1 = ((Bundle)localObject).getBoolean("key_result");
       }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QMLog.e("minisdk-start_AppBrandProxy", "queryiIsMiniProcess exception.", localThrowable);
-        boolean bool1 = bool2;
-      }
+      QMLog.e("minisdk-start_AppBrandProxy", "queryiIsMiniProcess exception.", localThrowable);
+      bool1 = bool2;
     }
-    QMLog.i("minisdk-start_AppBrandProxy", "queryiIsMiniProcess " + bool1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("queryiIsMiniProcess ");
+    localStringBuilder.append(bool1);
+    QMLog.i("minisdk-start_AppBrandProxy", localStringBuilder.toString());
     return bool1;
   }
   
@@ -455,24 +437,30 @@ public class LaunchManagerClient
     QMLog.w("minisdk-start_AppBrandProxy", "releaseService.");
     try
     {
-      if (this.mService != null)
-      {
-        this.mContext.unbindService(this.mConnection);
-        this.mService = null;
+      if (this.mService == null) {
+        break label40;
       }
+      this.mContext.unbindService(this.mConnection);
+      this.mService = null;
       return;
     }
     catch (Throwable localThrowable)
     {
-      QMLog.w("minisdk-start_AppBrandProxy", "exception when releaseService.");
+      label32:
+      label40:
+      break label32;
     }
+    QMLog.w("minisdk-start_AppBrandProxy", "exception when releaseService.");
   }
   
   public void sendCmd(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
   {
     if (getService() == null)
     {
-      QMLog.e("minisdk-start_AppBrandProxy", "sendCmd IAppBrandService Connection is Null. cmd=" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendCmd IAppBrandService Connection is Null. cmd=");
+      localStringBuilder.append(paramString);
+      QMLog.e("minisdk-start_AppBrandProxy", localStringBuilder.toString());
       this.mTaskAfterConnected.add(new LaunchManagerClient.8(this, paramString, paramMiniCmdCallback, paramBundle));
       return;
     }
@@ -538,7 +526,7 @@ public class LaunchManagerClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ipc.LaunchManagerClient
  * JD-Core Version:    0.7.0.1
  */

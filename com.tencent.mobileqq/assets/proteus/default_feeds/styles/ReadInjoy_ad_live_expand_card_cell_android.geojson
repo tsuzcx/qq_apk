@@ -1,0 +1,374 @@
+{
+  "platform": "android",
+  "ReadInjoy_ad_live_expand_card_cell": {
+    "view_type": "container",
+    "layout_type": "layout_relative",
+    "height": {
+      "type": "relative",
+      "value": "260"
+    },
+    "width": {
+      "type": "match_parent"
+    },
+    "subviews": [
+      {
+        "view_type": "UIImageView",
+        "view_id": "id_ad_expand_back",
+        "height": {
+           "type": "relative",
+            "value": "260"
+        },
+        "default_visible": "YES",
+        "width": {
+          "type": "match_parent"
+        },
+        "event_type": "cmd_large_img_click",
+        "attributes": {
+          "setAttatchInfo:": "-1",
+          "setScaleType:":"1",
+          "setFeedsModel:": "$article_model"
+        }
+      },
+      {
+        "view_id": "id_ad_player_container",
+        "view_type": "UIView",
+        "layout_type": "layout_relative",
+        "height": {
+          "type": "relative",
+          "value": "197"
+        },
+        "width": {
+          "type": "relative",
+          "value": "351"
+        },
+        "default_visible": "YES",
+        "margin_right": "12",
+        "margin_left": "12",
+        "margin_top": "22",
+        "subviews": [
+          {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_article_large_imge",
+            "event_type": "cmd_large_img_click",
+            "height": {
+              "type": "relative",
+              "value": "197"
+            },
+            "default_visible": "YES",
+            "width": {
+              "type": "relative",
+              "value": "351"
+            },
+            "attributes": {
+              "setAttatchInfo:": "-1",
+              "setBackgroundColorString:": "#123456"
+            }
+          },
+          {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_ad_tag_view",
+            "align_parent_right": "YES",
+            "align_parent_top": "YES",
+            "height": {
+              "type": "relative",
+              "value": "20"
+            },
+            "event_type": "cmd_ad_live_expand_close_click",
+            "default_visible": "YES",
+            "width": {
+              "type": "relative",
+              "value": "45"
+            },
+            "attributes": {
+              "setAttatchInfo:": "-1",
+              "setImageWithURLString:lineup:": [
+                "$close_image_url",
+                "0"
+              ]
+            }
+          },
+          {
+            "view_type": "UIView",
+            "view_id": "id_ad_fu_title_container",
+            "layout_type": "layout_relative",
+            "margin_left": "10",
+            "margin_bottom": "13",
+            "align_parent_bottom": "YES",
+            "align_parent_left": "YES",
+            "height": {
+              "type": "relative",
+              "value": "16"
+            },
+            "default_visible": "YES",
+            "width": {
+              "type": "wrap_content"
+            },
+            "subviews": [
+              {
+                "view_type": "UIView",
+                "view_id": "id_ad_left_bottom_back",
+                "align_parent_bottom": "YES",
+                "height": {
+                  "type": "match_parent"
+                },
+                "default_visible": "YES",
+                "width": {
+                  "type": "match_parent"
+                },
+                "attributes": {
+                  "setCornerRadiusString:": "4.0",
+                  "setAttatchInfo:": "-1",
+                  "setBackgroundColorString:": "#4D000000"
+                }
+              },
+              {
+                "view_type": "UILabel",
+                "view_id": "id_ad_left_bottom_wenzi_back",
+                "align_parent_bottom": "YES",
+                "height": {
+                  "type": "match_parent"
+                },
+                "default_visible": "YES",
+                "width": {
+                  "type": "wrap_content"
+                },
+                "padding_left": "4",
+                "padding_right": "4",
+                "attributes": {
+                  "setAttatchInfo:": "-1",
+                  "setBackgroundColorString:": "#FF7122",
+                  "setText:": "$caption_text",
+                  "setCornerRadiusString:": "4.0",
+                  "setTextColorString:": "#ffffff",
+                  "setFontSizeString:": "12"
+                }
+              },
+              {
+                "view_type": "UILabel",
+                "view_id": "id_ad_fu_title_text",
+                "right_of_view": "id_ad_left_bottom_wenzi_back",
+                "align_parent_center_vertical": "YES",
+                "padding_left": "4",
+                "padding_right": "4",
+                "height": {
+                  "type": "match_parent"
+                },
+                "default_visible": "YES",
+                "width": {
+                  "type": "wrap_content"
+                },
+                "attributes": {
+                  "setText:": "$fu_title",
+                  "setTextColorString:": "#ffffff",
+                  "setFontSizeString:": "12"
+                }
+              }
+            ]
+          },
+          {
+            "view_type": "UIImageView",
+            "view_id": "id_large_video_icon",
+            "align_parent_center": "YES",
+            "default_visible": "YES",
+            "height": {
+              "type": "absolutely",
+              "value": "50"
+            },
+            "width": {
+              "type": "absolutely",
+              "value": "50"
+            },
+            "attributes": {
+               "loadImageWithPath:": "pa_video_play.png"
+            }
+          }
+        ]
+      },
+      {
+        "view_type": "UILabel",
+        "view_id": "id_bottom_title",
+        "align_parent_center_horizontal": "YES",
+        "margin_top": "5",
+         "below_of_view": "id_ad_player_container",
+        "height": {
+          "type": "relative",
+          "value": "37.5"
+        },
+        "width": {
+          "type": "270"
+        },
+        "event_type": "ad_title_click_in_recommend",
+        "attributes": {
+          "setText:": "$bottom_title",
+          "setTextColorString:": "#FFFFFF",
+          "setBoldFontSizeString:": "14",
+          "setNumberOfLinesString:": "1"
+        }
+      },
+      {
+        "view_id": "id_ad_zhibo_small_container",
+        "view_type": "UIView",
+        "layout_type": "layout_relative",
+        "height": {
+          "type": "relative",
+          "value": "58.5"
+        },
+        "margin_top": "10",
+        "width": {
+          "type": "relative",
+          "value": "351"
+        },
+        "default_visible": "YES",
+        "margin_right": "12",
+        "margin_left": "12",
+        "event_type": "ad_nothing_click_in_recommend",
+        "subviews": [
+          {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_ad_zhibo_small",
+            "align_parent_center_horizontal": "YES",
+            "height": {
+              "type": "match_parent"
+            },
+            "default_visible": "YES",
+            "width": {
+              "type": "match_parent"
+            },
+            "event_type": "ad_nothing_click_in_recommend",
+            "attributes": {
+              "setCornerRadiusString:": "4.0",
+              "setAttatchInfo:": "-1",
+              "setImageWithURLString:lineup:": [
+                "$small_img_url",
+                "0"
+              ],
+              "setFeedsModel:": "$article_model"
+            }
+          },
+          {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_ad_tag_small_view",
+            "align_parent_right": "YES",
+            "align_parent_top": "YES",
+            "height": {
+              "type": "relative",
+              "value": "20"
+            },
+            "default_visible": "YES",
+            "width": {
+              "type": "relative",
+              "value": "45"
+            },
+            "event_type": "cmd_ad_live_expand_close_click",
+            "attributes": {
+              "setAttatchInfo:": "-1",
+              "setImageWithURLString:lineup:": [
+                "$close_image_url",
+                "0"
+              ]
+            }
+          },
+          {
+            "view_type": "UIView",
+            "view_id": "id_ad_fu_title_small_container",
+            "layout_type": "layout_relative",
+            "margin_left": "15",
+            "margin_bottom": "8.5",
+            "align_parent_bottom": "YES",
+            "align_parent_left": "YES",
+            "height": {
+              "type": "relative",
+              "value": "16"
+            },
+            "default_visible": "YES",
+            "width": {
+              "type": "wrap_content"
+            },
+            "subviews": [
+              {
+                "view_type": "UIView",
+                "view_id": "id_ad_left_bottom_small_back",
+                "align_parent_bottom": "YES",
+                "height": {
+                  "type": "match_parent"
+                },
+                "default_visible": "YES",
+                "width": {
+                  "type": "match_parent"
+                },
+                "attributes": {
+                  "setCornerRadiusString:": "4.0",
+                  "setAttatchInfo:": "-1",
+                  "setBackgroundColorString:": "#4D000000"
+                }
+              },
+              {
+                "view_type": "UILabel",
+                "view_id": "id_ad_left_bottom_wenzi_back_small",
+                "align_parent_center_vertical": "YES",
+                "height": {
+                  "type": "match_parent"
+                },
+                "default_visible": "YES",
+                "width": {
+                  "type": "wrap_content"
+                },
+                "padding_left": "4",
+                "padding_right": "4",
+                "attributes": {
+                  "setAttatchInfo:": "-1",
+                  "setBackgroundColorString:": "#FF7122",
+                  "setText:": "$caption_text",
+                  "setCornerRadiusString:": "4.0",
+                  "setTextColorString:": "#ffffff",
+                  "setFontSizeString:": "12"
+                }
+              },
+              {
+                "view_type": "UILabel",
+                "view_id": "id_ad_fu_title_small_text",
+                "right_of_view": "id_ad_left_bottom_wenzi_back_small",
+                "align_parent_center_vertical": "YES",
+                "padding_left": "4",
+                "padding_right": "4",
+                "height": {
+                  "type": "match_parent"
+                },
+                "width": {
+                  "type": "wrap_content"
+                },
+                "default_visible": "YES",
+                "attributes": {
+                  "setText:": "$fu_title",
+                  "setTextColorString:": "#ffffff",
+                  "setFontSizeString:": "12"
+                }
+              }
+            ]
+          },
+          {
+            "view_type": "UILabel",
+            "view_id": "id_small_title",
+            "margin_left": "15",
+            "margin_top": "9",
+            "height": {
+              "type": "relative",
+              "value": "18"
+            },
+            "event_type": "ad_title_click_in_recommend",
+            "default_visible": "YES",
+            "width": {
+              "type": "250"
+            },
+            "attributes": {
+              "setText:": "$small_title",
+              "setTextColorString:": "#FFFFFF",
+              "setBoldFontSizeString:": "16",
+              "setNumberOfLinesString:": "1"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

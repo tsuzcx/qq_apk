@@ -41,8 +41,9 @@ public final class MeasureInfo
     paramJceOutputStream.write(this.sIP, 1);
     paramJceOutputStream.write(this.iPort, 2);
     paramJceOutputStream.write(this.bLinkType, 3);
-    if (this.sImsi != null) {
-      paramJceOutputStream.write(this.sImsi, 4);
+    String str = this.sImsi;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.bProxy, 5);
     paramJceOutputStream.write(this.bDefault, 6);
@@ -50,7 +51,7 @@ public final class MeasureInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     protocol.KQQConfig.MeasureInfo
  * JD-Core Version:    0.7.0.1
  */

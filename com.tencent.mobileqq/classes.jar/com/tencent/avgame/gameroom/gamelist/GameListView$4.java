@@ -11,21 +11,22 @@ class GameListView$4
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (i != 0)
     {
+      if (i == 1) {
+        this.a.setCancelPrepareNorImage();
+      }
     }
-    for (;;)
-    {
-      return false;
+    else {
       this.a.setCancelPreparePressImage();
-      continue;
-      this.a.setCancelPrepareNorImage();
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.gamelist.GameListView.4
  * JD-Core Version:    0.7.0.1
  */

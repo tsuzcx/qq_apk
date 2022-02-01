@@ -9,7 +9,7 @@ public class ScribbleDownloadInfo
   public int a;
   public MessageForScribble a;
   
-  ScribbleDownloadInfo(MessageForScribble paramMessageForScribble, int paramInt)
+  public ScribbleDownloadInfo(MessageForScribble paramMessageForScribble, int paramInt)
   {
     this.jdField_a_of_type_Int = 200;
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = paramMessageForScribble;
@@ -23,10 +23,12 @@ public class ScribbleDownloadInfo
   
   public int a(ScribbleDownloadInfo paramScribbleDownloadInfo)
   {
-    if (this.jdField_a_of_type_Int < paramScribbleDownloadInfo.jdField_a_of_type_Int) {
+    int i = this.jdField_a_of_type_Int;
+    int j = paramScribbleDownloadInfo.jdField_a_of_type_Int;
+    if (i < j) {
       return -1;
     }
-    if (this.jdField_a_of_type_Int > paramScribbleDownloadInfo.jdField_a_of_type_Int) {
+    if (i > j) {
       return 1;
     }
     return 0;
@@ -34,7 +36,7 @@ public class ScribbleDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

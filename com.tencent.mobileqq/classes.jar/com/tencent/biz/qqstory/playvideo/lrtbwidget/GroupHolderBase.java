@@ -29,13 +29,19 @@ public abstract class GroupHolderBase
   
   public GroupHolderBase(@NonNull View paramView)
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Q.qqstory.playernew.");
+    localStringBuilder.append(getClass().getSimpleName());
+    this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId = null;
     this.jdField_a_of_type_JavaUtilList = Collections.emptyList();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(System.identityHashCode(this));
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     if ((paramView instanceof ViewGroup))
     {
       this.jdField_a_of_type_AndroidViewView = a((ViewGroup)paramView);
@@ -46,13 +52,19 @@ public abstract class GroupHolderBase
   
   public GroupHolderBase(@NonNull ViewGroup paramViewGroup)
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Q.qqstory.playernew.");
+    localStringBuilder.append(getClass().getSimpleName());
+    this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId = null;
     this.jdField_a_of_type_JavaUtilList = Collections.emptyList();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(System.identityHashCode(this));
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
   }
   
@@ -65,8 +77,9 @@ public abstract class GroupHolderBase
   
   public GroupHolderBase a(Class<? extends GroupHolderBase> paramClass)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetGroupHolderContainer != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetGroupHolderContainer.b(paramClass);
+    GroupHolderContainer localGroupHolderContainer = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetGroupHolderContainer;
+    if (localGroupHolderContainer != null) {
+      return localGroupHolderContainer.b(paramClass);
     }
     return null;
   }
@@ -83,13 +96,19 @@ public abstract class GroupHolderBase
   
   public void a(int paramInt, IDataProvider.GroupInfo paramGroupInfo, @NonNull ArrayList<StoryPlayerVideoData> paramArrayList)
   {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(System.identityHashCode(this));
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("]");
+    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId = paramGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId;
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
+    localObject = paramArrayList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      StoryPlayerVideoData localStoryPlayerVideoData = (StoryPlayerVideoData)localIterator.next();
+      StoryPlayerVideoData localStoryPlayerVideoData = (StoryPlayerVideoData)((Iterator)localObject).next();
       if ((paramGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId)) {
         localStoryPlayerVideoData.a = ((MsgTabPlayPageLoader.MsgTabGroupId)paramGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId).a;
       } else {
@@ -115,7 +134,7 @@ public abstract class GroupHolderBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.GroupHolderBase
  * JD-Core Version:    0.7.0.1
  */

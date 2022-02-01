@@ -57,25 +57,22 @@ public class GdtPreDownloadListenerAdapter
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     paramList = paramList.iterator();
-    for (;;)
+    while (paramList.hasNext())
     {
-      DownloadInfo localDownloadInfo;
-      if (paramList.hasNext())
-      {
-        localDownloadInfo = (DownloadInfo)paramList.next();
-        if (localDownloadInfo != null) {}
-      }
-      else
-      {
-        if ((localArrayList2.size() != 0) && (localArrayList1.size() != 0)) {
-          break;
-        }
-        return;
+      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+      if (localDownloadInfo == null) {
+        break;
       }
       localArrayList2.add(new Pair(localDownloadInfo.d, localDownloadInfo.e));
       localArrayList1.add(localDownloadInfo);
     }
-    onDownloadProgressUpdate(localArrayList1, localArrayList2);
+    if (localArrayList2.size() != 0)
+    {
+      if (localArrayList1.size() == 0) {
+        return;
+      }
+      onDownloadProgressUpdate(localArrayList1, localArrayList2);
+    }
   }
   
   public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
@@ -86,7 +83,7 @@ public class GdtPreDownloadListenerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtPreDownloadListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

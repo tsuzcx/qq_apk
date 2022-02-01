@@ -8,23 +8,25 @@ public class VideoCollectionItem$DataSortedComparator
 {
   public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
   {
-    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (DateUtils.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
-      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
-    }
-    do
+    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (DateUtils.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime)))
     {
-      return -1;
-      return 1;
-      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
-        return 1;
+      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] < VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {
+        return -1;
       }
-    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
+      return 1;
+    }
+    if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
+      return 1;
+    }
+    if (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime) {
+      return -1;
+    }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem.DataSortedComparator
  * JD-Core Version:    0.7.0.1
  */

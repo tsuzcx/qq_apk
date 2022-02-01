@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
+import com.tencent.mobileqq.activity.aio.anim.egg.EggKeyword;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ListUtils;
@@ -10,7 +11,7 @@ public class EggsUtil
   private static String a(AioAnimationRule paramAioAnimationRule)
   {
     if (paramAioAnimationRule.c < ListUtils.a(paramAioAnimationRule.a)) {
-      return (String)paramAioAnimationRule.a.get(paramAioAnimationRule.c);
+      return ((EggKeyword)paramAioAnimationRule.a.get(paramAioAnimationRule.c)).a();
     }
     return "";
   }
@@ -27,7 +28,7 @@ public class EggsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.EggsUtil
  * JD-Core Version:    0.7.0.1
  */

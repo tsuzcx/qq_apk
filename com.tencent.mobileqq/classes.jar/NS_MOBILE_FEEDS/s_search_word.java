@@ -26,17 +26,19 @@ public final class s_search_word
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.hot_word != null) {
-      paramJceOutputStream.write(this.hot_word, 0);
+    String str = this.hot_word;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.jump_url != null) {
-      paramJceOutputStream.write(this.jump_url, 1);
+    str = this.jump_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_search_word
  * JD-Core Version:    0.7.0.1
  */

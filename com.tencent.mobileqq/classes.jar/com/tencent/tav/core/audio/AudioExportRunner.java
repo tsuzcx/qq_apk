@@ -12,6 +12,7 @@ import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.IDecoderTrack;
+import com.tencent.tav.decoder.MediaCodecManager;
 import com.tencent.tav.decoder.logger.Logger;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
@@ -70,25 +71,27 @@ public class AudioExportRunner
       int i = paramMediaCodec.dequeueInputBuffer(1000L);
       return i;
     }
-    catch (Exception localException)
+    catch (Error localError) {}catch (Exception localException) {}
+    Logger.e("AudioEncoder", "dequeueInputBuffer e = ", localException);
+    if ((21 <= Build.VERSION.SDK_INT) && ((localException instanceof MediaCodec.CodecException)))
     {
-      Logger.e("AudioEncoder", "dequeueInputBuffer e = ", localException);
-      if ((21 <= Build.VERSION.SDK_INT) && ((localException instanceof MediaCodec.CodecException)))
+      if (23 <= Build.VERSION.SDK_INT)
       {
-        if (23 <= Build.VERSION.SDK_INT) {
-          Logger.e("AudioEncoder", "CodecException - isTransient = " + ((MediaCodec.CodecException)localException).isTransient() + " , isRecoverable = " + ((MediaCodec.CodecException)localException).isRecoverable() + " , errorCode = " + ((MediaCodec.CodecException)localException).getErrorCode());
-        }
-        if (((MediaCodec.CodecException)localException).isTransient()) {
-          return dequeueInputBuffer(paramMediaCodec);
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("CodecException - isTransient = ");
+        MediaCodec.CodecException localCodecException = (MediaCodec.CodecException)localException;
+        localStringBuilder.append(localCodecException.isTransient());
+        localStringBuilder.append(" , isRecoverable = ");
+        localStringBuilder.append(localCodecException.isRecoverable());
+        localStringBuilder.append(" , errorCode = ");
+        localStringBuilder.append(localCodecException.getErrorCode());
+        Logger.e("AudioEncoder", localStringBuilder.toString());
       }
-      throw localException;
+      if (((MediaCodec.CodecException)localException).isTransient()) {
+        return dequeueInputBuffer(paramMediaCodec);
+      }
     }
-    catch (Error localError)
-    {
-      label11:
-      break label11;
-    }
+    throw localException;
   }
   
   private ByteBuffer getInputBuffer(int paramInt)
@@ -115,12 +118,12 @@ public class AudioExportRunner
       this.mAudioDecoder.start();
       CMTime localCMTime = this.mSelectedTimeRange.getStart();
       IDecoderTrack localIDecoderTrack = this.mAudioDecoder;
-      if (localCMTime.bigThan(CMTime.CMTimeZero)) {}
-      for (localCMTime = localCMTime.sub(CMTime.fromMs(200L));; localCMTime = CMTime.CMTimeZero)
-      {
-        localIDecoderTrack.seekTo(localCMTime, false, false);
-        return;
+      if (localCMTime.bigThan(CMTime.CMTimeZero)) {
+        localCMTime = localCMTime.sub(CMTime.fromMs(200L));
+      } else {
+        localCMTime = CMTime.CMTimeZero;
       }
+      localIDecoderTrack.seekTo(localCMTime, false, false);
       return;
     }
     catch (Throwable localThrowable)
@@ -151,10 +154,14 @@ public class AudioExportRunner
   
   private void notifyProgressUpdate(long paramLong)
   {
-    if ((this.mCallback != null) && (this.mSelectedTimeRange != null))
+    if (this.mCallback != null)
     {
-      long l = this.mSelectedTimeRange.getStartUs();
-      this.mCallback.onProgress(this.mStatus, (float)(paramLong - l) * 1.0F / (float)this.mSelectedTimeRange.getDurationUs());
+      CMTimeRange localCMTimeRange = this.mSelectedTimeRange;
+      if (localCMTimeRange != null)
+      {
+        long l = localCMTimeRange.getStartUs();
+        this.mCallback.onProgress(this.mStatus, (float)(paramLong - l) * 1.0F / (float)this.mSelectedTimeRange.getDurationUs());
+      }
     }
   }
   
@@ -165,33 +172,36 @@ public class AudioExportRunner
       paramMediaCodec.queueInputBuffer(paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
       return;
     }
-    catch (Exception localException)
+    catch (Error localError) {}catch (Exception localException) {}
+    Logger.e("AudioEncoder", "queueInputBuffer", localException);
+    if ((Build.VERSION.SDK_INT >= 21) && ((localException instanceof MediaCodec.CodecException)))
     {
-      Logger.e("AudioEncoder", "queueInputBuffer", localException);
-      if ((Build.VERSION.SDK_INT >= 21) && ((localException instanceof MediaCodec.CodecException)))
+      if (Build.VERSION.SDK_INT >= 23)
       {
-        if (Build.VERSION.SDK_INT >= 23) {
-          Logger.e("AudioEncoder", "CodecException - isTransient = " + ((MediaCodec.CodecException)localException).isTransient() + " , isRecoverable = " + ((MediaCodec.CodecException)localException).isRecoverable() + " , errorCode = " + ((MediaCodec.CodecException)localException).getErrorCode());
-        }
-        if (((MediaCodec.CodecException)localException).isTransient())
-        {
-          waitTime(20L);
-          queueInputBuffer(paramMediaCodec, paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("CodecException - isTransient = ");
+        MediaCodec.CodecException localCodecException = (MediaCodec.CodecException)localException;
+        localStringBuilder.append(localCodecException.isTransient());
+        localStringBuilder.append(" , isRecoverable = ");
+        localStringBuilder.append(localCodecException.isRecoverable());
+        localStringBuilder.append(" , errorCode = ");
+        localStringBuilder.append(localCodecException.getErrorCode());
+        Logger.e("AudioEncoder", localStringBuilder.toString());
       }
-      throw localException;
+      if (((MediaCodec.CodecException)localException).isTransient())
+      {
+        waitTime(20L);
+        queueInputBuffer(paramMediaCodec, paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
+      }
     }
-    catch (Error localError)
-    {
-      label15:
-      break label15;
-    }
+    throw localException;
   }
   
   private void readNextSample()
   {
     Object localObject = this.mAudioDecoder.readSample();
     CMTime localCMTime = ((CMSampleBuffer)localObject).getTime();
+    int i;
     if ((localCMTime.value > 0L) && (localCMTime.getTimeUs() <= this.mSelectedTimeRange.getEndUs()))
     {
       localObject = ((CMSampleBuffer)localObject).getSampleByteBuffer();
@@ -207,12 +217,12 @@ public class AudioExportRunner
       signalEndOfAudioStream();
       this.enOfAudioInputStream = true;
     }
-    if (l < -1L) {}
-    for (int i = 255;; i = this.mStatus)
-    {
-      this.mStatus = i;
-      return;
+    if (l < -1L) {
+      i = 255;
+    } else {
+      i = this.mStatus;
     }
+    this.mStatus = i;
   }
   
   private void signalEndOfAudioStream()
@@ -221,10 +231,11 @@ public class AudioExportRunner
     {
       Logger.d("AudioEncoder", "signalEndOfAudioStream: ");
       int i = dequeueInputBuffer(this.mAudioEncoder);
-      if (i >= 0) {
+      if (i >= 0)
+      {
         queueInputBuffer(this.mAudioEncoder, i, 0, 0, 0L, 4);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -232,64 +243,30 @@ public class AudioExportRunner
     }
   }
   
-  /* Error */
   private void stop()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 80	com/tencent/tav/core/audio/AudioExportRunner:mStop	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   6: invokevirtual 361	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   9: ifne +48 -> 57
-    //   12: aload_0
-    //   13: getfield 80	com/tencent/tav/core/audio/AudioExportRunner:mStop	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   16: iconst_1
-    //   17: invokevirtual 364	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   20: aload_0
-    //   21: getfield 209	com/tencent/tav/core/audio/AudioExportRunner:mAudioDecoder	Lcom/tencent/tav/decoder/IDecoderTrack;
-    //   24: invokeinterface 367 1 0
-    //   29: aload_0
-    //   30: getfield 188	com/tencent/tav/core/audio/AudioExportRunner:mAudioEncoder	Landroid/media/MediaCodec;
-    //   33: invokevirtual 369	android/media/MediaCodec:stop	()V
-    //   36: aload_0
-    //   37: getfield 188	com/tencent/tav/core/audio/AudioExportRunner:mAudioEncoder	Landroid/media/MediaCodec;
-    //   40: invokestatic 375	com/tencent/tav/decoder/MediaCodecManager:releaseCodec	(Landroid/media/MediaCodec;)V
-    //   43: aload_0
-    //   44: getfield 377	com/tencent/tav/core/audio/AudioExportRunner:mFos	Ljava/io/FileOutputStream;
-    //   47: invokevirtual 382	java/io/FileOutputStream:flush	()V
-    //   50: aload_0
-    //   51: getfield 377	com/tencent/tav/core/audio/AudioExportRunner:mFos	Ljava/io/FileOutputStream;
-    //   54: invokevirtual 385	java/io/FileOutputStream:close	()V
-    //   57: aload_0
-    //   58: iconst_0
-    //   59: putfield 82	com/tencent/tav/core/audio/AudioExportRunner:mCancel	Z
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: return
-    //   65: astore_1
-    //   66: ldc 18
-    //   68: ldc_w 387
-    //   71: aload_1
-    //   72: invokestatic 138	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   75: goto -18 -> 57
-    //   78: astore_1
-    //   79: aload_0
-    //   80: monitorexit
-    //   81: aload_1
-    //   82: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	83	0	this	AudioExportRunner
-    //   65	7	1	localException	Exception
-    //   78	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   20	57	65	java/lang/Exception
-    //   2	20	78	finally
-    //   20	57	78	finally
-    //   57	62	78	finally
-    //   66	75	78	finally
+    try
+    {
+      if (!this.mStop.get())
+      {
+        this.mStop.set(true);
+        try
+        {
+          this.mAudioDecoder.release();
+          this.mAudioEncoder.stop();
+          MediaCodecManager.releaseCodec(this.mAudioEncoder);
+          this.mFos.flush();
+          this.mFos.close();
+        }
+        catch (Exception localException)
+        {
+          Logger.e("AudioEncoder", "stop: ", localException);
+        }
+      }
+      this.mCancel = false;
+      return;
+    }
+    finally {}
   }
   
   private void waitTime(long paramLong)
@@ -316,9 +293,11 @@ public class AudioExportRunner
   private void writeAudioSample()
   {
     MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
-    for (;;)
+    int i;
+    do
     {
-      int i = this.mAudioEncoder.dequeueOutputBuffer(localBufferInfo, 0L);
+      i = this.mAudioEncoder.dequeueOutputBuffer(localBufferInfo, 0L);
+      Object localObject1;
       if ((i >= 0) && (isValidBuffer(localBufferInfo)) && (this.mStatus != 2))
       {
         if ((localBufferInfo.flags & 0x4) != 0)
@@ -326,39 +305,54 @@ public class AudioExportRunner
           Logger.d("AudioEncoder", "writeAudioFrame: BUFFER_FLAG_END_OF_STREAM ");
           this.mStatus = 2;
         }
-        ByteBuffer localByteBuffer = getOutputBuffer(i);
-        localByteBuffer.position(localBufferInfo.offset);
-        byte[] arrayOfByte = new byte[localBufferInfo.size + 7];
-        localByteBuffer.get(arrayOfByte, 7, localBufferInfo.size);
-        EncoderUtils.addADTStoPacket(arrayOfByte, this.mChannelCount);
-        Logger.v("AudioEncoder", "dequeue finish - " + localBufferInfo.presentationTimeUs + "--" + localBufferInfo.flags + " -- " + localBufferInfo.size + "  -  " + i + " endUs = " + this.mSelectedTimeRange.getEndUs());
-        write(arrayOfByte);
+        Object localObject2 = getOutputBuffer(i);
+        ((ByteBuffer)localObject2).position(localBufferInfo.offset);
+        localObject1 = new byte[localBufferInfo.size + 7];
+        ((ByteBuffer)localObject2).get((byte[])localObject1, 7, localBufferInfo.size);
+        EncoderUtils.addADTStoPacket((byte[])localObject1, this.mChannelCount);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("dequeue finish - ");
+        ((StringBuilder)localObject2).append(localBufferInfo.presentationTimeUs);
+        ((StringBuilder)localObject2).append("--");
+        ((StringBuilder)localObject2).append(localBufferInfo.flags);
+        ((StringBuilder)localObject2).append(" -- ");
+        ((StringBuilder)localObject2).append(localBufferInfo.size);
+        ((StringBuilder)localObject2).append("  -  ");
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append(" endUs = ");
+        ((StringBuilder)localObject2).append(this.mSelectedTimeRange.getEndUs());
+        Logger.v("AudioEncoder", ((StringBuilder)localObject2).toString());
+        write((byte[])localObject1);
         this.mAudioEncoder.releaseOutputBuffer(i, false);
         if (this.mStatus != 2) {
           notifyProgressUpdate(localBufferInfo.presentationTimeUs);
+        } else {
+          notifyProgressUpdate(this.mSelectedTimeRange.getEndUs());
         }
       }
-      while (i < 0)
+      else if (isFinish(localBufferInfo))
       {
-        return;
-        notifyProgressUpdate(this.mSelectedTimeRange.getEndUs());
-        continue;
-        if (isFinish(localBufferInfo)) {
+        confirmFinishAndNotify();
+      }
+      else if ((i != -1) && (i != -2))
+      {
+        if ((localBufferInfo.flags & 0x4) != 0)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("writeAudioFrame: BUFFER_FLAG_END_OF_STREAM ");
+          ((StringBuilder)localObject1).append(localBufferInfo.size);
+          ((StringBuilder)localObject1).append("/");
+          ((StringBuilder)localObject1).append(localBufferInfo.presentationTimeUs);
+          Logger.d("AudioEncoder", ((StringBuilder)localObject1).toString());
           confirmFinishAndNotify();
-        } else if ((i != -1) && (i != -2)) {
-          if ((localBufferInfo.flags & 0x4) != 0)
-          {
-            Logger.d("AudioEncoder", "writeAudioFrame: BUFFER_FLAG_END_OF_STREAM " + localBufferInfo.size + "/" + localBufferInfo.presentationTimeUs);
-            confirmFinishAndNotify();
-            this.mAudioEncoder.releaseOutputBuffer(i, false);
-          }
-          else
-          {
-            this.mAudioEncoder.releaseOutputBuffer(i, false);
-          }
+          this.mAudioEncoder.releaseOutputBuffer(i, false);
+        }
+        else
+        {
+          this.mAudioEncoder.releaseOutputBuffer(i, false);
         }
       }
-    }
+    } while (i >= 0);
   }
   
   private void writeAudioSample(CMTime paramCMTime, int paramInt, byte[] paramArrayOfByte)
@@ -373,8 +367,8 @@ public class AudioExportRunner
         localByteBuffer.clear();
         int k = Math.min(localByteBuffer.capacity(), paramInt);
         localByteBuffer.put(paramArrayOfByte, i, k);
-        this.mAudioEncoder.queueInputBuffer(j, 0, k, paramCMTime.getTimeUs(), 1);
         i += k;
+        this.mAudioEncoder.queueInputBuffer(j, 0, k, paramCMTime.getTimeUs(), 1);
       }
     }
   }
@@ -421,7 +415,10 @@ public class AudioExportRunner
   
   public void run()
   {
-    Logger.d("AudioEncoder", "encoder start - " + this);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("encoder start - ");
+    localStringBuilder1.append(this);
+    Logger.d("AudioEncoder", localStringBuilder1.toString());
     while ((this.mStatus <= 1) && (!this.mCancel)) {
       try
       {
@@ -440,7 +437,12 @@ public class AudioExportRunner
       this.mStatus = 4;
       notifyProgressUpdate(this.mSelectedTimeRange.getEndUs());
     }
-    Logger.d("AudioEncoder", "encoder finish - " + this + "  mStatus = " + this.mStatus);
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("encoder finish - ");
+    localStringBuilder2.append(this);
+    localStringBuilder2.append("  mStatus = ");
+    localStringBuilder2.append(this.mStatus);
+    Logger.d("AudioEncoder", localStringBuilder2.toString());
     stop();
   }
   
@@ -504,7 +506,7 @@ public class AudioExportRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.audio.AudioExportRunner
  * JD-Core Version:    0.7.0.1
  */

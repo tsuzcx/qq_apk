@@ -11,44 +11,51 @@ public class OfflineFileHttpUtils
   {
     if (paramLong3 == 0L)
     {
-      if (paramLong1 < paramSSCM.a(BaseApplication.getContext(), paramLong1, paramLong3, 1024)) {}
-      for (;;)
-      {
-        i = (int)paramLong1;
-        int k = Utils.a(BaseApplication.getContext());
-        int j;
-        if (k != 1)
-        {
-          j = i;
-          if (k != 2) {}
-        }
-        else
-        {
-          j = i;
-          if (i > 16384) {
-            j = 16384;
-          }
-        }
-        i = Math.min(j, 1048576);
-        if (QLog.isColorLevel()) {
-          QLog.d("OfflineFileHttpUtils<FileAssistant>", 2, "sendFilePakage transferedSize[" + paramLong2 + "], size[" + i + "]");
-        }
-        return i;
-        paramLong1 = 1024L;
+      if (paramLong1 < paramSSCM.a(BaseApplication.getContext(), paramLong1, paramLong3, 1024)) {
+        paramLong3 = paramLong1;
+      } else {
+        paramLong3 = 1024L;
       }
     }
-    int i = paramSSCM.a(BaseApplication.getContext(), paramLong1, paramLong2, 131072);
-    if (paramLong1 < i + paramLong2) {}
-    for (paramLong1 -= paramLong2;; paramLong1 = i)
+    else
     {
-      i = (int)paramLong1;
-      break;
+      long l = paramSSCM.a(BaseApplication.getContext(), paramLong1, paramLong2, 131072);
+      paramLong3 = l;
+      if (paramLong1 < paramLong2 + l) {
+        paramLong3 = paramLong1 - paramLong2;
+      }
     }
+    int j = (int)paramLong3;
+    int k = Utils.a(BaseApplication.getContext());
+    if (k != 1)
+    {
+      i = j;
+      if (k != 2) {}
+    }
+    else
+    {
+      i = j;
+      if (j > 16384) {
+        i = 16384;
+      }
+    }
+    int i = Math.min(i, 1048576);
+    if (QLog.isColorLevel())
+    {
+      paramSSCM = new StringBuilder();
+      paramSSCM.append("sendFilePakage transferedSize[");
+      paramSSCM.append(paramLong2);
+      paramSSCM.append("], size[");
+      paramSSCM.append(i);
+      paramSSCM.append("]");
+      QLog.d("OfflineFileHttpUtils<FileAssistant>", 2, paramSSCM.toString());
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.offlinefile.OfflineFileUpload.OfflineFileHttpUtils
  * JD-Core Version:    0.7.0.1
  */

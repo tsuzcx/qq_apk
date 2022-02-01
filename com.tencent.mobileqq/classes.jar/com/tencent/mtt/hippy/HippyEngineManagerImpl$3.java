@@ -1,22 +1,23 @@
 package com.tencent.mtt.hippy;
 
+import com.tencent.mtt.hippy.modules.nativemodules.deviceevent.DeviceEventModule.InvokeDefaultBackPress;
+
 class HippyEngineManagerImpl$3
-  implements Runnable
+  implements HippyEngine.BackPressHandler
 {
-  HippyEngineManagerImpl$3(HippyEngineManagerImpl paramHippyEngineManagerImpl, int paramInt, String paramString, HippyRootView paramHippyRootView) {}
+  HippyEngineManagerImpl$3(HippyEngineManagerImpl paramHippyEngineManagerImpl, DeviceEventModule.InvokeDefaultBackPress paramInvokeDefaultBackPress) {}
   
-  public void run()
+  public void handleBackPress()
   {
-    if (this.this$0.mModuleListener != null)
-    {
-      this.this$0.mModuleListener.onInitialized(this.val$statusCode, this.val$msg, this.val$hippyRootView);
-      this.this$0.mModuleListener = null;
+    DeviceEventModule.InvokeDefaultBackPress localInvokeDefaultBackPress = this.val$invokeImp;
+    if (localInvokeDefaultBackPress != null) {
+      localInvokeDefaultBackPress.callSuperOnBackPress();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngineManagerImpl.3
  * JD-Core Version:    0.7.0.1
  */

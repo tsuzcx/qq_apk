@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.database;
 
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
 import com.tencent.biz.qqstory.base.Copyable;
@@ -42,7 +41,7 @@ public class CommentEntry
   public int authorRole;
   public String authorUin;
   public String authorUnionId;
-  public int commentId = (int)(this.fakeId / 1000L - 1400000000.0D);
+  public int commentId;
   public int commentType = 0;
   public String content;
   @notColumn
@@ -61,6 +60,13 @@ public class CommentEntry
   public String togetherVid;
   public int type = 3;
   public String vid;
+  
+  public CommentEntry()
+  {
+    double d = this.fakeId / 1000L;
+    Double.isNaN(d);
+    this.commentId = ((int)(d - 1400000000.0D));
+  }
   
   public static CommentEntry convertFrom(qqstory_struct.StoryVideoCommentInfo paramStoryVideoCommentInfo)
   {
@@ -116,49 +122,91 @@ public class CommentEntry
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (CommentEntry)paramObject;
-    } while (this.fakeId == paramObject.fakeId);
+      return this.fakeId == paramObject.fakeId;
+    }
     return false;
   }
   
-  @NonNull
+  /* Error */
+  @android.support.annotation.NonNull
   public JSONObject getExtraJson()
   {
-    try
-    {
-      if (this.extraJson == null) {
-        if (TextUtils.isEmpty(this.extras)) {
-          break label43;
-        }
-      }
-      label43:
-      for (this.extraJson = new JSONObject(this.extras);; this.extraJson = new JSONObject())
-      {
-        JSONObject localJSONObject = this.extraJson;
-        return localJSONObject;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        SLog.c("CommentEntry", "getExtraJson error", localException);
-        this.extraJson = new JSONObject();
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 210	com/tencent/biz/qqstory/database/CommentEntry:extraJson	Lorg/json/JSONObject;
+    //   6: ifnonnull +69 -> 75
+    //   9: aload_0
+    //   10: getfield 184	com/tencent/biz/qqstory/database/CommentEntry:extras	Ljava/lang/String;
+    //   13: invokestatic 229	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   16: ifne +21 -> 37
+    //   19: aload_0
+    //   20: new 231	org/json/JSONObject
+    //   23: dup
+    //   24: aload_0
+    //   25: getfield 184	com/tencent/biz/qqstory/database/CommentEntry:extras	Ljava/lang/String;
+    //   28: invokespecial 234	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   31: putfield 210	com/tencent/biz/qqstory/database/CommentEntry:extraJson	Lorg/json/JSONObject;
+    //   34: goto +41 -> 75
+    //   37: aload_0
+    //   38: new 231	org/json/JSONObject
+    //   41: dup
+    //   42: invokespecial 235	org/json/JSONObject:<init>	()V
+    //   45: putfield 210	com/tencent/biz/qqstory/database/CommentEntry:extraJson	Lorg/json/JSONObject;
+    //   48: goto +27 -> 75
+    //   51: astore_1
+    //   52: goto +32 -> 84
+    //   55: astore_1
+    //   56: ldc 237
+    //   58: ldc 239
+    //   60: aload_1
+    //   61: invokestatic 245	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   64: aload_0
+    //   65: new 231	org/json/JSONObject
+    //   68: dup
+    //   69: invokespecial 235	org/json/JSONObject:<init>	()V
+    //   72: putfield 210	com/tencent/biz/qqstory/database/CommentEntry:extraJson	Lorg/json/JSONObject;
+    //   75: aload_0
+    //   76: getfield 210	com/tencent/biz/qqstory/database/CommentEntry:extraJson	Lorg/json/JSONObject;
+    //   79: astore_1
+    //   80: aload_0
+    //   81: monitorexit
+    //   82: aload_1
+    //   83: areturn
+    //   84: aload_0
+    //   85: monitorexit
+    //   86: aload_1
+    //   87: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	88	0	this	CommentEntry
+    //   51	1	1	localObject	Object
+    //   55	6	1	localException	java.lang.Exception
+    //   79	8	1	localJSONObject	JSONObject
+    // Exception table:
+    //   from	to	target	type
+    //   2	34	51	finally
+    //   37	48	51	finally
+    //   56	75	51	finally
+    //   75	80	51	finally
+    //   2	34	55	java/lang/Exception
+    //   37	48	55	java/lang/Exception
   }
   
   public int hashCode()
   {
-    return (int)(this.fakeId ^ this.fakeId >>> 32);
+    long l = this.fakeId;
+    return (int)(l ^ l >>> 32);
   }
   
   public boolean isReply()
@@ -185,34 +233,57 @@ public class CommentEntry
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("CommentEntry {commentId=").append(this.commentId);
-    localStringBuilder.append(", replyUin=").append(this.replyUin);
-    localStringBuilder.append(", authorUin=").append(this.authorUin);
-    localStringBuilder.append(", replyTime=").append(this.replyTime);
-    localStringBuilder.append(", content=").append(this.content);
-    localStringBuilder.append(", replyTime=").append(this.replyTime);
-    localStringBuilder.append(", authorName=").append(this.authorName);
-    localStringBuilder.append(", replierName=").append(this.replierName);
-    localStringBuilder.append(", fakeId=").append(this.fakeId);
-    localStringBuilder.append(", vid=").append(this.vid);
-    localStringBuilder.append(", status=").append(this.status);
-    localStringBuilder.append(", authorRole=").append(this.authorRole);
-    localStringBuilder.append(", authorUnionId=").append(this.authorUnionId);
-    localStringBuilder.append(", replierRole=").append(this.replierRole);
-    localStringBuilder.append(", replierUnionId=").append(this.replierUnionId);
-    localStringBuilder.append(", type=").append(this.type);
-    localStringBuilder.append(", commentType=").append(this.commentType);
-    localStringBuilder.append(", pbType=").append(this.pbType);
-    localStringBuilder.append(", togetherVid=").append(this.togetherVid);
-    localStringBuilder.append(", togetherFeedId=").append(this.togetherFeedId);
-    localStringBuilder.append(", atShootTime=").append(this.atVideoShootTime);
-    localStringBuilder.append(", extras=").append(this.extras).append("}");
+    localStringBuilder.append("CommentEntry {commentId=");
+    localStringBuilder.append(this.commentId);
+    localStringBuilder.append(", replyUin=");
+    localStringBuilder.append(this.replyUin);
+    localStringBuilder.append(", authorUin=");
+    localStringBuilder.append(this.authorUin);
+    localStringBuilder.append(", replyTime=");
+    localStringBuilder.append(this.replyTime);
+    localStringBuilder.append(", content=");
+    localStringBuilder.append(this.content);
+    localStringBuilder.append(", replyTime=");
+    localStringBuilder.append(this.replyTime);
+    localStringBuilder.append(", authorName=");
+    localStringBuilder.append(this.authorName);
+    localStringBuilder.append(", replierName=");
+    localStringBuilder.append(this.replierName);
+    localStringBuilder.append(", fakeId=");
+    localStringBuilder.append(this.fakeId);
+    localStringBuilder.append(", vid=");
+    localStringBuilder.append(this.vid);
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.status);
+    localStringBuilder.append(", authorRole=");
+    localStringBuilder.append(this.authorRole);
+    localStringBuilder.append(", authorUnionId=");
+    localStringBuilder.append(this.authorUnionId);
+    localStringBuilder.append(", replierRole=");
+    localStringBuilder.append(this.replierRole);
+    localStringBuilder.append(", replierUnionId=");
+    localStringBuilder.append(this.replierUnionId);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", commentType=");
+    localStringBuilder.append(this.commentType);
+    localStringBuilder.append(", pbType=");
+    localStringBuilder.append(this.pbType);
+    localStringBuilder.append(", togetherVid=");
+    localStringBuilder.append(this.togetherVid);
+    localStringBuilder.append(", togetherFeedId=");
+    localStringBuilder.append(this.togetherFeedId);
+    localStringBuilder.append(", atShootTime=");
+    localStringBuilder.append(this.atVideoShootTime);
+    localStringBuilder.append(", extras=");
+    localStringBuilder.append(this.extras);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.CommentEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
+import com.tencent.mobileqq.teamwork.bean.TeamWorkFileImportInfo;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class FilePreviewActivity$1
@@ -27,7 +27,7 @@ class FilePreviewActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.1
  * JD-Core Version:    0.7.0.1
  */

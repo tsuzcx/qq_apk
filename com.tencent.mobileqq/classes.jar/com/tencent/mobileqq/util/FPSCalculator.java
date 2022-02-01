@@ -32,15 +32,16 @@ public class FPSCalculator
   
   public static FPSCalculator a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqUtilFPSCalculator == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqUtilFPSCalculator == null) {
-        jdField_a_of_type_ComTencentMobileqqUtilFPSCalculator = new FPSCalculator();
+    if (jdField_a_of_type_ComTencentMobileqqUtilFPSCalculator == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqUtilFPSCalculator == null) {
+          jdField_a_of_type_ComTencentMobileqqUtilFPSCalculator = new FPSCalculator();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqUtilFPSCalculator;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqUtilFPSCalculator;
   }
   
   private void a()
@@ -72,60 +73,62 @@ public class FPSCalculator
   private void a(long paramLong)
   {
     paramLong = a(paramLong);
-    if (this.jdField_a_of_type_Long <= 0L) {
+    long l = this.jdField_a_of_type_Long;
+    if (l <= 0L)
+    {
       this.jdField_a_of_type_Long = paramLong;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidViewChoreographer.postFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
-      return;
-      long l = paramLong - this.jdField_a_of_type_Long;
+      l = paramLong - l;
       this.jdField_a_of_type_Int += 1;
-      if (l <= 500L) {
-        continue;
-      }
-      double d = this.jdField_a_of_type_Int * 1000 / l;
-      this.jdField_a_of_type_Long = paramLong;
-      this.jdField_a_of_type_Int = 0;
-      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-      int i = 0;
-      try
+      if (l > 500L)
       {
-        while (i < this.jdField_a_of_type_JavaUtilVector.size())
+        double d1 = this.jdField_a_of_type_Int * 1000;
+        double d2 = l;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        d1 /= d2;
+        this.jdField_a_of_type_Long = paramLong;
+        int i = 0;
+        this.jdField_a_of_type_Int = 0;
+        synchronized (this.jdField_a_of_type_JavaLangObject)
         {
-          ((FPSCalculator.GetFPSListener)this.jdField_a_of_type_JavaUtilVector.get(i)).onInfo(this.jdField_a_of_type_Long, d);
-          i += 1;
+          while (i < this.jdField_a_of_type_JavaUtilVector.size())
+          {
+            ((FPSCalculator.GetFPSListener)this.jdField_a_of_type_JavaUtilVector.get(i)).onInfo(this.jdField_a_of_type_Long, d1);
+            i += 1;
+          }
         }
       }
-      finally {}
     }
+    this.jdField_a_of_type_AndroidViewChoreographer.postFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
   }
   
   private void b()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label82;
-      }
-      if (this.jdField_a_of_type_AndroidViewChoreographer != null)
+      if (Build.VERSION.SDK_INT >= 16)
       {
-        this.jdField_a_of_type_AndroidViewChoreographer.removeFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
-        if (QLog.isColorLevel()) {
-          QLog.d("FPSCalculator", 2, "removeFrameCallback ");
+        Choreographer localChoreographer = this.jdField_a_of_type_AndroidViewChoreographer;
+        if (localChoreographer != null)
+        {
+          localChoreographer.removeFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
+          if (QLog.isColorLevel()) {
+            QLog.d("FPSCalculator", 2, "removeFrameCallback ");
+          }
         }
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
-    }
-    for (;;)
-    {
+      else
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
+      }
       this.jdField_a_of_type_Long = 0L;
       this.jdField_a_of_type_Int = 0;
       this.jdField_a_of_type_Boolean = false;
       QLog.d("FPSCalculator", 2, "FPSCalculator set enable = false");
-      return;
-      label82:
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
     }
   }
   
@@ -159,7 +162,7 @@ public class FPSCalculator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.FPSCalculator
  * JD-Core Version:    0.7.0.1
  */

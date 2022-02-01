@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.jce;
+package com.tencent.biz.pubaccount.accountdetail.jce;
 
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
@@ -25,7 +25,7 @@ public final class GetRecvMsgStateReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.jce.GetRecvMsgStateReq
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.jce.GetRecvMsgStateReq
  * JD-Core Version:    0.7.0.1
  */

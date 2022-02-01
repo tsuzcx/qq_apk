@@ -32,16 +32,19 @@ public class MiniCacheFreeManager
   
   private static void clearAllPkgs()
   {
-    com.tencent.mobileqq.utils.FileUtils.a(ApkgManager.PATH_GAMEPKG_ROOT, false);
-    com.tencent.mobileqq.utils.FileUtils.a(ApkgManager.PATH_WXAPKG_ROOT, false);
-    com.tencent.mobileqq.utils.FileUtils.a(ApkgManager.PATH_APKG_TISSUE_ROOT, false);
+    com.tencent.mobileqq.utils.FileUtils.delete(ApkgManager.PATH_GAMEPKG_ROOT, false);
+    com.tencent.mobileqq.utils.FileUtils.delete(ApkgManager.PATH_WXAPKG_ROOT, false);
+    com.tencent.mobileqq.utils.FileUtils.delete(ApkgManager.PATH_APKG_TISSUE_ROOT, false);
   }
   
   private static void clearAllStorageCache()
   {
     try
     {
-      com.tencent.mobileqq.utils.FileUtils.a(BaseApplication.getContext().getCacheDir() + "/mini", false);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(BaseApplication.getContext().getCacheDir());
+      localStringBuilder.append("/mini");
+      com.tencent.mobileqq.utils.FileUtils.delete(localStringBuilder.toString(), false);
       return;
     }
     catch (Exception localException)
@@ -52,17 +55,39 @@ public class MiniCacheFreeManager
   
   private static void clearAuthSp(String paramString, MiniAppInfo paramMiniAppInfo)
   {
-    if (paramMiniAppInfo == null) {}
-    while (!BaseApplicationImpl.getApplication().getSharedPreferences(paramMiniAppInfo.appId + "_" + paramString, 4).edit().clear().commit()) {
+    if (paramMiniAppInfo == null) {
       return;
     }
-    QLog.i("MiniCacheFreeManager", 1, "clearAuthSp finish. " + paramMiniAppInfo.appId);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMiniAppInfo.appId);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    if (localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 4).edit().clear().commit())
+    {
+      paramString = new StringBuilder();
+      paramString.append("clearAuthSp finish. ");
+      paramString.append(paramMiniAppInfo.appId);
+      QLog.i("MiniCacheFreeManager", 1, paramString.toString());
+    }
   }
   
   private static void clearAuthSp(String paramString1, String paramString2)
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)) && (BaseApplicationImpl.getApplication().getSharedPreferences(paramString2 + "_" + paramString1, 4).edit().clear().commit())) {
-      QLog.i("MiniCacheFreeManager", 1, "clearAuthSp finish. " + paramString2);
+    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)))
+    {
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString1);
+      if (localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 4).edit().clear().commit())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("clearAuthSp finish. ");
+        paramString1.append(paramString2);
+        QLog.i("MiniCacheFreeManager", 1, paramString1.toString());
+      }
     }
   }
   
@@ -73,27 +98,53 @@ public class MiniCacheFreeManager
   
   private static void clearDebugSp(MiniAppInfo paramMiniAppInfo)
   {
-    if (paramMiniAppInfo == null) {}
-    while (!StorageUtil.getPreference().edit().putBoolean(paramMiniAppInfo.appId + "_debug", false).commit()) {
+    if (paramMiniAppInfo == null) {
       return;
     }
-    QLog.i("MiniCacheFreeManager", 1, "clearDebugSp finish. " + paramMiniAppInfo.appId);
+    Object localObject = StorageUtil.getPreference().edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMiniAppInfo.appId);
+    localStringBuilder.append("_debug");
+    if (((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), false).commit())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("clearDebugSp finish. ");
+      ((StringBuilder)localObject).append(paramMiniAppInfo.appId);
+      QLog.i("MiniCacheFreeManager", 1, ((StringBuilder)localObject).toString());
+    }
   }
   
   private static void clearDebugSp(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (StorageUtil.getPreference().edit().putBoolean(paramString + "_debug", false).commit())) {
-      QLog.i("MiniCacheFreeManager", 1, "clearDebugSp finish. " + paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Object localObject = StorageUtil.getPreference().edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_debug");
+      if (((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), false).commit())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("clearDebugSp finish. ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.i("MiniCacheFreeManager", 1, ((StringBuilder)localObject).toString());
+      }
     }
   }
   
   private static void clearFileCache(MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId))) {
-      return;
+    if (paramMiniAppInfo != null)
+    {
+      if (TextUtils.isEmpty(paramMiniAppInfo.appId)) {
+        return;
+      }
+      MiniAppFileManager.getInstance().clearFileCache(paramMiniAppInfo.appId);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearFileCache finish. ");
+      localStringBuilder.append(paramMiniAppInfo.appId);
+      QLog.i("MiniCacheFreeManager", 1, localStringBuilder.toString());
     }
-    MiniAppFileManager.getInstance().clearFileCache(paramMiniAppInfo.appId);
-    QLog.i("MiniCacheFreeManager", 1, "clearFileCache finish. " + paramMiniAppInfo.appId);
   }
   
   private static void clearFileCache(String paramString)
@@ -101,21 +152,27 @@ public class MiniCacheFreeManager
     if (!TextUtils.isEmpty(paramString))
     {
       MiniAppFileManager.getInstance().clearFileCache(paramString);
-      QLog.i("MiniCacheFreeManager", 1, "clearFileCache finish. " + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearFileCache finish. ");
+      localStringBuilder.append(paramString);
+      QLog.i("MiniCacheFreeManager", 1, localStringBuilder.toString());
     }
   }
   
   private static void clearPkg(MiniAppInfo paramMiniAppInfo)
   {
-    if (paramMiniAppInfo == null) {}
-    String str;
-    do
-    {
+    if (paramMiniAppInfo == null) {
       return;
-      str = ApkgManager.getApkgFolderPath(paramMiniAppInfo);
-    } while (!new File(str).exists());
-    com.tencent.mobileqq.utils.FileUtils.a(str, false);
-    QLog.i("MiniCacheFreeManager", 1, "clearPkg finish: " + paramMiniAppInfo.appId);
+    }
+    Object localObject = ApkgManager.getApkgFolderPath(paramMiniAppInfo);
+    if (new File((String)localObject).exists())
+    {
+      com.tencent.mobileqq.utils.FileUtils.delete((String)localObject, false);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("clearPkg finish: ");
+      ((StringBuilder)localObject).append(paramMiniAppInfo.appId);
+      QLog.i("MiniCacheFreeManager", 1, ((StringBuilder)localObject).toString());
+    }
   }
   
   private static void clearPkg(String paramString)
@@ -125,6 +182,7 @@ public class MiniCacheFreeManager
     Object localObject2 = new File(str);
     int j;
     int i;
+    Object localObject3;
     if (((File)localObject2).isDirectory())
     {
       localObject2 = ((File)localObject2).list();
@@ -132,11 +190,17 @@ public class MiniCacheFreeManager
       i = 0;
       while (i < j)
       {
-        CharSequence localCharSequence = localObject2[i];
-        if ((!TextUtils.isEmpty(localCharSequence)) && (localCharSequence.startsWith((String)localObject1)))
+        localObject3 = localObject2[i];
+        if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (((String)localObject3).startsWith((String)localObject1)))
         {
-          QLog.d("MiniCacheFreeManager", 1, "clearPkg delete pkg : " + localCharSequence);
-          com.tencent.mobileqq.mini.utils.FileUtils.delete(str + localCharSequence, false);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("clearPkg delete pkg : ");
+          localStringBuilder.append((String)localObject3);
+          QLog.d("MiniCacheFreeManager", 1, localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append((String)localObject3);
+          com.tencent.mobileqq.mini.utils.FileUtils.delete(localStringBuilder.toString(), false);
         }
         i += 1;
       }
@@ -154,8 +218,14 @@ public class MiniCacheFreeManager
         localObject2 = localObject1[i];
         if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).startsWith(paramString)))
         {
-          QLog.d("MiniCacheFreeManager", 1, "clearPkg delete pkg : " + (String)localObject2);
-          com.tencent.mobileqq.mini.utils.FileUtils.delete(str + (String)localObject2, false);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("clearPkg delete pkg : ");
+          ((StringBuilder)localObject3).append((String)localObject2);
+          QLog.d("MiniCacheFreeManager", 1, ((StringBuilder)localObject3).toString());
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(str);
+          ((StringBuilder)localObject3).append((String)localObject2);
+          com.tencent.mobileqq.mini.utils.FileUtils.delete(((StringBuilder)localObject3).toString(), false);
         }
         i += 1;
       }
@@ -164,14 +234,21 @@ public class MiniCacheFreeManager
   
   private static void clearStorageCache(String paramString, MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId))) {}
-    do
+    if (paramMiniAppInfo != null)
     {
-      return;
+      if (TextUtils.isEmpty(paramMiniAppInfo.appId)) {
+        return;
+      }
       paramString = Storage.open(BaseApplicationImpl.getApplication().getBaseContext(), paramString, paramMiniAppInfo.appId);
-    } while (paramString == null);
-    paramString.clearStorage();
-    QLog.i("MiniCacheFreeManager", 1, "clearStorageCache finish. " + paramMiniAppInfo.appId);
+      if (paramString != null)
+      {
+        paramString.clearStorage();
+        paramString = new StringBuilder();
+        paramString.append("clearStorageCache finish. ");
+        paramString.append(paramMiniAppInfo.appId);
+        QLog.i("MiniCacheFreeManager", 1, paramString.toString());
+      }
+    }
   }
   
   private static void clearStorageCache(String paramString1, String paramString2)
@@ -182,7 +259,10 @@ public class MiniCacheFreeManager
       if (paramString1 != null)
       {
         paramString1.clearStorage();
-        QLog.i("MiniCacheFreeManager", 1, "clearStorageCache finish. " + paramString2);
+        paramString1 = new StringBuilder();
+        paramString1.append("clearStorageCache finish. ");
+        paramString1.append(paramString2);
+        QLog.i("MiniCacheFreeManager", 1, paramString1.toString());
       }
     }
   }
@@ -219,16 +299,11 @@ public class MiniCacheFreeManager
   
   private static void killSelf(MiniAppInfo paramMiniAppInfo)
   {
-    if (paramMiniAppInfo == null) {}
-    for (;;)
-    {
+    if (paramMiniAppInfo == null) {
       return;
-      if (!paramMiniAppInfo.isEngineTypeMiniGame()) {}
-      for (boolean bool = true; MiniSdkUtil.a(bool); bool = false)
-      {
-        MiniSDK.stopMiniApp(BaseApplicationImpl.getContext(), MiniSdkLauncher.convert(paramMiniAppInfo));
-        return;
-      }
+    }
+    if (MiniSdkUtil.a(paramMiniAppInfo.isEngineTypeMiniGame() ^ true)) {
+      MiniSDK.stopMiniApp(BaseApplicationImpl.getContext(), MiniSdkLauncher.convert(paramMiniAppInfo));
     }
   }
   
@@ -241,7 +316,7 @@ public class MiniCacheFreeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.cache.MiniCacheFreeManager
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,9 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl
     WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onInfo] 播放状态回调 PLAYER_INFO_ENDOF_BUFFERING");
     if ((WSPlayerManager.a(this.a) != null) && (a()))
     {
-      WSPlayerWrapper localWSPlayerWrapper = WSPlayerManager.a(this.a, WSPlayerManager.a(this.a));
-      if ((localWSPlayerWrapper != null) && (!localWSPlayerWrapper.e())) {
+      Object localObject = this.a;
+      localObject = WSPlayerManager.a((WSPlayerManager)localObject, WSPlayerManager.a((WSPlayerManager)localObject));
+      if ((localObject != null) && (!((WSPlayerWrapper)localObject).e())) {
         WSPlayerManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper.f();
       }
     }
@@ -34,19 +35,27 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl
   
   private void b()
   {
-    WSLog.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][onDownloadFinish] 预播任务 prePlayTitle:" + WSPlayerManager.a(this.a, WSPlayerManager.a(this.a)));
-    WSPlayerParam localWSPlayerParam = WSPlayerManager.a(this.a);
-    WSVideoPreDownloadManager localWSVideoPreDownloadManager = WSPlayerManager.a(this.a);
-    if ((localWSVideoPreDownloadManager == null) || (localWSPlayerParam == null)) {
-      return;
-    }
-    int i = localWSPlayerParam.b;
-    if (i > WSPlayerManager.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[WSPlayerManager.java][onDownloadFinish] 预播任务 prePlayTitle:");
+    Object localObject2 = this.a;
+    ((StringBuilder)localObject1).append(WSPlayerManager.a((WSPlayerManager)localObject2, WSPlayerManager.a((WSPlayerManager)localObject2)));
+    WSLog.e("WS_VIDEO_PRE_PLAY", ((StringBuilder)localObject1).toString());
+    localObject1 = WSPlayerManager.a(this.a);
+    localObject2 = WSPlayerManager.a(this.a);
+    if (localObject2 != null)
     {
-      localWSVideoPreDownloadManager.a(i, bool);
+      if (localObject1 == null) {
+        return;
+      }
+      int i = ((WSPlayerParam)localObject1).b;
+      boolean bool;
+      if (i > WSPlayerManager.a(this.a)) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((WSVideoPreDownloadManager)localObject2).a(i, bool);
       WSPlayerManager.a(this.a, i);
-      return;
     }
   }
   
@@ -55,8 +64,9 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl
     WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onInfo] 播放状态回调 PLAYER_INFO_START_BUFFERING");
     if ((WSPlayerManager.a(this.a) != null) && (a()))
     {
-      WSPlayerWrapper localWSPlayerWrapper = WSPlayerManager.a(this.a, WSPlayerManager.a(this.a));
-      if ((localWSPlayerWrapper != null) && (!localWSPlayerWrapper.e())) {
+      Object localObject = this.a;
+      localObject = WSPlayerManager.a((WSPlayerManager)localObject, WSPlayerManager.a((WSPlayerManager)localObject));
+      if ((localObject != null) && (!((WSPlayerWrapper)localObject).e())) {
         WSPlayerManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper.e();
       }
     }
@@ -74,9 +84,10 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl
   
   private void c()
   {
-    WSPlayerWrapper localWSPlayerWrapper = WSPlayerManager.a(this.a, WSPlayerManager.a(this.a));
-    if (localWSPlayerWrapper != null) {
-      localWSPlayerWrapper.e();
+    Object localObject = this.a;
+    localObject = WSPlayerManager.a((WSPlayerManager)localObject, WSPlayerManager.a((WSPlayerManager)localObject));
+    if (localObject != null) {
+      ((WSPlayerWrapper)localObject).e();
     }
     WSPlayerManager.a(this.a).post(new WSPlayerManager.MediaPlayListenerAdapterImpl.1(this));
     b();
@@ -99,10 +110,18 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl
     super.a(paramWSPlayerWrapper);
     if (!WSPlayerManager.a(this.a, paramWSPlayerWrapper))
     {
-      WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onCompletion] checkIsPlayerPlaying false! playingVideoUrl:" + WSPlayerManager.b(this.a, WSPlayerManager.b(this.a)));
+      paramWSPlayerWrapper = new StringBuilder();
+      paramWSPlayerWrapper.append("[WSPlayerManager.java][onCompletion] checkIsPlayerPlaying false! playingVideoUrl:");
+      localWSPlayerManager = this.a;
+      paramWSPlayerWrapper.append(WSPlayerManager.b(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager)));
+      WSLog.d("WS_VIDEO_PLAYER", paramWSPlayerWrapper.toString());
       return;
     }
-    WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onCompletion] 播放状态回调 playingVideoUrl:" + WSPlayerManager.b(this.a, WSPlayerManager.b(this.a)));
+    paramWSPlayerWrapper = new StringBuilder();
+    paramWSPlayerWrapper.append("[WSPlayerManager.java][onCompletion] 播放状态回调 playingVideoUrl:");
+    WSPlayerManager localWSPlayerManager = this.a;
+    paramWSPlayerWrapper.append(WSPlayerManager.b(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager)));
+    WSLog.e("WS_VIDEO_PLAYER", paramWSPlayerWrapper.toString());
     if (b())
     {
       WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onCompletion] checkPlayerLoop:true!");
@@ -115,11 +134,17 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl
   public void a(WSPlayerWrapper paramWSPlayerWrapper, Object paramObject)
   {
     paramObject = WSPlayerManager.b(this.a);
-    WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onVideoPrepared] 视频准备完成状态! mIsOpenedVideo:" + WSPlayerManager.a(this.a) + ", playingTitle:" + WSPlayerManager.a(this.a, paramObject));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSPlayerManager.java][onVideoPrepared] 视频准备完成状态! mIsOpenedVideo:");
+    localStringBuilder.append(WSPlayerManager.a(this.a));
+    localStringBuilder.append(", playingTitle:");
+    localStringBuilder.append(WSPlayerManager.a(this.a, paramObject));
+    WSLog.e("WS_VIDEO_PLAYER", localStringBuilder.toString());
     if (!WSPlayerManager.a(this.a, paramWSPlayerWrapper))
     {
       WSLog.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][onVideoPrepared] prePlayVideo prepared!");
-      if ((WSPlayerManager.a(this.a, WSPlayerManager.a(this.a)) == paramWSPlayerWrapper) && (a())) {
+      paramObject = this.a;
+      if ((WSPlayerManager.a(paramObject, WSPlayerManager.a(paramObject)) == paramWSPlayerWrapper) && (a())) {
         c();
       }
       return;
@@ -140,23 +165,39 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl
   public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, WSPlayerWrapper paramWSPlayerWrapper)
   {
     super.a(paramTVK_NetVideoInfo, paramWSPlayerWrapper);
-    if ((!WSPlayerManager.a(this.a, paramWSPlayerWrapper)) && (paramWSPlayerWrapper == WSPlayerManager.a(this.a, WSPlayerManager.a(this.a)))) {
-      WSPlayerManager.a(this.a, paramTVK_NetVideoInfo);
+    if (!WSPlayerManager.a(this.a, paramWSPlayerWrapper))
+    {
+      WSPlayerManager localWSPlayerManager = this.a;
+      if (paramWSPlayerWrapper == WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.a(localWSPlayerManager))) {
+        WSPlayerManager.a(this.a, paramTVK_NetVideoInfo);
+      }
     }
   }
   
   public boolean a(WSPlayerWrapper paramWSPlayerWrapper, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
     super.a(paramWSPlayerWrapper, paramInt1, paramInt2, paramInt3, paramString, paramObject);
-    Object localObject = new StringBuilder().append("model : ").append(paramInt1).append(" what : ").append(paramInt2).append(" extra : ").append(paramInt3).append("detailInfo : ").append(paramString).append(" obj : ");
-    if (paramObject != null) {}
-    for (paramObject = paramObject.toString();; paramObject = "")
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("model : ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" what : ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" extra : ");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append("detailInfo : ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" obj : ");
+    if (paramObject != null) {
+      paramObject = paramObject.toString();
+    } else {
+      paramObject = "";
+    }
+    localStringBuilder.append(paramObject);
+    String str = localStringBuilder.toString();
+    if (!WSPlayerManager.a(this.a, paramWSPlayerWrapper))
     {
-      localObject = paramObject;
-      if (WSPlayerManager.a(this.a, paramWSPlayerWrapper)) {
-        break;
-      }
-      if ((WSPlayerManager.a(this.a, WSPlayerManager.a(this.a)) == paramWSPlayerWrapper) && (paramWSPlayerWrapper != null))
+      paramString = this.a;
+      if ((WSPlayerManager.a(paramString, WSPlayerManager.a(paramString)) == paramWSPlayerWrapper) && (paramWSPlayerWrapper != null))
       {
         paramWSPlayerWrapper.e();
         WSPlayerManager.a(this.a).jdField_a_of_type_Boolean = false;
@@ -164,26 +205,25 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl
       return false;
     }
     paramObject = WSPlayerManager.b(this.a);
-    localObject = new StringBuilder().append("[WSPlayerManager.java][onError] 播放状态回调 errorStr:").append((String)localObject).append(", playingVideoUrl:");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSPlayerManager.java][onError] 播放状态回调 errorStr:");
+    localStringBuilder.append(str);
+    localStringBuilder.append(", playingVideoUrl:");
     if (paramObject == null) {
       paramWSPlayerWrapper = "playingVideoParam is null.";
+    } else if (paramObject.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo != null) {
+      paramWSPlayerWrapper = paramObject.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.b;
+    } else {
+      paramWSPlayerWrapper = "videoInfo is null.";
     }
-    for (;;)
-    {
-      WSLog.d("WS_VIDEO_PLAYER", paramWSPlayerWrapper);
-      WSPlayerManager.a(this.a).post(new WSPlayerManager.MediaPlayListenerAdapterImpl.4(this, paramInt1, paramInt2, paramInt3, paramObject));
-      paramWSPlayerWrapper = WSPlayerManager.a(this.a, paramObject);
-      if (paramWSPlayerWrapper == null) {
-        break;
-      }
+    localStringBuilder.append(paramWSPlayerWrapper);
+    WSLog.d("WS_VIDEO_PLAYER", localStringBuilder.toString());
+    WSPlayerManager.a(this.a).post(new WSPlayerManager.MediaPlayListenerAdapterImpl.4(this, paramInt1, paramInt2, paramInt3, paramObject));
+    paramWSPlayerWrapper = WSPlayerManager.a(this.a, paramObject);
+    if (paramWSPlayerWrapper != null) {
       paramWSPlayerWrapper.a(paramInt1, paramInt2, paramString);
-      return false;
-      if (paramObject.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo != null) {
-        paramWSPlayerWrapper = paramObject.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.b;
-      } else {
-        paramWSPlayerWrapper = "videoInfo is null.";
-      }
     }
+    return false;
   }
   
   public boolean a(WSPlayerWrapper paramWSPlayerWrapper, int paramInt, Object paramObject)
@@ -196,26 +236,28 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl
         if ((WSPlayerManager.a(this.a) != null) && (a())) {
           WSPlayerManager.d(this.a, true);
         }
-        WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onInfo] 播放状态回调 PLAYER_INFO_HW_DECODE_FAILED mIsPrePlayHWDecodeFailed:" + WSPlayerManager.c(this.a));
+        paramWSPlayerWrapper = new StringBuilder();
+        paramWSPlayerWrapper.append("[WSPlayerManager.java][onInfo] 播放状态回调 PLAYER_INFO_HW_DECODE_FAILED mIsPrePlayHWDecodeFailed:");
+        paramWSPlayerWrapper.append(WSPlayerManager.c(this.a));
+        WSLog.d("WS_VIDEO_PLAYER", paramWSPlayerWrapper.toString());
       }
       return false;
     }
     paramWSPlayerWrapper = WSPlayerManager.b(this.a);
-    switch (paramInt)
+    if (paramInt != 112)
     {
-    }
-    for (;;)
-    {
-      paramWSPlayerWrapper = WSPlayerManager.a(this.a, paramWSPlayerWrapper);
-      if (paramWSPlayerWrapper == null) {
-        break;
+      if (paramInt == 113) {
+        a(paramWSPlayerWrapper);
       }
-      paramWSPlayerWrapper.a(paramInt, paramObject);
-      return false;
-      b(paramWSPlayerWrapper);
-      continue;
-      a(paramWSPlayerWrapper);
     }
+    else {
+      b(paramWSPlayerWrapper);
+    }
+    paramWSPlayerWrapper = WSPlayerManager.a(this.a, paramWSPlayerWrapper);
+    if (paramWSPlayerWrapper != null) {
+      paramWSPlayerWrapper.a(paramInt, paramObject);
+    }
+    return false;
   }
   
   public void b(WSPlayerWrapper paramWSPlayerWrapper)
@@ -227,14 +269,23 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl
   public void c(WSPlayerWrapper paramWSPlayerWrapper)
   {
     super.c(paramWSPlayerWrapper);
-    if ((!WSPlayerManager.a(this.a, paramWSPlayerWrapper)) && (paramWSPlayerWrapper == WSPlayerManager.a(this.a, WSPlayerManager.a(this.a)))) {
-      WSLog.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][onDownloadFinish] 预播任务 prePlayTitle:" + WSPlayerManager.a(this.a, WSPlayerManager.a(this.a)));
+    if (!WSPlayerManager.a(this.a, paramWSPlayerWrapper))
+    {
+      WSPlayerManager localWSPlayerManager = this.a;
+      if (paramWSPlayerWrapper == WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.a(localWSPlayerManager)))
+      {
+        paramWSPlayerWrapper = new StringBuilder();
+        paramWSPlayerWrapper.append("[WSPlayerManager.java][onDownloadFinish] 预播任务 prePlayTitle:");
+        localWSPlayerManager = this.a;
+        paramWSPlayerWrapper.append(WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.a(localWSPlayerManager)));
+        WSLog.e("WS_VIDEO_PRE_PLAY", paramWSPlayerWrapper.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.MediaPlayListenerAdapterImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.qg.video;
 
 import android.graphics.SurfaceTexture;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
 import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.editor.composite.VideoCompositeHelper;
 import com.tencent.qg.sdk.video.IMediaPlayer;
 import com.tencent.qg.sdk.video.VideoPlayer;
 import com.tencent.qg.video.videodecoder.MediaDecoder;
@@ -49,16 +49,18 @@ public class DefaultMediaPlayer
   public void a()
   {
     SLog.b("DefaultMediaPlayer", "onPause");
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-      this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.b();
+    MediaDecoder localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
+    if (localMediaDecoder != null) {
+      localMediaDecoder.b();
     }
   }
   
   public void b()
   {
     SLog.b("DefaultMediaPlayer", "onStop");
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-      this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.a();
+    MediaDecoder localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
+    if (localMediaDecoder != null) {
+      localMediaDecoder.a();
     }
   }
   
@@ -72,11 +74,13 @@ public class DefaultMediaPlayer
   {
     SLog.b("DefaultMediaPlayer", "qg -> destroy");
     b();
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+    Object localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter.destroy();
+    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter;
+    if (localObject != null) {
+      ((GPUOESBaseFilter)localObject).destroy();
     }
   }
   
@@ -97,16 +101,18 @@ public class DefaultMediaPlayer
   
   public boolean isMuted()
   {
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-      return this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.c();
+    MediaDecoder localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
+    if (localMediaDecoder != null) {
+      return localMediaDecoder.c();
     }
     return false;
   }
   
   public boolean isPlaying()
   {
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-      return this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.a();
+    MediaDecoder localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
+    if (localMediaDecoder != null) {
+      return localMediaDecoder.a();
     }
     return false;
   }
@@ -127,11 +133,15 @@ public class DefaultMediaPlayer
     if ((!this.jdField_c_of_type_Boolean) && (isPlaying())) {
       return;
     }
-    if ((!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) && (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.b()))
+    if (!this.jdField_c_of_type_Boolean)
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_Boolean = false;
-      return;
+      MediaDecoder localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
+      if ((localMediaDecoder != null) && (localMediaDecoder.b()))
+      {
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_Boolean = false;
+        return;
+      }
     }
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_Boolean = true;
@@ -144,48 +154,31 @@ public class DefaultMediaPlayer
   
   public void setLooping(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.e = i;
-      if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-        this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.a(paramBoolean);
-      }
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setMuted(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_d_of_type_Int = i;
-      if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-        this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.b(paramBoolean);
-      }
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setSrc(String paramString)
   {
-    String str = paramString;
+    Object localObject = paramString;
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      str = paramString;
-      if (!paramString.startsWith(this.jdField_b_of_type_JavaLangString)) {
-        str = this.jdField_b_of_type_JavaLangString + paramString;
+      localObject = paramString;
+      if (!paramString.startsWith(this.jdField_b_of_type_JavaLangString))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramString);
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    if (!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_c_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = str;
-      SLog.a("DefaultMediaPlayer", "qg -> set Src , src = %s , isSrcChanged :%s", str, Boolean.valueOf(this.jdField_c_of_type_Boolean));
-      return;
-    }
+    this.jdField_c_of_type_Boolean = (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString) ^ true);
+    this.jdField_a_of_type_JavaLangString = ((String)localObject);
+    SLog.a("DefaultMediaPlayer", "qg -> set Src , src = %s , isSrcChanged :%s", localObject, Boolean.valueOf(this.jdField_c_of_type_Boolean));
   }
   
   public void setVolume(float paramFloat1, float paramFloat2)
@@ -201,7 +194,7 @@ public class DefaultMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.video.DefaultMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -7,21 +7,27 @@ public class VipUtils
 {
   public static int a(String paramString)
   {
-    if (a(paramString)) {}
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          return 0;
-          i = paramString.lastIndexOf(File.separator);
-        } while ((i == -1) || (i == paramString.length() - 1));
-        paramString = paramString.substring(0, i);
-      } while (a(paramString));
-      i = paramString.lastIndexOf(File.separator);
-    } while ((i == -1) || (i == paramString.length() - 1));
+    if (a(paramString)) {
+      return 0;
+    }
+    int i = paramString.lastIndexOf(File.separator);
+    if (i == -1) {
+      return 0;
+    }
+    if (i == paramString.length() - 1) {
+      return 0;
+    }
+    paramString = paramString.substring(0, i);
+    if (a(paramString)) {
+      return 0;
+    }
+    i = paramString.lastIndexOf(File.separator);
+    if (i == -1) {
+      return 0;
+    }
+    if (i == paramString.length() - 1) {
+      return 0;
+    }
     try
     {
       i = Integer.parseInt(paramString.substring(i + 1));
@@ -36,266 +42,286 @@ public class VipUtils
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore 4
-    //   5: aconst_null
-    //   6: astore 6
-    //   8: aconst_null
-    //   9: astore 5
-    //   11: aload_1
-    //   12: ifnull +60 -> 72
-    //   15: aload 6
-    //   17: astore_2
-    //   18: aload_1
-    //   19: getfield 54	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   22: ifeq +50 -> 72
-    //   25: aload 6
-    //   27: astore_2
-    //   28: new 56	java/io/FileInputStream
-    //   31: dup
-    //   32: aload_0
-    //   33: invokespecial 59	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   36: astore_0
-    //   37: new 61	java/io/BufferedInputStream
-    //   40: dup
-    //   41: aload_0
-    //   42: sipush 8192
-    //   45: invokespecial 64	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   48: aconst_null
-    //   49: aload_1
-    //   50: invokestatic 70	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   53: astore_1
-    //   54: aload_0
-    //   55: astore_2
-    //   56: aload_1
-    //   57: astore_0
-    //   58: aload_0
-    //   59: astore_1
-    //   60: aload_2
-    //   61: ifnull +9 -> 70
-    //   64: aload_2
-    //   65: invokevirtual 75	java/io/InputStream:close	()V
-    //   68: aload_0
-    //   69: astore_1
-    //   70: aload_1
-    //   71: areturn
-    //   72: aload 6
-    //   74: astore_2
-    //   75: new 18	java/io/File
-    //   78: dup
-    //   79: aload_0
-    //   80: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
-    //   83: invokestatic 82	com/tencent/sharpP/SharpPUtils:isSharpP	(Ljava/io/File;)Z
-    //   86: ifeq +47 -> 133
-    //   89: aload 6
-    //   91: astore_2
-    //   92: aload_0
-    //   93: invokestatic 86	com/tencent/sharpP/SharpPUtils:decodeSharpP	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   96: astore_0
+    //   1: astore 7
+    //   3: aconst_null
+    //   4: astore 4
+    //   6: aconst_null
+    //   7: astore 5
+    //   9: aconst_null
+    //   10: astore 6
+    //   12: aload_1
+    //   13: ifnull +77 -> 90
+    //   16: aload 7
+    //   18: astore_2
+    //   19: aload_1
+    //   20: getfield 54	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   23: ifeq +67 -> 90
+    //   26: aload 7
+    //   28: astore_2
+    //   29: new 56	java/io/FileInputStream
+    //   32: dup
+    //   33: aload_0
+    //   34: invokespecial 59	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   37: astore_0
+    //   38: new 61	java/io/BufferedInputStream
+    //   41: dup
+    //   42: aload_0
+    //   43: sipush 8192
+    //   46: invokespecial 64	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   49: aconst_null
+    //   50: aload_1
+    //   51: invokestatic 70	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   54: astore_1
+    //   55: aload_0
+    //   56: astore_2
+    //   57: aload_1
+    //   58: astore_0
+    //   59: goto +183 -> 242
+    //   62: astore_1
+    //   63: aload_0
+    //   64: astore_2
+    //   65: aload_1
+    //   66: astore_0
+    //   67: goto +262 -> 329
+    //   70: astore_3
+    //   71: aconst_null
+    //   72: astore_2
+    //   73: aload_0
+    //   74: astore_1
+    //   75: aload_2
+    //   76: astore_0
+    //   77: goto +185 -> 262
+    //   80: astore_3
+    //   81: aconst_null
+    //   82: astore_2
+    //   83: aload_0
+    //   84: astore_1
+    //   85: aload_2
+    //   86: astore_0
+    //   87: goto +212 -> 299
+    //   90: aload 7
+    //   92: astore_2
+    //   93: new 18	java/io/File
+    //   96: dup
     //   97: aload_0
-    //   98: ifnull +229 -> 327
-    //   101: aload_1
-    //   102: ifnull +225 -> 327
-    //   105: aload 6
-    //   107: astore_2
-    //   108: aload_1
-    //   109: aload_0
-    //   110: invokevirtual 91	android/graphics/Bitmap:getHeight	()I
-    //   113: putfield 95	android/graphics/BitmapFactory$Options:outHeight	I
-    //   116: aload 6
-    //   118: astore_2
-    //   119: aload_1
-    //   120: aload_0
-    //   121: invokevirtual 98	android/graphics/Bitmap:getWidth	()I
-    //   124: putfield 101	android/graphics/BitmapFactory$Options:outWidth	I
-    //   127: aload 5
-    //   129: astore_2
-    //   130: goto -72 -> 58
-    //   133: aload 6
+    //   98: invokespecial 71	java/io/File:<init>	(Ljava/lang/String;)V
+    //   101: invokestatic 77	com/tencent/sharpP/SharpPUtils:isSharpP	(Ljava/io/File;)Z
+    //   104: ifeq +81 -> 185
+    //   107: aload 7
+    //   109: astore_2
+    //   110: aload_0
+    //   111: invokestatic 81	com/tencent/sharpP/SharpPUtils:decodeSharpP	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   114: astore_3
+    //   115: aload 6
+    //   117: astore_2
+    //   118: aload_3
+    //   119: astore_0
+    //   120: aload_3
+    //   121: ifnull +121 -> 242
+    //   124: aload 6
+    //   126: astore_2
+    //   127: aload_3
+    //   128: astore_0
+    //   129: aload_1
+    //   130: ifnull +112 -> 242
+    //   133: aload 7
     //   135: astore_2
-    //   136: invokestatic 107	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   139: invokevirtual 111	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   142: instanceof 113
-    //   145: ifeq +33 -> 178
-    //   148: aload 6
-    //   150: astore_2
-    //   151: invokestatic 119	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
-    //   154: invokevirtual 123	com/tencent/component/media/image/ImageManager:getDecoder	()Lcom/tencent/component/media/image/IDecoder;
-    //   157: new 18	java/io/File
-    //   160: dup
-    //   161: aload_0
-    //   162: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
-    //   165: aload_1
-    //   166: invokeinterface 129 3 0
-    //   171: astore_0
-    //   172: aload 5
-    //   174: astore_2
-    //   175: goto -117 -> 58
-    //   178: aload 6
-    //   180: astore_2
-    //   181: aload_0
-    //   182: aload_1
-    //   183: invokestatic 133	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   186: astore_0
-    //   187: aload 5
-    //   189: astore_2
-    //   190: goto -132 -> 58
-    //   193: astore_1
-    //   194: aconst_null
-    //   195: astore_0
-    //   196: aload_3
-    //   197: astore_2
-    //   198: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   201: ifeq +14 -> 215
-    //   204: aload_3
-    //   205: astore_2
-    //   206: ldc 141
-    //   208: iconst_2
-    //   209: ldc 143
-    //   211: aload_1
-    //   212: invokestatic 147	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   215: aload_0
-    //   216: astore_1
-    //   217: aload_3
-    //   218: ifnull -148 -> 70
-    //   221: aload_3
-    //   222: invokevirtual 75	java/io/InputStream:close	()V
-    //   225: aload_0
-    //   226: areturn
-    //   227: astore_1
-    //   228: aload_0
-    //   229: areturn
-    //   230: astore_1
-    //   231: aconst_null
-    //   232: astore_0
-    //   233: aload 4
-    //   235: astore_3
-    //   236: aload_3
-    //   237: astore_2
-    //   238: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   241: ifeq +14 -> 255
-    //   244: aload_3
-    //   245: astore_2
-    //   246: ldc 141
-    //   248: iconst_2
-    //   249: ldc 143
-    //   251: aload_1
-    //   252: invokestatic 147	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   255: aload_0
-    //   256: astore_1
-    //   257: aload_3
-    //   258: ifnull -188 -> 70
-    //   261: aload_3
-    //   262: invokevirtual 75	java/io/InputStream:close	()V
-    //   265: aload_0
-    //   266: areturn
-    //   267: astore_1
-    //   268: aload_0
-    //   269: areturn
-    //   270: astore_0
-    //   271: aload_2
-    //   272: ifnull +7 -> 279
-    //   275: aload_2
-    //   276: invokevirtual 75	java/io/InputStream:close	()V
-    //   279: aload_0
-    //   280: athrow
-    //   281: astore_1
-    //   282: aload_0
-    //   283: areturn
-    //   284: astore_1
-    //   285: goto -6 -> 279
-    //   288: astore_1
-    //   289: aload_0
-    //   290: astore_2
-    //   291: aload_1
-    //   292: astore_0
-    //   293: goto -22 -> 271
-    //   296: astore_1
-    //   297: aconst_null
-    //   298: astore_2
-    //   299: aload_0
-    //   300: astore_3
-    //   301: aload_2
-    //   302: astore_0
-    //   303: goto -67 -> 236
-    //   306: astore_1
-    //   307: aload 4
-    //   309: astore_3
-    //   310: goto -74 -> 236
-    //   313: astore_1
-    //   314: aconst_null
-    //   315: astore_2
-    //   316: aload_0
-    //   317: astore_3
-    //   318: aload_2
-    //   319: astore_0
-    //   320: goto -124 -> 196
-    //   323: astore_1
-    //   324: goto -128 -> 196
-    //   327: aload 5
-    //   329: astore_2
-    //   330: goto -272 -> 58
+    //   136: aload_1
+    //   137: aload_3
+    //   138: invokevirtual 86	android/graphics/Bitmap:getHeight	()I
+    //   141: putfield 90	android/graphics/BitmapFactory$Options:outHeight	I
+    //   144: aload 7
+    //   146: astore_2
+    //   147: aload_1
+    //   148: aload_3
+    //   149: invokevirtual 93	android/graphics/Bitmap:getWidth	()I
+    //   152: putfield 96	android/graphics/BitmapFactory$Options:outWidth	I
+    //   155: aload 6
+    //   157: astore_2
+    //   158: aload_3
+    //   159: astore_0
+    //   160: goto +82 -> 242
+    //   163: astore_1
+    //   164: aload_3
+    //   165: astore_0
+    //   166: aload_1
+    //   167: astore_3
+    //   168: aload 4
+    //   170: astore_1
+    //   171: goto +91 -> 262
+    //   174: astore_1
+    //   175: aload_3
+    //   176: astore_0
+    //   177: aload_1
+    //   178: astore_3
+    //   179: aload 5
+    //   181: astore_1
+    //   182: goto +117 -> 299
+    //   185: aload 7
+    //   187: astore_2
+    //   188: invokestatic 102	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   191: invokevirtual 106	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   194: instanceof 108
+    //   197: ifeq +33 -> 230
+    //   200: aload 7
+    //   202: astore_2
+    //   203: invokestatic 114	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
+    //   206: invokevirtual 118	com/tencent/component/media/image/ImageManager:getDecoder	()Lcom/tencent/component/media/image/IDecoder;
+    //   209: new 18	java/io/File
+    //   212: dup
+    //   213: aload_0
+    //   214: invokespecial 71	java/io/File:<init>	(Ljava/lang/String;)V
+    //   217: aload_1
+    //   218: invokeinterface 124 3 0
+    //   223: astore_0
+    //   224: aload 6
+    //   226: astore_2
+    //   227: goto +15 -> 242
+    //   230: aload 7
+    //   232: astore_2
+    //   233: aload_0
+    //   234: aload_1
+    //   235: invokestatic 128	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   238: astore_0
+    //   239: aload 6
+    //   241: astore_2
+    //   242: aload_2
+    //   243: ifnull +7 -> 250
+    //   246: aload_2
+    //   247: invokevirtual 133	java/io/InputStream:close	()V
+    //   250: aload_0
+    //   251: areturn
+    //   252: astore_0
+    //   253: goto +76 -> 329
+    //   256: astore_3
+    //   257: aconst_null
+    //   258: astore_0
+    //   259: aload 4
+    //   261: astore_1
+    //   262: aload_1
+    //   263: astore_2
+    //   264: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   267: ifeq +14 -> 281
+    //   270: aload_1
+    //   271: astore_2
+    //   272: ldc 141
+    //   274: iconst_2
+    //   275: ldc 143
+    //   277: aload_3
+    //   278: invokestatic 147	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   281: aload_0
+    //   282: astore_2
+    //   283: aload_1
+    //   284: ifnull +43 -> 327
+    //   287: aload_1
+    //   288: invokevirtual 133	java/io/InputStream:close	()V
+    //   291: aload_0
+    //   292: areturn
+    //   293: astore_3
+    //   294: aconst_null
+    //   295: astore_0
+    //   296: aload 5
+    //   298: astore_1
+    //   299: aload_1
+    //   300: astore_2
+    //   301: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   304: ifeq +14 -> 318
+    //   307: aload_1
+    //   308: astore_2
+    //   309: ldc 141
+    //   311: iconst_2
+    //   312: ldc 143
+    //   314: aload_3
+    //   315: invokestatic 147	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   318: aload_0
+    //   319: astore_2
+    //   320: aload_1
+    //   321: ifnull +6 -> 327
+    //   324: goto -37 -> 287
+    //   327: aload_2
+    //   328: areturn
+    //   329: aload_2
+    //   330: ifnull +7 -> 337
+    //   333: aload_2
+    //   334: invokevirtual 133	java/io/InputStream:close	()V
+    //   337: goto +5 -> 342
+    //   340: aload_0
+    //   341: athrow
+    //   342: goto -2 -> 340
+    //   345: astore_1
+    //   346: goto -96 -> 250
+    //   349: astore_1
+    //   350: aload_0
+    //   351: areturn
+    //   352: astore_1
+    //   353: goto -16 -> 337
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	333	0	paramString	String
-    //   0	333	1	paramOptions	android.graphics.BitmapFactory.Options
-    //   17	313	2	localObject1	Object
-    //   1	317	3	localObject2	Object
-    //   3	305	4	localObject3	Object
-    //   9	319	5	localObject4	Object
-    //   6	173	6	localObject5	Object
+    //   0	356	0	paramString	String
+    //   0	356	1	paramOptions	android.graphics.BitmapFactory.Options
+    //   18	316	2	localObject1	Object
+    //   70	1	3	localException1	Exception
+    //   80	1	3	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   114	65	3	localObject2	Object
+    //   256	22	3	localException2	Exception
+    //   293	22	3	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   4	256	4	localObject3	Object
+    //   7	290	5	localObject4	Object
+    //   10	230	6	localObject5	Object
+    //   1	230	7	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   18	25	193	java/lang/OutOfMemoryError
-    //   28	37	193	java/lang/OutOfMemoryError
-    //   75	89	193	java/lang/OutOfMemoryError
-    //   92	97	193	java/lang/OutOfMemoryError
-    //   136	148	193	java/lang/OutOfMemoryError
-    //   151	172	193	java/lang/OutOfMemoryError
-    //   181	187	193	java/lang/OutOfMemoryError
-    //   221	225	227	java/io/IOException
-    //   18	25	230	java/lang/Exception
-    //   28	37	230	java/lang/Exception
-    //   75	89	230	java/lang/Exception
-    //   92	97	230	java/lang/Exception
-    //   136	148	230	java/lang/Exception
-    //   151	172	230	java/lang/Exception
-    //   181	187	230	java/lang/Exception
-    //   261	265	267	java/io/IOException
-    //   18	25	270	finally
-    //   28	37	270	finally
-    //   75	89	270	finally
-    //   92	97	270	finally
-    //   108	116	270	finally
-    //   119	127	270	finally
-    //   136	148	270	finally
-    //   151	172	270	finally
-    //   181	187	270	finally
-    //   198	204	270	finally
-    //   206	215	270	finally
-    //   238	244	270	finally
-    //   246	255	270	finally
-    //   64	68	281	java/io/IOException
-    //   275	279	284	java/io/IOException
-    //   37	54	288	finally
-    //   37	54	296	java/lang/Exception
-    //   108	116	306	java/lang/Exception
-    //   119	127	306	java/lang/Exception
-    //   37	54	313	java/lang/OutOfMemoryError
-    //   108	116	323	java/lang/OutOfMemoryError
-    //   119	127	323	java/lang/OutOfMemoryError
+    //   38	55	62	finally
+    //   38	55	70	java/lang/Exception
+    //   38	55	80	java/lang/OutOfMemoryError
+    //   136	144	163	java/lang/Exception
+    //   147	155	163	java/lang/Exception
+    //   136	144	174	java/lang/OutOfMemoryError
+    //   147	155	174	java/lang/OutOfMemoryError
+    //   19	26	252	finally
+    //   29	38	252	finally
+    //   93	107	252	finally
+    //   110	115	252	finally
+    //   136	144	252	finally
+    //   147	155	252	finally
+    //   188	200	252	finally
+    //   203	224	252	finally
+    //   233	239	252	finally
+    //   264	270	252	finally
+    //   272	281	252	finally
+    //   301	307	252	finally
+    //   309	318	252	finally
+    //   19	26	256	java/lang/Exception
+    //   29	38	256	java/lang/Exception
+    //   93	107	256	java/lang/Exception
+    //   110	115	256	java/lang/Exception
+    //   188	200	256	java/lang/Exception
+    //   203	224	256	java/lang/Exception
+    //   233	239	256	java/lang/Exception
+    //   19	26	293	java/lang/OutOfMemoryError
+    //   29	38	293	java/lang/OutOfMemoryError
+    //   93	107	293	java/lang/OutOfMemoryError
+    //   110	115	293	java/lang/OutOfMemoryError
+    //   188	200	293	java/lang/OutOfMemoryError
+    //   203	224	293	java/lang/OutOfMemoryError
+    //   233	239	293	java/lang/OutOfMemoryError
+    //   246	250	345	java/io/IOException
+    //   287	291	349	java/io/IOException
+    //   333	337	352	java/io/IOException
   }
   
   public static String a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.length() < 4)) {
-      return "";
-    }
-    int i = paramString.lastIndexOf("/") + 1;
-    int j = paramString.length() - 4;
-    if (i <= j) {
-      return paramString.substring(i, j);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramString.length() < 4) {
+        return "";
+      }
+      int i = paramString.lastIndexOf("/") + 1;
+      int j = paramString.length() - 4;
+      if (i <= j) {
+        return paramString.substring(i, j);
+      }
     }
     return "";
   }
@@ -307,29 +333,24 @@ public class VipUtils
   
   public static String b(String paramString)
   {
-    String str;
     if (TextUtils.isEmpty(paramString)) {
-      str = "";
+      return "";
     }
-    int i;
-    do
-    {
-      do
-      {
-        return str;
-        i = paramString.lastIndexOf(File.separator);
-        str = paramString;
-      } while (i == -1);
-      if (i == paramString.length() - 1) {
-        return "";
-      }
-      paramString = paramString.substring(0, i);
-      if (TextUtils.isEmpty(paramString)) {
-        return "";
-      }
-      i = paramString.lastIndexOf(File.separator);
-      str = paramString;
-    } while (i == -1);
+    int i = paramString.lastIndexOf(File.separator);
+    if (i == -1) {
+      return paramString;
+    }
+    if (i == paramString.length() - 1) {
+      return "";
+    }
+    paramString = paramString.substring(0, i);
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    i = paramString.lastIndexOf(File.separator);
+    if (i == -1) {
+      return paramString;
+    }
     if (i == paramString.length() - 1) {
       return "";
     }
@@ -338,7 +359,7 @@ public class VipUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.vipcomponent.VipUtils
  * JD-Core Version:    0.7.0.1
  */

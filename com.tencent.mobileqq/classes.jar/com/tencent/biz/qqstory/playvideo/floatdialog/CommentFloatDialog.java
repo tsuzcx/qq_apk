@@ -48,13 +48,13 @@ public class CommentFloatDialog
   
   public CommentFloatDialog(@NonNull Context paramContext, @NonNull String paramString1, CommentFloatDialogController paramCommentFloatDialogController, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramContext, 2131755122);
+    super(paramContext, 2131755284);
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController = paramCommentFloatDialogController;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_Boolean = paramBoolean1;
     this.jdField_b_of_type_Boolean = paramBoolean2;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561956, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561802, null);
     a(paramContext, paramString2);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a(this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.b();
@@ -82,28 +82,29 @@ public class CommentFloatDialog
   private void a(View paramView, String paramString)
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout = ((CommentFloatDialogTopGestureLayout)paramView.findViewById(2131365294));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365255));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView = ((StoryPlayerCommentListView)paramView.findViewById(2131365092));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout = ((CommentFloatDialogTopGestureLayout)paramView.findViewById(2131365169));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365132));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView = ((StoryPlayerCommentListView)paramView.findViewById(2131364973));
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController, new CommentFloatDialog.OnCommentListViewStateChangeListener(this, null), this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.a(this, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout);
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout;
+    ((CommentFloatDialogTopGestureLayout)localObject).a(this, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView, (View)localObject);
     if (QQStoryContext.a())
     {
-      ((InputLinearLayout)paramView.findViewById(2131376931)).setBackgroundColor(getContext().getResources().getColor(2131166513));
-      ((LinearLayout)paramView.findViewById(2131363819)).setBackgroundColor(getContext().getResources().getColor(2131166512));
-      ((XEditTextEx)paramView.findViewById(2131366436)).setHintTextColor(getContext().getResources().getColor(2131166514));
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView.setBackgroundColor(getContext().getResources().getColor(2131166512));
-      paramView.findViewById(2131379487).setBackgroundColor(getContext().getResources().getColor(2131166512));
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.setBackgroundColor(getContext().getResources().getColor(2131166512));
-      paramView.findViewById(2131365922).setBackgroundColor(getContext().getResources().getColor(2131166513));
+      ((InputLinearLayout)paramView.findViewById(2131376421)).setBackgroundColor(getContext().getResources().getColor(2131166527));
+      ((LinearLayout)paramView.findViewById(2131363748)).setBackgroundColor(getContext().getResources().getColor(2131166526));
+      ((XEditTextEx)paramView.findViewById(2131366317)).setHintTextColor(getContext().getResources().getColor(2131166528));
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView.setBackgroundColor(getContext().getResources().getColor(2131166526));
+      paramView.findViewById(2131378837).setBackgroundColor(getContext().getResources().getColor(2131166526));
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.setBackgroundColor(getContext().getResources().getColor(2131166526));
+      paramView.findViewById(2131365759).setBackgroundColor(getContext().getResources().getColor(2131166527));
     }
     paramView.setOnClickListener(new CommentFloatDialog.1(this));
-    ImageView localImageView = (ImageView)paramView.findViewById(2131364824);
-    localImageView.setOnClickListener(new CommentFloatDialog.2(this));
+    localObject = (ImageView)paramView.findViewById(2131364711);
+    ((ImageView)localObject).setOnClickListener(new CommentFloatDialog.2(this));
     if (QQStoryContext.a()) {
-      localImageView.setBackgroundResource(2130846804);
+      ((ImageView)localObject).setBackgroundResource(2130846684);
     }
-    ((TextView)paramView.findViewById(2131379432)).setText(paramString);
+    ((TextView)paramView.findViewById(2131378784)).setText(paramString);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
     this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(400L);
@@ -113,8 +114,9 @@ public class CommentFloatDialog
   
   public CharSequence a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailCommentHelper != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailCommentHelper.a.getText();
+    DetailCommentHelper localDetailCommentHelper = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailCommentHelper;
+    if (localDetailCommentHelper != null) {
+      return localDetailCommentHelper.a.getText();
     }
     return "";
   }
@@ -142,12 +144,14 @@ public class CommentFloatDialog
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().isMe());
+    DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+    return (localDetailFeedItem != null) && (localDetailFeedItem.a != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().isMe());
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().isVip());
+    DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+    return (localDetailFeedItem != null) && (localDetailFeedItem.a != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().isVip());
   }
   
   protected void onStart()
@@ -158,7 +162,7 @@ public class CommentFloatDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog
  * JD-Core Version:    0.7.0.1
  */

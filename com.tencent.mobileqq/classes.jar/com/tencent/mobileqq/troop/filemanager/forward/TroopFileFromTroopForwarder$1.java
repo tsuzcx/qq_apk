@@ -12,18 +12,25 @@ class TroopFileFromTroopForwarder$1
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
-    do
-    {
+    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {
       return;
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId != 25));
+    }
+    paramBundle = paramBundle.getString("itemKey");
+    if (paramBundle == null) {
+      return;
+    }
+    if (!UUID.fromString(paramBundle).equals(this.a.a())) {
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId != 25) {
+      return;
+    }
     TroopFileFromTroopForwarder.a(this.a, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.forward.TroopFileFromTroopForwarder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.av;
 
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.avcore.util.IAVLog;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class AVLogImpl
@@ -31,7 +31,7 @@ public class AVLogImpl
   
   public String getVersion()
   {
-    return "8.5.5";
+    return "8.7.0";
   }
   
   public void i(String paramString1, String paramString2)

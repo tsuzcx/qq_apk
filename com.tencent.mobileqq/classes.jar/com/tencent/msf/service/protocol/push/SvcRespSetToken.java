@@ -49,14 +49,15 @@ public final class SvcRespSetToken
     paramJceOutputStream.write(this.vTokenID, 1);
     paramJceOutputStream.write(this.cReplyCode, 2);
     paramJceOutputStream.write(this.strResult, 3);
-    if (this.vVoipCookie != null) {
-      paramJceOutputStream.write(this.vVoipCookie, 4);
+    byte[] arrayOfByte = this.vVoipCookie;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.SvcRespSetToken
  * JD-Core Version:    0.7.0.1
  */

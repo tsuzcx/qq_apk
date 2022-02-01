@@ -13,10 +13,11 @@ public class PluginFilterAgent
   
   public IPluginFilter createPlugFilter(String paramString1, String paramString2)
   {
-    if (this.mPluginFilterFactory == null) {
+    IPluginFilterFactory localIPluginFilterFactory = this.mPluginFilterFactory;
+    if (localIPluginFilterFactory == null) {
       return null;
     }
-    return this.mPluginFilterFactory.createPluginFilter(paramString1, paramString2);
+    return localIPluginFilterFactory.createPluginFilter(paramString1, paramString2);
   }
   
   public void setPluginFilterFactory(IPluginFilterFactory paramIPluginFilterFactory)
@@ -26,7 +27,7 @@ public class PluginFilterAgent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.extrastickerutil.PluginFilterAgent
  * JD-Core Version:    0.7.0.1
  */

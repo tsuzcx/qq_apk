@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
 import java.util.Collections;
 import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class FeedListView
   extends XListView
@@ -31,7 +31,7 @@ public class FeedListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void attach(QQAppInterface paramQQAppInterface, Activity paramActivity, long paramLong) {}
+  public void attach(AppRuntime paramAppRuntime, Activity paramActivity, long paramLong) {}
   
   public void doActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
@@ -65,14 +65,14 @@ public class FeedListView
   
   public void setExtArgs(Map<String, String> paramMap)
   {
-    if ((paramMap == null) || (paramMap.isEmpty()))
+    if ((paramMap != null) && (!paramMap.isEmpty()))
     {
-      if (!this.extArgMap.isEmpty()) {
-        this.extArgMap.clear();
-      }
+      this.extArgMap = paramMap;
       return;
     }
-    this.extArgMap = paramMap;
+    if (!this.extArgMap.isEmpty()) {
+      this.extArgMap.clear();
+    }
   }
   
   public void setFeedUinChangedListener(FeedListView.FeedUinChangedListener paramFeedUinChangedListener) {}
@@ -89,7 +89,7 @@ public class FeedListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.api.FeedListView
  * JD-Core Version:    0.7.0.1
  */

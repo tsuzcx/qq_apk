@@ -20,26 +20,18 @@ class EmoticonGroupStoreFragment$2
       if (EmoticonGroupStoreFragment.b(this.a).contains(localFilterItemContent.jdField_a_of_type_JavaLangString)) {
         EmoticonGroupStoreFragment.b(this.a).remove(localFilterItemContent.jdField_a_of_type_JavaLangString);
       }
-      localFilterItemContent = (FilterAdapter.FilterItemContent)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
-      if (bool) {
-        break label144;
-      }
     }
-    label144:
-    for (bool = true;; bool = false)
-    {
-      localFilterItemContent.jdField_a_of_type_Boolean = bool;
-      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
+    else {
       EmoticonGroupStoreFragment.b(this.a).add(localFilterItemContent.jdField_a_of_type_JavaLangString);
-      break;
     }
+    ((FilterAdapter.FilterItemContent)EmoticonGroupStoreFragment.a(this.a).get(paramInt)).jdField_a_of_type_Boolean = (bool ^ true);
+    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -65,10 +65,10 @@ public class QfavFileForwardHandler
     localForwardDataWireReqBody.cid.set(paramString4);
     localForwardDataWireReqBody.str_file_name.set(paramString5);
     localForwardDataWireReqBody.uint64_file_size.set(paramLong);
-    boolean bool = FileUtil.b(paramString1);
+    boolean bool = FileUtil.a(paramString1);
     if ((TextUtils.isEmpty(paramString5)) && (bool))
     {
-      localForwardDataWireReqBody.str_file_name.set(FileUtil.b(paramString1));
+      localForwardDataWireReqBody.str_file_name.set(FileUtil.c(paramString1));
       localForwardDataWireReqBody.uint64_file_size.set(FileUtil.a(paramString1));
     }
     return localForwardDataWireReqBody;
@@ -120,80 +120,88 @@ public class QfavFileForwardHandler
   
   private static oidb_sso.OIDBSSOPkg a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
-      paramToServiceMsg = null;
-    }
-    for (;;)
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
-      return paramToServiceMsg;
-      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-      try
-      {
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.get() == 0))
-        {
-          paramToServiceMsg = paramFromServiceMsg;
-          if (paramFromServiceMsg.bytes_bodybuffer.get() != null) {
-            continue;
-          }
-        }
+      if (paramFromServiceMsg.getResultCode() != 1000) {
         return null;
       }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QfavFileForwardHandler", 2, "parseSSOPkg: oidb_sso parseFrom byte InvalidProtocolBufferMicroException ");
-          }
-        }
-      }
+      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
     }
+    try
+    {
+      paramToServiceMsg.mergeFrom((byte[])paramObject);
+    }
+    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+    {
+      label43:
+      break label43;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QfavFileForwardHandler", 2, "parseSSOPkg: oidb_sso parseFrom byte InvalidProtocolBufferMicroException ");
+    }
+    if (paramToServiceMsg.uint32_result.get() == 0)
+    {
+      if (paramToServiceMsg.bytes_bodybuffer.get() == null) {
+        return null;
+      }
+      return paramToServiceMsg;
+    }
+    return null;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, oidb_cmd0xd68.RspBody paramRspBody)
   {
-    if (paramRspBody.forward_group_rsp == null) {}
-    long l;
-    TroopFileTransferManager localTroopFileTransferManager;
-    do
-    {
+    if (paramRspBody.forward_group_rsp == null) {
       return;
-      l = ((Long)paramToServiceMsg.getAttribute("sessionId")).longValue();
-      paramToServiceMsg = this.a.getFileManagerDataCenter().a(l);
-      if (paramToServiceMsg == null)
-      {
-        QLog.e("QfavFileForwardHandler", 4, "handleGroupRsp fileManagerEntity is null");
-        return;
-      }
-      localTroopFileTransferManager = TroopFileTransferManager.a(this.a, Long.parseLong(paramToServiceMsg.peerUin));
-    } while (localTroopFileTransferManager == null);
-    ForwardOrderManager.a().a(this.a, paramToServiceMsg.msgSeq);
-    String str = new String(paramRspBody.forward_group_rsp.bytes_save_file_path.get().toByteArray());
-    localTroopFileTransferManager.a(l, UUID.fromString(paramToServiceMsg.strTroopFileUuid), null, paramRspBody.forward_group_rsp.int32_ret_code.get(), str, paramRspBody.forward_group_rsp.str_ret_msg.get());
+    }
+    long l = ((Long)paramToServiceMsg.getAttribute("sessionId")).longValue();
+    paramToServiceMsg = this.a.getFileManagerDataCenter().a(l);
+    if (paramToServiceMsg == null)
+    {
+      QLog.e("QfavFileForwardHandler", 4, "handleGroupRsp fileManagerEntity is null");
+      return;
+    }
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a, Long.parseLong(paramToServiceMsg.peerUin));
+    if (localTroopFileTransferManager != null)
+    {
+      ForwardOrderManager.a().a(this.a, paramToServiceMsg.msgSeq);
+      String str = new String(paramRspBody.forward_group_rsp.bytes_save_file_path.get().toByteArray());
+      localTroopFileTransferManager.a(l, UUID.fromString(paramToServiceMsg.strTroopFileUuid), null, paramRspBody.forward_group_rsp.int32_ret_code.get(), str, paramRspBody.forward_group_rsp.str_ret_msg.get());
+    }
   }
   
   private void b(ToServiceMsg paramToServiceMsg, oidb_cmd0xd68.RspBody paramRspBody)
   {
-    if (paramRspBody.forward_offline_rsp == null) {}
-    do
-    {
+    if (paramRspBody.forward_offline_rsp == null) {
       return;
-      long l = ((Long)paramToServiceMsg.getAttribute("sessionId")).longValue();
-      paramToServiceMsg = this.a.getFileManagerDataCenter().a(l);
-    } while (paramToServiceMsg == null);
+    }
+    long l = ((Long)paramToServiceMsg.getAttribute("sessionId")).longValue();
+    paramToServiceMsg = this.a.getFileManagerDataCenter().a(l);
+    if (paramToServiceMsg == null) {
+      return;
+    }
     int j = paramRspBody.forward_offline_rsp.int32_ret_code.get();
-    String str = paramRspBody.forward_offline_rsp.str_ret_msg.get();
-    if (j == 0) {}
-    for (int i = 1; i == 0; i = 0)
+    Object localObject = paramRspBody.forward_offline_rsp.str_ret_msg.get();
+    int i;
+    if (j == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
     {
       if (paramToServiceMsg.status != 2)
       {
         paramToServiceMsg.status = 1005;
         this.a.getFileManagerDataCenter().c(paramToServiceMsg);
       }
-      QLog.e("QfavFileForwardHandler", 1, "Id[" + paramToServiceMsg.nSessionId + "]wk,handleOfflineRsp-->failed ret_code:" + j);
-      this.a.getFileManagerNotifyCenter().a(paramToServiceMsg.uniseq, paramToServiceMsg.nSessionId, paramToServiceMsg.peerUin, paramToServiceMsg.peerType, 15, null, j, str);
+      paramRspBody = new StringBuilder();
+      paramRspBody.append("Id[");
+      paramRspBody.append(paramToServiceMsg.nSessionId);
+      paramRspBody.append("]wk,handleOfflineRsp-->failed ret_code:");
+      paramRspBody.append(j);
+      QLog.e("QfavFileForwardHandler", 1, paramRspBody.toString());
+      this.a.getFileManagerNotifyCenter().a(paramToServiceMsg.uniseq, paramToServiceMsg.nSessionId, paramToServiceMsg.peerUin, paramToServiceMsg.peerType, 15, null, j, (String)localObject);
       return;
     }
     paramToServiceMsg.Uuid = new String(paramRspBody.forward_offline_rsp.bytes_uuid.get().toByteArray());
@@ -207,90 +215,107 @@ public class QfavFileForwardHandler
     this.a.getFileManagerDataCenter().c(paramToServiceMsg);
     paramToServiceMsg.status = 2;
     FileManagerUtil.b(paramToServiceMsg.nSessionId);
-    QLog.i("QfavFileForwardHandler", 2, "=_= ^ [CS Replay]->[CC] Id[" + paramToServiceMsg.nSessionId + "]sendFavFile2Offline onSucceed, entity thumbSize(" + paramToServiceMsg.imgHeight + ":" + paramToServiceMsg.imgWidth + ")");
+    paramRspBody = new StringBuilder();
+    paramRspBody.append("=_= ^ [CS Replay]->[CC] Id[");
+    paramRspBody.append(paramToServiceMsg.nSessionId);
+    paramRspBody.append("]sendFavFile2Offline onSucceed, entity thumbSize(");
+    paramRspBody.append(paramToServiceMsg.imgHeight);
+    paramRspBody.append(":");
+    paramRspBody.append(paramToServiceMsg.imgWidth);
+    paramRspBody.append(")");
+    QLog.i("QfavFileForwardHandler", 2, paramRspBody.toString());
     if (paramToServiceMsg.peerType == 3000)
     {
-      QLog.i("QfavFileForwardHandler", 2, "=_= ^ [Disc Feed]sendDiscFileFeed[" + paramToServiceMsg.nSessionId + "]");
+      paramRspBody = new StringBuilder();
+      paramRspBody.append("=_= ^ [Disc Feed]sendDiscFileFeed[");
+      paramRspBody.append(paramToServiceMsg.nSessionId);
+      paramRspBody.append("]");
+      QLog.i("QfavFileForwardHandler", 2, paramRspBody.toString());
       this.a.getFileTransferHandler().a(paramToServiceMsg.nSessionId, paramToServiceMsg.peerUin, this.a.getCurrentAccountUin(), paramToServiceMsg.fileName, paramToServiceMsg.fileSize, paramToServiceMsg.Uuid, paramToServiceMsg.uniseq, paramToServiceMsg.msgUid, null);
     }
-    for (;;)
+    else
     {
-      this.a.getFileManagerNotifyCenter().a(paramToServiceMsg, 10, "");
-      paramRspBody = new FileManagerReporter.FileAssistantReportData();
-      paramRspBody.b = "send_file_suc";
-      paramRspBody.a = 1;
-      FileManagerReporter.a(this.a.getCurrentAccountUin(), paramRspBody);
-      FileManagerUtil.a(this.a, paramToServiceMsg);
-      return;
       paramRspBody = paramToServiceMsg.peerUin.replace("+", "");
-      QLog.i("QfavFileForwardHandler", 2, "=_= ^ [Offline CC]sendC2COfflineFileMsg[" + paramToServiceMsg.nSessionId + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("=_= ^ [Offline CC]sendC2COfflineFileMsg[");
+      ((StringBuilder)localObject).append(paramToServiceMsg.nSessionId);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("QfavFileForwardHandler", 2, ((StringBuilder)localObject).toString());
       this.a.getFileTransferHandler().a(paramRspBody, paramToServiceMsg, null);
     }
+    this.a.getFileManagerNotifyCenter().a(paramToServiceMsg, 10, "");
+    paramRspBody = new FileManagerReporter.FileAssistantReportData();
+    paramRspBody.b = "send_file_suc";
+    paramRspBody.a = 1;
+    FileManagerReporter.a(this.a.getCurrentAccountUin(), paramRspBody);
+    FileManagerUtil.a(this.a, paramToServiceMsg);
   }
   
   private void c(ToServiceMsg paramToServiceMsg, oidb_cmd0xd68.RspBody paramRspBody)
   {
-    if (paramRspBody.forward_data_wire_rsp == null) {}
-    do
+    if (paramRspBody.forward_data_wire_rsp == null) {
+      return;
+    }
+    long l = ((Long)paramToServiceMsg.getAttribute("sessionId")).longValue();
+    Object localObject = new String(paramRspBody.forward_data_wire_rsp.bytes_uuid.get().toByteArray());
+    paramToServiceMsg = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      Object localObject;
-      do
+      paramToServiceMsg.OnSessionComplete(l, 0, -999);
+      return;
+    }
+    int i = DataLineMsgRecord.getDevTypeBySeId(l);
+    paramRspBody = this.a.getMessageFacade().a(i).a(l);
+    if (paramRspBody == null) {
+      return;
+    }
+    paramRspBody.serverPath = ((String)localObject);
+    paramRspBody.nOpType = 1;
+    paramRspBody.bIsSended = true;
+    paramRspBody.bIsTransfering = false;
+    if (paramRspBody.entityID != 0L)
+    {
+      localObject = this.a.getFileManagerDataCenter().a(paramRspBody.entityID);
+      if (localObject != null)
       {
-        return;
-        long l = ((Long)paramToServiceMsg.getAttribute("sessionId")).longValue();
-        localObject = new String(paramRspBody.forward_data_wire_rsp.bytes_uuid.get().toByteArray());
-        paramToServiceMsg = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          paramToServiceMsg.OnSessionComplete(l, 0, -999);
-          return;
-        }
-        int i = DataLineMsgRecord.getDevTypeBySeId(l);
-        paramRspBody = this.a.getMessageFacade().a(i).a(l);
-      } while (paramRspBody == null);
-      paramRspBody.serverPath = ((String)localObject);
-      paramRspBody.nOpType = 1;
-      paramRspBody.bIsSended = true;
-      paramRspBody.bIsTransfering = false;
-      if (paramRspBody.entityID != 0L)
-      {
-        localObject = this.a.getFileManagerDataCenter().a(paramRspBody.entityID);
-        if (localObject != null)
-        {
-          ((FileManagerEntity)localObject).status = 1;
-          ((FileManagerEntity)localObject).Uuid = paramRspBody.serverPath;
-        }
+        ((FileManagerEntity)localObject).status = 1;
+        ((FileManagerEntity)localObject).Uuid = paramRspBody.serverPath;
       }
-    } while (!paramToServiceMsg.a(paramRspBody));
-    paramToServiceMsg.a(paramRspBody);
+    }
+    if (paramToServiceMsg.a(paramRspBody)) {
+      paramToServiceMsg.a(paramRspBody);
+    }
   }
   
   public void a(int paramInt, long paramLong1, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte, String paramString4, String paramString5, long paramLong2, long paramLong3)
   {
     oidb_cmd0xd68.ReqBody localReqBody = new oidb_cmd0xd68.ReqBody();
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return;
+        }
+        localReqBody.forward_data_wire_req.set(a(paramString1, paramString2, paramString3, paramArrayOfByte, paramString4, paramString5, paramLong2));
+      }
+      else
+      {
+        localReqBody.forward_offline_req.set(a(paramLong1, paramString1, paramString2, paramString3, paramArrayOfByte, paramString4, paramString5, paramLong2));
+      }
+    }
+    else {
       localReqBody.forward_group_req.set(a(paramLong1, paramString1, paramString2, paramString3, paramArrayOfByte, paramString4, paramString5, paramLong2));
     }
-    for (;;)
-    {
-      paramString1 = new oidb_sso.OIDBSSOPkg();
-      paramString1.uint32_command.set(3432);
-      paramString1.uint32_result.set(0);
-      paramString1.uint32_service_type.set(paramInt);
-      paramString1.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-      paramString2 = createToServiceMsg("OidbSvc.0xd68");
-      paramString2.putWupBuffer(paramString1.toByteArray());
-      paramString2.addAttribute("sessionId", Long.valueOf(paramLong3));
-      sendPbReq(paramString2);
-      return;
-      localReqBody.forward_offline_req.set(a(paramLong1, paramString1, paramString2, paramString3, paramArrayOfByte, paramString4, paramString5, paramLong2));
-      continue;
-      localReqBody.forward_data_wire_req.set(a(paramString1, paramString2, paramString3, paramArrayOfByte, paramString4, paramString5, paramLong2));
-    }
+    paramString1 = new oidb_sso.OIDBSSOPkg();
+    paramString1.uint32_command.set(3432);
+    paramString1.uint32_result.set(0);
+    paramString1.uint32_service_type.set(paramInt);
+    paramString1.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
+    paramString2 = createToServiceMsg("OidbSvc.0xd68");
+    paramString2.putWupBuffer(paramString1.toByteArray());
+    paramString2.addAttribute("sessionId", Long.valueOf(paramLong3));
+    sendPbReq(paramString2);
   }
   
   public void a(int paramInt, FileManagerEntity paramFileManagerEntity, long paramLong)
@@ -298,7 +323,11 @@ public class QfavFileForwardHandler
     String str2 = paramFileManagerEntity.strFavFileId;
     if (TextUtils.isEmpty(str2))
     {
-      QLog.e("QfavFileForwardHandler", 2, "forward " + paramInt + " strFavFileId is Empty!");
+      paramFileManagerEntity = new StringBuilder();
+      paramFileManagerEntity.append("forward ");
+      paramFileManagerEntity.append(paramInt);
+      paramFileManagerEntity.append(" strFavFileId is Empty!");
+      QLog.e("QfavFileForwardHandler", 2, paramFileManagerEntity.toString());
       return;
     }
     String str1 = str2.substring(0, str2.indexOf('/'));
@@ -314,7 +343,7 @@ public class QfavFileForwardHandler
     a(paramInt, paramLong1, paramFileManagerEntity.getFilePath(), str1, str2, HexUtil.hexStr2Bytes(paramFileManagerEntity.strFileMd5), paramFileManagerEntity.strFavId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramLong2);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return QfavOnlineFileForwardObserver.class;
   }
@@ -327,51 +356,64 @@ public class QfavFileForwardHandler
     String str = paramToServiceMsg.getServiceCmd();
     if (QLog.isDevelopLevel())
     {
-      QLog.i("QfavFileForwardHandler", 4, "cmd=" + str);
-      QLog.i("QfavFileForwardHandler", 4, "data length =" + ((byte[])paramObject).length);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cmd=");
+      localStringBuilder.append(str);
+      QLog.i("QfavFileForwardHandler", 4, localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("data length =");
+      localStringBuilder.append(((byte[])paramObject).length);
+      QLog.i("QfavFileForwardHandler", 4, localStringBuilder.toString());
     }
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
+    if (TextUtils.isEmpty(str)) {
       return;
-      if (str.compareTo("OidbSvc.0xd68") != 0) {
-        break label219;
-      }
-      paramFromServiceMsg = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      if (paramFromServiceMsg != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QfavFileForwardHandler", 2, "onReceive: ssoPkg parse failed");
-    return;
-    paramObject = new oidb_cmd0xd68.RspBody();
-    try
+    }
+    if (str.compareTo("OidbSvc.0xd68") == 0)
     {
-      paramObject.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-      switch (paramFromServiceMsg.uint32_service_type.get())
+      paramFromServiceMsg = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if (paramFromServiceMsg == null)
       {
-      case 1: 
+        if (QLog.isColorLevel()) {
+          QLog.d("QfavFileForwardHandler", 2, "onReceive: ssoPkg parse failed");
+        }
+        return;
+      }
+      paramObject = new oidb_cmd0xd68.RspBody();
+      try
+      {
+        paramObject.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
+        int i = paramFromServiceMsg.uint32_service_type.get();
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              return;
+            }
+            c(paramToServiceMsg, paramObject);
+            return;
+          }
+          b(paramToServiceMsg, paramObject);
+          return;
+        }
         a(paramToServiceMsg, paramObject);
         return;
       }
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+        return;
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-    {
-      paramToServiceMsg.printStackTrace();
-      return;
-    }
-    b(paramToServiceMsg, paramObject);
-    return;
-    c(paramToServiceMsg, paramObject);
-    return;
-    label219:
-    QLog.e("QfavFileForwardHandler", 4, "cmd=" + str);
-    return;
+    paramToServiceMsg = new StringBuilder();
+    paramToServiceMsg.append("cmd=");
+    paramToServiceMsg.append(str);
+    QLog.e("QfavFileForwardHandler", 4, paramToServiceMsg.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.forward.QfavFileForwardHandler
  * JD-Core Version:    0.7.0.1
  */

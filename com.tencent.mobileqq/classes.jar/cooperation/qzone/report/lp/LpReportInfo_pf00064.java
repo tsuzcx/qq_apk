@@ -307,7 +307,14 @@ public class LpReportInfo_pf00064
   
   public String getSimpleInfo()
   {
-    return "pf00064:" + this.actionType + "," + this.subactionType + "," + this.reserves;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pf00064:");
+    localStringBuilder.append(this.actionType);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.subactionType);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.reserves);
+    return localStringBuilder.toString();
   }
   
   public void reportImediately()
@@ -317,108 +324,118 @@ public class LpReportInfo_pf00064
   
   public Map<String, String> toMap()
   {
-    HashMap localHashMap = new HashMap();
+    localHashMap = new HashMap();
     localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
     localHashMap.put("device_info", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getDeviceInfor());
-    if (!TextUtils.isEmpty(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount())) {
-      localHashMap.put("uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
-    }
     Object localObject1;
     Object localObject2;
-    for (;;)
+    if (!TextUtils.isEmpty(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount()))
     {
-      localHashMap.put("touin", String.valueOf(this.toUin));
-      localHashMap.put("network_type", String.valueOf(this.networkType));
-      localHashMap.put("tabletype", String.valueOf(this.tabletype));
-      if (!this.useMapMode) {
-        break;
-      }
-      if ((this.mapReportInfo == null) || (this.mapReportInfo.isEmpty())) {
-        break label654;
-      }
-      localObject1 = this.mapReportInfo.entrySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        LpReportUtils.safePut(localHashMap, (String)((Map.Entry)localObject2).getKey(), (String)((Map.Entry)localObject2).getValue());
-      }
+      localHashMap.put("uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
+    }
+    else
+    {
       localHashMap.put("uin", "0");
-      QLog.e(TAG, 1, "uin=0 actiontype=" + this.actionType + " subactiontype=" + this.subactionType);
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("uin=0 actiontype=");
+      ((StringBuilder)localObject2).append(this.actionType);
+      ((StringBuilder)localObject2).append(" subactiontype=");
+      ((StringBuilder)localObject2).append(this.subactionType);
+      QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     }
-    if (!localHashMap.containsKey("refer")) {
-      localHashMap.put("refer", this.referId);
-    }
-    localHashMap.put("actiontype", String.valueOf(this.actionType));
-    localHashMap.put("subactiontype", String.valueOf(this.subactionType));
+    localHashMap.put("touin", String.valueOf(this.toUin));
+    localHashMap.put("network_type", String.valueOf(this.networkType));
     localHashMap.put("tabletype", String.valueOf(this.tabletype));
-    LpReportUtils.safePut(localHashMap, "domain_type", this.domain_type);
-    localHashMap.put("reserves", String.valueOf(this.reserves));
-    LpReportUtils.safePut(localHashMap, "source_type", this.sourceType);
-    LpReportUtils.safePut(localHashMap, "source_from", this.sourceFrom);
-    LpReportUtils.safePut(localHashMap, "source_to", this.sourceTo);
-    LpReportUtils.safePut(localHashMap, "reserves2", this.reserves2);
-    LpReportUtils.safePut(localHashMap, "reserves3", this.reserves3);
-    LpReportUtils.safePut(localHashMap, "reserves4", this.reserves4);
-    LpReportUtils.safePut(localHashMap, "reserves5", this.reserves5);
-    LpReportUtils.safePut(localHashMap, "reserves6", this.reserves6);
-    LpReportUtils.safePut(localHashMap, "reserves7", this.reserves7);
-    LpReportUtils.safePut(localHashMap, "reserves8", this.reserves8);
-    LpReportUtils.safePut(localHashMap, "reserves9", this.reserves9);
-    LpReportUtils.safePut(localHashMap, "reserves10", this.reserves10);
-    localHashMap.put("mergenum", String.valueOf(this.mergenum));
-    if (this.reservesExt != null)
+    if (this.useMapMode)
     {
-      int j = this.reservesExt.size();
-      int i = 0;
-      while (i < j)
+      localObject1 = this.mapReportInfo;
+      if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
       {
-        localObject1 = (String)this.reservesExt.get(i);
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localHashMap.put("reserves" + (i + 2), localObject1);
+        localObject1 = this.mapReportInfo.entrySet().iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (Map.Entry)((Iterator)localObject1).next();
+          LpReportUtils.safePut(localHashMap, (String)((Map.Entry)localObject2).getKey(), (String)((Map.Entry)localObject2).getValue());
         }
-        i += 1;
       }
     }
-    label654:
+    else
+    {
+      if (!localHashMap.containsKey("refer")) {
+        localHashMap.put("refer", this.referId);
+      }
+      localHashMap.put("actiontype", String.valueOf(this.actionType));
+      localHashMap.put("subactiontype", String.valueOf(this.subactionType));
+      localHashMap.put("tabletype", String.valueOf(this.tabletype));
+      LpReportUtils.safePut(localHashMap, "domain_type", this.domain_type);
+      localHashMap.put("reserves", String.valueOf(this.reserves));
+      LpReportUtils.safePut(localHashMap, "source_type", this.sourceType);
+      LpReportUtils.safePut(localHashMap, "source_from", this.sourceFrom);
+      LpReportUtils.safePut(localHashMap, "source_to", this.sourceTo);
+      LpReportUtils.safePut(localHashMap, "reserves2", this.reserves2);
+      LpReportUtils.safePut(localHashMap, "reserves3", this.reserves3);
+      LpReportUtils.safePut(localHashMap, "reserves4", this.reserves4);
+      LpReportUtils.safePut(localHashMap, "reserves5", this.reserves5);
+      LpReportUtils.safePut(localHashMap, "reserves6", this.reserves6);
+      LpReportUtils.safePut(localHashMap, "reserves7", this.reserves7);
+      LpReportUtils.safePut(localHashMap, "reserves8", this.reserves8);
+      LpReportUtils.safePut(localHashMap, "reserves9", this.reserves9);
+      LpReportUtils.safePut(localHashMap, "reserves10", this.reserves10);
+      localHashMap.put("mergenum", String.valueOf(this.mergenum));
+      localObject1 = this.reservesExt;
+      if (localObject1 != null)
+      {
+        int j = ((ArrayList)localObject1).size();
+        int i = 0;
+        while (i < j)
+        {
+          localObject1 = (String)this.reservesExt.get(i);
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("reserves");
+            ((StringBuilder)localObject2).append(i + 2);
+            localHashMap.put(((StringBuilder)localObject2).toString(), localObject1);
+          }
+          i += 1;
+        }
+      }
+    }
     LpReportUtils.safePut(localHashMap, "read_source", this.readSource);
     localHashMap.put("time", String.valueOf(this.time));
     LpReportUtils.safePut(localHashMap, "info", this.info);
     LpReportUtils.safePut(localHashMap, "pushstatkey", this.pushstatkey);
-    for (;;)
+    try
     {
-      try
+      if (!TextUtils.isEmpty(this.extraInfo)) {
+        localObject1 = new JSONObject(this.extraInfo);
+      } else {
+        localObject1 = new JSONObject();
+      }
+      if (((JSONObject)localObject1).length() > 0)
       {
-        if (!TextUtils.isEmpty(this.extraInfo))
+        localObject2 = ((JSONObject)localObject1).keys();
+        while (((Iterator)localObject2).hasNext())
         {
-          localObject1 = new JSONObject(this.extraInfo);
-          if (((JSONObject)localObject1).length() > 0)
-          {
-            localObject2 = ((JSONObject)localObject1).keys();
-            if (((Iterator)localObject2).hasNext())
-            {
-              String str1 = (String)((Iterator)localObject2).next();
-              String str2 = ((JSONObject)localObject1).getString(str1);
-              if (TextUtils.isEmpty(str2)) {
-                continue;
-              }
-              localHashMap.put(str1, str2);
-              continue;
-            }
+          String str1 = (String)((Iterator)localObject2).next();
+          String str2 = ((JSONObject)localObject1).getString(str1);
+          if (!TextUtils.isEmpty(str2)) {
+            localHashMap.put(str1, str2);
           }
-          return localHashMap;
         }
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e(TAG, 1, localThrowable, new Object[0]);
-      }
-      JSONObject localJSONObject = new JSONObject();
+      return localHashMap;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e(TAG, 1, localThrowable, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_pf00064
  * JD-Core Version:    0.7.0.1
  */

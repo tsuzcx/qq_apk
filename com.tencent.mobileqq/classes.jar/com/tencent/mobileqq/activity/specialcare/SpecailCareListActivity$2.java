@@ -29,11 +29,12 @@ class SpecailCareListActivity$2
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-    if (NetworkUtil.d(this.a))
+    if (NetworkUtil.isNetSupport(this.a))
     {
       this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getFriendGroupList(true);
-      this.a.jdField_a_of_type_Boolean = true;
-      ((QzoneContactsFeedManager)this.a.app.getManager(QQManagerFactory.QZONE_CONTACTS_FEED_MANAGER)).a();
+      paramView = this.a;
+      paramView.jdField_a_of_type_Boolean = true;
+      ((QzoneContactsFeedManager)paramView.app.getManager(QQManagerFactory.QZONE_CONTACTS_FEED_MANAGER)).a();
       return true;
     }
     paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
@@ -45,7 +46,7 @@ class SpecailCareListActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -3,16 +3,13 @@ package com.tencent.av.ManageConfig;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.av.business.manager.BusinessManager;
-import com.tencent.av.gameplay.QavGPDownloader;
-import com.tencent.av.redpacket.AVRedPacketDataCollector;
-import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
 import com.tencent.av.ui.AIOTopRightButtonConfig;
 import com.tencent.av.utils.QAVConfigUtils;
+import com.tencent.av.utils.QAVPerfTestConfig;
 import com.tencent.av.utils.ScoreManager;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
@@ -46,8 +43,14 @@ public class QAVConfig
   @NonNull
   public QAVConfItem a(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "migrateOldOrDefaultContent, type[" + paramInt + "]");
+    if (QLog.isDevelopLevel())
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("migrateOldOrDefaultContent, type[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
     return new QAVConfItem();
   }
@@ -67,40 +70,48 @@ public class QAVConfig
   {
     super.onUpdate(paramQAVConfItem);
     AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localAppInterface instanceof QQAppInterface)) {}
-    while (paramQAVConfItem == null) {
+    if (!(localAppInterface instanceof QQAppInterface)) {
+      return;
+    }
+    if (paramQAVConfItem == null) {
       return;
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)localAppInterface;
-    switch (type())
+    int i = type();
+    if (i != 132)
     {
-    default: 
-      return;
-    case 132: 
-      BusinessManager.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface.getApp(), 1, false);
-      return;
-    case 270: 
-      ScoreManager.a(localQQAppInterface, paramQAVConfItem.jdField_a_of_type_JavaLangString, localAppInterface.getCurrentAccountUin());
-      return;
-    case 192: 
+      if (i != 192)
+      {
+        if (i != 270)
+        {
+          if (i != 276)
+          {
+            if (i != 287)
+            {
+              if ((i != 367) && (i != 382))
+              {
+                if (i != 735) {
+                  return;
+                }
+                QAVPerfTestConfig.a(paramQAVConfItem.jdField_a_of_type_JavaLangString, localAppInterface.getCurrentAccountUin());
+                return;
+              }
+              BusinessCommonConfig.getInstance(localQQAppInterface).decodeConfig(localQQAppInterface, type(), paramQAVConfItem.jdField_a_of_type_JavaLangString);
+              return;
+            }
+            QAVConfigUtils.a(paramQAVConfItem.jdField_a_of_type_JavaLangString);
+            return;
+          }
+          QAVGroupConfig.a(paramQAVConfItem.jdField_a_of_type_JavaLangString);
+          return;
+        }
+        ScoreManager.a(localQQAppInterface, paramQAVConfItem.jdField_a_of_type_JavaLangString, localAppInterface.getCurrentAccountUin());
+        return;
+      }
       AIOTopRightButtonConfig.a().a(paramQAVConfItem.jdField_a_of_type_JavaLangString);
       return;
-    case 249: 
-      ((AVRedPacketConfigManager)localQQAppInterface.getManager(QQManagerFactory.AV_REDPACKET_CONFIG_MGR)).b(paramQAVConfItem.jdField_a_of_type_JavaLangString);
-      AVRedPacketDataCollector.a(true);
-      return;
-    case 276: 
-      QAVGroupConfig.a(paramQAVConfItem.jdField_a_of_type_JavaLangString);
-      return;
-    case 287: 
-      QAVConfigUtils.a(paramQAVConfItem.jdField_a_of_type_JavaLangString);
-      return;
-    case 367: 
-    case 382: 
-      BusinessCommonConfig.getInstance(localQQAppInterface).decodeConfig(localQQAppInterface, type(), paramQAVConfItem.jdField_a_of_type_JavaLangString);
-      return;
     }
-    QavGPDownloader.a(paramQAVConfItem.jdField_a_of_type_JavaLangString);
+    BusinessManager.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface.getApp(), 1, false);
   }
   
   public Class<QAVConfItem> clazz()
@@ -110,34 +121,22 @@ public class QAVConfig
   
   public boolean isAccountRelated()
   {
-    switch (type())
-    {
-    default: 
-      return false;
-    }
-    return true;
+    int i = type();
+    return (i == 192) || (i == 249) || (i == 263) || (i == 382) || (i == 591) || (i == 623) || (i == 735);
   }
   
   public void onProcessorConstructed(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = ("QAVConfig_" + this.jdField_a_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QAVConfig_");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public void onReqFailed(int paramInt)
   {
     super.onReqFailed(paramInt);
-    Object localObject = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
-      return;
-    }
-    localObject = (QQAppInterface)localObject;
-    switch (type())
-    {
-    default: 
-      return;
-    }
-    ((AVRedPacketConfigManager)((QQAppInterface)localObject).getManager(QQManagerFactory.AV_REDPACKET_CONFIG_MGR)).c();
   }
   
   public void onReqNoReceive()
@@ -148,12 +147,8 @@ public class QAVConfig
       return;
     }
     localObject = (QQAppInterface)localObject;
-    switch (type())
-    {
-    default: 
-      return;
-    case 249: 
-      ((AVRedPacketConfigManager)((QQAppInterface)localObject).getManager(QQManagerFactory.AV_REDPACKET_CONFIG_MGR)).c();
+    int i = type();
+    if ((i != 367) && (i != 382)) {
       return;
     }
     BusinessCommonConfig.getInstance((AppRuntime)localObject).handleResp_Config_NoResp((QQAppInterface)localObject, type());

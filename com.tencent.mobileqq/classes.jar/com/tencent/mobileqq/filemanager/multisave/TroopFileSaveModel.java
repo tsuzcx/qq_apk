@@ -46,51 +46,74 @@ public class TroopFileSaveModel
   
   public boolean a()
   {
-    TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+    Object localObject1 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
     long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin);
-    if (localTroopFileStatusInfo == null)
+    if (localObject1 == null)
     {
-      QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : file info is null. uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "]");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("doDownload : file info is null. uniseq[");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq);
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("TroopFileSaveModel<QFile>", 1, ((StringBuilder)localObject1).toString());
       return false;
     }
-    QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload: uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "] fileId[" + localTroopFileStatusInfo.e + "]");
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l);
-    localTroopFileTransferManager.a(localTroopFileStatusInfo.e, localTroopFileStatusInfo.g, localTroopFileStatusInfo.c, localTroopFileStatusInfo.h);
-    if ((localTroopFileStatusInfo.b == 10) || (localTroopFileStatusInfo.b == 9)) {
-      if (localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID != null) {
-        localTroopFileTransferManager.c(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
-      }
-    }
-    for (;;)
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("doDownload: uniseq[");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq);
+    ((StringBuilder)localObject2).append("] fileId[");
+    ((StringBuilder)localObject2).append(((TroopFileStatusInfo)localObject1).e);
+    ((StringBuilder)localObject2).append("]");
+    QLog.i("TroopFileSaveModel<QFile>", 1, ((StringBuilder)localObject2).toString());
+    localObject2 = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l);
+    ((TroopFileTransferManager)localObject2).a(((TroopFileStatusInfo)localObject1).e, ((TroopFileStatusInfo)localObject1).g, ((TroopFileStatusInfo)localObject1).c, ((TroopFileStatusInfo)localObject1).h);
+    if ((((TroopFileStatusInfo)localObject1).b != 10) && (((TroopFileStatusInfo)localObject1).b != 9))
     {
+      if (((TroopFileStatusInfo)localObject1).b == 7)
+      {
+        ((TroopFileTransferManager)localObject2).a(((TroopFileStatusInfo)localObject1).e, ((TroopFileStatusInfo)localObject1).g, ((TroopFileStatusInfo)localObject1).c, ((TroopFileStatusInfo)localObject1).h);
+        return true;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("doDownload : can not handle file info status[");
+      ((StringBuilder)localObject2).append(((TroopFileStatusInfo)localObject1).b);
+      ((StringBuilder)localObject2).append(",download error");
+      QLog.i("TroopFileSaveModel<QFile>", 1, ((StringBuilder)localObject2).toString());
+      return false;
+    }
+    if (((TroopFileStatusInfo)localObject1).jdField_a_of_type_JavaUtilUUID != null)
+    {
+      ((TroopFileTransferManager)localObject2).c(((TroopFileStatusInfo)localObject1).jdField_a_of_type_JavaUtilUUID);
       return true;
-      QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : resumeDownload error, infoId is null");
-      return false;
-      if (localTroopFileStatusInfo.b != 7) {
-        break;
-      }
-      localTroopFileTransferManager.a(localTroopFileStatusInfo.e, localTroopFileStatusInfo.g, localTroopFileStatusInfo.c, localTroopFileStatusInfo.h);
     }
-    QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : can not handle file info status[" + localTroopFileStatusInfo.b + ",download error");
+    QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : resumeDownload error, infoId is null");
     return false;
   }
   
   public String b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin);
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq);
+    return localStringBuilder.toString();
   }
   
   public boolean b()
   {
-    TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    if (localTroopFileStatusInfo == null) {
-      QLog.i("TroopFileSaveModel<QFile>", 1, "stopDownload : file info is null. uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "]");
+    Object localObject = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("stopDownload : file info is null. uniseq[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("TroopFileSaveModel<QFile>", 1, ((StringBuilder)localObject).toString());
+      return false;
     }
-    while ((localTroopFileStatusInfo.b != 8) && (localTroopFileStatusInfo.b != 9) && (localTroopFileStatusInfo.b != 10)) {
+    if ((((TroopFileStatusInfo)localObject).b != 8) && (((TroopFileStatusInfo)localObject).b != 9) && (((TroopFileStatusInfo)localObject).b != 10)) {
       return false;
     }
     long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin);
-    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l).d(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l).d(((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaUtilUUID);
     return true;
   }
   
@@ -102,7 +125,7 @@ public class TroopFileSaveModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.TroopFileSaveModel
  * JD-Core Version:    0.7.0.1
  */

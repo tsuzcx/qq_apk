@@ -30,45 +30,54 @@ public class QCirclePluginEnterManger
     {
       try
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginEnterManger#enter():enter formId:" + paramLong);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("QCirclePluginEnterManger#enter():enter formId:");
+          localStringBuilder.append(paramLong);
+          QLog.i("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
         }
         try
         {
           if ((this.mManagerUpdater != null) && (this.mManagerUpdater.getLatest().exists()) && (((Boolean)this.mManagerUpdater.isAvailable(this.mManagerUpdater.getLatest()).get()).booleanValue()))
           {
             this.mPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
-            return;
           }
-          QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginEnterManger#enter():plugin source file is deleted");
-          if ((paramLong != 1000L) && (paramLong != 1004L)) {
-            continue;
-          }
-          paramBundle = new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_load_result");
-          if (this.mPluginInfo != null)
+          else
           {
-            paramContext = this.mPluginInfo.c();
-            paramContext = paramBundle.setPluginType(paramContext);
-            if (this.mPluginInfo == null) {
-              break label241;
+            QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginEnterManger#enter():plugin source file is deleted");
+            if ((paramLong == 1000L) || (paramLong == 1004L))
+            {
+              paramBundle = new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_load_result");
+              if (this.mPluginInfo == null) {
+                break label261;
+              }
+              paramContext = this.mPluginInfo.c();
+              paramContext = paramBundle.setPluginType(paramContext);
+              if (this.mPluginInfo == null) {
+                break label267;
+              }
+              paramLong = this.mPluginInfo.b();
+              QCirclePluginQualityReporter.report(paramContext.setPluginVersion(paramLong).setRetCode(1L));
+              ILoadPluginDelegate.disPatchCallback(1, "file has delete");
             }
-            paramLong = this.mPluginInfo.b();
-            QCirclePluginQualityReporter.report(paramContext.setPluginVersion(paramLong).setRetCode(1L));
-            ILoadPluginDelegate.disPatchCallback(1, "file has delete");
-            continue;
           }
         }
         catch (Exception paramContext)
         {
           paramContext.printStackTrace();
-          QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginEnterManger#enter():" + paramContext.getMessage());
-          continue;
+          paramBundle = new StringBuilder();
+          paramBundle.append("QCirclePluginEnterManger#enter():");
+          paramBundle.append(paramContext.getMessage());
+          QLog.i("QCIRCLE_PLUGIN", 1, paramBundle.toString());
         }
-        paramContext = "";
+        return;
       }
       finally {}
+      label261:
+      paramContext = "";
       continue;
-      label241:
+      label267:
       paramLong = -3L;
     }
   }
@@ -90,7 +99,7 @@ public class QCirclePluginEnterManger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCirclePluginEnterManger
  * JD-Core Version:    0.7.0.1
  */

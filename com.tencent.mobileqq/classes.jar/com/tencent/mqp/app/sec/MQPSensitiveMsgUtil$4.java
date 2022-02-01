@@ -10,17 +10,19 @@ final class MQPSensitiveMsgUtil$4
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramIntent.getIntExtra("type", 0) == 0)) {
+    if (paramContext == null) {
       return;
     }
-    MQPSensitiveMsgUtil.a(paramIntent.getStringExtra("account"));
-    MQPSensitiveMsgUtil.b(MQPSensitiveMsgUtil.a());
+    if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (paramIntent.getIntExtra("type", 0) != 0))
+    {
+      MQPSensitiveMsgUtil.a(paramIntent.getStringExtra("account"));
+      MQPSensitiveMsgUtil.b(MQPSensitiveMsgUtil.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSensitiveMsgUtil.4
  * JD-Core Version:    0.7.0.1
  */

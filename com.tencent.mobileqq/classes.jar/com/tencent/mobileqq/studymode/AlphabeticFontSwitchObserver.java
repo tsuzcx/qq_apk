@@ -11,20 +11,20 @@ public class AlphabeticFontSwitchObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, ((Boolean)paramObject).booleanValue());
+      if (paramInt != 2) {
+        return;
+      }
+      b(paramBoolean, ((Boolean)paramObject).booleanValue());
       return;
     }
-    b(paramBoolean, ((Boolean)paramObject).booleanValue());
+    a(paramBoolean, ((Boolean)paramObject).booleanValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.AlphabeticFontSwitchObserver
  * JD-Core Version:    0.7.0.1
  */

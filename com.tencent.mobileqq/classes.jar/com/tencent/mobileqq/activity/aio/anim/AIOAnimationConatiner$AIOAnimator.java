@@ -4,9 +4,9 @@ import com.tencent.widget.ListView;
 
 public abstract class AIOAnimationConatiner$AIOAnimator
 {
-  public int a;
-  public AIOAnimationConatiner a;
-  public ListView a;
+  protected int a;
+  protected AIOAnimationConatiner a;
+  protected ListView a;
   
   public AIOAnimationConatiner$AIOAnimator(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
@@ -30,7 +30,7 @@ public abstract class AIOAnimationConatiner$AIOAnimator
   
   protected void b() {}
   
-  public void b(int paramInt)
+  protected void b(int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(paramInt);
   }
@@ -39,12 +39,15 @@ public abstract class AIOAnimationConatiner$AIOAnimator
   
   protected void d()
   {
-    AIOAnimationConatiner.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
+    if (localAIOAnimationConatiner != null) {
+      AIOAnimationConatiner.a(localAIOAnimationConatiner);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner.AIOAnimator
  * JD-Core Version:    0.7.0.1
  */

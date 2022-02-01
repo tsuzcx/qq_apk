@@ -13,13 +13,13 @@ class FullScreenInputHelper$7
     localQQToast.a(QQToast.a(1));
     localQQToast.b(1);
     localQQToast.d(2000);
-    localQQToast.c(2131693953);
+    localQQToast.c(2131693908);
     localQQToast.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.7
  * JD-Core Version:    0.7.0.1
  */

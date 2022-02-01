@@ -45,10 +45,10 @@ public class ForwardMixedMsgOption
     ((AnimationTextView)localObject2).setText(new QQText(a(), 5, 16));
     ((AnimationTextView)localObject2).setMaxLines(2);
     ((AnimationTextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-    ((AnimationTextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131165706));
+    ((AnimationTextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131165694));
     ((AnimationTextView)localObject2).setTextSize(14.0F);
     Object localObject1 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    ((ImageView)localObject1).setImageResource(2130840274);
+    ((ImageView)localObject1).setImageResource(2130840133);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2, 1.0F);
     localLayoutParams.gravity = 17;
     localLinearLayout.addView((View)localObject2, localLayoutParams);
@@ -58,7 +58,7 @@ public class ForwardMixedMsgOption
     localLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localLinearLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
     localObject1 = new View(this.jdField_a_of_type_AndroidAppActivity);
-    ((View)localObject1).setBackgroundResource(2130840284);
+    ((View)localObject1).setBackgroundResource(2130840143);
     ((View)localObject1).setOnClickListener(new ForwardMixedMsgOption.1(this));
     localObject2 = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
     int i = ViewUtils.a(20.0F);
@@ -71,10 +71,9 @@ public class ForwardMixedMsgOption
   
   public String a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg != null)
-    {
-      MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
-      return MessageForMixedMsg.getTextFromMixedMsgForForwardPreview(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
+    if (localMessageForMixedMsg != null) {
+      return MessageForMixedMsg.getTextFromMixedMsgForForwardPreview(localMessageForMixedMsg);
     }
     return super.a();
   }
@@ -83,51 +82,54 @@ public class ForwardMixedMsgOption
   {
     super.a();
     long l = this.jdField_a_of_type_AndroidOsBundle.getLong("FORWARD_MSG_UNISEQ", -1L);
-    Object localObject;
     if (l != -1L)
     {
-      localObject = (ChatMessage)((MixedMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER)).a.get(Long.valueOf(l));
-      if (localObject == null) {
-        break label175;
-      }
-      if (!(localObject instanceof MessageForMixedMsg)) {
-        break label88;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "MessageForMixedMsg");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg = ((MessageForMixedMsg)localObject);
-    }
-    label175:
-    for (;;)
-    {
-      return true;
-      label88:
-      if ((localObject instanceof MessageForLongMsg))
+      Object localObject = (ChatMessage)((MixedMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER)).a.get(Long.valueOf(l));
+      if (localObject != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "MessageForLongMsg");
-        }
-        localObject = (MessageForLongMsg)localObject;
-        try
+        if ((localObject instanceof MessageForMixedMsg))
         {
-          localObject = ((MessageForLongMsg)localObject).rebuildLongMsg();
-          if (!(localObject instanceof MessageForMixedMsg)) {
-            continue;
+          if (QLog.isColorLevel()) {
+            QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "MessageForMixedMsg");
           }
           this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg = ((MessageForMixedMsg)localObject);
         }
-        catch (Exception localException) {}
-        if (QLog.isColorLevel())
+        else if ((localObject instanceof MessageForLongMsg))
         {
-          QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "rebuildLongMsg error :" + localException.toString());
-          continue;
           if (QLog.isColorLevel()) {
-            QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "no msg: " + l);
+            QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "MessageForLongMsg");
           }
+          localObject = (MessageForLongMsg)localObject;
+          try
+          {
+            localObject = ((MessageForLongMsg)localObject).rebuildLongMsg();
+            if (!(localObject instanceof MessageForMixedMsg)) {
+              break label223;
+            }
+            this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg = ((MessageForMixedMsg)localObject);
+          }
+          catch (Exception localException)
+          {
+            if (!QLog.isColorLevel()) {
+              break label223;
+            }
+          }
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("rebuildLongMsg error :");
+          localStringBuilder2.append(localException.toString());
+          QLog.e("ForwardOption.ForwardMixedMsgOption", 2, localStringBuilder2.toString());
         }
       }
+      else if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("no msg: ");
+        localStringBuilder1.append(l);
+        QLog.e("ForwardOption.ForwardMixedMsgOption", 2, localStringBuilder1.toString());
+      }
     }
+    label223:
+    return true;
   }
   
   protected void b()
@@ -148,15 +150,15 @@ public class ForwardMixedMsgOption
     return true;
   }
   
-  public void k()
-  {
-    super.k();
-    AbstractGifImage.pauseAll();
-  }
-  
   public void l()
   {
     super.l();
+    AbstractGifImage.pauseAll();
+  }
+  
+  public void m()
+  {
+    super.m();
     AbstractGifImage.resumeAll();
   }
   
@@ -167,7 +169,7 @@ public class ForwardMixedMsgOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMixedMsgOption
  * JD-Core Version:    0.7.0.1
  */

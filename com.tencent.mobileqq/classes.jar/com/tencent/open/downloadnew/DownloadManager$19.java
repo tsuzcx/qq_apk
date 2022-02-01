@@ -10,7 +10,16 @@ class DownloadManager$19
   
   public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
-    LogUtility.c("DownloadManager_", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("receive get code finished pkgName|");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" versionCode|");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" code|");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" extraData|");
+    localStringBuilder.append(paramBundle);
+    LogUtility.c("DownloadManager_", localStringBuilder.toString());
     paramBundle = new Bundle();
     paramBundle.putString("PackageName", paramString1);
     paramBundle.putString("Code", paramString2);
@@ -21,7 +30,7 @@ class DownloadManager$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.19
  * JD-Core Version:    0.7.0.1
  */

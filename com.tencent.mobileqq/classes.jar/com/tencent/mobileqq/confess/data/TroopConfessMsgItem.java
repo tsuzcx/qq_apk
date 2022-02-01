@@ -36,48 +36,39 @@ public class TroopConfessMsgItem
   
   public void convertFrom(hummer_commelem.MsgElemInfo_servtype21.GroupConfessItem paramGroupConfessItem)
   {
+    boolean bool = paramGroupConfessItem.uint32_topic_id.has();
     int j = 0;
-    int i;
-    long l;
-    if (paramGroupConfessItem.uint32_topic_id.has())
-    {
+    if (bool) {
       i = paramGroupConfessItem.uint32_topic_id.get();
-      this.topicId = i;
-      if (!paramGroupConfessItem.uint64_confess_to_uin.has()) {
-        break label137;
-      }
-      l = paramGroupConfessItem.uint64_confess_to_uin.get();
-      label44:
-      this.confessToUin = l;
-      if (!paramGroupConfessItem.bytes_confess_to_nick.has()) {
-        break label143;
-      }
-      str = paramGroupConfessItem.bytes_confess_to_nick.get().toStringUtf8();
-      label72:
-      this.confessToNick = str;
-      if (!paramGroupConfessItem.bytes_topic.has()) {
-        break label150;
-      }
-    }
-    label137:
-    label143:
-    label150:
-    for (String str = paramGroupConfessItem.bytes_topic.get().toStringUtf8();; str = "")
-    {
-      this.topic = str;
-      i = j;
-      if (paramGroupConfessItem.uint32_confess_to_nick_type.has()) {
-        i = paramGroupConfessItem.uint32_confess_to_nick_type.get();
-      }
-      this.nickType = i;
-      return;
+    } else {
       i = 0;
-      break;
-      l = 0L;
-      break label44;
-      str = "";
-      break label72;
     }
+    this.topicId = i;
+    long l;
+    if (paramGroupConfessItem.uint64_confess_to_uin.has()) {
+      l = paramGroupConfessItem.uint64_confess_to_uin.get();
+    } else {
+      l = 0L;
+    }
+    this.confessToUin = l;
+    bool = paramGroupConfessItem.bytes_confess_to_nick.has();
+    String str2 = "";
+    if (bool) {
+      str1 = paramGroupConfessItem.bytes_confess_to_nick.get().toStringUtf8();
+    } else {
+      str1 = "";
+    }
+    this.confessToNick = str1;
+    String str1 = str2;
+    if (paramGroupConfessItem.bytes_topic.has()) {
+      str1 = paramGroupConfessItem.bytes_topic.get().toStringUtf8();
+    }
+    this.topic = str1;
+    int i = j;
+    if (paramGroupConfessItem.uint32_confess_to_nick_type.has()) {
+      i = paramGroupConfessItem.uint32_confess_to_nick_type.get();
+    }
+    this.nickType = i;
   }
   
   public byte[] getBytes()
@@ -115,11 +106,25 @@ public class TroopConfessMsgItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("topicId").append("=").append(this.topicId);
-    localStringBuilder.append(",").append("confessToUin").append("=").append(this.confessToUin);
-    localStringBuilder.append(",").append("confessToNick").append("=").append(this.confessToNick);
-    localStringBuilder.append(",").append("topic").append("=").append(this.topic);
-    localStringBuilder.append(",").append("nickType").append("=").append(this.nickType);
+    localStringBuilder.append("topicId");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.topicId);
+    localStringBuilder.append(",");
+    localStringBuilder.append("confessToUin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.confessToUin);
+    localStringBuilder.append(",");
+    localStringBuilder.append("confessToNick");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.confessToNick);
+    localStringBuilder.append(",");
+    localStringBuilder.append("topic");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.topic);
+    localStringBuilder.append(",");
+    localStringBuilder.append("nickType");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.nickType);
     return localStringBuilder.toString();
   }
   
@@ -135,7 +140,7 @@ public class TroopConfessMsgItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.data.TroopConfessMsgItem
  * JD-Core Version:    0.7.0.1
  */

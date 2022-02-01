@@ -51,8 +51,11 @@ public class PassiveBubbleView
   {
     if (this.a != null)
     {
-      String str = paramInt + HardCodeUtil.a(2131707877);
-      this.a.setText(str);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131707900));
+      localObject = ((StringBuilder)localObject).toString();
+      this.a.setText((CharSequence)localObject);
       a("auth_page", "msg_exp", "", "", "", "");
     }
   }
@@ -61,9 +64,9 @@ public class PassiveBubbleView
   {
     setOrientation(0);
     setGravity(16);
-    setBackgroundResource(2130839130);
-    inflate(paramContext, 2131558850, this);
-    this.a = ((TextView)findViewById(2131371204));
+    setBackgroundResource(2130838983);
+    inflate(paramContext, 2131558748, this);
+    this.a = ((TextView)findViewById(2131370829));
     setOnClickListener(this);
   }
   
@@ -76,7 +79,7 @@ public class PassiveBubbleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.passive_bubble.PassiveBubbleView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.biz.subscribe.utils;
 
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.biz.pubaccount.api.IPublicAccountObserver.OnCallback;
 import java.lang.ref.WeakReference;
 
 class SubscribeFollowUserUtil$PublicAccountFollowObserver
-  extends PublicAccountObserver
+  extends IPublicAccountObserver.OnCallback
 {
   WeakReference<SubscribeFollowUserUtil.ResultListener> a;
   
@@ -24,7 +24,7 @@ class SubscribeFollowUserUtil$PublicAccountFollowObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.SubscribeFollowUserUtil.PublicAccountFollowObserver
  * JD-Core Version:    0.7.0.1
  */

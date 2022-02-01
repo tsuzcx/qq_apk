@@ -7,14 +7,14 @@ class MainAssistObserver$20
 {
   MainAssistObserver$20(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1) {
       this.a.e();
     }
   }
   
-  public void onGetSignInInfo(boolean paramBoolean)
+  protected void onGetSignInInfo(boolean paramBoolean)
   {
     if (paramBoolean) {
       this.a.e();
@@ -23,7 +23,7 @@ class MainAssistObserver$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.20
  * JD-Core Version:    0.7.0.1
  */

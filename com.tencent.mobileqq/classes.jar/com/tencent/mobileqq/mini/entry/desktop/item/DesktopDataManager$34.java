@@ -19,9 +19,17 @@ class DesktopDataManager$34
       localObject = ((AppInterface)localObject).getAccount();
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        localObject = "/data/data/com.tencent.mobileqq/shared_prefs/" + (String)localObject + "_mini_app_recommend_exposure.xml";
-        if ((FileUtils.e((String)localObject)) && (QLog.isColorLevel())) {
-          QLog.d("DesktopDataManager", 2, "delete : " + (String)localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("/data/data/com.tencent.mobileqq/shared_prefs/");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("_mini_app_recommend_exposure.xml");
+        localObject = localStringBuilder.toString();
+        if ((FileUtils.deleteFile((String)localObject)) && (QLog.isColorLevel()))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("delete : ");
+          localStringBuilder.append((String)localObject);
+          QLog.d("DesktopDataManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -29,7 +37,7 @@ class DesktopDataManager$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.34
  * JD-Core Version:    0.7.0.1
  */

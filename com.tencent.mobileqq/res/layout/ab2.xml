@@ -1,13 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/npd" android:background="#ff252525" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.pull2refresh.RecyclerViewCompat android:id="@id/np8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:layout_width="fill_parent" android:layout_height="72.0dip" android:src="@drawable/b4s" android:rotation="180.0" />
-    <FrameLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="52.0dip">
-        <FrameLayout android:layout_gravity="center|left" android:id="@id/np_" android:layout_width="52.0dip" android:layout_height="52.0dip">
-            <ImageView android:layout_gravity="center" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/h40" />
-        </FrameLayout>
-        <com.tencent.mobileqq.widget.NumberCheckBox android:layout_gravity="center|right" android:id="@id/npa" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="96.0dip" style="@style/z8" />
-        <Button android:textSize="14.0dip" android:textColor="@color/gg" android:layout_gravity="center|right" android:id="@id/npb" android:background="@drawable/f9e" android:layout_width="64.0dip" android:layout_height="32.0dip" android:layout_marginRight="12.0dip" android:text="@string/vyf" />
-    </FrameLayout>
-</FrameLayout>
+<RadioButton android:layout_gravity="center_vertical" android:id="@id/o22" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -38,11 +38,12 @@ public class ResultMetadataType
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass()))
+    {
+      paramObject = (ResultMetadataType)paramObject;
+      return this.type.equals(paramObject.type);
     }
-    paramObject = (ResultMetadataType)paramObject;
-    return this.type.equals(paramObject.type);
+    return false;
   }
   
   public int hashCode()
@@ -52,12 +53,17 @@ public class ResultMetadataType
   
   public String toString()
   {
-    return "ResultMetadataType{type='" + this.type + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ResultMetadataType{type='");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.ResultMetadataType
  * JD-Core Version:    0.7.0.1
  */

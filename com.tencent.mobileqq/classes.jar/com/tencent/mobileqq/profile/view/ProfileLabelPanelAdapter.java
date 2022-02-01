@@ -2,7 +2,6 @@ package com.tencent.mobileqq.profile.view;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v4.view.PagerAdapter;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.View;
@@ -10,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ToggleButton;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.mobileqq.emoticonview.PanelRecycleBin;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
 import com.tencent.mobileqq.profilecard.entity.ProfileLabelInfo;
@@ -42,7 +42,8 @@ public class ProfileLabelPanelAdapter
   protected GridView a()
   {
     GridView localGridView = new GridView(this.jdField_a_of_type_AndroidContentContext);
-    localGridView.setPadding((int)(this.jdField_a_of_type_Float * 10.0F), 0, (int)(this.jdField_a_of_type_Float * 10.0F), 0);
+    float f = this.jdField_a_of_type_Float;
+    localGridView.setPadding((int)(f * 10.0F), 0, (int)(f * 10.0F), 0);
     localGridView.setNumColumns(4);
     localGridView.setHorizontalSpacing((int)(this.jdField_a_of_type_Float * 4.0F));
     localGridView.setVerticalSpacing((int)(this.jdField_a_of_type_Float * 4.0F));
@@ -111,26 +112,23 @@ public class ProfileLabelPanelAdapter
     ToggleButton localToggleButton = (ToggleButton)paramView;
     localToggleButton.toggle();
     ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)paramView.getTag();
-    ProfileLabelCallBack localProfileLabelCallBack;
     if (localProfileLabelInfo != null)
     {
-      localProfileLabelCallBack = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelCallBack;
-      if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
-        break label64;
+      ProfileLabelCallBack localProfileLabelCallBack = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelCallBack;
+      boolean bool;
+      if (localProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
+        bool = false;
+      } else {
+        bool = true;
       }
-    }
-    label64:
-    for (boolean bool = false;; bool = true)
-    {
       localProfileLabelCallBack.a(localProfileLabelInfo, localToggleButton, Boolean.valueOf(bool));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

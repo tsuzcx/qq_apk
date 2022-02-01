@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.Window;
 import androidx.fragment.app.FragmentActivity;
 import com.tencent.falco.base.libapi.log.LogInterface;
@@ -25,6 +24,7 @@ import com.tencent.ilive.interfaces.RoomPageActionInterface;
 import com.tencent.ilive.pages.room.events.FirstFrameEvent;
 import com.tencent.ilivesdk.roomswitchservice_interface.SwitchRoomInfo;
 import com.tencent.ilivesdk.roomswitchservice_interface.VideoType;
+import com.tencent.livesdk.liveengine.FloatRoomManager;
 import com.tencent.livesdk.liveengine.LiveEngine;
 import com.tencent.livesdk.roomengine.RoomEngine;
 
@@ -35,11 +35,12 @@ public class AudienceRoomViewPager
   private AudienceMultiRoomPageLogic audienceRoomPageLogic;
   private long curRoomID = -1L;
   private String curVid = "";
-  protected LiveTemplateFragment currentFragment;
+  protected AudienceRoomFragment currentFragment;
   private boolean hasFirstRequestList = false;
   private boolean haveSlide = false;
   private boolean isFragmentChange = false;
   private boolean isLandScape = false;
+  private boolean isNewIntent = false;
   private LogInterface logInterface;
   private FragmentActivity mActivity;
   private AudienceRoomPagerImpl mAudienceRoomPager;
@@ -67,17 +68,28 @@ public class AudienceRoomViewPager
   
   private void firstQueryAndUpdateRoomList()
   {
-    if ((!this.hasFirstRequestList) && (this.switchRoomAdapter != null))
+    if (!this.hasFirstRequestList)
     {
-      this.switchRoomAdapter.queryAndUpdateRoomListFromServer(this.scrollDirection, 0);
-      this.hasFirstRequestList = true;
+      SwitchRoomAdapter localSwitchRoomAdapter = this.switchRoomAdapter;
+      if (localSwitchRoomAdapter != null)
+      {
+        localSwitchRoomAdapter.queryAndUpdateRoomListFromServer(this.scrollDirection, 0);
+        this.hasFirstRequestList = true;
+      }
     }
   }
   
   private void notifyReachTopOrBottom(int paramInt)
   {
-    if (this.logInterface != null) {
-      this.logInterface.i("AudienceRoomViewPager", "notifyReachTopOrBottom direction = " + paramInt + " haveSlide = " + this.haveSlide, new Object[0]);
+    LogInterface localLogInterface = this.logInterface;
+    if (localLogInterface != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyReachTopOrBottom direction = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" haveSlide = ");
+      localStringBuilder.append(this.haveSlide);
+      localLogInterface.i("AudienceRoomViewPager", localStringBuilder.toString(), new Object[0]);
     }
     if ((this.mRoomPageActionInterface != null) && (System.currentTimeMillis() - this.meetTopAndBottomTime > 2000L) && (this.haveSlide))
     {
@@ -88,41 +100,53 @@ public class AudienceRoomViewPager
   
   private void onFragmentCreateFinish()
   {
-    if (this.logInterface != null) {
-      this.logInterface.i("AudienceTime", "activity--onFragmentCreateFinish--mLastIndex=" + this.mLastIndex, new Object[0]);
+    Object localObject = this.logInterface;
+    if (localObject != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("activity--onFragmentCreateFinish--mLastIndex=");
+      localStringBuilder.append(this.mLastIndex);
+      ((LogInterface)localObject).i("AudienceTime", localStringBuilder.toString(), new Object[0]);
     }
     if ((this.mLastIndex == 0) && (!this.hasFirstRequestList))
     {
       this.currentFragment.getBootBizModules().getModuleEvent().observe(FirstFrameEvent.class, new AudienceRoomViewPager.4(this));
       ThreadCenter.postDefaultUITask(this.queryRoomListRunnable, 2000L);
     }
-    for (;;)
+    else
     {
-      if (this.audienceRoomPageLogic != null)
-      {
-        if (this.isFragmentChange) {
-          break;
-        }
-        this.audienceRoomPageLogic.onCreate();
-        this.isFragmentChange = true;
+      localObject = this.logInterface;
+      if (localObject != null) {
+        ((LogInterface)localObject).i("AudienceTime", "activity--switch--room--start query switch list", new Object[0]);
       }
-      return;
-      if (this.logInterface != null) {
-        this.logInterface.i("AudienceTime", "activity--switch--room--start query switch list", new Object[0]);
-      }
-      if (this.switchRoomAdapter != null) {
-        this.switchRoomAdapter.queryAndUpdateRoomListFromServer(this.scrollDirection, this.mLastIndex);
+      localObject = this.switchRoomAdapter;
+      if (localObject != null) {
+        ((SwitchRoomAdapter)localObject).queryAndUpdateRoomListFromServer(this.scrollDirection, this.mLastIndex);
       }
     }
-    this.audienceRoomPageLogic.onSwitchFragment();
+    localObject = this.audienceRoomPageLogic;
+    if (localObject != null)
+    {
+      if (!this.isFragmentChange)
+      {
+        ((AudienceMultiRoomPageLogic)localObject).onCreate();
+        this.isFragmentChange = true;
+        return;
+      }
+      ((AudienceMultiRoomPageLogic)localObject).onSwitchFragment();
+    }
   }
   
   private void setLandScape(boolean paramBoolean)
   {
-    Log.i("AudienceRoomViewPager", "--setLandScape--isLandScape=" + paramBoolean);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("--setLandScape--isLandScape=");
+    ((StringBuilder)localObject).append(paramBoolean);
+    Log.i("AudienceRoomViewPager", ((StringBuilder)localObject).toString());
     setScrollForbidden(paramBoolean);
-    if (this.audienceRoomPageLogic != null) {
-      this.audienceRoomPageLogic.onLandscape(paramBoolean);
+    localObject = this.audienceRoomPageLogic;
+    if (localObject != null) {
+      ((AudienceMultiRoomPageLogic)localObject).onLandscape(paramBoolean);
     }
   }
   
@@ -165,66 +189,73 @@ public class AudienceRoomViewPager
   
   public void onBackPressed()
   {
-    if (this.currentFragment != null) {
-      this.currentFragment.onBackPressed();
+    Object localObject = this.currentFragment;
+    if (localObject != null) {
+      ((AudienceRoomFragment)localObject).onBackPressed();
     }
-    if (this.audienceRoomPageLogic != null) {
-      this.audienceRoomPageLogic.onBackPressed();
+    localObject = this.audienceRoomPageLogic;
+    if (localObject != null) {
+      ((AudienceMultiRoomPageLogic)localObject).onBackPressed();
     }
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    if (this.logInterface != null) {
-      this.logInterface.i("AudienceRoomViewPager", "onConfigurationChanged--orientation=" + paramConfiguration.orientation, new Object[0]);
+    Object localObject = this.logInterface;
+    if (localObject != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onConfigurationChanged--orientation=");
+      localStringBuilder.append(paramConfiguration.orientation);
+      ((LogInterface)localObject).i("AudienceRoomViewPager", localStringBuilder.toString(), new Object[0]);
     }
     if (paramConfiguration.orientation == 2)
     {
       Log.i("AudienceRoomViewPager", "going to landscape");
       this.isLandScape = true;
     }
-    AudienceBaseBootModules localAudienceBaseBootModules;
-    do
+    else if (paramConfiguration.orientation == 1)
     {
-      while (this.currentFragment == null)
-      {
-        return;
-        if (paramConfiguration.orientation == 1)
-        {
-          Log.i("AudienceRoomViewPager", "going to portrait");
-          this.isLandScape = false;
-          UIUtil.setFullscreen(this.mActivity, true, true);
-        }
-      }
-      localAudienceBaseBootModules = (AudienceBaseBootModules)this.currentFragment.getBootBizModules();
-      if (localAudienceBaseBootModules != null)
-      {
-        localAudienceBaseBootModules.onSwitchScreen(this.isLandScape);
-        localAudienceBaseBootModules.clearEvent();
-      }
-      setLandScape(this.isLandScape);
-      super.onConfigurationChanged(paramConfiguration);
-    } while (localAudienceBaseBootModules == null);
-    localAudienceBaseBootModules.onCreateNormalBizModules(this.isLandScape);
+      Log.i("AudienceRoomViewPager", "going to portrait");
+      this.isLandScape = false;
+      UIUtil.setFullscreen(this.mActivity, true, true);
+    }
+    localObject = this.currentFragment;
+    if (localObject == null) {
+      return;
+    }
+    localObject = (AudienceBaseBootModules)((AudienceRoomFragment)localObject).getBootBizModules();
+    if (localObject != null)
+    {
+      ((AudienceBaseBootModules)localObject).onSwitchScreen(this.isLandScape);
+      ((AudienceBaseBootModules)localObject).clearEvent();
+    }
+    setLandScape(this.isLandScape);
+    super.onConfigurationChanged(paramConfiguration);
+    if (localObject != null) {
+      ((AudienceBaseBootModules)localObject).onCreateNormalBizModules(this.isLandScape);
+    }
   }
   
   public void onCreate()
   {
+    BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().f();
     this.mAudienceRoomPager = new AudienceRoomPagerImpl(this);
     this.mActivity.getWindow().addFlags(128);
     this.logInterface = ((LogInterface)BizEngineMgr.getInstance().getLiveEngine().getService(LogInterface.class));
     this.switchRoomAdapter = new SwitchRoomAdapter(this.mActivity.getSupportFragmentManager(), getIntent(), this.mAudienceRoomPager);
     this.currentFragment = this.switchRoomAdapter.getCurrentFragment();
     this.currentFragment.setPageListener(this.mPageListener);
-    RoomEngine localRoomEngine = ((AudienceRoomFragment)this.currentFragment).getRoomEngine();
-    BizEngineMgr.getInstance().setCurrentRoomEngine(localRoomEngine);
+    Object localObject = this.currentFragment.getRoomEngine();
+    BizEngineMgr.getInstance().setCurrentRoomEngine((RoomEngine)localObject);
     this.audienceRoomPageLogic = new AudienceMultiRoomPageLogic(getContext(), this.mAudienceRoomPager, this.mRoomPageActionInterface);
-    this.audienceRoomPageLogic.setRoomEngine(localRoomEngine);
+    this.audienceRoomPageLogic.setRoomEngine((RoomEngine)localObject);
     this.audienceRoomPageLogic.initAction();
     setOffscreenPageLimit(1);
     setAdapter(this.switchRoomAdapter);
-    if (this.mIntent != null) {
-      this.curRoomID = this.mIntent.getLongExtra("roomid", -1L);
+    localObject = this.mIntent;
+    if (localObject != null) {
+      this.curRoomID = ((Intent)localObject).getLongExtra("roomid", -1L);
     }
     setOnPageChangeListener(new AudienceRoomViewPager.3(this));
   }
@@ -232,161 +263,204 @@ public class AudienceRoomViewPager
   public void onDestroy()
   {
     ThreadCenter.removeDefaultUITask(this.queryRoomListRunnable);
-    if (this.audienceRoomPageLogic != null) {
-      this.audienceRoomPageLogic.onDestroy();
+    Object localObject = this.audienceRoomPageLogic;
+    if (localObject != null) {
+      ((AudienceMultiRoomPageLogic)localObject).onDestroy();
     }
-    if (this.switchRoomAdapter != null) {
-      this.switchRoomAdapter.onDestroy();
+    localObject = this.switchRoomAdapter;
+    if (localObject != null) {
+      ((SwitchRoomAdapter)localObject).onDestroy();
     }
-    if (this.mAudienceRoomPager != null) {
-      this.mAudienceRoomPager.onDestroy();
+    localObject = this.mAudienceRoomPager;
+    if (localObject != null) {
+      ((AudienceRoomPagerImpl)localObject).onDestroy();
     }
   }
   
   public void onDestroyViewPager()
   {
-    if (this.switchRoomAdapter != null) {
-      this.switchRoomAdapter.onDestroyViewPagerList();
+    SwitchRoomAdapter localSwitchRoomAdapter = this.switchRoomAdapter;
+    if (localSwitchRoomAdapter != null) {
+      localSwitchRoomAdapter.onDestroyViewPagerList();
     }
   }
   
   public void onExtActive()
   {
-    if ((this.currentFragment != null) && (this.currentFragment.getBootBizModules() != null)) {
+    AudienceRoomFragment localAudienceRoomFragment = this.currentFragment;
+    if ((localAudienceRoomFragment != null) && (localAudienceRoomFragment.getBootBizModules() != null)) {
       this.currentFragment.getBootBizModules().onExtActive();
     }
   }
   
   public void onExtDeActive()
   {
-    if ((this.currentFragment != null) && (this.currentFragment.getBootBizModules() != null)) {
+    AudienceRoomFragment localAudienceRoomFragment = this.currentFragment;
+    if ((localAudienceRoomFragment != null) && (localAudienceRoomFragment.getBootBizModules() != null)) {
       this.currentFragment.getBootBizModules().onExtDeActive();
     }
   }
   
-  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public void onExtOnStart()
   {
-    if (this.scrollForbidden) {
-      return false;
+    AudienceRoomFragment localAudienceRoomFragment = this.currentFragment;
+    if ((localAudienceRoomFragment != null) && (localAudienceRoomFragment.getBootBizModules() != null)) {
+      this.currentFragment.getBootBizModules().onExtOnStart();
     }
-    try
-    {
-      boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-      return bool;
+  }
+  
+  public void onExtOnStop()
+  {
+    AudienceRoomFragment localAudienceRoomFragment = this.currentFragment;
+    if ((localAudienceRoomFragment != null) && (localAudienceRoomFragment.getBootBizModules() != null)) {
+      this.currentFragment.getBootBizModules().onExtOnStop();
     }
-    catch (IllegalArgumentException paramMotionEvent)
-    {
-      paramMotionEvent.printStackTrace();
-    }
-    return false;
   }
   
   public void onNewIntent(Intent paramIntent)
   {
+    this.isNewIntent = true;
+    this.scrollDirection = 0;
     long l = paramIntent.getLongExtra("roomid", -1L);
-    Object localObject = paramIntent.getStringExtra("video_id");
+    Object localObject1 = paramIntent.getStringExtra("video_id");
     int i = paramIntent.getIntExtra("video_format", 1);
-    Log.i("AudienceRoomViewPager", "onNewIntent--newRoomId=" + l + ";curRoomID=" + this.curRoomID);
-    if (i == 3) {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(this.curVid))) {
-        break label109;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("onNewIntent--newRoomId=");
+    ((StringBuilder)localObject2).append(l);
+    ((StringBuilder)localObject2).append(";curRoomID=");
+    ((StringBuilder)localObject2).append(this.curRoomID);
+    Log.i("AudienceRoomViewPager", ((StringBuilder)localObject2).toString());
+    if (i == 3)
+    {
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(this.curVid))) {}
+    }
+    else
+    {
+      if (l <= 0L) {
+        return;
+      }
+      if (l == this.curRoomID) {
+        return;
       }
     }
-    label109:
-    do
+    if (this.switchRoomAdapter == null)
     {
-      do
-      {
-        return;
-      } while ((l <= 0L) || (l == this.curRoomID));
-      if (this.switchRoomAdapter != null) {
-        break;
+      paramIntent = this.logInterface;
+      if (paramIntent != null) {
+        paramIntent.e("AudienceRoomViewPager", "onNewIntent--switchRoomAdapter is null", new Object[0]);
       }
-    } while (this.logInterface == null);
-    this.logInterface.e("AudienceRoomViewPager", "onNewIntent--switchRoomAdapter is null", new Object[0]);
-    return;
-    this.curRoomID = l;
-    this.curVid = ((String)localObject);
-    SwitchRoomInfo localSwitchRoomInfo = new SwitchRoomInfo();
-    localSwitchRoomInfo.roomId = paramIntent.getLongExtra("roomid", 0L);
-    localSwitchRoomInfo.videoUrl = paramIntent.getStringExtra("video_url");
-    localSwitchRoomInfo.extData = paramIntent.getBundleExtra("biz_ext_data");
-    localSwitchRoomInfo.videoLevel = paramIntent.getIntExtra("video_level", -1);
-    localSwitchRoomInfo.videoIsOrigin = paramIntent.getBooleanExtra("video_is_origin", false);
-    if (i == 3) {}
-    for (localObject = VideoType.VIDEO;; localObject = VideoType.LIVE)
-    {
-      localSwitchRoomInfo.videoType = ((VideoType)localObject);
-      localSwitchRoomInfo.videoId = paramIntent.getStringExtra("video_id");
-      this.currentFragment = this.switchRoomAdapter.openNewRoom(localSwitchRoomInfo);
-      this.audienceRoomPageLogic.onSwitchRoomBefore(localSwitchRoomInfo, (AudienceRoomFragment)this.currentFragment);
-      paramIntent = ((AudienceRoomFragment)this.currentFragment).getRoomEngine();
-      BizEngineMgr.getInstance().setCurrentRoomEngine(paramIntent);
-      this.audienceRoomPageLogic.setRoomEngine(paramIntent);
-      this.audienceRoomPageLogic.onSwitchRoomAfter(localSwitchRoomInfo);
-      this.mPageListener.onFragmentCreated();
       return;
     }
+    this.curRoomID = l;
+    this.curVid = ((String)localObject1);
+    localObject2 = new SwitchRoomInfo();
+    ((SwitchRoomInfo)localObject2).roomId = paramIntent.getLongExtra("roomid", 0L);
+    ((SwitchRoomInfo)localObject2).videoUrl = paramIntent.getStringExtra("video_url");
+    ((SwitchRoomInfo)localObject2).extData = paramIntent.getBundleExtra("biz_ext_data");
+    ((SwitchRoomInfo)localObject2).videoLevel = paramIntent.getIntExtra("video_level", -1);
+    ((SwitchRoomInfo)localObject2).videoIsOrigin = paramIntent.getBooleanExtra("video_is_origin", false);
+    if (i == 3) {
+      localObject1 = VideoType.VIDEO;
+    } else {
+      localObject1 = VideoType.LIVE;
+    }
+    ((SwitchRoomInfo)localObject2).videoType = ((VideoType)localObject1);
+    ((SwitchRoomInfo)localObject2).videoId = paramIntent.getStringExtra("video_id");
+    this.currentFragment = this.switchRoomAdapter.openNewRoom((SwitchRoomInfo)localObject2);
+    this.audienceRoomPageLogic.onSwitchRoomBefore((SwitchRoomInfo)localObject2, this.currentFragment);
+    this.audienceRoomPageLogic.exitRoom();
+    paramIntent = this.currentFragment.getRoomEngine();
+    BizEngineMgr.getInstance().setCurrentRoomEngine(paramIntent);
+    this.audienceRoomPageLogic.setRoomEngine(paramIntent);
+    this.audienceRoomPageLogic.onSwitchRoomAfter((SwitchRoomInfo)localObject2);
+    this.mPageListener.onFragmentCreated();
+    this.isNewIntent = false;
   }
   
-  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  protected void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
-    if (this.logInterface != null) {
-      this.logInterface.i("brucelxhu", "onOverScrolled onOverScrolled scrollX = " + paramInt1 + " scrollY = " + paramInt2 + " clampedX = " + paramBoolean1 + " clampedY = " + paramBoolean2, new Object[0]);
+    LogInterface localLogInterface = this.logInterface;
+    if (localLogInterface != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onOverScrolled onOverScrolled scrollX = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" scrollY = ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" clampedX = ");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(" clampedY = ");
+      localStringBuilder.append(paramBoolean2);
+      localLogInterface.i("brucelxhu", localStringBuilder.toString(), new Object[0]);
     }
-    if ((paramBoolean2) && (paramInt2 > 0)) {}
   }
   
   public void onPause()
   {
-    if (this.audienceRoomPageLogic != null) {
-      this.audienceRoomPageLogic.onPause();
+    AudienceMultiRoomPageLogic localAudienceMultiRoomPageLogic = this.audienceRoomPageLogic;
+    if (localAudienceMultiRoomPageLogic != null) {
+      localAudienceMultiRoomPageLogic.onPause();
     }
   }
   
   public void onResume()
   {
-    if (this.audienceRoomPageLogic != null) {
-      this.audienceRoomPageLogic.onResume();
+    AudienceMultiRoomPageLogic localAudienceMultiRoomPageLogic = this.audienceRoomPageLogic;
+    if (localAudienceMultiRoomPageLogic != null) {
+      localAudienceMultiRoomPageLogic.onResume();
     }
   }
   
   public void onStart()
   {
-    if (this.audienceRoomPageLogic != null) {
-      this.audienceRoomPageLogic.onStart();
+    AudienceMultiRoomPageLogic localAudienceMultiRoomPageLogic = this.audienceRoomPageLogic;
+    if (localAudienceMultiRoomPageLogic != null) {
+      localAudienceMultiRoomPageLogic.onStart();
     }
   }
   
   public void onStop()
   {
-    if (this.audienceRoomPageLogic != null) {
-      this.audienceRoomPageLogic.onStop();
+    AudienceMultiRoomPageLogic localAudienceMultiRoomPageLogic = this.audienceRoomPageLogic;
+    if (localAudienceMultiRoomPageLogic != null) {
+      localAudienceMultiRoomPageLogic.onStop();
     }
   }
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  public void populate(int paramInt)
   {
-    if (this.scrollForbidden) {
-      return false;
-    }
     try
     {
-      boolean bool = super.onTouchEvent(paramMotionEvent);
-      return bool;
+      super.populate(paramInt);
+      return;
     }
-    catch (IllegalArgumentException paramMotionEvent)
+    catch (Exception localException)
     {
-      paramMotionEvent.printStackTrace();
+      LogInterface localLogInterface = this.logInterface;
+      if (localLogInterface != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("populate ex = ");
+        localStringBuilder.append(localException);
+        localLogInterface.i("AudienceRoomViewPager", localStringBuilder.toString(), new Object[0]);
+      }
+      FragmentActivity localFragmentActivity = this.mActivity;
+      if (localFragmentActivity != null) {
+        localFragmentActivity.finish();
+      }
     }
-    return false;
   }
   
   public void setCurrentItem(int paramInt)
   {
-    if (this.logInterface != null) {
-      this.logInterface.i("AudienceRoomViewPager", "setCurrentItem scrollForbidden = " + this.scrollForbidden, new Object[0]);
+    LogInterface localLogInterface = this.logInterface;
+    if (localLogInterface != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setCurrentItem scrollForbidden = ");
+      localStringBuilder.append(this.scrollForbidden);
+      localLogInterface.i("AudienceRoomViewPager", localStringBuilder.toString(), new Object[0]);
     }
     if (this.scrollForbidden) {
       return;
@@ -401,7 +475,7 @@ public class AudienceRoomViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.AudienceRoomViewPager
  * JD-Core Version:    0.7.0.1
  */

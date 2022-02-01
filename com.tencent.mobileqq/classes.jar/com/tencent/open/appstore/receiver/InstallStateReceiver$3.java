@@ -11,22 +11,28 @@ class InstallStateReceiver$3
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentIntent.hasExtra("android.intent.extra.REPLACING")) {}
-    for (boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("android.intent.extra.REPLACING", false);; bool = false)
-    {
-      LogUtility.c("InstallStateReceiver", "[onReceive] ACTION_PACKAGE_ADDED >> " + this.jdField_a_of_type_JavaLangString + ",isReplacing:" + bool);
-      if (bool) {
-        return;
-      }
-      AppCenterReporter.a(this.b, false);
-      InstallStateReceiver.a(this.this$0, this.b, 1);
+    boolean bool;
+    if (this.jdField_a_of_type_AndroidContentIntent.hasExtra("android.intent.extra.REPLACING")) {
+      bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("android.intent.extra.REPLACING", false);
+    } else {
+      bool = false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onReceive] ACTION_PACKAGE_ADDED >> ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",isReplacing:");
+    localStringBuilder.append(bool);
+    LogUtility.c("InstallStateReceiver", localStringBuilder.toString());
+    if (bool) {
       return;
     }
+    AppCenterReporter.a(this.b, false);
+    InstallStateReceiver.a(this.this$0, this.b, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.receiver.InstallStateReceiver.3
  * JD-Core Version:    0.7.0.1
  */

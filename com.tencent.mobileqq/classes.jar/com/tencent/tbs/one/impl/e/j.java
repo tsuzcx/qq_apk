@@ -33,7 +33,7 @@ public final class j
     this.d.clear();
   }
   
-  public final void a()
+  protected final void a()
   {
     com.tencent.tbs.one.impl.a.f.a("[%s] Requesting the latest DEPS", new Object[] { this.b.b });
     i locali = this.b;
@@ -67,7 +67,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.j
  * JD-Core Version:    0.7.0.1
  */

@@ -38,18 +38,20 @@ public final class share_attr
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.shares_attr != null) {
-      paramJceOutputStream.write(this.shares_attr, 0);
+    Object localObject = this.shares_attr;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
-    if (this.source != null) {
-      paramJceOutputStream.write(this.source, 1);
+    localObject = this.source;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.owner, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     photo_share_struct.share_attr
  * JD-Core Version:    0.7.0.1
  */

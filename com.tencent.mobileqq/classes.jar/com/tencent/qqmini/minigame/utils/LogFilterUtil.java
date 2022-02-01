@@ -132,17 +132,21 @@ public class LogFilterUtil
     if (mLogBlackList == null)
     {
       mLogBlackList = new HashMap(DEFAULT_BLACK_LIST);
-      Object localObject = WnsConfig.getConfig("qqtriton", "MiniGameAPILogBlackList");
-      GameLog.getInstance().i("LogFilterUtil", "wns config black list: " + (String)localObject);
-      localObject = parseConfigString2Set((String)localObject);
-      if (localObject != null)
+      Object localObject1 = WnsConfig.getConfig("qqtriton", "MiniGameAPILogBlackList");
+      Object localObject2 = GameLog.getInstance();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("wns config black list: ");
+      localStringBuilder.append((String)localObject1);
+      ((GameLog)localObject2).i("LogFilterUtil", localStringBuilder.toString());
+      localObject1 = parseConfigString2Set((String)localObject1);
+      if (localObject1 != null)
       {
-        localObject = ((Set)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
+        localObject1 = ((Set)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          String str = (String)((Iterator)localObject).next();
-          if (!TextUtils.isEmpty(str)) {
-            mLogBlackList.put(str, null);
+          localObject2 = (String)((Iterator)localObject1).next();
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            mLogBlackList.put(localObject2, null);
           }
         }
       }
@@ -155,17 +159,21 @@ public class LogFilterUtil
     if (mLogWhiteList == null)
     {
       mLogWhiteList = new HashMap(DEFAULT_WHITE_LIST);
-      Object localObject = WnsConfig.getConfig("qqtriton", "MiniGameAPILogWhiteList");
-      GameLog.getInstance().i("LogFilterUtil", "wns config white list: " + (String)localObject);
-      localObject = parseConfigString2Set((String)localObject);
-      if (localObject != null)
+      Object localObject1 = WnsConfig.getConfig("qqtriton", "MiniGameAPILogWhiteList");
+      Object localObject2 = GameLog.getInstance();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("wns config white list: ");
+      localStringBuilder.append((String)localObject1);
+      ((GameLog)localObject2).i("LogFilterUtil", localStringBuilder.toString());
+      localObject1 = parseConfigString2Set((String)localObject1);
+      if (localObject1 != null)
       {
-        localObject = ((Set)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
+        localObject1 = ((Set)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          String str = (String)((Iterator)localObject).next();
-          if (!TextUtils.isEmpty(str)) {
-            mLogWhiteList.put(str, null);
+          localObject2 = (String)((Iterator)localObject1).next();
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            mLogWhiteList.put(localObject2, null);
           }
         }
       }
@@ -176,40 +184,29 @@ public class LogFilterUtil
   private static Set<String> parseConfigString2Set(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return null;
     }
-    HashSet localHashSet;
-    String[] arrayOfString;
-    do
+    HashSet localHashSet = new HashSet();
+    paramString = paramString.split(",");
+    if ((paramString != null) && (paramString.length > 0))
     {
-      do
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        return paramString;
-        localHashSet = new HashSet();
-        arrayOfString = paramString.split(",");
-        paramString = localHashSet;
-      } while (arrayOfString == null);
-      paramString = localHashSet;
-    } while (arrayOfString.length <= 0);
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      paramString = localHashSet;
-      if (i >= j) {
-        break;
+        String str = paramString[i].trim();
+        if (!TextUtils.isEmpty(str)) {
+          localHashSet.add(str);
+        }
+        i += 1;
       }
-      paramString = arrayOfString[i].trim();
-      if (!TextUtils.isEmpty(paramString)) {
-        localHashSet.add(paramString);
-      }
-      i += 1;
     }
+    return localHashSet;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.utils.LogFilterUtil
  * JD-Core Version:    0.7.0.1
  */

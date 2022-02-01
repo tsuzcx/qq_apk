@@ -6,10 +6,10 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
+import com.tencent.open.agent.util.AuthReporter;
 import com.tencent.open.settings.OpensdkPreference;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.MobileQQ;
 import org.json.JSONObject;
 
 public class EncryTokenActivity
@@ -33,33 +33,33 @@ public class EncryTokenActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    BaseApplicationImpl.getApplication().addOtherTypeActivity(this);
+    MobileQQ.sMobileQQ.addOtherTypeActivity(this);
     super.onCreate(paramBundle);
-    str = "";
     try
     {
-      localObject = super.getIntent();
-      paramBundle = str;
-      if (localObject != null) {
-        paramBundle = ((Intent)localObject).getStringExtra("key_action");
+      paramBundle = super.getIntent();
+      if (paramBundle != null) {
+        paramBundle = paramBundle.getStringExtra("key_action");
       }
     }
     catch (Exception paramBundle)
     {
-      for (;;)
-      {
-        Object localObject;
-        paramBundle = str;
-      }
+      label31:
+      Object localObject;
+      break label31;
     }
-    ForwardStatisticsReporter.a(paramBundle, 0L);
+    paramBundle = "";
+    AuthReporter.a(paramBundle, 0L);
     if ("action_check_token".equals(paramBundle))
     {
       localObject = OpensdkPreference.a(this, "openid_encrytoken");
       try
       {
-        paramBundle = super.getIntent().getStringExtra("openid") + "";
-        str = super.getIntent().getStringExtra("access_token");
+        paramBundle = new StringBuilder();
+        paramBundle.append(super.getIntent().getStringExtra("openid"));
+        paramBundle.append("");
+        paramBundle = paramBundle.toString();
+        String str = super.getIntent().getStringExtra("access_token");
         localObject = ((SharedPreferences)localObject).getString(paramBundle, "");
         Intent localIntent = new Intent();
         JSONObject localJSONObject = new JSONObject();
@@ -86,12 +86,12 @@ public class EncryTokenActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    BaseApplicationImpl.getApplication().removeOtherTypeActivity(this);
+    MobileQQ.sMobileQQ.removeOtherTypeActivity(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.EncryTokenActivity
  * JD-Core Version:    0.7.0.1
  */

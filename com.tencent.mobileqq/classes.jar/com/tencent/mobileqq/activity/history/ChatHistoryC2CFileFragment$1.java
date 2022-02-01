@@ -11,17 +11,18 @@ class ChatHistoryC2CFileFragment$1
   
   public void run()
   {
-    if (this.a) {}
-    for (LinkedHashMap localLinkedHashMap = this.this$0.b();; localLinkedHashMap = this.this$0.a())
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryC2CFileFragment.1.1(this, localLinkedHashMap));
-      return;
+    LinkedHashMap localLinkedHashMap;
+    if (this.a) {
+      localLinkedHashMap = this.this$0.b();
+    } else {
+      localLinkedHashMap = this.this$0.a();
     }
+    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryC2CFileFragment.1.1(this, localLinkedHashMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -41,29 +41,37 @@ public class ConversationQbossBannerTitleEntranceCtrl
   
   private void c()
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    Object localObject;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      if (localObject != null) {
+        ((View)localObject).setVisibility(0);
       }
     }
-    do
+    else
     {
-      return;
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      if (localObject != null) {
+        ((View)localObject).setVisibility(8);
       }
-    } while (this.jdField_a_of_type_AndroidWidgetTextView == null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (localObject != null) {
+        ((TextView)localObject).setVisibility(8);
+      }
+    }
   }
   
   private void d()
   {
     QLog.d("ConversationQbossBannerTitleEntranceCtrl", 1, "hideAllEntrances");
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(8);
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setVisibility(8);
     }
   }
   
@@ -80,9 +88,9 @@ public class ConversationQbossBannerTitleEntranceCtrl
     this.jdField_a_of_type_Boolean = true;
     if (paramView != null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365368);
-      this.b = paramView.findViewById(2131374853);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365370));
+      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365232);
+      this.b = paramView.findViewById(2131374387);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365234));
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     }
     a(true);
@@ -90,22 +98,24 @@ public class ConversationQbossBannerTitleEntranceCtrl
   
   public void a(boolean paramBoolean)
   {
-    QLog.d("ConversationQbossBannerTitleEntranceCtrl", 1, "updateQQCircle " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateQQCircle ");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("ConversationQbossBannerTitleEntranceCtrl", 1, localStringBuilder.toString());
     if ((QzoneConfig.isQQCircleShowMessageEntrance(StudyModeManager.a())) && (QzoneConfig.isQQCircleShowLebaBySwitchButton(StudyModeManager.a())))
     {
       this.jdField_a_of_type_Int = 1;
       c();
     }
-    for (;;)
+    else
     {
-      if (QzoneConfig.isQQCircleShowMessageEntrance(StudyModeManager.a())) {
-        ThreadManager.getSubThreadHandler().post(new ConversationQbossBannerTitleEntranceCtrl.1(this));
-      }
-      b(paramBoolean);
-      return;
       this.jdField_a_of_type_Int = 0;
       c();
     }
+    if (QzoneConfig.isQQCircleShowMessageEntrance(StudyModeManager.a())) {
+      ThreadManager.getSubThreadHandler().post(new ConversationQbossBannerTitleEntranceCtrl.1(this));
+    }
+    b(paramBoolean);
   }
   
   public void b()
@@ -119,37 +129,43 @@ public class ConversationQbossBannerTitleEntranceCtrl
     if (this.jdField_a_of_type_Int != 1) {
       return;
     }
-    if (paramBoolean) {}
-    for (int i = 2;; i = 5)
-    {
-      ThreadManager.post(new ConversationQbossBannerTitleEntranceCtrl.2(this), i, null, false);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 2;
+    } else {
+      i = 5;
     }
+    ThreadManager.post(new ConversationQbossBannerTitleEntranceCtrl.2(this), i, null, false);
   }
   
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 500L) {
+    if (l - jdField_a_of_type_Long < 500L)
+    {
       jdField_a_of_type_Long = l;
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       jdField_a_of_type_Long = l;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("ConversationQbossBannerTitleEntranceCtrl", 4, "userClick time=" + System.currentTimeMillis());
+      Object localObject;
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("userClick time=");
+        ((StringBuilder)localObject).append(System.currentTimeMillis());
+        QLog.d("ConversationQbossBannerTitleEntranceCtrl", 4, ((StringBuilder)localObject).toString());
       }
       if (this.jdField_a_of_type_Int == 1)
       {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("key_enable_splash", "1");
-        localHashMap.put("key_jump_from", "4");
-        QCircleUtils.a().enterBySchemeAction(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), "openfolder", localHashMap);
+        localObject = new HashMap();
+        ((HashMap)localObject).put("key_enable_splash", "1");
+        ((HashMap)localObject).put("key_jump_from", "4");
+        QCircleUtils.a().enterBySchemeAction(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), "openfolder", (HashMap)localObject);
         ThreadManager.post(new ConversationQbossBannerTitleEntranceCtrl.3(this), 5, null, false);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onConfigChange()
@@ -160,7 +176,7 @@ public class ConversationQbossBannerTitleEntranceCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationQbossBannerTitleEntranceCtrl
  * JD-Core Version:    0.7.0.1
  */

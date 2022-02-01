@@ -13,9 +13,9 @@ public final class TroopGiftComboView$setPAGResource$1$1
   
   public void onAnimationEnd(@Nullable PAGView paramPAGView)
   {
-    TroopGiftComboView.a(this.a.this$0, TroopGiftComboView.PlayState.PLAYED);
-    if (TroopGiftComboView.b(this.a.this$0) == TroopGiftComboView.PlayState.PLAYED) {
-      TroopGiftComboView.b(this.a.this$0, TroopGiftComboView.PlayState.PLAYED);
+    TroopGiftComboView.a(this.a.this$0, TroopGiftPAGAnimationController.PlayState.PLAYED);
+    if (TroopGiftComboView.b(this.a.this$0) == TroopGiftPAGAnimationController.PlayState.PLAYED) {
+      TroopGiftComboView.b(this.a.this$0, TroopGiftPAGAnimationController.PlayState.PLAYED);
     }
   }
   
@@ -23,13 +23,13 @@ public final class TroopGiftComboView$setPAGResource$1$1
   
   public void onAnimationStart(@Nullable PAGView paramPAGView)
   {
-    TroopGiftComboView.a(this.a.this$0, TroopGiftComboView.PlayState.PLAYING);
-    TroopGiftComboView.b(this.a.this$0, TroopGiftComboView.PlayState.PLAYING);
+    TroopGiftComboView.a(this.a.this$0, TroopGiftPAGAnimationController.PlayState.PLAYING);
+    TroopGiftComboView.b(this.a.this$0, TroopGiftPAGAnimationController.PlayState.PLAYING);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftComboView.setPAGResource.1.1
  * JD-Core Version:    0.7.0.1
  */

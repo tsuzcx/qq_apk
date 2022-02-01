@@ -19,92 +19,103 @@ public class DownloadJSApi
 {
   public static int a(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail)
   {
-    LogUtility.a("DownloadJSApi", "doDownloadActionBySDK pParmas =" + paramBundle);
-    String str3 = paramBundle.getString(DownloadConstants.b);
-    String str4 = paramBundle.getString(DownloadConstants.j);
-    String str5 = paramBundle.getString(DownloadConstants.f);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doDownloadActionBySDK pParmas =");
+    ((StringBuilder)localObject).append(paramBundle);
+    LogUtility.a("DownloadJSApi", ((StringBuilder)localObject).toString());
+    String str2 = paramBundle.getString(DownloadConstants.b);
+    String str3 = paramBundle.getString(DownloadConstants.j);
+    String str4 = paramBundle.getString(DownloadConstants.f);
     int i = paramBundle.getInt(DownloadConstants.k);
-    String str6 = paramBundle.getString(DownloadConstants.i);
-    String str7 = paramBundle.getString(DownloadConstants.l);
+    String str5 = paramBundle.getString(DownloadConstants.i);
+    String str6 = paramBundle.getString(DownloadConstants.l);
     paramBundle.getString(DownloadConstants.m);
-    String str2 = paramBundle.getString(DownloadConstants.E);
-    int j = paramBundle.getInt(DownloadConstants.I);
-    String str1 = paramBundle.getString(DownloadConstants.J);
+    String str1 = paramBundle.getString(DownloadConstants.F);
+    int j = paramBundle.getInt(DownloadConstants.J);
+    localObject = paramBundle.getString(DownloadConstants.K);
     boolean bool1 = paramBundle.getBoolean(DownloadConstants.o);
-    boolean bool2 = paramBundle.getBoolean(DownloadConstants.y, true);
+    boolean bool2 = paramBundle.getBoolean(DownloadConstants.z, true);
     boolean bool3 = paramBundle.getBoolean(DownloadConstants.h, true);
-    boolean bool4 = paramBundle.getBoolean(DownloadConstants.x);
-    int k = paramBundle.getInt(DownloadConstants.D, 0);
-    boolean bool5 = paramBundle.getBoolean(DownloadConstants.K, false);
-    switch (i)
+    boolean bool4 = paramBundle.getBoolean(DownloadConstants.y);
+    int k = paramBundle.getInt(DownloadConstants.E, 0);
+    boolean bool5 = paramBundle.getBoolean(DownloadConstants.L, false);
+    if (i != 2)
     {
-    }
-    for (;;)
-    {
-      return 0;
-      paramString = new DownloadInfo(str3, str4.trim(), str5, str7, str6, null, paramString, bool2);
-      paramString.g = i;
-      if (bool2)
-      {
-        paramString.jdField_a_of_type_Boolean = bool3;
-        paramString.jdField_b_of_type_Boolean = bool4;
-      }
-      for (;;)
-      {
-        paramString.h = k;
-        paramString.n = str2;
-        paramString.i = j;
-        paramString.o = str1;
-        paramString.jdField_d_of_type_Boolean = bool5;
-        paramString.jdField_d_of_type_Int = 0;
-        paramString.jdField_b_of_type_Int = paramBundle.getInt(DownloadConstants.e);
-        LogUtility.c("DownloadJSApi", "doDownloadAction action == Downloader.ACTION_DOWNLOAD");
-        DownloadCenterImpl.a().a(paramString);
-        break;
-        paramString.jdField_a_of_type_Boolean = false;
-        paramString.jdField_b_of_type_Boolean = true;
-        paramString.jdField_a_of_type_Int = 2;
-      }
-      paramString = new DownloadInfo(str3, str4.trim(), str5, str7, str6, null, paramString, bool2);
-      paramString.g = i;
-      paramString.jdField_a_of_type_Boolean = bool3;
-      paramString.jdField_b_of_type_Boolean = bool4;
-      paramString.jdField_d_of_type_Int = 0;
-      paramString.jdField_b_of_type_Int = paramBundle.getInt(DownloadConstants.e);
-      paramString.o = str1;
-      if ((paramApkUpdateDetail != null) && (paramString.jdField_b_of_type_Int != paramApkUpdateDetail.versioncode) && (paramApkUpdateDetail.versioncode != 0)) {
-        paramString.jdField_b_of_type_Int = paramApkUpdateDetail.versioncode;
-      }
-      bool2 = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_QQ_Patch_Switch");
-      if (!bool1) {
-        DownloadCenterImpl.a().a(paramString);
-      }
-      for (;;)
-      {
-        LogUtility.c("DownloadJSApi", "doDownloadAction action == Downloader.ACTION_UPDATE " + bool1);
-        break;
-        if (bool2) {
-          DownloadCenterImpl.a().a(paramString, paramApkUpdateDetail);
-        } else {
-          DownloadCenterImpl.a().a(paramString);
+      if (i != 3) {
+        if (i != 5) {
+          if (i != 10) {
+            if (i != 12) {
+              if (i == 13) {}
+            }
+          }
         }
       }
-      DownloadCenterImpl.a().a(str3);
-      continue;
-      if (bool2)
+      for (;;)
       {
-        StaticAnalyz.a("305", str6, str3, str1);
-        DownloadCenterImpl.a().a(str3, str5);
-        continue;
-        DownloadCenterImpl.a().b(str3);
-        continue;
-        paramString = new DownloadInfo(str3, str4.trim(), str5, str7, str6, null, paramString, bool2);
+        return 0;
+        paramString = new DownloadInfo(str2, str3.trim(), str4, str6, str5, null, paramString, bool2);
         paramString.g = i;
         paramString.jdField_b_of_type_Int = paramBundle.getInt(DownloadConstants.e);
         paramString.jdField_b_of_type_Boolean = bool4;
         DownloadCenterImpl.a().a(paramString);
+        continue;
+        paramString = new DownloadInfo(str2, str3.trim(), str4, str6, str5, null, paramString, bool2);
+        paramString.g = i;
+        paramString.jdField_a_of_type_Boolean = bool3;
+        paramString.jdField_b_of_type_Boolean = bool4;
+        paramString.jdField_d_of_type_Int = 0;
+        paramString.jdField_b_of_type_Int = paramBundle.getInt(DownloadConstants.e);
+        paramString.o = ((String)localObject);
+        if ((paramApkUpdateDetail != null) && (paramString.jdField_b_of_type_Int != paramApkUpdateDetail.versioncode) && (paramApkUpdateDetail.versioncode != 0)) {
+          paramString.jdField_b_of_type_Int = paramApkUpdateDetail.versioncode;
+        }
+        bool2 = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_QQ_Patch_Switch");
+        if (!bool1) {
+          DownloadCenterImpl.a().a(paramString);
+        } else if (bool2) {
+          DownloadCenterImpl.a().a(paramString, paramApkUpdateDetail);
+        } else {
+          DownloadCenterImpl.a().a(paramString);
+        }
+        paramBundle = new StringBuilder();
+        paramBundle.append("doDownloadAction action == Downloader.ACTION_UPDATE ");
+        paramBundle.append(bool1);
+        LogUtility.c("DownloadJSApi", paramBundle.toString());
+        continue;
+        DownloadCenterImpl.a().b(str2);
+        continue;
+        if (bool2)
+        {
+          StaticAnalyz.a("305", str5, str2, (String)localObject);
+          DownloadCenterImpl.a().a(str2, str4);
+          continue;
+          DownloadCenterImpl.a().a(str2);
+        }
       }
     }
+    paramString = new DownloadInfo(str2, str3.trim(), str4, str6, str5, null, paramString, bool2);
+    paramString.g = i;
+    if (bool2)
+    {
+      paramString.jdField_a_of_type_Boolean = bool3;
+      paramString.jdField_b_of_type_Boolean = bool4;
+    }
+    else
+    {
+      paramString.jdField_a_of_type_Boolean = false;
+      paramString.jdField_b_of_type_Boolean = true;
+      paramString.jdField_a_of_type_Int = 2;
+    }
+    paramString.h = k;
+    paramString.n = str1;
+    paramString.i = j;
+    paramString.o = ((String)localObject);
+    paramString.jdField_d_of_type_Boolean = bool5;
+    paramString.jdField_d_of_type_Int = 0;
+    paramString.jdField_b_of_type_Int = paramBundle.getInt(DownloadConstants.e);
+    LogUtility.c("DownloadJSApi", "doDownloadAction action == Downloader.ACTION_DOWNLOAD");
+    DownloadCenterImpl.a().a(paramString);
+    return 0;
   }
   
   public static void a(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
@@ -119,7 +130,7 @@ public class DownloadJSApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.js.DownloadJSApi
  * JD-Core Version:    0.7.0.1
  */

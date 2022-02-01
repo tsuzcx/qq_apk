@@ -35,7 +35,10 @@ public class QZoneCheckSendGiftRequest
   
   public String getCmdString()
   {
-    return PRE_CMD + CMD;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(PRE_CMD);
+    localStringBuilder.append(CMD);
+    return localStringBuilder.toString();
   }
   
   public JceStruct getReq()
@@ -50,7 +53,7 @@ public class QZoneCheckSendGiftRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.gift.QZoneCheckSendGiftRequest
  * JD-Core Version:    0.7.0.1
  */

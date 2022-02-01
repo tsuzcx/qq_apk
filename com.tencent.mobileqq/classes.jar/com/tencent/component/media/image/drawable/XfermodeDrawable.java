@@ -21,11 +21,16 @@ public class XfermodeDrawable
   
   public XfermodeDrawable(Drawable paramDrawable, Xfermode paramXfermode)
   {
-    if (!support(paramDrawable)) {
-      throw new RuntimeException("No xfermode support for " + paramDrawable.getClass().getSimpleName());
+    if (support(paramDrawable))
+    {
+      this.mState = new XfermodeDrawable.XfermodeState(paramDrawable, this, paramXfermode);
+      setConstantState(this.mState);
+      return;
     }
-    this.mState = new XfermodeDrawable.XfermodeState(paramDrawable, this, paramXfermode);
-    setConstantState(this.mState);
+    paramXfermode = new StringBuilder();
+    paramXfermode.append("No xfermode support for ");
+    paramXfermode.append(paramDrawable.getClass().getSimpleName());
+    throw new RuntimeException(paramXfermode.toString());
   }
   
   private XfermodeDrawable(XfermodeDrawable.XfermodeState paramXfermodeState, Resources paramResources)
@@ -36,40 +41,37 @@ public class XfermodeDrawable
   
   public static Drawable create(Drawable paramDrawable, Xfermode paramXfermode)
   {
-    Object localObject = paramDrawable;
-    if (paramDrawable != null)
-    {
-      localObject = paramDrawable;
-      if (support(paramDrawable)) {
-        localObject = new XfermodeDrawable(paramDrawable, paramXfermode);
-      }
+    if ((paramDrawable != null) && (support(paramDrawable))) {
+      return new XfermodeDrawable(paramDrawable, paramXfermode);
     }
-    return localObject;
+    return paramDrawable;
   }
   
   private static Paint obtainPaint(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {}
-    do
-    {
-      do
-      {
-        return null;
-      } while ((paramDrawable instanceof XfermodeDrawable));
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return ((BitmapDrawable)paramDrawable).getPaint();
-      }
-      if ((paramDrawable instanceof NinePatchDrawable)) {
-        return ((NinePatchDrawable)paramDrawable).getPaint();
-      }
-      if ((paramDrawable instanceof ShapeDrawable)) {
-        return ((ShapeDrawable)paramDrawable).getPaint();
-      }
-      if ((paramDrawable instanceof ImageDrawable)) {
-        return ((ImageDrawable)paramDrawable).getPaint();
-      }
-    } while (!(paramDrawable instanceof DrawableContainer));
-    return obtainPaint(((DrawableContainer)paramDrawable).getDrawable());
+    Paint localPaint = null;
+    if (paramDrawable == null) {
+      return null;
+    }
+    if ((paramDrawable instanceof XfermodeDrawable)) {
+      return null;
+    }
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getPaint();
+    }
+    if ((paramDrawable instanceof NinePatchDrawable)) {
+      return ((NinePatchDrawable)paramDrawable).getPaint();
+    }
+    if ((paramDrawable instanceof ShapeDrawable)) {
+      return ((ShapeDrawable)paramDrawable).getPaint();
+    }
+    if ((paramDrawable instanceof ImageDrawable)) {
+      return ((ImageDrawable)paramDrawable).getPaint();
+    }
+    if ((paramDrawable instanceof DrawableContainer)) {
+      localPaint = obtainPaint(((DrawableContainer)paramDrawable).getDrawable());
+    }
+    return localPaint;
   }
   
   public static boolean support(Drawable paramDrawable)
@@ -98,7 +100,7 @@ public class XfermodeDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.XfermodeDrawable
  * JD-Core Version:    0.7.0.1
  */

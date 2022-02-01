@@ -99,44 +99,39 @@ public class QAPM
     if (paramString2 == null) {
       str = "";
     }
-    if (paramInt == ModeResource) {
+    if (paramInt == ModeResource)
+    {
       if ("RESOURCEMONITOR".equals(str)) {
         ResourceMonitor.getInstance().start();
+      } else {
+        ResourceMonitor.getInstance().start(paramString1, str);
       }
     }
-    for (;;)
+    else if (paramInt == ModeDropFrame)
     {
-      return true;
-      ResourceMonitor.getInstance().start(paramString1, str);
-      continue;
-      if (paramInt == ModeDropFrame)
-      {
-        if ("RESOURCEMONITOR".equals(str)) {
-          ResourceMonitor.getInstance().stop();
-        } else {
-          DropFrameMonitor.getInstance().beginDropFrameScene(paramString1);
-        }
-      }
-      else
-      {
-        userMode = paramInt;
-        a.a(paramInt, false);
+      if ("RESOURCEMONITOR".equals(str)) {
+        ResourceMonitor.getInstance().stop();
+      } else {
+        DropFrameMonitor.getInstance().beginDropFrameScene(paramString1);
       }
     }
+    else
+    {
+      userMode = paramInt;
+      a.a(paramInt, false);
+    }
+    return true;
   }
   
   public static boolean endScene(String paramString, int paramInt)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      str1 = str2;
-      if (paramString.equals("QAPM_APPLAUNCH")) {
-        str1 = "QAPM_APPLAUNCH_END";
-      }
+    String str;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals("QAPM_APPLAUNCH"))) {
+      str = "QAPM_APPLAUNCH_END";
+    } else {
+      str = "";
     }
-    return endScene(paramString, str1, paramInt);
+    return endScene(paramString, str, paramInt);
   }
   
   public static boolean endScene(String paramString1, @Nullable String paramString2, int paramInt)
@@ -169,101 +164,100 @@ public class QAPM
   public static QAPM setProperty(int paramInt, @Nullable Object paramObject)
   {
     if (paramObject != null) {
-      switch (paramInt)
-      {
-      case 106: 
-      case 107: 
-      case 108: 
-      default: 
-        Logger.INSTANCE.w(new String[] { "QAPM_QAPM", "set invalid property by object type, key = ", String.valueOf(paramInt), ", value = ", paramObject.toString() });
+      if (paramInt != 105) {
+        switch (paramInt)
+        {
+        default: 
+          Logger.INSTANCE.w(new String[] { "QAPM_QAPM", "set invalid property by object type, key = ", String.valueOf(paramInt), ", value = ", paramObject.toString() });
+          break;
+        case 117: 
+          try
+          {
+            com.tencent.qapmsdk.base.listener.ListenerManager.anrConfigListener = (IAnrConfigListener)paramObject;
+          }
+          catch (Throwable paramObject)
+          {
+            Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+          }
+        case 116: 
+          try
+          {
+            com.tencent.qapmsdk.base.listener.ListenerManager.looperListener = (ILooperListener)paramObject;
+          }
+          catch (Throwable paramObject)
+          {
+            Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+          }
+        case 115: 
+          try
+          {
+            com.tencent.qapmsdk.base.listener.ListenerManager.extraDataListener = (IExtraDataListener)paramObject;
+          }
+          catch (Throwable paramObject)
+          {
+            Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+          }
+        case 114: 
+          try
+          {
+            com.tencent.qapmsdk.base.listener.ListenerManager.resourceListener = (IResourceListener)paramObject;
+          }
+          catch (Throwable paramObject)
+          {
+            Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+          }
+        case 113: 
+          try
+          {
+            com.tencent.qapmsdk.base.listener.ListenerManager.dropFrameListener = (IDropFrameListener)paramObject;
+          }
+          catch (Throwable paramObject)
+          {
+            Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+          }
+        case 112: 
+          try
+          {
+            com.tencent.qapmsdk.base.listener.ListenerManager.webViewBreadCrumbListener = new WeakReference((IWebViewBreadCrumbListener)paramObject);
+          }
+          catch (Throwable paramObject)
+          {
+            Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+          }
+        case 111: 
+          try
+          {
+            com.tencent.qapmsdk.base.listener.ListenerManager.memoryCellingListener = (IMemoryCellingListener)paramObject;
+          }
+          catch (Throwable paramObject)
+          {
+            Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+          }
+        case 110: 
+          try
+          {
+            com.tencent.qapmsdk.base.listener.ListenerManager.inspectorListener = (IInspectorListener)paramObject;
+          }
+          catch (Throwable paramObject)
+          {
+            Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+          }
+        case 109: 
+          QAPMConfigureWizard.setApplication((Application)paramObject);
+          break;
+        }
+      } else {
+        try
+        {
+          Logger.INSTANCE.resetLogLevel(((Integer)paramObject).intValue());
+        }
+        catch (Throwable paramObject)
+        {
+          Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+        }
       }
     }
-    for (;;)
-    {
-      return apm;
-      QAPMConfigureWizard.setApplication((Application)paramObject);
-      continue;
-      try
-      {
-        Logger.INSTANCE.resetLogLevel(((Integer)paramObject).intValue());
-      }
-      catch (Throwable paramObject)
-      {
-        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
-      }
-      continue;
-      try
-      {
-        com.tencent.qapmsdk.base.listener.ListenerManager.inspectorListener = (IInspectorListener)paramObject;
-      }
-      catch (Throwable paramObject)
-      {
-        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
-      }
-      continue;
-      try
-      {
-        com.tencent.qapmsdk.base.listener.ListenerManager.memoryCellingListener = (IMemoryCellingListener)paramObject;
-      }
-      catch (Throwable paramObject)
-      {
-        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
-      }
-      continue;
-      try
-      {
-        com.tencent.qapmsdk.base.listener.ListenerManager.webViewBreadCrumbListener = new WeakReference((IWebViewBreadCrumbListener)paramObject);
-      }
-      catch (Throwable paramObject)
-      {
-        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
-      }
-      continue;
-      try
-      {
-        com.tencent.qapmsdk.base.listener.ListenerManager.dropFrameListener = (IDropFrameListener)paramObject;
-      }
-      catch (Throwable paramObject)
-      {
-        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
-      }
-      continue;
-      try
-      {
-        com.tencent.qapmsdk.base.listener.ListenerManager.resourceListener = (IResourceListener)paramObject;
-      }
-      catch (Throwable paramObject)
-      {
-        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
-      }
-      continue;
-      try
-      {
-        com.tencent.qapmsdk.base.listener.ListenerManager.looperListener = (ILooperListener)paramObject;
-      }
-      catch (Throwable paramObject)
-      {
-        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
-      }
-      continue;
-      try
-      {
-        com.tencent.qapmsdk.base.listener.ListenerManager.extraDataListener = (IExtraDataListener)paramObject;
-      }
-      catch (Throwable paramObject)
-      {
-        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
-      }
-      continue;
-      try
-      {
-        com.tencent.qapmsdk.base.listener.ListenerManager.anrConfigListener = (IAnrConfigListener)paramObject;
-      }
-      catch (Throwable paramObject)
-      {
-        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
-      }
-    }
+    return apm;
   }
   
   @NonNull
@@ -274,21 +268,17 @@ public class QAPM
       {
       default: 
         Logger.INSTANCE.w(new String[] { "QAPM_QAPM", "set invalid property by string type, key = ", String.valueOf(paramInt), ", value = ", paramString });
-      }
-    }
-    for (;;)
-    {
-      return apm;
-      QAPMConfigureWizard.setUuid(paramString);
-      continue;
-      if (QAPMConfigureWizard.setUin(paramString))
-      {
-        a.a(userMode, true);
-        continue;
-        QAPMConfigureWizard.setAPMHost(paramString);
-        continue;
+        break;
+      case 108: 
+        QAPMConfigureWizard.setDeviceId(paramString);
+        break;
+      case 107: 
         QAPMConfigureWizard.setAthenaHost(paramString);
-        continue;
+        break;
+      case 106: 
+        QAPMConfigureWizard.setAPMHost(paramString);
+        break;
+      case 105: 
         try
         {
           QAPMConfigureWizard.setLogLevel(Integer.parseInt(paramString));
@@ -297,31 +287,39 @@ public class QAPM
         {
           Logger.INSTANCE.exception("QAPM_QAPM", paramString);
         }
-        continue;
+      case 104: 
+        QAPMConfigureWizard.setUuid(paramString);
+        break;
+      case 103: 
+        QAPMConfigureWizard.setVersion(paramString);
+        break;
+      case 102: 
+        if (QAPMConfigureWizard.setUin(paramString)) {
+          a.a(userMode, true);
+        }
+        break;
+      case 101: 
         try
         {
           paramString = paramString.split("-");
-          if (paramString.length < 2) {
-            continue;
+          if (paramString.length >= 2)
+          {
+            QAPMConfigureWizard.setAppKey(paramString[0]);
+            QAPMConfigureWizard.setAppId(Integer.valueOf(paramString[1]).intValue());
           }
-          QAPMConfigureWizard.setAppKey(paramString[0]);
-          QAPMConfigureWizard.setAppId(Integer.valueOf(paramString[1]).intValue());
         }
         catch (Throwable paramString)
         {
           Logger.INSTANCE.exception("QAPM_QAPM", paramString);
         }
-        continue;
-        QAPMConfigureWizard.setVersion(paramString);
-        continue;
-        QAPMConfigureWizard.setDeviceId(paramString);
       }
     }
+    return apm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.QAPM
  * JD-Core Version:    0.7.0.1
  */

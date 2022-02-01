@@ -17,26 +17,28 @@ public final class DiskLruCache$Editor
   DiskLruCache$Editor(DiskLruCache paramDiskLruCache, DiskLruCache.Entry paramEntry)
   {
     this.entry = paramEntry;
-    if (paramEntry.readable) {}
-    for (paramDiskLruCache = null;; paramDiskLruCache = new boolean[paramDiskLruCache.valueCount])
-    {
-      this.written = paramDiskLruCache;
-      return;
+    if (paramEntry.readable) {
+      paramDiskLruCache = null;
+    } else {
+      paramDiskLruCache = new boolean[paramDiskLruCache.valueCount];
     }
+    this.written = paramDiskLruCache;
   }
   
   public void abort()
   {
     synchronized (this.this$0)
     {
-      if (this.done) {
-        throw new IllegalStateException();
+      if (!this.done)
+      {
+        if (this.entry.currentEditor == this) {
+          this.this$0.completeEdit(this, false);
+        }
+        this.done = true;
+        return;
       }
+      throw new IllegalStateException();
     }
-    if (this.entry.currentEditor == this) {
-      this.this$0.completeEdit(this, false);
-    }
-    this.done = true;
   }
   
   public void abortUnlessCommitted()
@@ -67,14 +69,16 @@ public final class DiskLruCache$Editor
   {
     synchronized (this.this$0)
     {
-      if (this.done) {
-        throw new IllegalStateException();
+      if (!this.done)
+      {
+        if (this.entry.currentEditor == this) {
+          this.this$0.completeEdit(this, true);
+        }
+        this.done = true;
+        return;
       }
+      throw new IllegalStateException();
     }
-    if (this.entry.currentEditor == this) {
-      this.this$0.completeEdit(this, true);
-    }
-    this.done = true;
   }
   
   void detach()
@@ -106,29 +110,32 @@ public final class DiskLruCache$Editor
   {
     synchronized (this.this$0)
     {
-      if (this.done) {
-        throw new IllegalStateException();
+      if (!this.done)
+      {
+        if (this.entry.currentEditor != this)
+        {
+          localObject1 = Okio.blackhole();
+          return localObject1;
+        }
+        if (!this.entry.readable) {
+          this.written[paramInt] = true;
+        }
+        localObject1 = this.entry.dirtyFiles[paramInt];
       }
-    }
-    if (this.entry.currentEditor != this)
-    {
-      localObject2 = Okio.blackhole();
-      return localObject2;
-    }
-    if (!this.entry.readable) {
-      this.written[paramInt] = true;
-    }
-    Object localObject2 = this.entry.dirtyFiles[paramInt];
-    try
-    {
-      localObject2 = this.this$0.fileSystem.sink((File)localObject2);
-      localObject2 = new DiskLruCache.Editor.1(this, (Sink)localObject2);
-      return localObject2;
-    }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      Sink localSink = Okio.blackhole();
-      return localSink;
+      try
+      {
+        localObject1 = this.this$0.fileSystem.sink((File)localObject1);
+        localObject1 = new DiskLruCache.Editor.1(this, (Sink)localObject1);
+        return localObject1;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        label88:
+        break label88;
+      }
+      Object localObject1 = Okio.blackhole();
+      return localObject1;
+      throw new IllegalStateException();
     }
   }
   
@@ -136,25 +143,33 @@ public final class DiskLruCache$Editor
   {
     synchronized (this.this$0)
     {
-      if (this.done) {
-        throw new IllegalStateException();
+      Object localObject1;
+      if (!this.done) {
+        if (this.entry.readable)
+        {
+          localObject1 = this.entry.currentEditor;
+          if (localObject1 != this) {}
+        }
       }
-    }
-    if ((!this.entry.readable) || (this.entry.currentEditor != this)) {
+      try
+      {
+        localObject1 = this.this$0.fileSystem.source(this.entry.cleanFiles[paramInt]);
+        return localObject1;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        label66:
+        break label66;
+      }
       return null;
+      return null;
+      throw new IllegalStateException();
     }
-    try
-    {
-      Source localSource = this.this$0.fileSystem.source(this.entry.cleanFiles[paramInt]);
-      return localSource;
-    }
-    catch (FileNotFoundException localFileNotFoundException) {}
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.cache.DiskLruCache.Editor
  * JD-Core Version:    0.7.0.1
  */

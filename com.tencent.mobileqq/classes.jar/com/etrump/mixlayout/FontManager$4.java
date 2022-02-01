@@ -12,13 +12,13 @@ class FontManager$4
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.this$0.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_JavaLangString);
-    FontManager.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, localExtensionInfo, this.jdField_a_of_type_Int, this.b);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)FontManager.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_JavaLangString);
+    FontManager.a(FontManager.a(this.this$0), this.jdField_a_of_type_JavaLangString, localExtensionInfo, this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.4
  * JD-Core Version:    0.7.0.1
  */

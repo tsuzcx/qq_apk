@@ -32,7 +32,7 @@ public class SquareRelativeLayout
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.a)
     {
@@ -51,7 +51,7 @@ public class SquareRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.SquareRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

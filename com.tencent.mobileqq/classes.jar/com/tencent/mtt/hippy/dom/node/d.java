@@ -1,59 +1,37 @@
 package com.tencent.mtt.hippy.dom.node;
 
-import android.graphics.Paint.FontMetricsInt;
-import android.text.style.LineHeightSpan;
+import android.annotation.TargetApi;
+import android.text.TextPaint;
+import android.text.style.MetricAffectingSpan;
 
+@TargetApi(21)
 public class d
-  implements LineHeightSpan
+  extends MetricAffectingSpan
 {
-  private int a;
+  float a;
   
   public d(float paramFloat)
   {
-    this.a = ((int)Math.ceil(paramFloat));
+    this.a = paramFloat;
   }
   
-  public void chooseHeight(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Paint.FontMetricsInt paramFontMetricsInt)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (paramFontMetricsInt.descent > this.a)
-    {
-      paramInt1 = Math.min(this.a, paramFontMetricsInt.descent);
-      paramFontMetricsInt.descent = paramInt1;
-      paramFontMetricsInt.bottom = paramInt1;
-      paramFontMetricsInt.ascent = 0;
-      paramFontMetricsInt.top = 0;
-      return;
+    if (!Float.isNaN(this.a)) {
+      paramTextPaint.setLetterSpacing(this.a / paramTextPaint.getTextSize());
     }
-    if (-paramFontMetricsInt.ascent + paramFontMetricsInt.descent > this.a)
-    {
-      paramFontMetricsInt.bottom = paramFontMetricsInt.descent;
-      paramInt1 = -this.a + paramFontMetricsInt.descent;
-      paramFontMetricsInt.ascent = paramInt1;
-      paramFontMetricsInt.top = paramInt1;
-      return;
+  }
+  
+  public void updateMeasureState(TextPaint paramTextPaint)
+  {
+    if (!Float.isNaN(this.a)) {
+      paramTextPaint.setLetterSpacing(this.a / paramTextPaint.getTextSize());
     }
-    if (-paramFontMetricsInt.ascent + paramFontMetricsInt.bottom > this.a)
-    {
-      paramFontMetricsInt.top = paramFontMetricsInt.ascent;
-      paramFontMetricsInt.bottom = (paramFontMetricsInt.ascent + this.a);
-      return;
-    }
-    if (-paramFontMetricsInt.top + paramFontMetricsInt.bottom > this.a)
-    {
-      paramFontMetricsInt.top = (paramFontMetricsInt.bottom - this.a);
-      return;
-    }
-    paramInt1 = this.a - (-paramFontMetricsInt.top + paramFontMetricsInt.bottom);
-    paramFontMetricsInt.top = ((int)(paramFontMetricsInt.top - Math.ceil(paramInt1 / 2.0F)));
-    double d = paramFontMetricsInt.bottom;
-    paramFontMetricsInt.bottom = ((int)(Math.floor(paramInt1 / 2.0F) + d));
-    paramFontMetricsInt.ascent = paramFontMetricsInt.top;
-    paramFontMetricsInt.descent = paramFontMetricsInt.bottom;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.d
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,19 @@ public class FeedExposureHelper$Range
   
   public String toString()
   {
-    return "time: " + this.jdField_a_of_type_Long + " starPosition: " + this.jdField_a_of_type_Int + "  endPostition: " + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("time: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" starPosition: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("  endPostition: ");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.FeedExposureHelper.Range
  * JD-Core Version:    0.7.0.1
  */

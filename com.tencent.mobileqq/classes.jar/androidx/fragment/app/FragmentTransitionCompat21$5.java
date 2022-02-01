@@ -11,15 +11,16 @@ class FragmentTransitionCompat21$5
   
   public Rect onGetEpicenter(Transition paramTransition)
   {
-    if ((this.val$epicenter == null) || (this.val$epicenter.isEmpty())) {
-      return null;
+    paramTransition = this.val$epicenter;
+    if ((paramTransition != null) && (!paramTransition.isEmpty())) {
+      return this.val$epicenter;
     }
-    return this.val$epicenter;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentTransitionCompat21.5
  * JD-Core Version:    0.7.0.1
  */

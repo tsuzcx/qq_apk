@@ -31,51 +31,85 @@ public class MediaMuxerWrapper
   
   private int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      throw new AssertionError();
-    case 0: 
-      return this.jdField_b_of_type_Int;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt == 2) {
+          return this.d;
+        }
+        throw new AssertionError();
+      }
       return this.jdField_c_of_type_Int;
     }
-    return this.d;
+    return this.jdField_b_of_type_Int;
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaFormat == null) {}
-    while (((this.jdField_b_of_type_AndroidMediaMediaFormat == null) && (this.jdField_a_of_type_Int > 0)) || ((this.jdField_a_of_type_Int == 2) && (this.jdField_c_of_type_AndroidMediaMediaFormat == null))) {
+    if (this.jdField_a_of_type_AndroidMediaMediaFormat == null) {
+      return;
+    }
+    if ((this.jdField_b_of_type_AndroidMediaMediaFormat == null) && (this.jdField_a_of_type_Int > 0)) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_c_of_type_AndroidMediaMediaFormat == null)) {
       return;
     }
     this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(this.jdField_a_of_type_AndroidMediaMediaFormat);
-    TLog.b("MediaMuxerWrapper", "Added track #" + this.jdField_b_of_type_Int + " with " + this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime") + " to muxer");
-    if (this.jdField_b_of_type_AndroidMediaMediaFormat != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Added track #");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(" with ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime"));
+    ((StringBuilder)localObject).append(" to muxer");
+    TLog.b("MediaMuxerWrapper", ((StringBuilder)localObject).toString());
+    localObject = this.jdField_b_of_type_AndroidMediaMediaFormat;
+    if (localObject != null)
     {
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(this.jdField_b_of_type_AndroidMediaMediaFormat);
-      TLog.b("MediaMuxerWrapper", "Added track #" + this.jdField_c_of_type_Int + " with " + this.jdField_b_of_type_AndroidMediaMediaFormat.getString("mime") + " to muxer");
+      this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Added track #");
+      ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+      ((StringBuilder)localObject).append(" with ");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidMediaMediaFormat.getString("mime"));
+      ((StringBuilder)localObject).append(" to muxer");
+      TLog.b("MediaMuxerWrapper", ((StringBuilder)localObject).toString());
     }
     if (this.jdField_c_of_type_AndroidMediaMediaFormat != null)
     {
       this.d = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(this.jdField_b_of_type_AndroidMediaMediaFormat);
-      TLog.b("MediaMuxerWrapper", "Added second audiotrack #" + this.jdField_c_of_type_Int + " with " + this.jdField_c_of_type_AndroidMediaMediaFormat.getString("mime") + " to muxer");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Added second audiotrack #");
+      ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+      ((StringBuilder)localObject).append(" with ");
+      ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidMediaMediaFormat.getString("mime"));
+      ((StringBuilder)localObject).append(" to muxer");
+      TLog.b("MediaMuxerWrapper", ((StringBuilder)localObject).toString());
     }
     this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
+    localObject = this.jdField_a_of_type_JavaNioByteBuffer;
+    int i = 0;
+    if (localObject == null) {
       this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(0);
     }
     this.jdField_a_of_type_JavaNioByteBuffer.flip();
-    TLog.b("MediaMuxerWrapper", "Output format determined, writing " + this.jdField_a_of_type_JavaUtilList.size() + " samples / " + this.jdField_a_of_type_JavaNioByteBuffer.limit() + " bytes to muxer.");
-    MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Output format determined, writing ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+    ((StringBuilder)localObject).append(" samples / ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaNioByteBuffer.limit());
+    ((StringBuilder)localObject).append(" bytes to muxer.");
+    TLog.b("MediaMuxerWrapper", ((StringBuilder)localObject).toString());
+    localObject = new MediaCodec.BufferInfo();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    MediaMuxerWrapper.SampleInfo localSampleInfo;
-    for (int i = 0; localIterator.hasNext(); i = MediaMuxerWrapper.SampleInfo.b(localSampleInfo) + i)
+    while (localIterator.hasNext())
     {
-      localSampleInfo = (MediaMuxerWrapper.SampleInfo)localIterator.next();
-      MediaMuxerWrapper.SampleInfo.a(localSampleInfo, localBufferInfo, i);
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(a(MediaMuxerWrapper.SampleInfo.a(localSampleInfo)), this.jdField_a_of_type_JavaNioByteBuffer, localBufferInfo);
+      MediaMuxerWrapper.SampleInfo localSampleInfo = (MediaMuxerWrapper.SampleInfo)localIterator.next();
+      MediaMuxerWrapper.SampleInfo.a(localSampleInfo, (MediaCodec.BufferInfo)localObject, i);
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(a(MediaMuxerWrapper.SampleInfo.a(localSampleInfo)), this.jdField_a_of_type_JavaNioByteBuffer, (MediaCodec.BufferInfo)localObject);
+      i += MediaMuxerWrapper.SampleInfo.b(localSampleInfo);
     }
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaNioByteBuffer = null;
@@ -106,22 +140,28 @@ public class MediaMuxerWrapper
   
   public void a(int paramInt, MediaFormat paramMediaFormat)
   {
-    TLog.b("MediaMuxerWrapper", "setOutputFormat " + paramInt);
-    switch (paramInt)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setOutputFormat ");
+    localStringBuilder.append(paramInt);
+    TLog.b("MediaMuxerWrapper", localStringBuilder.toString());
+    if (paramInt != 0)
     {
-    default: 
-      throw new AssertionError();
-    case 0: 
+      if (paramInt != 1)
+      {
+        if (paramInt == 2) {
+          this.jdField_c_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+        } else {
+          throw new AssertionError();
+        }
+      }
+      else {
+        this.jdField_b_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+      }
+    }
+    else {
       this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
     }
-    for (;;)
-    {
-      b();
-      return;
-      this.jdField_b_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-      continue;
-      this.jdField_c_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-    }
+    b();
   }
   
   public void a(int paramInt, ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
@@ -144,13 +184,13 @@ public class MediaMuxerWrapper
     }
     catch (Exception paramByteBuffer)
     {
-      TLog.c("MediaMuxerWrapper", "writeSampleData error, ", paramByteBuffer);
+      TLog.b("MediaMuxerWrapper", "writeSampleData error, ", paramByteBuffer);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.recorder.MediaMuxerWrapper
  * JD-Core Version:    0.7.0.1
  */

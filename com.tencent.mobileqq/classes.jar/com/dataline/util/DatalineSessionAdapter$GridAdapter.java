@@ -41,7 +41,7 @@ class DatalineSessionAdapter$GridAdapter
       this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Int, this.b));
       this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setAdjustViewBounds(false);
       this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setDefaultImage(2130851250);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setDefaultImage(2130851161);
       this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setIsDrawRound(false);
       this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setAsyncClipSize(this.jdField_a_of_type_Int, this.b);
       this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setTag(this.jdField_a_of_type_ComDatalineUtilItemHolder);
@@ -50,7 +50,7 @@ class DatalineSessionAdapter$GridAdapter
       this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setOnClickListener(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setOnLongClickListener(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_AndroidViewView$OnLongClickListener);
       this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setOnTouchListener(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setContentDescription(HardCodeUtil.a(2131702783));
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setContentDescription(HardCodeUtil.a(2131702915));
       i += 1;
     }
   }
@@ -58,25 +58,25 @@ class DatalineSessionAdapter$GridAdapter
   public void a()
   {
     int i = 0;
-    if (i < 3)
+    while (i < 3)
     {
       AsyncImageView localAsyncImageView = this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i];
       localAsyncImageView.setTag(this.jdField_a_of_type_ComDatalineUtilItemHolder);
       DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getAt(i);
-      if (localDataLineMsgRecord == null) {
-        localAsyncImageView.setImageResource(2130851250);
-      }
-      for (;;)
+      if (localDataLineMsgRecord == null)
       {
-        i += 1;
-        break;
-        String str = FilePathUtil.c(localDataLineMsgRecord.path);
+        localAsyncImageView.setImageResource(2130851161);
+      }
+      else
+      {
+        String str = FilePathUtil.b(localDataLineMsgRecord.path);
         if ((str != null) && (new VFSFile(str).exists())) {
           localAsyncImageView.setAsyncImage(str);
         } else if (localDataLineMsgRecord.thumbPath != null) {
           localAsyncImageView.setAsyncImage(localDataLineMsgRecord.thumbPath);
         }
       }
+      i += 1;
     }
   }
   
@@ -98,38 +98,46 @@ class DatalineSessionAdapter$GridAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject;
-    if (paramInt >= 3) {
+    if (paramInt >= 3)
+    {
       localObject = null;
     }
-    DataLineMsgRecord localDataLineMsgRecord;
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      localObject = this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[paramInt];
-      ((AsyncImageView)localObject).setTag(this.jdField_a_of_type_ComDatalineUtilItemHolder);
-      localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getAt(paramInt);
-      if (localDataLineMsgRecord != null) {
-        break;
+      AsyncImageView localAsyncImageView = this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[paramInt];
+      localAsyncImageView.setTag(this.jdField_a_of_type_ComDatalineUtilItemHolder);
+      DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getAt(paramInt);
+      if (localDataLineMsgRecord == null)
+      {
+        localAsyncImageView.setImageResource(2130851161);
+        localObject = localAsyncImageView;
       }
-      ((AsyncImageView)localObject).setImageResource(2130851250);
-    }
-    String str = FilePathUtil.c(localDataLineMsgRecord.path);
-    if ((str != null) && (new VFSFile(str).exists())) {
-      ((AsyncImageView)localObject).setAsyncImage(str);
-    }
-    for (;;)
-    {
-      break;
-      if (localDataLineMsgRecord.thumbPath != null) {
-        ((AsyncImageView)localObject).setAsyncImage(localDataLineMsgRecord.thumbPath);
+      else
+      {
+        localObject = FilePathUtil.b(localDataLineMsgRecord.path);
+        if ((localObject != null) && (new VFSFile((String)localObject).exists()))
+        {
+          localAsyncImageView.setAsyncImage((String)localObject);
+          localObject = localAsyncImageView;
+        }
+        else
+        {
+          localObject = localAsyncImageView;
+          if (localDataLineMsgRecord.thumbPath != null)
+          {
+            localAsyncImageView.setAsyncImage(localDataLineMsgRecord.thumbPath);
+            localObject = localAsyncImageView;
+          }
+        }
       }
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.DatalineSessionAdapter.GridAdapter
  * JD-Core Version:    0.7.0.1
  */

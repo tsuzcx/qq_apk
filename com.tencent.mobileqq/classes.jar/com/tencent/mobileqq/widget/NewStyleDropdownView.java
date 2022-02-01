@@ -78,85 +78,88 @@ public class NewStyleDropdownView
   
   private void a(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT >= 26) {}
-    try
-    {
-      View.class.getMethod("setImportantForAutofill", new Class[] { Integer.TYPE }).invoke(this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView, new Object[] { Integer.valueOf(8) });
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setHintTextColor(getResources().getColor(2131165807));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setHighlightColor(Color.parseColor("#8000CAFC"));
-      this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)paramContext.getSystemService("input_method"));
-      this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-      setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-      setPadding(0, 0, 0, 0);
-      Object localObject = new RelativeLayout.LayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-      addView(this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setDropDownVerticalOffset(ViewUtils.a(12.0F));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setDropDownHeight(a(251.5F, getResources()));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setPadding(ViewUtils.a(63.0F), 0, ViewUtils.a(63.0F), 0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setGravity(17);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setDropDownBackgroundResource(2130845671);
-      localObject = new SpannableString(HardCodeUtil.a(2131707548));
-      ((SpannableString)localObject).setSpan(new AbsoluteSizeSpan(17, true), 0, ((SpannableString)localObject).length(), 33);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setHint((CharSequence)localObject);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(ViewUtils.a(10.0F), 0, 0, 0);
-      ((RelativeLayout.LayoutParams)localObject).addRule(15);
-      addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, (ViewGroup.LayoutParams)localObject);
-      this.c = new ImageView(paramContext);
-      int i = ViewUtils.a(40.0F) + 4;
-      localObject = new FrameLayout.LayoutParams(i, i);
-      this.c.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      ((FrameLayout.LayoutParams)localObject).gravity = 17;
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.c, (ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramContext);
-      localObject = new FrameLayout.LayoutParams(i - 4, i - 4);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      ((FrameLayout.LayoutParams)localObject).gravity = 17;
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentImageURLImageView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844813);
-      this.jdField_b_of_type_AndroidWidgetImageView.setClickable(true);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131707549));
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      this.jdField_b_of_type_AndroidWidgetImageView.setPadding((int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F));
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, ViewUtils.a(40.0F), 0);
-      ((RelativeLayout.LayoutParams)localObject).addRule(15);
-      ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
-      addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidWidgetImageView = new AlphaClickableImageView(paramContext);
-      this.jdField_a_of_type_AndroidWidgetImageView.setId(571);
-      this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F));
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131707547));
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840795);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840796);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
-      paramContext = new RelativeLayout.LayoutParams(-2, -2);
-      paramContext.setMargins(0, 0, ViewUtils.a(15.0F), 0);
-      paramContext.addRule(15);
-      paramContext.addRule(11, -1);
-      addView(this.jdField_a_of_type_AndroidWidgetImageView, paramContext);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new NewStyleDropdownView.1(this));
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (Build.VERSION.SDK_INT >= 26) {
+      try
       {
-        try
-        {
-          paramContext = this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.getClass().getSuperclass().getDeclaredField("mPopup");
-          paramContext.setAccessible(true);
-          paramContext = paramContext.get(this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView);
-          paramContext.getClass().getMethod("setOnDismissListener", new Class[] { PopupWindow.OnDismissListener.class }).invoke(paramContext, new Object[] { this });
-          return;
-        }
-        catch (Exception paramContext) {}
-        localException = localException;
+        View.class.getMethod("setImportantForAutofill", new Class[] { Integer.TYPE }).invoke(this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView, new Object[] { Integer.valueOf(8) });
+      }
+      catch (Exception localException)
+      {
         QLog.w("NewStyleDropdownView", 2, "disable auto fill error", localException);
       }
     }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setHintTextColor(getResources().getColor(2131165798));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setHighlightColor(Color.parseColor("#8000CAFC"));
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)paramContext.getSystemService("input_method"));
+    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
+    setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    setPadding(0, 0, 0, 0);
+    Object localObject1 = new RelativeLayout.LayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    addView(this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView, (ViewGroup.LayoutParams)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setDropDownVerticalOffset(ViewUtils.a(12.0F));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setDropDownHeight(a(251.5F, getResources()));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setPadding(ViewUtils.a(63.0F), 0, ViewUtils.a(63.0F), 0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setGravity(17);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setDropDownBackgroundResource(2130845544);
+    localObject1 = new SpannableString(HardCodeUtil.a(2131707573));
+    ((SpannableString)localObject1).setSpan(new AbsoluteSizeSpan(17, true), 0, ((SpannableString)localObject1).length(), 33);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setHint((CharSequence)localObject1);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
+    localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+    Object localObject2 = (RelativeLayout.LayoutParams)localObject1;
+    ((RelativeLayout.LayoutParams)localObject2).setMargins(ViewUtils.a(10.0F), 0, 0, 0);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(15);
+    addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, (ViewGroup.LayoutParams)localObject1);
+    this.c = new ImageView(paramContext);
+    int i = ViewUtils.a(40.0F) + 4;
+    localObject1 = new FrameLayout.LayoutParams(i, i);
+    this.c.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    ((FrameLayout.LayoutParams)localObject1).gravity = 17;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.c, (ViewGroup.LayoutParams)localObject1);
+    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramContext);
+    i -= 4;
+    localObject1 = new FrameLayout.LayoutParams(i, i);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    ((FrameLayout.LayoutParams)localObject1).gravity = 17;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentImageURLImageView, (ViewGroup.LayoutParams)localObject1);
+    this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844689);
+    this.jdField_b_of_type_AndroidWidgetImageView.setClickable(true);
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131707574));
+    localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+    localObject2 = this.jdField_b_of_type_AndroidWidgetImageView;
+    float f = this.jdField_a_of_type_Float;
+    ((ImageView)localObject2).setPadding((int)(f * 10.0F), (int)(f * 10.0F), (int)(f * 10.0F), (int)(f * 10.0F));
+    ((RelativeLayout.LayoutParams)localObject1).setMargins(0, 0, ViewUtils.a(40.0F), 0);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(15);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(11, -1);
+    addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
+    this.jdField_a_of_type_AndroidWidgetImageView = new AlphaClickableImageView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(571);
+    paramContext = this.jdField_a_of_type_AndroidWidgetImageView;
+    f = this.jdField_a_of_type_Float;
+    paramContext.setPadding((int)(f * 10.0F), (int)(f * 10.0F), (int)(f * 10.0F), (int)(f * 10.0F));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131707572));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840670);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840671);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
+    paramContext = new RelativeLayout.LayoutParams(-2, -2);
+    paramContext.setMargins(0, 0, ViewUtils.a(15.0F), 0);
+    paramContext.addRule(15);
+    paramContext.addRule(11, -1);
+    addView(this.jdField_a_of_type_AndroidWidgetImageView, paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new NewStyleDropdownView.1(this));
+    try
+    {
+      paramContext = this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.getClass().getSuperclass().getDeclaredField("mPopup");
+      paramContext.setAccessible(true);
+      paramContext = paramContext.get(this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView);
+      paramContext.getClass().getMethod("setOnDismissListener", new Class[] { PopupWindow.OnDismissListener.class }).invoke(paramContext, new Object[] { this });
+      return;
+    }
+    catch (Exception paramContext) {}
   }
   
   public AutoCompleteTextView a()
@@ -171,8 +174,9 @@ public class NewStyleDropdownView
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.showDropDown();
+    NewStyleDropdownView.AutoCompleteView localAutoCompleteView = this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView;
+    if (localAutoCompleteView != null) {
+      localAutoCompleteView.showDropDown();
     }
   }
   
@@ -193,7 +197,7 @@ public class NewStyleDropdownView
         this.c.setVisibility(4);
         return;
       }
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840792);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840667);
       this.c.setVisibility(0);
       return;
     }
@@ -211,8 +215,9 @@ public class NewStyleDropdownView
       QLog.d("NewStyleDropdownView", 2, "onDismiss set icon down");
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.c();
+    NewStyleDropdownView.DropdownCallback localDropdownCallback = this.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback;
+    if (localDropdownCallback != null) {
+      localDropdownCallback.b();
     }
     this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new NewStyleDropdownView.2(this), 500L);
   }
@@ -229,7 +234,7 @@ public class NewStyleDropdownView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.NewStyleDropdownView
  * JD-Core Version:    0.7.0.1
  */

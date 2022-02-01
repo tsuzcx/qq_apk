@@ -25,14 +25,16 @@ public final class hummer_commelem$MsgElemInfo_servtype21
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 58, 64, 74, 82 }, new String[] { "uint32_topic_id", "uint64_confessor_uin", "bytes_confessor_nick", "uint32_confessor_sex", "uint32_sysmsg_flag", "c2c_confess_ctx", "bytes_topic", "uint64_confess_time", "group_confess_msg", "group_confess_ctx" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro2, Long.valueOf(0L), null, null }, MsgElemInfo_servtype21.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 58, 64, 74, 82 }, new String[] { "uint32_topic_id", "uint64_confessor_uin", "bytes_confessor_nick", "uint32_confessor_sex", "uint32_sysmsg_flag", "c2c_confess_ctx", "bytes_topic", "uint64_confess_time", "group_confess_msg", "group_confess_ctx" }, new Object[] { localInteger, localLong, localByteStringMicro1, localInteger, localInteger, null, localByteStringMicro2, localLong, null, null }, MsgElemInfo_servtype21.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype21
  * JD-Core Version:    0.7.0.1
  */

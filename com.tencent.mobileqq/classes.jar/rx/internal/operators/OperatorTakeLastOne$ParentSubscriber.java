@@ -23,28 +23,26 @@ class OperatorTakeLastOne$ParentSubscriber<T>
   
   private void emit()
   {
-    if (isUnsubscribed()) {
-      this.last = null;
-    }
-    for (;;)
+    if (isUnsubscribed())
     {
-      return;
-      Object localObject = this.last;
       this.last = null;
-      if (localObject != ABSENT) {}
+      return;
+    }
+    Object localObject = this.last;
+    this.last = null;
+    if (localObject != ABSENT) {
       try
       {
         this.child.onNext(localObject);
-        if (!isUnsubscribed())
-        {
-          this.child.onCompleted();
-          return;
-        }
       }
       catch (Throwable localThrowable)
       {
         Exceptions.throwOrReport(localThrowable, this.child);
+        return;
       }
+    }
+    if (!isUnsubscribed()) {
+      this.child.onCompleted();
     }
   }
   
@@ -85,27 +83,30 @@ class OperatorTakeLastOne$ParentSubscriber<T>
   
   void requestMore(long paramLong)
   {
-    if (paramLong > 0L) {}
-    do
+    if (paramLong > 0L)
     {
-      int i;
       do
       {
-        i = this.state.get();
-        if (i != 0) {
+        int i;
+        do
+        {
+          i = this.state.get();
+          if (i != 0) {
+            break;
+          }
+        } while (!this.state.compareAndSet(0, 2));
+        return;
+        if (i != 1) {
           break;
         }
-      } while (!this.state.compareAndSet(0, 2));
-      while (i != 1) {
-        return;
-      }
-    } while (!this.state.compareAndSet(1, 3));
-    emit();
+      } while (!this.state.compareAndSet(1, 3));
+      emit();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorTakeLastOne.ParentSubscriber
  * JD-Core Version:    0.7.0.1
  */

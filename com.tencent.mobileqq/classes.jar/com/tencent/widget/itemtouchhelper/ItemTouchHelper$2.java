@@ -36,25 +36,14 @@ class ItemTouchHelper$2
             this.this$0.mCallback.clearView(this.this$0.mRecyclerView, paramRecyclerView.mViewHolder);
           }
           this.this$0.select(paramRecyclerView.mViewHolder, paramRecyclerView.mActionState);
-          this.this$0.updateDxDy(paramMotionEvent, this.this$0.mSelectedFlags, 0);
+          paramRecyclerView = this.this$0;
+          paramRecyclerView.updateDxDy(paramMotionEvent, paramRecyclerView.mSelectedFlags, 0);
         }
       }
     }
-    for (;;)
+    else if ((i != 3) && (i != 1))
     {
-      if (this.this$0.mVelocityTracker != null) {
-        this.this$0.mVelocityTracker.addMovement(paramMotionEvent);
-      }
-      if (this.this$0.mSelected == null) {
-        break;
-      }
-      return true;
-      if ((i == 3) || (i == 1))
-      {
-        this.this$0.mActivePointerId = -1;
-        this.this$0.select(null, 0);
-      }
-      else if (this.this$0.mActivePointerId != -1)
+      if (this.this$0.mActivePointerId != -1)
       {
         int j = paramMotionEvent.findPointerIndex(this.this$0.mActivePointerId);
         if (j >= 0) {
@@ -62,7 +51,16 @@ class ItemTouchHelper$2
         }
       }
     }
-    return false;
+    else
+    {
+      paramRecyclerView = this.this$0;
+      paramRecyclerView.mActivePointerId = -1;
+      paramRecyclerView.select(null, 0);
+    }
+    if (this.this$0.mVelocityTracker != null) {
+      this.this$0.mVelocityTracker.addMovement(paramMotionEvent);
+    }
+    return this.this$0.mSelected != null;
   }
   
   public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean)
@@ -75,66 +73,68 @@ class ItemTouchHelper$2
   
   public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    int i = 0;
     this.this$0.mGestureDetector.onTouchEvent(paramMotionEvent);
     if (this.this$0.mVelocityTracker != null) {
       this.this$0.mVelocityTracker.addMovement(paramMotionEvent);
     }
-    if (this.this$0.mActivePointerId == -1) {}
-    int j;
-    do
-    {
-      int k;
-      do
+    if (this.this$0.mActivePointerId == -1) {
+      return;
+    }
+    int j = paramMotionEvent.getActionMasked();
+    int k = paramMotionEvent.findPointerIndex(this.this$0.mActivePointerId);
+    if (k >= 0) {
+      this.this$0.checkSelectForSwipe(j, paramMotionEvent, k);
+    }
+    paramRecyclerView = this.this$0.mSelected;
+    if (paramRecyclerView == null) {
+      return;
+    }
+    int i = 0;
+    if (j != 1) {
+      if (j != 2)
       {
-        return;
-        j = paramMotionEvent.getActionMasked();
-        k = paramMotionEvent.findPointerIndex(this.this$0.mActivePointerId);
-        if (k >= 0) {
-          this.this$0.checkSelectForSwipe(j, paramMotionEvent, k);
-        }
-        paramRecyclerView = this.this$0.mSelected;
-      } while (paramRecyclerView == null);
-      switch (j)
-      {
-      case 4: 
-      case 5: 
-      default: 
-        return;
-      case 1: 
-      case 2: 
-      case 3: 
-        for (;;)
+        if (j != 3)
         {
-          this.this$0.select(null, 0);
-          this.this$0.mActivePointerId = -1;
-          return;
-          if (k < 0) {
-            break;
+          if (j != 6) {
+            return;
           }
-          this.this$0.updateDxDy(paramMotionEvent, this.this$0.mSelectedFlags, k);
-          this.this$0.moveIfNecessary(paramRecyclerView);
-          this.this$0.mRecyclerView.removeCallbacks(this.this$0.mScrollRunnable);
-          this.this$0.mScrollRunnable.run();
-          this.this$0.mRecyclerView.invalidate();
-          return;
-          if (this.this$0.mVelocityTracker != null) {
-            this.this$0.mVelocityTracker.clear();
+          j = paramMotionEvent.getActionIndex();
+          if (paramMotionEvent.getPointerId(j) != this.this$0.mActivePointerId) {
+            return;
           }
+          if (j == 0) {
+            i = 1;
+          }
+          this.this$0.mActivePointerId = paramMotionEvent.getPointerId(i);
+          paramRecyclerView = this.this$0;
+          paramRecyclerView.updateDxDy(paramMotionEvent, paramRecyclerView.mSelectedFlags, j);
+          return;
+        }
+        if (this.this$0.mVelocityTracker != null) {
+          this.this$0.mVelocityTracker.clear();
         }
       }
-      j = paramMotionEvent.getActionIndex();
-    } while (paramMotionEvent.getPointerId(j) != this.this$0.mActivePointerId);
-    if (j == 0) {
-      i = 1;
+      else
+      {
+        if (k < 0) {
+          return;
+        }
+        ItemTouchHelper localItemTouchHelper = this.this$0;
+        localItemTouchHelper.updateDxDy(paramMotionEvent, localItemTouchHelper.mSelectedFlags, k);
+        this.this$0.moveIfNecessary(paramRecyclerView);
+        this.this$0.mRecyclerView.removeCallbacks(this.this$0.mScrollRunnable);
+        this.this$0.mScrollRunnable.run();
+        this.this$0.mRecyclerView.invalidate();
+        return;
+      }
     }
-    this.this$0.mActivePointerId = paramMotionEvent.getPointerId(i);
-    this.this$0.updateDxDy(paramMotionEvent, this.this$0.mSelectedFlags, j);
+    this.this$0.select(null, 0);
+    this.this$0.mActivePointerId = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.itemtouchhelper.ItemTouchHelper.2
  * JD-Core Version:    0.7.0.1
  */

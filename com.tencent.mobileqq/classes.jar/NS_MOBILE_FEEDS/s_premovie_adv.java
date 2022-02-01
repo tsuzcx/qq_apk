@@ -19,9 +19,10 @@ public final class s_premovie_adv
   static
   {
     cache_busi_param = new HashMap();
-    cache_busi_param.put(Integer.valueOf(0), "");
+    Integer localInteger = Integer.valueOf(0);
+    cache_busi_param.put(localInteger, "");
     cache_report_cookie = new HashMap();
-    cache_report_cookie.put(Integer.valueOf(0), "");
+    cache_report_cookie.put(localInteger, "");
   }
   
   public s_premovie_adv() {}
@@ -42,20 +43,23 @@ public final class s_premovie_adv
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.premovie != null) {
-      paramJceOutputStream.write(this.premovie, 0);
+    Object localObject = this.premovie;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 1);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
-    if (this.report_cookie != null) {
-      paramJceOutputStream.write(this.report_cookie, 2);
+    localObject = this.report_cookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_premovie_adv
  * JD-Core Version:    0.7.0.1
  */

@@ -17,26 +17,22 @@ public class HippyViewEvent
   
   public void send(View paramView, Object paramObject)
   {
-    Object localObject;
     if ((paramView != null) && ((paramView.getContext() instanceof HippyInstanceContext)))
     {
-      localObject = ((HippyInstanceContext)paramView.getContext()).getEngineContext();
+      Object localObject = ((HippyInstanceContext)paramView.getContext()).getEngineContext();
+      if (localObject == null) {
+        return;
+      }
+      localObject = ((HippyEngineContext)localObject).getModuleManager();
       if (localObject != null) {
-        break label30;
+        ((EventDispatcher)((HippyModuleManager)localObject).getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(paramView.getId(), this.mEventName, paramObject);
       }
     }
-    label30:
-    do
-    {
-      return;
-      localObject = ((HippyEngineContext)localObject).getModuleManager();
-    } while (localObject == null);
-    ((EventDispatcher)((HippyModuleManager)localObject).getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(paramView.getId(), this.mEventName, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.HippyViewEvent
  * JD-Core Version:    0.7.0.1
  */

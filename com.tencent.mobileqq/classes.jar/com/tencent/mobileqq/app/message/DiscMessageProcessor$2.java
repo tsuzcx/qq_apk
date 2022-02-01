@@ -20,19 +20,23 @@ class DiscMessageProcessor$2
     }
     if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0)
     {
-      StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaUtilArrayList.size() * 8);
-      DiscMessageProcessor.a(this.this$0, localStringBuilder, this.jdField_a_of_type_JavaUtilArrayList, this.b);
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.DiscMsgPc.discuss", 2, "show yinsi tips" + localStringBuilder.toString());
+      StringBuilder localStringBuilder1 = new StringBuilder(this.jdField_a_of_type_JavaUtilArrayList.size() * 8);
+      DiscMessageProcessor.a(this.this$0, localStringBuilder1, this.jdField_a_of_type_JavaUtilArrayList, this.b);
+      localStringBuilder1.append(this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("show yinsi tips");
+        localStringBuilder2.append(localStringBuilder1.toString());
+        QLog.d("Q.msg.DiscMsgPc.discuss", 2, localStringBuilder2.toString());
       }
-      DiscMessageProcessor.a(this.this$0, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_Long, this.b, this.c, localStringBuilder.toString());
+      DiscMessageProcessor.a(this.this$0, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_Long, this.b, this.c, localStringBuilder1.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.DiscMessageProcessor.2
  * JD-Core Version:    0.7.0.1
  */

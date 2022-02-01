@@ -31,7 +31,9 @@ public class ValueCallbackKeyframeAnimation<K, A>
   
   public A getValue()
   {
-    return this.valueCallback.getValueInternal(0.0F, 0.0F, this.valueCallbackValue, this.valueCallbackValue, getProgress(), getProgress(), getProgress());
+    LottieValueCallback localLottieValueCallback = this.valueCallback;
+    Object localObject = this.valueCallbackValue;
+    return localLottieValueCallback.getValueInternal(0.0F, 0.0F, localObject, localObject, getProgress(), getProgress(), getProgress());
   }
   
   A getValue(Keyframe<K> paramKeyframe, float paramFloat)
@@ -48,7 +50,7 @@ public class ValueCallbackKeyframeAnimation<K, A>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.ValueCallbackKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

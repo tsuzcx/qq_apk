@@ -22,7 +22,12 @@ class DesktopDataManager$5
       String str = ???.optString("errMsg");
       if (l != 0L)
       {
-        QLog.e("DesktopDataManager", 1, "loadMoreMyApp, retCode = " + l + ", errMsg = " + str);
+        ??? = new StringBuilder();
+        ???.append("loadMoreMyApp, retCode = ");
+        ???.append(l);
+        ???.append(", errMsg = ");
+        ???.append(str);
+        QLog.e("DesktopDataManager", 1, ???.toString());
         return;
       }
       INTERFACE.StGetDropdownAppListRsp localStGetDropdownAppListRsp = (INTERFACE.StGetDropdownAppListRsp)???.opt("response");
@@ -32,6 +37,8 @@ class DesktopDataManager$5
         DesktopDataManager.access$502(this.this$0, (COMM.StCommonExt)localStGetDropdownAppListRsp.extInfo.get());
         if (localStGetDropdownAppListRsp.isFinished.get() == 1) {
           paramBoolean = true;
+        } else {
+          paramBoolean = false;
         }
         synchronized (DesktopDataManager.access$700())
         {
@@ -39,9 +46,17 @@ class DesktopDataManager$5
           if ((!paramBoolean) && (DesktopDataManager.access$800(this.this$0) <= 4)) {
             this.this$0.loadMoreMyApp((COMM.StCommonExt)localStGetDropdownAppListRsp.extInfo.get());
           }
-          QLog.d("DesktopDataManager", 1, "loadMoreMyApp, retCode = " + l + ", errMsg = " + str + ", isFinished: " + paramBoolean + ", requestCount: " + DesktopDataManager.access$800(this.this$0));
+          ??? = new StringBuilder();
+          ???.append("loadMoreMyApp, retCode = ");
+          ???.append(l);
+          ???.append(", errMsg = ");
+          ???.append(str);
+          ???.append(", isFinished: ");
+          ???.append(paramBoolean);
+          ???.append(", requestCount: ");
+          ???.append(DesktopDataManager.access$800(this.this$0));
+          QLog.d("DesktopDataManager", 1, ???.toString());
           return;
-          paramBoolean = false;
         }
       }
       QLog.e("DesktopDataManager", 1, "loadMoreMyApp failed, response is null.");
@@ -50,12 +65,19 @@ class DesktopDataManager$5
     if (??? != null) {
       l = ???.optLong("retCode");
     }
-    QLog.e("DesktopDataManager", 1, "loadMoreMyApp, isSuccess = " + paramBoolean + ", ret = " + ??? + ", retCode = " + l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadMoreMyApp, isSuccess = ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", ret = ");
+    localStringBuilder.append(???);
+    localStringBuilder.append(", retCode = ");
+    localStringBuilder.append(l);
+    QLog.e("DesktopDataManager", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.5
  * JD-Core Version:    0.7.0.1
  */

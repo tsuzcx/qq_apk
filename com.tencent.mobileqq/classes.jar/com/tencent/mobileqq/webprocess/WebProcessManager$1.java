@@ -25,15 +25,21 @@ class WebProcessManager$1
       if (paramContext != null) {
         paramContext.a(i, j);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("WebProcessManager", 2, "babyq receiver recv user_type=" + i + ", from_type=" + j);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("babyq receiver recv user_type=");
+        paramContext.append(i);
+        paramContext.append(", from_type=");
+        paramContext.append(j);
+        QLog.d("WebProcessManager", 2, paramContext.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessManager.1
  * JD-Core Version:    0.7.0.1
  */

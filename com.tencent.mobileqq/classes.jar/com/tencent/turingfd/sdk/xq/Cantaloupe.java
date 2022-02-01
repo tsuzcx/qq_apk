@@ -1,39 +1,25 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import java.util.concurrent.atomic.AtomicReference;
-
 public class Cantaloupe
-  implements ServiceConnection
 {
-  public Cantaloupe(Casaba paramCasaba, AtomicReference paramAtomicReference1, AtomicReference paramAtomicReference2, Object paramObject) {}
+  public static final byte[] Mh = new byte[0];
+  public byte[] ld;
+  public int zg;
   
-  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
+  public Cantaloupe(int paramInt, byte[] paramArrayOfByte)
   {
-    this.vh.set(paramIBinder);
-    this.wh.set(this);
-    try
-    {
-      synchronized (this.xh)
-      {
-        this.xh.notifyAll();
-        label30:
-        return;
-      }
-    }
-    catch (Throwable paramIBinder)
-    {
-      break label30;
-    }
+    this.zg = paramInt;
+    this.ld = paramArrayOfByte;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName) {}
+  public static Cantaloupe g(int paramInt)
+  {
+    return new Cantaloupe(paramInt, Mh);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Cantaloupe
  * JD-Core Version:    0.7.0.1
  */

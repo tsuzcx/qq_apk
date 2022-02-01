@@ -48,16 +48,18 @@ public class AudioEntity$Builder
   
   public Builder removeAllCustomParams()
   {
-    if (this.audioCustomParams != null) {
-      this.audioCustomParams.clear();
+    Map localMap = this.audioCustomParams;
+    if (localMap != null) {
+      localMap.clear();
     }
     return this;
   }
   
   public Builder removeCustomParam(String paramString)
   {
-    if (this.audioCustomParams != null) {
-      this.audioCustomParams.remove(paramString);
+    Map localMap = this.audioCustomParams;
+    if (localMap != null) {
+      localMap.remove(paramString);
     }
     return this;
   }
@@ -85,7 +87,7 @@ public class AudioEntity$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.audio.data.AudioEntity.Builder
  * JD-Core Version:    0.7.0.1
  */

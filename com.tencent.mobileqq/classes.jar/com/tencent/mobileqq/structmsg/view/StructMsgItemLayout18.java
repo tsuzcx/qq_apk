@@ -19,14 +19,13 @@ public class StructMsgItemLayout18
 {
   private QQAppInterface a;
   
-  public int b()
+  protected int b()
   {
     return 18;
   }
   
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    Object localObject1 = null;
     if (QLog.isColorLevel()) {
       QLog.d("StructMsgItemLayout18", 2, "getView.");
     }
@@ -35,62 +34,55 @@ public class StructMsgItemLayout18
     if ((paramBundle instanceof QQAppInterface)) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
     }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     paramBundle = null;
-    if (((Iterator)localObject2).hasNext())
+    StructMsgItemLive localStructMsgItemLive = null;
+    while (((Iterator)localObject).hasNext())
     {
-      AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject2).next();
-      if (!"live".equals(localAbsStructMsgElement.a)) {
-        break label255;
-      }
-      paramBundle = (StructMsgItemLive)localAbsStructMsgElement;
-    }
-    label247:
-    label255:
-    for (;;)
-    {
-      break;
-      if (paramBundle == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsgItemLayout18", 2, "getView itemLive is null.");
-        }
-        return null;
-      }
-      if (paramView != null)
-      {
-        paramContext = (StructMsgItemLayout18.ViewHolder)paramView.getTag();
-        localObject2 = null;
-        localObject1 = paramView;
-        paramView = paramContext;
-        paramContext = (Context)localObject2;
-        if (paramView != null) {
-          break label247;
-        }
-        paramView = new StructMsgItemLayout18.ViewHolder();
-        paramView.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgItemLive = paramBundle;
-        paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout = paramContext;
-      }
-      for (;;)
-      {
-        ((View)localObject1).setTag(paramView);
-        paramView = ((View)localObject1).findViewById(2131378576);
-        if (paramView != null) {
-          paramView.setOnClickListener(paramBundle.a);
-        }
-        if (paramContext != null) {
-          paramContext.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message);
-        }
-        return localObject1;
-        localObject2 = paramBundle.a(paramContext, null, null);
-        paramContext = (NowVideoLayout)((View)localObject2).findViewById(2131378576);
-        paramContext.a();
-        paramView = (View)localObject1;
-        localObject1 = localObject2;
-        break;
-        paramContext = paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout;
+      AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
+      if ("live".equals(localAbsStructMsgElement.a)) {
+        localStructMsgItemLive = (StructMsgItemLive)localAbsStructMsgElement;
       }
     }
+    if (localStructMsgItemLive == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsgItemLayout18", 2, "getView itemLive is null.");
+      }
+      return null;
+    }
+    if (paramView != null)
+    {
+      localObject = (StructMsgItemLayout18.ViewHolder)paramView.getTag();
+      paramContext = paramBundle;
+      paramBundle = (Bundle)localObject;
+    }
+    else
+    {
+      paramView = localStructMsgItemLive.a(paramContext, null, null);
+      paramContext = (NowVideoLayout)paramView.findViewById(2131377987);
+      paramContext.a();
+      paramBundle = null;
+    }
+    if (paramBundle == null)
+    {
+      paramBundle = new StructMsgItemLayout18.ViewHolder();
+      paramBundle.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgItemLive = localStructMsgItemLive;
+      paramBundle.jdField_a_of_type_ComTencentBizNowNowVideoLayout = paramContext;
+    }
+    else
+    {
+      paramContext = paramBundle.jdField_a_of_type_ComTencentBizNowNowVideoLayout;
+    }
+    paramView.setTag(paramBundle);
+    paramBundle = paramView.findViewById(2131377987);
+    if (paramBundle != null) {
+      paramBundle.setOnClickListener(localStructMsgItemLive.a);
+    }
+    if (paramContext != null) {
+      paramContext.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localStructMsgItemLive, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message);
+    }
+    return paramView;
   }
   
   public String b()
@@ -100,7 +92,7 @@ public class StructMsgItemLayout18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout18
  * JD-Core Version:    0.7.0.1
  */

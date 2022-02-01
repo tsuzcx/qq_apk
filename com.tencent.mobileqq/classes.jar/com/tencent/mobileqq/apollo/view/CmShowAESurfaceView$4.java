@@ -11,17 +11,17 @@ class CmShowAESurfaceView$4
   
   public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
   {
-    QLog.i("CmShowAESurfaceView", 1, "onAnimationEnd.");
+    QLog.i("[cmshow]CmShowAESurfaceView", 1, "onAnimationEnd.");
   }
   
   public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
   {
-    QLog.i("CmShowAESurfaceView", 1, "onAnimationStart.");
+    QLog.i("[cmshow]CmShowAESurfaceView", 1, "onAnimationStart.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.CmShowAESurfaceView.4
  * JD-Core Version:    0.7.0.1
  */

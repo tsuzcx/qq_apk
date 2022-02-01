@@ -23,10 +23,10 @@ public final class MapTypeAdapterFactory
   
   private TypeAdapter<?> getKeyAdapter(Gson paramGson, Type paramType)
   {
-    if ((paramType == Boolean.TYPE) || (paramType == Boolean.class)) {
-      return TypeAdapters.BOOLEAN_AS_STRING;
+    if ((paramType != Boolean.TYPE) && (paramType != Boolean.class)) {
+      return paramGson.getAdapter(TypeToken.get(paramType));
     }
-    return paramGson.getAdapter(TypeToken.get(paramType));
+    return TypeAdapters.BOOLEAN_AS_STRING;
   }
   
   public <T> TypeAdapter<T> create(Gson paramGson, TypeToken<T> paramTypeToken)
@@ -44,7 +44,7 @@ public final class MapTypeAdapterFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.MapTypeAdapterFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -22,17 +22,17 @@ final class PublishManager$getFirstPublishTask$1
   {
     Function1 localFunction1 = this.$callback;
     Object localObject = (PublishManager.PublishTask)CollectionsKt.firstOrNull((List)PublishManager.a(PublishManager.a));
-    if (localObject != null) {}
-    for (localObject = ((PublishManager.PublishTask)localObject).a();; localObject = null)
-    {
-      localFunction1.invoke(localObject);
-      return;
+    if (localObject != null) {
+      localObject = ((PublishManager.PublishTask)localObject).a();
+    } else {
+      localObject = null;
     }
+    localFunction1.invoke(localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.PublishManager.getFirstPublishTask.1
  * JD-Core Version:    0.7.0.1
  */

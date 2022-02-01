@@ -4,6 +4,7 @@ import com.tencent.beacon.event.UserAction;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import java.util.Map;
 
 public class QAVGroupConfig$Report
 {
@@ -14,49 +15,57 @@ public class QAVGroupConfig$Report
   
   public static void a(int paramInt)
   {
-    if (paramInt == 4) {
+    if (paramInt == 4)
+    {
       a("0X8009187");
-    }
-    while (paramInt != 2) {
       return;
     }
-    a("0X8009188");
+    if (paramInt == 2) {
+      a("0X8009188");
+    }
   }
   
   public static void a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("QAVGroupConfig", 1, "reportAVGroupNum, num[" + paramInt + "], isVideo[" + paramBoolean + "]");
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportAVGroupNum, num[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], isVideo[");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("QAVGroupConfig", 1, ((StringBuilder)localObject).toString());
     }
-    HashMap localHashMap;
     if (paramBoolean)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum_video", true, -1L, -1L, localHashMap, true);
+      localObject = new HashMap();
+      ((HashMap)localObject).put("num", String.valueOf(paramInt));
+      UserAction.onUserAction("reportAVGroupNum_video", true, -1L, -1L, (Map)localObject, true);
     }
-    for (;;)
+    else
     {
-      localHashMap = new HashMap();
-      localHashMap.put("isVideo", String.valueOf(paramBoolean));
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum", true, -1L, -1L, localHashMap, true);
-      return;
-      localHashMap = new HashMap();
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum_audio", true, -1L, -1L, localHashMap, true);
+      localObject = new HashMap();
+      ((HashMap)localObject).put("num", String.valueOf(paramInt));
+      UserAction.onUserAction("reportAVGroupNum_audio", true, -1L, -1L, (Map)localObject, true);
     }
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("isVideo", String.valueOf(paramBoolean));
+    ((HashMap)localObject).put("num", String.valueOf(paramInt));
+    UserAction.onUserAction("reportAVGroupNum", true, -1L, -1L, (Map)localObject, true);
   }
   
   public static void a(String paramString)
   {
-    if (!QLog.isDevelopLevel()) {}
-    for (;;)
+    if (QLog.isDevelopLevel())
     {
-      ReportController.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-      return;
-      QLog.w("QAVGroupConfig", 1, "reportClickEvent, key[" + paramString + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportClickEvent, key[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.w("QAVGroupConfig", 1, localStringBuilder.toString());
     }
+    ReportController.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
   
   public static void a(boolean paramBoolean)
@@ -106,7 +115,7 @@ public class QAVGroupConfig$Report
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QAVGroupConfig.Report
  * JD-Core Version:    0.7.0.1
  */

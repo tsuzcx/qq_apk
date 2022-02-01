@@ -2,8 +2,9 @@ package com.tencent.mobileqq.vip;
 
 import android.app.Activity;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.api.IVasDepTemp;
 import com.tencent.util.Pair;
 import mqq.os.MqqHandler;
 
@@ -26,14 +27,13 @@ public class KCWraperV2InOtherProcess
     Pair localPair = a();
     if (paramCallback != null)
     {
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         ThreadManager.getUIHandler().post(new KCWraperV2InOtherProcess.1(this, paramCallback, localPair));
+        return;
       }
+      paramCallback.a(true, ((Boolean)localPair.first).booleanValue(), ((Integer)localPair.second).intValue());
     }
-    else {
-      return;
-    }
-    paramCallback.a(true, ((Boolean)localPair.first).booleanValue(), ((Integer)localPair.second).intValue());
   }
   
   void a(Runnable paramRunnable)
@@ -51,7 +51,7 @@ public class KCWraperV2InOtherProcess
   {
     if (c())
     {
-      PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
+      ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).startKingCardActivationFragment();
       return true;
     }
     return false;
@@ -60,13 +60,16 @@ public class KCWraperV2InOtherProcess
   boolean b()
   {
     boolean bool = c();
-    a("supportActivationView = " + bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("supportActivationView = ");
+    localStringBuilder.append(bool);
+    a(localStringBuilder.toString());
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2InOtherProcess
  * JD-Core Version:    0.7.0.1
  */

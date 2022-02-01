@@ -18,15 +18,15 @@ public final class PlusPanelAppListAdapter$ViewHolder
   public PlusPanelAppListAdapter$ViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368755));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368487));
     this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(paramView.getContext(), this.jdField_a_of_type_AndroidWidgetImageView).b(8388661).a();
-    this.b = ((ImageView)paramView.findViewById(2131367117));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379106));
+    this.b = ((ImageView)paramView.findViewById(2131366954));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378476));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.pluspanel.PlusPanelAppListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

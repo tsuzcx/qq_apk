@@ -60,7 +60,8 @@ public class TroopAlbumPlugin
   
   private void alertDownloadErrorCount(Activity paramActivity, int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    if ((this.mDownloadingDialog != null) && (this.mDownloadingDialog.isShowing())) {
+    Object localObject = this.mDownloadingDialog;
+    if ((localObject != null) && (((Dialog)localObject).isShowing())) {
       this.mDownloadingDialog.dismiss();
     }
     if (paramBoolean) {
@@ -68,17 +69,35 @@ public class TroopAlbumPlugin
     }
     if (paramInt2 > 0)
     {
-      String str = "";
       if (paramInt1 > 0)
       {
-        str = String.format(paramActivity.getString(2131717904), new Object[] { Integer.valueOf(paramInt1) }) + "，";
-        str = str + paramString + HardCodeUtil.a(2131715037);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(String.format(paramActivity.getString(2131717563), new Object[] { Integer.valueOf(paramInt1) }));
+        ((StringBuilder)localObject).append("，");
+        localObject = ((StringBuilder)localObject).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(HardCodeUtil.a(2131714960));
+        paramString = localStringBuilder.toString();
       }
-      paramString = str + String.format(paramActivity.getString(2131717897), new Object[] { Integer.valueOf(paramInt2) });
-      DialogUtil.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131717902, new TroopAlbumPlugin.5(this)).show();
+      else
+      {
+        paramString = "";
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(String.format(paramActivity.getString(2131717556), new Object[] { Integer.valueOf(paramInt2) }));
+      paramString = ((StringBuilder)localObject).toString();
+      DialogUtil.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131717561, new TroopAlbumPlugin.5(this)).show();
       return;
     }
-    ToastUtil.a().a(paramActivity.getString(2131717905) + paramString + HardCodeUtil.a(2131715036));
+    localObject = ToastUtil.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramActivity.getString(2131717564));
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(HardCodeUtil.a(2131714959));
+    ((ToastUtil)localObject).a(localStringBuilder.toString());
   }
   
   private void handleChatAio(JSONObject paramJSONObject, JSContext paramJSContext)
@@ -98,18 +117,18 @@ public class TroopAlbumPlugin
     RemoteHandleManager.getInstance().addWebEventListener(new TroopAlbumPlugin.2(this, paramJSONObject, paramJSContext));
     if (!isSdcardWorking())
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131715032));
+      ToastUtil.a().a(HardCodeUtil.a(2131714955));
       return;
     }
     if (!NetworkState.isNetSupport())
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131715031));
+      ToastUtil.a().a(HardCodeUtil.a(2131714954));
       return;
     }
     if (!NetworkState.isWifiConn())
     {
       paramJSContext = paramJSContext.getActivity();
-      DialogUtil.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131717901)).setMessage(paramJSContext.getString(2131717903)).setPositiveButton(paramJSContext.getString(2131717900), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131717899), new TroopAlbumPlugin.3(this)).show();
+      DialogUtil.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131717560)).setMessage(paramJSContext.getString(2131717562)).setPositiveButton(paramJSContext.getString(2131717559), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131717558), new TroopAlbumPlugin.3(this)).show();
       return;
     }
     RemoteHandleManager.getInstance().getSender().downloadTroopPhoto(paramJSONObject);
@@ -166,7 +185,10 @@ public class TroopAlbumPlugin
     }
     catch (Exception paramJSONObject)
     {
-      while (!QLog.isColorLevel()) {}
+      label105:
+      break label105;
+    }
+    if (QLog.isColorLevel()) {
       QLog.w("TroopAlbumPlugin", 2, "handleQunPickQzoneAlbum,decode param error");
     }
   }
@@ -175,20 +197,31 @@ public class TroopAlbumPlugin
   {
     try
     {
-      boolean bool = paramJSContext.getActivity().getSharedPreferences("troop_album" + BaseApplicationImpl.sApplication.getRuntime().getAccount(), 0).getBoolean("is_exit_fail_misson", false);
-      QLog.w("TroopAlbumPlugin", 2, "isExitFailMission:" + bool);
-      if (bool)
-      {
-        paramJSONObject = new JSONObject();
-        paramJSONObject.put("count", 1);
-        paramJSONObject.put("isFail", true);
-        paramJSContext.callJs("groupAlbum_onGroupAlbumUpload", paramJSONObject);
+      paramJSONObject = paramJSContext.getActivity();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("troop_album");
+      localStringBuilder.append(BaseApplicationImpl.sApplication.getRuntime().getAccount());
+      boolean bool = paramJSONObject.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("is_exit_fail_misson", false);
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("isExitFailMission:");
+      paramJSONObject.append(bool);
+      QLog.w("TroopAlbumPlugin", 2, paramJSONObject.toString());
+      if (!bool) {
+        break label147;
       }
+      paramJSONObject = new JSONObject();
+      paramJSONObject.put("count", 1);
+      paramJSONObject.put("isFail", true);
+      paramJSContext.callJs("groupAlbum_onGroupAlbumUpload", paramJSONObject);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      while (!QLog.isColorLevel()) {}
+      label132:
+      label147:
+      break label132;
+    }
+    if (QLog.isColorLevel()) {
       QLog.w("TroopAlbumPlugin", 2, "handleQunPickQzoneAlbum,decode param error");
     }
   }
@@ -197,7 +230,10 @@ public class TroopAlbumPlugin
   {
     if (System.currentTimeMillis() - this.lastClickTime < 2000L)
     {
-      QLog.d("TroopAlbumPlugin", 4, "handleShowPhotoList too many return " + (System.currentTimeMillis() - this.lastClickTime));
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("handleShowPhotoList too many return ");
+      paramJSONObject.append(System.currentTimeMillis() - this.lastClickTime);
+      QLog.d("TroopAlbumPlugin", 4, paramJSONObject.toString());
       return;
     }
     Object localObject2 = paramJSONObject.getJSONObject("data");
@@ -256,19 +292,20 @@ public class TroopAlbumPlugin
     paramJSONObject = ((JSONObject)localObject).optString("albumname");
     long l = ((JSONObject)localObject).getLong("groupCode");
     localObject = ((JSONObject)localObject).optString("albumid");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-    for (int i = 2;; i = 1)
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        QLog.d("TroopAlbumPlugin", 1, "handleUploadPhoto  init  mAlbumId is null!");
-      }
-      QZoneHelper.forwardMiniToTroopUploadPhoto(paramJSContext.getActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, 1, l, "", (String)localObject, paramJSONObject, 7001, 43);
-      this.troopAlbumJsContext = paramJSContext;
-      paramJSONObject = new IntentFilter();
-      paramJSONObject.addAction("troop_upload");
-      paramJSContext.getActivity().registerReceiver(this.troopAlbumReceiver, paramJSONObject);
-      return;
+    int i;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      i = 2;
+    } else {
+      i = 1;
     }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      QLog.d("TroopAlbumPlugin", 1, "handleUploadPhoto  init  mAlbumId is null!");
+    }
+    QZoneHelper.forwardMiniToTroopUploadPhoto(paramJSContext.getActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, 1, l, "", (String)localObject, paramJSONObject, 7001, 43);
+    this.troopAlbumJsContext = paramJSContext;
+    paramJSONObject = new IntentFilter();
+    paramJSONObject.addAction("troop_upload");
+    paramJSContext.getActivity().registerReceiver(this.troopAlbumReceiver, paramJSONObject);
   }
   
   private boolean isSdcardWorking()
@@ -280,72 +317,73 @@ public class TroopAlbumPlugin
   
   public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
-    if (paramJSContext != null) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("TroopAlbumPlugin", 2, paramJSONObject.toString());
-        }
-        str = paramJSONObject.optString("api_name");
-        if (str.equals("groupAlbum_groupUploadPhoto"))
-        {
-          handleUploadPhoto(paramJSONObject, paramJSContext);
-          return;
-        }
-        if (str.equals("groupAlbum_openUserQzoneHome"))
-        {
-          handleJumpToQzone(paramJSONObject, paramJSContext);
-          return;
-        }
+    if (paramJSContext != null) {}
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("TroopAlbumPlugin", 2, paramJSONObject.toString());
       }
-      catch (Exception paramJSONObject)
+      String str = paramJSONObject.optString("api_name");
+      if (str.equals("groupAlbum_groupUploadPhoto"))
       {
-        String str;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("TroopAlbumPlugin", 2, "handleGroupUploadPhoto,decode param error");
-          return;
-          if (str.equals("groupAlbum_importGroupAIO"))
-          {
-            handleChatAio(paramJSONObject, paramJSContext);
-            return;
-          }
-          if (str.equals("groupAlbum_showGroupPhotoBrowser"))
-          {
-            handleShowPhotoList(paramJSONObject, paramJSContext);
-            return;
-          }
-          if (str.equals("groupAlbum_jumpGroupAlbumSendBox"))
-          {
-            handleJumpToPublishBox(paramJSContext);
-            return;
-          }
-          if (str.equals("groupAlbum_downloadGroupAlbumPhoto"))
-          {
-            handleDownloadPic(paramJSONObject, paramJSContext);
-            return;
-          }
-          if (str.equals("groupAlbum_jumpCategoryAlbum"))
-          {
-            handleJumpCategoryAlbum(paramJSONObject, paramJSContext);
-            return;
-          }
-          if (str.equals("groupAlbum_pickQzoneAlbum"))
-          {
-            handleQunDidPickAlbum(paramJSONObject, paramJSContext);
-            return;
-          }
-          if (str.equals("groupAlbum_start")) {
-            handleQunStartAlbum(paramJSONObject, paramJSContext);
-          }
-        }
+        handleUploadPhoto(paramJSONObject, paramJSContext);
+        return;
       }
+      if (str.equals("groupAlbum_openUserQzoneHome"))
+      {
+        handleJumpToQzone(paramJSONObject, paramJSContext);
+        return;
+      }
+      if (str.equals("groupAlbum_importGroupAIO"))
+      {
+        handleChatAio(paramJSONObject, paramJSContext);
+        return;
+      }
+      if (str.equals("groupAlbum_showGroupPhotoBrowser"))
+      {
+        handleShowPhotoList(paramJSONObject, paramJSContext);
+        return;
+      }
+      if (str.equals("groupAlbum_jumpGroupAlbumSendBox"))
+      {
+        handleJumpToPublishBox(paramJSContext);
+        return;
+      }
+      if (str.equals("groupAlbum_downloadGroupAlbumPhoto"))
+      {
+        handleDownloadPic(paramJSONObject, paramJSContext);
+        return;
+      }
+      if (str.equals("groupAlbum_jumpCategoryAlbum"))
+      {
+        handleJumpCategoryAlbum(paramJSONObject, paramJSContext);
+        return;
+      }
+      if (str.equals("groupAlbum_pickQzoneAlbum"))
+      {
+        handleQunDidPickAlbum(paramJSONObject, paramJSContext);
+        return;
+      }
+      if (!str.equals("groupAlbum_start")) {
+        break label186;
+      }
+      handleQunStartAlbum(paramJSONObject, paramJSContext);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      label171:
+      label186:
+      break label171;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("TroopAlbumPlugin", 2, "handleGroupUploadPhoto,decode param error");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TroopAlbumPlugin
  * JD-Core Version:    0.7.0.1
  */

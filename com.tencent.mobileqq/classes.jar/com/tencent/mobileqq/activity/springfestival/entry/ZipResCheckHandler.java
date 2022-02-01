@@ -52,9 +52,13 @@ public class ZipResCheckHandler
   private void a(Message paramMessage)
   {
     paramMessage = ((List)paramMessage.obj).iterator();
-    for (boolean bool = true; paramMessage.hasNext(); bool = a((ZipRes)paramMessage.next(), true) & bool) {}
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryIZipResCheck$OnZipResCheckCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryIZipResCheck$OnZipResCheckCallback.a(bool, this.jdField_a_of_type_Int);
+    boolean bool = true;
+    while (paramMessage.hasNext()) {
+      bool &= a((ZipRes)paramMessage.next(), true);
+    }
+    paramMessage = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryIZipResCheck$OnZipResCheckCallback;
+    if (paramMessage != null) {
+      paramMessage.a(bool, this.jdField_a_of_type_Int);
     }
   }
   
@@ -73,15 +77,16 @@ public class ZipResCheckHandler
   
   private void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      paramString = new File(paramString);
-    } while (!paramString.exists());
+    }
+    paramString = new File(paramString);
+    if (!paramString.exists()) {
+      return;
+    }
     try
     {
-      FileUtils.a(paramString);
+      FileUtils.deleteFile(paramString);
       return;
     }
     catch (Throwable paramString)
@@ -92,24 +97,30 @@ public class ZipResCheckHandler
   
   private void a(String paramString, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBoolean)) {
-      return;
-    }
-    ZipRes localZipRes = a(paramString);
-    if (QLog.isColorLevel()) {
-      if (localZipRes == null) {
-        break label83;
-      }
-    }
-    label83:
-    for (paramBoolean = true;; paramBoolean = false)
+    if (!TextUtils.isEmpty(paramString))
     {
-      QLog.i("shua2021_ZipResCheckHandler", 2, String.format("onZipResDownloaded url=%s findZipRes=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
-      if ((localZipRes == null) || (!localZipRes.isNecessary) || (!a(localZipRes, false))) {
-        break;
+      if (paramBoolean) {
+        return;
       }
-      a(false);
-      return;
+      ZipRes localZipRes = a(paramString);
+      if (QLog.isColorLevel())
+      {
+        if (localZipRes != null) {
+          paramBoolean = true;
+        } else {
+          paramBoolean = false;
+        }
+        QLog.i("shua2021_ZipResCheckHandler", 2, String.format("onZipResDownloaded url=%s findZipRes=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+      }
+      if (localZipRes != null)
+      {
+        if (!localZipRes.isNecessary) {
+          return;
+        }
+        if (a(localZipRes, false)) {
+          a(false);
+        }
+      }
     }
   }
   
@@ -123,25 +134,15 @@ public class ZipResCheckHandler
       String str1 = PreloadStaticApi.a(paramZipRes.url);
       String str2 = PreloadResHandler.c(paramZipRes.url);
       boolean bool3 = PreloadStaticApi.b(str2);
-      boolean bool2;
       boolean bool1;
+      boolean bool2;
       if (!bool3)
       {
-        bool2 = false;
         bool1 = false;
+        bool2 = false;
       }
-      for (;;)
+      else
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("shua2021_ZipResCheckHandler", 2, String.format("checkZipRes checkOk=%b zipFolderValid=%b checkIntegrity=%b \nzipRes=%s \nzipFilePath=%s zipFolderPath=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(bool2), paramZipRes, str1, str2 }));
-        }
-        if ((bool1) || (!paramBoolean)) {
-          break;
-        }
-        a(str1);
-        a(str2);
-        a(paramZipRes);
-        break;
         bool2 = a(str2);
         if (!bool2)
         {
@@ -153,14 +154,23 @@ public class ZipResCheckHandler
           bool1 = true;
         }
       }
+      if (QLog.isColorLevel()) {
+        QLog.i("shua2021_ZipResCheckHandler", 2, String.format("checkZipRes checkOk=%b zipFolderValid=%b checkIntegrity=%b \nzipRes=%s \nzipFilePath=%s zipFolderPath=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(bool2), paramZipRes, str1, str2 }));
+      }
+      if ((!bool1) && (paramBoolean))
+      {
+        a(str1);
+        a(str2);
+        a(paramZipRes);
+      }
       return bool1;
     }
     catch (Throwable paramZipRes)
     {
       SpringHbMonitorReporter.a(401, paramZipRes, new String[0]);
       QLog.d("shua2021_ZipResCheckHandler", 1, paramZipRes.getMessage(), paramZipRes);
-      return false;
     }
+    return false;
   }
   
   private boolean a(String paramString)
@@ -171,65 +181,71 @@ public class ZipResCheckHandler
       int j;
       try
       {
-        List localList = WifiSdkUtil.a(new File(paramString + File.separator + "list.txt"));
-        if (localList.isEmpty())
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append("list.txt");
+        localObject1 = WifiSdkUtil.a(new File(((StringBuilder)localObject1).toString()));
+        if (((List)localObject1).isEmpty())
         {
           QLog.d("shua2021_ZipResCheckHandler", 1, String.format("checkIntegrityOfFolder md5List is empty. folder=%s", new Object[] { paramString }));
           return false;
         }
-        Object localObject = new File(paramString);
-        if (((File)localObject).isDirectory())
+        Object localObject2 = new File(paramString);
+        if (((File)localObject2).isDirectory())
         {
-          localObject = ((File)localObject).listFiles();
-          if (localObject == null)
-          {
+          localObject2 = ((File)localObject2).listFiles();
+          if (localObject2 == null) {
             i = 0;
-            if ((i == 0) || (i < localList.size() + 1))
+          } else {
+            i = localObject2.length;
+          }
+          if ((i != 0) && (i >= ((List)localObject1).size() + 1))
+          {
+            int k = localObject2.length;
+            i = 0;
+            if (i < k)
             {
-              QLog.d("shua2021_ZipResCheckHandler", 1, String.format("checkIntegrityOfFolder size not match. md5.size=%d fileSize=%d folder=%s", new Object[] { Integer.valueOf(localList.size()), Integer.valueOf(i), paramString }));
-              return false;
+              paramString = MD5Coding.encodeFile2HexStr(localObject2[i].getPath());
+              if (TextUtils.isEmpty(paramString)) {
+                break label370;
+              }
+              j = ((List)localObject1).size() - 1;
+              if (j < 0) {
+                break label370;
+              }
+              if (!paramString.equalsIgnoreCase((String)((List)localObject1).get(j))) {
+                break label363;
+              }
+              ((List)localObject1).remove(j);
+              break label363;
             }
           }
           else
           {
-            i = localObject.length;
-            continue;
-          }
-          int k = localObject.length;
-          i = 0;
-          if (i < k)
-          {
-            paramString = MD5Coding.encodeFile2HexStr(localObject[i].getPath());
-            if (TextUtils.isEmpty(paramString)) {
-              break label344;
-            }
-            j = localList.size() - 1;
-            if (j < 0) {
-              break label344;
-            }
-            if (!paramString.equalsIgnoreCase((String)localList.get(j))) {
-              break label337;
-            }
-            localList.remove(j);
-            break label337;
+            QLog.d("shua2021_ZipResCheckHandler", 1, String.format("checkIntegrityOfFolder size not match. md5.size=%d fileSize=%d folder=%s", new Object[] { Integer.valueOf(((List)localObject1).size()), Integer.valueOf(i), paramString }));
+            return false;
           }
         }
         if (QLog.isColorLevel()) {
-          QLog.i("shua2021_ZipResCheckHandler", 2, String.format("checkIntegrityOfFolder checkOk=%b remainMd5List=%s", new Object[] { Boolean.valueOf(localList.isEmpty()), localList }));
+          QLog.i("shua2021_ZipResCheckHandler", 2, String.format("checkIntegrityOfFolder checkOk=%b remainMd5List=%s", new Object[] { Boolean.valueOf(((List)localObject1).isEmpty()), localObject1 }));
         }
-        boolean bool = localList.isEmpty();
+        boolean bool = ((List)localObject1).isEmpty();
         return bool;
       }
       catch (Throwable paramString)
       {
         SpringHbMonitorReporter.a(402, paramString, new String[0]);
-        QLog.d("shua2021_ZipResCheckHandler", 1, "checkIntegrityOfFolder" + paramString.getMessage(), paramString);
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("checkIntegrityOfFolder");
+        ((StringBuilder)localObject1).append(paramString.getMessage());
+        QLog.d("shua2021_ZipResCheckHandler", 1, ((StringBuilder)localObject1).toString(), paramString);
         return false;
       }
-      label337:
+      label363:
       j -= 1;
       continue;
-      label344:
+      label370:
       i += 1;
     }
   }
@@ -237,10 +253,10 @@ public class ZipResCheckHandler
   private boolean a(boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ZipRes localZipRes = (ZipRes)localIterator.next();
+      ZipRes localZipRes = (ZipRes)((Iterator)localObject).next();
       if ((localZipRes.isNecessary) && (!TextUtils.isEmpty(localZipRes.url)) && (!localZipRes.isRecentlyCheckOk())) {
         localArrayList.add(localZipRes);
       }
@@ -249,48 +265,23 @@ public class ZipResCheckHandler
     if (!localArrayList.isEmpty())
     {
       Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, 0, 0, localArrayList).sendToTarget();
-      if (QLog.isColorLevel()) {
-        if (localArrayList.isEmpty()) {
-          break label185;
-        }
-      }
     }
-    label185:
-    for (paramBoolean = true;; paramBoolean = false)
+    else if (!paramBoolean)
     {
-      QLog.i("shua2021_ZipResCheckHandler", 2, String.format("makeCheckAllResIfNeed needCheck=%b", new Object[] { Boolean.valueOf(paramBoolean) }));
-      if (localArrayList.isEmpty()) {
-        break label190;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryIZipResCheck$OnZipResCheckCallback;
+      if (localObject != null) {
+        ((IZipResCheck.OnZipResCheckCallback)localObject).a(true, this.jdField_a_of_type_Int);
       }
-      return true;
-      if ((paramBoolean) || (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryIZipResCheck$OnZipResCheckCallback == null)) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryIZipResCheck$OnZipResCheckCallback.a(true, this.jdField_a_of_type_Int);
-      break;
-    }
-    label190:
-    return false;
-  }
-  
-  public boolean a(List<ZipRes> paramList, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(paramList);
     }
     if (QLog.isColorLevel()) {
-      QLog.i("shua2021_ZipResCheckHandler", 2, String.format("onGetZipResList resSize=%d cfgVer=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      QLog.i("shua2021_ZipResCheckHandler", 2, String.format("makeCheckAllResIfNeed needCheck=%b", new Object[] { Boolean.valueOf(localArrayList.isEmpty() ^ true) }));
     }
-    return a(true);
+    return localArrayList.isEmpty() ^ true;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return false;
     }
     try
@@ -313,7 +304,7 @@ public class ZipResCheckHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.ZipResCheckHandler
  * JD-Core Version:    0.7.0.1
  */

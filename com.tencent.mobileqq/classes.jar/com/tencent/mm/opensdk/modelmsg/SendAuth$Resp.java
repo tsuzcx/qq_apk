@@ -26,7 +26,8 @@ public class SendAuth$Resp
   
   public boolean checkArgs()
   {
-    if ((this.state != null) && (this.state.length() > 1024))
+    String str = this.state;
+    if ((str != null) && (str.length() > 1024))
     {
       Log.e("MicroMsg.SDK.SendAuth.Resp", "checkArgs fail, state is invalid");
       return false;
@@ -63,7 +64,7 @@ public class SendAuth$Resp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.SendAuth.Resp
  * JD-Core Version:    0.7.0.1
  */

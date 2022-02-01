@@ -23,7 +23,15 @@ public class TAVTimeRange
   
   public boolean contain(long paramLong)
   {
-    return (this._duration > 0L) && (this._start < paramLong) && (paramLong < this._start + this._duration);
+    long l1 = this._duration;
+    if (l1 > 0L)
+    {
+      long l2 = this._start;
+      if ((l2 < paramLong) && (paramLong < l2 + l1)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public long duration()
@@ -38,15 +46,13 @@ public class TAVTimeRange
   
   public boolean equals(TAVTimeRange paramTAVTimeRange)
   {
-    if (paramTAVTimeRange == this) {}
-    do
-    {
+    if (paramTAVTimeRange == this) {
       return true;
-      if (paramTAVTimeRange == null) {
-        return false;
-      }
-    } while ((this._start == paramTAVTimeRange._start) && (this._duration == paramTAVTimeRange._duration));
-    return false;
+    }
+    if (paramTAVTimeRange == null) {
+      return false;
+    }
+    return (this._start == paramTAVTimeRange._start) && (this._duration == paramTAVTimeRange._duration);
   }
   
   public TimeUnit getUnit()
@@ -66,7 +72,17 @@ public class TAVTimeRange
   
   public String toString()
   {
-    return "TAVTimeRange{_unit=" + this._unit + ", _start=" + this._start + ", _duration=" + this._duration + ", _end=" + (this._start + this._duration) + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVTimeRange{_unit=");
+    localStringBuilder.append(this._unit);
+    localStringBuilder.append(", _start=");
+    localStringBuilder.append(this._start);
+    localStringBuilder.append(", _duration=");
+    localStringBuilder.append(this._duration);
+    localStringBuilder.append(", _end=");
+    localStringBuilder.append(this._start + this._duration);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void update(long paramLong1, long paramLong2)
@@ -77,7 +93,7 @@ public class TAVTimeRange
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.taveffect.core.TAVTimeRange
  * JD-Core Version:    0.7.0.1
  */

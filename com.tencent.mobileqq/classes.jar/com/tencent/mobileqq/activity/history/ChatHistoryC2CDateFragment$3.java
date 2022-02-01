@@ -13,8 +13,13 @@ class ChatHistoryC2CDateFragment$3
   
   public void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramObject = ChatHistoryC2CDateFragment.b();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetRoamMsgForDate ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d(paramObject, 2, localStringBuilder.toString());
     }
     this.a.p();
     if (paramBoolean)
@@ -22,14 +27,15 @@ class ChatHistoryC2CDateFragment$3
       ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
       return;
     }
-    this.a.c(this.a.getString(2131690871));
+    paramObject = this.a;
+    paramObject.b(paramObject.getString(2131690800));
   }
   
   public void b(int paramInt1, int paramInt2, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3
  * JD-Core Version:    0.7.0.1
  */

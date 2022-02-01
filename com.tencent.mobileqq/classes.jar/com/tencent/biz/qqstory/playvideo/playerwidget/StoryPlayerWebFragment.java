@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +12,14 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import com.tencent.biz.common.util.Util;
 import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.webview.swift.SwiftBrowserUIStyle;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserSetting;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public class StoryPlayerWebFragment
   extends WebViewFragment
@@ -48,15 +49,40 @@ public class StoryPlayerWebFragment
     return localStoryPlayerWebFragment;
   }
   
+  public void a()
+  {
+    if (getUIStyleHandler().c) {
+      return;
+    }
+    SLog.b("StoryPlayerWebFragment", "showPreview()");
+    Util.a("Web_qqbrowser_ShowPreview");
+    long l = System.nanoTime();
+    getUIStyleHandler().a(this.intent);
+    getUIStyle().c = 0L;
+    this.contentView.a(getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.D);
+    getWebTitleBarInterface().c(true);
+    getWebTitleBarInterface().a(false);
+    getWebTitleBarInterface().b(false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init view 1, cost = ");
+    localStringBuilder.append((System.nanoTime() - l) / 1000000L);
+    SLog.b("StoryPlayerWebFragment", localStringBuilder.toString());
+    getUIStyleHandler().c = true;
+    getUIStyleHandler().jdField_a_of_type_AndroidWidgetProgressBar = this.contentView.jdField_a_of_type_AndroidWidgetProgressBar;
+    this.contentView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    getUIStyleHandler().a(this.mUrl);
+    getUIStyleHandler().b = false;
+    Util.b("Web_qqbrowser_ShowPreview");
+  }
+  
   public void a(StoryPlayerWebFragment.StoryPlayerWebFragmentEventListener paramStoryPlayerWebFragmentEventListener)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment$StoryPlayerWebFragmentEventListener = paramStoryPlayerWebFragmentEventListener;
   }
   
-  public void initWebView()
+  public WebViewKernelCallBack getWebViewKernelCallBack()
   {
-    super.initWebView();
-    this.mSetting.a("web_view_long_click", false);
+    return new StoryPlayerWebFragment.2(this, this.webViewSurface);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -64,8 +90,8 @@ public class StoryPlayerWebFragment
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     paramViewGroup = new IntentFilter();
     paramViewGroup.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-    getActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramViewGroup, "com.tencent.msg.permission.pushnotify", null);
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    getQBaseActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramViewGroup, "com.tencent.msg.permission.pushnotify", null);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -73,7 +99,7 @@ public class StoryPlayerWebFragment
   {
     super.onDestroy();
     SLog.b("StoryPlayerWebFragment", "onDestroy()");
-    getActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    getQBaseActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
   
   public void onPause()
@@ -86,38 +112,17 @@ public class StoryPlayerWebFragment
   {
     super.onResume();
     SLog.b("StoryPlayerWebFragment", "onResume()");
-    FragmentActivity localFragmentActivity = super.getActivity();
-    if (localFragmentActivity != null)
+    QBaseActivity localQBaseActivity = super.getQBaseActivity();
+    if (localQBaseActivity != null)
     {
-      int i = localFragmentActivity.getWindow().getDecorView().getSystemUiVisibility();
-      localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(i & 0xFFFFFFFD);
+      int i = localQBaseActivity.getWindow().getDecorView().getSystemUiVisibility();
+      localQBaseActivity.getWindow().getDecorView().setSystemUiVisibility(i & 0xFFFFFFFD);
     }
-  }
-  
-  public boolean showPreview()
-  {
-    SLog.b("StoryPlayerWebFragment", "showPreview()");
-    Util.a("Web_qqbrowser_ShowPreview");
-    long l = System.nanoTime();
-    this.mUIStyleHandler.a(this.intent);
-    this.mUIStyle.c = 0L;
-    this.contentView.a(this.mUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.D);
-    this.mNeedStatusTrans = true;
-    this.mActNeedImmersive = false;
-    setImmersiveStatus();
-    SLog.b("StoryPlayerWebFragment", "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
-    this.mUIStyleHandler.c = true;
-    this.mUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar = this.contentView.jdField_a_of_type_AndroidWidgetProgressBar;
-    this.contentView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.mUIStyleHandler.a(this.mUrl);
-    this.mUIStyleHandler.b = false;
-    Util.b("Web_qqbrowser_ShowPreview");
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment
  * JD-Core Version:    0.7.0.1
  */

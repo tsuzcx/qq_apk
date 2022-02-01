@@ -18,14 +18,18 @@ class CommodityListView$1
   
   public void onClick(View paramView)
   {
-    VSReporter.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.a()), "clk_shop", 0, 0, new String[0]);
+    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("auth_");
+    localStringBuilder.append(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.a()));
+    VSReporter.a(str, localStringBuilder.toString(), "clk_shop", 0, 0, new String[0]);
     SubscribeLaucher.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityListView.1
  * JD-Core Version:    0.7.0.1
  */

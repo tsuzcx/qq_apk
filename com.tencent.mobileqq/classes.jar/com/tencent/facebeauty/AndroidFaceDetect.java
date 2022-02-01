@@ -18,10 +18,23 @@ public class AndroidFaceDetect
     FaceParam localFaceParam = new FaceParam();
     Rect localRect1 = new Rect();
     localFaceParam.mFace = localRect1;
-    localRect1.left = ((int)(paramPointF.x - paramFloat * 1.2D));
-    localRect1.top = ((int)(paramPointF.y - paramFloat * 0.9D));
-    localRect1.right = ((int)(paramPointF.x + paramFloat * 1.2D));
-    localRect1.bottom = ((int)(paramPointF.y + paramFloat * 1.4D));
+    double d3 = paramPointF.x;
+    double d1 = paramFloat;
+    Double.isNaN(d1);
+    double d2 = 1.2D * d1;
+    Double.isNaN(d3);
+    localRect1.left = ((int)(d3 - d2));
+    d3 = paramPointF.y;
+    Double.isNaN(d1);
+    Double.isNaN(d3);
+    localRect1.top = ((int)(d3 - 0.9D * d1));
+    d3 = paramPointF.x;
+    Double.isNaN(d3);
+    localRect1.right = ((int)(d3 + d2));
+    d2 = paramPointF.y;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    localRect1.bottom = ((int)(d2 + 1.4D * d1));
     if (localRect1.left < 0) {
       localRect1.left = 0;
     }
@@ -36,10 +49,22 @@ public class AndroidFaceDetect
     }
     Rect localRect2 = new Rect();
     localFaceParam.mEye = localRect2;
-    localRect2.left = ((int)(paramPointF.x - 0.8D * paramFloat));
-    localRect2.top = ((int)(paramPointF.y - paramFloat * 0.2D));
-    localRect2.right = ((int)(paramPointF.x + 0.8D * paramFloat));
-    localRect2.bottom = ((int)(paramPointF.y + paramFloat * 0.28D));
+    d3 = paramPointF.x;
+    Double.isNaN(d1);
+    d2 = 0.8D * d1;
+    Double.isNaN(d3);
+    localRect2.left = ((int)(d3 - d2));
+    d3 = paramPointF.y;
+    Double.isNaN(d1);
+    Double.isNaN(d3);
+    localRect2.top = ((int)(d3 - 0.2D * d1));
+    d3 = paramPointF.x;
+    Double.isNaN(d3);
+    localRect2.right = ((int)(d3 + d2));
+    d2 = paramPointF.y;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    localRect2.bottom = ((int)(d2 + d1 * 0.28D));
     if (localRect2.left < 0) {
       localRect2.left = 0;
     }
@@ -62,15 +87,27 @@ public class AndroidFaceDetect
     paramPointF = new Rect(paramPointF);
     localFaceParam.mRightEye = paramPointF;
     paramPointF.left += localRect2.width() * 2 / 3;
-    int i = paramPointF.right;
-    paramPointF.right = (localRect2.width() * 2 / 3 + i);
+    paramPointF.right += localRect2.width() * 2 / 3;
     localFaceParam.mRightEyeCenter = new Point(paramPointF.centerX(), paramPointF.centerY());
     paramPointF = new Rect();
     localFaceParam.mMouth = paramPointF;
-    paramPointF.left = ((int)(localRect1.left + localRect1.width() * (1.0D - 0.4D) / 2.0D));
-    paramPointF.top = ((int)(localRect1.top + localRect1.height() * 0.72D));
-    paramPointF.right = ((int)(0.4D * localRect1.width()) + paramPointF.left);
-    paramPointF.bottom = ((int)(localRect1.height() * (0.88D - 0.72D)) + paramPointF.top);
+    d1 = localRect1.left;
+    d2 = localRect1.width();
+    Double.isNaN(d2);
+    d2 = d2 * 0.6D / 2.0D;
+    Double.isNaN(d1);
+    paramPointF.left = ((int)(d1 + d2));
+    d1 = localRect1.top;
+    d2 = localRect1.height();
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    paramPointF.top = ((int)(d1 + d2 * 0.72D));
+    d1 = localRect1.width();
+    Double.isNaN(d1);
+    paramPointF.right = ((int)(d1 * 0.4D) + paramPointF.left);
+    d1 = localRect1.height();
+    Double.isNaN(d1);
+    paramPointF.bottom = ((int)(d1 * 0.16D) + paramPointF.top);
     localFaceParam.width = paramInt1;
     localFaceParam.height = paramInt2;
     this.mFaceParams.add(localFaceParam);
@@ -78,98 +115,104 @@ public class AndroidFaceDetect
   
   protected void doDetectFace(Bitmap paramBitmap)
   {
+    Object localObject1 = paramBitmap;
+    int i3 = 0;
     this.mDetectedFace = false;
     this.mFaceParams.clear();
     this.faceCount = 0;
-    if (paramBitmap == null) {}
-    for (;;)
-    {
+    if (localObject1 == null) {
       return;
-      int k = 1;
-      int n = paramBitmap.getWidth();
-      int i1 = paramBitmap.getHeight();
-      PointF localPointF = new PointF();
-      FaceDetector localFaceDetector;
-      Object localObject;
-      int i2;
-      if (paramBitmap.getConfig() == Bitmap.Config.RGB_565)
-      {
-        localFaceDetector = new FaceDetector(paramBitmap.getWidth(), paramBitmap.getHeight(), 10);
-        localObject = new FaceDetector.Face[10];
-        i2 = localFaceDetector.findFaces(paramBitmap, (FaceDetector.Face[])localObject);
-        paramBitmap.recycle();
-        this.faceCount = i2;
-        i = 0;
+    }
+    int i1 = paramBitmap.getWidth();
+    int i2 = paramBitmap.getHeight();
+    PointF localPointF = new PointF();
+    int k;
+    int i;
+    int j;
+    if (paramBitmap.getConfig() == Bitmap.Config.RGB_565)
+    {
+      k = 1;
+    }
+    else
+    {
+      if (i1 > i2) {
+        i = i1;
+      } else {
+        i = i2;
       }
+      j = i / 512;
+      i = j;
+      if (j < 1) {
+        i = 1;
+      }
+    }
+    try
+    {
+      Object localObject2 = Bitmap.createBitmap(i1 / i, i2 / i, Bitmap.Config.RGB_565);
+      new Canvas((Bitmap)localObject2).drawBitmap((Bitmap)localObject1, new Rect(0, 0, i1, i2), new Rect(0, 0, i1 / i, i2 / i), null);
+      localObject1 = localObject2;
+      k = i;
+      localObject2 = new FaceDetector(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), 10);
+      paramBitmap = new FaceDetector.Face[10];
+      int i4 = ((FaceDetector)localObject2).findFaces((Bitmap)localObject1, paramBitmap);
+      ((Bitmap)localObject1).recycle();
+      this.faceCount = i4;
       float f1;
-      for (;;)
+      int m;
+      float f3;
+      float f2;
+      for (i = 0;; i = m)
       {
+        j = i3;
         if (i >= this.faceCount) {
-          break label376;
+          break;
         }
-        paramBitmap = localObject[i];
-        f1 = paramBitmap.eyesDistance();
-        int j = i + 1;
-        int m = i;
+        localObject1 = paramBitmap[i];
+        f1 = ((FaceDetector.Face)localObject1).eyesDistance();
+        m = i + 1;
+        int n = i;
+        j = m;
         while (j < this.faceCount)
         {
-          float f3 = localObject[j].eyesDistance();
-          float f2 = f1;
+          f3 = paramBitmap[j].eyesDistance();
+          f2 = f1;
           if (f3 > f1)
           {
+            n = j;
             f2 = f3;
-            m = j;
           }
           j += 1;
           f1 = f2;
-          continue;
-          if (n > i1) {}
-          for (i = n;; i = i1) {
-            for (;;)
-            {
-              j = i / 512;
-              i = j;
-              if (j < 1) {
-                i = 1;
-              }
-              try
-              {
-                localObject = Bitmap.createBitmap(n / i, i1 / i, Bitmap.Config.RGB_565);
-                new Canvas((Bitmap)localObject).drawBitmap(paramBitmap, new Rect(0, 0, n, i1), new Rect(0, 0, n / i, i1 / i), null);
-                paramBitmap = (Bitmap)localObject;
-                k = i;
-              }
-              catch (OutOfMemoryError localOutOfMemoryError)
-              {
-                localPointF.x = (paramBitmap.getWidth() / 2);
-                localPointF.y = (paramBitmap.getHeight() / 2);
-                caculateFaceAndEyes(localPointF, paramBitmap.getWidth() / 4, n, i1);
-                return;
-              }
-            }
-          }
         }
-        if (m != i)
+        if (n != i)
         {
-          localFaceDetector = localOutOfMemoryError[m];
-          localOutOfMemoryError[m] = paramBitmap;
-          localOutOfMemoryError[i] = localFaceDetector;
+          localObject2 = paramBitmap[n];
+          paramBitmap[n] = localObject1;
+          paramBitmap[i] = localObject2;
         }
-        i += 1;
       }
-      label376:
-      int i = 0;
-      while (i < i2)
+      while (j < i4)
       {
         this.mDetectedFace = true;
-        localOutOfMemoryError[i].getMidPoint(localPointF);
-        f1 = localOutOfMemoryError[i].eyesDistance();
-        localPointF.x *= k;
-        localPointF.y *= k;
-        caculateFaceAndEyes(localPointF, f1 * k, n, i1);
-        i += 1;
+        paramBitmap[j].getMidPoint(localPointF);
+        f1 = paramBitmap[j].eyesDistance();
+        f2 = localPointF.x;
+        f3 = k;
+        localPointF.x = (f2 * f3);
+        localPointF.y *= f3;
+        caculateFaceAndEyes(localPointF, f1 * f3, i1, i2);
+        j += 1;
       }
+      return;
     }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label433:
+      break label433;
+    }
+    localPointF.x = (paramBitmap.getWidth() / 2);
+    localPointF.y = (paramBitmap.getHeight() / 2);
+    caculateFaceAndEyes(localPointF, paramBitmap.getWidth() / 4, i1, i2);
   }
   
   protected void doInitial() {}
@@ -178,7 +221,7 @@ public class AndroidFaceDetect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.facebeauty.AndroidFaceDetect
  * JD-Core Version:    0.7.0.1
  */

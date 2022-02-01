@@ -1,13 +1,8 @@
 package com.tencent.mobileqq.vas.utils;
 
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/utils/CacheHelper;", "", "()V", "cacheLock", "Ljava/util/concurrent/locks/ReadWriteLock;", "objectCache", "Lcom/tencent/mobileqq/vas/utils/CacheHelper$ObjectCache;", "clearCache", "", "getObject", "T", "options", "Lcom/tencent/mobileqq/vas/utils/CacheHelper$AbsOptions;", "(Lcom/tencent/mobileqq/vas/utils/CacheHelper$AbsOptions;)Ljava/lang/Object;", "AbsOptions", "ObjectCache", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class CacheHelper
@@ -22,62 +17,127 @@ public final class CacheHelper
     jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock = (ReadWriteLock)new ReentrantReadWriteLock();
   }
   
-  @JvmStatic
-  @NotNull
-  public static final <T> T a(@NotNull CacheHelper.AbsOptions paramAbsOptions)
+  /* Error */
+  @kotlin.jvm.JvmStatic
+  @org.jetbrains.annotations.NotNull
+  public static final <T> T a(@org.jetbrains.annotations.NotNull CacheHelper.AbsOptions paramAbsOptions)
   {
-    Intrinsics.checkParameterIsNotNull(paramAbsOptions, "options");
-    String str = paramAbsOptions.b();
-    Object localObject;
-    try
-    {
-      jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().lock();
-      localObject = jdField_a_of_type_ComTencentMobileqqVasUtilsCacheHelper$ObjectCache.a(str);
-      if ((localObject == null) || (!paramAbsOptions.a(localObject))) {
-        break label89;
-      }
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type T");
-      }
-    }
-    finally
-    {
-      jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().unlock();
-    }
-    jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().unlock();
-    return localObject;
-    label89:
-    jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().unlock();
-    try
-    {
-      jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock().lock();
-      localObject = jdField_a_of_type_ComTencentMobileqqVasUtilsCacheHelper$ObjectCache.a(str);
-      if ((localObject == null) || (!paramAbsOptions.a(localObject))) {
-        break label180;
-      }
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type T");
-      }
-    }
-    finally
-    {
-      jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock().unlock();
-    }
-    jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock().unlock();
-    return localObject;
-    label180:
-    paramAbsOptions = paramAbsOptions.a();
-    jdField_a_of_type_ComTencentMobileqqVasUtilsCacheHelper$ObjectCache.a(str, paramAbsOptions);
-    if (paramAbsOptions == null) {
-      throw new TypeCastException("null cannot be cast to non-null type T");
-    }
-    jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock().unlock();
-    return paramAbsOptions;
+    // Byte code:
+    //   0: aload_0
+    //   1: ldc 55
+    //   3: invokestatic 61	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   6: aload_0
+    //   7: invokevirtual 67	com/tencent/mobileqq/vas/utils/CacheHelper$AbsOptions:b	()Ljava/lang/String;
+    //   10: astore_2
+    //   11: getstatic 45	com/tencent/mobileqq/vas/utils/CacheHelper:jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   14: invokeinterface 71 1 0
+    //   19: invokeinterface 76 1 0
+    //   24: getstatic 50	com/tencent/mobileqq/vas/utils/CacheHelper:jdField_a_of_type_ComTencentMobileqqVasUtilsCacheHelper$ObjectCache	Lcom/tencent/mobileqq/vas/utils/CacheHelper$ObjectCache;
+    //   27: aload_2
+    //   28: invokevirtual 79	com/tencent/mobileqq/vas/utils/CacheHelper$ObjectCache:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   31: astore_3
+    //   32: aload_3
+    //   33: ifnull +42 -> 75
+    //   36: aload_0
+    //   37: aload_3
+    //   38: invokevirtual 82	com/tencent/mobileqq/vas/utils/CacheHelper$AbsOptions:a	(Ljava/lang/Object;)Z
+    //   41: istore_1
+    //   42: iload_1
+    //   43: ifeq +32 -> 75
+    //   46: aload_3
+    //   47: ifnull +18 -> 65
+    //   50: getstatic 45	com/tencent/mobileqq/vas/utils/CacheHelper:jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   53: invokeinterface 71 1 0
+    //   58: invokeinterface 85 1 0
+    //   63: aload_3
+    //   64: areturn
+    //   65: new 87	kotlin/TypeCastException
+    //   68: dup
+    //   69: ldc 89
+    //   71: invokespecial 92	kotlin/TypeCastException:<init>	(Ljava/lang/String;)V
+    //   74: athrow
+    //   75: getstatic 45	com/tencent/mobileqq/vas/utils/CacheHelper:jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   78: invokeinterface 71 1 0
+    //   83: invokeinterface 85 1 0
+    //   88: getstatic 45	com/tencent/mobileqq/vas/utils/CacheHelper:jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   91: invokeinterface 95 1 0
+    //   96: invokeinterface 76 1 0
+    //   101: getstatic 50	com/tencent/mobileqq/vas/utils/CacheHelper:jdField_a_of_type_ComTencentMobileqqVasUtilsCacheHelper$ObjectCache	Lcom/tencent/mobileqq/vas/utils/CacheHelper$ObjectCache;
+    //   104: aload_2
+    //   105: invokevirtual 79	com/tencent/mobileqq/vas/utils/CacheHelper$ObjectCache:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   108: astore_3
+    //   109: aload_3
+    //   110: ifnull +42 -> 152
+    //   113: aload_0
+    //   114: aload_3
+    //   115: invokevirtual 82	com/tencent/mobileqq/vas/utils/CacheHelper$AbsOptions:a	(Ljava/lang/Object;)Z
+    //   118: istore_1
+    //   119: iload_1
+    //   120: ifeq +32 -> 152
+    //   123: aload_3
+    //   124: ifnull +18 -> 142
+    //   127: getstatic 45	com/tencent/mobileqq/vas/utils/CacheHelper:jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   130: invokeinterface 95 1 0
+    //   135: invokeinterface 85 1 0
+    //   140: aload_3
+    //   141: areturn
+    //   142: new 87	kotlin/TypeCastException
+    //   145: dup
+    //   146: ldc 89
+    //   148: invokespecial 92	kotlin/TypeCastException:<init>	(Ljava/lang/String;)V
+    //   151: athrow
+    //   152: aload_0
+    //   153: invokevirtual 98	com/tencent/mobileqq/vas/utils/CacheHelper$AbsOptions:a	()Ljava/lang/Object;
+    //   156: astore_0
+    //   157: getstatic 50	com/tencent/mobileqq/vas/utils/CacheHelper:jdField_a_of_type_ComTencentMobileqqVasUtilsCacheHelper$ObjectCache	Lcom/tencent/mobileqq/vas/utils/CacheHelper$ObjectCache;
+    //   160: aload_2
+    //   161: aload_0
+    //   162: invokevirtual 101	com/tencent/mobileqq/vas/utils/CacheHelper$ObjectCache:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   165: aload_0
+    //   166: ifnull +18 -> 184
+    //   169: getstatic 45	com/tencent/mobileqq/vas/utils/CacheHelper:jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   172: invokeinterface 95 1 0
+    //   177: invokeinterface 85 1 0
+    //   182: aload_0
+    //   183: areturn
+    //   184: new 87	kotlin/TypeCastException
+    //   187: dup
+    //   188: ldc 89
+    //   190: invokespecial 92	kotlin/TypeCastException:<init>	(Ljava/lang/String;)V
+    //   193: athrow
+    //   194: astore_0
+    //   195: getstatic 45	com/tencent/mobileqq/vas/utils/CacheHelper:jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   198: invokeinterface 95 1 0
+    //   203: invokeinterface 85 1 0
+    //   208: aload_0
+    //   209: athrow
+    //   210: astore_0
+    //   211: getstatic 45	com/tencent/mobileqq/vas/utils/CacheHelper:jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   214: invokeinterface 71 1 0
+    //   219: invokeinterface 85 1 0
+    //   224: aload_0
+    //   225: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	226	0	paramAbsOptions	CacheHelper.AbsOptions
+    //   41	79	1	bool	boolean
+    //   10	151	2	str	java.lang.String
+    //   31	110	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   88	109	194	finally
+    //   113	119	194	finally
+    //   142	152	194	finally
+    //   152	165	194	finally
+    //   184	194	194	finally
+    //   11	32	210	finally
+    //   36	42	210	finally
+    //   65	75	210	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.utils.CacheHelper
  * JD-Core Version:    0.7.0.1
  */

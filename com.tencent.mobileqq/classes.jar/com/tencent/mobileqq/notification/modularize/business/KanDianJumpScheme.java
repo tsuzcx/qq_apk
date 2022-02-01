@@ -3,17 +3,17 @@ package com.tencent.mobileqq.notification.modularize.business;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyLockScreenJumpDelegate;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.kandian.biz.common.baseui.api.IReadInJoyLockScreenJumpDelegate;
+import com.tencent.mobileqq.kandian.biz.daily.api.IKandianDailyManagerService;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.push.api.IKanDianMergeManager;
 import com.tencent.mobileqq.notification.modularize.BaseJumpScheme;
 import com.tencent.mobileqq.notification.modularize.PushComponent;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
@@ -30,83 +30,88 @@ public final class KanDianJumpScheme
   
   private final Intent a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, Context paramContext, PushComponent paramPushComponent)
   {
-    if (ReadInJoyUtils.b(paramMessageRecord))
+    if (((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).isDailySceneType(paramMessageRecord))
     {
-      paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_DAILY_MANAGER);
-      if (paramQQAppInterface == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager");
-      }
-      paramQQAppInterface = ReadInJoyLockScreenJumpDelegate.a(paramContext, 6, ((KandianDailyManager)paramQQAppInterface).b());
-      Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "ReadInJoyLockScreenJumpD…moveLockScreenRedDodInfo)");
+      paramQQAppInterface = paramQQAppInterface.getRuntimeService(IKandianDailyManagerService.class);
+      Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "app.getRuntimeService(IK…nagerService::class.java)");
+      paramQQAppInterface = (IKandianDailyManagerService)paramQQAppInterface;
+      paramQQAppInterface = ((IReadInJoyLockScreenJumpDelegate)QRoute.api(IReadInJoyLockScreenJumpDelegate.class)).getJumpDailyFragmentIntent(paramContext, 6, paramQQAppInterface.getAndRemoveLockScreenRedDodInfo());
     }
-    for (;;)
+    else
     {
-      paramQQAppInterface.putExtra("is_from_push_component", true);
-      paramQQAppInterface.putExtra("push_main_business_id", paramPushComponent.jdField_a_of_type_Int);
-      paramQQAppInterface.putExtra("push_sub_business_id", paramPushComponent.b);
-      paramQQAppInterface.putExtra("push_id", paramPushComponent.c);
-      paramQQAppInterface.putExtra("push_trigger_info", paramPushComponent.e);
-      paramQQAppInterface.addFlags(268435456);
-      return paramQQAppInterface;
-      paramQQAppInterface = ReadInJoyActivityHelper.a(paramContext, 6);
-      Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "ReadInJoyActivityHelper.…tent(context, launchFrom)");
+      paramQQAppInterface = ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getJumpReadInJoyTabIntent(paramContext, 6);
     }
+    paramQQAppInterface.putExtra("is_from_push_component", true);
+    paramQQAppInterface.putExtra("push_main_business_id", paramPushComponent.jdField_a_of_type_Int);
+    paramQQAppInterface.putExtra("push_sub_business_id", paramPushComponent.b);
+    paramQQAppInterface.putExtra("push_id", paramPushComponent.c);
+    paramQQAppInterface.putExtra("push_trigger_info", paramPushComponent.e);
+    paramQQAppInterface.addFlags(268435456);
+    return paramQQAppInterface;
   }
   
   private final MessageRecord a(QQAppInterface paramQQAppInterface, PushComponent paramPushComponent)
   {
-    paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
-    if (paramQQAppInterface == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager");
-    }
-    paramQQAppInterface = ((KandianMergeManager)paramQQAppInterface).a(paramPushComponent.jdField_a_of_type_ArrayOfByte, paramPushComponent.jdField_a_of_type_JavaLangString);
-    Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "km.createFakeMsgFrom0x13…ata, pushComponent.title)");
-    return paramQQAppInterface;
+    return ((IKanDianMergeManager)paramQQAppInterface.getRuntimeService(IKanDianMergeManager.class)).createFakeMsgFrom0x135PBBuffer(paramPushComponent.jdField_a_of_type_ArrayOfByte, paramPushComponent.jdField_a_of_type_JavaLangString);
   }
   
   private final PendingIntent e(PushComponent paramPushComponent)
   {
-    Object localObject = (Intent)null;
+    Object localObject1 = (Intent)null;
     BaseApplication localBaseApplication = BaseApplication.context;
+    Object localObject2;
     if (paramPushComponent.b == 1)
     {
-      QLog.d("KanDianJumpScheme", 1, "nativeJumpIntent bytesExtData: " + new String(paramPushComponent.jdField_a_of_type_ArrayOfByte, Charsets.UTF_8));
-      localObject = BaseApplicationImpl.getApplication();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if (localObject == null) {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("nativeJumpIntent bytesExtData: ");
+      ((StringBuilder)localObject1).append(new String(paramPushComponent.jdField_a_of_type_ArrayOfByte, Charsets.UTF_8));
+      QLog.d("KanDianJumpScheme", 1, ((StringBuilder)localObject1).toString());
+      localObject1 = BaseApplicationImpl.getApplication();
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.getApplication()");
+      localObject1 = ((BaseApplicationImpl)localObject1).getRuntime();
+      if (localObject1 != null)
+      {
+        Object localObject3 = (QQAppInterface)localObject1;
+        localObject2 = a((QQAppInterface)localObject3, paramPushComponent);
+        Intrinsics.checkExpressionValueIsNotNull(localBaseApplication, "context");
+        localObject1 = a((QQAppInterface)localObject3, (MessageRecord)localObject2, (Context)localBaseApplication, paramPushComponent);
+        IReadInJoyUtils localIReadInJoyUtils = (IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class);
+        localObject3 = ((QQAppInterface)localObject3).getMessageFacade();
+        Intrinsics.checkExpressionValueIsNotNull(localObject3, "app.messageFacade");
+        localIReadInJoyUtils.reportForLockScreenExposure(localObject3, (MessageRecord)localObject2, (Intent)localObject1);
+      }
+      else
+      {
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
       }
-      QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
-      MessageRecord localMessageRecord = a(localQQAppInterface, paramPushComponent);
-      Intrinsics.checkExpressionValueIsNotNull(localBaseApplication, "context");
-      localObject = a(localQQAppInterface, localMessageRecord, (Context)localBaseApplication, paramPushComponent);
-      ReadInJoyUtils.a(localQQAppInterface.getMessageFacade(), localMessageRecord, (Intent)localObject);
     }
-    for (;;)
+    else
     {
-      paramPushComponent = PendingIntent.getActivity((Context)localBaseApplication, paramPushComponent.d, (Intent)localObject, 134217728);
-      Intrinsics.checkExpressionValueIsNotNull(paramPushComponent, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
-      return paramPushComponent;
-      QLog.d("KanDianJumpScheme", 1, new Object[] { "nativeJumpIntent: called. ", "invalid subBusinessId. pushComponent: " + paramPushComponent });
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("invalid subBusinessId. pushComponent: ");
+      ((StringBuilder)localObject2).append(paramPushComponent);
+      QLog.d("KanDianJumpScheme", 1, new Object[] { "nativeJumpIntent: called. ", ((StringBuilder)localObject2).toString() });
     }
+    paramPushComponent = PendingIntent.getActivity((Context)localBaseApplication, paramPushComponent.d, (Intent)localObject1, 134217728);
+    Intrinsics.checkExpressionValueIsNotNull(paramPushComponent, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
+    return paramPushComponent;
   }
   
   @NotNull
-  public PendingIntent a(@NotNull PushComponent paramPushComponent)
+  protected PendingIntent a(@NotNull PushComponent paramPushComponent)
   {
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
     return e(paramPushComponent);
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.business.KanDianJumpScheme
  * JD-Core Version:    0.7.0.1
  */

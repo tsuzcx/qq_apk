@@ -8,16 +8,19 @@ public class IntArray
   
   public void add(int paramInt)
   {
-    if (this.mData.length == this.mSize)
+    int[] arrayOfInt1 = this.mData;
+    int i = arrayOfInt1.length;
+    int j = this.mSize;
+    if (i == j)
     {
-      arrayOfInt = new int[this.mSize + this.mSize];
-      System.arraycopy(this.mData, 0, arrayOfInt, 0, this.mSize);
-      this.mData = arrayOfInt;
+      int[] arrayOfInt2 = new int[j + j];
+      System.arraycopy(arrayOfInt1, 0, arrayOfInt2, 0, j);
+      this.mData = arrayOfInt2;
     }
-    int[] arrayOfInt = this.mData;
-    int i = this.mSize;
+    arrayOfInt1 = this.mData;
+    i = this.mSize;
     this.mSize = (i + 1);
-    arrayOfInt[i] = paramInt;
+    arrayOfInt1[i] = paramInt;
   }
   
   public void clear()

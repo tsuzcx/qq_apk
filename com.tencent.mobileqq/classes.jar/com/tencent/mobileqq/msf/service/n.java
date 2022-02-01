@@ -23,7 +23,11 @@ class n
       int i = MsfService.core.sender.b.f();
       return i;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label15:
+      break label15;
+    }
     return 0;
   }
   
@@ -34,7 +38,11 @@ class n
       int i = MsfService.core.sender.b.e();
       return i;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label15:
+      break label15;
+    }
     return 0;
   }
   
@@ -75,8 +83,13 @@ class n
       }
       return -1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.S.MsfService", 2, "MsfService#sendToServiceMsg start: cmd = " + paramToServiceMsg.getServiceCmd());
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MsfService#sendToServiceMsg start: cmd = ");
+      localStringBuilder.append(paramToServiceMsg.getServiceCmd());
+      QLog.d("MSF.S.MsfService", 2, localStringBuilder.toString());
     }
     int i = MsfCore.getNextSeq();
     if (paramToServiceMsg.getRequestSsoSeq() == -1) {
@@ -88,8 +101,12 @@ class n
     if (MsfService.core.getMsfAppid() == -1) {
       MsfService.core.setMsfAppid(paramToServiceMsg.getAppId());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.S.MsfService", 2, "MsfService#sendToServiceMsg: " + paramToServiceMsg.getStringForLog());
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MsfService#sendToServiceMsg: ");
+      localStringBuilder.append(paramToServiceMsg.getStringForLog());
+      QLog.d("MSF.S.MsfService", 2, localStringBuilder.toString());
     }
     try
     {
@@ -98,26 +115,29 @@ class n
       if (paramToServiceMsg.getServiceCmd().startsWith("cmd_sync_syncuser"))
       {
         this.a.handleAccountSyncRequest(this.a, paramToServiceMsg, j);
+        return i;
       }
-      else
+      b.a();
+      if (MsfService.isSamePackage(this.a, j, paramToServiceMsg.getServiceCmd()))
       {
-        b.a();
-        if (MsfService.isSamePackage(this.a, j, paramToServiceMsg.getServiceCmd())) {
-          MsfService.msfServiceReqHandler.a(this.a, paramToServiceMsg, j);
-        }
+        MsfService.msfServiceReqHandler.a(this.a, paramToServiceMsg, j);
+        return i;
       }
+      return -2;
     }
     catch (Exception paramToServiceMsg)
     {
-      QLog.w("MSF.S.MsfService", 1, "service handle msg error " + paramToServiceMsg, paramToServiceMsg);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("service handle msg error ");
+      localStringBuilder.append(paramToServiceMsg);
+      QLog.w("MSF.S.MsfService", 1, localStringBuilder.toString(), paramToServiceMsg);
     }
-    return -2;
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.n
  * JD-Core Version:    0.7.0.1
  */

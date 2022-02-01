@@ -21,14 +21,15 @@ public final class cmd0x6d1$InviteReqBody
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "uint64_group_code", "rpt_uin_list", "uint32_first_flag", "bytes_uin_nick", "bytes_group_name" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, InviteReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "uint64_group_code", "rpt_uin_list", "uint32_first_flag", "bytes_uin_nick", "bytes_group_name" }, new Object[] { localLong, localLong, Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, InviteReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.im.oidb.cmd0x6d1.cmd0x6d1.InviteReqBody
  * JD-Core Version:    0.7.0.1
  */

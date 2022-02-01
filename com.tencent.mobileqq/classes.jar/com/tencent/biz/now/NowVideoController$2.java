@@ -11,29 +11,27 @@ class NowVideoController$2
   
   public void run()
   {
-    if (NowVideoController.a(this.this$0) == null) {}
-    for (;;)
-    {
+    if (NowVideoController.a(this.this$0) == null) {
       return;
-      int i = this.a;
-      while (i <= this.b)
+    }
+    int i = this.a;
+    while (i <= this.b)
+    {
+      Object localObject = NowVideoController.a(this.this$0).getChildAt(i - this.a);
+      if (localObject != null)
       {
-        Object localObject = NowVideoController.a(this.this$0).getChildAt(i - this.a);
-        if (localObject != null)
-        {
-          localObject = (PAVideoView)((View)localObject).findViewById(2131378571);
-          if ((localObject != null) && (((PAVideoView)localObject).j == 4)) {
-            ((PAVideoView)localObject).e();
-          }
+        localObject = (PAVideoView)((View)localObject).findViewById(2131377982);
+        if ((localObject != null) && (((PAVideoView)localObject).j == 4)) {
+          ((PAVideoView)localObject).e();
         }
-        i += 1;
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.now.NowVideoController.2
  * JD-Core Version:    0.7.0.1
  */

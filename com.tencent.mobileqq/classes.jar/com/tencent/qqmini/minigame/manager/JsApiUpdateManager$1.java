@@ -14,7 +14,13 @@ final class JsApiUpdateManager$1
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("JsApiUpdateManager", "onCmdListener() called with: isSuc = [" + paramBoolean + "], ret = [" + paramJSONObject + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCmdListener() called with: isSuc = [");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("], ret = [");
+    localStringBuilder.append(paramJSONObject);
+    localStringBuilder.append("]");
+    QMLog.d("JsApiUpdateManager", localStringBuilder.toString());
     if ((paramJSONObject != null) && (paramBoolean))
     {
       JsApiUpdateManager.access$002((MiniAppInfo)paramJSONObject.opt("mini_app_info_data"));
@@ -32,12 +38,17 @@ final class JsApiUpdateManager$1
       QMLog.e("JsApiUpdateManager", "onCmdListener newMiniAppInfo = null");
       return;
     }
-    QMLog.e("JsApiUpdateManager", "onCmdListener success = " + paramBoolean + " ret = " + paramJSONObject);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCmdListener success = ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" ret = ");
+    localStringBuilder.append(paramJSONObject);
+    QMLog.e("JsApiUpdateManager", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.JsApiUpdateManager.1
  * JD-Core Version:    0.7.0.1
  */

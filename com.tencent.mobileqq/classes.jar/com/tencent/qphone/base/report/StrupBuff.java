@@ -43,15 +43,16 @@ public final class StrupBuff
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.logstring, 0);
-    if (this.prefix != null) {
-      paramJceOutputStream.write(this.prefix, 1);
+    String str = this.prefix;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.encoding, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.report.StrupBuff
  * JD-Core Version:    0.7.0.1
  */

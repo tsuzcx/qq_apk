@@ -33,10 +33,11 @@ class ReceiptMessageDetailFragment$ReceiptMessageDownloadCallBack
     if (localReceiptMessageDetailFragment == null) {
       return;
     }
+    Object localObject;
     if ((paramDownResult.b == 0) && (paramDownResult.a != null))
     {
       MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMessageFacade().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_JavaLangString, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_Int, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
-      Object localObject = localMessageRecord;
+      localObject = localMessageRecord;
       if (localMessageRecord == null)
       {
         localObject = new MessageForStructing();
@@ -52,8 +53,12 @@ class ReceiptMessageDetailFragment$ReceiptMessageDownloadCallBack
       ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "ReceiptMessageDownloadCallBack onDownload, download msg fail with code: " + paramDownResult.b);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ReceiptMessageDownloadCallBack onDownload, download msg fail with code: ");
+      ((StringBuilder)localObject).append(paramDownResult.b);
+      QLog.d("ReceiptMessageDetailFragment", 2, ((StringBuilder)localObject).toString());
     }
     int i = this.jdField_a_of_type_Int + 1;
     this.jdField_a_of_type_Int = i;
@@ -67,7 +72,7 @@ class ReceiptMessageDetailFragment$ReceiptMessageDownloadCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.ReceiptMessageDownloadCallBack
  * JD-Core Version:    0.7.0.1
  */

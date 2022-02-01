@@ -15,14 +15,17 @@ public final class InflaterSource
   
   InflaterSource(BufferedSource paramBufferedSource, Inflater paramInflater)
   {
-    if (paramBufferedSource == null) {
-      throw new IllegalArgumentException("source == null");
-    }
-    if (paramInflater == null) {
+    if (paramBufferedSource != null)
+    {
+      if (paramInflater != null)
+      {
+        this.source = paramBufferedSource;
+        this.inflater = paramInflater;
+        return;
+      }
       throw new IllegalArgumentException("inflater == null");
     }
-    this.source = paramBufferedSource;
-    this.inflater = paramInflater;
+    throw new IllegalArgumentException("source == null");
   }
   
   public InflaterSource(Source paramSource, Inflater paramInflater)
@@ -32,10 +35,11 @@ public final class InflaterSource
   
   private void releaseInflatedBytes()
   {
-    if (this.bufferBytesHeldByInflater == 0) {
+    int i = this.bufferBytesHeldByInflater;
+    if (i == 0) {
       return;
     }
-    int i = this.bufferBytesHeldByInflater - this.inflater.getRemaining();
+    i -= this.inflater.getRemaining();
     this.bufferBytesHeldByInflater -= i;
     this.source.skip(i);
   }
@@ -52,52 +56,63 @@ public final class InflaterSource
   
   public long read(Buffer paramBuffer, long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-    }
-    if (this.closed) {
-      throw new IllegalStateException("closed");
-    }
-    if (paramLong == 0L) {
-      return 0L;
+    if (paramLong >= 0L) {
+      if (!this.closed) {
+        if (paramLong == 0L) {
+          return 0L;
+        }
+      }
     }
     for (;;)
     {
       boolean bool = refill();
-      try
+      label144:
+      do
       {
-        Segment localSegment = paramBuffer.writableSegment(1);
-        int i = (int)Math.min(paramLong, 8192 - localSegment.limit);
-        i = this.inflater.inflate(localSegment.data, localSegment.limit, i);
-        if (i > 0)
+        try
         {
-          localSegment.limit += i;
-          paramBuffer.size += i;
-          return i;
-        }
-        if ((this.inflater.finished()) || (this.inflater.needsDictionary()))
-        {
+          Segment localSegment = paramBuffer.writableSegment(1);
+          int i = (int)Math.min(paramLong, 8192 - localSegment.limit);
+          i = this.inflater.inflate(localSegment.data, localSegment.limit, i);
+          if (i > 0)
+          {
+            localSegment.limit += i;
+            paramLong = paramBuffer.size;
+            long l = i;
+            paramBuffer.size = (paramLong + l);
+            return l;
+          }
+          if (!this.inflater.finished())
+          {
+            if (!this.inflater.needsDictionary()) {
+              continue;
+            }
+            break label144;
+            throw new EOFException("source exhausted prematurely");
+          }
           releaseInflatedBytes();
           if (localSegment.pos == localSegment.limit)
           {
             paramBuffer.head = localSegment.pop();
             SegmentPool.recycle(localSegment);
           }
+          return -1L;
         }
-        else
+        catch (DataFormatException paramBuffer)
         {
-          if (!bool) {
-            continue;
-          }
-          throw new EOFException("source exhausted prematurely");
+          throw new IOException(paramBuffer);
         }
-      }
-      catch (DataFormatException paramBuffer)
-      {
-        throw new IOException(paramBuffer);
-      }
+        throw new IllegalStateException("closed");
+        paramBuffer = new StringBuilder();
+        paramBuffer.append("byteCount < 0: ");
+        paramBuffer.append(paramLong);
+        paramBuffer = new IllegalArgumentException(paramBuffer.toString());
+        for (;;)
+        {
+          throw paramBuffer;
+        }
+      } while (bool);
     }
-    return -1L;
   }
   
   public final boolean refill()
@@ -106,16 +121,17 @@ public final class InflaterSource
       return false;
     }
     releaseInflatedBytes();
-    if (this.inflater.getRemaining() != 0) {
-      throw new IllegalStateException("?");
+    if (this.inflater.getRemaining() == 0)
+    {
+      if (this.source.exhausted()) {
+        return true;
+      }
+      Segment localSegment = this.source.buffer().head;
+      this.bufferBytesHeldByInflater = (localSegment.limit - localSegment.pos);
+      this.inflater.setInput(localSegment.data, localSegment.pos, this.bufferBytesHeldByInflater);
+      return false;
     }
-    if (this.source.exhausted()) {
-      return true;
-    }
-    Segment localSegment = this.source.buffer().head;
-    this.bufferBytesHeldByInflater = (localSegment.limit - localSegment.pos);
-    this.inflater.setInput(localSegment.data, localSegment.pos, this.bufferBytesHeldByInflater);
-    return false;
+    throw new IllegalStateException("?");
   }
   
   public Timeout timeout()
@@ -125,7 +141,7 @@ public final class InflaterSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.InflaterSource
  * JD-Core Version:    0.7.0.1
  */

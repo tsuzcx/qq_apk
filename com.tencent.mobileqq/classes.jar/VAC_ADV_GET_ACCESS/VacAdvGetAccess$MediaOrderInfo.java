@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class VacAdvGetAccess$MediaOrderInfo
   extends MessageMicro<MediaOrderInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 80, 88, 96, 106, 114, 122, 128, 138, 146, 154, 160, 168, 178, 186, 194, 202, 216, 226, 232, 240, 248, 256 }, new String[] { "order_id", "saas_type", "saas_type_str", "buyer_id", "seller_id", "ext_info", "order_price", "freight", "discount", "h5_url", "wx_mini_program_url", "qq_mini_program_url", "state", "create_time", "product_pic", "product_title", "product_price", "product_num", "specification1", "specification2", "wx_mini_program", "qq_mini_program", "product_id", "content_id", "content_type", "scene", "share_media_id", "root_id" }, new Object[] { "", "", "", "", "", "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", "", "", Integer.valueOf(0), "", "", "", Long.valueOf(0L), Long.valueOf(0L), "", "", null, null, Long.valueOf(0L), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, MediaOrderInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField buyer_id = PBField.initString("");
   public final PBStringField content_id = PBField.initString("");
   public final PBInt32Field content_type = PBField.initInt32(0);
@@ -39,10 +39,17 @@ public final class VacAdvGetAccess$MediaOrderInfo
   public final PBInt32Field state = PBField.initInt32(0);
   public VacAdvGetAccess.MiniProgramInfo wx_mini_program = new VacAdvGetAccess.MiniProgramInfo();
   public final PBStringField wx_mini_program_url = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 80, 88, 96, 106, 114, 122, 128, 138, 146, 154, 160, 168, 178, 186, 194, 202, 216, 226, 232, 240, 248, 256 }, new String[] { "order_id", "saas_type", "saas_type_str", "buyer_id", "seller_id", "ext_info", "order_price", "freight", "discount", "h5_url", "wx_mini_program_url", "qq_mini_program_url", "state", "create_time", "product_pic", "product_title", "product_price", "product_num", "specification1", "specification2", "wx_mini_program", "qq_mini_program", "product_id", "content_id", "content_type", "scene", "share_media_id", "root_id" }, new Object[] { "", "", "", "", "", "", localLong, localLong, localLong, "", "", "", localInteger, "", "", "", localLong, localLong, "", "", null, null, localLong, "", localInteger, localInteger, localInteger, localLong }, MediaOrderInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VAC_ADV_GET_ACCESS.VacAdvGetAccess.MediaOrderInfo
  * JD-Core Version:    0.7.0.1
  */

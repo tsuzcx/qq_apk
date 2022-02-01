@@ -9,20 +9,9 @@ import java.util.concurrent.Executor;
 
 public final class m
 {
-  private static final Object b;
+  private static final Object b = new Object();
   private static HandlerThread c;
   private static Handler d;
-  
-  static
-  {
-    if (!m.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      b = new Object();
-      return;
-    }
-  }
   
   public static Handler a()
   {
@@ -73,7 +62,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a.m
  * JD-Core Version:    0.7.0.1
  */

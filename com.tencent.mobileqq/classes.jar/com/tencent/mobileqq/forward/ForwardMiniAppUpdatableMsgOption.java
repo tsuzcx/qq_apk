@@ -49,7 +49,14 @@ public class ForwardMiniAppUpdatableMsgOption
     paramInt = paramBundle.getInt("uintype");
     String str = paramBundle.getString("uin");
     paramBundle = paramBundle.getString("uinname");
-    QLog.d("ForwardMiniAppUpdatableMsgOption", 2, "buildForwardDialog, name:" + paramBundle + ", uinType:" + paramInt + ", uin:" + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("buildForwardDialog, name:");
+    localStringBuilder.append(paramBundle);
+    localStringBuilder.append(", uinType:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", uin:");
+    localStringBuilder.append(str);
+    QLog.d("ForwardMiniAppUpdatableMsgOption", 2, localStringBuilder.toString());
     a(paramInt, str);
     b(paramInt, str);
     this.jdField_a_of_type_AndroidAppActivity.finish();
@@ -57,21 +64,24 @@ public class ForwardMiniAppUpdatableMsgOption
   
   public void a(boolean paramBoolean)
   {
-    QLog.d("ForwardMiniAppUpdatableMsgOption", 2, "endForwardCallback, isCompleted:" + paramBoolean);
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("miniAppShareIsComplete", false);
-    localBundle.putString("miniAppShareAppid", this.jdField_a_of_type_AndroidOsBundle.getString("miniAppShareAppid"));
-    localBundle.putString("miniAppShareTemplateId", this.jdField_a_of_type_AndroidOsBundle.getString("miniAppShareTemplateId"));
-    localBundle.putInt("miniAppShareUpdatableMsgFrom", this.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareUpdatableMsgFrom"));
-    localBundle.putString("miniAppShareEvent", this.jdField_a_of_type_AndroidOsBundle.getString("miniAppShareEvent"));
-    localBundle.putInt("miniAppShareCallbackId", this.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareCallbackId"));
-    localBundle.putInt("miniAppShareSubScene", this.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareSubScene"));
-    QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_create_updatable_msg_callback", localBundle, null);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("endForwardCallback, isCompleted:");
+    ((StringBuilder)localObject).append(paramBoolean);
+    QLog.d("ForwardMiniAppUpdatableMsgOption", 2, ((StringBuilder)localObject).toString());
+    localObject = new Bundle();
+    ((Bundle)localObject).putBoolean("miniAppShareIsComplete", false);
+    ((Bundle)localObject).putString("miniAppShareAppid", this.jdField_a_of_type_AndroidOsBundle.getString("miniAppShareAppid"));
+    ((Bundle)localObject).putString("miniAppShareTemplateId", this.jdField_a_of_type_AndroidOsBundle.getString("miniAppShareTemplateId"));
+    ((Bundle)localObject).putInt("miniAppShareUpdatableMsgFrom", this.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareUpdatableMsgFrom"));
+    ((Bundle)localObject).putString("miniAppShareEvent", this.jdField_a_of_type_AndroidOsBundle.getString("miniAppShareEvent"));
+    ((Bundle)localObject).putInt("miniAppShareCallbackId", this.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareCallbackId"));
+    ((Bundle)localObject).putInt("miniAppShareSubScene", this.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareSubScene"));
+    QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_create_updatable_msg_callback", (Bundle)localObject, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMiniAppUpdatableMsgOption
  * JD-Core Version:    0.7.0.1
  */

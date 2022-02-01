@@ -11,15 +11,19 @@ final class PicShareToWX$2
 {
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWX", 2, "onCallback, eipcResult.code = " + paramEIPCResult.code);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCallback, eipcResult.code = ");
+      localStringBuilder.append(paramEIPCResult.code);
+      QLog.d("PicShareToWX", 2, localStringBuilder.toString());
     }
     ThreadManager.getUIHandler().post(new PicShareToWX.2.1(this, paramEIPCResult));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicShareToWX.2
  * JD-Core Version:    0.7.0.1
  */

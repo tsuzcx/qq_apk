@@ -30,6 +30,7 @@ public class EncryptUinHandler
   extends BusinessHandler
 {
   private EncryptUinHandler.EncryptUinObserver jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver;
+  private EncryptUinHandler.GetEncryptUinCallback jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$GetEncryptUinCallback;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private String jdField_a_of_type_JavaLangString;
   
@@ -65,16 +66,23 @@ public class EncryptUinHandler
   
   public void a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    while (this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver != null) {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver = new EncryptUinHandler.2(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver);
-    ThreadManager.excute(new EncryptUinHandler.3(this), 128, null, true);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver == null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver = new EncryptUinHandler.2(this);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver);
+      ThreadManager.excute(new EncryptUinHandler.3(this), 128, null, true);
+    }
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  public void a(EncryptUinHandler.GetEncryptUinCallback paramGetEncryptUinCallback)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$GetEncryptUinCallback = paramGetEncryptUinCallback;
+  }
+  
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return EncryptUinHandler.EncryptUinObserver.class;
   }
@@ -87,59 +95,71 @@ public class EncryptUinHandler
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = 0;
     Object localObject = new oidb_0xc13.RspBody();
     Bundle localBundle = new Bundle();
     int j = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
-    if (j == 0) {}
-    for (boolean bool = true;; bool = false)
+    int i = 0;
+    boolean bool;
+    if (j == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUinHandler", 2, "onReceive: isSuccess=" + bool + ", code=" + j);
-      }
-      if (!bool) {
-        break label244;
-      }
-      paramFromServiceMsg = (oidb_0xc13.EncryptUinRspBody)((oidb_0xc13.RspBody)localObject).msg_encrypt_uin_rsp_body.get();
-      if (paramFromServiceMsg == null) {
-        break label275;
-      }
-      paramObject = paramFromServiceMsg.rpt_msg_encrypt_result.get();
-      if ((paramObject == null) || (paramObject.isEmpty())) {
-        break label275;
-      }
-      paramFromServiceMsg = new ArrayList();
-      paramObject = paramObject.iterator();
-      while (paramObject.hasNext())
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("onReceive: isSuccess=");
+      paramFromServiceMsg.append(bool);
+      paramFromServiceMsg.append(", code=");
+      paramFromServiceMsg.append(j);
+      QLog.d("EncryptUinHandler", 2, paramFromServiceMsg.toString());
+    }
+    if (bool)
+    {
+      localObject = (oidb_0xc13.EncryptUinRspBody)((oidb_0xc13.RspBody)localObject).msg_encrypt_uin_rsp_body.get();
+      paramObject = null;
+      paramFromServiceMsg = paramObject;
+      if (localObject != null)
       {
-        localObject = (oidb_0xc13.EncryptUinResult)paramObject.next();
-        EncryptUinInfo localEncryptUinInfo = new EncryptUinInfo();
-        localEncryptUinInfo.jdField_a_of_type_Long = ((oidb_0xc13.EncryptUinResult)localObject).uint64_original_uin.get();
-        localEncryptUinInfo.jdField_a_of_type_Int = ((oidb_0xc13.EncryptUinResult)localObject).int32_result.get();
-        if (((oidb_0xc13.EncryptUinResult)localObject).bytes_encrypt_uin.get() != null) {
-          localEncryptUinInfo.jdField_a_of_type_JavaLangString = ((oidb_0xc13.EncryptUinResult)localObject).bytes_encrypt_uin.get().toStringUtf8();
+        localObject = ((oidb_0xc13.EncryptUinRspBody)localObject).rpt_msg_encrypt_result.get();
+        paramFromServiceMsg = paramObject;
+        if (localObject != null)
+        {
+          paramFromServiceMsg = paramObject;
+          if (!((List)localObject).isEmpty())
+          {
+            paramObject = new ArrayList();
+            localObject = ((List)localObject).iterator();
+            for (;;)
+            {
+              paramFromServiceMsg = paramObject;
+              if (!((Iterator)localObject).hasNext()) {
+                break;
+              }
+              paramFromServiceMsg = (oidb_0xc13.EncryptUinResult)((Iterator)localObject).next();
+              EncryptUinInfo localEncryptUinInfo = new EncryptUinInfo();
+              localEncryptUinInfo.jdField_a_of_type_Long = paramFromServiceMsg.uint64_original_uin.get();
+              localEncryptUinInfo.jdField_a_of_type_Int = paramFromServiceMsg.int32_result.get();
+              if (paramFromServiceMsg.bytes_encrypt_uin.get() != null) {
+                localEncryptUinInfo.jdField_a_of_type_JavaLangString = paramFromServiceMsg.bytes_encrypt_uin.get().toStringUtf8();
+              }
+              paramObject.add(localEncryptUinInfo);
+            }
+          }
         }
-        paramFromServiceMsg.add(localEncryptUinInfo);
       }
-    }
-    for (;;)
-    {
       localBundle.putParcelableArrayList("KEY_ENCRYPT_RESULT_LIST", paramFromServiceMsg);
-      label244:
-      paramToServiceMsg = paramToServiceMsg.getAttribute("ARGS_TYPE");
-      if (paramToServiceMsg != null) {
-        i = ((Integer)paramToServiceMsg).intValue();
-      }
-      notifyUI(i, bool, localBundle);
-      return;
-      label275:
-      paramFromServiceMsg = null;
     }
+    paramToServiceMsg = paramToServiceMsg.getAttribute("ARGS_TYPE");
+    if (paramToServiceMsg != null) {
+      i = ((Integer)paramToServiceMsg).intValue();
+    }
+    notifyUI(i, bool, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.EncryptUinHandler
  * JD-Core Version:    0.7.0.1
  */

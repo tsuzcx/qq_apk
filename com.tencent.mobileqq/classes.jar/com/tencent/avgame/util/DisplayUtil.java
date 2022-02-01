@@ -17,45 +17,47 @@ public class DisplayUtil
     paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     try
     {
+      int i;
       if (Build.VERSION.SDK_INT >= 17)
       {
         paramContext.getRealMetrics((DisplayMetrics)localObject);
-        return ((DisplayMetrics)localObject).heightPixels;
+        i = ((DisplayMetrics)localObject).heightPixels;
       }
-      localObject = Display.class.getMethod("getRawHeight", new Class[0]);
-      try
+      else
       {
-        int i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
-        return i;
+        localObject = Display.class.getMethod("getRawHeight", new Class[0]);
+        try
+        {
+          i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
+        }
+        catch (InvocationTargetException paramContext)
+        {
+          QLog.e("tag", 1, paramContext.getMessage());
+          return -1;
+        }
+        catch (IllegalAccessException paramContext)
+        {
+          QLog.e("tag", 1, paramContext.getMessage());
+          return -1;
+        }
+        catch (IllegalArgumentException paramContext)
+        {
+          QLog.e("tag", 1, paramContext.getMessage());
+          return -1;
+        }
       }
-      catch (IllegalArgumentException paramContext)
-      {
-        QLog.e("tag", 1, paramContext.getMessage());
-        return -1;
-      }
-      catch (IllegalAccessException paramContext)
-      {
-        QLog.e("tag", 1, paramContext.getMessage());
-        return -1;
-      }
-      catch (InvocationTargetException paramContext)
-      {
-        QLog.e("tag", 1, paramContext.getMessage());
-      }
+      return i;
     }
     catch (NoSuchMethodException paramContext)
     {
-      for (;;)
-      {
-        QLog.e("tag", 1, paramContext.getMessage());
-      }
+      QLog.e("tag", 1, paramContext.getMessage());
+      return -1;
     }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.util.DisplayUtil
  * JD-Core Version:    0.7.0.1
  */

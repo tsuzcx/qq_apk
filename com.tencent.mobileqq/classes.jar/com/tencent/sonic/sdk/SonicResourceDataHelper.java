@@ -18,40 +18,78 @@ public class SonicResourceDataHelper
   private static final String Sonic_RESOURCE_TABLE_NAME = "ResourceData";
   private static final String TAG = "SonicSdk_SonicResourceDataHelper";
   
+  /* Error */
   static void clear()
   {
-    try
-    {
-      SonicDBHelper.getInstance().getWritableDatabase().delete("ResourceData", null, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, "getWritableDatabase encounter error." + localThrowable.getMessage());
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: invokestatic 43	com/tencent/sonic/sdk/SonicDBHelper:getInstance	()Lcom/tencent/sonic/sdk/SonicDBHelper;
+    //   6: invokevirtual 47	com/tencent/sonic/sdk/SonicDBHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   9: ldc 26
+    //   11: aconst_null
+    //   12: aconst_null
+    //   13: invokevirtual 53	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   16: pop
+    //   17: goto +43 -> 60
+    //   20: astore_0
+    //   21: goto +43 -> 64
+    //   24: astore_0
+    //   25: new 55	java/lang/StringBuilder
+    //   28: dup
+    //   29: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   32: astore_1
+    //   33: aload_1
+    //   34: ldc 58
+    //   36: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: pop
+    //   40: aload_1
+    //   41: aload_0
+    //   42: invokevirtual 66	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   45: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: pop
+    //   49: ldc 29
+    //   51: bipush 6
+    //   53: aload_1
+    //   54: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: invokestatic 75	com/tencent/sonic/sdk/SonicUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
+    //   60: ldc 2
+    //   62: monitorexit
+    //   63: return
+    //   64: ldc 2
+    //   66: monitorexit
+    //   67: aload_0
+    //   68: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   20	1	0	localObject	Object
+    //   24	44	0	localThrowable	Throwable
+    //   32	22	1	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   3	17	20	finally
+    //   25	60	20	finally
+    //   3	17	24	java/lang/Throwable
   }
   
   static List<SonicResourceDataHelper.ResourceData> getAllResourceData()
   {
     ArrayList localArrayList = new ArrayList();
+    Cursor localCursor2;
     try
     {
-      Cursor localCursor = SonicDBHelper.getInstance().getWritableDatabase().query("ResourceData", getAllResourceDataColumn(), null, null, null, null, "");
-      while ((localCursor != null) && (localCursor.moveToNext())) {
-        localArrayList.add(queryResourceData(localCursor));
-      }
+      Cursor localCursor1 = SonicDBHelper.getInstance().getWritableDatabase().query("ResourceData", getAllResourceDataColumn(), null, null, null, null, "");
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, "getWritableDatabase encounter error." + localThrowable.getMessage());
-        Object localObject = null;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWritableDatabase encounter error.");
+      localStringBuilder.append(localThrowable.getMessage());
+      SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, localStringBuilder.toString());
+      localCursor2 = null;
+    }
+    while ((localCursor2 != null) && (localCursor2.moveToNext())) {
+      localArrayList.add(queryResourceData(localCursor2));
     }
     return localArrayList;
   }
@@ -75,15 +113,11 @@ public class SonicResourceDataHelper
   
   private static SonicResourceDataHelper.ResourceData getResourceData(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    Object localObject = null;
     paramString = paramSQLiteDatabase.query("ResourceData", getAllResourceDataColumn(), "resourceID=?", new String[] { paramString }, null, null, null);
-    paramSQLiteDatabase = localObject;
-    if (paramString != null)
-    {
-      paramSQLiteDatabase = localObject;
-      if (paramString.moveToFirst()) {
-        paramSQLiteDatabase = queryResourceData(paramString);
-      }
+    if ((paramString != null) && (paramString.moveToFirst())) {
+      paramSQLiteDatabase = queryResourceData(paramString);
+    } else {
+      paramSQLiteDatabase = null;
     }
     if (paramString != null) {
       paramString.close();
@@ -97,20 +131,20 @@ public class SonicResourceDataHelper
     try
     {
       paramString = getResourceData(SonicDBHelper.getInstance().getWritableDatabase(), paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new SonicResourceDataHelper.ResourceData();
-      }
-      return localObject;
     }
     catch (Throwable paramString)
     {
-      for (;;)
-      {
-        SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, "getWritableDatabase encounter error." + paramString.getMessage());
-        paramString = null;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getWritableDatabase encounter error.");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, ((StringBuilder)localObject).toString());
+      paramString = null;
     }
+    Object localObject = paramString;
+    if (paramString == null) {
+      localObject = new SonicResourceDataHelper.ResourceData();
+    }
+    return localObject;
   }
   
   private static void insertResourceData(SQLiteDatabase paramSQLiteDatabase, String paramString, SonicResourceDataHelper.ResourceData paramResourceData)
@@ -138,7 +172,10 @@ public class SonicResourceDataHelper
     }
     catch (Throwable paramString)
     {
-      SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, "getWritableDatabase encounter error." + paramString.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWritableDatabase encounter error.");
+      localStringBuilder.append(paramString.getMessage());
+      SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, localStringBuilder.toString());
     }
   }
   
@@ -162,7 +199,10 @@ public class SonicResourceDataHelper
     }
     catch (Throwable paramString)
     {
-      SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, "getWritableDatabase encounter error." + paramString.getMessage());
+      paramResourceData = new StringBuilder();
+      paramResourceData.append("getWritableDatabase encounter error.");
+      paramResourceData.append(paramString.getMessage());
+      SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, paramResourceData.toString());
     }
   }
   
@@ -173,7 +213,7 @@ public class SonicResourceDataHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicResourceDataHelper
  * JD-Core Version:    0.7.0.1
  */

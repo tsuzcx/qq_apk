@@ -24,15 +24,16 @@ public final class qqstory_service$RspPublishVideo
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 50, 56, 66 }, new String[] { "result", "create_time", "feed_id", "date", "story_id", "group_feed_list", "video_index", "vid" }, new Object[] { null, Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, null, Long.valueOf(0L), localByteStringMicro3 }, RspPublishVideo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 50, 56, 66 }, new String[] { "result", "create_time", "feed_id", "date", "story_id", "group_feed_list", "video_index", "vid" }, new Object[] { null, localLong, localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, null, localLong, localByteStringMicro3 }, RspPublishVideo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspPublishVideo
  * JD-Core Version:    0.7.0.1
  */

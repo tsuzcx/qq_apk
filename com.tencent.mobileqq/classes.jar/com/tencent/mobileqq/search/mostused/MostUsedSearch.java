@@ -19,116 +19,120 @@ public class MostUsedSearch
   public static MostUsedSearch fromJson(String paramString)
   {
     Object localObject2 = a;
-    if (paramString == null)
-    {
+    if (paramString == null) {
       localObject1 = "";
-      QLog.d((String)localObject2, 2, (String)localObject1);
-      localObject1 = new MostUsedSearch();
-      if (paramString != null) {
-        break label36;
-      }
-    }
-    for (;;)
-    {
-      return localObject1;
+    } else {
       localObject1 = paramString;
-      break;
-      try
+    }
+    QLog.d((String)localObject2, 2, (String)localObject1);
+    localObject1 = new MostUsedSearch();
+    if (paramString == null) {
+      return localObject1;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("orgKey")) {
+        ((MostUsedSearch)localObject1).orgKey = paramString.getString("orgKey");
+      }
+      if (paramString.has("latestUsedTime")) {
+        ((MostUsedSearch)localObject1).latestUsedTime = paramString.getLong("latestUsedTime");
+      }
+      if (paramString.has("items"))
       {
-        label36:
-        paramString = new JSONObject(paramString);
-        if (paramString.has("orgKey")) {
-          ((MostUsedSearch)localObject1).orgKey = paramString.getString("orgKey");
-        }
-        if (paramString.has("latestUsedTime")) {
-          ((MostUsedSearch)localObject1).latestUsedTime = paramString.getLong("latestUsedTime");
-        }
-        if (!paramString.has("items")) {
-          continue;
-        }
         paramString = paramString.getJSONArray("items");
-        if (paramString == null) {
-          continue;
-        }
-        int i = 0;
-        while (i < paramString.length())
+        if (paramString != null)
         {
-          localObject2 = paramString.optJSONObject(i);
-          if (localObject2 != null)
+          int i = 0;
+          while (i < paramString.length())
           {
-            localObject2 = MostUsedSearchItem.fromJson(((JSONObject)localObject2).toString());
-            if (!((MostUsedSearchItem)localObject2).searchKey.isEmpty()) {
-              ((MostUsedSearch)localObject1).items.add(localObject2);
+            localObject2 = paramString.optJSONObject(i);
+            if (localObject2 != null)
+            {
+              localObject2 = MostUsedSearchItem.fromJson(((JSONObject)localObject2).toString());
+              if (!((MostUsedSearchItem)localObject2).searchKey.isEmpty()) {
+                ((MostUsedSearch)localObject1).items.add(localObject2);
+              }
             }
+            i += 1;
           }
-          i += 1;
         }
-        return localObject1;
       }
-      catch (JSONException paramString)
-      {
-        QLog.e(a, 2, "MostUsedSearch fromJson ERR;" + paramString.toString());
-      }
+      StringBuilder localStringBuilder;
+      return localObject1;
+    }
+    catch (JSONException paramString)
+    {
+      localObject2 = a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MostUsedSearch fromJson ERR;");
+      localStringBuilder.append(paramString.toString());
+      QLog.e((String)localObject2, 2, localStringBuilder.toString());
     }
   }
   
   public static JSONObject toJson(MostUsedSearch paramMostUsedSearch)
   {
-    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     if (paramMostUsedSearch == null) {
-      return localJSONObject1;
+      return localJSONObject;
     }
-    try
+    for (;;)
     {
-      localJSONObject1.put("orgKey", paramMostUsedSearch.orgKey);
-      localJSONObject1.put("latestUsedTime", paramMostUsedSearch.latestUsedTime);
-      localJSONArray = new JSONArray();
-      i = 0;
-    }
-    catch (JSONException paramMostUsedSearch)
-    {
-      for (;;)
+      int i;
+      try
       {
-        JSONArray localJSONArray;
-        int i;
-        JSONObject localJSONObject2;
-        QLog.e(a, 2, "MostUsedSearch fromJson ERR;" + paramMostUsedSearch.toString());
-        continue;
-        i += 1;
+        localJSONObject.put("orgKey", paramMostUsedSearch.orgKey);
+        localJSONObject.put("latestUsedTime", paramMostUsedSearch.latestUsedTime);
+        localObject1 = new JSONArray();
+        i = 0;
+        if (i < paramMostUsedSearch.items.size())
+        {
+          localObject2 = MostUsedSearchItem.toJson((MostUsedSearchItem)paramMostUsedSearch.items.get(i));
+          if ((localObject2 != null) && (!TextUtils.isEmpty(((JSONObject)localObject2).toString()))) {
+            ((JSONArray)localObject1).put(localObject2);
+          }
+        }
+        else
+        {
+          localJSONObject.put("items", localObject1);
+          return localJSONObject;
+        }
       }
-    }
-    if (i < paramMostUsedSearch.items.size())
-    {
-      localJSONObject2 = MostUsedSearchItem.toJson((MostUsedSearchItem)paramMostUsedSearch.items.get(i));
-      if ((localJSONObject2 != null) && (!TextUtils.isEmpty(localJSONObject2.toString()))) {
-        localJSONArray.put(localJSONObject2);
+      catch (JSONException paramMostUsedSearch)
+      {
+        Object localObject1 = a;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("MostUsedSearch fromJson ERR;");
+        ((StringBuilder)localObject2).append(paramMostUsedSearch.toString());
+        QLog.e((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+        return localJSONObject;
       }
-    }
-    else
-    {
-      localJSONObject1.put("items", localJSONArray);
-      return localJSONObject1;
+      i += 1;
     }
   }
   
   public static String toJsonString(MostUsedSearch paramMostUsedSearch)
   {
-    String str1 = null;
     if (paramMostUsedSearch != null) {
-      str1 = toJson(paramMostUsedSearch).toString();
+      paramMostUsedSearch = toJson(paramMostUsedSearch).toString();
+    } else {
+      paramMostUsedSearch = null;
     }
-    String str2 = a;
-    if (str1 == null) {}
-    for (paramMostUsedSearch = "";; paramMostUsedSearch = str1)
-    {
-      QLog.d(str2, 2, paramMostUsedSearch);
-      return str1;
+    String str = a;
+    Object localObject;
+    if (paramMostUsedSearch == null) {
+      localObject = "";
+    } else {
+      localObject = paramMostUsedSearch;
     }
+    QLog.d(str, 2, (String)localObject);
+    return paramMostUsedSearch;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.mostused.MostUsedSearch
  * JD-Core Version:    0.7.0.1
  */

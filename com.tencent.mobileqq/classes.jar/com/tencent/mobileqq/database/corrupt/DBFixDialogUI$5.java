@@ -17,14 +17,18 @@ class DBFixDialogUI$5
   {
     paramDialogInterface.cancel();
     DBFixDialogUI.a(this.a).c();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().remove(this.a.jdField_a_of_type_JavaLangString + DBFixManager.g).commit();
+    paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(DBFixManager.g);
+    paramDialogInterface.remove(localStringBuilder.toString()).commit();
     ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, DBFixDialogUI.f, DBFixDialogUI.f, 0, 0, "", "", "", "");
     DBFixDialogUI.a(this.a).d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogUI.5
  * JD-Core Version:    0.7.0.1
  */

@@ -47,19 +47,23 @@ public class GameShareConfBean
     }
   }
   
-  boolean a(String paramString)
+  public boolean a(String paramString)
   {
     return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
   }
   
   public String toString()
   {
-    return "NGConfBean{appidArr=" + this.jdField_a_of_type_JavaUtilSet + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NGConfBean{appidArr=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilSet);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.share.GameShareConfBean
  * JD-Core Version:    0.7.0.1
  */

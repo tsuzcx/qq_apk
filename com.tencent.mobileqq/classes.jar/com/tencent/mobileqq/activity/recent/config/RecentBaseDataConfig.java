@@ -24,49 +24,55 @@ public class RecentBaseDataConfig
   {
     synchronized (b)
     {
-      if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch != null) {
-        break label82;
-      }
-      jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch = new RecentMenuFlagDispatch();
-      Iterator localIterator = RecentCustomizedProcessorRegister.b.iterator();
-      while (localIterator.hasNext())
+      if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch == null)
       {
-        Class localClass = (Class)localIterator.next();
-        if ((localClass != null) && (AbsMenuFlag.class.isAssignableFrom(localClass))) {
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch.a(localClass);
+        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch = new RecentMenuFlagDispatch();
+        Iterator localIterator = RecentCustomizedProcessorRegister.b.iterator();
+        while (localIterator.hasNext())
+        {
+          Class localClass = (Class)localIterator.next();
+          if ((localClass != null) && (AbsMenuFlag.class.isAssignableFrom(localClass))) {
+            jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch.a(localClass);
+          }
         }
+        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch.b();
       }
+      return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch;
     }
-    jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch.b();
-    label82:
-    return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public static RecentStatusIconDispatch a()
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch != null) {
-        break label82;
-      }
-      jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch = new RecentStatusIconDispatch();
-      Iterator localIterator = RecentCustomizedProcessorRegister.b.iterator();
-      while (localIterator.hasNext())
+      if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch == null)
       {
-        Class localClass = (Class)localIterator.next();
-        if ((localClass != null) && (AbsRecentStatus.class.isAssignableFrom(localClass))) {
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch.a(localClass);
+        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch = new RecentStatusIconDispatch();
+        Iterator localIterator = RecentCustomizedProcessorRegister.b.iterator();
+        while (localIterator.hasNext())
+        {
+          Class localClass = (Class)localIterator.next();
+          if ((localClass != null) && (AbsRecentStatus.class.isAssignableFrom(localClass))) {
+            jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch.a(localClass);
+          }
         }
+        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch.b();
       }
+      return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch;
     }
-    jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch.b();
-    label82:
-    return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.RecentBaseDataConfig
  * JD-Core Version:    0.7.0.1
  */

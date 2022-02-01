@@ -18,21 +18,23 @@ class LiteLuxuryGiftModule$2
   
   public void onChanged(@Nullable LiteShowLuxuryAnimationEvent paramLiteShowLuxuryAnimationEvent)
   {
-    LuxuryGiftData localLuxuryGiftData = LiteLuxuryGiftModule.access$1600(this.this$0, paramLiteShowLuxuryAnimationEvent);
-    if (this.this$0.getRoomBizContext().getRoomState().isSwipedScreen) {
-      LiteLuxuryGiftModule.access$900(this.this$0).d("LiteLuxuryGiftModule", "luxury show swipe screen return ", new Object[0]);
-    }
-    while (localLuxuryGiftData == null) {
+    LuxuryGiftData localLuxuryGiftData = LiteLuxuryGiftModule.access$1500(this.this$0, paramLiteShowLuxuryAnimationEvent);
+    if (this.this$0.getRoomBizContext().getRoomState().isSwipedScreen)
+    {
+      LiteLuxuryGiftModule.access$800(this.this$0).d("LiteLuxuryGiftModule", "luxury show swipe screen return ", new Object[0]);
       return;
     }
-    LiteLuxuryGiftModule.access$000(this.this$0).newTask().setPage("room_page").setPageDesc("直播/视频房间").setModule("gift_luxury").setModuleDesc("豪华礼物").setActType("view").setActTypeDesc("曝光").addKeyValue("zt_int1", localLuxuryGiftData.giftId).send();
-    localLuxuryGiftData.headUrl = paramLiteShowLuxuryAnimationEvent.headUrl;
-    LiteLuxuryGiftModule.access$1700(this.this$0).displayLuxuryGift(localLuxuryGiftData);
+    if (localLuxuryGiftData != null)
+    {
+      LiteLuxuryGiftModule.access$000(this.this$0).newTask().setPage("room_page").setPageDesc("直播/视频房间").setModule("gift_luxury").setModuleDesc("豪华礼物").setActType("view").setActTypeDesc("曝光").addKeyValue("zt_int1", localLuxuryGiftData.giftId).send();
+      localLuxuryGiftData.headUrl = paramLiteShowLuxuryAnimationEvent.headUrl;
+      LiteLuxuryGiftModule.access$1600(this.this$0).displayLuxuryGift(localLuxuryGiftData);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule.2
  * JD-Core Version:    0.7.0.1
  */

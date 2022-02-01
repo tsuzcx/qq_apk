@@ -20,34 +20,33 @@ class HiBoomTextView$1
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    HiBoomFontDrawer localHiBoomFontDrawer = HiBoomFont.a().a(this.a.jdField_a_of_type_Int, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader);
+    Object localObject = HiBoomFont.a().a(this.a.jdField_a_of_type_Int, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader);
     if (this.a.b())
     {
-      localHiBoomFontDrawer.a(true);
+      ((HiBoomFontDrawer)localObject).a(true);
       this.a.invalidate();
       return true;
     }
-    if (HiBoomTextView.a(this.a)) {
+    if (HiBoomTextView.a(this.a))
+    {
       this.a.a();
     }
-    for (;;)
+    else if (((HiBoomFontDrawer)localObject).jdField_a_of_type_Int == 3)
     {
-      return super.onSingleTapConfirmed(paramMotionEvent);
-      if (localHiBoomFontDrawer.jdField_a_of_type_Int == 3)
-      {
-        this.a.a(true);
-      }
-      else if (localHiBoomFontDrawer.jdField_a_of_type_Int == 4)
-      {
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
-      }
+      this.a.a(true);
     }
+    else if (((HiBoomFontDrawer)localObject).jdField_a_of_type_Int == 4)
+    {
+      localObject = this.a;
+      ((HiBoomTextView)localObject).jdField_a_of_type_Boolean = true;
+      ((HiBoomTextView)localObject).invalidate();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomTextView.1
  * JD-Core Version:    0.7.0.1
  */

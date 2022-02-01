@@ -18,43 +18,60 @@ class ReceiptMessageReadMemberListContainerFragment$ListProcessHandler
   public void handleMessage(Message paramMessage)
   {
     ReceiptMessageReadMemberListContainerFragment localReceiptMessageReadMemberListContainerFragment = (ReceiptMessageReadMemberListContainerFragment)this.a.get();
-    if ((localReceiptMessageReadMemberListContainerFragment == null) || (!localReceiptMessageReadMemberListContainerFragment.isAdded())) {}
-    do
+    if (localReceiptMessageReadMemberListContainerFragment != null)
     {
-      return;
-      switch (paramMessage.what)
-      {
-      case 0: 
-      default: 
-        return;
-      case -1: 
-        localReceiptMessageReadMemberListContainerFragment.stopTitleProgress();
-        ReceiptMessageReadMemberListContainerFragment.g(localReceiptMessageReadMemberListContainerFragment);
-        return;
-      case 1: 
-        ReceiptMessageReadMemberListContainerFragment.b(localReceiptMessageReadMemberListContainerFragment);
+      if (!localReceiptMessageReadMemberListContainerFragment.isAdded()) {
         return;
       }
-    } while (this.a.get() == null);
-    if (ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment)) {
-      ReceiptMessageReadMemberListContainerFragment.c(localReceiptMessageReadMemberListContainerFragment);
+      int i = paramMessage.what;
+      if (i != -1)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              if (i != 4)
+              {
+                if (i != 5) {
+                  return;
+                }
+                ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
+                return;
+              }
+              ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
+              return;
+            }
+            ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment, ((Long)paramMessage.obj).longValue());
+            return;
+          }
+          if (this.a.get() != null)
+          {
+            if (ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment)) {
+              ReceiptMessageReadMemberListContainerFragment.c(localReceiptMessageReadMemberListContainerFragment);
+            } else {
+              sendEmptyMessage(5);
+            }
+            ReceiptMessageReadMemberListContainerFragment.d(localReceiptMessageReadMemberListContainerFragment);
+          }
+        }
+        else
+        {
+          ReceiptMessageReadMemberListContainerFragment.b(localReceiptMessageReadMemberListContainerFragment);
+        }
+      }
+      else
+      {
+        localReceiptMessageReadMemberListContainerFragment.stopTitleProgress();
+        ReceiptMessageReadMemberListContainerFragment.g(localReceiptMessageReadMemberListContainerFragment);
+      }
     }
-    for (;;)
-    {
-      ReceiptMessageReadMemberListContainerFragment.d(localReceiptMessageReadMemberListContainerFragment);
-      return;
-      sendEmptyMessage(5);
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment, ((Long)paramMessage.obj).longValue());
-    return;
-    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
-    return;
-    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler
  * JD-Core Version:    0.7.0.1
  */

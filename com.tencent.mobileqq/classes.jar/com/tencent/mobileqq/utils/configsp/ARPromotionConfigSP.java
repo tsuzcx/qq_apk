@@ -12,12 +12,11 @@ public class ARPromotionConfigSP
 {
   public static int a(String paramString)
   {
-    int i = 0;
     paramString = b(paramString);
     if (paramString != null) {
-      i = ConfigHandler.getConfigVer(paramString, "config", "ver");
+      return ConfigHandler.getConfigVer(paramString, "config", "ver");
     }
-    return i;
+    return 0;
   }
   
   public static SharedPreferences a(String paramString)
@@ -27,44 +26,54 @@ public class ARPromotionConfigSP
   
   public static SharedPreferences a(String paramString1, String paramString2)
   {
-    return BaseConfigSP.a(PromotionUtil.a, paramString1, "res_qq.android.ar_" + paramString2);
+    String str = PromotionUtil.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("res_qq.android.ar_");
+    localStringBuilder.append(paramString2);
+    return BaseConfigSP.a(str, paramString1, localStringBuilder.toString());
   }
   
   public static PromotionConfigInfo a(String paramString1, String paramString2)
   {
-    int i = 1;
-    for (;;)
+    int i = 0;
+    for (Object localObject = paramString2;; localObject = paramString2)
     {
       try
       {
         if (TextUtils.isEmpty(paramString2))
         {
-          Object localObject = a(paramString1);
-          if (localObject != null)
-          {
-            paramString2 = ((SharedPreferences)localObject).getString("config", null);
-            QLog.w(PromotionUtil.a, 1, "ConfigInfo.get, step[" + i + "], configText[" + paramString2 + "]");
-            localObject = new PromotionConfigInfo();
-            ((PromotionConfigInfo)localObject).setUin(paramString1);
-            if (!TextUtils.isEmpty(paramString2)) {
-              ((PromotionConfigInfo)localObject).tryParse(PromotionUtil.a, paramString2);
-            }
-            return localObject;
+          localObject = a(paramString1);
+          if (localObject == null) {
+            break label139;
           }
-          i = 2;
-          continue;
+          localObject = ((SharedPreferences)localObject).getString("config", null);
+          i = 1;
         }
-        i = 0;
+        paramString2 = PromotionUtil.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ConfigInfo.get, step[");
+        localStringBuilder.append(i);
+        localStringBuilder.append("], configText[");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("]");
+        QLog.w(paramString2, 1, localStringBuilder.toString());
+        paramString2 = new PromotionConfigInfo();
+        paramString2.setUin(paramString1);
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          paramString2.tryParse(PromotionUtil.a, (String)localObject);
+        }
+        return paramString2;
       }
       finally {}
+      label139:
+      i = 2;
     }
   }
   
   public static String a(String paramString)
   {
-    Object localObject = null;
     SharedPreferences localSharedPreferences = b(paramString);
-    paramString = localObject;
+    paramString = null;
     if (localSharedPreferences != null) {
       paramString = localSharedPreferences.getString("config", null);
     }
@@ -73,22 +82,35 @@ public class ARPromotionConfigSP
   
   public static void a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    BusinessCommonConfig.saveMd5(PromotionUtil.a, a(paramString1, paramString2), "md5_" + paramInt, paramString3);
+    String str = PromotionUtil.a;
+    paramString1 = a(paramString1, paramString2);
+    paramString2 = new StringBuilder();
+    paramString2.append("md5_");
+    paramString2.append(paramInt);
+    BusinessCommonConfig.saveMd5(str, paramString1, paramString2.toString(), paramString3);
   }
   
   public static boolean a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    return BusinessCommonConfig.isResReady(PromotionUtil.a + "_" + paramString2, a(paramString1, paramString2), "md5_" + paramInt, paramString3, paramString4);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(PromotionUtil.a);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString2);
+    localObject = ((StringBuilder)localObject).toString();
+    paramString1 = a(paramString1, paramString2);
+    paramString2 = new StringBuilder();
+    paramString2.append("md5_");
+    paramString2.append(paramInt);
+    return BusinessCommonConfig.isResReady((String)localObject, paramString1, paramString2.toString(), paramString3, paramString4);
   }
   
   public static int b(String paramString)
   {
-    int i = 0;
     paramString = a(paramString);
     if (paramString != null) {
-      i = ConfigHandler.getConfigVer(paramString, "config", "ver");
+      return ConfigHandler.getConfigVer(paramString, "config", "ver");
     }
-    return i;
+    return 0;
   }
   
   public static SharedPreferences b(String paramString)
@@ -98,7 +120,7 @@ public class ARPromotionConfigSP
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.configsp.ARPromotionConfigSP
  * JD-Core Version:    0.7.0.1
  */

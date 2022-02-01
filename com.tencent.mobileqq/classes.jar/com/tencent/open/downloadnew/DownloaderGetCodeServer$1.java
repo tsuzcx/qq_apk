@@ -19,36 +19,53 @@ class DownloaderGetCodeServer$1
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    LogUtility.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    Object localObject = DownloaderGetCodeServer.a(this.a);
-    if (localObject == null) {
-      LogUtility.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
-    }
-    String str;
-    int i;
-    do
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onCall action|");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(" params|");
+    ((StringBuilder)localObject1).append(paramBundle);
+    ((StringBuilder)localObject1).append(" callbackId|");
+    ((StringBuilder)localObject1).append(paramInt);
+    LogUtility.c("DownloaderWriteCodeIPC", ((StringBuilder)localObject1).toString());
+    Object localObject2 = DownloaderGetCodeServer.a(this.a);
+    if (localObject2 == null)
     {
-      do
+      LogUtility.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
+      return null;
+    }
+    if (("DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) && (paramBundle != null))
+    {
+      localObject1 = paramBundle.getString("PackageName");
+      int i = paramBundle.getInt("VersionCode");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall action|");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" packageName|");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(" versionCode|");
+      localStringBuilder.append(i);
+      LogUtility.c("DownloaderWriteCodeIPC", localStringBuilder.toString());
+      if (localObject1 != null)
       {
-        return null;
-      } while ((!"DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) || (paramBundle == null));
-      str = paramBundle.getString("PackageName");
-      i = paramBundle.getInt("VersionCode");
-      LogUtility.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " packageName|" + str + " versionCode|" + i);
-    } while (str == null);
-    ((QQAppInterface)localObject).addDefaultObservers(DownloaderGetCodeServer.a(this.a));
-    paramString = (ConfigHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
-    localObject = str + "_" + i;
-    paramBundle.putInt("CallbackId", paramInt);
-    paramBundle = new Bundle(paramBundle);
-    DownloaderGetCodeServer.a(this.a).put(localObject, paramBundle);
-    paramString.a(str, i, (String)localObject);
+        ((QQAppInterface)localObject2).addDefaultObservers(DownloaderGetCodeServer.a(this.a));
+        paramString = (ConfigHandler)((QQAppInterface)localObject2).getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("_");
+        ((StringBuilder)localObject2).append(i);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        paramBundle.putInt("CallbackId", paramInt);
+        paramBundle = new Bundle(paramBundle);
+        DownloaderGetCodeServer.a(this.a).put(localObject2, paramBundle);
+        paramString.a((String)localObject1, i, (String)localObject2);
+      }
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloaderGetCodeServer.1
  * JD-Core Version:    0.7.0.1
  */

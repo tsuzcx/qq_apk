@@ -12,26 +12,22 @@ class RecyclerViewBase$4
     if (RecyclerViewBase.access$000(this.this$0))
     {
       RecyclerViewBase.access$002(this.this$0, false);
-      if (RecyclerViewBase.access$100(this.this$0) != 0) {
-        break label37;
-      }
-      this.this$0.stopScroll();
-    }
-    label37:
-    do
-    {
+      if (RecyclerViewBase.access$100(this.this$0) == 0) {}
       do
       {
+        this.this$0.stopScroll();
         return;
-      } while ((RecyclerViewBase.access$100(this.this$0) != 2) || (this.this$0.mVelocityTracker == null));
-      this.this$0.mVelocityTracker.computeCurrentVelocity(1000, this.this$0.mMaxFlingVelocity);
-    } while (Math.abs(this.this$0.mVelocityTracker.getYVelocity()) >= this.this$0.mMaxFlingVelocity * 2 / 3);
-    this.this$0.stopScroll();
+        if ((RecyclerViewBase.access$100(this.this$0) != 2) || (this.this$0.mVelocityTracker == null)) {
+          break;
+        }
+        this.this$0.mVelocityTracker.computeCurrentVelocity(1000, this.this$0.mMaxFlingVelocity);
+      } while (Math.abs(this.this$0.mVelocityTracker.getYVelocity()) < this.this$0.mMaxFlingVelocity * 2 / 3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.4
  * JD-Core Version:    0.7.0.1
  */

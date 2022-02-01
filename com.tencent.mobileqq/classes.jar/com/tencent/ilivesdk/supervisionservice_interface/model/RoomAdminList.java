@@ -11,27 +11,38 @@ public class RoomAdminList
   
   public String toString()
   {
-    String str = "RoomAdminList {max=" + this.max + "\nisAnchorInRoom=" + this.isAnchorInRoom + "\n";
-    if (this.adminInfoList != null)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("RoomAdminList {max=");
+    ((StringBuilder)localObject1).append(this.max);
+    ((StringBuilder)localObject1).append("\nisAnchorInRoom=");
+    ((StringBuilder)localObject1).append(this.isAnchorInRoom);
+    ((StringBuilder)localObject1).append("\n");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject3 = this.adminInfoList;
+    Object localObject2 = localObject1;
+    if (localObject3 != null)
     {
-      Iterator localIterator = this.adminInfoList.iterator();
+      localObject3 = ((List)localObject3).iterator();
       for (;;)
       {
-        localObject = str;
-        if (!localIterator.hasNext()) {
+        localObject2 = localObject1;
+        if (!((Iterator)localObject3).hasNext()) {
           break;
         }
-        localObject = (RoomAdminInfo)localIterator.next();
-        str = str + ((RoomAdminInfo)localObject).toString() + "\n";
+        localObject2 = (RoomAdminInfo)((Iterator)localObject3).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(((RoomAdminInfo)localObject2).toString());
+        localStringBuilder.append("\n");
+        localObject1 = localStringBuilder.toString();
       }
     }
-    Object localObject = str;
-    return localObject;
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.supervisionservice_interface.model.RoomAdminList
  * JD-Core Version:    0.7.0.1
  */

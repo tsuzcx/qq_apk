@@ -27,12 +27,20 @@ class LiveData$LifecycleBoundObserver
   
   public void onStateChanged(@NonNull LifecycleOwner paramLifecycleOwner, @NonNull Lifecycle.Event paramEvent)
   {
-    if (this.mOwner.getLifecycle().getCurrentState() == Lifecycle.State.DESTROYED)
+    paramLifecycleOwner = this.mOwner.getLifecycle().getCurrentState();
+    if (paramLifecycleOwner == Lifecycle.State.DESTROYED)
     {
       this.this$0.removeObserver(this.mObserver);
       return;
     }
-    activeStateChanged(shouldBeActive());
+    paramEvent = null;
+    while (paramEvent != paramLifecycleOwner)
+    {
+      activeStateChanged(shouldBeActive());
+      Lifecycle.State localState = this.mOwner.getLifecycle().getCurrentState();
+      paramEvent = paramLifecycleOwner;
+      paramLifecycleOwner = localState;
+    }
   }
   
   boolean shouldBeActive()
@@ -42,7 +50,7 @@ class LiveData$LifecycleBoundObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.LiveData.LifecycleBoundObserver
  * JD-Core Version:    0.7.0.1
  */

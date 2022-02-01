@@ -5,20 +5,21 @@ public class QualityReportSign
   static final String Appid = "1253923588";
   static final String Bucket = "opensdkgz";
   public static final String TAG = "QualityReportSign";
-  private static QualityReportSign s_instance = null;
+  private static QualityReportSign s_instance;
   String mSign = null;
   
   public static QualityReportSign getInstance()
   {
-    if (s_instance == null) {}
-    try
-    {
-      if (s_instance == null) {
-        s_instance = new QualityReportSign();
+    if (s_instance == null) {
+      try
+      {
+        if (s_instance == null) {
+          s_instance = new QualityReportSign();
+        }
       }
-      return s_instance;
+      finally {}
     }
-    finally {}
+    return s_instance;
   }
   
   public String getCosSign()

@@ -23,14 +23,15 @@ public final class oidb_0xde8$NickInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 58, 66 }, new String[] { "bytes_feedid", "bytes_nick", "uint32_type", "uint32_create_time", "uint32_mod_time", "uint32_del_time", "rpt_item", "msg_light_comment" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null }, NickInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 58, 66 }, new String[] { "bytes_feedid", "bytes_nick", "uint32_type", "uint32_create_time", "uint32_mod_time", "uint32_del_time", "rpt_item", "msg_light_comment" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger, localInteger, null, null }, NickInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xde8.oidb_0xde8.NickInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.imcore.message;
 
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.activity.qcircle.handler.QCircleHandler;
-import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxUtil;
+import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxService;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,18 +24,22 @@ import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.extendfriend.network.ExtendFriendHandler;
 import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
-import com.tencent.mobileqq.gamecenter.message.GameMsgManager;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.NearbyManagerHelper;
+import com.tencent.mobileqq.nearby.api.INearbyProxy;
 import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.mobileqq.qcircle.api.IQCircleRedPointService;
 import com.tencent.mobileqq.qcircle.api.helper.QCircleChatBoxHelper;
+import com.tencent.mobileqq.qqexpand.network.IExpandHandler;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
+import com.tencent.mobileqq.util.api.IAppBadgeService;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -86,8 +90,9 @@ public class ConversationFacadeCallback
   {
     if ((paramAppRuntime instanceof QQAppInterface))
     {
-      long l = a((QQAppInterface)paramAppRuntime).a(paramString, paramInt1, paramInt2);
-      a((QQAppInterface)paramAppRuntime).a(paramString, paramInt1, paramInt2, paramLong, 0);
+      paramAppRuntime = (QQAppInterface)paramAppRuntime;
+      long l = a(paramAppRuntime).a(paramString, paramInt1, paramInt2);
+      a(paramAppRuntime).a(paramString, paramInt1, paramInt2, paramLong, 0);
       return l;
     }
     return 0L;
@@ -135,7 +140,7 @@ public class ConversationFacadeCallback
   
   public ConversationInfo a(ConversationInfo paramConversationInfo)
   {
-    return TempMsgBoxUtil.a(paramConversationInfo);
+    return ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).onGetUnreadCount(paramConversationInfo);
   }
   
   public BaseApplication a(AppRuntime paramAppRuntime)
@@ -172,131 +177,156 @@ public class ConversationFacadeCallback
   
   public void a(AppRuntime paramAppRuntime)
   {
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)paramAppRuntime).refreshAppBadge();
+    if (paramAppRuntime.isLogin()) {
+      ((IAppBadgeService)paramAppRuntime.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
     }
   }
   
   public void a(AppRuntime paramAppRuntime, int paramInt)
   {
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)paramAppRuntime).getNearbyProxy().b(paramInt);
+      NearbyManagerHelper.a((QQAppInterface)paramAppRuntime).a(paramInt);
     }
   }
   
   public void a(AppRuntime paramAppRuntime, int paramInt, MessageRecord paramMessageRecord, List<MessageRecord> paramList)
   {
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      switch (paramInt)
-      {
-      }
-    }
-    do
+    if ((paramAppRuntime instanceof QQAppInterface))
     {
-      return;
-      a((QQAppInterface)paramAppRuntime).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), 1);
-      ConfessMsgUtil.a((QQAppInterface)paramAppRuntime, false, true);
-      ((ExtendFriendHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).a();
-      return;
-      QCircleChatBoxHelper.getInstance().insertUnReadMessage(paramMessageRecord.frienduin);
-      ((QCircleHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.QCIRCLE_HANDLER)).b();
-      return;
-      paramAppRuntime = (AppletsHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
-    } while (paramAppRuntime == null);
-    paramAppRuntime.b(paramList);
+      if (paramInt != 1033)
+      {
+        if (paramInt != 1038)
+        {
+          if (paramInt != 1044)
+          {
+            if (paramInt != 10008) {
+              return;
+            }
+            QCircleChatBoxHelper.getInstance().insertUnReadMessage(paramMessageRecord.frienduin);
+            QCircleUtils.a().updateRedPoint();
+          }
+        }
+        else
+        {
+          paramAppRuntime = (AppletsHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
+          if (paramAppRuntime == null) {
+            return;
+          }
+          paramAppRuntime.b(paramList);
+        }
+      }
+      else
+      {
+        paramList = (QQAppInterface)paramAppRuntime;
+        a(paramList).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), 1);
+        ConfessMsgUtil.a(paramList, false, true);
+      }
+      ((IExpandHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).a();
+    }
   }
   
   public void a(AppRuntime paramAppRuntime, ConversationFacade paramConversationFacade, String paramString, int paramInt)
   {
-    Object localObject1;
-    int i;
-    Object localObject2;
-    int j;
     if ((paramAppRuntime instanceof QQAppInterface))
     {
-      localObject1 = a(paramAppRuntime, paramInt).a(paramString, paramInt);
-      if (ConfessMsgUtil.a((QQAppInterface)paramAppRuntime, true)) {
-        break label393;
-      }
-      if (localObject1 != null) {
-        break label390;
-      }
-      localObject1 = new ArrayList();
-      localObject1 = ((List)localObject1).iterator();
-      i = 0;
-      if (((Iterator)localObject1).hasNext())
+      Object localObject2 = a(paramAppRuntime, paramInt).a(paramString, paramInt);
+      QQAppInterface localQQAppInterface = (QQAppInterface)paramAppRuntime;
+      int i;
+      int j;
+      if (!ConfessMsgUtil.a(localQQAppInterface, true))
       {
-        localObject2 = (MessageRecord)((Iterator)localObject1).next();
-        if (((MessageRecord)localObject2).isSelfConfessor()) {}
-        for (j = 1033;; j = 1034)
-        {
-          UinTypeUtil.a(((MessageRecord)localObject2).senderuin, j, ((MessageRecord)localObject2).getConfessTopicId());
-          i = paramConversationFacade.a(((MessageRecord)localObject2).senderuin, j, ((MessageRecord)localObject2).getConfessTopicId()) + i;
-          break;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = new ArrayList();
         }
-      }
-      if ((((ConfessManager)paramAppRuntime.getManager(QQManagerFactory.CONFESS_MANAGER)).a() == null) || (!ConfessConfig.a((QQAppInterface)paramAppRuntime, "redpoint_box_show"))) {
-        break label387;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.unread.Facade", 2, "calcConfessBoxUnreadCount box redpoint show +1");
-      }
-      i += 1;
-    }
-    for (;;)
-    {
-      if (paramConversationFacade.f(paramString, paramInt) != 0)
-      {
-        j = 1;
-        if ((paramConversationFacade.a(paramString, paramInt) != i) || (paramConversationFacade.e(paramString, paramInt) != 0) || (j != 0))
+        localObject1 = ((List)localObject1).iterator();
+        i = 0;
+        while (((Iterator)localObject1).hasNext())
         {
-          localObject1 = a(paramAppRuntime).a(paramString, paramInt);
-          localObject2 = a(paramAppRuntime);
-          if (localObject1 != null) {
-            break label377;
+          localObject2 = (MessageRecord)((Iterator)localObject1).next();
+          if (((MessageRecord)localObject2).isSelfConfessor()) {
+            j = 1033;
+          } else {
+            j = 1034;
+          }
+          UinTypeUtil.a(((MessageRecord)localObject2).senderuin, j, ((MessageRecord)localObject2).getConfessTopicId());
+          i += paramConversationFacade.a(((MessageRecord)localObject2).senderuin, j, ((MessageRecord)localObject2).getConfessTopicId());
+        }
+        j = i;
+        if (((ConfessManager)paramAppRuntime.getManager(QQManagerFactory.CONFESS_MANAGER)).a() != null)
+        {
+          j = i;
+          if (ConfessConfig.a(localQQAppInterface, "redpoint_box_show"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("Q.unread.Facade", 2, "calcConfessBoxUnreadCount box redpoint show +1");
+            }
+            j = i + 1;
           }
         }
+        i = j;
       }
-      label377:
-      for (long l = 0L;; l = ((ConversationInfo)localObject1).lastread)
+      else
       {
-        ((ConversationProxy)localObject2).a(paramString, paramInt, l, i, 0, 0);
-        if ((UinTypeUtil.j(paramInt)) && (j != 0)) {
-          paramConversationFacade.a(a(paramAppRuntime).a(paramString, paramInt), "");
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.unread.Facade", 2, "calcConfessBoxUnreadCount boxUin=" + paramString + ", unread=" + i + ", giftCount=" + 0 + ", redPacketCount=" + 0);
-        }
-        return;
-        j = 0;
-        break;
+        i = 0;
       }
-      label387:
-      continue;
-      label390:
-      break;
-      label393:
-      i = 0;
+      if (paramConversationFacade.f(paramString, paramInt) != 0) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      if ((paramConversationFacade.a(paramString, paramInt) == i) && (paramConversationFacade.e(paramString, paramInt) == 0) && (j == 0)) {
+        break label351;
+      }
+      Object localObject1 = a(paramAppRuntime).a(paramString, paramInt);
+      localObject2 = a(paramAppRuntime);
+      long l;
+      if (localObject1 == null) {
+        l = 0L;
+      } else {
+        l = ((ConversationInfo)localObject1).lastread;
+      }
+      ((ConversationProxy)localObject2).a(paramString, paramInt, l, i, 0, 0);
+      if ((UinTypeUtil.j(paramInt)) && (j != 0)) {
+        paramConversationFacade.a(a(paramAppRuntime).a(paramString, paramInt), "");
+      }
+      label351:
+      if (QLog.isColorLevel())
+      {
+        paramAppRuntime = new StringBuilder();
+        paramAppRuntime.append("calcConfessBoxUnreadCount boxUin=");
+        paramAppRuntime.append(paramString);
+        paramAppRuntime.append(", unread=");
+        paramAppRuntime.append(i);
+        paramAppRuntime.append(", giftCount=");
+        paramAppRuntime.append(0);
+        paramAppRuntime.append(", redPacketCount=");
+        paramAppRuntime.append(0);
+        QLog.d("Q.unread.Facade", 2, paramAppRuntime.toString());
+        return;
+      }
     }
   }
   
   public void a(AppRuntime paramAppRuntime, ConversationInfo paramConversationInfo, int paramInt)
   {
-    if (paramConversationInfo != null) {}
-    try
-    {
-      if ((("2747277822".equals(paramConversationInfo.uin)) || (10007 == paramConversationInfo.type)) && (paramAppRuntime != null))
+    if (paramConversationInfo != null) {
+      try
       {
-        paramAppRuntime = (GameMsgManager)paramAppRuntime.getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER);
-        if (paramAppRuntime != null) {
-          paramAppRuntime.c(0);
+        if ((("2747277822".equals(paramConversationInfo.uin)) || (10007 == paramConversationInfo.type)) && (paramAppRuntime != null))
+        {
+          paramAppRuntime = (IGameMsgManagerService)paramAppRuntime.getRuntimeService(IGameMsgManagerService.class, "");
+          if (paramAppRuntime != null)
+          {
+            paramAppRuntime.setUnshowedUnreadCnt(0);
+            return;
+          }
         }
       }
-      return;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      CaughtExceptionReport.a(paramAppRuntime);
+      catch (Exception paramAppRuntime)
+      {
+        CaughtExceptionReport.a(paramAppRuntime);
+      }
     }
   }
   
@@ -381,7 +411,7 @@ public class ConversationFacadeCallback
   
   public boolean b(MessageRecord paramMessageRecord)
   {
-    return UniteGrayTipUtil.a(paramMessageRecord);
+    return UniteGrayTipMsgUtil.a(paramMessageRecord);
   }
   
   public boolean b(AppRuntime paramAppRuntime, String paramString)
@@ -422,7 +452,7 @@ public class ConversationFacadeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ConversationFacadeCallback
  * JD-Core Version:    0.7.0.1
  */

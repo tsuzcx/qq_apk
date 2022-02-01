@@ -5,14 +5,14 @@ import android.text.TextUtils;
 import com.tencent.gamecenter.wadl.api.IQQGameNetService;
 import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
 import com.tencent.gamecenter.wadl.biz.listener.WadlProxyServiceCallBackInterface;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceUtil;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceWrap;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.annotation.ProxyService;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ThirdAppProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ThirdAppProxy.AppDownloadListener;
-import cooperation.wadl.ipc.WadlProxyServiceUtil;
-import cooperation.wadl.ipc.WadlProxyServiceWrap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -82,36 +82,43 @@ public class ThirdAppProxyImpl
   
   public boolean installApp(String paramString, AsyncResult paramAsyncResult)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramAsyncResult == null)) {
-      return false;
-    }
-    WadlParams localWadlParams2 = a((JSONObject)this.e.get(paramString));
-    WadlParams localWadlParams1 = localWadlParams2;
-    if (localWadlParams2 == null) {
-      localWadlParams1 = (WadlParams)this.f.get(paramString);
-    }
-    if (localWadlParams1 == null)
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramAsyncResult.onReceiveResult(false, null);
-      return false;
+      if (paramAsyncResult == null) {
+        return false;
+      }
+      WadlParams localWadlParams2 = a((JSONObject)this.e.get(paramString));
+      WadlParams localWadlParams1 = localWadlParams2;
+      if (localWadlParams2 == null) {
+        localWadlParams1 = (WadlParams)this.f.get(paramString);
+      }
+      if (localWadlParams1 == null)
+      {
+        paramAsyncResult.onReceiveResult(false, null);
+        return false;
+      }
+      localWadlParams1.b(2);
+      localWadlParams1.b = 5;
+      WadlProxyServiceUtil.a().c(localWadlParams1);
+      paramAsyncResult.onReceiveResult(true, null);
+      return true;
     }
-    localWadlParams1.b(2);
-    localWadlParams1.b = 5;
-    WadlProxyServiceUtil.a().c(localWadlParams1);
-    paramAsyncResult.onReceiveResult(true, null);
-    return true;
+    return false;
   }
   
   public void queryApkDownloadInfo(String paramString, AsyncResult paramAsyncResult)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramAsyncResult == null)) {
-      return;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramAsyncResult == null) {
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramString);
+      paramString = new ThirdAppProxyImpl.QueryDownloadInfoListener(this, paramString, paramAsyncResult);
+      ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).addListener(paramString);
+      ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).getApkDownloadInfo("10036618", localArrayList);
     }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    paramString = new ThirdAppProxyImpl.QueryDownloadInfoListener(this, paramString, paramAsyncResult);
-    ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).addListener(paramString);
-    ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).getApkDownloadInfo("10036618", localArrayList);
   }
   
   public void queryDownloadTask(String paramString, AsyncResult paramAsyncResult)
@@ -130,30 +137,23 @@ public class ThirdAppProxyImpl
   
   public void startDownload(String paramString, JSONObject paramJSONObject, boolean paramBoolean, ThirdAppProxy.AppDownloadListener paramAppDownloadListener)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramJSONObject == null))
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null))
     {
-      QLog.i("ThirdAppProxyImpl", 1, "startDownload, url is empty!");
       if (paramAppDownloadListener != null) {
-        paramAppDownloadListener.onDownloadFailed(-1000, -1, "url is invalid");
+        a(paramString, paramAppDownloadListener);
       }
-      return;
-    }
-    if (paramAppDownloadListener != null) {
-      a(paramString, paramAppDownloadListener);
-    }
-    for (;;)
-    {
       try
       {
         this.e.put(paramString, paramJSONObject);
         paramString = a(paramJSONObject);
         if (paramString == null) {
-          break;
+          return;
         }
-        if (!paramBoolean) {
-          break label123;
+        if (paramBoolean) {
+          paramString.b(7);
+        } else {
+          paramString.b(6);
         }
-        paramString.b(7);
         paramString.b = 2;
         WadlProxyServiceUtil.a().b(paramString);
         return;
@@ -161,14 +161,15 @@ public class ThirdAppProxyImpl
       catch (Exception paramString)
       {
         QLog.i("ThirdAppProxyImpl", 1, "startDownload---exception happend:", paramString);
+        if (paramAppDownloadListener != null) {
+          paramAppDownloadListener.onDownloadFailed(-1000, -2, "url is invalid");
+        }
+        return;
       }
-      if (paramAppDownloadListener == null) {
-        break;
-      }
-      paramAppDownloadListener.onDownloadFailed(-1000, -2, "url is invalid");
-      return;
-      label123:
-      paramString.b(6);
+    }
+    QLog.i("ThirdAppProxyImpl", 1, "startDownload, url is empty!");
+    if (paramAppDownloadListener != null) {
+      paramAppDownloadListener.onDownloadFailed(-1000, -1, "url is invalid");
     }
   }
   
@@ -189,9 +190,10 @@ public class ThirdAppProxyImpl
   
   public void unInit()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap != null)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      localHashMap.clear();
       this.jdField_a_of_type_JavaUtilHashMap = null;
     }
     this.jdField_a_of_type_Boolean = false;
@@ -203,7 +205,7 @@ public class ThirdAppProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ThirdAppProxyImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import com.tencent.tkd.weibo.R.id;
+import com.tencent.tkd.weibo.component.R.id;
 import java.util.List;
 import kotlin.Metadata;
 import kotlin.Unit;
@@ -19,10 +19,10 @@ final class BaseListView$onAttachedToWindow$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (ListView)this.a.a(R.id.f);
+    paramAdapterView = (ListView)this.a.a(R.id.g);
     Intrinsics.checkExpressionValueIsNotNull(paramAdapterView, "listView");
     paramInt -= paramAdapterView.getHeaderViewsCount();
-    if ((paramInt < this.a.a().a().size()) && (paramInt >= 0))
+    if ((paramInt < this.a.a().a().size()) && (paramInt >= 0) && (this.a.a().getItemViewType(paramInt) != -1))
     {
       paramAdapterView = BaseListView.a(this.a);
       if (paramAdapterView != null) {
@@ -33,7 +33,7 @@ final class BaseListView$onAttachedToWindow$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.framework.mvp.BaseListView.onAttachedToWindow.1
  * JD-Core Version:    0.7.0.1
  */

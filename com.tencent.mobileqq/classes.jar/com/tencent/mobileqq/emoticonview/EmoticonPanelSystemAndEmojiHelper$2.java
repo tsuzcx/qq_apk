@@ -16,11 +16,11 @@ class EmoticonPanelSystemAndEmojiHelper$2
   
   public void run()
   {
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.this$0.mPanelController.mNewFlag, "alpha", new float[] { 0.0F, 1.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.this$0.mPanelController.mNewFlag, "alpha", new float[] { 1.0F, 0.6F });
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.this$0.mPanelController.mNewFlag, "rotation", new float[] { 0.0F, 50.0F });
-    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.this$0.mPanelController.mNewFlag, "alpha", new float[] { 0.6F, 1.0F });
-    ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(this.this$0.mPanelController.mNewFlag, "rotation", new float[] { 50.0F, 0.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(((EmoticonPanelController)this.this$0.mPanelController).getNewFlag(), "alpha", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(((EmoticonPanelController)this.this$0.mPanelController).getNewFlag(), "alpha", new float[] { 1.0F, 0.6F });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(((EmoticonPanelController)this.this$0.mPanelController).getNewFlag(), "rotation", new float[] { 0.0F, 50.0F });
+    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(((EmoticonPanelController)this.this$0.mPanelController).getNewFlag(), "alpha", new float[] { 0.6F, 1.0F });
+    ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(((EmoticonPanelController)this.this$0.mPanelController).getNewFlag(), "rotation", new float[] { 50.0F, 0.0F });
     localObjectAnimator1.setDuration(300L);
     localObjectAnimator1.setInterpolator(new LinearInterpolator());
     localObjectAnimator2.setDuration(400L);
@@ -35,14 +35,14 @@ class EmoticonPanelSystemAndEmojiHelper$2
     localAnimatorSet.play(localObjectAnimator4).after(localObjectAnimator2);
     localAnimatorSet.play(localObjectAnimator5).after(localObjectAnimator3);
     localAnimatorSet.play(localObjectAnimator2).with(localObjectAnimator3).after(localObjectAnimator1);
-    this.this$0.mPanelController.mNewFlag.setVisibility(0);
+    ((EmoticonPanelController)this.this$0.mPanelController).getNewFlag().setVisibility(0);
     localAnimatorSet.start();
-    this.this$0.mPanelController.context.getSharedPreferences("mobileQQ", 0).edit().putBoolean("emo_panel_mall_new_played", true).apply();
+    ((EmoticonPanelController)this.this$0.mPanelController).context.getSharedPreferences("mobileQQ", 0).edit().putBoolean("emo_panel_mall_new_played", true).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelSystemAndEmojiHelper.2
  * JD-Core Version:    0.7.0.1
  */

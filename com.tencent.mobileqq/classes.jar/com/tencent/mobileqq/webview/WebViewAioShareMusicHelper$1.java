@@ -10,14 +10,14 @@ class WebViewAioShareMusicHelper$1
   
   public void run()
   {
-    if ((WebViewAioShareMusicHelper.a(this.this$0) != null) && (WebViewAioShareMusicHelper.a(this.this$0).mUIStyleHandler != null)) {
-      WebViewAioShareMusicHelper.a(this.this$0).mUIStyleHandler.a(this.a, WebViewAioShareMusicHelper.a(this.this$0));
+    if ((WebViewAioShareMusicHelper.a(this.this$0) != null) && (WebViewAioShareMusicHelper.a(this.this$0).getUIStyleHandler() != null)) {
+      WebViewAioShareMusicHelper.a(this.this$0).getUIStyleHandler().a(this.a, WebViewAioShareMusicHelper.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebViewAioShareMusicHelper.1
  * JD-Core Version:    0.7.0.1
  */

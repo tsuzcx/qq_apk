@@ -12,13 +12,13 @@ class UniformDownloadActivity$7$1
   public void run()
   {
     DownloadManager.a().a(UniformDownloadActivity.a(this.a.a));
-    MyAppApi.a().a(this.a.a, "https://a.app.qq.com/o/myapp-down?g_f=1001647", "ANDROIDQQ.WIFIDLYYB.GAME", 2, true);
+    MyAppApi.a().a(this.a.a, "https://a.app.qq.com/o/myapp-down?g_f=1001647", "ANDROIDQQ.WIFIDLYYB.GAME", 2, "", true);
     OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3004", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

@@ -31,15 +31,12 @@ public class GetPoiFacesRequest
     try
     {
       localRspGetPOIPosters.mergeFrom(paramArrayOfByte);
-      return new GetPoiFacesResponse(localRspGetPOIPosters);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetPoiFacesResponse(localRspGetPOIPosters);
   }
   
   public String a()
@@ -47,7 +44,7 @@ public class GetPoiFacesRequest
     return StoryApi.a("StorySvc.video_poi_posters_get");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetPOIPosters localReqGetPOIPosters = new qqstory_service.ReqGetPOIPosters();
     qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
@@ -60,7 +57,7 @@ public class GetPoiFacesRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetPoiFacesRequest
  * JD-Core Version:    0.7.0.1
  */

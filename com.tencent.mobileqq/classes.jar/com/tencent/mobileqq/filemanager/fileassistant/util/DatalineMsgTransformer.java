@@ -27,11 +27,25 @@ public class DatalineMsgTransformer
   
   private int a()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgtype;
-    if ((i == -2009) || (i == -2000) || (i == -2005) || (i == -2009)) {
-      return -2005;
+    int k = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgtype;
+    int j = -2005;
+    int i = j;
+    if (k != -2009)
+    {
+      i = j;
+      if (k != -2000)
+      {
+        i = j;
+        if (k != -2005)
+        {
+          if (k == -2009) {
+            return -2005;
+          }
+          i = -1000;
+        }
+      }
     }
-    return -1000;
+    return i;
   }
   
   private MessageForDLFile a()
@@ -45,7 +59,13 @@ public class DatalineMsgTransformer
     localMessageForDLFile.associatedId = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid;
     localMessageForDLFile.deviceType = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
     localMessageForDLFile.serial();
-    QLog.i("DatalineMsgTransformer", 1, "transformForTextMessage: msg[" + localMessageForDLFile.associatedId + "] time[" + localMessageForDLFile.time + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("transformForTextMessage: msg[");
+    localStringBuilder.append(localMessageForDLFile.associatedId);
+    localStringBuilder.append("] time[");
+    localStringBuilder.append(localMessageForDLFile.time);
+    localStringBuilder.append("]");
+    QLog.i("DatalineMsgTransformer", 1, localStringBuilder.toString());
     return localMessageForDLFile;
   }
   
@@ -60,32 +80,36 @@ public class DatalineMsgTransformer
     if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgtype != -1000) {
       localMessageForText.msg = "";
     }
-    QLog.i("DatalineMsgTransformer", 1, "transformForTextMessage: msg[" + localMessageForText.msg + "] time[" + localMessageForText.time + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("transformForTextMessage: msg[");
+    localStringBuilder.append(localMessageForText.msg);
+    localStringBuilder.append("] time[");
+    localStringBuilder.append(localMessageForText.time);
+    localStringBuilder.append("]");
+    QLog.i("DatalineMsgTransformer", 1, localStringBuilder.toString());
     return localMessageForText;
   }
   
   public ChatMessage a()
   {
-    int i = 65793;
     Object localObject = a();
     if (-2005 == a()) {
       localObject = a();
     }
     ((ChatMessage)localObject).selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    ((ChatMessage)localObject).frienduin = this.jdField_a_of_type_JavaLangString;
-    ((ChatMessage)localObject).senderuin = this.jdField_a_of_type_JavaLangString;
+    String str = this.jdField_a_of_type_JavaLangString;
+    ((ChatMessage)localObject).frienduin = str;
+    ((ChatMessage)localObject).senderuin = str;
     ((ChatMessage)localObject).msgUid = FileManagerUtil.b();
     ((ChatMessage)localObject).shmsgseq = FileManagerUtil.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.dataline_type == 0) {}
-    for (;;)
-    {
-      QFileAssistantUtils.a((MessageRecord)localObject, i);
-      ((ChatMessage)localObject).saveExtInfoToExtStr("dataline_old_msg", "1");
-      return localObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.dataline_type == 1) {
-        i = 68361;
-      }
+    int j = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.dataline_type;
+    int i = 65793;
+    if ((j != 0) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.dataline_type == 1)) {
+      i = 68361;
     }
+    QFileAssistantUtils.a((MessageRecord)localObject, i);
+    ((ChatMessage)localObject).saveExtInfoToExtStr("dataline_old_msg", "1");
+    return localObject;
   }
   
   public void a(DataLineMsgRecord paramDataLineMsgRecord)
@@ -95,7 +119,7 @@ public class DatalineMsgTransformer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.DatalineMsgTransformer
  * JD-Core Version:    0.7.0.1
  */

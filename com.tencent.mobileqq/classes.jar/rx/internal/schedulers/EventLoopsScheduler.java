@@ -56,15 +56,17 @@ public class EventLoopsScheduler
   
   public void shutdown()
   {
-    EventLoopsScheduler.FixedSchedulerPool localFixedSchedulerPool;
+    EventLoopsScheduler.FixedSchedulerPool localFixedSchedulerPool1;
+    EventLoopsScheduler.FixedSchedulerPool localFixedSchedulerPool2;
     do
     {
-      localFixedSchedulerPool = (EventLoopsScheduler.FixedSchedulerPool)this.pool.get();
-      if (localFixedSchedulerPool == NONE) {
+      localFixedSchedulerPool1 = (EventLoopsScheduler.FixedSchedulerPool)this.pool.get();
+      localFixedSchedulerPool2 = NONE;
+      if (localFixedSchedulerPool1 == localFixedSchedulerPool2) {
         return;
       }
-    } while (!this.pool.compareAndSet(localFixedSchedulerPool, NONE));
-    localFixedSchedulerPool.shutdown();
+    } while (!this.pool.compareAndSet(localFixedSchedulerPool1, localFixedSchedulerPool2));
+    localFixedSchedulerPool1.shutdown();
   }
   
   public void start()
@@ -77,7 +79,7 @@ public class EventLoopsScheduler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.schedulers.EventLoopsScheduler
  * JD-Core Version:    0.7.0.1
  */

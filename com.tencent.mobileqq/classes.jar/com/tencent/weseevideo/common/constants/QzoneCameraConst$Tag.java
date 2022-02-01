@@ -2,12 +2,12 @@ package com.tencent.weseevideo.common.constants;
 
 public class QzoneCameraConst$Tag
 {
-  public static String ARG_APPLY_MOVIE_EFFECT;
-  public static String ARG_CAMERA_PREVIEW_NEED_REPORT;
-  public static String ARG_DRAFT_SAVE_LOCAL_TASK_ID;
-  public static String ARG_DRAFT_SAVE_LOCAL_TASK_MSG;
+  public static String ARG_APPLY_MOVIE_EFFECT = "apply_movie_effect";
+  public static String ARG_CAMERA_PREVIEW_NEED_REPORT = "ARG_CAMERA_PREVIEW_NEED_REPORT";
+  public static String ARG_DRAFT_SAVE_LOCAL_TASK_ID = "ARG_DRAFT_SAVE_LOCAL_TASK_ID";
+  public static String ARG_DRAFT_SAVE_LOCAL_TASK_MSG = "ARG_DRAFT_SAVE_LOCAL_TASK_MSG";
   public static String ARG_FEED_POST_TASK_ID = "feed_post_task_id";
-  public static String ARG_INTERACT_TEMPLATE_ID_FROM_CAMERA;
+  public static String ARG_INTERACT_TEMPLATE_ID_FROM_CAMERA = "template_id_from_camera";
   public static String ARG_MATERIAL_VOICECHANGE = "ARG_MATERIAL_VOICECHANGE";
   public static String ARG_MATERIAL_VOICECHANGE_ID_FROM_DRAFT = "ARG_MATERIAL_VOICECHANGE_ID_FROM_DRAFT";
   public static final String ARG_PARAM_1FRAME_TS = "1Frame_timestamp";
@@ -108,7 +108,7 @@ public class QzoneCameraConst$Tag
   public static final String ARG_PARAM_VOICE_ID = "voice_id";
   public static final String ARG_PARAM_WECHAT_CUT = "wechat_cut";
   public static final String ARG_PARAM_WECHAT_MOMENTS_TAB = "wechat_moments_tab";
-  public static String ARG_SYNC_WECHAT_FROM;
+  public static String ARG_SYNC_WECHAT_FROM = "sync_wechat_from";
   public static final String ARG_VOICE_CHANGE_ENVIRONMENT = "ARG_VOICE_CHANGE_ENVIRONMENT";
   public static final String ARG_VOICE_CHANGE_ID = "ARG_VOICE_CHANGE_ID";
   public static final String ARG_VOICE_CHANGE_TYPE = "ARG_VOICE_CHANGE_TYPE";
@@ -119,8 +119,8 @@ public class QzoneCameraConst$Tag
   public static final String IS_PUBLISH_VIDEO_VISIBLE = "is_publish_video_visible";
   public static final String IS_PUBLISH_WE_CHAT_FRIENDS = "is_publish_we_chat_friends";
   public static final String IS_PUBLISH_WE_CHAT_FRIENDS_SUCCESS = "is_publish_we_chat_friends_success";
-  public static String MMKV_DATA_KEY;
-  public static String MSG_ID;
+  public static String MMKV_DATA_KEY = "mmkv_data_key";
+  public static String MSG_ID = "msg_id";
   public static final String PUBLISH_PATH_ACTION_KEY = "publish_path_action_key";
   public static final String PUBLISH_PATH_TITLE_BAR = "publish_path_title_bar";
   public static final String PUBLISH_WE_CHAT_END_TIME = "publish_we_chat_end_time";
@@ -129,22 +129,10 @@ public class QzoneCameraConst$Tag
   public static final int TYPE_PIC_MIX_VIDEO = 3;
   public static final int TYPE_PURE_PIC = 2;
   public static final int TYPE_PURE_VIDEO = 1;
-  
-  static
-  {
-    ARG_DRAFT_SAVE_LOCAL_TASK_ID = "ARG_DRAFT_SAVE_LOCAL_TASK_ID";
-    ARG_DRAFT_SAVE_LOCAL_TASK_MSG = "ARG_DRAFT_SAVE_LOCAL_TASK_MSG";
-    ARG_CAMERA_PREVIEW_NEED_REPORT = "ARG_CAMERA_PREVIEW_NEED_REPORT";
-    ARG_INTERACT_TEMPLATE_ID_FROM_CAMERA = "template_id_from_camera";
-    ARG_SYNC_WECHAT_FROM = "sync_wechat_from";
-    ARG_APPLY_MOVIE_EFFECT = "apply_movie_effect";
-    MSG_ID = "msg_id";
-    MMKV_DATA_KEY = "mmkv_data_key";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.common.constants.QzoneCameraConst.Tag
  * JD-Core Version:    0.7.0.1
  */

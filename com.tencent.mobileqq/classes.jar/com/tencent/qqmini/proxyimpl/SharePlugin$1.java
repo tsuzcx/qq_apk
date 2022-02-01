@@ -12,33 +12,31 @@ final class SharePlugin$1
   
   public void run()
   {
-    String str = null;
-    if ((this.a & 0x20) != 0) {
+    int i = this.a;
+    String str;
+    if ((i & 0x20) != 0) {
       str = (String)SharePlugin.a().get(Integer.valueOf(32));
+    } else if ((i & 0x10) != 0) {
+      str = (String)SharePlugin.a().get(Integer.valueOf(16));
+    } else if ((i & 0x8) != 0) {
+      str = (String)SharePlugin.a().get(Integer.valueOf(8));
+    } else if ((i & 0x4) != 0) {
+      str = (String)SharePlugin.a().get(Integer.valueOf(4));
+    } else if ((i & 0x2) != 0) {
+      str = (String)SharePlugin.a().get(Integer.valueOf(2));
+    } else if ((i & 0x1) != 0) {
+      str = (String)SharePlugin.a().get(Integer.valueOf(1));
+    } else {
+      str = null;
     }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str)) {
-        QQToast.a(BaseApplicationImpl.getContext(), str, 1).a();
-      }
-      return;
-      if ((this.a & 0x10) != 0) {
-        str = (String)SharePlugin.a().get(Integer.valueOf(16));
-      } else if ((this.a & 0x8) != 0) {
-        str = (String)SharePlugin.a().get(Integer.valueOf(8));
-      } else if ((this.a & 0x4) != 0) {
-        str = (String)SharePlugin.a().get(Integer.valueOf(4));
-      } else if ((this.a & 0x2) != 0) {
-        str = (String)SharePlugin.a().get(Integer.valueOf(2));
-      } else if ((this.a & 0x1) != 0) {
-        str = (String)SharePlugin.a().get(Integer.valueOf(1));
-      }
+    if (!TextUtils.isEmpty(str)) {
+      QQToast.a(BaseApplicationImpl.getContext(), str, 1).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.SharePlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.transfile.predownload;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class RunnableTask
@@ -14,9 +14,9 @@ public class RunnableTask
   private Handler mSubHandler;
   private long mTimeoutInterval;
   
-  public RunnableTask(QQAppInterface paramQQAppInterface, String paramString, Runnable paramRunnable, long paramLong)
+  public RunnableTask(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Runnable paramRunnable, long paramLong)
   {
-    super(paramQQAppInterface, paramString);
+    super(paramBaseQQAppInterface, paramString);
     this.mRunnable = paramRunnable;
     this.mTimeoutInterval = paramLong;
     this.mSubHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
@@ -43,12 +43,19 @@ public class RunnableTask
   
   public String toString()
   {
-    return super.toString() + "[" + this.mRunnable + ", " + this.mTimeoutInterval + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.mRunnable);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.mTimeoutInterval);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.RunnableTask
  * JD-Core Version:    0.7.0.1
  */

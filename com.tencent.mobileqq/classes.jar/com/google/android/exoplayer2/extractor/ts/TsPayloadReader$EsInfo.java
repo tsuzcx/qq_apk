@@ -14,18 +14,18 @@ public final class TsPayloadReader$EsInfo
   {
     this.streamType = paramInt;
     this.language = paramString;
-    if (paramList == null) {}
-    for (paramString = Collections.emptyList();; paramString = Collections.unmodifiableList(paramList))
-    {
-      this.dvbSubtitleInfos = paramString;
-      this.descriptorBytes = paramArrayOfByte;
-      return;
+    if (paramList == null) {
+      paramString = Collections.emptyList();
+    } else {
+      paramString = Collections.unmodifiableList(paramList);
     }
+    this.dvbSubtitleInfos = paramString;
+    this.descriptorBytes = paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.TsPayloadReader.EsInfo
  * JD-Core Version:    0.7.0.1
  */

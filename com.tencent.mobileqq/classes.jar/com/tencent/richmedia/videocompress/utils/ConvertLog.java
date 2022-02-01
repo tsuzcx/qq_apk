@@ -28,43 +28,40 @@ public class ConvertLog
   
   public static void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    String str;
     if (LOG_LEVEL >= paramInt)
     {
-      str = paramString2;
+      String str = paramString2;
       if (paramString2 == null) {
         str = "";
       }
-      if (paramThrowable == null) {
+      if (paramThrowable == null)
+      {
         logger.e(paramString1, str);
+        return;
       }
+      logger.e(paramString1, str, paramThrowable);
     }
-    else
-    {
-      return;
-    }
-    logger.e(paramString1, str, paramThrowable);
   }
   
   public static void e(String paramString, int paramInt, Throwable paramThrowable, Object... paramVarArgs)
   {
-    int j = 0;
     int k = paramVarArgs.length;
-    if (paramThrowable == null) {}
-    StringBuilder localStringBuilder;
-    for (int i = 0;; i = 128)
+    int j = 0;
+    if (paramThrowable == null) {
+      i = 0;
+    } else {
+      i = 128;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(k * 30 + i);
+    k = paramVarArgs.length;
+    int i = j;
+    while (i < k)
     {
-      localStringBuilder = new StringBuilder(i + k * 30);
-      k = paramVarArgs.length;
-      i = j;
-      while (i < k)
-      {
-        Object localObject = paramVarArgs[i];
-        if (localObject != null) {
-          localStringBuilder.append(localObject);
-        }
-        i += 1;
+      Object localObject = paramVarArgs[i];
+      if (localObject != null) {
+        localStringBuilder.append(localObject);
       }
+      i += 1;
     }
     e(paramString, paramInt, localStringBuilder.toString(), paramThrowable);
   }
@@ -101,12 +98,12 @@ public class ConvertLog
   public static void setLogLevel(int paramInt)
   {
     int i = 2;
-    if (paramInt >= 2) {}
-    for (paramInt = i;; paramInt = 1)
-    {
-      LOG_LEVEL = paramInt;
-      return;
+    if (paramInt >= 2) {
+      paramInt = i;
+    } else {
+      paramInt = 1;
     }
+    LOG_LEVEL = paramInt;
   }
   
   public static void setLogger(Logger paramLogger)
@@ -137,7 +134,7 @@ public class ConvertLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmedia.videocompress.utils.ConvertLog
  * JD-Core Version:    0.7.0.1
  */

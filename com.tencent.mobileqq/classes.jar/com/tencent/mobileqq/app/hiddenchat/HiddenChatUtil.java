@@ -10,87 +10,118 @@ public class HiddenChatUtil
 {
   public static SharedPreferences a(Context paramContext, String paramString)
   {
-    return paramContext.getSharedPreferences("PrefHiddenChat" + paramString, 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PrefHiddenChat");
+    localStringBuilder.append(paramString);
+    return paramContext.getSharedPreferences(localStringBuilder.toString(), 4);
   }
   
   public static void a(String paramString, Context paramContext, boolean paramBoolean)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if (paramContext != null)
     {
-      return;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
       paramContext = a(paramContext, paramString).edit();
       paramContext.putBoolean("show_unread_msg", paramBoolean);
       paramContext.commit();
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, "setHiddenSession ac[" + paramString + "], open[" + paramBoolean + "]");
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("setHiddenSession ac[");
+        paramContext.append(paramString);
+        paramContext.append("], open[");
+        paramContext.append(paramBoolean);
+        paramContext.append("]");
+        QLog.i("HiddenChatUtil", 2, paramContext.toString());
+      }
+    }
   }
   
   public static boolean a(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    boolean bool2;
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
-      bool2 = true;
-    }
-    boolean bool1;
-    do
+    if (paramContext != null)
     {
-      return bool2;
+      if (TextUtils.isEmpty(paramString1)) {
+        return true;
+      }
       paramContext = a(paramContext, paramString1);
-      bool2 = paramContext.getBoolean("show_video_msg", false);
-      bool1 = bool2;
-      if (!bool2)
+      boolean bool1 = paramContext.getBoolean("show_video_msg", false);
+      boolean bool2 = bool1;
+      if (!bool1)
       {
         paramContext = paramContext.getString("KeyHiddenChatList", "");
-        String str = paramString2 + "|" + paramInt + ";";
-        if ((TextUtils.isEmpty(paramContext)) || (!paramContext.contains(str))) {
-          bool2 = true;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append("|");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(";");
+        localObject = ((StringBuilder)localObject).toString();
+        if ((TextUtils.isEmpty(paramContext)) || (!paramContext.contains((CharSequence)localObject))) {
+          bool1 = true;
         }
-        bool1 = bool2;
+        bool2 = bool1;
         if (QLog.isColorLevel())
         {
-          QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s], cur[%s], list[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool2), str, paramContext }));
-          bool1 = bool2;
+          QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s], cur[%s], list[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool1), localObject, paramContext }));
+          bool2 = bool1;
         }
       }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool1) }));
-    return bool1;
+      if (QLog.isColorLevel()) {
+        QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool2) }));
+      }
+      return bool2;
+    }
+    return true;
   }
   
   public static boolean a(String paramString, Context paramContext)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return true;
+    if (paramContext != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return true;
+      }
+      return a(paramContext, paramString).getBoolean("show_unread_msg", true);
     }
-    return a(paramContext, paramString).getBoolean("show_unread_msg", true);
+    return true;
   }
   
   public static void b(String paramString, Context paramContext, boolean paramBoolean)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if (paramContext != null)
     {
-      return;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
       paramContext = a(paramContext, paramString).edit();
       paramContext.putBoolean("show_video_msg", paramBoolean);
       paramContext.commit();
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, "setVideoMsg ac[" + paramString + "], open[" + paramBoolean + "]");
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("setVideoMsg ac[");
+        paramContext.append(paramString);
+        paramContext.append("], open[");
+        paramContext.append(paramBoolean);
+        paramContext.append("]");
+        QLog.i("HiddenChatUtil", 2, paramContext.toString());
+      }
+    }
   }
   
   public static boolean b(String paramString, Context paramContext)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return true;
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramString))) {
+      return a(paramContext, paramString).getBoolean("show_video_msg", false);
     }
-    return a(paramContext, paramString).getBoolean("show_video_msg", false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatUtil
  * JD-Core Version:    0.7.0.1
  */

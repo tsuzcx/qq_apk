@@ -31,6 +31,14 @@ public class FrameAnimationView
     ((AnimationDrawable)getDrawable()).start();
   }
   
+  public void b()
+  {
+    AnimationDrawable localAnimationDrawable = (AnimationDrawable)getDrawable();
+    if (localAnimationDrawable != null) {
+      localAnimationDrawable.stop();
+    }
+  }
+  
   public void setAnimationRes(int paramInt)
   {
     this.a = paramInt;
@@ -38,7 +46,7 @@ public class FrameAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.commonwidget.FrameAnimationView
  * JD-Core Version:    0.7.0.1
  */

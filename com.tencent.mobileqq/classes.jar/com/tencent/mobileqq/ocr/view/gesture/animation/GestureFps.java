@@ -25,7 +25,7 @@ public class GestureFps
     if ((a()) && (this.jdField_a_of_type_Int > 0))
     {
       int i = (int)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long);
-      i = Math.round(1000.0F * this.jdField_a_of_type_Int / i);
+      i = Math.round(this.jdField_a_of_type_Int * 1000.0F / i);
       HashMap localHashMap = new HashMap();
       localHashMap.put("actType", String.valueOf(this.jdField_b_of_type_Int));
       localHashMap.put("actFps", String.valueOf(i));
@@ -48,30 +48,32 @@ public class GestureFps
   
   public void b()
   {
-    long l;
     if (a())
     {
-      l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-      if (l <= 40L) {
-        break label66;
+      long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+      StringBuilder localStringBuilder;
+      if (l > 40L)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Frame time: ");
+        localStringBuilder.append(l);
+        Log.e("GestureFps", localStringBuilder.toString());
       }
-      Log.e("GestureFps", "Frame time: " + l);
-    }
-    for (;;)
-    {
+      else if (l > 20L)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Frame time: ");
+        localStringBuilder.append(l);
+        Log.w("GestureFps", localStringBuilder.toString());
+      }
       this.jdField_a_of_type_Int += 1;
       this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      return;
-      label66:
-      if (l > 20L) {
-        Log.w("GestureFps", "Frame time: " + l);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.animation.GestureFps
  * JD-Core Version:    0.7.0.1
  */

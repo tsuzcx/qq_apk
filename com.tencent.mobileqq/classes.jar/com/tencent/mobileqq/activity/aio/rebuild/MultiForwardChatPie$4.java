@@ -9,20 +9,29 @@ class MultiForwardChatPie$4
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.b, 2, "mRunOnShow 800 hasDestory=" + this.this$0.I);
-    }
-    if ((this.this$0.w) || (this.this$0.I))
+    if (QLog.isColorLevel())
     {
-      QLog.i(this.this$0.b, 1, "onShowFirst return|3 hasDestory:" + this.this$0.I);
+      str = this.this$0.b;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mRunOnShow 800 hasDestory=");
+      localStringBuilder.append(this.this$0.B);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    if ((!this.this$0.r) && (!this.this$0.B))
+    {
+      MultiForwardChatPie.a(this.this$0);
       return;
     }
-    MultiForwardChatPie.a(this.this$0);
+    String str = this.this$0.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onShowFirst return|3 hasDestory:");
+    localStringBuilder.append(this.this$0.B);
+    QLog.i(str, 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.4
  * JD-Core Version:    0.7.0.1
  */

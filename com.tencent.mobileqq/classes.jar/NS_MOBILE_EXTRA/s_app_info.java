@@ -22,16 +22,6 @@ public final class s_app_info
   public String recommendcomment = "";
   public String summary = "";
   
-  static
-  {
-    if (!s_app_info.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public s_app_info() {}
   
   public s_app_info(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, String paramString7, String paramString8, int paramInt3)
@@ -51,18 +41,17 @@ public final class s_app_info
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -99,13 +88,56 @@ public final class s_app_info
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (s_app_info)paramObject;
-    } while ((!JceUtil.equals(this.appid, paramObject.appid)) || (!JceUtil.equals(this.appname, paramObject.appname)) || (!JceUtil.equals(this.iconurl, paramObject.iconurl)) || (!JceUtil.equals(this.downloadurl, paramObject.downloadurl)) || (!JceUtil.equals(this.downloadurl_android, paramObject.downloadurl_android)) || (!JceUtil.equals(this.summary, paramObject.summary)) || (!JceUtil.equals(this.isrecommend, paramObject.isrecommend)) || (!JceUtil.equals(this.packagename, paramObject.packagename)) || (!JceUtil.equals(this.h5_url, paramObject.h5_url)) || (!JceUtil.equals(this.recommendcomment, paramObject.recommendcomment)) || (!JceUtil.equals(this.apptype, paramObject.apptype)));
-    return true;
+    }
+    paramObject = (s_app_info)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.appid, paramObject.appid))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.appname, paramObject.appname))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.iconurl, paramObject.iconurl))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.downloadurl, paramObject.downloadurl))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.downloadurl_android, paramObject.downloadurl_android))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.summary, paramObject.summary))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.isrecommend, paramObject.isrecommend))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.packagename, paramObject.packagename))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.h5_url, paramObject.h5_url))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.recommendcomment, paramObject.recommendcomment))
+                      {
+                        bool1 = bool2;
+                        if (JceUtil.equals(this.apptype, paramObject.apptype)) {
+                          bool1 = true;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -139,37 +171,45 @@ public final class s_app_info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.appid, 0);
-    if (this.appname != null) {
-      paramJceOutputStream.write(this.appname, 1);
+    String str = this.appname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.iconurl != null) {
-      paramJceOutputStream.write(this.iconurl, 2);
+    str = this.iconurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.downloadurl != null) {
-      paramJceOutputStream.write(this.downloadurl, 3);
+    str = this.downloadurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.downloadurl_android != null) {
-      paramJceOutputStream.write(this.downloadurl_android, 4);
+    str = this.downloadurl_android;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 5);
+    str = this.summary;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.isrecommend, 6);
-    if (this.packagename != null) {
-      paramJceOutputStream.write(this.packagename, 7);
+    str = this.packagename;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.h5_url != null) {
-      paramJceOutputStream.write(this.h5_url, 8);
+    str = this.h5_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.recommendcomment != null) {
-      paramJceOutputStream.write(this.recommendcomment, 9);
+    str = this.recommendcomment;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
     paramJceOutputStream.write(this.apptype, 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.s_app_info
  * JD-Core Version:    0.7.0.1
  */

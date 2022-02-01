@@ -17,8 +17,12 @@ class QRDisplayActivity$1
   
   protected void a(boolean paramBoolean, List<String> paramList1, List<String> paramList2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QRDisplayActivity", 4, "onGetNicknameList: " + paramBoolean);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetNicknameList: ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("QRDisplayActivity", 4, localStringBuilder.toString());
     }
     if ((paramBoolean) && (paramList1 != null) && (paramList2 != null))
     {
@@ -40,17 +44,23 @@ class QRDisplayActivity$1
         Collections.sort(this.a.jdField_b_of_type_JavaUtilList, new QRDisplayActivity.DiscussionMemberComparator(this.a));
       }
     }
-    this.a.jdField_a_of_type_JavaLangString = this.a.a(this.a.jdField_b_of_type_JavaUtilList);
+    paramList1 = this.a;
+    paramList1.jdField_a_of_type_JavaLangString = paramList1.a(paramList1.jdField_b_of_type_JavaUtilList);
     if (this.a.jdField_a_of_type_JavaLangString != null)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.a.jdField_a_of_type_JavaLangString + "," + this.a.jdField_b_of_type_JavaLangString);
+      paramList1 = this.a.jdField_a_of_type_AndroidWidgetImageView;
+      paramList2 = new StringBuilder();
+      paramList2.append(this.a.jdField_a_of_type_JavaLangString);
+      paramList2.append(",");
+      paramList2.append(this.a.jdField_b_of_type_JavaLangString);
+      paramList1.setContentDescription(paramList2.toString());
       this.a.c.post(this.a.jdField_a_of_type_JavaLangRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.1
  * JD-Core Version:    0.7.0.1
  */

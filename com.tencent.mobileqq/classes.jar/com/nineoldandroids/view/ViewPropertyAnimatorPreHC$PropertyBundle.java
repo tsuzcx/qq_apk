@@ -15,31 +15,34 @@ class ViewPropertyAnimatorPreHC$PropertyBundle
   
   boolean cancel(int paramInt)
   {
-    int j;
-    int i;
-    if (((this.mPropertyMask & paramInt) != 0) && (this.mNameValuesHolder != null))
+    if ((this.mPropertyMask & paramInt) != 0)
     {
-      j = this.mNameValuesHolder.size();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i >= j) {
-        return false;
-      }
-      if (((ViewPropertyAnimatorPreHC.NameValuesHolder)this.mNameValuesHolder.get(i)).mNameConstant == paramInt)
+      ArrayList localArrayList = this.mNameValuesHolder;
+      if (localArrayList != null)
       {
-        this.mNameValuesHolder.remove(i);
-        this.mPropertyMask &= (paramInt ^ 0xFFFFFFFF);
-        return true;
+        int j = localArrayList.size();
+        int i = 0;
+        for (;;)
+        {
+          if (i >= j) {
+            return false;
+          }
+          if (((ViewPropertyAnimatorPreHC.NameValuesHolder)this.mNameValuesHolder.get(i)).mNameConstant == paramInt)
+          {
+            this.mNameValuesHolder.remove(i);
+            this.mPropertyMask = ((paramInt ^ 0xFFFFFFFF) & this.mPropertyMask);
+            return true;
+          }
+          i += 1;
+        }
       }
-      i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.view.ViewPropertyAnimatorPreHC.PropertyBundle
  * JD-Core Version:    0.7.0.1
  */

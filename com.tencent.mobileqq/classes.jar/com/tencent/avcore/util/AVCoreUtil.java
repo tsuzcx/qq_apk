@@ -9,7 +9,7 @@ public class AVCoreUtil
   
   public static String asUnsignedDecimalString(long paramLong)
   {
-    long l = paramLong & 0xFFFFFFFF;
+    long l = 0xFFFFFFFF & paramLong;
     if (paramLong == l) {
       return String.valueOf(l);
     }
@@ -48,58 +48,62 @@ public class AVCoreUtil
   
   public static void printHexStringEx(String paramString, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      AVCoreLog.i(paramString, "bytes = null or bytes.length = 0");
-      return;
-    }
-    StringBuilder localStringBuilder1 = new StringBuilder((paramArrayOfByte.length + 15) / 16 * 73 + 85);
-    localStringBuilder1.append("buf size: " + paramArrayOfByte.length).append("\r\n");
-    localStringBuilder1.append("______00_01_02_03_04_05_06_07_08_09_0A_0B_0C_0D_0E_0F\r\n");
-    StringBuilder localStringBuilder2 = new StringBuilder(32);
-    localStringBuilder2.append(" ");
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    for (;;)
-    {
-      if (j < paramArrayOfByte.length)
-      {
-        if (i == 0) {
-          localStringBuilder1.append(String.format("%04x: ", new Object[] { Integer.valueOf(j) }));
-        }
-        localStringBuilder1.append(String.format("%02x ", new Object[] { Byte.valueOf(paramArrayOfByte[j]) }));
-        if ((paramArrayOfByte[j] >= 32) && (paramArrayOfByte[j] <= 127)) {
-          localStringBuilder2.append(String.format("%c", new Object[] { Byte.valueOf(paramArrayOfByte[j]) }));
-        }
-      }
+      StringBuilder localStringBuilder1 = new StringBuilder((paramArrayOfByte.length + 15) / 16 * 73 + 85);
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("buf size: ");
+      localStringBuilder2.append(paramArrayOfByte.length);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder1.append("\r\n");
+      localStringBuilder1.append("______00_01_02_03_04_05_06_07_08_09_0A_0B_0C_0D_0E_0F\r\n");
+      localStringBuilder2 = new StringBuilder(32);
+      localStringBuilder2.append(" ");
+      int j = 0;
+      int i = 0;
+      int k = 0;
       for (;;)
       {
+        if (j < paramArrayOfByte.length)
+        {
+          if (i == 0) {
+            localStringBuilder1.append(String.format("%04x: ", new Object[] { Integer.valueOf(j) }));
+          }
+          localStringBuilder1.append(String.format("%02x ", new Object[] { Byte.valueOf(paramArrayOfByte[j]) }));
+          if ((paramArrayOfByte[j] >= 32) && (paramArrayOfByte[j] <= 127)) {
+            localStringBuilder2.append(String.format("%c", new Object[] { Byte.valueOf(paramArrayOfByte[j]) }));
+          } else {
+            localStringBuilder2.append(".");
+          }
+        }
+        else
+        {
+          if (i == 0) {
+            break label294;
+          }
+          localStringBuilder1.append("   ");
+          localStringBuilder2.append(" ");
+          k = 1;
+        }
         int m = i + 1;
         i = m;
-        if (m < 16) {
-          break label291;
-        }
-        localStringBuilder1.append(localStringBuilder2.toString()).append("\r\n");
-        localStringBuilder2.setLength(1);
-        if (k == 0) {
-          break;
-        }
-        do
+        if (m >= 16)
         {
-          AVCoreLog.i(paramString, localStringBuilder1.toString());
-          return;
-          localStringBuilder2.append(".");
-          break;
-        } while (i == 0);
-        localStringBuilder1.append("   ");
-        localStringBuilder2.append(" ");
-        k = 1;
+          localStringBuilder1.append(localStringBuilder2.toString());
+          localStringBuilder1.append("\r\n");
+          localStringBuilder2.setLength(1);
+          if (k != 0)
+          {
+            label294:
+            AVCoreLog.i(paramString, localStringBuilder1.toString());
+            return;
+          }
+          i = 0;
+        }
+        j += 1;
       }
-      i = 0;
-      label291:
-      j += 1;
     }
+    AVCoreLog.i(paramString, "bytes = null or bytes.length = 0");
   }
   
   public static int strVersionToInt(String paramString)
@@ -127,8 +131,13 @@ public class AVCoreUtil
       }
       catch (Exception localException)
       {
-        if (AVCoreLog.isDevelopLevel()) {
-          AVCoreLog.e("AVCoreUtil", "strVersionToInt, Exception, version[" + paramString + "]", localException);
+        if (AVCoreLog.isDevelopLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("strVersionToInt, Exception, version[");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("]");
+          AVCoreLog.e("AVCoreUtil", localStringBuilder.toString(), localException);
         }
         return 0;
       }
@@ -138,7 +147,7 @@ public class AVCoreUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.util.AVCoreUtil
  * JD-Core Version:    0.7.0.1
  */

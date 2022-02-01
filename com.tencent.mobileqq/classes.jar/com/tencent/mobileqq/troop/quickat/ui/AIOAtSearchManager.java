@@ -76,94 +76,55 @@ public class AIOAtSearchManager
   public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     a();
+    String str = paramString;
     if (paramString == null) {
-      paramString = "";
+      str = "";
     }
-    for (;;)
+    paramString = new AIOAtSearchManager.AtSearchRunnable(str, a(), this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBoolean2);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramString);
+    this.b.post(paramString);
+    if (QLog.isColorLevel())
     {
-      AIOAtSearchManager.AtSearchRunnable localAtSearchRunnable = new AIOAtSearchManager.AtSearchRunnable(paramString, a(), this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBoolean2);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localAtSearchRunnable);
-      this.b.post(localAtSearchRunnable);
-      if (QLog.isColorLevel()) {
-        QLog.e("AIOAtSearchManager", 2, "taa putTask: " + System.currentTimeMillis());
-      }
-      return;
+      paramString = new StringBuilder();
+      paramString.append("taa putTask: ");
+      paramString.append(System.currentTimeMillis());
+      QLog.e("AIOAtSearchManager", 2, paramString.toString());
     }
   }
   
-  /* Error */
   public void a(List<TroopMemberInfo> paramList)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +14 -> 17
-    //   6: aload_1
-    //   7: invokeinterface 179 1 0
-    //   12: istore_2
-    //   13: iload_2
-    //   14: ifeq +6 -> 20
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: return
-    //   20: aload_0
-    //   21: aload_1
-    //   22: putfield 47	com/tencent/mobileqq/troop/quickat/ui/AIOAtSearchManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   25: goto -8 -> 17
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	AIOAtSearchManager
-    //   0	33	1	paramList	List<TroopMemberInfo>
-    //   12	2	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   6	13	28	finally
-    //   20	25	28	finally
+    if (paramList != null) {
+      try
+      {
+        if (!paramList.isEmpty())
+        {
+          this.jdField_a_of_type_JavaUtilList = paramList;
+          return;
+        }
+      }
+      finally {}
+    }
   }
   
-  /* Error */
   public boolean a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 47	com/tencent/mobileqq/troop/quickat/ui/AIOAtSearchManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   6: ifnull +17 -> 23
-    //   9: aload_0
-    //   10: getfield 47	com/tencent/mobileqq/troop/quickat/ui/AIOAtSearchManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   13: invokeinterface 179 1 0
-    //   18: istore_1
-    //   19: iload_1
-    //   20: ifeq +9 -> 29
-    //   23: iconst_1
-    //   24: istore_1
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: iload_1
-    //   28: ireturn
-    //   29: iconst_0
-    //   30: istore_1
-    //   31: goto -6 -> 25
-    //   34: astore_2
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: aload_2
-    //   38: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	39	0	this	AIOAtSearchManager
-    //   18	13	1	bool	boolean
-    //   34	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	34	finally
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilList != null)
+      {
+        boolean bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
+        if (!bool) {
+          return false;
+        }
+      }
+      return true;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public void b()
@@ -176,25 +137,30 @@ public class AIOAtSearchManager
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("AIOAtSearchManager", 2, "taa handleMessage  " + System.currentTimeMillis());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAIOAtSearchManager$RefreshUIListener == null) {}
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return true;
-      } while (paramMessage.what != 1);
-      paramMessage = (SearchTask.SearchResult)paramMessage.obj;
-    } while (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramMessage.a));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("taa handleMessage  ");
+      localStringBuilder.append(System.currentTimeMillis());
+      QLog.e("AIOAtSearchManager", 2, localStringBuilder.toString());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAIOAtSearchManager$RefreshUIListener == null) {
+      return true;
+    }
+    if (paramMessage.what != 1) {
+      return true;
+    }
+    paramMessage = (SearchTask.SearchResult)paramMessage.obj;
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramMessage.a)) {
+      return true;
+    }
     this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAIOAtSearchManager$RefreshUIListener.a(paramMessage);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AIOAtSearchManager
  * JD-Core Version:    0.7.0.1
  */

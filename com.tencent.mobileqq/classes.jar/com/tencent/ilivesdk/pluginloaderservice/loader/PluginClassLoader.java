@@ -33,80 +33,67 @@ public class PluginClassLoader
   protected Class<?> loadClass(String paramString, boolean paramBoolean)
   {
     int i = paramString.lastIndexOf('.');
-    Object localObject1;
-    Object localObject2;
-    if (i != -1)
-    {
+    int k = 0;
+    if (i != -1) {
       localObject1 = paramString.substring(0, i);
-      if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-        break label163;
-      }
-      localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
-      int j = localObject2.length;
-      i = 0;
-      label40:
-      if (i >= j) {
-        break label163;
-      }
-      if (!((String)localObject1).equals(localObject2[i])) {
-        break label82;
-      }
+    } else {
+      localObject1 = "";
     }
-    label155:
-    label163:
-    for (i = 1;; i = 0)
+    localObject3 = this.jdField_a_of_type_ArrayOfJavaLangString;
+    int j = k;
+    if (localObject3 != null)
     {
-      Object localObject4;
-      if (i != 0)
-      {
-        localObject4 = super.loadClass(paramString, paramBoolean);
-        return localObject4;
-        localObject1 = "";
-        break;
-        label82:
-        i += 1;
-        break label40;
-      }
-      localObject1 = findLoadedClass(paramString);
-      if (localObject1 == null) {}
+      int m = localObject3.length;
+      i = 0;
       for (;;)
       {
-        try
-        {
-          localObject2 = findClass(paramString);
-          localObject1 = localObject2;
-          localObject2 = null;
-        }
-        catch (ClassNotFoundException localClassNotFoundException)
-        {
-          try
-          {
-            paramString = this.jdField_a_of_type_JavaLangClassLoader.loadClass(paramString);
-            return paramString;
-          }
-          catch (ClassNotFoundException paramString)
-          {
-            if (Build.VERSION.SDK_INT < 19) {
-              break label155;
-            }
-            paramString.addSuppressed(localClassNotFoundException);
-            throw paramString;
-          }
-          localClassNotFoundException = localClassNotFoundException;
-          continue;
-        }
-        localObject4 = localObject1;
-        if (localObject1 != null) {
+        j = k;
+        if (i >= m) {
           break;
         }
-        Object localObject3 = null;
+        if (((String)localObject1).equals(localObject3[i]))
+        {
+          j = 1;
+          break;
+        }
+        i += 1;
       }
     }
+    if (j != 0) {
+      return super.loadClass(paramString, paramBoolean);
+    }
+    localObject3 = findLoadedClass(paramString);
+    Object localObject1 = localObject3;
+    if (localObject3 == null) {}
+    try
+    {
+      localObject1 = findClass(paramString);
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      for (;;)
+      {
+        Object localObject2 = localObject3;
+      }
+    }
+    if (localObject1 == null) {
+      try
+      {
+        paramString = this.jdField_a_of_type_JavaLangClassLoader.loadClass(paramString);
+        return paramString;
+      }
+      catch (ClassNotFoundException paramString)
+      {
+        i = Build.VERSION.SDK_INT;
+        throw paramString;
+      }
+    }
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.loader.PluginClassLoader
  * JD-Core Version:    0.7.0.1
  */

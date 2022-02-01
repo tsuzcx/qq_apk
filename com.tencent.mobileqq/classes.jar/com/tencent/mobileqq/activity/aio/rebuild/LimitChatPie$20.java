@@ -1,37 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class LimitChatPie$20
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
   LimitChatPie$20(LimitChatPie paramLimitChatPie) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
-    {
-      int i = paramIntent.getIntExtra("uinType", 0);
-      if (QLog.isColorLevel()) {
-        QLog.i("LimitChatPie", 2, "receiver action_recv_video_request. uinType = " + i);
-      }
-      if ((i == 1044) && (LimitChatPie.a(this.a) != null) && (LimitChatPie.a(this.a).isShowing()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LimitChatPie", 2, "receiver dialog showing. dismiss");
-        }
-        LimitChatPie.a(this.a).dismiss();
-      }
+    if (!this.a.B) {
+      LimitChatPie.b(this.a);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.20
  * JD-Core Version:    0.7.0.1
  */

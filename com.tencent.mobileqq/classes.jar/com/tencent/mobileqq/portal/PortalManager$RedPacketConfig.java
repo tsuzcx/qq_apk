@@ -22,16 +22,20 @@ public class PortalManager$RedPacketConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("shareBaseLine=").append(this.shareBaseLine);
-    localStringBuilder.append(", portalConfigs=").append(this.portalConfigs);
-    localStringBuilder.append(", comboNumberConfigs=").append(this.comboNumberConfigs);
-    localStringBuilder.append(", bannerConfigs=").append(this.bannerConfigs);
+    localStringBuilder.append("shareBaseLine=");
+    localStringBuilder.append(this.shareBaseLine);
+    localStringBuilder.append(", portalConfigs=");
+    localStringBuilder.append(this.portalConfigs);
+    localStringBuilder.append(", comboNumberConfigs=");
+    localStringBuilder.append(this.comboNumberConfigs);
+    localStringBuilder.append(", bannerConfigs=");
+    localStringBuilder.append(this.bannerConfigs);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.RedPacketConfig
  * JD-Core Version:    0.7.0.1
  */

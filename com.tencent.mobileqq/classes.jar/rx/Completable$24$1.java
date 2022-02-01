@@ -26,14 +26,14 @@ class Completable$24$1
         this.val$s.onError(paramThrowable);
         return;
       }
+      localCompletable.subscribe(new Completable.24.1.1(this));
+      return;
     }
     catch (Throwable localThrowable)
     {
       paramThrowable = new CompositeException(Arrays.asList(new Throwable[] { paramThrowable, localThrowable }));
       this.val$s.onError(paramThrowable);
-      return;
     }
-    localThrowable.subscribe(new Completable.24.1.1(this));
   }
   
   public void onSubscribe(Subscription paramSubscription)
@@ -43,7 +43,7 @@ class Completable$24$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.Completable.24.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,11 @@ package cooperation.weiyun;
 import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter.WeiyunCallback;
+import com.tencent.mobileqq.weiyun.WeiyunCallback;
 import mqq.os.MqqHandler;
 
 class WeiyunAIOUtils$WeiyunCallbackImpl
-  implements WeiYunLogicCenter.WeiyunCallback
+  implements WeiyunCallback
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -24,9 +24,10 @@ class WeiyunAIOUtils$WeiyunCallbackImpl
   
   public void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+    MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+    if (localMqqHandler != null)
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(101, paramInt, 0, paramString), 1500L);
+      localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(101, paramInt, 0, paramString), 1500L);
       return;
     }
     ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.2(this, paramString));
@@ -34,9 +35,10 @@ class WeiyunAIOUtils$WeiyunCallbackImpl
   
   public void a(Object paramObject)
   {
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+    paramObject = this.jdField_a_of_type_MqqOsMqqHandler;
+    if (paramObject != null)
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(100, 1500L);
+      paramObject.sendEmptyMessageDelayed(100, 1500L);
       return;
     }
     ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.1(this));
@@ -44,7 +46,7 @@ class WeiyunAIOUtils$WeiyunCallbackImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl
  * JD-Core Version:    0.7.0.1
  */

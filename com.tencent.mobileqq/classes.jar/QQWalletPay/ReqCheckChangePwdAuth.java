@@ -43,14 +43,15 @@ public final class ReqCheckChangePwdAuth
     paramJceOutputStream.write(this.appId, 2);
     paramJceOutputStream.write(this.timeStamp, 3);
     paramJceOutputStream.write(this.resetWordMode, 4);
-    if (this.offerId != null) {
-      paramJceOutputStream.write(this.offerId, 5);
+    String str = this.offerId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQWalletPay.ReqCheckChangePwdAuth
  * JD-Core Version:    0.7.0.1
  */

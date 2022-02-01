@@ -12,18 +12,21 @@ class GameRoomPresenterImp$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = this.a.a();
-    if ((paramDialogInterface == null) || (paramDialogInterface.isFinishing())) {
-      return;
+    if (paramDialogInterface != null)
+    {
+      if (paramDialogInterface.isFinishing()) {
+        return;
+      }
+      this.a.a(false, 1);
+      GameRoomViewLayoutParamsDef.H = 0;
+      GameRoomViewLayoutParamsDef.I = 0;
+      this.a.a.e();
     }
-    this.a.a(false, 1);
-    GameRoomViewLayoutParamsDef.w = 0;
-    GameRoomViewLayoutParamsDef.x = 0;
-    this.a.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomPresenterImp.4
  * JD-Core Version:    0.7.0.1
  */

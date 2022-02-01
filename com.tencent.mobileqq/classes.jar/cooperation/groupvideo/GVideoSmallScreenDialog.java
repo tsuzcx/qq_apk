@@ -3,11 +3,15 @@ package cooperation.groupvideo;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.groupvideo.api.IGVideoSmallScreenDialog;
 
 public class GVideoSmallScreenDialog
   extends PluginProxyActivity
 {
+  private static final IGVideoSmallScreenDialog a = (IGVideoSmallScreenDialog)QRoute.api(IGVideoSmallScreenDialog.class);
+  
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
@@ -19,7 +23,7 @@ public class GVideoSmallScreenDialog
   
   public String getPluginID()
   {
-    return "group_video_plugin.apk";
+    return a.getPluginID();
   }
   
   public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
@@ -36,7 +40,7 @@ public class GVideoSmallScreenDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.groupvideo.GVideoSmallScreenDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -47,89 +47,89 @@ public class StickerRecommendSortEntity
   
   public void convertToList()
   {
+    Object localObject = this.clicked;
     int j = 0;
-    String[] arrayOfString;
     int k;
     int i;
-    if (this.clicked != null)
+    if (localObject != null)
     {
-      arrayOfString = this.clicked.split(",");
-      k = arrayOfString.length;
+      localObject = ((String)localObject).split(",");
+      k = localObject.length;
       i = 0;
     }
     for (;;)
     {
       String str;
       if (i < k) {
-        str = arrayOfString[i];
+        str = localObject[i];
       }
       try
       {
         this.clickedList.add(Integer.valueOf(Integer.parseInt(str)));
-        label55:
         i += 1;
         continue;
-        if (this.exposed != null)
+        localObject = this.exposed;
+        if (localObject != null)
         {
-          arrayOfString = this.exposed.split(",");
-          k = arrayOfString.length;
+          localObject = ((String)localObject).split(",");
+          k = localObject.length;
           i = 0;
-        }
-        for (;;)
-        {
           if (i < k) {
-            str = arrayOfString[i];
-          }
-          try
-          {
-            this.exposedList.add(Integer.valueOf(Integer.parseInt(str)));
-            label115:
-            i += 1;
-            continue;
-            if (this.noExpose != null)
-            {
-              arrayOfString = this.noExpose.split(",");
-              k = arrayOfString.length;
-              i = j;
-            }
-            for (;;)
-            {
-              if (i < k) {
-                str = arrayOfString[i];
-              }
-              try
-              {
-                this.noExposeList.add(Integer.valueOf(Integer.parseInt(str)));
-                label175:
-                i += 1;
-                continue;
-                return;
-              }
-              catch (Exception localException1)
-              {
-                break label175;
-              }
-            }
-          }
-          catch (Exception localException2)
-          {
-            break label115;
+            str = localObject[i];
           }
         }
       }
-      catch (Exception localException3)
+      catch (Exception localException2)
       {
-        break label55;
+        try
+        {
+          for (;;)
+          {
+            this.exposedList.add(Integer.valueOf(Integer.parseInt(str)));
+            i += 1;
+          }
+          localObject = this.noExpose;
+          if (localObject != null)
+          {
+            localObject = ((String)localObject).split(",");
+            k = localObject.length;
+            i = j;
+            if (i < k) {
+              str = localObject[i];
+            }
+          }
+        }
+        catch (Exception localException2)
+        {
+          try
+          {
+            for (;;)
+            {
+              this.noExposeList.add(Integer.valueOf(Integer.parseInt(str)));
+              label181:
+              i += 1;
+              continue;
+              return;
+              localException1 = localException1;
+            }
+            localException2 = localException2;
+          }
+          catch (Exception localException3)
+          {
+            break label181;
+          }
+        }
       }
     }
   }
   
   public void convertToString()
   {
-    int j = 0;
     StringBuilder localStringBuilder = new StringBuilder();
+    List localList = this.clickedList;
+    int j = 0;
     int i;
-    if (this.clickedList != null)
+    if (localList != null)
     {
       i = 0;
       while (i < this.clickedList.size())
@@ -189,7 +189,7 @@ public class StickerRecommendSortEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecommendSortEntity
  * JD-Core Version:    0.7.0.1
  */

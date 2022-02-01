@@ -3,15 +3,13 @@ package cooperation.qqcircle.report.outbox;
 import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.mobileqq.qcircle.api.db.util.NeedParcel;
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleBaseRequest;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
 import cooperation.qqcircle.report.QCircleQualityReporter;
 import cooperation.qqcircle.report.QCircleReportHelper;
+import cooperation.qqcircle.utils.QCircleHostStubUtil;
+import cooperation.qzone.QUA;
 import feedcloud.FeedCloudCommon.Entry;
 import java.util.Arrays;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
 public class QCircleReportOutboxTask
   implements IQueueTask
@@ -49,17 +47,46 @@ public class QCircleReportOutboxTask
     this.mRequest = paramQCircleBaseRequest;
     this.mRequestByteData = paramQCircleBaseRequest.getRequestByteKey();
     this.mCmdName = paramQCircleBaseRequest.getCmdName();
-    this.mRequestKey = (this.mCmdName + MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount() + QCircleServiceImpl.getQZoneService().getQUA3() + new String(this.mRequestByteData));
+    paramQCircleBaseRequest = new StringBuilder();
+    paramQCircleBaseRequest.append(this.mCmdName);
+    paramQCircleBaseRequest.append(QCircleHostStubUtil.getCurrentAccount());
+    paramQCircleBaseRequest.append(QUA.getQUA3());
+    paramQCircleBaseRequest.append(new String(this.mRequestByteData));
+    this.mRequestKey = paramQCircleBaseRequest.toString();
   }
   
   private void reportOutboxResendResult(boolean paramBoolean, long paramLong, String paramString)
   {
-    if (paramBoolean) {}
-    for (String str = "0";; str = paramLong + "")
+    if (paramBoolean)
     {
-      QCircleQualityReporter.reportQualityEvent("outbox_task_resend_event", Arrays.asList(new FeedCloudCommon.Entry[] { QCircleReportHelper.newEntry("ret_code", str), QCircleReportHelper.newEntry("url", paramString), QCircleReportHelper.newEntry("refer", this.mCmdName + ""), QCircleReportHelper.newEntry("count", this.mRetryNum + ""), QCircleReportHelper.newEntry("attach_info", this.id + "_" + this.mResultCode + "_" + this.mResultMsg + "_state=" + getState()) }), false);
-      return;
+      localObject1 = "0";
     }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append("");
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    Object localObject1 = QCircleReportHelper.newEntry("ret_code", (String)localObject1);
+    paramString = QCircleReportHelper.newEntry("url", paramString);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.mCmdName);
+    ((StringBuilder)localObject2).append("");
+    localObject2 = QCircleReportHelper.newEntry("refer", ((StringBuilder)localObject2).toString());
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(this.mRetryNum);
+    ((StringBuilder)localObject3).append("");
+    localObject3 = QCircleReportHelper.newEntry("count", ((StringBuilder)localObject3).toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.id);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.mResultCode);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.mResultMsg);
+    localStringBuilder.append("_state=");
+    localStringBuilder.append(getState());
+    QCircleQualityReporter.reportQualityEvent("outbox_task_resend_event", Arrays.asList(new FeedCloudCommon.Entry[] { localObject1, paramString, localObject2, localObject3, QCircleReportHelper.newEntry("attach_info", localStringBuilder.toString()) }), false);
   }
   
   public void clear() {}
@@ -70,12 +97,19 @@ public class QCircleReportOutboxTask
       this.mRequest = new QCircleReportOutboxRequest(this.mCmdName, this.mRequestByteData);
     }
     VSNetworkHelper.getInstance().sendRequest(this.mRequest, new QCircleReportOutboxTask.1(this));
-    RFLog.i("QCircleReportOutboxTask", RFLog.USR, "doResend id:" + getTaskId());
+    int i = RFLog.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doResend id:");
+    localStringBuilder.append(getTaskId());
+    RFLog.i("QCircleReportOutboxTask", i, localStringBuilder.toString());
   }
   
   public String getCacheKey()
   {
-    return this.id + "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.id);
+    localStringBuilder.append("");
+    return localStringBuilder.toString();
   }
   
   public long getResultCode()
@@ -139,10 +173,36 @@ public class QCircleReportOutboxTask
   {
     if (paramBoolean)
     {
-      RFLog.e(paramString1 + "_QCircleSenderTask", RFLog.USR, paramString2 + " id:" + getTaskId() + " ,state:" + this.mState + " ,cmd:" + this.mCmdName);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("_QCircleSenderTask");
+      paramString1 = localStringBuilder.toString();
+      i = RFLog.USR;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" id:");
+      localStringBuilder.append(getTaskId());
+      localStringBuilder.append(" ,state:");
+      localStringBuilder.append(this.mState);
+      localStringBuilder.append(" ,cmd:");
+      localStringBuilder.append(this.mCmdName);
+      RFLog.e(paramString1, i, localStringBuilder.toString());
       return;
     }
-    RFLog.d(paramString1 + "_QCircleSenderTask", RFLog.CLR, paramString2 + " id:" + getTaskId() + " ,state:" + this.mState + " ,cmd:" + this.mCmdName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_QCircleSenderTask");
+    paramString1 = localStringBuilder.toString();
+    int i = RFLog.CLR;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" id:");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(" ,state:");
+    localStringBuilder.append(this.mState);
+    localStringBuilder.append(" ,cmd:");
+    localStringBuilder.append(this.mCmdName);
+    RFLog.d(paramString1, i, localStringBuilder.toString());
   }
   
   public void resend()
@@ -178,7 +238,7 @@ public class QCircleReportOutboxTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTask
  * JD-Core Version:    0.7.0.1
  */

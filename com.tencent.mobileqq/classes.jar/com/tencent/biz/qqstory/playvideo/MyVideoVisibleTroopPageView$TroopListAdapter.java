@@ -53,32 +53,30 @@ public class MyVideoVisibleTroopPageView$TroopListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    TroopInfo localTroopInfo = (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    View localView;
+    Object localObject = (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    MyVideoVisibleTroopPageView.TroopListAdapter.ViewHolder localViewHolder;
     if (paramView == null)
     {
-      paramView = new MyVideoVisibleTroopPageView.TroopListAdapter.ViewHolder(this);
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561997, null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368336));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372288));
-      localView.setTag(paramView);
+      localViewHolder = new MyVideoVisibleTroopPageView.TroopListAdapter.ViewHolder(this);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561831, null);
+      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368087));
+      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371877));
+      paramView.setTag(localViewHolder);
     }
-    for (;;)
+    else
     {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopInfo.getTroopDisplayName());
-      Object localObject = PlayModeUtils.a().getTroopFaceDrawable(localTroopInfo.troopuin);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (MyVideoVisibleTroopPageView.TroopListAdapter.ViewHolder)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
+      localViewHolder = (MyVideoVisibleTroopPageView.TroopListAdapter.ViewHolder)paramView.getTag();
     }
+    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localObject).getTroopDisplayName());
+    localObject = PlayModeUtils.a().getTroopFaceDrawable(((TroopInfo)localObject).troopuin);
+    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView.TroopListAdapter
  * JD-Core Version:    0.7.0.1
  */

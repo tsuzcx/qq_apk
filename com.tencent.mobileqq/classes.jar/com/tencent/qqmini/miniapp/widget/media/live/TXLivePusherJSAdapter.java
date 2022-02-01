@@ -1,13 +1,20 @@
 package com.tencent.qqmini.miniapp.widget.media.live;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Surface;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IWXLivePusherProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.TXLivePushListenerReflect.ITXLivePushListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.TXLivePushListenerReflect.ITXSnapshotListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.TXLivePushListenerReflect.OnBGMNotify;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.qqmini.sdk.utils.JarReflectUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
@@ -43,9 +50,7 @@ public class TXLivePusherJSAdapter
   private boolean mInited = false;
   private boolean mIsCameraPreviewing = false;
   private int mLastAngle = 0;
-  private Object mLivePushConfig;
   private TXLivePushListenerReflect.ITXLivePushListener mLivePushListener;
-  private Object mLivePusher;
   private String mLocalMirror = "auto";
   private int mMaxBitrate = -1;
   private int mMinBitrate = -1;
@@ -64,6 +69,7 @@ public class TXLivePusherJSAdapter
   private int mVideoHeight = 640;
   private Object mVideoView;
   private int mVideoWidth = 368;
+  private final IWXLivePusherProxy mWXLivePusherProxy = (IWXLivePusherProxy)ProxyManager.get(IWXLivePusherProxy.class);
   private String mWatermarkImage = "";
   private float mWatermarkLeft = 0.0F;
   private float mWatermarkTop = 0.0F;
@@ -76,11 +82,11 @@ public class TXLivePusherJSAdapter
     this.mContext = paramContext;
     this.mHandler = new Handler(this.mContext.getMainLooper());
     initPusherKeyList();
-    this.mLivePushConfig = WXLivePushConfigReflect.newInstance();
-    this.mLivePusher = WXLivePusherReflect.newInstance(paramContext);
-    WXLivePusherReflect.setConfig(this.mLivePushConfig, this.mLivePusher);
-    WXLivePusherReflect.setPushListener(TXLivePushListenerReflect.newITXLivePushListener(this), this.mLivePusher);
-    WXLivePusherReflect.setBGMNofify(TXLivePushListenerReflect.newOnBGMNotify(this), this.mLivePusher);
+    this.mWXLivePusherProxy.initInstance(paramContext);
+    paramContext = this.mWXLivePusherProxy;
+    paramContext.setPushListener(paramContext.newITXLivePushListener(this));
+    paramContext = this.mWXLivePusherProxy;
+    paramContext.setBGMNofify(paramContext.newOnBGMNotify(this));
   }
   
   private Bundle adaptJsonToBundle(JSONObject paramJSONObject)
@@ -89,91 +95,100 @@ public class TXLivePusherJSAdapter
     if (paramJSONObject == null) {
       return localBundle;
     }
-    if (this.pusherKeyList == null)
+    Object localObject = this.pusherKeyList;
+    if (localObject == null)
     {
       QMLog.e("TXLivePusherJSAdapter", "adaptJsonToBundle - pusherKeyList is null");
       return localBundle;
     }
-    Iterator localIterator = this.pusherKeyList.iterator();
-    while (localIterator.hasNext())
+    localObject = ((ArrayList)localObject).iterator();
+    for (;;)
     {
-      String str = (String)localIterator.next();
-      if (isStringValueKey(str)) {
-        try
-        {
-          localBundle.putString(str, paramJSONObject.getString(str));
-        }
-        catch (JSONException localJSONException1) {}
-      } else if (isIntKeyForParams(localJSONException1)) {
-        try
-        {
-          localBundle.putInt(localJSONException1, paramJSONObject.getInt(localJSONException1));
-        }
-        catch (JSONException localJSONException2) {}
-      } else if (isBooleanKeyForParams(localJSONException2)) {
-        try
-        {
-          localBundle.putBoolean(localJSONException2, paramJSONObject.getBoolean(localJSONException2));
-        }
-        catch (JSONException localJSONException3) {}
-      } else if ((localJSONException3.equalsIgnoreCase("watermarkLeft")) || (localJSONException3.equalsIgnoreCase("watermarkTop")) || (localJSONException3.equalsIgnoreCase("watermarkWidth"))) {
-        try
-        {
-          localBundle.putDouble(localJSONException3, paramJSONObject.getDouble(localJSONException3));
-        }
-        catch (JSONException localJSONException4) {}
+      String str;
+      if (((Iterator)localObject).hasNext())
+      {
+        str = (String)((Iterator)localObject).next();
+        if (!isStringValueKey(str)) {}
+      }
+      try
+      {
+        localBundle.putString(str, paramJSONObject.getString(str));
+      }
+      catch (JSONException localJSONException) {}
+      if (isIntKeyForParams(str))
+      {
+        localBundle.putInt(str, paramJSONObject.getInt(str));
+      }
+      else if (isBooleanKeyForParams(str))
+      {
+        localBundle.putBoolean(str, paramJSONObject.getBoolean(str));
+      }
+      else if ((str.equalsIgnoreCase("watermarkLeft")) || (str.equalsIgnoreCase("watermarkTop")) || (str.equalsIgnoreCase("watermarkWidth")))
+      {
+        localBundle.putDouble(str, paramJSONObject.getDouble(str));
+        continue;
+        return localBundle;
       }
     }
-    return localBundle;
   }
   
   private void adjustHomeOrientation(int paramInt, String paramString)
   {
-    int i = 3;
-    QMLog.d("TXLivePusherJSAdapter", "adjustHomeOrientation, angle:" + paramInt + ", orientation:" + paramString);
-    if (paramInt == 1) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("adjustHomeOrientation, angle:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", orientation:");
+    localStringBuilder.append(paramString);
+    QMLog.d("TXLivePusherJSAdapter", localStringBuilder.toString());
+    int i = 0;
+    if (paramInt == 1)
+    {
+      paramInt = i;
       if (paramString.equals("horizontal")) {
-        paramInt = i;
+        paramInt = 3;
       }
     }
-    for (;;)
+    else
     {
-      QMLog.d("TXLivePusherJSAdapter", "adjustHomeOrientation, homeOrientation:" + paramInt);
-      if (paramInt != -2147483648)
-      {
-        WXLivePushConfigReflect.setHomeOrientation(paramInt, this.mLivePushConfig);
-        WXLivePusherReflect.setConfig(this.mLivePushConfig, this.mLivePusher);
-      }
-      return;
-      paramInt = 0;
-      continue;
-      if (paramInt == 3)
-      {
-        if (paramString.equals("horizontal")) {
+      if (paramInt == 3) {
+        if (paramString.equals("horizontal"))
+        {
+          label90:
           paramInt = 1;
-        } else {
-          paramInt = 2;
+          break label141;
         }
       }
-      else if (paramInt == 0)
+      for (;;)
       {
-        if (paramString.equals("horizontal")) {
-          paramInt = 0;
-        } else {
-          paramInt = 1;
+        paramInt = 2;
+        break label141;
+        if (paramInt == 0)
+        {
+          if (!paramString.equals("horizontal")) {
+            break label90;
+          }
+          paramInt = i;
+          break label141;
+        }
+        if (paramInt != 2) {
+          break label137;
+        }
+        if (!paramString.equals("horizontal")) {
+          break;
         }
       }
-      else if (paramInt == 2)
-      {
-        paramInt = i;
-        if (paramString.equals("horizontal")) {
-          paramInt = 2;
-        }
-      }
-      else
-      {
-        paramInt = -2147483648;
-      }
+      label137:
+      paramInt = -2147483648;
+    }
+    label141:
+    paramString = new StringBuilder();
+    paramString.append("adjustHomeOrientation, homeOrientation:");
+    paramString.append(paramInt);
+    QMLog.d("TXLivePusherJSAdapter", paramString.toString());
+    if (paramInt != -2147483648)
+    {
+      this.mWXLivePusherProxy.setHomeOrientation(paramInt);
+      this.mWXLivePusherProxy.setConfig();
     }
   }
   
@@ -183,71 +198,71 @@ public class TXLivePusherJSAdapter
     {
     default: 
       return;
-    case 1: 
-      WXLivePusherReflect.setVideoQuality(1, false, false, this.mLivePusher);
-      WXLivePushConfigReflect.setVideoEncodeGop(5, this.mLivePushConfig);
-      return;
-    case 2: 
-      WXLivePusherReflect.setVideoQuality(2, true, false, this.mLivePusher);
-      WXLivePushConfigReflect.setVideoEncodeGop(5, this.mLivePushConfig);
-      return;
-    case 3: 
-      WXLivePusherReflect.setVideoQuality(3, true, false, this.mLivePusher);
-      WXLivePushConfigReflect.setVideoEncodeGop(5, this.mLivePushConfig);
-      return;
-    case 4: 
-      WXLivePusherReflect.setVideoQuality(4, true, false, this.mLivePusher);
+    case 6: 
+      this.mWXLivePusherProxy.setVideoQuality(6, false, false);
       return;
     case 5: 
-      WXLivePusherReflect.setVideoQuality(5, true, false, this.mLivePusher);
+      this.mWXLivePusherProxy.setVideoQuality(5, true, false);
+      return;
+    case 4: 
+      this.mWXLivePusherProxy.setVideoQuality(4, true, false);
+      return;
+    case 3: 
+      this.mWXLivePusherProxy.setVideoQuality(3, true, false);
+      this.mWXLivePusherProxy.setVideoEncodeGop(5);
+      return;
+    case 2: 
+      this.mWXLivePusherProxy.setVideoQuality(2, true, false);
+      this.mWXLivePusherProxy.setVideoEncodeGop(5);
       return;
     }
-    WXLivePusherReflect.setVideoQuality(6, false, false, this.mLivePusher);
+    this.mWXLivePusherProxy.setVideoQuality(1, false, false);
+    this.mWXLivePusherProxy.setVideoEncodeGop(5);
   }
   
   private TXJSAdapterError baseLivePusherOperate(String paramString, JSONObject paramJSONObject)
   {
-    paramJSONObject = null;
     if (paramString.equalsIgnoreCase("start"))
     {
-      if ((this.mPusherUrl != null) && (!this.mPusherUrl.isEmpty()) && (!WXLivePusherReflect.isPushing(this.mLivePusher)))
+      paramString = this.mPusherUrl;
+      if ((paramString != null) && (!paramString.isEmpty()) && (!this.mWXLivePusherProxy.isPushing()))
       {
         startPreview(this.mEnableCamera);
         startAudioRecord(this.mEnableMic);
-        WXLivePusherReflect.startPusher(this.mPusherUrl, this.mLivePusher);
+        this.mWXLivePusherProxy.startPusher(this.mPusherUrl);
       }
-      paramJSONObject = new TXJSAdapterError();
+      return new TXJSAdapterError();
     }
-    do
+    if (paramString.equalsIgnoreCase("stop"))
     {
-      return paramJSONObject;
-      if (paramString.equalsIgnoreCase("stop"))
-      {
-        this.mFlashLight = false;
-        WXLivePusherReflect.stopBGM(this.mLivePusher);
-        stopPreview();
-        stopAudioRecord();
-        WXLivePusherReflect.stopPusher(this.mLivePusher);
-        return new TXJSAdapterError();
-      }
-      if (paramString.equalsIgnoreCase("pause"))
-      {
-        if ((this.mFlashLight) && (WXLivePusherReflect.isPushing(this.mLivePusher))) {
-          WXLivePusherReflect.turnOnFlashLight(false, this.mLivePusher);
-        }
-        WXLivePusherReflect.pausePusher(this.mLivePusher);
-        this.mBGMPlayingWhenPusherPaused = this.mBGMPlaying;
-        if (this.mBGMPlayingWhenPusherPaused) {
-          operateLivePusher("pauseBGM", null);
-        }
-        return new TXJSAdapterError();
-      }
-    } while (!paramString.equalsIgnoreCase("resume"));
-    WXLivePusherReflect.resumePusher(this.mLivePusher);
-    if (this.mBGMPlayingWhenPusherPaused) {
-      operateLivePusher("resumeBGM", null);
+      this.mFlashLight = false;
+      this.mWXLivePusherProxy.stopBGM();
+      stopPreview();
+      stopAudioRecord();
+      this.mWXLivePusherProxy.stopPusher();
+      return new TXJSAdapterError();
     }
-    return new TXJSAdapterError();
+    if (paramString.equalsIgnoreCase("pause"))
+    {
+      if ((this.mFlashLight) && (this.mWXLivePusherProxy.isPushing())) {
+        this.mWXLivePusherProxy.turnOnFlashLight(false);
+      }
+      this.mWXLivePusherProxy.pausePusher();
+      this.mBGMPlayingWhenPusherPaused = this.mBGMPlaying;
+      if (this.mBGMPlayingWhenPusherPaused) {
+        operateLivePusher("pauseBGM", null);
+      }
+      return new TXJSAdapterError();
+    }
+    if (paramString.equalsIgnoreCase("resume"))
+    {
+      this.mWXLivePusherProxy.resumePusher();
+      if (this.mBGMPlayingWhenPusherPaused) {
+        operateLivePusher("resumeBGM", null);
+      }
+      return new TXJSAdapterError();
+    }
+    return null;
   }
   
   private TXJSAdapterError bgmLivePusherOperate(String paramString, JSONObject paramJSONObject)
@@ -257,19 +272,19 @@ public class TXLivePusherJSAdapter
     }
     if (paramString.equalsIgnoreCase("stopBGM"))
     {
-      WXLivePusherReflect.stopBGM(this.mLivePusher);
+      this.mWXLivePusherProxy.stopBGM();
       this.mBGMPlaying = false;
       return new TXJSAdapterError();
     }
     if (paramString.equalsIgnoreCase("pauseBGM"))
     {
-      WXLivePusherReflect.pauseBGM(this.mLivePusher);
+      this.mWXLivePusherProxy.pauseBGM();
       this.mBGMPlaying = false;
       return new TXJSAdapterError();
     }
     if (paramString.equalsIgnoreCase("resumeBGM"))
     {
-      WXLivePusherReflect.resumeBGM(this.mLivePusher);
+      this.mWXLivePusherProxy.resumeBGM();
       this.mBGMPlaying = true;
       return new TXJSAdapterError();
     }
@@ -287,78 +302,56 @@ public class TXLivePusherJSAdapter
   
   private TXJSAdapterError cameraLivePusherOperate(String paramString, JSONObject paramJSONObject)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    int i = 0;
     if (paramString.equalsIgnoreCase("startPreview"))
     {
-      if (WXLivePusherReflect.isPushing(this.mLivePusher)) {
+      if (this.mWXLivePusherProxy.isPushing())
+      {
         QMLog.d("TXLivePusherJSAdapter", "do not support startPreview when pushing");
       }
-      for (;;)
+      else
       {
-        return new TXJSAdapterError();
         stopPreview();
         startPreview(this.mEnableCamera);
       }
+      return new TXJSAdapterError();
     }
     if (paramString.equalsIgnoreCase("stopPreview"))
     {
-      if (WXLivePusherReflect.isPushing(this.mLivePusher)) {
+      if (this.mWXLivePusherProxy.isPushing()) {
         QMLog.d("TXLivePusherJSAdapter", "do not support stopPreview when pushing");
-      }
-      for (;;)
-      {
-        return new TXJSAdapterError();
+      } else {
         stopPreview();
       }
+      return new TXJSAdapterError();
     }
     if (paramString.equalsIgnoreCase("switchCamera"))
     {
-      if (!this.mFrontCamera) {}
-      for (;;)
-      {
-        this.mFrontCamera = bool1;
-        WXLivePushConfigReflect.setFrontCamera(this.mFrontCamera, this.mLivePushConfig);
-        WXLivePusherReflect.switchCamera(this.mLivePusher);
-        return new TXJSAdapterError();
-        bool1 = false;
-      }
+      this.mFrontCamera ^= true;
+      this.mWXLivePusherProxy.setFrontCamera(this.mFrontCamera);
+      this.mWXLivePusherProxy.switchCamera();
+      return new TXJSAdapterError();
     }
     if (paramString.equalsIgnoreCase("toggleTorch"))
     {
-      if (WXLivePusherReflect.isPushing(this.mLivePusher))
+      boolean bool1 = this.mWXLivePusherProxy.isPushing();
+      int i = -2;
+      if (bool1)
       {
-        if (!this.mFlashLight)
-        {
-          bool1 = bool2;
-          bool2 = WXLivePusherReflect.turnOnFlashLight(bool1, this.mLivePusher);
-          if (!bool2) {
-            break label240;
-          }
-          label204:
-          this.mFlashLight = bool1;
-          if (!bool2) {
-            break label249;
-          }
-          label215:
-          if (!bool2) {
-            break label255;
-          }
-        }
-        label240:
-        label249:
-        label255:
-        for (paramString = "Success";; paramString = "Failed")
-        {
-          return new TXJSAdapterError(i, paramString);
-          bool1 = false;
-          break;
+        bool1 = this.mFlashLight ^ true;
+        boolean bool2 = this.mWXLivePusherProxy.turnOnFlashLight(bool1);
+        if (!bool2) {
           bool1 = this.mFlashLight;
-          break label204;
-          i = -2;
-          break label215;
         }
+        this.mFlashLight = bool1;
+        if (bool2) {
+          i = 0;
+        }
+        if (bool2) {
+          paramString = "Success";
+        } else {
+          paramString = "Failed";
+        }
+        return new TXJSAdapterError(i, paramString);
       }
       return new TXJSAdapterError(-2, "fail");
     }
@@ -369,7 +362,7 @@ public class TXLivePusherJSAdapter
   {
     int i = paramBundle.getInt("audioReverbType", this.mAudioReverbType);
     if (i != this.mAudioReverbType) {
-      WXLivePusherReflect.setReverb(i, this.mLivePusher);
+      this.mWXLivePusherProxy.setReverb(i);
     }
     this.mAudioReverbType = i;
   }
@@ -379,7 +372,7 @@ public class TXLivePusherJSAdapter
     int i = paramBundle.getInt("beauty", this.mBeauty);
     int j = paramBundle.getInt("whiteness", this.mWhiteness);
     if (i != this.mBeauty) {
-      WXLivePusherReflect.setBeautyFilter(0, i, j, 2, this.mLivePusher);
+      this.mWXLivePusherProxy.setBeautyFilter(0, i, j, 2);
     }
     this.mBeauty = i;
     this.mWhiteness = j;
@@ -389,7 +382,7 @@ public class TXLivePusherJSAdapter
   {
     boolean bool = paramBundle.getBoolean("debug", this.mDebug);
     if ((paramBoolean) || (bool != this.mDebug)) {
-      WXLivePusherReflect.showDebugLog(bool, this.mLivePusher);
+      this.mWXLivePusherProxy.showDebugLog(bool);
     }
     this.mDebug = bool;
   }
@@ -399,18 +392,13 @@ public class TXLivePusherJSAdapter
     boolean bool = this.mRemoteMirror;
     if (paramBundle.keySet().contains("remoteMirror")) {
       bool = paramBundle.getBoolean("remoteMirror");
+    } else if (paramBundle.keySet().contains("mirror")) {
+      bool = paramBundle.getBoolean("mirror");
     }
-    for (;;)
-    {
-      if (bool != this.mRemoteMirror) {
-        WXLivePusherReflect.setMirror(bool, this.mLivePusher);
-      }
-      this.mRemoteMirror = bool;
-      return;
-      if (paramBundle.keySet().contains("mirror")) {
-        bool = paramBundle.getBoolean("mirror");
-      }
+    if (bool != this.mRemoteMirror) {
+      this.mWXLivePusherProxy.setMirror(bool);
     }
+    this.mRemoteMirror = bool;
   }
   
   private void initPusherKeyList()
@@ -514,35 +502,37 @@ public class TXLivePusherJSAdapter
   
   private TXJSAdapterError otherLivePusherOperate(String paramString, JSONObject paramJSONObject)
   {
+    boolean bool = paramString.equalsIgnoreCase("sendMessage");
     Object localObject = null;
-    int i = -2;
-    int j = 0;
-    if (paramString.equalsIgnoreCase("sendMessage"))
+    int i = 0;
+    if (bool)
     {
       paramString = localObject;
       if (paramJSONObject != null) {
         paramString = paramJSONObject.optString("msg");
       }
+      i = -2;
       if (paramString != null)
       {
-        boolean bool = WXLivePusherReflect.sendMessageEx(paramString.getBytes(), this.mLivePusher);
+        bool = this.mWXLivePusherProxy.sendMessageEx(paramString.getBytes());
         if (bool) {
           i = 0;
         }
-        if (bool) {}
-        for (paramString = "Success";; paramString = "Failed") {
-          return new TXJSAdapterError(i, paramString);
+        if (bool) {
+          paramString = "Success";
+        } else {
+          paramString = "Failed";
         }
+        return new TXJSAdapterError(i, paramString);
       }
       return new TXJSAdapterError(-2, "fail");
     }
     if (paramString.equalsIgnoreCase("setAudioReverbType"))
     {
-      i = j;
       if (paramJSONObject != null) {
         i = paramJSONObject.optInt("audioReverbType", 0);
       }
-      WXLivePusherReflect.setReverb(i, this.mLivePusher);
+      this.mWXLivePusherProxy.setReverb(i);
       return new TXJSAdapterError();
     }
     return null;
@@ -553,136 +543,116 @@ public class TXLivePusherJSAdapter
     if ((!paramBoolean) && (paramBundle.keySet().size() == 0)) {
       return;
     }
-    int i1 = paramBundle.getInt("mode", this.mMode);
-    if ((paramBoolean) || (i1 != this.mMode)) {
-      applyPushMode(i1);
+    int i2 = paramBundle.getInt("mode", this.mMode);
+    if ((paramBoolean) || (i2 != this.mMode)) {
+      applyPushMode(i2);
     }
-    int m = this.mMinBitrate;
+    int i1 = this.mMinBitrate;
     int n = this.mMaxBitrate;
-    int i = paramBundle.getInt("minBitrate", -1);
-    int j = paramBundle.getInt("maxBitrate", -1);
-    int k;
-    if (i > j)
+    int m = paramBundle.getInt("minBitrate", -1);
+    int k = paramBundle.getInt("maxBitrate", -1);
+    int j = m;
+    int i = k;
+    if (m > k)
     {
-      QMLog.e("TXLivePusherJSAdapter", "parseAndApplyParams -> swap min and max bitrate, may be something error. min = " + i + " max = " + j);
-      k = j;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parseAndApplyParams -> swap min and max bitrate, may be something error. min = ");
+      ((StringBuilder)localObject1).append(m);
+      ((StringBuilder)localObject1).append(" max = ");
+      ((StringBuilder)localObject1).append(k);
+      QMLog.e("TXLivePusherJSAdapter", ((StringBuilder)localObject1).toString());
+      i = m;
+      j = k;
     }
-    for (;;)
+    if ((j != -1) && (i != -1))
     {
-      if ((k != -1) && (i != -1))
-      {
+      k = 200;
+      if (j < 200) {
         j = k;
-        if (k < 200) {
-          j = 200;
-        }
-        k = i;
-        if (i > 1800) {
-          k = 1800;
-        }
-        if (j > k) {}
       }
-      for (;;)
-      {
-        i = paramBundle.getInt("aspect", this.mVideoAspect);
-        m = paramBundle.getInt("videoWidth", this.mVideoWidth);
-        n = paramBundle.getInt("videoHeight", this.mVideoHeight);
-        String str1 = paramBundle.getString("audioQuality", this.mAudioQuality);
-        setRealTimeVideoChatMode(i1, i, m, n, str1, j, k);
-        int i2 = paramBundle.getInt("focusMode", this.mFocusMode);
-        boolean bool2;
-        String str2;
-        String str3;
-        String str4;
-        boolean bool3;
-        boolean bool4;
-        float f1;
-        float f2;
-        float f3;
-        String str5;
-        boolean bool5;
-        boolean bool6;
-        boolean bool7;
-        String str6;
-        boolean bool8;
-        if (i2 != 0)
-        {
-          bool1 = true;
-          WXLivePushConfigReflect.setTouchFocus(bool1, this.mLivePushConfig);
-          bool2 = setFrontCamera(paramBundle, this.mFrontCamera);
-          str2 = paramBundle.getString("orientation", this.mOrientation);
-          setRenderOrientation(str2);
-          str3 = paramBundle.getString("localMirror", this.mLocalMirror);
-          setLocalVideoMirror(str3);
-          str4 = paramBundle.getString("backgroundImage", this.mPauseImageFilePath);
-          WXLivePushConfigReflect.setPauseImg(BitmapFactory.decodeFile(str4), this.mLivePushConfig);
-          bool3 = paramBundle.getBoolean("backgroundMute", this.mPauseAudio);
-          setPauseAudioFlag(bool3);
-          bool4 = paramBundle.getBoolean("zoom", this.mEnableZoom);
-          WXLivePushConfigReflect.setEnableZoom(bool4, this.mLivePushConfig);
-          f1 = paramBundle.getFloat("watermarkLeft", this.mWatermarkLeft);
-          f2 = paramBundle.getFloat("watermarkTop", this.mWatermarkTop);
-          f3 = paramBundle.getFloat("watermarkWidth", this.mWatermarkWidth);
-          str5 = paramBundle.getString("watermarkImage", this.mWatermarkImage);
-          setWaterMark(paramBundle, f1, f2, f3, BitmapFactory.decodeFile(str5));
-          bool5 = paramBundle.getBoolean("enableAGC", this.mEnableAgc);
-          WXLivePushConfigReflect.enableAGC(bool5, this.mLivePushConfig);
-          bool6 = paramBundle.getBoolean("enableANS", this.mEnableAns);
-          WXLivePushConfigReflect.enableANS(bool6, this.mLivePushConfig);
-          bool7 = paramBundle.getBoolean("enableEarMonitor", this.mEnableEarMonitor);
-          WXLivePushConfigReflect.enableAudioEarMonitoring(bool7, this.mLivePushConfig);
-          str6 = paramBundle.getString("audioVolumeType", this.mAudioVolumeType);
-          setAudioVolumeType(str6);
-          bool8 = paramBundle.getBoolean("enableCamera", this.mEnableCamera);
-          if (bool8) {
-            break label837;
-          }
-        }
-        label837:
-        for (boolean bool1 = true;; bool1 = false)
-        {
-          WXLivePushConfigReflect.enablePureAudioPush(bool1, this.mLivePushConfig);
-          setLivePusherConfig(paramBoolean, needApplyConfig(i, j, k, i2, bool2, bool3, bool4, bool5, bool6, bool7, bool8, str3, m, n, f1, f2, f3, str6, str4, str2, str1, str5));
-          setEnableCamera(bool8);
-          setEnableMic(paramBundle, paramBoolean);
-          this.mMode = i1;
-          this.mVideoAspect = i;
-          this.mFocusMode = i2;
-          this.mEnableCamera = bool8;
-          this.mEnableAgc = bool5;
-          this.mEnableAns = bool6;
-          this.mEnableEarMonitor = bool7;
-          this.mLocalMirror = str3;
-          this.mAudioVolumeType = str6;
-          this.mVideoWidth = m;
-          this.mVideoHeight = n;
-          this.mFrontCamera = bool2;
-          this.mOrientation = str2;
-          this.mPauseAudio = bool3;
-          this.mPauseImageFilePath = str4;
-          this.mMinBitrate = j;
-          this.mMaxBitrate = k;
-          this.mAudioQuality = str1;
-          this.mEnableZoom = bool4;
-          this.mWatermarkLeft = f1;
-          this.mWatermarkTop = f2;
-          this.mWatermarkWidth = f3;
-          this.mWatermarkImage = str5;
-          this.mNeedEvent = paramBundle.getBoolean("needEvent", this.mNeedEvent);
-          this.mNeedBGMEvent = paramBundle.getBoolean("needBGMEvent", this.mNeedBGMEvent);
-          handleRemoteMirror(paramBundle);
-          handleBeatyAndWhiteness(paramBundle);
-          handleAudioReverbType(paramBundle);
-          handleDebug(paramBundle, paramBoolean);
-          return;
-          bool1 = false;
-          break;
-        }
-        k = n;
-        j = m;
+      k = 1800;
+      if (i > 1800) {
+        i = k;
       }
-      k = i;
-      i = j;
+      if (j <= i) {}
     }
+    else
+    {
+      j = i1;
+      i = n;
+    }
+    k = paramBundle.getInt("aspect", this.mVideoAspect);
+    m = paramBundle.getInt("videoWidth", this.mVideoWidth);
+    n = paramBundle.getInt("videoHeight", this.mVideoHeight);
+    Object localObject1 = paramBundle.getString("audioQuality", this.mAudioQuality);
+    setRealTimeVideoChatMode(i2, k, m, n, (String)localObject1, j, i);
+    i1 = paramBundle.getInt("focusMode", this.mFocusMode);
+    Object localObject2 = this.mWXLivePusherProxy;
+    if (i1 != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    ((IWXLivePusherProxy)localObject2).setTouchFocus(bool1);
+    boolean bool1 = setFrontCamera(paramBundle, this.mFrontCamera);
+    localObject2 = paramBundle.getString("orientation", this.mOrientation);
+    setRenderOrientation((String)localObject2);
+    String str1 = paramBundle.getString("localMirror", this.mLocalMirror);
+    setLocalVideoMirror(str1);
+    String str2 = paramBundle.getString("backgroundImage", this.mPauseImageFilePath);
+    Object localObject3 = BitmapFactory.decodeFile(str2);
+    this.mWXLivePusherProxy.setPauseImg((Bitmap)localObject3);
+    boolean bool2 = paramBundle.getBoolean("backgroundMute", this.mPauseAudio);
+    setPauseAudioFlag(bool2);
+    boolean bool3 = paramBundle.getBoolean("zoom", this.mEnableZoom);
+    this.mWXLivePusherProxy.setEnableZoom(bool3);
+    float f1 = paramBundle.getFloat("watermarkLeft", this.mWatermarkLeft);
+    float f2 = paramBundle.getFloat("watermarkTop", this.mWatermarkTop);
+    float f3 = paramBundle.getFloat("watermarkWidth", this.mWatermarkWidth);
+    localObject3 = paramBundle.getString("watermarkImage", this.mWatermarkImage);
+    setWaterMark(paramBundle, f1, f2, f3, BitmapFactory.decodeFile((String)localObject3));
+    boolean bool4 = paramBundle.getBoolean("enableAGC", this.mEnableAgc);
+    this.mWXLivePusherProxy.enableAGC(bool4);
+    boolean bool5 = paramBundle.getBoolean("enableANS", this.mEnableAns);
+    this.mWXLivePusherProxy.enableANS(bool5);
+    boolean bool6 = paramBundle.getBoolean("enableEarMonitor", this.mEnableEarMonitor);
+    this.mWXLivePusherProxy.enableAudioEarMonitoring(bool6);
+    String str3 = paramBundle.getString("audioVolumeType", this.mAudioVolumeType);
+    setAudioVolumeType(str3);
+    boolean bool7 = paramBundle.getBoolean("enableCamera", this.mEnableCamera);
+    this.mWXLivePusherProxy.enablePureAudioPush(bool7 ^ true);
+    setLivePusherConfig(paramBoolean, needApplyConfig(k, j, i, i1, bool1, bool2, bool3, bool4, bool5, bool6, bool7, str1, m, n, f1, f2, f3, str3, str2, (String)localObject2, (String)localObject1, (String)localObject3));
+    setEnableCamera(bool7);
+    setEnableMic(paramBundle, paramBoolean);
+    this.mMode = i2;
+    this.mVideoAspect = k;
+    this.mFocusMode = i1;
+    this.mEnableCamera = bool7;
+    this.mEnableAgc = bool4;
+    this.mEnableAns = bool5;
+    this.mEnableEarMonitor = bool6;
+    this.mLocalMirror = str1;
+    this.mAudioVolumeType = str3;
+    this.mVideoWidth = m;
+    this.mVideoHeight = n;
+    this.mFrontCamera = bool1;
+    this.mOrientation = ((String)localObject2);
+    this.mPauseAudio = bool2;
+    this.mPauseImageFilePath = str2;
+    this.mMinBitrate = j;
+    this.mMaxBitrate = i;
+    this.mAudioQuality = ((String)localObject1);
+    this.mEnableZoom = bool3;
+    this.mWatermarkLeft = f1;
+    this.mWatermarkTop = f2;
+    this.mWatermarkWidth = f3;
+    this.mWatermarkImage = ((String)localObject3);
+    this.mNeedEvent = paramBundle.getBoolean("needEvent", this.mNeedEvent);
+    this.mNeedBGMEvent = paramBundle.getBoolean("needBGMEvent", this.mNeedBGMEvent);
+    handleRemoteMirror(paramBundle);
+    handleBeatyAndWhiteness(paramBundle);
+    handleAudioReverbType(paramBundle);
+    handleDebug(paramBundle, paramBoolean);
   }
   
   private TXJSAdapterError playBGM(JSONObject paramJSONObject)
@@ -691,10 +661,13 @@ public class TXLivePusherJSAdapter
     if (paramJSONObject != null) {
       str = paramJSONObject.optString("BGMFilePath", "");
     }
-    QMLog.d("TXLivePusherJSAdapter", "playBGM filePath = " + str);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("playBGM filePath = ");
+    paramJSONObject.append(str);
+    QMLog.d("TXLivePusherJSAdapter", paramJSONObject.toString());
     if ((str != null) && (str.length() > 0))
     {
-      WXLivePusherReflect.playBGM(str, this.mLivePusher);
+      this.mWXLivePusherProxy.playBGM(str);
       return new TXJSAdapterError();
     }
     return new TXJSAdapterError(-2, "fail");
@@ -708,14 +681,46 @@ public class TXLivePusherJSAdapter
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        if (isStringKeyForParams(str)) {
-          paramString = paramString + "\n" + str + " = " + paramBundle.getString(str);
-        } else if (isIntKeyForParams(str)) {
-          paramString = paramString + "\n" + str + " = " + paramBundle.getInt(str);
-        } else if (isBooleanKeyForParams(str)) {
-          paramString = paramString + "\n" + str + " = " + paramBundle.getBoolean(str);
-        } else if (isFloatKeyForParams(str)) {
-          paramString = paramString + "\n" + str + " = " + paramBundle.getFloat(str);
+        StringBuilder localStringBuilder;
+        if (isStringKeyForParams(str))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("\n");
+          localStringBuilder.append(str);
+          localStringBuilder.append(" = ");
+          localStringBuilder.append(paramBundle.getString(str));
+          paramString = localStringBuilder.toString();
+        }
+        else if (isIntKeyForParams(str))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("\n");
+          localStringBuilder.append(str);
+          localStringBuilder.append(" = ");
+          localStringBuilder.append(paramBundle.getInt(str));
+          paramString = localStringBuilder.toString();
+        }
+        else if (isBooleanKeyForParams(str))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("\n");
+          localStringBuilder.append(str);
+          localStringBuilder.append(" = ");
+          localStringBuilder.append(paramBundle.getBoolean(str));
+          paramString = localStringBuilder.toString();
+        }
+        else if (isFloatKeyForParams(str))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("\n");
+          localStringBuilder.append(str);
+          localStringBuilder.append(" = ");
+          localStringBuilder.append(paramBundle.getFloat(str));
+          paramString = localStringBuilder.toString();
         }
       }
       QMLog.d("TXLivePusherJSAdapter", paramString);
@@ -726,20 +731,24 @@ public class TXLivePusherJSAdapter
   {
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      QMLog.d("TXLivePusherJSAdapter", "bitmap recycle " + paramBitmap.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bitmap recycle ");
+      localStringBuilder.append(paramBitmap.toString());
+      QMLog.d("TXLivePusherJSAdapter", localStringBuilder.toString());
       paramBitmap.recycle();
     }
   }
   
   private void setAudioVolumeType(String paramString)
   {
-    if (paramString.equalsIgnoreCase("voicecall")) {
-      WXLivePushConfigReflect.setVolumeType(0, this.mLivePushConfig);
-    }
-    while (!paramString.equalsIgnoreCase("media")) {
+    if (paramString.equalsIgnoreCase("voicecall"))
+    {
+      this.mWXLivePusherProxy.setVolumeType(0);
       return;
     }
-    WXLivePushConfigReflect.setVolumeType(1, this.mLivePushConfig);
+    if (paramString.equalsIgnoreCase("media")) {
+      this.mWXLivePusherProxy.setVolumeType(1);
+    }
   }
   
   private TXJSAdapterError setBGMPosition(JSONObject paramJSONObject)
@@ -748,7 +757,7 @@ public class TXLivePusherJSAdapter
     {
       int i = paramJSONObject.optInt("BGMPosition", -1);
       if (i > 0) {
-        WXLivePusherReflect.setBGMPosition(i, this.mLivePusher);
+        this.mWXLivePusherProxy.setBGMPosition(i);
       }
     }
     return new TXJSAdapterError();
@@ -760,7 +769,7 @@ public class TXLivePusherJSAdapter
     if (paramJSONObject != null) {
       d = paramJSONObject.optDouble("volume", 1.0D);
     }
-    WXLivePusherReflect.setBGMVolume((float)d, this.mLivePusher);
+    this.mWXLivePusherProxy.setBGMVolume((float)d);
     return new TXJSAdapterError();
   }
   
@@ -772,65 +781,44 @@ public class TXLivePusherJSAdapter
       {
         stopPreview();
         startPreview(paramBoolean);
+        return;
       }
+      stopPreview();
     }
-    else {
-      return;
-    }
-    stopPreview();
   }
   
   private void setEnableMic(Bundle paramBundle, boolean paramBoolean)
   {
-    boolean bool1 = true;
+    boolean bool;
     if (paramBundle.keySet().contains("enableMic"))
     {
-      bool2 = paramBundle.getBoolean("enableMic", this.mEnableMic);
-      if (bool2 != this.mEnableMic)
-      {
-        if (bool2)
+      bool = paramBundle.getBoolean("enableMic", this.mEnableMic);
+      if (bool != this.mEnableMic) {
+        if (bool)
         {
           stopAudioRecord();
           startAudioRecord(true);
         }
-      }
-      else
-      {
-        if ((paramBoolean) || (bool2 != this.mEnableMic))
+        else
         {
-          if (bool2) {
-            break label107;
-          }
-          paramBoolean = true;
-          WXLivePusherReflect.setMuted(paramBoolean, this.mLivePusher);
+          stopAudioRecord();
         }
-        this.mEnableMic = bool2;
-        if (bool2) {
-          break label112;
-        }
-        paramBoolean = bool1;
-        this.mMute = paramBoolean;
       }
-    }
-    label107:
-    label112:
-    while (!paramBundle.keySet().contains("muted")) {
-      for (;;)
-      {
-        boolean bool2;
-        return;
-        stopAudioRecord();
-        continue;
-        paramBoolean = false;
-        continue;
-        paramBoolean = false;
+      if ((paramBoolean) || (bool != this.mEnableMic)) {
+        this.mWXLivePusherProxy.setMuted(bool ^ true);
       }
+      this.mEnableMic = bool;
+      this.mMute = (bool ^ true);
+      return;
     }
-    bool1 = paramBundle.getBoolean("muted", this.mMute);
-    if ((paramBoolean) || (bool1 != this.mMute)) {
-      WXLivePusherReflect.setMuted(bool1, this.mLivePusher);
+    if (paramBundle.keySet().contains("muted"))
+    {
+      bool = paramBundle.getBoolean("muted", this.mMute);
+      if ((paramBoolean) || (bool != this.mMute)) {
+        this.mWXLivePusherProxy.setMuted(bool);
+      }
+      this.mMute = bool;
     }
-    this.mMute = bool1;
   }
   
   private boolean setFrontCamera(Bundle paramBundle, boolean paramBoolean)
@@ -842,7 +830,7 @@ public class TXLivePusherJSAdapter
       if (this.mDevicePosition.equalsIgnoreCase("back")) {
         paramBoolean = false;
       }
-      WXLivePushConfigReflect.setFrontCamera(paramBoolean, this.mLivePushConfig);
+      this.mWXLivePusherProxy.setFrontCamera(paramBoolean);
       bool = paramBoolean;
     }
     return bool;
@@ -851,7 +839,7 @@ public class TXLivePusherJSAdapter
   private void setLivePusherConfig(boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((paramBoolean1) || (paramBoolean2)) {
-      WXLivePusherReflect.setConfig(this.mLivePushConfig, this.mLivePusher);
+      this.mWXLivePusherProxy.setConfig();
     }
   }
   
@@ -859,22 +847,20 @@ public class TXLivePusherJSAdapter
   {
     if (!paramString.equalsIgnoreCase(this.mLocalMirror))
     {
-      if (!paramString.equalsIgnoreCase("auto")) {
-        break label29;
-      }
-      WXLivePusherReflect.setLocalVideoMirrorType(0, this.mLivePushConfig);
-    }
-    label29:
-    do
-    {
-      return;
-      if (paramString.equalsIgnoreCase("enable"))
+      if (paramString.equalsIgnoreCase("auto"))
       {
-        WXLivePusherReflect.setLocalVideoMirrorType(1, this.mLivePushConfig);
+        this.mWXLivePusherProxy.setLocalVideoMirrorType(0);
         return;
       }
-    } while (!paramString.equalsIgnoreCase("disable"));
-    WXLivePusherReflect.setLocalVideoMirrorType(2, this.mLivePushConfig);
+      if (paramString.equalsIgnoreCase("enable"))
+      {
+        this.mWXLivePusherProxy.setLocalVideoMirrorType(1);
+        return;
+      }
+      if (paramString.equalsIgnoreCase("disable")) {
+        this.mWXLivePusherProxy.setLocalVideoMirrorType(2);
+      }
+    }
   }
   
   private void setMICVolume(JSONObject paramJSONObject)
@@ -883,87 +869,81 @@ public class TXLivePusherJSAdapter
     if (paramJSONObject != null) {
       d = paramJSONObject.optDouble("volume", 1.0D);
     }
-    WXLivePusherReflect.setMicVolume((float)d, this.mLivePusher);
+    this.mWXLivePusherProxy.setMicVolume((float)d);
   }
   
   private void setPauseAudioFlag(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      WXLivePushConfigReflect.setPauseFlag(3, this.mLivePushConfig);
+      this.mWXLivePusherProxy.setPauseFlag(3);
       return;
     }
-    WXLivePushConfigReflect.setPauseFlag(1, this.mLivePushConfig);
+    this.mWXLivePusherProxy.setPauseFlag(1);
   }
   
   private void setRealTimeVideoChatMode(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, int paramInt6)
   {
     if (paramInt1 == 6)
     {
-      if (paramInt2 != 1) {
-        break label99;
+      if (paramInt2 == 1) {
+        this.mWXLivePusherProxy.setVideoResolution(13);
+      } else if (paramInt2 == 2) {
+        this.mWXLivePusherProxy.setVideoResolution(0);
       }
-      WXLivePushConfigReflect.setVideoResolution(13, this.mLivePushConfig);
-    }
-    label99:
-    do
-    {
-      for (;;)
+      if (isVideoWHValid(paramInt3, paramInt4)) {
+        this.mWXLivePusherProxy.setVideoResolution(paramInt3, paramInt4);
+      }
+      if ((paramInt5 != -1) && (paramInt6 != -1) && (paramInt5 <= paramInt6))
       {
-        if (isVideoWHValid(paramInt3, paramInt4)) {
-          WXLivePushConfigReflect.setVideoResolution(paramInt3, paramInt4, this.mLivePushConfig);
-        }
-        if ((paramInt5 != -1) && (paramInt6 != -1) && (paramInt5 <= paramInt6))
-        {
-          WXLivePushConfigReflect.setMinVideoBitrate(paramInt5, this.mLivePushConfig);
-          WXLivePushConfigReflect.setMaxVideoBitrate(paramInt6, this.mLivePushConfig);
-        }
-        if (!paramString.equalsIgnoreCase("low")) {
-          break;
-        }
-        WXLivePushConfigReflect.setAudioSampleRate(16000, this.mLivePushConfig);
-        return;
-        if (paramInt2 == 2) {
-          WXLivePushConfigReflect.setVideoResolution(0, this.mLivePushConfig);
-        }
+        this.mWXLivePusherProxy.setMinVideoBitrate(paramInt5);
+        this.mWXLivePusherProxy.setMaxVideoBitrate(paramInt6);
       }
-    } while (!paramString.equalsIgnoreCase("high"));
-    WXLivePushConfigReflect.setAudioSampleRate(48000, this.mLivePushConfig);
+      if (paramString.equalsIgnoreCase("low"))
+      {
+        this.mWXLivePusherProxy.setAudioSampleRate(16000);
+        return;
+      }
+      if (paramString.equalsIgnoreCase("high")) {
+        this.mWXLivePusherProxy.setAudioSampleRate(48000);
+      }
+    }
   }
   
   private void setRenderOrientation(String paramString)
   {
     if (!paramString.equalsIgnoreCase(this.mOrientation))
     {
-      if (!paramString.equalsIgnoreCase("horizontal")) {
-        break label40;
+      if (paramString.equalsIgnoreCase("horizontal"))
+      {
+        adjustHomeOrientation(this.mLastAngle, paramString);
+        this.mWXLivePusherProxy.setRenderRotation(90);
+        return;
       }
-      adjustHomeOrientation(this.mLastAngle, paramString);
-      WXLivePusherReflect.setRenderRotation(90, this.mLivePusher);
+      if (paramString.equalsIgnoreCase("vertical"))
+      {
+        adjustHomeOrientation(this.mLastAngle, paramString);
+        this.mWXLivePusherProxy.setRenderRotation(0);
+      }
     }
-    label40:
-    while (!paramString.equalsIgnoreCase("vertical")) {
-      return;
-    }
-    adjustHomeOrientation(this.mLastAngle, paramString);
-    WXLivePusherReflect.setRenderRotation(0, this.mLivePusher);
   }
   
   private void setWaterMark(Bundle paramBundle, float paramFloat1, float paramFloat2, float paramFloat3, Bitmap paramBitmap)
   {
-    if (paramBitmap != null) {
-      WXLivePushConfigReflect.setWatermark(paramBitmap, paramFloat1, paramFloat2, paramFloat3, this.mLivePushConfig);
-    }
-    while ((!WXLivePusherReflect.isPushing(this.mLivePusher)) || (!paramBundle.keySet().contains("watermarkImage"))) {
+    if (paramBitmap != null)
+    {
+      this.mWXLivePusherProxy.setWatermark(paramBitmap, paramFloat1, paramFloat2, paramFloat3);
       return;
     }
-    WXLivePushConfigReflect.setWatermark(paramBitmap, paramFloat1, paramFloat2, paramFloat3, this.mLivePushConfig);
+    if ((this.mWXLivePusherProxy.isPushing()) && (paramBundle.keySet().contains("watermarkImage"))) {
+      this.mWXLivePusherProxy.setWatermark(paramBitmap, paramFloat1, paramFloat2, paramFloat3);
+    }
   }
   
   private void startAudioRecord(boolean paramBoolean)
   {
     if (paramBoolean) {
-      WXLivePusherReflect.startAudioRecord(this.mLivePusher);
+      this.mWXLivePusherProxy.startAudioRecord();
     }
   }
   
@@ -971,48 +951,44 @@ public class TXLivePusherJSAdapter
   {
     if ((!this.mIsCameraPreviewing) && (paramBoolean))
     {
-      if (this.mVideoView != null) {
-        txLivePlayer_setVisibility(0, this.mVideoView);
+      Object localObject = this.mVideoView;
+      if (localObject != null) {
+        this.mWXLivePusherProxy.txLivePlayer_setVisibility(0, localObject);
       }
-      if (this.mSurface != null) {
-        WXLivePusherReflect.setSurface(this.mSurface, this.mLivePusher);
+      localObject = this.mSurface;
+      if (localObject != null) {
+        this.mWXLivePusherProxy.setSurface((Surface)localObject);
       }
-      WXLivePusherReflect.startCameraPreview(this.mVideoView, this.mLivePusher);
+      this.mWXLivePusherProxy.startCameraPreview(this.mVideoView);
       this.mIsCameraPreviewing = true;
     }
   }
   
   private void stopAudioRecord()
   {
-    WXLivePusherReflect.stopAudioRecord(this.mLivePusher);
+    this.mWXLivePusherProxy.stopAudioRecord();
   }
   
   private void stopPreview()
   {
-    WXLivePusherReflect.stopCameraPreview(true, this.mLivePusher);
+    this.mWXLivePusherProxy.stopCameraPreview(true);
     this.mIsCameraPreviewing = false;
-  }
-  
-  private void txCloudVideoView_disableLog(Boolean paramBoolean, Object paramObject)
-  {
-    JarReflectUtil.callSpecifiedMethod(paramObject, "disableLog", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
-  }
-  
-  private void txLivePlayer_setVisibility(int paramInt, Object paramObject)
-  {
-    JarReflectUtil.callSpecifiedMethod(paramObject, "setVisibility", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public TXJSAdapterError enterBackground(boolean paramBoolean)
   {
-    this.mPushingBeforeEnterBackground = WXLivePusherReflect.isPushing(this.mLivePusher);
+    this.mPushingBeforeEnterBackground = this.mWXLivePusherProxy.isPushing();
     if (this.mPushingBeforeEnterBackground)
     {
       if (paramBoolean)
       {
         this.mForceStop = paramBoolean;
-        if ((this.mNeedEvent) && (this.mLivePushListener != null)) {
-          this.mLivePushListener.onPushEvent(5000, new Bundle());
+        if (this.mNeedEvent)
+        {
+          TXLivePushListenerReflect.ITXLivePushListener localITXLivePushListener = this.mLivePushListener;
+          if (localITXLivePushListener != null) {
+            localITXLivePushListener.onPushEvent(5000, new Bundle());
+          }
         }
         return operateLivePusher("stop", null);
       }
@@ -1039,18 +1015,26 @@ public class TXLivePusherJSAdapter
     printJSParams("InitLivePusher", paramJSONObject);
     this.mVideoView = null;
     this.mPusherUrl = paramJSONObject.getString("pushUrl", "");
-    WXLivePusherReflect.setPusherUrl(this.mPusherUrl, this.mLivePusher);
+    this.mWXLivePusherProxy.setPusherUrl(this.mPusherUrl);
     parseAndApplyParams(paramJSONObject, true);
     this.mAutoPush = paramJSONObject.getBoolean("autopush", this.mAutoPush);
-    if ((this.mAutoPush) && (this.mPusherUrl != null) && (!this.mPusherUrl.isEmpty()) && (!WXLivePusherReflect.isPushing(this.mLivePusher)))
+    if (this.mAutoPush)
     {
-      QMLog.d("TXLivePusherJSAdapter", "initEmbeddedLivePusher: startPusher");
-      startPreview(this.mEnableCamera);
-      startAudioRecord(this.mEnableMic);
-      if ((this.mEnableCamera) && (this.mSurface != null)) {
-        WXLivePusherReflect.setSurface(this.mSurface, this.mLivePusher);
+      paramJSONObject = this.mPusherUrl;
+      if ((paramJSONObject != null) && (!paramJSONObject.isEmpty()) && (!this.mWXLivePusherProxy.isPushing()))
+      {
+        QMLog.d("TXLivePusherJSAdapter", "initEmbeddedLivePusher: startPusher");
+        startPreview(this.mEnableCamera);
+        startAudioRecord(this.mEnableMic);
+        if (this.mEnableCamera)
+        {
+          paramJSONObject = this.mSurface;
+          if (paramJSONObject != null) {
+            this.mWXLivePusherProxy.setSurface(paramJSONObject);
+          }
+        }
+        this.mWXLivePusherProxy.startPusher(this.mPusherUrl);
       }
-      WXLivePusherReflect.startPusher(this.mPusherUrl, this.mLivePusher);
     }
     this.mInited = true;
     return new TXJSAdapterError();
@@ -1059,118 +1043,216 @@ public class TXLivePusherJSAdapter
   public TXJSAdapterError initLivePusher(Object paramObject, JSONObject paramJSONObject)
   {
     paramJSONObject = adaptJsonToBundle(paramJSONObject);
-    if ((paramObject == null) || (paramJSONObject == null)) {
-      return new TXJSAdapterError(-1, "invalid params");
-    }
-    printJSParams("InitLivePusher", paramJSONObject);
-    this.mVideoView = paramObject;
-    txCloudVideoView_disableLog(Boolean.valueOf(false), this.mVideoView);
-    this.mPusherUrl = paramJSONObject.getString("pushUrl", "");
-    WXLivePusherReflect.setPusherUrl(this.mPusherUrl, this.mLivePusher);
-    parseAndApplyParams(paramJSONObject, true);
-    this.mAutoPush = paramJSONObject.getBoolean("autopush", this.mAutoPush);
-    if ((this.mAutoPush) && (this.mPusherUrl != null) && (!this.mPusherUrl.isEmpty()) && (!WXLivePusherReflect.isPushing(this.mLivePusher)))
+    if ((paramObject != null) && (paramJSONObject != null))
     {
-      QMLog.d("TXLivePusherJSAdapter", "initLivePusher: startPusher");
-      startPreview(this.mEnableCamera);
-      startAudioRecord(this.mEnableMic);
-      WXLivePusherReflect.startPusher(this.mPusherUrl, this.mLivePusher);
+      printJSParams("InitLivePusher", paramJSONObject);
+      this.mVideoView = paramObject;
+      this.mWXLivePusherProxy.txCloudVideoView_disableLog(Boolean.valueOf(false), this.mVideoView);
+      this.mPusherUrl = paramJSONObject.getString("pushUrl", "");
+      this.mWXLivePusherProxy.setPusherUrl(this.mPusherUrl);
+      parseAndApplyParams(paramJSONObject, true);
+      this.mAutoPush = paramJSONObject.getBoolean("autopush", this.mAutoPush);
+      if (this.mAutoPush)
+      {
+        paramObject = this.mPusherUrl;
+        if ((paramObject != null) && (!paramObject.isEmpty()) && (!this.mWXLivePusherProxy.isPushing()))
+        {
+          QMLog.d("TXLivePusherJSAdapter", "initLivePusher: startPusher");
+          startPreview(this.mEnableCamera);
+          startAudioRecord(this.mEnableMic);
+          this.mWXLivePusherProxy.startPusher(this.mPusherUrl);
+        }
+      }
+      this.mInited = true;
+      return new TXJSAdapterError();
     }
-    this.mInited = true;
-    return new TXJSAdapterError();
-  }
-  
-  public void notifyOrientationChanged(int paramInt)
-  {
-    this.mHandler.post(new TXLivePusherJSAdapter.1(this, paramInt));
+    return new TXJSAdapterError(-1, "invalid params");
   }
   
   public void onBGMComplete(int paramInt)
   {
     this.mBGMPlaying = false;
-    if ((this.mNeedBGMEvent) && (this.mBGMNotifyListener != null)) {
-      this.mBGMNotifyListener.onBGMComplete(paramInt);
+    if (this.mNeedBGMEvent)
+    {
+      TXLivePushListenerReflect.OnBGMNotify localOnBGMNotify = this.mBGMNotifyListener;
+      if (localOnBGMNotify != null) {
+        localOnBGMNotify.onBGMComplete(paramInt);
+      }
     }
   }
   
   public void onBGMProgress(long paramLong1, long paramLong2)
   {
-    if ((this.mNeedBGMEvent) && (this.mBGMNotifyListener != null)) {
-      this.mBGMNotifyListener.onBGMProgress(paramLong1, paramLong2);
+    if (this.mNeedBGMEvent)
+    {
+      TXLivePushListenerReflect.OnBGMNotify localOnBGMNotify = this.mBGMNotifyListener;
+      if (localOnBGMNotify != null) {
+        localOnBGMNotify.onBGMProgress(paramLong1, paramLong2);
+      }
     }
   }
   
   public void onBGMStart()
   {
     this.mBGMPlaying = true;
-    if ((this.mNeedBGMEvent) && (this.mBGMNotifyListener != null)) {
-      this.mBGMNotifyListener.onBGMStart();
+    if (this.mNeedBGMEvent)
+    {
+      TXLivePushListenerReflect.OnBGMNotify localOnBGMNotify = this.mBGMNotifyListener;
+      if (localOnBGMNotify != null) {
+        localOnBGMNotify.onBGMStart();
+      }
     }
   }
   
   public void onNetStatus(Bundle paramBundle)
   {
-    if (this.mLivePushListener != null) {
-      this.mLivePushListener.onNetStatus(paramBundle);
+    Object localObject1 = this.mLivePushListener;
+    if (localObject1 != null) {
+      ((TXLivePushListenerReflect.ITXLivePushListener)localObject1).onNetStatus(paramBundle);
     }
     if (QMLog.isColorLevel())
     {
-      paramBundle = String.format("%-16s %-16s %-16s %-12s %-12s %-12s %-12s %-14s %-14s %-14s %-16s %-16s", new Object[] { "CPU:" + paramBundle.getString("CPU_USAGE"), "RES:" + paramBundle.getInt("VIDEO_WIDTH") + "*" + paramBundle.getInt("VIDEO_HEIGHT"), "SPD:" + paramBundle.getInt("NET_SPEED") + "Kbps", "JIT:" + paramBundle.getInt("NET_JITTER"), "FPS:" + paramBundle.getInt("VIDEO_FPS"), "GOP:" + paramBundle.getInt("VIDEO_GOP") + "s", "ARA:" + paramBundle.getInt("AUDIO_BITRATE") + "Kbps", "QUE:" + paramBundle.getInt("AUDIO_CACHE") + " | " + paramBundle.getInt("VIDEO_CACHE") + "," + paramBundle.getInt("V_SUM_CACHE_SIZE") + "," + paramBundle.getInt("V_DEC_CACHE_SIZE") + " | " + paramBundle.getInt("AV_RECV_INTERVAL") + "," + paramBundle.getInt("AV_PLAY_INTERVAL") + "," + String.format("%.1f", new Object[] { Float.valueOf(paramBundle.getFloat("AUDIO_CACHE_THRESHOLD")) }).toString(), "VRA:" + paramBundle.getInt("VIDEO_BITRATE") + "Kbps", "DRP:" + paramBundle.getInt("AUDIO_DROP") + "|" + paramBundle.getInt("VIDEO_DROP"), "SVR:" + paramBundle.getString("SERVER_IP"), "AUDIO:" + paramBundle.getString("AUDIO_PLAY_INFO") });
-      QMLog.d("TXLivePusherJSAdapter", "onNetStatus:" + paramBundle);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("CPU:");
+      ((StringBuilder)localObject1).append(paramBundle.getString("CPU_USAGE"));
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("RES:");
+      ((StringBuilder)localObject2).append(paramBundle.getInt("VIDEO_WIDTH"));
+      ((StringBuilder)localObject2).append("*");
+      ((StringBuilder)localObject2).append(paramBundle.getInt("VIDEO_HEIGHT"));
+      localObject2 = ((StringBuilder)localObject2).toString();
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("SPD:");
+      ((StringBuilder)localObject3).append(paramBundle.getInt("NET_SPEED"));
+      ((StringBuilder)localObject3).append("Kbps");
+      localObject3 = ((StringBuilder)localObject3).toString();
+      Object localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("JIT:");
+      ((StringBuilder)localObject4).append(paramBundle.getInt("NET_JITTER"));
+      localObject4 = ((StringBuilder)localObject4).toString();
+      Object localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append("FPS:");
+      ((StringBuilder)localObject5).append(paramBundle.getInt("VIDEO_FPS"));
+      localObject5 = ((StringBuilder)localObject5).toString();
+      Object localObject6 = new StringBuilder();
+      ((StringBuilder)localObject6).append("GOP:");
+      ((StringBuilder)localObject6).append(paramBundle.getInt("VIDEO_GOP"));
+      ((StringBuilder)localObject6).append("s");
+      localObject6 = ((StringBuilder)localObject6).toString();
+      Object localObject7 = new StringBuilder();
+      ((StringBuilder)localObject7).append("ARA:");
+      ((StringBuilder)localObject7).append(paramBundle.getInt("AUDIO_BITRATE"));
+      ((StringBuilder)localObject7).append("Kbps");
+      localObject7 = ((StringBuilder)localObject7).toString();
+      Object localObject8 = new StringBuilder();
+      ((StringBuilder)localObject8).append("QUE:");
+      ((StringBuilder)localObject8).append(paramBundle.getInt("AUDIO_CACHE"));
+      ((StringBuilder)localObject8).append(" | ");
+      ((StringBuilder)localObject8).append(paramBundle.getInt("VIDEO_CACHE"));
+      ((StringBuilder)localObject8).append(",");
+      ((StringBuilder)localObject8).append(paramBundle.getInt("V_SUM_CACHE_SIZE"));
+      ((StringBuilder)localObject8).append(",");
+      ((StringBuilder)localObject8).append(paramBundle.getInt("V_DEC_CACHE_SIZE"));
+      ((StringBuilder)localObject8).append(" | ");
+      ((StringBuilder)localObject8).append(paramBundle.getInt("AV_RECV_INTERVAL"));
+      ((StringBuilder)localObject8).append(",");
+      ((StringBuilder)localObject8).append(paramBundle.getInt("AV_PLAY_INTERVAL"));
+      ((StringBuilder)localObject8).append(",");
+      ((StringBuilder)localObject8).append(String.format("%.1f", new Object[] { Float.valueOf(paramBundle.getFloat("AUDIO_CACHE_THRESHOLD")) }).toString());
+      localObject8 = ((StringBuilder)localObject8).toString();
+      Object localObject9 = new StringBuilder();
+      ((StringBuilder)localObject9).append("VRA:");
+      ((StringBuilder)localObject9).append(paramBundle.getInt("VIDEO_BITRATE"));
+      ((StringBuilder)localObject9).append("Kbps");
+      localObject9 = ((StringBuilder)localObject9).toString();
+      Object localObject10 = new StringBuilder();
+      ((StringBuilder)localObject10).append("DRP:");
+      ((StringBuilder)localObject10).append(paramBundle.getInt("AUDIO_DROP"));
+      ((StringBuilder)localObject10).append("|");
+      ((StringBuilder)localObject10).append(paramBundle.getInt("VIDEO_DROP"));
+      localObject10 = ((StringBuilder)localObject10).toString();
+      Object localObject11 = new StringBuilder();
+      ((StringBuilder)localObject11).append("SVR:");
+      ((StringBuilder)localObject11).append(paramBundle.getString("SERVER_IP"));
+      localObject11 = ((StringBuilder)localObject11).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AUDIO:");
+      localStringBuilder.append(paramBundle.getString("AUDIO_PLAY_INFO"));
+      paramBundle = String.format("%-16s %-16s %-16s %-12s %-12s %-12s %-12s %-14s %-14s %-14s %-16s %-16s", new Object[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, localObject8, localObject9, localObject10, localObject11, localStringBuilder.toString() });
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onNetStatus:");
+      ((StringBuilder)localObject1).append(paramBundle);
+      QMLog.d("TXLivePusherJSAdapter", ((StringBuilder)localObject1).toString());
     }
   }
   
   public void onPushEvent(int paramInt, Bundle paramBundle)
   {
-    if ((paramInt == -1307) || (paramInt == -1313)) {
+    if ((paramInt != -1307) && (paramInt != -1313))
+    {
+      if (paramInt == 1003)
+      {
+        boolean bool = this.mFlashLight;
+        if (bool) {
+          this.mWXLivePusherProxy.turnOnFlashLight(bool);
+        }
+      }
+    }
+    else {
       operateLivePusher("stop", null);
     }
-    for (;;)
+    if (this.mNeedEvent)
     {
-      if ((this.mNeedEvent) && (this.mLivePushListener != null)) {
-        this.mLivePushListener.onPushEvent(paramInt, paramBundle);
-      }
-      paramBundle = paramBundle.getString("EVT_MSG");
-      QMLog.d("TXLivePusherJSAdapter", "onPushEvent: event = " + paramInt + " message = " + paramBundle);
-      return;
-      if ((paramInt == 1003) && (this.mFlashLight)) {
-        WXLivePusherReflect.turnOnFlashLight(this.mFlashLight, this.mLivePusher);
+      localObject = this.mLivePushListener;
+      if (localObject != null) {
+        ((TXLivePushListenerReflect.ITXLivePushListener)localObject).onPushEvent(paramInt, paramBundle);
       }
     }
+    paramBundle = paramBundle.getString("EVT_MSG");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onPushEvent: event = ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" message = ");
+    ((StringBuilder)localObject).append(paramBundle);
+    QMLog.d("TXLivePusherJSAdapter", ((StringBuilder)localObject).toString());
   }
   
   public TXJSAdapterError operateLivePusher(String paramString, JSONObject paramJSONObject)
   {
     if (paramString == null) {
-      paramString = new TXJSAdapterError(-1, "invalid params");
+      return new TXJSAdapterError(-1, "invalid params");
     }
-    Object localObject1;
-    do
-    {
-      return paramString;
-      if (!this.mInited) {
-        return new TXJSAdapterError(-3, "uninited livePusher");
-      }
+    if (!this.mInited) {
+      return new TXJSAdapterError(-3, "uninited livePusher");
+    }
+    if (paramJSONObject != null) {
+      localObject1 = paramJSONObject.toString();
+    } else {
       localObject1 = "";
-      if (paramJSONObject != null) {
-        localObject1 = paramJSONObject.toString();
-      }
-      QMLog.d("TXLivePusherJSAdapter", "operateLivePusher: type = " + paramString + " params = " + (String)localObject1);
-      Object localObject2 = baseLivePusherOperate(paramString, paramJSONObject);
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = cameraLivePusherOperate(paramString, paramJSONObject);
-      }
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = bgmLivePusherOperate(paramString, paramJSONObject);
-      }
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = otherLivePusherOperate(paramString, paramJSONObject);
-      }
-      paramString = (String)localObject1;
-    } while (localObject1 != null);
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("operateLivePusher: type = ");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(" params = ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QMLog.d("TXLivePusherJSAdapter", ((StringBuilder)localObject2).toString());
+    localObject2 = baseLivePusherOperate(paramString, paramJSONObject);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = cameraLivePusherOperate(paramString, paramJSONObject);
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = bgmLivePusherOperate(paramString, paramJSONObject);
+    }
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = otherLivePusherOperate(paramString, paramJSONObject);
+    }
+    if (localObject1 != null) {
+      return localObject1;
+    }
     return new TXJSAdapterError(-4, "invalid operate command");
   }
   
@@ -1187,30 +1269,32 @@ public class TXLivePusherJSAdapter
   public TXJSAdapterError setSurface(Surface paramSurface)
   {
     this.mSurface = paramSurface;
-    WXLivePusherReflect.setSurface(this.mSurface, this.mLivePusher);
+    this.mWXLivePusherProxy.setSurface(this.mSurface);
     return new TXJSAdapterError();
   }
   
   public TXJSAdapterError setSurfaceSize(int paramInt1, int paramInt2)
   {
-    WXLivePusherReflect.setSurfaceSize(paramInt1, paramInt2, this.mLivePusher);
+    this.mWXLivePusherProxy.setSurfaceSize(paramInt1, paramInt2);
     return new TXJSAdapterError();
   }
   
   public int startDumpAudioData(String paramString)
   {
-    return WXLivePusherReflect.startDumpAudioData(paramString, this.mLivePusher);
+    return this.mWXLivePusherProxy.startDumpAudioData(paramString);
   }
   
   public void stopDumpAudioData()
   {
-    WXLivePusherReflect.stopDumpAudioData(this.mLivePusher);
+    this.mWXLivePusherProxy.stopDumpAudioData();
   }
   
   public void takePhoto(boolean paramBoolean, TXLivePushListenerReflect.ITXSnapshotListener paramITXSnapshotListener)
   {
-    if ((this.mLivePusher != null) && (WXLivePusherReflect.isPushing(this.mLivePusher))) {
-      WXLivePusherReflect.snapshot(TXLivePushListenerReflect.newITXSnapshotListener(new TXLivePusherJSAdapter.2(this, paramITXSnapshotListener, paramBoolean)), this.mLivePusher);
+    if (this.mWXLivePusherProxy.isPushing())
+    {
+      IWXLivePusherProxy localIWXLivePusherProxy = this.mWXLivePusherProxy;
+      localIWXLivePusherProxy.snapshot(localIWXLivePusherProxy.newITXSnapshotListener(new TXLivePusherJSAdapter.1(this, paramITXSnapshotListener, paramBoolean)));
     }
   }
   
@@ -1219,13 +1303,47 @@ public class TXLivePusherJSAdapter
     if (!this.mInited) {
       return new TXJSAdapterError(-3, "uninited livePusher");
     }
-    WXLivePusherReflect.stopBGM(this.mLivePusher);
+    this.mWXLivePusherProxy.stopBGM();
     stopPreview();
     stopAudioRecord();
-    WXLivePusherReflect.stopPusher(this.mLivePusher);
-    WXLivePusherReflect.setPushListener(null, this.mLivePusher);
+    this.mWXLivePusherProxy.stopPusher();
+    this.mWXLivePusherProxy.setPushListener(null);
     this.mInited = false;
     return new TXJSAdapterError();
+  }
+  
+  public void updateCurHomeOrientation(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateCurHomeOrientation, orientation:");
+    localStringBuilder.append(paramString);
+    QMLog.d("TXLivePusherJSAdapter", localStringBuilder.toString());
+    adjustHomeOrientation(this.mLastAngle, paramString);
+  }
+  
+  public void updateHomeOrientation(IMiniAppContext paramIMiniAppContext)
+  {
+    try
+    {
+      int i = paramIMiniAppContext.getContext().getResources().getConfiguration().orientation;
+      if (i == 2)
+      {
+        updateCurHomeOrientation("horizontal");
+        return;
+      }
+      if (i == 1)
+      {
+        updateCurHomeOrientation("vertical");
+        return;
+      }
+    }
+    catch (Exception paramIMiniAppContext)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateCurHomeOrientation get an Exception:");
+      localStringBuilder.append(paramIMiniAppContext);
+      QMLog.e("TXLivePusherJSAdapter", localStringBuilder.toString());
+    }
   }
   
   public TXJSAdapterError updateLivePusher(JSONObject paramJSONObject)
@@ -1239,30 +1357,38 @@ public class TXLivePusherJSAdapter
       return new TXJSAdapterError(-3, "uninited livePusher");
     }
     parseAndApplyParams(paramJSONObject, false);
-    String str = paramJSONObject.getString("pushUrl", this.mPusherUrl);
-    if ((str != null) && (!str.isEmpty()) && (this.mPusherUrl != null) && (!this.mPusherUrl.equalsIgnoreCase(str)) && (WXLivePusherReflect.isPushing(this.mLivePusher)))
+    String str1 = paramJSONObject.getString("pushUrl", this.mPusherUrl);
+    if ((str1 != null) && (!str1.isEmpty()))
     {
-      QMLog.d("TXLivePusherJSAdapter", "updateLivePusher: stopPusher");
-      stopPreview();
-      stopAudioRecord();
-      WXLivePusherReflect.stopPusher(this.mLivePusher);
+      String str2 = this.mPusherUrl;
+      if ((str2 != null) && (!str2.equalsIgnoreCase(str1)) && (this.mWXLivePusherProxy.isPushing()))
+      {
+        QMLog.d("TXLivePusherJSAdapter", "updateLivePusher: stopPusher");
+        stopPreview();
+        stopAudioRecord();
+        this.mWXLivePusherProxy.stopPusher();
+      }
     }
-    this.mPusherUrl = str;
-    WXLivePusherReflect.setPusherUrl(this.mPusherUrl, this.mLivePusher);
+    this.mPusherUrl = str1;
+    this.mWXLivePusherProxy.setPusherUrl(this.mPusherUrl);
     this.mAutoPush = paramJSONObject.getBoolean("autopush", this.mAutoPush);
-    if ((this.mAutoPush) && (this.mPusherUrl != null) && (!this.mPusherUrl.isEmpty()) && (!WXLivePusherReflect.isPushing(this.mLivePusher)))
+    if (this.mAutoPush)
     {
-      QMLog.d("TXLivePusherJSAdapter", "updateLivePusher: startPusher");
-      startPreview(this.mEnableCamera);
-      startAudioRecord(this.mEnableMic);
-      WXLivePusherReflect.startPusher(this.mPusherUrl, this.mLivePusher);
+      paramJSONObject = this.mPusherUrl;
+      if ((paramJSONObject != null) && (!paramJSONObject.isEmpty()) && (!this.mWXLivePusherProxy.isPushing()))
+      {
+        QMLog.d("TXLivePusherJSAdapter", "updateLivePusher: startPusher");
+        startPreview(this.mEnableCamera);
+        startAudioRecord(this.mEnableMic);
+        this.mWXLivePusherProxy.startPusher(this.mPusherUrl);
+      }
     }
     return new TXJSAdapterError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.live.TXLivePusherJSAdapter
  * JD-Core Version:    0.7.0.1
  */

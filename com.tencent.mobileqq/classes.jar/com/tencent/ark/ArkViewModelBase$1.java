@@ -9,23 +9,24 @@ class ArkViewModelBase$1
   
   public void run()
   {
-    if ((this.this$0.mContainer == null) || (!this.this$0.mAttached))
+    if ((this.this$0.mContainer != null) && (this.this$0.mAttached))
     {
-      ArkViewModelBase.ENV.logE("ArkApp.ArkViewModelBase", String.format("initArkContainer.0.viewModel: %h", new Object[] { this.this$0 }));
+      this.this$0.mContainer.SetContainerCallback(this.this$0);
+      Logger.logI("ArkApp.ViewModel", String.format("initArkContainer.1.viewModel: %h", new Object[] { this.this$0 }));
+      Object localObject = this.this$0.mViewImpl;
+      if ((!this.this$0.mRectContainerF.isEmpty()) && (localObject != null))
+      {
+        this.this$0.mContainer.SetBorderType(((ArkViewImplement)localObject).mBorderType);
+        this.this$0.mContainer.SetBorderRadiusTop(((ArkViewImplement)localObject).mClipRadiusTop);
+        this.this$0.mContainer.SetBorderRadius(((ArkViewImplement)localObject).mClipRadius);
+        localObject = this.this$0;
+        ((ArkViewModelBase)localObject).SyncRect(((ArkViewModelBase)localObject).mRectContainerF.left, this.this$0.mRectContainerF.top, this.this$0.mRectContainerF.right, this.this$0.mRectContainerF.bottom);
+        return;
+      }
+      Logger.logE("ArkApp.ViewModel", String.format("initArkContainer.2.viewModel: %h", new Object[] { this }));
       return;
     }
-    this.this$0.mContainer.SetContainerCallback(this.this$0);
-    ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", String.format("initArkContainer.1.viewModel: %h", new Object[] { this.this$0 }));
-    ArkViewImplement localArkViewImplement = this.this$0.mViewImpl;
-    if ((this.this$0.mRectContainerF.isEmpty()) || (localArkViewImplement == null))
-    {
-      ArkViewModelBase.ENV.logE("ArkApp.ArkViewModelBase", String.format("initArkContainer.2.viewModel: %h", new Object[] { this }));
-      return;
-    }
-    this.this$0.mContainer.SetBorderType(localArkViewImplement.mBorderType);
-    this.this$0.mContainer.SetBorderRadiusTop(localArkViewImplement.mClipRadiusTop);
-    this.this$0.mContainer.SetBorderRadius(localArkViewImplement.mClipRadius);
-    this.this$0.SyncRect(this.this$0.mRectContainerF.left, this.this$0.mRectContainerF.top, this.this$0.mRectContainerF.right, this.this$0.mRectContainerF.bottom);
+    Logger.logE("ArkApp.ViewModel", String.format("initArkContainer.0.viewModel: %h", new Object[] { this.this$0 }));
   }
 }
 

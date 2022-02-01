@@ -15,7 +15,10 @@ class VRecyclerViewAdapter$2
     if (this.val$index != -1) {
       VRecyclerViewAdapter.access$100(this.this$0).remove(this.val$index);
     }
-    ViolaLogUtils.d("VRecyclerViewAdapter", "doNotifyItemDeleteWithAnim  startSpecialRemoveAnimation finish,index:" + this.val$index);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doNotifyItemDeleteWithAnim  startSpecialRemoveAnimation finish,index:");
+    localStringBuilder.append(this.val$index);
+    ViolaLogUtils.d("VRecyclerViewAdapter", localStringBuilder.toString());
     this.this$0.notifyItemRemoved(this.val$index);
     VRecyclerViewAdapter.access$000(this.this$0).onAnimFinish();
   }
@@ -27,7 +30,7 @@ class VRecyclerViewAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.adapter.VRecyclerViewAdapter.2
  * JD-Core Version:    0.7.0.1
  */

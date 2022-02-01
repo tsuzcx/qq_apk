@@ -34,13 +34,13 @@ public final class RecentMediaListView$RecentMediaListHolder
   
   public RecentMediaListView$RecentMediaListHolder(View paramView)
   {
-    Object localObject2 = ((View)localObject1).findViewById(R.id.ao);
+    Object localObject2 = ((View)localObject1).findViewById(R.id.Z);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.iv_cover)");
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject2);
-    localObject2 = ((View)localObject1).findViewById(R.id.G);
+    localObject2 = ((View)localObject1).findViewById(R.id.t);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.dirNameView)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-    Object localObject1 = ((View)localObject1).findViewById(R.id.aj);
+    Object localObject1 = ((View)localObject1).findViewById(R.id.S);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "itemView.findViewById(R.id.itemNumView)");
     this.b = ((TextView)localObject1);
     localObject1 = ImageLoader.a;
@@ -57,7 +57,7 @@ public final class RecentMediaListView$RecentMediaListHolder
     localObject1 = ((ImageLoader)localObject1).a(i, ((DisplayUtils)localObject2).a(50.0F, localContext));
     paramView = paramView.getContext();
     Intrinsics.checkExpressionValueIsNotNull(paramView, "context");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader = ((ImageLoader)localObject1).a((Drawable)new ColorDrawable(paramView.getResources().getColor(R.color.d))).a(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader = ((ImageLoader)localObject1).a((Drawable)new ColorDrawable(paramView.getResources().getColor(R.color.i))).a(this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
   @NotNull
@@ -80,7 +80,7 @@ public final class RecentMediaListView$RecentMediaListHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.RecentMediaListView.RecentMediaListHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.mobileqq.nearby;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -13,7 +13,7 @@ import cooperation.troop.NearbyVideoChatProxyActivity;
 import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
 
 class NearbyJsInterface$4$1
-  implements TroopMemberApiClient.Callback
+  implements ITroopMemberApiClientApi.Callback
 {
   NearbyJsInterface$4$1(NearbyJsInterface.4 param4, String paramString) {}
   
@@ -22,8 +22,8 @@ class NearbyJsInterface$4$1
     if (paramBundle.getBoolean("isOtherTypeChatting", false))
     {
       paramBundle = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface$4.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), 230);
-      paramBundle.setMessage(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface$4.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a().getString(2131695877));
-      paramBundle.setNegativeButton(HardCodeUtil.a(2131707206), new NearbyJsInterface.4.1.1(this));
+      paramBundle.setMessage(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface$4.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a().getString(2131695889));
+      paramBundle.setNegativeButton(HardCodeUtil.a(2131707231), new NearbyJsInterface.4.1.1(this));
       paramBundle.show();
       return;
     }
@@ -37,7 +37,7 @@ class NearbyJsInterface$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyJsInterface.4.1
  * JD-Core Version:    0.7.0.1
  */

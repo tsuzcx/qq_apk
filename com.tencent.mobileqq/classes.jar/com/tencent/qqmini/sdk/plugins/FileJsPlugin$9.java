@@ -22,53 +22,71 @@ class FileJsPlugin$9
       FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$filePath);
       return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "invalid path");
     }
+    Object localObject2;
     if (!FileJsPlugin.access$1200(this.this$0, this.val$encoding))
     {
       FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$filePath);
-      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "invalid encoding " + this.val$encoding);
+      localObject1 = this.this$0;
+      localObject2 = this.val$req;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("invalid encoding ");
+      ((StringBuilder)localObject3).append(this.val$encoding);
+      return FileJsPlugin.access$1000((FileJsPlugin)localObject1, (RequestEvent)localObject2, null, ((StringBuilder)localObject3).toString());
     }
-    String str = ((MiniAppFileManager)FileJsPlugin.access$4200(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$filePath);
-    if ((TextUtils.isEmpty(str)) || (!new File(str).exists()))
-    {
-      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, str);
-      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$filePath);
-    }
-    for (;;)
-    {
+    Object localObject1 = ((MiniAppFileManager)FileJsPlugin.access$4200(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$filePath);
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (new File((String)localObject1).exists())) {
       try
       {
-        Object localObject = FileJsPlugin.access$4300(this.this$0, this.val$encoding, str);
-        if (localObject == null)
+        localObject2 = FileJsPlugin.access$4300(this.this$0, this.val$encoding, (String)localObject1);
+        if (localObject2 == null)
         {
-          QMLog.e("FileJsPlugin", "readFile failed! path:" + str);
-          FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, str);
-          return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$filePath);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("readFile failed! path:");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QMLog.e("FileJsPlugin", ((StringBuilder)localObject2).toString());
+          FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, (String)localObject1);
+          localObject2 = this.this$0;
+          localObject3 = this.val$req;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("no such file or directory, open ");
+          localStringBuilder.append(this.val$filePath);
+          return FileJsPlugin.access$1000((FileJsPlugin)localObject2, (RequestEvent)localObject3, null, localStringBuilder.toString());
         }
-        JSONObject localJSONObject = new JSONObject();
-        if ((FileJsPlugin.access$4400(this.this$0)) && ((localObject instanceof byte[])))
-        {
-          NativeBuffer.packNativeBuffer(this.val$req.jsService, (byte[])localObject, NativeBuffer.TYPE_BUFFER_NATIVE, "data", localJSONObject);
-          FileJsPlugin.access$900(this.this$0, this.val$req.event, true, this.val$startMS, l, str);
-          return FileJsPlugin.access$1100(this.this$0, this.val$req, localJSONObject);
-        }
-        if ((!FileJsPlugin.access$4500(this.this$0)) && ((localObject instanceof byte[]))) {
-          NativeBuffer.packNativeBuffer(this.val$req.jsService, (byte[])localObject, NativeBuffer.TYPE_BUFFER_BASE64, "data", localJSONObject);
+        localObject3 = new JSONObject();
+        boolean bool = FileJsPlugin.access$4400(this.this$0);
+        if ((bool) && ((localObject2 instanceof byte[]))) {
+          NativeBuffer.packNativeBuffer(this.val$req.jsService, (byte[])localObject2, NativeBuffer.TYPE_BUFFER_NATIVE, "data", (JSONObject)localObject3);
+        } else if ((!FileJsPlugin.access$4500(this.this$0)) && ((localObject2 instanceof byte[]))) {
+          NativeBuffer.packNativeBuffer(this.val$req.jsService, (byte[])localObject2, NativeBuffer.TYPE_BUFFER_BASE64, "data", (JSONObject)localObject3);
         } else {
-          localJSONObject.put("data", localThrowable);
+          ((JSONObject)localObject3).put("data", localObject2);
         }
+        FileJsPlugin.access$900(this.this$0, this.val$req.event, true, this.val$startMS, l, (String)localObject1);
+        localObject2 = FileJsPlugin.access$1100(this.this$0, this.val$req, (JSONObject)localObject3);
+        return localObject2;
       }
       catch (Throwable localThrowable)
       {
-        QMLog.e("FileJsPlugin", "readFile failed! ," + localThrowable.getMessage());
-        FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, str);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("readFile failed! ,");
+        ((StringBuilder)localObject3).append(localThrowable.getMessage());
+        QMLog.e("FileJsPlugin", ((StringBuilder)localObject3).toString());
+        FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, (String)localObject1);
         return FileJsPlugin.access$1000(this.this$0, this.val$req, null, localThrowable.getMessage());
       }
     }
+    FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, (String)localObject1);
+    localObject1 = this.this$0;
+    RequestEvent localRequestEvent = this.val$req;
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("no such file or directory, open ");
+    ((StringBuilder)localObject3).append(this.val$filePath);
+    return FileJsPlugin.access$1000((FileJsPlugin)localObject1, localRequestEvent, null, ((StringBuilder)localObject3).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FileJsPlugin.9
  * JD-Core Version:    0.7.0.1
  */

@@ -20,18 +20,15 @@ class MultiIncomingCallUICtr$5
       {
         this.this$0.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a();
         this.this$0.a();
+        return;
       }
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
     }
-    else
-    {
-      return;
-    }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallUICtr.5
  * JD-Core Version:    0.7.0.1
  */

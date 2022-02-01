@@ -14,20 +14,22 @@ class UnlimitedBladeWorks$3
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
     paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
-    if (UnlimitedBladeWorks.a(this.a)) {
-      paramValueAnimator.leftMargin = 0;
-    }
-    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
+    if (UnlimitedBladeWorks.a(this.a))
     {
-      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
-      return;
-      paramValueAnimator.leftMargin = i;
+      paramValueAnimator.leftMargin = 0;
+      paramValueAnimator.rightMargin = i;
     }
+    else
+    {
+      paramValueAnimator.leftMargin = i;
+      paramValueAnimator.rightMargin = 0;
+    }
+    UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.3
  * JD-Core Version:    0.7.0.1
  */

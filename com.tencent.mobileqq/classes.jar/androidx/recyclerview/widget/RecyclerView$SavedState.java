@@ -16,13 +16,10 @@ public class RecyclerView$SavedState
   RecyclerView$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
   {
     super(paramParcel, paramClassLoader);
-    if (paramClassLoader != null) {}
-    for (;;)
-    {
-      this.mLayoutState = paramParcel.readParcelable(paramClassLoader);
-      return;
+    if (paramClassLoader == null) {
       paramClassLoader = RecyclerView.LayoutManager.class.getClassLoader();
     }
+    this.mLayoutState = paramParcel.readParcelable(paramClassLoader);
   }
   
   RecyclerView$SavedState(Parcelable paramParcelable)
@@ -43,7 +40,7 @@ public class RecyclerView$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.SavedState
  * JD-Core Version:    0.7.0.1
  */

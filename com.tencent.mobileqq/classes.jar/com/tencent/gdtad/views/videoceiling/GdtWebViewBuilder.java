@@ -12,12 +12,13 @@ import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.mobileqq.webview.build.IWebViewBuilder;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.util.IWebViewBuilder;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class GdtWebViewBuilder
   extends AbsWebView
@@ -48,35 +49,35 @@ public class GdtWebViewBuilder
   
   public boolean a(WebView paramWebView, String paramString)
   {
-    QLog.i("AbsWebView", 1, "qZoneShouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    Object localObject;
-    do
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("qZoneShouldOverrideUrlLoading:");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("AbsWebView", 1, ((StringBuilder)localObject).toString());
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
       return true;
-      localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
+    }
+    localObject = ((CustomWebView)paramWebView).getPluginEngine();
+    if ((!paramString.startsWith("file://")) && (!paramString.startsWith("data:")) && (!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
+    {
       paramString = Uri.parse(paramString);
       localObject = paramString.getScheme();
-    } while (!AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
-    paramWebView = new Intent("android.intent.action.VIEW", paramString);
-    paramWebView.addFlags(268435456);
-    try
-    {
-      this.mContext.startActivity(paramWebView);
+      if (AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
+      {
+        paramWebView = new Intent("android.intent.action.VIEW", paramString);
+        paramWebView.addFlags(268435456);
+        try
+        {
+          this.mContext.startActivity(paramWebView);
+          return true;
+        }
+        catch (Exception paramWebView)
+        {
+          QLog.e("AbsWebView", 1, "startActivity", paramWebView);
+        }
+      }
       return true;
     }
-    catch (Exception paramWebView)
-    {
-      QLog.e("AbsWebView", 1, "startActivity", paramWebView);
-    }
-    return true;
+    return (localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null));
   }
   
   public void b()
@@ -99,9 +100,9 @@ public class GdtWebViewBuilder
   
   public void buildTitleBar() {}
   
-  public final void buildWebView(AppInterface paramAppInterface)
+  public final void buildWebView(AppRuntime paramAppRuntime)
   {
-    super.buildBaseWebView(paramAppInterface);
+    super.buildBaseWebView(paramAppRuntime);
   }
   
   public void c()
@@ -133,7 +134,7 @@ public class GdtWebViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtWebViewBuilder
  * JD-Core Version:    0.7.0.1
  */

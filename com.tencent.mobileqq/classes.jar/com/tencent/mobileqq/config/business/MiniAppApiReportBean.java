@@ -16,36 +16,31 @@ public class MiniAppApiReportBean
   {
     MiniAppApiReportBean localMiniAppApiReportBean = new MiniAppApiReportBean();
     int i = 0;
-    Object localObject;
-    for (;;)
+    try
     {
-      localObject = localMiniAppApiReportBean;
-      try
+      while (i < paramArrayOfQConfItem.length)
       {
-        if (i < paramArrayOfQConfItem.length)
+        localMiniAppApiReportBean.a.clear();
+        Object localObject = paramArrayOfQConfItem[i].a;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          localMiniAppApiReportBean.a.clear();
-          localObject = paramArrayOfQConfItem[i].a;
-          if (!TextUtils.isEmpty((CharSequence)localObject))
+          localObject = new JSONArray((String)localObject);
+          int j = 0;
+          while (j < ((JSONArray)localObject).length())
           {
-            localObject = new JSONArray((String)localObject);
-            int j = 0;
-            while (j < ((JSONArray)localObject).length())
-            {
-              localMiniAppApiReportBean.a.add(((JSONArray)localObject).getString(j));
-              j += 1;
-            }
+            localMiniAppApiReportBean.a.add(((JSONArray)localObject).getString(j));
+            j += 1;
           }
-          i += 1;
         }
+        i += 1;
       }
-      catch (Throwable paramArrayOfQConfItem)
-      {
-        QLog.d("MiniAppApiReportProcessor", 2, "parse, failed!", paramArrayOfQConfItem);
-        localObject = null;
-      }
+      return localMiniAppApiReportBean;
     }
-    return localObject;
+    catch (Throwable paramArrayOfQConfItem)
+    {
+      QLog.d("MiniAppApiReportProcessor", 2, "parse, failed!", paramArrayOfQConfItem);
+    }
+    return null;
   }
   
   public List<String> a()
@@ -55,13 +50,15 @@ public class MiniAppApiReportBean
   
   public String toString()
   {
-    new StringBuilder().append("getApiReportList:").append(TextUtils.join(",", a()));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getApiReportList:");
+    localStringBuilder.append(TextUtils.join(",", a()));
     return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MiniAppApiReportBean
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,8 @@ import com.tencent.ad.tangram.AdError;
 public abstract interface AdHalfScreenAdapter
 {
   public abstract AdError show(AdHalfScreenAdapter.Params paramParams);
+  
+  public abstract AdError showWithoutAd(AdHalfScreenAdapter.Params paramParams);
 }
 
 

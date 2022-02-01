@@ -31,13 +31,13 @@ public class NewLookupFilter
     this.intensity = paramFloat;
   }
   
-  public void afterDraw(TAVTextureInfo paramTAVTextureInfo)
+  protected void afterDraw(TAVTextureInfo paramTAVTextureInfo)
   {
     GLES20.glActiveTexture(33985);
     GLES20.glBindTexture(3553, 0);
   }
   
-  public void beforeDraw(TAVTextureInfo paramTAVTextureInfo)
+  protected void beforeDraw(TAVTextureInfo paramTAVTextureInfo)
   {
     GLES20.glActiveTexture(33985);
     GLES20.glBindTexture(3553, this.lookupTextureID);
@@ -58,16 +58,18 @@ public class NewLookupFilter
     if (paramObject.getClass() != getClass()) {
       return false;
     }
-    if (this.intensity != ((NewLookupFilter)paramObject).intensity) {
+    float f = this.intensity;
+    NewLookupFilter localNewLookupFilter = (NewLookupFilter)paramObject;
+    if (f != localNewLookupFilter.intensity) {
       return false;
     }
-    if (this.lookupBitmap != ((NewLookupFilter)paramObject).lookupBitmap) {
+    if (this.lookupBitmap != localNewLookupFilter.lookupBitmap) {
       return false;
     }
     return super.equals(paramObject);
   }
   
-  public String getFragmentShaderCode(TAVTextureInfo paramTAVTextureInfo)
+  protected String getFragmentShaderCode(TAVTextureInfo paramTAVTextureInfo)
   {
     if (paramTAVTextureInfo.textureType == 36197) {
       return " #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES sTexture;\nprecision mediump float;\nuniform sampler2D sLookupTexture; // lookup texture\nvarying highp vec2 vTextureCoord;\n\nuniform lowp float intensity;\n\nvoid main()\n{\n    highp vec4 textureColor = texture2D(sTexture, vTextureCoord);\n    textureColor = clamp(textureColor, 0.0, 1.0);\n    highp float blueColor = textureColor.b * 63.0;\n    \n    highp vec2 quad1;\n    quad1.y = floor(floor(blueColor) / 8.0);\n    quad1.x = floor(blueColor) - (quad1.y * 8.0);\n    \n    highp vec2 quad2;\n    quad2.y = floor(ceil(blueColor) / 8.0);\n    quad2.x = ceil(blueColor) - (quad2.y * 8.0);\n    \n    highp float redPos = 0.125 * textureColor.r;\n    highp float greenPos = 0.125 * textureColor.g;\n    redPos = clamp(redPos, 2.0/512.0, 0.125- 2.0/512.0);\n    greenPos = clamp(greenPos, 2.0/512.0, 0.125- 2.0/512.0);\n    highp vec2 texPos1;\n    texPos1.x = (quad1.x * 0.125) + redPos;\n    texPos1.y = (quad1.y * 0.125)  + greenPos;\n    \n    highp vec2 texPos2;\n    texPos2.x = (quad2.x * 0.125)  + redPos;\n    texPos2.y = (quad2.y * 0.125) + greenPos;\n    \n    lowp vec4 newColor1 = texture2D(sLookupTexture, texPos1);\n    lowp vec4 newColor2 = texture2D(sLookupTexture, texPos2);\n    \n    lowp vec4 newColor = mix(newColor1, newColor2, fract(blueColor));\n    newColor = mix(textureColor, vec4(newColor.rgb, textureColor.w), intensity);\n    gl_FragColor = newColor;\n}";
@@ -75,12 +77,12 @@ public class NewLookupFilter
     return "uniform sampler2D  sTexture;\nprecision mediump float;\nuniform sampler2D sLookupTexture; // lookup texture\nvarying highp vec2 vTextureCoord;\n\nuniform lowp float intensity;\n\nvoid main()\n{\n    highp vec4 textureColor = texture2D(sTexture, vTextureCoord);\n    textureColor = clamp(textureColor, 0.0, 1.0);\n    highp float blueColor = textureColor.b * 63.0;\n    \n    highp vec2 quad1;\n    quad1.y = floor(floor(blueColor) / 8.0);\n    quad1.x = floor(blueColor) - (quad1.y * 8.0);\n    \n    highp vec2 quad2;\n    quad2.y = floor(ceil(blueColor) / 8.0);\n    quad2.x = ceil(blueColor) - (quad2.y * 8.0);\n    \n    highp float redPos = 0.125 * textureColor.r;\n    highp float greenPos = 0.125 * textureColor.g;\n    redPos = clamp(redPos, 2.0/512.0, 0.125- 2.0/512.0);\n    greenPos = clamp(greenPos, 2.0/512.0, 0.125- 2.0/512.0);\n    highp vec2 texPos1;\n    texPos1.x = (quad1.x * 0.125) + redPos;\n    texPos1.y = (quad1.y * 0.125)  + greenPos;\n    \n    highp vec2 texPos2;\n    texPos2.x = (quad2.x * 0.125)  + redPos;\n    texPos2.y = (quad2.y * 0.125) + greenPos;\n    \n    lowp vec4 newColor1 = texture2D(sLookupTexture, texPos1);\n    lowp vec4 newColor2 = texture2D(sLookupTexture, texPos2);\n    \n    lowp vec4 newColor = mix(newColor1, newColor2, fract(blueColor));\n    newColor = mix(textureColor, vec4(newColor.rgb, textureColor.w), intensity);\n    gl_FragColor = newColor;\n}";
   }
   
-  public TAVTextureInfo getOutputTextureInfo(TAVTextureInfo paramTAVTextureInfo)
+  protected TAVTextureInfo getOutputTextureInfo(TAVTextureInfo paramTAVTextureInfo)
   {
     return super.getOutputTextureInfo(paramTAVTextureInfo);
   }
   
-  public void initShader(TAVTextureInfo paramTAVTextureInfo)
+  protected void initShader(TAVTextureInfo paramTAVTextureInfo)
   {
     super.initShader(paramTAVTextureInfo);
     this.sLookupTextureHandle = GLES20.glGetUniformLocation(this.program, "sLookupTexture");
@@ -108,9 +110,10 @@ public class NewLookupFilter
   
   public void release()
   {
-    if (this.lookupTextureID != -1)
+    int i = this.lookupTextureID;
+    if (i != -1)
     {
-      GLES20.glDeleteTextures(1, new int[] { this.lookupTextureID }, 0);
+      GLES20.glDeleteTextures(1, new int[] { i }, 0);
       this.lookupTextureID = -1;
     }
     super.release();

@@ -34,15 +34,16 @@ final class CloudAVEngineImpl$AVEngineCache$1VisitorForRebuild
   {
     try
     {
-      Object localObject1;
+      Object localObject1 = this.jdField_a_of_type_OrgXmlpullV1XmlSerializer;
       Object localObject2;
-      if (this.jdField_a_of_type_OrgXmlpullV1XmlSerializer == null)
+      Object localObject3;
+      if (localObject1 == null)
       {
         localObject1 = new IvParameterSpec(CloudAVEngineImpl.AVEngineCache.a());
         localObject2 = new SecretKeySpec(CloudAVEngineImpl.AVEngineCache.b(), "AES");
-        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
-        localCipher.init(1, (Key)localObject2, (AlgorithmParameterSpec)localObject1);
-        this.jdField_a_of_type_JavaIoOutputStream = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_JavaIoFile)), localCipher);
+        localObject3 = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+        ((Cipher)localObject3).init(1, (Key)localObject2, (AlgorithmParameterSpec)localObject1);
+        this.jdField_a_of_type_JavaIoOutputStream = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_JavaIoFile)), (Cipher)localObject3);
         this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = Xml.newSerializer();
         this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(this.jdField_a_of_type_JavaIoOutputStream, "UTF-8");
         this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
@@ -55,32 +56,33 @@ final class CloudAVEngineImpl$AVEngineCache$1VisitorForRebuild
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (Pair)((Iterator)localObject1).next();
-          if (QLog.isColorLevel()) {
-            QLog.d("QSec.AVEngine", 2, "Add new cache entry: " + ((ICloudAVEngine.ResultBundle)((Pair)localObject2).second).toString());
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("Add new cache entry: ");
+            ((StringBuilder)localObject3).append(((ICloudAVEngine.ResultBundle)((Pair)localObject2).second).toString());
+            QLog.d("QSec.AVEngine", 2, ((StringBuilder)localObject3).toString());
           }
           CloudAVEngineImpl.AVEngineCache.a(this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache, (String)((Pair)localObject2).first, (ICloudAVEngine.ResultBundle)((Pair)localObject2).second, this.jdField_a_of_type_OrgXmlpullV1XmlSerializer);
         }
+        CloudAVEngineImpl.AVEngineCache.a(this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache).clear();
       }
-      return;
+      this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(null, "AVCloudCache");
+      this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
+      CloudAVEngineImpl.AVEngineCache.a(this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache).delete();
     }
     catch (Exception localException1)
     {
       localException1.printStackTrace();
-      for (;;)
-      {
-        if (this.jdField_a_of_type_JavaIoOutputStream != null) {}
-        try
-        {
-          this.jdField_a_of_type_JavaIoOutputStream.close();
-          return;
-        }
-        catch (Exception localException2) {}
-        CloudAVEngineImpl.AVEngineCache.a(this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache).clear();
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(null, "AVCloudCache");
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
-        CloudAVEngineImpl.AVEngineCache.a(this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache).delete();
-      }
     }
+    OutputStream localOutputStream = this.jdField_a_of_type_JavaIoOutputStream;
+    if (localOutputStream != null) {}
+    try
+    {
+      localOutputStream.close();
+      return;
+    }
+    catch (Exception localException2) {}
   }
   
   public boolean a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle)
@@ -113,7 +115,7 @@ final class CloudAVEngineImpl$AVEngineCache$1VisitorForRebuild
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.AVEngineCache.1VisitorForRebuild
  * JD-Core Version:    0.7.0.1
  */

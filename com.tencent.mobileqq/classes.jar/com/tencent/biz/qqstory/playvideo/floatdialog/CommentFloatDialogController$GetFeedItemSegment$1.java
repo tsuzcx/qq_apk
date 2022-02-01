@@ -30,41 +30,40 @@ class CommentFloatDialogController$GetFeedItemSegment$1
       SLog.d("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem cancel on net respond");
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramGetFriendStoryFeedInfoResp == null))
+    if ((!paramErrorMessage.isFail()) && (paramGetFriendStoryFeedInfoResp != null))
     {
-      SLog.a("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
-      CommentFloatDialogController.GetFeedItemSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController$GetFeedItemSegment, paramErrorMessage);
-      return;
-    }
-    paramBatchGetFriendStoryFeedInfoRequest = (FeedManager)SuperManager.a(11);
-    if (paramGetFriendStoryFeedInfoResp.a.size() < 1)
-    {
-      SLog.e("Q.qqstory.player.CommentFloatDialogController", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
-      paramBatchGetFriendStoryFeedInfoRequest.a(CommentFloatDialogController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController$GetFeedItemSegment.a));
-      paramBatchGetFriendStoryFeedInfoRequest = new ErrorMessage(2222, "no feed data back.");
-      CommentFloatDialogController.GetFeedItemSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController$GetFeedItemSegment, paramBatchGetFriendStoryFeedInfoRequest);
-      return;
-    }
-    paramGetFriendStoryFeedInfoResp = (CommentLikeHomeFeed)paramGetFriendStoryFeedInfoResp.a.get(0);
-    if ((paramGetFriendStoryFeedInfoResp instanceof VideoListHomeFeed))
-    {
-      paramErrorMessage = (VideoListHomeFeed)paramGetFriendStoryFeedInfoResp;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a = paramGetFriendStoryFeedInfoResp.a();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(paramBatchGetFriendStoryFeedInfoRequest.a(CommentFloatDialogController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController$GetFeedItemSegment.a), paramErrorMessage.a(), true), true);
-      ((FeedVideoManager)SuperManager.a(12)).a(2, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().mVideoSeq, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().mVideoNextCookie, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().mIsVideoEnd, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().mVideoPullType, true);
-    }
-    for (;;)
-    {
+      paramBatchGetFriendStoryFeedInfoRequest = (FeedManager)SuperManager.a(11);
+      if (paramGetFriendStoryFeedInfoResp.a.size() < 1)
+      {
+        SLog.e("Q.qqstory.player.CommentFloatDialogController", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
+        paramBatchGetFriendStoryFeedInfoRequest.a(CommentFloatDialogController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController$GetFeedItemSegment.a));
+        paramBatchGetFriendStoryFeedInfoRequest = new ErrorMessage(2222, "no feed data back.");
+        CommentFloatDialogController.GetFeedItemSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController$GetFeedItemSegment, paramBatchGetFriendStoryFeedInfoRequest);
+        return;
+      }
+      paramGetFriendStoryFeedInfoResp = (CommentLikeHomeFeed)paramGetFriendStoryFeedInfoResp.a.get(0);
+      if ((paramGetFriendStoryFeedInfoResp instanceof VideoListHomeFeed))
+      {
+        paramErrorMessage = (VideoListHomeFeed)paramGetFriendStoryFeedInfoResp;
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a = paramGetFriendStoryFeedInfoResp.a();
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(paramBatchGetFriendStoryFeedInfoRequest.a(CommentFloatDialogController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController$GetFeedItemSegment.a), paramErrorMessage.a(), true), true);
+        ((FeedVideoManager)SuperManager.a(12)).a(2, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().mVideoSeq, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().mVideoNextCookie, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().mIsVideoEnd, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().mVideoPullType, true);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a = paramGetFriendStoryFeedInfoResp.a();
+      }
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a = ((CommentLikeFeedItem)paramBatchGetFriendStoryFeedInfoRequest.a(CommentFloatDialogController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController$GetFeedItemSegment.a).a));
       CommentFloatDialogController.GetFeedItemSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController$GetFeedItemSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem);
       return;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a = paramGetFriendStoryFeedInfoResp.a();
     }
+    SLog.a("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
+    CommentFloatDialogController.GetFeedItemSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController$GetFeedItemSegment, paramErrorMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogController.GetFeedItemSegment.1
  * JD-Core Version:    0.7.0.1
  */

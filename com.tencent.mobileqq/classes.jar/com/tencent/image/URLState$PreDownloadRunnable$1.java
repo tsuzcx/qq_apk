@@ -1,6 +1,7 @@
 package com.tencent.image;
 
 import com.tencent.image.api.ILog;
+import com.tencent.image.api.IThreadListener;
 import com.tencent.image.api.IThreadManager;
 import com.tencent.image.api.URLDrawableDepWrap;
 import java.net.URL;
@@ -12,9 +13,14 @@ class URLState$PreDownloadRunnable$1
   
   public void run()
   {
-    URLState.PreDownloadRunnable localPreDownloadRunnable = null;
-    if (URLDrawable.depImp.mLog.isColorLevel()) {
-      URLDrawable.depImp.mLog.i("URLDrawable_", 2, "PreDwonloadAsyncTask doInBackground." + URLState.PreDownloadRunnable.access$200(this.this$1));
+    Object localObject2;
+    if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      localObject1 = URLDrawable.depImp.mLog;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("PreDwonloadAsyncTask doInBackground.");
+      ((StringBuilder)localObject2).append(URLState.PreDownloadRunnable.access$200(this.this$1));
+      ((ILog)localObject1).i("URLDrawable_", 2, ((StringBuilder)localObject2).toString());
     }
     if (this.this$1.mDownloadRunnable.isCancelled()) {
       return;
@@ -24,21 +30,24 @@ class URLState$PreDownloadRunnable$1
     if (l - URLState.slastCheckTime > 300000L) {
       URLState.access$300(this.this$1.this$0);
     }
-    if (this.this$1.hasFile)
+    boolean bool = this.this$1.hasFile;
+    Object localObject1 = null;
+    if (bool)
     {
       this.this$1.mDownloadRunnable.flag = 0;
       URLDrawable.depImp.mThreadManager.executeOnFileThreadExcutor(this.this$1.mDownloadRunnable, null, false);
     }
-    for (;;)
+    else
     {
-      this.this$1.this$0.onLoadStart();
-      if (!URLDrawable.depImp.mLog.isColorLevel()) {
-        break;
-      }
-      URLDrawable.depImp.mLog.i("URLDrawable_", 2, "PreDwonloadAsyncTask onLoadStart." + URLState.PreDownloadRunnable.access$200(this.this$1));
-      return;
-      if (URLDrawable.depImp.mLog.isColorLevel()) {
-        URLDrawable.depImp.mLog.d("URLDrawable_", 2, "schedule load image " + this.this$1.this$0.mUrlStr + ",useThreadPool=" + this.this$1.this$0.mUseThreadPool);
+      if (URLDrawable.depImp.mLog.isColorLevel())
+      {
+        localObject2 = URLDrawable.depImp.mLog;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("schedule load image ");
+        localStringBuilder.append(this.this$1.this$0.mUrlStr);
+        localStringBuilder.append(",useThreadPool=");
+        localStringBuilder.append(this.this$1.this$0.mUseThreadPool);
+        ((ILog)localObject2).d("URLDrawable_", 2, localStringBuilder.toString());
       }
       this.this$1.mDownloadRunnable.flag = 1;
       if (this.this$1.mDownloadRunnable.mQueue != null)
@@ -48,16 +57,25 @@ class URLState$PreDownloadRunnable$1
       else
       {
         if (URLState.PreDownloadRunnable.access$200(this.this$1).getProtocol().equals("chatthumb")) {
-          localPreDownloadRunnable = this.this$1;
+          localObject1 = this.this$1;
         }
-        URLDrawable.depImp.mThreadManager.executeOnNetThreadExcutor(this.this$1.mDownloadRunnable, localPreDownloadRunnable, true);
+        URLDrawable.depImp.mThreadManager.executeOnNetThreadExcutor(this.this$1.mDownloadRunnable, (IThreadListener)localObject1, true);
       }
+    }
+    this.this$1.this$0.onLoadStart();
+    if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      localObject1 = URLDrawable.depImp.mLog;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("PreDwonloadAsyncTask onLoadStart.");
+      ((StringBuilder)localObject2).append(URLState.PreDownloadRunnable.access$200(this.this$1));
+      ((ILog)localObject1).i("URLDrawable_", 2, ((StringBuilder)localObject2).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.URLState.PreDownloadRunnable.1
  * JD-Core Version:    0.7.0.1
  */

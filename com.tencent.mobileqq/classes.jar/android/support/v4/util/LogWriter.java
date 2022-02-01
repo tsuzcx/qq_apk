@@ -21,7 +21,8 @@ public class LogWriter
       if (QLog.isDevelopLevel()) {
         QLog.d(this.mTag, 4, this.mBuilder.toString());
       }
-      this.mBuilder.delete(0, this.mBuilder.length());
+      StringBuilder localStringBuilder = this.mBuilder;
+      localStringBuilder.delete(0, localStringBuilder.length());
     }
   }
   
@@ -38,18 +39,15 @@ public class LogWriter
   public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
     int i = 0;
-    if (i < paramInt2)
+    while (i < paramInt2)
     {
       char c = paramArrayOfChar[(paramInt1 + i)];
       if (c == '\n') {
         flushBuilder();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         this.mBuilder.append(c);
       }
+      i += 1;
     }
   }
 }

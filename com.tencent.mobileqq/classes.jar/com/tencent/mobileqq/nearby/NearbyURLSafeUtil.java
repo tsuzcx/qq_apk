@@ -11,46 +11,62 @@ public class NearbyURLSafeUtil
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    String str = "*S1*" + Baze64.a(paramString.getBytes(), 11);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("NearbyURLSafeUtil", 4, "encode:" + paramString + " to:" + str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("*S1*");
+    ((StringBuilder)localObject).append(Baze64.a(paramString.getBytes(), 11));
+    localObject = ((StringBuilder)localObject).toString();
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("encode:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" to:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("NearbyURLSafeUtil", 4, localStringBuilder.toString());
     }
-    return str;
+    return localObject;
   }
   
   public static boolean a(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("isBase64 src should not be null");
+    if (paramString != null) {
+      return paramString.startsWith("*S1*");
     }
-    return paramString.startsWith("*S1*");
+    throw new NullPointerException("isBase64 src should not be null");
   }
   
   public static String b(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("decode src should not be null");
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("NearbyURLSafeUtil", 4, "decode src:" + paramString);
-    }
-    String str = paramString;
-    if (a(paramString))
+    if (paramString != null)
     {
-      paramString = new String(Baze64.a(paramString.substring("*S1*".length()), 11));
-      str = paramString;
+      StringBuilder localStringBuilder;
       if (QLog.isDevelopLevel())
       {
-        QLog.i("NearbyURLSafeUtil", 4, "decode result:" + paramString);
-        str = paramString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("decode src:");
+        localStringBuilder.append(paramString);
+        QLog.i("NearbyURLSafeUtil", 4, localStringBuilder.toString());
       }
+      if (a(paramString))
+      {
+        paramString = new String(Baze64.a(paramString.substring(4), 11));
+        if (QLog.isDevelopLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("decode result:");
+          localStringBuilder.append(paramString);
+          QLog.i("NearbyURLSafeUtil", 4, localStringBuilder.toString());
+        }
+        return paramString;
+      }
+      return paramString;
     }
-    return str;
+    throw new NullPointerException("decode src should not be null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyURLSafeUtil
  * JD-Core Version:    0.7.0.1
  */

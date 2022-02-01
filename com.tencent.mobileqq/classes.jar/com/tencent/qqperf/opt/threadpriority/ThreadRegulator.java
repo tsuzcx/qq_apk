@@ -39,21 +39,23 @@ public class ThreadRegulator
   
   public void a(int paramInt)
   {
-    if (!ThreadOptimizer.a().a()) {}
-    while (this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness != null) {
+    if (!ThreadOptimizer.a().a()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness = ((ThreadRegulator.CpuBusyness)this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(ThreadRegulator.CpuBusyness.class));
-    this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    try
+    if (this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness == null)
     {
-      ThreadExcutor.getInstance().shrinkMaxPoolSize(true);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ThreadManager.Regulaotr", 1, "markBusyState: invoked. ", localThrowable);
+      this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness = ((ThreadRegulator.CpuBusyness)this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(ThreadRegulator.CpuBusyness.class));
+      this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      try
+      {
+        ThreadExcutor.getInstance().shrinkMaxPoolSize(true);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("ThreadManager.Regulaotr", 1, "markBusyState: invoked. ", localThrowable);
+      }
     }
   }
   
@@ -72,13 +74,16 @@ public class ThreadRegulator
     if (this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness == null) {
       return;
     }
-    while (this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness != null) {
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness != null) {}
       try
       {
         Thread.sleep(100L);
       }
       catch (InterruptedException localInterruptedException) {}
     }
+    return;
   }
   
   public void b(int paramInt)
@@ -93,25 +98,26 @@ public class ThreadRegulator
   
   public boolean regulatorThread(Thread paramThread)
   {
-    if ((paramThread == ThreadManager.getFileThread()) || (paramThread == ThreadManager.getSubThread())) {}
-    do
+    if (paramThread != ThreadManager.getFileThread())
     {
-      do
-      {
+      if (paramThread == ThreadManager.getSubThread()) {
         return true;
-        if (!"MSF-Receiver".equals(paramThread.getName())) {
-          break;
+      }
+      if ("MSF-Receiver".equals(paramThread.getName()))
+      {
+        if (ThreadOptimizer.a().b()) {
+          paramThread.setPriority(1);
         }
-      } while (!ThreadOptimizer.a().b());
-      paramThread.setPriority(1);
-      return true;
-    } while ("Rejected_Handler".equals(paramThread.getName()));
-    return false;
+        return true;
+      }
+      return "Rejected_Handler".equals(paramThread.getName());
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.threadpriority.ThreadRegulator
  * JD-Core Version:    0.7.0.1
  */

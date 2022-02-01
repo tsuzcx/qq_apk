@@ -16,6 +16,7 @@ public class QzonePhotoView$PhotoInfo
   
   public QzonePhotoView$PhotoInfo(int paramInt1, int paramInt2, Map<Integer, String> paramMap)
   {
+    int i = 0;
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaUtilMap = paramMap;
     this.jdField_a_of_type_JavaLangString = null;
@@ -24,7 +25,7 @@ public class QzonePhotoView$PhotoInfo
     {
       paramMap = new StringBuilder();
       paramMap.append(paramInt1);
-      paramInt1 = 0;
+      paramInt1 = i;
       while (paramInt1 <= 4)
       {
         String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
@@ -42,8 +43,8 @@ public class QzonePhotoView$PhotoInfo
   
   private String b(int paramInt)
   {
-    Object localObject = null;
     int i = 1;
+    Object localObject = null;
     while ((TextUtils.isEmpty((CharSequence)localObject)) && (i < 5))
     {
       localObject = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf((paramInt + i) % 5));
@@ -54,50 +55,55 @@ public class QzonePhotoView$PhotoInfo
   
   public String a()
   {
-    Object localObject = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if (localObject != null)
     {
-      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1));
+      String str = (String)((Map)localObject).get(Integer.valueOf(1));
       localObject = str;
       if (TextUtils.isEmpty(str)) {
-        localObject = b(1);
+        return b(1);
       }
+    }
+    else
+    {
+      localObject = null;
     }
     return localObject;
   }
   
   public String a(int paramInt)
   {
-    Object localObject = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      if (paramInt > 100) {
-        break label51;
-      }
-    }
-    label51:
-    for (paramInt = 3;; paramInt = 2)
+    String str1;
+    if (this.jdField_a_of_type_JavaUtilMap != null)
     {
-      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = b(paramInt);
+      int i = 2;
+      if (paramInt <= 100) {
+        i = 3;
       }
-      return localObject;
+      String str2 = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+      str1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        return b(i);
+      }
     }
+    else
+    {
+      str1 = null;
+    }
+    return str1;
   }
   
   public boolean equals(Object paramObject)
   {
-    boolean bool = false;
     if ((paramObject instanceof PhotoInfo)) {
-      bool = Utils.a(((PhotoInfo)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+      return Utils.a(((PhotoInfo)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.QzonePhotoView.PhotoInfo
  * JD-Core Version:    0.7.0.1
  */

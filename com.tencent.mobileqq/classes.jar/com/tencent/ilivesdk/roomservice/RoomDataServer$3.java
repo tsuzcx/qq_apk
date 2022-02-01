@@ -15,7 +15,15 @@ final class RoomDataServer$3
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
     this.val$callback.onFail(paramInt, paramString);
-    this.val$adapter.getLogger().e("RoomDataServer", "进房错误：onError, isTimeout = " + paramBoolean + " errCode = " + paramInt + " msg = " + paramString, new Object[0]);
+    LogInterface localLogInterface = this.val$adapter.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("进房错误：onError, isTimeout = ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" errCode = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" msg = ");
+    localStringBuilder.append(paramString);
+    localLogInterface.e("RoomDataServer", localStringBuilder.toString(), new Object[0]);
   }
   
   public void onRecv(byte[] paramArrayOfByte)
@@ -30,13 +38,17 @@ final class RoomDataServer$3
     {
       paramArrayOfByte.printStackTrace();
       this.val$callback.onFail(-1, "进房错误：exception");
-      this.val$adapter.getLogger().e("RoomDataServer", "进房错误：exception = " + paramArrayOfByte.getMessage(), new Object[0]);
+      LogInterface localLogInterface = this.val$adapter.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("进房错误：exception = ");
+      localStringBuilder.append(paramArrayOfByte.getMessage());
+      localLogInterface.e("RoomDataServer", localStringBuilder.toString(), new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice.RoomDataServer.3
  * JD-Core Version:    0.7.0.1
  */

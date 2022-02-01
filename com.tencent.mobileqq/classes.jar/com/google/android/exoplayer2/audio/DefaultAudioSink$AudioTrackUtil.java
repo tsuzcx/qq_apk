@@ -23,7 +23,7 @@ class DefaultAudioSink$AudioTrackUtil
     if (this.stopTimestampUs != -9223372036854775807L)
     {
       l1 = (SystemClock.elapsedRealtime() * 1000L - this.stopTimestampUs) * this.sampleRate / 1000000L;
-      return Math.min(this.endPlaybackHeadPosition, l1 + this.stopPlaybackHeadPosition);
+      return Math.min(this.endPlaybackHeadPosition, this.stopPlaybackHeadPosition + l1);
     }
     int i = this.audioTrack.getPlayState();
     if (i == 1) {
@@ -113,7 +113,7 @@ class DefaultAudioSink$AudioTrackUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.DefaultAudioSink.AudioTrackUtil
  * JD-Core Version:    0.7.0.1
  */

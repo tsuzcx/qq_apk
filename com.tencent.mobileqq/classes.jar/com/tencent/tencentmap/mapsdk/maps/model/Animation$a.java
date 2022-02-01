@@ -14,21 +14,23 @@ final class Animation$a
   
   public final void onAnimationFinish()
   {
-    if (this.a != null) {
-      this.a.onAnimationEnd();
+    AnimationListener localAnimationListener = this.a;
+    if (localAnimationListener != null) {
+      localAnimationListener.onAnimationEnd();
     }
   }
   
   public final void onAnimationStart()
   {
-    if (this.a != null) {
-      this.a.onAnimationStart();
+    AnimationListener localAnimationListener = this.a;
+    if (localAnimationListener != null) {
+      localAnimationListener.onAnimationStart();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.Animation.a
  * JD-Core Version:    0.7.0.1
  */

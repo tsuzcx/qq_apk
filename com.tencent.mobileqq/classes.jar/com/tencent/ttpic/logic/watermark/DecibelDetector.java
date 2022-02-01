@@ -9,7 +9,7 @@ public class DecibelDetector
 {
   private static final int DECIBEL_UPDATE_INTERVAL = 40;
   private static final int[] SAMPLE_RATE_IN_HZ = { 32000, 16000 };
-  private static final String TAG = DecibelDetector.class.getSimpleName();
+  private static final String TAG = "DecibelDetector";
   private static DecibelDetector mInstance;
   private int BUFFER_SIZE;
   private short[] buffer;
@@ -17,26 +17,32 @@ public class DecibelDetector
   private AudioRecord mAudioRecorder;
   private int mDecibel;
   private FFTData mFFTDataResult = new FFTData();
-  private boolean mIsAudioRecordPermission = true;
+  private boolean mIsAudioRecordPermission;
   private int sampleRateInHZ;
   private Timer timer;
   
   private DecibelDetector()
   {
+    int k = 1;
+    this.mIsAudioRecordPermission = true;
+    int j = 0;
     int i = 0;
-    while ((j < SAMPLE_RATE_IN_HZ.length) && (i <= 0))
+    for (;;)
     {
-      this.sampleRateInHZ = SAMPLE_RATE_IN_HZ[j];
+      int[] arrayOfInt = SAMPLE_RATE_IN_HZ;
+      if ((j >= arrayOfInt.length) || (i > 0)) {
+        break;
+      }
+      this.sampleRateInHZ = arrayOfInt[j];
       i = AudioRecord.getMinBufferSize(this.sampleRateInHZ, 1, 2);
       j += 1;
     }
-    j = i;
     if (i <= 0)
     {
       ReportUtil.report("DecibelDetector no support SampleRate");
-      j = 1;
+      i = k;
     }
-    this.BUFFER_SIZE = j;
+    this.BUFFER_SIZE = i;
     this.buffer = new short[this.BUFFER_SIZE];
   }
   
@@ -56,9 +62,9 @@ public class DecibelDetector
   public void destroy()
   {
     stop();
-    synchronized (this.lock)
+    try
     {
-      try
+      synchronized (this.lock)
       {
         if (this.mAudioRecorder != null)
         {
@@ -66,20 +72,17 @@ public class DecibelDetector
           this.mAudioRecorder.release();
           this.mAudioRecorder = null;
         }
-        return;
       }
-      catch (Exception localException)
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (this.mAudioRecorder != null)
       {
-        for (;;)
-        {
-          localException.printStackTrace();
-          if (this.mAudioRecorder != null)
-          {
-            this.mAudioRecorder.release();
-            this.mAudioRecorder = null;
-          }
-        }
+        this.mAudioRecorder.release();
+        this.mAudioRecorder = null;
       }
+      return;
     }
   }
   
@@ -95,13 +98,16 @@ public class DecibelDetector
   
   public void init()
   {
-    if ((this.mAudioRecorder != null) || (!this.mIsAudioRecordPermission)) {
-      return;
-    }
-    synchronized (this.lock)
+    if (this.mAudioRecorder == null)
     {
-      startRecord();
-      return;
+      if (!this.mIsAudioRecordPermission) {
+        return;
+      }
+      synchronized (this.lock)
+      {
+        startRecord();
+        return;
+      }
     }
   }
   
@@ -120,43 +126,40 @@ public class DecibelDetector
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      for (;;)
+      LogUtils.e(localIllegalArgumentException);
+    }
+    try
+    {
+      this.mAudioRecorder.startRecording();
+      if (this.timer == null)
       {
-        try
-        {
-          this.mAudioRecorder.startRecording();
-          if (this.timer == null)
-          {
-            this.timer = new Timer();
-            DecibelDetector.1 local1 = new DecibelDetector.1(this);
-            this.timer.schedule(local1, 0L, 40L);
-          }
-          return;
-        }
-        catch (IllegalStateException localIllegalStateException)
-        {
-          localIllegalStateException.printStackTrace();
-          this.mAudioRecorder = null;
-          this.mIsAudioRecordPermission = false;
-        }
-        localIllegalArgumentException = localIllegalArgumentException;
-        LogUtils.e(localIllegalArgumentException);
+        this.timer = new Timer();
+        DecibelDetector.1 local1 = new DecibelDetector.1(this);
+        this.timer.schedule(local1, 0L, 40L);
       }
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      localIllegalStateException.printStackTrace();
+      this.mAudioRecorder = null;
+      this.mIsAudioRecordPermission = false;
     }
   }
   
   public void stop()
   {
-    if (this.timer != null)
+    Timer localTimer = this.timer;
+    if (localTimer != null)
     {
-      this.timer.cancel();
+      localTimer.cancel();
       this.timer = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.logic.watermark.DecibelDetector
  * JD-Core Version:    0.7.0.1
  */

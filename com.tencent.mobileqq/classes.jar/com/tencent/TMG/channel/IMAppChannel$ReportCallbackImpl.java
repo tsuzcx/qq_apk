@@ -14,18 +14,20 @@ public class IMAppChannel$ReportCallbackImpl
   
   public void onError(int paramInt, String paramString)
   {
-    if (this.mCallback != null)
+    AVAppChannel.CsCmdCallback localCsCmdCallback = this.mCallback;
+    if (localCsCmdCallback != null)
     {
-      this.mCallback.onError(paramInt, paramString);
+      localCsCmdCallback.onError(paramInt, paramString);
       this.mCallback = null;
     }
   }
   
   public void onSuccess()
   {
-    if (this.mCallback != null)
+    AVAppChannel.CsCmdCallback localCsCmdCallback = this.mCallback;
+    if (localCsCmdCallback != null)
     {
-      this.mCallback.onSuccess(null);
+      localCsCmdCallback.onSuccess(null);
       this.mCallback = null;
     }
   }

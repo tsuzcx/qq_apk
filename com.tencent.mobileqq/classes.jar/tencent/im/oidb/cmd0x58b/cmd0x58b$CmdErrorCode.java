@@ -22,7 +22,7 @@ public final class cmd0x58b$CmdErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x58b.cmd0x58b.CmdErrorCode
  * JD-Core Version:    0.7.0.1
  */

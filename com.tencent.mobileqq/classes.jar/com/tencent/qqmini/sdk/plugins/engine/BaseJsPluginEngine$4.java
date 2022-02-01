@@ -10,21 +10,22 @@ class BaseJsPluginEngine$4
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
+      if (i == 2) {
+        BaseJsPluginEngine.access$600(this.this$0, paramMessage.getData());
+      }
     }
-    for (;;)
-    {
-      return false;
-      BaseJsPluginEngine.access$600(this.this$0, paramMessage.getData());
-      continue;
+    else {
       BaseJsPluginEngine.access$700(this.this$0, paramMessage);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.BaseJsPluginEngine.4
  * JD-Core Version:    0.7.0.1
  */

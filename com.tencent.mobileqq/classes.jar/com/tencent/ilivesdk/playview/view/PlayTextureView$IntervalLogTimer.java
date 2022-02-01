@@ -7,8 +7,9 @@ public class PlayTextureView$IntervalLogTimer
   
   public PlayTextureView$IntervalLogTimer(int paramInt)
   {
-    this.mInterval = paramInt;
-    this.mLastTime = (System.currentTimeMillis() - paramInt - 1L);
+    long l = paramInt;
+    this.mInterval = l;
+    this.mLastTime = (System.currentTimeMillis() - l - 1L);
   }
   
   public boolean isTimeToWriteLog()
@@ -23,7 +24,7 @@ public class PlayTextureView$IntervalLogTimer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.playview.view.PlayTextureView.IntervalLogTimer
  * JD-Core Version:    0.7.0.1
  */

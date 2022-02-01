@@ -6,7 +6,7 @@ public abstract interface ForwardD55Manager$D55ResultListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardD55Manager.D55ResultListener
  * JD-Core Version:    0.7.0.1
  */

@@ -12,26 +12,27 @@ final class FragmentTransition$6
   
   public void run()
   {
-    Object localObject = FragmentTransition.captureInSharedElements(this.val$impl, this.val$nameOverrides, this.val$finalSharedElementTransition, this.val$fragments);
-    if (localObject != null)
+    Object localObject1 = FragmentTransition.captureInSharedElements(this.val$impl, this.val$nameOverrides, this.val$finalSharedElementTransition, this.val$fragments);
+    if (localObject1 != null)
     {
-      this.val$sharedElementsIn.addAll(((ArrayMap)localObject).values());
+      this.val$sharedElementsIn.addAll(((ArrayMap)localObject1).values());
       this.val$sharedElementsIn.add(this.val$nonExistentView);
     }
-    FragmentTransition.callSharedElementStartEnd(this.val$inFragment, this.val$outFragment, this.val$inIsPop, (ArrayMap)localObject, false);
-    if (this.val$finalSharedElementTransition != null)
+    FragmentTransition.callSharedElementStartEnd(this.val$inFragment, this.val$outFragment, this.val$inIsPop, (ArrayMap)localObject1, false);
+    Object localObject2 = this.val$finalSharedElementTransition;
+    if (localObject2 != null)
     {
-      this.val$impl.swapSharedElementTargets(this.val$finalSharedElementTransition, this.val$sharedElementsOut, this.val$sharedElementsIn);
-      localObject = FragmentTransition.getInEpicenterView((ArrayMap)localObject, this.val$fragments, this.val$enterTransition, this.val$inIsPop);
-      if (localObject != null) {
-        this.val$impl.getBoundsOnScreen((View)localObject, this.val$inEpicenter);
+      this.val$impl.swapSharedElementTargets(localObject2, this.val$sharedElementsOut, this.val$sharedElementsIn);
+      localObject1 = FragmentTransition.getInEpicenterView((ArrayMap)localObject1, this.val$fragments, this.val$enterTransition, this.val$inIsPop);
+      if (localObject1 != null) {
+        this.val$impl.getBoundsOnScreen((View)localObject1, this.val$inEpicenter);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentTransition.6
  * JD-Core Version:    0.7.0.1
  */

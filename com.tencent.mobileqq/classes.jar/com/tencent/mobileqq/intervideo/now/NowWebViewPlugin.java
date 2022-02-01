@@ -3,8 +3,8 @@ package com.tencent.mobileqq.intervideo.now;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 import com.tencent.mobileqq.intervideo.now.webplugin.AudioRoomSettingHandler;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -16,8 +16,8 @@ public class NowWebViewPlugin
   extends WebViewPlugin
 {
   private int jdField_a_of_type_Int;
-  final TroopMemberApiClient.Callback jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient$Callback = new NowWebViewPlugin.1(this);
   private TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+  final ITroopMemberApiClientApi.Callback jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback = new NowWebViewPlugin.1(this);
   private int b;
   
   public NowWebViewPlugin()
@@ -27,27 +27,29 @@ public class NowWebViewPlugin
   
   private Bundle a(String... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return null;
-    }
-    localBundle = new Bundle();
-    try
+    Bundle localBundle;
+    if ((paramVarArgs != null) && (paramVarArgs.length != 0))
     {
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      Iterator localIterator = paramVarArgs.keys();
-      while (localIterator.hasNext())
+      localBundle = new Bundle();
+      try
       {
-        String str = (String)localIterator.next();
-        localBundle.putString(str, paramVarArgs.optString(str));
+        paramVarArgs = new JSONObject(paramVarArgs[0]);
+        Iterator localIterator = paramVarArgs.keys();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          localBundle.putString(str, paramVarArgs.optString(str));
+        }
+        return localBundle;
       }
-      return localBundle;
-    }
-    catch (JSONException paramVarArgs)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("NowWebViewPlugin", 2, "getFirstParam error: ", paramVarArgs);
+      catch (JSONException paramVarArgs)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("NowWebViewPlugin", 2, "getFirstParam error: ", paramVarArgs);
+        }
       }
     }
+    return null;
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -57,7 +59,11 @@ public class NowWebViewPlugin
     {
       localJSONObject.put("state", paramInt1);
       localJSONObject.put("progress", paramInt2);
-      callJs("window.__WEBVIEW_GETPLUGININFO && window.__WEBVIEW_GETPLUGININFO(" + localJSONObject.toString() + ");");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("window.__WEBVIEW_GETPLUGININFO && window.__WEBVIEW_GETPLUGININFO(");
+      localStringBuilder.append(localJSONObject.toString());
+      localStringBuilder.append(");");
+      callJs(localStringBuilder.toString());
       return;
     }
     catch (JSONException localJSONException)
@@ -73,7 +79,11 @@ public class NowWebViewPlugin
     {
       localJSONObject.put("errcode", paramInt);
       localJSONObject.put("desc", paramString);
-      callJs("window.__WEBVIEW_INSTALL && window.__WEBVIEW_INSTALL(" + localJSONObject.toString() + ");");
+      paramString = new StringBuilder();
+      paramString.append("window.__WEBVIEW_INSTALL && window.__WEBVIEW_INSTALL(");
+      paramString.append(localJSONObject.toString());
+      paramString.append(");");
+      callJs(paramString.toString());
       return;
     }
     catch (JSONException paramString)
@@ -87,104 +97,132 @@ public class NowWebViewPlugin
     return this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("NowWebViewPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
-    }
-    if ((this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null) || (paramString1 == null) || (!"nowlive".equals(paramString2)) || (paramString3 == null)) {}
-    label343:
-    do
+    if (QLog.isColorLevel())
     {
-      return false;
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest, url=");
+      paramJsBridgeListener.append(paramString1);
+      paramJsBridgeListener.append(", pkgName=");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append(", methodName=");
+      paramJsBridgeListener.append(paramString3);
+      QLog.d("NowWebViewPlugin", 2, paramJsBridgeListener.toString());
+    }
+    paramJsBridgeListener = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    boolean bool = false;
+    if ((paramJsBridgeListener != null) && (paramString1 != null) && ("nowlive".equals(paramString2)))
+    {
+      if (paramString3 == null) {
+        return false;
+      }
       if ("getPluginInfo".equals(paramString3))
       {
         this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.h();
         a(this.jdField_a_of_type_Int, this.b);
-      }
-      for (;;)
-      {
         return true;
-        if ("openRoom".equals(paramString3))
+      }
+      if ("openRoom".equals(paramString3))
+      {
+        if (paramVarArgs != null)
         {
-          if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-            break;
+          if (paramVarArgs.length == 0) {
+            return false;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("NowWebViewPlugin", 2, "handleJsRequest arg = " + paramVarArgs[0]);
+          if (QLog.isColorLevel())
+          {
+            paramJsBridgeListener = new StringBuilder();
+            paramJsBridgeListener.append("handleJsRequest arg = ");
+            paramJsBridgeListener.append(paramVarArgs[0]);
+            QLog.d("NowWebViewPlugin", 2, paramJsBridgeListener.toString());
           }
           paramJsBridgeListener = paramVarArgs[0];
           if (TextUtils.isEmpty(paramJsBridgeListener)) {
-            break;
+            return false;
           }
           this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(Long.valueOf(paramJsBridgeListener).longValue());
-          continue;
+          return true;
         }
-        if ("install".equals(paramString3))
+        return false;
+      }
+      if ("install".equals(paramString3))
+      {
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("NowWebViewPlugin", 2, "handleJsRequest install arg = " + paramVarArgs[0]);
-          }
-          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-            paramJsBridgeListener = paramVarArgs[0];
-          }
-          for (;;)
+          paramJsBridgeListener = new StringBuilder();
+          paramJsBridgeListener.append("handleJsRequest install arg = ");
+          paramJsBridgeListener.append(paramVarArgs[0]);
+          QLog.d("NowWebViewPlugin", 2, paramJsBridgeListener.toString());
+        }
+        int i;
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+        {
+          paramJsBridgeListener = paramVarArgs[0];
+          try
           {
-            try
-            {
-              i = Integer.valueOf(paramJsBridgeListener).intValue();
-              paramJsBridgeListener = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-              if (i == 1) {
-                bool = true;
-              }
-              paramJsBridgeListener.b(bool);
-            }
-            catch (NumberFormatException paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-            }
-            int i = 0;
+            i = Integer.valueOf(paramJsBridgeListener).intValue();
           }
-        }
-        if ("preload".equals(paramString3))
-        {
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(a(paramVarArgs));
+          catch (NumberFormatException paramJsBridgeListener)
+          {
+            paramJsBridgeListener.printStackTrace();
+          }
         }
         else
         {
-          if (!"audioRoomSetting".equals(paramString3)) {
-            break label343;
-          }
-          AudioRoomSettingHandler.a(this, paramVarArgs);
+          i = 0;
         }
+        paramJsBridgeListener = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+        if (i == 1) {
+          bool = true;
+        }
+        paramJsBridgeListener.b(bool);
+        return true;
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("NowWebViewPlugin", 2, "NOT support method " + paramString3 + " yet!!");
+      if ("preload".equals(paramString3))
+      {
+        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(a(paramVarArgs));
+        return true;
+      }
+      if ("audioRoomSetting".equals(paramString3))
+      {
+        AudioRoomSettingHandler.a(this, paramVarArgs);
+        return true;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append("NOT support method ");
+        paramJsBridgeListener.append(paramString3);
+        paramJsBridgeListener.append(" yet!!");
+        QLog.w("NowWebViewPlugin", 2, paramJsBridgeListener.toString());
+      }
+    }
     return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.g(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient$Callback);
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.g(this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient != null)
+    TroopMemberApiClient localTroopMemberApiClient = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    if (localTroopMemberApiClient != null)
     {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
+      localTroopMemberApiClient.b();
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

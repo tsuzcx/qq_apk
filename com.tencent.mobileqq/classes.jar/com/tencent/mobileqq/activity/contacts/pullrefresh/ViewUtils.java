@@ -10,54 +10,40 @@ public class ViewUtils
 {
   public static boolean a(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramView instanceof HeaderScrollView)) {
-      if (!((HeaderScrollView)paramView).b()) {
-        bool1 = true;
+    boolean bool2 = paramView instanceof HeaderScrollView;
+    boolean bool1 = true;
+    if (bool2) {
+      return ((HeaderScrollView)paramView).b() ^ true;
+    }
+    if ((paramView instanceof ViewGroup))
+    {
+      View localView = ((ViewGroup)paramView).getChildAt(1);
+      if ((localView != null) && ((localView instanceof HeaderScrollView))) {
+        return ((HeaderScrollView)localView).b() ^ true;
       }
     }
-    do
+    else if ((paramView instanceof AbsListView))
     {
-      do
+      paramView = (AbsListView)paramView;
+      if (paramView.getChildCount() > 0)
       {
-        View localView;
-        do
-        {
-          for (;;)
-          {
-            return bool1;
-            bool1 = false;
-          }
-          if (!(paramView instanceof ViewGroup)) {
-            break;
-          }
-          localView = ((ViewGroup)paramView).getChildAt(1);
-          if ((localView == null) || (!(localView instanceof HeaderScrollView))) {
-            break label116;
-          }
-          bool1 = bool2;
-        } while (!((HeaderScrollView)localView).b());
-        return false;
-        if (!(paramView instanceof AbsListView)) {
-          break label116;
+        if (paramView.getFirstVisiblePosition() > 0) {
+          break label103;
         }
-        paramView = (AbsListView)paramView;
-        if (paramView.getChildCount() <= 0) {
-          break;
+        if (paramView.getChildAt(0).getTop() < paramView.getPaddingTop()) {
+          return true;
         }
-        bool1 = bool2;
-      } while (paramView.getFirstVisiblePosition() > 0);
-      bool1 = bool2;
-    } while (paramView.getChildAt(0).getTop() < paramView.getPaddingTop());
-    return false;
-    label116:
+      }
+      bool1 = false;
+      label103:
+      return bool1;
+    }
     return ViewCompat.canScrollVertically(paramView, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.pullrefresh.ViewUtils
  * JD-Core Version:    0.7.0.1
  */

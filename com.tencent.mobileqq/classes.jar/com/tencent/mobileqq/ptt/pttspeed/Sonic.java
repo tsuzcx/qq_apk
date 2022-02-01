@@ -67,9 +67,10 @@ public class Sonic
   
   public void a()
   {
-    if (this.a != 0L)
+    long l = this.a;
+    if (l != 0L)
     {
-      closeNative(this.a);
+      closeNative(l);
       this.a = 0L;
     }
   }
@@ -96,7 +97,7 @@ public class Sonic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.pttspeed.Sonic
  * JD-Core Version:    0.7.0.1
  */

@@ -16,17 +16,22 @@ class GameActivityCenterCtrl$ShowAwardResult$1
   
   public void a(boolean paramBoolean, String paramString)
   {
-    QLog.d("GameACCtrl", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getShareLinkCallback isSuccess: ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" shareUrl: ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.d("GameACCtrl", 1, ((StringBuilder)localObject).toString());
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      AVGameLaunchWebHelper localAVGameLaunchWebHelper = new AVGameLaunchWebHelper((Activity)this.jdField_a_of_type_AndroidContentContext);
-      localAVGameLaunchWebHelper.a((Activity)this.jdField_a_of_type_AndroidContentContext, new GameActivityCenterCtrl.ShowAwardResult.1.1(this, paramString, localAVGameLaunchWebHelper));
+      localObject = new AVGameLaunchWebHelper((Activity)this.jdField_a_of_type_AndroidContentContext);
+      ((AVGameLaunchWebHelper)localObject).a((Activity)this.jdField_a_of_type_AndroidContentContext, new GameActivityCenterCtrl.ShowAwardResult.1.1(this, paramString, (AVGameLaunchWebHelper)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl.ShowAwardResult.1
  * JD-Core Version:    0.7.0.1
  */

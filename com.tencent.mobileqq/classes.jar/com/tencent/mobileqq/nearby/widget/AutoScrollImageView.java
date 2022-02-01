@@ -54,7 +54,10 @@ public class AutoScrollImageView
     }
     catch (OutOfMemoryError paramBitmap)
     {
-      QLog.i("AutoScrollImageView", 1, "error=" + paramBitmap.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("error=");
+      localStringBuilder.append(paramBitmap.toString());
+      QLog.i("AutoScrollImageView", 1, localStringBuilder.toString());
     }
     return null;
   }
@@ -77,46 +80,56 @@ public class AutoScrollImageView
       b(paramCanvas);
       return;
     }
-    int j = getMeasuredWidth();
-    int k = getMeasuredHeight();
-    RectF localRectF = new RectF(0.0F, 0.0F, j, k);
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (int i = paramCanvas.saveLayer(localRectF, null);; i = paramCanvas.saveLayer(localRectF, null, 31))
-    {
-      paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, j, k), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-      b(paramCanvas);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      paramCanvas.restoreToCount(i);
-      return;
+    int i = getMeasuredWidth();
+    int j = getMeasuredHeight();
+    float f1 = i;
+    float f2 = j;
+    RectF localRectF = new RectF(0.0F, 0.0F, f1, f2);
+    if (Build.VERSION.SDK_INT >= 21) {
+      i = paramCanvas.saveLayer(localRectF, null);
+    } else {
+      i = paramCanvas.saveLayer(localRectF, null, 31);
     }
+    localRectF = new RectF(0.0F, 0.0F, f1, f2);
+    j = this.jdField_a_of_type_Int;
+    paramCanvas.drawRoundRect(localRectF, j, j, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    b(paramCanvas);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+    paramCanvas.restoreToCount(i);
   }
   
   private void b(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
-    this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    this.jdField_a_of_type_AndroidGraphicsRect.top = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsRect.bottom = (this.jdField_a_of_type_AndroidGraphicsRect.top + getMeasuredHeight());
-    this.jdField_b_of_type_AndroidGraphicsRect.left = 0;
-    this.jdField_b_of_type_AndroidGraphicsRect.right = getMeasuredWidth();
-    this.jdField_b_of_type_AndroidGraphicsRect.top = 0;
-    this.jdField_b_of_type_AndroidGraphicsRect.bottom = getMeasuredHeight();
+    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    localRect.left = 0;
+    localRect.right = ((Bitmap)localObject).getWidth();
+    localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+    ((Rect)localObject).top = this.jdField_b_of_type_Int;
+    ((Rect)localObject).bottom = (((Rect)localObject).top + getMeasuredHeight());
+    localObject = this.jdField_b_of_type_AndroidGraphicsRect;
+    ((Rect)localObject).left = 0;
+    ((Rect)localObject).right = getMeasuredWidth();
+    localObject = this.jdField_b_of_type_AndroidGraphicsRect;
+    ((Rect)localObject).top = 0;
+    ((Rect)localObject).bottom = getMeasuredHeight();
     paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
+    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_Boolean)
     {
@@ -164,7 +177,7 @@ public class AutoScrollImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.AutoScrollImageView
  * JD-Core Version:    0.7.0.1
  */

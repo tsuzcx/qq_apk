@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vfs;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.vfs.CancellationSignalCompat;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -33,28 +33,32 @@ public class ReportCallback
     try
     {
       jdField_a_of_type_Boolean = true;
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      Iterator localIterator2 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator2.hasNext())
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      Iterator localIterator = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        Map localMap = (Map)localIterator2.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("VFSRegisterProxy", 2, "statisticsReportCache params -> " + localMap);
+        Map localMap = (Map)localIterator.next();
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("statisticsReportCache params -> ");
+          localStringBuilder.append(localMap);
+          QLog.d("VFSRegisterProxy", 2, localStringBuilder.toString());
         }
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(str, "vfs_statistics_tag", true, 0L, 0L, (HashMap)localMap, null);
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance((String)localObject, "vfs_statistics_tag", true, 0L, 0L, (HashMap)localMap, null);
       }
       jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+      localObject = b.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        a((Throwable)((Iterator)localObject).next());
+      }
+      b.clear();
+      return;
     }
     catch (Exception localException)
     {
       QLog.d("VFSRegisterProxy", 1, "statisticsReportCache report error!", localException);
-      return;
     }
-    Iterator localIterator1 = b.iterator();
-    while (localIterator1.hasNext()) {
-      a((Throwable)localIterator1.next());
-    }
-    b.clear();
   }
   
   public void deleteFiles(CancellationSignalCompat paramCancellationSignalCompat) {}
@@ -82,13 +86,20 @@ public class ReportCallback
           paramString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
           StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString, "vfs_statistics_tag", true, 0L, 0L, (HashMap)paramMap, null);
         }
-        while (QLog.isColorLevel())
+        else
         {
-          QLog.d("VFSRegisterProxy", 2, "report params -> " + paramMap + ", mCanAccurReport = " + jdField_a_of_type_Boolean);
-          return;
           jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramMap);
         }
-        return;
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("report params -> ");
+          paramString.append(paramMap);
+          paramString.append(", mCanAccurReport = ");
+          paramString.append(jdField_a_of_type_Boolean);
+          QLog.d("VFSRegisterProxy", 2, paramString.toString());
+          return;
+        }
       }
       catch (Exception paramString)
       {
@@ -99,7 +110,7 @@ public class ReportCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vfs.ReportCallback
  * JD-Core Version:    0.7.0.1
  */

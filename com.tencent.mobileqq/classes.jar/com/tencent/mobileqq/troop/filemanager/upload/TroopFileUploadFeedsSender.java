@@ -11,22 +11,22 @@ import java.util.UUID;
 
 public class TroopFileUploadFeedsSender
 {
+  protected long a;
   TroopFileGetOneFileInfoObserver jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileGetOneFileInfoObserver = new TroopFileUploadFeedsSender.2(this);
   TroopFileReqFeedsObserver jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqFeedsObserver = new TroopFileUploadFeedsSender.1(this);
   protected TroopFileTransferManager.Item a;
-  public String a;
-  public long e;
+  protected String a;
   
   protected TroopFileUploadFeedsSender(long paramLong, TroopFileTransferManager.Item paramItem)
   {
-    this.e = paramLong;
+    this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
-    {
-      this.jdField_a_of_type_JavaLangString = paramItem;
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {
+      paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();
+    } else {
+      paramItem = "";
     }
+    this.jdField_a_of_type_JavaLangString = paramItem;
   }
   
   public static TroopFileUploadFeedsSender a(long paramLong, TroopFileTransferManager.Item paramItem)
@@ -47,31 +47,36 @@ public class TroopFileUploadFeedsSender
     return new TroopFileUploadFeedsSender(paramLong, paramItem);
   }
   
-  public long a()
-  {
-    return this.e;
-  }
-  
   public UUID a()
   {
     return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
   }
   
-  public void j()
+  public void a()
   {
-    QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
-    if (localQQAppInterface == null)
+    Object localObject = TroopFileTransferUtil.a();
+    if (localObject == null)
     {
-      TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2 app=null");
+      i = TroopFileTransferUtil.Log.a;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] reqFeedMsgV2 app=null");
+      TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", i, ((StringBuilder)localObject).toString());
       return;
     }
-    TroopFileTransferUtil.Log.c("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2");
-    TroopFileProtocol.a(localQQAppInterface, this.e, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqFeedsObserver);
+    int i = TroopFileTransferUtil.Log.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("] reqFeedMsgV2");
+    TroopFileTransferUtil.Log.c("TroopFileUploadFeedsSender", i, localStringBuilder.toString());
+    TroopFileProtocol.a((QQAppInterface)localObject, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqFeedsObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender
  * JD-Core Version:    0.7.0.1
  */

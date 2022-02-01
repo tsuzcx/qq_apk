@@ -18,13 +18,14 @@ public final class oidb_0x8e7$ExtParam
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "msg_login_sig", "bytes_version", "uint32_portal", "uint32_client" }, new Object[] { null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, ExtParam.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "msg_login_sig", "bytes_version", "uint32_portal", "uint32_client" }, new Object[] { null, localByteStringMicro, localInteger, localInteger }, ExtParam.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0x8e7.oidb_0x8e7.ExtParam
  * JD-Core Version:    0.7.0.1
  */

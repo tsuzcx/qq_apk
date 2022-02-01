@@ -18,18 +18,15 @@ class GeneralSettingActivity$6
     this.a.startActivity(localIntent);
     if (SettingsConfigHelper.a(this.a.app)) {
       ReportController.a(this.a.app, "0X800B86F");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.6
  * JD-Core Version:    0.7.0.1
  */

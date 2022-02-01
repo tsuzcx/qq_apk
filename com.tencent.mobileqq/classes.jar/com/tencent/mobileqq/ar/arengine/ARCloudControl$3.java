@@ -13,18 +13,20 @@ class ARCloudControl$3
     {
       ARCloudControl.a(this.this$0, true);
       ARCloudControl.b(this.this$0, true);
+      return;
     }
-    while (this.this$0.a.recognitions == null) {
+    if (this.this$0.a.recognitions == null) {
       return;
     }
     ARFaceDataCollector.a().a();
     ARFaceDataCollector.a().a = System.currentTimeMillis();
-    ARCloudControl.a(this.this$0, this.a, this.this$0.a.recognitions);
+    ARCloudControl localARCloudControl = this.this$0;
+    ARCloudControl.a(localARCloudControl, this.a, localARCloudControl.a.recognitions);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.3
  * JD-Core Version:    0.7.0.1
  */

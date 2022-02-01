@@ -6,9 +6,9 @@ import NS_UNDEAL_COUNT.feed_info;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceStruct;
 import cooperation.qzone.util.JceUtils;
 import java.util.ArrayList;
 
@@ -37,7 +37,6 @@ public class QZoneCountUserInfo
     this.nickName = paramParcel.readString();
   }
   
-  @NonNull
   private ArrayList<feed_info> getFeed_infos(Parcel paramParcel)
   {
     ArrayList localArrayList = new ArrayList();
@@ -45,18 +44,21 @@ public class QZoneCountUserInfo
     try
     {
       paramParcel = paramParcel.createByteArray();
-      if ((paramParcel != null) && (paramParcel.length != 0))
+      if (paramParcel != null)
       {
+        if (paramParcel.length == 0) {
+          return null;
+        }
         paramParcel = new JceInputStream(paramParcel);
         paramParcel.setServerEncoding("utf8");
         paramParcel = (ArrayList)paramParcel.read(localArrayList, 0, false);
         return paramParcel;
       }
+      return null;
     }
     catch (Exception paramParcel)
     {
       paramParcel.printStackTrace();
-      return null;
     }
     return null;
   }
@@ -68,62 +70,75 @@ public class QZoneCountUserInfo
   
   public boolean equals(Object paramObject)
   {
-    boolean bool = true;
-    if ((paramObject instanceof QZoneCountUserInfo))
+    boolean bool4 = paramObject instanceof QZoneCountUserInfo;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (bool4)
     {
       paramObject = (QZoneCountUserInfo)paramObject;
-      if ((this.uin != paramObject.uin) || (this.iYellowType != paramObject.iYellowType) || (this.isAnnualVip == paramObject.isAnnualVip) || (this.iYellowLevel == paramObject.iYellowLevel)) {
-        bool = false;
-      }
-      do
+      bool1 = bool3;
+      if (this.uin == paramObject.uin)
       {
-        do
+        bool1 = bool3;
+        if (this.iYellowType == paramObject.iYellowType)
         {
-          return bool;
-          if ((this.pushData != null) && (paramObject.pushData != null)) {
-            break;
+          bool1 = bool3;
+          if (this.isAnnualVip != paramObject.isAnnualVip)
+          {
+            if (this.iYellowLevel == paramObject.iYellowLevel) {
+              return false;
+            }
+            PassiveFeedsPush localPassiveFeedsPush = this.pushData;
+            if ((localPassiveFeedsPush != null) && (paramObject.pushData != null))
+            {
+              if ((localPassiveFeedsPush.stBubbleSkin != null) && (paramObject.pushData.stBubbleSkin != null)) {
+                return TextUtils.equals(this.pushData.stBubbleSkin.strBubbleZipUrl, paramObject.pushData.stBubbleSkin.strBubbleZipUrl);
+              }
+              bool1 = bool2;
+              if (this.pushData.stBubbleSkin == paramObject.pushData.stBubbleSkin) {
+                bool1 = true;
+              }
+              return bool1;
+            }
+            bool1 = bool3;
+            if (this.pushData == paramObject.pushData) {
+              bool1 = true;
+            }
           }
-        } while (this.pushData == paramObject.pushData);
-        return false;
-        if ((this.pushData.stBubbleSkin != null) && (paramObject.pushData.stBubbleSkin != null)) {
-          break;
         }
-      } while (this.pushData.stBubbleSkin == paramObject.pushData.stBubbleSkin);
-      return false;
-      return TextUtils.equals(this.pushData.stBubbleSkin.strBubbleZipUrl, paramObject.pushData.stBubbleSkin.strBubbleZipUrl);
+      }
     }
-    return false;
+    return bool1;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    Object localObject2 = null;
     paramParcel.writeLong(this.uin);
     paramParcel.writeInt(this.iYellowType);
     paramParcel.writeInt(this.iYellowLevel);
     paramParcel.writeByte(this.isAnnualVip);
-    if (this.pushData == null)
-    {
+    Object localObject1 = this.pushData;
+    Object localObject2 = null;
+    if (localObject1 == null) {
       localObject1 = null;
-      paramParcel.writeByteArray((byte[])localObject1);
-      if (this.vec_feedInfos != null) {
-        break label84;
-      }
+    } else {
+      localObject1 = JceUtils.encodeWup((JceStruct)localObject1);
     }
-    label84:
-    for (Object localObject1 = localObject2;; localObject1 = JceUtils.encodeWup(this.vec_feedInfos))
-    {
-      paramParcel.writeByteArray((byte[])localObject1);
-      paramParcel.writeString(this.nickName);
-      return;
-      localObject1 = JceUtils.encodeWup(this.pushData);
-      break;
+    paramParcel.writeByteArray((byte[])localObject1);
+    localObject1 = this.vec_feedInfos;
+    if (localObject1 == null) {
+      localObject1 = localObject2;
+    } else {
+      localObject1 = JceUtils.encodeWup((ArrayList)localObject1);
     }
+    paramParcel.writeByteArray((byte[])localObject1);
+    paramParcel.writeString(this.nickName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.UndealCount.QZoneCountUserInfo
  * JD-Core Version:    0.7.0.1
  */

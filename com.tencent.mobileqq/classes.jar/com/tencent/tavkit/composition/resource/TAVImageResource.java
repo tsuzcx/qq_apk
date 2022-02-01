@@ -39,8 +39,10 @@ public class TAVImageResource
   
   public CIImage imageAtTime(CMTime paramCMTime, CGSize paramCGSize)
   {
-    if (!this.sourceTimeRange.containsTime(paramCMTime)) {}
-    while (this.image == null) {
+    if (!this.sourceTimeRange.containsTime(paramCMTime)) {
+      return null;
+    }
+    if (this.image == null) {
       return null;
     }
     Thread localThread = Thread.currentThread();
@@ -69,7 +71,7 @@ public class TAVImageResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TAVImageResource
  * JD-Core Version:    0.7.0.1
  */

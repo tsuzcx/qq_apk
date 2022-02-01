@@ -26,15 +26,16 @@ public final class oidb_cmd0xbc9$BannerItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 66, 74, 80 }, new String[] { "uint32_banner_type", "msg_video_banner_item", "msg_article_content_item", "bytes_superscript_text", "bytes_superscript_color", "bytes_banner_title", "uint32_is_ad", "msg_ad_click_report", "msg_ad_exposure_report", "uint64_banner_id" }, new Object[] { Integer.valueOf(0), null, null, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), null, null, Long.valueOf(0L) }, BannerItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 66, 74, 80 }, new String[] { "uint32_banner_type", "msg_video_banner_item", "msg_article_content_item", "bytes_superscript_text", "bytes_superscript_color", "bytes_banner_title", "uint32_is_ad", "msg_ad_click_report", "msg_ad_exposure_report", "uint64_banner_id" }, new Object[] { localInteger, null, null, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger, null, null, Long.valueOf(0L) }, BannerItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem
  * JD-Core Version:    0.7.0.1
  */

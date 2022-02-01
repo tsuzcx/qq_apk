@@ -25,7 +25,11 @@ class GMEAVManager$1
   
   public void onEnterRoomComplete(int paramInt, String paramString)
   {
-    QLog.i("AVManager", 1, "mRoomEventListener.onEnterRoomComplete| result = " + paramInt + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mRoomEventListener.onEnterRoomComplete| result = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(paramString);
+    QLog.i("AVManager", 1, localStringBuilder.toString());
     if (paramInt != 0) {
       this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
     }
@@ -74,7 +78,7 @@ class GMEAVManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.gmersdk_warper.GMEAVManager.1
  * JD-Core Version:    0.7.0.1
  */

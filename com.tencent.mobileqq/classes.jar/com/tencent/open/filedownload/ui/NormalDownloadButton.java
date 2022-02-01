@@ -24,20 +24,20 @@ public class NormalDownloadButton
   
   protected String a(int paramInt)
   {
-    return HardCodeUtil.a(2131707581);
+    return HardCodeUtil.a(2131707606);
   }
   
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return HardCodeUtil.a(2131707582);
+      return HardCodeUtil.a(2131707607);
     }
-    return HardCodeUtil.a(2131707580);
+    return HardCodeUtil.a(2131707605);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.filedownload.ui.NormalDownloadButton
  * JD-Core Version:    0.7.0.1
  */

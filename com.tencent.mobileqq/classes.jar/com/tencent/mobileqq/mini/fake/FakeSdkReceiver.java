@@ -20,16 +20,20 @@ public class FakeSdkReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     Object localObject = paramIntent.getAction();
-    QLog.i("minisdk-start", 1, "AppBrandTaskPreloadReceiver onReceive action: " + (String)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppBrandTaskPreloadReceiver onReceive action: ");
+    localStringBuilder.append((String)localObject);
+    QLog.i("minisdk-start", 1, localStringBuilder.toString());
     try
     {
       MiniSDK.init(paramContext.getApplicationContext());
       ThreadManager.executeOnSubThread(new FakeSdkReceiver.1(this));
       localObject = AppLoaderFactory.g().getMiniAppEnv().getReceiverProxy();
-      if (localObject != null) {
+      if (localObject != null)
+      {
         ((IReceiverProxy)localObject).onReceive(paramContext, paramIntent);
+        return;
       }
-      return;
     }
     catch (Throwable paramContext)
     {
@@ -39,7 +43,7 @@ public class FakeSdkReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.fake.FakeSdkReceiver
  * JD-Core Version:    0.7.0.1
  */

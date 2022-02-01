@@ -15,14 +15,18 @@ class NowLiveManager$1
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
     NowLiveManager.a(this.a);
-    String str = "";
     long l = 0L;
     Object localObject1 = "";
+    String str;
     if (paramBundle != null)
     {
       l = paramBundle.getLong("time", 0L);
       str = paramBundle.getString("room_id");
       localObject1 = paramBundle.getString("friendUin");
+    }
+    else
+    {
+      str = "";
     }
     localObject1 = this.a.a((String)localObject1, l);
     if (paramJSONObject == null)
@@ -31,58 +35,52 @@ class NowLiveManager$1
       this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), localObject1, paramBundle });
       return;
     }
-    switch (paramInt)
+    if (paramInt != 1001)
     {
-    }
-    do
-    {
-      do
+      if ((paramInt == 1003) && (paramJSONObject.optInt("retcode") == 0))
       {
-        for (;;)
+        paramJSONObject = paramJSONObject.optJSONObject("result");
+        if (paramJSONObject != null)
         {
-          this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), null, paramBundle });
-          return;
-          Object localObject2 = paramJSONObject.optJSONObject("result");
-          if ((localObject2 != null) && (((JSONObject)localObject2).optInt("retcode") == 0))
-          {
-            paramJSONObject = new ArrayList();
-            localObject2 = ((JSONObject)localObject2).optJSONArray("videoURLList");
-            if (localObject2 != null)
-            {
-              int i = 0;
-              for (;;)
-              {
-                if (i < ((JSONArray)localObject2).length()) {
-                  try
-                  {
-                    paramJSONObject.add(((JSONArray)localObject2).getString(i));
-                    i += 1;
-                  }
-                  catch (JSONException localJSONException)
-                  {
-                    for (;;)
-                    {
-                      localJSONException.printStackTrace();
-                    }
-                  }
-                }
-              }
-              ((NowLiveManager.NowLiveInfo)localObject1).jdField_a_of_type_JavaUtilList = paramJSONObject;
-              ((NowLiveManager.NowLiveInfo)localObject1).b = str;
-            }
-            this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
-          }
+          ((NowLiveManager.NowLiveInfo)localObject1).jdField_a_of_type_Int = paramJSONObject.optInt("state");
+          this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
         }
-      } while (paramJSONObject.optInt("retcode") != 0);
-      paramJSONObject = paramJSONObject.optJSONObject("result");
-    } while (paramJSONObject == null);
-    ((NowLiveManager.NowLiveInfo)localObject1).jdField_a_of_type_Int = paramJSONObject.optInt("state");
-    this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
+      }
+    }
+    else
+    {
+      Object localObject2 = paramJSONObject.optJSONObject("result");
+      if ((localObject2 != null) && (((JSONObject)localObject2).optInt("retcode") == 0))
+      {
+        paramJSONObject = new ArrayList();
+        localObject2 = ((JSONObject)localObject2).optJSONArray("videoURLList");
+        if (localObject2 != null)
+        {
+          int i = 0;
+          while (i < ((JSONArray)localObject2).length())
+          {
+            try
+            {
+              paramJSONObject.add(((JSONArray)localObject2).getString(i));
+            }
+            catch (JSONException localJSONException)
+            {
+              localJSONException.printStackTrace();
+            }
+            i += 1;
+          }
+          ((NowLiveManager.NowLiveInfo)localObject1).jdField_a_of_type_JavaUtilList = paramJSONObject;
+          ((NowLiveManager.NowLiveInfo)localObject1).b = str;
+        }
+        this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
+      }
+    }
+    this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), null, paramBundle });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.now.NowLiveManager.1
  * JD-Core Version:    0.7.0.1
  */

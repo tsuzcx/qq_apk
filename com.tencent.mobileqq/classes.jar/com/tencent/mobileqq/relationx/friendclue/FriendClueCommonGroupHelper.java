@@ -46,19 +46,19 @@ public class FriendClueCommonGroupHelper
       if (QLog.isColorLevel()) {
         QLog.d("FriendClueCommonGroupHelper", 2, "get intimateInfo finished");
       }
-      localIntent = new Intent();
-      localIntent.addFlags(268435456);
-      localIntent.putParcelableArrayListExtra("common_troop_list", (ArrayList)this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.commonTroopInfoList);
-      localIntent.putExtra("report_friend_type", 1);
-      PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, localIntent, CommonTroopListActivity.class);
-    }
-    while (this.jdField_a_of_type_JavaLangString == null)
-    {
-      Intent localIntent;
+      localObject = new Intent();
+      ((Intent)localObject).addFlags(268435456);
+      ((Intent)localObject).putParcelableArrayListExtra("common_troop_list", (ArrayList)this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.commonTroopInfoList);
+      ((Intent)localObject).putExtra("report_friend_type", 1);
+      PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, (Intent)localObject, CommonTroopListActivity.class);
       return;
     }
-    TroopWithCommonFriendsFragment.a(this.jdField_a_of_type_JavaLangString);
-    TroopWithCommonFriendsFragment.a(this.jdField_a_of_type_AndroidContentContext, 2);
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    if (localObject != null)
+    {
+      TroopWithCommonFriendsFragment.a((String)localObject);
+      TroopWithCommonFriendsFragment.a(this.jdField_a_of_type_AndroidContentContext, 2);
+    }
   }
   
   public void a(String paramString)
@@ -66,25 +66,23 @@ public class FriendClueCommonGroupHelper
     this.jdField_a_of_type_JavaLangString = paramString;
     if (!TextUtils.isEmpty(paramString))
     {
-      if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext)) {
-        break label92;
+      if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoHandler == null) {
+          this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoHandler = ((IntimateInfoHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER));
+        }
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoObserver);
+        this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoHandler.a(paramString, false);
+        paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        paramString.what = 1;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, 10000L);
+        return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoHandler = ((IntimateInfoHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoObserver);
-      this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoHandler.a(paramString, false);
-      paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      paramString.what = 1;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, 10000L);
-    }
-    label92:
-    do
-    {
-      return;
       this.jdField_a_of_type_AndroidOsHandler.post(new FriendClueCommonGroupHelper.1(this));
-    } while (!QLog.isColorLevel());
-    QLog.d("FriendClueCommonGroupHelper", 1, String.format("requestIntimateInfo network is not available, uin: %s", new Object[] { paramString }));
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendClueCommonGroupHelper", 1, String.format("requestIntimateInfo network is not available, uin: %s", new Object[] { paramString }));
+      }
+    }
   }
   
   public void b()
@@ -94,20 +92,18 @@ public class FriendClueCommonGroupHelper
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return true;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoObserver);
-    paramMessage = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693477);
+    paramMessage = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693432);
     QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, paramMessage, 1).a();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueCommonGroupHelper
  * JD-Core Version:    0.7.0.1
  */

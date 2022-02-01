@@ -2,7 +2,7 @@ package com.tencent.av.wtogether.media;
 
 import android.os.Handler;
 import androidx.annotation.Nullable;
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglHandlerThread;
+import com.tencent.mobileqq.videocodec.mediacodec.encoder.EglHandlerThread;
 import java.util.concurrent.Callable;
 
 final class WatchTogetherVideoDecodeHelper$2
@@ -15,7 +15,7 @@ final class WatchTogetherVideoDecodeHelper$2
   {
     try
     {
-      WatchTogetherVideoDecodeHelper localWatchTogetherVideoDecodeHelper = new WatchTogetherVideoDecodeHelper(this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread, null);
+      WatchTogetherVideoDecodeHelper localWatchTogetherVideoDecodeHelper = new WatchTogetherVideoDecodeHelper(this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread, null);
       return localWatchTogetherVideoDecodeHelper;
     }
     catch (RuntimeException localRuntimeException) {}
@@ -24,7 +24,7 @@ final class WatchTogetherVideoDecodeHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.media.WatchTogetherVideoDecodeHelper.2
  * JD-Core Version:    0.7.0.1
  */

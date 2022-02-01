@@ -16,17 +16,15 @@ public class WSCommentUtil
   public static stSimpleComment a(stSimpleMetaComment paramstSimpleMetaComment, stSimpleMetaPerson paramstSimpleMetaPerson)
   {
     stSimpleMetaPerson localstSimpleMetaPerson = paramstSimpleMetaComment.poster;
-    if (TextUtils.isEmpty(localstSimpleMetaPerson.nick)) {}
-    for (;;)
-    {
-      return new stSimpleComment(paramstSimpleMetaComment.id, paramstSimpleMetaComment.wording, paramstSimpleMetaComment.poster_id, a(paramstSimpleMetaPerson), paramstSimpleMetaComment.dingNum, paramstSimpleMetaComment.isDing, paramstSimpleMetaComment.feedId, null);
+    if (!TextUtils.isEmpty(localstSimpleMetaPerson.nick)) {
       paramstSimpleMetaPerson = localstSimpleMetaPerson;
     }
+    return new stSimpleComment(paramstSimpleMetaComment.id, paramstSimpleMetaComment.wording, paramstSimpleMetaComment.poster_id, a(paramstSimpleMetaPerson), paramstSimpleMetaComment.dingNum, paramstSimpleMetaComment.isDing, paramstSimpleMetaComment.feedId, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WSCommentUtil
  * JD-Core Version:    0.7.0.1
  */

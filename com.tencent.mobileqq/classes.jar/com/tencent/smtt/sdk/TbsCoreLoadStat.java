@@ -5,7 +5,7 @@ import com.tencent.smtt.utils.TbsLog;
 
 public class TbsCoreLoadStat
 {
-  private static TbsCoreLoadStat d = null;
+  private static TbsCoreLoadStat d;
   public static volatile int mLoadErrorCode = -1;
   private TbsCoreLoadStat.TbsSequenceQueue a = null;
   private boolean b = false;
@@ -21,8 +21,9 @@ public class TbsCoreLoadStat
   
   void a()
   {
-    if (this.a != null) {
-      this.a.clear();
+    TbsCoreLoadStat.TbsSequenceQueue localTbsSequenceQueue = this.a;
+    if (localTbsSequenceQueue != null) {
+      localTbsSequenceQueue.clear();
     }
     this.b = false;
   }
@@ -30,42 +31,48 @@ public class TbsCoreLoadStat
   void a(Context paramContext, int paramInt)
   {
     a(paramContext, paramInt, null);
-    TbsLog.e("loaderror", "" + paramInt);
+    paramContext = new StringBuilder();
+    paramContext.append("");
+    paramContext.append(paramInt);
+    TbsLog.e("loaderror", paramContext.toString());
   }
   
   void a(Context paramContext, int paramInt, Throwable paramThrowable)
   {
-    for (;;)
+    try
     {
-      try
+      if (mLoadErrorCode == -1)
       {
-        if (mLoadErrorCode == -1)
+        mLoadErrorCode = paramInt;
+        TbsLog.addLog(998, "code=%d,desc=%s", new Object[] { Integer.valueOf(paramInt), String.valueOf(paramThrowable) });
+        if (paramThrowable != null)
         {
-          mLoadErrorCode = paramInt;
-          TbsLog.addLog(998, "code=%d,desc=%s", new Object[] { Integer.valueOf(paramInt), String.valueOf(paramThrowable) });
-          if (paramThrowable != null) {
-            TbsLogReport.getInstance(paramContext).setLoadErrorCode(paramInt, paramThrowable);
-          }
+          TbsLogReport.getInstance(paramContext).setLoadErrorCode(paramInt, paramThrowable);
         }
         else
         {
-          paramContext = new StringBuilder("setLoadErrorCode :: error(");
-          paramContext.append(mLoadErrorCode);
-          paramContext.append(") was already reported; ");
+          paramContext = new StringBuilder();
+          paramContext.append("setLoadErrorCode :: error is null with errorCode: ");
           paramContext.append(paramInt);
-          paramContext.append(" is duplicated. Try to remove it!");
-          TbsLog.w("TbsCoreLoadStat", paramContext.toString());
-          continue;
+          paramContext.append("; Check & correct it!");
+          TbsLog.e("TbsCoreLoadStat", paramContext.toString());
         }
-        TbsLog.e("TbsCoreLoadStat", "setLoadErrorCode :: error is null with errorCode: " + paramInt + "; Check & correct it!");
+        return;
       }
-      finally {}
+      paramContext = new StringBuilder("setLoadErrorCode :: error(");
+      paramContext.append(mLoadErrorCode);
+      paramContext.append(") was already reported; ");
+      paramContext.append(paramInt);
+      paramContext.append(" is duplicated. Try to remove it!");
+      TbsLog.w("TbsCoreLoadStat", paramContext.toString());
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsCoreLoadStat
  * JD-Core Version:    0.7.0.1
  */

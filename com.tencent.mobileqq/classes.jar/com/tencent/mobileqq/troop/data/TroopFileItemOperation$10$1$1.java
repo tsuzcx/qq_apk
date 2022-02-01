@@ -11,19 +11,20 @@ class TroopFileItemOperation$10$1$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt != 1) {
+        return;
+      }
+      if (TroopFileItemOperation.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) != 0) {
+        TroopFileTransferManager.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long).b(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
+      }
     }
-    do
-    {
-      return;
-    } while (TroopFileItemOperation.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) == 0);
-    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long).b(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFileItemOperation.10.1.1
  * JD-Core Version:    0.7.0.1
  */

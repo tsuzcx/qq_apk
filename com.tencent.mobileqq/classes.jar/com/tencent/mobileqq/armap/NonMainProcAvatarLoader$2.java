@@ -21,54 +21,62 @@ class NonMainProcAvatarLoader$2
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 1000) {
+    if (paramMessage.what == 1000)
+    {
       if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
       {
         paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList.size());
         paramMessage.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
         this.a.a(paramMessage);
+        this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
       }
     }
-    Object localObject;
-    String str;
-    do
-    {
-      this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
-      for (;;)
+    else if (paramMessage.what == 1002) {
+      try
       {
-        return;
-        if (paramMessage.what == 1002) {
-          try
-          {
-            localObject = (Bundle)paramMessage.obj;
-            paramMessage = (Bitmap)((Bundle)localObject).getParcelable("bmp");
-            str = ((Bundle)localObject).getString("uin");
-            localObject = ((Bundle)localObject).getString("path");
-            if (paramMessage != null) {
-              this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(str, paramMessage);
-            }
-            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-            while (localIterator.hasNext())
-            {
-              FaceObserver localFaceObserver = (FaceObserver)localIterator.next();
-              if (localFaceObserver != null) {
-                localFaceObserver.a(str, (String)localObject, paramMessage);
-              }
-            }
-            if (!QLog.isColorLevel()) {}
+        Object localObject2 = (Bundle)paramMessage.obj;
+        localObject1 = (Bitmap)((Bundle)localObject2).getParcelable("bmp");
+        paramMessage = ((Bundle)localObject2).getString("uin");
+        localObject2 = ((Bundle)localObject2).getString("path");
+        if (localObject1 != null) {
+          this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramMessage, localObject1);
+        }
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext())
+        {
+          FaceObserver localFaceObserver = (FaceObserver)localIterator.next();
+          if (localFaceObserver != null) {
+            localFaceObserver.a(paramMessage, (String)localObject2, (Bitmap)localObject1);
           }
-          catch (Exception paramMessage) {}
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("refreshImg, uin:");
+          ((StringBuilder)localObject1).append(paramMessage);
+          ((StringBuilder)localObject1).append(", path=");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          QLog.d("NonMainAppHeadLoader", 2, ((StringBuilder)localObject1).toString());
+          return;
         }
       }
-      QLog.e("NonMainAppHeadLoader", 2, "refreshImg, exception:" + paramMessage.toString());
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("NonMainAppHeadLoader", 2, "refreshImg, uin:" + str + ", path=" + (String)localObject);
+      catch (Exception paramMessage)
+      {
+        Object localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("refreshImg, exception:");
+          ((StringBuilder)localObject1).append(paramMessage.toString());
+          QLog.e("NonMainAppHeadLoader", 2, ((StringBuilder)localObject1).toString());
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.NonMainProcAvatarLoader.2
  * JD-Core Version:    0.7.0.1
  */

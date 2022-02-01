@@ -34,9 +34,10 @@ class SVIPHandler$2$1
               this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b.add(localObject);
             }
           }
+          this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b();
+          return;
         }
       }
-      return;
     }
     catch (Exception paramObject)
     {
@@ -44,12 +45,11 @@ class SVIPHandler$2$1
         QLog.e("SVIPHandler", 2, paramObject.getMessage());
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SVIPHandler.2.1
  * JD-Core Version:    0.7.0.1
  */

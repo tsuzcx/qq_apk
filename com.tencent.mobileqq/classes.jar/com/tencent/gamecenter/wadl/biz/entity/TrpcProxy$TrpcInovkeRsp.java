@@ -20,13 +20,14 @@ public final class TrpcProxy$TrpcInovkeRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "data", "errType", "ret", "msg" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), "" }, TrpcInovkeRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "data", "errType", "ret", "msg" }, new Object[] { localByteStringMicro, localInteger, localInteger, "" }, TrpcInovkeRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.entity.TrpcProxy.TrpcInovkeRsp
  * JD-Core Version:    0.7.0.1
  */

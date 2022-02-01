@@ -17,18 +17,15 @@ class GameCenterVideoView$SDKInitListenerWithAction
   {
     if (paramBoolean) {
       this.this$0.post(this.action);
-    }
-    for (;;)
-    {
-      GameCenterVideoView.access$2202(this.this$0, null);
-      return;
+    } else {
       QLog.e("GameCenterVideoView", 1, "initSDKAsync failed");
     }
+    GameCenterVideoView.access$2202(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoView.SDKInitListenerWithAction
  * JD-Core Version:    0.7.0.1
  */

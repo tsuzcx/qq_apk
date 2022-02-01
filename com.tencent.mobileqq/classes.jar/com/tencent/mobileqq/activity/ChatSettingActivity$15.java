@@ -10,27 +10,25 @@ class ChatSettingActivity$15
   
   public void run()
   {
-    Message localMessage = null;
-    Object localObject = localMessage;
-    if (this.a != null)
-    {
-      localObject = localMessage;
-      if (this.a.length() > 0) {
-        localObject = this.a.toString();
-      }
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (((StringBuilder)localObject1).length() > 0)) {
+      localObject1 = this.a.toString();
+    } else {
+      localObject1 = null;
     }
-    if (ChatSettingActivity.a(this.this$0, ChatSettingActivity.a(this.this$0), ChatSettingActivity.a(this.this$0), this.a) > 0)
+    Object localObject2 = this.this$0;
+    if (ChatSettingActivity.a((ChatSettingActivity)localObject2, ChatSettingActivity.a((ChatSettingActivity)localObject2), ChatSettingActivity.a(this.this$0), this.a) > 0)
     {
-      localMessage = this.this$0.a.obtainMessage();
-      localMessage.what = 18;
-      localMessage.obj = localObject;
-      localMessage.sendToTarget();
+      localObject2 = this.this$0.a.obtainMessage();
+      ((Message)localObject2).what = 18;
+      ((Message)localObject2).obj = localObject1;
+      ((Message)localObject2).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.15
  * JD-Core Version:    0.7.0.1
  */

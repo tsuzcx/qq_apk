@@ -17,41 +17,45 @@ public class f
       localTLV_QuerySig.set_data(new byte[0], 0);
     }
     paramArrayOfByte3 = new g().a(paramLong2, paramLong3, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6);
-    if ((paramArrayOfByte3 == null) || (paramArrayOfByte3.length == 0)) {
-      return new byte[0];
-    }
-    paramArrayOfByte2 = null;
-    if ((paramArrayOfByte7 != null) && (paramArrayOfByte7.length > 0)) {
-      paramArrayOfByte1 = new n().a(paramArrayOfByte7);
-    }
-    while ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0))
+    if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length != 0))
     {
-      return new byte[0];
-      paramArrayOfByte1 = paramArrayOfByte2;
-      if (rst.sppKey != null)
+      paramArrayOfByte2 = null;
+      if ((paramArrayOfByte7 != null) && (paramArrayOfByte7.length > 0))
+      {
+        paramArrayOfByte1 = new n().a(paramArrayOfByte7);
+      }
+      else
       {
         paramArrayOfByte1 = paramArrayOfByte2;
-        if (rst.sppKey.get_data_len() > 0) {
-          paramArrayOfByte1 = rst.sppKey.get_buf();
+        if (rst.sppKey != null)
+        {
+          paramArrayOfByte1 = paramArrayOfByte2;
+          if (rst.sppKey.get_data_len() > 0) {
+            paramArrayOfByte1 = rst.sppKey.get_buf();
+          }
         }
       }
+      if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0))
+      {
+        int k = localTLV_QuerySig.get_size();
+        int i = paramArrayOfByte3.length;
+        int j = paramArrayOfByte1.length;
+        paramArrayOfByte2 = new byte[k + 2 + i + j];
+        util.int16_to_buf(paramArrayOfByte2, 0, 3);
+        System.arraycopy(localTLV_QuerySig.get_buf(), 0, paramArrayOfByte2, 2, k);
+        k = 2 + k;
+        System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte2, k, i);
+        System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, k + i, j);
+        return _get_request(paramLong1, paramLong2, paramArrayOfByte2);
+      }
+      return new byte[0];
     }
-    int k = localTLV_QuerySig.get_size();
-    int j = paramArrayOfByte3.length;
-    int i = paramArrayOfByte1.length;
-    paramArrayOfByte2 = new byte[k + 2 + j + i];
-    util.int16_to_buf(paramArrayOfByte2, 0, 3);
-    System.arraycopy(localTLV_QuerySig.get_buf(), 0, paramArrayOfByte2, 2, k);
-    k += 2;
-    System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte2, k, j);
-    j = k + j;
-    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, j, i);
-    return _get_request(paramLong1, paramLong2, paramArrayOfByte2);
+    return new byte[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.devicelock.f
  * JD-Core Version:    0.7.0.1
  */

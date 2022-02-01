@@ -12,7 +12,10 @@ class QzoneOnlineTimeCollectRptService$2
   
   public void run()
   {
-    QLog.d("QzoneOnlineTimeCollectRptService", 1, "closeTrace isForeground:" + QzoneOnlineTimeCollectRptService.access$000(this.this$0));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("closeTrace isForeground:");
+    localStringBuilder.append(QzoneOnlineTimeCollectRptService.access$000(this.this$0));
+    QLog.d("QzoneOnlineTimeCollectRptService", 1, localStringBuilder.toString());
     if (QzoneOnlineTimeCollectRptService.access$000(this.this$0))
     {
       ThreadManager.getSubThreadHandler().removeCallbacks(QzoneOnlineTimeCollectRptService.access$300(this.this$0));
@@ -25,7 +28,7 @@ class QzoneOnlineTimeCollectRptService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.QzoneOnlineTimeCollectRptService.2
  * JD-Core Version:    0.7.0.1
  */

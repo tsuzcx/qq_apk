@@ -7,12 +7,13 @@ final class a$3
   
   public final void run()
   {
-    a.a(this.b, this.a, this.b.c, this.b.d, this.b.e);
+    a locala = this.b;
+    a.a(locala, this.a, locala.c, this.b.d, this.b.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.d.a.3
  * JD-Core Version:    0.7.0.1
  */

@@ -16,48 +16,44 @@ public class DynamicAvatarInfo$OneUinHeadInfo
   
   public static OneUinHeadInfo a(oidb_0x74b.OneUinHeadInfo paramOneUinHeadInfo)
   {
-    Object localObject;
     if (paramOneUinHeadInfo == null) {
-      localObject = null;
+      return null;
     }
-    OneUinHeadInfo localOneUinHeadInfo;
-    do
-    {
-      return localObject;
-      localOneUinHeadInfo = new OneUinHeadInfo();
-      if (paramOneUinHeadInfo.uint64_uin.has()) {
-        localOneUinHeadInfo.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
-      }
-      if (paramOneUinHeadInfo.uint64_tinyid.has()) {
-        localOneUinHeadInfo.b = paramOneUinHeadInfo.uint64_tinyid.get();
-      }
-      localOneUinHeadInfo.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
-      localObject = localOneUinHeadInfo;
-    } while (!paramOneUinHeadInfo.rpt_msg_head_list.has());
-    localOneUinHeadInfo.jdField_a_of_type_JavaUtilArrayList = DynamicAvatarInfo.UinHeadInfo.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
+    OneUinHeadInfo localOneUinHeadInfo = new OneUinHeadInfo();
+    if (paramOneUinHeadInfo.uint64_uin.has()) {
+      localOneUinHeadInfo.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
+    }
+    if (paramOneUinHeadInfo.uint64_tinyid.has()) {
+      localOneUinHeadInfo.b = paramOneUinHeadInfo.uint64_tinyid.get();
+    }
+    localOneUinHeadInfo.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
+    if (paramOneUinHeadInfo.rpt_msg_head_list.has()) {
+      localOneUinHeadInfo.jdField_a_of_type_JavaUtilArrayList = DynamicAvatarInfo.UinHeadInfo.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
+    }
     return localOneUinHeadInfo;
   }
   
   public static ArrayList<OneUinHeadInfo> a(List<oidb_0x74b.OneUinHeadInfo> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      OneUinHeadInfo localOneUinHeadInfo = a((oidb_0x74b.OneUinHeadInfo)paramList.next());
-      if (localOneUinHeadInfo != null) {
-        localArrayList.add(localOneUinHeadInfo);
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        OneUinHeadInfo localOneUinHeadInfo = a((oidb_0x74b.OneUinHeadInfo)paramList.next());
+        if (localOneUinHeadInfo != null) {
+          localArrayList.add(localOneUinHeadInfo);
+        }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfo.OneUinHeadInfo
  * JD-Core Version:    0.7.0.1
  */

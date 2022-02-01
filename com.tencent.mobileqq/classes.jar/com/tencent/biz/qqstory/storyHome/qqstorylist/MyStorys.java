@@ -40,7 +40,7 @@ public class MyStorys
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = StoryApi.a(2130968663);
+    jdField_a_of_type_ArrayOfJavaLangString = StoryApi.a(2130968664);
   }
   
   public MyStorys()
@@ -74,90 +74,123 @@ public class MyStorys
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int j = this.jdField_c_of_type_Int;
-    int n = this.e;
-    int i1 = this.jdField_d_of_type_Int;
+    int m = this.e;
+    int n = this.jdField_d_of_type_Int;
     long l2 = this.jdField_a_of_type_Long;
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 0)
     {
-    }
-    String str;
-    do
-    {
-      str = localStringBuilder.toString();
-      int i;
-      do
+      if (i != 1)
       {
-        return str;
-        if (j == 0) {
-          return StoryApi.a(2131699777);
-        }
-        localStringBuilder.append(UIUtils.a(j)).append("个小视频");
-        if (j > 0) {
-          localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]).append("浏览").append(this.jdField_a_of_type_Long);
-        }
-        return localStringBuilder.toString();
-        if (this.jdField_a_of_type_Boolean)
+        if (i != 2)
         {
-          localStringBuilder.append(UIUtils.a(j)).append("个小视频");
-          return localStringBuilder.toString();
-        }
-        localStringBuilder.append(StoryApi.a(2131699791, new Object[] { Integer.valueOf(this.g) }));
-        return localStringBuilder.toString();
-        if (this.jdField_a_of_type_Boolean)
-        {
-          localStringBuilder.append(UIUtils.a(j)).append("个小视频");
-          if (this.jdField_a_of_type_Long > 0L) {
-            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]).append("浏览").append(this.jdField_a_of_type_Long);
-          }
-          if (this.jdField_d_of_type_Int > 0) {
-            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]).append("赞").append(UIUtils.a(this.jdField_d_of_type_Int));
-          }
-          if (this.e <= 0) {
-            break;
-          }
-          localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]).append("评论").append(UIUtils.a(this.e));
-          break;
-        }
-        localStringBuilder.append(UIUtils.a(this.f)).append("个小视频发送失败");
-        break;
-        long l1 = l2;
-        int k = i1;
-        i = n;
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-        {
-          localStringBuilder.append("最近");
-          int m = this.jdField_a_of_type_JavaUtilArrayList.size();
-          l1 = l2;
-          k = i1;
-          i = n;
-          j = m;
-          if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem != null)
+          if (i == 3)
           {
-            i = this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_b_of_type_Int;
-            k = this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_a_of_type_Int;
-            l1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_c_of_type_Int;
-            j = m;
+            int k = m;
+            i = n;
+            long l1 = l2;
+            if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+            {
+              localStringBuilder.append("最近");
+              int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
+              localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem;
+              j = i1;
+              k = m;
+              i = n;
+              l1 = l2;
+              if (localObject != null)
+              {
+                k = ((FeedFeatureItem)localObject).jdField_b_of_type_Int;
+                i = this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_a_of_type_Int;
+                l1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_c_of_type_Int;
+                j = i1;
+              }
+            }
+            localStringBuilder.append(UIUtils.a(j));
+            localStringBuilder.append("个小视频");
+            Object localObject = localStringBuilder.toString();
+            if (l1 > 0L)
+            {
+              localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]);
+              localStringBuilder.append("浏览");
+              localStringBuilder.append(l1);
+            }
+            if ((paramTextPaint != null) && (paramTextPaint.measureText(localStringBuilder.toString()) > paramInt)) {
+              return localObject;
+            }
+            localObject = localStringBuilder.toString();
+            if (i > 0)
+            {
+              localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]);
+              localStringBuilder.append("赞");
+              localStringBuilder.append(UIUtils.a(i));
+            }
+            if ((paramTextPaint != null) && (paramTextPaint.measureText(localStringBuilder.toString()) > paramInt)) {
+              return localObject;
+            }
+            localObject = localStringBuilder.toString();
+            if (k > 0)
+            {
+              localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]);
+              localStringBuilder.append("评论");
+              localStringBuilder.append(UIUtils.a(k));
+            }
+            if ((paramTextPaint != null) && (paramTextPaint.measureText(localStringBuilder.toString()) > paramInt)) {
+              return localObject;
+            }
           }
         }
-        localStringBuilder.append(UIUtils.a(j)).append("个小视频");
-        str = localStringBuilder.toString();
-        if (l1 > 0L) {
-          localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]).append("浏览").append(l1);
+        else if (this.jdField_a_of_type_Boolean)
+        {
+          localStringBuilder.append(UIUtils.a(j));
+          localStringBuilder.append("个小视频");
+          if (this.jdField_a_of_type_Long > 0L)
+          {
+            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]);
+            localStringBuilder.append("浏览");
+            localStringBuilder.append(this.jdField_a_of_type_Long);
+          }
+          if (this.jdField_d_of_type_Int > 0)
+          {
+            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]);
+            localStringBuilder.append("赞");
+            localStringBuilder.append(UIUtils.a(this.jdField_d_of_type_Int));
+          }
+          if (this.e > 0)
+          {
+            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]);
+            localStringBuilder.append("评论");
+            localStringBuilder.append(UIUtils.a(this.e));
+          }
         }
-        if ((paramTextPaint != null) && (paramTextPaint.measureText(localStringBuilder.toString()) > paramInt)) {
-          return str;
+        else
+        {
+          localStringBuilder.append(UIUtils.a(this.f));
+          localStringBuilder.append("个小视频发送失败");
         }
-        str = localStringBuilder.toString();
-        if (k > 0) {
-          localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]).append("赞").append(UIUtils.a(k));
-        }
-      } while ((paramTextPaint != null) && (paramTextPaint.measureText(localStringBuilder.toString()) > paramInt));
-      str = localStringBuilder.toString();
-      if (i > 0) {
-        localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]).append("评论").append(UIUtils.a(i));
+        return localStringBuilder.toString();
       }
-    } while ((paramTextPaint == null) || (paramTextPaint.measureText(localStringBuilder.toString()) <= paramInt));
-    return str;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localStringBuilder.append(UIUtils.a(j));
+        localStringBuilder.append("个小视频");
+        return localStringBuilder.toString();
+      }
+      localStringBuilder.append(StoryApi.a(2131699932, new Object[] { Integer.valueOf(this.g) }));
+      return localStringBuilder.toString();
+    }
+    if (j == 0) {
+      return StoryApi.a(2131699918);
+    }
+    localStringBuilder.append(UIUtils.a(j));
+    localStringBuilder.append("个小视频");
+    if (j > 0)
+    {
+      localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]);
+      localStringBuilder.append("浏览");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+    }
+    return localStringBuilder.toString();
   }
   
   public ArrayList<StoryVideoItem> a()
@@ -172,18 +205,13 @@ public class MyStorys
     this.f = 0;
     this.jdField_d_of_type_Boolean = false;
     this.g = 0;
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      if (this.jdField_c_of_type_Int > 0) {}
-    }
-    do
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (((ArrayList)localObject).size() != 0))
     {
-      return;
-      this.jdField_a_of_type_Int = 3;
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)((Iterator)localObject).next();
         int i = StoryListUtils.a(localStoryVideoItem.mUploadStatus);
         if ((i == 1) || (i == 0))
         {
@@ -197,10 +225,18 @@ public class MyStorys
           this.jdField_d_of_type_Boolean = true;
         }
       }
-    } while (this.jdField_a_of_type_Int == 1);
-    if (this.f > 0)
-    {
-      this.jdField_a_of_type_Int = 2;
+      if (this.jdField_a_of_type_Int == 1) {
+        return;
+      }
+      if (this.f > 0)
+      {
+        this.jdField_a_of_type_Int = 2;
+        return;
+      }
+      this.jdField_a_of_type_Int = 3;
+      return;
+    }
+    if (this.jdField_c_of_type_Int <= 0) {
       return;
     }
     this.jdField_a_of_type_Int = 3;
@@ -223,22 +259,20 @@ public class MyStorys
   
   public void a(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    if (paramStoryVideoItem == null) {}
-    for (;;)
-    {
+    if (paramStoryVideoItem == null) {
       return;
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramString))
       {
-        if (((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramString))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.set(i, paramStoryVideoItem);
-          return;
-        }
-        i += 1;
+        this.jdField_a_of_type_JavaUtilArrayList.set(i, paramStoryVideoItem);
+        return;
       }
+      i += 1;
     }
   }
   
@@ -256,8 +290,13 @@ public class MyStorys
           this.jdField_a_of_type_JavaUtilHashMap.put(localStoryVideoItem.mVid, localStoryVideoItem);
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   public int b()
@@ -282,21 +321,19 @@ public class MyStorys
   
   public void b(StoryVideoItem paramStoryVideoItem)
   {
-    if (paramStoryVideoItem == null) {}
-    for (;;)
-    {
+    if (paramStoryVideoItem == null) {
       return;
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramStoryVideoItem.mVid))
       {
-        if (((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramStoryVideoItem.mVid))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.set(i, paramStoryVideoItem);
-          return;
-        }
-        i += 1;
+        this.jdField_a_of_type_JavaUtilArrayList.set(i, paramStoryVideoItem);
+        return;
       }
+      i += 1;
     }
   }
   
@@ -305,42 +342,45 @@ public class MyStorys
     if (paramStoryVideoItem == null) {
       return;
     }
-    for (;;)
+    try
     {
-      int i;
-      try
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramStoryVideoItem.mVid);
+      i = 0;
+    }
+    finally
+    {
+      for (;;)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramStoryVideoItem.mVid);
-        i = 0;
-        if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+        int i;
+        for (;;)
         {
-          if (((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramStoryVideoItem.mVid)) {
-            this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-          }
+          throw paramStoryVideoItem;
         }
-        else
-        {
-          if ((this.jdField_a_of_type_JavaUtilArrayList.size() != 0) || (this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem == null)) {
-            break;
-          }
-          this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_b_of_type_Int = 0;
-          this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_c_of_type_Int = 0;
-          paramStoryVideoItem = (StoryConfigManager)SuperManager.a(10);
-          paramStoryVideoItem.b("qqstory_my_visiter_count", Integer.valueOf(0));
-          paramStoryVideoItem.b("qqstory_my_newest_video_cover", "");
-          paramStoryVideoItem.b("qqstory_my_newest_video_vid", "");
-          break;
-        }
+        i += 1;
       }
-      finally {}
-      i += 1;
+    }
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (!((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramStoryVideoItem.mVid)) {
+        break label160;
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+    }
+    if ((this.jdField_a_of_type_JavaUtilArrayList.size() == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem != null))
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_c_of_type_Int = 0;
+      paramStoryVideoItem = (StoryConfigManager)SuperManager.a(10);
+      paramStoryVideoItem.b("qqstory_my_visiter_count", Integer.valueOf(0));
+      paramStoryVideoItem.b("qqstory_my_newest_video_cover", "");
+      paramStoryVideoItem.b("qqstory_my_newest_video_vid", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys
  * JD-Core Version:    0.7.0.1
  */

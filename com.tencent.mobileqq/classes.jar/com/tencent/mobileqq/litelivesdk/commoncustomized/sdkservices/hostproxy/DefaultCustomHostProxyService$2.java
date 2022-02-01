@@ -8,6 +8,18 @@ class DefaultCustomHostProxyService$2
 {
   DefaultCustomHostProxyService$2(DefaultCustomHostProxyService paramDefaultCustomHostProxyService) {}
   
+  public boolean aekitResAsyncLoad()
+  {
+    return false;
+  }
+  
+  public boolean disableExternalMiniCard()
+  {
+    return false;
+  }
+  
+  public void floatWindowPermissionRequestResult(boolean paramBoolean) {}
+  
   public boolean isBackgroundPlay()
   {
     return this.a.a();
@@ -19,6 +31,11 @@ class DefaultCustomHostProxyService$2
   }
   
   public boolean isFloatWindowShowWhenAppInBackground()
+  {
+    return false;
+  }
+  
+  public boolean isFloatWindowShowWhenRoomFinish()
   {
     return false;
   }
@@ -40,7 +57,7 @@ class DefaultCustomHostProxyService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.hostproxy.DefaultCustomHostProxyService.2
  * JD-Core Version:    0.7.0.1
  */

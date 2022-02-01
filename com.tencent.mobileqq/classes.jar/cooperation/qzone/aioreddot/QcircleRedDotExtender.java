@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameExtenderViewBasicAbility;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.BaseChatItemLayoutViewBasicAbility;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameLayoutExtender;
 import com.tencent.mobileqq.utils.ViewUtils;
 
@@ -25,7 +25,7 @@ public class QcircleRedDotExtender
       int i = ViewUtils.b(15.0F);
       int j = ViewUtils.b(22.0F);
       this.mTroopQcircleView = new URLImageView(this.mContext);
-      this.mTroopQcircleView.setId(2131364675);
+      this.mTroopQcircleView.setId(2131364562);
       this.mTroopQcircleView.setVisibility(8);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, i);
       localLayoutParams.leftMargin = ViewUtils.a(2.0F);
@@ -33,7 +33,7 @@ public class QcircleRedDotExtender
     }
   }
   
-  public NickNameExtenderViewBasicAbility getBasicAbility()
+  public BaseChatItemLayoutViewBasicAbility getBasicAbility()
   {
     if (this.ability == null) {
       this.ability = new QcircleRedDotExtender.1(this, this.mTroopQcircleView);
@@ -49,7 +49,7 @@ public class QcircleRedDotExtender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.aioreddot.QcircleRedDotExtender
  * JD-Core Version:    0.7.0.1
  */

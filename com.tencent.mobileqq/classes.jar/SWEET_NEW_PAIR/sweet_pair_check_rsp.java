@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class sweet_pair_check_rsp
   extends JceStruct
@@ -57,20 +58,22 @@ public final class sweet_pair_check_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.rsp_comm, 0);
-    if (this.req_comm != null) {
-      paramJceOutputStream.write(this.req_comm, 1);
+    Object localObject = this.req_comm;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
     paramJceOutputStream.write(this.host_state, 2);
     paramJceOutputStream.write(this.right, 3);
-    if (this.lst_invite != null) {
-      paramJceOutputStream.write(this.lst_invite, 4);
+    localObject = this.lst_invite;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
     paramJceOutputStream.write(this.is_qqfriend, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_PAIR.sweet_pair_check_rsp
  * JD-Core Version:    0.7.0.1
  */

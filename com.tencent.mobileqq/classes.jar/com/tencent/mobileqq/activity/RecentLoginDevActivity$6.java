@@ -16,21 +16,17 @@ class RecentLoginDevActivity$6
         RecentLoginDevActivity.a(this.this$0).dismiss();
         RecentLoginDevActivity.a(this.this$0).cancel();
       }
-      RecentLoginDevActivity.a(this.this$0, null);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    RecentLoginDevActivity.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RecentLoginDevActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -29,8 +29,13 @@ public class TeleScreenConfig$Config
   
   private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TeleScreenConfig", 2, "telescreen config: " + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("telescreen config: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("TeleScreenConfig", 2, ((StringBuilder)localObject).toString());
     }
     if (TextUtils.isEmpty(paramString))
     {
@@ -48,84 +53,78 @@ public class TeleScreenConfig$Config
       {
         paramString = new JSONObject(paramString);
         this.jdField_a_of_type_Int = ((int)(paramString.optDouble("download_timeout") * 1000.0D));
-        if (this.jdField_a_of_type_Int <= 0)
-        {
+        if (this.jdField_a_of_type_Int <= 0) {
           i = 10000;
-          this.jdField_a_of_type_Int = i;
-          this.jdField_b_of_type_Int = ((int)(paramString.optDouble("jump_timeout") * 1000.0D));
-          if (this.jdField_b_of_type_Int <= 0)
-          {
-            i = 5000;
-            this.jdField_b_of_type_Int = i;
-            if (paramString.optInt("use_block_mode", 1) != 0) {
-              break label385;
-            }
-            bool = true;
-            this.jdField_a_of_type_Boolean = bool;
-            localJSONArray = paramString.optJSONArray("check_white_list");
-            this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
-            if (localJSONArray == null) {
-              continue;
-            }
-            i = localJSONArray.length() - 1;
-            if (i < 0) {
-              continue;
-            }
-            if (TextUtils.isEmpty(localJSONArray.getString(i))) {
-              break label378;
-            }
-            this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(localJSONArray.getString(i));
-            break label378;
-          }
-        }
-        else
-        {
+        } else {
           i = this.jdField_a_of_type_Int;
-          continue;
         }
-        i = this.jdField_b_of_type_Int;
-        continue;
-        JSONArray localJSONArray = paramString.optJSONArray("scheme_white_list");
-        this.jdField_b_of_type_AndroidSupportV4UtilArraySet.clear();
-        if (localJSONArray != null)
+        this.jdField_a_of_type_Int = i;
+        this.jdField_b_of_type_Int = ((int)(paramString.optDouble("jump_timeout") * 1000.0D));
+        if (this.jdField_b_of_type_Int <= 0) {
+          i = 5000;
+        } else {
+          i = this.jdField_b_of_type_Int;
+        }
+        this.jdField_b_of_type_Int = i;
+        if (paramString.optInt("use_block_mode", 1) == 0)
         {
-          i = localJSONArray.length() - 1;
-          if (i >= 0)
+          bool = true;
+          this.jdField_a_of_type_Boolean = bool;
+          localObject = paramString.optJSONArray("check_white_list");
+          this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
+          if (localObject != null)
           {
-            if (TextUtils.isEmpty(localJSONArray.getString(i))) {
-              break label390;
+            i = ((JSONArray)localObject).length() - 1;
+            if (i >= 0)
+            {
+              if (TextUtils.isEmpty(((JSONArray)localObject).getString(i))) {
+                break label396;
+              }
+              this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(((JSONArray)localObject).getString(i));
+              break label396;
             }
-            this.jdField_b_of_type_AndroidSupportV4UtilArraySet.add(localJSONArray.getString(i));
-            break label390;
           }
+          localObject = paramString.optJSONArray("scheme_white_list");
+          this.jdField_b_of_type_AndroidSupportV4UtilArraySet.clear();
+          if (localObject != null)
+          {
+            i = ((JSONArray)localObject).length() - 1;
+            if (i >= 0)
+            {
+              if (TextUtils.isEmpty(((JSONArray)localObject).getString(i))) {
+                break label403;
+              }
+              this.jdField_b_of_type_AndroidSupportV4UtilArraySet.add(((JSONArray)localObject).getString(i));
+              break label403;
+            }
+          }
+          paramString = paramString.optJSONArray("md5");
+          this.c.clear();
+          if (paramString != null)
+          {
+            i = paramString.length() - 1;
+            if (i >= 0)
+            {
+              if (!TextUtils.isEmpty(paramString.getString(i))) {
+                this.c.add(new String(Base64.decode(paramString.getString(i), 0)));
+              }
+              i -= 1;
+              continue;
+            }
+          }
+          return;
         }
-        paramString = paramString.optJSONArray("md5");
-        this.c.clear();
-        if (paramString == null) {
-          break;
-        }
-        i = paramString.length() - 1;
-        if (i < 0) {
-          break;
-        }
-        if (!TextUtils.isEmpty(paramString.getString(i))) {
-          this.c.add(new String(Base64.decode(paramString.getString(i), 0)));
-        }
-        i -= 1;
-        continue;
-        i -= 1;
       }
       catch (JSONException paramString)
       {
         QLog.e("TeleScreenConfig", 1, paramString, new Object[0]);
-        return;
       }
-      label378:
-      continue;
-      label385:
       boolean bool = false;
       continue;
-      label390:
+      label396:
+      i -= 1;
+      continue;
+      label403:
       i -= 1;
     }
   }
@@ -163,7 +162,7 @@ public class TeleScreenConfig$Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.TeleScreenConfig.Config
  * JD-Core Version:    0.7.0.1
  */

@@ -16,38 +16,34 @@ public class TextSelectableHelper
   
   private SelectableComponent a(View paramView)
   {
-    if (paramView == null) {}
-    do
-    {
+    if (paramView == null) {
       return null;
-      if ((paramView.getParent() instanceof SelectableComponent)) {
-        return (SelectableComponent)paramView.getParent();
-      }
-    } while (!(paramView instanceof SelectableComponent));
-    return (SelectableComponent)paramView;
+    }
+    if ((paramView.getParent() instanceof SelectableComponent)) {
+      return (SelectableComponent)paramView.getParent();
+    }
+    if ((paramView instanceof SelectableComponent)) {
+      return (SelectableComponent)paramView;
+    }
+    return null;
   }
   
   void a(View paramView, CommonMenuWrapper paramCommonMenuWrapper)
   {
     SelectableComponent localSelectableComponent = a(paramView);
-    if (localSelectableComponent == null) {}
-    SelectableDelegate localSelectableDelegate;
-    do
-    {
+    if (localSelectableComponent == null) {
       return;
-      localSelectableDelegate = localSelectableComponent.delegate();
-    } while ((localSelectableDelegate == null) || (!localSelectableDelegate.b()) || (localSelectableComponent.hasSelected()));
-    if (this.a == 2)
-    {
-      localSelectableDelegate.c(d);
-      localSelectableDelegate.b(e);
     }
-    for (;;)
+    SelectableDelegate localSelectableDelegate = localSelectableComponent.delegate();
+    if ((localSelectableDelegate != null) && (localSelectableDelegate.b()) && (!localSelectableComponent.hasSelected()))
     {
-      localSelectableDelegate.a(paramCommonMenuWrapper);
-      localSelectableComponent.doSelecting(null);
-      return;
-      if (this.a == 1)
+      int i = this.a;
+      if (i == 2)
+      {
+        localSelectableDelegate.c(d);
+        localSelectableDelegate.b(e);
+      }
+      else if (i == 1)
       {
         localSelectableDelegate.c(b);
         localSelectableDelegate.b(c);
@@ -55,20 +51,28 @@ public class TextSelectableHelper
       else
       {
         paramView = paramView.getResources();
-        int i = paramView.getColorStateList(2131167008).getDefaultColor();
-        int j = paramView.getColorStateList(2131167010).getDefaultColor();
+        i = paramView.getColorStateList(2131167031).getDefaultColor();
+        int j = paramView.getColorStateList(2131167033).getDefaultColor();
         localSelectableDelegate.c(i);
         localSelectableDelegate.b(j);
-        if (QLog.isColorLevel()) {
-          QLog.d("ChatAdapterSelectableHelper", 0, "Load Select color, cursor=" + i + ", component=" + j);
+        if (QLog.isColorLevel())
+        {
+          paramView = new StringBuilder();
+          paramView.append("Load Select color, cursor=");
+          paramView.append(i);
+          paramView.append(", component=");
+          paramView.append(j);
+          QLog.d("ChatAdapterSelectableHelper", 0, paramView.toString());
         }
       }
+      localSelectableDelegate.a(paramCommonMenuWrapper);
+      localSelectableComponent.doSelecting(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.TextSelectableHelper
  * JD-Core Version:    0.7.0.1
  */

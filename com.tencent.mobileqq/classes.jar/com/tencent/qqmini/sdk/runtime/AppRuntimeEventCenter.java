@@ -13,7 +13,10 @@ public class AppRuntimeEventCenter
     if (paramObject == null) {
       return;
     }
-    QMLog.d("minisdk-start_AppStateManager", "notifyChange msg=" + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyChange msg=");
+    localStringBuilder.append(paramObject);
+    QMLog.d("minisdk-start_AppStateManager", localStringBuilder.toString());
     setChanged();
     if (paramObject != null)
     {
@@ -25,7 +28,7 @@ public class AppRuntimeEventCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppRuntimeEventCenter
  * JD-Core Version:    0.7.0.1
  */

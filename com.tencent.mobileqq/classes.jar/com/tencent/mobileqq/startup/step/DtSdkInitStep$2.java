@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.statistics.QQBeaconReport;
 import com.tencent.qphone.base.util.QLog;
 
 final class DtSdkInitStep$2
@@ -10,17 +9,15 @@ final class DtSdkInitStep$2
 {
   public void run()
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null)
+    if (BaseApplicationImpl.getApplication() != null)
     {
       long l = System.currentTimeMillis();
-      UserAction.initUserAction(localBaseApplicationImpl, false);
-      DtSdkInitStep.d();
-      if (!AppSetting.c()) {
-        UserAction.setLogAble(false, false);
-      }
-      com.tencent.beacon.upload.UploadStrategy.DEFAULT_SENSOR_ENABLE = false;
-      QLog.d("DtSdkInitStep", 1, "init beacon-dt success ! cost : " + (System.currentTimeMillis() - l) + " ms");
+      QQBeaconReport.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init beacon-dt success ! cost : ");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      localStringBuilder.append(" ms");
+      QLog.d("DtSdkInitStep", 1, localStringBuilder.toString());
       return;
     }
     QLog.d("DtSdkInitStep", 1, "init beacon-dt error ! app is null");
@@ -28,7 +25,7 @@ final class DtSdkInitStep$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.DtSdkInitStep.2
  * JD-Core Version:    0.7.0.1
  */

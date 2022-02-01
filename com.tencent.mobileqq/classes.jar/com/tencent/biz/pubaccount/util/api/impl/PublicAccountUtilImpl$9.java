@@ -2,13 +2,11 @@ package com.tencent.biz.pubaccount.util.api.impl;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
 import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import mqq.observer.BusinessObserver;
 import mqq.os.MqqHandler;
@@ -21,44 +19,50 @@ final class PublicAccountUtilImpl$9
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("success:");
+      ((StringBuilder)localObject).append(String.valueOf(paramBoolean));
+      QLog.d("PublicAccountUtil", 2, ((StringBuilder)localObject).toString());
     }
     if (!paramBoolean)
     {
-      PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695222);
+      PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
       return;
     }
     try
     {
-      byte[] arrayOfByte = paramBundle.getByteArray("data");
+      localObject = paramBundle.getByteArray("data");
       paramInt = paramBundle.getInt("type", 0);
-      if (arrayOfByte != null)
+      if (localObject != null)
       {
         paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
         oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
         if (paramInt == 0)
         {
-          paramBundle.mergeFrom(arrayOfByte);
+          paramBundle.mergeFrom((byte[])localObject);
           paramBoolean = true;
         }
-        while (paramBoolean) {
+        else
+        {
+          paramBoolean = PublicAccountUtilImpl.convert0xcf8ToMobileMP((byte[])localObject, localGetPublicAccountDetailInfoResponse, paramBundle);
+        }
+        if (paramBoolean)
+        {
           if ((paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0))
           {
             ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountUtilImpl.9.1(this, paramBundle), 10L);
             return;
-            paramBoolean = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).convert0xcf8ToMobileMP(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle);
           }
-          else
-          {
-            PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695222);
-            return;
-          }
+          PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+          return;
         }
-        PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695222);
+        PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
         return;
       }
-      PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695222);
+      PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
       return;
     }
     catch (Exception paramBundle) {}
@@ -66,7 +70,7 @@ final class PublicAccountUtilImpl$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.9
  * JD-Core Version:    0.7.0.1
  */

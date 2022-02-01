@@ -7,15 +7,15 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.appcommon.OpensdkBusinessObserver;
 import com.tencent.open.business.base.AppUtil;
 import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
 
 class AppLaucherHelper$4
-  implements BusinessObserver
+  implements OpensdkBusinessObserver
 {
   AppLaucherHelper$4(AppLaucherHelper paramAppLaucherHelper, long paramLong, String paramString, Context paramContext, int paramInt) {}
   
@@ -23,137 +23,225 @@ class AppLaucherHelper$4
   {
     if (QLog.isColorLevel())
     {
-      QLog.d("AppLaucherHelper", 2, "t=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("t=");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      QLog.d("AppLaucherHelper", 2, ((StringBuilder)localObject1).toString());
       QLog.d(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.getClass().getSimpleName(), 2, "onReceive");
     }
     new Bundle();
     Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject3;
     if (paramBoolean)
     {
-      Object localObject2 = paramBundle.getByteArray("data");
-      try
-      {
-        paramBundle = new FastAuthorize.AuthorizeResponse();
-        paramBundle.mergeFrom((byte[])localObject2);
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("ret=").append(paramBundle.ret.get()).append(", ");
-          ((StringBuilder)localObject2).append("msg=").append(paramBundle.msg.get()).append(", ");
-          ((StringBuilder)localObject2).append("access_token=").append(paramBundle.access_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("expires_in=").append(paramBundle.expires_in.get()).append(", ");
-          ((StringBuilder)localObject2).append("openid=").append(paramBundle.openid.get()).append(", ");
-          ((StringBuilder)localObject2).append("pay_token=").append(paramBundle.pay_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("pf=").append(paramBundle.pf.get()).append(", ");
-          ((StringBuilder)localObject2).append("pfkey=").append(paramBundle.pfkey.get()).append(", ");
-          ((StringBuilder)localObject2).append("encrykey=").append(paramBundle.encrykey.get()).append(", ");
-          ((StringBuilder)localObject2).append("apk_name=").append(paramBundle.apk_name.get()).append(", ");
-          QLog.d("AppLaucherHelper", 2, "FastAuthorize.AuthorizeResponse=[" + ((StringBuilder)localObject2).toString() + "]");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_JavaLangString);
-        if ((!paramBundle.ret.get().equals("0")) || (!paramBundle.apk_name.has())) {
-          break label1163;
-        }
-        if (paramBundle.access_token.has())
-        {
-          localObject2 = paramBundle.access_token.get();
-          this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString.replace("$AT$", (CharSequence)localObject2);
-        }
-        if (paramBundle.pay_token.has())
-        {
-          localObject2 = paramBundle.pay_token.get();
-          this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString.replace("$PT$", (CharSequence)localObject2);
-        }
-        if (paramBundle.openid.has())
-        {
-          localObject2 = paramBundle.openid.get();
-          this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString.replace("$OPID$", (CharSequence)localObject2);
-        }
-        for (;;)
-        {
-          if (paramBundle.pfkey.has())
-          {
-            localObject2 = paramBundle.pfkey.get();
-            this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString.replace("$PF$", (CharSequence)localObject2);
-          }
-          if (paramBundle.encrykey.has())
-          {
-            localObject2 = paramBundle.encrykey.get();
-            this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString.replace("$ESK$", (CharSequence)localObject2);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.getClass().getSimpleName(), 2, "mParams=" + this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString);
-          }
-          paramBundle = paramBundle.apk_name.get();
-          if ((!TextUtils.isEmpty(paramBundle)) && (paramBundle.contains(this.jdField_a_of_type_JavaLangString))) {
-            break;
-          }
-          AppLaucherHelper.jdField_a_of_type_Boolean = false;
-          QLog.d(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.getClass().getSimpleName(), 2, "cant't start app pkg invalide");
-          return;
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("ret=").append(paramBundle.ret.get()).append(", ");
-          ((StringBuilder)localObject2).append("msg=").append(paramBundle.msg.get()).append(", ");
-          ((StringBuilder)localObject2).append("access_token=").append(paramBundle.access_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("expires_in=").append(paramBundle.expires_in.get()).append(", ");
-          ((StringBuilder)localObject2).append("openid=").append(paramBundle.openid.get()).append(", ");
-          ((StringBuilder)localObject2).append("pay_token=").append(paramBundle.pay_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("pf=").append(paramBundle.pf.get()).append(", ");
-          ((StringBuilder)localObject2).append("pfkey=").append(paramBundle.pfkey.get()).append(", ");
-          ((StringBuilder)localObject2).append("encrykey=").append(paramBundle.encrykey.get()).append(", ");
-          ((StringBuilder)localObject2).append("apk_name=").append(paramBundle.apk_name.get()).append(", ");
-          QLog.d("AppLaucherHelper", 1, "FastAuthorize.AuthorizeResponse=[" + ((StringBuilder)localObject2).toString() + "]");
-        }
-        localObject1 = paramBundle;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-      {
-        paramBundle = (Bundle)localObject1;
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.getClass().getSimpleName(), 2, localInvalidProtocolBufferMicroException1.getMessage());
-          localObject1 = paramBundle;
-        }
-        for (;;)
-        {
-          paramBundle = AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString);
-          if (QLog.isColorLevel()) {
-            QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
-          }
-          AppUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, paramBundle, this.jdField_a_of_type_Int);
-          AppLaucherHelper.jdField_a_of_type_Boolean = false;
-          if (this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent == null) {
-            return;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-          this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
-          return;
-          try
-          {
-            QLog.d(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.getClass().getSimpleName(), 4, "pkg=" + paramBundle);
-            localObject1 = paramBundle;
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2) {}
-        }
-      }
-      label1163:
-      QLog.d(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.getClass().getSimpleName(), 4, "start without login state");
+      localObject3 = paramBundle.getByteArray("data");
+      paramBundle = (Bundle)localObject1;
     }
+    label1447:
     for (;;)
     {
-      break;
+      try
+      {
+        Object localObject2 = new FastAuthorize.AuthorizeResponse();
+        paramBundle = (Bundle)localObject1;
+        ((FastAuthorize.AuthorizeResponse)localObject2).mergeFrom((byte[])localObject3);
+        paramBundle = (Bundle)localObject1;
+        paramBoolean = QLog.isColorLevel();
+        if (!paramBoolean) {
+          break label1447;
+        }
+        paramBundle = (Bundle)localObject1;
+        localObject3 = new StringBuilder();
+        paramBundle = (Bundle)localObject1;
+        ((StringBuilder)localObject3).append("ret=");
+        paramBundle = (Bundle)localObject1;
+        ((StringBuilder)localObject3).append(((FastAuthorize.AuthorizeResponse)localObject2).ret.get());
+        paramBundle = (Bundle)localObject1;
+        ((StringBuilder)localObject3).append(", ");
+        paramBundle = (Bundle)localObject1;
+        ((StringBuilder)localObject3).append("msg=");
+        paramBundle = (Bundle)localObject1;
+        ((StringBuilder)localObject3).append(((FastAuthorize.AuthorizeResponse)localObject2).msg.get());
+        paramBundle = (Bundle)localObject1;
+        ((StringBuilder)localObject3).append(", ");
+        paramBundle = (Bundle)localObject1;
+        ((StringBuilder)localObject3).append("access_token=");
+        paramBundle = (Bundle)localObject1;
+        ((StringBuilder)localObject3).append(((FastAuthorize.AuthorizeResponse)localObject2).access_token.get());
+        paramBundle = (Bundle)localObject1;
+        ((StringBuilder)localObject3).append(", ");
+        paramBundle = (Bundle)localObject1;
+        ((StringBuilder)localObject3).append("expires_in=");
+        paramBundle = (Bundle)localObject1;
+        PBInt64Field localPBInt64Field = ((FastAuthorize.AuthorizeResponse)localObject2).expires_in;
+        try
+        {
+          ((StringBuilder)localObject3).append(localPBInt64Field.get());
+          ((StringBuilder)localObject3).append(", ");
+          ((StringBuilder)localObject3).append("openid=");
+          ((StringBuilder)localObject3).append(((FastAuthorize.AuthorizeResponse)localObject2).openid.get());
+          ((StringBuilder)localObject3).append(", ");
+          ((StringBuilder)localObject3).append("pay_token=");
+          ((StringBuilder)localObject3).append(((FastAuthorize.AuthorizeResponse)localObject2).pay_token.get());
+          ((StringBuilder)localObject3).append(", ");
+          ((StringBuilder)localObject3).append("pf=");
+          ((StringBuilder)localObject3).append(((FastAuthorize.AuthorizeResponse)localObject2).pf.get());
+          ((StringBuilder)localObject3).append(", ");
+          ((StringBuilder)localObject3).append("pfkey=");
+          ((StringBuilder)localObject3).append(((FastAuthorize.AuthorizeResponse)localObject2).pfkey.get());
+          ((StringBuilder)localObject3).append(", ");
+          ((StringBuilder)localObject3).append("encrykey=");
+          ((StringBuilder)localObject3).append(((FastAuthorize.AuthorizeResponse)localObject2).encrykey.get());
+          ((StringBuilder)localObject3).append(", ");
+          ((StringBuilder)localObject3).append("apk_name=");
+          ((StringBuilder)localObject3).append(((FastAuthorize.AuthorizeResponse)localObject2).apk_name.get());
+          ((StringBuilder)localObject3).append(", ");
+          paramBundle = new StringBuilder();
+          paramBundle.append("FastAuthorize.AuthorizeResponse=[");
+          paramBundle.append(((StringBuilder)localObject3).toString());
+          paramBundle.append("]");
+          QLog.d("AppLaucherHelper", 2, paramBundle.toString());
+          paramBundle = (Bundle)localObject1;
+          this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+          this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+          this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_JavaLangString);
+          if ((((FastAuthorize.AuthorizeResponse)localObject2).ret.get().equals("0")) && (((FastAuthorize.AuthorizeResponse)localObject2).apk_name.has()))
+          {
+            if (((FastAuthorize.AuthorizeResponse)localObject2).access_token.has())
+            {
+              paramBundle = ((FastAuthorize.AuthorizeResponse)localObject2).access_token.get();
+              this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString.replace("$AT$", paramBundle);
+            }
+            if (((FastAuthorize.AuthorizeResponse)localObject2).pay_token.has())
+            {
+              paramBundle = ((FastAuthorize.AuthorizeResponse)localObject2).pay_token.get();
+              this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString.replace("$PT$", paramBundle);
+            }
+            if (((FastAuthorize.AuthorizeResponse)localObject2).openid.has())
+            {
+              paramBundle = ((FastAuthorize.AuthorizeResponse)localObject2).openid.get();
+              this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString.replace("$OPID$", paramBundle);
+            }
+            else
+            {
+              paramBundle = new StringBuilder();
+              paramBundle.append("ret=");
+              paramBundle.append(((FastAuthorize.AuthorizeResponse)localObject2).ret.get());
+              paramBundle.append(", ");
+              paramBundle.append("msg=");
+              paramBundle.append(((FastAuthorize.AuthorizeResponse)localObject2).msg.get());
+              paramBundle.append(", ");
+              paramBundle.append("access_token=");
+              paramBundle.append(((FastAuthorize.AuthorizeResponse)localObject2).access_token.get());
+              paramBundle.append(", ");
+              paramBundle.append("expires_in=");
+              paramBundle.append(((FastAuthorize.AuthorizeResponse)localObject2).expires_in.get());
+              paramBundle.append(", ");
+              paramBundle.append("openid=");
+              paramBundle.append(((FastAuthorize.AuthorizeResponse)localObject2).openid.get());
+              paramBundle.append(", ");
+              paramBundle.append("pay_token=");
+              paramBundle.append(((FastAuthorize.AuthorizeResponse)localObject2).pay_token.get());
+              paramBundle.append(", ");
+              paramBundle.append("pf=");
+              paramBundle.append(((FastAuthorize.AuthorizeResponse)localObject2).pf.get());
+              paramBundle.append(", ");
+              paramBundle.append("pfkey=");
+              paramBundle.append(((FastAuthorize.AuthorizeResponse)localObject2).pfkey.get());
+              paramBundle.append(", ");
+              paramBundle.append("encrykey=");
+              paramBundle.append(((FastAuthorize.AuthorizeResponse)localObject2).encrykey.get());
+              paramBundle.append(", ");
+              paramBundle.append("apk_name=");
+              paramBundle.append(((FastAuthorize.AuthorizeResponse)localObject2).apk_name.get());
+              paramBundle.append(", ");
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("FastAuthorize.AuthorizeResponse=[");
+              ((StringBuilder)localObject3).append(paramBundle.toString());
+              ((StringBuilder)localObject3).append("]");
+              QLog.d("AppLaucherHelper", 1, ((StringBuilder)localObject3).toString());
+            }
+            if (((FastAuthorize.AuthorizeResponse)localObject2).pfkey.has())
+            {
+              paramBundle = ((FastAuthorize.AuthorizeResponse)localObject2).pfkey.get();
+              this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString.replace("$PF$", paramBundle);
+            }
+            if (((FastAuthorize.AuthorizeResponse)localObject2).encrykey.has())
+            {
+              paramBundle = ((FastAuthorize.AuthorizeResponse)localObject2).encrykey.get();
+              this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString.replace("$ESK$", paramBundle);
+            }
+            if (QLog.isColorLevel())
+            {
+              paramBundle = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.getClass().getSimpleName();
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("mParams=");
+              ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString);
+              QLog.d(paramBundle, 2, ((StringBuilder)localObject3).toString());
+            }
+            localObject2 = ((FastAuthorize.AuthorizeResponse)localObject2).apk_name.get();
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
+            {
+              paramBoolean = ((String)localObject2).contains(this.jdField_a_of_type_JavaLangString);
+              if (paramBoolean)
+              {
+                paramBundle = (Bundle)localObject2;
+                localObject1 = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.getClass().getSimpleName();
+                paramBundle = (Bundle)localObject2;
+                localObject3 = new StringBuilder();
+                paramBundle = (Bundle)localObject2;
+                ((StringBuilder)localObject3).append("pkg=");
+                paramBundle = (Bundle)localObject2;
+                ((StringBuilder)localObject3).append((String)localObject2);
+                paramBundle = (Bundle)localObject2;
+                QLog.d((String)localObject1, 4, ((StringBuilder)localObject3).toString());
+                paramBundle = (Bundle)localObject2;
+                break label1354;
+              }
+            }
+            AppLaucherHelper.jdField_a_of_type_Boolean = false;
+            QLog.d(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.getClass().getSimpleName(), 2, "cant't start app pkg invalide");
+          }
+          else
+          {
+            QLog.d(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.getClass().getSimpleName(), 4, "start without login state");
+          }
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1) {}
+        paramBundle = (Bundle)localObject1;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+      {
+        localObject1 = paramBundle;
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.d(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.getClass().getSimpleName(), 2, localInvalidProtocolBufferMicroException2.getMessage());
+        paramBundle = (Bundle)localObject1;
+      }
+      label1354:
+      localObject1 = paramBundle;
+      break label1368;
       QLog.e("AppLaucherHelper", 1, "FastAuthorize.AuthorizeRequest failed");
+      label1368:
+      paramBundle = AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
+      }
+      AppUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, paramBundle, this.jdField_a_of_type_Int);
+      AppLaucherHelper.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.gamecenter.AppLaucherHelper.4
  * JD-Core Version:    0.7.0.1
  */

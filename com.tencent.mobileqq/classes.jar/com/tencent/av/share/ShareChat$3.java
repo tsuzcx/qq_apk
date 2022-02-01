@@ -2,11 +2,10 @@ package com.tencent.av.share;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import com.tencent.av.utils.DataReport.ShareChat;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troop.data.TroopInfoData;
 import java.lang.ref.WeakReference;
 
 final class ShareChat$3
@@ -55,7 +54,7 @@ final class ShareChat$3
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt3 == 2) {
-      DataReport.ShareChat.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
+      ShareChatReport.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
     }
     ShareChat.a(this.jdField_a_of_type_Long, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
   }
@@ -73,13 +72,13 @@ final class ShareChat$3
   public void b(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt3 == 2) {
-      DataReport.ShareChat.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
+      ShareChatReport.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.3
  * JD-Core Version:    0.7.0.1
  */

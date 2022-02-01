@@ -16,13 +16,14 @@ class SDKEmotionSettingManager$6
     if (QLog.isColorLevel()) {
       QLog.w("SDKEmotionSettingManager", 2, "checkApiTimeOutRunnable -->preForward--checkapi timeout");
     }
-    this.this$0.b = true;
-    SDKEmotionSettingManager.b(this.this$0);
+    SDKEmotionSettingManager localSDKEmotionSettingManager = this.this$0;
+    localSDKEmotionSettingManager.b = true;
+    SDKEmotionSettingManager.b(localSDKEmotionSettingManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.6
  * JD-Core Version:    0.7.0.1
  */

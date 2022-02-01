@@ -30,24 +30,26 @@ public class RollingTranslateAnimation
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    float f1 = this.i + (this.j - this.i) * paramFloat;
+    float f1 = this.i;
+    f1 += (this.j - f1) * paramFloat;
     if ((this.m == 0.0F) && (this.n == 0.0F)) {
       paramTransformation.getMatrix().setRotate(f1);
-    }
-    for (;;)
-    {
-      f1 = this.jdField_e_of_type_Float;
-      float f2 = this.g;
-      if (this.jdField_e_of_type_Float != this.jdField_f_of_type_Float) {
-        f1 = this.jdField_e_of_type_Float + (this.jdField_f_of_type_Float - this.jdField_e_of_type_Float) * paramFloat;
-      }
-      if (this.g != this.h) {
-        f2 = this.g + (this.h - this.g) * paramFloat;
-      }
-      paramTransformation.getMatrix().postTranslate(f1, f2);
-      return;
+    } else {
       paramTransformation.getMatrix().setRotate(f1, this.m, this.n);
     }
+    float f3 = this.jdField_e_of_type_Float;
+    float f2 = this.g;
+    float f4 = this.jdField_f_of_type_Float;
+    f1 = f3;
+    if (f3 != f4) {
+      f1 = f3 + (f4 - f3) * paramFloat;
+    }
+    f3 = this.g;
+    f4 = this.h;
+    if (f3 != f4) {
+      f2 = f3 + (f4 - f3) * paramFloat;
+    }
+    paramTransformation.getMatrix().postTranslate(f1, f2);
   }
   
   public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -63,7 +65,7 @@ public class RollingTranslateAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RollingTranslateAnimation
  * JD-Core Version:    0.7.0.1
  */

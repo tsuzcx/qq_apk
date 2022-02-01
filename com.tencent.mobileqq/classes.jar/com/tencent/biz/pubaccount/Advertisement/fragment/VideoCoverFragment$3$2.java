@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.Advertisement.fragment;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 
 class VideoCoverFragment$3$2
   implements Runnable
@@ -14,7 +14,7 @@ class VideoCoverFragment$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.2
  * JD-Core Version:    0.7.0.1
  */

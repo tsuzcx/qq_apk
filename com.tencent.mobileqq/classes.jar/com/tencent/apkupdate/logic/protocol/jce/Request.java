@@ -30,14 +30,15 @@ public final class Request
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.head, 0);
-    if (this.body != null) {
-      paramJceOutputStream.write(this.body, 1);
+    byte[] arrayOfByte = this.body;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.logic.protocol.jce.Request
  * JD-Core Version:    0.7.0.1
  */

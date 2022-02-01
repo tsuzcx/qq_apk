@@ -1,19 +1,8 @@
 package com.tencent.biz.qqstory.storyHome.memory;
 
 import android.view.View;
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.newshare.StoryShare;
-import com.tencent.biz.qqstory.newshare.mode.InfoCardShareMode;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.Arrays;
 
 class StoryMemoriesFragment$2
   implements ActionSheet.OnButtonClickListener
@@ -22,83 +11,12 @@ class StoryMemoriesFragment$2
   
   public void OnClick(View paramView, int paramInt)
   {
-    int i = 1;
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
-    paramInt = StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment, this.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt));
-    int j = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_Int);
-    String str1;
-    label79:
-    String str2;
-    if (StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe())
-    {
-      paramView = "1";
-      if (!StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip()) {
-        break label231;
-      }
-      str1 = "1";
-      if ((!StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend()) && (!StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe())) {
-        break label238;
-      }
-      str2 = "1";
-      label115:
-      StoryReportor.a("memory", "clk_more_one", j, 0, new String[] { paramView, str1, str2, StoryMemoriesFragment.a(paramInt, StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe(), StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe()) });
-      switch (paramInt)
-      {
-      }
-    }
-    label231:
-    label238:
-    do
-    {
-      return;
-      paramView = "2";
-      break;
-      str1 = "2";
-      break label79;
-      str2 = "2";
-      break label115;
-      StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment);
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment.a(StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-      return;
-      if (StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe())
-      {
-        paramInt = 1;
-        paramView = (QQStoryHandler)PlayModeUtils.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER);
-        if (!StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip()) {
-          break label341;
-        }
-      }
-      for (;;)
-      {
-        paramView.a(i, StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_JavaLangString, paramInt, 2);
-        return;
-        paramInt = 0;
-        break;
-        i = 0;
-      }
-      PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment.getActivity(), StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem, new StoryMemoriesFragment.2.1(this));
-      return;
-      if (StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe())
-      {
-        StoryMemoriesFragment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment);
-        return;
-      }
-      StoryMemoriesFragment.c(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment);
-      return;
-    } while (UIUtils.b());
-    label341:
-    if (StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment) == null) {
-      StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment, StoryShare.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment.getActivity()));
-    }
-    StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).a(Arrays.asList(new int[][] { { 1, 2, 3, 4, 5 }, { 6 } }));
-    StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).a(2131719311).a(new InfoCardShareMode(StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem)).a(new StoryMemoriesFragment.2.2(this)).b();
-    StoryReportor.a("memory", "clk_share", StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_Int), 0, new String[] { "", "", "", "" });
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment.2
  * JD-Core Version:    0.7.0.1
  */

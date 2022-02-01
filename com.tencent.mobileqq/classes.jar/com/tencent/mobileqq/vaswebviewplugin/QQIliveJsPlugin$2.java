@@ -9,9 +9,8 @@ import com.tencent.ilivesdk.roomservice_interface.model.LiveRoomInfo;
 import com.tencent.livesdk.roomengine.RoomEnginLogic;
 import com.tencent.livesdk.roomengine.RoomEngine;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.ilive.lite.IliveLiteHelper;
 import cooperation.ilive.lite.event.IliveLiteEventCenter.Observer;
-import java.util.HashMap;
+import cooperation.ilive.lite.floatwindow.IliveFloatWindowHelper;
 import org.json.JSONObject;
 
 class QQIliveJsPlugin$2
@@ -24,50 +23,59 @@ class QQIliveJsPlugin$2
     if ((paramString.equals("ACTION_CLOSE_ROOM")) && (QQIliveJsPlugin.access$000(this.this$0) != null)) {
       try
       {
-        paramString = QQIliveJsPlugin.access$000(this.this$0).getModuleRoomEngine();
-        if (paramString == null) {
-          return false;
-        }
-        Activity localActivity = ((ActivityLifeService)paramString.getService(ActivityLifeService.class)).getTopActivity();
-        if ((localActivity != null) && (localActivity.getRequestedOrientation() == 0)) {
-          return false;
-        }
-        paramString = paramString.getEnginLogic();
-        if (paramString == null) {
-          return false;
-        }
-        paramString = paramString.getLiveInfo();
-        if ((paramString == null) || (paramString.roomInfo == null)) {
-          break label243;
-        }
-        long l1 = paramString.roomInfo.roomId;
-        long l2 = paramBundle.getLong("roomId");
-        int i = paramBundle.getInt("closeFrom");
-        if ((l1 == l2) && (QQIliveJsPlugin.access$100(this.this$0)))
+        Object localObject = QQIliveJsPlugin.access$000(this.this$0).getModuleRoomEngine();
+        if (localObject != null)
         {
-          paramString = new JSONObject();
-          paramString.put("ret", 0);
-          paramString.put("type", 1);
-          this.this$0.callJs(QQIliveJsPlugin.access$200(this.this$0), new String[] { paramString.toString() });
-          QQIliveJsPlugin.access$300(this.this$0).put(Long.valueOf(l1), Integer.valueOf(i));
-          IliveLiteHelper.b();
-          return true;
+          if (paramBundle == null) {
+            return false;
+          }
+          paramString = ((ActivityLifeService)((RoomEngine)localObject).getService(ActivityLifeService.class)).getTopActivity();
+          if ((paramString != null) && (paramString.getRequestedOrientation() == 0)) {
+            return false;
+          }
+          localObject = ((RoomEngine)localObject).getEnginLogic();
+          if (localObject == null) {
+            return false;
+          }
+          localObject = ((RoomEnginLogic)localObject).getLiveInfo();
+          if (localObject != null)
+          {
+            if (((LiveInfo)localObject).roomInfo == null) {
+              return false;
+            }
+            long l1 = ((LiveInfo)localObject).roomInfo.roomId;
+            long l2 = paramBundle.getLong("roomId");
+            int i = paramBundle.getInt("closeFrom");
+            if ((l1 != l2) || (!QQIliveJsPlugin.access$100(this.this$0))) {
+              break label247;
+            }
+            paramBundle = new JSONObject();
+            paramBundle.put("ret", 0);
+            paramBundle.put("type", 1);
+            if (IliveFloatWindowHelper.a(paramString, new QQIliveJsPlugin.PermissionCallback(this.this$0, l1, i, paramBundle))) {
+              return true;
+            }
+            QQIliveJsPlugin.access$200(this.this$0, l1, i, paramBundle);
+            return true;
+          }
         }
+        return false;
       }
       catch (Exception paramString)
       {
-        QLog.e("QQIliveJsPlugin", 1, "error getLiveRoomIndex " + paramString);
+        paramBundle = new StringBuilder();
+        paramBundle.append("error getLiveRoomIndex ");
+        paramBundle.append(paramString);
+        QLog.e("QQIliveJsPlugin", 1, paramBundle.toString());
       }
-    } else {
-      return false;
     }
-    label243:
+    label247:
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQIliveJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

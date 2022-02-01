@@ -19,12 +19,17 @@ class AudioPlayerManager$2
         paramMediaPlayer.playBuffering();
       }
     }
-    ViolaLogUtils.d("AudioPlayerManager", "onBufferingUpdate,data:" + AudioPlayerManager.access$500(this.this$0) + ",percent:" + paramInt);
+    paramMediaPlayer = new StringBuilder();
+    paramMediaPlayer.append("onBufferingUpdate,data:");
+    paramMediaPlayer.append(AudioPlayerManager.access$500(this.this$0));
+    paramMediaPlayer.append(",percent:");
+    paramMediaPlayer.append(paramInt);
+    ViolaLogUtils.d("AudioPlayerManager", paramMediaPlayer.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.AudioPlayerManager.2
  * JD-Core Version:    0.7.0.1
  */

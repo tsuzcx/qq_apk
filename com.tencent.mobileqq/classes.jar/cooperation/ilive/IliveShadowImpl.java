@@ -1,6 +1,5 @@
 package cooperation.ilive;
 
-import NS_KING_PUBLIC.stAuth;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.common.config.AppSetting;
@@ -14,7 +13,6 @@ import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.tencent.shadow.dynamic.host.PluginManager;
 import cooperation.ilive.manager.IliveAuthManager;
 import cooperation.ilive.util.ElapseStat;
-import cooperation.qqreader.utils.Log;
 import java.util.concurrent.ExecutorService;
 
 public class IliveShadowImpl
@@ -41,46 +39,126 @@ public class IliveShadowImpl
   
   public static IliveShadowImpl a()
   {
-    if (jdField_a_of_type_CooperationIliveIliveShadowImpl == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationIliveIliveShadowImpl == null) {
-        jdField_a_of_type_CooperationIliveIliveShadowImpl = new IliveShadowImpl();
+    if (jdField_a_of_type_CooperationIliveIliveShadowImpl == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationIliveIliveShadowImpl == null) {
+          jdField_a_of_type_CooperationIliveIliveShadowImpl = new IliveShadowImpl();
+        }
       }
-      return jdField_a_of_type_CooperationIliveIliveShadowImpl;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationIliveIliveShadowImpl;
   }
   
-  private void a(Context paramContext, long paramLong, PluginManager paramPluginManager, Bundle paramBundle, stAuth paramstAuth, EnterCallback paramEnterCallback)
+  /* Error */
+  private void a(Context paramContext, long paramLong, PluginManager paramPluginManager, Bundle paramBundle, NS_KING_PUBLIC.stAuth paramstAuth, EnterCallback paramEnterCallback)
   {
-    ElapseStat.a("IliveLaunch enterWithAuth");
-    Bundle localBundle2 = paramBundle.getBundle("KEY_EXTRAS");
-    Bundle localBundle1 = localBundle2;
-    if (localBundle2 == null) {
-      localBundle1 = new Bundle();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("IliveAuthShadowImpl", 2, "start enterWithAuth  , uid = " + paramstAuth.sUid);
-    }
-    localBundle1.putString("openID", paramstAuth.sUid);
-    localBundle1.putString("token", paramstAuth.sSessionKey);
-    localBundle1.putInt("auth_type", 0);
-    paramBundle.putBundle("KEY_EXTRAS", localBundle1);
-    try
-    {
-      paramPluginManager.enter(paramContext, paramLong, paramBundle, new IliveShadowImpl.2(this, paramEnterCallback, paramLong));
-      ElapseStat.b("IliveLaunch enterWithAuth");
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        QLog.e("IliveAuthShadowImpl", 1, "enterWithAuth exception , e = " + paramContext.getMessage());
-      }
-    }
+    // Byte code:
+    //   0: ldc 56
+    //   2: invokestatic 61	cooperation/ilive/util/ElapseStat:a	(Ljava/lang/String;)V
+    //   5: aload 5
+    //   7: ldc 63
+    //   9: invokevirtual 69	android/os/Bundle:getBundle	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   12: astore 9
+    //   14: aload 9
+    //   16: astore 8
+    //   18: aload 9
+    //   20: ifnonnull +12 -> 32
+    //   23: new 65	android/os/Bundle
+    //   26: dup
+    //   27: invokespecial 70	android/os/Bundle:<init>	()V
+    //   30: astore 8
+    //   32: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   35: ifeq +42 -> 77
+    //   38: new 77	java/lang/StringBuilder
+    //   41: dup
+    //   42: invokespecial 78	java/lang/StringBuilder:<init>	()V
+    //   45: astore 9
+    //   47: aload 9
+    //   49: ldc 80
+    //   51: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: pop
+    //   55: aload 9
+    //   57: aload 6
+    //   59: getfield 90	NS_KING_PUBLIC/stAuth:sUid	Ljava/lang/String;
+    //   62: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: pop
+    //   66: ldc 92
+    //   68: iconst_2
+    //   69: aload 9
+    //   71: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   74: invokestatic 100	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   77: aload 8
+    //   79: ldc 102
+    //   81: aload 6
+    //   83: getfield 90	NS_KING_PUBLIC/stAuth:sUid	Ljava/lang/String;
+    //   86: invokevirtual 106	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: aload 8
+    //   91: ldc 108
+    //   93: aload 6
+    //   95: getfield 111	NS_KING_PUBLIC/stAuth:sSessionKey	Ljava/lang/String;
+    //   98: invokevirtual 106	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: aload 8
+    //   103: ldc 113
+    //   105: iconst_0
+    //   106: invokevirtual 117	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   109: aload 5
+    //   111: ldc 63
+    //   113: aload 8
+    //   115: invokevirtual 121	android/os/Bundle:putBundle	(Ljava/lang/String;Landroid/os/Bundle;)V
+    //   118: aload 4
+    //   120: aload_1
+    //   121: lload_2
+    //   122: aload 5
+    //   124: new 123	cooperation/ilive/IliveShadowImpl$2
+    //   127: dup
+    //   128: aload_0
+    //   129: aload 7
+    //   131: lload_2
+    //   132: invokespecial 126	cooperation/ilive/IliveShadowImpl$2:<init>	(Lcooperation/ilive/IliveShadowImpl;Lcom/tencent/shadow/dynamic/host/EnterCallback;J)V
+    //   135: invokeinterface 132 6 0
+    //   140: goto +51 -> 191
+    //   143: astore_1
+    //   144: goto +5 -> 149
+    //   147: astore 4
+    //   149: aload_1
+    //   150: invokevirtual 135	java/lang/Throwable:printStackTrace	()V
+    //   153: new 77	java/lang/StringBuilder
+    //   156: dup
+    //   157: invokespecial 78	java/lang/StringBuilder:<init>	()V
+    //   160: astore 4
+    //   162: aload 4
+    //   164: ldc 137
+    //   166: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   169: pop
+    //   170: aload 4
+    //   172: aload_1
+    //   173: invokevirtual 140	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   176: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: pop
+    //   180: ldc 92
+    //   182: iconst_1
+    //   183: aload 4
+    //   185: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   188: invokestatic 100	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   191: ldc 56
+    //   193: invokestatic 143	cooperation/ilive/util/ElapseStat:b	(Ljava/lang/String;)V
+    //   196: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	197	0	this	IliveShadowImpl
+    //   0	197	1	paramContext	Context
+    //   0	197	2	paramLong	long
+    //   0	197	4	paramPluginManager	PluginManager
+    //   0	197	5	paramBundle	Bundle
+    //   0	197	6	paramstAuth	NS_KING_PUBLIC.stAuth
+    //   0	197	7	paramEnterCallback	EnterCallback
+    //   16	98	8	localObject1	Object
+    //   12	58	9	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   118	140	143	java/lang/Throwable
   }
   
   private void a(Context paramContext, String paramString1, String paramString2, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
@@ -88,13 +166,18 @@ public class IliveShadowImpl
     try
     {
       paramString2 = getPluginManager(paramContext, paramString1, paramString2);
-      Log.c("IliveAuthShadowImpl", "enter: " + paramLong + ", frameVersion = " + "1");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enter: ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(", frameVersion = ");
+      localStringBuilder.append("1");
+      QLog.i("IliveAuthShadowImpl", 1, localStringBuilder.toString());
       ElapseStat.a("stAuth");
       if (paramString2 != null)
       {
         long l = System.currentTimeMillis();
         paramBundle.putString("hostuid", paramString1);
-        paramBundle.putString("hostVersion", "8.5.5");
+        paramBundle.putString("hostVersion", "8.7.0");
         paramBundle.putInt("key_frame_version", Integer.valueOf("1").intValue());
         paramBundle.putLong("entryTime", l);
         if (!IlivePluginDownloadManager.a().a())
@@ -116,14 +199,14 @@ public class IliveShadowImpl
         IliveAuthManager.getInstance().getStAuth(this.jdField_a_of_type_CooperationIliveIliveShadowImpl$AuthCallback, true);
         return;
       }
+      QLog.e("IliveAuthShadowImpl", 1, "[enter] pluginManager is null !");
+      return;
     }
     catch (Throwable paramContext)
     {
       paramContext.printStackTrace();
       QLog.e("IliveAuthShadowImpl", 1, "enter exception ", paramContext);
-      return;
     }
-    QLog.e("IliveAuthShadowImpl", 1, "[enter] pluginManager is null !");
   }
   
   public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
@@ -157,7 +240,7 @@ public class IliveShadowImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IliveShadowImpl
  * JD-Core Version:    0.7.0.1
  */

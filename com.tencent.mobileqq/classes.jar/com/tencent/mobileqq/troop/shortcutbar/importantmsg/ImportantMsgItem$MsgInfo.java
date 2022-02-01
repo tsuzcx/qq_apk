@@ -43,10 +43,12 @@ public class ImportantMsgItem$MsgInfo
   
   public int compareTo(MsgInfo paramMsgInfo)
   {
-    if (this.msgSeq > paramMsgInfo.msgSeq) {
+    long l1 = this.msgSeq;
+    long l2 = paramMsgInfo.msgSeq;
+    if (l1 > l2) {
       return 1;
     }
-    if (this.msgSeq == paramMsgInfo.msgSeq) {
+    if (l1 == l2) {
       return 0;
     }
     return -1;
@@ -54,28 +56,48 @@ public class ImportantMsgItem$MsgInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    while ((!(paramObject instanceof MsgInfo)) || (((MsgInfo)paramObject).msgSeq != this.msgSeq)) {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof MsgInfo))
+    {
+      bool1 = bool2;
+      if (((MsgInfo)paramObject).msgSeq == this.msgSeq) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("msgTime").append("=").append(this.msgTime);
-    localStringBuilder.append(", msgSeq").append("=").append(this.msgSeq);
-    localStringBuilder.append(", msgSendUin").append("=").append(this.msgSendUin);
-    localStringBuilder.append(", msgEnum").append("=").append(this.msgEnum);
-    localStringBuilder.append(", msgNeedShow").append("=").append(this.msgNeedShow);
-    localStringBuilder.append(", msgNotShowType").append("=").append(this.msgNotShowType);
+    localStringBuilder.append("msgTime");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.msgTime);
+    localStringBuilder.append(", msgSeq");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.msgSeq);
+    localStringBuilder.append(", msgSendUin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.msgSendUin);
+    localStringBuilder.append(", msgEnum");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.msgEnum);
+    localStringBuilder.append(", msgNeedShow");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.msgNeedShow);
+    localStringBuilder.append(", msgNotShowType");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.msgNotShowType);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgItem.MsgInfo
  * JD-Core Version:    0.7.0.1
  */

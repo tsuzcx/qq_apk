@@ -141,7 +141,7 @@ public class MediaCodecVideoRenderer
   
   private static boolean codecNeedsSetOutputSurfaceWorkaround(String paramString)
   {
-    return ((!"deb".equals(Util.DEVICE)) && (!"flo".equals(Util.DEVICE))) || (("OMX.qcom.video.decoder.avc".equals(paramString)) || (((!"tcl_eu".equals(Util.DEVICE)) && (!"SVP-DTV15".equals(Util.DEVICE)) && (!"BRAVIA_ATV2".equals(Util.DEVICE)) && (!Util.DEVICE.startsWith("panell_")) && (!"F3311".equals(Util.DEVICE)) && (!"M5c".equals(Util.DEVICE)) && (!"A7010a48".equals(Util.DEVICE))) || (("OMX.MTK.VIDEO.DECODER.AVC".equals(paramString)) || ((("ALE-L21".equals(Util.MODEL)) || ("CAM-L21".equals(Util.MODEL))) && ("OMX.k3.video.decoder.avc".equals(paramString))))));
+    return (("deb".equals(Util.DEVICE)) || ("flo".equals(Util.DEVICE))) && (("OMX.qcom.video.decoder.avc".equals(paramString)) || ((("tcl_eu".equals(Util.DEVICE)) || ("SVP-DTV15".equals(Util.DEVICE)) || ("BRAVIA_ATV2".equals(Util.DEVICE)) || (Util.DEVICE.startsWith("panell_")) || ("F3311".equals(Util.DEVICE)) || ("M5c".equals(Util.DEVICE)) || ("A7010a48".equals(Util.DEVICE))) && (("OMX.MTK.VIDEO.DECODER.AVC".equals(paramString)) || ((("ALE-L21".equals(Util.MODEL)) || ("CAM-L21".equals(Util.MODEL))) && ("OMX.k3.video.decoder.avc".equals(paramString))))));
   }
   
   @TargetApi(21)
@@ -158,98 +158,74 @@ public class MediaCodecVideoRenderer
   
   private static Point getCodecMaxSize(MediaCodecInfo paramMediaCodecInfo, Format paramFormat)
   {
-    int i;
-    int j;
-    label25:
-    int k;
-    label36:
-    float f1;
-    int[] arrayOfInt;
-    int i3;
-    int m;
-    if (paramFormat.height > paramFormat.width)
-    {
+    int i = paramFormat.height;
+    int j = paramFormat.width;
+    int m = 0;
+    if (i > j) {
       i = 1;
-      if (i == 0) {
-        break label101;
-      }
-      j = paramFormat.height;
-      if (i == 0) {
-        break label110;
-      }
-      k = paramFormat.width;
-      f1 = k / j;
-      arrayOfInt = STANDARD_LONG_EDGE_VIDEO_PX;
-      i3 = arrayOfInt.length;
-      m = 0;
+    } else {
+      i = 0;
     }
-    for (;;)
+    if (i != 0) {
+      j = paramFormat.height;
+    } else {
+      j = paramFormat.width;
+    }
+    int k;
+    if (i != 0) {
+      k = paramFormat.width;
+    } else {
+      k = paramFormat.height;
+    }
+    float f1 = k / j;
+    int[] arrayOfInt = STANDARD_LONG_EDGE_VIDEO_PX;
+    int i3 = arrayOfInt.length;
+    while (m < i3)
     {
-      if (m >= i3) {
-        break label276;
-      }
-      int i1 = arrayOfInt[m];
-      int n = (int)(i1 * f1);
-      if ((i1 <= j) || (n <= k))
-      {
-        return null;
-        i = 0;
+      int n = arrayOfInt[m];
+      int i1 = (int)(n * f1);
+      if (n <= j) {
         break;
-        label101:
-        j = paramFormat.width;
-        break label25;
-        label110:
-        k = paramFormat.height;
-        break label36;
+      }
+      if (i1 <= k) {
+        return null;
       }
       if (Util.SDK_INT >= 21)
       {
         int i2;
-        if (i != 0)
-        {
-          i2 = n;
-          if (i == 0) {
-            break label185;
-          }
-        }
-        for (;;)
-        {
-          Point localPoint = paramMediaCodecInfo.alignVideoSizeV21(i2, i1);
-          float f2 = paramFormat.frameRate;
-          if (!paramMediaCodecInfo.isVideoSizeAndRateSupportedV21(localPoint.x, localPoint.y, f2)) {
-            break label267;
-          }
-          return localPoint;
+        if (i != 0) {
           i2 = i1;
-          break;
-          label185:
-          i1 = n;
+        } else {
+          i2 = n;
+        }
+        if (i == 0) {
+          n = i1;
+        }
+        Point localPoint = paramMediaCodecInfo.alignVideoSizeV21(i2, n);
+        float f2 = paramFormat.frameRate;
+        if (paramMediaCodecInfo.isVideoSizeAndRateSupportedV21(localPoint.x, localPoint.y, f2)) {
+          return localPoint;
         }
       }
-      i1 = Util.ceilDivide(i1, 16) * 16;
-      n = Util.ceilDivide(n, 16) * 16;
-      if (i1 * n <= MediaCodecUtil.maxH264DecodableFrameSize())
+      else
       {
-        if (i != 0)
+        n = Util.ceilDivide(n, 16) * 16;
+        i1 = Util.ceilDivide(i1, 16) * 16;
+        if (n * i1 <= MediaCodecUtil.maxH264DecodableFrameSize())
         {
-          j = n;
-          if (i == 0) {
-            break label260;
+          if (i != 0) {
+            j = i1;
+          } else {
+            j = n;
           }
-        }
-        for (;;)
-        {
+          if (i != 0) {
+            i1 = n;
+          }
           return new Point(j, i1);
-          j = i1;
-          break;
-          label260:
-          i1 = n;
         }
       }
-      label267:
       m += 1;
     }
-    label276:
     return null;
   }
   
@@ -272,71 +248,80 @@ public class MediaCodecVideoRenderer
   
   private static int getMaxInputSize(String paramString, int paramInt1, int paramInt2)
   {
-    int j = 2;
-    if ((paramInt1 == -1) || (paramInt2 == -1)) {
-      return -1;
-    }
-    label76:
-    int i;
-    switch (paramString.hashCode())
+    if (paramInt1 != -1)
     {
-    default: 
-      i = -1;
-    }
-    for (;;)
-    {
+      if (paramInt2 == -1) {
+        return -1;
+      }
+      int i = paramString.hashCode();
+      int j = 4;
       switch (i)
       {
       default: 
-        return -1;
-        if (!paramString.equals("video/3gpp")) {
-          break label76;
+        break;
+      case 1599127257: 
+        if (paramString.equals("video/x-vnd.on2.vp9")) {
+          i = 5;
         }
-        i = 0;
-        continue;
-        if (!paramString.equals("video/mp4v-es")) {
-          break label76;
+        break;
+      case 1599127256: 
+        if (paramString.equals("video/x-vnd.on2.vp8")) {
+          i = 3;
         }
-        i = 1;
-        continue;
-        if (!paramString.equals("video/avc")) {
-          break label76;
+        break;
+      case 1331836730: 
+        if (paramString.equals("video/avc")) {
+          i = 2;
         }
-        i = 2;
-        continue;
-        if (!paramString.equals("video/x-vnd.on2.vp8")) {
-          break label76;
+        break;
+      case 1187890754: 
+        if (paramString.equals("video/mp4v-es")) {
+          i = 1;
         }
-        i = 3;
-        continue;
-        if (!paramString.equals("video/hevc")) {
-          break label76;
+        break;
+      case -1662541442: 
+        if (paramString.equals("video/hevc")) {
+          i = 4;
         }
-        i = 4;
-        continue;
-        if (!paramString.equals("video/x-vnd.on2.vp9")) {
-          break label76;
+        break;
+      case -1664118616: 
+        if (paramString.equals("video/3gpp")) {
+          i = 0;
         }
-        i = 5;
+        break;
       }
-    }
-    paramInt1 *= paramInt2;
-    paramInt2 = j;
-    for (;;)
-    {
-      return paramInt1 * 3 / (paramInt2 * 2);
-      if ("BRAVIA 4K 2015".equals(Util.MODEL)) {
-        return -1;
+      i = -1;
+      if ((i != 0) && (i != 1)) {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if ((i != 4) && (i != 5)) {
+              return -1;
+            }
+            paramInt2 = paramInt1 * paramInt2;
+            paramInt1 = j;
+            break label263;
+          }
+        }
+        else
+        {
+          if ("BRAVIA 4K 2015".equals(Util.MODEL)) {
+            return -1;
+          }
+          paramInt1 = Util.ceilDivide(paramInt1, 16) * Util.ceilDivide(paramInt2, 16) * 16 * 16;
+          break label257;
+        }
       }
-      paramInt1 = Util.ceilDivide(paramInt1, 16) * Util.ceilDivide(paramInt2, 16) * 16 * 16;
-      paramInt2 = j;
-      continue;
       paramInt1 *= paramInt2;
-      paramInt2 = j;
-      continue;
-      paramInt1 *= paramInt2;
-      paramInt2 = 4;
+      label257:
+      i = 2;
+      paramInt2 = paramInt1;
+      paramInt1 = i;
+      label263:
+      return paramInt2 * 3 / (paramInt1 * 2);
     }
+    return -1;
   }
   
   private static float getPixelWidthHeightRatio(Format paramFormat)
@@ -405,12 +390,13 @@ public class MediaCodecVideoRenderer
   
   private void setJoiningDeadlineMs()
   {
-    if (this.allowedJoiningTimeMs > 0L) {}
-    for (long l = SystemClock.elapsedRealtime() + this.allowedJoiningTimeMs;; l = -9223372036854775807L)
-    {
-      this.joiningDeadlineMs = l;
-      return;
+    long l;
+    if (this.allowedJoiningTimeMs > 0L) {
+      l = SystemClock.elapsedRealtime() + this.allowedJoiningTimeMs;
+    } else {
+      l = -9223372036854775807L;
     }
+    this.joiningDeadlineMs = l;
   }
   
   @TargetApi(23)
@@ -424,64 +410,58 @@ public class MediaCodecVideoRenderer
     Surface localSurface = paramSurface;
     if (paramSurface == null)
     {
-      if (this.dummySurface != null) {
-        localSurface = this.dummySurface;
+      localSurface = this.dummySurface;
+      if (localSurface == null)
+      {
+        MediaCodecInfo localMediaCodecInfo = getCodecInfo();
+        localSurface = paramSurface;
+        if (localMediaCodecInfo != null)
+        {
+          localSurface = paramSurface;
+          if (shouldUseDummySurface(localMediaCodecInfo))
+          {
+            this.dummySurface = DummySurface.newInstanceV17(this.context, localMediaCodecInfo.secure);
+            localSurface = this.dummySurface;
+          }
+        }
       }
     }
-    else
+    if (this.surface != localSurface)
     {
-      if (this.surface == localSurface) {
-        break label177;
-      }
       this.surface = localSurface;
-      i = getState();
+      int i = getState();
       if ((i == 1) || (i == 2))
       {
         paramSurface = getCodec();
-        if ((Util.SDK_INT < 23) || (paramSurface == null) || (localSurface == null) || (this.codecNeedsSetOutputSurfaceWorkaround)) {
-          break label157;
+        if ((Util.SDK_INT >= 23) && (paramSurface != null) && (localSurface != null) && (!this.codecNeedsSetOutputSurfaceWorkaround))
+        {
+          setOutputSurfaceV23(paramSurface, localSurface);
         }
-        setOutputSurfaceV23(paramSurface, localSurface);
+        else
+        {
+          releaseCodec();
+          maybeInitCodec();
+        }
       }
-      if ((localSurface == null) || (localSurface == this.dummySurface)) {
-        break label168;
-      }
-      maybeRenotifyVideoSizeChanged();
-      clearRenderedFirstFrame();
-      if (i == 2) {
-        setJoiningDeadlineMs();
-      }
-    }
-    label157:
-    label168:
-    label177:
-    while ((localSurface == null) || (localSurface == this.dummySurface))
-    {
-      for (;;)
+      if ((localSurface != null) && (localSurface != this.dummySurface))
       {
-        int i;
-        return;
-        MediaCodecInfo localMediaCodecInfo = getCodecInfo();
-        localSurface = paramSurface;
-        if (localMediaCodecInfo == null) {
-          break;
+        maybeRenotifyVideoSizeChanged();
+        clearRenderedFirstFrame();
+        if (i == 2) {
+          setJoiningDeadlineMs();
         }
-        localSurface = paramSurface;
-        if (!shouldUseDummySurface(localMediaCodecInfo)) {
-          break;
-        }
-        this.dummySurface = DummySurface.newInstanceV17(this.context, localMediaCodecInfo.secure);
-        localSurface = this.dummySurface;
-        break;
-        releaseCodec();
-        maybeInitCodec();
       }
-      clearReportedVideoSize();
-      clearRenderedFirstFrame();
-      return;
+      else
+      {
+        clearReportedVideoSize();
+        clearRenderedFirstFrame();
+      }
     }
-    maybeRenotifyVideoSizeChanged();
-    maybeRenotifyRenderedFirstFrame();
+    else if ((localSurface != null) && (localSurface != this.dummySurface))
+    {
+      maybeRenotifyVideoSizeChanged();
+      maybeRenotifyRenderedFirstFrame();
+    }
   }
   
   private static void setVideoScalingMode(MediaCodec paramMediaCodec, int paramInt)
@@ -494,12 +474,12 @@ public class MediaCodecVideoRenderer
     return (Util.SDK_INT >= 23) && (!this.tunneling) && (!codecNeedsSetOutputSurfaceWorkaround(paramMediaCodecInfo.name)) && ((!paramMediaCodecInfo.secure) || (DummySurface.isSecureSupported(this.context)));
   }
   
-  public boolean canReconfigureCodec(MediaCodec paramMediaCodec, boolean paramBoolean, Format paramFormat1, Format paramFormat2)
+  protected boolean canReconfigureCodec(MediaCodec paramMediaCodec, boolean paramBoolean, Format paramFormat1, Format paramFormat2)
   {
     return (areAdaptationCompatible(paramBoolean, paramFormat1, paramFormat2)) && (paramFormat2.width <= this.codecMaxValues.width) && (paramFormat2.height <= this.codecMaxValues.height) && (getMaxInputSize(paramFormat2) <= this.codecMaxValues.inputSize);
   }
   
-  public void configureCodec(MediaCodecInfo paramMediaCodecInfo, MediaCodec paramMediaCodec, Format paramFormat, MediaCrypto paramMediaCrypto)
+  protected void configureCodec(MediaCodecInfo paramMediaCodecInfo, MediaCodec paramMediaCodec, Format paramFormat, MediaCrypto paramMediaCrypto)
   {
     this.codecMaxValues = getCodecMaxValues(paramMediaCodecInfo, paramFormat, this.streamFormats);
     paramFormat = getMediaFormat(paramFormat, this.codecMaxValues, this.deviceNeedsAutoFrcWorkaround, this.tunnelingAudioSessionId);
@@ -526,7 +506,7 @@ public class MediaCodecVideoRenderer
   }
   
   @CallSuper
-  public void flushCodec()
+  protected void flushCodec()
   {
     super.flushCodec();
     this.buffersInCodecCount = 0;
@@ -540,67 +520,63 @@ public class MediaCodecVideoRenderer
     if (paramArrayOfFormat.length == 1) {
       return new MediaCodecVideoRenderer.CodecMaxValues(k, j, i);
     }
-    int i4 = paramArrayOfFormat.length;
+    int i5 = paramArrayOfFormat.length;
     int n = 0;
     int m = 0;
-    int i1;
-    if (n < i4)
+    while (m < i5)
     {
-      Format localFormat = paramArrayOfFormat[n];
-      if (!areAdaptationCompatible(paramMediaCodecInfo.adaptive, paramFormat, localFormat)) {
-        break label350;
-      }
-      if ((localFormat.width == -1) || (localFormat.height == -1))
-      {
-        i1 = 1;
-        label95:
-        i1 |= m;
-        m = Math.max(k, localFormat.width);
-        k = Math.max(j, localFormat.height);
-        j = Math.max(i, getMaxInputSize(localFormat));
-        i = i1;
-      }
-    }
-    for (;;)
-    {
-      i1 = n + 1;
-      n = m;
-      m = i;
-      i = j;
-      j = k;
-      k = n;
-      n = i1;
-      break;
-      i1 = 0;
-      break label95;
-      int i2 = i;
-      i1 = j;
-      n = k;
-      if (m != 0)
-      {
-        Log.w("MediaCodecVideoRenderer", "Resolutions unknown. Codec max resolution: " + k + "x" + j);
-        paramMediaCodecInfo = getCodecMaxSize(paramMediaCodecInfo, paramFormat);
-        i2 = i;
-        i1 = j;
-        n = k;
-        if (paramMediaCodecInfo != null)
-        {
-          n = Math.max(k, paramMediaCodecInfo.x);
-          i1 = Math.max(j, paramMediaCodecInfo.y);
-          i2 = Math.max(i, getMaxInputSize(paramFormat.sampleMimeType, n, i1));
-          Log.w("MediaCodecVideoRenderer", "Codec max resolution adjusted to: " + n + "x" + i1);
-        }
-      }
-      return new MediaCodecVideoRenderer.CodecMaxValues(n, i1, i2);
-      label350:
-      i1 = i;
-      i2 = j;
+      Format localFormat = paramArrayOfFormat[m];
+      int i4 = n;
       int i3 = k;
-      i = m;
-      j = i1;
-      k = i2;
-      m = i3;
+      i2 = j;
+      i1 = i;
+      if (areAdaptationCompatible(paramMediaCodecInfo.adaptive, paramFormat, localFormat))
+      {
+        if ((localFormat.width != -1) && (localFormat.height != -1)) {
+          i1 = 0;
+        } else {
+          i1 = 1;
+        }
+        i4 = n | i1;
+        i3 = Math.max(k, localFormat.width);
+        i2 = Math.max(j, localFormat.height);
+        i1 = Math.max(i, getMaxInputSize(localFormat));
+      }
+      m += 1;
+      n = i4;
+      k = i3;
+      j = i2;
+      i = i1;
     }
+    int i2 = k;
+    int i1 = j;
+    m = i;
+    if (n != 0)
+    {
+      paramArrayOfFormat = new StringBuilder();
+      paramArrayOfFormat.append("Resolutions unknown. Codec max resolution: ");
+      paramArrayOfFormat.append(k);
+      paramArrayOfFormat.append("x");
+      paramArrayOfFormat.append(j);
+      Log.w("MediaCodecVideoRenderer", paramArrayOfFormat.toString());
+      paramMediaCodecInfo = getCodecMaxSize(paramMediaCodecInfo, paramFormat);
+      i2 = k;
+      i1 = j;
+      m = i;
+      if (paramMediaCodecInfo != null)
+      {
+        i2 = Math.max(k, paramMediaCodecInfo.x);
+        i1 = Math.max(j, paramMediaCodecInfo.y);
+        m = Math.max(i, getMaxInputSize(paramFormat.sampleMimeType, i2, i1));
+        paramMediaCodecInfo = new StringBuilder();
+        paramMediaCodecInfo.append("Codec max resolution adjusted to: ");
+        paramMediaCodecInfo.append(i2);
+        paramMediaCodecInfo.append("x");
+        paramMediaCodecInfo.append(i1);
+        Log.w("MediaCodecVideoRenderer", paramMediaCodecInfo.toString());
+      }
+    }
+    return new MediaCodecVideoRenderer.CodecMaxValues(i2, i1, m);
   }
   
   @SuppressLint({"InlinedApi"})
@@ -623,35 +599,45 @@ public class MediaCodecVideoRenderer
   
   public void handleMessage(int paramInt, Object paramObject)
   {
-    if (paramInt == 1) {
-      setSurface((Surface)paramObject);
-    }
-    do
+    if (paramInt == 1)
     {
+      setSurface((Surface)paramObject);
       return;
-      if (paramInt != 4) {
-        break;
-      }
+    }
+    if (paramInt == 4)
+    {
       this.scalingMode = ((Integer)paramObject).intValue();
       paramObject = getCodec();
-    } while (paramObject == null);
-    setVideoScalingMode(paramObject, this.scalingMode);
-    return;
-    super.handleMessage(paramInt, paramObject);
+      if (paramObject != null) {
+        setVideoScalingMode(paramObject, this.scalingMode);
+      }
+    }
+    else
+    {
+      super.handleMessage(paramInt, paramObject);
+    }
   }
   
   public boolean isReady()
   {
-    if ((super.isReady()) && ((this.renderedFirstFrame) || ((this.dummySurface != null) && (this.surface == this.dummySurface)) || (getCodec() == null) || (this.tunneling))) {
-      this.joiningDeadlineMs = -9223372036854775807L;
-    }
-    do
-    {
-      return true;
-      if (this.joiningDeadlineMs == -9223372036854775807L) {
-        return false;
+    if (super.isReady()) {
+      if (!this.renderedFirstFrame)
+      {
+        Surface localSurface = this.dummySurface;
+        if (((localSurface == null) || (this.surface != localSurface)) && (getCodec() != null) && (!this.tunneling)) {}
       }
-    } while (SystemClock.elapsedRealtime() < this.joiningDeadlineMs);
+      else
+      {
+        this.joiningDeadlineMs = -9223372036854775807L;
+        return true;
+      }
+    }
+    if (this.joiningDeadlineMs == -9223372036854775807L) {
+      return false;
+    }
+    if (SystemClock.elapsedRealtime() < this.joiningDeadlineMs) {
+      return true;
+    }
     this.joiningDeadlineMs = -9223372036854775807L;
     return false;
   }
@@ -664,7 +650,7 @@ public class MediaCodecVideoRenderer
     }
     paramMediaCodec = this.decoderCounters;
     paramMediaCodec.droppedToKeyframeCount += 1;
-    updateDroppedBufferCounters(paramInt + this.buffersInCodecCount);
+    updateDroppedBufferCounters(this.buffersInCodecCount + paramInt);
     flushCodec();
     return true;
   }
@@ -680,13 +666,13 @@ public class MediaCodecVideoRenderer
     }
   }
   
-  public void onCodecInitialized(String paramString, long paramLong1, long paramLong2)
+  protected void onCodecInitialized(String paramString, long paramLong1, long paramLong2)
   {
     this.eventDispatcher.decoderInitialized(paramString, paramLong1, paramLong2);
     this.codecNeedsSetOutputSurfaceWorkaround = codecNeedsSetOutputSurfaceWorkaround(paramString);
   }
   
-  public void onDisabled()
+  protected void onDisabled()
   {
     this.currentWidth = -1;
     this.currentHeight = -1;
@@ -711,21 +697,21 @@ public class MediaCodecVideoRenderer
     }
   }
   
-  public void onEnabled(boolean paramBoolean)
+  protected void onEnabled(boolean paramBoolean)
   {
     super.onEnabled(paramBoolean);
     this.tunnelingAudioSessionId = getConfiguration().tunnelingAudioSessionId;
-    if (this.tunnelingAudioSessionId != 0) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.tunneling = paramBoolean;
-      this.eventDispatcher.enabled(this.decoderCounters);
-      this.frameReleaseTimeHelper.enable();
-      return;
+    if (this.tunnelingAudioSessionId != 0) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
     }
+    this.tunneling = paramBoolean;
+    this.eventDispatcher.enabled(this.decoderCounters);
+    this.frameReleaseTimeHelper.enable();
   }
   
-  public void onInputFormatChanged(Format paramFormat)
+  protected void onInputFormatChanged(Format paramFormat)
   {
     super.onInputFormatChanged(paramFormat);
     this.eventDispatcher.inputFormatChanged(paramFormat);
@@ -733,30 +719,32 @@ public class MediaCodecVideoRenderer
     this.pendingRotationDegrees = getRotationDegrees(paramFormat);
   }
   
-  public void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
+  protected void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
     int i;
-    int j;
-    if ((paramMediaFormat.containsKey("crop-right")) && (paramMediaFormat.containsKey("crop-left")) && (paramMediaFormat.containsKey("crop-bottom")) && (paramMediaFormat.containsKey("crop-top")))
-    {
+    if ((paramMediaFormat.containsKey("crop-right")) && (paramMediaFormat.containsKey("crop-left")) && (paramMediaFormat.containsKey("crop-bottom")) && (paramMediaFormat.containsKey("crop-top"))) {
       i = 1;
-      if (i == 0) {
-        break label167;
-      }
+    } else {
+      i = 0;
+    }
+    int j;
+    if (i != 0) {
       j = paramMediaFormat.getInteger("crop-right") - paramMediaFormat.getInteger("crop-left") + 1;
-      label59:
-      this.currentWidth = j;
-      if (i == 0) {
-        break label179;
-      }
+    } else {
+      j = paramMediaFormat.getInteger("width");
+    }
+    this.currentWidth = j;
+    if (i != 0) {
       i = paramMediaFormat.getInteger("crop-bottom") - paramMediaFormat.getInteger("crop-top") + 1;
-      label85:
-      this.currentHeight = i;
-      this.currentPixelWidthHeightRatio = this.pendingPixelWidthHeightRatio;
-      if (Util.SDK_INT < 21) {
-        break label190;
-      }
-      if ((this.pendingRotationDegrees == 90) || (this.pendingRotationDegrees == 270))
+    } else {
+      i = paramMediaFormat.getInteger("height");
+    }
+    this.currentHeight = i;
+    this.currentPixelWidthHeightRatio = this.pendingPixelWidthHeightRatio;
+    if (Util.SDK_INT >= 21)
+    {
+      i = this.pendingRotationDegrees;
+      if ((i == 90) || (i == 270))
       {
         i = this.currentWidth;
         this.currentWidth = this.currentHeight;
@@ -764,31 +752,22 @@ public class MediaCodecVideoRenderer
         this.currentPixelWidthHeightRatio = (1.0F / this.currentPixelWidthHeightRatio);
       }
     }
-    for (;;)
+    else
     {
-      setVideoScalingMode(paramMediaCodec, this.scalingMode);
-      return;
-      i = 0;
-      break;
-      label167:
-      j = paramMediaFormat.getInteger("width");
-      break label59;
-      label179:
-      i = paramMediaFormat.getInteger("height");
-      break label85;
-      label190:
       this.currentUnappliedRotationDegrees = this.pendingRotationDegrees;
     }
+    setVideoScalingMode(paramMediaCodec, this.scalingMode);
   }
   
-  public void onPositionReset(long paramLong, boolean paramBoolean)
+  protected void onPositionReset(long paramLong, boolean paramBoolean)
   {
     super.onPositionReset(paramLong, paramBoolean);
     clearRenderedFirstFrame();
     this.consecutiveDroppedFrameCount = 0;
-    if (this.pendingOutputStreamOffsetCount != 0)
+    int i = this.pendingOutputStreamOffsetCount;
+    if (i != 0)
     {
-      this.outputStreamOffsetUs = this.pendingOutputStreamOffsetsUs[(this.pendingOutputStreamOffsetCount - 1)];
+      this.outputStreamOffsetUs = this.pendingOutputStreamOffsetsUs[(i - 1)];
       this.pendingOutputStreamOffsetCount = 0;
     }
     if (paramBoolean)
@@ -800,13 +779,13 @@ public class MediaCodecVideoRenderer
   }
   
   @CallSuper
-  public void onProcessedOutputBuffer(long paramLong)
+  protected void onProcessedOutputBuffer(long paramLong)
   {
     this.buffersInCodecCount -= 1;
   }
   
   @CallSuper
-  public void onQueueInputBuffer(DecoderInputBuffer paramDecoderInputBuffer)
+  protected void onQueueInputBuffer(DecoderInputBuffer paramDecoderInputBuffer)
   {
     this.buffersInCodecCount += 1;
     if ((Util.SDK_INT < 23) && (this.tunneling)) {
@@ -814,7 +793,7 @@ public class MediaCodecVideoRenderer
     }
   }
   
-  public void onStarted()
+  protected void onStarted()
   {
     super.onStarted();
     this.droppedFrames = 0;
@@ -822,40 +801,54 @@ public class MediaCodecVideoRenderer
     this.lastRenderTimeUs = (SystemClock.elapsedRealtime() * 1000L);
   }
   
-  public void onStopped()
+  protected void onStopped()
   {
     this.joiningDeadlineMs = -9223372036854775807L;
     maybeNotifyDroppedFrames();
     super.onStopped();
   }
   
-  public void onStreamChanged(Format[] paramArrayOfFormat, long paramLong)
+  protected void onStreamChanged(Format[] paramArrayOfFormat, long paramLong)
   {
     this.streamFormats = paramArrayOfFormat;
     if (this.outputStreamOffsetUs == -9223372036854775807L)
     {
       this.outputStreamOffsetUs = paramLong;
-      super.onStreamChanged(paramArrayOfFormat, paramLong);
-      return;
     }
-    if (this.pendingOutputStreamOffsetCount == this.pendingOutputStreamOffsetsUs.length) {
-      Log.w("MediaCodecVideoRenderer", "Too many stream changes, so dropping offset: " + this.pendingOutputStreamOffsetsUs[(this.pendingOutputStreamOffsetCount - 1)]);
-    }
-    for (;;)
+    else
     {
+      int i = this.pendingOutputStreamOffsetCount;
+      if (i == this.pendingOutputStreamOffsetsUs.length)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Too many stream changes, so dropping offset: ");
+        localStringBuilder.append(this.pendingOutputStreamOffsetsUs[(this.pendingOutputStreamOffsetCount - 1)]);
+        Log.w("MediaCodecVideoRenderer", localStringBuilder.toString());
+      }
+      else
+      {
+        this.pendingOutputStreamOffsetCount = (i + 1);
+      }
       this.pendingOutputStreamOffsetsUs[(this.pendingOutputStreamOffsetCount - 1)] = paramLong;
-      break;
-      this.pendingOutputStreamOffsetCount += 1;
     }
+    super.onStreamChanged(paramArrayOfFormat, paramLong);
   }
   
-  public boolean processOutputBuffer(long paramLong1, long paramLong2, MediaCodec paramMediaCodec, ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, long paramLong3, boolean paramBoolean)
+  protected boolean processOutputBuffer(long paramLong1, long paramLong2, MediaCodec paramMediaCodec, ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, long paramLong3, boolean paramBoolean)
   {
-    while ((this.pendingOutputStreamOffsetCount != 0) && (paramLong3 >= this.pendingOutputStreamOffsetsUs[0]))
+    for (;;)
     {
-      this.outputStreamOffsetUs = this.pendingOutputStreamOffsetsUs[0];
-      this.pendingOutputStreamOffsetCount -= 1;
-      System.arraycopy(this.pendingOutputStreamOffsetsUs, 1, this.pendingOutputStreamOffsetsUs, 0, this.pendingOutputStreamOffsetCount);
+      paramInt2 = this.pendingOutputStreamOffsetCount;
+      if (paramInt2 == 0) {
+        break;
+      }
+      paramByteBuffer = this.pendingOutputStreamOffsetsUs;
+      if (paramLong3 < paramByteBuffer[0]) {
+        break;
+      }
+      this.outputStreamOffsetUs = paramByteBuffer[0];
+      this.pendingOutputStreamOffsetCount = (paramInt2 - 1);
+      System.arraycopy(paramByteBuffer, 1, paramByteBuffer, 0, this.pendingOutputStreamOffsetCount);
     }
     long l1 = paramLong3 - this.outputStreamOffsetUs;
     if (paramBoolean)
@@ -863,91 +856,86 @@ public class MediaCodecVideoRenderer
       skipOutputBuffer(paramMediaCodec, paramInt1, l1);
       return true;
     }
-    long l3 = paramLong3 - paramLong1;
+    long l2 = paramLong3 - paramLong1;
     if (this.surface == this.dummySurface)
     {
-      if (isBufferLate(l3))
+      if (isBufferLate(l2))
       {
         skipOutputBuffer(paramMediaCodec, paramInt1, l1);
         return true;
       }
       return false;
     }
-    long l4 = 1000L * SystemClock.elapsedRealtime();
-    if (getState() == 2)
-    {
+    long l3 = SystemClock.elapsedRealtime() * 1000L;
+    if (getState() == 2) {
       paramInt2 = 1;
-      if ((this.renderedFirstFrame) && ((paramInt2 == 0) || (!shouldForceRenderOutputBuffer(l3, l4 - this.lastRenderTimeUs)))) {
-        break label214;
-      }
-      if (Util.SDK_INT < 21) {
-        break label201;
-      }
-      renderOutputBufferV21(paramMediaCodec, paramInt1, l1, System.nanoTime());
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       paramInt2 = 0;
-      break;
-      label201:
-      renderOutputBuffer(paramMediaCodec, paramInt1, l1);
     }
-    label214:
-    if (paramInt2 == 0) {
-      return false;
-    }
-    long l2 = System.nanoTime();
-    paramLong3 = this.frameReleaseTimeHelper.adjustReleaseTime(paramLong3, (l3 - (l4 - paramLong2)) * 1000L + l2);
-    l2 = (paramLong3 - l2) / 1000L;
-    if ((shouldDropBuffersToKeyframe(l2, paramLong2)) && (maybeDropBuffersToKeyframe(paramMediaCodec, paramInt1, l1, paramLong1))) {
-      return false;
-    }
-    if (shouldDropOutputBuffer(l2, paramLong2))
+    if ((this.renderedFirstFrame) && ((paramInt2 == 0) || (!shouldForceRenderOutputBuffer(l2, l3 - this.lastRenderTimeUs))))
     {
-      dropOutputBuffer(paramMediaCodec, paramInt1, l1);
-      return true;
-    }
-    if (Util.SDK_INT >= 21)
-    {
-      if (l2 < 50000L)
-      {
-        renderOutputBufferV21(paramMediaCodec, paramInt1, l1, paramLong3);
-        return true;
-      }
-    }
-    else if (l2 < 30000L)
-    {
-      if (l2 > 11000L) {}
-      try
-      {
-        Thread.sleep((l2 - 10000L) / 1000L);
-        renderOutputBuffer(paramMediaCodec, paramInt1, l1);
-        return true;
-      }
-      catch (InterruptedException paramMediaCodec)
-      {
-        Thread.currentThread().interrupt();
+      if (paramInt2 == 0) {
         return false;
       }
+      long l4 = System.nanoTime();
+      paramLong3 = this.frameReleaseTimeHelper.adjustReleaseTime(paramLong3, (l2 - (l3 - paramLong2)) * 1000L + l4);
+      l2 = (paramLong3 - l4) / 1000L;
+      if ((shouldDropBuffersToKeyframe(l2, paramLong2)) && (maybeDropBuffersToKeyframe(paramMediaCodec, paramInt1, l1, paramLong1))) {
+        return false;
+      }
+      if (shouldDropOutputBuffer(l2, paramLong2))
+      {
+        dropOutputBuffer(paramMediaCodec, paramInt1, l1);
+        return true;
+      }
+      if (Util.SDK_INT >= 21)
+      {
+        if (l2 < 50000L)
+        {
+          renderOutputBufferV21(paramMediaCodec, paramInt1, l1, paramLong3);
+          return true;
+        }
+      }
+      else if ((l2 < 30000L) && (l2 <= 11000L)) {}
     }
+    try
+    {
+      Thread.sleep((l2 - 10000L) / 1000L);
+    }
+    catch (InterruptedException paramMediaCodec)
+    {
+      label342:
+      break label342;
+    }
+    Thread.currentThread().interrupt();
     return false;
+    renderOutputBuffer(paramMediaCodec, paramInt1, l1);
+    return true;
+    return false;
+    if (Util.SDK_INT >= 21) {
+      renderOutputBufferV21(paramMediaCodec, paramInt1, l1, System.nanoTime());
+    } else {
+      renderOutputBuffer(paramMediaCodec, paramInt1, l1);
+    }
+    return true;
   }
   
   @CallSuper
-  public void releaseCodec()
+  protected void releaseCodec()
   {
     try
     {
       super.releaseCodec();
+      Surface localSurface1;
       return;
     }
     finally
     {
       this.buffersInCodecCount = 0;
-      if (this.dummySurface != null)
+      Surface localSurface2 = this.dummySurface;
+      if (localSurface2 != null)
       {
-        if (this.surface == this.dummySurface) {
+        if (this.surface == localSurface2) {
           this.surface = null;
         }
         this.dummySurface.release();
@@ -998,7 +986,7 @@ public class MediaCodecVideoRenderer
     return (isBufferLate(paramLong1)) && (paramLong2 > 100000L);
   }
   
-  public boolean shouldInitCodec(MediaCodecInfo paramMediaCodecInfo)
+  protected boolean shouldInitCodec(MediaCodecInfo paramMediaCodecInfo)
   {
     return (this.surface != null) || (shouldUseDummySurface(paramMediaCodecInfo));
   }
@@ -1012,11 +1000,12 @@ public class MediaCodecVideoRenderer
     paramMediaCodec.skippedOutputBufferCount += 1;
   }
   
-  public int supportsFormat(MediaCodecSelector paramMediaCodecSelector, DrmSessionManager<FrameworkMediaCrypto> paramDrmSessionManager, Format paramFormat)
+  protected int supportsFormat(MediaCodecSelector paramMediaCodecSelector, DrmSessionManager<FrameworkMediaCrypto> paramDrmSessionManager, Format paramFormat)
   {
-    int j = 0;
     String str = paramFormat.sampleMimeType;
-    if (!MimeTypes.isVideo(str)) {
+    boolean bool1 = MimeTypes.isVideo(str);
+    int j = 0;
+    if (!bool1) {
       return 0;
     }
     DrmInitData localDrmInitData = paramFormat.drmInitData;
@@ -1039,61 +1028,67 @@ public class MediaCodecVideoRenderer
     MediaCodecInfo localMediaCodecInfo = paramMediaCodecSelector.getDecoderInfo(str, bool2, false);
     if (localMediaCodecInfo == null)
     {
-      if ((bool2) && (paramMediaCodecSelector.getDecoderInfo(str, false, false) != null)) {}
-      for (i = 2;; i = 1) {
-        return i;
+      if ((bool2) && (paramMediaCodecSelector.getDecoderInfo(str, false, false) != null)) {
+        return 2;
       }
+      return 1;
     }
     if (!supportsFormatDrm(paramDrmSessionManager, localDrmInitData)) {
       return 2;
     }
     bool2 = localMediaCodecInfo.isCodecSupported(paramFormat.codecs);
-    boolean bool1 = bool2;
+    bool1 = bool2;
     if (bool2)
     {
       bool1 = bool2;
       if (paramFormat.width > 0)
       {
         bool1 = bool2;
-        if (paramFormat.height > 0)
-        {
-          if (Util.SDK_INT < 21) {
-            break label247;
+        if (paramFormat.height > 0) {
+          if (Util.SDK_INT >= 21)
+          {
+            bool1 = localMediaCodecInfo.isVideoSizeAndRateSupportedV21(paramFormat.width, paramFormat.height, paramFormat.frameRate);
           }
-          bool1 = localMediaCodecInfo.isVideoSizeAndRateSupportedV21(paramFormat.width, paramFormat.height, paramFormat.frameRate);
+          else
+          {
+            if (paramFormat.width * paramFormat.height <= MediaCodecUtil.maxH264DecodableFrameSize()) {
+              bool2 = true;
+            } else {
+              bool2 = false;
+            }
+            bool1 = bool2;
+            if (!bool2)
+            {
+              paramMediaCodecSelector = new StringBuilder();
+              paramMediaCodecSelector.append("FalseCheck [legacyFrameSize, ");
+              paramMediaCodecSelector.append(paramFormat.width);
+              paramMediaCodecSelector.append("x");
+              paramMediaCodecSelector.append(paramFormat.height);
+              paramMediaCodecSelector.append("] [");
+              paramMediaCodecSelector.append(Util.DEVICE_DEBUG_INFO);
+              paramMediaCodecSelector.append("]");
+              Log.d("MediaCodecVideoRenderer", paramMediaCodecSelector.toString());
+              bool1 = bool2;
+            }
+          }
         }
       }
     }
-    if (localMediaCodecInfo.adaptive)
-    {
+    if (localMediaCodecInfo.adaptive) {
       i = 16;
-      label218:
-      if (localMediaCodecInfo.tunneling) {
-        j = 32;
-      }
-      if (!bool1) {
-        break label354;
-      }
-    }
-    label354:
-    for (int k = 4;; k = 3)
-    {
-      return j | i | k;
-      label247:
-      if (paramFormat.width * paramFormat.height <= MediaCodecUtil.maxH264DecodableFrameSize()) {}
-      for (bool2 = true;; bool2 = false)
-      {
-        bool1 = bool2;
-        if (bool2) {
-          break;
-        }
-        Log.d("MediaCodecVideoRenderer", "FalseCheck [legacyFrameSize, " + paramFormat.width + "x" + paramFormat.height + "] [" + Util.DEVICE_DEBUG_INFO + "]");
-        bool1 = bool2;
-        break;
-      }
+    } else {
       i = 8;
-      break label218;
     }
+    if (localMediaCodecInfo.tunneling) {
+      j = 32;
+    }
+    int k;
+    if (bool1) {
+      k = 4;
+    } else {
+      k = 3;
+    }
+    return k | i | j;
   }
   
   protected void updateDroppedBufferCounters(int paramInt)
@@ -1110,7 +1105,7 @@ public class MediaCodecVideoRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.video.MediaCodecVideoRenderer
  * JD-Core Version:    0.7.0.1
  */

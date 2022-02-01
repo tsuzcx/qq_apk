@@ -25,7 +25,10 @@ public class NoneBubbleBgExecutor
   {
     if (paramViewHolder.a == null)
     {
-      QLog.e("NoneBubbleBgExecutor", 1, "handleBubbleBg mContent is null type = " + paramChatMessage.istroop);
+      paramViewHolder = new StringBuilder();
+      paramViewHolder.append("handleBubbleBg mContent is null type = ");
+      paramViewHolder.append(paramChatMessage.istroop);
+      QLog.e("NoneBubbleBgExecutor", 1, paramViewHolder.toString());
       return;
     }
     paramViewHolder.a.setBackgroundDrawable(null);
@@ -38,7 +41,7 @@ public class NoneBubbleBgExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.bubblebghandlerexecutor.NoneBubbleBgExecutor
  * JD-Core Version:    0.7.0.1
  */

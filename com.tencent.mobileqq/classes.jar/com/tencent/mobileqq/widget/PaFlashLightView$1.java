@@ -8,8 +8,9 @@ class PaFlashLightView$1
 {
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_Int == 0) {
+    paramAnimation = this.a;
+    paramAnimation.jdField_a_of_type_Boolean = false;
+    if (paramAnimation.jdField_a_of_type_Int == 0) {
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetPaFlashLightView$RefreshHandler.sendEmptyMessage(0);
     }
     if (this.a.jdField_a_of_type_Int == 2) {
@@ -23,7 +24,7 @@ class PaFlashLightView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PaFlashLightView.1
  * JD-Core Version:    0.7.0.1
  */

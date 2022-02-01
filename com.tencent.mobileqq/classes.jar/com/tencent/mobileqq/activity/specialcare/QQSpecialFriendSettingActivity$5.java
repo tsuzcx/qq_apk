@@ -10,23 +10,27 @@ class QQSpecialFriendSettingActivity$5
   
   public void a(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
-    }
-    if (paramObject != null) {
-      this.a.stopTitleProgress();
-    }
-    switch (((Integer)paramObject).intValue())
+    if (QLog.isColorLevel())
     {
-    default: 
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSpecialSoundEvent data: ");
+      localStringBuilder.append(paramObject);
+      QLog.d("QQSpecialFriendSettingActivity", 2, localStringBuilder.toString());
     }
-    QQSpecialFriendSettingActivity.a(this.a);
+    if (paramObject != null)
+    {
+      this.a.stopTitleProgress();
+      int i = ((Integer)paramObject).intValue();
+      if ((i != 2) && (i != 3) && (i != 4)) {
+        return;
+      }
+      QQSpecialFriendSettingActivity.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity.5
  * JD-Core Version:    0.7.0.1
  */

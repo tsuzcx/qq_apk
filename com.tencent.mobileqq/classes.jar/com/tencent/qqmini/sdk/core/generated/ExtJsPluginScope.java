@@ -74,6 +74,7 @@ public final class ExtJsPluginScope
     SECONDARY_EVENT_HANDLERS.put("refreshQzoneFeed", RefreshQzoneFeedPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("checkin_invokeGYCamera", LaunchAECameraPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("play_invokeGYCamera", LaunchAECameraPlugin.class);
+    SECONDARY_EVENT_HANDLERS.put("miniApp_invokeGYCamera", LaunchAECameraPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("checkin_uploadRes", GroupCheckInUploadPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("setCMShowPetStatus", CMShowJsPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("invokeGameBuddyAio", GameBuddyPlugin.class);
@@ -86,7 +87,7 @@ public final class ExtJsPluginScope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope
  * JD-Core Version:    0.7.0.1
  */

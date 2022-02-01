@@ -51,14 +51,18 @@ public abstract class ProbeItem
   
   public void transferReqToNext(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.successor != null)) {
-      this.successor.probe(this.mRequest, this.cb);
+    if (paramBoolean)
+    {
+      ProbeItem localProbeItem = this.successor;
+      if (localProbeItem != null) {
+        localProbeItem.probe(this.mRequest, this.cb);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.ProbeItem
  * JD-Core Version:    0.7.0.1
  */

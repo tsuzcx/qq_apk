@@ -32,7 +32,7 @@ public class QQNotifyLoadingDialog
   {
     super.requestWindowFeature(1);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setContentView(LayoutInflater.from(paramContext).inflate(2131561051, null));
+    setContentView(LayoutInflater.from(paramContext).inflate(2131560915, null));
     paramContext = getWindow();
     if (paramContext != null)
     {
@@ -43,7 +43,7 @@ public class QQNotifyLoadingDialog
       }
     }
     setCanceledOnTouchOutside(false);
-    paramContext = (ImageView)super.findViewById(2131374168);
+    paramContext = (ImageView)super.findViewById(2131373723);
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
     localTranslateAnimation.setDuration(800L);
@@ -55,31 +55,30 @@ public class QQNotifyLoadingDialog
   public void dismiss()
   {
     super.dismiss();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+    Animatable localAnimatable = this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable;
+    if (localAnimatable != null) {
+      localAnimatable.stop();
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt == 4) {
+    if (paramInt == 4)
+    {
       try
       {
         dismiss();
         if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
           ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
         }
-        return false;
       }
       catch (Exception paramKeyEvent)
       {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            paramKeyEvent.printStackTrace();
-          }
+        if (QLog.isDevelopLevel()) {
+          paramKeyEvent.printStackTrace();
         }
       }
+      return false;
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
@@ -87,18 +86,20 @@ public class QQNotifyLoadingDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839549));
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)((Context)localObject).getResources().getDrawable(2130839406));
+      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable;
+      if (localObject != null) {
+        ((Animatable)localObject).start();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifyLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

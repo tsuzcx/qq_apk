@@ -32,20 +32,21 @@ public class QQStoryLoggingDelegate
     {
     default: 
       return;
-    case 2: 
-      QLog.d(paramString1, 2, paramString2);
-      return;
-    case 3: 
-      QLog.d(paramString1, 2, paramString2);
-      return;
-    case 4: 
-      QLog.i(paramString1, 2, paramString2);
+    case 6: 
+    case 7: 
+      QLog.e(paramString1, 1, paramString2);
       return;
     case 5: 
       QLog.e(paramString1, 1, paramString2);
       return;
+    case 4: 
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    case 3: 
+      QLog.d(paramString1, 2, paramString2);
+      return;
     }
-    QLog.e(paramString1, 1, paramString2);
+    QLog.d(paramString1, 2, paramString2);
   }
   
   private void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
@@ -54,20 +55,21 @@ public class QQStoryLoggingDelegate
     {
     default: 
       return;
-    case 2: 
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
-      return;
-    case 3: 
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
-      return;
-    case 4: 
-      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    case 6: 
+    case 7: 
+      QLog.e(paramString1, 1, paramString2, paramThrowable);
       return;
     case 5: 
       QLog.e(paramString1, 1, paramString2, paramThrowable);
       return;
+    case 4: 
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+      return;
+    case 3: 
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
+      return;
     }
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
+    QLog.d(paramString1, 2, paramString2, paramThrowable);
   }
   
   public void a(int paramInt)
@@ -87,18 +89,17 @@ public class QQStoryLoggingDelegate
   
   public boolean a(int paramInt)
   {
-    if ((this.b != -1) && (paramInt >= this.b)) {}
-    do
-    {
-      do
-      {
-        return true;
-      } while (5 <= paramInt);
-      if (!QLog.isColorLevel()) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Int <= paramInt);
-    return false;
+    int i = this.b;
+    if ((i != -1) && (paramInt >= i)) {
+      return true;
+    }
+    if (5 <= paramInt) {
+      return true;
+    }
+    if (!QLog.isColorLevel()) {
+      return false;
+    }
+    return this.jdField_a_of_type_Int <= paramInt;
   }
   
   public void b(String paramString1, String paramString2)
@@ -108,7 +109,7 @@ public class QQStoryLoggingDelegate
   
   public void b(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    a(4, paramString1, paramString2, paramThrowable);
+    a(5, paramString1, paramString2, paramThrowable);
   }
   
   public void c(String paramString1, String paramString2)
@@ -118,17 +119,12 @@ public class QQStoryLoggingDelegate
   
   public void c(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    a(5, paramString1, paramString2, paramThrowable);
+    a(6, paramString1, paramString2, paramThrowable);
   }
   
   public void d(String paramString1, String paramString2)
   {
     a(5, paramString1, paramString2);
-  }
-  
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(6, paramString1, paramString2, paramThrowable);
   }
   
   public void e(String paramString1, String paramString2)
@@ -138,7 +134,7 @@ public class QQStoryLoggingDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.support.logging.QQStoryLoggingDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -30,20 +30,24 @@ public class StructMsgItemProgress
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    if ((paramView != null) && ((paramView instanceof ProgressBar))) {}
-    for (paramContext = (ProgressBar)paramView;; paramContext = paramView)
+    if ((paramView != null) && ((paramView instanceof ProgressBar)))
     {
-      paramContext.setTag(this);
-      paramContext.setProgress(this.o);
-      if (this.o == paramContext.getMax()) {
-        paramContext.setVisibility(8);
-      }
-      return paramContext;
-      paramView = new ProgressBar(paramContext, null, 16842872);
-      paramView.setId(2131378556);
-      paramView.setMax(100);
-      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130838138));
+      paramContext = (ProgressBar)paramView;
     }
+    else
+    {
+      paramView = new ProgressBar(paramContext, null, 16842872);
+      paramView.setId(2131377967);
+      paramView.setMax(100);
+      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130837987));
+      paramContext = paramView;
+    }
+    paramContext.setTag(this);
+    paramContext.setProgress(this.o);
+    if (this.o == paramContext.getMax()) {
+      paramContext.setVisibility(8);
+    }
+    return paramContext;
   }
   
   public String a()
@@ -76,15 +80,14 @@ public class StructMsgItemProgress
     try
     {
       this.o = Integer.valueOf(paramStructMsgNode).intValue();
-      return true;
     }
     catch (NumberFormatException paramStructMsgNode)
     {
-      for (;;)
-      {
-        this.o = 0;
-      }
+      label19:
+      break label19;
     }
+    this.o = 0;
+    return true;
   }
   
   public int b()
@@ -99,7 +102,7 @@ public class StructMsgItemProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemProgress
  * JD-Core Version:    0.7.0.1
  */

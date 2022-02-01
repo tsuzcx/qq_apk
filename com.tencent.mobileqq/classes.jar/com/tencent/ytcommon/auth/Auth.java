@@ -23,8 +23,9 @@ public class Auth
   
   public static int getAuthResult()
   {
-    if (handle != 0L) {
-      return getCurrentAuthStatus(handle);
+    long l = handle;
+    if (l != 0L) {
+      return getCurrentAuthStatus(l);
     }
     Log.w("sdk", "you should call YTCommonInterface.initAuth() first");
     return -1;
@@ -56,96 +57,99 @@ public class Auth
   
   public static int init(Context paramContext, String paramString, int paramInt)
   {
-    boolean bool1 = false;
     YTLog.d("youtu-common", "start init");
-    if ((Build.VERSION.SDK_INT < 29) || (paramInt == 0)) {}
-    do
+    if (Build.VERSION.SDK_INT >= 29) {}
+    while ((Build.VERSION.SDK_INT >= 23) && (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0))
     {
-      do
+      bool1 = false;
+      break;
+    }
+    boolean bool1 = true;
+    if (paramInt == 0) {}
+    try
+    {
+      InputStream localInputStream = paramContext.getAssets().open(paramString, 0);
+      if (localInputStream == null) {
+        return -10;
+      }
+      localInputStream.close();
+      break label99;
+      if (paramInt == 2)
       {
-        boolean bool2;
-        try
-        {
-          InputStream localInputStream = paramContext.getAssets().open(paramString, 0);
-          if (localInputStream == null)
-          {
-            return -10;
-            if ((Build.VERSION.SDK_INT >= 23) && (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0)) {
-              break;
-            }
-            bool1 = true;
-            break;
-          }
-          localInputStream.close();
-          handle = nativeInitN(paramContext, paramInt, paramString, paramContext.getAssets(), paramString, bool1);
-          YTLog.d("youtu-common", "handleinit: " + handle);
-          return getCurrentAuthStatus(handle);
+        boolean bool2 = new File(paramString).exists();
+        if (!bool2) {
+          return -10;
         }
-        catch (Exception paramContext) {}
-      } while (paramInt != 2);
-      bool2 = new File(paramString).exists();
-    } while (bool2);
-    return -10;
+      }
+      label99:
+      handle = nativeInitN(paramContext, paramInt, paramString, paramContext.getAssets(), paramString, bool1);
+      paramContext = new StringBuilder();
+      paramContext.append("handleinit: ");
+      paramContext.append(handle);
+      YTLog.d("youtu-common", paramContext.toString());
+      return getCurrentAuthStatus(handle);
+    }
+    catch (Exception paramContext) {}
     return -10;
   }
   
   public static int init(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    boolean bool = false;
     if (licensePath.isEmpty())
     {
-      licensePath = paramContext.getFilesDir().getPath() + File.separator + ".youtu_common.lic";
-      if (Build.VERSION.SDK_INT < 29) {
-        break label191;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getFilesDir().getPath());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(".youtu_common.lic");
+      licensePath = localStringBuilder.toString();
     }
-    for (;;)
+    else if ((Build.VERSION.SDK_INT >= 23) && (paramContext.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0))
     {
-      int i = (int)nativeGetLicense(paramContext, paramString1, paramString2, getLicensePath(), paramInt, bool, paramString3);
-      paramInt = i;
-      if (i == 0)
-      {
-        handle = nativeInitN(paramContext, 2, getLicensePath(), paramContext.getAssets(), getLicensePath(), bool);
-        if (getCurrentAuthStatus(handle) == 0) {
-          break label214;
-        }
-        i = (int)nativeGetLicense(paramContext, paramString1, paramString2, getLicensePath(), 1, bool, paramString3);
-        paramInt = i;
-        if (i == 0)
-        {
-          handle = nativeInitN(paramContext, 2, getLicensePath(), paramContext.getAssets(), getLicensePath(), bool);
-          paramInt = getCurrentAuthStatus(handle);
-        }
-      }
-      return paramInt;
-      if ((Build.VERSION.SDK_INT < 23) || (paramContext.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0)) {
-        break;
-      }
       Log.e("youtu-common", "WRITE_EXTERNAL_STORAGE permission required.");
       return 2004;
-      label191:
-      if ((Build.VERSION.SDK_INT < 23) || (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") == 0)) {
-        bool = true;
-      }
     }
-    label214:
-    return getCurrentAuthStatus(handle);
+    if (Build.VERSION.SDK_INT >= 29) {}
+    while ((Build.VERSION.SDK_INT >= 23) && (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0))
+    {
+      bool = false;
+      break;
+    }
+    boolean bool = true;
+    paramInt = (int)nativeGetLicense(paramContext, paramString1, paramString2, getLicensePath(), paramInt, bool, paramString3);
+    if (paramInt == 0)
+    {
+      handle = nativeInitN(paramContext, 2, getLicensePath(), paramContext.getAssets(), getLicensePath(), bool);
+      if (getCurrentAuthStatus(handle) != 0)
+      {
+        paramInt = (int)nativeGetLicense(paramContext, paramString1, paramString2, getLicensePath(), 1, bool, paramString3);
+        if (paramInt == 0)
+        {
+          handle = nativeInitN(paramContext, 2, getLicensePath(), paramContext.getAssets(), getLicensePath(), bool);
+          return getCurrentAuthStatus(handle);
+        }
+        return paramInt;
+      }
+      return getCurrentAuthStatus(handle);
+    }
+    return paramInt;
   }
   
   public static int initAuthForQQ(Context paramContext)
   {
-    boolean bool = false;
     YTLog.d("youtu-common", "start init");
     if (Build.VERSION.SDK_INT >= 29) {}
-    for (;;)
+    while ((Build.VERSION.SDK_INT >= 23) && (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0))
     {
-      handle = nativeInitN(paramContext, 1, "oWxLt1xJmA2/uaL5b3J2OoXQuppLT0Su2szcfjfKvPiuDF40cJoVL+9UUfHwStdYs6QEDV1cYTR4i/S2HAQurX+asnVcb4AW+O5XfqUMBdN/mrJ1XG+AFhqs/yTHjNBNvmckDgBPCL/vrpjjD7plQjxYvUs2iVQEbpBaXarIXV08WL1LNolUBFs8CRb9zOHrZJQ6DQN60oe+XZVkgYkU63CUs7duFYmHZJQ6DQN60oe+XZVkgYkU63CUs7duFYmHeJyPkwbK322b8YymrUh2ls8g0VH/nH5kDsvY1CWKAle+ZyQOAE8Ivxo3SsZQSeHUmh3cVajW+kOm9qMOF5WIwIGnICZWiBx8PFi9SzaJVASDGTlJVChdTmfCCgpLkdLXRcwQnvqHFVXxZYDjK9TEFo/OQptjkTvwTmOwMbacnJ0E8l3uYLZ8IKQkrbUL8A/NpZ32SXyB4MqSA6oIJS7ygp1o8RUPT2hPw7ViurRuxSLDtWK6tG7FIsO1Yrq0bsUiLYiW0fpoPV0vMxAmJlT9Hi8zECYmVP0eLzMQJiZU/R7iHhNgzhesl4rkPMbKDg0m/0tvBQ5nJ5w1WHaXQvj4Iw==", paramContext.getAssets(), "oWxLt1xJmA2/uaL5b3J2OoXQuppLT0Su2szcfjfKvPiuDF40cJoVL+9UUfHwStdYs6QEDV1cYTR4i/S2HAQurX+asnVcb4AW+O5XfqUMBdN/mrJ1XG+AFhqs/yTHjNBNvmckDgBPCL/vrpjjD7plQjxYvUs2iVQEbpBaXarIXV08WL1LNolUBFs8CRb9zOHrZJQ6DQN60oe+XZVkgYkU63CUs7duFYmHZJQ6DQN60oe+XZVkgYkU63CUs7duFYmHeJyPkwbK322b8YymrUh2ls8g0VH/nH5kDsvY1CWKAle+ZyQOAE8Ivxo3SsZQSeHUmh3cVajW+kOm9qMOF5WIwIGnICZWiBx8PFi9SzaJVASDGTlJVChdTmfCCgpLkdLXRcwQnvqHFVXxZYDjK9TEFo/OQptjkTvwTmOwMbacnJ0E8l3uYLZ8IKQkrbUL8A/NpZ32SXyB4MqSA6oIJS7ygp1o8RUPT2hPw7ViurRuxSLDtWK6tG7FIsO1Yrq0bsUiLYiW0fpoPV0vMxAmJlT9Hi8zECYmVP0eLzMQJiZU/R7iHhNgzhesl4rkPMbKDg0m/0tvBQ5nJ5w1WHaXQvj4Iw==", bool);
-      YTLog.d("youtu-common", "handleinit: " + handle);
-      return getCurrentAuthStatus(handle);
-      if ((Build.VERSION.SDK_INT < 23) || (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") == 0)) {
-        bool = true;
-      }
+      bool = false;
+      break;
     }
+    boolean bool = true;
+    handle = nativeInitN(paramContext, 1, "oWxLt1xJmA2/uaL5b3J2OoXQuppLT0Su2szcfjfKvPiuDF40cJoVL+9UUfHwStdYs6QEDV1cYTR4i/S2HAQurX+asnVcb4AW+O5XfqUMBdN/mrJ1XG+AFhqs/yTHjNBNvmckDgBPCL/vrpjjD7plQjxYvUs2iVQEbpBaXarIXV08WL1LNolUBFs8CRb9zOHrZJQ6DQN60oe+XZVkgYkU63CUs7duFYmHZJQ6DQN60oe+XZVkgYkU63CUs7duFYmHeJyPkwbK322b8YymrUh2ls8g0VH/nH5kDsvY1CWKAle+ZyQOAE8Ivxo3SsZQSeHUmh3cVajW+kOm9qMOF5WIwIGnICZWiBx8PFi9SzaJVASDGTlJVChdTmfCCgpLkdLXRcwQnvqHFVXxZYDjK9TEFo/OQptjkTvwTmOwMbacnJ0E8l3uYLZ8IKQkrbUL8A/NpZ32SXyB4MqSA6oIJS7ygp1o8RUPT2hPw7ViurRuxSLDtWK6tG7FIsO1Yrq0bsUiLYiW0fpoPV0vMxAmJlT9Hi8zECYmVP0eLzMQJiZU/R7iHhNgzhesl4rkPMbKDg0m/0tvBQ5nJ5w1WHaXQvj4Iw==", paramContext.getAssets(), "oWxLt1xJmA2/uaL5b3J2OoXQuppLT0Su2szcfjfKvPiuDF40cJoVL+9UUfHwStdYs6QEDV1cYTR4i/S2HAQurX+asnVcb4AW+O5XfqUMBdN/mrJ1XG+AFhqs/yTHjNBNvmckDgBPCL/vrpjjD7plQjxYvUs2iVQEbpBaXarIXV08WL1LNolUBFs8CRb9zOHrZJQ6DQN60oe+XZVkgYkU63CUs7duFYmHZJQ6DQN60oe+XZVkgYkU63CUs7duFYmHeJyPkwbK322b8YymrUh2ls8g0VH/nH5kDsvY1CWKAle+ZyQOAE8Ivxo3SsZQSeHUmh3cVajW+kOm9qMOF5WIwIGnICZWiBx8PFi9SzaJVASDGTlJVChdTmfCCgpLkdLXRcwQnvqHFVXxZYDjK9TEFo/OQptjkTvwTmOwMbacnJ0E8l3uYLZ8IKQkrbUL8A/NpZ32SXyB4MqSA6oIJS7ygp1o8RUPT2hPw7ViurRuxSLDtWK6tG7FIsO1Yrq0bsUiLYiW0fpoPV0vMxAmJlT9Hi8zECYmVP0eLzMQJiZU/R7iHhNgzhesl4rkPMbKDg0m/0tvBQ5nJ5w1WHaXQvj4Iw==", bool);
+    paramContext = new StringBuilder();
+    paramContext.append("handleinit: ");
+    paramContext.append(handle);
+    YTLog.d("youtu-common", paramContext.toString());
+    return getCurrentAuthStatus(handle);
   }
   
   private static native boolean nativeCheck(long paramLong);
@@ -167,7 +171,7 @@ public class Auth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ytcommon.auth.Auth
  * JD-Core Version:    0.7.0.1
  */

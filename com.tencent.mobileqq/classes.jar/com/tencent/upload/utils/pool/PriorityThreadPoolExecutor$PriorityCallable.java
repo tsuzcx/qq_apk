@@ -22,8 +22,14 @@ class PriorityThreadPoolExecutor$PriorityCallable<T>
   
   public T call()
   {
-    if (System.currentTimeMillis() - this.mPostTime > 30000L) {
-      Log.w("PriorityThreadPoolExecutor", "this job hangury too long. job:" + this + ". job:" + this.mC);
+    if (System.currentTimeMillis() - this.mPostTime > 30000L)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("this job hangury too long. job:");
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append(". job:");
+      ((StringBuilder)localObject).append(this.mC);
+      Log.w("PriorityThreadPoolExecutor", ((StringBuilder)localObject).toString());
     }
     Object localObject = this.mC.call();
     this.mC = null;
@@ -32,7 +38,7 @@ class PriorityThreadPoolExecutor$PriorityCallable<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.utils.pool.PriorityThreadPoolExecutor.PriorityCallable
  * JD-Core Version:    0.7.0.1
  */

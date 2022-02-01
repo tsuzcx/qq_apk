@@ -19,13 +19,14 @@ public final class qqstory_service$ReqMsgTabNodeWatched
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "unionID", "node_type", "operation", "recommend_id" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, ReqMsgTabNodeWatched.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "unionID", "node_type", "operation", "recommend_id" }, new Object[] { localByteStringMicro, localInteger, localInteger, Long.valueOf(0L) }, ReqMsgTabNodeWatched.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched
  * JD-Core Version:    0.7.0.1
  */

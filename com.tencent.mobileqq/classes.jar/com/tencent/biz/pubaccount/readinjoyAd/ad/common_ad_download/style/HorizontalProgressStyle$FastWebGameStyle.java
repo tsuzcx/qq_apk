@@ -4,7 +4,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/HorizontalProgressStyle$FastWebGameStyle;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/HorizontalProgressStyle;", "btnDrawableActiveColor", "", "getBtnDrawableActiveColor", "()Ljava/lang/String;", "setBtnDrawableActiveColor", "(Ljava/lang/String;)V", "btnDrawableActiveRadius", "", "getBtnDrawableActiveRadius", "()F", "setBtnDrawableActiveRadius", "(F)V", "btnDrawableNormalColor", "getBtnDrawableNormalColor", "setBtnDrawableNormalColor", "btnDrawableNormalRadius", "getBtnDrawableNormalRadius", "setBtnDrawableNormalRadius", "btnTextColor", "getBtnTextColor", "setBtnTextColor", "btnTextLength", "", "getBtnTextLength", "()I", "setBtnTextLength", "(I)V", "btnTextSize", "getBtnTextSize", "setBtnTextSize", "progressDrawable", "getProgressDrawable", "setProgressDrawable", "progressTextColor", "getProgressTextColor", "setProgressTextColor", "progressTextSize", "getProgressTextSize", "setProgressTextSize", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/HorizontalProgressStyle$FastWebGameStyle;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/HorizontalProgressStyle;", "btnDrawableActiveColor", "", "getBtnDrawableActiveColor", "()Ljava/lang/String;", "setBtnDrawableActiveColor", "(Ljava/lang/String;)V", "btnDrawableActiveRadius", "", "getBtnDrawableActiveRadius", "()F", "setBtnDrawableActiveRadius", "(F)V", "btnDrawableNormalColor", "getBtnDrawableNormalColor", "setBtnDrawableNormalColor", "btnDrawableNormalRadius", "getBtnDrawableNormalRadius", "setBtnDrawableNormalRadius", "btnTextColor", "getBtnTextColor", "setBtnTextColor", "btnTextLength", "", "getBtnTextLength", "()I", "setBtnTextLength", "(I)V", "btnTextSize", "getBtnTextSize", "setBtnTextSize", "progressDrawable", "getProgressDrawable", "setProgressDrawable", "progressTextColor", "getProgressTextColor", "setProgressTextColor", "progressTextSize", "getProgressTextSize", "setProgressTextSize", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 final class HorizontalProgressStyle$FastWebGameStyle
   extends HorizontalProgressStyle
 {
@@ -18,7 +18,7 @@ final class HorizontalProgressStyle$FastWebGameStyle
   private String btnTextColor = "#FFFFFF";
   private int btnTextLength = 2;
   private float btnTextSize = 14.0F;
-  private int progressDrawable = 2130842896;
+  private int progressDrawable = 2130842801;
   @NotNull
   private String progressTextColor = "#FF00cafc";
   private float progressTextSize = 14.0F;
@@ -138,7 +138,7 @@ final class HorizontalProgressStyle$FastWebGameStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle.FastWebGameStyle
  * JD-Core Version:    0.7.0.1
  */

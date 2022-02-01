@@ -25,147 +25,141 @@ public final class jp
   
   private jp.a a(double paramDouble1, double paramDouble2)
   {
-    paramDouble1 = (180.0D + paramDouble1) / 360.0D;
-    paramDouble2 = Math.sin(3.1415926D * paramDouble2 / 180.0D);
-    paramDouble2 = (180.0D - Math.log((1.0D + paramDouble2) / (1.0D - paramDouble2)) * 180.0D / 6.2831852D) / 360.0D;
+    paramDouble1 = (paramDouble1 + 180.0D) / 360.0D;
+    paramDouble2 = Math.sin(paramDouble2 * 3.1415926D / 180.0D);
+    paramDouble2 = (180.0D - Math.log((paramDouble2 + 1.0D) / (1.0D - paramDouble2)) * 180.0D / 6.2831852D) / 360.0D;
     jp.a locala = new jp.a(this, (byte)0);
     locala.a = ((int)(paramDouble1 * 268435456.0D + 0.5D));
-    locala.b = ((int)(0.5D + paramDouble2 * 268435456.0D));
+    locala.b = ((int)(paramDouble2 * 268435456.0D + 0.5D));
     return locala;
   }
   
   public final void run()
   {
     super.run();
+    Object localObject1;
+    if (!this.b) {
+      if (!this.a)
+      {
+        localObject1 = this.c;
+        if (localObject1 == null) {
+          return;
+        }
+        if (localObject1 == null) {}
+      }
+    }
     for (;;)
     {
-      if (!this.b)
-      {
-        if (this.a) {
-          break label235;
-        }
-        if (this.c != null) {}
-      }
-      else
-      {
-        return;
-      }
-      if (this.c != null) {}
-      try
-      {
-        i = this.c.c.i.b.f;
-        Object localObject1 = this.c.c.p();
-        double d1 = ((Rect)localObject1).left / 1000000.0F;
-        double d2 = ((Rect)localObject1).bottom / 1000000.0F;
-        double d3 = ((Rect)localObject1).right / 1000000.0F;
-        double d4 = ((Rect)localObject1).top / 1000000.0F;
-        localObject1 = a(d1, d2);
-        localObject3 = a(d3, d4);
-        this.c.a.a(i, Math.min(((jp.a)localObject1).a, ((jp.a)localObject3).a), Math.min(((jp.a)localObject1).b, ((jp.a)localObject3).b), Math.max(((jp.a)localObject3).a, ((jp.a)localObject1).a), Math.max(((jp.a)localObject3).b, ((jp.a)localObject1).b));
-        if (this.c != null) {
-          break;
-        }
-        localObject1 = null;
-        if ((localObject1 != null) && (localObject1.length > 0)) {
-          this.c.a.a((byte[])localObject1, localObject1.length);
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          int i;
-          label235:
-          RttRequest localRttRequest;
-          label256:
-          int j;
-          or.b("refreshTrafficData error", localThrowable);
-        }
-      }
-      this.c.k();
-      try
+      Object localObject4;
+      for (;;)
       {
         try
         {
-          if (!this.e) {
-            break label576;
+          int i = ((lw)localObject1).c.i.b.f;
+          localObject1 = this.c.c.p();
+          double d1 = ((Rect)localObject1).left / 1000000.0F;
+          double d2 = ((Rect)localObject1).bottom / 1000000.0F;
+          double d3 = ((Rect)localObject1).right / 1000000.0F;
+          double d4 = ((Rect)localObject1).top / 1000000.0F;
+          localObject1 = a(d1, d2);
+          localObject4 = a(d3, d4);
+          this.c.a.a(i, Math.min(((jp.a)localObject1).a, ((jp.a)localObject4).a), Math.min(((jp.a)localObject1).b, ((jp.a)localObject4).b), Math.max(((jp.a)localObject4).a, ((jp.a)localObject1).a), Math.max(((jp.a)localObject4).b, ((jp.a)localObject1).b));
+          localObject1 = this.c;
+          localObject4 = null;
+          if (localObject1 == null)
+          {
+            localObject1 = localObject4;
           }
-          wait(500L);
-          this.e = false;
-          continue;
+          else
+          {
+            if (this.c == null) {
+              break label594;
+            }
+            Object localObject5 = this.c.a.g();
+            if ((localObject5 == null) || (localObject5.length == 0)) {
+              break label594;
+            }
+            localObject1 = new RttRequest();
+            Object localObject6 = new ArrayList();
+            int j = localObject5.length;
+            i = 0;
+            if (i < j)
+            {
+              Object localObject7 = localObject5[i];
+              ((ArrayList)localObject6).add(Integer.valueOf(localObject7.d));
+              ((ArrayList)localObject6).add(Integer.valueOf(localObject7.c));
+              ((ArrayList)localObject6).add(Integer.valueOf(localObject7.f));
+              ((ArrayList)localObject6).add(Integer.valueOf(localObject7.e));
+              ((ArrayList)localObject6).add(Integer.valueOf(localObject7.g));
+              i += 1;
+              continue;
+            }
+            ((RttRequest)localObject1).bounds = ((ArrayList)localObject6);
+            ((RttRequest)localObject1).zip = 1;
+            ((RttRequest)localObject1).zoom = ((short)localObject5[0].a);
+            break label597;
+            localObject4 = this.d;
+            localObject5 = new user_login_t();
+            ((user_login_t)localObject5).pf = "android_sdk";
+            ((user_login_t)localObject5).is_login = false;
+            ((user_login_t)localObject5).channel = fz.d;
+            ((user_login_t)localObject5).imei = fz.a();
+            localObject6 = new e();
+            ((e)localObject6).b("rttserverex");
+            ((e)localObject6).c("getRtt");
+            ((e)localObject6).a("info", localObject5);
+            ((e)localObject6).a("req", localObject1);
+            localObject1 = ((qe)localObject4).a(((e)localObject6).a());
+          }
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            this.c.a.a((byte[])localObject1, localObject1.length);
+          }
         }
-        finally {}
-        if (this.c != null) {
-          break label290;
+        catch (Throwable localThrowable)
+        {
+          or.b("refreshTrafficData error", localThrowable);
+        }
+        this.c.k();
+        try
+        {
+          for (;;)
+          {
+            try
+            {
+              if (this.e)
+              {
+                wait(500L);
+                this.e = false;
+              }
+              else
+              {
+                wait(30000L);
+              }
+              break;
+            }
+            finally {}
+          }
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label582:
+          break label582;
         }
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        Thread.currentThread().interrupt();
-        return;
-      }
-    }
-    localRttRequest = null;
-    break label586;
-    label290:
-    Object localObject3 = this.c.a.g();
-    Object localObject4;
-    e locale;
-    if ((localObject3 != null) && (localObject3.length != 0))
-    {
-      localRttRequest = new RttRequest();
-      localObject4 = new ArrayList();
-      j = localObject3.length;
-      i = 0;
-      while (i < j)
-      {
-        locale = localObject3[i];
-        ((ArrayList)localObject4).add(Integer.valueOf(locale.d));
-        ((ArrayList)localObject4).add(Integer.valueOf(locale.c));
-        ((ArrayList)localObject4).add(Integer.valueOf(locale.f));
-        ((ArrayList)localObject4).add(Integer.valueOf(locale.e));
-        ((ArrayList)localObject4).add(Integer.valueOf(locale.g));
-        i += 1;
-      }
-      localRttRequest.bounds = ((ArrayList)localObject4);
-      localRttRequest.zip = 1;
-      localRttRequest.zoom = ((short)localObject3[0].a);
-    }
-    label576:
-    label586:
-    label601:
-    for (;;)
-    {
-      localObject3 = this.d;
-      localObject4 = new user_login_t();
-      ((user_login_t)localObject4).pf = "android_sdk";
-      ((user_login_t)localObject4).is_login = false;
-      ((user_login_t)localObject4).channel = fz.d;
-      ((user_login_t)localObject4).imei = fz.a();
-      locale = new e();
-      locale.b("rttserverex");
-      locale.c("getRtt");
-      locale.a("info", localObject4);
-      locale.a("req", localThrowable);
-      byte[] arrayOfByte = ((qe)localObject3).a(locale.a());
-      break;
-      wait(30000L);
-      break label256;
-      for (;;)
-      {
-        if (arrayOfByte != null) {
-          break label601;
-        }
-        arrayOfByte = null;
-        break;
-        arrayOfByte = null;
+      Thread.currentThread().interrupt();
+      return;
+      label594:
+      Object localObject3 = null;
+      label597:
+      if (localObject3 == null) {
+        localObject3 = localObject4;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.jp
  * JD-Core Version:    0.7.0.1
  */

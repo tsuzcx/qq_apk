@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupMngRes
   extends JceStruct
 {
-  static int cache_reqtype = 0;
+  static int cache_reqtype;
   static byte[] cache_vecBody = (byte[])new byte[1];
   static byte[] cache_vecJoinPrompt;
   public String ErrorString = "";
@@ -75,28 +75,33 @@ public final class GroupMngRes
     paramJceOutputStream.write(this.ErrorString, 3);
     paramJceOutputStream.write(this.errorCode, 4);
     paramJceOutputStream.write(this.cIsInGroup, 5);
-    if (this.sGroupLocation != null) {
-      paramJceOutputStream.write(this.sGroupLocation, 6);
+    Object localObject = this.sGroupLocation;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.cIsMemInvite, 7);
-    if (this.sAuthGrpInfo != null) {
-      paramJceOutputStream.write(this.sAuthGrpInfo, 8);
+    localObject = this.sAuthGrpInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.sJoinQuestion != null) {
-      paramJceOutputStream.write(this.sJoinQuestion, 9);
+    localObject = this.sJoinQuestion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.sJoinAnswer != null) {
-      paramJceOutputStream.write(this.sJoinAnswer, 10);
+    localObject = this.sJoinAnswer;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.dwDis2GrpLimitType, 11);
-    if (this.vecJoinPrompt != null) {
-      paramJceOutputStream.write(this.vecJoinPrompt, 12);
+    localObject = this.vecJoinPrompt;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.GroupMngRes
  * JD-Core Version:    0.7.0.1
  */

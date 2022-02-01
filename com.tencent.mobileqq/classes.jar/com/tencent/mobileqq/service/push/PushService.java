@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.text.TextUtils;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.common.app.BaseProtocolCoder;
 import com.tencent.msf.service.protocol.push.SvcReqSetToken;
@@ -28,36 +29,42 @@ public class PushService
   private boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     SvcReqSetToken localSvcReqSetToken = new SvcReqSetToken();
-    paramToServiceMsg = paramToServiceMsg.extraData.getString("push_token");
+    String str = paramToServiceMsg.extraData.getString("push_token");
+    paramToServiceMsg = paramToServiceMsg.extraData.getString("push_profileid");
     try
     {
-      localSvcReqSetToken.vNewToken = paramToServiceMsg.getBytes("utf-8");
-      localSvcReqSetToken.bEnterVersion = 37;
-      localSvcReqSetToken.bPushMsg = 1;
-      paramUniPacket.put("SvcReqSetToken", localSvcReqSetToken);
-      paramUniPacket.setServantName("PushService");
-      paramUniPacket.setFuncName("SvcReqSetToken");
-      if (QLog.isColorLevel()) {
-        QLog.d("PushService", 2, "HPush_requestSetPushToken-encodeRequestMsg-handleReqSetPushToken:");
+      localSvcReqSetToken.vNewToken = str.getBytes("utf-8");
+      if (!TextUtils.isEmpty(paramToServiceMsg)) {
+        localSvcReqSetToken.vProfileID = paramToServiceMsg.getBytes("utf-8");
       }
-      return true;
     }
-    catch (UnsupportedEncodingException paramToServiceMsg)
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        paramToServiceMsg.printStackTrace();
-      }
+      localUnsupportedEncodingException.printStackTrace();
     }
+    localSvcReqSetToken.bEnterVersion = 37;
+    localSvcReqSetToken.bPushMsg = 1;
+    paramUniPacket.put("SvcReqSetToken", localSvcReqSetToken);
+    paramUniPacket.setServantName("PushService");
+    paramUniPacket.setFuncName("SvcReqSetToken");
+    if (QLog.isColorLevel())
+    {
+      paramUniPacket = new StringBuilder();
+      paramUniPacket.append("HPush_requestSetPushToken-encodeRequestMsg-handleReqSetPushToken:");
+      paramUniPacket.append(str);
+      paramUniPacket.append(",profileid = ");
+      paramUniPacket.append(paramToServiceMsg);
+      QLog.d("PushService", 2, paramUniPacket.toString());
+    }
+    return true;
   }
   
   private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    paramToServiceMsg = paramFromServiceMsg;
     if (paramFromServiceMsg.getWupBuffer() == null) {
-      paramToServiceMsg = null;
+      return null;
     }
-    return paramToServiceMsg;
+    return paramFromServiceMsg;
   }
   
   public String[] cmdHeaderPrefix()
@@ -75,38 +82,48 @@ public class PushService
   
   public void decodeRespMsg(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (str.equals("MessageSvc.RequestPushStatus"))
+    Object localObject = paramFromServiceMsg.getServiceCmd();
+    if (((String)localObject).equals("MessageSvc.RequestPushStatus"))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StatusPush", 2, "decodeRespMsg MessageSvc.RequestPushStatus uin:" + paramFromServiceMsg.getUin() + " at " + System.currentTimeMillis());
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("decodeRespMsg MessageSvc.RequestPushStatus uin:");
+        paramToServiceMsg.append(paramFromServiceMsg.getUin());
+        paramToServiceMsg.append(" at ");
+        paramToServiceMsg.append(System.currentTimeMillis());
+        QLog.d("StatusPush", 2, paramToServiceMsg.toString());
       }
       paramToServiceMsg = paramFromServiceMsg.getWupBuffer();
-      if (paramToServiceMsg != null) {}
-    }
-    do
-    {
-      return;
+      if (paramToServiceMsg == null) {
+        return;
+      }
       paramFromServiceMsg = new UniPacket();
       paramFromServiceMsg.decode(paramToServiceMsg);
       paramToServiceMsg = (RequestPushStatus)paramFromServiceMsg.getByClass("req_PushStatus", new RequestPushStatus());
-      paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("share", 0).edit();
-      str = "is_pc_online" + paramToServiceMsg.lUin;
-      if (paramToServiceMsg.cStatus == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramFromServiceMsg.putBoolean(str, bool).commit();
-        return;
+      paramFromServiceMsg = BaseApplication.getContext();
+      boolean bool = false;
+      paramFromServiceMsg = paramFromServiceMsg.getSharedPreferences("share", 0).edit();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("is_pc_online");
+      ((StringBuilder)localObject).append(paramToServiceMsg.lUin);
+      localObject = ((StringBuilder)localObject).toString();
+      if (paramToServiceMsg.cStatus == 1) {
+        bool = true;
       }
-      if ("baseSdk.Msf.NotifyResp".equals(str))
-      {
-        paramToServiceMsg = new Intent("tencent.notify.album");
-        paramToServiceMsg.putExtra("resp", paramFromServiceMsg);
-        BaseApplication.getContext().sendBroadcast(paramToServiceMsg, "com.tencent.msg.permission.pushnotify");
-        return;
-      }
-    } while (!"PushService.SetToken".equalsIgnoreCase(str));
-    a(paramToServiceMsg, paramFromServiceMsg);
+      paramFromServiceMsg.putBoolean((String)localObject, bool).commit();
+      return;
+    }
+    if ("baseSdk.Msf.NotifyResp".equals(localObject))
+    {
+      paramToServiceMsg = new Intent("tencent.notify.album");
+      paramToServiceMsg.putExtra("resp", paramFromServiceMsg);
+      BaseApplication.getContext().sendBroadcast(paramToServiceMsg, "com.tencent.msg.permission.pushnotify");
+      return;
+    }
+    if ("PushService.SetToken".equalsIgnoreCase((String)localObject)) {
+      a(paramToServiceMsg, paramFromServiceMsg);
+    }
   }
   
   public void destroy() {}
@@ -121,7 +138,7 @@ public class PushService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.push.PushService
  * JD-Core Version:    0.7.0.1
  */

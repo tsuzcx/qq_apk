@@ -14,19 +14,21 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendBaseBuilder;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.addfriend.api.IAddFriendApi;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.newfriend.api.INewFriendApi;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.phonecontact.data.ContactBindedData;
+import com.tencent.mobileqq.phonecontact.util.ContactBindUtils;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tencent.mobileqq.widget.IndexView;
@@ -35,11 +37,8 @@ import com.tencent.widget.ThemeImageView;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Set;
 
 public class ContactBindedAdapter
   extends CharDividedFacePreloadBaseAdapter
@@ -70,178 +69,56 @@ public class ContactBindedAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER));
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelOffset(2131298224);
-    this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelOffset(2131298225);
+    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelOffset(2131298219);
+    this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelOffset(2131298220);
     a(paramList);
-  }
-  
-  public static ContactBindedAdapter.ContactBindedData a(List<PhoneContact> paramList, ArrayList<PhoneContact> paramArrayList, boolean paramBoolean)
-  {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    ContactBindedAdapter.ContactBindedData localContactBindedData = new ContactBindedAdapter.ContactBindedData();
-    localContactBindedData.jdField_a_of_type_JavaUtilList = ((List)localObject);
-    label52:
-    label53:
-    PhoneContact localPhoneContact;
-    if (paramArrayList != null)
-    {
-      paramList = (List)paramArrayList.clone();
-      Iterator localIterator = ((List)localObject).iterator();
-      break label193;
-      if (!localIterator.hasNext()) {
-        break label307;
-      }
-      localPhoneContact = (PhoneContact)localIterator.next();
-      if (!TextUtils.isEmpty(localPhoneContact.pinyinFirst)) {
-        break label285;
-      }
-      paramArrayList = "#";
-      label89:
-      i = paramArrayList.charAt(0);
-      if (((65 > i) || (i > 90)) && ((97 > i) || (i > 122))) {
-        break label301;
-      }
-    }
-    label285:
-    label301:
-    for (paramArrayList = paramArrayList.toUpperCase();; paramArrayList = "#")
-    {
-      if (localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramArrayList) == null) {
-        localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramArrayList, new ArrayList());
-      }
-      ((List)localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramArrayList)).add(localPhoneContact);
-      if ((paramList == null) || (!paramBoolean)) {
-        break label53;
-      }
-      paramArrayList = paramList.iterator();
-      label193:
-      if (!paramArrayList.hasNext()) {
-        break label53;
-      }
-      if (!TextUtils.equals(((PhoneContact)paramArrayList.next()).unifiedCode, localPhoneContact.unifiedCode)) {
-        break label52;
-      }
-      if (localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.get("★") == null) {
-        localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.put("★", new ArrayList());
-      }
-      ((List)localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.get("★")).add(localPhoneContact);
-      break label53;
-      paramList = null;
-      break;
-      paramArrayList = String.valueOf(localPhoneContact.pinyinFirst.charAt(0));
-      break label89;
-    }
-    label307:
-    if (paramList != null)
-    {
-      localContactBindedData.jdField_b_of_type_JavaUtilList = paramList;
-      if (!paramBoolean)
-      {
-        if (localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.get("★") == null) {
-          localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.put("★", new ArrayList());
-        }
-        ((List)localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.get("★")).addAll(paramList);
-      }
-    }
-    paramArrayList = localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap;
-    localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    for (char c1 = 'A'; c1 <= 'Z'; c1 = (char)(c1 + '\001')) {
-      if (paramArrayList.get(String.valueOf(c1)) != null) {
-        localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c1), paramArrayList.get(String.valueOf(c1)));
-      }
-    }
-    if (paramArrayList.get("#") != null) {
-      localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", paramArrayList.get("#"));
-    }
-    if ((paramList != null) && ((((List)localObject).size() > 10) || (!paramBoolean)) && (paramArrayList.get("★") != null)) {
-      localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.put("★", paramList);
-    }
-    paramArrayList.clear();
-    localContactBindedData.jdField_a_of_type_ArrayOfInt = new int[localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
-    localContactBindedData.jdField_a_of_type_ArrayOfJavaLangString = new String[localContactBindedData.jdField_a_of_type_ArrayOfInt.length];
-    paramList = new ArrayList(localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.keySet());
-    Collections.sort(paramList, new ContactBindedAdapter.1());
-    paramArrayList = paramList.iterator();
-    if (localContactBindedData.jdField_a_of_type_ArrayOfInt.length == 0) {
-      return localContactBindedData;
-    }
-    localContactBindedData.jdField_a_of_type_ArrayOfInt[0] = 0;
-    int i = 1;
-    while (i < localContactBindedData.jdField_a_of_type_ArrayOfInt.length)
-    {
-      localObject = localContactBindedData.jdField_a_of_type_ArrayOfInt;
-      int j = localObject[i];
-      int k = localContactBindedData.jdField_a_of_type_ArrayOfInt[(i - 1)];
-      localObject[i] = (((List)localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramArrayList.next())).size() + k + 1 + j);
-      i += 1;
-    }
-    paramList = paramList.iterator();
-    i = 0;
-    while (paramList.hasNext())
-    {
-      localContactBindedData.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)paramList.next());
-      i += 1;
-    }
-    return localContactBindedData;
   }
   
   private boolean a(PhoneContact paramPhoneContact)
   {
-    boolean bool2 = false;
     int i = 0;
-    for (;;)
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      boolean bool1 = bool2;
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (TextUtils.equals(paramPhoneContact.unifiedCode, localPhoneContact.unifiedCode)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
+      PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (TextUtils.equals(paramPhoneContact.unifiedCode, localPhoneContact.unifiedCode)) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public int a()
   {
     if (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0) {
-      return 2131559435;
+      return 2131559309;
     }
     return 0;
   }
   
   public int a(String paramString)
   {
-    int i;
     if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
     {
-      i = 0;
-      if (i >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-        break label53;
-      }
-      if (!this.jdField_a_of_type_ArrayOfJavaLangString[i].equals(paramString)) {}
-    }
-    for (;;)
-    {
-      if (i >= 0)
+      int i = 0;
+      for (;;)
       {
-        return this.jdField_a_of_type_ArrayOfInt[i];
+        String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+        if (i >= arrayOfString.length) {
+          break;
+        }
+        if (arrayOfString[i].equals(paramString)) {
+          break label42;
+        }
         i += 1;
-        break;
       }
-      return -1;
-      return -1;
-      label53:
       i = -1;
+      label42:
+      if (i >= 0) {
+        return this.jdField_a_of_type_ArrayOfInt[i];
+      }
     }
+    return -1;
   }
   
   public void a(View paramView, int paramInt)
@@ -251,12 +128,41 @@ public class ContactBindedAdapter
     if (i < 0) {
       paramInt = -(i + 1) - 1;
     }
-    if ((paramInt < this.jdField_a_of_type_ArrayOfJavaLangString.length) && (paramInt >= 0)) {
-      ((TextView)paramView).setText(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    if ((paramInt < arrayOfString.length) && (paramInt >= 0)) {
+      ((TextView)paramView).setText(arrayOfString[paramInt]);
     }
   }
   
-  public void a(ContactBindedAdapter.ContactBindedData paramContactBindedData)
+  public void a(PhoneContact paramPhoneContact, boolean paramBoolean)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (TextUtils.equals(paramPhoneContact.unifiedCode, localPhoneContact.unifiedCode)) {
+        break label57;
+      }
+      i += 1;
+    }
+    i = -1;
+    label57:
+    if (paramBoolean)
+    {
+      if (i == -1)
+      {
+        this.jdField_a_of_type_JavaUtilList.add(paramPhoneContact);
+        notifyDataSetChanged();
+      }
+    }
+    else if (i != -1)
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(i);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void a(ContactBindedData paramContactBindedData)
   {
     this.jdField_b_of_type_JavaUtilList = paramContactBindedData.jdField_a_of_type_JavaUtilList;
     this.jdField_a_of_type_ArrayOfInt = paramContactBindedData.jdField_a_of_type_ArrayOfInt;
@@ -265,39 +171,9 @@ public class ContactBindedAdapter
     this.c = paramContactBindedData.jdField_b_of_type_JavaUtilList;
   }
   
-  public void a(PhoneContact paramPhoneContact, boolean paramBoolean)
-  {
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (!TextUtils.equals(paramPhoneContact.unifiedCode, localPhoneContact.unifiedCode)) {}
-    }
-    for (;;)
-    {
-      if (paramBoolean) {
-        if (i == -1)
-        {
-          this.jdField_a_of_type_JavaUtilList.add(paramPhoneContact);
-          notifyDataSetChanged();
-        }
-      }
-      while (i == -1)
-      {
-        return;
-        i += 1;
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilList.remove(i);
-      notifyDataSetChanged();
-      return;
-      i = -1;
-    }
-  }
-  
   public void a(List<PhoneContact> paramList)
   {
-    a(a(paramList, null, true));
+    a(ContactBindUtils.a(paramList, null, true));
   }
   
   public void a(boolean paramBoolean)
@@ -320,11 +196,14 @@ public class ContactBindedAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    if (localObject.length == 0) {
       return 0;
     }
-    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1)];
-    return ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_ArrayOfJavaLangString.length - 1)])).size() + i + 1;
+    int i = localObject[(localObject.length - 1)];
+    localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap;
+    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    return i + ((List)((LinkedHashMap)localObject).get(arrayOfString[(arrayOfString.length - 1)])).size() + 1;
   }
   
   public Object getItem(int paramInt)
@@ -340,332 +219,292 @@ public class ContactBindedAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    Object localObject2;
-    Object localObject1;
+    View localView;
     if (paramView == null)
     {
-      localObject2 = new ContactBindedAdapter.ConactBindedHolder();
-      Object localObject3 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561163, null);
-      ((ContactBindedAdapter.ConactBindedHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject3).findViewById(2131372288));
-      ((ContactBindedAdapter.ConactBindedHolder)localObject2).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject3).findViewById(2131361796));
-      ((ContactBindedAdapter.ConactBindedHolder)localObject2).b = ((TextView)((View)localObject3).findViewById(2131377005));
-      ((ContactBindedAdapter.ConactBindedHolder)localObject2).jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject3).findViewById(2131378318));
-      ((ContactBindedAdapter.ConactBindedHolder)localObject2).jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject3).findViewById(2131376990));
-      ((ContactBindedAdapter.ConactBindedHolder)localObject2).d = ((TextView)((View)localObject3).findViewById(2131377001));
-      ((ContactBindedAdapter.ConactBindedHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)((View)localObject3).findViewById(2131364722));
-      ((ContactBindedAdapter.ConactBindedHolder)localObject2).e = ((TextView)((View)localObject3).findViewById(2131380419));
-      ((ContactBindedAdapter.ConactBindedHolder)localObject2).jdField_a_of_type_AndroidViewView = ((View)localObject3).findViewById(2131374662);
-      ((View)localObject3).setBackgroundDrawable(null);
-      ((View)localObject3).setTag(localObject2);
-      paramView = (View)localObject2;
-      localObject1 = localObject3;
-      if ((((ContactBindedAdapter.ConactBindedHolder)localObject2).jdField_c_of_type_AndroidWidgetImageView instanceof ThemeImageView))
-      {
-        ((ThemeImageView)((ContactBindedAdapter.ConactBindedHolder)localObject2).jdField_c_of_type_AndroidWidgetImageView).setSupportMaskView(false);
-        localObject1 = localObject3;
-        paramView = (View)localObject2;
+      paramView = new ContactBindedAdapter.ConactBindedHolder();
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561026, null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371877));
+      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131361799));
+      paramView.b = ((TextView)localView.findViewById(2131376487));
+      paramView.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377726));
+      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131376477));
+      paramView.d = ((TextView)localView.findViewById(2131376485));
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131364609));
+      paramView.e = ((TextView)localView.findViewById(2131379732));
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131374200);
+      localView.setBackgroundDrawable(null);
+      localView.setTag(paramView);
+      if ((paramView.jdField_c_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
+        ((ThemeImageView)paramView.jdField_c_of_type_AndroidWidgetImageView).setSupportMaskView(false);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.getVisibility() != 0)) {
-        break label779;
-      }
-      ((View)localObject1).findViewById(2131376997).setPadding(0, 0, this.jdField_a_of_type_Int, 0);
-      label265:
-      if (i >= 0) {
-        break label1072;
-      }
-      i = -(i + 1) - 1;
-      localObject2 = (PhoneContact)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
-      paramView.jdField_a_of_type_ComTencentMobileqqDataPhoneContact = ((PhoneContact)localObject2);
-      if ((this.c.isEmpty()) || ("★".equals(this.jdField_a_of_type_ArrayOfJavaLangString[i])) || (!((PhoneContact)localObject2).isNewRecommend)) {
-        break label800;
-      }
-      NewFriendBaseBuilder.a((View)localObject1, true);
-      NewFriendBaseBuilder.b(paramView.jdField_a_of_type_AndroidViewView, true);
-      label372:
-      localObject3 = new StringBuilder(256);
-      if (TextUtils.isEmpty(((PhoneContact)localObject2).name)) {
-        break label817;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PhoneContact)localObject2).name);
-      if (AppSetting.d)
-      {
-        AccessibilityUtil.a(paramView.jdField_a_of_type_AndroidWidgetTextView, false);
-        ((StringBuilder)localObject3).append(((PhoneContact)localObject2).name);
-      }
-      label440:
-      paramView.b.setVisibility(8);
-      if (((PhoneContact)localObject2).samFriend <= 0) {
-        break label829;
-      }
-      paramView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      Object localObject4 = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691173), new Object[] { Integer.valueOf(((PhoneContact)localObject2).samFriend) });
-      paramView.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject4);
-      paramView.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      if (AppSetting.d) {
-        ((StringBuilder)localObject3).append(",").append((String)localObject4);
-      }
-      label538:
-      if ((TextUtils.isEmpty(((PhoneContact)localObject2).uin)) || (((PhoneContact)localObject2).uin.equals("0"))) {
-        break label841;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      paramView.d.setVisibility(0);
-      paramView.d.setText(HardCodeUtil.a(2131702504));
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.jdField_a_of_type_AndroidViewView.setEnabled(false);
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      }
-      if (AppSetting.d) {
-        paramView.d.setContentDescription(HardCodeUtil.a(2131702499));
-      }
-      label643:
-      localObject4 = paramView.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label1065;
-      }
-      i = 0;
-      label659:
-      ((CheckBox)localObject4).setVisibility(i);
-      if (AppSetting.d) {
-        ((View)localObject1).setContentDescription(((StringBuilder)localObject3).toString());
-      }
-      paramView.e.setVisibility(8);
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      paramView.jdField_a_of_type_JavaLangString = ((PhoneContact)localObject2).unifiedCode;
-      paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(((PhoneContact)localObject2).unifiedCode, 11, (byte)0));
-      paramView.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      paramView.jdField_a_of_type_AndroidViewView.setTag(paramView);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject2 = (ContactBindedAdapter.ConactBindedHolder)paramView.getTag();
-      localObject1 = paramView;
-      paramView = (View)localObject2;
-      break;
-      label779:
-      ((View)localObject1).findViewById(2131376997).setPadding(0, 0, this.jdField_b_of_type_Int, 0);
-      break label265;
-      label800:
-      NewFriendBaseBuilder.a((View)localObject1, false);
-      NewFriendBaseBuilder.b(paramView.jdField_a_of_type_AndroidViewView, false);
-      break label372;
-      label817:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label440;
-      label829:
-      paramView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label538;
-      label841:
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(((PhoneContact)localObject2).unifiedCode, true))
+      localObject1 = (ContactBindedAdapter.ConactBindedHolder)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject1;
+    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView;
+    if ((localObject1 != null) && (((IndexView)localObject1).getVisibility() == 0)) {
+      localView.findViewById(2131376483).setPadding(0, 0, this.jdField_a_of_type_Int, 0);
+    } else {
+      localView.findViewById(2131376483).setPadding(0, 0, this.jdField_b_of_type_Int, 0);
+    }
+    if (i < 0)
+    {
+      i = -(i + 1) - 1;
+      localObject1 = (PhoneContact)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
+      paramView.jdField_a_of_type_ComTencentMobileqqDataPhoneContact = ((PhoneContact)localObject1);
+      if ((!this.c.isEmpty()) && (!"★".equals(this.jdField_a_of_type_ArrayOfJavaLangString[i])) && (((PhoneContact)localObject1).isNewRecommend))
+      {
+        ((INewFriendApi)QRoute.api(INewFriendApi.class)).updateItemBg(localView, true);
+        ((INewFriendApi)QRoute.api(INewFriendApi.class)).updateItemBgKeepPadding(paramView.jdField_a_of_type_AndroidViewView, true);
+      }
+      else
+      {
+        ((INewFriendApi)QRoute.api(INewFriendApi.class)).updateItemBg(localView, false);
+        ((INewFriendApi)QRoute.api(INewFriendApi.class)).updateItemBgKeepPadding(paramView.jdField_a_of_type_AndroidViewView, false);
+      }
+      StringBuilder localStringBuilder = new StringBuilder(256);
+      if (!TextUtils.isEmpty(((PhoneContact)localObject1).name))
+      {
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PhoneContact)localObject1).name);
+        if (AppSetting.d)
+        {
+          AccessibilityUtil.a(paramView.jdField_a_of_type_AndroidWidgetTextView, false);
+          localStringBuilder.append(((PhoneContact)localObject1).name);
+        }
+      }
+      else
+      {
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+      paramView.b.setVisibility(8);
+      if (((PhoneContact)localObject1).samFriend > 0)
+      {
+        paramView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+        localObject2 = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691093), new Object[] { Integer.valueOf(((PhoneContact)localObject1).samFriend) });
+        paramView.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+        paramView.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        if (AppSetting.d)
+        {
+          localStringBuilder.append(",");
+          localStringBuilder.append((String)localObject2);
+        }
+      }
+      else
+      {
+        paramView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+      if ((!TextUtils.isEmpty(((PhoneContact)localObject1).uin)) && (!((PhoneContact)localObject1).uin.equals("0")))
       {
         paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         paramView.d.setVisibility(0);
-        paramView.d.setText(HardCodeUtil.a(2131702502));
+        paramView.d.setText(HardCodeUtil.a(2131702636));
         if (this.jdField_a_of_type_Boolean)
         {
           paramView.jdField_a_of_type_AndroidViewView.setEnabled(false);
           paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
           paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
         }
-        if (!AppSetting.d) {
-          break label643;
+        if (AppSetting.d) {
+          paramView.d.setContentDescription(HardCodeUtil.a(2131702631));
         }
-        paramView.d.setContentDescription(HardCodeUtil.a(2131702508));
-        break label643;
       }
-      if (this.jdField_a_of_type_Boolean)
+      else if (this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(((PhoneContact)localObject1).unifiedCode, true))
       {
         paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(a((PhoneContact)localObject2));
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramView);
-      }
-      for (;;)
-      {
-        paramView.jdField_a_of_type_AndroidViewView.setEnabled(true);
-        paramView.d.setVisibility(8);
-        break;
-        paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        paramView.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131689557));
-        paramView.jdField_a_of_type_AndroidWidgetButton.setTag(localObject2);
-        paramView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+        paramView.d.setVisibility(0);
+        paramView.d.setText(HardCodeUtil.a(2131702634));
+        if (this.jdField_a_of_type_Boolean)
+        {
+          paramView.jdField_a_of_type_AndroidViewView.setEnabled(false);
+          paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
+          paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+        }
         if (AppSetting.d) {
-          paramView.jdField_a_of_type_AndroidWidgetButton.setContentDescription(HardCodeUtil.a(2131689557));
+          paramView.d.setContentDescription(HardCodeUtil.a(2131702640));
         }
       }
-      label1065:
-      i = 8;
-      break label659;
-      label1072:
+      else
+      {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+          paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
+          paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(a((PhoneContact)localObject1));
+          paramView.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramView);
+        }
+        else
+        {
+          paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+          paramView.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131689589));
+          paramView.jdField_a_of_type_AndroidWidgetButton.setTag(localObject1);
+          paramView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+          if (AppSetting.d) {
+            paramView.jdField_a_of_type_AndroidWidgetButton.setContentDescription(HardCodeUtil.a(2131689589));
+          }
+        }
+        paramView.jdField_a_of_type_AndroidViewView.setEnabled(true);
+        paramView.d.setVisibility(8);
+      }
+      Object localObject2 = paramView.jdField_a_of_type_AndroidWidgetCheckBox;
+      if (this.jdField_a_of_type_Boolean) {
+        i = 0;
+      } else {
+        i = 8;
+      }
+      ((CheckBox)localObject2).setVisibility(i);
+      if (AppSetting.d) {
+        localView.setContentDescription(localStringBuilder.toString());
+      }
+      paramView.e.setVisibility(8);
+      paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramView.jdField_a_of_type_JavaLangString = ((PhoneContact)localObject1).unifiedCode;
+      paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(((PhoneContact)localObject1).unifiedCode, 11, (byte)0));
+      paramView.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      paramView.jdField_a_of_type_AndroidViewView.setTag(paramView);
+    }
+    else
+    {
       paramView.jdField_a_of_type_AndroidViewView.setTag(null);
       paramView.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
       paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
       paramView.e.setVisibility(0);
       paramView.e.setText(String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]));
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public void onClick(View paramView)
   {
     Object localObject1 = paramView.getTag();
-    if (localObject1 == null) {}
-    boolean bool1;
-    for (;;)
+    if (localObject1 != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof ContactBindedActivity)) {
-        ((ContactBindedActivity)this.jdField_a_of_type_AndroidContentContext).d();
+      Object localObject2 = this.jdField_a_of_type_AndroidContentContext;
+      if ((localObject2 instanceof ContactBindedActivity)) {
+        ((ContactBindedActivity)localObject2).d();
       }
-      switch (paramView.getId())
+      int j = paramView.getId();
+      int i = 1;
+      if (j != 2131374200)
       {
-      default: 
-        break;
-      case 2131374662: 
-        if (!this.jdField_a_of_type_Boolean) {
-          break label745;
-        }
-        localObject1 = (ContactBindedAdapter.ConactBindedHolder)localObject1;
-        boolean bool2 = a(((ContactBindedAdapter.ConactBindedHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataPhoneContact);
-        localObject2 = ((ContactBindedAdapter.ConactBindedHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
-        if (bool2) {
-          break label733;
-        }
-        bool1 = true;
-        label111:
-        a((PhoneContact)localObject2, bool1);
-        if (this.jdField_a_of_type_ComTencentMobileqqAdapterContactBindedAdapter$SelectedListener != null)
+        if (j == 2131376477)
         {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAdapterContactBindedAdapter$SelectedListener;
-          localObject1 = ((ContactBindedAdapter.ConactBindedHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
-          if (bool2) {
-            break label739;
-          }
-          bool1 = true;
-          label147:
-          ((ContactBindedAdapter.SelectedListener)localObject2).a((PhoneContact)localObject1, bool1);
-        }
-        break;
-      }
-    }
-    Object localObject2 = (PhoneContact)localObject1;
-    localObject1 = (PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-    int j;
-    if (((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getBooleanExtra("from_babyq", false)) {
-      j = 1;
-    }
-    for (int i = 3084;; i = 3006)
-    {
-      label269:
-      label312:
-      ContactBindedActivity localContactBindedActivity;
-      if (!((PhoneContactManager)localObject1).i()) {
-        if (this.c.contains(localObject2))
-        {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077CD", "0X80077CD", 1, 0, "", "", "", "");
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077CD", "0X80077CD", 0, 0, "", "", "", "");
-          j = 16;
-          i = 3006;
-          ((PhoneContact)localObject2).isNewRecommend = false;
-          if ((this.jdField_a_of_type_AndroidContentContext instanceof ContactBindedActivity))
+          localObject2 = (PhoneContact)localObject1;
+          localObject1 = (IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+          if (((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getBooleanExtra("from_babyq", false))
           {
-            localContactBindedActivity = (ContactBindedActivity)this.jdField_a_of_type_AndroidContentContext;
-            if (!TextUtils.isEmpty(((PhoneContact)localObject2).pinyinFirst)) {
-              break label713;
+            j = 3084;
+          }
+          else
+          {
+            j = 3006;
+            i = 13;
+          }
+          if (!((IPhoneContactService)localObject1).isBindedIgnoreUpload())
+          {
+            if (this.c.contains(localObject2)) {
+              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077CD", "0X80077CD", 1, 0, "", "", "", "");
+            } else {
+              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077CD", "0X80077CD", 2, 0, "", "", "", "");
+            }
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077CD", "0X80077CD", 0, 0, "", "", "", "");
+            j = 3006;
+            i = 16;
+          }
+          else if (this.c.isEmpty())
+          {
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077D0", "0X80077D0", 0, 0, "", "", "", "");
+          }
+          else
+          {
+            if (this.c.contains(localObject2)) {
+              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077D3", "0X80077D3", 1, 0, "", "", "", "");
+            } else {
+              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077D3", "0X80077D3", 2, 0, "", "", "", "");
+            }
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077D3", "0X80077D3", 0, 0, "", "", "", "");
+          }
+          ((PhoneContact)localObject2).isNewRecommend = false;
+          localObject1 = this.jdField_a_of_type_AndroidContentContext;
+          if ((localObject1 instanceof ContactBindedActivity))
+          {
+            ContactBindedActivity localContactBindedActivity = (ContactBindedActivity)localObject1;
+            if (TextUtils.isEmpty(((PhoneContact)localObject2).pinyinFirst)) {
+              localObject1 = "#";
+            } else {
+              localObject1 = String.valueOf(((PhoneContact)localObject2).pinyinFirst.charAt(0)).toUpperCase();
+            }
+            localObject1 = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1);
+            if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
+            {
+              localContactBindedActivity.jdField_a_of_type_Int = ((List)localObject1).indexOf(localObject2);
+              if (localContactBindedActivity.jdField_a_of_type_Int != -1) {
+                localContactBindedActivity.jdField_a_of_type_ComTencentMobileqqDataPhoneContact = ((PhoneContact)localObject2);
+              }
             }
           }
+          localObject1 = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(this.jdField_a_of_type_AndroidContentContext, 2, ((PhoneContact)localObject2).unifiedCode, null, j, i, ((PhoneContact)localObject2).name, null, null, HardCodeUtil.a(2131702637), null);
+          ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend((Activity)this.jdField_a_of_type_AndroidContentContext, (Intent)localObject1);
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006A75", "0X8006A75", 0, 0, "", "", "", "");
+          notifyDataSetChanged();
         }
       }
-      label713:
-      for (localObject1 = "#";; localObject1 = String.valueOf(((PhoneContact)localObject2).pinyinFirst.charAt(0)).toUpperCase())
+      else if (this.jdField_a_of_type_Boolean)
       {
-        localObject1 = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1);
-        if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
+        localObject1 = (ContactBindedAdapter.ConactBindedHolder)localObject1;
+        boolean bool = a(((ContactBindedAdapter.ConactBindedHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataPhoneContact);
+        a(((ContactBindedAdapter.ConactBindedHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataPhoneContact, bool ^ true);
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAdapterContactBindedAdapter$SelectedListener;
+        if (localObject2 != null) {
+          ((ContactBindedAdapter.SelectedListener)localObject2).a(((ContactBindedAdapter.ConactBindedHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataPhoneContact, bool ^ true);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact = ((ContactBindedAdapter.ConactBindedHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
+        if (localObject1 != null)
         {
-          localContactBindedActivity.jdField_a_of_type_Int = ((List)localObject1).indexOf(localObject2);
-          if (localContactBindedActivity.jdField_a_of_type_Int != -1) {
-            localContactBindedActivity.jdField_a_of_type_ComTencentMobileqqDataPhoneContact = ((PhoneContact)localObject2);
+          ((PhoneContact)localObject1).isNewRecommend = false;
+          localObject2 = (IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+          if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.uin)) && (!"0".equals(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.uin)))
+          {
+            localObject1 = new AllInOne(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.uin, 30);
+            ((AllInOne)localObject1).contactName = this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.name;
           }
+          else if (((IPhoneContactService)localObject2).isBindedIgnoreUpload())
+          {
+            localObject1 = new AllInOne(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.unifiedCode, 34);
+          }
+          else
+          {
+            localObject1 = new AllInOne(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.unifiedCode, 29);
+            ((AllInOne)localObject1).subSourceId = 16;
+          }
+          ((AllInOne)localObject1).nickname = this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.name;
+          if ((((IPhoneContactService)localObject2).isBindedIgnoreUpload()) && (this.c.isEmpty())) {
+            ((AllInOne)localObject1).profileEntryType = 104;
+          } else if (this.c.contains(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact)) {
+            ((AllInOne)localObject1).profileEntryType = 101;
+          } else {
+            ((AllInOne)localObject1).profileEntryType = 102;
+          }
+          ProfileUtils.openProfileCard(this.jdField_a_of_type_AndroidContentContext, (AllInOne)localObject1);
         }
-        localObject1 = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, 2, ((PhoneContact)localObject2).unifiedCode, null, i, j, ((PhoneContact)localObject2).name, null, null, HardCodeUtil.a(2131702505), null);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006A75", "0X8006A75", 0, 0, "", "", "", "");
         notifyDataSetChanged();
-        break;
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077CD", "0X80077CD", 2, 0, "", "", "", "");
-        break label269;
-        if (this.c.isEmpty())
-        {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077D0", "0X80077D0", 0, 0, "", "", "", "");
-          break label312;
-        }
-        if (this.c.contains(localObject2)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077D3", "0X80077D3", 1, 0, "", "", "", "");
-        }
-        for (;;)
-        {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077D3", "0X80077D3", 0, 0, "", "", "", "");
-          break;
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077D3", "0X80077D3", 2, 0, "", "", "", "");
-        }
       }
-      label733:
-      bool1 = false;
-      break label111;
-      label739:
-      bool1 = false;
-      break label147;
-      label745:
-      this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact = ((ContactBindedAdapter.ConactBindedHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.isNewRecommend = false;
-        localObject2 = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.uin)) || ("0".equals(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.uin))) {
-          break label901;
-        }
-        localObject1 = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.uin, 30);
-        ((ProfileActivity.AllInOne)localObject1).k = this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.name;
-        label846:
-        ((ProfileActivity.AllInOne)localObject1).jdField_h_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.name;
-        if ((!((PhoneContactManagerImp)localObject2).i()) || (!this.c.isEmpty())) {
-          break label958;
-        }
-        ((ProfileActivity.AllInOne)localObject1).jdField_h_of_type_Int = 104;
-      }
-      for (;;)
-      {
-        ProfileActivity.b(this.jdField_a_of_type_AndroidContentContext, (ProfileActivity.AllInOne)localObject1);
-        notifyDataSetChanged();
-        break;
-        label901:
-        if (((PhoneContactManagerImp)localObject2).i())
-        {
-          localObject1 = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.unifiedCode, 34);
-          break label846;
-        }
-        localObject1 = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.unifiedCode, 29);
-        ((ProfileActivity.AllInOne)localObject1).l = 16;
-        break label846;
-        label958:
-        if (this.c.contains(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact)) {
-          ((ProfileActivity.AllInOne)localObject1).jdField_h_of_type_Int = 101;
-        } else {
-          ((ProfileActivity.AllInOne)localObject1).jdField_h_of_type_Int = 102;
-        }
-      }
-      j = 13;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ContactBindedAdapter
  * JD-Core Version:    0.7.0.1
  */

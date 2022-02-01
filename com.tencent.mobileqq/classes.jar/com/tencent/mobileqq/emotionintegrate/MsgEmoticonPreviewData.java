@@ -6,13 +6,12 @@ import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.MessageForMarketFace;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
 import com.tencent.mobileqq.emoticonview.EmoticonInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -37,17 +36,21 @@ public class MsgEmoticonPreviewData
       EmoticonPreviewData localEmoticonPreviewData = (EmoticonPreviewData)localIterator.next();
       if ((localEmoticonPreviewData instanceof MsgEmoticonPreviewData))
       {
-        MessageRecord localMessageRecord = ((MsgEmoticonPreviewData)localEmoticonPreviewData).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        if (localMessageRecord.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq) {
-          if (((localMessageRecord instanceof MessageForPic)) && ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) && (((MessageForPic)localMessageRecord).md5 != null))
+        Object localObject = ((MsgEmoticonPreviewData)localEmoticonPreviewData).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        if (((MessageRecord)localObject).uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)
+        {
+          if (((localObject instanceof MessageForPic)) && ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)))
           {
-            if (((MessageForPic)localMessageRecord).md5.equals(((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).md5)) {
+            localObject = (MessageForPic)localObject;
+            if (((MessageForPic)localObject).md5 != null)
+            {
+              if (!((MessageForPic)localObject).md5.equals(((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).md5)) {
+                continue;
+              }
               return paramList.indexOf(localEmoticonPreviewData);
             }
           }
-          else {
-            return paramList.indexOf(localEmoticonPreviewData);
-          }
+          return paramList.indexOf(localEmoticonPreviewData);
         }
       }
     }
@@ -69,12 +72,13 @@ public class MsgEmoticonPreviewData
   
   public CustomEmotionData a()
   {
-    if (((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) && (((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).md5 != null))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (((localObject instanceof MessageForPic)) && (((MessageForPic)localObject).md5 != null))
     {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject instanceof QQAppInterface))
       {
-        localObject = ((FavroamingDBManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FAVROAMING_DB_MANAGER)).a();
+        localObject = ((IFavroamingDBManagerService)((QQAppInterface)localObject).getRuntimeService(IFavroamingDBManagerService.class)).getEmoticonDataList();
         if (localObject != null)
         {
           localObject = ((List)localObject).iterator();
@@ -93,15 +97,17 @@ public class MsgEmoticonPreviewData
   
   public EmoticonInfo a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForMarketFace)) {
-      return EmotionDataManager.a((MessageForMarketFace)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if ((localMessageRecord instanceof MessageForMarketFace)) {
+      return (EmoticonInfo)EmotionDataManager.a((MessageForMarketFace)localMessageRecord);
     }
     return null;
   }
   
   public String a()
   {
-    if (((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) && (((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData != null)) {
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (((localMessageRecord instanceof MessageForPic)) && (((MessageForPic)localMessageRecord).picExtraData != null)) {
       return ((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData.mTemplateId;
     }
     return null;
@@ -122,9 +128,10 @@ public class MsgEmoticonPreviewData
   
   public boolean a(EmoticonPreviewData paramEmoticonPreviewData)
   {
+    boolean bool3 = paramEmoticonPreviewData instanceof MsgEmoticonPreviewData;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramEmoticonPreviewData instanceof MsgEmoticonPreviewData))
+    if (bool3)
     {
       paramEmoticonPreviewData = ((MsgEmoticonPreviewData)paramEmoticonPreviewData).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
       bool1 = bool2;
@@ -170,7 +177,8 @@ public class MsgEmoticonPreviewData
   
   public boolean c()
   {
-    if (((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) && (((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData != null))
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (((localMessageRecord instanceof MessageForPic)) && (((MessageForPic)localMessageRecord).picExtraData != null))
     {
       int i = ((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData.from;
       if ((i == 1) || (i == 2)) {
@@ -182,7 +190,8 @@ public class MsgEmoticonPreviewData
   
   public boolean d()
   {
-    if (((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) && (((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData != null)) {
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (((localMessageRecord instanceof MessageForPic)) && (((MessageForPic)localMessageRecord).picExtraData != null)) {
       return ((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).picExtraData.isSelfieFace();
     }
     return false;
@@ -190,7 +199,7 @@ public class MsgEmoticonPreviewData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.MsgEmoticonPreviewData
  * JD-Core Version:    0.7.0.1
  */

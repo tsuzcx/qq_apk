@@ -14,38 +14,37 @@ public class MapLog
   
   public static final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
+    boolean bool = TextUtils.isEmpty(paramString1);
     Object localObject = "Q.armap";
-    if (!TextUtils.isEmpty(paramString1))
+    if (!bool)
     {
       localObject = new StringBuilder("Q.armap");
-      ((StringBuilder)localObject).append(".").append(paramString1);
+      ((StringBuilder)localObject).append(".");
+      ((StringBuilder)localObject).append(paramString1);
       localObject = ((StringBuilder)localObject).toString();
     }
     paramString1 = paramString2;
     if (paramVarArgs != null)
     {
       paramString1 = paramString2;
-      if (paramVarArgs.length <= 0) {}
-    }
-    try
-    {
-      paramString1 = String.format(paramString2, paramVarArgs);
-      if (QLog.isDevelopLevel()) {
-        QLog.i((String)localObject, 4, paramString1);
-      }
-      return;
-    }
-    catch (Exception paramVarArgs)
-    {
-      for (;;)
-      {
-        paramString1 = paramString2;
-        if (QLog.isDevelopLevel())
+      if (paramVarArgs.length > 0) {
+        try
         {
-          paramVarArgs.printStackTrace();
+          paramString1 = String.format(paramString2, paramVarArgs);
+        }
+        catch (Exception paramVarArgs)
+        {
           paramString1 = paramString2;
+          if (QLog.isDevelopLevel())
+          {
+            paramVarArgs.printStackTrace();
+            paramString1 = paramString2;
+          }
         }
       }
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i((String)localObject, 4, paramString1);
     }
   }
   
@@ -54,7 +53,15 @@ public class MapLog
     if (paramString2 == null) {
       return;
     }
-    QLog.d("QLOG_" + paramString1, paramInt, paramString2 + ",Loglevel:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QLOG_");
+    localStringBuilder.append(paramString1);
+    paramString1 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",Loglevel:");
+    localStringBuilder.append(paramInt);
+    QLog.d(paramString1, paramInt, localStringBuilder.toString());
   }
   
   public static final void i(int paramInt, String paramString, Object... paramVarArgs)
@@ -64,52 +71,48 @@ public class MapLog
   
   public static final void i(String paramString1, int paramInt, String paramString2, Object... paramVarArgs)
   {
+    boolean bool = TextUtils.isEmpty(paramString1);
     Object localObject = "Q.armap";
-    if (!TextUtils.isEmpty(paramString1))
+    if (!bool)
     {
       localObject = new StringBuilder("Q.armap");
-      ((StringBuilder)localObject).append(".").append(paramString1);
+      ((StringBuilder)localObject).append(".");
+      ((StringBuilder)localObject).append(paramString1);
       localObject = ((StringBuilder)localObject).toString();
     }
     paramString1 = paramString2;
     if (paramVarArgs != null)
     {
       paramString1 = paramString2;
-      if (paramVarArgs.length <= 0) {}
-    }
-    try
-    {
-      paramString1 = String.format(paramString2, paramVarArgs);
-      if (paramInt == 2)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i((String)localObject, 2, paramString1);
+      if (paramVarArgs.length > 0) {
+        try
+        {
+          paramString1 = String.format(paramString2, paramVarArgs);
         }
-        return;
+        catch (Exception paramVarArgs)
+        {
+          paramString1 = paramString2;
+          if (QLog.isDevelopLevel())
+          {
+            paramVarArgs.printStackTrace();
+            paramString1 = paramString2;
+          }
+        }
       }
     }
-    catch (Exception paramVarArgs)
+    if (paramInt == 2)
     {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            paramString1 = paramString2;
-            if (QLog.isDevelopLevel())
-            {
-              paramVarArgs.printStackTrace();
-              paramString1 = paramString2;
-            }
-          }
-          if (paramInt != 4) {
-            break;
-          }
-        } while (!QLog.isDevelopLevel());
+      if (QLog.isColorLevel()) {
+        QLog.i((String)localObject, 2, paramString1);
+      }
+    }
+    else if (paramInt == 4)
+    {
+      if (QLog.isDevelopLevel()) {
         QLog.i((String)localObject, 4, paramString1);
-        return;
-      } while (paramInt != 1);
+      }
+    }
+    else if (paramInt == 1) {
       QLog.i((String)localObject, 1, paramString1);
     }
   }
@@ -143,7 +146,7 @@ public class MapLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.utils.MapLog
  * JD-Core Version:    0.7.0.1
  */

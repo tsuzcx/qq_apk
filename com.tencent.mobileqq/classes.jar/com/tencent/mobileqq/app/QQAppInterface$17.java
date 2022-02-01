@@ -15,31 +15,29 @@ class QQAppInterface$17
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.this$0.isReleased) {
-      QLog.i("QQAppInterface", 1, "qzoneBrocastReceiver release() has been called  ,return ", null);
-    }
-    do
+    if (this.this$0.isReleased)
     {
-      int i;
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (!"com.tencent.qzone.cleanunreadcount".equals(paramContext)) {
-          break;
-        }
-        i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
-        paramContext = (QZoneManagerImp)this.this$0.getManager(QQManagerFactory.QZONE_MANAGER);
-      } while ((paramContext == null) || (i == -1));
-      paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
+      QLog.i("QQAppInterface", 1, "qzoneBrocastReceiver release() has been called  ,return ", null);
       return;
-    } while (!"com.tecent.qzone.clearAlbumRedTouch".equals(paramContext));
-    ((QzoneAlbumRedTouchManager)this.this$0.getManager(QQManagerFactory.QZONE_ALBUM_RED_TOUCH)).b();
+    }
+    paramContext = paramIntent.getAction();
+    if ("com.tencent.qzone.cleanunreadcount".equals(paramContext))
+    {
+      int i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
+      paramContext = (QZoneManagerImp)this.this$0.getManager(QQManagerFactory.QZONE_MANAGER);
+      if ((paramContext != null) && (i != -1)) {
+        paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
+      }
+    }
+    else if ("com.tecent.qzone.clearAlbumRedTouch".equals(paramContext))
+    {
+      ((QzoneAlbumRedTouchManager)this.this$0.getManager(QQManagerFactory.QZONE_ALBUM_RED_TOUCH)).b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.17
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,7 @@ public final class TPReportKeys$VodExKeys
   public static final String VOD_EX_FREE_TYPE = "freetype";
   public static final String VOD_EX_HAS_SUBTITLE = "subtitles";
   public static final String VOD_EX_HEVC_LC = "hevclv";
+  public static final String VOD_EX_HIT_DOWNLOADED = "hitdownloaded";
   public static final String VOD_EX_MULTI_TRACK = "multitrack";
   public static final String VOD_EX_OPTIMIZED_PLAY = "optimizedplay";
   public static final String VOD_EX_SELECTED_SUBTITLE = "selsubtitles";
@@ -15,7 +16,7 @@ public final class TPReportKeys$VodExKeys
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportKeys.VodExKeys
  * JD-Core Version:    0.7.0.1
  */

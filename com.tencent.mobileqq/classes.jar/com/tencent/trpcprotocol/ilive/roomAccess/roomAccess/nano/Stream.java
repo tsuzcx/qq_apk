@@ -21,14 +21,15 @@ public final class Stream
   
   public static Stream[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new Stream[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new Stream[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static Stream parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -50,26 +51,28 @@ public final class Stream
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int i = super.computeSerializedSize();
+    Object localObject = this.frames;
     int j = i;
-    if (this.frames != null)
+    if (localObject != null)
     {
       j = i;
-      if (this.frames.length > 0)
+      if (localObject.length > 0)
       {
-        int k = 0;
+        k = 0;
         for (;;)
         {
+          localObject = this.frames;
           j = i;
-          if (k >= this.frames.length) {
+          if (k >= localObject.length) {
             break;
           }
-          Frame localFrame = this.frames[k];
+          localObject = localObject[k];
           j = i;
-          if (localFrame != null) {
-            j = i + CodedOutputByteBufferNano.computeMessageSize(1, localFrame);
+          if (localObject != null) {
+            j = i + CodedOutputByteBufferNano.computeMessageSize(1, (MessageNano)localObject);
           }
           k += 1;
           i = j;
@@ -80,9 +83,10 @@ public final class Stream
     if (!this.name.equals("")) {
       i = j + CodedOutputByteBufferNano.computeStringSize(2, this.name);
     }
+    int k = this.rawLevel;
     j = i;
-    if (this.rawLevel != 0) {
-      j = i + CodedOutputByteBufferNano.computeInt32Size(3, this.rawLevel);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(3, k);
     }
     return j;
   }
@@ -92,57 +96,73 @@ public final class Stream
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      if (i == 0) {
+        break;
+      }
+      if (i != 10)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 10: 
-        int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 10);
-        if (this.frames == null) {}
-        Frame[] arrayOfFrame;
-        for (i = 0;; i = this.frames.length)
+        if (i != 18)
         {
-          arrayOfFrame = new Frame[j + i];
+          if (i != 24)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.rawLevel = paramCodedInputByteBufferNano.readInt32();
+          }
+        }
+        else {
+          this.name = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else
+      {
+        int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 10);
+        Frame[] arrayOfFrame = this.frames;
+        if (arrayOfFrame == null) {
+          i = 0;
+        } else {
+          i = arrayOfFrame.length;
+        }
+        arrayOfFrame = new Frame[j + i];
+        j = i;
+        if (i != 0)
+        {
+          System.arraycopy(this.frames, 0, arrayOfFrame, 0, i);
           j = i;
-          if (i != 0)
-          {
-            System.arraycopy(this.frames, 0, arrayOfFrame, 0, i);
-            j = i;
-          }
-          while (j < arrayOfFrame.length - 1)
-          {
-            arrayOfFrame[j] = new Frame();
-            paramCodedInputByteBufferNano.readMessage(arrayOfFrame[j]);
-            paramCodedInputByteBufferNano.readTag();
-            j += 1;
-          }
+        }
+        while (j < arrayOfFrame.length - 1)
+        {
+          arrayOfFrame[j] = new Frame();
+          paramCodedInputByteBufferNano.readMessage(arrayOfFrame[j]);
+          paramCodedInputByteBufferNano.readTag();
+          j += 1;
         }
         arrayOfFrame[j] = new Frame();
         paramCodedInputByteBufferNano.readMessage(arrayOfFrame[j]);
         this.frames = arrayOfFrame;
-        break;
-      case 18: 
-        this.name = paramCodedInputByteBufferNano.readString();
-        break;
       }
-      this.rawLevel = paramCodedInputByteBufferNano.readInt32();
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if ((this.frames != null) && (this.frames.length > 0))
+    Object localObject = this.frames;
+    if ((localObject != null) && (localObject.length > 0))
     {
-      int i = 0;
-      while (i < this.frames.length)
+      i = 0;
+      for (;;)
       {
-        Frame localFrame = this.frames[i];
-        if (localFrame != null) {
-          paramCodedOutputByteBufferNano.writeMessage(1, localFrame);
+        localObject = this.frames;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeMessage(1, (MessageNano)localObject);
         }
         i += 1;
       }
@@ -150,15 +170,16 @@ public final class Stream
     if (!this.name.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.name);
     }
-    if (this.rawLevel != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(3, this.rawLevel);
+    int i = this.rawLevel;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(3, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.roomAccess.roomAccess.nano.Stream
  * JD-Core Version:    0.7.0.1
  */

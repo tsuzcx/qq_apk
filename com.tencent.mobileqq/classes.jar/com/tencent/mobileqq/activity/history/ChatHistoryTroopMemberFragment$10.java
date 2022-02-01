@@ -13,11 +13,13 @@ class ChatHistoryTroopMemberFragment$10
   
   public void onClick(View paramView)
   {
-    this.a.g = true;
-    this.a.d.setVisibility(8);
-    this.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131369489));
+    ChatHistoryTroopMemberFragment localChatHistoryTroopMemberFragment = this.a;
+    localChatHistoryTroopMemberFragment.g = true;
+    localChatHistoryTroopMemberFragment.d.setVisibility(8);
+    localChatHistoryTroopMemberFragment = this.a;
+    localChatHistoryTroopMemberFragment.d = ((TextView)ChatHistoryTroopMemberFragment.a(localChatHistoryTroopMemberFragment, 2131369204));
     this.a.d.setVisibility(0);
-    this.a.d.setText(HardCodeUtil.a(2131701734));
+    this.a.d.setText(HardCodeUtil.a(2131701874));
     this.a.d.setOnClickListener(new ChatHistoryTroopMemberFragment.10.1(this));
     ChatHistoryTroopMemberFragment.a(this.a);
     if (this.a.a != null) {
@@ -28,7 +30,7 @@ class ChatHistoryTroopMemberFragment$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.10
  * JD-Core Version:    0.7.0.1
  */

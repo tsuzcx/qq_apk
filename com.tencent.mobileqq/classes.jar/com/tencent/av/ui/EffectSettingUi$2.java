@@ -1,52 +1,33 @@
 package com.tencent.av.ui;
 
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagMgr.Event;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.HorizontalScrollView;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 class EffectSettingUi$2
-  implements AVRedBagMgr.Event
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  EffectSettingUi$2(EffectSettingUi paramEffectSettingUi) {}
+  EffectSettingUi$2(EffectSettingUi paramEffectSettingUi, ViewTreeObserver paramViewTreeObserver, HorizontalScrollView paramHorizontalScrollView) {}
   
-  public void a(boolean paramBoolean)
+  @TargetApi(16)
+  public void onGlobalLayout()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "onGetConfig, enable[" + paramBoolean + "]");
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeOnGlobalLayoutListener(this);
+    } else {
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
     }
-    if (paramBoolean)
-    {
-      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
-      if (localObject != null)
-      {
-        localObject = (AVActivity)((WeakReference)localObject).get();
-        if (localObject != null) {
-          ((AVActivity)localObject).runOnUiThread(new EffectSettingUi.2.1(this));
-        }
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event = null;
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onStatusChanged, seq[" + l + "]");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new EffectSettingUi.2.2(this, l, paramBoolean3, paramBoolean1, paramBoolean2));
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.a, 1, "onGlobalLayout");
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setTag(new Object());
+    this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.EffectSettingUi.2
  * JD-Core Version:    0.7.0.1
  */

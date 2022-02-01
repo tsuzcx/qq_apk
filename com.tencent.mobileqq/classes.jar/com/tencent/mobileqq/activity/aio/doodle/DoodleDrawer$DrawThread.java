@@ -23,17 +23,22 @@ class DoodleDrawer$DrawThread
   
   public void a(Runnable paramRunnable)
   {
-    if ((paramRunnable == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
-      return;
+    if (paramRunnable != null)
+    {
+      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      if (localHandler == null) {
+        return;
+      }
+      localHandler.post(paramRunnable);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      localHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
@@ -41,14 +46,15 @@ class DoodleDrawer$DrawThread
   
   public void c()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer.DrawThread
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.api.ISelectMemberApi;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.selectmember.ResultRecord;
+import com.tencent.mobileqq.selectmember.api.ISelectMemberApi;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -14,21 +14,25 @@ public class HostSelectMemberUtils
 {
   public static ArrayList<HostSelectMemberUtils.QCircleResultData> getResultList(Intent paramIntent)
   {
-    Object localObject = paramIntent.getParcelableArrayListExtra("result_set");
-    paramIntent = null;
-    if (localObject != null)
+    paramIntent = paramIntent.getParcelableArrayListExtra("result_set");
+    if (paramIntent != null)
     {
-      paramIntent = new ArrayList(((ArrayList)localObject).size());
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      ArrayList localArrayList = new ArrayList(paramIntent.size());
+      Iterator localIterator = paramIntent.iterator();
+      for (;;)
       {
-        ResultRecord localResultRecord = (ResultRecord)((Iterator)localObject).next();
+        paramIntent = localArrayList;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramIntent = (ResultRecord)localIterator.next();
         HostSelectMemberUtils.QCircleResultData localQCircleResultData = new HostSelectMemberUtils.QCircleResultData();
-        localQCircleResultData.uin = localResultRecord.uin;
-        localQCircleResultData.name = localResultRecord.name;
-        paramIntent.add(localQCircleResultData);
+        localQCircleResultData.uin = paramIntent.uin;
+        localQCircleResultData.name = paramIntent.name;
+        localArrayList.add(localQCircleResultData);
       }
     }
+    paramIntent = null;
     return paramIntent;
   }
   
@@ -54,7 +58,7 @@ public class HostSelectMemberUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.variation.HostSelectMemberUtils
  * JD-Core Version:    0.7.0.1
  */

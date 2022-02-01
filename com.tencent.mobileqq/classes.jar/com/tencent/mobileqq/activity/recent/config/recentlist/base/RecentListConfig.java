@@ -31,144 +31,135 @@ public class RecentListConfig
   
   public static RecentCheckFilterDispatcher a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher == null)
-    {
+    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher == null) {
       synchronized (b)
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher != null) {
-          break label86;
-        }
-        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher = new RecentCheckFilterDispatcher();
-        Iterator localIterator = a().iterator();
-        while (localIterator.hasNext())
+        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher == null)
         {
-          Class localClass = (Class)localIterator.next();
-          if (IRecentCheckFilterProcessor.class.isAssignableFrom(localClass)) {
-            jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher.a(localClass);
+          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher = new RecentCheckFilterDispatcher();
+          Iterator localIterator = a().iterator();
+          while (localIterator.hasNext())
+          {
+            Class localClass = (Class)localIterator.next();
+            if (IRecentCheckFilterProcessor.class.isAssignableFrom(localClass)) {
+              jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher.a(localClass);
+            }
           }
+          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher.a();
         }
       }
-      jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher.a();
     }
-    label86:
     return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher;
   }
   
   public static RecentConvertFilterDispatcher a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher == null)
-    {
+    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher == null) {
       synchronized (f)
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher != null) {
-          break label86;
-        }
-        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher = new RecentConvertFilterDispatcher();
-        Iterator localIterator = a().iterator();
-        while (localIterator.hasNext())
+        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher == null)
         {
-          Class localClass = (Class)localIterator.next();
-          if (IRecentConvertFilterProcessor.class.isAssignableFrom(localClass)) {
-            jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher.a(localClass);
+          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher = new RecentConvertFilterDispatcher();
+          Iterator localIterator = a().iterator();
+          while (localIterator.hasNext())
+          {
+            Class localClass = (Class)localIterator.next();
+            if (IRecentConvertFilterProcessor.class.isAssignableFrom(localClass)) {
+              jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher.a(localClass);
+            }
           }
+          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher.a();
         }
       }
-      jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher.a();
     }
-    label86:
     return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher;
   }
   
   public static RecentDataConvertDispatcher a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher == null)
-    {
+    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher == null) {
       synchronized (c)
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher != null) {
-          break label86;
-        }
-        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher = new RecentDataConvertDispatcher();
-        Iterator localIterator = a().iterator();
-        while (localIterator.hasNext())
+        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher == null)
         {
-          Class localClass = (Class)localIterator.next();
-          if (IRecentDataConvertProcessor.class.isAssignableFrom(localClass)) {
-            jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher.a(localClass);
+          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher = new RecentDataConvertDispatcher();
+          Iterator localIterator = a().iterator();
+          while (localIterator.hasNext())
+          {
+            Class localClass = (Class)localIterator.next();
+            if (IRecentDataConvertProcessor.class.isAssignableFrom(localClass)) {
+              jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher.a(localClass);
+            }
           }
+          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher.a();
         }
       }
-      jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher.a();
     }
-    label86:
     return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher;
   }
   
   public static RecentSortTopDispatcher a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher == null)
-    {
+    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher == null) {
       synchronized (d)
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher != null) {
-          break label86;
-        }
-        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher = new RecentSortTopDispatcher();
-        Iterator localIterator = a().iterator();
-        while (localIterator.hasNext())
+        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher == null)
         {
-          Class localClass = (Class)localIterator.next();
-          if (IRecentSortTopProcessor.class.isAssignableFrom(localClass)) {
-            jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher.a(localClass);
+          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher = new RecentSortTopDispatcher();
+          Iterator localIterator = a().iterator();
+          while (localIterator.hasNext())
+          {
+            Class localClass = (Class)localIterator.next();
+            if (IRecentSortTopProcessor.class.isAssignableFrom(localClass)) {
+              jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher.a(localClass);
+            }
           }
+          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher.a();
         }
       }
-      jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher.a();
     }
-    label86:
     return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher;
   }
   
   public static RecentSortValueDispatcher a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher == null)
-    {
+    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher == null) {
       synchronized (e)
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher != null) {
-          break label86;
-        }
-        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher = new RecentSortValueDispatcher();
-        Iterator localIterator = a().iterator();
-        while (localIterator.hasNext())
+        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher == null)
         {
-          Class localClass = (Class)localIterator.next();
-          if (IRecentSortValueProcessor.class.isAssignableFrom(localClass)) {
-            jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher.a(localClass);
+          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher = new RecentSortValueDispatcher();
+          Iterator localIterator = a().iterator();
+          while (localIterator.hasNext())
+          {
+            Class localClass = (Class)localIterator.next();
+            if (IRecentSortValueProcessor.class.isAssignableFrom(localClass)) {
+              jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher.a(localClass);
+            }
           }
+          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher.a();
         }
       }
-      jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher.a();
     }
-    label86:
     return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher;
   }
   
   private static List<Class<? extends IRecentListBaseProcessor>> a()
   {
-    if (jdField_a_of_type_JavaUtilList == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_JavaUtilList == null) {
-        jdField_a_of_type_JavaUtilList = RecentCustomizedProcessorRegister.c;
+    if (jdField_a_of_type_JavaUtilList == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_JavaUtilList == null) {
+          jdField_a_of_type_JavaUtilList = RecentCustomizedProcessorRegister.c;
+        }
       }
-      return jdField_a_of_type_JavaUtilList;
     }
+    return jdField_a_of_type_JavaUtilList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.base.RecentListConfig
  * JD-Core Version:    0.7.0.1
  */

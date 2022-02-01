@@ -10,12 +10,13 @@ class LinkByWeiyunFragment$1
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth(), this.jdField_a_of_type_AndroidWidgetTextView.getPaint(), 1));
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    localTextView.setText(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString, true, localTextView.getMeasuredWidth(), this.jdField_a_of_type_AndroidWidgetTextView.getPaint(), 1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment.1
  * JD-Core Version:    0.7.0.1
  */

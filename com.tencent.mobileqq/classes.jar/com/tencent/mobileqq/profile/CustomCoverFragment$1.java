@@ -6,9 +6,9 @@ import ProfileLogic.QC.setUserProfileRsp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.SVIPObserver;
 import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.mobileqq.widget.QQToast;
@@ -23,148 +23,168 @@ class CustomCoverFragment$1
   
   public void onDefaultCardRsp(boolean paramBoolean, Object paramObject)
   {
-    boolean bool = true;
-    int i = 0;
     CustomCoverFragment.a(this.a).b();
-    Object localObject = this.a.getActivity();
-    if (localObject == null) {}
-    label194:
-    label334:
-    label353:
-    label364:
-    do
+    Object localObject1 = this.a.getBaseActivity();
+    if (localObject1 == null) {
+      return;
+    }
+    int i = 0;
+    boolean bool = true;
+    Object localObject2;
+    if (paramBoolean)
     {
-      do
+      if ((paramObject instanceof readUserInfoRsp))
       {
-        do
+        this.a.stopTitleProgress();
+        paramObject = (readUserInfoRsp)paramObject;
+        if (CustomCoverFragment.a(this.a))
         {
-          do
+          localObject1 = this.a;
+          if (paramObject.flag == 1) {
+            paramBoolean = true;
+          } else {
+            paramBoolean = false;
+          }
+          CustomCoverFragment.a((CustomCoverFragment)localObject1, paramBoolean);
+        }
+        CustomCoverFragment.a(this.a, paramObject.itemid);
+        CustomCoverFragment.b(this.a, paramObject.index);
+        CustomCoverFragment.c(this.a, paramObject.listend);
+        if (!TextUtils.isEmpty(paramObject.urlprefix)) {
+          ProfileCardManager.a = paramObject.urlprefix;
+        }
+        CustomCoverFragment.a(this.a, paramObject.itemlist);
+        if (CustomCoverFragment.a(this.a) != null) {
+          if (CustomCoverFragment.a(this.a).size() == 0)
           {
-            do
-            {
-              return;
-              if (!paramBoolean) {
-                break label733;
-              }
-              if (!(paramObject instanceof readUserInfoRsp)) {
-                break label364;
-              }
-              this.a.stopTitleProgress();
-              paramObject = (readUserInfoRsp)paramObject;
-              if (CustomCoverFragment.a(this.a))
-              {
-                localObject = this.a;
-                if (paramObject.flag != 1) {
-                  break;
-                }
-                paramBoolean = true;
-                CustomCoverFragment.a((CustomCoverFragment)localObject, paramBoolean);
-              }
-              CustomCoverFragment.a(this.a, paramObject.itemid);
-              CustomCoverFragment.b(this.a, paramObject.index);
-              CustomCoverFragment.c(this.a, paramObject.listend);
-              if (!TextUtils.isEmpty(paramObject.urlprefix)) {
-                ProfileCardManager.a = paramObject.urlprefix;
-              }
-              CustomCoverFragment.a(this.a, paramObject.itemlist);
-              if (CustomCoverFragment.a(this.a) != null)
-              {
-                if (CustomCoverFragment.a(this.a).size() != 0) {
-                  break label334;
-                }
-                CustomCoverFragment.a(this.a).setVisibility(8);
-                CustomCoverFragment.c(this.a, 2);
-              }
-              if (CustomCoverFragment.a(this.a) != null) {
-                CustomCoverFragment.a(this.a).sendEmptyMessage(101);
-              }
-            } while (!QLog.isColorLevel());
-            localObject = new StringBuilder().append("onDefaultCardRsp: [readUserInfoRsp] selId=").append(CustomCoverFragment.a(this.a)).append(" reqIndex=").append(CustomCoverFragment.b(this.a)).append(" footerState=").append(CustomCoverFragment.c(this.a)).append(" flag=");
-            if (paramObject.flag == 1)
-            {
-              paramBoolean = bool;
-              localObject = ((StringBuilder)localObject).append(paramBoolean).append(" itemList=");
-              if (paramObject.itemlist != null) {
-                break label353;
-              }
-            }
-            for (;;)
-            {
-              QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, i);
-              return;
-              paramBoolean = false;
-              break;
-              CustomCoverFragment.a(this.a).setVisibility(0);
-              break label194;
-              paramBoolean = false;
-              break label293;
-              i = paramObject.itemlist.size();
-            }
-            if (!(paramObject instanceof setUserProfileRsp)) {
-              break;
-            }
-            i = ((setUserProfileRsp)paramObject).ret;
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserProfileRsp] ret=" + i);
-            }
-            if (i == 0)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserProfileRsp] selId=" + CustomCoverFragment.a(this.a));
-              }
-              paramObject = new Intent();
-              paramObject.putExtra("req_code_key", 2002);
-              paramObject.putExtra("card_url_key", this.a.a(CustomCoverFragment.d(this.a)));
-              ((FragmentActivity)localObject).setResult(-1, paramObject);
-              ((FragmentActivity)localObject).finish();
-              return;
-            }
-          } while (this.a.getActivity() == null);
-          QQToast.a(this.a.getActivity(), 1, 2131720237, 0).a();
-          return;
-        } while (!(paramObject instanceof setUserFlagRsp));
-        i = ((setUserFlagRsp)paramObject).ret;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserFlagRsp] ret=" + i);
+            CustomCoverFragment.a(this.a).setVisibility(8);
+            CustomCoverFragment.c(this.a, 2);
+          }
+          else
+          {
+            CustomCoverFragment.a(this.a).setVisibility(0);
+          }
         }
-        if (i != 0) {
-          break;
+        if (CustomCoverFragment.a(this.a) != null) {
+          CustomCoverFragment.a(this.a).sendEmptyMessage(101);
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserFlagRsp] setFlag=" + CustomCoverFragment.b(this.a));
-        }
-        CustomCoverFragment.a(this.a, true);
-        QQToast.a((Context)localObject, 0, 2131720240, 0).a();
-        if (CustomCoverFragment.b(this.a))
+        if (QLog.isColorLevel())
         {
-          CustomCoverFragment.a(this.a, CustomCoverFragment.b(this.a));
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("onDefaultCardRsp: [readUserInfoRsp] selId=");
+          ((StringBuilder)localObject1).append(CustomCoverFragment.a(this.a));
+          ((StringBuilder)localObject1).append(" reqIndex=");
+          ((StringBuilder)localObject1).append(CustomCoverFragment.b(this.a));
+          ((StringBuilder)localObject1).append(" footerState=");
+          ((StringBuilder)localObject1).append(CustomCoverFragment.c(this.a));
+          ((StringBuilder)localObject1).append(" flag=");
+          if (paramObject.flag == 1) {
+            paramBoolean = bool;
+          } else {
+            paramBoolean = false;
+          }
+          ((StringBuilder)localObject1).append(paramBoolean);
+          ((StringBuilder)localObject1).append(" itemList=");
+          if (paramObject.itemlist != null) {
+            i = paramObject.itemlist.size();
+          }
+          ((StringBuilder)localObject1).append(i);
+          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, ((StringBuilder)localObject1).toString());
+        }
+      }
+      else if ((paramObject instanceof setUserProfileRsp))
+      {
+        i = ((setUserProfileRsp)paramObject).ret;
+        if (QLog.isColorLevel())
+        {
+          paramObject = new StringBuilder();
+          paramObject.append("onDefaultCardRsp: [setUserProfileRsp] ret=");
+          paramObject.append(i);
+          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, paramObject.toString());
+        }
+        if (i == 0)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramObject = new StringBuilder();
+            paramObject.append("onDefaultCardRsp: [setUserProfileRsp] selId=");
+            paramObject.append(CustomCoverFragment.a(this.a));
+            QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, paramObject.toString());
+          }
+          paramObject = new Intent();
+          paramObject.putExtra("req_code_key", 2002);
+          localObject2 = this.a;
+          paramObject.putExtra("card_url_key", ((CustomCoverFragment)localObject2).a(CustomCoverFragment.d((CustomCoverFragment)localObject2)));
+          ((BaseActivity)localObject1).setResult(-1, paramObject);
+          ((BaseActivity)localObject1).finish();
           return;
         }
-        CustomCoverFragment.a(this.a, CustomCoverFragment.b(this.a));
-      } while (CustomCoverFragment.a(this.a) == null);
-      CustomCoverFragment.a(this.a).sendEmptyMessage(101);
-      return;
-    } while (this.a.getActivity() == null);
-    label293:
-    QQToast.a(this.a.getActivity(), 1, 2131720237, 0).a();
-    return;
-    label733:
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: isSuccess=false, cmd=" + paramObject);
+        if (this.a.getActivity() != null) {
+          QQToast.a(this.a.getActivity(), 1, 2131719970, 0).a();
+        }
+      }
+      else if ((paramObject instanceof setUserFlagRsp))
+      {
+        i = ((setUserFlagRsp)paramObject).ret;
+        if (QLog.isColorLevel())
+        {
+          paramObject = new StringBuilder();
+          paramObject.append("onDefaultCardRsp: [setUserFlagRsp] ret=");
+          paramObject.append(i);
+          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, paramObject.toString());
+        }
+        if (i == 0)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramObject = new StringBuilder();
+            paramObject.append("onDefaultCardRsp: [setUserFlagRsp] setFlag=");
+            paramObject.append(CustomCoverFragment.b(this.a));
+            QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, paramObject.toString());
+          }
+          CustomCoverFragment.a(this.a, true);
+          QQToast.a((Context)localObject1, 0, 2131719973, 0).a();
+          if (CustomCoverFragment.b(this.a))
+          {
+            paramObject = this.a;
+            CustomCoverFragment.a(paramObject, CustomCoverFragment.b(paramObject));
+            return;
+          }
+          paramObject = this.a;
+          CustomCoverFragment.a(paramObject, CustomCoverFragment.b(paramObject));
+          if (CustomCoverFragment.a(this.a) != null) {
+            CustomCoverFragment.a(this.a).sendEmptyMessage(101);
+          }
+        }
+        else if (this.a.getActivity() != null)
+        {
+          QQToast.a(this.a.getActivity(), 1, 2131719970, 0).a();
+        }
+      }
     }
-    if ("profilelogic.readUserInfo".equals(paramObject))
+    else
     {
-      CustomCoverFragment.c(this.a, 1);
-      this.a.stopTitleProgress();
-      QQToast.a((Context)localObject, 1, 2131719896, 0).a();
-      return;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("onDefaultCardRsp: isSuccess=false, cmd=");
+        ((StringBuilder)localObject2).append(paramObject);
+        QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, ((StringBuilder)localObject2).toString());
+      }
+      if ("profilelogic.readUserInfo".equals(paramObject))
+      {
+        CustomCoverFragment.c(this.a, 1);
+        this.a.stopTitleProgress();
+        QQToast.a((Context)localObject1, 1, 2131719628, 0).a();
+        return;
+      }
+      QQToast.a((Context)localObject1, 1, 2131719970, 0).a();
     }
-    QQToast.a((Context)localObject, 1, 2131720237, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.CustomCoverFragment.1
  * JD-Core Version:    0.7.0.1
  */

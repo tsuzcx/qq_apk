@@ -24,14 +24,15 @@ public final class ProgramStartReq
   
   public static ProgramStartReq[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new ProgramStartReq[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new ProgramStartReq[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static ProgramStartReq parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -56,7 +57,7 @@ public final class ProgramStartReq
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
     int i = j;
@@ -71,35 +72,42 @@ public final class ProgramStartReq
     if (!this.source.equals("")) {
       i = j + CodedOutputByteBufferNano.computeStringSize(3, this.source);
     }
+    int k = this.closePgcCrossLimit;
     j = i;
-    if (this.closePgcCrossLimit != 0) {
-      j = i + CodedOutputByteBufferNano.computeInt32Size(4, this.closePgcCrossLimit);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(4, k);
     }
+    k = this.closeSubAccountLimit;
     i = j;
-    if (this.closeSubAccountLimit != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(5, this.closeSubAccountLimit);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(5, k);
     }
-    j = i;
-    if (this.attrs != null)
+    Object localObject = this.attrs;
+    k = i;
+    if (localObject != null)
     {
-      j = i;
-      if (this.attrs.length > 0)
+      k = i;
+      if (localObject.length > 0)
       {
         j = 0;
-        while (j < this.attrs.length)
+        for (;;)
         {
-          Tlv localTlv = this.attrs[j];
-          int k = i;
-          if (localTlv != null) {
-            k = i + CodedOutputByteBufferNano.computeMessageSize(6, localTlv);
+          localObject = this.attrs;
+          k = i;
+          if (j >= localObject.length) {
+            break;
+          }
+          localObject = localObject[j];
+          k = i;
+          if (localObject != null) {
+            k = i + CodedOutputByteBufferNano.computeMessageSize(6, (MessageNano)localObject);
           }
           j += 1;
           i = k;
         }
-        j = i;
       }
     }
-    return j;
+    return k;
   }
   
   public ProgramStartReq mergeFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -107,54 +115,74 @@ public final class ProgramStartReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      if (i == 0) {
+        break;
+      }
+      if (i != 10)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (i != 32)
+            {
+              if (i != 40)
+              {
+                if (i != 50)
+                {
+                  if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                    return this;
+                  }
+                }
+                else
+                {
+                  int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 50);
+                  Tlv[] arrayOfTlv = this.attrs;
+                  if (arrayOfTlv == null) {
+                    i = 0;
+                  } else {
+                    i = arrayOfTlv.length;
+                  }
+                  arrayOfTlv = new Tlv[j + i];
+                  j = i;
+                  if (i != 0)
+                  {
+                    System.arraycopy(this.attrs, 0, arrayOfTlv, 0, i);
+                    j = i;
+                  }
+                  while (j < arrayOfTlv.length - 1)
+                  {
+                    arrayOfTlv[j] = new Tlv();
+                    paramCodedInputByteBufferNano.readMessage(arrayOfTlv[j]);
+                    paramCodedInputByteBufferNano.readTag();
+                    j += 1;
+                  }
+                  arrayOfTlv[j] = new Tlv();
+                  paramCodedInputByteBufferNano.readMessage(arrayOfTlv[j]);
+                  this.attrs = arrayOfTlv;
+                }
+              }
+              else {
+                this.closeSubAccountLimit = paramCodedInputByteBufferNano.readInt32();
+              }
+            }
+            else {
+              this.closePgcCrossLimit = paramCodedInputByteBufferNano.readInt32();
+            }
+          }
+          else {
+            this.source = paramCodedInputByteBufferNano.readString();
+          }
         }
-      case 0: 
-        return this;
-      case 10: 
+        else {
+          this.machine = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
         this.programId = paramCodedInputByteBufferNano.readString();
-        break;
-      case 18: 
-        this.machine = paramCodedInputByteBufferNano.readString();
-        break;
-      case 26: 
-        this.source = paramCodedInputByteBufferNano.readString();
-        break;
-      case 32: 
-        this.closePgcCrossLimit = paramCodedInputByteBufferNano.readInt32();
-        break;
-      case 40: 
-        this.closeSubAccountLimit = paramCodedInputByteBufferNano.readInt32();
-        break;
       }
-      int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 50);
-      if (this.attrs == null) {}
-      Tlv[] arrayOfTlv;
-      for (i = 0;; i = this.attrs.length)
-      {
-        arrayOfTlv = new Tlv[j + i];
-        j = i;
-        if (i != 0)
-        {
-          System.arraycopy(this.attrs, 0, arrayOfTlv, 0, i);
-          j = i;
-        }
-        while (j < arrayOfTlv.length - 1)
-        {
-          arrayOfTlv[j] = new Tlv();
-          paramCodedInputByteBufferNano.readMessage(arrayOfTlv[j]);
-          paramCodedInputByteBufferNano.readTag();
-          j += 1;
-        }
-      }
-      arrayOfTlv[j] = new Tlv();
-      paramCodedInputByteBufferNano.readMessage(arrayOfTlv[j]);
-      this.attrs = arrayOfTlv;
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -168,20 +196,27 @@ public final class ProgramStartReq
     if (!this.source.equals("")) {
       paramCodedOutputByteBufferNano.writeString(3, this.source);
     }
-    if (this.closePgcCrossLimit != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(4, this.closePgcCrossLimit);
+    int i = this.closePgcCrossLimit;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(4, i);
     }
-    if (this.closeSubAccountLimit != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(5, this.closeSubAccountLimit);
+    i = this.closeSubAccountLimit;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(5, i);
     }
-    if ((this.attrs != null) && (this.attrs.length > 0))
+    Object localObject = this.attrs;
+    if ((localObject != null) && (localObject.length > 0))
     {
-      int i = 0;
-      while (i < this.attrs.length)
+      i = 0;
+      for (;;)
       {
-        Tlv localTlv = this.attrs[i];
-        if (localTlv != null) {
-          paramCodedOutputByteBufferNano.writeMessage(6, localTlv);
+        localObject = this.attrs;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeMessage(6, (MessageNano)localObject);
         }
         i += 1;
       }
@@ -191,7 +226,7 @@ public final class ProgramStartReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.ProgramStartReq
  * JD-Core Version:    0.7.0.1
  */

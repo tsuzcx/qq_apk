@@ -47,13 +47,13 @@ public class MiniSDKConst$AdConst
     case -100100002: 
     case -100100001: 
       return 1008;
+    case -100100006: 
+    case -100100005: 
+      return 1001;
     case -100100007: 
     case -100100004: 
     case -100100003: 
       return 1002;
-    case -100100006: 
-    case -100100005: 
-      return 1001;
     case -100100008: 
       return 1004;
     }
@@ -62,7 +62,7 @@ public class MiniSDKConst$AdConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniSDKConst.AdConst
  * JD-Core Version:    0.7.0.1
  */

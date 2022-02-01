@@ -9,7 +9,10 @@ class ODLoadingActivity$1
   
   public void run()
   {
-    QLog.e("ODLoadingActivity", 2, "showLoadingDialog:" + ODLoadingActivity.a(this.this$0));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showLoadingDialog:");
+    localStringBuilder.append(ODLoadingActivity.a(this.this$0));
+    QLog.e("ODLoadingActivity", 2, localStringBuilder.toString());
     if (!ODLoadingActivity.a(this.this$0)) {
       ODLoadingActivity.a(this.this$0);
     }
@@ -17,7 +20,7 @@ class ODLoadingActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.ODLoadingActivity.1
  * JD-Core Version:    0.7.0.1
  */

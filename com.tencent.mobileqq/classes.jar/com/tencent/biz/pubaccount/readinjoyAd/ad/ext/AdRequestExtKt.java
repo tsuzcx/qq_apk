@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"fillPatchParams", "", "adRequestData", "Lcom/tencent/biz/pubaccount/NativeAd/data/AdRequestData;", "json", "Lorg/json/JSONObject;", "adPosType", "", "fillSocialParams", "fillSuperMaskParams", "channelID", "fillTimeLoadParams", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"fillPatchParams", "", "adRequestData", "Lcom/tencent/biz/pubaccount/NativeAd/data/AdRequestData;", "json", "Lorg/json/JSONObject;", "adPosType", "", "fillSocialParams", "fillSuperMaskParams", "channelID", "fillTimeLoadParams", "kandian_ad_feature_impl_release"}, k=2, mv={1, 1, 16})
 public final class AdRequestExtKt
 {
   public static final void a(@Nullable AdRequestData paramAdRequestData, @Nullable JSONObject paramJSONObject)
@@ -69,53 +69,43 @@ public final class AdRequestExtKt
       {
         if (SuperMaskStepUtil.a.a("[REQUEST]", new SuperMaskStep[] { (SuperMaskStep)new LearnModeCheckStep(), (SuperMaskStep)new AladdinCheckStep(), (SuperMaskStep)new ShowIntervalCheckStep(paramInt1), (SuperMaskStep)new PopCheckStep() })) {}
       }
-      else {
-        if ((SuperMaskConfigMgr.a.a() != 1) || (!paramAdRequestData.b)) {
-          break label303;
-        }
+      else if ((SuperMaskConfigMgr.a.a() != 1) || (!paramAdRequestData.b)) {
+        return;
       }
       Object localObject = SuperMaskResMgr.a.a();
-      if (!((Map)localObject).isEmpty()) {
-        paramInt1 = 1;
-      }
-      for (;;)
+      if ((((Map)localObject).isEmpty() ^ true))
       {
-        if (paramInt1 != 0)
+        paramAdRequestData = new JSONArray();
+        try
         {
-          paramAdRequestData = new JSONArray();
-          try
+          localObject = ((Map)localObject).entrySet().iterator();
+          while (((Iterator)localObject).hasNext())
           {
-            localObject = ((Map)localObject).entrySet().iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-              ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-              SuperMaskExtKt.a((MaterialData)localEntry.getValue(), localConcurrentHashMap);
-              paramAdRequestData.put(new JSONObject((Map)localConcurrentHashMap));
-              continue;
-              paramInt1 = 0;
-            }
+            Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+            ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+            SuperMaskExtKt.a((MaterialData)localEntry.getValue(), localConcurrentHashMap);
+            paramAdRequestData.put(new JSONObject((Map)localConcurrentHashMap));
           }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-            if (paramJSONObject != null) {
-              paramJSONObject.put("superMaskType", 2);
-            }
-            if (paramJSONObject != null) {
-              paramJSONObject.put("reqList", paramAdRequestData);
-            }
-            SuperMaskReportMgr.a(SuperMaskReportMgr.a, "requestMask", null, paramAdRequestData.length(), 2, null);
-            QLog.d("ReadInJoySuperMaskAd", 1, "[REQUEST]" + " : add superMask params : " + paramAdRequestData.toString());
+          ReadInJoyAdLog.a("ReadInJoySuperMaskAd", "[REQUEST] : getLocalResList is empty");
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          if (paramJSONObject != null) {
+            paramJSONObject.put("superMaskType", 2);
           }
+          if (paramJSONObject != null) {
+            paramJSONObject.put("reqList", paramAdRequestData);
+          }
+          SuperMaskReportMgr.a(SuperMaskReportMgr.a, "requestMask", null, paramAdRequestData.length(), 2, null);
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append("[REQUEST]");
+          paramJSONObject.append(" : add superMask params : ");
+          paramJSONObject.append(paramAdRequestData.toString());
+          QLog.d("ReadInJoySuperMaskAd", 1, paramJSONObject.toString());
+          return;
         }
       }
-    }
-    for (;;)
-    {
-      label303:
-      return;
-      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", "[REQUEST] : getLocalResList is empty");
     }
   }
   
@@ -132,7 +122,7 @@ public final class AdRequestExtKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.ext.AdRequestExtKt
  * JD-Core Version:    0.7.0.1
  */

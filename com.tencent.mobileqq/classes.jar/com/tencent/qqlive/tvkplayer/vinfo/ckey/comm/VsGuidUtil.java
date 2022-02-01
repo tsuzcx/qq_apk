@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class VsGuidUtil
 {
-  private static VsGuidUtil instance = null;
+  private static VsGuidUtil instance;
   private final String VSGUID_APPLOCAL_PATH = "/vs/vsguid.dat";
   private final String VSGUID_SDCARD_PATH = "/tencent/vs/vsguid.dat";
   private final Context context;
@@ -31,25 +31,29 @@ public class VsGuidUtil
   
   public void SaveVsGuid(String paramString)
   {
-    if ((paramString == null) || (paramString.trim().equals(""))) {}
-    do
+    if (paramString != null)
     {
-      return;
+      if (paramString.trim().equals("")) {
+        return;
+      }
       saveVsGuidToApplocal(paramString);
       VsLog.debug("[vsguid] Save vsguid:%s to AppLocal", new Object[] { paramString });
-    } while (!VsDeviceInfo.getVsDeviceInfo(this.context).checkIsHaveCard());
-    saveVsGuidToSdcard(paramString);
-    VsLog.debug("[vsguid] Save vsguid:%s to SDCard", new Object[] { paramString });
+      if (VsDeviceInfo.getVsDeviceInfo(this.context).checkIsHaveCard())
+      {
+        saveVsGuidToSdcard(paramString);
+        VsLog.debug("[vsguid] Save vsguid:%s to SDCard", new Object[] { paramString });
+      }
+    }
   }
   
   public String loadVsGuid()
   {
-    if ((this.mGuid != null) && (!this.mGuid.trim().equals(""))) {
+    Object localObject1 = this.mGuid;
+    if ((localObject1 != null) && (!((String)localObject1).trim().equals(""))) {
       return this.mGuid;
     }
     Object localObject2 = loadVsGuidFromApp();
     VsLog.debug("[vsguid] Load vsguid:%s from AppLocal", new Object[] { localObject2 });
-    Object localObject1;
     if (localObject2 != null)
     {
       localObject1 = localObject2;
@@ -79,7 +83,8 @@ public class VsGuidUtil
         localObject2 = localObject1;
       }
     }
-    if ((this.mGuid == null) || (this.mGuid.trim().equals(""))) {
+    localObject1 = this.mGuid;
+    if ((localObject1 == null) || (((String)localObject1).trim().equals(""))) {
       this.mGuid = ((String)localObject2);
     }
     return this.mGuid;
@@ -89,482 +94,482 @@ public class VsGuidUtil
   public String loadVsGuidFromApp()
   {
     // Byte code:
-    //   0: new 110	java/io/File
+    //   0: new 110	java/lang/StringBuilder
     //   3: dup
-    //   4: new 112	java/lang/StringBuilder
-    //   7: dup
-    //   8: invokespecial 113	java/lang/StringBuilder:<init>	()V
-    //   11: ldc 115
-    //   13: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   7: astore_1
+    //   8: aload_1
+    //   9: ldc 113
+    //   11: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: pop
+    //   15: aload_1
     //   16: aload_0
-    //   17: getfield 39	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsGuidUtil:context	Landroid/content/Context;
-    //   20: invokestatic 125	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsAppInfo:getPackageName	(Landroid/content/Context;)Ljava/lang/String;
-    //   23: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: ldc 29
-    //   28: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   34: invokespecial 130	java/io/File:<init>	(Ljava/lang/String;)V
-    //   37: astore_3
-    //   38: aconst_null
-    //   39: astore_2
-    //   40: new 132	java/io/FileInputStream
-    //   43: dup
-    //   44: aload_3
-    //   45: invokespecial 135	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   48: astore_1
-    //   49: aload_3
-    //   50: invokevirtual 138	java/io/File:length	()J
-    //   53: l2i
-    //   54: newarray byte
-    //   56: astore_2
-    //   57: aload_1
-    //   58: aload_2
-    //   59: invokevirtual 142	java/io/FileInputStream:read	([B)I
-    //   62: pop
+    //   17: getfield 37	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsGuidUtil:context	Landroid/content/Context;
+    //   20: invokestatic 123	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsAppInfo:getPackageName	(Landroid/content/Context;)Ljava/lang/String;
+    //   23: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: pop
+    //   27: aload_1
+    //   28: ldc 27
+    //   30: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: pop
+    //   34: new 125	java/io/File
+    //   37: dup
+    //   38: aload_1
+    //   39: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokespecial 130	java/io/File:<init>	(Ljava/lang/String;)V
+    //   45: astore_2
+    //   46: new 132	java/io/FileInputStream
+    //   49: dup
+    //   50: aload_2
+    //   51: invokespecial 135	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   54: astore_1
+    //   55: aload_2
+    //   56: invokevirtual 138	java/io/File:length	()J
+    //   59: l2i
+    //   60: newarray byte
+    //   62: astore_2
     //   63: aload_1
-    //   64: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   67: aload_2
-    //   68: invokestatic 151	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsEncryptUtil:VsDecrypt_SDCARD	([B)[B
-    //   71: astore_2
-    //   72: aload_2
-    //   73: ifnull +22 -> 95
-    //   76: new 47	java/lang/String
-    //   79: dup
-    //   80: aload_2
-    //   81: invokespecial 154	java/lang/String:<init>	([B)V
-    //   84: astore_2
-    //   85: aload_1
-    //   86: ifnull +7 -> 93
-    //   89: aload_1
-    //   90: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   93: aload_2
-    //   94: areturn
-    //   95: aload_1
-    //   96: ifnull +7 -> 103
-    //   99: aload_1
+    //   64: aload_2
+    //   65: invokevirtual 142	java/io/FileInputStream:read	([B)I
+    //   68: pop
+    //   69: aload_1
+    //   70: invokevirtual 145	java/io/FileInputStream:close	()V
+    //   73: aload_2
+    //   74: invokestatic 151	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsEncryptUtil:VsDecrypt_SDCARD	([B)[B
+    //   77: astore_3
+    //   78: aload_1
+    //   79: astore_2
+    //   80: aload_3
+    //   81: ifnull +18 -> 99
+    //   84: new 47	java/lang/String
+    //   87: dup
+    //   88: aload_3
+    //   89: invokespecial 154	java/lang/String:<init>	([B)V
+    //   92: astore_2
+    //   93: aload_1
+    //   94: invokevirtual 145	java/io/FileInputStream:close	()V
+    //   97: aload_2
+    //   98: areturn
+    //   99: aload_2
     //   100: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   103: ldc 33
-    //   105: areturn
-    //   106: astore_1
-    //   107: aload_2
-    //   108: astore_1
-    //   109: aload_1
-    //   110: ifnull -7 -> 103
-    //   113: aload_1
-    //   114: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   117: goto -14 -> 103
-    //   120: astore_1
-    //   121: goto -18 -> 103
-    //   124: astore_1
-    //   125: aconst_null
-    //   126: astore_1
-    //   127: aload_1
-    //   128: ifnull -25 -> 103
+    //   103: goto +48 -> 151
+    //   106: astore_2
+    //   107: goto +12 -> 119
+    //   110: goto +21 -> 131
+    //   113: goto +29 -> 142
+    //   116: astore_2
+    //   117: aconst_null
+    //   118: astore_1
+    //   119: aload_1
+    //   120: ifnull +7 -> 127
+    //   123: aload_1
+    //   124: invokevirtual 145	java/io/FileInputStream:close	()V
+    //   127: aload_2
+    //   128: athrow
+    //   129: aconst_null
+    //   130: astore_1
     //   131: aload_1
-    //   132: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   135: goto -32 -> 103
-    //   138: astore_1
-    //   139: goto -36 -> 103
-    //   142: astore_2
-    //   143: aconst_null
-    //   144: astore_1
-    //   145: aload_1
-    //   146: ifnull +7 -> 153
-    //   149: aload_1
-    //   150: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   153: aload_2
-    //   154: athrow
-    //   155: astore_1
-    //   156: aload_2
-    //   157: areturn
+    //   132: ifnull +19 -> 151
+    //   135: aload_1
+    //   136: astore_2
+    //   137: goto -38 -> 99
+    //   140: aconst_null
+    //   141: astore_1
+    //   142: aload_1
+    //   143: ifnull +8 -> 151
+    //   146: aload_1
+    //   147: astore_2
+    //   148: goto -49 -> 99
+    //   151: ldc 31
+    //   153: areturn
+    //   154: astore_1
+    //   155: goto -15 -> 140
     //   158: astore_1
-    //   159: goto -56 -> 103
-    //   162: astore_1
-    //   163: goto -10 -> 153
+    //   159: goto -30 -> 129
+    //   162: astore_2
+    //   163: goto -50 -> 113
     //   166: astore_2
-    //   167: goto -22 -> 145
-    //   170: astore_2
-    //   171: goto -44 -> 127
-    //   174: astore_2
-    //   175: goto -66 -> 109
+    //   167: goto -57 -> 110
+    //   170: astore_1
+    //   171: aload_2
+    //   172: areturn
+    //   173: astore_1
+    //   174: goto -23 -> 151
+    //   177: astore_1
+    //   178: goto -51 -> 127
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	178	0	this	VsGuidUtil
-    //   48	52	1	localFileInputStream	java.io.FileInputStream
-    //   106	1	1	localFileNotFoundException1	java.io.FileNotFoundException
-    //   108	6	1	localObject1	Object
-    //   120	1	1	localIOException1	java.io.IOException
-    //   124	1	1	localIOException2	java.io.IOException
-    //   126	6	1	localObject2	Object
-    //   138	1	1	localIOException3	java.io.IOException
-    //   144	6	1	localObject3	Object
-    //   155	1	1	localIOException4	java.io.IOException
-    //   158	1	1	localIOException5	java.io.IOException
-    //   162	1	1	localIOException6	java.io.IOException
-    //   39	69	2	localObject4	Object
-    //   142	15	2	str	String
-    //   166	1	2	localObject5	Object
-    //   170	1	2	localIOException7	java.io.IOException
-    //   174	1	2	localFileNotFoundException2	java.io.FileNotFoundException
-    //   37	13	3	localFile	java.io.File
+    //   0	181	0	this	VsGuidUtil
+    //   7	140	1	localObject1	Object
+    //   154	1	1	localFileNotFoundException1	java.io.FileNotFoundException
+    //   158	1	1	localIOException1	java.io.IOException
+    //   170	1	1	localIOException2	java.io.IOException
+    //   173	1	1	localIOException3	java.io.IOException
+    //   177	1	1	localIOException4	java.io.IOException
+    //   45	55	2	localObject2	Object
+    //   106	1	2	localObject3	Object
+    //   116	12	2	localObject4	Object
+    //   136	12	2	localObject5	Object
+    //   162	1	2	localFileNotFoundException2	java.io.FileNotFoundException
+    //   166	6	2	localIOException5	java.io.IOException
+    //   77	12	3	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   40	49	106	java/io/FileNotFoundException
-    //   113	117	120	java/io/IOException
-    //   40	49	124	java/io/IOException
-    //   131	135	138	java/io/IOException
-    //   40	49	142	finally
-    //   89	93	155	java/io/IOException
-    //   99	103	158	java/io/IOException
-    //   149	153	162	java/io/IOException
-    //   49	72	166	finally
-    //   76	85	166	finally
-    //   49	72	170	java/io/IOException
-    //   76	85	170	java/io/IOException
-    //   49	72	174	java/io/FileNotFoundException
-    //   76	85	174	java/io/FileNotFoundException
+    //   55	78	106	finally
+    //   84	93	106	finally
+    //   46	55	116	finally
+    //   46	55	154	java/io/FileNotFoundException
+    //   46	55	158	java/io/IOException
+    //   55	78	162	java/io/FileNotFoundException
+    //   84	93	162	java/io/FileNotFoundException
+    //   55	78	166	java/io/IOException
+    //   84	93	166	java/io/IOException
+    //   93	97	170	java/io/IOException
+    //   99	103	173	java/io/IOException
+    //   123	127	177	java/io/IOException
   }
   
   /* Error */
   public String loadVsGuidFromSdcard()
   {
     // Byte code:
-    //   0: new 110	java/io/File
+    //   0: new 125	java/io/File
     //   3: dup
     //   4: invokestatic 160	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   7: ldc 25
+    //   7: ldc 23
     //   9: invokespecial 163	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   12: astore_3
-    //   13: aconst_null
-    //   14: astore_2
-    //   15: new 132	java/io/FileInputStream
-    //   18: dup
-    //   19: aload_3
-    //   20: invokespecial 135	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   23: astore_1
-    //   24: aload_3
-    //   25: invokevirtual 138	java/io/File:length	()J
-    //   28: l2i
-    //   29: newarray byte
-    //   31: astore_2
-    //   32: aload_1
-    //   33: aload_2
-    //   34: invokevirtual 142	java/io/FileInputStream:read	([B)I
-    //   37: pop
-    //   38: aload_1
-    //   39: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   42: aload_2
-    //   43: invokestatic 151	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsEncryptUtil:VsDecrypt_SDCARD	([B)[B
+    //   12: astore_2
+    //   13: new 132	java/io/FileInputStream
+    //   16: dup
+    //   17: aload_2
+    //   18: invokespecial 135	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   21: astore_1
+    //   22: aload_2
+    //   23: invokevirtual 138	java/io/File:length	()J
+    //   26: l2i
+    //   27: newarray byte
+    //   29: astore_2
+    //   30: aload_1
+    //   31: aload_2
+    //   32: invokevirtual 142	java/io/FileInputStream:read	([B)I
+    //   35: pop
+    //   36: aload_1
+    //   37: invokevirtual 145	java/io/FileInputStream:close	()V
+    //   40: aload_2
+    //   41: invokestatic 151	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsEncryptUtil:VsDecrypt_SDCARD	([B)[B
+    //   44: astore_3
+    //   45: aload_1
     //   46: astore_2
-    //   47: aload_2
-    //   48: ifnull +22 -> 70
+    //   47: aload_3
+    //   48: ifnull +18 -> 66
     //   51: new 47	java/lang/String
     //   54: dup
-    //   55: aload_2
+    //   55: aload_3
     //   56: invokespecial 154	java/lang/String:<init>	([B)V
     //   59: astore_2
     //   60: aload_1
-    //   61: ifnull +7 -> 68
-    //   64: aload_1
-    //   65: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   68: aload_2
-    //   69: areturn
-    //   70: aload_1
-    //   71: ifnull +7 -> 78
-    //   74: aload_1
-    //   75: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   78: ldc 33
-    //   80: areturn
-    //   81: astore_1
-    //   82: aload_2
-    //   83: astore_1
-    //   84: aload_1
-    //   85: ifnull -7 -> 78
-    //   88: aload_1
-    //   89: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   92: goto -14 -> 78
-    //   95: astore_1
-    //   96: goto -18 -> 78
-    //   99: astore_1
-    //   100: aconst_null
-    //   101: astore_1
+    //   61: invokevirtual 145	java/io/FileInputStream:close	()V
+    //   64: aload_2
+    //   65: areturn
+    //   66: aload_2
+    //   67: invokevirtual 145	java/io/FileInputStream:close	()V
+    //   70: goto +48 -> 118
+    //   73: astore_2
+    //   74: goto +12 -> 86
+    //   77: goto +21 -> 98
+    //   80: goto +29 -> 109
+    //   83: astore_2
+    //   84: aconst_null
+    //   85: astore_1
+    //   86: aload_1
+    //   87: ifnull +7 -> 94
+    //   90: aload_1
+    //   91: invokevirtual 145	java/io/FileInputStream:close	()V
+    //   94: aload_2
+    //   95: athrow
+    //   96: aconst_null
+    //   97: astore_1
+    //   98: aload_1
+    //   99: ifnull +19 -> 118
     //   102: aload_1
-    //   103: ifnull -25 -> 78
-    //   106: aload_1
-    //   107: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   110: goto -32 -> 78
-    //   113: astore_1
-    //   114: goto -36 -> 78
-    //   117: astore_2
-    //   118: aconst_null
-    //   119: astore_1
-    //   120: aload_1
-    //   121: ifnull +7 -> 128
-    //   124: aload_1
-    //   125: invokevirtual 145	java/io/FileInputStream:close	()V
-    //   128: aload_2
-    //   129: athrow
-    //   130: astore_1
-    //   131: aload_2
-    //   132: areturn
-    //   133: astore_1
-    //   134: goto -56 -> 78
+    //   103: astore_2
+    //   104: goto -38 -> 66
+    //   107: aconst_null
+    //   108: astore_1
+    //   109: aload_1
+    //   110: ifnull +8 -> 118
+    //   113: aload_1
+    //   114: astore_2
+    //   115: goto -49 -> 66
+    //   118: ldc 31
+    //   120: areturn
+    //   121: astore_1
+    //   122: goto -15 -> 107
+    //   125: astore_1
+    //   126: goto -30 -> 96
+    //   129: astore_2
+    //   130: goto -50 -> 80
+    //   133: astore_2
+    //   134: goto -57 -> 77
     //   137: astore_1
-    //   138: goto -10 -> 128
-    //   141: astore_2
-    //   142: goto -22 -> 120
-    //   145: astore_2
-    //   146: goto -44 -> 102
-    //   149: astore_2
-    //   150: goto -66 -> 84
+    //   138: aload_2
+    //   139: areturn
+    //   140: astore_1
+    //   141: goto -23 -> 118
+    //   144: astore_1
+    //   145: goto -51 -> 94
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	153	0	this	VsGuidUtil
-    //   23	52	1	localFileInputStream	java.io.FileInputStream
-    //   81	1	1	localFileNotFoundException1	java.io.FileNotFoundException
-    //   83	6	1	localObject1	Object
-    //   95	1	1	localIOException1	java.io.IOException
-    //   99	1	1	localIOException2	java.io.IOException
-    //   101	6	1	localObject2	Object
-    //   113	1	1	localIOException3	java.io.IOException
-    //   119	6	1	localObject3	Object
-    //   130	1	1	localIOException4	java.io.IOException
-    //   133	1	1	localIOException5	java.io.IOException
-    //   137	1	1	localIOException6	java.io.IOException
-    //   14	69	2	localObject4	Object
-    //   117	15	2	str	String
-    //   141	1	2	localObject5	Object
-    //   145	1	2	localIOException7	java.io.IOException
-    //   149	1	2	localFileNotFoundException2	java.io.FileNotFoundException
-    //   12	13	3	localFile	java.io.File
+    //   0	148	0	this	VsGuidUtil
+    //   21	93	1	localFileInputStream	java.io.FileInputStream
+    //   121	1	1	localFileNotFoundException1	java.io.FileNotFoundException
+    //   125	1	1	localIOException1	java.io.IOException
+    //   137	1	1	localIOException2	java.io.IOException
+    //   140	1	1	localIOException3	java.io.IOException
+    //   144	1	1	localIOException4	java.io.IOException
+    //   12	55	2	localObject1	Object
+    //   73	1	2	localObject2	Object
+    //   83	12	2	localObject3	Object
+    //   103	12	2	localObject4	Object
+    //   129	1	2	localFileNotFoundException2	java.io.FileNotFoundException
+    //   133	6	2	localIOException5	java.io.IOException
+    //   44	12	3	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   15	24	81	java/io/FileNotFoundException
-    //   88	92	95	java/io/IOException
-    //   15	24	99	java/io/IOException
-    //   106	110	113	java/io/IOException
-    //   15	24	117	finally
-    //   64	68	130	java/io/IOException
-    //   74	78	133	java/io/IOException
-    //   124	128	137	java/io/IOException
-    //   24	47	141	finally
-    //   51	60	141	finally
-    //   24	47	145	java/io/IOException
-    //   51	60	145	java/io/IOException
-    //   24	47	149	java/io/FileNotFoundException
-    //   51	60	149	java/io/FileNotFoundException
+    //   22	45	73	finally
+    //   51	60	73	finally
+    //   13	22	83	finally
+    //   13	22	121	java/io/FileNotFoundException
+    //   13	22	125	java/io/IOException
+    //   22	45	129	java/io/FileNotFoundException
+    //   51	60	129	java/io/FileNotFoundException
+    //   22	45	133	java/io/IOException
+    //   51	60	133	java/io/IOException
+    //   60	64	137	java/io/IOException
+    //   66	70	140	java/io/IOException
+    //   90	94	144	java/io/IOException
   }
   
   /* Error */
   public void saveVsGuidToApplocal(String paramString)
   {
     // Byte code:
-    //   0: new 110	java/io/File
+    //   0: new 110	java/lang/StringBuilder
     //   3: dup
-    //   4: new 112	java/lang/StringBuilder
-    //   7: dup
-    //   8: invokespecial 113	java/lang/StringBuilder:<init>	()V
-    //   11: ldc 115
-    //   13: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   7: astore_2
+    //   8: aload_2
+    //   9: ldc 113
+    //   11: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: pop
+    //   15: aload_2
     //   16: aload_0
-    //   17: getfield 39	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsGuidUtil:context	Landroid/content/Context;
-    //   20: invokestatic 125	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsAppInfo:getPackageName	(Landroid/content/Context;)Ljava/lang/String;
-    //   23: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: ldc 29
-    //   28: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   34: invokespecial 130	java/io/File:<init>	(Ljava/lang/String;)V
-    //   37: astore_2
-    //   38: aconst_null
-    //   39: astore 4
-    //   41: aconst_null
-    //   42: astore_3
-    //   43: aload_2
-    //   44: invokevirtual 166	java/io/File:getParentFile	()Ljava/io/File;
-    //   47: invokevirtual 169	java/io/File:mkdirs	()Z
-    //   50: pop
-    //   51: aload_2
-    //   52: invokevirtual 172	java/io/File:createNewFile	()Z
-    //   55: pop
-    //   56: new 174	java/io/FileOutputStream
-    //   59: dup
-    //   60: aload_2
-    //   61: invokespecial 175	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   64: astore_2
-    //   65: aload_2
-    //   66: aload_1
-    //   67: invokevirtual 179	java/lang/String:getBytes	()[B
-    //   70: invokestatic 182	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsEncryptUtil:VsEncrypt_SDCARD	([B)[B
-    //   73: invokevirtual 185	java/io/FileOutputStream:write	([B)V
+    //   17: getfield 37	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsGuidUtil:context	Landroid/content/Context;
+    //   20: invokestatic 123	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsAppInfo:getPackageName	(Landroid/content/Context;)Ljava/lang/String;
+    //   23: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: pop
+    //   27: aload_2
+    //   28: ldc 27
+    //   30: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: pop
+    //   34: new 125	java/io/File
+    //   37: dup
+    //   38: aload_2
+    //   39: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokespecial 130	java/io/File:<init>	(Ljava/lang/String;)V
+    //   45: astore_2
+    //   46: aconst_null
+    //   47: astore 4
+    //   49: aconst_null
+    //   50: astore 5
+    //   52: aconst_null
+    //   53: astore_3
+    //   54: aload_2
+    //   55: invokevirtual 166	java/io/File:getParentFile	()Ljava/io/File;
+    //   58: invokevirtual 169	java/io/File:mkdirs	()Z
+    //   61: pop
+    //   62: aload_2
+    //   63: invokevirtual 172	java/io/File:createNewFile	()Z
+    //   66: pop
+    //   67: new 174	java/io/FileOutputStream
+    //   70: dup
+    //   71: aload_2
+    //   72: invokespecial 175	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   75: astore_2
     //   76: aload_2
-    //   77: invokevirtual 188	java/io/FileOutputStream:flush	()V
-    //   80: aload_2
-    //   81: ifnull +7 -> 88
-    //   84: aload_2
-    //   85: invokevirtual 189	java/io/FileOutputStream:close	()V
-    //   88: return
-    //   89: astore_1
-    //   90: aconst_null
-    //   91: astore_2
-    //   92: aload_2
-    //   93: ifnull -5 -> 88
-    //   96: aload_2
-    //   97: invokevirtual 189	java/io/FileOutputStream:close	()V
-    //   100: return
+    //   77: aload_1
+    //   78: invokevirtual 179	java/lang/String:getBytes	()[B
+    //   81: invokestatic 182	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsEncryptUtil:VsEncrypt_SDCARD	([B)[B
+    //   84: invokevirtual 185	java/io/FileOutputStream:write	([B)V
+    //   87: aload_2
+    //   88: invokevirtual 188	java/io/FileOutputStream:flush	()V
+    //   91: aload_2
+    //   92: invokevirtual 189	java/io/FileOutputStream:close	()V
+    //   95: return
+    //   96: astore_1
+    //   97: goto +16 -> 113
+    //   100: aload_2
     //   101: astore_1
-    //   102: return
-    //   103: astore_1
-    //   104: aload_3
-    //   105: astore_1
-    //   106: aload_1
-    //   107: ifnull -19 -> 88
-    //   110: aload_1
-    //   111: invokevirtual 189	java/io/FileOutputStream:close	()V
-    //   114: return
-    //   115: astore_1
-    //   116: return
-    //   117: astore_1
-    //   118: aload 4
-    //   120: astore_2
-    //   121: aload_2
-    //   122: ifnull +7 -> 129
-    //   125: aload_2
-    //   126: invokevirtual 189	java/io/FileOutputStream:close	()V
-    //   129: aload_1
-    //   130: athrow
-    //   131: astore_1
-    //   132: return
-    //   133: astore_2
-    //   134: goto -5 -> 129
-    //   137: astore_1
-    //   138: goto -17 -> 121
-    //   141: astore_1
-    //   142: aload_2
+    //   102: goto +21 -> 123
+    //   105: aload_2
+    //   106: astore_1
+    //   107: goto +25 -> 132
+    //   110: astore_1
+    //   111: aload_3
+    //   112: astore_2
+    //   113: aload_2
+    //   114: ifnull +7 -> 121
+    //   117: aload_2
+    //   118: invokevirtual 189	java/io/FileOutputStream:close	()V
+    //   121: aload_1
+    //   122: athrow
+    //   123: aload_1
+    //   124: ifnull +15 -> 139
+    //   127: aload_1
+    //   128: invokevirtual 189	java/io/FileOutputStream:close	()V
+    //   131: return
+    //   132: aload_1
+    //   133: ifnull +6 -> 139
+    //   136: goto -9 -> 127
+    //   139: return
+    //   140: astore_1
+    //   141: aload 5
     //   143: astore_1
-    //   144: goto -38 -> 106
+    //   144: goto -12 -> 132
     //   147: astore_1
-    //   148: goto -56 -> 92
+    //   148: aload 4
+    //   150: astore_1
+    //   151: goto -28 -> 123
+    //   154: astore_1
+    //   155: goto -50 -> 105
+    //   158: astore_1
+    //   159: goto -59 -> 100
+    //   162: astore_1
+    //   163: return
+    //   164: astore_2
+    //   165: goto -44 -> 121
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	151	0	this	VsGuidUtil
-    //   0	151	1	paramString	String
-    //   37	89	2	localObject1	Object
-    //   133	10	2	localIOException	java.io.IOException
-    //   42	63	3	localObject2	Object
-    //   39	80	4	localObject3	Object
+    //   0	168	0	this	VsGuidUtil
+    //   0	168	1	paramString	String
+    //   7	111	2	localObject1	Object
+    //   164	1	2	localIOException	java.io.IOException
+    //   53	59	3	localObject2	Object
+    //   47	102	4	localObject3	Object
+    //   50	92	5	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   43	65	89	java/io/FileNotFoundException
-    //   96	100	101	java/io/IOException
-    //   43	65	103	java/io/IOException
-    //   110	114	115	java/io/IOException
-    //   43	65	117	finally
-    //   84	88	131	java/io/IOException
-    //   125	129	133	java/io/IOException
-    //   65	80	137	finally
-    //   65	80	141	java/io/IOException
-    //   65	80	147	java/io/FileNotFoundException
+    //   76	91	96	finally
+    //   54	76	110	finally
+    //   54	76	140	java/io/FileNotFoundException
+    //   54	76	147	java/io/IOException
+    //   76	91	154	java/io/FileNotFoundException
+    //   76	91	158	java/io/IOException
+    //   91	95	162	java/io/IOException
+    //   127	131	162	java/io/IOException
+    //   117	121	164	java/io/IOException
   }
   
   /* Error */
   public void saveVsGuidToSdcard(String paramString)
   {
     // Byte code:
-    //   0: new 110	java/io/File
+    //   0: new 125	java/io/File
     //   3: dup
     //   4: invokestatic 160	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   7: ldc 25
+    //   7: ldc 23
     //   9: invokespecial 163	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   12: astore_2
     //   13: aconst_null
     //   14: astore 4
     //   16: aconst_null
-    //   17: astore_3
-    //   18: aload_2
-    //   19: invokevirtual 166	java/io/File:getParentFile	()Ljava/io/File;
-    //   22: invokevirtual 169	java/io/File:mkdirs	()Z
-    //   25: pop
-    //   26: aload_2
-    //   27: invokevirtual 172	java/io/File:createNewFile	()Z
-    //   30: pop
-    //   31: new 174	java/io/FileOutputStream
-    //   34: dup
-    //   35: aload_2
-    //   36: invokespecial 175	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   39: astore_2
-    //   40: aload_2
-    //   41: aload_1
-    //   42: invokevirtual 179	java/lang/String:getBytes	()[B
-    //   45: invokestatic 182	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsEncryptUtil:VsEncrypt_SDCARD	([B)[B
-    //   48: invokevirtual 185	java/io/FileOutputStream:write	([B)V
-    //   51: aload_2
-    //   52: invokevirtual 188	java/io/FileOutputStream:flush	()V
-    //   55: aload_2
-    //   56: ifnull +7 -> 63
-    //   59: aload_2
-    //   60: invokevirtual 189	java/io/FileOutputStream:close	()V
-    //   63: return
-    //   64: astore_1
-    //   65: aconst_null
-    //   66: astore_2
+    //   17: astore 5
+    //   19: aconst_null
+    //   20: astore_3
+    //   21: aload_2
+    //   22: invokevirtual 166	java/io/File:getParentFile	()Ljava/io/File;
+    //   25: invokevirtual 169	java/io/File:mkdirs	()Z
+    //   28: pop
+    //   29: aload_2
+    //   30: invokevirtual 172	java/io/File:createNewFile	()Z
+    //   33: pop
+    //   34: new 174	java/io/FileOutputStream
+    //   37: dup
+    //   38: aload_2
+    //   39: invokespecial 175	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   42: astore_2
+    //   43: aload_2
+    //   44: aload_1
+    //   45: invokevirtual 179	java/lang/String:getBytes	()[B
+    //   48: invokestatic 182	com/tencent/qqlive/tvkplayer/vinfo/ckey/comm/VsEncryptUtil:VsEncrypt_SDCARD	([B)[B
+    //   51: invokevirtual 185	java/io/FileOutputStream:write	([B)V
+    //   54: aload_2
+    //   55: invokevirtual 188	java/io/FileOutputStream:flush	()V
+    //   58: aload_2
+    //   59: invokevirtual 189	java/io/FileOutputStream:close	()V
+    //   62: return
+    //   63: astore_1
+    //   64: goto +16 -> 80
     //   67: aload_2
-    //   68: ifnull -5 -> 63
-    //   71: aload_2
-    //   72: invokevirtual 189	java/io/FileOutputStream:close	()V
-    //   75: return
-    //   76: astore_1
-    //   77: return
-    //   78: astore_1
-    //   79: aload_3
-    //   80: astore_1
-    //   81: aload_1
-    //   82: ifnull -19 -> 63
-    //   85: aload_1
-    //   86: invokevirtual 189	java/io/FileOutputStream:close	()V
-    //   89: return
-    //   90: astore_1
-    //   91: return
-    //   92: astore_1
-    //   93: aload 4
-    //   95: astore_2
-    //   96: aload_2
-    //   97: ifnull +7 -> 104
-    //   100: aload_2
-    //   101: invokevirtual 189	java/io/FileOutputStream:close	()V
-    //   104: aload_1
-    //   105: athrow
-    //   106: astore_1
-    //   107: return
-    //   108: astore_2
-    //   109: goto -5 -> 104
-    //   112: astore_1
-    //   113: goto -17 -> 96
-    //   116: astore_1
-    //   117: aload_2
-    //   118: astore_1
-    //   119: goto -38 -> 81
-    //   122: astore_1
-    //   123: goto -56 -> 67
+    //   68: astore_1
+    //   69: goto +21 -> 90
+    //   72: aload_2
+    //   73: astore_1
+    //   74: goto +25 -> 99
+    //   77: astore_1
+    //   78: aload_3
+    //   79: astore_2
+    //   80: aload_2
+    //   81: ifnull +7 -> 88
+    //   84: aload_2
+    //   85: invokevirtual 189	java/io/FileOutputStream:close	()V
+    //   88: aload_1
+    //   89: athrow
+    //   90: aload_1
+    //   91: ifnull +15 -> 106
+    //   94: aload_1
+    //   95: invokevirtual 189	java/io/FileOutputStream:close	()V
+    //   98: return
+    //   99: aload_1
+    //   100: ifnull +6 -> 106
+    //   103: goto -9 -> 94
+    //   106: return
+    //   107: astore_1
+    //   108: aload 5
+    //   110: astore_1
+    //   111: goto -12 -> 99
+    //   114: astore_1
+    //   115: aload 4
+    //   117: astore_1
+    //   118: goto -28 -> 90
+    //   121: astore_1
+    //   122: goto -50 -> 72
+    //   125: astore_1
+    //   126: goto -59 -> 67
+    //   129: astore_1
+    //   130: return
+    //   131: astore_2
+    //   132: goto -44 -> 88
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	126	0	this	VsGuidUtil
-    //   0	126	1	paramString	String
-    //   12	89	2	localObject1	Object
-    //   108	10	2	localIOException	java.io.IOException
-    //   17	63	3	localObject2	Object
-    //   14	80	4	localObject3	Object
+    //   0	135	0	this	VsGuidUtil
+    //   0	135	1	paramString	String
+    //   12	73	2	localObject1	Object
+    //   131	1	2	localIOException	java.io.IOException
+    //   20	59	3	localObject2	Object
+    //   14	102	4	localObject3	Object
+    //   17	92	5	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   18	40	64	java/io/FileNotFoundException
-    //   71	75	76	java/io/IOException
-    //   18	40	78	java/io/IOException
-    //   85	89	90	java/io/IOException
-    //   18	40	92	finally
-    //   59	63	106	java/io/IOException
-    //   100	104	108	java/io/IOException
-    //   40	55	112	finally
-    //   40	55	116	java/io/IOException
-    //   40	55	122	java/io/FileNotFoundException
+    //   43	58	63	finally
+    //   21	43	77	finally
+    //   21	43	107	java/io/FileNotFoundException
+    //   21	43	114	java/io/IOException
+    //   43	58	121	java/io/FileNotFoundException
+    //   43	58	125	java/io/IOException
+    //   58	62	129	java/io/IOException
+    //   94	98	129	java/io/IOException
+    //   84	88	131	java/io/IOException
   }
   
   public void updateVsGuid()
@@ -580,7 +585,7 @@ public class VsGuidUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsGuidUtil
  * JD-Core Version:    0.7.0.1
  */

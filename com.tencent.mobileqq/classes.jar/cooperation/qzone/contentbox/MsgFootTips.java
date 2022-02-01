@@ -59,23 +59,19 @@ public class MsgFootTips
   
   private void initView()
   {
-    this.commentTipsView = ((LinearLayout)LayoutInflater.from(this.mContext).inflate(2131562449, null));
+    this.commentTipsView = ((LinearLayout)LayoutInflater.from(this.mContext).inflate(2131562285, null));
     try
     {
-      this.commentTipsView.setBackgroundResource(2130838979);
-      addView(this.commentTipsView);
-      this.commentTipsProgressBar = ((ProgressBar)this.commentTipsView.findViewById(2131365049));
-      this.commentTipsText = ((TextView)this.commentTipsView.findViewById(2131365050));
-      this.commentTipsDivider = this.commentTipsView.findViewById(2131365046);
-      return;
+      this.commentTipsView.setBackgroundResource(2130838739);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("QZoneMsgManager.MsgFootTips", 2, localThrowable, new Object[0]);
-      }
+      QLog.e("QZoneMsgManager.MsgFootTips", 2, localThrowable, new Object[0]);
     }
+    addView(this.commentTipsView);
+    this.commentTipsProgressBar = ((ProgressBar)this.commentTipsView.findViewById(2131364932));
+    this.commentTipsText = ((TextView)this.commentTipsView.findViewById(2131364933));
+    this.commentTipsDivider = this.commentTipsView.findViewById(2131364929);
   }
   
   public View getFooterRootView()
@@ -90,7 +86,16 @@ public class MsgFootTips
   
   public boolean isLoading()
   {
-    return (this.currentState == 0) || (this.currentState == 1);
+    int i = this.currentState;
+    boolean bool = true;
+    if (i != 0)
+    {
+      if (i == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public boolean loadMoreAble()
@@ -100,20 +105,22 @@ public class MsgFootTips
   
   public void setBackgroundColor(int paramInt)
   {
-    if (this.commentTipsView != null) {
-      this.commentTipsView.setBackgroundColor(paramInt);
+    LinearLayout localLinearLayout = this.commentTipsView;
+    if (localLinearLayout != null) {
+      localLinearLayout.setBackgroundColor(paramInt);
     }
   }
   
   public void setDividerVisible(boolean paramBoolean)
   {
     View localView = this.commentTipsDivider;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localView.setVisibility(i);
   }
   
   public void setLoadingDataText(String paramString)
@@ -143,78 +150,120 @@ public class MsgFootTips
   
   public void setState(int paramInt)
   {
-    if ((this.commentTipsText == null) || (this.commentTipsProgressBar == null)) {
-      return;
-    }
-    setVisibility(0);
-    this.currentState = paramInt;
-    if (this.commentTipsText.getVisibility() == 8) {
-      this.commentTipsText.setVisibility(0);
-    }
-    switch (paramInt)
+    if (this.commentTipsText != null)
     {
-    default: 
-      return;
-    case 0: 
-      QZLog.d("QZoneMsgManager.MsgFootTips", 2, "setState state(" + paramInt + ")，" + this.loadingDataText);
-      this.commentTipsProgressBar.setVisibility(0);
-      this.commentTipsText.setText(this.loadingDataText);
-      this.commentTipsText.setVisibility(0);
-      return;
-    case 1: 
-      QZLog.d("QZoneMsgManager.MsgFootTips", 2, "setState state(" + paramInt + ")，" + this.loadingMoreDataText);
-      this.commentTipsProgressBar.setVisibility(0);
-      this.commentTipsText.setText(this.loadingMoreDataText);
-      this.commentTipsText.setVisibility(0);
-      return;
-    case 2: 
-      QZLog.d("QZoneMsgManager.MsgFootTips", 2, "setState state(" + paramInt + ")，" + this.noDataText);
-      this.commentTipsProgressBar.setVisibility(8);
-      this.commentTipsText.setText(this.noDataText);
-      this.commentTipsText.setVisibility(0);
-      return;
-    case 3: 
-      QZLog.d("QZoneMsgManager.MsgFootTips", 2, "setState state(" + paramInt + ")，隐藏");
-      setVisibility(8);
-      this.commentTipsText.setVisibility(8);
-      this.commentTipsProgressBar.setVisibility(8);
-      return;
-    case 4: 
-      QZLog.d("QZoneMsgManager.MsgFootTips", 2, "setState state(" + paramInt + ")，" + this.noMoreDataText);
-      this.commentTipsProgressBar.setVisibility(8);
-      this.commentTipsText.setText(this.noMoreDataText);
-      if (this.isNoMoreDataVisibility)
+      if (this.commentTipsProgressBar == null) {
+        return;
+      }
+      setVisibility(0);
+      this.currentState = paramInt;
+      if (this.commentTipsText.getVisibility() == 8) {
+        this.commentTipsText.setVisibility(0);
+      }
+      switch (paramInt)
       {
+      default: 
+        return;
+      case 7: 
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setState state(");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(")，");
+        localStringBuilder.append(this.noMoreDataText);
+        QZLog.d("QZoneMsgManager.MsgFootTips", 2, localStringBuilder.toString());
+        this.commentTipsProgressBar.setVisibility(8);
+        this.commentTipsText.setText(this.noMoreDataText);
+        this.commentTipsText.setVisibility(0);
+        setVisibility(0);
+        return;
+      case 6: 
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setState state(");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(")，");
+        localStringBuilder.append(this.noMoreDataText);
+        QZLog.d("QZoneMsgManager.MsgFootTips", 2, localStringBuilder.toString());
+        this.commentTipsProgressBar.setVisibility(8);
+        this.commentTipsText.setText(this.noMoreDataText);
+        this.commentTipsText.setVisibility(0);
+        setVisibility(4);
+        return;
+      case 5: 
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setState state(");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(")，");
+        localStringBuilder.append(this.loadMoreManualText);
+        QZLog.d("QZoneMsgManager.MsgFootTips", 2, localStringBuilder.toString());
+        this.commentTipsProgressBar.setVisibility(8);
+        this.commentTipsText.setText(this.loadMoreManualText);
+        this.commentTipsText.setVisibility(0);
+        return;
+      case 4: 
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setState state(");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(")，");
+        localStringBuilder.append(this.noMoreDataText);
+        QZLog.d("QZoneMsgManager.MsgFootTips", 2, localStringBuilder.toString());
+        this.commentTipsProgressBar.setVisibility(8);
+        this.commentTipsText.setText(this.noMoreDataText);
+        if (this.isNoMoreDataVisibility)
+        {
+          this.commentTipsText.setVisibility(0);
+          return;
+        }
+        this.commentTipsText.setVisibility(8);
+        setVisibility(8);
+        return;
+      case 3: 
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setState state(");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(")，隐藏");
+        QZLog.d("QZoneMsgManager.MsgFootTips", 2, localStringBuilder.toString());
+        setVisibility(8);
+        this.commentTipsText.setVisibility(8);
+        this.commentTipsProgressBar.setVisibility(8);
+        return;
+      case 2: 
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setState state(");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(")，");
+        localStringBuilder.append(this.noDataText);
+        QZLog.d("QZoneMsgManager.MsgFootTips", 2, localStringBuilder.toString());
+        this.commentTipsProgressBar.setVisibility(8);
+        this.commentTipsText.setText(this.noDataText);
+        this.commentTipsText.setVisibility(0);
+        return;
+      case 1: 
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setState state(");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(")，");
+        localStringBuilder.append(this.loadingMoreDataText);
+        QZLog.d("QZoneMsgManager.MsgFootTips", 2, localStringBuilder.toString());
+        this.commentTipsProgressBar.setVisibility(0);
+        this.commentTipsText.setText(this.loadingMoreDataText);
         this.commentTipsText.setVisibility(0);
         return;
       }
-      this.commentTipsText.setVisibility(8);
-      setVisibility(8);
-      return;
-    case 6: 
-      QZLog.d("QZoneMsgManager.MsgFootTips", 2, "setState state(" + paramInt + ")，" + this.noMoreDataText);
-      this.commentTipsProgressBar.setVisibility(8);
-      this.commentTipsText.setText(this.noMoreDataText);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setState state(");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(")，");
+      localStringBuilder.append(this.loadingDataText);
+      QZLog.d("QZoneMsgManager.MsgFootTips", 2, localStringBuilder.toString());
+      this.commentTipsProgressBar.setVisibility(0);
+      this.commentTipsText.setText(this.loadingDataText);
       this.commentTipsText.setVisibility(0);
-      setVisibility(4);
-      return;
-    case 7: 
-      QZLog.d("QZoneMsgManager.MsgFootTips", 2, "setState state(" + paramInt + ")，" + this.noMoreDataText);
-      this.commentTipsProgressBar.setVisibility(8);
-      this.commentTipsText.setText(this.noMoreDataText);
-      this.commentTipsText.setVisibility(0);
-      setVisibility(0);
-      return;
     }
-    QZLog.d("QZoneMsgManager.MsgFootTips", 2, "setState state(" + paramInt + ")，" + this.loadMoreManualText);
-    this.commentTipsProgressBar.setVisibility(8);
-    this.commentTipsText.setText(this.loadMoreManualText);
-    this.commentTipsText.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgFootTips
  * JD-Core Version:    0.7.0.1
  */

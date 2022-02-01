@@ -37,14 +37,18 @@ final class AbsWebView$DownloadQQBrowserExtension
       this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
       this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
       localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
-      if (QLog.isColorLevel()) {
-        QLog.i("WebCoreDump", 2, "Take web core dump for " + Util.b(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), new String[0]));
+      if (QLog.isColorLevel())
+      {
+        paramObject1 = new StringBuilder();
+        paramObject1.append("Take web core dump for ");
+        paramObject1.append(Util.b(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), new String[0]));
+        QLog.i("WebCoreDump", 2, paramObject1.toString());
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    else if (QLog.isColorLevel())
+    {
+      QLog.i("WebCoreDump", 2, "No JS plugin engine to handle web core dump");
     }
-    QLog.i("WebCoreDump", 2, "No JS plugin engine to handle web core dump");
   }
   
   public void computeScroll(View paramView)
@@ -98,8 +102,12 @@ final class AbsWebView$DownloadQQBrowserExtension
   
   public void onUrlChange(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AbsWebView", 2, "onUrlChange detect 302 url: " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("onUrlChange detect 302 url: ");
+      paramString1.append(paramString2);
+      QLog.i("AbsWebView", 2, paramString1.toString());
     }
     SwiftBrowserCookieMonster.d();
   }
@@ -111,7 +119,7 @@ final class AbsWebView$DownloadQQBrowserExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.AbsWebView.DownloadQQBrowserExtension
  * JD-Core Version:    0.7.0.1
  */

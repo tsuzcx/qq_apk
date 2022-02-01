@@ -43,9 +43,7 @@ public class DrawUtils
     if (localFloat == null)
     {
       localObject = jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-      float f1 = ((Paint.FontMetrics)localObject).descent;
-      float f2 = ((Paint.FontMetrics)localObject).ascent;
-      localObject = Float.valueOf(((Paint.FontMetrics)localObject).leading + (f1 - f2));
+      localObject = Float.valueOf(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent + ((Paint.FontMetrics)localObject).leading);
       jdField_a_of_type_JavaUtilMap.put(Float.valueOf(paramFloat), localObject);
     }
     return ((Float)localObject).floatValue();
@@ -88,7 +86,7 @@ public class DrawUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.util.DrawUtils
  * JD-Core Version:    0.7.0.1
  */

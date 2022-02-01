@@ -20,7 +20,10 @@ final class FWPermissionFragment$onActivityResult$1
     if (localObject != null)
     {
       boolean bool = FWPermission.hasPermission((Context)localObject);
-      Logger.i("PermissionFragment onActivityResult: " + bool);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PermissionFragment onActivityResult: ");
+      ((StringBuilder)localObject).append(bool);
+      Logger.i(((StringBuilder)localObject).toString());
       localObject = FWPermissionFragment.access$getOnPermissionResult$cp();
       if (localObject != null) {
         ((OnFloatWindowPermissionListener)localObject).permissionFinish(bool);
@@ -31,7 +34,7 @@ final class FWPermissionFragment$onActivityResult$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.permission.FWPermissionFragment.onActivityResult.1
  * JD-Core Version:    0.7.0.1
  */

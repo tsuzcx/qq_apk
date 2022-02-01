@@ -27,14 +27,31 @@ public class WSVerticalItemTagController
   
   private boolean a(stVideoTag paramstVideoTag)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder.a == null)) {}
-    while ((paramstVideoTag.tagId != 6) || (!TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder.a.a(), "recommend_tab")) || (a() != 0)) {
-      return false;
+    WSVerticalVideoHolder localWSVerticalVideoHolder = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localWSVerticalVideoHolder != null)
+    {
+      if (localWSVerticalVideoHolder.a == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (paramstVideoTag.tagId == 6)
+      {
+        bool1 = bool2;
+        if (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder.a.a(), "recommend_tab"))
+        {
+          bool1 = bool2;
+          if (a() == 0) {
+            bool1 = true;
+          }
+        }
+      }
     }
-    return true;
+    return bool1;
   }
   
-  public void a()
+  protected void a()
   {
     WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
     if ((localWSVerticalItemData != null) && ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed))) {
@@ -42,77 +59,71 @@ public class WSVerticalItemTagController
     }
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560160;
+    return 2131560045;
   }
   
-  public void b()
+  protected void b()
   {
-    stVideoTag localstVideoTag;
-    if (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null)
+    Object localObject1 = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+    if (localObject1 != null)
     {
-      localstVideoTag = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.videoTag;
-      if ((localstVideoTag != null) && (!TextUtils.isEmpty(localstVideoTag.text)) && (!a(localstVideoTag))) {}
-    }
-    else
-    {
-      a(8);
-      return;
-    }
-    a(0);
-    String str;
-    Object localObject;
-    label103:
-    GradientDrawable localGradientDrawable;
-    if ((!TextUtils.isEmpty(localstVideoTag.textColor)) && (localstVideoTag.textColor.startsWith("#")))
-    {
-      str = localstVideoTag.textColor;
-      if ((TextUtils.isEmpty(localstVideoTag.bgColor)) || (!localstVideoTag.bgColor.startsWith("#"))) {
-        break label204;
+      stVideoTag localstVideoTag = ((stSimpleMetaFeed)localObject1).videoTag;
+      if ((localstVideoTag != null) && (!TextUtils.isEmpty(localstVideoTag.text)) && (!a(localstVideoTag)))
+      {
+        a(0);
+        if ((!TextUtils.isEmpty(localstVideoTag.textColor)) && (localstVideoTag.textColor.startsWith("#")))
+        {
+          localObject1 = localstVideoTag.textColor;
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("#");
+          ((StringBuilder)localObject1).append(localstVideoTag.textColor);
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        if ((!TextUtils.isEmpty(localstVideoTag.bgColor)) && (localstVideoTag.bgColor.startsWith("#")))
+        {
+          localObject2 = localstVideoTag.bgColor;
+        }
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("#");
+          ((StringBuilder)localObject2).append(localstVideoTag.bgColor);
+          localObject2 = ((StringBuilder)localObject2).toString();
+        }
+        GradientDrawable localGradientDrawable = new GradientDrawable();
+        localGradientDrawable.setCornerRadius(WeishiUIUtil.d);
+        if (!WeishiUIUtil.a((String)localObject2)) {
+          localObject2 = "#80000000";
+        }
+        localGradientDrawable.setColor(Color.parseColor((String)localObject2));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(localstVideoTag.text);
+        Object localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+        if (!WeishiUIUtil.a((String)localObject1)) {
+          localObject1 = "#FFFFFF";
+        }
+        ((TextView)localObject2).setTextColor(Color.parseColor((String)localObject1));
+        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(localGradientDrawable);
+        return;
       }
-      localObject = localstVideoTag.bgColor;
-      localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setCornerRadius(WeishiUIUtil.d);
-      if (!WeishiUIUtil.a((String)localObject)) {
-        break label230;
-      }
-      label128:
-      localGradientDrawable.setColor(Color.parseColor((String)localObject));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localstVideoTag.text);
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (!WeishiUIUtil.a(str)) {
-        break label236;
-      }
     }
-    for (;;)
-    {
-      ((TextView)localObject).setTextColor(Color.parseColor(str));
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(localGradientDrawable);
-      return;
-      str = "#" + localstVideoTag.textColor;
-      break;
-      label204:
-      localObject = "#" + localstVideoTag.bgColor;
-      break label103;
-      label230:
-      localObject = "#80000000";
-      break label128;
-      label236:
-      str = "#FFFFFF";
-    }
+    a(8);
   }
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131381218));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380474));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemTagController
  * JD-Core Version:    0.7.0.1
  */

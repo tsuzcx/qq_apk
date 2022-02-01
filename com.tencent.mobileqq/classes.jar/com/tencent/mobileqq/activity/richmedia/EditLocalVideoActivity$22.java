@@ -12,8 +12,12 @@ class EditLocalVideoActivity$22
   {
     if (EditLocalVideoActivity.a(this.this$0) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EditLocalVideoActivity", 2, "onCurrentRangeTimeChanged, time=" + this.this$0.a((int)this.a));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onCurrentRangeTimeChanged, time=");
+        localStringBuilder.append(this.this$0.a((int)this.a));
+        QLog.d("EditLocalVideoActivity", 2, localStringBuilder.toString());
       }
       EditLocalVideoActivity.a(this.this$0).setText(this.this$0.a((int)this.a));
     }
@@ -21,7 +25,7 @@ class EditLocalVideoActivity$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.22
  * JD-Core Version:    0.7.0.1
  */

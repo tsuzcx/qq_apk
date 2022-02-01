@@ -28,7 +28,8 @@ import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager;
+import com.tencent.mobileqq.intervideo.now.dynamic.IDynamicNowManager;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -41,187 +42,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class QQstoryAction
-  extends JumpActionBase
+  extends JumpAction
 {
+  private QQAppInterface a;
+  
   public QQstoryAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super(paramQQAppInterface, paramContext);
-  }
-  
-  private boolean C()
-  {
-    boolean bool = ((Boolean)((StoryConfigManager)SuperManager.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue();
-    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("token");
-    if (!TextUtils.isEmpty(str)) {
-      StoryShareEncryptHelper.a(this.jdField_a_of_type_AndroidContentContext, str, new QQstoryAction.1(this), null);
-    }
-    for (;;)
-    {
-      return true;
-      if (TextUtils.equals(this.c, "publish"))
-      {
-        D();
-      }
-      else
-      {
-        if (bool)
-        {
-          this.c = "open";
-          StoryShareEncryptHelper.a(this.jdField_a_of_type_JavaUtilHashMap);
-        }
-        D();
-      }
-    }
-  }
-  
-  private boolean D()
-  {
-    if ((QzoneConfig.getInstance().getConfig("qqstoryvideo", "jump_hyws_scheme_enable", 0) == 0) && (BaseApplicationImpl.getContext() != null))
-    {
-      ThreadManager.getUIHandler().post(new QQstoryAction.2(this));
-      return false;
-    }
-    if ((((MsgTabStoryNodeConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a) && (!"open".equals(this.c)) && (!"openTag".equals(this.c)) && (!"openSquare".equals(this.c)) && (!"publish".equals(this.c))) {
-      return F();
-    }
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("one_page");
-    String str1 = str2;
-    if (String.valueOf(2).equals(str2))
-    {
-      MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager = (MsgTabStoryNodeConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER);
-      str1 = str2;
-      if (localMsgTabStoryNodeConfigManager != null)
-      {
-        str1 = str2;
-        if (!localMsgTabStoryNodeConfigManager.a)
-        {
-          str1 = String.valueOf(0);
-          this.jdField_a_of_type_JavaUtilHashMap.put("one_page", str1);
-        }
-      }
-    }
-    if ("0".equals(str1)) {
-      return E();
-    }
-    if ("open".equals(this.c)) {
-      return E();
-    }
-    return F();
-  }
-  
-  private boolean E()
-  {
-    Intent localIntent;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNowLiveManager().a)
-    {
-      SLog.b("QQstoryAction", "startStoryMainActivity, isNowTabShow==true");
-      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SplashActivity.class);
-      localIntent.putExtra("fragment_id", 1);
-      localIntent.putExtra("tab_index", FrameControllerUtil.f);
-      localIntent.putExtra("open_now_tab_fragment", true);
-      localIntent.putExtra("extra_from_share", true);
-      localIntent.setFlags(335544320);
-      localIntent = e(localIntent);
-      if ((localIntent != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)))
-      {
-        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        return true;
-      }
-      if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-        SLog.e("QQstoryAction", "Error: context is not instanceof Activity, context is: " + String.valueOf(this.jdField_a_of_type_AndroidContentContext));
-      }
-      if (localIntent == null) {
-        SLog.e("QQstoryAction", "Error: jumpIntent is null");
-      }
-      return false;
-    }
-    SLog.b("QQstoryAction", "startStoryMainActivity, isNowTabShow==false");
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof JumpActivity)) && (!BaseApplicationImpl.appMainActivityHasLanuch))
-    {
-      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SplashActivity.class);
-      localIntent.putExtra("fragment_id", 1);
-      localIntent.putExtra("tab_index", FrameControllerUtil.a);
-      localIntent.setFlags(335544320);
-      localIntent.putExtra("jump_to_story", true);
-    }
-    for (;;)
-    {
-      localIntent = e(localIntent);
-      if ((localIntent == null) || ((!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (!(this.jdField_a_of_type_AndroidContentContext instanceof BaseApplicationImpl)))) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      return true;
-      localIntent = a();
-    }
-  }
-  
-  private boolean F()
-  {
-    if ("open".equals(this.c))
-    {
-      localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQStoryMainActivity.class);
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult((Intent)localObject, 8855);
-      return true;
-    }
-    if ("openVideo".equalsIgnoreCase(this.c))
-    {
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-        return a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap, null);
-      }
-      return false;
-    }
-    if ("opencontent".equals(this.c)) {
-      return a(this.jdField_a_of_type_JavaUtilHashMap, false);
-    }
-    if ("opendiscovery".equals(this.c)) {
-      return H();
-    }
-    if ("opentopic".equals(this.c)) {
-      return G();
-    }
-    if ("infoCard".equals(this.c)) {
-      return a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
-    }
-    if ("sharegroupcard".equals(this.c)) {
-      return b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
-    }
-    Object localObject = new QQStoryHomeJumpHelper((Activity)this.jdField_a_of_type_AndroidContentContext, new QQstoryAction.3(this));
-    Intent localIntent = e(new Intent());
-    if (localIntent != null)
-    {
-      int i = localIntent.getIntExtra("action", 0);
-      localIntent.putExtra("action", 0);
-      return ((QQStoryHomeJumpHelper)localObject).a(i, localIntent);
-    }
-    return false;
-  }
-  
-  private boolean G()
-  {
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicid");
-    localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicname");
-    a((String)this.jdField_a_of_type_JavaUtilHashMap.get("sharefromtype"));
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean H()
-  {
-    if (!TextUtils.isEmpty(a((String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api")))) {
-      StoryReportor.a("content_flow", "use_api", 0, 0, new String[] { "", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api") });
-    }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      if ("1".equals((String)this.jdField_a_of_type_JavaUtilHashMap.get("to_new_version"))) {}
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
   public static int a(Map<String, String> paramMap)
@@ -235,33 +63,43 @@ public class QQstoryAction
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      if (!QLog.isColorLevel()) {
-        break label59;
-      }
-      QLog.e("QQstoryAction", 2, "makeStoryContentPageIntent, NumberFormatException, shareFromStr:" + paramMap);
+      label23:
+      StringBuilder localStringBuilder;
+      break label23;
     }
-    return 0;
-    label59:
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("makeStoryContentPageIntent, NumberFormatException, shareFromStr:");
+      localStringBuilder.append(paramMap);
+      QLog.e("QQstoryAction", 2, localStringBuilder.toString());
+    }
     return 0;
   }
   
   public static int a(Map<String, String> paramMap, String paramString, int paramInt)
   {
     paramMap = (String)paramMap.get(paramString);
-    int i = paramInt;
     if (paramMap != null) {}
     try
     {
-      i = Integer.parseInt(paramMap);
+      int i = Integer.parseInt(paramMap);
       return i;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      do
-      {
-        i = paramInt;
-      } while (!QLog.isColorLevel());
-      QLog.e("QQstoryAction", 2, "getIntAttribute, NumberFormatException, key:" + paramString + " strVal:" + paramMap);
+      label22:
+      StringBuilder localStringBuilder;
+      break label22;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getIntAttribute, NumberFormatException, key:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" strVal:");
+      localStringBuilder.append(paramMap);
+      QLog.e("QQstoryAction", 2, localStringBuilder.toString());
     }
     return paramInt;
   }
@@ -280,43 +118,42 @@ public class QQstoryAction
     if (paramBoolean) {
       StoryReportor.a("basic", "use_api", 0, 0, new String[] { "2", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api") });
     }
-    paramIntent.putExtra("story_default_label", (String)this.jdField_a_of_type_JavaUtilHashMap.get("default_label"));
     String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("from_type");
     String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("capture_mode");
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("tab_id");
-    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("category_id");
-    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("item_id");
-    String str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("album_id");
-    String str7 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("one_page");
-    String str8 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("dispatch_event");
+    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("tab_id");
+    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("category_id");
+    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("item_id");
+    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("album_id");
+    str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("one_page");
+    String str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("dispatch_event");
     paramIntent.putExtra("cameraDirection", 2);
-    paramIntent.putExtra("story_game_id", str3);
-    paramIntent.putExtra("story_capture_album_id", str6);
-    if (!TextUtils.isEmpty(str8)) {
-      paramIntent.putExtra("web_dispatch_event", str8);
+    if (!TextUtils.isEmpty(str6)) {
+      paramIntent.putExtra("web_dispatch_event", str6);
     }
     try
     {
-      if (!TextUtils.isEmpty(str7)) {
-        paramIntent.putExtra("key_finish_jump_to_page", Integer.valueOf(str7));
+      if (!TextUtils.isEmpty(str5)) {
+        paramIntent.putExtra("key_finish_jump_to_page", Integer.valueOf(str5));
       }
       if (!TextUtils.isEmpty(str2)) {
         paramIntent.putExtra("capture_intent_mode", Integer.valueOf(str2));
       }
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        paramIntent.putExtra("firsttab", Integer.valueOf((String)localObject));
+      }
       if (!TextUtils.isEmpty(str3)) {
-        paramIntent.putExtra("firsttab", Integer.valueOf(str3));
+        paramIntent.putExtra("secondtab", Integer.valueOf(str3));
       }
-      if (!TextUtils.isEmpty(str4)) {
-        paramIntent.putExtra("secondtab", Integer.valueOf(str4));
-      }
-      paramIntent.putExtra("itemid", str5);
+      paramIntent.putExtra("itemid", str4);
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        QLog.e("Q.qqstory.publish.QQstoryAction", 2, "start story publish, NumberFormatException, attrs=" + this.jdField_a_of_type_JavaUtilHashMap.toString() + "\n" + localNumberFormatException);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start story publish, NumberFormatException, attrs=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilHashMap.toString());
+      ((StringBuilder)localObject).append("\n");
+      ((StringBuilder)localObject).append(localNumberFormatException);
+      QLog.e("Q.qqstory.publish.QQstoryAction", 2, ((StringBuilder)localObject).toString());
     }
     paramIntent.putExtra("from_type", str1);
     paramIntent.putExtra("action", 1);
@@ -325,26 +162,34 @@ public class QQstoryAction
   
   public static String a(String paramString)
   {
+    String str = paramString;
     if (!TextUtils.isEmpty(paramString)) {}
     try
     {
       int i = Integer.valueOf(paramString).intValue();
-      switch (i)
+      if (i != 15)
       {
-      default: 
-        return paramString;
-      case 21: 
-        return "2";
-      case 20: 
-        return "3";
-      case 15: 
-        return "4";
-      case 3001: 
-        return "5";
-      case 22: 
-        return "6";
+        if (i != 45)
+        {
+          if (i != 3001)
+          {
+            switch (i)
+            {
+            default: 
+              return paramString;
+            case 22: 
+              return "6";
+            case 21: 
+              return "2";
+            }
+            return "3";
+          }
+          return "5";
+        }
+        return "7";
       }
-      return "7";
+      str = "4";
+      return str;
     }
     catch (NumberFormatException localNumberFormatException) {}
     return paramString;
@@ -386,20 +231,21 @@ public class QQstoryAction
   {
     String str = (String)paramHashMap.get("collection_id");
     paramHashMap = (String)paramHashMap.get("time_zone");
-    int i = -1;
+    int i;
     if (!TextUtils.isEmpty(paramHashMap)) {
       i = Integer.valueOf(paramHashMap).intValue();
+    } else {
+      i = -1;
     }
-    if (!TextUtils.isEmpty(paramString2)) {
-      StoryPlayerLauncher.a(paramActivity, paramString2, VideoCollectionEntry.getCollectionKey(1, str, paramString2), i, paramInt1, paramString3, paramInt2, null);
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString2))
     {
+      StoryPlayerLauncher.a(paramActivity, paramString2, VideoCollectionEntry.getCollectionKey(1, str, paramString2), i, paramInt1, paramString3, paramInt2, null);
       return true;
-      if (TextUtils.isEmpty(paramString1)) {
-        break;
-      }
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
       StoryPlayerLauncher.a(paramActivity, paramString1, VideoCollectionEntry.getCollectionKey(1, str, paramString1), i, paramInt1, paramString3, paramInt2, null);
+      return true;
     }
     return false;
   }
@@ -409,31 +255,28 @@ public class QQstoryAction
     String str = (String)paramHashMap.get("collection_id");
     if (TextUtils.isEmpty(str))
     {
-      paramInt2 = paramInt1;
       if (paramInt1 == 0) {
-        paramInt2 = 30;
+        paramInt1 = 30;
       }
-      StoryPlayerLauncher.a(paramActivity, paramString3, paramString4, paramInt2);
-    }
-    for (;;)
-    {
+      StoryPlayerLauncher.a(paramActivity, paramString3, paramString4, paramInt1);
       return true;
-      paramHashMap = (String)paramHashMap.get("time_zone");
-      int i = -1;
-      if (!TextUtils.isEmpty(paramHashMap)) {
-        i = Integer.valueOf(paramHashMap).intValue();
-      }
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        StoryPlayerLauncher.a(paramActivity, paramString2, VideoCollectionEntry.getCollectionKey(1, str, paramString2), i, paramInt1, paramString4, paramInt2, null);
-      }
-      else
-      {
-        if (TextUtils.isEmpty(paramString1)) {
-          break;
-        }
-        StoryPlayerLauncher.a(paramActivity, paramString1, VideoCollectionEntry.getCollectionKey(1, str, paramString1), i, paramInt1, paramString4, paramInt2, null);
-      }
+    }
+    paramHashMap = (String)paramHashMap.get("time_zone");
+    int i;
+    if (!TextUtils.isEmpty(paramHashMap)) {
+      i = Integer.valueOf(paramHashMap).intValue();
+    } else {
+      i = -1;
+    }
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      StoryPlayerLauncher.a(paramActivity, paramString2, VideoCollectionEntry.getCollectionKey(1, str, paramString2), i, paramInt1, paramString4, paramInt2, null);
+      return true;
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      StoryPlayerLauncher.a(paramActivity, paramString1, VideoCollectionEntry.getCollectionKey(1, str, paramString1), i, paramInt1, paramString4, paramInt2, null);
+      return true;
     }
     return false;
   }
@@ -449,40 +292,31 @@ public class QQstoryAction
       }
       if (!TextUtils.isEmpty(paramString2)) {
         StoryPlayerLauncher.a(paramActivity, paramString2, paramString5, paramInt2, paramInt1, 0, null);
-      }
-    }
-    for (;;)
-    {
-      return false;
-      if (!TextUtils.isEmpty(paramString1))
-      {
+      } else if (!TextUtils.isEmpty(paramString1)) {
         StoryPlayerLauncher.a(paramActivity, paramString1, paramString5, paramInt2, paramInt1, 0, null);
-      }
-      else
-      {
+      } else {
         return true;
-        if ((!TextUtils.isEmpty(paramString4)) && (paramString4.equals(String.valueOf(1))))
-        {
-          paramInt2 = paramInt1;
-          if (paramInt1 == 0) {
-            paramInt2 = 57;
-          }
-          StoryPlayerLauncher.b(paramActivity, paramString3, paramString5, paramInt2);
-        }
-        else if ("onedaylist".equals(paramString4))
-        {
-          StoryPlayerLauncher.a(paramActivity, paramString2, paramString5, paramInt2, paramInt1, 0, null);
-        }
-        else
-        {
-          paramInt2 = paramInt1;
-          if (paramInt1 == 0) {
-            paramInt2 = 17;
-          }
-          StoryPlayerLauncher.b(paramActivity, paramString3, paramString5, paramInt2);
-        }
       }
     }
+    else if ((!TextUtils.isEmpty(paramString4)) && (paramString4.equals(String.valueOf(1))))
+    {
+      if (paramInt1 == 0) {
+        paramInt1 = 57;
+      }
+      StoryPlayerLauncher.b(paramActivity, paramString3, paramString5, paramInt1);
+    }
+    else if ("onedaylist".equals(paramString4))
+    {
+      StoryPlayerLauncher.a(paramActivity, paramString2, paramString5, paramInt2, paramInt1, 0, null);
+    }
+    else
+    {
+      if (paramInt1 == 0) {
+        paramInt1 = 17;
+      }
+      StoryPlayerLauncher.b(paramActivity, paramString3, paramString5, paramInt1);
+    }
+    return false;
   }
   
   private static boolean a(Activity paramActivity, HashMap<String, String> paramHashMap, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
@@ -495,16 +329,15 @@ public class QQstoryAction
     if (!TextUtils.isEmpty(paramHashMap)) {
       Integer.valueOf(paramHashMap).intValue();
     }
-    if (!TextUtils.isEmpty(paramString3)) {
-      StoryPlayerLauncher.a(paramActivity, paramString3, paramString6, 1, 109, 1, null);
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString3))
     {
+      StoryPlayerLauncher.a(paramActivity, paramString3, paramString6, 1, 109, 1, null);
       return true;
-      if (TextUtils.isEmpty(paramString2)) {
-        break;
-      }
+    }
+    if (!TextUtils.isEmpty(paramString2))
+    {
       StoryPlayerLauncher.a(paramActivity, paramString2, paramString6, 1, 109, 1, null);
+      return true;
     }
     return false;
   }
@@ -515,8 +348,10 @@ public class QQstoryAction
     String str1 = (String)paramHashMap.get("usertype");
     String str2 = (String)paramHashMap.get("unionid");
     paramHashMap = (String)paramHashMap.get("fromId");
-    if ((TextUtils.isEmpty(str1)) || ((TextUtils.isEmpty(paramQQAppInterface)) && (TextUtils.isEmpty(str2))) || (TextUtils.isEmpty(paramHashMap))) {
-      return false;
+    if ((!TextUtils.isEmpty(str1)) && ((!TextUtils.isEmpty(paramQQAppInterface)) || (!TextUtils.isEmpty(str2)))) {
+      if (TextUtils.isEmpty(paramHashMap)) {
+        return false;
+      }
     }
     try
     {
@@ -525,116 +360,107 @@ public class QQstoryAction
       } else {
         StoryApi.a(paramActivity, Integer.valueOf(paramHashMap).intValue(), Long.valueOf(paramQQAppInterface).longValue());
       }
+      return true;
     }
-    catch (Exception paramQQAppInterface)
-    {
-      return false;
-    }
-    return true;
+    catch (Exception paramQQAppInterface) {}
+    return false;
+    return false;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, Activity paramActivity, HashMap<String, String> paramHashMap, String paramString)
   {
-    String str4 = (String)paramHashMap.get("videoOwnerUin");
-    String str5 = (String)paramHashMap.get("unionid");
-    String str2 = (String)paramHashMap.get("fromId");
-    String str1 = (String)paramHashMap.get("videoId");
-    String str3 = (String)paramHashMap.get("type");
-    str3 = (String)paramHashMap.get("videoList");
+    String str5 = (String)paramHashMap.get("videoOwnerUin");
+    String str6 = (String)paramHashMap.get("unionid");
+    String str3 = (String)paramHashMap.get("fromId");
+    String str2 = (String)paramHashMap.get("videoId");
+    String str1 = (String)paramHashMap.get("type");
+    str1 = (String)paramHashMap.get("videoList");
     int i = a(paramHashMap);
-    str3 = (String)paramHashMap.get("feedid");
-    int k = a(paramHashMap, "ptype", 0);
-    int j;
-    if ("0".equals(paramHashMap.get("identify")))
-    {
-      j = 0;
-      if (str1 != null) {
-        break label482;
-      }
+    String str4 = (String)paramHashMap.get("feedid");
+    int m = a(paramHashMap, "ptype", 0);
+    int n = "0".equals(paramHashMap.get("identify")) ^ true;
+    str1 = str2;
+    if (str2 == null) {
       str1 = (String)paramHashMap.get("videoid");
     }
-    label482:
-    for (;;)
+    str2 = str3;
+    if (str3 == null) {
+      str2 = (String)paramHashMap.get("fromid");
+    }
+    boolean bool = TextUtils.isEmpty(paramString);
+    int k = 7;
+    int j = m;
+    if (!bool)
     {
-      if (str2 == null) {
-        str2 = (String)paramHashMap.get("fromid");
-      }
-      for (;;)
-      {
-        if ((!TextUtils.isEmpty(paramString)) && (k == 0)) {
-          k = 7;
-        }
-        for (;;)
-        {
-          switch (k)
-          {
-          default: 
-            paramQQAppInterface = str3;
-            if (str3 == null) {
-              paramQQAppInterface = "JUMP_ACTION_EMPTY_FEED_ID";
-            }
-            j = i;
-            if (i == 0) {
-              j = 7;
-            }
-            StoryPlayerLauncher.b(paramActivity, str1, paramQQAppInterface, j);
-            return true;
-            j = 1;
-            break;
-          case 1: 
-            a(paramActivity, "17", str2, str1, i, str3);
-            return true;
-          case 2: 
-            return a(paramActivity, paramHashMap, "17", str4, str5, str2, str1, str3);
-          case 3: 
-            j = i;
-            if (i == 0) {
-              j = 30;
-            }
-            StoryPlayerLauncher.a(paramActivity, str1, str3, j);
-            return true;
-          case 4: 
-            return a(paramActivity, paramHashMap, str4, str5, i, str3, j);
-          case 7: 
-            j = i;
-            if (i == 0) {
-              j = 19;
-            }
-            StoryPlayerLauncher.b(paramActivity, str1, str3, j);
-            return true;
-          case 6: 
-            j = i;
-            if (i == 0) {
-              j = 57;
-            }
-            StoryPlayerLauncher.b(paramActivity, str1, str3, j);
-            return true;
-          case 5: 
-            StoryPlayerLauncher.a(paramActivity, str5, str3, j, i, 0, null);
-            return true;
-          case 8: 
-            j = i;
-            if (i == 0) {
-              j = 90;
-            }
-            StoryPlayerLauncher.b(paramActivity, str1, str3, j);
-            return true;
-          case 9: 
-            j = i;
-            if (i == 0) {
-              j = 96;
-            }
-            StoryPlayerLauncher.a(paramActivity, str3, j);
-            return true;
-          case 10: 
-            a(paramActivity, paramHashMap);
-            return true;
-          case 0: 
-            return b(paramQQAppInterface, paramActivity, paramHashMap, paramString);
-          }
-        }
+      j = m;
+      if (m == 0) {
+        j = 7;
       }
     }
+    switch (j)
+    {
+    default: 
+      paramQQAppInterface = str4;
+      if (str4 == null) {
+        paramQQAppInterface = "JUMP_ACTION_EMPTY_FEED_ID";
+      }
+      break;
+    case 10: 
+      a(paramActivity, paramHashMap);
+      return true;
+    case 9: 
+      j = i;
+      if (i == 0) {
+        j = 96;
+      }
+      StoryPlayerLauncher.a(paramActivity, str4, j);
+      return true;
+    case 8: 
+      j = i;
+      if (i == 0) {
+        j = 90;
+      }
+      StoryPlayerLauncher.b(paramActivity, str1, str4, j);
+      return true;
+    case 7: 
+      j = i;
+      if (i == 0) {
+        j = 19;
+      }
+      StoryPlayerLauncher.b(paramActivity, str1, str4, j);
+      return true;
+    case 6: 
+      j = i;
+      if (i == 0) {
+        j = 57;
+      }
+      StoryPlayerLauncher.b(paramActivity, str1, str4, j);
+      return true;
+    case 5: 
+      StoryPlayerLauncher.a(paramActivity, str6, str4, n, i, 0, null);
+      return true;
+    case 4: 
+      return a(paramActivity, paramHashMap, str5, str6, i, str4, n);
+    case 3: 
+      j = i;
+      if (i == 0) {
+        j = 30;
+      }
+      StoryPlayerLauncher.a(paramActivity, str1, str4, j);
+      return true;
+    case 2: 
+      return a(paramActivity, paramHashMap, "17", str5, str6, str2, str1, str4);
+    case 1: 
+      a(paramActivity, "17", str2, str1, i, str4);
+      return true;
+    case 0: 
+      return b(paramQQAppInterface, paramActivity, paramHashMap, paramString);
+    }
+    if (i == 0) {
+      i = k;
+    }
+    StoryPlayerLauncher.b(paramActivity, str1, paramQQAppInterface, i);
+    return true;
   }
   
   private boolean a(Map<String, String> paramMap, boolean paramBoolean)
@@ -645,36 +471,43 @@ public class QQstoryAction
     String str4 = (String)paramMap.get("storyid");
     String str5 = (String)paramMap.get("showinfocard");
     a(paramMap);
-    if (((str5 == null) || (!str5.equals("0"))) || (TextUtils.isEmpty(str4)))
-    {
-      if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3))) {
-        return false;
-      }
-      try
-      {
-        int i = Integer.parseInt(str2);
-        if (i == 1)
-        {
-          if (TextUtils.isEmpty(str1)) {
-            return false;
-          }
-          StoryApi.a(this.jdField_a_of_type_AndroidContentContext, 23, str3);
+    if (str5 != null) {
+      str5.equals("0");
+    }
+    if (TextUtils.isEmpty(str4)) {
+      if (!TextUtils.isEmpty(str2)) {
+        if (TextUtils.isEmpty(str3)) {
+          return false;
         }
-        for (;;)
-        {
-          return true;
-          if (i != 5) {}
-        }
-        return true;
-      }
-      catch (NumberFormatException paramMap)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQstoryAction", 2, "gotoStoryPlayVideoPage, NumberFormatException, userId:" + str1 + ", userType:" + str2);
-        }
-        return false;
       }
     }
+    try
+    {
+      if (Integer.parseInt(str2) == 1)
+      {
+        if (TextUtils.isEmpty(str1)) {
+          return false;
+        }
+        StoryApi.a(this.jdField_a_of_type_AndroidContentContext, 23, str3);
+      }
+      return true;
+    }
+    catch (NumberFormatException paramMap)
+    {
+      label145:
+      break label145;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramMap = new StringBuilder();
+      paramMap.append("gotoStoryPlayVideoPage, NumberFormatException, userId:");
+      paramMap.append(str1);
+      paramMap.append(", userType:");
+      paramMap.append(str2);
+      QLog.d("QQstoryAction", 2, paramMap.toString());
+    }
+    return false;
+    return true;
   }
   
   private Intent b(Intent paramIntent, boolean paramBoolean)
@@ -689,18 +522,18 @@ public class QQstoryAction
   {
     String str = (String)paramHashMap.get("unionid");
     paramQQAppInterface = (String)paramHashMap.get("fromuid");
-    int i = -1;
+    int i;
     try
     {
-      int j = Integer.valueOf((String)paramHashMap.get("fromId")).intValue();
-      i = j;
+      i = Integer.valueOf((String)paramHashMap.get("fromId")).intValue();
     }
     catch (NumberFormatException paramHashMap)
     {
-      for (;;)
-      {
-        QLog.e("QQstoryAction", 2, "gotoStoryShareGroupCard from id is error:" + paramHashMap);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gotoStoryShareGroupCard from id is error:");
+      localStringBuilder.append(paramHashMap);
+      QLog.e("QQstoryAction", 2, localStringBuilder.toString());
+      i = -1;
     }
     paramHashMap = QQStoryShareGroupProfileActivity.a(paramActivity, 2, str, null, i, 0);
     paramHashMap.putExtra("extra_share_from_user_uid", paramQQAppInterface);
@@ -710,98 +543,83 @@ public class QQstoryAction
   
   public static boolean b(QQAppInterface paramQQAppInterface, Activity paramActivity, HashMap<String, String> paramHashMap, String paramString)
   {
-    String str3 = (String)paramHashMap.get("videoOwnerUin");
-    String str4 = (String)paramHashMap.get("unionid");
-    String str1 = (String)paramHashMap.get("fromId");
-    paramQQAppInterface = (String)paramHashMap.get("videoId");
-    String str5 = (String)paramHashMap.get("type");
-    String str2 = (String)paramHashMap.get("videoList");
+    String str4 = (String)paramHashMap.get("videoOwnerUin");
+    String str5 = (String)paramHashMap.get("unionid");
+    String str3 = (String)paramHashMap.get("fromId");
+    String str1 = (String)paramHashMap.get("videoId");
+    String str6 = (String)paramHashMap.get("type");
+    paramQQAppInterface = (String)paramHashMap.get("videoList");
     int i = a(paramHashMap);
-    str2 = (String)paramHashMap.get("feedid");
+    String str2 = (String)paramHashMap.get("feedid");
     a(paramHashMap, "ptype", 0);
-    label130:
-    boolean bool;
-    label149:
-    int j;
-    label168:
-    int k;
-    if (paramQQAppInterface == null)
-    {
+    paramQQAppInterface = str1;
+    if (str1 == null) {
       paramQQAppInterface = (String)paramHashMap.get("videoid");
-      if (str1 == null)
-      {
-        str1 = (String)paramHashMap.get("fromid");
-        if ((str5 == null) || (!str5.equals("mylist"))) {
-          break label435;
-        }
-        bool = true;
-        if ((str5 == null) || (!str5.equals("myonedaylist"))) {
-          break label441;
-        }
-        j = 1;
-        if (!"0".equals(paramHashMap.get("identify"))) {
-          break label447;
-        }
-        k = 0;
-        try
-        {
-          label186:
-          if ("17".equals(str1))
-          {
-            if (!bool) {
-              break label261;
-            }
-            StoryReportor.a("mystory", "clk_obj_myday", 0, 0, new String[] { "", "", "", paramQQAppInterface });
-          }
-          while (j != 0)
-          {
-            return a(paramActivity, paramHashMap, str3, str4, paramQQAppInterface, i, str2, k);
-            label261:
-            StoryReportor.a("mystory", "clk_obj", 0, 0, new String[] { "", "", "", paramQQAppInterface });
-          }
-          if (!"17".equals(str1)) {
-            break label386;
-          }
-        }
-        catch (NumberFormatException paramQQAppInterface)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQstoryAction", 2, "gotoStoryPlayVideoPage, NumberFormatException, videoOwnerUin:" + str3 + ",e:" + QLog.getStackTraceString(paramQQAppInterface));
-          }
-          return false;
-        }
-        if (!a(paramActivity, paramHashMap, str3, str4, paramQQAppInterface, str5, i, str2, bool, k)) {
-          break label453;
-        }
-        return false;
-        label386:
-        if (TextUtils.isEmpty(paramString)) {
-          break label455;
-        }
-        j = i;
-        if (i == 0) {
-          j = 19;
-        }
-        StoryPlayerLauncher.b(paramActivity, paramQQAppInterface, str2, j);
-        break label453;
-      }
     }
+    str1 = str3;
+    if (str3 == null) {
+      str1 = (String)paramHashMap.get("fromid");
+    }
+    boolean bool1;
+    if ((str6 != null) && (str6.equals("mylist"))) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    int j;
+    if ((str6 != null) && (str6.equals("myonedaylist"))) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    int k = "0".equals(paramHashMap.get("identify")) ^ true;
     for (;;)
     {
+      try
+      {
+        boolean bool2 = "17".equals(str1);
+        if (bool2) {
+          if (bool1) {
+            StoryReportor.a("mystory", "clk_obj_myday", 0, 0, new String[] { "", "", "", paramQQAppInterface });
+          } else {
+            StoryReportor.a("mystory", "clk_obj", 0, 0, new String[] { "", "", "", paramQQAppInterface });
+          }
+        }
+        if (j != 0) {
+          return a(paramActivity, paramHashMap, str4, str5, paramQQAppInterface, i, str2, k);
+        }
+        if ("17".equals(str1))
+        {
+          if (a(paramActivity, paramHashMap, str4, str5, paramQQAppInterface, str6, i, str2, bool1, k)) {
+            return false;
+          }
+        }
+        else
+        {
+          if (TextUtils.isEmpty(paramString)) {
+            break label455;
+          }
+          j = i;
+          if (i == 0) {
+            j = 19;
+          }
+          StoryPlayerLauncher.b(paramActivity, paramQQAppInterface, str2, j);
+        }
+      }
+      catch (NumberFormatException paramQQAppInterface)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        paramActivity = new StringBuilder();
+        paramActivity.append("gotoStoryPlayVideoPage, NumberFormatException, videoOwnerUin:");
+        paramActivity.append(str4);
+        paramActivity.append(",e:");
+        paramActivity.append(QLog.getStackTraceString(paramQQAppInterface));
+        QLog.d("QQstoryAction", 2, paramActivity.toString());
+        return false;
+      }
       StoryPlayerLauncher.b(paramActivity, paramQQAppInterface, paramHashMap, j);
-      break label453;
-      break label130;
-      break;
-      label435:
-      bool = false;
-      break label149;
-      label441:
-      j = 0;
-      break label168;
-      label447:
-      k = 1;
-      break label186;
-      label453:
       return true;
       label455:
       paramHashMap = str2;
@@ -819,83 +637,120 @@ public class QQstoryAction
   {
     if (paramBoolean)
     {
-      String str = "topicId=" + (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicid");
-      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "5", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"), "", str });
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("topicId=");
+      ((StringBuilder)localObject).append((String)this.jdField_a_of_type_JavaUtilHashMap.get("topicid"));
+      localObject = ((StringBuilder)localObject).toString();
+      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "5", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"), "", localObject });
     }
     return b(paramIntent);
   }
   
+  private boolean c()
+  {
+    boolean bool = ((Boolean)((StoryConfigManager)SuperManager.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue();
+    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("token");
+    if (!TextUtils.isEmpty(str))
+    {
+      StoryShareEncryptHelper.a(this.jdField_a_of_type_AndroidContentContext, str, new QQstoryAction.1(this), null);
+    }
+    else if (TextUtils.equals(this.c, "publish"))
+    {
+      j();
+    }
+    else
+    {
+      if (bool)
+      {
+        this.c = "open";
+        StoryShareEncryptHelper.a(this.jdField_a_of_type_JavaUtilHashMap);
+      }
+      j();
+    }
+    return true;
+  }
+  
   private Intent d(Intent paramIntent, boolean paramBoolean)
   {
-    String str2;
-    String str3;
-    String str4;
     if (paramBoolean)
     {
-      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("userid");
-      str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("usertype");
-      str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("storyid");
-      str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("unionid");
-      if (!TextUtils.isEmpty(str3)) {
-        break label167;
+      Object localObject1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("userid");
+      String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("usertype");
+      Object localObject2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("storyid");
+      String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("unionid");
+      if (TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("unionId=");
+        ((StringBuilder)localObject2).append(str2);
+        ((StringBuilder)localObject2).append("&userId=");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("&userType=");
+        ((StringBuilder)localObject2).append(str1);
+        localObject1 = ((StringBuilder)localObject2).toString();
       }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("storyId=");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "4", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"), "", localObject1 });
     }
-    label167:
-    for (String str1 = "unionId=" + str4 + "&userId=" + str1 + "&userType=" + str2;; str1 = "storyId=" + str3)
-    {
-      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "4", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"), "", str1 });
-      return d(paramIntent);
-    }
+    return d(paramIntent);
   }
   
   private Intent e(Intent paramIntent)
   {
-    if (!TextUtils.isEmpty((String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      SLog.a("QQstoryAction", "makeStoryJumpActivity() action=%s isFromApi=%s", this.c, Boolean.valueOf(bool));
-      SLog.a("QQstoryAction", "makeStoryJumpActivity() attr=%s", String.valueOf(this.jdField_a_of_type_JavaUtilHashMap));
-      if (!"open".equals(this.c)) {
-        break;
-      }
+    boolean bool = TextUtils.isEmpty((String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api")) ^ true;
+    SLog.a("QQstoryAction", "makeStoryJumpActivity() action=%s isFromApi=%s", this.c, Boolean.valueOf(bool));
+    SLog.a("QQstoryAction", "makeStoryJumpActivity() attr=%s", String.valueOf(this.jdField_a_of_type_JavaUtilHashMap));
+    if ("open".equals(this.c)) {
       return f(paramIntent, bool);
     }
-    if (("openVideo".equals(this.c)) || ("openvideo".equals(this.c))) {
-      return e(paramIntent, bool);
+    if ((!"openVideo".equals(this.c)) && (!"openvideo".equals(this.c)))
+    {
+      if ("opencontent".equals(this.c)) {
+        return d(paramIntent, bool);
+      }
+      if ("opentopic".equals(this.c)) {
+        return c(paramIntent, bool);
+      }
+      if ("opendiscovery".equals(this.c)) {
+        return b(paramIntent, bool);
+      }
+      if ("publish".equals(this.c)) {
+        return a(paramIntent, bool);
+      }
+      if ("infoCard".equals(this.c)) {
+        return i(paramIntent);
+      }
+      if ("sharegroupcard".equals(this.c)) {
+        return h(paramIntent);
+      }
+      if ("openTag".equals(this.c)) {
+        return g(paramIntent);
+      }
+      if ("openSquare".equals(this.c)) {
+        return f(paramIntent);
+      }
+      return null;
     }
-    if ("opencontent".equals(this.c)) {
-      return d(paramIntent, bool);
-    }
-    if ("opentopic".equals(this.c)) {
-      return c(paramIntent, bool);
-    }
-    if ("opendiscovery".equals(this.c)) {
-      return b(paramIntent, bool);
-    }
-    if ("publish".equals(this.c)) {
-      return a(paramIntent, bool);
-    }
-    if ("infoCard".equals(this.c)) {
-      return i(paramIntent);
-    }
-    if ("sharegroupcard".equals(this.c)) {
-      return h(paramIntent);
-    }
-    if ("openTag".equals(this.c)) {
-      return g(paramIntent);
-    }
-    if ("openSquare".equals(this.c)) {
-      return f(paramIntent);
-    }
-    return null;
+    return e(paramIntent, bool);
   }
   
   private Intent e(Intent paramIntent, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      String str = "userId=" + (String)this.jdField_a_of_type_JavaUtilHashMap.get("videoOwnerUin") + "&vid=" + (String)this.jdField_a_of_type_JavaUtilHashMap.get("videoId");
-      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "6", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"), "", str });
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("userId=");
+      ((StringBuilder)localObject).append((String)this.jdField_a_of_type_JavaUtilHashMap.get("videoOwnerUin"));
+      ((StringBuilder)localObject).append("&vid=");
+      ((StringBuilder)localObject).append((String)this.jdField_a_of_type_JavaUtilHashMap.get("videoId"));
+      localObject = ((StringBuilder)localObject).toString();
+      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "6", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"), "", localObject });
     }
     return a(paramIntent);
   }
@@ -943,7 +798,11 @@ public class QQstoryAction
       paramIntent.putExtra("action", 13);
       return paramIntent;
     }
-    catch (NumberFormatException paramIntent) {}
+    catch (NumberFormatException paramIntent)
+    {
+      label85:
+      break label85;
+    }
     return null;
   }
   
@@ -954,8 +813,10 @@ public class QQstoryAction
     String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("usertype");
     String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromId");
     String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("unionid");
-    if ((TextUtils.isEmpty(str2)) || ((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str4))) || (TextUtils.isEmpty(str3))) {
-      return null;
+    if ((!TextUtils.isEmpty(str2)) && ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str4)))) {
+      if (TextUtils.isEmpty(str3)) {
+        return null;
+      }
     }
     try
     {
@@ -967,6 +828,164 @@ public class QQstoryAction
     }
     catch (NumberFormatException paramIntent) {}
     return null;
+    return null;
+  }
+  
+  private boolean j()
+  {
+    if ((QzoneConfig.getInstance().getConfig("qqstoryvideo", "jump_hyws_scheme_enable", 0) == 0) && (BaseApplicationImpl.getContext() != null))
+    {
+      ThreadManager.getUIHandler().post(new QQstoryAction.2(this));
+      return false;
+    }
+    if ((((MsgTabStoryNodeConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a) && (!"open".equals(this.c)) && (!"openTag".equals(this.c)) && (!"openSquare".equals(this.c)) && (!"publish".equals(this.c))) {
+      return l();
+    }
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("one_page");
+    String str1 = str2;
+    if (String.valueOf(2).equals(str2))
+    {
+      MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager = (MsgTabStoryNodeConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER);
+      str1 = str2;
+      if (localMsgTabStoryNodeConfigManager != null)
+      {
+        str1 = str2;
+        if (!localMsgTabStoryNodeConfigManager.a)
+        {
+          str1 = String.valueOf(0);
+          this.jdField_a_of_type_JavaUtilHashMap.put("one_page", str1);
+        }
+      }
+    }
+    if ("0".equals(str1)) {
+      return k();
+    }
+    if ("open".equals(this.c)) {
+      return k();
+    }
+    return l();
+  }
+  
+  private boolean k()
+  {
+    Intent localIntent;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNowLiveManager().a)
+    {
+      SLog.b("QQstoryAction", "startStoryMainActivity, isNowTabShow==true");
+      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SplashActivity.class);
+      localIntent.putExtra("fragment_id", 1);
+      localIntent.putExtra("tab_index", FrameControllerUtil.f);
+      localIntent.putExtra("open_now_tab_fragment", true);
+      localIntent.putExtra("extra_from_share", true);
+      localIntent.setFlags(335544320);
+      localIntent = e(localIntent);
+      if ((localIntent != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)))
+      {
+        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+        return true;
+      }
+      if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Error: context is not instanceof Activity, context is: ");
+        localStringBuilder.append(String.valueOf(this.jdField_a_of_type_AndroidContentContext));
+        SLog.e("QQstoryAction", localStringBuilder.toString());
+      }
+      if (localIntent == null) {
+        SLog.e("QQstoryAction", "Error: jumpIntent is null");
+      }
+    }
+    else
+    {
+      SLog.b("QQstoryAction", "startStoryMainActivity, isNowTabShow==false");
+      if (((this.jdField_a_of_type_AndroidContentContext instanceof JumpActivity)) && (!BaseApplicationImpl.appMainActivityHasLanuch))
+      {
+        localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SplashActivity.class);
+        localIntent.putExtra("fragment_id", 1);
+        localIntent.putExtra("tab_index", FrameControllerUtil.a);
+        localIntent.setFlags(335544320);
+        localIntent.putExtra("jump_to_story", true);
+      }
+      else
+      {
+        localIntent = a();
+      }
+      localIntent = e(localIntent);
+      if ((localIntent != null) && (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) || ((this.jdField_a_of_type_AndroidContentContext instanceof BaseApplicationImpl))))
+      {
+        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private boolean l()
+  {
+    if ("open".equals(this.c))
+    {
+      localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQStoryMainActivity.class);
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult((Intent)localObject, 8855);
+      return true;
+    }
+    if ("openVideo".equalsIgnoreCase(this.c))
+    {
+      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+        return a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap, null);
+      }
+      return false;
+    }
+    if ("opencontent".equals(this.c)) {
+      return a(this.jdField_a_of_type_JavaUtilHashMap, false);
+    }
+    if ("opendiscovery".equals(this.c)) {
+      return n();
+    }
+    if ("opentopic".equals(this.c)) {
+      return m();
+    }
+    if ("infoCard".equals(this.c)) {
+      return a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+    }
+    if ("sharegroupcard".equals(this.c)) {
+      return b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+    }
+    Object localObject = new QQStoryHomeJumpHelper((Activity)this.jdField_a_of_type_AndroidContentContext, new QQstoryAction.3(this));
+    Intent localIntent = e(new Intent());
+    if (localIntent != null)
+    {
+      int i = localIntent.getIntExtra("action", 0);
+      localIntent.putExtra("action", 0);
+      return ((QQStoryHomeJumpHelper)localObject).a(i, localIntent);
+    }
+    return false;
+  }
+  
+  private boolean m()
+  {
+    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicid");
+    localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicname");
+    a((String)this.jdField_a_of_type_JavaUtilHashMap.get("sharefromtype"));
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean n()
+  {
+    if (!TextUtils.isEmpty(a((String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api")))) {
+      StoryReportor.a("content_flow", "use_api", 0, 0, new String[] { "", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api") });
+    }
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      "1".equals((String)this.jdField_a_of_type_JavaUtilHashMap.get("to_new_version"));
+      return true;
+    }
+    return false;
   }
   
   public Intent a(Intent paramIntent)
@@ -981,15 +1000,18 @@ public class QQstoryAction
     try
     {
       if ("openNow".equals(this.c)) {
-        return g();
+        return b();
       }
-      boolean bool = C();
+      boolean bool = c();
       return bool;
     }
     catch (Exception localException)
     {
-      QLog.e("QQstoryAction", 1, "doAction error: " + localException.getMessage());
-      a("QQstoryAction");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doAction error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("QQstoryAction", 1, localStringBuilder.toString());
+      b_("QQstoryAction");
     }
     return false;
   }
@@ -1012,8 +1034,112 @@ public class QQstoryAction
       paramIntent.putExtra("extra_share_from_type", a(this.jdField_a_of_type_JavaUtilHashMap));
       return paramIntent;
     }
-    catch (Exception paramIntent) {}
+    catch (Exception paramIntent)
+    {
+      label132:
+      break label132;
+    }
     return null;
+  }
+  
+  public boolean b()
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      localObject1 = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent();
+      if (localObject1 != null)
+      {
+        str1 = ((Intent)localObject1).getStringExtra("big_brother_source_key");
+        localObject1 = ((Intent)localObject1).getDataString();
+        break label46;
+      }
+    }
+    String str1 = null;
+    Object localObject1 = "";
+    label46:
+    Object localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = this.jdField_a_of_type_JavaLangString;
+    }
+    String str2 = a("roomid", "0");
+    String str3 = a("fromid", "");
+    String str4 = a("roomtype", "");
+    String str5 = a("list_name", "");
+    String str6 = a("first_jump_mode", "h5");
+    String str7 = a("need_record", "1");
+    String str8 = a("is_record", "0");
+    String str9 = a("enter_record_if_finish", "1");
+    String str10 = a("nowapp_ext", "");
+    String str11 = a("nowplugin_ext", "");
+    String str12 = a("h5_ext", "");
+    String str13 = a("shakespearetime", "");
+    String str14 = a("hostloading_percent", "0");
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("msgurl")) {
+      localObject1 = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("msgurl"));
+    } else {
+      localObject1 = "";
+    }
+    String str15 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("coverurl");
+    String str16 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("extras");
+    Object localObject3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("bid");
+    localObject3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("first");
+    localObject3 = new Bundle();
+    ((Bundle)localObject3).putString("coverurl", str15);
+    ((Bundle)localObject3).putString("roomid", str2);
+    ((Bundle)localObject3).putString("roomtype", str4);
+    ((Bundle)localObject3).putString("extras_from_js", str16);
+    ((Bundle)localObject3).putBoolean("can_use_h5_first", true);
+    ((Bundle)localObject3).putString("first_jump_mode", str6);
+    ((Bundle)localObject3).putString("is_record", str8);
+    ((Bundle)localObject3).putString("enter_record_if_finish", str9);
+    ((Bundle)localObject3).putString("nowapp_ext", str10);
+    ((Bundle)localObject3).putString("nowplugin_ext", str11);
+    ((Bundle)localObject3).putString("h5_ext", str12);
+    ((Bundle)localObject3).putString("shakespearetime", str13);
+    ((Bundle)localObject3).putString("fromid", str3);
+    ((Bundle)localObject3).putString("url", (String)localObject1);
+    ((Bundle)localObject3).putString("listname", str5);
+    ((Bundle)localObject3).putString("mqqScheme", (String)localObject2);
+    if (!TextUtils.isEmpty(str1)) {
+      ((Bundle)localObject3).putString("big_brother_source_key", str1);
+    }
+    boolean bool;
+    if ((!TextUtils.isEmpty(str7)) && ("0".equals(str7))) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    ((Bundle)localObject3).putBoolean("need_record", bool);
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("topic")) {
+      ((Bundle)localObject3).putString("topic", (String)this.jdField_a_of_type_JavaUtilHashMap.get("topic"));
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("story_ext")) {
+      ((Bundle)localObject3).putString("story_ext", (String)this.jdField_a_of_type_JavaUtilHashMap.get("story_ext"));
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("startsrc")) {
+      ((Bundle)localObject3).putString("startsrc", (String)this.jdField_a_of_type_JavaUtilHashMap.get("startsrc"));
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("hostloading_percent")) {
+      ((Bundle)localObject3).putInt("hostloading_percent", Integer.valueOf(str14).intValue());
+    }
+    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication()))
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, "无网络连接请稍后再试", 1).a();
+      return false;
+    }
+    try
+    {
+      ((IDynamicNowManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).a((Bundle)localObject3);
+      QLog.i("QQstoryAction", 1, "enter now plugin use shadow");
+      return true;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQstoryAction", 2, localException.toString());
+      }
+    }
+    return false;
   }
   
   public Intent c(Intent paramIntent)
@@ -1026,7 +1152,11 @@ public class QQstoryAction
       paramIntent.putExtra("to_new_version", (String)this.jdField_a_of_type_JavaUtilHashMap.get("to_new_version"));
       return paramIntent;
     }
-    catch (Exception paramIntent) {}
+    catch (Exception paramIntent)
+    {
+      label67:
+      break label67;
+    }
     return null;
   }
   
@@ -1038,179 +1168,77 @@ public class QQstoryAction
     String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("storyid");
     String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("showinfocard");
     int i = a(this.jdField_a_of_type_JavaUtilHashMap);
-    if ((str5 != null) && (str5.equals("0"))) {}
-    for (boolean bool = false;; bool = true)
+    boolean bool;
+    if ((str5 != null) && (str5.equals("0"))) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    if ((!TextUtils.isEmpty(str4)) || ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)))) {}
+    try
     {
-      if (TextUtils.isEmpty(str4))
+      int j = Integer.parseInt(str2);
+      if (j == 1)
       {
-        if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3))) {
+        if (TextUtils.isEmpty(str1)) {
           return null;
         }
-        int j;
-        try
-        {
-          j = Integer.parseInt(str2);
-          if (j == 1)
-          {
-            if (TextUtils.isEmpty(str1)) {
-              return null;
-            }
-            paramIntent.putExtra("action", 7);
-            paramIntent.putExtra("EXTRA_USER_UIN", str1);
-            paramIntent.putExtra("EXTRA_USER_UNION_ID", str3);
-            paramIntent.putExtra("extra_is_show_info_card", bool);
-            paramIntent.putExtra("extra_share_from_type", i);
-            paramIntent.putExtra("extra_partner_api", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"));
-            return paramIntent;
-          }
+        paramIntent.putExtra("action", 7);
+        paramIntent.putExtra("EXTRA_USER_UIN", str1);
+        paramIntent.putExtra("EXTRA_USER_UNION_ID", str3);
+        paramIntent.putExtra("extra_is_show_info_card", bool);
+        paramIntent.putExtra("extra_share_from_type", i);
+        paramIntent.putExtra("extra_partner_api", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"));
+        return paramIntent;
+      }
+      if (j == 5)
+      {
+        paramIntent.putExtra("action", 4);
+        paramIntent.putExtra("extra_topic_id", Long.parseLong(str1));
+        paramIntent.putExtra("extra_topic_name", (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicname"));
+        str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("topiccolor");
+        if (!TextUtils.isEmpty(str3)) {
+          paramIntent.putExtra("extra_topic_color", Integer.parseInt(str3));
         }
-        catch (NumberFormatException paramIntent)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQstoryAction", 2, "makeStoryPlayVideoPageIntent, NumberFormatException, userId:" + str1 + ", userType:" + str2);
-          }
-          return null;
-        }
-        if (j == 5)
-        {
-          paramIntent.putExtra("action", 4);
-          paramIntent.putExtra("extra_topic_id", Long.parseLong(str1));
-          paramIntent.putExtra("extra_topic_name", (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicname"));
-          str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("topiccolor");
-          if (!TextUtils.isEmpty(str3)) {
-            paramIntent.putExtra("extra_topic_color", Integer.parseInt(str3));
-          }
-          paramIntent.putExtra("extra_partner_api", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"));
-          paramIntent.putExtra("extra_share_from_type", i);
-          return paramIntent;
-        }
-        paramIntent.putExtra("action", 6);
-        paramIntent.putExtra("user_type", Integer.parseInt(str2));
-        paramIntent.putExtra("user_unionid", str3);
-        paramIntent.putExtra("come_from", i);
-        paramIntent.putExtra("showTitleBar", false);
-        paramIntent.putExtra("showInfoCard", bool);
+        paramIntent.putExtra("extra_partner_api", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"));
+        paramIntent.putExtra("extra_share_from_type", i);
         return paramIntent;
       }
       paramIntent.putExtra("action", 6);
-      paramIntent.putExtra("story_id", str4);
+      paramIntent.putExtra("user_type", Integer.parseInt(str2));
+      paramIntent.putExtra("user_unionid", str3);
       paramIntent.putExtra("come_from", i);
       paramIntent.putExtra("showTitleBar", false);
-      paramIntent.putExtra("showInfoCard", false);
+      paramIntent.putExtra("showInfoCard", bool);
       return paramIntent;
     }
-  }
-  
-  public boolean g()
-  {
-    Object localObject1;
-    String str2;
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    catch (NumberFormatException paramIntent)
     {
-      localObject1 = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent();
-      if (localObject1 != null)
-      {
-        str2 = ((Intent)localObject1).getStringExtra("big_brother_source_key");
-        localObject1 = ((Intent)localObject1).getDataString();
-      }
+      label402:
+      break label402;
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
-      }
-      for (;;)
-      {
-        String str4 = a("roomid", "0");
-        String str5 = a("fromid", "");
-        String str6 = a("roomtype", "");
-        String str7 = a("list_name", "");
-        String str8 = a("first_jump_mode", "h5");
-        String str9 = a("need_record", "1");
-        String str10 = a("is_record", "0");
-        String str11 = a("enter_record_if_finish", "1");
-        String str12 = a("nowapp_ext", "");
-        String str13 = a("nowplugin_ext", "");
-        String str14 = a("h5_ext", "");
-        String str15 = a("shakespearetime", "");
-        String str16 = a("hostloading_percent", "0");
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("msgurl")) {}
-        for (String str3 = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("msgurl"));; str3 = "")
-        {
-          String str17 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("coverurl");
-          String str18 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("extras");
-          Object localObject2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("bid");
-          localObject2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("first");
-          localObject2 = new Bundle();
-          ((Bundle)localObject2).putString("coverurl", str17);
-          ((Bundle)localObject2).putString("roomid", str4);
-          ((Bundle)localObject2).putString("roomtype", str6);
-          ((Bundle)localObject2).putString("extras_from_js", str18);
-          ((Bundle)localObject2).putBoolean("can_use_h5_first", true);
-          ((Bundle)localObject2).putString("first_jump_mode", str8);
-          ((Bundle)localObject2).putString("is_record", str10);
-          ((Bundle)localObject2).putString("enter_record_if_finish", str11);
-          ((Bundle)localObject2).putString("nowapp_ext", str12);
-          ((Bundle)localObject2).putString("nowplugin_ext", str13);
-          ((Bundle)localObject2).putString("h5_ext", str14);
-          ((Bundle)localObject2).putString("shakespearetime", str15);
-          ((Bundle)localObject2).putString("fromid", str5);
-          ((Bundle)localObject2).putString("url", str3);
-          ((Bundle)localObject2).putString("listname", str7);
-          ((Bundle)localObject2).putString("mqqScheme", (String)localObject1);
-          if (!TextUtils.isEmpty(str2)) {
-            ((Bundle)localObject2).putString("big_brother_source_key", str2);
-          }
-          boolean bool2 = true;
-          boolean bool1 = bool2;
-          if (!TextUtils.isEmpty(str9))
-          {
-            bool1 = bool2;
-            if ("0".equals(str9)) {
-              bool1 = false;
-            }
-          }
-          ((Bundle)localObject2).putBoolean("need_record", bool1);
-          if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("topic")) {
-            ((Bundle)localObject2).putString("topic", (String)this.jdField_a_of_type_JavaUtilHashMap.get("topic"));
-          }
-          if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("story_ext")) {
-            ((Bundle)localObject2).putString("story_ext", (String)this.jdField_a_of_type_JavaUtilHashMap.get("story_ext"));
-          }
-          if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("startsrc")) {
-            ((Bundle)localObject2).putString("startsrc", (String)this.jdField_a_of_type_JavaUtilHashMap.get("startsrc"));
-          }
-          if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("hostloading_percent")) {
-            ((Bundle)localObject2).putInt("hostloading_percent", Integer.valueOf(str16).intValue());
-          }
-          if (!NetworkUtil.g(BaseApplicationImpl.getApplication()))
-          {
-            QQToast.a(BaseApplicationImpl.getApplication(), 1, "无网络连接请稍后再试", 1).a();
-            return false;
-          }
-          try
-          {
-            ((DynamicNowManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).a((Bundle)localObject2);
-            QLog.i("QQstoryAction", 1, "enter now plugin use shadow");
-            return true;
-          }
-          catch (Exception localException)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("QQstoryAction", 2, localException.toString());
-            }
-            return false;
-          }
-        }
-      }
-      String str1 = "";
-      str2 = null;
+      paramIntent = new StringBuilder();
+      paramIntent.append("makeStoryPlayVideoPageIntent, NumberFormatException, userId:");
+      paramIntent.append(str1);
+      paramIntent.append(", userType:");
+      paramIntent.append(str2);
+      QLog.d("QQstoryAction", 2, paramIntent.toString());
     }
+    return null;
+    return null;
+    paramIntent.putExtra("action", 6);
+    paramIntent.putExtra("story_id", str4);
+    paramIntent.putExtra("come_from", i);
+    paramIntent.putExtra("showTitleBar", false);
+    paramIntent.putExtra("showInfoCard", false);
+    return paramIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQstoryAction
  * JD-Core Version:    0.7.0.1
  */

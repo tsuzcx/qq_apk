@@ -35,26 +35,21 @@ public class DetailGeneralCommentEventProxy$OnActionSheetButtonClickListener
     DetailGeneralCommentEventProxy.ActionSheetEventCallback localActionSheetEventCallback = (DetailGeneralCommentEventProxy.ActionSheetEventCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (DetailGeneralCommentEventProxy.a.equals(paramView)) {
       localActionSheetEventCallback.a(this.jdField_a_of_type_Int);
+    } else if (DetailGeneralCommentEventProxy.b.equals(paramView)) {
+      localActionSheetEventCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
+    } else if (DetailGeneralCommentEventProxy.c.equals(paramView)) {
+      localActionSheetEventCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    } else if (DetailGeneralCommentEventProxy.d.equals(paramView)) {
+      localActionSheetEventCallback.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    } else if (DetailGeneralCommentEventProxy.e.equals(paramView)) {
+      localActionSheetEventCallback.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (DetailGeneralCommentEventProxy.b.equals(paramView)) {
-        localActionSheetEventCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
-      } else if (DetailGeneralCommentEventProxy.c.equals(paramView)) {
-        localActionSheetEventCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      } else if (DetailGeneralCommentEventProxy.d.equals(paramView)) {
-        localActionSheetEventCallback.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      } else if (DetailGeneralCommentEventProxy.e.equals(paramView)) {
-        localActionSheetEventCallback.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-    }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailGeneralCommentEventProxy.OnActionSheetButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

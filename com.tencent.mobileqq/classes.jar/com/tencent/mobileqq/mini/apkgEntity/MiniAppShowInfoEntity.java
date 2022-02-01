@@ -11,6 +11,11 @@ public class MiniAppShowInfoEntity
   public String appName;
   public String desc;
   public int engineType;
+  public String gameApprovalNumber;
+  public String gameCopyrightInfo;
+  public String gameOperatingCompany;
+  public String gamePublicationCompany;
+  public String gamePublicationNumber;
   public String icon;
   public boolean interMode;
   public int reportType;
@@ -18,12 +23,35 @@ public class MiniAppShowInfoEntity
   
   public String toString()
   {
-    return "MiniAppShowInfoEntity{appId='" + this.appId + '\'' + ", appName='" + this.appName + '\'' + ", icon='" + this.icon + '\'' + ", desc='" + this.desc + '\'' + ", reportType=" + this.reportType + ", engineType=" + this.engineType + ", interMode=" + this.interMode + ", timeStamp='" + this.timeStamp + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniAppShowInfoEntity{appId='");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", appName='");
+    localStringBuilder.append(this.appName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", icon='");
+    localStringBuilder.append(this.icon);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", reportType=");
+    localStringBuilder.append(this.reportType);
+    localStringBuilder.append(", engineType=");
+    localStringBuilder.append(this.engineType);
+    localStringBuilder.append(", interMode=");
+    localStringBuilder.append(this.interMode);
+    localStringBuilder.append(", timeStamp='");
+    localStringBuilder.append(this.timeStamp);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkgEntity.MiniAppShowInfoEntity
  * JD-Core Version:    0.7.0.1
  */

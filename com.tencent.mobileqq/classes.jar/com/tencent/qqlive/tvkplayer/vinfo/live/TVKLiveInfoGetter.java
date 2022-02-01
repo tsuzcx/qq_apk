@@ -50,57 +50,68 @@ public class TVKLiveInfoGetter
   
   private void doPreloadLiveInfo(int paramInt1, int paramInt2, boolean paramBoolean, Map<String, String> paramMap)
   {
+    Object localObject3;
     try
     {
-      localObject1 = LocalCache.get(this.mContext);
-      if ((this.mUserInfo != null) && (!TextUtils.isEmpty(this.mUserInfo.getLoginCookie())) && (this.mUserInfo.isVip()))
+      Object localObject1 = LocalCache.get(this.mContext);
+      localObject3 = this.mUserInfo;
+      if ((localObject3 != null) && (!TextUtils.isEmpty(this.mUserInfo.getLoginCookie())) && (this.mUserInfo.isVip()))
       {
-        localObject1 = (TVKLiveVideoInfo)((LocalCache)localObject1).getAsObject("live_" + this.mProgramId + "_" + this.mDefinition + "_" + TVKUtils.getMd5(this.mUserInfo.getLoginCookie()) + "_" + TVKVcSystemInfo.getIP(this.mContext));
-        if (localObject1 != null) {
-          TVKLogUtil.i(TAG, "preLoadLiveInfo, have cache, need not to preload");
-        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("live_");
+        ((StringBuilder)localObject3).append(this.mProgramId);
+        ((StringBuilder)localObject3).append("_");
+        ((StringBuilder)localObject3).append(this.mDefinition);
+        ((StringBuilder)localObject3).append("_");
+        ((StringBuilder)localObject3).append(TVKUtils.getMd5(this.mUserInfo.getLoginCookie()));
+        ((StringBuilder)localObject3).append("_");
+        ((StringBuilder)localObject3).append(TVKVcSystemInfo.getIP(this.mContext));
+        localObject1 = (TVKLiveVideoInfo)((LocalCache)localObject1).getAsObject(((StringBuilder)localObject3).toString());
+      }
+      else
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("live_");
+        ((StringBuilder)localObject3).append(this.mProgramId);
+        ((StringBuilder)localObject3).append("_");
+        ((StringBuilder)localObject3).append(this.mDefinition);
+        ((StringBuilder)localObject3).append("_");
+        ((StringBuilder)localObject3).append(TVKVcSystemInfo.getIP(this.mContext));
+        localObject1 = (TVKLiveVideoInfo)((LocalCache)localObject1).getAsObject(((StringBuilder)localObject3).toString());
+      }
+      if (localObject1 != null) {
+        TVKLogUtil.i(TAG, "preLoadLiveInfo, have cache, need not to preload");
       }
     }
     catch (Throwable localThrowable)
     {
+      TVKLogUtil.e(TAG, localThrowable);
+    }
+    for (;;)
+    {
       try
       {
-        Object localObject1;
-        label129:
-        String str2 = TAG;
-        String str3 = this.mProgramId;
-        label156:
-        String str4;
-        if (this.mUserInfo != null)
+        String str1 = TAG;
+        String str2 = this.mProgramId;
+        localObject2 = this.mUserInfo;
+        localObject3 = "";
+        if (localObject2 != null)
         {
-          localObject1 = this.mUserInfo.getUin();
-          str4 = this.mDefinition;
-          if (this.mUserInfo == null) {
-            break label364;
+          localObject2 = this.mUserInfo.getUin();
+          String str3 = this.mDefinition;
+          if (this.mUserInfo != null) {
+            localObject3 = this.mUserInfo.getLoginCookie();
           }
-        }
-        Object localObject2;
-        label364:
-        for (String str1 = this.mUserInfo.getLoginCookie();; str1 = "")
-        {
-          TVKLogUtil.i(str2, String.format("[getLiveInfo] progId = %s uin = %s definition = %s cookie = %s", new Object[] { str3, localObject1, str4, str1 }));
-          localObject1 = new TVKLiveInfoParams();
-          ((TVKLiveInfoParams)localObject1).setGetDlnaUrl(false);
-          ((TVKLiveInfoParams)localObject1).setGetPreviewInfo(false);
-          ((TVKLiveInfoParams)localObject1).setStreamFormat(paramInt2);
-          ((TVKLiveInfoParams)localObject1).setDolby(paramBoolean);
-          ((TVKLiveInfoParams)localObject1).setExtraPara(paramMap);
-          new TVKLiveInfoRequest(paramInt1, this.mUserInfo, this.mProgramId, this.mDefinition, this.mPreloadLiveCallBack, (TVKLiveInfoParams)localObject1).execute();
+          TVKLogUtil.i(str1, String.format("[getLiveInfo] progId = %s uin = %s definition = %s cookie = %s", new Object[] { str2, localObject2, str3, localObject3 }));
+          localObject2 = new TVKLiveInfoParams();
+          ((TVKLiveInfoParams)localObject2).setGetDlnaUrl(false);
+          ((TVKLiveInfoParams)localObject2).setGetPreviewInfo(false);
+          ((TVKLiveInfoParams)localObject2).setStreamFormat(paramInt2);
+          ((TVKLiveInfoParams)localObject2).setDolby(paramBoolean);
+          ((TVKLiveInfoParams)localObject2).setExtraPara(paramMap);
+          new TVKLiveInfoRequest(paramInt1, this.mUserInfo, this.mProgramId, this.mDefinition, this.mPreloadLiveCallBack, (TVKLiveInfoParams)localObject2).execute();
           return;
-          localObject1 = (TVKLiveVideoInfo)((LocalCache)localObject1).getAsObject("live_" + this.mProgramId + "_" + this.mDefinition + "_" + TVKVcSystemInfo.getIP(this.mContext));
-          break;
-          localThrowable = localThrowable;
-          TVKLogUtil.e(TAG, localThrowable);
-          break label129;
-          localObject2 = "";
-          break label156;
         }
-        return;
       }
       catch (Exception paramMap)
       {
@@ -109,41 +120,46 @@ public class TVKLiveInfoGetter
         ((TVKLiveVideoInfo)localObject2).setErrInfo(paramMap.getMessage());
         ((TVKLiveVideoInfo)localObject2).setRetCode(143004);
         this.mLiveInfoCallBack.onFailure(paramInt1, (TVKLiveVideoInfo)localObject2);
+        return;
       }
+      Object localObject2 = "";
     }
   }
   
   private void handleSuccess(int paramInt, TVKLiveVideoInfo paramTVKLiveVideoInfo)
   {
-    TVKLogUtil.i(TAG, "[live]handleSuccess(), id: " + paramInt);
-    if (paramTVKLiveVideoInfo != null)
-    {
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[live]handleSuccess(), id: ");
+    localStringBuilder.append(paramInt);
+    TVKLogUtil.i((String)localObject, localStringBuilder.toString());
+    if (paramTVKLiveVideoInfo != null) {
       TVKLogUtil.i(TAG, String.format("[handleSuccess]  isGetUrl=%b isDlnaUrl=%b stream:%d", new Object[] { Boolean.valueOf(paramTVKLiveVideoInfo.isGetPreviewInfo()), Boolean.valueOf(paramTVKLiveVideoInfo.isGetDlnaUrl()), Integer.valueOf(paramTVKLiveVideoInfo.getStream()) }));
-      if (!this.mStopped) {
-        break label104;
-      }
-      TVKLogUtil.e(TAG, "[handleSuccess]  have stop ,return ");
+    } else {
+      TVKLogUtil.i(TAG, "[handleSuccess]  data is null ");
     }
-    label104:
-    do
+    if (this.mStopped)
     {
-      do
-      {
-        return;
-        TVKLogUtil.i(TAG, "[handleSuccess]  data is null ");
-        break;
-        if ((paramTVKLiveVideoInfo == null) || ((paramTVKLiveVideoInfo.getRetCode() != 0) && (paramTVKLiveVideoInfo.getRetCode() != 10) && (paramTVKLiveVideoInfo.getRetCode() != 11) && (paramTVKLiveVideoInfo.getRetCode() != 13))) {
-          break label161;
-        }
-      } while (this.mLiveListener == null);
-      this.mLiveListener.onGetLiveInfoSucceed(paramInt, paramTVKLiveVideoInfo);
+      TVKLogUtil.e(TAG, "[handleSuccess]  have stop ,return ");
       return;
+    }
+    if ((paramTVKLiveVideoInfo != null) && ((paramTVKLiveVideoInfo.getRetCode() == 0) || (paramTVKLiveVideoInfo.getRetCode() == 10) || (paramTVKLiveVideoInfo.getRetCode() == 11) || (paramTVKLiveVideoInfo.getRetCode() == 13)))
+    {
+      localObject = this.mLiveListener;
+      if (localObject != null) {
+        ((ITVKLiveInfoGetter.OnGetLiveInfoListener)localObject).onGetLiveInfoSucceed(paramInt, paramTVKLiveVideoInfo);
+      }
+    }
+    else
+    {
       if (paramTVKLiveVideoInfo != null) {
         paramTVKLiveVideoInfo.setErrModule(10001);
       }
-    } while (this.mLiveListener == null);
-    label161:
-    this.mLiveListener.onGetLiveInfoFailed(paramInt, paramTVKLiveVideoInfo);
+      localObject = this.mLiveListener;
+      if (localObject != null) {
+        ((ITVKLiveInfoGetter.OnGetLiveInfoListener)localObject).onGetLiveInfoFailed(paramInt, paramTVKLiveVideoInfo);
+      }
+    }
   }
   
   private void initHandler()
@@ -162,12 +178,11 @@ public class TVKLiveInfoGetter
         this.mEventHandler = new TVKLiveInfoGetter.EventHandler(this, localLooper);
         Looper.loop();
       }
-      for (;;)
+      else
       {
-        this.mHandlerInit = true;
-        return;
         this.mEventHandler = new TVKLiveInfoGetter.EventHandler(this, localLooper);
       }
+      this.mHandlerInit = true;
       return;
     }
     catch (Throwable localThrowable)
@@ -226,10 +241,32 @@ public class TVKLiveInfoGetter
     try
     {
       paramTVKPlayerVideoInfo = LocalCache.get(this.mContext);
-      if ((this.mUserInfo != null) && (!TextUtils.isEmpty(this.mUserInfo.getLoginCookie())) && (this.mUserInfo.isVip())) {
-        paramTVKPlayerVideoInfo = (TVKLiveVideoInfo)paramTVKPlayerVideoInfo.getAsObject("live_" + this.mProgramId + "_" + paramString + "_" + TVKUtils.getMd5(this.mUserInfo.getLoginCookie()) + "_" + TVKVcSystemInfo.getIP(this.mContext));
+      Object localObject = this.mUserInfo;
+      if ((localObject != null) && (!TextUtils.isEmpty(this.mUserInfo.getLoginCookie())) && (this.mUserInfo.isVip()))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("live_");
+        ((StringBuilder)localObject).append(this.mProgramId);
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(TVKUtils.getMd5(this.mUserInfo.getLoginCookie()));
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(TVKVcSystemInfo.getIP(this.mContext));
+        paramTVKPlayerVideoInfo = (TVKLiveVideoInfo)paramTVKPlayerVideoInfo.getAsObject(((StringBuilder)localObject).toString());
       }
-      while (paramTVKPlayerVideoInfo != null)
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("live_");
+        ((StringBuilder)localObject).append(this.mProgramId);
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(TVKVcSystemInfo.getIP(this.mContext));
+        paramTVKPlayerVideoInfo = (TVKLiveVideoInfo)paramTVKPlayerVideoInfo.getAsObject(((StringBuilder)localObject).toString());
+      }
+      if (paramTVKPlayerVideoInfo != null)
       {
         TVKLogUtil.i(TAG, "getLiveInfo, have cache");
         if (this.mEventHandler == null)
@@ -237,16 +274,12 @@ public class TVKLiveInfoGetter
           TVKLogUtil.e(TAG, "[handleSuccess]  mEventHandler is null ");
           handleSuccess(i, paramTVKPlayerVideoInfo);
           return i;
-          paramTVKPlayerVideoInfo = (TVKLiveVideoInfo)paramTVKPlayerVideoInfo.getAsObject("live_" + this.mProgramId + "_" + paramString + "_" + TVKVcSystemInfo.getIP(this.mContext));
         }
-        else
-        {
-          Message localMessage = this.mEventHandler.obtainMessage(100);
-          localMessage.arg1 = i;
-          localMessage.obj = paramTVKPlayerVideoInfo;
-          this.mEventHandler.sendMessage(localMessage);
-          return i;
-        }
+        localObject = this.mEventHandler.obtainMessage(100);
+        ((Message)localObject).arg1 = i;
+        ((Message)localObject).obj = paramTVKPlayerVideoInfo;
+        this.mEventHandler.sendMessage((Message)localObject);
+        return i;
       }
     }
     catch (Throwable paramTVKPlayerVideoInfo)
@@ -289,9 +322,10 @@ public class TVKLiveInfoGetter
     this.mUserInfo = paramTVKUserInfo;
     this.mProgramId = paramString1;
     this.mDefinition = paramString2;
-    if (this.mEventHandler != null)
+    paramTVKUserInfo = this.mEventHandler;
+    if (paramTVKUserInfo != null)
     {
-      this.mEventHandler.post(new TVKLiveInfoGetter.3(this, i, paramInt, paramBoolean, paramMap));
+      paramTVKUserInfo.post(new TVKLiveInfoGetter.3(this, i, paramInt, paramBoolean, paramMap));
       return i;
     }
     doPreloadLiveInfo(i, paramInt, paramBoolean, paramMap);
@@ -305,7 +339,7 @@ public class TVKLiveInfoGetter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.live.TVKLiveInfoGetter
  * JD-Core Version:    0.7.0.1
  */

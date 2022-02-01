@@ -7,43 +7,48 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QFileFileReaderConfigBean
-  implements IQStorageSafable<String>
+  implements IQFileFileReaderConfigBean, IQStorageSafable<String>
 {
-  public String a;
-  public boolean a;
+  public static final String KEY_BAR_SHOW_SWITCH = "barShowSwitch";
+  public static final String TAG = "QFileFileReaderConfigBean<QFile>";
+  public boolean isShowReaderBar = false;
+  public String strConfigContent = "{}";
   
-  public QFileFileReaderConfigBean()
+  public boolean getIsShowReaderBar()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "{}";
+    return this.isShowReaderBar;
   }
   
-  public void a(String paramString)
+  public void onParse(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       QLog.e("QFileFileReaderConfigBean<QFile>", 1, "onParse: but configContent is null!");
+    } else {
+      this.strConfigContent = paramString;
     }
-    for (;;)
+    try
     {
-      try
+      paramString = new JSONObject(paramString);
+      if (paramString.has("barShowSwitch"))
       {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("barShowSwitch")) {
-          this.jdField_a_of_type_Boolean = paramString.getBoolean("barShowSwitch");
-        }
+        this.isShowReaderBar = paramString.getBoolean("barShowSwitch");
         return;
       }
-      catch (JSONException paramString)
-      {
-        QLog.e("QFileFileReaderConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
-      }
-      this.jdField_a_of_type_JavaLangString = paramString;
     }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileFileReaderConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
+    }
+  }
+  
+  public void setIsShowReaderBar(boolean paramBoolean)
+  {
+    this.isShowReaderBar = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileFileReaderConfigBean
  * JD-Core Version:    0.7.0.1
  */

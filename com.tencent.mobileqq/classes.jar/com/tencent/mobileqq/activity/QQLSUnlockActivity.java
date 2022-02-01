@@ -18,12 +18,13 @@ import android.view.MotionEvent;
 import android.view.Window;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.mobileqq.activity.qwallet.QWalletPushManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.IQWalletPayApi;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqperf.monitor.crash.tools.ActivityLifeCycleInfoRecordHelper;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class QQLSUnlockActivity
@@ -35,31 +36,34 @@ public class QQLSUnlockActivity
   
   private int a()
   {
-    int j = 10000;
+    int i;
     try
     {
       i = Settings.System.getInt(getContentResolver(), "screen_off_timeout");
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QQLSActivity", 4, "getScreenOffTime " + i);
-      }
-      j = i;
-      if (i > jdField_a_of_type_Int) {
-        j = jdField_a_of_type_Int;
-      }
-      return j;
     }
     catch (Exception localException)
     {
-      for (;;)
+      if (QLog.isDevelopLevel())
       {
-        int i = j;
-        if (QLog.isDevelopLevel())
-        {
-          QLog.d("QQLSActivity", 4, "getScreenOffTime e=" + localException.getMessage());
-          i = j;
-        }
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getScreenOffTime e=");
+        localStringBuilder2.append(localException.getMessage());
+        QLog.d("QQLSActivity", 4, localStringBuilder2.toString());
       }
+      i = 10000;
     }
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("getScreenOffTime ");
+      localStringBuilder1.append(i);
+      QLog.d("QQLSActivity", 4, localStringBuilder1.toString());
+    }
+    int j = jdField_a_of_type_Int;
+    if (i > j) {
+      return j;
+    }
+    return i;
   }
   
   @Override
@@ -78,17 +82,14 @@ public class QQLSUnlockActivity
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 0)
     {
-    }
-    for (;;)
-    {
-      return false;
       if (QLog.isColorLevel()) {
         QLog.d("LSUnlockActivity", 2, "QQLSUnlockActivity finish");
       }
       finish();
     }
+    return false;
   }
   
   public void onBackPressed()
@@ -116,32 +117,31 @@ public class QQLSUnlockActivity
         paramBundle.requestDismissKeyguard(this, null);
       }
     }
-    for (;;)
+    else if (Build.VERSION.SDK_INT >= 21)
     {
-      if (ImmersiveUtils.isSupporImmersive() == 1) {
-        getWindow().addFlags(67108864);
-      }
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "enter QQLSUnlockActivity");
-      }
-      if (Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) {
-        ((PowerManager)getSystemService("power")).newWakeLock(268435462, "test").acquire(a());
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 1500L);
-      if (getIntent().getBooleanExtra("key_wallet_unlock", false))
-      {
-        QQNotificationManager.getInstance().cancel("QQLSActivity", 238);
-        paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-        if ((paramBundle instanceof QQAppInterface)) {
-          QWalletPushManager.a((QQAppInterface)paramBundle, false);
-        }
-      }
-      return;
-      if (Build.VERSION.SDK_INT >= 21) {
-        getWindow().addFlags(4194304);
-      } else {
-        getWindow().addFlags(4718592);
+      getWindow().addFlags(4194304);
+    }
+    else
+    {
+      getWindow().addFlags(4718592);
+    }
+    if (ImmersiveUtils.isSupporImmersive() == 1) {
+      getWindow().addFlags(67108864);
+    }
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSActivity", 2, "enter QQLSUnlockActivity");
+    }
+    if (Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) {
+      ((PowerManager)getSystemService("power")).newWakeLock(268435462, "test").acquire(a());
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 1500L);
+    if (getIntent().getBooleanExtra("key_wallet_unlock", false))
+    {
+      QQNotificationManager.getInstance().cancel("QQLSActivity", 238);
+      paramBundle = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramBundle instanceof QQAppInterface)) {
+        ((IQWalletPayApi)QRoute.api(IQWalletPayApi.class)).onQQForeground((QQAppInterface)paramBundle, false);
       }
     }
   }
@@ -155,13 +155,13 @@ public class QQLSUnlockActivity
   protected void onPause()
   {
     super.onPause();
-    StatisticCollector.getInstance(this).logOnPause(this);
+    ActivityLifeCycleInfoRecordHelper.c(this);
   }
   
   protected void onResume()
   {
     super.onResume();
-    StatisticCollector.getInstance(this).logOnResume(this);
+    ActivityLifeCycleInfoRecordHelper.b(this);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
@@ -173,7 +173,7 @@ public class QQLSUnlockActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSUnlockActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,11 @@ public class Downloader
       return null;
     }
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    paramString2 = new File(paramString2 + "/" + paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString3);
+    paramString2 = new File(localStringBuilder.toString());
     if (paramString2.exists())
     {
       LogUtil.b("Downloader", "downloadFile: the file[%s] is exists delete it. ", new Object[] { paramString2.getAbsolutePath() });
@@ -27,20 +31,17 @@ public class Downloader
     try
     {
       localCountDownLatch.await();
-      if (paramString2.exists())
-      {
-        LogUtil.b("Downloader", "downloadFile: download success file size %s", new Object[] { Long.valueOf(paramString2.length()) });
-        return paramString2;
-      }
     }
     catch (InterruptedException paramString1)
     {
-      for (;;)
-      {
-        LogUtil.b("Downloader", "InterruptedException: %s ", new Object[] { paramString1 });
-      }
-      LogUtil.b("Downloader", "downloadFile :download fail.", new Object[0]);
+      LogUtil.b("Downloader", "InterruptedException: %s ", new Object[] { paramString1 });
     }
+    if (paramString2.exists())
+    {
+      LogUtil.b("Downloader", "downloadFile: download success file size %s", new Object[] { Long.valueOf(paramString2.length()) });
+      return paramString2;
+    }
+    LogUtil.b("Downloader", "downloadFile :download fail.", new Object[0]);
     return null;
   }
   
@@ -56,7 +57,7 @@ public class Downloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.download.Downloader
  * JD-Core Version:    0.7.0.1
  */

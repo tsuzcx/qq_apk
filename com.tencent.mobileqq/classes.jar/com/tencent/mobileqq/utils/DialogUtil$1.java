@@ -19,16 +19,17 @@ final class DialogUtil$1
       paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
       paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
       this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
-    }
-    while (this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback.b();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.DialogUtil.1
  * JD-Core Version:    0.7.0.1
  */

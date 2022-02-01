@@ -39,19 +39,18 @@ public class MQLikeCell
   
   public static MQLikeCell readFrom(LikInfo paramLikInfo)
   {
-    boolean bool = true;
     MQLikeCell localMQLikeCell = new MQLikeCell();
     localMQLikeCell.totalLike = paramLikInfo.totalLik;
     localMQLikeCell.likeKey = paramLikInfo.likeKey;
     localMQLikeCell.appid = paramLikInfo.appid;
     localMQLikeCell.hostUin = paramLikInfo.hostUin;
-    if (paramLikInfo.hasDoLik == 1) {}
-    for (;;)
-    {
-      localMQLikeCell.liked = bool;
-      return localMQLikeCell;
+    int i = paramLikInfo.hasDoLik;
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    localMQLikeCell.liked = bool;
+    return localMQLikeCell;
   }
   
   public JSONObject convertToJson()
@@ -75,7 +74,7 @@ public class MQLikeCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQLikeCell
  * JD-Core Version:    0.7.0.1
  */

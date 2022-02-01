@@ -18,33 +18,35 @@ final class PlayModeUtils$8
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-        new ReportEvilToXinanHandler().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          paramView = "16384";
+        } else {
+          paramView = "4";
+        }
       }
-      break;
+      else {
+        paramView = "1";
+      }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+    else {
       paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
+    }
+    QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
+    if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
+      new ReportEvilToXinanHandler().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
+    } else {
       SLog.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.8
  * JD-Core Version:    0.7.0.1
  */

@@ -6,10 +6,8 @@ import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.friend.api.callback.GetGroupListCallback;
 import com.tencent.mobileqq.friend.utils.FriendSorter;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -49,10 +47,20 @@ public class GroupCache
           localIterator.remove();
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("IMCore.friend.GroupCache", 2, "removeFromCache| groupId: " + paramInteger + ", group: " + localGroups);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("removeFromCache| groupId: ");
+        ((StringBuilder)???).append(paramInteger);
+        ((StringBuilder)???).append(", group: ");
+        ((StringBuilder)???).append(localGroups);
+        QLog.d("IMCore.friend.GroupCache", 2, ((StringBuilder)???).toString());
       }
       return localGroups;
+    }
+    for (;;)
+    {
+      throw paramInteger;
     }
   }
   
@@ -73,43 +81,46 @@ public class GroupCache
   
   public void a()
   {
-    long l1;
     try
     {
       boolean bool = this.jdField_a_of_type_Boolean;
       if (bool) {
         return;
       }
-      l1 = SystemClock.elapsedRealtime();
+      long l1 = SystemClock.elapsedRealtime();
       this.jdField_a_of_type_Boolean = true;
       List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(Groups.class, false, "group_id>=?", new String[] { "0" }, null, null, "seqid asc", null);
-      if ((localList == null) || (localList.isEmpty())) {
-        break label226;
-      }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        Iterator localIterator = localList.iterator();
-        if (localIterator.hasNext())
+      if ((localList != null) && (!localList.isEmpty())) {
+        synchronized (this.jdField_a_of_type_JavaLangObject)
         {
-          Groups localGroups = (Groups)localIterator.next();
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(localGroups.group_id), localGroups);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+          Iterator localIterator = localList.iterator();
+          while (localIterator.hasNext())
+          {
+            Groups localGroups = (Groups)localIterator.next();
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(localGroups.group_id), localGroups);
+          }
+          this.jdField_a_of_type_JavaUtilLinkedList.clear();
+          this.jdField_a_of_type_JavaUtilLinkedList.addAll(localList);
         }
       }
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      QLog.d("IMCore.friend.GroupCache", 1, "init| groupList is empty!");
+      long l2 = SystemClock.elapsedRealtime();
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("init| group size: ");
+        ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilLinkedList.size());
+        ((StringBuilder)???).append(", cost: ");
+        ((StringBuilder)???).append(l2 - l1);
+        QLog.d("IMCore.friend.GroupCache", 2, ((StringBuilder)???).toString());
+      }
+      return;
     }
     finally {}
-    this.jdField_a_of_type_JavaUtilLinkedList.addAll(localCollection);
     for (;;)
     {
-      long l2 = SystemClock.elapsedRealtime();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("IMCore.friend.GroupCache", 2, "init| group size: " + this.jdField_a_of_type_JavaUtilLinkedList.size() + ", cost: " + (l2 - l1));
-      break;
-      label226:
-      QLog.d("IMCore.friend.GroupCache", 1, "init| groupList is empty!");
+      throw localObject2;
     }
   }
   
@@ -118,32 +129,38 @@ public class GroupCache
     if (paramGroups == null) {
       return;
     }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramGroups.group_id), paramGroups);
+      int j = 0;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      Groups localGroups;
+      do
+      {
+        i = j;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localGroups = (Groups)localIterator.next();
+      } while (localGroups.group_id != paramGroups.group_id);
+      int i = 1;
+      localGroups.group_name = paramGroups.group_name;
+      localGroups.group_friend_count = paramGroups.group_friend_count;
+      if (i == 0) {
+        this.jdField_a_of_type_JavaUtilLinkedList = FriendSorter.a(this.jdField_a_of_type_JavaUtilLinkedList, paramGroups);
+      }
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("saveToCache| groupId: ");
+        ((StringBuilder)???).append(paramGroups.group_id);
+        QLog.d("IMCore.friend.GroupCache", 2, ((StringBuilder)???).toString());
+      }
+      return;
+    }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramGroups.group_id), paramGroups);
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-        if (localIterator.hasNext())
-        {
-          Groups localGroups = (Groups)localIterator.next();
-          if (localGroups.group_id != paramGroups.group_id) {
-            continue;
-          }
-          localGroups.group_name = paramGroups.group_name;
-          localGroups.group_friend_count = paramGroups.group_friend_count;
-          i = 1;
-          if (i == 0) {
-            this.jdField_a_of_type_JavaUtilLinkedList = FriendSorter.a(this.jdField_a_of_type_JavaUtilLinkedList, paramGroups);
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("IMCore.friend.GroupCache", 2, "saveToCache| groupId: " + paramGroups.group_id);
-          return;
-        }
-      }
-      int i = 0;
+      throw paramGroups;
     }
   }
   
@@ -160,115 +177,222 @@ public class GroupCache
       this.jdField_a_of_type_JavaUtilLinkedList.clear();
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
       Iterator localIterator = ((List)localObject1).iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         Groups localGroups = (Groups)localIterator.next();
         this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(localGroups.group_id), localGroups);
         this.jdField_a_of_type_JavaUtilLinkedList.add(localGroups);
       }
+      Collections.sort(this.jdField_a_of_type_JavaUtilLinkedList, FriendSorter.a);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ???.append("saveToCache| groupList size: ");
+        ???.append(((List)localObject1).size());
+        QLog.d("IMCore.friend.GroupCache", 2, ???.toString());
+      }
+      return;
     }
-    Collections.sort(this.jdField_a_of_type_JavaUtilLinkedList, FriendSorter.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("IMCore.friend.GroupCache", 2, "saveToCache| groupList size: " + localObject2.size());
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   public boolean a(Groups paramGroups)
   {
-    boolean bool1 = true;
-    boolean bool3 = false;
-    boolean bool2 = false;
+    boolean bool = false;
     if (paramGroups == null) {
-      return bool2;
+      return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen()) {
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())
+    {
       if (paramGroups.getStatus() == 1000)
       {
         this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramGroups);
-        if (paramGroups.getStatus() != 1001) {}
+        if (paramGroups.getStatus() == 1001) {
+          bool = true;
+        }
+      }
+      else if ((paramGroups.getStatus() == 1001) || (paramGroups.getStatus() == 1002))
+      {
+        bool = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramGroups);
       }
     }
-    for (;;)
+    else
     {
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("IMCore.friend.GroupCache", 2, "saveToDB| saveGroup: " + paramGroups);
-      return bool1;
-      bool1 = false;
-      continue;
-      if (paramGroups.getStatus() != 1001)
-      {
-        bool1 = bool3;
-        if (paramGroups.getStatus() != 1002) {}
-      }
-      else
-      {
-        bool1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramGroups);
-        continue;
-        QLog.d("IMCore.friend.GroupCache", 1, "saveToDB| em closed groupId = " + paramGroups.group_id);
-        bool1 = bool3;
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveToDB| em closed groupId = ");
+      localStringBuilder.append(paramGroups.group_id);
+      QLog.d("IMCore.friend.GroupCache", 1, localStringBuilder.toString());
     }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveToDB| saveGroup: ");
+      localStringBuilder.append(paramGroups);
+      QLog.d("IMCore.friend.GroupCache", 2, localStringBuilder.toString());
+    }
+    return bool;
   }
   
+  /* Error */
   public boolean a(List<Groups> paramList)
   {
-    boolean bool1 = true;
-    boolean bool2;
-    if ((paramList == null) || (paramList.size() == 0))
-    {
-      QLog.d("IMCore.friend.GroupCache", 1, "saveToDB| groupList is empty!");
-      bool2 = false;
-      return bool2;
-    }
-    ArrayList localArrayList = new ArrayList();
-    EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-    for (;;)
-    {
-      try
-      {
-        localEntityTransaction.begin();
-        localIterator = paramList.iterator();
-        if (localIterator.hasNext())
-        {
-          localGroups = (Groups)localIterator.next();
-          bool1 &= a(localGroups);
-          localArrayList.add(Integer.valueOf(localGroups.group_id));
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        Groups localGroups;
-        QLog.e("IMCore.friend.GroupCache", 1, "saveToDB", localException);
-        localEntityTransaction.end();
-        bool1 = false;
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("IMCore.friend.GroupCache", 2, "saveToDB: " + paramList.size() + ", isSuccess: " + bool1);
-        return bool1;
-        Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values()).iterator();
-        if (localIterator.hasNext())
-        {
-          localGroups = (Groups)localIterator.next();
-          if (localException.contains(Integer.valueOf(localGroups.group_id))) {
-            continue;
-          }
-          c(Integer.valueOf(localGroups.group_id));
-          continue;
-        }
-      }
-      finally
-      {
-        localEntityTransaction.end();
-      }
-      localEntityTransaction.commit();
-      localEntityTransaction.end();
-    }
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: aload_1
+    //   3: ifnull +284 -> 287
+    //   6: aload_1
+    //   7: invokeinterface 227 1 0
+    //   12: ifne +6 -> 18
+    //   15: goto +272 -> 287
+    //   18: new 111	java/util/ArrayList
+    //   21: dup
+    //   22: invokespecial 209	java/util/ArrayList:<init>	()V
+    //   25: astore 5
+    //   27: aload_0
+    //   28: getfield 38	com/tencent/mobileqq/friend/cache/GroupCache:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   31: invokevirtual 254	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   34: astore 4
+    //   36: aload 4
+    //   38: invokevirtual 259	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   41: aload_1
+    //   42: invokeinterface 164 1 0
+    //   47: astore 6
+    //   49: iconst_1
+    //   50: istore_2
+    //   51: aload 6
+    //   53: invokeinterface 63 1 0
+    //   58: ifeq +43 -> 101
+    //   61: aload 6
+    //   63: invokeinterface 67 1 0
+    //   68: checkcast 53	com/tencent/mobileqq/data/Groups
+    //   71: astore 7
+    //   73: iload_2
+    //   74: aload_0
+    //   75: aload 7
+    //   77: invokevirtual 261	com/tencent/mobileqq/friend/cache/GroupCache:a	(Lcom/tencent/mobileqq/data/Groups;)Z
+    //   80: iand
+    //   81: istore_2
+    //   82: aload 5
+    //   84: aload 7
+    //   86: getfield 71	com/tencent/mobileqq/data/Groups:group_id	I
+    //   89: invokestatic 168	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   92: invokeinterface 262 2 0
+    //   97: pop
+    //   98: goto -47 -> 51
+    //   101: new 111	java/util/ArrayList
+    //   104: dup
+    //   105: aload_0
+    //   106: getfield 36	com/tencent/mobileqq/friend/cache/GroupCache:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   109: invokevirtual 266	java/util/concurrent/ConcurrentHashMap:values	()Ljava/util/Collection;
+    //   112: invokespecial 114	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   115: invokeinterface 164 1 0
+    //   120: astore 6
+    //   122: aload 6
+    //   124: invokeinterface 63 1 0
+    //   129: ifeq +49 -> 178
+    //   132: aload 6
+    //   134: invokeinterface 67 1 0
+    //   139: checkcast 53	com/tencent/mobileqq/data/Groups
+    //   142: astore 7
+    //   144: aload 5
+    //   146: aload 7
+    //   148: getfield 71	com/tencent/mobileqq/data/Groups:group_id	I
+    //   151: invokestatic 168	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   154: invokeinterface 269 2 0
+    //   159: ifne -37 -> 122
+    //   162: aload_0
+    //   163: aload 7
+    //   165: getfield 71	com/tencent/mobileqq/data/Groups:group_id	I
+    //   168: invokestatic 168	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   171: invokevirtual 271	com/tencent/mobileqq/friend/cache/GroupCache:c	(Ljava/lang/Integer;)Lcom/tencent/mobileqq/data/Groups;
+    //   174: pop
+    //   175: goto -53 -> 122
+    //   178: aload 4
+    //   180: invokevirtual 274	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   183: aload 4
+    //   185: invokevirtual 277	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   188: goto +27 -> 215
+    //   191: astore_1
+    //   192: goto +88 -> 280
+    //   195: astore 5
+    //   197: ldc 100
+    //   199: iconst_1
+    //   200: ldc_w 279
+    //   203: aload 5
+    //   205: invokestatic 283	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   208: aload 4
+    //   210: invokevirtual 277	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   213: iload_3
+    //   214: istore_2
+    //   215: invokestatic 84	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   218: ifeq +60 -> 278
+    //   221: new 86	java/lang/StringBuilder
+    //   224: dup
+    //   225: invokespecial 87	java/lang/StringBuilder:<init>	()V
+    //   228: astore 4
+    //   230: aload 4
+    //   232: ldc_w 285
+    //   235: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: pop
+    //   239: aload 4
+    //   241: aload_1
+    //   242: invokeinterface 227 1 0
+    //   247: invokevirtual 187	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   250: pop
+    //   251: aload 4
+    //   253: ldc_w 287
+    //   256: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: pop
+    //   260: aload 4
+    //   262: iload_2
+    //   263: invokevirtual 290	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   266: pop
+    //   267: ldc 100
+    //   269: iconst_2
+    //   270: aload 4
+    //   272: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   275: invokestatic 108	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   278: iload_2
+    //   279: ireturn
+    //   280: aload 4
+    //   282: invokevirtual 277	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   285: aload_1
+    //   286: athrow
+    //   287: ldc 100
+    //   289: iconst_1
+    //   290: ldc_w 292
+    //   293: invokestatic 108	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   296: iconst_0
+    //   297: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	298	0	this	GroupCache
+    //   0	298	1	paramList	List<Groups>
+    //   50	229	2	bool1	boolean
+    //   1	213	3	bool2	boolean
+    //   34	247	4	localObject	Object
+    //   25	120	5	localArrayList	ArrayList
+    //   195	9	5	localException	java.lang.Exception
+    //   47	86	6	localIterator	Iterator
+    //   71	93	7	localGroups	Groups
+    // Exception table:
+    //   from	to	target	type
+    //   36	49	191	finally
+    //   51	98	191	finally
+    //   101	122	191	finally
+    //   122	175	191	finally
+    //   178	183	191	finally
+    //   197	208	191	finally
+    //   36	49	195	java/lang/Exception
+    //   51	98	195	java/lang/Exception
+    //   101	122	195	java/lang/Exception
+    //   122	175	195	java/lang/Exception
+    //   178	183	195	java/lang/Exception
   }
   
   public Groups b(Integer paramInteger)
@@ -285,16 +409,26 @@ public class GroupCache
     if (localGroups != null) {
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localGroups);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("IMCore.friend.GroupCache", 2, "removeFromDB| groupId: " + paramInteger + ", group: " + localGroups);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeFromDB| groupId: ");
+      localStringBuilder.append(paramInteger);
+      localStringBuilder.append(", group: ");
+      localStringBuilder.append(localGroups);
+      QLog.d("IMCore.friend.GroupCache", 2, localStringBuilder.toString());
     }
     return localGroups;
   }
   
   public Groups d(Integer paramInteger)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IMCore.friend.GroupCache", 2, "queryFromDB: " + paramInteger);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("queryFromDB: ");
+      localStringBuilder.append(paramInteger);
+      QLog.d("IMCore.friend.GroupCache", 2, localStringBuilder.toString());
     }
     paramInteger = (Groups)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(Groups.class, String.valueOf(paramInteger));
     a(paramInteger);
@@ -303,7 +437,7 @@ public class GroupCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.cache.GroupCache
  * JD-Core Version:    0.7.0.1
  */

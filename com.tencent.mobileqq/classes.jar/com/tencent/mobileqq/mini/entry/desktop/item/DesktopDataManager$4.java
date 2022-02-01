@@ -13,27 +13,40 @@ class DesktopDataManager$4
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
+    Object localObject;
     if ((paramBoolean) && (paramJSONObject != null))
     {
       long l = paramJSONObject.optLong("retCode");
-      String str = paramJSONObject.optString("errMsg");
-      if (l != 0L) {
-        QLog.e("DesktopDataManager", 1, "sendModuleRequest, retCode = " + l + ", errMsg = " + str);
-      }
-      do
+      localObject = paramJSONObject.optString("errMsg");
+      if (l != 0L)
       {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("sendModuleRequest, retCode = ");
+        paramJSONObject.append(l);
+        paramJSONObject.append(", errMsg = ");
+        paramJSONObject.append((String)localObject);
+        QLog.e("DesktopDataManager", 1, paramJSONObject.toString());
         return;
-        paramJSONObject = (INTERFACE.StGetDropdownAppListRsp)paramJSONObject.opt("response");
-      } while (paramJSONObject == null);
-      DesktopDataManager.access$900(this.this$0, paramJSONObject.modules.get());
-      return;
+      }
+      paramJSONObject = (INTERFACE.StGetDropdownAppListRsp)paramJSONObject.opt("response");
+      if (paramJSONObject != null) {
+        DesktopDataManager.access$900(this.this$0, paramJSONObject.modules.get());
+      }
     }
-    QLog.e("DesktopDataManager", 1, "sendUserAppListRequestV2, isSuccess = " + paramBoolean + ", ret = " + paramJSONObject);
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendUserAppListRequestV2, isSuccess = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", ret = ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.e("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.4
  * JD-Core Version:    0.7.0.1
  */

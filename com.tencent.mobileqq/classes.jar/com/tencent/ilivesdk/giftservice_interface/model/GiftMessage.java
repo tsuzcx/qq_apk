@@ -7,6 +7,7 @@ import java.util.List;
 
 public class GiftMessage
 {
+  public static final int CONSUME_LIMIT = 22;
   public static final int GIFT_TYPE_COMBO = 101;
   public static final int LUXURY_GIFT_TYPE = 104;
   public static final int SEND_GIFT_OVER_TYPE = 5;
@@ -41,22 +42,45 @@ public class GiftMessage
   public int mSubGiftType;
   public long mSubRoomId;
   public int mUserClientType;
+  public int sendGiftErrorCode;
+  public String sendGiftErrorMsg;
   
   public String dump()
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("playuin:").append(this.mPlayUid).append(" uin:").append(this.mConsumerId).append(" gifttype").append(this.mGiftType).append(" roomid:").append(this.mRoomId).append(" subroomid:").append(this.mSubRoomId).append(" giftid:").append(this.mGiftId).append(" giftnum:").append(this.mGiftNum).append(" combseq:").append(this.mComboSeq).append(" combcount:").append(this.mComboCount).append(" points:");
-    if (this.mCustomizedPoints != null) {}
-    for (int i = this.mCustomizedPoints.size();; i = 0)
-    {
-      localStringBuilder2.append(i);
-      return localStringBuilder1.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("playuin:");
+    localStringBuilder.append(this.mPlayUid);
+    localStringBuilder.append(" uin:");
+    localStringBuilder.append(this.mConsumerId);
+    localStringBuilder.append(" gifttype");
+    localStringBuilder.append(this.mGiftType);
+    localStringBuilder.append(" roomid:");
+    localStringBuilder.append(this.mRoomId);
+    localStringBuilder.append(" subroomid:");
+    localStringBuilder.append(this.mSubRoomId);
+    localStringBuilder.append(" giftid:");
+    localStringBuilder.append(this.mGiftId);
+    localStringBuilder.append(" giftnum:");
+    localStringBuilder.append(this.mGiftNum);
+    localStringBuilder.append(" combseq:");
+    localStringBuilder.append(this.mComboSeq);
+    localStringBuilder.append(" combcount:");
+    localStringBuilder.append(this.mComboCount);
+    localStringBuilder.append(" points:");
+    List localList = this.mCustomizedPoints;
+    int i;
+    if (localList != null) {
+      i = localList.size();
+    } else {
+      i = 0;
     }
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.giftservice_interface.model.GiftMessage
  * JD-Core Version:    0.7.0.1
  */

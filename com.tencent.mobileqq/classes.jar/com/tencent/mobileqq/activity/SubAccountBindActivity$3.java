@@ -4,13 +4,17 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.mobileqq.subaccount.SubAccountControllUtil;
+import com.tencent.mobileqq.subaccount.api.ISubAccountApi;
+import com.tencent.mobileqq.subaccount.api.ISubAccountProtocService;
+import com.tencent.mobileqq.subaccount.api.ISubAccountService;
+import com.tencent.mobileqq.subaccount.api.impl.SubAccountProtocServiceImpl;
+import com.tencent.mobileqq.subaccount.api.impl.SubAccountServiceImpl;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -25,29 +29,28 @@ class SubAccountBindActivity$3
   
   public void onClick(View paramView)
   {
-    Object localObject1 = paramView.findViewById(2131364705);
-    if ((localObject1 != null) && (((View)localObject1).getVisibility() == 0)) {}
-    for (;;)
+    Object localObject1 = paramView.findViewById(2131364592);
+    if ((localObject1 == null) || (((View)localObject1).getVisibility() != 0))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       int i = ((Integer)paramView.getTag()).intValue();
-      localObject1 = (SimpleAccount)SubAccountBindActivity.a(this.a).get(i);
-      Object localObject2 = (SubAccountManager)this.a.app.getManager(QQManagerFactory.SUB_ACCOUNT_MANAGER);
-      if (((SubAccountManager)localObject2).a(((SimpleAccount)localObject1).getUin()))
+      localObject1 = (SimpleAccount)SubAccountBindActivity.access$000(this.a).get(i);
+      Object localObject2 = (SubAccountServiceImpl)this.a.app.getRuntimeService(ISubAccountService.class, null);
+      if (((SubAccountServiceImpl)localObject2).isSubAccountUin(((SimpleAccount)localObject1).getUin()))
       {
-        this.a.c(this.a.getString(2131719586));
+        localObject1 = this.a;
+        ((SubAccountBindActivity)localObject1).showQQToastSuccess(((SubAccountBindActivity)localObject1).getString(2131719305));
         SubAccountAssistantForward.a(this.a.app);
         this.a.setTitle("");
-        localObject1 = new Intent(this.a, SplashActivity.class);
-        ((Intent)localObject1).putExtra("tab_index", FrameControllerUtil.a);
+        localObject1 = new Intent();
+        ((Intent)localObject1).putExtra(((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getTabIndex(), FrameControllerUtil.a);
         ((Intent)localObject1).setFlags(67108864);
+        RouteUtils.a(this.a, (Intent)localObject1, "/base/start/splash");
         this.a.startActivity((Intent)localObject1);
         this.a.finish();
       }
-      else if (((SubAccountManager)localObject2).a() >= 2)
+      else if (((SubAccountServiceImpl)localObject2).getBindedNumber() >= 2)
       {
-        SubAccountControll.a(this.a.app, this.a);
+        SubAccountControllUtil.a(this.a.app, this.a);
       }
       else if (!((SimpleAccount)localObject1).isLogined())
       {
@@ -56,13 +59,13 @@ class SubAccountBindActivity$3
         }
         localObject2 = new Intent(this.a, SubLoginActivity.class);
         ((Intent)localObject2).putExtra("subuin", ((SimpleAccount)localObject1).getUin());
-        ((Intent)localObject2).putExtra("fromWhere", this.a.b);
+        ((Intent)localObject2).putExtra("fromWhere", this.a.fromWhere);
         this.a.startActivity((Intent)localObject2);
       }
-      else if (this.a.c())
+      else if (this.a.isNetConnToast())
       {
-        localObject2 = ((SubAccountManager)localObject2).a(((SimpleAccount)localObject1).getUin());
-        this.a.a(2131719588);
+        localObject2 = ((SubAccountServiceImpl)localObject2).getA2(((SimpleAccount)localObject1).getUin());
+        this.a.showJuhua(2131719307);
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject2 = new SubAccountBindActivity.3.1(this, (SimpleAccount)localObject1);
@@ -70,18 +73,19 @@ class SubAccountBindActivity$3
         }
         else
         {
-          SubAccountProtocManager localSubAccountProtocManager = (SubAccountProtocManager)this.a.app.getManager(QQManagerFactory.MGR_SUB_ACNT);
-          if (localSubAccountProtocManager != null) {
-            localSubAccountProtocManager.a(((SimpleAccount)localObject1).getUin(), (String)localObject2, this.a.b);
+          SubAccountProtocServiceImpl localSubAccountProtocServiceImpl = (SubAccountProtocServiceImpl)this.a.app.getRuntimeService(ISubAccountProtocService.class, "");
+          if (localSubAccountProtocServiceImpl != null) {
+            localSubAccountProtocServiceImpl.bindAccount(((SimpleAccount)localObject1).getUin(), (String)localObject2, this.a.fromWhere);
           }
         }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity.3
  * JD-Core Version:    0.7.0.1
  */

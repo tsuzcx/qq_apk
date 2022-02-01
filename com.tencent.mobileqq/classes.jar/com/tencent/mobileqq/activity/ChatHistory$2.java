@@ -16,9 +16,10 @@ class ChatHistory$2
       if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
         this.a.a.dismiss();
       }
-      this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
+      paramMessage = this.a;
+      paramMessage.a = new QQProgressDialog(paramMessage, paramMessage.getTitleBarHeight());
       this.a.a.setCancelable(false);
-      this.a.a.c(2131691577);
+      this.a.a.c(2131691498);
       if (!this.a.isFinishing()) {
         this.a.a.show();
       }
@@ -27,7 +28,7 @@ class ChatHistory$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.2
  * JD-Core Version:    0.7.0.1
  */

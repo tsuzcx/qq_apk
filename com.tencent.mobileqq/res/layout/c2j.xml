@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.ae.cmshow.AECMShowSquareLayout android:id="@id/mqy" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbf" android:id="@id/oed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_below="@id/mqy" android:layout_centerHorizontal="true" />
-</merge>
+    <TextView android:textAppearance="@style/a51" android:textColor="?a_6" android:ellipsize="end" android:id="@id/eqq" android:background="?a_7" android:paddingLeft="@dimen/bhg" android:paddingTop="@dimen/bhk" android:paddingRight="@dimen/bhg" android:paddingBottom="@dimen/bhk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/bhh" android:maxWidth="256.0dip" android:maxLines="3" />
+</LinearLayout>

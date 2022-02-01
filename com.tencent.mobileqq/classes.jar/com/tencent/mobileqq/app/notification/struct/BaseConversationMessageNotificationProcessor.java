@@ -28,30 +28,21 @@ public abstract class BaseConversationMessageNotificationProcessor
   private void b(Message paramMessage)
   {
     int i;
-    Bitmap localBitmap;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a.b() > 1)
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a.b() > 1) {
       i = 1;
-      boolean bool = NotifyIdManager.a(paramMessage);
-      if ((i != 0) && (bool))
-      {
-        localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a();
-        if (paramMessage.istroop != 0) {
-          break label77;
-        }
-        localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramMessage.frienduin, true);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a(localBitmap);
-      return;
+    } else {
       i = 0;
-      break;
-      label77:
-      if (paramMessage.istroop == 1) {
+    }
+    boolean bool = NotifyIdManager.a(paramMessage);
+    if ((i != 0) && (bool))
+    {
+      Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a();
+      if (paramMessage.istroop == 0) {
+        localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramMessage.frienduin, true);
+      } else if (paramMessage.istroop == 1) {
         localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceBitmap(paramMessage.frienduin, (byte)3, false, false);
       }
+      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a(localBitmap);
     }
   }
   
@@ -109,7 +100,7 @@ public abstract class BaseConversationMessageNotificationProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.struct.BaseConversationMessageNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -26,19 +26,21 @@ public final class SubMsgType0xd0$MsgBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 50, 56, 66, 74, 82, 90 }, new String[] { "uint32_msg_type", "bytes_msg_info", "uint64_hot_topic_id", "bytes_hot_topic_name", "uint64_big_v_id", "bytes_big_v_union_id", "uint32_pgc_type", "bytes_pgc_column_union_id", "bytes_link", "bytes_sub_type", "bytes_cover_url" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2, Long.valueOf(0L), localByteStringMicro3, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7 }, MsgBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 50, 56, 66, 74, 82, 90 }, new String[] { "uint32_msg_type", "bytes_msg_info", "uint64_hot_topic_id", "bytes_hot_topic_name", "uint64_big_v_id", "bytes_big_v_union_id", "uint32_pgc_type", "bytes_pgc_column_union_id", "bytes_link", "bytes_sub_type", "bytes_cover_url" }, new Object[] { localInteger, localByteStringMicro1, localLong, localByteStringMicro2, localLong, localByteStringMicro3, localInteger, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7 }, MsgBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0xd0.SubMsgType0xd0.MsgBody
  * JD-Core Version:    0.7.0.1
  */

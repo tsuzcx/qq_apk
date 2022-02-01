@@ -129,8 +129,13 @@ public class DartExecutor
   public void setIsolateServiceIdListener(@Nullable DartExecutor.IsolateServiceIdListener paramIsolateServiceIdListener)
   {
     this.isolateServiceIdListener = paramIsolateServiceIdListener;
-    if ((this.isolateServiceIdListener != null) && (this.isolateServiceId != null)) {
-      this.isolateServiceIdListener.onIsolateServiceIdAvailable(this.isolateServiceId);
+    paramIsolateServiceIdListener = this.isolateServiceIdListener;
+    if (paramIsolateServiceIdListener != null)
+    {
+      String str = this.isolateServiceId;
+      if (str != null) {
+        paramIsolateServiceIdListener.onIsolateServiceIdAvailable(str);
+      }
     }
   }
   
@@ -143,7 +148,7 @@ public class DartExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.dart.DartExecutor
  * JD-Core Version:    0.7.0.1
  */

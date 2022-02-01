@@ -13,41 +13,58 @@ class FavoriteEmotionAdapter$2
   
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.val$emotionInfo.toString());
+    paramView = new StringBuilder();
+    paramView.append("onLoadFailed: ");
+    paramView.append(this.val$emotionInfo.toString());
+    QLog.e("FavoriteEmotionAdapter", 1, paramView.toString());
     FavoriteEmotionAdapter.access$300(this.this$0, this.val$emoticonImg, this.val$progressView);
   }
   
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.val$emotionInfo.toString());
+    paramView = new StringBuilder();
+    paramView.append("onLoadFailed: ");
+    paramView.append(this.val$emotionInfo.toString());
+    QLog.e("FavoriteEmotionAdapter", 1, paramView.toString());
     FavoriteEmotionAdapter.access$300(this.this$0, this.val$emoticonImg, this.val$progressView);
   }
   
   public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadInterrupted: " + this.val$emotionInfo.toString());
+    paramView = new StringBuilder();
+    paramView.append("onLoadInterrupted: ");
+    paramView.append(this.val$emotionInfo.toString());
+    QLog.e("FavoriteEmotionAdapter", 1, paramView.toString());
     FavoriteEmotionAdapter.access$300(this.this$0, this.val$emoticonImg, this.val$progressView);
   }
   
   public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavoriteEmotionAdapter", 2, "onLoadProgressed: " + this.val$emotionInfo.toString());
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onLoadProgressed: ");
+      paramView.append(this.val$emotionInfo.toString());
+      QLog.i("FavoriteEmotionAdapter", 2, paramView.toString());
     }
     FavoriteEmotionAdapter.access$300(this.this$0, this.val$emoticonImg, this.val$progressView);
   }
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavoriteEmotionAdapter", 2, "onLoadSuccess: " + this.val$emotionInfo.toString());
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onLoadSuccess: ");
+      paramView.append(this.val$emotionInfo.toString());
+      QLog.i("FavoriteEmotionAdapter", 2, paramView.toString());
     }
     FavoriteEmotionAdapter.access$300(this.this$0, this.val$emoticonImg, this.val$progressView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -18,11 +18,6 @@ public class ChatPieInputHelper
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
-  public static ChatPieInputHelper a(BaseChatPie paramBaseChatPie)
-  {
-    return (ChatPieInputHelper)paramBaseChatPie.a(6);
-  }
-  
   private void b(XEditTextEx paramXEditTextEx)
   {
     try
@@ -60,29 +55,29 @@ public class ChatPieInputHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 14, 6 };
+    return new int[] { 4, 15, 7 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    if (paramInt == 4) {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-    }
-    do
+    if (paramInt == 4)
     {
+      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
       return;
-      if (paramInt == 14)
-      {
-        b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-        return;
-      }
-    } while (paramInt != 6);
-    NotifyIdManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    }
+    if (paramInt == 15)
+    {
+      b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+      return;
+    }
+    if (paramInt == 7) {
+      NotifyIdManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.orion.ChatPieInputHelper
  * JD-Core Version:    0.7.0.1
  */

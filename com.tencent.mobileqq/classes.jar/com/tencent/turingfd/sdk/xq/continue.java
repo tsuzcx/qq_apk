@@ -1,30 +1,48 @@
 package com.tencent.turingfd.sdk.xq;
 
-public abstract interface continue
+import java.util.LinkedList;
+
+public class continue<E>
 {
-  public abstract long getErrorCode();
+  public int limit;
+  public LinkedList<E> qg = new LinkedList();
   
-  public abstract String getFileMd5();
+  public continue(int paramInt)
+  {
+    this.limit = paramInt;
+  }
   
-  public abstract String getFileName();
+  public E getFirst()
+  {
+    return this.qg.getFirst();
+  }
   
-  public abstract String getFileSha1();
+  public E getLast()
+  {
+    return this.qg.getLast();
+  }
   
-  public abstract String getHandleUrl();
+  public int getLimit()
+  {
+    return this.limit;
+  }
   
-  public abstract String getPkgName();
+  public void offer(E paramE)
+  {
+    if (this.qg.size() >= this.limit) {
+      this.qg.poll();
+    }
+    this.qg.offer(paramE);
+  }
   
-  public abstract int getRiskCategory();
-  
-  public abstract String getRiskTips();
-  
-  public abstract int getSafeLevel();
-  
-  public abstract boolean isSucceed();
+  public int size()
+  {
+    return this.qg.size();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.continue
  * JD-Core Version:    0.7.0.1
  */

@@ -15,10 +15,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.widget.ProgressBar;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.common.util.Util;
+import com.tencent.biz.lebasearch.SearchProtocol;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
 import com.tencent.biz.pubaccount.api.IPublicAccountJavascriptInterface;
 import com.tencent.biz.pubaccount.api.IPublicAccountJavascriptInterface.ActionItem;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
@@ -26,16 +30,11 @@ import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.CouponH5Data;
 import com.tencent.mobileqq.data.PublicAccountInfo;
@@ -44,6 +43,8 @@ import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.profilecard.api.IProfileCardApi;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -55,8 +56,8 @@ import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
@@ -66,8 +67,8 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebFeaturesInterface;
 import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebProgressInterface;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebShareInterface;
 import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
 import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebviewReportSpeedInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -90,6 +91,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppActivity;
+import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -113,12 +115,12 @@ public class PublicAccountJavascriptInterfaceImpl
   protected static final String LBSDES_KEY = "nbyvie";
   protected static final String LBS_CALLER = "webview";
   private static final String METHOD_SET_NAVIGATION_BAR_STYLE = "setNavigationBarStyle";
-  public static final String PUBACCOUNT_DATA_PATH = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "pubaccount/");
+  public static final String PUBACCOUNT_DATA_PATH;
   protected static final String SOSO_JSONEN_CRYPT_PUBKEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrkUA+dDEQT52svdheRw04+xrExuTvNj3g7pjcyUkH3+86FiYNhHtyWJc11BywUZ2Ey3RomCyTb/szl5qQEJqR7UC5z4mhLrhgXlbRI0BgmI/LhaMRsfskGM7ziyQ2ZpS0qbHX2xoum6ou/541/VePIwmcnIk6eWUx6GYnA4euZQIDAQAB";
   protected static final String TAG = "PAjs";
   protected static final String TAG_LOCATION = "PAjs.location";
   private static long sH5DataUsage = 0L;
-  protected static HashMap<String, String> storage = new HashMap();
+  protected static HashMap<String, String> storage;
   protected Activity context;
   boolean hasAsked = false;
   boolean isRegisteredBroadCast = false;
@@ -127,6 +129,15 @@ public class PublicAccountJavascriptInterfaceImpl
   private WebUiUtils.WebviewReportSpeedInterface reportSpeedInterface = null;
   protected List<PublicAccountJavascriptInterfaceImpl.HttpTask> taskList;
   private WebUiUtils.WebUiMethodInterface uiMethodInterface = null;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("pubaccount/");
+    PUBACCOUNT_DATA_PATH = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    storage = new HashMap();
+  }
   
   private String decrypt(String paramString1, String paramString2)
   {
@@ -188,364 +199,180 @@ public class PublicAccountJavascriptInterfaceImpl
     return ThreeDes.a(paramString1, paramString2);
   }
   
-  /* Error */
   private String formatLocData(byte[] paramArrayOfByte)
   {
-    // Byte code:
-    //   0: new 256	org/json/JSONObject
-    //   3: dup
-    //   4: invokespecial 257	org/json/JSONObject:<init>	()V
-    //   7: astore 6
-    //   9: new 208	java/lang/String
-    //   12: dup
-    //   13: aload_1
-    //   14: ldc_w 259
-    //   17: invokespecial 262	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   20: astore_3
-    //   21: aload_3
-    //   22: astore_1
-    //   23: new 256	org/json/JSONObject
-    //   26: dup
-    //   27: aload_1
-    //   28: invokespecial 264	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   31: astore_1
-    //   32: aload_1
-    //   33: astore 6
-    //   35: new 256	org/json/JSONObject
-    //   38: dup
-    //   39: invokespecial 257	org/json/JSONObject:<init>	()V
-    //   42: astore 8
-    //   44: new 266	org/json/JSONArray
-    //   47: dup
-    //   48: invokespecial 267	org/json/JSONArray:<init>	()V
-    //   51: astore 9
-    //   53: new 266	org/json/JSONArray
-    //   56: dup
-    //   57: invokespecial 267	org/json/JSONArray:<init>	()V
-    //   60: astore 10
-    //   62: new 256	org/json/JSONObject
-    //   65: dup
-    //   66: invokespecial 257	org/json/JSONObject:<init>	()V
-    //   69: astore 11
-    //   71: new 256	org/json/JSONObject
-    //   74: dup
-    //   75: invokespecial 257	org/json/JSONObject:<init>	()V
-    //   78: astore 12
-    //   80: new 266	org/json/JSONArray
-    //   83: dup
-    //   84: invokespecial 267	org/json/JSONArray:<init>	()V
-    //   87: astore_3
-    //   88: new 266	org/json/JSONArray
-    //   91: dup
-    //   92: invokespecial 267	org/json/JSONArray:<init>	()V
-    //   95: astore 5
-    //   97: new 256	org/json/JSONObject
-    //   100: dup
-    //   101: invokespecial 257	org/json/JSONObject:<init>	()V
-    //   104: astore 7
-    //   106: new 256	org/json/JSONObject
-    //   109: dup
-    //   110: invokespecial 257	org/json/JSONObject:<init>	()V
-    //   113: astore_1
-    //   114: aload 6
-    //   116: ldc_w 269
-    //   119: invokevirtual 273	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   122: astore 4
-    //   124: aload 4
-    //   126: astore_1
-    //   127: aload 6
-    //   129: ldc_w 275
-    //   132: invokevirtual 279	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   135: astore 4
-    //   137: aload 6
-    //   139: ldc_w 281
-    //   142: invokevirtual 279	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   145: astore 5
-    //   147: aload 6
-    //   149: ldc_w 283
-    //   152: invokevirtual 273	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   155: astore 6
-    //   157: aload 4
-    //   159: astore_3
-    //   160: aload 5
-    //   162: astore 4
-    //   164: aload_3
-    //   165: astore 5
-    //   167: aload 6
-    //   169: astore_3
-    //   170: aload 12
-    //   172: ldc_w 285
-    //   175: aload_1
-    //   176: ldc_w 287
-    //   179: invokevirtual 290	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   182: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   185: pop
-    //   186: aload 12
-    //   188: ldc_w 296
-    //   191: aload_1
-    //   192: ldc_w 298
-    //   195: invokevirtual 290	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   198: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   201: pop
-    //   202: aload 12
-    //   204: ldc_w 300
-    //   207: aload_1
-    //   208: ldc_w 302
-    //   211: invokevirtual 290	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   214: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   217: pop
-    //   218: iconst_0
-    //   219: istore_2
-    //   220: iload_2
-    //   221: aload 5
-    //   223: invokevirtual 306	org/json/JSONArray:length	()I
-    //   226: if_icmpge +166 -> 392
-    //   229: new 256	org/json/JSONObject
-    //   232: dup
-    //   233: invokespecial 257	org/json/JSONObject:<init>	()V
-    //   236: astore_1
-    //   237: aload 5
-    //   239: iload_2
-    //   240: invokevirtual 310	org/json/JSONArray:get	(I)Ljava/lang/Object;
-    //   243: checkcast 256	org/json/JSONObject
-    //   246: astore 6
-    //   248: aload_1
-    //   249: ldc_w 312
-    //   252: aload 6
-    //   254: ldc_w 314
-    //   257: invokevirtual 318	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   260: invokestatic 322	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   263: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   266: pop
-    //   267: aload_1
-    //   268: ldc_w 324
-    //   271: aload 6
-    //   273: ldc_w 326
-    //   276: invokevirtual 318	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   279: invokestatic 322	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   282: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   285: pop
-    //   286: aload_1
-    //   287: ldc_w 328
-    //   290: aload 6
-    //   292: ldc_w 330
-    //   295: invokevirtual 318	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   298: invokestatic 322	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   301: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   304: pop
-    //   305: aload_1
-    //   306: ldc_w 332
-    //   309: aload 6
-    //   311: ldc_w 334
-    //   314: invokevirtual 318	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   317: invokestatic 322	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   320: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   323: pop
-    //   324: aload_1
-    //   325: ldc_w 336
-    //   328: aload 6
-    //   330: ldc_w 338
-    //   333: invokevirtual 318	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   336: invokestatic 322	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   339: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   342: pop
-    //   343: aload 10
-    //   345: aload_1
-    //   346: invokevirtual 341	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   349: pop
-    //   350: iload_2
-    //   351: iconst_1
-    //   352: iadd
-    //   353: istore_2
-    //   354: goto -134 -> 220
-    //   357: astore_3
-    //   358: new 208	java/lang/String
-    //   361: dup
-    //   362: aload_1
-    //   363: invokespecial 344	java/lang/String:<init>	([B)V
-    //   366: astore_1
-    //   367: goto -344 -> 23
-    //   370: astore_1
-    //   371: goto -336 -> 35
-    //   374: astore 4
-    //   376: aload_3
-    //   377: astore 4
-    //   379: aload 5
-    //   381: astore_3
-    //   382: aload_3
-    //   383: astore 5
-    //   385: aload 7
-    //   387: astore_3
-    //   388: goto -218 -> 170
-    //   391: astore_1
-    //   392: iconst_0
-    //   393: istore_2
-    //   394: iload_2
-    //   395: aload 4
-    //   397: invokevirtual 306	org/json/JSONArray:length	()I
-    //   400: if_icmpge +72 -> 472
-    //   403: new 256	org/json/JSONObject
-    //   406: dup
-    //   407: invokespecial 257	org/json/JSONObject:<init>	()V
-    //   410: astore_1
-    //   411: aload 4
-    //   413: iload_2
-    //   414: invokevirtual 310	org/json/JSONArray:get	(I)Ljava/lang/Object;
-    //   417: checkcast 256	org/json/JSONObject
-    //   420: astore 5
-    //   422: aload_1
-    //   423: ldc_w 346
-    //   426: aload 5
-    //   428: ldc_w 348
-    //   431: invokevirtual 290	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   434: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   437: pop
-    //   438: aload_1
-    //   439: ldc_w 336
-    //   442: aload 5
-    //   444: ldc_w 350
-    //   447: invokevirtual 318	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   450: invokestatic 322	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   453: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   456: pop
-    //   457: aload 9
-    //   459: aload_1
-    //   460: invokevirtual 341	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   463: pop
-    //   464: iload_2
-    //   465: iconst_1
-    //   466: iadd
-    //   467: istore_2
-    //   468: goto -74 -> 394
-    //   471: astore_1
-    //   472: aload 11
-    //   474: ldc_w 352
-    //   477: aload_3
-    //   478: ldc_w 354
-    //   481: invokevirtual 318	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   484: invokestatic 322	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   487: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   490: pop
-    //   491: aload 11
-    //   493: ldc_w 356
-    //   496: aload_3
-    //   497: ldc_w 358
-    //   500: invokevirtual 318	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   503: invokestatic 322	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   506: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   509: pop
-    //   510: aload 11
-    //   512: ldc_w 360
-    //   515: aload_3
-    //   516: ldc_w 362
-    //   519: invokevirtual 318	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   522: invokestatic 322	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   525: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   528: pop
-    //   529: aload 11
-    //   531: ldc_w 364
-    //   534: aload_3
-    //   535: ldc_w 366
-    //   538: invokevirtual 318	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   541: invokestatic 322	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   544: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   547: pop
-    //   548: aload 8
-    //   550: ldc_w 368
-    //   553: aload 12
-    //   555: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   558: pop
-    //   559: aload 8
-    //   561: ldc_w 370
-    //   564: aload 11
-    //   566: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   569: pop
-    //   570: aload 8
-    //   572: ldc_w 372
-    //   575: aload 10
-    //   577: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   580: pop
-    //   581: aload 8
-    //   583: ldc_w 374
-    //   586: aload 9
-    //   588: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   591: pop
-    //   592: aload 8
-    //   594: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   597: areturn
-    //   598: astore_1
-    //   599: goto -7 -> 592
-    //   602: astore_1
-    //   603: goto -22 -> 581
-    //   606: astore_1
-    //   607: goto -37 -> 570
-    //   610: astore_1
-    //   611: goto -52 -> 559
-    //   614: astore_1
-    //   615: goto -67 -> 548
-    //   618: astore_1
-    //   619: goto -401 -> 218
-    //   622: astore 4
-    //   624: aload_3
-    //   625: astore 4
-    //   627: aload 5
-    //   629: astore_3
-    //   630: goto -248 -> 382
-    //   633: astore 5
-    //   635: aload_3
-    //   636: astore 5
-    //   638: aload 4
-    //   640: astore_3
-    //   641: aload 5
-    //   643: astore 4
-    //   645: goto -263 -> 382
-    //   648: astore_3
-    //   649: aload 4
-    //   651: astore_3
-    //   652: aload 5
-    //   654: astore 4
-    //   656: goto -274 -> 382
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	659	0	this	PublicAccountJavascriptInterfaceImpl
-    //   0	659	1	paramArrayOfByte	byte[]
-    //   219	249	2	i	int
-    //   20	150	3	localObject1	Object
-    //   357	20	3	localUnsupportedEncodingException1	UnsupportedEncodingException
-    //   381	260	3	localObject2	Object
-    //   648	1	3	localJSONException1	JSONException
-    //   651	1	3	localObject3	Object
-    //   122	41	4	localObject4	Object
-    //   374	1	4	localJSONException2	JSONException
-    //   377	35	4	localUnsupportedEncodingException2	UnsupportedEncodingException
-    //   622	1	4	localJSONException3	JSONException
-    //   625	30	4	localObject5	Object
-    //   95	533	5	localObject6	Object
-    //   633	1	5	localJSONException4	JSONException
-    //   636	17	5	localObject7	Object
-    //   7	322	6	localObject8	Object
-    //   104	282	7	localJSONObject1	JSONObject
-    //   42	551	8	localJSONObject2	JSONObject
-    //   51	536	9	localJSONArray1	JSONArray
-    //   60	516	10	localJSONArray2	JSONArray
-    //   69	496	11	localJSONObject3	JSONObject
-    //   78	476	12	localJSONObject4	JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   9	21	357	java/io/UnsupportedEncodingException
-    //   23	32	370	org/json/JSONException
-    //   114	124	374	org/json/JSONException
-    //   220	350	391	org/json/JSONException
-    //   394	464	471	org/json/JSONException
-    //   581	592	598	org/json/JSONException
-    //   570	581	602	org/json/JSONException
-    //   559	570	606	org/json/JSONException
-    //   548	559	610	org/json/JSONException
-    //   472	548	614	org/json/JSONException
-    //   170	218	618	org/json/JSONException
-    //   127	137	622	org/json/JSONException
-    //   137	147	633	org/json/JSONException
-    //   147	157	648	org/json/JSONException
+    localObject6 = new JSONObject();
+    try
+    {
+      localObject1 = new String(paramArrayOfByte, "UTF-8");
+      paramArrayOfByte = (byte[])localObject1;
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte)
+    {
+      try
+      {
+        paramArrayOfByte = new JSONObject(paramArrayOfByte);
+        localObject6 = paramArrayOfByte;
+        localJSONObject3 = new JSONObject();
+        localJSONArray1 = new JSONArray();
+        localJSONArray2 = new JSONArray();
+        localJSONObject4 = new JSONObject();
+        localJSONObject5 = new JSONObject();
+        localObject5 = new JSONArray();
+        localObject4 = new JSONArray();
+        localJSONObject2 = new JSONObject();
+        paramArrayOfByte = new JSONObject();
+        localObject3 = localObject5;
+        localObject1 = localObject4;
+      }
+      catch (JSONException paramArrayOfByte)
+      {
+        try
+        {
+          JSONObject localJSONObject1 = ((JSONObject)localObject6).getJSONObject("attribute");
+          localObject3 = localObject5;
+          localObject1 = localObject4;
+          paramArrayOfByte = localJSONObject1;
+          localObject4 = ((JSONObject)localObject6).getJSONArray("cells");
+          localObject3 = localObject5;
+          localObject1 = localObject4;
+          paramArrayOfByte = localJSONObject1;
+          localObject5 = ((JSONObject)localObject6).getJSONArray("wifis");
+          localObject3 = localObject5;
+          localObject1 = localObject4;
+          paramArrayOfByte = localJSONObject1;
+          localObject6 = ((JSONObject)localObject6).getJSONObject("location");
+          paramArrayOfByte = localJSONObject1;
+          localObject1 = localObject6;
+          localObject3 = localObject5;
+        }
+        catch (JSONException paramArrayOfByte)
+        {
+          try
+          {
+            localJSONObject5.put("strImei", paramArrayOfByte.getString("imei"));
+            localJSONObject5.put("strImsi", paramArrayOfByte.getString("imsi"));
+            localJSONObject5.put("strPhonenum", paramArrayOfByte.getString("phonenum"));
+            k = 0;
+            i = 0;
+            j = k;
+          }
+          catch (JSONException paramArrayOfByte)
+          {
+            try
+            {
+              int i;
+              if (i >= ((JSONArray)localObject4).length()) {
+                break label417;
+              }
+              paramArrayOfByte = new JSONObject();
+              Object localObject5 = (JSONObject)((JSONArray)localObject4).get(i);
+              paramArrayOfByte.put("shMcc", String.valueOf(((JSONObject)localObject5).getInt("mcc")));
+              paramArrayOfByte.put("shMnc", String.valueOf(((JSONObject)localObject5).getInt("mnc")));
+              paramArrayOfByte.put("iLac", String.valueOf(((JSONObject)localObject5).getInt("lac")));
+              paramArrayOfByte.put("iCellId", String.valueOf(((JSONObject)localObject5).getInt("cellid")));
+              paramArrayOfByte.put("shRssi", String.valueOf(((JSONObject)localObject5).getInt("rss")));
+              localJSONArray2.put(paramArrayOfByte);
+              i += 1;
+            }
+            catch (JSONException paramArrayOfByte)
+            {
+              try
+              {
+                Object localObject4;
+                Object localObject3;
+                while (j < localObject3.length())
+                {
+                  paramArrayOfByte = new JSONObject();
+                  localObject4 = (JSONObject)localObject3.get(j);
+                  paramArrayOfByte.put("lMac", ((JSONObject)localObject4).getString("mac"));
+                  paramArrayOfByte.put("shRssi", String.valueOf(((JSONObject)localObject4).getInt("rssi")));
+                  localJSONArray1.put(paramArrayOfByte);
+                  j += 1;
+                }
+              }
+              catch (JSONException paramArrayOfByte)
+              {
+                try
+                {
+                  Object localObject1;
+                  localJSONObject4.put("iLat", String.valueOf(((JSONObject)localObject1).getInt("lat")));
+                  localJSONObject4.put("iLon", String.valueOf(((JSONObject)localObject1).getInt("lon")));
+                  localJSONObject4.put("iAlt", String.valueOf(((JSONObject)localObject1).getInt("alt")));
+                  localJSONObject4.put("eType", String.valueOf(((JSONObject)localObject1).getInt("type")));
+                }
+                catch (JSONException paramArrayOfByte)
+                {
+                  try
+                  {
+                    JSONObject localJSONObject5;
+                    localJSONObject3.put("stAttr", localJSONObject5);
+                  }
+                  catch (JSONException paramArrayOfByte)
+                  {
+                    try
+                    {
+                      JSONObject localJSONObject4;
+                      localJSONObject3.put("stGps", localJSONObject4);
+                    }
+                    catch (JSONException paramArrayOfByte)
+                    {
+                      try
+                      {
+                        JSONArray localJSONArray2;
+                        localJSONObject3.put("vCells", localJSONArray2);
+                      }
+                      catch (JSONException paramArrayOfByte)
+                      {
+                        try
+                        {
+                          for (;;)
+                          {
+                            JSONObject localJSONObject3;
+                            JSONArray localJSONArray1;
+                            JSONObject localJSONObject2;
+                            int k;
+                            localJSONObject3.put("vWifis", localJSONArray1);
+                            return localJSONObject3.toString();
+                            localUnsupportedEncodingException1 = localUnsupportedEncodingException1;
+                            continue;
+                            paramArrayOfByte = paramArrayOfByte;
+                            continue;
+                            localJSONException = localJSONException;
+                            UnsupportedEncodingException localUnsupportedEncodingException2 = localUnsupportedEncodingException1;
+                            Object localObject2 = localJSONObject2;
+                            continue;
+                            paramArrayOfByte = paramArrayOfByte;
+                            continue;
+                            paramArrayOfByte = paramArrayOfByte;
+                            int j = k;
+                            continue;
+                            paramArrayOfByte = paramArrayOfByte;
+                            continue;
+                            paramArrayOfByte = paramArrayOfByte;
+                            continue;
+                            paramArrayOfByte = paramArrayOfByte;
+                            continue;
+                            paramArrayOfByte = paramArrayOfByte;
+                            continue;
+                            paramArrayOfByte = paramArrayOfByte;
+                          }
+                        }
+                        catch (JSONException paramArrayOfByte)
+                        {
+                          break label618;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    paramArrayOfByte = new String(paramArrayOfByte);
   }
   
   private static String getBitmapBase64String(String paramString)
@@ -566,8 +393,13 @@ public class PublicAccountJavascriptInterfaceImpl
         {
           paramString.close();
           arrayOfByte = ((ByteArrayOutputStream)localObject).toByteArray();
-          if (BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length) == null) {
+          if (BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length) == null)
+          {
             return null;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append(Base64Util.encodeToString(arrayOfByte, 2));
+            return ((StringBuilder)localObject).toString();
           }
         }
         else
@@ -575,42 +407,39 @@ public class PublicAccountJavascriptInterfaceImpl
           ((ByteArrayOutputStream)localObject).write(arrayOfByte, 0, i);
           continue;
         }
-        if ((arrayOfByte[0] & 0xFF) != 66) {
-          break label225;
-        }
-      }
-      catch (IOException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
         localObject = "data:image;base64,";
-        if (((arrayOfByte[0] & 0xFF) == 255) && ((arrayOfByte[1] & 0xFF) == 216))
-        {
-          paramString = "data:image/jpeg;base64,";
-          return paramString + Base64Util.encodeToString(arrayOfByte, 2);
-          paramString = (String)localObject;
-          if ((arrayOfByte[0] & 0xFF) != 71) {
-            continue;
-          }
-          paramString = (String)localObject;
-          if ((arrayOfByte[1] & 0xFF) != 73) {
-            continue;
-          }
-          paramString = "data:image/gif;base64,";
-          continue;
-        }
       }
       catch (OutOfMemoryError paramString)
       {
         paramString.printStackTrace();
         return null;
       }
-      if ((arrayOfByte[1] & 0xFF) == 77) {
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      if (((arrayOfByte[0] & 0xFF) == 255) && ((arrayOfByte[1] & 0xFF) == 216))
+      {
+        paramString = "data:image/jpeg;base64,";
+      }
+      else if (((arrayOfByte[0] & 0xFF) == 66) && ((arrayOfByte[1] & 0xFF) == 77))
+      {
         paramString = "data:image/bmp;base64,";
-      } else {
-        label225:
-        if (((arrayOfByte[0] & 0xFF) == 137) && ((arrayOfByte[1] & 0xFF) == 80)) {
-          paramString = "data:image/png;base64,";
+      }
+      else if (((arrayOfByte[0] & 0xFF) == 137) && ((arrayOfByte[1] & 0xFF) == 80))
+      {
+        paramString = "data:image/png;base64,";
+      }
+      else
+      {
+        paramString = (String)localObject;
+        if ((arrayOfByte[0] & 0xFF) == 71)
+        {
+          paramString = (String)localObject;
+          if ((arrayOfByte[1] & 0xFF) == 73) {
+            paramString = "data:image/gif;base64,";
+          }
         }
       }
     }
@@ -619,18 +448,20 @@ public class PublicAccountJavascriptInterfaceImpl
   private static long getH5DataUsage()
   {
     Object localObject = new File(PUBACCOUNT_DATA_PATH);
-    if (!((File)localObject).exists()) {
+    boolean bool = ((File)localObject).exists();
+    long l = 0L;
+    if (!bool) {
       return 0L;
     }
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localObject);
-    long l = 0L;
     while (!localArrayList.isEmpty())
     {
+      int i = 0;
       localObject = (File)localArrayList.remove(0);
       if (((File)localObject).isFile())
       {
-        l = ((File)localObject).length() + l;
+        l += ((File)localObject).length();
       }
       else
       {
@@ -638,7 +469,6 @@ public class PublicAccountJavascriptInterfaceImpl
         if (localObject != null)
         {
           int j = localObject.length;
-          int i = 0;
           while (i < j)
           {
             localArrayList.add(localObject[i]);
@@ -657,85 +487,96 @@ public class PublicAccountJavascriptInterfaceImpl
   
   private void getRealLocationImpl(boolean paramBoolean, String paramString1, String paramString2)
   {
-    int j = 0;
-    boolean bool2 = false;
     long l1 = 0L;
-    int i = j;
-    boolean bool1 = bool2;
     try
     {
       paramString1 = new JSONObject(paramString1);
-      i = j;
-      bool1 = bool2;
-      bool2 = paramString1.optBoolean("fallback", false);
-      i = j;
-      bool1 = bool2;
-      j = paramString1.optInt("decrypt_padding", 0);
-      i = j;
-      bool1 = bool2;
-      long l2 = paramString1.optLong("allowCacheTime", 0L);
-      l1 = 1000L * l2;
-      bool1 = bool2;
-      i = j;
+      bool = paramString1.optBoolean("fallback", false);
     }
     catch (JSONException paramString1)
     {
-      label96:
-      break label96;
+      boolean bool;
+      int i;
+      long l2;
+      label53:
+      label56:
+      label59:
+      break label53;
     }
-    ((AppActivity)this.context).requestPermissions(new PublicAccountJavascriptInterfaceImpl.10(this, paramBoolean, i, bool1, paramString2, l1), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    try
+    {
+      i = paramString1.optInt("decrypt_padding", 0);
+    }
+    catch (JSONException paramString1)
+    {
+      break label56;
+    }
+    try
+    {
+      l2 = paramString1.optLong("allowCacheTime", 0L);
+      l1 = l2 * 1000L;
+    }
+    catch (JSONException paramString1)
+    {
+      break label59;
+    }
+    bool = false;
+    i = 0;
+    ((AppActivity)this.context).requestPermissions(new PublicAccountJavascriptInterfaceImpl.10(this, paramBoolean, i, bool, paramString2, l1), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
   }
   
   private void getRealLocationPrivate(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if (this.mRuntime.a() == null) {}
-    String str;
-    Object localObject;
-    do
+    if (this.mRuntime.a() == null) {
+      return;
+    }
+    Object localObject = this.context;
+    if (localObject != null)
     {
-      do
+      if (((Activity)localObject).isFinishing()) {
+        return;
+      }
+      if ((this.context instanceof AppActivity))
       {
-        do
-        {
-          return;
-        } while ((this.context == null) || (this.context.isFinishing()));
-        if (!(this.context instanceof AppActivity)) {
-          break label291;
-        }
-        if ((this.mDialog != null) && (this.mDialog.isShowing())) {
+        localObject = this.mDialog;
+        if ((localObject != null) && (((QQCustomDialog)localObject).isShowing())) {
           this.mDialog.dismiss();
         }
-        str = "";
         localObject = this.mRuntime.a();
+        String str = "";
         if (localObject != null) {
-          str = ((AppInterface)localObject).getAccount();
+          localObject = ((AppInterface)localObject).getAccount();
+        } else {
+          localObject = "";
         }
-        localObject = "";
         if (this.mRuntime.a() != null) {
-          localObject = Util.b(this.mRuntime.a().getUrl());
+          str = Util.b(this.mRuntime.a().getUrl());
         }
-        if (!getLocationPermissionGrant(str, (String)localObject)) {
-          break;
+        if (getLocationPermissionGrant((String)localObject, str))
+        {
+          getRealLocationImpl(paramBoolean, paramString1, paramString2);
+          if (QLog.isColorLevel()) {
+            QLog.d("PAjs", 2, "already grant");
+          }
+          return;
         }
-        getRealLocationImpl(paramBoolean, paramString1, paramString2);
-      } while (!QLog.isColorLevel());
-      QLog.d("PAjs", 2, "already grant");
-      return;
-      if (!this.hasAsked) {
-        break;
+        if (this.hasAsked)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PAjs", 2, "already ask");
+          }
+          return;
+        }
+        this.mDialog = DialogUtil.a(this.context, 0);
+        this.mDialog.setMessage(this.context.getString(2131720369, new Object[] { str }));
+        this.mDialog.setPositiveButton(2131720389, new PublicAccountJavascriptInterfaceImpl.7(this, paramBoolean, paramString1, paramString2, (String)localObject, str));
+        this.mDialog.setNegativeButton(this.context.getString(2131720400), new PublicAccountJavascriptInterfaceImpl.8(this, paramString2));
+        this.mDialog.setOnCancelListener(new PublicAccountJavascriptInterfaceImpl.9(this, paramString2));
+        this.mDialog.show();
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("PAjs", 2, "already ask");
-    return;
-    this.mDialog = DialogUtil.a(this.context, 0);
-    this.mDialog.setMessage(this.context.getString(2131720650, new Object[] { localObject }));
-    this.mDialog.setPositiveButton(2131720670, new PublicAccountJavascriptInterfaceImpl.7(this, paramBoolean, paramString1, paramString2, str, (String)localObject));
-    this.mDialog.setNegativeButton(this.context.getString(2131720681), new PublicAccountJavascriptInterfaceImpl.8(this, paramString2));
-    this.mDialog.setOnCancelListener(new PublicAccountJavascriptInterfaceImpl.9(this, paramString2));
-    this.mDialog.show();
-    return;
-    label291:
-    callJs(paramString2, new String[] { "-4", "{}" });
+      callJs(paramString2, new String[] { "-4", "{}" });
+    }
   }
   
   private String hash(String paramString)
@@ -748,49 +589,73 @@ public class PublicAccountJavascriptInterfaceImpl
       localMessageDigest.reset();
       return paramString;
     }
-    catch (UnsupportedEncodingException paramString)
+    catch (NoSuchAlgorithmException|UnsupportedEncodingException paramString)
     {
-      return "wronghash";
+      label32:
+      break label32;
     }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      label33:
-      break label33;
-    }
+    return "wronghash";
   }
   
   private static boolean isParentDomain(String paramString1, String paramString2)
   {
-    if (paramString2 == null) {}
-    while ((!paramString2.equals(paramString1)) && ((paramString1.indexOf(".") <= 0) || (!paramString2.endsWith("." + paramString1)))) {
+    boolean bool2 = false;
+    if (paramString2 == null) {
       return false;
     }
-    return true;
+    boolean bool1;
+    if (!paramString2.equals(paramString1))
+    {
+      bool1 = bool2;
+      if (paramString1.indexOf(".") > 0)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(".");
+        localStringBuilder.append(paramString1);
+        bool1 = bool2;
+        if (!paramString2.endsWith(localStringBuilder.toString())) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private String readHash(String paramString1, String paramString2, String paramString3)
   {
-    Object localObject = this.mRuntime.a();
-    if (localObject == null) {
+    Object localObject2 = this.mRuntime.a();
+    Object localObject1 = null;
+    if (localObject2 == null) {
       return null;
     }
-    localObject = ((AppInterface)localObject).getEntityManagerFactory(((AppInterface)localObject).getAccount()).createEntityManager();
-    paramString1 = (CouponH5Data)((EntityManager)localObject).find(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
-    ((EntityManager)localObject).close();
-    if (paramString1 != null) {}
-    for (paramString1 = paramString1.mData;; paramString1 = null) {
-      return paramString1;
+    localObject2 = ((AppInterface)localObject2).getEntityManagerFactory(((AppInterface)localObject2).getAccount()).createEntityManager();
+    paramString2 = (CouponH5Data)((EntityManager)localObject2).find(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
+    ((EntityManager)localObject2).close();
+    paramString1 = localObject1;
+    if (paramString2 != null) {
+      paramString1 = paramString2.mData;
     }
+    return paramString1;
   }
   
   public static void setLocationPermissionGrant(String paramString1, String paramString2, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      QLog.e("PAjs", 1, new Object[] { "uin:", paramString1, " host:", paramString2 });
+      Object localObject = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("LocationPermissionPref");
+      paramString1 = ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("-location");
+      paramString1.putInt(((StringBuilder)localObject).toString(), paramInt).commit();
       return;
     }
-    BaseApplicationImpl.getApplication().getSharedPreferences(paramString1 + "LocationPermissionPref", 0).edit().putInt(paramString2 + "-location", paramInt).commit();
+    QLog.e("PAjs", 1, new Object[] { "uin:", paramString1, " host:", paramString2 });
   }
   
   private void writeDataInMainThread(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -819,487 +684,561 @@ public class PublicAccountJavascriptInterfaceImpl
     //   11: aload_0
     //   12: getfield 181	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
     //   15: invokevirtual 187	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
-    //   18: astore 7
-    //   20: aload 7
-    //   22: ifnull +864 -> 886
-    //   25: aload 7
-    //   27: invokevirtual 192	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   30: ifnull +856 -> 886
-    //   33: new 256	org/json/JSONObject
-    //   36: dup
-    //   37: aload_2
-    //   38: invokespecial 264	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   41: astore 9
-    //   43: aload 9
-    //   45: ldc_w 723
-    //   48: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   51: astore 6
-    //   53: aload 6
-    //   55: astore 5
-    //   57: aload 6
-    //   59: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   62: ifne +25 -> 87
-    //   65: aload 6
-    //   67: ldc_w 728
-    //   70: ldc_w 730
-    //   73: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   76: ldc_w 736
-    //   79: ldc_w 738
-    //   82: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   85: astore 5
-    //   87: aload 4
-    //   89: ldc_w 723
-    //   92: aload 5
-    //   94: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   97: pop
-    //   98: getstatic 109	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:sH5DataUsage	J
-    //   101: ldc2_w 739
-    //   104: lcmp
-    //   105: ifle +63 -> 168
-    //   108: new 742	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl$16
-    //   111: dup
-    //   112: aload_0
-    //   113: aload_3
-    //   114: aload 4
-    //   116: aload_2
-    //   117: invokespecial 745	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl$16:<init>	(Lcom/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)V
-    //   120: invokestatic 749	com/tencent/mobileqq/app/ThreadManager:executeOnNetWorkThread	(Ljava/lang/Runnable;)V
-    //   123: return
-    //   124: astore_1
-    //   125: aload_0
-    //   126: aload_3
-    //   127: iconst_1
-    //   128: anewarray 208	java/lang/String
-    //   131: dup
-    //   132: iconst_0
-    //   133: new 76	java/lang/StringBuilder
-    //   136: dup
-    //   137: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   140: ldc_w 751
-    //   143: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: aload 4
-    //   148: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   151: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   154: ldc_w 753
-    //   157: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   163: aastore
-    //   164: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   167: return
-    //   168: aload 9
-    //   170: ldc_w 755
-    //   173: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   176: astore 6
-    //   178: aload 6
-    //   180: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   183: ifeq +46 -> 229
-    //   186: aload_0
-    //   187: aload_3
-    //   188: iconst_1
-    //   189: anewarray 208	java/lang/String
-    //   192: dup
-    //   193: iconst_0
-    //   194: new 76	java/lang/StringBuilder
-    //   197: dup
-    //   198: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   201: ldc_w 757
-    //   204: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: aload 4
-    //   209: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   212: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   215: ldc_w 753
-    //   218: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   224: aastore
-    //   225: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   228: return
-    //   229: aload 9
-    //   231: ldc_w 759
-    //   234: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   237: astore 5
-    //   239: aload 5
-    //   241: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   244: ifeq +46 -> 290
+    //   18: astore 8
+    //   20: aload 8
+    //   22: ifnonnull +4 -> 26
+    //   25: return
+    //   26: aload 8
+    //   28: invokevirtual 192	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
+    //   31: ifnonnull +4 -> 35
+    //   34: return
+    //   35: new 256	org/json/JSONObject
+    //   38: dup
+    //   39: aload_2
+    //   40: invokespecial 267	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   43: astore 10
+    //   45: aload 10
+    //   47: ldc_w 723
+    //   50: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   53: astore 6
+    //   55: aload 6
+    //   57: astore 5
+    //   59: aload 6
+    //   61: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   64: ifne +25 -> 89
+    //   67: aload 6
+    //   69: ldc_w 728
+    //   72: ldc_w 730
+    //   75: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   78: ldc_w 736
+    //   81: ldc_w 738
+    //   84: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   87: astore 5
+    //   89: aload 4
+    //   91: ldc_w 723
+    //   94: aload 5
+    //   96: invokevirtual 297	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   99: pop
+    //   100: getstatic 109	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:sH5DataUsage	J
+    //   103: ldc2_w 739
+    //   106: lcmp
+    //   107: ifle +19 -> 126
+    //   110: new 742	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl$16
+    //   113: dup
+    //   114: aload_0
+    //   115: aload_3
+    //   116: aload 4
+    //   118: aload_2
+    //   119: invokespecial 745	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl$16:<init>	(Lcom/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)V
+    //   122: invokestatic 749	com/tencent/mobileqq/app/ThreadManager:executeOnNetWorkThread	(Ljava/lang/Runnable;)V
+    //   125: return
+    //   126: aload 10
+    //   128: ldc_w 751
+    //   131: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   134: astore 6
+    //   136: aload 6
+    //   138: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   141: ifeq +54 -> 195
+    //   144: new 76	java/lang/StringBuilder
+    //   147: dup
+    //   148: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   151: astore_1
+    //   152: aload_1
+    //   153: ldc_w 753
+    //   156: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: pop
+    //   160: aload_1
+    //   161: aload 4
+    //   163: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   166: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   169: pop
+    //   170: aload_1
+    //   171: ldc_w 755
+    //   174: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: pop
+    //   178: aload_0
+    //   179: aload_3
+    //   180: iconst_1
+    //   181: anewarray 208	java/lang/String
+    //   184: dup
+    //   185: iconst_0
+    //   186: aload_1
+    //   187: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   190: aastore
+    //   191: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   194: return
+    //   195: aload 10
+    //   197: ldc_w 757
+    //   200: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   203: astore 7
+    //   205: aload 7
+    //   207: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   210: ifeq +54 -> 264
+    //   213: new 76	java/lang/StringBuilder
+    //   216: dup
+    //   217: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   220: astore_1
+    //   221: aload_1
+    //   222: ldc_w 759
+    //   225: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   228: pop
+    //   229: aload_1
+    //   230: aload 4
+    //   232: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   235: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: pop
+    //   239: aload_1
+    //   240: ldc_w 755
+    //   243: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   246: pop
     //   247: aload_0
     //   248: aload_3
     //   249: iconst_1
     //   250: anewarray 208	java/lang/String
     //   253: dup
     //   254: iconst_0
-    //   255: new 76	java/lang/StringBuilder
-    //   258: dup
-    //   259: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   262: ldc_w 761
-    //   265: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: aload 4
-    //   270: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   273: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   276: ldc_w 753
-    //   279: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   282: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   285: aastore
-    //   286: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   289: return
-    //   290: aload 9
-    //   292: ldc_w 763
-    //   295: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   298: astore 8
-    //   300: aload 8
-    //   302: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   305: ifeq +46 -> 351
-    //   308: aload_0
-    //   309: aload_3
-    //   310: iconst_1
-    //   311: anewarray 208	java/lang/String
-    //   314: dup
-    //   315: iconst_0
-    //   316: new 76	java/lang/StringBuilder
-    //   319: dup
-    //   320: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   323: ldc_w 765
-    //   326: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   329: aload 4
-    //   331: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   334: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   337: ldc_w 753
-    //   340: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   343: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   346: aastore
-    //   347: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   350: return
-    //   351: aload_1
-    //   352: invokevirtual 768	java/net/URL:getHost	()Ljava/lang/String;
-    //   355: astore_1
-    //   356: aload 9
-    //   358: ldc_w 770
-    //   361: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   364: astore_2
-    //   365: aload_2
-    //   366: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   369: ifne +514 -> 883
-    //   372: aload_2
-    //   373: aload_1
-    //   374: invokestatic 772	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:isParentDomain	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   377: ifeq +279 -> 656
-    //   380: aload_2
-    //   381: astore_1
-    //   382: aload_1
-    //   383: astore_2
-    //   384: aload_1
-    //   385: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   388: ifeq +7 -> 395
-    //   391: ldc_w 774
-    //   394: astore_2
-    //   395: aload_0
-    //   396: aload 8
-    //   398: invokespecial 776	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:hash	(Ljava/lang/String;)Ljava/lang/String;
-    //   401: astore_1
-    //   402: aload_0
-    //   403: aload_2
-    //   404: aload 6
-    //   406: aload 5
-    //   408: aload_1
-    //   409: invokespecial 780	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:writeHash	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   412: aload_0
-    //   413: aload 8
+    //   255: aload_1
+    //   256: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   259: aastore
+    //   260: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   263: return
+    //   264: aload 10
+    //   266: ldc_w 761
+    //   269: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   272: astore 9
+    //   274: aload 9
+    //   276: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   279: ifeq +54 -> 333
+    //   282: new 76	java/lang/StringBuilder
+    //   285: dup
+    //   286: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   289: astore_1
+    //   290: aload_1
+    //   291: ldc_w 763
+    //   294: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   297: pop
+    //   298: aload_1
+    //   299: aload 4
+    //   301: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   304: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   307: pop
+    //   308: aload_1
+    //   309: ldc_w 755
+    //   312: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   315: pop
+    //   316: aload_0
+    //   317: aload_3
+    //   318: iconst_1
+    //   319: anewarray 208	java/lang/String
+    //   322: dup
+    //   323: iconst_0
+    //   324: aload_1
+    //   325: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   328: aastore
+    //   329: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   332: return
+    //   333: aload_1
+    //   334: invokevirtual 766	java/net/URL:getHost	()Ljava/lang/String;
+    //   337: astore_2
+    //   338: aload 10
+    //   340: ldc_w 768
+    //   343: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   346: astore 5
+    //   348: aload_2
+    //   349: astore_1
+    //   350: aload 5
+    //   352: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   355: ifne +69 -> 424
+    //   358: aload 5
+    //   360: aload_2
+    //   361: invokestatic 770	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:isParentDomain	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   364: ifeq +9 -> 373
+    //   367: aload 5
+    //   369: astore_1
+    //   370: goto +54 -> 424
+    //   373: new 76	java/lang/StringBuilder
+    //   376: dup
+    //   377: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   380: astore_1
+    //   381: aload_1
+    //   382: ldc_w 772
+    //   385: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   388: pop
+    //   389: aload_1
+    //   390: aload 4
+    //   392: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   395: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   398: pop
+    //   399: aload_1
+    //   400: ldc_w 755
+    //   403: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   406: pop
+    //   407: aload_0
+    //   408: aload_3
+    //   409: iconst_1
+    //   410: anewarray 208	java/lang/String
+    //   413: dup
+    //   414: iconst_0
     //   415: aload_1
-    //   416: invokespecial 782	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:encrypt	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   419: astore 8
-    //   421: new 447	java/io/File
-    //   424: dup
-    //   425: new 76	java/lang/StringBuilder
-    //   428: dup
-    //   429: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   432: getstatic 102	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:PUBACCOUNT_DATA_PATH	Ljava/lang/String;
-    //   435: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   438: ldc_w 784
-    //   441: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   444: aload 7
-    //   446: invokevirtual 192	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   449: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
-    //   452: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   455: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   458: invokespecial 448	java/io/File:<init>	(Ljava/lang/String;)V
-    //   461: astore_1
-    //   462: aload_1
-    //   463: invokevirtual 451	java/io/File:exists	()Z
-    //   466: ifne +233 -> 699
-    //   469: aload_1
-    //   470: invokevirtual 790	java/io/File:mkdirs	()Z
-    //   473: pop
-    //   474: new 447	java/io/File
-    //   477: dup
-    //   478: aload_1
-    //   479: aload_2
-    //   480: invokespecial 793	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   483: astore_1
-    //   484: aload_1
-    //   485: invokevirtual 451	java/io/File:exists	()Z
-    //   488: ifne +231 -> 719
-    //   491: aload_1
-    //   492: invokevirtual 790	java/io/File:mkdirs	()Z
-    //   495: pop
-    //   496: new 447	java/io/File
-    //   499: dup
-    //   500: aload_1
-    //   501: aload 6
-    //   503: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
-    //   506: invokespecial 793	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   509: astore 6
-    //   511: aload 6
+    //   416: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   419: aastore
+    //   420: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   423: return
+    //   424: aload_1
+    //   425: astore_2
+    //   426: aload_1
+    //   427: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   430: ifeq +7 -> 437
+    //   433: ldc_w 774
+    //   436: astore_2
+    //   437: aload_0
+    //   438: aload 9
+    //   440: invokespecial 776	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:hash	(Ljava/lang/String;)Ljava/lang/String;
+    //   443: astore_1
+    //   444: aload_0
+    //   445: aload_2
+    //   446: aload 6
+    //   448: aload 7
+    //   450: aload_1
+    //   451: invokespecial 780	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:writeHash	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   454: aload_0
+    //   455: aload 9
+    //   457: aload_1
+    //   458: invokespecial 782	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:encrypt	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   461: astore 9
+    //   463: new 76	java/lang/StringBuilder
+    //   466: dup
+    //   467: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   470: astore_1
+    //   471: aload_1
+    //   472: getstatic 102	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:PUBACCOUNT_DATA_PATH	Ljava/lang/String;
+    //   475: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   478: pop
+    //   479: aload_1
+    //   480: ldc_w 784
+    //   483: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   486: pop
+    //   487: aload_1
+    //   488: aload 8
+    //   490: invokevirtual 192	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
+    //   493: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   496: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   499: pop
+    //   500: new 447	java/io/File
+    //   503: dup
+    //   504: aload_1
+    //   505: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   508: invokespecial 448	java/io/File:<init>	(Ljava/lang/String;)V
+    //   511: astore_1
+    //   512: aload_1
     //   513: invokevirtual 451	java/io/File:exists	()Z
-    //   516: ifne +223 -> 739
-    //   519: aload 6
-    //   521: invokevirtual 790	java/io/File:mkdirs	()Z
-    //   524: pop
-    //   525: aconst_null
-    //   526: astore_1
-    //   527: aload_0
-    //   528: monitorenter
-    //   529: aload_1
-    //   530: astore_2
-    //   531: new 447	java/io/File
-    //   534: dup
-    //   535: aload 6
-    //   537: aload 5
-    //   539: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
-    //   542: invokespecial 793	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   545: astore 5
-    //   547: aload_1
-    //   548: astore_2
-    //   549: aload 5
-    //   551: invokevirtual 451	java/io/File:exists	()Z
-    //   554: ifeq +11 -> 565
-    //   557: aload_1
-    //   558: astore_2
-    //   559: aload 5
-    //   561: invokevirtual 796	java/io/File:delete	()Z
-    //   564: pop
-    //   565: aload_1
-    //   566: astore_2
-    //   567: new 798	java/io/FileWriter
-    //   570: dup
-    //   571: aload 5
-    //   573: invokespecial 801	java/io/FileWriter:<init>	(Ljava/io/File;)V
-    //   576: astore_1
-    //   577: aload_1
-    //   578: aload 8
-    //   580: invokevirtual 803	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   583: getstatic 109	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:sH5DataUsage	J
-    //   586: aload 5
-    //   588: invokevirtual 468	java/io/File:length	()J
-    //   591: ladd
-    //   592: putstatic 109	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:sH5DataUsage	J
-    //   595: aload_0
-    //   596: monitorexit
-    //   597: aload_1
-    //   598: astore_2
-    //   599: aload_0
-    //   600: aload_3
-    //   601: iconst_1
-    //   602: anewarray 208	java/lang/String
-    //   605: dup
-    //   606: iconst_0
-    //   607: new 76	java/lang/StringBuilder
-    //   610: dup
-    //   611: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   614: ldc_w 805
-    //   617: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   620: aload 4
-    //   622: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   625: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   628: ldc_w 753
-    //   631: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   634: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   637: aastore
-    //   638: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   641: aload_1
-    //   642: ifnull +244 -> 886
-    //   645: aload_1
-    //   646: invokevirtual 806	java/io/FileWriter:close	()V
-    //   649: return
-    //   650: astore_1
-    //   651: aload_1
-    //   652: invokevirtual 428	java/io/IOException:printStackTrace	()V
-    //   655: return
-    //   656: aload_0
-    //   657: aload_3
-    //   658: iconst_1
-    //   659: anewarray 208	java/lang/String
-    //   662: dup
-    //   663: iconst_0
-    //   664: new 76	java/lang/StringBuilder
-    //   667: dup
-    //   668: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   671: ldc_w 808
-    //   674: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   677: aload 4
-    //   679: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   682: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   685: ldc_w 753
-    //   688: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   691: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   694: aastore
-    //   695: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   698: return
+    //   516: ifne +11 -> 527
+    //   519: aload_1
+    //   520: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   523: pop
+    //   524: goto +20 -> 544
+    //   527: aload_1
+    //   528: invokevirtual 466	java/io/File:isFile	()Z
+    //   531: ifeq +13 -> 544
+    //   534: aload_1
+    //   535: invokevirtual 793	java/io/File:delete	()Z
+    //   538: pop
+    //   539: aload_1
+    //   540: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   543: pop
+    //   544: new 447	java/io/File
+    //   547: dup
+    //   548: aload_1
+    //   549: aload_2
+    //   550: invokespecial 796	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   553: astore_1
+    //   554: aload_1
+    //   555: invokevirtual 451	java/io/File:exists	()Z
+    //   558: ifne +11 -> 569
+    //   561: aload_1
+    //   562: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   565: pop
+    //   566: goto +20 -> 586
+    //   569: aload_1
+    //   570: invokevirtual 466	java/io/File:isFile	()Z
+    //   573: ifeq +13 -> 586
+    //   576: aload_1
+    //   577: invokevirtual 793	java/io/File:delete	()Z
+    //   580: pop
+    //   581: aload_1
+    //   582: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   585: pop
+    //   586: new 447	java/io/File
+    //   589: dup
+    //   590: aload_1
+    //   591: aload 6
+    //   593: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   596: invokespecial 796	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   599: astore 8
+    //   601: aload 8
+    //   603: invokevirtual 451	java/io/File:exists	()Z
+    //   606: ifne +12 -> 618
+    //   609: aload 8
+    //   611: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   614: pop
+    //   615: goto +23 -> 638
+    //   618: aload 8
+    //   620: invokevirtual 466	java/io/File:isFile	()Z
+    //   623: ifeq +15 -> 638
+    //   626: aload 8
+    //   628: invokevirtual 793	java/io/File:delete	()Z
+    //   631: pop
+    //   632: aload 8
+    //   634: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   637: pop
+    //   638: aconst_null
+    //   639: astore_1
+    //   640: aconst_null
+    //   641: astore_2
+    //   642: aconst_null
+    //   643: astore 6
+    //   645: aload_0
+    //   646: monitorenter
+    //   647: aload 6
+    //   649: astore 5
+    //   651: new 447	java/io/File
+    //   654: dup
+    //   655: aload 8
+    //   657: aload 7
+    //   659: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   662: invokespecial 796	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   665: astore_2
+    //   666: aload 6
+    //   668: astore 5
+    //   670: aload_2
+    //   671: invokevirtual 451	java/io/File:exists	()Z
+    //   674: ifeq +12 -> 686
+    //   677: aload 6
+    //   679: astore 5
+    //   681: aload_2
+    //   682: invokevirtual 793	java/io/File:delete	()Z
+    //   685: pop
+    //   686: aload 6
+    //   688: astore 5
+    //   690: new 798	java/io/FileWriter
+    //   693: dup
+    //   694: aload_2
+    //   695: invokespecial 801	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   698: astore_1
     //   699: aload_1
-    //   700: invokevirtual 466	java/io/File:isFile	()Z
-    //   703: ifeq -229 -> 474
-    //   706: aload_1
-    //   707: invokevirtual 796	java/io/File:delete	()Z
-    //   710: pop
-    //   711: aload_1
-    //   712: invokevirtual 790	java/io/File:mkdirs	()Z
-    //   715: pop
-    //   716: goto -242 -> 474
-    //   719: aload_1
-    //   720: invokevirtual 466	java/io/File:isFile	()Z
-    //   723: ifeq -227 -> 496
-    //   726: aload_1
-    //   727: invokevirtual 796	java/io/File:delete	()Z
-    //   730: pop
-    //   731: aload_1
-    //   732: invokevirtual 790	java/io/File:mkdirs	()Z
-    //   735: pop
-    //   736: goto -240 -> 496
-    //   739: aload 6
-    //   741: invokevirtual 466	java/io/File:isFile	()Z
-    //   744: ifeq -219 -> 525
-    //   747: aload 6
-    //   749: invokevirtual 796	java/io/File:delete	()Z
-    //   752: pop
-    //   753: aload 6
-    //   755: invokevirtual 790	java/io/File:mkdirs	()Z
-    //   758: pop
-    //   759: goto -234 -> 525
-    //   762: astore 5
-    //   764: aload_2
-    //   765: astore_1
-    //   766: aload_1
-    //   767: astore_2
-    //   768: aload_0
-    //   769: monitorexit
-    //   770: aload 5
-    //   772: athrow
-    //   773: astore_2
+    //   700: aload 9
+    //   702: invokevirtual 803	java/io/FileWriter:write	(Ljava/lang/String;)V
+    //   705: getstatic 109	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:sH5DataUsage	J
+    //   708: aload_2
+    //   709: invokevirtual 468	java/io/File:length	()J
+    //   712: ladd
+    //   713: putstatic 109	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:sH5DataUsage	J
+    //   716: aload_0
+    //   717: monitorexit
+    //   718: new 76	java/lang/StringBuilder
+    //   721: dup
+    //   722: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   725: astore_2
+    //   726: aload_2
+    //   727: ldc_w 805
+    //   730: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   733: pop
+    //   734: aload_2
+    //   735: aload 4
+    //   737: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   740: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   743: pop
+    //   744: aload_2
+    //   745: ldc_w 755
+    //   748: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   751: pop
+    //   752: aload_0
+    //   753: aload_3
+    //   754: iconst_1
+    //   755: anewarray 208	java/lang/String
+    //   758: dup
+    //   759: iconst_0
+    //   760: aload_2
+    //   761: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   764: aastore
+    //   765: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   768: aload_1
+    //   769: invokevirtual 806	java/io/FileWriter:close	()V
+    //   772: return
+    //   773: astore_1
     //   774: aload_1
-    //   775: astore_2
-    //   776: aload_0
-    //   777: aload_3
-    //   778: iconst_1
-    //   779: anewarray 208	java/lang/String
-    //   782: dup
-    //   783: iconst_0
-    //   784: new 76	java/lang/StringBuilder
-    //   787: dup
-    //   788: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   791: ldc_w 810
-    //   794: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   797: aload 4
-    //   799: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   802: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   805: ldc_w 753
-    //   808: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   811: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   814: aastore
-    //   815: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   818: aload_1
-    //   819: ifnull +67 -> 886
-    //   822: aload_1
-    //   823: invokevirtual 806	java/io/FileWriter:close	()V
-    //   826: return
-    //   827: astore_1
-    //   828: aload_1
-    //   829: invokevirtual 428	java/io/IOException:printStackTrace	()V
-    //   832: return
-    //   833: astore_1
-    //   834: aconst_null
-    //   835: astore_2
+    //   775: invokevirtual 435	java/io/IOException:printStackTrace	()V
+    //   778: return
+    //   779: astore_2
+    //   780: goto +108 -> 888
+    //   783: aload_1
+    //   784: astore_2
+    //   785: goto +29 -> 814
+    //   788: astore 6
+    //   790: aload_1
+    //   791: astore_2
+    //   792: goto +8 -> 800
+    //   795: astore 6
+    //   797: aload 5
+    //   799: astore_2
+    //   800: aload_2
+    //   801: astore 5
+    //   803: aload_0
+    //   804: monitorexit
+    //   805: aload_2
+    //   806: astore_1
+    //   807: aload 6
+    //   809: athrow
+    //   810: astore_2
+    //   811: goto +77 -> 888
+    //   814: aload_2
+    //   815: astore_1
+    //   816: new 76	java/lang/StringBuilder
+    //   819: dup
+    //   820: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   823: astore 5
+    //   825: aload_2
+    //   826: astore_1
+    //   827: aload 5
+    //   829: ldc_w 808
+    //   832: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   835: pop
     //   836: aload_2
-    //   837: ifnull +7 -> 844
-    //   840: aload_2
-    //   841: invokevirtual 806	java/io/FileWriter:close	()V
-    //   844: aload_1
-    //   845: athrow
-    //   846: astore_2
-    //   847: aload_2
-    //   848: invokevirtual 428	java/io/IOException:printStackTrace	()V
-    //   851: goto -7 -> 844
-    //   854: astore 5
-    //   856: aload_1
-    //   857: astore_2
-    //   858: aload 5
-    //   860: astore_1
-    //   861: goto -25 -> 836
-    //   864: astore_1
-    //   865: goto -29 -> 836
-    //   868: astore_1
-    //   869: aconst_null
-    //   870: astore_1
-    //   871: goto -97 -> 774
-    //   874: astore_2
-    //   875: goto -101 -> 774
-    //   878: astore 5
-    //   880: goto -114 -> 766
-    //   883: goto -501 -> 382
-    //   886: return
+    //   837: astore_1
+    //   838: aload 5
+    //   840: aload 4
+    //   842: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   845: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   848: pop
+    //   849: aload_2
+    //   850: astore_1
+    //   851: aload 5
+    //   853: ldc_w 755
+    //   856: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   859: pop
+    //   860: aload_2
+    //   861: astore_1
+    //   862: aload_0
+    //   863: aload_3
+    //   864: iconst_1
+    //   865: anewarray 208	java/lang/String
+    //   868: dup
+    //   869: iconst_0
+    //   870: aload 5
+    //   872: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   875: aastore
+    //   876: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   879: aload_2
+    //   880: ifnull +76 -> 956
+    //   883: aload_2
+    //   884: invokevirtual 806	java/io/FileWriter:close	()V
+    //   887: return
+    //   888: aload_1
+    //   889: ifnull +15 -> 904
+    //   892: aload_1
+    //   893: invokevirtual 806	java/io/FileWriter:close	()V
+    //   896: goto +8 -> 904
+    //   899: astore_1
+    //   900: aload_1
+    //   901: invokevirtual 435	java/io/IOException:printStackTrace	()V
+    //   904: aload_2
+    //   905: athrow
+    //   906: new 76	java/lang/StringBuilder
+    //   909: dup
+    //   910: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   913: astore_1
+    //   914: aload_1
+    //   915: ldc_w 810
+    //   918: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   921: pop
+    //   922: aload_1
+    //   923: aload 4
+    //   925: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   928: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   931: pop
+    //   932: aload_1
+    //   933: ldc_w 755
+    //   936: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   939: pop
+    //   940: aload_0
+    //   941: aload_3
+    //   942: iconst_1
+    //   943: anewarray 208	java/lang/String
+    //   946: dup
+    //   947: iconst_0
+    //   948: aload_1
+    //   949: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   952: aastore
+    //   953: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   956: return
+    //   957: astore_1
+    //   958: goto -52 -> 906
+    //   961: astore_1
+    //   962: goto -148 -> 814
+    //   965: astore_2
+    //   966: goto -183 -> 783
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	887	0	this	PublicAccountJavascriptInterfaceImpl
-    //   0	887	1	paramURL	URL
-    //   0	887	2	paramString1	String
-    //   0	887	3	paramString2	String
-    //   0	887	4	paramJSONObject	JSONObject
-    //   55	532	5	localObject1	Object
-    //   762	9	5	localObject2	Object
-    //   854	5	5	localObject3	Object
-    //   878	1	5	localObject4	Object
-    //   51	703	6	localObject5	Object
-    //   18	427	7	localAppInterface	AppInterface
-    //   298	281	8	str	String
-    //   41	316	9	localJSONObject	JSONObject
+    //   0	969	0	this	PublicAccountJavascriptInterfaceImpl
+    //   0	969	1	paramURL	URL
+    //   0	969	2	paramString1	String
+    //   0	969	3	paramString2	String
+    //   0	969	4	paramJSONObject	JSONObject
+    //   57	814	5	localObject1	Object
+    //   53	634	6	str1	String
+    //   788	1	6	localObject2	Object
+    //   795	13	6	localObject3	Object
+    //   203	455	7	str2	String
+    //   18	638	8	localObject4	Object
+    //   272	429	9	str3	String
+    //   43	296	10	localJSONObject	JSONObject
     // Exception table:
     //   from	to	target	type
-    //   0	10	124	org/json/JSONException
-    //   11	20	124	org/json/JSONException
-    //   25	53	124	org/json/JSONException
-    //   57	87	124	org/json/JSONException
-    //   87	123	124	org/json/JSONException
-    //   168	228	124	org/json/JSONException
-    //   229	289	124	org/json/JSONException
-    //   290	350	124	org/json/JSONException
-    //   351	380	124	org/json/JSONException
-    //   384	391	124	org/json/JSONException
-    //   395	474	124	org/json/JSONException
-    //   474	496	124	org/json/JSONException
-    //   496	525	124	org/json/JSONException
-    //   645	649	124	org/json/JSONException
-    //   651	655	124	org/json/JSONException
-    //   656	698	124	org/json/JSONException
-    //   699	716	124	org/json/JSONException
-    //   719	736	124	org/json/JSONException
-    //   739	759	124	org/json/JSONException
-    //   822	826	124	org/json/JSONException
-    //   828	832	124	org/json/JSONException
-    //   840	844	124	org/json/JSONException
-    //   844	846	124	org/json/JSONException
-    //   847	851	124	org/json/JSONException
-    //   645	649	650	java/io/IOException
-    //   531	547	762	finally
-    //   549	557	762	finally
-    //   559	565	762	finally
-    //   567	577	762	finally
-    //   768	770	762	finally
-    //   770	773	773	java/io/IOException
-    //   822	826	827	java/io/IOException
-    //   527	529	833	finally
-    //   840	844	846	java/io/IOException
-    //   770	773	854	finally
-    //   599	641	864	finally
-    //   776	818	864	finally
-    //   527	529	868	java/io/IOException
-    //   599	641	874	java/io/IOException
-    //   577	597	878	finally
+    //   768	772	773	java/io/IOException
+    //   883	887	773	java/io/IOException
+    //   718	768	779	finally
+    //   699	718	788	finally
+    //   651	666	795	finally
+    //   670	677	795	finally
+    //   681	686	795	finally
+    //   690	699	795	finally
+    //   803	805	795	finally
+    //   645	647	810	finally
+    //   807	810	810	finally
+    //   816	825	810	finally
+    //   827	836	810	finally
+    //   838	849	810	finally
+    //   851	860	810	finally
+    //   862	879	810	finally
+    //   892	896	899	java/io/IOException
+    //   0	10	957	org/json/JSONException
+    //   11	20	957	org/json/JSONException
+    //   26	34	957	org/json/JSONException
+    //   35	55	957	org/json/JSONException
+    //   59	89	957	org/json/JSONException
+    //   89	125	957	org/json/JSONException
+    //   126	194	957	org/json/JSONException
+    //   195	263	957	org/json/JSONException
+    //   264	332	957	org/json/JSONException
+    //   333	348	957	org/json/JSONException
+    //   350	367	957	org/json/JSONException
+    //   373	423	957	org/json/JSONException
+    //   426	433	957	org/json/JSONException
+    //   437	524	957	org/json/JSONException
+    //   527	544	957	org/json/JSONException
+    //   544	566	957	org/json/JSONException
+    //   569	586	957	org/json/JSONException
+    //   586	615	957	org/json/JSONException
+    //   618	638	957	org/json/JSONException
+    //   768	772	957	org/json/JSONException
+    //   774	778	957	org/json/JSONException
+    //   883	887	957	org/json/JSONException
+    //   892	896	957	org/json/JSONException
+    //   900	904	957	org/json/JSONException
+    //   904	906	957	org/json/JSONException
+    //   645	647	961	java/io/IOException
+    //   807	810	961	java/io/IOException
+    //   718	768	965	java/io/IOException
   }
   
   private void writeHash(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -1310,26 +1249,31 @@ public class PublicAccountJavascriptInterfaceImpl
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory(((AppInterface)localObject).getAccount()).createEntityManager();
     CouponH5Data localCouponH5Data = (CouponH5Data)((EntityManager)localObject).find(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
-    if (localCouponH5Data == null) {
+    if (localCouponH5Data == null)
+    {
       ((EntityManager)localObject).persist(new CouponH5Data(paramString1, paramString2, paramString3, paramString4));
     }
-    for (;;)
+    else
     {
-      ((EntityManager)localObject).close();
-      return;
       localCouponH5Data.mData = paramString4;
       ((EntityManager)localObject).update(localCouponH5Data);
     }
+    ((EntityManager)localObject).close();
   }
   
   public void actionSheetAdditionalItems(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs", 2, "actionSheetAdditionalItems->paramStr:" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("actionSheetAdditionalItems->paramStr:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      Object localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).parseString2Json(paramString);
+      localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).parseString2Json(paramString);
       if (localObject != null)
       {
         paramString = (SwiftBrowserShareMenuHandler)super.getBrowserComponent(4);
@@ -1356,22 +1300,23 @@ public class PublicAccountJavascriptInterfaceImpl
           {
             if (j == 1) {
               paramString.e = true;
-            }
-            for (;;)
-            {
-              paramString.b = localArrayList;
-              return;
+            } else {
               paramString.f = true;
             }
+            paramString.b = localArrayList;
+            return;
           }
         }
       }
-      return;
     }
     catch (JSONException paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PAjs", 2, "actionSheetAdditionalItems->error:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("actionSheetAdditionalItems->error:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -1391,7 +1336,13 @@ public class PublicAccountJavascriptInterfaceImpl
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (CouponH5Data)((Iterator)localObject1).next();
-        localObject2 = new File(PUBACCOUNT_DATA_PATH + "/" + HexUtil.String2HexString(paramAppInterface.getAccount()) + "/" + ((CouponH5Data)localObject2).mHost);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(PUBACCOUNT_DATA_PATH);
+        localStringBuilder.append("/");
+        localStringBuilder.append(HexUtil.String2HexString(paramAppInterface.getAccount()));
+        localStringBuilder.append("/");
+        localStringBuilder.append(((CouponH5Data)localObject2).mHost);
+        localObject2 = new File(localStringBuilder.toString());
         if (((File)localObject2).exists()) {
           FileUtil.a((File)localObject2);
         }
@@ -1404,21 +1355,23 @@ public class PublicAccountJavascriptInterfaceImpl
   public void deleteH5Data(String paramString1, String paramString2)
   {
     CustomWebView localCustomWebView = this.mRuntime.a();
-    if (localCustomWebView == null) {}
-    AppInterface localAppInterface;
-    do
-    {
+    if (localCustomWebView == null) {
       return;
-      localAppInterface = this.mRuntime.a();
-    } while (localAppInterface == null);
+    }
+    AppInterface localAppInterface = this.mRuntime.a();
+    if (localAppInterface == null) {
+      return;
+    }
     JSONObject localJSONObject1 = new JSONObject();
     if (TextUtils.isEmpty(paramString1))
     {
-      callJs(paramString2, new String[] { "{ret:-3, response:" + localJSONObject1.toString() + "}" });
+      paramString1 = new StringBuilder();
+      paramString1.append("{ret:-3, response:");
+      paramString1.append(localJSONObject1.toString());
+      paramString1.append("}");
+      callJs(paramString2, new String[] { paramString1.toString() });
       return;
     }
-    JSONObject localJSONObject2;
-    String str2;
     try
     {
       localJSONObject2 = new JSONObject(paramString1);
@@ -1431,17 +1384,28 @@ public class PublicAccountJavascriptInterfaceImpl
       str2 = localJSONObject2.optString("path");
       if (TextUtils.isEmpty(str2))
       {
-        callJs(paramString2, new String[] { "{ret:-6, response:" + localJSONObject1.toString() + "}" });
+        paramString1 = new StringBuilder();
+        paramString1.append("{ret:-6, response:");
+        paramString1.append(localJSONObject1.toString());
+        paramString1.append("}");
+        callJs(paramString2, new String[] { paramString1.toString() });
         return;
       }
+      str3 = localJSONObject2.optString("key");
+      paramString1 = null;
     }
     catch (JSONException paramString1)
     {
-      callJs(paramString2, new String[] { "{ret:-2, response:" + localJSONObject1.toString() + "}" });
-      return;
+      JSONObject localJSONObject2;
+      String str1;
+      String str2;
+      String str3;
+      label260:
+      label344:
+      boolean bool;
+      label629:
+      break label629;
     }
-    String str3 = localJSONObject2.optString("key");
-    paramString1 = null;
     try
     {
       str1 = new URL(localCustomWebView.getUrl()).getHost();
@@ -1449,111 +1413,176 @@ public class PublicAccountJavascriptInterfaceImpl
     }
     catch (MalformedURLException localMalformedURLException)
     {
-      for (;;) {}
+      break label260;
+      break label344;
     }
-    String str1 = localJSONObject2.optString("host");
+    str1 = localJSONObject2.optString("host");
     if (!TextUtils.isEmpty(str1))
     {
       if (isParentDomain(str1, paramString1))
       {
         paramString1 = str1;
-        str1 = paramString1;
-        if (TextUtils.isEmpty(paramString1)) {
-          str1 = "defaulthost";
-        }
-        if (!TextUtils.isEmpty(str3)) {
-          break label489;
-        }
-        deleteHash(str1, str2);
-        FileUtil.a(new File(PUBACCOUNT_DATA_PATH + "/" + HexUtil.String2HexString(localAppInterface.getAccount()) + "/" + str1 + "/" + HexUtil.String2HexString(str2)));
       }
-      for (;;)
+      else
       {
-        callJs(paramString2, new String[] { "{ret:0, response:" + localJSONObject1.toString() + "}" });
+        paramString1 = new StringBuilder();
+        paramString1.append("{ret:-5, response:");
+        paramString1.append(localJSONObject1.toString());
+        paramString1.append("}");
+        callJs(paramString2, new String[] { paramString1.toString() });
         return;
-        callJs(paramString2, new String[] { "{ret:-5, response:" + localJSONObject1.toString() + "}" });
-        return;
-        label489:
-        deleteHash(str1, str2, str3);
-        FileUtil.a(new File(PUBACCOUNT_DATA_PATH + "/" + HexUtil.String2HexString(localAppInterface.getAccount()) + "/" + str1 + "/" + HexUtil.String2HexString(str2) + "/" + HexUtil.String2HexString(str3)));
       }
+      str1 = paramString1;
+      if (TextUtils.isEmpty(paramString1)) {
+        str1 = "defaulthost";
+      }
+      bool = TextUtils.isEmpty(str3);
+      if (bool)
+      {
+        deleteHash(str1, str2);
+        paramString1 = new StringBuilder();
+        paramString1.append(PUBACCOUNT_DATA_PATH);
+        paramString1.append("/");
+        paramString1.append(HexUtil.String2HexString(localAppInterface.getAccount()));
+        paramString1.append("/");
+        paramString1.append(str1);
+        paramString1.append("/");
+        paramString1.append(HexUtil.String2HexString(str2));
+        FileUtil.a(new File(paramString1.toString()));
+      }
+      else
+      {
+        deleteHash(str1, str2, str3);
+        paramString1 = new StringBuilder();
+        paramString1.append(PUBACCOUNT_DATA_PATH);
+        paramString1.append("/");
+        paramString1.append(HexUtil.String2HexString(localAppInterface.getAccount()));
+        paramString1.append("/");
+        paramString1.append(str1);
+        paramString1.append("/");
+        paramString1.append(HexUtil.String2HexString(str2));
+        paramString1.append("/");
+        paramString1.append(HexUtil.String2HexString(str3));
+        FileUtil.a(new File(paramString1.toString()));
+      }
+      paramString1 = new StringBuilder();
+      paramString1.append("{ret:0, response:");
+      paramString1.append(localJSONObject1.toString());
+      paramString1.append("}");
+      callJs(paramString2, new String[] { paramString1.toString() });
+      return;
+      paramString1 = new StringBuilder();
+      paramString1.append("{ret:-2, response:");
+      paramString1.append(localJSONObject1.toString());
+      paramString1.append("}");
+      callJs(paramString2, new String[] { paramString1.toString() });
+      return;
     }
   }
   
   public void deleteH5DataByHost(String paramString1, String paramString2)
   {
     CustomWebView localCustomWebView = this.mRuntime.a();
-    if (localCustomWebView == null) {}
-    AppInterface localAppInterface;
-    do
-    {
+    if (localCustomWebView == null) {
       return;
-      localAppInterface = this.mRuntime.a();
-    } while (localAppInterface == null);
-    JSONObject localJSONObject1 = new JSONObject();
+    }
+    AppInterface localAppInterface = this.mRuntime.a();
+    if (localAppInterface == null) {
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
     if (TextUtils.isEmpty(paramString1))
     {
-      callJs(paramString2, new String[] { "{ret:-3, response:" + localJSONObject1.toString() + "}" });
+      paramString1 = new StringBuilder();
+      paramString1.append("{ret:-3, response:");
+      paramString1.append(localJSONObject.toString());
+      paramString1.append("}");
+      callJs(paramString2, new String[] { paramString1.toString() });
       return;
     }
     try
     {
-      localJSONObject2 = new JSONObject(paramString1);
-      str = localJSONObject2.optString("callid");
-      paramString1 = str;
-      if (!TextUtils.isEmpty(str)) {
-        paramString1 = str.replace("\\", "\\\\").replace("'", "\\'");
+      localObject2 = new JSONObject(paramString1);
+      localObject1 = ((JSONObject)localObject2).optString("callid");
+      paramString1 = (String)localObject1;
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        paramString1 = ((String)localObject1).replace("\\", "\\\\").replace("'", "\\'");
       }
-      localJSONObject1.put("callid", paramString1);
+      localJSONObject.put("callid", paramString1);
       paramString1 = null;
     }
     catch (JSONException paramString1)
     {
-      JSONObject localJSONObject2;
-      String str;
-      label166:
-      label192:
-      callJs(paramString2, new String[] { "{ret:-2, response:" + localJSONObject1.toString() + "}" });
-      return;
+      Object localObject2;
+      Object localObject1;
+      label175:
+      break label396;
     }
     try
     {
-      str = new URL(localCustomWebView.getUrl()).getHost();
-      paramString1 = str;
+      localObject1 = new URL(localCustomWebView.getUrl()).getHost();
+      paramString1 = (String)localObject1;
     }
     catch (MalformedURLException localMalformedURLException)
     {
-      break label166;
-      break label192;
+      break label175;
     }
-    str = localJSONObject2.optString("host");
-    if (!TextUtils.isEmpty(str))
-    {
-      if (isParentDomain(str, paramString1))
+    localObject2 = ((JSONObject)localObject2).optString("host");
+    localObject1 = paramString1;
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+      if (isParentDomain((String)localObject2, paramString1))
       {
-        paramString1 = str;
-        str = paramString1;
-        if (TextUtils.isEmpty(paramString1)) {
-          str = "defaulthost";
-        }
-        deleteHash(str);
-        FileUtil.a(new File(PUBACCOUNT_DATA_PATH + "/" + HexUtil.String2HexString(localAppInterface.getAccount()) + "/" + str));
-        callJs(paramString2, new String[] { "{ret:0, response:" + localJSONObject1.toString() + "}" });
+        localObject1 = localObject2;
+      }
+      else
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("{ret:-5, response:");
+        paramString1.append(localJSONObject.toString());
+        paramString1.append("}");
+        callJs(paramString2, new String[] { paramString1.toString() });
         return;
       }
-      callJs(paramString2, new String[] { "{ret:-5, response:" + localJSONObject1.toString() + "}" });
-      return;
     }
+    paramString1 = (String)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      paramString1 = "defaulthost";
+    }
+    deleteHash(paramString1);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(PUBACCOUNT_DATA_PATH);
+    ((StringBuilder)localObject1).append("/");
+    ((StringBuilder)localObject1).append(HexUtil.String2HexString(localAppInterface.getAccount()));
+    ((StringBuilder)localObject1).append("/");
+    ((StringBuilder)localObject1).append(paramString1);
+    FileUtil.a(new File(((StringBuilder)localObject1).toString()));
+    paramString1 = new StringBuilder();
+    paramString1.append("{ret:0, response:");
+    paramString1.append(localJSONObject.toString());
+    paramString1.append("}");
+    callJs(paramString2, new String[] { paramString1.toString() });
+    return;
+    label396:
+    paramString1 = new StringBuilder();
+    paramString1.append("{ret:-2, response:");
+    paramString1.append(localJSONObject.toString());
+    paramString1.append("}");
+    callJs(paramString2, new String[] { paramString1.toString() });
   }
   
   public void enableNotCare(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs", 2, "enable share dian dian->paramStr:" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("enable share dian dian->paramStr:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      Object localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).parseString2Json(paramString);
+      localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).parseString2Json(paramString);
       if (localObject != null)
       {
         paramString = (SwiftBrowserShareMenuHandler)super.getBrowserComponent(4);
@@ -1575,87 +1604,102 @@ public class PublicAccountJavascriptInterfaceImpl
     }
     catch (JSONException paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PAjs", 2, "enable Share dian dian->error:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("enable Share dian dian->error:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
   
   public void enableScreenshot(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs", 2, "enableScreenshot->enable:" + paramString);
-    }
-    SwiftBrowserScreenShotHandler localSwiftBrowserScreenShotHandler = (SwiftBrowserScreenShotHandler)super.getBrowserComponent(64);
-    if (localSwiftBrowserScreenShotHandler != null)
+    if (QLog.isColorLevel())
     {
-      if ("1".equals(paramString)) {
-        localSwiftBrowserScreenShotHandler.b("");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("enableScreenshot->enable:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (SwiftBrowserScreenShotHandler)super.getBrowserComponent(64);
+    if (localObject != null)
+    {
+      if ("1".equals(paramString))
+      {
+        ((SwiftBrowserScreenShotHandler)localObject).b("");
+        return;
       }
+      ((SwiftBrowserScreenShotHandler)localObject).b();
     }
-    else {
-      return;
-    }
-    localSwiftBrowserScreenShotHandler.a();
   }
   
   public void enableShareDianDian(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs", 2, "enable share dian dian->paramStr:" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("enable share dian dian->paramStr:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      Object localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).parseString2Json(paramString);
+      localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).parseString2Json(paramString);
       if (localObject != null)
       {
         paramString = (SwiftBrowserShareMenuHandler)super.getBrowserComponent(4);
-        if (((JSONObject)localObject).has("enable"))
+        boolean bool = ((JSONObject)localObject).has("enable");
+        if (bool)
         {
           String str = ((JSONObject)localObject).getString("enable");
+          if (paramString != null) {
+            if ("1".equals(str)) {
+              paramString.c(true);
+            } else {
+              paramString.c(false);
+            }
+          }
+        }
+        if (((JSONObject)localObject).has("enableShortLink"))
+        {
+          localObject = ((JSONObject)localObject).getString("enableShortLink");
           if (paramString != null)
           {
-            if (!"1".equals(str)) {
-              break label136;
+            if ("1".equals(localObject))
+            {
+              paramString.d(true);
+              return;
             }
-            paramString.c(true);
-          }
-        }
-        for (;;)
-        {
-          if (!((JSONObject)localObject).has("enableShortLink")) {
+            paramString.d(false);
             return;
           }
-          localObject = ((JSONObject)localObject).getString("enableShortLink");
-          if (paramString == null) {
-            return;
-          }
-          if (!"1".equals(localObject)) {
-            break;
-          }
-          paramString.d(true);
-          return;
-          label136:
-          paramString.c(false);
         }
       }
-      return;
     }
     catch (JSONException paramString)
     {
       if (QLog.isColorLevel())
       {
-        QLog.d("PAjs", 2, "enable Share dian dian->error:" + paramString);
-        return;
-        paramString.d(false);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("enable Share dian dian->error:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
   
   public void enableShareSinaWeibo(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs", 2, "enableShareSinaWeibo->paramStr:" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("enableShareSinaWeibo->paramStr:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
@@ -1663,166 +1707,194 @@ public class PublicAccountJavascriptInterfaceImpl
       if ((paramString != null) && (paramString.has("enable")))
       {
         paramString = paramString.getString("enable");
-        SwiftBrowserShareMenuHandler localSwiftBrowserShareMenuHandler = (SwiftBrowserShareMenuHandler)super.getBrowserComponent(4);
-        if (localSwiftBrowserShareMenuHandler != null)
+        localObject = (SwiftBrowserShareMenuHandler)super.getBrowserComponent(4);
+        if (localObject != null)
         {
           if ("1".equals(paramString))
           {
-            localSwiftBrowserShareMenuHandler.b(true);
+            ((SwiftBrowserShareMenuHandler)localObject).b(true);
             return;
           }
-          localSwiftBrowserShareMenuHandler.b(false);
+          ((SwiftBrowserShareMenuHandler)localObject).b(false);
           return;
         }
       }
     }
     catch (JSONException paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PAjs", 2, "enableShareSinaWeibo->error:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("enableShareSinaWeibo->error:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
   
   public int excuteShowProfile(AppInterface paramAppInterface, Context paramContext, String paramString)
   {
-    int k = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("PAjs", 2, "showProfile: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("showProfile: ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.i("PAjs", 2, ((StringBuilder)localObject1).toString());
     }
     if (paramString == null) {
       return -1;
     }
-    Object localObject1 = paramString.trim();
-    Object localObject2 = "";
-    String str1 = "";
-    String str2 = null;
-    if (((String)localObject1).startsWith("{")) {}
-    for (;;)
+    String str1 = paramString.trim();
+    boolean bool = str1.startsWith("{");
+    String str3 = null;
+    localObject1 = null;
+    paramString = null;
+    int k = 0;
+    int i = 0;
+    String str4 = "";
+    if (bool) {}
+    try
     {
-      Object localObject3;
-      String str3;
-      int j;
-      Object localObject4;
-      String str4;
-      try
+      localObject3 = new JSONObject(str1);
+      str1 = ((JSONObject)localObject3).getString("uin");
+      k = ((JSONObject)localObject3).optInt("uinType", 0);
+      j = ((JSONObject)localObject3).optInt("isFinish", 0);
+      bool = "groupSearchOther".equals(((JSONObject)localObject3).optString("jump_from"));
+      localObject2 = "group";
+      if (bool)
       {
-        localObject3 = new JSONObject((String)localObject1);
-        str3 = ((JSONObject)localObject3).getString("uin");
-        int m = ((JSONObject)localObject3).optInt("uinType", 0);
-        j = ((JSONObject)localObject3).optInt("isFinish", 0);
-        if ("groupSearchOther".equals(((JSONObject)localObject3).optString("jump_from")))
+        i = ((JSONObject)localObject3).optInt("subSourceID");
+        localObject1 = localObject2;
+      }
+      else if (k == 1)
+      {
+        i = ((JSONObject)localObject3).optInt("wSourceSubID");
+        localObject1 = localObject2;
+      }
+      else
+      {
+        paramString = (String)localObject1;
+        if (k != 0) {
+          break label799;
+        }
+        str2 = ((JSONObject)localObject3).optString("from");
+        localObject2 = ((JSONObject)localObject3).optString("troopuin");
+        if (("groupActivity".equals(str2)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
         {
-          paramString = "group";
-          i = ((JSONObject)localObject3).optInt("subSourceID");
-          localObject1 = str2;
-          localObject2 = str1;
-          if (((JSONObject)localObject3).optInt("colorScreen") != 0) {
-            localObject2 = "&colorScreen=" + ((JSONObject)localObject3).optInt("colorScreen");
+          localObject1 = new AllInOne(str1, 120);
+          ((AllInOne)localObject1).troopCode = ((String)localObject2);
+          paramString = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.mRuntime.a(), (AllInOne)localObject1);
+          paramString.putExtra("AllInOne", (Parcelable)localObject1);
+          localObject1 = new Bundle();
+          ((Bundle)localObject1).putString("troop_uin", (String)localObject2);
+          paramString.putExtra("flc_extra_param", (Bundle)localObject1);
+          localObject1 = "";
+        }
+        else
+        {
+          paramString = (String)localObject1;
+          if (!"groupMembers".equals(str2)) {
+            break label799;
           }
-          str2 = ((JSONObject)localObject3).optString("authKey");
-          str1 = ((JSONObject)localObject3).optString("authSig");
-          localObject3 = localObject2;
-          localObject4 = localObject1;
-          localObject1 = str3;
-          localObject2 = paramString;
-          paramString = (String)localObject3;
-          if ((localObject1 == null) || (((String)localObject1).length() < 5)) {
-            break;
+          paramString = (String)localObject1;
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
+            break label799;
           }
-          if (localObject4 == null) {
-            break label549;
-          }
-          paramContext.startActivity((Intent)localObject4);
+          paramString = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.mRuntime.a(), null);
+          paramString.putExtra("troopUin", (String)localObject2);
+          paramString.putExtra("memberUin", str1);
+        }
+      }
+    }
+    catch (JSONException paramAppInterface)
+    {
+      for (;;)
+      {
+        Object localObject3;
+        int j;
+        String str2;
+        Object localObject4;
+        label535:
+        continue;
+        localObject1 = "";
+        continue;
+        Object localObject2 = "";
+      }
+    }
+    if (((JSONObject)localObject3).optInt("colorScreen") != 0)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("&colorScreen=");
+      ((StringBuilder)localObject2).append(((JSONObject)localObject3).optInt("colorScreen"));
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject4 = ((JSONObject)localObject3).optString("authKey");
+      str2 = ((JSONObject)localObject3).optString("authSig");
+      str3 = paramString;
+      localObject3 = localObject1;
+      break label535;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("PAjs", 4, "showProfile param error");
+      }
+      return -1;
+      localObject2 = "";
+      paramString = (String)localObject2;
+      localObject1 = paramString;
+      localObject3 = localObject1;
+      j = 0;
+      localObject4 = localObject1;
+      i = k;
+      str2 = paramString;
+      if (str1 != null)
+      {
+        if (str1.length() < 5) {
+          return -1;
+        }
+        if (str3 != null)
+        {
+          paramContext.startActivity(str3);
           return j;
         }
-        if (m == 1)
-        {
-          paramString = "group";
-          i = ((JSONObject)localObject3).optInt("wSourceSubID");
-          localObject1 = str2;
-          continue;
-        }
-        localObject1 = str2;
-        i = k;
-        paramString = (String)localObject2;
-        if (m != 0) {
-          continue;
-        }
-        str4 = ((JSONObject)localObject3).optString("from");
-        localObject4 = ((JSONObject)localObject3).optString("troopuin");
-        if ((!"groupActivity".equals(str4)) || (TextUtils.isEmpty((CharSequence)localObject4))) {
-          break label437;
-        }
-        localObject1 = new Intent(paramContext, FriendProfileCardActivity.class);
-        paramString = new ProfileActivity.AllInOne(str3, 120);
-        paramString.c = ((String)localObject4);
-        ((Intent)localObject1).putExtra("AllInOne", paramString);
-        paramString = new Bundle();
-        paramString.putString("troop_uin", (String)localObject4);
-        ((Intent)localObject1).putExtra("flc_extra_param", paramString);
-        i = k;
-        paramString = (String)localObject2;
-        continue;
-        if (!QLog.isDevelopLevel()) {
-          break;
-        }
-      }
-      catch (JSONException paramAppInterface) {}
-      QLog.d("PAjs", 4, "showProfile param error");
-      return -1;
-      label437:
-      localObject1 = str2;
-      int i = k;
-      paramString = (String)localObject2;
-      if ("groupMembers".equals(str4))
-      {
-        localObject1 = str2;
-        i = k;
-        paramString = (String)localObject2;
+        localObject1 = new StringBuilder();
         if (!TextUtils.isEmpty((CharSequence)localObject4))
         {
-          localObject1 = new Intent(paramContext, FriendProfileCardActivity.class);
-          ((Intent)localObject1).putExtra("troopUin", (String)localObject4);
-          ((Intent)localObject1).putExtra("memberUin", str3);
-          i = k;
-          paramString = (String)localObject2;
-          continue;
-          i = 0;
-          paramString = "";
-          localObject4 = null;
-          j = 0;
-          str2 = "";
-          str1 = "";
-          continue;
-          label549:
-          localObject3 = new StringBuilder();
-          if (!TextUtils.isEmpty(str2))
-          {
-            str2 = "&authKey=" + str2;
-            label589:
-            ((StringBuilder)localObject3).append(str2);
-            if (TextUtils.isEmpty(str1)) {
-              break label723;
-            }
-          }
-          label723:
-          for (str1 = "&authSig=" + str1;; str1 = "")
-          {
-            ((StringBuilder)localObject3).append(str1);
-            paramString = "mqq://card/show_pslcard/?uin=" + (String)localObject1 + "&card_type=" + (String)localObject2 + "&wSourceSubID=" + i + ((StringBuilder)localObject3).toString() + paramString;
-            if (!(paramAppInterface instanceof QQAppInterface)) {
-              break label731;
-            }
-            JumpParser.a((QQAppInterface)paramAppInterface, paramContext, paramString).a();
-            break;
-            str2 = "";
-            break label589;
-          }
-          label731:
-          paramContext.startActivity(new Intent(paramContext, JumpActivity.class).setData(Uri.parse(paramString)));
+          paramString = new StringBuilder();
+          paramString.append("&authKey=");
+          paramString.append((String)localObject4);
+          paramString = paramString.toString();
         }
+        else
+        {
+          paramString = "";
+        }
+        ((StringBuilder)localObject1).append(paramString);
+        paramString = str4;
+        if (!TextUtils.isEmpty(str2))
+        {
+          paramString = new StringBuilder();
+          paramString.append("&authSig=");
+          paramString.append(str2);
+          paramString = paramString.toString();
+        }
+        ((StringBuilder)localObject1).append(paramString);
+        paramString = new StringBuilder();
+        paramString.append("mqq://card/show_pslcard/?uin=");
+        paramString.append(str1);
+        paramString.append("&card_type=");
+        paramString.append((String)localObject3);
+        paramString.append("&wSourceSubID=");
+        paramString.append(i);
+        paramString.append(((StringBuilder)localObject1).toString());
+        paramString.append((String)localObject2);
+        paramString = paramString.toString();
+        if ((paramAppInterface instanceof QQAppInterface))
+        {
+          JumpParser.a((QQAppInterface)paramAppInterface, paramContext, paramString).a();
+          return j;
+        }
+        paramContext.startActivity(new Intent(paramContext, JumpActivity.class).setData(Uri.parse(paramString)));
+        return j;
       }
+      return -1;
     }
   }
   
@@ -1838,130 +1910,146 @@ public class PublicAccountJavascriptInterfaceImpl
   
   public void getLocation(String paramString)
   {
-    long l = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs.location", 2, "getLocation:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getLocation:");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("PAjs.location", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.mRuntime.a() == null) {
+    if (this.mRuntime.a() == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.w("PAjs.location", 2, "getWebView()==null, return");
       }
-    }
-    Object localObject1;
-    Object localObject2;
-    label332:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if ((this.context != null) && (!this.context.isFinishing())) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.w("PAjs.location", 2, "context==null || isFinishing, return");
-          return;
-          if (paramString.charAt(0) == '{') {}
-          for (;;)
-          {
-            try
-            {
-              localObject1 = new JSONObject(paramString);
-              paramString = ((JSONObject)localObject1).getString("callback");
-              l = ((JSONObject)localObject1).optLong("allowCacheTime", 0L) * 1000L;
-              bool = ((JSONObject)localObject1).optBoolean("is_for_ecshop_map");
-              localObject1 = "";
-              localObject2 = this.mRuntime.a();
-              if (localObject2 != null) {
-                localObject1 = ((AppInterface)localObject2).getAccount();
-              }
-              if ((!bool) || (TextUtils.isEmpty((CharSequence)localObject1)) || (localObject2 == null)) {
-                break label332;
-              }
-              localObject1 = ((AppInterface)localObject2).getApp().getSharedPreferences((String)localObject1, 0);
-              double d1 = ((SharedPreferences)localObject1).getFloat("search_lbs_logitude", 0.0F);
-              double d2 = ((SharedPreferences)localObject1).getFloat("search_lbs_latitude", 0.0F);
-              if (QLog.isColorLevel()) {
-                QLog.i("EcShopAssistantActivity", 2, String.format("'longitude:%1$1.15f,latitude:%2$1.15f'", new Object[] { Double.valueOf(d1), Double.valueOf(d2) }));
-              }
-              callJs(paramString, new String[] { String.format("'%1$1.15f,%2$1.15f'", new Object[] { Double.valueOf(d1), Double.valueOf(d2) }) });
-              return;
-            }
-            catch (JSONException paramString) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.w("PAjs.location", 2, "getLocation exception:", paramString);
-            return;
-            boolean bool = false;
-          }
-          localObject2 = "";
-          if (this.mRuntime.a() != null) {
-            localObject2 = Util.a(this.mRuntime.a().getUrl(), 2);
-          }
-        } while (TextUtils.isEmpty(paramString));
-        if (!(this.context instanceof AppActivity)) {
-          break label577;
-        }
-        if ((this.mDialog != null) && (this.mDialog.isShowing())) {
-          this.mDialog.dismiss();
-        }
-        if (!getLocationPermissionGrant((String)localObject1, (String)localObject2)) {
-          break;
-        }
-        getLocationImpl(paramString, l);
-      } while (!QLog.isColorLevel());
-      QLog.d("PAjs", 2, "already grant");
       return;
-      if (!this.hasAsked) {
-        break;
+    }
+    Object localObject1 = this.context;
+    if ((localObject1 != null) && (!((Activity)localObject1).isFinishing()))
+    {
+      long l;
+      boolean bool;
+      if (paramString.charAt(0) == '{')
+      {
+        try
+        {
+          localObject1 = new JSONObject(paramString);
+          paramString = ((JSONObject)localObject1).getString("callback");
+          l = ((JSONObject)localObject1).optLong("allowCacheTime", 0L);
+          bool = ((JSONObject)localObject1).optBoolean("is_for_ecshop_map");
+          l *= 1000L;
+        }
+        catch (JSONException paramString)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("PAjs.location", 2, "getLocation exception:", paramString);
+          }
+          return;
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("PAjs", 2, "already ask");
-    return;
-    this.mDialog = DialogUtil.a(this.context, 0);
-    this.mDialog.setMessage(this.context.getString(2131720650, new Object[] { localObject2 }));
-    this.mDialog.setPositiveButton(2131720670, new PublicAccountJavascriptInterfaceImpl.3(this, paramString, l, (String)localObject1, (String)localObject2));
-    this.mDialog.setNegativeButton(this.context.getString(2131720681), new PublicAccountJavascriptInterfaceImpl.4(this, paramString));
-    this.mDialog.setOnCancelListener(new PublicAccountJavascriptInterfaceImpl.5(this, paramString));
-    this.mDialog.show();
-    return;
-    label577:
-    callJs(paramString, new String[] { "-4", "{}" });
+      else
+      {
+        l = 0L;
+        bool = false;
+      }
+      Object localObject2 = this.mRuntime.a();
+      if (localObject2 != null) {
+        localObject1 = ((AppInterface)localObject2).getAccount();
+      } else {
+        localObject1 = "";
+      }
+      if ((bool) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null))
+      {
+        localObject1 = ((AppInterface)localObject2).getApp().getSharedPreferences((String)localObject1, 0);
+        double d1 = ((SharedPreferences)localObject1).getFloat(SearchProtocol.c, 0.0F);
+        double d2 = ((SharedPreferences)localObject1).getFloat(SearchProtocol.b, 0.0F);
+        if (QLog.isColorLevel()) {
+          QLog.i("EcShopAssistantActivity", 2, String.format("'longitude:%1$1.15f,latitude:%2$1.15f'", new Object[] { Double.valueOf(d1), Double.valueOf(d2) }));
+        }
+        callJs(paramString, new String[] { String.format("'%1$1.15f,%2$1.15f'", new Object[] { Double.valueOf(d1), Double.valueOf(d2) }) });
+        return;
+      }
+      if (this.mRuntime.a() != null) {
+        localObject2 = Util.a(this.mRuntime.a().getUrl(), 2);
+      } else {
+        localObject2 = "";
+      }
+      if (!TextUtils.isEmpty(paramString))
+      {
+        if ((this.context instanceof AppActivity))
+        {
+          QQCustomDialog localQQCustomDialog = this.mDialog;
+          if ((localQQCustomDialog != null) && (localQQCustomDialog.isShowing())) {
+            this.mDialog.dismiss();
+          }
+          if (getLocationPermissionGrant((String)localObject1, (String)localObject2))
+          {
+            getLocationImpl(paramString, l);
+            if (QLog.isColorLevel()) {
+              QLog.d("PAjs", 2, "already grant");
+            }
+            return;
+          }
+          if (this.hasAsked)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("PAjs", 2, "already ask");
+            }
+            return;
+          }
+          this.mDialog = DialogUtil.a(this.context, 0);
+          this.mDialog.setMessage(this.context.getString(2131720369, new Object[] { localObject2 }));
+          this.mDialog.setPositiveButton(2131720389, new PublicAccountJavascriptInterfaceImpl.3(this, paramString, l, (String)localObject1, (String)localObject2));
+          this.mDialog.setNegativeButton(this.context.getString(2131720400), new PublicAccountJavascriptInterfaceImpl.4(this, paramString));
+          this.mDialog.setOnCancelListener(new PublicAccountJavascriptInterfaceImpl.5(this, paramString));
+          this.mDialog.show();
+          return;
+        }
+        callJs(paramString, new String[] { "-4", "{}" });
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("PAjs.location", 2, "context==null || isFinishing, return");
+    }
   }
   
   public boolean getLocationPermissionGrant(String paramString1, String paramString2)
   {
-    boolean bool = true;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    boolean bool2 = TextUtils.isEmpty(paramString1);
+    boolean bool1 = false;
+    if ((!bool2) && (!TextUtils.isEmpty(paramString2)))
     {
-      QLog.e("PAjs", 1, new Object[] { "uin:", paramString1, " host:", paramString2 });
-      bool = false;
-    }
-    do
-    {
-      return bool;
       if (paramString2.contains("qq.com"))
       {
         QLog.d("PAjs", 1, "qq.com can grant");
         return true;
       }
-    } while (BaseApplicationImpl.getApplication().getSharedPreferences(paramString1 + "LocationPermissionPref", 0).getInt(paramString2 + "-location", 0) == 1);
+      Object localObject = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("LocationPermissionPref");
+      paramString1 = ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("-location");
+      if (paramString1.getInt(((StringBuilder)localObject).toString(), 0) == 1) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    QLog.e("PAjs", 1, new Object[] { "uin:", paramString1, " host:", paramString2 });
     return false;
   }
   
-  public String getNameSpace()
+  protected String getNameSpace()
   {
     return "publicAccount";
   }
   
   public int getNetworkState()
   {
-    return NetworkUtil.b(BaseApplication.getContext());
+    return NetworkUtil.getNetworkType(BaseApplication.getContext());
   }
   
   public String getNetworkType()
@@ -1969,11 +2057,12 @@ public class PublicAccountJavascriptInterfaceImpl
     NetworkInfo localNetworkInfo = AppNetConnInfo.getRecentNetworkInfo();
     if (localNetworkInfo != null)
     {
-      switch (localNetworkInfo.getType())
+      int i = localNetworkInfo.getType();
+      if (i != 0)
       {
-      default: 
-        return "other";
-      case 1: 
+        if (i != 1) {
+          return "other";
+        }
         return "WiFi";
       }
       String str;
@@ -1984,46 +2073,69 @@ public class PublicAccountJavascriptInterfaceImpl
       case 11: 
       default: 
         str = "other_";
-      }
-      for (;;)
-      {
-        return str + localNetworkInfo.getExtraInfo();
-        str = "CDMA_";
-        continue;
-        str = "EDGE_";
-        continue;
-        str = "GPRS";
-        continue;
-        str = "EVDO_0_";
-        continue;
-        str = "EVDO_A_";
-        continue;
+        break;
+      case 12: 
         str = "EVDO_B_";
-        continue;
-        str = "UMTS_";
-        continue;
+        break;
+      case 9: 
         str = "HSUPA_";
-        continue;
+        break;
+      case 8: 
         str = "HSDPA_";
+        break;
+      case 6: 
+        str = "EVDO_A_";
+        break;
+      case 5: 
+        str = "EVDO_0_";
+        break;
+      case 4: 
+        str = "CDMA_";
+        break;
+      case 3: 
+        str = "UMTS_";
+        break;
+      case 2: 
+        str = "EDGE_";
+        break;
+      case 1: 
+        str = "GPRS";
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(localNetworkInfo.getExtraInfo());
+      return localStringBuilder.toString();
     }
     return "empty";
   }
   
   public void getPageLoadStamp(String paramString)
   {
-    if (this.uiMethodInterface != null)
+    Object localObject = this.uiMethodInterface;
+    if (localObject != null)
     {
-      if (!TextUtils.isEmpty(this.uiMethodInterface.getCurrentUrl())) {}
-      for (String str = this.uiMethodInterface.getCurrentUrl();; str = "")
+      if (!TextUtils.isEmpty(((WebUiUtils.WebUiMethodInterface)localObject).getCurrentUrl())) {
+        localObject = this.uiMethodInterface.getCurrentUrl();
+      } else {
+        localObject = "";
+      }
+      if (this.reportSpeedInterface != null)
       {
-        if (this.reportSpeedInterface != null) {
-          callJs(paramString, new String[] { "{ret:0, onCreateTime:" + this.reportSpeedInterface.getmOnCreateMilliTimeStamp() + ", startLoadUrlTime:" + this.reportSpeedInterface.getmStartLoadUrlMilliTimeStamp() + ", url:'" + str + "'}" });
-        }
-        return;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("{ret:0, onCreateTime:");
+        localStringBuilder.append(this.reportSpeedInterface.getmOnCreateMilliTimeStamp());
+        localStringBuilder.append(", startLoadUrlTime:");
+        localStringBuilder.append(this.reportSpeedInterface.getmStartLoadUrlMilliTimeStamp());
+        localStringBuilder.append(", url:'");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("'}");
+        callJs(paramString, new String[] { localStringBuilder.toString() });
       }
     }
-    callJs(paramString, new String[] { "{ret: -1}" });
+    else
+    {
+      callJs(paramString, new String[] { "{ret: -1}" });
+    }
   }
   
   public void getRealLocation(String paramString1, String paramString2)
@@ -2044,7 +2156,11 @@ public class PublicAccountJavascriptInterfaceImpl
       new PublicAccountJavascriptInterfaceImpl.12(this, paramString1, localJSONObject, paramString2).start();
       return;
     }
-    callJs(paramString2, new String[] { "{ret:-3, response:" + localJSONObject.toString() + "}" });
+    paramString1 = new StringBuilder();
+    paramString1.append("{ret:-3, response:");
+    paramString1.append(localJSONObject.toString());
+    paramString1.append("}");
+    callJs(paramString2, new String[] { paramString1.toString() });
   }
   
   public WebViewPlugin getWebViewPlugin()
@@ -2055,272 +2171,232 @@ public class PublicAccountJavascriptInterfaceImpl
   public void hideLoading()
   {
     Object localObject = this.mRuntime.a(this.mRuntime.a());
-    if ((localObject != null) && ((localObject instanceof WebUiUtils.WebProgressInterface))) {
-      ((WebUiUtils.WebProgressInterface)localObject).a();
-    }
-    do
+    if ((localObject != null) && ((localObject instanceof WebUiUtils.WebProgressInterface)))
     {
+      ((WebUiUtils.WebProgressInterface)localObject).a();
       return;
-      localObject = (SwiftBrowserUIStyleHandler)super.getBrowserComponent(2);
-    } while ((localObject == null) || (((SwiftBrowserUIStyleHandler)localObject).a == null));
-    ((SwiftBrowserUIStyleHandler)localObject).a.setVisibility(8);
+    }
+    localObject = (SwiftBrowserUIStyleHandler)super.getBrowserComponent(2);
+    if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).a != null)) {
+      ((SwiftBrowserUIStyleHandler)localObject).a.setVisibility(8);
+    }
   }
   
-  /* Error */
   protected String httpRequest(String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 181	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   4: invokevirtual 187	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
-    //   7: astore 6
-    //   9: aload 6
-    //   11: ifnonnull +7 -> 18
-    //   14: ldc_w 532
-    //   17: areturn
-    //   18: ldc_w 1284
-    //   21: astore 4
-    //   23: new 256	org/json/JSONObject
-    //   26: dup
-    //   27: aload_2
-    //   28: invokespecial 264	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   31: astore 5
-    //   33: aload 5
-    //   35: astore_3
-    //   36: invokestatic 550	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   39: ifeq +32 -> 71
-    //   42: ldc 48
-    //   44: iconst_2
-    //   45: new 76	java/lang/StringBuilder
-    //   48: dup
-    //   49: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   52: ldc_w 1286
-    //   55: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: aload_2
-    //   59: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: invokestatic 949	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   68: aload 5
-    //   70: astore_3
-    //   71: new 1019	android/os/Bundle
-    //   74: dup
-    //   75: invokespecial 1020	android/os/Bundle:<init>	()V
-    //   78: astore 5
-    //   80: aload 5
-    //   82: ldc_w 993
-    //   85: ldc_w 1288
-    //   88: invokevirtual 1025	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   91: aload 4
-    //   93: astore_2
-    //   94: aload_3
-    //   95: ifnull +33 -> 128
-    //   98: aload 4
-    //   100: astore_2
-    //   101: aload_3
-    //   102: ldc_w 1290
-    //   105: invokevirtual 842	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   108: ifeq +20 -> 128
-    //   111: aload_3
-    //   112: ldc_w 1290
-    //   115: invokevirtual 290	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   118: astore_2
-    //   119: aload_2
-    //   120: invokevirtual 1293	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   123: astore 4
-    //   125: aload 4
-    //   127: astore_2
-    //   128: aload_3
-    //   129: ifnull +70 -> 199
-    //   132: aload_3
-    //   133: ldc_w 1295
-    //   136: invokevirtual 842	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   139: ifeq +60 -> 199
-    //   142: aload_3
-    //   143: ldc_w 1295
-    //   146: invokevirtual 273	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   149: astore_3
-    //   150: aload_3
-    //   151: invokevirtual 1298	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   154: astore 4
-    //   156: aload 4
-    //   158: invokeinterface 226 1 0
-    //   163: ifeq +36 -> 199
-    //   166: aload 4
-    //   168: invokeinterface 230 1 0
-    //   173: invokevirtual 1299	java/lang/Object:toString	()Ljava/lang/String;
-    //   176: astore 7
-    //   178: aload 5
-    //   180: aload 7
-    //   182: aload_3
-    //   183: aload 7
-    //   185: invokevirtual 290	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   188: invokevirtual 1025	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   191: goto -35 -> 156
-    //   194: astore_3
-    //   195: aload_3
-    //   196: invokevirtual 1300	org/json/JSONException:printStackTrace	()V
-    //   199: aload 6
-    //   201: invokevirtual 192	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   204: astore_3
-    //   205: new 76	java/lang/StringBuilder
-    //   208: dup
-    //   209: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   212: ldc_w 1302
-    //   215: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: aload_3
-    //   219: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   225: astore_3
-    //   226: new 1019	android/os/Bundle
-    //   229: dup
-    //   230: invokespecial 1020	android/os/Bundle:<init>	()V
-    //   233: astore 4
-    //   235: aload 4
-    //   237: ldc_w 1304
-    //   240: aload_3
-    //   241: invokevirtual 1025	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   244: aload_0
-    //   245: getfield 474	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:context	Landroid/app/Activity;
-    //   248: invokevirtual 1308	android/app/Activity:getApplicationContext	()Landroid/content/Context;
-    //   251: aload_1
-    //   252: aload_2
-    //   253: aload 5
-    //   255: aload 4
-    //   257: invokestatic 1314	com/tencent/biz/common/util/HttpUtil:openUrl	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)Ljava/lang/String;
-    //   260: astore_1
-    //   261: aload_1
-    //   262: areturn
-    //   263: astore 4
-    //   265: ldc_w 1284
-    //   268: astore_2
-    //   269: aload 4
-    //   271: invokevirtual 1300	org/json/JSONException:printStackTrace	()V
-    //   274: goto -146 -> 128
-    //   277: astore_1
-    //   278: aload_1
-    //   279: invokevirtual 1315	org/apache/http/client/ClientProtocolException:printStackTrace	()V
-    //   282: ldc_w 1317
-    //   285: areturn
-    //   286: astore_1
-    //   287: aload_1
-    //   288: invokevirtual 428	java/io/IOException:printStackTrace	()V
-    //   291: ldc_w 1319
-    //   294: areturn
-    //   295: astore 4
-    //   297: goto -28 -> 269
-    //   300: astore_2
-    //   301: aconst_null
-    //   302: astore_3
-    //   303: goto -232 -> 71
-    //   306: astore_2
-    //   307: aload 5
-    //   309: astore_3
-    //   310: goto -239 -> 71
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	313	0	this	PublicAccountJavascriptInterfaceImpl
-    //   0	313	1	paramString1	String
-    //   0	313	2	paramString2	String
-    //   35	148	3	localObject1	Object
-    //   194	2	3	localJSONException1	JSONException
-    //   204	106	3	localObject2	Object
-    //   21	235	4	localObject3	Object
-    //   263	7	4	localJSONException2	JSONException
-    //   295	1	4	localJSONException3	JSONException
-    //   31	277	5	localObject4	Object
-    //   7	193	6	localAppInterface	AppInterface
-    //   176	8	7	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   132	156	194	org/json/JSONException
-    //   156	191	194	org/json/JSONException
-    //   101	119	263	org/json/JSONException
-    //   244	261	277	org/apache/http/client/ClientProtocolException
-    //   244	261	286	java/io/IOException
-    //   119	125	295	org/json/JSONException
-    //   23	33	300	org/json/JSONException
-    //   36	68	306	org/json/JSONException
+    AppInterface localAppInterface = this.mRuntime.a();
+    if (localAppInterface == null) {
+      return "";
+    }
+    Object localObject2 = "GET";
+    try
+    {
+      localObject1 = new JSONObject(paramString2);
+      localObject3 = localObject1;
+    }
+    catch (JSONException paramString2)
+    {
+      Object localObject1;
+      label83:
+      label86:
+      Bundle localBundle;
+      break label83;
+    }
+    try
+    {
+      if (!QLog.isColorLevel()) {
+        break label86;
+      }
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(" httpRequest strParams:");
+      ((StringBuilder)localObject3).append(paramString2);
+      QLog.i("PAjs", 2, ((StringBuilder)localObject3).toString());
+      localObject3 = localObject1;
+    }
+    catch (JSONException paramString2)
+    {
+      localObject3 = str;
+      break label86;
+    }
+    localObject3 = null;
+    localBundle = new Bundle();
+    localBundle.putString("from", "native");
+    paramString2 = (String)localObject2;
+    if (localObject3 != null)
+    {
+      localObject1 = localObject2;
+      paramString2 = (String)localObject2;
+      try
+      {
+        if (((JSONObject)localObject3).has("method"))
+        {
+          localObject1 = localObject2;
+          paramString2 = ((JSONObject)localObject3).getString("method");
+          localObject1 = paramString2;
+          paramString2 = paramString2.toUpperCase();
+        }
+      }
+      catch (JSONException paramString2)
+      {
+        paramString2.printStackTrace();
+        paramString2 = (String)localObject1;
+      }
+    }
+    if (localObject3 != null) {
+      try
+      {
+        if (((JSONObject)localObject3).has("param"))
+        {
+          localObject1 = ((JSONObject)localObject3).getJSONObject("param");
+          localObject2 = ((JSONObject)localObject1).keys();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = ((Iterator)localObject2).next().toString();
+            localBundle.putString((String)localObject3, ((JSONObject)localObject1).getString((String)localObject3));
+          }
+        }
+        str = localAppInterface.getAccount();
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("uin=");
+    ((StringBuilder)localObject2).append(str);
+    str = ((StringBuilder)localObject2).toString();
+    localObject2 = new Bundle();
+    ((Bundle)localObject2).putString("Cookie", str);
+    try
+    {
+      paramString1 = HttpUtil.openUrl(this.context.getApplicationContext(), paramString1, paramString2, localBundle, (Bundle)localObject2);
+      return paramString1;
+    }
+    catch (IOException paramString1)
+    {
+      paramString1.printStackTrace();
+      return "{'r': -105, 'msg' : 'httpRequest:IOException'}";
+    }
+    catch (ClientProtocolException paramString1)
+    {
+      paramString1.printStackTrace();
+      return "{'r': -104, 'msg' : 'httpRequest:ClientProtocolException'}";
+    }
   }
   
   public void isFollowUin(String paramString1, String paramString2)
   {
     JSONObject localJSONObject = new JSONObject();
-    if (TextUtils.isEmpty(paramString1)) {
-      callJs(paramString2, new String[] { "{ret:-3, response:" + localJSONObject.toString() + "}" });
-    }
-    for (;;)
+    if (TextUtils.isEmpty(paramString1))
     {
+      paramString1 = new StringBuilder();
+      paramString1.append("{ret:-3, response:");
+      paramString1.append(localJSONObject.toString());
+      paramString1.append("}");
+      callJs(paramString2, new String[] { paramString1.toString() });
       return;
-      localObject = this.mRuntime.a();
-      if (localObject != null) {
-        try
-        {
-          paramString1 = new JSONObject(paramString1).optString("uin");
-          if (!TextUtils.isEmpty(paramString1)) {
-            if (((localObject instanceof BrowserAppInterface)) || (localObject.getClass().getSimpleName().equalsIgnoreCase("ReadInJoyInterfaceProxy")))
-            {
-              ThreadManager.executeOnSubThread(new PublicAccountJavascriptInterfaceImpl.18(this, (AppInterface)localObject, paramString1, localJSONObject, paramString2));
-              return;
-            }
-          }
-        }
-        catch (JSONException paramString1)
-        {
-          callJs(paramString2, new String[] { "{ret:-2, response:" + localJSONObject.toString() + "}" });
-          return;
-        }
+    }
+    Object localObject = this.mRuntime.a();
+    if (localObject == null) {
+      return;
+    }
+    try
+    {
+      paramString1 = new JSONObject(paramString1).optString("uin");
+      if (TextUtils.isEmpty(paramString1)) {
+        return;
+      }
+      if (((localObject instanceof BrowserAppInterface)) || (localObject.getClass().getSimpleName().equalsIgnoreCase("ReadInJoyInterfaceProxy"))) {
+        break label230;
+      }
+      localObject = (IPublicAccountDataManager)((AppInterface)localObject).getRuntimeService(IPublicAccountDataManager.class, "all");
+      if (localObject == null) {
+        break label303;
+      }
+      bool = ((IPublicAccountDataManager)localObject).isFollowedUin(Long.valueOf(paramString1));
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        continue;
+        boolean bool = false;
       }
     }
-    Object localObject = (PublicAccountDataManager)((AppInterface)localObject).getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
-    if (localObject != null) {}
-    for (boolean bool = ((PublicAccountDataManager)localObject).a(Long.valueOf(paramString1));; bool = false)
-    {
-      localJSONObject.put("follow", bool);
-      callJs(paramString2, new String[] { "{ret:0, response:" + localJSONObject.toString() + "}" });
-      return;
-    }
+    localJSONObject.put("follow", bool);
+    paramString1 = new StringBuilder();
+    paramString1.append("{ret:0, response:");
+    paramString1.append(localJSONObject.toString());
+    paramString1.append("}");
+    callJs(paramString2, new String[] { paramString1.toString() });
+    return;
+    label230:
+    ThreadManager.executeOnSubThread(new PublicAccountJavascriptInterfaceImpl.18(this, (AppInterface)localObject, paramString1, localJSONObject, paramString2));
+    return;
+    paramString1 = new StringBuilder();
+    paramString1.append("{ret:-2, response:");
+    paramString1.append(localJSONObject.toString());
+    paramString1.append("}");
+    callJs(paramString2, new String[] { paramString1.toString() });
   }
   
   public void officalAccountShareRichMsg2QQ(String paramString)
   {
-    try
+    for (;;)
     {
-      Object localObject = new JSONObject(paramString);
-      String str4 = ((JSONObject)localObject).getString("oaUin");
-      String str5 = ((JSONObject)localObject).getString("title");
-      String str6 = ((JSONObject)localObject).getString("summary");
-      String str7 = ((JSONObject)localObject).getString("targetUrl");
+      try
+      {
+        localObject = new JSONObject(paramString);
+        String str3 = ((JSONObject)localObject).getString("oaUin");
+        String str4 = ((JSONObject)localObject).getString("title");
+        String str5 = ((JSONObject)localObject).getString("summary");
+        String str6 = ((JSONObject)localObject).getString("targetUrl");
+        boolean bool = ((JSONObject)localObject).has("imageUrl");
+        if (bool)
+        {
+          paramString = ((JSONObject)localObject).getString("imageUrl");
+          if (!((JSONObject)localObject).has("sourceName")) {
+            break label263;
+          }
+          str1 = ((JSONObject)localObject).getString("sourceName");
+          if (!((JSONObject)localObject).has("needback")) {
+            break label270;
+          }
+          str2 = ((JSONObject)localObject).getString("needback");
+          if (!((JSONObject)localObject).has("callback")) {
+            break label278;
+          }
+          localObject = ((JSONObject)localObject).getString("callback");
+          WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
+          if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebShareInterface))) {
+            ((WebUiUtils.WebShareInterface)localWebUiBaseInterface).shareStructMsgForH5(str3, str4, str5, str6, paramString, str1, str2, (String)localObject);
+          }
+          ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_sys_30", "share_click", 0, 0, str3, "", "", "");
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(getClass().getSimpleName(), 2, paramString.getMessage());
+        }
+        return;
+      }
       paramString = "";
-      if (((JSONObject)localObject).has("imageUrl")) {
-        paramString = ((JSONObject)localObject).getString("imageUrl");
-      }
+      continue;
+      label263:
       String str1 = "";
-      if (((JSONObject)localObject).has("sourceName")) {
-        str1 = ((JSONObject)localObject).getString("sourceName");
-      }
+      continue;
+      label270:
       String str2 = "false";
-      if (((JSONObject)localObject).has("needback")) {
-        str2 = ((JSONObject)localObject).getString("needback");
-      }
-      String str3 = "";
-      if (((JSONObject)localObject).has("callback")) {
-        str3 = ((JSONObject)localObject).getString("callback");
-      }
-      localObject = this.mRuntime.a(this.mRuntime.a());
-      if ((localObject != null) && ((localObject instanceof WebUiUtils.WebFeaturesInterface))) {
-        ((WebUiUtils.WebFeaturesInterface)localObject).shareStructMsgForH5(str4, str5, str6, str7, paramString, str1, str2, str3);
-      }
-      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_sys_30", "share_click", 0, 0, str4, "", "", "");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(getClass().getSimpleName(), 2, paramString.getMessage());
+      continue;
+      label278:
+      Object localObject = "";
     }
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.context = this.mRuntime.a();
@@ -2338,13 +2414,13 @@ public class PublicAccountJavascriptInterfaceImpl
     }
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    Iterator localIterator = this.taskList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.taskList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      PublicAccountJavascriptInterfaceImpl.HttpTask localHttpTask = (PublicAccountJavascriptInterfaceImpl.HttpTask)localIterator.next();
+      PublicAccountJavascriptInterfaceImpl.HttpTask localHttpTask = (PublicAccountJavascriptInterfaceImpl.HttpTask)((Iterator)localObject).next();
       if (!localHttpTask.isCancelled()) {
         localHttpTask.cancel(true);
       }
@@ -2354,7 +2430,8 @@ public class PublicAccountJavascriptInterfaceImpl
     if (this.isRegisteredBroadCast) {
       this.context.unregisterReceiver(this.mBroadcastReceiver);
     }
-    if ((this.mDialog != null) && (this.mDialog.isShowing())) {
+    localObject = this.mDialog;
+    if ((localObject != null) && (((QQCustomDialog)localObject).isShowing())) {
       this.mDialog.dismiss();
     }
     super.onDestroy();
@@ -2364,7 +2441,8 @@ public class PublicAccountJavascriptInterfaceImpl
   {
     if ("com.tencent.mobileqq.activity.ChatBubbleSettingActivity".equals(paramString))
     {
-      VasWebviewUtil.openQQBrowserWithoutAD(this.context, IndividuationUrlHelper.a(this.context, "bubble", ""), 64L, null, false, -1);
+      paramString = this.context;
+      VasWebviewUtil.b(paramString, IndividuationUrlHelper.a(paramString, "bubble", ""), 64L, null, false, -1);
       return;
     }
     Intent localIntent = new Intent();
@@ -2374,8 +2452,13 @@ public class PublicAccountJavascriptInterfaceImpl
   
   public void openAccountPageMore(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs", 2, "openAccountPageMore->paramStr:" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("openAccountPageMore->paramStr:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
@@ -2386,17 +2469,26 @@ public class PublicAccountJavascriptInterfaceImpl
         if (this.context != null)
         {
           paramString = new ActivityURIRequest(this.context, "/pubaccount/detail");
-          paramString.extra().putString("uin", "" + l);
+          localObject = paramString.extra();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append(l);
+          ((Bundle)localObject).putString("uin", localStringBuilder.toString());
           paramString.extra().putBoolean("from_js", true);
           QRoute.startUri(paramString, null);
+          return;
         }
       }
-      return;
     }
     catch (JSONException paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("PAjs", 2, "openAccountPageMore->error:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("openAccountPageMore->error:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
+      }
     }
   }
   
@@ -2411,8 +2503,12 @@ public class PublicAccountJavascriptInterfaceImpl
   
   public void openInExternalBrowser(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PAjs", 2, "openInExternalBrowser:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("openInExternalBrowser:");
+      localStringBuilder.append(paramString);
+      QLog.i("PAjs", 2, localStringBuilder.toString());
     }
     if (paramString != null) {
       paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
@@ -2423,35 +2519,32 @@ public class PublicAccountJavascriptInterfaceImpl
       this.context.startActivity(paramString);
       return;
     }
-    catch (Exception paramString) {}catch (ActivityNotFoundException paramString) {}
+    catch (ActivityNotFoundException|Exception paramString) {}
   }
   
   public void openUrl(String paramString)
   {
-    Object localObject;
-    Intent localIntent;
     if (paramString != null)
     {
-      localObject = this.context.getIntent();
-      localIntent = new Intent(this.context, this.context.getClass());
-      localObject = ((Intent)localObject).getExtras();
-      if (localObject != null) {
-        break label80;
+      Object localObject1 = this.context.getIntent();
+      Object localObject2 = this.context;
+      localObject2 = new Intent((Context)localObject2, localObject2.getClass());
+      localObject1 = ((Intent)localObject1).getExtras();
+      if (localObject1 == null)
+      {
+        localObject1 = new Bundle();
       }
-      localObject = new Bundle();
-    }
-    for (;;)
-    {
-      localIntent.putExtras((Bundle)localObject);
-      localIntent.putExtra("url", paramString);
-      localIntent.setFlags(0);
-      this.context.startActivityForResult(localIntent, 100);
-      return;
-      label80:
-      ((Bundle)localObject).remove("title");
-      ((Bundle)localObject).remove("leftViewText");
-      ((Bundle)localObject).remove("post_data");
-      ((Bundle)localObject).remove("options");
+      else
+      {
+        ((Bundle)localObject1).remove("title");
+        ((Bundle)localObject1).remove("leftViewText");
+        ((Bundle)localObject1).remove("post_data");
+        ((Bundle)localObject1).remove("options");
+      }
+      ((Intent)localObject2).putExtras((Bundle)localObject1);
+      ((Intent)localObject2).putExtra("url", paramString);
+      ((Intent)localObject2).setFlags(0);
+      this.context.startActivityForResult((Intent)localObject2, 100);
     }
   }
   
@@ -2462,16 +2555,16 @@ public class PublicAccountJavascriptInterfaceImpl
     //   0: aload_0
     //   1: getfield 181	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
     //   4: invokevirtual 187	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
-    //   7: astore 6
-    //   9: aload 6
+    //   7: astore 9
+    //   9: aload 9
     //   11: ifnonnull +4 -> 15
     //   14: return
     //   15: new 256	org/json/JSONObject
     //   18: dup
     //   19: aload_1
-    //   20: invokespecial 264	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   23: astore 7
-    //   25: aload 7
+    //   20: invokespecial 267	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   23: astore 10
+    //   25: aload 10
     //   27: ldc_w 723
     //   30: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   33: astore 5
@@ -2491,492 +2584,591 @@ public class PublicAccountJavascriptInterfaceImpl
     //   67: aload_3
     //   68: ldc_w 723
     //   71: aload_1
-    //   72: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   72: invokevirtual 297	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   75: pop
-    //   76: aload 7
-    //   78: ldc_w 755
+    //   76: aload 10
+    //   78: ldc_w 751
     //   81: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   84: astore 5
-    //   86: aload 5
+    //   84: astore 11
+    //   86: aload 11
     //   88: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   91: ifeq +88 -> 179
-    //   94: aload_0
-    //   95: aload_2
-    //   96: iconst_1
-    //   97: anewarray 208	java/lang/String
-    //   100: dup
-    //   101: iconst_0
-    //   102: new 76	java/lang/StringBuilder
-    //   105: dup
-    //   106: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   109: ldc_w 757
-    //   112: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: aload_3
-    //   116: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   119: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: ldc_w 753
-    //   125: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   131: aastore
-    //   132: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   135: return
-    //   136: astore_1
-    //   137: aload_0
-    //   138: aload_2
-    //   139: iconst_1
-    //   140: anewarray 208	java/lang/String
-    //   143: dup
-    //   144: iconst_0
-    //   145: new 76	java/lang/StringBuilder
-    //   148: dup
-    //   149: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   152: ldc_w 751
-    //   155: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   158: aload_3
-    //   159: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   162: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: ldc_w 753
-    //   168: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   174: aastore
-    //   175: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   178: return
-    //   179: new 386	java/net/URL
-    //   182: dup
+    //   91: ifeq +53 -> 144
+    //   94: new 76	java/lang/StringBuilder
+    //   97: dup
+    //   98: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   101: astore_1
+    //   102: aload_1
+    //   103: ldc_w 753
+    //   106: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: pop
+    //   110: aload_1
+    //   111: aload_3
+    //   112: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   115: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: pop
+    //   119: aload_1
+    //   120: ldc_w 755
+    //   123: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: pop
+    //   127: aload_0
+    //   128: aload_2
+    //   129: iconst_1
+    //   130: anewarray 208	java/lang/String
+    //   133: dup
+    //   134: iconst_0
+    //   135: aload_1
+    //   136: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   139: aastore
+    //   140: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   143: return
+    //   144: aconst_null
+    //   145: astore 7
+    //   147: aconst_null
+    //   148: astore 6
+    //   150: aconst_null
+    //   151: astore 5
+    //   153: new 386	java/net/URL
+    //   156: dup
+    //   157: aload 4
+    //   159: invokespecial 387	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   162: invokevirtual 766	java/net/URL:getHost	()Ljava/lang/String;
+    //   165: astore 4
+    //   167: goto +6 -> 173
+    //   170: aconst_null
+    //   171: astore 4
+    //   173: aload 10
+    //   175: ldc_w 768
+    //   178: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   181: astore 8
     //   183: aload 4
-    //   185: invokespecial 387	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   188: invokevirtual 768	java/net/URL:getHost	()Ljava/lang/String;
-    //   191: astore_1
-    //   192: aload 7
-    //   194: ldc_w 770
-    //   197: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   200: astore 4
-    //   202: aload 4
-    //   204: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   207: ifne +675 -> 882
-    //   210: aload 4
-    //   212: aload_1
-    //   213: invokestatic 772	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:isParentDomain	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   216: ifeq +81 -> 297
-    //   219: aload 4
-    //   221: astore_1
-    //   222: aload_1
-    //   223: astore 4
-    //   225: aload_1
-    //   226: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   229: ifeq +8 -> 237
-    //   232: ldc_w 774
-    //   235: astore 4
-    //   237: aload 7
-    //   239: ldc_w 759
-    //   242: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   245: astore 7
-    //   247: aload 7
-    //   249: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   252: ifeq +87 -> 339
-    //   255: aload_0
-    //   256: aload_2
-    //   257: iconst_1
-    //   258: anewarray 208	java/lang/String
-    //   261: dup
-    //   262: iconst_0
-    //   263: new 76	java/lang/StringBuilder
-    //   266: dup
-    //   267: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   270: ldc_w 761
-    //   273: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   276: aload_3
-    //   277: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   280: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   283: ldc_w 753
-    //   286: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   292: aastore
-    //   293: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   296: return
-    //   297: aload_0
-    //   298: aload_2
-    //   299: iconst_1
-    //   300: anewarray 208	java/lang/String
-    //   303: dup
-    //   304: iconst_0
-    //   305: new 76	java/lang/StringBuilder
-    //   308: dup
-    //   309: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   312: ldc_w 808
-    //   315: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   318: aload_3
-    //   319: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   322: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: ldc_w 753
-    //   328: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   331: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   334: aastore
-    //   335: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   338: return
-    //   339: aload_0
-    //   340: aload 4
-    //   342: aload 5
-    //   344: aload 7
-    //   346: invokespecial 1553	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:readHash	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   349: astore_1
-    //   350: aload_1
-    //   351: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   354: ifeq +45 -> 399
-    //   357: aload_0
-    //   358: aload_2
-    //   359: iconst_1
-    //   360: anewarray 208	java/lang/String
+    //   185: astore_1
+    //   186: aload 8
+    //   188: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   191: ifne +69 -> 260
+    //   194: aload 8
+    //   196: aload 4
+    //   198: invokestatic 770	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:isParentDomain	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   201: ifeq +9 -> 210
+    //   204: aload 8
+    //   206: astore_1
+    //   207: goto +53 -> 260
+    //   210: new 76	java/lang/StringBuilder
+    //   213: dup
+    //   214: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   217: astore_1
+    //   218: aload_1
+    //   219: ldc_w 772
+    //   222: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: pop
+    //   226: aload_1
+    //   227: aload_3
+    //   228: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   231: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: pop
+    //   235: aload_1
+    //   236: ldc_w 755
+    //   239: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: pop
+    //   243: aload_0
+    //   244: aload_2
+    //   245: iconst_1
+    //   246: anewarray 208	java/lang/String
+    //   249: dup
+    //   250: iconst_0
+    //   251: aload_1
+    //   252: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   255: aastore
+    //   256: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   259: return
+    //   260: aload_1
+    //   261: astore 4
+    //   263: aload_1
+    //   264: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   267: ifeq +8 -> 275
+    //   270: ldc_w 774
+    //   273: astore 4
+    //   275: aload 10
+    //   277: ldc_w 757
+    //   280: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   283: astore_1
+    //   284: aload_1
+    //   285: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   288: ifeq +53 -> 341
+    //   291: new 76	java/lang/StringBuilder
+    //   294: dup
+    //   295: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   298: astore_1
+    //   299: aload_1
+    //   300: ldc_w 759
+    //   303: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   306: pop
+    //   307: aload_1
+    //   308: aload_3
+    //   309: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   312: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   315: pop
+    //   316: aload_1
+    //   317: ldc_w 755
+    //   320: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   323: pop
+    //   324: aload_0
+    //   325: aload_2
+    //   326: iconst_1
+    //   327: anewarray 208	java/lang/String
+    //   330: dup
+    //   331: iconst_0
+    //   332: aload_1
+    //   333: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   336: aastore
+    //   337: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   340: return
+    //   341: aload_0
+    //   342: aload 4
+    //   344: aload 11
+    //   346: aload_1
+    //   347: invokespecial 1557	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:readHash	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   350: astore 8
+    //   352: aload 8
+    //   354: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   357: ifeq +53 -> 410
+    //   360: new 76	java/lang/StringBuilder
     //   363: dup
-    //   364: iconst_0
-    //   365: new 76	java/lang/StringBuilder
-    //   368: dup
-    //   369: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   372: ldc_w 1555
-    //   375: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   378: aload_3
-    //   379: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   382: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   385: ldc_w 753
-    //   388: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   391: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   394: aastore
-    //   395: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   398: return
-    //   399: new 447	java/io/File
-    //   402: dup
-    //   403: new 76	java/lang/StringBuilder
-    //   406: dup
-    //   407: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   410: getstatic 102	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:PUBACCOUNT_DATA_PATH	Ljava/lang/String;
-    //   413: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   416: ldc_w 784
-    //   419: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   422: aload 6
-    //   424: invokevirtual 192	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   427: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
-    //   430: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   433: ldc_w 784
-    //   436: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   439: aload 4
-    //   441: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   444: ldc_w 784
+    //   364: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   367: astore_1
+    //   368: aload_1
+    //   369: ldc_w 1559
+    //   372: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   375: pop
+    //   376: aload_1
+    //   377: aload_3
+    //   378: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   381: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   384: pop
+    //   385: aload_1
+    //   386: ldc_w 755
+    //   389: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   392: pop
+    //   393: aload_0
+    //   394: aload_2
+    //   395: iconst_1
+    //   396: anewarray 208	java/lang/String
+    //   399: dup
+    //   400: iconst_0
+    //   401: aload_1
+    //   402: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   405: aastore
+    //   406: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   409: return
+    //   410: new 76	java/lang/StringBuilder
+    //   413: dup
+    //   414: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   417: astore 10
+    //   419: aload 10
+    //   421: getstatic 102	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:PUBACCOUNT_DATA_PATH	Ljava/lang/String;
+    //   424: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   427: pop
+    //   428: aload 10
+    //   430: ldc_w 784
+    //   433: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   436: pop
+    //   437: aload 10
+    //   439: aload 9
+    //   441: invokevirtual 192	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
+    //   444: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
     //   447: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   450: aload 5
-    //   452: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
-    //   455: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   458: ldc_w 784
-    //   461: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   464: aload 7
-    //   466: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
-    //   469: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   472: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   475: invokespecial 448	java/io/File:<init>	(Ljava/lang/String;)V
-    //   478: astore 6
-    //   480: aload 6
-    //   482: invokevirtual 451	java/io/File:exists	()Z
-    //   485: ifne +45 -> 530
-    //   488: aload_0
-    //   489: aload_2
-    //   490: iconst_1
-    //   491: anewarray 208	java/lang/String
-    //   494: dup
-    //   495: iconst_0
-    //   496: new 76	java/lang/StringBuilder
-    //   499: dup
-    //   500: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   503: ldc_w 1555
-    //   506: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   509: aload_3
-    //   510: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   513: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   516: ldc_w 753
-    //   519: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   522: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   525: aastore
-    //   526: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   529: return
-    //   530: aload_0
-    //   531: monitorenter
-    //   532: new 1557	java/io/FileInputStream
-    //   535: dup
-    //   536: aload 6
-    //   538: invokespecial 1558	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   541: astore 4
-    //   543: aload 4
-    //   545: astore 5
-    //   547: aload 6
-    //   549: invokevirtual 468	java/io/File:length	()J
-    //   552: l2i
-    //   553: newarray byte
-    //   555: astore 6
-    //   557: aload 4
-    //   559: astore 5
-    //   561: aload 4
-    //   563: aload 6
-    //   565: invokevirtual 410	java/io/InputStream:read	([B)I
-    //   568: pop
-    //   569: aload 4
-    //   571: astore 5
-    //   573: aload_0
-    //   574: new 208	java/lang/String
-    //   577: dup
-    //   578: aload 6
-    //   580: invokespecial 344	java/lang/String:<init>	([B)V
-    //   583: aload_1
-    //   584: invokespecial 1560	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:decrypt	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   587: astore_1
-    //   588: aload_1
-    //   589: ifnonnull +71 -> 660
-    //   592: aload 4
-    //   594: astore 5
-    //   596: aload_0
-    //   597: aload_2
-    //   598: iconst_1
-    //   599: anewarray 208	java/lang/String
-    //   602: dup
-    //   603: iconst_0
-    //   604: new 76	java/lang/StringBuilder
-    //   607: dup
-    //   608: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   611: ldc_w 1555
-    //   614: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   617: aload_3
-    //   618: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   621: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   624: ldc_w 753
-    //   627: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   630: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   633: aastore
-    //   634: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   637: aload 4
-    //   639: astore 5
-    //   641: aload_0
-    //   642: monitorexit
-    //   643: aload 4
-    //   645: ifnull +240 -> 885
-    //   648: aload 4
-    //   650: invokevirtual 411	java/io/InputStream:close	()V
-    //   653: return
-    //   654: astore_1
-    //   655: aload_1
-    //   656: invokevirtual 428	java/io/IOException:printStackTrace	()V
-    //   659: return
-    //   660: aload 4
-    //   662: astore 5
-    //   664: aload_3
-    //   665: ldc_w 763
-    //   668: aload_1
-    //   669: ldc_w 728
-    //   672: ldc_w 730
-    //   675: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   678: ldc_w 736
-    //   681: ldc_w 738
-    //   684: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   687: invokevirtual 294	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   690: pop
-    //   691: aload 4
-    //   693: astore 5
-    //   695: aload_0
-    //   696: monitorexit
-    //   697: aload 4
-    //   699: astore 5
-    //   701: aload 4
-    //   703: astore_1
-    //   704: aload_0
-    //   705: aload_2
-    //   706: iconst_1
-    //   707: anewarray 208	java/lang/String
-    //   710: dup
-    //   711: iconst_0
-    //   712: new 76	java/lang/StringBuilder
-    //   715: dup
-    //   716: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   719: ldc_w 805
-    //   722: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   725: aload_3
-    //   726: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   729: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   732: ldc_w 753
-    //   735: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   738: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   741: aastore
-    //   742: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   745: aload 4
-    //   747: ifnull +138 -> 885
-    //   750: aload 4
-    //   752: invokevirtual 411	java/io/InputStream:close	()V
-    //   755: return
-    //   756: astore_1
-    //   757: aload_1
-    //   758: invokevirtual 428	java/io/IOException:printStackTrace	()V
-    //   761: return
-    //   762: astore 4
-    //   764: aconst_null
-    //   765: astore_1
-    //   766: aload_1
-    //   767: astore 5
-    //   769: aload_0
-    //   770: monitorexit
-    //   771: aload_1
-    //   772: astore 5
-    //   774: aload 4
-    //   776: athrow
-    //   777: astore_1
-    //   778: aload 5
-    //   780: astore_1
-    //   781: aload_0
-    //   782: aload_2
-    //   783: iconst_1
-    //   784: anewarray 208	java/lang/String
-    //   787: dup
-    //   788: iconst_0
-    //   789: new 76	java/lang/StringBuilder
-    //   792: dup
-    //   793: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   796: ldc_w 810
-    //   799: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   802: aload_3
-    //   803: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   806: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   809: ldc_w 753
-    //   812: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   815: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   818: aastore
-    //   819: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   822: aload 5
-    //   824: ifnull +61 -> 885
-    //   827: aload 5
-    //   829: invokevirtual 411	java/io/InputStream:close	()V
-    //   832: return
-    //   833: astore_1
-    //   834: aload_1
-    //   835: invokevirtual 428	java/io/IOException:printStackTrace	()V
-    //   838: return
-    //   839: astore 4
-    //   841: aconst_null
-    //   842: astore_1
-    //   843: aload_1
-    //   844: ifnull +7 -> 851
-    //   847: aload_1
-    //   848: invokevirtual 411	java/io/InputStream:close	()V
-    //   851: aload 4
-    //   853: athrow
-    //   854: astore_1
-    //   855: aload_1
-    //   856: invokevirtual 428	java/io/IOException:printStackTrace	()V
-    //   859: goto -8 -> 851
-    //   862: astore 4
-    //   864: goto -21 -> 843
+    //   450: pop
+    //   451: aload 10
+    //   453: ldc_w 784
+    //   456: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   459: pop
+    //   460: aload 10
+    //   462: aload 4
+    //   464: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   467: pop
+    //   468: aload 10
+    //   470: ldc_w 784
+    //   473: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   476: pop
+    //   477: aload 10
+    //   479: aload 11
+    //   481: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   484: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   487: pop
+    //   488: aload 10
+    //   490: ldc_w 784
+    //   493: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   496: pop
+    //   497: aload 10
+    //   499: aload_1
+    //   500: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   503: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   506: pop
+    //   507: new 447	java/io/File
+    //   510: dup
+    //   511: aload 10
+    //   513: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   516: invokespecial 448	java/io/File:<init>	(Ljava/lang/String;)V
+    //   519: astore 9
+    //   521: aload 9
+    //   523: invokevirtual 451	java/io/File:exists	()Z
+    //   526: ifne +53 -> 579
+    //   529: new 76	java/lang/StringBuilder
+    //   532: dup
+    //   533: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   536: astore_1
+    //   537: aload_1
+    //   538: ldc_w 1559
+    //   541: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   544: pop
+    //   545: aload_1
+    //   546: aload_3
+    //   547: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   550: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   553: pop
+    //   554: aload_1
+    //   555: ldc_w 755
+    //   558: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   561: pop
+    //   562: aload_0
+    //   563: aload_2
+    //   564: iconst_1
+    //   565: anewarray 208	java/lang/String
+    //   568: dup
+    //   569: iconst_0
+    //   570: aload_1
+    //   571: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   574: aastore
+    //   575: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   578: return
+    //   579: aload 7
+    //   581: astore_1
+    //   582: aload 6
+    //   584: astore 4
+    //   586: aload_0
+    //   587: monitorenter
+    //   588: new 1561	java/io/FileInputStream
+    //   591: dup
+    //   592: aload 9
+    //   594: invokespecial 1562	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   597: astore_1
+    //   598: aload 9
+    //   600: invokevirtual 468	java/io/File:length	()J
+    //   603: l2i
+    //   604: newarray byte
+    //   606: astore 4
+    //   608: aload_1
+    //   609: aload 4
+    //   611: invokevirtual 410	java/io/InputStream:read	([B)I
+    //   614: pop
+    //   615: aload_0
+    //   616: new 208	java/lang/String
+    //   619: dup
+    //   620: aload 4
+    //   622: invokespecial 265	java/lang/String:<init>	([B)V
+    //   625: aload 8
+    //   627: invokespecial 1564	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:decrypt	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   630: astore 4
+    //   632: aload 4
+    //   634: ifnonnull +70 -> 704
+    //   637: new 76	java/lang/StringBuilder
+    //   640: dup
+    //   641: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   644: astore 4
+    //   646: aload 4
+    //   648: ldc_w 1559
+    //   651: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   654: pop
+    //   655: aload 4
+    //   657: aload_3
+    //   658: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   661: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   664: pop
+    //   665: aload 4
+    //   667: ldc_w 755
+    //   670: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   673: pop
+    //   674: aload_0
+    //   675: aload_2
+    //   676: iconst_1
+    //   677: anewarray 208	java/lang/String
+    //   680: dup
+    //   681: iconst_0
+    //   682: aload 4
+    //   684: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   687: aastore
+    //   688: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   691: aload_0
+    //   692: monitorexit
+    //   693: aload_1
+    //   694: invokevirtual 411	java/io/InputStream:close	()V
+    //   697: return
+    //   698: astore_1
+    //   699: aload_1
+    //   700: invokevirtual 435	java/io/IOException:printStackTrace	()V
+    //   703: return
+    //   704: aload_3
+    //   705: ldc_w 761
+    //   708: aload 4
+    //   710: ldc_w 728
+    //   713: ldc_w 730
+    //   716: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   719: ldc_w 736
+    //   722: ldc_w 738
+    //   725: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   728: invokevirtual 297	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   731: pop
+    //   732: aload_0
+    //   733: monitorexit
+    //   734: new 76	java/lang/StringBuilder
+    //   737: dup
+    //   738: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   741: astore 4
+    //   743: aload 4
+    //   745: ldc_w 805
+    //   748: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   751: pop
+    //   752: aload 4
+    //   754: aload_3
+    //   755: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   758: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   761: pop
+    //   762: aload 4
+    //   764: ldc_w 755
+    //   767: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   770: pop
+    //   771: aload_0
+    //   772: aload_2
+    //   773: iconst_1
+    //   774: anewarray 208	java/lang/String
+    //   777: dup
+    //   778: iconst_0
+    //   779: aload 4
+    //   781: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   784: aastore
+    //   785: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   788: aload_1
+    //   789: invokevirtual 411	java/io/InputStream:close	()V
+    //   792: return
+    //   793: astore_1
+    //   794: aload_1
+    //   795: invokevirtual 435	java/io/IOException:printStackTrace	()V
+    //   798: return
+    //   799: astore 4
+    //   801: goto +120 -> 921
+    //   804: aload_1
+    //   805: astore 4
+    //   807: goto +34 -> 841
+    //   810: astore 6
+    //   812: aload_1
+    //   813: astore 4
+    //   815: goto +9 -> 824
+    //   818: astore 6
+    //   820: aload 5
+    //   822: astore 4
+    //   824: aload 4
+    //   826: astore 5
+    //   828: aload_0
+    //   829: monitorexit
+    //   830: aload 4
+    //   832: astore_1
+    //   833: aload 6
+    //   835: athrow
+    //   836: astore 4
+    //   838: goto +83 -> 921
+    //   841: aload 4
+    //   843: astore_1
+    //   844: new 76	java/lang/StringBuilder
+    //   847: dup
+    //   848: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   851: astore 5
+    //   853: aload 4
+    //   855: astore_1
+    //   856: aload 5
+    //   858: ldc_w 808
+    //   861: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   864: pop
+    //   865: aload 4
     //   867: astore_1
-    //   868: aconst_null
-    //   869: astore 5
-    //   871: goto -93 -> 778
-    //   874: astore 4
-    //   876: aload 5
-    //   878: astore_1
-    //   879: goto -113 -> 766
-    //   882: goto -660 -> 222
-    //   885: return
-    //   886: astore_1
-    //   887: aconst_null
-    //   888: astore_1
-    //   889: goto -697 -> 192
+    //   868: aload 5
+    //   870: aload_3
+    //   871: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   874: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   877: pop
+    //   878: aload 4
+    //   880: astore_1
+    //   881: aload 5
+    //   883: ldc_w 755
+    //   886: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   889: pop
+    //   890: aload 4
+    //   892: astore_1
+    //   893: aload_0
+    //   894: aload_2
+    //   895: iconst_1
+    //   896: anewarray 208	java/lang/String
+    //   899: dup
+    //   900: iconst_0
+    //   901: aload 5
+    //   903: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   906: aastore
+    //   907: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   910: aload 4
+    //   912: ifnull +77 -> 989
+    //   915: aload 4
+    //   917: invokevirtual 411	java/io/InputStream:close	()V
+    //   920: return
+    //   921: aload_1
+    //   922: ifnull +15 -> 937
+    //   925: aload_1
+    //   926: invokevirtual 411	java/io/InputStream:close	()V
+    //   929: goto +8 -> 937
+    //   932: astore_1
+    //   933: aload_1
+    //   934: invokevirtual 435	java/io/IOException:printStackTrace	()V
+    //   937: aload 4
+    //   939: athrow
+    //   940: new 76	java/lang/StringBuilder
+    //   943: dup
+    //   944: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   947: astore_1
+    //   948: aload_1
+    //   949: ldc_w 810
+    //   952: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   955: pop
+    //   956: aload_1
+    //   957: aload_3
+    //   958: invokevirtual 375	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   961: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   964: pop
+    //   965: aload_1
+    //   966: ldc_w 755
+    //   969: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   972: pop
+    //   973: aload_0
+    //   974: aload_2
+    //   975: iconst_1
+    //   976: anewarray 208	java/lang/String
+    //   979: dup
+    //   980: iconst_0
+    //   981: aload_1
+    //   982: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   985: aastore
+    //   986: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   989: return
+    //   990: astore_1
+    //   991: goto -51 -> 940
+    //   994: astore_1
+    //   995: goto -825 -> 170
+    //   998: astore_1
+    //   999: goto -158 -> 841
+    //   1002: astore 4
+    //   1004: goto -200 -> 804
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	892	0	this	PublicAccountJavascriptInterfaceImpl
-    //   0	892	1	paramString1	String
-    //   0	892	2	paramString2	String
-    //   0	892	3	paramJSONObject	JSONObject
-    //   0	892	4	paramString3	String
-    //   33	844	5	str	String
-    //   7	572	6	localObject1	Object
-    //   23	442	7	localObject2	Object
+    //   0	1007	0	this	PublicAccountJavascriptInterfaceImpl
+    //   0	1007	1	paramString1	String
+    //   0	1007	2	paramString2	String
+    //   0	1007	3	paramJSONObject	JSONObject
+    //   0	1007	4	paramString3	String
+    //   33	869	5	localObject1	Object
+    //   148	435	6	localObject2	Object
+    //   810	1	6	localObject3	Object
+    //   818	16	6	localObject4	Object
+    //   145	435	7	localObject5	Object
+    //   181	445	8	str1	String
+    //   7	592	9	localObject6	Object
+    //   23	489	10	localObject7	Object
+    //   84	396	11	str2	String
     // Exception table:
     //   from	to	target	type
-    //   0	9	136	org/json/JSONException
-    //   15	35	136	org/json/JSONException
-    //   38	67	136	org/json/JSONException
-    //   67	135	136	org/json/JSONException
-    //   179	192	136	org/json/JSONException
-    //   192	219	136	org/json/JSONException
-    //   225	232	136	org/json/JSONException
-    //   237	296	136	org/json/JSONException
-    //   297	338	136	org/json/JSONException
-    //   339	398	136	org/json/JSONException
-    //   399	529	136	org/json/JSONException
-    //   648	653	136	org/json/JSONException
-    //   655	659	136	org/json/JSONException
-    //   750	755	136	org/json/JSONException
-    //   757	761	136	org/json/JSONException
-    //   827	832	136	org/json/JSONException
-    //   834	838	136	org/json/JSONException
-    //   847	851	136	org/json/JSONException
-    //   851	854	136	org/json/JSONException
-    //   855	859	136	org/json/JSONException
-    //   648	653	654	java/io/IOException
-    //   750	755	756	java/io/IOException
-    //   532	543	762	finally
-    //   704	745	777	java/io/IOException
-    //   774	777	777	java/io/IOException
-    //   827	832	833	java/io/IOException
-    //   530	532	839	finally
-    //   847	851	854	java/io/IOException
-    //   704	745	862	finally
-    //   774	777	862	finally
-    //   781	822	862	finally
-    //   530	532	867	java/io/IOException
-    //   547	557	874	finally
-    //   561	569	874	finally
-    //   573	588	874	finally
-    //   596	637	874	finally
-    //   641	643	874	finally
-    //   664	691	874	finally
-    //   695	697	874	finally
-    //   769	771	874	finally
-    //   179	192	886	java/net/MalformedURLException
+    //   693	697	698	java/io/IOException
+    //   788	792	793	java/io/IOException
+    //   915	920	793	java/io/IOException
+    //   734	788	799	finally
+    //   598	632	810	finally
+    //   637	693	810	finally
+    //   704	734	810	finally
+    //   588	598	818	finally
+    //   828	830	818	finally
+    //   586	588	836	finally
+    //   833	836	836	finally
+    //   844	853	836	finally
+    //   856	865	836	finally
+    //   868	878	836	finally
+    //   881	890	836	finally
+    //   893	910	836	finally
+    //   925	929	932	java/io/IOException
+    //   0	9	990	org/json/JSONException
+    //   15	35	990	org/json/JSONException
+    //   38	67	990	org/json/JSONException
+    //   67	143	990	org/json/JSONException
+    //   153	167	990	org/json/JSONException
+    //   173	183	990	org/json/JSONException
+    //   186	204	990	org/json/JSONException
+    //   210	259	990	org/json/JSONException
+    //   263	270	990	org/json/JSONException
+    //   275	340	990	org/json/JSONException
+    //   341	409	990	org/json/JSONException
+    //   410	578	990	org/json/JSONException
+    //   693	697	990	org/json/JSONException
+    //   699	703	990	org/json/JSONException
+    //   788	792	990	org/json/JSONException
+    //   794	798	990	org/json/JSONException
+    //   915	920	990	org/json/JSONException
+    //   925	929	990	org/json/JSONException
+    //   933	937	990	org/json/JSONException
+    //   937	940	990	org/json/JSONException
+    //   153	167	994	java/net/MalformedURLException
+    //   586	588	998	java/io/IOException
+    //   833	836	998	java/io/IOException
+    //   734	788	1002	java/io/IOException
   }
   
   public void readH5Data(String paramString1, String paramString2)
   {
     JSONObject localJSONObject = new JSONObject();
-    if (TextUtils.isEmpty(paramString1)) {
-      callJs(paramString2, new String[] { "{ret:-3, response:" + localJSONObject.toString() + "}" });
-    }
-    CustomWebView localCustomWebView;
-    do
+    if (TextUtils.isEmpty(paramString1))
     {
+      paramString1 = new StringBuilder();
+      paramString1.append("{ret:-3, response:");
+      paramString1.append(localJSONObject.toString());
+      paramString1.append("}");
+      callJs(paramString2, new String[] { paramString1.toString() });
       return;
-      localCustomWebView = this.mRuntime.a();
-    } while (localCustomWebView == null);
+    }
+    CustomWebView localCustomWebView = this.mRuntime.a();
+    if (localCustomWebView == null) {
+      return;
+    }
     new Thread(new PublicAccountJavascriptInterfaceImpl.17(this, paramString1, paramString2, localJSONObject, localCustomWebView.getUrl())).start();
   }
   
   public void setNavigationBarStyle(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    WebViewFragment localWebViewFragment;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      localWebViewFragment = (WebViewFragment)this.mRuntime.a();
-    } while (localWebViewFragment == null);
-    try
-    {
-      switch (new JSONObject(paramString).optInt("style"))
+    }
+    WebViewFragment localWebViewFragment = (WebViewFragment)this.mRuntime.a();
+    if (localWebViewFragment != null) {
+      try
       {
-      case 0: 
-        localWebViewFragment.mUIStyleHandler.a(false);
+        int i = new JSONObject(paramString).optInt("style");
+        if (i != 0)
+        {
+          if (i != 1) {
+            return;
+          }
+          localWebViewFragment.getUIStyleHandler().a(true);
+          return;
+        }
+        localWebViewFragment.getUIStyleHandler().a(false);
         return;
       }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-      return;
-    }
-    localWebViewFragment.mUIStyleHandler.a(true);
-    return;
   }
   
   public void setRightButton(String paramString1, String paramString2, String paramString3)
@@ -2986,48 +3178,59 @@ public class PublicAccountJavascriptInterfaceImpl
   
   public void setScreenshotAttr(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs", 2, "setScreenshotAttr->paramStr:" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setScreenshotAttr->paramStr:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      SwiftBrowserScreenShotHandler localSwiftBrowserScreenShotHandler = (SwiftBrowserScreenShotHandler)super.getBrowserComponent(64);
+      localObject = (SwiftBrowserScreenShotHandler)super.getBrowserComponent(64);
       paramString = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).parseString2Json(paramString);
       String str;
       if ((paramString != null) && (paramString.has("title")))
       {
         str = paramString.getString("title");
-        if (localSwiftBrowserScreenShotHandler != null) {
-          localSwiftBrowserScreenShotHandler.c(str);
+        if (localObject != null) {
+          ((SwiftBrowserScreenShotHandler)localObject).c(str);
         }
       }
       if ((paramString != null) && (paramString.has("shareUrl")))
       {
         str = paramString.getString("shareUrl");
-        if (localSwiftBrowserScreenShotHandler != null) {
-          localSwiftBrowserScreenShotHandler.e(str);
+        if (localObject != null) {
+          ((SwiftBrowserScreenShotHandler)localObject).e(str);
         }
       }
       if ((paramString != null) && (paramString.has("sinaShareTitle")))
       {
         str = paramString.getString("sinaShareTitle");
-        if (localSwiftBrowserScreenShotHandler != null) {
-          localSwiftBrowserScreenShotHandler.d(str);
+        if (localObject != null) {
+          ((SwiftBrowserScreenShotHandler)localObject).d(str);
         }
       }
       if ((paramString != null) && (paramString.has("shareActionSheetTitle")))
       {
         paramString = paramString.optJSONArray("shareActionSheetTitle");
-        if (localSwiftBrowserScreenShotHandler != null) {
-          localSwiftBrowserScreenShotHandler.a(paramString);
+        if (localObject != null)
+        {
+          ((SwiftBrowserScreenShotHandler)localObject).a(paramString);
+          return;
         }
       }
-      return;
     }
     catch (JSONException paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("PAjs", 2, "setScreenshotAttr->error:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setScreenshotAttr->error:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
+      }
     }
   }
   
@@ -3041,10 +3244,10 @@ public class PublicAccountJavascriptInterfaceImpl
     paramString3.setMessage(paramString2);
     paramString1 = new PublicAccountJavascriptInterfaceImpl.11(this, paramString6, paramString5);
     if (bool2) {
-      paramString3.setNegativeButton(HardCodeUtil.a(2131708737), paramString1);
+      paramString3.setNegativeButton(HardCodeUtil.a(2131708743), paramString1);
     }
     if (bool1) {
-      paramString3.setPositiveButton(HardCodeUtil.a(2131708773), paramString1);
+      paramString3.setPositiveButton(HardCodeUtil.a(2131708779), paramString1);
     }
     try
     {
@@ -3057,15 +3260,15 @@ public class PublicAccountJavascriptInterfaceImpl
   public void showLoading()
   {
     Object localObject = this.mRuntime.a(this.mRuntime.a());
-    if ((localObject != null) && ((localObject instanceof WebUiUtils.WebProgressInterface))) {
-      ((WebUiUtils.WebProgressInterface)localObject).b();
-    }
-    do
+    if ((localObject != null) && ((localObject instanceof WebUiUtils.WebProgressInterface)))
     {
+      ((WebUiUtils.WebProgressInterface)localObject).b();
       return;
-      localObject = (SwiftBrowserUIStyleHandler)super.getBrowserComponent(2);
-    } while ((localObject == null) || (((SwiftBrowserUIStyleHandler)localObject).a == null));
-    ((SwiftBrowserUIStyleHandler)localObject).a.setVisibility(0);
+    }
+    localObject = (SwiftBrowserUIStyleHandler)super.getBrowserComponent(2);
+    if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).a != null)) {
+      ((SwiftBrowserUIStyleHandler)localObject).a.setVisibility(0);
+    }
   }
   
   public void showProfile(String paramString)
@@ -3081,43 +3284,55 @@ public class PublicAccountJavascriptInterfaceImpl
   
   public void startMultiShare(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs", 2, "startMultiShare->paramStr:" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startMultiShare->paramStr:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).parseString2Json(paramString);
-      if ((localObject == null) || (!((JSONObject)localObject).has("image_url"))) {
-        break label160;
+      JSONObject localJSONObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).parseString2Json(paramString);
+      localObject = "";
+      paramString = (String)localObject;
+      if (localJSONObject != null)
+      {
+        paramString = (String)localObject;
+        if (localJSONObject.has("image_url")) {
+          paramString = localJSONObject.getString("image_url");
+        }
       }
-      paramString = ((JSONObject)localObject).getString("image_url");
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (localJSONObject != null)
+      {
+        bool1 = bool2;
+        if (localJSONObject.has("isGif")) {
+          bool1 = localJSONObject.getBoolean("isGif");
+        }
+      }
+      localObject = (SwiftBrowserScreenShotHandler)super.getBrowserComponent(64);
+      if (localObject != null)
+      {
+        ((SwiftBrowserScreenShotHandler)localObject).a(paramString, bool1);
+        return;
+      }
     }
     catch (JSONException paramString)
     {
-      Object localObject;
-      boolean bool;
-      while (QLog.isColorLevel())
+      if (QLog.isColorLevel())
       {
-        QLog.d("PAjs", 2, "startMultiShare->error:" + paramString);
-        return;
-        bool = false;
-        continue;
-        paramString = "";
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("startMultiShare->error:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
       }
     }
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    if ((localObject != null) && (((JSONObject)localObject).has("isGif")))
-    {
-      bool = ((JSONObject)localObject).getBoolean("isGif");
-      localObject = (SwiftBrowserScreenShotHandler)super.getBrowserComponent(64);
-      if (localObject == null) {
-        return;
-      }
-      ((SwiftBrowserScreenShotHandler)localObject).a(paramString, bool);
-    }
-    label160:
   }
   
   public void viewAccount(String paramString)
@@ -3127,119 +3342,119 @@ public class PublicAccountJavascriptInterfaceImpl
   
   public void viewAccount(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    AppInterface localAppInterface;
-    do
-    {
+    if (TextUtils.isEmpty(paramString1)) {
       return;
-      localAppInterface = this.mRuntime.a();
-    } while (localAppInterface == null);
-    Object localObject;
+    }
+    AppInterface localAppInterface = this.mRuntime.a();
+    if (localAppInterface == null) {
+      return;
+    }
     if ((localAppInterface instanceof BrowserAppInterface))
     {
       localObject = ((BrowserAppInterface)localAppInterface).getEntityManagerFactory(null).createEntityManager();
-      if (localObject == null) {
-        break label285;
+      if (localObject != null)
+      {
+        localObject = (PublicAccountInfo)((EntityManager)localObject).find(PublicAccountInfo.class, "uin = ?", new String[] { paramString1 });
+        break label108;
       }
-      localObject = (PublicAccountInfo)((EntityManager)localObject).find(PublicAccountInfo.class, "uin = ?", new String[] { paramString1 });
     }
-    for (;;)
+    else
     {
-      Activity localActivity = this.context;
-      if ((this.context instanceof BasePluginActivity)) {
-        localActivity = ((BasePluginActivity)this.context).getOutActivity();
-      }
-      if ((localObject != null) && ("true".equals(paramString2)))
+      localObject = (IPublicAccountDataManager)localAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+      if (localObject != null)
       {
-        paramString2 = new Intent(localActivity, ChatActivity.class);
-        paramString2.putExtra("uin", paramString1);
-        paramString2.putExtra("uintype", 1008);
-        paramString2.putExtra("uinname", ((PublicAccountInfo)localObject).name);
-        localActivity.startActivity(paramString2);
+        localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfo(paramString1);
+        break label108;
       }
-      for (;;)
-      {
-        PublicAccountHandler.a(localAppInterface, paramString1, "Pb_account_lifeservice", "mp_msg_sys_5", "addpage_hot");
-        return;
-        localObject = (PublicAccountDataManager)localAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
-        if (localObject == null) {
-          break label280;
-        }
-        localObject = ((PublicAccountDataManager)localObject).b(paramString1);
-        break;
-        paramString2 = new ActivityURIRequest(localActivity, "/pubaccount/detail");
-        paramString2.extra().putString("uin", paramString1);
-        paramString2.extra().putString("report_src_param_type", "");
-        paramString2.extra().putString("report_src_param_name", "");
-        paramString2.extra().putBoolean("fromBrowser", true);
-        paramString2.setFlags(67108864);
-        QRoute.startUri(paramString2, null);
-      }
-      label280:
-      localObject = null;
-      continue;
-      label285:
-      localObject = null;
     }
+    Object localObject = null;
+    label108:
+    Activity localActivity2 = this.context;
+    Activity localActivity1 = localActivity2;
+    if ((localActivity2 instanceof BasePluginActivity)) {
+      localActivity1 = ((BasePluginActivity)localActivity2).getOutActivity();
+    }
+    if ((localObject != null) && ("true".equals(paramString2)))
+    {
+      paramString2 = new Intent(localActivity1, ChatActivity.class);
+      paramString2.putExtra("uin", paramString1);
+      paramString2.putExtra("uintype", 1008);
+      paramString2.putExtra("uinname", ((PublicAccountInfo)localObject).name);
+      localActivity1.startActivity(paramString2);
+    }
+    else
+    {
+      paramString2 = new ActivityURIRequest(localActivity1, "/pubaccount/detail");
+      paramString2.extra().putString("uin", paramString1);
+      paramString2.extra().putString("report_src_param_type", "");
+      paramString2.extra().putString("report_src_param_name", "");
+      paramString2.extra().putBoolean("fromBrowser", true);
+      paramString2.setFlags(67108864);
+      QRoute.startUri(paramString2, null);
+    }
+    PublicAccountHandlerImpl.reportClickPublicAccountEventInner(localAppInterface, paramString1, "Pb_account_lifeservice", "mp_msg_sys_5", "addpage_hot");
   }
   
   public void viewAccount(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs", 2, "func viewAccount(****), sopType:" + paramString3 + ",sopName:" + paramString4);
-    }
-    if (TextUtils.isEmpty(paramString1)) {}
-    AppInterface localAppInterface;
-    do
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("func viewAccount(****), sopType:");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append(",sopName:");
+      ((StringBuilder)localObject).append(paramString4);
+      QLog.d("PAjs", 2, ((StringBuilder)localObject).toString());
+    }
+    if (TextUtils.isEmpty(paramString1)) {
       return;
-      localAppInterface = this.mRuntime.a();
-    } while (localAppInterface == null);
-    Object localObject;
+    }
+    AppInterface localAppInterface = this.mRuntime.a();
+    if (localAppInterface == null) {
+      return;
+    }
     if ((localAppInterface instanceof BrowserAppInterface))
     {
       localObject = ((BrowserAppInterface)localAppInterface).getEntityManagerFactory(null).createEntityManager();
-      if (localObject == null) {
-        break label326;
+      if (localObject != null)
+      {
+        localObject = (PublicAccountInfo)((EntityManager)localObject).find(PublicAccountInfo.class, "uin = ?", new String[] { paramString1 });
+        break label176;
       }
-      localObject = (PublicAccountInfo)((EntityManager)localObject).find(PublicAccountInfo.class, "uin = ?", new String[] { paramString1 });
     }
-    for (;;)
+    else
     {
-      Activity localActivity = this.context;
-      if (this.context.getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity")) {
-        localActivity = ((PluginBaseActivity)this.context).getOutActivity();
-      }
-      if ((localObject != null) && ("true".equals(paramString2)))
+      localObject = (IPublicAccountDataManager)localAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+      if (localObject != null)
       {
-        paramString2 = new Intent(localActivity, ChatActivity.class);
-        paramString2.putExtra("uin", paramString1);
-        paramString2.putExtra("uintype", 1008);
-        paramString2.putExtra("uinname", ((PublicAccountInfo)localObject).name);
-        localActivity.startActivity(paramString2);
+        localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfo(paramString1);
+        break label176;
       }
-      for (;;)
-      {
-        PublicAccountHandler.a(localAppInterface, paramString1, "Pb_account_lifeservice", "mp_msg_sys_5", "addpage_hot");
-        return;
-        localObject = (PublicAccountDataManager)localAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
-        if (localObject == null) {
-          break label320;
-        }
-        localObject = ((PublicAccountDataManager)localObject).b(paramString1);
-        break;
-        paramString2 = new ActivityURIRequest(localActivity, "/pubaccount/detail");
-        paramString2.extra().putString("uin", paramString1);
-        paramString2.extra().putString("report_src_param_type", paramString3);
-        paramString2.extra().putString("report_src_param_name", paramString4);
-        QRoute.startUri(paramString2, null);
-      }
-      label320:
-      localObject = null;
-      continue;
-      label326:
-      localObject = null;
     }
+    Object localObject = null;
+    label176:
+    Activity localActivity2 = this.context;
+    Activity localActivity1 = localActivity2;
+    if (localActivity2.getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity")) {
+      localActivity1 = ((PluginBaseActivity)this.context).getOutActivity();
+    }
+    if ((localObject != null) && ("true".equals(paramString2)))
+    {
+      paramString2 = new Intent(localActivity1, ChatActivity.class);
+      paramString2.putExtra("uin", paramString1);
+      paramString2.putExtra("uintype", 1008);
+      paramString2.putExtra("uinname", ((PublicAccountInfo)localObject).name);
+      localActivity1.startActivity(paramString2);
+    }
+    else
+    {
+      paramString2 = new ActivityURIRequest(localActivity1, "/pubaccount/detail");
+      paramString2.extra().putString("uin", paramString1);
+      paramString2.extra().putString("report_src_param_type", paramString3);
+      paramString2.extra().putString("report_src_param_name", paramString4);
+      QRoute.startUri(paramString2, null);
+    }
+    PublicAccountHandlerImpl.reportClickPublicAccountEventInner(localAppInterface, paramString1, "Pb_account_lifeservice", "mp_msg_sys_5", "addpage_hot");
   }
   
   public void viewTroopBarAccount(String paramString)
@@ -3263,7 +3478,11 @@ public class PublicAccountJavascriptInterfaceImpl
     JSONObject localJSONObject = new JSONObject();
     if (TextUtils.isEmpty(paramString1))
     {
-      callJs(paramString2, new String[] { "{ret:-3, response:" + localJSONObject.toString() + "}" });
+      paramString1 = new StringBuilder();
+      paramString1.append("{ret:-3, response:");
+      paramString1.append(localJSONObject.toString());
+      paramString1.append("}");
+      callJs(paramString2, new String[] { paramString1.toString() });
       return;
     }
     ThreadManager.post(new PublicAccountJavascriptInterfaceImpl.13(this, paramString1, paramString2, localJSONObject), 5, null, false);
@@ -3271,7 +3490,7 @@ public class PublicAccountJavascriptInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountJavascriptInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

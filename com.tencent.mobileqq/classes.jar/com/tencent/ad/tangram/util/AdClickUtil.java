@@ -9,19 +9,19 @@ import android.support.annotation.Keep;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.canvas.AdCanvas;
-import com.tencent.ad.tangram.canvas.AdCanvasJsonManager;
 import com.tencent.ad.tangram.halfScreen.AdHalfScreen;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.mini.AdQQMINIProgram;
 import com.tencent.ad.tangram.net.AdNet;
 import com.tencent.ad.tangram.offline.AdOffline;
 import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.ad.tangram.statistics.AdReporterForClick;
-import com.tencent.ad.tangram.statistics.b;
+import com.tencent.ad.tangram.statistics.c;
 import com.tencent.ad.tangram.videoceiling.AdVideoCeiling;
 import com.tencent.ad.tangram.videoceiling.AdVideoSplice;
+import com.tencent.ad.tangram.views.canvas.AdCanvas;
+import com.tencent.ad.tangram.views.canvas.AdCanvasJsonManager;
 import com.tencent.ad.tangram.web.AdBrowser;
 import java.lang.ref.WeakReference;
 import java.net.URLEncoder;
@@ -46,45 +46,39 @@ public final class AdClickUtil
   
   private static String appendUrlWithAutoDownload(String paramString1, String paramString2, AdClickUtil.Params paramParams)
   {
-    String str;
-    if ((paramParams == null) || (!paramParams.isValid()) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    if ((paramParams != null) && (paramParams.isValid()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      AdLog.e("AdClickUtil", "appendUrlWithAutoDownload error");
-      str = null;
-    }
-    Uri localUri;
-    Uri.Builder localBuilder;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return str;
-              str = paramString1;
-            } while (!canAppAutoDownload(paramParams));
-            localUri = AdUriUtil.parse(paramString1);
-            str = paramString1;
-          } while (localUri == null);
-          localBuilder = localUri.buildUpon();
-          str = paramString1;
-        } while (localBuilder == null);
-        str = paramString1;
-      } while (!paramParams.ad.isAppProductType());
-      if (paramParams.ad.isAppXiJingDefault()) {
-        break;
+      if (!canAppAutoDownload(paramParams)) {
+        return paramString1;
       }
-      str = paramString1;
-    } while (!paramParams.ad.isAppXiJing());
-    paramString1 = localBuilder;
-    if (AdUriUtil.getQueryParameter(localUri, paramString2) == null) {
-      paramString1 = localBuilder.appendQueryParameter(paramString2, "1");
+      Uri localUri = AdUriUtil.parse(paramString1);
+      if (localUri == null) {
+        return paramString1;
+      }
+      Uri.Builder localBuilder = localUri.buildUpon();
+      if (localBuilder == null) {
+        return paramString1;
+      }
+      String str = paramString1;
+      if (paramParams.ad.isAppProductType()) {
+        if (!paramParams.ad.isAppXiJingDefault())
+        {
+          str = paramString1;
+          if (!paramParams.ad.isAppXiJing()) {}
+        }
+        else
+        {
+          paramString1 = localBuilder;
+          if (AdUriUtil.getQueryParameter(localUri, paramString2) == null) {
+            paramString1 = localBuilder.appendQueryParameter(paramString2, "1");
+          }
+          str = paramString1.toString();
+        }
+      }
+      return str;
     }
-    return paramString1.toString();
+    AdLog.e("AdClickUtil", "appendUrlWithAutoDownload error");
+    return null;
   }
   
   private static boolean canAppAutoDownload(AdClickUtil.Params paramParams)
@@ -94,79 +88,77 @@ public final class AdClickUtil
   
   public static int getActionAboutApp(AdClickUtil.Params paramParams, int paramInt)
   {
-    int i = 4;
-    if ((paramParams == null) || (!paramParams.isValid())) {}
-    do
-    {
-      do
-      {
-        return paramInt;
-        if ((!paramParams.ad.isAppProductType()) || (!isValidForApp(paramParams))) {
-          break;
-        }
-      } while (!AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName()));
-      if (!TextUtils.isEmpty(paramParams.ad.getAppDeeplink())) {}
-      for (paramInt = 4;; paramInt = 5) {
-        return paramInt;
-      }
-    } while ((!isWebProductTypeDeeplinkSupported(paramParams)) || (TextUtils.isEmpty(paramParams.ad.getAppDeeplink())));
-    AdAppDeeplinkLauncher.Params localParams = new AdAppDeeplinkLauncher.Params();
-    localParams.deeplink = paramParams.ad.getAppDeeplink();
-    localParams.addflags = 268435456;
-    localParams.extrasForIntent = paramParams.extrasForIntent;
-    paramParams = AdAppDeeplinkLauncher.canLaunch((Activity)paramParams.activity.get(), localParams);
+    int i = paramInt;
     if (paramParams != null)
     {
-      paramParams = paramParams.getError();
-      if ((paramParams == null) || (!paramParams.isSuccess())) {
-        break label191;
+      if (!paramParams.isValid()) {
+        return paramInt;
       }
-      paramInt = i;
+      if ((paramParams.ad.isAppProductType()) && (isValidForApp(paramParams)))
+      {
+        if (AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName()))
+        {
+          if (!TextUtils.isEmpty(paramParams.ad.getAppDeeplink())) {
+            return 4;
+          }
+          return 5;
+        }
+        return paramInt;
+      }
+      i = paramInt;
+      if (isWebProductTypeDeeplinkSupported(paramParams))
+      {
+        i = paramInt;
+        if (!TextUtils.isEmpty(paramParams.ad.getAppDeeplink()))
+        {
+          AdAppDeeplinkLauncher.Params localParams = new AdAppDeeplinkLauncher.Params();
+          localParams.deeplink = paramParams.ad.getAppDeeplink();
+          localParams.addflags = 268435456;
+          localParams.extrasForIntent = paramParams.extrasForIntent;
+          paramParams = AdAppDeeplinkLauncher.canLaunch((Activity)paramParams.activity.get(), localParams);
+          if (paramParams != null) {
+            paramParams = paramParams.getError();
+          } else {
+            paramParams = new AdError(1);
+          }
+          i = paramInt;
+          if (paramParams != null)
+          {
+            i = paramInt;
+            if (paramParams.isSuccess()) {
+              i = 4;
+            }
+          }
+        }
+      }
     }
-    label191:
-    for (;;)
-    {
-      return paramInt;
-      paramParams = new AdError(1);
-      break;
-    }
+    return i;
   }
   
   private static AdClickUtil.a getBaseURLObject(AdClickUtil.Params paramParams)
   {
-    if ((paramParams == null) || (!paramParams.isValid())) {
-      return null;
-    }
-    AdClickUtil.a locala = new AdClickUtil.a();
-    if (!paramParams.reportForClick)
+    if ((paramParams != null) && (paramParams.isValid()))
     {
-      locala.url = appendUrlWithAutoDownload(replaceUrlWithClickLpp(paramParams.ad.getUrlForLandingPage()), "autodownload", paramParams);
-      locala.type = 2;
+      AdClickUtil.a locala = new AdClickUtil.a();
+      if (!paramParams.reportForClick)
+      {
+        locala.url = appendUrlWithAutoDownload(replaceUrlWithClickLpp(paramParams.ad.getUrlForLandingPage()), "autodownload", paramParams);
+        locala.type = 2;
+        return locala;
+      }
+      locala.url = appendUrlWithAutoDownload(getUrlForClick(paramParams), "_autodownload", paramParams);
+      locala.type = 1;
       return locala;
     }
-    locala.url = appendUrlWithAutoDownload(getUrlForClick(paramParams), "_autodownload", paramParams);
-    locala.type = 1;
-    return locala;
+    return null;
   }
   
   private static AdClickUtil.a getURLObject(AdClickUtil.Params paramParams)
   {
-    Object localObject;
-    if ((paramParams == null) || (!paramParams.isValid()))
+    if ((paramParams != null) && (paramParams.isValid()))
     {
-      localObject = null;
-      return localObject;
-    }
-    AdClickUtil.a locala = new AdClickUtil.a();
-    if ((!paramParams.ad.isAppXiJingOffline()) && (!paramParams.ad.isWebXiJingOffline())) {}
-    for (;;)
-    {
-      localObject = locala;
-      if (!TextUtils.isEmpty(locala.url)) {
-        break;
-      }
-      return getBaseURLObject(paramParams);
-      if (!TextUtils.isEmpty(AdOffline.INSTANCE.getVersionIfExistsFromMemory(paramParams.ad.getBusinessIdForXiJingOffline())))
+      AdClickUtil.a locala = new AdClickUtil.a();
+      if (((paramParams.ad.isAppXiJingOffline()) || (paramParams.ad.isWebXiJingOffline())) && (!TextUtils.isEmpty(AdOffline.INSTANCE.getVersionIfExistsFromMemory(paramParams.ad.getBusinessIdForXiJingOffline()))))
       {
         localObject = AdCanvasJsonManager.getInstance().getCachedCanvasJson(paramParams.ad, paramParams.ad.getJSONKeyForXiJingOffline(), true);
         if (!TextUtils.isEmpty((CharSequence)localObject))
@@ -176,235 +168,246 @@ public final class AdClickUtil
           locala.type = 3;
         }
       }
+      Object localObject = locala;
+      if (TextUtils.isEmpty(locala.url)) {
+        localObject = getBaseURLObject(paramParams);
+      }
+      return localObject;
     }
+    return null;
   }
   
   public static String getUrlForClick(AdClickUtil.Params paramParams)
   {
-    if ((paramParams == null) || (!paramParams.isValid()))
+    if ((paramParams != null) && (paramParams.isValid()))
     {
-      AdLog.e("AdClickUtil", "getUrlForClick error");
-      return null;
-    }
-    Object localObject1 = paramParams.ad.getUrlForClick();
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      AdLog.e("AdClickUtil", "getUrlForClick error");
-      return null;
-    }
-    localObject1 = replaceUrlWithClickLpp((String)localObject1);
-    Uri localUri = AdUriUtil.parse((String)localObject1);
-    if (localUri == null)
-    {
-      AdLog.e("AdClickUtil", "getUrlForClick error");
-      return localObject1;
-    }
-    Object localObject3 = localUri.buildUpon();
-    if (localObject3 == null)
-    {
-      AdLog.e("AdClickUtil", "getUrlForClick error");
-      return localObject1;
-    }
-    if (AdUriUtil.getQueryParameter(localUri, "feeds_attachment") != null)
-    {
-      localObject1 = localObject3;
-      if (AdUriUtil.getQueryParameter(localUri, "isfromqqb") == null) {
-        break label244;
-      }
-      label113:
-      localObject3 = localObject1;
-      if (AdUriUtil.getQueryParameter(localUri, "s") == null) {
-        if (!TextUtils.isEmpty(paramParams.antiSpamParams)) {
-          break label257;
-        }
-      }
-    }
-    Object localObject2;
-    label257:
-    for (localObject3 = localObject1;; localObject3 = ((Uri.Builder)localObject2).appendQueryParameter("s", paramParams.antiSpamParams))
-    {
-      for (;;)
+      Object localObject1 = paramParams.ad.getUrlForClick();
+      if (TextUtils.isEmpty((CharSequence)localObject1))
       {
-        return ((Uri.Builder)localObject3).toString();
+        AdLog.e("AdClickUtil", "getUrlForClick error");
+        return null;
+      }
+      Object localObject2 = replaceUrlWithClickLpp((String)localObject1);
+      Uri localUri = AdUriUtil.parse((String)localObject2);
+      if (localUri == null)
+      {
+        AdLog.e("AdClickUtil", "getUrlForClick error");
+        return localObject2;
+      }
+      localObject1 = localUri.buildUpon();
+      if (localObject1 == null)
+      {
+        AdLog.e("AdClickUtil", "getUrlForClick error");
+        return localObject2;
+      }
+      if (AdUriUtil.getQueryParameter(localUri, "feeds_attachment") == null) {
         try
         {
-          JSONObject localJSONObject = new JSONObject();
+          localObject2 = new JSONObject();
           if (paramParams.sceneID != -2147483648) {
-            localJSONObject.put("click_scene", String.valueOf(paramParams.sceneID));
+            ((JSONObject)localObject2).put("click_scene", String.valueOf(paramParams.sceneID));
           }
           if (paramParams.componentID != -2147483648) {
-            localJSONObject.put("click_pos", String.valueOf(paramParams.componentID));
+            ((JSONObject)localObject2).put("click_pos", String.valueOf(paramParams.componentID));
           }
-          localObject1 = localObject3;
-          if (localJSONObject.length() <= 0) {
-            break;
+          if (((JSONObject)localObject2).length() > 0)
+          {
+            localObject2 = ((Uri.Builder)localObject1).appendQueryParameter("feeds_attachment", ((JSONObject)localObject2).toString());
+            localObject1 = localObject2;
           }
-          localObject1 = ((Uri.Builder)localObject3).appendQueryParameter("feeds_attachment", localJSONObject.toString());
         }
         catch (Throwable localThrowable)
         {
           AdLog.e("AdClickUtil", "getUrlForClick", localThrowable);
-          localObject2 = localObject3;
         }
       }
-      break;
-      label244:
-      localObject2 = ((Uri.Builder)localObject2).appendQueryParameter("isfromqqb", "1");
-      break label113;
+      if (AdUriUtil.getQueryParameter(localUri, "isfromqqb") == null) {
+        localObject1 = ((Uri.Builder)localObject1).appendQueryParameter("isfromqqb", "1");
+      }
+      Object localObject3 = localObject1;
+      if (AdUriUtil.getQueryParameter(localUri, "s") == null) {
+        if (TextUtils.isEmpty(paramParams.antiSpamParams)) {
+          localObject3 = localObject1;
+        } else {
+          localObject3 = ((Uri.Builder)localObject1).appendQueryParameter("s", paramParams.antiSpamParams);
+        }
+      }
+      return ((Uri.Builder)localObject3).toString();
     }
+    AdLog.e("AdClickUtil", "getUrlForClick error");
+    return null;
   }
   
   private static int getVideoCeilingStyle(AdClickUtil.Params paramParams)
   {
-    int i = -2147483648;
-    if ((paramParams != null) && (paramParams.isValid()) && (!TextUtils.isEmpty(paramParams.ad.getVideoUrl())) && (AdVideoCeiling.getAdapter() != null)) {}
-    for (int j = 1; j == 0; j = 0)
-    {
-      j = i;
-      return j;
+    if ((paramParams != null) && (paramParams.isValid()) && (!TextUtils.isEmpty(paramParams.ad.getVideoUrl())) && (AdVideoCeiling.getAdapter() != null) && (!paramParams.ad.isVideoOnTopDisabled())) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    j = getActionAboutApp(paramParams, 1);
-    if (j == 4) {
+    int j = -2147483648;
+    if (i == 0) {
+      return -2147483648;
+    }
+    int i = getActionAboutApp(paramParams, 1);
+    if (i == 4)
+    {
+      i = j;
       if (paramParams.videoCeilingSupportedIfInstalled) {
         i = 3;
       }
     }
-    for (;;)
+    else if (i == 5)
     {
-      j = i;
-      if (i != 1) {
-        break;
+      i = j;
+      if (paramParams.videoCeilingSupportedIfInstalled) {
+        i = 2;
       }
-      j = i;
-      if (!paramParams.ad.isCanvas()) {
-        break;
-      }
-      return 4;
-      if (j == 5)
-      {
-        if (paramParams.videoCeilingSupportedIfInstalled) {
-          i = 2;
-        }
-      }
-      else if (paramParams.videoCeilingSupportedIfNotInstalled) {
+    }
+    else
+    {
+      i = j;
+      if (paramParams.videoCeilingSupportedIfNotInstalled) {
         i = 1;
       }
     }
+    j = i;
+    if (i == 1)
+    {
+      j = i;
+      if (paramParams.ad.isCanvas()) {
+        j = 4;
+      }
+    }
+    return j;
   }
   
   public static AdClickUtil.Result handle(AdClickUtil.Params paramParams)
   {
     AdLog.i("AdClickUtil", "handle");
-    AdReporterForAnalysis.reportForClickStart(paramParams);
-    if ((paramParams == null) || (!paramParams.isValid()))
+    AdAnalysisHelperForUtil.reportForClickStart(paramParams);
+    if ((paramParams != null) && (paramParams.isValid()))
     {
-      AdLog.e("AdClickUtil", "handle error");
-      return new AdClickUtil.Result(4, 0);
-    }
-    boolean bool;
-    AdClickUtil.Result localResult;
-    if ((paramParams.enableAutoDownload) && (!paramParams.ad.disableAutoDownload()))
-    {
-      bool = true;
+      boolean bool;
+      if ((paramParams.enableAutoDownload) && (!paramParams.ad.disableAutoDownload())) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       paramParams.enableAutoDownload = bool;
-      localResult = new AdClickUtil.Result(1, 0);
-      if (!paramParams.ad.isQQMINIProgram()) {
-        break label127;
-      }
-      localResult = handleQQMINIProgramType(paramParams);
-    }
-    label191:
-    for (;;)
-    {
-      AdReporterForAnalysis.reportForClickEnd(paramParams, localResult);
-      AdOffline.INSTANCE.reportOnClick((Context)paramParams.activity.get(), paramParams.ad, localResult);
-      return localResult;
-      bool = false;
-      break;
-      label127:
-      if (paramParams.ad.isAppProductType()) {
-        localResult = handleAppProductType(paramParams);
-      }
-      for (;;)
+      AdClickUtil.Result localResult1 = new AdClickUtil.Result(1, 0);
+      AdClickUtil.Result localResult2;
+      if (paramParams.ad.isQQMINIProgram())
       {
-        if ((localResult != null) && (localResult.isSuccess())) {
-          break label191;
+        localResult2 = handleQQMINIProgramType(paramParams);
+      }
+      else
+      {
+        if (paramParams.ad.isAppProductType()) {
+          localResult1 = handleAppProductType(paramParams);
+        } else if (isWebProductType(paramParams)) {
+          localResult1 = handleWebProductType(paramParams);
         }
-        localResult = handleUrl(paramParams, getBaseURLObject(paramParams));
-        if (localResult != null) {
-          localResult.errorHandled = true;
+        if (localResult1 != null)
+        {
+          localResult2 = localResult1;
+          if (localResult1.isSuccess()) {}
         }
-        break;
-        if (isWebProductType(paramParams)) {
-          localResult = handleWebProductType(paramParams);
+        else
+        {
+          localResult1 = handleUrl(paramParams, getBaseURLObject(paramParams));
+          localResult2 = localResult1;
+          if (localResult1 != null)
+          {
+            localResult1.errorHandled = true;
+            localResult2 = localResult1;
+          }
         }
       }
+      AdAnalysisHelperForUtil.reportForClickEnd(paramParams, localResult2);
+      AdOffline.INSTANCE.reportOnClick((Context)paramParams.activity.get(), paramParams.ad, localResult2);
+      return localResult2;
     }
+    AdLog.e("AdClickUtil", "handle error");
+    return new AdClickUtil.Result(4, 0);
   }
   
   static AdClickUtil.Result handleApp(AdClickUtil.Params paramParams, boolean paramBoolean)
   {
-    if ((!isValidForApp(paramParams)) || (!AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName())))
+    if ((isValidForApp(paramParams)) && (AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName())))
     {
-      AdLog.e("AdClickUtil", "handleApp error");
-      return new AdClickUtil.Result(4, 5);
+      AdError localAdError = AdAppUtil.launch((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName(), paramParams.extrasForIntent);
+      if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick) && (!paramBoolean)) {
+        AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      }
+      return new AdClickUtil.Result(localAdError, 5);
     }
-    AdError localAdError = AdAppUtil.launch((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName(), paramParams.extrasForIntent);
-    if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick) && (!paramBoolean)) {
-      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
-    }
-    return new AdClickUtil.Result(localAdError, 5);
+    AdLog.e("AdClickUtil", "handleApp error");
+    return new AdClickUtil.Result(4, 5);
   }
   
   private static void handleAppAfterInstalled(AdClickUtil.Params paramParams)
   {
-    if (!isValidForApp(paramParams)) {
+    if (!isValidForApp(paramParams))
+    {
       AdLog.e("AdClickUtil", "handleAppAfterInstalled error");
-    }
-    while ((paramParams.ad.isAppPreOrder()) || (paramParams.ad.isAppXiJingFengling()) || (paramParams.appReceiver == null) || (paramParams.appReceiver.get() == null)) {
       return;
     }
-    ((AdAppReceiver)paramParams.appReceiver.get()).observe(paramParams);
+    if (!paramParams.ad.isAppPreOrder())
+    {
+      if (paramParams.ad.isAppXiJingFengling()) {
+        return;
+      }
+      if ((paramParams.appReceiver != null) && (paramParams.appReceiver.get() != null)) {
+        ((AdAppReceiver)paramParams.appReceiver.get()).observe(paramParams);
+      }
+    }
   }
   
   private static AdClickUtil.Result handleAppMarket(AdClickUtil.Params paramParams)
   {
+    boolean bool = isValidForApp(paramParams);
     String str = null;
-    if ((!isValidForApp(paramParams)) || (TextUtils.isEmpty(paramParams.ad.getAppMarketDeeplink())) || (TextUtils.isEmpty(paramParams.ad.getAppMarketPackageName()))) {
-      localObject2 = new AdClickUtil.Result(4, 8);
-    }
-    for (Object localObject1 = null;; localObject1 = null)
+    Object localObject;
+    if ((bool) && (!TextUtils.isEmpty(paramParams.ad.getAppMarketDeeplink())) && (!TextUtils.isEmpty(paramParams.ad.getAppMarketPackageName())))
     {
-      AdLog.i("AdClickUtil", String.format("handleAppMarket errorCode:%d manufacturer:%s model:%s appMarketPackageName:%s appMarketDeeplink:%s", new Object[] { Integer.valueOf(((AdClickUtil.Result)localObject2).getErrorCode()), Build.MANUFACTURER, Build.MODEL, paramParams.ad.getAppMarketPackageName(), paramParams.ad.getAppMarketDeeplink() }));
-      if ((localObject2 != null) && (((AdClickUtil.Result)localObject2).isSuccess()) && (paramParams.reportForClick)) {
-        AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      if (!AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppMarketPackageName()))
+      {
+        localObject = new AdClickUtil.Result(12, 8);
       }
-      if ((localObject2 != null) && (((AdClickUtil.Result)localObject2).isSuccess())) {
-        b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 285);
+      else
+      {
+        localObject = new AdAppDeeplinkLauncher.Params();
+        ((AdAppDeeplinkLauncher.Params)localObject).deeplink = paramParams.ad.getAppMarketDeeplink();
+        ((AdAppDeeplinkLauncher.Params)localObject).packageName = paramParams.ad.getAppMarketPackageName();
+        ((AdAppDeeplinkLauncher.Params)localObject).extrasForIntent = paramParams.extrasForIntent;
+        localResult = AdAppDeeplinkLauncher.launch((Activity)paramParams.activity.get(), (AdAppDeeplinkLauncher.Params)localObject);
+        if (localResult != null) {
+          localObject = localResult.getError();
+        } else {
+          localObject = new AdError(1);
+        }
+        localObject = new AdClickUtil.Result((AdError)localObject, 8);
+        break label190;
       }
-      if (localObject1 != null) {
-        str = ((AdAppDeeplinkLauncher.Result)localObject1).getActivityName();
-      }
-      AdReporterForAnalysis.reportForLaunchAppMarket(paramParams, (AdClickUtil.Result)localObject2, str);
-      return localObject2;
-      if (AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppMarketPackageName())) {
-        break;
-      }
-      localObject2 = new AdClickUtil.Result(12, 8);
     }
-    localObject1 = new AdAppDeeplinkLauncher.Params();
-    ((AdAppDeeplinkLauncher.Params)localObject1).deeplink = paramParams.ad.getAppMarketDeeplink();
-    ((AdAppDeeplinkLauncher.Params)localObject1).packageName = paramParams.ad.getAppMarketPackageName();
-    ((AdAppDeeplinkLauncher.Params)localObject1).extrasForIntent = paramParams.extrasForIntent;
-    Object localObject2 = AdAppDeeplinkLauncher.launch((Activity)paramParams.activity.get(), (AdAppDeeplinkLauncher.Params)localObject1);
-    if (localObject2 != null) {}
-    for (localObject1 = ((AdAppDeeplinkLauncher.Result)localObject2).getError();; localObject1 = new AdError(1))
-    {
-      AdClickUtil.Result localResult = new AdClickUtil.Result((AdError)localObject1, 8);
-      localObject1 = localObject2;
-      localObject2 = localResult;
-      break;
+    else {
+      localObject = new AdClickUtil.Result(4, 8);
     }
+    AdAppDeeplinkLauncher.Result localResult = null;
+    label190:
+    AdLog.i("AdClickUtil", String.format("handleAppMarket errorCode:%d manufacturer:%s model:%s appMarketPackageName:%s appMarketDeeplink:%s", new Object[] { Integer.valueOf(((AdClickUtil.Result)localObject).getErrorCode()), Build.MANUFACTURER, Build.MODEL, paramParams.ad.getAppMarketPackageName(), paramParams.ad.getAppMarketDeeplink() }));
+    if ((((AdClickUtil.Result)localObject).isSuccess()) && (paramParams.reportForClick)) {
+      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+    }
+    if (((AdClickUtil.Result)localObject).isSuccess()) {
+      c.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 285);
+    }
+    if (localResult != null) {
+      str = localResult.getActivityName();
+    }
+    AdAnalysisHelperForUtil.reportForLaunchAppMarket(paramParams, (AdClickUtil.Result)localObject, str);
+    return localObject;
   }
   
   private static AdClickUtil.Result handleAppProductType(AdClickUtil.Params paramParams)
@@ -416,7 +419,10 @@ public final class AdClickUtil
     }
     if (paramParams.ad.isAppPreOrder())
     {
-      AdLog.d("AdClickUtil", "handleAppProduct isAppPreOder:" + paramParams.ad.getDestType());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleAppProduct isAppPreOder:");
+      ((StringBuilder)localObject).append(paramParams.ad.getDestType());
+      AdLog.d("AdClickUtil", ((StringBuilder)localObject).toString());
       return handleAppProductTypeIfNotInstalled(paramParams);
     }
     boolean bool = AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName());
@@ -427,19 +433,25 @@ public final class AdClickUtil
       }
       return handleVideoSplice(paramParams);
     }
-    AdLog.i("AdClickUtil", "handleAppProductType " + paramParams.ad.getAppPackageName() + " installed:" + bool);
-    WeakReference localWeakReference = new WeakReference(paramParams.activity.get());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleAppProductType ");
+    ((StringBuilder)localObject).append(paramParams.ad.getAppPackageName());
+    ((StringBuilder)localObject).append(" installed:");
+    ((StringBuilder)localObject).append(bool);
+    AdLog.i("AdClickUtil", ((StringBuilder)localObject).toString());
+    localObject = new WeakReference(paramParams.activity.get());
     Ad localAd = paramParams.ad;
-    if (bool) {}
-    for (int i = 247;; i = 248)
-    {
-      b.reportAsync(localWeakReference, localAd, i);
-      if (!TextUtils.isEmpty(paramParams.ad.getAppDeeplink())) {
-        b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
-      }
-      if (!bool) {
-        break;
-      }
+    int i;
+    if (bool) {
+      i = 247;
+    } else {
+      i = 248;
+    }
+    c.reportAsync((WeakReference)localObject, localAd, i);
+    if (!TextUtils.isEmpty(paramParams.ad.getAppDeeplink())) {
+      c.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
+    }
+    if (bool) {
       return handleAppProductTypeIfInstalled(paramParams);
     }
     return handleAppProductTypeIfNotInstalled(paramParams);
@@ -447,198 +459,179 @@ public final class AdClickUtil
   
   private static AdClickUtil.Result handleAppProductTypeIfInstalled(AdClickUtil.Params paramParams)
   {
-    Object localObject;
-    if ((!isValidForApp(paramParams)) || (!AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName())))
+    if ((isValidForApp(paramParams)) && (AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName())))
     {
-      AdLog.e("AdClickUtil", "handleAppProductTypeIfInstalled error");
-      localObject = new AdClickUtil.Result(4, 0);
-    }
-    AdClickUtil.Result localResult;
-    do
-    {
-      return localObject;
-      AdLog.i("AdClickUtil", "handleAppProductTypeIfInstalled " + paramParams.ad.getAppPackageName());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleAppProductTypeIfInstalled ");
+      ((StringBuilder)localObject).append(paramParams.ad.getAppPackageName());
+      AdLog.i("AdClickUtil", ((StringBuilder)localObject).toString());
       int i = getVideoCeilingStyle(paramParams);
       if (i != -2147483648) {
         return handleVideoCeiling(paramParams, i);
       }
-      localResult = handleAppWithDeeplink(paramParams, false);
-      if (localResult == null) {
-        break;
+      localObject = handleAppWithDeeplink(paramParams, false);
+      if ((localObject != null) && (((AdClickUtil.Result)localObject).isSuccess())) {
+        return localObject;
       }
-      localObject = localResult;
-    } while (localResult.isSuccess());
-    return handleApp(paramParams, false);
+      return handleApp(paramParams, false);
+    }
+    AdLog.e("AdClickUtil", "handleAppProductTypeIfInstalled error");
+    return new AdClickUtil.Result(4, 0);
   }
   
   private static AdClickUtil.Result handleAppProductTypeIfNotInstalled(AdClickUtil.Params paramParams)
   {
-    Object localObject;
-    if ((!isValidForApp(paramParams)) || (AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName())))
+    if ((isValidForApp(paramParams)) && (!AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName())))
     {
-      AdLog.e("AdClickUtil", "handleAppProductTypeIfNotInstalled error");
-      localObject = new AdClickUtil.Result(4, 0);
-    }
-    AdClickUtil.Result localResult;
-    do
-    {
-      return localObject;
       int i = getVideoCeilingStyle(paramParams);
-      if ((!paramParams.ad.isAppXiJingDefault()) && (!paramParams.ad.isAppXiJing()) && (!paramParams.ad.isAppXiJingFengling())) {
-        break label166;
+      if ((!paramParams.ad.isAppXiJingDefault()) && (!paramParams.ad.isAppXiJing()) && (!paramParams.ad.isAppXiJingFengling()))
+      {
+        AdLog.e("AdClickUtil", "handleAppProductTypeIfNotInstalled error");
+        return new AdClickUtil.Result(4, 0);
       }
       handleAppAfterInstalled(paramParams);
       if (i != -2147483648) {
         return handleVideoCeiling(paramParams, i);
       }
-      localResult = handleAppMarket(paramParams);
-      if (localResult == null) {
-        break;
+      AdClickUtil.Result localResult = handleAppMarket(paramParams);
+      if ((localResult != null) && (localResult.isSuccess())) {
+        return localResult;
       }
-      localObject = localResult;
-    } while (localResult.isSuccess());
-    if (paramParams.halfScreenPageEnabled) {
-      return handleHalfScreenPage(paramParams);
+      if (paramParams.halfScreenPageEnabled) {
+        return handleHalfScreenPage(paramParams);
+      }
+      if (paramParams.ad.isCanvas()) {
+        return handleCanvas(paramParams);
+      }
+      return handleUrl(paramParams, getURLObject(paramParams));
     }
-    if (paramParams.ad.isCanvas()) {
-      return handleCanvas(paramParams);
-    }
-    return handleUrl(paramParams, getURLObject(paramParams));
-    label166:
     AdLog.e("AdClickUtil", "handleAppProductTypeIfNotInstalled error");
     return new AdClickUtil.Result(4, 0);
   }
   
   static AdClickUtil.Result handleAppWithDeeplink(AdClickUtil.Params paramParams, boolean paramBoolean)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (TextUtils.isEmpty(paramParams.ad.getAppDeeplink())))
+    if ((paramParams != null) && (paramParams.isValid()) && (!TextUtils.isEmpty(paramParams.ad.getAppDeeplink())))
     {
-      AdLog.e("AdClickUtil", "handleAppWithDeeplink error");
-      return new AdClickUtil.Result(4, 4);
-    }
-    AdReporterForAnalysis.reportForLaunchAppWithDeepLinkStart(paramParams, paramBoolean);
-    Object localObject = new AdAppDeeplinkLauncher.Params();
-    ((AdAppDeeplinkLauncher.Params)localObject).deeplink = paramParams.ad.getAppDeeplink();
-    ((AdAppDeeplinkLauncher.Params)localObject).extrasForIntent = paramParams.extrasForIntent;
-    ((AdAppDeeplinkLauncher.Params)localObject).addflags = 268435456;
-    localObject = AdAppDeeplinkLauncher.launch((Activity)paramParams.activity.get(), (AdAppDeeplinkLauncher.Params)localObject);
-    if ((localObject != null) && (((AdAppDeeplinkLauncher.Result)localObject).isSuccess()) && (paramParams.reportForClick) && (!paramBoolean)) {
-      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
-    }
-    int i;
-    if ((localObject != null) && (((AdAppDeeplinkLauncher.Result)localObject).isSuccess()))
-    {
-      b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 246);
-      WeakReference localWeakReference = new WeakReference(paramParams.activity.get());
-      Ad localAd = paramParams.ad;
-      if (paramBoolean)
+      AdAnalysisHelperForUtil.reportForLaunchAppWithDeepLinkStart(paramParams, paramBoolean);
+      Object localObject = new AdAppDeeplinkLauncher.Params();
+      ((AdAppDeeplinkLauncher.Params)localObject).deeplink = paramParams.ad.getAppDeeplink();
+      ((AdAppDeeplinkLauncher.Params)localObject).extrasForIntent = paramParams.extrasForIntent;
+      ((AdAppDeeplinkLauncher.Params)localObject).addflags = 268435456;
+      localObject = AdAppDeeplinkLauncher.launch((Activity)paramParams.activity.get(), (AdAppDeeplinkLauncher.Params)localObject);
+      if ((localObject != null) && (((AdAppDeeplinkLauncher.Result)localObject).isSuccess()) && (paramParams.reportForClick) && (!paramBoolean)) {
+        AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      }
+      if ((localObject != null) && (((AdAppDeeplinkLauncher.Result)localObject).isSuccess()))
       {
-        i = 295;
-        b.reportAsync(localWeakReference, localAd, i);
+        c.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 246);
+        WeakReference localWeakReference = new WeakReference(paramParams.activity.get());
+        Ad localAd = paramParams.ad;
+        int i;
+        if (paramBoolean) {
+          i = 295;
+        } else {
+          i = 290;
+        }
+        c.reportAsync(localWeakReference, localAd, i);
       }
-    }
-    else
-    {
-      if (localObject == null) {
-        break label253;
+      if (localObject != null) {
+        localObject = ((AdAppDeeplinkLauncher.Result)localObject).getError();
+      } else {
+        localObject = new AdError(1);
       }
-    }
-    label253:
-    for (localObject = ((AdAppDeeplinkLauncher.Result)localObject).getError();; localObject = new AdError(1))
-    {
       localObject = new AdClickUtil.Result((AdError)localObject, 4);
-      AdReporterForAnalysis.reportForLaunchAppWithDeepLinkEND(paramParams, (AdClickUtil.Result)localObject, paramBoolean);
+      AdAnalysisHelperForUtil.reportForLaunchAppWithDeepLinkEND(paramParams, (AdClickUtil.Result)localObject, paramBoolean);
       return localObject;
-      i = 290;
-      break;
     }
+    AdLog.e("AdClickUtil", "handleAppWithDeeplink error");
+    return new AdClickUtil.Result(4, 4);
   }
   
   private static AdClickUtil.Result handleCanvas(AdClickUtil.Params paramParams)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!paramParams.ad.isCanvas()))
+    if ((paramParams != null) && (paramParams.isValid()) && (paramParams.ad.isCanvas()))
     {
-      AdLog.e("AdClickUtil", "handleCanvas error");
-      return new AdClickUtil.Result(4, 3);
+      AdError localAdError = AdCanvas.show(paramParams.activity, paramParams.ad, canAppAutoDownload(paramParams), paramParams.extrasForIntent);
+      if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick)) {
+        AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      }
+      return new AdClickUtil.Result(localAdError, 3);
     }
-    AdError localAdError = AdCanvas.show(paramParams.activity, paramParams.ad, canAppAutoDownload(paramParams), paramParams.extrasForIntent);
-    if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick)) {
-      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
-    }
-    return new AdClickUtil.Result(localAdError, 3);
+    AdLog.e("AdClickUtil", "handleCanvas error");
+    return new AdClickUtil.Result(4, 3);
   }
   
   private static AdClickUtil.Result handleHalfScreenPage(AdClickUtil.Params paramParams)
   {
-    if ((paramParams == null) || (!paramParams.isValid()))
+    if ((paramParams != null) && (paramParams.isValid()))
     {
+      AdClickUtil.a locala = getURLObject(paramParams);
+      if ((locala != null) && (locala.isValid()))
+      {
+        int i;
+        if (paramParams.ad.isCanvas()) {
+          i = 2;
+        } else {
+          i = 1;
+        }
+        AdError localAdError2 = AdHalfScreen.show(paramParams.activity, paramParams.ad, canAppAutoDownload(paramParams), i, locala.url, paramParams.extrasForIntent);
+        AdError localAdError1;
+        if (localAdError2 != null)
+        {
+          localAdError1 = localAdError2;
+          if (localAdError2.isSuccess()) {}
+        }
+        else
+        {
+          i = 1;
+          localAdError1 = AdHalfScreen.show(paramParams.activity, paramParams.ad, canAppAutoDownload(paramParams), 1, locala.url, paramParams.extrasForIntent);
+        }
+        if ((paramParams.reportForClick) && (localAdError1 != null) && (localAdError1.isSuccess()) && ((locala.type != 1) || (i == 2))) {
+          AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+        }
+        paramParams = new AdClickUtil.Result(localAdError1, 10);
+        if (locala != null) {
+          i = locala.type;
+        } else {
+          i = 0;
+        }
+        paramParams.urlType = i;
+        return paramParams;
+      }
       AdLog.e("AdClickUtil", "handleHalfScreenPage error");
       return new AdClickUtil.Result(4, 10);
     }
-    AdClickUtil.a locala = getURLObject(paramParams);
-    if ((locala == null) || (!locala.isValid()))
-    {
-      AdLog.e("AdClickUtil", "handleHalfScreenPage error");
-      return new AdClickUtil.Result(4, 10);
-    }
-    if (paramParams.ad.isCanvas())
-    {
-      i = 2;
-      AdError localAdError2 = AdHalfScreen.show(paramParams.activity, paramParams.ad, canAppAutoDownload(paramParams), i, locala.url, paramParams.extrasForIntent);
-      AdError localAdError1;
-      if (localAdError2 != null)
-      {
-        localAdError1 = localAdError2;
-        if (localAdError2.isSuccess()) {}
-      }
-      else
-      {
-        localAdError1 = AdHalfScreen.show(paramParams.activity, paramParams.ad, canAppAutoDownload(paramParams), 1, locala.url, paramParams.extrasForIntent);
-        i = 1;
-      }
-      if ((paramParams.reportForClick) && (localAdError1 != null) && (localAdError1.isSuccess()) && ((locala.type != 1) || (i == 2))) {
-        AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
-      }
-      paramParams = new AdClickUtil.Result(localAdError1, 10);
-      if (locala == null) {
-        break label240;
-      }
-    }
-    label240:
-    for (int i = locala.type;; i = 0)
-    {
-      paramParams.urlType = i;
-      return paramParams;
-      i = 1;
-      break;
-    }
+    AdLog.e("AdClickUtil", "handleHalfScreenPage error");
+    return new AdClickUtil.Result(4, 10);
   }
   
   private static AdClickUtil.Result handleQQMINIProgramType(AdClickUtil.Params paramParams)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!paramParams.ad.isQQMINIProgram())) {
-      return new AdClickUtil.Result(4, 0);
+    if ((paramParams != null) && (paramParams.isValid()) && (paramParams.ad.isQQMINIProgram()))
+    {
+      AdError localAdError = AdQQMINIProgram.show(new WeakReference(paramParams.activity.get()), paramParams.ad);
+      if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick)) {
+        AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      }
+      return new AdClickUtil.Result(localAdError, 6);
     }
-    AdError localAdError = AdQQMINIProgram.show(new WeakReference(paramParams.activity.get()), paramParams.ad);
-    if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick)) {
-      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
-    }
-    return new AdClickUtil.Result(localAdError, 6);
+    return new AdClickUtil.Result(4, 0);
   }
   
   private static AdClickUtil.Result handleUrl(AdClickUtil.Params paramParams, AdClickUtil.a parama)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (parama == null) || (!parama.isValid()))
+    if ((paramParams != null) && (paramParams.isValid()) && (parama != null) && (parama.isValid()))
     {
-      AdLog.e("AdClickUtil", "handleUrl error");
-      return new AdClickUtil.Result(4, 1);
+      if ((paramParams.reportForClick) && (parama.type != 1)) {
+        AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      }
+      paramParams = new AdClickUtil.Result(AdBrowser.show(paramParams.activity, paramParams.ad, parama.url, paramParams.extrasForIntent), 1);
+      paramParams.urlType = parama.type;
+      return paramParams;
     }
-    if ((paramParams.reportForClick) && (parama.type != 1)) {
-      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
-    }
-    paramParams = new AdClickUtil.Result(AdBrowser.show(paramParams.activity, paramParams.ad, parama.url, paramParams.extrasForIntent), 1);
-    paramParams.urlType = parama.type;
-    return paramParams;
+    AdLog.e("AdClickUtil", "handleUrl error");
+    return new AdClickUtil.Result(4, 1);
   }
   
   private static AdClickUtil.Result handleVideoCeiling(AdClickUtil.Params paramParams, int paramInt)
@@ -649,67 +642,48 @@ public final class AdClickUtil
       return new AdClickUtil.Result(4, 2);
     }
     AdClickUtil.a locala = getURLObject(paramParams);
-    if ((locala == null) || (!locala.isValid()))
+    if ((locala != null) && (locala.isValid()))
     {
-      AdLog.e("AdClickUtil", "handleVideoCeiling error");
-      return new AdClickUtil.Result(4, 2);
-    }
-    AdError localAdError2 = AdVideoCeiling.show(paramParams.activity, paramParams.ad, locala.url, paramParams.ad.getVideoUrl(), paramInt, paramParams.videoPlayForced, false, paramParams.videoStartPositionMillis, paramParams.extrasForIntent, canAppAutoDownload(paramParams));
-    AdError localAdError1;
-    if (localAdError2 != null)
-    {
-      localAdError1 = localAdError2;
-      if (localAdError2.isSuccess()) {}
-    }
-    else
-    {
-      localAdError1 = AdVideoCeiling.show(paramParams.activity, paramParams.ad, locala.url, paramParams.ad.getVideoUrl(), 1, paramParams.videoPlayForced, false, paramParams.videoStartPositionMillis, paramParams.extrasForIntent, canAppAutoDownload(paramParams));
+      AdError localAdError = AdVideoCeiling.show(paramParams.activity, paramParams.ad, locala.url, paramParams.ad.getVideoUrl(), paramInt, paramParams.videoPlayForced, false, paramParams.videoStartPositionMillis, paramParams.extrasForIntent, canAppAutoDownload(paramParams));
+      if ((localAdError != null) && (localAdError.isSuccess())) {
+        break label149;
+      }
+      localAdError = AdVideoCeiling.show(paramParams.activity, paramParams.ad, locala.url, paramParams.ad.getVideoUrl(), 1, paramParams.videoPlayForced, false, paramParams.videoStartPositionMillis, paramParams.extrasForIntent, canAppAutoDownload(paramParams));
       paramInt = 1;
+      label149:
+      if ((paramParams.reportForClick) && (localAdError != null) && (localAdError.isSuccess()) && ((locala.type != 1) || (paramInt == 4)))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleVideoCeiling click url:");
+        localStringBuilder.append(getUrlForClick(paramParams));
+        AdLog.e("AdClickUtil", localStringBuilder.toString());
+        AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      }
+      paramParams = new AdClickUtil.Result(localAdError, 2);
+      paramParams.urlType = locala.type;
+      return paramParams;
     }
-    if ((paramParams.reportForClick) && (localAdError1 != null) && (localAdError1.isSuccess()) && ((locala.type != 1) || (paramInt == 4)))
-    {
-      AdLog.e("AdClickUtil", "handleVideoCeiling click url:" + getUrlForClick(paramParams));
-      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
-    }
-    paramParams = new AdClickUtil.Result(localAdError1, 2);
-    paramParams.urlType = locala.type;
-    return paramParams;
+    AdLog.e("AdClickUtil", "handleVideoCeiling error");
+    return new AdClickUtil.Result(4, 2);
   }
   
   private static AdClickUtil.Result handleVideoSplice(AdClickUtil.Params paramParams)
   {
-    String str = null;
-    int i = 1;
-    int j = 0;
-    if ((paramParams == null) || (!paramParams.isValid()) || (!paramParams.ad.isVideoSplice()))
+    if ((paramParams != null) && (paramParams.isValid()) && (paramParams.ad.isVideoSplice()))
     {
-      AdLog.e("AdClickUtil", "handleVideoSplice error");
-      return new AdClickUtil.Result(4, 7);
-    }
-    AdClickUtil.a locala;
-    if ((TextUtils.isEmpty(paramParams.ad.getVideoUrl2())) && (paramParams.ad.getCreativeSize() == 585))
-    {
-      if (!paramParams.reportForClick) {
-        break label284;
+      boolean bool = TextUtils.isEmpty(paramParams.ad.getVideoUrl2());
+      int j = 0;
+      String str = null;
+      AdClickUtil.a locala;
+      if ((bool) && (paramParams.ad.getCreativeSize() == 585))
+      {
+        if (paramParams.reportForClick) {
+          AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+        }
+        locala = null;
+        i = 1;
       }
-      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
-      locala = null;
-    }
-    for (;;)
-    {
-      WeakReference localWeakReference = paramParams.activity;
-      Ad localAd = paramParams.ad;
-      if (locala != null) {
-        str = locala.url;
-      }
-      paramParams = new AdClickUtil.Result(AdVideoSplice.show(localWeakReference, localAd, str, paramParams.ad.getVideoUrl2(), paramParams.mediaViewLocationRect, i, paramParams.videoPlayForced, false, paramParams.extrasForIntent), 7);
-      i = j;
-      if (locala != null) {
-        i = locala.type;
-      }
-      paramParams.urlType = i;
-      return paramParams;
-      if ((!TextUtils.isEmpty(paramParams.ad.getVideoUrl2())) && (paramParams.ad.getCreativeSize() == 930))
+      else if ((!TextUtils.isEmpty(paramParams.ad.getVideoUrl2())) && (paramParams.ad.getCreativeSize() == 930))
       {
         locala = getURLObject(paramParams);
         if ((paramParams.reportForClick) && (locala.type != 1)) {
@@ -721,92 +695,91 @@ public final class AdClickUtil
       {
         locala = null;
         i = -2147483648;
-        continue;
-        label284:
-        locala = null;
       }
+      WeakReference localWeakReference = paramParams.activity;
+      Ad localAd = paramParams.ad;
+      if (locala != null) {
+        str = locala.url;
+      }
+      paramParams = new AdClickUtil.Result(AdVideoSplice.show(localWeakReference, localAd, str, paramParams.ad.getVideoUrl2(), paramParams.mediaViewLocationRect, i, paramParams.videoPlayForced, false, paramParams.extrasForIntent), 7);
+      int i = j;
+      if (locala != null) {
+        i = locala.type;
+      }
+      paramParams.urlType = i;
+      return paramParams;
     }
+    AdLog.e("AdClickUtil", "handleVideoSplice error");
+    return new AdClickUtil.Result(4, 7);
   }
   
   private static AdClickUtil.Result handleWebProductType(AdClickUtil.Params paramParams)
   {
-    Object localObject;
-    if ((paramParams == null) || (!isWebProductType(paramParams)) || ((paramParams.ad.getDestType() != 0) && (paramParams.ad.getDestType() != 4) && (paramParams.ad.getDestType() != 7)))
+    if ((paramParams != null) && (isWebProductType(paramParams)) && ((paramParams.ad.getDestType() == 0) || (paramParams.ad.getDestType() == 4) || (paramParams.ad.getDestType() == 7)))
     {
-      AdLog.e("AdClickUtil", "handleWebProductType error");
-      localObject = new AdClickUtil.Result(4, 0);
-    }
-    int i;
-    AdClickUtil.Result localResult;
-    do
-    {
-      return localObject;
       if ((paramParams.videoSpliceSupported) && (paramParams.ad.isVideoSplice())) {
         return handleVideoSplice(paramParams);
       }
-      i = getVideoCeilingStyle(paramParams);
-      if ((!isWebProductTypeDeeplinkSupported(paramParams)) || (TextUtils.isEmpty(paramParams.ad.getAppDeeplink()))) {
-        break label198;
+      int i = getVideoCeilingStyle(paramParams);
+      if ((isWebProductTypeDeeplinkSupported(paramParams)) && (!TextUtils.isEmpty(paramParams.ad.getAppDeeplink())))
+      {
+        c.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
+        if (i != -2147483648) {
+          return handleVideoCeiling(paramParams, i);
+        }
+        AdClickUtil.Result localResult = handleAppWithDeeplink(paramParams, false);
+        if ((localResult != null) && (localResult.isSuccess())) {
+          return localResult;
+        }
+        if (paramParams.halfScreenPageEnabled) {
+          return handleHalfScreenPage(paramParams);
+        }
+        return handleUrl(paramParams, getURLObject(paramParams));
       }
-      b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
       if (i != -2147483648) {
         return handleVideoCeiling(paramParams, i);
       }
-      localResult = handleAppWithDeeplink(paramParams, false);
-      if (localResult == null) {
-        break;
+      if (paramParams.halfScreenPageEnabled) {
+        return handleHalfScreenPage(paramParams);
       }
-      localObject = localResult;
-    } while (localResult.isSuccess());
-    if (paramParams.halfScreenPageEnabled) {
-      return handleHalfScreenPage(paramParams);
+      return handleUrl(paramParams, getURLObject(paramParams));
     }
-    return handleUrl(paramParams, getURLObject(paramParams));
-    label198:
-    if (i != -2147483648) {
-      return handleVideoCeiling(paramParams, i);
-    }
-    if (paramParams.halfScreenPageEnabled) {
-      return handleHalfScreenPage(paramParams);
-    }
-    return handleUrl(paramParams, getURLObject(paramParams));
+    AdLog.e("AdClickUtil", "handleWebProductType error");
+    return new AdClickUtil.Result(4, 0);
   }
   
   public static boolean isValidForApp(AdClickUtil.Params paramParams)
   {
-    boolean bool3 = true;
-    boolean bool2 = false;
-    boolean bool1 = bool2;
+    boolean bool3 = false;
+    boolean bool2 = bool3;
     if (paramParams != null)
     {
-      bool1 = bool2;
+      bool2 = bool3;
       if (paramParams.isValid())
       {
-        if (paramParams.ad.isAppProductType()) {
-          break label37;
+        if (!paramParams.ad.isAppProductType()) {
+          return false;
         }
-        bool1 = bool2;
+        boolean bool1;
+        if ((!TextUtils.isEmpty(paramParams.ad.getProductId())) && (!TextUtils.isEmpty(paramParams.ad.getVia())) && (!TextUtils.isEmpty(paramParams.ad.getAppName())) && (!TextUtils.isEmpty(paramParams.ad.getAppId())) && (!TextUtils.isEmpty(paramParams.ad.getAppPackageName()))) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        if (paramParams.ad.isAppPreOrder()) {
+          return bool1;
+        }
+        bool2 = bool3;
+        if (bool1)
+        {
+          bool2 = bool3;
+          if (!TextUtils.isEmpty(paramParams.ad.getAppPackageUrl())) {
+            bool2 = true;
+          }
+        }
       }
     }
-    bool2 = bool1;
-    label37:
-    label114:
-    do
-    {
-      return bool2;
-      if ((TextUtils.isEmpty(paramParams.ad.getProductId())) || (TextUtils.isEmpty(paramParams.ad.getVia())) || (TextUtils.isEmpty(paramParams.ad.getAppName())) || (TextUtils.isEmpty(paramParams.ad.getAppId())) || (TextUtils.isEmpty(paramParams.ad.getAppPackageName()))) {
-        break;
-      }
-      bool1 = true;
-      bool2 = bool1;
-    } while (paramParams.ad.isAppPreOrder());
-    if ((bool1) && (!TextUtils.isEmpty(paramParams.ad.getAppPackageUrl()))) {}
-    for (bool1 = bool3;; bool1 = false)
-    {
-      break;
-      bool1 = false;
-      break label114;
-    }
+    return bool2;
   }
   
   private static boolean isWebProductType(AdClickUtil.Params paramParams)
@@ -821,60 +794,59 @@ public final class AdClickUtil
   
   private static String replaceUrlWithClickLpp(String paramString)
   {
-    int j = 0;
     if (!paramString.contains("__CLICK_LPP__")) {
       return paramString;
     }
     Object localObject = AdProcessManager.INSTANCE.isWebProcessRunning();
+    int j = 0;
     int i;
-    if (localObject != null) {
+    if (localObject != null)
+    {
       if (((Boolean)localObject).booleanValue()) {
         i = 0;
+      } else {
+        i = 1;
       }
     }
-    for (;;)
-    {
-      label37:
-      localObject = AdProcessManager.INSTANCE.isWebProcessRunningForPreloading();
-      if (localObject != null) {
-        if (!((Boolean)localObject).booleanValue()) {}
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("click_time", System.currentTimeMillis());
-          ((JSONObject)localObject).put("toolsalive", i);
-          ((JSONObject)localObject).put("preload", j);
-          localObject = ((JSONObject)localObject).toString();
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break;
-          }
-          localObject = URLEncoder.encode((String)localObject, "UTF-8");
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break;
-          }
-          localObject = paramString.replaceAll("__CLICK_LPP__", (String)localObject);
-          boolean bool = TextUtils.isEmpty((CharSequence)localObject);
-          if (bool) {
-            break;
-          }
-          return localObject;
-        }
-        catch (Throwable localThrowable)
-        {
-          AdLog.e("AdClickUtil", "getUrlForClick", localThrowable);
-          return paramString;
-        }
-        i = 1;
-        break label37;
-        j = 1;
-        continue;
-        j = 2;
-      }
+    else {
       i = 2;
     }
+    localObject = AdProcessManager.INSTANCE.isWebProcessRunningForPreloading();
+    if (localObject != null)
+    {
+      if (!((Boolean)localObject).booleanValue()) {
+        j = 1;
+      }
+    }
+    else {
+      j = 2;
+    }
+    try
+    {
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("click_time", System.currentTimeMillis());
+      ((JSONObject)localObject).put("toolsalive", i);
+      ((JSONObject)localObject).put("preload", j);
+      localObject = ((JSONObject)localObject).toString();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return paramString;
+      }
+      localObject = URLEncoder.encode((String)localObject, "UTF-8");
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return paramString;
+      }
+      localObject = paramString.replaceAll("__CLICK_LPP__", (String)localObject);
+      boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+      if (bool) {
+        return paramString;
+      }
+      return localObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      AdLog.e("AdClickUtil", "getUrlForClick", localThrowable);
+    }
+    return paramString;
   }
 }
 

@@ -12,7 +12,11 @@ public class VoiceTextRecognizer$VRListener
   
   public void onGetError(int paramInt)
   {
-    LogUtils.e(VoiceTextRecognizer.access$200(), "onGetError, errorCode = " + paramInt);
+    String str = VoiceTextRecognizer.access$200();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetError, errorCode = ");
+    localStringBuilder.append(paramInt);
+    LogUtils.e(str, localStringBuilder.toString());
     if (VoiceTextRecognizer.access$500(this.this$0) != null) {
       VoiceTextRecognizer.access$500(this.this$0).onError(paramInt);
     }
@@ -24,7 +28,11 @@ public class VoiceTextRecognizer$VRListener
   
   public void onGetResult(VoiceRecognizerResult paramVoiceRecognizerResult)
   {
-    LogUtils.e(VoiceTextRecognizer.access$200(), "onGetResult, text = " + paramVoiceRecognizerResult.text);
+    String str = VoiceTextRecognizer.access$200();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetResult, text = ");
+    localStringBuilder.append(paramVoiceRecognizerResult.text);
+    LogUtils.e(str, localStringBuilder.toString());
     if (VoiceTextRecognizer.access$500(this.this$0) != null)
     {
       VoiceTextRecognizer.access$500(this.this$0).onVTChanged(paramVoiceRecognizerResult.text);
@@ -42,7 +50,7 @@ public class VoiceTextRecognizer$VRListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.VoiceTextRecognizer.VRListener
  * JD-Core Version:    0.7.0.1
  */

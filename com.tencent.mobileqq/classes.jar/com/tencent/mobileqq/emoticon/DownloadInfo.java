@@ -65,12 +65,15 @@ public class DownloadInfo
   
   public String getLoadingTmpPath()
   {
-    return this.file.getAbsolutePath() + ".tmp";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.file.getAbsolutePath());
+    localStringBuilder.append(".tmp");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

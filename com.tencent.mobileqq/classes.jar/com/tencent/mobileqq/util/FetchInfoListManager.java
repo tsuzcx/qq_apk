@@ -33,90 +33,87 @@ public class FetchInfoListManager
   
   private void a(FetchInfoReq paramFetchInfoReq)
   {
-    if (!paramFetchInfoReq.a()) {
+    if (!paramFetchInfoReq.a())
+    {
       if (QLog.isColorLevel()) {
         QLog.d("FetchInfoListManager", 2, StringUtil.a(new Object[] { "addToNeedFetchInfoListInner() ", paramFetchInfoReq.toString(), "非法请求" }));
       }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if ((!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramFetchInfoReq)) && (!this.b.contains(paramFetchInfoReq))) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("FetchInfoListManager", 4, StringUtil.a(new Object[] { "addToNeedFetchInfoListInner()", paramFetchInfoReq.toString(), "已经在队列中了" }));
       return;
+    }
+    if ((!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramFetchInfoReq)) && (!this.b.contains(paramFetchInfoReq)))
+    {
       if (QLog.isDevelopLevel()) {
         QLog.d("FetchInfoListManager", 4, StringUtil.a(new Object[] { "addToNeedFetchInfoListInner()", paramFetchInfoReq.toString() }));
       }
       this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramFetchInfoReq);
-    } while (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1));
-    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-    if ((l < 0L) || (l > 2000L))
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1))
+      {
+        long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+        if ((l >= 0L) && (l <= 2000L))
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 300L);
+          return;
+        }
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      }
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 300L);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FetchInfoListManager", 4, StringUtil.a(new Object[] { "addToNeedFetchInfoListInner()", paramFetchInfoReq.toString(), "已经在队列中了" }));
+    }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
+    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+    {
       if (QLog.isDevelopLevel()) {
         QLog.d("FetchInfoListManager", 4, "doFetchInfo fetch list is empty!");
       }
-    }
-    for (;;)
-    {
       return;
-      FetchInfoReq localFetchInfoReq;
-      do
-      {
-        localFetchInfoReq = (FetchInfoReq)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-      } while ((localFetchInfoReq == null) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()));
-      if (localFetchInfoReq == null)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("FetchInfoListManager", 4, "doFetchInfo req is null !");
-        }
+    }
+    FetchInfoReq localFetchInfoReq;
+    do
+    {
+      localFetchInfoReq = (FetchInfoReq)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+    } while ((localFetchInfoReq == null) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()));
+    if (localFetchInfoReq == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("FetchInfoListManager", 4, "doFetchInfo req is null !");
       }
-      else
+      return;
+    }
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    if (QLog.isColorLevel()) {
+      QLog.d("FetchInfoListManager", 2, String.format(Locale.getDefault(), "doFetchInfo type:%d  key: %s time:%d", new Object[] { Integer.valueOf(localFetchInfoReq.jdField_a_of_type_Int), localFetchInfoReq.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) }));
+    }
+    if (localFetchInfoReq.jdField_a_of_type_Int == 1)
+    {
+      ArrayList localArrayList = new ArrayList();
+      b(localFetchInfoReq);
+      localArrayList.add(localFetchInfoReq);
+      int i = Math.min(this.jdField_a_of_type_JavaUtilLinkedList.size(), 20) - 1;
+      while (i >= 0)
       {
-        this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-        if (QLog.isColorLevel()) {
-          QLog.d("FetchInfoListManager", 2, String.format(Locale.getDefault(), "doFetchInfo type:%d  key: %s time:%d", new Object[] { Integer.valueOf(localFetchInfoReq.jdField_a_of_type_Int), localFetchInfoReq.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) }));
-        }
-        if (localFetchInfoReq.jdField_a_of_type_Int == 1)
+        localFetchInfoReq = (FetchInfoReq)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
+        if ((localFetchInfoReq != null) && (localFetchInfoReq.jdField_a_of_type_Int == 1))
         {
-          ArrayList localArrayList = new ArrayList();
+          this.jdField_a_of_type_JavaUtilLinkedList.remove(i);
           b(localFetchInfoReq);
           localArrayList.add(localFetchInfoReq);
-          int i = Math.min(this.jdField_a_of_type_JavaUtilLinkedList.size(), 20) - 1;
-          while (i >= 0)
-          {
-            localFetchInfoReq = (FetchInfoReq)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
-            if ((localFetchInfoReq != null) && (localFetchInfoReq.jdField_a_of_type_Int == 1))
-            {
-              this.jdField_a_of_type_JavaUtilLinkedList.remove(i);
-              b(localFetchInfoReq);
-              localArrayList.add(localFetchInfoReq);
-            }
-            i -= 1;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager$FetchInfoListener.a(1, localArrayList);
         }
-        while (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
-        {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-          return;
-          b(localFetchInfoReq);
-          this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager$FetchInfoListener.a(localFetchInfoReq);
-        }
+        i -= 1;
       }
+      this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager$FetchInfoListener.a(1, localArrayList);
+    }
+    else
+    {
+      b(localFetchInfoReq);
+      this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager$FetchInfoListener.a(localFetchInfoReq);
+    }
+    if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     }
   }
   
@@ -138,58 +135,61 @@ public class FetchInfoListManager
     if (QLog.isDevelopLevel())
     {
       localStringBuilder = new StringBuilder(200);
-      localStringBuilder.append("dealTimeOut  size:").append(this.b.size()).append(" {");
+      localStringBuilder.append("dealTimeOut  size:");
+      localStringBuilder.append(this.b.size());
+      localStringBuilder.append(" {");
     }
-    for (;;)
+    else
     {
-      long l4 = SystemClock.elapsedRealtime();
-      int i = this.b.size() - 1;
-      long l1 = 30000L;
-      if (i >= 0)
+      localStringBuilder = null;
+    }
+    long l4 = SystemClock.elapsedRealtime();
+    int i = this.b.size() - 1;
+    long l2;
+    for (long l1 = 30000L; i >= 0; l1 = l2)
+    {
+      FetchInfoReq localFetchInfoReq = (FetchInfoReq)this.b.get(i);
+      if (localFetchInfoReq == null)
       {
-        FetchInfoReq localFetchInfoReq = (FetchInfoReq)this.b.get(i);
-        long l2;
-        if (localFetchInfoReq == null)
+        this.b.remove(localFetchInfoReq);
+        l2 = l1;
+      }
+      else
+      {
+        long l3 = l4 - localFetchInfoReq.jdField_a_of_type_Long;
+        if ((l3 >= 0L) && (l3 < 30000L))
+        {
+          l2 = l1;
+          if (l3 < l1) {
+            l2 = l3;
+          }
+        }
+        else
         {
           this.b.remove(localFetchInfoReq);
           l2 = l1;
-        }
-        for (;;)
-        {
-          i -= 1;
-          l1 = l2;
-          break;
-          long l3 = l4 - localFetchInfoReq.jdField_a_of_type_Long;
-          if ((l3 < 0L) || (l3 >= 30000L))
+          if (localStringBuilder != null)
           {
-            this.b.remove(localFetchInfoReq);
+            localStringBuilder.append(", [");
+            localStringBuilder.append(localFetchInfoReq.jdField_a_of_type_Int);
+            localStringBuilder.append(",");
+            localStringBuilder.append(localFetchInfoReq.jdField_a_of_type_JavaLangString);
+            localStringBuilder.append("]");
             l2 = l1;
-            if (localStringBuilder != null)
-            {
-              localStringBuilder.append(", [").append(localFetchInfoReq.jdField_a_of_type_Int).append(",").append(localFetchInfoReq.jdField_a_of_type_JavaLangString).append("]");
-              l2 = l1;
-            }
-          }
-          else
-          {
-            l2 = l1;
-            if (l3 < l1) {
-              l2 = l3;
-            }
           }
         }
       }
-      if (!this.b.isEmpty()) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, Math.max(1000L, l1));
-      }
-      if ((QLog.isDevelopLevel()) && (localStringBuilder != null))
-      {
-        localStringBuilder.append("}");
-        localStringBuilder.append(" isEmpty: ").append(this.b.isEmpty());
-        QLog.d("FetchInfoListManager", 4, localStringBuilder.toString());
-      }
-      return;
-      localStringBuilder = null;
+      i -= 1;
+    }
+    if (!this.b.isEmpty()) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, Math.max(1000L, l1));
+    }
+    if ((QLog.isDevelopLevel()) && (localStringBuilder != null))
+    {
+      localStringBuilder.append("}");
+      localStringBuilder.append(" isEmpty: ");
+      localStringBuilder.append(this.b.isEmpty());
+      QLog.d("FetchInfoListManager", 4, localStringBuilder.toString());
     }
   }
   
@@ -215,27 +215,31 @@ public class FetchInfoListManager
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 3) {
-      if ((paramMessage.obj instanceof FetchInfoReq)) {
+    if (paramMessage.what == 3)
+    {
+      if ((paramMessage.obj instanceof FetchInfoReq))
+      {
         a((FetchInfoReq)paramMessage.obj);
+        return true;
       }
     }
-    do
+    else
     {
-      return true;
       if (paramMessage.what == 1)
       {
         b();
         return true;
       }
-    } while (paramMessage.what != 2);
-    c();
+      if (paramMessage.what == 2) {
+        c();
+      }
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.FetchInfoListManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,29 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
-import com.tencent.biz.pubaccount.weishi_new.view.WSFeedsLinearLayout.DispatchTouchEventListener;
-import com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabLayout;
+import com.tencent.biz.pubaccount.weishi_new.view.WSViewPager;
+import com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabItemViewHolder;
+import com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabLayout.TabContentClickListener;
+import com.tencent.mobileqq.widget.TabLayoutCompat.Tab;
 
 class WSRecommendFragment$1
-  implements WSFeedsLinearLayout.DispatchTouchEventListener
+  implements WSTabLayout.TabContentClickListener
 {
   WSRecommendFragment$1(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void a(int paramInt)
+  public void a(WSTabItemViewHolder paramWSTabItemViewHolder)
   {
-    WSRecommendFragment.a(this.a).b(true);
-  }
-  
-  public void b(int paramInt)
-  {
-    WSRecommendFragment.a(this.a).c();
+    if (paramWSTabItemViewHolder != null)
+    {
+      if (paramWSTabItemViewHolder.a() == null) {
+        return;
+      }
+      WSRecommendFragment.a(this.a).setCurrentItem(paramWSTabItemViewHolder.a().a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment.1
  * JD-Core Version:    0.7.0.1
  */

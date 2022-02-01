@@ -34,12 +34,17 @@ public class FrameAdapter
   
   public void a(FramesProcessor.Frame paramFrame)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FrameAdapter", 2, "addFrame, index=" + paramFrame.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addFrame, index=");
+      localStringBuilder.append(paramFrame.jdField_a_of_type_Int);
+      QLog.d("FrameAdapter", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramFrame.jdField_a_of_type_Int), paramFrame);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter$DataSetChangeListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter$DataSetChangeListener.a();
+    paramFrame = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter$DataSetChangeListener;
+    if (paramFrame != null) {
+      paramFrame.a();
     }
   }
   
@@ -55,7 +60,7 @@ public class FrameAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FrameAdapter
  * JD-Core Version:    0.7.0.1
  */

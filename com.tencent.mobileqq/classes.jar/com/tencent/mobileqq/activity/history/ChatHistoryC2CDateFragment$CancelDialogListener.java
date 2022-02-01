@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.history;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import java.lang.ref.WeakReference;
 
 class ChatHistoryC2CDateFragment$CancelDialogListener
@@ -18,14 +18,14 @@ class ChatHistoryC2CDateFragment$CancelDialogListener
   public void onCancel(DialogInterface paramDialogInterface)
   {
     ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
-    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
+    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getBaseActivity() != null) && (!localChatHistoryC2CDateFragment.getBaseActivity().isFinishing())) {
       paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.CancelDialogListener
  * JD-Core Version:    0.7.0.1
  */

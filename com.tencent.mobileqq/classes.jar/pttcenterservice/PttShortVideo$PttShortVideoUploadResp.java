@@ -30,14 +30,15 @@ public final class PttShortVideo$PttShortVideoUploadResp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 66, 74, 82, 90, 96, 104 }, new String[] { "int32_ret_code", "str_ret_msg", "rpt_same_area_out_addr", "rpt_diff_area_out_addr", "str_fileid", "bytes_ukey", "uint32_file_exist", "rpt_same_area_inner_addr", "rpt_diff_area_inner_addr", "rpt_data_hole", "bytes_encrypt_key", "uint32_is_hot_file", "uint32_long_video_carry_watch_point_type" }, new Object[] { Integer.valueOf(0), "", null, null, "", localByteStringMicro1, Integer.valueOf(0), null, null, null, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0) }, PttShortVideoUploadResp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 66, 74, 82, 90, 96, 104 }, new String[] { "int32_ret_code", "str_ret_msg", "rpt_same_area_out_addr", "rpt_diff_area_out_addr", "str_fileid", "bytes_ukey", "uint32_file_exist", "rpt_same_area_inner_addr", "rpt_diff_area_inner_addr", "rpt_data_hole", "bytes_encrypt_key", "uint32_is_hot_file", "uint32_long_video_carry_watch_point_type" }, new Object[] { localInteger, "", null, null, "", localByteStringMicro1, localInteger, null, null, null, localByteStringMicro2, localInteger, localInteger }, PttShortVideoUploadResp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     pttcenterservice.PttShortVideo.PttShortVideoUploadResp
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,18 @@ final class DynamicConcatenatingMediaSource$MessageData<T>
   public DynamicConcatenatingMediaSource$MessageData(int paramInt, T paramT, @Nullable Runnable paramRunnable)
   {
     this.index = paramInt;
-    if (paramRunnable != null) {}
-    for (paramRunnable = new DynamicConcatenatingMediaSource.EventDispatcher(paramRunnable);; paramRunnable = null)
-    {
-      this.actionOnCompletion = paramRunnable;
-      this.customData = paramT;
-      return;
+    if (paramRunnable != null) {
+      paramRunnable = new DynamicConcatenatingMediaSource.EventDispatcher(paramRunnable);
+    } else {
+      paramRunnable = null;
     }
+    this.actionOnCompletion = paramRunnable;
+    this.customData = paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.DynamicConcatenatingMediaSource.MessageData
  * JD-Core Version:    0.7.0.1
  */

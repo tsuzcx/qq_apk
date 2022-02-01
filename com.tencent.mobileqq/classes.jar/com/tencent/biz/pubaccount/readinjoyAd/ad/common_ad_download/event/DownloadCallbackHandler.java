@@ -5,59 +5,54 @@ import com.tencent.gamecenter.wadl.biz.listener.WadlProxyServiceCallBackInterfac
 import com.tencent.open.downloadnew.DownloadListener;
 import java.util.concurrent.ConcurrentHashMap;
 
-class DownloadCallbackHandler
+public class DownloadCallbackHandler
 {
   private static final ConcurrentHashMap<Integer, Object> a = new ConcurrentHashMap();
   
   public static <T extends DownloadListener,  extends WadlProxyServiceCallBackInterface> T a(T paramT)
   {
-    DownloadListener localDownloadListener = null;
+    Object localObject3 = null;
+    Object localObject1 = null;
     if (paramT == null) {
       return null;
     }
-    for (;;)
+    Object localObject2 = localObject3;
+    try
     {
+      int i = System.identityHashCode(paramT);
+      localObject2 = localObject3;
+      if (a.containsKey(Integer.valueOf(i)))
+      {
+        localObject2 = localObject3;
+        localObject1 = (DownloadListener)a.get(Integer.valueOf(i));
+      }
+      localObject2 = localObject1;
+      if (localObject1 != null) {
+        return localObject2;
+      }
+      localObject2 = localObject1;
+      localObject1 = new DownloadCallbackHandler.DownloadCallbackProxy(paramT);
       try
       {
-        i = System.identityHashCode(paramT);
-        if (a.containsKey(Integer.valueOf(i))) {
-          localDownloadListener = (DownloadListener)a.get(Integer.valueOf(i));
-        }
-        if (localDownloadListener != null) {
-          continue;
-        }
+        a.put(Integer.valueOf(i), localObject1);
+        return localObject1;
       }
-      catch (Throwable localThrowable2)
+      catch (Throwable paramT)
       {
-        int i;
-        paramT = null;
-        continue;
-        Object localObject;
-        return localObject;
+        localObject2 = localObject1;
       }
-      try
-      {
-        paramT = new DownloadCallbackHandler.DownloadCallbackProxy(paramT);
-        try
-        {
-          a.put(Integer.valueOf(i), paramT);
-          return paramT;
-        }
-        catch (Throwable localThrowable1) {}
-      }
-      catch (Throwable localThrowable3)
-      {
-        paramT = localThrowable2;
-        localObject = localThrowable3;
-      }
+      localObject1 = new StringBuilder();
     }
-    QLog.d("DownloadCallbackHandler", 0, "getDownloadCallbackProxy: " + localThrowable1.getMessage());
-    return paramT;
+    catch (Throwable paramT) {}
+    ((StringBuilder)localObject1).append("getDownloadCallbackProxy: ");
+    ((StringBuilder)localObject1).append(paramT.getMessage());
+    QLog.d("DownloadCallbackHandler", 0, ((StringBuilder)localObject1).toString());
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.DownloadCallbackHandler
  * JD-Core Version:    0.7.0.1
  */

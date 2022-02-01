@@ -23,16 +23,20 @@ public class CertifiedAccountPublishFeedRequest
   
   public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
   {
-    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
+    Object localObject = new CertifiedAccountWrite.StPublishFeedRsp();
     try
     {
-      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)((CertifiedAccountWrite.StPublishFeedRsp)localObject).mergeFrom(paramArrayOfByte);
       return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("CertifiedAccountGetMsgTopRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -45,7 +49,7 @@ public class CertifiedAccountPublishFeedRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.servlet.CertifiedAccountPublishFeedRequest
  * JD-Core Version:    0.7.0.1
  */

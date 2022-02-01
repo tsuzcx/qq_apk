@@ -14,7 +14,11 @@ public class DebugUtil
     if (paramMiniAppInfo == null) {
       return false;
     }
-    return StorageUtil.getPreference().getBoolean(paramMiniAppInfo.appId + "_debug", false);
+    SharedPreferences localSharedPreferences = StorageUtil.getPreference();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMiniAppInfo.appId);
+    localStringBuilder.append("_debug");
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
   }
   
   public static String getPrintableStackTrace(Throwable paramThrowable)
@@ -47,18 +51,19 @@ public class DebugUtil
       localStringBuilder.append("\n");
       i += 1;
     }
-    if ((paramThrowable instanceof InvocationTargetException)) {}
-    for (paramThrowable = ((InvocationTargetException)paramThrowable).getTargetException();; paramThrowable = paramThrowable.getCause())
-    {
-      if (paramThrowable != null)
-      {
-        localStringBuilder.append("caused by: ");
-        localStringBuilder.append(paramThrowable.toString());
-        localStringBuilder.append("\n");
-        localStringBuilder.append(getPrintableStackTrace(paramThrowable, true));
-      }
-      return localStringBuilder.toString();
+    if ((paramThrowable instanceof InvocationTargetException)) {
+      paramThrowable = ((InvocationTargetException)paramThrowable).getTargetException();
+    } else {
+      paramThrowable = paramThrowable.getCause();
     }
+    if (paramThrowable != null)
+    {
+      localStringBuilder.append("caused by: ");
+      localStringBuilder.append(paramThrowable.toString());
+      localStringBuilder.append("\n");
+      localStringBuilder.append(getPrintableStackTrace(paramThrowable, true));
+    }
+    return localStringBuilder.toString();
   }
   
   public static String getStackTrace()
@@ -79,14 +84,19 @@ public class DebugUtil
   
   public static void setDebugEnabled(MiniAppInfo paramMiniAppInfo, boolean paramBoolean)
   {
-    if (paramMiniAppInfo != null) {
-      StorageUtil.getPreference().edit().putBoolean(paramMiniAppInfo.appId + "_debug", paramBoolean).apply();
+    if (paramMiniAppInfo != null)
+    {
+      SharedPreferences.Editor localEditor = StorageUtil.getPreference().edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMiniAppInfo.appId);
+      localStringBuilder.append("_debug");
+      localEditor.putBoolean(localStringBuilder.toString(), paramBoolean).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.DebugUtil
  * JD-Core Version:    0.7.0.1
  */

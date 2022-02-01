@@ -23,6 +23,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,195 +55,248 @@ public class StoryListUtils
     {
     default: 
       return 5;
-    case 0: 
-      return 0;
+    case 3: 
+    case 6: 
+      return 2;
     case 1: 
     case 2: 
     case 4: 
       return 1;
-    case 3: 
-    case 6: 
-      return 2;
+    case 0: 
+      return 0;
     }
     return 3;
   }
   
   public static int a(View paramView)
   {
-    if ((paramView == null) || (!paramView.isShown())) {}
-    int[] arrayOfInt;
-    int j;
-    do
+    if (paramView != null)
     {
-      return 2147483647;
-      arrayOfInt = new int[2];
+      if (!paramView.isShown()) {
+        return 2147483647;
+      }
+      int[] arrayOfInt = new int[2];
       paramView.getLocationOnScreen(arrayOfInt);
-      i = paramView.getHeight();
-      j = UIUtils.d(paramView.getContext()) / 2;
-    } while (i <= 0);
-    int i = Math.min(Math.abs(j - arrayOfInt[1]), Math.abs(j - (arrayOfInt[1] + i)));
-    SLog.b("Q.qqstory.home.StoryListUtils", "getDistanceToCenterY=" + i);
-    return i;
+      int i = paramView.getHeight();
+      int j = UIUtils.d(paramView.getContext()) / 2;
+      if (i > 0)
+      {
+        i = Math.min(Math.abs(j - arrayOfInt[1]), Math.abs(j - (arrayOfInt[1] + i)));
+        paramView = new StringBuilder();
+        paramView.append("getDistanceToCenterY=");
+        paramView.append(i);
+        SLog.b("Q.qqstory.home.StoryListUtils", paramView.toString());
+        return i;
+      }
+    }
+    return 2147483647;
   }
   
   public static Bitmap a(Drawable paramDrawable, int paramInt1, int paramInt2, Map<String, Bitmap> paramMap, Transformation paramTransformation)
   {
     long l = System.currentTimeMillis();
-    if (paramDrawable == null)
-    {
-      paramDrawable = null;
-      return paramDrawable;
+    if (paramDrawable == null) {
+      return null;
     }
-    Object localObject;
-    float f2;
+    Object localObject1;
     float f1;
+    int i;
     if ((paramDrawable instanceof RegionDrawable))
     {
-      localObject = (RegionDrawable)paramDrawable;
-      if ((((RegionDrawable)localObject).getBitmap() != null) && (!((RegionDrawable)localObject).getBitmap().isRecycled()))
+      localObject1 = (RegionDrawable)paramDrawable;
+      if ((((RegionDrawable)localObject1).getBitmap() != null) && (!((RegionDrawable)localObject1).getBitmap().isRecycled()))
       {
-        f2 = ((RegionDrawable)localObject).getBitmap().getWidth();
-        f1 = ((RegionDrawable)localObject).getBitmap().getHeight();
-        label67:
-        if ((paramInt1 > 0) && (paramInt2 > 0)) {
-          break label347;
-        }
-        paramInt1 = (int)f2;
-        paramInt2 = (int)f1;
-        label83:
-        if (paramMap == null) {
-          break label414;
-        }
+        f1 = ((RegionDrawable)localObject1).getBitmap().getWidth();
+        i = ((RegionDrawable)localObject1).getBitmap().getHeight();
+      }
+      else
+      {
+        f1 = ((RegionDrawable)localObject1).getIntrinsicWidth();
+        i = ((RegionDrawable)localObject1).getIntrinsicHeight();
       }
     }
-    label414:
-    for (Bitmap localBitmap = (Bitmap)paramMap.get("w=" + paramInt1 + "h=" + paramInt2);; localBitmap = null)
+    else
     {
-      for (;;)
-      {
-        if (localBitmap != null) {
-          localObject = localBitmap;
-        }
-        try
-        {
-          if (localBitmap.isRecycled())
-          {
-            InfoPrinter.b("Q.qqstory.home.StoryListUtils", new Object[] { "drawable2Bitmap need create width=", Integer.valueOf(paramInt1), ",height=", Integer.valueOf(paramInt2) });
-            localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-            localObject = localBitmap;
-            if (paramMap != null)
-            {
-              paramMap.put("w=" + paramInt1 + "h=" + paramInt2, localBitmap);
-              localObject = localBitmap;
-            }
-          }
-          if (localObject != null)
-          {
-            ((Bitmap)localObject).eraseColor(0);
-            paramMap = new Canvas((Bitmap)localObject);
-            paramDrawable.setBounds(0, 0, paramInt1, paramInt2);
-            paramDrawable.draw(paramMap);
-          }
-          SLog.a("Q.qqstory.home.StoryListUtils", "drawable2Bitmap:width=%d,height=%d,cost time=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis() - l));
-          paramDrawable = (Drawable)localObject;
-          if (paramTransformation == null) {
-            break;
-          }
-          return paramTransformation.a((Bitmap)localObject);
-        }
-        catch (OutOfMemoryError paramDrawable)
-        {
-          label347:
-          SLog.e("Q.qqstory.home.StoryListUtils", "drawable2Bitmap out off memory width=" + paramInt1 + ",height=" + paramInt2);
-          return null;
-        }
-      }
-      f2 = ((RegionDrawable)localObject).getIntrinsicWidth();
-      f1 = ((RegionDrawable)localObject).getIntrinsicHeight();
-      break label67;
-      f2 = paramDrawable.getIntrinsicWidth();
-      f1 = paramDrawable.getIntrinsicHeight();
-      break label67;
+      f1 = paramDrawable.getIntrinsicWidth();
+      i = paramDrawable.getIntrinsicHeight();
+    }
+    float f2 = i;
+    if ((paramInt1 > 0) && (paramInt2 > 0))
+    {
       if (paramInt1 > paramInt2)
       {
-        paramInt1 = (int)(f2 / f1 * paramInt2);
-        break label83;
+        paramInt1 = (int)(f1 / f2 * paramInt2);
+        break label157;
       }
-      paramInt2 = (int)(f1 / f2 * paramInt1);
-      break label83;
+      f1 = f2 / f1 * paramInt1;
     }
+    else
+    {
+      paramInt1 = (int)f1;
+      f1 = f2;
+    }
+    paramInt2 = (int)f1;
+    label157:
+    if (paramMap != null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("w=");
+      ((StringBuilder)localObject1).append(paramInt1);
+      ((StringBuilder)localObject1).append("h=");
+      ((StringBuilder)localObject1).append(paramInt2);
+      localObject1 = (Bitmap)paramMap.get(((StringBuilder)localObject1).toString());
+    }
+    else
+    {
+      localObject1 = null;
+    }
+    Object localObject2;
+    if (localObject1 != null) {
+      localObject2 = localObject1;
+    }
+    try
+    {
+      if (((Bitmap)localObject1).isRecycled())
+      {
+        InfoPrinter.b("Q.qqstory.home.StoryListUtils", new Object[] { "drawable2Bitmap need create width=", Integer.valueOf(paramInt1), ",height=", Integer.valueOf(paramInt2) });
+        localObject1 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+        localObject2 = localObject1;
+        if (paramMap != null)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("w=");
+          ((StringBuilder)localObject2).append(paramInt1);
+          ((StringBuilder)localObject2).append("h=");
+          ((StringBuilder)localObject2).append(paramInt2);
+          paramMap.put(((StringBuilder)localObject2).toString(), localObject1);
+          localObject2 = localObject1;
+        }
+      }
+      if (localObject2 != null)
+      {
+        ((Bitmap)localObject2).eraseColor(0);
+        paramMap = new Canvas((Bitmap)localObject2);
+        paramDrawable.setBounds(0, 0, paramInt1, paramInt2);
+        paramDrawable.draw(paramMap);
+      }
+      SLog.a("Q.qqstory.home.StoryListUtils", "drawable2Bitmap:width=%d,height=%d,cost time=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis() - l));
+      if (paramTransformation != null) {
+        return paramTransformation.a((Bitmap)localObject2);
+      }
+      return localObject2;
+    }
+    catch (OutOfMemoryError paramDrawable)
+    {
+      label423:
+      break label423;
+    }
+    paramDrawable = new StringBuilder();
+    paramDrawable.append("drawable2Bitmap out off memory width=");
+    paramDrawable.append(paramInt1);
+    paramDrawable.append(",height=");
+    paramDrawable.append(paramInt2);
+    SLog.e("Q.qqstory.home.StoryListUtils", paramDrawable.toString());
+    return null;
   }
   
   public static String a(int paramInt, boolean paramBoolean)
   {
-    Object localObject1 = null;
-    Object localObject2;
+    String str;
     switch (paramInt)
     {
     default: 
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = HardCodeUtil.a(2131714330);
-      }
+      str = null;
       break;
+    case 13: 
+      str = HardCodeUtil.a(2131714241);
+      break;
+    case 12: 
+      str = HardCodeUtil.a(2131714270);
+      break;
+    case 11: 
+      str = HardCodeUtil.a(2131714257);
+      break;
+    case 10: 
+      str = HardCodeUtil.a(2131714273);
+      break;
+    case 9: 
+      str = HardCodeUtil.a(2131714262);
+      break;
+    case 8: 
+      str = HardCodeUtil.a(2131714253);
+      break;
+    case 7: 
+      str = HardCodeUtil.a(2131714245);
+      break;
+    case 6: 
+      str = HardCodeUtil.a(2131714239);
+      break;
+    case 5: 
+      str = HardCodeUtil.a(2131714275);
+      break;
+    case 4: 
+      str = HardCodeUtil.a(2131714248);
+      break;
+    case 3: 
+      str = HardCodeUtil.a(2131714258);
+      break;
+    case 2: 
+      str = HardCodeUtil.a(2131714259);
+      break;
+    case 1: 
+      str = HardCodeUtil.a(2131714274);
+      break;
+    case 0: 
+      str = HardCodeUtil.a(2131714280);
+      break;
+    case -1: 
+      str = HardCodeUtil.a(2131714261);
+      break;
+    case -2: 
+      str = HardCodeUtil.a(2131714281);
+      break;
+    case -3: 
+      str = HardCodeUtil.a(2131714266);
+      break;
+    case -4: 
+      str = HardCodeUtil.a(2131714265);
+      break;
+    case -5: 
+      str = HardCodeUtil.a(2131714244);
+      break;
+    case -6: 
+      str = HardCodeUtil.a(2131714254);
+      break;
+    case -7: 
+      str = HardCodeUtil.a(2131714276);
+      break;
+    case -8: 
+      str = HardCodeUtil.a(2131714240);
+      break;
+    case -9: 
+      str = HardCodeUtil.a(2131714243);
+      break;
+    case -10: 
+      str = HardCodeUtil.a(2131714279);
+      break;
+    case -11: 
+      str = HardCodeUtil.a(2131714250);
+      break;
+    case -12: 
+      str = HardCodeUtil.a(2131714252);
     }
-    do
+    if (TextUtils.isEmpty(str)) {
+      return HardCodeUtil.a(2131714251);
+    }
+    Object localObject = str;
+    if (paramBoolean)
     {
-      return localObject2;
-      localObject1 = HardCodeUtil.a(2131714331);
-      break;
-      localObject1 = HardCodeUtil.a(2131714329);
-      break;
-      localObject1 = HardCodeUtil.a(2131714358);
-      break;
-      localObject1 = HardCodeUtil.a(2131714322);
-      break;
-      localObject1 = HardCodeUtil.a(2131714319);
-      break;
-      localObject1 = HardCodeUtil.a(2131714355);
-      break;
-      localObject1 = HardCodeUtil.a(2131714333);
-      break;
-      localObject1 = HardCodeUtil.a(2131714323);
-      break;
-      localObject1 = HardCodeUtil.a(2131714344);
-      break;
-      localObject1 = HardCodeUtil.a(2131714345);
-      break;
-      localObject1 = HardCodeUtil.a(2131714360);
-      break;
-      localObject1 = HardCodeUtil.a(2131714340);
-      break;
-      localObject1 = HardCodeUtil.a(2131714359);
-      break;
-      localObject1 = HardCodeUtil.a(2131714353);
-      break;
-      localObject1 = HardCodeUtil.a(2131714338);
-      break;
-      localObject1 = HardCodeUtil.a(2131714337);
-      break;
-      localObject1 = HardCodeUtil.a(2131714327);
-      break;
-      localObject1 = HardCodeUtil.a(2131714354);
-      break;
-      localObject1 = HardCodeUtil.a(2131714318);
-      break;
-      localObject1 = HardCodeUtil.a(2131714324);
-      break;
-      localObject1 = HardCodeUtil.a(2131714332);
-      break;
-      localObject1 = HardCodeUtil.a(2131714341);
-      break;
-      localObject1 = HardCodeUtil.a(2131714352);
-      break;
-      localObject1 = HardCodeUtil.a(2131714336);
-      break;
-      localObject1 = HardCodeUtil.a(2131714349);
-      break;
-      localObject1 = HardCodeUtil.a(2131714320);
-      break;
-      localObject2 = localObject1;
-    } while (!paramBoolean);
-    return HardCodeUtil.a(2131714342) + (String)localObject1;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131714263));
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   public static String a(long paramLong)
@@ -261,12 +315,12 @@ public class StoryListUtils
     }
     Calendar localCalendar = Calendar.getInstance();
     long l = NetConnInfoCenter.getServerTimeMillis();
-    if ((l - paramLong1) / 1000L < 60L) {
+    if ((l - paramLong1) / 1000L < 60L)
+    {
       localStringBuilder.append("刚刚");
     }
-    for (;;)
+    else
     {
-      return localStringBuilder.toString();
       localCalendar.setTimeInMillis(l);
       int i = localCalendar.get(1);
       int j = localCalendar.get(6);
@@ -287,16 +341,25 @@ public class StoryListUtils
       int i3 = localCalendar.get(5);
       int i4 = localCalendar.get(11);
       int i5 = localCalendar.get(12);
-      if (m == j) {
+      if (m == j)
+      {
         localStringBuilder.append(String.format(Locale.getDefault(), "%02d:%02d", new Object[] { Integer.valueOf(i4), Integer.valueOf(i5) }));
-      } else if (n == j) {
-        localStringBuilder.append("昨天 ").append(String.format(Locale.getDefault(), "%02d:%02d", new Object[] { Integer.valueOf(i4), Integer.valueOf(i5) }));
-      } else if (k == i) {
+      }
+      else if (n == j)
+      {
+        localStringBuilder.append("昨天 ");
+        localStringBuilder.append(String.format(Locale.getDefault(), "%02d:%02d", new Object[] { Integer.valueOf(i4), Integer.valueOf(i5) }));
+      }
+      else if (k == i)
+      {
         localStringBuilder.append(String.format(Locale.getDefault(), "%d月%d日 %02d:%02d", new Object[] { Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(i5) }));
-      } else {
+      }
+      else
+      {
         localStringBuilder.append(String.format(Locale.getDefault(), "%d年%d月%d日", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3) }));
       }
     }
+    return localStringBuilder.toString();
   }
   
   public static String a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -305,52 +368,45 @@ public class StoryListUtils
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject2;
     if ((paramBoolean2) && (paramBoolean1))
     {
       i = TimeZone.getDefault().getRawOffset() / 3600000;
       j = (int)(paramLong2 / 3600000L);
       if (i != j)
       {
-        localObject = a(j, false);
-        localStringBuilder.append((String)localObject + "·");
+        localObject1 = a(j, false);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("·");
+        localStringBuilder.append(((StringBuilder)localObject2).toString());
       }
     }
-    Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-    int i = ((Calendar)localObject).get(1);
-    int j = ((Calendar)localObject).get(6);
-    ((Calendar)localObject).setTimeInMillis(paramLong1);
-    int k = ((Calendar)localObject).get(1);
-    int m = ((Calendar)localObject).get(6);
-    ((Calendar)localObject).add(6, 1);
-    int n = ((Calendar)localObject).get(6);
+    Object localObject1 = Calendar.getInstance();
+    ((Calendar)localObject1).setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+    int i = ((Calendar)localObject1).get(1);
+    int j = ((Calendar)localObject1).get(6);
+    ((Calendar)localObject1).setTimeInMillis(paramLong1);
+    int k = ((Calendar)localObject1).get(1);
+    int m = ((Calendar)localObject1).get(6);
+    ((Calendar)localObject1).add(6, 1);
+    int n = ((Calendar)localObject1).get(6);
     if (paramBoolean1)
     {
-      TimeZone localTimeZone = TimeZone.getDefault();
-      localTimeZone.setRawOffset((int)paramLong2);
-      ((Calendar)localObject).setTimeZone(localTimeZone);
+      localObject2 = TimeZone.getDefault();
+      ((TimeZone)localObject2).setRawOffset((int)paramLong2);
+      ((Calendar)localObject1).setTimeZone((TimeZone)localObject2);
     }
-    ((Calendar)localObject).setTimeInMillis(paramLong1);
-    int i1 = ((Calendar)localObject).get(1);
-    int i2 = ((Calendar)localObject).get(2) + 1;
-    int i3 = ((Calendar)localObject).get(5);
-    int i4 = ((Calendar)localObject).get(11);
-    int i5 = ((Calendar)localObject).get(12);
-    if (paramBoolean2)
-    {
-      if ((k != i) || (m != j)) {
-        break label308;
-      }
-      localStringBuilder.append("今天");
-    }
-    for (;;)
-    {
-      if (paramBoolean3) {
-        localStringBuilder.append(String.format(Locale.getDefault(), " %02d:%02d", new Object[] { Integer.valueOf(i4), Integer.valueOf(i5) }));
-      }
-      return localStringBuilder.toString();
-      label308:
-      if ((k == i) && (n == j)) {
+    ((Calendar)localObject1).setTimeInMillis(paramLong1);
+    int i1 = ((Calendar)localObject1).get(1);
+    int i2 = ((Calendar)localObject1).get(2) + 1;
+    int i3 = ((Calendar)localObject1).get(5);
+    int i4 = ((Calendar)localObject1).get(11);
+    int i5 = ((Calendar)localObject1).get(12);
+    if (paramBoolean2) {
+      if ((k == i) && (m == j)) {
+        localStringBuilder.append("今天");
+      } else if ((k == i) && (n == j)) {
         localStringBuilder.append("昨天 ");
       } else if (k == i) {
         localStringBuilder.append(String.format(Locale.getDefault(), "%d月%d日", new Object[] { Integer.valueOf(i2), Integer.valueOf(i3) }));
@@ -358,44 +414,54 @@ public class StoryListUtils
         localStringBuilder.append(String.format(Locale.getDefault(), "%d年%d月%d日", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3) }));
       }
     }
+    if (paramBoolean3) {
+      localStringBuilder.append(String.format(Locale.getDefault(), " %02d:%02d", new Object[] { Integer.valueOf(i4), Integer.valueOf(i5) }));
+    }
+    return localStringBuilder.toString();
   }
   
   public static void a(Bitmap paramBitmap1, Bitmap paramBitmap2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Matrix paramMatrix, boolean paramBoolean)
   {
-    if (paramInt1 + paramInt3 > paramBitmap1.getWidth()) {
-      throw new IllegalArgumentException("x + width must be <= bitmap.width()");
-    }
-    if (paramInt2 + paramInt4 > paramBitmap1.getHeight()) {
+    int i = paramInt1 + paramInt3;
+    if (i <= paramBitmap1.getWidth())
+    {
+      int j = paramInt2 + paramInt4;
+      if (j <= paramBitmap1.getHeight())
+      {
+        if ((!paramBitmap1.isMutable()) && (paramInt1 == 0) && (paramInt2 == 0) && (paramInt3 == paramBitmap1.getWidth()) && (paramInt4 == paramBitmap1.getHeight()) && ((paramMatrix == null) || (paramMatrix.isIdentity()))) {
+          return;
+        }
+        Canvas localCanvas = new Canvas();
+        Rect localRect = new Rect(paramInt1, paramInt2, i, j);
+        RectF localRectF = new RectF(0.0F, 0.0F, paramInt3, paramInt4);
+        if ((paramMatrix != null) && (!paramMatrix.isIdentity()))
+        {
+          boolean bool = paramMatrix.rectStaysRect();
+          Object localObject = new RectF();
+          paramMatrix.mapRect((RectF)localObject, localRectF);
+          localCanvas.translate(-((RectF)localObject).left, -((RectF)localObject).top);
+          localCanvas.concat(paramMatrix);
+          localObject = new Paint();
+          ((Paint)localObject).setFilterBitmap(paramBoolean);
+          paramMatrix = (Matrix)localObject;
+          if ((bool ^ true))
+          {
+            ((Paint)localObject).setAntiAlias(true);
+            paramMatrix = (Matrix)localObject;
+          }
+        }
+        else
+        {
+          paramMatrix = null;
+        }
+        localCanvas.setBitmap(paramBitmap2);
+        localCanvas.drawBitmap(paramBitmap1, localRect, localRectF, paramMatrix);
+        localCanvas.setBitmap(null);
+        return;
+      }
       throw new IllegalArgumentException("y + height must be <= bitmap.height()");
     }
-    if ((!paramBitmap1.isMutable()) && (paramInt1 == 0) && (paramInt2 == 0) && (paramInt3 == paramBitmap1.getWidth()) && (paramInt4 == paramBitmap1.getHeight()) && ((paramMatrix == null) || (paramMatrix.isIdentity()))) {
-      return;
-    }
-    Canvas localCanvas = new Canvas();
-    Rect localRect = new Rect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
-    RectF localRectF1 = new RectF(0.0F, 0.0F, paramInt3, paramInt4);
-    if ((paramMatrix == null) || (paramMatrix.isIdentity()))
-    {
-      paramMatrix = null;
-      localCanvas.setBitmap(paramBitmap2);
-      localCanvas.drawBitmap(paramBitmap1, localRect, localRectF1, paramMatrix);
-      localCanvas.setBitmap(null);
-      return;
-    }
-    if (!paramMatrix.rectStaysRect()) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      RectF localRectF2 = new RectF();
-      paramMatrix.mapRect(localRectF2, localRectF1);
-      localCanvas.translate(-localRectF2.left, -localRectF2.top);
-      localCanvas.concat(paramMatrix);
-      paramMatrix = new Paint();
-      paramMatrix.setFilterBitmap(paramBoolean);
-      if (paramInt1 != 0) {
-        paramMatrix.setAntiAlias(true);
-      }
-      break;
-    }
+    throw new IllegalArgumentException("x + width must be <= bitmap.width()");
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -415,13 +481,19 @@ public class StoryListUtils
   
   public static void a(ArrayList<String> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return;
+    if (paramArrayList != null)
+    {
+      if (paramArrayList.size() == 0) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportShieldFriendStory:");
+      ((StringBuilder)localObject).append(paramArrayList.size());
+      SLog.b("Q.qqstory.home.StoryListUtils", ((StringBuilder)localObject).toString());
+      localObject = new ShieldFriendStoryEvent();
+      ((ShieldFriendStoryEvent)localObject).a = paramArrayList;
+      StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
     }
-    SLog.b("Q.qqstory.home.StoryListUtils", "reportShieldFriendStory:" + paramArrayList.size());
-    ShieldFriendStoryEvent localShieldFriendStoryEvent = new ShieldFriendStoryEvent();
-    localShieldFriendStoryEvent.a = paramArrayList;
-    StoryDispatcher.a().dispatch(localShieldFriendStoryEvent);
   }
   
   public static boolean a(String paramString)
@@ -430,33 +502,41 @@ public class StoryListUtils
       return false;
     }
     String str;
-    if (paramString.startsWith("file://")) {
+    if (paramString.startsWith("file://"))
+    {
       str = paramString.replaceFirst("file://", "");
     }
-    for (;;)
+    else
     {
-      return new File(str).exists();
       str = paramString;
       if (paramString.startsWith("file:")) {
         str = paramString.replaceFirst("file:", "");
       }
     }
+    return new File(str).exists();
   }
   
   public static int b(View paramView)
   {
-    if ((paramView == null) || (!paramView.isShown())) {}
-    int[] arrayOfInt;
-    do
+    if (paramView != null)
     {
-      return 2147483647;
-      arrayOfInt = new int[2];
+      if (!paramView.isShown()) {
+        return 2147483647;
+      }
+      int[] arrayOfInt = new int[2];
       paramView.getLocationOnScreen(arrayOfInt);
-      i = paramView.getHeight();
-    } while (i <= 0);
-    int i = Math.min(Math.abs(0 - arrayOfInt[1]), Math.abs(0 - (arrayOfInt[1] + i)));
-    SLog.b("Q.qqstory.home.StoryListUtils", "getDistanceToTop=" + i);
-    return i;
+      int i = paramView.getHeight();
+      if (i > 0)
+      {
+        i = Math.min(Math.abs(0 - arrayOfInt[1]), Math.abs(0 - (arrayOfInt[1] + i)));
+        paramView = new StringBuilder();
+        paramView.append("getDistanceToTop=");
+        paramView.append(i);
+        SLog.b("Q.qqstory.home.StoryListUtils", paramView.toString());
+        return i;
+      }
+    }
+    return 2147483647;
   }
   
   public static String b(long paramLong)
@@ -467,7 +547,7 @@ public class StoryListUtils
     Calendar localCalendar = Calendar.getInstance();
     long l = NetConnInfoCenter.getServerTimeMillis();
     if ((l - paramLong) / 1000L < 60L) {
-      return HardCodeUtil.a(2131714334);
+      return HardCodeUtil.a(2131714255);
     }
     localCalendar.setTimeInMillis(paramLong);
     int i = localCalendar.get(1);
@@ -480,12 +560,12 @@ public class StoryListUtils
     int i2 = localCalendar.get(1);
     int i3 = localCalendar.get(6);
     if (m == i3) {
-      return String.format(Locale.getDefault(), HardCodeUtil.a(2131714339), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
+      return String.format(Locale.getDefault(), HardCodeUtil.a(2131714260), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
     }
     localCalendar.setTimeInMillis(paramLong);
     localCalendar.add(6, 1);
     if (localCalendar.get(6) == i3) {
-      return String.format(Locale.getDefault(), HardCodeUtil.a(2131714328), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
+      return String.format(Locale.getDefault(), HardCodeUtil.a(2131714249), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
     }
     if (i != i2) {
       return String.format(Locale.getDefault(), "%d年%d月%d日", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
@@ -495,25 +575,31 @@ public class StoryListUtils
   
   public static int c(View paramView)
   {
-    if ((paramView == null) || (!paramView.isShown())) {}
-    int[] arrayOfInt;
-    int j;
-    do
+    if (paramView != null)
     {
-      return 2147483647;
-      arrayOfInt = new int[2];
+      if (!paramView.isShown()) {
+        return 2147483647;
+      }
+      int[] arrayOfInt = new int[2];
       paramView.getLocationOnScreen(arrayOfInt);
-      i = paramView.getHeight();
-      j = UIUtils.d(paramView.getContext());
-    } while (i <= 0);
-    int i = Math.min(Math.abs(j - arrayOfInt[1]), Math.abs(j - (arrayOfInt[1] + i)));
-    SLog.b("Q.qqstory.home.StoryListUtils", "getDistanceToBottom=" + i);
-    return i;
+      int i = paramView.getHeight();
+      int j = UIUtils.d(paramView.getContext());
+      if (i > 0)
+      {
+        i = Math.min(Math.abs(j - arrayOfInt[1]), Math.abs(j - (arrayOfInt[1] + i)));
+        paramView = new StringBuilder();
+        paramView.append("getDistanceToBottom=");
+        paramView.append(i);
+        SLog.b("Q.qqstory.home.StoryListUtils", paramView.toString());
+        return i;
+      }
+    }
+    return 2147483647;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.common.StoryListUtils
  * JD-Core Version:    0.7.0.1
  */

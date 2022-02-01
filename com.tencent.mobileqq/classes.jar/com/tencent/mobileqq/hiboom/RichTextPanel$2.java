@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.hiboom;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -29,12 +28,16 @@ class RichTextPanel$2
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTextPanel", 2, "instantiateItem position = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("instantiateItem position = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("RichTextPanel", 2, ((StringBuilder)localObject).toString());
     }
-    ViewParent localViewParent = ((RichTextPanelView)RichTextPanel.a(this.a).get(paramInt)).getParent();
-    if (localViewParent != null) {
-      ((ViewGroup)localViewParent).removeView((View)RichTextPanel.a(this.a).get(paramInt));
+    Object localObject = ((RichTextPanelView)RichTextPanel.a(this.a).get(paramInt)).getParent();
+    if (localObject != null) {
+      ((ViewGroup)localObject).removeView((View)RichTextPanel.a(this.a).get(paramInt));
     }
     paramViewGroup.addView((View)RichTextPanel.a(this.a).get(paramInt));
     return RichTextPanel.a(this.a).get(paramInt);
@@ -47,7 +50,7 @@ class RichTextPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.RichTextPanel.2
  * JD-Core Version:    0.7.0.1
  */

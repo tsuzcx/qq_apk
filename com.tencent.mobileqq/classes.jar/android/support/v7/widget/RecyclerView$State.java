@@ -22,9 +22,15 @@ public class RecyclerView$State
   
   void assertLayoutStep(int paramInt)
   {
-    if ((this.mLayoutStep & paramInt) == 0) {
-      throw new IllegalStateException("Layout state should be one of " + Integer.toBinaryString(paramInt) + " but it is " + Integer.toBinaryString(this.mLayoutStep));
+    if ((this.mLayoutStep & paramInt) != 0) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Layout state should be one of ");
+    localStringBuilder.append(Integer.toBinaryString(paramInt));
+    localStringBuilder.append(" but it is ");
+    localStringBuilder.append(Integer.toBinaryString(this.mLayoutStep));
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public boolean didStructureChange()
@@ -34,10 +40,11 @@ public class RecyclerView$State
   
   public <T> T get(int paramInt)
   {
-    if (this.mData == null) {
+    SparseArray localSparseArray = this.mData;
+    if (localSparseArray == null) {
       return null;
     }
-    return this.mData.get(paramInt);
+    return localSparseArray.get(paramInt);
   }
   
   public int getItemCount()
@@ -78,17 +85,19 @@ public class RecyclerView$State
   
   public void remove(int paramInt)
   {
-    if (this.mData == null) {
+    SparseArray localSparseArray = this.mData;
+    if (localSparseArray == null) {
       return;
     }
-    this.mData.remove(paramInt);
+    localSparseArray.remove(paramInt);
   }
   
   State reset()
   {
     this.mTargetPosition = -1;
-    if (this.mData != null) {
-      this.mData.clear();
+    SparseArray localSparseArray = this.mData;
+    if (localSparseArray != null) {
+      localSparseArray.clear();
     }
     this.mItemCount = 0;
     this.mStructureChanged = false;
@@ -98,7 +107,27 @@ public class RecyclerView$State
   
   public String toString()
   {
-    return "State{mTargetPosition=" + this.mTargetPosition + ", mData=" + this.mData + ", mItemCount=" + this.mItemCount + ", mPreviousLayoutItemCount=" + this.mPreviousLayoutItemCount + ", mDeletedInvisibleItemCountSincePreviousLayout=" + this.mDeletedInvisibleItemCountSincePreviousLayout + ", mStructureChanged=" + this.mStructureChanged + ", mInPreLayout=" + this.mInPreLayout + ", mRunSimpleAnimations=" + this.mRunSimpleAnimations + ", mRunPredictiveAnimations=" + this.mRunPredictiveAnimations + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("State{mTargetPosition=");
+    localStringBuilder.append(this.mTargetPosition);
+    localStringBuilder.append(", mData=");
+    localStringBuilder.append(this.mData);
+    localStringBuilder.append(", mItemCount=");
+    localStringBuilder.append(this.mItemCount);
+    localStringBuilder.append(", mPreviousLayoutItemCount=");
+    localStringBuilder.append(this.mPreviousLayoutItemCount);
+    localStringBuilder.append(", mDeletedInvisibleItemCountSincePreviousLayout=");
+    localStringBuilder.append(this.mDeletedInvisibleItemCountSincePreviousLayout);
+    localStringBuilder.append(", mStructureChanged=");
+    localStringBuilder.append(this.mStructureChanged);
+    localStringBuilder.append(", mInPreLayout=");
+    localStringBuilder.append(this.mInPreLayout);
+    localStringBuilder.append(", mRunSimpleAnimations=");
+    localStringBuilder.append(this.mRunSimpleAnimations);
+    localStringBuilder.append(", mRunPredictiveAnimations=");
+    localStringBuilder.append(this.mRunPredictiveAnimations);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public boolean willRunPredictiveAnimations()

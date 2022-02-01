@@ -15,28 +15,34 @@ public class ScaleAction
   
   protected void a(int paramInt, float paramFloat)
   {
-    this.jdField_c_of_type_Float = (this.d + (this.e - this.d) * paramFloat);
-    if (this.e - this.d > 0.0F) {
-      if (this.jdField_c_of_type_Float >= this.e) {
-        this.jdField_c_of_type_Float = this.e;
-      }
-    }
-    for (;;)
+    float f1 = this.d;
+    float f2 = this.e;
+    this.jdField_c_of_type_Float = ((f2 - f1) * paramFloat + f1);
+    if (f2 - f1 > 0.0F)
     {
-      if (paramInt >= this.jdField_c_of_type_Int) {
-        this.jdField_c_of_type_Float = this.e;
-      }
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.jdField_c_of_type_Float <= this.e) {
-        this.jdField_c_of_type_Float = this.e;
+      f1 = this.jdField_c_of_type_Float;
+      f2 = this.e;
+      if (f1 >= f2) {
+        this.jdField_c_of_type_Float = f2;
       }
     }
+    else
+    {
+      f1 = this.jdField_c_of_type_Float;
+      f2 = this.e;
+      if (f1 <= f2) {
+        this.jdField_c_of_type_Float = f2;
+      }
+    }
+    if (paramInt >= this.jdField_c_of_type_Int) {
+      this.jdField_c_of_type_Float = this.e;
+    }
+    super.a(paramInt, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.ScaleAction
  * JD-Core Version:    0.7.0.1
  */

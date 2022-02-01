@@ -8,17 +8,21 @@ class QQSettingSettingActivity$10
 {
   QQSettingSettingActivity$10(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
+    if (paramBoolean)
+    {
+      if (paramString == null) {
+        return;
+      }
+      paramString = this.a;
+      paramString.a(paramString.app.getCurrentAccountUin());
     }
-    this.a.a(this.a.app.getCurrentAccountUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingSettingActivity.10
  * JD-Core Version:    0.7.0.1
  */

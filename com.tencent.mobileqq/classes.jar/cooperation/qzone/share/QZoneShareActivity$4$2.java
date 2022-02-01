@@ -11,21 +11,22 @@ class QZoneShareActivity$4$2
   
   public void run()
   {
-    if ((this.val$finalErrCode == -100070004L) || (this.val$finalErrCode == -1000710003L))
+    long l = this.val$finalErrCode;
+    if ((l != -100070004L) && (l != -1000710003L))
     {
       this.this$1.this$0.hideProgressDialog();
-      DialogUtil.a(this.this$1.this$0, 233, this.this$1.this$0.getString(2131719294), this.val$finalErrMsg, new QZoneShareActivity.4.2.1(this), null).show();
+      QZoneShareActivity.access$600(this.this$1.this$0);
+      QQToast.a(this.this$1.this$0, 1, 2131694174, 1).a();
+      this.this$1.this$0.finish();
       return;
     }
     this.this$1.this$0.hideProgressDialog();
-    QZoneShareActivity.access$600(this.this$1.this$0);
-    QQToast.a(this.this$1.this$0, 1, 2131694210, 1).a();
-    this.this$1.this$0.finish();
+    DialogUtil.a(this.this$1.this$0, 233, this.this$1.this$0.getString(2131719012), this.val$finalErrMsg, new QZoneShareActivity.4.2.1(this), null).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.4.2
  * JD-Core Version:    0.7.0.1
  */

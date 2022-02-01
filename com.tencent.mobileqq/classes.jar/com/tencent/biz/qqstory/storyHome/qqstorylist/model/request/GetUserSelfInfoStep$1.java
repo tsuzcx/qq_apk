@@ -14,36 +14,34 @@ class GetUserSelfInfoStep$1
   
   public void run()
   {
-    boolean bool = true;
     SLog.a("Q.qqstory.home.GetUserSelfInfoStep", "receive the user self info: %s", this.a);
     Object localObject = GetUserSelfInfoStep.a(this.this$0).a();
-    if (this.a.jdField_b_of_type_Int == 1) {}
-    for (;;)
-    {
-      ((MyStorys)localObject).jdField_c_of_type_Boolean = bool;
-      GetUserSelfInfoStep.a(this.this$0).a().jdField_b_of_type_Int = this.a.jdField_c_of_type_Int;
-      GetUserSelfInfoStep.a(this.this$0).a().jdField_c_of_type_Int = this.a.jdField_d_of_type_Int;
-      GetUserSelfInfoStep.a(this.this$0).a().a = this.a.e;
-      GetUserSelfInfoStep.a(this.this$0).a().jdField_b_of_type_JavaLangString = this.a.jdField_c_of_type_JavaLangString;
-      GetUserSelfInfoStep.a(this.this$0).a().jdField_c_of_type_JavaLangString = this.a.jdField_d_of_type_JavaLangString;
-      GetUserSelfInfoStep.a(this.this$0).a().jdField_d_of_type_JavaLangString = this.a.a;
-      localObject = (StoryConfigManager)SuperManager.a(10);
-      ((StoryConfigManager)localObject).b("qqstory_my_fans_count", Integer.valueOf(this.a.jdField_c_of_type_Int));
-      ((StoryConfigManager)localObject).b("qqstory_i_am_vip", Integer.valueOf(this.a.jdField_b_of_type_Int));
-      ((StoryConfigManager)localObject).b("qqstory_my_vidoe_count", Integer.valueOf(this.a.jdField_d_of_type_Int));
-      ((StoryConfigManager)localObject).b("qqstory_my_visiter_count", Integer.valueOf(this.a.e));
-      ((StoryConfigManager)localObject).b("qqstory_my_newest_video_cover", this.a.jdField_c_of_type_JavaLangString);
-      ((StoryConfigManager)localObject).b("qqstory_my_newest_video_vid", this.a.jdField_d_of_type_JavaLangString);
-      QQStoryContext.a().a(this.a.a);
-      this.this$0.d();
-      return;
+    int i = this.a.jdField_b_of_type_Int;
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    ((MyStorys)localObject).jdField_c_of_type_Boolean = bool;
+    GetUserSelfInfoStep.a(this.this$0).a().jdField_b_of_type_Int = this.a.jdField_c_of_type_Int;
+    GetUserSelfInfoStep.a(this.this$0).a().jdField_c_of_type_Int = this.a.jdField_d_of_type_Int;
+    GetUserSelfInfoStep.a(this.this$0).a().a = this.a.e;
+    GetUserSelfInfoStep.a(this.this$0).a().jdField_b_of_type_JavaLangString = this.a.jdField_c_of_type_JavaLangString;
+    GetUserSelfInfoStep.a(this.this$0).a().jdField_c_of_type_JavaLangString = this.a.jdField_d_of_type_JavaLangString;
+    GetUserSelfInfoStep.a(this.this$0).a().jdField_d_of_type_JavaLangString = this.a.a;
+    localObject = (StoryConfigManager)SuperManager.a(10);
+    ((StoryConfigManager)localObject).b("qqstory_my_fans_count", Integer.valueOf(this.a.jdField_c_of_type_Int));
+    ((StoryConfigManager)localObject).b("qqstory_i_am_vip", Integer.valueOf(this.a.jdField_b_of_type_Int));
+    ((StoryConfigManager)localObject).b("qqstory_my_vidoe_count", Integer.valueOf(this.a.jdField_d_of_type_Int));
+    ((StoryConfigManager)localObject).b("qqstory_my_visiter_count", Integer.valueOf(this.a.e));
+    ((StoryConfigManager)localObject).b("qqstory_my_newest_video_cover", this.a.jdField_c_of_type_JavaLangString);
+    ((StoryConfigManager)localObject).b("qqstory_my_newest_video_vid", this.a.jdField_d_of_type_JavaLangString);
+    QQStoryContext.a().a(this.a.a);
+    this.this$0.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserSelfInfoStep.1
  * JD-Core Version:    0.7.0.1
  */

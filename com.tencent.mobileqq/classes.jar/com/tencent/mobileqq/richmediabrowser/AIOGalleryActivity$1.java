@@ -1,21 +1,29 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import com.tencent.raft.raftframework.IServiceProvider;
-import com.tencent.raft.raftframework.service.api.ServiceWrapper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class AIOGalleryActivity$1
-  implements IServiceProvider
+  extends BroadcastReceiver
 {
   AIOGalleryActivity$1(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  public ServiceWrapper provide()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new ServiceWrapper(new AIOBrowserBuilder(this.a), "Prototype");
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryActivity", 2, "receive videochat in aiogallery");
+      }
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.1
  * JD-Core Version:    0.7.0.1
  */

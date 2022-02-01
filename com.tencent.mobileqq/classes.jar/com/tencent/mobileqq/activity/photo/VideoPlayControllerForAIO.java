@@ -36,8 +36,9 @@ public class VideoPlayControllerForAIO
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localImageView != null) {
+      localImageView.setVisibility(paramInt);
     }
   }
   
@@ -46,11 +47,12 @@ public class VideoPlayControllerForAIO
     if (paramInt == 0) {
       b(8);
     }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (localLinearLayout != null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+      localLinearLayout.setVisibility(paramInt);
       if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131366426));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131366307));
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
     }
@@ -58,9 +60,9 @@ public class VideoPlayControllerForAIO
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373468));
-    this.b = ((ImageView)paramView.findViewById(2131373467));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131373469));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373043));
+    this.b = ((ImageView)paramView.findViewById(2131373042));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131373044));
   }
   
   public void a(VideoPlayControllerForAIO.OnDownloadListener paramOnDownloadListener)
@@ -70,44 +72,62 @@ public class VideoPlayControllerForAIO
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    AtomicBoolean localAtomicBoolean = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+    if (localAtomicBoolean != null) {
+      localAtomicBoolean.set(paramBoolean);
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    AtomicBoolean localAtomicBoolean = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+    if (localAtomicBoolean != null) {
+      return localAtomicBoolean.get();
     }
     return false;
   }
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if (this.b == null) {
+    Object localObject = this.b;
+    if (localObject == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is null.");
       }
+      return false;
     }
-    do
+    if (((ImageView)localObject).getVisibility() == 0)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        return false;
-        if (this.b.getVisibility() != 0) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, event.getRawX() = " + paramMotionEvent.getRawX() + " , event.getRawY() = " + paramMotionEvent.getRawY() + " , mCenterPlayBtn left = " + this.b.getLeft() + " , top = " + this.b.getTop() + " , right = " + this.b.getRight() + ", bottom = " + this.b.getBottom());
-        }
-      } while (!new Rect(this.b.getLeft(), this.b.getTop(), this.b.getRight(), this.b.getBottom()).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()));
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, playbtn contains event");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onItemClick, event.getRawX() = ");
+        ((StringBuilder)localObject).append(paramMotionEvent.getRawX());
+        ((StringBuilder)localObject).append(" , event.getRawY() = ");
+        ((StringBuilder)localObject).append(paramMotionEvent.getRawY());
+        ((StringBuilder)localObject).append(" , mCenterPlayBtn left = ");
+        ((StringBuilder)localObject).append(this.b.getLeft());
+        ((StringBuilder)localObject).append(" , top = ");
+        ((StringBuilder)localObject).append(this.b.getTop());
+        ((StringBuilder)localObject).append(" , right = ");
+        ((StringBuilder)localObject).append(this.b.getRight());
+        ((StringBuilder)localObject).append(", bottom = ");
+        ((StringBuilder)localObject).append(this.b.getBottom());
+        QLog.d("VideoPlayControllerForAIO", 2, ((StringBuilder)localObject).toString());
       }
-      return true;
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is not visible.");
+      if (new Rect(this.b.getLeft(), this.b.getTop(), this.b.getRight(), this.b.getBottom()).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, playbtn contains event");
+        }
+        return true;
+      }
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is not visible.");
+    }
     return false;
   }
   
@@ -115,14 +135,14 @@ public class VideoPlayControllerForAIO
   {
     if (this.b != null)
     {
-      if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0)) {
+      LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      if ((localLinearLayout != null) && (localLinearLayout.getVisibility() == 0))
+      {
         this.b.setVisibility(8);
+        return;
       }
+      this.b.setVisibility(paramInt);
     }
-    else {
-      return;
-    }
-    this.b.setVisibility(paramInt);
   }
   
   public void e(int paramInt)
@@ -132,7 +152,7 @@ public class VideoPlayControllerForAIO
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.VideoPlayControllerForAIO
  * JD-Core Version:    0.7.0.1
  */

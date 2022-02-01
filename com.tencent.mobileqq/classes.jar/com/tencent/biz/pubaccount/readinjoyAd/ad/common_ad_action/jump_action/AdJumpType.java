@@ -4,8 +4,9 @@ import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementExtInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementSoftInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.FastWeqAdUtils;
-import com.tencent.biz.pubaccount.util.ReadinJoyActionUtil;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdActionUtilService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJFastWebAdService;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class AdJumpType
 {
@@ -41,11 +42,19 @@ public class AdJumpType
   
   private static boolean a(AdvertisementInfo paramAdvertisementInfo)
   {
-    if (paramAdvertisementInfo == null) {}
-    while ((paramAdvertisementInfo.mChannelID != 0L) || (!TextUtils.isEmpty(ReadinJoyActionUtil.a(paramAdvertisementInfo, "AdsIconText")))) {
+    boolean bool2 = false;
+    if (paramAdvertisementInfo == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (paramAdvertisementInfo.mChannelID == 0L)
+    {
+      bool1 = bool2;
+      if (TextUtils.isEmpty(((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).getAdExtParam(paramAdvertisementInfo, "AdsIconText"))) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private static boolean b(AdvertisementInfo paramAdvertisementInfo)
@@ -55,25 +64,36 @@ public class AdJumpType
   
   private static boolean c(AdvertisementInfo paramAdvertisementInfo)
   {
-    return FastWeqAdUtils.a(paramAdvertisementInfo);
+    return ((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).isGameComponentType(paramAdvertisementInfo);
   }
   
   private static boolean d(AdvertisementInfo paramAdvertisementInfo)
   {
-    if (paramAdvertisementInfo == null) {}
-    while ((paramAdvertisementInfo.mImaxShowAdType != 1001) && (paramAdvertisementInfo.mImaxShowAdType != 1002)) {
+    boolean bool = false;
+    if (paramAdvertisementInfo == null) {
       return false;
     }
-    return true;
+    if ((paramAdvertisementInfo.mImaxShowAdType == 1001) || (paramAdvertisementInfo.mImaxShowAdType == 1002)) {
+      bool = true;
+    }
+    return bool;
   }
   
   private static boolean e(AdvertisementInfo paramAdvertisementInfo)
   {
-    if ((paramAdvertisementInfo == null) || (paramAdvertisementInfo.mAdvertisementExtInfo == null)) {}
-    while (5001 != paramAdvertisementInfo.mAdvertisementExtInfo.i) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramAdvertisementInfo != null)
+    {
+      if (paramAdvertisementInfo.mAdvertisementExtInfo == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (5001 == paramAdvertisementInfo.mAdvertisementExtInfo.i) {
+        bool1 = true;
+      }
     }
-    return true;
+    return bool1;
   }
   
   private static boolean f(AdvertisementInfo paramAdvertisementInfo)
@@ -88,7 +108,7 @@ public class AdJumpType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.jump_action.AdJumpType
  * JD-Core Version:    0.7.0.1
  */

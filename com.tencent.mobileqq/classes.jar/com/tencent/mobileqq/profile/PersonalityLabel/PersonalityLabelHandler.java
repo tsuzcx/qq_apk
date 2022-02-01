@@ -13,6 +13,7 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.MessageForPLNews;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -63,42 +64,43 @@ public class PersonalityLabelHandler
   {
     BeancurdManager localBeancurdManager = (BeancurdManager)this.a.getManager(QQManagerFactory.BEANCURD_MANAGER);
     Object localObject = localBeancurdManager.a(paramString2, 0, 3);
-    if (localObject != null) {
-      if (((BeancurdMsg)localObject).originTime < paramLong) {
-        break label229;
-      }
+    if (localObject != null)
+    {
+      if (((BeancurdMsg)localObject).originTime < paramLong) {}
     }
-    label229:
-    for (int i = 0;; i = 1) {
-      for (;;)
+    else {
+      do
       {
-        if (i != 0) {}
-        try
+        i = 0;
+        break;
+        localObject = this.a.getMessageFacade().a(paramString2, 0, new int[] { -2060 });
+      } while ((localObject != null) && (((List)localObject).size() > 0) && (((MessageForPLNews)((List)localObject).get(((List)localObject).size() - 1)).ts >= paramLong));
+    }
+    int i = 1;
+    if (i != 0) {
+      try
+      {
+        localObject = new BeancurdMsg();
+        ((BeancurdMsg)localObject).frienduin = paramString2;
+        ((BeancurdMsg)localObject).busiid = 3;
+        ((BeancurdMsg)localObject).isNeedDelHistory = true;
+        ((BeancurdMsg)localObject).ispush = false;
+        ((BeancurdMsg)localObject).originTime = paramLong;
+        ((BeancurdMsg)localObject).startTime = MessageCache.a();
+        ((BeancurdMsg)localObject).validTime = 2592000L;
+        ((BeancurdMsg)localObject).buffer = paramString1;
+        localBeancurdManager.a((BeancurdMsg)localObject);
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+        if (QLog.isColorLevel())
         {
-          localObject = new BeancurdMsg();
-          ((BeancurdMsg)localObject).frienduin = paramString2;
-          ((BeancurdMsg)localObject).busiid = 3;
-          ((BeancurdMsg)localObject).isNeedDelHistory = true;
-          ((BeancurdMsg)localObject).ispush = false;
-          ((BeancurdMsg)localObject).originTime = paramLong;
-          ((BeancurdMsg)localObject).startTime = MessageCache.a();
-          ((BeancurdMsg)localObject).validTime = 2592000L;
-          ((BeancurdMsg)localObject).buffer = paramString1;
-          localBeancurdManager.a((BeancurdMsg)localObject);
-          return;
-          localObject = this.a.getMessageFacade().a(paramString2, 0, new int[] { -2060 });
-          if ((localObject != null) && (((List)localObject).size() > 0) && (((MessageForPLNews)((List)localObject).get(((List)localObject).size() - 1)).ts >= paramLong)) {
-            i = 0;
-          }
-        }
-        catch (Exception paramString1)
-        {
-          do
-          {
-            paramString1.printStackTrace();
-          } while (!QLog.isColorLevel());
-          QLog.i("PersonalityLabelHandler", 2, "handleAIOQQStoryFeedMessage: parse data to MessageRecord has error. Message: " + paramString1.getMessage());
-          return;
+          paramString2 = new StringBuilder();
+          paramString2.append("handleAIOQQStoryFeedMessage: parse data to MessageRecord has error. Message: ");
+          paramString2.append(paramString1.getMessage());
+          QLog.i("PersonalityLabelHandler", 2, paramString2.toString());
         }
       }
     }
@@ -106,24 +108,30 @@ public class PersonalityLabelHandler
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
-      notifyUI(3, false, null);
+      oidb_0x8f1.RspBody localRspBody = new oidb_0x8f1.RspBody();
+      int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+      paramFromServiceMsg = paramToServiceMsg.extraData.getString("key_uin", "");
+      long l = paramToServiceMsg.extraData.getLong("label_id", 0L);
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("handleGetPersonalityLabelPhotos : result = ");
+        paramToServiceMsg.append(i);
+        paramToServiceMsg.append(", uin = ");
+        paramToServiceMsg.append(paramFromServiceMsg);
+        QLog.i("PersonalityLabelHandler", 2, paramToServiceMsg.toString());
+      }
+      if (i == 0)
+      {
+        notifyUI(3, true, new Object[] { paramFromServiceMsg, Long.valueOf(l), PersonalityLabelInfo.convertFromPb((PersonalityTagComm.LabelInfo)localRspBody.msg_label_info.get()), Integer.valueOf(localRspBody.uint32_complete_flag.get()), localRspBody.bytes_label_cookie.get().toByteArray() });
+        return;
+      }
+      notifyUI(3, false, new Object[] { paramFromServiceMsg, Long.valueOf(l), null, null, null });
       return;
     }
-    oidb_0x8f1.RspBody localRspBody = new oidb_0x8f1.RspBody();
-    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    paramFromServiceMsg = paramToServiceMsg.extraData.getString("key_uin", "");
-    long l = paramToServiceMsg.extraData.getLong("label_id", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelPhotos : result = " + i + ", uin = " + paramFromServiceMsg);
-    }
-    if (i == 0)
-    {
-      notifyUI(3, true, new Object[] { paramFromServiceMsg, Long.valueOf(l), PersonalityLabelInfo.convertFromPb((PersonalityTagComm.LabelInfo)localRspBody.msg_label_info.get()), Integer.valueOf(localRspBody.uint32_complete_flag.get()), localRspBody.bytes_label_cookie.get().toByteArray() });
-      return;
-    }
-    notifyUI(3, false, new Object[] { paramFromServiceMsg, Long.valueOf(l), null, null, null });
+    notifyUI(3, false, null);
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -135,90 +143,102 @@ public class PersonalityLabelHandler
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
-      notifyUI(4, false, null);
-      return;
-    }
-    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, new oidb_0x90c.RspBody());
-    paramFromServiceMsg = paramToServiceMsg.extraData.getString("key_uin", "");
-    long l1 = paramToServiceMsg.extraData.getLong("label_id", 0L);
-    long l2 = paramToServiceMsg.extraData.getLong("photo_id", 0L);
-    if (QLog.isColorLevel())
-    {
-      paramToServiceMsg = new StringBuilder().append("handleDeletePhoto, result==0 ");
-      if (i == 0)
+      int i = parseOIDBPkg(paramFromServiceMsg, paramObject, new oidb_0x90c.RspBody());
+      paramFromServiceMsg = paramToServiceMsg.extraData.getString("key_uin", "");
+      long l1 = paramToServiceMsg.extraData.getLong("label_id", 0L);
+      long l2 = paramToServiceMsg.extraData.getLong("photo_id", 0L);
+      boolean bool;
+      if (QLog.isColorLevel())
       {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("handleDeletePhoto, result==0 ");
+        if (i == 0) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        paramToServiceMsg.append(bool);
+        paramToServiceMsg.append(",");
+        paramToServiceMsg.append(paramFromServiceMsg);
+        paramToServiceMsg.append(",");
+        paramToServiceMsg.append(l2);
+        paramToServiceMsg.append(",");
+        paramToServiceMsg.append(l1);
+        QLog.i("PersonalityLabelHandler", 2, paramToServiceMsg.toString());
+      }
+      if (i == 0) {
         bool = true;
-        QLog.i("PersonalityLabelHandler", 2, bool + "," + paramFromServiceMsg + "," + l2 + "," + l1);
+      } else {
+        bool = false;
       }
-    }
-    else
-    {
-      if (i != 0) {
-        break label183;
-      }
-    }
-    label183:
-    for (boolean bool = true;; bool = false)
-    {
       notifyUI(4, bool, new Object[] { paramFromServiceMsg, Long.valueOf(l1), Long.valueOf(l2) });
       return;
-      bool = false;
-      break;
     }
+    notifyUI(4, false, null);
   }
   
   public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelHandler", 2, "deleteLabel, labelId = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("deleteLabel, labelId = ");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.i("PersonalityLabelHandler", 2, ((StringBuilder)localObject).toString());
     }
-    oidb_0x8f3.ReqBody localReqBody = new oidb_0x8f3.ReqBody();
+    Object localObject = new oidb_0x8f3.ReqBody();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Long.valueOf(paramLong));
-    localReqBody.rpt_uint64_labels.set(localArrayList);
-    sendPbReq(makeOIDBPkg("OidbSvc.0x8f3", 2291, 0, localReqBody.toByteArray()));
+    ((oidb_0x8f3.ReqBody)localObject).rpt_uint64_labels.set(localArrayList);
+    sendPbReq(makeOIDBPkg("OidbSvc.0x8f3", 2291, 0, ((oidb_0x8f3.ReqBody)localObject).toByteArray()));
   }
   
   @TargetApi(12)
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
-      notifyUI(1, false, null);
+      cmd0x8f0.RspBody localRspBody = new cmd0x8f0.RspBody();
+      int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+      paramFromServiceMsg = paramToServiceMsg.extraData.getString("key_uin", "");
+      if (QLog.isColorLevel())
+      {
+        paramObject = new StringBuilder();
+        paramObject.append("handleGetPersonalityLabel, result==0 ");
+        boolean bool;
+        if (i == 0) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        paramObject.append(bool);
+        paramObject.append(",");
+        paramObject.append(paramFromServiceMsg);
+        QLog.i("PersonalityLabelHandler", 2, paramObject.toString());
+      }
+      int j = paramToServiceMsg.extraData.getInt("flag", 0);
+      if (i == 0)
+      {
+        paramToServiceMsg = ProfilePersonalityLabelInfo.convertFromPb(localRspBody);
+        notifyUI(1, true, new Object[] { paramFromServiceMsg, paramToServiceMsg, ProfilePersonalityLabelInfo.convertToBytes(paramToServiceMsg), Integer.valueOf(j) });
+        return;
+      }
+      notifyUI(1, false, new Object[] { paramFromServiceMsg, null, null, Integer.valueOf(j) });
       return;
     }
-    cmd0x8f0.RspBody localRspBody = new cmd0x8f0.RspBody();
-    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    paramFromServiceMsg = paramToServiceMsg.extraData.getString("key_uin", "");
-    if (QLog.isColorLevel())
-    {
-      paramObject = new StringBuilder().append("handleGetPersonalityLabel, result==0 ");
-      if (i != 0) {
-        break label156;
-      }
-    }
-    int j;
-    label156:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("PersonalityLabelHandler", 2, bool + "," + paramFromServiceMsg);
-      j = paramToServiceMsg.extraData.getInt("flag", 0);
-      if (i != 0) {
-        break;
-      }
-      paramToServiceMsg = ProfilePersonalityLabelInfo.convertFromPb(localRspBody);
-      notifyUI(1, true, new Object[] { paramFromServiceMsg, paramToServiceMsg, ProfilePersonalityLabelInfo.convertToBytes(paramToServiceMsg), Integer.valueOf(j) });
-      return;
-    }
-    notifyUI(1, false, new Object[] { paramFromServiceMsg, null, null, Integer.valueOf(j) });
+    notifyUI(1, false, null);
   }
   
   public void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelHandler", 2, "getPersonalityLabel:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getPersonalityLabel:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("PersonalityLabelHandler", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new cmd0x8f0.ReqBody();
     ((cmd0x8f0.ReqBody)localObject).uint64_req_uin.set(Long.valueOf(paramString).longValue());
@@ -243,10 +263,7 @@ public class PersonalityLabelHandler
     }
     catch (NumberFormatException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
     paramString = new oidb_0x909.ReqBody();
     paramString.uint64_to.set(l1);
@@ -257,17 +274,27 @@ public class PersonalityLabelHandler
   
   public void a(String paramString, long paramLong, int paramInt, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelHandler", 2, "getPersonalityLabelPhotos : uin = " + paramString + ", labelId = " + paramLong + ", count = " + paramInt + ", cookie = " + paramArrayOfByte);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getPersonalityLabelPhotos : uin = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", labelId = ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(", count = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", cookie = ");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      QLog.i("PersonalityLabelHandler", 2, ((StringBuilder)localObject).toString());
     }
-    oidb_0x8f1.ReqBody localReqBody = new oidb_0x8f1.ReqBody();
-    localReqBody.uint64_req_uin.set(Long.valueOf(paramString).longValue());
-    localReqBody.uint64_label_id.set(paramLong);
-    localReqBody.uint32_req_num.set(paramInt);
+    Object localObject = new oidb_0x8f1.ReqBody();
+    ((oidb_0x8f1.ReqBody)localObject).uint64_req_uin.set(Long.valueOf(paramString).longValue());
+    ((oidb_0x8f1.ReqBody)localObject).uint64_label_id.set(paramLong);
+    ((oidb_0x8f1.ReqBody)localObject).uint32_req_num.set(paramInt);
     if (paramArrayOfByte != null) {
-      localReqBody.bytes_label_cookie.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+      ((oidb_0x8f1.ReqBody)localObject).bytes_label_cookie.set(ByteStringMicro.copyFrom(paramArrayOfByte));
     }
-    paramArrayOfByte = makeOIDBPkg("OidbSvc.0x8f1", 2289, 0, localReqBody.toByteArray());
+    paramArrayOfByte = makeOIDBPkg("OidbSvc.0x8f1", 2289, 0, ((oidb_0x8f1.ReqBody)localObject).toByteArray());
     paramArrayOfByte.extraData.putString("key_uin", paramString);
     paramArrayOfByte.extraData.putLong("label_id", paramLong);
     sendPbReq(paramArrayOfByte);
@@ -275,8 +302,14 @@ public class PersonalityLabelHandler
   
   public void a(String paramString, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelHandler", 2, "getPersonalityLabelNews uin:" + paramString + " ts:" + paramLong1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getPersonalityLabelNews uin:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" ts:");
+      ((StringBuilder)localObject).append(paramLong1);
+      QLog.i("PersonalityLabelHandler", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new cmd0x91d.ReqBody();
     ((cmd0x91d.ReqBody)localObject).uint64_req_uin.set(Long.valueOf(paramString).longValue());
@@ -291,141 +324,155 @@ public class PersonalityLabelHandler
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-    label94:
-    label503:
-    do
+    Object localObject;
+    int i;
+    long l3;
+    long l1;
+    FriendsManager localFriendsManager;
+    if (paramToServiceMsg != null)
     {
-      long l1;
-      FriendsManager localFriendsManager;
-      do
+      if (paramFromServiceMsg == null) {
+        return;
+      }
+      localObject = new cmd0x91d.RspBody();
+      i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+      paramObject = paramToServiceMsg.extraData.getString("key_uin", "0");
+      l3 = paramToServiceMsg.extraData.getLong("key_timestamp", 0L);
+      l1 = paramToServiceMsg.extraData.getLong("latestPLUpdateTimestamp", 0L);
+      if (QLog.isColorLevel())
       {
-        int i;
-        do
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("handleGetPersonalityLabelNews, result==0 ");
+        boolean bool;
+        if (i == 0) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        paramToServiceMsg.append(bool);
+        paramToServiceMsg.append(",");
+        paramToServiceMsg.append(paramObject);
+        QLog.i("PersonalityLabelHandler", 2, paramToServiceMsg.toString());
+      }
+      localFriendsManager = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      paramFromServiceMsg = localFriendsManager.a(paramObject);
+      paramToServiceMsg = paramFromServiceMsg;
+      if (paramFromServiceMsg == null)
+      {
+        paramToServiceMsg = new ExtensionInfo();
+        paramToServiceMsg.uin = paramObject;
+      }
+      paramToServiceMsg.lastPullPLNewsTimestamp = (System.currentTimeMillis() / 1000L);
+      if (i == 0)
+      {
+        if (((cmd0x91d.RspBody)localObject).uint64_last_time.has()) {
+          l1 = ((cmd0x91d.RspBody)localObject).uint64_last_time.get();
+        } else {
+          l1 = 0L;
+        }
+        if ((l1 > l3) && (((cmd0x91d.RspBody)localObject).msg_update_info.has()))
         {
-          for (;;)
-          {
-            return;
-            cmd0x91d.RspBody localRspBody = new cmd0x91d.RspBody();
-            i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-            paramObject = paramToServiceMsg.extraData.getString("key_uin", "0");
-            long l2 = paramToServiceMsg.extraData.getLong("key_timestamp", 0L);
-            l1 = paramToServiceMsg.extraData.getLong("latestPLUpdateTimestamp", 0L);
-            boolean bool;
-            if (QLog.isColorLevel())
-            {
-              paramToServiceMsg = new StringBuilder().append("handleGetPersonalityLabelNews, result==0 ");
-              if (i == 0)
-              {
-                bool = true;
-                QLog.i("PersonalityLabelHandler", 2, bool + "," + paramObject);
-              }
-            }
-            else
-            {
-              localFriendsManager = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
-              paramFromServiceMsg = localFriendsManager.a(paramObject);
-              paramToServiceMsg = paramFromServiceMsg;
-              if (paramFromServiceMsg == null)
-              {
-                paramToServiceMsg = new ExtensionInfo();
-                paramToServiceMsg.uin = paramObject;
-              }
-              paramToServiceMsg.lastPullPLNewsTimestamp = (System.currentTimeMillis() / 1000L);
-              if (i != 0) {
-                break label519;
-              }
-              if (!localRspBody.uint64_last_time.has()) {
-                break label261;
-              }
-              l1 = localRspBody.uint64_last_time.get();
-              if ((l1 > l2) && (localRspBody.msg_update_info.has())) {
-                break label270;
-              }
-              if (l2 < l1) {
-                break label267;
-              }
-              l1 = l2;
-            }
-            for (;;)
-            {
-              paramToServiceMsg.latestPLUpdateTimestamp = l1;
-              localFriendsManager.a(paramToServiceMsg);
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews no update");
-              return;
-              bool = false;
-              break label94;
-              l1 = 0L;
-              break label196;
-            }
-            paramToServiceMsg.lastPLNewsTimestamp = l1;
-            paramToServiceMsg.latestPLUpdateTimestamp = l1;
-            localFriendsManager.a(paramToServiceMsg);
-            if (localRspBody.msg_update_info.has())
-            {
-              paramToServiceMsg = (cmd0x91d.LabelUpdateInfo)localRspBody.msg_update_info.get();
-              if ((paramToServiceMsg == null) || (!paramToServiceMsg.msg_label_info.has())) {
-                break label503;
-              }
-              paramFromServiceMsg = paramToServiceMsg.msg_label_info;
-              if (paramToServiceMsg.uint32_upload_photos.has()) {
-                paramToServiceMsg.uint32_upload_photos.get();
-              }
-              paramToServiceMsg = PersonalityLabelInfo.convertFromPb(paramFromServiceMsg);
-              paramFromServiceMsg = new JSONObject();
-            }
-            try
-            {
-              paramFromServiceMsg.put("text", paramToServiceMsg.text);
-              paramFromServiceMsg.put("bgColor", paramToServiceMsg.bgColor);
-              paramFromServiceMsg.put("ts", l1);
-              if (paramToServiceMsg.getSize() > 0) {}
-              for (paramToServiceMsg = ((PersonalityLabelPhoto)paramToServiceMsg.personalityLabelPhotos.get(0)).get128SizeUrl() + Constants.d;; paramToServiceMsg = "")
-              {
-                paramFromServiceMsg.put("cover", paramToServiceMsg);
-                if (QLog.isColorLevel()) {
-                  QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews insert gray msg");
-                }
-                a(paramFromServiceMsg.toString(), paramObject, l1);
-                return;
-                paramToServiceMsg = null;
-                break;
-              }
-              if (!QLog.isColorLevel()) {}
-            }
-            catch (JSONException paramToServiceMsg) {}
+          paramToServiceMsg.lastPLNewsTimestamp = l1;
+          paramToServiceMsg.latestPLUpdateTimestamp = l1;
+          localFriendsManager.a(paramToServiceMsg);
+          if (((cmd0x91d.RspBody)localObject).msg_update_info.has()) {
+            paramToServiceMsg = (cmd0x91d.LabelUpdateInfo)((cmd0x91d.RspBody)localObject).msg_update_info.get();
+          } else {
+            paramToServiceMsg = null;
           }
+          if ((paramToServiceMsg != null) && (paramToServiceMsg.msg_label_info.has()))
+          {
+            paramFromServiceMsg = paramToServiceMsg.msg_label_info;
+            if (paramToServiceMsg.uint32_upload_photos.has()) {
+              paramToServiceMsg.uint32_upload_photos.get();
+            }
+            paramToServiceMsg = PersonalityLabelInfo.convertFromPb(paramFromServiceMsg);
+            paramFromServiceMsg = new JSONObject();
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramFromServiceMsg.put("text", paramToServiceMsg.text);
+        paramFromServiceMsg.put("bgColor", paramToServiceMsg.bgColor);
+        paramFromServiceMsg.put("ts", l1);
+        if (paramToServiceMsg.getSize() <= 0) {
+          break label626;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(((PersonalityLabelPhoto)paramToServiceMsg.personalityLabelPhotos.get(0)).get128SizeUrl());
+        ((StringBuilder)localObject).append(Constants.d);
+        paramToServiceMsg = ((StringBuilder)localObject).toString();
+        paramFromServiceMsg.put("cover", paramToServiceMsg);
+        if (QLog.isColorLevel()) {
+          QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews insert gray msg");
+        }
+        a(paramFromServiceMsg.toString(), paramObject, l1);
+        return;
+      }
+      catch (JSONException paramToServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
           QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews", paramToServiceMsg);
-          return;
-        } while (!QLog.isColorLevel());
+        }
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
         QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews update, no data");
         return;
-        if (i != 1206) {
-          break;
+        long l2 = l1;
+        if (l3 >= l1) {
+          l2 = l3;
         }
-        paramToServiceMsg.lastPLNewsTimestamp = l1;
-        paramToServiceMsg.latestPLUpdateTimestamp = l1;
+        paramToServiceMsg.latestPLUpdateTimestamp = l2;
         localFriendsManager.a(paramToServiceMsg);
-      } while (!QLog.isColorLevel());
-      QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews 1206 " + l1);
+        if (QLog.isColorLevel()) {
+          QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews no update");
+        }
+        return;
+        if (i == 1206)
+        {
+          paramToServiceMsg.lastPLNewsTimestamp = l1;
+          paramToServiceMsg.latestPLUpdateTimestamp = l1;
+          localFriendsManager.a(paramToServiceMsg);
+          if (QLog.isColorLevel())
+          {
+            paramToServiceMsg = new StringBuilder();
+            paramToServiceMsg.append("handleGetPersonalityLabelNews 1206 ");
+            paramToServiceMsg.append(l1);
+            QLog.i("PersonalityLabelHandler", 2, paramToServiceMsg.toString());
+          }
+        }
+        else
+        {
+          localFriendsManager.a(paramToServiceMsg);
+          if (QLog.isColorLevel()) {
+            QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews failed");
+          }
+        }
+      }
       return;
-      localFriendsManager.a(paramToServiceMsg);
-    } while (!QLog.isColorLevel());
-    label196:
-    QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews failed");
-    label261:
-    label267:
-    label270:
-    return;
+      label626:
+      paramToServiceMsg = "";
+    }
   }
   
   public void b(String paramString, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelHandler", 2, "deletePhoto, uin = " + paramString + ", labelId = " + paramLong1 + ", photoId = " + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deletePhoto, uin = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", labelId = ");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(", photoId = ");
+      localStringBuilder.append(paramLong2);
+      QLog.i("PersonalityLabelHandler", 2, localStringBuilder.toString());
     }
     long l1 = 0L;
     try
@@ -435,17 +482,12 @@ public class PersonalityLabelHandler
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        Object localObject;
-        ArrayList localArrayList;
-        localNumberFormatException.printStackTrace();
-      }
+      localNumberFormatException.printStackTrace();
     }
-    localObject = new oidb_0x90c.ReqBody();
+    Object localObject = new oidb_0x90c.ReqBody();
     ((oidb_0x90c.ReqBody)localObject).uint64_to.set(l1);
     ((oidb_0x90c.ReqBody)localObject).uint64_labelid.set(paramLong1);
-    localArrayList = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     localArrayList.add(Long.valueOf(paramLong2));
     ((oidb_0x90c.ReqBody)localObject).rpt_photoids.set(localArrayList);
     localObject = makeOIDBPkg("OidbSvc.0x90c", 2316, 0, ((oidb_0x90c.ReqBody)localObject).toByteArray());
@@ -470,46 +512,46 @@ public class PersonalityLabelHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return PersonalityLabelObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ("OidbSvc.0x8f0".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    do
+    if ("OidbSvc.0x8f0".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
     {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
-      if ("OidbSvc.0x91d".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
-      {
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("OidbSvc.0x909".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
-      {
-        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("OidbSvc.0x90c".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
-      {
-        e(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("OidbSvc.0x8f3".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
-      {
-        a();
-        return;
-      }
-    } while (!"OidbSvc.0x8f1".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()));
-    c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    if ("OidbSvc.0x91d".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
+    {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0x909".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
+    {
+      d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0x90c".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
+    {
+      e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0x8f3".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
+    {
+      a();
+      return;
+    }
+    if ("OidbSvc.0x8f1".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler
  * JD-Core Version:    0.7.0.1
  */

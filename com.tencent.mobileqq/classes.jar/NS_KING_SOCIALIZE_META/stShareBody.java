@@ -29,20 +29,23 @@ public final class stShareBody
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 0);
+    String str = this.title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 1);
+    str = this.desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.image_url != null) {
-      paramJceOutputStream.write(this.image_url, 2);
+    str = this.image_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stShareBody
  * JD-Core Version:    0.7.0.1
  */

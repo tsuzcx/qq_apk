@@ -9,9 +9,14 @@ class GMEAVEngineWalper$5
 {
   GMEAVEngineWalper$5(GMEAVEngineWalper paramGMEAVEngineWalper) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  protected void onComplete(boolean paramBoolean, int paramInt)
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StartOpenMic.OnComplete. bOpen = ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", result = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("AVEngineWalper", 1, localStringBuilder.toString());
     if (this.a.a != null) {
       this.a.a.a(paramBoolean, paramInt);
     }
@@ -19,7 +24,7 @@ class GMEAVEngineWalper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.gmersdk_warper.GMEAVEngineWalper.5
  * JD-Core Version:    0.7.0.1
  */

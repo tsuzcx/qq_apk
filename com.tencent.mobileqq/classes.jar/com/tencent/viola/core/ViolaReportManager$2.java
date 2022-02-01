@@ -17,17 +17,31 @@ class ViolaReportManager$2
   public void onHttpFinish(HttpResponse paramHttpResponse)
   {
     int i = Integer.parseInt(paramHttpResponse.statusCode);
-    ViolaLogUtils.d("ViolaReportManager", "postDataToBeacon finish,resCode=" + i + ",eventName=" + this.val$eventName + ",data=" + this.val$hashMap.toString() + ",size=" + this.val$hashMap.size());
+    paramHttpResponse = new StringBuilder();
+    paramHttpResponse.append("postDataToBeacon finish,resCode=");
+    paramHttpResponse.append(i);
+    paramHttpResponse.append(",eventName=");
+    paramHttpResponse.append(this.val$eventName);
+    paramHttpResponse.append(",data=");
+    paramHttpResponse.append(this.val$hashMap.toString());
+    paramHttpResponse.append(",size=");
+    paramHttpResponse.append(this.val$hashMap.size());
+    ViolaLogUtils.d("ViolaReportManager", paramHttpResponse.toString());
   }
   
   public void onHttpStart()
   {
-    ViolaLogUtils.d("ViolaReportManager", "postDataToBeacon start,eventName=" + this.val$eventName + ",data=" + this.val$hashMap.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("postDataToBeacon start,eventName=");
+    localStringBuilder.append(this.val$eventName);
+    localStringBuilder.append(",data=");
+    localStringBuilder.append(this.val$hashMap.toString());
+    ViolaLogUtils.d("ViolaReportManager", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaReportManager.2
  * JD-Core Version:    0.7.0.1
  */

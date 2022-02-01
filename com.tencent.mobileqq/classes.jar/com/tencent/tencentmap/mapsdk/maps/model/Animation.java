@@ -12,8 +12,9 @@ public abstract class Animation
   public void setAnimationListener(AnimationListener paramAnimationListener)
   {
     this.mAnimationListener = new Animation.a(paramAnimationListener);
-    if (this.glAnimation != null) {
-      this.glAnimation.setAnimationListener(this.mAnimationListener);
+    paramAnimationListener = this.glAnimation;
+    if (paramAnimationListener != null) {
+      paramAnimationListener.setAnimationListener(this.mAnimationListener);
     }
   }
   
@@ -23,7 +24,7 @@ public abstract class Animation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.Animation
  * JD-Core Version:    0.7.0.1
  */

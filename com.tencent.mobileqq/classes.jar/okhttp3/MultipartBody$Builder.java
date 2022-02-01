@@ -39,11 +39,12 @@ public final class MultipartBody$Builder
   
   public Builder addPart(MultipartBody.Part paramPart)
   {
-    if (paramPart == null) {
-      throw new NullPointerException("part == null");
+    if (paramPart != null)
+    {
+      this.parts.add(paramPart);
+      return this;
     }
-    this.parts.add(paramPart);
-    return this;
+    throw new NullPointerException("part == null");
   }
   
   public Builder addPart(RequestBody paramRequestBody)
@@ -53,27 +54,32 @@ public final class MultipartBody$Builder
   
   public MultipartBody build()
   {
-    if (this.parts.isEmpty()) {
-      throw new IllegalStateException("Multipart body must have at least one part.");
+    if (!this.parts.isEmpty()) {
+      return new MultipartBody(this.boundary, this.type, this.parts);
     }
-    return new MultipartBody(this.boundary, this.type, this.parts);
+    throw new IllegalStateException("Multipart body must have at least one part.");
   }
   
   public Builder setType(MediaType paramMediaType)
   {
-    if (paramMediaType == null) {
-      throw new NullPointerException("type == null");
+    if (paramMediaType != null)
+    {
+      if (paramMediaType.type().equals("multipart"))
+      {
+        this.type = paramMediaType;
+        return this;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("multipart != ");
+      localStringBuilder.append(paramMediaType);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    if (!paramMediaType.type().equals("multipart")) {
-      throw new IllegalArgumentException("multipart != " + paramMediaType);
-    }
-    this.type = paramMediaType;
-    return this;
+    throw new NullPointerException("type == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.MultipartBody.Builder
  * JD-Core Version:    0.7.0.1
  */

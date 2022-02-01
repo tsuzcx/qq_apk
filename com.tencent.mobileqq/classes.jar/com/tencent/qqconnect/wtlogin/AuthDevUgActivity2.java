@@ -9,13 +9,13 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class AuthDevUgActivity2
   extends AuthDevUgActivity
 {
-  public void afterOpenBrowser()
+  protected void afterOpenBrowser()
   {
     QLog.d("Q.devlock.AuthDevUgActivity2", 1, "opensdk afterOpenBrowser do finish");
     finish();
   }
   
-  public void beforeOpenBrowser()
+  protected void beforeOpenBrowser()
   {
     QLog.d("Q.devlock.AuthDevUgActivity2", 1, "opensdk beforeOpenBrowser do nothing");
   }
@@ -38,7 +38,7 @@ public class AuthDevUgActivity2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.AuthDevUgActivity2
  * JD-Core Version:    0.7.0.1
  */

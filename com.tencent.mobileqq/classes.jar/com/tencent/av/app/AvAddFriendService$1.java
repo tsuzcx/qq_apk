@@ -8,16 +8,23 @@ class AvAddFriendService$1
 {
   AvAddFriendService$1(AvAddFriendService paramAvAddFriendService) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(AvAddFriendService.a, 2, "好友onUpdateCustomHead success = " + paramBoolean + ", uin = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      String str = AvAddFriendService.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("好友onUpdateCustomHead success = ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", uin = ");
+      localStringBuilder.append(paramString);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.AvAddFriendService.1
  * JD-Core Version:    0.7.0.1
  */

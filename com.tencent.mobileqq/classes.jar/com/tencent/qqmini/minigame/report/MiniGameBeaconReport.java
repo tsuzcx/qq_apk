@@ -30,34 +30,33 @@ public final class MiniGameBeaconReport
   private final String getTaskName(List<TaskExecutionStatics> paramList)
   {
     paramList = CollectionsKt.joinToString$default((Iterable)paramList, (CharSequence)"_", null, null, 0, null, (Function1)MiniGameBeaconReport.getTaskName.name.1.INSTANCE, 30, null);
-    if (Intrinsics.areEqual(paramList, "root")) {
+    if (Intrinsics.areEqual(paramList, "root"))
+    {
       paramList = "total";
     }
-    int i;
-    int j;
-    for (;;)
+    else
     {
-      localObject = paramList;
-      if (paramList.length() <= 59) {
-        break label127;
-      }
-      i = paramList.length();
-      j = paramList.length();
-      if (paramList != null) {
-        break;
-      }
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
-      i = "root_".length();
       if (paramList == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+        break label110;
       }
-      paramList = paramList.substring(i);
+      paramList = paramList.substring(5);
       Intrinsics.checkExpressionValueIsNotNull(paramList, "(this as java.lang.String).substring(startIndex)");
     }
-    Object localObject = paramList.substring(i - 59, j);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    label127:
-    return localObject;
+    if (paramList.length() > 59)
+    {
+      int i = paramList.length();
+      int j = paramList.length();
+      if (paramList != null)
+      {
+        paramList = paramList.substring(i - 59, j);
+        Intrinsics.checkExpressionValueIsNotNull(paramList, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        return paramList;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    }
+    return paramList;
+    label110:
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @JvmStatic
@@ -94,7 +93,7 @@ public final class MiniGameBeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.report.MiniGameBeaconReport
  * JD-Core Version:    0.7.0.1
  */

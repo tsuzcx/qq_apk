@@ -17,19 +17,24 @@ class NewReportPlugin$2$1
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
         this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
-      QQToast.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, HardCodeUtil.a(2131707544), 0).a();
+      QQToast.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2, HardCodeUtil.a(2131707569), 0).a();
       return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NewReportPlugin", 2, "handleGetTinyId, exp=" + localException.toString());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleGetTinyId, exp=");
+        localStringBuilder.append(localException.toString());
+        QLog.e("NewReportPlugin", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

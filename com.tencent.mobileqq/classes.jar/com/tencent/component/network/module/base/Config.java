@@ -24,44 +24,49 @@ public class Config
   public static final long SECONDARY_KEY_HTTPS_DIS_VALID_TIME_DEFAULT = 86400L;
   public static final String SECONDARY_KEY_HTTPS_FAILCOUNT = "disable_https_failcount";
   public static final long SECONDARY_KEY_HTTPS_FAILCOUNT_DEFAULT = 6L;
-  private static IDownloadConfig sRealConfig = null;
+  private static IDownloadConfig sRealConfig;
   
   public static boolean canRetCodeRetry(int paramInt)
   {
-    if (sRealConfig != null) {
-      return sRealConfig.canRetCodeRetry(paramInt);
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.canRetCodeRetry(paramInt);
     }
     return false;
   }
   
   public static boolean enableDns114()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.enableDns114();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.enableDns114();
     }
     return true;
   }
   
   public static long getConfig(String paramString1, String paramString2, long paramLong)
   {
+    IDownloadConfig localIDownloadConfig = sRealConfig;
     long l = paramLong;
-    if (sRealConfig != null) {
-      l = sRealConfig.getConfig(paramString1, paramString2, paramLong);
+    if (localIDownloadConfig != null) {
+      l = localIDownloadConfig.getConfig(paramString1, paramString2, paramLong);
     }
     return l;
   }
   
   public static long getCurrentUin()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getCurrentUin();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.getCurrentUin();
     }
     return 0L;
   }
   
   public static long getDefaultHttp2LiveTime()
   {
-    if ((sRealConfig != null) && (sRealConfig.getDefaultHttp2LiveTime() > 0L)) {
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if ((localIDownloadConfig != null) && (localIDownloadConfig.getDefaultHttp2LiveTime() > 0L)) {
       return sRealConfig.getDefaultHttp2LiveTime();
     }
     return 120L;
@@ -69,7 +74,8 @@ public class Config
   
   public static int getDefaultHttp2ThreadPoolSize()
   {
-    if ((sRealConfig != null) && (sRealConfig.getDefaultHttp2ThreadPoolSize() > 0)) {
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if ((localIDownloadConfig != null) && (localIDownloadConfig.getDefaultHttp2ThreadPoolSize() > 0)) {
       return sRealConfig.getDefaultHttp2ThreadPoolSize();
     }
     return 2;
@@ -77,7 +83,8 @@ public class Config
   
   public static long getDefaultHttpLiveTime()
   {
-    if ((sRealConfig != null) && (sRealConfig.getDefaultHttpLiveTime() > 0L)) {
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if ((localIDownloadConfig != null) && (localIDownloadConfig.getDefaultHttpLiveTime() > 0L)) {
       return sRealConfig.getDefaultHttpLiveTime();
     }
     return 120L;
@@ -85,7 +92,8 @@ public class Config
   
   public static int getDefaultThreadPoolSize()
   {
-    if ((sRealConfig != null) && (sRealConfig.getDefaultThreadPoolSize() > 0)) {
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if ((localIDownloadConfig != null) && (localIDownloadConfig.getDefaultThreadPoolSize() > 0)) {
       return sRealConfig.getDefaultThreadPoolSize();
     }
     return 2;
@@ -93,110 +101,124 @@ public class Config
   
   public static int getNetworkStackType()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getNetworkStackType();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.getNetworkStackType();
     }
     return 0;
   }
   
   public static int getOperator()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getOperator();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.getOperator();
     }
     return 0;
   }
   
   public static String getQUA()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getQUA();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.getQUA();
     }
     return "";
   }
   
   public static String getRefer()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getRefer();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.getRefer();
     }
     return "tencent";
   }
   
   public static int getReportPercent()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getReportPercent();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.getReportPercent();
     }
     return 5;
   }
   
   public static String getTerminal()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getTerminal();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.getTerminal();
     }
     return "android";
   }
   
   public static String getUserAgent()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getUserAgent();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.getUserAgent();
     }
     return "android-tencent";
   }
   
   public static String getVersion()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getVersion();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.getVersion();
     }
     return "1.0";
   }
   
   public static boolean isFromQzoneAlbum(String paramString)
   {
-    if (sRealConfig != null) {
-      return sRealConfig.isFromQzoneAlbum(paramString);
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.isFromQzoneAlbum(paramString);
     }
     return false;
   }
   
   public static int photoDownloadKeepAliveConfig()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.photoDownloadKeepAliveConfig();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.photoDownloadKeepAliveConfig();
     }
     return -1;
   }
   
   public static int photoDownloadKeepAliveProxyConfig()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.photoDownloadKeepAliveProxyConfig();
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.photoDownloadKeepAliveProxyConfig();
     }
     return -1;
   }
   
   public static void reportToBeacon(String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap, long paramLong)
   {
-    if (sRealConfig != null) {
-      sRealConfig.reportToBeacon(paramString, paramBoolean, paramHashMap, paramLong);
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      localIDownloadConfig.reportToBeacon(paramString, paramBoolean, paramHashMap, paramLong);
     }
   }
   
   public static void reportToLp(int paramInt1, boolean paramBoolean, String paramString1, int paramInt2, String paramString2)
   {
-    if (sRealConfig != null) {
-      sRealConfig.reportToLp(paramInt1, paramBoolean, paramString1, paramInt2, paramString2);
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      localIDownloadConfig.reportToLp(paramInt1, paramBoolean, paramString1, paramInt2, paramString2);
     }
   }
   
   public static void reportToMta(String paramString, Properties paramProperties)
   {
-    if (sRealConfig != null) {
-      sRealConfig.reportToMta(paramString, paramProperties);
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      localIDownloadConfig.reportToMta(paramString, paramProperties);
     }
   }
   
@@ -207,15 +229,16 @@ public class Config
   
   public static boolean shouldUseHttp2(String paramString)
   {
-    if (sRealConfig != null) {
-      return sRealConfig.shouldUseHttp2(paramString);
+    IDownloadConfig localIDownloadConfig = sRealConfig;
+    if (localIDownloadConfig != null) {
+      return localIDownloadConfig.shouldUseHttp2(paramString);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.base.Config
  * JD-Core Version:    0.7.0.1
  */

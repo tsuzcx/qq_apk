@@ -19,12 +19,18 @@ class QuickLoginAuthorityActivity$2
   public void onException(String paramString, int paramInt)
   {
     super.onException(paramString, paramInt);
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnException() e:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mGetAppIdWTLoginObserver.OnException() e:");
+    localStringBuilder.append(paramString);
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, localStringBuilder.toString());
   }
   
   public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): ret=" + paramInt);
+    paramString = new StringBuilder();
+    paramString.append("mGetAppIdWTLoginObserver.OnVerifyCode(): ret=");
+    paramString.append(paramInt);
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, paramString.toString());
     if (paramInt == 0)
     {
       if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
@@ -42,7 +48,10 @@ class QuickLoginAuthorityActivity$2
             paramArrayOfByte1 = new byte[j];
             System.arraycopy(paramString, 4, paramArrayOfByte1, 0, j);
             paramString = new String(paramArrayOfByte1);
-            QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid sucess Json:" + paramString);
+            paramArrayOfByte1 = new StringBuilder();
+            paramArrayOfByte1.append("mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid sucess Json:");
+            paramArrayOfByte1.append(paramString);
+            QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, paramArrayOfByte1.toString());
             paramString = new JSONObject(paramString);
             paramLong = paramString.optLong("open_appid");
             paramString = paramString.optString("comefrom");
@@ -58,10 +67,7 @@ class QuickLoginAuthorityActivity$2
         }
         catch (Throwable paramString)
         {
-          for (;;)
-          {
-            QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): Exeption:", paramString);
-          }
+          QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): Exeption:", paramString);
         }
         paramInt += 1;
         continue;
@@ -72,7 +78,7 @@ class QuickLoginAuthorityActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.QuickLoginAuthorityActivity.2
  * JD-Core Version:    0.7.0.1
  */

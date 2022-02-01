@@ -11,108 +11,141 @@ class PolystarShapeParser
 {
   static PolystarShape parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableFloatValue localAnimatableFloatValue2 = null;
-    boolean bool = false;
-    AnimatableFloatValue localAnimatableFloatValue4 = null;
-    AnimatableFloatValue localAnimatableFloatValue1 = null;
-    AnimatableFloatValue localAnimatableFloatValue3 = null;
-    AnimatableFloatValue localAnimatableFloatValue5 = null;
-    AnimatableValue localAnimatableValue = null;
-    AnimatableFloatValue localAnimatableFloatValue6 = null;
-    PolystarShape.Type localType = null;
     String str1 = null;
-    label29:
+    Object localObject1 = str1;
+    Object localObject2 = localObject1;
+    Object localObject3 = localObject2;
+    Object localObject4 = localObject3;
+    Object localObject5 = localObject4;
+    Object localObject6 = localObject5;
+    Object localObject7 = localObject6;
+    Object localObject8 = localObject7;
+    boolean bool = false;
     while (paramJsonReader.hasNext())
     {
       String str2 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str2.hashCode())
+      int i = str2.hashCode();
+      if (i != 112)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (i != 114)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label29;
-          if (str2.equals("nm"))
+          if (i != 3324)
           {
-            i = 0;
-            continue;
-            if (str2.equals("sy"))
+            if (i != 3519)
             {
-              i = 1;
-              continue;
-              if (str2.equals("pt"))
+              if (i != 3588)
               {
-                i = 2;
-                continue;
-                if (str2.equals("p"))
+                if (i != 3686)
                 {
-                  i = 3;
-                  continue;
-                  if (str2.equals("r"))
+                  if (i != 3369)
                   {
-                    i = 4;
-                    continue;
-                    if (str2.equals("or"))
+                    if (i != 3370)
                     {
-                      i = 5;
-                      continue;
-                      if (str2.equals("os"))
+                      if (i != 3555)
                       {
-                        i = 6;
-                        continue;
-                        if (str2.equals("ir"))
+                        if ((i == 3556) && (str2.equals("os")))
                         {
-                          i = 7;
-                          continue;
-                          if (str2.equals("is"))
-                          {
-                            i = 8;
-                            continue;
-                            if (str2.equals("hd")) {
-                              i = 9;
-                            }
-                          }
+                          i = 6;
+                          break label283;
                         }
                       }
+                      else if (str2.equals("or"))
+                      {
+                        i = 5;
+                        break label283;
+                      }
+                    }
+                    else if (str2.equals("is"))
+                    {
+                      i = 8;
+                      break label283;
                     }
                   }
+                  else if (str2.equals("ir"))
+                  {
+                    i = 7;
+                    break label283;
+                  }
+                }
+                else if (str2.equals("sy"))
+                {
+                  i = 1;
+                  break label283;
                 }
               }
+              else if (str2.equals("pt"))
+              {
+                i = 2;
+                break label283;
+              }
+            }
+            else if (str2.equals("nm"))
+            {
+              i = 0;
+              break label283;
             }
           }
-          break;
+          else if (str2.equals("hd"))
+          {
+            i = 9;
+            break label283;
+          }
+        }
+        else if (str2.equals("r"))
+        {
+          i = 4;
+          break label283;
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localType = PolystarShape.Type.forValue(paramJsonReader.nextInt());
-      continue;
-      localAnimatableFloatValue6 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableValue = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue5 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableFloatValue3 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableFloatValue4 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      bool = paramJsonReader.nextBoolean();
+      else if (str2.equals("p"))
+      {
+        i = 3;
+        break label283;
+      }
+      i = -1;
+      switch (i)
+      {
+      default: 
+        paramJsonReader.skipValue();
+        break;
+      case 9: 
+        bool = paramJsonReader.nextBoolean();
+        break;
+      case 8: 
+        localObject7 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+      case 7: 
+        localObject5 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+        break;
+      case 6: 
+        localObject8 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+      case 5: 
+        localObject6 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+        break;
+      case 4: 
+        localObject4 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+      case 3: 
+        localObject3 = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
+        break;
+      case 2: 
+        localObject2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+      case 1: 
+        localObject1 = PolystarShape.Type.forValue(paramJsonReader.nextInt());
+        break;
+      case 0: 
+        label283:
+        str1 = paramJsonReader.nextString();
+      }
     }
-    return new PolystarShape(str1, localType, localAnimatableFloatValue6, localAnimatableValue, localAnimatableFloatValue5, localAnimatableFloatValue4, localAnimatableFloatValue3, localAnimatableFloatValue2, localAnimatableFloatValue1, bool);
+    return new PolystarShape(str1, (PolystarShape.Type)localObject1, (AnimatableFloatValue)localObject2, (AnimatableValue)localObject3, (AnimatableFloatValue)localObject4, (AnimatableFloatValue)localObject5, (AnimatableFloatValue)localObject6, (AnimatableFloatValue)localObject7, (AnimatableFloatValue)localObject8, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.PolystarShapeParser
  * JD-Core Version:    0.7.0.1
  */

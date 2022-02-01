@@ -28,17 +28,21 @@ public class QFlutterEngineDownloader
       if (QLog.isColorLevel()) {
         QLog.i("QFlutter.QFlutterEngineDownloader", 2, "getFilesDir is null");
       }
-      localObject = "";
+      return "";
     }
-    String str;
-    do
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localObject);
+    localStringBuilder.append("/pddata/prd/");
+    localStringBuilder.append("qq.android.flutter.engine.v8.4.17_1");
+    localObject = localStringBuilder.toString();
+    if (QLog.isColorLevel())
     {
-      return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.flutter.engine.v8.4.17_1";
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("QFlutter.QFlutterEngineDownloader", 2, "getLibDir ,path = " + str);
-    return str;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getLibDir ,path = ");
+      localStringBuilder.append((String)localObject);
+      QLog.i("QFlutter.QFlutterEngineDownloader", 2, localStringBuilder.toString());
+    }
+    return localObject;
   }
   
   public int a()
@@ -76,8 +80,12 @@ public class QFlutterEngineDownloader
   {
     super.a(paramLong1, paramLong2);
     int i = (int)(100L * paramLong1 / paramLong2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterEngineDownloader", 2, "download progress: " + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download progress: ");
+      localStringBuilder.append(i);
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, localStringBuilder.toString());
     }
     QFlutterInstaller.a(0, paramLong1, paramLong2);
   }
@@ -95,19 +103,23 @@ public class QFlutterEngineDownloader
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterEngineDownloader", 2, "download success: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download success: ");
+      localStringBuilder.append(paramString);
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, localStringBuilder.toString());
     }
-    if (QFlutterInstaller.a(paramString, a())) {
+    if (QFlutterInstaller.a(paramString, a()))
+    {
       QFlutterInstaller.a(0, true);
     }
-    for (;;)
+    else
     {
-      super.a(paramString);
-      return;
       f();
       QFlutterInstaller.a(0, false);
     }
+    super.a(paramString);
   }
   
   public void a(boolean paramBoolean)
@@ -143,17 +155,22 @@ public class QFlutterEngineDownloader
   public void b(XmlData paramXmlData)
   {
     super.b(paramXmlData);
-    if (paramXmlData != null) {}
-    for (long l = paramXmlData.totalSize;; l = 0L)
+    long l;
+    if (paramXmlData != null) {
+      l = paramXmlData.totalSize;
+    } else {
+      l = 0L;
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.QFlutterEngineDownloader", 2, "download begin, totalLen: " + l);
-      }
-      return;
+      paramXmlData = new StringBuilder();
+      paramXmlData.append("download begin, totalLen: ");
+      paramXmlData.append(l);
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, paramXmlData.toString());
     }
   }
   
-  public boolean b()
+  public boolean c()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QFlutter.QFlutterEngineDownloader", 2, String.format("isNetValid2Download mHadRequestedByUser: %s", new Object[] { Boolean.valueOf(this.d) }));
@@ -161,7 +178,7 @@ public class QFlutterEngineDownloader
     if (this.d) {
       return true;
     }
-    return super.b();
+    return super.c();
   }
   
   public boolean e()
@@ -185,7 +202,7 @@ public class QFlutterEngineDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.download.QFlutterEngineDownloader
  * JD-Core Version:    0.7.0.1
  */

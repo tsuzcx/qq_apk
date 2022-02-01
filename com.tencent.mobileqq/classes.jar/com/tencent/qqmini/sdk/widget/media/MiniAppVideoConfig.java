@@ -62,32 +62,27 @@ public class MiniAppVideoConfig
     if (paramJSONArray == null) {
       return this.barrages;
     }
-    if (this.barrages == null) {
+    List localList = this.barrages;
+    if (localList == null) {
       this.barrages = new LinkedList();
+    } else {
+      localList.clear();
     }
-    for (;;)
+    int j = paramJSONArray.length();
+    if (j > 0)
     {
-      int j = paramJSONArray.length();
-      if (j > 0)
+      int i = 0;
+      while (i < j)
       {
-        int i = 0;
-        label38:
-        if (i < j) {
-          try
-          {
-            this.barrages.add(Barrage.parseJson(paramJSONArray.getJSONObject(i)));
-            i += 1;
-            break label38;
-            this.barrages.clear();
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
+        try
+        {
+          this.barrages.add(Barrage.parseJson(paramJSONArray.getJSONObject(i)));
         }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+        i += 1;
       }
     }
     return this.barrages;
@@ -136,21 +131,18 @@ public class MiniAppVideoConfig
         this.videoY = localJSONObject.optInt("top", this.videoY);
         this.videoWidth = localJSONObject.optInt("width", this.videoWidth);
         this.videoHeight = localJSONObject.optInt("height", this.videoHeight);
+        return;
       }
+      this.videoX = paramJSONObject.optInt("x", this.videoX);
+      this.videoY = paramJSONObject.optInt("y", this.videoY);
+      this.videoWidth = paramJSONObject.optInt("width", this.videoWidth);
+      this.videoHeight = paramJSONObject.optInt("height", this.videoHeight);
     }
-    else
-    {
-      return;
-    }
-    this.videoX = paramJSONObject.optInt("x", this.videoX);
-    this.videoY = paramJSONObject.optInt("y", this.videoY);
-    this.videoWidth = paramJSONObject.optInt("width", this.videoWidth);
-    this.videoHeight = paramJSONObject.optInt("height", this.videoHeight);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.MiniAppVideoConfig
  * JD-Core Version:    0.7.0.1
  */

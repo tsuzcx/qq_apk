@@ -20,7 +20,7 @@ public class MiniGameLameMp3EncodeThread
   public static final String AUDIO_SOURCE_MIC = "mic";
   public static final String AUDIO_SOURCE_VOICE_COMMUNICATION = "voice_communication";
   public static final String AUDIO_SOURCE_VOICE_RECOGNITION = "voice_recognition";
-  public static final String TAG = MiniGameLameMp3EncodeThread.class.getSimpleName();
+  public static final String TAG = "MiniGameLameMp3EncodeThread";
   private boolean isPause = false;
   private boolean isRecording = false;
   private String mAudioFileFormat = "mp3";
@@ -59,86 +59,82 @@ public class MiniGameLameMp3EncodeThread
   
   private void sendAfterRecording(byte[] paramArrayOfByte, int paramInt)
   {
-    byte[] arrayOfByte;
-    if (this.mCallbackFrameSize > 0)
+    int i = this.mCallbackFrameSize;
+    if (i > 0)
     {
-      if (paramInt <= this.mCallbackFrameSize) {
-        break label82;
+      if (paramInt > i)
+      {
+        arrayOfByte = new byte[i];
+        System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, i);
+        this.recorderHandler.sendFrameRecordMessage(arrayOfByte, false);
+        i = this.mCallbackFrameSize + 0;
       }
-      arrayOfByte = new byte[this.mCallbackFrameSize];
-      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, this.mCallbackFrameSize);
-      this.recorderHandler.sendFrameRecordMessage(arrayOfByte, false);
-    }
-    label82:
-    for (int i = this.mCallbackFrameSize + 0;; i = 0)
-    {
-      arrayOfByte = new byte[this.mCallbackFrameSize];
+      else
+      {
+        i = 0;
+      }
+      byte[] arrayOfByte = new byte[this.mCallbackFrameSize];
       System.arraycopy(paramArrayOfByte, i, arrayOfByte, 0, paramInt - i);
       this.recorderHandler.sendFrameRecordMessage(arrayOfByte, true);
-      return;
     }
   }
   
   private int sendWhenRecording(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2)
   {
-    int k;
-    if (this.mCallbackFrameSize > 0)
+    int i = this.mCallbackFrameSize;
+    if (i > 0)
     {
-      k = paramInt2 + paramInt1;
-      if (k >= this.mCallbackFrameSize * 2) {
-        break label265;
-      }
-      System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, paramInt2, paramInt1);
-      return paramInt2 + paramInt1;
-    }
-    for (;;)
-    {
-      byte[] arrayOfByte;
-      if (k >= this.mCallbackFrameSize * 2)
+      int k = paramInt2 + paramInt1;
+      if (k < i * 2)
       {
-        arrayOfByte = new byte[this.mCallbackFrameSize];
-        int m = paramInt2 - j;
-        if (m >= this.mCallbackFrameSize)
+        System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, paramInt2, paramInt1);
+        return k;
+      }
+      i = 0;
+      int j = 0;
+      byte[] arrayOfByte;
+      for (;;)
+      {
+        int m = this.mCallbackFrameSize;
+        if (k < m * 2) {
+          break;
+        }
+        arrayOfByte = new byte[m];
+        int n = paramInt2 - i;
+        if (n >= m)
         {
-          System.arraycopy(paramArrayOfByte2, j, arrayOfByte, 0, this.mCallbackFrameSize);
+          System.arraycopy(paramArrayOfByte2, i, arrayOfByte, 0, m);
+          i += this.mCallbackFrameSize;
+        }
+        else if (n > 0)
+        {
+          System.arraycopy(paramArrayOfByte2, i, arrayOfByte, 0, n);
+          System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, n, this.mCallbackFrameSize - n);
+          j += this.mCallbackFrameSize - n;
+          i = paramInt2;
+        }
+        else
+        {
+          System.arraycopy(paramArrayOfByte1, j, arrayOfByte, 0, m);
           j += this.mCallbackFrameSize;
         }
-        for (;;)
-        {
-          k -= this.mCallbackFrameSize;
-          this.recorderHandler.sendFrameRecordMessage(arrayOfByte, false);
-          break;
-          if (m > 0)
-          {
-            System.arraycopy(paramArrayOfByte2, j, arrayOfByte, 0, m);
-            System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, m, this.mCallbackFrameSize - m);
-            i += this.mCallbackFrameSize - m;
-            j = paramInt2;
-          }
-          else
-          {
-            System.arraycopy(paramArrayOfByte1, i, arrayOfByte, 0, this.mCallbackFrameSize);
-            i += this.mCallbackFrameSize;
-          }
-        }
+        k -= this.mCallbackFrameSize;
+        this.recorderHandler.sendFrameRecordMessage(arrayOfByte, false);
       }
-      paramInt2 -= j;
-      paramInt1 -= i;
+      paramInt2 -= i;
+      paramInt1 -= j;
       if (paramInt2 > 0)
       {
         arrayOfByte = new byte[paramInt2];
-        System.arraycopy(paramArrayOfByte2, j, arrayOfByte, 0, paramInt2);
+        System.arraycopy(paramArrayOfByte2, i, arrayOfByte, 0, paramInt2);
         System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, 0, paramInt2);
-        System.arraycopy(paramArrayOfByte1, i, paramArrayOfByte2, paramInt2, paramInt1);
+        System.arraycopy(paramArrayOfByte1, j, paramArrayOfByte2, paramInt2, paramInt1);
         return paramInt1 + paramInt2;
       }
-      System.arraycopy(paramArrayOfByte1, i, paramArrayOfByte2, 0, paramInt1);
+      System.arraycopy(paramArrayOfByte1, j, paramArrayOfByte2, 0, paramInt1);
       return paramInt1;
-      return 0;
-      label265:
-      int i = 0;
-      int j = 0;
     }
+    return 0;
   }
   
   private void setAudioSource(int paramInt)
@@ -149,34 +145,30 @@ public class MiniGameLameMp3EncodeThread
   public File createSDFile(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return null;
     }
-    File localFile;
-    do
+    paramString = new File(paramString);
+    if (!paramString.exists())
     {
-      return paramString;
-      localFile = new File(paramString);
-      paramString = localFile;
-    } while (localFile.exists());
-    if (localFile.isDirectory())
-    {
-      localFile.mkdirs();
-      return localFile;
+      if (paramString.isDirectory())
+      {
+        paramString.mkdirs();
+        return paramString;
+      }
+      paramString.createNewFile();
     }
-    localFile.createNewFile();
-    return localFile;
+    return paramString;
   }
   
   public void deleteTmpFile()
   {
-    if (TextUtils.isEmpty(this.mRecordFilePath)) {}
-    File localFile;
-    do
-    {
+    if (TextUtils.isEmpty(this.mRecordFilePath)) {
       return;
-      localFile = new File(this.mRecordFilePath);
-    } while (!localFile.exists());
-    localFile.delete();
+    }
+    File localFile = new File(this.mRecordFilePath);
+    if (localFile.exists()) {
+      localFile.delete();
+    }
   }
   
   public int getAudioSource()
@@ -238,7 +230,9 @@ public class MiniGameLameMp3EncodeThread
   public boolean recording(FileOutputStream paramFileOutputStream, int paramInt)
   {
     short[] arrayOfShort = new short[this.mSampleRate * 2 * this.mBufferTime];
-    byte[] arrayOfByte1 = new byte[(int)(7200.0D + arrayOfShort.length * 1.25D)];
+    double d = arrayOfShort.length;
+    Double.isNaN(d);
+    byte[] arrayOfByte1 = new byte[(int)(d * 1.25D + 7200.0D)];
     byte[] arrayOfByte2 = new byte[this.mCallbackFrameSize * 3];
     try
     {
@@ -288,16 +282,16 @@ public class MiniGameLameMp3EncodeThread
       this.isPause = false;
       return true;
     }
-    catch (IOException paramFileOutputStream)
-    {
-      QMLog.e(TAG, "recording IOException", paramFileOutputStream);
-      this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_write_file_error));
-      return false;
-    }
     catch (IllegalStateException paramFileOutputStream)
     {
       QMLog.e(TAG, "recording IllegalStateException", paramFileOutputStream);
       this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_init_error));
+      return false;
+    }
+    catch (IOException paramFileOutputStream)
+    {
+      QMLog.e(TAG, "recording IOException", paramFileOutputStream);
+      this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_write_file_error));
     }
     return false;
   }
@@ -321,8 +315,8 @@ public class MiniGameLameMp3EncodeThread
       return;
     }
     Process.setThreadPriority(-19);
-    FileOutputStream localFileOutputStream = getFileOutputStream();
-    if (localFileOutputStream == null)
+    Object localObject = getFileOutputStream();
+    if (localObject == null)
     {
       QMLog.e(TAG, "startRecording FileOutputStream output is null");
       this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_file_output_stream_error));
@@ -338,12 +332,16 @@ public class MiniGameLameMp3EncodeThread
     try
     {
       MiniGameLameMp3Native.jniInit(this.mSampleRate, this.mInChannel, this.mSampleRate, this.mOutBitRate, 7);
-      boolean bool = recording(localFileOutputStream, i);
+      boolean bool = recording((FileOutputStream)localObject, i);
       MiniGameLameMp3Native.jniClose();
       if (bool) {
         this.recorderHandler.sendEmptyMessage(4);
       }
-      QMLog.d(TAG, "startRecording stop isSuccess: " + bool);
+      localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startRecording stop isSuccess: ");
+      localStringBuilder.append(bool);
+      QMLog.d((String)localObject, localStringBuilder.toString());
       return;
     }
     catch (Exception localException)
@@ -354,40 +352,37 @@ public class MiniGameLameMp3EncodeThread
   
   public void setAudioSource(String paramString)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     int j = 1;
     int i = j;
-    if (!TextUtils.isEmpty(paramString))
+    if (!bool)
     {
       paramString = paramString.toLowerCase();
-      if (!"auto".equals(paramString)) {
-        break label33;
+      if ("auto".equals(paramString))
+      {
+        i = 0;
       }
-      i = 0;
-    }
-    for (;;)
-    {
-      setAudioSource(i);
-      return;
-      label33:
-      i = j;
-      if (!"mic".equals(paramString)) {
-        if ("camcorder".equals(paramString))
-        {
-          i = 5;
-        }
-        else if ("voice_communication".equals(paramString))
-        {
-          i = 7;
-        }
-        else
-        {
-          i = j;
-          if ("voice_recognition".equals(paramString)) {
-            i = 6;
-          }
+      else if ("mic".equals(paramString))
+      {
+        i = j;
+      }
+      else if ("camcorder".equals(paramString))
+      {
+        i = 5;
+      }
+      else if ("voice_communication".equals(paramString))
+      {
+        i = 7;
+      }
+      else
+      {
+        i = j;
+        if ("voice_recognition".equals(paramString)) {
+          i = 6;
         }
       }
     }
+    setAudioSource(i);
   }
   
   public void setCallbackFrameSize(int paramInt)
@@ -432,7 +427,7 @@ public class MiniGameLameMp3EncodeThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.audiorecorder.MiniGameLameMp3EncodeThread
  * JD-Core Version:    0.7.0.1
  */

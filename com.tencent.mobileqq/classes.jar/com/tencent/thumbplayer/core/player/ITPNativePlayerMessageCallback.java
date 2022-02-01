@@ -52,6 +52,7 @@ public abstract interface ITPNativePlayerMessageCallback
   public static final int INFO_LONG2_VIDEO_DROP_FRAME_EVENT = 209;
   public static final int INFO_LONG2_VIDEO_RESOLUTION_CHANGE = 250;
   public static final int INFO_OBJECT_MEDIA_CODEC_INFO = 504;
+  public static final int INFO_OBJECT_MEDIA_DRM_INFO = 505;
   public static final int INFO_OBJECT_PRIVATE_HLS_TAG = 501;
   public static final int INFO_OBJECT_SUBTITLE_TEXT = 502;
   public static final int INFO_OBJECT_VIDEO_CROP = 500;
@@ -67,7 +68,7 @@ public abstract interface ITPNativePlayerMessageCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback
  * JD-Core Version:    0.7.0.1
  */

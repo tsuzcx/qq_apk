@@ -1,29 +1,31 @@
 package com.tencent.av.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 class MultiVideoCtrlLayerUIBase$7
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  MultiVideoCtrlLayerUIBase$7(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
+  MultiVideoCtrlLayerUIBase$7(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, Pair paramPair, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a != null) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d()))
+    if (this.this$0.a != null)
     {
-      MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.e();
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.i(this.jdField_a_of_type_Long, 16777215);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().as = true;
+      if (this.jdField_a_of_type_ComTencentUtilPair.second == null) {
+        return;
+      }
+      ArrayList localArrayList = this.this$0.a.a(((Integer)this.jdField_a_of_type_ComTencentUtilPair.first).intValue(), (ArrayList)this.jdField_a_of_type_ComTencentUtilPair.second);
+      ThreadManager.getUIHandler().post(new MultiVideoCtrlLayerUIBase.7.1(this, localArrayList));
     }
-    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.7
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import java.util.Map;
 public class HippyHttpRequest
 {
   public static final int DEFAULT_TIMEOUT_MS = 3000;
-  private static String USER_AGENT = null;
+  private static String USER_AGENT;
   private String mBody;
   private int mConnectTimeout = 3000;
   private Map<String, Object> mHeaderMap = new HashMap();
@@ -24,9 +24,10 @@ public class HippyHttpRequest
   public HippyHttpRequest()
   {
     initUserAgent();
-    if (USER_AGENT != null)
+    String str = USER_AGENT;
+    if (str != null)
     {
-      addHeader("User-Agent", USER_AGENT);
+      addHeader("User-Agent", str);
       return;
     }
     System.err.println("user_agent is null!");
@@ -34,54 +35,49 @@ public class HippyHttpRequest
   
   private void initUserAgent()
   {
-    Object localObject;
-    StringBuffer localStringBuffer;
     if (USER_AGENT == null)
     {
-      localObject = Locale.getDefault();
-      localStringBuffer = new StringBuffer();
+      Locale localLocale = Locale.getDefault();
+      StringBuffer localStringBuffer = new StringBuffer();
       String str = Build.VERSION.RELEASE;
       if (str.length() <= 0) {
-        break label168;
+        str = "1.0";
       }
       localStringBuffer.append(str);
       localStringBuffer.append("; ");
-      str = ((Locale)localObject).getLanguage();
-      if (str == null) {
-        break label178;
-      }
-      localStringBuffer.append(str.toLowerCase());
-      localObject = ((Locale)localObject).getCountry();
-      if (localObject != null)
+      str = localLocale.getLanguage();
+      if (str != null)
       {
+        localStringBuffer.append(str.toLowerCase());
+        str = localLocale.getCountry();
+        if (str == null) {
+          break label99;
+        }
         localStringBuffer.append("-");
-        localStringBuffer.append(((String)localObject).toLowerCase());
+        str = str.toLowerCase();
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        str = "en";
+      }
+      localStringBuffer.append(str);
+      label99:
       if ((Build.VERSION.SDK_INT > 3) && ("REL".equals(Build.VERSION.CODENAME)))
       {
-        localObject = Build.MODEL;
-        if (((String)localObject).length() > 0)
+        str = Build.MODEL;
+        if (str.length() > 0)
         {
           localStringBuffer.append("; ");
-          localStringBuffer.append((String)localObject);
+          localStringBuffer.append(str);
         }
       }
-      localObject = Build.ID;
-      if (((String)localObject).length() > 0)
+      str = Build.ID;
+      if (str.length() > 0)
       {
         localStringBuffer.append(" Build/");
-        localStringBuffer.append((String)localObject);
+        localStringBuffer.append(str);
       }
       USER_AGENT = String.format("Mozilla/5.0 (Linux; U; Android %s) AppleWebKit/533.1 (KHTML, like Gecko) Mobile Safari/533.1", new Object[] { localStringBuffer });
-      return;
-      label168:
-      localStringBuffer.append("1.0");
-      break;
-      label178:
-      localStringBuffer.append("en");
     }
   }
   
@@ -172,7 +168,7 @@ public class HippyHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.http.HippyHttpRequest
  * JD-Core Version:    0.7.0.1
  */

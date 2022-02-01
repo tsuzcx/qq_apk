@@ -11,7 +11,7 @@ public class CursorMessageRspMsg$Body
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.msg.CursorMessageRspMsg.Body
  * JD-Core Version:    0.7.0.1
  */

@@ -12,34 +12,43 @@ class VideoInviteActivity$MyBroadCastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onReceive action = " + str);
-    }
-    if ("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO".equals(str)) {
-      this.a.h();
-    }
-    do
+    String str1 = paramIntent.getAction();
+    if (QLog.isColorLevel())
     {
+      String str2 = this.a.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive action = ");
+      localStringBuilder.append(str1);
+      QLog.d(str2, 2, localStringBuilder.toString());
+    }
+    if ("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO".equals(str1))
+    {
+      this.a.h();
       return;
-      if ("tencent.video.q2v.sdk.onRequestVideo".equals(str))
-      {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "onReceive action = " + str);
-        this.a.e();
-        return;
-      }
-      if ("android.intent.action.USER_PRESENT".equals(str))
-      {
-        this.a.a("ACTION_USER_PRESENT");
-        return;
-      }
-    } while (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteUIBase == null);
-    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteUIBase.a(paramContext, str, paramIntent);
+    }
+    if ("tencent.video.q2v.sdk.onRequestVideo".equals(str1))
+    {
+      paramContext = this.a.jdField_a_of_type_JavaLangString;
+      paramIntent = new StringBuilder();
+      paramIntent.append("onReceive action = ");
+      paramIntent.append(str1);
+      QLog.d(paramContext, 1, paramIntent.toString());
+      this.a.e();
+      return;
+    }
+    if ("android.intent.action.USER_PRESENT".equals(str1))
+    {
+      this.a.a("ACTION_USER_PRESENT");
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteUIBase != null) {
+      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteUIBase.a(paramContext, str1, paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteActivity.MyBroadCastReceiver
  * JD-Core Version:    0.7.0.1
  */

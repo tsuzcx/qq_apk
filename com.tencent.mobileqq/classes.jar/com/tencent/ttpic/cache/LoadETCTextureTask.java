@@ -28,61 +28,96 @@ public class LoadETCTextureTask
   private void fillCache(int paramInt, String paramString)
   {
     int i = 0;
-    String str1;
     while (i < paramInt)
     {
-      str1 = this.id + "_" + String.format(new StringBuilder().append("%0").append(LoadETCItemManager.FORMAT_COUNT).append("d").toString(), new Object[] { Integer.valueOf(i) }) + paramString;
-      str1 = this.materialId + File.separator + str1;
-      if (!this.cache.containsKey(str1)) {
-        break label401;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.id);
+      ((StringBuilder)localObject1).append("_");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("%0");
+      ((StringBuilder)localObject2).append(LoadETCItemManager.FORMAT_COUNT);
+      ((StringBuilder)localObject2).append("d");
+      ((StringBuilder)localObject1).append(String.format(((StringBuilder)localObject2).toString(), new Object[] { Integer.valueOf(i) }));
+      ((StringBuilder)localObject1).append(paramString);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.materialId);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject2).toString();
+      if (!this.cache.containsKey(localObject1))
+      {
+        int j = i;
+        while ((!this.cache.containsKey(localObject1)) && (j > 0))
+        {
+          j -= 1;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(this.id);
+          ((StringBuilder)localObject1).append("_");
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("%0");
+          ((StringBuilder)localObject2).append(LoadETCItemManager.FORMAT_COUNT);
+          ((StringBuilder)localObject2).append("d");
+          ((StringBuilder)localObject1).append(String.format(((StringBuilder)localObject2).toString(), new Object[] { Integer.valueOf(j) }));
+          ((StringBuilder)localObject1).append(paramString);
+          localObject1 = ((StringBuilder)localObject1).toString();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.materialId);
+          ((StringBuilder)localObject2).append(File.separator);
+          ((StringBuilder)localObject2).append((String)localObject1);
+          localObject1 = ((StringBuilder)localObject2).toString();
+        }
+        if (this.cache.containsKey(localObject1))
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.id);
+          ((StringBuilder)localObject2).append("_");
+          Object localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("%0");
+          ((StringBuilder)localObject3).append(LoadETCItemManager.FORMAT_COUNT);
+          ((StringBuilder)localObject3).append("d");
+          ((StringBuilder)localObject2).append(String.format(((StringBuilder)localObject3).toString(), new Object[] { Integer.valueOf(i) }));
+          ((StringBuilder)localObject2).append(paramString);
+          localObject2 = ((StringBuilder)localObject2).toString();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(this.materialId);
+          ((StringBuilder)localObject3).append(File.separator);
+          ((StringBuilder)localObject3).append((String)localObject2);
+          localObject2 = ((StringBuilder)localObject3).toString();
+          localObject3 = this.cache;
+          ((Map)localObject3).put(localObject2, ((Map)localObject3).get(localObject1));
+        }
       }
       i += 1;
-    }
-    for (;;)
-    {
-      int j;
-      if ((!this.cache.containsKey(str1)) && (j > 0))
-      {
-        j -= 1;
-        str1 = this.id + "_" + String.format(new StringBuilder().append("%0").append(LoadETCItemManager.FORMAT_COUNT).append("d").toString(), new Object[] { Integer.valueOf(j) }) + paramString;
-        str1 = this.materialId + File.separator + str1;
-      }
-      else
-      {
-        if (!this.cache.containsKey(str1)) {
-          break;
-        }
-        String str2 = this.id + "_" + String.format(new StringBuilder().append("%0").append(LoadETCItemManager.FORMAT_COUNT).append("d").toString(), new Object[] { Integer.valueOf(i) }) + paramString;
-        str2 = this.materialId + File.separator + str2;
-        this.cache.put(str2, this.cache.get(str1));
-        break;
-        return;
-        label401:
-        j = i;
-      }
     }
   }
   
   protected Boolean doInBackground(Void... paramVarArgs)
   {
-    if (this.cache == null) {
-      return Boolean.valueOf(false);
+    Object localObject1 = this.cache;
+    paramVarArgs = Boolean.valueOf(false);
+    if (localObject1 == null) {
+      return paramVarArgs;
     }
-    paramVarArgs = new ZipPkmReader(this.dataPath);
-    paramVarArgs.open();
+    localObject1 = new ZipPkmReader(this.dataPath);
+    ((ZipPkmReader)localObject1).open();
     for (;;)
     {
-      ETC1File localETC1File = paramVarArgs.getNextEntry();
+      ETC1File localETC1File = ((ZipPkmReader)localObject1).getNextEntry();
       if (localETC1File == null) {
         break;
       }
       if (isCancelled()) {
-        return Boolean.valueOf(false);
+        return paramVarArgs;
       }
-      String str = this.materialId + File.separator + localETC1File.getName();
-      this.cache.put(str, localETC1File.getTexutre());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.materialId);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append(localETC1File.getName());
+      localObject2 = ((StringBuilder)localObject2).toString();
+      this.cache.put(localObject2, localETC1File.getTexutre());
     }
-    paramVarArgs.close();
+    ((ZipPkmReader)localObject1).close();
     fillCache(this.frames, ".pkm");
     fillCache(this.frames, "_alpha.pkm");
     return Boolean.valueOf(true);
@@ -90,7 +125,7 @@ public class LoadETCTextureTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadETCTextureTask
  * JD-Core Version:    0.7.0.1
  */

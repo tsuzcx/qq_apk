@@ -30,14 +30,15 @@ public final class qun_quote_photo_from_qzone_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 0);
+    ArrayList localArrayList = this.url;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.qun_quote_photo_from_qzone_rsp
  * JD-Core Version:    0.7.0.1
  */

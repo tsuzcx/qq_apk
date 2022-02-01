@@ -12,13 +12,12 @@ final class QQManagerFactory$2
     add(Integer.valueOf(2));
     add(Integer.valueOf(3));
     add(Integer.valueOf(QQManagerFactory.DOWNLOADER_FACTORY));
-    add(Integer.valueOf(QQManagerFactory.THEME_MANAGER));
     add(Integer.valueOf(QQManagerFactory.CONVS_FACADE));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQManagerFactory.2
  * JD-Core Version:    0.7.0.1
  */

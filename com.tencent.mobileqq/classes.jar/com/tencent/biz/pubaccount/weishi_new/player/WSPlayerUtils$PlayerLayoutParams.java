@@ -23,12 +23,22 @@ public class WSPlayerUtils$PlayerLayoutParams
   
   public String toString()
   {
-    return "PlayerLayoutParams{videoWidth=" + this.jdField_a_of_type_Int + ", videoHeight=" + this.jdField_b_of_type_Int + ", topBarHeight=" + this.c + ", bottomBarHeight=" + this.d + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PlayerLayoutParams{videoWidth=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", videoHeight=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", topBarHeight=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", bottomBarHeight=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerUtils.PlayerLayoutParams
  * JD-Core Version:    0.7.0.1
  */

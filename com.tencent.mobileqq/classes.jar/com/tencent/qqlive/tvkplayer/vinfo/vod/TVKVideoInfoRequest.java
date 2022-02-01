@@ -22,36 +22,35 @@ public class TVKVideoInfoRequest
   private void startRequestVKey()
   {
     int i = this.mVideoInfoBuilder.getClipCount();
-    int j = this.mVideoInfoBuilder.getVkeyCount();
-    if (j + 10 >= i)
-    {
-      if (this.mVkeyRequest != null)
-      {
-        this.mVkeyRequest.cancelRequest();
-        this.mVkeyRequest = null;
-      }
-      if (!this.mParams.getUpc().isEmpty()) {
-        break label260;
-      }
+    int k = this.mVideoInfoBuilder.getVkeyCount();
+    int j = k + 10;
+    if (j < i) {
+      i = j;
     }
-    label260:
-    for (TVKCGIVKeyRequestParams localTVKCGIVKeyRequestParams = new TVKCGIVKeyRequestParams.VKeyRequestParasBuilder(this.mParams.getVid()).format(String.valueOf(this.mVideoInfoBuilder.getFormatId())).vt(String.valueOf(this.mVideoInfoBuilder.getVt())).loginCookie(this.mParams.getLoginCookie()).sdtFrom(this.mParams.getSdtFrom()).startClipNo(j + 1).endClipNo(i).requestType(0).requestID(String.valueOf(this.mRequestId)).vkeyType(0).lnk(this.mVideoInfoBuilder.getLinkvid()).ckeyExtraParamsMap(this.mParams.getCkeyExtraParamsMap()).platForm(this.mParams.getPlatForm()).appVer(this.mParams.getAppVer()).networkType(this.mParams.getNetworkType()).loginQQ(this.mParams.getLoginQQ()).encryptVer(this.mParams.getEncryptVer()).guid(this.mParams.getGuid()).build();; localTVKCGIVKeyRequestParams = new TVKCGIVKeyRequestParams.VKeyRequestParasBuilder(this.mParams.getVid()).format(String.valueOf(this.mVideoInfoBuilder.getFormatId())).vt(String.valueOf(this.mVideoInfoBuilder.getVt())).loginCookie(this.mParams.getLoginCookie()).sdtFrom(this.mParams.getSdtFrom()).startClipNo(j + 1).endClipNo(i).requestType(0).requestID(String.valueOf(this.mRequestId)).vkeyType(0).lnk(this.mVideoInfoBuilder.getLinkvid()).ckeyExtraParamsMap(this.mParams.getCkeyExtraParamsMap()).platForm(this.mParams.getPlatForm()).appVer(this.mParams.getAppVer()).networkType(this.mParams.getNetworkType()).loginQQ(this.mParams.getLoginQQ()).encryptVer(this.mParams.getEncryptVer()).guid(this.mParams.getGuid()).upc(this.mParams.getUpc()).upcPaths(this.mVideoInfoBuilder.getPath()).upcSPIPs(this.mVideoInfoBuilder.getSpip()).upcSPPORTs(this.mVideoInfoBuilder.getSpport()).build())
+    Object localObject = this.mVkeyRequest;
+    if (localObject != null)
     {
-      this.mVkeyRequest = new TVKCGIVkeyRequest(localTVKCGIVKeyRequestParams, this.mVKeyResponse);
-      this.mVkeyRequest.executeRequest();
-      return;
-      i = j + 10;
-      break;
+      ((TVKCGIVkeyRequest)localObject).cancelRequest();
+      this.mVkeyRequest = null;
     }
+    if (this.mParams.getUpc().isEmpty()) {
+      localObject = new TVKCGIVKeyRequestParams.VKeyRequestParasBuilder(this.mParams.getVid()).format(String.valueOf(this.mVideoInfoBuilder.getFormatId())).vt(String.valueOf(this.mVideoInfoBuilder.getVt())).loginCookie(this.mParams.getLoginCookie()).sdtFrom(this.mParams.getSdtFrom()).startClipNo(k + 1).endClipNo(i).requestType(0).requestID(String.valueOf(this.mRequestId)).vkeyType(0).lnk(this.mVideoInfoBuilder.getLinkvid()).ckeyExtraParamsMap(this.mParams.getCkeyExtraParamsMap()).platForm(this.mParams.getPlatForm()).appVer(this.mParams.getAppVer()).networkType(this.mParams.getNetworkType()).loginQQ(this.mParams.getLoginQQ()).encryptVer(this.mParams.getEncryptVer()).guid(this.mParams.getGuid()).build();
+    } else {
+      localObject = new TVKCGIVKeyRequestParams.VKeyRequestParasBuilder(this.mParams.getVid()).format(String.valueOf(this.mVideoInfoBuilder.getFormatId())).vt(String.valueOf(this.mVideoInfoBuilder.getVt())).loginCookie(this.mParams.getLoginCookie()).sdtFrom(this.mParams.getSdtFrom()).startClipNo(k + 1).endClipNo(i).requestType(0).requestID(String.valueOf(this.mRequestId)).vkeyType(0).lnk(this.mVideoInfoBuilder.getLinkvid()).ckeyExtraParamsMap(this.mParams.getCkeyExtraParamsMap()).platForm(this.mParams.getPlatForm()).appVer(this.mParams.getAppVer()).networkType(this.mParams.getNetworkType()).loginQQ(this.mParams.getLoginQQ()).encryptVer(this.mParams.getEncryptVer()).guid(this.mParams.getGuid()).upc(this.mParams.getUpc()).upcPaths(this.mVideoInfoBuilder.getPath()).upcSPIPs(this.mVideoInfoBuilder.getSpip()).upcSPPORTs(this.mVideoInfoBuilder.getSpport()).build();
+    }
+    this.mVkeyRequest = new TVKCGIVkeyRequest((TVKCGIVKeyRequestParams)localObject, this.mVKeyResponse);
+    this.mVkeyRequest.executeRequest();
   }
   
   public void cancelRequest()
   {
-    if (this.mVinfoRequest != null) {
-      this.mVinfoRequest.cancelRequest();
+    Object localObject = this.mVinfoRequest;
+    if (localObject != null) {
+      ((TVKCGIVInfoRequest)localObject).cancelRequest();
     }
-    if (this.mVkeyRequest != null) {
-      this.mVkeyRequest.cancelRequest();
+    localObject = this.mVkeyRequest;
+    if (localObject != null) {
+      ((TVKCGIVkeyRequest)localObject).cancelRequest();
     }
   }
   
@@ -71,7 +70,7 @@ public class TVKVideoInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKVideoInfoRequest
  * JD-Core Version:    0.7.0.1
  */

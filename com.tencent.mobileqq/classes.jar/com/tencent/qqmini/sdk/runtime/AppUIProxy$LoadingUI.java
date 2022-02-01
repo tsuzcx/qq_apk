@@ -169,12 +169,14 @@ public class AppUIProxy$LoadingUI
   
   private boolean isCurrInterLoadingMode()
   {
-    return (this.miniAppInfo != null) && (this.miniAppInfo.appMode != null) && (this.miniAppInfo.appMode.interLoading);
+    MiniAppInfo localMiniAppInfo = this.miniAppInfo;
+    return (localMiniAppInfo != null) && (localMiniAppInfo.appMode != null) && (this.miniAppInfo.appMode.interLoading);
   }
   
   private boolean isInternalApp()
   {
-    return (this.miniAppInfo != null) && (this.miniAppInfo.appMode != null) && (this.miniAppInfo.appMode.interMode);
+    MiniAppInfo localMiniAppInfo = this.miniAppInfo;
+    return (localMiniAppInfo != null) && (localMiniAppInfo.appMode != null) && (this.miniAppInfo.appMode.interMode);
   }
   
   private void setSlideInAnimation()
@@ -256,8 +258,9 @@ public class AppUIProxy$LoadingUI
     if (paramView.getId() == R.id.btn_close) {
       MiniReportManager.reportEventType(this.miniAppInfo, 1026, "1");
     }
-    if (this.mClickListener != null) {
-      this.mClickListener.onClick(paramView);
+    View.OnClickListener localOnClickListener = this.mClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -266,39 +269,24 @@ public class AppUIProxy$LoadingUI
   {
     this.isForeground = true;
     cleanAnimation();
-    if ((isInternalApp()) || (isCurrInterLoadingMode()))
+    if ((!isInternalApp()) && (!isCurrInterLoadingMode()))
     {
-      this.mLogoView.setVisibility(8);
-      this.mNameView.setVisibility(4);
-      this.mProgressBar.setVisibility(0);
-      this.mRootView.setBackgroundColor(-1);
-      if ((this.miniAppInfo != null) && (this.miniAppInfo.appMode != null) && (this.miniAppInfo.appMode.closeTopRightCapsule)) {
-        if (this.rightContainer != null) {
-          this.rightContainer.setVisibility(4);
+      if (!TextUtils.isEmpty(this.miniAppInfo.iconUrl))
+      {
+        Object localObject2 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+        localObject1 = getContext().getResources().getDrawable(R.drawable.mini_sdk_icon_loading_default);
+        Context localContext = getContext();
+        String str = this.miniAppInfo.iconUrl;
+        int i = this.iconSize;
+        localObject2 = ((MiniAppProxy)localObject2).getDrawable(localContext, str, i, i, (Drawable)localObject1);
+        if (localObject2 != null) {
+          localObject1 = localObject2;
         }
+        this.mLogoView.setImageDrawable((Drawable)localObject1);
       }
-      while (this.rightContainer == null) {
-        return;
-      }
-      this.rightContainer.setVisibility(0);
-      return;
-    }
-    Object localObject2;
-    Object localObject1;
-    if (!TextUtils.isEmpty(this.miniAppInfo.iconUrl))
-    {
-      localObject2 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      localObject1 = getContext().getResources().getDrawable(R.drawable.mini_sdk_icon_loading_default);
-      localObject2 = ((MiniAppProxy)localObject2).getDrawable(getContext(), this.miniAppInfo.iconUrl, this.iconSize, this.iconSize, (Drawable)localObject1);
-      if (localObject2 != null) {
-        break label273;
-      }
-    }
-    for (;;)
-    {
-      this.mLogoView.setImageDrawable((Drawable)localObject1);
-      if (this.rightContainer != null) {
-        this.rightContainer.setVisibility(0);
+      localObject1 = this.rightContainer;
+      if (localObject1 != null) {
+        ((RelativeLayout)localObject1).setVisibility(0);
       }
       this.mNameView.setText(this.miniAppInfo.name);
       this.mNameView.setVisibility(0);
@@ -307,8 +295,25 @@ public class AppUIProxy$LoadingUI
       this.mRootView.setBackgroundColor(-1);
       this.uiHandler.postDelayed(new AppUIProxy.LoadingUI.1(this), 250L);
       return;
-      label273:
-      localObject1 = localObject2;
+    }
+    this.mLogoView.setVisibility(8);
+    this.mNameView.setVisibility(4);
+    this.mProgressBar.setVisibility(0);
+    this.mRootView.setBackgroundColor(-1);
+    Object localObject1 = this.miniAppInfo;
+    if ((localObject1 != null) && (((MiniAppInfo)localObject1).appMode != null) && (this.miniAppInfo.appMode.closeTopRightCapsule))
+    {
+      localObject1 = this.rightContainer;
+      if (localObject1 != null) {
+        ((RelativeLayout)localObject1).setVisibility(4);
+      }
+    }
+    else
+    {
+      localObject1 = this.rightContainer;
+      if (localObject1 != null) {
+        ((RelativeLayout)localObject1).setVisibility(0);
+      }
     }
   }
   
@@ -330,7 +335,7 @@ public class AppUIProxy$LoadingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppUIProxy.LoadingUI
  * JD-Core Version:    0.7.0.1
  */

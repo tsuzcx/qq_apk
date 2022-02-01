@@ -29,39 +29,45 @@ public class PngPlayParam
   
   public boolean a()
   {
+    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
     int i;
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+    if ((arrayOfString != null) && (arrayOfString.length > 0))
     {
       i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      for (;;)
       {
-        if (!new File(this.jdField_a_of_type_ArrayOfJavaLangString[i]).exists()) {
+        arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+        if (i >= arrayOfString.length) {
+          break;
+        }
+        if (!new File(arrayOfString[i]).exists()) {
           return false;
         }
         i += 1;
       }
     }
-    if ((this.jdField_b_of_type_ArrayOfJavaLangString != null) && (this.jdField_b_of_type_ArrayOfJavaLangString.length > 0))
+    arrayOfString = this.jdField_b_of_type_ArrayOfJavaLangString;
+    if ((arrayOfString != null) && (arrayOfString.length > 0))
     {
       i = 0;
       for (;;)
       {
-        if (i >= this.jdField_b_of_type_ArrayOfJavaLangString.length) {
-          break label106;
-        }
-        if (!new File(this.jdField_b_of_type_ArrayOfJavaLangString[i]).exists()) {
+        arrayOfString = this.jdField_b_of_type_ArrayOfJavaLangString;
+        if (i >= arrayOfString.length) {
           break;
+        }
+        if (!new File(arrayOfString[i]).exists()) {
+          return false;
         }
         i += 1;
       }
     }
-    label106:
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngPlayParam
  * JD-Core Version:    0.7.0.1
  */

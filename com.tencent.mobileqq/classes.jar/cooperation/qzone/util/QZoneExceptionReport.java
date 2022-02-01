@@ -2,8 +2,8 @@ package cooperation.qzone.util;
 
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.lang.reflect.Field;
 
 public class QZoneExceptionReport
@@ -20,13 +20,18 @@ public class QZoneExceptionReport
         detailMessageField = Throwable.class.getDeclaredField("detailMessage");
       }
       detailMessageField.setAccessible(true);
-      detailMessageField.set(paramThrowable, "QzoneCatchedException:" + paramThrowable.getMessage());
+      Field localField = detailMessageField;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QzoneCatchedException:");
+      localStringBuilder.append(paramThrowable.getMessage());
+      localField.set(paramThrowable, localStringBuilder.toString());
       return;
     }
     catch (Throwable paramThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QZoneExceptionReport", 2, "addStackTag failed", paramThrowable);
+      if (QLog.isColorLevel()) {
+        QLog.e("QZoneExceptionReport", 2, "addStackTag failed", paramThrowable);
+      }
     }
   }
   
@@ -46,7 +51,7 @@ public class QZoneExceptionReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.util.QZoneExceptionReport
  * JD-Core Version:    0.7.0.1
  */

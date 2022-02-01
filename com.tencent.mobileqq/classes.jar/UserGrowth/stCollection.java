@@ -8,8 +8,10 @@ public final class stCollection
   extends JceStruct
 {
   static stSchema cache_schema = new stSchema();
+  public String barText = "";
   public String cid = "";
   public int click_action = 0;
+  public int collectionType = 0;
   public String cover = "";
   public String desc = "";
   public int feed_count = 0;
@@ -19,7 +21,7 @@ public final class stCollection
   
   public stCollection() {}
   
-  public stCollection(String paramString1, String paramString2, String paramString3, int paramInt1, stSchema paramstSchema, int paramInt2, String paramString4, String paramString5)
+  public stCollection(String paramString1, String paramString2, String paramString3, int paramInt1, stSchema paramstSchema, int paramInt2, String paramString4, String paramString5, String paramString6, int paramInt3)
   {
     this.cid = paramString1;
     this.name = paramString2;
@@ -29,6 +31,8 @@ public final class stCollection
     this.feed_count = paramInt2;
     this.cover = paramString4;
     this.subTitle = paramString5;
+    this.barText = paramString6;
+    this.collectionType = paramInt3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -41,35 +45,48 @@ public final class stCollection
     this.feed_count = paramJceInputStream.read(this.feed_count, 5, false);
     this.cover = paramJceInputStream.readString(6, false);
     this.subTitle = paramJceInputStream.readString(7, false);
+    this.barText = paramJceInputStream.readString(8, false);
+    this.collectionType = paramJceInputStream.read(this.collectionType, 9, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cid != null) {
-      paramJceOutputStream.write(this.cid, 0);
+    Object localObject = this.cid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 1);
+    localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 2);
+    localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.click_action, 3);
-    if (this.schema != null) {
-      paramJceOutputStream.write(this.schema, 4);
+    localObject = this.schema;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
     paramJceOutputStream.write(this.feed_count, 5);
-    if (this.cover != null) {
-      paramJceOutputStream.write(this.cover, 6);
+    localObject = this.cover;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.subTitle != null) {
-      paramJceOutputStream.write(this.subTitle, 7);
+    localObject = this.subTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
+    localObject = this.barText;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
+    }
+    paramJceOutputStream.write(this.collectionType, 9);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stCollection
  * JD-Core Version:    0.7.0.1
  */

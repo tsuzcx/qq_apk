@@ -15,45 +15,48 @@ class RestorationChannel$2
     String str = paramMethodCall.method;
     paramMethodCall = paramMethodCall.arguments;
     int i = str.hashCode();
-    if (i != 102230) {
-      if (i != 111375) {
-        label29:
-        i = -1;
+    if (i != 102230)
+    {
+      if ((i == 111375) && (str.equals("put")))
+      {
+        i = 0;
+        break label64;
       }
     }
-    for (;;)
+    else if (str.equals("get"))
     {
-      switch (i)
+      i = 1;
+      break label64;
+    }
+    i = -1;
+    label64:
+    if (i != 0)
+    {
+      if (i != 1)
       {
-      default: 
         paramResult.notImplemented();
         return;
-        if (!str.equals("put")) {
-          break label29;
-        }
-        i = 0;
-        continue;
-        if (!str.equals("get")) {
-          break label29;
-        }
-        i = 1;
       }
+      RestorationChannel.access$102(this.this$0, true);
+      if ((!RestorationChannel.access$200(this.this$0)) && (this.this$0.waitForRestorationData))
+      {
+        RestorationChannel.access$402(this.this$0, paramResult);
+        return;
+      }
+      paramMethodCall = this.this$0;
+      paramMethodCall = RestorationChannel.access$300(paramMethodCall, RestorationChannel.access$000(paramMethodCall));
     }
-    RestorationChannel.access$102(this.this$0, true);
-    if ((RestorationChannel.access$200(this.this$0)) || (!this.this$0.waitForRestorationData))
+    else
     {
-      paramResult.success(RestorationChannel.access$300(this.this$0, RestorationChannel.access$000(this.this$0)));
-      return;
+      RestorationChannel.access$002(this.this$0, (byte[])paramMethodCall);
+      paramMethodCall = null;
     }
-    RestorationChannel.access$402(this.this$0, paramResult);
-    return;
-    RestorationChannel.access$002(this.this$0, (byte[])paramMethodCall);
-    paramResult.success(null);
+    paramResult.success(paramMethodCall);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.RestorationChannel.2
  * JD-Core Version:    0.7.0.1
  */

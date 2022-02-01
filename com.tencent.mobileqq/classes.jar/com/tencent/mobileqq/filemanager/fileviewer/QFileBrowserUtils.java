@@ -7,29 +7,42 @@ public class QFileBrowserUtils
 {
   public static int a(int paramInt)
   {
-    int j = 9;
-    int i = j;
+    int i = 4;
+    if (paramInt != 2) {
+      if (paramInt != 4) {
+        if (paramInt == 13) {
+          break label79;
+        }
+      }
+    }
     switch (paramInt)
     {
     default: 
-      i = j;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFileBrowserUtils", 1, "getVideoQRReportFromType: reportFromType[" + i + "]");
-      }
-      return i;
-      i = 8;
-      continue;
-      i = 7;
-      continue;
-      i = 6;
-      continue;
+      i = 9;
+      break;
+    case 10: 
       i = 5;
-      continue;
-      i = 4;
+      break;
+    case 7: 
+    case 8: 
+    case 9: 
+      i = 6;
+      break;
+      i = 8;
+      break;
+    case 6: 
+      label79:
+      i = 7;
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getVideoQRReportFromType: reportFromType[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("]");
+      QLog.i("QFileBrowserUtils", 1, localStringBuilder.toString());
+    }
+    return i;
   }
   
   public static void a(long paramLong)
@@ -37,30 +50,25 @@ public class QFileBrowserUtils
     int i;
     if (paramLong < 51200L) {
       i = 1;
+    } else if (paramLong < 102400L) {
+      i = 2;
+    } else if (paramLong < 512000L) {
+      i = 3;
+    } else if (paramLong < 1024000L) {
+      i = 4;
+    } else if (paramLong < 3072000L) {
+      i = 5;
+    } else if (paramLong < 10240000L) {
+      i = 6;
+    } else {
+      i = 7;
     }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800ADC0", "0X800ADC0", i, 0, "", "", "", "");
-      return;
-      if (paramLong < 102400L) {
-        i = 2;
-      } else if (paramLong < 512000L) {
-        i = 3;
-      } else if (paramLong < 1024000L) {
-        i = 4;
-      } else if (paramLong < 3072000L) {
-        i = 5;
-      } else if (paramLong < 10240000L) {
-        i = 6;
-      } else {
-        i = 7;
-      }
-    }
+    ReportController.b(null, "dc00898", "", "", "0X800ADC0", "0X800ADC0", i, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.QFileBrowserUtils
  * JD-Core Version:    0.7.0.1
  */

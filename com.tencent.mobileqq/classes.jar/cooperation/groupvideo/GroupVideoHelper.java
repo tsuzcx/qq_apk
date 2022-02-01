@@ -27,117 +27,105 @@ public class GroupVideoHelper
 {
   public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
+    if (paramBaseApplicationImpl != null)
     {
-      paramString = Class.forName("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
-      paramBaseApplicationImpl = paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
+      if (paramString == null) {
+        return null;
+      }
       for (;;)
       {
         try
         {
-          QLog.e("GroupVideoLog", 1, "*createGroupVideoAppInterface load class fail");
-          return null;
+          try
+          {
+            paramString = Class.forName("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
+            paramBaseApplicationImpl = paramString;
+          }
+          catch (Exception paramBaseApplicationImpl) {}catch (NoSuchMethodException paramBaseApplicationImpl) {}catch (InvocationTargetException paramBaseApplicationImpl) {}catch (InstantiationException paramBaseApplicationImpl) {}catch (IllegalAccessException paramBaseApplicationImpl) {}catch (IllegalArgumentException paramBaseApplicationImpl) {}
+        }
+        catch (ClassNotFoundException paramString)
+        {
+          continue;
+        }
+        try
+        {
+          paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "group_video_plugin.apk");
+          paramBaseApplicationImpl = paramString.loadClass("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
+          BasicClassTypeUtil.setClassLoader(true, paramString);
+          if (paramBaseApplicationImpl == null)
+          {
+            QLog.e("GroupVideoLog", 1, "*createGroupVideoAppInterface load class fail");
+            return null;
+          }
+          paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+          if ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface))) {
+            continue;
+          }
+          paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
+          return paramBaseApplicationImpl;
         }
         catch (ClassNotFoundException paramBaseApplicationImpl)
         {
           paramBaseApplicationImpl.printStackTrace();
         }
-        paramString = paramString;
-        paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "group_video_plugin.apk");
-        paramBaseApplicationImpl = paramString.loadClass("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, paramString);
       }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
-      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
     }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    if (paramBaseApplicationImpl != null) {}
+    return null;
   }
   
   public static void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection)
   {
-    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
-      return;
-    }
-    try
+    if (paramAppRuntime != null)
     {
-      paramAppRuntime.getApplication().unbindService(paramServiceConnection);
-      return;
-    }
-    catch (IllegalArgumentException paramAppRuntime)
-    {
-      QLog.d("GroupVideoHelper", 2, "unbindService error" + paramAppRuntime.getMessage());
+      if (paramServiceConnection == null) {
+        return;
+      }
+      try
+      {
+        paramAppRuntime.getApplication().unbindService(paramServiceConnection);
+        return;
+      }
+      catch (IllegalArgumentException paramAppRuntime)
+      {
+        paramServiceConnection = new StringBuilder();
+        paramServiceConnection.append("unbindService error");
+        paramServiceConnection.append(paramAppRuntime.getMessage());
+        QLog.d("GroupVideoHelper", 2, paramServiceConnection.toString());
+      }
     }
   }
   
   public static void a(AppRuntime paramAppRuntime, Class paramClass, ServiceConnection paramServiceConnection, String paramString)
   {
-    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
-      return;
+    if (paramAppRuntime != null)
+    {
+      if (paramServiceConnection == null) {
+        return;
+      }
+      paramClass = new Intent(paramAppRuntime.getApplication(), paramClass);
+      paramClass.putExtra("useSkinEngine", 1);
+      paramClass.putExtra("userQqResources", 2);
+      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
+      localPluginParams.b = "group_video_plugin.apk";
+      localPluginParams.e = PluginInfo.k;
+      localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+      localPluginParams.f = paramString;
+      localPluginParams.jdField_a_of_type_AndroidContentIntent = paramClass;
+      localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+      IPluginManager.c(paramAppRuntime.getApplication(), localPluginParams);
     }
-    paramClass = new Intent(paramAppRuntime.getApplication(), paramClass);
-    paramClass.putExtra("useSkinEngine", 1);
-    paramClass.putExtra("userQqResources", 2);
-    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-    localPluginParams.b = "group_video_plugin.apk";
-    localPluginParams.e = PluginInfo.k;
-    localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localPluginParams.f = paramString;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramClass;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    IPluginManager.c(paramAppRuntime.getApplication(), localPluginParams);
   }
   
   public static boolean a(Context paramContext)
@@ -160,40 +148,43 @@ public class GroupVideoHelper
   
   public static boolean a(AppInterface paramAppInterface, Activity paramActivity, Intent paramIntent, int paramInt)
   {
-    if ((paramAppInterface == null) || (paramActivity == null)) {
-      return false;
-    }
-    if ((paramIntent != null) && (paramIntent.getIntExtra("Type", 0) == 0)) {
-      paramIntent.putExtra("isInviteMode", true);
-    }
-    for (;;)
+    if (paramAppInterface != null)
     {
-      GVideoProxyActivity.a(paramActivity, paramIntent, GVideoProxyActivity.a(paramActivity), "com.gvideo.com.tencent.av.ui.GroupVideoActivity", paramAppInterface.getCurrentAccountUin(), paramInt);
+      if (paramActivity == null) {
+        return false;
+      }
+      if ((paramIntent != null) && (paramIntent.getIntExtra("Type", 0) == 0)) {
+        paramIntent.putExtra("isInviteMode", true);
+      }
       return true;
     }
+    return false;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, int paramInt)
   {
-    if ((paramQQAppInterface == null) || (!(paramContext instanceof Activity))) {
-      return false;
+    if (paramQQAppInterface != null)
+    {
+      if (!(paramContext instanceof Activity)) {
+        return false;
+      }
+      paramContext = (Activity)paramContext;
+      IPluginManager localIPluginManager = (IPluginManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_PLUGIN);
+      if (localIPluginManager == null) {
+        return false;
+      }
+      if (localIPluginManager.isPlugininstalled("group_video_plugin.apk")) {
+        return a(paramQQAppInterface, paramContext, paramIntent, paramInt);
+      }
+      paramContext.startActivityForResult(paramIntent, paramInt);
+      return true;
     }
-    paramContext = (Activity)paramContext;
-    IPluginManager localIPluginManager = (IPluginManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_PLUGIN);
-    if (localIPluginManager == null) {
-      return false;
-    }
-    if (localIPluginManager.isPlugininstalled("group_video_plugin.apk")) {
-      return a(paramQQAppInterface, paramContext, paramIntent, paramInt);
-    }
-    paramIntent.setClass(paramContext, GVideoPluginInstallerActivity.class);
-    paramContext.startActivityForResult(paramIntent, paramInt);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.groupvideo.GroupVideoHelper
  * JD-Core Version:    0.7.0.1
  */

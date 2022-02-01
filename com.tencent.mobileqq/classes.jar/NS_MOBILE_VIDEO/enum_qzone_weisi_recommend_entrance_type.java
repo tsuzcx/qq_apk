@@ -34,7 +34,7 @@ public final class enum_qzone_weisi_recommend_entrance_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.enum_qzone_weisi_recommend_entrance_type
  * JD-Core Version:    0.7.0.1
  */

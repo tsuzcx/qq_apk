@@ -58,8 +58,8 @@ class y
   
   public IX5WebViewBase a(Context paramContext)
   {
-    Object localObject4 = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createSDKWebview", new Class[] { Context.class }, new Object[] { paramContext });
-    if (localObject4 == null) {}
+    Object localObject3 = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createSDKWebview", new Class[] { Context.class }, new Object[] { paramContext });
+    if (localObject3 == null) {}
     try
     {
       localObject1 = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "getLoadFailureDetails", new Class[0], new Object[0]);
@@ -67,51 +67,49 @@ class y
         TbsCoreLoadStat.getInstance().a(paramContext, 325, (Throwable)localObject1);
       }
       if ((localObject1 == null) || (!(localObject1 instanceof String))) {
-        break label200;
+        break label201;
       }
       TbsCoreLoadStat.getInstance().a(paramContext, 325, new Throwable((String)localObject1));
     }
-    catch (Exception localException1)
+    catch (Exception paramContext)
     {
+      IX5WebViewBase localIX5WebViewBase;
+      localObject2 = null;
+    }
+    localIX5WebViewBase = (IX5WebViewBase)localObject3;
+    Object localObject1 = localObject3;
+    Object localObject2 = localIX5WebViewBase;
+    if (localIX5WebViewBase != null)
+    {
+      localObject1 = localObject3;
+      localObject2 = localIX5WebViewBase;
       try
       {
         if (localIX5WebViewBase.getView() != null) {
-          break label204;
+          break label193;
         }
         TbsCoreLoadStat.getInstance().a(paramContext, 325, new Throwable("x5webview.getView is null!"));
-        localObject3 = null;
-        Object localObject1 = localIX5WebViewBase;
+        localObject1 = null;
+        localObject2 = localIX5WebViewBase;
       }
-      catch (Exception localException2)
+      catch (Exception paramContext)
       {
-        for (;;)
-        {
-          IX5WebViewBase localIX5WebViewBase;
-          Context localContext;
-          paramContext = localIX5WebViewBase;
-        }
+        localObject2 = localIX5WebViewBase;
       }
-      localException1 = localException1;
-      paramContext = null;
+      paramContext.printStackTrace();
+      localObject1 = localObject3;
     }
-    localIX5WebViewBase = (IX5WebViewBase)localObject4;
-    localObject1 = localIX5WebViewBase;
-    Object localObject3 = localObject4;
-    if (localIX5WebViewBase != null)
+    for (;;)
     {
-      localObject1 = localIX5WebViewBase;
-      localObject3 = localObject4;
-      localException1.printStackTrace();
-      localContext = paramContext;
+      label193:
+      if (localObject1 == null) {
+        return null;
+      }
+      return localObject2;
+      label201:
+      localObject1 = null;
+      localObject2 = localObject1;
     }
-    label200:
-    label204:
-    for (localObject3 = localObject4; localObject3 != null; localObject3 = null)
-    {
-      return localContext;
-      Object localObject2 = null;
-    }
-    return null;
   }
   
   public InputStream a(String paramString, boolean paramBoolean)
@@ -156,21 +154,23 @@ class y
     }
     catch (Exception localException)
     {
-      this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseClearUsernamePassword", new Class[] { Context.class }, new Object[] { paramContext });
-      this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseClearHttpAuthUsernamePassword", new Class[] { Context.class }, new Object[] { paramContext });
-      this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseClearFormData", new Class[] { Context.class }, new Object[] { paramContext });
-      this.a.invokeStaticMethod("com.tencent.smtt.webkit.CacheManager", "removeAllCacheFiles", null, new Object[0]);
-      this.a.invokeStaticMethod("com.tencent.smtt.webkit.CacheManager", "clearLocalStorage", null, new Object[0]);
-      paramContext = this.a.invokeStaticMethod("com.tencent.smtt.net.http.DnsManager", "getInstance", null, new Object[0]);
-      if (paramContext != null) {
-        this.a.invokeMethod(paramContext, "com.tencent.smtt.net.http.DnsManager", "removeAllDns", null, new Object[0]);
-      }
-      paramContext = this.a.invokeStaticMethod("com.tencent.smtt.webkit.SmttPermanentPermissions", "getInstance", null, new Object[0]);
-      if (paramContext != null) {
-        this.a.invokeMethod(paramContext, "com.tencent.smtt.webkit.SmttPermanentPermissions", "clearAllPermanentPermission", null, new Object[0]);
-      }
-      this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "removeAllIcons", null, new Object[0]);
+      label84:
+      break label84;
     }
+    this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseClearUsernamePassword", new Class[] { Context.class }, new Object[] { paramContext });
+    this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseClearHttpAuthUsernamePassword", new Class[] { Context.class }, new Object[] { paramContext });
+    this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseClearFormData", new Class[] { Context.class }, new Object[] { paramContext });
+    this.a.invokeStaticMethod("com.tencent.smtt.webkit.CacheManager", "removeAllCacheFiles", null, new Object[0]);
+    this.a.invokeStaticMethod("com.tencent.smtt.webkit.CacheManager", "clearLocalStorage", null, new Object[0]);
+    paramContext = this.a.invokeStaticMethod("com.tencent.smtt.net.http.DnsManager", "getInstance", null, new Object[0]);
+    if (paramContext != null) {
+      this.a.invokeMethod(paramContext, "com.tencent.smtt.net.http.DnsManager", "removeAllDns", null, new Object[0]);
+    }
+    paramContext = this.a.invokeStaticMethod("com.tencent.smtt.webkit.SmttPermanentPermissions", "getInstance", null, new Object[0]);
+    if (paramContext != null) {
+      this.a.invokeMethod(paramContext, "com.tencent.smtt.webkit.SmttPermanentPermissions", "clearAllPermanentPermission", null, new Object[0]);
+    }
+    this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "removeAllIcons", null, new Object[0]);
   }
   
   public void a(ValueCallback<Map> paramValueCallback)
@@ -210,12 +210,12 @@ class y
         boolean bool = ((Boolean)localObject).booleanValue();
         return bool;
       }
+      return ((Boolean)localObject).booleanValue();
     }
     catch (Throwable localThrowable)
     {
       throw localThrowable;
     }
-    return ((Boolean)localThrowable).booleanValue();
   }
   
   public boolean a(Map<String, String[]> paramMap)
@@ -408,10 +408,11 @@ class y
   
   public IX5WebChromeClient i()
   {
-    if (this.a == null) {
+    Object localObject = this.a;
+    if (localObject == null) {
       return null;
     }
-    Object localObject = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createDefaultX5WebChromeClient", new Class[0], new Object[0]);
+    localObject = ((DexLoader)localObject).invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createDefaultX5WebChromeClient", new Class[0], new Object[0]);
     if (localObject == null) {
       return null;
     }
@@ -629,7 +630,7 @@ class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.y
  * JD-Core Version:    0.7.0.1
  */

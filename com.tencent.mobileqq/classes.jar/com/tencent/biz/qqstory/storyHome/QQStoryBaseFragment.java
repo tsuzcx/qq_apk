@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +15,7 @@ import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tribe.async.async.Boss;
@@ -60,8 +60,13 @@ public abstract class QQStoryBaseFragment
     if (paramOnClickListener != null) {
       this.rightViewText.setOnClickListener(paramOnClickListener);
     }
-    if (AppSetting.d) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + HardCodeUtil.a(2131710774));
+    if (AppSetting.d)
+    {
+      paramString = this.rightViewText;
+      paramOnClickListener = new StringBuilder();
+      paramOnClickListener.append(this.rightViewText.getText());
+      paramOnClickListener.append(HardCodeUtil.a(2131710751));
+      paramString.setContentDescription(paramOnClickListener.toString());
     }
   }
   
@@ -69,10 +74,10 @@ public abstract class QQStoryBaseFragment
   
   public boolean a()
   {
-    return (getActivity() != null) && (getActivity().isFinishing());
+    return (getBaseActivity() != null) && (getBaseActivity().isFinishing());
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     QQStoryContext.a();
     Object localObject1 = new HashMap();
@@ -129,7 +134,7 @@ public abstract class QQStoryBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment
  * JD-Core Version:    0.7.0.1
  */

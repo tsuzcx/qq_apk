@@ -7,12 +7,13 @@ class QzoneQunFeedJsPlugin$6
   
   public void run()
   {
-    QzoneQunFeedJsPlugin.access$500(this.this$0, QzoneQunFeedJsPlugin.access$100(this.this$0));
+    QzoneQunFeedJsPlugin localQzoneQunFeedJsPlugin = this.this$0;
+    QzoneQunFeedJsPlugin.access$500(localQzoneQunFeedJsPlugin, QzoneQunFeedJsPlugin.access$100(localQzoneQunFeedJsPlugin));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

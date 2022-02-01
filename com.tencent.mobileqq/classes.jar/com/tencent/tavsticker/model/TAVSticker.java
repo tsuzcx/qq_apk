@@ -23,6 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 import java.util.UUID;
+import java.util.concurrent.CopyOnWriteArrayList;
 import org.libpag.PAGComposition;
 import org.libpag.PAGFile;
 import org.libpag.PAGImage;
@@ -35,7 +36,7 @@ import org.libpag.PAGText;
 public class TAVSticker
   implements Cloneable
 {
-  private static final String TAG = TAVSticker.class.getSimpleName();
+  private static final String TAG = "TAVSticker";
   private TAVSticker.TAVStickerAnimationMode animationMode = TAVSticker.TAVStickerAnimationMode.TAVStickerAnimationModeDefault;
   private String assetFilePath = "";
   private float centerX = 0.0F;
@@ -56,7 +57,7 @@ public class TAVSticker
   private PAGFile pagFile = null;
   private PAGRenderer pagRenderer = null;
   private ITAVStickerProgressHandler progressHandler;
-  private ArrayList<ITAVStickerRenderer> rendererList = null;
+  private CopyOnWriteArrayList<ITAVStickerRenderer> rendererList = null;
   private float rotate = 0.0F;
   private float scale = 0.5F;
   private int scaleMode = 0;
@@ -72,28 +73,30 @@ public class TAVSticker
   
   private List<PAGText> getPAGTextListFromFile()
   {
-    Object localObject = null;
-    if (this.pagFile == null) {}
-    int j;
-    do
-    {
-      return localObject;
-      j = this.pagFile.numTexts();
-    } while (j <= 0);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
-    {
-      localObject = localArrayList;
-      if (i >= j) {
-        break;
-      }
-      localObject = this.pagFile.getTextData(i);
-      if (localObject != null) {
-        localArrayList.add(localObject);
-      }
-      i += 1;
+    Object localObject2 = this.pagFile;
+    Object localObject1 = null;
+    if (localObject2 == null) {
+      return null;
     }
+    int j = ((PAGFile)localObject2).numTexts();
+    if (j > 0)
+    {
+      localObject2 = new ArrayList();
+      int i = 0;
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (i >= j) {
+          break;
+        }
+        localObject1 = this.pagFile.getTextData(i);
+        if (localObject1 != null) {
+          ((ArrayList)localObject2).add(localObject1);
+        }
+        i += 1;
+      }
+    }
+    return localObject1;
   }
   
   private ArrayList<PAGLayer> layersInComposition(PAGComposition paramPAGComposition, int paramInt)
@@ -104,14 +107,10 @@ public class TAVSticker
     ArrayList localArrayList = new ArrayList();
     int j = paramPAGComposition.numLayers();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Object localObject = paramPAGComposition.getLayerAt(i);
-      if (localObject == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if (localObject != null) {
         if (6 == ((PAGLayer)localObject).layerType())
         {
           if ((localObject instanceof PAGComposition))
@@ -126,6 +125,7 @@ public class TAVSticker
           localArrayList.add(localObject);
         }
       }
+      i += 1;
     }
     Collections.sort(localArrayList, new TAVSticker.2(this));
     return localArrayList;
@@ -140,20 +140,18 @@ public class TAVSticker
     }
     int j = localArrayList2.size();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Object localObject = (PAGLayer)localArrayList2.get(i);
-      if (localObject == null) {}
-      for (;;)
+      if (localObject != null)
       {
-        i += 1;
-        break;
         localObject = new TAVStickerImageItem((PAGLayer)localObject);
         if (-1 == ((TAVStickerImageItem)localObject).getLayerIndex()) {
           ((TAVStickerImageItem)localObject).setLayerIndex(i);
         }
         localArrayList1.add(localObject);
       }
+      i += 1;
     }
     return localArrayList1;
   }
@@ -167,20 +165,18 @@ public class TAVSticker
     }
     int j = localArrayList2.size();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Object localObject = (PAGLayer)localArrayList2.get(i);
-      if (localObject == null) {}
-      for (;;)
+      if (localObject != null)
       {
-        i += 1;
-        break;
         localObject = new TAVStickerShapeItem((PAGLayer)localObject);
         if (-1 == ((TAVStickerShapeItem)localObject).getLayerIndex()) {
           ((TAVStickerShapeItem)localObject).setLayerIndex(i);
         }
         localArrayList1.add(localObject);
       }
+      i += 1;
     }
     return localArrayList1;
   }
@@ -190,48 +186,50 @@ public class TAVSticker
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = layersInComposition(this.pagRenderer.getRootComposition(), 3);
     List localList = getPAGTextListFromFile();
-    if ((CollectionUtil.isEmptyList(localArrayList2)) || (CollectionUtil.isEmptyList(localList))) {
-      return localArrayList1;
-    }
-    int j = localArrayList2.size();
-    int k = localList.size();
-    int i = 0;
-    if (i < j)
+    if (!CollectionUtil.isEmptyList(localArrayList2))
     {
-      Object localObject = (PAGLayer)localArrayList2.get(i);
-      if (localObject == null) {}
-      for (;;)
+      if (CollectionUtil.isEmptyList(localList)) {
+        return localArrayList1;
+      }
+      int j = localArrayList2.size();
+      int k = localList.size();
+      int i = 0;
+      while (i < j)
       {
-        i += 1;
-        break;
-        localObject = new TAVStickerTextItem((PAGLayer)localObject);
-        if (i < k)
+        Object localObject = (PAGLayer)localArrayList2.get(i);
+        if (localObject != null)
         {
-          PAGText localPAGText = (PAGText)localList.get(i);
-          if (localPAGText == null) {
-            continue;
+          localObject = new TAVStickerTextItem((PAGLayer)localObject);
+          if (i < k)
+          {
+            PAGText localPAGText = (PAGText)localList.get(i);
+            if (localPAGText == null) {
+              break label260;
+            }
+            if (-1 == ((TAVStickerTextItem)localObject).getLayerIndex()) {
+              ((TAVStickerTextItem)localObject).setLayerIndex(i);
+            }
+            if (!TextUtils.isEmpty(localPAGText.text)) {
+              ((TAVStickerTextItem)localObject).setText(localPAGText.text);
+            }
+            if (!TextUtils.isEmpty(localPAGText.text)) {
+              ((TAVStickerTextItem)localObject).setDefaultText(localPAGText.text);
+            }
+            ((TAVStickerTextItem)localObject).setDefaultColor(localPAGText.fillColor);
+            if (((TAVStickerTextItem)localObject).getTextColor() == 0) {
+              ((TAVStickerTextItem)localObject).setTextColor(localPAGText.fillColor);
+            }
+            if (!TextUtils.isEmpty(localPAGText.fontFamily)) {
+              ((TAVStickerTextItem)localObject).setFontFamily(localPAGText.fontFamily);
+            }
+            if (!TextUtils.isEmpty(localPAGText.fontStyle)) {
+              ((TAVStickerTextItem)localObject).setFontStyle(localPAGText.fontStyle);
+            }
           }
-          if (-1 == ((TAVStickerTextItem)localObject).getLayerIndex()) {
-            ((TAVStickerTextItem)localObject).setLayerIndex(i);
-          }
-          if (!TextUtils.isEmpty(localPAGText.text)) {
-            ((TAVStickerTextItem)localObject).setText(localPAGText.text);
-          }
-          if (!TextUtils.isEmpty(localPAGText.text)) {
-            ((TAVStickerTextItem)localObject).setDefaultText(localPAGText.text);
-          }
-          ((TAVStickerTextItem)localObject).setDefaultColor(localPAGText.fillColor);
-          if (((TAVStickerTextItem)localObject).getTextColor() == 0) {
-            ((TAVStickerTextItem)localObject).setTextColor(localPAGText.fillColor);
-          }
-          if (!TextUtils.isEmpty(localPAGText.fontFamily)) {
-            ((TAVStickerTextItem)localObject).setFontFamily(localPAGText.fontFamily);
-          }
-          if (!TextUtils.isEmpty(localPAGText.fontStyle)) {
-            ((TAVStickerTextItem)localObject).setFontStyle(localPAGText.fontStyle);
-          }
+          localArrayList1.add(localObject);
         }
-        localArrayList1.add(localObject);
+        label260:
+        i += 1;
       }
     }
     return localArrayList1;
@@ -286,59 +284,78 @@ public class TAVSticker
   
   public double computeProgress(long paramLong)
   {
-    double d2 = 0.0D;
-    double d1;
-    if (this.progressHandler != null) {
-      d1 = this.progressHandler.computeProgress(this, paramLong);
+    Object localObject = this.progressHandler;
+    if (localObject != null) {
+      return ((ITAVStickerProgressHandler)localObject).computeProgress(this, paramLong);
     }
-    long l2;
-    long l1;
-    double d3;
-    do
+    long l2 = durationTime() / 1000L;
+    localObject = this.timeRange;
+    long l1 = paramLong;
+    if (localObject != null)
     {
-      do
+      if (!TimeRangeUtil.isInTimeRange((CMTimeRange)localObject, paramLong)) {
+        return 0.0D;
+      }
+      l1 = Math.max(0L, paramLong - this.timeRange.getStartUs() / 1000L);
+    }
+    if (l2 > 0L)
+    {
+      if (l1 <= 0L) {
+        return 0.0D;
+      }
+      paramLong = l1 % l2;
+      double d1;
+      double d2;
+      if (paramLong == 0L)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return d1;
-              l2 = durationTime() / 1000L;
-              l1 = paramLong;
-              if (this.timeRange == null) {
-                break;
-              }
-              d1 = d2;
-            } while (!TimeRangeUtil.isInTimeRange(this.timeRange, paramLong));
-            l1 = Math.max(0L, paramLong - this.timeRange.getStartUs() / 1000L);
-            d1 = d2;
-          } while (l2 <= 0L);
-          d1 = d2;
-        } while (l1 <= 0L);
-        if (l1 % l2 == 0L) {}
-        for (d2 = 1.0D;; d2 = Math.min(1.0D, l1 % l2 * 1.0D / l2)) {
-          switch (TAVSticker.4.$SwitchMap$com$tencent$tavsticker$model$TAVSticker$TAVStickerAnimationMode[this.animationMode.ordinal()])
-          {
-          default: 
-            return d2;
-          case 1: 
-            return Math.min(1.0D, l1 * 1.0D / l2);
-          }
+        d1 = 1.0D;
+      }
+      else
+      {
+        d1 = paramLong;
+        Double.isNaN(d1);
+        d2 = l2;
+        Double.isNaN(d2);
+        d1 = Math.min(1.0D, d1 * 1.0D / d2);
+      }
+      int i = TAVSticker.4.$SwitchMap$com$tencent$tavsticker$model$TAVSticker$TAVStickerAnimationMode[this.animationMode.ordinal()];
+      if (i != 1)
+      {
+        if (i != 2) {
+          return d1;
         }
-        d1 = d2;
-      } while (this.timeRange == null);
-      d3 = this.timeRange.getDurationUs() * 1.0D / 1000.0D;
-      d1 = d2;
-    } while (d3 <= l2);
-    return Math.min(1.0D, l1 * 1.0D / d3);
+        localObject = this.timeRange;
+        if (localObject == null) {
+          return d1;
+        }
+        d2 = ((CMTimeRange)localObject).getDurationUs();
+        Double.isNaN(d2);
+        d2 = d2 * 1.0D / 1000.0D;
+        if (d2 > l2)
+        {
+          d1 = l1;
+          Double.isNaN(d1);
+          return Math.min(1.0D, d1 * 1.0D / d2);
+        }
+      }
+      else
+      {
+        d1 = l1;
+        Double.isNaN(d1);
+        d2 = l2;
+        Double.isNaN(d2);
+        d1 = Math.min(1.0D, d1 * 1.0D / d2);
+      }
+      return d1;
+    }
+    return 0.0D;
   }
   
   public long durationTime()
   {
-    if (this.pagFile != null) {
-      return this.pagFile.duration();
+    PAGFile localPAGFile = this.pagFile;
+    if (localPAGFile != null) {
+      return localPAGFile.duration();
     }
     return 0L;
   }
@@ -365,30 +382,30 @@ public class TAVSticker
   
   public ByteBuffer getAudioData()
   {
-    Object localObject1 = null;
-    if (this.pagRenderer == null) {}
-    Object localObject2;
-    do
+    Object localObject = this.pagRenderer;
+    if (localObject == null) {
+      return null;
+    }
+    localObject = ((PAGRenderer)localObject).getRootComposition();
+    if (localObject != null)
     {
-      do
-      {
-        return localObject1;
-        localObject2 = this.pagRenderer.getRootComposition();
-      } while (localObject2 == null);
-      localObject2 = ((PAGComposition)localObject2).audioBytes();
-      localObject1 = localObject2;
-    } while (localObject2 == null);
-    ((ByteBuffer)localObject2).rewind();
-    return localObject2;
+      localObject = ((PAGComposition)localObject).audioBytes();
+      if (localObject != null) {
+        ((ByteBuffer)localObject).rewind();
+      }
+      return localObject;
+    }
+    return null;
   }
   
   public float getAudioStartTime()
   {
-    if (this.pagRenderer != null)
+    Object localObject = this.pagRenderer;
+    if (localObject != null)
     {
-      PAGComposition localPAGComposition = this.pagRenderer.getRootComposition();
-      if (localPAGComposition != null) {
-        return TAVStickerUtil.microsecond2Seconds(localPAGComposition.audioStartTime());
+      localObject = ((PAGRenderer)localObject).getRootComposition();
+      if (localObject != null) {
+        return TAVStickerUtil.microsecond2Seconds(((PAGComposition)localObject).audioStartTime());
       }
     }
     return 0.0F;
@@ -397,36 +414,32 @@ public class TAVSticker
   public List<TAVStickerLayerInfo.TAVStickerUserData> getAudioUserDatas()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.pagRenderer == null) {}
-    Object localObject1;
-    do
+    Object localObject1 = this.pagRenderer;
+    if (localObject1 == null) {
+      return localArrayList;
+    }
+    localObject1 = ((PAGRenderer)localObject1).getRootComposition();
+    if (localObject1 == null) {
+      return localArrayList;
+    }
+    localObject1 = ((PAGComposition)localObject1).audioMarkers();
+    if (localObject1 != null)
     {
-      do
-      {
+      if (localObject1.length <= 0) {
         return localArrayList;
-        localObject1 = this.pagRenderer.getRootComposition();
-      } while (localObject1 == null);
-      localObject1 = ((PAGComposition)localObject1).audioMarkers();
-    } while ((localObject1 == null) || (localObject1.length <= 0));
-    int j = localObject1.length;
-    int i = 0;
-    label55:
-    Object localObject2;
-    if (i < j)
-    {
-      localObject2 = localObject1[i];
-      if (localObject2 != null) {
-        break label78;
+      }
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject2 = localObject1[i];
+        if (localObject2 != null) {
+          localArrayList.add(new TAVStickerLayerInfo.TAVStickerUserData(new CMTimeRange(new CMTime(TAVStickerUtil.microsecond2Seconds(localObject2.mStartTime)), new CMTime(TAVStickerUtil.microsecond2Seconds(localObject2.mDuration))), localObject2.mComment));
+        }
+        i += 1;
       }
     }
-    for (;;)
-    {
-      i += 1;
-      break label55;
-      break;
-      label78:
-      localArrayList.add(new TAVStickerLayerInfo.TAVStickerUserData(new CMTimeRange(new CMTime(TAVStickerUtil.microsecond2Seconds(localObject2.mStartTime)), new CMTime(TAVStickerUtil.microsecond2Seconds(localObject2.mDuration))), localObject2.mComment));
-    }
+    return localArrayList;
   }
   
   public float getCenterX()
@@ -457,8 +470,9 @@ public class TAVSticker
   
   public int getHeight()
   {
-    if (this.pagFile != null) {
-      return this.pagFile.height();
+    PAGFile localPAGFile = this.pagFile;
+    if (localPAGFile != null) {
+      return localPAGFile.height();
     }
     return 0;
   }
@@ -729,8 +743,9 @@ public class TAVSticker
   
   public int getWidth()
   {
-    if (this.pagFile != null) {
-      return this.pagFile.width();
+    PAGFile localPAGFile = this.pagFile;
+    if (localPAGFile != null) {
+      return localPAGFile.width();
     }
     return 0;
   }
@@ -749,23 +764,23 @@ public class TAVSticker
     {
       if (!TextUtils.isEmpty(this.filePath)) {
         this.pagFile = TAVPAGFileManager.getInstance().getPAGFileFromPath(this.filePath);
+      } else if (!TextUtils.isEmpty(this.assetFilePath)) {
+        this.pagFile = TAVPAGFileManager.getInstance().getPAGFileFromAsset(TAVStickerHelper.getContext(), this.assetFilePath);
       }
-      while (this.pagFile == null)
+      if (this.pagFile != null)
       {
-        throw new StickerInitializationException("<init> can not initialization TAVSticker, please check the pag file path is correct! Please make sure to use the legal pag file!");
-        if (!TextUtils.isEmpty(this.assetFilePath)) {
-          this.pagFile = TAVPAGFileManager.getInstance().getPAGFileFromAsset(TAVStickerHelper.getContext(), this.assetFilePath);
+        this.uniqueId = UUID.randomUUID().toString();
+        if (TextUtils.isEmpty(this.stickerId)) {
+          this.stickerId = this.uniqueId;
         }
+        this.rendererList = new CopyOnWriteArrayList();
+        this.pagRenderer.setFile(this.pagFile);
+        updateTextData();
+        updateImageData();
+        this.isInit = true;
+        return this;
       }
-      this.uniqueId = UUID.randomUUID().toString();
-      if (TextUtils.isEmpty(this.stickerId)) {
-        this.stickerId = this.uniqueId;
-      }
-      this.rendererList = new ArrayList();
-      this.pagRenderer.setFile(this.pagFile);
-      updateTextData();
-      updateImageData();
-      this.isInit = true;
+      throw new StickerInitializationException("<init> can not initialization TAVSticker, please check the pag file path is correct! Please make sure to use the legal pag file!");
     }
     return this;
   }
@@ -807,8 +822,12 @@ public class TAVSticker
   
   public void registerRenderer(ITAVStickerRenderer paramITAVStickerRenderer)
   {
-    if ((paramITAVStickerRenderer != null) && (this.rendererList != null) && (!this.rendererList.contains(paramITAVStickerRenderer))) {
-      this.rendererList.add(paramITAVStickerRenderer);
+    if (paramITAVStickerRenderer != null)
+    {
+      CopyOnWriteArrayList localCopyOnWriteArrayList = this.rendererList;
+      if ((localCopyOnWriteArrayList != null) && (!localCopyOnWriteArrayList.contains(paramITAVStickerRenderer))) {
+        this.rendererList.add(paramITAVStickerRenderer);
+      }
     }
     updateTextData();
     updateImageData();
@@ -956,68 +975,45 @@ public class TAVSticker
   
   public String toString()
   {
-    return "TAVSticker {filePath : " + this.filePath + ", uniqueId : " + this.uniqueId + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVSticker {filePath : ");
+    localStringBuilder.append(this.filePath);
+    localStringBuilder.append(", uniqueId : ");
+    localStringBuilder.append(this.uniqueId);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void unregisterRenderer(ITAVStickerRenderer paramITAVStickerRenderer)
   {
-    if (this.rendererList != null) {
-      this.rendererList.remove(paramITAVStickerRenderer);
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.rendererList;
+    if (localCopyOnWriteArrayList != null) {
+      localCopyOnWriteArrayList.remove(paramITAVStickerRenderer);
     }
   }
   
   public void updateImageData()
   {
-    if ((this.pagFile == null) || (this.pagFile.numImages() <= 0) || (CollectionUtil.isEmptyList(this.imageList))) {
-      return;
-    }
-    this.pagFile.numImages();
-    ArrayList localArrayList = getStickerImageItems();
-    int i = 0;
-    label43:
-    TAVStickerImageItem localTAVStickerImageItem;
-    if (i < localArrayList.size())
+    Object localObject = this.pagFile;
+    if ((localObject != null) && (((PAGFile)localObject).numImages() > 0))
     {
-      localTAVStickerImageItem = (TAVStickerImageItem)localArrayList.get(i);
-      if ((localTAVStickerImageItem != null) && (!CollectionUtil.isEmptyList(this.rendererList))) {
-        break label85;
+      if (CollectionUtil.isEmptyList(this.imageList)) {
+        return;
       }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label43;
-      break;
-      label85:
-      Iterator localIterator = this.rendererList.iterator();
-      while (localIterator.hasNext())
-      {
-        ITAVStickerRenderer localITAVStickerRenderer = (ITAVStickerRenderer)localIterator.next();
-        if ((localITAVStickerRenderer != null) && (localTAVStickerImageItem.getBitmap() != null)) {
-          localITAVStickerRenderer.setImageData(localTAVStickerImageItem.layerIndex, PAGImage.FromBitmap(localTAVStickerImageItem.getBitmap()));
-        }
-      }
-    }
-  }
-  
-  public void updateLayerColor()
-  {
-    if (CollectionUtil.isEmptyList(this.solidList)) {}
-    for (;;)
-    {
-      return;
+      this.pagFile.numImages();
+      localObject = getStickerImageItems();
       int i = 0;
-      while (i < this.solidList.size())
+      while (i < ((List)localObject).size())
       {
-        TAVStickerSolidItem localTAVStickerSolidItem = (TAVStickerSolidItem)this.solidList.get(i);
-        if ((localTAVStickerSolidItem != null) && (!CollectionUtil.isEmptyList(this.rendererList)))
+        TAVStickerImageItem localTAVStickerImageItem = (TAVStickerImageItem)((List)localObject).get(i);
+        if ((localTAVStickerImageItem != null) && (!CollectionUtil.isEmptyList(this.rendererList)))
         {
           Iterator localIterator = this.rendererList.iterator();
           while (localIterator.hasNext())
           {
             ITAVStickerRenderer localITAVStickerRenderer = (ITAVStickerRenderer)localIterator.next();
-            if (localITAVStickerRenderer != null) {
-              localITAVStickerRenderer.setLayerColor(localTAVStickerSolidItem.getLayerIndex(), localTAVStickerSolidItem.getColor());
+            if ((localITAVStickerRenderer != null) && (localTAVStickerImageItem.getBitmap() != null)) {
+              localITAVStickerRenderer.setImageData(localTAVStickerImageItem.layerIndex, PAGImage.FromBitmap(localTAVStickerImageItem.getBitmap()));
             }
           }
         }
@@ -1026,31 +1022,52 @@ public class TAVSticker
     }
   }
   
+  public void updateLayerColor()
+  {
+    if (CollectionUtil.isEmptyList(this.solidList)) {
+      return;
+    }
+    int i = 0;
+    while (i < this.solidList.size())
+    {
+      TAVStickerSolidItem localTAVStickerSolidItem = (TAVStickerSolidItem)this.solidList.get(i);
+      if ((localTAVStickerSolidItem != null) && (!CollectionUtil.isEmptyList(this.rendererList)))
+      {
+        Iterator localIterator = this.rendererList.iterator();
+        while (localIterator.hasNext())
+        {
+          ITAVStickerRenderer localITAVStickerRenderer = (ITAVStickerRenderer)localIterator.next();
+          if (localITAVStickerRenderer != null) {
+            localITAVStickerRenderer.setLayerColor(localTAVStickerSolidItem.getLayerIndex(), localTAVStickerSolidItem.getColor());
+          }
+        }
+      }
+      i += 1;
+    }
+  }
+  
   public void updateTextData()
   {
-    if (CollectionUtil.isEmptyList(this.rendererList)) {}
-    List localList;
-    do
-    {
+    if (CollectionUtil.isEmptyList(this.rendererList)) {
       return;
-      localList = getPAGTextListFromFile();
-    } while (CollectionUtil.isEmptyList(localList));
+    }
+    List localList = getPAGTextListFromFile();
+    if (CollectionUtil.isEmptyList(localList)) {
+      return;
+    }
     int j = localList.size();
     int i = 0;
-    label32:
-    PAGText localPAGText;
-    Object localObject;
-    if ((i < j) && (i < getStickerTextItems().size()))
+    while ((i < j) && (i < getStickerTextItems().size()))
     {
-      localPAGText = (PAGText)localList.get(i);
-      localObject = (TAVStickerTextItem)getStickerTextItems().get(i);
+      PAGText localPAGText = (PAGText)localList.get(i);
+      Object localObject = (TAVStickerTextItem)getStickerTextItems().get(i);
       if ((localPAGText != null) && (localObject != null))
       {
-        if (TextUtils.isEmpty(((TAVStickerTextItem)localObject).getText())) {
-          break label181;
+        if (!TextUtils.isEmpty(((TAVStickerTextItem)localObject).getText())) {
+          localPAGText.text = ((TAVStickerTextItem)localObject).getText();
+        } else {
+          localPAGText.text = "";
         }
-        localPAGText.text = ((TAVStickerTextItem)localObject).getText();
-        label104:
         if (((TAVStickerTextItem)localObject).getTextColor() != 0) {
           localPAGText.fillColor = ((TAVStickerTextItem)localObject).getTextColor();
         }
@@ -1060,34 +1077,25 @@ public class TAVSticker
         if (!TextUtils.isEmpty(((TAVStickerTextItem)localObject).getFontStyle())) {
           localPAGText.fontStyle = ((TAVStickerTextItem)localObject).getFontStyle();
         }
-        if (!CollectionUtil.isEmptyList(this.rendererList)) {
-          break label191;
+        if (!CollectionUtil.isEmptyList(this.rendererList))
+        {
+          localObject = this.rendererList.iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            ITAVStickerRenderer localITAVStickerRenderer = (ITAVStickerRenderer)((Iterator)localObject).next();
+            if (localITAVStickerRenderer != null) {
+              localITAVStickerRenderer.setTextData(i, localPAGText);
+            }
+          }
         }
       }
-    }
-    for (;;)
-    {
       i += 1;
-      break label32;
-      break;
-      label181:
-      localPAGText.text = "";
-      break label104;
-      label191:
-      localObject = this.rendererList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ITAVStickerRenderer localITAVStickerRenderer = (ITAVStickerRenderer)((Iterator)localObject).next();
-        if (localITAVStickerRenderer != null) {
-          localITAVStickerRenderer.setTextData(i, localPAGText);
-        }
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVSticker
  * JD-Core Version:    0.7.0.1
  */

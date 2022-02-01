@@ -23,21 +23,29 @@ class PrepareView$1
     int j = (int)(paramLong / 1000L);
     int i = j / 60;
     j %= 60;
-    String str1 = Integer.toString(i);
-    String str2 = Integer.toString(j);
-    if (i < 10) {
-      str1 = "0" + Integer.toString(i);
+    Object localObject1 = Integer.toString(i);
+    Object localObject2 = Integer.toString(j);
+    if (i < 10)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("0");
+      ((StringBuilder)localObject1).append(Integer.toString(i));
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
-    if (j < 10) {
-      str2 = "0" + Integer.toString(j);
+    if (j < 10)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("0");
+      ((StringBuilder)localObject2).append(Integer.toString(j));
+      localObject2 = ((StringBuilder)localObject2).toString();
     }
-    PrepareView.a(this.a).setText(str1);
-    PrepareView.b(this.a).setText(str2);
+    PrepareView.a(this.a).setText((CharSequence)localObject1);
+    PrepareView.b(this.a).setText((CharSequence)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PrepareView.1
  * JD-Core Version:    0.7.0.1
  */

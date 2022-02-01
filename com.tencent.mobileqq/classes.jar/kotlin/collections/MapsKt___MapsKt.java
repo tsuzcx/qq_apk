@@ -43,7 +43,7 @@ class MapsKt___MapsKt
   public static final <K, V> boolean any(@NotNull Map<? extends K, ? extends V> paramMap)
   {
     Intrinsics.checkParameterIsNotNull(paramMap, "$this$any");
-    return !paramMap.isEmpty();
+    return paramMap.isEmpty() ^ true;
   }
   
   public static final <K, V> boolean any(@NotNull Map<? extends K, ? extends V> paramMap, @NotNull Function1<? super Map.Entry<? extends K, ? extends V>, Boolean> paramFunction1)
@@ -85,11 +85,12 @@ class MapsKt___MapsKt
   {
     Intrinsics.checkParameterIsNotNull(paramMap, "$this$count");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    if (paramMap.isEmpty()) {
+    boolean bool = paramMap.isEmpty();
+    int i = 0;
+    if (bool) {
       return 0;
     }
     paramMap = paramMap.entrySet().iterator();
-    int i = 0;
     while (paramMap.hasNext()) {
       if (((Boolean)paramFunction1.invoke((Map.Entry)paramMap.next())).booleanValue()) {
         i += 1;
@@ -199,33 +200,34 @@ class MapsKt___MapsKt
   private static final <K, V, R extends Comparable<? super R>> Map.Entry<K, V> maxBy(@NotNull Map<? extends K, ? extends V> paramMap, Function1<? super Map.Entry<? extends K, ? extends V>, ? extends R> paramFunction1)
   {
     Iterator localIterator = ((Iterable)paramMap.entrySet()).iterator();
-    if (!localIterator.hasNext()) {
+    if (!localIterator.hasNext())
+    {
       paramMap = null;
     }
-    label118:
-    for (;;)
+    else
     {
-      return (Map.Entry)paramMap;
       paramMap = localIterator.next();
       if (localIterator.hasNext())
       {
         Object localObject1 = (Comparable)paramFunction1.invoke(paramMap);
-        Object localObject2 = localIterator.next();
-        Comparable localComparable = (Comparable)paramFunction1.invoke(localObject2);
-        if (((Comparable)localObject1).compareTo(localComparable) < 0)
+        Map<? extends K, ? extends V> localMap = paramMap;
+        do
         {
-          paramMap = localObject2;
-          localObject1 = localComparable;
-        }
-        for (;;)
-        {
-          if (!localIterator.hasNext()) {
-            break label118;
+          Object localObject3 = localIterator.next();
+          Comparable localComparable = (Comparable)paramFunction1.invoke(localObject3);
+          paramMap = localMap;
+          Object localObject2 = localObject1;
+          if (((Comparable)localObject1).compareTo(localComparable) < 0)
+          {
+            paramMap = localObject3;
+            localObject2 = localComparable;
           }
-          break;
-        }
+          localMap = paramMap;
+          localObject1 = localObject2;
+        } while (localIterator.hasNext());
       }
     }
+    return (Map.Entry)paramMap;
   }
   
   @InlineOnly
@@ -240,33 +242,34 @@ class MapsKt___MapsKt
     Intrinsics.checkParameterIsNotNull(paramMap, "$this$minBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
     Iterator localIterator = ((Iterable)paramMap.entrySet()).iterator();
-    if (!localIterator.hasNext()) {
+    if (!localIterator.hasNext())
+    {
       paramMap = null;
     }
-    label130:
-    for (;;)
+    else
     {
-      return (Map.Entry)paramMap;
       paramMap = localIterator.next();
       if (localIterator.hasNext())
       {
         Object localObject1 = (Comparable)paramFunction1.invoke(paramMap);
-        Object localObject2 = localIterator.next();
-        Comparable localComparable = (Comparable)paramFunction1.invoke(localObject2);
-        if (((Comparable)localObject1).compareTo(localComparable) > 0)
+        Map<? extends K, ? extends V> localMap = paramMap;
+        do
         {
-          paramMap = localObject2;
-          localObject1 = localComparable;
-        }
-        for (;;)
-        {
-          if (!localIterator.hasNext()) {
-            break label130;
+          Object localObject3 = localIterator.next();
+          Comparable localComparable = (Comparable)paramFunction1.invoke(localObject3);
+          paramMap = localMap;
+          Object localObject2 = localObject1;
+          if (((Comparable)localObject1).compareTo(localComparable) > 0)
+          {
+            paramMap = localObject3;
+            localObject2 = localComparable;
           }
-          break;
-        }
+          localMap = paramMap;
+          localObject1 = localObject2;
+        } while (localIterator.hasNext());
       }
     }
+    return (Map.Entry)paramMap;
   }
   
   @Nullable
@@ -339,7 +342,7 @@ class MapsKt___MapsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.MapsKt___MapsKt
  * JD-Core Version:    0.7.0.1
  */

@@ -33,14 +33,15 @@ public final class comm_qzone_report_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mapQzoneReportReq != null) {
-      paramJceOutputStream.write(this.mapQzoneReportReq, 0);
+    Map localMap = this.mapQzoneReportReq;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.comm_qzone_report_req
  * JD-Core Version:    0.7.0.1
  */

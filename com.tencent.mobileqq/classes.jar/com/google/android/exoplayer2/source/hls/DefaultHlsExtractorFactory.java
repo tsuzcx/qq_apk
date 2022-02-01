@@ -32,81 +32,72 @@ public final class DefaultHlsExtractorFactory
   
   public Pair<Extractor, Boolean> createExtractor(Extractor paramExtractor, Uri paramUri, Format paramFormat, List<Format> paramList, DrmInitData paramDrmInitData, TimestampAdjuster paramTimestampAdjuster)
   {
-    boolean bool2 = false;
-    String str = paramUri.getLastPathSegment();
-    boolean bool1;
-    if (("text/vtt".equals(paramFormat.sampleMimeType)) || (str.endsWith(".webvtt")) || (str.endsWith(".vtt")))
+    paramUri = paramUri.getLastPathSegment();
+    boolean bool2 = "text/vtt".equals(paramFormat.sampleMimeType);
+    boolean bool1 = false;
+    if ((!bool2) && (!paramUri.endsWith(".webvtt")) && (!paramUri.endsWith(".vtt")))
     {
-      paramUri = new WebvttExtractor(paramFormat.language, paramTimestampAdjuster);
-      bool1 = bool2;
-    }
-    do
-    {
+      if (paramUri.endsWith(".aac")) {
+        paramExtractor = new AdtsExtractor();
+      }
       for (;;)
       {
-        return Pair.create(paramUri, Boolean.valueOf(bool1));
-        if (str.endsWith(".aac"))
+        bool1 = true;
+        break;
+        if ((!paramUri.endsWith(".ac3")) && (!paramUri.endsWith(".ec3")))
         {
-          paramUri = new AdtsExtractor();
-          bool1 = true;
-        }
-        else if ((str.endsWith(".ac3")) || (str.endsWith(".ec3")))
-        {
-          paramUri = new Ac3Extractor();
-          bool1 = true;
-        }
-        else
-        {
-          if (!str.endsWith(".mp3")) {
+          if (paramUri.endsWith(".mp3"))
+          {
+            paramExtractor = new Mp3Extractor(0, 0L);
+          }
+          else
+          {
+            if (paramExtractor != null) {
+              break;
+            }
+            if ((!paramUri.endsWith(".mp4")) && (!paramUri.startsWith(".m4", paramUri.length() - 4)) && (!paramUri.startsWith(".mp4", paramUri.length() - 5)))
+            {
+              int i = 16;
+              if (paramList != null) {
+                i = 48;
+              } else {
+                paramList = Collections.emptyList();
+              }
+              paramExtractor = paramFormat.codecs;
+              int k = i;
+              if (!TextUtils.isEmpty(paramExtractor))
+              {
+                int j = i;
+                if (!"audio/mp4a-latm".equals(MimeTypes.getAudioMediaMimeType(paramExtractor))) {
+                  j = i | 0x2;
+                }
+                k = j;
+                if (!"video/avc".equals(MimeTypes.getVideoMediaMimeType(paramExtractor))) {
+                  k = j | 0x4;
+                }
+              }
+              paramExtractor = new TsExtractor(2, paramTimestampAdjuster, new DefaultTsPayloadReaderFactory(k, paramList));
+              break;
+            }
+            if (paramList == null) {
+              paramList = Collections.emptyList();
+            }
+            paramExtractor = new FragmentedMp4Extractor(0, paramTimestampAdjuster, null, paramDrmInitData, paramList);
             break;
           }
-          paramUri = new Mp3Extractor(0, 0L);
-          bool1 = true;
+        }
+        else {
+          paramExtractor = new Ac3Extractor();
         }
       }
-      bool1 = bool2;
-      paramUri = paramExtractor;
-    } while (paramExtractor != null);
-    if ((str.endsWith(".mp4")) || (str.startsWith(".m4", str.length() - 4)) || (str.startsWith(".mp4", str.length() - 5)))
-    {
-      if (paramList != null) {}
-      for (;;)
-      {
-        paramUri = new FragmentedMp4Extractor(0, paramTimestampAdjuster, null, paramDrmInitData, paramList);
-        bool1 = bool2;
-        break;
-        paramList = Collections.emptyList();
-      }
     }
-    int i = 16;
-    if (paramList != null) {
-      i = 48;
-    }
-    for (;;)
-    {
-      paramExtractor = paramFormat.codecs;
-      int k = i;
-      if (!TextUtils.isEmpty(paramExtractor))
-      {
-        int j = i;
-        if (!"audio/mp4a-latm".equals(MimeTypes.getAudioMediaMimeType(paramExtractor))) {
-          j = i | 0x2;
-        }
-        k = j;
-        if (!"video/avc".equals(MimeTypes.getVideoMediaMimeType(paramExtractor))) {
-          k = j | 0x4;
-        }
-      }
-      paramUri = new TsExtractor(2, paramTimestampAdjuster, new DefaultTsPayloadReaderFactory(k, paramList));
-      bool1 = bool2;
-      break;
-      paramList = Collections.emptyList();
-    }
+    paramExtractor = new WebvttExtractor(paramFormat.language, paramTimestampAdjuster);
+    return Pair.create(paramExtractor, Boolean.valueOf(bool1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.DefaultHlsExtractorFactory
  * JD-Core Version:    0.7.0.1
  */

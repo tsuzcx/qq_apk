@@ -63,40 +63,48 @@ public final class IPCSDKDownloadInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.packageName, 0);
-    if (this.appId != null) {
-      paramJceOutputStream.write(this.appId, 1);
+    String str = this.appId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.appName != null) {
-      paramJceOutputStream.write(this.appName, 3);
+    str = this.appName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.appIconUrl != null) {
-      paramJceOutputStream.write(this.appIconUrl, 4);
+    str = this.appIconUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.appState, 5);
     paramJceOutputStream.write(this.receivedLen, 6);
     paramJceOutputStream.write(this.totalLen, 7);
     paramJceOutputStream.write(this.downloadFinishTime, 8);
     paramJceOutputStream.write(this.installFinishTime, 9);
-    if (this.via != null) {
-      paramJceOutputStream.write(this.via, 10);
+    str = this.via;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.extra != null) {
-      paramJceOutputStream.write(this.extra, 11);
+    str = this.extra;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 12);
+    str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
-    if (this.versionCode != null) {
-      paramJceOutputStream.write(this.versionCode, 13);
+    str = this.versionCode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
-    if (this.grayVersionCode != null) {
-      paramJceOutputStream.write(this.grayVersionCode, 14);
+    str = this.grayVersionCode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCSDKDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

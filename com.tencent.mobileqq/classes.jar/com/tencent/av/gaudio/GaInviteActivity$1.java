@@ -12,8 +12,13 @@ class GaInviteActivity$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.isFinishing()) {}
-    while (((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) || (paramInt == 1)) {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    if ((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) {
+      return;
+    }
+    if (paramInt == 1) {
       return;
     }
     ChatActivityUtils.a(this.a, true, new GaInviteActivity.1.1(this));
@@ -21,7 +26,7 @@ class GaInviteActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteActivity.1
  * JD-Core Version:    0.7.0.1
  */

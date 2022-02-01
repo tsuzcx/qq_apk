@@ -29,18 +29,18 @@ public class SwiftBrowserStateMachineScheduler
   public void a(Bundle paramBundle)
   {
     this.b = false;
-    do
+    while (!this.b)
     {
-      while (!this.b) {
-        switch (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSchedulerSwiftBrowserStateMachineScheduler$StateMachine.a(paramBundle))
+      int i = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSchedulerSwiftBrowserStateMachineScheduler$StateMachine.a(paramBundle);
+      if (i != -1) {
+        if ((i == 1) && (this.jdField_a_of_type_Boolean))
         {
+          Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+          localMessage.setData(paramBundle);
+          this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
         }
       }
-      return;
-    } while (!this.jdField_a_of_type_Boolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    localMessage.setData(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    }
   }
   
   public void b()
@@ -51,9 +51,7 @@ public class SwiftBrowserStateMachineScheduler
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return false;
     }
     if (!this.b) {
@@ -64,7 +62,7 @@ public class SwiftBrowserStateMachineScheduler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.scheduler.SwiftBrowserStateMachineScheduler
  * JD-Core Version:    0.7.0.1
  */

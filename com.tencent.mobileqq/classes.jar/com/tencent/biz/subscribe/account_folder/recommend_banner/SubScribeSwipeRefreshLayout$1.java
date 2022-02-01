@@ -14,27 +14,24 @@ class SubScribeSwipeRefreshLayout$1
   
   public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramMotionEvent.getAction() == 0)
     {
-    }
-    int i;
-    int j;
-    do
-    {
-      do
+      int i = (int)(paramMotionEvent.getX() + 0.5F);
+      int j = (int)(paramMotionEvent.getY() + 0.5F);
+      if (SubScribeSwipeRefreshLayout.a(this.a) != null)
       {
-        return true;
-        i = (int)(paramMotionEvent.getX() + 0.5F);
-        j = (int)(paramMotionEvent.getY() + 0.5F);
-      } while (SubScribeSwipeRefreshLayout.a(this.a) == null);
-      SubScribeSwipeRefreshLayout.a(this.a).getLocalVisibleRect(SubScribeSwipeRefreshLayout.a(this.a));
-    } while (!SubScribeSwipeRefreshLayout.a(this.a).contains(i, j));
-    return false;
+        SubScribeSwipeRefreshLayout.a(this.a).getLocalVisibleRect(SubScribeSwipeRefreshLayout.a(this.a));
+        if (SubScribeSwipeRefreshLayout.a(this.a).contains(i, j)) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout.1
  * JD-Core Version:    0.7.0.1
  */

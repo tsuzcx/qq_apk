@@ -9,15 +9,16 @@ public final class GdtActivityLifecycleManager
   
   public static GdtActivityLifecycleManager a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new GdtActivityLifecycleManager();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new GdtActivityLifecycleManager();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public void a()
@@ -28,7 +29,7 @@ public final class GdtActivityLifecycleManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtActivityLifecycleManager
  * JD-Core Version:    0.7.0.1
  */

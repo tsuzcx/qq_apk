@@ -13,23 +13,23 @@ public class GenderRange
   
   public boolean isHit()
   {
-    return (this.min <= this.value) && (this.value < this.max);
+    float f1 = this.min;
+    float f2 = this.value;
+    return (f1 <= f2) && (f2 < this.max);
   }
   
   public void setValue(float paramFloat)
   {
-    if (this.value < 0.0F) {}
-    for (;;)
-    {
-      this.value = paramFloat;
-      return;
-      paramFloat = this.value;
+    float f = this.value;
+    if (f >= 0.0F) {
+      paramFloat = f;
     }
+    this.value = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.model.GenderRange
  * JD-Core Version:    0.7.0.1
  */

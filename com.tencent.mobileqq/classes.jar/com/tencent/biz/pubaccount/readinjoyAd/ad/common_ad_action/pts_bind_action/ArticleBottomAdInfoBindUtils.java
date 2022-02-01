@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.pts_bind_action;
 
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
 import org.json.JSONObject;
 
 public class ArticleBottomAdInfoBindUtils
@@ -14,30 +14,22 @@ public class ArticleBottomAdInfoBindUtils
     try
     {
       paramJSONObject.put("visible_three", "show");
-      String str;
-      if (TextUtils.isEmpty(paramAdData.i))
-      {
-        str = paramAdData.A;
-        paramJSONObject.put("author_text", str);
-        paramJSONObject.put("title", paramAdData.b);
-        paramJSONObject.put("author_icon", paramAdData.B);
-        if (paramAdData.D != null) {
-          break label101;
-        }
+      if (TextUtils.isEmpty(paramAdData.q)) {
+        str = paramAdData.I;
+      } else {
+        str = paramAdData.q;
+      }
+      paramJSONObject.put("author_text", str);
+      paramJSONObject.put("title", paramAdData.j);
+      paramJSONObject.put("author_icon", paramAdData.J);
+      String str = paramAdData.L;
+      if (str == null) {
         paramJSONObject.put("dislike_text_android", "广告");
+      } else if (!TextUtils.isEmpty(paramAdData.L)) {
+        paramJSONObject.put("dislike_text_android", paramAdData.L);
       }
-      for (;;)
-      {
-        paramJSONObject.put("article_model", paramAdData);
-        paramJSONObject.put("seperator_visible", "show");
-        return;
-        str = paramAdData.i;
-        break;
-        label101:
-        if (!TextUtils.isEmpty(paramAdData.D)) {
-          paramJSONObject.put("dislike_text_android", paramAdData.D);
-        }
-      }
+      paramJSONObject.put("article_model", paramAdData);
+      paramJSONObject.put("seperator_visible", "show");
       return;
     }
     catch (Exception paramAdData) {}
@@ -45,7 +37,7 @@ public class ArticleBottomAdInfoBindUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.pts_bind_action.ArticleBottomAdInfoBindUtils
  * JD-Core Version:    0.7.0.1
  */

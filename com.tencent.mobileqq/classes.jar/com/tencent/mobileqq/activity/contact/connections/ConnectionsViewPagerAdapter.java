@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.util.SimpleArrayMap;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import com.tencent.mobileqq.app.BaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -41,17 +41,28 @@ public class ConnectionsViewPagerAdapter
     {
       localConnectionsExplorationClidFragment.a(localConnectionsTabInfo.a);
       localConnectionsExplorationClidFragment.b(paramInt);
-      if (localConnectionsTabInfo.a != 23) {
-        break label68;
+      boolean bool;
+      if (localConnectionsTabInfo.a == 23) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label68:
-    for (boolean bool = true;; bool = false)
-    {
       localConnectionsExplorationClidFragment.a(bool);
-      this.jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap.put(Integer.valueOf(paramInt), localConnectionsExplorationClidFragment);
-      return localConnectionsExplorationClidFragment;
     }
+    this.jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap.put(Integer.valueOf(paramInt), localConnectionsExplorationClidFragment);
+    return localConnectionsExplorationClidFragment;
+  }
+  
+  public BaseFragment a(int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getItem:");
+      localStringBuilder.append(paramInt);
+      QLog.d("ConnectionsViewPagerAdapter", 2, localStringBuilder.toString());
+    }
+    return a(paramInt);
   }
   
   public void a()
@@ -72,8 +83,12 @@ public class ConnectionsViewPagerAdapter
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    if (QLog.isColorLevel()) {
-      QLog.i("ConnectionsViewPagerAdapter", 2, "tabDatasUpdated. size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    if (QLog.isColorLevel())
+    {
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("tabDatasUpdated. size:");
+      paramArrayList.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      QLog.i("ConnectionsViewPagerAdapter", 2, paramArrayList.toString());
     }
     notifyDataSetChanged();
   }
@@ -86,23 +101,19 @@ public class ConnectionsViewPagerAdapter
   
   public int getCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConnectionsViewPagerAdapter", 2, "getCount. size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCount. size:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      QLog.i("ConnectionsViewPagerAdapter", 2, localStringBuilder.toString());
     }
     return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsViewPagerAdapter", 2, "getItem:" + paramInt);
-    }
-    return a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectionsViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

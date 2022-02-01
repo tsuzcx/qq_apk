@@ -32,16 +32,18 @@ public final class gallery_report$GalleryClickReported
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 37, 42, 48, 56, 64, 74, 80, 88, 96, 106, 112, 402 }, new String[] { "phone_type", "client_ver", "source", "mem_size", "city", "clicktime", "go_away_time", "no_use_time", "one_pic_reported", "pic_num", "pos", "is_read_end", "rowkey", "is_read_repeaded", "proxy_bytes" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Float.valueOf(0.0F), localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), localByteStringMicro4 }, GalleryClickReported.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 37, 42, 48, 56, 64, 74, 80, 88, 96, 106, 112, 402 }, new String[] { "phone_type", "client_ver", "source", "mem_size", "city", "clicktime", "go_away_time", "no_use_time", "one_pic_reported", "pic_num", "pos", "is_read_end", "rowkey", "is_read_repeaded", "proxy_bytes" }, new Object[] { localInteger, localByteStringMicro1, localInteger, Float.valueOf(0.0F), localByteStringMicro2, localLong, localLong, localLong, null, localInteger, localInteger, localInteger, localByteStringMicro3, localInteger, localByteStringMicro4 }, GalleryClickReported.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.gallery.gallery_report.GalleryClickReported
  * JD-Core Version:    0.7.0.1
  */

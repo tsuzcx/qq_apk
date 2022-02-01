@@ -32,11 +32,11 @@ public class RockDownloaderProxy
   
   public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable RockDownloadListener paramRockDownloadListener)
   {
-    if (!NetworkUtil.a(BaseApplicationImpl.context))
+    if (!NetworkUtil.isWifiEnabled(BaseApplicationImpl.context))
     {
       if (paramRockDownloadListener != null)
       {
-        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, HardCodeUtil.a(2131713448), 10009);
+        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, HardCodeUtil.a(2131713416), 10009);
         paramRockDownloadListener.onDownloadFinish(paramRockDownloadInfo);
       }
       return;
@@ -69,7 +69,7 @@ public class RockDownloaderProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderProxy
  * JD-Core Version:    0.7.0.1
  */

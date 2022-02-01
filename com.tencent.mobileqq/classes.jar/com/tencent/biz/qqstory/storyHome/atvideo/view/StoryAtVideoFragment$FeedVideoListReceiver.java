@@ -22,27 +22,27 @@ public class StoryAtVideoFragment$FeedVideoListReceiver
   
   public void a(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
   {
-    if ((!paramGetVideoListEvent.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) || (paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem == null))
+    if ((paramGetVideoListEvent.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) && (!paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem != null))
     {
-      SLog.b(this.TAG, "ignore this comment list event. %s.", paramGetVideoListEvent.toString());
+      if (!paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.c())
+      {
+        SLog.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramGetVideoListEvent.toString() });
+        return;
+      }
+      SLog.a(this.TAG, "receive comment list event. %s.", paramGetVideoListEvent.toString());
+      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(paramGetVideoListEvent.jdField_a_of_type_JavaUtilList, paramGetVideoListEvent.c);
+      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().updateVideoInfo(paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+      if (paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().size() < 1)
+      {
+        paramStoryAtVideoFragment.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+        paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
+        paramStoryAtVideoFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        return;
+      }
+      paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem);
       return;
     }
-    if (!paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.c())
-    {
-      SLog.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramGetVideoListEvent.toString() });
-      return;
-    }
-    SLog.a(this.TAG, "receive comment list event. %s.", paramGetVideoListEvent.toString());
-    paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(paramGetVideoListEvent.jdField_a_of_type_JavaUtilList, paramGetVideoListEvent.c);
-    paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().updateVideoInfo(paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-    if (paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().size() < 1)
-    {
-      paramStoryAtVideoFragment.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
-      paramStoryAtVideoFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      return;
-    }
-    paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem);
+    SLog.b(this.TAG, "ignore this comment list event. %s.", paramGetVideoListEvent.toString());
   }
   
   public Class acceptEventClass()
@@ -54,7 +54,7 @@ public class StoryAtVideoFragment$FeedVideoListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment.FeedVideoListReceiver
  * JD-Core Version:    0.7.0.1
  */

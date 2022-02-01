@@ -83,8 +83,6 @@ import com.tencent.mobileqq.mini.servlet.MiniAppReportLogFileServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppSearchAppServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppSendArkMsgServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppSetAuthsServlet;
-import com.tencent.mobileqq.mini.servlet.MiniAppSetUserAppLikeServlet;
-import com.tencent.mobileqq.mini.servlet.MiniAppSetUserAppTopServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppSetUserSwitchServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppStoreGetAppListServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppTranRoomIdServlet;
@@ -123,6 +121,7 @@ public class MiniAppCmdUtil
 {
   public static final String KEY_APPID = "key_appid";
   public static final String KEY_APP_INFO = "key_app_info";
+  public static final String KEY_APP_INFO_PB = "appInfo_pb";
   public static final String KEY_CMD_STRING = "key_cmd_string";
   public static final String KEY_ERROR_MSG = "errMsg";
   public static final String KEY_INDEX = "key_index";
@@ -165,38 +164,49 @@ public class MiniAppCmdUtil
   private int getCurrentListenerIndex(MiniAppCmdInterface paramMiniAppCmdInterface, String paramString)
   {
     int i = index.incrementAndGet();
-    if ((this.listenerMap != null) && (!this.listenerMap.containsKey(Integer.valueOf(i))) && (paramMiniAppCmdInterface != null))
+    Object localObject = this.listenerMap;
+    if ((localObject != null) && (!((ConcurrentHashMap)localObject).containsKey(Integer.valueOf(i))) && (paramMiniAppCmdInterface != null))
     {
       this.listenerMap.put(Integer.valueOf(i), paramMiniAppCmdInterface);
       return i;
     }
-    QLog.e(TAG, 1, paramString + " index error");
+    paramMiniAppCmdInterface = TAG;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" index error");
+    QLog.e(paramMiniAppCmdInterface, 1, ((StringBuilder)localObject).toString());
     return i;
   }
   
   private int getCurrentListenerIndex(MiniAppProxy.SenderListener paramSenderListener, String paramString)
   {
     int i = index.incrementAndGet();
-    if ((this.senderListenerMap != null) && (!this.senderListenerMap.containsKey(Integer.valueOf(i))) && (paramSenderListener != null))
+    Object localObject = this.senderListenerMap;
+    if ((localObject != null) && (!((ConcurrentHashMap)localObject).containsKey(Integer.valueOf(i))) && (paramSenderListener != null))
     {
       this.senderListenerMap.put(Integer.valueOf(i), paramSenderListener);
       return i;
     }
-    QLog.e(TAG, 1, paramString + " index error");
+    paramSenderListener = TAG;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" index error");
+    QLog.e(paramSenderListener, 1, ((StringBuilder)localObject).toString());
     return i;
   }
   
   public static MiniAppCmdUtil getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new MiniAppCmdUtil();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new MiniAppCmdUtil();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private void sendCloudRequest(String paramString1, String[] paramArrayOfString, MiniAppCmdInterface paramMiniAppCmdInterface, String paramString2)
@@ -211,43 +221,38 @@ public class MiniAppCmdUtil
   
   private boolean shouldUpdateExtConfig(String paramString1, String paramString2)
   {
-    if (paramString1.equals(paramString2)) {}
-    label80:
-    do
-    {
+    boolean bool2 = paramString1.equals(paramString2);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
-      paramString1 = paramString1.split("\\.");
-      paramString2 = paramString2.split("\\.");
-      int i = 0;
-      for (;;)
+    }
+    paramString1 = paramString1.split("\\.");
+    paramString2 = paramString2.split("\\.");
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramString1.length) {}
+      try
       {
-        for (;;)
-        {
-          if (i >= paramString1.length) {
-            break label80;
-          }
-          try
-          {
-            if (i >= paramString2.length) {
-              break;
-            }
-            int j = Integer.parseInt(paramString1[i]);
-            int k = Integer.parseInt(paramString2[i]);
-            if (j > k) {
-              break;
-            }
-            if (j < k) {
-              return true;
-            }
-          }
-          catch (Throwable paramString1)
-          {
-            return true;
-          }
+        if (i >= paramString2.length) {
+          return false;
+        }
+        int j = Integer.parseInt(paramString1[i]);
+        int k = Integer.parseInt(paramString2[i]);
+        if (j > k) {
+          return false;
+        }
+        if (j < k) {
+          return true;
         }
         i += 1;
       }
-    } while (paramString2.length <= paramString1.length);
+      catch (Throwable paramString1) {}
+    }
+    if (paramString2.length > paramString1.length) {
+      bool1 = true;
+    }
+    return bool1;
     return true;
   }
   
@@ -292,9 +297,9 @@ public class MiniAppCmdUtil
   
   public void checkNavigateRight(String paramString1, String paramString2, COMM.StCommonExt paramStCommonExt, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
+    int i = 0;
     if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
@@ -330,17 +335,13 @@ public class MiniAppCmdUtil
     try
     {
       paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-      paramMiniAppCmdInterface.putExtra("key_appid", paramString);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e(TAG, 1, "checkSession ", localException);
-      }
+      QLog.e(TAG, 1, "checkSession ", localException);
     }
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
   public void checkWxPayUrl(String paramString1, String paramString2, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -415,9 +416,9 @@ public class MiniAppCmdUtil
   
   public void getAppInfoById(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, String paramString4, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
+    int i = 0;
     if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
@@ -447,9 +448,9 @@ public class MiniAppCmdUtil
   
   public void getAppInfoByIdForSDK(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, String paramString4, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
+    int i = 0;
     if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
@@ -474,9 +475,9 @@ public class MiniAppCmdUtil
   
   public void getAppInfoByLink(String paramString, int paramInt, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
+    int i = 0;
     if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
@@ -490,25 +491,21 @@ public class MiniAppCmdUtil
     try
     {
       paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-      paramMiniAppCmdInterface.putExtra("key_link", paramString);
-      paramMiniAppCmdInterface.putExtra("key_link_type", paramInt);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e(TAG, 1, "getAppInfoByLink ", localException);
-      }
+      QLog.e(TAG, 1, "getAppInfoByLink ", localException);
     }
+    paramMiniAppCmdInterface.putExtra("key_link", paramString);
+    paramMiniAppCmdInterface.putExtra("key_link_type", paramInt);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
   public void getAppInfoByLinkForSDK(String paramString, int paramInt, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
+    int i = 0;
     if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
@@ -522,18 +519,14 @@ public class MiniAppCmdUtil
     try
     {
       paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-      paramMiniAppCmdInterface.putExtra("key_link", paramString);
-      paramMiniAppCmdInterface.putExtra("key_link_type", paramInt);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e(TAG, 1, "getAppInfoByLinkForSDK ", localException);
-      }
+      QLog.e(TAG, 1, "getAppInfoByLinkForSDK ", localException);
     }
+    paramMiniAppCmdInterface.putExtra("key_link", paramString);
+    paramMiniAppCmdInterface.putExtra("key_link_type", paramInt);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
   public void getAuthList(COMM.StCommonExt paramStCommonExt, String paramString, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -580,42 +573,43 @@ public class MiniAppCmdUtil
   
   public void getExtConfigDetail(byte[] paramArrayOfByte, ArrayList<ExtConfigInfo> paramArrayList, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
-    for (;;)
+    if (paramArrayList != null)
     {
-      return;
-      ExtConfigInfo localExtConfigInfo = (ExtConfigInfo)paramArrayList.get(0);
-      String str;
-      if ((localExtConfigInfo != null) && (localExtConfigInfo.configVersion != null))
-      {
-        str = BaseApplicationImpl.getApplication().getSharedPreferences("MiniAppExtConfigDetail", 4).getString("MiniAppExtConfigDetail", null);
-        if (TextUtils.isEmpty(str)) {}
+      if (paramArrayList.isEmpty()) {
+        return;
       }
-      try
+      ExtConfigInfo localExtConfigInfo = (ExtConfigInfo)paramArrayList.get(0);
+      if (localExtConfigInfo != null)
       {
-        str = new JSONObject(str).optString("configVersion");
-        if (!TextUtils.isEmpty(str))
-        {
-          boolean bool = shouldUpdateExtConfig(str, localExtConfigInfo.configVersion);
-          if (!bool) {
-            continue;
+        if (localExtConfigInfo.configVersion == null) {
+          return;
+        }
+        String str = BaseApplicationImpl.getApplication().getSharedPreferences("MiniAppExtConfigDetail", 4).getString("MiniAppExtConfigDetail", null);
+        if (!TextUtils.isEmpty(str)) {
+          try
+          {
+            str = new JSONObject(str).optString("configVersion");
+            if (!TextUtils.isEmpty(str))
+            {
+              boolean bool = shouldUpdateExtConfig(str, localExtConfigInfo.configVersion);
+              if (!bool) {
+                return;
+              }
+            }
+          }
+          catch (Exception localException)
+          {
+            QLog.e(TAG, 1, "getExtConfigDetail parse json error", localException);
           }
         }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e(TAG, 1, "getExtConfigDetail parse json error", localException);
+        paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGetExtConfigDetailServlet.class, paramMiniAppCmdInterface, "getExtConfigDetail");
+        if (paramArrayOfByte != null) {
+          paramMiniAppCmdInterface.putExtra("key_common_ext", paramArrayOfByte);
         }
+        paramMiniAppCmdInterface.putParcelableArrayListExtra("key_ext_config_info", paramArrayList);
+        BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
       }
     }
-    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGetExtConfigDetailServlet.class, paramMiniAppCmdInterface, "getExtConfigDetail");
-    if (paramArrayOfByte != null) {
-      paramMiniAppCmdInterface.putExtra("key_common_ext", paramArrayOfByte);
-    }
-    paramMiniAppCmdInterface.putParcelableArrayListExtra("key_ext_config_info", paramArrayList);
-    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
   public void getFormId(String paramString, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -692,9 +686,9 @@ public class MiniAppCmdUtil
   
   public void getLoginCode(String paramString, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
+    int i = 0;
     if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
@@ -708,17 +702,13 @@ public class MiniAppCmdUtil
     try
     {
       paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-      paramMiniAppCmdInterface.putExtra("key_appid", paramString);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e(TAG, 1, "getLoginCode ", localException);
-      }
+      QLog.e(TAG, 1, "getLoginCode ", localException);
     }
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
   public void getMidasConsumeResult(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, COMM.StCommonExt paramStCommonExt, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -819,40 +809,41 @@ public class MiniAppCmdUtil
     }
     COMM.StCommonExt localStCommonExt = (COMM.StCommonExt)paramStGetAdReq.extInfo.get();
     MiniAppAd.UserInfo localUserInfo = (MiniAppAd.UserInfo)paramStGetAdReq.user_info.get();
-    if (paramStGetAdReq.position_info.get() != null) {}
-    for (MiniAppAd.PositionInfo localPositionInfo = (MiniAppAd.PositionInfo)paramStGetAdReq.position_info.get().get(0);; localPositionInfo = null)
-    {
-      MiniAppAd.DeviceInfo localDeviceInfo = (MiniAppAd.DeviceInfo)paramStGetAdReq.device_info.get();
-      MiniAppAd.ContextInfo localContextInfo = (MiniAppAd.ContextInfo)paramStGetAdReq.context_info.get();
-      MiniAppAd.DebugInfo localDebugInfo = (MiniAppAd.DebugInfo)paramStGetAdReq.debug_info.get();
-      paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniRewardedVideoAdServlet.class, paramMiniAppCmdInterface, "getRewardedVideoADInfo");
-      paramMiniAppCmdInterface.putExtra("key_gdt_cookie", paramStGetAdReq.gdt_cookie.get());
-      paramMiniAppCmdInterface.putExtra("key_support_https", true);
-      paramMiniAppCmdInterface.putExtra("key_busi_cookie", paramStGetAdReq.busi_cookie.get());
-      paramMiniAppCmdInterface.putExtra("key_appid", paramStGetAdReq.appid.get());
-      paramMiniAppCmdInterface.putExtra("key_ad_type", paramStGetAdReq.ad_type.get());
-      if (localStCommonExt != null) {
-        paramMiniAppCmdInterface.putExtra("key_ext", localStCommonExt.toByteArray());
-      }
-      if (localUserInfo != null) {
-        paramMiniAppCmdInterface.putExtra("key_user_info", localUserInfo.toByteArray());
-      }
-      if (localPositionInfo != null) {
-        paramMiniAppCmdInterface.putExtra("key_position_info", localPositionInfo.toByteArray());
-      }
-      if (localDeviceInfo != null) {
-        paramMiniAppCmdInterface.putExtra("key_device_info", localDeviceInfo.toByteArray());
-      }
-      if (localContextInfo != null) {
-        paramMiniAppCmdInterface.putExtra("key_context_info", localContextInfo.toByteArray());
-      }
-      if (localDebugInfo != null) {
-        paramMiniAppCmdInterface.putExtra("key_debug_info", localDebugInfo.toByteArray());
-      }
-      paramMiniAppCmdInterface.setObserver(this.cmdObserver);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
-      return;
+    MiniAppAd.PositionInfo localPositionInfo;
+    if (paramStGetAdReq.position_info.get() != null) {
+      localPositionInfo = (MiniAppAd.PositionInfo)paramStGetAdReq.position_info.get().get(0);
+    } else {
+      localPositionInfo = null;
     }
+    MiniAppAd.DeviceInfo localDeviceInfo = (MiniAppAd.DeviceInfo)paramStGetAdReq.device_info.get();
+    MiniAppAd.ContextInfo localContextInfo = (MiniAppAd.ContextInfo)paramStGetAdReq.context_info.get();
+    MiniAppAd.DebugInfo localDebugInfo = (MiniAppAd.DebugInfo)paramStGetAdReq.debug_info.get();
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniRewardedVideoAdServlet.class, paramMiniAppCmdInterface, "getRewardedVideoADInfo");
+    paramMiniAppCmdInterface.putExtra("key_gdt_cookie", paramStGetAdReq.gdt_cookie.get());
+    paramMiniAppCmdInterface.putExtra("key_support_https", true);
+    paramMiniAppCmdInterface.putExtra("key_busi_cookie", paramStGetAdReq.busi_cookie.get());
+    paramMiniAppCmdInterface.putExtra("key_appid", paramStGetAdReq.appid.get());
+    paramMiniAppCmdInterface.putExtra("key_ad_type", paramStGetAdReq.ad_type.get());
+    if (localStCommonExt != null) {
+      paramMiniAppCmdInterface.putExtra("key_ext", localStCommonExt.toByteArray());
+    }
+    if (localUserInfo != null) {
+      paramMiniAppCmdInterface.putExtra("key_user_info", localUserInfo.toByteArray());
+    }
+    if (localPositionInfo != null) {
+      paramMiniAppCmdInterface.putExtra("key_position_info", localPositionInfo.toByteArray());
+    }
+    if (localDeviceInfo != null) {
+      paramMiniAppCmdInterface.putExtra("key_device_info", localDeviceInfo.toByteArray());
+    }
+    if (localContextInfo != null) {
+      paramMiniAppCmdInterface.putExtra("key_context_info", localContextInfo.toByteArray());
+    }
+    if (localDebugInfo != null) {
+      paramMiniAppCmdInterface.putExtra("key_debug_info", localDebugInfo.toByteArray());
+    }
+    paramMiniAppCmdInterface.setObserver(this.cmdObserver);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
   public void getRobotUin(String paramString, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -964,19 +955,15 @@ public class MiniAppCmdUtil
     try
     {
       paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-      paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
-      paramMiniAppCmdInterface.putExtra("key_with_credential", paramBoolean);
-      paramMiniAppCmdInterface.putExtra("key_lang", paramString2);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e(TAG, 1, "getUserInfo ", localException);
-      }
+      QLog.e(TAG, 1, "getUserInfo ", localException);
     }
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
+    paramMiniAppCmdInterface.putExtra("key_with_credential", paramBoolean);
+    paramMiniAppCmdInterface.putExtra("key_lang", paramString2);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
   public void getUserInfoExtra(String paramString, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -1171,26 +1158,23 @@ public class MiniAppCmdUtil
   public void sendRequestByMsf(byte[] paramArrayOfByte, String paramString, MiniAppProxy.SenderListener paramSenderListener)
   {
     paramSenderListener = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGeneralServlet.class, paramSenderListener, "sendRequest");
-    long l2 = 0L;
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    long l1 = l2;
     if (!TextUtils.isEmpty(str)) {}
     try
     {
-      l1 = Long.valueOf(str).longValue();
-      paramSenderListener.putExtra("key_uin", l1);
-      paramSenderListener.putExtra("key_request_data", paramArrayOfByte);
-      paramSenderListener.putExtra("key_cmd_string", paramString);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramSenderListener);
-      return;
+      l = Long.valueOf(str).longValue();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        l1 = l2;
-      }
+      long l;
+      label51:
+      break label51;
     }
+    l = 0L;
+    paramSenderListener.putExtra("key_uin", l);
+    paramSenderListener.putExtra("key_request_data", paramArrayOfByte);
+    paramSenderListener.putExtra("key_cmd_string", paramString);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramSenderListener);
   }
   
   public void setAuth(COMM.StCommonExt paramStCommonExt, String paramString, INTERFACE.StUserAuthInfo paramStUserAuthInfo, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -1228,38 +1212,12 @@ public class MiniAppCmdUtil
   
   public void setUserAppLike(boolean paramBoolean, COMM.StCommonExt paramStCommonExt, String paramString, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppSetUserAppLikeServlet.class, paramMiniAppCmdInterface, "userAppLike");
-    paramMiniAppCmdInterface.putExtra("key_mini_appid", paramString);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      paramMiniAppCmdInterface.putExtra("do_like", i);
-      if (paramStCommonExt != null) {
-        paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
-      }
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setUserAppTop(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, COMM.StCommonExt paramStCommonExt, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppSetUserAppTopServlet.class, paramMiniAppCmdInterface, "userAppTop");
-    paramMiniAppCmdInterface.putExtra("key_appid", paramString);
-    paramMiniAppCmdInterface.putExtra("key_top_type", paramInt1);
-    paramMiniAppCmdInterface.putExtra("key_version_type", paramInt2);
-    paramMiniAppCmdInterface.putExtra("key_old_index", paramInt3);
-    paramMiniAppCmdInterface.putExtra("key_new_index", paramInt4);
-    if (paramStCommonExt != null) {
-      paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
-    }
-    if (MiniAppConfProcessor.c()) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      paramMiniAppCmdInterface.putExtra("key_from_new_download", paramInt1);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setUserAppTop(String paramString, int paramInt1, int paramInt2, COMM.StCommonExt paramStCommonExt, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -1299,11 +1257,17 @@ public class MiniAppCmdUtil
   
   public boolean updateBaseLib(String paramString, boolean paramBoolean1, boolean paramBoolean2, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    QLog.i(TAG, 1, "[MiniEng] doUpdateBaseLib nocheck=" + paramBoolean1 + ", force=" + paramBoolean2);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng] doUpdateBaseLib nocheck=");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(", force=");
+    localStringBuilder.append(paramBoolean2);
+    QLog.i(str, 1, localStringBuilder.toString());
     if ((!paramBoolean1) && (!paramBoolean2))
     {
       long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
-      String str = StorageUtil.getPreference().getString("baselib_update_qua", "");
+      str = StorageUtil.getPreference().getString("baselib_update_qua", "");
       if ((QUA.getQUA3().equals(str)) && (System.currentTimeMillis() - l <= 0L))
       {
         QLog.i(TAG, 1, "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
@@ -1314,26 +1278,29 @@ public class MiniAppCmdUtil
     try
     {
       paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-      paramMiniAppCmdInterface.putExtra("key_version", paramString);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
-      return true;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e(TAG, 1, "", localException);
-      }
+      QLog.e(TAG, 1, "", localException);
     }
+    paramMiniAppCmdInterface.putExtra("key_version", paramString);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+    return true;
   }
   
   public boolean updateBaseLibForSDK(String paramString, boolean paramBoolean1, boolean paramBoolean2, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    QLog.i(TAG, 1, "[MiniEng] doUpdateBaseLib nocheck=" + paramBoolean1 + ", force=" + paramBoolean2);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng] doUpdateBaseLib nocheck=");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(", force=");
+    localStringBuilder.append(paramBoolean2);
+    QLog.i(str, 1, localStringBuilder.toString());
     if ((!paramBoolean1) && (!paramBoolean2))
     {
       long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
-      String str = StorageUtil.getPreference().getString("baselib_update_qua", "");
+      str = StorageUtil.getPreference().getString("baselib_update_qua", "");
       if ((QUA.getQUA3().equals(str)) && (System.currentTimeMillis() - l <= 0L))
       {
         QLog.i(TAG, 1, "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
@@ -1344,17 +1311,14 @@ public class MiniAppCmdUtil
     try
     {
       paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-      paramMiniAppCmdInterface.putExtra("key_version", paramString);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
-      return true;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e(TAG, 1, "", localException);
-      }
+      QLog.e(TAG, 1, "", localException);
     }
+    paramMiniAppCmdInterface.putExtra("key_version", paramString);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+    return true;
   }
   
   public void updateBookshelfReadtime(String paramString1, String paramString2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -1404,7 +1368,7 @@ public class MiniAppCmdUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil
  * JD-Core Version:    0.7.0.1
  */

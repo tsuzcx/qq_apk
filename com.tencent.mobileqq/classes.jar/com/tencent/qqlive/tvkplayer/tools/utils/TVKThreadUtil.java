@@ -21,16 +21,17 @@ public class TVKThreadUtil
         if (mMainThreadHandler == null)
         {
           Looper localLooper = Looper.getMainLooper();
-          if (localLooper != null) {
+          if (localLooper != null)
+          {
             mMainThreadHandler = new TVKThreadUtil.EventHandler(localLooper);
           }
+          else
+          {
+            mMainThreadHandler = null;
+            throw new IllegalStateException("cannot get thread looper");
+          }
         }
-        else
-        {
-          return;
-        }
-        mMainThreadHandler = null;
-        throw new IllegalStateException("cannot get thread looper");
+        return;
       }
       finally {}
     }
@@ -38,15 +39,16 @@ public class TVKThreadUtil
   
   public static ScheduledExecutorService getScheduledExecutorServiceInstance()
   {
-    if (mScheduler == null) {}
-    try
-    {
-      if (mScheduler == null) {
-        mScheduler = Executors.newScheduledThreadPool(4);
+    if (mScheduler == null) {
+      try
+      {
+        if (mScheduler == null) {
+          mScheduler = Executors.newScheduledThreadPool(4);
+        }
       }
-      return mScheduler;
+      finally {}
     }
-    finally {}
+    return mScheduler;
   }
   
   public static void postDelayRunnableOnMainThread(Runnable paramRunnable, long paramLong)
@@ -101,7 +103,7 @@ public class TVKThreadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.TVKThreadUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -13,36 +13,36 @@ public class LoginPwdReportUtil
 {
   public static void a(Context paramContext, int paramInt)
   {
-    if ((paramContext == null) || (!(paramContext instanceof LoginActivity)) || (paramInt != 16908322))
+    if ((paramContext != null) && ((paramContext instanceof LoginActivity)) && (paramInt == 16908322))
     {
-      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: params wrong");
-      return;
-    }
-    paramContext = ((LoginActivity)paramContext).getCurrentView();
-    if ((paramContext == null) || (!(paramContext instanceof LoginView)))
-    {
+      paramContext = ((LoginActivity)paramContext).getCurrentView();
+      if ((paramContext != null) && ((paramContext instanceof LoginView)))
+      {
+        paramContext = ((LoginView)paramContext).a();
+        if (paramContext == null)
+        {
+          QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: autoCompleteTextView == null");
+          return;
+        }
+        paramContext = paramContext.getText();
+        if (paramContext == null)
+        {
+          QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: editable null");
+          return;
+        }
+        paramContext = paramContext.toString();
+        if ((!TextUtils.isEmpty(paramContext)) && (a(paramContext)) && (Utils.e(paramContext)))
+        {
+          ReportController.a(null, "dc00898", "", paramContext, "0X800B29A", "0X800B29A", 1, 0, "", "", "", "");
+          return;
+        }
+        QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: uin error");
+        return;
+      }
       QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: fragment wrong");
       return;
     }
-    paramContext = ((LoginView)paramContext).a();
-    if (paramContext == null)
-    {
-      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: autoCompleteTextView == null");
-      return;
-    }
-    paramContext = paramContext.getText();
-    if (paramContext == null)
-    {
-      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: editable null");
-      return;
-    }
-    paramContext = paramContext.toString();
-    if ((TextUtils.isEmpty(paramContext)) || (!a(paramContext)) || (!Utils.e(paramContext)))
-    {
-      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: uin error");
-      return;
-    }
-    ReportController.a(null, "dc00898", "", paramContext, "0X800B29A", "0X800B29A", 1, 0, "", "", "", "");
+    QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: params wrong");
   }
   
   public static boolean a(String paramString)
@@ -62,7 +62,7 @@ public class LoginPwdReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.LoginPwdReportUtil
  * JD-Core Version:    0.7.0.1
  */

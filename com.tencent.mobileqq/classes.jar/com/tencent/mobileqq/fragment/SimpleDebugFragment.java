@@ -15,26 +15,27 @@ public class SimpleDebugFragment
 {
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    int j = 2131381899;
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = (RadioGroup)this.mContentView.findViewById(2131370196);
+    paramLayoutInflater = (RadioGroup)this.mContentView.findViewById(2131369865);
+    int k = SimpleUIProtocolUtil.a();
+    int j = 2131381110;
     int i = j;
-    switch (SimpleUIProtocolUtil.a())
-    {
+    if (k != 0) {
+      if (k != 1) {
+        i = j;
+      } else {
+        i = 2131367785;
+      }
     }
-    for (i = j;; i = 2131368031)
-    {
-      paramLayoutInflater.check(i);
-      this.vg.setRightButton("");
-      paramLayoutInflater.setOnCheckedChangeListener(new SimpleDebugFragment.1(this, paramLayoutInflater));
-      this.vg.setOnItemSelectListener(new SimpleDebugFragment.2(this, paramLayoutInflater));
-      return;
-    }
+    paramLayoutInflater.check(i);
+    this.vg.setRightButton("");
+    paramLayoutInflater.setOnCheckedChangeListener(new SimpleDebugFragment.1(this, paramLayoutInflater));
+    this.vg.setOnItemSelectListener(new SimpleDebugFragment.2(this, paramLayoutInflater));
   }
   
   protected int getContentLayoutId()
   {
-    return 2131558463;
+    return 2131558492;
   }
   
   public boolean onBackEvent()
@@ -46,7 +47,7 @@ public class SimpleDebugFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.SimpleDebugFragment
  * JD-Core Version:    0.7.0.1
  */

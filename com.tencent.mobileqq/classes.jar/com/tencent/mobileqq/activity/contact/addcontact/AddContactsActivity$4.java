@@ -2,7 +2,8 @@ package com.tencent.mobileqq.activity.contact.addcontact;
 
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.biz.pubaccount.util.PADetailReportUtil;
+import com.tencent.biz.pubaccount.api.IPublicAccountDetailReportUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class AddContactsActivity$4
   extends Handler
@@ -11,21 +12,22 @@ class AddContactsActivity$4
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.b();
-      this.a.jdField_a_of_type_Boolean = false;
+      if (i != 1) {
+        return;
+      }
+      ((IPublicAccountDetailReportUtil)QRoute.api(IPublicAccountDetailReportUtil.class)).setAttrEntrance(300);
       return;
     }
-    PADetailReportUtil.a().a(300);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.b();
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity.4
  * JD-Core Version:    0.7.0.1
  */

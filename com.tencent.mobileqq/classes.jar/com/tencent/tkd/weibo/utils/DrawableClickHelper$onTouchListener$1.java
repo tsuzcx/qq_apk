@@ -17,50 +17,42 @@ public final class DrawableClickHelper$onTouchListener$1
   @SuppressLint({"ClickableViewAccessibility"})
   public boolean onTouch(@Nullable View paramView, @Nullable MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
     Object localObject;
-    if (paramMotionEvent != null)
-    {
+    if (paramMotionEvent != null) {
       localObject = Integer.valueOf(paramMotionEvent.getAction());
-      if (localObject != null) {
-        break label30;
-      }
-      label20:
-      bool = false;
+    } else {
+      localObject = null;
     }
-    label30:
-    label120:
-    do
+    if (localObject == null) {
+      return false;
+    }
+    if (((Integer)localObject).intValue() == 1)
     {
-      do
+      localObject = this.a.a().getCompoundDrawables()[0];
+      if ((localObject != null) && (paramMotionEvent.getRawX() <= this.a.a().getLeft() + ((Drawable)localObject).getBounds().width() - this.a.a().getPaddingLeft()))
       {
-        return bool;
-        localObject = null;
-        break;
-        if (((Integer)localObject).intValue() != 1) {
-          break label20;
-        }
-        localObject = this.a.a().getCompoundDrawables()[0];
-        if ((localObject == null) || (paramMotionEvent.getRawX() > this.a.a().getLeft() + ((Drawable)localObject).getBounds().width() - this.a.a().getPaddingLeft())) {
-          break label120;
-        }
         paramMotionEvent = DrawableClickHelper.a(this.a);
-      } while (paramMotionEvent == null);
-      paramMotionEvent.a(paramView, (Drawable)localObject);
-      return true;
-      localObject = this.a.a().getCompoundDrawables()[2];
-      if ((localObject == null) || (paramMotionEvent.getRawX() < this.a.a().getRight() - ((Drawable)localObject).getBounds().width() - this.a.a().getPaddingRight())) {
-        break label20;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.a(paramView, (Drawable)localObject);
+        }
+        return true;
       }
-      paramMotionEvent = DrawableClickHelper.a(this.a);
-    } while (paramMotionEvent == null);
-    paramMotionEvent.b(paramView, (Drawable)localObject);
-    return true;
+      localObject = this.a.a().getCompoundDrawables()[2];
+      if ((localObject != null) && (paramMotionEvent.getRawX() >= this.a.a().getRight() - ((Drawable)localObject).getBounds().width() - this.a.a().getPaddingRight()))
+      {
+        paramMotionEvent = DrawableClickHelper.a(this.a);
+        if (paramMotionEvent != null) {
+          paramMotionEvent.b(paramView, (Drawable)localObject);
+        }
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.utils.DrawableClickHelper.onTouchListener.1
  * JD-Core Version:    0.7.0.1
  */

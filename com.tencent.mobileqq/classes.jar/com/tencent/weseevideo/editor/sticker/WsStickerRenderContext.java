@@ -83,47 +83,46 @@ public class WsStickerRenderContext
   
   public boolean shouldRenderBlurSticker()
   {
-    if ((this.blurStickers == null) || (this.blurStickers.size() == 0)) {
-      return false;
-    }
-    Iterator localIterator = this.blurStickers.iterator();
-    while (localIterator.hasNext()) {
-      if (((TAVSticker)localIterator.next()).getMode() == TAVStickerMode.INACTIVE) {
-        return true;
+    Object localObject = this.blurStickers;
+    if (localObject != null)
+    {
+      if (((List)localObject).size() == 0) {
+        return false;
+      }
+      localObject = this.blurStickers.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((TAVSticker)((Iterator)localObject).next()).getMode() == TAVStickerMode.INACTIVE) {
+          return true;
+        }
       }
     }
     return false;
   }
   
-  public boolean shouldRenderSticker(TAVSticker paramTAVSticker, long paramLong)
+  protected boolean shouldRenderSticker(TAVSticker paramTAVSticker, long paramLong)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if (paramTAVSticker == null) {
-      bool1 = false;
+      return false;
     }
-    do
-    {
-      return bool1;
-      if (this.renderContextDataSource != null) {
-        return this.renderContextDataSource.shouldRenderSticker(paramTAVSticker, paramLong);
-      }
-      CMTimeRange localCMTimeRange = paramTAVSticker.getTimeRange();
-      if (localCMTimeRange == null) {}
-      for (bool1 = true; (isBlurSticker(paramTAVSticker)) && (paramTAVSticker.getMode() == TAVStickerMode.INACTIVE); bool1 = localCMTimeRange.containsTime(new CMTime(paramLong, 1000))) {
-        return false;
-      }
-      if (!bool1) {
-        break;
-      }
-      bool1 = bool2;
-    } while (TAVStickerMode.INACTIVE == paramTAVSticker.getMode());
-    return false;
+    if (this.renderContextDataSource != null) {
+      return this.renderContextDataSource.shouldRenderSticker(paramTAVSticker, paramLong);
+    }
+    CMTimeRange localCMTimeRange = paramTAVSticker.getTimeRange();
+    boolean bool;
+    if (localCMTimeRange == null) {
+      bool = true;
+    } else {
+      bool = localCMTimeRange.containsTime(new CMTime(paramLong, 1000));
+    }
+    if ((isBlurSticker(paramTAVSticker)) && (paramTAVSticker.getMode() == TAVStickerMode.INACTIVE)) {
+      return false;
+    }
+    return (bool) && (TAVStickerMode.INACTIVE == paramTAVSticker.getMode());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.WsStickerRenderContext
  * JD-Core Version:    0.7.0.1
  */

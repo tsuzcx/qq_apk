@@ -10,12 +10,19 @@ final class Reporter$1
   
   public void onResponse(int paramInt, String paramString)
   {
-    Log.d("Reporter", "report: type=" + this.val$type + ", status=" + paramInt + ", rsp=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("report: type=");
+    localStringBuilder.append(this.val$type);
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", rsp=");
+    localStringBuilder.append(paramString);
+    Log.d("Reporter", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kwstudio.office.debug.Reporter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -33,76 +33,95 @@ public class WSRequestEncoder
   private static <T extends JceStruct> stReqHeader a(WSRequest<T> paramWSRequest)
   {
     stReqHeader localstReqHeader = new stReqHeader();
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    String str = ((AppRuntime)localObject).getAccount();
-    TicketManager localTicketManager = (TicketManager)((AppRuntime)localObject).getManager(2);
-    if ((localTicketManager != null) && (!TextUtils.isEmpty(((AppRuntime)localObject).getAccount())))
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    String str = ((AppRuntime)localObject1).getAccount();
+    Object localObject2 = (TicketManager)((AppRuntime)localObject1).getManager(2);
+    if ((localObject2 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())))
     {
-      localObject = localTicketManager.getSkey(str);
-      WSLog.d("[WSService][Encoder]", "[getHeader]session key:" + (String)localObject);
+      localObject1 = ((TicketManager)localObject2).getSkey(str);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[getHeader]session key:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      WSLog.d("[WSService][Encoder]", ((StringBuilder)localObject2).toString());
     }
-    for (;;)
+    else
     {
-      localstReqHeader.authInfo = WSQQConnectAuthManager.a().a(str, (String)localObject, paramWSRequest.isShouldStartQQAuth());
-      localstReqHeader.iChid = 0;
-      localstReqHeader.person_id = WeishiHeaderConst.a;
-      localstReqHeader.platform = "Android";
-      localstReqHeader.appversion = WSDeviceUtils.a(BaseApplicationImpl.getContext());
-      localstReqHeader.user_ip = WSDeviceUtils.a();
-      localstReqHeader.strQua = QUA.getQUA3();
-      localstReqHeader.device_info = WSDeviceUtils.b();
-      WSLog.b("[WSService][Encoder]", "[getHeader]device_info:" + localstReqHeader.device_info);
-      localstReqHeader.h265key = WSDeviceUtils.d();
-      localstReqHeader.appid = 1101083114;
-      a(paramWSRequest, localstReqHeader, str, (String)localObject);
-      localstReqHeader.iAppVersion = WSDeviceUtils.a();
-      return localstReqHeader;
-      localObject = "test-key";
+      localObject1 = "test-key";
     }
+    localstReqHeader.authInfo = WSQQConnectAuthManager.a().a(str, (String)localObject1, paramWSRequest.isShouldStartQQAuth());
+    localstReqHeader.iChid = 0;
+    localstReqHeader.person_id = WeishiHeaderConst.a;
+    localstReqHeader.platform = "Android";
+    localstReqHeader.appversion = WSDeviceUtils.a(BaseApplicationImpl.getContext());
+    localstReqHeader.user_ip = WSDeviceUtils.a();
+    localstReqHeader.strQua = QUA.getQUA3();
+    localstReqHeader.device_info = WSDeviceUtils.b();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[getHeader]device_info:");
+    ((StringBuilder)localObject2).append(localstReqHeader.device_info);
+    WSLog.b("[WSService][Encoder]", ((StringBuilder)localObject2).toString());
+    localstReqHeader.h265key = WSDeviceUtils.d();
+    localstReqHeader.appid = 1101083114;
+    a(paramWSRequest, localstReqHeader, str, (String)localObject1);
+    localstReqHeader.iAppVersion = WSDeviceUtils.a();
+    return localstReqHeader;
   }
   
   @NotNull
   private static <T extends JceStruct> Map<String, String> a(@NotNull WSRequest<T> paramWSRequest)
   {
-    Object localObject = paramWSRequest.req;
-    if (!(localObject instanceof stWeishiReportReq))
-    {
-      localObject = new HashMap();
-      return localObject;
-    }
-    localObject = ((stWeishiReportReq)localObject).report_list;
-    if (((ArrayList)localObject).size() <= 0) {
+    Object localObject1 = paramWSRequest.req;
+    if (!(localObject1 instanceof stWeishiReportReq)) {
       return new HashMap();
     }
-    stReportItem localstReportItem = (stReportItem)((ArrayList)localObject).get(0);
-    WSLog.a("[WSService][Encoder]", "[getCacheMapExt]上报取 pageType: " + localstReportItem.pagetype);
-    Map localMap = (Map)WSRequest.pageTypeExtMap.get(Integer.valueOf(localstReportItem.pagetype));
-    if ((localMap == null) || (localMap.size() <= 0))
-    {
-      WSLog.a("[WSService][Encoder]", "[getCacheMapExt]没有pageType为" + localstReportItem.pagetype + "的extMap");
+    localObject1 = ((stWeishiReportReq)localObject1).report_list;
+    if (((ArrayList)localObject1).size() <= 0) {
       return new HashMap();
     }
-    Iterator localIterator = localMap.entrySet().iterator();
-    for (;;)
+    localObject1 = (stReportItem)((ArrayList)localObject1).get(0);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[getCacheMapExt]上报取 pageType: ");
+    ((StringBuilder)localObject2).append(((stReportItem)localObject1).pagetype);
+    WSLog.a("[WSService][Encoder]", ((StringBuilder)localObject2).toString());
+    localObject2 = (Map)WSRequest.pageTypeExtMap.get(Integer.valueOf(((stReportItem)localObject1).pagetype));
+    if ((localObject2 != null) && (((Map)localObject2).size() > 0))
     {
-      localObject = localMap;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject = (Map.Entry)localIterator.next();
-      WSLog.a("[WSService][Encoder]", "getCacheMapExt取出来" + paramWSRequest.getReqUniKey() + " --- key: " + (String)((Map.Entry)localObject).getKey() + ", value: " + (String)((Map.Entry)localObject).getValue());
-      if (("qq_abtest".equals(((Map.Entry)localObject).getKey())) && (localstReportItem.optype == 121))
+      Iterator localIterator = ((Map)localObject2).entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        ((Map.Entry)localObject).setValue("");
-        WSLog.c("[WSService][Encoder]", "初始化上报，qq_abtest 清空qq_abtest");
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getCacheMapExt取出来");
+        localStringBuilder.append(paramWSRequest.getReqUniKey());
+        localStringBuilder.append(" --- key: ");
+        localStringBuilder.append((String)localEntry.getKey());
+        localStringBuilder.append(", value: ");
+        localStringBuilder.append((String)localEntry.getValue());
+        WSLog.a("[WSService][Encoder]", localStringBuilder.toString());
+        if (("qq_abtest".equals(localEntry.getKey())) && (((stReportItem)localObject1).optype == 121))
+        {
+          localEntry.setValue("");
+          WSLog.c("[WSService][Encoder]", "初始化上报，qq_abtest 清空qq_abtest");
+        }
       }
+      return localObject2;
     }
+    paramWSRequest = new StringBuilder();
+    paramWSRequest.append("[getCacheMapExt]没有pageType为");
+    paramWSRequest.append(((stReportItem)localObject1).pagetype);
+    paramWSRequest.append("的extMap");
+    WSLog.a("[WSService][Encoder]", paramWSRequest.toString());
+    return new HashMap();
   }
   
   private static <T extends JceStruct> void a(@NotNull WSRequest<T> paramWSRequest, stReqHeader paramstReqHeader, String paramString1, String paramString2)
   {
-    if ("stWeishiReportReq".equals(paramWSRequest.getReqUniKey())) {}
-    for (paramstReqHeader.mapExt = a(paramWSRequest); paramstReqHeader.mapExt != null; paramstReqHeader.mapExt = new HashMap())
+    if ("stWeishiReportReq".equals(paramWSRequest.getReqUniKey())) {
+      paramstReqHeader.mapExt = a(paramWSRequest);
+    } else {
+      paramstReqHeader.mapExt = new HashMap();
+    }
+    if (paramstReqHeader.mapExt != null)
     {
       paramstReqHeader.mapExt.put("iAuthType", "2");
       Map localMap = paramstReqHeader.mapExt;
@@ -145,7 +164,15 @@ public class WSRequestEncoder
       }
       ((Map)localObject).put("ssid_ip", paramString1);
       paramstReqHeader.mapExt.put("ab_policy_info", paramWSRequest.getExpABTestDataStr());
-      WSLog.e("[WSService][Encoder]", "[getHeader]mCmd:" + paramWSRequest.getRequestCmd() + ", mReqScene:" + paramWSRequest.getRequestScene() + ", header:" + paramstReqHeader.mapExt.toString());
+      paramstReqHeader.mapExt.put("teen_mode", String.valueOf(WSNetUtil.a()));
+      paramString1 = new StringBuilder();
+      paramString1.append("[getHeader]mCmd:");
+      paramString1.append(paramWSRequest.getRequestCmd());
+      paramString1.append(", mReqScene:");
+      paramString1.append(paramWSRequest.getRequestScene());
+      paramString1.append(", header:");
+      paramString1.append(paramstReqHeader.mapExt.toString());
+      WSLog.e("[WSService][Encoder]", paramString1.toString());
       return;
     }
     WSLog.a("[WSService][Encoder]", "[getHeader]header mapExt is null.");
@@ -156,38 +183,40 @@ public class WSRequestEncoder
     Object localObject1 = WSDeviceUtils.e();
     Object localObject2 = QUA.getQUA3();
     long l = paramWSRequest.getLoginUserId();
-    Object localObject3 = (RetryInfo)paramWSRequest.getRetryInfo();
-    localObject2 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, (RetryInfo)localObject3);
-    localObject3 = b(paramWSRequest);
-    localObject1 = null;
-    if (localObject3 != null) {
-      localObject1 = WupUtil.a(((WNSStream)localObject2).pack(MsfSdkUtils.getNextAppSeq(), paramWSRequest.getCmdString(), (byte[])localObject3, paramWSRequest.isNeedCompress()));
+    RetryInfo localRetryInfo = (RetryInfo)paramWSRequest.getRetryInfo();
+    localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
+    localObject2 = b(paramWSRequest);
+    if (localObject2 != null) {
+      return WupUtil.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), paramWSRequest.getCmdString(), (byte[])localObject2, paramWSRequest.isNeedCompress()));
     }
-    return localObject1;
+    return null;
   }
   
   private static <T extends JceStruct> byte[] b(WSRequest<T> paramWSRequest)
   {
-    stReqHeader localstReqHeader = a(paramWSRequest);
+    Object localObject = a(paramWSRequest);
     WSUniPacket localWSUniPacket = new WSUniPacket();
     localWSUniPacket.b(paramWSRequest.requestId);
     paramWSRequest.requestId += 1;
     localWSUniPacket.a("king");
     localWSUniPacket.b(paramWSRequest.getOnlyCmd());
     localWSUniPacket.setEncodeName("UTF-8");
-    localWSUniPacket.put("stReqHeader", localstReqHeader);
+    localWSUniPacket.put("stReqHeader", localObject);
     localWSUniPacket.a(9999);
     if ((paramWSRequest.req != null) && (!TextUtils.isEmpty(paramWSRequest.getRequestCmd())))
     {
       localWSUniPacket.put(paramWSRequest.getReqUniKey(), paramWSRequest.req);
-      WSLog.a("[WSService][Encoder]", "[getEncodedUniParameter]req名 :" + paramWSRequest.getReqUniKey());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[getEncodedUniParameter]req名 :");
+      ((StringBuilder)localObject).append(paramWSRequest.getReqUniKey());
+      WSLog.a("[WSService][Encoder]", ((StringBuilder)localObject).toString());
     }
     return localWSUniPacket.encode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSRequestEncoder
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,8 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.search.SearchUtil;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
 import com.tencent.mobileqq.search.adapter.GroupSearchAdapter;
+import com.tencent.mobileqq.search.base.adapter.BaseMvpAdapter;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
@@ -37,20 +37,20 @@ public class ViewFactory
     switch (paramInt)
     {
     default: 
-      return 2131689651;
-    case 80000000: 
-      return 2131689634;
-    case 80000001: 
-      return 2131689666;
+      return 2131689683;
+    case 80000004: 
+      return 2131719439;
+    case 80000003: 
+      return 2131689672;
     case 80000002: 
       if (UniteSearchActivity.d == 12) {
-        return 2131689664;
+        return 2131689696;
       }
-      return 2131689663;
-    case 80000003: 
-      return 2131689640;
+      return 2131689695;
+    case 80000001: 
+      return 2131689698;
     }
-    return 2131719716;
+    return 2131689666;
   }
   
   private View a(Context paramContext)
@@ -62,27 +62,27 @@ public class ViewFactory
     localLayoutParams.addRule(13);
     localLinearLayout.setOrientation(1);
     ImageView localImageView = new ImageView(paramContext);
-    localImageView.setId(2131367841);
-    localImageView.setImageResource(2130842510);
+    localImageView.setId(2131367608);
+    localImageView.setImageResource(2130842409);
     LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams1.gravity = 1;
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText(paramContext.getString(2131718888));
-    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131299101));
-    localTextView.setPadding(0, AIOUtils.a(30.0F, paramContext.getResources()), 0, 0);
-    localTextView.setTextColor(paramContext.getResources().getColor(2131167114));
+    localTextView.setText(paramContext.getString(2131718603));
+    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131299106));
+    localTextView.setPadding(0, AIOUtils.b(30.0F, paramContext.getResources()), 0, 0);
+    localTextView.setTextColor(paramContext.getResources().getColor(2131167139));
     LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams2.gravity = 1;
     localLinearLayout.addView(localImageView, localLayoutParams1);
     localLinearLayout.addView(localTextView, localLayoutParams2);
     localRelativeLayout.addView(localLinearLayout, localLayoutParams);
-    localRelativeLayout.setContentDescription(paramContext.getString(2131718888));
+    localRelativeLayout.setContentDescription(paramContext.getString(2131718603));
     return localRelativeLayout;
   }
   
   private View a(Context paramContext, WeakReference<IFaceDecoder> paramWeakReference, List<ISearchResultGroupModel> paramList)
   {
-    paramContext = (ListView)LayoutInflater.from(paramContext).inflate(2131563183, null);
+    paramContext = (ListView)LayoutInflater.from(paramContext).inflate(2131563008, null);
     paramContext.setOnTouchListener(new ViewFactory.1(this));
     paramWeakReference = new GroupSearchAdapter(paramContext, (IFaceDecoder)paramWeakReference.get(), null, -1);
     paramContext.setAdapter(paramWeakReference);
@@ -92,14 +92,15 @@ public class ViewFactory
   
   public static ViewFactory a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory == null) {
-        jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory = new ViewFactory();
+    if (jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory == null) {
+          jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory = new ViewFactory();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory;
     }
+    return jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory;
   }
   
   public static int[] a(int paramInt)
@@ -108,12 +109,12 @@ public class ViewFactory
     {
     default: 
       return jdField_a_of_type_ArrayOfInt;
-    case 80000000: 
+    case 80000003: 
       return jdField_a_of_type_ArrayOfInt;
-    case 80000001: 
-      return b;
     case 80000002: 
       return c;
+    case 80000001: 
+      return b;
     }
     return jdField_a_of_type_ArrayOfInt;
   }
@@ -124,14 +125,14 @@ public class ViewFactory
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
     localLinearLayout.setOrientation(1);
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText(paramContext.getString(2131718890));
-    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131299101));
-    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298456), 0, 0);
-    localTextView.setTextColor(paramContext.getResources().getColor(2131167114));
+    localTextView.setText(paramContext.getString(2131718605));
+    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131299106));
+    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298451), 0, 0);
+    localTextView.setTextColor(paramContext.getResources().getColor(2131167139));
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 1;
     localLinearLayout.addView(localTextView, localLayoutParams);
-    localLinearLayout.setContentDescription(paramContext.getString(2131718890));
+    localLinearLayout.setContentDescription(paramContext.getString(2131718605));
     return localLinearLayout;
   }
   
@@ -142,17 +143,21 @@ public class ViewFactory
   
   public View a(int paramInt, Context paramContext, boolean paramBoolean, IFaceDecoder paramIFaceDecoder, List<ISearchResultGroupModel> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewFactory", 2, "type = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("type = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("ViewFactory", 2, ((StringBuilder)localObject1).toString());
     }
     int j = 0;
     Object localObject1 = null;
-    Object localObject2 = localObject1;
     int i = j;
+    Object localObject2 = localObject1;
     if (paramBoolean)
     {
-      localObject2 = localObject1;
       i = j;
+      localObject2 = localObject1;
       if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)) != null)
       {
         localObject2 = (View)((WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).get();
@@ -165,22 +170,24 @@ public class ViewFactory
       {
       default: 
         localObject1 = localObject2;
+        break;
+      case 80000008: 
+        localObject1 = a(paramContext, new WeakReference(paramIFaceDecoder), paramList);
+        break;
+      case 80000007: 
+        localObject1 = a(paramContext);
+        break;
+      case 80000006: 
+        localObject1 = b(paramContext);
+        break;
+      case 80000005: 
+        localObject1 = c(paramContext);
       }
     }
-    for (;;)
-    {
-      if ((paramBoolean) && (i == 0)) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(localObject1));
-      }
-      return localObject1;
-      localObject1 = c(paramContext);
-      continue;
-      localObject1 = b(paramContext);
-      continue;
-      localObject1 = a(paramContext);
-      continue;
-      localObject1 = a(paramContext, new WeakReference(paramIFaceDecoder), paramList);
+    if ((paramBoolean) && (i == 0)) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(localObject1));
     }
+    return localObject1;
   }
   
   public void a()
@@ -192,7 +199,7 @@ public class ViewFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ViewFactory
  * JD-Core Version:    0.7.0.1
  */

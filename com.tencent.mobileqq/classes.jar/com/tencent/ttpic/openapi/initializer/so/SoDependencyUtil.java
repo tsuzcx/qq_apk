@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SoDependencyUtil
 {
-  private static final String TAG = SoDependencyUtil.class.getSimpleName();
+  private static final String TAG = "SoDependencyUtil";
   
   public static List<String> getDependencies(String paramString1, String paramString2)
   {
@@ -27,29 +27,19 @@ public class SoDependencyUtil
       paramString1 = MinElf.extract_DT_NEEDED(paramString1);
       return paramString1;
     }
-    catch (IOException paramString1)
-    {
-      paramString1.printStackTrace();
-      LogUtils.e(TAG, paramString1);
-      return null;
-    }
     catch (Throwable paramString1)
     {
-      for (;;)
-      {
-        LogUtils.e(TAG, paramString1);
-      }
+      LogUtils.e(TAG, paramString1);
     }
-    catch (MinElf.ElfError paramString1)
-    {
-      label18:
-      break label18;
-    }
+    catch (MinElf.ElfError paramString1) {}catch (IOException paramString1) {}
+    paramString1.printStackTrace();
+    LogUtils.e(TAG, paramString1);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.so.SoDependencyUtil
  * JD-Core Version:    0.7.0.1
  */

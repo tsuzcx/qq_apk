@@ -16,12 +16,26 @@ public class AudioDataCache
   public AudioDataCache(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + File.separator + "audio_data_cache" + File.separator);
+    paramString = new StringBuilder();
+    paramString.append(this.jdField_a_of_type_JavaLangString);
+    paramString.append(File.separator);
+    paramString.append("audio_data_cache");
+    paramString.append(File.separator);
+    this.jdField_a_of_type_JavaLangString = paramString.toString();
     paramString = new File(this.jdField_a_of_type_JavaLangString);
     boolean bool1 = paramString.mkdirs();
     boolean bool2 = paramString.isDirectory();
-    if ((!bool1) && (!bool2)) {
-      throw new RuntimeException("AudioDataCache: mkd=" + bool1 + " isdir=" + bool2);
+    if (!bool1)
+    {
+      if (bool2) {
+        return;
+      }
+      paramString = new StringBuilder();
+      paramString.append("AudioDataCache: mkd=");
+      paramString.append(bool1);
+      paramString.append(" isdir=");
+      paramString.append(bool2);
+      throw new RuntimeException(paramString.toString());
     }
   }
   
@@ -29,82 +43,105 @@ public class AudioDataCache
   {
     if (QLog.isColorLevel())
     {
-      if (paramThrowable != null) {
-        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
+      if (paramThrowable != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[@] ");
+        localStringBuilder.append(paramString);
+        QLog.d("AudioDataCache", 2, localStringBuilder.toString(), paramThrowable);
+        return;
       }
+      paramThrowable = new StringBuilder();
+      paramThrowable.append("[@] ");
+      paramThrowable.append(paramString);
+      QLog.d("AudioDataCache", 2, paramThrowable.toString());
     }
-    else {
-      return;
-    }
-    QLog.d("AudioDataCache", 2, "[@] " + paramString);
   }
   
   public String a(RMVideoStateMgr paramRMVideoStateMgr)
   {
-    a("closeCache: path=" + this.b, null);
-    String str = this.jdField_a_of_type_JavaLangString + this.b;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("closeCache: path=");
+    ((StringBuilder)localObject).append(this.b);
+    a(((StringBuilder)localObject).toString(), null);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
+    localObject = ((StringBuilder)localObject).toString();
     if ((this.jdField_a_of_type_JavaIoFileOutputStream == null) || (paramRMVideoStateMgr != null)) {}
     try
     {
-      paramRMVideoStateMgr.g();
+      paramRMVideoStateMgr.e();
       this.jdField_a_of_type_JavaIoFileOutputStream.close();
     }
     catch (IOException paramRMVideoStateMgr)
     {
-      label74:
-      break label74;
+      label86:
+      break label86;
     }
     this.jdField_a_of_type_JavaIoFileOutputStream = null;
     this.b = null;
-    return str;
+    return localObject;
   }
   
   public void a(RMVideoStateMgr paramRMVideoStateMgr)
   {
-    a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initCache: oldpath=");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(" mOutStream=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaIoFileOutputStream);
+    a(((StringBuilder)localObject).toString(), null);
     a(paramRMVideoStateMgr);
     this.b = VidUtil.generateVid();
-    paramRMVideoStateMgr = this.jdField_a_of_type_JavaLangString + this.b;
-    File localFile = new File(paramRMVideoStateMgr);
-    if (localFile.exists()) {
-      throw new RuntimeException("AudioDataCache: file exists| " + paramRMVideoStateMgr);
-    }
+    paramRMVideoStateMgr = new StringBuilder();
+    paramRMVideoStateMgr.append(this.jdField_a_of_type_JavaLangString);
+    paramRMVideoStateMgr.append(this.b);
+    paramRMVideoStateMgr = paramRMVideoStateMgr.toString();
+    localObject = new File(paramRMVideoStateMgr);
+    if (!((File)localObject).exists()) {}
     try
     {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
-      a("initCache: newPath=" + this.b, null);
-      return;
+      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream((File)localObject);
     }
     catch (FileNotFoundException paramRMVideoStateMgr)
     {
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-      }
+      label123:
+      break label123;
     }
+    this.jdField_a_of_type_JavaIoFileOutputStream = null;
+    paramRMVideoStateMgr = new StringBuilder();
+    paramRMVideoStateMgr.append("initCache: newPath=");
+    paramRMVideoStateMgr.append(this.b);
+    a(paramRMVideoStateMgr.toString(), null);
+    return;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("AudioDataCache: file exists| ");
+    ((StringBuilder)localObject).append(paramRMVideoStateMgr);
+    throw new RuntimeException(((StringBuilder)localObject).toString());
   }
   
   public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
-      bool = true;
-      return bool;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      a("writeData: exp=", paramArrayOfByte);
+    FileOutputStream localFileOutputStream = this.jdField_a_of_type_JavaIoFileOutputStream;
+    if (localFileOutputStream != null) {
+      try
+      {
+        localFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
+        return true;
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        a("writeData: exp=", paramArrayOfByte);
+      }
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.AudioDataCache
  * JD-Core Version:    0.7.0.1
  */

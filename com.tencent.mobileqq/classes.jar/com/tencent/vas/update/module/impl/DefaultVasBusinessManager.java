@@ -7,7 +7,7 @@ import com.tencent.vas.update.callback.VasBusinessManager;
 public class DefaultVasBusinessManager
   extends VasBusinessManager
 {
-  public IVasUpdateFactory createVasUpdateFactory()
+  protected IVasUpdateFactory createVasUpdateFactory()
   {
     return DefaultVasUpdateFactory.getInstance();
   }
@@ -19,7 +19,7 @@ public class DefaultVasBusinessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.module.impl.DefaultVasBusinessManager
  * JD-Core Version:    0.7.0.1
  */

@@ -86,8 +86,9 @@ public final class stFileInfo
     paramJceOutputStream.write(this.strKey, 3);
     paramJceOutputStream.write(this.uSvrIp, 4);
     paramJceOutputStream.write(this.uSvrPort, 5);
-    if (this.strOriginFileMd5 != null) {
-      paramJceOutputStream.write(this.strOriginFileMd5, 6);
+    byte[] arrayOfByte = this.strOriginFileMd5;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 6);
     }
     paramJceOutputStream.write(this.lLen, 7);
     paramJceOutputStream.write(this.lSessionId, 8);
@@ -96,7 +97,7 @@ public final class stFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.stFileInfo
  * JD-Core Version:    0.7.0.1
  */

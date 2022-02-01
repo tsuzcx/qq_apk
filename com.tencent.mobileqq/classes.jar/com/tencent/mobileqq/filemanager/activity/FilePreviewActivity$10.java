@@ -13,15 +13,18 @@ class FilePreviewActivity$10
   
   public void b()
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.g)) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.k = "3";
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.e = System.currentTimeMillis();
+      if (this.a.g) {
+        return;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.k = "3";
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.e = System.currentTimeMillis();
+      }
+      this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
     }
-    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
   }
   
   public void c() {}
@@ -36,7 +39,7 @@ class FilePreviewActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10
  * JD-Core Version:    0.7.0.1
  */

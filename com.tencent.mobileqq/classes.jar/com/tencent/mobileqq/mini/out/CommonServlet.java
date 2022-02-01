@@ -17,30 +17,26 @@ public class CommonServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    String str;
-    boolean bool;
-    Bundle localBundle;
     if (paramIntent != null)
     {
-      str = paramFromServiceMsg.getServiceCmd();
-      bool = paramFromServiceMsg.isSuccess();
+      String str = paramFromServiceMsg.getServiceCmd();
+      boolean bool = paramFromServiceMsg.isSuccess();
       ToServiceMsg localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      localBundle = new Bundle();
+      Bundle localBundle = new Bundle();
       localBundle.putParcelable("req", localToServiceMsg);
       if ((bool) && (((Boolean)localToServiceMsg.getAttribute("is_pb_packet", Boolean.FALSE)).booleanValue())) {
         paramFromServiceMsg.putWupBuffer(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
       }
       localBundle.putParcelable("rsp", paramFromServiceMsg);
-      if (!"LbsShareSvr.location".equals(str)) {
-        break label111;
+      if ("LbsShareSvr.location".equals(str))
+      {
+        notifyObserver(paramIntent, 1, bool, localBundle, CommonObserver.class);
+        return;
       }
-      notifyObserver(paramIntent, 1, bool, localBundle, CommonObserver.class);
+      if ("NeighborSvc.ReqGetPoint".equals(str)) {
+        notifyObserver(paramIntent, 2, bool, localBundle, CommonObserver.class);
+      }
     }
-    label111:
-    while (!"NeighborSvc.ReqGetPoint".equals(str)) {
-      return;
-    }
-    notifyObserver(paramIntent, 2, bool, localBundle, CommonObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -54,26 +50,21 @@ public class CommonServlet
         paramPacket.setTimeout(paramIntent.getTimeout());
         paramPacket.setAttributes(paramIntent.getAttributes());
         paramPacket.setSSOCommand(str);
-        if (!((Boolean)paramIntent.getAttribute("is_pb_packet", Boolean.FALSE)).booleanValue()) {
-          break label88;
+        if (((Boolean)paramIntent.getAttribute("is_pb_packet", Boolean.FALSE)).booleanValue()) {
+          paramPacket.putSendData(WupUtil.a(paramIntent.getWupBuffer()));
+        } else {
+          paramPacket.putSendData(paramIntent.getWupBuffer());
         }
-        paramPacket.putSendData(WupUtil.a(paramIntent.getWupBuffer()));
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
       }
-    }
-    for (;;)
-    {
-      if (!paramIntent.isNeedCallback()) {
-        paramPacket.setNoResponse();
-      }
-      return;
-      label88:
-      paramPacket.putSendData(paramIntent.getWupBuffer());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.CommonServlet
  * JD-Core Version:    0.7.0.1
  */

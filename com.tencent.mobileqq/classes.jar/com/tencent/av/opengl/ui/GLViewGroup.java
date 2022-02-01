@@ -5,7 +5,6 @@ import android.graphics.Rect;
 import android.os.SystemClock;
 import android.view.MotionEvent;
 import com.tencent.av.opengl.glrenderer.GLCanvas;
-import com.tencent.ttpic.openapi.filter.TextureRender;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,12 +12,10 @@ import java.util.Comparator;
 public class GLViewGroup
   extends GLView
 {
-  protected TextureRender a;
   private ArrayList<GLView> jdField_a_of_type_JavaUtilArrayList;
   private Comparator<GLView> jdField_a_of_type_JavaUtilComparator = new GLViewGroup.SortComparator(this);
   private GLView.OnZOrderChangedListener jdField_b_of_type_ComTencentAvOpenglUiGLView$OnZOrderChangedListener = new GLViewGroup.1(this);
   private GLView jdField_b_of_type_ComTencentAvOpenglUiGLView;
-  protected TextureRender b;
   protected boolean b;
   
   public GLViewGroup(Context paramContext)
@@ -29,10 +26,11 @@ public class GLViewGroup
   
   public GLView a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      throw new ArrayIndexOutOfBoundsException(paramInt);
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localArrayList != null) && (paramInt >= 0) && (paramInt < localArrayList.size())) {
+      return (GLView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    return (GLView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    throw new ArrayIndexOutOfBoundsException(paramInt);
   }
   
   public void a(GLCanvas paramGLCanvas)
@@ -57,19 +55,21 @@ public class GLViewGroup
   
   public void a(GLView paramGLView)
   {
-    if (paramGLView.jdField_a_of_type_ComTencentAvOpenglUiGLView != null) {
-      throw new IllegalStateException();
+    if (paramGLView.jdField_a_of_type_ComTencentAvOpenglUiGLView == null)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramGLView);
+      paramGLView.jdField_a_of_type_ComTencentAvOpenglUiGLView = this;
+      paramGLView.a(this.jdField_b_of_type_ComTencentAvOpenglUiGLView$OnZOrderChangedListener);
+      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
+      if (this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView != null) {
+        paramGLView.b(this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView);
+      }
+      return;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramGLView);
-    paramGLView.jdField_a_of_type_ComTencentAvOpenglUiGLView = this;
-    paramGLView.a(this.jdField_b_of_type_ComTencentAvOpenglUiGLView$OnZOrderChangedListener);
-    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
-    if (this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView != null) {
-      paramGLView.b(this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView);
-    }
+    throw new IllegalStateException();
   }
   
   protected boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2, GLView paramGLView, boolean paramBoolean)
@@ -77,8 +77,10 @@ public class GLViewGroup
     Rect localRect = paramGLView.jdField_a_of_type_AndroidGraphicsRect;
     if ((!paramBoolean) || (localRect.contains(paramInt1, paramInt2)))
     {
-      if (paramGLView.b(paramMotionEvent)) {}
-      while ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnTouchListener != null) && (this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnTouchListener.a(paramGLView, paramMotionEvent))) {
+      if (paramGLView.b(paramMotionEvent)) {
+        return true;
+      }
+      if ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnTouchListener != null) && (this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnTouchListener.a(paramGLView, paramMotionEvent))) {
         return true;
       }
     }
@@ -87,29 +89,33 @@ public class GLViewGroup
   
   public boolean a(GLView paramGLView)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    while (!this.jdField_a_of_type_JavaUtilArrayList.remove(paramGLView)) {
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject == null) {
       return false;
     }
-    if (this.jdField_b_of_type_ComTencentAvOpenglUiGLView == paramGLView)
+    if (((ArrayList)localObject).remove(paramGLView))
     {
-      long l = SystemClock.uptimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-      b(localMotionEvent);
-      localMotionEvent.recycle();
+      if (this.jdField_b_of_type_ComTencentAvOpenglUiGLView == paramGLView)
+      {
+        long l = SystemClock.uptimeMillis();
+        localObject = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+        b((MotionEvent)localObject);
+        ((MotionEvent)localObject).recycle();
+      }
+      paramGLView.d();
+      paramGLView.jdField_a_of_type_ComTencentAvOpenglUiGLView = null;
+      paramGLView.a(null);
+      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
+      return true;
     }
-    paramGLView.d();
-    paramGLView.jdField_a_of_type_ComTencentAvOpenglUiGLView = null;
-    paramGLView.a(null);
-    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
-    return true;
+    return false;
   }
   
   protected void b(int paramInt1, int paramInt2)
   {
     a(paramInt1, paramInt2);
-    int i = 0;
     int j = e();
+    int i = 0;
     while (i < j)
     {
       a(i).a(paramInt1, paramInt2);
@@ -120,8 +126,8 @@ public class GLViewGroup
   protected void b(GLRootView paramGLRootView)
   {
     this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = paramGLRootView;
-    int i = 0;
     int j = e();
+    int i = 0;
     while (i < j)
     {
       a(i).b(paramGLRootView);
@@ -139,9 +145,8 @@ public class GLViewGroup
     int j = (int)paramMotionEvent.getX();
     int k = (int)paramMotionEvent.getY();
     int i = paramMotionEvent.getAction();
-    Object localObject;
-    if (this.jdField_b_of_type_ComTencentAvOpenglUiGLView != null)
-    {
+    Object localObject = this.jdField_b_of_type_ComTencentAvOpenglUiGLView;
+    if (localObject != null) {
       if (i == 0)
       {
         localObject = MotionEvent.obtain(paramMotionEvent);
@@ -149,42 +154,36 @@ public class GLViewGroup
         a((MotionEvent)localObject, j, k, this.jdField_b_of_type_ComTencentAvOpenglUiGLView, false);
         this.jdField_b_of_type_ComTencentAvOpenglUiGLView = null;
       }
-    }
-    else
-    {
-      if (i != 0) {
-        break label151;
+      else
+      {
+        a(paramMotionEvent, j, k, (GLView)localObject, false);
+        if ((i == 3) || (i == 1)) {
+          this.jdField_b_of_type_ComTencentAvOpenglUiGLView = null;
+        }
+        return true;
       }
+    }
+    if (i == 0)
+    {
       i = e() - 1;
-      if (i < 0) {
-        break label151;
-      }
-      localObject = a(i);
-      if (((GLView)localObject).a() == 0) {
-        break label129;
+      while (i >= 0)
+      {
+        localObject = a(i);
+        if ((((GLView)localObject).a() == 0) && (a(paramMotionEvent, j, k, (GLView)localObject, true)))
+        {
+          this.jdField_b_of_type_ComTencentAvOpenglUiGLView = ((GLView)localObject);
+          return true;
+        }
+        i -= 1;
       }
     }
-    label129:
-    while (!a(paramMotionEvent, j, k, (GLView)localObject, true))
-    {
-      i -= 1;
-      break;
-      a(paramMotionEvent, j, k, this.jdField_b_of_type_ComTencentAvOpenglUiGLView, false);
-      if ((i == 3) || (i == 1)) {
-        this.jdField_b_of_type_ComTencentAvOpenglUiGLView = null;
-      }
-      return true;
-    }
-    this.jdField_b_of_type_ComTencentAvOpenglUiGLView = ((GLView)localObject);
-    return true;
-    label151:
     return super.b(paramMotionEvent);
   }
   
   protected void d()
   {
-    int i = 0;
     int j = e();
+    int i = 0;
     while (i < j)
     {
       a(i).d();
@@ -202,16 +201,17 @@ public class GLViewGroup
   
   public int e()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return localArrayList.size();
   }
   
   protected void e()
   {
-    int i = 0;
     int j = e();
+    int i = 0;
     while (i < j)
     {
       a(i).e();
@@ -221,26 +221,26 @@ public class GLViewGroup
   
   protected void e(GLCanvas paramGLCanvas)
   {
-    if ((this.jdField_b_of_type_Boolean) || (d())) {
-      d(paramGLCanvas);
-    }
-    for (;;)
+    int i;
+    int j;
+    if ((!this.jdField_b_of_type_Boolean) && (!d()))
     {
-      return;
-      int i = 0;
-      int j = e();
-      while (i < j)
-      {
-        a(paramGLCanvas, a(i));
-        i += 1;
-      }
+      i = 0;
+      j = e();
+    }
+    while (i < j)
+    {
+      a(paramGLCanvas, a(i));
+      i += 1;
+      continue;
+      d(paramGLCanvas);
     }
   }
   
   protected void f(int paramInt)
   {
-    int i = 0;
     int j = e();
+    int i = 0;
     while (i < j)
     {
       GLView localGLView = a(i);
@@ -253,8 +253,9 @@ public class GLViewGroup
   
   public void h()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList != null) {
+      Collections.sort(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
     }
   }
   
@@ -283,8 +284,8 @@ public class GLViewGroup
   protected void j()
   {
     f();
-    int i = 0;
     int j = e();
+    int i = 0;
     while (i < j)
     {
       a(i).f();
@@ -295,8 +296,8 @@ public class GLViewGroup
   protected void k()
   {
     g();
-    int i = 0;
     int j = e();
+    int i = 0;
     while (i < j)
     {
       a(i).g();
@@ -306,7 +307,7 @@ public class GLViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.ui.GLViewGroup
  * JD-Core Version:    0.7.0.1
  */

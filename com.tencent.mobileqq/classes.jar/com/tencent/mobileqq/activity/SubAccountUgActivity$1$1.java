@@ -3,18 +3,19 @@ package com.tencent.mobileqq.activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.subaccount.SubAccountControllUtil;
+import com.tencent.mobileqq.subaccount.api.impl.SubAccountControlServiceImpl;
 import com.tencent.util.Pair;
 
 class SubAccountUgActivity$1$1
   implements DialogInterface.OnClickListener
 {
-  SubAccountUgActivity$1$1(SubAccountUgActivity.1 param1, SubAccountControll paramSubAccountControll, Pair paramPair) {}
+  SubAccountUgActivity$1$1(SubAccountUgActivity.1 param1, SubAccountControlServiceImpl paramSubAccountControlServiceImpl, Pair paramPair) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity$1.a.app))
+    this.jdField_a_of_type_ComTencentMobileqqSubaccountApiImplSubAccountControlServiceImpl.cancelHintDialog((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    if (!SubAccountControllUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity$1.a.app))
     {
       this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity$1.a.setTitle("");
       SubAccountAssistantForward.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity$1.a.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity$1.a, null);
@@ -24,7 +25,7 @@ class SubAccountUgActivity$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountUgActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

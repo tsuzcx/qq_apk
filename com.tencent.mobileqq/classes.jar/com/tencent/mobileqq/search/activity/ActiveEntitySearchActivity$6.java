@@ -18,8 +18,16 @@ class ActiveEntitySearchActivity$6
   
   public void a(String paramString, int paramInt, List<AssociateSearchWordsFragment.AssociateItem> paramList, List<UnifySearchAssociationWord.SuggestUrlItem> paramList1, UnifySearchAssociationWord.SuggestUrlItem paramSuggestUrlItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleSuggestUrlResult keyword=" + paramString + " activity keyword=" + this.a.jdField_a_of_type_JavaLangString + " size=" + paramList1.size());
+    if (QLog.isColorLevel())
+    {
+      paramSuggestUrlItem = new StringBuilder();
+      paramSuggestUrlItem.append("handleSuggestUrlResult keyword=");
+      paramSuggestUrlItem.append(paramString);
+      paramSuggestUrlItem.append(" activity keyword=");
+      paramSuggestUrlItem.append(this.a.jdField_a_of_type_JavaLangString);
+      paramSuggestUrlItem.append(" size=");
+      paramSuggestUrlItem.append(paramList1.size());
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, paramSuggestUrlItem.toString());
     }
     if (paramString.equals(this.a.jdField_a_of_type_JavaLangString))
     {
@@ -32,24 +40,24 @@ class ActiveEntitySearchActivity$6
       StringBuilder localStringBuilder = new StringBuilder("");
       if ((paramList != null) && (paramList.size() > 0))
       {
-        paramInt = 0;
-        if (paramInt < paramList.size())
+        int i;
+        for (paramInt = 0; paramInt < paramList.size(); paramInt = i)
         {
           String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
           AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
           localAssociateItem.jdField_a_of_type_JavaLangString = str;
           localAssociateItem.jdField_a_of_type_Int = 3;
-          localAssociateItem.d = (paramInt + 1);
+          i = paramInt + 1;
+          localAssociateItem.d = i;
           paramList1.add(localAssociateItem);
           if (paramInt != paramList.size() - 1)
           {
             paramList1.add(paramSuggestUrlItem);
-            localStringBuilder.append(str).append("::");
+            localStringBuilder.append(str);
+            localStringBuilder.append("::");
           }
-          for (;;)
+          else
           {
-            paramInt += 1;
-            break;
             localStringBuilder.append(str);
           }
         }
@@ -57,20 +65,33 @@ class ActiveEntitySearchActivity$6
       this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
       this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
       this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramList1);
-      UniteSearchReportController.a(null, new ReportModelDC02528().module("subweb_search").action("exp_thinkword_list").obj1(SearchUtils.a(this.a.jdField_a_of_type_ArrayOfLong)).ver1(this.a.a()).ver4(localStringBuilder.toString()).ver7("{experiment_id:" + UniteSearchReportController.b + "}"));
+      paramString = new ReportModelDC02528().module("subweb_search").action("exp_thinkword_list").obj1(SearchUtils.a(this.a.jdField_a_of_type_ArrayOfLong)).ver1(this.a.a()).ver4(localStringBuilder.toString());
+      paramList = new StringBuilder();
+      paramList.append("{experiment_id:");
+      paramList.append(UniteSearchReportController.b);
+      paramList.append("}");
+      UniteSearchReportController.a(null, paramString.ver7(paramList.toString()));
     }
   }
   
   public void a(String paramString1, Integer paramInteger, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleAssociateResultError keyword=" + paramString1 + "  resultCode=" + paramInteger + "  errorMsg=" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleAssociateResultError keyword=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("  resultCode=");
+      localStringBuilder.append(paramInteger);
+      localStringBuilder.append("  errorMsg=");
+      localStringBuilder.append(paramString2);
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity.6
  * JD-Core Version:    0.7.0.1
  */

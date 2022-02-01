@@ -31,8 +31,8 @@ public class ArkTipsBar
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558623, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362544));
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558523, null);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362500));
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ArkTipsBar.1(this));
     }
     if ((paramVarArgs != null) && (paramVarArgs.length > 1) && ((paramVarArgs[0] instanceof CharSequence)) && ((paramVarArgs[1] instanceof Long)))
@@ -50,11 +50,12 @@ public class ArkTipsBar
   
   public void a(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
     {
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362542);
-      if (localImageView != null) {
-        localImageView.setImageDrawable(paramDrawable);
+      localObject = (ImageView)((View)localObject).findViewById(2131362498);
+      if (localObject != null) {
+        ((ImageView)localObject).setImageDrawable(paramDrawable);
       }
     }
   }
@@ -71,7 +72,7 @@ public class ArkTipsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.ArkTipsBar
  * JD-Core Version:    0.7.0.1
  */

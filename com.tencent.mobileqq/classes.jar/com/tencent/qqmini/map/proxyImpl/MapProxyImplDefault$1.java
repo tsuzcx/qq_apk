@@ -18,38 +18,46 @@ class MapProxyImplDefault$1
   
   public void onSnapshotReady(Bitmap paramBitmap)
   {
-    Bitmap localBitmap;
     if (paramBitmap != null)
     {
-      QMLog.d("MapProxyImplDefault", "onCaptureImageSucceed " + paramBitmap.getWidth() + "x" + paramBitmap.getHeight());
-      localBitmap = SaveCaptureImageUitl.buildBitmapFromView(this.val$contentLayout);
-      if ((localBitmap == null) || (localBitmap.isRecycled())) {
-        if (this.val$callback != null) {
-          this.val$callback.onSnapshotReady(null);
-        }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCaptureImageSucceed ");
+      ((StringBuilder)localObject).append(paramBitmap.getWidth());
+      ((StringBuilder)localObject).append("x");
+      ((StringBuilder)localObject).append(paramBitmap.getHeight());
+      QMLog.d("MapProxyImplDefault", ((StringBuilder)localObject).toString());
+      localObject = SaveCaptureImageUitl.buildBitmapFromView(this.val$contentLayout);
+      if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+      {
+        Canvas localCanvas = new Canvas((Bitmap)localObject);
+        ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.val$view.getLayoutParams();
+        localCanvas.drawBitmap(paramBitmap, localMarginLayoutParams.leftMargin, localMarginLayoutParams.topMargin, null);
+        ThreadManager.executeOnDiskIOThreadPool(new MapProxyImplDefault.1.1(this, (Bitmap)localObject));
+        return;
+      }
+      paramBitmap = this.val$callback;
+      if (paramBitmap != null) {
+        paramBitmap.onSnapshotReady(null);
       }
     }
-    do
+    else
     {
-      return;
-      Canvas localCanvas = new Canvas(localBitmap);
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.val$view.getLayoutParams();
-      localCanvas.drawBitmap(paramBitmap, localMarginLayoutParams.leftMargin, localMarginLayoutParams.topMargin, null);
-      ThreadManager.executeOnDiskIOThreadPool(new MapProxyImplDefault.1.1(this, localBitmap));
-      return;
       paramBitmap = SaveCaptureImageUitl.buildBitmapFromView(this.val$contentLayout);
-      if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-        break;
+      if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+      {
+        ThreadManager.executeOnDiskIOThreadPool(new MapProxyImplDefault.1.2(this, paramBitmap));
+        return;
       }
-    } while (this.val$callback == null);
-    this.val$callback.onSnapshotReady(null);
-    return;
-    ThreadManager.executeOnDiskIOThreadPool(new MapProxyImplDefault.1.2(this, paramBitmap));
+      paramBitmap = this.val$callback;
+      if (paramBitmap != null) {
+        paramBitmap.onSnapshotReady(null);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.map.proxyImpl.MapProxyImplDefault.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,21 +16,23 @@ public final class TileOverlay
   
   public final void clearTileCache()
   {
-    if (this.a == null) {}
-    ix localix;
-    do
-    {
+    ix localix = this.a;
+    if (localix == null) {
       return;
-      localix = this.a;
-    } while (localix.m == null);
-    localix.m.a();
-    localix.j.clear();
+    }
+    if (localix.m != null)
+    {
+      localix.m.a();
+      localix.j.clear();
+    }
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    while (!(paramObject instanceof TileOverlay)) {
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof TileOverlay)) {
       return false;
     }
     return this.a.equals(((TileOverlay)paramObject).a);
@@ -38,55 +40,61 @@ public final class TileOverlay
   
   public final String getId()
   {
-    if (this.a == null) {
+    ix localix = this.a;
+    if (localix == null) {
       return "";
     }
-    return this.a.L;
+    return localix.L;
   }
   
   public final int hashCode()
   {
-    if (this.a == null) {
+    ix localix = this.a;
+    if (localix == null) {
       return 0;
     }
-    return this.a.hashCode();
+    return localix.hashCode();
   }
   
   public final void reload()
   {
-    if (this.a == null) {
+    ix localix = this.a;
+    if (localix == null) {
       return;
     }
-    this.a.f();
+    localix.f();
   }
   
   public final void remove()
   {
-    if (this.a == null) {
+    ix localix = this.a;
+    if (localix == null) {
       return;
     }
-    this.a.b();
+    localix.b();
   }
   
   public final void setDiskCacheDir(String paramString)
   {
-    if (this.a == null) {
+    ix localix = this.a;
+    if (localix == null) {
       return;
     }
-    this.a.a(paramString);
+    localix.a(paramString);
   }
   
   public final void setZindex(int paramInt)
   {
-    if (this.a == null) {
+    ix localix = this.a;
+    if (localix == null) {
       return;
     }
-    this.a.a(paramInt);
+    localix.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.TileOverlay
  * JD-Core Version:    0.7.0.1
  */

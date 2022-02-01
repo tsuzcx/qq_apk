@@ -34,15 +34,16 @@ public final class SummaryCard
   {
     paramJceOutputStream.write(this.styleid, 0);
     paramJceOutputStream.write(this.bgid, 1);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 2);
+    String str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.color, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.SummaryCard
  * JD-Core Version:    0.7.0.1
  */

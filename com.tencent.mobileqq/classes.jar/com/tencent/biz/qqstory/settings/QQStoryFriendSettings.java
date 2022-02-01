@@ -24,20 +24,20 @@ public class QQStoryFriendSettings
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.a.a(this, paramBundle);
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     this.a.a(this);
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
     StoryReportor.a(7, this.currentActivityStayTime);
@@ -52,7 +52,7 @@ public class QQStoryFriendSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryFriendSettings
  * JD-Core Version:    0.7.0.1
  */

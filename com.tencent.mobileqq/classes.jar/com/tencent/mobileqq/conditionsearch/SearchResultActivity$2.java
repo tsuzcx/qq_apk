@@ -26,25 +26,26 @@ class SearchResultActivity$2
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
-    if (NetworkUtil.d(this.a)) {
+    if (NetworkUtil.isNetSupport(this.a))
+    {
       SearchResultActivity.c(this.a);
     }
-    for (;;)
+    else
     {
-      SearchResultActivity.a(this.a, System.currentTimeMillis());
-      return true;
       SearchResultActivity.a(this.a).a(1);
       paramView = Message.obtain();
       paramView.what = 3;
       SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
     }
+    SearchResultActivity.a(this.a, System.currentTimeMillis());
+    return true;
   }
   
   public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.SearchResultActivity.2
  * JD-Core Version:    0.7.0.1
  */

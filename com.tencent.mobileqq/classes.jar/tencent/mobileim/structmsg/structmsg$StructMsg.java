@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class structmsg$StructMsg
   extends MessageMicro<StructMsg>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 402 }, new String[] { "version", "msg_type", "msg_seq", "msg_time", "req_uin", "uint32_unread_flag", "msg" }, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), null }, StructMsg.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public structmsg.SystemMsg msg = new structmsg.SystemMsg();
   public final PBUInt64Field msg_seq = PBField.initUInt64(0L);
   public final PBUInt64Field msg_time = PBField.initUInt64(0L);
@@ -18,10 +18,17 @@ public final class structmsg$StructMsg
   public final PBUInt64Field req_uin = PBField.initUInt64(0L);
   public final PBUInt32Field uint32_unread_flag = PBField.initUInt32(0);
   public final PBUInt32Field version = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 402 }, new String[] { "version", "msg_type", "msg_seq", "msg_time", "req_uin", "uint32_unread_flag", "msg" }, new Object[] { localInteger, Integer.valueOf(1), localLong, localLong, localLong, localInteger, null }, StructMsg.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.mobileim.structmsg.structmsg.StructMsg
  * JD-Core Version:    0.7.0.1
  */

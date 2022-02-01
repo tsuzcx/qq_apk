@@ -1,6 +1,5 @@
 package com.tencent.av.core;
 
-import com.tencent.av.AVFunChat.AVFunChatMessage;
 import com.tencent.avcore.engine.dav.IDavEventListener;
 
 public abstract interface IVideoEventListener
@@ -9,8 +8,6 @@ public abstract interface IVideoEventListener
   public abstract void a(long paramLong1, long paramLong2, long paramLong3);
   
   public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract void a(String paramString, AVFunChat.AVFunChatMessage paramAVFunChatMessage);
   
   public abstract void a(String paramString1, String paramString2);
   
@@ -30,7 +27,7 @@ public abstract interface IVideoEventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.core.IVideoEventListener
  * JD-Core Version:    0.7.0.1
  */

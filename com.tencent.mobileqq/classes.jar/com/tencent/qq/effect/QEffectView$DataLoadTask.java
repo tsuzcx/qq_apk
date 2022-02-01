@@ -1,5 +1,6 @@
 package com.tencent.qq.effect;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import com.tencent.qq.effect.engine.QEffectData;
 import com.tencent.qq.effect.engine.QEffectEngine;
@@ -20,33 +21,33 @@ class QEffectView$DataLoadTask
         paramVarArgs.src = null;
         return null;
       }
-      if (paramVarArgs.type != 3) {
-        break label55;
+      if (paramVarArgs.type == 3)
+      {
+        BaseQEffectLoad.analyzeLottieData(paramVarArgs, paramVarArgs.src);
+        return paramVarArgs;
       }
-      BaseQEffectLoad.analyzeLottieData(paramVarArgs, paramVarArgs.src);
-    }
-    for (;;)
-    {
-      return paramVarArgs;
-      label55:
       if (paramVarArgs.type == 7) {
         BaseQEffectLoad.analyzeGLSLData(paramVarArgs, paramVarArgs.src, paramVarArgs.src);
       }
     }
+    return paramVarArgs;
   }
   
   protected void onPostExecute(QEffectData paramQEffectData)
   {
     if (paramQEffectData != null)
     {
-      QEffectEngine.getInstance().load(QEffectView.access$000(this.this$0), this.this$0, QEffectView.access$300(this.this$0), paramQEffectData);
+      QEffectEngine localQEffectEngine = QEffectEngine.getInstance();
+      Context localContext = QEffectView.access$000(this.this$0);
+      QEffectView localQEffectView = this.this$0;
+      localQEffectEngine.load(localContext, localQEffectView, QEffectView.access$300(localQEffectView), paramQEffectData);
       QEffectEngine.getInstance().onAttachedToWindow(QEffectView.access$300(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qq.effect.QEffectView.DataLoadTask
  * JD-Core Version:    0.7.0.1
  */

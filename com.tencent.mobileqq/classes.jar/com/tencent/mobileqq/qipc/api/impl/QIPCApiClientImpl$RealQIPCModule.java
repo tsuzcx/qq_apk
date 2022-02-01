@@ -20,7 +20,8 @@ class QIPCApiClientImpl$RealQIPCModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if ((this.mSource != null) && (this.mSource.get() != null))
+    WeakReference localWeakReference = this.mSource;
+    if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
       paramString = ((QIPCApiModule)this.mSource.get()).onCall(paramString, paramBundle, paramInt);
       if (paramString != null)
@@ -36,7 +37,7 @@ class QIPCApiClientImpl$RealQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qipc.api.impl.QIPCApiClientImpl.RealQIPCModule
  * JD-Core Version:    0.7.0.1
  */

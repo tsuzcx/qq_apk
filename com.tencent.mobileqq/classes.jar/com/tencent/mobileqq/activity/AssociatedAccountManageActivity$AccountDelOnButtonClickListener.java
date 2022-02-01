@@ -14,18 +14,18 @@ class AssociatedAccountManageActivity$AccountDelOnButtonClickListener
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.menuDialog != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.menuDialog.dismiss();
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, false);
+      if (paramInt != 1) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.deleteAccount(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, true);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.deleteAccount(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, false);
   }
   
   public void a(SimpleAccount paramSimpleAccount)
@@ -35,7 +35,7 @@ class AssociatedAccountManageActivity$AccountDelOnButtonClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.AccountDelOnButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

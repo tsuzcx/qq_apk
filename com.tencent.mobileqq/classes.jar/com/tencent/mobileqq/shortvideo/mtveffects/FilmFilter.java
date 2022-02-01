@@ -88,307 +88,419 @@ public class FilmFilter
     if (this.mGaussianShowTime < 0L) {
       return false;
     }
-    if (getPlayMode() == 2) {}
-    for (long l = -1L;; l = 1L)
+    long l;
+    if (getPlayMode() == 2) {
+      l = -1L;
+    } else {
+      l = 1L;
+    }
+    RandomTime localRandomTime;
+    if (this.mGaussianTime.mStartPos < 0L)
     {
-      if (this.mGaussianTime.mStartPos < 0L)
-      {
-        this.mGaussianTime.mStartPos = (this.mGaussianShowTime * l + paramLong);
-        this.mGaussianTime.mEndPos = (l * 360L + this.mGaussianTime.mStartPos);
-        this.mGaussianCurTimes = 0;
-      }
-      for (;;)
-      {
+      localRandomTime = this.mGaussianTime;
+      localRandomTime.mStartPos = (this.mGaussianShowTime * l + paramLong);
+      localRandomTime.mEndPos = (localRandomTime.mStartPos + l * 360L);
+      this.mGaussianCurTimes = 0;
+      return false;
+    }
+    if ((l != 1L) || (this.mGaussianTime.mStartPos <= paramLong))
+    {
+      if ((l == -1L) && (this.mGaussianTime.mStartPos < paramLong)) {
         return false;
-        if (((l != 1L) || (this.mGaussianTime.mStartPos <= paramLong)) && ((l != -1L) || (this.mGaussianTime.mStartPos >= paramLong)))
-        {
-          if (((l == 1L) && (this.mGaussianTime.mEndPos > paramLong)) || ((l == -1L) && (this.mGaussianTime.mEndPos < paramLong))) {
-            return true;
-          }
-          if (this.mGaussianCurTimes == 0)
-          {
-            this.mGaussianTime.mStartPos = paramLong;
-            this.mGaussianTime.mEndPos = (l * 200L + this.mGaussianTime.mStartPos);
-            this.mGaussianCurTimes = 1;
-          }
-          else if (this.mGaussianCurTimes == 1)
-          {
-            this.mGaussianTime.mStartPos = (800L * l + paramLong);
-            this.mGaussianTime.mEndPos = (l * 200L + this.mGaussianTime.mStartPos);
-            this.mGaussianCurTimes = 2;
-          }
-        }
+      }
+      if (((l == 1L) && (this.mGaussianTime.mEndPos > paramLong)) || ((l == -1L) && (this.mGaussianTime.mEndPos < paramLong))) {
+        return true;
+      }
+      int i = this.mGaussianCurTimes;
+      if (i == 0)
+      {
+        localRandomTime = this.mGaussianTime;
+        localRandomTime.mStartPos = paramLong;
+        localRandomTime.mEndPos = (localRandomTime.mStartPos + l * 200L);
+        this.mGaussianCurTimes = 1;
+        return false;
+      }
+      if (i == 1)
+      {
+        localRandomTime = this.mGaussianTime;
+        localRandomTime.mStartPos = (paramLong + 800L * l);
+        localRandomTime.mEndPos = (localRandomTime.mStartPos + l * 200L);
+        this.mGaussianCurTimes = 2;
       }
     }
+    return false;
   }
   
   private boolean isOverlapped(FilmFilter.NoiseItem paramNoiseItem1, FilmFilter.NoiseItem paramNoiseItem2)
   {
-    if ((paramNoiseItem1 == null) || (paramNoiseItem2 == null)) {}
-    while ((Math.abs(paramNoiseItem1.mDstRect.left - paramNoiseItem2.mDstRect.left) >= paramNoiseItem1.mDstRect.width()) || (Math.abs(paramNoiseItem1.mDstRect.top - paramNoiseItem2.mDstRect.top) >= paramNoiseItem1.mDstRect.height())) {
-      return false;
+    if (paramNoiseItem1 != null)
+    {
+      if (paramNoiseItem2 == null) {
+        return false;
+      }
+      if ((Math.abs(paramNoiseItem1.mDstRect.left - paramNoiseItem2.mDstRect.left) < paramNoiseItem1.mDstRect.width()) && (Math.abs(paramNoiseItem1.mDstRect.top - paramNoiseItem2.mDstRect.top) < paramNoiseItem1.mDstRect.height())) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
   /* Error */
   private int loadImage(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: aconst_null
-    //   4: astore 8
-    //   6: aconst_null
-    //   7: astore 6
-    //   9: iconst_m1
-    //   10: istore_2
-    //   11: aload_0
-    //   12: invokevirtual 215	com/tencent/mobileqq/shortvideo/mtveffects/FilmFilter:getMaterialPath	()Ljava/lang/String;
-    //   15: astore 4
-    //   17: aload 4
-    //   19: invokestatic 221	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   22: ifeq +12 -> 34
-    //   25: ldc 39
-    //   27: ldc 223
-    //   29: invokestatic 229	com/tencent/sveffects/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   32: iload_2
-    //   33: ireturn
-    //   34: new 231	java/io/FileInputStream
-    //   37: dup
-    //   38: new 233	java/lang/StringBuilder
+    //   0: aload_0
+    //   1: invokevirtual 215	com/tencent/mobileqq/shortvideo/mtveffects/FilmFilter:getMaterialPath	()Ljava/lang/String;
+    //   4: astore 6
+    //   6: aload 6
+    //   8: invokestatic 221	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   11: istore 4
+    //   13: iconst_m1
+    //   14: istore_2
+    //   15: iload 4
+    //   17: ifeq +12 -> 29
+    //   20: ldc 39
+    //   22: ldc 223
+    //   24: invokestatic 229	com/tencent/sveffects/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: iconst_m1
+    //   28: ireturn
+    //   29: aconst_null
+    //   30: astore 5
+    //   32: aconst_null
+    //   33: astore 7
+    //   35: aconst_null
+    //   36: astore 8
+    //   38: new 231	java/lang/StringBuilder
     //   41: dup
-    //   42: invokespecial 234	java/lang/StringBuilder:<init>	()V
-    //   45: aload 4
-    //   47: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: aload_1
-    //   51: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: invokespecial 243	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   60: astore 4
-    //   62: new 245	java/io/BufferedInputStream
+    //   42: invokespecial 232	java/lang/StringBuilder:<init>	()V
+    //   45: astore 9
+    //   47: aload 9
+    //   49: aload 6
+    //   51: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: pop
+    //   55: aload 9
+    //   57: aload_1
+    //   58: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: pop
+    //   62: new 238	java/io/FileInputStream
     //   65: dup
-    //   66: aload 4
-    //   68: invokespecial 248	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   71: astore 5
-    //   73: sipush 3553
-    //   76: aload 5
-    //   78: invokestatic 254	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   81: invokestatic 260	com/tencent/mobileqq/richmedia/mediacodec/utils/GlUtil:createTexture	(ILandroid/graphics/Bitmap;)I
-    //   84: istore_3
-    //   85: aload 4
-    //   87: ifnull +8 -> 95
-    //   90: aload 4
-    //   92: invokevirtual 265	java/io/InputStream:close	()V
-    //   95: iload_3
-    //   96: istore_2
-    //   97: aload 5
-    //   99: ifnull -67 -> 32
-    //   102: aload 5
-    //   104: invokevirtual 265	java/io/InputStream:close	()V
-    //   107: iload_3
-    //   108: ireturn
-    //   109: astore_1
-    //   110: iload_3
-    //   111: ireturn
-    //   112: astore 5
-    //   114: aconst_null
-    //   115: astore 4
-    //   117: aload 6
-    //   119: astore_1
-    //   120: aload 5
-    //   122: invokevirtual 268	java/lang/Exception:printStackTrace	()V
-    //   125: ldc 39
-    //   127: new 233	java/lang/StringBuilder
-    //   130: dup
-    //   131: invokespecial 234	java/lang/StringBuilder:<init>	()V
-    //   134: ldc_w 270
-    //   137: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: aload 5
-    //   142: invokevirtual 273	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   145: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: invokestatic 229	com/tencent/sveffects/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   151: aload 4
-    //   153: ifnull +8 -> 161
-    //   156: aload 4
-    //   158: invokevirtual 265	java/io/InputStream:close	()V
-    //   161: aload_1
-    //   162: ifnull -130 -> 32
-    //   165: aload_1
-    //   166: invokevirtual 265	java/io/InputStream:close	()V
-    //   169: iconst_m1
-    //   170: ireturn
-    //   171: astore_1
-    //   172: iconst_m1
-    //   173: ireturn
-    //   174: astore 4
-    //   176: aconst_null
-    //   177: astore 5
-    //   179: aload 7
-    //   181: astore 4
-    //   183: ldc 39
-    //   185: new 233	java/lang/StringBuilder
+    //   66: aload 9
+    //   68: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   71: invokespecial 243	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   74: astore 6
+    //   76: new 245	java/io/BufferedInputStream
+    //   79: dup
+    //   80: aload 6
+    //   82: invokespecial 248	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   85: astore 5
+    //   87: sipush 3553
+    //   90: aload 5
+    //   92: invokestatic 254	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   95: invokestatic 260	com/tencent/mobileqq/richmedia/mediacodec/utils/GlUtil:createTexture	(ILandroid/graphics/Bitmap;)I
+    //   98: istore_3
+    //   99: aload 6
+    //   101: invokevirtual 265	java/io/InputStream:close	()V
+    //   104: iload_3
+    //   105: istore_2
+    //   106: aload 5
+    //   108: astore_1
+    //   109: aload_1
+    //   110: invokevirtual 265	java/io/InputStream:close	()V
+    //   113: iload_2
+    //   114: ireturn
+    //   115: astore_1
+    //   116: goto +15 -> 131
+    //   119: astore 7
+    //   121: aload 5
+    //   123: astore_1
+    //   124: goto +32 -> 156
+    //   127: astore_1
+    //   128: aconst_null
+    //   129: astore 5
+    //   131: aload 6
+    //   133: astore 7
+    //   135: aload 5
+    //   137: astore 6
+    //   139: goto +232 -> 371
+    //   142: aconst_null
+    //   143: astore 5
+    //   145: aload 6
+    //   147: astore 8
+    //   149: goto +28 -> 177
+    //   152: astore 7
+    //   154: aconst_null
+    //   155: astore_1
+    //   156: aload 6
+    //   158: astore 5
+    //   160: aload 7
+    //   162: astore 8
+    //   164: goto +108 -> 272
+    //   167: astore_1
+    //   168: aconst_null
+    //   169: astore 6
+    //   171: goto +200 -> 371
+    //   174: aconst_null
+    //   175: astore 5
+    //   177: aload 5
+    //   179: astore 6
+    //   181: aload 8
+    //   183: astore 7
+    //   185: new 231	java/lang/StringBuilder
     //   188: dup
-    //   189: invokespecial 234	java/lang/StringBuilder:<init>	()V
-    //   192: ldc_w 275
-    //   195: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: aload_1
-    //   199: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 229	com/tencent/sveffects/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   208: aload 4
-    //   210: ifnull +8 -> 218
-    //   213: aload 4
-    //   215: invokevirtual 265	java/io/InputStream:close	()V
-    //   218: aload 5
-    //   220: ifnull -188 -> 32
-    //   223: aload 5
-    //   225: invokevirtual 265	java/io/InputStream:close	()V
-    //   228: iconst_m1
-    //   229: ireturn
-    //   230: astore_1
-    //   231: iconst_m1
-    //   232: ireturn
-    //   233: astore_1
-    //   234: aconst_null
-    //   235: astore 5
-    //   237: aload 8
-    //   239: astore 4
-    //   241: aload 4
-    //   243: ifnull +8 -> 251
-    //   246: aload 4
-    //   248: invokevirtual 265	java/io/InputStream:close	()V
-    //   251: aload 5
-    //   253: ifnull +8 -> 261
-    //   256: aload 5
-    //   258: invokevirtual 265	java/io/InputStream:close	()V
-    //   261: aload_1
-    //   262: athrow
-    //   263: astore_1
-    //   264: goto -169 -> 95
-    //   267: astore 4
-    //   269: goto -108 -> 161
-    //   272: astore_1
-    //   273: goto -55 -> 218
-    //   276: astore 4
-    //   278: goto -27 -> 251
-    //   281: astore 4
-    //   283: goto -22 -> 261
-    //   286: astore_1
-    //   287: aconst_null
-    //   288: astore 5
-    //   290: goto -49 -> 241
-    //   293: astore_1
-    //   294: goto -53 -> 241
-    //   297: astore 6
-    //   299: aload_1
-    //   300: astore 5
-    //   302: aload 6
-    //   304: astore_1
-    //   305: goto -64 -> 241
-    //   308: astore_1
-    //   309: goto -68 -> 241
-    //   312: astore 5
-    //   314: aconst_null
-    //   315: astore 5
-    //   317: goto -134 -> 183
-    //   320: astore 6
-    //   322: goto -139 -> 183
-    //   325: astore 5
-    //   327: aload 6
-    //   329: astore_1
-    //   330: goto -210 -> 120
-    //   333: astore 6
-    //   335: aload 5
-    //   337: astore_1
-    //   338: aload 6
-    //   340: astore 5
-    //   342: goto -222 -> 120
+    //   189: invokespecial 232	java/lang/StringBuilder:<init>	()V
+    //   192: astore 9
+    //   194: aload 5
+    //   196: astore 6
+    //   198: aload 8
+    //   200: astore 7
+    //   202: aload 9
+    //   204: ldc_w 267
+    //   207: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   210: pop
+    //   211: aload 5
+    //   213: astore 6
+    //   215: aload 8
+    //   217: astore 7
+    //   219: aload 9
+    //   221: aload_1
+    //   222: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: pop
+    //   226: aload 5
+    //   228: astore 6
+    //   230: aload 8
+    //   232: astore 7
+    //   234: ldc 39
+    //   236: aload 9
+    //   238: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   241: invokestatic 229	com/tencent/sveffects/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   244: aload 8
+    //   246: ifnull +11 -> 257
+    //   249: aload 8
+    //   251: invokevirtual 265	java/io/InputStream:close	()V
+    //   254: goto +3 -> 257
+    //   257: aload 5
+    //   259: ifnull +109 -> 368
+    //   262: aload 5
+    //   264: astore_1
+    //   265: goto -156 -> 109
+    //   268: astore 8
+    //   270: aconst_null
+    //   271: astore_1
+    //   272: aload_1
+    //   273: astore 6
+    //   275: aload 5
+    //   277: astore 7
+    //   279: aload 8
+    //   281: invokevirtual 270	java/lang/Exception:printStackTrace	()V
+    //   284: aload_1
+    //   285: astore 6
+    //   287: aload 5
+    //   289: astore 7
+    //   291: new 231	java/lang/StringBuilder
+    //   294: dup
+    //   295: invokespecial 232	java/lang/StringBuilder:<init>	()V
+    //   298: astore 9
+    //   300: aload_1
+    //   301: astore 6
+    //   303: aload 5
+    //   305: astore 7
+    //   307: aload 9
+    //   309: ldc_w 272
+    //   312: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   315: pop
+    //   316: aload_1
+    //   317: astore 6
+    //   319: aload 5
+    //   321: astore 7
+    //   323: aload 9
+    //   325: aload 8
+    //   327: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   330: pop
+    //   331: aload_1
+    //   332: astore 6
+    //   334: aload 5
+    //   336: astore 7
+    //   338: ldc 39
+    //   340: aload 9
+    //   342: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   345: invokestatic 229	com/tencent/sveffects/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   348: aload 5
+    //   350: ifnull +11 -> 361
+    //   353: aload 5
+    //   355: invokevirtual 265	java/io/InputStream:close	()V
+    //   358: goto +3 -> 361
+    //   361: aload_1
+    //   362: ifnull +6 -> 368
+    //   365: goto -256 -> 109
+    //   368: iconst_m1
+    //   369: ireturn
+    //   370: astore_1
+    //   371: aload 7
+    //   373: ifnull +11 -> 384
+    //   376: aload 7
+    //   378: invokevirtual 265	java/io/InputStream:close	()V
+    //   381: goto +3 -> 384
+    //   384: aload 6
+    //   386: ifnull +8 -> 394
+    //   389: aload 6
+    //   391: invokevirtual 265	java/io/InputStream:close	()V
+    //   394: goto +5 -> 399
+    //   397: aload_1
+    //   398: athrow
+    //   399: goto -2 -> 397
+    //   402: astore 5
+    //   404: goto -230 -> 174
+    //   407: astore 5
+    //   409: goto -267 -> 142
+    //   412: astore 7
+    //   414: goto -269 -> 145
+    //   417: astore_1
+    //   418: aload 5
+    //   420: astore_1
+    //   421: iload_3
+    //   422: istore_2
+    //   423: goto -314 -> 109
+    //   426: astore_1
+    //   427: iload_2
+    //   428: ireturn
+    //   429: astore_1
+    //   430: goto -173 -> 257
+    //   433: astore 5
+    //   435: goto -74 -> 361
+    //   438: astore 5
+    //   440: goto -56 -> 384
+    //   443: astore 5
+    //   445: goto -51 -> 394
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	345	0	this	FilmFilter
-    //   0	345	1	paramString	String
-    //   10	87	2	i	int
-    //   84	27	3	j	int
-    //   15	142	4	localObject1	java.lang.Object
-    //   174	1	4	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   181	66	4	localObject2	java.lang.Object
-    //   267	1	4	localIOException1	java.io.IOException
-    //   276	1	4	localIOException2	java.io.IOException
-    //   281	1	4	localIOException3	java.io.IOException
-    //   71	32	5	localBufferedInputStream	java.io.BufferedInputStream
-    //   112	29	5	localException1	java.lang.Exception
-    //   177	124	5	str	String
-    //   312	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   315	1	5	localObject3	java.lang.Object
-    //   325	11	5	localException2	java.lang.Exception
-    //   340	1	5	localException3	java.lang.Exception
-    //   7	111	6	localObject4	java.lang.Object
-    //   297	6	6	localObject5	java.lang.Object
-    //   320	8	6	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   333	6	6	localException4	java.lang.Exception
-    //   1	179	7	localObject6	java.lang.Object
-    //   4	234	8	localObject7	java.lang.Object
+    //   0	448	0	this	FilmFilter
+    //   0	448	1	paramString	String
+    //   14	414	2	i	int
+    //   98	324	3	j	int
+    //   11	5	4	bool	boolean
+    //   30	324	5	localObject1	Object
+    //   402	1	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   407	12	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   433	1	5	localIOException1	java.io.IOException
+    //   438	1	5	localIOException2	java.io.IOException
+    //   443	1	5	localIOException3	java.io.IOException
+    //   4	386	6	localObject2	Object
+    //   33	1	7	localObject3	Object
+    //   119	1	7	localException1	java.lang.Exception
+    //   133	1	7	localObject4	Object
+    //   152	9	7	localException2	java.lang.Exception
+    //   183	194	7	localObject5	Object
+    //   412	1	7	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   36	214	8	localObject6	Object
+    //   268	58	8	localException3	java.lang.Exception
+    //   45	296	9	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   102	107	109	java/io/IOException
-    //   34	62	112	java/lang/Exception
-    //   165	169	171	java/io/IOException
-    //   34	62	174	java/lang/OutOfMemoryError
-    //   223	228	230	java/io/IOException
-    //   34	62	233	finally
-    //   90	95	263	java/io/IOException
-    //   156	161	267	java/io/IOException
-    //   213	218	272	java/io/IOException
-    //   246	251	276	java/io/IOException
-    //   256	261	281	java/io/IOException
-    //   62	73	286	finally
-    //   73	85	293	finally
-    //   120	151	297	finally
-    //   183	208	308	finally
-    //   62	73	312	java/lang/OutOfMemoryError
-    //   73	85	320	java/lang/OutOfMemoryError
-    //   62	73	325	java/lang/Exception
-    //   73	85	333	java/lang/Exception
+    //   87	99	115	finally
+    //   87	99	119	java/lang/Exception
+    //   76	87	127	finally
+    //   76	87	152	java/lang/Exception
+    //   38	76	167	finally
+    //   38	76	268	java/lang/Exception
+    //   185	194	370	finally
+    //   202	211	370	finally
+    //   219	226	370	finally
+    //   234	244	370	finally
+    //   279	284	370	finally
+    //   291	300	370	finally
+    //   307	316	370	finally
+    //   323	331	370	finally
+    //   338	348	370	finally
+    //   38	76	402	java/lang/OutOfMemoryError
+    //   76	87	407	java/lang/OutOfMemoryError
+    //   87	99	412	java/lang/OutOfMemoryError
+    //   99	104	417	java/io/IOException
+    //   109	113	426	java/io/IOException
+    //   249	254	429	java/io/IOException
+    //   353	358	433	java/io/IOException
+    //   376	381	438	java/io/IOException
+    //   389	394	443	java/io/IOException
   }
   
   private void randomNoiseItems()
   {
-    if (this.mRenderFBO == null) {}
-    for (;;)
-    {
+    if (this.mRenderFBO == null) {
       return;
-      this.mNoiseItems.clear();
-      long l = this.mRandom.nextLong(1L, 3L);
-      int i = 0;
-      while (i < l)
-      {
-        FilmFilter.NoiseItem localNoiseItem = new FilmFilter.NoiseItem();
-        localNoiseItem.mSrcLength = 0.05555556F;
-        localNoiseItem.mSrcX = ((float)this.mRandom.nextLong(0L, 18L) * localNoiseItem.mSrcLength);
-        localNoiseItem.mDstRect.left = ((float)this.mRandom.nextLong(0L, this.mRenderFBO.getWidth() - 79) * 1.0F / this.mRenderFBO.getWidth());
-        localNoiseItem.mDstRect.top = (1.0F - (float)this.mRandom.nextLong(0L, this.mRenderFBO.getHeight() - 79) * 1.0F / this.mRenderFBO.getHeight());
-        localNoiseItem.mDstRect.right = (localNoiseItem.mDstRect.left + 0.05555556F);
-        localNoiseItem.mDstRect.bottom = (localNoiseItem.mDstRect.top - 0.05555556F);
-        tryAddNoiseItem(localNoiseItem);
-        i += 1;
-      }
+    }
+    this.mNoiseItems.clear();
+    long l = this.mRandom.nextLong(1L, 3L);
+    int i = 0;
+    while (i < l)
+    {
+      FilmFilter.NoiseItem localNoiseItem = new FilmFilter.NoiseItem();
+      localNoiseItem.mSrcLength = 0.05555556F;
+      localNoiseItem.mSrcX = ((float)this.mRandom.nextLong(0L, 18L) * localNoiseItem.mSrcLength);
+      localNoiseItem.mDstRect.left = ((float)this.mRandom.nextLong(0L, this.mRenderFBO.getWidth() - 79) * 1.0F / this.mRenderFBO.getWidth());
+      localNoiseItem.mDstRect.top = (1.0F - (float)this.mRandom.nextLong(0L, this.mRenderFBO.getHeight() - 79) * 1.0F / this.mRenderFBO.getHeight());
+      localNoiseItem.mDstRect.right = (localNoiseItem.mDstRect.left + 0.05555556F);
+      localNoiseItem.mDstRect.bottom = (localNoiseItem.mDstRect.top - 0.05555556F);
+      tryAddNoiseItem(localNoiseItem);
+      i += 1;
     }
   }
   
   private void selectGaussianFilter(long paramLong)
   {
-    int i;
-    if (getPlayMode() != 2)
+    int j = getPlayMode();
+    int i = 2;
+    long l2;
+    long l1;
+    if (j != 2)
     {
-      if ((paramLong > this.mGaussianTime.mEndPos) || (paramLong < this.mGaussianTime.mStartPos))
+      if ((paramLong <= this.mGaussianTime.mEndPos) && (paramLong >= this.mGaussianTime.mStartPos))
       {
-        this.mGaussianFilterIndex = -1;
+        l2 = (this.mGaussianTime.mEndPos - this.mGaussianTime.mStartPos) / 40L;
+        l1 = l2;
+        if (this.mGaussianTime.mEndPos - this.mGaussianTime.mStartPos - 40L * l2 > 0L) {
+          l1 = l2 + 1L;
+        }
+        if (l1 <= 2L)
+        {
+          this.mGaussianFilterIndex = 0;
+          return;
+        }
+        if (l1 >= 9L) {}
+        do
+        {
+          l1 = 9L;
+          break;
+          while (i < 5)
+          {
+            j = i + 1;
+            if (l1 < j * 2 - 1)
+            {
+              l1 = i * 2 - 1;
+              break;
+            }
+            i = j;
+          }
+        } while (i == 5);
+        l2 = this.mGaussianTime.mStartPos;
+        i = (int)((this.mGaussianTime.mEndPos - this.mGaussianTime.mStartPos) / l1);
+        i = (int)(paramLong - l2) / (i + 1);
+        paramLong = i;
+        l1 -= 1L;
+        if (paramLong <= l1 / 2L)
+        {
+          this.mGaussianFilterIndex = i;
+          return;
+        }
+        this.mGaussianFilterIndex = ((int)l1 - i);
         return;
       }
-      l2 = (this.mGaussianTime.mEndPos - this.mGaussianTime.mStartPos) / 40L;
+      this.mGaussianFilterIndex = -1;
+      return;
+    }
+    if ((paramLong >= this.mGaussianTime.mEndPos) && (paramLong <= this.mGaussianTime.mStartPos))
+    {
+      l2 = (this.mGaussianTime.mStartPos - this.mGaussianTime.mEndPos) / 40L;
       l1 = l2;
-      if (this.mGaussianTime.mEndPos - this.mGaussianTime.mStartPos - 40L * l2 > 0L) {
+      if (this.mGaussianTime.mStartPos - this.mGaussianTime.mEndPos - 40L * l2 > 0L) {
         l1 = l2 + 1L;
       }
       if (l1 <= 2L)
@@ -396,93 +508,41 @@ public class FilmFilter
         this.mGaussianFilterIndex = 0;
         return;
       }
+      l2 = 9L;
       if (l1 >= 9L)
       {
-        l1 = 9L;
-        l2 = this.mGaussianTime.mStartPos;
-        i = (int)((this.mGaussianTime.mEndPos - this.mGaussianTime.mStartPos) / l1);
-        i = (int)(paramLong - l2) / (i + 1);
-        if (i <= (l1 - 1L) / 2L) {
-          this.mGaussianFilterIndex = i;
-        }
+        l1 = l2;
       }
       else
       {
-        i = 2;
-        for (;;)
+        while (i < 5)
         {
-          l2 = l1;
-          if (i < 5)
+          j = i + 1;
+          if (l1 < j * 2 - 1)
           {
-            if (l1 < (i + 1) * 2 - 1) {
-              l2 = i * 2 - 1;
-            }
-          }
-          else
-          {
-            l1 = l2;
-            if (i != 5) {
-              break;
-            }
-            l1 = 9L;
+            l1 = i * 2 - 1;
             break;
           }
-          i += 1;
+          i = j;
+        }
+        if (i == 5) {
+          l1 = l2;
         }
       }
-      this.mGaussianFilterIndex = ((int)(l1 - 1L) - i);
-      return;
-    }
-    if ((paramLong < this.mGaussianTime.mEndPos) || (paramLong > this.mGaussianTime.mStartPos))
-    {
-      this.mGaussianFilterIndex = -1;
-      return;
-    }
-    long l2 = (this.mGaussianTime.mStartPos - this.mGaussianTime.mEndPos) / 40L;
-    long l1 = l2;
-    if (this.mGaussianTime.mStartPos - this.mGaussianTime.mEndPos - 40L * l2 > 0L) {
-      l1 = l2 + 1L;
-    }
-    if (l1 <= 2L)
-    {
-      this.mGaussianFilterIndex = 0;
-      return;
-    }
-    if (l1 >= 9L)
-    {
-      l1 = 9L;
       l2 = this.mGaussianTime.mStartPos;
       i = (int)((this.mGaussianTime.mStartPos - this.mGaussianTime.mEndPos) / l1);
       i = (int)(l2 - paramLong) / (i + 1);
-      if (i <= (l1 - 1L) / 2L) {
-        this.mGaussianFilterIndex = i;
-      }
-    }
-    else
-    {
-      i = 2;
-      for (;;)
+      paramLong = i;
+      l1 -= 1L;
+      if (paramLong <= l1 / 2L)
       {
-        l2 = l1;
-        if (i < 5)
-        {
-          if (l1 < (i + 1) * 2 - 1) {
-            l2 = i * 2 - 1;
-          }
-        }
-        else
-        {
-          l1 = l2;
-          if (i != 5) {
-            break;
-          }
-          l1 = 9L;
-          break;
-        }
-        i += 1;
+        this.mGaussianFilterIndex = i;
+        return;
       }
+      this.mGaussianFilterIndex = ((int)l1 - i);
+      return;
     }
-    this.mGaussianFilterIndex = ((int)(l1 - 1L) - i);
+    this.mGaussianFilterIndex = -1;
   }
   
   private void tryAddNoiseItem(FilmFilter.NoiseItem paramNoiseItem)
@@ -514,52 +574,62 @@ public class FilmFilter
     }
     checkData(paramLong);
     paramRenderBuffer.bind();
-    if ((this.mFilmFilter != null) && (this.mPaletteID >= 0)) {}
-    for (boolean bool = this.mFilmFilter.process(paramInt, this.mPaletteID, paramArrayOfFloat1, paramArrayOfFloat2);; bool = false)
+    FilmColorFilter localFilmColorFilter = this.mFilmFilter;
+    int i;
+    if (localFilmColorFilter != null)
     {
-      if ((this.mShowNoise) && (this.mNoiseFilter != null) && (this.mNoiseItems.size() > 0) && (this.mMaterialID >= 0))
+      i = this.mPaletteID;
+      if (i >= 0)
       {
-        this.mNoiseFilter.updateData(this.mNoiseItems);
-        this.mNoiseFilter.process(this.mMaterialID, paramArrayOfFloat1, paramArrayOfFloat2);
+        bool = localFilmColorFilter.process(paramInt, i, paramArrayOfFloat1, paramArrayOfFloat2);
+        break label89;
       }
-      paramRenderBuffer.unbind();
-      if (bool) {
-        paramInt = paramRenderBuffer.getTexId();
-      }
-      for (;;)
+    }
+    boolean bool = false;
+    label89:
+    if ((this.mShowNoise) && (this.mNoiseFilter != null) && (this.mNoiseItems.size() > 0) && (this.mMaterialID >= 0))
+    {
+      this.mNoiseFilter.updateData(this.mNoiseItems);
+      this.mNoiseFilter.process(this.mMaterialID, paramArrayOfFloat1, paramArrayOfFloat2);
+    }
+    paramRenderBuffer.unbind();
+    if (bool) {
+      paramInt = paramRenderBuffer.getTexId();
+    }
+    if (this.mShowGaussian)
+    {
+      int j = this.mGaussianFilterIndex;
+      if ((j >= 0) && (j < this.mGaussianFilters.length))
       {
-        if ((this.mShowGaussian) && (this.mGaussianFilterIndex >= 0) && (this.mGaussianFilterIndex < this.mGaussianFilters.length))
+        i = paramInt;
+        if (this.mScaleFilter != null)
         {
-          int i = paramInt;
-          if (this.mScaleFilter != null)
+          i = paramInt;
+          if (this.mRenderFBO != null)
           {
             i = paramInt;
-            if (this.mRenderFBO != null)
+            if (this.mGaussianCurTimes != 2)
             {
+              paramFloat = calcScaleRate(j);
+              this.mRenderFBO.bind();
+              bool = this.mScaleFilter.process(paramInt, 0.5F, 0.5F, paramFloat, null, null);
+              this.mRenderFBO.unbind();
               i = paramInt;
-              if (this.mGaussianCurTimes != 2)
-              {
-                paramFloat = calcScaleRate(this.mGaussianFilterIndex);
-                this.mRenderFBO.bind();
-                bool = this.mScaleFilter.process(paramInt, 0.5F, 0.5F, paramFloat, null, null);
-                this.mRenderFBO.unbind();
-                i = paramInt;
-                if (bool) {
-                  i = this.mRenderFBO.getTexId();
-                }
+              if (bool) {
+                i = this.mRenderFBO.getTexId();
               }
             }
           }
-          paramArrayOfFloat1 = this.mGaussianFilters[this.mGaussianFilterIndex];
-          if (paramArrayOfFloat1 != null) {
-            paramArrayOfFloat1.onDraw2(i, this.mFrameBuffers[0]);
-          }
-          updateRendBuffer(paramRenderBuffer, this.mFrameBufferTextures[0]);
-          return true;
         }
-        return bool;
+        paramArrayOfFloat1 = this.mGaussianFilters[this.mGaussianFilterIndex];
+        if (paramArrayOfFloat1 != null) {
+          paramArrayOfFloat1.onDraw2(i, this.mFrameBuffers[0]);
+        }
+        updateRendBuffer(paramRenderBuffer, this.mFrameBufferTextures[0]);
+        return true;
       }
     }
+    return bool;
   }
   
   public void onReset(long paramLong)
@@ -570,80 +640,94 @@ public class FilmFilter
   public void onSurfaceChange(int paramInt1, int paramInt2)
   {
     super.onSurfaceChange(paramInt1, paramInt2);
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {}
-    for (;;)
+    if (paramInt1 != 0)
     {
-      return;
-      if (this.mNoiseFilter != null)
-      {
-        this.mNoiseFilter.onOutputSizeChanged(paramInt1, paramInt2);
-        if (this.mFilmFilter == null) {
-          break label156;
-        }
-        this.mFilmFilter.onOutputSizeChanged(paramInt1, paramInt2);
-        label47:
-        if (this.mScaleFilter == null) {
-          break label211;
-        }
-        this.mScaleFilter.onOutputSizeChanged(paramInt1, paramInt2);
-        label63:
-        i = 0;
-        label65:
-        if (i >= this.mGaussianFilters.length) {
-          break label313;
-        }
-        if (this.mGaussianFilters[i] == null) {
-          break label266;
-        }
-        this.mGaussianFilters[i].onOutputSizeChanged(paramInt1, paramInt2);
+      if (paramInt2 == 0) {
+        return;
       }
-      for (;;)
+      Object localObject = this.mNoiseFilter;
+      if (localObject != null)
       {
-        i += 1;
-        break label65;
+        ((FilmNoiseFilter)localObject).onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      else
+      {
         this.mNoiseFilter = new FilmNoiseFilter();
         this.mNoiseFilter.init();
         if (this.mNoiseFilter.isInitialized())
         {
           this.mNoiseFilter.onOutputSizeChanged(paramInt1, paramInt2);
-          break;
         }
-        this.mNoiseFilter.destroy();
-        this.mNoiseFilter = null;
-        break;
-        label156:
+        else
+        {
+          this.mNoiseFilter.destroy();
+          this.mNoiseFilter = null;
+        }
+      }
+      localObject = this.mFilmFilter;
+      if (localObject != null)
+      {
+        ((FilmColorFilter)localObject).onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      else
+      {
         this.mFilmFilter = new FilmColorFilter();
         this.mFilmFilter.init();
         if (this.mFilmFilter.isInitialized())
         {
           this.mFilmFilter.onOutputSizeChanged(paramInt1, paramInt2);
-          break label47;
         }
-        this.mFilmFilter.destroy();
-        this.mFilmFilter = null;
-        break label47;
-        label211:
+        else
+        {
+          this.mFilmFilter.destroy();
+          this.mFilmFilter = null;
+        }
+      }
+      localObject = this.mScaleFilter;
+      if (localObject != null)
+      {
+        ((ScaleFilter)localObject).onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      else
+      {
         this.mScaleFilter = new ScaleFilter();
         this.mScaleFilter.init();
         if (this.mScaleFilter.isInitialized())
         {
           this.mScaleFilter.onOutputSizeChanged(paramInt1, paramInt2);
-          break label63;
         }
-        this.mScaleFilter.destroy();
-        this.mScaleFilter = null;
-        break label63;
-        label266:
-        this.mGaussianFilters[i] = new QQAVImageDenoiseGaussianBlurFilter(20 / this.mGaussianFilters.length * i);
-        this.mGaussianFilters[i].init();
-        this.mGaussianFilters[i].onOutputSizeChanged(paramInt1, paramInt2);
-      }
-      label313:
-      if ((this.mRenderFBO == null) || (this.mRenderFBO.getWidth() != paramInt1) || (this.mRenderFBO.getHeight() != paramInt2))
-      {
-        if (this.mRenderFBO != null)
+        else
         {
-          this.mRenderFBO.destroy();
+          this.mScaleFilter.destroy();
+          this.mScaleFilter = null;
+        }
+      }
+      int i = 0;
+      for (;;)
+      {
+        localObject = this.mGaussianFilters;
+        if (i >= localObject.length) {
+          break;
+        }
+        if (localObject[i] != null)
+        {
+          localObject[i].onOutputSizeChanged(paramInt1, paramInt2);
+        }
+        else
+        {
+          localObject[i] = new QQAVImageDenoiseGaussianBlurFilter(20 / localObject.length * i);
+          this.mGaussianFilters[i].init();
+          this.mGaussianFilters[i].onOutputSizeChanged(paramInt1, paramInt2);
+        }
+        i += 1;
+      }
+      localObject = this.mRenderFBO;
+      if ((localObject == null) || (((RenderBuffer)localObject).getWidth() != paramInt1) || (this.mRenderFBO.getHeight() != paramInt2))
+      {
+        localObject = this.mRenderFBO;
+        if (localObject != null)
+        {
+          ((RenderBuffer)localObject).destroy();
           this.mRenderFBO = null;
         }
         this.mRenderFBO = new RenderBuffer(paramInt1, paramInt2, 33984);
@@ -655,7 +739,7 @@ public class FilmFilter
         this.mPaletteID = loadImage("effectcombofilm.png");
       }
       int j = this.mFrameBufferTextures.length;
-      int i = 0;
+      i = 0;
       while (i < j)
       {
         GLES20.glGenFramebuffers(1, this.mFrameBuffers, i);
@@ -678,52 +762,64 @@ public class FilmFilter
   public void onSurfaceDestroy()
   {
     super.onSurfaceDestroy();
-    if (this.mFilmFilter != null)
+    Object localObject = this.mFilmFilter;
+    if (localObject != null)
     {
-      this.mFilmFilter.destroy();
+      ((FilmColorFilter)localObject).destroy();
       this.mFilmFilter = null;
     }
-    if (this.mNoiseFilter != null)
+    localObject = this.mNoiseFilter;
+    if (localObject != null)
     {
-      this.mNoiseFilter.destroy();
+      ((FilmNoiseFilter)localObject).destroy();
       this.mNoiseFilter = null;
     }
-    if (this.mScaleFilter != null)
+    localObject = this.mScaleFilter;
+    if (localObject != null)
     {
-      this.mScaleFilter.destroy();
+      ((ScaleFilter)localObject).destroy();
       this.mScaleFilter = null;
     }
-    if (this.mMaterialID >= 0)
+    int i = this.mMaterialID;
+    if (i >= 0)
     {
-      GlUtil.deleteTexture(this.mMaterialID);
+      GlUtil.deleteTexture(i);
       this.mMaterialID = -1;
     }
-    if (this.mPaletteID >= 0)
+    i = this.mPaletteID;
+    if (i >= 0)
     {
-      GlUtil.deleteTexture(this.mPaletteID);
+      GlUtil.deleteTexture(i);
       this.mPaletteID = -1;
     }
-    int i = 0;
-    while (i < this.mGaussianFilters.length)
+    i = 0;
+    for (;;)
     {
-      this.mGaussianFilters[i].destroy();
+      localObject = this.mGaussianFilters;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject[i].destroy();
       this.mGaussianFilters[i] = null;
       i += 1;
     }
     this.mGaussianFilterIndex = -1;
     this.mNoiseItems.clear();
-    if (this.mRenderFBO != null)
+    localObject = this.mRenderFBO;
+    if (localObject != null)
     {
-      if (this.mRenderFBO.getTexId() >= 0) {
+      if (((RenderBuffer)localObject).getTexId() >= 0) {
         GlUtil.deleteTexture(this.mRenderFBO.getTexId());
       }
       this.mRenderFBO.destroy();
     }
-    if (this.mFrameBuffers.length > 0) {
-      GLES20.glDeleteFramebuffers(this.mFrameBuffers.length, this.mFrameBuffers, 0);
+    localObject = this.mFrameBuffers;
+    if (localObject.length > 0) {
+      GLES20.glDeleteFramebuffers(localObject.length, (int[])localObject, 0);
     }
-    if (this.mFrameBufferTextures.length > 0) {
-      GLES20.glDeleteTextures(this.mFrameBufferTextures.length, this.mFrameBufferTextures, 0);
+    localObject = this.mFrameBufferTextures;
+    if (localObject.length > 0) {
+      GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
     }
   }
   
@@ -750,7 +846,7 @@ public class FilmFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.FilmFilter
  * JD-Core Version:    0.7.0.1
  */

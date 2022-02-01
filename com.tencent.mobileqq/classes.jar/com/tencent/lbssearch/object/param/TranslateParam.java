@@ -23,22 +23,34 @@ public class TranslateParam
   public fn buildParameters()
   {
     fn localfn = new fn();
-    if ((this.a != null) && (this.a.size() > 0))
+    Object localObject = this.a;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
+      StringBuilder localStringBuilder1 = new StringBuilder();
       int i = 0;
       while (i < this.a.size())
       {
-        String str = "";
-        if (i != 0) {
-          str = "" + ";";
+        localObject = "";
+        if (i != 0)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("");
+          ((StringBuilder)localObject).append(";");
+          localObject = ((StringBuilder)localObject).toString();
         }
-        localStringBuilder.append(str + ((LatLng)this.a.get(i)).latitude + "," + ((LatLng)this.a.get(i)).longitude);
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append((String)localObject);
+        localStringBuilder2.append(((LatLng)this.a.get(i)).latitude);
+        localStringBuilder2.append(",");
+        localStringBuilder2.append(((LatLng)this.a.get(i)).longitude);
+        localStringBuilder1.append(localStringBuilder2.toString());
         i += 1;
       }
-      localfn.b("locations", localStringBuilder.toString());
+      localfn.b("locations", localStringBuilder1.toString());
     }
-    localfn.b("type", this.b.ordinal());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.b.ordinal());
+    localfn.b("type", ((StringBuilder)localObject).toString());
     return localfn;
   }
   
@@ -75,7 +87,7 @@ public class TranslateParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.TranslateParam
  * JD-Core Version:    0.7.0.1
  */

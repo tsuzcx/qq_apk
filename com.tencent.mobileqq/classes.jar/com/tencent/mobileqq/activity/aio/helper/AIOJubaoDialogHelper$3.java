@@ -9,18 +9,19 @@ class AIOJubaoDialogHelper$3
   
   public void run()
   {
-    if ((this.this$0.c != null) && (this.this$0.c.isShowing())) {
+    if ((this.this$0.c != null) && (this.this$0.c.isShowing()))
+    {
       this.this$0.c.dismiss();
-    }
-    while ((this.this$0.d == null) || (!this.this$0.d.isShowing())) {
       return;
     }
-    this.this$0.d.dismiss();
+    if ((this.this$0.d != null) && (this.this$0.d.isShowing())) {
+      this.this$0.d.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOJubaoDialogHelper.3
  * JD-Core Version:    0.7.0.1
  */

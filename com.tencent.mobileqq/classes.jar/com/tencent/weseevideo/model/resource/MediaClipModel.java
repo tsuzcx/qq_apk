@@ -107,18 +107,18 @@ public final class MediaClipModel
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof MediaClipModel))
       {
         paramObject = (MediaClipModel)paramObject;
-        if ((!Intrinsics.areEqual(this.resource, paramObject.resource)) || (!Intrinsics.areEqual(this.videoConfigurationModel, paramObject.videoConfigurationModel)) || (!Intrinsics.areEqual(this.audioConfigurationModel, paramObject.audioConfigurationModel)) || (!Intrinsics.areEqual(this.extraInfoModel, paramObject.extraInfoModel)) || (!Intrinsics.areEqual(this.config, paramObject.config)) || (!Intrinsics.areEqual(this.extraParams, paramObject.extraParams))) {}
+        if ((Intrinsics.areEqual(this.resource, paramObject.resource)) && (Intrinsics.areEqual(this.videoConfigurationModel, paramObject.videoConfigurationModel)) && (Intrinsics.areEqual(this.audioConfigurationModel, paramObject.audioConfigurationModel)) && (Intrinsics.areEqual(this.extraInfoModel, paramObject.extraInfoModel)) && (Intrinsics.areEqual(this.config, paramObject.config)) && (Intrinsics.areEqual(this.extraParams, paramObject.extraParams))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -159,58 +159,47 @@ public final class MediaClipModel
   
   public int hashCode()
   {
-    int i1 = 0;
     Object localObject = this.resource;
+    int i1 = 0;
     int i;
-    int j;
-    label37:
-    int k;
-    label54:
-    int m;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = localObject.hashCode();
-      localObject = this.videoConfigurationModel;
-      if (localObject == null) {
-        break label143;
-      }
-      j = localObject.hashCode();
-      localObject = this.audioConfigurationModel;
-      if (localObject == null) {
-        break label148;
-      }
-      k = localObject.hashCode();
-      localObject = this.extraInfoModel;
-      if (localObject == null) {
-        break label153;
-      }
-      m = localObject.hashCode();
-      label72:
-      localObject = this.config;
-      if (localObject == null) {
-        break label159;
-      }
-    }
-    label143:
-    label148:
-    label153:
-    label159:
-    for (int n = localObject.hashCode();; n = 0)
-    {
-      localObject = this.extraParams;
-      if (localObject != null) {
-        i1 = localObject.hashCode();
-      }
-      return (n + (m + (k + (j + i * 31) * 31) * 31) * 31) * 31 + i1;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label37;
-      k = 0;
-      break label54;
-      m = 0;
-      break label72;
     }
+    localObject = this.videoConfigurationModel;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.audioConfigurationModel;
+    int k;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    } else {
+      k = 0;
+    }
+    localObject = this.extraInfoModel;
+    int m;
+    if (localObject != null) {
+      m = localObject.hashCode();
+    } else {
+      m = 0;
+    }
+    localObject = this.config;
+    int n;
+    if (localObject != null) {
+      n = localObject.hashCode();
+    } else {
+      n = 0;
+    }
+    localObject = this.extraParams;
+    if (localObject != null) {
+      i1 = localObject.hashCode();
+    }
+    return ((((i * 31 + j) * 31 + k) * 31 + m) * 31 + n) * 31 + i1;
   }
   
   public final void setAudioConfigurationModel(@NotNull AudioConfigurationModel paramAudioConfigurationModel)
@@ -240,12 +229,26 @@ public final class MediaClipModel
   @NotNull
   public String toString()
   {
-    return "MediaClipModel(resource=" + this.resource + ", videoConfigurationModel=" + this.videoConfigurationModel + ", audioConfigurationModel=" + this.audioConfigurationModel + ", extraInfoModel=" + this.extraInfoModel + ", config=" + this.config + ", extraParams=" + this.extraParams + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MediaClipModel(resource=");
+    localStringBuilder.append(this.resource);
+    localStringBuilder.append(", videoConfigurationModel=");
+    localStringBuilder.append(this.videoConfigurationModel);
+    localStringBuilder.append(", audioConfigurationModel=");
+    localStringBuilder.append(this.audioConfigurationModel);
+    localStringBuilder.append(", extraInfoModel=");
+    localStringBuilder.append(this.extraInfoModel);
+    localStringBuilder.append(", config=");
+    localStringBuilder.append(this.config);
+    localStringBuilder.append(", extraParams=");
+    localStringBuilder.append(this.extraParams);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.resource.MediaClipModel
  * JD-Core Version:    0.7.0.1
  */

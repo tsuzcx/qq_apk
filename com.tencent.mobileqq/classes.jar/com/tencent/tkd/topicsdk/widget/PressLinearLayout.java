@@ -36,26 +36,24 @@ public class PressLinearLayout
   public boolean onTouchEvent(@NotNull MotionEvent paramMotionEvent)
   {
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      if ((isEnabled()) && (this.c))
-      {
-        PressView.a.a((View)this, this.a, this.b);
-        super.onTouchEvent(paramMotionEvent);
-        return true;
-      }
-      return super.onTouchEvent(paramMotionEvent);
-      if ((isEnabled()) && (this.c)) {
+      if (((i == 1) || (i == 3)) && (isEnabled()) && (this.c)) {
         PressView.a.b((View)this, this.a, this.b);
       }
+      return super.onTouchEvent(paramMotionEvent);
     }
+    if ((isEnabled()) && (this.c))
+    {
+      PressView.a.a((View)this, this.a, this.b);
+      super.onTouchEvent(paramMotionEvent);
+      return true;
+    }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void onVisibilityChanged(@NotNull View paramView, int paramInt)
+  protected void onVisibilityChanged(@NotNull View paramView, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "changedView");
     clearAnimation();
@@ -69,7 +67,7 @@ public class PressLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.PressLinearLayout
  * JD-Core Version:    0.7.0.1
  */

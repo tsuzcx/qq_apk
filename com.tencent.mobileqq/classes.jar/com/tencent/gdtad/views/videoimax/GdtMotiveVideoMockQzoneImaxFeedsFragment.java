@@ -20,7 +20,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pic.URLDrawableDepWrapInit;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import cooperation.qzone.util.QZLog;
 import java.io.File;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
@@ -35,43 +35,48 @@ public class GdtMotiveVideoMockQzoneImaxFeedsFragment
   
   private static void a(Context paramContext)
   {
-    for (;;)
+    do
     {
       try
       {
-        if (jdField_a_of_type_Boolean) {
-          return;
+        if (!jdField_a_of_type_Boolean) {
+          continue;
         }
-        if (paramContext == null) {
-          break;
-        }
-        URLDrawable.DEBUG = false;
-        if ("mounted".equals(Environment.getExternalStorageState()))
-        {
-          localFile = new File(VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH));
-          localFile = new File(localFile, "diskcache");
-          URLDrawable.init(URLDrawableDepWrapInit.a(), new GdtMotiveVideoMockQzoneImaxFeedsFragment.URLDrawableFactory(paramContext, localFile));
-          jdField_a_of_type_Boolean = true;
-          return;
-        }
+        return;
       }
       catch (Throwable paramContext)
       {
+        File localFile;
         paramContext.printStackTrace();
         QZLog.e("GdtMotiveVideoMockQzoneImaxFeedsFragment", "UrlDrawable init exception.", paramContext);
         return;
       }
-      File localFile = paramContext.getCacheDir();
-    }
+      URLDrawable.DEBUG = false;
+      if ("mounted".equals(Environment.getExternalStorageState())) {
+        localFile = new File(VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH));
+      } else {
+        localFile = paramContext.getCacheDir();
+      }
+      localFile = new File(localFile, "diskcache");
+      URLDrawable.init(URLDrawableDepWrapInit.a(), new GdtMotiveVideoMockQzoneImaxFeedsFragment.URLDrawableFactory(paramContext, localFile));
+      jdField_a_of_type_Boolean = true;
+      return;
+    } while (paramContext != null);
   }
   
   private void a(ImageView paramImageView, String paramString)
   {
-    GdtLog.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "bindPreviewImage() called with: iv = [" + paramImageView + "], url = [" + paramString + "]");
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = paramImageView.getResources().getDrawable(2130851162);
-    localURLDrawableOptions.mFailedDrawable = paramImageView.getResources().getDrawable(2130851162);
-    paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("bindPreviewImage() called with: iv = [");
+    ((StringBuilder)localObject).append(paramImageView);
+    ((StringBuilder)localObject).append("], url = [");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("]");
+    GdtLog.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", ((StringBuilder)localObject).toString());
+    localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramImageView.getResources().getDrawable(2130851078);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramImageView.getResources().getDrawable(2130851078);
+    paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject));
     paramImageView.setOnClickListener(new GdtMotiveVideoMockQzoneImaxFeedsFragment.1(this));
   }
   
@@ -83,16 +88,12 @@ public class GdtMotiveVideoMockQzoneImaxFeedsFragment
     try
     {
       a(paramActivity.getApplication());
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtImaxData = ((GdtImaxData)paramActivity.getIntent().getSerializableExtra("data"));
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("GdtMotiveVideoMockQzoneImaxFeedsFragment", 1, "", localThrowable);
-      }
+      QLog.e("GdtMotiveVideoMockQzoneImaxFeedsFragment", 1, "", localThrowable);
     }
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtImaxData = ((GdtImaxData)paramActivity.getIntent().getSerializableExtra("data"));
   }
   
   public void onCreate(Bundle paramBundle)
@@ -103,8 +104,8 @@ public class GdtMotiveVideoMockQzoneImaxFeedsFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     GdtLog.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onCreateView: ");
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559322, paramViewGroup, false);
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559200, paramViewGroup, false);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -125,7 +126,7 @@ public class GdtMotiveVideoMockQzoneImaxFeedsFragment
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    paramView = (ImageView)paramView.findViewById(2131369454);
+    paramView = (ImageView)paramView.findViewById(2131369181);
     paramBundle = this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtImaxData.getAd().info.display_info.basic_info.img.get();
     a(paramView, paramBundle);
     a(paramBundle);
@@ -138,7 +139,7 @@ public class GdtMotiveVideoMockQzoneImaxFeedsFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtMotiveVideoMockQzoneImaxFeedsFragment
  * JD-Core Version:    0.7.0.1
  */

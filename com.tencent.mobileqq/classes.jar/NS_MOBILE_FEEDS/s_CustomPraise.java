@@ -31,17 +31,19 @@ public final class s_CustomPraise
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strPraisePic != null) {
-      paramJceOutputStream.write(this.strPraisePic, 1);
+    Object localObject = this.strPraisePic;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.customPraise != null) {
-      paramJceOutputStream.write(this.customPraise, 2);
+    localObject = this.customPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_CustomPraise
  * JD-Core Version:    0.7.0.1
  */

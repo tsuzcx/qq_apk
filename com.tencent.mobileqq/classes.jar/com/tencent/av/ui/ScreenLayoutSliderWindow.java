@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ARZimuTask;
 import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
@@ -38,59 +37,86 @@ public class ScreenLayoutSliderWindow
   
   public void a(GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    int n = 0;
-    if (this.jdField_a_of_type_AndroidContentContext == null) {}
-    while (paramArrayOfGLVideoView == null) {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
       return;
     }
-    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299266);
-    int i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299263);
-    int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299264);
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299265);
+    if (paramArrayOfGLVideoView == null) {
+      return;
+    }
+    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299269);
+    int n = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299266);
+    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299267);
+    int k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299268);
     if (paramInt5 == 0) {
+      k = j;
+    }
+    int m = 0;
+    int i = j;
+    if (paramInt1 != 1)
+    {
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 4)
+          {
+            i = 0;
+            j = 0;
+            k = 0;
+            break label207;
+          }
+        }
+        else {
+          j = paramInt2 - i1 - j;
+        }
+        m = j + i1;
+        i = paramInt3 - n - k - paramInt5;
+        k = m;
+      }
+      else
+      {
+        i = paramInt2 - i1 - j;
+      }
+    }
+    else
+    {
+      j = i + i1;
+      m = k + paramInt4;
+      k = j;
+      j = i;
       i = m;
     }
-    for (;;)
+    n += i;
+    m = k;
+    k = j;
+    j = n;
+    label207:
+    paramArrayOfGLVideoView[1].b(k, i, m, j);
+    if (QLog.isColorLevel())
     {
-      int j;
-      int k;
-      switch (paramInt1)
-      {
-      default: 
-        j = 0;
-        k = 0;
-        m = 0;
-        i = n;
-      }
-      for (;;)
-      {
-        paramArrayOfGLVideoView[1].b(m, k, j, i);
-        ARZimuTask.b(i2, i1);
-        ARZimuTask.a(m, k);
-        ARZimuTask.a(paramInt1);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.w("ScreenLayoutSliderWindow", 1, "setSmallVideoViewLayout, position[" + paramInt1 + "], width[" + paramInt2 + "], height[" + paramInt3 + "], layout[" + m + ", " + k + ", " + j + ", " + i + "], topOffset[" + paramInt4 + "], bottomOffset[" + paramInt5 + "], mGlSmallViewTopOffset[" + this.b + "]");
-        return;
-        j = m + i1;
-        k = i + paramInt4;
-        i = k + i2;
-        continue;
-        m = paramInt2 - i1 - m;
-        j = m + i1;
-        k = i + paramInt4;
-        i = k + i2;
-        continue;
-        j = m + i1;
-        k = paramInt3 - i2 - i - paramInt5;
-        i = k + i2;
-        continue;
-        m = paramInt2 - i1 - m;
-        j = m + i1;
-        k = paramInt3 - i2 - i - paramInt5;
-        i = k + i2;
-      }
+      paramArrayOfGLVideoView = new StringBuilder();
+      paramArrayOfGLVideoView.append("setSmallVideoViewLayout, position[");
+      paramArrayOfGLVideoView.append(paramInt1);
+      paramArrayOfGLVideoView.append("], width[");
+      paramArrayOfGLVideoView.append(paramInt2);
+      paramArrayOfGLVideoView.append("], height[");
+      paramArrayOfGLVideoView.append(paramInt3);
+      paramArrayOfGLVideoView.append("], layout[");
+      paramArrayOfGLVideoView.append(k);
+      paramArrayOfGLVideoView.append(", ");
+      paramArrayOfGLVideoView.append(i);
+      paramArrayOfGLVideoView.append(", ");
+      paramArrayOfGLVideoView.append(m);
+      paramArrayOfGLVideoView.append(", ");
+      paramArrayOfGLVideoView.append(j);
+      paramArrayOfGLVideoView.append("], topOffset[");
+      paramArrayOfGLVideoView.append(paramInt4);
+      paramArrayOfGLVideoView.append("], bottomOffset[");
+      paramArrayOfGLVideoView.append(paramInt5);
+      paramArrayOfGLVideoView.append("], mGlSmallViewTopOffset[");
+      paramArrayOfGLVideoView.append(this.b);
+      paramArrayOfGLVideoView.append("]");
+      QLog.w("ScreenLayoutSliderWindow", 1, paramArrayOfGLVideoView.toString());
     }
   }
   
@@ -110,16 +136,23 @@ public class ScreenLayoutSliderWindow
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(8004), localCPreEventInfo });
-      if (QLog.isDevelopLevel()) {
-        QLog.w("ScreenLayoutSliderWindow", 1, "canSwitchView, mBlock[" + localCPreEventInfo.jdField_b_of_type_Boolean + "], mBlockName[" + localCPreEventInfo.jdField_b_of_type_JavaLangString + "]");
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("canSwitchView, mBlock[");
+        localStringBuilder.append(localCPreEventInfo.a);
+        localStringBuilder.append("], mBlockName[");
+        localStringBuilder.append(localCPreEventInfo.b);
+        localStringBuilder.append("]");
+        QLog.w("ScreenLayoutSliderWindow", 1, localStringBuilder.toString());
       }
     }
-    return !localCPreEventInfo.jdField_b_of_type_Boolean;
+    return localCPreEventInfo.a ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ScreenLayoutSliderWindow
  * JD-Core Version:    0.7.0.1
  */

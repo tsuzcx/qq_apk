@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.view.View;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import java.lang.ref.WeakReference;
 
 class AdExposureChecker$a
@@ -17,57 +17,83 @@ class AdExposureChecker$a
   
   private boolean checkInternal()
   {
-    AdLog.i("AdExposureChecker", "count:" + this.count + " status " + AdExposureChecker.access$300(this.this$0).hashCode() + " status: " + AdExposureChecker.access$300(this.this$0));
-    if ((AdExposureChecker.access$200(this.this$0) != null) && (AdExposureListHolder.getInstance().inCheckedList(AdExposureChecker.access$200(this.this$0).getTraceId()))) {
-      AdLog.e("AdExposureChecker", "trace id is already exposured " + AdExposureChecker.access$200(this.this$0).getTraceId());
-    }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("count:");
+    ((StringBuilder)localObject).append(this.count);
+    ((StringBuilder)localObject).append(" status ");
+    ((StringBuilder)localObject).append(AdExposureChecker.access$300(this.this$0).hashCode());
+    ((StringBuilder)localObject).append(" status: ");
+    ((StringBuilder)localObject).append(AdExposureChecker.access$300(this.this$0));
+    AdLog.i("AdExposureChecker", ((StringBuilder)localObject).toString());
+    if ((AdExposureChecker.access$200(this.this$0) != null) && (AdExposureListHolder.getInstance().inCheckedList(AdExposureChecker.access$200(this.this$0).getTraceId())))
     {
-      AdExposureChecker.access$1400(this.this$0);
-      AdExposureChecker.access$302(this.this$0, AdExposureChecker.c.END);
-      return false;
-      if ((AdExposureChecker.access$100(this.this$0) == null) || (AdExposureChecker.access$100(this.this$0).get() == null) || (AdExposureChecker.access$1100(this.this$0)) || (!AdExposureChecker.access$800(this.this$0)) || (AdExposureChecker.access$1600(this.this$0) == null) || (AdExposureChecker.access$1600(this.this$0).get() == null) || (AdExposureChecker.access$300(this.this$0) != AdExposureChecker.c.CHECKING))
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("trace id is already exposured ");
+      ((StringBuilder)localObject).append(AdExposureChecker.access$200(this.this$0).getTraceId());
+      AdLog.e("AdExposureChecker", ((StringBuilder)localObject).toString());
+    }
+    else
+    {
+      localObject = AdExposureChecker.access$100(this.this$0);
+      boolean bool2 = true;
+      if ((localObject != null) && (AdExposureChecker.access$100(this.this$0).get() != null) && (!AdExposureChecker.access$1100(this.this$0)) && (AdExposureChecker.access$800(this.this$0)) && (AdExposureChecker.access$1600(this.this$0) != null) && (AdExposureChecker.access$1600(this.this$0).get() != null) && (AdExposureChecker.access$300(this.this$0) == AdExposureChecker.c.CHECKING))
       {
-        localObject = new StringBuilder().append("check failed : isViewDestroyed ").append(AdExposureChecker.access$1100(this.this$0)).append(" isViewOnForeground ").append(AdExposureChecker.access$800(this.this$0)).append(" status ").append(AdExposureChecker.access$300(this.this$0)).append(" no callback :");
-        if ((AdExposureChecker.access$1600(this.this$0) == null) || (AdExposureChecker.access$1600(this.this$0).get() == null)) {}
-        for (boolean bool = true;; bool = false)
+        if (!((View)AdExposureChecker.access$100(this.this$0).get()).isShown())
         {
-          AdLog.e("AdExposureChecker", bool);
-          break;
+          AdLog.e("AdExposureChecker", "!mViewRef.get().isShown()");
+        }
+        else
+        {
+          if (!AdExposureChecker.access$1700((View)AdExposureChecker.access$100(this.this$0).get()))
+          {
+            this.count = 0;
+            return false;
+          }
+          if (this.count >= 1000L / AdExposureChecker.access$1500(this.this$0))
+          {
+            Context localContext = ((View)AdExposureChecker.access$100(this.this$0).get()).getContext();
+            AdExposureListHolder localAdExposureListHolder = AdExposureListHolder.getInstance();
+            if (AdExposureChecker.access$200(this.this$0) != null) {
+              localObject = AdExposureChecker.access$200(this.this$0).getTraceId();
+            } else {
+              localObject = null;
+            }
+            localAdExposureListHolder.putExternalReportData(localContext, (String)localObject);
+            ((AdExposureChecker.ExposureCallback)AdExposureChecker.access$1600(this.this$0).get()).onExposure(AdExposureChecker.access$100(this.this$0));
+            AdExposureChecker.access$302(this.this$0, AdExposureChecker.c.CHECKED);
+            AdAnalysisHelperForUtil.reportForExposureCallback(localContext, AdExposureChecker.access$200(this.this$0), 0);
+            AdLog.d("AdExposureChecker", "exposure success stop check");
+            AdExposureChecker.access$1400(this.this$0);
+          }
+          this.count += 1;
+          return true;
         }
       }
-      if (((View)AdExposureChecker.access$100(this.this$0).get()).isShown()) {
-        break;
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("check failed : isViewDestroyed ");
+        ((StringBuilder)localObject).append(AdExposureChecker.access$1100(this.this$0));
+        ((StringBuilder)localObject).append(" isViewOnForeground ");
+        ((StringBuilder)localObject).append(AdExposureChecker.access$800(this.this$0));
+        ((StringBuilder)localObject).append(" status ");
+        ((StringBuilder)localObject).append(AdExposureChecker.access$300(this.this$0));
+        ((StringBuilder)localObject).append(" no callback :");
+        boolean bool1 = bool2;
+        if (AdExposureChecker.access$1600(this.this$0) != null) {
+          if (AdExposureChecker.access$1600(this.this$0).get() == null) {
+            bool1 = bool2;
+          } else {
+            bool1 = false;
+          }
+        }
+        ((StringBuilder)localObject).append(bool1);
+        AdLog.e("AdExposureChecker", ((StringBuilder)localObject).toString());
       }
-      AdLog.e("AdExposureChecker", "!mViewRef.get().isShown()");
     }
-    if (!AdExposureChecker.access$1700((View)AdExposureChecker.access$100(this.this$0).get()))
-    {
-      this.count = 0;
-      return false;
-    }
-    Context localContext;
-    AdExposureListHolder localAdExposureListHolder;
-    if (this.count >= 1000L / AdExposureChecker.access$1500(this.this$0))
-    {
-      localContext = ((View)AdExposureChecker.access$100(this.this$0).get()).getContext();
-      localAdExposureListHolder = AdExposureListHolder.getInstance();
-      if (AdExposureChecker.access$200(this.this$0) == null) {
-        break label530;
-      }
-    }
-    label530:
-    for (Object localObject = AdExposureChecker.access$200(this.this$0).getTraceId();; localObject = null)
-    {
-      localAdExposureListHolder.putExternalReportData(localContext, (String)localObject);
-      ((AdExposureChecker.ExposureCallback)AdExposureChecker.access$1600(this.this$0).get()).onExposure(AdExposureChecker.access$100(this.this$0));
-      AdExposureChecker.access$302(this.this$0, AdExposureChecker.c.CHECKED);
-      AdReporterForAnalysis.reportForExposureCallback(localContext, AdExposureChecker.access$200(this.this$0), 0);
-      AdLog.d("AdExposureChecker", "exposure success stop check");
-      AdExposureChecker.access$1400(this.this$0);
-      this.count += 1;
-      return true;
-    }
+    AdExposureChecker.access$1400(this.this$0);
+    AdExposureChecker.access$302(this.this$0, AdExposureChecker.c.END);
+    return false;
   }
   
   public void run()

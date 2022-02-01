@@ -11,22 +11,22 @@ final class LinkSpan$3
   
   public void a(Integer paramInteger)
   {
-    switch (paramInteger.intValue())
+    int i = paramInteger.intValue();
+    if (i != 0)
     {
+      if (i == 1) {
+        LinkSpan.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+    else {
       LinkSpan.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      continue;
-      LinkSpan.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.style.LinkSpan.3
  * JD-Core Version:    0.7.0.1
  */

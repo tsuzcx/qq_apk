@@ -11,7 +11,7 @@ public class VipProfileCardDiyActivity$DiyDefaultTextView
     super(paramContext);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
@@ -21,7 +21,7 @@ public class VipProfileCardDiyActivity$DiyDefaultTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.DiyDefaultTextView
  * JD-Core Version:    0.7.0.1
  */

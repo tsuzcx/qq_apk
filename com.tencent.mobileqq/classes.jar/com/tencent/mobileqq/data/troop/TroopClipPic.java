@@ -32,7 +32,12 @@ public class TroopClipPic
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id=").append(this.id).append(" type=").append(this.type).append(" clip=").append(this.clipInfo);
+    localStringBuilder.append("id=");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(" type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(" clip=");
+    localStringBuilder.append(this.clipInfo);
     return localStringBuilder.toString();
   }
   
@@ -46,7 +51,7 @@ public class TroopClipPic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.troop.TroopClipPic
  * JD-Core Version:    0.7.0.1
  */

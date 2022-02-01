@@ -21,7 +21,7 @@ public class TroopKeyWordHelper
   
   public int[] interestedIn()
   {
-    return new int[8];
+    return new int[9];
   }
   
   public void onMoveToState(int paramInt)
@@ -34,7 +34,7 @@ public class TroopKeyWordHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopKeyWordHelper
  * JD-Core Version:    0.7.0.1
  */

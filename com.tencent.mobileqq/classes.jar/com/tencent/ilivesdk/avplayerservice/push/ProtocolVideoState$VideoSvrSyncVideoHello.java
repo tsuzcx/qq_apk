@@ -34,14 +34,16 @@ public final class ProtocolVideoState$VideoSvrSyncVideoHello
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 66, 72 }, new String[] { "Uin", "RoomID", "VideoID", "VideosvrInnerIP", "VideosvrOuterIP", "LiveType", "uuid", "sessionid", "video_kind" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, VideoSvrSyncVideoHello.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 66, 72 }, new String[] { "Uin", "RoomID", "VideoID", "VideosvrInnerIP", "VideosvrOuterIP", "LiveType", "uuid", "sessionid", "video_kind" }, new Object[] { localLong, localLong, localInteger, localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localInteger }, VideoSvrSyncVideoHello.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.ProtocolVideoState.VideoSvrSyncVideoHello
  * JD-Core Version:    0.7.0.1
  */

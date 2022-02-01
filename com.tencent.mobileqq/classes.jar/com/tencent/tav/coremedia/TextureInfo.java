@@ -77,9 +77,10 @@ public class TextureInfo
   public void release()
   {
     this.released = true;
-    if (this.frameBuffer != -1)
+    int i = this.frameBuffer;
+    if (i != -1)
     {
-      GLES20.glDeleteFramebuffers(1, new int[] { this.frameBuffer }, 0);
+      GLES20.glDeleteFramebuffers(1, new int[] { i }, 0);
       this.frameBuffer = -1;
     }
     GLES20.glDeleteTextures(1, new int[] { this.textureID }, 0);
@@ -107,12 +108,34 @@ public class TextureInfo
   
   public String toString()
   {
-    return "TextureInfo{textureID=" + this.textureID + ", textureType=" + this.textureType + ", width=" + this.width + ", height=" + this.height + ", preferRotation=" + this.preferRotation + ", textureMatrix=" + this.textureMatrix + ", frameBuffer=" + this.frameBuffer + ", needRelease=" + this.needRelease + ", mixAlpha=" + this.mixAlpha + ", format=" + this.format + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TextureInfo{textureID=");
+    localStringBuilder.append(this.textureID);
+    localStringBuilder.append(", textureType=");
+    localStringBuilder.append(this.textureType);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", preferRotation=");
+    localStringBuilder.append(this.preferRotation);
+    localStringBuilder.append(", textureMatrix=");
+    localStringBuilder.append(this.textureMatrix);
+    localStringBuilder.append(", frameBuffer=");
+    localStringBuilder.append(this.frameBuffer);
+    localStringBuilder.append(", needRelease=");
+    localStringBuilder.append(this.needRelease);
+    localStringBuilder.append(", mixAlpha=");
+    localStringBuilder.append(this.mixAlpha);
+    localStringBuilder.append(", format=");
+    localStringBuilder.append(this.format);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.coremedia.TextureInfo
  * JD-Core Version:    0.7.0.1
  */

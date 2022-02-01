@@ -32,17 +32,18 @@ class OpenUrlMethod
   {
     int i = getSafetyInt(paramHippyMap.getString("FROM_WHERE"), 5);
     if (TextUtils.isEmpty(paramString)) {
-      return 5;
+      i = 5;
     }
     return i;
   }
   
   private String getHistoryUrl(HippyMap paramHippyMap)
   {
-    String str = getSafetyString(paramHippyMap.getString("URL"));
-    paramHippyMap = getSafetyString(paramHippyMap.getString("REOPEN_URL"));
-    if (TextUtils.isEmpty(paramHippyMap)) {
-      return str;
+    String str1 = getSafetyString(paramHippyMap.getString("URL"));
+    String str2 = getSafetyString(paramHippyMap.getString("REOPEN_URL"));
+    paramHippyMap = str2;
+    if (TextUtils.isEmpty(str2)) {
+      paramHippyMap = str1;
     }
     return paramHippyMap;
   }
@@ -80,15 +81,16 @@ class OpenUrlMethod
   
   private boolean isParamValid(HippyMap paramHippyMap)
   {
-    if (paramHippyMap == null) {}
-    String str;
-    do
-    {
+    boolean bool = false;
+    if (paramHippyMap == null) {
       return false;
-      str = getSafetyString(paramHippyMap.getString("URL"));
-      paramHippyMap = getSafetyString(paramHippyMap.getString("HIS_TITLE"));
-    } while ((TextUtils.isEmpty(str)) && (TextUtils.isEmpty(paramHippyMap)));
-    return true;
+    }
+    String str = getSafetyString(paramHippyMap.getString("URL"));
+    paramHippyMap = getSafetyString(paramHippyMap.getString("HIS_TITLE"));
+    if ((!TextUtils.isEmpty(str)) || (!TextUtils.isEmpty(paramHippyMap))) {
+      bool = true;
+    }
+    return bool;
   }
   
   private void openUrl(@NonNull HippyMap paramHippyMap)
@@ -129,8 +131,9 @@ class OpenUrlMethod
   
   private boolean shouldSaveHistory(@NonNull HippyMap paramHippyMap)
   {
+    paramHippyMap = paramHippyMap.getString("DISABLE_SAVE");
     boolean bool = false;
-    if (getSafetyInt(paramHippyMap.getString("DISABLE_SAVE"), 0) == 0) {
+    if (getSafetyInt(paramHippyMap, 0) == 0) {
       bool = true;
     }
     return bool;
@@ -154,7 +157,7 @@ class OpenUrlMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.OpenUrlMethod
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.avgame.localvoicerecog.engine;
 
-import com.qq.wx.voice.embed.recognizer.GrammarNative;
+import com.tencent.avgame.localvoicerecog.wx.GrammarNative;
 import java.io.UnsupportedEncodingException;
 
 public class WXVoiceRecogEngine
@@ -10,15 +10,16 @@ public class WXVoiceRecogEngine
   
   public static WXVoiceRecogEngine a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new WXVoiceRecogEngine();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new WXVoiceRecogEngine();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public int a()
@@ -64,7 +65,7 @@ public class WXVoiceRecogEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.localvoicerecog.engine.WXVoiceRecogEngine
  * JD-Core Version:    0.7.0.1
  */

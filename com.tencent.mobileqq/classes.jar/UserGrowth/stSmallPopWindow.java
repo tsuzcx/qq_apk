@@ -32,8 +32,9 @@ public final class stSmallPopWindow
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.imgurl != null) {
-      paramJceOutputStream.write(this.imgurl, 1);
+    String str = this.imgurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.direction, 2);
     paramJceOutputStream.write(this.y_percent, 3);
@@ -42,7 +43,7 @@ public final class stSmallPopWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stSmallPopWindow
  * JD-Core Version:    0.7.0.1
  */

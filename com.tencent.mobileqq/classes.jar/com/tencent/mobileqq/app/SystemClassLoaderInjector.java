@@ -6,15 +6,19 @@ import android.app.Application;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Log;
+import androidx.annotation.RequiresApi;
 import com.tencent.commonsdk.classload.DexClassLoaderUtil;
 import com.tencent.qphone.base.util.QLog;
+import dalvik.system.BaseDexClassLoader;
 import dalvik.system.DexClassLoader;
+import dalvik.system.InMemoryDexClassLoader;
 import dalvik.system.PathClassLoader;
 import java.io.File;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.nio.ByteBuffer;
 
 public class SystemClassLoaderInjector
 {
@@ -27,28 +31,27 @@ public class SystemClassLoaderInjector
   {
     Object localObject = paramObject.getClass().getComponentType();
     int m = Array.getLength(paramObject);
-    if ((paramInt < 0) || (paramInt >= m)) {
-      return paramObject;
-    }
-    localObject = Array.newInstance((Class)localObject, m - 1);
-    int j = 0;
-    int i = 0;
-    if (j < m)
+    if (paramInt >= 0)
     {
-      if (j == paramInt) {
-        break label82;
+      if (paramInt >= m) {
+        return paramObject;
       }
-      int k = i + 1;
-      Array.set(localObject, i, Array.get(paramObject, j));
-      i = k;
-    }
-    label82:
-    for (;;)
-    {
-      j += 1;
-      break;
+      localObject = Array.newInstance((Class)localObject, m - 1);
+      int i = 0;
+      int k;
+      for (int j = 0; i < m; j = k)
+      {
+        k = j;
+        if (i != paramInt)
+        {
+          Array.set(localObject, j, Array.get(paramObject, i));
+          k = j + 1;
+        }
+        i += 1;
+      }
       return localObject;
     }
+    return paramObject;
   }
   
   private static Object a(Object paramObject, Class<?> paramClass, String paramString)
@@ -61,51 +64,42 @@ public class SystemClassLoaderInjector
   private static Object a(Object paramObject1, Object paramObject2, boolean paramBoolean)
   {
     Object localObject1 = paramObject1.getClass().getComponentType();
-    int j = Array.getLength(paramObject1);
-    int k = Array.getLength(paramObject2);
+    int k = Array.getLength(paramObject1);
+    int j = Array.getLength(paramObject2);
     int i;
-    label32:
-    Object localObject2;
-    if (paramBoolean)
-    {
-      i = j;
-      if (!paramBoolean) {
-        break label99;
-      }
-      k = i + k;
-      localObject2 = Array.newInstance((Class)localObject1, k);
-      j = 0;
-      label50:
-      if (j >= k) {
-        break label144;
-      }
-      if (j >= i) {
-        break label112;
-      }
-      if (!paramBoolean) {
-        break label106;
-      }
-    }
-    label99:
-    label106:
-    for (localObject1 = paramObject1;; localObject1 = paramObject2)
-    {
-      Array.set(localObject2, j, Array.get(localObject1, j));
-      j += 1;
-      break label50;
+    if (paramBoolean) {
       i = k;
-      break;
+    } else {
+      i = j;
+    }
+    if (paramBoolean) {
       k = j;
-      break label32;
     }
-    label112:
-    if (paramBoolean) {}
-    for (localObject1 = paramObject2;; localObject1 = paramObject1)
+    k += i;
+    Object localObject2 = Array.newInstance((Class)localObject1, k);
+    j = 0;
+    while (j < k)
     {
-      Array.set(localObject2, j, Array.get(localObject1, j - i));
-      break;
+      if (j < i)
+      {
+        if (paramBoolean) {
+          localObject1 = paramObject1;
+        } else {
+          localObject1 = paramObject2;
+        }
+        Array.set(localObject2, j, Array.get(localObject1, j));
+      }
+      else
+      {
+        if (paramBoolean) {
+          localObject1 = paramObject2;
+        } else {
+          localObject1 = paramObject1;
+        }
+        Array.set(localObject2, j, Array.get(localObject1, j - i));
+      }
+      j += 1;
     }
-    label144:
     return localObject2;
   }
   
@@ -119,21 +113,23 @@ public class SystemClassLoaderInjector
     }
     catch (ClassNotFoundException localClassNotFoundException1)
     {
-      int i = 1;
-      try
-      {
-        Class.forName("dalvik.system.BaseDexClassLoader");
-        if (i == 0) {
-          return c(paramApplication, paramInt);
-        }
-      }
-      catch (ClassNotFoundException localClassNotFoundException2)
-      {
-        for (;;)
-        {
-          i = 0;
-        }
-      }
+      label14:
+      int i;
+      label25:
+      break label14;
+    }
+    i = 1;
+    try
+    {
+      Class.forName("dalvik.system.BaseDexClassLoader");
+    }
+    catch (ClassNotFoundException localClassNotFoundException2)
+    {
+      break label25;
+    }
+    i = 0;
+    if (i == 0) {
+      return c(paramApplication, paramInt);
     }
     return d(paramApplication, paramInt);
   }
@@ -148,23 +144,90 @@ public class SystemClassLoaderInjector
     }
     catch (ClassNotFoundException localClassNotFoundException1)
     {
-      int i = 1;
-      try
-      {
-        Class.forName("dalvik.system.BaseDexClassLoader");
-        if (i == 0) {
-          return c(paramApplication, paramString1, paramString2, paramBoolean);
-        }
-      }
-      catch (ClassNotFoundException localClassNotFoundException2)
-      {
-        for (;;)
-        {
-          i = 0;
-        }
-      }
+      label18:
+      int i;
+      label30:
+      break label18;
     }
-    return d(paramApplication, paramString1, paramString2, paramBoolean);
+    try
+    {
+      Class.forName("dalvik.system.BaseDexClassLoader");
+      i = 1;
+    }
+    catch (ClassNotFoundException localClassNotFoundException2)
+    {
+      break label30;
+    }
+    i = 0;
+    if (i == 0) {
+      return c(paramApplication, paramString1, paramString2, paramBoolean);
+    }
+    return b(paramApplication, paramString1, paramString2, paramBoolean, true);
+  }
+  
+  public static String a(Application paramApplication, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    try
+    {
+      Class.forName("dalvik.system.LexClassLoader");
+      String str = b(paramApplication, paramString1, paramString2, paramBoolean1);
+      return str;
+    }
+    catch (ClassNotFoundException localClassNotFoundException1)
+    {
+      label18:
+      int i;
+      label30:
+      break label18;
+    }
+    i = 1;
+    try
+    {
+      Class.forName("dalvik.system.BaseDexClassLoader");
+    }
+    catch (ClassNotFoundException localClassNotFoundException2)
+    {
+      break label30;
+    }
+    i = 0;
+    if (i == 0) {
+      return c(paramApplication, paramString1, paramString2, paramBoolean1);
+    }
+    return b(paramApplication, paramString1, paramString2, paramBoolean1, paramBoolean2);
+  }
+  
+  @RequiresApi(api=26)
+  public static String a(Application paramApplication, ByteBuffer paramByteBuffer, String paramString, boolean paramBoolean)
+  {
+    PathClassLoader localPathClassLoader = (PathClassLoader)paramApplication.getClassLoader();
+    try
+    {
+      paramApplication = new InMemoryDexClassLoader(paramByteBuffer, paramApplication.getClassLoader());
+      QLog.d("SystemClassLoaderInjector", 1, "InMemoryDexClassLoader load done");
+      if (!TextUtils.isEmpty(paramString))
+      {
+        QLog.e("SystemClassLoaderInjector", 1, "InMemoryDexClassLoader start test");
+        paramApplication.loadClass(paramString);
+        QLog.d("SystemClassLoaderInjector", 1, "InMemoryDexClassLoader test suc!");
+      }
+      paramApplication = a(b(a(localPathClassLoader)), b(a(paramApplication)), paramBoolean);
+      paramByteBuffer = a(localPathClassLoader);
+      a(paramByteBuffer, paramByteBuffer.getClass(), "dexElements", paramApplication);
+      QLog.d("SystemClassLoaderInjector", 1, "InMemoryDexClassLoader combine pathList done!");
+      paramApplication = new StringBuilder();
+      paramApplication.append("[注入完成调用] injectByInMemoryDexClassLoader classLoader:");
+      paramApplication.append(localPathClassLoader);
+      QLog.e("SystemClassLoaderInjector", 1, paramApplication.toString());
+      return "Success";
+    }
+    catch (Throwable paramApplication)
+    {
+      QLog.e("SystemClassLoaderInjector", 1, "err", paramApplication);
+      paramByteBuffer = new StringBuilder();
+      paramByteBuffer.append("injectByInMemoryDexClassLoader error: ");
+      paramByteBuffer.append(Log.getStackTraceString(paramApplication));
+    }
+    return paramByteBuffer.toString();
   }
   
   private static void a(Object paramObject1, Class<?> paramClass, String paramString, Object paramObject2)
@@ -181,52 +244,42 @@ public class SystemClassLoaderInjector
   
   private static Object b(Object paramObject1, Object paramObject2, boolean paramBoolean)
   {
-    int k = 1;
     Object localObject1 = paramObject1.getClass().getComponentType();
     int j = Array.getLength(paramObject1);
     int i;
-    label33:
-    Object localObject2;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = j;
-      if (!paramBoolean) {
-        break label99;
-      }
-      j = k;
-      k = i + j;
-      localObject2 = Array.newInstance((Class)localObject1, k);
-      j = 0;
-      label51:
-      if (j >= k) {
-        break label140;
-      }
-      if (j >= i) {
-        break label108;
-      }
-      if (!paramBoolean) {
-        break label102;
-      }
-    }
-    label99:
-    label102:
-    for (localObject1 = Array.get(paramObject1, j);; localObject1 = paramObject2)
-    {
-      Array.set(localObject2, j, localObject1);
-      j += 1;
-      break label51;
+    } else {
       i = 1;
-      break;
-      break label33;
     }
-    label108:
-    if (paramBoolean) {}
-    for (localObject1 = paramObject2;; localObject1 = Array.get(paramObject1, j - i))
+    if (paramBoolean) {
+      j = 1;
+    }
+    int k = j + i;
+    Object localObject2 = Array.newInstance((Class)localObject1, k);
+    j = 0;
+    while (j < k)
     {
-      Array.set(localObject2, j, localObject1);
-      break;
+      if (j < i)
+      {
+        if (paramBoolean) {
+          localObject1 = Array.get(paramObject1, j);
+        } else {
+          localObject1 = paramObject2;
+        }
+        Array.set(localObject2, j, localObject1);
+      }
+      else
+      {
+        if (paramBoolean) {
+          localObject1 = paramObject2;
+        } else {
+          localObject1 = Array.get(paramObject1, j - i);
+        }
+        Array.set(localObject2, j, localObject1);
+      }
+      j += 1;
     }
-    label140:
     return localObject2;
   }
   
@@ -244,8 +297,11 @@ public class SystemClassLoaderInjector
     catch (Throwable paramApplication)
     {
       paramApplication.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unloadDexInAliyunOs error: ");
+      localStringBuilder.append(Log.getStackTraceString(paramApplication));
+      return localStringBuilder.toString();
     }
-    return "unloadDexInAliyunOs error: " + Log.getStackTraceString(paramApplication);
   }
   
   private static String b(Application paramApplication, String paramString1, String paramString2, boolean paramBoolean)
@@ -256,7 +312,12 @@ public class SystemClassLoaderInjector
     try
     {
       Class localClass = Class.forName("dalvik.system.LexClassLoader");
-      paramApplication = localClass.getConstructor(new Class[] { String.class, String.class, String.class, ClassLoader.class }).newInstance(new Object[] { paramApplication.getDir("dex", 0).getAbsolutePath() + File.separator + str, paramApplication.getDir("dex", 0).getAbsolutePath(), paramString1, localPathClassLoader });
+      Constructor localConstructor = localClass.getConstructor(new Class[] { String.class, String.class, String.class, ClassLoader.class });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramApplication.getDir("dex", 0).getAbsolutePath());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(str);
+      paramApplication = localConstructor.newInstance(new Object[] { localStringBuilder.toString(), paramApplication.getDir("dex", 0).getAbsolutePath(), paramString1, localPathClassLoader });
       paramString1 = localClass.getMethod("loadClass", new Class[] { String.class });
       if (!TextUtils.isEmpty(paramString2)) {
         paramString1.invoke(paramApplication, new Object[] { paramString2 });
@@ -270,8 +331,48 @@ public class SystemClassLoaderInjector
     catch (Throwable paramApplication)
     {
       paramApplication.printStackTrace();
+      paramString1 = new StringBuilder();
+      paramString1.append("injectInAliyunOs error: ");
+      paramString1.append(Log.getStackTraceString(paramApplication));
     }
-    return "injectInAliyunOs error: " + Log.getStackTraceString(paramApplication);
+    return paramString1.toString();
+  }
+  
+  @SuppressLint({"NewApi"})
+  private static String b(Application paramApplication, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    PathClassLoader localPathClassLoader = (PathClassLoader)paramApplication.getClassLoader();
+    if (paramBoolean2)
+    {
+      paramApplication = DexClassLoaderUtil.createDexClassLoader(paramString1, paramApplication.getDir("dex", 0).getAbsolutePath(), paramString1, paramApplication.getClassLoader());
+    }
+    else
+    {
+      paramApplication = new SystemClassLoaderInjector.SpeedyDexClassLoader(paramString1, null, paramString1, paramApplication.getClassLoader());
+      Log.i("loadInternal ", "use SpeedyDexClassLoader");
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(paramString2)) {
+        paramApplication.loadClass(paramString2);
+      }
+      paramApplication = a(b(a(localPathClassLoader)), b(a(paramApplication)), paramBoolean1);
+      paramString1 = a(localPathClassLoader);
+      a(paramString1, paramString1.getClass(), "dexElements", paramApplication);
+      paramApplication = new StringBuilder();
+      paramApplication.append("[注入完成调用] injectAboveEqualApiLevel14 classLoader:");
+      paramApplication.append(localPathClassLoader);
+      QLog.e("SystemClassLoaderInjector", 1, paramApplication.toString());
+      return "Success";
+    }
+    catch (Throwable paramApplication)
+    {
+      QLog.e("harlan", 1, "err", paramApplication);
+      paramString1 = new StringBuilder();
+      paramString1.append("injectAboveEqualApiLevel14 error: ");
+      paramString1.append(Log.getStackTraceString(paramApplication));
+    }
+    return paramString1.toString();
   }
   
   @TargetApi(14)
@@ -289,8 +390,11 @@ public class SystemClassLoaderInjector
     catch (Throwable paramApplication)
     {
       paramApplication.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unloadDexBelowApiLevel14 error: ");
+      localStringBuilder.append(Log.getStackTraceString(paramApplication));
+      return localStringBuilder.toString();
     }
-    return "unloadDexBelowApiLevel14 error: " + Log.getStackTraceString(paramApplication);
   }
   
   @TargetApi(14)
@@ -318,8 +422,11 @@ public class SystemClassLoaderInjector
     catch (Throwable paramApplication)
     {
       paramApplication.printStackTrace();
+      paramString1 = new StringBuilder();
+      paramString1.append("injectBelowApiLevel14 error: ");
+      paramString1.append(Log.getStackTraceString(paramApplication));
     }
-    return "injectBelowApiLevel14 error: " + Log.getStackTraceString(paramApplication);
+    return paramString1.toString();
   }
   
   @SuppressLint({"NewApi"})
@@ -333,35 +440,18 @@ public class SystemClassLoaderInjector
       a(localObject, localObject.getClass(), "dexElements", paramApplication);
       return "Success";
     }
-    catch (Throwable paramApplication) {}
-    return "unloadDexAboveEqualApiLevel14 error: " + Log.getStackTraceString(paramApplication);
-  }
-  
-  @SuppressLint({"NewApi"})
-  private static String d(Application paramApplication, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    PathClassLoader localPathClassLoader = (PathClassLoader)paramApplication.getClassLoader();
-    paramApplication = DexClassLoaderUtil.createDexClassLoader(paramString1, paramApplication.getDir("dex", 0).getAbsolutePath(), paramString1, paramApplication.getClassLoader());
-    try
-    {
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramApplication.loadClass(paramString2);
-      }
-      paramApplication = a(b(a(localPathClassLoader)), b(a(paramApplication)), paramBoolean);
-      paramString1 = a(localPathClassLoader);
-      a(paramString1, paramString1.getClass(), "dexElements", paramApplication);
-      return "Success";
-    }
     catch (Throwable paramApplication)
     {
-      QLog.e("harlan", 1, "err", paramApplication);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("unloadDexAboveEqualApiLevel14 error: ");
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramApplication));
     }
-    return "injectAboveEqualApiLevel14 error: " + Log.getStackTraceString(paramApplication);
+    return ((StringBuilder)localObject).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SystemClassLoaderInjector
  * JD-Core Version:    0.7.0.1
  */

@@ -29,14 +29,15 @@ public final class h
   
   public static void a(String paramString, int paramInt, Map paramMap)
   {
-    if (a != null) {
-      a.a(paramString, paramInt, paramMap);
+    h.a locala = a;
+    if (locala != null) {
+      locala.a(paramString, paramInt, paramMap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.common.h
  * JD-Core Version:    0.7.0.1
  */

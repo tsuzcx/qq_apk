@@ -29,8 +29,9 @@ public final class TCoverInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vTagInfo != null) {
-      paramJceOutputStream.write(this.vTagInfo, 0);
+    byte[] arrayOfByte = this.vTagInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
   }
 }

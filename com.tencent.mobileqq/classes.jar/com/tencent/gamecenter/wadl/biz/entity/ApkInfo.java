@@ -19,12 +19,23 @@ public class ApkInfo
   
   public String toString()
   {
-    return " appId=" + this.a + ",appName=" + this.b + ",pkgName=" + this.c + ",channel=" + this.d + ",defUrl=" + this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" appId=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",appName=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",pkgName=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",channel=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",defUrl=");
+    localStringBuilder.append(this.e);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.entity.ApkInfo
  * JD-Core Version:    0.7.0.1
  */

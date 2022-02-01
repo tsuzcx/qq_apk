@@ -23,17 +23,19 @@ public abstract class WSPlayableHolder<T>
   
   public boolean b()
   {
-    return (this.a != null) && (this.a.a != null) && (this.a.a.b());
+    WSPlayerParam localWSPlayerParam = this.a;
+    return (localWSPlayerParam != null) && (localWSPlayerParam.a != null) && (this.a.a.b());
   }
   
   public boolean c()
   {
-    return (this.a != null) && (this.a.a != null) && (this.a.a.c());
+    WSPlayerParam localWSPlayerParam = this.a;
+    return (localWSPlayerParam != null) && (localWSPlayerParam.a != null) && (this.a.a.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.holder.WSPlayableHolder
  * JD-Core Version:    0.7.0.1
  */

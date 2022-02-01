@@ -17,20 +17,33 @@ public class SysSuspiciousConfBean
   public static SysSuspiciousConfBean a(QConfItem paramQConfItem)
   {
     SysSuspiciousConfBean localSysSuspiciousConfBean = new SysSuspiciousConfBean();
-    if (paramQConfItem != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SysSuspiciousConfBean", 2, "parse taskid->" + paramQConfItem.jdField_a_of_type_Int + " content->" + paramQConfItem.jdField_a_of_type_JavaLangString);
+    if (paramQConfItem != null)
+    {
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parse taskid->");
+        localStringBuilder.append(paramQConfItem.jdField_a_of_type_Int);
+        localStringBuilder.append(" content->");
+        localStringBuilder.append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        QLog.d("SysSuspiciousConfBean", 2, localStringBuilder.toString());
       }
-    }
-    try
-    {
-      localSysSuspiciousConfBean.jdField_a_of_type_Int = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString).optInt("suspiciousSwitch", 1);
-      return localSysSuspiciousConfBean;
-    }
-    catch (JSONException paramQConfItem)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SysSuspiciousConfBean", 2, "parse error->" + paramQConfItem.toString());
+      try
+      {
+        localSysSuspiciousConfBean.jdField_a_of_type_Int = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString).optInt("suspiciousSwitch", 1);
+        return localSysSuspiciousConfBean;
+      }
+      catch (JSONException paramQConfItem)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("parse error->");
+          localStringBuilder.append(paramQConfItem.toString());
+          QLog.d("SysSuspiciousConfBean", 2, localStringBuilder.toString());
+        }
+      }
     }
     return localSysSuspiciousConfBean;
   }
@@ -42,7 +55,7 @@ public class SysSuspiciousConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.newfriend.SysSuspiciousConfBean
  * JD-Core Version:    0.7.0.1
  */

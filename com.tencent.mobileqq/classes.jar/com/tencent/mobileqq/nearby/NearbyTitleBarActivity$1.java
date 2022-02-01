@@ -10,12 +10,14 @@ final class NearbyTitleBarActivity$1
   
   public void run()
   {
-    AppIntefaceReportWrap.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, this.e);
+    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    String str = this.jdField_a_of_type_JavaLangString;
+    AppIntefaceReportWrap.a(localAppInterface, "CliOper", "", "", str, str, 0, 0, this.b, this.c, this.d, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyTitleBarActivity.1
  * JD-Core Version:    0.7.0.1
  */

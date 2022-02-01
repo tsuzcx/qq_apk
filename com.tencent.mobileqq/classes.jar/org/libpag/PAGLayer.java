@@ -46,15 +46,12 @@ public class PAGLayer
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof PAGLayer)) {
-        break;
-      }
-    } while (hashCode() == paramObject.hashCode());
-    return false;
+    }
+    if ((paramObject instanceof PAGLayer)) {
+      return hashCode() == paramObject.hashCode();
+    }
     return false;
   }
   
@@ -84,7 +81,8 @@ public class PAGLayer
   
   public int hashCode()
   {
-    return (int)(this.nativeContext ^ this.nativeContext >>> 32) + 527;
+    long l = this.nativeContext;
+    return (int)(l ^ l >>> 32) + 527;
   }
   
   public native String layerName();
@@ -140,7 +138,7 @@ public class PAGLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.libpag.PAGLayer
  * JD-Core Version:    0.7.0.1
  */

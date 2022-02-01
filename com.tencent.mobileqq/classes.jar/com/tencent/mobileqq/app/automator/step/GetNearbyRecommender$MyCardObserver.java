@@ -11,25 +11,29 @@ class GetNearbyRecommender$MyCardObserver
 {
   GetNearbyRecommender$MyCardObserver(GetNearbyRecommender paramGetNearbyRecommender) {}
   
-  public void onGetProfileDetail(boolean paramBoolean, String paramString, Card paramCard)
+  protected void onGetProfileDetail(boolean paramBoolean, String paramString, Card paramCard)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "GetNearbyRecommender onGetDetailInfo|uin=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramCard = new StringBuilder();
+      paramCard.append("GetNearbyRecommender onGetDetailInfo|uin=");
+      paramCard.append(paramString);
+      QLog.d("QQInitHandler", 2, paramCard.toString());
     }
-    if (!this.a.a.a.getCurrentAccountUin().equals(paramString)) {
+    if (!this.a.mAutomator.a.getCurrentAccountUin().equals(paramString)) {
       return;
     }
     if (!paramBoolean)
     {
-      this.a.a(7);
+      this.a.setResult(7);
       return;
     }
-    this.a.a(6);
+    this.a.setResult(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetNearbyRecommender.MyCardObserver
  * JD-Core Version:    0.7.0.1
  */

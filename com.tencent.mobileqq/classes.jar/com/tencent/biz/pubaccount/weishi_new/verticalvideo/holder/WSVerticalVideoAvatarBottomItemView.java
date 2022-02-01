@@ -26,6 +26,22 @@ public class WSVerticalVideoAvatarBottomItemView
     }
   }
   
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    AbsWsUIGroup localAbsWsUIGroup = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
+    if (localAbsWsUIGroup != null)
+    {
+      int i;
+      if (paramBoolean) {
+        i = 8;
+      } else {
+        i = 0;
+      }
+      localAbsWsUIGroup.a(i);
+    }
+  }
+  
   public boolean a()
   {
     return false;
@@ -38,28 +54,42 @@ public class WSVerticalVideoAvatarBottomItemView
     if (localObject != null)
     {
       localObject = ((stSimpleMetaFeed)localObject).poster;
-      if (localObject != null) {}
+      if (localObject == null) {
+        return;
+      }
+      ((WSVerticalItemBottomAvatarController)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup).b((stSimpleMetaPerson)localObject);
     }
-    else
-    {
-      return;
-    }
-    ((WSVerticalItemBottomAvatarController)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup).b((stSimpleMetaPerson)localObject);
   }
   
-  public void c(int paramInt)
+  public void b(boolean paramBoolean)
+  {
+    super.b(paramBoolean);
+    AbsWsUIGroup localAbsWsUIGroup = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
+    if (localAbsWsUIGroup != null)
+    {
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
+      }
+      localAbsWsUIGroup.a(i);
+    }
+  }
+  
+  public void d(int paramInt)
   {
     if ((paramInt == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup instanceof WSVerticalItemBottomAvatarController)))
     {
       f();
       return;
     }
-    super.c(paramInt);
+    super.d(paramInt);
   }
   
   public void e()
   {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381542);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380777);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup = new WSVerticalItemBottomAvatarController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.a(localViewStub);
     a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup);
@@ -67,7 +97,7 @@ public class WSVerticalVideoAvatarBottomItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalVideoAvatarBottomItemView
  * JD-Core Version:    0.7.0.1
  */

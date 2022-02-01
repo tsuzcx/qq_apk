@@ -9,15 +9,18 @@ class AdMaterialResManager$1
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
-      return;
+    if (paramBoolean)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      AdMaterialResManager.a(this.a, paramString);
     }
-    AdMaterialResManager.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialResManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,12 +27,12 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.apollo.api.model.ApolloDrawableExtraInfo;
-import com.tencent.mobileqq.apollo.api.uitls.ApolloConstant;
-import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
+import com.tencent.mobileqq.apollo.model.ApolloDrawableExtraInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -99,609 +99,606 @@ public class ApolloCardLayout
     }
     if (this.jdField_d_of_type_AndroidWidgetTextView == null)
     {
-      paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, AIOUtils.a(48.0F, getResources()));
+      paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, AIOUtils.b(48.0F, getResources()));
       this.jdField_d_of_type_AndroidWidgetTextView = new TextView(getContext());
-      paramApolloBoxDataItem.addRule(3, 2131362800);
+      paramApolloBoxDataItem.addRule(3, 2131362750);
       this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
-      paramApolloBoxDataItem.topMargin = AIOUtils.a(9.0F, getResources());
+      paramApolloBoxDataItem.topMargin = AIOUtils.b(9.0F, getResources());
       this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
       this.jdField_d_of_type_AndroidWidgetTextView.setGravity(49);
       this.jdField_d_of_type_AndroidWidgetTextView.setMaxLines(2);
       this.jdField_d_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
       super.addView(this.jdField_d_of_type_AndroidWidgetTextView, paramApolloBoxDataItem);
     }
-    label486:
-    int k;
-    int j;
-    label600:
-    Object localObject;
     if (this.jdField_c_of_type_Int == 1)
     {
       paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.getLayoutParams();
-      paramApolloBoxDataItem.width = ((int)(paramInt2 * 0.535F));
-      paramApolloBoxDataItem.height = ((int)(paramInt2 * 0.113F));
+      f1 = paramInt2;
+      paramApolloBoxDataItem.width = ((int)(0.535F * f1));
+      paramApolloBoxDataItem.height = ((int)(0.113F * f1));
       paramApolloBoxDataItem.addRule(14);
       paramApolloBoxDataItem.addRule(12);
       paramApolloBoxDataItem.bottomMargin = ((int)(paramInt3 * 0.129F));
       paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_d_of_type_AndroidWidgetTextView.getLayoutParams();
-      paramApolloBoxDataItem.width = ((int)(paramInt2 * 0.78F));
+      paramApolloBoxDataItem.width = ((int)(f1 * 0.78F));
       paramApolloBoxDataItem.addRule(14);
       this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(0);
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidWidgetTextView == null)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-        paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
-        paramApolloBoxDataItem.addRule(14);
-        paramApolloBoxDataItem.addRule(10);
-        paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.703F));
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
-        this.jdField_a_of_type_AndroidWidgetTextView.setId(2131362800);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-        this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-        this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-        super.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramApolloBoxDataItem);
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_JavaLangString);
-      paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth((int)(paramInt2 * 0.8F));
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 1) {
-        break label1661;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131700385));
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(8);
+      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
+      paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
+      paramApolloBoxDataItem.addRule(14);
+      paramApolloBoxDataItem.addRule(10);
+      paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.703F));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131362750);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+      this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
+      super.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramApolloBoxDataItem);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_JavaLangString);
+    paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    float f3 = paramInt2;
+    ((TextView)localObject).setMaxWidth((int)(0.8F * f3));
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131700527));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
       paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.806F));
-      if (this.jdField_c_of_type_ComTencentImageURLImageView == null)
+    }
+    else if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 2)
+    {
+      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_Int);
+      localStringBuilder.append(HardCodeUtil.a(2131700533));
+      ((TextView)localObject).setText(localStringBuilder.toString());
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+      paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.697F));
+    }
+    else if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 3)
+    {
+      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_Int);
+      localStringBuilder.append(HardCodeUtil.a(2131700528));
+      ((TextView)localObject).setText(localStringBuilder.toString());
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+      paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.697F));
+    }
+    else
+    {
+      paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.703F));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      paramInt1 = this.jdField_c_of_type_Int;
+      if (paramInt1 == 1) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
+      } else if (paramInt1 == 2) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
+      } else if (paramInt1 == 3) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
+      } else {
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(8.0F);
+      }
+    }
+    if (this.jdField_c_of_type_ComTencentImageURLImageView == null)
+    {
+      this.jdField_c_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
+      paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
+      this.jdField_c_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      super.addView(this.jdField_c_of_type_ComTencentImageURLImageView, paramApolloBoxDataItem);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 1)
+    {
+      paramApolloBoxDataItem = getContext().getResources().getDrawable(2130838417);
+      int j = paramApolloBoxDataItem.getIntrinsicWidth();
+      int i = paramApolloBoxDataItem.getIntrinsicHeight();
+      int k = this.jdField_c_of_type_Int;
+      float f2;
+      if (k == 2)
       {
-        this.jdField_c_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
-        paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
-        this.jdField_c_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        super.addView(this.jdField_c_of_type_ComTencentImageURLImageView, paramApolloBoxDataItem);
+        paramInt1 = (int)(j * 0.55F);
+        f1 = i;
+        f2 = 0.55F;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 1) {
-        break label1980;
+      for (;;)
+      {
+        paramInt2 = (int)(f1 * f2);
+        break;
+        if (k == 3)
+        {
+          paramInt1 = (int)(j * 0.38F);
+          f1 = i;
+          f2 = 0.38F;
+        }
+        else
+        {
+          paramInt1 = j;
+          paramInt2 = i;
+          if (k != 4) {
+            break;
+          }
+          paramInt1 = (int)(j * 0.28F);
+          f1 = i;
+          f2 = 0.28F;
+        }
       }
-      paramApolloBoxDataItem = getContext().getResources().getDrawable(2130838575);
-      k = paramApolloBoxDataItem.getIntrinsicWidth();
-      j = paramApolloBoxDataItem.getIntrinsicHeight();
-      if (this.jdField_c_of_type_Int != 2) {
-        break label1913;
-      }
-      i = (int)(k * 0.55F);
-      paramInt1 = (int)(j * 0.55F);
-      localObject = new RelativeLayout.LayoutParams(i, paramInt1);
+      localObject = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
       ((RelativeLayout.LayoutParams)localObject).addRule(12);
       ((RelativeLayout.LayoutParams)localObject).addRule(14);
-      ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(paramInt3 * 0.588F) - paramInt1 / 2);
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(paramInt3 * 0.588F) - paramInt2 / 2);
       this.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable(paramApolloBoxDataItem);
       this.jdField_c_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    for (;;)
+    else if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 2)
     {
-      if (this.jdField_b_of_type_ComTencentImageURLImageView == null)
-      {
-        this.jdField_b_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
-        paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
-        this.jdField_b_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        super.addView(this.jdField_b_of_type_ComTencentImageURLImageView, paramApolloBoxDataItem);
-      }
-      paramInt1 = (int)(paramInt2 * 0.2F);
-      i = (int)(paramInt2 * 0.252F);
-      paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_b_of_type_ComTencentImageURLImageView.getLayoutParams();
-      paramApolloBoxDataItem.addRule(11);
-      paramApolloBoxDataItem.addRule(10);
-      paramApolloBoxDataItem.rightMargin = ((int)(0.103F * paramInt2));
-      paramApolloBoxDataItem.topMargin = ((int)(0.074F * paramInt3));
-      paramApolloBoxDataItem.width = paramInt1;
-      paramApolloBoxDataItem.height = i;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_JavaLangString)) {
-        break label2572;
-      }
-      paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable(Utils.Crc64String(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_JavaLangString), null, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_JavaLangString);
-      label829:
-      this.jdField_b_of_type_ComTencentImageURLImageView.setBackgroundDrawable(paramApolloBoxDataItem);
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
-      {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(getContext());
-        paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
-        super.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, paramApolloBoxDataItem);
-      }
-      paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      paramApolloBoxDataItem.addRule(14);
+      f1 = paramInt3;
+      paramInt1 = (int)(0.38F * f1);
+      paramApolloBoxDataItem = new RelativeLayout.LayoutParams(paramInt1, paramInt1);
       paramApolloBoxDataItem.addRule(12);
-      paramApolloBoxDataItem.bottomMargin = ((int)(paramInt3 * 0.073F));
-      if (this.jdField_d_of_type_ComTencentImageURLImageView == null)
+      paramApolloBoxDataItem.addRule(14);
+      paramApolloBoxDataItem.bottomMargin = ((int)(f1 * 0.574F) - paramInt1 / 2);
+      localObject = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_card_gold_icon.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_card_gold_icon.png"));
+      this.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      this.jdField_c_of_type_ComTencentImageURLImageView.setLayoutParams(paramApolloBoxDataItem);
+    }
+    else if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 3)
+    {
+      paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_card_crystal_image.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_card_crystal_image.png"));
+      paramApolloBoxDataItem.startDownload();
+      f1 = paramInt3;
+      paramInt1 = (int)(0.363F * f1);
+      localObject = new RelativeLayout.LayoutParams((int)(0.3F * f1), paramInt1);
+      ((RelativeLayout.LayoutParams)localObject).addRule(12);
+      ((RelativeLayout.LayoutParams)localObject).addRule(14);
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(f1 * 0.574F) - paramInt1 / 2);
+      this.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable(paramApolloBoxDataItem);
+      this.jdField_c_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    else
+    {
+      paramInt1 = (int)(0.488F * f3);
+      f1 = paramInt3;
+      paramInt2 = (int)(0.531F * f1);
+      if ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Short == 3) || (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.h == 1))
       {
-        this.jdField_d_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
-        paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
-        this.jdField_d_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_d_of_type_ComTencentImageURLImageView, paramApolloBoxDataItem);
+        paramInt1 = (int)(0.714F * f3);
+        paramInt2 = (int)(0.497F * f1);
       }
-      if (this.jdField_c_of_type_Int == 1)
+      paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_c_of_type_ComTencentImageURLImageView.getLayoutParams();
+      paramApolloBoxDataItem.addRule(12);
+      paramApolloBoxDataItem.addRule(14);
+      paramApolloBoxDataItem.width = paramInt1;
+      paramApolloBoxDataItem.height = paramInt2;
+      paramApolloBoxDataItem.bottomMargin = ((int)(f1 * 0.373F));
+      if ((3 != this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Short) && ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_JavaLangString == null) || (!this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_JavaLangString.endsWith(".gif"))))
       {
-        paramInt1 = (int)(paramInt2 * 0.15F);
-        paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_d_of_type_ComTencentImageURLImageView.getLayoutParams();
-        paramApolloBoxDataItem.addRule(15);
-        paramApolloBoxDataItem.addRule(9);
-        paramApolloBoxDataItem.width = paramInt1;
-        paramApolloBoxDataItem.height = paramInt1;
-        this.jdField_d_of_type_ComTencentImageURLImageView.setBackgroundResource(2130838598);
-        this.jdField_d_of_type_ComTencentImageURLImageView.setImageDrawable(null);
-        this.jdField_d_of_type_ComTencentImageURLImageView.setPadding(1, 1, 1, 1);
+        paramApolloBoxDataItem = null;
       }
-      if ((!this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_d_of_type_JavaLangString)))
+      else
       {
         paramApolloBoxDataItem = URLDrawable.URLDrawableOptions.obtain();
-        paramApolloBoxDataItem.mLoadingDrawable = ImageUtil.c();
-        paramApolloBoxDataItem.mFailedDrawable = paramApolloBoxDataItem.mLoadingDrawable;
-        localObject = new ApolloDrawableExtraInfo();
-        ((ApolloDrawableExtraInfo)localObject).mDrawableType = ApolloConstant.h;
-        paramApolloBoxDataItem.mExtraInfo = localObject;
-        paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable(Utils.Crc64String(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_d_of_type_JavaLangString), paramApolloBoxDataItem, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_d_of_type_JavaLangString);
-        this.jdField_d_of_type_ComTencentImageURLImageView.setImageDrawable(paramApolloBoxDataItem);
+        paramApolloBoxDataItem.mLoadingDrawable = URLDrawableHelperConstants.a;
+        paramApolloBoxDataItem.mFailedDrawable = URLDrawableHelperConstants.a;
+        paramApolloBoxDataItem.mExtraInfo = null;
+        paramApolloBoxDataItem.mPlayGifImage = true;
       }
-      if (this.jdField_b_of_type_AndroidWidgetTextView == null)
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_JavaLangString))
       {
-        this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-        paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-        this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
-        this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-        this.jdField_b_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, paramApolloBoxDataItem);
+        localObject = paramApolloBoxDataItem;
+        if (paramApolloBoxDataItem == null) {
+          localObject = URLDrawable.URLDrawableOptions.obtain();
+        }
+        if (((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable == null) {
+          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelperConstants.a;
+        }
+        if (((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable == null) {
+          ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelperConstants.a;
+        }
+        paramApolloBoxDataItem = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
       }
-      if (this.jdField_c_of_type_Int == 1)
+      else
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setMaxWidth((int)(paramInt2 * 0.5F));
-        paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-        paramApolloBoxDataItem.addRule(9);
-        paramApolloBoxDataItem.addRule(10);
-        paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.017F));
-        paramApolloBoxDataItem.leftMargin = ((int)(paramInt2 * 0.2F));
+        localObject = (IApolloUtil)QRoute.api(IApolloUtil.class);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("task_detail");
+        localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Short));
+        localStringBuilder.append("_");
+        localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Int));
+        paramApolloBoxDataItem = ((IApolloUtil)localObject).getDrawable(localStringBuilder.toString(), paramApolloBoxDataItem, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getBoxFloatUrl(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Short, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Int));
       }
-      if (this.jdField_c_of_type_AndroidWidgetTextView == null)
-      {
-        this.jdField_c_of_type_AndroidWidgetTextView = new TextView(getContext());
-        paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(10.0F);
-        this.jdField_c_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidWidgetTextView, paramApolloBoxDataItem);
-      }
-      if (this.jdField_c_of_type_Int == 1)
-      {
-        paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
-        paramApolloBoxDataItem.addRule(9);
-        paramApolloBoxDataItem.addRule(10);
-        paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.065F));
-        paramApolloBoxDataItem.leftMargin = ((int)(paramInt2 * 0.2F));
-      }
-      if (this.jdField_a_of_type_ComTencentImageURLImageView == null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
-        super.addView(this.jdField_a_of_type_ComTencentImageURLImageView);
-      }
-      paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-      paramApolloBoxDataItem.addRule(11);
+      this.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable(paramApolloBoxDataItem);
+    }
+    if (this.jdField_b_of_type_ComTencentImageURLImageView == null)
+    {
+      this.jdField_b_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
+      paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      super.addView(this.jdField_b_of_type_ComTencentImageURLImageView, paramApolloBoxDataItem);
+    }
+    paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_b_of_type_ComTencentImageURLImageView.getLayoutParams();
+    paramApolloBoxDataItem.addRule(11);
+    paramApolloBoxDataItem.addRule(10);
+    paramApolloBoxDataItem.rightMargin = ((int)(0.103F * f3));
+    float f1 = paramInt3;
+    paramApolloBoxDataItem.topMargin = ((int)(0.074F * f1));
+    paramInt1 = (int)(0.2F * f3);
+    paramInt2 = (int)(0.252F * f3);
+    paramApolloBoxDataItem.width = paramInt1;
+    paramApolloBoxDataItem.height = paramInt2;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_JavaLangString)) {
+      paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable(Utils.Crc64String(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_JavaLangString), null, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_JavaLangString);
+    } else if ("A".equals(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_JavaLangString)) {
+      paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_box_card_a_2016_09_20.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_box_card_a_2016_09_20.png"));
+    } else if ("B".equals(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_JavaLangString)) {
+      paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_box_card_b_2016_09_20.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_box_card_b_2016_09_20.png"));
+    } else if ("C".equals(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_JavaLangString)) {
+      paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_box_card_c_2016_09_20.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_box_card_c_2016_09_20.png"));
+    } else if ("S".equals(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_JavaLangString)) {
+      paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_box_card_s_2016_09_20.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_box_card_s_2016_09_20.png"));
+    } else if ("V".equals(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_JavaLangString)) {
+      paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_box_card_v_2017_11_03.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_box_card_v_2017_11_03.png"));
+    } else {
+      paramApolloBoxDataItem = null;
+    }
+    this.jdField_b_of_type_ComTencentImageURLImageView.setBackgroundDrawable(paramApolloBoxDataItem);
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(getContext());
+      paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
+      super.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, paramApolloBoxDataItem);
+    }
+    paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    paramApolloBoxDataItem.addRule(14);
+    paramApolloBoxDataItem.addRule(12);
+    paramApolloBoxDataItem.bottomMargin = ((int)(0.073F * f1));
+    if (this.jdField_d_of_type_ComTencentImageURLImageView == null)
+    {
+      this.jdField_d_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
+      paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
+      this.jdField_d_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_d_of_type_ComTencentImageURLImageView, paramApolloBoxDataItem);
+    }
+    if (this.jdField_c_of_type_Int == 1)
+    {
+      paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_d_of_type_ComTencentImageURLImageView.getLayoutParams();
+      paramApolloBoxDataItem.addRule(15);
+      paramApolloBoxDataItem.addRule(9);
+      paramInt2 = (int)(0.15F * f3);
+      paramApolloBoxDataItem.width = paramInt2;
+      paramApolloBoxDataItem.height = paramInt2;
+      this.jdField_d_of_type_ComTencentImageURLImageView.setBackgroundResource(2130838440);
+      this.jdField_d_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+      this.jdField_d_of_type_ComTencentImageURLImageView.setPadding(1, 1, 1, 1);
+    }
+    if ((!this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_d_of_type_JavaLangString)))
+    {
+      paramApolloBoxDataItem = URLDrawable.URLDrawableOptions.obtain();
+      paramApolloBoxDataItem.mLoadingDrawable = ImageUtil.e();
+      paramApolloBoxDataItem.mFailedDrawable = paramApolloBoxDataItem.mLoadingDrawable;
+      localObject = new ApolloDrawableExtraInfo();
+      ((ApolloDrawableExtraInfo)localObject).mDrawableType = ApolloConstant.jdField_g_of_type_Int;
+      paramApolloBoxDataItem.mExtraInfo = localObject;
+      paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable(Utils.Crc64String(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_d_of_type_JavaLangString), paramApolloBoxDataItem, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_d_of_type_JavaLangString);
+      this.jdField_d_of_type_ComTencentImageURLImageView.setImageDrawable(paramApolloBoxDataItem);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView == null)
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
+      paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(14.0F);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
+      this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+      this.jdField_b_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, paramApolloBoxDataItem);
+    }
+    if (this.jdField_c_of_type_Int == 1)
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setMaxWidth((int)(f3 * 0.5F));
+      paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
+      paramApolloBoxDataItem.addRule(9);
       paramApolloBoxDataItem.addRule(10);
-      paramApolloBoxDataItem.width = (paramInt3 * 130 / 760);
-      paramApolloBoxDataItem.height = (paramInt3 * 142 / 760);
-      paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.45F));
-      paramApolloBoxDataItem.rightMargin = (paramInt3 * 25 / 760);
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 1) {
-        break label2859;
+      paramApolloBoxDataItem.topMargin = ((int)(0.017F * f1));
+      paramApolloBoxDataItem.leftMargin = paramInt1;
+    }
+    if (this.jdField_c_of_type_AndroidWidgetTextView == null)
+    {
+      this.jdField_c_of_type_AndroidWidgetTextView = new TextView(getContext());
+      paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, -2);
+      this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(10.0F);
+      this.jdField_c_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
+      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidWidgetTextView, paramApolloBoxDataItem);
+    }
+    if (this.jdField_c_of_type_Int == 1)
+    {
+      paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+      paramApolloBoxDataItem.addRule(9);
+      paramApolloBoxDataItem.addRule(10);
+      paramApolloBoxDataItem.topMargin = ((int)(0.065F * f1));
+      paramApolloBoxDataItem.leftMargin = paramInt1;
+    }
+    if (this.jdField_a_of_type_ComTencentImageURLImageView == null)
+    {
+      this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
+      super.addView(this.jdField_a_of_type_ComTencentImageURLImageView);
+    }
+    paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
+    paramApolloBoxDataItem.addRule(11);
+    paramApolloBoxDataItem.addRule(10);
+    paramApolloBoxDataItem.width = (paramInt3 * 130 / 760);
+    paramApolloBoxDataItem.height = (paramInt3 * 142 / 760);
+    paramApolloBoxDataItem.topMargin = ((int)(f1 * 0.45F));
+    paramApolloBoxDataItem.rightMargin = (paramInt3 * 25 / 760);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 1)
+    {
+      if (this.jdField_c_of_type_Int == 1) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      } else {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       }
-      if (this.jdField_c_of_type_Int != 1) {
-        break label2847;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      label1571:
       this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
       this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(8);
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.setVisibility(4);
+      paramApolloBoxDataItem = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView;
+      if (paramApolloBoxDataItem != null) {
+        paramApolloBoxDataItem.setVisibility(4);
       }
       this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(0);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(8);
-      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-      break;
-      label1661:
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 2)
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 2) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 3))
+    {
+      this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(0);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_Int + HardCodeUtil.a(2131700391));
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-        paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.697F));
-        break label486;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 3)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_Int + HardCodeUtil.a(2131700386));
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-        paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.697F));
-        break label486;
-      }
-      paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.703F));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      if (this.jdField_c_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
-        break label486;
-      }
-      if (this.jdField_c_of_type_Int == 2)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-        break label486;
-      }
-      if (this.jdField_c_of_type_Int == 3)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
-        break label486;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(8.0F);
-      break label486;
-      label1913:
-      if (this.jdField_c_of_type_Int == 3)
-      {
-        i = (int)(k * 0.38F);
-        paramInt1 = (int)(j * 0.38F);
-        break label600;
-      }
-      paramInt1 = j;
-      i = k;
-      if (this.jdField_c_of_type_Int != 4) {
-        break label600;
-      }
-      i = (int)(k * 0.28F);
-      paramInt1 = (int)(j * 0.28F);
-      break label600;
-      label1980:
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 2)
-      {
-        paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_card_gold_icon.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_card_gold_icon.png"));
-        paramInt1 = (int)(paramInt3 * 0.38F);
-        localObject = new RelativeLayout.LayoutParams(paramInt1, paramInt1);
-        ((RelativeLayout.LayoutParams)localObject).addRule(12);
-        ((RelativeLayout.LayoutParams)localObject).addRule(14);
-        ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(paramInt3 * 0.574F) - paramInt1 / 2);
-        this.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable(paramApolloBoxDataItem);
-        this.jdField_c_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Long)
+        {
+          paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_self_stolen_got_2016_9_22.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_self_stolen_got_2016_9_22.png"));
+          this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(paramApolloBoxDataItem);
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(null);
+        }
+        if (this.jdField_c_of_type_Int == 1)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(0);
+          this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_d_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_d_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_Long);
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_JavaLangString))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(8);
+            this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+            this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_JavaLangString);
+          }
+          else
+          {
+            this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(0);
+            this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+          }
+        }
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 3) {
-          break label2227;
+        this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(8);
+        if (this.jdField_c_of_type_Int == 1) {
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        } else {
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
         }
-        paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_card_crystal_image.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_card_crystal_image.png"));
-        paramApolloBoxDataItem.startDownload();
-        paramInt1 = (int)(paramInt3 * 0.363F);
-        localObject = new RelativeLayout.LayoutParams((int)(paramInt3 * 0.3F), paramInt1);
-        ((RelativeLayout.LayoutParams)localObject).addRule(12);
-        ((RelativeLayout.LayoutParams)localObject).addRule(14);
-        ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(paramInt3 * 0.574F) - paramInt1 / 2);
-        this.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable(paramApolloBoxDataItem);
-        this.jdField_c_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(TimeFormatterUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_Long * 1000L));
+        localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_JavaLangString)) {
+          paramApolloBoxDataItem = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Long);
+        } else {
+          paramApolloBoxDataItem = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_JavaLangString;
+        }
+        ((TextView)localObject).setText(paramApolloBoxDataItem);
+        paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_other_stolen_got_2016_9_22.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_other_stolen_got_2016_9_22.png"));
+        this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(paramApolloBoxDataItem);
+      }
+      paramApolloBoxDataItem = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView;
+      if (paramApolloBoxDataItem != null) {
+        paramApolloBoxDataItem.setVisibility(4);
       }
     }
-    label2227:
-    paramInt1 = (int)(paramInt2 * 0.488F);
-    int i = (int)(paramInt3 * 0.531F);
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Short == 3) || (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.h == 1))
+    else
     {
-      paramInt1 = (int)(paramInt2 * 0.714F);
-      i = (int)(paramInt3 * 0.497F);
-    }
-    for (;;)
-    {
-      paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_c_of_type_ComTencentImageURLImageView.getLayoutParams();
-      paramApolloBoxDataItem.addRule(12);
-      paramApolloBoxDataItem.addRule(14);
-      paramApolloBoxDataItem.width = paramInt1;
-      paramApolloBoxDataItem.height = i;
-      paramApolloBoxDataItem.bottomMargin = ((int)(paramInt3 * 0.373F));
-      if ((3 == this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Short) || ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_JavaLangString.endsWith(".gif"))))
+      if (this.jdField_c_of_type_Int == 1)
       {
-        paramApolloBoxDataItem = URLDrawable.URLDrawableOptions.obtain();
-        paramApolloBoxDataItem.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-        paramApolloBoxDataItem.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-        paramApolloBoxDataItem.mExtraInfo = null;
-        paramApolloBoxDataItem.mPlayGifImage = true;
-      }
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_JavaLangString))
-        {
-          localObject = paramApolloBoxDataItem;
-          if (paramApolloBoxDataItem == null) {
-            localObject = URLDrawable.URLDrawableOptions.obtain();
-          }
-          if (((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable == null) {
-            ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-          }
-          if (((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable == null) {
-            ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-          }
-        }
-        for (paramApolloBoxDataItem = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);; paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("task_detail" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Short) + "_" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Int), paramApolloBoxDataItem, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getBoxFloatUrl(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Short, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Int)))
-        {
-          this.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable(paramApolloBoxDataItem);
-          break;
-        }
-        label2572:
-        if ("A".equals(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_JavaLangString))
-        {
-          paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_box_card_a_2016_09_20.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_box_card_a_2016_09_20.png"));
-          break label829;
-        }
-        if ("B".equals(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_JavaLangString))
-        {
-          paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_box_card_b_2016_09_20.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_box_card_b_2016_09_20.png"));
-          break label829;
-        }
-        if ("C".equals(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_JavaLangString))
-        {
-          paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_box_card_c_2016_09_20.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_box_card_c_2016_09_20.png"));
-          break label829;
-        }
-        if ("S".equals(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_JavaLangString))
-        {
-          paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_box_card_s_2016_09_20.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_box_card_s_2016_09_20.png"));
-          break label829;
-        }
-        if ("V".equals(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_JavaLangString))
-        {
-          paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_box_card_v_2017_11_03.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_box_card_v_2017_11_03.png"));
-          break label829;
-          label2847:
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-          break label1571;
-          label2859:
-          if ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 2) || (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 3))
-          {
-            if (this.jdField_c_of_type_Int == 1) {
-              if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean)
-              {
-                this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-                if (!this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean) {
-                  break label3658;
-                }
-                this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(0);
-                label2925:
-                this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(8);
-                this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(8);
-                this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-                if ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean) || (this.jdField_c_of_type_Int != 1)) {
-                  break label3680;
-                }
-                this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-                this.jdField_c_of_type_AndroidWidgetTextView.setText(TimeFormatterUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_Long * 1000L));
-                localObject = this.jdField_b_of_type_AndroidWidgetTextView;
-                if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_JavaLangString)) {
-                  break label3669;
-                }
-                paramApolloBoxDataItem = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Long);
-                label3029:
-                ((TextView)localObject).setText(paramApolloBoxDataItem);
-                label3035:
-                this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-                if (!this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean) {
-                  break label3703;
-                }
-                if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_Long == this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Long) {
-                  break label3692;
-                }
-                paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_self_stolen_got_2016_9_22.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_self_stolen_got_2016_9_22.png"));
-                this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(paramApolloBoxDataItem);
-                label3115:
-                if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView == null)
-                {
-                  this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView = new MultiURLImageView(getContext());
-                  super.addView(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView);
-                }
-                paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.getLayoutParams();
-                paramApolloBoxDataItem.addRule(11);
-                paramApolloBoxDataItem.addRule(12);
-                paramApolloBoxDataItem.rightMargin = (paramInt3 * 155 / 760);
-                paramApolloBoxDataItem.bottomMargin = (paramInt3 * 320 / 760);
-                paramApolloBoxDataItem = new ArrayList();
-                localObject = new MultiURLImageView.ViewLayoutData();
-                ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_Int = (paramInt3 * 46 / 760);
-                ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_Int = (paramInt3 * 68 / 760);
-                ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.FIT_END;
-                if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 2) {
-                  break label3750;
-                }
-                ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = "apollo_card_gold_add.png";
-                label3268:
-                ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_JavaLangString = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl(((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString);
-                paramApolloBoxDataItem.add(localObject);
-                if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_Int >= 10)
-                {
-                  paramInt1 = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_Int % 100 / 10;
-                  localObject = new MultiURLImageView.ViewLayoutData();
-                  if (paramInt1 != 1) {
-                    break label3772;
-                  }
-                  ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_Int = (paramInt3 * 35 / 760);
-                  ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_Int = (paramInt3 * 80 / 760);
-                  if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 2) {
-                    break label3803;
-                  }
-                  ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = ("apollo_card_gold_" + paramInt1 + ".png");
-                  label3411:
-                  ((MultiURLImageView.ViewLayoutData)localObject).jdField_c_of_type_Int = (-paramInt3 * 4 / 760);
-                  ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_JavaLangString = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl(((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString);
-                  paramApolloBoxDataItem.add(localObject);
-                }
-                paramInt1 = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_Int % 10;
-                localObject = new MultiURLImageView.ViewLayoutData();
-                ((MultiURLImageView.ViewLayoutData)localObject).jdField_c_of_type_Int = (-paramInt3 * 4 / 760);
-                if (paramInt1 != 1) {
-                  break label3848;
-                }
-                ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_Int = (paramInt3 * 35 / 760);
-                ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_Int = (paramInt3 * 80 / 760);
-                label3525:
-                if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 2) {
-                  break label3879;
-                }
-                ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = ("apollo_card_gold_" + paramInt1 + ".png");
-              }
-            }
-            for (;;)
-            {
-              ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_JavaLangString = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl(((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString);
-              paramApolloBoxDataItem.add(localObject);
-              this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.setOrientation(0);
-              this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.setViewLayoutDatas(paramApolloBoxDataItem);
-              if (!this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean) {
-                break label3924;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.setVisibility(0);
-              return;
-              this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-              break;
-              this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-              break;
-              label3658:
-              this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(4);
-              break label2925;
-              label3669:
-              paramApolloBoxDataItem = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_JavaLangString;
-              break label3029;
-              label3680:
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-              break label3035;
-              label3692:
-              this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(null);
-              break label3115;
-              label3703:
-              paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_other_stolen_got_2016_9_22.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_other_stolen_got_2016_9_22.png"));
-              this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(paramApolloBoxDataItem);
-              break label3115;
-              if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 3) {
-                break label3268;
-              }
-              ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = "apollo_card_crystal_add.png";
-              break label3268;
-              label3772:
-              ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_Int = (paramInt3 * 55 / 760);
-              ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_Int = (paramInt3 * 80 / 760);
-              break label3369;
-              label3803:
-              if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 3) {
-                break label3411;
-              }
-              ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = ("apollo_card_crystal_" + paramInt1 + ".png");
-              break label3411;
-              ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_Int = (paramInt3 * 55 / 760);
-              ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_Int = (paramInt3 * 80 / 760);
-              break label3525;
-              if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 3) {
-                ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = ("apollo_card_crystal_" + paramInt1 + ".png");
-              }
-            }
-            label3924:
-            this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.setVisibility(4);
-            return;
-          }
-          label3369:
-          this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(0);
-          label3750:
-          label3879:
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean) {
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          label3848:
-          this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-          this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(0);
-          if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean)
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Long)
-            {
-              paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_self_stolen_got_2016_9_22.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_self_stolen_got_2016_9_22.png"));
-              this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(paramApolloBoxDataItem);
-              if (this.jdField_c_of_type_Int == 1)
-              {
-                this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(0);
-                this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_d_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_d_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_Long);
-                if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_JavaLangString)) {
-                  break label4168;
-                }
-                this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(8);
-                this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-                this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_JavaLangString);
-              }
-            }
-            for (;;)
-            {
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-              label4141:
-              if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView == null) {
-                break label4315;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.setVisibility(4);
-              return;
-              this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(null);
-              break;
-              label4168:
-              this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(0);
-              this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-            }
-          }
-          this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(8);
-          if (this.jdField_c_of_type_Int == 1)
-          {
-            this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-            label4213:
-            this.jdField_c_of_type_AndroidWidgetTextView.setText(TimeFormatterUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_Long * 1000L));
-            localObject = this.jdField_b_of_type_AndroidWidgetTextView;
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_JavaLangString)) {
-              break label4329;
-            }
-          }
-          label4315:
-          label4329:
-          for (paramApolloBoxDataItem = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Long);; paramApolloBoxDataItem = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_JavaLangString)
-          {
-            ((TextView)localObject).setText(paramApolloBoxDataItem);
-            paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_other_stolen_got_2016_9_22.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_other_stolen_got_2016_9_22.png"));
-            this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(paramApolloBoxDataItem);
-            break label4141;
-            break;
-            this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-            break label4213;
-          }
+        } else {
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
         }
-        paramApolloBoxDataItem = null;
-        break label829;
-        paramApolloBoxDataItem = null;
       }
+      else {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean) {
+        this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(0);
+      } else {
+        this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(4);
+      }
+      this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxAnimationableProgressView.setVisibility(8);
+      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+      if ((!this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Int == 1))
+      {
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(TimeFormatterUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_Long * 1000L));
+        localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_JavaLangString)) {
+          paramApolloBoxDataItem = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Long);
+        } else {
+          paramApolloBoxDataItem = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_c_of_type_JavaLangString;
+        }
+        ((TextView)localObject).setText(paramApolloBoxDataItem);
+      }
+      else
+      {
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      }
+      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Long)
+        {
+          paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_self_stolen_got_2016_9_22.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_self_stolen_got_2016_9_22.png"));
+          this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(paramApolloBoxDataItem);
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(null);
+        }
+      }
+      else
+      {
+        paramApolloBoxDataItem = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable("apollo_other_stolen_got_2016_9_22.png", null, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl("apollo_other_stolen_got_2016_9_22.png"));
+        this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(paramApolloBoxDataItem);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView = new MultiURLImageView(getContext());
+        super.addView(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView);
+      }
+      paramApolloBoxDataItem = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.getLayoutParams();
+      paramApolloBoxDataItem.addRule(11);
+      paramApolloBoxDataItem.addRule(12);
+      paramApolloBoxDataItem.rightMargin = (paramInt3 * 155 / 760);
+      paramApolloBoxDataItem.bottomMargin = (paramInt3 * 320 / 760);
+      localObject = new MultiURLImageView.ViewLayoutData();
+      ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_Int = (paramInt3 * 46 / 760);
+      ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_Int = (paramInt3 * 68 / 760);
+      ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.FIT_END;
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 2) {
+        ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = "apollo_card_gold_add.png";
+      } else if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 3) {
+        ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = "apollo_card_crystal_add.png";
+      }
+      ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_JavaLangString = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl(((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString);
+      paramApolloBoxDataItem = new ArrayList();
+      paramApolloBoxDataItem.add(localObject);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_Int >= 10)
+      {
+        paramInt1 = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_Int % 100 / 10;
+        localObject = new MultiURLImageView.ViewLayoutData();
+        if (paramInt1 == 1)
+        {
+          ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_Int = (paramInt3 * 35 / 760);
+          ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_Int = (paramInt3 * 80 / 760);
+        }
+        else
+        {
+          ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_Int = (paramInt3 * 55 / 760);
+          ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_Int = (paramInt3 * 80 / 760);
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 2)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("apollo_card_gold_");
+          localStringBuilder.append(paramInt1);
+          localStringBuilder.append(".png");
+          ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+        }
+        else if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 3)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("apollo_card_crystal_");
+          localStringBuilder.append(paramInt1);
+          localStringBuilder.append(".png");
+          ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+        }
+        ((MultiURLImageView.ViewLayoutData)localObject).jdField_c_of_type_Int = (-paramInt3 * 4 / 760);
+        ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_JavaLangString = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl(((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString);
+        paramApolloBoxDataItem.add(localObject);
+      }
+      paramInt1 = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_f_of_type_Int % 10;
+      localObject = new MultiURLImageView.ViewLayoutData();
+      ((MultiURLImageView.ViewLayoutData)localObject).jdField_c_of_type_Int = (-paramInt3 * 4 / 760);
+      if (paramInt1 == 1)
+      {
+        ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_Int = (paramInt3 * 35 / 760);
+        ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_Int = (paramInt3 * 80 / 760);
+      }
+      else
+      {
+        ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_Int = (paramInt3 * 55 / 760);
+        ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_Int = (paramInt3 * 80 / 760);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 2)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("apollo_card_gold_");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(".png");
+        ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+      }
+      else if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 3)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("apollo_card_crystal_");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(".png");
+        ((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+      }
+      ((MultiURLImageView.ViewLayoutData)localObject).jdField_a_of_type_JavaLangString = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloImageUrl(((MultiURLImageView.ViewLayoutData)localObject).jdField_b_of_type_JavaLangString);
+      paramApolloBoxDataItem.add(localObject);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.setOrientation(0);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.setViewLayoutDatas(paramApolloBoxDataItem);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.setVisibility(0);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView.setVisibility(4);
     }
   }
   
   @SuppressLint({"WrongConstant"})
   @TargetApi(21)
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     long l = System.currentTimeMillis();
     int i;
-    if (Build.VERSION.SDK_INT >= 21)
-    {
+    if (Build.VERSION.SDK_INT >= 21) {
       i = paramCanvas.saveLayer(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, null);
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem != null)
+    } else {
+      i = paramCanvas.saveLayer(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, null, 1);
+    }
+    ApolloBoxData.ApolloBoxDataItem localApolloBoxDataItem = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem;
+    if (localApolloBoxDataItem != null) {
+      if ((localApolloBoxDataItem.jdField_g_of_type_Int != 2) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 3))
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 2) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 3)) {
-          break label436;
+        if (this.jdField_a_of_type_AndroidGraphicsPath != null)
+        {
+          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+          paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
-        if (!this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean) {
-          break label317;
-        }
+      }
+      else if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean)
+      {
         if (this.jdField_a_of_type_AndroidGraphicsPath != null)
         {
           this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-2147483648);
@@ -712,66 +709,53 @@ public class ApolloCardLayout
           paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
       }
-      label138:
-      super.dispatchDraw(paramCanvas);
-      if ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem != null) && (!this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 0))
+      else
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_Int == -1) {
-          break label475;
+        super.drawChild(paramCanvas, this.jdField_c_of_type_ComTencentImageURLImageView, getDrawingTime());
+        super.drawChild(paramCanvas, this.jdField_a_of_type_AndroidWidgetTextView, getDrawingTime());
+        super.drawChild(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView, getDrawingTime());
+        if (this.jdField_b_of_type_AndroidGraphicsPath != null)
+        {
+          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1778384896);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+          paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_Int);
-        label207:
-        if (this.jdField_c_of_type_Int != 1) {
-          break label488;
+        if (this.jdField_c_of_type_AndroidGraphicsPath != null)
+        {
+          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+          paramCanvas.drawPath(this.jdField_c_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
-        paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int * 0.78F, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
     }
-    for (;;)
+    super.dispatchDraw(paramCanvas);
+    localApolloBoxDataItem = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem;
+    if ((localApolloBoxDataItem != null) && (!localApolloBoxDataItem.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int == 0))
     {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_Int != -1) {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_e_of_type_Int);
+      } else {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1728053248);
+      }
+      if (this.jdField_c_of_type_Int == 1) {
+        paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, 0.78F * this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      } else {
+        paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
       super.drawChild(paramCanvas, this.jdField_a_of_type_ComTencentImageURLImageView, getDrawingTime());
-      paramCanvas.restoreToCount(i);
-      if (QLog.isColorLevel()) {
-        QLog.e("ApolloCardWindow", 2, "ApolloCardLayout onDraw use" + (System.currentTimeMillis() - l));
-      }
-      return;
-      i = paramCanvas.saveLayer(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, null, 1);
-      break;
-      label317:
-      super.drawChild(paramCanvas, this.jdField_c_of_type_ComTencentImageURLImageView, getDrawingTime());
-      super.drawChild(paramCanvas, this.jdField_a_of_type_AndroidWidgetTextView, getDrawingTime());
-      super.drawChild(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultiURLImageView, getDrawingTime());
-      if (this.jdField_b_of_type_AndroidGraphicsPath != null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1778384896);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-        paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      if (this.jdField_c_of_type_AndroidGraphicsPath == null) {
-        break label138;
-      }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      paramCanvas.drawPath(this.jdField_c_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      break label138;
-      label436:
-      if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
-        break label138;
-      }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      break label138;
-      label475:
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1728053248);
-      break label207;
-      label488:
-      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    paramCanvas.restoreToCount(i);
+    if (QLog.isColorLevel())
+    {
+      paramCanvas = new StringBuilder();
+      paramCanvas.append("ApolloCardLayout onDraw use");
+      paramCanvas.append(System.currentTimeMillis() - l);
+      QLog.e("[cmshow]ApolloCardWindow", 2, paramCanvas.toString());
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = paramInt3 - paramInt1;
@@ -783,42 +767,70 @@ public class ApolloCardLayout
       if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
         this.jdField_a_of_type_AndroidGraphicsPath = new Path();
       }
-      paramInt1 = (int)(this.jdField_a_of_type_Int * 0.037F);
-      paramInt2 = (int)(this.jdField_a_of_type_Int * 0.047F);
-      paramInt3 = (int)(this.jdField_b_of_type_Int * 0.026F);
+      paramInt1 = this.jdField_a_of_type_Int;
+      paramInt3 = (int)(paramInt1 * 0.037F);
+      paramInt1 = (int)(paramInt1 * 0.047F);
+      paramInt2 = (int)(this.jdField_b_of_type_Int * 0.026F);
       this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(paramInt2 + paramInt1, this.jdField_b_of_type_Int - paramInt3);
-      this.jdField_a_of_type_AndroidGraphicsPath.arcTo(new RectF(paramInt2, this.jdField_b_of_type_Int - paramInt1 * 2 - paramInt3, paramInt1 * 2 + paramInt2, this.jdField_b_of_type_Int - paramInt3), 90.0F, 90.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.arcTo(new RectF(paramInt2, paramInt3, paramInt1 * 2 + paramInt2, paramInt1 * 2 + paramInt3), 180.0F, 90.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.arcTo(new RectF(this.jdField_a_of_type_Int - paramInt1 * 2 - paramInt2, paramInt3, this.jdField_a_of_type_Int - paramInt2, paramInt1 * 2 + paramInt3), -90.0F, 90.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.arcTo(new RectF(this.jdField_a_of_type_Int - paramInt1 * 2 - paramInt2, this.jdField_b_of_type_Int - paramInt1 * 2 - paramInt3, this.jdField_a_of_type_Int - paramInt2, this.jdField_b_of_type_Int - paramInt3), 0.0F, 90.0F);
+      Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      float f1 = paramInt1 + paramInt3;
+      localPath.moveTo(f1, this.jdField_b_of_type_Int - paramInt2);
+      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      float f2 = paramInt1;
+      paramInt4 = this.jdField_b_of_type_Int;
+      paramInt3 *= 2;
+      float f4 = paramInt4 - paramInt3 - paramInt2;
+      float f3 = paramInt1 + paramInt3;
+      localPath.arcTo(new RectF(f2, f4, f3, paramInt4 - paramInt2), 90.0F, 90.0F);
+      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      f4 = paramInt2;
+      float f5 = paramInt2 + paramInt3;
+      localPath.arcTo(new RectF(f2, f4, f3, f5), 180.0F, 90.0F);
+      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      paramInt4 = this.jdField_a_of_type_Int;
+      localPath.arcTo(new RectF(paramInt4 - paramInt3 - paramInt1, f4, paramInt4 - paramInt1, f5), -90.0F, 90.0F);
+      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      paramInt4 = this.jdField_a_of_type_Int;
+      float f6 = paramInt4 - paramInt3 - paramInt1;
+      int i = this.jdField_b_of_type_Int;
+      localPath.arcTo(new RectF(f6, i - paramInt3 - paramInt2, paramInt4 - paramInt1, i - paramInt2), 0.0F, 90.0F);
       this.jdField_a_of_type_AndroidGraphicsPath.close();
       if (this.jdField_b_of_type_AndroidGraphicsPath == null) {
         this.jdField_b_of_type_AndroidGraphicsPath = new Path();
       }
       this.jdField_b_of_type_AndroidGraphicsPath.reset();
       paramInt4 = (int)(this.jdField_b_of_type_Int * 0.78F);
-      this.jdField_b_of_type_AndroidGraphicsPath.moveTo(paramInt2, paramInt4);
-      this.jdField_b_of_type_AndroidGraphicsPath.arcTo(new RectF(paramInt2, paramInt3, paramInt1 * 2 + paramInt2, paramInt1 * 2 + paramInt3), 180.0F, 90.0F);
-      this.jdField_b_of_type_AndroidGraphicsPath.arcTo(new RectF(this.jdField_a_of_type_Int - paramInt1 * 2 - paramInt2, paramInt3, this.jdField_a_of_type_Int - paramInt2, paramInt1 * 2 + paramInt3), -90.0F, 90.0F);
-      this.jdField_b_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Int - paramInt2, paramInt4);
+      localPath = this.jdField_b_of_type_AndroidGraphicsPath;
+      f6 = paramInt4;
+      localPath.moveTo(f2, f6);
+      this.jdField_b_of_type_AndroidGraphicsPath.arcTo(new RectF(f2, f4, f3, f5), 180.0F, 90.0F);
+      localPath = this.jdField_b_of_type_AndroidGraphicsPath;
+      paramInt4 = this.jdField_a_of_type_Int;
+      localPath.arcTo(new RectF(paramInt4 - paramInt3 - paramInt1, f4, paramInt4 - paramInt1, f5), -90.0F, 90.0F);
+      this.jdField_b_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Int - paramInt1, f6);
       this.jdField_b_of_type_AndroidGraphicsPath.close();
       if (this.jdField_c_of_type_AndroidGraphicsPath == null) {
         this.jdField_c_of_type_AndroidGraphicsPath = new Path();
       }
       this.jdField_c_of_type_AndroidGraphicsPath.reset();
-      this.jdField_c_of_type_AndroidGraphicsPath.moveTo(paramInt2 + paramInt1, this.jdField_b_of_type_Int - paramInt3);
-      this.jdField_c_of_type_AndroidGraphicsPath.arcTo(new RectF(paramInt2, this.jdField_b_of_type_Int - paramInt1 * 2 - paramInt3, paramInt1 * 2 + paramInt2, this.jdField_b_of_type_Int - paramInt3), 90.0F, 90.0F);
-      this.jdField_c_of_type_AndroidGraphicsPath.lineTo(paramInt2, paramInt4);
-      this.jdField_c_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Int - paramInt2, paramInt4);
-      this.jdField_c_of_type_AndroidGraphicsPath.arcTo(new RectF(this.jdField_a_of_type_Int - paramInt1 * 2 - paramInt2, this.jdField_b_of_type_Int - paramInt1 * 2 - paramInt3, this.jdField_a_of_type_Int - paramInt2, this.jdField_b_of_type_Int - paramInt3), 0.0F, 90.0F);
+      this.jdField_c_of_type_AndroidGraphicsPath.moveTo(f1, this.jdField_b_of_type_Int - paramInt2);
+      localPath = this.jdField_c_of_type_AndroidGraphicsPath;
+      paramInt4 = this.jdField_b_of_type_Int;
+      localPath.arcTo(new RectF(f2, paramInt4 - paramInt3 - paramInt2, f3, paramInt4 - paramInt2), 90.0F, 90.0F);
+      this.jdField_c_of_type_AndroidGraphicsPath.lineTo(f2, f6);
+      this.jdField_c_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Int - paramInt1, f6);
+      localPath = this.jdField_c_of_type_AndroidGraphicsPath;
+      paramInt4 = this.jdField_a_of_type_Int;
+      f1 = paramInt4 - paramInt3 - paramInt1;
+      i = this.jdField_b_of_type_Int;
+      localPath.arcTo(new RectF(f1, i - paramInt3 - paramInt2, paramInt4 - paramInt1, i - paramInt2), 0.0F, 90.0F);
       this.jdField_c_of_type_AndroidGraphicsPath.close();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.ApolloCardLayout
  * JD-Core Version:    0.7.0.1
  */

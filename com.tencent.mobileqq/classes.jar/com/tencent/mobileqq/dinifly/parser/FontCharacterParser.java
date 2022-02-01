@@ -11,85 +11,105 @@ class FontCharacterParser
 {
   static FontCharacter parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    String str1 = null;
-    double d1 = 0.0D;
     ArrayList localArrayList = new ArrayList();
     paramJsonReader.beginObject();
     String str2 = null;
+    String str1 = str2;
     double d2 = 0.0D;
+    double d1 = d2;
     char c = '\000';
-    label26:
     while (paramJsonReader.hasNext())
     {
       String str3 = paramJsonReader.nextName();
-      int i = -1;
       switch (str3.hashCode())
       {
+      default: 
+        break;
+      case 109780401: 
+        if (str3.equals("style")) {
+          i = 3;
+        }
+        break;
+      case 3530753: 
+        if (str3.equals("size")) {
+          i = 1;
+        }
+        break;
+      case 3076010: 
+        if (str3.equals("data")) {
+          i = 5;
+        }
+        break;
+      case 3173: 
+        if (str3.equals("ch")) {
+          i = 0;
+        }
+        break;
+      case 119: 
+        if (str3.equals("w")) {
+          i = 2;
+        }
+        break;
+      case -1866931350: 
+        if (str3.equals("fFamily")) {
+          i = 4;
+        }
+        break;
       }
-      for (;;)
+      int i = -1;
+      if (i != 0)
       {
-        switch (i)
+        if (i != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label26;
-          if (str3.equals("ch"))
+          if (i != 2)
           {
-            i = 0;
-            continue;
-            if (str3.equals("size"))
+            if (i != 3)
             {
-              i = 1;
-              continue;
-              if (str3.equals("w"))
+              if (i != 4)
               {
-                i = 2;
-                continue;
-                if (str3.equals("style"))
+                if (i != 5)
                 {
-                  i = 3;
-                  continue;
-                  if (str3.equals("fFamily"))
-                  {
-                    i = 4;
-                    continue;
-                    if (str3.equals("data")) {
-                      i = 5;
+                  paramJsonReader.skipValue();
+                }
+                else
+                {
+                  paramJsonReader.beginObject();
+                  while (paramJsonReader.hasNext()) {
+                    if ("shapes".equals(paramJsonReader.nextName()))
+                    {
+                      paramJsonReader.beginArray();
+                      while (paramJsonReader.hasNext()) {
+                        localArrayList.add((ShapeGroup)ContentModelParser.parse(paramJsonReader, paramLottieComposition));
+                      }
+                      paramJsonReader.endArray();
+                    }
+                    else
+                    {
+                      paramJsonReader.skipValue();
                     }
                   }
+                  paramJsonReader.endObject();
                 }
               }
+              else {
+                str1 = paramJsonReader.nextString();
+              }
+            }
+            else {
+              str2 = paramJsonReader.nextString();
             }
           }
-          break;
-        }
-      }
-      c = paramJsonReader.nextString().charAt(0);
-      continue;
-      d2 = paramJsonReader.nextDouble();
-      continue;
-      d1 = paramJsonReader.nextDouble();
-      continue;
-      str2 = paramJsonReader.nextString();
-      continue;
-      str1 = paramJsonReader.nextString();
-      continue;
-      paramJsonReader.beginObject();
-      while (paramJsonReader.hasNext()) {
-        if ("shapes".equals(paramJsonReader.nextName()))
-        {
-          paramJsonReader.beginArray();
-          while (paramJsonReader.hasNext()) {
-            localArrayList.add((ShapeGroup)ContentModelParser.parse(paramJsonReader, paramLottieComposition));
+          else {
+            d1 = paramJsonReader.nextDouble();
           }
-          paramJsonReader.endArray();
         }
-        else
-        {
-          paramJsonReader.skipValue();
+        else {
+          d2 = paramJsonReader.nextDouble();
         }
       }
-      paramJsonReader.endObject();
+      else {
+        c = paramJsonReader.nextString().charAt(0);
+      }
     }
     paramJsonReader.endObject();
     return new FontCharacter(localArrayList, c, d2, d1, str2, str1);
@@ -97,7 +117,7 @@ class FontCharacterParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.FontCharacterParser
  * JD-Core Version:    0.7.0.1
  */

@@ -27,6 +27,7 @@ public class LaunchScene
   public static final int LAUNCH_SCENE_ARK_SEARCH_OPEN_CARD = 2075;
   public static final int LAUNCH_SCENE_ARK_UNKNOWN = 2059;
   public static final int LAUNCH_SCENE_BIGINSERTPAGE = 4005;
+  public static final int LAUNCH_SCENE_C2C_AIO_CM_SHOW_GAME_BATTLE_STORE = 4018;
   public static final int LAUNCH_SCENE_C2C_AIO_SHORTCUT_PANEL = 4016;
   public static final int LAUNCH_SCENE_COLOR_NOTE = 1131;
   public static final int LAUNCH_SCENE_CONTACTS = 2006;
@@ -52,6 +53,7 @@ public class LaunchScene
   public static final int LAUNCH_SCENE_DESKTOP_SEARCH_BAR = 3006;
   public static final int LAUNCH_SCENE_DESKTOP_SHORTCUT = 1023;
   public static final int LAUNCH_SCENE_DESKTOP_TOP_BANNER = 3011;
+  public static final int LAUNCH_SCENE_DYNAMIC_MINIAPP = 2079;
   public static final int LAUNCH_SCENE_FILE_TENCENT_DOC = 2012;
   public static final int LAUNCH_SCENE_FILE_WEIYUN = 2011;
   public static final int LAUNCH_SCENE_FLOAT_DRAG_AD = 2115;
@@ -100,6 +102,7 @@ public class LaunchScene
   public static final int LAUNCH_SCENE_QR_CODE_FROM_LONG_PRESS = 1012;
   public static final int LAUNCH_SCENE_QR_CODE_FROM_SCAN = 1011;
   public static final int LAUNCH_SCENE_QUN = 2010;
+  public static final int LAUNCH_SCENE_QUN_AIO_CM_SHOW_GAME_BATTLE_STORE = 4019;
   public static final int LAUNCH_SCENE_QZONE = 2009;
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_NINE = 2092;
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_THIRD = 2090;
@@ -141,7 +144,7 @@ public class LaunchScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.api.LaunchScene
  * JD-Core Version:    0.7.0.1
  */

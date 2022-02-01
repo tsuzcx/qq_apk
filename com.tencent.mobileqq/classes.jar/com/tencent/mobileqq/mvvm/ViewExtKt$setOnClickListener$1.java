@@ -10,8 +10,6 @@ import kotlin.jvm.functions.Function0;
 final class ViewExtKt$setOnClickListener$1
   implements View.OnClickListener
 {
-  ViewExtKt$setOnClickListener$1(Function0 paramFunction0) {}
-  
   public final void onClick(View paramView)
   {
     this.a.invoke();
@@ -20,7 +18,7 @@ final class ViewExtKt$setOnClickListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mvvm.ViewExtKt.setOnClickListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,12 @@ class DeviceFriendListOpenFrame$2
   {
     int j = this.this$0.a.getChildCount();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      DeviceFriendListOpenFrame.ViewHolder localViewHolder = (DeviceFriendListOpenFrame.ViewHolder)this.this$0.a.getChildAt(i).getTag();
+      if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.b)))
       {
-        DeviceFriendListOpenFrame.ViewHolder localViewHolder = (DeviceFriendListOpenFrame.ViewHolder)this.this$0.a.getChildAt(i).getTag();
-        if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.b))) {
-          localViewHolder.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-      }
-      else
-      {
+        localViewHolder.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
         return;
       }
       i += 1;
@@ -33,7 +28,7 @@ class DeviceFriendListOpenFrame$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.DeviceFriendListOpenFrame.2
  * JD-Core Version:    0.7.0.1
  */

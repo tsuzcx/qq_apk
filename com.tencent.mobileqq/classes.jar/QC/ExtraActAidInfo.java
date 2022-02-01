@@ -35,26 +35,31 @@ public final class ExtraActAidInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.androidAid != null) {
-      paramJceOutputStream.write(this.androidAid, 1);
+    String str = this.androidAid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.iosAid != null) {
-      paramJceOutputStream.write(this.iosAid, 2);
+    str = this.iosAid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.payType != null) {
-      paramJceOutputStream.write(this.payType, 3);
+    str = this.payType;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.month != null) {
-      paramJceOutputStream.write(this.month, 4);
+    str = this.month;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.errMsg != null) {
-      paramJceOutputStream.write(this.errMsg, 5);
+    str = this.errMsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.ExtraActAidInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -67,7 +67,12 @@ public class TVKVideoInfo$Section
   public void setIndexName(String paramString, int paramInt)
   {
     paramString = paramString.replace(".mp4", "");
-    this.indexName = (paramString + "." + paramInt + ".mp4");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(".mp4");
+    this.indexName = localStringBuilder.toString();
   }
   
   public void setSize(int paramInt)
@@ -92,7 +97,7 @@ public class TVKVideoInfo$Section
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKVideoInfo.Section
  * JD-Core Version:    0.7.0.1
  */

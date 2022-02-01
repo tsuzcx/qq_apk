@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:padding="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<androidx.appcompat.view.menu.ListMenuItemView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="196.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/fq6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
-    <View android:id="@id/ad2" android:background="@drawable/ag7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/fui" android:background="@color/bz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
-    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/ks0" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="03:22" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/ca5" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:text="@string/qz2" android:maxLines="2" />
-    <RelativeLayout android:id="@id/fq8" android:visibility="gone" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
-        <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/fq9" android:paddingTop="1.0dip" android:clickable="false" android:layout_marginTop="7.0dip" android:layout_marginRight="6.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerInParent="true" style="@style/z8" />
-    </RelativeLayout>
-</RelativeLayout>
+    <ImageView android:id="@id/n5t" android:background="@drawable/a4v" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" />
+    <LinearLayout android:id="@id/content" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="?a4e" style="@style/a3w">
+        <RelativeLayout android:layout_gravity="center_vertical" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/a3x">
+            <TextView android:textAppearance="?a9d" android:ellipsize="marquee" android:id="@id/title" android:fadingEdge="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentTop="true" style="@style/a40" />
+            <TextView android:textAppearance="?a9k" android:id="@id/o8c" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/title" style="@style/a40" />
+        </RelativeLayout>
+        <ImageView android:layout_gravity="center" android:id="@id/o_x" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" style="@style/a3z" />
+    </LinearLayout>
+</androidx.appcompat.view.menu.ListMenuItemView>

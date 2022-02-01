@@ -26,21 +26,31 @@ public class WakeListenerState
   
   public boolean a(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    VoiceAssistantStateMachine localVoiceAssistantStateMachine;
+    if (i != 2)
     {
-    }
-    do
-    {
-      do
+      if (i == 5)
       {
-        return super.a(paramMessage);
-      } while (this.a == null);
-      this.a.c(3);
-      this.a.a(paramMessage);
-      return true;
-    } while (this.a == null);
-    this.a.c(6);
-    return true;
+        localVoiceAssistantStateMachine = this.a;
+        if (localVoiceAssistantStateMachine != null)
+        {
+          localVoiceAssistantStateMachine.c(6);
+          return true;
+        }
+      }
+    }
+    else
+    {
+      localVoiceAssistantStateMachine = this.a;
+      if (localVoiceAssistantStateMachine != null)
+      {
+        localVoiceAssistantStateMachine.c(3);
+        this.a.a(paramMessage);
+        return true;
+      }
+    }
+    return super.a(paramMessage);
   }
   
   public void b()
@@ -51,7 +61,7 @@ public class WakeListenerState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.WakeListenerState
  * JD-Core Version:    0.7.0.1
  */

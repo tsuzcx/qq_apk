@@ -29,18 +29,21 @@ public final class HttpUrl$Builder
   private Builder addPathSegments(String paramString, boolean paramBoolean)
   {
     int i = 0;
-    int j = Util.delimiterOffset(paramString, i, paramString.length(), "/\\");
-    if (j < paramString.length()) {}
-    for (boolean bool = true;; bool = false)
+    int j;
+    do
     {
+      j = Util.delimiterOffset(paramString, i, paramString.length(), "/\\");
+      boolean bool;
+      if (j < paramString.length()) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       push(paramString, i, j, bool, paramBoolean);
       j += 1;
       i = j;
-      if (j <= paramString.length()) {
-        break;
-      }
-      return this;
-    }
+    } while (j <= paramString.length());
+    return this;
   }
   
   private static String canonicalizeHost(String paramString, int paramInt1, int paramInt2)
@@ -74,9 +77,11 @@ public final class HttpUrl$Builder
   
   private void pop()
   {
-    if ((((String)this.encodedPathSegments.remove(this.encodedPathSegments.size() - 1)).isEmpty()) && (!this.encodedPathSegments.isEmpty()))
+    List localList = this.encodedPathSegments;
+    if ((((String)localList.remove(localList.size() - 1)).isEmpty()) && (!this.encodedPathSegments.isEmpty()))
     {
-      this.encodedPathSegments.set(this.encodedPathSegments.size() - 1, "");
+      localList = this.encodedPathSegments;
+      localList.set(localList.size() - 1, "");
       return;
     }
     this.encodedPathSegments.add("");
@@ -84,80 +89,79 @@ public final class HttpUrl$Builder
   
   private static int portColonOffset(String paramString, int paramInt1, int paramInt2)
   {
-    int i;
-    int j;
-    if (paramInt1 < paramInt2)
+    while (paramInt1 < paramInt2)
     {
-      i = paramInt1;
-      j = paramInt1;
-    }
-    switch (paramString.charAt(paramInt1))
-    {
-    default: 
-      i = paramInt1;
-    case '[': 
-      for (;;)
+      int j = paramString.charAt(paramInt1);
+      if (j != 58)
       {
-        paramInt1 = i + 1;
-        break;
-        do
+        int i = paramInt1;
+        if (j != 91)
         {
-          paramInt1 = i + 1;
           i = paramInt1;
-          if (paramInt1 >= paramInt2) {
-            break;
-          }
+        }
+        else
+        {
+          do
+          {
+            paramInt1 = i + 1;
+            i = paramInt1;
+            if (paramInt1 >= paramInt2) {
+              break;
+            }
+            i = paramInt1;
+          } while (paramString.charAt(paramInt1) != ']');
           i = paramInt1;
-        } while (paramString.charAt(paramInt1) != ']');
-        i = paramInt1;
+        }
+        paramInt1 = i + 1;
       }
-      j = paramInt2;
+      else
+      {
+        return paramInt1;
+      }
     }
-    return j;
+    return paramInt2;
   }
   
   private void push(String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     paramString = HttpUrl.canonicalize(paramString, paramInt1, paramInt2, " \"<>^`{}|/\\?#", paramBoolean2, false, false, true, null);
-    if (isDot(paramString)) {}
-    for (;;)
-    {
+    if (isDot(paramString)) {
       return;
-      if (isDotDot(paramString))
-      {
-        pop();
-        return;
-      }
-      if (((String)this.encodedPathSegments.get(this.encodedPathSegments.size() - 1)).isEmpty()) {
-        this.encodedPathSegments.set(this.encodedPathSegments.size() - 1, paramString);
-      }
-      while (paramBoolean1)
-      {
-        this.encodedPathSegments.add("");
-        return;
-        this.encodedPathSegments.add(paramString);
-      }
+    }
+    if (isDotDot(paramString))
+    {
+      pop();
+      return;
+    }
+    List localList = this.encodedPathSegments;
+    if (((String)localList.get(localList.size() - 1)).isEmpty())
+    {
+      localList = this.encodedPathSegments;
+      localList.set(localList.size() - 1, paramString);
+    }
+    else
+    {
+      this.encodedPathSegments.add(paramString);
+    }
+    if (paramBoolean1) {
+      this.encodedPathSegments.add("");
     }
   }
   
   private void removeAllCanonicalQueryParameters(String paramString)
   {
     int i = this.encodedQueryNamesAndValues.size() - 2;
-    for (;;)
+    while (i >= 0)
     {
-      if (i >= 0)
+      if (paramString.equals(this.encodedQueryNamesAndValues.get(i)))
       {
-        if (paramString.equals(this.encodedQueryNamesAndValues.get(i)))
+        this.encodedQueryNamesAndValues.remove(i + 1);
+        this.encodedQueryNamesAndValues.remove(i);
+        if (this.encodedQueryNamesAndValues.isEmpty())
         {
-          this.encodedQueryNamesAndValues.remove(i + 1);
-          this.encodedQueryNamesAndValues.remove(i);
-          if (this.encodedQueryNamesAndValues.isEmpty()) {
-            this.encodedQueryNamesAndValues = null;
-          }
+          this.encodedQueryNamesAndValues = null;
+          return;
         }
-      }
-      else {
-        return;
       }
       i -= 2;
     }
@@ -169,62 +173,102 @@ public final class HttpUrl$Builder
       return;
     }
     int i = paramString.charAt(paramInt1);
-    if ((i == 47) || (i == 92))
+    if ((i != 47) && (i != 92))
+    {
+      List localList = this.encodedPathSegments;
+      localList.set(localList.size() - 1, "");
+    }
+    else
     {
       this.encodedPathSegments.clear();
       this.encodedPathSegments.add("");
-      paramInt1 += 1;
-      label52:
-      if (paramInt1 >= paramInt2) {
-        break label127;
-      }
-      i = Util.delimiterOffset(paramString, paramInt1, paramInt2, "/\\");
-      if (i >= paramInt2) {
-        break label129;
-      }
+      break label134;
     }
-    label129:
-    for (boolean bool = true;; bool = false)
+    while (paramInt1 < paramInt2)
     {
+      i = Util.delimiterOffset(paramString, paramInt1, paramInt2, "/\\");
+      boolean bool;
+      if (i < paramInt2) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       push(paramString, paramInt1, i, bool, true);
       paramInt1 = i;
-      if (bool) {
-        paramInt1 = i + 1;
+      if (bool)
+      {
+        paramInt1 = i;
+        label134:
+        paramInt1 += 1;
       }
-      break label52;
-      this.encodedPathSegments.set(this.encodedPathSegments.size() - 1, "");
-      break label52;
-      label127:
-      break;
     }
   }
   
   private static int schemeDelimiterOffset(String paramString, int paramInt1, int paramInt2)
   {
-    if (paramInt2 - paramInt1 < 2) {}
+    if (paramInt2 - paramInt1 < 2) {
+      return -1;
+    }
+    int j = paramString.charAt(paramInt1);
     int i;
-    label115:
-    do
+    if (j >= 97)
     {
-      for (;;)
-      {
+      i = paramInt1;
+      if (j <= 122) {}
+    }
+    else
+    {
+      if (j < 65) {
+        break label153;
+      }
+      i = paramInt1;
+      if (j > 90) {
         return -1;
-        i = paramString.charAt(paramInt1);
-        if (((i >= 97) && (i <= 122)) || ((i >= 65) && (i <= 90)))
+      }
+    }
+    for (;;)
+    {
+      paramInt1 = i + 1;
+      if (paramInt1 >= paramInt2) {
+        break label153;
+      }
+      j = paramString.charAt(paramInt1);
+      if (j >= 97)
+      {
+        i = paramInt1;
+        if (j <= 122) {}
+      }
+      else if (j >= 65)
+      {
+        i = paramInt1;
+        if (j <= 90) {}
+      }
+      else if (j >= 48)
+      {
+        i = paramInt1;
+        if (j <= 57) {}
+      }
+      else
+      {
+        i = paramInt1;
+        if (j != 43)
         {
-          paramInt1 += 1;
-          while (paramInt1 < paramInt2)
+          i = paramInt1;
+          if (j != 45)
           {
-            i = paramString.charAt(paramInt1);
-            if (((i < 97) || (i > 122)) && ((i < 65) || (i > 90)) && ((i < 48) || (i > 57)) && (i != 43) && (i != 45) && (i != 46)) {
-              break label115;
+            if (j != 46) {
+              break;
             }
-            paramInt1 += 1;
+            i = paramInt1;
           }
         }
       }
-    } while (i != 58);
-    return paramInt1;
+    }
+    if (j == 58) {
+      return paramInt1;
+    }
+    label153:
+    return -1;
   }
   
   private static int slashCount(String paramString, int paramInt1, int paramInt2)
@@ -244,164 +288,187 @@ public final class HttpUrl$Builder
   
   public Builder addEncodedPathSegment(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("encodedPathSegment == null");
+    if (paramString != null)
+    {
+      push(paramString, 0, paramString.length(), false, true);
+      return this;
     }
-    push(paramString, 0, paramString.length(), false, true);
-    return this;
+    throw new NullPointerException("encodedPathSegment == null");
   }
   
   public Builder addEncodedPathSegments(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("encodedPathSegments == null");
+    if (paramString != null) {
+      return addPathSegments(paramString, true);
     }
-    return addPathSegments(paramString, true);
+    throw new NullPointerException("encodedPathSegments == null");
   }
   
   public Builder addEncodedQueryParameter(String paramString1, @Nullable String paramString2)
   {
-    if (paramString1 == null) {
-      throw new NullPointerException("encodedName == null");
-    }
-    if (this.encodedQueryNamesAndValues == null) {
-      this.encodedQueryNamesAndValues = new ArrayList();
-    }
-    this.encodedQueryNamesAndValues.add(HttpUrl.canonicalize(paramString1, " \"'<>#&=", true, false, true, true));
-    List localList = this.encodedQueryNamesAndValues;
-    if (paramString2 != null) {}
-    for (paramString1 = HttpUrl.canonicalize(paramString2, " \"'<>#&=", true, false, true, true);; paramString1 = null)
+    if (paramString1 != null)
     {
+      if (this.encodedQueryNamesAndValues == null) {
+        this.encodedQueryNamesAndValues = new ArrayList();
+      }
+      this.encodedQueryNamesAndValues.add(HttpUrl.canonicalize(paramString1, " \"'<>#&=", true, false, true, true));
+      List localList = this.encodedQueryNamesAndValues;
+      if (paramString2 != null) {
+        paramString1 = HttpUrl.canonicalize(paramString2, " \"'<>#&=", true, false, true, true);
+      } else {
+        paramString1 = null;
+      }
       localList.add(paramString1);
       return this;
     }
+    throw new NullPointerException("encodedName == null");
   }
   
   public Builder addPathSegment(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("pathSegment == null");
+    if (paramString != null)
+    {
+      push(paramString, 0, paramString.length(), false, false);
+      return this;
     }
-    push(paramString, 0, paramString.length(), false, false);
-    return this;
+    throw new NullPointerException("pathSegment == null");
   }
   
   public Builder addPathSegments(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("pathSegments == null");
+    if (paramString != null) {
+      return addPathSegments(paramString, false);
     }
-    return addPathSegments(paramString, false);
+    throw new NullPointerException("pathSegments == null");
   }
   
   public Builder addQueryParameter(String paramString1, @Nullable String paramString2)
   {
-    if (paramString1 == null) {
-      throw new NullPointerException("name == null");
-    }
-    if (this.encodedQueryNamesAndValues == null) {
-      this.encodedQueryNamesAndValues = new ArrayList();
-    }
-    this.encodedQueryNamesAndValues.add(HttpUrl.canonicalize(paramString1, " !\"#$&'(),/:;<=>?@[]\\^`{|}~", false, false, true, true));
-    List localList = this.encodedQueryNamesAndValues;
-    if (paramString2 != null) {}
-    for (paramString1 = HttpUrl.canonicalize(paramString2, " !\"#$&'(),/:;<=>?@[]\\^`{|}~", false, false, true, true);; paramString1 = null)
+    if (paramString1 != null)
     {
+      if (this.encodedQueryNamesAndValues == null) {
+        this.encodedQueryNamesAndValues = new ArrayList();
+      }
+      this.encodedQueryNamesAndValues.add(HttpUrl.canonicalize(paramString1, " !\"#$&'(),/:;<=>?@[]\\^`{|}~", false, false, true, true));
+      List localList = this.encodedQueryNamesAndValues;
+      if (paramString2 != null) {
+        paramString1 = HttpUrl.canonicalize(paramString2, " !\"#$&'(),/:;<=>?@[]\\^`{|}~", false, false, true, true);
+      } else {
+        paramString1 = null;
+      }
       localList.add(paramString1);
       return this;
     }
+    throw new NullPointerException("name == null");
   }
   
   public HttpUrl build()
   {
-    if (this.scheme == null) {
-      throw new IllegalStateException("scheme == null");
-    }
-    if (this.host == null) {
+    if (this.scheme != null)
+    {
+      if (this.host != null) {
+        return new HttpUrl(this);
+      }
       throw new IllegalStateException("host == null");
     }
-    return new HttpUrl(this);
+    throw new IllegalStateException("scheme == null");
   }
   
   int effectivePort()
   {
-    if (this.port != -1) {
-      return this.port;
+    int i = this.port;
+    if (i != -1) {
+      return i;
     }
     return HttpUrl.defaultPort(this.scheme);
   }
   
   public Builder encodedFragment(@Nullable String paramString)
   {
-    if (paramString != null) {}
-    for (paramString = HttpUrl.canonicalize(paramString, "", true, false, false, false);; paramString = null)
-    {
-      this.encodedFragment = paramString;
-      return this;
+    if (paramString != null) {
+      paramString = HttpUrl.canonicalize(paramString, "", true, false, false, false);
+    } else {
+      paramString = null;
     }
+    this.encodedFragment = paramString;
+    return this;
   }
   
   public Builder encodedPassword(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("encodedPassword == null");
+    if (paramString != null)
+    {
+      this.encodedPassword = HttpUrl.canonicalize(paramString, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true);
+      return this;
     }
-    this.encodedPassword = HttpUrl.canonicalize(paramString, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true);
-    return this;
+    throw new NullPointerException("encodedPassword == null");
   }
   
   public Builder encodedPath(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("encodedPath == null");
+    if (paramString != null)
+    {
+      if (paramString.startsWith("/"))
+      {
+        resolvePath(paramString, 0, paramString.length());
+        return this;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unexpected encodedPath: ");
+      localStringBuilder.append(paramString);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    if (!paramString.startsWith("/")) {
-      throw new IllegalArgumentException("unexpected encodedPath: " + paramString);
-    }
-    resolvePath(paramString, 0, paramString.length());
-    return this;
+    throw new NullPointerException("encodedPath == null");
   }
   
   public Builder encodedQuery(@Nullable String paramString)
   {
-    if (paramString != null) {}
-    for (paramString = HttpUrl.queryStringToNamesAndValues(HttpUrl.canonicalize(paramString, " \"'<>#", true, false, true, true));; paramString = null)
-    {
-      this.encodedQueryNamesAndValues = paramString;
-      return this;
+    if (paramString != null) {
+      paramString = HttpUrl.queryStringToNamesAndValues(HttpUrl.canonicalize(paramString, " \"'<>#", true, false, true, true));
+    } else {
+      paramString = null;
     }
+    this.encodedQueryNamesAndValues = paramString;
+    return this;
   }
   
   public Builder encodedUsername(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("encodedUsername == null");
+    if (paramString != null)
+    {
+      this.encodedUsername = HttpUrl.canonicalize(paramString, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true);
+      return this;
     }
-    this.encodedUsername = HttpUrl.canonicalize(paramString, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true);
-    return this;
+    throw new NullPointerException("encodedUsername == null");
   }
   
   public Builder fragment(@Nullable String paramString)
   {
-    if (paramString != null) {}
-    for (paramString = HttpUrl.canonicalize(paramString, "", false, false, false, false);; paramString = null)
-    {
-      this.encodedFragment = paramString;
-      return this;
+    if (paramString != null) {
+      paramString = HttpUrl.canonicalize(paramString, "", false, false, false, false);
+    } else {
+      paramString = null;
     }
+    this.encodedFragment = paramString;
+    return this;
   }
   
   public Builder host(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("host == null");
+    if (paramString != null)
+    {
+      Object localObject = canonicalizeHost(paramString, 0, paramString.length());
+      if (localObject != null)
+      {
+        this.host = ((String)localObject);
+        return this;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("unexpected host: ");
+      ((StringBuilder)localObject).append(paramString);
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
-    String str = canonicalizeHost(paramString, 0, paramString.length());
-    if (str == null) {
-      throw new IllegalArgumentException("unexpected host: " + paramString);
-    }
-    this.host = str;
-    return this;
+    throw new NullPointerException("host == null");
   }
   
   Builder parse(@Nullable HttpUrl paramHttpUrl, String paramString)
@@ -409,114 +476,38 @@ public final class HttpUrl$Builder
     int i = Util.skipLeadingAsciiWhitespace(paramString, 0, paramString.length());
     int i1 = Util.skipTrailingAsciiWhitespace(paramString, i, paramString.length());
     int j = schemeDelimiterOffset(paramString, i, i1);
-    label67:
-    int k;
-    label119:
-    int n;
-    if (j != -1) {
+    if (j != -1)
+    {
       if (paramString.regionMatches(true, i, "https:", 0, 6))
       {
         this.scheme = "https";
-        i += "https:".length();
-        m = slashCount(paramString, i, i1);
-        if ((m < 2) && (paramHttpUrl != null) && (paramHttpUrl.scheme.equals(this.scheme))) {
-          break label780;
-        }
-        k = 0;
-        j = 0;
-        m = i + m;
-        i = k;
-        k = m;
-        n = Util.delimiterOffset(paramString, k, i1, "@/\\?#");
-        if (n == i1) {
-          break label330;
-        }
+        i += 6;
       }
-    }
-    label330:
-    for (int m = paramString.charAt(n);; m = -1) {
-      switch (m)
+      else if (paramString.regionMatches(true, i, "http:", 0, 5))
       {
-      default: 
-        m = i;
-        i = k;
-        k = m;
-        m = k;
-        k = i;
-        i = m;
-        break label119;
-        if (paramString.regionMatches(true, i, "http:", 0, 5))
-        {
-          this.scheme = "http";
-          i += "http:".length();
-          break label67;
-        }
-        throw new IllegalArgumentException("Expected URL scheme 'http' or 'https' but was '" + paramString.substring(0, j) + "'");
-        if (paramHttpUrl != null)
-        {
-          this.scheme = paramHttpUrl.scheme;
-          break label67;
-        }
-        throw new IllegalArgumentException("Expected URL scheme 'http' or 'https' but no colon was found");
+        this.scheme = "http";
+        i += 5;
       }
-    }
-    if (i == 0)
-    {
-      m = Util.delimiterOffset(paramString, k, n, ':');
-      String str = HttpUrl.canonicalize(paramString, k, m, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true, null);
-      paramHttpUrl = str;
-      if (j != 0) {
-        paramHttpUrl = this.encodedUsername + "%40" + str;
-      }
-      this.encodedUsername = paramHttpUrl;
-      if (m != n)
+      else
       {
-        i = 1;
-        this.encodedPassword = HttpUrl.canonicalize(paramString, m + 1, n, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true, null);
-      }
-      j = 1;
-    }
-    for (;;)
-    {
-      m = n + 1;
-      k = i;
-      i = m;
-      break;
-      this.encodedPassword = (this.encodedPassword + "%40" + HttpUrl.canonicalize(paramString, k, n, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true, null));
-    }
-    i = portColonOffset(paramString, k, n);
-    if (i + 1 < n)
-    {
-      this.host = canonicalizeHost(paramString, k, i);
-      this.port = parsePort(paramString, i + 1, n);
-      if (this.port == -1) {
-        throw new IllegalArgumentException("Invalid URL port: \"" + paramString.substring(i + 1, n) + '"');
+        paramHttpUrl = new StringBuilder();
+        paramHttpUrl.append("Expected URL scheme 'http' or 'https' but was '");
+        paramHttpUrl.append(paramString.substring(0, j));
+        paramHttpUrl.append("'");
+        throw new IllegalArgumentException(paramHttpUrl.toString());
       }
     }
     else
     {
-      this.host = canonicalizeHost(paramString, k, i);
-      this.port = HttpUrl.defaultPort(this.scheme);
-    }
-    if (this.host == null) {
-      throw new IllegalArgumentException("Invalid URL host: \"" + paramString.substring(k, i) + '"');
-    }
-    j = n;
-    i = Util.delimiterOffset(paramString, j, i1, "?#");
-    resolvePath(paramString, j, i);
-    if ((i < i1) && (paramString.charAt(i) == '?'))
-    {
-      j = Util.delimiterOffset(paramString, i, i1, '#');
-      this.encodedQueryNamesAndValues = HttpUrl.queryStringToNamesAndValues(HttpUrl.canonicalize(paramString, i + 1, j, " \"'<>#", true, false, true, true, null));
-      i = j;
-    }
-    for (;;)
-    {
-      if ((i < i1) && (paramString.charAt(i) == '#')) {
-        this.encodedFragment = HttpUrl.canonicalize(paramString, i + 1, i1, "", true, false, false, false, null);
+      if (paramHttpUrl == null) {
+        break label854;
       }
-      return this;
-      label780:
+      this.scheme = paramHttpUrl.scheme;
+    }
+    j = slashCount(paramString, i, i1);
+    int m;
+    if ((j < 2) && (paramHttpUrl != null) && (paramHttpUrl.scheme.equals(this.scheme)))
+    {
       this.encodedUsername = paramHttpUrl.encodedUsername();
       this.encodedPassword = paramHttpUrl.encodedPassword();
       this.host = paramHttpUrl.host;
@@ -526,96 +517,211 @@ public final class HttpUrl$Builder
       if (i != i1)
       {
         j = i;
-        if (paramString.charAt(i) != '#') {
+        if (paramString.charAt(i) != '#') {}
+      }
+      else
+      {
+        encodedQuery(paramHttpUrl.encodedQuery());
+        j = i;
+      }
+    }
+    else
+    {
+      m = i + j;
+      i = 0;
+      j = 0;
+      for (;;)
+      {
+        k = Util.delimiterOffset(paramString, m, i1, "@/\\?#");
+        int n;
+        if (k != i1) {
+          n = paramString.charAt(k);
+        } else {
+          n = -1;
+        }
+        if ((n == -1) || (n == 35) || (n == 47) || (n == 92) || (n == 63)) {
           break;
         }
+        if (n == 64)
+        {
+          if (i == 0)
+          {
+            int i2 = Util.delimiterOffset(paramString, m, k, ':');
+            n = k;
+            String str = HttpUrl.canonicalize(paramString, m, i2, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true, null);
+            paramHttpUrl = str;
+            if (j != 0)
+            {
+              paramHttpUrl = new StringBuilder();
+              paramHttpUrl.append(this.encodedUsername);
+              paramHttpUrl.append("%40");
+              paramHttpUrl.append(str);
+              paramHttpUrl = paramHttpUrl.toString();
+            }
+            this.encodedUsername = paramHttpUrl;
+            if (i2 != n)
+            {
+              this.encodedPassword = HttpUrl.canonicalize(paramString, i2 + 1, n, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true, null);
+              i = 1;
+            }
+            j = 1;
+          }
+          else
+          {
+            paramHttpUrl = new StringBuilder();
+            paramHttpUrl.append(this.encodedPassword);
+            paramHttpUrl.append("%40");
+            paramHttpUrl.append(HttpUrl.canonicalize(paramString, m, k, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true, null));
+            this.encodedPassword = paramHttpUrl.toString();
+          }
+          m = k + 1;
+        }
       }
-      encodedQuery(paramHttpUrl.encodedQuery());
-      j = i;
-      break;
+      i = portColonOffset(paramString, m, k);
+      j = i + 1;
+      if (j < k)
+      {
+        this.host = canonicalizeHost(paramString, m, i);
+        this.port = parsePort(paramString, j, k);
+        if (this.port == -1)
+        {
+          paramHttpUrl = new StringBuilder();
+          paramHttpUrl.append("Invalid URL port: \"");
+          paramHttpUrl.append(paramString.substring(j, k));
+          paramHttpUrl.append('"');
+          throw new IllegalArgumentException(paramHttpUrl.toString());
+        }
+      }
+      else
+      {
+        this.host = canonicalizeHost(paramString, m, i);
+        this.port = HttpUrl.defaultPort(this.scheme);
+      }
+      if (this.host == null) {
+        break label807;
+      }
+      j = k;
+    }
+    int k = Util.delimiterOffset(paramString, j, i1, "?#");
+    resolvePath(paramString, j, k);
+    i = k;
+    if (k < i1)
+    {
+      i = k;
+      if (paramString.charAt(k) == '?')
+      {
+        i = Util.delimiterOffset(paramString, k, i1, '#');
+        this.encodedQueryNamesAndValues = HttpUrl.queryStringToNamesAndValues(HttpUrl.canonicalize(paramString, k + 1, i, " \"'<>#", true, false, true, true, null));
+      }
+    }
+    if ((i < i1) && (paramString.charAt(i) == '#')) {
+      this.encodedFragment = HttpUrl.canonicalize(paramString, 1 + i, i1, "", true, false, false, false, null);
+    }
+    return this;
+    label807:
+    paramHttpUrl = new StringBuilder();
+    paramHttpUrl.append("Invalid URL host: \"");
+    paramHttpUrl.append(paramString.substring(m, i));
+    paramHttpUrl.append('"');
+    throw new IllegalArgumentException(paramHttpUrl.toString());
+    label854:
+    paramHttpUrl = new IllegalArgumentException("Expected URL scheme 'http' or 'https' but no colon was found");
+    for (;;)
+    {
+      throw paramHttpUrl;
     }
   }
   
   public Builder password(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("password == null");
+    if (paramString != null)
+    {
+      this.encodedPassword = HttpUrl.canonicalize(paramString, " \"':;<=>@[]^`{}|/\\?#", false, false, false, true);
+      return this;
     }
-    this.encodedPassword = HttpUrl.canonicalize(paramString, " \"':;<=>@[]^`{}|/\\?#", false, false, false, true);
-    return this;
+    throw new NullPointerException("password == null");
   }
   
   public Builder port(int paramInt)
   {
-    if ((paramInt <= 0) || (paramInt > 65535)) {
-      throw new IllegalArgumentException("unexpected port: " + paramInt);
+    if ((paramInt > 0) && (paramInt <= 65535))
+    {
+      this.port = paramInt;
+      return this;
     }
-    this.port = paramInt;
-    return this;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unexpected port: ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public Builder query(@Nullable String paramString)
   {
-    if (paramString != null) {}
-    for (paramString = HttpUrl.queryStringToNamesAndValues(HttpUrl.canonicalize(paramString, " \"'<>#", false, false, true, true));; paramString = null)
-    {
-      this.encodedQueryNamesAndValues = paramString;
-      return this;
+    if (paramString != null) {
+      paramString = HttpUrl.queryStringToNamesAndValues(HttpUrl.canonicalize(paramString, " \"'<>#", false, false, true, true));
+    } else {
+      paramString = null;
     }
+    this.encodedQueryNamesAndValues = paramString;
+    return this;
   }
   
   Builder reencodeForUri()
   {
-    int j = this.encodedPathSegments.size();
+    int k = this.encodedPathSegments.size();
+    int j = 0;
     int i = 0;
-    String str;
-    while (i < j)
+    while (i < k)
     {
-      str = (String)this.encodedPathSegments.get(i);
-      this.encodedPathSegments.set(i, HttpUrl.canonicalize(str, "[]", true, true, false, true));
+      localObject = (String)this.encodedPathSegments.get(i);
+      this.encodedPathSegments.set(i, HttpUrl.canonicalize((String)localObject, "[]", true, true, false, true));
       i += 1;
     }
-    if (this.encodedQueryNamesAndValues != null)
+    Object localObject = this.encodedQueryNamesAndValues;
+    if (localObject != null)
     {
-      j = this.encodedQueryNamesAndValues.size();
-      i = 0;
-      while (i < j)
+      k = ((List)localObject).size();
+      i = j;
+      while (i < k)
       {
-        str = (String)this.encodedQueryNamesAndValues.get(i);
-        if (str != null) {
-          this.encodedQueryNamesAndValues.set(i, HttpUrl.canonicalize(str, "\\^`{|}", true, true, true, true));
+        localObject = (String)this.encodedQueryNamesAndValues.get(i);
+        if (localObject != null) {
+          this.encodedQueryNamesAndValues.set(i, HttpUrl.canonicalize((String)localObject, "\\^`{|}", true, true, true, true));
         }
         i += 1;
       }
     }
-    if (this.encodedFragment != null) {
-      this.encodedFragment = HttpUrl.canonicalize(this.encodedFragment, " \"#<>\\^`{|}", true, true, false, false);
+    localObject = this.encodedFragment;
+    if (localObject != null) {
+      this.encodedFragment = HttpUrl.canonicalize((String)localObject, " \"#<>\\^`{|}", true, true, false, false);
     }
     return this;
   }
   
   public Builder removeAllEncodedQueryParameters(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("encodedName == null");
-    }
-    if (this.encodedQueryNamesAndValues == null) {
+    if (paramString != null)
+    {
+      if (this.encodedQueryNamesAndValues == null) {
+        return this;
+      }
+      removeAllCanonicalQueryParameters(HttpUrl.canonicalize(paramString, " \"'<>#&=", true, false, true, true));
       return this;
     }
-    removeAllCanonicalQueryParameters(HttpUrl.canonicalize(paramString, " \"'<>#&=", true, false, true, true));
-    return this;
+    throw new NullPointerException("encodedName == null");
   }
   
   public Builder removeAllQueryParameters(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("name == null");
-    }
-    if (this.encodedQueryNamesAndValues == null) {
+    if (paramString != null)
+    {
+      if (this.encodedQueryNamesAndValues == null) {
+        return this;
+      }
+      removeAllCanonicalQueryParameters(HttpUrl.canonicalize(paramString, " !\"#$&'(),/:;<=>?@[]\\^`{|}~", false, false, true, true));
       return this;
     }
-    removeAllCanonicalQueryParameters(HttpUrl.canonicalize(paramString, " !\"#$&'(),/:;<=>?@[]\\^`{|}~", false, false, true, true));
-    return this;
+    throw new NullPointerException("name == null");
   }
   
   public Builder removePathSegment(int paramInt)
@@ -629,33 +735,41 @@ public final class HttpUrl$Builder
   
   public Builder scheme(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("scheme == null");
-    }
-    if (paramString.equalsIgnoreCase("http"))
+    if (paramString != null)
     {
-      this.scheme = "http";
-      return this;
+      if (paramString.equalsIgnoreCase("http"))
+      {
+        this.scheme = "http";
+        return this;
+      }
+      if (paramString.equalsIgnoreCase("https"))
+      {
+        this.scheme = "https";
+        return this;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unexpected scheme: ");
+      localStringBuilder.append(paramString);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    if (paramString.equalsIgnoreCase("https"))
-    {
-      this.scheme = "https";
-      return this;
-    }
-    throw new IllegalArgumentException("unexpected scheme: " + paramString);
+    throw new NullPointerException("scheme == null");
   }
   
   public Builder setEncodedPathSegment(int paramInt, String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("encodedPathSegment == null");
+    if (paramString != null)
+    {
+      Object localObject = HttpUrl.canonicalize(paramString, 0, paramString.length(), " \"<>^`{}|/\\?#", true, false, false, true, null);
+      this.encodedPathSegments.set(paramInt, localObject);
+      if ((!isDot((String)localObject)) && (!isDotDot((String)localObject))) {
+        return this;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("unexpected path segment: ");
+      ((StringBuilder)localObject).append(paramString);
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
-    String str = HttpUrl.canonicalize(paramString, 0, paramString.length(), " \"<>^`{}|/\\?#", true, false, false, true, null);
-    this.encodedPathSegments.set(paramInt, str);
-    if ((isDot(str)) || (isDotDot(str))) {
-      throw new IllegalArgumentException("unexpected path segment: " + paramString);
-    }
-    return this;
+    throw new NullPointerException("encodedPathSegment == null");
   }
   
   public Builder setEncodedQueryParameter(String paramString1, @Nullable String paramString2)
@@ -667,15 +781,20 @@ public final class HttpUrl$Builder
   
   public Builder setPathSegment(int paramInt, String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("pathSegment == null");
+    if (paramString != null)
+    {
+      Object localObject = HttpUrl.canonicalize(paramString, 0, paramString.length(), " \"<>^`{}|/\\?#", false, false, false, true, null);
+      if ((!isDot((String)localObject)) && (!isDotDot((String)localObject)))
+      {
+        this.encodedPathSegments.set(paramInt, localObject);
+        return this;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("unexpected path segment: ");
+      ((StringBuilder)localObject).append(paramString);
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
-    String str = HttpUrl.canonicalize(paramString, 0, paramString.length(), " \"<>^`{}|/\\?#", false, false, false, true, null);
-    if ((isDot(str)) || (isDotDot(str))) {
-      throw new IllegalArgumentException("unexpected path segment: " + paramString);
-    }
-    this.encodedPathSegments.set(paramInt, str);
-    return this;
+    throw new NullPointerException("pathSegment == null");
   }
   
   public Builder setQueryParameter(String paramString1, @Nullable String paramString2)
@@ -688,72 +807,76 @@ public final class HttpUrl$Builder
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.scheme != null)
+    String str = this.scheme;
+    if (str != null)
     {
-      localStringBuilder.append(this.scheme);
+      localStringBuilder.append(str);
       localStringBuilder.append("://");
-      if ((!this.encodedUsername.isEmpty()) || (!this.encodedPassword.isEmpty()))
+    }
+    else
+    {
+      localStringBuilder.append("//");
+    }
+    if ((!this.encodedUsername.isEmpty()) || (!this.encodedPassword.isEmpty()))
+    {
+      localStringBuilder.append(this.encodedUsername);
+      if (!this.encodedPassword.isEmpty())
       {
-        localStringBuilder.append(this.encodedUsername);
-        if (!this.encodedPassword.isEmpty())
-        {
-          localStringBuilder.append(':');
-          localStringBuilder.append(this.encodedPassword);
-        }
-        localStringBuilder.append('@');
+        localStringBuilder.append(':');
+        localStringBuilder.append(this.encodedPassword);
       }
-      if (this.host != null)
+      localStringBuilder.append('@');
+    }
+    str = this.host;
+    if (str != null) {
+      if (str.indexOf(':') != -1)
       {
-        if (this.host.indexOf(':') == -1) {
-          break label257;
-        }
         localStringBuilder.append('[');
         localStringBuilder.append(this.host);
         localStringBuilder.append(']');
       }
+      else
+      {
+        localStringBuilder.append(this.host);
+      }
     }
-    for (;;)
+    if ((this.port != -1) || (this.scheme != null))
     {
-      if ((this.port != -1) || (this.scheme != null))
+      int i = effectivePort();
+      str = this.scheme;
+      if ((str == null) || (i != HttpUrl.defaultPort(str)))
       {
-        int i = effectivePort();
-        if ((this.scheme == null) || (i != HttpUrl.defaultPort(this.scheme)))
-        {
-          localStringBuilder.append(':');
-          localStringBuilder.append(i);
-        }
+        localStringBuilder.append(':');
+        localStringBuilder.append(i);
       }
-      HttpUrl.pathSegmentsToString(localStringBuilder, this.encodedPathSegments);
-      if (this.encodedQueryNamesAndValues != null)
-      {
-        localStringBuilder.append('?');
-        HttpUrl.namesAndValuesToQueryString(localStringBuilder, this.encodedQueryNamesAndValues);
-      }
-      if (this.encodedFragment != null)
-      {
-        localStringBuilder.append('#');
-        localStringBuilder.append(this.encodedFragment);
-      }
-      return localStringBuilder.toString();
-      localStringBuilder.append("//");
-      break;
-      label257:
-      localStringBuilder.append(this.host);
     }
+    HttpUrl.pathSegmentsToString(localStringBuilder, this.encodedPathSegments);
+    if (this.encodedQueryNamesAndValues != null)
+    {
+      localStringBuilder.append('?');
+      HttpUrl.namesAndValuesToQueryString(localStringBuilder, this.encodedQueryNamesAndValues);
+    }
+    if (this.encodedFragment != null)
+    {
+      localStringBuilder.append('#');
+      localStringBuilder.append(this.encodedFragment);
+    }
+    return localStringBuilder.toString();
   }
   
   public Builder username(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("username == null");
+    if (paramString != null)
+    {
+      this.encodedUsername = HttpUrl.canonicalize(paramString, " \"':;<=>@[]^`{}|/\\?#", false, false, false, true);
+      return this;
     }
-    this.encodedUsername = HttpUrl.canonicalize(paramString, " \"':;<=>@[]^`{}|/\\?#", false, false, false, true);
-    return this;
+    throw new NullPointerException("username == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.HttpUrl.Builder
  * JD-Core Version:    0.7.0.1
  */

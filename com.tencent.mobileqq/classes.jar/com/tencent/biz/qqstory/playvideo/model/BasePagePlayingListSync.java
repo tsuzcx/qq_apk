@@ -19,7 +19,7 @@ public abstract class BasePagePlayingListSync
   
   protected abstract void a();
   
-  public void a(int paramInt)
+  protected void a(int paramInt)
   {
     if ((paramInt == -1) && (!this.jdField_a_of_type_Boolean)) {
       a();
@@ -31,21 +31,23 @@ public abstract class BasePagePlayingListSync
   
   protected boolean a(int paramInt)
   {
-    if (this.b) {
-      SLog.b("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "not preload for end");
-    }
-    do
+    if (this.b)
     {
+      SLog.b("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "not preload for end");
       return false;
-      if (this.c)
-      {
-        SLog.b("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "can't preload for loading");
-        return false;
-      }
-      paramInt = this.jdField_a_of_type_Int - paramInt;
-    } while (paramInt >= 2);
-    SLog.a("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "can preload for left size:%d, preload size:%d", Integer.valueOf(paramInt), Integer.valueOf(2));
-    return true;
+    }
+    if (this.c)
+    {
+      SLog.b("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "can't preload for loading");
+      return false;
+    }
+    paramInt = this.jdField_a_of_type_Int - paramInt;
+    if (paramInt < 2)
+    {
+      SLog.a("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "can preload for left size:%d, preload size:%d", Integer.valueOf(paramInt), Integer.valueOf(2));
+      return true;
+    }
+    return false;
   }
   
   protected abstract void b();
@@ -57,7 +59,7 @@ public abstract class BasePagePlayingListSync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.BasePagePlayingListSync
  * JD-Core Version:    0.7.0.1
  */

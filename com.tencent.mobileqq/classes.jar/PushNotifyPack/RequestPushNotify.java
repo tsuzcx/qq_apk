@@ -78,21 +78,25 @@ public final class RequestPushNotify
     paramJceOutputStream.write(this.cType, 1);
     paramJceOutputStream.write(this.strService, 2);
     paramJceOutputStream.write(this.strCmd, 3);
-    if (this.vNotifyCookie != null) {
-      paramJceOutputStream.write(this.vNotifyCookie, 4);
+    Object localObject = this.vNotifyCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 4);
     }
     paramJceOutputStream.write(this.usMsgType, 5);
     paramJceOutputStream.write(this.wUserActive, 6);
     paramJceOutputStream.write(this.wGeneralFlag, 7);
     paramJceOutputStream.write(this.lBindedUin, 8);
-    if (this.stMsgInfo != null) {
-      paramJceOutputStream.write(this.stMsgInfo, 9);
+    localObject = this.stMsgInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.msg_ctrl_buf != null) {
-      paramJceOutputStream.write(this.msg_ctrl_buf, 10);
+    localObject = this.msg_ctrl_buf;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.bytes_server_buf != null) {
-      paramJceOutputStream.write(this.bytes_server_buf, 11);
+    localObject = this.bytes_server_buf;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 11);
     }
     paramJceOutputStream.write(this.ping_flag, 12);
     paramJceOutputStream.write(this.svrip, 13);
@@ -100,7 +104,7 @@ public final class RequestPushNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PushNotifyPack.RequestPushNotify
  * JD-Core Version:    0.7.0.1
  */

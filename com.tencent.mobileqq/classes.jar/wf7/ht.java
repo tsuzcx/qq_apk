@@ -26,18 +26,24 @@ public class ht
   
   public void onConnectionFailed(int paramInt)
   {
-    if (paramInt == -9) {
-      if ((this.ua == 2) || (this.ua == 3))
+    if (paramInt == -9)
+    {
+      paramInt = this.ua;
+      if ((paramInt == 2) || (paramInt == 3))
       {
         this.ua = 4;
         this.tY.b(this.tZ);
       }
     }
-    while ((this.ua != 1) && (this.ua != 2) && (this.ua != 3)) {
-      return;
+    else
+    {
+      paramInt = this.ua;
+      if ((paramInt == 1) || (paramInt == 2) || (paramInt == 3))
+      {
+        this.ua = 4;
+        this.tY.b(this.tZ);
+      }
     }
-    this.ua = 4;
-    this.tY.b(this.tZ);
   }
   
   public void onConnectionStart(TMSDKFreeWifiInfo paramTMSDKFreeWifiInfo)
@@ -85,7 +91,7 @@ public class ht
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ht
  * JD-Core Version:    0.7.0.1
  */

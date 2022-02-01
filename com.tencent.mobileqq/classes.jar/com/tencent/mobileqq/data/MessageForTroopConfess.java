@@ -40,20 +40,20 @@ public class MessageForTroopConfess
   
   public long getConfessToUin()
   {
-    long l = 0L;
-    if (this.mTroopConfessMsg != null) {
-      l = this.mTroopConfessMsg.getConfessToUin();
+    TroopConfessMsg localTroopConfessMsg = this.mTroopConfessMsg;
+    if (localTroopConfessMsg != null) {
+      return localTroopConfessMsg.getConfessToUin();
     }
-    return l;
+    return 0L;
   }
   
   public int getConfessTopicId()
   {
-    int i = 0;
-    if (this.mTroopConfessMsg != null) {
-      i = this.mTroopConfessMsg.getConfessTopicId();
+    TroopConfessMsg localTroopConfessMsg = this.mTroopConfessMsg;
+    if (localTroopConfessMsg != null) {
+      return localTroopConfessMsg.getConfessTopicId();
     }
-    return i;
+    return 0;
   }
   
   public boolean needVipBubble()
@@ -61,29 +61,32 @@ public class MessageForTroopConfess
     return false;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.mTroopConfessMsg != null) {}
-    try
-    {
-      this.msgData = this.mTroopConfessMsg.getBytes();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.msg.TroopConfess", 2, "convert TroopConfessItem to byte array failed", localException);
+    TroopConfessMsg localTroopConfessMsg = this.mTroopConfessMsg;
+    if (localTroopConfessMsg != null) {
+      try
+      {
+        this.msgData = localTroopConfessMsg.getBytes();
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.msg.TroopConfess", 2, "convert TroopConfessItem to byte array failed", localException);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopConfess
  * JD-Core Version:    0.7.0.1
  */

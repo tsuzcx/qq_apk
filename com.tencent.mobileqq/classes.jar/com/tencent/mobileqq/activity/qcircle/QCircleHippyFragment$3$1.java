@@ -21,19 +21,23 @@ class QCircleHippyFragment$3$1
     {
       paramDialogInterface = new HippyMap();
       paramDialogInterface.pushString("result", "call refresh hippy from native");
-      ((EventDispatcher)this.a.this$0.mHippyQQEngine.getHippyEngine().getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("refreshData", paramDialogInterface);
+      ((EventDispatcher)QCircleHippyFragment.a(this.a.this$0).getHippyEngine().getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("refreshData", paramDialogInterface);
       RFLog.d("QCircleHippyFragment", RFLog.USR, "notify hippy refresh page data success");
       return;
     }
     catch (Exception paramDialogInterface)
     {
-      RFLog.e("QCircleHippyFragment", RFLog.USR, "refresh hippy page fail!exception: " + paramDialogInterface.getMessage());
+      paramInt = RFLog.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refresh hippy page fail!exception: ");
+      localStringBuilder.append(paramDialogInterface.getMessage());
+      RFLog.e("QCircleHippyFragment", paramInt, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.QCircleHippyFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

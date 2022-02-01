@@ -63,15 +63,36 @@ public class WTogetherRoom
   {
     if ((this.jdField_b_of_type_Int != paramInt1) || (this.jdField_c_of_type_Int != paramInt2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.room", 2, "updateRoomState, cur[" + this.jdField_b_of_type_Int + "," + this.jdField_c_of_type_Int + "], to[" + paramInt1 + "," + paramInt2 + "], from[" + paramString + "]");
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateRoomState, cur[");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject).append(",");
+        ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+        ((StringBuilder)localObject).append("], to[");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append(",");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append("], from[");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("WTogether.room", 2, ((StringBuilder)localObject).toString());
       }
       if (this.jdField_b_of_type_Int != paramInt1)
       {
-        SessionInfo localSessionInfo = SessionMgr.a().a();
-        localSessionInfo.a(paramInt1, paramString);
-        if ((localSessionInfo.b() != this.jdField_b_of_type_Long) && (QLog.isColorLevel())) {
-          QLog.i("WTogether.room", 2, "updateRoomState error, not same id. [" + localSessionInfo.b() + ", " + this.jdField_b_of_type_Long + "]");
+        localObject = SessionMgr.a().a();
+        ((SessionInfo)localObject).a(paramInt1, paramString);
+        if ((((SessionInfo)localObject).b() != this.jdField_b_of_type_Long) && (QLog.isColorLevel()))
+        {
+          paramString = new StringBuilder();
+          paramString.append("updateRoomState error, not same id. [");
+          paramString.append(((SessionInfo)localObject).b());
+          paramString.append(", ");
+          paramString.append(this.jdField_b_of_type_Long);
+          paramString.append("]");
+          QLog.i("WTogether.room", 2, paramString.toString());
         }
       }
       this.jdField_b_of_type_Int = paramInt1;
@@ -86,9 +107,16 @@ public class WTogetherRoom
     }
     if ((!e()) && ((!TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramString)) || (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))))
     {
-      this.jdField_c_of_type_JavaLangString = SessionMgr.a().a().e;
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.room", 2, "setRoomAdmin, uin[" + paramString + "], nick[" + this.jdField_c_of_type_JavaLangString + "]");
+      this.jdField_c_of_type_JavaLangString = SessionMgr.a().a().d;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setRoomAdmin, uin[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("], nick[");
+        localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+        localStringBuilder.append("]");
+        QLog.i("WTogether.room", 2, localStringBuilder.toString());
       }
     }
   }
@@ -96,8 +124,15 @@ public class WTogetherRoom
   public void a(boolean paramBoolean, String paramString)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    if (QLog.isDevelopLevel()) {
-      QLog.i("WTogether.room", 4, "setUpdateFromAdminFlag, flag[" + paramBoolean + "], from[" + paramString + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setUpdateFromAdminFlag, flag[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], from[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.room", 4, localStringBuilder.toString());
     }
   }
   
@@ -113,34 +148,42 @@ public class WTogetherRoom
   
   public boolean a(WTogetherCommon.RoomInfo paramRoomInfo, String paramString)
   {
-    if ((paramRoomInfo == null) || (this.jdField_b_of_type_Long != paramRoomInfo.roomid.get())) {
-      return false;
-    }
-    long l2 = this.jdField_a_of_type_Long;
-    a(String.valueOf(paramRoomInfo.owner_uin.get()));
-    long l1;
-    Object localObject;
-    if (paramRoomInfo.seq.has())
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (paramRoomInfo != null)
     {
-      l1 = paramRoomInfo.seq.get();
+      if (this.jdField_b_of_type_Long != paramRoomInfo.roomid.get()) {
+        return false;
+      }
+      long l2 = this.jdField_a_of_type_Long;
+      a(String.valueOf(paramRoomInfo.owner_uin.get()));
+      long l1;
+      if (paramRoomInfo.seq.has()) {
+        l1 = paramRoomInfo.seq.get();
+      } else {
+        l1 = l2;
+      }
       this.jdField_a_of_type_Long = l1;
       this.jdField_a_of_type_JavaUtilList = paramRoomInfo.users.get();
       this.jdField_c_of_type_Long = paramRoomInfo.room_create_ts.get();
       if ((!e()) && (l2 != this.jdField_a_of_type_Long)) {
         a(true, paramString);
       }
-      localObject = (WTogetherCommon.VideoInfoRsp)paramRoomInfo.video_info_rsp.get();
-      if ((this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo != null) && (this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.a((WTogetherCommon.VideoInfoRsp)localObject))) {
-        break label301;
+      Object localObject = (WTogetherCommon.VideoInfoRsp)paramRoomInfo.video_info_rsp.get();
+      WTogetherPlayInfo localWTogetherPlayInfo = this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo;
+      if (localWTogetherPlayInfo != null)
+      {
+        bool1 = bool2;
+        if (localWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.a((WTogetherCommon.VideoInfoRsp)localObject)) {}
       }
-      if (this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo != null) {
-        b(true, paramString);
+      else
+      {
+        if (this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo != null) {
+          b(true, paramString);
+        }
+        this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo = new WTogetherPlayInfo(new WTFileInfo((WTogetherCommon.VideoInfoRsp)localObject));
+        bool1 = true;
       }
-      this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo = new WTogetherPlayInfo(new WTFileInfo((WTogetherCommon.VideoInfoRsp)localObject));
-    }
-    label301:
-    for (boolean bool = true;; bool = false)
-    {
       localObject = null;
       if (paramRoomInfo.player_status.has()) {
         localObject = (WTogetherCommon.PlayerStatus)paramRoomInfo.player_status.get();
@@ -153,10 +196,8 @@ public class WTogetherRoom
         this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_b_of_type_Int = ((WTogetherCommon.PlayerStatus)localObject).left_time.get();
       }
       this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_b_of_type_Long = (paramRoomInfo.last_update_time.get() * 1000L);
-      return bool;
-      l1 = l2;
-      break;
     }
+    return bool1;
   }
   
   public int b()
@@ -180,16 +221,28 @@ public class WTogetherRoom
     a(false, "clearRoom");
     b(false, "clearRoom");
     this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("WTogether.room", 2, "clearRoom, from[" + paramString + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearRoom, from[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.room", 2, localStringBuilder.toString());
     }
   }
   
   public void b(boolean paramBoolean, String paramString)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
-    if (QLog.isDevelopLevel()) {
-      QLog.i("WTogether.room", 4, "setChangePlayFileFlag, isChangePlayFile[" + paramBoolean + "], from[" + paramString + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setChangePlayFileFlag, isChangePlayFile[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], from[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.room", 4, localStringBuilder.toString());
     }
   }
   
@@ -200,48 +253,66 @@ public class WTogetherRoom
   
   public boolean c()
   {
-    if (e()) {
+    if (e())
+    {
       if ((this.jdField_b_of_type_Int != 5) || (this.jdField_c_of_type_Int != 1)) {}
     }
-    while ((this.jdField_b_of_type_Int == 6) && (this.jdField_c_of_type_Int == 1))
-    {
-      return true;
-      return false;
+    else {
+      while ((this.jdField_b_of_type_Int == 6) && (this.jdField_c_of_type_Int == 1)) {
+        return true;
+      }
     }
     return false;
   }
   
   public boolean d()
   {
-    if (e()) {
-      switch (this.jdField_b_of_type_Int)
+    int i;
+    if (e())
+    {
+      i = this.jdField_b_of_type_Int;
+      if (i == 0) {
+        break label95;
+      }
+      if (i != 1)
       {
+        if (i == 5) {
+          if (this.jdField_c_of_type_Int != 1) {
+            break label95;
+          }
+        }
+      }
+      else {
+        if (this.jdField_c_of_type_Int != 2) {
+          break label95;
+        }
       }
     }
-    do
+    else
     {
-      do
+      i = this.jdField_b_of_type_Int;
+      if (i == 0) {
+        break label95;
+      }
+      if (i == 2) {
+        break label84;
+      }
+      if (i == 6) {
+        break label73;
+      }
+    }
+    label73:
+    label84:
+    while (this.jdField_c_of_type_Int == 2) {
+      for (;;)
       {
-        do
-        {
-          do
-          {
-            return true;
-            return false;
-          } while (this.jdField_c_of_type_Int == 2);
-          return false;
-        } while (this.jdField_c_of_type_Int == 1);
-        return false;
-        switch (this.jdField_b_of_type_Int)
-        {
-        default: 
-          return true;
-        case 0: 
-          return false;
+        return true;
+        if (this.jdField_c_of_type_Int != 1) {
+          break;
         }
-      } while (this.jdField_c_of_type_Int == 2);
-      return false;
-    } while (this.jdField_c_of_type_Int == 1);
+      }
+    }
+    label95:
     return false;
   }
   
@@ -252,12 +323,32 @@ public class WTogetherRoom
   
   public String toString()
   {
-    return "WTRoomInfo{type: " + this.jdField_a_of_type_Int + ", roomId: " + this.jdField_b_of_type_Long + ", roomState: " + this.jdField_b_of_type_Int + ", roomSubState: " + this.jdField_c_of_type_Int + ", selfUin: " + this.jdField_a_of_type_JavaLangString + ", roomAdmin: " + this.jdField_b_of_type_JavaLangString + ", roomCreateTime: " + this.jdField_c_of_type_Long + ", playInfo: " + this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo + ", updateFromAdminFlag: " + this.jdField_a_of_type_Boolean + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WTRoomInfo{type: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", roomId: ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", roomState: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", roomSubState: ");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", selfUin: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", roomAdmin: ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", roomCreateTime: ");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", playInfo: ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo);
+    localStringBuilder.append(", updateFromAdminFlag: ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.data.WTogetherRoom
  * JD-Core Version:    0.7.0.1
  */

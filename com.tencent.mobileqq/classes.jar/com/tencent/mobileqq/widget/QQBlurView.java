@@ -41,15 +41,23 @@ public class QQBlurView
   
   private void e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQBlurView", 2, "init() called " + Integer.toHexString(System.identityHashCode(this)), new Throwable());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init() called ");
+      localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+      QLog.d("QQBlurView", 2, localStringBuilder.toString(), new Throwable());
     }
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQBlurView", 2, "onResume() called " + Integer.toHexString(System.identityHashCode(this)));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResume() called ");
+      localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+      QLog.d("QQBlurView", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.b();
   }
@@ -86,8 +94,12 @@ public class QQBlurView
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQBlurView", 2, "onPause() called" + Integer.toHexString(System.identityHashCode(this)));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPause() called");
+      localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+      QLog.d("QQBlurView", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a();
   }
@@ -104,8 +116,12 @@ public class QQBlurView
   
   public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQBlurView", 2, "onDestroy() called" + Integer.toHexString(System.identityHashCode(this)));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDestroy() called");
+      localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+      QLog.d("QQBlurView", 2, localStringBuilder.toString());
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.c();
@@ -118,8 +134,12 @@ public class QQBlurView
   
   public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQBlurView", 2, "onCreate() called " + Integer.toHexString(System.identityHashCode(this)));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCreate() called ");
+      localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+      QLog.d("QQBlurView", 2, localStringBuilder.toString());
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
     getViewTreeObserver().addOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
@@ -128,7 +148,7 @@ public class QQBlurView
     }
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     if (!a()) {
       super.dispatchDraw(paramCanvas);
@@ -145,11 +165,15 @@ public class QQBlurView
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.d();
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (QLog.isColorLevel()) {
-      QLog.d("QQBlurView", 2, "onAttachedToWindow() called " + Integer.toHexString(System.identityHashCode(this)));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAttachedToWindow() called ");
+      localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+      QLog.d("QQBlurView", 2, localStringBuilder.toString());
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
     getViewTreeObserver().addOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
@@ -158,11 +182,15 @@ public class QQBlurView
     }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (QLog.isColorLevel()) {
-      QLog.d("QQBlurView", 2, "onDetachedFromWindow() called " + Integer.toHexString(System.identityHashCode(this)));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDetachedFromWindow() called ");
+      localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+      QLog.d("QQBlurView", 2, localStringBuilder.toString());
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur != null) {
@@ -170,7 +198,7 @@ public class QQBlurView
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (!a())
     {
@@ -179,13 +207,11 @@ public class QQBlurView
         setBackgroundDrawable(null);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a(this, paramCanvas);
         super.onDraw(paramCanvas);
+        return;
       }
+      setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      super.onDraw(paramCanvas);
     }
-    else {
-      return;
-    }
-    setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    super.onDraw(paramCanvas);
   }
   
   public void setDebugTag(String paramString)
@@ -210,7 +236,7 @@ public class QQBlurView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQBlurView
  * JD-Core Version:    0.7.0.1
  */

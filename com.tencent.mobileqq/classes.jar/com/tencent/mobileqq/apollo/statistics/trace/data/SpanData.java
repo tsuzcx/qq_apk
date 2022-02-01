@@ -1,0 +1,77 @@
+package com.tencent.mobileqq.apollo.statistics.trace.data;
+
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.BlockingQueue;
+
+public class SpanData
+{
+  public int a;
+  public long a;
+  public ResultData a;
+  public Map<Integer, Long> a;
+  public BlockingQueue<AnnotationData> a;
+  public boolean a;
+  public long b;
+  public long c;
+  
+  public SpanData(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{");
+    localStringBuilder.append("spanId:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",result:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData);
+    Iterator localIterator;
+    if (this.jdField_a_of_type_JavaUtilMap != null)
+    {
+      localStringBuilder.append(",extra:[");
+      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder.append("{");
+          localStringBuilder.append(localEntry.getKey());
+          localStringBuilder.append(",");
+          localStringBuilder.append(localEntry.getValue());
+          localStringBuilder.append("}");
+        }
+        else
+        {
+          localStringBuilder.append("{");
+          localStringBuilder.append(localEntry.getKey());
+          localStringBuilder.append("}");
+        }
+      }
+      localStringBuilder.append("]");
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
+    {
+      localStringBuilder.append(",anno:[");
+      localIterator = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((AnnotationData)localIterator.next()).toString());
+      }
+      localStringBuilder.append("]");
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.data.SpanData
+ * JD-Core Version:    0.7.0.1
+ */

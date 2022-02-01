@@ -7,8 +7,8 @@ import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.SignatureManager;
 import com.tencent.mobileqq.vas.SignatureTemplateConfig;
-import com.tencent.mobileqq.vas.VasMonitorDT;
 import com.tencent.mobileqq.vas.VasMonitorHandler;
+import com.tencent.mobileqq.vas.util.VasMonitorDT;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qqsharpP.QQSharpPUtil;
@@ -41,31 +41,49 @@ public class SignatureTemplateDownloader
   public File downLoadImg(AppRuntime paramAppRuntime, String paramString1, String paramString2, boolean paramBoolean)
   {
     String str = getSigTplUri(Integer.parseInt(paramString1), paramString2);
-    paramString2 = new File(SignatureTemplateConfig.a(paramString1, paramString2));
-    DownloadTask localDownloadTask = new DownloadTask(str, paramString2);
-    localDownloadTask.k = paramBoolean;
-    if (paramAppRuntime != null)
-    {
-      if (DownloaderFactory.a(localDownloadTask, paramAppRuntime) != 0) {
-        break label102;
+    Object localObject = new File(SignatureTemplateConfig.a(paramString1, paramString2));
+    paramString2 = new DownloadTask(str, (File)localObject);
+    paramString2.k = paramBoolean;
+    if (paramAppRuntime != null) {
+      if (DownloaderFactory.a(paramString2, paramAppRuntime) == 0)
+      {
+        if ((((File)localObject).exists()) && (!SignatureManager.a(((File)localObject).getAbsolutePath())))
+        {
+          ((File)localObject).delete();
+        }
+        else
+        {
+          if (SharpPUtil.isSharpPFile((File)localObject)) {
+            return QQSharpPUtil.a((File)localObject);
+          }
+          return localObject;
+        }
       }
-      if ((!paramString2.exists()) || (SignatureManager.a(paramString2.getAbsolutePath()))) {
-        break label88;
+      else
+      {
+        paramAppRuntime = new StringBuilder();
+        paramAppRuntime.append("");
+        paramAppRuntime.append(paramString2.a);
+        paramAppRuntime = paramAppRuntime.toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("error code = ");
+        ((StringBuilder)localObject).append(paramString2.a);
+        ((StringBuilder)localObject).append(" errorMsg = ");
+        ((StringBuilder)localObject).append(paramString2.b);
+        ((StringBuilder)localObject).append("url = ");
+        ((StringBuilder)localObject).append(str);
+        VasMonitorHandler.a(null, "individual_v2_signature_download_fail", paramAppRuntime, ((StringBuilder)localObject).toString(), null, 0.0F);
+        paramAppRuntime = new StringBuilder();
+        paramAppRuntime.append("tlpId:");
+        paramAppRuntime.append(paramString1);
+        paramAppRuntime.append(" errCode:");
+        paramAppRuntime.append(paramString2.a);
+        paramAppRuntime.append(" errMsg:");
+        paramAppRuntime.append(paramString2.b);
+        VasMonitorDT.a("individual_v2_signature_download_fail", paramAppRuntime.toString());
       }
-      paramString2.delete();
     }
-    for (;;)
-    {
-      return new File(AppConstants.SDCARD_PATH);
-      label88:
-      if (SharpPUtil.isSharpPFile(paramString2)) {
-        return QQSharpPUtil.a(paramString2);
-      }
-      return paramString2;
-      label102:
-      VasMonitorHandler.a(null, "individual_v2_signature_download_fail", "" + localDownloadTask.a, "error code = " + localDownloadTask.a + " errorMsg = " + localDownloadTask.b + "url = " + str, null, 0.0F);
-      VasMonitorDT.a("individual_v2_signature_download_fail", "tlpId:" + paramString1 + " errCode:" + localDownloadTask.a + " errMsg:" + localDownloadTask.b);
-    }
+    return new File(AppConstants.SDCARD_PATH);
   }
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -98,7 +116,7 @@ public class SignatureTemplateDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.SignatureTemplateDownloader
  * JD-Core Version:    0.7.0.1
  */

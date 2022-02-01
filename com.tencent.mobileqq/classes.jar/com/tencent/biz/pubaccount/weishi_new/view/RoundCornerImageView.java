@@ -6,9 +6,15 @@ import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.Path.FillType;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.mobileqq.kandian.base.image.ImageRequest;
+import com.tencent.mobileqq.kandian.base.image.imageloader.DrawableController;
+import com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView;
+import java.net.URL;
 
 public class RoundCornerImageView
   extends KandianUrlImageView
@@ -16,6 +22,7 @@ public class RoundCornerImageView
   private int jdField_a_of_type_Int = 0;
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private String jdField_a_of_type_JavaLangString;
   private int b = 0;
   
   public RoundCornerImageView(Context paramContext)
@@ -33,64 +40,71 @@ public class RoundCornerImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onAttachedToWindow()
   {
-    int i;
+    super.onAttachedToWindow();
+    ImageRequest localImageRequest = this.mController.a();
+    if (((localImageRequest == null) || (localImageRequest.a)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      setImageSrc(WeishiUtils.a(this.jdField_a_of_type_JavaLangString));
+    }
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
     if (this.jdField_a_of_type_Int > 0)
     {
       this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      i = getWidth() - getPaddingLeft() - getPaddingRight();
-      int j = getHeight();
+      int j = getWidth() - getPaddingLeft() - getPaddingRight();
+      int i = getHeight();
       int k = getPaddingTop();
       int m = getPaddingBottom();
       this.jdField_a_of_type_AndroidGraphicsRectF.left = getPaddingLeft();
       this.jdField_a_of_type_AndroidGraphicsRectF.top = getPaddingTop();
-      this.jdField_a_of_type_AndroidGraphicsRectF.right = (getPaddingLeft() + i);
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (j - k - m + getPaddingTop());
-      if (this.jdField_a_of_type_Int <= 0) {
-        break label173;
-      }
+      this.jdField_a_of_type_AndroidGraphicsRectF.right = (getPaddingLeft() + j);
+      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (getPaddingTop() + (i - k - m));
       i = this.jdField_a_of_type_Int;
-      if (this.b != 0) {
-        break label183;
+      if (i <= 0) {
+        i = j / 30;
       }
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, i, i, Path.Direction.CCW);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-      try
+      j = this.b;
+      Path localPath;
+      RectF localRectF;
+      float f;
+      if (j == 0)
       {
-        super.onDraw(paramCanvas);
-        return;
-      }
-      catch (Exception paramCanvas)
-      {
-        label173:
-        label183:
-        float f1;
-        float f2;
-        float f3;
-        float f4;
-        Path localPath;
-        RectF localRectF;
-        Path.Direction localDirection;
-        WSLog.d("RoundCornerImageView", paramCanvas.getMessage());
-      }
-      i /= 30;
-      break;
-      if (this.b == 1)
-      {
-        f1 = i;
-        f2 = i;
-        f3 = i;
-        f4 = i;
         localPath = this.jdField_a_of_type_AndroidGraphicsPath;
         localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-        localDirection = Path.Direction.CCW;
-        localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
+        f = i;
+        localPath.addRoundRect(localRectF, f, f, Path.Direction.CCW);
       }
+      else if (j == 1)
+      {
+        f = i;
+        localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+        localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+        Path.Direction localDirection = Path.Direction.CCW;
+        localPath.addRoundRect(localRectF, new float[] { f, f, f, f, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
+      }
+      this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
+      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    }
+    try
+    {
+      super.onDraw(paramCanvas);
+      return;
+    }
+    catch (Exception paramCanvas)
+    {
+      WSLog.d("RoundCornerImageView", paramCanvas.getMessage());
+    }
+  }
+  
+  public void onFinishTemporaryDetach()
+  {
+    super.onFinishTemporaryDetach();
+    ImageRequest localImageRequest = this.mController.a();
+    if (((localImageRequest == null) || (localImageRequest.a)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      setImageSrc(WeishiUtils.a(this.jdField_a_of_type_JavaLangString));
     }
   }
   
@@ -107,10 +121,46 @@ public class RoundCornerImageView
     this.b = paramInt2;
     this.jdField_a_of_type_Int = paramInt1;
   }
+  
+  public void setImageDrawable(Drawable paramDrawable, boolean paramBoolean)
+  {
+    int i = this.mController.a().d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cacheType=");
+    localStringBuilder.append(i);
+    WSLog.b("RoundCornerImageView", localStringBuilder.toString());
+    if ((i != 0) && (i != 3))
+    {
+      setImageDrawable(paramDrawable);
+      return;
+    }
+    super.setImageDrawable(paramDrawable, paramBoolean);
+  }
+  
+  public void setImageSrc(URL paramURL)
+  {
+    if (paramURL == null)
+    {
+      setImageResource(2131165740);
+      return;
+    }
+    String str1 = paramURL.toString();
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    if ((str2 != null) && (str2.equalsIgnoreCase(str1)))
+    {
+      WSLog.f("RoundCornerImageView", "[RoundCornerImageView.java][setImageSrc], current path unchanged ");
+    }
+    else
+    {
+      this.jdField_a_of_type_JavaLangString = str1;
+      WSLog.f("RoundCornerImageView", "[RoundCornerImageView.java][setImageSrc], current path changed ");
+    }
+    setImage(paramURL);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView
  * JD-Core Version:    0.7.0.1
  */

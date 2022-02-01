@@ -9,6 +9,7 @@ import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.webviewplugin.FamousSpaceActivityInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,22 +17,13 @@ public class QZoneFamousUserHomeJsPlugin
   extends WebViewPlugin
 {
   public static String KEY_NICKNAME = "key_nickname";
-  public static String KEY_UIN;
-  public static String OPENREDPOCKET;
+  public static String KEY_UIN = "key_uin";
+  public static String OPENREDPOCKET = "openRedPocket";
   public static String PKG_NAME = "QZFamousUserHome";
-  public static String REFER;
-  public static String USERALBUM;
-  public static String USERHOME;
+  public static String REFER = "famous";
+  public static String USERALBUM = "useralbum";
+  public static String USERHOME = "userhome";
   public static String USERMOODLIST = "usermoodlist";
-  
-  static
-  {
-    USERALBUM = "useralbum";
-    USERHOME = "userhome";
-    OPENREDPOCKET = "openRedPocket";
-    REFER = "famous";
-    KEY_UIN = "key_uin";
-  }
   
   public QZoneFamousUserHomeJsPlugin()
   {
@@ -45,8 +37,8 @@ public class QZoneFamousUserHomeJsPlugin
       long l = new JSONObject(paramVarArgs[0]).getLong("uin");
       paramVarArgs = new Intent();
       QzonePluginProxyActivity.setActivityNameToIntent(paramVarArgs, "com.qzone.album.business.albumlist.activity.QZonePersonalAlbumActivity");
-      paramVarArgs.putExtra("key_left_tab_title", this.mRuntime.a().getString(2131717404));
-      paramVarArgs.putExtra("key_right_tab_title", this.mRuntime.a().getString(2131717485));
+      paramVarArgs.putExtra("key_left_tab_title", this.mRuntime.a().getString(2131717063));
+      paramVarArgs.putExtra("key_right_tab_title", this.mRuntime.a().getString(2131717144));
       paramVarArgs.putExtra("key_album_owner_uin", l);
       paramVarArgs.putExtra("key_selected_tab", 0);
       paramVarArgs.putExtra("refer", REFER);
@@ -63,58 +55,66 @@ public class QZoneFamousUserHomeJsPlugin
   {
     for (;;)
     {
-      Object localObject;
-      int i;
-      int j;
-      String str;
-      Activity localActivity;
       try
       {
         localObject = new JSONObject(paramVarArgs[0]);
         long l = ((JSONObject)localObject).getLong("uin");
-        if (!((JSONObject)localObject).has("actiontype")) {
-          break label362;
-        }
-        i = ((JSONObject)localObject).getInt("actiontype");
-        if (!((JSONObject)localObject).has("actionurl")) {
-          break label367;
-        }
-        paramVarArgs = ((JSONObject)localObject).optString("actionurl");
-        if (!((JSONObject)localObject).has("cover_type")) {
-          break label373;
-        }
-        j = ((JSONObject)localObject).getInt("cover_type");
-        if (!((JSONObject)localObject).has("action_url")) {
-          break label378;
-        }
-        str = ((JSONObject)localObject).optString("action_url");
-        if (!((JSONObject)localObject).has("autoShowTimeLine")) {
-          break label385;
-        }
-        localObject = ((JSONObject)localObject).optString("autoShowTimeLine");
-        boolean bool = "1".equals(localObject);
-        localObject = new Intent();
-        localActivity = this.mRuntime.a();
-        if ((35 == i) && (paramVarArgs != null) && (paramVarArgs.length() > 0))
+        if (((JSONObject)localObject).has("actiontype"))
         {
-          if ((localActivity != null) && ((localActivity instanceof QZoneFamousUserHomeJsPlugin.FamousSpaceActivityInterface)) && (((QZoneFamousUserHomeJsPlugin.FamousSpaceActivityInterface)localActivity).isShowMyHomePage())) {
+          i = ((JSONObject)localObject).getInt("actiontype");
+          boolean bool = ((JSONObject)localObject).has("actionurl");
+          String str = "";
+          if (!bool) {
+            break label387;
+          }
+          paramVarArgs = ((JSONObject)localObject).optString("actionurl");
+          if (!((JSONObject)localObject).has("cover_type")) {
+            break label393;
+          }
+          j = ((JSONObject)localObject).getInt("cover_type");
+          if (((JSONObject)localObject).has("action_url")) {
+            str = ((JSONObject)localObject).optString("action_url");
+          }
+          if (!((JSONObject)localObject).has("autoShowTimeLine")) {
+            break label398;
+          }
+          localObject = ((JSONObject)localObject).optString("autoShowTimeLine");
+          bool = "1".equals(localObject);
+          Intent localIntent = new Intent();
+          Activity localActivity = this.mRuntime.a();
+          localObject = "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity";
+          if ((35 == i) && (paramVarArgs != null) && (paramVarArgs.length() > 0))
+          {
+            if ((localActivity != null) && ((localActivity instanceof FamousSpaceActivityInterface)) && (((FamousSpaceActivityInterface)localActivity).isShowMyHomePage())) {
+              return;
+            }
+            localIntent.putExtra("famous_space_webview_url", paramVarArgs);
+            paramVarArgs = (String[])localObject;
+          }
+          else if ((j == 35) && (str != null) && (str.length() > 0))
+          {
+            localIntent.putExtra("famous_space_webview_url", str);
+            paramVarArgs = (String[])localObject;
+          }
+          else
+          {
+            paramVarArgs = "com.qzone.homepage.ui.activity.QZoneUserHomeActivity";
+            localIntent.setFlags(67108864);
+          }
+          QzonePluginProxyActivity.setActivityNameToIntent(localIntent, paramVarArgs);
+          localIntent.putExtra("qqid", l);
+          localIntent.putExtra("refer", REFER);
+          localIntent.putExtra("autoShowTimeLine", bool);
+          if (bool) {
+            localIntent.setFlags(335544320);
+          }
+          if ((localActivity != null) && (((localActivity instanceof FamousSpaceActivityInterface)) || ((localActivity instanceof BasePluginActivity))))
+          {
+            localIntent.setClassName(localActivity, paramVarArgs);
+            localActivity.startActivity(localIntent);
             return;
           }
-          str = "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity";
-          ((Intent)localObject).putExtra("famous_space_webview_url", paramVarArgs);
-          paramVarArgs = str;
-          QzonePluginProxyActivity.setActivityNameToIntent((Intent)localObject, paramVarArgs);
-          ((Intent)localObject).putExtra("qqid", l);
-          ((Intent)localObject).putExtra("refer", REFER);
-          ((Intent)localObject).putExtra("autoShowTimeLine", bool);
-          if (bool) {
-            ((Intent)localObject).setFlags(335544320);
-          }
-          if ((localActivity == null) || ((!(localActivity instanceof QZoneFamousUserHomeJsPlugin.FamousSpaceActivityInterface)) && (!(localActivity instanceof BasePluginActivity)))) {
-            break label343;
-          }
-          ((Intent)localObject).setClassName(localActivity, paramVarArgs);
-          localActivity.startActivity((Intent)localObject);
+          QzonePluginProxyActivity.launchPluingActivityForResult(localActivity, this.mRuntime.a().getAccount(), localIntent, 0);
           return;
         }
       }
@@ -123,34 +123,16 @@ public class QZoneFamousUserHomeJsPlugin
         paramVarArgs.printStackTrace();
         return;
       }
-      if ((j == 35) && (str != null) && (str.length() > 0))
-      {
-        paramVarArgs = "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity";
-        ((Intent)localObject).putExtra("famous_space_webview_url", str);
-      }
-      else
-      {
-        paramVarArgs = "com.qzone.homepage.ui.activity.QZoneUserHomeActivity";
-        ((Intent)localObject).setFlags(67108864);
-        continue;
-        label343:
-        QzonePluginProxyActivity.launchPluingActivityForResult(localActivity, this.mRuntime.a().getAccount(), (Intent)localObject, 0);
-        return;
-        label362:
-        i = 0;
-        continue;
-        label367:
-        paramVarArgs = "";
-        continue;
-        label373:
-        j = 0;
-        continue;
-        label378:
-        str = "";
-        continue;
-        label385:
-        localObject = "0";
-      }
+      int i = 0;
+      continue;
+      label387:
+      paramVarArgs = "";
+      continue;
+      label393:
+      int j = 0;
+      continue;
+      label398:
+      Object localObject = "0";
     }
   }
   
@@ -177,63 +159,65 @@ public class QZoneFamousUserHomeJsPlugin
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (!PKG_NAME.equals(paramString2)) {}
-    do
-    {
+    if (!PKG_NAME.equals(paramString2)) {
       return false;
-      if (paramString3.equals(USERMOODLIST))
-      {
-        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-          openUserMoodList(paramVarArgs);
-        }
-        return true;
-      }
-      if (paramString3.equals(USERALBUM))
-      {
-        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-          openAlbum(paramVarArgs);
-        }
-        return true;
-      }
-      if (paramString3.equals(USERHOME))
-      {
-        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-          openUserHome(paramVarArgs);
-        }
-        return true;
-      }
-    } while (!paramString3.equals(OPENREDPOCKET));
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
-    try
+    }
+    if (paramString3.equals(USERMOODLIST))
     {
-      l = Long.parseLong(paramVarArgs[0]);
-      if (l != 0L)
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+        openUserMoodList(paramVarArgs);
+      }
+      return true;
+    }
+    if (paramString3.equals(USERALBUM))
+    {
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+        openAlbum(paramVarArgs);
+      }
+      return true;
+    }
+    if (paramString3.equals(USERHOME))
+    {
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+        openUserHome(paramVarArgs);
+      }
+      return true;
+    }
+    if (paramString3.equals(OPENREDPOCKET))
+    {
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
       {
-        this.mRuntime.a();
-        paramJsBridgeListener = new Intent();
-        paramJsBridgeListener.setAction("qzoneGrapRedPocket");
-        paramJsBridgeListener.putExtra("uin", l);
-        if (this.mRuntime.a() != null) {
-          this.mRuntime.a().sendBroadcast(paramJsBridgeListener);
+        long l;
+        try
+        {
+          l = Long.parseLong(paramVarArgs[0]);
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          l = 0L;
+        }
+        if (l != 0L)
+        {
+          this.mRuntime.a();
+          paramJsBridgeListener = new Intent();
+          paramJsBridgeListener.setAction("qzoneGrapRedPocket");
+          paramJsBridgeListener.putExtra("uin", l);
+          if (this.mRuntime.a() != null) {
+            this.mRuntime.a().sendBroadcast(paramJsBridgeListener);
+          }
         }
       }
       return true;
     }
-    catch (Exception paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        paramJsBridgeListener.printStackTrace();
-        long l = 0L;
-      }
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.famous.QZoneFamousUserHomeJsPlugin
  * JD-Core Version:    0.7.0.1
  */

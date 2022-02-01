@@ -9,15 +9,21 @@ class Router$3
   
   public void onComplete(int paramInt)
   {
-    if (paramInt == 0) {
-      if (this.val$listener != null) {
-        this.val$listener.onSuccess();
+    Router.OnCompleteListener localOnCompleteListener;
+    if (paramInt == 0)
+    {
+      localOnCompleteListener = this.val$listener;
+      if (localOnCompleteListener != null) {
+        localOnCompleteListener.onSuccess();
       }
     }
-    while (this.val$listener == null) {
-      return;
+    else
+    {
+      localOnCompleteListener = this.val$listener;
+      if (localOnCompleteListener != null) {
+        localOnCompleteListener.onError(paramInt);
+      }
     }
-    this.val$listener.onError(paramInt);
   }
   
   public void onNext()
@@ -27,7 +33,7 @@ class Router$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.route.Router.3
  * JD-Core Version:    0.7.0.1
  */

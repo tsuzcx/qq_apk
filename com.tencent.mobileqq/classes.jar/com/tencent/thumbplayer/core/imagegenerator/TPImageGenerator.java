@@ -64,72 +64,90 @@ public class TPImageGenerator
   
   public void cancelAllImageGenerations()
   {
-    if (!this.mIsLibLoaded) {
-      throw new UnsupportedOperationException("Failed to load native library");
-    }
-    if (!this.mInited) {
+    if (this.mIsLibLoaded)
+    {
+      if (!this.mInited) {
+        return;
+      }
+      _cancelAllImageGenerations();
       return;
     }
-    _cancelAllImageGenerations();
+    throw new UnsupportedOperationException("Failed to load native library");
   }
   
   public void generateImageAsyncAtTime(long paramLong1, long paramLong2, TPImageGeneratorParams paramTPImageGeneratorParams)
   {
-    if (!this.mIsLibLoaded) {
-      throw new UnsupportedOperationException("Failed to load native library");
+    if (this.mIsLibLoaded)
+    {
+      if (this.mInited)
+      {
+        _generateImageAsyncAtTime(paramLong1, paramLong2, paramTPImageGeneratorParams);
+        return;
+      }
+      paramTPImageGeneratorParams = new StringBuilder();
+      paramTPImageGeneratorParams.append("Failed to generate image at time ");
+      paramTPImageGeneratorParams.append(paramLong1);
+      paramTPImageGeneratorParams.append(" due to invalid state.");
+      throw new IllegalStateException(paramTPImageGeneratorParams.toString());
     }
-    if (!this.mInited) {
-      throw new IllegalStateException("Failed to generate image at time " + paramLong1 + " due to invalid state.");
-    }
-    _generateImageAsyncAtTime(paramLong1, paramLong2, paramTPImageGeneratorParams);
+    throw new UnsupportedOperationException("Failed to load native library");
   }
   
   public void generateImagesAsyncForTimes(long[] paramArrayOfLong, long paramLong, TPImageGeneratorParams paramTPImageGeneratorParams)
   {
-    if (!this.mIsLibLoaded) {
-      throw new UnsupportedOperationException("Failed to load native library");
-    }
-    if (!this.mInited) {
+    if (this.mIsLibLoaded)
+    {
+      if (this.mInited)
+      {
+        _generateImagesAsyncForTimes(paramArrayOfLong, paramLong, paramTPImageGeneratorParams);
+        return;
+      }
       throw new IllegalStateException("Failed to generate images due to invalid state.");
     }
-    _generateImagesAsyncForTimes(paramArrayOfLong, paramLong, paramTPImageGeneratorParams);
+    throw new UnsupportedOperationException("Failed to load native library");
   }
   
   public void init()
   {
-    if (!this.mIsLibLoaded) {
-      throw new UnsupportedOperationException("Failed to load native library");
-    }
-    if (this.mInited) {
+    if (this.mIsLibLoaded)
+    {
+      if (!this.mInited)
+      {
+        this.mInited = true;
+        if ((this.mUrl != null) && (this.mHttpHeader != null)) {
+          return;
+        }
+        String str = this.mUrl;
+        if (str != null)
+        {
+          _createWithUrl(str, this.mCallback);
+          return;
+        }
+        _createWithFd(this.mFd, this.mCallback);
+        return;
+      }
       throw new IllegalStateException("Failed to init due to invalid state.");
     }
-    this.mInited = true;
-    if ((this.mUrl != null) && (this.mHttpHeader != null)) {
-      return;
-    }
-    if (this.mUrl != null)
-    {
-      _createWithUrl(this.mUrl, this.mCallback);
-      return;
-    }
-    _createWithFd(this.mFd, this.mCallback);
+    throw new UnsupportedOperationException("Failed to load native library");
   }
   
   public void unInit()
   {
-    if (!this.mIsLibLoaded) {
-      throw new UnsupportedOperationException("Failed to load native library");
-    }
-    if (!this.mInited) {
+    if (this.mIsLibLoaded)
+    {
+      if (!this.mInited) {
+        return;
+      }
+      this.mInited = false;
+      _release();
       return;
     }
-    this.mInited = false;
-    _release();
+    throw new UnsupportedOperationException("Failed to load native library");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.imagegenerator.TPImageGenerator
  * JD-Core Version:    0.7.0.1
  */

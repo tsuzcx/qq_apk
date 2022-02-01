@@ -11,12 +11,17 @@ class AuthState$2
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.e("AuthState", "setAuthorize() onCmdListener isSuccess: " + paramBoolean + "   ; ret: " + paramJSONObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAuthorize() onCmdListener isSuccess: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("   ; ret: ");
+    localStringBuilder.append(paramJSONObject);
+    QMLog.e("AuthState", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.AuthState.2
  * JD-Core Version:    0.7.0.1
  */

@@ -55,181 +55,201 @@ public class BatchGetVideoInfo
   
   public void b()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("BatchGetVideoInfo", 2, "doBatchGetVideoInfo, vidList ==  null || vidList.isEmpty()");
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback.a();
-      }
-    }
-    ArrayList localArrayList1;
-    ArrayList localArrayList2;
-    do
-    {
-      return;
-      localArrayList1 = new ArrayList();
-      localArrayList2 = new ArrayList();
+      Object localObject2 = new ArrayList();
+      localObject1 = new ArrayList();
       StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        StoryVideoItem localStoryVideoItem = localStoryManager.a(str);
-        if (localStoryVideoItem != null)
+        Object localObject3 = localStoryManager.a(str);
+        if (localObject3 != null)
         {
-          if ((this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$VideoLocalCacheFilter != null) && (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$VideoLocalCacheFilter.a(localStoryVideoItem)))
+          BatchGetVideoInfo.VideoLocalCacheFilter localVideoLocalCacheFilter = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$VideoLocalCacheFilter;
+          if ((localVideoLocalCacheFilter != null) && (localVideoLocalCacheFilter.a((StoryVideoItem)localObject3)))
           {
-            if (QLog.isColorLevel()) {
-              QLog.i("BatchGetVideoInfo", 2, "TextUtils.isEmpty(video.mVideoUrl), vid:" + str);
+            if (QLog.isColorLevel())
+            {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("TextUtils.isEmpty(video.mVideoUrl), vid:");
+              ((StringBuilder)localObject3).append(str);
+              QLog.i("BatchGetVideoInfo", 2, ((StringBuilder)localObject3).toString());
             }
-            localArrayList1.add(str);
+            ((ArrayList)localObject2).add(str);
           }
           else
           {
-            localArrayList2.add(localStoryVideoItem);
+            ((ArrayList)localObject1).add(localObject3);
           }
         }
         else
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("BatchGetVideoInfo", 2, "storyVideoItem != null, vid:" + str);
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("storyVideoItem != null, vid:");
+            ((StringBuilder)localObject3).append(str);
+            QLog.i("BatchGetVideoInfo", 2, ((StringBuilder)localObject3).toString());
           }
-          localArrayList1.add(str);
+          ((ArrayList)localObject2).add(str);
         }
       }
-      if (!localArrayList1.isEmpty()) {
-        break;
+      if (((ArrayList)localObject2).isEmpty())
+      {
+        localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback;
+        if (localObject2 != null) {
+          ((BatchGetVideoInfo.IBatchGetVideoInfoCallback)localObject2).a((ArrayList)localObject1);
+        }
       }
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback == null);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback.a(localArrayList2);
-    return;
-    a(localArrayList1);
+      else
+      {
+        a((List)localObject2);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("BatchGetVideoInfo", 2, "doBatchGetVideoInfo, vidList ==  null || vidList.isEmpty()");
+    }
+    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback;
+    if (localObject1 != null) {
+      ((BatchGetVideoInfo.IBatchGetVideoInfoCallback)localObject1).a();
+    }
   }
   
   public void c()
   {
     Object localObject1 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
+    Object localObject2 = new ArrayList();
     StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
+    ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject2 = (String)localIterator.next();
-      StoryVideoItem localStoryVideoItem = localStoryManager.a((String)localObject2);
-      if (localStoryVideoItem == null)
+      Object localObject3 = (String)localIterator.next();
+      Object localObject4 = localStoryManager.a((String)localObject3);
+      if (localObject4 == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("BatchGetVideoInfo", 2, "handleVidInfoBack, vid can't find storyvideoitem vid:" + (String)localObject2);
-        }
-        localArrayList1.add(localObject2);
-      }
-      else if (!TextUtils.isEmpty(localStoryVideoItem.mOwnerUid))
-      {
-        localObject2 = ((UserManager)SuperManager.a(2)).b(localStoryVideoItem.mOwnerUid);
-        if (localObject2 == null)
+        if (QLog.isColorLevel())
         {
-          if (!localArrayList2.contains(localStoryVideoItem.mOwnerUid)) {
-            localArrayList2.add(localStoryVideoItem.mOwnerUid);
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("handleVidInfoBack, vid can't find storyvideoitem vid:");
+          ((StringBuilder)localObject4).append((String)localObject3);
+          QLog.e("BatchGetVideoInfo", 2, ((StringBuilder)localObject4).toString());
+        }
+        ((ArrayList)localObject2).add(localObject3);
+      }
+      else if (!TextUtils.isEmpty(((StoryVideoItem)localObject4).mOwnerUid))
+      {
+        localObject3 = ((UserManager)SuperManager.a(2)).b(((StoryVideoItem)localObject4).mOwnerUid);
+        if (localObject3 == null)
+        {
+          if (!localArrayList1.contains(((StoryVideoItem)localObject4).mOwnerUid)) {
+            localArrayList1.add(((StoryVideoItem)localObject4).mOwnerUid);
           }
         }
         else
         {
-          localStoryVideoItem.mOwnerUid = ((QQUserUIItem)localObject2).uid;
-          localArrayList3.add(localStoryVideoItem);
-          ((ArrayList)localObject1).add(localStoryVideoItem);
+          ((StoryVideoItem)localObject4).mOwnerUid = ((QQUserUIItem)localObject3).uid;
+          localArrayList2.add(localObject4);
+          ((ArrayList)localObject1).add(localObject4);
         }
       }
       else
       {
-        ((ArrayList)localObject1).add(localStoryVideoItem);
+        ((ArrayList)localObject1).add(localObject4);
       }
     }
-    if (!localArrayList1.isEmpty())
+    if (!((ArrayList)localObject2).isEmpty())
     {
       if (QLog.isColorLevel()) {
         QLog.e("BatchGetVideoInfo", 2, "handleVidInfoBack, vid can't find storyvideoitem.");
       }
       int i = this.jdField_a_of_type_Int;
       this.jdField_a_of_type_Int = (i + 1);
-      if (i < 3) {
-        a(localArrayList1);
+      if (i < 3)
+      {
+        a((List)localObject2);
+        return;
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback;
+      if (localObject1 != null) {
+        ((BatchGetVideoInfo.IBatchGetVideoInfoCallback)localObject1).a();
+      }
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+    if (!localArrayList2.isEmpty()) {
+      localStoryManager.a(localArrayList2);
+    }
+    if (localArrayList1.isEmpty())
+    {
+      localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback;
+      if (localObject2 != null) {
+        ((BatchGetVideoInfo.IBatchGetVideoInfoCallback)localObject2).a((ArrayList)localObject1);
       }
     }
-    do
+    else
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback == null);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback.a();
-      return;
-      this.jdField_a_of_type_Int = 0;
-      if (!localArrayList3.isEmpty()) {
-        localStoryManager.a(localArrayList3);
-      }
-      if (!localArrayList2.isEmpty()) {
-        break;
-      }
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback == null);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback.a((ArrayList)localObject1);
-    return;
-    localObject1 = BatchHandlerListPuller.a(localArrayList2);
-    ((BatchHandlerListPuller)localObject1).a("BatchGetVideoInfo");
-    ((BatchHandlerListPuller)localObject1).a(new BatchGetVideoInfo.3(this, (BatchHandlerListPuller)localObject1));
-    ((BatchHandlerListPuller)localObject1).b();
+      localObject1 = BatchHandlerListPuller.a(localArrayList1);
+      ((BatchHandlerListPuller)localObject1).a("BatchGetVideoInfo");
+      ((BatchHandlerListPuller)localObject1).a(new BatchGetVideoInfo.3(this, (BatchHandlerListPuller)localObject1));
+      ((BatchHandlerListPuller)localObject1).b();
+    }
   }
   
   public void d()
   {
     ArrayList localArrayList1 = new ArrayList();
-    StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
+    Object localObject1 = (StoryManager)SuperManager.a(5);
     ArrayList localArrayList2 = new ArrayList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      StoryVideoItem localStoryVideoItem = localStoryManager.a((String)localIterator.next());
+      StoryVideoItem localStoryVideoItem = ((StoryManager)localObject1).a((String)localIterator.next());
       if (localStoryVideoItem == null)
       {
         SLog.d("BatchGetVideoInfo", "user -> video empty ,strange");
       }
       else
       {
-        QQUserUIItem localQQUserUIItem;
         if (!TextUtils.isEmpty(localStoryVideoItem.mOwnerUid))
         {
-          localQQUserUIItem = ((UserManager)SuperManager.a(2)).b(localStoryVideoItem.mOwnerUid);
-          if (localQQUserUIItem != null) {
-            break label152;
+          Object localObject2 = ((UserManager)SuperManager.a(2)).b(localStoryVideoItem.mOwnerUid);
+          if (localObject2 == null)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("unionid can't find QQUserUIItem:");
+              ((StringBuilder)localObject2).append(localStoryVideoItem.mOwnerUid);
+              QLog.e("BatchGetVideoInfo", 2, ((StringBuilder)localObject2).toString());
+            }
           }
-          if (QLog.isColorLevel()) {
-            QLog.e("BatchGetVideoInfo", 2, "unionid can't find QQUserUIItem:" + localStoryVideoItem.mOwnerUid);
+          else
+          {
+            localStoryVideoItem.mOwnerUid = ((QQUserUIItem)localObject2).uid;
+            localArrayList2.add(localStoryVideoItem);
           }
         }
-        for (;;)
-        {
-          localArrayList1.add(localStoryVideoItem);
-          break;
-          label152:
-          localStoryVideoItem.mOwnerUid = localQQUserUIItem.uid;
-          localArrayList2.add(localStoryVideoItem);
-        }
+        localArrayList1.add(localStoryVideoItem);
       }
     }
     if (!localArrayList2.isEmpty()) {
-      localStoryManager.a(localArrayList2);
+      ((StoryManager)localObject1).a(localArrayList2);
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback.a(localArrayList1);
+    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback;
+    if (localObject1 != null) {
+      ((BatchGetVideoInfo.IBatchGetVideoInfoCallback)localObject1).a(localArrayList1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo
  * JD-Core Version:    0.7.0.1
  */

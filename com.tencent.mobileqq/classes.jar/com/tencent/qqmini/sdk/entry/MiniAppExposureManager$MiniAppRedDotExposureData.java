@@ -27,20 +27,22 @@ public class MiniAppExposureManager$MiniAppRedDotExposureData
   public void report()
   {
     MiniAppInfo localMiniAppInfo = this.appConfig;
-    String str2 = MiniAppExposureManager.getAppType(this.appConfig);
+    String str2 = MiniAppExposureManager.getAppType(localMiniAppInfo);
     String str3 = this.actionType;
     String str4 = this.subActionType;
-    if (this.redDotNum > 0) {}
-    for (String str1 = String.valueOf(this.redDotNum);; str1 = "0")
-    {
-      SDKMiniProgramLpReportDC04239.exposureReport(localMiniAppInfo, str2, null, str3, str4, null, str1);
-      return;
+    int i = this.redDotNum;
+    String str1;
+    if (i > 0) {
+      str1 = String.valueOf(i);
+    } else {
+      str1 = "0";
     }
+    SDKMiniProgramLpReportDC04239.exposureReport(localMiniAppInfo, str2, null, str3, str4, null, str1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.entry.MiniAppExposureManager.MiniAppRedDotExposureData
  * JD-Core Version:    0.7.0.1
  */

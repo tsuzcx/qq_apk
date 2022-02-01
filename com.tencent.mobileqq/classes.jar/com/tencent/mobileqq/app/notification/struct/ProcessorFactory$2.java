@@ -11,7 +11,6 @@ import com.tencent.mobileqq.app.notification.processor.business.DateNotification
 import com.tencent.mobileqq.app.notification.processor.business.DeviceMsgNotificationProcessor;
 import com.tencent.mobileqq.app.notification.processor.business.KandianLockscreenInteractPushNotificationProcessor;
 import com.tencent.mobileqq.app.notification.processor.business.KandianMergeNotificationProcessor;
-import com.tencent.mobileqq.app.notification.processor.business.LimitChatNotificationProcessor;
 import com.tencent.mobileqq.app.notification.processor.business.MatchChatNotificationProcessor;
 import com.tencent.mobileqq.app.notification.processor.business.PublicAccountNotificationProcessor;
 import com.tencent.mobileqq.app.notification.processor.business.SubAccountAssistantNotificationProcessor;
@@ -25,7 +24,9 @@ final class ProcessorFactory$2
 {
   ProcessorFactory$2()
   {
-    if ((ProcessorFactory.a() != null) && (ProcessorFactory.a().isEmpty())) {}
+    if (ProcessorFactory.a() != null) {
+      ProcessorFactory.a().isEmpty();
+    }
     Iterator localIterator = ProcessorFactory.a().iterator();
     while (localIterator.hasNext()) {
       put((Integer)localIterator.next(), TempSessionNotificationProcessor.class);
@@ -38,7 +39,6 @@ final class ProcessorFactory$2
     put(Integer.valueOf(1001), DateNotificationProcessor.class);
     put(Integer.valueOf(10002), DateNotificationProcessor.class);
     put(Integer.valueOf(1032), ConfessNotificationProcessor.class);
-    put(Integer.valueOf(1037), LimitChatNotificationProcessor.class);
     put(Integer.valueOf(1044), MatchChatNotificationProcessor.class);
     put(Integer.valueOf(1045), MatchChatNotificationProcessor.class);
     put(Integer.valueOf(1008), PublicAccountNotificationProcessor.class);
@@ -52,7 +52,7 @@ final class ProcessorFactory$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.struct.ProcessorFactory.2
  * JD-Core Version:    0.7.0.1
  */

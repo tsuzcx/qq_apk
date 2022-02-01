@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.webview.build;
 
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.AbsWebView;
+import com.tencent.mobileqq.webview.util.IWebViewBuilder;
+import mqq.app.AppRuntime;
 
 public class WebViewDialogBuilder
   extends AbsWebView
@@ -18,9 +19,9 @@ public class WebViewDialogBuilder
   
   public void buildTitleBar() {}
   
-  public final void buildWebView(AppInterface paramAppInterface)
+  public final void buildWebView(AppRuntime paramAppRuntime)
   {
-    super.buildBaseWebView(paramAppInterface);
+    super.buildBaseWebView(paramAppRuntime);
     onWebViewReady();
   }
   
@@ -31,7 +32,7 @@ public class WebViewDialogBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.build.WebViewDialogBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public class ReshapeCombineFilter_new
   public static final int YCOORD_NUM = 64;
   private static float[] mFullscreenVerticesPortrait;
   private static float[] mInitTextureCoordinatesPortrait;
-  private static float[] positionArray = null;
+  private static float[] positionArray;
   private float[] cropSize = { 1.0F, 1.0F };
   private int eyeMaskTex = 0;
   private int eyeMaskTex2 = 0;
@@ -54,8 +54,10 @@ public class ReshapeCombineFilter_new
     setPositions(mFullscreenVerticesPortrait, false);
     setTexCords(mInitTextureCoordinatesPortrait, false);
     setCoordNum(8257);
-    if (this.useMeshType == ReshapeType.NORMAL) {
-      updateImage(mFullscreenVerticesPortrait, mFullscreenVerticesPortrait);
+    if (this.useMeshType == ReshapeType.NORMAL)
+    {
+      float[] arrayOfFloat = mFullscreenVerticesPortrait;
+      updateImage(arrayOfFloat, arrayOfFloat);
     }
   }
   
@@ -78,28 +80,31 @@ public class ReshapeCombineFilter_new
   
   public void setParam(Map<String, Object> paramMap)
   {
-    if ((paramMap == null) || (paramMap.isEmpty())) {
-      return;
+    if (paramMap != null)
+    {
+      if (paramMap.isEmpty()) {
+        return;
+      }
+      if (paramMap.containsKey("inputImageTexture2")) {
+        this.eyeMaskTex = ((Integer)paramMap.get("inputImageTexture2")).intValue();
+      }
+      if (paramMap.containsKey("inputImageTexture3")) {
+        this.eyeMaskTex2 = ((Integer)paramMap.get("inputImageTexture3")).intValue();
+      }
+      if (paramMap.containsKey("srcSize")) {
+        this.srcSize = ((float[])paramMap.get("srcSize"));
+      }
+      if (paramMap.containsKey("cropSize")) {
+        this.cropSize = ((float[])paramMap.get("cropSize"));
+      }
+      if (paramMap.containsKey("texMapSize")) {
+        this.texMapSize = ((float[])paramMap.get("texMapSize"));
+      }
+      if (paramMap.containsKey("vType")) {
+        this.vType = ((Integer)paramMap.get("vType")).intValue();
+      }
+      initParams();
     }
-    if (paramMap.containsKey("inputImageTexture2")) {
-      this.eyeMaskTex = ((Integer)paramMap.get("inputImageTexture2")).intValue();
-    }
-    if (paramMap.containsKey("inputImageTexture3")) {
-      this.eyeMaskTex2 = ((Integer)paramMap.get("inputImageTexture3")).intValue();
-    }
-    if (paramMap.containsKey("srcSize")) {
-      this.srcSize = ((float[])paramMap.get("srcSize"));
-    }
-    if (paramMap.containsKey("cropSize")) {
-      this.cropSize = ((float[])paramMap.get("cropSize"));
-    }
-    if (paramMap.containsKey("texMapSize")) {
-      this.texMapSize = ((float[])paramMap.get("texMapSize"));
-    }
-    if (paramMap.containsKey("vType")) {
-      this.vType = ((Integer)paramMap.get("vType")).intValue();
-    }
-    initParams();
   }
   
   public void updateImage(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
@@ -113,13 +118,16 @@ public class ReshapeCombineFilter_new
     if (positionArray == null) {
       positionArray = new float[mFullscreenVerticesPortrait.length];
     }
-    VideoMaterial.genFullScreenVertices(positionArray, 66, 66, paramFloat1 - (paramFloat2 - paramFloat1) / 64.0F, paramFloat2 + (paramFloat2 - paramFloat1) / 64.0F, paramFloat3 - (paramFloat4 - paramFloat3) / 64.0F, paramFloat4 + (paramFloat4 - paramFloat3) / 64.0F);
+    float[] arrayOfFloat = positionArray;
+    float f1 = (paramFloat2 - paramFloat1) / 64.0F;
+    float f2 = (paramFloat4 - paramFloat3) / 64.0F;
+    VideoMaterial.genFullScreenVertices(arrayOfFloat, 66, 66, paramFloat1 - f1, paramFloat2 + f1, paramFloat3 - f2, paramFloat4 + f2);
     setPositions(positionArray, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.ReshapeCombineFilter_new
  * JD-Core Version:    0.7.0.1
  */

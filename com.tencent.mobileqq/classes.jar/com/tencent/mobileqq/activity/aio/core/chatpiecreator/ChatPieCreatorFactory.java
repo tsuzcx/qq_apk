@@ -15,8 +15,6 @@ import com.tencent.mobileqq.activity.aio.rebuild.chatpiecreator.PublicAccountCha
 import com.tencent.mobileqq.activity.aio.rebuild.chatpiecreator.QCircleChatPieCreator;
 import com.tencent.mobileqq.activity.aio.rebuild.chatpiecreator.RobotChatPieCreator;
 import com.tencent.mobileqq.activity.aio.rebuild.chatpiecreator.StrangerChatPieCreator;
-import com.tencent.mobileqq.apollo.api.aio.ICmGameChatPieCreator;
-import com.tencent.mobileqq.qroute.QRoute;
 
 public class ChatPieCreatorFactory
   implements IChatPieCreatorFactory
@@ -58,11 +56,9 @@ public class ChatPieCreatorFactory
     this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(1033), localObject);
     this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(1034), localObject);
     localObject = new LimitChatPieCreator();
-    this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(1037), localObject);
     this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(1044), localObject);
     this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(1045), localObject);
     this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(1043), new RobotChatPieCreator());
-    this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(1036), (IChatPieCreator)QRoute.api(ICmGameChatPieCreator.class));
     this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(10007), new GameMsgChatPieCreator());
     this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(10009), new GameBuddyChatPieCreator());
     this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(10008), new QCircleChatPieCreator());
@@ -83,7 +79,7 @@ public class ChatPieCreatorFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.chatpiecreator.ChatPieCreatorFactory
  * JD-Core Version:    0.7.0.1
  */

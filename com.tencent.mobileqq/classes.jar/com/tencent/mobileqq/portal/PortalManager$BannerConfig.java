@@ -17,17 +17,22 @@ class PortalManager$BannerConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id=").append(this.id);
-    localStringBuilder.append(", bannerImg=").append(this.bannerImg);
-    localStringBuilder.append(", bannarMd5=").append(this.bannarMd5);
-    localStringBuilder.append(", jumpUrl=").append(this.jumpUrl);
-    localStringBuilder.append(", useFlag=").append(this.useFlag);
+    localStringBuilder.append("id=");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(", bannerImg=");
+    localStringBuilder.append(this.bannerImg);
+    localStringBuilder.append(", bannarMd5=");
+    localStringBuilder.append(this.bannarMd5);
+    localStringBuilder.append(", jumpUrl=");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append(", useFlag=");
+    localStringBuilder.append(this.useFlag);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.BannerConfig
  * JD-Core Version:    0.7.0.1
  */

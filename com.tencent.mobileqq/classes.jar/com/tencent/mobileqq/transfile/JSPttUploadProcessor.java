@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import com.tencent.biz.pubaccount.util.api.IPublicAccountH5AbilityPtt;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.ptt.api.impl.PttInfoCollectorImpl;
+import com.tencent.mobileqq.ptt.temp.api.IPttTempApi;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PttUpReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.C2CPttUpResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -18,7 +18,6 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import mqq.manager.ProxyIpManager;
 
 public class JSPttUploadProcessor
   extends BaseUploadProcessor
@@ -26,49 +25,61 @@ public class JSPttUploadProcessor
   public static final String TAG = "JSPttUploadProcessor";
   String mFileKey;
   
-  public JSPttUploadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
+  public JSPttUploadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileControllerImpl, paramTransferRequest);
-    this.mProxyIpList = ((ProxyIpManager)this.app.getManager(3)).getProxyIp(4);
+    super(paramBaseTransFileController, paramTransferRequest);
   }
   
   private int doCheckParam()
   {
     logRichMediaEvent("uiParam", this.mUiRequest.toString());
-    String str = this.mUiRequest.mLocalPath;
-    if ((str == null) || ("".equals(str)))
+    Object localObject1 = this.mUiRequest.mLocalPath;
+    if ((localObject1 != null) && (!"".equals(localObject1)))
     {
-      setError(9302, getExpStackString(new Exception("filePath null")));
-      onError();
-      return -1;
+      if (localObject1 != null)
+      {
+        Object localObject2 = new File((String)localObject1);
+        StringBuilder localStringBuilder;
+        if (!((File)localObject2).exists())
+        {
+          localObject2 = this.mProcessorReport;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("sendFile not exist ");
+          localStringBuilder.append((String)localObject1);
+          ((ProcessorReport)localObject2).setError(9042, getExpStackString(new Exception(localStringBuilder.toString())), null, null);
+          onError();
+          return -1;
+        }
+        if (!((File)localObject2).canRead())
+        {
+          localObject1 = this.mProcessorReport;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("sendFile not readable ");
+          ((StringBuilder)localObject2).append(this.file.filePath);
+          ((ProcessorReport)localObject1).setError(9070, getExpStackString(new Exception(((StringBuilder)localObject2).toString())), null, null);
+          onError();
+          return -1;
+        }
+        this.mExtName = "amr";
+        long l = ((File)localObject2).length();
+        this.file.fileSize = l;
+        this.mFileSize = l;
+        if (l <= 0L)
+        {
+          localObject2 = this.mProcessorReport;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("file size 0 ");
+          localStringBuilder.append((String)localObject1);
+          ((ProcessorReport)localObject2).setError(9071, getExpStackString(new Exception(localStringBuilder.toString())), null, null);
+          onError();
+          return -1;
+        }
+      }
+      return 0;
     }
-    if (str != null)
-    {
-      File localFile = new File(str);
-      if (!localFile.exists())
-      {
-        setError(9042, getExpStackString(new Exception("sendFile not exist " + str)));
-        onError();
-        return -1;
-      }
-      if (!localFile.canRead())
-      {
-        setError(9070, getExpStackString(new Exception("sendFile not readable " + this.file.filePath)));
-        onError();
-        return -1;
-      }
-      this.mExtName = "amr";
-      long l = localFile.length();
-      this.file.fileSize = l;
-      this.mFileSize = l;
-      if (l <= 0L)
-      {
-        setError(9071, getExpStackString(new Exception("file size 0 " + str)));
-        onError();
-        return -1;
-      }
-    }
-    return 0;
+    this.mProcessorReport.setError(9302, getExpStackString(new Exception("filePath null")), null, null);
+    onError();
+    return -1;
   }
   
   private void doStart(boolean paramBoolean)
@@ -82,24 +93,22 @@ public class JSPttUploadProcessor
       onError();
       return;
     }
-    if (this.mRaf == null) {
+    if (this.mRaf == null)
+    {
       try
       {
         this.mRaf = new RandomAccessFile(this.mUiRequest.mLocalPath, "r");
-        if (this.mRaf == null)
-        {
-          setError(9303, "read file error");
-          onError();
-          return;
-        }
       }
       catch (FileNotFoundException localFileNotFoundException)
       {
-        for (;;)
-        {
-          localFileNotFoundException.printStackTrace();
-          this.mRaf = null;
-        }
+        localFileNotFoundException.printStackTrace();
+        this.mRaf = null;
+      }
+      if (this.mRaf == null)
+      {
+        this.mProcessorReport.setError(9303, "read file error", null, null);
+        onError();
+        return;
       }
     }
     sendRequest();
@@ -135,9 +144,7 @@ public class JSPttUploadProcessor
     localStringBuilder.append("&range=");
     localStringBuilder.append(this.mTransferedSize);
     localStringBuilder.append("&voice_codec=0");
-    paramArrayOfByte = replaceUrlWithProxyIp(localStringBuilder.toString(), this.mIpList);
-    BaseTransProcessor.addProxyIpToList(this.mProxyIpList, this.mIpList);
-    return paramArrayOfByte;
+    return localStringBuilder.toString();
   }
   
   public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
@@ -146,36 +153,43 @@ public class JSPttUploadProcessor
     if (paramRichProtoResp != null)
     {
       int i = 0;
-      if (i < paramRichProtoResp.resps.size())
+      while (i < paramRichProtoResp.resps.size())
       {
         paramRichProtoReq = (RichProto.RichProtoResp.C2CPttUpResp)paramRichProtoResp.resps.get(i);
         if (QLog.isColorLevel()) {
           logRichMediaEvent("procUrl", paramRichProtoReq.toString());
         }
-        this.mSendByQuickHttp = paramRichProtoReq.isSendByQuickHttp;
-        if (QLog.isColorLevel()) {
-          QLog.e("http_sideway", 2, "JSPttUpProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.mSendByQuickHttp);
+        this.mProcessorReport.mSendByQuickHttp = paramRichProtoReq.isSendByQuickHttp;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("JSPttUpProcessor.onBusiProtoResp:isSendByQuickHttp=");
+          localStringBuilder.append(this.mProcessorReport.mSendByQuickHttp);
+          QLog.e("http_sideway", 2, localStringBuilder.toString());
         }
-        copyRespCommon(this.mStepUrl, paramRichProtoReq);
+        this.mProcessorReport.copyRespCommon(this.mProcessorReport.mStepUrl, paramRichProtoReq);
         if (paramRichProtoReq.result == 0)
         {
-          if (paramRichProtoReq.isExist) {
+          if (paramRichProtoReq.isExist)
+          {
             this.mResid = paramRichProtoReq.uuid;
           }
-          for (;;)
+          else
           {
-            i += 1;
-            break;
             this.mResid = paramRichProtoReq.uuid;
             this.mUkey = paramRichProtoReq.mUkey;
             this.mIpList = paramRichProtoReq.ipList;
             this.mTransferedSize = 0L;
             this.mBlockSize = paramRichProtoReq.blockSize;
-            ((IPublicAccountH5AbilityPtt)QRoute.api(IPublicAccountH5AbilityPtt.class)).setServerIdForPtt(this.mResid);
+            ((IPttTempApi)QRoute.api(IPttTempApi.class)).setJsPttServerId(this.mResid);
             sendFile();
           }
+          i += 1;
         }
-        onError();
+        else
+        {
+          onError();
+        }
       }
     }
   }
@@ -189,107 +203,128 @@ public class JSPttUploadProcessor
   
   public void onResp(NetResp paramNetResp)
   {
-    Object localObject1 = null;
     super.onResp(paramNetResp);
+    Object localObject1 = null;
     this.mNetReq = null;
     int i = paramNetResp.mHttpCode;
-    for (;;)
+    try
     {
-      long l2;
+      if (paramNetResp.mResult != 0) {
+        break label591;
+      }
+      if (paramNetResp.mRespProperties.get("User-ReturnCode") == null) {
+        break label725;
+      }
+      l3 = Long.parseLong((String)paramNetResp.mRespProperties.get("User-ReturnCode"));
+    }
+    catch (Exception paramNetResp)
+    {
+      for (;;)
+      {
+        String str;
+        long l2;
+        Object localObject3;
+        Object localObject2;
+        continue;
+        long l3 = 9223372036854775807L;
+        continue;
+        long l1 = 9223372036854775807L;
+      }
+    }
+    if ((l3 != 0L) && (l3 != 9223372036854775807L))
+    {
+      this.mProcessorReport.copyStaticsInfoFromNetResp(this.mProcessorReport.mStepTrans, paramNetResp, false);
+      paramNetResp = this.mProcessorReport;
+      localObject1 = this.mProcessorReport;
+      paramNetResp.setError(-9527, null, ProcessorReport.getHttpDataReason(i, l3), this.mProcessorReport.mStepTrans);
+      onError();
+      return;
+    }
+    str = (String)paramNetResp.mRespProperties.get("Range");
+    if (str != null)
+    {
       try
       {
-        if (paramNetResp.mResult != 0) {
-          break label505;
-        }
-        if (paramNetResp.mRespProperties.get("User-ReturnCode") == null) {
-          break label579;
-        }
-        l3 = Long.parseLong((String)paramNetResp.mRespProperties.get("User-ReturnCode"));
-        if ((l3 != 0L) && (l3 != 9223372036854775807L))
-        {
-          copyStatisInfoFromNetResp(this.mStepTrans, paramNetResp, false);
-          setError(-9527, null, getHttpDataReason(i, l3), this.mStepTrans);
-          onError();
-          return;
-        }
-        str2 = (String)paramNetResp.mRespProperties.get("Range");
-        if (str2 == null) {
-          break label587;
-        }
-      }
-      catch (Exception paramNetResp)
-      {
-        String str2;
-        String str1;
-        setError(9343, BaseTransProcessor.getExceptionMessage(new Exception("decode unknown exception")), "", this.mStepTrans);
-        onError();
-        return;
-      }
-      try
-      {
-        i = Integer.parseInt(str2);
+        i = Integer.parseInt(str);
         l1 = i;
-        l2 = l1;
-        if (l1 == 9223372036854775807L)
-        {
-          str1 = (String)paramNetResp.mRespProperties.get("X-Range");
-          localObject1 = str1;
-          l2 = l1;
-          if (str1 == null) {}
-        }
       }
       catch (Exception localException2)
       {
         localException2.printStackTrace();
+        break label733;
       }
-      try
+      l2 = l1;
+      if (l1 == 9223372036854775807L)
       {
-        i = Integer.parseInt(str1);
-        l2 = i;
-        localObject1 = str1;
-      }
-      catch (Exception localException1)
-      {
-        localException1.printStackTrace();
-        l2 = 9223372036854775807L;
-        Object localObject2 = localException2;
-        continue;
-        logRichMediaEvent("decodeHttpResp", "from " + this.mTransferedSize + " to " + l2 + " userReturnCode:" + l3);
-        if (l2 > this.mTransferedSize) {
-          break label420;
+        localObject3 = (String)paramNetResp.mRespProperties.get("X-Range");
+        localObject1 = localObject3;
+        l2 = l1;
+        if (localObject3 != null) {
+          try
+          {
+            i = Integer.parseInt((String)localObject3);
+            l2 = i;
+            localObject1 = localObject3;
+          }
+          catch (Exception localException1)
+          {
+            localException1.printStackTrace();
+            l2 = 9223372036854775807L;
+            localObject2 = localObject3;
+          }
         }
-        if (this.mServerRollbackCount >= 3) {
-          break label460;
-        }
-        logRichMediaEvent("procHttpRespBody", "server offset rollback");
-        this.mServerRollbackCount += 1;
-        this.file.transferedSize = l2;
-        this.mTransferedSize = l2;
-        copyStatisInfoFromNetResp(this.mStepTrans, paramNetResp, true);
-        if (l2 >= this.mFileSize) {
-          break label500;
-        }
-        sendFile();
-        return;
-        copyStatisInfoFromNetResp(this.mStepTrans, paramNetResp, false);
-        setError(-9527, "", getServerReason(this.httpOkFailPre, this.errorHttpRollback), this.mStepTrans);
-        onError();
-        return;
-        onSuccess();
-        return;
       }
       if (l2 == 9223372036854775807L)
       {
-        copyStatisInfoFromNetResp(this.mStepTrans, paramNetResp, false);
-        setError(-9527, "no header range:" + str2 + " x-range:" + localObject1, getServerReason(this.httpOkFailPre, this.errorHttpBadResp), this.mStepTrans);
-        PttInfoCollector.reportNoRange(true);
+        this.mProcessorReport.copyStaticsInfoFromNetResp(this.mProcessorReport.mStepTrans, paramNetResp, false);
+        paramNetResp = this.mProcessorReport;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("no header range:");
+        ((StringBuilder)localObject3).append(str);
+        ((StringBuilder)localObject3).append(" x-range:");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        localObject2 = ((StringBuilder)localObject3).toString();
+        localObject3 = this.mProcessorReport;
+        paramNetResp.setError(-9527, (String)localObject2, ProcessorReport.getServerReason("Q", -9531L), this.mProcessorReport.mStepTrans);
+        new PttInfoCollectorImpl().reportNoRange(true);
         onError();
         return;
       }
-      label420:
-      label460:
-      label500:
-      label505:
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("from ");
+      ((StringBuilder)localObject2).append(this.mTransferedSize);
+      ((StringBuilder)localObject2).append(" to ");
+      ((StringBuilder)localObject2).append(l2);
+      ((StringBuilder)localObject2).append(" userReturnCode:");
+      ((StringBuilder)localObject2).append(l3);
+      logRichMediaEvent("decodeHttpResp", ((StringBuilder)localObject2).toString());
+      if (l2 <= this.mTransferedSize) {
+        if (this.mServerRollbackCount < 3)
+        {
+          logRichMediaEvent("procHttpRespBody", "server offset rollback");
+          this.mServerRollbackCount += 1;
+        }
+        else
+        {
+          this.mProcessorReport.copyStaticsInfoFromNetResp(this.mProcessorReport.mStepTrans, paramNetResp, false);
+          paramNetResp = this.mProcessorReport;
+          localObject2 = this.mProcessorReport;
+          paramNetResp.setError(-9527, "", ProcessorReport.getServerReason("Q", -9530L), this.mProcessorReport.mStepTrans);
+          onError();
+          return;
+        }
+      }
+      this.file.transferedSize = l2;
+      this.mTransferedSize = l2;
+      this.mProcessorReport.copyStaticsInfoFromNetResp(this.mProcessorReport.mStepTrans, paramNetResp, true);
+      if (l2 < this.mFileSize)
+      {
+        sendFile();
+        return;
+      }
+      onSuccess();
+      return;
+      label591:
       if ((paramNetResp.mErrCode == 9364) && (this.mNetworkChgRetryCount < 3))
       {
         logRichMediaEvent("[netChg]", "failed.but net change detect.so retry");
@@ -298,15 +333,15 @@ public class JSPttUploadProcessor
         sendRequest();
         return;
       }
-      copyStatisInfoFromNetResp(this.mStepTrans, paramNetResp, false);
-      setError(paramNetResp.mErrCode, paramNetResp.mErrDesc);
+      this.mProcessorReport.copyStaticsInfoFromNetResp(this.mProcessorReport.mStepTrans, paramNetResp, false);
+      this.mProcessorReport.setError(paramNetResp.mErrCode, paramNetResp.mErrDesc, null, null);
       onError();
       return;
-      label579:
-      long l3 = 9223372036854775807L;
-      continue;
-      label587:
-      long l1 = 9223372036854775807L;
+      paramNetResp = this.mProcessorReport;
+      localObject2 = this.mProcessorReport;
+      paramNetResp.setError(9343, ProcessorReport.getExceptionMessage(new Exception("decode unknown exception")), "", this.mProcessorReport.mStepTrans);
+      onError();
+      return;
     }
   }
   
@@ -319,7 +354,7 @@ public class JSPttUploadProcessor
   
   void sendRequest()
   {
-    this.mStepUrl.logStartTime();
+    this.mProcessorReport.mStepUrl.logStartTime();
     RichProto.RichProtoReq localRichProtoReq = new RichProto.RichProtoReq();
     RichProto.RichProtoReq.PttUpReq localPttUpReq = new RichProto.RichProtoReq.PttUpReq();
     localPttUpReq.selfUin = this.mUiRequest.mSelfUin;
@@ -338,16 +373,16 @@ public class JSPttUploadProcessor
     localRichProtoReq.protoReqMgr = getProtoReqManager();
     if (!isAppValid())
     {
-      setError(9366, "illegal app", null, this.mStepUrl);
+      this.mProcessorReport.setError(9366, "illegal app", null, this.mProcessorReport.mStepUrl);
       onError();
-    }
-    do
-    {
       return;
-      if (QLog.isColorLevel()) {
-        logRichMediaEvent("requestStart", localRichProtoReq.toString());
-      }
-    } while (!canDoNextStep());
+    }
+    if (QLog.isColorLevel()) {
+      logRichMediaEvent("requestStart", localRichProtoReq.toString());
+    }
+    if (!canDoNextStep()) {
+      return;
+    }
     this.mRichProtoReq = localRichProtoReq;
     RichProtoProc.procRichProtoReq(localRichProtoReq);
   }
@@ -367,7 +402,7 @@ public class JSPttUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.JSPttUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

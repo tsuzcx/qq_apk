@@ -7,12 +7,13 @@ class ViolaBridgeManager$1
   
   public void run()
   {
-    ViolaBridgeManager.access$000(this.this$0, this.val$instanceId, this.this$0.createParamForCallJS(this.val$moduleName, this.val$methonName, this.val$callback, this.val$data));
+    ViolaBridgeManager localViolaBridgeManager = this.this$0;
+    ViolaBridgeManager.access$000(localViolaBridgeManager, this.val$instanceId, localViolaBridgeManager.createParamForCallJS(this.val$moduleName, this.val$methonName, this.val$callback, this.val$data));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.bridge.ViolaBridgeManager.1
  * JD-Core Version:    0.7.0.1
  */

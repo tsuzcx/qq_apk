@@ -21,15 +21,22 @@ public class AegisHelper
   private static void a(String paramString1, String paramString2, String paramString3)
   {
     Object localObject = ((LoginServiceInterface)BizEngineMgr.getInstance().getUserEngine().getService(LoginServiceInterface.class)).getLoginInfo();
-    long l = 0L;
+    long l;
     if (localObject != null) {
       l = ((LoginInfo)localObject).uid;
+    } else {
+      l = 0L;
     }
     localObject = new HashMap();
     ((Map)localObject).put("id", "6243");
     ((Map)localObject).put("uin", String.valueOf(l));
-    ((Map)localObject).put("sessionId", "sessionId-" + System.currentTimeMillis());
-    ((Map)localObject).put("version", BusinessManager.a.a().b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sessionId-");
+    localStringBuilder.append(System.currentTimeMillis());
+    ((Map)localObject).put("sessionId", localStringBuilder.toString());
+    if (BusinessManager.a.a() != null) {
+      ((Map)localObject).put("version", BusinessManager.a.a().b);
+    }
     ((Map)localObject).put("level[0]", paramString3);
     ((Map)localObject).put("from", paramString2);
     ((Map)localObject).put("msg[0]", paramString1);
@@ -47,7 +54,7 @@ public class AegisHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.AegisHelper
  * JD-Core Version:    0.7.0.1
  */

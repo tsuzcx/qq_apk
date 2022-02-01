@@ -13,33 +13,27 @@ class TroopWithCommonFriendsFragment$5
   
   public void onClick(View paramView)
   {
-    TroopCommonHolder localTroopCommonHolder;
     if ((paramView.getTag() instanceof TroopCommonHolder))
     {
-      localTroopCommonHolder = (TroopCommonHolder)paramView.getTag();
-      if ((localTroopCommonHolder != null) && (TroopWithCommonFriendsHelper.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, localTroopCommonHolder.b))) {
-        break label43;
+      TroopCommonHolder localTroopCommonHolder = (TroopCommonHolder)paramView.getTag();
+      if ((localTroopCommonHolder != null) && (TroopWithCommonFriendsHelper.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, localTroopCommonHolder.b)))
+      {
+        TroopWithCommonFriendsHelper.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, localTroopCommonHolder.b, false);
+        String str = this.a.getString(2131699470);
+        localTroopCommonHolder.a.setText(str);
+        localTroopCommonHolder.a.setClickable(false);
+        localTroopCommonHolder.a.setBackgroundDrawable(null);
+        localTroopCommonHolder.a.setTextAppearance(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131756341);
+        TroopWithCommonFriendsHelper.a(localTroopCommonHolder.b, TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, "", TroopWithCommonFriendsFragment.a(this.a));
+        ReportController.b(null, "dc00898", "", "", "0X800AD26", "0X800AD26", 0, 0, "0", "0", "", "");
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label43:
-      TroopWithCommonFriendsHelper.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, localTroopCommonHolder.b, false);
-      String str = this.a.getString(2131699365);
-      localTroopCommonHolder.a.setText(str);
-      localTroopCommonHolder.a.setClickable(false);
-      localTroopCommonHolder.a.setBackgroundDrawable(null);
-      localTroopCommonHolder.a.setTextAppearance(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131755991);
-      TroopWithCommonFriendsHelper.a(localTroopCommonHolder.b, TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, "", TroopWithCommonFriendsFragment.a(this.a));
-      ReportController.b(null, "dc00898", "", "", "0X800AD26", "0X800AD26", 0, 0, "0", "0", "", "");
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment.5
  * JD-Core Version:    0.7.0.1
  */

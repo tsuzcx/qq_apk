@@ -9,29 +9,35 @@ import org.jetbrains.annotations.NotNull;
 public class TianshuWebManagerImpl
   implements ITianshuWebManager
 {
-  public static String b()
+  public static String a()
   {
-    QLog.i("TianshuWebManagerImpl", 1, "getLastClickTraceInfoJson:" + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getLastClickTraceInfoJson:");
+    localStringBuilder.append("");
+    QLog.i("TianshuWebManagerImpl", 1, localStringBuilder.toString());
     return BaseApplication.getContext().getSharedPreferences("tianshu_manager", 0).getString("tianshu_manager", "{}");
   }
   
   @NotNull
-  public String a()
+  public String getTraceInfoOfLastClick()
   {
-    return b();
+    return a();
   }
   
-  public void a(@NotNull String paramString)
+  public void setTraceInfoOfLastClick(@NotNull String paramString)
   {
-    QLog.i("TianshuWebManagerImpl", 1, "setTraceInfoOfLastClick:" + paramString);
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("tianshu_manager", 0).edit();
-    localEditor.putString("tianshu_manager", paramString);
-    localEditor.apply();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setTraceInfoOfLastClick:");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("TianshuWebManagerImpl", 1, ((StringBuilder)localObject).toString());
+    localObject = BaseApplication.getContext().getSharedPreferences("tianshu_manager", 0).edit();
+    ((SharedPreferences.Editor)localObject).putString("tianshu_manager", paramString);
+    ((SharedPreferences.Editor)localObject).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.tianshu.TianshuWebManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -52,69 +52,85 @@ public class GDTReportPlugin
   
   public static boolean isClickCgiUrlForTool(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      try
-      {
-        paramString = new URL(paramString).getHost();
-        String[] arrayOfString = "ttc.gdt.qq.com#c.gdt.qq.com#xc.gdt.qq.com".split("#");
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          boolean bool = paramString.equals(arrayOfString[i]);
-          if (bool) {
-            return true;
-          }
-          i += 1;
-        }
-        return false;
-      }
-      catch (Exception paramString) {}
     }
+    try
+    {
+      paramString = new URL(paramString).getHost();
+      String[] arrayOfString = "ttc.gdt.qq.com#c.gdt.qq.com#xc.gdt.qq.com".split("#");
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        boolean bool = paramString.equals(arrayOfString[i]);
+        if (bool) {
+          return true;
+        }
+        i += 1;
+      }
+      return false;
+    }
+    catch (Exception paramString) {}
+    return false;
   }
   
   private void reportCgi302Fail(int paramInt, Map<String, Object> paramMap)
   {
-    Log.i("gdtReportPlugin", "173\t" + getLoadTime());
-    if ((paramMap != null) && (paramMap.containsKey("errorCode")) && ((paramMap.get("errorCode") instanceof Integer))) {}
-    for (paramInt = Math.abs(((Integer)paramMap.get("errorCode")).intValue());; paramInt = 0)
-    {
-      RemoteHandleManager.getInstance().getSender().gdtAdvReportFromWebViewPlug(this.feedDataCookie, 2014, 1, getLoadTime(), paramInt);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("173\t");
+    localStringBuilder.append(getLoadTime());
+    Log.i("gdtReportPlugin", localStringBuilder.toString());
+    if ((paramMap != null) && (paramMap.containsKey("errorCode")) && ((paramMap.get("errorCode") instanceof Integer))) {
+      paramInt = Math.abs(((Integer)paramMap.get("errorCode")).intValue());
+    } else {
+      paramInt = 0;
     }
+    RemoteHandleManager.getInstance().getSender().gdtAdvReportFromWebViewPlug(this.feedDataCookie, 2014, 1, getLoadTime(), paramInt);
   }
   
   private void reportCgi302Success()
   {
-    Log.i("gdtReportPlugin", "172\t" + getLoadTime());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("172\t");
+    localStringBuilder.append(getLoadTime());
+    Log.i("gdtReportPlugin", localStringBuilder.toString());
     RemoteHandleManager.getInstance().getSender().gdtAdvReportFromWebViewPlug(this.feedDataCookie, 2014, 0, getLoadTime(), 0L);
   }
   
   private void reportLoadFailTime(int paramInt, Map<String, Object> paramMap)
   {
     this.loadFinishTime = SystemClock.elapsedRealtime();
-    if ((paramMap != null) && (paramMap.containsKey("errorCode")) && ((paramMap.get("errorCode") instanceof Integer))) {}
-    for (int i = Math.abs(((Integer)paramMap.get("errorCode")).intValue());; i = 0)
-    {
-      RemoteHandleManager.getInstance().getSender().gdtAdvReportFromWebViewPlug(this.feedDataCookie, 2000, paramInt, getLoadTime(), i);
-      Log.i("gdtReportPlugin", paramInt + 120 + "\t" + getLoadTime());
-      return;
+    int i;
+    if ((paramMap != null) && (paramMap.containsKey("errorCode")) && ((paramMap.get("errorCode") instanceof Integer))) {
+      i = Math.abs(((Integer)paramMap.get("errorCode")).intValue());
+    } else {
+      i = 0;
     }
+    RemoteHandleManager.getInstance().getSender().gdtAdvReportFromWebViewPlug(this.feedDataCookie, 2000, paramInt, getLoadTime(), i);
+    paramMap = new StringBuilder();
+    paramMap.append(paramInt + 120);
+    paramMap.append("\t");
+    paramMap.append(getLoadTime());
+    Log.i("gdtReportPlugin", paramMap.toString());
   }
   
   private void reportLoadSuccessTime()
   {
     this.loadFinishTime = SystemClock.elapsedRealtime();
     RemoteHandleManager.getInstance().getSender().gdtAdvReportFromWebViewPlug(this.feedDataCookie, 2000, 0, getLoadTime(), 0L);
-    Log.i("gdtReportPlugin", "120\t" + getLoadTime());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("120\t");
+    localStringBuilder.append(getLoadTime());
+    Log.i("gdtReportPlugin", localStringBuilder.toString());
   }
   
   private void reportStayTime()
   {
-    Log.i("gdtReportPlugin", "129\t" + getLoadTime());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("129\t");
+    localStringBuilder.append(getLoadTime());
+    Log.i("gdtReportPlugin", localStringBuilder.toString());
     RemoteHandleManager.getInstance().getSender().gdtAdvReportFromWebViewPlug(this.feedDataCookie, 2005, 0, getStayTime(), 0L);
   }
   
@@ -126,25 +142,84 @@ public class GDTReportPlugin
     return super.getWebViewEventByNameSpace(paramString);
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if (this.mRuntime.a().getIntent().getBooleanExtra("needGdtLandingPageReport", false)) {
-      switch (this.state)
+    if (this.mRuntime.a().getIntent().getBooleanExtra("needGdtLandingPageReport", false))
+    {
+      int i = this.state;
+      if (i != 0)
       {
-      default: 
-        if (this.loadClickCgiState == 1)
+        if (i != 1)
         {
-          if ((paramLong != 8589934593L) || (this.state != 1) || (isClickCgiUrlForTool(paramString))) {
-            break label402;
+          if (i != 2)
+          {
+            if (i == 3) {
+              if (paramLong == 8589934593L)
+              {
+                this.state = 4;
+                reportStayTime();
+                this.loadStartTime = SystemClock.elapsedRealtime();
+              }
+              else if (paramLong == 8589934597L)
+              {
+                this.state = 4;
+                reportStayTime();
+              }
+            }
           }
+          else if (paramLong == 8589934597L)
+          {
+            reportStayTime();
+            this.state = 4;
+          }
+        }
+        else if (paramLong == 8589934594L)
+        {
+          this.state = 2;
+          reportLoadSuccessTime();
+        }
+        else if (paramLong == 8589934595L)
+        {
+          this.state = 3;
+          reportLoadFailTime(1, paramMap);
+        }
+        else if (paramLong == 8589934601L)
+        {
+          this.state = 4;
+          reportLoadFailTime(94, paramMap);
+          reportStayTime();
+        }
+        else if (paramLong == 8589934597L)
+        {
+          this.state = 4;
+          reportLoadFailTime(95, paramMap);
+          reportStayTime();
+        }
+      }
+      else if (paramLong == 8589934593L)
+      {
+        if ((isClickCgiUrlForTool(paramString)) && (this.loadClickCgiState == 0)) {
+          this.loadClickCgiState = 1;
+        }
+        List localList = (List)this.mRuntime.a().getIntent().getSerializableExtra("FeedDataCookie");
+        if ((localList != null) && (localList.size() == 1)) {
+          this.feedDataCookie = ((Map)localList.get(0));
+        }
+        this.loadStartTime = SystemClock.elapsedRealtime();
+        this.state = 1;
+      }
+      if (this.loadClickCgiState == 1) {
+        if ((paramLong == 8589934593L) && (this.state == 1) && (!isClickCgiUrlForTool(paramString)))
+        {
           reportCgi302Success();
           this.loadClickCgiState = 2;
         }
-        break;
+        else if ((isClickCgiUrlForTool(paramString)) && ((paramLong == 8589934598L) || (paramLong == 8589934595L)))
+        {
+          this.loadClickCgiState = 2;
+          reportCgi302Fail(1, paramMap);
+        }
       }
-    }
-    for (;;)
-    {
       paramString = new QZoneClickReport.ReportInfo();
       paramString.actionType = String.valueOf(478);
       if (paramLong == 8589934599L)
@@ -152,77 +227,13 @@ public class GDTReportPlugin
         paramString.subactionType = String.valueOf(2);
         QZoneClickReport.report(this.mRuntime.a().getAccount(), paramString, true);
       }
-      return false;
-      if (paramLong != 8589934593L) {
-        break;
-      }
-      if ((isClickCgiUrlForTool(paramString)) && (this.loadClickCgiState == 0)) {
-        this.loadClickCgiState = 1;
-      }
-      List localList = (List)this.mRuntime.a().getIntent().getSerializableExtra("FeedDataCookie");
-      if ((localList != null) && (localList.size() == 1)) {
-        this.feedDataCookie = ((Map)localList.get(0));
-      }
-      this.loadStartTime = SystemClock.elapsedRealtime();
-      this.state = 1;
-      break;
-      if (paramLong == 8589934594L)
-      {
-        this.state = 2;
-        reportLoadSuccessTime();
-        break;
-      }
-      if (paramLong == 8589934595L)
-      {
-        this.state = 3;
-        reportLoadFailTime(1, paramMap);
-        break;
-      }
-      if (paramLong == 8589934601L)
-      {
-        this.state = 4;
-        reportLoadFailTime(94, paramMap);
-        reportStayTime();
-        break;
-      }
-      if (paramLong != 8589934597L) {
-        break;
-      }
-      this.state = 4;
-      reportLoadFailTime(95, paramMap);
-      reportStayTime();
-      break;
-      if (paramLong != 8589934597L) {
-        break;
-      }
-      reportStayTime();
-      this.state = 4;
-      break;
-      if (paramLong == 8589934593L)
-      {
-        this.state = 4;
-        reportStayTime();
-        this.loadStartTime = SystemClock.elapsedRealtime();
-        break;
-      }
-      if (paramLong != 8589934597L) {
-        break;
-      }
-      this.state = 4;
-      reportStayTime();
-      break;
-      label402:
-      if ((isClickCgiUrlForTool(paramString)) && ((paramLong == 8589934598L) || (paramLong == 8589934595L)))
-      {
-        this.loadClickCgiState = 2;
-        reportCgi302Fail(1, paramMap);
-      }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.GDTReportPlugin
  * JD-Core Version:    0.7.0.1
  */

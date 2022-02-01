@@ -27,6 +27,21 @@ public abstract class c$a
     return new c.a.a(paramIBinder);
   }
   
+  public static c getDefaultImpl()
+  {
+    return c.a.a.b;
+  }
+  
+  public static boolean setDefaultImpl(c paramc)
+  {
+    if ((c.a.a.b == null) && (paramc != null))
+    {
+      c.a.a.b = paramc;
+      return true;
+    }
+    return false;
+  }
+  
   public IBinder asBinder()
   {
     return this;
@@ -34,26 +49,27 @@ public abstract class c$a
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
+      if (paramInt1 != 1598968902) {
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      }
       paramParcel2.writeString("com.huawei.hms.core.aidl.IAIDLCallback");
       return true;
     }
     paramParcel1.enforceInterface("com.huawei.hms.core.aidl.IAIDLCallback");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (b)b.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      call(paramParcel1);
-      return true;
+    if (paramParcel1.readInt() != 0) {
+      paramParcel1 = (b)b.CREATOR.createFromParcel(paramParcel1);
+    } else {
+      paramParcel1 = null;
     }
+    call(paramParcel1);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.core.aidl.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -45,13 +45,17 @@ public class ServiceCreateTask
   
   private static boolean canDebug(BaseRuntime paramBaseRuntime)
   {
-    if (paramBaseRuntime == null) {}
-    do
-    {
+    if (paramBaseRuntime == null) {
       return false;
-      paramBaseRuntime = paramBaseRuntime.getMiniAppInfo();
-    } while ((paramBaseRuntime == null) || (paramBaseRuntime.debugInfo == null) || (TextUtils.isEmpty(paramBaseRuntime.debugInfo.wsUrl)) || (TextUtils.isEmpty(paramBaseRuntime.debugInfo.roomId)));
-    return true;
+    }
+    paramBaseRuntime = paramBaseRuntime.getMiniAppInfo();
+    if (paramBaseRuntime == null) {
+      return false;
+    }
+    if ((paramBaseRuntime.debugInfo != null) && (!TextUtils.isEmpty(paramBaseRuntime.debugInfo.wsUrl))) {
+      return !TextUtils.isEmpty(paramBaseRuntime.debugInfo.roomId);
+    }
+    return false;
   }
   
   private void createWebviewService()
@@ -96,13 +100,20 @@ public class ServiceCreateTask
     int i = QbSdk.getTbsVersion(getContext());
     int j = QbSdk.getTmpDirTbsVersion(getContext());
     boolean bool = isTbsFallback(getContext());
-    QMLog.i("ServiceCreateTask", "tbsVersion=" + i + " tmpDirTbsVersion=" + j + ",isTbsFallback:" + Boolean.valueOf(bool));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("tbsVersion=");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(" tmpDirTbsVersion=");
+    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(",isTbsFallback:");
+    ((StringBuilder)localObject).append(Boolean.valueOf(bool));
+    QMLog.i("ServiceCreateTask", ((StringBuilder)localObject).toString());
     if (((i > 0) || (j > 0)) && (!isTbsFallback(getContext()))) {
       try
       {
         QMLog.i("ServiceCreateTask", "AppBrandService create start");
-        AppBrandService localAppBrandService = new AppBrandService(this.appBrandRuntime, null);
-        localAppBrandService.initFramework(getContext(), new ServiceCreateTask.1(this, localAppBrandService));
+        localObject = new AppBrandService(this.appBrandRuntime, null);
+        ((AppBrandService)localObject).initFramework(getContext(), new ServiceCreateTask.1(this, (AppBrandService)localObject));
         reportServiceType(650, "x5");
         return;
       }
@@ -119,36 +130,30 @@ public class ServiceCreateTask
   public void executeAsync()
   {
     QMLog.i("ServiceCreateTask", "ServiceCreateTask executeAsync");
-    Object localObject;
-    label60:
-    boolean bool;
-    if (this.appBrandRuntime != null)
-    {
-      localObject = this.appBrandRuntime.getMiniAppInfo();
-      MiniReportManager.reportEventType((MiniAppInfo)localObject, 100, "0");
-      this.startTimestamp = System.currentTimeMillis();
-      localObject = (RuntimeCreateTask)getRuntimeLoader().getTask(RuntimeCreateTask.class);
-      if (localObject == null) {
-        break label109;
-      }
+    Object localObject = this.appBrandRuntime;
+    if (localObject != null) {
+      localObject = ((BaseRuntime)localObject).getMiniAppInfo();
+    } else {
+      localObject = null;
+    }
+    MiniReportManager.reportEventType((MiniAppInfo)localObject, 100, "0");
+    this.startTimestamp = System.currentTimeMillis();
+    localObject = (RuntimeCreateTask)getRuntimeLoader().getTask(RuntimeCreateTask.class);
+    if (localObject != null) {
       localObject = ((RuntimeCreateTask)localObject).getAppBrandRuntime();
-      this.appBrandRuntime = ((BaseRuntime)localObject);
-      bool = V8Utils.checkEnableV8();
-      if (!canDebug(this.appBrandRuntime)) {
-        break label114;
-      }
+    } else {
+      localObject = null;
+    }
+    this.appBrandRuntime = ((BaseRuntime)localObject);
+    boolean bool = V8Utils.checkEnableV8();
+    if (canDebug(this.appBrandRuntime))
+    {
       QMLog.i("ServiceCreateTask", "AppBrandRemoteService create start");
       onServiceCreateSucc(new AppBrandRemoteService(this.appBrandRuntime, null));
-    }
-    label109:
-    label114:
-    while ((bool) && (onV8ServiceCreateTaskSuc()))
-    {
       return;
-      localObject = null;
-      break;
-      localObject = null;
-      break label60;
+    }
+    if ((bool) && (onV8ServiceCreateTaskSuc())) {
+      return;
     }
     tbsServiceCreate();
   }
@@ -175,7 +180,10 @@ public class ServiceCreateTask
   {
     try
     {
-      QMLog.i("ServiceCreateTask", "onServiceCreateSucc service:" + paramAbsAppBrandService);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onServiceCreateSucc service:");
+      localStringBuilder.append(paramAbsAppBrandService);
+      QMLog.i("ServiceCreateTask", localStringBuilder.toString());
       if ((this.customJsService == null) && (paramAbsAppBrandService != null))
       {
         this.customJsService = paramAbsAppBrandService;
@@ -190,12 +198,13 @@ public class ServiceCreateTask
   public void onTaskSucceed()
   {
     super.onTaskSucceed();
-    if (this.appBrandRuntime != null) {}
-    for (MiniAppInfo localMiniAppInfo = this.appBrandRuntime.getMiniAppInfo();; localMiniAppInfo = null)
-    {
-      MiniReportManager.reportEventType(localMiniAppInfo, 101, "0");
-      return;
+    Object localObject = this.appBrandRuntime;
+    if (localObject != null) {
+      localObject = ((BaseRuntime)localObject).getMiniAppInfo();
+    } else {
+      localObject = null;
     }
+    MiniReportManager.reportEventType((MiniAppInfo)localObject, 101, "0");
   }
   
   public void reset()
@@ -206,7 +215,7 @@ public class ServiceCreateTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.ServiceCreateTask
  * JD-Core Version:    0.7.0.1
  */

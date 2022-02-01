@@ -36,61 +36,7 @@ public class MessageRecordCursor
   
   private Object a(int paramInt)
   {
-    MessageRecord localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 0: 
-    case 1: 
-      return Long.valueOf(localMessageRecord.msgId);
-    case 2: 
-      return localMessageRecord.selfuin;
-    case 3: 
-      return localMessageRecord.frienduin;
-    case 4: 
-      return localMessageRecord.senderuin;
-    case 5: 
-      return Long.valueOf(localMessageRecord.time);
-    case 6: 
-      return localMessageRecord.msg;
-    case 7: 
-      return Integer.valueOf(localMessageRecord.msgtype);
-    case 8: 
-      if (localMessageRecord.isread) {}
-      for (paramInt = 1;; paramInt = 0) {
-        return Integer.valueOf(paramInt);
-      }
-    case 9: 
-      return Integer.valueOf(localMessageRecord.issend);
-    case 10: 
-      return Long.valueOf(localMessageRecord.msgseq);
-    case 11: 
-      return Long.valueOf(localMessageRecord.shmsgseq);
-    case 12: 
-      return Integer.valueOf(localMessageRecord.istroop);
-    case 13: 
-      return Integer.valueOf(localMessageRecord.extraflag);
-    case 14: 
-      return jdField_a_of_type_ComTencentImcoreMessageMessageRecordCursor$Callback.a(this.jdField_a_of_type_ComTencentImcoreMessageMsgProxy.b(), localMessageRecord.senderuin, localMessageRecord.frienduin);
-    case 15: 
-      return jdField_a_of_type_ComTencentImcoreMessageMessageRecordCursor$Callback.a(this.jdField_a_of_type_ComTencentImcoreMessageMsgProxy.b(), localMessageRecord.senderuin, localMessageRecord.istroop);
-    case 16: 
-      return jdField_a_of_type_ComTencentImcoreMessageMessageRecordCursor$Callback.a(localMessageRecord.frienduin, this.jdField_a_of_type_ComTencentImcoreMessageMsgProxy.b());
-    case 17: 
-      return Integer.valueOf(localMessageRecord.versionCode);
-    case 18: 
-      return localMessageRecord.msgData;
-    case 19: 
-      return Long.valueOf(localMessageRecord.vipBubbleID);
-    case 20: 
-      return Long.valueOf(localMessageRecord.msgUid);
-    case 21: 
-      return Long.valueOf(localMessageRecord.uniseq);
-    case 22: 
-      return Integer.valueOf(localMessageRecord.sendFailCode);
-    }
-    return Integer.valueOf(localMessageRecord.versionCode);
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static void a(MessageRecordCursor.Callback paramCallback)
@@ -109,34 +55,33 @@ public class MessageRecordCursor
   
   public byte[] getBlob(int paramInt)
   {
-    localObject = a(paramInt);
+    Object localObject = a(paramInt);
     if ((localObject instanceof byte[])) {
       return (byte[])localObject;
     }
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    byte[] arrayOfByte2 = null;
+    byte[] arrayOfByte1 = arrayOfByte2;
     try
     {
       ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
+      arrayOfByte1 = arrayOfByte2;
       localObjectOutputStream.writeObject(localObject);
+      arrayOfByte1 = arrayOfByte2;
       localObjectOutputStream.flush();
-      localObject = localByteArrayOutputStream.toByteArray();
-      try
-      {
-        localObjectOutputStream.close();
-        localByteArrayOutputStream.close();
-        return localObject;
-      }
-      catch (IOException localIOException1) {}
+      arrayOfByte1 = arrayOfByte2;
+      arrayOfByte2 = localByteArrayOutputStream.toByteArray();
+      arrayOfByte1 = arrayOfByte2;
+      localObjectOutputStream.close();
+      arrayOfByte1 = arrayOfByte2;
+      localByteArrayOutputStream.close();
+      return arrayOfByte2;
     }
-    catch (IOException localIOException2)
+    catch (IOException localIOException)
     {
-      for (;;)
-      {
-        localObject = null;
-      }
+      localIOException.printStackTrace();
     }
-    localIOException1.printStackTrace();
-    return localObject;
+    return arrayOfByte1;
   }
   
   public int getColumnCount()
@@ -220,16 +165,20 @@ public class MessageRecordCursor
   
   public int getColumnIndexOrThrow(String paramString)
   {
-    if (getColumnIndex(paramString) < 0) {
-      throw new IllegalArgumentException();
+    if (getColumnIndex(paramString) >= 0) {
+      return getColumnIndex(paramString);
     }
-    return getColumnIndex(paramString);
+    throw new IllegalArgumentException();
   }
   
   public String getColumnName(int paramInt)
   {
-    if ((paramInt > 0) && (paramInt < this.jdField_a_of_type_ArrayOfJavaLangString.length)) {
-      return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    if (paramInt > 0)
+    {
+      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      if (paramInt < arrayOfString.length) {
+        return arrayOfString[paramInt];
+      }
     }
     return null;
   }
@@ -313,11 +262,10 @@ public class MessageRecordCursor
   
   public boolean isAfterLast()
   {
-    if (getCount() == 0) {}
-    while (this.jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilList.size()) {
+    if (getCount() == 0) {
       return true;
     }
-    return false;
+    return this.jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilList.size();
   }
   
   public boolean isBeforeFirst()
@@ -347,10 +295,14 @@ public class MessageRecordCursor
   
   public boolean move(int paramInt)
   {
-    if ((this.jdField_a_of_type_Int + paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_Int + paramInt >= 0))
+    if (this.jdField_a_of_type_Int + paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      this.jdField_a_of_type_Int += paramInt;
-      return true;
+      int i = this.jdField_a_of_type_Int;
+      if (i + paramInt >= 0)
+      {
+        this.jdField_a_of_type_Int = (i + paramInt);
+        return true;
+      }
     }
     return false;
   }
@@ -393,9 +345,10 @@ public class MessageRecordCursor
   
   public boolean moveToPrevious()
   {
-    if (this.jdField_a_of_type_Int > 0)
+    int i = this.jdField_a_of_type_Int;
+    if (i > 0)
     {
-      this.jdField_a_of_type_Int -= 1;
+      this.jdField_a_of_type_Int = (i - 1);
       return true;
     }
     return false;
@@ -428,7 +381,7 @@ public class MessageRecordCursor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.MessageRecordCursor
  * JD-Core Version:    0.7.0.1
  */

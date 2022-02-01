@@ -27,15 +27,17 @@ public final class qqstory_service$ReqMsgTabNodeVideoList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 58, 64, 72, 82, 90 }, new String[] { "unionID", "req_time_stamp", "node_type", "recommend_id", "source", "cookie", "start_vid", "page_size", "adcode", "device", "passthrough" }, new Object[] { localByteStringMicro1, Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), "", "", Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3 }, ReqMsgTabNodeVideoList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 58, 64, 72, 82, 90 }, new String[] { "unionID", "req_time_stamp", "node_type", "recommend_id", "source", "cookie", "start_vid", "page_size", "adcode", "device", "passthrough" }, new Object[] { localByteStringMicro1, localLong, localInteger, localLong, localInteger, "", "", localInteger, localLong, localByteStringMicro2, localByteStringMicro3 }, ReqMsgTabNodeVideoList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeVideoList
  * JD-Core Version:    0.7.0.1
  */

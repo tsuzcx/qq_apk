@@ -18,17 +18,18 @@ public final class PublisherUtilsKt
       Object localObject1 = paramJSONObject2.get((String)localObject2);
       if ((localObject1 instanceof JSONObject))
       {
-        if ((!paramJSONObject1.has((String)localObject2)) || (!(paramJSONObject1.get((String)localObject2) instanceof JSONObject)))
+        if ((paramJSONObject1.has((String)localObject2)) && ((paramJSONObject1.get((String)localObject2) instanceof JSONObject)))
         {
-          paramJSONObject1.putOpt((String)localObject2, paramJSONObject2.get((String)localObject2));
+          localObject2 = paramJSONObject1.get((String)localObject2);
+          if (localObject2 != null) {
+            b((JSONObject)localObject2, (JSONObject)localObject1);
+          } else {
+            throw new TypeCastException("null cannot be cast to non-null type org.json.JSONObject");
+          }
         }
         else
         {
-          localObject2 = paramJSONObject1.get((String)localObject2);
-          if (localObject2 == null) {
-            throw new TypeCastException("null cannot be cast to non-null type org.json.JSONObject");
-          }
-          b((JSONObject)localObject2, (JSONObject)localObject1);
+          paramJSONObject1.putOpt((String)localObject2, paramJSONObject2.get((String)localObject2));
         }
       }
       else {
@@ -39,7 +40,7 @@ public final class PublisherUtilsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.common.PublisherUtilsKt
  * JD-Core Version:    0.7.0.1
  */

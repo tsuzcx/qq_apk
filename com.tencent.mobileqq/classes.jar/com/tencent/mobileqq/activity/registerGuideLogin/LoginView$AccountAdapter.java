@@ -25,7 +25,7 @@ class LoginView$AccountAdapter
   
   public LoginView$AccountAdapter(LoginView paramLoginView, Context paramContext)
   {
-    super(paramContext, 2131558412, 2131369438, paramLoginView.jdField_a_of_type_JavaUtilList);
+    super(paramContext, 2131558440, 2131369166, paramLoginView.jdField_a_of_type_JavaUtilList);
   }
   
   public String a(int paramInt)
@@ -46,12 +46,10 @@ class LoginView$AccountAdapter
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.size() == 0) {
       this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.b().setVisibility(8);
-    }
-    for (;;)
-    {
-      return super.getCount();
+    } else {
       this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.b().setVisibility(0);
     }
+    return super.getCount();
   }
   
   public Filter getFilter()
@@ -65,40 +63,39 @@ class LoginView$AccountAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     View localView = super.getView(paramInt, paramView, paramViewGroup);
-    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131363419);
-    ImageView localImageView = (ImageView)localView.findViewById(2131369351);
+    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131363349);
+    Object localObject1 = (ImageView)localView.findViewById(2131369083);
     String str = ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
-    if ((LoginView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView) == null) || (LoginView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView).get(str) == null))
+    if ((LoginView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView) != null) && (LoginView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView).get(str) != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a(localImageView, str, false);
-      localImageView = (ImageView)localView.findViewById(2131369286);
-      localImageView.setTag(Integer.valueOf(paramInt));
-      localImageView.setOnClickListener(this);
-      localImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131719733));
-      localView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131689502) + "%s", new Object[] { str }));
-      if (getCount() != 1) {
-        break label297;
-      }
+      Object localObject2 = LoginView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView).get(str);
+      LoginView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView, (ImageView)localObject1, localObject2);
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a((ImageView)localObject1, str, false);
+    }
+    localObject1 = (ImageView)localView.findViewById(2131369015);
+    ((ImageView)localObject1).setTag(Integer.valueOf(paramInt));
+    ((ImageView)localObject1).setOnClickListener(this);
+    ((ImageView)localObject1).setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131719457));
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131689529));
+    ((StringBuilder)localObject1).append("%s");
+    localView.setContentDescription(String.format(((StringBuilder)localObject1).toString(), new Object[] { str }));
+    if (getCount() == 1) {
       localLinearLayout.setPadding(0, Utils.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()), 0, Utils.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()));
+    } else if (paramInt == 0) {
+      localLinearLayout.setPadding(0, Utils.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()), 0, 0);
+    } else if (paramInt == getCount() - 1) {
+      localLinearLayout.setPadding(0, 0, 0, Utils.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()));
+    } else {
+      localLinearLayout.setPadding(0, 0, 0, 0);
     }
-    for (;;)
-    {
-      localLinearLayout.setOnClickListener(new LoginView.AccountAdapter.2(this, paramInt));
-      localView.setOnTouchListener(new LoginView.AccountAdapter.3(this));
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      Object localObject = LoginView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView).get(str);
-      LoginView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView, localImageView, localObject);
-      break;
-      label297:
-      if (paramInt == 0) {
-        localLinearLayout.setPadding(0, Utils.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()), 0, 0);
-      } else if (paramInt == getCount() - 1) {
-        localLinearLayout.setPadding(0, 0, 0, Utils.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()));
-      } else {
-        localLinearLayout.setPadding(0, 0, 0, 0);
-      }
-    }
+    localLinearLayout.setOnClickListener(new LoginView.AccountAdapter.2(this, paramInt));
+    localView.setOnTouchListener(new LoginView.AccountAdapter.3(this));
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public void onClick(View paramView)
@@ -110,7 +107,7 @@ class LoginView$AccountAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.AccountAdapter
  * JD-Core Version:    0.7.0.1
  */

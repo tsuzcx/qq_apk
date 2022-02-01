@@ -25,12 +25,31 @@ public class DateCollectionListPageLoader$GetCollectionListEvent
   
   public String toString()
   {
-    return "GetCollectionListEvent{isEnd=" + this.jdField_a_of_type_Boolean + ", isUpdated=" + this.e + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isRefreshFromLoadMore=" + this.d + ", collectionList=" + this.jdField_a_of_type_JavaUtilList + ", totalVideoCount=" + this.jdField_a_of_type_Int + ", context='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetCollectionListEvent{isEnd=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", isUpdated=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", isLocalData=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", isFirstPage=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", isRefreshFromLoadMore=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", collectionList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(", totalVideoCount=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", context='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.GetCollectionListEvent
  * JD-Core Version:    0.7.0.1
  */

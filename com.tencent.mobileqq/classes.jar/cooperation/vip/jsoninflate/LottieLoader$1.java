@@ -13,8 +13,12 @@ class LottieLoader$1
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieLoader", 0, "diy data download fail url = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramDownloadResult = new StringBuilder();
+      paramDownloadResult.append("diy data download fail url = ");
+      paramDownloadResult.append(paramString);
+      QLog.i("LottieLoader", 0, paramDownloadResult.toString());
     }
     LottieLoader.a(this.jdField_a_of_type_CooperationVipJsoninflateLottieLoader, 2);
     LottieLoader.a(this.jdField_a_of_type_CooperationVipJsoninflateLottieLoader, false, paramString, this.jdField_a_of_type_JavaLangString, this.b);
@@ -24,15 +28,19 @@ class LottieLoader$1
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieLoader", 0, "diy data download success url = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramDownloadResult = new StringBuilder();
+      paramDownloadResult.append("diy data download success url = ");
+      paramDownloadResult.append(paramString);
+      QLog.i("LottieLoader", 0, paramDownloadResult.toString());
     }
     LottieLoader.b(this.jdField_a_of_type_CooperationVipJsoninflateLottieLoader, true, paramString, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.jsoninflate.LottieLoader.1
  * JD-Core Version:    0.7.0.1
  */

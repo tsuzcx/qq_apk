@@ -19,37 +19,48 @@ public class SDCardMountInforUtil
 {
   private static SDCardMountInforUtil mSelf;
   private final String HEAD_CONF = "mount_point";
-  private final String HEAD_FSTAB = "dev_mount";
+  private final String HEAD_FSTAB;
   private final int PATH = 2;
   public final String ROOT = Environment.getExternalStorageDirectory().getAbsolutePath();
   private final int SDK_VERSION_LEVEL_1 = 0;
   private final int SDK_VERSION_LEVEL_2 = 1;
   private final int SDK_VERSION_LEVEL_3 = 2;
-  private final File VOLD_CONF = new File(Environment.getRootDirectory().getAbsoluteFile() + File.separator + "etc" + File.separator + "vold.conf");
-  private final File VOLD_FSTAB = new File(Environment.getRootDirectory().getAbsoluteFile() + File.separator + "etc" + File.separator + "vold.fstab");
+  private final File VOLD_CONF;
+  private final File VOLD_FSTAB;
   private ArrayList<String> allPath = new ArrayList();
   private ArrayList<String> cache = new ArrayList();
   private Context mContext;
-  private final BroadcastReceiver sdcardListener = new SDCardMountInforUtil.1(this);
+  private final BroadcastReceiver sdcardListener;
   private int sdk_level = 0;
   
   private SDCardMountInforUtil(Context paramContext)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getRootDirectory().getAbsoluteFile());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("etc");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("vold.conf");
+    this.VOLD_CONF = new File(localStringBuilder.toString());
+    this.HEAD_FSTAB = "dev_mount";
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getRootDirectory().getAbsoluteFile());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("etc");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("vold.fstab");
+    this.VOLD_FSTAB = new File(localStringBuilder.toString());
+    this.sdcardListener = new SDCardMountInforUtil.1(this);
     this.mContext = paramContext;
     registerSDCardListener(paramContext);
     if (version() < 8) {
       this.sdk_level = 0;
+    } else if (version() < 11) {
+      this.sdk_level = 1;
+    } else {
+      this.sdk_level = 2;
     }
-    for (;;)
-    {
-      initVoldFstabORVoldConfToCache(this.sdk_level);
-      return;
-      if (version() < 11) {
-        this.sdk_level = 1;
-      } else {
-        this.sdk_level = 2;
-      }
-    }
+    initVoldFstabORVoldConfToCache(this.sdk_level);
   }
   
   public static SDCardMountInforUtil getSelf(Context paramContext)
@@ -81,18 +92,14 @@ public class SDCardMountInforUtil
           this.cache.add(str);
         }
       }
-      loadSdCards();
+      localBufferedReader.close();
+      this.cache.trimToSize();
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    for (;;)
-    {
-      return;
-      localException.close();
-      this.cache.trimToSize();
-    }
+    loadSdCards();
   }
   
   private void initVoldFstab()
@@ -111,53 +118,52 @@ public class SDCardMountInforUtil
           this.cache.add(str);
         }
       }
-      loadSdCards();
+      localBufferedReader.close();
+      this.cache.trimToSize();
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    for (;;)
-    {
-      return;
-      localException.close();
-      this.cache.trimToSize();
-    }
+    loadSdCards();
   }
   
   private void initVoldFstabORVoldConfToCache(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      reflectGetVolumePaths();
-      return;
-    case 0: 
-      initVoldConf();
+      if (paramInt != 1)
+      {
+        reflectGetVolumePaths();
+        return;
+      }
+      initVoldFstab();
       return;
     }
-    initVoldFstab();
+    initVoldConf();
   }
   
   private boolean isIgnore(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return false;
-      paramString = new File(paramString);
-      if ((!paramString.exists()) || (paramString.list() == null)) {
-        break;
-      }
+    }
+    paramString = new File(paramString);
+    if ((paramString.exists()) && (paramString.list() != null))
+    {
       paramString = paramString.list();
       int j = paramString.length;
       int i = 0;
       while (i < j)
       {
         String str = paramString[i];
-        Log.i("kapalai", "--------" + str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("--------");
+        localStringBuilder.append(str);
+        Log.i("kapalai", localStringBuilder.toString());
         i += 1;
       }
+      return false;
     }
     return true;
   }
@@ -194,14 +200,15 @@ public class SDCardMountInforUtil
   @TargetApi(9)
   private void reflectGetVolumePaths()
   {
-    int i = 0;
     if (this.sdk_level == 2)
     {
       this.allPath.clear();
       Object localObject = (StorageManager)this.mContext.getSystemService("storage");
       try
       {
-        localObject = (String[])localObject.getClass().getMethod("getVolumePaths", new Class[0]).invoke(localObject, new Object[0]);
+        Class localClass = localObject.getClass();
+        int i = 0;
+        localObject = (String[])localClass.getMethod("getVolumePaths", new Class[0]).invoke(localObject, new Object[0]);
         int j = localObject.length;
         while ((i < j) && (!isIgnore(localObject[i])))
         {
@@ -239,14 +246,14 @@ public class SDCardMountInforUtil
   
   public boolean isExSdcard(String paramString)
   {
-    if (paramString == null) {}
-    File localFile;
-    do
-    {
+    if (paramString == null) {
       return false;
-      localFile = new File(paramString);
-    } while ((paramString.endsWith(this.ROOT)) || (!localFile.exists()));
-    return true;
+    }
+    File localFile = new File(paramString);
+    if (!paramString.endsWith(this.ROOT)) {
+      return localFile.exists();
+    }
+    return false;
   }
   
   public void removeSDCardListener(Context paramContext)
@@ -261,7 +268,7 @@ public class SDCardMountInforUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kapalaiadapter.sdcardmountinforutil.SDCardMountInforUtil
  * JD-Core Version:    0.7.0.1
  */

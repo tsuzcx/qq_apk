@@ -11,10 +11,16 @@ class MultiVideoEnterPageActivity$TimeoutRunnable
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.this$0.jdField_a_of_type_JavaLangString, 1, "TimeoutRunnable, mHaveMoreRoom[" + this.this$0.jdField_a_of_type_Boolean + "]");
+    if (QLog.isColorLevel())
+    {
+      String str = this.this$0.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("TimeoutRunnable, mHaveMoreRoom[");
+      localStringBuilder.append(this.this$0.jdField_a_of_type_Boolean);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
-    QQToast.a(this.this$0, 2131695666, 1).b(MultiVideoEnterPageActivity.d(this.this$0).getDimensionPixelSize(2131299166));
+    QQToast.a(this.this$0, 2131695680, 1).b(MultiVideoEnterPageActivity.d(this.this$0).getDimensionPixelSize(2131299168));
     if (!this.this$0.jdField_a_of_type_Boolean)
     {
       this.this$0.b();
@@ -24,7 +30,7 @@ class MultiVideoEnterPageActivity$TimeoutRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoEnterPageActivity.TimeoutRunnable
  * JD-Core Version:    0.7.0.1
  */

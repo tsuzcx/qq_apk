@@ -12,7 +12,8 @@ public class CircleBarView$ProgressAnim
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     super.applyTransformation(paramFloat, paramTransformation);
-    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
+    paramTransformation = this.a;
+    CircleBarView.a(paramTransformation, CircleBarView.a(paramTransformation) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
     CircleBarView.b(this.a, 30.0F);
     if (CircleBarView.a(this.a) != null)
     {
@@ -26,7 +27,7 @@ public class CircleBarView$ProgressAnim
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CircleBarView.ProgressAnim
  * JD-Core Version:    0.7.0.1
  */

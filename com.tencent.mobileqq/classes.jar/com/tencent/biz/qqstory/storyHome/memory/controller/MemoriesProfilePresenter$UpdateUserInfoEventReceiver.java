@@ -14,6 +14,7 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 class MemoriesProfilePresenter$UpdateUserInfoEventReceiver
@@ -42,13 +43,17 @@ class MemoriesProfilePresenter$UpdateUserInfoEventReceiver
         ((FriendListHandler)PlayModeUtils.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getOnlineInfo(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
         ThreadManager.post(new MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1(this, paramMemoriesProfilePresenter), 5, null, false);
       }
-      for (;;)
+      else
       {
-        MemoriesProfilePresenter.a(paramMemoriesProfilePresenter).a(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-        return;
-        QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131706541) + paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.getErrorMessage(), 0);
+        BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131706567));
+        localStringBuilder.append(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.getErrorMessage());
+        QQToast.a(localBaseApplication, 1, localStringBuilder.toString(), 0);
         SLog.e("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", new Object[] { paramUpdateUserInfoEvent });
       }
+      MemoriesProfilePresenter.a(paramMemoriesProfilePresenter).a(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      return;
     }
     SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "ignore this update user info event: %s.", paramUpdateUserInfoEvent);
   }
@@ -60,7 +65,7 @@ class MemoriesProfilePresenter$UpdateUserInfoEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.UpdateUserInfoEventReceiver
  * JD-Core Version:    0.7.0.1
  */

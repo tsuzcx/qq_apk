@@ -9,14 +9,14 @@ class AudioUtil
   
   static int getBytesPerSample(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 3)
     {
-    default: 
-      return 2;
-    case 3: 
-      return 1;
+      if (paramInt != 4) {
+        return 2;
+      }
+      return 4;
     }
-    return 4;
+    return 1;
   }
   
   static int shortByteSize()
@@ -26,7 +26,7 @@ class AudioUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.audio.playback.AudioUtil
  * JD-Core Version:    0.7.0.1
  */

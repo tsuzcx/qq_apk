@@ -36,15 +36,19 @@ public class ReportLiveHeartTask
     if (localAppRuntime == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ReportLiveHeartTask", 2, "doMobileReport size = " + localArrayList.size());
+    if (QLog.isColorLevel())
+    {
+      paramHashMap = new StringBuilder();
+      paramHashMap.append("doMobileReport size = ");
+      paramHashMap.append(localArrayList.size());
+      QLog.i("ReportLiveHeartTask", 2, paramHashMap.toString());
     }
     MobileReportServlet.a(10, localAppRuntime, new UserCommReportBuilder().setUin(localAppRuntime.getLongAccountUin()).setNetwork_type(Tools.c()).build(), localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.mobilereport.ReportLiveHeartTask
  * JD-Core Version:    0.7.0.1
  */

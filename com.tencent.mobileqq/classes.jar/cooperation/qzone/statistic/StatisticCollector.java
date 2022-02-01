@@ -15,20 +15,26 @@ public class StatisticCollector
   
   private String getDevice()
   {
-    return Build.MODEL + "(" + Build.VERSION.RELEASE + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.MODEL);
+    localStringBuilder.append("(");
+    localStringBuilder.append(Build.VERSION.RELEASE);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public static StatisticCollector getInstance()
   {
-    if (!StatisticCollector.H.access$000().inited.get()) {}
-    try
-    {
-      if (!StatisticCollector.H.access$000().inited.get()) {
-        StatisticCollector.H.access$000().init();
+    if (!StatisticCollector.H.access$000().inited.get()) {
+      try
+      {
+        if (!StatisticCollector.H.access$000().inited.get()) {
+          StatisticCollector.H.access$000().init();
+        }
       }
-      return StatisticCollector.H.access$000();
+      finally {}
     }
-    finally {}
+    return StatisticCollector.H.access$000();
   }
   
   private String getSDKVersion()
@@ -80,7 +86,7 @@ public class StatisticCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.StatisticCollector
  * JD-Core Version:    0.7.0.1
  */

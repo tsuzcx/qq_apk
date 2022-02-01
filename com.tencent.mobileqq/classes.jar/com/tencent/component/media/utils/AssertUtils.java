@@ -8,22 +8,24 @@ public class AssertUtils
   @Public
   public static void assertTrue(boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      throw new AssertionError();
+    if (paramBoolean) {
+      return;
     }
+    throw new AssertionError();
   }
   
   @Public
   public static void assertTrue(boolean paramBoolean, String paramString)
   {
-    if (!paramBoolean) {
-      throw new AssertionError(paramString);
+    if (paramBoolean) {
+      return;
     }
+    throw new AssertionError(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.utils.AssertUtils
  * JD-Core Version:    0.7.0.1
  */

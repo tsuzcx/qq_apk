@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 import com.tencent.mobileqq.widget.ProgressCircle;
 import com.tencent.mobileqq.widget.ShaderAnimLayout;
 import com.tencent.util.VersionUtils;
@@ -109,151 +109,148 @@ public class DragSortListView
   public DragSortListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int i2 = 150;
-    boolean bool1;
-    int i1;
+    int i1 = 150;
+    int i2;
     if (paramAttributeSet != null)
     {
-      paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.DragSortListView, 0, 0);
-      this.jdField_h_of_type_Int = Math.max(1, paramContext.getDimensionPixelSize(1, 1));
-      this.jdField_h_of_type_Boolean = paramContext.getBoolean(17, false);
+      paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.G, 0, 0);
+      this.jdField_h_of_type_Int = Math.max(1, paramContext.getDimensionPixelSize(R.styleable.jdField_i_of_type_Int, 1));
+      this.jdField_h_of_type_Boolean = paramContext.getBoolean(R.styleable.y, false);
       if (this.jdField_h_of_type_Boolean) {
         this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragSortTracker = new DragSortListView.DragSortTracker(this);
       }
-      this.jdField_g_of_type_Float = paramContext.getFloat(8, this.jdField_g_of_type_Float);
+      this.jdField_g_of_type_Float = paramContext.getFloat(R.styleable.jdField_p_of_type_Int, this.jdField_g_of_type_Float);
       this.jdField_h_of_type_Float = this.jdField_g_of_type_Float;
-      this.jdField_d_of_type_Boolean = paramContext.getBoolean(2, this.jdField_d_of_type_Boolean);
-      this.jdField_e_of_type_Boolean = paramContext.getBoolean(10, this.jdField_e_of_type_Boolean);
-      this.jdField_k_of_type_Float = Math.max(0.0F, Math.min(1.0F, 1.0F - paramContext.getFloat(15, 0.75F)));
-      if (this.jdField_k_of_type_Float > 0.0F)
-      {
+      this.jdField_d_of_type_Boolean = paramContext.getBoolean(R.styleable.jdField_j_of_type_Int, this.jdField_d_of_type_Boolean);
+      this.jdField_e_of_type_Boolean = paramContext.getBoolean(R.styleable.jdField_r_of_type_Int, this.jdField_e_of_type_Boolean);
+      this.jdField_k_of_type_Float = Math.max(0.0F, Math.min(1.0F, 1.0F - paramContext.getFloat(R.styleable.w, 0.75F)));
+      boolean bool1;
+      if (this.jdField_k_of_type_Float > 0.0F) {
         bool1 = true;
-        this.jdField_c_of_type_Boolean = bool1;
-        setDragScrollStart(paramContext.getFloat(4, this.jdField_i_of_type_Float));
-        this.jdField_e_of_type_Float = paramContext.getFloat(11, this.jdField_e_of_type_Float);
-        i2 = paramContext.getInt(12, 150);
-        i1 = paramContext.getInt(6, 150);
-        if (paramContext.getBoolean(18, true))
-        {
-          bool1 = paramContext.getBoolean(13, false);
-          int i3 = paramContext.getInt(14, 1);
-          boolean bool2 = paramContext.getBoolean(16, true);
-          int i4 = paramContext.getInt(5, 0);
-          int i5 = paramContext.getResourceId(3, 0);
-          int i6 = paramContext.getResourceId(7, 0);
-          int i7 = paramContext.getResourceId(0, 0);
-          int i8 = paramContext.getColor(9, -16777216);
-          paramAttributeSet = new DragSortController(this, i5, i4, i3, i7, i6);
-          paramAttributeSet.b(bool1);
-          paramAttributeSet.a(bool2);
-          paramAttributeSet.f(i8);
-          this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$FloatViewManager = paramAttributeSet;
-          super.setOnTouchListener(paramAttributeSet);
-        }
-        paramContext.recycle();
+      } else {
+        bool1 = false;
       }
+      this.jdField_c_of_type_Boolean = bool1;
+      setDragScrollStart(paramContext.getFloat(R.styleable.jdField_l_of_type_Int, this.jdField_i_of_type_Float));
+      this.jdField_e_of_type_Float = paramContext.getFloat(R.styleable.s, this.jdField_e_of_type_Float);
+      i1 = paramContext.getInt(R.styleable.t, 150);
+      i2 = paramContext.getInt(R.styleable.jdField_n_of_type_Int, 150);
+      if (paramContext.getBoolean(R.styleable.z, true))
+      {
+        bool1 = paramContext.getBoolean(R.styleable.u, false);
+        int i3 = paramContext.getInt(R.styleable.v, 1);
+        boolean bool2 = paramContext.getBoolean(R.styleable.x, true);
+        int i4 = paramContext.getInt(R.styleable.jdField_m_of_type_Int, 0);
+        int i5 = paramContext.getResourceId(R.styleable.jdField_k_of_type_Int, 0);
+        int i6 = paramContext.getResourceId(R.styleable.jdField_o_of_type_Int, 0);
+        int i7 = paramContext.getResourceId(R.styleable.jdField_h_of_type_Int, 0);
+        int i8 = paramContext.getColor(R.styleable.jdField_q_of_type_Int, -16777216);
+        paramAttributeSet = new DragSortController(this, i5, i4, i3, i7, i6);
+        paramAttributeSet.b(bool1);
+        paramAttributeSet.a(bool2);
+        paramAttributeSet.f(i8);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$FloatViewManager = paramAttributeSet;
+        super.setOnTouchListener(paramAttributeSet);
+      }
+      paramContext.recycle();
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller = new DragSortListView.DragScroller(this);
-      this.jdField_k_of_type_Boolean = true;
-      if (i2 > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveAnimator = new DragSortListView.RemoveAnimator(this, 0.5F, i2);
-      }
-      if (i1 > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropAnimator = new DragSortListView.DropAnimator(this, 0.5F, i1);
-      }
-      this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(0L, 0L, 3, 0.0F, 0.0F, 0.0F, 0.0F, 0, 0.0F, 0.0F, 0, 0);
-      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new DragSortListView.2(this);
-      return;
-      bool1 = false;
-      break;
-      i1 = 150;
+      i2 = 150;
     }
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller = new DragSortListView.DragScroller(this);
+    this.jdField_k_of_type_Boolean = true;
+    if (i1 > 0) {
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveAnimator = new DragSortListView.RemoveAnimator(this, 0.5F, i1);
+    }
+    if (i2 > 0) {
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropAnimator = new DragSortListView.DropAnimator(this, 0.5F, i2);
+    }
+    this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(0L, 0L, 3, 0.0F, 0.0F, 0.0F, 0.0F, 0, 0.0F, 0.0F, 0, 0);
+    this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new DragSortListView.2(this);
   }
   
   private int a(int paramInt1, View paramView, int paramInt2, int paramInt3)
   {
-    int i1 = b(paramInt1);
+    int i2 = b(paramInt1);
     int i4 = paramView.getHeight();
-    int i5 = b(paramInt1, i1);
-    int i2;
+    int i5 = b(paramInt1, i2);
+    int i1;
     if (paramInt1 != this.jdField_e_of_type_Int)
     {
-      i2 = i4 - i1;
-      i1 = i5 - i1;
+      i1 = i4 - i2;
+      i2 = i5 - i2;
     }
-    for (;;)
+    else
     {
-      int i6 = this.jdField_i_of_type_Int;
-      int i3 = i6;
-      if (this.jdField_e_of_type_Int != this.jdField_c_of_type_Int)
-      {
-        i3 = i6;
-        if (this.jdField_e_of_type_Int != this.jdField_d_of_type_Int) {
-          i3 = i6 - this.jdField_h_of_type_Int;
-        }
-      }
-      if (paramInt1 <= paramInt2)
-      {
-        if (paramInt1 > this.jdField_c_of_type_Int) {
-          return i3 - i1 + 0;
-        }
-      }
-      else
-      {
-        if (paramInt1 == paramInt3)
-        {
-          if (paramInt1 <= this.jdField_c_of_type_Int) {
-            return i2 - i3 + 0;
-          }
-          if (paramInt1 == this.jdField_d_of_type_Int) {
-            return i4 - i5 + 0;
-          }
-          return 0 + i2;
-        }
-        if (paramInt1 <= this.jdField_c_of_type_Int) {
-          return 0 - i3;
-        }
-        if (paramInt1 == this.jdField_d_of_type_Int) {
-          return 0 - i1;
-        }
-      }
-      return 0;
-      i1 = i5;
-      i2 = i4;
+      i1 = i4;
+      i2 = i5;
     }
+    int i6 = this.jdField_i_of_type_Int;
+    int i7 = this.jdField_e_of_type_Int;
+    int i3 = i6;
+    if (i7 != this.jdField_c_of_type_Int)
+    {
+      i3 = i6;
+      if (i7 != this.jdField_d_of_type_Int) {
+        i3 = i6 - this.jdField_h_of_type_Int;
+      }
+    }
+    i6 = 0;
+    if (paramInt1 <= paramInt2)
+    {
+      paramInt2 = i6;
+      if (paramInt1 > this.jdField_c_of_type_Int) {
+        return 0 + (i3 - i2);
+      }
+    }
+    else
+    {
+      if (paramInt1 == paramInt3)
+      {
+        if (paramInt1 <= this.jdField_c_of_type_Int) {
+          i1 -= i3;
+        }
+        while (paramInt1 != this.jdField_d_of_type_Int) {
+          return 0 + i1;
+        }
+        return 0 + (i4 - i5);
+      }
+      if (paramInt1 <= this.jdField_c_of_type_Int) {
+        return 0 - i3;
+      }
+      paramInt2 = i6;
+      if (paramInt1 == this.jdField_d_of_type_Int) {
+        paramInt2 = 0 - i2;
+      }
+    }
+    return paramInt2;
   }
   
   private int a(int paramInt, View paramView, boolean paramBoolean)
   {
-    int i1 = 0;
     if (paramInt == this.jdField_e_of_type_Int) {
-      paramInt = i1;
+      return 0;
     }
-    View localView;
-    label65:
-    do
+    View localView = paramView;
+    if (paramInt >= getHeaderViewsCount()) {
+      if (paramInt >= getCount() - getFooterViewsCount()) {
+        localView = paramView;
+      } else {
+        localView = ((ViewGroup)paramView).getChildAt(0);
+      }
+    }
+    paramView = localView.getLayoutParams();
+    if ((paramView != null) && (paramView.height > 0)) {
+      return paramView.height;
+    }
+    paramInt = localView.getHeight();
+    if ((paramInt == 0) || (paramBoolean))
     {
-      return paramInt;
-      localView = paramView;
-      if (paramInt >= getHeaderViewsCount()) {
-        if (paramInt < getCount() - getFooterViewsCount()) {
-          break label65;
-        }
-      }
-      for (localView = paramView;; localView = ((ViewGroup)paramView).getChildAt(0))
-      {
-        paramView = localView.getLayoutParams();
-        if ((paramView == null) || (paramView.height <= 0)) {
-          break;
-        }
-        return paramView.height;
-      }
-      paramInt = localView.getHeight();
-    } while ((paramInt != 0) && (!paramBoolean));
-    a(localView);
-    return localView.getMeasuredHeight();
+      a(localView);
+      paramInt = localView.getMeasuredHeight();
+    }
+    return paramInt;
   }
   
   private ImageView a(int paramInt)
@@ -263,7 +260,7 @@ public class DragSortListView
     {
       View localView = super.getChildAt(paramInt);
       if (localView != null) {
-        return (ImageView)localView.findViewById(2131366280);
+        return (ImageView)localView.findViewById(2131366168);
       }
     }
     return null;
@@ -271,8 +268,9 @@ public class DragSortListView
   
   private void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint.x = (paramInt1 - this.jdField_o_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPoint.y = (paramInt2 - this.jdField_f_of_type_Int);
+    Point localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+    localPoint.x = (paramInt1 - this.jdField_o_of_type_Int);
+    localPoint.y = (paramInt2 - this.jdField_f_of_type_Int);
     a(true);
     paramInt1 = Math.min(paramInt2, this.jdField_a_of_type_Int + this.jdField_j_of_type_Int);
     paramInt2 = Math.max(paramInt2, this.jdField_a_of_type_Int - this.jdField_j_of_type_Int);
@@ -283,56 +281,50 @@ public class DragSortListView
         this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller.a(true);
       }
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller.a(1);
-    }
-    do
-    {
       return;
-      if ((paramInt2 < this.jdField_l_of_type_Int) && (paramInt2 < this.s) && (i1 != 0))
-      {
-        if (i1 != -1) {
-          this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller.a(true);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller.a(0);
-        return;
+    }
+    if ((paramInt2 < this.jdField_l_of_type_Int) && (paramInt2 < this.s) && (i1 != 0))
+    {
+      if (i1 != -1) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller.a(true);
       }
-    } while ((paramInt2 < this.s) || (paramInt1 > this.t) || (!this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller.a()));
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller.a(true);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller.a(0);
+      return;
+    }
+    if ((paramInt2 >= this.s) && (paramInt1 <= this.t) && (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller.a())) {
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller.a(true);
+    }
   }
   
   private void a(int paramInt, Canvas paramCanvas)
   {
     Drawable localDrawable = super.getDivider();
     int i4 = super.getDividerHeight();
-    ViewGroup localViewGroup;
-    int i2;
-    int i3;
-    int i1;
     if ((localDrawable != null) && (i4 != 0))
     {
-      localViewGroup = (ViewGroup)super.getChildAt(paramInt - getFirstVisiblePosition());
+      ViewGroup localViewGroup = (ViewGroup)super.getChildAt(paramInt - getFirstVisiblePosition());
       if (localViewGroup != null)
       {
-        i2 = super.getPaddingLeft();
-        i3 = super.getWidth() - super.getPaddingRight();
-        i1 = localViewGroup.getChildAt(0).getHeight();
-        if (paramInt <= this.jdField_e_of_type_Int) {
-          break label128;
+        int i2 = super.getPaddingLeft();
+        int i3 = super.getWidth() - super.getPaddingRight();
+        int i1 = localViewGroup.getChildAt(0).getHeight();
+        if (paramInt > this.jdField_e_of_type_Int)
+        {
+          i1 = localViewGroup.getTop() + i1;
+          paramInt = i4 + i1;
         }
-        i1 += localViewGroup.getTop();
-        paramInt = i1 + i4;
+        else
+        {
+          i1 = localViewGroup.getBottom() - i1;
+          paramInt = i1;
+          i1 -= i4;
+        }
+        paramCanvas.save();
+        paramCanvas.clipRect(i2, i1, i3, paramInt);
+        localDrawable.setBounds(i2, i1, i3, paramInt);
+        localDrawable.draw(paramCanvas);
+        paramCanvas.restore();
       }
-    }
-    for (;;)
-    {
-      paramCanvas.save();
-      paramCanvas.clipRect(i2, i1, i3, paramInt);
-      localDrawable.setBounds(i2, i1, i3, paramInt);
-      localDrawable.draw(paramCanvas);
-      paramCanvas.restore();
-      return;
-      label128:
-      paramInt = localViewGroup.getBottom() - i1;
-      i1 = paramInt - i4;
     }
   }
   
@@ -365,12 +357,13 @@ public class DragSortListView
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
     int i2 = ViewGroup.getChildMeasureSpec(this.jdField_r_of_type_Int, getListPaddingLeft() + getListPaddingRight(), ((ViewGroup.LayoutParams)localObject).width);
-    if (((ViewGroup.LayoutParams)localObject).height > 0) {}
-    for (int i1 = View.MeasureSpec.makeMeasureSpec(((ViewGroup.LayoutParams)localObject).height, 1073741824);; i1 = View.MeasureSpec.makeMeasureSpec(0, 0))
-    {
-      paramView.measure(i2, i1);
-      return;
+    int i1;
+    if (((ViewGroup.LayoutParams)localObject).height > 0) {
+      i1 = View.MeasureSpec.makeMeasureSpec(((ViewGroup.LayoutParams)localObject).height, 1073741824);
+    } else {
+      i1 = View.MeasureSpec.makeMeasureSpec(0, 0);
     }
+    paramView.measure(i2, i1);
   }
   
   private boolean a(View paramView, int paramInt1, int paramInt2)
@@ -381,64 +374,57 @@ public class DragSortListView
     paramView.getDrawingRect(this.jdField_a_of_type_AndroidGraphicsRect);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
-    this.jdField_a_of_type_AndroidGraphicsRect.left = arrayOfInt[0];
-    this.jdField_a_of_type_AndroidGraphicsRect.top = arrayOfInt[1];
-    this.jdField_a_of_type_AndroidGraphicsRect.right += arrayOfInt[0];
     paramView = this.jdField_a_of_type_AndroidGraphicsRect;
-    int i1 = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-    paramView.bottom = (arrayOfInt[1] + i1);
+    paramView.left = arrayOfInt[0];
+    paramView.top = arrayOfInt[1];
+    paramView.right += arrayOfInt[0];
+    paramView = this.jdField_a_of_type_AndroidGraphicsRect;
+    paramView.bottom += arrayOfInt[1];
     return this.jdField_a_of_type_AndroidGraphicsRect.contains(paramInt1, paramInt2);
   }
   
   private int b(int paramInt1, int paramInt2)
   {
     getDividerHeight();
-    int i1;
-    int i2;
-    int i3;
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_c_of_type_Int != this.jdField_d_of_type_Int))
-    {
+    if ((this.jdField_c_of_type_Boolean) && (this.jdField_c_of_type_Int != this.jdField_d_of_type_Int)) {
       i1 = 1;
-      i2 = this.jdField_i_of_type_Int - this.jdField_h_of_type_Int;
-      i3 = (int)(this.jdField_l_of_type_Float * i2);
-      if (paramInt1 != this.jdField_e_of_type_Int) {
-        break label123;
-      }
-      if (this.jdField_e_of_type_Int != this.jdField_c_of_type_Int) {
-        break label90;
-      }
-      if (i1 == 0) {
-        break label85;
-      }
-      i1 = i3 + this.jdField_h_of_type_Int;
+    } else {
+      i1 = 0;
     }
-    label85:
-    label90:
-    label123:
-    do
+    int i4 = this.jdField_i_of_type_Int;
+    int i5 = this.jdField_h_of_type_Int;
+    int i2 = i4 - i5;
+    int i3 = (int)(this.jdField_l_of_type_Float * i2);
+    int i6 = this.jdField_e_of_type_Int;
+    if (paramInt1 == i6)
     {
-      do
-      {
-        return i1;
-        i1 = 0;
-        break;
-        return this.jdField_i_of_type_Int;
-        if (this.jdField_e_of_type_Int == this.jdField_d_of_type_Int) {
-          return this.jdField_i_of_type_Int - i3;
-        }
-        i1 = paramInt2;
-      } while (this.jdField_g_of_type_Int == 0);
-      return this.jdField_h_of_type_Int;
-      if (paramInt1 == this.jdField_c_of_type_Int)
+      if (i6 == this.jdField_c_of_type_Int)
       {
         if (i1 != 0) {
-          return paramInt2 + i3;
+          return i3 + i5;
         }
-        return paramInt2 + i2;
+        return i4;
       }
-      i1 = paramInt2;
-    } while (paramInt1 != this.jdField_d_of_type_Int);
-    return paramInt2 + i2 - i3;
+      if (i6 == this.jdField_d_of_type_Int) {
+        return i4 - i3;
+      }
+      if (this.jdField_g_of_type_Int == 0) {
+        return paramInt2;
+      }
+      return i5;
+    }
+    if (paramInt1 == this.jdField_c_of_type_Int)
+    {
+      if (i1 != 0) {
+        return paramInt2 + i3;
+      }
+      return paramInt2 + i2;
+    }
+    int i1 = paramInt2;
+    if (paramInt1 == this.jdField_d_of_type_Int) {
+      i1 = paramInt2 + i2 - i3;
+    }
+    return i1;
   }
   
   private int b(int paramInt, View paramView, boolean paramBoolean)
@@ -449,8 +435,9 @@ public class DragSortListView
   private void b(int paramInt)
   {
     this.jdField_g_of_type_Int = 1;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener.a(paramInt);
+    DragSortListView.RemoveListener localRemoveListener = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener;
+    if (localRemoveListener != null) {
+      localRemoveListener.a(paramInt);
     }
     b();
     j();
@@ -466,45 +453,37 @@ public class DragSortListView
   private void b(int paramInt, View paramView, boolean paramBoolean)
   {
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i1;
-    if ((paramInt != this.jdField_e_of_type_Int) && (paramInt != this.jdField_c_of_type_Int) && (paramInt != this.jdField_d_of_type_Int))
-    {
+    if ((paramInt != this.jdField_e_of_type_Int) && (paramInt != this.jdField_c_of_type_Int) && (paramInt != this.jdField_d_of_type_Int)) {
       i1 = -2;
-      if (i1 != localLayoutParams.height)
-      {
-        localLayoutParams.height = i1;
-        paramView.setLayoutParams(localLayoutParams);
-      }
-      if ((paramInt == this.jdField_c_of_type_Int) || (paramInt == this.jdField_d_of_type_Int))
-      {
-        if (paramInt >= this.jdField_e_of_type_Int) {
-          break label151;
-        }
-        ((DragSortItemView)paramView).setGravity(80);
-      }
-    }
-    for (;;)
-    {
-      int i3 = paramView.getVisibility();
-      int i2 = 0;
-      i1 = i2;
-      if (paramInt == this.jdField_e_of_type_Int)
-      {
-        i1 = i2;
-        if (this.jdField_a_of_type_AndroidViewView != null) {
-          i1 = 4;
-        }
-      }
-      if (i1 != i3) {
-        paramView.setVisibility(i1);
-      }
-      return;
+    } else {
       i1 = b(paramInt, paramView, paramBoolean);
-      break;
-      label151:
-      if (paramInt > this.jdField_e_of_type_Int) {
+    }
+    if (i1 != localLayoutParams.height)
+    {
+      localLayoutParams.height = i1;
+      paramView.setLayoutParams(localLayoutParams);
+    }
+    if ((paramInt == this.jdField_c_of_type_Int) || (paramInt == this.jdField_d_of_type_Int))
+    {
+      i1 = this.jdField_e_of_type_Int;
+      if (paramInt < i1) {
+        ((DragSortItemView)paramView).setGravity(80);
+      } else if (paramInt > i1) {
         ((DragSortItemView)paramView).setGravity(48);
       }
+    }
+    int i3 = paramView.getVisibility();
+    int i2 = 0;
+    int i1 = i2;
+    if (paramInt == this.jdField_e_of_type_Int)
+    {
+      i1 = i2;
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        i1 = 4;
+      }
+    }
+    if (i1 != i3) {
+      paramView.setVisibility(i1);
     }
   }
   
@@ -514,27 +493,31 @@ public class DragSortListView
     {
       if (this.jdField_r_of_type_Boolean)
       {
-        if (this.jdField_m_of_type_Boolean) {
+        if (this.jdField_m_of_type_Boolean)
+        {
           if (this.jdField_k_of_type_Boolean)
           {
             e();
             a(this.jdField_e_of_type_Int);
             this.jdField_m_of_type_Boolean = false;
           }
-        }
-        for (;;)
-        {
-          this.jdField_r_of_type_Boolean = false;
-          return false;
-          if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener.a(this.jdField_e_of_type_Int);
+          else
+          {
+            paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener;
+            if (paramMotionEvent != null) {
+              paramMotionEvent.a(this.jdField_e_of_type_Int);
+            }
+            this.jdField_m_of_type_Boolean = false;
+            return false;
           }
-          this.jdField_m_of_type_Boolean = false;
-          return false;
+        }
+        else {
           d();
         }
+        this.jdField_r_of_type_Boolean = false;
+        return false;
       }
-      Button localButton = (Button)a(this.jdField_n_of_type_Int, 2131380950);
+      Button localButton = (Button)a(this.jdField_n_of_type_Int, 2131380216);
       if ((this.jdField_n_of_type_Boolean) && (localButton != null))
       {
         this.jdField_n_of_type_Boolean = false;
@@ -549,219 +532,195 @@ public class DragSortListView
     }
     try
     {
-      bool = super.onTouchEvent(paramMotionEvent);
+      boolean bool = super.onTouchEvent(paramMotionEvent);
       return bool;
     }
     catch (ArrayIndexOutOfBoundsException paramMotionEvent)
     {
-      for (;;)
-      {
-        paramMotionEvent.printStackTrace();
-        boolean bool = false;
-      }
+      paramMotionEvent.printStackTrace();
     }
+    return false;
   }
   
   private boolean c(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = false;
     boolean bool1 = this.jdField_f_of_type_Boolean;
+    boolean bool2 = false;
     this.jdField_f_of_type_Boolean = false;
     if (!bool1) {
       a(paramMotionEvent);
     }
-    if (this.jdField_g_of_type_Int == 4)
+    int i1 = this.jdField_g_of_type_Int;
+    if (i1 == 4)
     {
       a(paramMotionEvent);
-      bool2 = true;
+      return true;
     }
-    do
+    bool1 = bool2;
+    if (i1 == 0)
     {
-      return bool2;
       bool1 = bool2;
-      if (this.jdField_g_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (super.onTouchEvent(paramMotionEvent)) {
-          bool1 = true;
-        }
+      if (super.onTouchEvent(paramMotionEvent)) {
+        bool1 = true;
       }
-      switch (paramMotionEvent.getAction() & 0xFF)
+    }
+    i1 = paramMotionEvent.getAction() & 0xFF;
+    if ((i1 != 1) && (i1 != 3))
+    {
+      if (bool1)
       {
-      case 2: 
-      default: 
-        bool2 = bool1;
+        this.y = 1;
+        return bool1;
       }
-    } while (!bool1);
-    this.y = 1;
-    return bool1;
-    k();
+    }
+    else {
+      k();
+    }
     return bool1;
   }
   
   private boolean d()
   {
     int i1 = super.getFirstVisiblePosition();
-    int i2 = this.jdField_c_of_type_Int;
-    View localView2 = super.getChildAt(i2 - i1);
-    View localView1 = localView2;
-    if (localView2 == null)
+    int i3 = this.jdField_c_of_type_Int;
+    View localView = super.getChildAt(i3 - i1);
+    Object localObject = localView;
+    if (localView == null)
     {
-      i2 = i1 + getChildCount() / 2;
-      localView1 = super.getChildAt(i2 - i1);
+      i3 = getChildCount() / 2 + i1;
+      localObject = super.getChildAt(i3 - i1);
     }
-    int i6 = localView1.getTop();
-    int i7 = localView1.getHeight();
-    i1 = a(i2, i6);
-    int i9 = super.getDividerHeight();
-    int i3;
-    int i4;
+    i1 = ((View)localObject).getTop();
+    int i6 = ((View)localObject).getHeight();
+    int i2 = a(i3, i1);
+    int i7 = super.getDividerHeight();
     int i5;
-    label147:
-    int i8;
-    label200:
-    float f2;
-    if (this.jdField_a_of_type_Int < i1)
+    int i4;
+    if (this.jdField_a_of_type_Int < i2)
     {
-      i3 = i1;
-      i4 = i1;
-      i1 = i3;
-      i5 = i2;
-      i2 = i5;
-      i3 = i4;
-      if (i5 >= 0)
+      for (;;)
       {
-        i5 -= 1;
-        i1 = a(i5);
-        if (i5 == 0)
-        {
-          i1 = i6 - i9 - i1;
-          i3 = i4;
-          i2 = i5;
+        i5 = i3;
+        i4 = i2;
+        if (i3 < 0) {
+          break;
         }
+        i3 -= 1;
+        i4 = a(i3);
+        if (i3 == 0)
+        {
+          i1 = i1 - i7 - i4;
+          break label279;
+        }
+        i4 = i1 - (i4 + i7);
+        i1 = a(i3, i4);
+        if (this.jdField_a_of_type_Int >= i1) {
+          break label279;
+        }
+        i2 = i1;
+        i1 = i4;
+      }
+      i1 = i4;
+      i3 = i5;
+      i2 = i4;
+    }
+    else
+    {
+      i8 = getCount();
+      for (;;)
+      {
+        i5 = i3;
+        i4 = i2;
+        if (i3 >= i8) {
+          break;
+        }
+        if (i3 == i8 - 1)
+        {
+          i1 = i1 + i7 + i6;
+          break label279;
+        }
+        i4 = i1 + (i6 + i7);
+        i5 = i3 + 1;
+        i6 = a(i5);
+        i1 = a(i5, i4);
+        if (this.jdField_a_of_type_Int < i1) {
+          break label279;
+        }
+        i3 = i5;
+        i2 = i1;
+        i1 = i4;
+      }
+    }
+    label279:
+    i6 = super.getHeaderViewsCount();
+    int i9 = super.getFooterViewsCount();
+    boolean bool = false;
+    i7 = this.jdField_c_of_type_Int;
+    int i8 = this.jdField_d_of_type_Int;
+    float f1 = this.jdField_l_of_type_Float;
+    if (this.jdField_c_of_type_Boolean)
+    {
+      int i10 = Math.abs(i1 - i2);
+      i5 = i1;
+      i4 = i2;
+      if (this.jdField_a_of_type_Int < i1)
+      {
+        i4 = i1;
+        i5 = i2;
+      }
+      i1 = (int)(this.jdField_k_of_type_Float * 0.5F * i10);
+      float f2 = i1;
+      i2 = i5 + i1;
+      i5 = this.jdField_a_of_type_Int;
+      if (i5 < i2)
+      {
+        this.jdField_c_of_type_Int = (i3 - 1);
+        this.jdField_d_of_type_Int = i3;
+        this.jdField_l_of_type_Float = ((i2 - i5) * 0.5F / f2);
+      }
+      else if (i5 < i4 - i1)
+      {
+        this.jdField_c_of_type_Int = i3;
+        this.jdField_d_of_type_Int = i3;
       }
       else
       {
-        i5 = super.getHeaderViewsCount();
-        i8 = super.getFooterViewsCount();
-        i6 = this.jdField_c_of_type_Int;
-        i7 = this.jdField_d_of_type_Int;
-        float f1 = this.jdField_l_of_type_Float;
-        if (!this.jdField_c_of_type_Boolean) {
-          break label629;
-        }
-        i9 = Math.abs(i1 - i3);
-        if (this.jdField_a_of_type_Int >= i1) {
-          break label555;
-        }
-        f2 = this.jdField_k_of_type_Float;
-        i4 = (int)(i9 * (f2 * 0.5F));
-        f2 = i4;
-        i3 += i4;
-        if (this.jdField_a_of_type_Int >= i3) {
-          break label568;
-        }
-        this.jdField_c_of_type_Int = (i2 - 1);
-        this.jdField_d_of_type_Int = i2;
-        this.jdField_l_of_type_Float = ((i3 - this.jdField_a_of_type_Int) * 0.5F / f2);
-        label267:
-        if (this.jdField_c_of_type_Int >= i5) {
-          break label644;
-        }
-        this.jdField_c_of_type_Int = i5;
-        this.jdField_d_of_type_Int = i5;
-        i2 = i5;
-        label292:
-        if ((this.jdField_c_of_type_Int == i6) && (this.jdField_d_of_type_Int == i7) && (this.jdField_l_of_type_Float == f1)) {
-          break label687;
-        }
+        this.jdField_c_of_type_Int = i3;
+        this.jdField_d_of_type_Int = (i3 + 1);
+        this.jdField_l_of_type_Float = (((i4 - i5) / f2 + 1.0F) * 0.5F);
       }
     }
-    label555:
-    label687:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      if (i2 != this.jdField_b_of_type_Int)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragListener.a(this.jdField_b_of_type_Int - i5, i2 - i5);
-        }
-        this.jdField_b_of_type_Int = i2;
-        return true;
-        i7 = i6 - (i1 + i9);
-        i6 = a(i5, i7);
-        i2 = i5;
-        i3 = i4;
-        i1 = i6;
-        if (this.jdField_a_of_type_Int >= i6) {
-          break label147;
-        }
-        i4 = i6;
-        i1 = i6;
-        i6 = i7;
-        break;
-        int i10 = getCount();
-        i3 = i1;
-        i5 = i1;
-        i1 = i3;
-        i4 = i2;
-        for (;;)
-        {
-          i2 = i4;
-          i3 = i5;
-          if (i4 >= i10) {
-            break;
-          }
-          if (i4 == i10 - 1)
-          {
-            i1 = i6 + i9 + i7;
-            i2 = i4;
-            i3 = i5;
-            break;
-          }
-          i8 = i6 + (i9 + i7);
-          i7 = a(i4 + 1);
-          i6 = a(i4 + 1, i8);
-          i2 = i4;
-          i3 = i5;
-          i1 = i6;
-          if (this.jdField_a_of_type_Int < i6) {
-            break;
-          }
-          i4 += 1;
-          i5 = i6;
-          i1 = i6;
-          i6 = i8;
-        }
-        i4 = i3;
-        i3 = i1;
-        i1 = i4;
-        break label200;
-        label568:
-        if (this.jdField_a_of_type_Int < i1 - i4)
-        {
-          this.jdField_c_of_type_Int = i2;
-          this.jdField_d_of_type_Int = i2;
-          break label267;
-        }
-        this.jdField_c_of_type_Int = i2;
-        this.jdField_d_of_type_Int = (i2 + 1);
-        this.jdField_l_of_type_Float = ((1.0F + (i1 - this.jdField_a_of_type_Int) / f2) * 0.5F);
-        break label267;
-        label629:
-        this.jdField_c_of_type_Int = i2;
-        this.jdField_d_of_type_Int = i2;
-        break label267;
-        if (this.jdField_d_of_type_Int < getCount() - i8) {
-          break label292;
-        }
-        i2 = super.getCount() - i8 - 1;
-        this.jdField_c_of_type_Int = i2;
-        this.jdField_d_of_type_Int = i2;
-        break label292;
-      }
-      return bool;
+      this.jdField_c_of_type_Int = i3;
+      this.jdField_d_of_type_Int = i3;
     }
+    if (this.jdField_c_of_type_Int < i6)
+    {
+      this.jdField_c_of_type_Int = i6;
+      this.jdField_d_of_type_Int = i6;
+      i3 = i6;
+    }
+    else if (this.jdField_d_of_type_Int >= getCount() - i9)
+    {
+      i3 = super.getCount() - i9 - 1;
+      this.jdField_c_of_type_Int = i3;
+      this.jdField_d_of_type_Int = i3;
+    }
+    if ((this.jdField_c_of_type_Int != i7) || (this.jdField_d_of_type_Int != i8) || (this.jdField_l_of_type_Float != f1)) {
+      bool = true;
+    }
+    i1 = this.jdField_b_of_type_Int;
+    if (i3 != i1)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragListener;
+      if (localObject != null) {
+        ((DragSortListView.DragListener)localObject).a(i1 - i6, i3 - i6);
+      }
+      this.jdField_b_of_type_Int = i3;
+      return true;
+    }
+    return bool;
   }
   
   private void g()
@@ -775,10 +734,14 @@ public class DragSortListView
   private void h()
   {
     this.jdField_g_of_type_Int = 2;
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener != null) && (this.jdField_b_of_type_Int >= 0) && (this.jdField_b_of_type_Int < getCount()))
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener != null)
     {
-      int i1 = getHeaderViewsCount();
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener.a_(this.jdField_e_of_type_Int - i1, this.jdField_b_of_type_Int - i1);
+      int i1 = this.jdField_b_of_type_Int;
+      if ((i1 >= 0) && (i1 < getCount()))
+      {
+        i1 = getHeaderViewsCount();
+        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener.a_(this.jdField_e_of_type_Int - i1, this.jdField_b_of_type_Int - i1);
+      }
     }
     b();
     j();
@@ -799,10 +762,10 @@ public class DragSortListView
   
   private void j()
   {
-    int i1 = 0;
     int i2 = super.getFirstVisiblePosition();
     if (this.jdField_e_of_type_Int < i2)
     {
+      int i1 = 0;
       View localView = super.getChildAt(0);
       if (localView != null) {
         i1 = localView.getTop();
@@ -827,14 +790,16 @@ public class DragSortListView
   {
     int i1 = getPaddingTop();
     int i2 = getHeight() - i1 - getPaddingBottom();
-    float f1 = i2;
-    this.jdField_b_of_type_Float = (i1 + this.jdField_i_of_type_Float * f1);
-    float f2 = i1;
-    this.jdField_a_of_type_Float = (f1 * (1.0F - this.jdField_j_of_type_Float) + f2);
-    this.s = ((int)this.jdField_b_of_type_Float);
-    this.t = ((int)this.jdField_a_of_type_Float);
-    this.jdField_c_of_type_Float = (this.jdField_b_of_type_Float - i1);
-    this.jdField_d_of_type_Float = (i1 + i2 - this.jdField_a_of_type_Float);
+    float f2 = i2;
+    float f1 = i1;
+    this.jdField_b_of_type_Float = (this.jdField_i_of_type_Float * f2 + f1);
+    this.jdField_a_of_type_Float = ((1.0F - this.jdField_j_of_type_Float) * f2 + f1);
+    f2 = this.jdField_b_of_type_Float;
+    this.s = ((int)f2);
+    float f3 = this.jdField_a_of_type_Float;
+    this.t = ((int)f3);
+    this.jdField_c_of_type_Float = (f2 - f1);
+    this.jdField_d_of_type_Float = (i1 + i2 - f3);
   }
   
   private void m()
@@ -855,9 +820,10 @@ public class DragSortListView
   
   private void n()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null)
     {
-      a(this.jdField_a_of_type_AndroidViewView);
+      a(localView);
       this.jdField_i_of_type_Int = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
       this.jdField_j_of_type_Int = (this.jdField_i_of_type_Int / 2);
     }
@@ -873,57 +839,54 @@ public class DragSortListView
     int i1 = this.jdField_a_of_type_AndroidGraphicsPoint.x;
     int i4 = this.jdField_a_of_type_AndroidGraphicsPoint.y;
     int i2 = getPaddingLeft();
-    int i3;
-    if (((this.x & 0x1) == 0) && (i1 > i2))
-    {
+    if (((this.x & 0x1) == 0) && (i1 > i2)) {
       this.jdField_a_of_type_AndroidGraphicsPoint.x = i2;
-      i2 = getHeaderViewsCount();
-      i3 = getFooterViewsCount();
-      int i5 = getFirstVisiblePosition();
-      int i6 = getLastVisiblePosition();
-      i1 = getPaddingTop();
-      if (i5 < i2) {
-        i1 = getChildAt(i2 - i5 - 1).getBottom();
-      }
+    } else if (((this.x & 0x2) == 0) && (i1 < i2)) {
+      this.jdField_a_of_type_AndroidGraphicsPoint.x = i2;
+    }
+    i2 = getHeaderViewsCount();
+    int i3 = getFooterViewsCount();
+    int i5 = getFirstVisiblePosition();
+    int i6 = getLastVisiblePosition();
+    i1 = getPaddingTop();
+    if (i5 < i2) {
+      i1 = getChildAt(i2 - i5 - 1).getBottom();
+    }
+    i2 = i1;
+    int i7;
+    if ((this.x & 0x8) == 0)
+    {
+      i7 = this.jdField_e_of_type_Int;
       i2 = i1;
-      if ((this.x & 0x8) == 0)
-      {
-        i2 = i1;
-        if (i5 <= this.jdField_e_of_type_Int) {
-          i2 = Math.max(getChildAt(this.jdField_e_of_type_Int - i5).getTop(), i1);
-        }
+      if (i5 <= i7) {
+        i2 = Math.max(getChildAt(i7 - i5).getTop(), i1);
       }
-      i1 = getHeight() - getPaddingBottom();
-      if (i6 >= getCount() - i3 - 1) {
-        i1 = getChildAt(getCount() - i3 - 1 - i5).getBottom();
-      }
+    }
+    i1 = getHeight() - getPaddingBottom();
+    if (i6 >= getCount() - i3 - 1) {
+      i1 = getChildAt(getCount() - i3 - 1 - i5).getBottom();
+    }
+    i3 = i1;
+    if ((this.x & 0x4) == 0)
+    {
+      i7 = this.jdField_e_of_type_Int;
       i3 = i1;
-      if ((this.x & 0x4) == 0)
-      {
-        i3 = i1;
-        if (i6 >= this.jdField_e_of_type_Int) {
-          i3 = Math.min(getChildAt(this.jdField_e_of_type_Int - i5).getBottom(), i1);
-        }
+      if (i6 >= i7) {
+        i3 = Math.min(getChildAt(i7 - i5).getBottom(), i1);
       }
-      if (i4 >= i2) {
-        break label315;
-      }
+    }
+    if (i4 < i2)
+    {
       this.jdField_a_of_type_AndroidGraphicsPoint.y = i2;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Int = (this.jdField_a_of_type_AndroidGraphicsPoint.y + this.jdField_j_of_type_Int);
-      return;
-      if (((this.x & 0x2) != 0) || (i1 >= i2)) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidGraphicsPoint.x = i2;
-      break;
-      label315:
-      if (this.jdField_i_of_type_Int + i4 > i3) {
-        this.jdField_a_of_type_AndroidGraphicsPoint.y = (i3 - this.jdField_i_of_type_Int);
+      i1 = this.jdField_i_of_type_Int;
+      if (i4 + i1 > i3) {
+        this.jdField_a_of_type_AndroidGraphicsPoint.y = (i3 - i1);
       }
     }
+    this.jdField_a_of_type_Int = (this.jdField_a_of_type_AndroidGraphicsPoint.y + this.jdField_j_of_type_Int);
   }
   
   int a(int paramInt)
@@ -937,54 +900,72 @@ public class DragSortListView
   
   int a(int paramInt1, int paramInt2)
   {
-    int i1 = super.getHeaderViewsCount();
-    int i2 = super.getFooterViewsCount();
-    if ((paramInt1 <= i1) || (paramInt1 >= getCount() - i2)) {
-      return paramInt2;
-    }
-    i2 = super.getDividerHeight();
-    int i4 = this.jdField_i_of_type_Int - this.jdField_h_of_type_Int;
-    int i3 = b(paramInt1);
-    int i5 = a(paramInt1);
-    if (this.jdField_d_of_type_Int <= this.jdField_e_of_type_Int) {
-      if ((paramInt1 == this.jdField_d_of_type_Int) && (this.jdField_c_of_type_Int != this.jdField_d_of_type_Int)) {
-        if (paramInt1 == this.jdField_e_of_type_Int) {
-          i1 = paramInt2 + i5 - this.jdField_i_of_type_Int;
-        }
-      }
-    }
-    while (paramInt1 <= this.jdField_e_of_type_Int)
+    int i2 = super.getHeaderViewsCount();
+    int i3 = super.getFooterViewsCount();
+    int i1 = paramInt2;
+    if (paramInt1 > i2)
     {
-      return (this.jdField_i_of_type_Int - i2 - b(paramInt1 - 1)) / 2 + i1;
-      i1 = i5 - i3 + paramInt2 - i4;
-      continue;
-      i1 = paramInt2;
-      if (paramInt1 > this.jdField_d_of_type_Int)
+      if (paramInt1 >= getCount() - i3) {
+        return paramInt2;
+      }
+      i3 = super.getDividerHeight();
+      i2 = this.jdField_i_of_type_Int - this.jdField_h_of_type_Int;
+      int i4 = b(paramInt1);
+      int i5 = a(paramInt1);
+      i1 = this.jdField_d_of_type_Int;
+      int i6 = this.jdField_e_of_type_Int;
+      if (i1 <= i6)
       {
-        i1 = paramInt2;
-        if (paramInt1 <= this.jdField_e_of_type_Int)
+        if ((paramInt1 == i1) && (this.jdField_c_of_type_Int != i1))
         {
-          i1 = paramInt2 - i4;
-          continue;
-          if ((paramInt1 > this.jdField_e_of_type_Int) && (paramInt1 <= this.jdField_c_of_type_Int))
+          if (paramInt1 == i6)
           {
-            i1 = paramInt2 + i4;
+            paramInt2 += i5;
+            i1 = this.jdField_i_of_type_Int;
           }
           else
           {
-            i1 = paramInt2;
-            if (paramInt1 == this.jdField_d_of_type_Int)
-            {
-              i1 = paramInt2;
-              if (this.jdField_c_of_type_Int != this.jdField_d_of_type_Int) {
-                i1 = paramInt2 + (i5 - i3);
-              }
-            }
+            paramInt2 += i5 - i4;
+            i1 = i2;
+          }
+        }
+        else
+        {
+          i1 = paramInt2;
+          if (paramInt1 <= this.jdField_d_of_type_Int) {
+            break label212;
+          }
+          i1 = paramInt2;
+          if (paramInt1 > this.jdField_e_of_type_Int) {
+            break label212;
+          }
+          i1 = i2;
+        }
+        i1 = paramInt2 - i1;
+      }
+      else if ((paramInt1 > i6) && (paramInt1 <= this.jdField_c_of_type_Int))
+      {
+        i1 = paramInt2 + i2;
+      }
+      else
+      {
+        i2 = this.jdField_d_of_type_Int;
+        i1 = paramInt2;
+        if (paramInt1 == i2)
+        {
+          i1 = paramInt2;
+          if (this.jdField_c_of_type_Int != i2) {
+            i1 = paramInt2 + (i5 - i4);
           }
         }
       }
+      label212:
+      if (paramInt1 <= this.jdField_e_of_type_Int) {
+        return i1 + (this.jdField_i_of_type_Int - i3 - b(paramInt1 - 1)) / 2;
+      }
+      i1 += (i4 - i3 - this.jdField_i_of_type_Int) / 2;
     }
-    return (i3 - i2 - this.jdField_i_of_type_Int) / 2 + i1;
+    return i1;
   }
   
   public View a(int paramInt1, int paramInt2)
@@ -1007,7 +988,7 @@ public class DragSortListView
     {
       View localView = super.getChildAt(paramInt);
       if (localView != null) {
-        return (ShaderAnimLayout)localView.findViewById(2131377928);
+        return (ShaderAnimLayout)localView.findViewById(2131377351);
       }
     }
     return null;
@@ -1021,15 +1002,13 @@ public class DragSortListView
       b();
       g();
       m();
-      if (this.jdField_g_of_type_Boolean) {
+      if (this.jdField_g_of_type_Boolean)
+      {
         this.jdField_g_of_type_Int = 3;
+        return;
       }
+      this.jdField_g_of_type_Int = 0;
     }
-    else
-    {
-      return;
-    }
-    this.jdField_g_of_type_Int = 0;
   }
   
   public void a(int paramInt)
@@ -1040,36 +1019,44 @@ public class DragSortListView
   
   public void a(int paramInt, float paramFloat)
   {
-    if ((this.jdField_g_of_type_Int == 0) || (this.jdField_g_of_type_Int == 4))
+    int i1 = this.jdField_g_of_type_Int;
+    if ((i1 == 0) || (i1 == 4))
     {
       if (this.jdField_g_of_type_Int == 0)
       {
         this.jdField_e_of_type_Int = (getHeaderViewsCount() + paramInt);
-        this.jdField_c_of_type_Int = this.jdField_e_of_type_Int;
-        this.jdField_d_of_type_Int = this.jdField_e_of_type_Int;
-        this.jdField_b_of_type_Int = this.jdField_e_of_type_Int;
-        View localView = super.getChildAt(this.jdField_e_of_type_Int - getFirstVisiblePosition());
-        if (localView != null) {
-          localView.setVisibility(4);
+        i1 = this.jdField_e_of_type_Int;
+        this.jdField_c_of_type_Int = i1;
+        this.jdField_d_of_type_Int = i1;
+        this.jdField_b_of_type_Int = i1;
+        localObject = super.getChildAt(i1 - getFirstVisiblePosition());
+        if (localObject != null) {
+          ((View)localObject).setVisibility(4);
         }
       }
       this.jdField_g_of_type_Int = 1;
       this.jdField_f_of_type_Float = paramFloat;
-      if (this.jdField_g_of_type_Boolean) {
-        switch (this.y)
+      if (this.jdField_g_of_type_Boolean)
+      {
+        i1 = this.y;
+        if (i1 != 1)
         {
+          if (i1 == 2) {
+            super.onInterceptTouchEvent(this.jdField_a_of_type_AndroidViewMotionEvent);
+          }
+        }
+        else {
+          super.onTouchEvent(this.jdField_a_of_type_AndroidViewMotionEvent);
         }
       }
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveAnimator;
+      if (localObject != null)
+      {
+        ((DragSortListView.RemoveAnimator)localObject).c();
+        return;
+      }
+      b(paramInt);
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveAnimator != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveAnimator.c();
-      return;
-      super.onTouchEvent(this.jdField_a_of_type_AndroidViewMotionEvent);
-      continue;
-      super.onInterceptTouchEvent(this.jdField_a_of_type_AndroidViewMotionEvent);
-    }
-    b(paramInt);
   }
   
   void a(int paramInt, View paramView, boolean paramBoolean)
@@ -1082,7 +1069,8 @@ public class DragSortListView
     if (bool)
     {
       m();
-      setSelectionFromTop(paramInt, a(paramInt, paramView, i1, i2) + paramView.getTop() - getPaddingTop());
+      i1 = a(paramInt, paramView, i1, i2);
+      setSelectionFromTop(paramInt, paramView.getTop() + i1 - getPaddingTop());
       layoutChildren();
     }
     if ((bool) || (paramBoolean)) {
@@ -1109,87 +1097,100 @@ public class DragSortListView
   
   public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((!this.jdField_g_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$FloatViewManager == null)) {}
-    View localView;
-    do
+    if (this.jdField_g_of_type_Boolean)
     {
-      return false;
-      localView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$FloatViewManager.a(paramInt1);
-    } while (localView == null);
-    return a(paramInt1, localView, paramInt2, paramInt3, paramInt4);
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$FloatViewManager;
+      if (localObject == null) {
+        return false;
+      }
+      localObject = ((DragSortListView.FloatViewManager)localObject).a(paramInt1);
+      if (localObject == null) {
+        return false;
+      }
+      return a(paramInt1, (View)localObject, paramInt2, paramInt3, paramInt4);
+    }
+    return false;
   }
   
   public boolean a(int paramInt1, View paramView, int paramInt2, int paramInt3, int paramInt4)
   {
-    boolean bool = true;
-    if ((this.jdField_g_of_type_Int != 0) || (!this.jdField_g_of_type_Boolean) || (this.jdField_a_of_type_AndroidViewView != null) || (paramView == null) || (!this.jdField_d_of_type_Boolean))
+    if ((this.jdField_g_of_type_Int == 0) && (this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView == null) && (paramView != null))
     {
-      bool = false;
-      return bool;
-    }
-    if (getParent() != null) {
-      getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    paramInt1 = getHeaderViewsCount() + paramInt1;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt1;
-    this.jdField_e_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_g_of_type_Int = 4;
-    this.x = 0;
-    this.x |= paramInt2;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    n();
-    this.jdField_o_of_type_Int = paramInt3;
-    this.jdField_f_of_type_Int = paramInt4;
-    this.w = this.jdField_k_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPoint.x = (this.u - this.jdField_o_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPoint.y = (this.jdField_k_of_type_Int - this.jdField_f_of_type_Int);
-    paramView = getChildAt(this.jdField_e_of_type_Int - getFirstVisiblePosition());
-    if (paramView != null) {
-      paramView.setVisibility(4);
-    }
-    if (this.jdField_h_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragSortTracker.a();
-    }
-    switch (this.y)
-    {
-    }
-    for (;;)
-    {
-      requestLayout();
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$LiftAnimator == null) {
-        break;
+      if (!this.jdField_d_of_type_Boolean) {
+        return false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$LiftAnimator.c();
+      if (getParent() != null) {
+        getParent().requestDisallowInterceptTouchEvent(true);
+      }
+      paramInt1 += getHeaderViewsCount();
+      this.jdField_c_of_type_Int = paramInt1;
+      this.jdField_d_of_type_Int = paramInt1;
+      this.jdField_e_of_type_Int = paramInt1;
+      this.jdField_b_of_type_Int = paramInt1;
+      this.jdField_g_of_type_Int = 4;
+      this.x = 0;
+      this.x = (paramInt2 | this.x);
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      n();
+      this.jdField_o_of_type_Int = paramInt3;
+      this.jdField_f_of_type_Int = paramInt4;
+      paramInt1 = this.jdField_k_of_type_Int;
+      this.w = paramInt1;
+      paramView = this.jdField_a_of_type_AndroidGraphicsPoint;
+      paramView.x = (this.u - this.jdField_o_of_type_Int);
+      paramView.y = (paramInt1 - this.jdField_f_of_type_Int);
+      paramView = getChildAt(this.jdField_e_of_type_Int - getFirstVisiblePosition());
+      if (paramView != null) {
+        paramView.setVisibility(4);
+      }
+      if (this.jdField_h_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragSortTracker.a();
+      }
+      paramInt1 = this.y;
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 == 2) {
+          super.onInterceptTouchEvent(this.jdField_a_of_type_AndroidViewMotionEvent);
+        }
+      }
+      else {
+        super.onTouchEvent(this.jdField_a_of_type_AndroidViewMotionEvent);
+      }
+      requestLayout();
+      paramView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$LiftAnimator;
+      if (paramView != null) {
+        paramView.c();
+      }
       return true;
-      super.onTouchEvent(this.jdField_a_of_type_AndroidViewMotionEvent);
-      continue;
-      super.onInterceptTouchEvent(this.jdField_a_of_type_AndroidViewMotionEvent);
     }
+    return false;
   }
   
   protected boolean a(MotionEvent paramMotionEvent)
   {
     paramMotionEvent.getAction();
-    switch (paramMotionEvent.getAction() & 0xFF)
+    int i1 = paramMotionEvent.getAction() & 0xFF;
+    if (i1 != 1)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if (this.jdField_g_of_type_Int == 4) {
-        a();
+      if (i1 != 2)
+      {
+        if (i1 != 3) {
+          return true;
+        }
+        if (this.jdField_g_of_type_Int == 4) {
+          a();
+        }
+        k();
+        return true;
       }
-      k();
-      continue;
-      if (this.jdField_g_of_type_Int == 4) {
-        a(false);
-      }
-      k();
-      continue;
       a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+      return true;
     }
+    if (this.jdField_g_of_type_Int == 4) {
+      a(false);
+    }
+    k();
+    return true;
   }
   
   public boolean a(boolean paramBoolean)
@@ -1206,49 +1207,54 @@ public class DragSortListView
   
   int b(int paramInt)
   {
-    int i1 = 0;
-    if (paramInt == this.jdField_e_of_type_Int) {}
-    do
-    {
+    if (paramInt == this.jdField_e_of_type_Int) {
+      return 0;
+    }
+    Object localObject = getChildAt(paramInt - getFirstVisiblePosition());
+    if (localObject != null) {
+      return a(paramInt, (View)localObject, false);
+    }
+    int i1 = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$HeightCache.a(paramInt);
+    if (i1 != -1) {
       return i1;
-      localObject = getChildAt(paramInt - getFirstVisiblePosition());
-      if (localObject != null) {
-        return a(paramInt, (View)localObject, false);
-      }
-      i2 = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$HeightCache.a(paramInt);
-      i1 = i2;
-    } while (i2 != -1);
-    Object localObject = getAdapter();
+    }
+    localObject = getAdapter();
     i1 = ((ListAdapter)localObject).getItemViewType(paramInt);
     int i2 = ((ListAdapter)localObject).getViewTypeCount();
     if (i2 != this.jdField_a_of_type_ArrayOfAndroidViewView.length) {
       this.jdField_a_of_type_ArrayOfAndroidViewView = new View[i2];
     }
-    if (i1 >= 0) {
-      if (this.jdField_a_of_type_ArrayOfAndroidViewView[i1] == null)
+    if (i1 >= 0)
+    {
+      View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
+      if (arrayOfView[i1] == null)
       {
         localObject = ((ListAdapter)localObject).getView(paramInt, null, this);
         this.jdField_a_of_type_ArrayOfAndroidViewView[i1] = localObject;
       }
+      else
+      {
+        localObject = ((ListAdapter)localObject).getView(paramInt, arrayOfView[i1], this);
+      }
     }
-    for (;;)
+    else
     {
-      i1 = a(paramInt, (View)localObject, true);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$HeightCache.a(paramInt, i1);
-      return i1;
-      localObject = ((ListAdapter)localObject).getView(paramInt, this.jdField_a_of_type_ArrayOfAndroidViewView[i1], this);
-      continue;
       localObject = ((ListAdapter)localObject).getView(paramInt, null, this);
     }
+    i1 = a(paramInt, (View)localObject, true);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$HeightCache.a(paramInt, i1);
+    return i1;
   }
   
   void b()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$FloatViewManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$FloatViewManager.a(this.jdField_a_of_type_AndroidViewView);
+      ((View)localObject).setVisibility(8);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$FloatViewManager;
+      if (localObject != null) {
+        ((DragSortListView.FloatViewManager)localObject).a(this.jdField_a_of_type_AndroidViewView);
       }
       this.jdField_a_of_type_AndroidViewView = null;
       invalidate();
@@ -1265,47 +1271,48 @@ public class DragSortListView
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScroller.a(true);
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         a(this.jdField_e_of_type_Int - getHeaderViewsCount(), paramFloat);
       }
-      for (;;)
+      else
       {
-        if (this.jdField_h_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragSortTracker.d();
-        }
-        return true;
-        if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropAnimator != null) {
-          this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropAnimator.c();
+        DragSortListView.DropAnimator localDropAnimator = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropAnimator;
+        if (localDropAnimator != null) {
+          localDropAnimator.c();
         } else {
           h();
         }
       }
+      if (this.jdField_h_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragSortTracker.d();
+      }
+      return true;
     }
     return false;
   }
   
   public void c()
   {
-    if (this.jdField_r_of_type_Boolean) {}
-    Object localObject;
-    ProgressCircle localProgressCircle;
-    do
+    if (this.jdField_r_of_type_Boolean) {
+      return;
+    }
+    Object localObject = a(this.jdField_e_of_type_Int);
+    if (localObject != null)
     {
-      do
+      ((ShaderAnimLayout)localObject).a();
+      this.jdField_r_of_type_Boolean = true;
+      localObject = (RelativeLayout)a(this.jdField_e_of_type_Int, 2131380217);
+      if (localObject == null) {
+        return;
+      }
+      ProgressCircle localProgressCircle = (ProgressCircle)((RelativeLayout)localObject).findViewById(2131380218);
+      if ((((RelativeLayout)localObject).getVisibility() == 0) && (localProgressCircle.getVisibility() == 0))
       {
-        do
-        {
-          return;
-          localObject = a(this.jdField_e_of_type_Int);
-        } while (localObject == null);
-        ((ShaderAnimLayout)localObject).a();
-        this.jdField_r_of_type_Boolean = true;
-        localObject = (RelativeLayout)a(this.jdField_e_of_type_Int, 2131380951);
-      } while (localObject == null);
-      localProgressCircle = (ProgressCircle)((RelativeLayout)localObject).findViewById(2131380952);
-    } while ((((RelativeLayout)localObject).getVisibility() != 0) || (localProgressCircle.getVisibility() != 0));
-    ((RelativeLayout)localObject).setVisibility(8);
-    this.jdField_m_of_type_Int = this.jdField_e_of_type_Int;
+        ((RelativeLayout)localObject).setVisibility(8);
+        this.jdField_m_of_type_Int = this.jdField_e_of_type_Int;
+      }
+    }
   }
   
   public boolean c()
@@ -1320,51 +1327,54 @@ public class DragSortListView
     {
       ((ShaderAnimLayout)localObject).e();
       this.jdField_r_of_type_Boolean = false;
-      if (this.jdField_m_of_type_Int >= 0)
+      int i1 = this.jdField_m_of_type_Int;
+      if (i1 >= 0)
       {
-        localObject = (RelativeLayout)a(this.jdField_m_of_type_Int, 2131380951);
-        if ((localObject != null) && (((ProgressCircle)((RelativeLayout)localObject).findViewById(2131380952)).getVisibility() == 0)) {
+        localObject = (RelativeLayout)a(i1, 2131380217);
+        if ((localObject != null) && (((ProgressCircle)((RelativeLayout)localObject).findViewById(2131380218)).getVisibility() == 0)) {
           ((RelativeLayout)localObject).setVisibility(0);
         }
       }
     }
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
+    int i1;
     if (this.jdField_g_of_type_Int != 0)
     {
-      if (this.jdField_c_of_type_Int != this.jdField_e_of_type_Int) {
-        a(this.jdField_c_of_type_Int, paramCanvas);
+      i1 = this.jdField_c_of_type_Int;
+      if (i1 != this.jdField_e_of_type_Int) {
+        a(i1, paramCanvas);
       }
-      if ((this.jdField_d_of_type_Int != this.jdField_c_of_type_Int) && (this.jdField_d_of_type_Int != this.jdField_e_of_type_Int)) {
-        a(this.jdField_d_of_type_Int, paramCanvas);
+      i1 = this.jdField_d_of_type_Int;
+      if ((i1 != this.jdField_c_of_type_Int) && (i1 != this.jdField_e_of_type_Int)) {
+        a(i1, paramCanvas);
       }
     }
-    int i3;
-    int i4;
-    int i1;
-    float f1;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null)
     {
-      i3 = this.jdField_a_of_type_AndroidViewView.getWidth();
-      i4 = this.jdField_a_of_type_AndroidViewView.getHeight();
+      int i3 = localView.getWidth();
+      int i4 = this.jdField_a_of_type_AndroidViewView.getHeight();
       int i2 = this.jdField_a_of_type_AndroidGraphicsPoint.x;
       int i5 = getWidth();
       i1 = i2;
       if (i2 < 0) {
         i1 = -i2;
       }
-      if (i1 >= i5) {
-        break label216;
+      float f1;
+      if (i1 < i5)
+      {
+        f1 = (i5 - i1) / i5;
+        f1 *= f1;
       }
-      f1 = (i5 - i1) / i5;
-    }
-    label216:
-    for (f1 *= f1;; f1 = 0.0F)
-    {
-      i1 = (int)(f1 * (255.0F * this.jdField_h_of_type_Float));
+      else
+      {
+        f1 = 0.0F;
+      }
+      i1 = (int)(this.jdField_h_of_type_Float * 255.0F * f1);
       paramCanvas.save();
       paramCanvas.translate(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y);
       paramCanvas.clipRect(0, 0, i3, i4);
@@ -1372,7 +1382,6 @@ public class DragSortListView
       this.jdField_a_of_type_AndroidViewView.draw(paramCanvas);
       paramCanvas.restore();
       paramCanvas.restore();
-      return;
     }
   }
   
@@ -1383,56 +1392,58 @@ public class DragSortListView
     {
       ((ShaderAnimLayout)localObject).g();
       this.jdField_r_of_type_Boolean = false;
-      if (this.jdField_m_of_type_Int >= 0)
+      int i1 = this.jdField_m_of_type_Int;
+      if (i1 >= 0)
       {
-        localObject = (RelativeLayout)a(this.jdField_m_of_type_Int, 2131380951);
-        if (localObject != null) {
-          break label49;
+        localObject = (RelativeLayout)a(i1, 2131380217);
+        if (localObject == null) {
+          return;
+        }
+        if (((ProgressCircle)((RelativeLayout)localObject).findViewById(2131380218)).getVisibility() == 0) {
+          ((RelativeLayout)localObject).setVisibility(0);
         }
       }
     }
-    label49:
-    while (((ProgressCircle)((RelativeLayout)localObject).findViewById(2131380952)).getVisibility() != 0) {
-      return;
-    }
-    ((RelativeLayout)localObject).setVisibility(0);
   }
   
   public void f()
   {
     if ((this.jdField_r_of_type_Boolean) && (VersionUtils.m()) && (AppSetting.jdField_d_of_type_Boolean))
     {
-      if (!this.jdField_k_of_type_Boolean) {
-        break label49;
+      if (this.jdField_k_of_type_Boolean)
+      {
+        e();
+        a(this.jdField_e_of_type_Int);
+        this.jdField_m_of_type_Boolean = false;
       }
-      e();
-      a(this.jdField_e_of_type_Int);
-    }
-    for (this.jdField_m_of_type_Boolean = false;; this.jdField_m_of_type_Boolean = false)
-    {
+      else
+      {
+        DragSortListView.RemoveListener localRemoveListener = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener;
+        if (localRemoveListener != null) {
+          localRemoveListener.a(this.jdField_e_of_type_Int);
+        }
+        this.jdField_m_of_type_Boolean = false;
+      }
       this.jdField_r_of_type_Boolean = false;
-      return;
-      label49:
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener.a(this.jdField_e_of_type_Int);
-      }
     }
   }
   
-  public void layoutChildren()
+  protected void layoutChildren()
   {
     super.layoutChildren();
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null)
     {
-      if ((this.jdField_a_of_type_AndroidViewView.isLayoutRequested()) && (!this.jdField_b_of_type_Boolean)) {
+      if ((localView.isLayoutRequested()) && (!this.jdField_b_of_type_Boolean)) {
         n();
       }
-      this.jdField_a_of_type_AndroidViewView.layout(0, 0, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
+      localView = this.jdField_a_of_type_AndroidViewView;
+      localView.layout(0, 0, localView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
       this.jdField_b_of_type_Boolean = false;
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_h_of_type_Boolean) {
@@ -1442,9 +1453,7 @@ public class DragSortListView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i1;
     int i2;
-    boolean bool2;
     if (!this.jdField_d_of_type_Boolean)
     {
       i1 = (int)paramMotionEvent.getRawX();
@@ -1453,109 +1462,107 @@ public class DragSortListView
       {
         paramMotionEvent = a(this.jdField_e_of_type_Int);
         if (paramMotionEvent == null) {
-          bool2 = false;
+          return false;
         }
+        if (a(paramMotionEvent, i1, i2))
+        {
+          this.jdField_m_of_type_Boolean = true;
+          return true;
+        }
+        d();
+        this.jdField_o_of_type_Boolean = false;
+        return true;
       }
+      paramMotionEvent = (Button)a(this.jdField_n_of_type_Int, 2131380216);
+      if (paramMotionEvent == null) {
+        return false;
+      }
+      if (a(paramMotionEvent, i1, i2))
+      {
+        this.jdField_n_of_type_Boolean = true;
+        return false;
+      }
+      return true;
     }
-    do
+    int i1 = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+    ImageView localImageView = a(i1);
+    if ((localImageView != null) && (a(localImageView, (int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())))
     {
-      return bool2;
+      if ((this.jdField_r_of_type_Boolean) && (this.jdField_e_of_type_Int != i1))
+      {
+        this.jdField_p_of_type_Boolean = false;
+        return true;
+      }
+      this.jdField_e_of_type_Int = i1;
+      this.jdField_p_of_type_Boolean = true;
+      return true;
+    }
+    if (this.jdField_r_of_type_Boolean)
+    {
+      i1 = (int)paramMotionEvent.getRawX();
+      i2 = (int)paramMotionEvent.getRawY();
+      paramMotionEvent = a(this.jdField_e_of_type_Int);
+      if (paramMotionEvent == null) {
+        return false;
+      }
       if (a(paramMotionEvent, i1, i2)) {
         this.jdField_m_of_type_Boolean = true;
       }
-      do
+      return true;
+    }
+    a(paramMotionEvent);
+    this.jdField_f_of_type_Boolean = true;
+    i1 = paramMotionEvent.getAction() & 0xFF;
+    if (i1 == 0)
+    {
+      if (this.jdField_g_of_type_Int != 0)
       {
-        for (;;)
-        {
-          return true;
-          d();
-          this.jdField_o_of_type_Boolean = false;
-        }
-        paramMotionEvent = (Button)a(this.jdField_n_of_type_Int, 2131380950);
-        if (paramMotionEvent == null) {
-          return false;
-        }
-      } while (!a(paramMotionEvent, i1, i2));
-      this.jdField_n_of_type_Boolean = true;
-      return false;
-      i1 = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-      ImageView localImageView = a(i1);
-      if ((localImageView != null) && (a(localImageView, (int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())))
-      {
-        if ((this.jdField_r_of_type_Boolean) && (this.jdField_e_of_type_Int != i1))
-        {
-          this.jdField_p_of_type_Boolean = false;
-          return true;
-        }
-        this.jdField_e_of_type_Int = i1;
-        this.jdField_p_of_type_Boolean = true;
+        this.jdField_j_of_type_Boolean = true;
         return true;
       }
-      if (this.jdField_r_of_type_Boolean)
-      {
-        i1 = (int)paramMotionEvent.getRawX();
-        i2 = (int)paramMotionEvent.getRawY();
-        paramMotionEvent = a(this.jdField_e_of_type_Int);
-        if (paramMotionEvent == null) {
-          return false;
-        }
-        if (a(paramMotionEvent, i1, i2)) {
-          this.jdField_m_of_type_Boolean = true;
-        }
-        return true;
-      }
-      a(paramMotionEvent);
-      this.jdField_f_of_type_Boolean = true;
-      i1 = paramMotionEvent.getAction() & 0xFF;
-      if (i1 == 0)
-      {
-        if (this.jdField_g_of_type_Int != 0)
-        {
-          this.jdField_j_of_type_Boolean = true;
-          return true;
-        }
-        this.jdField_g_of_type_Boolean = true;
-      }
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        break label317;
-      }
-      bool1 = true;
-      if (i1 == 1) {
-        break;
-      }
-      bool2 = bool1;
-    } while (i1 != 3);
-    this.jdField_g_of_type_Boolean = false;
-    return bool1;
-    label317:
-    if (super.onInterceptTouchEvent(paramMotionEvent)) {
-      this.jdField_l_of_type_Boolean = true;
+      this.jdField_g_of_type_Boolean = true;
     }
-    for (boolean bool1 = true;; bool1 = false) {
-      switch (i1)
-      {
-      case 2: 
-      default: 
-        if (bool1) {
-          this.y = 1;
-        }
-        break;
-      case 1: 
-      case 3: 
-        k();
-        break;
-        this.y = 2;
-        break;
-      }
-    }
-  }
-  
-  public void onMeasure(int paramInt1, int paramInt2)
-  {
-    super.onMeasure(paramInt1, paramInt2);
+    boolean bool;
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      if (this.jdField_a_of_type_AndroidViewView.isLayoutRequested()) {
+      bool = true;
+    }
+    else
+    {
+      if (super.onInterceptTouchEvent(paramMotionEvent))
+      {
+        this.jdField_l_of_type_Boolean = true;
+        bool = true;
+      }
+      else
+      {
+        bool = false;
+      }
+      if ((i1 != 1) && (i1 != 3))
+      {
+        if (bool) {
+          this.y = 1;
+        } else {
+          this.y = 2;
+        }
+      }
+      else {
+        k();
+      }
+    }
+    if ((i1 == 1) || (i1 == 3)) {
+      this.jdField_g_of_type_Boolean = false;
+    }
+    return bool;
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    super.onMeasure(paramInt1, paramInt2);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null)
+    {
+      if (localView.isLayoutRequested()) {
         n();
       }
       this.jdField_b_of_type_Boolean = true;
@@ -1563,7 +1570,7 @@ public class DragSortListView
     this.jdField_r_of_type_Int = paramInt1;
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     l();
@@ -1571,7 +1578,6 @@ public class DragSortListView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i2 = 1;
     if (this.jdField_j_of_type_Boolean)
     {
       this.jdField_j_of_type_Boolean = false;
@@ -1584,10 +1590,13 @@ public class DragSortListView
     {
       if (this.jdField_p_of_type_Boolean)
       {
-        if (this.jdField_r_of_type_Boolean)
+        boolean bool = this.jdField_r_of_type_Boolean;
+        int i2 = 1;
+        if (bool)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$LeftEventListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$LeftEventListener.a(this.jdField_e_of_type_Int);
+          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$LeftEventListener;
+          if (paramMotionEvent != null) {
+            paramMotionEvent.a(this.jdField_e_of_type_Int);
           }
           int i1 = i2;
           if (AppSetting.jdField_d_of_type_Boolean)
@@ -1607,12 +1616,11 @@ public class DragSortListView
             }
           }
         }
-        for (;;)
+        else
         {
-          this.jdField_p_of_type_Boolean = false;
-          return false;
-          if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$LeftEventListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$LeftEventListener.b(this.jdField_e_of_type_Int);
+          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$LeftEventListener;
+          if (paramMotionEvent != null) {
+            paramMotionEvent.b(this.jdField_e_of_type_Int);
           }
           paramMotionEvent = a(this.jdField_e_of_type_Int);
           if (paramMotionEvent != null)
@@ -1622,28 +1630,34 @@ public class DragSortListView
             this.jdField_a_of_type_Long = System.currentTimeMillis();
           }
         }
+        this.jdField_p_of_type_Boolean = false;
+        return false;
       }
       if (this.jdField_r_of_type_Boolean)
       {
-        if (this.jdField_m_of_type_Boolean) {
+        if (this.jdField_m_of_type_Boolean)
+        {
           if (!this.jdField_e_of_type_Boolean)
           {
             e();
             a(this.jdField_e_of_type_Int);
             this.jdField_m_of_type_Boolean = false;
           }
-        }
-        for (;;)
-        {
-          this.jdField_r_of_type_Boolean = false;
-          return false;
-          if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener.a(this.jdField_e_of_type_Int);
+          else
+          {
+            paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener;
+            if (paramMotionEvent != null) {
+              paramMotionEvent.a(this.jdField_e_of_type_Int);
+            }
+            this.jdField_m_of_type_Boolean = false;
+            return false;
           }
-          this.jdField_m_of_type_Boolean = false;
-          return false;
+        }
+        else {
           d();
         }
+        this.jdField_r_of_type_Boolean = false;
+        return false;
       }
     }
     return c(paramMotionEvent);
@@ -1672,12 +1686,11 @@ public class DragSortListView
         setRemoveListener((DragSortListView.RemoveListener)paramListAdapter);
       }
     }
-    for (;;)
+    else
     {
-      super.setAdapter(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$AdapterWrapper);
-      return;
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$AdapterWrapper = null;
     }
+    super.setAdapter(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$AdapterWrapper);
   }
   
   public void setDelImmediately(boolean paramBoolean)
@@ -1712,22 +1725,18 @@ public class DragSortListView
   
   public void setDragScrollStarts(float paramFloat1, float paramFloat2)
   {
-    if (paramFloat2 > 0.5F)
-    {
+    if (paramFloat2 > 0.5F) {
       this.jdField_j_of_type_Float = 0.5F;
-      if (paramFloat1 <= 0.5F) {
-        break label46;
-      }
-    }
-    label46:
-    for (this.jdField_i_of_type_Float = 0.5F;; this.jdField_i_of_type_Float = paramFloat1)
-    {
-      if (getHeight() != 0) {
-        l();
-      }
-      return;
+    } else {
       this.jdField_j_of_type_Float = paramFloat2;
-      break;
+    }
+    if (paramFloat1 > 0.5F) {
+      this.jdField_i_of_type_Float = 0.5F;
+    } else {
+      this.jdField_i_of_type_Float = paramFloat1;
+    }
+    if (getHeight() != 0) {
+      l();
     }
   }
   
@@ -1780,7 +1789,7 @@ public class DragSortListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortListView
  * JD-Core Version:    0.7.0.1
  */

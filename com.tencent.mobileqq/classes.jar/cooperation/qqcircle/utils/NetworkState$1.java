@@ -8,13 +8,16 @@ final class NetworkState$1
 {
   public void onNetChangeEvent(boolean paramBoolean)
   {
-    QLog.i("NetworkState", 1, "--onNetChangeEvent isNetEffective:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("--onNetChangeEvent isNetEffective:");
+    localStringBuilder.append(paramBoolean);
+    QLog.i("NetworkState", 1, localStringBuilder.toString());
     NetworkState.access$000(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.utils.NetworkState.1
  * JD-Core Version:    0.7.0.1
  */

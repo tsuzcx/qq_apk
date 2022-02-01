@@ -13,45 +13,53 @@ final class Changeset$2
   
   public String a(Matcher paramMatcher)
   {
-    int k = 0;
-    Pair localPair = this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a(Changeset.a(paramMatcher.group(1)));
-    if (localPair == null) {
-      throw new IllegalArgumentException("can't find attribute: " + paramMatcher.group(1));
-    }
-    int i = 0;
-    for (;;)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a(Changeset.a(paramMatcher.group(1)));
+    if (localObject != null)
     {
-      int j = k;
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        paramMatcher = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (!((String)paramMatcher.first).equals(localPair.first)) {
-          break label211;
-        }
-        if ((Utils.a((String)localPair.second)) && (!this.jdField_a_of_type_Boolean)) {
-          break label198;
-        }
-        paramMatcher = new Pair(paramMatcher.first, localPair.second);
-        this.jdField_a_of_type_JavaUtilList.set(i, paramMatcher);
-      }
+      int k = 0;
+      int i = 0;
+      int j;
       for (;;)
       {
-        j = 1;
-        if ((j == 0) && ((!Utils.a((String)localPair.second)) || (this.jdField_a_of_type_Boolean))) {
-          this.jdField_a_of_type_JavaUtilList.add(localPair);
+        j = k;
+        if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+          break;
         }
-        return "";
-        label198:
-        Utils.a(this.jdField_a_of_type_JavaUtilList, i, 1);
+        paramMatcher = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (((String)paramMatcher.first).equals(((Pair)localObject).first))
+        {
+          if ((Utils.a((String)((Pair)localObject).second)) && (!this.jdField_a_of_type_Boolean))
+          {
+            Utils.a(this.jdField_a_of_type_JavaUtilList, i, 1);
+          }
+          else
+          {
+            paramMatcher = new Pair(paramMatcher.first, ((Pair)localObject).second);
+            this.jdField_a_of_type_JavaUtilList.set(i, paramMatcher);
+          }
+          j = 1;
+          break;
+        }
+        i += 1;
       }
-      label211:
-      i += 1;
+      if ((j == 0) && ((!Utils.a((String)((Pair)localObject).second)) || (this.jdField_a_of_type_Boolean))) {
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+      }
+      return "";
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("can't find attribute: ");
+    ((StringBuilder)localObject).append(paramMatcher.group(1));
+    paramMatcher = new IllegalArgumentException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramMatcher;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Changeset.2
  * JD-Core Version:    0.7.0.1
  */

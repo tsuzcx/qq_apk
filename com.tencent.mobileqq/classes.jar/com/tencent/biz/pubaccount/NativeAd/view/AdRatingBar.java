@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.kandian.ad.api.R.styleable;
 import java.math.BigDecimal;
 
 public class AdRatingBar
@@ -65,45 +65,42 @@ public class AdRatingBar
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     setOrientation(0);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.AdRatingBar);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_g_of_type_ArrayOfInt);
     try
     {
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(7);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(4);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(6);
-      this.jdField_b_of_type_Float = paramAttributeSet.getDimension(12, 60.0F);
-      this.jdField_c_of_type_Float = paramAttributeSet.getDimension(8, 120.0F);
-      this.d = paramAttributeSet.getDimension(10, 0.0F);
-      this.e = paramAttributeSet.getDimension(9, 0.0F);
-      this.jdField_a_of_type_Int = paramAttributeSet.getInteger(13, 5);
-      this.jdField_a_of_type_Float = paramAttributeSet.getFloat(1, 0.0F);
-      this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(0, true);
-      paramAttributeSet.recycle();
-      int i = 0;
-      for (;;)
-      {
-        if (i >= this.jdField_a_of_type_Int) {
-          break label185;
-        }
-        if (i != this.jdField_a_of_type_Int - 1) {
-          break;
-        }
-        bool = true;
-        addView(a(paramContext, this.jdField_b_of_type_Boolean, bool));
-        i += 1;
-      }
+      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(R.styleable.e);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(R.styleable.c);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(R.styleable.d);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        localOutOfMemoryError.printStackTrace();
-        continue;
-        boolean bool = false;
-      }
-      label185:
-      setStar(this.jdField_a_of_type_Float);
+      localOutOfMemoryError.printStackTrace();
     }
+    this.jdField_b_of_type_Float = paramAttributeSet.getDimension(R.styleable.i, 60.0F);
+    this.jdField_c_of_type_Float = paramAttributeSet.getDimension(R.styleable.f, 120.0F);
+    this.d = paramAttributeSet.getDimension(R.styleable.h, 0.0F);
+    this.e = paramAttributeSet.getDimension(R.styleable.jdField_g_of_type_Int, 0.0F);
+    this.jdField_a_of_type_Int = paramAttributeSet.getInteger(R.styleable.j, 5);
+    this.jdField_a_of_type_Float = paramAttributeSet.getFloat(R.styleable.jdField_b_of_type_Int, 0.0F);
+    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.jdField_a_of_type_Int, true);
+    paramAttributeSet.recycle();
+    int i = 0;
+    for (;;)
+    {
+      int j = this.jdField_a_of_type_Int;
+      if (i >= j) {
+        break;
+      }
+      boolean bool;
+      if (i == j - 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      addView(a(paramContext, this.jdField_b_of_type_Boolean, bool));
+      i += 1;
+    }
+    setStar(this.jdField_a_of_type_Float);
   }
   
   public void setRatable(boolean paramBoolean)
@@ -126,39 +123,35 @@ public class AdRatingBar
   public void setStar(float paramFloat)
   {
     int j = (int)paramFloat;
-    float f = new BigDecimal(Float.toString(paramFloat)).subtract(new BigDecimal(Integer.toString(j))).floatValue();
-    if (j > this.jdField_a_of_type_Int)
-    {
-      paramFloat = this.jdField_a_of_type_Int;
-      if (paramFloat >= 0.0F) {
-        break label95;
-      }
-      paramFloat = 0.0F;
-    }
-    label95:
-    for (;;)
-    {
-      i = 0;
-      while (i < paramFloat)
-      {
-        ((ImageView)getChildAt(i)).setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-        i += 1;
-      }
+    float f2 = new BigDecimal(Float.toString(paramFloat)).subtract(new BigDecimal(Integer.toString(j))).floatValue();
+    int i = this.jdField_a_of_type_Int;
+    if (j > i) {
+      paramFloat = i;
+    } else {
       paramFloat = j;
-      break;
     }
-    if (f > 0.0F)
+    float f1 = paramFloat;
+    if (paramFloat < 0.0F) {
+      f1 = 0.0F;
+    }
+    i = 0;
+    while (i < f1)
+    {
+      ((ImageView)getChildAt(i)).setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+      i += 1;
+    }
+    if (f2 > 0.0F)
     {
       ((ImageView)getChildAt(j)).setImageDrawable(this.jdField_c_of_type_AndroidGraphicsDrawableDrawable);
       i = this.jdField_a_of_type_Int - 1;
-      while (i >= 1.0F + paramFloat)
+      while (i >= 1.0F + f1)
       {
         ((ImageView)getChildAt(i)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         i -= 1;
       }
     }
-    int i = this.jdField_a_of_type_Int - 1;
-    while (i >= paramFloat)
+    i = this.jdField_a_of_type_Int - 1;
+    while (i >= f1)
     {
       ((ImageView)getChildAt(i)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       i -= 1;
@@ -172,7 +165,7 @@ public class AdRatingBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.AdRatingBar
  * JD-Core Version:    0.7.0.1
  */

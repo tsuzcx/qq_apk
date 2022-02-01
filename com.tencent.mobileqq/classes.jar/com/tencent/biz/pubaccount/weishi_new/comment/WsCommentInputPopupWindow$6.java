@@ -12,10 +12,7 @@ class WsCommentInputPopupWindow$6
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
-    {
-    case 5: 
-    default: 
+    if ((paramInt != 4) && (paramInt != 6)) {
       return false;
     }
     if (WsCommentInputPopupWindow.a(this.a) != null) {
@@ -26,7 +23,7 @@ class WsCommentInputPopupWindow$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.6
  * JD-Core Version:    0.7.0.1
  */

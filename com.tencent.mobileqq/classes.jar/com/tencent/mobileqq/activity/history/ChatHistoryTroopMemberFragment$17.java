@@ -13,7 +13,7 @@ class ChatHistoryTroopMemberFragment$17
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    Intent localIntent = new Intent(this.a.getBaseActivity(), QQBrowserActivity.class);
     localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
     this.a.startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -21,7 +21,7 @@ class ChatHistoryTroopMemberFragment$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.17
  * JD-Core Version:    0.7.0.1
  */

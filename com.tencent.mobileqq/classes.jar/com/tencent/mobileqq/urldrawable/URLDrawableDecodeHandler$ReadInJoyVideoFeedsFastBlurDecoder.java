@@ -19,17 +19,13 @@ public class URLDrawableDecodeHandler$ReadInJoyVideoFeedsFastBlurDecoder
       StackBlur.a(paramDownloadParams, 10);
       return paramDownloadParams;
     }
-    catch (OutOfMemoryError paramDownloadParams)
-    {
-      return paramBitmap;
-    }
-    catch (Exception paramDownloadParams) {}
+    catch (Exception|OutOfMemoryError paramDownloadParams) {}
     return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler.ReadInJoyVideoFeedsFastBlurDecoder
  * JD-Core Version:    0.7.0.1
  */

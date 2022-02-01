@@ -12,8 +12,8 @@ public class BrowserScaleAnimator
   extends ValueAnimator
   implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  private final float BIGGER = 1.07F;
-  private final float SMALLER = 0.93F;
+  private static final float BIGGER = 1.07F;
+  private static final float SMALLER = 0.93F;
   private float mTargetScale;
   private IBrowserScaleControlListener scaleControlListener;
   private IBrowserScaleEventListener scaleEventListener;
@@ -30,11 +30,12 @@ public class BrowserScaleAnimator
   
   private boolean isScaleContine()
   {
+    IBrowserScaleControlListener localIBrowserScaleControlListener = this.scaleControlListener;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.scaleControlListener != null)
+    if (localIBrowserScaleControlListener != null)
     {
-      float f = this.scaleControlListener.getCurrentScale();
+      float f = localIBrowserScaleControlListener.getCurrentScale();
       if ((this.tempScale <= 1.0F) || (f >= this.mTargetScale))
       {
         bool1 = bool2;
@@ -54,9 +55,10 @@ public class BrowserScaleAnimator
   
   public void initAnimator()
   {
-    if (this.scaleControlListener != null)
+    IBrowserScaleControlListener localIBrowserScaleControlListener = this.scaleControlListener;
+    if (localIBrowserScaleControlListener != null)
     {
-      float f = this.scaleControlListener.getCurrentScale();
+      float f = localIBrowserScaleControlListener.getCurrentScale();
       if (f < this.mTargetScale) {
         this.tempScale = 1.07F;
       }
@@ -73,40 +75,56 @@ public class BrowserScaleAnimator
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.scaleEventListener != null) {
-      this.scaleEventListener.onScaleAnimationCancel();
+    paramAnimator = this.scaleEventListener;
+    if (paramAnimator != null) {
+      paramAnimator.onScaleAnimationCancel();
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.scaleEventListener != null) {
-      this.scaleEventListener.onScaleAnimationEnd();
+    paramAnimator = this.scaleEventListener;
+    if (paramAnimator != null) {
+      paramAnimator.onScaleAnimationEnd();
     }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
   {
-    if (this.scaleEventListener != null) {
-      this.scaleEventListener.onScaleAnimationRepeat();
+    paramAnimator = this.scaleEventListener;
+    if (paramAnimator != null) {
+      paramAnimator.onScaleAnimationRepeat();
     }
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.scaleEventListener != null) {
-      this.scaleEventListener.onScaleAnimationStart();
+    paramAnimator = this.scaleEventListener;
+    if (paramAnimator != null) {
+      paramAnimator.onScaleAnimationStart();
     }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.scaleControlListener != null)
+    paramValueAnimator = this.scaleControlListener;
+    if (paramValueAnimator != null)
     {
-      this.scaleControlListener.startScale(this.tempScale, this.tempScale, this.x, this.y);
+      float f = this.tempScale;
+      paramValueAnimator.startScale(f, f, this.x, this.y);
       if (!isScaleContine())
       {
-        float f = this.mTargetScale / this.scaleControlListener.getCurrentScale();
+        f = this.mTargetScale / this.scaleControlListener.getCurrentScale();
         this.scaleControlListener.startScale(f, f, this.x, this.y);
       }
     }
@@ -124,7 +142,7 @@ public class BrowserScaleAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.recyclerview.BrowserScaleAnimator
  * JD-Core Version:    0.7.0.1
  */

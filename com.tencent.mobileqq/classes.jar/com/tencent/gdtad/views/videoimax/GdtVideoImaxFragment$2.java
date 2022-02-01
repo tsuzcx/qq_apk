@@ -16,23 +16,18 @@ class GdtVideoImaxFragment$2
     if (GdtVideoImaxFragment.a(this.this$0))
     {
       GdtVideoImaxFragment.a(this.this$0).setBackgroundColor(-16777216);
-      if (GdtVideoImaxFragment.a(this.this$0) == null) {
-        break label67;
+      if (GdtVideoImaxFragment.a(this.this$0) != null) {
+        GdtVideoImaxFragment.a(this.this$0).send(2, new Bundle());
+      } else {
+        GdtLog.a("GdtVideoImaxFragment", "run() mResultReceiver != null");
       }
-      GdtVideoImaxFragment.a(this.this$0).send(2, new Bundle());
-    }
-    for (;;)
-    {
       GdtVideoImaxFragment.a(this.this$0, false);
-      return;
-      label67:
-      GdtLog.a("GdtVideoImaxFragment", "run() mResultReceiver != null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.2
  * JD-Core Version:    0.7.0.1
  */

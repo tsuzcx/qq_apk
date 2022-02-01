@@ -2,59 +2,59 @@ package com.tencent.qqmini.minigame;
 
 public final class R$layout
 {
-  public static final int mini_sdk_action_sheet = 2131559538;
-  public static final int mini_sdk_action_sheet_base = 2131559539;
-  public static final int mini_sdk_action_sheet_cancel_button = 2131559540;
-  public static final int mini_sdk_action_sheet_common_button = 2131559541;
-  public static final int mini_sdk_action_sheet_title = 2131559542;
-  public static final int mini_sdk_ad_banner_popup_dialog = 2131559543;
-  public static final int mini_sdk_add_phone_number = 2131559544;
-  public static final int mini_sdk_app_close_dialog = 2131559545;
-  public static final int mini_sdk_appinfo_loading_layout = 2131559546;
-  public static final int mini_sdk_auth_detail_dialog = 2131559547;
-  public static final int mini_sdk_auth_detail_dialog_center = 2131559548;
-  public static final int mini_sdk_auth_detail_dialog_item_layout = 2131559549;
-  public static final int mini_sdk_auth_dialog = 2131559550;
-  public static final int mini_sdk_custom_commen_title = 2131559551;
-  public static final int mini_sdk_custom_dialog_for_delphonenumber = 2131559552;
-  public static final int mini_sdk_custom_dialog_list_item = 2131559553;
-  public static final int mini_sdk_custom_dialog_temp = 2131559554;
-  public static final int mini_sdk_fragment_activity = 2131559557;
-  public static final int mini_sdk_fragment_browser = 2131559558;
-  public static final int mini_sdk_full_screen_loading_bar = 2131559559;
-  public static final int mini_sdk_game_debugger_layout = 2131559560;
-  public static final int mini_sdk_game_layout = 2131559561;
-  public static final int mini_sdk_game_loading_layout = 2131559562;
-  public static final int mini_sdk_keyboard_confirm = 2131559563;
-  public static final int mini_sdk_loading_layout = 2131559565;
-  public static final int mini_sdk_loading_toast = 2131559566;
-  public static final int mini_sdk_main_page_dialog_layout = 2131559567;
-  public static final int mini_sdk_main_page_layout = 2131559568;
-  public static final int mini_sdk_midas_dialog_bg_corner = 2131559569;
-  public static final int mini_sdk_more_actionsheet_layout = 2131559570;
-  public static final int mini_sdk_more_item_view = 2131559571;
-  public static final int mini_sdk_once_sub_auth_dialog = 2131559573;
-  public static final int mini_sdk_once_sub_item_switcher = 2131559574;
-  public static final int mini_sdk_once_sub_item_title = 2131559575;
-  public static final int mini_sdk_permission_setting_layout = 2131559576;
-  public static final int mini_sdk_phone_number_auth_dialog = 2131559577;
-  public static final int mini_sdk_phone_number_manager = 2131559578;
-  public static final int mini_sdk_player_view = 2131559579;
-  public static final int mini_sdk_popup_monitor_layout = 2131559580;
-  public static final int mini_sdk_progress_dialog = 2131559581;
-  public static final int mini_sdk_raffle_fail_dialog = 2131559582;
-  public static final int mini_sdk_raffle_fail_dialog_landscape = 2131559583;
-  public static final int mini_sdk_raffle_success_dialog = 2131559584;
-  public static final int mini_sdk_raffle_success_dialog_landscape = 2131559585;
-  public static final int mini_sdk_submsg_permission_setting_layout = 2131559586;
-  public static final int mini_sdk_subscribe_permission_setting_layout = 2131559587;
-  public static final int mini_sdk_toast_main_layout = 2131559588;
-  public static final int mini_sdk_vconsole_layout = 2131559589;
-  public static final int mini_sdk_video_gesture_layout = 2131559590;
+  public static final int mini_sdk_action_sheet = 2131559415;
+  public static final int mini_sdk_action_sheet_base = 2131559416;
+  public static final int mini_sdk_action_sheet_cancel_button = 2131559417;
+  public static final int mini_sdk_action_sheet_common_button = 2131559418;
+  public static final int mini_sdk_action_sheet_title = 2131559419;
+  public static final int mini_sdk_ad_banner_popup_dialog = 2131559420;
+  public static final int mini_sdk_add_phone_number = 2131559421;
+  public static final int mini_sdk_app_close_dialog = 2131559422;
+  public static final int mini_sdk_appinfo_loading_layout = 2131559423;
+  public static final int mini_sdk_auth_detail_dialog = 2131559424;
+  public static final int mini_sdk_auth_detail_dialog_center = 2131559425;
+  public static final int mini_sdk_auth_detail_dialog_item_layout = 2131559426;
+  public static final int mini_sdk_auth_dialog = 2131559427;
+  public static final int mini_sdk_custom_commen_title = 2131559428;
+  public static final int mini_sdk_custom_dialog_for_delphonenumber = 2131559429;
+  public static final int mini_sdk_custom_dialog_list_item = 2131559430;
+  public static final int mini_sdk_custom_dialog_temp = 2131559431;
+  public static final int mini_sdk_fragment_activity = 2131559434;
+  public static final int mini_sdk_fragment_browser = 2131559435;
+  public static final int mini_sdk_full_screen_loading_bar = 2131559436;
+  public static final int mini_sdk_game_debugger_layout = 2131559437;
+  public static final int mini_sdk_game_layout = 2131559438;
+  public static final int mini_sdk_game_loading_layout = 2131559439;
+  public static final int mini_sdk_keyboard_confirm = 2131559440;
+  public static final int mini_sdk_loading_layout = 2131559442;
+  public static final int mini_sdk_loading_toast = 2131559443;
+  public static final int mini_sdk_main_page_dialog_layout = 2131559444;
+  public static final int mini_sdk_main_page_layout = 2131559445;
+  public static final int mini_sdk_midas_dialog_bg_corner = 2131559446;
+  public static final int mini_sdk_more_actionsheet_layout = 2131559447;
+  public static final int mini_sdk_more_item_view = 2131559448;
+  public static final int mini_sdk_once_sub_auth_dialog = 2131559450;
+  public static final int mini_sdk_once_sub_item_switcher = 2131559451;
+  public static final int mini_sdk_once_sub_item_title = 2131559452;
+  public static final int mini_sdk_permission_setting_layout = 2131559453;
+  public static final int mini_sdk_phone_number_auth_dialog = 2131559454;
+  public static final int mini_sdk_phone_number_manager = 2131559455;
+  public static final int mini_sdk_player_view = 2131559456;
+  public static final int mini_sdk_popup_monitor_layout = 2131559457;
+  public static final int mini_sdk_progress_dialog = 2131559458;
+  public static final int mini_sdk_raffle_fail_dialog = 2131559459;
+  public static final int mini_sdk_raffle_fail_dialog_landscape = 2131559460;
+  public static final int mini_sdk_raffle_success_dialog = 2131559461;
+  public static final int mini_sdk_raffle_success_dialog_landscape = 2131559462;
+  public static final int mini_sdk_submsg_permission_setting_layout = 2131559463;
+  public static final int mini_sdk_subscribe_permission_setting_layout = 2131559464;
+  public static final int mini_sdk_toast_main_layout = 2131559465;
+  public static final int mini_sdk_vconsole_layout = 2131559466;
+  public static final int mini_sdk_video_gesture_layout = 2131559467;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.R.layout
  * JD-Core Version:    0.7.0.1
  */

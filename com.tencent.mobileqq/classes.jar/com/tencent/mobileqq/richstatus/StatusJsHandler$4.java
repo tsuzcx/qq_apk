@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richstatus;
 
 import android.os.Bundle;
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
+import com.tencent.biz.pubaccount.api.IPublicAccountHandler;
 import com.tencent.biz.pubaccount.api.IPublicAccountManager;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
 import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -23,63 +23,68 @@ class StatusJsHandler$4
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean)
+    Object localObject;
+    if (localBaseActivity != null)
     {
-      this.a.a(2131695222);
-      this.a.a(this.a.c, "false");
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break;
-        }
-        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-        localFollowResponse.mergeFrom(paramBundle);
-        if ((!localFollowResponse.ret_info.has()) || (!((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.has())) {
-          break label329;
-        }
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType = 1;
-          this.a.a(localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-          ((PublicAccountHandler)localBaseActivity.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-          ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getMenuSetting(localBaseActivity.getApplicationContext(), localBaseActivity.app, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, null, true);
-          this.a.a(this.a.c, "true");
-          return;
-        }
-        if (paramInt == 58)
-        {
-          this.a.a(2131695218);
-          break;
-        }
-        if (paramInt == 65)
-        {
-          this.a.a(2131695193);
-          break;
-        }
-        this.a.a(2131695222);
+      if (localBaseActivity.isFinishing()) {
+        return;
       }
-      catch (Exception paramBundle) {}
-      break;
-      label329:
-      paramInt = -1;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("success:");
+        ((StringBuilder)localObject).append(String.valueOf(paramBoolean));
+        QLog.d("Q.richstatus.", 2, ((StringBuilder)localObject).toString());
+      }
+      if (!paramBoolean) {
+        this.a.a(2131695217);
+      }
     }
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle == null) {
+        break label327;
+      }
+      localObject = new mobileqq_mp.FollowResponse();
+      ((mobileqq_mp.FollowResponse)localObject).mergeFrom(paramBundle);
+      if ((!((mobileqq_mp.FollowResponse)localObject).ret_info.has()) || (!((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.has())) {
+        break label347;
+      }
+      paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
+      {
+        continue;
+        paramInt = -1;
+      }
+    }
+    if (paramInt == 0)
+    {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail.setFollowType(1);
+      this.a.a(localBaseActivity, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail);
+      ((IPublicAccountHandler)localBaseActivity.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).onFollowPublicAccount(this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail);
+      ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getMenuSetting(localBaseActivity.getApplicationContext(), localBaseActivity.app, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail.getUin(), null, true);
+      this.a.a(this.a.c, "true");
+      return;
+    }
+    if (paramInt == 58) {
+      this.a.a(2131695212);
+    } else if (paramInt == 65) {
+      this.a.a(2131695185);
+    } else {
+      this.a.a(2131695217);
+    }
+    label327:
+    paramBundle = this.a;
+    paramBundle.a(paramBundle.c, "false");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusJsHandler.4
  * JD-Core Version:    0.7.0.1
  */

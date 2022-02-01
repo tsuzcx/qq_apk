@@ -63,20 +63,16 @@ public class VSNetworkHelper
   
   public static VSNetworkHelper getInstance()
   {
-    if (mNetworkImpl == null) {}
-    for (;;)
-    {
+    VSBaseNetwork localVSBaseNetwork = mNetworkImpl;
+    if (localVSBaseNetwork == null) {
       try
       {
         if (mNetworkImpl == null) {
           init();
         }
-        return mInstance;
       }
       finally {}
-      if (!mNetworkImpl.needReinitialize()) {
-        continue;
-      }
+    } else if (localObject1.needReinitialize()) {
       try
       {
         if (mNetworkImpl.needReinitialize())
@@ -87,6 +83,7 @@ public class VSNetworkHelper
       }
       finally {}
     }
+    return mInstance;
   }
   
   public static VSBaseNetwork getNetworkImpl()
@@ -106,24 +103,17 @@ public class VSNetworkHelper
     try
     {
       mNetworkImpl = (VSBaseNetwork)mImplClass.newInstance();
-      mNetworkImpl.onInit();
-      mIsInit = true;
-      return;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        localIllegalAccessException.printStackTrace();
-      }
     }
     catch (InstantiationException localInstantiationException)
     {
-      for (;;)
-      {
-        localInstantiationException.printStackTrace();
-      }
+      localInstantiationException.printStackTrace();
     }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      localIllegalAccessException.printStackTrace();
+    }
+    mNetworkImpl.onInit();
+    mIsInit = true;
   }
   
   public static boolean isProtocolCache(String paramString)
@@ -141,14 +131,21 @@ public class VSNetworkHelper
   
   public static boolean isValidLog(String paramString)
   {
-    return (mNetworkImpl != null) && (mNetworkImpl.isValidLog(paramString));
+    VSBaseNetwork localVSBaseNetwork = mNetworkImpl;
+    return (localVSBaseNetwork != null) && (localVSBaseNetwork.isValidLog(paramString));
   }
   
   private void responseCache(BaseRequest paramBaseRequest)
   {
     if (paramBaseRequest.isEnableCache())
     {
-      RFLog.d("VSNetworkHelper| Protocol Cache", RFLog.USR, "start to response cache,CmdName:" + paramBaseRequest.getCmdName() + " Seq:" + paramBaseRequest.getCurrentSeq());
+      int i = RFLog.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start to response cache,CmdName:");
+      localStringBuilder.append(paramBaseRequest.getCmdName());
+      localStringBuilder.append(" Seq:");
+      localStringBuilder.append(paramBaseRequest.getCurrentSeq());
+      RFLog.d("VSNetworkHelper| Protocol Cache", i, localStringBuilder.toString());
       RFThreadManager.execute(new VSNetworkHelper.1(this, paramBaseRequest), RFThreadManager.Normal);
     }
   }
@@ -183,9 +180,10 @@ public class VSNetworkHelper
   {
     RFLog.i("VSNetworkHelper", RFLog.CLR, "VSNetworkHelper: release");
     getDispatchObserver().release();
-    if (mNetworkImpl != null)
+    VSBaseNetwork localVSBaseNetwork = mNetworkImpl;
+    if (localVSBaseNetwork != null)
     {
-      mNetworkImpl.onRelease();
+      localVSBaseNetwork.onRelease();
       mNetworkImpl = null;
     }
     mIsInit = false;
@@ -198,17 +196,29 @@ public class VSNetworkHelper
     }
     paramBaseRequest.setContextHashCode(paramInt);
     getDispatchObserver().setCallBack(paramBaseRequest, paramonVSRspCallBack);
-    if (mNetworkImpl != null)
+    paramonVSRspCallBack = mNetworkImpl;
+    if (paramonVSRspCallBack != null)
     {
-      mNetworkImpl.sendRequest(paramBaseRequest, paramBaseRequest.encode(), getReceivedCall());
+      paramonVSRspCallBack.sendRequest(paramBaseRequest, paramBaseRequest.encode(), getReceivedCall());
       paramBaseRequest.generateSendTimeStamp();
       responseCache(paramBaseRequest);
     }
     if (isValidLog(paramBaseRequest.getCmdName())) {
       RFLog.i("VSNetworkHelper", RFLog.CLR, String.format("VSNetworkHelper: sendRequest: success, contextHashCode:%s, seq:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramBaseRequest.getCurrentSeq()) }));
     }
-    if (isValidLog(paramBaseRequest.getCmdName())) {
-      RFLog.i("VSNetworkHelper", RFLog.CLR, "onSend Info:CmdName:" + paramBaseRequest.getCmdName() + " | TraceId:" + paramBaseRequest.getTraceId() + " | SeqNum:" + paramBaseRequest.getCurrentSeq() + " | request encode size:" + 0);
+    if (isValidLog(paramBaseRequest.getCmdName()))
+    {
+      paramInt = RFLog.CLR;
+      paramonVSRspCallBack = new StringBuilder();
+      paramonVSRspCallBack.append("onSend Info:CmdName:");
+      paramonVSRspCallBack.append(paramBaseRequest.getCmdName());
+      paramonVSRspCallBack.append(" | TraceId:");
+      paramonVSRspCallBack.append(paramBaseRequest.getTraceId());
+      paramonVSRspCallBack.append(" | SeqNum:");
+      paramonVSRspCallBack.append(paramBaseRequest.getCurrentSeq());
+      paramonVSRspCallBack.append(" | request encode size:");
+      paramonVSRspCallBack.append(0);
+      RFLog.i("VSNetworkHelper", paramInt, paramonVSRspCallBack.toString());
     }
     return paramBaseRequest.getCurrentSeq();
   }
@@ -233,7 +243,7 @@ public class VSNetworkHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.VSNetworkHelper
  * JD-Core Version:    0.7.0.1
  */

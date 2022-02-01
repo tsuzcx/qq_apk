@@ -13,14 +13,15 @@ final class DittoArea$CheckForLongPressRunnable
   {
     if (this.this$0.isPressed)
     {
-      this.this$0.isPressed = false;
-      DittoArea.access$000(this.this$0, this.ev);
+      DittoArea localDittoArea = this.this$0;
+      localDittoArea.isPressed = false;
+      DittoArea.access$000(localDittoArea, this.ev);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.area.DittoArea.CheckForLongPressRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
@@ -19,57 +18,63 @@ class NewStyleDropdownView$1
   {
     this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.clearFocus();
     this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.getWindowToken(), 0);
-    boolean bool;
     if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.getAdapter() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.getAdapter().getCount() > 0))
     {
       int i = this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.getAdapter().getCount();
-      if (i >= 5) {
-        break label316;
+      Object localObject2;
+      if (i < 5)
+      {
+        localObject1 = this.a;
+        int k = NewStyleDropdownView.a((NewStyleDropdownView)localObject1, 7.5F, ((NewStyleDropdownView)localObject1).getResources());
+        localObject1 = this.a;
+        int j = NewStyleDropdownView.a((NewStyleDropdownView)localObject1, 40.0F, ((NewStyleDropdownView)localObject1).getResources());
+        k *= 2;
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setDropDownHeight(k + i * (j + k));
       }
-      int j = NewStyleDropdownView.a(this.a, 7.5F, this.a.getResources());
-      int k = NewStyleDropdownView.a(this.a, 40.0F, this.a.getResources());
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setDropDownHeight(i * (j * 2 + k) + j * 2);
-      Drawable localDrawable = ((ImageView)paramView).getDrawable();
+      else
+      {
+        localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView;
+        localObject2 = this.a;
+        ((NewStyleDropdownView.AutoCompleteView)localObject1).setDropDownHeight(NewStyleDropdownView.a((NewStyleDropdownView)localObject2, 251.5F, ((NewStyleDropdownView)localObject2).getResources()));
+      }
+      Object localObject1 = ((ImageView)paramView).getDrawable();
       if (QLog.isColorLevel())
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("arrow clicked, drawable is down=");
-        if (localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
-          break label345;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("arrow clicked, drawable is down=");
+        boolean bool;
+        if (localObject1 == this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
+          bool = true;
+        } else {
+          bool = false;
         }
-        bool = true;
-        label185:
-        QLog.d("NewStyleDropdownView", 2, bool + ", isLastDropDown=" + this.a.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject2).append(bool);
+        ((StringBuilder)localObject2).append(", isLastDropDown=");
+        ((StringBuilder)localObject2).append(this.a.jdField_a_of_type_Boolean);
+        QLog.d("NewStyleDropdownView", 2, ((StringBuilder)localObject2).toString());
       }
-      if ((localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
-        break label351;
+      if ((localObject1 == this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) && (!this.a.jdField_a_of_type_Boolean))
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.b(false);
+        }
+        NewStyleDropdownView.a(this.a).postDelayed(new NewStyleDropdownView.1.1(this, paramView), 500L);
+        ReportController.a(null, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.c(false);
+      else
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.b(true);
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.dismissDropDown();
       }
-      NewStyleDropdownView.a(this.a).postDelayed(new NewStyleDropdownView.1.1(this, paramView), 500L);
-      ReportController.a(null, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label316:
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.setDropDownHeight(NewStyleDropdownView.a(this.a, 251.5F, this.a.getResources()));
-      break;
-      label345:
-      bool = false;
-      break label185;
-      label351:
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.c(true);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$AutoCompleteView.dismissDropDown();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.NewStyleDropdownView.1
  * JD-Core Version:    0.7.0.1
  */

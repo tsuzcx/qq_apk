@@ -53,18 +53,14 @@ public class ActivityCompat
   public static Uri getReferrer(@NonNull Activity paramActivity)
   {
     if (Build.VERSION.SDK_INT >= 22) {
-      paramActivity = paramActivity.getReferrer();
+      return paramActivity.getReferrer();
     }
-    Intent localIntent;
-    Uri localUri;
-    do
-    {
-      return paramActivity;
-      localIntent = paramActivity.getIntent();
-      localUri = (Uri)localIntent.getParcelableExtra("android.intent.extra.REFERRER");
-      paramActivity = localUri;
-    } while (localUri != null);
-    paramActivity = localIntent.getStringExtra("android.intent.extra.REFERRER_NAME");
+    paramActivity = paramActivity.getIntent();
+    Uri localUri = (Uri)paramActivity.getParcelableExtra("android.intent.extra.REFERRER");
+    if (localUri != null) {
+      return localUri;
+    }
+    paramActivity = paramActivity.getStringExtra("android.intent.extra.REFERRER_NAME");
     if (paramActivity != null) {
       return Uri.parse(paramActivity);
     }
@@ -87,13 +83,14 @@ public class ActivityCompat
   
   public static void recreate(@NonNull Activity paramActivity)
   {
-    if (Build.VERSION.SDK_INT >= 28) {
+    if (Build.VERSION.SDK_INT >= 28)
+    {
       paramActivity.recreate();
-    }
-    while (ActivityRecreator.recreate(paramActivity)) {
       return;
     }
-    paramActivity.recreate();
+    if (!ActivityRecreator.recreate(paramActivity)) {
+      paramActivity.recreate();
+    }
   }
   
   @Nullable
@@ -104,65 +101,59 @@ public class ActivityCompat
   
   public static void requestPermissions(@NonNull Activity paramActivity, @NonNull String[] paramArrayOfString, @IntRange(from=0L) int paramInt)
   {
-    if ((sDelegate != null) && (sDelegate.requestPermissions(paramActivity, paramArrayOfString, paramInt))) {}
-    do
-    {
+    ActivityCompat.PermissionCompatDelegate localPermissionCompatDelegate = sDelegate;
+    if ((localPermissionCompatDelegate != null) && (localPermissionCompatDelegate.requestPermissions(paramActivity, paramArrayOfString, paramInt))) {
       return;
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        if ((paramActivity instanceof ActivityCompat.RequestPermissionsRequestCodeValidator)) {
-          ((ActivityCompat.RequestPermissionsRequestCodeValidator)paramActivity).validateRequestPermissionsRequestCode(paramInt);
-        }
-        paramActivity.requestPermissions(paramArrayOfString, paramInt);
-        return;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if ((paramActivity instanceof ActivityCompat.RequestPermissionsRequestCodeValidator)) {
+        ((ActivityCompat.RequestPermissionsRequestCodeValidator)paramActivity).validateRequestPermissionsRequestCode(paramInt);
       }
-    } while (!(paramActivity instanceof ActivityCompat.OnRequestPermissionsResultCallback));
-    new Handler(Looper.getMainLooper()).post(new ActivityCompat.1(paramArrayOfString, paramActivity, paramInt));
+      paramActivity.requestPermissions(paramArrayOfString, paramInt);
+      return;
+    }
+    if ((paramActivity instanceof ActivityCompat.OnRequestPermissionsResultCallback)) {
+      new Handler(Looper.getMainLooper()).post(new ActivityCompat.1(paramArrayOfString, paramActivity, paramInt));
+    }
   }
   
   @NonNull
   public static <T extends View> T requireViewById(@NonNull Activity paramActivity, @IdRes int paramInt)
   {
     if (Build.VERSION.SDK_INT >= 28) {
-      paramActivity = paramActivity.requireViewById(paramInt);
+      return paramActivity.requireViewById(paramInt);
     }
-    View localView;
-    do
-    {
+    paramActivity = paramActivity.findViewById(paramInt);
+    if (paramActivity != null) {
       return paramActivity;
-      localView = paramActivity.findViewById(paramInt);
-      paramActivity = localView;
-    } while (localView != null);
+    }
     throw new IllegalArgumentException("ID does not reference a View inside this Activity");
   }
   
   public static void setEnterSharedElementCallback(@NonNull Activity paramActivity, @Nullable SharedElementCallback paramSharedElementCallback)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      if (paramSharedElementCallback == null) {
-        break label27;
-      }
-    }
-    label27:
-    for (paramSharedElementCallback = new ActivityCompat.SharedElementCallback21Impl(paramSharedElementCallback);; paramSharedElementCallback = null)
+    if (Build.VERSION.SDK_INT >= 21)
     {
+      if (paramSharedElementCallback != null) {
+        paramSharedElementCallback = new ActivityCompat.SharedElementCallback21Impl(paramSharedElementCallback);
+      } else {
+        paramSharedElementCallback = null;
+      }
       paramActivity.setEnterSharedElementCallback(paramSharedElementCallback);
-      return;
     }
   }
   
   public static void setExitSharedElementCallback(@NonNull Activity paramActivity, @Nullable SharedElementCallback paramSharedElementCallback)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      if (paramSharedElementCallback == null) {
-        break label27;
-      }
-    }
-    label27:
-    for (paramSharedElementCallback = new ActivityCompat.SharedElementCallback21Impl(paramSharedElementCallback);; paramSharedElementCallback = null)
+    if (Build.VERSION.SDK_INT >= 21)
     {
+      if (paramSharedElementCallback != null) {
+        paramSharedElementCallback = new ActivityCompat.SharedElementCallback21Impl(paramSharedElementCallback);
+      } else {
+        paramSharedElementCallback = null;
+      }
       paramActivity.setExitSharedElementCallback(paramSharedElementCallback);
-      return;
     }
   }
   
@@ -208,7 +199,7 @@ public class ActivityCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.ActivityCompat
  * JD-Core Version:    0.7.0.1
  */

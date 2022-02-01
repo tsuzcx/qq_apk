@@ -23,8 +23,10 @@ public final class HashingSource
     }
     catch (NoSuchAlgorithmException paramSource)
     {
-      throw new AssertionError();
+      label19:
+      break label19;
     }
+    throw new AssertionError();
   }
   
   private HashingSource(Source paramSource, ByteString paramByteString, String paramString)
@@ -37,13 +39,15 @@ public final class HashingSource
       this.messageDigest = null;
       return;
     }
-    catch (NoSuchAlgorithmException paramSource)
-    {
-      throw new AssertionError();
-    }
     catch (InvalidKeyException paramSource)
     {
       throw new IllegalArgumentException(paramSource);
+      throw new AssertionError();
+    }
+    catch (NoSuchAlgorithmException paramSource)
+    {
+      label48:
+      break label48;
     }
   }
   
@@ -74,10 +78,13 @@ public final class HashingSource
   
   public final ByteString hash()
   {
-    if (this.messageDigest != null) {}
-    for (byte[] arrayOfByte = this.messageDigest.digest();; arrayOfByte = this.mac.doFinal()) {
-      return ByteString.of(arrayOfByte);
+    Object localObject = this.messageDigest;
+    if (localObject != null) {
+      localObject = ((MessageDigest)localObject).digest();
+    } else {
+      localObject = this.mac.doFinal();
     }
+    return ByteString.of((byte[])localObject);
   }
   
   public long read(Buffer paramBuffer, long paramLong)
@@ -87,35 +94,33 @@ public final class HashingSource
     {
       long l3 = paramBuffer.size - l4;
       paramLong = paramBuffer.size;
-      Segment localSegment1 = paramBuffer.head;
-      Segment localSegment2;
+      Object localObject1 = paramBuffer.head;
       long l1;
       long l2;
+      Object localObject2;
       for (;;)
       {
-        localSegment2 = localSegment1;
-        l1 = paramLong;
-        l2 = l3;
+        l1 = l3;
+        l2 = paramLong;
+        localObject2 = localObject1;
         if (paramLong <= l3) {
           break;
         }
-        localSegment1 = localSegment1.prev;
-        paramLong -= localSegment1.limit - localSegment1.pos;
+        localObject1 = ((Segment)localObject1).prev;
+        paramLong -= ((Segment)localObject1).limit - ((Segment)localObject1).pos;
       }
-      if (l1 < paramBuffer.size)
+      while (l2 < paramBuffer.size)
       {
-        int i = (int)(l2 + localSegment2.pos - l1);
-        if (this.messageDigest != null) {
-          this.messageDigest.update(localSegment2.data, i, localSegment2.limit - i);
+        int i = (int)(((Segment)localObject2).pos + l1 - l2);
+        localObject1 = this.messageDigest;
+        if (localObject1 != null) {
+          ((MessageDigest)localObject1).update(((Segment)localObject2).data, i, ((Segment)localObject2).limit - i);
+        } else {
+          this.mac.update(((Segment)localObject2).data, i, ((Segment)localObject2).limit - i);
         }
-        for (;;)
-        {
-          l1 += localSegment2.limit - localSegment2.pos;
-          localSegment2 = localSegment2.next;
-          l2 = l1;
-          break;
-          this.mac.update(localSegment2.data, i, localSegment2.limit - i);
-        }
+        l1 = ((Segment)localObject2).limit - ((Segment)localObject2).pos + l2;
+        localObject2 = ((Segment)localObject2).next;
+        l2 = l1;
       }
     }
     return l4;
@@ -123,7 +128,7 @@ public final class HashingSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.HashingSource
  * JD-Core Version:    0.7.0.1
  */

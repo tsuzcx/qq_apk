@@ -23,10 +23,13 @@ public class a
   
   private static void a(int paramInt)
   {
-    if ((BaseInfo.app == null) || (BaseInfo.userMeta.appId <= 0) || (TextUtils.isEmpty(BaseInfo.userMeta.version))) {
-      return;
+    if ((BaseInfo.app != null) && (BaseInfo.userMeta.appId > 0))
+    {
+      if (TextUtils.isEmpty(BaseInfo.userMeta.version)) {
+        return;
+      }
+      new Handler(ThreadManager.getMonitorThreadLooper()).post(new b(paramInt));
     }
-    new Handler(ThreadManager.getMonitorThreadLooper()).post(new b(paramInt));
   }
   
   protected static void a(int paramInt, boolean paramBoolean)
@@ -56,7 +59,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.a
  * JD-Core Version:    0.7.0.1
  */

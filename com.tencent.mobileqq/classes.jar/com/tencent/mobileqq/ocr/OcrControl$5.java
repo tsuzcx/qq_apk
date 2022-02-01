@@ -17,71 +17,62 @@ class OcrControl$5
   
   public void a(int paramInt, String paramString, ARCloudRecogResult paramARCloudRecogResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.control", 2, "retCode:" + paramInt + ",sessionId:" + paramString + ",recogResult:" + paramARCloudRecogResult);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("retCode:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",sessionId:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",recogResult:");
+      ((StringBuilder)localObject).append(paramARCloudRecogResult);
+      QLog.d("Q.ocr.control", 2, ((StringBuilder)localObject).toString());
     }
     paramString = OcrControl.a(this.a, paramString);
     long l = 0L;
     if (paramString != null) {
       l = System.currentTimeMillis() - paramString.c;
     }
-    int k = -1;
-    int m = -1;
-    int i = m;
-    int j = k;
-    if (paramString != null)
+    int j = -1;
+    int i;
+    if ((paramString != null) && (paramString.a != null))
     {
-      i = m;
-      j = k;
-      if (paramString.a != null)
+      if ((paramInt == 0) && (paramARCloudRecogResult != null) && (paramARCloudRecogResult.a != null))
       {
-        if ((paramInt != 0) || (paramARCloudRecogResult == null) || (paramARCloudRecogResult.a == null)) {
-          break label282;
-        }
         paramARCloudRecogResult = paramARCloudRecogResult.a;
-        OcrRecogResult localOcrRecogResult = paramARCloudRecogResult.a();
+        localObject = paramARCloudRecogResult.a();
         if (OcrControl.a(this.a) != null) {
-          OcrControl.a(this.a).a(0, localOcrRecogResult, paramString.a.b, l);
+          OcrControl.a(this.a).a(0, (OcrRecogResult)localObject, paramString.a.b, l);
         }
-        if ((localOcrRecogResult != null) && ((this.a.a == 1) || (this.a.a == 2))) {
-          ThreadManager.postImmediately(new OcrControl.5.1(this, localOcrRecogResult, paramString), null, false);
+        if ((localObject != null) && ((this.a.a == 1) || (this.a.a == 2))) {
+          ThreadManager.postImmediately(new OcrControl.5.1(this, (OcrRecogResult)localObject, paramString), null, false);
         }
-        if (paramARCloudRecogResult.a == null) {
-          break label334;
-        }
-        i = paramARCloudRecogResult.a.a;
-        j = paramARCloudRecogResult.a.b;
-      }
-    }
-    for (;;)
-    {
-      k = j;
-      j = i;
-      i = k;
-      for (;;)
-      {
-        ThreadManager.postImmediately(new OcrControl.5.2(this, paramString), null, false);
-        ThreadManager.post(new OcrControl.5.3(this, j, i, paramInt), 5, null, false);
-        return;
-        label282:
-        i = m;
-        j = k;
-        if (OcrControl.a(this.a) != null)
+        if (paramARCloudRecogResult.a != null)
         {
-          OcrControl.a(this.a).a(3, null, paramString.a.b, l);
-          i = m;
-          j = k;
+          j = paramARCloudRecogResult.a.a;
+          i = paramARCloudRecogResult.a.b;
+          break label278;
         }
       }
-      label334:
-      j = -1;
+      else if (OcrControl.a(this.a) != null)
+      {
+        OcrControl.a(this.a).a(3, null, paramString.a.b, l);
+      }
+      i = -1;
+      label278:
+      ThreadManager.postImmediately(new OcrControl.5.2(this, paramString), null, false);
+    }
+    else
+    {
       i = -1;
     }
+    ThreadManager.post(new OcrControl.5.3(this, j, i, paramInt), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrControl.5
  * JD-Core Version:    0.7.0.1
  */

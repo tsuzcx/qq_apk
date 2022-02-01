@@ -24,8 +24,12 @@ public class Fragment$SavedState
   Fragment$SavedState(@NonNull Parcel paramParcel, @Nullable ClassLoader paramClassLoader)
   {
     this.mState = paramParcel.readBundle();
-    if ((paramClassLoader != null) && (this.mState != null)) {
-      this.mState.setClassLoader(paramClassLoader);
+    if (paramClassLoader != null)
+    {
+      paramParcel = this.mState;
+      if (paramParcel != null) {
+        paramParcel.setClassLoader(paramClassLoader);
+      }
     }
   }
   
@@ -41,7 +45,7 @@ public class Fragment$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.Fragment.SavedState
  * JD-Core Version:    0.7.0.1
  */

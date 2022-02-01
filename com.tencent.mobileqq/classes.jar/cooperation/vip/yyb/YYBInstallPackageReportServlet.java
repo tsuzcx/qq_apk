@@ -12,26 +12,44 @@ public class YYBInstallPackageReportServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("YYBAdvServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
-    int i;
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive cmd=");
+      localStringBuilder.append(paramIntent.getStringExtra("cmd"));
+      localStringBuilder.append(",success=");
+      localStringBuilder.append(paramFromServiceMsg.isSuccess());
+      QLog.d("YYBAdvServlet", 2, localStringBuilder.toString());
+    }
+    if (paramIntent != null)
+    {
+      if (paramFromServiceMsg == null) {
         return;
-        i = paramFromServiceMsg.getResultCode();
-        if (i != 1000) {
-          break;
-        }
+      }
+      int i = paramFromServiceMsg.getResultCode();
+      if (i == 1000)
+      {
         paramIntent = YYBInstallPackageReportRequest.a(paramFromServiceMsg.getWupBuffer(), new int[1]);
-      } while (paramIntent == null);
-      QLog.d("YYBAdvServlet", 2, "handler MobileReport result , resultCode=" + i + " error code " + paramIntent.err_code + " error msg " + paramIntent.err_msg);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("YYBAdvServlet", 2, "MobileReport fail, resultCode=" + i);
+        if (paramIntent != null)
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("handler MobileReport result , resultCode=");
+          paramFromServiceMsg.append(i);
+          paramFromServiceMsg.append(" error code ");
+          paramFromServiceMsg.append(paramIntent.err_code);
+          paramFromServiceMsg.append(" error msg ");
+          paramFromServiceMsg.append(paramIntent.err_msg);
+          QLog.d("YYBAdvServlet", 2, paramFromServiceMsg.toString());
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("MobileReport fail, resultCode=");
+        paramIntent.append(i);
+        QLog.d("YYBAdvServlet", 2, paramIntent.toString());
+      }
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -48,7 +66,10 @@ public class YYBInstallPackageReportServlet
       paramIntent = arrayOfByte;
       if (arrayOfByte == null)
       {
-        QLog.e("YYBAdvServlet", 1, "onSend request encode result is null.cmd=" + localYYBInstallPackageReportRequest.uniKey());
+        paramIntent = new StringBuilder();
+        paramIntent.append("onSend request encode result is null.cmd=");
+        paramIntent.append(localYYBInstallPackageReportRequest.uniKey());
+        QLog.e("YYBAdvServlet", 1, paramIntent.toString());
         paramIntent = new byte[4];
       }
       paramPacket.setTimeout(15000L);
@@ -59,7 +80,7 @@ public class YYBInstallPackageReportServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.yyb.YYBInstallPackageReportServlet
  * JD-Core Version:    0.7.0.1
  */

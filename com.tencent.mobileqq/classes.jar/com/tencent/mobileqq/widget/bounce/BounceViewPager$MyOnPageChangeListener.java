@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget.bounce;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,12 +22,13 @@ class BounceViewPager$MyOnPageChangeListener
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    this.a.a = paramInt1;
-    BounceViewPager.a(this.a, paramFloat);
+    Object localObject = this.a;
+    ((BounceViewPager)localObject).a = paramInt1;
+    BounceViewPager.a((BounceViewPager)localObject, paramFloat);
     this.a.a();
-    Iterator localIterator = BounceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((BounceViewPager.PageChangedObserver)localIterator.next()).a(paramInt1, paramFloat, paramInt2);
+    localObject = BounceViewPager.a(this.a).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((BounceViewPager.PageChangedObserver)((Iterator)localObject).next()).a(paramInt1, paramFloat, paramInt2);
     }
   }
   
@@ -41,7 +42,7 @@ class BounceViewPager$MyOnPageChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.bounce.BounceViewPager.MyOnPageChangeListener
  * JD-Core Version:    0.7.0.1
  */

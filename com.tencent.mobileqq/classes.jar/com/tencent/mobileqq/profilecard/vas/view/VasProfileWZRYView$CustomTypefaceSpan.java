@@ -19,26 +19,28 @@ public class VasProfileWZRYView$CustomTypefaceSpan
   private void apply(Paint paramPaint, Typeface paramTypeface)
   {
     Typeface localTypeface = paramPaint.getTypeface();
-    if (localTypeface == null) {}
-    for (int i = 0;; i = localTypeface.getStyle())
-    {
-      i &= (paramTypeface.getStyle() ^ 0xFFFFFFFF);
-      if ((i & 0x1) != 0) {
-        paramPaint.setFakeBoldText(true);
-      }
-      if ((i & 0x2) != 0) {
-        paramPaint.setTextSkewX(-0.25F);
-      }
-      paramPaint.setTypeface(paramTypeface);
-      return;
+    int i;
+    if (localTypeface == null) {
+      i = 0;
+    } else {
+      i = localTypeface.getStyle();
     }
+    i &= (paramTypeface.getStyle() ^ 0xFFFFFFFF);
+    if ((i & 0x1) != 0) {
+      paramPaint.setFakeBoldText(true);
+    }
+    if ((i & 0x2) != 0) {
+      paramPaint.setTextSkewX(-0.25F);
+    }
+    paramPaint.setTypeface(paramTypeface);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (this.mTypeface != null)
+    Typeface localTypeface = this.mTypeface;
+    if (localTypeface != null)
     {
-      apply(paramTextPaint, this.mTypeface);
+      apply(paramTextPaint, localTypeface);
       return;
     }
     super.updateDrawState(paramTextPaint);
@@ -46,9 +48,10 @@ public class VasProfileWZRYView$CustomTypefaceSpan
   
   public void updateMeasureState(TextPaint paramTextPaint)
   {
-    if (this.mTypeface != null)
+    Typeface localTypeface = this.mTypeface;
+    if (localTypeface != null)
     {
-      apply(paramTextPaint, this.mTypeface);
+      apply(paramTextPaint, localTypeface);
       return;
     }
     super.updateMeasureState(paramTextPaint);
@@ -56,7 +59,7 @@ public class VasProfileWZRYView$CustomTypefaceSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView.CustomTypefaceSpan
  * JD-Core Version:    0.7.0.1
  */

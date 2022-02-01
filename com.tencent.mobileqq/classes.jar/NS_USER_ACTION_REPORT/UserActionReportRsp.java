@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class UserActionReportRsp
   extends JceStruct
@@ -40,18 +41,20 @@ public final class UserActionReportRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret_code, 0);
-    if (this.ret_msg != null) {
-      paramJceOutputStream.write(this.ret_msg, 1);
+    Object localObject = this.ret_msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.trace_details != null) {
-      paramJceOutputStream.write(this.trace_details, 2);
+    localObject = this.trace_details;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
     paramJceOutputStream.write(this.report_interval, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_USER_ACTION_REPORT.UserActionReportRsp
  * JD-Core Version:    0.7.0.1
  */

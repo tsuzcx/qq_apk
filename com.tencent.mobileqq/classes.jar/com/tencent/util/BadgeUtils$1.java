@@ -19,14 +19,17 @@ final class BadgeUtils$1
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
+      label19:
+      break label19;
+    }
+    if (QLog.isColorLevel()) {
       QLog.e("BadgeUtilImpl", 2, "badge not support");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.BadgeUtils.1
  * JD-Core Version:    0.7.0.1
  */

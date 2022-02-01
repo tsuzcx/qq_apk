@@ -26,17 +26,20 @@ public class ForwardOptionUtils
 {
   public static int a(int paramInt, double paramDouble)
   {
-    float f = 1.0F;
+    float f;
     if (paramInt > 150) {
       f = paramInt / 100;
+    } else {
+      f = 1.0F;
     }
-    if (paramDouble <= 1.5D) {
-      return (int)(f * 9.0F);
+    if (paramDouble <= 1.5D) {}
+    for (f *= 9.0F;; f *= 4.0F)
+    {
+      return (int)f;
+      if (paramDouble <= 2.0D) {
+        break;
+      }
     }
-    if (paramDouble <= 2.0D) {
-      return (int)(f * 9.0F);
-    }
-    return (int)(f * 4.0F);
   }
   
   private static ContentValues a(MessageRecord paramMessageRecord, MessageForArkApp paramMessageForArkApp)
@@ -69,24 +72,20 @@ public class ForwardOptionUtils
   
   public static Drawable a(Bitmap paramBitmap)
   {
-    Object localObject = null;
-    Bitmap localBitmap = ImageUtil.a(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-    paramBitmap = localObject;
-    if (localBitmap != null) {
-      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    paramBitmap = ImageUtil.a(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+    if (paramBitmap != null) {
+      return new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), paramBitmap);
     }
-    return paramBitmap;
+    return null;
   }
   
   public static Drawable a(Bitmap paramBitmap, double paramDouble)
   {
-    Object localObject = null;
-    Bitmap localBitmap = ImageUtil.a(paramBitmap, a(0, paramDouble));
-    paramBitmap = localObject;
-    if (localBitmap != null) {
-      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    paramBitmap = ImageUtil.a(paramBitmap, a(0, paramDouble));
+    if (paramBitmap != null) {
+      return new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), paramBitmap);
     }
-    return paramBitmap;
+    return null;
   }
   
   public static Drawable a(Drawable paramDrawable, double paramDouble)
@@ -96,70 +95,65 @@ public class ForwardOptionUtils
   
   public static List<MessageRecord> a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_SHARE.ForwardOptionUtils", 2, "updateFakeMsg newRecords.size=" + paramList.size());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("updateFakeMsg newRecords.size=");
+      ((StringBuilder)localObject1).append(paramList.size());
+      QLog.d("SDK_SHARE.ForwardOptionUtils", 2, ((StringBuilder)localObject1).toString());
     }
-    ArrayList localArrayList = null;
+    Object localObject1 = null;
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (MessageRecord)localIterator.next();
-      if (!(localObject instanceof MessageForArkApp)) {
-        break label433;
-      }
-      localObject = (MessageForArkApp)localObject;
-      if (((MessageForArkApp)localObject).ark_app_message == null)
+      Object localObject2 = (MessageRecord)localIterator.next();
+      if ((localObject2 instanceof MessageForArkApp))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("SDK_SHARE.ForwardOptionUtils", 2, "updateFakeMsg null == serverArkRecord.ark_app_message");
-        }
-      }
-      else
-      {
-        long l = ((MessageForArkApp)localObject).ark_app_message.optMsgSeq();
-        if (l != -1L)
+        localObject2 = (MessageForArkApp)localObject2;
+        if (((MessageForArkApp)localObject2).ark_app_message == null)
         {
-          MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().b(((MessageForArkApp)localObject).frienduin, ((MessageForArkApp)localObject).istroop, l);
-          QLog.d("SDK_SHARE.ForwardOptionUtils", 1, new Object[] { "arkConfig.extraUniseq=", Long.valueOf(l), "fakeRecord=", localMessageRecord });
-          if (!(localMessageRecord instanceof MessageForArkApp))
-          {
-            QLog.d("SDK_SHARE.ForwardOptionUtils", 1, "error !(fakeRecord instanceof MessageForArkApp)");
+          if (QLog.isColorLevel()) {
+            QLog.d("SDK_SHARE.ForwardOptionUtils", 2, "updateFakeMsg null == serverArkRecord.ark_app_message");
           }
-          else
+        }
+        else
+        {
+          long l = ((MessageForArkApp)localObject2).ark_app_message.optMsgSeq();
+          if (l != -1L)
           {
-            MessageForArkApp localMessageForArkApp = (MessageForArkApp)localMessageRecord;
-            ContentValues localContentValues = a(localMessageRecord, (MessageForArkApp)localObject);
-            MessageRecord.copyMessageRecordBaseField(localMessageRecord, (MessageRecord)localObject);
-            localMessageForArkApp.updateArkAppMetaData(((MessageForArkApp)localObject).ark_app_message.metaList);
-            localMessageForArkApp.ark_app_message.mExtra = ((MessageForArkApp)localObject).ark_app_message.getFilterExtra();
-            localContentValues.put("extraflag", Integer.valueOf(localMessageForArkApp.extraflag));
-            localMessageForArkApp.saveExtInfoToExtStr(MessageConstants.w, Integer.toString(0));
-            localContentValues.put("extStr", localMessageForArkApp.extStr);
-            localContentValues.put("extLong", Integer.valueOf(localMessageForArkApp.extLong));
-            paramQQAppInterface.getMessageFacade().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageForArkApp, localContentValues, new int[] { 2, 3 });
-            paramQQAppInterface.getMsgHandler().notifyUI(6003, true, new String[] { localMessageRecord.frienduin, String.valueOf(localMessageRecord.uniseq) });
-            paramQQAppInterface.getMsgCache().a(localMessageRecord.frienduin, localMessageRecord.istroop, l);
-            if (localArrayList != null) {
-              break label430;
+            MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().b(((MessageForArkApp)localObject2).frienduin, ((MessageForArkApp)localObject2).istroop, l);
+            QLog.d("SDK_SHARE.ForwardOptionUtils", 1, new Object[] { "arkConfig.extraUniseq=", Long.valueOf(l), "fakeRecord=", localMessageRecord });
+            if (!(localMessageRecord instanceof MessageForArkApp))
+            {
+              QLog.d("SDK_SHARE.ForwardOptionUtils", 1, "error !(fakeRecord instanceof MessageForArkApp)");
             }
-            localArrayList = new ArrayList(paramList);
-            label407:
-            localArrayList.remove(localObject);
+            else
+            {
+              MessageForArkApp localMessageForArkApp = (MessageForArkApp)localMessageRecord;
+              ContentValues localContentValues = a(localMessageRecord, (MessageForArkApp)localObject2);
+              MessageRecord.copyMessageRecordBaseField(localMessageRecord, (MessageRecord)localObject2);
+              localMessageForArkApp.updateArkAppMetaData(((MessageForArkApp)localObject2).ark_app_message.metaList);
+              localMessageForArkApp.ark_app_message.mExtra = ((MessageForArkApp)localObject2).ark_app_message.getFilterExtra();
+              localContentValues.put("extraflag", Integer.valueOf(localMessageForArkApp.extraflag));
+              localMessageForArkApp.saveExtInfoToExtStr(MessageConstants.w, Integer.toString(0));
+              localContentValues.put("extStr", localMessageForArkApp.extStr);
+              localContentValues.put("extLong", Integer.valueOf(localMessageForArkApp.extLong));
+              paramQQAppInterface.getMessageFacade().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageForArkApp, localContentValues, new int[] { 2, 3 });
+              paramQQAppInterface.getMsgHandler().notifyUI(6003, true, new String[] { localMessageRecord.frienduin, String.valueOf(localMessageRecord.uniseq) });
+              paramQQAppInterface.getMsgCache().a(localMessageRecord.frienduin, localMessageRecord.istroop, l);
+              if (localObject1 == null) {
+                localObject1 = new ArrayList(paramList);
+              }
+              ((List)localObject1).remove(localObject2);
+            }
           }
         }
       }
     }
-    label430:
-    label433:
-    for (;;)
-    {
-      break;
-      if (localArrayList != null) {
-        return localArrayList;
-      }
-      return paramList;
-      break label407;
+    if (localObject1 != null) {
+      return localObject1;
     }
+    return paramList;
   }
   
   private static void a(ContentValues paramContentValues, String paramString, Object paramObject1, Object paramObject2)
@@ -201,7 +195,10 @@ public class ForwardOptionUtils
     QLog.d("SDK_SHARE.ForwardOptionUtils", 1, new Object[] { "updateFakeArkMsg errorCode=", Integer.valueOf(paramInt), ", errorText=", paramString, ", fakeArkApp.uniseq=", Long.valueOf(paramMessageForArkApp.uniseq) });
     if (!paramMessageForArkApp.isSendFromLocal())
     {
-      QLog.d("SDK_SHARE.ForwardOptionUtils", 1, "fakeArkApp isSendFromLocal false fakeArkApp.issend=" + paramMessageForArkApp.issend);
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("fakeArkApp isSendFromLocal false fakeArkApp.issend=");
+      paramQQAppInterface.append(paramMessageForArkApp.issend);
+      QLog.d("SDK_SHARE.ForwardOptionUtils", 1, paramQQAppInterface.toString());
       return;
     }
     String str = paramMessageForArkApp.getExtInfoFromExtStr(MessageConstants.w);
@@ -238,7 +235,7 @@ public class ForwardOptionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardOptionUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -2,20 +2,21 @@ package com.tencent.mobileqq.search.fragment.searchentry;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.util.Log;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyTabTopSearchHeaderController;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.delegate.ViolaUiDelegate;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
+import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.UniteSearchHandler;
-import com.tencent.mobileqq.search.SearchEntryConfigManager;
+import com.tencent.mobileqq.kandian.biz.search.entity.ReadInJoySearchWord;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaFragmentPresenter;
+import com.tencent.mobileqq.kandian.biz.viola.api.IViolaUiDelegate;
+import com.tencent.mobileqq.kandian.biz.viola.view.ViolaFragment;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.base.api.SearchEntryConfigManager;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchEntryHippyEngine;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchHippyEventEmitter;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchHippyEventEmitter.CommonEvent;
@@ -25,7 +26,7 @@ import com.tencent.mobileqq.search.fragment.searchentry.nativemethod.SearchNativ
 import com.tencent.mobileqq.search.model.SearchEntryDataModel;
 import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.UiThreadUtil;
 import java.util.List;
@@ -50,7 +51,7 @@ public class SearchHippyEntryFragment
   private void initHippyEngine(ViewGroup paramViewGroup)
   {
     this.mHippyQQEngine = new SearchEntryHippyEngine(this, this.hotwordHandler, this);
-    this.nativeMethodController = new SearchNativeMethodController(getActivity(), this.app, this);
+    this.nativeMethodController = new SearchNativeMethodController(getQBaseActivity(), this.app, this);
     this.nativeMethodController.registerNativeMethod(this.mHippyQQEngine);
     this.eventEmitter = new SearchHippyEventEmitter(this.mHippyQQEngine, this.hotwordHandler);
     this.hotwordHandler.setEventEmitter(this.eventEmitter);
@@ -85,20 +86,21 @@ public class SearchHippyEntryFragment
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.eventEmitter != null) && (paramEditable != null)) {
-      this.eventEmitter.sendTextChangedEvent(paramEditable.toString());
+    SearchHippyEventEmitter localSearchHippyEventEmitter = this.eventEmitter;
+    if ((localSearchHippyEventEmitter != null) && (paramEditable != null)) {
+      localSearchHippyEventEmitter.sendTextChangedEvent(paramEditable.toString());
     }
   }
   
   public void fillKeyword(String paramString)
   {
-    if ((getActivity() instanceof UniteSearchActivity)) {
-      ((UniteSearchActivity)getActivity()).a(paramString, true, false);
+    if ((getQBaseActivity() instanceof UniteSearchActivity)) {
+      ((UniteSearchActivity)getQBaseActivity()).a(paramString, true, false);
     }
   }
   
   @NonNull
-  public Fragment getFragment()
+  public QBaseFragment getFragment()
   {
     return this;
   }
@@ -116,16 +118,14 @@ public class SearchHippyEntryFragment
   
   public void hideInputMethod()
   {
-    if ((getActivity() instanceof UniteSearchActivity)) {
-      ((UniteSearchActivity)getActivity()).b();
+    if ((getQBaseActivity() instanceof UniteSearchActivity)) {
+      ((UniteSearchActivity)getQBaseActivity()).b();
     }
   }
   
   public void initAfterVisible(Bundle paramBundle, ViewGroup paramViewGroup)
   {
-    if (this.mViolaUiDelegate != null) {
-      this.mViolaUiDelegate.a(false);
-    }
+    this.mPresenter.a().a(false);
     super.initAfterVisible(paramBundle, paramViewGroup);
     Log.d("SearchHippyEntryFragmen", "initAfterVisible: ");
     setBackgroundColor(paramViewGroup);
@@ -133,9 +133,7 @@ public class SearchHippyEntryFragment
     if (this.mHippyQQEngine == null) {
       initHippyEngine(paramViewGroup);
     }
-    if (this.mViolaUiDelegate != null) {
-      this.mViolaUiDelegate.d();
-    }
+    this.mPresenter.a().a();
     setNoPadding();
   }
   
@@ -145,25 +143,32 @@ public class SearchHippyEntryFragment
       this.nativeMethodController.unRegisterNativeMethod(this.mHippyQQEngine);
     }
     super.onDestroy();
-    if (this.eventEmitter != null) {
-      this.eventEmitter.destroy();
+    SearchHippyEventEmitter localSearchHippyEventEmitter = this.eventEmitter;
+    if (localSearchHippyEventEmitter != null) {
+      localSearchHippyEventEmitter.destroy();
     }
     if (this.mHippyQQEngine != null) {
       this.mHippyQQEngine.onDestroy();
     }
     this.hotwordHandler.destroy();
-    ReadInJoyTabTopSearchHeaderController.a += SearchEntryConfigManager.a;
+    ReadInJoySearchWord.a += SearchEntryConfigManager.a;
   }
   
   public void onError(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchHippyEntryFragmen", 2, "Hippy: initHippy error statusCode=" + paramInt + ", msg=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Hippy: initHippy error statusCode=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", msg=");
+      localStringBuilder.append(paramString);
+      QLog.d("SearchHippyEntryFragmen", 2, localStringBuilder.toString());
     }
-    if (getActivity() != null)
+    if (getQBaseActivity() != null)
     {
       SearchEntryHippyEngine.hippyError = true;
-      UniteSearchActivity.a(getActivity(), null, 25, 0L, null, 0, null);
+      UniteSearchActivity.a(getQBaseActivity(), null, 25, 0L, null, 0, null);
     }
     UniteSearchReportController.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_error").ver4(paramString));
     new UniteSearchHandler(this.app).b(this.app, "load_error", "search_hippy", UniteSearchReportController.a(25), "", paramString, "");
@@ -188,24 +193,24 @@ public class SearchHippyEntryFragment
   
   public void onSoftKeyboardClosed()
   {
-    if (this.eventEmitter != null) {
-      this.eventEmitter.sendSoftKeyboardHideEvent();
+    SearchHippyEventEmitter localSearchHippyEventEmitter = this.eventEmitter;
+    if (localSearchHippyEventEmitter != null) {
+      localSearchHippyEventEmitter.sendSoftKeyboardHideEvent();
     }
   }
   
   public void onSoftKeyboardOpened(int paramInt)
   {
-    if (this.eventEmitter != null) {
-      this.eventEmitter.sendSoftKeyboardShowEvent(paramInt);
+    SearchHippyEventEmitter localSearchHippyEventEmitter = this.eventEmitter;
+    if (localSearchHippyEventEmitter != null) {
+      localSearchHippyEventEmitter.sendSoftKeyboardShowEvent(paramInt);
     }
   }
   
   public void onSuccess()
   {
     SearchEntryHippyEngine.hippyError = false;
-    if (this.mViolaUiDelegate != null) {
-      this.mViolaUiDelegate.d();
-    }
+    this.mPresenter.a().a();
     this.hotwordHandler.notifyFEHotwordChanged();
     Log.d("SearchHippyEntryFragmen", "hippyengine onSuccess: ");
     this.hotwordHandler.getSearchFEHotwordItems(new SearchHippyEntryFragment.3(this));
@@ -245,7 +250,7 @@ public class SearchHippyEntryFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.SearchHippyEntryFragment
  * JD-Core Version:    0.7.0.1
  */

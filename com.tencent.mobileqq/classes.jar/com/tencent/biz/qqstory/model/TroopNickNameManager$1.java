@@ -11,30 +11,31 @@ class TroopNickNameManager$1
 {
   TroopNickNameManager$1(TroopNickNameManager paramTroopNickNameManager) {}
   
-  public void onGetTroopMemberCardInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
+  protected void onGetTroopMemberCardInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
-      if (paramArrayList != null) {
-        break label78;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetTroopMemberCardInfoResult suc=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" size=");
+      int i;
+      if (paramArrayList == null) {
+        i = 0;
+      } else {
+        i = paramArrayList.size();
       }
+      localStringBuilder.append(i);
+      QLog.d("TroopNickNameManager", 2, localStringBuilder.toString());
     }
-    label78:
-    for (int i = 0;; i = paramArrayList.size())
-    {
-      QLog.d("TroopNickNameManager", 2, i);
-      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
-      }
-      return;
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopNickNameManager.1
  * JD-Core Version:    0.7.0.1
  */

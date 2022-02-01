@@ -21,23 +21,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AppSetting
 {
-  public static int a;
+  public static int a = 0;
   public static final String a;
   private static AtomicBoolean a;
-  public static boolean a;
-  public static int b;
+  public static boolean a = true;
+  public static int b = 0;
   public static String b;
-  public static boolean b;
-  public static int c;
+  public static boolean b = false;
+  public static int c = 0;
   public static String c;
-  public static boolean c;
-  public static int d;
-  private static String d;
-  public static boolean d;
-  public static int e;
-  private static String e;
-  public static boolean e;
-  private static int jdField_f_of_type_Int = 537066979;
+  public static boolean c = false;
+  public static int d = 0;
+  private static String d = "08B785FF9DC193D1";
+  public static boolean d = false;
+  public static int e = 0;
+  private static String e = "V 8.7.0.5295";
+  public static boolean e = false;
+  private static int jdField_f_of_type_Int = 537068060;
   private static String jdField_f_of_type_JavaLangString;
   public static boolean f;
   private static final String g;
@@ -59,11 +59,8 @@ public class AppSetting
   
   static
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_d_of_type_JavaLangString = "54C724F9A929CCC2";
-    jdField_e_of_type_JavaLangString = "V 8.5.5.5105";
     jdField_a_of_type_JavaLangString = jdField_e_of_type_JavaLangString;
-    jdField_f_of_type_JavaLangString = "8.5.5.5105.2021-01-15.de12fadd.YingYongBao";
+    jdField_f_of_type_JavaLangString = "8.7.0.5295.2021-04-27.01328a87.YingYongBao";
     jdField_b_of_type_Boolean = true;
     jdField_g_of_type_JavaLangString = Build.VERSION.RELEASE;
     jdField_h_of_type_JavaLangString = "0";
@@ -84,7 +81,11 @@ public class AppSetting
     m = false;
     jdField_d_of_type_Int = 1000;
     jdField_e_of_type_Int = jdField_d_of_type_Int + 1;
-    jdField_c_of_type_JavaLangString = Build.MANUFACTURER + "-" + Build.MODEL;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append("-");
+    localStringBuilder.append(Build.MODEL);
+    jdField_c_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public static int a()
@@ -95,32 +96,23 @@ public class AppSetting
   
   public static int a(String paramString)
   {
-    int i3 = 0;
-    String[] arrayOfString = "8.5.5".split("\\.");
+    String[] arrayOfString = "8.7.0".split("\\.");
     paramString = paramString.split("\\.");
-    int i4 = Math.min(arrayOfString.length, paramString.length);
+    int i2 = Math.min(arrayOfString.length, paramString.length);
     int i1 = 0;
-    for (;;)
+    while (i1 < i2)
     {
-      int i2 = i3;
-      int i5;
-      if (i1 < i4)
-      {
-        i2 = Integer.parseInt(arrayOfString[i1]);
-        i5 = Integer.parseInt(paramString[i1]);
-        if (i2 > i5) {
-          i2 = 1;
-        }
+      int i3 = Integer.parseInt(arrayOfString[i1]);
+      int i4 = Integer.parseInt(paramString[i1]);
+      if (i3 > i4) {
+        return 1;
       }
-      else
-      {
-        return i2;
-      }
-      if (i2 < i5) {
+      if (i3 < i4) {
         return -1;
       }
       i1 += 1;
     }
+    return 0;
   }
   
   public static String a()
@@ -142,222 +134,209 @@ public class AppSetting
       label20:
       break label20;
     }
-    return "8.5.5." + i1;
+    paramContext = new StringBuilder();
+    paramContext.append("8.7.0.");
+    paramContext.append(i1);
+    return paramContext.toString();
   }
   
   public static String a(Context paramContext, String paramString)
   {
     StringBuffer localStringBuffer = new StringBuffer(128);
-    localObject1 = new Time();
+    Object localObject1 = new Time();
     ((Time)localObject1).setToNow();
-    localStringBuffer.append(((Time)localObject1).format("%Y-%m-%d %H:%M:%S") + "/");
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((Time)localObject1).format("%Y-%m-%d %H:%M:%S"));
+    ((StringBuilder)localObject2).append("/");
+    localStringBuffer.append(((StringBuilder)localObject2).toString());
     localStringBuffer.append("mobileQQ/");
-    localObject2 = "";
     long l1 = BaseDeviceInfoUtil.a() / 1048576L;
-    localObject1 = localObject2;
     try
     {
-      ConnectivityManager localConnectivityManager = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      localObject1 = localObject2;
-      TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
-      localObject1 = localObject2;
-      paramContext = localTelephonyManager.getDeviceId();
-      localObject1 = paramContext;
-      localObject2 = a(localTelephonyManager, localConnectivityManager);
-      localObject1 = localObject2;
-      localObject2 = paramContext;
-      paramContext = (Context)localObject1;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
+      localObject1 = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      localObject2 = (TelephonyManager)paramContext.getSystemService("phone");
+      paramContext = ((TelephonyManager)localObject2).getDeviceId();
+      try
       {
-        paramContext.printStackTrace();
-        paramContext = "//";
-        localObject2 = localObject1;
+        localObject1 = a((TelephonyManager)localObject2, (ConnectivityManager)localObject1);
       }
+      catch (Exception localException1) {}
+      localException2.printStackTrace();
     }
-    localStringBuffer.append((String)localObject2 + "/");
-    localStringBuffer.append(c() + "/");
+    catch (Exception localException2)
+    {
+      paramContext = "";
+    }
+    String str = "//";
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramContext);
+    ((StringBuilder)localObject2).append("/");
+    localStringBuffer.append(((StringBuilder)localObject2).toString());
+    paramContext = new StringBuilder();
+    paramContext.append(c());
+    paramContext.append("/");
+    localStringBuffer.append(paramContext.toString());
     localStringBuffer.append("/");
     localStringBuffer.append("/");
     localStringBuffer.append("/");
     localStringBuffer.append("/");
-    localObject1 = paramString;
+    paramContext = paramString;
     if (paramString == null) {
-      localObject1 = "";
+      paramContext = "";
     }
-    localStringBuffer.append((String)localObject1 + "/");
-    localStringBuffer.append(a() + "/");
+    paramString = new StringBuilder();
+    paramString.append(paramContext);
+    paramString.append("/");
+    localStringBuffer.append(paramString.toString());
+    paramContext = new StringBuilder();
+    paramContext.append(a());
+    paramContext.append("/");
+    localStringBuffer.append(paramContext.toString());
     localStringBuffer.append("N/");
-    localStringBuffer.append(a(Build.MODEL) + "/");
-    localStringBuffer.append(a(Build.BRAND) + "/");
-    localStringBuffer.append(l1 + "/");
-    localStringBuffer.append(paramContext + "/");
-    localStringBuffer.append(0 + "/");
+    paramContext = new StringBuilder();
+    paramContext.append(a(Build.MODEL));
+    paramContext.append("/");
+    localStringBuffer.append(paramContext.toString());
+    paramContext = new StringBuilder();
+    paramContext.append(a(Build.BRAND));
+    paramContext.append("/");
+    localStringBuffer.append(paramContext.toString());
+    paramContext = new StringBuilder();
+    paramContext.append(l1);
+    paramContext.append("/");
+    localStringBuffer.append(paramContext.toString());
+    paramContext = new StringBuilder();
+    paramContext.append(str);
+    paramContext.append("/");
+    localStringBuffer.append(paramContext.toString());
+    paramContext = new StringBuilder();
+    paramContext.append(0);
+    paramContext.append("/");
+    localStringBuffer.append(paramContext.toString());
     return localStringBuffer.toString();
   }
   
   private static String a(TelephonyManager paramTelephonyManager, ConnectivityManager paramConnectivityManager)
   {
-    if ((paramTelephonyManager == null) || (paramConnectivityManager == null)) {
-      return "//";
-    }
-    String str3 = "";
-    String str5 = "";
-    String str4 = "";
-    NetworkInfo localNetworkInfo = AppNetConnInfo.getRecentNetworkInfo();
-    String str1 = str4;
-    paramConnectivityManager = str5;
-    String str2 = str3;
-    if (localNetworkInfo != null)
+    if ((paramTelephonyManager != null) && (paramConnectivityManager != null))
     {
-      str1 = str4;
-      paramConnectivityManager = str5;
-      str2 = str3;
-      if (localNetworkInfo.isAvailable()) {
-        switch (localNetworkInfo.getType())
-        {
-        case 7: 
-        case 8: 
-        default: 
-          paramConnectivityManager = "unknown";
-          str1 = "unknown";
-          str2 = str3;
+      Object localObject = AppNetConnInfo.getRecentNetworkInfo();
+      String str = "";
+      paramConnectivityManager = "3G";
+      if ((localObject != null) && (((NetworkInfo)localObject).isAvailable()))
+      {
+        int i1 = ((NetworkInfo)localObject).getType();
+        if (i1 != 9) {
+          switch (i1)
+          {
+          default: 
+            paramTelephonyManager = "unknown";
+            break;
+          }
+        } else {
+          for (paramTelephonyManager = "WIFI";; paramTelephonyManager = "cable")
+          {
+            localObject = "";
+            paramConnectivityManager = paramTelephonyManager;
+            paramTelephonyManager = (TelephonyManager)localObject;
+            break;
+            str = a(paramTelephonyManager.getNetworkOperatorName());
+            switch (paramTelephonyManager.getNetworkType())
+            {
+            case 0: 
+            default: 
+              paramTelephonyManager = "unknown";
+            }
+            for (;;)
+            {
+              paramConnectivityManager = "2G";
+              break;
+              paramTelephonyManager = "HSPAP";
+              break;
+              paramTelephonyManager = "EHRPD";
+              break;
+              paramConnectivityManager = "4G";
+              paramTelephonyManager = "LTE";
+              break;
+              paramTelephonyManager = "EVDO_B";
+              break;
+              paramTelephonyManager = "IDEN";
+              continue;
+              paramTelephonyManager = "HSPA";
+              break;
+              paramTelephonyManager = "HSUPA";
+              break;
+              paramTelephonyManager = "SDPA";
+              break;
+              paramTelephonyManager = "1xRTT";
+              continue;
+              paramTelephonyManager = "EVDO_A";
+              break;
+              paramTelephonyManager = "EVDO_0";
+              break;
+              paramTelephonyManager = "CDMA";
+              continue;
+              paramTelephonyManager = "UMTS";
+              break;
+              paramTelephonyManager = "EDGE";
+              continue;
+              paramTelephonyManager = "GPRS";
+            }
+          }
         }
       }
-    }
-    for (;;)
-    {
-      return paramConnectivityManager + "/" + str2 + "/" + str1;
-      paramConnectivityManager = "cable";
-      str1 = str4;
-      str2 = str3;
-      continue;
-      paramConnectivityManager = "WIFI";
-      str1 = str4;
-      str2 = str3;
-      continue;
-      str2 = a(paramTelephonyManager.getNetworkOperatorName());
-      switch (paramTelephonyManager.getNetworkType())
+      else
       {
-      default: 
-        paramConnectivityManager = "2G";
-        str1 = "unknown";
-        break;
-      case 13: 
-        paramConnectivityManager = "4G";
-        str1 = "LTE";
-        break;
-      case 3: 
-        paramConnectivityManager = "3G";
-        str1 = "UMTS";
-        break;
-      case 5: 
-        paramConnectivityManager = "3G";
-        str1 = "EVDO_0";
-        break;
-      case 6: 
-        paramConnectivityManager = "3G";
-        str1 = "EVDO_A";
-        break;
-      case 8: 
-        paramConnectivityManager = "3G";
-        str1 = "SDPA";
-        break;
-      case 9: 
-        paramConnectivityManager = "3G";
-        str1 = "HSUPA";
-        break;
-      case 10: 
-        paramConnectivityManager = "3G";
-        str1 = "HSPA";
-        break;
-      case 12: 
-        paramConnectivityManager = "3G";
-        str1 = "EVDO_B";
-        break;
-      case 14: 
-        paramConnectivityManager = "3G";
-        str1 = "EHRPD";
-        break;
-      case 15: 
-        paramConnectivityManager = "3G";
-        str1 = "HSPAP";
-        break;
-      case 1: 
-        paramConnectivityManager = "2G";
-        str1 = "GPRS";
-        break;
-      case 2: 
-        paramConnectivityManager = "2G";
-        str1 = "EDGE";
-        break;
-      case 4: 
-        paramConnectivityManager = "2G";
-        str1 = "CDMA";
-        break;
-      case 7: 
-        paramConnectivityManager = "2G";
-        str1 = "1xRTT";
-        break;
-      case 11: 
-        paramConnectivityManager = "2G";
-        str1 = "IDEN";
-        break;
-      case 0: 
-        paramConnectivityManager = "2G";
-        str1 = "unknown";
+        paramTelephonyManager = "";
       }
+      paramConnectivityManager = paramTelephonyManager;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramConnectivityManager);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(paramTelephonyManager);
+      return ((StringBuilder)localObject).toString();
     }
+    return "//";
   }
   
   private static String a(String paramString)
   {
     if (paramString == null) {
-      paramString = "";
+      return "";
     }
-    String str;
-    do
-    {
-      return paramString;
-      str = paramString;
-      if (paramString.contains("/")) {
-        str = paramString.replace("/", "_");
-      }
-      paramString = str;
-    } while (str.length() <= 20);
-    return str.substring(20);
+    String str = paramString;
+    if (paramString.contains("/")) {
+      str = paramString.replace("/", "_");
+    }
+    paramString = str;
+    if (str.length() > 20) {
+      paramString = str.substring(20);
+    }
+    return paramString;
   }
   
   private static void a()
   {
     try
     {
-      Object localObject1 = BaseApplication.getContext().getPackageManager().getApplicationInfo(BaseApplication.getContext().getPackageName(), 128);
-      if ((localObject1 != null) && (((ApplicationInfo)localObject1).metaData != null))
-      {
-        localObject1 = ((ApplicationInfo)localObject1).metaData.getString("AppSetting_params");
-        if (localObject1 != null) {
-          a((String)localObject1);
-        }
-      }
-      return;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      for (;;)
-      {
-        localNameNotFoundException.printStackTrace();
-        Object localObject2 = null;
-      }
+      ApplicationInfo localApplicationInfo = BaseApplication.getContext().getPackageManager().getApplicationInfo(BaseApplication.getContext().getPackageName(), 128);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject3 = null;
+      localException.printStackTrace();
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      localNameNotFoundException.printStackTrace();
+    }
+    String str = null;
+    if ((str != null) && (str.metaData != null))
+    {
+      str = str.metaData.getString("AppSetting_params");
+      if (str != null) {
+        a(str);
       }
     }
   }
@@ -373,7 +352,7 @@ public class AppSetting
       jdField_i_of_type_JavaLangString = paramString[3];
     }
     if (!"".equals(jdField_i_of_type_JavaLangString)) {
-      jdField_f_of_type_JavaLangString = "8.5.5.5105.2021-01-15.de12fadd.YingYongBao";
+      jdField_f_of_type_JavaLangString = "8.7.0.5295.2021-04-27.01328a87.YingYongBao";
     }
   }
   
@@ -451,60 +430,69 @@ public class AppSetting
   
   public static String e()
   {
-    if (jdField_j_of_type_JavaLangString != null) {
-      return jdField_j_of_type_JavaLangString;
+    Object localObject1 = jdField_j_of_type_JavaLangString;
+    if (localObject1 != null) {
+      return localObject1;
     }
-    Object localObject2;
-    StringBuffer localStringBuffer;
-    String str2;
     try
     {
-      Object localObject1 = Build.class.getDeclaredMethod("getString", new Class[] { String.class });
+      localObject1 = Build.class.getDeclaredMethod("getString", new Class[] { String.class });
       ((Method)localObject1).setAccessible(true);
       localObject1 = (String)((Method)localObject1).invoke(null, new Object[] { "ro.product.manufacturer" });
-      localObject1 = (String)localObject1 + Build.MODEL;
-      if (localObject1 == null) {
-        break label301;
-      }
-      localObject2 = ((String)localObject1).toCharArray();
-      localStringBuffer = new StringBuffer(32);
-      int i1 = 0;
-      while (i1 < localObject2.length)
+    }
+    catch (SecurityException|Exception localSecurityException)
+    {
+      label55:
+      Object localObject2;
+      char[] arrayOfChar;
+      int i1;
+      break label55;
+    }
+    localObject1 = "";
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(Build.MODEL);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    if (localObject1 != null)
+    {
+      arrayOfChar = ((String)localObject1).toCharArray();
+      localObject2 = new StringBuffer(32);
+      i1 = 0;
+      while (i1 < arrayOfChar.length)
       {
-        if ((localObject2[i1] > ' ') && (localObject2[i1] != '/') && (localObject2[i1] != '_') && (localObject2[i1] != '&') && (localObject2[i1] != '|') && (localObject2[i1] != '-')) {
-          localStringBuffer.append(localObject2[i1]);
+        if ((arrayOfChar[i1] > ' ') && (arrayOfChar[i1] != '/') && (arrayOfChar[i1] != '_') && (arrayOfChar[i1] != '&') && (arrayOfChar[i1] != '|') && (arrayOfChar[i1] != '-')) {
+          ((StringBuffer)localObject2).append(arrayOfChar[i1]);
         }
         i1 += 1;
       }
-    }
-    catch (SecurityException localSecurityException)
-    {
-      for (;;)
-      {
-        String str1 = "";
+      if (((StringBuffer)localObject2).length() > 0) {
+        localObject1 = ((StringBuffer)localObject2).toString();
       }
     }
-    catch (Exception localException)
+    else
     {
-      for (;;)
-      {
-        str2 = "";
-      }
+      localObject1 = "ALL";
     }
-    if (localStringBuffer.length() > 0) {
-      str2 = localStringBuffer.toString();
+    localObject2 = localObject1;
+    if (((String)localObject1).length() > 20) {
+      localObject2 = ((String)localObject1).substring(0, 20);
     }
-    for (;;)
-    {
-      localObject2 = str2;
-      if (str2.length() > 20) {
-        localObject2 = str2.substring(0, 20);
-      }
-      jdField_j_of_type_JavaLangString = "AQQ_2013 4.6/2013 8.5.55105&NA_0/000000&ADR&" + jdField_k_of_type_JavaLangString + "18" + "&" + (String)localObject2 + "&" + c() + "&" + d() + "&" + jdField_g_of_type_JavaLangString + "&" + "V3";
-      return jdField_j_of_type_JavaLangString;
-      label301:
-      str2 = "ALL";
-    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("AQQ_2013 4.6/2013 8.7.05295&NA_0/000000&ADR&");
+    ((StringBuilder)localObject1).append(jdField_k_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append("18");
+    ((StringBuilder)localObject1).append("&");
+    ((StringBuilder)localObject1).append((String)localObject2);
+    ((StringBuilder)localObject1).append("&");
+    ((StringBuilder)localObject1).append(c());
+    ((StringBuilder)localObject1).append("&");
+    ((StringBuilder)localObject1).append(d());
+    ((StringBuilder)localObject1).append("&");
+    ((StringBuilder)localObject1).append(jdField_g_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append("&");
+    ((StringBuilder)localObject1).append("V3");
+    jdField_j_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
+    return jdField_j_of_type_JavaLangString;
   }
   
   public static boolean e()
@@ -514,7 +502,7 @@ public class AppSetting
   
   public static final String f()
   {
-    return "android 8.5.5";
+    return "android 8.7.0";
   }
   
   public static boolean f()
@@ -524,7 +512,7 @@ public class AppSetting
   
   public static String g()
   {
-    return "de12fadd";
+    return "01328a87";
   }
   
   public static String h()
@@ -534,7 +522,7 @@ public class AppSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.config.AppSetting
  * JD-Core Version:    0.7.0.1
  */

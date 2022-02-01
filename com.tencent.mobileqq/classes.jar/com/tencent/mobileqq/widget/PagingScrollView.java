@@ -85,63 +85,61 @@ public class PagingScrollView
     int j = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    int i;
-    if (j == 0) {
-      if (this.pagingViews != null) {
-        i = 0;
-      }
-    }
-    for (;;)
+    if (j == 0)
     {
-      if (i < this.pagingViews.size())
+      if (this.pagingViews != null)
       {
-        if (isOnView((View)this.pagingViews.get(i), f1, f2)) {
-          this.mIsOnSpecialView = true;
-        }
-      }
-      else
-      {
-        if (this.mIsOnSpecialView)
+        int i = 0;
+        while (i < this.pagingViews.size())
         {
-          getParent().requestDisallowInterceptTouchEvent(true);
-          if (QLog.isDevelopLevel()) {
-            QLog.i("PageScrollView", 4, "P.ITE ACT_DOWNE onSpecialView");
-          }
-        }
-        if ((this.mIsOnSpecialView) && ((j == 1) || (j == 3)))
-        {
-          this.mIsOnSpecialView = false;
-          getParent().requestDisallowInterceptTouchEvent(false);
-          this.mCanScroll = true;
-          if (QLog.isDevelopLevel()) {
-            QLog.i("PageScrollView", 4, "P.ITE ACT_UP or CANCEL");
-          }
-        }
-        try
-        {
-          if (this.mIsOnSpecialView)
+          if (isOnView((View)this.pagingViews.get(i), f1, f2))
           {
-            super.onInterceptTouchEvent(paramMotionEvent);
-            return this.mGestureDetector.onTouchEvent(paramMotionEvent);
+            this.mIsOnSpecialView = true;
+            break;
           }
-          boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-          return bool;
-        }
-        catch (Exception paramMotionEvent)
-        {
-          paramMotionEvent.printStackTrace();
-          return false;
+          i += 1;
         }
       }
-      i += 1;
+      if (this.mIsOnSpecialView)
+      {
+        getParent().requestDisallowInterceptTouchEvent(true);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PageScrollView", 4, "P.ITE ACT_DOWNE onSpecialView");
+        }
+      }
     }
+    if ((this.mIsOnSpecialView) && ((j == 1) || (j == 3)))
+    {
+      this.mIsOnSpecialView = false;
+      getParent().requestDisallowInterceptTouchEvent(false);
+      this.mCanScroll = true;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PageScrollView", 4, "P.ITE ACT_UP or CANCEL");
+      }
+    }
+    try
+    {
+      if (this.mIsOnSpecialView)
+      {
+        super.onInterceptTouchEvent(paramMotionEvent);
+        return this.mGestureDetector.onTouchEvent(paramMotionEvent);
+      }
+      boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+      return bool;
+    }
+    catch (Exception paramMotionEvent)
+    {
+      paramMotionEvent.printStackTrace();
+    }
+    return false;
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.mScrollChangedListener != null) {
-      this.mScrollChangedListener.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    PagingScrollView.OnScrollChangedListener localOnScrollChangedListener = this.mScrollChangedListener;
+    if (localOnScrollChangedListener != null) {
+      localOnScrollChangedListener.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -173,9 +171,10 @@ public class PagingScrollView
   
   public void removePagingView(View paramView)
   {
-    if (this.pagingViews != null)
+    ArrayList localArrayList = this.pagingViews;
+    if (localArrayList != null)
     {
-      int i = this.pagingViews.size() - 1;
+      int i = localArrayList.size() - 1;
       while (i >= 0)
       {
         if (this.pagingViews.get(i) == paramView)
@@ -195,7 +194,7 @@ public class PagingScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PagingScrollView
  * JD-Core Version:    0.7.0.1
  */

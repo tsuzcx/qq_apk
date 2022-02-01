@@ -23,9 +23,11 @@ public class LazyLoadAnimationDrawable
     this.filenames = paramInfo.filenames;
     this.durations = paramInfo.durations;
     this.totalDuration = paramInfo.totalDuration;
-    if (this.cur < this.filenames.length)
+    int i = this.cur;
+    paramInfo = this.filenames;
+    if (i < paramInfo.length)
     {
-      this.nextDrawable = new BitmapDrawable(this.res, this.filenames[this.cur]);
+      this.nextDrawable = new BitmapDrawable(this.res, paramInfo[i]);
       addFrame(this.nextDrawable, this.durations[this.cur]);
     }
   }
@@ -33,11 +35,13 @@ public class LazyLoadAnimationDrawable
   public void clear()
   {
     this.res = null;
-    if (this.currentDrawable != null) {
-      BitmapUtils.recycle(this.currentDrawable.getBitmap());
+    BitmapDrawable localBitmapDrawable = this.currentDrawable;
+    if (localBitmapDrawable != null) {
+      BitmapUtils.recycle(localBitmapDrawable.getBitmap());
     }
-    if (this.nextDrawable != null) {
-      BitmapUtils.recycle(this.nextDrawable.getBitmap());
+    localBitmapDrawable = this.nextDrawable;
+    if (localBitmapDrawable != null) {
+      BitmapUtils.recycle(localBitmapDrawable.getBitmap());
     }
   }
   
@@ -50,13 +54,16 @@ public class LazyLoadAnimationDrawable
   {
     LogUtils.d("111", "test animation running");
     this.cur += 1;
-    if (this.currentDrawable != null) {
-      BitmapUtils.recycle(this.currentDrawable.getBitmap());
+    Object localObject = this.currentDrawable;
+    if (localObject != null) {
+      BitmapUtils.recycle(((BitmapDrawable)localObject).getBitmap());
     }
     this.currentDrawable = this.nextDrawable;
-    if (this.cur < this.filenames.length)
+    int i = this.cur;
+    localObject = this.filenames;
+    if (i < localObject.length)
     {
-      this.nextDrawable = new BitmapDrawable(this.res, this.filenames[this.cur]);
+      this.nextDrawable = new BitmapDrawable(this.res, localObject[i]);
       addFrame(this.nextDrawable, this.durations[this.cur]);
       super.run();
     }
@@ -64,7 +71,7 @@ public class LazyLoadAnimationDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

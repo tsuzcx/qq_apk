@@ -39,31 +39,25 @@ public class ArkAppRootLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    GestureDetector localGestureDetector = this.jdField_a_of_type_AndroidViewGestureDetector;
+    if (localGestureDetector != null) {
+      localGestureDetector.onTouchEvent(paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i;
     if (this.jdField_a_of_type_Boolean)
     {
-      i = paramMotionEvent.getActionMasked();
-      if (i != 0) {
-        break label32;
-      }
-      getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      label32:
-      if ((i == 1) || (i == 3)) {
+      int i = paramMotionEvent.getActionMasked();
+      if (i == 0) {
+        getParent().requestDisallowInterceptTouchEvent(true);
+      } else if ((i == 1) || (i == 3)) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public void setCallback(ArkAppRootLayout.ArkSearchReportCallback paramArkSearchReportCallback)
@@ -78,7 +72,7 @@ public class ArkAppRootLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -36,7 +36,8 @@ public class TTV6SmoothMultiFaceMaskFilter
     int i = 1;
     while (i < 5)
     {
-      System.arraycopy(this.texVertices, 0, this.texVertices, FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3 * 2 * i, FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3 * 2);
+      float[] arrayOfFloat = this.texVertices;
+      System.arraycopy(arrayOfFloat, 0, arrayOfFloat, FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3 * 2 * i, FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3 * 2);
       i += 1;
     }
     setTexCords(this.texVertices);
@@ -45,10 +46,11 @@ public class TTV6SmoothMultiFaceMaskFilter
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GlUtil.glGenTextures(this.texture.length, this.texture, 0);
-    Bitmap localBitmap = BitmapUtils.decodeSampleBitmapFromAssets(AEModule.getContext(), "realtimeBeauty/smooth_mask.png", 1);
-    if (BitmapUtils.isLegal(localBitmap)) {
-      GlUtil.loadTexture(this.texture[0], localBitmap);
+    Object localObject = this.texture;
+    GlUtil.glGenTextures(localObject.length, (int[])localObject, 0);
+    localObject = BitmapUtils.decodeSampleBitmapFromAssets(AEModule.getContext(), "realtimeBeauty/smooth_mask.png", 1);
+    if (BitmapUtils.isLegal((Bitmap)localObject)) {
+      GlUtil.loadTexture(this.texture[0], (Bitmap)localObject);
     }
     addParam(new UniformParam.TextureParam("inputImageTexture2", this.texture[0], 33986));
   }
@@ -56,7 +58,8 @@ public class TTV6SmoothMultiFaceMaskFilter
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    GlUtil.glDeleteTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GlUtil.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void initAttribParams()
@@ -73,39 +76,56 @@ public class TTV6SmoothMultiFaceMaskFilter
   
   public void updateParam(List<List<PointF>> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    int j = Math.min(5, paramList.size());
-    setCoordNum(FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3 * j);
-    Arrays.fill(this.faceVertices, -2.0F);
-    int i = 0;
-    for (;;)
+    if (paramList != null)
     {
-      if (i < j) {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      int j = Math.min(5, paramList.size());
+      setCoordNum(FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3 * j);
+      Arrays.fill(this.faceVertices, -2.0F);
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = null;
         try
         {
           List localList = VideoMaterial.copyList((List)paramList.get(i));
-          if (localList != null) {
-            FaceOffUtil.initFacePositions4Smooth(FaceOffUtil.getFacePoints4Smooth(localList), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices, FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3 * 2 * i);
-          }
-          i += 1;
+          localObject = localList;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            Object localObject = null;
-          }
+          label81:
+          double d1;
+          double d2;
+          int k;
+          break label81;
         }
+        if (localObject != null)
+        {
+          localObject = FaceOffUtil.getFacePoints4Smooth((List)localObject);
+          d1 = this.width;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          k = (int)(d1 * d2);
+          d1 = this.height;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          FaceOffUtil.initFacePositions4Smooth((List)localObject, k, (int)(d1 * d2), this.faceVertices, FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3 * 2 * i);
+        }
+        i += 1;
       }
+      setPositions(this.faceVertices);
     }
-    setPositions(this.faceVertices);
+    else
+    {
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TTV6SmoothMultiFaceMaskFilter
  * JD-Core Version:    0.7.0.1
  */

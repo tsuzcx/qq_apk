@@ -68,7 +68,14 @@ public class SendMsg
   
   public String toString()
   {
-    return "SendMsg appSeq:" + this.jdField_a_of_type_Int + " serviceCmd:" + this.jdField_a_of_type_JavaLangString + " timeout:" + this.jdField_a_of_type_Long;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SendMsg appSeq:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" serviceCmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" timeout:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -90,7 +97,7 @@ public class SendMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qlink.SendMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -13,23 +13,28 @@ public class DefaultPTSLiteEventListener
 {
   protected String getLogString(String paramString, HashMap<String, String> paramHashMap)
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("identifier = ");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("identifier = ");
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "";
     }
-    localStringBuilder2.append(str).append("\n");
+    localStringBuilder.append(str);
+    localStringBuilder.append("\n");
     if (paramHashMap != null)
     {
       paramString = paramHashMap.entrySet().iterator();
       while (paramString.hasNext())
       {
         paramHashMap = (Map.Entry)paramString.next();
-        localStringBuilder1.append("dataSet [ ").append((String)paramHashMap.getKey()).append(" ] = ").append((String)paramHashMap.getValue()).append("\n");
+        localStringBuilder.append("dataSet [ ");
+        localStringBuilder.append((String)paramHashMap.getKey());
+        localStringBuilder.append(" ] = ");
+        localStringBuilder.append((String)paramHashMap.getValue());
+        localStringBuilder.append("\n");
       }
     }
-    return localStringBuilder1.toString();
+    return localStringBuilder.toString();
   }
   
   public void onExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer) {}
@@ -44,7 +49,7 @@ public class DefaultPTSLiteEventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.lite.DefaultPTSLiteEventListener
  * JD-Core Version:    0.7.0.1
  */

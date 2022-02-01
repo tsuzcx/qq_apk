@@ -9,9 +9,9 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemDa
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalVideoHolder;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalTrendsCacheUtils;
 import com.tencent.biz.qqstory.base.StoryDispatcher;
-import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.guardinterface.IGuardInterface;
+import com.tencent.mobileqq.app.guard.GuardManager;
+import com.tencent.mobileqq.app.guard.guardinterface.IGuardInterface;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,17 +27,20 @@ public class WSVerticalForTrendsPresenter
   
   private void a(int paramInt, WSVerticalPageContract.View paramView)
   {
-    if ((paramInt <= 0) || (paramView == null)) {}
-    do
+    if (paramInt > 0)
     {
-      return;
+      if (paramView == null) {
+        return;
+      }
       if (WSGlobalConfig.a().a(paramInt, 6))
       {
         paramView.a(paramInt, 6);
         return;
       }
-    } while (WSGlobalConfig.a().d(6) != paramInt);
-    paramView.a(WSGlobalConfig.a().a(6));
+      if (WSGlobalConfig.a().d(6) == paramInt) {
+        paramView.a(WSGlobalConfig.a().a(6));
+      }
+    }
   }
   
   private void b(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -51,14 +54,19 @@ public class WSVerticalForTrendsPresenter
     }
   }
   
+  public void G_()
+  {
+    WSPublicAccReport.getInstance().trendsWSForegroundReport();
+  }
+  
+  public void H_()
+  {
+    WSPublicAccReport.getInstance().trendsWSBackgroundReport();
+  }
+  
   public List<WSVerticalItemData> a(ArrayList paramArrayList)
   {
     return null;
-  }
-  
-  public void a()
-  {
-    WSPublicAccReport.getInstance().trendsWSForegroundReport();
   }
   
   public void a(long paramLong) {}
@@ -85,22 +93,20 @@ public class WSVerticalForTrendsPresenter
   public boolean a(boolean paramBoolean1, boolean paramBoolean2, List<WSVerticalItemData> paramList, Object paramObject)
   {
     if (paramBoolean2) {
-      return c();
+      return h();
     }
     return super.a(paramBoolean1, false, paramList, paramObject);
   }
   
   public void b()
   {
-    WSPublicAccReport.getInstance().trendsWSBackgroundReport();
+    super.b();
+    if (GuardManager.a != null) {
+      GuardManager.a.b(this);
+    }
   }
   
   public void b(long paramLong) {}
-  
-  protected boolean b()
-  {
-    return true;
-  }
   
   public void c(long paramLong) {}
   
@@ -108,16 +114,14 @@ public class WSVerticalForTrendsPresenter
   {
     super.d();
     if (GuardManager.a != null) {
-      GuardManager.a.b(this);
+      GuardManager.a.a(this);
     }
   }
   
-  public void f()
+  public void g()
   {
-    super.f();
-    if (GuardManager.a != null) {
-      GuardManager.a.a(this);
-    }
+    super.g();
+    WSVerticalTrendsCacheUtils.a(a());
   }
   
   protected boolean g()
@@ -128,18 +132,17 @@ public class WSVerticalForTrendsPresenter
   public void h()
   {
     super.h();
-    WSVerticalTrendsCacheUtils.a(a());
+    WSPublicAccReport.getInstance().trendsCloseReport(c());
   }
   
-  public void i()
+  protected boolean l()
   {
-    super.i();
-    WSPublicAccReport.getInstance().trendsCloseReport(c());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForTrendsPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -44,49 +44,47 @@ public class InnerListView
   
   public int a()
   {
-    if (this.b != null) {
-      return this.b.size();
+    List localList = this.b;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter;
+    if (localObject != null)
     {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a() != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a().isEmpty()))
+      if ((((InnerListViewAdapter)localObject).a() != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a().isEmpty()))
       {
         int j = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a().size();
         if (j < getChildCount() - a()) {
           removeViews(j, getChildCount() - j - a());
         }
         int i = 0;
-        if (i < j)
+        while (i < j)
         {
-          Object localObject;
-          if (this.jdField_a_of_type_JavaUtilList.size() - 1 >= i) {
+          if (this.jdField_a_of_type_JavaUtilList.size() - 1 >= i)
+          {
             localObject = (BaseViewHolder)this.jdField_a_of_type_JavaUtilList.get(i);
           }
-          for (;;)
+          else
           {
-            this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a(i, (BaseViewHolder)localObject);
-            localObject = ((BaseViewHolder)localObject).a();
-            if (((View)localObject).getParent() == null) {
-              addView((View)localObject, getChildCount() - a());
-            }
-            ((View)localObject).setOnClickListener(new InnerListView.1(this, i));
-            ((View)localObject).setOnLongClickListener(new InnerListView.2(this, i));
-            i += 1;
-            break;
             localObject = new BaseViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a(), this, false));
             this.jdField_a_of_type_JavaUtilList.add(localObject);
           }
+          this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a(i, (BaseViewHolder)localObject);
+          localObject = ((BaseViewHolder)localObject).a();
+          if (((View)localObject).getParent() == null) {
+            addView((View)localObject, getChildCount() - a());
+          }
+          ((View)localObject).setOnClickListener(new InnerListView.1(this, i));
+          ((View)localObject).setOnLongClickListener(new InnerListView.2(this, i));
+          i += 1;
         }
       }
-      else
-      {
-        removeViews(0, getChildCount() - a());
-      }
+      removeViews(0, getChildCount() - a());
       return;
     }
     removeViews(0, getChildCount() - a());
@@ -122,15 +120,16 @@ public class InnerListView
   
   public void setFooterView(int paramInt, View paramView)
   {
-    if ((this.b == null) || (this.b.size() <= paramInt))
+    List localList = this.b;
+    if ((localList != null) && (localList.size() > paramInt))
     {
-      a(paramView);
+      this.b.set(paramInt, paramView);
+      paramInt = getChildCount() - a() + paramInt;
+      removeViewAt(paramInt);
+      addView(paramView, paramInt);
       return;
     }
-    this.b.set(paramInt, paramView);
-    paramInt = getChildCount() - a() + paramInt;
-    removeViewAt(paramInt);
-    addView(paramView, paramInt);
+    a(paramView);
   }
   
   public void setOnItemClickListener(InnerListView.OnItemClickListener paramOnItemClickListener)
@@ -145,7 +144,7 @@ public class InnerListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.InnerListView
  * JD-Core Version:    0.7.0.1
  */

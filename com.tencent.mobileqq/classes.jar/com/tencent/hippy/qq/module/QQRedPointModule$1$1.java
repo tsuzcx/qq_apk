@@ -1,8 +1,8 @@
 package com.tencent.hippy.qq.module;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 import com.tencent.mtt.hippy.modules.Promise;
 import java.util.HashMap;
 
@@ -23,7 +23,7 @@ class QQRedPointModule$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQRedPointModule.1.1
  * JD-Core Version:    0.7.0.1
  */

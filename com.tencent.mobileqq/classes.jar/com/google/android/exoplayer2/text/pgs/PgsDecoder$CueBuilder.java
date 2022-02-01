@@ -25,34 +25,34 @@ final class PgsDecoder$CueBuilder
       return;
     }
     paramParsableByteArray.skipBytes(3);
-    if ((paramParsableByteArray.readUnsignedByte() & 0x80) != 0) {}
-    for (int i = 1;; i = 0)
+    if ((paramParsableByteArray.readUnsignedByte() & 0x80) != 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j = paramInt - 4;
+    paramInt = j;
+    if (i != 0)
     {
-      int j = paramInt - 4;
-      paramInt = j;
-      if (i != 0)
-      {
-        if (j < 7) {
-          break;
-        }
-        paramInt = paramParsableByteArray.readUnsignedInt24();
-        if (paramInt < 4) {
-          break;
-        }
-        this.bitmapWidth = paramParsableByteArray.readUnsignedShort();
-        this.bitmapHeight = paramParsableByteArray.readUnsignedShort();
-        this.bitmapData.reset(paramInt - 4);
-        paramInt = j - 7;
+      if (j < 7) {
+        return;
       }
-      i = this.bitmapData.getPosition();
-      j = this.bitmapData.limit();
-      if ((i >= j) || (paramInt <= 0)) {
-        break;
+      paramInt = paramParsableByteArray.readUnsignedInt24();
+      if (paramInt < 4) {
+        return;
       }
+      this.bitmapWidth = paramParsableByteArray.readUnsignedShort();
+      this.bitmapHeight = paramParsableByteArray.readUnsignedShort();
+      this.bitmapData.reset(paramInt - 4);
+      paramInt = j - 7;
+    }
+    int i = this.bitmapData.getPosition();
+    j = this.bitmapData.limit();
+    if ((i < j) && (paramInt > 0))
+    {
       paramInt = Math.min(paramInt, j - i);
       paramParsableByteArray.readBytes(this.bitmapData.data, i, paramInt);
-      this.bitmapData.setPosition(paramInt + i);
-      return;
+      this.bitmapData.setPosition(i + paramInt);
     }
   }
   
@@ -80,17 +80,27 @@ final class PgsDecoder$CueBuilder
     while (paramInt < i)
     {
       int j = paramParsableByteArray.readUnsignedByte();
-      int i1 = paramParsableByteArray.readUnsignedByte();
       int n = paramParsableByteArray.readUnsignedByte();
-      int i2 = paramParsableByteArray.readUnsignedByte();
+      int i1 = paramParsableByteArray.readUnsignedByte();
+      int m = paramParsableByteArray.readUnsignedByte();
       int k = paramParsableByteArray.readUnsignedByte();
-      int m = (int)(i1 + 1.402D * (n - 128));
-      n = (int)(i1 - 0.34414D * (i2 - 128) - 0.71414D * (n - 128));
-      i1 = (int)(i1 + 1.772D * (i2 - 128));
+      double d1 = n;
+      double d2 = i1 - 128;
+      Double.isNaN(d2);
+      Double.isNaN(d1);
+      n = (int)(1.402D * d2 + d1);
+      double d3 = m - 128;
+      Double.isNaN(d3);
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      i1 = (int)(d1 - 0.34414D * d3 - d2 * 0.71414D);
+      Double.isNaN(d3);
+      Double.isNaN(d1);
+      m = (int)(d1 + d3 * 1.772D);
       int[] arrayOfInt = this.colors;
-      m = Util.constrainValue(m, 0, 255);
       n = Util.constrainValue(n, 0, 255);
-      arrayOfInt[j] = (Util.constrainValue(i1, 0, 255) | n << 8 | k << 24 | m << 16);
+      i1 = Util.constrainValue(i1, 0, 255);
+      arrayOfInt[j] = (Util.constrainValue(m, 0, 255) | i1 << 8 | k << 24 | n << 16);
       paramInt += 1;
     }
     this.colorsSet = true;
@@ -98,46 +108,49 @@ final class PgsDecoder$CueBuilder
   
   public Cue build()
   {
-    if ((this.planeWidth == 0) || (this.planeHeight == 0) || (this.bitmapWidth == 0) || (this.bitmapHeight == 0) || (this.bitmapData.limit() == 0) || (this.bitmapData.getPosition() != this.bitmapData.limit()) || (!this.colorsSet)) {
-      return null;
-    }
-    this.bitmapData.setPosition(0);
-    int[] arrayOfInt = new int[this.bitmapWidth * this.bitmapHeight];
-    int i = 0;
-    while (i < arrayOfInt.length)
+    if ((this.planeWidth != 0) && (this.planeHeight != 0) && (this.bitmapWidth != 0) && (this.bitmapHeight != 0) && (this.bitmapData.limit() != 0) && (this.bitmapData.getPosition() == this.bitmapData.limit()) && (this.colorsSet))
     {
-      int j = this.bitmapData.readUnsignedByte();
-      if (j != 0)
-      {
-        arrayOfInt[i] = this.colors[j];
-        i += 1;
-      }
-      else
+      this.bitmapData.setPosition(0);
+      Object localObject = new int[this.bitmapWidth * this.bitmapHeight];
+      int i = 0;
+      if (i < localObject.length)
       {
         int k = this.bitmapData.readUnsignedByte();
         if (k != 0)
         {
-          if ((k & 0x40) == 0)
-          {
-            j = k & 0x3F;
-            label147:
-            if ((k & 0x80) != 0) {
-              break label193;
-            }
-          }
-          label193:
-          for (k = 0;; k = this.colors[this.bitmapData.readUnsignedByte()])
-          {
-            Arrays.fill(arrayOfInt, i, i + j, k);
-            i += j;
+          j = i + 1;
+          localObject[i] = this.colors[k];
+        }
+        for (i = j;; i = j)
+        {
+          break;
+          k = this.bitmapData.readUnsignedByte();
+          if (k == 0) {
             break;
-            j = (k & 0x3F) << 8 | this.bitmapData.readUnsignedByte();
-            break label147;
           }
+          if ((k & 0x40) == 0) {
+            j = k & 0x3F;
+          } else {
+            j = (k & 0x3F) << 8 | this.bitmapData.readUnsignedByte();
+          }
+          if ((k & 0x80) == 0) {
+            k = 0;
+          } else {
+            k = this.colors[this.bitmapData.readUnsignedByte()];
+          }
+          j += i;
+          Arrays.fill((int[])localObject, i, j, k);
         }
       }
+      localObject = Bitmap.createBitmap((int[])localObject, this.bitmapWidth, this.bitmapHeight, Bitmap.Config.ARGB_8888);
+      float f1 = this.bitmapX;
+      i = this.planeWidth;
+      f1 /= i;
+      float f2 = this.bitmapY;
+      int j = this.planeHeight;
+      return new Cue((Bitmap)localObject, f1, 0, f2 / j, 0, this.bitmapWidth / i, this.bitmapHeight / j);
     }
-    return new Cue(Bitmap.createBitmap(arrayOfInt, this.bitmapWidth, this.bitmapHeight, Bitmap.Config.ARGB_8888), this.bitmapX / this.planeWidth, 0, this.bitmapY / this.planeHeight, 0, this.bitmapWidth / this.planeWidth, this.bitmapHeight / this.planeHeight);
+    return null;
   }
   
   public void reset()
@@ -154,7 +167,7 @@ final class PgsDecoder$CueBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.pgs.PgsDecoder.CueBuilder
  * JD-Core Version:    0.7.0.1
  */

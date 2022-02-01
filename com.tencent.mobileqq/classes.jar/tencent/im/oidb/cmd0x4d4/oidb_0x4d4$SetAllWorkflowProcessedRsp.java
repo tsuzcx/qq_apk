@@ -17,13 +17,14 @@ public final class oidb_0x4d4$SetAllWorkflowProcessedRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_result", "bytes_error_msg", "uint32_failure_count" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, SetAllWorkflowProcessedRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_result", "bytes_error_msg", "uint32_failure_count" }, new Object[] { localInteger, localByteStringMicro, localInteger }, SetAllWorkflowProcessedRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x4d4.oidb_0x4d4.SetAllWorkflowProcessedRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -28,51 +28,57 @@ class ContactsViewController$1
     switch (paramMessage.what)
     {
     default: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
+      return false;
+    case 8: 
+      this.a.f();
+      return false;
     case 7: 
-      label146:
-      do
+      if ((ContactsViewController.a(this.a) != null) && (ContactsViewController.a(this.a) != null))
       {
+        ContactsViewController.a(this.a).a(ContactsViewController.a(this.a).getScrollY(), ContactsViewController.a(this.a).a());
         return false;
-        QQToast.a(this.a.a(), 1, 2131719529, 0).b(ContactsViewController.a(this.a));
-        a();
-        return false;
-        int i = paramMessage.arg1;
-        if (paramMessage.arg2 == 1) {}
-        for (i = 1;; i = 0)
+      }
+      break;
+    case 6: 
+      ContactsViewController.a(this.a, true, true);
+      return false;
+    case 5: 
+      a();
+      return false;
+    case 4: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        ContactsViewController.a(this.a);
+        if (ContactsViewController.a(this.a) != null)
         {
-          if (i == 0) {
-            break label146;
-          }
-          ContactsViewController.a(this.a);
-          if (ContactsViewController.a(this.a) == null) {
-            break;
-          }
           ContactsViewController.a(this.a).a(0);
           this.a.a.sendEmptyMessageDelayed(5, 800L);
           return false;
         }
+      }
+      else
+      {
         a();
-        QQToast.a(this.a.a(), 1, 2131719529, 0).b(ContactsViewController.a(this.a));
+        QQToast.a(this.a.a(), 1, 2131719247, 0).b(ContactsViewController.a(this.a));
         return false;
-        a();
-        return false;
-        ContactsViewController.a(this.a, true, true);
-        return false;
-      } while ((ContactsViewController.a(this.a) == null) || (ContactsViewController.a(this.a) == null));
-      ContactsViewController.a(this.a).a(ContactsViewController.a(this.a).getScrollY(), ContactsViewController.a(this.a).a());
-      return false;
+      }
+      break;
+    case 3: 
+      QQToast.a(this.a.a(), 1, 2131719247, 0).b(ContactsViewController.a(this.a));
+      a();
     }
-    this.a.f();
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.ContactsViewController.1
  * JD-Core Version:    0.7.0.1
  */

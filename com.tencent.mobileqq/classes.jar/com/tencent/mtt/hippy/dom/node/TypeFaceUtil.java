@@ -21,113 +21,113 @@ public class TypeFaceUtil
   
   public static Typeface addTypeface(String paramString1, String paramString2, int paramInt)
   {
-    String str = paramString1 + paramInt;
-    paramString1 = (Typeface)mFontCache.get(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
+    paramString1 = (Typeface)mFontCache.get(localObject);
     if (paramString1 != null) {
-      paramString2 = paramString1;
+      return paramString1;
     }
-    do
+    try
     {
-      return paramString2;
-      try
-      {
-        paramString2 = Typeface.createFromFile(paramString2);
-        paramString1 = paramString2;
-      }
-      catch (RuntimeException paramString2)
-      {
-        for (;;)
-        {
-          paramString2.printStackTrace();
-        }
-      }
-      paramString2 = paramString1;
-    } while (paramString1 == null);
-    mFontCache.put(str, paramString1);
+      paramString2 = Typeface.createFromFile(paramString2);
+      paramString1 = paramString2;
+    }
+    catch (RuntimeException paramString2)
+    {
+      paramString2.printStackTrace();
+    }
+    if (paramString1 != null) {
+      mFontCache.put(localObject, paramString1);
+    }
     return paramString1;
   }
   
   public static Typeface addTypefaceWithBase64(String paramString1, String paramString2, int paramInt)
   {
-    String str = paramString1 + paramInt;
-    Typeface localTypeface = (Typeface)mFontCache.get(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
+    Typeface localTypeface = (Typeface)mFontCache.get(localObject);
     if (localTypeface != null) {
       return localTypeface;
     }
     if (TextUtils.isEmpty(paramString2)) {
       return null;
     }
-    str = getFontPath(ContextHolder.getAppContext(), str);
+    localObject = getFontPath(ContextHolder.getAppContext(), (String)localObject);
     paramString2 = getRealTTFBase64(paramString2);
-    deleteFontFile(str);
-    saveFontFile(str, paramString2);
-    paramString1 = addTypeface(paramString1, str, 0);
-    deleteFontFile(str);
+    deleteFontFile((String)localObject);
+    saveFontFile((String)localObject, paramString2);
+    paramString1 = addTypeface(paramString1, (String)localObject, 0);
+    deleteFontFile((String)localObject);
     return paramString1;
   }
   
   public static void apply(Paint paramPaint, int paramInt1, int paramInt2, String paramString)
   {
-    int k = 0;
     Typeface localTypeface = paramPaint.getTypeface();
+    int k = 0;
     int j;
-    if (localTypeface == null)
-    {
+    if (localTypeface == null) {
       j = 0;
-      int i;
-      if (paramInt2 != 1)
+    } else {
+      j = localTypeface.getStyle();
+    }
+    int i;
+    if (paramInt2 != 1)
+    {
+      i = k;
+      if ((j & 0x1) != 0)
       {
         i = k;
-        if ((j & 0x1) != 0)
-        {
-          i = k;
-          if (paramInt2 != -1) {}
-        }
+        if (paramInt2 != -1) {}
       }
-      else
-      {
-        i = 1;
-      }
-      if (paramInt1 != 2)
+    }
+    else
+    {
+      i = 1;
+    }
+    if (paramInt1 != 2)
+    {
+      paramInt2 = i;
+      if ((0x2 & j) != 0)
       {
         paramInt2 = i;
-        if ((j & 0x2) != 0)
-        {
-          paramInt2 = i;
-          if (paramInt1 != -1) {}
-        }
+        if (paramInt1 != -1) {}
       }
-      else
-      {
-        paramInt2 = i | 0x2;
-      }
-      if (paramString == null) {
-        break label104;
-      }
+    }
+    else
+    {
+      paramInt2 = i | 0x2;
+    }
+    if (paramString != null)
+    {
       paramString = getTypeface(paramString, paramInt2);
     }
-    for (;;)
+    else
     {
-      if (paramString == null) {
-        break label122;
-      }
-      paramPaint.setTypeface(paramString);
-      return;
-      j = localTypeface.getStyle();
-      break;
-      label104:
       paramString = localTypeface;
       if (localTypeface != null) {
         paramString = Typeface.create(localTypeface, paramInt2);
       }
     }
-    label122:
+    if (paramString != null)
+    {
+      paramPaint.setTypeface(paramString);
+      return;
+    }
     paramPaint.setTypeface(Typeface.defaultFromStyle(paramInt2));
   }
   
   public static boolean checkFontExist(String paramString, int paramInt)
   {
-    paramString = paramString + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(paramInt);
+    paramString = localStringBuilder.toString();
     return (Typeface)mFontCache.get(paramString) != null;
   }
   
@@ -140,7 +140,12 @@ public class TypeFaceUtil
     while (i < j)
     {
       Object localObject = arrayOfString[i];
-      localObject = "fonts/" + paramString + str + (String)localObject;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fonts/");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(str);
+      localStringBuilder.append((String)localObject);
+      localObject = localStringBuilder.toString();
       try
       {
         localObject = Typeface.createFromAsset(ContextHolder.getAppContext().getAssets(), (String)localObject);
@@ -155,41 +160,52 @@ public class TypeFaceUtil
     return Typeface.create(paramString, paramInt);
   }
   
-  private static boolean deleteFontFile(String paramString)
+  private static void deleteFontFile(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return false;
-      paramString = new File(paramString);
-    } while (!paramString.exists());
-    return paramString.delete();
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    paramString = new File(paramString);
+    if (paramString.exists()) {
+      paramString.delete();
+    }
   }
   
   private static String getFontPath(Context paramContext, String paramString)
   {
-    return paramContext.getCacheDir().getAbsolutePath() + File.separator + paramString + ".ttf";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getCacheDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".ttf");
+    return localStringBuilder.toString();
   }
   
   private static byte[] getRealTTFBase64(String paramString)
   {
-    LogUtils.d("TypeFaceUtil", "原始字库数据 base64Str：" + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("原始字库数据 base64Str：");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtils.d("TypeFaceUtil", ((StringBuilder)localObject).toString());
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     int i = paramString.indexOf("base64,");
-    String str = paramString;
+    localObject = paramString;
     if (i > 0) {
-      str = paramString.substring("base64,".length() + i);
+      localObject = paramString.substring(i + 7);
     }
-    return Base64.decode(str, 0);
+    return Base64.decode((String)localObject, 0);
   }
   
   public static Typeface getTypeface(String paramString, int paramInt)
   {
-    String str = paramString + paramInt;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(paramInt);
+    String str = ((StringBuilder)localObject).toString();
     Typeface localTypeface = (Typeface)mFontCache.get(str);
-    Object localObject = localTypeface;
+    localObject = localTypeface;
     if (localTypeface == null)
     {
       paramString = createTypeface(paramString, paramInt);
@@ -210,115 +226,119 @@ public class TypeFaceUtil
     //   0: new 158	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 161	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: astore_0
+    //   5: invokespecial 160	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore_2
     //   9: aconst_null
-    //   10: astore_2
+    //   10: astore_3
     //   11: aconst_null
-    //   12: astore_3
-    //   13: new 213	java/io/BufferedOutputStream
-    //   16: dup
-    //   17: new 215	java/io/FileOutputStream
-    //   20: dup
-    //   21: aload_0
-    //   22: invokespecial 218	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   25: invokespecial 221	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   28: astore_0
-    //   29: aload_0
-    //   30: astore_2
-    //   31: aload_0
-    //   32: aload_1
-    //   33: invokevirtual 225	java/io/BufferedOutputStream:write	([B)V
-    //   36: aload_0
-    //   37: astore_2
-    //   38: aload_0
-    //   39: invokevirtual 228	java/io/BufferedOutputStream:flush	()V
-    //   42: aload_0
-    //   43: ifnull +7 -> 50
-    //   46: aload_0
-    //   47: invokevirtual 231	java/io/BufferedOutputStream:close	()V
-    //   50: return
-    //   51: astore_0
-    //   52: aload_0
-    //   53: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   56: return
-    //   57: astore_1
-    //   58: aconst_null
-    //   59: astore_0
-    //   60: aload_0
-    //   61: astore_2
-    //   62: aload_1
-    //   63: invokevirtual 233	java/io/FileNotFoundException:printStackTrace	()V
-    //   66: aload_0
-    //   67: ifnull -17 -> 50
-    //   70: aload_0
-    //   71: invokevirtual 231	java/io/BufferedOutputStream:close	()V
-    //   74: return
-    //   75: astore_0
-    //   76: aload_0
-    //   77: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   80: return
-    //   81: astore_1
-    //   82: aload_3
-    //   83: astore_0
-    //   84: aload_0
-    //   85: astore_2
-    //   86: aload_1
-    //   87: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   90: aload_0
-    //   91: ifnull -41 -> 50
-    //   94: aload_0
-    //   95: invokevirtual 231	java/io/BufferedOutputStream:close	()V
-    //   98: return
+    //   12: astore 4
+    //   14: aconst_null
+    //   15: astore_0
+    //   16: new 209	java/io/BufferedOutputStream
+    //   19: dup
+    //   20: new 211	java/io/FileOutputStream
+    //   23: dup
+    //   24: aload_2
+    //   25: invokespecial 214	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   28: invokespecial 217	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   31: astore_2
+    //   32: aload_2
+    //   33: aload_1
+    //   34: invokevirtual 221	java/io/BufferedOutputStream:write	([B)V
+    //   37: aload_2
+    //   38: invokevirtual 224	java/io/BufferedOutputStream:flush	()V
+    //   41: aload_2
+    //   42: invokevirtual 227	java/io/BufferedOutputStream:close	()V
+    //   45: return
+    //   46: astore_0
+    //   47: aload_2
+    //   48: astore_1
+    //   49: goto +70 -> 119
+    //   52: astore_0
+    //   53: aload_2
+    //   54: astore_1
+    //   55: aload_0
+    //   56: astore_2
+    //   57: goto +22 -> 79
+    //   60: astore_0
+    //   61: aload_2
+    //   62: astore_1
+    //   63: aload_0
+    //   64: astore_2
+    //   65: goto +33 -> 98
+    //   68: astore_2
+    //   69: aload_0
+    //   70: astore_1
+    //   71: aload_2
+    //   72: astore_0
+    //   73: goto +46 -> 119
+    //   76: astore_2
+    //   77: aload_3
+    //   78: astore_1
+    //   79: aload_1
+    //   80: astore_0
+    //   81: aload_2
+    //   82: invokevirtual 228	java/io/IOException:printStackTrace	()V
+    //   85: aload_1
+    //   86: ifnull +32 -> 118
+    //   89: aload_1
+    //   90: invokevirtual 227	java/io/BufferedOutputStream:close	()V
+    //   93: return
+    //   94: astore_2
+    //   95: aload 4
+    //   97: astore_1
+    //   98: aload_1
     //   99: astore_0
-    //   100: aload_0
-    //   101: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   104: return
-    //   105: astore_0
-    //   106: aload_2
-    //   107: ifnull +7 -> 114
-    //   110: aload_2
-    //   111: invokevirtual 231	java/io/BufferedOutputStream:close	()V
+    //   100: aload_2
+    //   101: invokevirtual 229	java/io/FileNotFoundException:printStackTrace	()V
+    //   104: aload_1
+    //   105: ifnull +13 -> 118
+    //   108: aload_1
+    //   109: invokevirtual 227	java/io/BufferedOutputStream:close	()V
+    //   112: return
+    //   113: astore_0
     //   114: aload_0
-    //   115: athrow
-    //   116: astore_1
-    //   117: aload_1
-    //   118: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   121: goto -7 -> 114
-    //   124: astore_0
-    //   125: goto -19 -> 106
-    //   128: astore_1
-    //   129: goto -45 -> 84
-    //   132: astore_1
-    //   133: goto -73 -> 60
+    //   115: invokevirtual 228	java/io/IOException:printStackTrace	()V
+    //   118: return
+    //   119: aload_1
+    //   120: ifnull +15 -> 135
+    //   123: aload_1
+    //   124: invokevirtual 227	java/io/BufferedOutputStream:close	()V
+    //   127: goto +8 -> 135
+    //   130: astore_1
+    //   131: aload_1
+    //   132: invokevirtual 228	java/io/IOException:printStackTrace	()V
+    //   135: aload_0
+    //   136: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	136	0	paramString	String
-    //   0	136	1	paramArrayOfByte	byte[]
-    //   10	101	2	str	String
-    //   12	71	3	localObject	Object
+    //   0	137	0	paramString	String
+    //   0	137	1	paramArrayOfByte	byte[]
+    //   8	57	2	localObject1	Object
+    //   68	4	2	localObject2	Object
+    //   76	6	2	localIOException	java.io.IOException
+    //   94	7	2	localFileNotFoundException	java.io.FileNotFoundException
+    //   10	68	3	localObject3	Object
+    //   12	84	4	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   46	50	51	java/io/IOException
-    //   13	29	57	java/io/FileNotFoundException
-    //   70	74	75	java/io/IOException
-    //   13	29	81	java/io/IOException
-    //   94	98	99	java/io/IOException
-    //   13	29	105	finally
-    //   86	90	105	finally
-    //   110	114	116	java/io/IOException
-    //   31	36	124	finally
-    //   38	42	124	finally
-    //   62	66	124	finally
-    //   31	36	128	java/io/IOException
-    //   38	42	128	java/io/IOException
-    //   31	36	132	java/io/FileNotFoundException
-    //   38	42	132	java/io/FileNotFoundException
+    //   32	41	46	finally
+    //   32	41	52	java/io/IOException
+    //   32	41	60	java/io/FileNotFoundException
+    //   16	32	68	finally
+    //   81	85	68	finally
+    //   100	104	68	finally
+    //   16	32	76	java/io/IOException
+    //   16	32	94	java/io/FileNotFoundException
+    //   41	45	113	java/io/IOException
+    //   89	93	113	java/io/IOException
+    //   108	112	113	java/io/IOException
+    //   123	127	130	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.TypeFaceUtil
  * JD-Core Version:    0.7.0.1
  */

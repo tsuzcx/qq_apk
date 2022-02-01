@@ -17,40 +17,40 @@ class GAudioMemberListCtrl$1
   
   public void onClick(View paramView)
   {
-    int i = 0;
     GAudioMemberListCtrl.GAudioMemberInfo localGAudioMemberInfo = (GAudioMemberListCtrl.GAudioMemberInfo)paramView.getTag();
-    if (GAudioMemberListCtrl.a(this.a) == null)
+    if (GAudioMemberListCtrl.a(this.a) != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    ReportController.b(null, "CliOper", "", "", "0X8009E26", "0X8009E26", 0, 0, "", "", "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMemberListCtrl", 2, "onItemClick # mRelationUinStr = " + this.a.jdField_a_of_type_Long + " # memberUin = " + String.valueOf(localGAudioMemberInfo.jdField_a_of_type_Long));
-    }
-    GAudioMemberListCtrl.a(this.a).getCurrentAccountUin();
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.video.v2q.GaudioOpenTroopCard");
-    localIntent.putExtra("troopUin", String.valueOf(this.a.jdField_a_of_type_Long));
-    localIntent.putExtra("memberUin", String.valueOf(localGAudioMemberInfo.jdField_a_of_type_Long));
-    if (this.a.jdField_a_of_type_Int == 1) {
-      i = 1000;
-    }
-    for (;;)
-    {
-      localIntent.putExtra("uinType", i);
-      localIntent.setPackage(GAudioMemberListCtrl.a(this.a).getApplication().getPackageName());
-      GAudioMemberListCtrl.a(this.a).getApp().sendBroadcast(localIntent);
-      break;
-      if (this.a.jdField_a_of_type_Int == 2) {
+      ReportController.b(null, "CliOper", "", "", "0X8009E26", "0X8009E26", 0, 0, "", "", "", "");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onItemClick # mRelationUinStr = ");
+        ((StringBuilder)localObject).append(this.a.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(" # memberUin = ");
+        ((StringBuilder)localObject).append(String.valueOf(localGAudioMemberInfo.jdField_a_of_type_Long));
+        QLog.d("GAudioMemberListCtrl", 2, ((StringBuilder)localObject).toString());
+      }
+      GAudioMemberListCtrl.a(this.a).getCurrentAccountUin();
+      Object localObject = new Intent();
+      ((Intent)localObject).setAction("tencent.video.v2q.GaudioOpenTroopCard");
+      ((Intent)localObject).putExtra("troopUin", String.valueOf(this.a.jdField_a_of_type_Long));
+      ((Intent)localObject).putExtra("memberUin", String.valueOf(localGAudioMemberInfo.jdField_a_of_type_Long));
+      int i = 0;
+      if (this.a.jdField_a_of_type_Int == 1) {
+        i = 1000;
+      } else if (this.a.jdField_a_of_type_Int == 2) {
         i = 1004;
       }
+      ((Intent)localObject).putExtra("uinType", i);
+      ((Intent)localObject).setPackage(GAudioMemberListCtrl.a(this.a).getApplication().getPackageName());
+      GAudioMemberListCtrl.a(this.a).getApp().sendBroadcast((Intent)localObject);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.GAudioMemberListCtrl.1
  * JD-Core Version:    0.7.0.1
  */

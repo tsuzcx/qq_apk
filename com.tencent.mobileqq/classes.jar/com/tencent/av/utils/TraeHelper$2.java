@@ -11,15 +11,19 @@ class TraeHelper$2
   
   public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D22 at: " + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Trae_DRP 0X8008D22 at: ");
+      localStringBuilder.append(System.currentTimeMillis());
+      QLog.d("TraeSessionHelper", 2, localStringBuilder.toString());
     }
     ReportController.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.TraeHelper.2
  * JD-Core Version:    0.7.0.1
  */

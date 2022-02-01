@@ -52,7 +52,7 @@ public final class ReqGetEncounter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.ReqGetEncounter
  * JD-Core Version:    0.7.0.1
  */

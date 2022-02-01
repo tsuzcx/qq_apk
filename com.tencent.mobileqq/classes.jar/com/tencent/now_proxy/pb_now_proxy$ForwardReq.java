@@ -34,13 +34,14 @@ public final class pb_now_proxy$ForwardReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 58, 66, 72, 80, 90, 98, 104, 112, 122, 128, 138 }, new String[] { "cmd", "subcmd", "uid", "tinyid", "a2", "platform", "version", "busi_buf", "version_code", "stream_type", "original_id", "original_key", "original_id_type", "codec", "token", "target_env", "authInfo" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), "", Integer.valueOf(0), "", localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), null }, ForwardReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 58, 66, 72, 80, 90, 98, 104, 112, 122, 128, 138 }, new String[] { "cmd", "subcmd", "uid", "tinyid", "a2", "platform", "version", "busi_buf", "version_code", "stream_type", "original_id", "original_key", "original_id_type", "codec", "token", "target_env", "authInfo" }, new Object[] { localInteger, localInteger, Long.valueOf(0L), Long.valueOf(0L), "", localInteger, "", localByteStringMicro, localInteger, localInteger, "", "", localInteger, localInteger, "", localInteger, null }, ForwardReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.now_proxy.pb_now_proxy.ForwardReq
  * JD-Core Version:    0.7.0.1
  */

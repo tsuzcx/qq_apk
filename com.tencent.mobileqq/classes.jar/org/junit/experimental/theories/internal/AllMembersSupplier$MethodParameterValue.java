@@ -23,39 +23,38 @@ class AllMembersSupplier$MethodParameterValue
   
   public Object getValue()
   {
-    DataPoint localDataPoint;
+    boolean bool = false;
     try
     {
       Object localObject = this.method.invokeExplosively(null, new Object[0]);
       return localObject;
     }
+    catch (Throwable localThrowable)
+    {
+      DataPoint localDataPoint = (DataPoint)this.method.getAnnotation(DataPoint.class);
+      if ((localDataPoint == null) || (!AllMembersSupplier.access$000(localDataPoint.ignoredExceptions(), localThrowable))) {
+        bool = true;
+      }
+      Assume.assumeTrue(bool);
+      throw new PotentialAssignment.CouldNotGenerateValueException(localThrowable);
+      throw new RuntimeException("unexpected: getMethods returned an inaccessible method");
+      throw new RuntimeException("unexpected: argument length is checked");
+    }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      throw new RuntimeException("unexpected: argument length is checked");
+      break label73;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      throw new RuntimeException("unexpected: getMethods returned an inaccessible method");
-    }
-    catch (Throwable localThrowable)
-    {
-      localDataPoint = (DataPoint)this.method.getAnnotation(DataPoint.class);
-      if (localDataPoint == null) {
-        break label68;
-      }
-    }
-    if (!AllMembersSupplier.access$000(localDataPoint.ignoredExceptions(), localThrowable)) {}
-    label68:
-    for (boolean bool = true;; bool = false)
-    {
-      Assume.assumeTrue(bool);
-      throw new PotentialAssignment.CouldNotGenerateValueException(localThrowable);
+      label63:
+      label73:
+      break label63;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.experimental.theories.internal.AllMembersSupplier.MethodParameterValue
  * JD-Core Version:    0.7.0.1
  */

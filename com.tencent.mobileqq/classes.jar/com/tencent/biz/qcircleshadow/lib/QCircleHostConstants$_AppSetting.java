@@ -23,20 +23,23 @@ public class QCircleHostConstants$_AppSetting
       StringBuilder localStringBuilder = new StringBuilder(arrayOfString[0]);
       if (arrayOfString[1].length() == 1)
       {
-        localStringBuilder.append("0").append(arrayOfString[1]);
-        if (arrayOfString[2].length() != 1) {
-          break label95;
-        }
-        localStringBuilder.append("0").append(arrayOfString[2]);
-      }
-      for (;;)
-      {
-        return Integer.parseInt(localStringBuilder.toString());
+        localStringBuilder.append("0");
         localStringBuilder.append(arrayOfString[1]);
-        break;
-        label95:
+      }
+      else
+      {
+        localStringBuilder.append(arrayOfString[1]);
+      }
+      if (arrayOfString[2].length() == 1)
+      {
+        localStringBuilder.append("0");
         localStringBuilder.append(arrayOfString[2]);
       }
+      else
+      {
+        localStringBuilder.append(arrayOfString[2]);
+      }
+      return Integer.parseInt(localStringBuilder.toString());
     }
     return 2147483647;
   }
@@ -73,7 +76,7 @@ public class QCircleHostConstants$_AppSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostConstants._AppSetting
  * JD-Core Version:    0.7.0.1
  */

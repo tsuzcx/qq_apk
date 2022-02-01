@@ -16,23 +16,23 @@ public class RedDotConfBean
     try
     {
       paramString = new JSONObject(paramString).getJSONArray("showDetail");
-      if (paramString.length() < 0)
+      if (paramString.length() > 0)
       {
-        JSONObject localJSONObject = paramString.getJSONObject(0);
+        paramString = paramString.getJSONObject(0);
         RedDotConfBean localRedDotConfBean = new RedDotConfBean();
-        String str = localJSONObject.optString("name");
-        if ("photo".equals(str))
+        String str = paramString.optString("name");
+        boolean bool = "photo".equals(str);
+        if (bool)
         {
-          localRedDotConfBean.c = localJSONObject.optInt("showRed", 0);
-          localRedDotConfBean.d = localJSONObject.optInt("version", 0);
+          localRedDotConfBean.c = paramString.optInt("showRed", 0);
+          localRedDotConfBean.d = paramString.optInt("version", 0);
           return localRedDotConfBean;
         }
-        paramString = localRedDotConfBean;
-        if (!"gif".equals(str)) {
-          return paramString;
+        if ("gif".equals(str))
+        {
+          localRedDotConfBean.a = paramString.optInt("showRed", 0);
+          localRedDotConfBean.b = paramString.optInt("version", 0);
         }
-        localRedDotConfBean.a = localJSONObject.optInt("showRed", 0);
-        localRedDotConfBean.b = localJSONObject.optInt("version", 0);
         return localRedDotConfBean;
       }
     }
@@ -41,14 +41,13 @@ public class RedDotConfBean
       if (QLog.isColorLevel()) {
         QLog.e("ShortVideoAndHotPicRedDotConfProcessor", 2, "handleGetPtvHotPicConfig Exception :", paramString);
       }
-      paramString = null;
     }
-    return paramString;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.RedDotConfBean
  * JD-Core Version:    0.7.0.1
  */

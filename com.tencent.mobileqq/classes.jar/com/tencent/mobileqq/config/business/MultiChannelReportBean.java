@@ -10,48 +10,51 @@ public class MultiChannelReportBean
   
   public static MultiChannelReportBean a(String paramString)
   {
-    if (paramString == null) {}
+    if (paramString == null) {
+      return null;
+    }
     for (;;)
     {
-      return null;
       try
       {
         MultiChannelReportBean localMultiChannelReportBean = new MultiChannelReportBean();
-        if (new JSONObject(paramString).optInt("enableMultiChannelReport", 1) == 1) {}
-        for (boolean bool = true;; bool = false)
+        if (new JSONObject(paramString).optInt("enableMultiChannelReport", 1) == 1)
         {
+          bool = true;
           localMultiChannelReportBean.a = bool;
           return localMultiChannelReportBean;
         }
-        if (!QLog.isColorLevel()) {}
       }
-      catch (Exception paramString) {}
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MultiChannelReportProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+        }
+        return null;
+      }
+      boolean bool = false;
     }
-    QLog.e("MultiChannelReportProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
   }
   
   public static String a(MultiChannelReportBean paramMultiChannelReportBean)
   {
     JSONObject localJSONObject = new JSONObject();
-    if (paramMultiChannelReportBean != null) {}
-    try
-    {
-      localJSONObject.put("isMultiChannelReportEnable", paramMultiChannelReportBean.a);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramMultiChannelReportBean)
-    {
-      for (;;)
+    if (paramMultiChannelReportBean != null) {
+      try
+      {
+        localJSONObject.put("isMultiChannelReportEnable", paramMultiChannelReportBean.a);
+      }
+      catch (JSONException paramMultiChannelReportBean)
       {
         paramMultiChannelReportBean.printStackTrace();
       }
     }
+    return localJSONObject.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MultiChannelReportBean
  * JD-Core Version:    0.7.0.1
  */

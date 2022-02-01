@@ -35,8 +35,10 @@ public class IOUtil
     }
     catch (IOException paramCloseable)
     {
-      Log.e("IOUtil", "closeSecure IOException");
+      label11:
+      break label11;
     }
+    Log.e("IOUtil", "closeSecure IOException");
   }
   
   public static void closeSecure(InputStream paramInputStream)
@@ -106,7 +108,7 @@ public class IOUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.util.IOUtil
  * JD-Core Version:    0.7.0.1
  */

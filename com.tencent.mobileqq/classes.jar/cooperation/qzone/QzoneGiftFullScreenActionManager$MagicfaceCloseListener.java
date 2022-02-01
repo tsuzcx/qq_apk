@@ -6,7 +6,7 @@ public abstract interface QzoneGiftFullScreenActionManager$MagicfaceCloseListene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenActionManager.MagicfaceCloseListener
  * JD-Core Version:    0.7.0.1
  */

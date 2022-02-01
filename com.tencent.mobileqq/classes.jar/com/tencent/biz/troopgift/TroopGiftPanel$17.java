@@ -19,16 +19,16 @@ class TroopGiftPanel$17
     {
       VasH5PayUtil.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
       ReportController.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
-    }
-    while (paramInt != 0) {
       return;
     }
-    ReportController.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
+    if (paramInt == 0) {
+      ReportController.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.17
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,15 @@ class PagerTitleStrip$PageListener
   
   public void onChanged()
   {
-    float f = 0.0F;
-    this.this$0.updateText(this.this$0.mPager.getCurrentItem(), this.this$0.mPager.getAdapter());
-    if (this.this$0.mLastKnownPositionOffset >= 0.0F) {
-      f = this.this$0.mLastKnownPositionOffset;
+    PagerTitleStrip localPagerTitleStrip = this.this$0;
+    localPagerTitleStrip.updateText(localPagerTitleStrip.mPager.getCurrentItem(), this.this$0.mPager.getAdapter());
+    float f2 = this.this$0.mLastKnownPositionOffset;
+    float f1 = 0.0F;
+    if (f2 >= 0.0F) {
+      f1 = this.this$0.mLastKnownPositionOffset;
     }
-    this.this$0.updateTextPositions(this.this$0.mPager.getCurrentItem(), f, true);
+    localPagerTitleStrip = this.this$0;
+    localPagerTitleStrip.updateTextPositions(localPagerTitleStrip.mPager.getCurrentItem(), f1, true);
   }
   
   public void onPageScrollStateChanged(int paramInt)
@@ -41,20 +44,23 @@ class PagerTitleStrip$PageListener
   
   public void onPageSelected(int paramInt)
   {
-    float f = 0.0F;
     if (this.mScrollState == 0)
     {
-      this.this$0.updateText(this.this$0.mPager.getCurrentItem(), this.this$0.mPager.getAdapter());
-      if (this.this$0.mLastKnownPositionOffset >= 0.0F) {
-        f = this.this$0.mLastKnownPositionOffset;
+      PagerTitleStrip localPagerTitleStrip = this.this$0;
+      localPagerTitleStrip.updateText(localPagerTitleStrip.mPager.getCurrentItem(), this.this$0.mPager.getAdapter());
+      float f2 = this.this$0.mLastKnownPositionOffset;
+      float f1 = 0.0F;
+      if (f2 >= 0.0F) {
+        f1 = this.this$0.mLastKnownPositionOffset;
       }
-      this.this$0.updateTextPositions(this.this$0.mPager.getCurrentItem(), f, true);
+      localPagerTitleStrip = this.this$0;
+      localPagerTitleStrip.updateTextPositions(localPagerTitleStrip.mPager.getCurrentItem(), f1, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.viewpager.widget.PagerTitleStrip.PageListener
  * JD-Core Version:    0.7.0.1
  */

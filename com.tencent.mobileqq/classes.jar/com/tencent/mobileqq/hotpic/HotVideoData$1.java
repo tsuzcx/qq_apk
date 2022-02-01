@@ -13,28 +13,32 @@ class HotVideoData$1
   
   public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
   {
-    if (paramRichProtoResp != null) {
+    if (paramRichProtoResp != null)
+    {
       if (paramRichProtoResp.resps.size() > 0)
       {
         paramRichProtoReq = (RichProto.RichProtoResp.ShortVideoDownResp)paramRichProtoResp.resps.get(0);
         this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.a(paramRichProtoReq);
       }
+      else
+      {
+        paramRichProtoReq = this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult;
+        paramRichProtoReq.jdField_a_of_type_Boolean = false;
+        paramRichProtoReq.jdField_a_of_type_JavaLangString = "Unknown error！";
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlCallBack.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_JavaLangString = "Unknown error！";
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_JavaLangString = "Unknown error！";
+      paramRichProtoReq = this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult;
+      paramRichProtoReq.jdField_a_of_type_Boolean = false;
+      paramRichProtoReq.jdField_a_of_type_JavaLangString = "Unknown error！";
     }
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlCallBack.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoData.1
  * JD-Core Version:    0.7.0.1
  */

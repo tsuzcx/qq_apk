@@ -24,13 +24,14 @@ public final class TimDocSSOMsg$GetPadListRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 64 }, new String[] { "uint32_retcode", "uint32_total_count", "uint32_timestamp", "uint32_offset", "bool_endflag", "rpt_msg_pad_list", "bytes_timestamp", "uint32_auto_fresh_interval" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), null, localByteStringMicro, Integer.valueOf(0) }, GetPadListRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 64 }, new String[] { "uint32_retcode", "uint32_total_count", "uint32_timestamp", "uint32_offset", "bool_endflag", "rpt_msg_pad_list", "bytes_timestamp", "uint32_auto_fresh_interval" }, new Object[] { localInteger, localInteger, localInteger, localInteger, Boolean.valueOf(false), null, localByteStringMicro, localInteger }, GetPadListRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.teamwork.TimDocSSOMsg.GetPadListRspBody
  * JD-Core Version:    0.7.0.1
  */

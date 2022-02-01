@@ -11,7 +11,7 @@ public final class enum_event_widget_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MOBILE_QZMALL_PROTOCOL.enum_event_widget_type
  * JD-Core Version:    0.7.0.1
  */

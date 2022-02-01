@@ -7,38 +7,42 @@ import com.tencent.mobileqq.soload.biz.entity.LoadParam;
 public class SingleSoLoader
   implements ISoLoader
 {
-  private DownSoLoader a = new DownSoLoader();
+  private SoLoaderLogic a = new SoLoaderLogic();
   
   public LoadExtResult a(LoadParam paramLoadParam)
   {
-    if (this.a == null) {
+    SoLoaderLogic localSoLoaderLogic = this.a;
+    if (localSoLoaderLogic == null) {
       return null;
     }
-    return this.a.a(paramLoadParam);
+    return localSoLoaderLogic.a(paramLoadParam);
   }
   
   public void a(LoadParam paramLoadParam, OnLoadListener paramOnLoadListener)
   {
-    if (this.a != null) {
-      this.a.a(paramLoadParam, paramOnLoadListener);
+    SoLoaderLogic localSoLoaderLogic = this.a;
+    if (localSoLoaderLogic != null) {
+      localSoLoaderLogic.a(paramLoadParam, paramOnLoadListener);
     }
   }
   
   public void a(String paramString)
   {
-    if (this.a != null) {
-      this.a.a(paramString);
+    SoLoaderLogic localSoLoaderLogic = this.a;
+    if (localSoLoaderLogic != null) {
+      localSoLoaderLogic.a(paramString);
     }
   }
   
   public boolean a(String paramString)
   {
-    return (this.a != null) && (this.a.a(paramString));
+    SoLoaderLogic localSoLoaderLogic = this.a;
+    return (localSoLoaderLogic != null) && (localSoLoaderLogic.a(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.SingleSoLoader
  * JD-Core Version:    0.7.0.1
  */

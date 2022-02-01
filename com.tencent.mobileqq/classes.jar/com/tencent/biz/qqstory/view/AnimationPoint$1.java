@@ -14,22 +14,21 @@ class AnimationPoint$1
     if (this.this$0.jdField_b_of_type_Boolean) {
       return;
     }
-    if ((SystemClock.uptimeMillis() - this.this$0.c < this.this$0.jdField_b_of_type_Long) || (this.this$0.jdField_b_of_type_Long < 0L)) {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 30L);
-    }
-    for (;;)
+    if ((SystemClock.uptimeMillis() - this.this$0.c >= this.this$0.jdField_b_of_type_Long) && (this.this$0.jdField_b_of_type_Long >= 0L))
     {
-      this.this$0.invalidate();
-      return;
       if (this.this$0.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener != null) {
         this.this$0.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener.onAnimationEnd(null);
       }
     }
+    else {
+      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 30L);
+    }
+    this.this$0.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.AnimationPoint.1
  * JD-Core Version:    0.7.0.1
  */

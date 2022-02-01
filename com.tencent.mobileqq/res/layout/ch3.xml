@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.avgame.gameroom.festivalstage.questionoption.QuestionOptionItemView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="45.0dip"
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="center|top" android:id="@id/no5" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="5.0dip">
-        <TextView android:textSize="@dimen/aym" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/no6" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true" />
-    </FrameLayout>
-    <com.tencent.avgame.gameroom.festivalstage.questionoption.OverlappingImgLayout android:layout_gravity="center|right|top" android:id="@id/no7" android:layout_width="fill_parent" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" />
-</com.tencent.avgame.gameroom.festivalstage.questionoption.QuestionOptionItemView>
+    <ImageView android:layout_gravity="center|left" android:id="@id/mk9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/mki" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

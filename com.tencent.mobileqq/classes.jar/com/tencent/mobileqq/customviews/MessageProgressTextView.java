@@ -41,59 +41,94 @@ public class MessageProgressTextView
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor == null) {}
-    label222:
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
+    if (localObject == null) {
+      return;
+    }
+    int i;
+    if ((((BaseTransProcessor)localObject).getCurrentProgress() < 100) && (paramInt1 >= 100))
     {
-      int i;
-      do
+      i = 100;
+    }
+    else
+    {
+      i = paramInt1;
+      if (paramInt1 >= 100)
       {
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getCurrentProgress() < 100) && (paramInt1 >= 100)) {
-          i = 100;
-        }
-        do
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.setCurrentProgress(i);
-          paramInt1 = Math.max(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getRealProgress(), 0);
-          long l = 25L;
-          if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getRealProgress() < 0) {
-            l = 1000L;
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getCurrentProgress() > paramInt1) {
-            break label222;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("ProgressTextView", 2, "currentProgress " + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getKey() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
-          }
-          setProgress(i);
-          if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable != null) {
-            break;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable = new MessageProgressTextView.RefreshProgressRunnable(this, i, paramInt2);
-          postDelayed(this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable, l);
-          return;
-          i = paramInt1;
-        } while (paramInt1 < 100);
         this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = null;
         return;
-      } while (paramInt2 == 1);
-      this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable.a(paramInt2);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ProgressTextView", 2, "doUpdateCurrentProgress ,currentProgress:" + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getKey() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
       }
-    } while (paramInt1 < this.e);
-    setProgress(paramInt1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.setCurrentProgress(i);
+    paramInt1 = Math.max(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getRealProgress(), 0);
+    long l = 25L;
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getRealProgress() < 0) {
+      l = 1000L;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getCurrentProgress() <= paramInt1)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("currentProgress ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" receiveProgress ");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append("addProgress");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append(" processor.getKey() ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getKey());
+        ((StringBuilder)localObject).append(" processor ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+        QLog.d("ProgressTextView", 2, ((StringBuilder)localObject).toString());
+      }
+      setProgress(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable;
+      if (localObject == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable = new MessageProgressTextView.RefreshProgressRunnable(this, i, paramInt2);
+        postDelayed(this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable, l);
+        return;
+      }
+      if (paramInt2 != 1) {
+        ((MessageProgressTextView.RefreshProgressRunnable)localObject).a(paramInt2);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("doUpdateCurrentProgress ,currentProgress:");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" receiveProgress ");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append("addProgress");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append(" processor.getKey() ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getKey());
+        ((StringBuilder)localObject).append(" processor ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+        QLog.d("ProgressTextView", 2, ((StringBuilder)localObject).toString());
+      }
+      if (paramInt1 >= this.e) {
+        setProgress(paramInt1);
+      }
+    }
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProgressTextView", 2, "updateProgress processor:" + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateProgress processor:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+      QLog.d("ProgressTextView", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor != null) {
-      a(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getCurrentProgress(), 1);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
+    if (localObject != null) {
+      a(((BaseTransProcessor)localObject).getCurrentProgress(), 1);
     }
   }
   
@@ -109,9 +144,10 @@ public class MessageProgressTextView
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor == paramBaseTransProcessor) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable != null)
+    MessageProgressTextView.RefreshProgressRunnable localRefreshProgressRunnable = this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable;
+    if (localRefreshProgressRunnable != null)
     {
-      removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable);
+      removeCallbacks(localRefreshProgressRunnable);
       this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = paramBaseTransProcessor;
@@ -120,24 +156,28 @@ public class MessageProgressTextView
   public void setProgress(int paramInt)
   {
     this.e = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$ProgressListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$ProgressListener.a(paramInt);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$ProgressListener;
+    if (localObject != null) {
+      ((MessageProgressTextView.ProgressListener)localObject).a(paramInt);
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Boolean)) {
-      setText(paramInt + "%");
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
     {
-      Drawable localDrawable = getBackground();
-      if (localDrawable != null)
-      {
-        localDrawable.setLevel((100 - paramInt) * 100);
-        if (((localDrawable instanceof AIOSendMask)) && (!this.jdField_c_of_type_Boolean)) {
-          ((AIOSendMask)localDrawable).a(this.jdField_c_of_type_Int, this.d);
-        }
-      }
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("%");
+      setText(((StringBuilder)localObject).toString());
+    }
+    else
+    {
       setText("");
+    }
+    localObject = getBackground();
+    if (localObject != null)
+    {
+      ((Drawable)localObject).setLevel((100 - paramInt) * 100);
+      if (((localObject instanceof AIOSendMask)) && (!this.jdField_c_of_type_Boolean)) {
+        ((AIOSendMask)localObject).a(this.jdField_c_of_type_Int, this.d);
+      }
     }
   }
   
@@ -149,7 +189,7 @@ public class MessageProgressTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.MessageProgressTextView
  * JD-Core Version:    0.7.0.1
  */

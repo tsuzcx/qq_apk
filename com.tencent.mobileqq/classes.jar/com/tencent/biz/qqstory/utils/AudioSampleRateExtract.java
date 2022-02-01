@@ -25,7 +25,7 @@ public class AudioSampleRateExtract
     byte[] arrayOfByte = new byte[i];
     localByteBuffer.get(arrayOfByte);
     localByteBuffer.position(j);
-    localByteBuffer.limit(i + j);
+    localByteBuffer.limit(j + i);
     i = (arrayOfByte.length - 2) * 8;
     if (i > 11) {
       if (((arrayOfByte[2] & 0xFF) << 3 | (arrayOfByte[3] & 0xFF) >>> 5) == 695)
@@ -48,39 +48,39 @@ public class AudioSampleRateExtract
   
   public static int a(MediaFormat paramMediaFormat, String paramString)
   {
-    int j;
     if (paramMediaFormat == null) {
-      j = -1;
+      return -1;
     }
-    for (;;)
+    int j = paramMediaFormat.getInteger("channel-count");
+    try
     {
-      return j;
-      int k = paramMediaFormat.getInteger("channel-count");
-      try
-      {
-        i = AudioResample.parseMp4Info(paramString);
-        if (QLog.isColorLevel()) {
-          QLog.d("SegmentClipUtils", 2, "getRealAudioChannel:  channels=" + i + " channelsBake: " + k);
-        }
-        j = i;
-        if (i > 0) {
-          continue;
-        }
-        return k;
-      }
-      catch (UnsatisfiedLinkError paramMediaFormat)
-      {
-        for (;;)
-        {
-          int i = -2000;
-        }
-      }
+      i = AudioResample.parseMp4Info(paramString);
     }
+    catch (UnsatisfiedLinkError paramMediaFormat)
+    {
+      int i;
+      label21:
+      break label21;
+    }
+    i = -2000;
+    if (QLog.isColorLevel())
+    {
+      paramMediaFormat = new StringBuilder();
+      paramMediaFormat.append("getRealAudioChannel:  channels=");
+      paramMediaFormat.append(i);
+      paramMediaFormat.append(" channelsBake: ");
+      paramMediaFormat.append(j);
+      QLog.d("SegmentClipUtils", 2, paramMediaFormat.toString());
+    }
+    if (i > 0) {
+      return i;
+    }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.AudioSampleRateExtract
  * JD-Core Version:    0.7.0.1
  */

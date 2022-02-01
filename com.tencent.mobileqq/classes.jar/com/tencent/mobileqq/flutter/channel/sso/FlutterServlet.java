@@ -19,15 +19,14 @@ public class FlutterServlet
       localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
       paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), localToServiceMsg);
     }
-    for (;;)
+    else
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putParcelable(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
-      localBundle.putParcelable(FromServiceMsg.class.getSimpleName(), paramFromServiceMsg);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
       localToServiceMsg = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
+    localBundle.putParcelable(FromServiceMsg.class.getSimpleName(), paramFromServiceMsg);
+    notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -50,7 +49,7 @@ public class FlutterServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.sso.FlutterServlet
  * JD-Core Version:    0.7.0.1
  */

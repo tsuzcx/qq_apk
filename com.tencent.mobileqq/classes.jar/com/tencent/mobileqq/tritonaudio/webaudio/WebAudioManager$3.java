@@ -21,18 +21,16 @@ class WebAudioManager$3
       {
         localJSONObject.put("audioId", this.val$audioId);
         localJSONObject.put("channelId", this.val$sourceId);
-        if (this.val$argument != null)
-        {
-          this.val$argument.subscribe("onWebAudioSourceEnded", localJSONObject.toString());
-          return;
-        }
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
+        localJSONException.printStackTrace();
+      }
+      Argument localArgument = this.val$argument;
+      if (localArgument != null)
+      {
+        localArgument.subscribe("onWebAudioSourceEnded", localJSONObject.toString());
+        return;
       }
     }
     TritonAudioThreadPool.getAudioThreadPool().schedule(this, 1000L, TimeUnit.MILLISECONDS);
@@ -40,7 +38,7 @@ class WebAudioManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.webaudio.WebAudioManager.3
  * JD-Core Version:    0.7.0.1
  */

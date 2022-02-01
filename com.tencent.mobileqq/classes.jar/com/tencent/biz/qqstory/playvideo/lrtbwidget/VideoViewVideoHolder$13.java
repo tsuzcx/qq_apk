@@ -15,10 +15,10 @@ class VideoViewVideoHolder$13
   
   public void d()
   {
-    boolean bool = false;
     super.d();
     String str1 = this.a.jdField_a_of_type_JavaLangString;
     String str2 = VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)];
+    boolean bool = false;
     if (this.a.a().getVisibility() == 0) {
       bool = true;
     }
@@ -61,7 +61,7 @@ class VideoViewVideoHolder$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.13
  * JD-Core Version:    0.7.0.1
  */

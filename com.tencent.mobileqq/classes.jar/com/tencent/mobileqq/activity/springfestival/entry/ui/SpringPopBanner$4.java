@@ -14,8 +14,14 @@ class SpringPopBanner$4
   
   public void onResult(int paramInt, IPreloadService.PathResult paramPathResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("shua2021_SpringPopBanner", 2, "onResult: " + paramInt + ", path: " + paramPathResult.filePath);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResult: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", path: ");
+      localStringBuilder.append(paramPathResult.filePath);
+      QLog.d("shua2021_SpringPopBanner", 2, localStringBuilder.toString());
     }
     if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
       SpringPopBanner.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner).a().runOnUiThread(new SpringPopBanner.4.1(this, paramPathResult));
@@ -24,7 +30,7 @@ class SpringPopBanner$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.ui.SpringPopBanner.4
  * JD-Core Version:    0.7.0.1
  */

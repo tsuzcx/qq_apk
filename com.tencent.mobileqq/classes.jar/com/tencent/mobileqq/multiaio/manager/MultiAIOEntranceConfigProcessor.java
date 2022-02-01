@@ -24,8 +24,12 @@ public class MultiAIOEntranceConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOEntranceConfigProcessor", 2, "onParsed : " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed : ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("MultiAIOEntranceConfigProcessor", 2, localStringBuilder.toString());
       }
       return MultiAIOEntranceConfigData.a(paramArrayOfQConfItem[0].a);
     }
@@ -34,8 +38,12 @@ public class MultiAIOEntranceConfigProcessor
   
   public void a(MultiAIOEntranceConfigData paramMultiAIOEntranceConfigData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramMultiAIOEntranceConfigData);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate : ");
+      localStringBuilder.append(paramMultiAIOEntranceConfigData);
+      QLog.d("MultiAIOEntranceConfigProcessor", 2, localStringBuilder.toString());
     }
     ((MultiAIOManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.AIO_MULTI_WINDOW_MANAGER)).a(paramMultiAIOEntranceConfigData);
   }
@@ -62,8 +70,12 @@ public class MultiAIOEntranceConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate : ");
+      localStringBuilder.append(paramInt);
+      QLog.d("MultiAIOEntranceConfigProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -74,7 +86,7 @@ public class MultiAIOEntranceConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.manager.MultiAIOEntranceConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

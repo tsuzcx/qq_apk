@@ -44,14 +44,15 @@ public final class AnswerAddedFriendReq
     paramJceOutputStream.write(this.myAllowFlag, 2);
     paramJceOutputStream.write(this.myfriendgroupid, 3);
     paramJceOutputStream.write(this.refuseReasonLen, 4);
-    if (this.refuseReason != null) {
-      paramJceOutputStream.write(this.refuseReason, 5);
+    String str = this.refuseReason;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.AnswerAddedFriendReq
  * JD-Core Version:    0.7.0.1
  */

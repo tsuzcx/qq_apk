@@ -3,6 +3,7 @@ package cooperation.qzone.contentbox.model;
 import NS_QZONE_MQMSG.QzoneMessageBoxRsp;
 import NS_QZONE_MQMSG.QzoneMessageReq;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.qzonehub.model.QZoneMsgEntityNew;
 import cooperation.qzone.QUA;
 import cooperation.qzone.QZoneCommonRequest;
 import java.util.HashMap;
@@ -34,7 +35,7 @@ public class QZoneMsgReq
     }
     paramArrayOfByte = decode(paramArrayOfByte, "GetNewMQmsg", paramArrayOfInt);
     if ((paramArrayOfByte instanceof QzoneMessageBoxRsp)) {
-      return QZoneMsgEntityNew.readFrom((QzoneMessageBoxRsp)paramArrayOfByte);
+      return MsgEntityConverter.readFrom((QzoneMessageBoxRsp)paramArrayOfByte);
     }
     return null;
   }
@@ -66,7 +67,7 @@ public class QZoneMsgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.QZoneMsgReq
  * JD-Core Version:    0.7.0.1
  */

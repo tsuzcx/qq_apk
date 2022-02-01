@@ -12,14 +12,17 @@ public final class DeflaterSink
   
   DeflaterSink(BufferedSink paramBufferedSink, Deflater paramDeflater)
   {
-    if (paramBufferedSink == null) {
-      throw new IllegalArgumentException("source == null");
-    }
-    if (paramDeflater == null) {
+    if (paramBufferedSink != null)
+    {
+      if (paramDeflater != null)
+      {
+        this.sink = paramBufferedSink;
+        this.deflater = paramDeflater;
+        return;
+      }
       throw new IllegalArgumentException("inflater == null");
     }
-    this.sink = paramBufferedSink;
-    this.deflater = paramDeflater;
+    throw new IllegalArgumentException("source == null");
   }
   
   public DeflaterSink(Sink paramSink, Deflater paramDeflater)
@@ -32,20 +35,23 @@ public final class DeflaterSink
   {
     Buffer localBuffer = this.sink.buffer();
     Segment localSegment;
-    label119:
     do
     {
-      localSegment = localBuffer.writableSegment(1);
-      if (paramBoolean) {}
-      for (int i = this.deflater.deflate(localSegment.data, localSegment.limit, 8192 - localSegment.limit, 2);; i = this.deflater.deflate(localSegment.data, localSegment.limit, 8192 - localSegment.limit))
+      for (;;)
       {
+        localSegment = localBuffer.writableSegment(1);
+        int i;
+        if (paramBoolean) {
+          i = this.deflater.deflate(localSegment.data, localSegment.limit, 8192 - localSegment.limit, 2);
+        } else {
+          i = this.deflater.deflate(localSegment.data, localSegment.limit, 8192 - localSegment.limit);
+        }
         if (i <= 0) {
-          break label119;
+          break;
         }
         localSegment.limit += i;
         localBuffer.size += i;
         this.sink.emitCompleteSegments();
-        break;
       }
     } while (!this.deflater.needsInput());
     if (localSegment.pos == localSegment.limit)
@@ -57,57 +63,44 @@ public final class DeflaterSink
   
   public void close()
   {
-    if (this.closed) {}
-    for (;;)
-    {
+    if (this.closed) {
       return;
-      Object localObject3 = null;
-      try
-      {
-        finishDeflate();
-        try
-        {
-          label14:
-          this.deflater.end();
-          localObject1 = localObject3;
-        }
-        catch (Throwable localThrowable1)
-        {
-          for (;;)
-          {
-            Object localObject1;
-            label34:
-            if (localObject3 != null) {
-              localObject2 = localObject3;
-            }
-          }
-        }
-        try
-        {
-          this.sink.close();
-          localObject3 = localObject1;
-        }
-        catch (Throwable localThrowable3)
-        {
-          localObject3 = localObject2;
-          if (localObject2 != null) {
-            break label34;
-          }
-          localObject3 = localThrowable3;
-          break label34;
-        }
-        this.closed = true;
-        if (localObject3 == null) {
-          continue;
-        }
-        Util.sneakyRethrow(localObject3);
-        return;
+    }
+    Object localObject2 = null;
+    try
+    {
+      finishDeflate();
+    }
+    catch (Throwable localThrowable1) {}
+    Object localObject1;
+    try
+    {
+      this.deflater.end();
+      localObject1 = localThrowable1;
+    }
+    catch (Throwable localThrowable2)
+    {
+      localObject1 = localThrowable1;
+      if (localThrowable1 == null) {
+        localObject1 = localThrowable2;
       }
-      catch (Throwable localThrowable2)
-      {
-        Object localObject2;
-        break label14;
+    }
+    Object localObject3;
+    try
+    {
+      this.sink.close();
+      localObject3 = localObject1;
+    }
+    catch (Throwable localThrowable3)
+    {
+      localObject3 = localObject1;
+      if (localObject1 == null) {
+        localObject3 = localThrowable3;
       }
+    }
+    this.closed = true;
+    if (localObject3 != null) {
+      Util.sneakyRethrow(localObject3);
     }
   }
   
@@ -130,7 +123,11 @@ public final class DeflaterSink
   
   public String toString()
   {
-    return "DeflaterSink(" + this.sink + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeflaterSink(");
+    localStringBuilder.append(this.sink);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public void write(Buffer paramBuffer, long paramLong)
@@ -142,20 +139,22 @@ public final class DeflaterSink
       int i = (int)Math.min(paramLong, localSegment.limit - localSegment.pos);
       this.deflater.setInput(localSegment.data, localSegment.pos, i);
       deflate(false);
-      paramBuffer.size -= i;
+      long l1 = paramBuffer.size;
+      long l2 = i;
+      paramBuffer.size = (l1 - l2);
       localSegment.pos += i;
       if (localSegment.pos == localSegment.limit)
       {
         paramBuffer.head = localSegment.pop();
         SegmentPool.recycle(localSegment);
       }
-      paramLong -= i;
+      paramLong -= l2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.DeflaterSink
  * JD-Core Version:    0.7.0.1
  */

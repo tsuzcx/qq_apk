@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.emoticon.DownloadInfo;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.picbrowser.PicInfo;
 import com.tencent.mobileqq.utils.HttpDownloadUtil.DownloadInfoListener;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
@@ -32,55 +32,60 @@ public class NearbyImgDownloader$DownloadListener
   
   public boolean onRespDownloadInfo(DownloadInfo paramDownloadInfo)
   {
-    Object localObject2 = null;
-    if (paramDownloadInfo.resultCode == 0) {
-      if ((this.mDownloadConfig == null) || (!(this.mDownloadConfig.mExtraInfo instanceof PicInfo))) {
-        break label257;
-      }
-    }
-    label257:
-    for (Object localObject1 = (PicInfo)this.mDownloadConfig.mExtraInfo;; localObject1 = null)
+    if (paramDownloadInfo.resultCode == 0)
     {
+      Object localObject1 = this.mDownloadConfig;
+      Object localObject2 = null;
+      if ((localObject1 != null) && ((((DownloadParams)localObject1).mExtraInfo instanceof PicInfo))) {
+        localObject1 = (PicInfo)this.mDownloadConfig.mExtraInfo;
+      } else {
+        localObject1 = null;
+      }
       if ((localObject1 != null) && ("type_history_head_pic".equals(((PicInfo)localObject1).g)) && (((!TextUtils.isEmpty(paramDownloadInfo.respXErrNo)) && (!paramDownloadInfo.respXErrNo.trim().equals("0"))) || ((!TextUtils.isEmpty(paramDownloadInfo.respXFailNo)) && (!paramDownloadInfo.respXFailNo.trim().equals("0")))))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyImgDownloader", 2, "historhead download fail, url : " + paramDownloadInfo.reqUrl + " respXFailNo: " + paramDownloadInfo.respXFailNo + " respXErrNo: " + paramDownloadInfo.respXErrNo);
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("historhead download fail, url : ");
+          ((StringBuilder)localObject1).append(paramDownloadInfo.reqUrl);
+          ((StringBuilder)localObject1).append(" respXFailNo: ");
+          ((StringBuilder)localObject1).append(paramDownloadInfo.respXFailNo);
+          ((StringBuilder)localObject1).append(" respXErrNo: ");
+          ((StringBuilder)localObject1).append(paramDownloadInfo.respXErrNo);
+          QLog.i("NearbyImgDownloader", 2, ((StringBuilder)localObject1).toString());
         }
         paramDownloadInfo.resultCode = 32;
         return false;
       }
-      if (paramDownloadInfo.conn != null) {
+      if (paramDownloadInfo.conn != null)
+      {
         try
         {
           localObject1 = paramDownloadInfo.conn.getInputStream();
-          if (localObject1 != null) {
-            return NearbyImgDownloader.access$000(this.this$0, (InputStream)localObject1, paramDownloadInfo.respContentLength, this.mEditor, this.mHandelr);
-          }
         }
         catch (IOException localIOException)
         {
-          for (;;)
+          localObject1 = localObject2;
+          if (QLog.isColorLevel())
           {
+            QLog.w("NearbyImgDownloader", 2, localIOException.toString());
             localObject1 = localObject2;
-            if (QLog.isColorLevel())
-            {
-              QLog.w("NearbyImgDownloader", 2, localIOException.toString());
-              localObject1 = localObject2;
-            }
           }
-          paramDownloadInfo.resultCode = 11;
-          return false;
         }
+        if (localObject1 != null) {
+          return NearbyImgDownloader.access$000(this.this$0, (InputStream)localObject1, paramDownloadInfo.respContentLength, this.mEditor, this.mHandelr);
+        }
+        paramDownloadInfo.resultCode = 11;
+        return false;
       }
       paramDownloadInfo.resultCode = 11;
-      return false;
-      return false;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.NearbyImgDownloader.DownloadListener
  * JD-Core Version:    0.7.0.1
  */

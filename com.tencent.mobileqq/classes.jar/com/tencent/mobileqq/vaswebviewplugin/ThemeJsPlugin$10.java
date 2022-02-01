@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import com.tencent.mobileqq.theme.DarkModeManager.ActionResult;
-import com.tencent.mobileqq.theme.ThemeIPCModule;
-import com.tencent.mobileqq.theme.ThemeSwitchUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.theme.diy.ThemeDiyModule;
+import com.tencent.mobileqq.vas.theme.ThemeIPCModule;
+import com.tencent.mobileqq.vas.theme.ThemeSwitchUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.diy.ThemeDiyModule;
 
 class ThemeJsPlugin$10
   implements DarkModeManager.ActionResult
@@ -21,13 +21,14 @@ class ThemeJsPlugin$10
   
   public void onConfirm()
   {
-    ThemeJsPlugin.access$300(this.this$0).setSpThemeBackground();
-    ThemeIPCModule.a(this.val$themeId, new ThemeJsPlugin.ThemeSwitchListener(this.this$0, this.val$themeId, true));
+    ThemeJsPlugin.access$300(this.this$0).a();
+    String str = this.val$themeId;
+    ThemeIPCModule.a(str, new ThemeJsPlugin.ThemeSwitchListener(this.this$0, str, true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.10
  * JD-Core Version:    0.7.0.1
  */

@@ -37,12 +37,30 @@ public class VideoViewInfo
   
   public String toString()
   {
-    return "Uin[" + this.jdField_a_of_type_Long + "], VideoSrcType[" + this.jdField_a_of_type_Int + "], isBig[" + this.jdField_a_of_type_Boolean + "], isRender[" + this.jdField_b_of_type_Boolean + "], isNeedRequest[" + this.c + "], hasRecvData[" + this.d + "], inviteId[" + this.jdField_a_of_type_JavaLangString + "], isMirror[" + this.g + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Uin[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("], VideoSrcType[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("], isBig[");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("], isRender[");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("], isNeedRequest[");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("], hasRecvData[");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("], inviteId[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("], isMirror[");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.VideoViewInfo
  * JD-Core Version:    0.7.0.1
  */

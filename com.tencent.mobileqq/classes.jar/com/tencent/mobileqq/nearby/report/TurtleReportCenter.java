@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.nearby.report;
 
 import android.os.Bundle;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
@@ -36,37 +37,39 @@ public class TurtleReportCenter
   {
     JSONArray localJSONArray1 = new JSONArray();
     JSONArray localJSONArray2 = new JSONArray();
-    String str1 = "";
     Iterator localIterator = paramBundle.keySet().iterator();
+    String str = "";
+    Object localObject;
     while (localIterator.hasNext())
     {
-      String str2 = (String)localIterator.next();
-      if ("tid".equals(str2))
+      localObject = (String)localIterator.next();
+      if ("tid".equals(localObject))
       {
-        str1 = paramBundle.getString(str2);
+        str = paramBundle.getString((String)localObject);
       }
-      else
+      else if (!"bid".equals(localObject))
       {
-        if (!"bid".equals(str2))
-        {
-          localJSONArray1.put(str2);
-          if (!StringUtil.a(paramBundle.getString(str2))) {
-            break label111;
-          }
+        localJSONArray1.put(localObject);
+        if (StringUtil.a(paramBundle.getString((String)localObject))) {
+          localObject = "";
+        } else {
+          localObject = paramBundle.getString((String)localObject);
         }
-        label111:
-        for (str2 = "";; str2 = paramBundle.getString(str2))
-        {
-          localJSONArray2.put(str2);
-          break;
-        }
+        localJSONArray2.put(localObject);
       }
     }
     paramBundle = new JSONArray();
     paramBundle.put(localJSONArray2);
     try
     {
-      paramBundle = "&table=" + str1 + "&fields=" + URLEncoder.encode(localJSONArray1.toString(), "UTF-8") + "&datas=" + URLEncoder.encode(paramBundle.toString(), "UTF-8");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("&table=");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("&fields=");
+      ((StringBuilder)localObject).append(URLEncoder.encode(localJSONArray1.toString(), "UTF-8"));
+      ((StringBuilder)localObject).append("&datas=");
+      ((StringBuilder)localObject).append(URLEncoder.encode(paramBundle.toString(), "UTF-8"));
+      paramBundle = ((StringBuilder)localObject).toString();
       return paramBundle;
     }
     catch (UnsupportedEncodingException paramBundle)
@@ -81,7 +84,7 @@ public class TurtleReportCenter
     Headers localHeaders = new Headers.Builder().add("Content-Type", "application/x-www-form-urlencoded").add("Referer", "https://now.qq.com/").build();
     paramBundle = RequestBody.create(MediaType.get("application/x-www-form-urlencoded"), a(paramBundle));
     paramBundle = new Request.Builder().url("https://now.qq.com/cgi-bin/now/web/tdw/report").headers(localHeaders).post(paramBundle).build();
-    OkHttpClientFactory.a().newCall(paramBundle).enqueue(this.jdField_a_of_type_Okhttp3Callback);
+    ((IOkHttpClientFactory)QRoute.api(IOkHttpClientFactory.class)).getRequestClient().newCall(paramBundle).enqueue(this.jdField_a_of_type_Okhttp3Callback);
   }
   
   public void a(Bundle paramBundle)
@@ -96,7 +99,7 @@ public class TurtleReportCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.report.TurtleReportCenter
  * JD-Core Version:    0.7.0.1
  */

@@ -16,28 +16,31 @@ public class JobExecutor$OnJobExecuteResultCallback
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
+    ShareModeBase localShareModeBase = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase;
+    if (localShareModeBase != null) {
+      localShareModeBase.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.d(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
+    ShareModeBase localShareModeBase = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase;
+    if (localShareModeBase != null) {
+      localShareModeBase.d(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.e(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
+    ShareModeBase localShareModeBase = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase;
+    if (localShareModeBase != null) {
+      localShareModeBase.e(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.JobExecutor.OnJobExecuteResultCallback
  * JD-Core Version:    0.7.0.1
  */

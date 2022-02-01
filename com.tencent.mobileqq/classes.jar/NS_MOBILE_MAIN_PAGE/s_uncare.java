@@ -35,14 +35,15 @@ public final class s_uncare
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.allnum, 0);
-    if (this.datalist != null) {
-      paramJceOutputStream.write(this.datalist, 1);
+    ArrayList localArrayList = this.datalist;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_uncare
  * JD-Core Version:    0.7.0.1
  */

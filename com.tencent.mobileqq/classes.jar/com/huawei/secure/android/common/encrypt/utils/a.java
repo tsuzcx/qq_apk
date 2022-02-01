@@ -14,7 +14,7 @@ import java.io.Writer;
 
 public class a
 {
-  private static final int R = 4096;
+  private static final int S = 4096;
   private static final String TAG = "IOUtil";
   
   public static long a(InputStream paramInputStream, OutputStream paramOutputStream, byte[] paramArrayOfByte)
@@ -48,8 +48,10 @@ public class a
     }
     catch (IOException paramCloseable)
     {
-      b.f("IOUtil", "closeSecure IOException");
+      label11:
+      break label11;
     }
+    b.f("IOUtil", "closeSecure IOException");
   }
   
   public static void a(InputStream paramInputStream)
@@ -91,7 +93,7 @@ public class a
     return a(paramInputStream, paramOutputStream, new byte[4096]);
   }
   
-  public static InputStream g(byte[] paramArrayOfByte)
+  public static InputStream f(byte[] paramArrayOfByte)
   {
     return new ByteArrayInputStream(paramArrayOfByte);
   }
@@ -105,7 +107,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.encrypt.utils.a
  * JD-Core Version:    0.7.0.1
  */

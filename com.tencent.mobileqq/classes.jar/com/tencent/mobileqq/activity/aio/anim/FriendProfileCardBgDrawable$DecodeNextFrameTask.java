@@ -29,7 +29,7 @@ public class FriendProfileCardBgDrawable$DecodeNextFrameTask
           paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler;
           FriendProfileCardBgDrawable localFriendProfileCardBgDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
           if (FriendProfileCardBgDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable) != null) {
-            break label203;
+            break label204;
           }
           l1 = 1000L;
           paramVarArgs.postDelayed(localFriendProfileCardBgDrawable, l1);
@@ -44,25 +44,27 @@ public class FriendProfileCardBgDrawable$DecodeNextFrameTask
             this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable, l1 - l2);
             return null;
           }
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable);
+          return null;
         }
-      }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        QLog.e("FriendProfileCardBgDrawable", 4, "", paramVarArgs);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
-        return null;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable);
-        return null;
       }
       catch (Throwable paramVarArgs)
       {
         QLog.e("FriendProfileCardBgDrawable", 1, "", paramVarArgs);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
+        paramVarArgs.b = null;
+        paramVarArgs.jdField_a_of_type_Boolean = true;
+        return null;
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.e("FriendProfileCardBgDrawable", 4, "", paramVarArgs);
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
+        paramVarArgs.b = null;
+        paramVarArgs.jdField_a_of_type_Boolean = true;
       }
       return null;
-      label203:
+      label204:
       long l1 = 0L;
     }
   }
@@ -74,7 +76,7 @@ public class FriendProfileCardBgDrawable$DecodeNextFrameTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable.DecodeNextFrameTask
  * JD-Core Version:    0.7.0.1
  */

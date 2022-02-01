@@ -24,7 +24,7 @@ public class DialogFromBottom
   
   public DialogFromBottom(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755057);
+    super(paramContext, 2131755060);
   }
   
   public DialogFromBottom(@NonNull Context paramContext, int paramInt)
@@ -82,15 +82,12 @@ public class DialogFromBottom
     paramBundle.gravity = 81;
     int i = DisplayHelper.getScreenWidth(getContext());
     int j = DisplayHelper.getScreenHeight(getContext());
-    if (i < j) {}
-    for (;;)
-    {
-      paramBundle.width = i;
-      getWindow().setAttributes(paramBundle);
-      setCanceledOnTouchOutside(true);
-      return;
+    if (i >= j) {
       i = j;
     }
+    paramBundle.width = i;
+    getWindow().setAttributes(paramBundle);
+    setCanceledOnTouchOutside(true);
   }
   
   public void setContentView(int paramInt)
@@ -115,14 +112,15 @@ public class DialogFromBottom
   {
     super.show();
     animateUp();
-    if (this.mOnBottomSheetShowListener != null) {
-      this.mOnBottomSheetShowListener.onShow();
+    DialogFromBottom.OnBottomSheetShowListener localOnBottomSheetShowListener = this.mOnBottomSheetShowListener;
+    if (localOnBottomSheetShowListener != null) {
+      localOnBottomSheetShowListener.onShow();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom
  * JD-Core Version:    0.7.0.1
  */

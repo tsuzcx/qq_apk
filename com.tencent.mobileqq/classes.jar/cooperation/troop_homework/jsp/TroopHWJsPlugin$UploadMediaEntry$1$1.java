@@ -18,7 +18,10 @@ class TroopHWJsPlugin$UploadMediaEntry$1$1
         localJSONObject.put("result", 0);
         localJSONObject.put("progress", 1.0D);
         localJSONObject.put("coverurl", paramString);
-        QLog.e("TroopHWJsPlugin", 2, "upload thumb success:" + localJSONObject.toString());
+        paramString = new StringBuilder();
+        paramString.append("upload thumb success:");
+        paramString.append(localJSONObject.toString());
+        QLog.e("TroopHWJsPlugin", 2, paramString.toString());
         this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
         return;
       }
@@ -34,7 +37,7 @@ class TroopHWJsPlugin$UploadMediaEntry$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.1.1
  * JD-Core Version:    0.7.0.1
  */

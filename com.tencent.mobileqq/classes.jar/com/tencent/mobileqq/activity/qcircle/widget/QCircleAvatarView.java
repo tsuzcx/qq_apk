@@ -30,7 +30,7 @@ public class QCircleAvatarView
   private int d;
   private int e;
   private int f;
-  private int g = 2130844178;
+  private int g = 2130844081;
   
   public QCircleAvatarView(Context paramContext)
   {
@@ -64,14 +64,16 @@ public class QCircleAvatarView
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = new SquareImageView(getContext(), null, 0);
     paramContext = new ViewGroup.LayoutParams(-1, -1);
-    if (this.d != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setPadding(this.d, this.d, this.d, this.d);
+    int i = this.d;
+    if (i != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setPadding(i, i, i, i);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setLayoutParams(paramContext);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(90);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(getResources().getDrawable(2130840452));
-    if (this.c != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundColor(this.c);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(getResources().getDrawable(2130840321));
+    i = this.c;
+    if (i != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundColor(i);
     }
     super.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
   }
@@ -79,32 +81,34 @@ public class QCircleAvatarView
   public void setAuthDrawable(int paramInt)
   {
     this.g = paramInt;
-    if (this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView != null) {
-      this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundResource(paramInt);
+    SquareImageView localSquareImageView = this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView;
+    if (localSquareImageView != null) {
+      localSquareImageView.setBackgroundResource(paramInt);
     }
   }
   
   public void setAvatar(AppInterface paramAppInterface, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(FaceDrawable.getFaceDrawable(paramAppInterface, 1, 4, paramString));
+    SquareImageView localSquareImageView = this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
+    if (localSquareImageView != null) {
+      localSquareImageView.setBackgroundDrawable(FaceDrawable.getFaceDrawable(paramAppInterface, 1, 4, paramString));
     }
   }
   
   public void setAvatarUrl(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageURL(paramString);
+    SquareImageView localSquareImageView = this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
+    if (localSquareImageView != null) {
+      localSquareImageView.setImageURL(paramString);
     }
   }
   
   public void setIsAuth(boolean paramBoolean)
   {
-    Object localObject;
     if (this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView == null)
     {
       this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = new SquareImageView(getContext(), null, 0);
-      localObject = new FrameLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      Object localObject = new FrameLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       ((FrameLayout.LayoutParams)localObject).gravity = 85;
       ((FrameLayout.LayoutParams)localObject).rightMargin = this.e;
       ((FrameLayout.LayoutParams)localObject).bottomMargin = this.f;
@@ -112,18 +116,17 @@ public class QCircleAvatarView
       this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(90);
       this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundResource(this.g);
       localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label137;
+      int i;
+      if (this.jdField_a_of_type_Boolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label137:
-    for (int i = 0;; i = 8)
-    {
       ((SquareImageView)localObject).setVisibility(i);
       super.addView(this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView);
-      if ((!this.jdField_a_of_type_Boolean) || (!paramBoolean)) {
-        break;
-      }
+    }
+    if ((this.jdField_a_of_type_Boolean) && (paramBoolean))
+    {
       this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(0);
       return;
     }
@@ -141,7 +144,7 @@ public class QCircleAvatarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.widget.QCircleAvatarView
  * JD-Core Version:    0.7.0.1
  */

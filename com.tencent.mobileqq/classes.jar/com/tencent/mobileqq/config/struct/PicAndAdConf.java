@@ -36,21 +36,15 @@ public class PicAndAdConf
   {
     if (paramFile.exists())
     {
-      if (!paramFile.isFile()) {
-        break label25;
+      if (paramFile.isFile())
+      {
+        paramFile.delete();
       }
-      paramFile.delete();
-    }
-    for (;;)
-    {
-      paramFile.delete();
-      return;
-      label25:
-      if (paramFile.isDirectory())
+      else if (paramFile.isDirectory())
       {
         File[] arrayOfFile = paramFile.listFiles();
         if (arrayOfFile == null) {
-          break;
+          return;
         }
         int i = 0;
         while (i < arrayOfFile.length)
@@ -59,6 +53,7 @@ public class PicAndAdConf
           i += 1;
         }
       }
+      paramFile.delete();
     }
   }
   
@@ -71,450 +66,451 @@ public class PicAndAdConf
     //   4: aload_2
     //   5: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_2
-    //   9: aconst_null
-    //   10: astore 5
-    //   12: aload_2
-    //   13: invokevirtual 33	java/io/File:exists	()Z
-    //   16: ifne +86 -> 102
-    //   19: aload_2
-    //   20: invokevirtual 57	java/io/File:createNewFile	()Z
-    //   23: pop
-    //   24: new 59	java/io/FileOutputStream
-    //   27: dup
-    //   28: aload_2
-    //   29: iconst_1
-    //   30: invokespecial 62	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   33: astore_2
-    //   34: aload_2
-    //   35: aload_1
-    //   36: invokevirtual 66	java/io/FileOutputStream:write	([B)V
-    //   39: aload_2
-    //   40: invokevirtual 70	java/io/FileOutputStream:flush	()V
-    //   43: aload_2
-    //   44: invokevirtual 73	java/io/FileOutputStream:close	()V
-    //   47: invokestatic 79	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   50: ldc 81
-    //   52: iconst_0
-    //   53: invokevirtual 85	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   56: invokeinterface 91 1 0
-    //   61: astore_1
-    //   62: aload_1
-    //   63: ldc 93
-    //   65: lload_3
-    //   66: invokeinterface 99 4 0
-    //   71: pop
+    //   9: aload_2
+    //   10: invokevirtual 33	java/io/File:exists	()Z
+    //   13: ifne +11 -> 24
+    //   16: aload_2
+    //   17: invokevirtual 57	java/io/File:createNewFile	()Z
+    //   20: pop
+    //   21: goto +13 -> 34
+    //   24: aload_2
+    //   25: invokevirtual 39	java/io/File:delete	()Z
+    //   28: pop
+    //   29: aload_2
+    //   30: invokevirtual 57	java/io/File:createNewFile	()Z
+    //   33: pop
+    //   34: new 59	java/io/FileOutputStream
+    //   37: dup
+    //   38: aload_2
+    //   39: iconst_1
+    //   40: invokespecial 62	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   43: astore_2
+    //   44: aload_2
+    //   45: aload_1
+    //   46: invokevirtual 66	java/io/FileOutputStream:write	([B)V
+    //   49: aload_2
+    //   50: invokevirtual 70	java/io/FileOutputStream:flush	()V
+    //   53: aload_2
+    //   54: invokevirtual 73	java/io/FileOutputStream:close	()V
+    //   57: invokestatic 79	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   60: ldc 81
+    //   62: iconst_0
+    //   63: invokevirtual 85	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   66: invokeinterface 91 1 0
+    //   71: astore_1
     //   72: aload_1
-    //   73: invokeinterface 102 1 0
-    //   78: pop
-    //   79: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   82: ifeq +11 -> 93
-    //   85: ldc 109
-    //   87: iconst_2
-    //   88: ldc 111
-    //   90: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   93: aload_2
-    //   94: ifnull +7 -> 101
-    //   97: aload_2
-    //   98: invokevirtual 73	java/io/FileOutputStream:close	()V
-    //   101: return
-    //   102: aload_2
-    //   103: invokevirtual 39	java/io/File:delete	()Z
-    //   106: pop
-    //   107: aload_2
-    //   108: invokevirtual 57	java/io/File:createNewFile	()Z
-    //   111: pop
-    //   112: goto -88 -> 24
-    //   115: astore_1
-    //   116: aload 5
-    //   118: astore_1
-    //   119: aload_1
-    //   120: ifnull -19 -> 101
-    //   123: aload_1
-    //   124: invokevirtual 73	java/io/FileOutputStream:close	()V
-    //   127: return
-    //   128: astore_1
-    //   129: return
-    //   130: astore_1
-    //   131: aconst_null
-    //   132: astore_2
-    //   133: aload_2
-    //   134: ifnull +7 -> 141
-    //   137: aload_2
-    //   138: invokevirtual 73	java/io/FileOutputStream:close	()V
-    //   141: aload_1
-    //   142: athrow
-    //   143: astore_1
-    //   144: return
-    //   145: astore_2
-    //   146: goto -5 -> 141
-    //   149: astore_1
-    //   150: goto -17 -> 133
-    //   153: astore_1
-    //   154: aload_2
-    //   155: astore_1
-    //   156: goto -37 -> 119
+    //   73: ldc 93
+    //   75: lload_3
+    //   76: invokeinterface 99 4 0
+    //   81: pop
+    //   82: aload_1
+    //   83: invokeinterface 102 1 0
+    //   88: pop
+    //   89: aload_2
+    //   90: astore_1
+    //   91: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   94: ifeq +13 -> 107
+    //   97: ldc 109
+    //   99: iconst_2
+    //   100: ldc 111
+    //   102: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   105: aload_2
+    //   106: astore_1
+    //   107: aload_1
+    //   108: invokevirtual 73	java/io/FileOutputStream:close	()V
+    //   111: return
+    //   112: astore_1
+    //   113: goto +9 -> 122
+    //   116: goto +18 -> 134
+    //   119: astore_1
+    //   120: aconst_null
+    //   121: astore_2
+    //   122: aload_2
+    //   123: ifnull +7 -> 130
+    //   126: aload_2
+    //   127: invokevirtual 73	java/io/FileOutputStream:close	()V
+    //   130: aload_1
+    //   131: athrow
+    //   132: aconst_null
+    //   133: astore_2
+    //   134: aload_2
+    //   135: ifnull +8 -> 143
+    //   138: aload_2
+    //   139: astore_1
+    //   140: goto -33 -> 107
+    //   143: return
+    //   144: astore_1
+    //   145: goto -13 -> 132
+    //   148: astore_1
+    //   149: goto -33 -> 116
+    //   152: astore_1
+    //   153: return
+    //   154: astore_2
+    //   155: goto -25 -> 130
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	159	0	this	PicAndAdConf
-    //   0	159	1	paramArrayOfByte	byte[]
-    //   0	159	2	paramString	String
-    //   0	159	3	paramLong	long
-    //   10	107	5	localObject	java.lang.Object
+    //   0	158	0	this	PicAndAdConf
+    //   0	158	1	paramArrayOfByte	byte[]
+    //   0	158	2	paramString	String
+    //   0	158	3	paramLong	long
     // Exception table:
     //   from	to	target	type
-    //   12	24	115	java/lang/Exception
-    //   24	34	115	java/lang/Exception
-    //   102	112	115	java/lang/Exception
-    //   123	127	128	java/lang/Exception
-    //   12	24	130	finally
-    //   24	34	130	finally
-    //   102	112	130	finally
-    //   97	101	143	java/lang/Exception
-    //   137	141	145	java/lang/Exception
-    //   34	93	149	finally
-    //   34	93	153	java/lang/Exception
+    //   44	89	112	finally
+    //   91	105	112	finally
+    //   9	21	119	finally
+    //   24	34	119	finally
+    //   34	44	119	finally
+    //   9	21	144	java/lang/Exception
+    //   24	34	144	java/lang/Exception
+    //   34	44	144	java/lang/Exception
+    //   44	89	148	java/lang/Exception
+    //   91	105	148	java/lang/Exception
+    //   107	111	152	java/lang/Exception
+    //   126	130	154	java/lang/Exception
   }
   
   /* Error */
   private boolean a(byte[] paramArrayOfByte, String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 4
-    //   6: iconst_1
-    //   7: istore_3
-    //   8: new 29	java/io/File
-    //   11: dup
-    //   12: new 120	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   19: invokestatic 79	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   22: invokevirtual 126	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
-    //   25: invokevirtual 130	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   28: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: ldc 136
-    //   33: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
-    //   42: astore 6
-    //   44: new 29	java/io/File
-    //   47: dup
-    //   48: new 120	java/lang/StringBuilder
-    //   51: dup
-    //   52: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   55: invokestatic 79	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   58: invokevirtual 126	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
-    //   61: invokevirtual 130	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   64: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: ldc 141
-    //   69: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   0: new 120	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   7: astore_3
+    //   8: aload_3
+    //   9: invokestatic 79	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   12: invokevirtual 126	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   15: invokevirtual 130	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   18: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: pop
+    //   22: aload_3
+    //   23: ldc 136
+    //   25: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: pop
+    //   29: new 29	java/io/File
+    //   32: dup
+    //   33: aload_3
+    //   34: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
+    //   40: astore 5
+    //   42: new 120	java/lang/StringBuilder
+    //   45: dup
+    //   46: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   49: astore_3
+    //   50: aload_3
+    //   51: invokestatic 79	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   54: invokevirtual 126	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   57: invokevirtual 130	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   60: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: pop
+    //   64: aload_3
+    //   65: ldc 141
+    //   67: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: pop
+    //   71: aload_3
     //   72: aload_2
     //   73: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
-    //   82: astore_2
-    //   83: aload 6
-    //   85: invokevirtual 33	java/io/File:exists	()Z
-    //   88: ifne +9 -> 97
-    //   91: aload 6
-    //   93: invokevirtual 144	java/io/File:mkdirs	()Z
-    //   96: pop
-    //   97: aload_2
-    //   98: invokevirtual 33	java/io/File:exists	()Z
-    //   101: ifne +45 -> 146
-    //   104: aload_2
-    //   105: invokevirtual 57	java/io/File:createNewFile	()Z
-    //   108: pop
-    //   109: new 59	java/io/FileOutputStream
-    //   112: dup
-    //   113: aload_2
-    //   114: iconst_1
-    //   115: invokespecial 62	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   118: astore_2
-    //   119: aload_2
-    //   120: aload_1
-    //   121: invokevirtual 66	java/io/FileOutputStream:write	([B)V
-    //   124: aload_2
-    //   125: invokevirtual 70	java/io/FileOutputStream:flush	()V
+    //   76: pop
+    //   77: new 29	java/io/File
+    //   80: dup
+    //   81: aload_3
+    //   82: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
+    //   88: astore_2
+    //   89: aconst_null
+    //   90: astore 4
+    //   92: aconst_null
+    //   93: astore_3
+    //   94: aload 5
+    //   96: invokevirtual 33	java/io/File:exists	()Z
+    //   99: ifne +9 -> 108
+    //   102: aload 5
+    //   104: invokevirtual 144	java/io/File:mkdirs	()Z
+    //   107: pop
+    //   108: aload_2
+    //   109: invokevirtual 33	java/io/File:exists	()Z
+    //   112: ifne +11 -> 123
+    //   115: aload_2
+    //   116: invokevirtual 57	java/io/File:createNewFile	()Z
+    //   119: pop
+    //   120: goto +13 -> 133
+    //   123: aload_2
+    //   124: invokevirtual 39	java/io/File:delete	()Z
+    //   127: pop
     //   128: aload_2
-    //   129: invokevirtual 73	java/io/FileOutputStream:close	()V
-    //   132: iconst_0
-    //   133: ifeq +11 -> 144
-    //   136: new 146	java/lang/NullPointerException
-    //   139: dup
-    //   140: invokespecial 147	java/lang/NullPointerException:<init>	()V
-    //   143: athrow
-    //   144: iload_3
-    //   145: ireturn
-    //   146: aload_2
-    //   147: invokevirtual 39	java/io/File:delete	()Z
-    //   150: pop
-    //   151: aload_2
-    //   152: invokevirtual 57	java/io/File:createNewFile	()Z
-    //   155: pop
-    //   156: goto -47 -> 109
-    //   159: astore_1
-    //   160: aload 4
-    //   162: astore_2
-    //   163: iconst_0
-    //   164: istore_3
-    //   165: aload_2
-    //   166: ifnull -22 -> 144
-    //   169: aload_2
-    //   170: invokevirtual 73	java/io/FileOutputStream:close	()V
-    //   173: iconst_0
-    //   174: ireturn
-    //   175: astore_1
-    //   176: aload_1
-    //   177: invokevirtual 150	java/io/IOException:printStackTrace	()V
-    //   180: iconst_0
-    //   181: ireturn
-    //   182: astore_1
-    //   183: aload_1
-    //   184: invokevirtual 150	java/io/IOException:printStackTrace	()V
-    //   187: iconst_1
-    //   188: ireturn
-    //   189: astore_1
-    //   190: aload 5
-    //   192: astore_2
-    //   193: aload_2
-    //   194: ifnull +7 -> 201
-    //   197: aload_2
-    //   198: invokevirtual 73	java/io/FileOutputStream:close	()V
-    //   201: aload_1
-    //   202: athrow
-    //   203: astore_2
-    //   204: aload_2
-    //   205: invokevirtual 150	java/io/IOException:printStackTrace	()V
-    //   208: goto -7 -> 201
-    //   211: astore_1
-    //   212: goto -19 -> 193
-    //   215: astore_1
-    //   216: goto -53 -> 163
+    //   129: invokevirtual 57	java/io/File:createNewFile	()Z
+    //   132: pop
+    //   133: new 59	java/io/FileOutputStream
+    //   136: dup
+    //   137: aload_2
+    //   138: iconst_1
+    //   139: invokespecial 62	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   142: astore_2
+    //   143: aload_2
+    //   144: aload_1
+    //   145: invokevirtual 66	java/io/FileOutputStream:write	([B)V
+    //   148: aload_2
+    //   149: invokevirtual 70	java/io/FileOutputStream:flush	()V
+    //   152: aload_2
+    //   153: invokevirtual 73	java/io/FileOutputStream:close	()V
+    //   156: iconst_1
+    //   157: ireturn
+    //   158: astore_1
+    //   159: goto +9 -> 168
+    //   162: goto +24 -> 186
+    //   165: astore_1
+    //   166: aload_3
+    //   167: astore_2
+    //   168: aload_2
+    //   169: ifnull +15 -> 184
+    //   172: aload_2
+    //   173: invokevirtual 73	java/io/FileOutputStream:close	()V
+    //   176: goto +8 -> 184
+    //   179: astore_2
+    //   180: aload_2
+    //   181: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   184: aload_1
+    //   185: athrow
+    //   186: aload_2
+    //   187: ifnull +14 -> 201
+    //   190: aload_2
+    //   191: invokevirtual 73	java/io/FileOutputStream:close	()V
+    //   194: iconst_0
+    //   195: ireturn
+    //   196: astore_1
+    //   197: aload_1
+    //   198: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   201: iconst_0
+    //   202: ireturn
+    //   203: astore_1
+    //   204: aload 4
+    //   206: astore_2
+    //   207: goto -21 -> 186
+    //   210: astore_1
+    //   211: goto -49 -> 162
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	219	0	this	PicAndAdConf
-    //   0	219	1	paramArrayOfByte	byte[]
-    //   0	219	2	paramString	String
-    //   7	158	3	bool	boolean
-    //   4	157	4	localObject1	java.lang.Object
-    //   1	190	5	localObject2	java.lang.Object
-    //   42	50	6	localFile	File
+    //   0	214	0	this	PicAndAdConf
+    //   0	214	1	paramArrayOfByte	byte[]
+    //   0	214	2	paramString	String
+    //   7	160	3	localStringBuilder	StringBuilder
+    //   90	115	4	localObject	Object
+    //   40	63	5	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   83	97	159	java/lang/Exception
-    //   97	109	159	java/lang/Exception
-    //   109	119	159	java/lang/Exception
-    //   146	156	159	java/lang/Exception
-    //   169	173	175	java/io/IOException
-    //   136	144	182	java/io/IOException
-    //   83	97	189	finally
-    //   97	109	189	finally
-    //   109	119	189	finally
-    //   146	156	189	finally
-    //   197	201	203	java/io/IOException
-    //   119	132	211	finally
-    //   119	132	215	java/lang/Exception
+    //   143	156	158	finally
+    //   94	108	165	finally
+    //   108	120	165	finally
+    //   123	133	165	finally
+    //   133	143	165	finally
+    //   172	176	179	java/io/IOException
+    //   190	194	196	java/io/IOException
+    //   94	108	203	java/lang/Exception
+    //   108	120	203	java/lang/Exception
+    //   123	133	203	java/lang/Exception
+    //   133	143	203	java/lang/Exception
+    //   143	156	210	java/lang/Exception
   }
   
   /* Error */
   private boolean b(byte[] paramArrayOfByte, String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore 5
-    //   6: iconst_1
-    //   7: istore_3
-    //   8: new 29	java/io/File
-    //   11: dup
-    //   12: new 120	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   19: invokestatic 79	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   22: invokevirtual 126	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
-    //   25: invokevirtual 130	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   28: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: ldc 153
-    //   33: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: ldc 155
-    //   38: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   0: new 120	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   7: astore_3
+    //   8: aload_3
+    //   9: invokestatic 79	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   12: invokevirtual 126	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   15: invokevirtual 130	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   18: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: pop
+    //   22: aload_3
+    //   23: ldc 150
+    //   25: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: pop
+    //   29: aload_3
+    //   30: ldc 152
+    //   32: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: pop
+    //   36: new 29	java/io/File
+    //   39: dup
+    //   40: aload_3
     //   41: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   44: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
-    //   47: astore 6
-    //   49: new 29	java/io/File
+    //   47: astore 5
+    //   49: new 120	java/lang/StringBuilder
     //   52: dup
-    //   53: new 120	java/lang/StringBuilder
-    //   56: dup
-    //   57: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   60: invokestatic 79	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   63: invokevirtual 126	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
-    //   66: invokevirtual 130	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   69: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: ldc 153
+    //   53: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   56: astore_3
+    //   57: aload_3
+    //   58: invokestatic 79	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   61: invokevirtual 126	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   64: invokevirtual 130	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   67: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: pop
+    //   71: aload_3
+    //   72: ldc 150
     //   74: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: ldc 155
-    //   79: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: ldc 153
-    //   84: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: aload_2
+    //   77: pop
+    //   78: aload_3
+    //   79: ldc 152
+    //   81: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: pop
+    //   85: aload_3
+    //   86: ldc 150
     //   88: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   94: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
-    //   97: astore 7
-    //   99: aload 4
-    //   101: astore_2
-    //   102: aload 6
-    //   104: invokevirtual 33	java/io/File:exists	()Z
-    //   107: ifne +12 -> 119
-    //   110: aload 4
-    //   112: astore_2
-    //   113: aload 6
-    //   115: invokevirtual 144	java/io/File:mkdirs	()Z
-    //   118: pop
-    //   119: aload 4
-    //   121: astore_2
-    //   122: aload 7
-    //   124: invokevirtual 33	java/io/File:exists	()Z
-    //   127: ifne +57 -> 184
-    //   130: aload 4
-    //   132: astore_2
-    //   133: aload 7
-    //   135: invokevirtual 57	java/io/File:createNewFile	()Z
-    //   138: pop
-    //   139: aload 4
-    //   141: astore_2
-    //   142: new 59	java/io/FileOutputStream
-    //   145: dup
-    //   146: aload 7
-    //   148: iconst_1
-    //   149: invokespecial 62	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   152: astore 4
-    //   154: aload 4
-    //   156: aload_1
-    //   157: invokevirtual 66	java/io/FileOutputStream:write	([B)V
-    //   160: aload 4
-    //   162: invokevirtual 70	java/io/FileOutputStream:flush	()V
-    //   165: aload 4
-    //   167: invokevirtual 73	java/io/FileOutputStream:close	()V
-    //   170: iconst_0
-    //   171: ifeq +11 -> 182
-    //   174: new 146	java/lang/NullPointerException
-    //   177: dup
-    //   178: invokespecial 147	java/lang/NullPointerException:<init>	()V
-    //   181: athrow
-    //   182: iload_3
-    //   183: ireturn
-    //   184: aload 4
-    //   186: astore_2
-    //   187: aload 7
-    //   189: invokevirtual 39	java/io/File:delete	()Z
-    //   192: pop
-    //   193: aload 4
-    //   195: astore_2
-    //   196: aload 7
-    //   198: invokevirtual 57	java/io/File:createNewFile	()Z
-    //   201: pop
-    //   202: goto -63 -> 139
-    //   205: astore 4
-    //   207: aload 5
-    //   209: astore_1
-    //   210: aload_1
-    //   211: astore_2
-    //   212: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   215: ifeq +15 -> 230
-    //   218: aload_1
-    //   219: astore_2
-    //   220: ldc 157
-    //   222: iconst_2
-    //   223: ldc 159
-    //   225: aload 4
-    //   227: invokestatic 162	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   230: iconst_0
-    //   231: istore_3
-    //   232: aload_1
-    //   233: ifnull -51 -> 182
-    //   236: aload_1
-    //   237: invokevirtual 73	java/io/FileOutputStream:close	()V
-    //   240: iconst_0
-    //   241: ireturn
-    //   242: astore_1
-    //   243: aload_1
-    //   244: invokevirtual 150	java/io/IOException:printStackTrace	()V
-    //   247: iconst_0
-    //   248: ireturn
-    //   249: astore_1
-    //   250: aload_1
-    //   251: invokevirtual 150	java/io/IOException:printStackTrace	()V
-    //   254: iconst_1
-    //   255: ireturn
-    //   256: astore_1
+    //   91: pop
+    //   92: aload_3
+    //   93: aload_2
+    //   94: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: pop
+    //   98: new 29	java/io/File
+    //   101: dup
+    //   102: aload_3
+    //   103: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   106: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
+    //   109: astore 6
+    //   111: aconst_null
+    //   112: astore 4
+    //   114: aconst_null
+    //   115: astore_3
+    //   116: aload_3
+    //   117: astore_2
+    //   118: aload 5
+    //   120: invokevirtual 33	java/io/File:exists	()Z
+    //   123: ifne +11 -> 134
+    //   126: aload_3
+    //   127: astore_2
+    //   128: aload 5
+    //   130: invokevirtual 144	java/io/File:mkdirs	()Z
+    //   133: pop
+    //   134: aload_3
+    //   135: astore_2
+    //   136: aload 6
+    //   138: invokevirtual 33	java/io/File:exists	()Z
+    //   141: ifne +14 -> 155
+    //   144: aload_3
+    //   145: astore_2
+    //   146: aload 6
+    //   148: invokevirtual 57	java/io/File:createNewFile	()Z
+    //   151: pop
+    //   152: goto +19 -> 171
+    //   155: aload_3
+    //   156: astore_2
+    //   157: aload 6
+    //   159: invokevirtual 39	java/io/File:delete	()Z
+    //   162: pop
+    //   163: aload_3
+    //   164: astore_2
+    //   165: aload 6
+    //   167: invokevirtual 57	java/io/File:createNewFile	()Z
+    //   170: pop
+    //   171: aload_3
+    //   172: astore_2
+    //   173: new 59	java/io/FileOutputStream
+    //   176: dup
+    //   177: aload 6
+    //   179: iconst_1
+    //   180: invokespecial 62	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   183: astore_3
+    //   184: aload_3
+    //   185: aload_1
+    //   186: invokevirtual 66	java/io/FileOutputStream:write	([B)V
+    //   189: aload_3
+    //   190: invokevirtual 70	java/io/FileOutputStream:flush	()V
+    //   193: aload_3
+    //   194: invokevirtual 73	java/io/FileOutputStream:close	()V
+    //   197: iconst_1
+    //   198: ireturn
+    //   199: astore_1
+    //   200: aload_3
+    //   201: astore_2
+    //   202: goto +55 -> 257
+    //   205: astore_2
+    //   206: aload_3
+    //   207: astore_1
+    //   208: aload_2
+    //   209: astore_3
+    //   210: goto +11 -> 221
+    //   213: astore_1
+    //   214: goto +43 -> 257
+    //   217: astore_3
+    //   218: aload 4
+    //   220: astore_1
+    //   221: aload_1
+    //   222: astore_2
+    //   223: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   226: ifeq +14 -> 240
+    //   229: aload_1
+    //   230: astore_2
+    //   231: ldc 154
+    //   233: iconst_2
+    //   234: ldc 156
+    //   236: aload_3
+    //   237: invokestatic 159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   240: aload_1
+    //   241: ifnull +14 -> 255
+    //   244: aload_1
+    //   245: invokevirtual 73	java/io/FileOutputStream:close	()V
+    //   248: iconst_0
+    //   249: ireturn
+    //   250: astore_1
+    //   251: aload_1
+    //   252: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   255: iconst_0
+    //   256: ireturn
     //   257: aload_2
-    //   258: ifnull +7 -> 265
+    //   258: ifnull +15 -> 273
     //   261: aload_2
     //   262: invokevirtual 73	java/io/FileOutputStream:close	()V
-    //   265: aload_1
-    //   266: athrow
-    //   267: astore_2
-    //   268: aload_2
-    //   269: invokevirtual 150	java/io/IOException:printStackTrace	()V
-    //   272: goto -7 -> 265
-    //   275: astore_1
-    //   276: aload 4
-    //   278: astore_2
-    //   279: goto -22 -> 257
-    //   282: astore_2
-    //   283: aload 4
-    //   285: astore_1
-    //   286: aload_2
-    //   287: astore 4
-    //   289: goto -79 -> 210
+    //   265: goto +8 -> 273
+    //   268: astore_2
+    //   269: aload_2
+    //   270: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   273: aload_1
+    //   274: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	292	0	this	PicAndAdConf
-    //   0	292	1	paramArrayOfByte	byte[]
-    //   0	292	2	paramString	String
-    //   7	225	3	bool	boolean
-    //   1	193	4	localFileOutputStream	java.io.FileOutputStream
-    //   205	79	4	localException	Exception
-    //   287	1	4	str	String
-    //   4	204	5	localObject	java.lang.Object
-    //   47	67	6	localFile1	File
-    //   97	100	7	localFile2	File
+    //   0	275	0	this	PicAndAdConf
+    //   0	275	1	paramArrayOfByte	byte[]
+    //   0	275	2	paramString	String
+    //   7	203	3	localObject1	Object
+    //   217	20	3	localException	Exception
+    //   112	107	4	localObject2	Object
+    //   47	82	5	localFile1	File
+    //   109	69	6	localFile2	File
     // Exception table:
     //   from	to	target	type
-    //   102	110	205	java/lang/Exception
-    //   113	119	205	java/lang/Exception
-    //   122	130	205	java/lang/Exception
-    //   133	139	205	java/lang/Exception
-    //   142	154	205	java/lang/Exception
-    //   187	193	205	java/lang/Exception
-    //   196	202	205	java/lang/Exception
-    //   236	240	242	java/io/IOException
-    //   174	182	249	java/io/IOException
-    //   102	110	256	finally
-    //   113	119	256	finally
-    //   122	130	256	finally
-    //   133	139	256	finally
-    //   142	154	256	finally
-    //   187	193	256	finally
-    //   196	202	256	finally
-    //   212	218	256	finally
-    //   220	230	256	finally
-    //   261	265	267	java/io/IOException
-    //   154	170	275	finally
-    //   154	170	282	java/lang/Exception
+    //   184	197	199	finally
+    //   184	197	205	java/lang/Exception
+    //   118	126	213	finally
+    //   128	134	213	finally
+    //   136	144	213	finally
+    //   146	152	213	finally
+    //   157	163	213	finally
+    //   165	171	213	finally
+    //   173	184	213	finally
+    //   223	229	213	finally
+    //   231	240	213	finally
+    //   118	126	217	java/lang/Exception
+    //   128	134	217	java/lang/Exception
+    //   136	144	217	java/lang/Exception
+    //   146	152	217	java/lang/Exception
+    //   157	163	217	java/lang/Exception
+    //   165	171	217	java/lang/Exception
+    //   173	184	217	java/lang/Exception
+    //   244	248	250	java/io/IOException
+    //   261	265	268	java/io/IOException
   }
   
   public long a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return 0L;
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return ((PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Long;
     }
-    return ((PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Long;
+    return 0L;
   }
   
   /* Error */
@@ -522,287 +518,297 @@ public class PicAndAdConf
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 6
+    //   1: astore 8
     //   3: aconst_null
-    //   4: astore 7
+    //   4: astore 6
     //   6: aconst_null
-    //   7: astore 4
-    //   9: aload 4
+    //   7: astore 7
+    //   9: aload 6
     //   11: astore 5
     //   13: iload_1
-    //   14: iflt +18 -> 32
+    //   14: iflt +470 -> 484
     //   17: iload_1
     //   18: aload_0
-    //   19: getfield 166	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   22: invokevirtual 172	java/util/ArrayList:size	()I
-    //   25: if_icmplt +10 -> 35
-    //   28: aload 4
-    //   30: astore 5
-    //   32: aload 5
-    //   34: areturn
-    //   35: aload 7
-    //   37: astore 5
-    //   39: aload_0
-    //   40: getfield 166	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   43: iload_1
-    //   44: invokevirtual 176	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   47: checkcast 178	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct
-    //   50: astore 8
-    //   52: aload 7
-    //   54: astore 5
-    //   56: aload 8
-    //   58: getfield 189	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:jdField_a_of_type_Byte	B
-    //   61: istore_2
-    //   62: aload 4
+    //   19: getfield 163	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   22: invokevirtual 169	java/util/ArrayList:size	()I
+    //   25: if_icmplt +5 -> 30
+    //   28: aconst_null
+    //   29: areturn
+    //   30: aload 8
+    //   32: astore 4
+    //   34: aload_0
+    //   35: getfield 163	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   38: iload_1
+    //   39: invokevirtual 173	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   42: checkcast 175	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct
+    //   45: astore 9
+    //   47: aload 8
+    //   49: astore 4
+    //   51: aload 9
+    //   53: getfield 186	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:jdField_a_of_type_Byte	B
+    //   56: istore_2
+    //   57: iload_2
+    //   58: iconst_1
+    //   59: if_icmpeq +381 -> 440
+    //   62: aload 6
     //   64: astore 5
     //   66: iload_2
-    //   67: tableswitch	default:+25 -> 92, 1:+27->94, 2:+-35->32, 3:+44->111
-    //   93: areturn
-    //   94: aload 7
-    //   96: astore 5
+    //   67: iconst_2
+    //   68: if_icmpeq +416 -> 484
+    //   71: iload_2
+    //   72: iconst_3
+    //   73: if_icmpeq +5 -> 78
+    //   76: aconst_null
+    //   77: areturn
+    //   78: aload 8
+    //   80: astore 4
+    //   82: aload_0
+    //   83: getfield 163	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   86: iload_1
+    //   87: invokevirtual 173	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   90: checkcast 175	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct
+    //   93: getfield 189	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:jdField_a_of_type_ArrayOfByte	[B
+    //   96: astore 10
     //   98: aload 8
-    //   100: getfield 192	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:b	Ljava/lang/String;
-    //   103: invokestatic 197	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   106: astore 4
-    //   108: aload 4
-    //   110: areturn
-    //   111: aload 7
-    //   113: astore 5
-    //   115: aload_0
-    //   116: getfield 166	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   119: iload_1
-    //   120: invokevirtual 176	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   123: checkcast 178	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct
-    //   126: getfield 200	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:jdField_a_of_type_ArrayOfByte	[B
-    //   129: astore 9
-    //   131: aload 7
-    //   133: astore 5
-    //   135: aload_0
-    //   136: getfield 166	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   139: iload_1
-    //   140: invokevirtual 176	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   143: checkcast 178	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct
-    //   146: getfield 203	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:c	Ljava/lang/String;
-    //   149: astore 10
-    //   151: aload 10
-    //   153: ifnull +47 -> 200
-    //   156: aload 7
-    //   158: astore 5
-    //   160: aload_0
-    //   161: getfield 204	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_Byte	B
-    //   164: iconst_1
-    //   165: if_icmpne +35 -> 200
-    //   168: aload 7
-    //   170: astore 5
-    //   172: aload_0
-    //   173: invokevirtual 206	com/tencent/mobileqq/config/struct/PicAndAdConf:a	()Z
-    //   176: ifne +24 -> 200
-    //   179: aload 7
-    //   181: astore 5
-    //   183: aload_0
-    //   184: invokevirtual 208	com/tencent/mobileqq/config/struct/PicAndAdConf:b	()Z
-    //   187: ifne +13 -> 200
-    //   190: aload 7
-    //   192: astore 5
-    //   194: aload 10
-    //   196: invokestatic 197	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   199: areturn
-    //   200: aload 10
-    //   202: ifnull +94 -> 296
-    //   205: aload 7
-    //   207: astore 5
-    //   209: aload_0
-    //   210: getfield 204	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_Byte	B
-    //   213: ifne +83 -> 296
-    //   216: aload 7
-    //   218: astore 5
-    //   220: new 29	java/io/File
-    //   223: dup
-    //   224: aload 10
-    //   226: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
-    //   229: invokevirtual 33	java/io/File:exists	()Z
-    //   232: ifeq +45 -> 277
-    //   235: aload 7
-    //   237: astore 5
-    //   239: aload 10
-    //   241: invokestatic 197	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   244: astore 4
-    //   246: aload 4
-    //   248: ifnonnull +261 -> 509
-    //   251: aload 8
-    //   253: getfield 209	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:jdField_a_of_type_Boolean	Z
-    //   256: ifeq +253 -> 509
-    //   259: aload 8
-    //   261: iconst_0
-    //   262: putfield 209	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:jdField_a_of_type_Boolean	Z
-    //   265: aload_0
-    //   266: aload 8
-    //   268: getfield 192	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:b	Ljava/lang/String;
-    //   271: invokevirtual 211	com/tencent/mobileqq/config/struct/PicAndAdConf:b	(Ljava/lang/String;)V
-    //   274: aload 4
-    //   276: areturn
-    //   277: aload 7
-    //   279: astore 5
-    //   281: aload_0
-    //   282: aload 8
-    //   284: getfield 192	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:b	Ljava/lang/String;
-    //   287: invokevirtual 211	com/tencent/mobileqq/config/struct/PicAndAdConf:b	(Ljava/lang/String;)V
-    //   290: aconst_null
-    //   291: astore 4
-    //   293: goto -19 -> 274
-    //   296: aload 7
-    //   298: astore 5
-    //   300: aload 10
-    //   302: invokestatic 217	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   305: ifne +143 -> 448
-    //   308: aload 7
-    //   310: astore 5
-    //   312: aload_0
-    //   313: getfield 204	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_Byte	B
-    //   316: iconst_2
-    //   317: if_icmpne +131 -> 448
+    //   100: astore 4
+    //   102: aload_0
+    //   103: getfield 163	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   106: iload_1
+    //   107: invokevirtual 173	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   110: checkcast 175	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct
+    //   113: getfield 193	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:c	Ljava/lang/String;
+    //   116: astore 5
+    //   118: aload 5
+    //   120: ifnull +47 -> 167
+    //   123: aload 8
+    //   125: astore 4
+    //   127: aload_0
+    //   128: getfield 194	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_Byte	B
+    //   131: iconst_1
+    //   132: if_icmpne +35 -> 167
+    //   135: aload 8
+    //   137: astore 4
+    //   139: aload_0
+    //   140: invokevirtual 196	com/tencent/mobileqq/config/struct/PicAndAdConf:a	()Z
+    //   143: ifne +24 -> 167
+    //   146: aload 8
+    //   148: astore 4
+    //   150: aload_0
+    //   151: invokevirtual 198	com/tencent/mobileqq/config/struct/PicAndAdConf:b	()Z
+    //   154: ifne +13 -> 167
+    //   157: aload 8
+    //   159: astore 4
+    //   161: aload 5
+    //   163: invokestatic 203	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   166: areturn
+    //   167: aload 5
+    //   169: ifnull +110 -> 279
+    //   172: aload 8
+    //   174: astore 4
+    //   176: aload_0
+    //   177: getfield 194	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_Byte	B
+    //   180: ifne +99 -> 279
+    //   183: aload 8
+    //   185: astore 4
+    //   187: new 29	java/io/File
+    //   190: dup
+    //   191: aload 5
+    //   193: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
+    //   196: invokevirtual 33	java/io/File:exists	()Z
+    //   199: ifeq +65 -> 264
+    //   202: aload 8
+    //   204: astore 4
+    //   206: aload 5
+    //   208: invokestatic 203	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   211: astore 6
+    //   213: aload 6
+    //   215: astore 5
+    //   217: aload 6
+    //   219: ifnonnull +265 -> 484
+    //   222: aload 6
+    //   224: astore 4
+    //   226: aload 6
+    //   228: astore 5
+    //   230: aload 9
+    //   232: getfield 204	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:jdField_a_of_type_Boolean	Z
+    //   235: ifeq +249 -> 484
+    //   238: aload 6
+    //   240: astore 4
+    //   242: aload 9
+    //   244: iconst_0
+    //   245: putfield 204	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:jdField_a_of_type_Boolean	Z
+    //   248: aload 6
+    //   250: astore 4
+    //   252: aload_0
+    //   253: aload 9
+    //   255: getfield 206	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:b	Ljava/lang/String;
+    //   258: invokevirtual 208	com/tencent/mobileqq/config/struct/PicAndAdConf:b	(Ljava/lang/String;)V
+    //   261: aload 6
+    //   263: areturn
+    //   264: aload 8
+    //   266: astore 4
+    //   268: aload_0
+    //   269: aload 9
+    //   271: getfield 206	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:b	Ljava/lang/String;
+    //   274: invokevirtual 208	com/tencent/mobileqq/config/struct/PicAndAdConf:b	(Ljava/lang/String;)V
+    //   277: aconst_null
+    //   278: areturn
+    //   279: aload 8
+    //   281: astore 4
+    //   283: aload 5
+    //   285: invokestatic 214	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   288: ifne +113 -> 401
+    //   291: aload 8
+    //   293: astore 4
+    //   295: aload_0
+    //   296: getfield 194	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_Byte	B
+    //   299: iconst_2
+    //   300: if_icmpne +101 -> 401
+    //   303: aload 8
+    //   305: astore 4
+    //   307: new 29	java/io/File
+    //   310: dup
+    //   311: aload 5
+    //   313: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
+    //   316: invokevirtual 33	java/io/File:exists	()Z
+    //   319: istore_3
     //   320: aload 7
-    //   322: astore 5
-    //   324: new 29	java/io/File
-    //   327: dup
-    //   328: aload 10
-    //   330: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
-    //   333: invokevirtual 33	java/io/File:exists	()Z
-    //   336: istore_3
-    //   337: aload 6
-    //   339: astore 4
-    //   341: iload_3
-    //   342: ifeq +14 -> 356
-    //   345: aload 7
-    //   347: astore 5
-    //   349: aload 10
-    //   351: invokestatic 197	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   354: astore 4
-    //   356: aload 4
-    //   358: astore 5
-    //   360: aload 4
-    //   362: ifnonnull -330 -> 32
-    //   365: aload 4
-    //   367: astore 5
-    //   369: aload_0
-    //   370: aload 8
-    //   372: getfield 192	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:b	Ljava/lang/String;
-    //   375: invokevirtual 211	com/tencent/mobileqq/config/struct/PicAndAdConf:b	(Ljava/lang/String;)V
-    //   378: aload 4
-    //   380: areturn
-    //   381: astore 6
-    //   383: aload 5
-    //   385: astore 4
-    //   387: aload 4
-    //   389: astore 5
-    //   391: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   394: ifeq -362 -> 32
-    //   397: ldc 219
-    //   399: iconst_2
-    //   400: aload 6
-    //   402: invokestatic 223	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   405: invokestatic 226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   408: aload 4
-    //   410: areturn
-    //   411: astore 9
-    //   413: aload 6
-    //   415: astore 4
-    //   417: aload 7
-    //   419: astore 5
-    //   421: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   424: ifeq -68 -> 356
-    //   427: aload 7
-    //   429: astore 5
-    //   431: ldc 157
-    //   433: iconst_2
-    //   434: ldc 228
-    //   436: aload 9
-    //   438: invokestatic 162	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   441: aload 6
-    //   443: astore 4
-    //   445: goto -89 -> 356
-    //   448: aload 4
-    //   450: astore 5
-    //   452: aload 9
-    //   454: ifnull -422 -> 32
-    //   457: aload 7
-    //   459: astore 5
-    //   461: aload 9
-    //   463: arraylength
-    //   464: istore_1
-    //   465: aload 4
-    //   467: astore 5
-    //   469: iload_1
-    //   470: ifle -438 -> 32
-    //   473: aload 9
-    //   475: iconst_0
-    //   476: aload 9
-    //   478: arraylength
-    //   479: invokestatic 234	android/graphics/BitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
-    //   482: astore 4
-    //   484: aload 4
+    //   322: astore 6
+    //   324: iload_3
+    //   325: ifeq +51 -> 376
+    //   328: aload 8
+    //   330: astore 4
+    //   332: aload 5
+    //   334: invokestatic 203	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   337: astore 6
+    //   339: goto +37 -> 376
+    //   342: astore 5
+    //   344: aload 7
+    //   346: astore 6
+    //   348: aload 8
+    //   350: astore 4
+    //   352: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   355: ifeq +21 -> 376
+    //   358: aload 8
+    //   360: astore 4
+    //   362: ldc 154
+    //   364: iconst_2
+    //   365: ldc 216
+    //   367: aload 5
+    //   369: invokestatic 159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   372: aload 7
+    //   374: astore 6
+    //   376: aload 6
+    //   378: astore 5
+    //   380: aload 6
+    //   382: ifnonnull +102 -> 484
+    //   385: aload 6
+    //   387: astore 4
+    //   389: aload_0
+    //   390: aload 9
+    //   392: getfield 206	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:b	Ljava/lang/String;
+    //   395: invokevirtual 208	com/tencent/mobileqq/config/struct/PicAndAdConf:b	(Ljava/lang/String;)V
+    //   398: aload 6
+    //   400: areturn
+    //   401: aload 6
+    //   403: astore 5
+    //   405: aload 10
+    //   407: ifnull +77 -> 484
+    //   410: aload 8
+    //   412: astore 4
+    //   414: aload 10
+    //   416: arraylength
+    //   417: istore_1
+    //   418: aload 6
+    //   420: astore 5
+    //   422: iload_1
+    //   423: ifle +61 -> 484
+    //   426: aload 10
+    //   428: iconst_0
+    //   429: aload 10
+    //   431: arraylength
+    //   432: invokestatic 222	android/graphics/BitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
+    //   435: astore 4
+    //   437: aload 4
+    //   439: areturn
+    //   440: aload 8
+    //   442: astore 4
+    //   444: aload 9
+    //   446: getfield 206	com/tencent/mobileqq/config/struct/PicAndAdConf$PicStruct:b	Ljava/lang/String;
+    //   449: invokestatic 203	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   452: astore 5
+    //   454: aload 5
+    //   456: areturn
+    //   457: astore 6
+    //   459: aload 4
+    //   461: astore 5
+    //   463: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   466: ifeq +18 -> 484
+    //   469: ldc 224
+    //   471: iconst_2
+    //   472: aload 6
+    //   474: invokestatic 228	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   477: invokestatic 231	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   480: aload 4
+    //   482: astore 5
+    //   484: aload 5
     //   486: areturn
     //   487: astore 4
-    //   489: aload 6
-    //   491: astore 4
-    //   493: goto -137 -> 356
-    //   496: astore 6
-    //   498: goto -111 -> 387
-    //   501: astore 4
-    //   503: aconst_null
-    //   504: areturn
-    //   505: astore 4
-    //   507: aconst_null
-    //   508: areturn
-    //   509: goto -235 -> 274
+    //   489: aload 7
+    //   491: astore 6
+    //   493: goto -117 -> 376
+    //   496: astore 4
+    //   498: aconst_null
+    //   499: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	512	0	this	PicAndAdConf
-    //   0	512	1	paramInt	int
-    //   61	6	2	i	int
-    //   336	6	3	bool	boolean
-    //   7	478	4	localObject1	java.lang.Object
+    //   0	500	0	this	PicAndAdConf
+    //   0	500	1	paramInt	int
+    //   56	18	2	i	int
+    //   319	6	3	bool	boolean
+    //   32	449	4	localObject1	Object
     //   487	1	4	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   491	1	4	localThrowable1	java.lang.Throwable
-    //   501	1	4	localException1	Exception
-    //   505	1	4	localThrowable2	java.lang.Throwable
-    //   11	457	5	localObject2	java.lang.Object
-    //   1	337	6	localObject3	java.lang.Object
-    //   381	109	6	localThrowable3	java.lang.Throwable
-    //   496	1	6	localThrowable4	java.lang.Throwable
-    //   4	454	7	localObject4	java.lang.Object
-    //   50	321	8	localPicStruct	PicAndAdConf.PicStruct
-    //   129	1	9	arrayOfByte	byte[]
-    //   411	66	9	localException2	Exception
-    //   149	201	10	str	String
+    //   496	1	4	localThrowable1	java.lang.Throwable
+    //   11	322	5	localObject2	Object
+    //   342	26	5	localException	Exception
+    //   378	107	5	localObject3	Object
+    //   4	415	6	localObject4	Object
+    //   457	16	6	localThrowable2	java.lang.Throwable
+    //   491	1	6	localObject5	Object
+    //   7	483	7	localObject6	Object
+    //   1	440	8	localObject7	Object
+    //   45	400	9	localPicStruct	PicAndAdConf.PicStruct
+    //   96	334	10	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   39	52	381	java/lang/Throwable
-    //   56	62	381	java/lang/Throwable
-    //   98	108	381	java/lang/Throwable
-    //   115	131	381	java/lang/Throwable
-    //   135	151	381	java/lang/Throwable
-    //   160	168	381	java/lang/Throwable
-    //   172	179	381	java/lang/Throwable
-    //   183	190	381	java/lang/Throwable
-    //   194	200	381	java/lang/Throwable
-    //   209	216	381	java/lang/Throwable
-    //   220	235	381	java/lang/Throwable
-    //   239	246	381	java/lang/Throwable
-    //   281	290	381	java/lang/Throwable
-    //   300	308	381	java/lang/Throwable
-    //   312	320	381	java/lang/Throwable
-    //   324	337	381	java/lang/Throwable
-    //   349	356	381	java/lang/Throwable
-    //   369	378	381	java/lang/Throwable
-    //   421	427	381	java/lang/Throwable
-    //   431	441	381	java/lang/Throwable
-    //   461	465	381	java/lang/Throwable
-    //   349	356	411	java/lang/Exception
-    //   349	356	487	java/lang/OutOfMemoryError
-    //   251	274	496	java/lang/Throwable
-    //   98	108	501	java/lang/Exception
-    //   473	484	505	java/lang/Throwable
+    //   332	339	342	java/lang/Exception
+    //   34	47	457	java/lang/Throwable
+    //   51	57	457	java/lang/Throwable
+    //   82	98	457	java/lang/Throwable
+    //   102	118	457	java/lang/Throwable
+    //   127	135	457	java/lang/Throwable
+    //   139	146	457	java/lang/Throwable
+    //   150	157	457	java/lang/Throwable
+    //   161	167	457	java/lang/Throwable
+    //   176	183	457	java/lang/Throwable
+    //   187	202	457	java/lang/Throwable
+    //   206	213	457	java/lang/Throwable
+    //   230	238	457	java/lang/Throwable
+    //   242	248	457	java/lang/Throwable
+    //   252	261	457	java/lang/Throwable
+    //   268	277	457	java/lang/Throwable
+    //   283	291	457	java/lang/Throwable
+    //   295	303	457	java/lang/Throwable
+    //   307	320	457	java/lang/Throwable
+    //   332	339	457	java/lang/Throwable
+    //   352	358	457	java/lang/Throwable
+    //   362	372	457	java/lang/Throwable
+    //   389	398	457	java/lang/Throwable
+    //   414	418	457	java/lang/Throwable
+    //   444	454	457	java/lang/Throwable
+    //   332	339	487	java/lang/OutOfMemoryError
+    //   426	437	496	java/lang/Throwable
+    //   444	454	496	java/lang/Exception
   }
   
   public PicAndAdConf.PicStruct a(long paramLong, String paramString1, byte paramByte, String paramString2, String paramString3, String paramString4, String paramString5, short paramShort, String paramString6)
@@ -846,10 +852,10 @@ public class PicAndAdConf
   
   public String a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return "";
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return ((PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).e;
     }
-    return ((PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).e;
+    return "";
   }
   
   public String a(String paramString, byte paramByte)
@@ -857,62 +863,104 @@ public class PicAndAdConf
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    String str = paramString;
-    switch (paramByte)
+    Object localObject;
+    if (paramByte != 1)
     {
-    default: 
-      str = paramString;
-    }
-    for (;;)
-    {
-      paramString = str;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ShanPing", 2, "flashlogo final request url = " + str);
-      return str;
-      str = paramString;
-      if (!paramString.startsWith("/"))
-      {
-        str = "/" + paramString;
-        continue;
-        if ((paramString.startsWith("http://")) && (!paramString.endsWith(".png")))
+      localObject = paramString;
+      if (paramByte != 2) {
+        if (paramByte != 3)
         {
-          if (this.jdField_a_of_type_Byte == 6) {
-            str = paramString + "_" + Config.b + "_" + Config.jdField_a_of_type_Byte + ".png";
-          } else if (this.jdField_a_of_type_Byte == 0) {
-            str = paramString + "_" + (Config.jdField_a_of_type_Byte - 2) + ".png";
-          } else if ((this.jdField_a_of_type_Byte == 1) && (paramString.contains("[]"))) {
-            str = paramString.replace("[]", DeviceInfoUtil.g() + "x" + DeviceInfoUtil.h());
-          } else {
-            str = paramString + "_" + Config.jdField_a_of_type_Byte + ".png";
+          localObject = paramString;
+        }
+        else if ((paramString.startsWith("http://")) && (!paramString.endsWith(".png")))
+        {
+          if (this.jdField_a_of_type_Byte == 6)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append("_");
+            ((StringBuilder)localObject).append(Config.b);
+            ((StringBuilder)localObject).append("_");
+            ((StringBuilder)localObject).append(Config.jdField_a_of_type_Byte);
+            ((StringBuilder)localObject).append(".png");
+            localObject = ((StringBuilder)localObject).toString();
+          }
+          else if (this.jdField_a_of_type_Byte == 0)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append("_");
+            ((StringBuilder)localObject).append(Config.jdField_a_of_type_Byte - 2);
+            ((StringBuilder)localObject).append(".png");
+            localObject = ((StringBuilder)localObject).toString();
+          }
+          else if ((this.jdField_a_of_type_Byte == 1) && (paramString.contains("[]")))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(DeviceInfoUtil.g());
+            ((StringBuilder)localObject).append("x");
+            ((StringBuilder)localObject).append(DeviceInfoUtil.h());
+            localObject = paramString.replace("[]", ((StringBuilder)localObject).toString());
+          }
+          else
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append("_");
+            ((StringBuilder)localObject).append(Config.jdField_a_of_type_Byte);
+            ((StringBuilder)localObject).append(".png");
+            localObject = ((StringBuilder)localObject).toString();
           }
         }
         else
         {
-          str = paramString;
+          localObject = paramString;
           if (paramString.startsWith("http://"))
           {
-            str = paramString;
+            localObject = paramString;
             if (this.jdField_a_of_type_Byte == 1)
             {
-              str = paramString;
-              if (paramString.contains("[]")) {
-                str = paramString.replace("[]", DeviceInfoUtil.g() + "x" + DeviceInfoUtil.h());
+              localObject = paramString;
+              if (paramString.contains("[]"))
+              {
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append(DeviceInfoUtil.g());
+                ((StringBuilder)localObject).append("x");
+                ((StringBuilder)localObject).append(DeviceInfoUtil.h());
+                localObject = paramString.replace("[]", ((StringBuilder)localObject).toString());
               }
             }
           }
         }
       }
     }
+    else
+    {
+      localObject = paramString;
+      if (!paramString.startsWith("/"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("/");
+        ((StringBuilder)localObject).append(paramString);
+        localObject = ((StringBuilder)localObject).toString();
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("flashlogo final request url = ");
+      paramString.append((String)localObject);
+      QLog.d("ShanPing", 2, paramString.toString());
+    }
+    return localObject;
   }
   
   public short a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return -1;
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return ((PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Short;
     }
-    return ((PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Short;
+    return -1;
   }
   
   public void a()
@@ -922,25 +970,35 @@ public class PicAndAdConf
     this.b = -1L;
     this.c = -1L;
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    switch (this.jdField_a_of_type_Byte)
+    int i = this.jdField_a_of_type_Byte;
+    Object localObject;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return;
-      c();
-      return;
-      File localFile = new File(BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/" + "flashlogo.png");
-      try
+      if (i != 1)
       {
-        if (localFile.exists())
-        {
-          localFile.delete();
-          return;
+        if ((i == 2) || (i == 6)) {
+          break label131;
         }
+        return;
       }
-      catch (Exception localException) {}
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append("flashlogo.png");
+      localObject = new File(((StringBuilder)localObject).toString());
     }
+    try
+    {
+      if (((File)localObject).exists())
+      {
+        ((File)localObject).delete();
+        return;
+        c();
+      }
+      label131:
+      return;
+    }
+    catch (Exception localException) {}
   }
   
   public void a(DataInputStream paramDataInputStream)
@@ -954,19 +1012,16 @@ public class PicAndAdConf
     if (j > 0)
     {
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         PicAndAdConf.PicStruct localPicStruct = new PicAndAdConf.PicStruct(this);
         if (this.jdField_a_of_type_Byte == 2) {
           localPicStruct.b(paramDataInputStream);
-        }
-        for (;;)
-        {
-          a(localPicStruct);
-          i += 1;
-          break;
+        } else {
           localPicStruct.a(paramDataInputStream);
         }
+        a(localPicStruct);
+        i += 1;
       }
     }
   }
@@ -978,47 +1033,31 @@ public class PicAndAdConf
     paramDataOutputStream.writeLong(this.b);
     paramDataOutputStream.writeLong(this.c);
     paramDataOutputStream.writeByte(this.jdField_a_of_type_Byte);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
-    {
-      paramDataOutputStream.writeInt(0);
-      return;
-    }
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    paramDataOutputStream.writeInt(j);
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
     int i = 0;
-    label78:
-    PicAndAdConf.PicStruct localPicStruct;
-    if (i < j)
+    int j;
+    if ((localObject != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() != 0))
     {
-      localPicStruct = (PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (this.jdField_a_of_type_Byte != 2) {
-        break label117;
-      }
-      localPicStruct.b(paramDataOutputStream);
+      j = this.jdField_a_of_type_JavaUtilArrayList.size();
+      paramDataOutputStream.writeInt(j);
     }
-    for (;;)
+    while (i < j)
     {
+      localObject = (PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (this.jdField_a_of_type_Byte == 2) {
+        ((PicAndAdConf.PicStruct)localObject).b(paramDataOutputStream);
+      } else {
+        ((PicAndAdConf.PicStruct)localObject).a(paramDataOutputStream);
+      }
       i += 1;
-      break label78;
-      break;
-      label117:
-      localPicStruct.a(paramDataOutputStream);
+      continue;
+      paramDataOutputStream.writeInt(0);
     }
   }
   
   public void a(String paramString, byte[] arg2)
   {
-    if ((??? == null) || (???.length <= 0) || (paramString == null) || (paramString.length() <= 0))
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-        {
-          this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-          return;
-        }
-      }
-    }
-    else
+    if ((??? != null) && (???.length > 0) && (paramString != null) && (paramString.length() > 0))
     {
       ArrayList localArrayList = Config.a();
       int i = 0;
@@ -1029,7 +1068,11 @@ public class PicAndAdConf
         {
           if (this.jdField_a_of_type_Byte == 1)
           {
-            localPicStruct.c = (BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/" + "flashlogo.png");
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
+            localStringBuilder.append("/");
+            localStringBuilder.append("flashlogo.png");
+            localPicStruct.c = localStringBuilder.toString();
             a(???, localPicStruct.c, this.b);
             if (localArrayList == null) {
               break;
@@ -1054,88 +1097,105 @@ public class PicAndAdConf
                   b(localPicStruct.b);
                 }
               }
-              if (localArrayList == null) {
-                break;
-              }
-              ??? = localArrayList.iterator();
-              while (???.hasNext()) {
-                ((ConfigListener)???.next()).a(true, this.jdField_a_of_type_Short, i, paramString);
-              }
             }
             catch (Exception ???)
             {
-              for (;;)
-              {
-                ???.printStackTrace();
-              }
+              ???.printStackTrace();
+            }
+            if (localArrayList == null) {
+              break;
+            }
+            ??? = localArrayList.iterator();
+            while (???.hasNext()) {
+              ((ConfigListener)???.next()).a(true, this.jdField_a_of_type_Short, i, paramString);
             }
           }
           if (this.jdField_a_of_type_Byte != 2) {
             break;
           }
           b(???, String.valueOf(localPicStruct.f));
-          for (;;)
+          try
           {
-            try
+            ??? = new File(localPicStruct.c);
+            paramString = MD5.getFileMD5(???);
+            if (!paramString.equalsIgnoreCase(localPicStruct.f))
             {
-              ??? = new File(localPicStruct.c);
-              paramString = MD5.getFileMD5(???);
-              if (!paramString.equalsIgnoreCase(localPicStruct.f))
+              ???.delete();
+              if (localPicStruct.jdField_a_of_type_Int < 1)
               {
-                ???.delete();
-                if (localPicStruct.jdField_a_of_type_Int >= 1) {
-                  break label517;
-                }
                 localPicStruct.jdField_a_of_type_Int += 1;
                 b(localPicStruct.b);
               }
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("PicAndAdConf", 2, "handle download NearbyBanner image, cid = " + localPicStruct.jdField_a_of_type_Long + ", md5 is " + paramString.equalsIgnoreCase(localPicStruct.f));
-              return;
-            }
-            catch (Exception paramString)
-            {
-              if (!QLog.isColorLevel()) {
-                break;
+              else
+              {
+                synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+                {
+                  this.jdField_a_of_type_JavaUtilHashMap.put(localPicStruct.b, Long.valueOf(System.currentTimeMillis()));
+                }
               }
             }
-            QLog.d("PicAndAdConf", 2, "handleImgData exception, item md5 = " + localPicStruct.f, paramString);
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            ??? = new StringBuilder();
+            ???.append("handle download NearbyBanner image, cid = ");
+            ???.append(localPicStruct.jdField_a_of_type_Long);
+            ???.append(", md5 is ");
+            ???.append(paramString.equalsIgnoreCase(localPicStruct.f));
+            QLog.d("PicAndAdConf", 2, ???.toString());
             return;
-            label517:
-            synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-            {
-              this.jdField_a_of_type_JavaUtilHashMap.put(localPicStruct.b, Long.valueOf(System.currentTimeMillis()));
+          }
+          catch (Exception paramString)
+          {
+            if (!QLog.isColorLevel()) {
+              break;
             }
           }
+          ??? = new StringBuilder();
+          ???.append("handleImgData exception, item md5 = ");
+          ???.append(localPicStruct.f);
+          QLog.d("PicAndAdConf", 2, ???.toString(), paramString);
+          return;
         }
         i += 1;
+      }
+      return;
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
+        return;
       }
     }
   }
   
   public String b(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return "";
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return ((PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).f;
     }
-    return ((PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).f;
+    return "";
   }
   
   public void b(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("http://"))) {}
-    do
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
+      if (!paramString.startsWith("http://")) {
+        return;
+      }
       if (this.jdField_a_of_type_Byte == 2) {
         synchronized (this.jdField_a_of_type_JavaUtilHashMap)
         {
           if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) && (Math.abs(System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).longValue()) < 36000L))
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("PicAndAdConf", 2, "sendImgRequest | retry interval is too small, " + paramString);
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("sendImgRequest | retry interval is too small, ");
+              localStringBuilder.append(paramString);
+              QLog.d("PicAndAdConf", 2, localStringBuilder.toString());
             }
             return;
           }
@@ -1146,24 +1206,29 @@ public class PicAndAdConf
       }
       this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
       ??? = Config.a();
-    } while (??? == null);
-    ((HttpCommunicator)???).sendMsg(new HttpMsg(paramString, null, this, true));
+      if (??? != null) {
+        ((HttpCommunicator)???).sendMsg(new HttpMsg(paramString, null, this, true));
+      }
+    }
   }
   
   public String c(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return "";
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return ((PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).d;
     }
-    return ((PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).d;
+    return "";
   }
   
   public void c()
   {
-    File localFile = new File(BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
+    ((StringBuilder)localObject).append("/ADPic");
+    localObject = new File(((StringBuilder)localObject).toString());
     try
     {
-      a(localFile);
+      a((File)localObject);
       return;
     }
     catch (Exception localException) {}
@@ -1176,24 +1241,20 @@ public class PicAndAdConf
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("preDownload NearbyBanner image");
       int i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
         PicAndAdConf.PicStruct localPicStruct = (PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(i);
         if (localPicStruct.c != null)
         {
           File localFile = new File(localPicStruct.c);
-          if ((!localFile.exists()) || (!localFile.canRead())) {
-            break label92;
+          if ((!localFile.exists()) || (!localFile.canRead()))
+          {
+            localStringBuilder.append(" | ");
+            localStringBuilder.append(localPicStruct.jdField_a_of_type_Long);
+            ThreadManager.post(new PicAndAdConf.1(this, localPicStruct), 5, null, false);
           }
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label92:
-          localStringBuilder.append(" | ").append(localPicStruct.jdField_a_of_type_Long);
-          ThreadManager.post(new PicAndAdConf.1(this, localPicStruct), 5, null, false);
-        }
+        i += 1;
       }
       if (QLog.isColorLevel()) {
         QLog.d("PicAndAdConf", 2, localStringBuilder.toString());
@@ -1203,13 +1264,16 @@ public class PicAndAdConf
   
   public void decode(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
   {
-    if ((paramHttpMsg1 == null) || (paramHttpMsg2 == null)) {
-      return;
+    if (paramHttpMsg1 != null)
+    {
+      if (paramHttpMsg2 == null) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ShanPing", 2, "flashlogo request huibao decode ");
+      }
+      a(paramHttpMsg1.getUrl(), paramHttpMsg2.getRecvData());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShanPing", 2, "flashlogo request huibao decode ");
-    }
-    a(paramHttpMsg1.getUrl(), paramHttpMsg2.getRecvData());
   }
   
   public void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
@@ -1253,7 +1317,7 @@ public class PicAndAdConf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.struct.PicAndAdConf
  * JD-Core Version:    0.7.0.1
  */

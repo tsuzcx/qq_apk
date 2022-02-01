@@ -49,51 +49,35 @@ public final class ExtractorMediaSource$Factory
   
   public Factory setContinueLoadingCheckIntervalBytes(int paramInt)
   {
-    if (!this.isCreateCalled) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.continueLoadingCheckIntervalBytes = paramInt;
-      return this;
-    }
+    Assertions.checkState(this.isCreateCalled ^ true);
+    this.continueLoadingCheckIntervalBytes = paramInt;
+    return this;
   }
   
   public Factory setCustomCacheKey(String paramString)
   {
-    if (!this.isCreateCalled) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.customCacheKey = paramString;
-      return this;
-    }
+    Assertions.checkState(this.isCreateCalled ^ true);
+    this.customCacheKey = paramString;
+    return this;
   }
   
   public Factory setExtractorsFactory(ExtractorsFactory paramExtractorsFactory)
   {
-    if (!this.isCreateCalled) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.extractorsFactory = paramExtractorsFactory;
-      return this;
-    }
+    Assertions.checkState(this.isCreateCalled ^ true);
+    this.extractorsFactory = paramExtractorsFactory;
+    return this;
   }
   
   public Factory setMinLoadableRetryCount(int paramInt)
   {
-    if (!this.isCreateCalled) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.minLoadableRetryCount = paramInt;
-      return this;
-    }
+    Assertions.checkState(this.isCreateCalled ^ true);
+    this.minLoadableRetryCount = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ExtractorMediaSource.Factory
  * JD-Core Version:    0.7.0.1
  */

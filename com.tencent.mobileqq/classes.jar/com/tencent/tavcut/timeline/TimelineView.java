@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -124,16 +125,16 @@ public class TimelineView
   
   private void checkCanAdjust()
   {
-    if (this.mSliderView != null)
+    SliderView localSliderView = this.mSliderView;
+    if (localSliderView != null)
     {
-      if (this.mSelectDurationMs <= this.mMinSelectDurationMs) {
-        this.mSliderView.setCanAdjust(false);
+      if (this.mSelectDurationMs <= this.mMinSelectDurationMs)
+      {
+        localSliderView.setCanAdjust(false);
+        return;
       }
+      localSliderView.setCanAdjust(true);
     }
-    else {
-      return;
-    }
-    this.mSliderView.setCanAdjust(true);
   }
   
   private void correctParams()
@@ -142,7 +143,7 @@ public class TimelineView
     if (i == 0) {
       return;
     }
-    this.mRightSliderOffset = (i + this.mRightSliderOffset);
+    this.mRightSliderOffset += i;
     initSliderParams();
     initHeadAndTailParams();
   }
@@ -159,13 +160,25 @@ public class TimelineView
     if (k == this.mAdapter.getItemCount() - 1) {
       j = k - 2;
     }
-    if ((i < 0) || (j < 0)) {}
-    while (this.mCoverProvider == null) {
-      return;
+    if (i >= 0)
+    {
+      if (j < 0) {
+        return;
+      }
+      Object localObject = this.mCoverProvider;
+      if (localObject != null)
+      {
+        ((CoverProvider)localObject).getCoverByIndexRange(i, j);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getCoverInsideScreen: startIndex is ");
+        ((StringBuilder)localObject).append(i);
+        Logger.d("TimelineView", ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getCoverInsideScreen: endIndex is ");
+        ((StringBuilder)localObject).append(j);
+        Logger.d("TimelineView", ((StringBuilder)localObject).toString());
+      }
     }
-    this.mCoverProvider.getCoverByIndexRange(i, j);
-    Logger.d("TimelineView", "getCoverInsideScreen: startIndex is " + i);
-    Logger.d("TimelineView", "getCoverInsideScreen: endIndex is " + j);
   }
   
   private void handleSliderBarMove(float paramFloat1, float paramFloat2)
@@ -186,20 +199,21 @@ public class TimelineView
       int i = 1;
       while (i < this.mAdapter.getItemCount() - 1)
       {
-        ImageView localImageView = (ImageView)this.mLayoutManager.findViewByPosition(i);
-        if (localImageView != null)
+        localObject = (ImageView)this.mLayoutManager.findViewByPosition(i);
+        if (localObject != null)
         {
-          localImageView.setImageBitmap(null);
-          localImageView.setImageDrawable(null);
-          localImageView.setImageDrawable(this.mDefaultImgBg);
+          ((ImageView)localObject).setImageBitmap(null);
+          ((ImageView)localObject).setImageDrawable(null);
+          ((ImageView)localObject).setImageDrawable(this.mDefaultImgBg);
         }
         i += 1;
       }
       this.mAdapter = null;
       this.mRecycleView.setAdapter(null);
-      if (this.mCoverProvider != null)
+      Object localObject = this.mCoverProvider;
+      if (localObject != null)
       {
-        this.mCoverProvider.release();
+        ((CoverProvider)localObject).release();
         this.mCoverProvider.setCoverListener(null);
         this.mCoverProvider = null;
       }
@@ -224,61 +238,81 @@ public class TimelineView
   
   private void initHeadAndTailParams()
   {
+    boolean bool = this.mSliderBarMode;
     int j = 0;
-    if (this.mSliderBarMode) {}
-    for (int i = (int)(this.mLeftSliderOffset + this.mSliderBarWidth);; i = 0)
-    {
-      this.mHeadItemWidth = i;
-      i = j;
-      if (this.mSliderBarMode) {
-        i = (int)(this.mRightSliderOffset + this.mSliderBarWidth);
-      }
-      this.mTailItemWidth = i;
-      return;
+    if (bool) {
+      i = (int)(this.mLeftSliderOffset + this.mSliderBarWidth);
+    } else {
+      i = 0;
     }
+    this.mHeadItemWidth = i;
+    int i = j;
+    if (this.mSliderBarMode) {
+      i = (int)(this.mRightSliderOffset + this.mSliderBarWidth);
+    }
+    this.mTailItemWidth = i;
   }
   
   private void initItemParams()
   {
     this.mItemWidth = (this.mSliderView.getSelectAreaWidth() / this.selectAreaItemCount);
     this.mItemHeight = (getMeasuredHeight() - this.mPaddingTop - this.mPaddingBottom);
-    Logger.d("TimelineView", "setClipData: mSliderView.getSelectAreaWidth() " + this.mSliderView.getSelectAreaWidth());
-    Logger.d("TimelineView", "setClipData: mItemWidth is " + this.mItemWidth);
-    Logger.d("TimelineView", "setClipData: mItemHeight is " + this.mItemHeight);
-    if ((this.mLockMode) || (!this.mSliderBarMode))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setClipData: mSliderView.getSelectAreaWidth() ");
+    localStringBuilder.append(this.mSliderView.getSelectAreaWidth());
+    Logger.d("TimelineView", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setClipData: mItemWidth is ");
+    localStringBuilder.append(this.mItemWidth);
+    Logger.d("TimelineView", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setClipData: mItemHeight is ");
+    localStringBuilder.append(this.mItemHeight);
+    Logger.d("TimelineView", localStringBuilder.toString());
+    if ((!this.mLockMode) && (this.mSliderBarMode))
+    {
+      this.mMaxSelectDurationMs = Math.min(60000L, getCurrentTotalDurationMs());
+      this.mItemDurationMs = (this.mMaxSelectDurationMs / this.selectAreaItemCount);
+    }
+    else
     {
       this.mItemDurationMs = (this.mSelectDurationMs / this.selectAreaItemCount);
-      Logger.d("TimelineView", "setClipData: mItemDurationMs is  " + this.mItemDurationMs);
-      Logger.d("TimelineView", "setClipData: mSelectDurationMs is " + this.mSelectDurationMs);
-      if (this.mItemDurationMs != 0L)
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setClipData: mItemDurationMs is  ");
+    localStringBuilder.append(this.mItemDurationMs);
+    Logger.d("TimelineView", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setClipData: mSelectDurationMs is ");
+    localStringBuilder.append(this.mSelectDurationMs);
+    Logger.d("TimelineView", localStringBuilder.toString());
+    if (this.mItemDurationMs != 0L)
+    {
+      this.mItemCount = ((int)(getCurrentTotalDurationMs() / this.mItemDurationMs));
+      long l = getCurrentTotalDurationMs() % this.mItemDurationMs;
+      if (l != 0L)
       {
-        this.mItemCount = ((int)(getCurrentTotalDurationMs() / this.mItemDurationMs));
-        long l = getCurrentTotalDurationMs() % this.mItemDurationMs;
-        if (l == 0L) {
-          break label384;
+        float f1 = (float)l;
+        float f2 = this.selectAreaItemCount;
+        int i = this.mItemWidth;
+        this.mLastItemWidth = ((int)(f1 * 1.0F * f2 * i / (float)this.mMaxSelectDurationMs));
+        if (this.mLastItemWidth == 0) {
+          this.mLastItemWidth = i;
+        } else {
+          this.mItemCount += 1;
         }
-        this.mLastItemWidth = ((int)((float)l * 1.0F * this.selectAreaItemCount * this.mItemWidth / (float)this.mMaxSelectDurationMs));
-        if (this.mLastItemWidth != 0) {
-          break label371;
-        }
+      }
+      else
+      {
         this.mLastItemWidth = this.mItemWidth;
       }
-    }
-    for (;;)
-    {
-      Logger.d("TimelineView", "setClipData: mItemCount is " + this.mItemCount);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setClipData: mItemCount is ");
+      localStringBuilder.append(this.mItemCount);
+      Logger.d("TimelineView", localStringBuilder.toString());
       initAdapter();
       initProvider(this.mTavSource);
       post(new TimelineView.3(this));
-      return;
-      this.mMaxSelectDurationMs = Math.min(60000L, getCurrentTotalDurationMs());
-      this.mItemDurationMs = (this.mMaxSelectDurationMs / this.selectAreaItemCount);
-      break;
-      label371:
-      this.mItemCount += 1;
-      continue;
-      label384:
-      this.mLastItemWidth = this.mItemWidth;
     }
   }
   
@@ -304,40 +338,42 @@ public class TimelineView
   
   private void initMaskParams()
   {
-    FrameLayout.LayoutParams localLayoutParams2;
-    FrameLayout.LayoutParams localLayoutParams1;
-    if (this.mLeftGradientMaskIv != null)
+    Object localObject = this.mLeftGradientMaskIv;
+    FrameLayout.LayoutParams localLayoutParams;
+    if (localObject != null)
     {
-      localLayoutParams2 = (FrameLayout.LayoutParams)this.mLeftGradientMaskIv.getLayoutParams();
-      localLayoutParams1 = localLayoutParams2;
-      if (localLayoutParams2 == null) {
-        localLayoutParams1 = new FrameLayout.LayoutParams(this.mLeftGradientMaskWidth, -1, 8388627);
+      localLayoutParams = (FrameLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
+      localObject = localLayoutParams;
+      if (localLayoutParams == null) {
+        localObject = new FrameLayout.LayoutParams(this.mLeftGradientMaskWidth, -1, 8388627);
       }
-      localLayoutParams1.width = this.mLeftGradientMaskWidth;
-      localLayoutParams1.leftMargin = this.mLeftGradientMaskMargin;
-      this.mLeftGradientMaskIv.setLayoutParams(localLayoutParams1);
+      ((FrameLayout.LayoutParams)localObject).width = this.mLeftGradientMaskWidth;
+      ((FrameLayout.LayoutParams)localObject).leftMargin = this.mLeftGradientMaskMargin;
+      this.mLeftGradientMaskIv.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    if (this.mLeftMaskIv != null)
+    localObject = this.mLeftMaskIv;
+    if (localObject != null)
     {
-      localLayoutParams2 = (FrameLayout.LayoutParams)this.mLeftMaskIv.getLayoutParams();
-      localLayoutParams1 = localLayoutParams2;
-      if (localLayoutParams2 == null) {
-        localLayoutParams1 = new FrameLayout.LayoutParams(this.mLeftMaskWidth, -1, 8388627);
+      localLayoutParams = (FrameLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
+      localObject = localLayoutParams;
+      if (localLayoutParams == null) {
+        localObject = new FrameLayout.LayoutParams(this.mLeftMaskWidth, -1, 8388627);
       }
-      localLayoutParams1.width = this.mLeftMaskWidth;
-      localLayoutParams1.leftMargin = this.mLeftMaskMargin;
-      this.mLeftMaskIv.setLayoutParams(localLayoutParams1);
+      ((FrameLayout.LayoutParams)localObject).width = this.mLeftMaskWidth;
+      ((FrameLayout.LayoutParams)localObject).leftMargin = this.mLeftMaskMargin;
+      this.mLeftMaskIv.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    if (this.mRightMaskIv != null)
+    localObject = this.mRightMaskIv;
+    if (localObject != null)
     {
-      localLayoutParams2 = (FrameLayout.LayoutParams)this.mRightMaskIv.getLayoutParams();
-      localLayoutParams1 = localLayoutParams2;
-      if (localLayoutParams2 == null) {
-        localLayoutParams1 = new FrameLayout.LayoutParams(this.mRightMaskWidth, -1, 8388629);
+      localLayoutParams = (FrameLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
+      localObject = localLayoutParams;
+      if (localLayoutParams == null) {
+        localObject = new FrameLayout.LayoutParams(this.mRightMaskWidth, -1, 8388629);
       }
-      localLayoutParams1.width = this.mRightMaskWidth;
-      localLayoutParams1.rightMargin = this.mRightMaskMargin;
-      this.mRightMaskIv.setLayoutParams(localLayoutParams1);
+      ((FrameLayout.LayoutParams)localObject).width = this.mRightMaskWidth;
+      ((FrameLayout.LayoutParams)localObject).rightMargin = this.mRightMaskMargin;
+      this.mRightMaskIv.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
@@ -365,30 +401,24 @@ public class TimelineView
   
   private void initRecycleViewParams()
   {
-    int j = 0;
     FrameLayout.LayoutParams localLayoutParams2 = (FrameLayout.LayoutParams)this.mRecycleView.getLayoutParams();
     FrameLayout.LayoutParams localLayoutParams1 = localLayoutParams2;
     if (localLayoutParams2 == null) {
       localLayoutParams1 = new FrameLayout.LayoutParams(-1, -1, 16);
     }
     this.mRecycleView.setLayoutParams(localLayoutParams1);
+    boolean bool = this.mSliderBarMode;
+    int j = 0;
     int i;
-    if (this.mSliderBarMode)
-    {
+    if (bool) {
       i = 0;
-      if (!this.mSliderBarMode) {
-        break label84;
-      }
-    }
-    for (;;)
-    {
-      this.mRecycleView.setPadding(i, this.mPaddingTop, j, this.mPaddingBottom);
-      return;
+    } else {
       i = this.mPaddingLeft;
-      break;
-      label84:
+    }
+    if (!this.mSliderBarMode) {
       j = this.mPaddingRight;
     }
+    this.mRecycleView.setPadding(i, this.mPaddingTop, j, this.mPaddingBottom);
   }
   
   private void initSlider()
@@ -400,50 +430,43 @@ public class TimelineView
   
   private void initSliderParams()
   {
-    int k = 0;
-    int i;
-    if (this.mSliderView != null)
+    Object localObject = this.mSliderView;
+    if (localObject != null)
     {
-      FrameLayout.LayoutParams localLayoutParams2 = (FrameLayout.LayoutParams)this.mSliderView.getLayoutParams();
-      FrameLayout.LayoutParams localLayoutParams1 = localLayoutParams2;
-      if (localLayoutParams2 == null) {
-        localLayoutParams1 = new FrameLayout.LayoutParams(-1, -1);
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)((SliderView)localObject).getLayoutParams();
+      localObject = localLayoutParams;
+      if (localLayoutParams == null) {
+        localObject = new FrameLayout.LayoutParams(-1, -1);
       }
-      if (!this.mSliderBarMode) {
-        break label128;
+      boolean bool = this.mSliderBarMode;
+      int k = 0;
+      int i;
+      if (bool) {
+        i = this.mLeftSliderOffset;
+      } else {
+        i = 0;
       }
-      i = this.mLeftSliderOffset;
-      if (!this.mSliderBarMode) {
-        break label133;
+      int j;
+      if (this.mSliderBarMode) {
+        j = this.mRightSliderOffset;
+      } else {
+        j = 0;
       }
-      j = this.mRightSliderOffset;
-      label65:
-      localLayoutParams1.leftMargin = i;
-      localLayoutParams1.rightMargin = j;
-      this.mSliderView.setLayoutParams(localLayoutParams1);
-      if (!this.mSliderBarMode) {
-        break label138;
+      ((FrameLayout.LayoutParams)localObject).leftMargin = i;
+      ((FrameLayout.LayoutParams)localObject).rightMargin = j;
+      this.mSliderView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if (this.mSliderBarMode) {
+        i = 0;
+      } else {
+        i = this.mPaddingLeft;
       }
-      i = 0;
-      label95:
-      if (!this.mSliderBarMode) {
-        break label146;
+      if (this.mSliderBarMode) {
+        j = k;
+      } else {
+        j = this.mPaddingRight;
       }
-    }
-    label128:
-    label133:
-    label138:
-    label146:
-    for (int j = k;; j = this.mPaddingRight)
-    {
-      this.mSliderView.setPadding(i, this.mSliderView.getPaddingTop(), j, this.mSliderView.getPaddingBottom());
-      return;
-      i = 0;
-      break;
-      j = 0;
-      break label65;
-      i = this.mPaddingLeft;
-      break label95;
+      localObject = this.mSliderView;
+      ((SliderView)localObject).setPadding(i, ((SliderView)localObject).getPaddingTop(), j, this.mSliderView.getPaddingBottom());
     }
   }
   
@@ -470,45 +493,54 @@ public class TimelineView
     this.mIndicatorProgress = paramFloat;
     this.mPlayDurationMs = (((float)this.mSelectDurationMs * paramFloat + (float)this.mStartDurationMs));
     syncPlayerTimeWithIndicatorPosition();
-    Logger.d("TimelineView", "notifyIndicatorMove: playDurationMs is " + this.mPlayDurationMs);
-    if (this.mSliderChangeListener != null) {
-      this.mSliderChangeListener.onIndicatorMove(this.mPlayDurationMs);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("notifyIndicatorMove: playDurationMs is ");
+    ((StringBuilder)localObject).append(this.mPlayDurationMs);
+    Logger.d("TimelineView", ((StringBuilder)localObject).toString());
+    localObject = this.mSliderChangeListener;
+    if (localObject != null) {
+      ((SliderChangeListener)localObject).onIndicatorMove(this.mPlayDurationMs);
     }
   }
   
   private void notifyIndicatorPress()
   {
-    if (this.mSliderChangeListener != null) {
-      this.mSliderChangeListener.onIndicatorPress();
+    SliderChangeListener localSliderChangeListener = this.mSliderChangeListener;
+    if (localSliderChangeListener != null) {
+      localSliderChangeListener.onIndicatorPress();
     }
   }
   
   private void notifyIndicatorRelease()
   {
     Logger.d("TimelineView", "notifyIndicator Release");
-    if (this.mSliderChangeListener != null) {
-      this.mSliderChangeListener.onIndicatorRelease();
+    SliderChangeListener localSliderChangeListener = this.mSliderChangeListener;
+    if (localSliderChangeListener != null) {
+      localSliderChangeListener.onIndicatorRelease();
     }
   }
   
   private void notifySelectionChange(boolean paramBoolean)
   {
-    if (this.mSliderChangeListener != null) {
-      this.mSliderChangeListener.onSelectionChange(this.mStartDurationMs, this.mEndDurationMs, paramBoolean);
+    SliderChangeListener localSliderChangeListener = this.mSliderChangeListener;
+    if (localSliderChangeListener != null) {
+      localSliderChangeListener.onSelectionChange(this.mStartDurationMs, this.mEndDurationMs, paramBoolean);
     }
   }
   
   private void notifySliderBarMove(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    if (this.mSliderChangeListener != null) {
-      this.mSliderChangeListener.onSliderBarMove(paramBoolean, paramFloat1, paramFloat2);
+    SliderChangeListener localSliderChangeListener = this.mSliderChangeListener;
+    if (localSliderChangeListener != null) {
+      localSliderChangeListener.onSliderBarMove(paramBoolean, paramFloat1, paramFloat2);
     }
   }
   
   private void notifySliderBarRelease(boolean paramBoolean)
   {
-    if (this.mSliderChangeListener != null) {
-      this.mSliderChangeListener.onSliderBarRelease(paramBoolean);
+    SliderChangeListener localSliderChangeListener = this.mSliderChangeListener;
+    if (localSliderChangeListener != null) {
+      localSliderChangeListener.onSliderBarRelease(paramBoolean);
     }
   }
   
@@ -517,13 +549,21 @@ public class TimelineView
     if (getCurrentTotalDurationMs() == 0L) {
       return;
     }
-    float f = 1.0F * this.mItemCount * (float)this.mStartDurationMs / (float)getCurrentTotalDurationMs();
-    Log.d("lingeng", "scrollToStart:  startIndex = " + f);
-    int i = (int)(this.mItemWidth * f);
+    float f = this.mItemCount * 1.0F * (float)this.mStartDurationMs / (float)getCurrentTotalDurationMs();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("scrollToStart:  startIndex = ");
+    localStringBuilder.append(f);
+    Log.d("lingeng", localStringBuilder.toString());
+    int i = this.mItemWidth;
     this.mRecycleView.addOnScrollListener(new TimelineView.7(this));
     boolean bool1 = this.mRecycleView.canScrollHorizontally(1);
     boolean bool2 = this.mRecycleView.canScrollHorizontally(-1);
-    Log.d("lingeng_ui", "canScrollRight: " + bool1 + " canScrollLeft:" + bool2);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("canScrollRight: ");
+    localStringBuilder.append(bool1);
+    localStringBuilder.append(" canScrollLeft:");
+    localStringBuilder.append(bool2);
+    Log.d("lingeng_ui", localStringBuilder.toString());
     this.mLayoutManager.scrollToPositionWithOffset((int)f, 0);
   }
   
@@ -532,47 +572,64 @@ public class TimelineView
     if (this.mMaxSelectDurationMs == this.mSelectDurationMs)
     {
       this.mSelectAreaLeft = this.mSliderBarWidth;
-      this.mSelectAreaRight = (getWidth() - this.mLeftSliderOffset - this.mRightSliderOffset - this.mSliderBarWidth);
-      if (this.mSliderView != null) {
-        this.mSliderView.setSliderBarPosition(this.mSelectAreaLeft - this.mSliderBarWidth, this.mSelectAreaRight);
+      f1 = getWidth() - this.mLeftSliderOffset - this.mRightSliderOffset;
+      f2 = this.mSliderBarWidth;
+      this.mSelectAreaRight = (f1 - f2);
+      localObject = this.mSliderView;
+      if (localObject != null) {
+        ((SliderView)localObject).setSliderBarPosition(this.mSelectAreaLeft - f2, this.mSelectAreaRight);
       }
       return;
     }
-    Log.d("TimelineView", "setSliderBarPosition: mSliderView.getLeft() = " + this.mSliderView.getLeft());
-    Log.d("TimelineView", "setSliderBarPosition: mSliderView.getWidth() = " + this.mSliderView.getWidth());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setSliderBarPosition: mSliderView.getLeft() = ");
+    ((StringBuilder)localObject).append(this.mSliderView.getLeft());
+    Log.d("TimelineView", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setSliderBarPosition: mSliderView.getWidth() = ");
+    ((StringBuilder)localObject).append(this.mSliderView.getWidth());
+    Log.d("TimelineView", ((StringBuilder)localObject).toString());
     int j = this.mLayoutManager.findFirstCompletelyVisibleItemPosition();
-    View localView = this.mLayoutManager.findViewByPosition(j);
+    localObject = this.mLayoutManager.findViewByPosition(j);
     if (j < 0) {
       this.mSelectAreaLeft = ((float)this.mStartDurationMs * 1.0F * this.mItemWidth / (this.selectAreaItemCount * 1.0F / (float)this.mMaxSelectDurationMs) + this.mSliderBarWidth);
     }
     int i = 0;
-    if (localView != null) {
-      i = localView.getLeft();
+    if (localObject != null) {
+      i = ((View)localObject).getLeft();
     }
-    if (j == 0) {
+    if (j == 0)
+    {
       this.mSelectAreaLeft = ((float)this.mStartDurationMs * 1.0F * this.mItemWidth * this.selectAreaItemCount / (float)this.mMaxSelectDurationMs + this.mSliderBarWidth);
     }
-    for (;;)
+    else if (j == 1)
     {
-      this.mSelectAreaRight = (this.mSelectAreaLeft + (float)this.mSelectDurationMs * 1.0F * this.mItemWidth * this.selectAreaItemCount / (float)this.mMaxSelectDurationMs);
-      float f = (float)this.mSelectDurationMs * 1.0F * this.mItemWidth * this.selectAreaItemCount / (float)this.mMaxSelectDurationMs;
-      this.mSelectAreaLeft = (this.mSelectAreaRight - f);
-      this.mSelectAreaLeft = Math.max(this.mSelectAreaLeft, this.mSliderBarWidth);
-      this.mSelectAreaRight = Math.min(this.mSelectAreaRight, getWidth() - this.mLeftSliderOffset - this.mRightSliderOffset - this.mSliderBarWidth);
-      if (this.mSliderView == null) {
-        break;
-      }
-      this.mSliderView.setSliderBarPosition(this.mSelectAreaLeft - this.mSliderBarWidth, this.mSelectAreaRight);
-      return;
-      if (j == 1)
-      {
-        f = (float)this.mStartDurationMs * 1.0F * this.mItemWidth * this.selectAreaItemCount / (float)this.mMaxSelectDurationMs;
-        this.mSelectAreaLeft = (i + f - this.mLeftSliderOffset);
-      }
-      else if (j > 0)
-      {
-        this.mSelectAreaLeft = (((float)this.mStartDurationMs - ((j - 1) * this.mItemWidth - i) * 1.0F * (float)this.mItemDurationMs / this.mItemWidth) * 1.0F * this.mItemWidth / (float)this.mItemDurationMs - this.mLeftSliderOffset);
-      }
+      this.mSelectAreaLeft = ((float)this.mStartDurationMs * 1.0F * this.mItemWidth * this.selectAreaItemCount / (float)this.mMaxSelectDurationMs + i - this.mLeftSliderOffset);
+    }
+    else if (j > 0)
+    {
+      f1 = (float)this.mStartDurationMs;
+      int k = this.mItemWidth;
+      f2 = (j - 1) * k - i;
+      l1 = this.mItemDurationMs;
+      this.mSelectAreaLeft = ((f1 - f2 * 1.0F * (float)l1 / k) * 1.0F * k / (float)l1 - this.mLeftSliderOffset);
+    }
+    float f1 = this.mSelectAreaLeft;
+    long l1 = this.mSelectDurationMs;
+    float f2 = (float)l1;
+    i = this.mItemWidth;
+    float f3 = i;
+    j = this.selectAreaItemCount;
+    float f4 = j;
+    long l2 = this.mMaxSelectDurationMs;
+    this.mSelectAreaRight = (f1 + f2 * 1.0F * f3 * f4 / (float)l2);
+    f1 = (float)l1 * 1.0F * i * j / (float)l2;
+    this.mSelectAreaLeft = (this.mSelectAreaRight - f1);
+    this.mSelectAreaLeft = Math.max(this.mSelectAreaLeft, this.mSliderBarWidth);
+    this.mSelectAreaRight = Math.min(this.mSelectAreaRight, getWidth() - this.mLeftSliderOffset - this.mRightSliderOffset - this.mSliderBarWidth);
+    localObject = this.mSliderView;
+    if (localObject != null) {
+      ((SliderView)localObject).setSliderBarPosition(this.mSelectAreaLeft - this.mSliderBarWidth, this.mSelectAreaRight);
     }
   }
   
@@ -587,86 +644,95 @@ public class TimelineView
   
   private void setSliderMaxSelectDuration()
   {
-    if (this.mSliderView != null) {
-      this.mSliderView.setMaxSelectDuration(this.mMaxSelectDurationMs);
+    SliderView localSliderView = this.mSliderView;
+    if (localSliderView != null) {
+      localSliderView.setMaxSelectDuration(this.mMaxSelectDurationMs);
     }
   }
   
   private void setSliderMaxSelectionWidth()
   {
-    if (this.mSliderView == null) {}
-    while ((this.mLockMode) || (!this.mSliderBarMode)) {
+    SliderView localSliderView = this.mSliderView;
+    if (localSliderView == null) {
       return;
     }
-    int i = this.mItemWidth;
-    int j = this.selectAreaItemCount;
-    this.mSliderView.setMaxSelectAreaWidth(i * j);
+    if ((!this.mLockMode) && (this.mSliderBarMode)) {
+      localSliderView.setMaxSelectAreaWidth(this.mItemWidth * this.selectAreaItemCount);
+    }
   }
   
   private void setSliderMinSelectionWidth()
   {
-    if (this.mSliderView == null) {}
-    while ((this.mLockMode) || (!this.mSliderBarMode)) {
+    SliderView localSliderView = this.mSliderView;
+    if (localSliderView == null) {
       return;
     }
-    int i = (int)(this.mSpeed * (float)this.mMinSelectDurationMs * this.mItemWidth * this.selectAreaItemCount / (float)this.mOriginMaxSelectDurationMs);
-    this.mSliderView.setMinSelectAreaWidth(i);
+    if ((!this.mLockMode) && (this.mSliderBarMode)) {
+      localSliderView.setMinSelectAreaWidth((int)(this.mSpeed * (float)this.mMinSelectDurationMs * this.mItemWidth * this.selectAreaItemCount / (float)this.mOriginMaxSelectDurationMs));
+    }
   }
   
   private void setSliderSelectDuration()
   {
-    if (this.mSliderView != null) {
-      this.mSliderView.setSelectDuration(Long.valueOf(this.mSelectDurationMs));
+    SliderView localSliderView = this.mSliderView;
+    if (localSliderView != null) {
+      localSliderView.setSelectDuration(Long.valueOf(this.mSelectDurationMs));
     }
   }
   
   private void setSliderTotalDuration()
   {
-    if (this.mSliderView != null) {
-      this.mSliderView.setTotalDurationMs(getCurrentTotalDurationMs());
+    SliderView localSliderView = this.mSliderView;
+    if (localSliderView != null) {
+      localSliderView.setTotalDurationMs(getCurrentTotalDurationMs());
     }
   }
   
   private boolean shouldSyncIndicatorPositionWithPlayerTime()
   {
-    if (this.mSliderView.isDragging()) {}
-    while ((this.mSliderView.isIndicatorMoving()) || (this.mPlayer.getCurrentStatus() == IPlayer.PlayerStatus.PAUSED)) {
+    if (this.mSliderView.isDragging()) {
       return false;
     }
-    return true;
+    if (this.mSliderView.isIndicatorMoving()) {
+      return false;
+    }
+    return this.mPlayer.getCurrentStatus() != IPlayer.PlayerStatus.PAUSED;
   }
   
   private void syncIndicatorPositionWithPlayerTime()
   {
-    if (this.mPlayer == null) {
+    MoviePlayer localMoviePlayer = this.mPlayer;
+    if (localMoviePlayer == null) {
       return;
     }
-    setPlayPosition(this.mPlayer.getPosition().getTimeUs() / 1000L);
+    setPlayPosition(localMoviePlayer.getPosition().getTimeUs() / 1000L);
   }
   
   private void syncPlayerTimeWithIndicatorPosition()
   {
-    if (this.mPlayer == null)
+    MoviePlayer localMoviePlayer = this.mPlayer;
+    if (localMoviePlayer == null)
     {
       Log.e("TimelineView", "syncPlayerTimeWithIndicatorPosition: mPlayer is null!");
       return;
     }
-    long l2 = this.mPlayer.getPlayRange().getDurationUs();
+    long l2 = localMoviePlayer.getPlayRange().getDurationUs();
     long l1 = this.mPlayer.getPlayRange().getStartUs();
     float f = this.mSliderView.getIndicatorProgress();
     l2 = ((float)l2 * f);
-    this.mPlayer.seekToTime(CMTime.convertTimeScale(CMTime.fromUs(l2 + l1), 1000));
+    this.mPlayer.seekToTime(CMTime.convertTimeScale(CMTime.fromUs(l1 + l2), 1000));
   }
   
   private void updateClipData()
   {
-    if (getCurrentTotalDurationMs() != this.mMaxSelectDurationMs) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mScrollEnable = bool;
-      post(new TimelineView.8(this));
-      return;
+    boolean bool;
+    if (getCurrentTotalDurationMs() != this.mMaxSelectDurationMs) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mScrollEnable = bool;
+    post(new TimelineView.8(this));
   }
   
   private void updateEndDuration()
@@ -678,142 +744,137 @@ public class TimelineView
   
   private void updateMask()
   {
+    long l1 = this.mSelectDurationMs;
+    long l2 = this.mTotalDurationMs;
     int k = 8;
-    int j = 0;
-    int m = 0;
-    if ((this.mSelectDurationMs == this.mTotalDurationMs) || (!this.mShowMask))
+    if ((l1 != l2) && (this.mShowMask))
     {
-      this.mLeftGradientMaskIv.setVisibility(8);
-      this.mLeftMaskIv.setVisibility(8);
-      this.mRightMaskIv.setVisibility(8);
-    }
-    label201:
-    label375:
-    do
-    {
-      return;
-      if ((this.mSelectAreaLeft == 0.0F) && (this.mSliderView != null) && (this.mSliderView.getLeftBarIv() != null)) {
-        this.mSelectAreaLeft = (this.mSliderView.getLeftBarIv().getX() + this.mSliderBarWidth);
+      Object localObject;
+      if (this.mSelectAreaLeft == 0.0F)
+      {
+        localObject = this.mSliderView;
+        if ((localObject != null) && (((SliderView)localObject).getLeftBarIv() != null)) {
+          this.mSelectAreaLeft = (this.mSliderView.getLeftBarIv().getX() + this.mSliderBarWidth);
+        }
       }
-      i = this.mLayoutManager.findFirstCompletelyVisibleItemPosition();
+      int i = this.mLayoutManager.findFirstCompletelyVisibleItemPosition();
+      int j = 0;
+      int m = 0;
       if (i <= 0)
       {
         this.mLeftGradientMaskIv.setVisibility(8);
         localObject = this.mLeftMaskIv;
-        if (this.mSelectAreaLeft > this.mSliderBarWidth * 2.0F)
-        {
+        if (this.mSelectAreaLeft > this.mSliderBarWidth * 2.0F) {
           i = 0;
-          ((ImageView)localObject).setVisibility(i);
-          if ((this.mSliderView == null) || (this.mSliderView.getLeftBarIv() == null)) {
-            break label386;
-          }
-        }
-        for (this.mLeftMaskWidth = ((int)(this.mSliderView.getLeftBarIv().getX() - this.mSliderBarWidth));; this.mLeftMaskWidth = ((int)(this.mSelectAreaLeft - this.mSliderBarWidth * 2.0F)))
-        {
-          this.mLeftMaskMargin = ((int)(this.mLeftSliderOffset + this.mSliderBarWidth));
-          i = this.mLayoutManager.findLastCompletelyVisibleItemPosition();
-          if ((this.mSelectAreaRight == 0.0F) && (this.mSliderView != null) && (this.mSliderView.getRightBarIv() != null)) {
-            this.mSelectAreaRight = this.mSliderView.getRightBarIv().getX();
-          }
-          if (i != this.mItemCount + 1) {
-            break label713;
-          }
-          localObject = this.mRightMaskIv;
-          if (getWidth() - this.mSelectAreaRight - this.mSliderBarWidth * 2.0F - this.mLeftSliderOffset <= this.mRightSliderOffset) {
-            break label707;
-          }
-          i = m;
-          ((ImageView)localObject).setVisibility(i);
-          this.mRightMaskWidth = ((int)(getWidth() - this.mSelectAreaRight - this.mSliderBarWidth * 2.0F - this.mLeftSliderOffset - this.mRightSliderOffset));
-          if (this.mSelectDurationMs == this.mMaxSelectDurationMs) {
-            this.mRightMaskWidth = this.mRightSliderOffset;
-          }
-          this.mRightMaskMargin = ((int)(this.mRightSliderOffset + this.mSliderBarWidth));
-          initMaskParams();
-          return;
+        } else {
           i = 8;
-          break;
         }
-      }
-      if (i != 1) {
-        break;
-      }
-      localObject = this.mLayoutManager.findViewByPosition(i);
-    } while (localObject == null);
-    label300:
-    int n = ((View)localObject).getLeft();
-    label386:
-    Object localObject = this.mLeftMaskIv;
-    if (this.mSelectAreaLeft > this.mSliderBarWidth)
-    {
-      i = 0;
-      label452:
-      ((ImageView)localObject).setVisibility(i);
-      if (n <= this.mLeftSliderOffset) {
-        break label542;
-      }
-      this.mLeftGradientMaskIv.setVisibility(8);
-      this.mLeftMaskWidth = ((int)(this.mSelectAreaLeft - this.mSliderBarWidth - n + this.mLeftSliderOffset));
-      this.mLeftMaskMargin = n;
-      localObject = this.mLeftMaskIv;
-      if (this.mLeftMaskWidth <= 0) {
-        break label536;
-      }
-    }
-    label536:
-    for (int i = 0;; i = 8)
-    {
-      ((ImageView)localObject).setVisibility(i);
-      break;
-      i = 8;
-      break label452;
-    }
-    label542:
-    if (n < 0) {}
-    for (i = 0;; i = n)
-    {
-      this.mLeftGradientMaskIv.setVisibility(0);
-      this.mLeftGradientMaskWidth = (this.mLeftSliderOffset - i);
-      this.mLeftGradientMaskMargin = i;
-      this.mLeftMaskWidth = ((int)(this.mSelectAreaLeft - this.mSliderBarWidth));
-      this.mLeftMaskMargin = this.mLeftSliderOffset;
-      break label201;
-      if (i <= 1) {
-        break label201;
-      }
-      this.mLeftGradientMaskIv.setVisibility(0);
-      this.mLeftGradientMaskWidth = this.mLeftSliderOffset;
-      this.mLeftGradientMaskMargin = 0;
-      localObject = this.mLeftMaskIv;
-      if (this.mSelectAreaLeft > this.mSliderBarWidth)
-      {
-        i = 0;
-        label643:
         ((ImageView)localObject).setVisibility(i);
-        this.mLeftMaskWidth = ((int)(this.mSelectAreaLeft - this.mSliderBarWidth));
-        localObject = this.mLeftMaskIv;
-        if (this.mLeftMaskWidth <= 0) {
-          break label701;
+        localObject = this.mSliderView;
+        if ((localObject != null) && (((SliderView)localObject).getLeftBarIv() != null)) {
+          this.mLeftMaskWidth = ((int)(this.mSliderView.getLeftBarIv().getX() - this.mSliderBarWidth));
+        } else {
+          this.mLeftMaskWidth = ((int)(this.mSelectAreaLeft - this.mSliderBarWidth * 2.0F));
         }
+        this.mLeftMaskMargin = ((int)(this.mLeftSliderOffset + this.mSliderBarWidth));
       }
-      label701:
-      for (i = 0;; i = 8)
-      {
-        ((ImageView)localObject).setVisibility(i);
-        this.mLeftMaskMargin = this.mLeftSliderOffset;
-        break;
-        i = 8;
-        break label643;
-      }
-      label707:
-      i = 8;
-      break label300;
-      label713:
-      if (i == this.mItemCount)
+      else if (i == 1)
       {
         localObject = this.mLayoutManager.findViewByPosition(i);
         if (localObject == null) {
-          break;
+          return;
+        }
+        n = ((View)localObject).getLeft();
+        localObject = this.mLeftMaskIv;
+        if (this.mSelectAreaLeft > this.mSliderBarWidth) {
+          i = 0;
+        } else {
+          i = 8;
+        }
+        ((ImageView)localObject).setVisibility(i);
+        if (n > this.mLeftSliderOffset)
+        {
+          this.mLeftGradientMaskIv.setVisibility(8);
+          this.mLeftMaskWidth = ((int)(this.mSelectAreaLeft - this.mSliderBarWidth - n + this.mLeftSliderOffset));
+          this.mLeftMaskMargin = n;
+          localObject = this.mLeftMaskIv;
+          if (this.mLeftMaskWidth > 0) {
+            i = 0;
+          } else {
+            i = 8;
+          }
+          ((ImageView)localObject).setVisibility(i);
+        }
+        else
+        {
+          i = n;
+          if (n < 0) {
+            i = 0;
+          }
+          this.mLeftGradientMaskIv.setVisibility(0);
+          n = this.mLeftSliderOffset;
+          this.mLeftGradientMaskWidth = (n - i);
+          this.mLeftGradientMaskMargin = i;
+          this.mLeftMaskWidth = ((int)(this.mSelectAreaLeft - this.mSliderBarWidth));
+          this.mLeftMaskMargin = n;
+        }
+      }
+      else if (i > 1)
+      {
+        this.mLeftGradientMaskIv.setVisibility(0);
+        this.mLeftGradientMaskWidth = this.mLeftSliderOffset;
+        this.mLeftGradientMaskMargin = 0;
+        localObject = this.mLeftMaskIv;
+        if (this.mSelectAreaLeft > this.mSliderBarWidth) {
+          i = 0;
+        } else {
+          i = 8;
+        }
+        ((ImageView)localObject).setVisibility(i);
+        this.mLeftMaskWidth = ((int)(this.mSelectAreaLeft - this.mSliderBarWidth));
+        localObject = this.mLeftMaskIv;
+        if (this.mLeftMaskWidth > 0) {
+          i = 0;
+        } else {
+          i = 8;
+        }
+        ((ImageView)localObject).setVisibility(i);
+        this.mLeftMaskMargin = this.mLeftSliderOffset;
+      }
+      i = this.mLayoutManager.findLastCompletelyVisibleItemPosition();
+      if (this.mSelectAreaRight == 0.0F)
+      {
+        localObject = this.mSliderView;
+        if ((localObject != null) && (((SliderView)localObject).getRightBarIv() != null)) {
+          this.mSelectAreaRight = this.mSliderView.getRightBarIv().getX();
+        }
+      }
+      int n = this.mItemCount;
+      if (i == n + 1)
+      {
+        localObject = this.mRightMaskIv;
+        if (getWidth() - this.mSelectAreaRight - this.mSliderBarWidth * 2.0F - this.mLeftSliderOffset > this.mRightSliderOffset) {
+          i = m;
+        } else {
+          i = 8;
+        }
+        ((ImageView)localObject).setVisibility(i);
+        float f1 = getWidth();
+        float f2 = this.mSelectAreaRight;
+        float f3 = this.mSliderBarWidth;
+        float f4 = this.mLeftSliderOffset;
+        i = this.mRightSliderOffset;
+        this.mRightMaskWidth = ((int)(f1 - f2 - f3 * 2.0F - f4 - i));
+        if (this.mSelectDurationMs == this.mMaxSelectDurationMs) {
+          this.mRightMaskWidth = i;
+        }
+        this.mRightMaskMargin = ((int)(this.mRightSliderOffset + this.mSliderBarWidth));
+      }
+      else if (i == n)
+      {
+        localObject = this.mLayoutManager.findViewByPosition(i);
+        if (localObject == null) {
+          return;
         }
         i = getWidth() - ((View)localObject).getRight();
         this.mRightMaskIv.setVisibility(0);
@@ -823,48 +884,61 @@ public class TimelineView
         }
         this.mRightMaskMargin = i;
         localObject = this.mRightMaskIv;
-        if (this.mRightMaskWidth > 0) {}
-        for (i = j;; i = 8)
-        {
-          ((ImageView)localObject).setVisibility(i);
-          break;
+        if (this.mRightMaskWidth > 0) {
+          i = j;
+        } else {
+          i = 8;
         }
+        ((ImageView)localObject).setVisibility(i);
       }
-      if (i >= this.mItemCount) {
-        break label375;
+      else if (i < n)
+      {
+        this.mRightMaskIv.setVisibility(0);
+        this.mRightMaskWidth = ((int)(getWidth() - this.mSelectAreaRight - this.mSliderBarWidth - this.mLeftSliderOffset));
+        if (this.mSelectDurationMs == this.mMaxSelectDurationMs) {
+          this.mRightMaskWidth = this.mRightSliderOffset;
+        }
+        localObject = this.mRightMaskIv;
+        i = k;
+        if (this.mRightMaskWidth > 0) {
+          i = 0;
+        }
+        ((ImageView)localObject).setVisibility(i);
+        this.mRightMaskMargin = 0;
       }
-      this.mRightMaskIv.setVisibility(0);
-      this.mRightMaskWidth = ((int)(getWidth() - this.mSelectAreaRight - this.mSliderBarWidth - this.mLeftSliderOffset));
-      if (this.mSelectDurationMs == this.mMaxSelectDurationMs) {
-        this.mRightMaskWidth = this.mRightSliderOffset;
-      }
-      localObject = this.mRightMaskIv;
-      i = k;
-      if (this.mRightMaskWidth > 0) {
-        i = 0;
-      }
-      ((ImageView)localObject).setVisibility(i);
-      this.mRightMaskMargin = 0;
-      break label375;
+      initMaskParams();
+      return;
     }
+    this.mLeftGradientMaskIv.setVisibility(8);
+    this.mLeftMaskIv.setVisibility(8);
+    this.mRightMaskIv.setVisibility(8);
   }
   
   private void updateSelectDuration()
   {
     float f = this.mSelectAreaRight - this.mSelectAreaLeft;
-    Logger.d("TimelineView", "updateSelectDuration: selectWidth" + f);
-    Logger.d("TimelineView", "updateSelectDuration: mSelectAreaRight" + this.mSelectAreaRight);
-    Logger.d("TimelineView", "updateSelectDuration: mSelectAreaLeft" + this.mSelectAreaLeft);
-    if (FloatUtils.isEquals(f, getWidth() - this.mHeadItemWidth - this.mTailItemWidth)) {}
-    for (this.mSelectDurationMs = this.mMaxSelectDurationMs;; this.mSelectDurationMs = (Math.ceil(f * (float)this.mMaxSelectDurationMs / (this.selectAreaItemCount * this.mItemWidth))))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateSelectDuration: selectWidth");
+    localStringBuilder.append(f);
+    Logger.d("TimelineView", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateSelectDuration: mSelectAreaRight");
+    localStringBuilder.append(this.mSelectAreaRight);
+    Logger.d("TimelineView", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateSelectDuration: mSelectAreaLeft");
+    localStringBuilder.append(this.mSelectAreaLeft);
+    Logger.d("TimelineView", localStringBuilder.toString());
+    if (FloatUtils.isEquals(f, getWidth() - this.mHeadItemWidth - this.mTailItemWidth)) {
+      this.mSelectDurationMs = this.mMaxSelectDurationMs;
+    } else {
+      this.mSelectDurationMs = (Math.ceil((float)this.mMaxSelectDurationMs * f / (this.selectAreaItemCount * this.mItemWidth)));
+    }
+    this.mSelectDurationMs = Math.min(this.mSelectDurationMs, this.mMaxSelectDurationMs);
+    if ((!this.mLockMode) && (this.mSliderBarMode))
     {
-      this.mSelectDurationMs = Math.min(this.mSelectDurationMs, this.mMaxSelectDurationMs);
-      if ((!this.mLockMode) && (this.mSliderBarMode))
-      {
-        this.mSelectDurationMs = Math.max(this.mSelectDurationMs, this.mMinSelectDurationMs);
-        this.mSpeedSelectDurationMs = (((float)this.mSelectDurationMs / this.mSpeed));
-      }
-      return;
+      this.mSelectDurationMs = Math.max(this.mSelectDurationMs, this.mMinSelectDurationMs);
+      this.mSpeedSelectDurationMs = (((float)this.mSelectDurationMs / this.mSpeed));
     }
   }
   
@@ -876,38 +950,56 @@ public class TimelineView
     setSliderSelectDuration();
     updateMask();
     this.mPlayDurationMs = (((float)this.mStartDurationMs + (float)this.mSelectDurationMs * this.mIndicatorProgress));
-    if (this.mPlayDurationMs > this.mTotalDurationMs) {
-      this.mPlayDurationMs = this.mTotalDurationMs;
+    long l1 = this.mPlayDurationMs;
+    long l2 = this.mTotalDurationMs;
+    if (l1 > l2) {
+      this.mPlayDurationMs = l2;
     }
     notifySelectionChange(paramBoolean);
   }
   
   private void updateStartDuration()
   {
-    int j = 0;
     int k = this.mLayoutManager.findFirstCompletelyVisibleItemPosition();
-    if (k < 0) {}
-    for (int i = (int)(this.mSelectAreaLeft - this.mSliderBarWidth);; i = 0)
+    int j = 0;
+    int i;
+    if (k < 0) {
+      i = (int)(this.mSelectAreaLeft - this.mSliderBarWidth);
+    } else {
+      i = 0;
+    }
+    Object localObject = this.mLayoutManager.findViewByPosition(k);
+    if (localObject != null) {
+      j = ((View)localObject).getLeft();
+    }
+    float f1;
+    if (k == 0) {
+      f1 = this.mSelectAreaLeft;
+    }
+    for (float f2 = this.mSliderBarWidth;; f2 = this.mSliderBarWidth)
     {
-      View localView = this.mLayoutManager.findViewByPosition(k);
-      if (localView != null) {
-        j = localView.getLeft();
+      i = (int)(f1 - f2);
+      break;
+      if (k <= 0) {
+        break;
       }
-      if (k == 0) {
-        i = (int)(this.mSelectAreaLeft - this.mSliderBarWidth);
-      }
-      for (;;)
-      {
-        this.mStartDurationMs = ((1.0F * (float)(i * this.mMaxSelectDurationMs) / (this.mItemWidth * this.selectAreaItemCount)));
-        Log.d("TimelineView", "updateStartDuration: startOffset = " + i + "\n mMaxSelectDurationMs = " + this.mMaxSelectDurationMs + "\n mItemWidth = " + this.mItemWidth + "\n selectAreaItemCount = " + this.selectAreaItemCount + "\n ************\n mStartDurationMs = " + this.mStartDurationMs);
-        if (this.mStartDurationMs < 0L) {
-          this.mStartDurationMs = 0L;
-        }
-        return;
-        if (k > 0) {
-          i = (int)(this.mHeadItemWidth + (k - 1) * this.mItemWidth - j + this.mSelectAreaLeft - this.mSliderBarWidth);
-        }
-      }
+      f1 = this.mHeadItemWidth + (k - 1) * this.mItemWidth - j + this.mSelectAreaLeft;
+    }
+    this.mStartDurationMs = (((float)(i * this.mMaxSelectDurationMs) * 1.0F / (this.mItemWidth * this.selectAreaItemCount)));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateStartDuration: startOffset = ");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("\n mMaxSelectDurationMs = ");
+    ((StringBuilder)localObject).append(this.mMaxSelectDurationMs);
+    ((StringBuilder)localObject).append("\n mItemWidth = ");
+    ((StringBuilder)localObject).append(this.mItemWidth);
+    ((StringBuilder)localObject).append("\n selectAreaItemCount = ");
+    ((StringBuilder)localObject).append(this.selectAreaItemCount);
+    ((StringBuilder)localObject).append("\n ************\n mStartDurationMs = ");
+    ((StringBuilder)localObject).append(this.mStartDurationMs);
+    Log.d("TimelineView", ((StringBuilder)localObject).toString());
+    if (this.mStartDurationMs < 0L) {
+      this.mStartDurationMs = 0L;
     }
   }
   
@@ -964,11 +1056,13 @@ public class TimelineView
   public void release()
   {
     this.mScrollEnable = false;
-    if (this.mCoverProvider != null) {
-      this.mCoverProvider.release();
+    Object localObject = this.mCoverProvider;
+    if (localObject != null) {
+      ((CoverProvider)localObject).release();
     }
-    if (this.mSliderView != null) {
-      this.mSliderView.release();
+    localObject = this.mSliderView;
+    if (localObject != null) {
+      ((SliderView)localObject).release();
     }
     this.mSliderChangeListener = null;
   }
@@ -983,13 +1077,14 @@ public class TimelineView
     paramLong1 = Math.min(this.mEndDurationMs - this.mStartDurationMs, this.mMaxSelectDurationMs);
     this.mSelectDurationMs = paramLong1;
     this.mSpeedSelectDurationMs = paramLong1;
-    if (this.mTotalDurationMs != this.mSelectDurationMs) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mScrollEnable = bool;
-      post(new TimelineView.9(this));
-      return;
+    boolean bool;
+    if (this.mTotalDurationMs != this.mSelectDurationMs) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mScrollEnable = bool;
+    post(new TimelineView.9(this));
   }
   
   public void setDurationBgRes(int paramInt)
@@ -1009,20 +1104,21 @@ public class TimelineView
   
   public void setPlayPosition(long paramLong)
   {
-    if (this.mSelectDurationMs == 0L) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.mPlayDurationMs == paramLong);
-      this.mPlayDurationMs = paramLong;
-      if (this.mPlayDurationMs > getCurrentTotalDurationMs() + this.mStartDurationMs) {
-        this.mPlayDurationMs = (getCurrentTotalDurationMs() + this.mStartDurationMs);
-      }
-      this.mIndicatorProgress = (1.0F * (float)(this.mPlayDurationMs - this.mStartDurationMs) / (float)this.mSelectDurationMs);
-    } while (this.mSliderView == null);
-    this.mSliderView.setIndicatorProgress(this.mIndicatorProgress);
+    if (this.mSelectDurationMs == 0L) {
+      return;
+    }
+    if (this.mPlayDurationMs == paramLong) {
+      return;
+    }
+    this.mPlayDurationMs = paramLong;
+    if (this.mPlayDurationMs > getCurrentTotalDurationMs() + this.mStartDurationMs) {
+      this.mPlayDurationMs = (getCurrentTotalDurationMs() + this.mStartDurationMs);
+    }
+    this.mIndicatorProgress = ((float)(this.mPlayDurationMs - this.mStartDurationMs) * 1.0F / (float)this.mSelectDurationMs);
+    SliderView localSliderView = this.mSliderView;
+    if (localSliderView != null) {
+      localSliderView.setIndicatorProgress(this.mIndicatorProgress);
+    }
   }
   
   public void setRecyclerViewPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -1056,16 +1152,21 @@ public class TimelineView
   
   public void setSpeed(float paramFloat)
   {
-    if ((FloatUtils.isEquals(paramFloat, this.mSpeed)) || (FloatUtils.isEquals(0.0F, paramFloat))) {
-      return;
-    }
-    this.mSpeed = paramFloat;
-    this.mSpeedTotalDurationMs = (((float)this.mTotalDurationMs / this.mSpeed));
-    if (getCurrentTotalDurationMs() > this.mOriginMaxSelectDurationMs) {}
-    for (this.mMaxSelectDurationMs = (((float)this.mOriginMaxSelectDurationMs * this.mSpeed));; this.mMaxSelectDurationMs = Math.max(this.mTotalDurationMs, this.mMaxSelectDurationMs))
+    if (!FloatUtils.isEquals(paramFloat, this.mSpeed))
     {
+      if (FloatUtils.isEquals(0.0F, paramFloat)) {
+        return;
+      }
+      this.mSpeed = paramFloat;
+      this.mSpeedTotalDurationMs = (((float)this.mTotalDurationMs / this.mSpeed));
+      long l1 = getCurrentTotalDurationMs();
+      long l2 = this.mOriginMaxSelectDurationMs;
+      if (l1 > l2) {
+        this.mMaxSelectDurationMs = (((float)l2 * this.mSpeed));
+      } else {
+        this.mMaxSelectDurationMs = Math.max(this.mTotalDurationMs, this.mMaxSelectDurationMs);
+      }
       updateClipData();
-      return;
     }
   }
   
@@ -1074,29 +1175,29 @@ public class TimelineView
     if (paramTimelineBuilder == null) {
       return;
     }
-    if (paramTimelineBuilder.getMaxSelectDurationMs() == -1L)
-    {
+    long l;
+    if (paramTimelineBuilder.getMaxSelectDurationMs() == -1L) {
       l = 60000L;
-      label20:
-      this.mMaxSelectDurationMs = l;
-      this.mOriginMaxSelectDurationMs = l;
-      if (paramTimelineBuilder.getMinSelectDurationMs() != -1L) {
-        break label166;
-      }
+    } else {
+      l = paramTimelineBuilder.getMaxSelectDurationMs();
     }
-    label166:
-    for (long l = 2000L;; l = paramTimelineBuilder.getMinSelectDurationMs())
+    this.mMaxSelectDurationMs = l;
+    this.mOriginMaxSelectDurationMs = l;
+    if (paramTimelineBuilder.getMinSelectDurationMs() == -1L) {
+      l = 2000L;
+    } else {
+      l = paramTimelineBuilder.getMinSelectDurationMs();
+    }
+    this.mMinSelectDurationMs = l;
+    this.mLockMode = paramTimelineBuilder.isLockMode();
+    this.mSliderBarMode = paramTimelineBuilder.isSliderBarMode();
+    this.mShowMask = paramTimelineBuilder.isShowMask();
+    this.mShowDuration = paramTimelineBuilder.isShowDuration();
+    this.mMaxDurationTps = paramTimelineBuilder.getMaxDurationTps();
+    paramTimelineBuilder = this.mSliderView;
+    if (paramTimelineBuilder != null)
     {
-      this.mMinSelectDurationMs = l;
-      this.mLockMode = paramTimelineBuilder.isLockMode();
-      this.mSliderBarMode = paramTimelineBuilder.isSliderBarMode();
-      this.mShowMask = paramTimelineBuilder.isShowMask();
-      this.mShowDuration = paramTimelineBuilder.isShowDuration();
-      this.mMaxDurationTps = paramTimelineBuilder.getMaxDurationTps();
-      if (this.mSliderView == null) {
-        break;
-      }
-      this.mSliderView.setLockMode(this.mLockMode);
+      paramTimelineBuilder.setLockMode(this.mLockMode);
       this.mSliderView.setSliderBarMode(this.mSliderBarMode);
       this.mSliderView.setShowDuration(this.mShowDuration);
       this.mSliderView.setMaxDurationTips(this.mMaxDurationTps);
@@ -1104,9 +1205,6 @@ public class TimelineView
       initHeadAndTailParams();
       initSliderParams();
       initMaskParams();
-      return;
-      l = paramTimelineBuilder.getMaxSelectDurationMs();
-      break label20;
     }
   }
   
@@ -1134,81 +1232,92 @@ public class TimelineView
   
   public void updateSpeed(float paramFloat, TimelineView.SpeedChangeCallback paramSpeedChangeCallback)
   {
-    if ((FloatUtils.isEquals(paramFloat, this.mSpeed)) || (FloatUtils.isEquals(0.0F, paramFloat))) {}
-    float f;
-    long l1;
-    long l2;
-    long l3;
-    do
+    if (!FloatUtils.isEquals(paramFloat, this.mSpeed))
     {
-      return;
-      f = paramFloat / this.mSpeed;
-      l1 = getCurrentTotalDurationMs();
-      l2 = ((float)this.mSelectDurationMs / f);
-      l3 = ((float)l1 / f);
-      if ((float)this.mTotalDurationMs / paramFloat >= (float)this.mMinSelectDurationMs) {
-        break;
-      }
-      if ((paramFloat == 2.0F) && (paramSpeedChangeCallback != null))
-      {
-        paramSpeedChangeCallback.onChangeFailed(1000);
+      if (FloatUtils.isEquals(0.0F, paramFloat)) {
         return;
       }
-    } while ((paramFloat != 1.5F) || (paramSpeedChangeCallback == null));
-    paramSpeedChangeCallback.onChangeFailed(1001);
-    return;
-    this.mSpeedTotalDurationMs = l3;
-    this.mSpeed = paramFloat;
-    if (l3 > 60000L)
-    {
-      this.mMaxSelectDurationMs = 60000L;
-      if (this.hasEditStartAndEnd) {}
-      for (this.mSpeedSelectDurationMs = Math.min(l2, this.mMaxSelectDurationMs);; this.mSpeedSelectDurationMs = this.mMaxSelectDurationMs)
+      float f = paramFloat / this.mSpeed;
+      long l1 = getCurrentTotalDurationMs();
+      long l2 = ((float)this.mSelectDurationMs / f);
+      long l3 = ((float)l1 / f);
+      if ((float)this.mTotalDurationMs / paramFloat < (float)this.mMinSelectDurationMs)
       {
+        if ((paramFloat == 2.0F) && (paramSpeedChangeCallback != null))
+        {
+          paramSpeedChangeCallback.onChangeFailed(1000);
+          return;
+        }
+        if ((paramFloat == 1.5F) && (paramSpeedChangeCallback != null)) {
+          paramSpeedChangeCallback.onChangeFailed(1001);
+        }
+        return;
+      }
+      this.mSpeedTotalDurationMs = l3;
+      this.mSpeed = paramFloat;
+      StringBuilder localStringBuilder;
+      if (l3 > 60000L)
+      {
+        this.mMaxSelectDurationMs = 60000L;
+        if (this.hasEditStartAndEnd) {
+          this.mSpeedSelectDurationMs = Math.min(l2, this.mMaxSelectDurationMs);
+        } else {
+          this.mSpeedSelectDurationMs = this.mMaxSelectDurationMs;
+        }
         this.mSelectDurationMs = Math.max(this.mSpeedSelectDurationMs, this.mMinSelectDurationMs);
         this.mStartDurationMs = (((float)this.mStartDurationMs / f));
         this.mEndDurationMs = (this.mStartDurationMs + this.mSelectDurationMs);
-        Log.d("updateStartDuration", "updateSpeed: start = " + this.mStartDurationMs);
-        Log.d("updateStartDuration", "updateSpeed: end = " + this.mEndDurationMs);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateSpeed: start = ");
+        localStringBuilder.append(this.mStartDurationMs);
+        Log.d("updateStartDuration", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateSpeed: end = ");
+        localStringBuilder.append(this.mEndDurationMs);
+        Log.d("updateStartDuration", localStringBuilder.toString());
         if (paramSpeedChangeCallback != null) {
           paramSpeedChangeCallback.onChangeSucc(paramFloat);
         }
         updateClipData();
         notifySelectionChange(true);
-        checkCanAdjust();
-        return;
       }
-    }
-    this.mMaxSelectDurationMs = l3;
-    if (this.hasEditStartAndEnd)
-    {
-      this.mSpeedSelectDurationMs = l2;
-      label311:
-      this.mSelectDurationMs = Math.max(this.mSpeedSelectDurationMs, this.mMinSelectDurationMs);
-      this.mStartDurationMs = (((float)this.mStartDurationMs / f));
-      this.mEndDurationMs = (this.mStartDurationMs + this.mSelectDurationMs);
-      Log.d("updateStartDuration", "updateSpeed: start = " + this.mStartDurationMs);
-      Log.d("updateStartDuration", "updateSpeed: end = " + this.mEndDurationMs);
-      if (paramSpeedChangeCallback != null) {
-        paramSpeedChangeCallback.onChangeSucc(paramFloat);
+      else
+      {
+        this.mMaxSelectDurationMs = l3;
+        if (this.hasEditStartAndEnd) {
+          this.mSpeedSelectDurationMs = l2;
+        } else {
+          this.mSpeedSelectDurationMs = this.mMaxSelectDurationMs;
+        }
+        this.mSelectDurationMs = Math.max(this.mSpeedSelectDurationMs, this.mMinSelectDurationMs);
+        this.mStartDurationMs = (((float)this.mStartDurationMs / f));
+        this.mEndDurationMs = (this.mStartDurationMs + this.mSelectDurationMs);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateSpeed: start = ");
+        localStringBuilder.append(this.mStartDurationMs);
+        Log.d("updateStartDuration", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateSpeed: end = ");
+        localStringBuilder.append(this.mEndDurationMs);
+        Log.d("updateStartDuration", localStringBuilder.toString());
+        if (paramSpeedChangeCallback != null) {
+          paramSpeedChangeCallback.onChangeSucc(paramFloat);
+        }
+        if (l1 < 60000L)
+        {
+          setSliderBarPosition();
+          updateMask();
+          setSliderSelectDuration();
+          setSliderMinSelectionWidth();
+          setSliderMaxSelectionWidth();
+        }
+        else
+        {
+          updateClipData();
+        }
+        notifySelectionChange(true);
       }
-      if (l1 >= 60000L) {
-        break label470;
-      }
-      setSliderBarPosition();
-      updateMask();
-      setSliderSelectDuration();
-      setSliderMinSelectionWidth();
-      setSliderMaxSelectionWidth();
-    }
-    for (;;)
-    {
-      notifySelectionChange(true);
-      break;
-      this.mSpeedSelectDurationMs = this.mMaxSelectDurationMs;
-      break label311;
-      label470:
-      updateClipData();
+      checkCanAdjust();
     }
   }
   
@@ -1220,15 +1329,17 @@ public class TimelineView
   
   public void updateTimeRange(long paramLong1, long paramLong2)
   {
-    if (paramLong2 == -1L) {
-      this.mStartDurationMs = 0L;
-    }
-    for (this.mEndDurationMs = this.mTotalDurationMs;; this.mEndDurationMs = paramLong2)
+    if (paramLong2 == -1L)
     {
-      post(new TimelineView.11(this));
-      return;
-      this.mStartDurationMs = paramLong1;
+      this.mStartDurationMs = 0L;
+      this.mEndDurationMs = this.mTotalDurationMs;
     }
+    else
+    {
+      this.mStartDurationMs = paramLong1;
+      this.mEndDurationMs = paramLong2;
+    }
+    post(new TimelineView.11(this));
   }
   
   public void updateTimeRangeAndSource(TAVSource paramTAVSource, long paramLong1, long paramLong2)
@@ -1238,28 +1349,28 @@ public class TimelineView
     {
       this.mStartDurationMs = 0L;
       this.mEndDurationMs = this.mTotalDurationMs;
-      paramLong1 = Math.min(this.mEndDurationMs - this.mStartDurationMs, this.mMaxSelectDurationMs);
-      this.mSelectDurationMs = paramLong1;
-      this.mSpeedSelectDurationMs = paramLong1;
-      if (this.mTotalDurationMs == this.mSelectDurationMs) {
-        break label103;
-      }
     }
-    label103:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      this.mScrollEnable = bool;
-      post(new TimelineView.10(this));
-      return;
       this.mStartDurationMs = paramLong1;
       this.mEndDurationMs = paramLong2;
-      break;
     }
+    paramLong1 = Math.min(this.mEndDurationMs - this.mStartDurationMs, this.mMaxSelectDurationMs);
+    this.mSelectDurationMs = paramLong1;
+    this.mSpeedSelectDurationMs = paramLong1;
+    boolean bool;
+    if (this.mTotalDurationMs != this.mSelectDurationMs) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.mScrollEnable = bool;
+    post(new TimelineView.10(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.timeline.TimelineView
  * JD-Core Version:    0.7.0.1
  */

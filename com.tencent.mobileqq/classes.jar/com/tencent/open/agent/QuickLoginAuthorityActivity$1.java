@@ -1,5 +1,6 @@
 package com.tencent.open.agent;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -7,17 +8,18 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.config.business.QuickAuthorityConfBean;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.agent.util.AuthUIUtil;
 import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.open.virtual.OpenSdkVirtualUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MobileQQ;
 import mqq.manager.WtloginManager;
 import mqq.observer.SSOAccountObserver;
 import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
@@ -32,224 +34,263 @@ class QuickLoginAuthorityActivity$1
   
   public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onFailed--action = " + paramInt1 + ", ret = " + paramInt2 + ", ssoAccount = *" + AuthorityUtil.a(paramString));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->onFailed--action = ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(", ret = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(", ssoAccount = *");
+    ((StringBuilder)localObject).append(AuthorityUtil.a(paramString));
+    QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, ((StringBuilder)localObject).toString());
     this.a.f();
     if (paramInt2 == -1000)
     {
-      QuickLoginAuthorityActivity.a(this.a).a(this.a, this.a.getResources().getString(2131694678));
+      paramString = this.a;
+      AuthUIUtil.a(paramString, paramString.getResources().getString(2131694647));
       return;
     }
     paramBundle = (ErrMsg)paramBundle.getParcelable("lastError");
-    if (paramBundle == null) {}
-    for (paramBundle = this.a.getString(2131694675);; paramBundle = paramBundle.getMessage())
-    {
-      QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, new Object[] { "ssoAccount failed, error: ", paramBundle });
-      QQToast.a(BaseApplicationImpl.getContext(), paramBundle + "(" + paramInt2 + ")", 0).a();
-      this.a.a(paramString);
-      return;
+    if (paramBundle == null) {
+      paramBundle = this.a.getString(2131694644);
+    } else {
+      paramBundle = paramBundle.getMessage();
     }
+    QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, new Object[] { "ssoAccount failed, error: ", paramBundle });
+    localObject = MobileQQ.sMobileQQ;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramBundle);
+    localStringBuilder.append("(");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(")");
+    QQToast.a((Context)localObject, localStringBuilder.toString(), 0).a();
+    this.a.a(paramString);
   }
   
   public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
   {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onGetA1WithA1--ret = " + paramInt1 + ", ssoAccount = *" + AuthorityUtil.a(paramString));
-    paramString = "" + QuickLoginAuthorityActivity.a(this.a).a(this.a.jdField_a_of_type_MqqManagerWtloginManager, paramString);
-    this.a.jdField_a_of_type_JavaLangString = paramString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->onGetA1WithA1--ret = ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(", ssoAccount = *");
+    ((StringBuilder)localObject).append(AuthorityUtil.a(paramString));
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, ((StringBuilder)localObject).toString());
+    localObject = this.a;
+    ((QuickLoginAuthorityActivity)localObject).jdField_a_of_type_JavaLangString = OpenSdkVirtualUtil.a(((QuickLoginAuthorityActivity)localObject).jdField_a_of_type_MqqManagerWtloginManager, paramString);
     this.a.b = null;
     paramString = new WloginSimpleInfo();
     this.a.jdField_a_of_type_MqqManagerWtloginManager.getBasicUserInfo(this.a.jdField_a_of_type_JavaLangString, paramString);
     paramArrayOfByte = new RSACrypt(this.a).EncryptData(this.a.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
     paramString = (ErrMsg)paramBundle.getParcelable("errMsg");
     paramBundle = this.a;
-    String str = this.a.jdField_a_of_type_JavaLangString;
-    if (paramString == null) {}
-    for (paramString = "";; paramString = paramString.getMessage())
-    {
-      paramBundle.a(paramInt1, paramArrayOfByte, str, paramString);
-      return;
+    localObject = paramBundle.jdField_a_of_type_JavaLangString;
+    if (paramString == null) {
+      paramString = "";
+    } else {
+      paramString = paramString.getMessage();
     }
+    paramBundle.a(paramInt1, paramArrayOfByte, (String)localObject, paramString);
   }
   
   public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onGetTicketNoPasswd--ssoAccount = *" + AuthorityUtil.a(paramString));
-    this.a.b = null;
-    if ((this.a.jdField_a_of_type_AndroidOsBundle.containsKey("qrcode")) && (this.a.jdField_a_of_type_AndroidOsBundle.containsKey("schemacallback"))) {
+    paramBundle = new StringBuilder();
+    paramBundle.append("-->onGetTicketNoPasswd--ssoAccount = *");
+    paramBundle.append(AuthorityUtil.a(paramString));
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, paramBundle.toString());
+    paramBundle = this.a;
+    Object localObject = null;
+    paramBundle.b = null;
+    if ((paramBundle.jdField_a_of_type_AndroidOsBundle.containsKey("qrcode")) && (this.a.jdField_a_of_type_AndroidOsBundle.containsKey("schemacallback")))
+    {
       QuickLoginAuthorityActivity.a(this.a);
-    }
-    while (!this.a.jdField_a_of_type_AndroidOsBundle.containsKey("p")) {
       return;
     }
-    QuickAuthorityConfBean localQuickAuthorityConfBean = (QuickAuthorityConfBean)QConfigManager.a().a(546);
-    paramBundle = "";
-    if (paramInt == 32) {
-      paramBundle = util.buf_to_string(paramArrayOfByte);
-    }
-    String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString("p");
-    paramArrayOfByte = str1;
-    if (!TextUtils.isEmpty(str1))
+    if (this.a.jdField_a_of_type_AndroidOsBundle.containsKey("p"))
     {
+      QuickAuthorityConfBean localQuickAuthorityConfBean = (QuickAuthorityConfBean)QConfigManager.a().a(546);
+      if (paramInt == 32) {
+        paramBundle = util.buf_to_string(paramArrayOfByte);
+      } else {
+        paramBundle = "";
+      }
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString("p");
       paramArrayOfByte = str1;
-      if (!str1.endsWith("&")) {
-        paramArrayOfByte = str1 + "&";
-      }
-    }
-    paramString = "keyindex=19&clientuin=$CLIENTUIN$&clientkey=$CLIENTKEY$".replace("$CLIENTUIN$", paramString).replace("$CLIENTKEY$", paramBundle);
-    String str3 = paramArrayOfByte + paramString;
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(str3));
-    paramBundle = null;
-    str1 = null;
-    String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString("schemacallback");
-    paramString = str1;
-    if (!TextUtils.isEmpty(str2))
-    {
-      if (str2.startsWith("mttbrowser://")) {
-        paramString = "com.tencent.mtt";
-      }
-    }
-    else
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        break label813;
-      }
-      paramArrayOfByte = Uri.parse(paramArrayOfByte).getQueryParameter("pt_browser");
-      QLog.i("SSOAccountObserver", 1, "-->onGetTicketNoPasswd--schemacallback=" + str2 + ",pt_browser=" + paramArrayOfByte);
-      if ((TextUtils.isEmpty(paramArrayOfByte)) || (!"LieBaoFast".equals(paramArrayOfByte))) {
-        break label813;
-      }
-      paramString = "com.ijinshan.browser_fast";
-    }
-    label806:
-    label813:
-    for (;;)
-    {
-      for (;;)
+      if (!TextUtils.isEmpty(str1))
       {
-        paramInt = 0;
-        if (!TextUtils.isEmpty(paramString)) {}
+        paramArrayOfByte = str1;
+        if (!str1.endsWith("&"))
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append(str1);
+          paramArrayOfByte.append("&");
+          paramArrayOfByte = paramArrayOfByte.toString();
+        }
+      }
+      paramString = "keyindex=19&clientuin=$CLIENTUIN$&clientkey=$CLIENTKEY$".replace("$CLIENTUIN$", paramString).replace("$CLIENTKEY$", paramBundle);
+      paramBundle = new StringBuilder();
+      paramBundle.append(paramArrayOfByte);
+      paramBundle.append(paramString);
+      String str2 = paramBundle.toString();
+      Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(str2));
+      str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString("schemacallback");
+      boolean bool = TextUtils.isEmpty(str1);
+      paramBundle = "com.ijinshan.browser_fast";
+      if (!bool)
+      {
+        if (str1.startsWith("mttbrowser://"))
+        {
+          paramString = "com.tencent.mtt";
+          break label471;
+        }
+        if (str1.startsWith("ucweb://"))
+        {
+          paramString = "com.UCMobile";
+          break label471;
+        }
+        if (str1.startsWith("bdbrowser://"))
+        {
+          paramString = "com.baidu.browser.apps";
+          break label471;
+        }
+        if (str1.startsWith("bdapp://"))
+        {
+          paramString = "com.baidu.searchbox";
+          break label471;
+        }
+        if (str1.startsWith("googlechrome://"))
+        {
+          paramString = "com.android.chrome";
+          break label471;
+        }
+        if (str1.startsWith("mzbrowser://"))
+        {
+          paramString = "com.android.browser";
+          break label471;
+        }
+        if (str1.startsWith("lb://"))
+        {
+          paramString = "com.ijinshan.browser_fast";
+          break label471;
+        }
+        if (str1.startsWith("qihoobrowser://"))
+        {
+          paramString = "com.qihoo.browser";
+          break label471;
+        }
+        if (str1.startsWith("browser2345://"))
+        {
+          paramString = "com.browser2345";
+          break label471;
+        }
+        if (str1.startsWith("SogouMSE://"))
+        {
+          paramString = "sogou.mobile.explorer";
+          break label471;
+        }
+      }
+      paramString = null;
+      label471:
+      if (TextUtils.isEmpty(paramString))
+      {
+        paramArrayOfByte = Uri.parse(paramArrayOfByte).getQueryParameter("pt_browser");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("-->onGetTicketNoPasswd--schemacallback=");
+        localStringBuilder.append(str1);
+        localStringBuilder.append(",pt_browser=");
+        localStringBuilder.append(paramArrayOfByte);
+        QLog.i("SSOAccountObserver", 1, localStringBuilder.toString());
+        if ((!TextUtils.isEmpty(paramArrayOfByte)) && ("LieBaoFast".equals(paramArrayOfByte))) {
+          paramString = paramBundle;
+        }
+      }
+      bool = TextUtils.isEmpty(paramString);
+      int i = 0;
+      paramInt = i;
+      if (!bool)
+      {
         try
         {
           paramArrayOfByte = this.a.getPackageManager().getPackageInfo(paramString, 0);
-          if (localQuickAuthorityConfBean.jdField_a_of_type_Int == 1)
-          {
-            paramBundle = (String)localQuickAuthorityConfBean.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-            if ((this.a.a(paramString, paramBundle)) && (paramArrayOfByte != null))
-            {
-              paramInt = 1;
-              if (paramInt != 0)
-              {
-                localIntent.setPackage(paramString);
-                localIntent.setData(Uri.parse(str3));
-              }
-              if ((localQuickAuthorityConfBean.b != 1) || (paramInt != 0)) {
-                break label754;
-              }
-              this.a.f();
-              QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131711209), 1).a();
-              paramArrayOfByte = new HashMap();
-              paramArrayOfByte.put("callback", str2);
-              if (paramInt == 0) {
-                break label806;
-              }
-              paramString = "1";
-              paramArrayOfByte.put("checkRes", paramString);
-              StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "kQuickLoginForBrowser", true, 0L, 0L, paramArrayOfByte, "");
-              return;
-              if (str2.startsWith("ucweb://"))
-              {
-                paramString = "com.UCMobile";
-                break;
-              }
-              if (str2.startsWith("bdbrowser://"))
-              {
-                paramString = "com.baidu.browser.apps";
-                break;
-              }
-              if (str2.startsWith("bdapp://"))
-              {
-                paramString = "com.baidu.searchbox";
-                break;
-              }
-              if (str2.startsWith("googlechrome://"))
-              {
-                paramString = "com.android.chrome";
-                break;
-              }
-              if (str2.startsWith("mzbrowser://"))
-              {
-                paramString = "com.android.browser";
-                break;
-              }
-              if (str2.startsWith("lb://"))
-              {
-                paramString = "com.ijinshan.browser_fast";
-                break;
-              }
-              if (str2.startsWith("qihoobrowser://"))
-              {
-                paramString = "com.qihoo.browser";
-                break;
-              }
-              if (str2.startsWith("browser2345://"))
-              {
-                paramString = "com.browser2345";
-                break;
-              }
-              paramString = str1;
-              if (!str2.startsWith("SogouMSE://")) {
-                break;
-              }
-              paramString = "sogou.mobile.explorer";
-            }
-          }
         }
         catch (PackageManager.NameNotFoundException paramArrayOfByte)
         {
-          for (;;)
+          paramBundle = new StringBuilder();
+          paramBundle.append("-->onGetTicketNoPasswd exception:");
+          paramBundle.append(paramArrayOfByte.getStackTrace().toString());
+          QLog.e("SSOAccountObserver", 1, paramBundle.toString());
+          paramArrayOfByte = localObject;
+        }
+        if (localQuickAuthorityConfBean.jdField_a_of_type_Int == 1)
+        {
+          paramBundle = (String)localQuickAuthorityConfBean.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+          paramInt = i;
+          if (this.a.a(paramString, paramBundle))
           {
-            QLog.e("SSOAccountObserver", 1, "-->onGetTicketNoPasswd exception:" + paramArrayOfByte.getStackTrace().toString());
-            paramArrayOfByte = paramBundle;
-            continue;
-            paramInt = 0;
-            continue;
-            if (paramArrayOfByte != null)
-            {
-              paramInt = 1;
-            }
-            else
-            {
-              paramInt = 0;
-              continue;
-              try
-              {
-                label754:
-                this.a.startActivity(localIntent);
-                this.a.e();
-              }
-              catch (Exception paramString)
-              {
-                for (;;)
-                {
-                  QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "startActivity :" + paramString.getMessage());
-                }
-              }
-              paramString = "0";
-            }
+            paramInt = i;
+            if (paramArrayOfByte == null) {}
           }
         }
+        else
+        {
+          do
+          {
+            paramInt = 1;
+            break;
+            paramInt = i;
+          } while (paramArrayOfByte != null);
+        }
       }
+      if (paramInt != 0)
+      {
+        localIntent.setPackage(paramString);
+        localIntent.setData(Uri.parse(str2));
+      }
+      if ((localQuickAuthorityConfBean.b == 1) && (paramInt == 0))
+      {
+        this.a.f();
+        QQToast.a(MobileQQ.sMobileQQ, HardCodeUtil.a(2131711185), 1).a();
+      }
+      else
+      {
+        try
+        {
+          this.a.startActivity(localIntent);
+        }
+        catch (Exception paramString)
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("startActivity :");
+          paramArrayOfByte.append(paramString.getMessage());
+          QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, paramArrayOfByte.toString());
+        }
+        this.a.e();
+      }
+      paramArrayOfByte = new HashMap();
+      paramArrayOfByte.put("callback", str1);
+      if (paramInt != 0) {
+        paramString = "1";
+      } else {
+        paramString = "0";
+      }
+      paramArrayOfByte.put("checkRes", paramString);
+      StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance("", "kQuickLoginForBrowser", true, 0L, 0L, paramArrayOfByte, "");
     }
   }
   
   public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onUserCancel--action = " + paramInt + ", ssoAccount = *" + AuthorityUtil.a(paramString));
+    paramBundle = new StringBuilder();
+    paramBundle.append("-->onUserCancel--action = ");
+    paramBundle.append(paramInt);
+    paramBundle.append(", ssoAccount = *");
+    paramBundle.append(AuthorityUtil.a(paramString));
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, paramBundle.toString());
     this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.QuickLoginAuthorityActivity.1
  * JD-Core Version:    0.7.0.1
  */

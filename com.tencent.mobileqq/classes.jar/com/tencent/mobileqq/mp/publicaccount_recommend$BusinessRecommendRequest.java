@@ -19,7 +19,7 @@ public final class publicaccount_recommend$BusinessRecommendRequest
   public static final int MOBILE_VERSION_FIELD_NUMBER = 8;
   public static final int PLATFORM_FIELD_NUMBER = 7;
   public static final int RECOMEND_COUNT_FIELD_NUMBER = 2;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 56, 64, 74, 80 }, new String[] { "categoryn", "recomend_count", "latitude", "longitude", "base_station", "city_info", "platform", "mobile_version", "city_location", "icon_type" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0) }, BusinessRecommendRequest.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField base_station = PBField.initString("");
   public final PBUInt32Field categoryn = PBField.initUInt32(0);
   public final PBStringField city_info = PBField.initString("");
@@ -30,10 +30,16 @@ public final class publicaccount_recommend$BusinessRecommendRequest
   public final PBUInt32Field mobile_version = PBField.initUInt32(0);
   public final PBUInt32Field platform = PBField.initUInt32(0);
   public final PBUInt32Field recomend_count = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 56, 64, 74, 80 }, new String[] { "categoryn", "recomend_count", "latitude", "longitude", "base_station", "city_info", "platform", "mobile_version", "city_location", "icon_type" }, new Object[] { localInteger, localInteger, "", "", "", "", localInteger, localInteger, "", localInteger }, BusinessRecommendRequest.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mp.publicaccount_recommend.BusinessRecommendRequest
  * JD-Core Version:    0.7.0.1
  */

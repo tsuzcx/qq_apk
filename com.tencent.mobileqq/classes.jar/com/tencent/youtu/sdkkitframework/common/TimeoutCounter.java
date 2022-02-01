@@ -4,7 +4,7 @@ import com.tencent.youtu.sdkkitframework.framework.YtFSM;
 
 public class TimeoutCounter
 {
-  private static final String TAG = TimeoutCounter.class.getSimpleName();
+  private static final String TAG = "TimeoutCounter";
   private long elaspeTimeMs = 0L;
   private String name = "timeout counter";
   private boolean needShowTimer = true;
@@ -18,33 +18,29 @@ public class TimeoutCounter
   
   public void cancel()
   {
-    YtLogger.i(TAG, this.name + " cancel");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" cancel");
+    YtLogger.i(str, localStringBuilder.toString());
     this.needTimer = false;
   }
   
   public boolean checkTimeout()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.needTimer)
-    {
-      bool1 = bool2;
-      if (this.targetTimeoutMs > 0L)
-      {
-        bool1 = bool2;
-        if (System.currentTimeMillis() - this.elaspeTimeMs > this.targetTimeoutMs) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    return (this.needTimer) && (this.targetTimeoutMs > 0L) && (System.currentTimeMillis() - this.elaspeTimeMs > this.targetTimeoutMs);
   }
   
   public void init(long paramLong, boolean paramBoolean)
   {
     this.targetTimeoutMs = paramLong;
     this.needShowTimer = paramBoolean;
-    YtLogger.i(TAG, this.name + " init with " + this.targetTimeoutMs);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" init with ");
+    localStringBuilder.append(this.targetTimeoutMs);
+    YtLogger.i(str, localStringBuilder.toString());
   }
   
   public boolean isRunning()
@@ -54,7 +50,11 @@ public class TimeoutCounter
   
   public void reset()
   {
-    YtLogger.i(TAG, this.name + " reset");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" reset");
+    YtLogger.i(str, localStringBuilder.toString());
     this.needTimer = true;
     if ((this.targetTimeoutMs > 0L) && (this.needShowTimer)) {
       YtFSM.getInstance().sendFSMEvent(new TimeoutCounter.1(this));
@@ -69,7 +69,7 @@ public class TimeoutCounter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.TimeoutCounter
  * JD-Core Version:    0.7.0.1
  */

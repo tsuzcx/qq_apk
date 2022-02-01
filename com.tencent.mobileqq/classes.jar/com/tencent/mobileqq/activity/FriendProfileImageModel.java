@@ -53,14 +53,18 @@ public abstract class FriendProfileImageModel
   
   public void c(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo)
   {
-    if ((paramProfileImageInfo == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.a(paramProfileImageInfo);
+    if (paramProfileImageInfo == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo)
+    {
+      FriendProfileImageModel.InfoUpdateListener localInfoUpdateListener = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener;
+      if (localInfoUpdateListener != null) {
+        localInfoUpdateListener.a(paramProfileImageInfo);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageModel
  * JD-Core Version:    0.7.0.1
  */

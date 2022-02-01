@@ -15,16 +15,13 @@ public class RFWTypefaceUtil
   public static Typeface a(Context paramContext, String paramString)
   {
     int i;
-    for (;;)
+    synchronized (a)
     {
-      synchronized (a)
+      boolean bool = a.containsKey(paramString);
+      if (!bool)
       {
-        boolean bool = a.containsKey(paramString);
-        if (!bool)
-        {
-          i = 0;
-          if (i >= 3) {}
-        }
+        i = 0;
+        if (i >= 3) {}
       }
       try
       {
@@ -38,8 +35,6 @@ public class RFWTypefaceUtil
       }
       paramContext = (Typeface)a.get(paramString);
       return paramContext;
-      paramContext = finally;
-      throw paramContext;
     }
   }
   
@@ -47,12 +42,12 @@ public class RFWTypefaceUtil
   {
     synchronized (a)
     {
-      if (!a.containsKey(paramString))
-      {
+      if (!a.containsKey(paramString)) {
         RFWDownloaderFactory.getDownloader(QCircleDownloadConfig.a()).download(paramString, new RFWTypefaceUtil.1(paramString, paramTextView));
-        return;
+      } else {
+        paramTextView.setTypeface((Typeface)a.get(paramString));
       }
-      paramTextView.setTypeface((Typeface)a.get(paramString));
+      return;
     }
   }
   
@@ -68,7 +63,7 @@ public class RFWTypefaceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.util.RFWTypefaceUtil
  * JD-Core Version:    0.7.0.1
  */

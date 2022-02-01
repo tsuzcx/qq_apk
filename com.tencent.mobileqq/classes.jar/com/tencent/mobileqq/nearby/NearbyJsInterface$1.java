@@ -16,48 +16,55 @@ class NearbyJsInterface$1
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("command_type", 0);
-    QLog.i("NearbyJsInterface", 2, "receive request" + paramIntent.getExtras());
-    switch (i)
+    paramContext = new StringBuilder();
+    paramContext.append("receive request");
+    paramContext.append(paramIntent.getExtras());
+    QLog.i("NearbyJsInterface", 2, paramContext.toString());
+    if (i != 1)
     {
-    }
-    do
-    {
-      do
+      if (i != 2)
       {
-        do
-        {
+        if (i != 3) {
           return;
-        } while (TextUtils.isEmpty(NearbyJsInterface.a(this.a)));
-        this.a.callJs(NearbyJsInterface.a(this.a), new String[] { paramIntent.getStringExtra("data") });
-        NearbyJsInterface.a(this.a, "");
-        return;
-      } while (TextUtils.isEmpty(NearbyJsInterface.b(this.a)));
-      this.a.callJs(NearbyJsInterface.b(this.a), new String[] { paramIntent.getStringExtra("data") });
-      return;
-    } while (TextUtils.isEmpty(NearbyJsInterface.c(this.a)));
-    i = paramIntent.getIntExtra("exit_mode", 0);
-    int j = paramIntent.getIntExtra("exit_action", 0);
-    paramContext = new JSONObject();
-    try
-    {
-      paramContext.put("mode", i);
-      paramContext.put("action", j);
-      this.a.callJs(NearbyJsInterface.c(this.a), new String[] { paramContext.toString() });
-      NearbyJsInterface.b(this.a, "");
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      for (;;)
-      {
-        QLog.e("NearbyJsInterface", 2, "onExitProfile, exp:" + paramContext.toString());
+        }
+        if (!TextUtils.isEmpty(NearbyJsInterface.c(this.a)))
+        {
+          i = paramIntent.getIntExtra("exit_mode", 0);
+          int j = paramIntent.getIntExtra("exit_action", 0);
+          paramContext = new JSONObject();
+          try
+          {
+            paramContext.put("mode", i);
+            paramContext.put("action", j);
+            this.a.callJs(NearbyJsInterface.c(this.a), new String[] { paramContext.toString() });
+          }
+          catch (JSONException paramContext)
+          {
+            paramIntent = new StringBuilder();
+            paramIntent.append("onExitProfile, exp:");
+            paramIntent.append(paramContext.toString());
+            QLog.e("NearbyJsInterface", 2, paramIntent.toString());
+          }
+          NearbyJsInterface.b(this.a, "");
+        }
       }
+      else if (!TextUtils.isEmpty(NearbyJsInterface.b(this.a)))
+      {
+        paramContext = this.a;
+        paramContext.callJs(NearbyJsInterface.b(paramContext), new String[] { paramIntent.getStringExtra("data") });
+      }
+    }
+    else if (!TextUtils.isEmpty(NearbyJsInterface.a(this.a)))
+    {
+      paramContext = this.a;
+      paramContext.callJs(NearbyJsInterface.a(paramContext), new String[] { paramIntent.getStringExtra("data") });
+      NearbyJsInterface.a(this.a, "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyJsInterface.1
  * JD-Core Version:    0.7.0.1
  */

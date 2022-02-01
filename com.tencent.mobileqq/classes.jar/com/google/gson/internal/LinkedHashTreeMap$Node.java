@@ -37,40 +37,45 @@ final class LinkedHashTreeMap$Node<K, V>
   
   public boolean equals(Object paramObject)
   {
+    boolean bool3 = paramObject instanceof Map.Entry;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramObject instanceof Map.Entry))
+    if (bool3)
     {
       paramObject = (Map.Entry)paramObject;
-      if (this.key != null) {
-        break label56;
-      }
-      bool1 = bool2;
-      if (paramObject.getKey() == null)
+      Object localObject = this.key;
+      if (localObject == null)
       {
-        if (this.value != null) {
-          break label77;
-        }
         bool1 = bool2;
-        if (paramObject.getValue() != null) {}
-      }
-    }
-    for (;;)
-    {
-      bool1 = true;
-      label56:
-      label77:
-      do
-      {
-        do
-        {
+        if (paramObject.getKey() != null) {
           return bool1;
-          bool1 = bool2;
-        } while (!this.key.equals(paramObject.getKey()));
-        break;
+        }
+      }
+      else
+      {
         bool1 = bool2;
-      } while (!this.value.equals(paramObject.getValue()));
+        if (!localObject.equals(paramObject.getKey())) {
+          return bool1;
+        }
+      }
+      localObject = this.value;
+      if (localObject == null)
+      {
+        bool1 = bool2;
+        if (paramObject.getValue() != null) {
+          return bool1;
+        }
+      }
+      else
+      {
+        bool1 = bool2;
+        if (!localObject.equals(paramObject.getValue())) {
+          return bool1;
+        }
+      }
+      bool1 = true;
     }
+    return bool1;
   }
   
   public Node<K, V> first()
@@ -98,23 +103,19 @@ final class LinkedHashTreeMap$Node<K, V>
   
   public int hashCode()
   {
+    Object localObject = this.key;
     int j = 0;
     int i;
-    if (this.key == null)
-    {
+    if (localObject == null) {
       i = 0;
-      if (this.value != null) {
-        break label33;
-      }
+    } else {
+      i = localObject.hashCode();
     }
-    for (;;)
-    {
-      return i ^ j;
-      i = this.key.hashCode();
-      break;
-      label33:
-      j = this.value.hashCode();
+    localObject = this.value;
+    if (localObject != null) {
+      j = localObject.hashCode();
     }
+    return i ^ j;
   }
   
   public Node<K, V> last()
@@ -139,12 +140,16 @@ final class LinkedHashTreeMap$Node<K, V>
   
   public String toString()
   {
-    return this.key + "=" + this.value;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.key);
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.value);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.LinkedHashTreeMap.Node
  * JD-Core Version:    0.7.0.1
  */

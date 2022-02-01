@@ -16,10 +16,11 @@ class ChannelProxyImpl$16
     try
     {
       Drawable localDrawable = this.a.getCurrDrawable();
-      if ((localDrawable != null) && ((localDrawable instanceof ApngDrawable)) && (((ApngDrawable)localDrawable).getImage() != null)) {
+      if ((localDrawable != null) && ((localDrawable instanceof ApngDrawable)) && (((ApngDrawable)localDrawable).getImage() != null))
+      {
         ApngImage.playByTag(32);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -29,7 +30,7 @@ class ChannelProxyImpl$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.16
  * JD-Core Version:    0.7.0.1
  */

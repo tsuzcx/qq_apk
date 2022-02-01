@@ -13,6 +13,7 @@ import com.tencent.avgame.gamelogic.handler.GameRoomHandler;
 import com.tencent.avgame.gamelogic.observer.GameRoomObserver;
 import com.tencent.avgame.ui.AVGameHandler;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseAVGameAppInterface;
 import com.tencent.mobileqq.app.avgameshare.AVGameShareUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -20,7 +21,7 @@ import mqq.util.WeakReference;
 
 public class GameActivityCenterCtrl
 {
-  private static GameActivityCenterCtrl jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl = null;
+  private static GameActivityCenterCtrl jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl;
   private long jdField_a_of_type_Long = 0L;
   private GameActivityCenterEntry jdField_a_of_type_ComTencentAvgameGamelogicDataGameActivityCenterEntry = null;
   private GameRoomObserver jdField_a_of_type_ComTencentAvgameGamelogicObserverGameRoomObserver = new GameActivityCenterCtrl.2(this);
@@ -30,10 +31,11 @@ public class GameActivityCenterCtrl
   
   private Activity a()
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
+    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
+    if (localWeakReference == null) {
       return null;
     }
-    return (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    return (Activity)localWeakReference.get();
   }
   
   private AVGameAppInterface a()
@@ -47,15 +49,16 @@ public class GameActivityCenterCtrl
   
   public static GameActivityCenterCtrl a()
   {
-    if (jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl == null) {
-        jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl = new GameActivityCenterCtrl();
+    if (jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl == null) {
+          jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl = new GameActivityCenterCtrl();
+        }
       }
-      return jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl;
   }
   
   private void a(boolean paramBoolean)
@@ -63,30 +66,40 @@ public class GameActivityCenterCtrl
     Object localObject = a();
     long l = Math.abs(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
     boolean bool;
-    if (!paramBoolean) {
+    if (!paramBoolean)
+    {
       if (l > 5000L) {
         bool = true;
+      } else {
+        bool = false;
       }
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("GameACCtrl", 2, "requestActivityCenterData, needGetData[" + bool + "], force[" + paramBoolean + "], interval[" + l + "], appInterface[" + localObject + "]");
-      }
-      if ((localObject != null) && (bool))
-      {
-        ((AVGameAppInterface)localObject).addObserver(this.jdField_a_of_type_ComTencentAvgameGamelogicObserverGameRoomObserver, true);
-        localObject = (GameRoomHandler)((AVGameAppInterface)localObject).getBusinessHandler(HandlerFactory.a);
-        if (localObject != null)
-        {
-          this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          ((GameRoomHandler)localObject).a();
-        }
-      }
-      return;
-      bool = false;
-      continue;
+    else {
       bool = paramBoolean;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("requestActivityCenterData, needGetData[");
+      localStringBuilder.append(bool);
+      localStringBuilder.append("], force[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], interval[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("], appInterface[");
+      localStringBuilder.append(localObject);
+      localStringBuilder.append("]");
+      QLog.i("GameACCtrl", 2, localStringBuilder.toString());
+    }
+    if ((localObject != null) && (bool))
+    {
+      ((AVGameAppInterface)localObject).addObserver(this.jdField_a_of_type_ComTencentAvgameGamelogicObserverGameRoomObserver, true);
+      localObject = (GameRoomHandler)((AVGameAppInterface)localObject).getBusinessHandler(HandlerFactory.a);
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+        ((GameRoomHandler)localObject).a();
+      }
     }
   }
   
@@ -101,8 +114,13 @@ public class GameActivityCenterCtrl
     this.b = false;
     this.jdField_a_of_type_Boolean = true;
     AVGameHandler.a().b().post(new GameActivityCenterCtrl.RefreshEntryTask());
-    if (QLog.isDevelopLevel()) {
-      QLog.i("GameACCtrl", 4, "enterGameRoom, activity[" + paramActivity + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enterGameRoom, activity[");
+      localStringBuilder.append(paramActivity);
+      localStringBuilder.append("]");
+      QLog.i("GameACCtrl", 4, localStringBuilder.toString());
     }
   }
   
@@ -120,8 +138,13 @@ public class GameActivityCenterCtrl
         paramActivity.a(paramString);
       }
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("GameACCtrl", 4, "onShareGameSuc, playGameId[" + paramString + "]");
+    if (QLog.isDevelopLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("onShareGameSuc, playGameId[");
+      paramActivity.append(paramString);
+      paramActivity.append("]");
+      QLog.i("GameACCtrl", 4, paramActivity.toString());
     }
   }
   
@@ -131,8 +154,13 @@ public class GameActivityCenterCtrl
     if (paramActivity != null) {
       this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("GameACCtrl", 4, "leaveGameRoom, activity[" + paramActivity + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("leaveGameRoom, activity[");
+      localStringBuilder.append(paramActivity);
+      localStringBuilder.append("]");
+      QLog.i("GameACCtrl", 4, localStringBuilder.toString());
     }
   }
   
@@ -141,31 +169,40 @@ public class GameActivityCenterCtrl
     if (paramActivity != null) {
       this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
     }
-    AVGameAppInterface localAVGameAppInterface = GameEngine.a().a();
-    String str2 = localAVGameAppInterface.getCurrentAccountUin();
+    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().a();
+    String str = localBaseAVGameAppInterface.getCurrentAccountUin();
     EngineData localEngineData = GameEngine.a().a();
     long l;
-    String str1;
+    Object localObject;
+    int i;
     if (localEngineData != null)
     {
       l = localEngineData.a();
-      str1 = localEngineData.a().getNick(str2);
+      localObject = localEngineData.a().getNick(str);
+      i = localEngineData.d();
     }
-    for (int i = localEngineData.d();; i = 0)
+    else
     {
-      AVGameShareUtil.a().a(localAVGameAppInterface, l, Long.valueOf(str2).longValue(), str1, 3, "", i, new GameActivityCenterCtrl.1(this, str1));
-      if (QLog.isColorLevel()) {
-        QLog.i("GameACCtrl", 2, "openGameActivityCenter, ctx[" + paramActivity + "], entry[" + this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameActivityCenterEntry + "]");
-      }
-      return;
       l = 0L;
-      str1 = "";
+      localObject = "";
+      i = 0;
+    }
+    AVGameShareUtil.a().a(localBaseAVGameAppInterface, l, Long.valueOf(str).longValue(), (String)localObject, 3, "", i, new GameActivityCenterCtrl.1(this, (String)localObject));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("openGameActivityCenter, ctx[");
+      ((StringBuilder)localObject).append(paramActivity);
+      ((StringBuilder)localObject).append("], entry[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameActivityCenterEntry);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("GameACCtrl", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl
  * JD-Core Version:    0.7.0.1
  */

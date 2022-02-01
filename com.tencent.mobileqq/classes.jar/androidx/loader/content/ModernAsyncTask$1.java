@@ -10,12 +10,15 @@ final class ModernAsyncTask$1
   
   public Thread newThread(Runnable paramRunnable)
   {
-    return new Thread(paramRunnable, "ModernAsyncTask #" + this.mCount.getAndIncrement());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ModernAsyncTask #");
+    localStringBuilder.append(this.mCount.getAndIncrement());
+    return new Thread(paramRunnable, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.loader.content.ModernAsyncTask.1
  * JD-Core Version:    0.7.0.1
  */

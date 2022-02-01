@@ -11,7 +11,7 @@ import java.util.Map;
 public class EffectPendantTools$DataReport
 {
   static long jdField_a_of_type_Long = 0L;
-  static String jdField_a_of_type_JavaLangString = null;
+  static String jdField_a_of_type_JavaLangString;
   private static String b = "actAVFunChatDecorate";
   
   public static void a(String paramString, VideoAppInterface paramVideoAppInterface)
@@ -30,10 +30,12 @@ public class EffectPendantTools$DataReport
     long l1 = System.currentTimeMillis();
     if (!Utils.a(paramString2, jdField_a_of_type_JavaLangString))
     {
-      if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_Long != 0L))
+      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
       {
         long l2 = jdField_a_of_type_Long;
-        a(paramString1, jdField_a_of_type_JavaLangString, (l1 - l2) / 1000L);
+        if (l2 != 0L) {
+          a(paramString1, jdField_a_of_type_JavaLangString, (l1 - l2) / 1000L);
+        }
       }
       jdField_a_of_type_JavaLangString = paramString2;
       jdField_a_of_type_Long = l1;
@@ -45,17 +47,25 @@ public class EffectPendantTools$DataReport
     if (!TextUtils.isEmpty(paramString2))
     {
       long l = (System.currentTimeMillis() - paramLong) / 1000L;
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("tempID", paramString2);
-      localHashMap.put("duration", l + "");
-      UserAction.onUserAction(b, true, -1L, -1L, localHashMap, true);
-      AVLog.printColorLog(paramString1, "onStateReport, ID: " + paramString2 + "  pendant time: " + paramLong);
+      Object localObject = new HashMap();
+      ((Map)localObject).put("tempID", paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(l);
+      localStringBuilder.append("");
+      ((Map)localObject).put("duration", localStringBuilder.toString());
+      UserAction.onUserAction(b, true, -1L, -1L, (Map)localObject, true);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onStateReport, ID: ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("  pendant time: ");
+      ((StringBuilder)localObject).append(paramLong);
+      AVLog.printColorLog(paramString1, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTools.DataReport
  * JD-Core Version:    0.7.0.1
  */

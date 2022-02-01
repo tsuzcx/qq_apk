@@ -20,7 +20,10 @@ class EngineInstaller$2
   
   public void onDownloadFailed(int paramInt, String paramString)
   {
-    QMLog.i("EngineInstaller", "[MiniEng] onDownloadFailed " + this.val$engineUrl);
+    paramString = new StringBuilder();
+    paramString.append("[MiniEng] onDownloadFailed ");
+    paramString.append(this.val$engineUrl);
+    QMLog.i("EngineInstaller", paramString.toString());
     if (this.val$info.baseLibType == 2) {
       MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 5, null, null, null, 1, "1", 0L, null);
     }
@@ -34,24 +37,50 @@ class EngineInstaller$2
     if (paramFloat - this.lastProgress > 0.05F)
     {
       this.lastProgress = paramFloat;
-      EngineInstaller.access$100(this.this$0, paramFloat, "正在下载引擎 " + String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(100.0F * paramFloat) }) + "%");
-      QMLog.i("EngineInstaller", "[MiniEng]onDownloadProgress, progress=" + paramFloat);
+      Object localObject = this.this$0;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("正在下载引擎 ");
+      localStringBuilder.append(String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(100.0F * paramFloat) }));
+      localStringBuilder.append("%");
+      EngineInstaller.access$100((EngineInstaller)localObject, paramFloat, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[MiniEng]onDownloadProgress, progress=");
+      ((StringBuilder)localObject).append(paramFloat);
+      QMLog.i("EngineInstaller", ((StringBuilder)localObject).toString());
     }
   }
   
   public void onDownloadSucceed(int paramInt, String paramString, DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult)
   {
-    QMLog.i("EngineInstaller", "[MiniEng] onDownloadSucceed " + this.val$engineUrl);
+    paramString = new StringBuilder();
+    paramString.append("[MiniEng] onDownloadSucceed ");
+    paramString.append(this.val$engineUrl);
+    QMLog.i("EngineInstaller", paramString.toString());
     paramString = new File(this.val$tmpZipFile);
-    if ((paramString.length() == this.val$engineFileSize) || (this.val$engineFileSize < 0L))
+    long l1 = paramString.length();
+    long l2 = this.val$engineFileSize;
+    if ((l1 != l2) && (l2 >= 0L))
     {
-      QMLog.i("EngineInstaller", "[MiniEng] onDownloadSucceed length is match " + this.val$engineFileSize);
-      EngineInstaller.access$100(this.this$0, 1.0F, "正在下载引擎 100%");
-      if (this.val$info.baseLibType == 2)
-      {
-        MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 5, "1");
-        MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 6, "1");
-      }
+      paramDownloadResult = new StringBuilder();
+      paramDownloadResult.append("[MiniEng]refuse to unzip ");
+      paramDownloadResult.append(this.val$tmpZipFile);
+      paramDownloadResult.append(" length=");
+      paramDownloadResult.append(paramString.length());
+      paramDownloadResult.append(", mEngineFileSize=");
+      paramDownloadResult.append(this.val$engineFileSize);
+      QMLog.i("EngineInstaller", paramDownloadResult.toString());
+      EngineInstaller.access$000(this.this$0);
+      return;
+    }
+    paramString = new StringBuilder();
+    paramString.append("[MiniEng] onDownloadSucceed length is match ");
+    paramString.append(this.val$engineFileSize);
+    QMLog.i("EngineInstaller", paramString.toString());
+    EngineInstaller.access$100(this.this$0, 1.0F, "正在下载引擎 100%");
+    if (this.val$info.baseLibType == 2)
+    {
+      MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 5, "1");
+      MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 6, "1");
     }
     for (;;)
     {
@@ -61,26 +90,25 @@ class EngineInstaller$2
         if (this.val$info.baseLibType == 2)
         {
           paramString = ReportConst.miniAppConfigForPreload();
-          if (!bool) {
-            break label264;
+          if (bool)
+          {
+            paramInt = 0;
+            MiniReportManager.reportEventType(paramString, 7, null, null, null, paramInt, "1", 0L, null);
           }
-          paramInt = 0;
-          MiniReportManager.reportEventType(paramString, 7, null, null, null, paramInt, "1", 0L, null);
         }
-        return;
+        else
+        {
+          return;
+        }
       }
       finally {}
-      QMLog.i("EngineInstaller", "[MiniEng]refuse to unzip " + this.val$tmpZipFile + " length=" + paramString.length() + ", mEngineFileSize=" + this.val$engineFileSize);
-      EngineInstaller.access$000(this.this$0);
-      return;
-      label264:
       paramInt = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.EngineInstaller.2
  * JD-Core Version:    0.7.0.1
  */

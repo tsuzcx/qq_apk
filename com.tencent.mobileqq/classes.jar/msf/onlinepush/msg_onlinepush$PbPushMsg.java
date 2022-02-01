@@ -23,13 +23,14 @@ public final class msg_onlinepush$PbPushMsg
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 72, 80 }, new String[] { "msg", "svrip", "bytes_push_token", "ping_flag", "uint32_general_flag", "uint64_bind_uin" }, new Object[] { null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, PbPushMsg.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 72, 80 }, new String[] { "msg", "svrip", "bytes_push_token", "ping_flag", "uint32_general_flag", "uint64_bind_uin" }, new Object[] { null, localInteger, localByteStringMicro, localInteger, localInteger, Long.valueOf(0L) }, PbPushMsg.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msf.onlinepush.msg_onlinepush.PbPushMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -47,19 +47,23 @@ public class RichGiftShowView
     super(paramContext);
     this.mLuxuryGiftAdapter = paramLuxuryGiftAdapter;
     init();
-    Log.i("GiftAnimation", "RichGiftShowView create: " + this);
-    if ((!QbSdk.getIsSysWebViewForcedByOuter()) || (!TbsShareManager.isThirdPartyApp(paramContext))) {}
-    try
-    {
-      paramContext = Class.forName("android.webkit.WebViewWorker").getDeclaredMethod("getHandler", new Class[0]);
-      paramContext.setAccessible(true);
-      this.exceptionHandler = ((Handler)paramContext.invoke(null, new Object[0]));
-      this.exceptionHandler.getLooper().getThread().setUncaughtExceptionHandler(new e());
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
+    paramLuxuryGiftAdapter = new StringBuilder();
+    paramLuxuryGiftAdapter.append("RichGiftShowView create: ");
+    paramLuxuryGiftAdapter.append(this);
+    Log.i("GiftAnimation", paramLuxuryGiftAdapter.toString());
+    if ((!QbSdk.getIsSysWebViewForcedByOuter()) || (!TbsShareManager.isThirdPartyApp(paramContext))) {
+      try
+      {
+        paramContext = Class.forName("android.webkit.WebViewWorker").getDeclaredMethod("getHandler", new Class[0]);
+        paramContext.setAccessible(true);
+        this.exceptionHandler = ((Handler)paramContext.invoke(null, new Object[0]));
+        this.exceptionHandler.getLooper().getThread().setUncaughtExceptionHandler(new e());
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
   }
   
@@ -68,11 +72,13 @@ public class RichGiftShowView
     if (this.mIsAnimationReady)
     {
       loadUrl("javascript:__WEBVIEW_CANCEL_ANIMATION('')");
-      if (this.mRichGiftPlayListener != null) {
-        this.mRichGiftPlayListener.onEnd();
+      Object localObject = this.mRichGiftPlayListener;
+      if (localObject != null) {
+        ((IRichGiftShowPlay)localObject).onEnd();
       }
-      if (this.mAnimationListener != null) {
-        this.mAnimationListener.animationCancel();
+      localObject = this.mAnimationListener;
+      if (localObject != null) {
+        ((IGiftAnimation)localObject).animationCancel();
       }
     }
     this.mIsWorking = false;
@@ -93,7 +99,12 @@ public class RichGiftShowView
     }
     int i = UIUtil.getScreenWidth((Context)localObject);
     int j = UIUtil.getScreenHeight((Context)localObject);
-    offlineLoadUrl("https://now.qq.com/mobile/gift/index.html?_bid=2377&width=" + i + "&height=" + j);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("https://now.qq.com/mobile/gift/index.html?_bid=2377&width=");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("&height=");
+    ((StringBuilder)localObject).append(j);
+    offlineLoadUrl(((StringBuilder)localObject).toString());
     ThreadCenter.postDelayedUITask(this, this.mReload, 10000L);
   }
   
@@ -135,39 +146,53 @@ public class RichGiftShowView
     if (("app".equals(paramString1)) && ("sendMessage".equals(paramString2)))
     {
       paramString1 = (String)paramMap.get("messageID");
-      if (!"animationEnd".equals(paramString1)) {
-        break label119;
+      if ("animationEnd".equals(paramString1))
+      {
+        paramString1 = this.mLuxuryGiftAdapter;
+        if (paramString1 != null) {
+          paramString1.getLogger().i("GiftAnimation", "rich animation end", new Object[0]);
+        }
+        ThreadCenter.removeUITask(this, this.mDelayRunnable);
+        this.mIsWorking = false;
+        paramString1 = this.mRichGiftPlayListener;
+        if (paramString1 != null) {
+          paramString1.onEnd();
+        }
+        paramString1 = this.mAnimationListener;
+        if (paramString1 != null) {
+          paramString1.animationEnd();
+        }
       }
-      if (this.mLuxuryGiftAdapter != null) {
-        this.mLuxuryGiftAdapter.getLogger().i("GiftAnimation", "rich animation end", new Object[0]);
-      }
-      ThreadCenter.removeUITask(this, this.mDelayRunnable);
-      this.mIsWorking = false;
-      if (this.mRichGiftPlayListener != null) {
-        this.mRichGiftPlayListener.onEnd();
-      }
-      if (this.mAnimationListener != null) {
-        this.mAnimationListener.animationEnd();
+      else
+      {
+        if ("animationReady".equals(paramString1))
+        {
+          this.mIsAnimationReady = true;
+          paramString1 = this.mLuxuryGiftAdapter;
+          if (paramString1 != null) {
+            paramString1.getLogger().i("GiftAnimation", "rich webView ready", new Object[0]);
+          }
+          paramString1 = this.mAnimationListener;
+          if (paramString1 != null) {
+            paramString1.animViewReady();
+          }
+          ThreadCenter.removeUITask(this, this.mReload);
+          return;
+        }
+        if ("animationLog".equals(paramString1))
+        {
+          paramString1 = this.mLuxuryGiftAdapter;
+          if (paramString1 != null)
+          {
+            paramString1 = paramString1.getLogger();
+            paramString2 = new StringBuilder();
+            paramString2.append("JS: ");
+            paramString2.append((String)paramMap.get("log"));
+            paramString1.i("GiftAnimation", paramString2.toString(), new Object[0]);
+          }
+        }
       }
     }
-    label119:
-    do
-    {
-      return;
-      if ("animationReady".equals(paramString1))
-      {
-        this.mIsAnimationReady = true;
-        if (this.mLuxuryGiftAdapter != null) {
-          this.mLuxuryGiftAdapter.getLogger().i("GiftAnimation", "rich webView ready", new Object[0]);
-        }
-        if (this.mAnimationListener != null) {
-          this.mAnimationListener.animViewReady();
-        }
-        ThreadCenter.removeUITask(this, this.mReload);
-        return;
-      }
-    } while ((!"animationLog".equals(paramString1)) || (this.mLuxuryGiftAdapter == null));
-    this.mLuxuryGiftAdapter.getLogger().i("GiftAnimation", "JS: " + (String)paramMap.get("log"), new Object[0]);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -188,19 +213,14 @@ public class RichGiftShowView
   public void showAnimation(WebGiftInfo paramWebGiftInfo)
   {
     this.mLuxuryGiftAdapter.getLogger().e("GiftAnimation", " rich h5  start to play", new Object[0]);
-    if ((!this.mIsAnimationReady) || (paramWebGiftInfo == null))
+    if ((this.mIsAnimationReady) && (paramWebGiftInfo != null))
     {
-      if (this.mRichGiftPlayListener != null) {
-        this.mRichGiftPlayListener.onEnd();
+      int i;
+      if (this.mIsContainerShow) {
+        i = 0;
+      } else {
+        i = 8;
       }
-      if (this.mAnimationListener != null) {
-        this.mAnimationListener.animationEnd();
-      }
-      return;
-    }
-    if (this.mIsContainerShow) {}
-    for (int i = 0;; i = 8)
-    {
       setVisibility(i);
       JSONObject localJSONObject = new JSONObject();
       try
@@ -211,36 +231,57 @@ public class RichGiftShowView
         localJSONObject.put("gift_action", paramWebGiftInfo.comment);
         localJSONObject.put("sender_nickname", paramWebGiftInfo.senderName);
         localJSONObject.put("sender_image", paramWebGiftInfo.senderHeadKey);
-        if ((paramWebGiftInfo.senderHeadUrl != null) && (paramWebGiftInfo.senderHeadUrl.length() > 0) && (!paramWebGiftInfo.senderHeadUrl.endsWith("/"))) {
-          paramWebGiftInfo.senderHeadUrl += "/";
+        if ((paramWebGiftInfo.senderHeadUrl != null) && (paramWebGiftInfo.senderHeadUrl.length() > 0) && (!paramWebGiftInfo.senderHeadUrl.endsWith("/")))
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append(paramWebGiftInfo.senderHeadUrl);
+          localStringBuilder1.append("/");
+          paramWebGiftInfo.senderHeadUrl = localStringBuilder1.toString();
         }
         localJSONObject.put("sender_image_url", paramWebGiftInfo.senderHeadUrl);
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
+        localJSONException.printStackTrace();
       }
       ThreadCenter.postDelayedUITask(this, this.mDelayRunnable, 20000L);
-      this.mLuxuryGiftAdapter.getLogger().i("GiftAnimation", " jsonObj=" + localJSONObject.toString(), new Object[0]);
-      loadUrl("javascript:__WEBVIEW_PLAY_ANIMATION(" + localJSONObject.toString() + ")");
+      Object localObject = this.mLuxuryGiftAdapter.getLogger();
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" jsonObj=");
+      localStringBuilder2.append(localJSONObject.toString());
+      ((LogInterface)localObject).i("GiftAnimation", localStringBuilder2.toString(), new Object[0]);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("javascript:__WEBVIEW_PLAY_ANIMATION(");
+      ((StringBuilder)localObject).append(localJSONObject.toString());
+      ((StringBuilder)localObject).append(")");
+      loadUrl(((StringBuilder)localObject).toString());
       this.mLuxuryGiftAdapter.getLogger().i("GiftAnimation", "start rich gift animation, effect_id=%s, gift_name=%s, sender_nickname=%s", new Object[] { paramWebGiftInfo.effectId, paramWebGiftInfo.giftName, paramWebGiftInfo.senderName });
       this.mIsWorking = true;
       return;
+    }
+    paramWebGiftInfo = this.mRichGiftPlayListener;
+    if (paramWebGiftInfo != null) {
+      paramWebGiftInfo.onEnd();
+    }
+    paramWebGiftInfo = this.mAnimationListener;
+    if (paramWebGiftInfo != null) {
+      paramWebGiftInfo.animationEnd();
     }
   }
   
   public void showCtrls(boolean paramBoolean)
   {
-    this.mLuxuryGiftAdapter.getLogger().e("GiftAnimation", "h5=" + paramBoolean, new Object[0]);
+    LogInterface localLogInterface = this.mLuxuryGiftAdapter.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("h5=");
+    localStringBuilder.append(paramBoolean);
+    localLogInterface.e("GiftAnimation", localStringBuilder.toString(), new Object[0]);
     this.mIsContainerShow = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.web.RichGiftShowView
  * JD-Core Version:    0.7.0.1
  */

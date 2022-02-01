@@ -13,608 +13,530 @@ public class TXVerifyAPKUtil
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 8
+    //   1: astore 7
     //   3: aconst_null
-    //   4: astore 9
-    //   6: iconst_1
-    //   7: istore_3
-    //   8: iload_3
-    //   9: istore_2
-    //   10: ldc 17
-    //   12: invokestatic 20	com/tencent/qqprotect/sfcfg/TXVerifyAPKUtil:a	(Ljava/lang/String;)Ljava/security/PublicKey;
-    //   15: astore 11
-    //   17: aload 11
-    //   19: ifnonnull +33 -> 52
-    //   22: sipush 129
-    //   25: istore_2
-    //   26: iconst_0
-    //   27: ifeq +11 -> 38
-    //   30: new 22	java/lang/NullPointerException
-    //   33: dup
-    //   34: invokespecial 23	java/lang/NullPointerException:<init>	()V
-    //   37: athrow
-    //   38: iconst_0
-    //   39: ifeq +11 -> 50
-    //   42: new 22	java/lang/NullPointerException
-    //   45: dup
-    //   46: invokespecial 23	java/lang/NullPointerException:<init>	()V
-    //   49: athrow
-    //   50: iload_2
-    //   51: ireturn
-    //   52: aload_0
-    //   53: ifnull +21 -> 74
-    //   56: iload_3
-    //   57: istore_2
-    //   58: ldc 25
-    //   60: aload_0
-    //   61: invokevirtual 31	java/lang/String:trim	()Ljava/lang/String;
-    //   64: invokevirtual 35	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   67: istore 7
-    //   69: iload 7
-    //   71: ifeq +34 -> 105
-    //   74: bipush 17
-    //   76: istore_2
-    //   77: iconst_0
-    //   78: ifeq +11 -> 89
-    //   81: new 22	java/lang/NullPointerException
-    //   84: dup
-    //   85: invokespecial 23	java/lang/NullPointerException:<init>	()V
-    //   88: athrow
-    //   89: iconst_0
-    //   90: ifeq -40 -> 50
-    //   93: new 22	java/lang/NullPointerException
-    //   96: dup
-    //   97: invokespecial 23	java/lang/NullPointerException:<init>	()V
-    //   100: athrow
-    //   101: astore_0
-    //   102: bipush 17
-    //   104: ireturn
-    //   105: iload_3
-    //   106: istore_2
-    //   107: new 37	java/io/File
-    //   110: dup
-    //   111: aload_0
-    //   112: invokespecial 40	java/io/File:<init>	(Ljava/lang/String;)V
-    //   115: astore 10
-    //   117: aload 10
-    //   119: ifnull +17 -> 136
-    //   122: iload_3
-    //   123: istore_2
-    //   124: aload 10
-    //   126: invokevirtual 44	java/io/File:exists	()Z
-    //   129: istore 7
-    //   131: iload 7
-    //   133: ifne +32 -> 165
-    //   136: iconst_3
-    //   137: istore_2
-    //   138: iconst_0
-    //   139: ifeq +11 -> 150
-    //   142: new 22	java/lang/NullPointerException
-    //   145: dup
-    //   146: invokespecial 23	java/lang/NullPointerException:<init>	()V
-    //   149: athrow
-    //   150: iconst_0
-    //   151: ifeq -101 -> 50
-    //   154: new 22	java/lang/NullPointerException
-    //   157: dup
-    //   158: invokespecial 23	java/lang/NullPointerException:<init>	()V
-    //   161: athrow
-    //   162: astore_0
-    //   163: iconst_3
-    //   164: ireturn
-    //   165: bipush 33
-    //   167: istore_2
-    //   168: aload_0
-    //   169: invokestatic 49	com/tencent/qqprotect/sfcfg/TXSafeCheckUtil:a	(Ljava/lang/String;)Ljava/util/Map;
-    //   172: astore 10
-    //   174: aload 10
-    //   176: ifnonnull +36 -> 212
-    //   179: sipush 142
-    //   182: istore_2
-    //   183: iconst_0
-    //   184: ifeq +11 -> 195
-    //   187: new 22	java/lang/NullPointerException
-    //   190: dup
-    //   191: invokespecial 23	java/lang/NullPointerException:<init>	()V
-    //   194: athrow
-    //   195: iconst_0
-    //   196: ifeq -146 -> 50
-    //   199: new 22	java/lang/NullPointerException
-    //   202: dup
-    //   203: invokespecial 23	java/lang/NullPointerException:<init>	()V
-    //   206: athrow
-    //   207: astore_0
-    //   208: sipush 142
-    //   211: ireturn
-    //   212: bipush 34
-    //   214: istore_2
-    //   215: new 51	java/util/jar/JarFile
-    //   218: dup
-    //   219: aload_0
-    //   220: invokespecial 52	java/util/jar/JarFile:<init>	(Ljava/lang/String;)V
-    //   223: astore_0
-    //   224: aload_0
+    //   4: astore 11
+    //   6: aconst_null
+    //   7: astore 8
+    //   9: aconst_null
+    //   10: astore 10
+    //   12: ldc 17
+    //   14: invokestatic 20	com/tencent/qqprotect/sfcfg/TXVerifyAPKUtil:a	(Ljava/lang/String;)Ljava/security/PublicKey;
+    //   17: astore 13
+    //   19: aload 13
+    //   21: ifnonnull +7 -> 28
+    //   24: sipush 129
+    //   27: ireturn
+    //   28: aload_0
+    //   29: ifnull +628 -> 657
+    //   32: ldc 22
+    //   34: aload_0
+    //   35: invokevirtual 28	java/lang/String:trim	()Ljava/lang/String;
+    //   38: invokevirtual 32	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   41: ifeq +6 -> 47
+    //   44: goto +613 -> 657
+    //   47: new 34	java/io/File
+    //   50: dup
+    //   51: aload_0
+    //   52: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
+    //   55: invokevirtual 41	java/io/File:exists	()Z
+    //   58: istore 6
+    //   60: iload 6
+    //   62: ifne +5 -> 67
+    //   65: iconst_3
+    //   66: ireturn
+    //   67: aload_0
+    //   68: invokestatic 46	com/tencent/qqprotect/sfcfg/TXSafeCheckUtil:a	(Ljava/lang/String;)Ljava/util/Map;
+    //   71: astore 12
+    //   73: aload 12
+    //   75: ifnonnull +7 -> 82
+    //   78: sipush 142
+    //   81: ireturn
+    //   82: new 48	java/util/jar/JarFile
+    //   85: dup
+    //   86: aload_0
+    //   87: invokespecial 49	java/util/jar/JarFile:<init>	(Ljava/lang/String;)V
+    //   90: astore_0
+    //   91: aload 11
+    //   93: astore 8
+    //   95: aload_0
+    //   96: astore 9
+    //   98: aload_0
+    //   99: aload_1
+    //   100: invokevirtual 53	java/util/jar/JarFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   103: astore_1
+    //   104: sipush 135
+    //   107: istore_2
+    //   108: aload_1
+    //   109: ifnonnull +11 -> 120
+    //   112: iconst_5
+    //   113: istore_2
+    //   114: aload 10
+    //   116: astore_1
+    //   117: goto +436 -> 553
+    //   120: aload 11
+    //   122: astore 8
+    //   124: aload_0
+    //   125: astore 9
+    //   127: new 55	java/io/DataInputStream
+    //   130: dup
+    //   131: aload_0
+    //   132: aload_1
+    //   133: invokevirtual 59	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   136: invokespecial 62	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   139: astore_1
+    //   140: aload_1
+    //   141: invokevirtual 66	java/io/DataInputStream:readInt	()I
+    //   144: ldc 67
+    //   146: if_icmpeq +10 -> 156
+    //   149: sipush 132
+    //   152: istore_2
+    //   153: goto +637 -> 790
+    //   156: aload_1
+    //   157: invokevirtual 66	java/io/DataInputStream:readInt	()I
+    //   160: istore_3
+    //   161: iload_3
+    //   162: sipush 128
+    //   165: if_icmplt +381 -> 546
+    //   168: iload_3
+    //   169: sipush 256
+    //   172: if_icmple +6 -> 178
+    //   175: goto +371 -> 546
+    //   178: aload_1
+    //   179: invokevirtual 66	java/io/DataInputStream:readInt	()I
+    //   182: ldc 68
+    //   184: if_icmpeq +10 -> 194
+    //   187: sipush 134
+    //   190: istore_2
+    //   191: goto +599 -> 790
+    //   194: aload_1
+    //   195: invokevirtual 66	java/io/DataInputStream:readInt	()I
+    //   198: istore 5
+    //   200: aload_1
+    //   201: invokevirtual 66	java/io/DataInputStream:readInt	()I
+    //   204: istore 4
+    //   206: iload 4
+    //   208: ifgt +6 -> 214
+    //   211: goto +579 -> 790
+    //   214: aload_1
+    //   215: invokevirtual 71	java/io/DataInputStream:readUTF	()Ljava/lang/String;
+    //   218: astore 14
+    //   220: iload_3
+    //   221: newarray byte
+    //   223: astore 15
     //   225: aload_1
-    //   226: invokevirtual 56	java/util/jar/JarFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   229: astore_1
-    //   230: aload_1
-    //   231: ifnonnull +62 -> 293
-    //   234: iconst_5
-    //   235: istore_2
-    //   236: aconst_null
-    //   237: astore_1
-    //   238: aload_1
-    //   239: ifnull +7 -> 246
-    //   242: aload_1
-    //   243: invokevirtual 61	java/io/DataInputStream:close	()V
-    //   246: iload_2
-    //   247: istore_3
-    //   248: aload_0
-    //   249: ifnull +9 -> 258
-    //   252: aload_0
-    //   253: invokevirtual 62	java/util/jar/JarFile:close	()V
-    //   256: iload_2
-    //   257: istore_3
-    //   258: iload_3
-    //   259: istore_2
-    //   260: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   263: ifeq -213 -> 50
-    //   266: ldc 69
-    //   268: iconst_2
-    //   269: new 71	java/lang/StringBuilder
-    //   272: dup
-    //   273: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   276: ldc 74
-    //   278: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   281: iload_3
-    //   282: invokevirtual 81	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   285: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   288: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   291: iload_3
-    //   292: ireturn
-    //   293: bipush 36
-    //   295: istore_2
-    //   296: new 58	java/io/DataInputStream
-    //   299: dup
-    //   300: aload_0
-    //   301: aload_1
-    //   302: invokevirtual 92	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   305: invokespecial 95	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   308: astore_1
-    //   309: bipush 37
-    //   311: istore_3
-    //   312: aload_1
-    //   313: astore 8
-    //   315: iload_3
-    //   316: istore_2
-    //   317: aload_1
-    //   318: invokevirtual 99	java/io/DataInputStream:readInt	()I
-    //   321: ldc 100
-    //   323: if_icmpeq +10 -> 333
-    //   326: sipush 132
-    //   329: istore_2
-    //   330: goto -92 -> 238
-    //   333: aload_1
-    //   334: astore 8
-    //   336: iload_3
-    //   337: istore_2
-    //   338: aload_1
-    //   339: invokevirtual 99	java/io/DataInputStream:readInt	()I
-    //   342: istore 4
-    //   344: iload 4
-    //   346: sipush 128
-    //   349: if_icmplt +544 -> 893
-    //   352: iload 4
-    //   354: sipush 256
-    //   357: if_icmple +6 -> 363
-    //   360: goto +533 -> 893
-    //   363: aload_1
-    //   364: astore 8
-    //   366: iload_3
-    //   367: istore_2
-    //   368: aload_1
-    //   369: invokevirtual 99	java/io/DataInputStream:readInt	()I
-    //   372: ldc 101
-    //   374: if_icmpeq +10 -> 384
-    //   377: sipush 134
-    //   380: istore_2
-    //   381: goto -143 -> 238
-    //   384: aload_1
-    //   385: astore 8
-    //   387: iload_3
-    //   388: istore_2
-    //   389: aload_1
-    //   390: invokevirtual 99	java/io/DataInputStream:readInt	()I
-    //   393: istore 5
-    //   395: aload_1
-    //   396: astore 8
-    //   398: iload_3
-    //   399: istore_2
-    //   400: aload_1
-    //   401: invokevirtual 99	java/io/DataInputStream:readInt	()I
-    //   404: istore 6
-    //   406: iload 6
-    //   408: ifgt +10 -> 418
-    //   411: sipush 135
-    //   414: istore_2
-    //   415: goto -177 -> 238
-    //   418: bipush 38
-    //   420: istore_2
-    //   421: aload_1
-    //   422: astore 8
-    //   424: aload_1
-    //   425: invokevirtual 104	java/io/DataInputStream:readUTF	()Ljava/lang/String;
-    //   428: astore 12
-    //   430: bipush 39
-    //   432: istore_3
-    //   433: aload_1
-    //   434: astore 8
-    //   436: iload_3
-    //   437: istore_2
-    //   438: iload 4
-    //   440: newarray byte
-    //   442: astore 13
-    //   444: aload_1
-    //   445: astore 8
-    //   447: iload_3
-    //   448: istore_2
-    //   449: aload_1
-    //   450: aload 13
-    //   452: invokevirtual 108	java/io/DataInputStream:read	([B)I
-    //   455: pop
-    //   456: aload_1
-    //   457: astore 8
-    //   459: iload_3
-    //   460: istore_2
-    //   461: aload_1
-    //   462: invokevirtual 61	java/io/DataInputStream:close	()V
-    //   465: aconst_null
-    //   466: astore_1
-    //   467: aconst_null
-    //   468: astore 9
-    //   470: bipush 40
-    //   472: istore_2
-    //   473: aload_1
-    //   474: astore 8
-    //   476: aload 12
-    //   478: ldc 110
-    //   480: invokevirtual 114	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   483: aload 13
-    //   485: aload 11
-    //   487: invokestatic 117	com/tencent/qqprotect/sfcfg/TXVerifyAPKUtil:a	([B[BLjava/security/PublicKey;)Z
-    //   490: ifne +13 -> 503
-    //   493: sipush 137
-    //   496: istore_2
-    //   497: aload 9
-    //   499: astore_1
-    //   500: goto -262 -> 238
-    //   503: bipush 41
-    //   505: istore 4
-    //   507: aload_1
-    //   508: astore 8
-    //   510: iload 4
-    //   512: istore_2
-    //   513: new 71	java/lang/StringBuilder
-    //   516: dup
-    //   517: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   520: astore 11
-    //   522: iconst_0
-    //   523: istore_3
-    //   524: aload_1
-    //   525: astore 8
-    //   527: iload 4
-    //   529: istore_2
-    //   530: iload_3
-    //   531: aload 12
-    //   533: invokevirtual 120	java/lang/String:length	()I
-    //   536: if_icmpge +32 -> 568
-    //   539: aload_1
-    //   540: astore 8
-    //   542: iload 4
-    //   544: istore_2
-    //   545: aload 11
-    //   547: aload 12
-    //   549: iload_3
-    //   550: invokevirtual 124	java/lang/String:charAt	(I)C
-    //   553: iload 5
-    //   555: ixor
-    //   556: i2c
-    //   557: invokevirtual 127	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   560: pop
-    //   561: iload_3
-    //   562: iconst_1
-    //   563: iadd
+    //   226: aload 15
+    //   228: invokevirtual 75	java/io/DataInputStream:read	([B)I
+    //   231: pop
+    //   232: aload_1
+    //   233: invokevirtual 78	java/io/DataInputStream:close	()V
+    //   236: aload 11
+    //   238: astore 8
+    //   240: aload_0
+    //   241: astore 9
+    //   243: aload 14
+    //   245: ldc 80
+    //   247: invokevirtual 84	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   250: aload 15
+    //   252: aload 13
+    //   254: invokestatic 87	com/tencent/qqprotect/sfcfg/TXVerifyAPKUtil:a	([B[BLjava/security/PublicKey;)Z
+    //   257: istore 6
+    //   259: iload 6
+    //   261: ifne +13 -> 274
+    //   264: sipush 137
+    //   267: istore_2
+    //   268: aload 10
+    //   270: astore_1
+    //   271: goto +282 -> 553
+    //   274: aload 11
+    //   276: astore 8
+    //   278: aload_0
+    //   279: astore 9
+    //   281: new 89	java/lang/StringBuilder
+    //   284: dup
+    //   285: invokespecial 90	java/lang/StringBuilder:<init>	()V
+    //   288: astore_1
+    //   289: iconst_0
+    //   290: istore_3
+    //   291: aload 11
+    //   293: astore 8
+    //   295: aload_0
+    //   296: astore 9
+    //   298: iload_3
+    //   299: aload 14
+    //   301: invokevirtual 93	java/lang/String:length	()I
+    //   304: if_icmpge +32 -> 336
+    //   307: aload 11
+    //   309: astore 8
+    //   311: aload_0
+    //   312: astore 9
+    //   314: aload_1
+    //   315: aload 14
+    //   317: iload_3
+    //   318: invokevirtual 97	java/lang/String:charAt	(I)C
+    //   321: iload 5
+    //   323: ixor
+    //   324: i2c
+    //   325: invokevirtual 101	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   328: pop
+    //   329: iload_3
+    //   330: iconst_1
+    //   331: iadd
+    //   332: istore_3
+    //   333: goto -42 -> 291
+    //   336: aload 11
+    //   338: astore 8
+    //   340: aload_0
+    //   341: astore 9
+    //   343: aload_1
+    //   344: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   347: ldc 106
+    //   349: invokevirtual 110	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   352: astore_1
+    //   353: aload 11
+    //   355: astore 8
+    //   357: aload_0
+    //   358: astore 9
+    //   360: aload_1
+    //   361: arraylength
+    //   362: istore_3
+    //   363: iload_3
+    //   364: iload 4
+    //   366: if_icmpeq +9 -> 375
+    //   369: aload 10
+    //   371: astore_1
+    //   372: goto +181 -> 553
+    //   375: aload 11
+    //   377: astore 8
+    //   379: aload_0
+    //   380: astore 9
+    //   382: aload_1
+    //   383: arraylength
+    //   384: istore_3
+    //   385: iconst_0
+    //   386: istore_2
+    //   387: iload_2
+    //   388: iload_3
+    //   389: if_icmpge +78 -> 467
+    //   392: aload 11
+    //   394: astore 8
+    //   396: aload_0
+    //   397: astore 9
+    //   399: aload_1
+    //   400: iload_2
+    //   401: aaload
+    //   402: ldc 112
+    //   404: invokevirtual 110	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   407: astore 13
+    //   409: aload 11
+    //   411: astore 8
+    //   413: aload_0
+    //   414: astore 9
+    //   416: aload 13
+    //   418: arraylength
+    //   419: iconst_2
+    //   420: if_icmpeq +6 -> 426
+    //   423: goto +37 -> 460
+    //   426: aload 11
+    //   428: astore 8
+    //   430: aload_0
+    //   431: astore 9
+    //   433: aload 12
+    //   435: aload 13
+    //   437: iconst_0
+    //   438: aaload
+    //   439: aload 13
+    //   441: iconst_1
+    //   442: aaload
+    //   443: invokestatic 115	com/tencent/qqprotect/sfcfg/TXSafeCheckUtil:a	(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)I
+    //   446: istore 4
+    //   448: iload 4
+    //   450: ifeq +10 -> 460
+    //   453: aload_0
+    //   454: invokevirtual 116	java/util/jar/JarFile:close	()V
+    //   457: iload 4
+    //   459: ireturn
+    //   460: iload_2
+    //   461: iconst_1
+    //   462: iadd
+    //   463: istore_2
+    //   464: goto -77 -> 387
+    //   467: iconst_0
+    //   468: istore_2
+    //   469: aload 10
+    //   471: astore_1
+    //   472: goto +81 -> 553
+    //   475: astore 8
+    //   477: bipush 42
+    //   479: istore_2
+    //   480: aload_0
+    //   481: astore_1
+    //   482: aload 8
+    //   484: astore_0
+    //   485: goto +186 -> 671
+    //   488: astore 8
+    //   490: bipush 41
+    //   492: istore_2
+    //   493: aload_0
+    //   494: astore_1
+    //   495: aload 8
+    //   497: astore_0
+    //   498: goto +173 -> 671
+    //   501: astore 8
+    //   503: bipush 40
+    //   505: istore_2
+    //   506: aload_0
+    //   507: astore_1
+    //   508: aload 8
+    //   510: astore_0
+    //   511: goto +160 -> 671
+    //   514: astore 8
+    //   516: bipush 39
+    //   518: istore_2
+    //   519: aload_1
+    //   520: astore 7
+    //   522: aload_0
+    //   523: astore_1
+    //   524: aload 8
+    //   526: astore_0
+    //   527: goto +144 -> 671
+    //   530: astore 8
+    //   532: bipush 38
+    //   534: istore_2
+    //   535: aload_1
+    //   536: astore 7
+    //   538: aload_0
+    //   539: astore_1
+    //   540: aload 8
+    //   542: astore_0
+    //   543: goto +128 -> 671
+    //   546: sipush 133
+    //   549: istore_2
+    //   550: goto +240 -> 790
+    //   553: aload_0
+    //   554: astore 7
+    //   556: iload_2
+    //   557: istore 4
+    //   559: aload_1
+    //   560: ifnull +15 -> 575
+    //   563: iload_2
     //   564: istore_3
-    //   565: goto -41 -> 524
-    //   568: aload_1
-    //   569: astore 8
-    //   571: iload 4
-    //   573: istore_2
-    //   574: aload 11
-    //   576: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   579: ldc 129
-    //   581: invokevirtual 133	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   584: astore 12
-    //   586: aload_1
-    //   587: astore 8
-    //   589: iload 4
-    //   591: istore_2
-    //   592: aload 12
-    //   594: arraylength
-    //   595: iload 6
-    //   597: if_icmpeq +13 -> 610
-    //   600: sipush 135
-    //   603: istore_2
-    //   604: aload 9
-    //   606: astore_1
-    //   607: goto -369 -> 238
-    //   610: bipush 42
-    //   612: istore 5
-    //   614: aload_1
-    //   615: astore 8
-    //   617: iload 5
-    //   619: istore_2
-    //   620: aload 12
-    //   622: arraylength
-    //   623: istore 6
-    //   625: iconst_0
-    //   626: istore_3
-    //   627: iload_3
-    //   628: iload 6
-    //   630: if_icmpge +92 -> 722
-    //   633: aload_1
-    //   634: astore 8
-    //   636: iload 5
-    //   638: istore_2
-    //   639: aload 12
-    //   641: iload_3
-    //   642: aaload
-    //   643: ldc 135
-    //   645: invokevirtual 133	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   648: astore 11
-    //   650: aload_1
-    //   651: astore 8
-    //   653: iload 5
-    //   655: istore_2
-    //   656: aload 11
-    //   658: arraylength
-    //   659: iconst_2
-    //   660: if_icmpeq +6 -> 666
-    //   663: goto +237 -> 900
-    //   666: aload_1
-    //   667: astore 8
-    //   669: iload 5
-    //   671: istore_2
-    //   672: aload 10
-    //   674: aload 11
-    //   676: iconst_0
-    //   677: aaload
-    //   678: aload 11
-    //   680: iconst_1
-    //   681: aaload
-    //   682: invokestatic 138	com/tencent/qqprotect/sfcfg/TXSafeCheckUtil:a	(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)I
-    //   685: istore 4
-    //   687: iload 4
-    //   689: ifeq +211 -> 900
-    //   692: iconst_0
-    //   693: ifeq +11 -> 704
-    //   696: new 22	java/lang/NullPointerException
-    //   699: dup
-    //   700: invokespecial 23	java/lang/NullPointerException:<init>	()V
-    //   703: athrow
-    //   704: iload 4
-    //   706: istore_2
-    //   707: aload_0
-    //   708: ifnull -658 -> 50
-    //   711: aload_0
-    //   712: invokevirtual 62	java/util/jar/JarFile:close	()V
-    //   715: iload 4
-    //   717: ireturn
-    //   718: astore_0
-    //   719: iload 4
-    //   721: ireturn
-    //   722: iconst_0
-    //   723: istore_2
-    //   724: aload 9
-    //   726: astore_1
-    //   727: goto -489 -> 238
-    //   730: astore_0
-    //   731: aload 9
-    //   733: astore_1
-    //   734: aload_0
-    //   735: invokevirtual 141	java/lang/Throwable:printStackTrace	()V
-    //   738: aload 8
-    //   740: ifnull +8 -> 748
-    //   743: aload 8
-    //   745: invokevirtual 61	java/io/DataInputStream:close	()V
-    //   748: iload_2
-    //   749: istore_3
-    //   750: aload_1
-    //   751: ifnull -493 -> 258
-    //   754: aload_1
-    //   755: invokevirtual 62	java/util/jar/JarFile:close	()V
-    //   758: iload_2
-    //   759: istore_3
-    //   760: goto -502 -> 258
-    //   763: astore_0
-    //   764: iload_2
-    //   765: istore_3
-    //   766: goto -508 -> 258
-    //   769: astore_1
-    //   770: aconst_null
-    //   771: astore 9
-    //   773: aconst_null
-    //   774: astore_0
-    //   775: aload_0
-    //   776: ifnull +7 -> 783
-    //   779: aload_0
-    //   780: invokevirtual 61	java/io/DataInputStream:close	()V
-    //   783: aload 9
-    //   785: ifnull +8 -> 793
-    //   788: aload 9
-    //   790: invokevirtual 62	java/util/jar/JarFile:close	()V
-    //   793: aload_1
-    //   794: athrow
-    //   795: astore_0
-    //   796: goto -3 -> 793
-    //   799: astore_1
-    //   800: aconst_null
-    //   801: astore 8
-    //   803: aload_0
-    //   804: astore 9
-    //   806: aload 8
-    //   808: astore_0
-    //   809: goto -34 -> 775
-    //   812: astore_1
-    //   813: aload_0
-    //   814: astore 9
-    //   816: aload 8
-    //   818: astore_0
-    //   819: goto -44 -> 775
-    //   822: astore 10
-    //   824: aload_1
-    //   825: astore 9
-    //   827: aload 8
-    //   829: astore_0
-    //   830: aload 10
-    //   832: astore_1
-    //   833: goto -58 -> 775
-    //   836: astore_0
-    //   837: bipush 34
-    //   839: istore_2
-    //   840: aload 9
-    //   842: astore_1
-    //   843: goto -109 -> 734
-    //   846: astore 9
-    //   848: aload_0
-    //   849: astore_1
-    //   850: aload 9
-    //   852: astore_0
-    //   853: goto -119 -> 734
-    //   856: astore 9
-    //   858: aload_1
-    //   859: astore 8
-    //   861: aload_0
-    //   862: astore_1
-    //   863: aload 9
-    //   865: astore_0
-    //   866: goto -132 -> 734
-    //   869: astore 9
-    //   871: aconst_null
-    //   872: astore 8
-    //   874: aload_0
-    //   875: astore_1
-    //   876: aload 9
-    //   878: astore_0
-    //   879: goto -145 -> 734
-    //   882: astore_0
-    //   883: iload_2
-    //   884: istore_3
-    //   885: goto -627 -> 258
-    //   888: astore_0
-    //   889: sipush 129
-    //   892: ireturn
-    //   893: sipush 133
-    //   896: istore_2
-    //   897: goto -659 -> 238
-    //   900: iload_3
-    //   901: iconst_1
-    //   902: iadd
-    //   903: istore_3
-    //   904: goto -277 -> 627
+    //   565: aload_1
+    //   566: invokevirtual 78	java/io/DataInputStream:close	()V
+    //   569: iload_2
+    //   570: istore 4
+    //   572: aload_0
+    //   573: astore 7
+    //   575: iload 4
+    //   577: istore_3
+    //   578: aload 7
+    //   580: invokevirtual 116	java/util/jar/JarFile:close	()V
+    //   583: iload 4
+    //   585: istore_3
+    //   586: goto +123 -> 709
+    //   589: astore 7
+    //   591: aload_1
+    //   592: astore 8
+    //   594: aload 7
+    //   596: astore_1
+    //   597: goto +155 -> 752
+    //   600: astore 8
+    //   602: bipush 37
+    //   604: istore_2
+    //   605: aload_1
+    //   606: astore 7
+    //   608: aload_0
+    //   609: astore_1
+    //   610: aload 8
+    //   612: astore_0
+    //   613: goto +58 -> 671
+    //   616: astore 8
+    //   618: bipush 36
+    //   620: istore_2
+    //   621: aload_0
+    //   622: astore_1
+    //   623: aload 8
+    //   625: astore_0
+    //   626: goto +45 -> 671
+    //   629: astore 8
+    //   631: aload_0
+    //   632: astore_1
+    //   633: aload 8
+    //   635: astore_0
+    //   636: goto +6 -> 642
+    //   639: astore_0
+    //   640: aconst_null
+    //   641: astore_1
+    //   642: bipush 34
+    //   644: istore_2
+    //   645: goto +26 -> 671
+    //   648: astore_0
+    //   649: aconst_null
+    //   650: astore_1
+    //   651: bipush 33
+    //   653: istore_2
+    //   654: goto +17 -> 671
+    //   657: bipush 17
+    //   659: ireturn
+    //   660: astore_1
+    //   661: aconst_null
+    //   662: astore_0
+    //   663: goto +89 -> 752
+    //   666: astore_0
+    //   667: aconst_null
+    //   668: astore_1
+    //   669: iconst_1
+    //   670: istore_2
+    //   671: aload 7
+    //   673: astore 8
+    //   675: aload_1
+    //   676: astore 9
+    //   678: aload_0
+    //   679: invokevirtual 119	java/lang/Throwable:printStackTrace	()V
+    //   682: aload 7
+    //   684: ifnull +10 -> 694
+    //   687: iload_2
+    //   688: istore_3
+    //   689: aload 7
+    //   691: invokevirtual 78	java/io/DataInputStream:close	()V
+    //   694: iload_2
+    //   695: istore_3
+    //   696: aload_1
+    //   697: ifnull +12 -> 709
+    //   700: aload_1
+    //   701: astore 7
+    //   703: iload_2
+    //   704: istore 4
+    //   706: goto -131 -> 575
+    //   709: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   712: ifeq +34 -> 746
+    //   715: new 89	java/lang/StringBuilder
+    //   718: dup
+    //   719: invokespecial 90	java/lang/StringBuilder:<init>	()V
+    //   722: astore_0
+    //   723: aload_0
+    //   724: ldc 126
+    //   726: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   729: pop
+    //   730: aload_0
+    //   731: iload_3
+    //   732: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   735: pop
+    //   736: ldc 134
+    //   738: iconst_2
+    //   739: aload_0
+    //   740: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   743: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   746: iload_3
+    //   747: ireturn
+    //   748: astore_1
+    //   749: aload 9
+    //   751: astore_0
+    //   752: aload 8
+    //   754: ifnull +8 -> 762
+    //   757: aload 8
+    //   759: invokevirtual 78	java/io/DataInputStream:close	()V
+    //   762: aload_0
+    //   763: ifnull +7 -> 770
+    //   766: aload_0
+    //   767: invokevirtual 116	java/util/jar/JarFile:close	()V
+    //   770: goto +5 -> 775
+    //   773: aload_1
+    //   774: athrow
+    //   775: goto -2 -> 773
+    //   778: astore_0
+    //   779: iload 4
+    //   781: ireturn
+    //   782: astore_0
+    //   783: goto -74 -> 709
+    //   786: astore_0
+    //   787: goto -17 -> 770
+    //   790: goto -237 -> 553
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	907	0	paramString1	String
-    //   0	907	1	paramString2	String
-    //   9	888	2	i	int
-    //   7	897	3	j	int
-    //   342	378	4	k	int
-    //   393	277	5	m	int
-    //   404	227	6	n	int
-    //   67	65	7	bool	boolean
-    //   1	872	8	str1	String
-    //   4	837	9	str2	String
-    //   846	5	9	localThrowable1	java.lang.Throwable
-    //   856	8	9	localThrowable2	java.lang.Throwable
-    //   869	8	9	localThrowable3	java.lang.Throwable
-    //   115	558	10	localObject1	Object
-    //   822	9	10	localObject2	Object
-    //   15	664	11	localObject3	Object
-    //   428	212	12	localObject4	Object
-    //   442	42	13	arrayOfByte	byte[]
+    //   0	793	0	paramString1	String
+    //   0	793	1	paramString2	String
+    //   107	597	2	i	int
+    //   160	587	3	j	int
+    //   204	576	4	k	int
+    //   198	126	5	m	int
+    //   58	202	6	bool	boolean
+    //   1	578	7	str1	String
+    //   589	6	7	localObject1	Object
+    //   606	96	7	str2	String
+    //   7	422	8	localObject2	Object
+    //   475	8	8	localThrowable1	java.lang.Throwable
+    //   488	8	8	localThrowable2	java.lang.Throwable
+    //   501	8	8	localThrowable3	java.lang.Throwable
+    //   514	11	8	localThrowable4	java.lang.Throwable
+    //   530	11	8	localThrowable5	java.lang.Throwable
+    //   592	1	8	str3	String
+    //   600	11	8	localThrowable6	java.lang.Throwable
+    //   616	8	8	localThrowable7	java.lang.Throwable
+    //   629	5	8	localThrowable8	java.lang.Throwable
+    //   673	85	8	str4	String
+    //   96	654	9	str5	String
+    //   10	460	10	localObject3	Object
+    //   4	423	11	localObject4	Object
+    //   71	363	12	localMap	java.util.Map
+    //   17	423	13	localObject5	Object
+    //   218	98	14	str6	String
+    //   223	28	15	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   81	89	101	java/io/IOException
-    //   93	101	101	java/io/IOException
-    //   142	150	162	java/io/IOException
-    //   154	162	162	java/io/IOException
-    //   187	195	207	java/io/IOException
-    //   199	207	207	java/io/IOException
-    //   696	704	718	java/io/IOException
-    //   711	715	718	java/io/IOException
-    //   10	17	730	java/lang/Throwable
-    //   58	69	730	java/lang/Throwable
-    //   107	117	730	java/lang/Throwable
-    //   124	131	730	java/lang/Throwable
-    //   168	174	730	java/lang/Throwable
-    //   743	748	763	java/io/IOException
-    //   754	758	763	java/io/IOException
-    //   10	17	769	finally
-    //   58	69	769	finally
-    //   107	117	769	finally
-    //   124	131	769	finally
-    //   168	174	769	finally
-    //   215	224	769	finally
-    //   779	783	795	java/io/IOException
-    //   788	793	795	java/io/IOException
-    //   224	230	799	finally
-    //   296	309	799	finally
-    //   317	326	812	finally
-    //   338	344	812	finally
-    //   368	377	812	finally
-    //   389	395	812	finally
-    //   400	406	812	finally
-    //   424	430	812	finally
-    //   438	444	812	finally
-    //   449	456	812	finally
-    //   461	465	812	finally
-    //   476	493	812	finally
-    //   513	522	812	finally
-    //   530	539	812	finally
-    //   545	561	812	finally
-    //   574	586	812	finally
-    //   592	600	812	finally
-    //   620	625	812	finally
-    //   639	650	812	finally
-    //   656	663	812	finally
-    //   672	687	812	finally
-    //   734	738	822	finally
-    //   215	224	836	java/lang/Throwable
-    //   224	230	846	java/lang/Throwable
-    //   296	309	846	java/lang/Throwable
-    //   317	326	856	java/lang/Throwable
-    //   338	344	856	java/lang/Throwable
-    //   368	377	856	java/lang/Throwable
-    //   389	395	856	java/lang/Throwable
-    //   400	406	856	java/lang/Throwable
-    //   424	430	856	java/lang/Throwable
-    //   438	444	856	java/lang/Throwable
-    //   449	456	856	java/lang/Throwable
-    //   461	465	856	java/lang/Throwable
-    //   476	493	869	java/lang/Throwable
-    //   513	522	869	java/lang/Throwable
-    //   530	539	869	java/lang/Throwable
-    //   545	561	869	java/lang/Throwable
-    //   574	586	869	java/lang/Throwable
-    //   592	600	869	java/lang/Throwable
-    //   620	625	869	java/lang/Throwable
-    //   639	650	869	java/lang/Throwable
-    //   656	663	869	java/lang/Throwable
-    //   672	687	869	java/lang/Throwable
-    //   242	246	882	java/io/IOException
-    //   252	256	882	java/io/IOException
-    //   30	38	888	java/io/IOException
-    //   42	50	888	java/io/IOException
+    //   382	385	475	java/lang/Throwable
+    //   399	409	475	java/lang/Throwable
+    //   416	423	475	java/lang/Throwable
+    //   433	448	475	java/lang/Throwable
+    //   281	289	488	java/lang/Throwable
+    //   298	307	488	java/lang/Throwable
+    //   314	329	488	java/lang/Throwable
+    //   343	353	488	java/lang/Throwable
+    //   360	363	488	java/lang/Throwable
+    //   243	259	501	java/lang/Throwable
+    //   220	236	514	java/lang/Throwable
+    //   214	220	530	java/lang/Throwable
+    //   140	149	589	finally
+    //   156	161	589	finally
+    //   178	187	589	finally
+    //   194	206	589	finally
+    //   214	220	589	finally
+    //   220	236	589	finally
+    //   140	149	600	java/lang/Throwable
+    //   156	161	600	java/lang/Throwable
+    //   178	187	600	java/lang/Throwable
+    //   194	206	600	java/lang/Throwable
+    //   127	140	616	java/lang/Throwable
+    //   98	104	629	java/lang/Throwable
+    //   82	91	639	java/lang/Throwable
+    //   67	73	648	java/lang/Throwable
+    //   12	19	660	finally
+    //   32	44	660	finally
+    //   47	60	660	finally
+    //   67	73	660	finally
+    //   82	91	660	finally
+    //   12	19	666	java/lang/Throwable
+    //   32	44	666	java/lang/Throwable
+    //   47	60	666	java/lang/Throwable
+    //   98	104	748	finally
+    //   127	140	748	finally
+    //   243	259	748	finally
+    //   281	289	748	finally
+    //   298	307	748	finally
+    //   314	329	748	finally
+    //   343	353	748	finally
+    //   360	363	748	finally
+    //   382	385	748	finally
+    //   399	409	748	finally
+    //   416	423	748	finally
+    //   433	448	748	finally
+    //   678	682	748	finally
+    //   453	457	778	java/io/IOException
+    //   565	569	782	java/io/IOException
+    //   578	583	782	java/io/IOException
+    //   689	694	782	java/io/IOException
+    //   757	762	786	java/io/IOException
+    //   766	770	786	java/io/IOException
   }
   
   private static PublicKey a(String paramString)
@@ -655,7 +577,7 @@ public class TXVerifyAPKUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.sfcfg.TXVerifyAPKUtil
  * JD-Core Version:    0.7.0.1
  */

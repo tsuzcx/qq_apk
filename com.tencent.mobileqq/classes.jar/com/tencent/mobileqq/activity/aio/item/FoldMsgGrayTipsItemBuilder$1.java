@@ -19,22 +19,23 @@ class FoldMsgGrayTipsItemBuilder$1
   
   public void onClick(View paramView)
   {
-    Object localObject = AIOUtils.a(paramView);
-    if ((localObject instanceof MessageForFoldMsgGrayTips))
+    Object localObject1 = AIOUtils.a(paramView);
+    if ((localObject1 instanceof MessageForFoldMsgGrayTips))
     {
-      ((MessageForFoldMsgGrayTips)localObject).isOpen = true;
-      FoldMsgGrayTipsItemBuilder.Holder localHolder = (FoldMsgGrayTipsItemBuilder.Holder)AIOUtils.a(paramView);
-      localHolder.jdField_b_of_type_AndroidWidgetTextView.setText(((MessageForFoldMsgGrayTips)localObject).getShowMsgContent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext));
-      localObject = localHolder.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-      if ((localObject instanceof ViewGroup.MarginLayoutParams))
+      Object localObject2 = (MessageForFoldMsgGrayTips)localObject1;
+      ((MessageForFoldMsgGrayTips)localObject2).isOpen = true;
+      localObject1 = (FoldMsgGrayTipsItemBuilder.Holder)AIOUtils.a(paramView);
+      ((FoldMsgGrayTipsItemBuilder.Holder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(((MessageForFoldMsgGrayTips)localObject2).getShowMsgContent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext));
+      localObject2 = ((FoldMsgGrayTipsItemBuilder.Holder)localObject1).jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
+      if ((localObject2 instanceof ViewGroup.MarginLayoutParams))
       {
-        localObject = (ViewGroup.MarginLayoutParams)localObject;
-        if (((ViewGroup.MarginLayoutParams)localObject).rightMargin != AIOUtils.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources())) {
-          ((ViewGroup.MarginLayoutParams)localObject).rightMargin = AIOUtils.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources());
+        localObject2 = (ViewGroup.MarginLayoutParams)localObject2;
+        if (((ViewGroup.MarginLayoutParams)localObject2).rightMargin != AIOUtils.b(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources())) {
+          ((ViewGroup.MarginLayoutParams)localObject2).rightMargin = AIOUtils.b(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources());
         }
       }
-      localHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      localHolder.a.requestLayout();
+      ((FoldMsgGrayTipsItemBuilder.Holder)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      ((FoldMsgGrayTipsItemBuilder.Holder)localObject1).a.requestLayout();
       ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BD", "0X80064BD", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -42,7 +43,7 @@ class FoldMsgGrayTipsItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FoldMsgGrayTipsItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

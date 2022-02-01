@@ -120,17 +120,20 @@ public class IntimateInfoHandler
   {
     int i = parseOIDBPkg(paramFromServiceMsg, paramObject, new oidb_0xcf3.RspBody());
     paramToServiceMsg = paramToServiceMsg.extraData.getString("friendUin");
-    if (i == 0) {
-      ((IntimateInfoManager)this.a.getManager(QQManagerFactory.INTIMATE_INFO_MANAGER)).a(paramToServiceMsg);
-    }
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (i == 0)
     {
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, String.format("handleDisbandIntimateRelationship, friendUin: %s, isSuccess: %s, result: %s", new Object[] { paramToServiceMsg, Boolean.valueOf(bool), Integer.valueOf(i) }));
-      }
-      notifyUI(1, bool, new Object[] { paramToServiceMsg, Boolean.valueOf(false) });
-      return;
+      ((IntimateInfoManager)this.a.getManager(QQManagerFactory.INTIMATE_INFO_MANAGER)).a(paramToServiceMsg);
+      bool = true;
     }
+    else
+    {
+      bool = false;
+    }
+    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, String.format("handleDisbandIntimateRelationship, friendUin: %s, isSuccess: %s, result: %s", new Object[] { paramToServiceMsg, Boolean.valueOf(bool), Integer.valueOf(i) }));
+    }
+    notifyUI(1, bool, new Object[] { paramToServiceMsg, Boolean.valueOf(false) });
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -138,40 +141,54 @@ public class IntimateInfoHandler
     Object localObject = new oidb_0xcf4.RspBody();
     int i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
     paramFromServiceMsg = paramToServiceMsg.extraData.getString("friendUin");
-    if (i == 0) {
-      paramToServiceMsg = IntimateInfo.copyFrom(this.a, (oidb_0xcf4.RspBody)localObject);
-    }
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (i == 0)
     {
-      if (paramToServiceMsg != null)
-      {
-        paramObject = (IntimateInfoManager)this.a.getManager(QQManagerFactory.INTIMATE_INFO_MANAGER);
-        localObject = paramObject.a(paramFromServiceMsg);
-        if (localObject != null)
-        {
-          paramToServiceMsg.lastAnimAfterScore = ((IntimateInfo)localObject).lastAnimAfterScore;
-          paramToServiceMsg.lastAnimAfterFriendDays = ((IntimateInfo)localObject).lastAnimAfterFriendDays;
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, "handleGetIntimateInfo old: " + localObject);
-          }
-        }
-        paramObject.a(paramFromServiceMsg, paramToServiceMsg);
-      }
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, String.format("handleGetIntimateInfo, isSuccess: %s, result: %s, intimateInfo: %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), paramToServiceMsg }));
-      }
-      notifyUI(0, bool, new Object[] { paramFromServiceMsg, paramToServiceMsg });
-      return;
-      paramToServiceMsg = null;
+      paramToServiceMsg = IntimateInfo.copyFrom(this.a, (oidb_0xcf4.RspBody)localObject);
+      bool = true;
     }
+    else
+    {
+      paramToServiceMsg = null;
+      bool = false;
+    }
+    if (paramToServiceMsg != null)
+    {
+      paramObject = (IntimateInfoManager)this.a.getManager(QQManagerFactory.INTIMATE_INFO_MANAGER);
+      localObject = paramObject.a(paramFromServiceMsg);
+      if (localObject != null)
+      {
+        paramToServiceMsg.lastAnimAfterScore = ((IntimateInfo)localObject).lastAnimAfterScore;
+        paramToServiceMsg.lastAnimAfterFriendDays = ((IntimateInfo)localObject).lastAnimAfterFriendDays;
+        if (com.tencent.qphone.base.util.QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleGetIntimateInfo old: ");
+          localStringBuilder.append(localObject);
+          com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, localStringBuilder.toString());
+        }
+      }
+      paramObject.a(paramFromServiceMsg, paramToServiceMsg);
+    }
+    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, String.format("handleGetIntimateInfo, isSuccess: %s, result: %s, intimateInfo: %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), paramToServiceMsg }));
+    }
+    notifyUI(0, bool, new Object[] { paramFromServiceMsg, paramToServiceMsg });
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    long l1 = ((Long)paramToServiceMsg.getAttribute("groupUin", Long.valueOf(0L))).longValue();
-    long l2 = ((Long)paramToServiceMsg.getAttribute("fromUin", Long.valueOf(0L))).longValue();
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, "handleGetIntimateGroupRecommendUinList " + l1 + " " + l2);
+    Long localLong = Long.valueOf(0L);
+    long l1 = ((Long)paramToServiceMsg.getAttribute("groupUin", localLong)).longValue();
+    long l2 = ((Long)paramToServiceMsg.getAttribute("fromUin", localLong)).longValue();
+    if (com.tencent.qphone.base.util.QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("handleGetIntimateGroupRecommendUinList ");
+      paramToServiceMsg.append(l1);
+      paramToServiceMsg.append(" ");
+      paramToServiceMsg.append(l2);
+      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, paramToServiceMsg.toString());
     }
     paramToServiceMsg = new oidb_0xd45.RspBody();
     int i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
@@ -187,27 +204,48 @@ public class IntimateInfoHandler
           paramFromServiceMsg.add((Long)paramToServiceMsg.next());
         }
       }
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, "handleGetIntimateGroupRecommendUinList succ: " + l1 + " " + l2 + " " + paramFromServiceMsg.toString());
+      if (com.tencent.qphone.base.util.QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("handleGetIntimateGroupRecommendUinList succ: ");
+        paramToServiceMsg.append(l1);
+        paramToServiceMsg.append(" ");
+        paramToServiceMsg.append(l2);
+        paramToServiceMsg.append(" ");
+        paramToServiceMsg.append(paramFromServiceMsg.toString());
+        com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, paramToServiceMsg.toString());
       }
       notifyUI(5, true, new Object[] { Long.valueOf(l2), paramFromServiceMsg });
       if (!paramFromServiceMsg.isEmpty()) {
         ((MultiCardManager)this.a.getManager(QQManagerFactory.TROOP_AIO_MULTI_CARD_MANAGER)).a(l2, paramFromServiceMsg);
       }
-      return;
     }
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, "handleGetIntimateGroupRecommendUinList failed result:" + i);
+    else
+    {
+      if (com.tencent.qphone.base.util.QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("handleGetIntimateGroupRecommendUinList failed result:");
+        paramToServiceMsg.append(i);
+        com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, paramToServiceMsg.toString());
+      }
+      notifyUI(5, false, new Object[] { Long.valueOf(l1), null });
     }
-    notifyUI(5, false, new Object[] { Long.valueOf(l1), null });
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    long l1 = ((Long)paramToServiceMsg.getAttribute("toUin", Long.valueOf(0L))).longValue();
-    long l2 = ((Long)paramToServiceMsg.getAttribute("fromUin", Long.valueOf(0L))).longValue();
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, "handleSendDateTypeEventToServer " + l1 + " " + l2);
+    Long localLong = Long.valueOf(0L);
+    long l1 = ((Long)paramToServiceMsg.getAttribute("toUin", localLong)).longValue();
+    long l2 = ((Long)paramToServiceMsg.getAttribute("fromUin", localLong)).longValue();
+    if (com.tencent.qphone.base.util.QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("handleSendDateTypeEventToServer ");
+      paramToServiceMsg.append(l1);
+      paramToServiceMsg.append(" ");
+      paramToServiceMsg.append(l2);
+      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, paramToServiceMsg.toString());
     }
     paramToServiceMsg = new oidb_0xcf4.RspBody();
     int i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
@@ -215,14 +253,24 @@ public class IntimateInfoHandler
     {
       l1 = paramToServiceMsg.uint64_from_uin.get();
       l2 = paramToServiceMsg.uint64_to_uin.get();
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, "handleSendDateTypeEventToServer succ: " + l1 + " " + l2);
+      if (com.tencent.qphone.base.util.QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("handleSendDateTypeEventToServer succ: ");
+        paramToServiceMsg.append(l1);
+        paramToServiceMsg.append(" ");
+        paramToServiceMsg.append(l2);
+        com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, paramToServiceMsg.toString());
       }
       notifyUI(6, true, new Object[] { Long.valueOf(l2) });
       return;
     }
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, "handleSendDateTypeEventToServer failed result:" + i);
+    if (com.tencent.qphone.base.util.QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("handleSendDateTypeEventToServer failed result:");
+      paramToServiceMsg.append(i);
+      com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, paramToServiceMsg.toString());
     }
     notifyUI(6, false, new Object[] { Long.valueOf(l1) });
   }
@@ -233,131 +281,143 @@ public class IntimateInfoHandler
       com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, "handleGetGroupIntimateInfos ");
     }
     Object localObject1 = paramToServiceMsg.getAttribute("exactData1");
-    Object localObject2 = new oidb_0xd4a.RspBody();
-    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject2);
+    Object localObject3 = new oidb_0xd4a.RspBody();
+    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject3);
+    paramToServiceMsg = " ";
     if (i == 0)
     {
       paramFromServiceMsg = new HashMap(50);
-      paramToServiceMsg = (MultiCardManager)this.a.getManager(QQManagerFactory.TROOP_AIO_MULTI_CARD_MANAGER);
-      paramObject = ((oidb_0xd4a.RspBody)localObject2).uint64_group_code.get() + "";
-      Object localObject3;
+      paramObject = (MultiCardManager)this.a.getManager(QQManagerFactory.TROOP_AIO_MULTI_CARD_MANAGER);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(((oidb_0xd4a.RspBody)localObject3).uint64_group_code.get());
+      ((StringBuilder)localObject2).append("");
+      localObject2 = ((StringBuilder)localObject2).toString();
       Object localObject4;
-      if (((oidb_0xd4a.RspBody)localObject2).rpt_msg_friend_data.has())
+      Object localObject5;
+      if (((oidb_0xd4a.RspBody)localObject3).rpt_msg_friend_data.has())
       {
-        localObject3 = ((oidb_0xd4a.RspBody)localObject2).rpt_msg_friend_data.get().iterator();
-        while (((Iterator)localObject3).hasNext())
+        localObject4 = ((oidb_0xd4a.RspBody)localObject3).rpt_msg_friend_data.get().iterator();
+        while (((Iterator)localObject4).hasNext())
         {
-          localObject4 = (oidb_0xd4a.FriendData)((Iterator)localObject3).next();
-          Object localObject5 = a((oidb_0xd4a.FriendData)localObject4);
-          localObject5 = IntimateInfo.copyFrom(this.a, (oidb_0xcf4.RspBody)localObject5);
-          paramFromServiceMsg.put(Long.valueOf(((oidb_0xd4a.FriendData)localObject4).uint64_to_uin.get()), localObject5);
-          paramToServiceMsg.a(paramObject, (IntimateInfo)localObject5);
+          localObject5 = (oidb_0xd4a.FriendData)((Iterator)localObject4).next();
+          Object localObject6 = a((oidb_0xd4a.FriendData)localObject5);
+          localObject6 = IntimateInfo.copyFrom(this.a, (oidb_0xcf4.RspBody)localObject6);
+          paramFromServiceMsg.put(Long.valueOf(((oidb_0xd4a.FriendData)localObject5).uint64_to_uin.get()), localObject6);
+          paramObject.a((String)localObject2, (IntimateInfo)localObject6);
         }
       }
-      if (((oidb_0xd4a.RspBody)localObject2).rpt_msg_not_friend_data.has())
+      if (((oidb_0xd4a.RspBody)localObject3).rpt_msg_not_friend_data.has())
       {
-        localObject2 = ((oidb_0xd4a.RspBody)localObject2).rpt_msg_not_friend_data.get().iterator();
-        while (((Iterator)localObject2).hasNext())
+        localObject3 = ((oidb_0xd4a.RspBody)localObject3).rpt_msg_not_friend_data.get().iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          localObject3 = (oidb_0xd4a.NotFriendData)((Iterator)localObject2).next();
-          localObject4 = a((oidb_0xd4a.NotFriendData)localObject3);
-          localObject4 = IntimateInfo.copyFrom(this.a, (oidb_0xcf4.RspBody)localObject4);
-          paramFromServiceMsg.put(Long.valueOf(((oidb_0xd4a.NotFriendData)localObject3).uint64_to_uin.get()), localObject4);
-          paramToServiceMsg.a(paramObject, (IntimateInfo)localObject4);
+          localObject4 = (oidb_0xd4a.NotFriendData)((Iterator)localObject3).next();
+          localObject5 = a((oidb_0xd4a.NotFriendData)localObject4);
+          localObject5 = IntimateInfo.copyFrom(this.a, (oidb_0xcf4.RspBody)localObject5);
+          paramFromServiceMsg.put(Long.valueOf(((oidb_0xd4a.NotFriendData)localObject4).uint64_to_uin.get()), localObject5);
+          paramObject.a((String)localObject2, (IntimateInfo)localObject5);
         }
       }
       if (com.tencent.qphone.base.util.QLog.isColorLevel())
       {
-        paramObject = new StringBuilder().append("handleGetGroupIntimateInfos succ: ").append(paramObject).append(" ").append(paramFromServiceMsg.toString()).append(" ");
-        if (localObject1 == null) {
-          break label378;
+        paramObject = new StringBuilder();
+        paramObject.append("handleGetGroupIntimateInfos succ: ");
+        paramObject.append((String)localObject2);
+        paramObject.append(" ");
+        paramObject.append(paramFromServiceMsg.toString());
+        paramObject.append(" ");
+        if (localObject1 != null) {
+          paramToServiceMsg = localObject1.toString();
         }
+        paramObject.append(paramToServiceMsg);
+        com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, paramObject.toString());
       }
-      label378:
-      for (paramToServiceMsg = localObject1.toString();; paramToServiceMsg = " ")
-      {
-        com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, paramToServiceMsg);
-        notifyUI(7, true, new Object[] { paramFromServiceMsg, localObject1 });
-        return;
-      }
+      notifyUI(7, true, new Object[] { paramFromServiceMsg, localObject1 });
+      return;
     }
     if (com.tencent.qphone.base.util.QLog.isColorLevel())
     {
-      paramFromServiceMsg = new StringBuilder().append("handleGetGroupIntimateInfos failed result:").append(i).append(" ");
-      if (localObject1 == null) {
-        break label462;
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("handleGetGroupIntimateInfos failed result:");
+      paramFromServiceMsg.append(i);
+      paramFromServiceMsg.append(" ");
+      if (localObject1 != null) {
+        paramToServiceMsg = localObject1.toString();
       }
+      paramFromServiceMsg.append(paramToServiceMsg);
+      com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, paramFromServiceMsg.toString());
     }
-    label462:
-    for (paramToServiceMsg = localObject1.toString();; paramToServiceMsg = " ")
-    {
-      com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, paramToServiceMsg);
-      notifyUI(7, false, new Object[] { null, localObject1 });
-      return;
-    }
+    notifyUI(7, false, new Object[] { null, localObject1 });
   }
   
   private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      return;
-    }
-    Object localObject = new oidb_0xe3e.RspBody();
-    int j = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
-    int i = 0;
-    paramFromServiceMsg = new ArrayList();
-    if (j == 0)
+    if (paramToServiceMsg != null)
     {
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, "HandleGetTroopWithCommonFriendsList is Success");
+      if (paramFromServiceMsg == null) {
+        return;
       }
-      if (((oidb_0xe3e.RspBody)localObject).uint32_cache_time_seconds.has())
+      Object localObject = new oidb_0xe3e.RspBody();
+      int i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+      paramFromServiceMsg = new ArrayList();
+      if (i == 0)
       {
-        i = ((oidb_0xe3e.RspBody)localObject).uint32_cache_time_seconds.get();
-        if ((i != 0) && (i <= 3600)) {
-          break label324;
+        if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+          com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, "HandleGetTroopWithCommonFriendsList is Success");
         }
-        i = 200;
-      }
-    }
-    label318:
-    label324:
-    for (;;)
-    {
-      long l = System.currentTimeMillis();
-      TroopWithCommonFriendsHelper.a(String.valueOf(((Long)paramToServiceMsg.getAttribute("frienduin", Long.valueOf(0L))).longValue()), l);
-      if (((oidb_0xe3e.RspBody)localObject).rpt_group_list.has())
-      {
-        paramToServiceMsg = ((oidb_0xe3e.RspBody)localObject).rpt_group_list.get();
-        j = 0;
-        if (j < paramToServiceMsg.size())
+        int j;
+        long l;
+        if (((oidb_0xe3e.RspBody)localObject).uint32_cache_time_seconds.has())
         {
-          paramObject = new TroopList();
-          localObject = (oidb_0xe3e.GroupList)paramToServiceMsg.get(j);
-          l = 0L;
-          if (((oidb_0xe3e.GroupList)localObject).uint64_group_code.has()) {
-            l = ((oidb_0xe3e.GroupList)localObject).uint64_group_code.get();
+          j = ((oidb_0xe3e.RspBody)localObject).uint32_cache_time_seconds.get();
+          if (j != 0)
+          {
+            i = j;
+            if (j <= 3600) {}
           }
-          if (!((oidb_0xe3e.GroupList)localObject).uint32_common_friend_count.has()) {
-            break label318;
+          else
+          {
+            i = 200;
+          }
+          l = System.currentTimeMillis();
+          TroopWithCommonFriendsHelper.a(String.valueOf(((Long)paramToServiceMsg.getAttribute("frienduin", Long.valueOf(0L))).longValue()), l);
+        }
+        else
+        {
+          i = 0;
+        }
+        if (((oidb_0xe3e.RspBody)localObject).rpt_group_list.has())
+        {
+          paramToServiceMsg = ((oidb_0xe3e.RspBody)localObject).rpt_group_list.get();
+          j = 0;
+          while (j < paramToServiceMsg.size())
+          {
+            paramObject = new TroopList();
+            localObject = (oidb_0xe3e.GroupList)paramToServiceMsg.get(j);
+            if (((oidb_0xe3e.GroupList)localObject).uint64_group_code.has()) {
+              l = ((oidb_0xe3e.GroupList)localObject).uint64_group_code.get();
+            } else {
+              l = 0L;
+            }
+            int k;
+            if (((oidb_0xe3e.GroupList)localObject).uint32_common_friend_count.has()) {
+              k = ((oidb_0xe3e.GroupList)localObject).uint32_common_friend_count.get();
+            } else {
+              k = 0;
+            }
+            paramObject.jdField_a_of_type_Long = l;
+            paramObject.jdField_a_of_type_Int = k;
+            paramFromServiceMsg.add(paramObject);
+            j += 1;
           }
         }
-      }
-      for (int k = ((oidb_0xe3e.GroupList)localObject).uint32_common_friend_count.get();; k = 0)
-      {
-        paramObject.jdField_a_of_type_Long = l;
-        paramObject.jdField_a_of_type_Int = k;
-        paramFromServiceMsg.add(paramObject);
-        j += 1;
-        break;
         notifyUI(8, true, new Object[] { Integer.valueOf(i), paramFromServiceMsg });
         return;
-        if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-          com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, "HandleGetTroopWithCommonFriendsList is failed");
-        }
-        notifyUI(8, false, new Object[] { Integer.valueOf(0), paramFromServiceMsg });
-        return;
       }
+      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+        com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, "HandleGetTroopWithCommonFriendsList is failed");
+      }
+      notifyUI(8, false, new Object[] { Integer.valueOf(0), paramFromServiceMsg });
     }
   }
   
@@ -371,8 +431,14 @@ public class IntimateInfoHandler
   
   public void a(long paramLong, int paramInt)
   {
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, "sendDateTypeEventToServer " + paramLong + " " + paramInt);
+    if (com.tencent.qphone.base.util.QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendDateTypeEventToServer ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramInt);
+      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new oidb_0xcf4.ReqBody();
     long l = this.a.getLongAccountUin();
@@ -387,8 +453,12 @@ public class IntimateInfoHandler
   
   public void a(long paramLong1, long paramLong2)
   {
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, "getIntimateGroupRecommendUinList " + paramLong1);
+    if (com.tencent.qphone.base.util.QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getIntimateGroupRecommendUinList ");
+      ((StringBuilder)localObject).append(paramLong1);
+      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new oidb_0xd45.ReqBody();
     long l = this.a.getLongAccountUin();
@@ -406,15 +476,21 @@ public class IntimateInfoHandler
     if (paramArrayList == null) {
       return;
     }
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, "getGroupIntimateInfos " + paramLong + " " + paramArrayList.toString());
+    if (com.tencent.qphone.base.util.QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getGroupIntimateInfos ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramArrayList.toString());
+      com.tencent.qphone.base.util.QLog.d("intimate_relationship", 2, ((StringBuilder)localObject).toString());
     }
-    oidb_0xd4a.ReqBody localReqBody = new oidb_0xd4a.ReqBody();
+    Object localObject = new oidb_0xd4a.ReqBody();
     long l = this.a.getLongAccountUin();
-    localReqBody.uint64_from_uin.set(l);
-    localReqBody.rpt_uint64_uin_list.set(paramArrayList);
-    localReqBody.uint64_group_code.set(paramLong);
-    paramArrayList = makeOIDBPkg("OidbSvc.0xd4a", 3402, 0, localReqBody.toByteArray());
+    ((oidb_0xd4a.ReqBody)localObject).uint64_from_uin.set(l);
+    ((oidb_0xd4a.ReqBody)localObject).rpt_uint64_uin_list.set(paramArrayList);
+    ((oidb_0xd4a.ReqBody)localObject).uint64_group_code.set(paramLong);
+    paramArrayList = makeOIDBPkg("OidbSvc.0xd4a", 3402, 0, ((oidb_0xd4a.ReqBody)localObject).toByteArray());
     if (paramObject != null) {
       paramArrayList.addAttribute("exactData1", paramObject);
     }
@@ -532,8 +608,12 @@ public class IntimateInfoHandler
   
   public void b(long paramLong, int paramInt)
   {
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, "getTroopWithCommonFriendsList troopuin:" + paramLong);
+    if (com.tencent.qphone.base.util.QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getTroopWithCommonFriendsList troopuin:");
+      ((StringBuilder)localObject).append(paramLong);
+      com.tencent.qphone.base.util.QLog.i("intimate_relationship", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new oidb_0xe3e.ReqBody();
     ((oidb_0xe3e.ReqBody)localObject).uint64_friend_uin.set(paramLong);
@@ -547,49 +627,49 @@ public class IntimateInfoHandler
     return this.a.getBusinessObserver(paramInt);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return IntimateInfoObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {}
-    do
-    {
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
       return;
-      if ("OidbSvc.0xcf3".equals(paramFromServiceMsg.getServiceCmd()))
-      {
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("OidbSvc.0xcf4".equals(paramFromServiceMsg.getServiceCmd()))
-      {
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("OidbSvc.0xd45".equals(paramFromServiceMsg.getServiceCmd()))
-      {
-        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("OidbSvc.0xcf4_1".equals(paramFromServiceMsg.getServiceCmd()))
-      {
-        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("OidbSvc.0xd4a".equals(paramFromServiceMsg.getServiceCmd()))
-      {
-        e(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!"OidbSvc.0xe3e".equals(paramFromServiceMsg.getServiceCmd()));
-    f(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    if ("OidbSvc.0xcf3".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0xcf4".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0xd45".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0xcf4_1".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0xd4a".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0xe3e".equals(paramFromServiceMsg.getServiceCmd())) {
+      f(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimateInfoHandler
  * JD-Core Version:    0.7.0.1
  */

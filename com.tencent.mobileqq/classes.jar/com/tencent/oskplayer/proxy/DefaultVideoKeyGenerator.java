@@ -14,27 +14,25 @@ public class DefaultVideoKeyGenerator
     if (!URLUtil.isNetworkUrl(paramString)) {
       return paramString;
     }
+    Object localObject;
     try
     {
       URL localURL = new URL(paramString);
-      if (localURL != null) {
-        return MD5.md5(paramString).substring(0, 20);
-      }
     }
     catch (MalformedURLException localMalformedURLException)
     {
-      for (;;)
-      {
-        PlayerUtils.log(6, "DefaultVideoKeyGenerator", PlayerUtils.getPrintableStackTrace(localMalformedURLException));
-        Object localObject = null;
-      }
+      PlayerUtils.log(6, "DefaultVideoKeyGenerator", PlayerUtils.getPrintableStackTrace(localMalformedURLException));
+      localObject = null;
+    }
+    if (localObject != null) {
+      return MD5.md5(paramString).substring(0, 20);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.proxy.DefaultVideoKeyGenerator
  * JD-Core Version:    0.7.0.1
  */

@@ -21,13 +21,14 @@ public final class oidb_0xdea$Topic
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42 }, new String[] { "uint64_send_uin", "uint64_seq", "uint32_send_time", "entrance", "bytes_src_msg" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(1), localByteStringMicro }, Topic.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42 }, new String[] { "uint64_send_uin", "uint64_seq", "uint32_send_time", "entrance", "bytes_src_msg" }, new Object[] { localLong, localLong, Integer.valueOf(0), Integer.valueOf(1), localByteStringMicro }, Topic.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xdea.Topic
  * JD-Core Version:    0.7.0.1
  */

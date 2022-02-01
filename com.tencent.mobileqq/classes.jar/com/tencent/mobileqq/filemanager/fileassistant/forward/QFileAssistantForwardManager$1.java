@@ -13,14 +13,14 @@ class QFileAssistantForwardManager$1
   
   public void run()
   {
-    if (NetworkUtil.a(BaseApplication.getContext()) != 0) {
-      QQToast.a(QFileAssistantForwardManager.a(this.this$0).getApp(), 2, this.a, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299166));
+    if (NetworkUtil.getSystemNetwork(BaseApplication.getContext()) != 0) {
+      QQToast.a(QFileAssistantForwardManager.a(this.this$0).getApp(), 2, this.a, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.forward.QFileAssistantForwardManager.1
  * JD-Core Version:    0.7.0.1
  */

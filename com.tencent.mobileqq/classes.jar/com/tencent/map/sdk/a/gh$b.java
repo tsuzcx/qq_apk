@@ -11,6 +11,7 @@ public enum gh$b
   
   public static b a(int paramInt)
   {
+    int j = 0;
     int i;
     if (paramInt >= 0)
     {
@@ -23,9 +24,9 @@ public enum gh$b
     }
     b localb1 = a;
     b[] arrayOfb = values();
-    int j = arrayOfb.length;
-    paramInt = 0;
-    while (paramInt < j)
+    int k = arrayOfb.length;
+    paramInt = j;
+    while (paramInt < k)
     {
       b localb2 = arrayOfb[paramInt];
       if (localb2.g == i) {
@@ -38,7 +39,7 @@ public enum gh$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.gh.b
  * JD-Core Version:    0.7.0.1
  */

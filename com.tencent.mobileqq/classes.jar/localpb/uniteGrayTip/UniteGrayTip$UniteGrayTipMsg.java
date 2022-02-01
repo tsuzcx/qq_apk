@@ -26,13 +26,14 @@ public final class UniteGrayTip$UniteGrayTipMsg
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64, 74 }, new String[] { "graytip_id", "graytip_level", "graytip_mutex_id", "graytip_key", "content", "business_related", "hightlight_item", "isLocalTroopMsg", "business_data" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", localByteStringMicro, null, Integer.valueOf(0), null }, UniteGrayTipMsg.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64, 74 }, new String[] { "graytip_id", "graytip_level", "graytip_mutex_id", "graytip_key", "content", "business_related", "hightlight_item", "isLocalTroopMsg", "business_data" }, new Object[] { localInteger, localInteger, localInteger, "", "", localByteStringMicro, null, localInteger, null }, UniteGrayTipMsg.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     localpb.uniteGrayTip.UniteGrayTip.UniteGrayTipMsg
  * JD-Core Version:    0.7.0.1
  */

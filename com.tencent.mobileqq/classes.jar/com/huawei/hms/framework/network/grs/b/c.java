@@ -1,393 +1,321 @@
 package com.huawei.hms.framework.network.grs.b;
 
 import android.content.Context;
-import android.os.SystemClock;
-import android.text.TextUtils;
 import com.huawei.hms.framework.common.Logger;
-import com.huawei.hms.framework.network.grs.GrsBaseInfo;
-import com.huawei.hms.framework.network.grs.c.d.a;
+import com.huawei.hms.framework.network.grs.local.model.b;
+import com.huawei.hms.framework.network.grs.local.model.d;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.util.Map;
+import java.util.Set;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class c
-  implements a
+  extends a
 {
-  private static final String a = c.class.getSimpleName();
-  private GrsBaseInfo b;
-  private Context c;
-  private com.huawei.hms.framework.network.grs.a.a d;
-  private d e;
-  private ArrayList<Future<d>> f = new ArrayList();
-  private ArrayList<d> g = new ArrayList();
-  private JSONArray h = new JSONArray();
-  private ArrayList<String> i = new ArrayList();
-  private ArrayList<String> j = new ArrayList();
-  private com.huawei.hms.framework.network.grs.b.b.c k;
-  private long l = 1L;
-  
-  public c(GrsBaseInfo paramGrsBaseInfo, Context paramContext, com.huawei.hms.framework.network.grs.a.a parama)
+  public c(Context paramContext, boolean paramBoolean)
   {
-    this.b = paramGrsBaseInfo;
-    this.c = paramContext;
-    this.d = parama;
-    b();
-  }
-  
-  private d a(ExecutorService paramExecutorService, ArrayList<String> paramArrayList, String paramString)
-  {
-    int n = 0;
-    Object localObject1 = null;
-    Object localObject4;
-    int m;
-    if (n < paramArrayList.size())
-    {
-      localObject4 = (String)paramArrayList.get(n);
-      if (!TextUtils.isEmpty((CharSequence)localObject4))
-      {
-        localObject4 = paramExecutorService.submit(new b((String)localObject4, n, this, this.c, paramString).f());
-        this.f.add(localObject4);
-        for (;;)
-        {
-          try
-          {
-            localObject4 = (d)((Future)localObject4).get(this.l, TimeUnit.SECONDS);
-            localObject1 = localObject4;
-            if (localObject4 == null) {
-              continue;
-            }
-            localObject1 = localObject4;
-          }
-          catch (TimeoutException localTimeoutException2)
-          {
-            continue;
-          }
-          catch (InterruptedException localInterruptedException1)
-          {
-            continue;
-          }
-          catch (ExecutionException localExecutionException1)
-          {
-            continue;
-          }
-          catch (CancellationException localCancellationException2)
-          {
-            label127:
-            continue;
-          }
-          try
-          {
-            if (!((d)localObject4).h()) {
-              continue;
-            }
-            Logger.i(a, "grs request return body is not null and is OK.");
-            m = 1;
-            localObject1 = localObject4;
-          }
-          catch (CancellationException localCancellationException1)
-          {
-            localObject2 = localObject4;
-            Logger.i(a, "{requestServer} the computation was cancelled");
-            m = 1;
-          }
-          catch (ExecutionException localExecutionException2)
-          {
-            localObject2 = localObject4;
-            localObject4 = localExecutionException2;
-            Logger.w(a, "the computation threw an ExecutionException", (Throwable)localObject4);
-            m = 0;
-          }
-          catch (InterruptedException localInterruptedException2)
-          {
-            localObject2 = localObject4;
-            localObject4 = localInterruptedException2;
-            Logger.w(a, "the current thread was interrupted while waiting", (Throwable)localObject4);
-            m = 1;
-          }
-          catch (TimeoutException localTimeoutException1)
-          {
-            localObject3 = localObject4;
-          }
-        }
-        if (m != 0) {
-          Logger.v(a, "needBreak is true so need break current circulation");
-        }
-      }
-    }
-    for (;;)
-    {
-      return b(localObject1);
-      Object localObject2;
-      Object localObject3;
-      Logger.w(a, "the wait timed out");
-      m = 0;
-      break label127;
-      n += 1;
-      break;
-      m = 0;
-      break label127;
+    this.e = paramBoolean;
+    if (a("grs_sdk_global_route_config.json", paramContext, false) == 0) {
+      this.d = true;
     }
   }
   
-  private d b(d paramd)
+  public int a(String paramString)
   {
-    int n = this.f.size();
-    int m = 0;
-    for (;;)
-    {
-      if ((m >= n) || ((paramd != null) && (paramd.h()))) {
-        return paramd;
-      }
-      try
-      {
-        d locald = (d)((Future)this.f.get(m)).get(40000L, TimeUnit.MILLISECONDS);
-        paramd = locald;
-      }
-      catch (CancellationException localCancellationException)
-      {
-        for (;;)
-        {
-          Logger.i(a, "{checkResponse} when check result, find CancellationException, check others");
-        }
-      }
-      catch (ExecutionException localExecutionException)
-      {
-        for (;;)
-        {
-          Logger.w(a, "{checkResponse} when check result, find ExecutionException, check others", localExecutionException);
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          Logger.w(a, "{checkResponse} when check result, find InterruptedException, check others", localInterruptedException);
-        }
-      }
-      catch (TimeoutException localTimeoutException)
-      {
-        for (;;)
-        {
-          Logger.w(a, "{checkResponse} when check result, find TimeoutException, cancel current request task");
-          if (!((Future)this.f.get(m)).isCancelled()) {
-            ((Future)this.f.get(m)).cancel(true);
-          }
-        }
-      }
-      m += 1;
-    }
-    return paramd;
-  }
-  
-  private d b(ExecutorService paramExecutorService, String paramString)
-  {
-    long l1 = SystemClock.elapsedRealtime();
-    d locald = a(paramExecutorService, this.j, paramString);
-    if (locald == null) {}
-    for (int m = 0;; m = locald.l())
-    {
-      Logger.v(a, "use 2.0 interface return http's code is：{%s}", new Object[] { Integer.valueOf(m) });
-      if ((m != 404) && (m != 401)) {
-        break label152;
-      }
-      if ((!TextUtils.isEmpty(c())) || (!TextUtils.isEmpty(this.b.getAppName()))) {
-        break;
-      }
-      Logger.i(a, "request grs server use 1.0 API must set appName,please check.");
-      return null;
-    }
-    this.f.clear();
-    Logger.i(a, "this env has not deploy new interface,so use old interface.");
-    label152:
-    for (paramExecutorService = a(paramExecutorService, this.i, paramString);; paramExecutorService = locald)
-    {
-      long l2 = SystemClock.elapsedRealtime();
-      e.a(this.g, l2 - l1, this.h, this.c);
-      return paramExecutorService;
-    }
-  }
-  
-  private void b()
-  {
-    Object localObject2 = com.huawei.hms.framework.network.grs.b.a.a.a(this.c);
-    if (localObject2 == null)
-    {
-      Logger.w(a, "g*s***_se****er_conf*** maybe has a big error");
-      return;
-    }
-    a((com.huawei.hms.framework.network.grs.b.b.c)localObject2);
-    Object localObject1 = ((com.huawei.hms.framework.network.grs.b.b.c)localObject2).c();
-    if ((localObject1 == null) || (((List)localObject1).size() <= 0))
-    {
-      Logger.v(a, "maybe grs_base_url config with [],please check.");
-      return;
-    }
-    if (((List)localObject1).size() > 10) {
-      throw new IllegalArgumentException("grs_base_url's count is larger than MAX value 10");
-    }
-    String str1 = ((com.huawei.hms.framework.network.grs.b.b.c)localObject2).a();
-    localObject2 = ((com.huawei.hms.framework.network.grs.b.b.c)localObject2).b();
-    if (((List)localObject1).size() > 0)
-    {
-      Iterator localIterator = ((List)localObject1).iterator();
-      while (localIterator.hasNext())
-      {
-        String str2 = (String)localIterator.next();
-        if (!str2.startsWith("https://"))
-        {
-          Logger.w(a, "grs server just support https scheme url,please check.");
-        }
-        else
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(str2);
-          Locale localLocale = Locale.ROOT;
-          if (TextUtils.isEmpty(c())) {}
-          for (localObject1 = this.b.getAppName();; localObject1 = c())
-          {
-            localStringBuilder.append(String.format(localLocale, str1, new Object[] { localObject1 }));
-            localObject1 = this.b.getGrsReqParamJoint(false, false, "1.0", this.c);
-            if (!TextUtils.isEmpty((CharSequence)localObject1))
-            {
-              localStringBuilder.append("?");
-              localStringBuilder.append((String)localObject1);
-            }
-            localObject1 = localStringBuilder.toString();
-            this.i.add(localObject1);
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(str2);
-            ((StringBuilder)localObject1).append((String)localObject2);
-            str2 = this.b.getGrsReqParamJoint(false, false, c(), this.c);
-            if (!TextUtils.isEmpty(str2))
-            {
-              ((StringBuilder)localObject1).append("?");
-              ((StringBuilder)localObject1).append(str2);
-            }
-            this.j.add(((StringBuilder)localObject1).toString());
-            break;
-          }
-        }
-      }
-    }
-    Logger.v(a, "request to GRS server url is{%s} and {%s}", new Object[] { this.i, this.j });
-  }
-  
-  private String c()
-  {
-    com.huawei.hms.framework.network.grs.local.model.a locala = com.huawei.hms.framework.network.grs.local.b.a(this.c.getPackageName()).a();
-    String str = "";
-    if (locala != null)
-    {
-      str = locala.a();
-      Logger.v(a, "get appName from local assets is{%s}", new Object[] { str });
-    }
-    return str;
-  }
-  
-  public com.huawei.hms.framework.network.grs.b.b.c a()
-  {
-    return this.k;
-  }
-  
-  public d a(ExecutorService paramExecutorService, String paramString)
-  {
-    if ((this.i == null) || (this.j == null)) {
-      return null;
-    }
+    this.a = new com.huawei.hms.framework.network.grs.local.model.a();
     try
     {
-      com.huawei.hms.framework.network.grs.b.b.c localc = a();
-      if (localc != null) {}
-      for (int m = localc.d();; m = 10)
+      paramString = new JSONObject(paramString);
+      Object localObject = paramString.getJSONObject("application");
+      paramString = ((JSONObject)localObject).getString("name");
+      long l = ((JSONObject)localObject).getLong("cacheControl");
+      localObject = ((JSONObject)localObject).getJSONArray("services");
+      this.a.b(paramString);
+      this.a.a(l);
+      if (localObject != null)
       {
-        paramExecutorService = (d)paramExecutorService.submit(new c.1(this, paramExecutorService, paramString)).get(m, TimeUnit.SECONDS);
-        return paramExecutorService;
+        int i = ((JSONArray)localObject).length();
+        if (i == 0) {
+          return -1;
+        }
+        return 0;
       }
-      return null;
+      return -1;
     }
-    catch (CancellationException paramExecutorService)
+    catch (JSONException paramString)
     {
-      Logger.i(a, "{submitExcutorTaskWithTimeout} the computation was cancelled");
-      return null;
+      Logger.w("LocalManagerV1", "parse appbean failed maybe json style is wrong.", paramString);
     }
-    catch (ExecutionException paramExecutorService)
-    {
-      Logger.w(a, "{submitExcutorTaskWithTimeout} the computation threw an ExecutionException", paramExecutorService);
-      return null;
-    }
-    catch (InterruptedException paramExecutorService)
-    {
-      Logger.w(a, "{submitExcutorTaskWithTimeout} the current thread was interrupted while waiting", paramExecutorService);
-      return null;
-    }
-    catch (TimeoutException paramExecutorService)
-    {
-      Logger.w(a, "{submitExcutorTaskWithTimeout} the wait timed out");
-      return null;
-    }
-    catch (Exception paramExecutorService)
-    {
-      Logger.w(a, "{submitExcutorTaskWithTimeout} catch Exception", paramExecutorService);
-    }
+    return -1;
   }
   
-  public void a(com.huawei.hms.framework.network.grs.b.b.c paramc)
+  public List<b> a(JSONArray paramJSONArray, JSONObject paramJSONObject)
   {
-    this.k = paramc;
-  }
-  
-  public void a(d paramd)
-  {
+    if ((paramJSONObject != null) && (paramJSONObject.length() != 0)) {}
     for (;;)
     {
       try
       {
-        this.g.add(paramd);
-        if ((this.e != null) && (this.e.h()))
+        ArrayList localArrayList = new ArrayList(16);
+        Iterator localIterator = paramJSONObject.keys();
+        if (localIterator.hasNext())
         {
-          Logger.v(a, "grsResponseResult is ok");
-          return;
-        }
-        if (paramd.i())
-        {
-          Logger.i(a, "GRS server open 503 limiting strategy.");
-          com.huawei.hms.framework.network.grs.c.d.a(this.b.getGrsParasKey(false, true, this.c), new d.a(paramd.e(), SystemClock.elapsedRealtime()));
+          paramJSONArray = (String)localIterator.next();
+          b localb = new b();
+          localb.b(paramJSONArray);
+          JSONObject localJSONObject = paramJSONObject.getJSONObject(paramJSONArray);
+          localb.c(localJSONObject.getString("name"));
+          localb.a(localJSONObject.getString("description"));
+          paramJSONArray = null;
+          boolean bool = localJSONObject.has("countriesOrAreas");
+          Object localObject = "countries";
+          if (bool)
+          {
+            paramJSONArray = "countriesOrAreas";
+          }
+          else
+          {
+            if (!localJSONObject.has("countries")) {
+              continue;
+            }
+            paramJSONArray = (JSONArray)localObject;
+          }
+          paramJSONArray = localJSONObject.getJSONArray(paramJSONArray);
           continue;
+          Logger.w("LocalManagerV1", "current country or area group has not config countries or areas.");
+          localObject = new HashSet(16);
+          if (paramJSONArray != null)
+          {
+            if (paramJSONArray.length() != 0) {
+              break label268;
+            }
+            continue;
+            if (i < paramJSONArray.length())
+            {
+              ((Set)localObject).add((String)paramJSONArray.get(i));
+              i += 1;
+              continue;
+            }
+            localb.a((Set)localObject);
+            localArrayList.add(localb);
+            continue;
+          }
+          paramJSONArray = new ArrayList();
+          return paramJSONArray;
         }
-        if (paramd.h()) {
-          break label113;
-        }
+        return localArrayList;
       }
-      finally {}
-      Logger.v(a, "grsResponseResult has exception so need return");
-      continue;
-      label113:
-      this.e = paramd;
-      this.d.a(this.b, this.e, this.c);
-      int m = 0;
-      while (m < this.f.size())
+      catch (JSONException paramJSONArray)
       {
-        if ((!((String)this.i.get(m)).equals(paramd.k())) && (!((String)this.j.get(m)).equals(paramd.k())) && (!((Future)this.f.get(m)).isCancelled()))
-        {
-          Logger.i(a, "future cancel");
-          ((Future)this.f.get(m)).cancel(true);
+        Logger.w("LocalManagerV1", "parse countryGroups failed maybe json style is wrong.", paramJSONArray);
+        return new ArrayList();
+      }
+      return new ArrayList();
+      label268:
+      int i = 0;
+    }
+  }
+  
+  public int b(String paramString)
+  {
+    Object localObject1 = "countryOrAreaGroups";
+    this.b = new ArrayList(16);
+    try
+    {
+      localObject2 = new JSONObject(paramString);
+      bool = ((JSONObject)localObject2).has("countryOrAreaGroups");
+      if (bool)
+      {
+        paramString = (String)localObject1;
+      }
+      else
+      {
+        if (!((JSONObject)localObject2).has("countryGroups")) {
+          break label68;
         }
-        m += 1;
+        paramString = "countryGroups";
+      }
+      paramString = ((JSONObject)localObject2).getJSONObject(paramString);
+      break label314;
+      label68:
+      Logger.e("LocalManagerV1", "maybe local config json is wrong because the default countryOrAreaGroups isn't config.");
+      paramString = null;
+    }
+    catch (JSONException paramString)
+    {
+      Object localObject2;
+      boolean bool;
+      label93:
+      b localb;
+      Object localObject3;
+      label208:
+      label218:
+      Logger.w("LocalManagerV1", "parse countrygroup failed maybe json style is wrong.", paramString);
+      return -1;
+    }
+    if (paramString.length() != 0)
+    {
+      localObject2 = paramString.keys();
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject1 = (String)((Iterator)localObject2).next();
+        localb = new b();
+        localb.b((String)localObject1);
+        localObject3 = paramString.getJSONObject((String)localObject1);
+        localb.c(((JSONObject)localObject3).getString("name"));
+        localb.a(((JSONObject)localObject3).getString("description"));
+        bool = ((JSONObject)localObject3).has("countriesOrAreas");
+        localObject1 = "countries";
+        if (bool) {
+          localObject1 = "countriesOrAreas";
+        } else {
+          if (!((JSONObject)localObject3).has("countries")) {
+            break label208;
+          }
+        }
+        localObject1 = ((JSONObject)localObject3).getJSONArray((String)localObject1);
+        break label218;
+        Logger.w("LocalManagerV1", "current country or area group has not config countries or areas.");
+        localObject1 = null;
+        localObject3 = new HashSet(16);
+        if (localObject1 != null)
+        {
+          if (((JSONArray)localObject1).length() != 0) {
+            break label320;
+          }
+          return -1;
+        }
       }
     }
+    for (;;)
+    {
+      int i;
+      if (i < ((JSONArray)localObject1).length())
+      {
+        ((Set)localObject3).add((String)((JSONArray)localObject1).get(i));
+        i += 1;
+      }
+      else
+      {
+        localb.a((Set)localObject3);
+        this.b.add(localb);
+        break label93;
+        return -1;
+        return 0;
+        label314:
+        if (paramString != null) {
+          break;
+        }
+        return -1;
+        label320:
+        i = 0;
+      }
+    }
+  }
+  
+  public int e(String paramString)
+  {
+    Object localObject1 = "countryOrAreaGroup";
+    try
+    {
+      paramString = new JSONObject(paramString);
+      JSONObject localJSONObject1 = paramString.getJSONObject("services");
+      Iterator localIterator1 = localJSONObject1.keys();
+      paramString = (String)localObject1;
+      for (;;)
+      {
+        boolean bool = localIterator1.hasNext();
+        int i = 0;
+        if (!bool) {
+          break;
+        }
+        String str1 = (String)localIterator1.next();
+        com.huawei.hms.framework.network.grs.local.model.c localc = new com.huawei.hms.framework.network.grs.local.model.c();
+        localc.b(str1);
+        if (!this.f.contains(str1))
+        {
+          this.f.add(str1);
+          if (this.e)
+          {
+            JSONObject localJSONObject2 = localJSONObject1.getJSONObject(str1);
+            localc.c(localJSONObject2.getString("routeBy"));
+            JSONArray localJSONArray = localJSONObject2.getJSONArray("servings");
+            while (i < localJSONArray.length())
+            {
+              Object localObject2 = (JSONObject)localJSONArray.get(i);
+              d locald = new d();
+              bool = ((JSONObject)localObject2).has(paramString);
+              localObject1 = "countryGroup";
+              if (bool) {
+                localObject1 = paramString;
+              } else {
+                if (!((JSONObject)localObject2).has("countryGroup")) {
+                  break label208;
+                }
+              }
+              localObject1 = ((JSONObject)localObject2).getString((String)localObject1);
+              break label219;
+              label208:
+              Logger.v("LocalManagerV1", "maybe this service routeBy is unconditional.");
+              localObject1 = "no-country";
+              label219:
+              locald.a((String)localObject1);
+              localObject1 = ((JSONObject)localObject2).getJSONObject("addresses");
+              localObject2 = new HashMap(16);
+              Iterator localIterator2 = ((JSONObject)localObject1).keys();
+              while (localIterator2.hasNext())
+              {
+                String str2 = (String)localIterator2.next();
+                ((HashMap)localObject2).put(str2, ((JSONObject)localObject1).getString(str2));
+              }
+              locald.a((Map)localObject2);
+              localc.a(locald.b(), locald);
+              i += 1;
+            }
+            bool = localJSONObject2.has("countryOrAreaGroups");
+            localObject1 = null;
+            if (bool)
+            {
+              localObject1 = localJSONObject2.getJSONObject("countryOrAreaGroups");
+            }
+            else
+            {
+              if (!localJSONObject2.has("countryGroups")) {
+                break label377;
+              }
+              localObject1 = localJSONObject2.getJSONObject("countryGroups");
+            }
+            localObject1 = a(null, (JSONObject)localObject1);
+            break label384;
+            label377:
+            Logger.v("LocalManagerV1", "service use default countryOrAreaGroup");
+            label384:
+            localc.a((List)localObject1);
+            if (this.a == null) {
+              this.a = new com.huawei.hms.framework.network.grs.local.model.a();
+            }
+            this.a.a(str1, localc);
+          }
+        }
+      }
+      return 0;
+    }
+    catch (JSONException paramString)
+    {
+      Logger.w("LocalManagerV1", "parse 1.0 services failed maybe because of json style.please check!", paramString);
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.b.c
  * JD-Core Version:    0.7.0.1
  */

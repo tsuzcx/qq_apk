@@ -35,50 +35,49 @@ public final class lx
   
   public final void run()
   {
-    boolean bool;
-    if (!this.c)
+    while (!this.c)
     {
-      if (this.a) {
-        break label105;
-      }
-      if (this.b != null)
+      boolean bool3 = this.a;
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (!bool3)
       {
         lw locallw = this.b;
-        if (locallw.a != null) {
-          bool = locallw.a.c();
+        bool1 = bool2;
+        if (locallw != null)
+        {
+          bool1 = bool2;
+          if (locallw.a != null) {
+            bool1 = locallw.a.c();
+          }
+        }
+      }
+      if (!bool1) {
+        try
+        {
+          sleep(160L);
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          or.b(Log.getStackTraceString(localInterruptedException));
+          Thread.currentThread().interrupt();
         }
       }
     }
-    while (!bool)
-    {
+    byte[] arrayOfByte = this.d;
+    if (arrayOfByte != null) {
       try
-      {
-        sleep(160L);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        or.b(Log.getStackTraceString(localInterruptedException));
-        Thread.currentThread().interrupt();
-      }
-      break;
-      bool = false;
-      continue;
-      if (this.d == null) {
-        return;
-      }
-      synchronized (this.d)
       {
         this.d.notifyAll();
         return;
       }
-      label105:
-      bool = false;
+      finally {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.lx
  * JD-Core Version:    0.7.0.1
  */

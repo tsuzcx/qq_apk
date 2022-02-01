@@ -9,7 +9,7 @@ class ChatHistory$23
 {
   ChatHistory$23(ChatHistory paramChatHistory) {}
   
-  public void onUpdateDelRoamChat(boolean paramBoolean)
+  protected void onUpdateDelRoamChat(boolean paramBoolean)
   {
     this.a.r();
     if (!paramBoolean)
@@ -19,7 +19,7 @@ class ChatHistory$23
     }
   }
   
-  public void onUpdateSetRoamChat(boolean paramBoolean)
+  protected void onUpdateSetRoamChat(boolean paramBoolean)
   {
     if (!paramBoolean)
     {
@@ -33,7 +33,7 @@ class ChatHistory$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.23
  * JD-Core Version:    0.7.0.1
  */

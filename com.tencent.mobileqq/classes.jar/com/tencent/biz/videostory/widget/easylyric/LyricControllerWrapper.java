@@ -43,8 +43,9 @@ public class LyricControllerWrapper
   
   protected void b(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView != null) {
-      this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView.a(paramLong);
+    ILyricView localILyricView = this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView;
+    if (localILyricView != null) {
+      localILyricView.a(paramLong);
     }
   }
   
@@ -58,32 +59,33 @@ public class LyricControllerWrapper
   protected void c(long paramLong)
   {
     a(3);
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView != null) {
-      this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView.a(paramLong);
+    ILyricView localILyricView = this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView;
+    if (localILyricView != null) {
+      localILyricView.a(paramLong);
     }
   }
   
   protected void d()
   {
     a(3);
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView != null) {}
+    ILyricView localILyricView = this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView;
   }
   
   protected void e()
   {
     a(4);
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView != null) {}
+    ILyricView localILyricView = this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView;
   }
   
   protected void f()
   {
     a(5);
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView != null) {}
+    ILyricView localILyricView = this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.easylyric.LyricControllerWrapper
  * JD-Core Version:    0.7.0.1
  */

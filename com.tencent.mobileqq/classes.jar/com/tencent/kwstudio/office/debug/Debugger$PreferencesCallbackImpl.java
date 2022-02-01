@@ -15,18 +15,19 @@ final class Debugger$PreferencesCallbackImpl
   
   public void onResult(boolean paramBoolean)
   {
-    if (TextUtils.equals(this.mKey, "key_user_enable")) {
+    if (TextUtils.equals(this.mKey, "key_user_enable"))
+    {
       Debugger.access$202(paramBoolean);
-    }
-    while (!TextUtils.equals(this.mKey, "key_white_list")) {
       return;
     }
-    Debugger.access$302(paramBoolean);
+    if (TextUtils.equals(this.mKey, "key_white_list")) {
+      Debugger.access$302(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kwstudio.office.debug.Debugger.PreferencesCallbackImpl
  * JD-Core Version:    0.7.0.1
  */

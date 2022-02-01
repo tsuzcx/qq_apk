@@ -17,9 +17,11 @@ class GdtQQReminderDemoFragment$6
     GdtQQReminderDemoFragment.a();
     String str1 = UUID.randomUUID().toString();
     String str2 = String.valueOf(GdtQQReminderDemoFragment.b());
-    long l = 0L;
+    long l;
     if (!TextUtils.isEmpty(GdtQQReminderDemoFragment.a(this.a).getText().toString())) {
       l = Long.valueOf(GdtQQReminderDemoFragment.a(this.a).getText().toString()).longValue();
+    } else {
+      l = 0L;
     }
     GdtQQReminderDemoFragment.a(str1, str2, l);
     GdtQQReminderDemoFragment.a(String.format("%s %s:%s %s:%s delayedSeconds:%d", new Object[] { "addQQReminderMsg", "msg_id", str1, "mn_reserved", str2, Long.valueOf(l) }));
@@ -28,7 +30,7 @@ class GdtQQReminderDemoFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtQQReminderDemoFragment.6
  * JD-Core Version:    0.7.0.1
  */

@@ -21,42 +21,52 @@ public class MyParcel
   
   private void a(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    if (paramArrayOfByte == null) {}
-    while (this.jdField_a_of_type_ArrayOfByte == null) {
+    if (paramArrayOfByte == null) {
       return;
     }
-    int j = paramArrayOfByte.length;
-    int i = j;
-    if (paramBoolean) {
-      i = j + 4;
-    }
-    if (this.jdField_a_of_type_ArrayOfByte.length > this.jdField_a_of_type_Int + i)
+    if (this.jdField_a_of_type_ArrayOfByte != null)
     {
+      int j = paramArrayOfByte.length;
+      int i = j;
+      if (paramBoolean) {
+        i = j + 4;
+      }
+      byte[] arrayOfByte1 = this.jdField_a_of_type_ArrayOfByte;
+      j = arrayOfByte1.length;
+      int k = this.jdField_a_of_type_Int;
+      if (j > k + i)
+      {
+        if (paramBoolean) {
+          b(paramArrayOfByte.length);
+        }
+        System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, paramArrayOfByte.length);
+        this.jdField_a_of_type_Int += paramArrayOfByte.length;
+        return;
+      }
+      byte[] arrayOfByte2 = new byte[arrayOfByte1.length * 2 + i];
+      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, k);
+      this.jdField_a_of_type_ArrayOfByte = arrayOfByte2;
+      this.b = arrayOfByte2.length;
       if (paramBoolean) {
         b(paramArrayOfByte.length);
       }
       System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, paramArrayOfByte.length);
       this.jdField_a_of_type_Int += paramArrayOfByte.length;
-      return;
     }
-    byte[] arrayOfByte = new byte[i + this.jdField_a_of_type_ArrayOfByte.length * 2];
-    System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ArrayOfByte = arrayOfByte;
-    this.b = arrayOfByte.length;
-    if (paramBoolean) {
-      b(paramArrayOfByte.length);
-    }
-    System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, paramArrayOfByte.length);
-    this.jdField_a_of_type_Int += paramArrayOfByte.length;
   }
   
   private int b()
   {
-    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_Int + 4 <= this.b))
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (arrayOfByte != null)
     {
-      int i = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int += 4;
-      return i;
+      int i = this.jdField_a_of_type_Int;
+      if (i + 4 <= this.b)
+      {
+        i = DoodleMsgTranslator.a(arrayOfByte, i);
+        this.jdField_a_of_type_Int += 4;
+        return i;
+      }
     }
     return -1;
   }
@@ -69,11 +79,17 @@ public class MyParcel
   public float a()
   {
     int i = b();
-    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.b >= this.jdField_a_of_type_Int + 4) && (i == 4))
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (arrayOfByte != null)
     {
-      i = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int += 4;
-      return Float.intBitsToFloat(i);
+      int j = this.b;
+      int k = this.jdField_a_of_type_Int;
+      if ((j >= k + 4) && (i == 4))
+      {
+        i = DoodleMsgTranslator.a(arrayOfByte, k);
+        this.jdField_a_of_type_Int += 4;
+        return Float.intBitsToFloat(i);
+      }
     }
     return -1.0F;
   }
@@ -81,11 +97,16 @@ public class MyParcel
   public int a()
   {
     int i = b();
-    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_Int + 4 <= this.b) && (i == 4))
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (arrayOfByte != null)
     {
-      i = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int += 4;
-      return i;
+      int j = this.jdField_a_of_type_Int;
+      if ((j + 4 <= this.b) && (i == 4))
+      {
+        i = DoodleMsgTranslator.a(arrayOfByte, j);
+        this.jdField_a_of_type_Int += 4;
+        return i;
+      }
     }
     return -1;
   }
@@ -93,11 +114,17 @@ public class MyParcel
   public long a()
   {
     int i = b();
-    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.b >= this.jdField_a_of_type_Int + 8) && (i == 8))
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (arrayOfByte != null)
     {
-      long l = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int += 8;
-      return l;
+      int j = this.b;
+      int k = this.jdField_a_of_type_Int;
+      if ((j >= k + 8) && (i == 8))
+      {
+        long l = DoodleMsgTranslator.a(arrayOfByte, k);
+        this.jdField_a_of_type_Int += 8;
+        return l;
+      }
     }
     return -1L;
   }
@@ -105,20 +132,23 @@ public class MyParcel
   public Rect a()
   {
     int i = b();
-    if (i == -1) {}
-    while ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_Int + 16 > this.b) || (i != 16)) {
+    if (i == -1) {
       return null;
     }
-    Rect localRect = new Rect();
-    localRect.left = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int += 4;
-    localRect.top = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int += 4;
-    localRect.right = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int += 4;
-    localRect.bottom = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int += 4;
-    return localRect;
+    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_Int + 16 <= this.b) && (i == 16))
+    {
+      Rect localRect = new Rect();
+      localRect.left = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int += 4;
+      localRect.top = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int += 4;
+      localRect.right = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int += 4;
+      localRect.bottom = DoodleMsgTranslator.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int += 4;
+      return localRect;
+    }
+    return null;
   }
   
   public MyParcel.DataElement a()
@@ -195,23 +225,19 @@ public class MyParcel
     int j = paramList.size();
     b(j);
     int i = 0;
-    label24:
-    if (i < j)
+    while (i < j)
     {
       MyParcelable localMyParcelable = (MyParcelable)paramList.get(i);
-      if (localMyParcelable == null) {
-        break label67;
+      if (localMyParcelable != null)
+      {
+        b(1);
+        localMyParcelable.a(this, 0);
       }
-      b(1);
-      localMyParcelable.a(this, 0);
-    }
-    for (;;)
-    {
+      else
+      {
+        b(0);
+      }
       i += 1;
-      break label24;
-      break;
-      label67:
-      b(0);
     }
   }
   
@@ -220,35 +246,36 @@ public class MyParcel
     int k = paramList.size();
     int m = b();
     int j = 0;
-    int i = j;
-    if (j < k)
+    int i;
+    for (;;)
     {
       i = j;
-      if (j < m)
-      {
-        if (b() != 0) {
-          paramList.set(j, paramCreator.a(this));
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          paramList.set(j, null);
-        }
+      if (j >= k) {
+        break;
       }
+      i = j;
+      if (j >= m) {
+        break;
+      }
+      if (b() != 0) {
+        paramList.set(j, paramCreator.a(this));
+      } else {
+        paramList.set(j, null);
+      }
+      j += 1;
     }
-    j = i;
-    if (i < m)
+    for (;;)
     {
+      j = i;
+      if (i >= m) {
+        break;
+      }
       if (b() != 0) {
         paramList.add(paramCreator.a(this));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         paramList.add(null);
       }
+      i += 1;
     }
     while (j < k)
     {
@@ -266,7 +293,7 @@ public class MyParcel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.MyParcel
  * JD-Core Version:    0.7.0.1
  */

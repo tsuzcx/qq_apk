@@ -20,7 +20,7 @@ public class BaseBubbleBuilderMenuFavoriteProcessor
   
   protected void a(QQCustomMenu paramQQCustomMenu, Context paramContext)
   {
-    paramQQCustomMenu.a(2131366625, paramContext.getString(2131692258), 2130839058);
+    paramQQCustomMenu.a(2131366494, paramContext.getString(2131692184), 2130838911);
   }
   
   public void a(QQCustomMenu paramQQCustomMenu, Context paramContext, int paramInt, ChatMessage paramChatMessage, Bundle paramBundle)
@@ -30,12 +30,12 @@ public class BaseBubbleBuilderMenuFavoriteProcessor
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131366625;
+    return paramInt == 2131366494;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuFavoriteProcessor
  * JD-Core Version:    0.7.0.1
  */

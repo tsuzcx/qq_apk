@@ -25,7 +25,7 @@ public class ListenTogetherAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839277;
+    return 2130839131;
   }
   
   public int getAppID()
@@ -54,76 +54,77 @@ public class ListenTogetherAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131693688);
+    return BaseApplicationImpl.getContext().getString(2131693641);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if ((paramBaseChatPie == null) || (paramBaseChatPie.a() == null)) {}
-    for (;;)
+    if (paramBaseChatPie != null)
     {
-      return;
-      QQAppInterface localQQAppInterface = paramBaseChatPie.a;
-      int j;
-      int k;
+      if (paramBaseChatPie.a() == null) {
+        return;
+      }
+      Object localObject = paramBaseChatPie.a;
+      int i;
       if (paramSessionInfo.jdField_a_of_type_Int == 0)
       {
-        j = 0;
-        k = 2;
+        i = 2;
       }
-      while (k != 0)
+      else
       {
-        TroopInfo localTroopInfo;
-        String str;
-        int i;
-        if (j != 0)
+        if (paramSessionInfo.jdField_a_of_type_Int == 1)
         {
-          localTroopInfo = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
-          str = localQQAppInterface.getCurrentAccountUin();
+          j = 1;
+          k = 1;
+          break label58;
+        }
+        i = 0;
+      }
+      int k = 0;
+      int j = i;
+      label58:
+      if (j != 0)
+      {
+        i = -1;
+        if (k != 0)
+        {
+          TroopInfo localTroopInfo = ((TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
+          String str = ((QQAppInterface)localObject).getCurrentAccountUin();
           if (localTroopInfo.isTroopOwner(str)) {
             i = 0;
-          }
-        }
-        for (;;)
-        {
-          label81:
-          ListenTogetherUtils.b(localQQAppInterface, paramBaseChatPie.a(), k, paramSessionInfo.jdField_a_of_type_JavaLangString, 0);
-          if ((j == 0) && (ListenTogetherUtils.a(localQQAppInterface, "listen_together_c2c_aio_red_dot_show", true, false)))
-          {
-            ListenTogetherUtils.a(localQQAppInterface, "listen_together_c2c_aio_red_dot_show", false, false);
-            paramPlusPanelViewModel.b(paramBaseChatPie);
-          }
-          if (j == 0) {}
-          for (paramPlusPanelViewModel = "c2c_AIO";; paramPlusPanelViewModel = "Grp_AIO")
-          {
-            ReportController.b(null, "dc00899", paramPlusPanelViewModel, "", "music_tab", "clk_panelmusic", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, i + "", i + "", "");
-            return;
-            if (paramSessionInfo.jdField_a_of_type_Int != 1) {
-              break label249;
-            }
-            j = 1;
-            k = 1;
-            break;
-            if (localTroopInfo.isTroopAdmin(str))
-            {
-              i = 1;
-              break label81;
-            }
+          } else if (localTroopInfo.isTroopAdmin(str)) {
+            i = 1;
+          } else {
             i = 2;
-            break label81;
           }
-          i = -1;
         }
-        label249:
-        j = 0;
-        k = 0;
+        ListenTogetherUtils.b((QQAppInterface)localObject, paramBaseChatPie.a(), j, paramSessionInfo.jdField_a_of_type_JavaLangString, 0);
+        if ((k == 0) && (ListenTogetherUtils.a((QQAppInterface)localObject, "listen_together_c2c_aio_red_dot_show", true, false)))
+        {
+          ListenTogetherUtils.a((QQAppInterface)localObject, "listen_together_c2c_aio_red_dot_show", false, false);
+          paramPlusPanelViewModel.b(paramBaseChatPie);
+        }
+        if (k == 0) {
+          paramPlusPanelViewModel = "c2c_AIO";
+        } else {
+          paramPlusPanelViewModel = "Grp_AIO";
+        }
+        paramBaseChatPie = paramSessionInfo.jdField_a_of_type_JavaLangString;
+        paramSessionInfo = new StringBuilder();
+        paramSessionInfo.append(i);
+        paramSessionInfo.append("");
+        paramSessionInfo = paramSessionInfo.toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("");
+        ReportController.b(null, "dc00899", paramPlusPanelViewModel, "", "music_tab", "clk_panelmusic", 0, 0, paramBaseChatPie, paramSessionInfo, ((StringBuilder)localObject).toString(), "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ListenTogetherAppInfo
  * JD-Core Version:    0.7.0.1
  */

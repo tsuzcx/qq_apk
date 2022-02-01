@@ -38,7 +38,16 @@ public final class ScriptSystem
     Intrinsics.checkExpressionValueIsNotNull(localObject, "Thread.currentThread()");
     long l = ((Thread)localObject).getId();
     localObject = ScriptSystem.Companion.access$toScriptContextType(Companion, paramInt);
-    Logger.i$default("ScriptSystem", "onScriptEngineChange, createOrDestroy:" + paramBoolean + ", contextType:" + localObject + ", ptr:" + paramLong + ", threadId:" + l, null, 4, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onScriptEngineChange, createOrDestroy:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", contextType:");
+    localStringBuilder.append(localObject);
+    localStringBuilder.append(", ptr:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", threadId:");
+    localStringBuilder.append(l);
+    Logger.i$default("ScriptSystem", localStringBuilder.toString(), null, 4, null);
     if (paramBoolean)
     {
       ((Map)this.engineMap).put(localObject, new ScriptRuntime(this.engineContext, this.scriptPlugin, paramLong, (ScriptContextType)localObject, l));
@@ -72,7 +81,7 @@ public final class ScriptSystem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.ScriptSystem
  * JD-Core Version:    0.7.0.1
  */

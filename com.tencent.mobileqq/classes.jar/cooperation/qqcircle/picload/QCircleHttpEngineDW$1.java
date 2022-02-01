@@ -15,28 +15,45 @@ class QCircleHttpEngineDW$1
   {
     if (paramNetResp.mResult == 0)
     {
-      QLog.i("QCircleFeedPicLoader", 1, "seq = " + this.val$option.getSeq() + " download success return");
+      paramNetResp = new StringBuilder();
+      paramNetResp.append("seq = ");
+      paramNetResp.append(this.val$option.getSeq());
+      paramNetResp.append(" download success return");
+      QLog.i("QCircleFeedPicLoader", 1, paramNetResp.toString());
       this.val$callBackResult.callBack(this.val$option, true, 0);
-    }
-    do
-    {
       return;
-      if ((paramNetResp.mResult == 1) || (paramNetResp.mResult == 2))
+    }
+    StringBuilder localStringBuilder;
+    if ((paramNetResp.mResult != 1) && (paramNetResp.mResult != 2))
+    {
+      if (paramNetResp.mResult != 3)
       {
-        QLog.i("QCircleFeedPicLoader", 1, "seq = " + this.val$option.getSeq() + " download failed return:" + paramNetResp.mErrCode);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("seq = ");
+        localStringBuilder.append(this.val$option.getSeq());
+        localStringBuilder.append(" download failed return");
+        localStringBuilder.append(paramNetResp.mErrCode);
+        QLog.i("QCircleFeedPicLoader", 1, localStringBuilder.toString());
         this.val$callBackResult.callBack(this.val$option, false, paramNetResp.mErrCode);
-        return;
       }
-    } while (paramNetResp.mResult == 3);
-    QLog.i("QCircleFeedPicLoader", 1, "seq = " + this.val$option.getSeq() + " download failed return" + paramNetResp.mErrCode);
-    this.val$callBackResult.callBack(this.val$option, false, paramNetResp.mErrCode);
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("seq = ");
+      localStringBuilder.append(this.val$option.getSeq());
+      localStringBuilder.append(" download failed return:");
+      localStringBuilder.append(paramNetResp.mErrCode);
+      QLog.i("QCircleFeedPicLoader", 1, localStringBuilder.toString());
+      this.val$callBackResult.callBack(this.val$option, false, paramNetResp.mErrCode);
+    }
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.picload.QCircleHttpEngineDW.1
  * JD-Core Version:    0.7.0.1
  */

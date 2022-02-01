@@ -13,7 +13,7 @@ public class AVGameLobbyFeedbackCellViewHolder
   public AVGameLobbyFeedbackCellViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131366884));
+    this.a = ((TextView)paramView.findViewById(2131366746));
     a(this.a);
   }
   
@@ -25,7 +25,7 @@ public class AVGameLobbyFeedbackCellViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.rv.AVGameLobbyFeedbackCellViewHolder
  * JD-Core Version:    0.7.0.1
  */

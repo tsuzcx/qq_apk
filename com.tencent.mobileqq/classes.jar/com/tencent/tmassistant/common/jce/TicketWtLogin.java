@@ -32,15 +32,16 @@ public final class TicketWtLogin
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.A2 != null) {
-      paramJceOutputStream.write(this.A2, 0);
+    byte[] arrayOfByte = this.A2;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
     paramJceOutputStream.write(this.uin, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.TicketWtLogin
  * JD-Core Version:    0.7.0.1
  */

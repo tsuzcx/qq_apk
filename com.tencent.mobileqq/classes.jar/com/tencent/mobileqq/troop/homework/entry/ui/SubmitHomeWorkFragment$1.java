@@ -1,62 +1,23 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.mobileqq.troop.homework.HomeworkInfo;
+import com.tencent.mobileqq.troop.homework.observer.HomeworkObserver;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 class SubmitHomeWorkFragment$1
-  extends TroopBusinessObserver
+  extends HomeworkObserver
 {
   SubmitHomeWorkFragment$1(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public void onGetHomeworkInfo(boolean paramBoolean, HomeworkInfo paramHomeworkInfo)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    super.onGetHomeworkInfo(paramBoolean, paramHomeworkInfo);
-    this.a.l();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("获取作业信息");
-      if (!paramBoolean) {
-        break label123;
-      }
-    }
-    for (String str = "成功";; str = "失败")
-    {
-      QLog.d("SubmitHomeWorkFragment", 2, str);
-      if ((!paramBoolean) || (paramHomeworkInfo == null) || (paramHomeworkInfo.b == null)) {
-        break;
-      }
-      this.a.a = paramHomeworkInfo;
-      paramHomeworkInfo = paramHomeworkInfo.b;
-      try
-      {
-        paramHomeworkInfo = new JSONObject(paramHomeworkInfo).getJSONArray("c");
-        paramHomeworkInfo = new JSONObject().put("c", paramHomeworkInfo).toString();
-        this.a.a(paramHomeworkInfo);
-        return;
-      }
-      catch (Exception paramHomeworkInfo)
-      {
-        label123:
-        this.a.a(3, null, null, null);
-        return;
-      }
-    }
-    this.a.a(3, null, null, null);
-    this.a.a = null;
-    this.a.getActivity().finish();
-  }
-  
-  public void onSubmitHomework(boolean paramBoolean, int paramInt)
-  {
-    super.onSubmitHomework(paramBoolean, paramInt);
-    this.a.l();
+    super.a(paramBoolean, paramInt);
+    this.a.m();
     if (paramBoolean)
     {
-      this.a.g();
+      this.a.h();
       return;
     }
     if (paramInt == 1002)
@@ -71,10 +32,52 @@ class SubmitHomeWorkFragment$1
     }
     this.a.a(3, null, null, null);
   }
+  
+  public void a(boolean paramBoolean, HomeworkInfo paramHomeworkInfo)
+  {
+    super.a(paramBoolean, paramHomeworkInfo);
+    this.a.m();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("获取作业信息");
+      String str;
+      if (paramBoolean) {
+        str = "成功";
+      } else {
+        str = "失败";
+      }
+      localStringBuilder.append(str);
+      QLog.d("SubmitHomeWorkFragment", 2, localStringBuilder.toString());
+    }
+    if ((paramBoolean) && (paramHomeworkInfo != null) && (paramHomeworkInfo.b != null))
+    {
+      this.a.a = paramHomeworkInfo;
+      paramHomeworkInfo = paramHomeworkInfo.b;
+    }
+    try
+    {
+      paramHomeworkInfo = new JSONObject(paramHomeworkInfo).getJSONArray("c");
+      paramHomeworkInfo = new JSONObject().put("c", paramHomeworkInfo).toString();
+      this.a.a(paramHomeworkInfo);
+      return;
+    }
+    catch (Exception paramHomeworkInfo)
+    {
+      label135:
+      break label135;
+    }
+    this.a.a(3, null, null, null);
+    return;
+    this.a.a(3, null, null, null);
+    paramHomeworkInfo = this.a;
+    paramHomeworkInfo.a = null;
+    paramHomeworkInfo.getActivity().finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment.1
  * JD-Core Version:    0.7.0.1
  */

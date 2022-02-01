@@ -13,16 +13,21 @@ class QCircleReporter$8
   
   public void run()
   {
-    QCircleReporter.access$900(this.this$0).add(this.val$singleDcData);
+    QCircleReporter.access$1000(this.this$0).add(this.val$singleDcData);
     QCircleReporter.access$000(this.this$0);
-    if (((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()) {
-      RFLog.d("QCircleReporter_DoCommandReport", RFLog.CLR, "add one SingleDcData:" + QCircleReporter.access$1000(this.val$singleDcData));
+    if (((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion())
+    {
+      int i = RFLog.CLR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("add one SingleDcData:");
+      localStringBuilder.append(QCircleReporter.access$1100(this.val$singleDcData));
+      RFLog.d("QCircleReporter_DoCommandReport", i, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReporter.8
  * JD-Core Version:    0.7.0.1
  */

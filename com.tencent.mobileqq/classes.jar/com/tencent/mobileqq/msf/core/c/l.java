@@ -21,18 +21,43 @@ class l
   
   public String getCrashExtraMessage(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
   {
-    QLog.d("MSF.C.StatReport", 1, "getCrashExtraMessage...isNativeCrashed: " + paramBoolean + " crashType=" + paramString1 + " crashAddress=" + paramString2 + " crashStack=" + paramString3 + " native_SICODE=" + paramInt + " crashTime=" + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getCrashExtraMessage...isNativeCrashed: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" crashType=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" crashAddress=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" crashStack=");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(" native_SICODE=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" crashTime=");
+    localStringBuilder.append(paramLong);
+    QLog.d("MSF.C.StatReport", 1, localStringBuilder.toString());
     QLog.flushLog(true);
     if (paramString1.contains("OutOfMemory"))
     {
       i.a(j.a(this.a));
-      j.a(this.a).append("\n:SendQueueSize:").append(MsfCore.sCore.sender.g.size());
-      j.a(this.a).append("\n:heapMax=").append(Runtime.getRuntime().maxMemory());
-      j.a(this.a).append(",heapTotal=").append(Runtime.getRuntime().totalMemory());
-      j.a(this.a).append(",heapFree=").append(Runtime.getRuntime().freeMemory());
+      paramString1 = j.a(this.a);
+      paramString1.append("\n:SendQueueSize:");
+      paramString1.append(MsfCore.sCore.sender.g.size());
+      paramString1 = j.a(this.a);
+      paramString1.append("\n:heapMax=");
+      paramString1.append(Runtime.getRuntime().maxMemory());
+      paramString1 = j.a(this.a);
+      paramString1.append(",heapTotal=");
+      paramString1.append(Runtime.getRuntime().totalMemory());
+      paramString1 = j.a(this.a);
+      paramString1.append(",heapFree=");
+      paramString1.append(Runtime.getRuntime().freeMemory());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.StatReport", 2, "getCrashExtraMessage." + j.a(this.a).toString());
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("getCrashExtraMessage.");
+      paramString1.append(j.a(this.a).toString());
+      QLog.d("MSF.C.StatReport", 2, paramString1.toString());
     }
     return j.a(this.a).toString();
   }
@@ -44,8 +69,15 @@ class l
   
   public void onCrashHandleStart(boolean paramBoolean)
   {
-    QLog.d("MSF.C.StatReport", 1, "onCrashHandleStart...isNativeCrashed: " + paramBoolean);
-    j.a(this.a).append("\nCurrent thread Id=").append(Process.myTid()).append(", Name=").append(Thread.currentThread().getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCrashHandleStart...isNativeCrashed: ");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("MSF.C.StatReport", 1, localStringBuilder.toString());
+    localStringBuilder = j.a(this.a);
+    localStringBuilder.append("\nCurrent thread Id=");
+    localStringBuilder.append(Process.myTid());
+    localStringBuilder.append(", Name=");
+    localStringBuilder.append(Thread.currentThread().getName());
     this.a.a();
     this.a.b();
   }
@@ -57,7 +89,7 @@ class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.c.l
  * JD-Core Version:    0.7.0.1
  */

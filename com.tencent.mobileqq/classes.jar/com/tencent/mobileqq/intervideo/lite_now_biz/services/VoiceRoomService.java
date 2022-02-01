@@ -68,58 +68,73 @@ public class VoiceRoomService
     }
     paramEnterRoomInfo.anchorInfo = ((LiveAnchorInfo)localObject);
     localObject = new LiveWatchMediaInfo();
-    if (paramEnterRoomRsp.video_info.has()) {
-      switch (paramEnterRoomRsp.video_info.video_status.get())
+    if (paramEnterRoomRsp.video_info.has())
+    {
+      int i = paramEnterRoomRsp.video_info.video_status.get();
+      if (i != 0)
       {
-      case 1: 
-      case 2: 
-      default: 
-        ((LiveWatchMediaInfo)localObject).mVideoStatus = LiveVideoStatus.Unknown;
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              ((LiveWatchMediaInfo)localObject).mVideoStatus = LiveVideoStatus.Unknown;
+            } else {
+              ((LiveWatchMediaInfo)localObject).mVideoStatus = LiveVideoStatus.Stuck;
+            }
+          }
+          else {
+            ((LiveWatchMediaInfo)localObject).mVideoStatus = LiveVideoStatus.Pause;
+          }
+        }
+        else {
+          ((LiveWatchMediaInfo)localObject).mVideoStatus = LiveVideoStatus.Stop;
+        }
+      }
+      else {
+        ((LiveWatchMediaInfo)localObject).mVideoStatus = LiveVideoStatus.Start;
       }
     }
-    for (;;)
+    if (paramEnterRoomRsp.sdk_info.has())
     {
-      if (paramEnterRoomRsp.sdk_info.has())
-      {
-        ((LiveWatchMediaInfo)localObject).sig = paramEnterRoomRsp.sdk_info.sig.get().toByteArray();
-        ((LiveWatchMediaInfo)localObject).sigTimeOut = paramEnterRoomRsp.sdk_info.time.get();
-        ((LiveWatchMediaInfo)localObject).mSdkType = paramEnterRoomRsp.sdk_info.mode.get();
+      ((LiveWatchMediaInfo)localObject).sig = paramEnterRoomRsp.sdk_info.sig.get().toByteArray();
+      ((LiveWatchMediaInfo)localObject).sigTimeOut = paramEnterRoomRsp.sdk_info.time.get();
+      ((LiveWatchMediaInfo)localObject).mSdkType = paramEnterRoomRsp.sdk_info.mode.get();
+    }
+    if (paramEnterRoomRsp.av_info.has())
+    {
+      ((LiveWatchMediaInfo)localObject).mRtmp_url = "";
+      if (paramEnterRoomRsp.rtmp_url.get().size() > 0) {
+        ((LiveWatchMediaInfo)localObject).mRtmp_url = ((String)paramEnterRoomRsp.rtmp_url.get().get(0));
       }
-      if (paramEnterRoomRsp.av_info.has())
-      {
-        ((LiveWatchMediaInfo)localObject).mRtmp_url = "";
-        if (paramEnterRoomRsp.rtmp_url.get().size() > 0) {
-          ((LiveWatchMediaInfo)localObject).mRtmp_url = ((String)paramEnterRoomRsp.rtmp_url.get().get(0));
-        }
-        ((LiveWatchMediaInfo)localObject).mRtmp_url_high = "";
-        ((LiveWatchMediaInfo)localObject).mRtmp_url_low = "";
-        ((LiveWatchMediaInfo)localObject).mRtmp_url_lowest = "";
-        if (paramEnterRoomRsp.rtmp_url.get().size() > 1) {
-          ((LiveWatchMediaInfo)localObject).mRtmp_url_high = ((String)paramEnterRoomRsp.rtmp_url.get().get(1));
-        }
-        if (paramEnterRoomRsp.rtmp_url.get().size() > 2) {
-          ((LiveWatchMediaInfo)localObject).mRtmp_url_low = ((String)paramEnterRoomRsp.rtmp_url.get().get(2));
-        }
-        if (paramEnterRoomRsp.rtmp_url.get().size() > 3) {
-          ((LiveWatchMediaInfo)localObject).mRtmp_url_lowest = ((String)paramEnterRoomRsp.rtmp_url.get().get(3));
-        }
-        if (paramEnterRoomRsp.hls_url.size() > 0) {
-          ((LiveWatchMediaInfo)localObject).mHLS_url = ((String)paramEnterRoomRsp.hls_url.get(0));
-        }
-        if (paramEnterRoomRsp.h5_url.size() > 0) {
-          ((LiveWatchMediaInfo)localObject).mFlv_url = ((String)paramEnterRoomRsp.h5_url.get(0));
-        }
-        if (paramEnterRoomRsp.h5_url.size() > 0) {
-          ((LiveWatchMediaInfo)localObject).mFlv_url_high = ((String)paramEnterRoomRsp.h5_url.get(1));
-        }
-        if (paramEnterRoomRsp.h5_url.size() > 0) {
-          ((LiveWatchMediaInfo)localObject).mFlv_url_low = ((String)paramEnterRoomRsp.h5_url.get(2));
-        }
-        if (paramEnterRoomRsp.h5_url.size() > 0) {
-          ((LiveWatchMediaInfo)localObject).mFlv_url_lowest = ((String)paramEnterRoomRsp.h5_url.get(3));
-        }
-        ((LiveWatchMediaInfo)localObject).mRtmpType = paramEnterRoomRsp.use_url.get();
+      ((LiveWatchMediaInfo)localObject).mRtmp_url_high = "";
+      ((LiveWatchMediaInfo)localObject).mRtmp_url_low = "";
+      ((LiveWatchMediaInfo)localObject).mRtmp_url_lowest = "";
+      if (paramEnterRoomRsp.rtmp_url.get().size() > 1) {
+        ((LiveWatchMediaInfo)localObject).mRtmp_url_high = ((String)paramEnterRoomRsp.rtmp_url.get().get(1));
       }
+      if (paramEnterRoomRsp.rtmp_url.get().size() > 2) {
+        ((LiveWatchMediaInfo)localObject).mRtmp_url_low = ((String)paramEnterRoomRsp.rtmp_url.get().get(2));
+      }
+      if (paramEnterRoomRsp.rtmp_url.get().size() > 3) {
+        ((LiveWatchMediaInfo)localObject).mRtmp_url_lowest = ((String)paramEnterRoomRsp.rtmp_url.get().get(3));
+      }
+      if (paramEnterRoomRsp.hls_url.size() > 0) {
+        ((LiveWatchMediaInfo)localObject).mHLS_url = ((String)paramEnterRoomRsp.hls_url.get(0));
+      }
+      if (paramEnterRoomRsp.h5_url.size() > 0) {
+        ((LiveWatchMediaInfo)localObject).mFlv_url = ((String)paramEnterRoomRsp.h5_url.get(0));
+      }
+      if (paramEnterRoomRsp.h5_url.size() > 0) {
+        ((LiveWatchMediaInfo)localObject).mFlv_url_high = ((String)paramEnterRoomRsp.h5_url.get(1));
+      }
+      if (paramEnterRoomRsp.h5_url.size() > 0) {
+        ((LiveWatchMediaInfo)localObject).mFlv_url_low = ((String)paramEnterRoomRsp.h5_url.get(2));
+      }
+      if (paramEnterRoomRsp.h5_url.size() > 0) {
+        ((LiveWatchMediaInfo)localObject).mFlv_url_lowest = ((String)paramEnterRoomRsp.h5_url.get(3));
+      }
+      ((LiveWatchMediaInfo)localObject).mRtmpType = paramEnterRoomRsp.use_url.get();
       try
       {
         paramEnterRoomRsp = paramEnterRoomRsp.ext_info.get().toByteArray();
@@ -132,21 +147,11 @@ public class VoiceRoomService
       }
       catch (Exception paramEnterRoomRsp)
       {
-        for (;;)
-        {
-          paramEnterRoomRsp.printStackTrace();
-        }
+        paramEnterRoomRsp.printStackTrace();
       }
-      paramEnterRoomInfo.watchMediaInfo = ((LiveWatchMediaInfo)localObject);
-      return paramEnterRoomInfo;
-      ((LiveWatchMediaInfo)localObject).mVideoStatus = LiveVideoStatus.Start;
-      continue;
-      ((LiveWatchMediaInfo)localObject).mVideoStatus = LiveVideoStatus.Stop;
-      continue;
-      ((LiveWatchMediaInfo)localObject).mVideoStatus = LiveVideoStatus.Pause;
-      continue;
-      ((LiveWatchMediaInfo)localObject).mVideoStatus = LiveVideoStatus.Stuck;
     }
+    paramEnterRoomInfo.watchMediaInfo = ((LiveWatchMediaInfo)localObject);
+    return paramEnterRoomInfo;
   }
   
   private void a(int paramInt, EnterExitRoomCallback paramEnterExitRoomCallback)
@@ -157,85 +162,95 @@ public class VoiceRoomService
     try
     {
       i = Integer.valueOf(this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo.source).intValue();
-      localEnterRoomReq.from_id.set(i);
-      this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getLogger().i("AbstractCustomRoomService", "fromid = " + i, new Object[0]);
-      localEnterRoomReq.enter_type.set(1);
-      localEnterRoomReq.room_type.set(this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo.roomType);
-      this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getChannel().send(16423, 1, localEnterRoomReq.toByteArray(), new VoiceRoomService.1(this, paramEnterExitRoomCallback, paramInt));
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getLogger().i("AbstractCustomRoomService", "fromid is not integer", new Object[0]);
-        int i = 0;
-      }
+      int i;
+      label55:
+      com.tencent.falco.base.libapi.log.LogInterface localLogInterface;
+      StringBuilder localStringBuilder;
+      break label55;
     }
+    this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getLogger().i("AbstractCustomRoomService", "fromid is not integer", new Object[0]);
+    i = 0;
+    localEnterRoomReq.from_id.set(i);
+    localLogInterface = this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getLogger();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fromid = ");
+    localStringBuilder.append(i);
+    localLogInterface.i("AbstractCustomRoomService", localStringBuilder.toString(), new Object[0]);
+    localEnterRoomReq.enter_type.set(1);
+    localEnterRoomReq.room_type.set(this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo.roomType);
+    this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getChannel().send(16423, 1, localEnterRoomReq.toByteArray(), new VoiceRoomService.1(this, paramEnterExitRoomCallback, paramInt));
   }
   
   private void a(EnterExitRoomCallback paramEnterExitRoomCallback)
   {
     int i = this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo.extData.getInt("content_type");
-    LogFactory.a().c("AbstractCustomRoomService", "----------watchEnterRoom contentType " + i);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("Referer", g());
+    com.tencent.mobileqq.litelivesdk.utils.log.LogInterface localLogInterface = LogFactory.a();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("----------watchEnterRoom contentType ");
+    ((StringBuilder)localObject).append(i);
+    localLogInterface.c("AbstractCustomRoomService", ((StringBuilder)localObject).toString());
+    localObject = new HashMap();
+    ((Map)localObject).put("Referer", g());
     long l = System.currentTimeMillis();
     a();
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("room_id", String.valueOf(this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo.roomId));
-      if (this.jdField_a_of_type_Boolean)
-      {
-        String str1 = b();
-        HttpsFactory.a().a(str1, localHashMap, localJSONObject, new VoiceRoomService.2(this, paramEnterExitRoomCallback, l), CookieHelper.a());
-        return;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        a(System.currentTimeMillis() - l, -2, localException.getMessage());
-        paramEnterExitRoomCallback.onSuccess();
-        continue;
-        String str2 = a();
-      }
+      a(System.currentTimeMillis() - l, -2, localException.getMessage());
+      paramEnterExitRoomCallback.onSuccess();
     }
+    String str;
+    if (this.jdField_a_of_type_Boolean) {
+      str = b();
+    } else {
+      str = a();
+    }
+    HttpsFactory.a().a(str, (Map)localObject, localJSONObject, new VoiceRoomService.2(this, paramEnterExitRoomCallback, l), CookieHelper.a());
   }
   
   private boolean a(pbenterroom.EnterRoomRsp paramEnterRoomRsp, EnterRoomInfo paramEnterRoomInfo)
   {
     paramEnterRoomRsp = a(paramEnterRoomRsp, paramEnterRoomInfo);
-    if ((paramEnterRoomRsp == null) || (paramEnterRoomRsp.watchMediaInfo == null) || (paramEnterRoomRsp.watchMediaInfo.sig == null)) {
-      return false;
+    if ((paramEnterRoomRsp != null) && (paramEnterRoomRsp.watchMediaInfo != null) && (paramEnterRoomRsp.watchMediaInfo.sig != null))
+    {
+      if (paramEnterRoomRsp.watchMediaInfo != null) {
+        getLiveInfo().watchMediaInfo = paramEnterRoomRsp.watchMediaInfo;
+      }
+      if (paramEnterRoomRsp.anchorInfo != null) {
+        getLiveInfo().anchorInfo = paramEnterRoomRsp.anchorInfo;
+      }
+      if (paramEnterRoomRsp.mediaInfo != null) {
+        getLiveInfo().mediaInfo = paramEnterRoomRsp.mediaInfo;
+      }
+      if (paramEnterRoomRsp.roomInfo != null) {
+        getLiveInfo().roomInfo = paramEnterRoomRsp.roomInfo;
+      }
+      return true;
     }
-    if (paramEnterRoomRsp.watchMediaInfo != null) {
-      getLiveInfo().watchMediaInfo = paramEnterRoomRsp.watchMediaInfo;
-    }
-    if (paramEnterRoomRsp.anchorInfo != null) {
-      getLiveInfo().anchorInfo = paramEnterRoomRsp.anchorInfo;
-    }
-    if (paramEnterRoomRsp.mediaInfo != null) {
-      getLiveInfo().mediaInfo = paramEnterRoomRsp.mediaInfo;
-    }
-    if (paramEnterRoomRsp.roomInfo != null) {
-      getLiveInfo().roomInfo = paramEnterRoomRsp.roomInfo;
-    }
-    return true;
+    return false;
   }
   
   public void watchEnterRoom(EnterRoomInfo paramEnterRoomInfo, EnterExitRoomCallback paramEnterExitRoomCallback)
   {
     this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo = paramEnterRoomInfo;
-    this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getLogger().i("AbstractCustomRoomService", "requestEnterRoom roomInfo=" + paramEnterRoomInfo.toString(), new Object[0]);
+    com.tencent.falco.base.libapi.log.LogInterface localLogInterface = this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestEnterRoom roomInfo=");
+    localStringBuilder.append(paramEnterRoomInfo.toString());
+    localLogInterface.i("AbstractCustomRoomService", localStringBuilder.toString(), new Object[0]);
     a(3, paramEnterExitRoomCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.VoiceRoomService
  * JD-Core Version:    0.7.0.1
  */

@@ -11,22 +11,24 @@ final class PermissionUtil$3
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback != null) {
-      this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback.b();
+    paramArrayOfString = this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback;
+    if (paramArrayOfString != null) {
+      paramArrayOfString.b();
     }
     DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback != null) {
-      this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback.a();
+    paramArrayOfString = this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback;
+    if (paramArrayOfString != null) {
+      paramArrayOfString.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.PermissionUtil.3
  * JD-Core Version:    0.7.0.1
  */

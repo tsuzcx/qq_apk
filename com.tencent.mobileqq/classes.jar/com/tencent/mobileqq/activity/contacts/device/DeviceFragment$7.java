@@ -10,12 +10,13 @@ class DeviceFragment$7
 {
   DeviceFragment$7(DeviceFragment paramDeviceFragment) {}
   
-  public void a(ArrayList<DeviceInfo> paramArrayList)
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
   {
     if (this.a.f)
     {
-      this.a.f = false;
-      if (DeviceFragment.a(this.a) != null) {
+      DeviceFragment localDeviceFragment = this.a;
+      localDeviceFragment.f = false;
+      if (DeviceFragment.a(localDeviceFragment) != null) {
         DeviceFragment.b(this.a).a(this.a.b(), true, null);
       }
     }
@@ -28,7 +29,7 @@ class DeviceFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.device.DeviceFragment.7
  * JD-Core Version:    0.7.0.1
  */

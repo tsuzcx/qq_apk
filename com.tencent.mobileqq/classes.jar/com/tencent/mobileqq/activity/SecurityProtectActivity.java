@@ -41,7 +41,7 @@ public class SecurityProtectActivity
   
   public SecurityProtectActivity()
   {
-    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131713647);
+    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131713605);
     this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
   }
   
@@ -54,25 +54,25 @@ public class SecurityProtectActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562986);
-    setTitle(2131718956);
+    super.setContentView(2131562805);
+    setTitle(2131718672);
     this.rightViewText.setVisibility(8);
-    this.leftView.setText(2131718961);
+    this.leftView.setText(2131718677);
     this.leftView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379645));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368176));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377883));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131380845));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378990));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367929));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377309));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131380109));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetButton.setFocusable(true);
     return true;
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     if (this.c == true)
@@ -82,45 +82,44 @@ public class SecurityProtectActivity
     }
     this.jdField_a_of_type_Boolean = JumpQqPimSecureUtil.a(this);
     this.jdField_b_of_type_Boolean = JumpQqPimSecureUtil.b(this);
-    String str;
     if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850043);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718951);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849970);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718667);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131718946);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label192;
-      }
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131718662);
+    }
+    else if (!this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849971);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718669);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131718663);
+    }
+    else
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849969);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718664);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131718668);
+    }
+    String str;
+    if (this.jdField_b_of_type_Boolean) {
       str = "qqpimsecure is running";
     }
     for (;;)
     {
-      ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", str, 0, 0, "", "", "", "");
-      return;
-      if (!this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850044);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718953);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131718947);
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850042);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718948);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131718952);
       break;
-      label192:
       if (this.jdField_a_of_type_Boolean) {
         str = "qqpimsecure installed but not running";
       } else {
         str = "qqpimsecure not installed";
       }
     }
+    ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", str, 0, 0, "", "", "", "");
   }
   
-  public void doOnStop()
+  protected void doOnStop()
   {
     super.doOnStop();
     if (this.c == true) {
@@ -130,36 +129,36 @@ public class SecurityProtectActivity
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131369202)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        ThreadManager.executeOnNetWorkThread(new SecurityProtectActivity.1(this));
-        this.c = true;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718949);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-        ((LinearLayout)findViewById(2131366030)).setVisibility(0);
-        ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn download qqpimsecure", 0, 0, "", "", "", "");
-      }
-      else if (!this.jdField_b_of_type_Boolean)
-      {
-        JumpQqPimSecureUtil.a(this, "mobileqq", 7798785);
-        ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn weakup qqpimsecure", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        JumpQqPimSecureUtil.a(this, "mobileqq", 8716289);
-        ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn run_scan", 0, 0, "", "", "", "");
-        continue;
-        finish();
+      if (i == 2131380109) {
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          ThreadManager.executeOnNetWorkThread(new SecurityProtectActivity.1(this));
+          this.c = true;
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718665);
+          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+          this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+          ((LinearLayout)findViewById(2131365860)).setVisibility(0);
+          ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn download qqpimsecure", 0, 0, "", "", "", "");
+        }
+        else if (!this.jdField_b_of_type_Boolean)
+        {
+          JumpQqPimSecureUtil.a(this, "mobileqq", 7798785);
+          ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn weakup qqpimsecure", 0, 0, "", "", "", "");
+        }
+        else
+        {
+          JumpQqPimSecureUtil.a(this, "mobileqq", 8716289);
+          ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn run_scan", 0, 0, "", "", "", "");
+        }
       }
     }
+    else {
+      finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -174,7 +173,7 @@ public class SecurityProtectActivity
     if (paramDownloadInfo.resultCode == 0)
     {
       this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramDownloadInfo.respContentLength);
-      if ((NetworkUtil.d(getActivity())) && (this.jdField_a_of_type_JavaLangLong.longValue() > 0L))
+      if ((NetworkUtil.isNetSupport(getActivity())) && (this.jdField_a_of_type_JavaLangLong.longValue() > 0L))
       {
         paramDownloadInfo = new Bundle();
         paramDownloadInfo.putString("_filename_from_dlg", this.jdField_b_of_type_JavaLangString);
@@ -195,7 +194,7 @@ public class SecurityProtectActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SecurityProtectActivity
  * JD-Core Version:    0.7.0.1
  */

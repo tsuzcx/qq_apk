@@ -18,7 +18,7 @@ public class URI
   {
     if (paramInt1 < 128)
     {
-      paramArrayOfByte[(0 + paramInt2)] = ((byte)paramInt1);
+      paramArrayOfByte[(paramInt2 + 0)] = ((byte)paramInt1);
       return 1;
     }
     if (paramInt1 < 2048)
@@ -47,147 +47,147 @@ public class URI
   
   public static String escapePathString(String paramString, boolean paramBoolean)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {
-      paramString = "";
-    }
-    byte[] arrayOfByte;
-    int j;
-    int k;
-    int m;
-    for (;;)
+    if ((paramString != null) && (paramString.length() > 0))
     {
-      return paramString;
-      if (paramBoolean) {}
-      for (arrayOfByte = PkgTools.convertUnicode2UTF8Byte(paramString); arrayOfByte != null; arrayOfByte = paramString.getBytes())
+      byte[] arrayOfByte;
+      if (paramBoolean) {
+        arrayOfByte = PkgTools.convertUnicode2UTF8Byte(paramString);
+      } else {
+        arrayOfByte = paramString.getBytes();
+      }
+      if (arrayOfByte == null) {
+        return paramString;
+      }
+      paramString = new byte[arrayOfByte.length * 3 + 1];
+      int j = 0;
+      int i = 0;
+      while (j < arrayOfByte.length)
       {
-        paramString = new byte[arrayOfByte.length * 3 + 1];
-        j = 0;
-        i = 0;
-        for (;;)
+        int k;
+        int m;
+        if (arrayOfByte[j] == 32)
         {
-          if (j >= arrayOfByte.length) {
-            break label258;
-          }
-          if (arrayOfByte[j] != 32) {
-            break;
-          }
           k = i + 1;
           paramString[i] = 37;
           m = k + 1;
           paramString[k] = 50;
           i = m + 1;
           paramString[m] = 48;
-          j += 1;
         }
-      }
-    }
-    if (!isUnreservedWordforPath((char)arrayOfByte[j]))
-    {
-      k = i + 1;
-      paramString[i] = 37;
-      m = arrayOfByte[j] >> 4 & 0xF;
-      if (m < 10)
-      {
-        i = k + 1;
-        paramString[k] = ((byte)(m + 48));
-      }
-      for (;;)
-      {
-        m = arrayOfByte[j] & 0xF;
-        if (m >= 10) {
-          break label217;
+        for (;;)
+        {
+          break;
+          if (!isUnreservedWordforPath((char)arrayOfByte[j]))
+          {
+            k = i + 1;
+            paramString[i] = 37;
+            m = arrayOfByte[j] >> 4 & 0xF;
+            if (m < 10)
+            {
+              i = k + 1;
+              paramString[k] = ((byte)(m + 48));
+            }
+            else
+            {
+              i = k + 1;
+              paramString[k] = ((byte)(m + 65 - 10));
+            }
+            m = arrayOfByte[j] & 0xF;
+            if (m < 10)
+            {
+              k = i + 1;
+              paramString[i] = ((byte)(m + 48));
+              i = k;
+            }
+            else
+            {
+              k = i + 1;
+              paramString[i] = ((byte)(m + 65 - 10));
+              i = k;
+            }
+          }
+          else
+          {
+            k = i + 1;
+            paramString[i] = arrayOfByte[j];
+            i = k;
+          }
         }
-        paramString[i] = ((byte)(m + 48));
-        i += 1;
-        break;
-        i = k + 1;
-        paramString[k] = ((byte)(m + 65 - 10));
+        j += 1;
       }
-      label217:
-      k = i + 1;
-      paramString[i] = ((byte)(m + 65 - 10));
+      return new String(paramString, 0, i);
     }
-    for (int i = k;; i = k)
-    {
-      break;
-      k = i + 1;
-      paramString[i] = arrayOfByte[j];
-    }
-    label258:
-    return new String(paramString, 0, i);
+    return "";
   }
   
   public static String escapeString(String paramString, boolean paramBoolean)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {
-      return "";
-    }
-    byte[] arrayOfByte;
-    int j;
-    int i;
-    if (paramBoolean)
+    if ((paramString != null) && (paramString.length() > 0))
     {
-      paramString = PkgTools.convertUnicode2UTF8Byte(paramString);
-      arrayOfByte = new byte[paramString.length * 3 + 1];
-      j = 0;
-      i = 0;
-      label37:
-      if (j >= paramString.length) {
-        break label314;
+      if (paramBoolean) {
+        paramString = PkgTools.convertUnicode2UTF8Byte(paramString);
+      } else {
+        paramString = paramString.getBytes();
       }
-      if (((paramString[j] < 97) || (paramString[j] > 122)) && ((paramString[j] < 65) || (paramString[j] > 90)) && ((paramString[j] < 48) || (paramString[j] > 57)) && (paramString[j] != 46) && (paramString[j] != 45) && (paramString[j] != 42) && (paramString[j] != 95)) {
-        break label149;
-      }
-      arrayOfByte[i] = paramString[j];
-      i += 1;
-    }
-    for (;;)
-    {
-      j += 1;
-      break label37;
-      paramString = paramString.getBytes();
-      break;
-      label149:
-      int k;
-      int m;
-      if (paramString[j] == 32)
+      byte[] arrayOfByte = new byte[paramString.length * 3 + 1];
+      int j = 0;
+      int i = 0;
+      while (j < paramString.length)
       {
-        k = i + 1;
-        arrayOfByte[i] = 37;
-        m = k + 1;
-        arrayOfByte[k] = 50;
-        i = m + 1;
-        arrayOfByte[m] = 48;
-      }
-      else
-      {
-        k = i + 1;
-        arrayOfByte[i] = 37;
-        m = paramString[j] >> 4 & 0xF;
-        if (m < 10)
+        int k;
+        if (((paramString[j] < 97) || (paramString[j] > 122)) && ((paramString[j] < 65) || (paramString[j] > 90)) && ((paramString[j] < 48) || (paramString[j] > 57)) && (paramString[j] != 46) && (paramString[j] != 45) && (paramString[j] != 42) && (paramString[j] != 95))
         {
-          i = k + 1;
-          arrayOfByte[k] = ((byte)(m + 48));
-        }
-        for (;;)
-        {
-          k = paramString[j] & 0xF;
-          if (k >= 10) {
-            break label294;
+          int m;
+          if (paramString[j] == 32)
+          {
+            k = i + 1;
+            arrayOfByte[i] = 37;
+            m = k + 1;
+            arrayOfByte[k] = 50;
+            i = m + 1;
+            arrayOfByte[m] = 48;
           }
-          arrayOfByte[i] = ((byte)(k + 48));
-          i += 1;
-          break;
-          i = k + 1;
-          arrayOfByte[k] = ((byte)(m + 65 - 10));
+          else
+          {
+            k = i + 1;
+            arrayOfByte[i] = 37;
+            m = paramString[j] >> 4 & 0xF;
+            if (m < 10)
+            {
+              i = k + 1;
+              arrayOfByte[k] = ((byte)(m + 48));
+            }
+            else
+            {
+              i = k + 1;
+              arrayOfByte[k] = ((byte)(m + 65 - 10));
+            }
+            m = paramString[j] & 0xF;
+            if (m < 10)
+            {
+              k = i + 1;
+              arrayOfByte[i] = ((byte)(m + 48));
+              i = k;
+            }
+            else
+            {
+              k = i + 1;
+              arrayOfByte[i] = ((byte)(m + 65 - 10));
+              i = k;
+            }
+          }
         }
-        label294:
-        arrayOfByte[i] = ((byte)(k + 65 - 10));
-        i += 1;
+        else
+        {
+          k = i + 1;
+          arrayOfByte[i] = paramString[j];
+          i = k;
+        }
+        j += 1;
       }
+      return new String(arrayOfByte, 0, i);
     }
-    label314:
-    return new String(arrayOfByte, 0, i);
+    return "";
   }
   
   private static String fixUrl(String paramString)
@@ -195,61 +195,100 @@ public class URI
     try
     {
       int j = paramString.indexOf('?');
+      Object localObject = paramString;
       if (paramString.indexOf("/?") <= 0)
       {
         if (j < 0) {
           return paramString;
         }
-        Object localObject = getHost(paramString);
+        localObject = getHost(paramString);
         int i = paramString.indexOf((String)localObject);
-        if (i < 0) {}
-        int k;
-        for (i = 0; paramString.indexOf('/', i) < 0; i = k + i)
+        if (i < 0) {
+          i = 0;
+        } else {
+          i = ((String)localObject).length() + i;
+        }
+        localObject = paramString;
+        if (paramString.indexOf('/', i) < 0)
         {
           localObject = new StringBuffer(paramString);
           ((StringBuffer)localObject).insert(j, '/');
-          return ((StringBuffer)localObject).toString();
-          k = ((String)localObject).length();
+          localObject = ((StringBuffer)localObject).toString();
         }
       }
-      return paramString;
+      return localObject;
     }
     catch (Exception localException) {}
+    return paramString;
   }
   
   public static String getEscapeString(String paramString, boolean paramBoolean)
   {
     if (paramString == null) {
-      localObject = "";
+      return "";
     }
-    do
+    int i = paramString.indexOf("?");
+    Object localObject = paramString;
+    if (i > 0)
     {
-      do
-      {
-        return localObject;
-        i = paramString.indexOf("?");
-        localObject = paramString;
-      } while (i <= 0);
-      localObject = paramString;
-    } while (i == paramString.length() - 1);
-    char[] arrayOfChar = paramString.substring(i + 1, paramString.length()).toCharArray();
-    Object localObject = new StringBuffer();
-    StringBuffer localStringBuffer1 = new StringBuffer();
-    StringBuffer localStringBuffer2 = new StringBuffer();
-    localStringBuffer2.append(paramString.substring(0, i + 1));
-    int j = 0;
-    paramString = localStringBuffer1;
-    int i = 0;
-    if (i < arrayOfChar.length)
-    {
-      switch (j)
-      {
+      if (i == paramString.length() - 1) {
+        return paramString;
       }
-      for (;;)
+      i += 1;
+      char[] arrayOfChar = paramString.substring(i, paramString.length()).toCharArray();
+      localObject = new StringBuffer();
+      StringBuffer localStringBuffer1 = new StringBuffer();
+      StringBuffer localStringBuffer2 = new StringBuffer();
+      localStringBuffer2.append(paramString.substring(0, i));
+      i = 0;
+      int j = 0;
+      paramString = localStringBuffer1;
+      while (i < arrayOfChar.length)
       {
-        i += 1;
-        break;
-        if (arrayOfChar[i] != '=')
+        if (j != 0)
+        {
+          if (j == 1) {
+            if (arrayOfChar[i] != '&')
+            {
+              char c = arrayOfChar[i];
+              if (!isQueryWord(c))
+              {
+                if ((c == '%') && (i < arrayOfChar.length - 2))
+                {
+                  int k = i + 1;
+                  if (isHexDigit(arrayOfChar[k]))
+                  {
+                    int m = i + 2;
+                    if (isHexDigit(arrayOfChar[m]))
+                    {
+                      paramString.append(arrayOfChar[i]);
+                      paramString.append(arrayOfChar[k]);
+                      paramString.append(arrayOfChar[m]);
+                      i += 3;
+                      continue;
+                    }
+                  }
+                }
+                paramString.append(escapeString(String.valueOf(arrayOfChar[i]), true));
+              }
+              else
+              {
+                paramString.append(arrayOfChar[i]);
+              }
+            }
+            else
+            {
+              localStringBuffer2.append((StringBuffer)localObject);
+              localStringBuffer2.append("=");
+              localStringBuffer2.append(paramString.toString());
+              localStringBuffer2.append("&");
+              localObject = new StringBuffer();
+              paramString = new StringBuffer();
+              j = 0;
+            }
+          }
+        }
+        else if (arrayOfChar[i] != '=')
         {
           ((StringBuffer)localObject).append(arrayOfChar[i]);
         }
@@ -257,111 +296,80 @@ public class URI
         {
           paramString = new StringBuffer();
           j = 1;
-          continue;
-          if (arrayOfChar[i] != '&')
-          {
-            char c = arrayOfChar[i];
-            if (!isQueryWord(c))
-            {
-              if ((c == '%') && (i < arrayOfChar.length - 2) && (isHexDigit(arrayOfChar[(i + 1)])) && (isHexDigit(arrayOfChar[(i + 2)])))
-              {
-                paramString.append(arrayOfChar[i]);
-                paramString.append(arrayOfChar[(i + 1)]);
-                paramString.append(arrayOfChar[(i + 2)]);
-                i += 3;
-                break;
-              }
-              paramString.append(escapeString(String.valueOf(arrayOfChar[i]), true));
-              continue;
-            }
-            paramString.append(arrayOfChar[i]);
-            continue;
-          }
-          localStringBuffer2.append((StringBuffer)localObject).append("=").append(paramString.toString()).append("&");
-          localObject = new StringBuffer();
-          paramString = new StringBuffer();
-          j = 0;
         }
+        i += 1;
       }
-    }
-    if (j == 1) {
-      localStringBuffer2.append((StringBuffer)localObject).append("=").append(paramString.toString());
-    }
-    for (;;)
-    {
-      return localStringBuffer2.toString();
-      if (arrayOfChar[(arrayOfChar.length - 1)] != '&') {
+      if (j == 1)
+      {
+        localStringBuffer2.append((StringBuffer)localObject);
+        localStringBuffer2.append("=");
+        localStringBuffer2.append(paramString.toString());
+      }
+      else if (arrayOfChar[(arrayOfChar.length - 1)] != '&')
+      {
         localStringBuffer2.append((StringBuffer)localObject);
       }
+      localObject = localStringBuffer2.toString();
     }
+    return localObject;
   }
   
   public static String getHost(String paramString)
   {
     int i = paramString.indexOf("://");
-    int m;
-    int j;
-    if (i > 0)
-    {
+    if (i > 0) {
       i += 3;
-      m = paramString.length();
-      j = i;
-      label23:
-      if (j >= paramString.length()) {
-        break label84;
-      }
-      int n = paramString.charAt(j);
-      k = j;
-      if (n != 58)
-      {
-        k = j;
-        if (n != 47) {
-          if (n != 63) {
-            break label77;
-          }
-        }
-      }
-    }
-    label77:
-    label84:
-    for (int k = j;; k = m)
-    {
-      return paramString.substring(i, k);
+    } else {
       i = 0;
-      break;
-      j += 1;
-      break label23;
     }
+    int m = paramString.length();
+    int j = i;
+    for (;;)
+    {
+      k = m;
+      if (j >= paramString.length()) {
+        break label75;
+      }
+      k = paramString.charAt(j);
+      if ((k == 58) || (k == 47) || (k == 63)) {
+        break;
+      }
+      j += 1;
+    }
+    int k = j;
+    label75:
+    return paramString.substring(i, k);
   }
   
   public static short getRequestType(String paramString)
   {
-    short s = 5;
-    if ((paramString == null) || (paramString.length() < 3)) {
-      s = 0;
-    }
-    do
+    if (paramString != null)
     {
-      return s;
+      if (paramString.length() < 3) {
+        return 0;
+      }
       paramString = PkgTools.trim(paramString);
       if ((paramString.length() > 5) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 5), "http:"))) {
         return 1;
       }
-    } while ((paramString.length() > 6) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 6), "https:")));
-    if ((paramString.length() > 5) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 5), "wtai:"))) {
-      return 2;
-    }
-    if ((paramString.length() > 7) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 7), "mailto:"))) {
-      return 3;
-    }
-    if ((paramString.length() > 4) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 4), "sms:"))) {
-      return 6;
-    }
-    if ((paramString.length() > 11) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 11), "javascript:"))) {
-      return 6;
-    }
-    if ((paramString.length() > 4) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 4), "ext:"))) {
-      return 7;
+      if ((paramString.length() > 6) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 6), "https:"))) {
+        return 5;
+      }
+      if ((paramString.length() > 5) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 5), "wtai:"))) {
+        return 2;
+      }
+      if ((paramString.length() > 7) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 7), "mailto:"))) {
+        return 3;
+      }
+      if ((paramString.length() > 4) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 4), "sms:"))) {
+        return 6;
+      }
+      if ((paramString.length() > 11) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 11), "javascript:"))) {
+        return 6;
+      }
+      if ((paramString.length() > 4) && (PkgTools.equalsIgnoreCase(paramString.substring(0, 4), "ext:"))) {
+        return 7;
+      }
     }
     return 0;
   }
@@ -372,8 +380,7 @@ public class URI
       return null;
     }
     String str = getHost(paramString);
-    int i = paramString.indexOf(str);
-    i = str.length() + i;
+    int i = paramString.indexOf(str) + str.length();
     paramString = paramString.replace('\\', '/');
     while ((i < paramString.length()) && (paramString.charAt(i) != '/')) {
       i += 1;
@@ -386,7 +393,11 @@ public class URI
     try
     {
       str = escapePathString(paramString.substring(i, j), false);
-      str = paramString.substring(0, i) + str + paramString.substring(j);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString.substring(0, i));
+      localStringBuilder.append(str);
+      localStringBuilder.append(paramString.substring(j));
+      str = localStringBuilder.toString();
       return str;
     }
     catch (Exception localException) {}
@@ -401,17 +412,29 @@ public class URI
   public static boolean isIpAddress(String paramString)
   {
     paramString = PkgTools.split(getHost(paramString), ".");
-    if (paramString.length != 4) {}
+    if (paramString.length != 4) {
+      return false;
+    }
+    int i = 0;
     for (;;)
     {
-      return false;
-      int i = 0;
       if (i < 4) {}
       try
       {
         int j = Integer.parseInt(paramString[i]);
-        if ((j >= 0) && (j < 255) && ((j != 0) || ((i != 0) && (i != 3)))) {
+        if (j >= 0)
+        {
+          if (j >= 255) {
+            return false;
+          }
+          if ((j == 0) && ((i == 0) || (i == 3))) {
+            return false;
+          }
           i += 1;
+        }
+        else
+        {
+          return false;
         }
       }
       catch (Exception paramString) {}
@@ -445,63 +468,76 @@ public class URI
     paramString = paramString.toCharArray();
     byte[] arrayOfByte = new byte[paramString.length * 4];
     int j = 0;
-    int k = 0;
-    if (j < paramString.length)
+    int i;
+    for (int k = 0; j < paramString.length; k = i)
     {
       int m;
-      int i;
-      if ((paramString[j] == '%') && (j + 2 < paramString.length))
+      if (paramString[j] == '%')
       {
-        m = 1;
-        int n = 0;
-        if (m < 3)
+        int i2 = j + 2;
+        if (i2 < paramString.length)
         {
-          if ((paramString[(j + m)] <= '9') && (paramString[(j + m)] >= '0')) {
-            i = n * 16 + (paramString[(j + m)] - '0');
-          }
-          for (;;)
+          m = 1;
+          int n;
+          for (i = 0; m < 3; i = n)
           {
-            m += 1;
-            n = i;
-            break;
-            if ((paramString[(j + m)] <= 'F') && (paramString[(j + m)] >= 'A'))
+            int i3 = j + m;
+            if ((paramString[i3] <= '9') && (paramString[i3] >= '0'))
             {
-              i = n * 16 + (paramString[(j + m)] - 'A' + 10);
+              i *= 16;
+              n = paramString[i3] - '0';
+              n = i + n;
             }
             else
             {
-              i = n;
-              if (paramString[(j + m)] <= 'f')
+              int i1;
+              if (paramString[i3] <= 'F')
               {
-                i = n;
-                if (paramString[(j + m)] >= 'a') {
-                  i = n * 16 + (paramString[(j + m)] - 'a' + 10);
+                n = paramString[i3];
+                i1 = 65;
+                if (n >= 65) {
+                  i *= 16;
                 }
               }
+              for (n = paramString[i3];; n = paramString[i3])
+              {
+                n = n - i1 + 10;
+                break;
+                n = i;
+                if (paramString[i3] > 'f') {
+                  break label198;
+                }
+                int i4 = paramString[i3];
+                i1 = 97;
+                n = i;
+                if (i4 < 97) {
+                  break label198;
+                }
+                i *= 16;
+              }
             }
+            label198:
+            m += 1;
           }
+          arrayOfByte[k] = ((byte)i);
+          i = k + 1;
+          j = i2;
+          break label281;
         }
-        arrayOfByte[k] = ((byte)n);
-        j += 2;
-        i = k + 1;
       }
-      for (;;)
+      if (paramBoolean)
       {
-        j += 1;
-        k = i;
-        break;
-        if (paramBoolean)
-        {
-          i = k + convertChar2Utf8(paramString[j], arrayOfByte, k);
-        }
-        else
-        {
-          m = k + 1;
-          arrayOfByte[k] = ((byte)(paramString[j] >> '\b'));
-          i = m + 1;
-          arrayOfByte[m] = ((byte)paramString[j]);
-        }
+        i = k + convertChar2Utf8(paramString[j], arrayOfByte, k);
       }
+      else
+      {
+        m = k + 1;
+        arrayOfByte[k] = ((byte)(paramString[j] >> '\b'));
+        i = m + 1;
+        arrayOfByte[m] = ((byte)paramString[j]);
+      }
+      label281:
+      j += 1;
     }
     if (paramBoolean) {}
     try
@@ -516,7 +552,7 @@ public class URI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.httputils.URI
  * JD-Core Version:    0.7.0.1
  */

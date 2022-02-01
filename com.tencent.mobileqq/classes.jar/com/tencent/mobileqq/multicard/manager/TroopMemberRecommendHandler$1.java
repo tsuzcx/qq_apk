@@ -17,20 +17,24 @@ class TroopMemberRecommendHandler$1
   {
     EntityManager localEntityManager = TroopMemberRecommendHandler.a(this.this$0).getEntityManagerFactory().createEntityManager();
     int i = localEntityManager.delete(RecommendPerson.class.getSimpleName(), "troopUin=? ", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberRecommend.Handler", 2, "handleGetTroopMemRecommendCards,delete count =" + i);
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel())
     {
-      RecommendPerson localRecommendPerson = (RecommendPerson)localIterator.next();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleGetTroopMemRecommendCards,delete count =");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("TroopMemberRecommend.Handler", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      RecommendPerson localRecommendPerson = (RecommendPerson)((Iterator)localObject).next();
       this.this$0.a(localEntityManager, localRecommendPerson);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.manager.TroopMemberRecommendHandler.1
  * JD-Core Version:    0.7.0.1
  */

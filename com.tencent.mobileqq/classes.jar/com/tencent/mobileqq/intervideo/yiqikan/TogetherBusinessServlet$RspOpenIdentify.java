@@ -20,12 +20,20 @@ public final class TogetherBusinessServlet$RspOpenIdentify
   
   public String toString()
   {
-    return "RspOpenIdentify=" + super.toString() + " buttonText=" + this.buttonText + " confirmText=" + this.confirmText + " resultInfo=" + this.resultInfo;
+    StringBuilder localStringBuilder = new StringBuilder("RspOpenIdentify=");
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" buttonText=");
+    localStringBuilder.append(this.buttonText);
+    localStringBuilder.append(" confirmText=");
+    localStringBuilder.append(this.confirmText);
+    localStringBuilder.append(" resultInfo=");
+    localStringBuilder.append(this.resultInfo);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet.RspOpenIdentify
  * JD-Core Version:    0.7.0.1
  */

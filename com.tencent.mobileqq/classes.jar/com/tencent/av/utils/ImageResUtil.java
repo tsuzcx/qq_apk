@@ -3,8 +3,7 @@ package com.tencent.av.utils;
 import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
+import com.tencent.mobileqq.earlydownload.api.IEarlyDownloadService;
 import com.tencent.mobileqq.earlydownload.handler.QavImageHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -17,11 +16,14 @@ public class ImageResUtil
     if (localFile == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("ImageUtil", 2, "[image download] getFilesDir is null");
+        QLog.i("ImageUtil", 2, "[image early] getFilesDir is null");
       }
       return "";
     }
-    return localFile.getParent() + "/qav/image_download/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localFile.getParent());
+    localStringBuilder.append("/qav/image_early/");
+    return localStringBuilder.toString();
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -29,10 +31,10 @@ public class ImageResUtil
     if (QLog.isColorLevel()) {
       QLog.i("ImageUtil", 2, "[image early] trigger early download");
     }
-    paramQQAppInterface = (EarlyDownloadManager)paramQQAppInterface.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER);
+    paramQQAppInterface = (IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "");
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = (QavImageHandler)paramQQAppInterface.a("qq.android.qav.image2");
+      paramQQAppInterface = (QavImageHandler)paramQQAppInterface.getEarlyHandler("qq.android.qav.image2");
       if (paramQQAppInterface != null) {
         paramQQAppInterface.a(false);
       }
@@ -41,23 +43,10 @@ public class ImageResUtil
   
   public static boolean a(String paramString)
   {
-    return new File(b(), paramString).exists();
+    return new File(a(), paramString).exists();
   }
   
   public static String b()
-  {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ImageUtil", 2, "[image early] getFilesDir is null");
-      }
-      return "";
-    }
-    return localFile.getParent() + "/qav/image_early/";
-  }
-  
-  public static String c()
   {
     File localFile = BaseApplicationImpl.sApplication.getFilesDir();
     if (localFile == null)
@@ -67,12 +56,15 @@ public class ImageResUtil
       }
       return "";
     }
-    return localFile.getParent() + "/qav/video_early/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localFile.getParent());
+    localStringBuilder.append("/qav/video_early/");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.ImageResUtil
  * JD-Core Version:    0.7.0.1
  */

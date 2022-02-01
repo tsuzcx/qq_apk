@@ -19,30 +19,31 @@ class MiniAppTransferModule$1
     DesktopDataManager localDesktopDataManager = (DesktopDataManager)this.val$runtime.getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
     if ((localDesktopDataManager != null) && (!TextUtils.isEmpty(this.val$appid)))
     {
-      if ((this.val$topType != 1) || (localDesktopDataManager.getTopMiniAppNumber() < MiniAppConfProcessor.a())) {
-        break label64;
+      if ((this.val$topType == 1) && (localDesktopDataManager.getTopMiniAppNumber() >= MiniAppConfProcessor.a()))
+      {
+        this.this$0.callbackResult(this.val$callbackId, EIPCResult.createResult(-100, null));
+        return;
       }
-      this.this$0.callbackResult(this.val$callbackId, EIPCResult.createResult(-100, null));
+      MiniAppInfo localMiniAppInfo = localDesktopDataManager.findMiniApp(this.val$appid, this.val$verType);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("miniappInfo : ");
+      localStringBuilder.append(localMiniAppInfo);
+      QLog.d("MiniAppTransferModule", 2, localStringBuilder.toString());
+      if (localMiniAppInfo != null)
+      {
+        localMiniAppInfo.topType = this.val$topType;
+        if (localMiniAppInfo.topType == 1) {
+          localMiniAppInfo.updateTimeStamp();
+        }
+        localDesktopDataManager.updateModuleMyApp(localMiniAppInfo);
+        this.this$0.callbackResult(this.val$callbackId, EIPCResult.createResult(0, null));
+      }
     }
-    label64:
-    MiniAppInfo localMiniAppInfo;
-    do
-    {
-      return;
-      localMiniAppInfo = localDesktopDataManager.findMiniApp(this.val$appid, this.val$verType);
-      QLog.d("MiniAppTransferModule", 2, "miniappInfo : " + localMiniAppInfo);
-    } while (localMiniAppInfo == null);
-    localMiniAppInfo.topType = this.val$topType;
-    if (localMiniAppInfo.topType == 1) {
-      localMiniAppInfo.updateTimeStamp();
-    }
-    localDesktopDataManager.updateModuleMyApp(localMiniAppInfo);
-    this.this$0.callbackResult(this.val$callbackId, EIPCResult.createResult(0, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppTransferModule.1
  * JD-Core Version:    0.7.0.1
  */

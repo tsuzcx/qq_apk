@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ff00cafc" />
-    <size android:width="1.5dip" />
-    <padding android:top="-1.0sp" android:bottom="-2.0sp" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/ifr" />
+    <item android:drawable="@drawable/ifq" />
+</selector>

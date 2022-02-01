@@ -13,7 +13,7 @@ class Login$2
   {
     if (paramInt == 6)
     {
-      this.a.b();
+      this.a.doLogin();
       return true;
     }
     return false;
@@ -21,7 +21,7 @@ class Login$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.2
  * JD-Core Version:    0.7.0.1
  */

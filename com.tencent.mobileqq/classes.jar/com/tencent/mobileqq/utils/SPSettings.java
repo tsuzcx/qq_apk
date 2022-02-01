@@ -33,11 +33,10 @@ public class SPSettings
   public static boolean a(int paramInt)
   {
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("new_phone_assistant_settings", 0);
-    if (localSharedPreferences.getInt("key_normal_upgrade_version", 0) != paramInt) {}
-    while (!localSharedPreferences.getBoolean("key_normal_upgrade", false)) {
+    if (localSharedPreferences.getInt("key_normal_upgrade_version", 0) != paramInt) {
       return true;
     }
-    return false;
+    return localSharedPreferences.getBoolean("key_normal_upgrade", false) ^ true;
   }
   
   public static int b()
@@ -80,7 +79,7 @@ public class SPSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SPSettings
  * JD-Core Version:    0.7.0.1
  */

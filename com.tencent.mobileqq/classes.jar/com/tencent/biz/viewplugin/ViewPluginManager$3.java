@@ -12,19 +12,24 @@ class ViewPluginManager$3
   
   public void run()
   {
-    String str = "https://" + this.this$0.b + "?_bid=" + this.this$0.jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty(str)) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("https://");
+    ((StringBuilder)localObject).append(this.this$0.b);
+    ((StringBuilder)localObject).append("?_bid=");
+    ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+    localObject = ((StringBuilder)localObject).toString();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("ViewPluginManager", 2, "checkOfflineUpNotCallback.");
     }
-    HtmlOffline.b(str, this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
+    HtmlOffline.b((String)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginManager.3
  * JD-Core Version:    0.7.0.1
  */

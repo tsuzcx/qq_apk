@@ -8,15 +8,15 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class VipRequestMessageRoamPassword
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    this.a.a.getMsgHandler().k();
+    this.mAutomator.a.getMsgHandler().p();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.VipRequestMessageRoamPassword
  * JD-Core Version:    0.7.0.1
  */

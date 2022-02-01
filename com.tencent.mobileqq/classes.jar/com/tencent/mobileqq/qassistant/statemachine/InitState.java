@@ -24,15 +24,16 @@ public class InitState
   
   public boolean a(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 1)
     {
+      VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.a;
+      if (localVoiceAssistantStateMachine != null)
+      {
+        localVoiceAssistantStateMachine.c(2);
+        return true;
+      }
     }
-    do
-    {
-      return super.a(paramMessage);
-    } while (this.a == null);
-    this.a.c(2);
-    return true;
+    return super.a(paramMessage);
   }
   
   public void b()
@@ -42,7 +43,7 @@ public class InitState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.InitState
  * JD-Core Version:    0.7.0.1
  */

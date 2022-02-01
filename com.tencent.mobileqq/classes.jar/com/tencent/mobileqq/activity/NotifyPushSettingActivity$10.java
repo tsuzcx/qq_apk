@@ -17,7 +17,6 @@ class NotifyPushSettingActivity$10
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = false;
     if (QLog.isColorLevel()) {
       QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
     }
@@ -25,30 +24,30 @@ class NotifyPushSettingActivity$10
     {
       NotifyPushSettingActivity.a(this.a).a(this.a);
       NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
-      FormSwitchItem localFormSwitchItem = NotifyPushSettingActivity.a(this.a);
-      if (!NotifyPushSettingActivity.a(this.a).a()) {
-        bool = true;
-      }
-      localFormSwitchItem.setChecked(bool);
+      NotifyPushSettingActivity.a(this.a).setChecked(true ^ NotifyPushSettingActivity.a(this.a).a());
       NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
       AVUtil.a(this.a.app.getCurrentAccountUin(), paramBoolean);
       if (!paramBoolean) {
         ReportController.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isChecked[");
+        localStringBuilder.append(paramBoolean);
+        localStringBuilder.append("]");
+        QLog.d("IphoneTitleBarActivity", 2, localStringBuilder.toString());
       }
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotifyPushSettingActivity.10
  * JD-Core Version:    0.7.0.1
  */

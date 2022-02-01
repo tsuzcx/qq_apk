@@ -3,7 +3,6 @@ package com.tencent.qqmini.miniapp.task;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.qqmini.miniapp.core.fsm.StateMachine.OnStateChangeListener;
-import com.tencent.qqmini.miniapp.core.fsm.StateMachine.State;
 import com.tencent.qqmini.miniapp.core.service.AppBrandService;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
@@ -14,33 +13,29 @@ class ServiceCreateTask$1
   
   public void onStateChanged()
   {
-    StateMachine.State localState;
-    if (this.val$normalJsService != null)
-    {
-      localState = this.val$normalJsService.getCurrState();
-      if (localState != null) {
-        break label25;
-      }
+    Object localObject = this.val$normalJsService;
+    if (localObject != null) {
+      localObject = ((AppBrandService)localObject).getCurrState();
+    } else {
+      localObject = null;
     }
-    label25:
-    do
-    {
+    if (localObject == null) {
       return;
-      localState = null;
-      break;
-      if (localState == this.val$normalJsService.stateInitFailed)
-      {
-        QMLog.e("ServiceCreateTask", "init AppBrandService error! change to AppBrandWebviewService.");
-        new Handler(Looper.getMainLooper()).post(new ServiceCreateTask.1.1(this));
-        return;
-      }
-    } while (localState != this.val$normalJsService.stateInited);
-    this.this$0.onServiceCreateSucc(this.val$normalJsService);
+    }
+    if (localObject == this.val$normalJsService.stateInitFailed)
+    {
+      QMLog.e("ServiceCreateTask", "init AppBrandService error! change to AppBrandWebviewService.");
+      new Handler(Looper.getMainLooper()).post(new ServiceCreateTask.1.1(this));
+      return;
+    }
+    if (localObject == this.val$normalJsService.stateInited) {
+      this.this$0.onServiceCreateSucc(this.val$normalJsService);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.ServiceCreateTask.1
  * JD-Core Version:    0.7.0.1
  */

@@ -59,6 +59,7 @@ public final class cmd0x8a1$CreateGroupInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -66,12 +67,12 @@ public final class cmd0x8a1$CreateGroupInfo
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 82, 88, 96, 106, 114, 122, 130, 138, 146, 154, 162, 168, 176 }, new String[] { "uint32_group_code", "uint64_owner_uin", "uint32_group_option", "uint32_group_class", "uint32_group_class_ext", "uint32_group_face", "uint32_app_id", "uint32_group_size", "uint64_create_flag", "string_group_name", "uint32_conf_uin", "uint32_check_limit_flag", "string_group_memo", "string_group_finger_memo", "string_group_rich_finger_memo", "string_question", "string_answer", "string_sign", "msg_client_info", "msg_group_geo_info", "uint32_group_type_flag", "uint32_group_face_flag" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, null, null, Integer.valueOf(0), Integer.valueOf(0) }, CreateGroupInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 82, 88, 96, 106, 114, 122, 130, 138, 146, 154, 162, 168, 176 }, new String[] { "uint32_group_code", "uint64_owner_uin", "uint32_group_option", "uint32_group_class", "uint32_group_class_ext", "uint32_group_face", "uint32_app_id", "uint32_group_size", "uint64_create_flag", "string_group_name", "uint32_conf_uin", "uint32_check_limit_flag", "string_group_memo", "string_group_finger_memo", "string_group_rich_finger_memo", "string_question", "string_answer", "string_sign", "msg_client_info", "msg_group_geo_info", "uint32_group_type_flag", "uint32_group_face_flag" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, Long.valueOf(0L), localByteStringMicro1, localInteger, localInteger, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, null, null, localInteger, localInteger }, CreateGroupInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a1.cmd0x8a1.CreateGroupInfo
  * JD-Core Version:    0.7.0.1
  */

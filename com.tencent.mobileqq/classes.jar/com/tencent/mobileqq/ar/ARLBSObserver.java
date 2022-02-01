@@ -11,12 +11,16 @@ public abstract class ARLBSObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARLBSObserver", 2, "type=" + paramInt + ", isSuccess=" + paramBoolean);
-    }
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
-    default: 
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("type=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("ARLBSObserver", 2, localStringBuilder.toString());
+    }
+    if (paramInt != 1) {
       return;
     }
     try
@@ -26,13 +30,15 @@ public abstract class ARLBSObserver
     }
     catch (Exception paramObject)
     {
-      a(new ARCloudLBSLocationCheckResult());
+      label71:
+      break label71;
     }
+    a(new ARCloudLBSLocationCheckResult());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARLBSObserver
  * JD-Core Version:    0.7.0.1
  */

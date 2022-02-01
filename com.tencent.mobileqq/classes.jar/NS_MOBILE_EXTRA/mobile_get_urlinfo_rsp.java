@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class mobile_get_urlinfo_rsp
   extends JceStruct
@@ -40,20 +41,23 @@ public final class mobile_get_urlinfo_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 1);
+    Object localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 2);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.images != null) {
-      paramJceOutputStream.write(this.images, 3);
+    localObject = this.images;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.mobile_get_urlinfo_rsp
  * JD-Core Version:    0.7.0.1
  */

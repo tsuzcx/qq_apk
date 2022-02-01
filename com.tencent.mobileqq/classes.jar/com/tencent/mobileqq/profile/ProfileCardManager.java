@@ -10,7 +10,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.profilecard.template.ProfileCardTemplate;
+import com.tencent.mobileqq.util.ProfileCardTemplateUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
@@ -52,39 +53,74 @@ public class ProfileCardManager
   
   public static String a(Context paramContext, long paramLong)
   {
-    return ProfileCardUtil.c(paramContext) + paramLong + File.separator;
+    paramContext = new StringBuilder();
+    paramContext.append(ProfileCardTemplateUtil.a());
+    paramContext.append(paramLong);
+    paramContext.append(File.separator);
+    return paramContext.toString();
   }
   
   public static String a(Context paramContext, long paramLong1, long paramLong2)
   {
-    if (paramLong1 == ProfileCardTemplate.j) {
-      return a(paramContext, paramLong2) + "wzBgImage.png";
+    if (paramLong1 == ProfileCardTemplate.PROFILE_CARD_STYLE_WZRY_DYNAMIC)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a(paramContext, paramLong2));
+      localStringBuilder.append("wzBgImage.png");
+      return localStringBuilder.toString();
     }
-    if (paramLong1 == ProfileCardTemplate.i) {
-      return a(paramContext, paramLong2) + "wzJoinImage.png";
+    if (paramLong1 == ProfileCardTemplate.PROFILE_CARD_STYLE_WZRY_STATIC)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a(paramContext, paramLong2));
+      localStringBuilder.append("wzJoinImage.png");
+      return localStringBuilder.toString();
     }
-    return a(paramContext, paramLong2) + "cardPreview.jpg";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramContext, paramLong2));
+    localStringBuilder.append("cardPreview.jpg");
+    return localStringBuilder.toString();
   }
   
   public static String a(String paramString)
   {
-    return AppConstants.PROFILE_CARD_BACKGROUND_DIR + "defaultCard" + File.separator + paramString + ".json";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.PROFILE_CARD_BACKGROUND_DIR);
+    localStringBuilder.append("defaultCard");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".json");
+    return localStringBuilder.toString();
   }
   
   public static boolean a(Context paramContext, long paramLong)
   {
     paramContext = a(paramContext, paramLong);
-    if (TextUtils.isEmpty(paramContext)) {}
-    for (paramContext = null; (paramContext != null) && (paramContext.exists()) && (paramContext.isDirectory()) && (paramContext.list().length > 1); paramContext = new File(paramContext)) {
-      return true;
+    if (TextUtils.isEmpty(paramContext)) {
+      paramContext = null;
+    } else {
+      paramContext = new File(paramContext);
     }
-    return false;
+    return (paramContext != null) && (paramContext.exists()) && (paramContext.isDirectory()) && (paramContext.list().length > 1);
   }
   
   public static boolean a(Context paramContext, long paramLong, String paramString)
   {
     paramContext = new File(a(paramContext, paramLong), paramString);
-    return (paramContext.exists()) && ((!paramContext.isDirectory()) || (paramContext.list().length > 1));
+    boolean bool2 = paramContext.exists();
+    boolean bool1 = true;
+    if (bool2)
+    {
+      if (!paramContext.isDirectory()) {
+        break label49;
+      }
+      if (paramContext.list().length > 1) {
+        return true;
+      }
+    }
+    bool1 = false;
+    label49:
+    return bool1;
   }
   
   public static byte[] a(String paramString)
@@ -103,69 +139,83 @@ public class ProfileCardManager
   
   public static String b(Context paramContext, long paramLong)
   {
-    return ProfileCardUtil.c(paramContext) + paramLong + ".zip";
+    paramContext = new StringBuilder();
+    paramContext.append(ProfileCardTemplateUtil.a());
+    paramContext.append(paramLong);
+    paramContext.append(".zip");
+    return paramContext.toString();
   }
   
   public static String b(Context paramContext, long paramLong1, long paramLong2)
   {
-    if (paramLong1 == ProfileCardTemplate.j) {
-      return a(paramContext, paramLong2) + "wzDynamicDrawerImage.png";
+    if (paramLong1 == ProfileCardTemplate.PROFILE_CARD_STYLE_WZRY_DYNAMIC)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a(paramContext, paramLong2));
+      localStringBuilder.append("wzDynamicDrawerImage.png");
+      return localStringBuilder.toString();
     }
-    if (paramLong1 == ProfileCardTemplate.i) {
-      return a(paramContext, paramLong2) + "wzJoinImage.png";
+    if (paramLong1 == ProfileCardTemplate.PROFILE_CARD_STYLE_WZRY_STATIC)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a(paramContext, paramLong2));
+      localStringBuilder.append("wzJoinImage.png");
+      return localStringBuilder.toString();
     }
-    return a(paramContext, paramLong2) + "cardPreview.jpg";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramContext, paramLong2));
+    localStringBuilder.append("cardPreview.jpg");
+    return localStringBuilder.toString();
   }
   
   public int a(long paramLong)
   {
-    int i = 0;
     if (this.c.containsKey(Long.valueOf(paramLong))) {
-      i = ((Integer)this.c.get(Long.valueOf(paramLong))).intValue();
+      return ((Integer)this.c.get(Long.valueOf(paramLong))).intValue();
     }
-    return i;
+    return 0;
   }
   
   public ProfileCardManager.DefaultCardItem a(int paramInt, boolean paramBoolean)
   {
     try
     {
-      ProfileCardManager.DefaultCardItem localDefaultCardItem = (ProfileCardManager.DefaultCardItem)this.e.get(Integer.valueOf(paramInt));
-      if (localDefaultCardItem == null)
+      Object localObject3 = (ProfileCardManager.DefaultCardItem)this.e.get(Integer.valueOf(paramInt));
+      Object localObject1 = localObject3;
+      if (localObject3 == null)
       {
-        localDefaultCardItem = new ProfileCardManager.DefaultCardItem(this, paramInt);
-        this.e.put(Integer.valueOf(paramInt), localDefaultCardItem);
+        localObject1 = new ProfileCardManager.DefaultCardItem(this, paramInt);
+        this.e.put(Integer.valueOf(paramInt), localObject1);
       }
-      for (;;)
+      if (!((ProfileCardManager.DefaultCardItem)localObject1).a)
       {
-        Object localObject2;
-        if (!localDefaultCardItem.a)
+        localObject3 = new File(a(Integer.toString(paramInt)));
+        if (((File)localObject3).exists())
         {
-          localObject2 = new File(a(Integer.toString(paramInt)));
-          if (!((File)localObject2).exists()) {
-            break label101;
-          }
-          ThreadManager.excute(new ProfileCardManager.1(this, (File)localObject2, paramInt), 64, null, true);
+          ThreadManager.excute(new ProfileCardManager.1(this, (File)localObject3, paramInt), 64, null, true);
         }
-        for (;;)
+        else if ((paramBoolean) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt))))
         {
-          return localDefaultCardItem;
-          label101:
-          if ((paramBoolean) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt))))
-          {
-            localObject2 = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
-            this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
-            ((IVasQuickUpdateService)localObject2).downloadItem(33L, "profileitem." + paramInt, "ProfileCardRes");
-          }
+          localObject3 = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+          this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("profileitem.");
+          localStringBuilder.append(paramInt);
+          ((IVasQuickUpdateService)localObject3).downloadItem(33L, localStringBuilder.toString(), "ProfileCardRes");
         }
       }
+      return localObject1;
     }
     finally {}
   }
   
   public void a(long paramLong)
   {
-    ((IVasQuickUpdateService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).cancelDwonloadItem(15L, "card." + paramLong);
+    IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("card.");
+    localStringBuilder.append(paramLong);
+    localIVasQuickUpdateService.cancelDwonloadItem(15L, localStringBuilder.toString());
   }
   
   public void a(long paramLong, int paramInt)
@@ -175,8 +225,12 @@ public class ProfileCardManager
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCardManager", 2, "downloadProfileCardRes scid=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadProfileCardRes scid=");
+      localStringBuilder.append(paramString);
+      QLog.d("ProfileCardManager", 2, localStringBuilder.toString());
     }
     if ((this.d.containsKey(paramString)) && (((Boolean)this.d.get(paramString)).booleanValue())) {
       return;
@@ -190,54 +244,63 @@ public class ProfileCardManager
     this.d.put(paramString1, Boolean.valueOf(false));
     if (paramInt == 0)
     {
-      l = Long.parseLong(paramString1.substring("card.".length(), paramString1.length()));
+      long l = Long.parseLong(paramString1.substring(5, paramString1.length()));
       jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), Boolean.valueOf(true));
       b.put(Long.valueOf(l), Boolean.valueOf(true));
       paramString1 = a(paramQQAppInterface.getApp(), l);
       paramQQAppInterface = new File(b(paramQQAppInterface.getApp(), l));
-      if (!paramQQAppInterface.exists()) {
-        QLog.e("ProfileCardManager", 1, "unzip file is missing " + paramQQAppInterface.getAbsolutePath());
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      for (;;)
+      if (!paramQQAppInterface.exists())
       {
-        long l;
+        paramString1 = new StringBuilder();
+        paramString1.append("unzip file is missing ");
+        paramString1.append(paramQQAppInterface.getAbsolutePath());
+        QLog.e("ProfileCardManager", 1, paramString1.toString());
         return;
-        try
+      }
+      try
+      {
+        FileUtils.uncompressZip(paramQQAppInterface.getAbsolutePath(), paramString1, false);
+        VasUpdateUtil.a(paramQQAppInterface);
+        paramString2 = new File(paramString1, "dynamic.zip");
+        if (paramString2.exists())
         {
-          FileUtils.a(paramQQAppInterface.getAbsolutePath(), paramString1, false);
-          VasUpdateUtil.a(paramQQAppInterface);
-          paramString2 = new File(paramString1, "dynamic.zip");
-          if (paramString2.exists())
-          {
-            String str = paramString1 + ".dynamic";
-            FileUtils.a(paramString2.getAbsolutePath(), str, false);
-            VasUpdateUtil.a(paramString2);
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ProfileCardManager", 2, "onDownloadComplete, resDir= " + paramString1);
-            return;
-          }
-        }
-        catch (OutOfMemoryError paramString2)
-        {
-          for (;;)
-          {
-            QLog.e("ProfileCardManager", 1, "failed to unzip " + paramQQAppInterface.getAbsolutePath(), paramString2);
-          }
-        }
-        catch (Throwable paramString2)
-        {
-          for (;;)
-          {
-            QLog.e("ProfileCardManager", 1, "failed to unzip " + paramQQAppInterface.getAbsolutePath(), paramString2);
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append(".dynamic");
+          localObject = ((StringBuilder)localObject).toString();
+          FileUtils.uncompressZip(paramString2.getAbsolutePath(), (String)localObject, false);
+          VasUpdateUtil.a(paramString2);
         }
       }
+      catch (Throwable paramString2)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("failed to unzip ");
+        ((StringBuilder)localObject).append(paramQQAppInterface.getAbsolutePath());
+        QLog.e("ProfileCardManager", 1, ((StringBuilder)localObject).toString(), paramString2);
+      }
+      catch (OutOfMemoryError paramString2)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("failed to unzip ");
+        ((StringBuilder)localObject).append(paramQQAppInterface.getAbsolutePath());
+        QLog.e("ProfileCardManager", 1, ((StringBuilder)localObject).toString(), paramString2);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("onDownloadComplete, resDir= ");
+        paramQQAppInterface.append(paramString1);
+        QLog.d("ProfileCardManager", 2, paramQQAppInterface.toString());
+      }
     }
-    QLog.d("ProfileCardManager", 2, "onDownloadComplete failed, errorCode = " + paramInt);
+    else if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("onDownloadComplete failed, errorCode = ");
+      paramQQAppInterface.append(paramInt);
+      QLog.d("ProfileCardManager", 2, paramQQAppInterface.toString());
+    }
   }
   
   public boolean b(Context paramContext, long paramLong)
@@ -247,7 +310,7 @@ public class ProfileCardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardManager
  * JD-Core Version:    0.7.0.1
  */

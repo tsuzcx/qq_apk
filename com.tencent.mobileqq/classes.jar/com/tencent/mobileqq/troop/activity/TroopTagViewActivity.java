@@ -41,7 +41,7 @@ public class TroopTagViewActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     Intent localIntent = super.getIntent();
     if (localIntent == null)
@@ -57,43 +57,37 @@ public class TroopTagViewActivity
     }
     this.jdField_a_of_type_Int = localBundle.getInt("act_type", 3);
     this.jdField_b_of_type_JavaLangString = localBundle.getString("tags");
-    if (localBundle.containsKey("subclass")) {}
-    for (this.c = localBundle.getString("subclass");; this.c = "")
+    boolean bool = localBundle.containsKey("subclass");
+    String str = "";
+    if (bool) {
+      this.c = localBundle.getString("subclass");
+    } else {
+      this.c = "";
+    }
+    this.jdField_a_of_type_JavaLangString = localBundle.getString("troopuin");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_JavaLangString = localBundle.getString("troopuin");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
       super.finish();
       return true;
     }
     this.jdField_a_of_type_Boolean = localBundle.getBoolean("isAdmin");
     localIntent.putExtra("hide_operation_bar", true);
-    String str;
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-    {
-      str = "";
-      this.jdField_b_of_type_Int = localBundle.getInt("modifyToSrv", 1);
-      if (this.jdField_a_of_type_Int != 1) {
-        break label263;
-      }
-      localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/index.html?_bid=146&t=%d#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { Long.valueOf(System.currentTimeMillis() / 1000L), str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_b_of_type_Int) }));
-    }
-    for (;;)
-    {
-      localIntent.putExtra("isShowAd", false);
-      super.doOnCreate(paramBundle);
-      localIntent.putExtra("act_type", 3);
-      return true;
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       str = URLEncoder.encode(this.jdField_b_of_type_JavaLangString).replace("+", "%20");
-      break;
-      label263:
-      if (this.jdField_a_of_type_Int == 2) {
-        localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/edit.html?_bid=146#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_b_of_type_Int) }));
-      } else {
-        localIntent.putExtra("url", localBundle.getString("url"));
-      }
     }
+    this.jdField_b_of_type_Int = localBundle.getInt("modifyToSrv", 1);
+    int i = this.jdField_a_of_type_Int;
+    if (i == 1) {
+      localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/index.html?_bid=146&t=%d#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { Long.valueOf(System.currentTimeMillis() / 1000L), str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_b_of_type_Int) }));
+    } else if (i == 2) {
+      localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/edit.html?_bid=146#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_b_of_type_Int) }));
+    } else {
+      localIntent.putExtra("url", localBundle.getString("url"));
+    }
+    localIntent.putExtra("isShowAd", false);
+    super.doOnCreate(paramBundle);
+    localIntent.putExtra("act_type", 3);
+    return true;
   }
   
   public void finish()
@@ -116,7 +110,7 @@ public class TroopTagViewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopTagViewActivity
  * JD-Core Version:    0.7.0.1
  */

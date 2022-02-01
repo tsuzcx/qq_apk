@@ -23,27 +23,50 @@ public class ci
   
   public boolean a(String paramString1, int paramInt, String paramString2)
   {
-    if ((!this.hu) || (TextUtils.isEmpty(paramString1)) || (paramInt != 0)) {
-      return false;
-    }
-    boolean bool1;
-    if (!TextUtils.isEmpty(this.hl)) {
-      bool1 = Pattern.compile(this.hl).matcher(paramString1).matches();
-    }
-    for (paramInt = 1;; paramInt = 0)
+    if ((this.hu) && (!TextUtils.isEmpty(paramString1)))
     {
-      boolean bool2;
-      if (!TextUtils.isEmpty(this.hm)) {
-        bool2 = Pattern.compile(this.hm).matcher(paramString2).matches();
+      if (paramInt != 0) {
+        return false;
       }
-      for (int i = 1; ((paramInt == 0) || ((paramInt != 0) && (bool1))) && ((i == 0) || ((i != 0) && (bool2))); i = 0)
+      boolean bool1 = TextUtils.isEmpty(this.hl);
+      boolean bool3 = true;
+      if (!bool1)
       {
-        return true;
+        bool1 = Pattern.compile(this.hl).matcher(paramString1).matches();
+        paramInt = 1;
+      }
+      else
+      {
+        paramInt = 0;
+        bool1 = false;
+      }
+      boolean bool2;
+      int i;
+      if (!TextUtils.isEmpty(this.hm))
+      {
+        bool2 = Pattern.compile(this.hm).matcher(paramString2).matches();
+        i = 1;
+      }
+      else
+      {
+        i = 0;
         bool2 = false;
       }
-      break;
+      if ((paramInt == 0) || ((paramInt != 0) && (bool1)))
+      {
+        bool1 = bool3;
+        if (i == 0) {
+          break label138;
+        }
+        if ((i != 0) && (bool2)) {
+          return true;
+        }
+      }
       bool1 = false;
+      label138:
+      return bool1;
     }
+    return false;
   }
   
   public String toString()
@@ -82,7 +105,7 @@ public class ci
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ci
  * JD-Core Version:    0.7.0.1
  */

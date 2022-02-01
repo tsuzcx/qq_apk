@@ -11,20 +11,15 @@ class StartLiveTopicLabelListView$1$1
   
   public void onClick(View paramView)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (StartLiveTopicLabelListView.a(this.a.a) != null) {
-        StartLiveTopicLabelListView.a(this.a.a).a();
-      }
+    if ((paramView != null) && (StartLiveTopicLabelListView.a(this.a.a) != null)) {
+      StartLiveTopicLabelListView.a(this.a.a).a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView.1.1
  * JD-Core Version:    0.7.0.1
  */

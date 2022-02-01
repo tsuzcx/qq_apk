@@ -183,28 +183,29 @@ public class a
   
   private void l()
   {
-    if (!this.d.get()) {
+    if (!this.d.get())
+    {
       if (o())
       {
         this.s.removeMessages(10001);
         if (!p()) {
           this.s.sendEmptyMessageDelayed(10001, com.tencent.mobileqq.msf.core.a.a.o());
+        } else {
+          QLog.d("StandbyModeManager", 1, "stop try start standby by lockScreenMsg ON when screenoff");
         }
       }
-    }
-    for (;;)
-    {
-      if ((MsfCore.sCore != null) && (MsfCore.sCore.quicksender != null))
+      else
       {
-        com.tencent.mobileqq.a.a.a.a().d();
-        MsfCore.sCore.quicksender.h();
+        QLog.d("StandbyModeManager", 1, "stop try start standby by mobileOff ON when screenoff");
       }
-      return;
-      QLog.d("StandbyModeManager", 1, "stop try start standby by lockScreenMsg ON when screenoff");
-      continue;
-      QLog.d("StandbyModeManager", 1, "stop try start standby by mobileOff ON when screenoff");
-      continue;
+    }
+    else {
       QLog.d("StandbyModeManager", 1, "stop try start standby by alreadyActive ON when screenoff");
+    }
+    if ((MsfCore.sCore != null) && (MsfCore.sCore.quicksender != null))
+    {
+      com.tencent.mobileqq.a.a.a.a().d();
+      MsfCore.sCore.quicksender.h();
     }
   }
   
@@ -228,19 +229,21 @@ public class a
   private boolean n()
   {
     PowerManager localPowerManager = (PowerManager)BaseApplication.getContext().getSystemService("power");
-    if (localPowerManager != null) {
-      try
-      {
-        boolean bool = localPowerManager.isScreenOn();
-        return bool;
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        QLog.d("StandbyModeManager", 1, "Maybe IPowerManager is null");
-        return false;
-      }
+    if (localPowerManager != null) {}
+    try
+    {
+      boolean bool = localPowerManager.isScreenOn();
+      return bool;
     }
+    catch (NullPointerException localNullPointerException)
+    {
+      label24:
+      break label24;
+    }
+    QLog.d("StandbyModeManager", 1, "Maybe IPowerManager is null");
+    break label45;
     QLog.d("StandbyModeManager", 1, "Get PowerService is null");
+    label45:
     return false;
   }
   
@@ -252,12 +255,11 @@ public class a
   private boolean p()
   {
     String str = this.i.getAccountCenter().i();
-    if ((TextUtils.isEmpty(str)) || ("0".equals(str)))
-    {
-      QLog.d("StandbyModeManager", 1, "can't know current main account");
-      return true;
+    if ((!TextUtils.isEmpty(str)) && (!"0".equals(str))) {
+      return SettingCloneUtil.readValue(BaseApplication.getContext(), str, "锁屏显示消息弹框", "qqsetting_lock_screen_whenexit_key", true);
     }
-    return SettingCloneUtil.readValue(BaseApplication.getContext(), str, "锁屏显示消息弹框", "qqsetting_lock_screen_whenexit_key", true);
+    QLog.d("StandbyModeManager", 1, "can't know current main account");
+    return true;
   }
   
   public void a()
@@ -289,21 +291,24 @@ public class a
   
   public boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if (this.g.contains(paramString)) {
+      return true;
+    }
+    int i1 = paramString.indexOf(".");
+    if (i1 > 0)
     {
-      int i1;
-      do
-      {
-        return false;
-        if (this.g.contains(paramString)) {
-          return true;
-        }
-        i1 = paramString.indexOf(".");
-      } while (i1 <= 0);
-      paramString = paramString.substring(0, i1) + ".";
-    } while (!this.g.contains(paramString));
-    return true;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString.substring(0, i1));
+      localStringBuilder.append(".");
+      paramString = localStringBuilder.toString();
+      if (this.g.contains(paramString)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void b(ToServiceMsg paramToServiceMsg)
@@ -318,12 +323,11 @@ public class a
   
   public boolean b(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || ("0".equals(paramString)))
-    {
-      QLog.d("StandbyModeManager", 1, "can't know current main account");
-      return true;
+    if ((!TextUtils.isEmpty(paramString)) && (!"0".equals(paramString))) {
+      return SettingCloneUtil.readValue(BaseApplication.getContext(), paramString, "锁屏显示消息弹框", "qqsetting_lock_screen_whenexit_key", true);
     }
-    return SettingCloneUtil.readValue(BaseApplication.getContext(), paramString, "锁屏显示消息弹框", "qqsetting_lock_screen_whenexit_key", true);
+    QLog.d("StandbyModeManager", 1, "can't know current main account");
+    return true;
   }
   
   public HashSet c()
@@ -389,37 +393,41 @@ public class a
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {
+    if (paramIntent == null)
+    {
       QLog.d("StandbyModeManager", 1, "onReceive intent==null");
-    }
-    do
-    {
       return;
-      paramContext = paramIntent.getAction();
-      QLog.d("StandbyModeManager", 1, "onReceive action: " + paramContext);
-      if ((this.i.getStatReporter() != null) && (this.i.statReporter.Y == null)) {
-        this.i.statReporter.Y = new j.c();
-      }
-      if ("android.intent.action.SCREEN_ON".equals(paramContext))
-      {
-        if ((this.i.getStatReporter() != null) && (this.i.statReporter.Y != null)) {
-          this.i.statReporter.Y.e = 0L;
-        }
-        k();
-        return;
-      }
-    } while (!"android.intent.action.SCREEN_OFF".equals(paramContext));
-    if ((this.i.getStatReporter() != null) && (this.i.statReporter.Y != null))
-    {
-      this.i.statReporter.Y.e = System.currentTimeMillis();
-      this.i.statReporter.Y.f = 0L;
     }
-    l();
+    paramContext = paramIntent.getAction();
+    paramIntent = new StringBuilder();
+    paramIntent.append("onReceive action: ");
+    paramIntent.append(paramContext);
+    QLog.d("StandbyModeManager", 1, paramIntent.toString());
+    if ((this.i.getStatReporter() != null) && (this.i.statReporter.Y == null)) {
+      this.i.statReporter.Y = new j.c();
+    }
+    if ("android.intent.action.SCREEN_ON".equals(paramContext))
+    {
+      if ((this.i.getStatReporter() != null) && (this.i.statReporter.Y != null)) {
+        this.i.statReporter.Y.e = 0L;
+      }
+      k();
+      return;
+    }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      if ((this.i.getStatReporter() != null) && (this.i.statReporter.Y != null))
+      {
+        this.i.statReporter.Y.e = System.currentTimeMillis();
+        this.i.statReporter.Y.f = 0L;
+      }
+      l();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.d.a
  * JD-Core Version:    0.7.0.1
  */

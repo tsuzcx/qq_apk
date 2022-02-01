@@ -7,16 +7,16 @@ class ForwardRecentActivity$11
 {
   ForwardRecentActivity$11(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
     if (paramBoolean) {
-      ForwardRecentActivity.f(this.a);
+      ForwardRecentActivity.access$1900(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.11
  * JD-Core Version:    0.7.0.1
  */

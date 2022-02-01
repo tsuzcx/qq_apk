@@ -38,14 +38,15 @@ public final class REPORT_INFO
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.subtable, 0);
-    if (this.info != null) {
-      paramJceOutputStream.write(this.info, 1);
+    ArrayList localArrayList = this.info;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.REPORT_INFO
  * JD-Core Version:    0.7.0.1
  */

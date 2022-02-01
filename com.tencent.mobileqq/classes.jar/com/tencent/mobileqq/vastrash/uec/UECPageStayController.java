@@ -6,15 +6,10 @@ import java.util.ArrayList;
 
 public class UECPageStayController
 {
-  public static boolean a;
+  public static boolean a = false;
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private UECPageStayViewer jdField_a_of_type_ComTencentMobileqqVastrashUecUECPageStayViewer;
   private boolean b = false;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
   
   public static UECPageStayController a()
   {
@@ -31,16 +26,21 @@ public class UECPageStayController
   
   public void a(ArrayList<QQStayTimeInfo> paramArrayList)
   {
-    if (paramArrayList == null) {}
-    while ((!jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqVastrashUecUECPageStayViewer == null)) {
+    if (paramArrayList == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVastrashUecUECPageStayViewer.a(paramArrayList);
+    if (jdField_a_of_type_Boolean)
+    {
+      UECPageStayViewer localUECPageStayViewer = this.jdField_a_of_type_ComTencentMobileqqVastrashUecUECPageStayViewer;
+      if (localUECPageStayViewer != null) {
+        localUECPageStayViewer.a(paramArrayList);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.uec.UECPageStayController
  * JD-Core Version:    0.7.0.1
  */

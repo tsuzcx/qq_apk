@@ -15,7 +15,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import mqq.app.AppRuntime;
 
 public abstract class AIOEmotionBaseFragment
@@ -43,15 +43,15 @@ public abstract class AIOEmotionBaseFragment
   protected void a(View paramView)
   {
     paramView.setFitsSystemWindows(true);
-    TextView localTextView = (TextView)paramView.findViewById(2131369487);
-    localTextView.setText(HardCodeUtil.a(2131700104));
+    TextView localTextView = (TextView)paramView.findViewById(2131369202);
+    localTextView.setText(HardCodeUtil.a(2131700245));
     localTextView.setOnClickListener(new AIOEmotionBaseFragment.1(this));
     if (a())
     {
-      paramView = (ImageView)paramView.findViewById(2131369501);
-      paramView.setImageResource(2130838151);
+      paramView = (ImageView)paramView.findViewById(2131369216);
+      paramView.setImageResource(2130837997);
       paramView.setVisibility(0);
-      paramView.setContentDescription(HardCodeUtil.a(2131700103));
+      paramView.setContentDescription(HardCodeUtil.a(2131700244));
       paramView.setOnClickListener(new AIOEmotionBaseFragment.2(this));
     }
   }
@@ -78,10 +78,10 @@ public abstract class AIOEmotionBaseFragment
     a("0X800997D");
     paramLayoutInflater = a(paramLayoutInflater, paramViewGroup);
     this.jdField_a_of_type_AndroidViewView = paramLayoutInflater;
-    this.jdField_a_of_type_AndroidContentContext = getActivity();
+    this.jdField_a_of_type_AndroidContentContext = getBaseActivity();
     a(paramLayoutInflater);
     b(paramLayoutInflater);
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -101,7 +101,7 @@ public abstract class AIOEmotionBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment
  * JD-Core Version:    0.7.0.1
  */

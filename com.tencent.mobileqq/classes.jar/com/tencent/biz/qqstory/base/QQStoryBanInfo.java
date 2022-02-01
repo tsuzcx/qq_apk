@@ -43,8 +43,16 @@ public class QQStoryBanInfo
         if (localObject != null) {
           this.jdField_a_of_type_JavaUtilList.add(localObject);
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "StoryPlayVideoPrivacyActivity " + i + ": qq = " + str + ", user = " + localObject);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("StoryPlayVideoPrivacyActivity ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(": qq = ");
+          localStringBuilder.append(str);
+          localStringBuilder.append(", user = ");
+          localStringBuilder.append(localObject);
+          QLog.d("zivonchen", 2, localStringBuilder.toString());
         }
         i += 1;
       }
@@ -67,28 +75,33 @@ public class QQStoryBanInfo
   
   public String toString()
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QQStoryBanInfo banType = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", uinSize = ");
+    List localList = this.jdField_a_of_type_JavaUtilList;
     int j = 0;
-    StringBuilder localStringBuilder = new StringBuilder().append("QQStoryBanInfo banType = ").append(this.jdField_a_of_type_Int).append(", uinSize = ");
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
+    int i;
+    if (localList == null) {
       i = 0;
-      localStringBuilder = localStringBuilder.append(i).append(", grouplistSize =");
-      if (this.b != null) {
-        break label78;
-      }
+    } else {
+      i = localList.size();
     }
-    label78:
-    for (int i = j;; i = this.b.size())
-    {
-      return i;
-      i = this.jdField_a_of_type_JavaUtilList.size();
-      break;
+    localStringBuilder.append(i);
+    localStringBuilder.append(", grouplistSize =");
+    localList = this.b;
+    if (localList == null) {
+      i = j;
+    } else {
+      i = localList.size();
     }
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.QQStoryBanInfo
  * JD-Core Version:    0.7.0.1
  */

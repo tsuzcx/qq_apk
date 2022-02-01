@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/bg_texture" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.OverScrollRecyclerView android:id="@id/mrv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/nyg" android:layout_width="fill_parent" android:layout_height="300.0dip" android:src="@drawable/i97" android:scaleType="fitXY" />
+    <androidx.viewpager.widget.ViewPager android:id="@id/nyh" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 </FrameLayout>

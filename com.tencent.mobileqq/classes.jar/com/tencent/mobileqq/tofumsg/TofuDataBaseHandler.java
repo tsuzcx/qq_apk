@@ -28,15 +28,17 @@ public abstract class TofuDataBaseHandler
   public TofuItem a(@NotNull TofuItem paramTofuItem, long paramLong, int paramInt)
   {
     boolean bool2 = a(paramInt);
-    if (paramLong - paramTofuItem.lastPullTsLocal >= paramTofuItem.pullInterval) {}
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool1;
+    if (paramLong - paramTofuItem.lastPullTsLocal >= paramTofuItem.pullInterval) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Tofu_TofuDataBaseHandler", 2, String.format("makeReqItemIfPull [%s] [canPull,tsCheck]=[%b,%b] [curTs,lastTs,interval]=[%d,%d,%d]", new Object[] { TofuConst.a(paramTofuItem.busId), Boolean.valueOf(bool2), Boolean.valueOf(bool1), Long.valueOf(paramLong), Long.valueOf(paramTofuItem.lastPullTsLocal), Long.valueOf(paramTofuItem.pullInterval) }));
+    }
+    if ((bool2) && (bool1))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Tofu_TofuDataBaseHandler", 2, String.format("makeReqItemIfPull [%s] [canPull,tsCheck]=[%b,%b] [curTs,lastTs,interval]=[%d,%d,%d]", new Object[] { TofuConst.a(paramTofuItem.busId), Boolean.valueOf(bool2), Boolean.valueOf(bool1), Long.valueOf(paramLong), Long.valueOf(paramTofuItem.lastPullTsLocal), Long.valueOf(paramTofuItem.pullInterval) }));
-      }
-      if ((!bool2) || (!bool1)) {
-        break;
-      }
       TofuItem localTofuItem = new TofuItem(Long.toString(paramTofuItem.frdUin), paramTofuItem.busId);
       localTofuItem.cloneFrom(paramTofuItem);
       return localTofuItem;
@@ -65,54 +67,48 @@ public abstract class TofuDataBaseHandler
   
   public final void a(@NotNull TofuItem paramTofuItem, oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult, long paramLong)
   {
-    boolean bool;
     if ((paramBeancurdCubeInfoResult.uint32_result.has()) && (paramBeancurdCubeInfoResult.uint32_result.get() == 0)) {
       bool = true;
+    } else {
+      bool = false;
     }
-    for (;;)
-    {
-      if (paramBeancurdCubeInfoResult.beancurdCubeInfo.has())
-      {
-        paramBeancurdCubeInfoResult = (oidb_0xe61.BeancurdCubeInfo)paramBeancurdCubeInfoResult.beancurdCubeInfo.get();
-        label44:
-        bool = a(paramTofuItem, bool, paramLong, paramBeancurdCubeInfoResult);
-        if (!bool) {}
-      }
+    if (paramBeancurdCubeInfoResult.beancurdCubeInfo.has()) {
+      paramBeancurdCubeInfoResult = (oidb_0xe61.BeancurdCubeInfo)paramBeancurdCubeInfoResult.beancurdCubeInfo.get();
+    } else {
+      paramBeancurdCubeInfoResult = null;
+    }
+    boolean bool = a(paramTofuItem, bool, paramLong, paramBeancurdCubeInfoResult);
+    if (bool) {
       try
       {
         paramBeancurdCubeInfoResult = a(paramTofuItem);
         if (!TextUtils.isEmpty(paramBeancurdCubeInfoResult))
         {
-          BeancurdMsg localBeancurdMsg = new BeancurdMsg();
-          localBeancurdMsg.frienduin = Long.toString(paramTofuItem.frdUin);
-          localBeancurdMsg.busiid = a();
-          localBeancurdMsg.isNeedDelHistory = paramTofuItem.bNeedDelHistory();
-          localBeancurdMsg.ispush = paramTofuItem.bInsertImmediate();
-          localBeancurdMsg.originTime = paramTofuItem.eventTs;
-          localBeancurdMsg.startTime = MessageCache.a();
-          localBeancurdMsg.validTime = paramTofuItem.validTime;
-          localBeancurdMsg.buffer = paramBeancurdCubeInfoResult;
-          TofuHelper.a(this.a, localBeancurdMsg, a(localBeancurdMsg), a());
+          localObject = new BeancurdMsg();
+          ((BeancurdMsg)localObject).frienduin = Long.toString(paramTofuItem.frdUin);
+          ((BeancurdMsg)localObject).busiid = a();
+          ((BeancurdMsg)localObject).isNeedDelHistory = paramTofuItem.bNeedDelHistory();
+          ((BeancurdMsg)localObject).ispush = paramTofuItem.bInsertImmediate();
+          ((BeancurdMsg)localObject).originTime = paramTofuItem.eventTs;
+          ((BeancurdMsg)localObject).startTime = MessageCache.a();
+          ((BeancurdMsg)localObject).validTime = paramTofuItem.validTime;
+          ((BeancurdMsg)localObject).buffer = paramBeancurdCubeInfoResult;
+          TofuHelper.a(this.a, (BeancurdMsg)localObject, a((BeancurdMsg)localObject), a());
         }
-        for (;;)
+        else
         {
-          QLog.d("Tofu_TofuDataBaseHandler", 1, String.format("onGetRsp [%s] bNew=%b ts=%d item=%s", new Object[] { TofuConst.a(paramTofuItem.busId), Boolean.valueOf(bool), Long.valueOf(paramLong), paramTofuItem }));
-          return;
-          bool = false;
-          break;
-          paramBeancurdCubeInfoResult = null;
-          break label44;
           a(paramTofuItem);
         }
       }
       catch (Exception paramBeancurdCubeInfoResult)
       {
-        for (;;)
-        {
-          QLog.d("Tofu_TofuDataBaseHandler", 1, "onGetRsp exception=" + paramBeancurdCubeInfoResult.getMessage(), paramBeancurdCubeInfoResult);
-        }
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onGetRsp exception=");
+        ((StringBuilder)localObject).append(paramBeancurdCubeInfoResult.getMessage());
+        QLog.d("Tofu_TofuDataBaseHandler", 1, ((StringBuilder)localObject).toString(), paramBeancurdCubeInfoResult);
       }
     }
+    QLog.d("Tofu_TofuDataBaseHandler", 1, String.format("onGetRsp [%s] bNew=%b ts=%d item=%s", new Object[] { TofuConst.a(paramTofuItem.busId), Boolean.valueOf(bool), Long.valueOf(paramLong), paramTofuItem }));
   }
   
   public boolean a()
@@ -137,78 +133,60 @@ public abstract class TofuDataBaseHandler
       long l1 = paramTofuItem.eventTs;
       long l2 = paramTofuItem.lastPullTsSvr;
       paramTofuItem.lastPullTsLocal = paramLong;
-      label71:
-      label112:
-      byte[] arrayOfByte;
-      if (paramBeancurdCubeInfo.uint64_event_time.has())
-      {
+      if (paramBeancurdCubeInfo.uint64_event_time.has()) {
         paramLong = paramBeancurdCubeInfo.uint64_event_time.get();
-        paramTofuItem.eventTs = paramLong;
-        if (!paramBeancurdCubeInfo.uint64_pull_interval_time.has()) {
-          break label257;
-        }
-        paramLong = paramBeancurdCubeInfo.uint64_pull_interval_time.get();
-        paramTofuItem.pullInterval = paramLong;
-        if (paramTofuItem.pullInterval <= 0L) {
-          paramTofuItem.pullInterval = 86400L;
-        }
-        if (!paramBeancurdCubeInfo.uint64_last_pull_time.has()) {
-          break label264;
-        }
-        paramLong = paramBeancurdCubeInfo.uint64_last_pull_time.get();
-        paramTofuItem.lastPullTsSvr = paramLong;
-        if (!paramBeancurdCubeInfo.uint64_valid_time.has()) {
-          break label272;
-        }
-        paramLong = paramBeancurdCubeInfo.uint64_valid_time.get();
-        label137:
-        paramTofuItem.validTime = paramLong;
-        if (!paramBeancurdCubeInfo.uint64_flag.has()) {
-          break label280;
-        }
-        paramLong = paramBeancurdCubeInfo.uint64_flag.get();
-        label162:
-        paramTofuItem.flags = paramLong;
-        if (!paramBeancurdCubeInfo.bytes_busi_data_rsp.has()) {
-          break label288;
-        }
-        arrayOfByte = paramBeancurdCubeInfo.bytes_busi_data_rsp.get().toByteArray();
-        label191:
-        paramTofuItem.bytesFromServer = arrayOfByte;
-        if (!paramBeancurdCubeInfo.bytes_busi_data_req.has()) {
-          break label294;
-        }
-      }
-      label257:
-      label264:
-      label272:
-      label280:
-      label288:
-      label294:
-      for (paramBeancurdCubeInfo = paramBeancurdCubeInfo.bytes_busi_data_req.get().toByteArray();; paramBeancurdCubeInfo = null)
-      {
-        paramTofuItem.bytesFromClient = paramBeancurdCubeInfo;
-        if ((paramTofuItem.eventTs <= l1) || (paramTofuItem.lastPullTsSvr <= l2)) {
-          break label300;
-        }
-        return true;
+      } else {
         paramLong = paramTofuItem.eventTs;
-        break;
-        paramLong = 86400L;
-        break label71;
-        paramLong = paramTofuItem.lastPullTsSvr;
-        break label112;
-        paramLong = paramTofuItem.validTime;
-        break label137;
-        paramLong = paramTofuItem.flags;
-        break label162;
-        arrayOfByte = null;
-        break label191;
       }
-      label300:
-      return false;
+      paramTofuItem.eventTs = paramLong;
+      if (paramBeancurdCubeInfo.uint64_pull_interval_time.has()) {
+        paramLong = paramBeancurdCubeInfo.uint64_pull_interval_time.get();
+      } else {
+        paramLong = 86400L;
+      }
+      paramTofuItem.pullInterval = paramLong;
+      if (paramTofuItem.pullInterval <= 0L) {
+        paramTofuItem.pullInterval = 86400L;
+      }
+      if (paramBeancurdCubeInfo.uint64_last_pull_time.has()) {
+        paramLong = paramBeancurdCubeInfo.uint64_last_pull_time.get();
+      } else {
+        paramLong = paramTofuItem.lastPullTsSvr;
+      }
+      paramTofuItem.lastPullTsSvr = paramLong;
+      if (paramBeancurdCubeInfo.uint64_valid_time.has()) {
+        paramLong = paramBeancurdCubeInfo.uint64_valid_time.get();
+      } else {
+        paramLong = paramTofuItem.validTime;
+      }
+      paramTofuItem.validTime = paramLong;
+      if (paramBeancurdCubeInfo.uint64_flag.has()) {
+        paramLong = paramBeancurdCubeInfo.uint64_flag.get();
+      } else {
+        paramLong = paramTofuItem.flags;
+      }
+      paramTofuItem.flags = paramLong;
+      paramBoolean = paramBeancurdCubeInfo.bytes_busi_data_rsp.has();
+      Object localObject2 = null;
+      if (paramBoolean) {
+        localObject1 = paramBeancurdCubeInfo.bytes_busi_data_rsp.get().toByteArray();
+      } else {
+        localObject1 = null;
+      }
+      paramTofuItem.bytesFromServer = ((byte[])localObject1);
+      Object localObject1 = localObject2;
+      if (paramBeancurdCubeInfo.bytes_busi_data_req.has()) {
+        localObject1 = paramBeancurdCubeInfo.bytes_busi_data_req.get().toByteArray();
+      }
+      paramTofuItem.bytesFromClient = ((byte[])localObject1);
+      if ((paramTofuItem.eventTs > l1) && (paramTofuItem.lastPullTsSvr > l2)) {
+        return true;
+      }
     }
-    paramTofuItem.lastPullTsLocal = paramLong;
+    else
+    {
+      paramTofuItem.lastPullTsLocal = paramLong;
+    }
     return false;
   }
   
@@ -221,7 +199,7 @@ public abstract class TofuDataBaseHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuDataBaseHandler
  * JD-Core Version:    0.7.0.1
  */

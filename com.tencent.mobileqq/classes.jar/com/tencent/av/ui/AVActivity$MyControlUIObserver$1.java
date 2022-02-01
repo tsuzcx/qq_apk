@@ -10,8 +10,10 @@ class AVActivity$MyControlUIObserver$1
   
   public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
   {
-    if (paramVideoViewInfo1.a) {}
-    while (paramVideoViewInfo2.a) {
+    if (paramVideoViewInfo1.a) {
+      return 1;
+    }
+    if (paramVideoViewInfo2.a) {
       return 1;
     }
     return 0;
@@ -19,7 +21,7 @@ class AVActivity$MyControlUIObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.MyControlUIObserver.1
  * JD-Core Version:    0.7.0.1
  */

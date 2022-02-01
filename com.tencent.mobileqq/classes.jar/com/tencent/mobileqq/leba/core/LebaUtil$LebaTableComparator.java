@@ -9,14 +9,15 @@ public class LebaUtil$LebaTableComparator
 {
   public int a(LebaViewItem paramLebaViewItem1, LebaViewItem paramLebaViewItem2)
   {
-    if (paramLebaViewItem1.b > paramLebaViewItem2.b) {}
-    do
-    {
+    if (paramLebaViewItem1.b > paramLebaViewItem2.b) {
       return 1;
-      if (paramLebaViewItem1.b < paramLebaViewItem2.b) {
-        return -1;
-      }
-    } while (paramLebaViewItem1.a.sPriority > paramLebaViewItem2.a.sPriority);
+    }
+    if (paramLebaViewItem1.b < paramLebaViewItem2.b) {
+      return -1;
+    }
+    if (paramLebaViewItem1.a.sPriority > paramLebaViewItem2.a.sPriority) {
+      return 1;
+    }
     if (paramLebaViewItem1.a.sPriority < paramLebaViewItem2.a.sPriority) {
       return -1;
     }
@@ -25,7 +26,7 @@ public class LebaUtil$LebaTableComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.core.LebaUtil.LebaTableComparator
  * JD-Core Version:    0.7.0.1
  */

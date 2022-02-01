@@ -16,28 +16,37 @@ class MiniAppDesktop$RedDotAppletsObserver
     this.layoutReference = new WeakReference(paramMiniAppDesktopLayout);
   }
   
-  public void onAppletsSettingSwitchChange(int paramInt)
+  protected void onAppletsSettingSwitchChange(int paramInt)
   {
     updateAppletsSettingSwitchState(paramInt);
   }
   
   protected void updateAppletsSettingSwitchState(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppDesktop", 2, "updateAppletsSettingSwitchState:  switchState: " + paramInt);
-    }
-    if ((MiniAppConfProcessor.h()) && (this.layoutReference != null))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      MiniAppDesktopLayout localMiniAppDesktopLayout = (MiniAppDesktopLayout)this.layoutReference.get();
-      if (localMiniAppDesktopLayout != null) {
-        localMiniAppDesktopLayout.onChangeRedDotSwitch(paramInt, false);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateAppletsSettingSwitchState:  switchState: ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("MiniAppDesktop", 2, ((StringBuilder)localObject).toString());
+    }
+    if (MiniAppConfProcessor.h())
+    {
+      localObject = this.layoutReference;
+      if (localObject != null)
+      {
+        localObject = (MiniAppDesktopLayout)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((MiniAppDesktopLayout)localObject).onChangeRedDotSwitch(paramInt, false);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop.RedDotAppletsObserver
  * JD-Core Version:    0.7.0.1
  */

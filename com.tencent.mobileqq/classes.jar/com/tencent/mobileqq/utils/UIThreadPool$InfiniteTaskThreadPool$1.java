@@ -8,14 +8,17 @@ class UIThreadPool$InfiniteTaskThreadPool$1
   public Thread newThread(Runnable paramRunnable)
   {
     UIThreadPool.InfiniteTaskThreadPool.a();
-    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + UIThreadPool.InfiniteTaskThreadPool.b());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("InfiniteTaskThread_");
+    localStringBuilder.append(UIThreadPool.InfiniteTaskThreadPool.b());
+    paramRunnable = new Thread(paramRunnable, localStringBuilder.toString());
     paramRunnable.setDaemon(true);
     return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.UIThreadPool.InfiniteTaskThreadPool.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,19 +5,14 @@ import android.widget.TextView;
 
 public class DiscussionInfoCardActivity$ViewHolder
 {
-  int jdField_a_of_type_Int;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
-  
-  public DiscussionInfoCardActivity$ViewHolder()
-  {
-    this.a = 1;
-  }
+  public int a = 1;
+  public ImageView a;
+  public TextView a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

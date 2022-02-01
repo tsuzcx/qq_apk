@@ -17,8 +17,9 @@ public abstract class IApp
   public void a(MiniAppInfo paramMiniAppInfo)
   {
     this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo = paramMiniAppInfo;
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo = paramMiniAppInfo;
+    MiniAppActivity localMiniAppActivity = this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity;
+    if (localMiniAppActivity != null) {
+      localMiniAppActivity.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo = paramMiniAppInfo;
     }
   }
   
@@ -33,7 +34,7 @@ public abstract class IApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.IApp
  * JD-Core Version:    0.7.0.1
  */

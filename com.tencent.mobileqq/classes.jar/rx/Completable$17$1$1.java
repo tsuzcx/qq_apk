@@ -13,21 +13,17 @@ class Completable$17$1$1
     try
     {
       this.this$2.this$1.val$onUnsubscribe.call();
-      this.val$d.unsubscribe();
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Completable.ERROR_HANDLER.handleError(localThrowable);
-      }
+      Completable.ERROR_HANDLER.handleError(localThrowable);
     }
+    this.val$d.unsubscribe();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.Completable.17.1.1
  * JD-Core Version:    0.7.0.1
  */

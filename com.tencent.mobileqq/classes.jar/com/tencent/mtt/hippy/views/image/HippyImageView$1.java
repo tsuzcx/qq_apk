@@ -7,23 +7,18 @@ import com.tencent.mtt.hippy.adapter.image.HippyImageLoader.Callback;
 class HippyImageView$1
   implements HippyImageLoader.Callback
 {
-  String mFetchUrl = HippyImageView.access$000(this.this$0);
-  
-  HippyImageView$1(HippyImageView paramHippyImageView, int paramInt) {}
+  HippyImageView$1(HippyImageView paramHippyImageView, int paramInt, String paramString) {}
   
   public void onRequestFail(Throwable paramThrowable, String paramString)
   {
-    if (TextUtils.equals(this.mFetchUrl, HippyImageView.access$400(this.this$0)))
+    if (this.val$sourceType == HippyImageView.access$600())
     {
-      HippyImageView.access$502(this.this$0, 0);
-      if ((this.val$sourceType == HippyImageView.access$600()) && (!TextUtils.isEmpty(this.this$0.mHippyImageViewDefalutImgeUrl)))
-      {
-        HippyImageView.access$702(this.this$0, null);
-        this.this$0.setDefaultSource(this.this$0.mHippyImageViewDefalutImgeUrl);
+      if (!TextUtils.equals(this.val$url, HippyImageView.access$700(this.this$0))) {
+        return;
       }
+      HippyImageView.access$802(this.this$0, 0);
     }
-    else
-    {
+    if ((this.val$sourceType == HippyImageView.access$900()) && (!TextUtils.equals(this.val$url, HippyImageView.access$1000(this.this$0)))) {
       return;
     }
     this.this$0.handleImageRequest(null, this.val$sourceType, paramThrowable);
@@ -31,21 +26,27 @@ class HippyImageView$1
   
   public void onRequestStart(HippyDrawable paramHippyDrawable)
   {
-    HippyImageView.access$102(this.this$0, paramHippyDrawable);
+    HippyImageView.access$002(this.this$0, paramHippyDrawable);
   }
   
   public void onRequestSuccess(HippyDrawable paramHippyDrawable)
   {
-    if (TextUtils.equals(this.mFetchUrl, HippyImageView.access$200(this.this$0)))
+    if (this.val$sourceType == HippyImageView.access$100())
     {
+      if (!TextUtils.equals(this.val$url, HippyImageView.access$200(this.this$0))) {
+        return;
+      }
       HippyImageView.access$302(this.this$0, 2);
-      this.this$0.handleImageRequest(paramHippyDrawable, this.val$sourceType, null);
     }
+    if ((this.val$sourceType == HippyImageView.access$400()) && (!TextUtils.equals(this.val$url, HippyImageView.access$500(this.this$0)))) {
+      return;
+    }
+    this.this$0.handleImageRequest(paramHippyDrawable, this.val$sourceType, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.image.HippyImageView.1
  * JD-Core Version:    0.7.0.1
  */

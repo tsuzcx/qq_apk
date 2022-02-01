@@ -16,14 +16,18 @@ class AppBrandPageContainer$7$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StorageUtil.getPreference().edit().putBoolean(AppBrandPageContainer.access$200(this.this$1.this$0).getMiniAppInfo().appId + "_debug", this.this$1.val$enableDebug);
+    paramDialogInterface = StorageUtil.getPreference().edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppBrandPageContainer.access$200(this.this$1.this$0).getMiniAppInfo().appId);
+    localStringBuilder.append("_debug");
+    paramDialogInterface.putBoolean(localStringBuilder.toString(), this.this$1.val$enableDebug);
     this.this$1.this$0.hideSoftInput(this.this$1.this$0);
     ProcessUtil.exitProcess(AppBrandPageContainer.access$200(this.this$1.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.7.1
  * JD-Core Version:    0.7.0.1
  */

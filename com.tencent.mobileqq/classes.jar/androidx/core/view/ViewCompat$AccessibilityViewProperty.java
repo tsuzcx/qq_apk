@@ -35,23 +35,21 @@ abstract class ViewCompat$AccessibilityViewProperty<T>
   {
     boolean bool3 = false;
     boolean bool1;
-    if (paramBoolean1 == null)
-    {
+    if (paramBoolean1 == null) {
       bool1 = false;
-      if (paramBoolean2 != null) {
-        break label36;
-      }
-    }
-    label36:
-    for (boolean bool2 = false;; bool2 = paramBoolean2.booleanValue())
-    {
-      if (bool1 == bool2) {
-        bool3 = true;
-      }
-      return bool3;
+    } else {
       bool1 = paramBoolean1.booleanValue();
-      break;
     }
+    boolean bool2;
+    if (paramBoolean2 == null) {
+      bool2 = false;
+    } else {
+      bool2 = paramBoolean2.booleanValue();
+    }
+    if (bool1 == bool2) {
+      bool3 = true;
+    }
+    return bool3;
   }
   
   abstract T frameworkGet(View paramView);
@@ -61,42 +59,41 @@ abstract class ViewCompat$AccessibilityViewProperty<T>
   T get(View paramView)
   {
     if (frameworkAvailable()) {
-      paramView = frameworkGet(paramView);
+      return frameworkGet(paramView);
     }
-    Object localObject;
-    do
+    if (extrasAvailable())
     {
-      return paramView;
-      if (!extrasAvailable()) {
-        break;
+      paramView = paramView.getTag(this.mTagKey);
+      if (this.mType.isInstance(paramView)) {
+        return paramView;
       }
-      localObject = paramView.getTag(this.mTagKey);
-      paramView = localObject;
-    } while (this.mType.isInstance(localObject));
+    }
     return null;
   }
   
   void set(View paramView, T paramT)
   {
-    if (frameworkAvailable()) {
+    if (frameworkAvailable())
+    {
       frameworkSet(paramView, paramT);
-    }
-    while ((!extrasAvailable()) || (!shouldUpdate(get(paramView), paramT))) {
       return;
     }
-    ViewCompat.getOrCreateAccessibilityDelegateCompat(paramView);
-    paramView.setTag(this.mTagKey, paramT);
-    ViewCompat.notifyViewAccessibilityStateChangedIfNeeded(paramView, 0);
+    if ((extrasAvailable()) && (shouldUpdate(get(paramView), paramT)))
+    {
+      ViewCompat.getOrCreateAccessibilityDelegateCompat(paramView);
+      paramView.setTag(this.mTagKey, paramT);
+      ViewCompat.notifyViewAccessibilityStateChangedIfNeeded(paramView, 0);
+    }
   }
   
   boolean shouldUpdate(T paramT1, T paramT2)
   {
-    return !paramT2.equals(paramT1);
+    return paramT2.equals(paramT1) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.ViewCompat.AccessibilityViewProperty
  * JD-Core Version:    0.7.0.1
  */

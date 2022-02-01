@@ -16,11 +16,11 @@ class ImageLoaderComponent$3
     super(paramContext);
   }
   
-  public InputStream getStreamFromOtherSource(String paramString, Object paramObject)
+  protected InputStream getStreamFromOtherSource(String paramString, Object paramObject)
   {
     if (paramString.startsWith("file:/"))
     {
-      paramString = paramString.substring("file:/".length());
+      paramString = paramString.substring(6);
       return new ContentLengthInputStream(new BufferedInputStream(new FileInputStream(paramString), 32768), (int)new File(paramString).length());
     }
     return super.getStreamFromOtherSource(paramString, paramObject);
@@ -28,7 +28,7 @@ class ImageLoaderComponent$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.imageloader.ImageLoaderComponent.3
  * JD-Core Version:    0.7.0.1
  */

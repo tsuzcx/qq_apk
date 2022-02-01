@@ -19,13 +19,14 @@ public final class Oidb_0x625$TinyIDInfoRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint32_appid", "bytes_openid", "uint64_tinyid", "uint32_acounttype" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0) }, TinyIDInfoRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint32_appid", "bytes_openid", "uint64_tinyid", "uint32_acounttype" }, new Object[] { localInteger, localByteStringMicro, Long.valueOf(0L), localInteger }, TinyIDInfoRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x625.Oidb_0x625.TinyIDInfoRsp
  * JD-Core Version:    0.7.0.1
  */

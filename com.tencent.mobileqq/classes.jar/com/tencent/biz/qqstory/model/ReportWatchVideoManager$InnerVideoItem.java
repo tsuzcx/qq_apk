@@ -50,21 +50,36 @@ public class ReportWatchVideoManager$InnerVideoItem
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass()))
+    {
+      paramObject = (InnerVideoItem)paramObject;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
     }
-    paramObject = (InnerVideoItem)paramObject;
-    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+    return false;
   }
   
   public String toString()
   {
-    return "InnerVideoItem { mVid=" + this.jdField_a_of_type_JavaLangString + " mVideoUid=" + this.jdField_b_of_type_JavaLangString + " mIsLiveVideo=" + this.jdField_a_of_type_Boolean + " mCreateTime=" + this.jdField_a_of_type_Long + " mSource=" + this.jdField_a_of_type_Int + " mVidType=" + this.jdField_b_of_type_Int + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("InnerVideoItem { mVid=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mVideoUid=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" mIsLiveVideo=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" mCreateTime=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" mSource=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" mVidType=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.ReportWatchVideoManager.InnerVideoItem
  * JD-Core Version:    0.7.0.1
  */

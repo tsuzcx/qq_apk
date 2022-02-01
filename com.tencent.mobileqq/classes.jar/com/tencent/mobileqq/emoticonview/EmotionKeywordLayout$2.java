@@ -13,8 +13,12 @@ class EmotionKeywordLayout$2
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordLayout", 2, "hide:offset=" + f);
+    if (QLog.isColorLevel())
+    {
+      paramValueAnimator = new StringBuilder();
+      paramValueAnimator.append("hide:offset=");
+      paramValueAnimator.append(f);
+      QLog.d("EmotionKeywordLayout", 2, paramValueAnimator.toString());
     }
     if (EmotionKeywordLayout.access$000(this.this$0) != null) {
       EmotionKeywordLayout.access$000(this.this$0).setTranslationY(f);
@@ -23,7 +27,7 @@ class EmotionKeywordLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordLayout.2
  * JD-Core Version:    0.7.0.1
  */

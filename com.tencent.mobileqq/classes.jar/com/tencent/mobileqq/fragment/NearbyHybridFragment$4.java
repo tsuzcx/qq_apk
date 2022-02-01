@@ -15,36 +15,50 @@ class NearbyHybridFragment$4
   {
     boolean bool = WebSoService.a().a(this.this$0.c);
     int i = this.this$0.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.NearbyHybridFragment.webloading", 2, "startWebSoRequest, hasWebSoCache=" + bool + ", initTab=" + i + ", url=" + this.this$0.c);
+    StringBuilder localStringBuilder1;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("startWebSoRequest, hasWebSoCache=");
+      localStringBuilder1.append(bool);
+      localStringBuilder1.append(", initTab=");
+      localStringBuilder1.append(i);
+      localStringBuilder1.append(", url=");
+      localStringBuilder1.append(this.this$0.c);
+      QLog.d("nearby.NearbyHybridFragment.webloading", 2, localStringBuilder1.toString());
     }
     if (bool) {
       this.this$0.a.removeMessages(3);
     }
-    if (i != -1) {}
-    try
-    {
-      WebSoUtils.a(Uri.parse(this.this$0.c));
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.NearbyHybridFragment.webloading", 2, "cleanWebSoData: hasCacheData=" + WebSoService.a().a(this.this$0.c));
-      }
-      WebSoService.a().a(this.this$0.c, null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (i != -1) {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("nearby.NearbyHybridFragment.webloading", 2, "cleanWebSoData exp:" + localException.toString());
+        WebSoUtils.a(Uri.parse(this.this$0.c));
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("cleanWebSoData: hasCacheData=");
+          localStringBuilder1.append(WebSoService.a().a(this.this$0.c));
+          QLog.d("nearby.NearbyHybridFragment.webloading", 2, localStringBuilder1.toString());
+        }
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("cleanWebSoData exp:");
+          localStringBuilder2.append(localException.toString());
+          QLog.d("nearby.NearbyHybridFragment.webloading", 2, localStringBuilder2.toString());
         }
       }
     }
+    WebSoService.a().a(this.this$0.c, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.4
  * JD-Core Version:    0.7.0.1
  */

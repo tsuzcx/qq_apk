@@ -47,14 +47,15 @@ public final class QmfTokenInfo
   {
     paramJceOutputStream.write(this.Type, 0);
     paramJceOutputStream.write(this.Key, 1);
-    if (this.ext_key != null) {
-      paramJceOutputStream.write(this.ext_key, 2);
+    Map localMap = this.ext_key;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QMF_PROTOCAL.QmfTokenInfo
  * JD-Core Version:    0.7.0.1
  */

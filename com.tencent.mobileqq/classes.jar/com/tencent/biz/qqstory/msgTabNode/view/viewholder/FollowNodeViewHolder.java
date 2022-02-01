@@ -26,24 +26,25 @@ public class FollowNodeViewHolder
   
   static
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a(2131699763);
+    jdField_a_of_type_JavaLangString = StoryApi.a(2131699904);
   }
   
   public FollowNodeViewHolder(ViewGroup paramViewGroup)
   {
-    super(paramViewGroup, 2131561863);
+    super(paramViewGroup, 2131561714);
     this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = null;
   }
   
   protected String a(QQUserUIItem paramQQUserUIItem)
   {
-    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
-      return null;
+    if ((paramQQUserUIItem != null) && (paramQQUserUIItem.isAvailable()))
+    {
+      if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
+        return paramQQUserUIItem.nickName;
+      }
+      return paramQQUserUIItem.getDisplayName();
     }
-    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
-      return paramQQUserUIItem.nickName;
-    }
-    return paramQQUserUIItem.getDisplayName();
+    return null;
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
@@ -52,57 +53,50 @@ public class FollowNodeViewHolder
     SLog.a("FollowNodeViewHolder", "bindData %s", paramMsgTabNodeInfo);
     this.itemView.setTag(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((UserManager)SuperManager.a(2)).a(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, false);
+    boolean bool = true;
     this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    Object localObject2;
     Object localObject1;
     if (MsgTabStoryNodeListManager.h)
     {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend()))
-      {
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
+      localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      if ((localObject1 == null) || (!((QQUserUIItem)localObject1).isVipButNoFriend())) {
+        bool = false;
+      }
+      this.jdField_a_of_type_Boolean = bool;
+    }
+    Object localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = HardCodeUtil.a(2131704772);
       }
     }
     else
     {
-      localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label194;
-      }
+      QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
       localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = HardCodeUtil.a(2131704696);
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject1 = jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {
-          localObject1 = paramMsgTabNodeInfo.c;
-        }
-        SLog.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
-        StoryDispatcher.a().dispatch(new RequireUserItemEvent(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString));
-        localObject2 = localObject1;
-      }
-      a((String)localObject2, this.jdField_a_of_type_Boolean, paramMsgTabNodeInfo);
-      a(paramMsgTabNodeInfo.g);
-      return;
-      bool = false;
-      break;
-      label194:
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
+      if (localQQUserUIItem != null)
       {
         localObject1 = localObject2;
         if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq;
+          localObject1 = localQQUserUIItem.qq;
         }
       }
     }
+    localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject1 = jdField_a_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {
+        localObject1 = paramMsgTabNodeInfo.c;
+      }
+      SLog.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
+      StoryDispatcher.a().dispatch(new RequireUserItemEvent(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString));
+      localObject2 = localObject1;
+    }
+    a((String)localObject2, this.jdField_a_of_type_Boolean, paramMsgTabNodeInfo);
+    a(paramMsgTabNodeInfo.g);
   }
   
   protected void a(String paramString)
@@ -117,7 +111,7 @@ public class FollowNodeViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.FollowNodeViewHolder
  * JD-Core Version:    0.7.0.1
  */

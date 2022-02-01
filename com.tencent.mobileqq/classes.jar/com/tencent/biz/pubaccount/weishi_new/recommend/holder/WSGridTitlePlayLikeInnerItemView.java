@@ -29,25 +29,25 @@ public class WSGridTitlePlayLikeInnerItemView
   
   protected int b()
   {
-    return 2130841990;
+    return 2130841887;
+  }
+  
+  public void b()
+  {
+    super.b();
+    a(2131369028, new WSGridFeedInnerTitleController(this.jdField_a_of_type_AndroidContentContext));
+    a(2131369026, new WSGridFeedInnerPlayCountController(this.jdField_a_of_type_AndroidContentContext));
+    a(2131369027, new WSGridFeedInnerLikeCountController(this.jdField_a_of_type_AndroidContentContext));
   }
   
   protected boolean b()
   {
     return false;
   }
-  
-  public void d()
-  {
-    super.d();
-    a(2131369299, new WSGridFeedInnerTitleController(this.jdField_a_of_type_AndroidContentContext));
-    a(2131369297, new WSGridFeedInnerPlayCountController(this.jdField_a_of_type_AndroidContentContext));
-    a(2131369298, new WSGridFeedInnerLikeCountController(this.jdField_a_of_type_AndroidContentContext));
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridTitlePlayLikeInnerItemView
  * JD-Core Version:    0.7.0.1
  */

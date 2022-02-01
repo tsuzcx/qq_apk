@@ -41,8 +41,12 @@ public class TransFileControllerBusHelper
       if ((paramString.mIsRawPic) && (paramString.mIsPause))
       {
         paramString.resume();
-        if (QLog.isColorLevel()) {
-          QLog.d("raw_photo", 2, "resumeRawSend ,key:" + paramString.getKey());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("resumeRawSend ,key:");
+          localStringBuilder.append(paramString.getKey());
+          QLog.d("raw_photo", 2, localStringBuilder.toString());
         }
         return true;
       }
@@ -52,157 +56,178 @@ public class TransFileControllerBusHelper
   
   public boolean pauseAllRawSend()
   {
-    boolean bool = false;
     this.lastPasueKeys.clear();
-    Iterator localIterator = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class, "")).getProcessMap().entrySet().iterator();
-    if (localIterator.hasNext())
+    Object localObject1 = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class, "")).getProcessMap().entrySet().iterator();
+    for (boolean bool = false; ((Iterator)localObject1).hasNext(); bool = true)
     {
-      Object localObject = (IHttpCommunicatorListener)((Map.Entry)localIterator.next()).getValue();
-      if ((localObject == null) || (!(localObject instanceof BaseTransProcessor))) {
-        break label189;
+      label37:
+      Object localObject2 = (IHttpCommunicatorListener)((Map.Entry)((Iterator)localObject1).next()).getValue();
+      if ((localObject2 == null) || (!(localObject2 instanceof BaseTransProcessor))) {
+        break label37;
       }
-      localObject = (BaseTransProcessor)localObject;
-      if ((!((BaseTransProcessor)localObject).mIsRawPic) || (((BaseTransProcessor)localObject).mIsPause)) {
-        break label189;
+      localObject2 = (BaseTransProcessor)localObject2;
+      if ((!((BaseTransProcessor)localObject2).mIsRawPic) || (((BaseTransProcessor)localObject2).mIsPause)) {
+        break label37;
       }
-      ((BaseTransProcessor)localObject).pause();
-      if (((BaseTransProcessor)localObject).getKey() != null) {
-        this.lastPasueKeys.add(((BaseTransProcessor)localObject).getKey());
+      ((BaseTransProcessor)localObject2).pause();
+      if (((BaseTransProcessor)localObject2).getKey() != null) {
+        this.lastPasueKeys.add(((BaseTransProcessor)localObject2).getKey());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("raw_photo", 2, "pauseAllRawSend key:" + ((BaseTransProcessor)localObject).getKey());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pauseAllRawSend key:");
+        localStringBuilder.append(((BaseTransProcessor)localObject2).getKey());
+        QLog.d("raw_photo", 2, localStringBuilder.toString());
       }
-      bool = true;
     }
-    label189:
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("raw_photo", 2, "pauseAllRawSend result:" + bool);
-      }
-      return bool;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("pauseAllRawSend result:");
+      ((StringBuilder)localObject1).append(bool);
+      QLog.d("raw_photo", 2, ((StringBuilder)localObject1).toString());
     }
+    return bool;
   }
   
   public boolean pauseAllShortVideoReceive()
   {
-    boolean bool = false;
-    Iterator localIterator = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class, "")).getProcessMap().entrySet().iterator();
+    Object localObject1 = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class, "")).getProcessMap().entrySet().iterator();
     StringBuilder localStringBuilder = new StringBuilder();
-    if (localIterator.hasNext())
+    for (boolean bool = false; ((Iterator)localObject1).hasNext(); bool = true)
     {
-      Object localObject = (IHttpCommunicatorListener)((Map.Entry)localIterator.next()).getValue();
-      if ((localObject == null) || (!(localObject instanceof BaseTransProcessor))) {
-        break label221;
+      label38:
+      Object localObject2 = (IHttpCommunicatorListener)((Map.Entry)((Iterator)localObject1).next()).getValue();
+      if ((localObject2 == null) || (!(localObject2 instanceof BaseTransProcessor))) {
+        break label38;
       }
-      localObject = (BaseTransProcessor)localObject;
-      if ((!((BaseTransProcessor)localObject).mIsShortVideoReceive) || (((BaseTransProcessor)localObject).mIsPause)) {
-        break label221;
+      localObject2 = (BaseTransProcessor)localObject2;
+      if ((!((BaseTransProcessor)localObject2).mIsShortVideoReceive) || (((BaseTransProcessor)localObject2).mIsPause)) {
+        break label38;
       }
-      ((BaseTransProcessor)localObject).pause();
-      if (((BaseTransProcessor)localObject).getKey() != null) {
-        this.lastPasueKeysForShortVideo.add(((BaseTransProcessor)localObject).getKey());
+      ((BaseTransProcessor)localObject2).pause();
+      if (((BaseTransProcessor)localObject2).getKey() != null) {
+        this.lastPasueKeysForShortVideo.add(((BaseTransProcessor)localObject2).getKey());
       }
-      localStringBuilder.append(((BaseTransProcessor)localObject).getKey());
+      localStringBuilder.append(((BaseTransProcessor)localObject2).getKey());
       localStringBuilder.append(",");
-      bool = true;
     }
-    label221:
-    for (;;)
+    if ((localStringBuilder.length() > 0) && (QLog.isColorLevel()))
     {
-      break;
-      if ((localStringBuilder.length() > 0) && (QLog.isColorLevel())) {
-        QLog.d("short_video", 2, "pauseAllShortVideoReceive key:" + localStringBuilder);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("short_video", 2, "pauseAllShortVideoReceive result:" + bool);
-      }
-      return bool;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("pauseAllShortVideoReceive key:");
+      ((StringBuilder)localObject1).append(localStringBuilder);
+      QLog.d("short_video", 2, ((StringBuilder)localObject1).toString());
     }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pauseAllShortVideoReceive result:");
+      localStringBuilder.append(bool);
+      QLog.d("short_video", 2, localStringBuilder.toString());
+    }
+    return bool;
   }
   
   public boolean pauseAllShortVideoSend()
   {
-    boolean bool = false;
-    Iterator localIterator = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class, "")).getProcessMap().entrySet().iterator();
-    if (localIterator.hasNext())
+    Object localObject1 = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class, "")).getProcessMap().entrySet().iterator();
+    for (boolean bool = false; ((Iterator)localObject1).hasNext(); bool = true)
     {
-      Object localObject = (IHttpCommunicatorListener)((Map.Entry)localIterator.next()).getValue();
-      if ((localObject == null) || (!(localObject instanceof BaseTransProcessor))) {
-        break label182;
+      label30:
+      Object localObject2 = (IHttpCommunicatorListener)((Map.Entry)((Iterator)localObject1).next()).getValue();
+      if ((localObject2 == null) || (!(localObject2 instanceof BaseTransProcessor))) {
+        break label30;
       }
-      localObject = (BaseTransProcessor)localObject;
-      if ((!((BaseTransProcessor)localObject).mIsShortVideoSend) || (((BaseTransProcessor)localObject).mIsPause)) {
-        break label182;
+      localObject2 = (BaseTransProcessor)localObject2;
+      if ((!((BaseTransProcessor)localObject2).mIsShortVideoSend) || (((BaseTransProcessor)localObject2).mIsPause)) {
+        break label30;
       }
-      ((BaseTransProcessor)localObject).pause();
-      if (((BaseTransProcessor)localObject).getKey() != null) {
-        this.lastPasueKeysForShortVideo.add(((BaseTransProcessor)localObject).getKey());
+      ((BaseTransProcessor)localObject2).pause();
+      if (((BaseTransProcessor)localObject2).getKey() != null) {
+        this.lastPasueKeysForShortVideo.add(((BaseTransProcessor)localObject2).getKey());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("short_video", 2, "pauseAllShortVideoSend key:" + ((BaseTransProcessor)localObject).getKey());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pauseAllShortVideoSend key:");
+        localStringBuilder.append(((BaseTransProcessor)localObject2).getKey());
+        QLog.d("short_video", 2, localStringBuilder.toString());
       }
-      bool = true;
     }
-    label182:
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("short_video", 2, "pauseAllShortVideoSend result:" + bool);
-      }
-      return bool;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("pauseAllShortVideoSend result:");
+      ((StringBuilder)localObject1).append(bool);
+      QLog.d("short_video", 2, ((StringBuilder)localObject1).toString());
     }
+    return bool;
   }
   
   public void resumeLastRawSend()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("raw_photo", 2, "resumeLastRawSend keys size:" + this.lastPasueKeys.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("resumeLastRawSend keys size:");
+      ((StringBuilder)localObject).append(this.lastPasueKeys.size());
+      QLog.d("raw_photo", 2, ((StringBuilder)localObject).toString());
     }
-    Iterator localIterator = this.lastPasueKeys.iterator();
-    while (localIterator.hasNext()) {
-      resumeRawSend((String)localIterator.next());
+    Object localObject = this.lastPasueKeys.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      resumeRawSend((String)((Iterator)localObject).next());
     }
   }
   
   public void resumeLastShortVideoTransfer()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("short_video", 2, "resumeLastShortVideoSend keys size:" + this.lastPasueKeysForShortVideo.size());
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resumeLastShortVideoSend keys size:");
+      localStringBuilder.append(this.lastPasueKeysForShortVideo.size());
+      QLog.d("short_video", 2, localStringBuilder.toString());
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.lastPasueKeysForShortVideo.iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = this.lastPasueKeysForShortVideo.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      Object localObject = (String)localIterator.next();
-      localObject = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class, "")).findProcessor((String)localObject);
-      if ((localObject != null) && ((localObject instanceof BaseTransProcessor)))
+      Object localObject2 = (String)((Iterator)localObject1).next();
+      localObject2 = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class, "")).findProcessor((String)localObject2);
+      if ((localObject2 != null) && ((localObject2 instanceof BaseTransProcessor)))
       {
-        localObject = (BaseTransProcessor)localObject;
-        if (((BaseTransProcessor)localObject).mIsPause)
+        localObject2 = (BaseTransProcessor)localObject2;
+        if (((BaseTransProcessor)localObject2).mIsPause)
         {
-          ((BaseTransProcessor)localObject).resume();
-          localStringBuilder.append(((BaseTransProcessor)localObject).getKey());
+          ((BaseTransProcessor)localObject2).resume();
+          localStringBuilder.append(((BaseTransProcessor)localObject2).getKey());
           localStringBuilder.append(",");
         }
       }
     }
-    if ((localStringBuilder.length() > 0) && (QLog.isColorLevel())) {
-      QLog.d("short_video", 2, "resumeLastShortVideoSend , key: " + localStringBuilder);
+    if ((localStringBuilder.length() > 0) && (QLog.isColorLevel()))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("resumeLastShortVideoSend , key: ");
+      ((StringBuilder)localObject1).append(localStringBuilder);
+      QLog.d("short_video", 2, ((StringBuilder)localObject1).toString());
     }
     this.lastPasueKeysForShortVideo.clear();
   }
   
   public boolean resumeRawSend(String paramString1, String paramString2)
   {
-    return resumeRawSend(paramString1 + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    return resumeRawSend(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.api.TransFileControllerBusHelper
  * JD-Core Version:    0.7.0.1
  */

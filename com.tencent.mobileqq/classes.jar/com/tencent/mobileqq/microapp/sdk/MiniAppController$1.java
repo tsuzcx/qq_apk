@@ -22,29 +22,37 @@ final class MiniAppController$1
   public void run()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject == null) || (!(localObject instanceof QQAppInterface)) || (this.val$miniConfig == null)) {}
-    do
+    if ((localObject != null) && ((localObject instanceof QQAppInterface)))
     {
-      return;
+      if (this.val$miniConfig == null) {
+        return;
+      }
       localObject = (QQAppInterface)localObject;
       if (QLog.isColorLevel()) {
         QLog.d("MiniAppController", 2, "preDownApkgResources start");
       }
       localObject = ManagerProxy.getPreloadManager((AppRuntime)localObject);
-      localDownloadParam = new DownloadParam();
+      DownloadParam localDownloadParam = new DownloadParam();
       localDownloadParam.filePos = 1;
       localDownloadParam.url = this.val$miniConfig.baseLibInfo.baseLibUrl;
       ((PreloadManager)localObject).getResPath(localDownloadParam, null);
-    } while (new File(g.a(this.val$miniConfig.config)).exists());
-    DownloadParam localDownloadParam = new DownloadParam();
-    localDownloadParam.headers = new LinkedList();
-    localDownloadParam.url = (this.val$miniConfig.config.apkg_url + "?sign=" + URLEncoder.encode(this.val$miniConfig.config.cos_sign));
-    ((PreloadManager)localObject).getResPath(localDownloadParam, null);
+      if (!new File(g.a(this.val$miniConfig.config)).exists())
+      {
+        localDownloadParam = new DownloadParam();
+        localDownloadParam.headers = new LinkedList();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.val$miniConfig.config.apkg_url);
+        localStringBuilder.append("?sign=");
+        localStringBuilder.append(URLEncoder.encode(this.val$miniConfig.config.cos_sign));
+        localDownloadParam.url = localStringBuilder.toString();
+        ((PreloadManager)localObject).getResPath(localDownloadParam, null);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ public class JubaoApiPlugin
   private String a;
   private String b;
   private final String c = "0x800A851";
-  private String d = HardCodeUtil.a(2131705915);
+  private String d = HardCodeUtil.a(2131705967);
   
   public JubaoApiPlugin()
   {
@@ -49,15 +49,12 @@ public class JubaoApiPlugin
     {
       localJSONObject.put("result", paramInt);
       localJSONObject.put("uuid", paramString);
-      return localJSONObject.toString();
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        QLog.e("jubaoApiPlugin", 1, paramString, new Object[0]);
-      }
+      QLog.e("jubaoApiPlugin", 1, paramString, new Object[0]);
     }
+    return localJSONObject.toString();
   }
   
   public static String a(ArrayList<ChatMessage> paramArrayList)
@@ -69,15 +66,12 @@ public class JubaoApiPlugin
     {
       paramArrayList.put("msgcount", i);
       paramArrayList.put("msgs", str);
-      return paramArrayList.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("jubaoApiPlugin", 1, localJSONException, new Object[0]);
-      }
+      QLog.e("jubaoApiPlugin", 1, localJSONException, new Object[0]);
     }
+    return paramArrayList.toString();
   }
   
   public static String a(List<ChatMessage> paramList)
@@ -112,102 +106,91 @@ public class JubaoApiPlugin
     for (;;)
     {
       Object localObject2;
-      String str;
       try
       {
         JSONObject localJSONObject = new JSONObject(paramVarArgs);
-        localObject1 = localJSONObject.optString("chatuin", "");
+        Object localObject1 = localJSONObject.optString("chatuin", "");
         localObject2 = localJSONObject.optString("groupcode", "");
-        j = localJSONObject.optInt("chattype", 0);
-        k = localJSONObject.optInt("topicid", 0);
-        str = localJSONObject.optString("uinname", "");
+        int j = localJSONObject.optInt("chattype", 0);
+        int k = localJSONObject.optInt("topicid", 0);
+        String str = localJSONObject.optString("uinname", "");
         Object localObject3 = localJSONObject.optString("msgs");
         paramVarArgs = (String[])localObject1;
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           paramVarArgs = NewReportPlugin.c((String)localObject1, NewReportPlugin.b(1));
         }
         if (TextUtils.isEmpty(str)) {
-          break label444;
+          break label454;
         }
         str = new String(Base64.decode(str, 0));
         if (QLog.isColorLevel()) {
           QLog.i("NewReportPlugin", 2, String.format("jumpChatMsg [%s, %s, %s, %s, %s]", new Object[] { paramVarArgs, Integer.valueOf(j), localObject2, Integer.valueOf(k), str }));
         }
-        if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label447;
-        }
-        JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray((String)localObject3), JubaoMsgData.class);
-        localObject3 = new ArrayList();
-        int m = arrayOfJubaoMsgData.length;
-        int i = 0;
-        localObject1 = localObject3;
-        if (i < m)
+        localObject1 = null;
+        if (!TextUtils.isEmpty((CharSequence)localObject3))
         {
-          ((ArrayList)localObject3).add(arrayOfJubaoMsgData[i]);
+          localObject3 = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray((String)localObject3), JubaoMsgData.class);
+          localObject1 = new ArrayList();
+          int m = localObject3.length;
+          int i = 0;
+          if (i >= m) {
+            break label457;
+          }
+          ((ArrayList)localObject1).add(localObject3[i]);
           i += 1;
           continue;
         }
         this.a = localJSONObject.optString("callback", "");
-        if (j == 1) {
-          break label453;
+        if ((j == 1) || (j == 3000)) {
+          break label460;
         }
-        if (j != 3000) {
-          break label441;
+        if (TextUtils.isEmpty(paramVarArgs))
+        {
+          QLog.d("jubaoApiPlugin", 1, "jumpChatMsg openChatUin is null");
+          return;
         }
-      }
-      catch (JSONException paramVarArgs)
-      {
-        int j;
-        int k;
-        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
-        return;
         localObject2 = new Intent(this.mRuntime.a(), ChatActivity.class);
         ((Intent)localObject2).putExtra("uin", paramVarArgs);
         ((Intent)localObject2).putExtra("uintype", j);
-        if (TextUtils.isEmpty(str)) {
-          continue;
+        if (!TextUtils.isEmpty(str)) {
+          if ((j != 1033) && (j != 1034)) {
+            ((Intent)localObject2).putExtra("uinname", str);
+          } else {
+            ((Intent)localObject2).putExtra("key_confessor_nick", str);
+          }
         }
-        if ((j != 1033) && (j != 1034)) {
-          break label428;
-        }
-        ((Intent)localObject2).putExtra("key_confessor_nick", str);
         ((Intent)localObject2).putExtra("key_confess_topicid", k);
-        if (localObject1 == null) {
-          continue;
+        if (localObject1 != null) {
+          ((Intent)localObject2).putExtra("msgs", (Serializable)localObject1);
         }
-        ((Intent)localObject2).putExtra("msgs", (Serializable)localObject1);
         ((Intent)localObject2).putExtra("entrance", 9);
-        startActivityForResult((Intent)localObject2, (byte)0);
-        return;
+        try
+        {
+          startActivityForResult((Intent)localObject2, (byte)0);
+          return;
+        }
+        catch (JsonORM.JsonParseException paramVarArgs) {}catch (JSONException paramVarArgs) {}
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
       }
       catch (JsonORM.JsonParseException paramVarArgs)
       {
         QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
         return;
       }
-      if (TextUtils.isEmpty(paramVarArgs))
-      {
-        QLog.d("jubaoApiPlugin", 1, "jumpChatMsg openChatUin is null");
-        return;
-      }
-      label428:
-      ((Intent)localObject2).putExtra("uinname", str);
+      catch (JSONException paramVarArgs) {}
+      return;
+      label454:
       continue;
-      label441:
+      label457:
       continue;
-      label444:
-      continue;
-      label447:
-      Object localObject1 = null;
-      continue;
-      label453:
+      label460:
       paramVarArgs = (String[])localObject2;
     }
   }
   
   private void b(String... paramVarArgs)
   {
-    if (!NetworkUtil.g(this.mRuntime.a()))
+    if (!NetworkUtil.isNetworkAvailable(this.mRuntime.a()))
     {
       paramVarArgs = a(5, "");
       callJs(this.b, new String[] { paramVarArgs });
@@ -221,126 +204,137 @@ public class JubaoApiPlugin
       QLog.d("jubaoApiPlugin", 1, "doUploadChatMsg js args is empty ");
       return;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        localObject = new JSONObject(paramVarArgs);
-        paramVarArgs = ((JSONObject)localObject).optString("chatuin", "");
-        str = ((JSONObject)localObject).optString("groupcode", "");
-        j = ((JSONObject)localObject).optInt("chattype", 0);
-        if (!TextUtils.isEmpty(paramVarArgs))
-        {
-          paramVarArgs = NewReportPlugin.c(paramVarArgs, NewReportPlugin.b(1));
-          JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray(((JSONObject)localObject).optString("msgs")), JubaoMsgData.class);
-          localArrayList = new ArrayList();
-          int k = arrayOfJubaoMsgData.length;
-          int i = 0;
-          if (i < k)
-          {
-            localArrayList.add(arrayOfJubaoMsgData[i]);
-            i += 1;
-          }
-          else
-          {
-            this.b = ((JSONObject)localObject).optString("callback", "");
-            if ((localArrayList == null) || (localArrayList.size() == 0))
-            {
-              QLog.e("jubaoApiPlugin", 2, "ipc upload  to msgServer msg size = 0 ");
-              paramVarArgs = a(1, "");
-              callJs(this.b, new String[] { paramVarArgs });
-              return;
-            }
-          }
-        }
+      Object localObject2 = new JSONObject(paramVarArgs);
+      localObject1 = ((JSONObject)localObject2).optString("chatuin", "");
+      String str = ((JSONObject)localObject2).optString("groupcode", "");
+      int j = ((JSONObject)localObject2).optInt("chattype", 0);
+      paramVarArgs = (String[])localObject1;
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        paramVarArgs = NewReportPlugin.c((String)localObject1, NewReportPlugin.b(1));
       }
-      catch (JSONException paramVarArgs)
+      JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray(((JSONObject)localObject2).optString("msgs")), JubaoMsgData.class);
+      localObject1 = new ArrayList();
+      int k = arrayOfJubaoMsgData.length;
+      int i = 0;
+      while (i < k)
       {
-        int j;
-        ArrayList localArrayList;
-        str = a(2, "");
-        callJs(this.b, new String[] { str });
-        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("jubaoApiPlugin", 2, "ipc upload  msg size = " + localArrayList.size());
-        }
-        Object localObject = new Bundle();
-        ((Bundle)localObject).putString("jubao_chat_uin", paramVarArgs);
-        ((Bundle)localObject).putString("jubao_group_code", str);
-        ((Bundle)localObject).putInt("jubao_chat_type", j);
-        ((Bundle)localObject).putSerializable("jubao_msg_list", localArrayList);
-        QIPCClientHelper.getInstance().callServer("JubaoIPCServer", "", (Bundle)localObject, new JubaoApiPlugin.1(this));
-        ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "", "", "", "");
+        ((ArrayList)localObject1).add(arrayOfJubaoMsgData[i]);
+        i += 1;
+      }
+      this.b = ((JSONObject)localObject2).optString("callback", "");
+      if (((ArrayList)localObject1).size() == 0)
+      {
+        QLog.e("jubaoApiPlugin", 2, "ipc upload  to msgServer msg size = 0 ");
+        paramVarArgs = a(1, "");
+        callJs(this.b, new String[] { paramVarArgs });
         return;
       }
-      catch (JsonORM.JsonParseException paramVarArgs)
+      if (QLog.isColorLevel())
       {
-        String str = a(2, "");
-        callJs(this.b, new String[] { str });
-        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
-        return;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("ipc upload  msg size = ");
+        ((StringBuilder)localObject2).append(((ArrayList)localObject1).size());
+        QLog.d("jubaoApiPlugin", 2, ((StringBuilder)localObject2).toString());
       }
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("jubao_chat_uin", paramVarArgs);
+      ((Bundle)localObject2).putString("jubao_group_code", str);
+      ((Bundle)localObject2).putInt("jubao_chat_type", j);
+      ((Bundle)localObject2).putSerializable("jubao_msg_list", (Serializable)localObject1);
+      QIPCClientHelper.getInstance().callServer("JubaoIPCServer", "", (Bundle)localObject2, new JubaoApiPlugin.1(this));
+      ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "", "", "", "");
+      return;
+    }
+    catch (JsonORM.JsonParseException paramVarArgs)
+    {
+      localObject1 = a(2, "");
+      callJs(this.b, new String[] { localObject1 });
+      QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+      return;
+    }
+    catch (JSONException paramVarArgs)
+    {
+      Object localObject1 = a(2, "");
+      callJs(this.b, new String[] { localObject1 });
+      QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.e("jubaoApiPlugin", 2, "receiver msgServer resp  isSucesss =  " + paramBoolean);
-    int j = 1;
-    int i = 0;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("receiver msgServer resp  isSucesss =  ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    QLog.e("jubaoApiPlugin", 2, ((StringBuilder)localObject).toString());
     ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 3, 0, "", "", "", "");
-    String str;
+    int i = 1;
     if (paramInt == 0)
     {
-      str = "";
-      if ((!paramBoolean) || (paramBundle == null)) {
-        break label226;
-      }
-      str = paramBundle.getString("jubao_uuid");
-      paramInt = paramBundle.getInt("jubao_result_code", 0);
-      i = 0;
-      paramBundle = str;
-    }
-    for (;;)
-    {
-      str = a(paramInt, paramBundle);
-      callJs(this.b, new String[] { str });
-      QLog.d("jubaoApiPlugin", 1, "upload resp uuid = " + paramBundle + ",result = " + paramInt);
-      j = i;
-      i = paramInt;
-      ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "" + j, "" + i, "", "");
-      return;
-      label226:
-      if (paramBundle != null)
+      if ((paramBoolean) && (paramBundle != null))
       {
-        paramInt = paramBundle.getInt("jubao_result_code", 1);
-        i = 1;
-        paramBundle = str;
+        localObject = paramBundle.getString("jubao_uuid");
+        paramInt = paramBundle.getInt("jubao_result_code", 0);
+        i = 0;
+        paramBundle = (Bundle)localObject;
       }
       else
       {
-        paramInt = 0;
+        if (paramBundle != null) {
+          paramInt = paramBundle.getInt("jubao_result_code", 1);
+        } else {
+          paramInt = 0;
+        }
+        paramBundle = "";
         i = 1;
-        paramBundle = str;
       }
+      localObject = a(paramInt, paramBundle);
+      callJs(this.b, new String[] { localObject });
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("upload resp uuid = ");
+      ((StringBuilder)localObject).append(paramBundle);
+      ((StringBuilder)localObject).append(",result = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("jubaoApiPlugin", 1, ((StringBuilder)localObject).toString());
     }
+    else
+    {
+      paramInt = 0;
+    }
+    paramBundle = new StringBuilder();
+    paramBundle.append("");
+    paramBundle.append(i);
+    paramBundle = paramBundle.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramInt);
+    ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, paramBundle, ((StringBuilder)localObject).toString(), "", "");
   }
   
   public void callJs(String paramString, String... paramVarArgs)
   {
-    if ((paramString != null) && (this.b != null) && (paramString.equals(this.b))) {
-      ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 4, 0, "", "", "", "");
+    if (paramString != null)
+    {
+      String str = this.b;
+      if ((str != null) && (paramString.equals(str))) {
+        ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 4, 0, "", "", "", "");
+      }
     }
     super.callJs(paramString, paramVarArgs);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    QLog.d("jubaoApiPlugin", 1, "handleJsRequest methodName= " + paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleJsRequest methodName= ");
+    localStringBuilder.append(paramString3);
+    QLog.d("jubaoApiPlugin", 1, localStringBuilder.toString());
     if ("jubao".equals(paramString2))
     {
-      if ("selectMsgs".equalsIgnoreCase(paramString3))
+      boolean bool = "selectMsgs".equalsIgnoreCase(paramString3);
+      int i = 0;
+      if (bool)
       {
         if ((paramVarArgs != null) && (paramVarArgs.length > 0))
         {
@@ -349,25 +343,28 @@ public class JubaoApiPlugin
             paramJsBridgeListener.hideSoftInputFromWindow(this.mRuntime.a().getWindow().getDecorView().getWindowToken(), 0);
           }
           a(paramVarArgs);
-          ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 0, 0, "" + 0, "", "", "");
+          paramJsBridgeListener = new StringBuilder();
+          paramJsBridgeListener.append("");
+          paramJsBridgeListener.append(0);
+          ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 0, 0, paramJsBridgeListener.toString(), "", "", "");
         }
         return true;
       }
       if ("uploadMsgs".equalsIgnoreCase(paramString3))
       {
-        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-          break label248;
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+          b(new String[] { paramVarArgs[0] });
+        } else {
+          i = 1;
         }
-        b(new String[] { paramVarArgs[0] });
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append("");
+        paramJsBridgeListener.append(i);
+        ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 1, 0, paramJsBridgeListener.toString(), "", "", "");
+        return true;
       }
     }
-    label248:
-    for (int i = 0;; i = 1)
-    {
-      ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 1, 0, "" + i, "", "", "");
-      return true;
-      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
@@ -376,20 +373,23 @@ public class JubaoApiPlugin
     super.onActivityResult(paramIntent, paramByte, paramInt);
     if (paramByte == 0)
     {
-      if (paramInt != -1) {
-        break label81;
+      if (paramInt == -1)
+      {
+        paramIntent = paramIntent.getStringExtra("msgs");
+        if (QLog.isDevelopLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onActivityResult msgs= ");
+          localStringBuilder.append(paramIntent);
+          QLog.d("jubaoApiPlugin", 4, localStringBuilder.toString());
+        }
+        callJs(this.a, new String[] { paramIntent });
+        return;
       }
-      paramIntent = paramIntent.getStringExtra("msgs");
-      if (QLog.isDevelopLevel()) {
-        QLog.d("jubaoApiPlugin", 4, "onActivityResult msgs= " + paramIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("jubaoApiPlugin", 2, "onActivityResult user cancel select msg = ");
       }
-      callJs(this.a, new String[] { paramIntent });
     }
-    label81:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("jubaoApiPlugin", 2, "onActivityResult user cancel select msg = ");
   }
   
   public void startActivityForResult(Intent paramIntent, byte paramByte)
@@ -400,7 +400,7 @@ public class JubaoApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jubao.JubaoApiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -46,16 +46,13 @@ public class Request
     this.mHttpMethod = paramInt1;
     this.mUrl = paramString;
     this.mPostBody = paramArrayOfByte;
-    if (paramInt2 > 0) {}
-    for (;;)
-    {
-      this.mTimeoutMs = paramInt2;
-      this.mHttpHeaders = paramMap;
-      this.mRequestCompleteListener = paramNetworkRequestCompleteListener;
-      this.mDefaultTrafficStatsTag = findDefaultTrafficStatsTag(paramString);
-      return;
+    if (paramInt2 <= 0) {
       paramInt2 = 8000;
     }
+    this.mTimeoutMs = paramInt2;
+    this.mHttpHeaders = paramMap;
+    this.mRequestCompleteListener = paramNetworkRequestCompleteListener;
+    this.mDefaultTrafficStatsTag = findDefaultTrafficStatsTag(paramString);
   }
   
   private static int findDefaultTrafficStatsTag(String paramString)
@@ -121,8 +118,9 @@ public class Request
   
   void finish()
   {
-    if (this.mRequestQueue != null) {
-      this.mRequestQueue.finish(this);
+    RequestQueue localRequestQueue = this.mRequestQueue;
+    if (localRequestQueue != null) {
+      localRequestQueue.finish(this);
     }
   }
   
@@ -149,10 +147,11 @@ public class Request
   
   public final int getSequence()
   {
-    if (this.mSequence == null) {
-      throw new IllegalStateException("getSequence called before setSequence");
+    Integer localInteger = this.mSequence;
+    if (localInteger != null) {
+      return localInteger.intValue();
     }
-    return this.mSequence.intValue();
+    throw new IllegalStateException("getSequence called before setSequence");
   }
   
   public Object getTag()
@@ -204,17 +203,30 @@ public class Request
   
   public String toString()
   {
-    String str2 = "0x" + Integer.toHexString(getTrafficStatsTag());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("0x");
+    ((StringBuilder)localObject).append(Integer.toHexString(getTrafficStatsTag()));
+    String str = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    if (isCanceled()) {}
-    for (String str1 = "[X] ";; str1 = "[ ] ") {
-      return str1 + getUrl() + " " + str2 + " " + getPriority() + " " + this.mSequence;
+    if (isCanceled()) {
+      localObject = "[X] ";
+    } else {
+      localObject = "[ ] ";
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(getUrl());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(getPriority());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.mSequence);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.Request
  * JD-Core Version:    0.7.0.1
  */

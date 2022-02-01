@@ -37,18 +37,17 @@ public class MsfChannelService
     try
     {
       paramArrayOfByte = new String(paramArrayOfByte, "ISO8859_1");
-      ((ILiveDelivery)RemoteProxy.getProxy(LiveDelivery.class)).requestPbMsfSSO(paramString, paramArrayOfByte, null, -1, new MsfChannelService.2(this, paramChannelCallback));
-      return;
     }
     catch (Throwable paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        QLog.e("MsfChannelService", 1, "SendFollowMsg request error " + paramArrayOfByte.getMessage());
-        paramArrayOfByte = null;
-      }
+      paramArrayOfByte.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SendFollowMsg request error ");
+      localStringBuilder.append(paramArrayOfByte.getMessage());
+      QLog.e("MsfChannelService", 1, localStringBuilder.toString());
+      paramArrayOfByte = null;
     }
+    ((ILiveDelivery)RemoteProxy.getProxy(LiveDelivery.class)).requestPbMsfSSO(paramString, paramArrayOfByte, null, -1, new MsfChannelService.2(this, paramChannelCallback));
   }
   
   private byte[] a(byte[] paramArrayOfByte)
@@ -61,48 +60,49 @@ public class MsfChannelService
     localForwardReq.jdField_b_of_type_Int = ((AppGeneralInfoService)localObject).getVersionCode();
     localForwardReq.jdField_c_of_type_Int = 1;
     localForwardReq.jdField_b_of_type_ArrayOfByte = ((AppGeneralInfoService)localObject).getDeviceID().getBytes();
-    if (((AppGeneralInfoService)localObject).isSvrTestEnv())
-    {
+    if (((AppGeneralInfoService)localObject).isSvrTestEnv()) {
       localForwardReq.f = 2;
-      localObject = this.a;
-      paramArrayOfByte = (byte[])localObject;
-      if (localObject == null) {
-        paramArrayOfByte = a();
-      }
-      if (paramArrayOfByte == null) {
-        break label251;
-      }
-      switch (MsfChannelService.3.a[paramArrayOfByte.loginType.ordinal()])
+    } else {
+      localForwardReq.f = 0;
+    }
+    localObject = this.a;
+    paramArrayOfByte = (byte[])localObject;
+    if (localObject == null) {
+      paramArrayOfByte = a();
+    }
+    if (paramArrayOfByte != null)
+    {
+      int i = MsfChannelService.3.a[paramArrayOfByte.loginType.ordinal()];
+      if (i != 1)
       {
-      default: 
-        localForwardReq.jdField_d_of_type_Int = 3;
+        if (i != 2) {
+          localForwardReq.jdField_d_of_type_Int = 3;
+        } else {
+          localForwardReq.jdField_d_of_type_Int = 2;
+        }
+      }
+      else {
+        localForwardReq.jdField_d_of_type_Int = 1;
       }
     }
-    for (;;)
+    else
     {
-      localForwardReq.g = 37;
-      if (paramArrayOfByte != null)
-      {
-        localForwardReq.jdField_a_of_type_Long = paramArrayOfByte.uid;
-        localForwardReq.jdField_a_of_type_JavaLangString = HexUtil.bytesToHexString(paramArrayOfByte.a2);
-        localForwardReq.jdField_b_of_type_Long = paramArrayOfByte.tinyid;
-        if (!TextUtils.isEmpty(paramArrayOfByte.access_token)) {
-          localForwardReq.jdField_d_of_type_JavaLangString = paramArrayOfByte.access_token;
-        }
-        if (!TextUtils.isEmpty(paramArrayOfByte.openId)) {
-          localForwardReq.jdField_c_of_type_JavaLangString = paramArrayOfByte.openId;
-        }
-      }
-      return MessageNano.toByteArray(localForwardReq);
-      localForwardReq.f = 0;
-      break;
-      localForwardReq.jdField_d_of_type_Int = 1;
-      continue;
-      localForwardReq.jdField_d_of_type_Int = 2;
-      continue;
-      label251:
       localForwardReq.jdField_d_of_type_Int = 3;
     }
+    localForwardReq.g = 37;
+    if (paramArrayOfByte != null)
+    {
+      localForwardReq.jdField_a_of_type_Long = paramArrayOfByte.uid;
+      localForwardReq.jdField_a_of_type_JavaLangString = HexUtil.bytesToHexString(paramArrayOfByte.a2);
+      localForwardReq.jdField_b_of_type_Long = paramArrayOfByte.tinyid;
+      if (!TextUtils.isEmpty(paramArrayOfByte.access_token)) {
+        localForwardReq.jdField_d_of_type_JavaLangString = paramArrayOfByte.access_token;
+      }
+      if (!TextUtils.isEmpty(paramArrayOfByte.openId)) {
+        localForwardReq.jdField_c_of_type_JavaLangString = paramArrayOfByte.openId;
+      }
+    }
+    return MessageNano.toByteArray(localForwardReq);
   }
   
   protected LoginInfo a()
@@ -156,28 +156,48 @@ public class MsfChannelService
   
   public void sendWithPrefix(String paramString1, String paramString2, byte[] paramArrayOfByte, ChannelCallback paramChannelCallback)
   {
-    a(paramString1 + "." + paramString2, a(paramArrayOfByte), paramChannelCallback);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramString2);
+    a(localStringBuilder.toString(), a(paramArrayOfByte), paramChannelCallback);
   }
   
   public void sendWithTRpc(String paramString1, String paramString2, byte[] paramArrayOfByte, ChannelCallback paramChannelCallback)
   {
-    a("iliveProxyTrpc." + paramString1 + "-" + paramString2, a(paramArrayOfByte), paramChannelCallback);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("iliveProxyTrpc.");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString2);
+    a(localStringBuilder.toString(), a(paramArrayOfByte), paramChannelCallback);
   }
   
   public void sendWithTRpc(String paramString, byte[] paramArrayOfByte, ChannelCallback paramChannelCallback)
   {
-    a("iliveProxyTrpc." + paramString, a(paramArrayOfByte), paramChannelCallback);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("iliveProxyTrpc.");
+    localStringBuilder.append(paramString);
+    a(localStringBuilder.toString(), a(paramArrayOfByte), paramChannelCallback);
   }
   
   public void setAuthTicket(String paramString1, String paramString2)
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      if (!TextUtils.equals(paramString1, this.a.openId)) {
-        QLog.e("MsfChannelService", 1, "setAuthTicket-> Id has changed, oldId=" + this.a.openId + ", newId=" + paramString1);
+      if (!TextUtils.equals(paramString1, ((LoginInfo)localObject).openId))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setAuthTicket-> Id has changed, oldId=");
+        ((StringBuilder)localObject).append(this.a.openId);
+        ((StringBuilder)localObject).append(", newId=");
+        ((StringBuilder)localObject).append(paramString1);
+        QLog.e("MsfChannelService", 1, ((StringBuilder)localObject).toString());
       }
-      this.a.openId = paramString1;
-      this.a.access_token = paramString2;
+      localObject = this.a;
+      ((LoginInfo)localObject).openId = paramString1;
+      ((LoginInfo)localObject).access_token = paramString2;
     }
   }
   
@@ -189,7 +209,7 @@ public class MsfChannelService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.channel.MsfChannelService
  * JD-Core Version:    0.7.0.1
  */

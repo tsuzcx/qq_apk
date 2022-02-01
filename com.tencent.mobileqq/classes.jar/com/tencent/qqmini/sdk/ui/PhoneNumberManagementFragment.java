@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.qqmini.sdk.R.id;
 import com.tencent.qqmini.sdk.R.layout;
 import com.tencent.qqmini.sdk.R.style;
@@ -67,43 +66,49 @@ public class PhoneNumberManagementFragment
   
   private void updateView()
   {
-    if ((this.mPhoneNumberArray != null) && (this.mPhoneNumberArray.length() > 0)) {}
-    switch (this.mPhoneNumberArray.length())
+    Object localObject = this.mPhoneNumberArray;
+    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
     {
-    default: 
-      return;
-    case 1: 
-      localJSONObject1 = this.mPhoneNumberArray.optJSONObject(0);
+      int i = this.mPhoneNumberArray.length();
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return;
+          }
+          localObject = this.mPhoneNumberArray.optJSONObject(0);
+          localJSONObject1 = this.mPhoneNumberArray.optJSONObject(1);
+          JSONObject localJSONObject2 = this.mPhoneNumberArray.optJSONObject(2);
+          this.mPhoneNumberLayout1.setVisibility(0);
+          this.mPhoneNumberLayout2.setVisibility(0);
+          this.mPhoneNumberLayout3.setVisibility(0);
+          this.mPhoneNumberText1.setText(((JSONObject)localObject).optString("purePhoneNumber"));
+          this.mPhoneNumberText2.setText(localJSONObject1.optString("purePhoneNumber"));
+          this.mPhoneNumberText3.setText(localJSONObject2.optString("purePhoneNumber"));
+          this.mOperatePhoneNumberLayout.setVisibility(8);
+          this.mPhoneNumberMaxInfo.setVisibility(0);
+          return;
+        }
+        localObject = this.mPhoneNumberArray.optJSONObject(0);
+        JSONObject localJSONObject1 = this.mPhoneNumberArray.optJSONObject(1);
+        this.mPhoneNumberLayout1.setVisibility(0);
+        this.mPhoneNumberLayout2.setVisibility(0);
+        this.mPhoneNumberLayout3.setVisibility(8);
+        this.mPhoneNumberText1.setText(((JSONObject)localObject).optString("purePhoneNumber"));
+        this.mPhoneNumberText2.setText(localJSONObject1.optString("purePhoneNumber"));
+        this.mOperatePhoneNumberLayout.setVisibility(0);
+        this.mPhoneNumberMaxInfo.setVisibility(8);
+        return;
+      }
+      localObject = this.mPhoneNumberArray.optJSONObject(0);
       this.mPhoneNumberLayout1.setVisibility(0);
       this.mPhoneNumberLayout2.setVisibility(8);
       this.mPhoneNumberLayout3.setVisibility(8);
-      this.mPhoneNumberText1.setText(localJSONObject1.optString("purePhoneNumber"));
+      this.mPhoneNumberText1.setText(((JSONObject)localObject).optString("purePhoneNumber"));
       this.mOperatePhoneNumberLayout.setVisibility(0);
       this.mPhoneNumberMaxInfo.setVisibility(8);
-      return;
-    case 2: 
-      localJSONObject1 = this.mPhoneNumberArray.optJSONObject(0);
-      localJSONObject2 = this.mPhoneNumberArray.optJSONObject(1);
-      this.mPhoneNumberLayout1.setVisibility(0);
-      this.mPhoneNumberLayout2.setVisibility(0);
-      this.mPhoneNumberLayout3.setVisibility(8);
-      this.mPhoneNumberText1.setText(localJSONObject1.optString("purePhoneNumber"));
-      this.mPhoneNumberText2.setText(localJSONObject2.optString("purePhoneNumber"));
-      this.mOperatePhoneNumberLayout.setVisibility(0);
-      this.mPhoneNumberMaxInfo.setVisibility(8);
-      return;
     }
-    JSONObject localJSONObject1 = this.mPhoneNumberArray.optJSONObject(0);
-    JSONObject localJSONObject2 = this.mPhoneNumberArray.optJSONObject(1);
-    JSONObject localJSONObject3 = this.mPhoneNumberArray.optJSONObject(2);
-    this.mPhoneNumberLayout1.setVisibility(0);
-    this.mPhoneNumberLayout2.setVisibility(0);
-    this.mPhoneNumberLayout3.setVisibility(0);
-    this.mPhoneNumberText1.setText(localJSONObject1.optString("purePhoneNumber"));
-    this.mPhoneNumberText2.setText(localJSONObject2.optString("purePhoneNumber"));
-    this.mPhoneNumberText3.setText(localJSONObject3.optString("purePhoneNumber"));
-    this.mOperatePhoneNumberLayout.setVisibility(8);
-    this.mPhoneNumberMaxInfo.setVisibility(0);
   }
   
   public void onBackPressed()
@@ -111,8 +116,9 @@ public class PhoneNumberManagementFragment
     if ((getActivity() != null) && (!getActivity().isFinishing()))
     {
       Intent localIntent = new Intent();
-      if (this.mPhoneNumberArray != null) {
-        localIntent.putExtra("phoneNumberArray", this.mPhoneNumberArray.toString());
+      JSONArray localJSONArray = this.mPhoneNumberArray;
+      if (localJSONArray != null) {
+        localIntent.putExtra("phoneNumberArray", localJSONArray.toString());
       }
       getActivity().setResult(-1, localIntent);
       getActivity().finish();
@@ -124,39 +130,38 @@ public class PhoneNumberManagementFragment
   {
     int i = paramView.getId();
     Intent localIntent;
-    if (i == R.id.mini_app_phone_number_manager_title_back) {
+    Object localObject;
+    if (i == R.id.mini_app_phone_number_manager_title_back)
+    {
       if ((getActivity() != null) && (!getActivity().isFinishing()))
       {
         localIntent = new Intent();
-        if (this.mPhoneNumberArray != null) {
-          localIntent.putExtra("phoneNumberArray", this.mPhoneNumberArray.toString());
+        localObject = this.mPhoneNumberArray;
+        if (localObject != null) {
+          localIntent.putExtra("phoneNumberArray", ((JSONArray)localObject).toString());
         }
         getActivity().setResult(-1, localIntent);
         getActivity().finish();
       }
     }
-    for (;;)
+    else if (i == R.id.mini_app_phone_number_manager_number_del2)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (i == R.id.mini_app_phone_number_manager_number_del2)
-      {
-        sendDelRequest(1);
-      }
-      else if (i == R.id.mini_app_phone_number_manager_number_del3)
-      {
-        sendDelRequest(2);
-      }
-      else if (i == R.id.mini_app_phone_number_manager_operate)
-      {
-        localIntent = new Intent();
-        localIntent.putExtra("appId", this.mAppId);
-        ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-        if (localChannelProxy != null) {
-          localChannelProxy.launchAddPhoneNumberFragment(getActivity(), localIntent, 1090);
-        }
+      sendDelRequest(1);
+    }
+    else if (i == R.id.mini_app_phone_number_manager_number_del3)
+    {
+      sendDelRequest(2);
+    }
+    else if (i == R.id.mini_app_phone_number_manager_operate)
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("appId", this.mAppId);
+      localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+      if (localObject != null) {
+        ((ChannelProxy)localObject).launchAddPhoneNumberFragment(getActivity(), localIntent, 1090);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -173,10 +178,7 @@ public class PhoneNumberManagementFragment
     }
     catch (Throwable paramBundle)
     {
-      for (;;)
-      {
-        QMLog.e("PhoneNumberManagementFragment", "parse getArguments error,", paramBundle);
-      }
+      QMLog.e("PhoneNumberManagementFragment", "parse getArguments error,", paramBundle);
     }
     setActivityResultListener();
   }
@@ -196,7 +198,6 @@ public class PhoneNumberManagementFragment
       paramLayoutInflater.setFitsSystemWindows(true);
       paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
     }
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -223,7 +224,7 @@ public class PhoneNumberManagementFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.PhoneNumberManagementFragment
  * JD-Core Version:    0.7.0.1
  */

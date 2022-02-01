@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Handler.Callback;
 import android.os.Message;
 import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -16,68 +17,83 @@ class HuayangPluginLauncher$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    Object localObject;
+    if (i != 1)
     {
-    }
-    do
-    {
-      return false;
-      Object localObject = HuayangPluginLauncher.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((HuayangPluginLauncher.HuayangPluginLauncherListener)((Iterator)localObject).next()).a(paramMessage.arg1);
-      }
-      localObject = HuayangPluginLauncher.a(this.a).iterator();
-      if (((Iterator)localObject).hasNext())
+      if (i != 2)
       {
-        HuayangPluginLauncher.HuayangPluginLauncherListener localHuayangPluginLauncherListener = (HuayangPluginLauncher.HuayangPluginLauncherListener)((Iterator)localObject).next();
-        if (paramMessage.arg1 == 0) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localHuayangPluginLauncherListener.a(bool, (Throwable)paramMessage.obj);
-          break;
+        if (i != 3) {
+          return false;
         }
-      }
-      localObject = new Intent(HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c));
-      if (paramMessage.arg1 == 0)
-      {
-        if (HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c)) {}
-        for (int i = 9;; i = 8)
+        localObject = HuayangPluginLauncher.access$000(this.a).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          ((Intent)localObject).putExtra("key_state", i);
-          HuayangPluginLauncher.a(this.a).sendBroadcast((Intent)localObject);
-          if (MonitorConfig.a.get(HuayangPluginLauncher.a(this.a)) == null) {
-            break;
+          IHuayangPluginLauncher.HuayangPluginLauncherListener localHuayangPluginLauncherListener = (IHuayangPluginLauncher.HuayangPluginLauncherListener)((Iterator)localObject).next();
+          boolean bool;
+          if (paramMessage.arg1 == 0) {
+            bool = true;
+          } else {
+            bool = false;
           }
-          Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.a(this.a))).f));
+          localHuayangPluginLauncherListener.a(bool, (Throwable)paramMessage.obj);
+        }
+        localObject = new Intent(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getDownloadNotifyAction(HuayangPluginLauncher.access$100(this.a).c));
+        if (paramMessage.arg1 == 0)
+        {
+          if (((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).isODPkg(HuayangPluginLauncher.access$100(this.a).c)) {
+            i = 9;
+          } else {
+            i = 8;
+          }
+          ((Intent)localObject).putExtra("key_state", i);
+          HuayangPluginLauncher.access$200(this.a).sendBroadcast((Intent)localObject);
+          if (MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a)) != null)
+          {
+            Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a))).f));
+            return false;
+          }
+        }
+        else
+        {
+          if (((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).isODPkg(HuayangPluginLauncher.access$100(this.a).c)) {
+            Monitor.a("2691708");
+          } else if (((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).isHyPkg(HuayangPluginLauncher.access$100(this.a).c)) {
+            Monitor.a("2597726");
+          } else if (MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a)) != null) {
+            Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a))).e));
+          }
+          ((IHuayangCrashReport)QRoute.api(IHuayangCrashReport.class)).report((Throwable)paramMessage.obj);
+          ((Intent)localObject).putExtra("key_state", 7);
+          HuayangPluginLauncher.access$200(this.a).sendBroadcast((Intent)localObject);
           return false;
         }
       }
-      if (HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c)) {
-        Monitor.a("2691708");
-      }
-      for (;;)
+      else
       {
-        HuayangCrashReport.a((Throwable)paramMessage.obj);
-        ((Intent)localObject).putExtra("key_state", 7);
-        HuayangPluginLauncher.a(this.a).sendBroadcast((Intent)localObject);
-        return false;
-        if (HuayangJsPlugin.b(HuayangPluginLauncher.a(this.a).c)) {
-          Monitor.a("2597726");
-        } else if (MonitorConfig.a.get(HuayangPluginLauncher.a(this.a)) != null) {
-          Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.a(this.a))).e));
+        paramMessage = new Intent(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getDownloadNotifyAction(HuayangPluginLauncher.access$100(this.a).c));
+        paramMessage.putExtra("key_state", 6);
+        HuayangPluginLauncher.access$200(this.a).sendBroadcast(paramMessage);
+        if (MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a)) != null)
+        {
+          Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a))).d));
+          return false;
         }
       }
-      paramMessage = new Intent(HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c));
-      paramMessage.putExtra("key_state", 6);
-      HuayangPluginLauncher.a(this.a).sendBroadcast(paramMessage);
-    } while (MonitorConfig.a.get(HuayangPluginLauncher.a(this.a)) == null);
-    Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.a(this.a))).d));
+    }
+    else
+    {
+      localObject = HuayangPluginLauncher.access$000(this.a).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((IHuayangPluginLauncher.HuayangPluginLauncherListener)((Iterator)localObject).next()).a(paramMessage.arg1);
+      }
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.1
  * JD-Core Version:    0.7.0.1
  */

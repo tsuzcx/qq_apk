@@ -15,23 +15,31 @@ class TaskThreadPool$CustomThreadFactory
   TaskThreadPool$CustomThreadFactory(String paramString)
   {
     Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-    {
-      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localObject = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        localObject = "threadpool";
-      }
-      this.jdField_a_of_type_JavaLangString = ((String)localObject + "-" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() + "-thread-");
-      return;
+    if (localObject != null) {
+      localObject = ((SecurityManager)localObject).getThreadGroup();
+    } else {
+      localObject = Thread.currentThread().getThreadGroup();
     }
+    this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localObject = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      localObject = "threadpool";
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("-");
+    localStringBuilder.append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+    localStringBuilder.append("-thread-");
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.b.getAndIncrement(), 0L);
+    ThreadGroup localThreadGroup = this.jdField_a_of_type_JavaLangThreadGroup;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b.getAndIncrement());
+    paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
     }
@@ -43,7 +51,7 @@ class TaskThreadPool$CustomThreadFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.TaskThreadPool.CustomThreadFactory
  * JD-Core Version:    0.7.0.1
  */

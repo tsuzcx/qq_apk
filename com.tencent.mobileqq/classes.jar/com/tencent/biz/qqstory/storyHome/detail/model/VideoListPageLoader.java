@@ -52,7 +52,10 @@ public class VideoListPageLoader
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       SLog.e("Q.qqstory.home.data:VideoListPageLoader", "initial video page loader failed because feedId is null. from page %d.", new Object[] { Integer.valueOf(paramInt) });
-      AssertUtils.a(false, "initial video page loader failed because feedId is null. from page " + paramInt);
+      paramFeedVideoInfo = new StringBuilder();
+      paramFeedVideoInfo.append("initial video page loader failed because feedId is null. from page ");
+      paramFeedVideoInfo.append(paramInt);
+      AssertUtils.assertTrue(false, paramFeedVideoInfo.toString());
     }
   }
   
@@ -67,7 +70,10 @@ public class VideoListPageLoader
     if (TextUtils.isEmpty(paramString))
     {
       SLog.e("Q.qqstory.home.data:VideoListPageLoader", "initial video page loader failed because feedId is null. from page %d.", new Object[] { Integer.valueOf(paramInt1) });
-      AssertUtils.a(false, "initial video page loader failed because feedId is null. from page " + paramInt1);
+      paramString = new StringBuilder();
+      paramString.append("initial video page loader failed because feedId is null. from page ");
+      paramString.append(paramInt1);
+      AssertUtils.assertTrue(false, paramString.toString());
     }
   }
   
@@ -130,36 +136,35 @@ public class VideoListPageLoader
     }
     VideoListPageLoader.GetVideoListEvent localGetVideoListEvent = new VideoListPageLoader.GetVideoListEvent(paramErrorMessage, this.jdField_b_of_type_JavaLangString);
     localGetVideoListEvent.jdField_d_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if ((paramGetFeedVideoListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramGetFeedVideoListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      a(localGetVideoListEvent);
-      return;
+      boolean bool = TextUtils.isEmpty(paramGetFeedVideoListRequest.jdField_a_of_type_JavaLangString);
+      this.jdField_c_of_type_JavaLangString = paramGetFeedVideoListResponse.jdField_a_of_type_JavaLangString;
+      localGetVideoListEvent.jdField_a_of_type_JavaUtilList = paramGetFeedVideoListResponse.jdField_a_of_type_JavaUtilArrayList;
+      localGetVideoListEvent.jdField_c_of_type_Boolean = bool;
+      localGetVideoListEvent.jdField_a_of_type_Boolean = paramGetFeedVideoListResponse.jdField_a_of_type_Boolean;
+      if ((!localGetVideoListEvent.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
+        localGetVideoListEvent.jdField_a_of_type_Boolean = true;
+      }
+      localGetVideoListEvent.jdField_b_of_type_JavaLangString = paramGetFeedVideoListResponse.jdField_c_of_type_JavaLangString;
+      localGetVideoListEvent.jdField_a_of_type_JavaUtilList = ((FeedManager)SuperManager.a(11)).a(this.jdField_b_of_type_JavaLangString, localGetVideoListEvent.jdField_a_of_type_JavaUtilList, bool);
+      localGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo = new FeedVideoInfo(paramGetFeedVideoListRequest.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_c_of_type_JavaLangString, localGetVideoListEvent.jdField_a_of_type_Boolean);
+      paramGetFeedVideoListRequest = new ArrayList(localGetVideoListEvent.jdField_a_of_type_JavaUtilList.size());
+      paramGetFeedVideoListResponse = localGetVideoListEvent.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramGetFeedVideoListResponse.hasNext()) {
+        paramGetFeedVideoListRequest.add(((StoryVideoItem)paramGetFeedVideoListResponse.next()).mVid);
+      }
+      GetVidPollInfoHandler.a(paramGetFeedVideoListRequest);
+      try
+      {
+        this.jdField_b_of_type_Boolean = true;
+        a(localGetVideoListEvent);
+        SLog.a("Q.qqstory.home.data:VideoListPageLoader", "dispatch video list return from network: %s", localGetVideoListEvent);
+        return;
+      }
+      finally {}
     }
-    boolean bool = TextUtils.isEmpty(paramGetFeedVideoListRequest.jdField_a_of_type_JavaLangString);
-    this.jdField_c_of_type_JavaLangString = paramGetFeedVideoListResponse.jdField_a_of_type_JavaLangString;
-    localGetVideoListEvent.jdField_a_of_type_JavaUtilList = paramGetFeedVideoListResponse.jdField_a_of_type_JavaUtilArrayList;
-    localGetVideoListEvent.jdField_c_of_type_Boolean = bool;
-    localGetVideoListEvent.jdField_a_of_type_Boolean = paramGetFeedVideoListResponse.jdField_a_of_type_Boolean;
-    if ((!localGetVideoListEvent.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
-      localGetVideoListEvent.jdField_a_of_type_Boolean = true;
-    }
-    localGetVideoListEvent.jdField_b_of_type_JavaLangString = paramGetFeedVideoListResponse.jdField_c_of_type_JavaLangString;
-    localGetVideoListEvent.jdField_a_of_type_JavaUtilList = ((FeedManager)SuperManager.a(11)).a(this.jdField_b_of_type_JavaLangString, localGetVideoListEvent.jdField_a_of_type_JavaUtilList, bool);
-    localGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo = new FeedVideoInfo(paramGetFeedVideoListRequest.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_c_of_type_JavaLangString, localGetVideoListEvent.jdField_a_of_type_Boolean);
-    paramGetFeedVideoListRequest = new ArrayList(localGetVideoListEvent.jdField_a_of_type_JavaUtilList.size());
-    paramGetFeedVideoListResponse = localGetVideoListEvent.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramGetFeedVideoListResponse.hasNext()) {
-      paramGetFeedVideoListRequest.add(((StoryVideoItem)paramGetFeedVideoListResponse.next()).mVid);
-    }
-    GetVidPollInfoHandler.a(paramGetFeedVideoListRequest);
-    try
-    {
-      this.jdField_b_of_type_Boolean = true;
-      a(localGetVideoListEvent);
-      SLog.a("Q.qqstory.home.data:VideoListPageLoader", "dispatch video list return from network: %s", localGetVideoListEvent);
-      return;
-    }
-    finally {}
+    a(localGetVideoListEvent);
   }
   
   public void a(VideoListPageLoader.CallBack paramCallBack)
@@ -198,7 +203,7 @@ public class VideoListPageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader
  * JD-Core Version:    0.7.0.1
  */

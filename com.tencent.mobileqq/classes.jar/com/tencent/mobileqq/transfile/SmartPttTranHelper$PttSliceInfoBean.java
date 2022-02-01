@@ -15,12 +15,34 @@ public class SmartPttTranHelper$PttSliceInfoBean
   
   public String toString()
   {
-    return "PttSliceInfoBean{encodeType=" + this.encodeType + ", isfirst=" + this.isfirst + ", isLast=" + this.isLast + ", voiceId='" + this.voiceId + '\'' + ", offset=" + this.offset + ", vegPos='" + this.vegPos + '\'' + ", md5='" + this.md5 + '\'' + ", chatType='" + this.chatType + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PttSliceInfoBean{encodeType=");
+    localStringBuilder.append(this.encodeType);
+    localStringBuilder.append(", isfirst=");
+    localStringBuilder.append(this.isfirst);
+    localStringBuilder.append(", isLast=");
+    localStringBuilder.append(this.isLast);
+    localStringBuilder.append(", voiceId='");
+    localStringBuilder.append(this.voiceId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", offset=");
+    localStringBuilder.append(this.offset);
+    localStringBuilder.append(", vegPos='");
+    localStringBuilder.append(this.vegPos);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", md5='");
+    localStringBuilder.append(this.md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", chatType='");
+    localStringBuilder.append(this.chatType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.SmartPttTranHelper.PttSliceInfoBean
  * JD-Core Version:    0.7.0.1
  */

@@ -64,25 +64,23 @@ public class QQOperationViopTipTask
   public ArrayList<String> getKeywordList()
   {
     ArrayList localArrayList = new ArrayList();
-    if ((this.keywordString != null) && (this.keywordString.length() > 0))
+    Object localObject = this.keywordString;
+    if ((localObject != null) && (((String)localObject).length() > 0))
     {
-      if (this.keywordString.contains("|")) {
-        break label48;
-      }
-      localArrayList.add(this.keywordString);
-    }
-    for (;;)
-    {
-      return localArrayList;
-      label48:
-      String[] arrayOfString = this.keywordString.split("\\|");
-      int i = 0;
-      while (i < arrayOfString.length)
+      if (!this.keywordString.contains("|"))
       {
-        localArrayList.add(arrayOfString[i]);
+        localArrayList.add(this.keywordString);
+        return localArrayList;
+      }
+      localObject = this.keywordString.split("\\|");
+      int i = 0;
+      while (i < localObject.length)
+      {
+        localArrayList.add(localObject[i]);
         i += 1;
       }
     }
+    return localArrayList;
   }
   
   public boolean isBlueTipsTask()
@@ -112,7 +110,7 @@ public class QQOperationViopTipTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.operation.QQOperationViopTipTask
  * JD-Core Version:    0.7.0.1
  */

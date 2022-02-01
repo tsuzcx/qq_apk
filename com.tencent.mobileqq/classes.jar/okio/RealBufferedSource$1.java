@@ -10,10 +10,10 @@ class RealBufferedSource$1
   
   public int available()
   {
-    if (this.this$0.closed) {
-      throw new IOException("closed");
+    if (!this.this$0.closed) {
+      return (int)Math.min(this.this$0.buffer.size, 2147483647L);
     }
-    return (int)Math.min(this.this$0.buffer.size, 2147483647L);
+    throw new IOException("closed");
   }
   
   public void close()
@@ -23,35 +23,40 @@ class RealBufferedSource$1
   
   public int read()
   {
-    if (this.this$0.closed) {
-      throw new IOException("closed");
+    if (!this.this$0.closed)
+    {
+      if ((this.this$0.buffer.size == 0L) && (this.this$0.source.read(this.this$0.buffer, 8192L) == -1L)) {
+        return -1;
+      }
+      return this.this$0.buffer.readByte() & 0xFF;
     }
-    if ((this.this$0.buffer.size == 0L) && (this.this$0.source.read(this.this$0.buffer, 8192L) == -1L)) {
-      return -1;
-    }
-    return this.this$0.buffer.readByte() & 0xFF;
+    throw new IOException("closed");
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.this$0.closed) {
-      throw new IOException("closed");
+    if (!this.this$0.closed)
+    {
+      Util.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
+      if ((this.this$0.buffer.size == 0L) && (this.this$0.source.read(this.this$0.buffer, 8192L) == -1L)) {
+        return -1;
+      }
+      return this.this$0.buffer.read(paramArrayOfByte, paramInt1, paramInt2);
     }
-    Util.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
-    if ((this.this$0.buffer.size == 0L) && (this.this$0.source.read(this.this$0.buffer, 8192L) == -1L)) {
-      return -1;
-    }
-    return this.this$0.buffer.read(paramArrayOfByte, paramInt1, paramInt2);
+    throw new IOException("closed");
   }
   
   public String toString()
   {
-    return this.this$0 + ".inputStream()";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.this$0);
+    localStringBuilder.append(".inputStream()");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.RealBufferedSource.1
  * JD-Core Version:    0.7.0.1
  */

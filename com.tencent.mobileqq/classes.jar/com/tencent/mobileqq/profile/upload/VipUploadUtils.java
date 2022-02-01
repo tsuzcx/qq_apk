@@ -12,115 +12,102 @@ public class VipUploadUtils
   public static android.graphics.Bitmap a(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_2
-    //   3: astore_1
-    //   4: aload_0
-    //   5: invokestatic 21	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   8: ifne +56 -> 64
+    //   0: aload_0
+    //   1: invokestatic 21	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: istore_1
+    //   5: aconst_null
+    //   6: astore_2
+    //   7: iload_1
+    //   8: ifne +92 -> 100
     //   11: new 23	java/io/File
     //   14: dup
     //   15: aload_0
     //   16: invokespecial 26	java/io/File:<init>	(Ljava/lang/String;)V
     //   19: astore_0
-    //   20: aload_2
-    //   21: astore_1
-    //   22: aload_0
-    //   23: invokevirtual 30	java/io/File:exists	()Z
-    //   26: ifeq +38 -> 64
-    //   29: new 32	java/io/BufferedInputStream
-    //   32: dup
-    //   33: new 34	java/io/FileInputStream
-    //   36: dup
-    //   37: aload_0
-    //   38: invokespecial 37	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   41: invokespecial 40	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   44: astore_0
-    //   45: aload_0
-    //   46: invokestatic 46	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   49: astore_1
-    //   50: aload_1
-    //   51: astore_2
+    //   20: aload_0
+    //   21: invokevirtual 30	java/io/File:exists	()Z
+    //   24: ifeq +76 -> 100
+    //   27: new 32	java/io/BufferedInputStream
+    //   30: dup
+    //   31: new 34	java/io/FileInputStream
+    //   34: dup
+    //   35: aload_0
+    //   36: invokespecial 37	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   39: invokespecial 40	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   42: astore_0
+    //   43: aload_0
+    //   44: invokestatic 46	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   47: astore_2
+    //   48: aload_0
+    //   49: invokevirtual 49	java/io/BufferedInputStream:close	()V
     //   52: aload_2
-    //   53: astore_1
-    //   54: aload_0
-    //   55: ifnull +9 -> 64
-    //   58: aload_0
-    //   59: invokevirtual 49	java/io/BufferedInputStream:close	()V
-    //   62: aload_2
-    //   63: astore_1
-    //   64: aload_1
-    //   65: areturn
-    //   66: astore_0
-    //   67: aconst_null
+    //   53: areturn
+    //   54: astore_3
+    //   55: aload_0
+    //   56: astore_2
+    //   57: aload_3
+    //   58: astore_0
+    //   59: goto +10 -> 69
+    //   62: goto +19 -> 81
+    //   65: goto +28 -> 93
     //   68: astore_0
     //   69: aload_2
-    //   70: astore_1
-    //   71: aload_0
-    //   72: ifnull -8 -> 64
-    //   75: aload_0
-    //   76: invokevirtual 49	java/io/BufferedInputStream:close	()V
+    //   70: ifnull +7 -> 77
+    //   73: aload_2
+    //   74: invokevirtual 49	java/io/BufferedInputStream:close	()V
+    //   77: aload_0
+    //   78: athrow
     //   79: aconst_null
-    //   80: areturn
-    //   81: astore_0
-    //   82: aconst_null
-    //   83: areturn
-    //   84: astore_0
-    //   85: aconst_null
-    //   86: astore_0
-    //   87: aload_2
-    //   88: astore_1
-    //   89: aload_0
-    //   90: ifnull -26 -> 64
+    //   80: astore_0
+    //   81: aload_0
+    //   82: ifnull +18 -> 100
+    //   85: aload_0
+    //   86: invokevirtual 49	java/io/BufferedInputStream:close	()V
+    //   89: aconst_null
+    //   90: areturn
+    //   91: aconst_null
+    //   92: astore_0
     //   93: aload_0
-    //   94: invokevirtual 49	java/io/BufferedInputStream:close	()V
-    //   97: aconst_null
-    //   98: areturn
-    //   99: astore_0
+    //   94: ifnull +6 -> 100
+    //   97: goto -12 -> 85
     //   100: aconst_null
     //   101: areturn
-    //   102: astore_1
-    //   103: aconst_null
-    //   104: astore_0
-    //   105: aload_0
-    //   106: ifnull +7 -> 113
-    //   109: aload_0
-    //   110: invokevirtual 49	java/io/BufferedInputStream:close	()V
-    //   113: aload_1
-    //   114: athrow
-    //   115: astore_0
-    //   116: aload_2
-    //   117: areturn
+    //   102: astore_0
+    //   103: goto -12 -> 91
+    //   106: astore_0
+    //   107: goto -28 -> 79
+    //   110: astore_2
+    //   111: goto -46 -> 65
+    //   114: astore_2
+    //   115: goto -53 -> 62
     //   118: astore_0
-    //   119: goto -6 -> 113
-    //   122: astore_1
-    //   123: goto -18 -> 105
-    //   126: astore_1
-    //   127: goto -40 -> 87
-    //   130: astore_1
-    //   131: goto -62 -> 69
+    //   119: aload_2
+    //   120: areturn
+    //   121: astore_2
+    //   122: goto -45 -> 77
+    //   125: astore_0
+    //   126: aconst_null
+    //   127: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	134	0	paramString	String
-    //   3	86	1	localObject1	Object
-    //   102	12	1	localObject2	Object
-    //   122	1	1	localObject3	Object
-    //   126	1	1	localException	java.lang.Exception
-    //   130	1	1	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   1	116	2	localObject4	Object
+    //   0	128	0	paramString	String
+    //   4	4	1	bool	boolean
+    //   6	68	2	localObject1	Object
+    //   110	1	2	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   114	6	2	localException1	java.lang.Exception
+    //   121	1	2	localException2	java.lang.Exception
+    //   54	4	3	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   29	45	66	java/lang/OutOfMemoryError
-    //   75	79	81	java/lang/Exception
-    //   29	45	84	java/lang/Exception
-    //   93	97	99	java/lang/Exception
-    //   29	45	102	finally
-    //   58	62	115	java/lang/Exception
-    //   109	113	118	java/lang/Exception
-    //   45	50	122	finally
-    //   45	50	126	java/lang/Exception
-    //   45	50	130	java/lang/OutOfMemoryError
+    //   43	48	54	finally
+    //   27	43	68	finally
+    //   27	43	102	java/lang/OutOfMemoryError
+    //   27	43	106	java/lang/Exception
+    //   43	48	110	java/lang/OutOfMemoryError
+    //   43	48	114	java/lang/Exception
+    //   48	52	118	java/lang/Exception
+    //   73	77	121	java/lang/Exception
+    //   85	89	125	java/lang/Exception
   }
   
   public static String a(AppInterface paramAppInterface, String paramString)
@@ -135,133 +122,122 @@ public class VipUploadUtils
   private static String a(File paramFile)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc 84
-    //   4: invokestatic 90	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   7: astore_3
-    //   8: aload_3
-    //   9: invokevirtual 93	java/security/MessageDigest:reset	()V
-    //   12: new 34	java/io/FileInputStream
-    //   15: dup
-    //   16: aload_0
-    //   17: invokespecial 37	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   20: astore_1
-    //   21: aload_3
-    //   22: aload_1
-    //   23: invokevirtual 97	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   26: getstatic 103	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
-    //   29: lconst_0
-    //   30: aload_0
-    //   31: invokevirtual 106	java/io/File:length	()J
-    //   34: invokevirtual 112	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
-    //   37: invokevirtual 116	java/security/MessageDigest:update	(Ljava/nio/ByteBuffer;)V
-    //   40: aload_3
-    //   41: invokevirtual 120	java/security/MessageDigest:digest	()[B
-    //   44: invokestatic 126	com/tencent/mobileqq/utils/SecUtil:toHexString	([B)Ljava/lang/String;
-    //   47: astore_0
-    //   48: aload_1
-    //   49: ifnull +7 -> 56
-    //   52: aload_1
-    //   53: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   56: aload_0
-    //   57: areturn
-    //   58: astore_0
-    //   59: aload_2
-    //   60: astore_0
-    //   61: aload_0
-    //   62: ifnull +7 -> 69
-    //   65: aload_0
-    //   66: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   69: ldc 129
-    //   71: areturn
-    //   72: astore_0
-    //   73: aconst_null
-    //   74: astore_1
+    //   0: ldc 84
+    //   2: invokestatic 90	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   5: astore_2
+    //   6: aload_2
+    //   7: invokevirtual 93	java/security/MessageDigest:reset	()V
+    //   10: new 34	java/io/FileInputStream
+    //   13: dup
+    //   14: aload_0
+    //   15: invokespecial 37	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   18: astore_1
+    //   19: aload_2
+    //   20: aload_1
+    //   21: invokevirtual 97	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   24: getstatic 103	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
+    //   27: lconst_0
+    //   28: aload_0
+    //   29: invokevirtual 106	java/io/File:length	()J
+    //   32: invokevirtual 112	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
+    //   35: invokevirtual 116	java/security/MessageDigest:update	(Ljava/nio/ByteBuffer;)V
+    //   38: aload_2
+    //   39: invokevirtual 120	java/security/MessageDigest:digest	()[B
+    //   42: invokestatic 126	com/tencent/mobileqq/utils/SecUtil:toHexString	([B)Ljava/lang/String;
+    //   45: astore_0
+    //   46: aload_1
+    //   47: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   50: aload_0
+    //   51: areturn
+    //   52: astore_0
+    //   53: goto +6 -> 59
+    //   56: astore_0
+    //   57: aconst_null
+    //   58: astore_1
+    //   59: aload_1
+    //   60: ifnull +7 -> 67
+    //   63: aload_1
+    //   64: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   67: aload_0
+    //   68: athrow
+    //   69: aconst_null
+    //   70: astore_1
+    //   71: aload_1
+    //   72: ifnull +28 -> 100
     //   75: aload_1
-    //   76: ifnull -7 -> 69
-    //   79: aload_1
-    //   80: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   83: goto -14 -> 69
-    //   86: astore_0
-    //   87: goto -18 -> 69
-    //   90: astore_0
+    //   76: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   79: goto +21 -> 100
+    //   82: aconst_null
+    //   83: astore_1
+    //   84: aload_1
+    //   85: ifnull +15 -> 100
+    //   88: goto -13 -> 75
     //   91: aconst_null
     //   92: astore_1
     //   93: aload_1
-    //   94: ifnull -25 -> 69
-    //   97: aload_1
-    //   98: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   101: goto -32 -> 69
-    //   104: astore_0
-    //   105: goto -36 -> 69
-    //   108: astore_0
-    //   109: aconst_null
-    //   110: astore_1
-    //   111: aload_1
-    //   112: ifnull +7 -> 119
-    //   115: aload_1
-    //   116: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   119: aload_0
-    //   120: athrow
-    //   121: astore_1
-    //   122: aload_0
-    //   123: areturn
-    //   124: astore_0
-    //   125: goto -56 -> 69
-    //   128: astore_1
-    //   129: goto -10 -> 119
-    //   132: astore_0
-    //   133: goto -22 -> 111
-    //   136: astore_0
-    //   137: goto -44 -> 93
-    //   140: astore_0
-    //   141: goto -66 -> 75
-    //   144: astore_0
-    //   145: aload_1
-    //   146: astore_0
-    //   147: goto -86 -> 61
+    //   94: ifnull +6 -> 100
+    //   97: goto -22 -> 75
+    //   100: ldc 129
+    //   102: areturn
+    //   103: astore_0
+    //   104: goto -13 -> 91
+    //   107: astore_0
+    //   108: goto -26 -> 82
+    //   111: astore_0
+    //   112: goto -43 -> 69
+    //   115: astore_0
+    //   116: goto -23 -> 93
+    //   119: astore_0
+    //   120: goto -36 -> 84
+    //   123: astore_0
+    //   124: goto -53 -> 71
+    //   127: astore_1
+    //   128: aload_0
+    //   129: areturn
+    //   130: astore_1
+    //   131: goto -64 -> 67
+    //   134: astore_0
+    //   135: goto -35 -> 100
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	150	0	paramFile	File
-    //   20	96	1	localFileInputStream	java.io.FileInputStream
-    //   121	1	1	localIOException1	java.io.IOException
-    //   128	18	1	localIOException2	java.io.IOException
-    //   1	59	2	localObject	Object
-    //   7	34	3	localMessageDigest	java.security.MessageDigest
+    //   0	138	0	paramFile	File
+    //   18	76	1	localFileInputStream	java.io.FileInputStream
+    //   127	1	1	localIOException1	java.io.IOException
+    //   130	1	1	localIOException2	java.io.IOException
+    //   5	34	2	localMessageDigest	java.security.MessageDigest
     // Exception table:
     //   from	to	target	type
-    //   2	21	58	java/security/NoSuchAlgorithmException
-    //   2	21	72	java/io/FileNotFoundException
-    //   79	83	86	java/io/IOException
-    //   2	21	90	java/io/IOException
-    //   97	101	104	java/io/IOException
-    //   2	21	108	finally
-    //   52	56	121	java/io/IOException
-    //   65	69	124	java/io/IOException
-    //   115	119	128	java/io/IOException
-    //   21	48	132	finally
-    //   21	48	136	java/io/IOException
-    //   21	48	140	java/io/FileNotFoundException
-    //   21	48	144	java/security/NoSuchAlgorithmException
+    //   19	46	52	finally
+    //   0	19	56	finally
+    //   0	19	103	java/security/NoSuchAlgorithmException
+    //   0	19	107	java/io/FileNotFoundException
+    //   0	19	111	java/io/IOException
+    //   19	46	115	java/security/NoSuchAlgorithmException
+    //   19	46	119	java/io/FileNotFoundException
+    //   19	46	123	java/io/IOException
+    //   46	50	127	java/io/IOException
+    //   63	67	130	java/io/IOException
+    //   75	79	134	java/io/IOException
   }
   
   public static String a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
+    boolean bool = TextUtils.isEmpty(paramString);
+    String str = null;
+    if (!bool)
     {
       paramString = new File(paramString);
-      if (paramString.length() < 204800L) {}
-      for (paramString = a(paramString);; paramString = b(paramString))
-      {
-        String str = paramString;
-        if ("".equals(paramString)) {
-          str = null;
-        }
-        return str;
+      if (paramString.length() < 204800L) {
+        paramString = a(paramString);
+      } else {
+        paramString = b(paramString);
       }
+      if ("".equals(paramString)) {
+        return null;
+      }
+      str = paramString;
     }
-    return null;
+    return str;
   }
   
   public static byte[] a(AppInterface paramAppInterface)
@@ -273,255 +249,232 @@ public class VipUploadUtils
   private static String b(File paramFile)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 4
-    //   6: aload_0
-    //   7: ifnull +10 -> 17
-    //   10: aload_0
-    //   11: invokevirtual 30	java/io/File:exists	()Z
-    //   14: ifne +10 -> 24
-    //   17: ldc 129
-    //   19: astore 5
-    //   21: aload 5
-    //   23: areturn
-    //   24: aload_0
-    //   25: invokevirtual 106	java/io/File:length	()J
-    //   28: lstore_2
-    //   29: lload_2
-    //   30: ldc2_w 160
-    //   33: lcmp
-    //   34: ifle +141 -> 175
-    //   37: lload_2
-    //   38: ldc2_w 162
-    //   41: ldiv
-    //   42: lstore_2
-    //   43: bipush 32
-    //   45: newarray byte
-    //   47: astore 5
-    //   49: new 34	java/io/FileInputStream
-    //   52: dup
-    //   53: aload_0
-    //   54: invokespecial 37	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   57: astore_0
-    //   58: aload_0
-    //   59: lload_2
-    //   60: invokevirtual 167	java/io/FileInputStream:skip	(J)J
-    //   63: pop2
-    //   64: iconst_0
-    //   65: istore_1
-    //   66: iload_1
-    //   67: iconst_4
-    //   68: if_icmpge +33 -> 101
-    //   71: aload_0
-    //   72: aload 5
-    //   74: iload_1
-    //   75: bipush 8
-    //   77: imul
-    //   78: bipush 8
-    //   80: invokevirtual 171	java/io/FileInputStream:read	([BII)I
-    //   83: pop
-    //   84: aload_0
-    //   85: lload_2
-    //   86: ldc2_w 172
-    //   89: lsub
-    //   90: invokevirtual 167	java/io/FileInputStream:skip	(J)J
-    //   93: pop2
-    //   94: iload_1
-    //   95: iconst_1
-    //   96: iadd
-    //   97: istore_1
-    //   98: goto -32 -> 66
-    //   101: aload 5
-    //   103: invokestatic 126	com/tencent/mobileqq/utils/SecUtil:toHexString	([B)Ljava/lang/String;
-    //   106: astore 4
-    //   108: aload 4
-    //   110: astore 5
-    //   112: aload_0
-    //   113: ifnull -92 -> 21
-    //   116: aload_0
-    //   117: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   0: aload_0
+    //   1: ifnull +270 -> 271
+    //   4: aload_0
+    //   5: invokevirtual 30	java/io/File:exists	()Z
+    //   8: ifne +6 -> 14
+    //   11: ldc 129
+    //   13: areturn
+    //   14: aload_0
+    //   15: invokevirtual 106	java/io/File:length	()J
+    //   18: lstore_2
+    //   19: lload_2
+    //   20: ldc2_w 160
+    //   23: lcmp
+    //   24: ifle +130 -> 154
+    //   27: lload_2
+    //   28: ldc2_w 162
+    //   31: ldiv
+    //   32: lstore_2
+    //   33: bipush 32
+    //   35: newarray byte
+    //   37: astore 4
+    //   39: new 34	java/io/FileInputStream
+    //   42: dup
+    //   43: aload_0
+    //   44: invokespecial 37	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   47: astore_0
+    //   48: aload_0
+    //   49: lload_2
+    //   50: invokevirtual 167	java/io/FileInputStream:skip	(J)J
+    //   53: pop2
+    //   54: iconst_0
+    //   55: istore_1
+    //   56: iload_1
+    //   57: iconst_4
+    //   58: if_icmpge +33 -> 91
+    //   61: aload_0
+    //   62: aload 4
+    //   64: iload_1
+    //   65: bipush 8
+    //   67: imul
+    //   68: bipush 8
+    //   70: invokevirtual 171	java/io/FileInputStream:read	([BII)I
+    //   73: pop
+    //   74: aload_0
+    //   75: lload_2
+    //   76: ldc2_w 172
+    //   79: lsub
+    //   80: invokevirtual 167	java/io/FileInputStream:skip	(J)J
+    //   83: pop2
+    //   84: iload_1
+    //   85: iconst_1
+    //   86: iadd
+    //   87: istore_1
+    //   88: goto -32 -> 56
+    //   91: aload 4
+    //   93: invokestatic 126	com/tencent/mobileqq/utils/SecUtil:toHexString	([B)Ljava/lang/String;
+    //   96: astore 4
+    //   98: aload_0
+    //   99: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   102: aload 4
+    //   104: areturn
+    //   105: astore 5
+    //   107: aload_0
+    //   108: astore 4
+    //   110: aload 5
+    //   112: astore_0
+    //   113: goto +7 -> 120
+    //   116: astore_0
+    //   117: aconst_null
+    //   118: astore 4
     //   120: aload 4
-    //   122: areturn
-    //   123: astore_0
-    //   124: aload 4
-    //   126: areturn
-    //   127: astore_0
-    //   128: aload 4
-    //   130: astore_0
-    //   131: aload_0
-    //   132: ifnull +7 -> 139
-    //   135: aload_0
-    //   136: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   139: ldc 129
-    //   141: areturn
-    //   142: astore_0
-    //   143: aconst_null
-    //   144: astore_0
-    //   145: aload_0
-    //   146: ifnull -7 -> 139
-    //   149: aload_0
-    //   150: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   153: goto -14 -> 139
-    //   156: astore_0
-    //   157: goto -18 -> 139
-    //   160: astore 4
-    //   162: aconst_null
-    //   163: astore_0
-    //   164: aload_0
-    //   165: ifnull +7 -> 172
-    //   168: aload_0
-    //   169: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   172: aload 4
-    //   174: athrow
-    //   175: ldc 84
-    //   177: invokestatic 90	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   180: astore 6
-    //   182: aload 6
-    //   184: invokevirtual 93	java/security/MessageDigest:reset	()V
-    //   187: new 34	java/io/FileInputStream
-    //   190: dup
-    //   191: aload_0
-    //   192: invokespecial 37	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   195: astore 4
-    //   197: aload 6
-    //   199: aload 4
-    //   201: invokevirtual 97	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   204: getstatic 103	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
-    //   207: lconst_0
-    //   208: aload_0
-    //   209: invokevirtual 106	java/io/File:length	()J
-    //   212: invokevirtual 112	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
-    //   215: invokevirtual 116	java/security/MessageDigest:update	(Ljava/nio/ByteBuffer;)V
-    //   218: aload 6
-    //   220: invokevirtual 120	java/security/MessageDigest:digest	()[B
-    //   223: invokestatic 126	com/tencent/mobileqq/utils/SecUtil:toHexString	([B)Ljava/lang/String;
-    //   226: astore_0
-    //   227: aload_0
-    //   228: astore 5
-    //   230: aload 4
-    //   232: ifnull -211 -> 21
-    //   235: aload 4
-    //   237: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   240: aload_0
-    //   241: areturn
-    //   242: astore 4
-    //   244: aload_0
-    //   245: areturn
-    //   246: astore_0
-    //   247: aload 5
-    //   249: astore_0
-    //   250: aload_0
-    //   251: ifnull -112 -> 139
-    //   254: aload_0
-    //   255: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   258: goto -119 -> 139
-    //   261: astore_0
-    //   262: goto -123 -> 139
-    //   265: astore_0
-    //   266: aconst_null
-    //   267: astore 4
-    //   269: aload 4
-    //   271: ifnull -132 -> 139
-    //   274: aload 4
-    //   276: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   279: goto -140 -> 139
-    //   282: astore_0
-    //   283: goto -144 -> 139
-    //   286: astore_0
-    //   287: aconst_null
-    //   288: astore 4
-    //   290: aload 4
-    //   292: ifnull -153 -> 139
-    //   295: aload 4
-    //   297: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   300: goto -161 -> 139
-    //   303: astore_0
-    //   304: goto -165 -> 139
-    //   307: astore_0
-    //   308: aconst_null
-    //   309: astore 4
-    //   311: aload 4
-    //   313: ifnull +8 -> 321
-    //   316: aload 4
-    //   318: invokevirtual 127	java/io/FileInputStream:close	()V
-    //   321: aload_0
-    //   322: athrow
-    //   323: astore_0
-    //   324: goto -185 -> 139
-    //   327: astore_0
-    //   328: goto -156 -> 172
-    //   331: astore 4
-    //   333: goto -12 -> 321
-    //   336: astore_0
-    //   337: goto -26 -> 311
-    //   340: astore_0
-    //   341: goto -51 -> 290
-    //   344: astore_0
-    //   345: goto -76 -> 269
-    //   348: astore_0
-    //   349: aload 4
-    //   351: astore_0
-    //   352: goto -102 -> 250
-    //   355: astore 4
-    //   357: goto -193 -> 164
-    //   360: astore 4
-    //   362: goto -217 -> 145
-    //   365: astore 4
-    //   367: goto -236 -> 131
+    //   122: ifnull +8 -> 130
+    //   125: aload 4
+    //   127: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   130: aload_0
+    //   131: athrow
+    //   132: aconst_null
+    //   133: astore_0
+    //   134: aload_0
+    //   135: ifnull +136 -> 271
+    //   138: aload_0
+    //   139: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   142: ldc 129
+    //   144: areturn
+    //   145: aconst_null
+    //   146: astore_0
+    //   147: aload_0
+    //   148: ifnull +123 -> 271
+    //   151: goto -13 -> 138
+    //   154: ldc 84
+    //   156: invokestatic 90	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   159: astore 5
+    //   161: aload 5
+    //   163: invokevirtual 93	java/security/MessageDigest:reset	()V
+    //   166: new 34	java/io/FileInputStream
+    //   169: dup
+    //   170: aload_0
+    //   171: invokespecial 37	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   174: astore 4
+    //   176: aload 5
+    //   178: aload 4
+    //   180: invokevirtual 97	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   183: getstatic 103	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
+    //   186: lconst_0
+    //   187: aload_0
+    //   188: invokevirtual 106	java/io/File:length	()J
+    //   191: invokevirtual 112	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
+    //   194: invokevirtual 116	java/security/MessageDigest:update	(Ljava/nio/ByteBuffer;)V
+    //   197: aload 5
+    //   199: invokevirtual 120	java/security/MessageDigest:digest	()[B
+    //   202: invokestatic 126	com/tencent/mobileqq/utils/SecUtil:toHexString	([B)Ljava/lang/String;
+    //   205: astore_0
+    //   206: aload 4
+    //   208: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   211: aload_0
+    //   212: areturn
+    //   213: astore_0
+    //   214: goto +7 -> 221
+    //   217: astore_0
+    //   218: aconst_null
+    //   219: astore 4
+    //   221: aload 4
+    //   223: ifnull +8 -> 231
+    //   226: aload 4
+    //   228: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   231: aload_0
+    //   232: athrow
+    //   233: aconst_null
+    //   234: astore 4
+    //   236: aload 4
+    //   238: ifnull +33 -> 271
+    //   241: aload 4
+    //   243: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   246: ldc 129
+    //   248: areturn
+    //   249: aconst_null
+    //   250: astore 4
+    //   252: aload 4
+    //   254: ifnull +17 -> 271
+    //   257: goto -16 -> 241
+    //   260: aconst_null
+    //   261: astore 4
+    //   263: aload 4
+    //   265: ifnull +6 -> 271
+    //   268: goto -27 -> 241
+    //   271: ldc 129
+    //   273: areturn
+    //   274: astore_0
+    //   275: goto -130 -> 145
+    //   278: astore_0
+    //   279: goto -147 -> 132
+    //   282: astore 4
+    //   284: goto -137 -> 147
+    //   287: astore 4
+    //   289: goto -155 -> 134
+    //   292: astore_0
+    //   293: aload 4
+    //   295: areturn
+    //   296: astore 4
+    //   298: goto -168 -> 130
+    //   301: astore_0
+    //   302: ldc 129
+    //   304: areturn
+    //   305: astore_0
+    //   306: goto -46 -> 260
+    //   309: astore_0
+    //   310: goto -61 -> 249
+    //   313: astore_0
+    //   314: goto -81 -> 233
+    //   317: astore_0
+    //   318: goto -55 -> 263
+    //   321: astore_0
+    //   322: goto -70 -> 252
+    //   325: astore_0
+    //   326: goto -90 -> 236
+    //   329: astore 4
+    //   331: aload_0
+    //   332: areturn
+    //   333: astore 4
+    //   335: goto -104 -> 231
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	370	0	paramFile	File
-    //   65	33	1	i	int
-    //   28	58	2	l	long
-    //   4	125	4	str	String
-    //   160	13	4	localObject1	Object
-    //   195	41	4	localFileInputStream	java.io.FileInputStream
-    //   242	1	4	localIOException1	java.io.IOException
-    //   267	50	4	localObject2	Object
-    //   331	19	4	localIOException2	java.io.IOException
-    //   355	1	4	localObject3	Object
-    //   360	1	4	localIOException3	java.io.IOException
-    //   365	1	4	localFileNotFoundException	java.io.FileNotFoundException
-    //   1	247	5	localObject4	Object
-    //   180	39	6	localMessageDigest	java.security.MessageDigest
+    //   0	338	0	paramFile	File
+    //   55	33	1	i	int
+    //   18	58	2	l	long
+    //   37	227	4	localObject1	Object
+    //   282	1	4	localFileNotFoundException	java.io.FileNotFoundException
+    //   287	7	4	localIOException1	java.io.IOException
+    //   296	1	4	localIOException2	java.io.IOException
+    //   329	1	4	localIOException3	java.io.IOException
+    //   333	1	4	localIOException4	java.io.IOException
+    //   105	6	5	localObject2	Object
+    //   159	39	5	localMessageDigest	java.security.MessageDigest
     // Exception table:
     //   from	to	target	type
-    //   116	120	123	java/io/IOException
-    //   49	58	127	java/io/FileNotFoundException
-    //   49	58	142	java/io/IOException
-    //   149	153	156	java/io/IOException
-    //   49	58	160	finally
-    //   235	240	242	java/io/IOException
-    //   175	197	246	java/security/NoSuchAlgorithmException
-    //   254	258	261	java/io/IOException
-    //   175	197	265	java/io/FileNotFoundException
-    //   274	279	282	java/io/IOException
-    //   175	197	286	java/io/IOException
-    //   295	300	303	java/io/IOException
-    //   175	197	307	finally
-    //   135	139	323	java/io/IOException
-    //   168	172	327	java/io/IOException
-    //   316	321	331	java/io/IOException
-    //   197	227	336	finally
-    //   197	227	340	java/io/IOException
-    //   197	227	344	java/io/FileNotFoundException
-    //   197	227	348	java/security/NoSuchAlgorithmException
-    //   58	64	355	finally
-    //   71	94	355	finally
-    //   101	108	355	finally
-    //   58	64	360	java/io/IOException
-    //   71	94	360	java/io/IOException
-    //   101	108	360	java/io/IOException
-    //   58	64	365	java/io/FileNotFoundException
-    //   71	94	365	java/io/FileNotFoundException
-    //   101	108	365	java/io/FileNotFoundException
+    //   48	54	105	finally
+    //   61	84	105	finally
+    //   91	98	105	finally
+    //   39	48	116	finally
+    //   176	206	213	finally
+    //   154	176	217	finally
+    //   39	48	274	java/io/FileNotFoundException
+    //   39	48	278	java/io/IOException
+    //   48	54	282	java/io/FileNotFoundException
+    //   61	84	282	java/io/FileNotFoundException
+    //   91	98	282	java/io/FileNotFoundException
+    //   48	54	287	java/io/IOException
+    //   61	84	287	java/io/IOException
+    //   91	98	287	java/io/IOException
+    //   98	102	292	java/io/IOException
+    //   125	130	296	java/io/IOException
+    //   138	142	301	java/io/IOException
+    //   241	246	301	java/io/IOException
+    //   154	176	305	java/security/NoSuchAlgorithmException
+    //   154	176	309	java/io/FileNotFoundException
+    //   154	176	313	java/io/IOException
+    //   176	206	317	java/security/NoSuchAlgorithmException
+    //   176	206	321	java/io/FileNotFoundException
+    //   176	206	325	java/io/IOException
+    //   206	211	329	java/io/IOException
+    //   226	231	333	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.upload.VipUploadUtils
  * JD-Core Version:    0.7.0.1
  */

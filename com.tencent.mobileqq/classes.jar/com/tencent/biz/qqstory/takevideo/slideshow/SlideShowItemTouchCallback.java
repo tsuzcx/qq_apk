@@ -36,10 +36,13 @@ public class SlideShowItemTouchCallback
   public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
   {
     paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).getOrientation() == 0)) {}
-    for (int i = 15;; i = 0) {
-      return makeMovementFlags(i, 0);
+    int i;
+    if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).getOrientation() == 0)) {
+      i = 15;
+    } else {
+      i = 0;
     }
+    return makeMovementFlags(i, 0);
   }
   
   public boolean isItemViewSwipeEnabled()
@@ -49,8 +52,9 @@ public class SlideShowItemTouchCallback
   
   public boolean onMove(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
   {
-    if (this.a != null) {
-      this.a.a(paramViewHolder1.getAdapterPosition(), paramViewHolder2.getAdapterPosition());
+    paramRecyclerView = this.a;
+    if (paramRecyclerView != null) {
+      paramRecyclerView.a(paramViewHolder1.getAdapterPosition(), paramViewHolder2.getAdapterPosition());
     }
     return false;
   }
@@ -62,8 +66,9 @@ public class SlideShowItemTouchCallback
     {
       paramViewHolder = (SlideShowAdapter.SlideShowViewHolder)paramViewHolder;
       paramViewHolder.a = true;
-      if ((this.a instanceof SlideShowAdapter)) {
-        ((SlideShowAdapter)this.a).notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
+      ItemTouchHelperAction localItemTouchHelperAction = this.a;
+      if ((localItemTouchHelperAction instanceof SlideShowAdapter)) {
+        ((SlideShowAdapter)localItemTouchHelperAction).notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
       }
     }
   }
@@ -72,7 +77,7 @@ public class SlideShowItemTouchCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideShowItemTouchCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -27,47 +27,54 @@ public class MultiHashMap<K, V>
   
   public boolean contains(K paramK, V paramV)
   {
+    boolean bool2 = false;
     if (paramV == null) {
       return false;
     }
     paramK = (HashSet)get(paramK);
-    if ((paramK != null) && (paramK.contains(paramV))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    boolean bool1 = bool2;
+    if (paramK != null)
+    {
+      bool1 = bool2;
+      if (paramK.contains(paramV)) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   public final Collection<K> get(K paramK, MultiHashMap.Matcher<K> paramMatcher)
   {
-    if (paramK == null) {
-      try
-      {
-        throw new NullPointerException("key == null");
-      }
-      finally {}
-    }
-    if (paramMatcher == null) {
-      throw new NullPointerException("keyMatcher == null");
-    }
-    Object localObject = keySet();
-    if ((localObject != null) && (((Set)localObject).size() > 0))
+    if ((paramK == null) || (paramMatcher != null)) {}
+    try
     {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = ((Set)localObject).iterator();
-      for (;;)
+      Object localObject1 = keySet();
+      if ((localObject1 != null) && (((Set)localObject1).size() > 0))
       {
-        localObject = localArrayList;
-        if (!localIterator.hasNext()) {
-          break;
+        ArrayList localArrayList = new ArrayList();
+        localObject1 = ((Set)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = ((Iterator)localObject1).next();
+          if (paramMatcher.match(paramK, localObject2)) {
+            localArrayList.add(localObject2);
+          }
         }
-        localObject = localIterator.next();
-        if (paramMatcher.match(paramK, localObject)) {
-          localArrayList.add(localObject);
-        }
+        return localArrayList;
       }
+      return null;
     }
-    localObject = null;
-    return localObject;
+    finally
+    {
+      break label127;
+    }
+    throw new NullPointerException("keyMatcher == null");
+    throw new NullPointerException("key == null");
+    label127:
+    for (;;)
+    {
+      throw paramK;
+    }
   }
   
   public int sizeOf(K paramK)
@@ -81,7 +88,7 @@ public class MultiHashMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.MultiHashMap
  * JD-Core Version:    0.7.0.1
  */

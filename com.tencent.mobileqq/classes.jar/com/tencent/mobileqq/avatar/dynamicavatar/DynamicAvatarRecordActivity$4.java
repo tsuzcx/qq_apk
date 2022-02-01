@@ -18,49 +18,31 @@ class DynamicAvatarRecordActivity$4
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
     if (!this.a.jdField_c_of_type_Boolean) {
-      bool = false;
+      return false;
     }
-    do
+    int i;
+    if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress))
     {
-      return bool;
-      if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress)) {}
-      switch (paramMotionEvent.getAction())
-      {
-      case 2: 
-      default: 
-        return false;
-      case 0: 
-        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-        this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.a.d.setVisibility(4);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
-        this.a.e.setVisibility(4);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
-        if (this.a.jdField_b_of_type_Int == 1) {}
-        for (int i = 0;; i = 1)
-        {
-          ReportController.b(null, "dc00898", "", "", "0X8007106", "0X8007106", i, 0, "", "", "", "");
-          return true;
-        }
+      i = paramMotionEvent.getAction();
+      if (i == 0) {
+        break label165;
       }
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a()) {
-        break;
+      if ((i == 1) || (i == 3)) {}
+    }
+    else
+    {
+      return false;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
-    return true;
+      return true;
+    }
     if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.c();
     }
     if (System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a < 500L)
     {
@@ -71,11 +53,33 @@ class DynamicAvatarRecordActivity$4
     }
     DynamicAvatarRecordActivity.b(this.a);
     return true;
+    label165:
+    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.d.setVisibility(4);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
+    this.a.e.setVisibility(4);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
+    if (this.a.jdField_b_of_type_Int == 1) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X8007106", "0X8007106", i, 0, "", "", "", "");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.4
  * JD-Core Version:    0.7.0.1
  */

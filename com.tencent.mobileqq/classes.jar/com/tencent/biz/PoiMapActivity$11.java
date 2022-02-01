@@ -20,20 +20,25 @@ class PoiMapActivity$11
       }
       if ((!this.a.f) && (this.a.d))
       {
-        this.a.f = true;
         paramAbsListView = this.a;
+        paramAbsListView.f = true;
         paramAbsListView.n += 1;
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PoiMapActivity", 4, "onScrollStateChanged mSearchPage:" + this.a.n);
+        if (QLog.isDevelopLevel())
+        {
+          paramAbsListView = new StringBuilder();
+          paramAbsListView.append("onScrollStateChanged mSearchPage:");
+          paramAbsListView.append(this.a.n);
+          QLog.i("PoiMapActivity", 4, paramAbsListView.toString());
         }
-        this.a.a(this.a.h, this.a.i, this.a.c, "", this.a.n, 20);
+        paramAbsListView = this.a;
+        paramAbsListView.a(paramAbsListView.h, this.a.i, this.a.c, "", this.a.n, 20);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.PoiMapActivity.11
  * JD-Core Version:    0.7.0.1
  */

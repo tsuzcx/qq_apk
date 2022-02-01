@@ -29,35 +29,42 @@ public class OldEngineDPCProfile
   
   public void updateFromDPC(String paramString)
   {
-    if ((paramString == null) || ("".equals(paramString))) {}
-    do
+    if (paramString != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RichMediaStrategy", 2, "OldEngine Timeout Params : " + paramString);
+      if ("".equals(paramString)) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("OldEngine Timeout Params : ");
+        localStringBuilder.append(paramString);
+        QLog.d("RichMediaStrategy", 2, localStringBuilder.toString());
       }
       paramString = paramString.split("\\|");
-    } while ((paramString == null) || (paramString.length != 6));
-    try
-    {
-      this.timeoutParams.connectTimeoutFor2G = (Integer.valueOf(paramString[0]).intValue() * 1000);
-      this.timeoutParams.connectTimeoutFor3G = (Integer.valueOf(paramString[1]).intValue() * 1000);
-      this.timeoutParams.connectTimeoutForWifi = (Integer.valueOf(paramString[2]).intValue() * 1000);
-      this.timeoutParams.readTimeoutFor2G = (Integer.valueOf(paramString[3]).intValue() * 1000);
-      this.timeoutParams.readTimeoutFor3G = (Integer.valueOf(paramString[4]).intValue() * 1000);
-      this.timeoutParams.readTimeoutForWifi = (Integer.valueOf(paramString[5]).intValue() * 1000);
-      hasGetDPC = true;
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
+      if ((paramString != null) && (paramString.length == 6)) {
+        try
+        {
+          this.timeoutParams.connectTimeoutFor2G = (Integer.valueOf(paramString[0]).intValue() * 1000);
+          this.timeoutParams.connectTimeoutFor3G = (Integer.valueOf(paramString[1]).intValue() * 1000);
+          this.timeoutParams.connectTimeoutForWifi = (Integer.valueOf(paramString[2]).intValue() * 1000);
+          this.timeoutParams.readTimeoutFor2G = (Integer.valueOf(paramString[3]).intValue() * 1000);
+          this.timeoutParams.readTimeoutFor3G = (Integer.valueOf(paramString[4]).intValue() * 1000);
+          this.timeoutParams.readTimeoutForWifi = (Integer.valueOf(paramString[5]).intValue() * 1000);
+          hasGetDPC = true;
+          return;
+        }
+        catch (NumberFormatException paramString)
+        {
+          paramString.printStackTrace();
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.OldEngineDPCProfile
  * JD-Core Version:    0.7.0.1
  */

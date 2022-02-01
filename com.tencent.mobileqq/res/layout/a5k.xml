@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.qqstory.takevideo.CameraFocusView android:id="@id/aoj" android:paddingLeft="50.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f7n" android:layout_below="@id/cey"
-  xmlns:android="http://schemas.android.com/apk/res/android" />

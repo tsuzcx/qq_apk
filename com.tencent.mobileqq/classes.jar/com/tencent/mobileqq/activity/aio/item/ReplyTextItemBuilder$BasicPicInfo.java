@@ -15,7 +15,7 @@ public class ReplyTextItemBuilder$BasicPicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.BasicPicInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
-import com.tencent.biz.pubaccount.util.api.IPublicAccountGifPlayTimeHttpDownloader.OnPlayFinish;
+import com.tencent.biz.pubaccount.LooperGifImage.OnPlayFinish;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 
 class WSMultiImageManager$2
-  implements IPublicAccountGifPlayTimeHttpDownloader.OnPlayFinish
+  implements LooperGifImage.OnPlayFinish
 {
   WSMultiImageManager$2(WSMultiImageManager paramWSMultiImageManager, String paramString, URLImageView paramURLImageView) {}
   
@@ -20,7 +20,7 @@ class WSMultiImageManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSMultiImageManager.2
  * JD-Core Version:    0.7.0.1
  */

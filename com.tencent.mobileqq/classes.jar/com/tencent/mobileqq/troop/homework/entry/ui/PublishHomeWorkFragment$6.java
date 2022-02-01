@@ -17,24 +17,20 @@ class PublishHomeWorkFragment$6
     InputMethodUtil.b(paramView);
     try
     {
-      this.a.i();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      this.a.j();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", localJSONException);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", localJSONException);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.6
  * JD-Core Version:    0.7.0.1
  */

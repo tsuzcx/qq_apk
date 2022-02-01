@@ -10,18 +10,23 @@ class VideoShelfMergeFilter$1FrameNodeItemComparetor
   
   public int compare(FrameNodeItem paramFrameNodeItem1, FrameNodeItem paramFrameNodeItem2)
   {
+    int i;
     if ((paramFrameNodeItem1.getZIndex() > 10000) && (paramFrameNodeItem2.getZIndex() > 10000)) {
-      return paramFrameNodeItem1.getZIndex() - paramFrameNodeItem2.getZIndex();
+      i = paramFrameNodeItem1.getZIndex();
     }
-    if ((paramFrameNodeItem1.getZIndex() < 10000) && (paramFrameNodeItem2.getZIndex() < 10000)) {
-      return paramFrameNodeItem2.getZIndex() - paramFrameNodeItem1.getZIndex();
+    for (int j = paramFrameNodeItem2.getZIndex();; j = paramFrameNodeItem2.getZIndex())
+    {
+      return i - j;
+      if ((paramFrameNodeItem1.getZIndex() < 10000) && (paramFrameNodeItem2.getZIndex() < 10000)) {
+        return paramFrameNodeItem2.getZIndex() - paramFrameNodeItem1.getZIndex();
+      }
+      i = paramFrameNodeItem1.getZIndex();
     }
-    return paramFrameNodeItem1.getZIndex() - paramFrameNodeItem2.getZIndex();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.filter.VideoShelfMergeFilter.1FrameNodeItemComparetor
  * JD-Core Version:    0.7.0.1
  */

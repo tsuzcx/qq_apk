@@ -40,25 +40,23 @@ class FlutterCookieManager
   public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
     paramMethodCall = paramMethodCall.method;
-    if (paramMethodCall.hashCode() != 928375682) {}
-    for (int i = -1;; i = 0)
+    int i;
+    if ((paramMethodCall.hashCode() == 928375682) && (paramMethodCall.equals("clearCookies"))) {
+      i = 0;
+    } else {
+      i = -1;
+    }
+    if (i != 0)
     {
-      if (i == 0) {
-        break label41;
-      }
       paramResult.notImplemented();
       return;
-      if (!paramMethodCall.equals("clearCookies")) {
-        break;
-      }
     }
-    label41:
     clearCookies(paramResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugins.webviewflutter.FlutterCookieManager
  * JD-Core Version:    0.7.0.1
  */

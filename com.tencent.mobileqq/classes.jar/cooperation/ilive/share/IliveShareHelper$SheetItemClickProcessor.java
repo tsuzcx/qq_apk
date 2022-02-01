@@ -17,19 +17,16 @@ class IliveShareHelper$SheetItemClickProcessor
       return;
     }
     int i = paramActionSheetItem.action;
-    switch (i)
+    if (i != 2)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return;
-    case 2: 
-      IliveShareHelper.access$200(this.this$0);
-      return;
-    case 3: 
+      if (i != 3)
+      {
+        if ((i != 9) && (i != 10)) {
+          return;
+        }
+        IliveShareHelper.access$400(this.this$0, i);
+        return;
+      }
       try
       {
         IliveShareHelper.access$300(this.this$0);
@@ -41,12 +38,12 @@ class IliveShareHelper$SheetItemClickProcessor
         return;
       }
     }
-    IliveShareHelper.access$400(this.this$0, i);
+    IliveShareHelper.access$200(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.share.IliveShareHelper.SheetItemClickProcessor
  * JD-Core Version:    0.7.0.1
  */

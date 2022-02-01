@@ -13,32 +13,45 @@ class ShareChat$MyTroopObserver
   
   private ShareChat$MyTroopObserver(ShareChat paramShareChat) {}
   
-  public void onGetSimpleTroopInfoResult(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
+  protected void onGetSimpleTroopInfoResult(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
   {
-    if (paramTroopInfo == null) {}
-    do
-    {
+    if (paramTroopInfo == null) {
       return;
-      paramTroopInfo = paramTroopInfo.troopuin;
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramTroopInfo)));
+    }
+    paramTroopInfo = paramTroopInfo.troopuin;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramTroopInfo)) {
+      return;
+    }
     this.jdField_a_of_type_ComTencentAvShareShareChat.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
     if (this == this.jdField_a_of_type_ComTencentAvShareShareChat.jdField_a_of_type_ComTencentAvShareShareChat$MyTroopObserver) {
       this.jdField_a_of_type_ComTencentAvShareShareChat.jdField_a_of_type_ComTencentAvShareShareChat$MyTroopObserver = null;
     }
-    QLog.w("ShareChat", 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "]");
+    paramTroopInfo = new StringBuilder();
+    paramTroopInfo.append("onGetSimpleTroopInfoResult, isSuc[");
+    paramTroopInfo.append(paramBoolean);
+    paramTroopInfo.append("]");
+    QLog.w("ShareChat", 1, paramTroopInfo.toString());
     this.jdField_a_of_type_ComTencentAvShareShareChat.a();
   }
   
-  public void onUpdateTroopList(boolean paramBoolean)
+  protected void onUpdateTroopList(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateTroopList, isSuccess[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("]");
+      QLog.w("ShareChat", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.MyTroopObserver
  * JD-Core Version:    0.7.0.1
  */

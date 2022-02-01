@@ -35,7 +35,7 @@ public class BirthDayNoticeItemBuilder
   extends AbstractChatItemBuilder
   implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131701227);
+  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131701368);
   private long jdField_a_of_type_Long = 0L;
   private ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(Color.parseColor("#883353"));
   
@@ -49,13 +49,13 @@ public class BirthDayNoticeItemBuilder
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558901, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558799, null);
       paramHolder.jdField_b_of_type_AndroidViewView = paramView;
-      paramHolder.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131362379);
-      paramHolder.d = paramView.findViewById(2131362378);
-      paramHolder.a = ((URLImageView)paramView.findViewById(2131362381));
-      paramHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362382));
-      paramHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362380));
+      paramHolder.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131362335);
+      paramHolder.d = paramView.findViewById(2131362334);
+      paramHolder.a = ((URLImageView)paramView.findViewById(2131362337));
+      paramHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362338));
+      paramHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362336));
       localView = paramView;
       if (e)
       {
@@ -86,12 +86,20 @@ public class BirthDayNoticeItemBuilder
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("BirthDayNoticeItemBuilder", 1, "error parse friend uin " + paramMessageRecord);
-        MonitorManager.a().a(19, 10, " error parse friend uin " + paramMessageRecord, false);
-      }
+      label42:
+      Object localObject;
+      StringBuilder localStringBuilder;
+      break label42;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("error parse friend uin ");
+    ((StringBuilder)localObject).append(paramMessageRecord);
+    QLog.e("BirthDayNoticeItemBuilder", 1, ((StringBuilder)localObject).toString());
+    localObject = MonitorManager.a();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" error parse friend uin ");
+    localStringBuilder.append(paramMessageRecord);
+    ((MonitorManager)localObject).a(19, 10, localStringBuilder.toString(), false);
     paramMessageRecord = new LpReportInfo_pf00064();
     paramMessageRecord.actionType = 91;
     paramMessageRecord.subactionType = 22;
@@ -100,7 +108,7 @@ public class BirthDayNoticeItemBuilder
     LpReportManager.getInstance().reportToPF00064(paramMessageRecord, false, false);
   }
   
-  public View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramMessageRecord = (MessageForBirthdayNotice)paramMessageRecord;
     paramViewHolder = (BirthDayNoticeItemBuilder.Holder)paramViewHolder;
@@ -109,39 +117,45 @@ public class BirthDayNoticeItemBuilder
     {
       paramViewHolder.a.setBackgroundURL(paramMessageRecord.icon);
       paramViewHolder.d.setBackgroundColor(Color.parseColor(paramMessageRecord.background));
-      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageRecord.birthday);
-      int i = paramMessageRecord.blessing.indexOf(jdField_a_of_type_JavaLangString);
-      if (i >= 0)
-      {
-        paramLinearLayout = new SpannableString(paramMessageRecord.blessing);
-        paramLinearLayout.setSpan(this.jdField_a_of_type_AndroidTextStyleForegroundColorSpan, i, jdField_a_of_type_JavaLangString.length() + i, 33);
-        paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(paramLinearLayout);
-        paramViewHolder.jdField_c_of_type_AndroidViewView.setTag(paramMessageRecord);
-        paramViewHolder.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-        a(paramMessageRecord);
-        if (e)
-        {
-          paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.append("生日");
-          paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.birthday);
-          paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.blessing);
-          paramViewHolder.jdField_b_of_type_AndroidViewView.setContentDescription(paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.toString());
-        }
-        return paramView;
-      }
     }
     catch (Exception paramLinearLayout)
     {
-      for (;;)
-      {
-        QLog.e("BirthDayNoticeItemBuilder", 1, "set resource error " + paramLinearLayout);
-        MonitorManager.a().a(19, 2, "set data error " + paramLinearLayout, false);
-        continue;
-        paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(paramMessageRecord.blessing);
-      }
+      paramOnLongClickAndTouchListener = new StringBuilder();
+      paramOnLongClickAndTouchListener.append("set resource error ");
+      paramOnLongClickAndTouchListener.append(paramLinearLayout);
+      QLog.e("BirthDayNoticeItemBuilder", 1, paramOnLongClickAndTouchListener.toString());
+      paramOnLongClickAndTouchListener = MonitorManager.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("set data error ");
+      localStringBuilder.append(paramLinearLayout);
+      paramOnLongClickAndTouchListener.a(19, 2, localStringBuilder.toString(), false);
     }
+    paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageRecord.birthday);
+    int i = paramMessageRecord.blessing.indexOf(jdField_a_of_type_JavaLangString);
+    if (i >= 0)
+    {
+      paramLinearLayout = new SpannableString(paramMessageRecord.blessing);
+      paramLinearLayout.setSpan(this.jdField_a_of_type_AndroidTextStyleForegroundColorSpan, i, jdField_a_of_type_JavaLangString.length() + i, 33);
+      paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(paramLinearLayout);
+    }
+    else
+    {
+      paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(paramMessageRecord.blessing);
+    }
+    paramViewHolder.jdField_c_of_type_AndroidViewView.setTag(paramMessageRecord);
+    paramViewHolder.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
+    a(paramMessageRecord);
+    if (e)
+    {
+      paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.append("生日");
+      paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.birthday);
+      paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.blessing);
+      paramViewHolder.jdField_b_of_type_AndroidViewView.setContentDescription(paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.toString());
+    }
+    return paramView;
   }
   
-  public AbstractChatItemBuilder.ViewHolder a()
+  protected AbstractChatItemBuilder.ViewHolder a()
   {
     return new BirthDayNoticeItemBuilder.Holder(this);
   }
@@ -151,12 +165,14 @@ public class BirthDayNoticeItemBuilder
   public boolean a()
   {
     long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > 500L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Long = l;
-      return bool;
+    boolean bool;
+    if (l - this.jdField_a_of_type_Long > 500L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_Long = l;
+    return bool;
   }
   
   public QQCustomMenuItem[] a(View paramView)
@@ -166,51 +182,62 @@ public class BirthDayNoticeItemBuilder
   
   public void onClick(View paramView)
   {
-    Object localObject;
+    Object localObject1;
     if (a())
     {
-      localObject = paramView.getTag();
-      if ((localObject instanceof MessageForBirthdayNotice))
+      localObject1 = paramView.getTag();
+      if ((localObject1 instanceof MessageForBirthdayNotice))
       {
-        localObject = (MessageForBirthdayNotice)localObject;
-        if (!TextUtils.isEmpty(((MessageForBirthdayNotice)localObject).doufu_link)) {
-          break label93;
+        localObject1 = (MessageForBirthdayNotice)localObject1;
+        if (TextUtils.isEmpty(((MessageForBirthdayNotice)localObject1).doufu_link))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("BirthDayNoticeItemBuilder", 2, "jumpToH5Page with url empty");
+          }
+          localObject2 = MonitorManager.a();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" parse data with empty url ");
+          localStringBuilder.append(localObject1);
+          ((MonitorManager)localObject2).a(19, 2, localStringBuilder.toString(), false);
         }
-        if (QLog.isColorLevel()) {
-          QLog.e("BirthDayNoticeItemBuilder", 2, "jumpToH5Page with url empty");
+        else
+        {
+          localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+          ((Intent)localObject2).putExtra("url", ((MessageForBirthdayNotice)localObject1).doufu_link);
+          this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
         }
-        MonitorManager.a().a(19, 2, " parse data with empty url " + localObject, false);
       }
     }
-    for (;;)
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label93:
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", ((MessageForBirthdayNotice)localObject).doufu_link);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      try
-      {
-        long l = Long.parseLong(((MessageForBirthdayNotice)localObject).frienduin);
-        localObject = new LpReportInfo_pf00064();
-        ((LpReportInfo_pf00064)localObject).actionType = 91;
-        ((LpReportInfo_pf00064)localObject).subactionType = 22;
-        ((LpReportInfo_pf00064)localObject).reserves = 2;
-        ((LpReportInfo_pf00064)localObject).toUin = l;
-        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
-      }
-      catch (Exception localException)
-      {
-        QLog.e("BirthDayNoticeItemBuilder", 1, "error parse friend uin " + localObject);
-        MonitorManager.a().a(19, 10, " error parse friend uin " + localObject, false);
-      }
+      long l = Long.parseLong(((MessageForBirthdayNotice)localObject1).frienduin);
+      localObject1 = new LpReportInfo_pf00064();
+      ((LpReportInfo_pf00064)localObject1).actionType = 91;
+      ((LpReportInfo_pf00064)localObject1).subactionType = 22;
+      ((LpReportInfo_pf00064)localObject1).reserves = 2;
+      ((LpReportInfo_pf00064)localObject1).toUin = l;
+      LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject1, false, false);
     }
+    catch (Exception localException)
+    {
+      label198:
+      break label198;
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("error parse friend uin ");
+    ((StringBuilder)localObject2).append(localObject1);
+    QLog.e("BirthDayNoticeItemBuilder", 1, ((StringBuilder)localObject2).toString());
+    localObject2 = MonitorManager.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" error parse friend uin ");
+    localStringBuilder.append(localObject1);
+    ((MonitorManager)localObject2).a(19, 10, localStringBuilder.toString(), false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.BirthDayNoticeItemBuilder
  * JD-Core Version:    0.7.0.1
  */

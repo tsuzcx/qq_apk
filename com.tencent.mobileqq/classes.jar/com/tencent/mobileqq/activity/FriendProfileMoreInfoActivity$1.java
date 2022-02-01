@@ -13,17 +13,23 @@ class FriendProfileMoreInfoActivity$1
 {
   FriendProfileMoreInfoActivity$1(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onGetEducationList(boolean paramBoolean, long paramLong, ArrayList<SchoolInfo> paramArrayList)
+  protected void onGetEducationList(boolean paramBoolean, long paramLong, ArrayList<SchoolInfo> paramArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileMoreInfoActivity", 2, "onGetEducationList, success:" + paramBoolean + ", uin=" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetEducationList, success:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", uin=");
+      localStringBuilder.append(paramLong);
+      QLog.d("FriendProfileMoreInfoActivity", 2, localStringBuilder.toString());
     }
     if (paramBoolean) {
       FriendProfileMoreInfoActivity.a(this.a, paramArrayList);
     }
   }
   
-  public void onGetLocationDescription(boolean paramBoolean, String paramString, Card paramCard)
+  protected void onGetLocationDescription(boolean paramBoolean, String paramString, Card paramCard)
   {
     if ((paramBoolean) && (paramCard != null) && (Utils.a(this.a.app.getCurrentAccountUin(), paramCard.uin))) {
       FriendProfileMoreInfoActivity.a(this.a, paramCard, true);
@@ -32,7 +38,7 @@ class FriendProfileMoreInfoActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.1
  * JD-Core Version:    0.7.0.1
  */

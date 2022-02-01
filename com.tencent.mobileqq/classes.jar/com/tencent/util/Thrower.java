@@ -28,8 +28,9 @@ public class Thrower<T>
     if (l - this.jdField_a_of_type_Long > this.b)
     {
       this.jdField_a_of_type_Long = l;
-      if (this.jdField_a_of_type_ComTencentUtilThrower$Action != null) {
-        this.jdField_a_of_type_ComTencentUtilThrower$Action.a(paramT);
+      Thrower.Action localAction = this.jdField_a_of_type_ComTencentUtilThrower$Action;
+      if (localAction != null) {
+        localAction.a(paramT);
       }
     }
     return this;
@@ -37,7 +38,7 @@ public class Thrower<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.Thrower
  * JD-Core Version:    0.7.0.1
  */

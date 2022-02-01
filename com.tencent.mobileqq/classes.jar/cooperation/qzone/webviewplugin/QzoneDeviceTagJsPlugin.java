@@ -30,20 +30,23 @@ public class QzoneDeviceTagJsPlugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!"Qzone".equals(paramString2)) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {
-      return false;
-    }
-    if ("GetDeviceInfo".equalsIgnoreCase(paramString3))
+    if (("Qzone".equals(paramString2)) && (this.parentPlugin != null))
     {
-      RemoteHandleManager.getInstance().addWebEventListener(this);
-      handleDeviceTag(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("SetUserTail".equalsIgnoreCase(paramString3))
-    {
-      RemoteHandleManager.getInstance().addWebEventListener(this);
-      handleUserTail(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
-      return true;
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if ("GetDeviceInfo".equalsIgnoreCase(paramString3))
+      {
+        RemoteHandleManager.getInstance().addWebEventListener(this);
+        handleDeviceTag(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
+        return true;
+      }
+      if ("SetUserTail".equalsIgnoreCase(paramString3))
+      {
+        RemoteHandleManager.getInstance().addWebEventListener(this);
+        handleUserTail(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
+        return true;
+      }
     }
     return false;
   }
@@ -56,34 +59,40 @@ public class QzoneDeviceTagJsPlugin
   
   public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
-    do
+    if (paramBundle != null)
     {
-      do
-      {
-        do
-        {
-          return;
-          paramBundle = paramBundle.getBundle("data");
-          if (paramBundle != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.e(TAG, 2, "call js function,bundle is empty");
+      if (!paramBundle.containsKey("data")) {
         return;
-        if (!"cmd.getDeviceInfos".equals(paramString)) {
-          break;
+      }
+      paramBundle = paramBundle.getBundle("data");
+      if (paramBundle == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(TAG, 2, "call js function,bundle is empty");
         }
+        return;
+      }
+      if ("cmd.getDeviceInfos".equals(paramString))
+      {
         paramString = paramBundle.getString("param.DeviceInfos");
-      } while (TextUtils.isEmpty(paramString));
-      this.parentPlugin.callJs("window.QZPhoneTagJSInterface.onReceive({code:0,data:" + paramString + "})");
-      return;
-    } while (!"cmd.setUserTail".equals(paramString));
+        if (TextUtils.isEmpty(paramString)) {
+          return;
+        }
+        paramBundle = this.parentPlugin;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("window.QZPhoneTagJSInterface.onReceive({code:0,data:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("})");
+        paramBundle.callJs(localStringBuilder.toString());
+        return;
+      }
+      if (!"cmd.setUserTail".equals(paramString)) {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDeviceTagJsPlugin
  * JD-Core Version:    0.7.0.1
  */

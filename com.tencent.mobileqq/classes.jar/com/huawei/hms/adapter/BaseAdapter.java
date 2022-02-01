@@ -13,6 +13,7 @@ import com.huawei.hms.adapter.sysobs.SystemObserver;
 import com.huawei.hms.adapter.ui.BaseResolutionAdapter;
 import com.huawei.hms.common.internal.RequestHeader;
 import com.huawei.hms.common.internal.ResponseHeader;
+import com.huawei.hms.common.internal.ResponseWrap;
 import com.huawei.hms.support.api.ResolveResult;
 import com.huawei.hms.support.api.client.ApiClient;
 import com.huawei.hms.support.api.client.PendingResult;
@@ -22,242 +23,289 @@ import com.huawei.hms.utils.JsonUtil;
 import com.huawei.hms.utils.Util;
 import java.lang.ref.WeakReference;
 import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class BaseAdapter
 {
-  private WeakReference<ApiClient> a;
-  private WeakReference<Activity> b;
-  private BaseAdapter.BaseCallBack c;
-  private String d;
-  private String e;
-  private Parcelable f;
-  private BaseAdapter.BaseCallBack g;
-  private String h;
-  private Context i;
-  private RequestHeader j = new RequestHeader();
-  private ResponseHeader k = new ResponseHeader();
-  private SystemObserver l;
+  private static final String TAG = "BaseAdapter";
+  private WeakReference<Activity> activityWeakReference;
+  private WeakReference<ApiClient> api;
+  private Context appContext;
+  private BaseAdapter.BaseCallBack baseCallBackReplay;
+  private BaseAdapter.BaseCallBack callback;
+  private String jsonHeaderReplay;
+  private String jsonObjectReplay;
+  private SystemObserver observer;
+  private Parcelable parcelableReplay;
+  private RequestHeader requestHeader = new RequestHeader();
+  private ResponseHeader responseHeader = new ResponseHeader();
+  private String transactionId;
   
   public BaseAdapter(ApiClient paramApiClient)
   {
-    this.a = new WeakReference(paramApiClient);
+    this.api = new WeakReference(paramApiClient);
   }
   
   public BaseAdapter(ApiClient paramApiClient, Activity paramActivity)
   {
-    this.a = new WeakReference(paramApiClient);
-    this.b = new WeakReference(paramActivity);
-    this.i = paramActivity.getApplicationContext();
+    this.api = new WeakReference(paramApiClient);
+    this.activityWeakReference = new WeakReference(paramActivity);
+    this.appContext = paramActivity.getApplicationContext();
   }
   
-  private Activity a()
+  private PendingResult<ResolveResult<CoreBaseResponse>> baseRequest(ApiClient paramApiClient, String paramString, CoreBaseRequest paramCoreBaseRequest)
   {
-    if (this.b == null)
-    {
-      HMSLog.i("BaseAdapter", "activityWeakReference is " + this.b);
-      return null;
-    }
-    ApiClient localApiClient = (ApiClient)this.a.get();
-    if (localApiClient == null)
-    {
-      HMSLog.i("BaseAdapter", "tmpApi is " + localApiClient);
-      return null;
-    }
-    HMSLog.i("BaseAdapter", "activityWeakReference has " + this.b.get());
-    return Util.getActiveActivity((Activity)this.b.get(), localApiClient.getContext());
+    return new BaseAdapter.MPendingResultImpl(paramApiClient, paramString, paramCoreBaseRequest);
   }
   
-  private PendingResult<ResolveResult<CoreBaseResponse>> a(ApiClient paramApiClient, String paramString, CoreBaseRequest paramCoreBaseRequest)
-  {
-    return new BaseAdapter.a(paramApiClient, paramString, paramCoreBaseRequest);
-  }
-  
-  private String a(int paramInt)
-  {
-    this.k.setTransactionId(this.j.getTransactionId());
-    this.k.setAppID(this.j.getAppID());
-    this.k.setApiName(this.j.getApiName());
-    this.k.setSrvName(this.j.getSrvName());
-    this.k.setPkgName(this.j.getPkgName());
-    this.k.setStatusCode(1);
-    this.k.setErrorCode(paramInt);
-    this.k.setErrorReason("Core error");
-    return this.k.toJson();
-  }
-  
-  private void a(Activity paramActivity, Parcelable paramParcelable)
-  {
-    HMSLog.i("BaseAdapter", "startResolution");
-    if (this.j != null) {
-      b(this.i, this.j);
-    }
-    if (this.l == null) {
-      i();
-    }
-    SystemManager.getSystemNotifier().registerObserver(this.l);
-    Intent localIntent = BridgeActivity.getIntentStartBridgeActivity(paramActivity, BaseResolutionAdapter.class.getName());
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("resolution", paramParcelable);
-    localIntent.putExtras(localBundle);
-    localIntent.putExtra("transaction_id", this.h);
-    paramActivity.startActivity(localIntent);
-  }
-  
-  private void a(Context paramContext, RequestHeader paramRequestHeader)
+  private void biReportRequestEntryIpc(Context paramContext, RequestHeader paramRequestHeader)
   {
     Map localMap = HiAnalyticsUtil.getInstance().getMapFromRequestHeader(paramRequestHeader);
     localMap.put("direction", "req");
     localMap.put("version", HiAnalyticsUtil.versionCodeToName(String.valueOf(paramRequestHeader.getKitSdkVersion())));
+    localMap.put("phoneType", Util.getSystemProperties("ro.logsystem.usertype", ""));
     HiAnalyticsUtil.getInstance().onNewEvent(paramContext, "HMS_SDK_BASE_CALL_AIDL", localMap);
   }
   
-  private void a(Context paramContext, ResponseHeader paramResponseHeader)
+  private void biReportRequestEntrySolution(Context paramContext, RequestHeader paramRequestHeader)
+  {
+    Map localMap = HiAnalyticsUtil.getInstance().getMapFromRequestHeader(paramRequestHeader);
+    localMap.put("direction", "req");
+    localMap.put("version", HiAnalyticsUtil.versionCodeToName(String.valueOf(paramRequestHeader.getKitSdkVersion())));
+    localMap.put("phoneType", Util.getSystemProperties("ro.logsystem.usertype", ""));
+    HiAnalyticsUtil.getInstance().onNewEvent(paramContext, "HMS_SDK_BASE_START_RESOLUTION", localMap);
+  }
+  
+  private void biReportRequestReturnIpc(Context paramContext, ResponseHeader paramResponseHeader)
   {
     HiAnalyticsUtil.getInstance();
     paramResponseHeader = HiAnalyticsUtil.getMapFromRequestHeader(paramResponseHeader);
     paramResponseHeader.put("direction", "rsp");
-    paramResponseHeader.put("version", HiAnalyticsUtil.versionCodeToName(String.valueOf(this.j.getKitSdkVersion())));
+    paramResponseHeader.put("version", HiAnalyticsUtil.versionCodeToName(String.valueOf(this.requestHeader.getKitSdkVersion())));
+    paramResponseHeader.put("phoneType", Util.getSystemProperties("ro.logsystem.usertype", ""));
     HiAnalyticsUtil.getInstance().onNewEvent(paramContext, "HMS_SDK_BASE_CALL_AIDL", paramResponseHeader);
   }
   
-  private void a(Context paramContext, ResponseHeader paramResponseHeader, long paramLong)
+  private void biReportRequestReturnSolution(Context paramContext, ResponseHeader paramResponseHeader, long paramLong)
   {
     HiAnalyticsUtil.getInstance();
     paramResponseHeader = HiAnalyticsUtil.getMapFromRequestHeader(paramResponseHeader);
     paramResponseHeader.put("direction", "rsp");
     paramResponseHeader.put("waitTime", String.valueOf(paramLong));
-    paramResponseHeader.put("version", HiAnalyticsUtil.versionCodeToName(String.valueOf(this.j.getKitSdkVersion())));
+    paramResponseHeader.put("version", HiAnalyticsUtil.versionCodeToName(String.valueOf(this.requestHeader.getKitSdkVersion())));
+    paramResponseHeader.put("phoneType", Util.getSystemProperties("ro.logsystem.usertype", ""));
     HiAnalyticsUtil.getInstance().onNewEvent(paramContext, "HMS_SDK_BASE_START_RESOLUTION", paramResponseHeader);
   }
   
-  private void a(Parcelable paramParcelable)
+  private String buildBodyStr(int paramInt)
   {
-    this.f = paramParcelable;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("errorCode", paramInt);
+    }
+    catch (JSONException localJSONException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("buildBodyStr failed: ");
+      localStringBuilder.append(localJSONException.getMessage());
+      HMSLog.e("BaseAdapter", localStringBuilder.toString());
+    }
+    return localJSONObject.toString();
   }
   
-  private void a(BaseAdapter.BaseCallBack paramBaseCallBack)
+  private ResponseWrap buildResponseWrap(int paramInt, String paramString)
   {
-    this.g = paramBaseCallBack;
+    setResponseHeader(paramInt);
+    ResponseWrap localResponseWrap = new ResponseWrap(this.responseHeader);
+    localResponseWrap.setBody(paramString);
+    return localResponseWrap;
   }
   
-  private void a(String paramString)
+  private BaseAdapter.BaseCallBack getBaseCallBackReplay()
   {
-    this.d = paramString;
+    return this.baseCallBackReplay;
   }
   
-  private void a(String paramString1, String paramString2, Parcelable paramParcelable, BaseAdapter.BaseCallBack paramBaseCallBack)
+  private BaseAdapter.BaseCallBack getCallBack()
   {
-    a(paramString1);
-    b(paramString2);
-    a(paramParcelable);
-    a(paramBaseCallBack);
-  }
-  
-  private BaseAdapter.BaseCallBack b()
-  {
-    if (this.c == null)
+    BaseAdapter.BaseCallBack localBaseCallBack2 = this.callback;
+    BaseAdapter.BaseCallBack localBaseCallBack1 = localBaseCallBack2;
+    if (localBaseCallBack2 == null)
     {
       HMSLog.e("BaseAdapter", "callback null");
+      localBaseCallBack1 = null;
+    }
+    return localBaseCallBack1;
+  }
+  
+  private Activity getCpActivity()
+  {
+    if (this.activityWeakReference == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("activityWeakReference is ");
+      ((StringBuilder)localObject).append(this.activityWeakReference);
+      HMSLog.i("BaseAdapter", ((StringBuilder)localObject).toString());
       return null;
     }
-    return this.c;
+    Object localObject = (ApiClient)this.api.get();
+    if (localObject == null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("tmpApi is ");
+      localStringBuilder.append(localObject);
+      HMSLog.i("BaseAdapter", localStringBuilder.toString());
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("activityWeakReference has ");
+    localStringBuilder.append(this.activityWeakReference.get());
+    HMSLog.i("BaseAdapter", localStringBuilder.toString());
+    return Util.getActiveActivity((Activity)this.activityWeakReference.get(), ((ApiClient)localObject).getContext());
   }
   
-  private void b(Context paramContext, RequestHeader paramRequestHeader)
+  private String getJsonHeaderReplay()
   {
-    Map localMap = HiAnalyticsUtil.getInstance().getMapFromRequestHeader(paramRequestHeader);
-    localMap.put("direction", "req");
-    localMap.put("version", HiAnalyticsUtil.versionCodeToName(String.valueOf(paramRequestHeader.getKitSdkVersion())));
-    HiAnalyticsUtil.getInstance().onNewEvent(paramContext, "HMS_SDK_BASE_START_RESOLUTION", localMap);
+    return this.jsonHeaderReplay;
   }
   
-  private void b(String paramString)
+  private String getJsonObjectReplay()
   {
-    this.e = paramString;
+    return this.jsonObjectReplay;
   }
   
-  private String c()
+  private Parcelable getParcelableReplay()
   {
-    return this.d;
+    return this.parcelableReplay;
   }
   
-  private String d()
+  private String getResponseHeaderForError(int paramInt)
   {
-    return this.e;
+    setResponseHeader(paramInt);
+    return this.responseHeader.toJson();
   }
   
-  private Parcelable e()
+  private void initObserver()
   {
-    return this.f;
+    this.observer = new BaseAdapter.1(this);
   }
   
-  private BaseAdapter.BaseCallBack f()
+  private void replayRequest()
   {
-    return this.g;
+    if (this.jsonHeaderReplay != null)
+    {
+      if (this.baseCallBackReplay == null) {
+        return;
+      }
+      this.responseHeader = null;
+      this.responseHeader = new ResponseHeader();
+      baseRequest(getJsonHeaderReplay(), getJsonObjectReplay(), getParcelableReplay(), getBaseCallBackReplay());
+    }
   }
   
-  private void g()
+  private void setBaseCallBackReplay(BaseAdapter.BaseCallBack paramBaseCallBack)
   {
-    this.k = null;
-    this.k = new ResponseHeader();
-    baseRequest(c(), d(), e(), f());
-    h();
+    this.baseCallBackReplay = paramBaseCallBack;
   }
   
-  private void h()
+  private void setJsonHeaderReplay(String paramString)
   {
-    a(null);
-    b(null);
-    a(null);
-    a(null);
+    this.jsonHeaderReplay = paramString;
   }
   
-  private void i()
+  private void setJsonObjectReplay(String paramString)
   {
-    this.l = new BaseAdapter.1(this);
+    this.jsonObjectReplay = paramString;
+  }
+  
+  private void setParcelableReplay(Parcelable paramParcelable)
+  {
+    this.parcelableReplay = paramParcelable;
+  }
+  
+  private void setReplayData(String paramString1, String paramString2, Parcelable paramParcelable, BaseAdapter.BaseCallBack paramBaseCallBack)
+  {
+    setJsonHeaderReplay(paramString1);
+    setJsonObjectReplay(paramString2);
+    setParcelableReplay(paramParcelable);
+    setBaseCallBackReplay(paramBaseCallBack);
+  }
+  
+  private void setResponseHeader(int paramInt)
+  {
+    this.responseHeader.setTransactionId(this.requestHeader.getTransactionId());
+    this.responseHeader.setAppID(this.requestHeader.getAppID());
+    this.responseHeader.setApiName(this.requestHeader.getApiName());
+    this.responseHeader.setSrvName(this.requestHeader.getSrvName());
+    this.responseHeader.setPkgName(this.requestHeader.getPkgName());
+    this.responseHeader.setStatusCode(1);
+    this.responseHeader.setErrorCode(paramInt);
+    this.responseHeader.setErrorReason("Core error");
+  }
+  
+  private void startResolution(Activity paramActivity, Parcelable paramParcelable)
+  {
+    HMSLog.i("BaseAdapter", "startResolution");
+    Object localObject = this.requestHeader;
+    if (localObject != null) {
+      biReportRequestEntrySolution(this.appContext, (RequestHeader)localObject);
+    }
+    if (this.observer == null) {
+      initObserver();
+    }
+    SystemManager.getSystemNotifier().registerObserver(this.observer);
+    localObject = BridgeActivity.getIntentStartBridgeActivity(paramActivity, BaseResolutionAdapter.class.getName());
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("resolution", paramParcelable);
+    ((Intent)localObject).putExtras(localBundle);
+    ((Intent)localObject).putExtra("transaction_id", this.transactionId);
+    paramActivity.startActivity((Intent)localObject);
   }
   
   public void baseRequest(String paramString1, String paramString2, Parcelable paramParcelable, BaseAdapter.BaseCallBack paramBaseCallBack)
   {
-    a(paramString1, paramString2, paramParcelable, paramBaseCallBack);
-    if (this.a == null)
+    setReplayData(paramString1, paramString2, paramParcelable, paramBaseCallBack);
+    if (this.api == null)
     {
       HMSLog.e("BaseAdapter", "client is null");
-      h();
-      paramBaseCallBack.onError(a(-2));
+      paramBaseCallBack.onError(getResponseHeaderForError(-2));
       return;
     }
-    ApiClient localApiClient = (ApiClient)this.a.get();
-    this.c = paramBaseCallBack;
-    JsonUtil.jsonToEntity(paramString1, this.j);
+    this.callback = paramBaseCallBack;
+    JsonUtil.jsonToEntity(paramString1, this.requestHeader);
     CoreBaseRequest localCoreBaseRequest = new CoreBaseRequest();
     localCoreBaseRequest.setJsonObject(paramString2);
     localCoreBaseRequest.setJsonHeader(paramString1);
     localCoreBaseRequest.setParcelable(paramParcelable);
-    paramString1 = this.j.getApiName();
+    paramString1 = this.requestHeader.getApiName();
     if (TextUtils.isEmpty(paramString1))
     {
       HMSLog.e("BaseAdapter", "get uri null");
-      h();
-      paramBaseCallBack.onError(a(-5));
+      paramBaseCallBack.onError(getResponseHeaderForError(-5));
       return;
     }
-    this.h = this.j.getTransactionId();
-    if (TextUtils.isEmpty(this.h))
+    this.transactionId = this.requestHeader.getTransactionId();
+    if (TextUtils.isEmpty(this.transactionId))
     {
       HMSLog.e("BaseAdapter", "get transactionId null");
-      h();
-      paramBaseCallBack.onError(a(-6));
+      paramBaseCallBack.onError(getResponseHeaderForError(-6));
       return;
     }
-    HMSLog.i("BaseAdapter", "in baseRequest + uri is :" + paramString1 + ", transactionId is : " + this.h);
-    a(this.i, this.j);
-    a(localApiClient, paramString1, localCoreBaseRequest).setResultCallback(new BaseAdapter.BaseRequestResultCallback(this));
+    paramString2 = new StringBuilder();
+    paramString2.append("in baseRequest + uri is :");
+    paramString2.append(paramString1);
+    paramString2.append(", transactionId is : ");
+    paramString2.append(this.transactionId);
+    HMSLog.i("BaseAdapter", paramString2.toString());
+    biReportRequestEntryIpc(this.appContext, this.requestHeader);
+    baseRequest((ApiClient)this.api.get(), paramString1, localCoreBaseRequest).setResultCallback(new BaseAdapter.BaseRequestResultCallback(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.adapter.BaseAdapter
  * JD-Core Version:    0.7.0.1
  */

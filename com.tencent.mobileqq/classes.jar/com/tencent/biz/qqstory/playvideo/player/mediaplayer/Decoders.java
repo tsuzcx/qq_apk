@@ -14,84 +14,61 @@ class Decoders
   public long a()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    long l1 = 9223372036854775807L;
-    if (localIterator.hasNext())
+    label15:
+    long l2;
+    for (long l1 = 9223372036854775807L; localIterator.hasNext(); l1 = l2)
     {
-      long l2 = ((MediaCodecDecoder)localIterator.next()).a();
+      l2 = ((MediaCodecDecoder)localIterator.next()).a();
       if ((l2 == -9223372036854775808L) || (l1 <= l2)) {
-        break label60;
+        break label15;
       }
-      l1 = l2;
     }
-    label60:
-    for (;;)
-    {
-      break;
-      return l1;
-    }
+    return l1;
   }
   
   public MediaCodecDecoder.FrameInfo a(boolean paramBoolean)
   {
-    Object localObject2 = null;
-    int i = 0;
-    Object localObject1;
-    label24:
-    MediaCodecDecoder localMediaCodecDecoder;
-    label46:
-    MediaCodecDecoder.FrameInfo localFrameInfo;
-    if (i == 0)
+    for (int i = 0;; i = 1)
     {
+      if (i != 0) {
+        break label148;
+      }
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      localObject1 = null;
+      Object localObject1 = null;
       i = 0;
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
-        localMediaCodecDecoder = (MediaCodecDecoder)localIterator.next();
-        localFrameInfo = localMediaCodecDecoder.a();
-        if (localFrameInfo == null) {
-          break label151;
+        MediaCodecDecoder localMediaCodecDecoder = (MediaCodecDecoder)localIterator.next();
+        MediaCodecDecoder.FrameInfo localFrameInfo = localMediaCodecDecoder.a();
+        Object localObject2 = localObject1;
+        if (localFrameInfo != null) {
+          if (localMediaCodecDecoder == this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecVideoDecoder) {
+            localObject2 = localFrameInfo;
+          } else {
+            localMediaCodecDecoder.a(localFrameInfo, 0L);
+          }
         }
-        if (localMediaCodecDecoder == this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecVideoDecoder)
+        while (localMediaCodecDecoder.a(false)) {}
+        localObject1 = localObject2;
+        if (localMediaCodecDecoder.b())
         {
-          localObject1 = localFrameInfo;
-          label70:
-          if (localMediaCodecDecoder.a(false)) {
-            break label152;
-          }
-          if (!localMediaCodecDecoder.b()) {
-            break label154;
-          }
           i += 1;
+          localObject1 = localObject2;
         }
       }
-    }
-    label151:
-    label152:
-    label154:
-    for (;;)
-    {
-      break label24;
-      localMediaCodecDecoder.a(localFrameInfo, 0L);
-      break label46;
-      if (localObject1 != null) {}
-      do
-      {
+      if (localObject1 != null) {
         return localObject1;
-        localObject1 = localObject2;
-      } while (!paramBoolean);
-      if (i == this.jdField_a_of_type_JavaUtilList.size())
-      {
-        i = 1;
+      }
+      if (!paramBoolean) {
+        return null;
+      }
+      if (i != this.jdField_a_of_type_JavaUtilList.size()) {
         break;
       }
-      i = 0;
-      break;
-      Log.d("Decoders", "EOS NULL");
-      return null;
-      break label70;
-      break label70;
     }
+    label148:
+    Log.d("Decoders", "EOS NULL");
+    return null;
   }
   
   public MediaCodecVideoDecoder a()
@@ -116,13 +93,14 @@ class Decoders
   public void a(MediaCodecDecoder paramMediaCodecDecoder)
   {
     this.jdField_a_of_type_JavaUtilList.add(paramMediaCodecDecoder);
-    if ((paramMediaCodecDecoder instanceof MediaCodecVideoDecoder)) {
+    if ((paramMediaCodecDecoder instanceof MediaCodecVideoDecoder))
+    {
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecVideoDecoder = ((MediaCodecVideoDecoder)paramMediaCodecDecoder);
-    }
-    while (!(paramMediaCodecDecoder instanceof MediaCodecAudioDecoder)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecAudioDecoder = ((MediaCodecAudioDecoder)paramMediaCodecDecoder);
+    if ((paramMediaCodecDecoder instanceof MediaCodecAudioDecoder)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecAudioDecoder = ((MediaCodecAudioDecoder)paramMediaCodecDecoder);
+    }
   }
   
   public void a(MediaPlayer.SeekMode paramSeekMode, long paramLong)
@@ -135,36 +113,28 @@ class Decoders
   
   public boolean a()
   {
-    boolean bool = false;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    boolean bool = false;
     int i = 0;
-    if (localIterator.hasNext())
-    {
-      if (!((MediaCodecDecoder)localIterator.next()).b()) {
-        break label62;
+    while (localIterator.hasNext()) {
+      if (((MediaCodecDecoder)localIterator.next()).b()) {
+        i += 1;
       }
-      i += 1;
     }
-    label62:
-    for (;;)
-    {
-      break;
-      if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-        bool = true;
-      }
-      return bool;
+    if (i == this.jdField_a_of_type_JavaUtilList.size()) {
+      bool = true;
     }
+    return bool;
   }
   
   public long b()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (long l1 = 9223372036854775807L; localIterator.hasNext(); l1 = Math.min(((MediaCodecDecoder)localIterator.next()).b(), l1)) {}
-    long l2 = l1;
-    if (l1 == 9223372036854775807L) {
-      l2 = -1L;
+    for (long l = 9223372036854775807L; localIterator.hasNext(); l = Math.min(((MediaCodecDecoder)localIterator.next()).b(), l)) {}
+    if (l == 9223372036854775807L) {
+      return -1L;
     }
-    return l2;
+    return l;
   }
   
   public void b()
@@ -196,7 +166,7 @@ class Decoders
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.mediaplayer.Decoders
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.RoundedTransform
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.io.File;
 
@@ -72,8 +72,8 @@ public class GuideInfoDialog
       ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = UIUtils.a(getContext(), 3.0F);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = UIUtils.a(getContext(), 155.0F);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = UIUtils.a(getContext(), 307.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
       if (this.jdField_b_of_type_Boolean)
       {
         localObject = URLDrawable.getDrawable(new File(this.jdField_a_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject);
@@ -166,7 +166,8 @@ public class GuideInfoDialog
   
   public void dismiss()
   {
-    if ((this.jdField_a_of_type_AndroidWidgetVideoView != null) && (this.jdField_a_of_type_AndroidWidgetVideoView.isPlaying())) {
+    VideoView localVideoView = this.jdField_a_of_type_AndroidWidgetVideoView;
+    if ((localVideoView != null) && (localVideoView.isPlaying())) {
       this.jdField_a_of_type_AndroidWidgetVideoView.stopPlayback();
     }
     super.dismiss();
@@ -181,72 +182,72 @@ public class GuideInfoDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131561823);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374999));
-    this.jdField_a_of_type_AndroidWidgetVideoView = ((VideoView)findViewById(2131381559));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375000));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374998));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374997));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131375002));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375003));
+    setContentView(2131561675);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374530));
+    this.jdField_a_of_type_AndroidWidgetVideoView = ((VideoView)findViewById(2131380795));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374531));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374529));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374528));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131374533));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131374534));
     a();
     b();
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      if (!TextUtils.isEmpty(this.d)) {
-        break label256;
-      }
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      label148:
-      if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-        break label314;
-      }
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
     }
-    for (;;)
+    else
     {
-      if (this.jdField_c_of_type_AndroidViewView$OnClickListener == null) {
-        break label372;
-      }
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
-      return;
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_b_of_type_JavaLangString) > UIUtils.a(getContext(), 280.0F)) {
         this.jdField_a_of_type_AndroidWidgetTextView.setGravity(3);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-        break;
+      } else {
         this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
       }
-      label256:
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
+    }
+    if (TextUtils.isEmpty(this.d))
+    {
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    }
+    else
+    {
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetButton.setText(this.d);
-      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        break label148;
+      paramBundle = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+      if (paramBundle != null) {
+        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramBundle);
+      } else {
+        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new GuideInfoDialog.1(this));
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new GuideInfoDialog.1(this));
-      break label148;
-      label314:
+    }
+    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+    {
+      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
+    }
+    else
+    {
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetButton.setTag(this.jdField_c_of_type_JavaLangString);
-      if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      paramBundle = this.jdField_b_of_type_AndroidViewView$OnClickListener;
+      if (paramBundle != null) {
+        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(paramBundle);
       } else {
         this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new GuideInfoDialog.2(this));
       }
     }
-    label372:
+    paramBundle = this.jdField_c_of_type_AndroidViewView$OnClickListener;
+    if (paramBundle != null)
+    {
+      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(paramBundle);
+      return;
+    }
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new GuideInfoDialog.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog
  * JD-Core Version:    0.7.0.1
  */

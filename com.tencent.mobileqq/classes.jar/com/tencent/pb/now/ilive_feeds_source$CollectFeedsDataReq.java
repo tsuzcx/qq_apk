@@ -19,14 +19,15 @@ public final class ilive_feeds_source$CollectFeedsDataReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "feeds_id", "feeds_source", "feeds_topic", "client_type" }, new Object[] { localByteStringMicro1, Integer.valueOf(1), localByteStringMicro2, Integer.valueOf(1) }, CollectFeedsDataReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "feeds_id", "feeds_source", "feeds_topic", "client_type" }, new Object[] { localByteStringMicro1, localInteger, localByteStringMicro2, localInteger }, CollectFeedsDataReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_source.CollectFeedsDataReq
  * JD-Core Version:    0.7.0.1
  */

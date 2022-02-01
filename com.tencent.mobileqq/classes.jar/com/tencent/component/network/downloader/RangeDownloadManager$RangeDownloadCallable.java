@@ -36,79 +36,89 @@ class RangeDownloadManager$RangeDownloadCallable
   
   public RangeDownloadManager.RangeDownloadResult call()
   {
-    long l4 = System.currentTimeMillis();
-    Object localObject1 = new RangeDownloadReport();
+    long l3 = System.currentTimeMillis();
+    RangeDownloadReport localRangeDownloadReport = new RangeDownloadReport();
     Response localResponse = this.okHttpClient.newCall(this.request).execute();
-    long l5 = System.currentTimeMillis();
-    long l3 = l5 - l4;
-    ((RangeDownloadReport)localObject1).setTimeCostHeader(l3);
-    long l1 = 0L;
+    long l4 = System.currentTimeMillis();
+    long l2 = l4 - l3;
+    localRangeDownloadReport.setTimeCostHeader(l2);
     if ((localResponse != null) && (localResponse.isSuccessful()) && (localResponse.body() != null))
     {
-      Object localObject2 = localResponse.header("content-length");
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        this.contentLength = Long.parseLong((String)localObject2);
+      localObject = localResponse.header("content-length");
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        this.contentLength = Long.parseLong((String)localObject);
       }
-      localObject2 = localResponse.body().byteStream();
+      InputStream localInputStream = localResponse.body().byteStream();
       RandomAccessFile localRandomAccessFile = new RandomAccessFile(this.savePath, "rw");
-      byte[] arrayOfByte = new byte[8192];
-      int j = 0;
+      localObject = new byte[8192];
+      long l1 = 0L;
       int i = 0;
+      int j = 0;
       for (;;)
       {
-        int k = ((InputStream)localObject2).read(arrayOfByte, i, 8192 - i);
+        int k = localInputStream.read((byte[])localObject, i, 8192 - i);
         if (k == -1) {
           break;
         }
-        int n = k + i;
-        if ((n < 8192) && (n + l1 < this.contentLength))
+        i += k;
+        if ((i >= 8192) || (i + l1 >= this.contentLength))
         {
-          i += k;
-        }
-        else
-        {
-          k = 0;
           localRandomAccessFile.seek(this.startPos + l1);
-          localRandomAccessFile.write(arrayOfByte, 0, n);
-          l2 = l1 + n;
-          int m = j + 1;
-          i = k;
-          j = m;
-          l1 = l2;
+          localRandomAccessFile.write((byte[])localObject, 0, i);
+          l1 += i;
+          j += 1;
           if (this.progressHandler != null)
           {
             Message localMessage = Message.obtain();
-            localMessage.obj = Integer.valueOf(n);
+            localMessage.obj = Integer.valueOf(i);
             this.progressHandler.sendMessage(localMessage);
-            i = k;
-            j = m;
-            l1 = l2;
           }
+          i = 0;
         }
       }
-      QDLog.d("downloader_RANGE", "range task id:" + this.index + ", round:" + j);
-      ((InputStream)localObject2).close();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("range task id:");
+      ((StringBuilder)localObject).append(this.index);
+      ((StringBuilder)localObject).append(", round:");
+      ((StringBuilder)localObject).append(j);
+      QDLog.d("downloader_RANGE", ((StringBuilder)localObject).toString());
+      localInputStream.close();
       localRandomAccessFile.close();
-      long l2 = System.currentTimeMillis();
-      l5 = l2 - l5;
-      l2 -= l4;
-      ((RangeDownloadReport)localObject1).setTimeCostData(l5);
-      ((RangeDownloadReport)localObject1).setTimeCost(l2);
-      ((RangeDownloadReport)localObject1).setRangeId(this.index);
-      ((RangeDownloadReport)localObject1).setContentLength(l1);
-      QDLog.e("downloader_RANGE", "range task id:" + this.index + " header costTime:" + l3 + ", data costtime:" + l5 + ", totalCostTime:" + l2 + ", byte count:" + l1);
-      return new RangeDownloadManager.RangeDownloadResult(this.index, localResponse, l1, (RangeDownloadReport)localObject1);
+      long l5 = System.currentTimeMillis();
+      l4 = l5 - l4;
+      l3 = l5 - l3;
+      localRangeDownloadReport.setTimeCostData(l4);
+      localRangeDownloadReport.setTimeCost(l3);
+      localRangeDownloadReport.setRangeId(this.index);
+      localRangeDownloadReport.setContentLength(l1);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("range task id:");
+      ((StringBuilder)localObject).append(this.index);
+      ((StringBuilder)localObject).append(" header costTime:");
+      ((StringBuilder)localObject).append(l2);
+      ((StringBuilder)localObject).append(", data costtime:");
+      ((StringBuilder)localObject).append(l4);
+      ((StringBuilder)localObject).append(", totalCostTime:");
+      ((StringBuilder)localObject).append(l3);
+      ((StringBuilder)localObject).append(", byte count:");
+      ((StringBuilder)localObject).append(l1);
+      QDLog.e("downloader_RANGE", ((StringBuilder)localObject).toString());
+      return new RangeDownloadManager.RangeDownloadResult(this.index, localResponse, l1, localRangeDownloadReport);
     }
-    localObject1 = null;
+    Object localObject = null;
     if (localResponse != null) {
-      localObject1 = localResponse.message();
+      localObject = localResponse.message();
     }
-    throw new Exception((String)localObject1);
+    localObject = new Exception((String)localObject);
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.RangeDownloadManager.RangeDownloadCallable
  * JD-Core Version:    0.7.0.1
  */

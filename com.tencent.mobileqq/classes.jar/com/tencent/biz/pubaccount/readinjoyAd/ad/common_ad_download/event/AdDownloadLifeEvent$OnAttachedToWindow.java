@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event;
 
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.RIJAdDownloadCache;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
 import com.tencent.gamecenter.wadl.biz.listener.WadlProxyServiceCallBackInterface;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceUtil;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceWrap;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.open.appstore.dl.DownloadManagerV2;
 import com.tencent.open.downloadnew.DownloadListener;
-import cooperation.wadl.ipc.WadlProxyServiceUtil;
-import cooperation.wadl.ipc.WadlProxyServiceWrap;
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/event/AdDownloadLifeEvent$OnAttachedToWindow;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/event/AdDownloadLifeEvent;", "onEvent", "", "viewRIJ", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/event/AdDownloadLifeEvent$OnAttachedToWindow;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/event/AdDownloadLifeEvent;", "onEvent", "", "viewRIJ", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 final class AdDownloadLifeEvent$OnAttachedToWindow
   extends AdDownloadLifeEvent
 {
@@ -24,21 +24,30 @@ final class AdDownloadLifeEvent$OnAttachedToWindow
   
   public void onEvent(@Nullable RIJDownloadView paramRIJDownloadView)
   {
-    if (paramRIJDownloadView == null) {}
-    do
-    {
+    if (paramRIJDownloadView == null) {
       return;
-      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", "OnAttachedToWindow " + paramRIJDownloadView.hashCode());
-    } while (!AdvertisementInfo.isAppAdvertisementInfo((BaseArticleInfo)paramRIJDownloadView.a()));
-    ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", "registerListener " + paramRIJDownloadView.hashCode());
-    WadlProxyServiceUtil.a().a((WadlProxyServiceCallBackInterface)DownloadCallbackHandler.a((DownloadListener)paramRIJDownloadView));
-    DownloadManagerV2.a().a(DownloadCallbackHandler.a((DownloadListener)paramRIJDownloadView));
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("OnAttachedToWindow ");
+    ((StringBuilder)localObject).append(paramRIJDownloadView.hashCode());
+    ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", ((StringBuilder)localObject).toString());
+    if (!ReadInJoyAdUtils.q((AbsBaseArticleInfo)paramRIJDownloadView.a())) {
+      return;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("registerListener ");
+    ((StringBuilder)localObject).append(paramRIJDownloadView.hashCode());
+    ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", ((StringBuilder)localObject).toString());
+    localObject = WadlProxyServiceUtil.a();
+    DownloadListener localDownloadListener = (DownloadListener)paramRIJDownloadView;
+    ((WadlProxyServiceWrap)localObject).a((WadlProxyServiceCallBackInterface)DownloadCallbackHandler.a(localDownloadListener));
+    DownloadManagerV2.a().a(DownloadCallbackHandler.a(localDownloadListener));
     RIJAdDownloadCache.a.a(paramRIJDownloadView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadLifeEvent.OnAttachedToWindow
  * JD-Core Version:    0.7.0.1
  */

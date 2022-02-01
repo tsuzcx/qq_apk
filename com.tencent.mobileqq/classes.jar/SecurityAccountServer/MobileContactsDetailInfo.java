@@ -61,17 +61,21 @@ public final class MobileContactsDetailInfo
     paramJceOutputStream.write(this.name, 2);
     paramJceOutputStream.write(this.bindingDate, 3);
     paramJceOutputStream.write(this.isRecommend, 4);
-    if (this.nationCode != null) {
-      paramJceOutputStream.write(this.nationCode, 5);
+    String str = this.nationCode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.mobileCode != null) {
-      paramJceOutputStream.write(this.mobileCode, 6);
+    str = this.mobileCode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 7);
+    str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.originMobileNo != null) {
-      paramJceOutputStream.write(this.originMobileNo, 8);
+    str = this.originMobileNo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.originBinder, 9);
     paramJceOutputStream.write(this.accountAbi, 10);
@@ -80,7 +84,7 @@ public final class MobileContactsDetailInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.MobileContactsDetailInfo
  * JD-Core Version:    0.7.0.1
  */

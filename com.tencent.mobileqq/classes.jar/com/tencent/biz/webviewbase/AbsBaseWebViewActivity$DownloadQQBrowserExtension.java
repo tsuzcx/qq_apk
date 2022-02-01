@@ -38,11 +38,11 @@ final class AbsBaseWebViewActivity$DownloadQQBrowserExtension
       this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
       this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
       localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.i("WebCoreDump", 2, "No JS plugin engine to web core dump");
+    if (QLog.isColorLevel()) {
+      QLog.i("WebCoreDump", 2, "No JS plugin engine to web core dump");
+    }
   }
   
   public void computeScroll(View paramView)
@@ -84,7 +84,10 @@ final class AbsBaseWebViewActivity$DownloadQQBrowserExtension
   
   public void onPrefetchResourceHit(boolean paramBoolean)
   {
-    QLog.i("WebLog_WebViewBase", 1, "now prefetchResource is hit: " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("now prefetchResource is hit: ");
+    localStringBuilder.append(paramBoolean);
+    QLog.i("WebLog_WebViewBase", 1, localStringBuilder.toString());
   }
   
   public void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
@@ -115,7 +118,7 @@ final class AbsBaseWebViewActivity$DownloadQQBrowserExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewbase.AbsBaseWebViewActivity.DownloadQQBrowserExtension
  * JD-Core Version:    0.7.0.1
  */

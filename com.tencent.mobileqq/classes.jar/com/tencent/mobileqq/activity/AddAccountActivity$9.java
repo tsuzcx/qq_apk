@@ -15,18 +15,18 @@ class AddAccountActivity$9
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.isShown())) {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if ((this.a.mDelIcon != null) && (this.a.mDelIcon.isShown())) {
+      this.a.mDelIcon.setVisibility(8);
     }
-    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("");
+    this.a.mAutoTextAccount.setText("");
+    this.a.mPwdEdit.setText("");
     libsafeedit.clearPassBuffer();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity.9
  * JD-Core Version:    0.7.0.1
  */

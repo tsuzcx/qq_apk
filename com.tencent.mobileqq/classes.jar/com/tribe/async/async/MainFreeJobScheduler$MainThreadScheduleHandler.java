@@ -14,9 +14,7 @@ class MainFreeJobScheduler$MainThreadScheduleHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     Message.obtain(MainFreeJobScheduler.access$100(this.this$0), 2).sendToTarget();
@@ -24,7 +22,7 @@ class MainFreeJobScheduler$MainThreadScheduleHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.MainFreeJobScheduler.MainThreadScheduleHandler
  * JD-Core Version:    0.7.0.1
  */

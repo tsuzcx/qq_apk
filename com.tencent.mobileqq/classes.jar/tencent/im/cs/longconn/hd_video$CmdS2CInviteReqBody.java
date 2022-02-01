@@ -56,15 +56,19 @@ public final class hd_video$CmdS2CInviteReqBody
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 53, 61, 64, 72, 80, 90, 98, 104, 114, 120, 128, 136, 144, 154, 160, 168, 176, 186, 194, 200, 208, 216, 224, 234, 242, 250, 256, 266, 274, 280 }, new String[] { "bytes_sign", "rpt_msg_interface_list", "enum_business_type", "uint64_business_id", "uint32_business_flag", "fixed32_client_seq", "fixed32_timestamp", "rpt_uint64_uin_list", "uint64_from_uin", "uint64_dial_no", "str_ticket", "msg_punch_addr", "uint32_punch_key", "msg_temp_session", "enum_termtype", "uint32_client_ver", "uint32_new_business_flag", "uint32_from_app_id", "msg_login_sig", "bool_terminal_switch_flag", "uint64_old_room_id", "bool_chat_with_anyone", "str_interesting_chat_buf", "rpt_msg_sip_server_list", "uint64_from_binded_id", "uint32_from_binded_id_type", "uint32_from_network_type", "uint32_to_network_type", "msg_local_audio_proto", "bytes_from_display_name", "msg_crypt_info", "uint32_ext_content_type", "bytes_ext_content", "rpt_msg_ext_contents", "uint32_from_instance_id" }, new Object[] { localByteStringMicro1, null, Integer.valueOf(1), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", null, Integer.valueOf(0), null, Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Boolean.valueOf(false), Long.valueOf(0L), Boolean.valueOf(false), "", null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro2, null, Integer.valueOf(0), localByteStringMicro3, null, Integer.valueOf(0) }, CmdS2CInviteReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 53, 61, 64, 72, 80, 90, 98, 104, 114, 120, 128, 136, 144, 154, 160, 168, 176, 186, 194, 200, 208, 216, 224, 234, 242, 250, 256, 266, 274, 280 }, new String[] { "bytes_sign", "rpt_msg_interface_list", "enum_business_type", "uint64_business_id", "uint32_business_flag", "fixed32_client_seq", "fixed32_timestamp", "rpt_uint64_uin_list", "uint64_from_uin", "uint64_dial_no", "str_ticket", "msg_punch_addr", "uint32_punch_key", "msg_temp_session", "enum_termtype", "uint32_client_ver", "uint32_new_business_flag", "uint32_from_app_id", "msg_login_sig", "bool_terminal_switch_flag", "uint64_old_room_id", "bool_chat_with_anyone", "str_interesting_chat_buf", "rpt_msg_sip_server_list", "uint64_from_binded_id", "uint32_from_binded_id_type", "uint32_from_network_type", "uint32_to_network_type", "msg_local_audio_proto", "bytes_from_display_name", "msg_crypt_info", "uint32_ext_content_type", "bytes_ext_content", "rpt_msg_ext_contents", "uint32_from_instance_id" }, new Object[] { localByteStringMicro1, null, localInteger2, localLong, localInteger1, localInteger1, localInteger1, localLong, localLong, localLong, "", null, localInteger1, null, localInteger2, localInteger1, localInteger1, localInteger1, null, localBoolean, localLong, localBoolean, "", null, localLong, localInteger1, localInteger1, localInteger1, null, localByteStringMicro2, null, localInteger1, localByteStringMicro3, null, localInteger1 }, CmdS2CInviteReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video.CmdS2CInviteReqBody
  * JD-Core Version:    0.7.0.1
  */

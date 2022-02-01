@@ -24,34 +24,27 @@ public final class BBannerHelper$MessageToShowBanner
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-              bool1 = bool2;
-            } while (paramObject == null);
-            bool1 = bool2;
-          } while (getClass() != paramObject.getClass());
-          paramObject = (MessageToShowBanner)paramObject;
-          bool1 = bool2;
-        } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
-        bool1 = bool2;
-      } while (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int);
-      bool1 = bool2;
-    } while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
-    return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (MessageToShowBanner)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+      if (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) {
+        return false;
+      }
+      if (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+        return false;
+      }
+      return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
+    }
+    return false;
   }
   
   public int hashCode()
@@ -61,12 +54,26 @@ public final class BBannerHelper$MessageToShowBanner
   
   public String toString()
   {
-    return "MessageToShowBanner{bannerLev=" + this.jdField_a_of_type_Int + ", businessCategory='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconIdx=" + this.jdField_b_of_type_Int + ", wording='" + this.jdField_b_of_type_JavaLangString + '\'' + ", callback=" + this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$IBannerInteract + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MessageToShowBanner{bannerLev=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", businessCategory='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iconIdx=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", wording='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", callback=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$IBannerInteract);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper.MessageToShowBanner
  * JD-Core Version:    0.7.0.1
  */

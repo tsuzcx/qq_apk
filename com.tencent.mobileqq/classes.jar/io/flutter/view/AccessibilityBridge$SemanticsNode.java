@@ -78,11 +78,22 @@ class AccessibilityBridge$SemanticsNode
   
   private boolean didChangeLabel()
   {
-    if ((this.label == null) && (this.previousLabel == null)) {}
-    while ((this.label != null) && (this.previousLabel != null) && (this.label.equals(this.previousLabel))) {
+    String str1 = this.label;
+    boolean bool = false;
+    if ((str1 == null) && (this.previousLabel == null)) {
       return false;
     }
-    return true;
+    str1 = this.label;
+    if (str1 != null)
+    {
+      String str2 = this.previousLabel;
+      if ((str2 != null) && (str1.equals(str2))) {}
+    }
+    else
+    {
+      bool = true;
+    }
+    return bool;
   }
   
   private boolean didScroll()
@@ -92,16 +103,16 @@ class AccessibilityBridge$SemanticsNode
   
   private void ensureInverseTransform()
   {
-    if (!this.inverseTransformDirty) {}
-    do
-    {
+    if (!this.inverseTransformDirty) {
       return;
-      this.inverseTransformDirty = false;
-      if (this.inverseTransform == null) {
-        this.inverseTransform = new float[16];
-      }
-    } while (Matrix.invertM(this.inverseTransform, 0, this.transform, 0));
-    Arrays.fill(this.inverseTransform, 0.0F);
+    }
+    this.inverseTransformDirty = false;
+    if (this.inverseTransform == null) {
+      this.inverseTransform = new float[16];
+    }
+    if (!Matrix.invertM(this.inverseTransform, 0, this.transform, 0)) {
+      Arrays.fill(this.inverseTransform, 0.0F);
+    }
   }
   
   private SemanticsNode getAncestor(Predicate<SemanticsNode> paramPredicate)
@@ -121,13 +132,17 @@ class AccessibilityBridge$SemanticsNode
   
   private String getRouteName()
   {
-    if ((hasFlag(AccessibilityBridge.Flag.NAMES_ROUTE)) && (this.label != null) && (!this.label.isEmpty())) {
-      return this.label;
-    }
-    Iterator localIterator = this.childrenInTraversalOrder.iterator();
-    while (localIterator.hasNext())
+    if (hasFlag(AccessibilityBridge.Flag.NAMES_ROUTE))
     {
-      String str = ((SemanticsNode)localIterator.next()).getRouteName();
+      localObject = this.label;
+      if ((localObject != null) && (!((String)localObject).isEmpty())) {
+        return this.label;
+      }
+    }
+    Object localObject = this.childrenInTraversalOrder.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      String str = ((SemanticsNode)((Iterator)localObject).next()).getRouteName();
       if ((str != null) && (!str.isEmpty())) {
         return str;
       }
@@ -137,16 +152,17 @@ class AccessibilityBridge$SemanticsNode
   
   private String getValueLabelHint()
   {
-    int i = 0;
     StringBuilder localStringBuilder = new StringBuilder();
     String[] arrayOfString = new String[3];
-    arrayOfString[0] = this.value;
+    String str = this.value;
+    int i = 0;
+    arrayOfString[0] = str;
     arrayOfString[1] = this.label;
     arrayOfString[2] = this.hint;
     int j = arrayOfString.length;
     while (i < j)
     {
-      String str = arrayOfString[i];
+      str = arrayOfString[i];
       if ((str != null) && (str.length() > 0))
       {
         if (localStringBuilder.length() > 0) {
@@ -164,22 +180,26 @@ class AccessibilityBridge$SemanticsNode
   
   private boolean hadAction(@NonNull AccessibilityBridge.Action paramAction)
   {
-    return (this.previousActions & paramAction.value) != 0;
+    int i = this.previousActions;
+    return (paramAction.value & i) != 0;
   }
   
   private boolean hadFlag(@NonNull AccessibilityBridge.Flag paramFlag)
   {
-    return (this.previousFlags & paramFlag.value) != 0;
+    int i = this.previousFlags;
+    return (paramFlag.value & i) != 0;
   }
   
   private boolean hasAction(@NonNull AccessibilityBridge.Action paramAction)
   {
-    return (this.actions & paramAction.value) != 0;
+    int i = this.actions;
+    return (paramAction.value & i) != 0;
   }
   
   private boolean hasFlag(@NonNull AccessibilityBridge.Flag paramFlag)
   {
-    return (this.flags & paramFlag.value) != 0;
+    int i = this.flags;
+    return (paramFlag.value & i) != 0;
   }
   
   private SemanticsNode hitTest(float[] paramArrayOfFloat)
@@ -187,42 +207,60 @@ class AccessibilityBridge$SemanticsNode
     float f2 = paramArrayOfFloat[3];
     float f1 = paramArrayOfFloat[0] / f2;
     f2 = paramArrayOfFloat[1] / f2;
-    SemanticsNode localSemanticsNode;
-    if ((f1 < this.left) || (f1 >= this.right) || (f2 < this.top) || (f2 >= this.bottom))
+    if ((f1 >= this.left) && (f1 < this.right) && (f2 >= this.top) && (f2 < this.bottom))
     {
-      localSemanticsNode = null;
-      return localSemanticsNode;
-    }
-    float[] arrayOfFloat = new float[4];
-    Iterator localIterator = this.childrenInHitTestOrder.iterator();
-    do
-    {
-      do
+      float[] arrayOfFloat = new float[4];
+      Iterator localIterator = this.childrenInHitTestOrder.iterator();
+      while (localIterator.hasNext())
       {
-        localSemanticsNode = this;
-        if (!localIterator.hasNext()) {
-          break;
+        SemanticsNode localSemanticsNode = (SemanticsNode)localIterator.next();
+        if (!localSemanticsNode.hasFlag(AccessibilityBridge.Flag.IS_HIDDEN))
+        {
+          localSemanticsNode.ensureInverseTransform();
+          Matrix.multiplyMV(arrayOfFloat, 0, localSemanticsNode.inverseTransform, 0, paramArrayOfFloat, 0);
+          localSemanticsNode = localSemanticsNode.hitTest(arrayOfFloat);
+          if (localSemanticsNode != null) {
+            return localSemanticsNode;
+          }
         }
-        localSemanticsNode = (SemanticsNode)localIterator.next();
-      } while (localSemanticsNode.hasFlag(AccessibilityBridge.Flag.IS_HIDDEN));
-      localSemanticsNode.ensureInverseTransform();
-      Matrix.multiplyMV(arrayOfFloat, 0, localSemanticsNode.inverseTransform, 0, paramArrayOfFloat, 0);
-      localSemanticsNode = localSemanticsNode.hitTest(arrayOfFloat);
-    } while (localSemanticsNode == null);
-    return localSemanticsNode;
+      }
+      return this;
+    }
+    return null;
   }
   
   private boolean isFocusable()
   {
-    if (hasFlag(AccessibilityBridge.Flag.SCOPES_ROUTE)) {}
-    do
-    {
+    boolean bool1 = hasFlag(AccessibilityBridge.Flag.SCOPES_ROUTE);
+    boolean bool2 = false;
+    if (bool1) {
       return false;
-      if (hasFlag(AccessibilityBridge.Flag.IS_FOCUSABLE)) {
-        return true;
+    }
+    if (hasFlag(AccessibilityBridge.Flag.IS_FOCUSABLE)) {
+      return true;
+    }
+    if (((((AccessibilityBridge.Action.SCROLL_RIGHT.value | AccessibilityBridge.Action.SCROLL_LEFT.value | AccessibilityBridge.Action.SCROLL_UP.value | AccessibilityBridge.Action.SCROLL_DOWN.value) ^ 0xFFFFFFFF) & this.actions) == 0) && (this.flags == 0))
+    {
+      String str = this.label;
+      if ((str == null) || (str.isEmpty()))
+      {
+        str = this.value;
+        if ((str == null) || (str.isEmpty()))
+        {
+          str = this.hint;
+          bool1 = bool2;
+          if (str == null) {
+            return bool1;
+          }
+          bool1 = bool2;
+          if (str.isEmpty()) {
+            return bool1;
+          }
+        }
       }
-    } while (((((AccessibilityBridge.Action.SCROLL_RIGHT.value | AccessibilityBridge.Action.SCROLL_LEFT.value | AccessibilityBridge.Action.SCROLL_UP.value | AccessibilityBridge.Action.SCROLL_DOWN.value) ^ 0xFFFFFFFF) & this.actions) == 0) && (this.flags == 0) && ((this.label == null) || (this.label.isEmpty())) && ((this.value == null) || (this.value.isEmpty())) && ((this.hint == null) || (this.hint.isEmpty())));
-    return true;
+    }
+    bool1 = true;
+    return bool1;
   }
   
   private void log(@NonNull String paramString, boolean paramBoolean) {}
@@ -321,73 +359,62 @@ class AccessibilityBridge$SemanticsNode
     this.scrollExtentMin = paramByteBuffer.getFloat();
     int i = paramByteBuffer.getInt();
     String str;
-    if (i == -1)
-    {
+    if (i == -1) {
       str = null;
-      this.label = str;
-      i = paramByteBuffer.getInt();
-      if (i != -1) {
-        break label357;
-      }
-      str = null;
-      label205:
-      this.value = str;
-      i = paramByteBuffer.getInt();
-      if (i != -1) {
-        break label365;
-      }
-      str = null;
-      label224:
-      this.increasedValue = str;
-      i = paramByteBuffer.getInt();
-      if (i != -1) {
-        break label373;
-      }
-      str = null;
-      label243:
-      this.decreasedValue = str;
-      i = paramByteBuffer.getInt();
-      if (i != -1) {
-        break label381;
-      }
+    } else {
+      str = paramArrayOfString[i];
     }
-    label357:
-    label365:
-    label373:
-    label381:
-    for (paramArrayOfString = null;; paramArrayOfString = paramArrayOfString[i])
+    this.label = str;
+    i = paramByteBuffer.getInt();
+    if (i == -1) {
+      str = null;
+    } else {
+      str = paramArrayOfString[i];
+    }
+    this.value = str;
+    i = paramByteBuffer.getInt();
+    if (i == -1) {
+      str = null;
+    } else {
+      str = paramArrayOfString[i];
+    }
+    this.increasedValue = str;
+    i = paramByteBuffer.getInt();
+    if (i == -1) {
+      str = null;
+    } else {
+      str = paramArrayOfString[i];
+    }
+    this.decreasedValue = str;
+    i = paramByteBuffer.getInt();
+    if (i == -1) {
+      paramArrayOfString = null;
+    } else {
+      paramArrayOfString = paramArrayOfString[i];
+    }
+    this.hint = paramArrayOfString;
+    this.textDirection = AccessibilityBridge.TextDirection.fromInt(paramByteBuffer.getInt());
+    this.left = paramByteBuffer.getFloat();
+    this.top = paramByteBuffer.getFloat();
+    this.right = paramByteBuffer.getFloat();
+    this.bottom = paramByteBuffer.getFloat();
+    if (this.transform == null) {
+      this.transform = new float[16];
+    }
+    int j = 0;
+    i = 0;
+    while (i < 16)
     {
-      this.hint = paramArrayOfString;
-      this.textDirection = AccessibilityBridge.TextDirection.fromInt(paramByteBuffer.getInt());
-      this.left = paramByteBuffer.getFloat();
-      this.top = paramByteBuffer.getFloat();
-      this.right = paramByteBuffer.getFloat();
-      this.bottom = paramByteBuffer.getFloat();
-      if (this.transform == null) {
-        this.transform = new float[16];
-      }
-      i = 0;
-      while (i < 16)
-      {
-        this.transform[i] = paramByteBuffer.getFloat();
-        i += 1;
-      }
-      str = paramArrayOfString[i];
-      break;
-      str = paramArrayOfString[i];
-      break label205;
-      str = paramArrayOfString[i];
-      break label224;
-      str = paramArrayOfString[i];
-      break label243;
+      this.transform[i] = paramByteBuffer.getFloat();
+      i += 1;
     }
     this.inverseTransformDirty = true;
     this.globalGeometryDirty = true;
-    int j = paramByteBuffer.getInt();
+    int k = paramByteBuffer.getInt();
     this.childrenInTraversalOrder.clear();
     this.childrenInHitTestOrder.clear();
     i = 0;
-    while (i < j)
+    while (i < k)
     {
       paramArrayOfString = AccessibilityBridge.access$6000(this.accessibilityBridge, paramByteBuffer.getInt());
       paramArrayOfString.parent = this;
@@ -395,55 +422,48 @@ class AccessibilityBridge$SemanticsNode
       i += 1;
     }
     i = 0;
-    while (i < j)
+    while (i < k)
     {
       paramArrayOfString = AccessibilityBridge.access$6000(this.accessibilityBridge, paramByteBuffer.getInt());
       paramArrayOfString.parent = this;
       this.childrenInHitTestOrder.add(paramArrayOfString);
       i += 1;
     }
-    j = paramByteBuffer.getInt();
-    if (j == 0)
+    k = paramByteBuffer.getInt();
+    if (k == 0)
     {
       this.customAccessibilityActions = null;
       return;
     }
-    if (this.customAccessibilityActions == null)
+    paramArrayOfString = this.customAccessibilityActions;
+    if (paramArrayOfString == null)
     {
-      this.customAccessibilityActions = new ArrayList(j);
-      i = 0;
-      label547:
-      if (i >= j) {
-        break label613;
-      }
-      paramArrayOfString = AccessibilityBridge.access$6100(this.accessibilityBridge, paramByteBuffer.getInt());
-      if (AccessibilityBridge.CustomAccessibilityAction.access$3900(paramArrayOfString) != AccessibilityBridge.Action.TAP.value) {
-        break label615;
-      }
-      this.onTapOverride = paramArrayOfString;
+      this.customAccessibilityActions = new ArrayList(k);
+      i = j;
     }
-    for (;;)
+    else
     {
-      this.customAccessibilityActions.add(paramArrayOfString);
-      i += 1;
-      break label547;
-      this.customAccessibilityActions.clear();
-      i = 0;
-      break label547;
-      label613:
-      break;
-      label615:
-      if (AccessibilityBridge.CustomAccessibilityAction.access$3900(paramArrayOfString) == AccessibilityBridge.Action.LONG_PRESS.value) {
+      paramArrayOfString.clear();
+      i = j;
+    }
+    while (i < k)
+    {
+      paramArrayOfString = AccessibilityBridge.access$6100(this.accessibilityBridge, paramByteBuffer.getInt());
+      if (AccessibilityBridge.CustomAccessibilityAction.access$3900(paramArrayOfString) == AccessibilityBridge.Action.TAP.value) {
+        this.onTapOverride = paramArrayOfString;
+      } else if (AccessibilityBridge.CustomAccessibilityAction.access$3900(paramArrayOfString) == AccessibilityBridge.Action.LONG_PRESS.value) {
         this.onLongPressOverride = paramArrayOfString;
       } else {
         this.customAccessibilityActions.add(paramArrayOfString);
       }
+      this.customAccessibilityActions.add(paramArrayOfString);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.view.AccessibilityBridge.SemanticsNode
  * JD-Core Version:    0.7.0.1
  */

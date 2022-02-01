@@ -30,7 +30,7 @@ public class ComponentSizeChooser
   private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt1, int paramInt2)
   {
     if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.jdField_b_of_type_ArrayOfInt)) {
-      paramInt2 = this.jdField_b_of_type_ArrayOfInt[0];
+      return this.jdField_b_of_type_ArrayOfInt[0];
     }
     return paramInt2;
   }
@@ -61,7 +61,7 @@ public class ComponentSizeChooser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.ComponentSizeChooser
  * JD-Core Version:    0.7.0.1
  */

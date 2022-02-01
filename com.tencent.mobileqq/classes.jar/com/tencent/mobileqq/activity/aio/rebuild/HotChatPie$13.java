@@ -1,29 +1,46 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatShare;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.troop.data.TroopAioTips;
+import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
+import com.tencent.qphone.base.util.QLog;
 
 class HotChatPie$13
-  implements View.OnClickListener
+  implements Runnable
 {
-  HotChatPie$13(HotChatPie paramHotChatPie, String paramString) {}
+  HotChatPie$13(HotChatPie paramHotChatPie) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    HotChatInfo localHotChatInfo = ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppHotChatShare.a(localHotChatInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getVisibility() == 0) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setVisibility(4);
+    }
+    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getCount();
+    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) && (this.this$0.l != i)) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.a(true);
+    }
+    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.a() > 0)) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.c(4);
+    }
+    if (QLog.isColorLevel())
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.this$0.b);
+      ((StringBuilder)localObject).append("Q.hotchat.aio_post_red_point");
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("update, mLastMsgCountBeforeSwitch2PostTab:");
+      localStringBuilder.append(this.this$0.l);
+      localStringBuilder.append(",current msgItemCount:");
+      localStringBuilder.append(i);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.13
  * JD-Core Version:    0.7.0.1
  */

@@ -34,327 +34,338 @@ public class HttpImageDownloadAsyncTask
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
     paramString1 = new SchemeRegistry();
     paramString1.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-    for (;;)
+    try
     {
-      try
+      int i = Build.VERSION.SDK_INT;
+      if ((i < 23) && (!HttpDownloadUtil.shutdownSniSupport()))
       {
-        if ((Build.VERSION.SDK_INT < 23) && (!HttpDownloadUtil.shutdownSniSupport())) {
-          continue;
-        }
+        paramString1.register(new Scheme("https", new TlsSniSocketFactory(HttpImageDownloadAsyncTask.class.getSimpleName()), 443));
+      }
+      else
+      {
         paramString2 = SSLSocketFactory.getSocketFactory();
         paramString2.setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
         paramString1.register(new Scheme("https", paramString2, 443));
       }
-      catch (Exception paramString2)
-      {
-        QLog.e("HttpImageDownloadAsyncTask", 1, "createHttpClient():Can't support https on this devices.", paramString2);
-        continue;
-      }
-      this.jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager = new ThreadSafeClientConnManager(new BasicHttpParams(), paramString1);
-      return;
-      paramString1.register(new Scheme("https", new TlsSniSocketFactory(HttpImageDownloadAsyncTask.class.getSimpleName()), 443));
     }
+    catch (Exception paramString2)
+    {
+      QLog.e("HttpImageDownloadAsyncTask", 1, "createHttpClient():Can't support https on this devices.", paramString2);
+    }
+    this.jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager = new ThreadSafeClientConnManager(new BasicHttpParams(), paramString1);
   }
   
   /* Error */
   protected Bitmap a(Void... paramVarArgs)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore 5
-    //   5: aconst_null
-    //   6: astore 4
-    //   8: ldc 96
-    //   10: iconst_1
-    //   11: ldc 112
-    //   13: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   16: new 118	org/apache/http/impl/client/DefaultHttpClient
-    //   19: dup
-    //   20: aload_0
-    //   21: getfield 26	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager	Lorg/apache/http/impl/conn/tsccm/ThreadSafeClientConnManager;
-    //   24: aconst_null
-    //   25: invokespecial 121	org/apache/http/impl/client/DefaultHttpClient:<init>	(Lorg/apache/http/conn/ClientConnectionManager;Lorg/apache/http/params/HttpParams;)V
-    //   28: astore 6
-    //   30: aload 5
-    //   32: astore_1
-    //   33: new 123	org/apache/http/client/methods/HttpGet
-    //   36: dup
-    //   37: aload_0
-    //   38: getfield 125	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   41: invokespecial 126	org/apache/http/client/methods/HttpGet:<init>	(Ljava/lang/String;)V
-    //   44: astore 7
-    //   46: aload 5
-    //   48: astore_1
+    //   0: ldc 88
+    //   2: iconst_1
+    //   3: ldc 112
+    //   5: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   8: aload_0
+    //   9: getfield 26	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager	Lorg/apache/http/impl/conn/tsccm/ThreadSafeClientConnManager;
+    //   12: astore_1
+    //   13: aconst_null
+    //   14: astore 7
+    //   16: aconst_null
+    //   17: astore 4
+    //   19: aconst_null
+    //   20: astore 9
+    //   22: aconst_null
+    //   23: astore 5
+    //   25: aconst_null
+    //   26: astore 8
+    //   28: aconst_null
+    //   29: astore 6
+    //   31: new 118	org/apache/http/impl/client/DefaultHttpClient
+    //   34: dup
+    //   35: aload_1
+    //   36: aconst_null
+    //   37: invokespecial 121	org/apache/http/impl/client/DefaultHttpClient:<init>	(Lorg/apache/http/conn/ClientConnectionManager;Lorg/apache/http/params/HttpParams;)V
+    //   40: astore 10
+    //   42: aload 9
+    //   44: astore_1
+    //   45: new 123	org/apache/http/client/methods/HttpGet
+    //   48: dup
     //   49: aload_0
-    //   50: getfield 24	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   53: ifnull +124 -> 177
-    //   56: aload 5
-    //   58: astore_1
-    //   59: aload_0
-    //   60: getfield 24	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   63: invokevirtual 132	android/os/Bundle:keySet	()Ljava/util/Set;
-    //   66: invokeinterface 138 1 0
-    //   71: astore 8
-    //   73: aload 5
-    //   75: astore_1
-    //   76: aload 8
-    //   78: invokeinterface 143 1 0
-    //   83: ifeq +94 -> 177
-    //   86: aload 5
-    //   88: astore_1
-    //   89: aload 8
-    //   91: invokeinterface 147 1 0
-    //   96: checkcast 149	java/lang/String
-    //   99: astore 9
-    //   101: aload 5
-    //   103: astore_1
-    //   104: aload_0
-    //   105: getfield 24	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   108: aload 9
-    //   110: invokevirtual 153	android/os/Bundle:get	(Ljava/lang/String;)Ljava/lang/Object;
-    //   113: astore 10
-    //   115: aload 5
-    //   117: astore_1
-    //   118: aload 10
-    //   120: instanceof 149
-    //   123: ifeq -50 -> 73
-    //   126: aload 5
-    //   128: astore_1
-    //   129: aload 7
-    //   131: aload 9
-    //   133: aload 10
-    //   135: checkcast 149	java/lang/String
-    //   138: invokevirtual 156	org/apache/http/client/methods/HttpGet:addHeader	(Ljava/lang/String;Ljava/lang/String;)V
-    //   141: goto -68 -> 73
-    //   144: astore 5
-    //   146: aconst_null
-    //   147: astore_3
-    //   148: aload 4
-    //   150: astore_1
-    //   151: ldc 96
-    //   153: iconst_1
-    //   154: ldc 158
-    //   156: aload 5
-    //   158: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   161: aload_3
-    //   162: astore_1
-    //   163: aload 4
-    //   165: ifnull +10 -> 175
-    //   168: aload 4
-    //   170: invokevirtual 163	java/io/InputStream:close	()V
-    //   173: aload_3
-    //   174: astore_1
-    //   175: aload_1
-    //   176: areturn
-    //   177: aload 5
-    //   179: astore_1
-    //   180: aload 6
-    //   182: aload 7
-    //   184: invokeinterface 169 2 0
-    //   189: invokeinterface 175 1 0
-    //   194: astore 6
-    //   196: aload 6
-    //   198: ifnull +194 -> 392
-    //   201: aload 5
-    //   203: astore_1
-    //   204: aload 6
-    //   206: invokeinterface 181 1 0
-    //   211: astore 5
-    //   213: aload 5
-    //   215: astore_1
-    //   216: aload_0
-    //   217: aload_1
-    //   218: invokevirtual 184	com/tencent/open/base/http/HttpImageDownloadAsyncTask:a	(Ljava/io/InputStream;)[B
-    //   221: astore_3
-    //   222: aload_3
-    //   223: iconst_0
-    //   224: aload_3
-    //   225: arraylength
-    //   226: invokestatic 190	com/tencent/image/SafeBitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
-    //   229: astore_3
-    //   230: aload_3
-    //   231: ifnonnull +47 -> 278
-    //   234: iconst_1
-    //   235: istore_2
-    //   236: ldc 96
-    //   238: iconst_1
-    //   239: iconst_2
-    //   240: anewarray 192	java/lang/Object
-    //   243: dup
-    //   244: iconst_0
-    //   245: ldc 194
-    //   247: aastore
-    //   248: dup
-    //   249: iconst_1
-    //   250: iload_2
-    //   251: invokestatic 200	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   254: aastore
-    //   255: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   258: aload_1
-    //   259: astore 4
-    //   261: aload_3
-    //   262: astore_1
-    //   263: aload 4
-    //   265: ifnull -90 -> 175
-    //   268: aload 4
-    //   270: invokevirtual 163	java/io/InputStream:close	()V
-    //   273: aload_3
-    //   274: areturn
-    //   275: astore_1
-    //   276: aload_3
-    //   277: areturn
-    //   278: iconst_0
-    //   279: istore_2
-    //   280: goto -44 -> 236
-    //   283: astore 5
-    //   285: aconst_null
-    //   286: astore_1
-    //   287: aload_3
-    //   288: astore 4
-    //   290: aload_1
-    //   291: astore_3
-    //   292: aload 4
-    //   294: astore_1
-    //   295: ldc 96
-    //   297: iconst_1
-    //   298: ldc 205
-    //   300: aload 5
-    //   302: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   305: aload_3
-    //   306: astore_1
-    //   307: aload 4
-    //   309: ifnull -134 -> 175
-    //   312: aload 4
-    //   314: invokevirtual 163	java/io/InputStream:close	()V
-    //   317: aload_3
-    //   318: areturn
-    //   319: astore_1
-    //   320: aload_3
-    //   321: areturn
-    //   322: astore 4
-    //   324: aload_1
-    //   325: astore_3
-    //   326: aload 4
-    //   328: astore_1
-    //   329: aload_3
-    //   330: ifnull +7 -> 337
-    //   333: aload_3
-    //   334: invokevirtual 163	java/io/InputStream:close	()V
-    //   337: aload_1
-    //   338: athrow
-    //   339: astore_1
-    //   340: aload_3
-    //   341: areturn
-    //   342: astore_3
-    //   343: goto -6 -> 337
-    //   346: astore 4
-    //   348: aload_1
-    //   349: astore_3
-    //   350: aload 4
-    //   352: astore_1
-    //   353: goto -24 -> 329
-    //   356: astore 5
-    //   358: aconst_null
-    //   359: astore_3
-    //   360: aload_1
-    //   361: astore 4
-    //   363: goto -71 -> 292
-    //   366: astore 5
-    //   368: aload_1
-    //   369: astore 4
-    //   371: goto -79 -> 292
+    //   50: getfield 125	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   53: invokespecial 126	org/apache/http/client/methods/HttpGet:<init>	(Ljava/lang/String;)V
+    //   56: astore 11
+    //   58: aload 9
+    //   60: astore_1
+    //   61: aload_0
+    //   62: getfield 24	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
+    //   65: ifnull +91 -> 156
+    //   68: aload 9
+    //   70: astore_1
+    //   71: aload_0
+    //   72: getfield 24	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
+    //   75: invokevirtual 132	android/os/Bundle:keySet	()Ljava/util/Set;
+    //   78: invokeinterface 138 1 0
+    //   83: astore 12
+    //   85: aload 9
+    //   87: astore_1
+    //   88: aload 12
+    //   90: invokeinterface 143 1 0
+    //   95: ifeq +61 -> 156
+    //   98: aload 9
+    //   100: astore_1
+    //   101: aload 12
+    //   103: invokeinterface 147 1 0
+    //   108: checkcast 149	java/lang/String
+    //   111: astore 13
+    //   113: aload 9
+    //   115: astore_1
+    //   116: aload_0
+    //   117: getfield 24	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
+    //   120: aload 13
+    //   122: invokevirtual 153	android/os/Bundle:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   125: astore 14
+    //   127: aload 9
+    //   129: astore_1
+    //   130: aload 14
+    //   132: instanceof 149
+    //   135: ifeq -50 -> 85
+    //   138: aload 9
+    //   140: astore_1
+    //   141: aload 11
+    //   143: aload 13
+    //   145: aload 14
+    //   147: checkcast 149	java/lang/String
+    //   150: invokevirtual 156	org/apache/http/client/methods/HttpGet:addHeader	(Ljava/lang/String;Ljava/lang/String;)V
+    //   153: goto -68 -> 85
+    //   156: aload 9
+    //   158: astore_1
+    //   159: aload 10
+    //   161: aload 11
+    //   163: invokeinterface 162 2 0
+    //   168: invokeinterface 168 1 0
+    //   173: astore 10
+    //   175: aload 10
+    //   177: ifnull +127 -> 304
+    //   180: aload 9
+    //   182: astore_1
+    //   183: aload 10
+    //   185: invokeinterface 174 1 0
+    //   190: astore 4
+    //   192: aload 6
+    //   194: astore_1
+    //   195: aload 7
+    //   197: astore 5
+    //   199: aload_0
+    //   200: aload 4
+    //   202: invokevirtual 177	com/tencent/open/base/http/HttpImageDownloadAsyncTask:a	(Ljava/io/InputStream;)[B
+    //   205: astore 8
+    //   207: aload 6
+    //   209: astore_1
+    //   210: aload 7
+    //   212: astore 5
+    //   214: aload 8
+    //   216: arraylength
+    //   217: istore_2
+    //   218: iconst_0
+    //   219: istore_3
+    //   220: aload 6
+    //   222: astore_1
+    //   223: aload 7
+    //   225: astore 5
+    //   227: aload 8
+    //   229: iconst_0
+    //   230: iload_2
+    //   231: invokestatic 183	com/tencent/image/SafeBitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
+    //   234: astore 6
+    //   236: aload 6
+    //   238: ifnonnull +5 -> 243
+    //   241: iconst_1
+    //   242: istore_3
+    //   243: aload 6
+    //   245: astore_1
+    //   246: aload 6
+    //   248: astore 5
+    //   250: ldc 88
+    //   252: iconst_1
+    //   253: iconst_2
+    //   254: anewarray 185	java/lang/Object
+    //   257: dup
+    //   258: iconst_0
+    //   259: ldc 187
+    //   261: aastore
+    //   262: dup
+    //   263: iconst_1
+    //   264: iload_3
+    //   265: invokestatic 193	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   268: aastore
+    //   269: invokestatic 196	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   272: goto +41 -> 313
+    //   275: astore 5
+    //   277: aload 4
+    //   279: astore_1
+    //   280: aload 5
+    //   282: astore 4
+    //   284: goto +125 -> 409
+    //   287: astore 6
+    //   289: aload 4
+    //   291: astore 5
+    //   293: aload_1
+    //   294: astore 4
+    //   296: goto +40 -> 336
+    //   299: astore 6
+    //   301: goto +79 -> 380
+    //   304: aconst_null
+    //   305: astore_1
+    //   306: aload 4
+    //   308: astore 6
+    //   310: aload_1
+    //   311: astore 4
+    //   313: aload 4
+    //   315: ifnull +8 -> 323
+    //   318: aload 4
+    //   320: invokevirtual 201	java/io/InputStream:close	()V
+    //   323: aload 6
+    //   325: areturn
+    //   326: astore 4
+    //   328: goto +81 -> 409
+    //   331: astore 6
+    //   333: aconst_null
+    //   334: astore 4
+    //   336: aload 5
+    //   338: astore_1
+    //   339: ldc 88
+    //   341: iconst_1
+    //   342: ldc 203
+    //   344: aload 6
+    //   346: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   349: aload 4
+    //   351: astore_1
+    //   352: aload 5
+    //   354: ifnull +53 -> 407
+    //   357: aload 5
+    //   359: astore_1
+    //   360: aload 4
+    //   362: astore 5
+    //   364: aload_1
+    //   365: invokevirtual 201	java/io/InputStream:close	()V
+    //   368: aload 5
+    //   370: areturn
+    //   371: astore 6
+    //   373: aconst_null
     //   374: astore 5
-    //   376: aconst_null
-    //   377: astore_3
-    //   378: aload_1
-    //   379: astore 4
-    //   381: goto -233 -> 148
-    //   384: astore 5
-    //   386: aload_1
-    //   387: astore 4
-    //   389: goto -241 -> 148
-    //   392: aconst_null
-    //   393: astore 4
-    //   395: aconst_null
-    //   396: astore_3
-    //   397: goto -136 -> 261
+    //   376: aload 8
+    //   378: astore 4
+    //   380: aload 4
+    //   382: astore_1
+    //   383: ldc 88
+    //   385: iconst_1
+    //   386: ldc 205
+    //   388: aload 6
+    //   390: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   393: aload 5
+    //   395: astore_1
+    //   396: aload 4
+    //   398: ifnull +9 -> 407
+    //   401: aload 4
+    //   403: astore_1
+    //   404: goto -40 -> 364
+    //   407: aload_1
+    //   408: areturn
+    //   409: aload_1
+    //   410: ifnull +7 -> 417
+    //   413: aload_1
+    //   414: invokevirtual 201	java/io/InputStream:close	()V
+    //   417: goto +6 -> 423
+    //   420: aload 4
+    //   422: athrow
+    //   423: goto -3 -> 420
+    //   426: astore_1
+    //   427: goto -104 -> 323
+    //   430: astore_1
+    //   431: aload 5
+    //   433: areturn
+    //   434: astore_1
+    //   435: goto -18 -> 417
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	400	0	this	HttpImageDownloadAsyncTask
-    //   0	400	1	paramVarArgs	Void[]
-    //   235	45	2	bool	boolean
-    //   1	340	3	localObject1	java.lang.Object
-    //   342	1	3	localIOException	java.io.IOException
-    //   349	48	3	arrayOfVoid1	Void[]
-    //   6	307	4	localObject2	java.lang.Object
-    //   322	5	4	localObject3	java.lang.Object
-    //   346	5	4	localObject4	java.lang.Object
-    //   361	33	4	arrayOfVoid2	Void[]
-    //   3	124	5	localObject5	java.lang.Object
-    //   144	58	5	localException1	Exception
-    //   211	3	5	localInputStream	InputStream
-    //   283	18	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   356	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   366	1	5	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   374	1	5	localException2	Exception
-    //   384	1	5	localException3	Exception
-    //   28	177	6	localObject6	java.lang.Object
-    //   44	139	7	localHttpGet	org.apache.http.client.methods.HttpGet
-    //   71	19	8	localIterator	java.util.Iterator
-    //   99	33	9	str	String
-    //   113	21	10	localObject7	java.lang.Object
+    //   0	438	0	this	HttpImageDownloadAsyncTask
+    //   0	438	1	paramVarArgs	Void[]
+    //   217	14	2	i	int
+    //   219	46	3	bool	boolean
+    //   17	302	4	localObject1	java.lang.Object
+    //   326	1	4	localObject2	java.lang.Object
+    //   334	87	4	localObject3	java.lang.Object
+    //   23	226	5	localObject4	java.lang.Object
+    //   275	6	5	localObject5	java.lang.Object
+    //   291	141	5	localObject6	java.lang.Object
+    //   29	218	6	localBitmap	Bitmap
+    //   287	1	6	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   299	1	6	localException1	Exception
+    //   308	16	6	localObject7	java.lang.Object
+    //   331	14	6	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   371	18	6	localException2	Exception
+    //   14	210	7	localObject8	java.lang.Object
+    //   26	351	8	arrayOfByte	byte[]
+    //   20	161	9	localObject9	java.lang.Object
+    //   40	144	10	localObject10	java.lang.Object
+    //   56	106	11	localHttpGet	org.apache.http.client.methods.HttpGet
+    //   83	19	12	localIterator	java.util.Iterator
+    //   111	33	13	str	String
+    //   125	21	14	localObject11	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   33	46	144	java/lang/Exception
-    //   49	56	144	java/lang/Exception
-    //   59	73	144	java/lang/Exception
-    //   76	86	144	java/lang/Exception
-    //   89	101	144	java/lang/Exception
-    //   104	115	144	java/lang/Exception
-    //   118	126	144	java/lang/Exception
-    //   129	141	144	java/lang/Exception
-    //   180	196	144	java/lang/Exception
-    //   204	213	144	java/lang/Exception
-    //   268	273	275	java/io/IOException
-    //   33	46	283	java/lang/OutOfMemoryError
-    //   49	56	283	java/lang/OutOfMemoryError
-    //   59	73	283	java/lang/OutOfMemoryError
-    //   76	86	283	java/lang/OutOfMemoryError
-    //   89	101	283	java/lang/OutOfMemoryError
-    //   104	115	283	java/lang/OutOfMemoryError
-    //   118	126	283	java/lang/OutOfMemoryError
-    //   129	141	283	java/lang/OutOfMemoryError
-    //   180	196	283	java/lang/OutOfMemoryError
-    //   204	213	283	java/lang/OutOfMemoryError
-    //   312	317	319	java/io/IOException
-    //   33	46	322	finally
-    //   49	56	322	finally
-    //   59	73	322	finally
-    //   76	86	322	finally
-    //   89	101	322	finally
-    //   104	115	322	finally
-    //   118	126	322	finally
-    //   129	141	322	finally
-    //   151	161	322	finally
-    //   180	196	322	finally
-    //   204	213	322	finally
-    //   295	305	322	finally
-    //   168	173	339	java/io/IOException
-    //   333	337	342	java/io/IOException
-    //   216	230	346	finally
-    //   236	258	346	finally
-    //   216	230	356	java/lang/OutOfMemoryError
-    //   236	258	366	java/lang/OutOfMemoryError
-    //   216	230	374	java/lang/Exception
-    //   236	258	384	java/lang/Exception
+    //   199	207	275	finally
+    //   214	218	275	finally
+    //   227	236	275	finally
+    //   250	272	275	finally
+    //   199	207	287	java/lang/OutOfMemoryError
+    //   214	218	287	java/lang/OutOfMemoryError
+    //   227	236	287	java/lang/OutOfMemoryError
+    //   250	272	287	java/lang/OutOfMemoryError
+    //   199	207	299	java/lang/Exception
+    //   214	218	299	java/lang/Exception
+    //   227	236	299	java/lang/Exception
+    //   250	272	299	java/lang/Exception
+    //   45	58	326	finally
+    //   61	68	326	finally
+    //   71	85	326	finally
+    //   88	98	326	finally
+    //   101	113	326	finally
+    //   116	127	326	finally
+    //   130	138	326	finally
+    //   141	153	326	finally
+    //   159	175	326	finally
+    //   183	192	326	finally
+    //   339	349	326	finally
+    //   383	393	326	finally
+    //   45	58	331	java/lang/OutOfMemoryError
+    //   61	68	331	java/lang/OutOfMemoryError
+    //   71	85	331	java/lang/OutOfMemoryError
+    //   88	98	331	java/lang/OutOfMemoryError
+    //   101	113	331	java/lang/OutOfMemoryError
+    //   116	127	331	java/lang/OutOfMemoryError
+    //   130	138	331	java/lang/OutOfMemoryError
+    //   141	153	331	java/lang/OutOfMemoryError
+    //   159	175	331	java/lang/OutOfMemoryError
+    //   183	192	331	java/lang/OutOfMemoryError
+    //   45	58	371	java/lang/Exception
+    //   61	68	371	java/lang/Exception
+    //   71	85	371	java/lang/Exception
+    //   88	98	371	java/lang/Exception
+    //   101	113	371	java/lang/Exception
+    //   116	127	371	java/lang/Exception
+    //   130	138	371	java/lang/Exception
+    //   141	153	371	java/lang/Exception
+    //   159	175	371	java/lang/Exception
+    //   183	192	371	java/lang/Exception
+    //   318	323	426	java/io/IOException
+    //   364	368	430	java/io/IOException
+    //   413	417	434	java/io/IOException
   }
   
   protected void a(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_ComTencentOpenBaseHttpHttpImageDownloadAsyncTask$TaskCompleteCallback != null) {
-      this.jdField_a_of_type_ComTencentOpenBaseHttpHttpImageDownloadAsyncTask$TaskCompleteCallback.a(this.c, paramBitmap);
+    HttpImageDownloadAsyncTask.TaskCompleteCallback localTaskCompleteCallback = this.jdField_a_of_type_ComTencentOpenBaseHttpHttpImageDownloadAsyncTask$TaskCompleteCallback;
+    if (localTaskCompleteCallback != null) {
+      localTaskCompleteCallback.a(this.c, paramBitmap);
     }
   }
   
@@ -376,7 +387,7 @@ public class HttpImageDownloadAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.http.HttpImageDownloadAsyncTask
  * JD-Core Version:    0.7.0.1
  */

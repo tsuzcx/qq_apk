@@ -52,8 +52,9 @@ public class LbsDataV2$GeoInfo
     localGeoInfo.strVillage = this.strVillage;
     localGeoInfo.strRoad = this.strRoad;
     localGeoInfo.strDefaultName = this.strDefaultName;
-    if (this.gpsInfo != null) {
-      localGeoInfo.gpsInfo = this.gpsInfo.clone();
+    LbsDataV2.GpsInfo localGpsInfo = this.gpsInfo;
+    if (localGpsInfo != null) {
+      localGeoInfo.gpsInfo = localGpsInfo.clone();
     }
     return localGeoInfo;
   }
@@ -86,7 +87,7 @@ public class LbsDataV2$GeoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.GeoInfo
  * JD-Core Version:    0.7.0.1
  */

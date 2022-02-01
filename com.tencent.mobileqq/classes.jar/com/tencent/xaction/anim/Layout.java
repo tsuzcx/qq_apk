@@ -9,36 +9,40 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Layout;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "h", "", "getH", "()I", "setH", "(I)V", "hPX", "getHPX", "setHPX", "isConvert", "", "()Z", "setConvert", "(Z)V", "startH", "getStartH", "setStartH", "startW", "getStartW", "setStartW", "startX", "getStartX", "setStartX", "startY", "getStartY", "setStartY", "w", "getW", "setW", "wPX", "getWPX", "setWPX", "x", "getX", "setX", "xPX", "getXPX", "setXPX", "y", "getY", "setY", "yPX", "getYPX", "setYPX", "doFrameUpdate", "", "animTime", "", "end", "preStart", "view", "Landroid/view/View;", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Layout;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "h", "", "getH", "()I", "setH", "(I)V", "hPX", "getHPX", "setHPX", "isConvert", "", "()Z", "setConvert", "(Z)V", "startH", "getStartH", "setStartH", "startW", "getStartW", "setStartW", "startX", "getStartX", "setStartX", "startY", "getStartY", "setStartY", "w", "getW", "setW", "wPX", "getWPX", "setWPX", "x", "getX", "setX", "xPX", "getXPX", "setXPX", "y", "getY", "setY", "yPX", "getYPX", "setYPX", "doFrameUpdate", "", "animTime", "", "end", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class Layout
   extends BaseAnim
 {
-  private int h = -1;
-  private transient int hPX = -1;
+  private int h = ScreenUnit.a.a();
+  private transient int hPX = ScreenUnit.a.a();
   private transient boolean isConvert;
   private int startH;
   private int startW;
   private int startX;
   private int startY;
-  private int w = -1;
-  private transient int wPX = -1;
-  private int x = -1;
-  private transient int xPX = -1;
-  private int y = -1;
-  private transient int yPX = -1;
+  private int w = ScreenUnit.a.a();
+  private transient int wPX = ScreenUnit.a.a();
+  private int x = ScreenUnit.a.a();
+  private transient int xPX = ScreenUnit.a.a();
+  private int y = ScreenUnit.a.a();
+  private transient int yPX = ScreenUnit.a.a();
   
   public void doFrameUpdate(float paramFloat)
   {
-    float f1 = this.startW;
-    float f2 = this.wPX - this.startW;
-    float f3 = this.startH;
-    float f4 = this.hPX - this.startH;
-    float f5 = this.startX + (this.xPX - this.startX) * paramFloat;
-    float f6 = this.startY + (this.yPX - this.startY) * paramFloat;
+    int i = this.startW;
+    float f1 = i;
+    float f2 = this.wPX - i;
+    i = this.startH;
+    float f3 = i;
+    float f4 = this.hPX - i;
+    i = this.startX;
+    float f5 = i + (this.xPX - i) * paramFloat;
+    i = this.startY;
+    float f6 = i + (this.yPX - i) * paramFloat;
     View localView = getView();
     if (localView != null) {
-      localView.layout((int)f5, (int)f6, (int)(f1 + f2 * paramFloat + f5), (int)(f3 + f4 * paramFloat + f6));
+      localView.layout((int)f5, (int)f6, (int)(f5 + (f1 + f2 * paramFloat)), (int)(f6 + (f3 + f4 * paramFloat)));
     }
   }
   
@@ -117,40 +121,31 @@ public final class Layout
     this.startH = paramView.getHeight();
     this.startX = ((int)paramView.getX());
     this.startY = ((int)paramView.getY());
-    if (this.w > -1)
-    {
+    int i;
+    if (this.w > ScreenUnit.a.a()) {
       i = ScreenUnit.a.a(this.w);
-      this.wPX = i;
-      if (this.h <= -1) {
-        break label150;
-      }
-      i = ScreenUnit.a.a(this.h);
-      label88:
-      this.hPX = i;
-      if (this.x <= -1) {
-        break label158;
-      }
-      i = ScreenUnit.a.a(this.x);
-      label112:
-      this.xPX = i;
-      if (this.y <= -1) {
-        break label166;
-      }
-    }
-    label150:
-    label158:
-    label166:
-    for (int i = ScreenUnit.a.a(this.y);; i = this.startY)
-    {
-      this.yPX = i;
-      return;
+    } else {
       i = this.startW;
-      break;
-      i = this.startH;
-      break label88;
-      i = this.startX;
-      break label112;
     }
+    this.wPX = i;
+    if (this.h > ScreenUnit.a.a()) {
+      i = ScreenUnit.a.a(this.h);
+    } else {
+      i = this.startH;
+    }
+    this.hPX = i;
+    if (this.x > ScreenUnit.a.a()) {
+      i = ScreenUnit.a.a(this.x);
+    } else {
+      i = this.startX;
+    }
+    this.xPX = i;
+    if (this.y > ScreenUnit.a.a()) {
+      i = ScreenUnit.a.a(this.y);
+    } else {
+      i = this.startY;
+    }
+    this.yPX = i;
   }
   
   public final void setConvert(boolean paramBoolean)
@@ -220,7 +215,7 @@ public final class Layout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.anim.Layout
  * JD-Core Version:    0.7.0.1
  */

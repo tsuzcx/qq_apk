@@ -16,12 +16,18 @@ class GdtDemoMvFragment$1
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    QLog.i("GdtDemoMvFragment", 1, "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceiveResult() called with: resultCode = [");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], resultData = [");
+    localStringBuilder.append(paramBundle);
+    localStringBuilder.append("]");
+    QLog.i("GdtDemoMvFragment", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment.1
  * JD-Core Version:    0.7.0.1
  */

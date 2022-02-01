@@ -8,10 +8,10 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.mutualmark.info.MutualMarkForDisplayInfo;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -29,7 +29,13 @@ public class MutualMarkBusinessLogicHelper
     while (i < paramList.size())
     {
       MessageRecord localMessageRecord = (MessageRecord)paramList.get(i);
-      localStringBuilder.append("[").append(i).append("] ").append(localMessageRecord.toString()).append("\n").append(localMessageRecord.getExtInfoFromExtStr("SendMessageError")).append("\n");
+      localStringBuilder.append("[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("] ");
+      localStringBuilder.append(localMessageRecord.toString());
+      localStringBuilder.append("\n");
+      localStringBuilder.append(localMessageRecord.getExtInfoFromExtStr("SendMessageError"));
+      localStringBuilder.append("\n");
       i += 1;
     }
     return localStringBuilder.toString();
@@ -74,8 +80,16 @@ public class MutualMarkBusinessLogicHelper
           ReportController.b(paramQQAppInterface, "dc00898", "", str4, "0X800A7E4", str5, i, 0, paramMessageForUniteGrayTip, "", "", "");
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipExposure id:" + str2 + " willDowngradeSoon:" + str3 + " grayID:" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("reportMutualMarkGrayTipExposure id:");
+        paramQQAppInterface.append(str2);
+        paramQQAppInterface.append(" willDowngradeSoon:");
+        paramQQAppInterface.append(str3);
+        paramQQAppInterface.append(" grayID:");
+        paramQQAppInterface.append(paramInt);
+        QLog.i("MutualMarkBusinessLogicHelper", 2, paramQQAppInterface.toString());
       }
     }
   }
@@ -87,53 +101,80 @@ public class MutualMarkBusinessLogicHelper
       paramQQAppInterface = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
       paramMessageForUniteGrayTip.getExtInfoFromExtStr("sub_level");
       paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClickWebLink id:" + paramQQAppInterface + " willDowngradeSoon:" + paramMessageForUniteGrayTip + " url:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("reportMutualMarkGrayTipClickWebLink id:");
+        localStringBuilder.append(paramQQAppInterface);
+        localStringBuilder.append(" willDowngradeSoon:");
+        localStringBuilder.append(paramMessageForUniteGrayTip);
+        localStringBuilder.append(" url:");
+        localStringBuilder.append(paramString);
+        QLog.i("MutualMarkBusinessLogicHelper", 2, localStringBuilder.toString());
       }
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    if (a) {}
-    do
-    {
+    if (a) {
       return;
-      paramQQAppInterface = a(paramQQAppInterface.getMessageFacade().b(paramString, paramInt));
-    } while (paramQQAppInterface.isEmpty());
-    paramQQAppInterface = a(paramQQAppInterface);
-    paramString = new RuntimeException(paramQQAppInterface);
-    CaughtExceptionReport.a(paramString, paramQQAppInterface);
-    QLog.e("MutualMarkBusinessLogicHelper", 1, paramString, new Object[] { paramQQAppInterface });
-    a = true;
+    }
+    paramQQAppInterface = a(paramQQAppInterface.getMessageFacade().a(paramString, paramInt));
+    if (!paramQQAppInterface.isEmpty())
+    {
+      paramQQAppInterface = a(paramQQAppInterface);
+      paramString = new RuntimeException(paramQQAppInterface);
+      CaughtExceptionReport.a(paramString, paramQQAppInterface);
+      QLog.e("MutualMarkBusinessLogicHelper", 1, paramString, new Object[] { paramQQAppInterface });
+      a = true;
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, MutualMarkForDisplayInfo paramMutualMarkForDisplayInfo)
   {
     if (paramMutualMarkForDisplayInfo != null)
     {
-      ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E3", MutualMarkUtils.a(paramMutualMarkForDisplayInfo.a, paramMutualMarkForDisplayInfo.b), (int)(paramMutualMarkForDisplayInfo.a * 10L + paramMutualMarkForDisplayInfo.b), 0, "" + paramMutualMarkForDisplayInfo.h, "", "", "");
-      switch ((int)paramMutualMarkForDisplayInfo.a)
+      Object localObject = MutualMarkUtils.a(paramMutualMarkForDisplayInfo.a, paramMutualMarkForDisplayInfo.b);
+      int i = (int)(paramMutualMarkForDisplayInfo.a * 10L + paramMutualMarkForDisplayInfo.b);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramMutualMarkForDisplayInfo.h);
+      ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E3", (String)localObject, i, 0, localStringBuilder.toString(), "", "", "");
+      if ((int)paramMutualMarkForDisplayInfo.a == 17)
       {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append(paramMutualMarkForDisplayInfo.h);
+        ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7A1", "0X800A7A1", 0, 0, ((StringBuilder)localObject).toString(), "", "", "");
       }
     }
-    for (;;)
-    {
-      VipUtils.a(paramString, paramMutualMarkForDisplayInfo, paramQQAppInterface, "C2C_click");
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8007602", "0X8007602", 0, 0, "", "", "", "");
-      ReportController.b(null, "dc00898", "", "", "0X800A1FA", "0X800A1FA", 0, 0, "", "", "", "");
-      return;
-      ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7A1", "0X800A7A1", 0, 0, "" + paramMutualMarkForDisplayInfo.h, "", "", "");
-    }
+    VipUtils.a(paramString, paramMutualMarkForDisplayInfo, paramQQAppInterface, "C2C_click");
+    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8007602", "0X8007602", 0, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800A1FA", "0X800A1FA", 0, 0, "", "", "", "");
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, MutualMarkForDisplayInfo paramMutualMarkForDisplayInfo1, MutualMarkForDisplayInfo paramMutualMarkForDisplayInfo2)
   {
-    if (paramMutualMarkForDisplayInfo1 != null) {
-      ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", MutualMarkUtils.a(paramMutualMarkForDisplayInfo1.a, paramMutualMarkForDisplayInfo1.b), (int)(paramMutualMarkForDisplayInfo1.a * 10L + paramMutualMarkForDisplayInfo1.b), 0, "" + paramMutualMarkForDisplayInfo1.h, "", "", "");
+    Object localObject;
+    int i;
+    if (paramMutualMarkForDisplayInfo1 != null)
+    {
+      localObject = MutualMarkUtils.a(paramMutualMarkForDisplayInfo1.a, paramMutualMarkForDisplayInfo1.b);
+      i = (int)(paramMutualMarkForDisplayInfo1.a * 10L + paramMutualMarkForDisplayInfo1.b);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramMutualMarkForDisplayInfo1.h);
+      ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", (String)localObject, i, 0, localStringBuilder.toString(), "", "", "");
     }
-    if (paramMutualMarkForDisplayInfo2 != null) {
-      ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", MutualMarkUtils.a(paramMutualMarkForDisplayInfo2.a, paramMutualMarkForDisplayInfo2.b), (int)(paramMutualMarkForDisplayInfo2.a * 10L + paramMutualMarkForDisplayInfo2.b), 0, "" + paramMutualMarkForDisplayInfo2.h, "", "", "");
+    if (paramMutualMarkForDisplayInfo2 != null)
+    {
+      paramMutualMarkForDisplayInfo1 = MutualMarkUtils.a(paramMutualMarkForDisplayInfo2.a, paramMutualMarkForDisplayInfo2.b);
+      i = (int)(paramMutualMarkForDisplayInfo2.a * 10L + paramMutualMarkForDisplayInfo2.b);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramMutualMarkForDisplayInfo2.h);
+      ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", paramMutualMarkForDisplayInfo1, i, 0, ((StringBuilder)localObject).toString(), "", "", "");
     }
     ReportController.b(null, "dc00898", "", "", "0X800A1F9", "0X800A1F9", 0, 0, "", "", "", "");
   }
@@ -145,7 +186,6 @@ public class MutualMarkBusinessLogicHelper
   
   private static boolean a(MessageRecord paramMessageRecord)
   {
-    boolean bool = true;
     if (!paramMessageRecord.isSendFromLocal()) {
       return false;
     }
@@ -153,12 +193,7 @@ public class MutualMarkBusinessLogicHelper
     localDate.setTime(paramMessageRecord.time * 1000L);
     int i = localDate.getDate();
     localDate.setTime(NetConnInfoCenter.getServerTimeMillis());
-    if (localDate.getDate() - i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+    return localDate.getDate() - i == 1;
   }
   
   public static void b(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
@@ -184,15 +219,23 @@ public class MutualMarkBusinessLogicHelper
           ReportController.b(paramQQAppInterface, "dc00898", "", str4, "0X800A7E5", str5, i, 0, paramMessageForUniteGrayTip, "", "", "");
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClick id:" + str2 + " willDowngradeSoon:" + str3 + " grayID:" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("reportMutualMarkGrayTipClick id:");
+        paramQQAppInterface.append(str2);
+        paramQQAppInterface.append(" willDowngradeSoon:");
+        paramQQAppInterface.append(str3);
+        paramQQAppInterface.append(" grayID:");
+        paramQQAppInterface.append(paramInt);
+        QLog.i("MutualMarkBusinessLogicHelper", 2, paramQQAppInterface.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.MutualMarkBusinessLogicHelper
  * JD-Core Version:    0.7.0.1
  */

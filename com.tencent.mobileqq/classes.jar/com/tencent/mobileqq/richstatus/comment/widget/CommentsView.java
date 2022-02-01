@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.OnHierarchyChangeListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -76,7 +77,7 @@ public class CommentsView
       if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
         this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
       }
-      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562206, null, false);
+      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562043, null, false);
     }
     a(localView1, paramInt);
     return localView1;
@@ -85,31 +86,34 @@ public class CommentsView
   private void a(View paramView, int paramInt)
   {
     TextView localTextView = (TextView)paramView;
-    CommentMovementMethod localCommentMovementMethod = new CommentMovementMethod(this.b, this.b);
+    int i = this.b;
+    CommentMovementMethod localCommentMovementMethod = new CommentMovementMethod(i, i);
     CommentItem localCommentItem = (CommentItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((localCommentItem == null) || (localCommentItem.user == null)) {
-      return;
-    }
-    String str = localCommentItem.user.b;
-    paramView = "";
-    if (localCommentItem.toReplyUser != null) {
-      paramView = localCommentItem.toReplyUser.b;
-    }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    localSpannableStringBuilder.append(a(str, localCommentItem.user.a));
-    if (!TextUtils.isEmpty(paramView))
+    if (localCommentItem != null)
     {
-      localSpannableStringBuilder.append(" ");
-      localSpannableStringBuilder.append(getContext().getString(2131718542));
-      localSpannableStringBuilder.append(" ");
-      if (localCommentItem.toReplyUser == null) {
-        break label270;
+      if (localCommentItem.user == null) {
+        return;
       }
-    }
-    label270:
-    for (str = localCommentItem.toReplyUser.a;; str = "")
-    {
-      localSpannableStringBuilder.append(a(paramView, str));
+      String str2 = localCommentItem.user.b;
+      paramView = localCommentItem.toReplyUser;
+      String str1 = "";
+      if (paramView != null) {
+        paramView = localCommentItem.toReplyUser.b;
+      } else {
+        paramView = "";
+      }
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      localSpannableStringBuilder.append(a(str2, localCommentItem.user.a));
+      if (!TextUtils.isEmpty(paramView))
+      {
+        localSpannableStringBuilder.append(" ");
+        localSpannableStringBuilder.append(getContext().getString(2131718207));
+        localSpannableStringBuilder.append(" ");
+        if (localCommentItem.toReplyUser != null) {
+          str1 = localCommentItem.toReplyUser.a;
+        }
+        localSpannableStringBuilder.append(a(paramView, str1));
+      }
       localSpannableStringBuilder.append(": ");
       paramView = localCommentItem.content;
       if (!TextUtils.isEmpty(paramView)) {
@@ -120,7 +124,6 @@ public class CommentsView
       localTextView.setMovementMethod(localCommentMovementMethod);
       localTextView.setOnClickListener(new CommentsView.1(this, localCommentMovementMethod, paramInt));
       localTextView.setOnLongClickListener(new CommentsView.2(this, localCommentMovementMethod, paramInt));
-      return;
     }
   }
   
@@ -128,41 +131,42 @@ public class CommentsView
   {
     this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentUtilsSimpleWeakObjectPool = new SimpleWeakObjectPool();
     setOnHierarchyChangeListener(this);
-    this.c = getResources().getColor(2131167235);
+    this.c = getResources().getColor(2131167266);
   }
   
   public void a()
   {
-    int i = 0;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      setVisibility(8);
-    }
-    do
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      return;
+      int i = 0;
       setVisibility(0);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.topMargin = AIOUtils.a(2.0F, getResources());
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      localObject = new LinearLayout.LayoutParams(-1, -2);
+      ((LinearLayout.LayoutParams)localObject).topMargin = AIOUtils.b(2.0F, getResources());
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        if (getChildCount() > i) {
+        if (getChildCount() > i)
+        {
           a(getChildAt(i), i);
         }
-        for (;;)
+        else
         {
-          i += 1;
-          break;
           View localView = a(i);
           if (localView == null)
           {
             QLog.e("CommentsView", 1, "listView item layout is null, please check getView()...");
             return;
           }
-          addView(localView, i, localLayoutParams);
+          addView(localView, i, (ViewGroup.LayoutParams)localObject);
         }
+        i += 1;
       }
-    } while (getChildCount() <= this.jdField_a_of_type_JavaUtilList.size());
-    removeViews(this.jdField_a_of_type_JavaUtilList.size(), getChildCount() - this.jdField_a_of_type_JavaUtilList.size());
+      if (getChildCount() > this.jdField_a_of_type_JavaUtilList.size()) {
+        removeViews(this.jdField_a_of_type_JavaUtilList.size(), getChildCount() - this.jdField_a_of_type_JavaUtilList.size());
+      }
+      return;
+    }
+    setVisibility(8);
   }
   
   protected void a(AttributeSet paramAttributeSet)
@@ -170,8 +174,8 @@ public class CommentsView
     paramAttributeSet = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.CommentsView, 0, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166485));
-      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166957));
+      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166496));
+      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166976));
       return;
     }
     finally
@@ -224,7 +228,7 @@ public class CommentsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.widget.CommentsView
  * JD-Core Version:    0.7.0.1
  */

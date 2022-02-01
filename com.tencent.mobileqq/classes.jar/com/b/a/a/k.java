@@ -24,28 +24,41 @@ public final class k<T>
   {
     try
     {
-      if (this.c != null) {
+      if (this.c == null)
+      {
+        if (this.a)
+        {
+          paramLong = this.b;
+          return paramLong;
+        }
+        long l = 0L;
+        if (paramLong == null) {}
+        for (;;)
+        {
+          wait(l);
+          break;
+          if (paramLong.longValue() <= 0L) {
+            break;
+          }
+          l = paramLong.longValue();
+        }
+        if (this.c == null)
+        {
+          if (this.a)
+          {
+            paramLong = this.b;
+            return paramLong;
+          }
+          throw new TimeoutException();
+        }
         throw new ExecutionException(this.c);
       }
+      throw new ExecutionException(this.c);
     }
     finally {}
-    if (this.a) {}
-    for (paramLong = this.b;; paramLong = this.b)
+    for (;;)
     {
-      return paramLong;
-      if (paramLong == null) {
-        wait(0L);
-      }
-      while (this.c != null)
-      {
-        throw new ExecutionException(this.c);
-        if (paramLong.longValue() > 0L) {
-          wait(paramLong.longValue());
-        }
-      }
-      if (!this.a) {
-        throw new TimeoutException();
-      }
+      throw paramLong;
     }
   }
   
@@ -116,42 +129,45 @@ public final class k<T>
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 24	com/b/a/a/k:a	Z
-    //   6: ifne +19 -> 25
+    //   6: ifne +28 -> 34
     //   9: aload_0
     //   10: getfield 32	com/b/a/a/k:c	Lcom/b/a/t;
-    //   13: ifnonnull +12 -> 25
+    //   13: ifnonnull +21 -> 34
     //   16: aload_0
     //   17: invokevirtual 91	com/b/a/a/k:isCancelled	()Z
     //   20: istore_1
     //   21: iload_1
-    //   22: ifeq +9 -> 31
-    //   25: iconst_1
-    //   26: istore_1
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: iload_1
-    //   30: ireturn
-    //   31: iconst_0
-    //   32: istore_1
-    //   33: goto -6 -> 27
-    //   36: astore_2
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_2
-    //   40: athrow
+    //   22: ifeq +6 -> 28
+    //   25: goto +9 -> 34
+    //   28: iconst_0
+    //   29: istore_1
+    //   30: aload_0
+    //   31: monitorexit
+    //   32: iload_1
+    //   33: ireturn
+    //   34: iconst_1
+    //   35: istore_1
+    //   36: goto -6 -> 30
+    //   39: astore_2
+    //   40: aload_0
+    //   41: monitorexit
+    //   42: goto +5 -> 47
+    //   45: aload_2
+    //   46: athrow
+    //   47: goto -2 -> 45
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	41	0	this	k
-    //   20	13	1	bool	boolean
-    //   36	4	2	localObject	Object
+    //   0	50	0	this	k
+    //   20	16	1	bool	boolean
+    //   39	7	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	21	36	finally
+    //   2	21	39	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.a.k
  * JD-Core Version:    0.7.0.1
  */

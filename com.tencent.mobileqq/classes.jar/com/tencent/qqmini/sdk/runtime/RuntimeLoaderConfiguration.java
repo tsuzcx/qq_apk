@@ -18,49 +18,63 @@ public class RuntimeLoaderConfiguration
   RuntimeLoaderConfiguration(AppRuntimeLoaderManager paramAppRuntimeLoaderManager)
   {
     paramAppRuntimeLoaderManager = (RuntimeLoaderConfig)paramAppRuntimeLoaderManager.getClass().getAnnotation(RuntimeLoaderConfig.class);
-    if (paramAppRuntimeLoaderManager == null) {}
-    do
-    {
+    if (paramAppRuntimeLoaderManager == null) {
       return;
-      paramAppRuntimeLoaderManager = paramAppRuntimeLoaderManager.loaders();
-    } while (paramAppRuntimeLoaderManager == null);
-    int j = paramAppRuntimeLoaderManager.length;
-    int i = 0;
-    label61:
-    RuntimeLoaderConfiguration.RuntimeLoaderInfo localRuntimeLoaderInfo;
-    Object localObject2;
-    if (i < j)
+    }
+    paramAppRuntimeLoaderManager = paramAppRuntimeLoaderManager.loaders();
+    if (paramAppRuntimeLoaderManager != null)
     {
-      Object localObject1 = paramAppRuntimeLoaderManager[i];
-      try
+      int j = paramAppRuntimeLoaderManager.length;
+      int i = 0;
+      while (i < j)
       {
-        localRuntimeLoaderInfo = new RuntimeLoaderConfiguration.RuntimeLoaderInfo();
-        localObject2 = Class.forName(localObject1.className());
-        if (!BaseRuntimeLoader.class.isAssignableFrom((Class)localObject2)) {
-          throw new AndroidRuntimeException("RuntimeLoaderConfig requires child class of BaseAppRuntimeLoader, current class is " + localObject1.className());
+        Object localObject1 = paramAppRuntimeLoaderManager[i];
+        try
+        {
+          Object localObject2 = new RuntimeLoaderConfiguration.RuntimeLoaderInfo();
+          Object localObject3 = Class.forName(localObject1.className());
+          if (BaseRuntimeLoader.class.isAssignableFrom((Class)localObject3))
+          {
+            ((RuntimeLoaderConfiguration.RuntimeLoaderInfo)localObject2).runtimeLoaderClass = ((Class)localObject3);
+            ((RuntimeLoaderConfiguration.RuntimeLoaderInfo)localObject2).type = localObject1.type();
+            localObject3 = ((RuntimeLoaderConfiguration.RuntimeLoaderInfo)localObject2).runtimeLoaderClass.getField("CREATOR");
+            if ((((Field)localObject3).getModifiers() & 0x8) != 0)
+            {
+              if (BaseRuntimeLoader.Creator.class.isAssignableFrom(((Field)localObject3).getType()))
+              {
+                ((RuntimeLoaderConfiguration.RuntimeLoaderInfo)localObject2).creator = ((BaseRuntimeLoader.Creator)((Field)localObject3).get(null));
+                this.loaderInfoList.add(localObject2);
+              }
+              else
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("RuntimeLoader requires a BaseAppRuntimeLoader.Creator object called CREATOR on class ");
+                ((StringBuilder)localObject2).append(localObject1.className());
+                throw new AndroidRuntimeException(((StringBuilder)localObject2).toString());
+              }
+            }
+            else
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("RuntimeLoader protocol requires the CREATOR object to be static on class ");
+              ((StringBuilder)localObject2).append(localObject1.className());
+              throw new AndroidRuntimeException(((StringBuilder)localObject2).toString());
+            }
+          }
+          else
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("RuntimeLoaderConfig requires child class of BaseAppRuntimeLoader, current class is ");
+            ((StringBuilder)localObject2).append(localObject1.className());
+            throw new AndroidRuntimeException(((StringBuilder)localObject2).toString());
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          QMLog.w("RuntimeLoaderConfiguration", "", localThrowable);
+          i += 1;
         }
       }
-      catch (Throwable localThrowable)
-      {
-        QMLog.w("RuntimeLoaderConfiguration", "", localThrowable);
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label61;
-      break;
-      localRuntimeLoaderInfo.runtimeLoaderClass = ((Class)localObject2);
-      localRuntimeLoaderInfo.type = localThrowable.type();
-      localObject2 = localRuntimeLoaderInfo.runtimeLoaderClass.getField("CREATOR");
-      if ((((Field)localObject2).getModifiers() & 0x8) == 0) {
-        throw new AndroidRuntimeException("RuntimeLoader protocol requires the CREATOR object to be static on class " + localThrowable.className());
-      }
-      if (!BaseRuntimeLoader.Creator.class.isAssignableFrom(((Field)localObject2).getType())) {
-        throw new AndroidRuntimeException("RuntimeLoader requires a BaseAppRuntimeLoader.Creator object called CREATOR on class " + localThrowable.className());
-      }
-      localRuntimeLoaderInfo.creator = ((BaseRuntimeLoader.Creator)((Field)localObject2).get(null));
-      this.loaderInfoList.add(localRuntimeLoaderInfo);
     }
   }
   
@@ -82,8 +96,13 @@ public class RuntimeLoaderConfiguration
     while (localIterator.hasNext())
     {
       RuntimeLoaderConfiguration.RuntimeLoaderInfo localRuntimeLoaderInfo = (RuntimeLoaderConfiguration.RuntimeLoaderInfo)localIterator.next();
-      if (localRuntimeLoaderInfo != null) {
-        localStringBuilder.append("***Loader:").append(localRuntimeLoaderInfo.runtimeLoaderClass.getName()).append(", Creator:").append(localRuntimeLoaderInfo.creator.getClass().getName()).append("***");
+      if (localRuntimeLoaderInfo != null)
+      {
+        localStringBuilder.append("***Loader:");
+        localStringBuilder.append(localRuntimeLoaderInfo.runtimeLoaderClass.getName());
+        localStringBuilder.append(", Creator:");
+        localStringBuilder.append(localRuntimeLoaderInfo.creator.getClass().getName());
+        localStringBuilder.append("***");
       }
     }
     localStringBuilder.append("}");
@@ -92,7 +111,7 @@ public class RuntimeLoaderConfiguration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.RuntimeLoaderConfiguration
  * JD-Core Version:    0.7.0.1
  */

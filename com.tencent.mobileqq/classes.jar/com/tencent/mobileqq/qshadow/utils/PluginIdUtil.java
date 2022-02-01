@@ -15,7 +15,10 @@ public class PluginIdUtil
   
   public static String convertQShadowId2QPluginId(String paramString)
   {
-    return getGroupId(paramString) + ".apk";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getGroupId(paramString));
+    localStringBuilder.append(".apk");
+    return localStringBuilder.toString();
   }
   
   public static String getGroupId(String paramString)
@@ -34,7 +37,7 @@ public class PluginIdUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qshadow.utils.PluginIdUtil
  * JD-Core Version:    0.7.0.1
  */

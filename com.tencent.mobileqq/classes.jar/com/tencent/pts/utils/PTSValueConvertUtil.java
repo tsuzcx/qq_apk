@@ -15,17 +15,29 @@ public final class PTSValueConvertUtil
   
   public static boolean getBoolean(Object paramObject)
   {
-    boolean bool = false;
     if ((paramObject instanceof Boolean)) {
-      bool = ((Boolean)paramObject).booleanValue();
+      return ((Boolean)paramObject).booleanValue();
     }
-    while (paramObject == null) {
-      return bool;
+    boolean bool2 = false;
+    if (paramObject == null) {
+      return false;
     }
-    if ((!(paramObject instanceof String)) || ((!TextUtils.isEmpty((String)paramObject)) && (!TextUtils.equals("0", (String)paramObject)))) {}
-    for (bool = true;; bool = false) {
-      return bool;
+    boolean bool1;
+    if ((paramObject instanceof String))
+    {
+      paramObject = (String)paramObject;
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramObject))
+      {
+        bool1 = bool2;
+        if (TextUtils.equals("0", paramObject)) {}
+      }
     }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static int getColor(Object paramObject)
@@ -35,23 +47,31 @@ public final class PTSValueConvertUtil
       l = Long.valueOf((String)paramObject).longValue();
       l = l << 24 & 0xFF000000 | l >> 8 & 0xFFFFFF;
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        PTSLog.e("PTSValueConvertUtil", "getColor, value = " + paramObject + ", e = " + localNumberFormatException);
-        l = 0L;
-      }
-    }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        PTSLog.e("PTSValueConvertUtil", "getColor, value = " + paramObject + ", e = " + localException);
-        long l = 0L;
-      }
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("getColor, value = ");
+      localStringBuilder2.append(paramObject);
+      localStringBuilder2.append(", e = ");
+      localStringBuilder2.append(localException);
+      PTSLog.e("PTSValueConvertUtil", localStringBuilder2.toString());
     }
-    PTSLog.i("PTSValueConvertUtil", "getColor, value = " + paramObject + ", res = " + l);
+    catch (NumberFormatException localNumberFormatException)
+    {
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("getColor, value = ");
+      localStringBuilder2.append(paramObject);
+      localStringBuilder2.append(", e = ");
+      localStringBuilder2.append(localNumberFormatException);
+      PTSLog.e("PTSValueConvertUtil", localStringBuilder2.toString());
+    }
+    long l = 0L;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("getColor, value = ");
+    localStringBuilder1.append(paramObject);
+    localStringBuilder1.append(", res = ");
+    localStringBuilder1.append(l);
+    PTSLog.i("PTSValueConvertUtil", localStringBuilder1.toString());
     return (int)l;
   }
   
@@ -68,7 +88,12 @@ public final class PTSValueConvertUtil
       }
       catch (Exception localException)
       {
-        PTSLog.e("PTSValueConvertUtil", "getFloat, value = " + paramObject + ", e = " + localException);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFloat, value = ");
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(", e = ");
+        localStringBuilder.append(localException);
+        PTSLog.e("PTSValueConvertUtil", localStringBuilder.toString());
       }
     }
     return 0.0F;
@@ -87,7 +112,12 @@ public final class PTSValueConvertUtil
       }
       catch (Exception localException)
       {
-        PTSLog.e("PTSValueConvertUtil", "getInt, value = " + paramObject + ", e = " + localException);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getInt, value = ");
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(", e = ");
+        localStringBuilder.append(localException);
+        PTSLog.e("PTSValueConvertUtil", localStringBuilder.toString());
       }
     }
     return 0;
@@ -112,7 +142,7 @@ public final class PTSValueConvertUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.utils.PTSValueConvertUtil
  * JD-Core Version:    0.7.0.1
  */

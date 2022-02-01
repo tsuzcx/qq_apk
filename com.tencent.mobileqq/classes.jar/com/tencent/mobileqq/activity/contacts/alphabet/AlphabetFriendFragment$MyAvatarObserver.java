@@ -7,7 +7,7 @@ class AlphabetFriendFragment$MyAvatarObserver
 {
   private AlphabetFriendFragment$MyAvatarObserver(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
       AlphabetFriendFragment.a(this.a, 5000L, false);
@@ -16,7 +16,7 @@ class AlphabetFriendFragment$MyAvatarObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment.MyAvatarObserver
  * JD-Core Version:    0.7.0.1
  */

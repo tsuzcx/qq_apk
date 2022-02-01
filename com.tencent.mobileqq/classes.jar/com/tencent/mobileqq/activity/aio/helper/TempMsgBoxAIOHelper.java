@@ -3,30 +3,24 @@ package com.tencent.mobileqq.activity.aio.helper;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.recent.msgbox.RecentItemTempMsgBoxData;
-import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxManager;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxManager;
+import com.tencent.mobileqq.activity.recent.msgbox.data.RecentItemTempMsgBoxData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.msg.api.IConversationFacade;
 import java.util.List;
 
 public class TempMsgBoxAIOHelper
   implements ILifeCycleHelper
 {
-  public static String a;
+  public static String a = "TempMsgBoxAIOHelper";
   private Activity jdField_a_of_type_AndroidAppActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "TempMsgBoxAIOHelper";
-  }
   
   public TempMsgBoxAIOHelper(BaseChatPie paramBaseChatPie)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   }
   
   public int a(int paramInt)
@@ -38,11 +32,11 @@ public class TempMsgBoxAIOHelper
       i = paramInt;
       if (((Intent)localObject).getBooleanExtra("enter_from_temp_msg_box", false))
       {
-        localObject = ((TempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        ConversationFacade localConversationFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade();
+        localObject = ((ITempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITempMsgBoxManager.class, "")).getMsgBoxRecentUsers();
+        IConversationFacade localIConversationFacade = (IConversationFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IConversationFacade.class, "");
         i = paramInt;
-        if (localConversationFacade != null) {
-          i = RecentItemTempMsgBoxData.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject, localConversationFacade);
+        if (localIConversationFacade != null) {
+          i = RecentItemTempMsgBoxData.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject, localIConversationFacade);
         }
       }
     }
@@ -64,7 +58,7 @@ public class TempMsgBoxAIOHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TempMsgBoxAIOHelper
  * JD-Core Version:    0.7.0.1
  */

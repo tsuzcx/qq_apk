@@ -17,15 +17,25 @@ class QQPimGetTipsInfoIPC$1
   
   public void a(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
+    if (QLog.isColorLevel())
+    {
+      String str = QQPimDefineList.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQPimGetTipsInfoIPC.downloading() ");
+      localStringBuilder.append(paramFloat);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      String str = QQPimDefineList.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQPimGetTipsInfoIPC.downloadError() ");
+      localStringBuilder.append(paramInt);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
   }
   
@@ -38,7 +48,7 @@ class QQPimGetTipsInfoIPC$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC.1
  * JD-Core Version:    0.7.0.1
  */

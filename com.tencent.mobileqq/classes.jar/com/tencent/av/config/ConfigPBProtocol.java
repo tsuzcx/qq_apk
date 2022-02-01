@@ -2,30 +2,26 @@ package com.tencent.av.config;
 
 public class ConfigPBProtocol
 {
-  public static String a;
+  public static String a = "";
   private ConfigPBProtocol.C2SConfigInfoPBProtocol jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$C2SConfigInfoPBProtocol = new ConfigPBProtocol.C2SConfigInfoPBProtocol(this);
   private ConfigPBProtocol.S2CConfigInfoPBProtocol jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$S2CConfigInfoPBProtocol = new ConfigPBProtocol.S2CConfigInfoPBProtocol(this);
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "";
-  }
-  
   public int a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$S2CConfigInfoPBProtocol != null) {
-      return this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$S2CConfigInfoPBProtocol.a(paramArrayOfByte);
+    ConfigPBProtocol.S2CConfigInfoPBProtocol localS2CConfigInfoPBProtocol = this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$S2CConfigInfoPBProtocol;
+    if (localS2CConfigInfoPBProtocol != null) {
+      return localS2CConfigInfoPBProtocol.a(paramArrayOfByte);
     }
     return -1;
   }
   
   public ConfigPBProtocol.ConfigSysInfoNew a()
   {
-    ConfigPBProtocol.ConfigSysInfoNew localConfigSysInfoNew = null;
-    if (this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$S2CConfigInfoPBProtocol != null) {
-      localConfigSysInfoNew = this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$S2CConfigInfoPBProtocol.a();
+    ConfigPBProtocol.S2CConfigInfoPBProtocol localS2CConfigInfoPBProtocol = this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$S2CConfigInfoPBProtocol;
+    if (localS2CConfigInfoPBProtocol != null) {
+      return localS2CConfigInfoPBProtocol.a();
     }
-    return localConfigSysInfoNew;
+    return null;
   }
   
   public void a(long paramLong, ConfigPBProtocol.TerminalInfo paramTerminalInfo)
@@ -35,16 +31,16 @@ public class ConfigPBProtocol
   
   public byte[] a()
   {
-    byte[] arrayOfByte = null;
-    if (this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$C2SConfigInfoPBProtocol != null) {
-      arrayOfByte = this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$C2SConfigInfoPBProtocol.a();
+    ConfigPBProtocol.C2SConfigInfoPBProtocol localC2SConfigInfoPBProtocol = this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$C2SConfigInfoPBProtocol;
+    if (localC2SConfigInfoPBProtocol != null) {
+      return localC2SConfigInfoPBProtocol.a();
     }
-    return arrayOfByte;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.config.ConfigPBProtocol
  * JD-Core Version:    0.7.0.1
  */

@@ -41,7 +41,10 @@ public class ProxyServiceList
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      QMLog.d("ProxyServiceList", "ProxyService: " + localEntry);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ProxyService: ");
+      localStringBuilder.append(localEntry);
+      QMLog.d("ProxyServiceList", localStringBuilder.toString());
     }
     return localHashMap;
   }
@@ -57,7 +60,7 @@ public class ProxyServiceList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.engine.ProxyServiceList
  * JD-Core Version:    0.7.0.1
  */

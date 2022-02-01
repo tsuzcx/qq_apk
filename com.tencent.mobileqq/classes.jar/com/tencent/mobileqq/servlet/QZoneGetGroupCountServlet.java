@@ -17,41 +17,43 @@ public class QZoneGetGroupCountServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramFromServiceMsg != null) {
-      try
+    if (paramFromServiceMsg != null) {}
+    try
+    {
+      if (paramFromServiceMsg.getResultCode() == 1000)
       {
-        if (paramFromServiceMsg.getResultCode() == 1000)
+        paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+        int[] arrayOfInt = new int[1];
+        long l = paramIntent.getLongExtra("key_troop_uin", 0L);
+        paramIntent = GetQzoneGroupCountRequest.onResponse(paramFromServiceMsg, arrayOfInt);
+        if (paramIntent != null)
         {
-          paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
-          int[] arrayOfInt = new int[1];
-          long l = paramIntent.getLongExtra("key_troop_uin", 0L);
-          paramIntent = GetQzoneGroupCountRequest.onResponse(paramFromServiceMsg, arrayOfInt);
-          if (paramIntent != null)
-          {
-            paramFromServiceMsg = new Bundle();
-            paramFromServiceMsg.putSerializable("data", paramIntent);
-            ((QZoneManagerImp)getAppRuntime().getManager(QQManagerFactory.QZONE_MANAGER)).a(String.valueOf(Long.valueOf(l)), paramIntent);
-            notifyObserver(null, 1006, true, paramFromServiceMsg, QZoneObserver.class);
-            return;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("QZoneGetGroupCountServlet", 2, "inform QZoneGetGroupCountServlet isSuccess false");
-          }
-          notifyObserver(null, 1006, false, new Bundle(), QZoneObserver.class);
+          paramFromServiceMsg = new Bundle();
+          paramFromServiceMsg.putSerializable("data", paramIntent);
+          ((QZoneManagerImp)getAppRuntime().getManager(QQManagerFactory.QZONE_MANAGER)).a(String.valueOf(Long.valueOf(l)), paramIntent);
+          notifyObserver(null, 1006, true, paramFromServiceMsg, QZoneObserver.class);
           return;
         }
-      }
-      catch (Throwable paramIntent)
-      {
-        QLog.e("QZoneGetGroupCountServlet", 1, paramIntent + "onReceive error");
+        if (QLog.isColorLevel()) {
+          QLog.d("QZoneGetGroupCountServlet", 2, "inform QZoneGetGroupCountServlet isSuccess false");
+        }
         notifyObserver(null, 1006, false, new Bundle(), QZoneObserver.class);
         return;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneGetGroupCountServlet", 2, "inform QZoneGetGroupCountServlet resultcode fail.");
+      }
+      notifyObserver(null, 1006, false, new Bundle(), QZoneObserver.class);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneGetGroupCountServlet", 2, "inform QZoneGetGroupCountServlet resultcode fail.");
+    catch (Throwable paramIntent)
+    {
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append(paramIntent);
+      paramFromServiceMsg.append("onReceive error");
+      QLog.e("QZoneGetGroupCountServlet", 1, paramFromServiceMsg.toString());
+      notifyObserver(null, 1006, false, new Bundle(), QZoneObserver.class);
     }
-    notifyObserver(null, 1006, false, new Bundle(), QZoneObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -59,21 +61,27 @@ public class QZoneGetGroupCountServlet
     long l1 = paramIntent.getLongExtra("key_uin", 0L);
     long l2 = paramIntent.getLongExtra("key_troop_uin", 0L);
     GetQzoneGroupCountRequest localGetQzoneGroupCountRequest = new GetQzoneGroupCountRequest(Long.valueOf(l1).longValue(), Long.valueOf(l2).longValue(), new HashMap());
-    byte[] arrayOfByte = localGetQzoneGroupCountRequest.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null)
+    Object localObject = localGetQzoneGroupCountRequest.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
     {
-      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localGetQzoneGroupCountRequest.uniKey());
+      paramIntent = new StringBuilder();
+      paramIntent.append("onSend request encode result is null.cmd=");
+      paramIntent.append(localGetQzoneGroupCountRequest.uniKey());
+      QLog.e("NotifyQZoneServer", 1, paramIntent.toString());
       paramIntent = new byte[4];
     }
     paramPacket.setTimeout(30000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + "Feeds.getgroupcount");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SQQzoneSvc.");
+    ((StringBuilder)localObject).append("Feeds.getgroupcount");
+    paramPacket.setSSOCommand(((StringBuilder)localObject).toString());
     paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneGetGroupCountServlet
  * JD-Core Version:    0.7.0.1
  */

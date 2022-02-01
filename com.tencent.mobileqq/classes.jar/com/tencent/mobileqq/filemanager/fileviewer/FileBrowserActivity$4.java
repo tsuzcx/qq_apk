@@ -13,21 +13,25 @@ class FileBrowserActivity$4
   public void run()
   {
     int i = FileBrowserActivity.a(this.this$0).getMeasuredWidth();
-    String str2 = (String)TextUtils.ellipsize(this.a, FileBrowserActivity.a(this.this$0).getPaint(), i - 15, TextUtils.TruncateAt.END);
-    String str1 = str2;
-    if (str2.length() > 2)
+    String str = (String)TextUtils.ellipsize(this.a, FileBrowserActivity.a(this.this$0).getPaint(), i - 15, TextUtils.TruncateAt.END);
+    Object localObject = str;
+    if (str.length() > 2)
     {
-      str1 = str2;
-      if (str2.substring(str2.length() - 1).equals(FMConstants.b)) {
-        str1 = str2.substring(0, str2.length() - 1) + FMConstants.a;
+      localObject = str;
+      if (str.substring(str.length() - 1).equals(FMConstants.b))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str.substring(0, str.length() - 1));
+        ((StringBuilder)localObject).append(FMConstants.a);
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    FileBrowserActivity.a(this.this$0).setText(str1);
+    FileBrowserActivity.a(this.this$0).setText((CharSequence)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.4
  * JD-Core Version:    0.7.0.1
  */

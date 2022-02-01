@@ -11,9 +11,10 @@ public class VideoExporter
   
   public void cancel()
   {
-    if (this.movieExporter != null)
+    MovieExporter localMovieExporter = this.movieExporter;
+    if (localMovieExporter != null)
     {
-      this.movieExporter.cancelExport();
+      localMovieExporter.cancelExport();
       this.movieExporter = null;
     }
   }
@@ -35,6 +36,7 @@ public class VideoExporter
       localOutputConfig.VIDEO_FRAME_RATE = this.videoExportConfig.getFrameRate();
     }
     this.movieExporter.setExportListener(paramExportListener);
+    this.movieExporter.setErrorInterceptor(new VideoExporter.1(this));
     this.movieExporter.export(this.tavComposition, this.videoExportConfig.getOutputPath(), localOutputConfig);
   }
   
@@ -60,7 +62,7 @@ public class VideoExporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.exporter.VideoExporter
  * JD-Core Version:    0.7.0.1
  */

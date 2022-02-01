@@ -4,8 +4,8 @@ import android.content.Intent;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.phonecontact.ContactBindServlet;
+import com.tencent.mobileqq.phonecontact.handler.ContactBindServlet;
+import com.tencent.mobileqq.phonecontact.observer.ContactBindObserver;
 import com.tencent.mobileqq.util.BusinessUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -16,7 +16,7 @@ public class ContactImpl
   implements IContactInterface
 {
   private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver;
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
@@ -30,10 +30,10 @@ public class ContactImpl
   
   public BusinessObserver a(IRegisterView paramIRegisterView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = a(paramIRegisterView);
+    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver == null) {
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver = a(paramIRegisterView);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver;
+    return this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver;
   }
   
   public void a(QBaseActivity paramQBaseActivity, Intent paramIntent)
@@ -50,7 +50,7 @@ public class ContactImpl
     if (this.jdField_a_of_type_Boolean)
     {
       ThreadManager.executeOnNetWorkThread(new ContactImpl.1(this, paramAppRuntime));
-      QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131700916), 0).a();
+      QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131701059), 0).a();
     }
   }
   
@@ -66,7 +66,7 @@ public class ContactImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.ContactImpl
  * JD-Core Version:    0.7.0.1
  */

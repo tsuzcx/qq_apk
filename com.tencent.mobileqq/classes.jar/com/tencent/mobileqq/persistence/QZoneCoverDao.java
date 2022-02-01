@@ -25,47 +25,35 @@ public class QZoneCoverDao
       return paramEntity;
     }
     int i = paramCursor.getColumnIndex("uin");
-    if (i == -1)
-    {
+    if (i == -1) {
       paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
-      i = paramCursor.getColumnIndex("type");
-      if (i != -1) {
-        break label290;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("type", String.class));
-      label170:
-      i = paramCursor.getColumnIndex("jigsaw");
-      if (i != -1) {
-        break label305;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("jigsaw", Integer.TYPE));
-      label205:
-      i = paramCursor.getColumnIndex("vCoverInfo");
-      if (i != -1) {
-        break label320;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("vCoverInfo", [B.class));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("vPhotoInfo");
-      if (i != -1) {
-        break label335;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("vPhotoInfo", [B.class));
-      return paramEntity;
+    } else {
       paramEntity.uin = paramCursor.getString(i);
-      break;
-      label290:
+    }
+    i = paramCursor.getColumnIndex("type");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("type", String.class));
+    } else {
       paramEntity.type = paramCursor.getString(i);
-      break label170;
-      label305:
+    }
+    i = paramCursor.getColumnIndex("jigsaw");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("jigsaw", Integer.TYPE));
+    } else {
       paramEntity.jigsaw = paramCursor.getInt(i);
-      break label205;
-      label320:
+    }
+    i = paramCursor.getColumnIndex("vCoverInfo");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("vCoverInfo", [B.class));
+    } else {
       paramEntity.vCoverInfo = paramCursor.getBlob(i);
     }
-    label335:
+    i = paramCursor.getColumnIndex("vPhotoInfo");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("vPhotoInfo", [B.class));
+      return paramEntity;
+    }
     paramEntity.vPhotoInfo = paramCursor.getBlob(i);
     return paramEntity;
   }
@@ -90,7 +78,7 @@ public class QZoneCoverDao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.QZoneCoverDao
  * JD-Core Version:    0.7.0.1
  */

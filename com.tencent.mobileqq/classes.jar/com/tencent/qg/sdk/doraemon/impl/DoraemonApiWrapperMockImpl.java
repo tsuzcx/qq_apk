@@ -7,7 +7,7 @@ import com.tencent.qg.sdk.doraemon.DoraemonApiWrapper;
 public class DoraemonApiWrapperMockImpl
   extends DoraemonApiWrapper
 {
-  private static final String TAG = DoraemonApiWrapperMockImpl.class.getSimpleName();
+  private static final String TAG = "DoraemonApiWrapperMockImpl";
   QGGLSurfaceView mQGGLSurfaceView;
   
   public DoraemonApiWrapperMockImpl(QGGLSurfaceView paramQGGLSurfaceView)
@@ -17,13 +17,19 @@ public class DoraemonApiWrapperMockImpl
   
   public void call(String paramString1, String paramString2, long paramLong)
   {
-    Log.d(TAG, "call apiName=" + paramString1 + " ,apiParamJson=" + paramString2);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("call apiName=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" ,apiParamJson=");
+    localStringBuilder.append(paramString2);
+    Log.d(str, localStringBuilder.toString());
     new Thread(new DoraemonApiWrapperMockImpl.1(this, paramLong, paramString1)).run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.sdk.doraemon.impl.DoraemonApiWrapperMockImpl
  * JD-Core Version:    0.7.0.1
  */

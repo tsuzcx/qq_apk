@@ -28,97 +28,99 @@ class ColorCutQuantizer$Vbox
   
   final Vbox a()
   {
-    if (!a()) {
-      throw new IllegalStateException("Can not split a box with only 1 color");
+    if (a())
+    {
+      int j = d();
+      Vbox localVbox = new Vbox(this.jdField_a_of_type_ComTencentMobileqqUtilsPaletteColorCutQuantizer, j + 1, this.b);
+      this.b = j;
+      a();
+      return localVbox;
     }
-    int j = d();
-    Vbox localVbox = new Vbox(this.jdField_a_of_type_ComTencentMobileqqUtilsPaletteColorCutQuantizer, j + 1, this.b);
-    this.b = j;
-    a();
-    return localVbox;
+    throw new IllegalStateException("Can not split a box with only 1 color");
   }
   
   final Palette.Swatch a()
   {
-    int i1 = 0;
     int[] arrayOfInt1 = this.jdField_a_of_type_ComTencentMobileqqUtilsPaletteColorCutQuantizer.a;
     int[] arrayOfInt2 = this.jdField_a_of_type_ComTencentMobileqqUtilsPaletteColorCutQuantizer.b;
-    int n = this.jdField_a_of_type_Int;
-    int j = 0;
+    int m = this.jdField_a_of_type_Int;
+    int n = 0;
+    int i1 = 0;
     int k = 0;
-    int m = 0;
-    while (n <= this.b)
+    int j = 0;
+    while (m <= this.b)
     {
-      int i2 = arrayOfInt1[n];
+      int i2 = arrayOfInt1[m];
       int i3 = arrayOfInt2[i2];
       i1 += i3;
-      m += ColorCutQuantizer.a(i2) * i3;
+      n += ColorCutQuantizer.a(i2) * i3;
       k += ColorCutQuantizer.b(i2) * i3;
-      j += ColorCutQuantizer.c(i2) * i3;
-      n += 1;
+      j += i3 * ColorCutQuantizer.c(i2);
+      m += 1;
     }
-    return new Palette.Swatch(ColorCutQuantizer.a(Math.round(m / i1), Math.round(k / i1), Math.round(j / i1)), i1);
+    float f1 = n;
+    float f2 = i1;
+    return new Palette.Swatch(ColorCutQuantizer.a(Math.round(f1 / f2), Math.round(k / f2), Math.round(j / f2)), i1);
   }
   
   final void a()
   {
     int[] arrayOfInt1 = this.jdField_a_of_type_ComTencentMobileqqUtilsPaletteColorCutQuantizer.a;
     int[] arrayOfInt2 = this.jdField_a_of_type_ComTencentMobileqqUtilsPaletteColorCutQuantizer.b;
-    int n = -2147483648;
-    int i5 = 0;
     int m = this.jdField_a_of_type_Int;
-    int i6 = -2147483648;
+    int i4 = 2147483647;
+    int i5 = -2147483648;
+    int n = 2147483647;
+    int i1 = -2147483648;
     int j = 2147483647;
-    int k = 2147483647;
-    int i3 = 2147483647;
-    int i2 = -2147483648;
-    while (m <= this.b)
+    int k = -2147483648;
+    int i8;
+    for (int i2 = 0; m <= this.b; i2 = i8)
     {
-      int i1 = arrayOfInt1[m];
-      int i9 = i5 + arrayOfInt2[i1];
-      int i8 = ColorCutQuantizer.a(i1);
-      int i7 = ColorCutQuantizer.b(i1);
-      i5 = ColorCutQuantizer.c(i1);
-      i1 = i6;
-      if (i8 > i6) {
-        i1 = i8;
+      int i3 = arrayOfInt1[m];
+      i8 = i2 + arrayOfInt2[i3];
+      int i6 = ColorCutQuantizer.a(i3);
+      int i7 = ColorCutQuantizer.b(i3);
+      i3 = ColorCutQuantizer.c(i3);
+      i2 = i5;
+      if (i6 > i5) {
+        i2 = i6;
       }
-      int i4 = i3;
-      if (i8 < i3) {
-        i4 = i8;
+      i5 = i4;
+      if (i6 < i4) {
+        i5 = i6;
       }
-      i3 = i2;
-      if (i7 > i2) {
-        i3 = i7;
+      i6 = i1;
+      if (i7 > i1) {
+        i6 = i7;
       }
-      i8 = k;
-      if (i7 < k) {
-        i8 = i7;
+      i1 = n;
+      if (i7 < n) {
+        i1 = i7;
       }
-      i2 = n;
-      if (i5 > n) {
-        i2 = i5;
+      i7 = k;
+      if (i3 > k) {
+        i7 = i3;
       }
       k = j;
-      if (i5 < j) {
-        k = i5;
+      if (i3 < j) {
+        k = i3;
       }
       m += 1;
-      i5 = i9;
-      n = i2;
-      i2 = i3;
-      i6 = i1;
+      i4 = i5;
+      i5 = i2;
+      n = i1;
+      i1 = i6;
       j = k;
-      k = i8;
-      i3 = i4;
+      k = i7;
     }
-    this.d = i3;
-    this.e = i6;
-    this.f = k;
-    this.g = i2;
+    this.d = i4;
+    this.e = i5;
+    this.f = n;
+    this.g = i1;
     this.h = j;
-    this.i = n;
-    this.c = i5;
+    this.i = k;
+    this.c = i2;
   }
   
   final boolean a()
@@ -156,11 +158,15 @@ class ColorCutQuantizer$Vbox
     int m = this.c / 2;
     j = this.jdField_a_of_type_Int;
     int k = 0;
-    while (j <= this.b)
+    for (;;)
     {
+      int n = this.b;
+      if (j > n) {
+        break;
+      }
       k += arrayOfInt2[arrayOfInt1[j]];
       if (k >= m) {
-        return Math.min(this.b - 1, j);
+        return Math.min(n - 1, j);
       }
       j += 1;
     }
@@ -169,7 +175,7 @@ class ColorCutQuantizer$Vbox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.ColorCutQuantizer.Vbox
  * JD-Core Version:    0.7.0.1
  */

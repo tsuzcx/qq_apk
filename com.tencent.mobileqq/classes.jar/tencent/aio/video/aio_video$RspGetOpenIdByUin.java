@@ -21,7 +21,7 @@ public final class aio_video$RspGetOpenIdByUin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.aio.video.aio_video.RspGetOpenIdByUin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,33 @@
 package com.tencent.mobileqq.onlinestatus.auto;
 
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.onlinestatus.BaseOnlineStatusDisplayInfo;
 import com.tencent.mobileqq.onlinestatus.BaseOnlineStatusDisplayInfo.UpdateUIListener;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusManager;
 import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem;
 import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionServlet;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusManagerService;
+import com.tencent.mobileqq.onlinestatus.manager.AutoStatusManager;
+import com.tencent.mobileqq.onlinestatus.manager.IAutoStatusManager;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class OnlineStatusSmartDisplayInfo
   extends BaseOnlineStatusDisplayInfo
 {
   private AutoStatusManager a;
   
-  public OnlineStatusSmartDisplayInfo(long paramLong, BaseOnlineStatusDisplayInfo.UpdateUIListener paramUpdateUIListener, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public OnlineStatusSmartDisplayInfo(long paramLong, BaseOnlineStatusDisplayInfo.UpdateUIListener paramUpdateUIListener, AppRuntime paramAppRuntime, QBaseActivity paramQBaseActivity)
   {
-    super(paramLong, paramUpdateUIListener, paramQQAppInterface, paramBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatusManager = ((OnlineStatusManager)paramQQAppInterface.getManager(QQManagerFactory.ONLINE_STATUS_MANAGER)).a();
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatusManager.a(new OnlineStatusSmartDisplayInfo.1(this));
+    super(paramLong, paramUpdateUIListener, paramAppRuntime, paramQBaseActivity);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager = ((AutoStatusManager)((IOnlineStatusManagerService)paramAppRuntime.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IAutoStatusManager.class));
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager.a(new OnlineStatusSmartDisplayInfo.1(this));
   }
   
-  public void a()
+  protected void a()
   {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698436);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131698502);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatusManager.a(null);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager.a(null);
   }
   
   public void a(boolean paramBoolean) {}
@@ -34,23 +35,12 @@ public class OnlineStatusSmartDisplayInfo
   public void a(boolean paramBoolean, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem)
   {
     ArrayList localArrayList;
-    QQAppInterface localQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusBaseOnlineStatusDisplayInfo$UpdateUIListener == null)
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusBaseOnlineStatusDisplayInfo$UpdateUIListener == null) {
       localArrayList = null;
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (paramBoolean) {
-        break label44;
-      }
+    } else {
+      localArrayList = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusBaseOnlineStatusDisplayInfo$UpdateUIListener.c();
     }
-    label44:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      OnlineStatusPermissionServlet.a(localQQAppInterface, paramOnlineStatusPermissionItem, localArrayList, paramBoolean);
-      return;
-      localArrayList = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusBaseOnlineStatusDisplayInfo$UpdateUIListener.a();
-      break;
-    }
+    OnlineStatusPermissionServlet.a(this.jdField_a_of_type_MqqAppAppRuntime, paramOnlineStatusPermissionItem, localArrayList, paramBoolean ^ true);
   }
   
   public boolean a()
@@ -63,12 +53,12 @@ public class OnlineStatusSmartDisplayInfo
   public void e()
   {
     super.e();
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatusManager.a(null);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.OnlineStatusSmartDisplayInfo
  * JD-Core Version:    0.7.0.1
  */

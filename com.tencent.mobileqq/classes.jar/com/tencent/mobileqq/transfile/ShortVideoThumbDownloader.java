@@ -49,10 +49,10 @@ public class ShortVideoThumbDownloader
     // Byte code:
     //   0: aload_1
     //   1: invokevirtual 105	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   4: astore_3
-    //   5: aload_3
-    //   6: invokestatic 111	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
-    //   9: ifne +21 -> 30
+    //   4: astore_1
+    //   5: aload_1
+    //   6: invokestatic 111	com/tencent/mobileqq/utils/FileUtils:fileExistsAndNotEmpty	(Ljava/lang/String;)Z
+    //   9: ifne +19 -> 28
     //   12: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   15: ifeq +11 -> 26
     //   18: ldc 11
@@ -60,135 +60,151 @@ public class ShortVideoThumbDownloader
     //   21: ldc 119
     //   23: invokestatic 123	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   26: aconst_null
-    //   27: astore_2
-    //   28: aload_2
-    //   29: areturn
-    //   30: new 125	android/graphics/BitmapFactory$Options
-    //   33: dup
-    //   34: invokespecial 126	android/graphics/BitmapFactory$Options:<init>	()V
-    //   37: astore_1
-    //   38: aload_1
+    //   27: areturn
+    //   28: new 125	android/graphics/BitmapFactory$Options
+    //   31: dup
+    //   32: invokespecial 126	android/graphics/BitmapFactory$Options:<init>	()V
+    //   35: astore 4
+    //   37: aload 4
     //   39: sipush 160
     //   42: putfield 130	android/graphics/BitmapFactory$Options:inDensity	I
-    //   45: aload_1
-    //   46: sipush 160
-    //   49: putfield 133	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   52: aload_1
-    //   53: sipush 160
-    //   56: putfield 136	android/graphics/BitmapFactory$Options:inScreenDensity	I
-    //   59: aload_1
-    //   60: iconst_1
-    //   61: putfield 140	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   64: aload_3
-    //   65: aload_1
-    //   66: invokestatic 145	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   69: pop
-    //   70: aload_1
-    //   71: iconst_0
-    //   72: putfield 140	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   75: aload_1
-    //   76: aload_0
-    //   77: aload_1
-    //   78: aload_2
-    //   79: getfield 150	com/tencent/image/DownloadParams:reqWidth	I
-    //   82: aload_2
-    //   83: getfield 153	com/tencent/image/DownloadParams:reqHeight	I
-    //   86: invokevirtual 157	com/tencent/mobileqq/transfile/ShortVideoThumbDownloader:calculateSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   89: putfield 160	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   92: new 162	java/io/BufferedInputStream
-    //   95: dup
-    //   96: new 164	java/io/FileInputStream
-    //   99: dup
-    //   100: aload_3
-    //   101: invokespecial 167	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   104: invokespecial 170	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   107: astore_3
-    //   108: aload_3
-    //   109: aconst_null
-    //   110: aload_1
-    //   111: invokestatic 176	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   114: astore_1
-    //   115: aload_2
-    //   116: getfield 180	com/tencent/image/DownloadParams:tag	Ljava/lang/Object;
-    //   119: astore_2
-    //   120: aload_2
-    //   121: instanceof 182
-    //   124: ifeq +102 -> 226
-    //   127: aload_2
-    //   128: checkcast 182	[I
-    //   131: checkcast 182	[I
-    //   134: arraylength
-    //   135: iconst_3
-    //   136: if_icmpne +90 -> 226
-    //   139: aload_1
-    //   140: aload_2
-    //   141: checkcast 182	[I
-    //   144: checkcast 182	[I
-    //   147: iconst_2
-    //   148: iaload
-    //   149: invokestatic 184	com/tencent/mobileqq/transfile/ShortVideoThumbDownloader:getRoundedCornerBitmap	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
-    //   152: astore_1
-    //   153: aload_1
-    //   154: astore_2
-    //   155: aload_3
-    //   156: ifnull -128 -> 28
-    //   159: aload_3
-    //   160: invokevirtual 187	java/io/BufferedInputStream:close	()V
-    //   163: aload_1
-    //   164: areturn
-    //   165: astore_2
-    //   166: aconst_null
-    //   167: astore_1
-    //   168: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   171: ifeq +12 -> 183
-    //   174: ldc 11
-    //   176: iconst_2
-    //   177: ldc 189
-    //   179: aload_2
-    //   180: invokestatic 193	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   183: aload_1
-    //   184: ifnull +7 -> 191
-    //   187: aload_1
-    //   188: invokevirtual 187	java/io/BufferedInputStream:close	()V
-    //   191: aconst_null
-    //   192: areturn
-    //   193: astore_1
-    //   194: aconst_null
-    //   195: astore_2
-    //   196: aload_2
-    //   197: ifnull +7 -> 204
-    //   200: aload_2
-    //   201: invokevirtual 187	java/io/BufferedInputStream:close	()V
-    //   204: aload_1
-    //   205: athrow
-    //   206: astore_1
-    //   207: aload_3
-    //   208: astore_2
-    //   209: goto -13 -> 196
-    //   212: astore_3
-    //   213: aload_1
-    //   214: astore_2
-    //   215: aload_3
-    //   216: astore_1
-    //   217: goto -21 -> 196
-    //   220: astore_2
+    //   45: aload 4
+    //   47: sipush 160
+    //   50: putfield 133	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   53: aload 4
+    //   55: sipush 160
+    //   58: putfield 136	android/graphics/BitmapFactory$Options:inScreenDensity	I
+    //   61: aload 4
+    //   63: iconst_1
+    //   64: putfield 140	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   67: aload_1
+    //   68: aload 4
+    //   70: invokestatic 145	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   73: pop
+    //   74: aload 4
+    //   76: iconst_0
+    //   77: putfield 140	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   80: aload 4
+    //   82: aload_0
+    //   83: aload 4
+    //   85: aload_2
+    //   86: getfield 150	com/tencent/image/DownloadParams:reqWidth	I
+    //   89: aload_2
+    //   90: getfield 153	com/tencent/image/DownloadParams:reqHeight	I
+    //   93: invokevirtual 157	com/tencent/mobileqq/transfile/ShortVideoThumbDownloader:calculateSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   96: putfield 160	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   99: new 162	java/io/BufferedInputStream
+    //   102: dup
+    //   103: new 164	java/io/FileInputStream
+    //   106: dup
+    //   107: aload_1
+    //   108: invokespecial 167	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   111: invokespecial 170	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   114: astore_3
+    //   115: aload_3
+    //   116: astore_1
+    //   117: aload_3
+    //   118: aconst_null
+    //   119: aload 4
+    //   121: invokestatic 176	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   124: astore 4
+    //   126: aload_3
+    //   127: astore_1
+    //   128: aload_2
+    //   129: getfield 180	com/tencent/image/DownloadParams:tag	Ljava/lang/Object;
+    //   132: astore 5
+    //   134: aload 4
+    //   136: astore_2
+    //   137: aload_3
+    //   138: astore_1
+    //   139: aload 5
+    //   141: instanceof 182
+    //   144: ifeq +39 -> 183
+    //   147: aload 4
+    //   149: astore_2
+    //   150: aload_3
+    //   151: astore_1
+    //   152: aload 5
+    //   154: checkcast 182	[I
+    //   157: checkcast 182	[I
+    //   160: arraylength
+    //   161: iconst_3
+    //   162: if_icmpne +21 -> 183
+    //   165: aload_3
+    //   166: astore_1
+    //   167: aload 4
+    //   169: aload 5
+    //   171: checkcast 182	[I
+    //   174: checkcast 182	[I
+    //   177: iconst_2
+    //   178: iaload
+    //   179: invokestatic 184	com/tencent/mobileqq/transfile/ShortVideoThumbDownloader:getRoundedCornerBitmap	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+    //   182: astore_2
+    //   183: aload_3
+    //   184: invokevirtual 187	java/io/BufferedInputStream:close	()V
+    //   187: aload_2
+    //   188: areturn
+    //   189: astore_1
+    //   190: aload_3
+    //   191: astore_2
+    //   192: aload_1
+    //   193: astore_3
+    //   194: goto +12 -> 206
+    //   197: astore_2
+    //   198: aconst_null
+    //   199: astore_1
+    //   200: goto +36 -> 236
+    //   203: astore_3
+    //   204: aconst_null
+    //   205: astore_2
+    //   206: aload_2
+    //   207: astore_1
+    //   208: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   211: ifeq +14 -> 225
+    //   214: aload_2
+    //   215: astore_1
+    //   216: ldc 11
+    //   218: iconst_2
+    //   219: ldc 189
     //   221: aload_3
-    //   222: astore_1
-    //   223: goto -55 -> 168
-    //   226: goto -73 -> 153
+    //   222: invokestatic 193	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   225: aload_2
+    //   226: ifnull +7 -> 233
+    //   229: aload_2
+    //   230: invokevirtual 187	java/io/BufferedInputStream:close	()V
+    //   233: aconst_null
+    //   234: areturn
+    //   235: astore_2
+    //   236: aload_1
+    //   237: ifnull +7 -> 244
+    //   240: aload_1
+    //   241: invokevirtual 187	java/io/BufferedInputStream:close	()V
+    //   244: aload_2
+    //   245: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	229	0	this	ShortVideoThumbDownloader
-    //   0	229	1	paramFile	File
-    //   0	229	2	paramDownloadParams	DownloadParams
-    //   0	229	3	paramURLDrawableHandler	URLDrawableHandler
+    //   0	246	0	this	ShortVideoThumbDownloader
+    //   0	246	1	paramFile	File
+    //   0	246	2	paramDownloadParams	DownloadParams
+    //   0	246	3	paramURLDrawableHandler	URLDrawableHandler
+    //   35	133	4	localObject1	java.lang.Object
+    //   132	38	5	localObject2	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   92	108	165	java/lang/OutOfMemoryError
-    //   92	108	193	finally
-    //   108	153	206	finally
-    //   168	183	212	finally
-    //   108	153	220	java/lang/OutOfMemoryError
+    //   117	126	189	java/lang/OutOfMemoryError
+    //   128	134	189	java/lang/OutOfMemoryError
+    //   139	147	189	java/lang/OutOfMemoryError
+    //   152	165	189	java/lang/OutOfMemoryError
+    //   167	183	189	java/lang/OutOfMemoryError
+    //   99	115	197	finally
+    //   99	115	203	java/lang/OutOfMemoryError
+    //   117	126	235	finally
+    //   128	134	235	finally
+    //   139	147	235	finally
+    //   152	165	235	finally
+    //   167	183	235	finally
+    //   208	214	235	finally
+    //   216	225	235	finally
   }
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -203,7 +219,7 @@ public class ShortVideoThumbDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.av.ui;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.av.core.VcSystemInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class BeautyConfigUtil
@@ -16,55 +15,59 @@ public class BeautyConfigUtil
   
   public static int a(String paramString)
   {
-    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getInt(c + paramString, -1);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c);
+    localStringBuilder.append(paramString);
+    return localSharedPreferences.getInt(localStringBuilder.toString(), -1);
   }
   
   public static String a(String paramString)
   {
-    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getString(d + paramString, "");
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(d);
+    localStringBuilder.append(paramString);
+    return localSharedPreferences.getString(localStringBuilder.toString(), "");
   }
   
   public static void a(String paramString, int paramInt)
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
-    paramString = e + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(e);
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
     localSharedPreferences.edit().putInt(paramString, paramInt).apply();
   }
   
   public static void a(String paramString1, String paramString2)
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
-    paramString1 = d + paramString1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(d);
+    localStringBuilder.append(paramString1);
+    paramString1 = localStringBuilder.toString();
     localSharedPreferences.edit().putString(paramString1, paramString2).apply();
   }
   
   public static boolean a(String paramString)
   {
-    paramString = BaseApplicationImpl.getApplication().getSharedPreferences(a, 0);
-    String str = b;
-    int j = paramString.getInt(str, -1);
-    int i = j;
-    if (j == -1) {
-      if (!VcSystemInfo.isBeautySupported()) {
-        break label67;
-      }
-    }
-    label67:
-    for (i = 1;; i = 0)
-    {
-      paramString.edit().putInt(str, i).commit();
-      return i >= 1;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static int b(String paramString)
   {
-    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getInt(e + paramString, 0);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(e);
+    localStringBuilder.append(paramString);
+    return localSharedPreferences.getInt(localStringBuilder.toString(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.BeautyConfigUtil
  * JD-Core Version:    0.7.0.1
  */

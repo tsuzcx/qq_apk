@@ -93,46 +93,41 @@ final class CachedObservable$CacheState<T>
   
   public void removeProducer(CachedObservable.ReplayProducer<T> paramReplayProducer)
   {
-    int i = 0;
-    for (;;)
+    int i;
+    label129:
+    synchronized (this.connection)
     {
-      CachedObservable.ReplayProducer[] arrayOfReplayProducer;
-      int j;
-      synchronized (this.connection)
+      CachedObservable.ReplayProducer[] arrayOfReplayProducer = this.producers;
+      int m = arrayOfReplayProducer.length;
+      int k = -1;
+      i = 0;
+      int j = k;
+      if (i < m)
       {
-        arrayOfReplayProducer = this.producers;
-        j = arrayOfReplayProducer.length;
-        if (i >= j) {
-          break label107;
-        }
         if (!arrayOfReplayProducer[i].equals(paramReplayProducer)) {
-          break label112;
+          break label129;
         }
-        if (i < 0) {
-          return;
-        }
-        if (j == 1)
-        {
-          this.producers = EMPTY;
-          return;
-        }
+        j = i;
       }
-      paramReplayProducer = new CachedObservable.ReplayProducer[j - 1];
-      System.arraycopy(arrayOfReplayProducer, 0, paramReplayProducer, 0, i);
-      System.arraycopy(arrayOfReplayProducer, i + 1, paramReplayProducer, i, j - i - 1);
+      if (j < 0) {
+        return;
+      }
+      if (m == 1)
+      {
+        this.producers = EMPTY;
+        return;
+      }
+      paramReplayProducer = new CachedObservable.ReplayProducer[m - 1];
+      System.arraycopy(arrayOfReplayProducer, 0, paramReplayProducer, 0, j);
+      System.arraycopy(arrayOfReplayProducer, j + 1, paramReplayProducer, j, m - j - 1);
       this.producers = paramReplayProducer;
       return;
-      label107:
-      i = -1;
-      continue;
-      label112:
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.CachedObservable.CacheState
  * JD-Core Version:    0.7.0.1
  */

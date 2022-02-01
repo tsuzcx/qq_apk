@@ -11,15 +11,16 @@ class PopupDialogQQSide$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_ComTencentAvUtilsPopupDialogQQSide.getArguments());
+    ResultReceiver localResultReceiver = this.jdField_a_of_type_AndroidOsResultReceiver;
+    if (localResultReceiver != null) {
+      localResultReceiver.send(1, this.jdField_a_of_type_ComTencentAvUtilsPopupDialogQQSide.getArguments());
     }
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.PopupDialogQQSide.2
  * JD-Core Version:    0.7.0.1
  */

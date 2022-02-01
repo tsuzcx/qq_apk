@@ -13,12 +13,11 @@ class Conversation$13
     if (paramDialogInterface == Conversation.a(this.a)) {
       Conversation.a(this.a, null);
     }
-    this.a.a(1134057, 50L, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.13
  * JD-Core Version:    0.7.0.1
  */

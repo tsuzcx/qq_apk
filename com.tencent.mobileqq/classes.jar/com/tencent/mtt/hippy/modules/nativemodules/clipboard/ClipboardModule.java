@@ -3,6 +3,7 @@ package com.tencent.mtt.hippy.modules.nativemodules.clipboard;
 import android.content.ClipData;
 import android.content.ClipData.Item;
 import android.content.ClipboardManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -30,12 +31,17 @@ public class ClipboardModule
   {
     try
     {
-      Object localObject = a();
-      ClipData localClipData = ((ClipboardManager)localObject).getPrimaryClip();
-      if ((localClipData != null) && (localClipData.getItemCount() >= 1))
+      Object localObject1 = a();
+      ClipboardMonitor.getPrimaryClip((ClipboardManager)localObject1);
+      Object localObject2 = ((ClipboardManager)localObject1).getPrimaryClip();
+      if ((localObject2 != null) && (((ClipData)localObject2).getItemCount() >= 1))
       {
-        localObject = ((ClipboardManager)localObject).getPrimaryClip().getItemAt(0);
-        paramPromise.resolve("" + ((ClipData.Item)localObject).getText());
+        ClipboardMonitor.getPrimaryClip((ClipboardManager)localObject1);
+        localObject1 = ((ClipboardManager)localObject1).getPrimaryClip().getItemAt(0);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("");
+        ((StringBuilder)localObject2).append(((ClipData.Item)localObject1).getText());
+        paramPromise.resolve(((StringBuilder)localObject2).toString());
         return;
       }
       paramPromise.resolve("");
@@ -51,12 +57,14 @@ public class ClipboardModule
   public void setString(String paramString)
   {
     paramString = ClipData.newPlainText(null, paramString);
-    a().setPrimaryClip(paramString);
+    ClipboardManager localClipboardManager = a();
+    ClipboardMonitor.setPrimaryClip(localClipboardManager, paramString);
+    localClipboardManager.setPrimaryClip(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.clipboard.ClipboardModule
  * JD-Core Version:    0.7.0.1
  */

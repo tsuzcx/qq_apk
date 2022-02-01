@@ -1,91 +1,55 @@
 package com.tencent.mobileqq.activity.home;
 
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.app.QBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.troop.api.observer.TroopMngObserver;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 class Conversation$35
-  extends BizTroopObserver
+  extends TroopMngObserver
 {
   Conversation$35(Conversation paramConversation) {}
   
-  public void onSetCommonUsedTroop(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramInt2 != 0)
+    if (paramInt1 == 6)
     {
-      paramString1 = paramString2;
-      if (!this.a.a().isFinishing())
+      if (paramInt2 == 0)
       {
-        paramString1 = paramString2;
-        if (Conversation.a(this.a))
-        {
-          paramString1 = paramString2;
-          if (!"troop_delete_top_from_conversation".equals(paramString3))
-          {
-            paramString1 = paramString2;
-            if (TextUtils.isEmpty(paramString2)) {
-              paramString1 = this.a.a().getString(2131694692);
-            }
-            QQToast.a(this.a.a(), 1, paramString1, 0).a();
-          }
-        }
+        TroopAssistantManager.a().c(this.a.a());
+        this.a.a(8, paramString, 1);
+        this.a.a(8, AppConstants.TROOP_ASSISTANT_UIN, 5000);
+        this.a.a(8, AppConstants.HOTCHAT_CENTER_UIN, 5001);
       }
     }
-    for (;;)
+    else if ((paramInt1 == 2) && (paramInt2 == 0))
     {
+      TroopAssistantManager.a().b(paramString, this.a.a());
       if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "onSetCommonUsedTroop, retCode = " + paramInt2 + " , wording = " + paramString1);
+        QLog.i("Q.recent", 2, "refresh recent, from_ontroopmanagersuccess");
       }
-      return;
-      this.a.a(9, paramString1, 1);
-      paramString1 = paramString2;
+      this.a.a(8, paramString, 1);
+      this.a.a(8, AppConstants.TROOP_ASSISTANT_UIN, 5000);
+      this.a.a(8, AppConstants.HOTCHAT_CENTER_UIN, 5001);
     }
   }
   
-  public void onSetCommonUsedTroopList(int paramInt1, int paramInt2, Map<String, Integer> paramMap, String paramString)
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
   {
-    paramString = (BaseActivity)this.a.a();
-    String str1 = this.a.a().getCurrentAccountUin();
-    if ((paramMap != null) && (paramMap.size() > 0))
+    if (paramBoolean1)
     {
-      Iterator localIterator = paramMap.keySet().iterator();
-      paramInt1 = 0;
-      if (localIterator.hasNext())
-      {
-        String str2 = (String)localIterator.next();
-        paramInt2 = ((Integer)paramMap.get(str2)).intValue();
-        if (paramInt2 == 4000) {
-          SharedPreUtils.j(paramString, str1, str2);
-        }
-      }
-    }
-    for (;;)
-    {
-      break;
-      if (paramInt2 != 0)
-      {
-        paramInt1 = 1;
-        continue;
-        if (paramInt1 == 0) {
-          SharedPreUtils.j(this.a.a(), this.a.a().getCurrentAccountUin());
-        }
-        return;
+      this.a.a(8, AppConstants.TROOP_ASSISTANT_UIN, 5000);
+      this.a.a(8, AppConstants.HOTCHAT_CENTER_UIN, 5001);
+      if (paramTroopInfo != null) {
+        this.a.a(8, paramTroopInfo.troopuin, 1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.35
  * JD-Core Version:    0.7.0.1
  */

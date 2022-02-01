@@ -32,7 +32,10 @@ public class PageCreateTask
     IPage localIPage = getRuntimeLoader().getRuntime().getPage();
     if (!(localIPage instanceof AppBrandPageContainer))
     {
-      QMLog.w("PageCreateTask", "PageContainer type is incorrect! page=" + localIPage);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PageContainer type is incorrect! page=");
+      localStringBuilder.append(localIPage);
+      QMLog.w("PageCreateTask", localStringBuilder.toString());
       onTaskSucceed();
       return;
     }
@@ -64,8 +67,8 @@ public class PageCreateTask
       {
         this.mPageContainer.recyclePreLoadAppBrandPage();
         this.mPageContainer = null;
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -75,7 +78,7 @@ public class PageCreateTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.PageCreateTask
  * JD-Core Version:    0.7.0.1
  */

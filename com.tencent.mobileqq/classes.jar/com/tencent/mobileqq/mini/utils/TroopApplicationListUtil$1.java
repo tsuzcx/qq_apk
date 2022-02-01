@@ -22,31 +22,38 @@ final class TroopApplicationListUtil$1
     if ((paramMessage.obj instanceof WebSoCgiService.WebSoCgiState))
     {
       paramMessage = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
-      if (paramMessage.c == 0)
-      {
-        int i;
+      if (paramMessage.c == 0) {
         try
         {
-          if (paramMessage.d == null) {
-            break label203;
-          }
-          QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.htmlBody: ", paramMessage.d });
-          i = new JSONObject(paramMessage.d).optInt("ec", -1);
-          paramMessage = new JSONObject();
-          if (i == 44012)
+          if (paramMessage.d != null)
           {
-            paramMessage.put("isExisted", true);
+            QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.htmlBody: ", paramMessage.d });
+            int i = new JSONObject(paramMessage.d).optInt("ec", -1);
+            paramMessage = new JSONObject();
+            if (i == 44012)
+            {
+              paramMessage.put("isExisted", true);
+              paramMessage.put("errorCode", i);
+              this.val$listener.onReceiveResult(true, paramMessage);
+              return;
+            }
+            if (i == 0)
+            {
+              paramMessage.put("isExisted", false);
+              paramMessage.put("errorCode", i);
+              this.val$listener.onReceiveResult(true, paramMessage);
+              return;
+            }
             paramMessage.put("errorCode", i);
-            this.val$listener.onReceiveResult(true, paramMessage);
+            if (i == 44004) {
+              paramMessage.put("errMsg", "not group manager");
+            }
+            this.val$listener.onReceiveResult(false, paramMessage);
             return;
           }
-          if (i == 0)
-          {
-            paramMessage.put("isExisted", false);
-            paramMessage.put("errorCode", i);
-            this.val$listener.onReceiveResult(true, paramMessage);
-            return;
-          }
+          QLog.e("TroopApplicationListUtil", 1, "native error, htmlBody is null");
+          this.val$listener.onReceiveResult(false, null);
+          return;
         }
         catch (JSONException paramMessage)
         {
@@ -54,18 +61,11 @@ final class TroopApplicationListUtil$1
           this.val$listener.onReceiveResult(false, null);
           return;
         }
-        paramMessage.put("errorCode", i);
-        if (i == 44004) {
-          paramMessage.put("errMsg", "not group manager");
-        }
-        this.val$listener.onReceiveResult(false, paramMessage);
-        return;
-        label203:
-        QLog.e("TroopApplicationListUtil", 1, "native error, htmlBody is null");
-        this.val$listener.onReceiveResult(false, null);
-        return;
       }
-      QLog.e("TroopApplicationListUtil", 1, "handleMessage addMiniAppToTroopApplicationList ,resultCode : " + paramMessage.c);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleMessage addMiniAppToTroopApplicationList ,resultCode : ");
+      localStringBuilder.append(paramMessage.c);
+      QLog.e("TroopApplicationListUtil", 1, localStringBuilder.toString());
       this.val$listener.onReceiveResult(false, null);
       return;
     }
@@ -75,7 +75,7 @@ final class TroopApplicationListUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.TroopApplicationListUtil.1
  * JD-Core Version:    0.7.0.1
  */

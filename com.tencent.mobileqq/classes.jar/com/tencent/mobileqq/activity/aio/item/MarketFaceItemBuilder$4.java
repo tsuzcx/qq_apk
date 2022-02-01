@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.mobileqq.emoticonview.QueryCallback;
 
 class MarketFaceItemBuilder$4
   implements QueryCallback<Void>
@@ -16,7 +16,7 @@ class MarketFaceItemBuilder$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

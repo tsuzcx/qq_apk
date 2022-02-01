@@ -10,16 +10,20 @@ class AccountManageActivity$29
 {
   AccountManageActivity$29(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
+    if (paramBoolean)
     {
-      return;
+      if (paramString == null) {
+        return;
+      }
+      LinearLayout localLinearLayout = this.a.jdField_a_of_type_AndroidWidgetLinearLayout;
+      int j = 0;
       int i;
-      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      if (localLinearLayout != null) {
         i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      } else {
+        i = 0;
       }
       while (j < this.a.jdField_a_of_type_JavaUtilList.size())
       {
@@ -29,15 +33,13 @@ class AccountManageActivity$29
           return;
         }
         j += 1;
-        continue;
-        i = 0;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.29
  * JD-Core Version:    0.7.0.1
  */

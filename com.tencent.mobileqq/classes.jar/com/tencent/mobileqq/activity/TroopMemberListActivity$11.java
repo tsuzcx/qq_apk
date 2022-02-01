@@ -12,14 +12,14 @@ class TroopMemberListActivity$11
   
   public void onClick(View paramView)
   {
-    this.a.g();
-    new ReportTask(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.b }).a();
+    this.a.showActionSheet();
+    new ReportTask(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.mTroopUin }).a();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package androidx.core.view;
 import android.view.MenuItem;
 import android.view.MenuItem.OnActionExpandListener;
 
-final class MenuItemCompat$1
+class MenuItemCompat$1
   implements MenuItem.OnActionExpandListener
 {
   MenuItemCompat$1(MenuItemCompat.OnActionExpandListener paramOnActionExpandListener) {}
@@ -20,7 +20,7 @@ final class MenuItemCompat$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.MenuItemCompat.1
  * JD-Core Version:    0.7.0.1
  */

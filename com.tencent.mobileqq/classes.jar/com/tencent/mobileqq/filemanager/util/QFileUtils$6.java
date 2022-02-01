@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.content.Context;
+import android.os.AsyncTask;
+import com.dataline.core.DirectForwarder;
+import com.dataline.core.DirectForwarder.CallBack;
 
 final class QFileUtils$6
-  implements FMDialogUtil.FMDialogInterface
+  extends DirectForwarder.CallBack
 {
-  QFileUtils$6(Activity paramActivity, Intent paramIntent) {}
+  QFileUtils$6(Context paramContext) {}
   
-  public void a()
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    ForwardBaseOption.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, ForwardRecentTranslucentActivity.class, 103);
+    super.a(paramAsyncTask, paramInt);
+    DirectForwarder.a(this.a, paramAsyncTask, paramInt, new QFileUtils.6.1(this));
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QFileUtils.6
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,10 @@ class PickerJsPlugin$2
   
   public void run()
   {
-    if (PickerJsPlugin.access$100(this.this$0) == null) {
-      PickerJsPlugin.access$102(this.this$0, new MutiPickerView(PickerJsPlugin.access$200(this.this$0).getAttachedActivity()));
+    if (PickerJsPlugin.access$100(this.this$0) == null)
+    {
+      PickerJsPlugin localPickerJsPlugin = this.this$0;
+      PickerJsPlugin.access$102(localPickerJsPlugin, new MutiPickerView(PickerJsPlugin.access$200(localPickerJsPlugin).getAttachedActivity()));
     }
     PickerJsPlugin.access$100(this.this$0).setDisplayedValues(this.val$mutiArray);
     PickerJsPlugin.access$100(this.this$0).setCurrentIndex(this.val$curValue);
@@ -22,7 +24,7 @@ class PickerJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.PickerJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

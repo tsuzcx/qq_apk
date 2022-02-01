@@ -13,12 +13,12 @@ class ApkgManager$7$ApkgUnpackFileInfo
   
   public boolean isCompleted()
   {
-    return !TextUtils.isEmpty(this.fileContent);
+    return TextUtils.isEmpty(this.fileContent) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager.7.ApkgUnpackFileInfo
  * JD-Core Version:    0.7.0.1
  */

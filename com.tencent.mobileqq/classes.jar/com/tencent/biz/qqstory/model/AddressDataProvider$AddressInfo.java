@@ -23,12 +23,33 @@ public class AddressDataProvider$AddressInfo
   
   public String toString()
   {
-    return "AddressInfo{country='" + this.jdField_a_of_type_JavaLangString + '\'' + ", province='" + this.jdField_b_of_type_JavaLangString + '\'' + ", city='" + this.c + '\'' + ", district='" + this.d + '\'' + ", street='" + this.e + '\'' + ", longitude=" + this.jdField_a_of_type_Int + ", latitude=" + this.jdField_b_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AddressInfo{country='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", province='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", city='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", district='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", street='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", longitude=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", latitude=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo
  * JD-Core Version:    0.7.0.1
  */

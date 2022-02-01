@@ -9,9 +9,9 @@ import android.text.TextUtils;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.falco.utils.NetworkUtil;
-import com.tencent.ilive.commonpages.room.VerticalViewPager;
 import com.tencent.ilive.enginemanager.BizEngineMgr;
 import com.tencent.ilive.interfaces.IAudienceRoomPager;
+import com.tencent.ilive.litepages.room.webmodule.jsmodule.JsBizAdapter;
 import com.tencent.ilive.litepages.room.webmodule.model.RoomExtInfo;
 import com.tencent.ilive.pages.room.RoomBizContext;
 import com.tencent.ilivesdk.qualityreportservice_interface.AudQualityServiceInterface;
@@ -29,6 +29,7 @@ import com.tencent.mobileqq.intervideo.lite_now_biz.module.NowCustomWebModule;
 import com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.datareport.DataReportMgr;
 import com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.datareport.OnGetRoomExtInfoListener;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.LiteLiveJsProvider;
+import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.WebCookieManager;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -36,9 +37,9 @@ public class NowWebBizModule
   extends NowCustomWebModule
   implements OnGetRoomExtInfoListener
 {
-  private RoomExtInfo jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
-  private boolean jdField_a_of_type_Boolean;
+  private RoomExtInfo a;
   private boolean b;
+  private boolean c;
   
   private int a()
   {
@@ -48,11 +49,6 @@ public class NowWebBizModule
     return 0;
   }
   
-  private void a(String paramString)
-  {
-    a("now_mqq_scheme", paramString);
-  }
-  
   private void a(String paramString1, String paramString2)
   {
     SharedPreferences.Editor localEditor = new NowWebBizModule.SharePreferenceUtil(BaseApplicationImpl.getContext(), "now_room_info").a();
@@ -60,56 +56,67 @@ public class NowWebBizModule
     localEditor.commit();
   }
   
+  private void b(String paramString)
+  {
+    a("now_mqq_scheme", paramString);
+  }
+  
   private boolean b()
   {
-    boolean bool = false;
     int j = a();
-    if (getAudienceRoomPager().getViewPager() != null) {}
-    for (int i = getAudienceRoomPager().getViewPager().getCurrentItem();; i = 0)
-    {
-      if (j == i) {
-        bool = true;
-      }
-      return bool;
+    IAudienceRoomPager localIAudienceRoomPager = getAudienceRoomPager();
+    boolean bool = false;
+    int i;
+    if (localIAudienceRoomPager != null) {
+      i = getAudienceRoomPager().getCurrentIndex();
+    } else {
+      i = 0;
     }
+    if (j == i) {
+      bool = true;
+    }
+    return bool;
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    while ((this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo == null) || (!"4".equals(this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo.state))) {
+    if (this.b) {
       return;
     }
-    Object localObject = BizEngineMgr.getInstance().getLiveEngine();
-    if (localObject != null) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
+    if ((localObject != null) && ("4".equals(((RoomExtInfo)localObject).state)))
     {
-      try
-      {
-        localObject = (QualityReportServiceInterface)((LiveEngine)localObject).getService(QualityReportServiceInterface.class);
-        if (localObject != null)
+      localObject = BizEngineMgr.getInstance().getLiveEngine();
+      if (localObject != null) {
+        try
         {
-          localObject = ((QualityReportServiceInterface)localObject).getAudQualityReporter();
+          localObject = (QualityReportServiceInterface)((LiveEngine)localObject).getService(QualityReportServiceInterface.class);
           if (localObject != null)
           {
-            if (!this.b) {
-              continue;
+            localObject = ((QualityReportServiceInterface)localObject).getAudQualityReporter();
+            if (localObject != null)
+            {
+              boolean bool = this.c;
+              if (bool)
+              {
+                ((AudQualityServiceInterface)localObject).reportSwitchOver();
+                QLog.i("DataReportMgr", 1, "reportSwitchOver");
+              }
+              else
+              {
+                ((AudQualityServiceInterface)localObject).reportEnterOver();
+                QLog.i("DataReportMgr", 1, "reportEnterOver");
+              }
             }
-            ((AudQualityServiceInterface)localObject).reportSwitchOver();
-            QLog.i("DataReportMgr", 1, "reportSwitchOver");
           }
         }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        continue;
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
       }
       DataReportMgr.a().a(this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo);
-      this.jdField_a_of_type_Boolean = true;
-      return;
-      ((AudQualityServiceInterface)localObject).reportEnterOver();
-      QLog.i("DataReportMgr", 1, "reportEnterOver");
+      this.b = true;
     }
   }
   
@@ -130,22 +137,24 @@ public class NowWebBizModule
   
   public String a(String paramString)
   {
-    String str2 = Build.VERSION.RELEASE;
+    String str = Build.VERSION.RELEASE;
     int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
-    String str1;
-    if (!StringUtil.a(paramString))
-    {
-      str1 = paramString;
-      if (paramString.contains("NowSDK/")) {}
+    if ((!StringUtil.a(paramString)) && (paramString.contains("NowSDK/"))) {
+      return paramString;
     }
-    else
-    {
-      str1 = paramString + " NowLive/" + 10305 + "_" + str2 + " NetType/" + i + " NowSDK/18_10.20";
-    }
-    return str1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" NowLive/");
+    localStringBuilder.append(10800);
+    localStringBuilder.append("_");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" NetType/");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" NowSDK/18_10.20");
+    return localStringBuilder.toString();
   }
   
-  public void a()
+  protected void a()
   {
     super.a();
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowQQApiJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
@@ -156,7 +165,7 @@ public class NowWebBizModule
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new SsoJavascriptInterface(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
   }
   
-  public void a(RoomExtInfo paramRoomExtInfo)
+  protected void a(RoomExtInfo paramRoomExtInfo)
   {
     super.a(paramRoomExtInfo);
     this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo = paramRoomExtInfo;
@@ -165,26 +174,23 @@ public class NowWebBizModule
     }
   }
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
-    RoomExtInfo localRoomExtInfo;
-    if (this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo != null)
+    RoomExtInfo localRoomExtInfo = this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
+    if (localRoomExtInfo != null)
     {
-      localRoomExtInfo = this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
-      if (!paramBoolean) {
-        break label31;
+      String str;
+      if (paramBoolean) {
+        str = "1";
+      } else {
+        str = "0";
       }
-    }
-    label31:
-    for (String str = "1";; str = "0")
-    {
       localRoomExtInfo.followStatus = str;
-      return;
     }
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return false;
   }
@@ -192,6 +198,15 @@ public class NowWebBizModule
   public String b()
   {
     return "https://now.qq.com/h5/story.html";
+  }
+  
+  protected void b()
+  {
+    WebCookieManager.a().a(this.context, this.jdField_a_of_type_JavaLangString);
+    WebCookieManager.a().a(this.context, "https://yutang.qq.com/");
+    WebCookieManager.a().a(this.context, "https://ilive.qq.com/");
+    WebCookieManager.a().a(BaseApplicationImpl.getContext(), "https://now.qq.com/");
+    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.callJsFunctionByNative("__WEBVIEW_RELOADCOOKIES", null, null);
   }
   
   public String c()
@@ -238,7 +253,7 @@ public class NowWebBizModule
   {
     super.onDestroy();
     this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo = null;
-    this.b = false;
+    this.c = false;
   }
   
   public void onEnterRoom(boolean paramBoolean)
@@ -246,7 +261,7 @@ public class NowWebBizModule
     super.onEnterRoom(paramBoolean);
     Bundle localBundle = this.roomBizContext.getEnterRoomInfo().extData;
     if ((localBundle != null) && (localBundle.containsKey("mqqschema"))) {
-      a(localBundle.getString("mqqschema"));
+      b(localBundle.getString("mqqschema"));
     }
   }
   
@@ -257,12 +272,12 @@ public class NowWebBizModule
       paramSwitchRoomInfo.extData.putString("mqqschema", str);
     }
     super.onSwitchRoom(paramSwitchRoomInfo);
-    this.b = true;
+    this.c = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.NowWebBizModule
  * JD-Core Version:    0.7.0.1
  */

@@ -24,13 +24,14 @@ public final class qqstory_service$ReqSyncVideoPublish
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 56, 66 }, new String[] { "uint32_chat_type", "uint32_client_type", "str_fileid", "uint64_group_code", "bytes_file_md5", "uint32_business_type", "source", "publish_struct" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null }, ReqSyncVideoPublish.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 56, 66 }, new String[] { "uint32_chat_type", "uint32_client_type", "str_fileid", "uint64_group_code", "bytes_file_md5", "uint32_business_type", "source", "publish_struct" }, new Object[] { localInteger, localInteger, "", Long.valueOf(0L), localByteStringMicro, localInteger, localInteger, null }, ReqSyncVideoPublish.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSyncVideoPublish
  * JD-Core Version:    0.7.0.1
  */

@@ -29,12 +29,13 @@ public class UKYOScore$ScoreEffectStatus
   
   public void needAppear()
   {
-    if (this.mImageID != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mIsAppear = bool;
-      return;
+    boolean bool;
+    if (this.mImageID != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mIsAppear = bool;
   }
   
   public void reset()
@@ -46,30 +47,33 @@ public class UKYOScore$ScoreEffectStatus
   
   public void updateFrameIndex(long paramLong)
   {
-    if (this.mFrameDuration == 0) {}
-    for (this.mCurIndex += 1;; this.mCurIndex += 1)
+    int i = this.mFrameDuration;
+    if (i == 0)
     {
-      int i;
-      do
+      this.mCurIndex += 1;
+    }
+    else
+    {
+      long l = this.mStartTime;
+      if (l == -1L)
       {
-        if (this.mCurIndex >= this.FRAMES) {
-          reset();
-        }
+        this.mStartTime = paramLong;
+        this.mCurIndex = 0;
         return;
-        if (this.mStartTime == -1L)
-        {
-          this.mStartTime = paramLong;
-          this.mCurIndex = 0;
-          return;
-        }
-        i = (int)(paramLong - this.mStartTime);
-      } while ((i <= 0) || (i / this.mFrameDuration - this.mCurIndex <= 1));
+      }
+      int j = (int)(paramLong - l);
+      if ((j > 0) && (j / i - this.mCurIndex > 1)) {
+        this.mCurIndex += 1;
+      }
+    }
+    if (this.mCurIndex >= this.FRAMES) {
+      reset();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.juyoujinggame.UKYOScore.ScoreEffectStatus
  * JD-Core Version:    0.7.0.1
  */

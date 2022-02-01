@@ -19,48 +19,44 @@ public class Utils
   
   public static final long Crc64Long(String paramString)
   {
-    int k = 0;
-    long l2;
-    if ((paramString == null) || (paramString.length() == 0))
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      l2 = 0L;
-      return l2;
-    }
-    if (!init)
-    {
-      i = 0;
-      while (i < 256)
+      long l2 = -1L;
+      boolean bool = init;
+      int k = 0;
+      if (!bool)
       {
-        l1 = i;
-        j = 0;
-        if (j < 8)
+        i = 0;
+        while (i < 256)
         {
-          if (((int)l1 & 0x1) != 0) {}
-          for (l1 = l1 >> 1 ^ 0xAC4BC9B5;; l1 >>= 1)
+          l1 = i;
+          j = 0;
+          while (j < 8)
           {
+            if (((int)l1 & 0x1) != 0) {
+              l1 = l1 >> 1 ^ 0xAC4BC9B5;
+            } else {
+              l1 >>= 1;
+            }
             j += 1;
-            break;
           }
+          CRCTable[i] = l1;
+          i += 1;
         }
-        CRCTable[i] = l1;
+        init = true;
+      }
+      int j = paramString.length();
+      int i = k;
+      long l1 = l2;
+      while (i < j)
+      {
+        k = paramString.charAt(i);
+        l1 = l1 >> 8 ^ CRCTable[((k ^ (int)l1) & 0xFF)];
         i += 1;
       }
-      init = true;
+      return l1;
     }
-    int j = paramString.length();
-    long l1 = -1L;
-    int i = k;
-    for (;;)
-    {
-      l2 = l1;
-      if (i >= j) {
-        break;
-      }
-      k = paramString.charAt(i);
-      l2 = CRCTable[((k ^ (int)l1) & 0xFF)];
-      i += 1;
-      l1 = l2 ^ l1 >> 8;
-    }
+    return 0L;
   }
   
   public static final String Crc64String(String paramString)
@@ -93,8 +89,15 @@ public class Utils
     if (hasExternalCacheDir()) {
       return paramContext.getExternalCacheDir();
     }
-    paramContext = "/Android/data/" + paramContext.getPackageName() + "/imagecache/";
-    return new File(Environment.getExternalStorageDirectory().getPath() + paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/Android/data/");
+    localStringBuilder.append(paramContext.getPackageName());
+    localStringBuilder.append("/imagecache/");
+    paramContext = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+    localStringBuilder.append(paramContext);
+    return new File(localStringBuilder.toString());
   }
   
   public static int getMemoryClass(Context paramContext)
@@ -109,8 +112,7 @@ public class Utils
       return paramFile.getUsableSpace();
     }
     paramFile = new StatFs(paramFile.getPath());
-    long l = paramFile.getBlockSize();
-    return paramFile.getAvailableBlocks() * l;
+    return paramFile.getBlockSize() * paramFile.getAvailableBlocks();
   }
   
   public static boolean hasExternalCacheDir()
@@ -134,7 +136,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.Utils
  * JD-Core Version:    0.7.0.1
  */

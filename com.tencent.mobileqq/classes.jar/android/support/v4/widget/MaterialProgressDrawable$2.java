@@ -14,7 +14,8 @@ class MaterialProgressDrawable$2
   {
     this.val$ring.storeOriginals();
     this.val$ring.goToNextColor();
-    this.val$ring.setStartTrim(this.val$ring.getEndTrim());
+    MaterialProgressDrawable.Ring localRing = this.val$ring;
+    localRing.setStartTrim(localRing.getEndTrim());
     if (this.this$0.mFinishing)
     {
       this.this$0.mFinishing = false;
@@ -22,7 +23,8 @@ class MaterialProgressDrawable$2
       this.val$ring.setShowArrow(false);
       return;
     }
-    MaterialProgressDrawable.access$402(this.this$0, (MaterialProgressDrawable.access$400(this.this$0) + 1.0F) % 5.0F);
+    paramAnimation = this.this$0;
+    MaterialProgressDrawable.access$402(paramAnimation, (MaterialProgressDrawable.access$400(paramAnimation) + 1.0F) % 5.0F);
   }
   
   public void onAnimationStart(Animation paramAnimation)

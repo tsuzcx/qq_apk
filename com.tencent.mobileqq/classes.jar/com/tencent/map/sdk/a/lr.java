@@ -27,9 +27,10 @@ public final class lr
   
   public final void a(long paramLong)
   {
-    if (this.d != null)
+    mt localmt = this.d;
+    if (localmt != null)
     {
-      this.d.a(paramLong);
+      localmt.a(paramLong);
       e();
     }
   }
@@ -39,92 +40,88 @@ public final class lr
     this.c = paramMaskLayerOptions;
     b();
     ko localko = this.e;
-    if (this.d != null) {
-      this.d.a(0L);
+    Object localObject = this.d;
+    if (localObject != null) {
+      ((mt)localObject).a(0L);
     }
-    if ((this.a != null) && (paramMaskLayerOptions != null))
+    localObject = this.a;
+    if ((localObject != null) && (paramMaskLayerOptions != null))
     {
       this.c = paramMaskLayerOptions;
       this.e = localko;
-      this.d = new mt(this.a, paramMaskLayerOptions);
+      this.d = new mt((pn)localObject, paramMaskLayerOptions);
       if (!this.d.a())
       {
         this.d.b();
         this.d = null;
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    if ((paramMaskLayerOptions == null) || (this.b == null)) {}
-    for (;;)
-    {
+      if ((paramMaskLayerOptions != null) && (this.b != null)) {
+        if ((paramMaskLayerOptions.getColor() >> 24 & 0xFF) >= 51)
+        {
+          if (this.b.a()) {
+            this.b.a(false);
+          }
+          this.b.b(false);
+        }
+        else
+        {
+          if (this.b.a()) {
+            this.b.a(true);
+          }
+          this.b.b(true);
+        }
+      }
       new MaskLayer(paramMaskLayerOptions, localko);
-      return;
-      if ((paramMaskLayerOptions.getColor() >> 24 & 0xFF) >= 51)
-      {
-        if (this.b.a()) {
-          this.b.a(false);
-        }
-        this.b.b(false);
-      }
-      else
-      {
-        if (this.b.a()) {
-          this.b.a(true);
-        }
-        this.b.b(true);
-      }
     }
   }
   
   public final void a(boolean paramBoolean)
   {
-    mt localmt;
-    if (this.d != null)
+    mt localmt = this.d;
+    if (localmt != null)
     {
-      localmt = this.d;
       localmt.a = paramBoolean;
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         localmt.a();
+        return;
       }
+      localmt.c();
     }
-    else
-    {
-      return;
-    }
-    localmt.c();
   }
   
   public final void b()
   {
-    if (this.d != null)
+    mt localmt = this.d;
+    if (localmt != null)
     {
-      this.d.a(0L);
+      localmt.a(0L);
       e();
     }
   }
   
   public final int c()
   {
-    if (this.c == null) {
+    MaskLayerOptions localMaskLayerOptions = this.c;
+    if (localMaskLayerOptions == null) {
       return 0;
     }
-    return this.c.getZIndex();
+    return localMaskLayerOptions.getZIndex();
   }
   
   public final boolean d()
   {
-    if (this.d == null) {
+    mt localmt = this.d;
+    if (localmt == null) {
       return false;
     }
-    return this.d.a;
+    return localmt.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.lr
  * JD-Core Version:    0.7.0.1
  */

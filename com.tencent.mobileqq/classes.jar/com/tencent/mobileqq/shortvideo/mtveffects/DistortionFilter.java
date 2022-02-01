@@ -17,7 +17,7 @@ public class DistortionFilter
     super("precision highp float;\nvarying vec2 vTextureCoord;\nuniform sampler2D inputImageTexture;//!畸变图片\nuniform vec2 inputImageTextureSize;\nuniform vec4 distortionParam; //!畸变参数：x < 0 is pincushion distortion,  >=0 is barrel distortion 例如：(1.2,0.5, 1.0) z: scale factor\nuniform vec2 distortionCenter; //!畸变中心\n\n \n\n\nvoid main() \n{\n    vec2 dstPos;  \n    float fDistance = sqrt((vTextureCoord.x - distortionCenter.x) * (vTextureCoord.x - distortionCenter.x) + (vTextureCoord.y - distortionCenter.y) * (vTextureCoord.y - distortionCenter.y));\n    float fDistanceNew = fDistance * (1.0 + distortionParam.x * (fDistance * fDistance) + distortionParam.y * (fDistance * fDistance * fDistance * fDistance));\n    float fTheta = atan(vTextureCoord.x - distortionCenter.x, vTextureCoord.y - distortionCenter.y);\n    float fDistortionX = sin(fTheta) * fDistanceNew * distortionParam.z;\n    float fDistortionY = cos(fTheta) * fDistanceNew * distortionParam.z;\n    dstPos.x = fDistortionX + distortionCenter.x;\n\tdstPos.y = fDistortionY + distortionCenter.y;\n       \n    gl_FragColor = texture2D(inputImageTexture, dstPos);\n\t\n}\n");
   }
   
-  public void onInitialized()
+  protected void onInitialized()
   {
     super.onInitialized();
     int i = getProgram();
@@ -32,8 +32,10 @@ public class DistortionFilter
   
   public boolean process(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    if (paramInt < 0) {}
-    while (!processBegin(paramArrayOfFloat1, paramArrayOfFloat2)) {
+    if (paramInt < 0) {
+      return false;
+    }
+    if (!processBegin(paramArrayOfFloat1, paramArrayOfFloat2)) {
       return false;
     }
     GLES20.glActiveTexture(33984);
@@ -48,7 +50,7 @@ public class DistortionFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.DistortionFilter
  * JD-Core Version:    0.7.0.1
  */

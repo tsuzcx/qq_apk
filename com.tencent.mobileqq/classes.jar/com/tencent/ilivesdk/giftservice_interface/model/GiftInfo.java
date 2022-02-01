@@ -40,17 +40,33 @@ public class GiftInfo
   public String mSmallIcon;
   public ArrayList<GiftInfo.SpecialNumber> mSpecialNumList = new ArrayList();
   public int mTabId;
+  public String mTagUrl;
   public long mTimestamp;
   public int mVisible;
   
   public String toString()
   {
-    return "GiftInfo{mGiftId=" + this.mGiftId + ", mGiftName='" + this.mGiftName + ", mPrice=" + this.mPrice + ", mGiftType=" + this.mGiftType + ", tabId=" + this.mTabId + ", mSmallIcon='" + this.mSmallIcon + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GiftInfo{mGiftId=");
+    localStringBuilder.append(this.mGiftId);
+    localStringBuilder.append(", mGiftName='");
+    localStringBuilder.append(this.mGiftName);
+    localStringBuilder.append(", mPrice=");
+    localStringBuilder.append(this.mPrice);
+    localStringBuilder.append(", mGiftType=");
+    localStringBuilder.append(this.mGiftType);
+    localStringBuilder.append(", tabId=");
+    localStringBuilder.append(this.mTabId);
+    localStringBuilder.append(", mSmallIcon='");
+    localStringBuilder.append(this.mSmallIcon);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.giftservice_interface.model.GiftInfo
  * JD-Core Version:    0.7.0.1
  */

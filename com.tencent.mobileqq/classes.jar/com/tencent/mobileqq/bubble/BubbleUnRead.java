@@ -20,6 +20,8 @@ import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.File;
 import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class BubbleUnRead
 {
@@ -35,224 +37,252 @@ public class BubbleUnRead
     this.jdField_a_of_type_AndroidUtilLruCache = new LruCache(10);
   }
   
-  public BubbleUnRead.BubbleUnreadBundle a(TextView paramTextView, int paramInt1, int paramInt2, String paramString)
+  @Nullable
+  private BubbleUnRead.BubbleUnreadBundle a(TextView paramTextView, int paramInt, String paramString, String[] paramArrayOfString, BubbleInfo paramBubbleInfo)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a;
-    if (localObject2 == null) {
-      return null;
-    }
-    Object localObject1 = null;
-    BubbleInfo localBubbleInfo = BubbleUtils.a(paramInt1, (AppRuntime)localObject2, null, null);
-    if (localBubbleInfo.jdField_a_of_type_ArrayOfJavaLangString != null)
+    if ((paramArrayOfString != null) && (a()))
     {
-      localObject1 = localBubbleInfo.jdField_a_of_type_ArrayOfJavaLangString;
-      if ((localObject1 == null) || (!a())) {
-        break label594;
+      String str = a(paramInt, paramArrayOfString);
+      if (str == null) {
+        return null;
       }
-      if (paramInt2 >= 10) {
-        break label89;
-      }
-      localObject1 = localObject1[0];
-    }
-    for (;;)
-    {
-      if (localObject1 != null) {
-        break label113;
-      }
-      return null;
-      if (paramInt1 <= 0) {
-        break;
-      }
-      localObject1 = a(paramInt1);
-      break;
-      label89:
-      if (paramInt2 < 100) {
-        localObject1 = localObject1[1];
-      } else {
-        localObject1 = localObject1[2];
-      }
-    }
-    label113:
-    Object localObject3 = (Bitmap)this.jdField_a_of_type_AndroidUtilLruCache.get(localObject1);
-    if ((localObject3 != null) || (FileUtils.a((String)localObject1)))
-    {
-      localObject2 = localObject3;
-      if (localObject3 == null)
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
+      if ((localBitmap != null) || (FileUtils.fileExists(str)))
       {
-        localObject2 = BitmapFactory.decodeFile((String)localObject1);
-        if (localObject2 != null) {
-          this.jdField_a_of_type_AndroidUtilLruCache.put(localObject1, localObject2);
-        }
-      }
-      else if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (TextUtils.equals(paramString, this.jdField_a_of_type_JavaLangString))) {}
-      label589:
-      for (;;)
-      {
-        try
+        paramArrayOfString = localBitmap;
+        if (localBitmap == null)
         {
-          if (this.jdField_a_of_type_AndroidGraphicsRect == null)
+          paramArrayOfString = BitmapFactory.decodeFile(str);
+          if (paramArrayOfString != null)
           {
-            this.jdField_a_of_type_JavaLangString = paramString;
-            this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-            paramString = paramTextView.getText();
-            localObject1 = new Rect(paramTextView.getPaddingLeft(), paramTextView.getPaddingTop(), paramTextView.getPaddingRight(), paramTextView.getPaddingBottom());
-            localObject3 = paramTextView.getBackground();
-            paramTextView.setText("1");
-            paramTextView.measure(0, 0);
-            int n = paramTextView.getMeasuredWidth();
-            if (Build.VERSION.SDK_INT >= 16) {
-              paramTextView.setBackground(new BitmapDrawable((Bitmap)localObject2));
-            }
-            paramTextView.setPadding(0, 0, 0, 0);
-            paramTextView.measure(0, 0);
-            paramInt2 = paramTextView.getMeasuredWidth();
-            paramInt1 = paramTextView.getMeasuredHeight();
-            int i = Math.max((n - paramInt2) / 2, 0);
-            int k = Math.max((n - paramInt1) / 2, 0);
-            int j = Math.max(n - paramInt2 - i, 0);
-            int m = Math.max(n - paramInt1 - k, 0);
-            paramTextView.setPadding(j, m, i, k);
-            paramTextView.measure(0, 0);
-            int i1 = n - paramTextView.getMeasuredWidth();
-            paramInt2 = j;
-            paramInt1 = i;
-            if (i1 != 0)
-            {
-              paramInt2 = j + i1 / 2;
-              paramInt1 = i + (i1 - i1 / 2);
-            }
-            n -= paramTextView.getMeasuredHeight();
-            j = m;
-            i = k;
-            if (n != 0)
-            {
-              j = m + n / 2;
-              i = k + (n - n / 2);
-            }
-            this.jdField_a_of_type_AndroidGraphicsRect.set(paramInt2, j, paramInt1, i);
-            paramTextView.setText(paramString);
-            if (Build.VERSION.SDK_INT >= 16)
-            {
-              paramTextView.setBackground((Drawable)localObject3);
-              paramTextView.setPadding(((Rect)localObject1).left, ((Rect)localObject1).top, ((Rect)localObject1).right, ((Rect)localObject1).bottom);
-            }
+            this.jdField_a_of_type_AndroidUtilLruCache.put(str, paramArrayOfString);
           }
           else
           {
-            paramTextView = new BitmapDrawable((Bitmap)localObject2);
-            if (localBubbleInfo.jdField_a_of_type_Int <= 0) {
-              break label589;
-            }
-            paramInt1 = localBubbleInfo.b;
-            return new BubbleUnRead.BubbleUnreadBundle(paramTextView, paramInt1, this.jdField_a_of_type_AndroidGraphicsRect);
             QLog.d("BubbleManager", 2, "find no bubble unread : decode error");
             return null;
           }
-          paramTextView.setBackgroundDrawable((Drawable)localObject3);
-          continue;
-          paramInt1 = -1;
         }
-        finally {}
+        return a(paramTextView, paramString, paramBubbleInfo, paramArrayOfString);
       }
     }
-    label594:
     QLog.d("BubbleManager", 2, "find no bubble unread");
     return null;
   }
   
+  @NotNull
+  private BubbleUnRead.BubbleUnreadBundle a(TextView paramTextView, String paramString, BubbleInfo paramBubbleInfo, Bitmap paramBitmap)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsRect == null) || (!TextUtils.equals(paramString, this.jdField_a_of_type_JavaLangString))) {}
+    try
+    {
+      int i;
+      if (this.jdField_a_of_type_AndroidGraphicsRect == null)
+      {
+        this.jdField_a_of_type_JavaLangString = paramString;
+        this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+        paramString = paramTextView.getText();
+        Rect localRect = new Rect(paramTextView.getPaddingLeft(), paramTextView.getPaddingTop(), paramTextView.getPaddingRight(), paramTextView.getPaddingBottom());
+        Drawable localDrawable = paramTextView.getBackground();
+        paramTextView.setText("1");
+        paramTextView.measure(0, 0);
+        int i2 = paramTextView.getMeasuredWidth();
+        if (Build.VERSION.SDK_INT >= 16) {
+          paramTextView.setBackground(new BitmapDrawable(paramBitmap));
+        } else {
+          paramTextView.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
+        }
+        paramTextView.setPadding(0, 0, 0, 0);
+        paramTextView.measure(0, 0);
+        i = paramTextView.getMeasuredWidth();
+        int j = paramTextView.getMeasuredHeight();
+        i = i2 - i;
+        int k = Math.max(i / 2, 0);
+        j = i2 - j;
+        int n = Math.max(j / 2, 0);
+        int m = Math.max(i - k, 0);
+        int i1 = Math.max(j - n, 0);
+        paramTextView.setPadding(m, i1, k, n);
+        paramTextView.measure(0, 0);
+        int i3 = i2 - paramTextView.getMeasuredWidth();
+        j = m;
+        i = k;
+        if (i3 != 0)
+        {
+          j = m + i3 / 2;
+          i = k + (i3 - i3 / 2);
+        }
+        i2 -= paramTextView.getMeasuredHeight();
+        m = i1;
+        k = n;
+        if (i2 != 0)
+        {
+          m = i1 + i2 / 2;
+          k = n + (i2 - i2 / 2);
+        }
+        this.jdField_a_of_type_AndroidGraphicsRect.set(j, m, i, k);
+        paramTextView.setText(paramString);
+        if (Build.VERSION.SDK_INT >= 16) {
+          paramTextView.setBackground(localDrawable);
+        } else {
+          paramTextView.setBackgroundDrawable(localDrawable);
+        }
+        paramTextView.setPadding(localRect.left, localRect.top, localRect.right, localRect.bottom);
+      }
+      paramTextView = new BitmapDrawable(paramBitmap);
+      if (paramBubbleInfo.jdField_a_of_type_Int > 0) {
+        i = paramBubbleInfo.b;
+      } else {
+        i = -1;
+      }
+      return new BubbleUnRead.BubbleUnreadBundle(paramTextView, i, this.jdField_a_of_type_AndroidGraphicsRect);
+    }
+    finally {}
+  }
+  
+  @Nullable
+  private String a(int paramInt, String[] paramArrayOfString)
+  {
+    if (paramInt < 10) {
+      paramArrayOfString = paramArrayOfString[0];
+    } else if (paramInt < 100) {
+      paramArrayOfString = paramArrayOfString[1];
+    } else {
+      paramArrayOfString = paramArrayOfString[2];
+    }
+    String[] arrayOfString = paramArrayOfString;
+    if (paramArrayOfString == null) {
+      arrayOfString = null;
+    }
+    return arrayOfString;
+  }
+  
+  private String[] a(int paramInt, String[] paramArrayOfString, BubbleInfo paramBubbleInfo)
+  {
+    if (paramBubbleInfo.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return paramBubbleInfo.jdField_a_of_type_ArrayOfJavaLangString;
+    }
+    if (paramInt > 0) {
+      paramArrayOfString = a(paramInt);
+    }
+    return paramArrayOfString;
+  }
+  
+  public BubbleUnRead.BubbleUnreadBundle a(TextView paramTextView, int paramInt1, int paramInt2, String paramString)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a;
+    if (localObject == null) {
+      return null;
+    }
+    localObject = BubbleUtils.a(paramInt1, (AppRuntime)localObject, null, null);
+    return a(paramTextView, paramInt2, paramString, a(paramInt1, null, (BubbleInfo)localObject), (BubbleInfo)localObject);
+  }
+  
   public void a(boolean paramBoolean)
   {
-    boolean bool = true;
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a;
     if (localObject == null) {
       return;
     }
-    if (!b()) {
+    boolean bool2 = b();
+    boolean bool1 = true;
+    if (!bool2) {
       paramBoolean = true;
     }
-    int i;
-    SharedPreferences.Editor localEditor;
     if (paramBoolean != a())
     {
-      if (!paramBoolean) {
-        break label136;
+      int i;
+      if (paramBoolean) {
+        i = 1;
+      } else {
+        i = -1;
       }
-      i = 1;
       this.jdField_a_of_type_Int = i;
-      localEditor = ((AppInterface)localObject).getApp().getSharedPreferences(((AppInterface)localObject).getCurrentAccountUin(), 0).edit();
+      SharedPreferences.Editor localEditor = ((AppInterface)localObject).getApp().getSharedPreferences(((AppInterface)localObject).getCurrentAccountUin(), 0).edit();
       if (i != 1) {
-        break label141;
+        bool1 = false;
       }
-    }
-    for (;;)
-    {
-      localEditor.putBoolean("svip_bubble_unread_switch", bool).apply();
+      localEditor.putBoolean("svip_bubble_unread_switch", bool1).apply();
       localObject = (VipInfoHandler)((AppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER);
       if (localObject != null) {
         ((VipInfoHandler)localObject).a(paramBoolean);
       }
-      QLog.d("BubbleManager", 2, "setBubbleUnreadShow " + paramBoolean);
-      return;
-      label136:
-      i = -1;
-      break;
-      label141:
-      bool = false;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setBubbleUnreadShow ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    QLog.d("BubbleManager", 2, ((StringBuilder)localObject).toString());
   }
   
   public boolean a()
   {
-    boolean bool = true;
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a;
-    if (localAppInterface == null) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a;
+    boolean bool = false;
+    if (localObject == null) {
       return false;
     }
-    int i;
     if (this.jdField_a_of_type_Int == 0)
     {
-      if (localAppInterface.getApp().getSharedPreferences(localAppInterface.getCurrentAccountUin(), 0).getBoolean("svip_bubble_unread_switch", true))
-      {
+      int i;
+      if (((AppRuntime)localObject).getApp().getSharedPreferences(((AppRuntime)localObject).getCurrentAccountUin(), 0).getBoolean("svip_bubble_unread_switch", true)) {
         i = 1;
-        this.jdField_a_of_type_Int = i;
+      } else {
+        i = -1;
       }
+      this.jdField_a_of_type_Int = i;
     }
-    else
-    {
-      QLog.d("BubbleManager", 2, "showBubbleUnread " + this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Int != 1) {
-        break label97;
-      }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("showBubbleUnread ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    QLog.d("BubbleManager", 2, ((StringBuilder)localObject).toString());
+    if (this.jdField_a_of_type_Int == 1) {
+      bool = true;
     }
-    for (;;)
-    {
-      return bool;
-      i = -1;
-      break;
-      label97:
-      bool = false;
-    }
+    return bool;
   }
   
   String[] a(int paramInt)
   {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInt).getAbsolutePath() + File.separatorChar + "unread" + File.separatorChar + "unread1.png";
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInt).getAbsolutePath() + File.separatorChar + "unread" + File.separatorChar + "unread2.png";
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInt).getAbsolutePath() + File.separatorChar + "unread" + File.separatorChar + "unread3.png";
-    if ((new File(str1).exists()) && (new File(str2).exists()) && (new File(str3).exists())) {
-      return new String[] { str1, str2, str3 };
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInt).getAbsolutePath());
+    ((StringBuilder)localObject1).append(File.separatorChar);
+    ((StringBuilder)localObject1).append("unread");
+    ((StringBuilder)localObject1).append(File.separatorChar);
+    ((StringBuilder)localObject1).append("unread1.png");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInt).getAbsolutePath());
+    ((StringBuilder)localObject2).append(File.separatorChar);
+    ((StringBuilder)localObject2).append("unread");
+    ((StringBuilder)localObject2).append(File.separatorChar);
+    ((StringBuilder)localObject2).append("unread2.png");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInt).getAbsolutePath());
+    ((StringBuilder)localObject3).append(File.separatorChar);
+    ((StringBuilder)localObject3).append("unread");
+    ((StringBuilder)localObject3).append(File.separatorChar);
+    ((StringBuilder)localObject3).append("unread3.png");
+    localObject3 = ((StringBuilder)localObject3).toString();
+    if ((new File((String)localObject1).exists()) && (new File((String)localObject2).exists()) && (new File((String)localObject3).exists())) {
+      return new String[] { localObject1, localObject2, localObject3 };
     }
     return null;
   }
   
   public boolean b()
   {
-    return QzoneConfig.getInstance().getConfig("K_QQ_VAS", "SK_QQ_VAS_ShowSwitchPersonalUnread", 0) == 1;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("K_QQ_VAS", "SK_QQ_VAS_ShowSwitchPersonalUnread", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleUnRead
  * JD-Core Version:    0.7.0.1
  */

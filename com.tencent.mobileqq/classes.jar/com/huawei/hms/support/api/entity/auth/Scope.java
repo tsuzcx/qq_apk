@@ -9,7 +9,7 @@ import com.huawei.hms.core.aidl.IMessageEntity;
 public class Scope
   implements Parcelable, IMessageEntity
 {
-  public static final Parcelable.Creator<Scope> CREATOR = new Scope.1();
+  public static final Parcelable.Creator<Scope> CREATOR = new Scope.a();
   private String mScopeUri;
   
   public Scope()
@@ -57,10 +57,11 @@ public class Scope
   
   public final int hashCode()
   {
-    if (this.mScopeUri == null) {
+    String str = this.mScopeUri;
+    if (str == null) {
       return super.hashCode();
     }
-    return this.mScopeUri.hashCode();
+    return str.hashCode();
   }
   
   public final String toString()
@@ -75,7 +76,7 @@ public class Scope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.api.entity.auth.Scope
  * JD-Core Version:    0.7.0.1
  */

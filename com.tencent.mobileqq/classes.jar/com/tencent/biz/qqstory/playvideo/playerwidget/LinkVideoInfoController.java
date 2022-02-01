@@ -35,29 +35,35 @@ public class LinkVideoInfoController
   
   public boolean a(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo == null) || (this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_a_of_type_Int != 1)) {
-      return false;
-    }
-    if (!super.a(paramView)) {
-      return false;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
+    VideoLinkInfo localVideoLinkInfo = this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo;
+    if (localVideoLinkInfo != null)
     {
-      paramView = JumpParser.a(QQStoryContext.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_a_of_type_JavaLangString);
-      if (paramView != null) {
-        paramView.a();
+      if (localVideoLinkInfo.jdField_a_of_type_Int != 1) {
+        return false;
       }
-      return true;
-    }
-    paramView = new Intent(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b(), QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.a());
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b().startActivity(paramView);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.d)) {}
-    for (paramView = "2";; paramView = "1")
-    {
+      if (!super.a(paramView)) {
+        return false;
+      }
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
+      {
+        paramView = JumpParser.a(QQStoryContext.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_a_of_type_JavaLangString);
+        if (paramView != null) {
+          paramView.a();
+        }
+        return true;
+      }
+      paramView = new Intent(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b(), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.a());
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b().startActivity(paramView);
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.d)) {
+        paramView = "2";
+      } else {
+        paramView = "1";
+      }
       StoryReportor.a("play_video", "clk_linkbar", 0, 0, new String[] { paramView, "", "", this.jdField_a_of_type_JavaLangString });
       return true;
     }
+    return false;
   }
   
   public void b(BannerVideoInfoWidget3.BannerViewHolder paramBannerViewHolder, StoryPlayerVideoData paramStoryPlayerVideoData)
@@ -65,52 +71,49 @@ public class LinkVideoInfoController
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = paramStoryPlayerVideoData;
     StoryVideoItem localStoryVideoItem = paramStoryPlayerVideoData.a();
     VideoLinkInfo localVideoLinkInfo = localStoryVideoItem.getVideoLinkInfo();
-    if ((localVideoLinkInfo == null) || (localVideoLinkInfo.jdField_a_of_type_Int != 1))
+    if ((localVideoLinkInfo != null) && (localVideoLinkInfo.jdField_a_of_type_Int == 1))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.k();
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = null;
-      return;
-    }
-    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString))
-    {
-      this.c = false;
+      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString))
+      {
+        this.c = false;
+      }
+      else
+      {
+        this.c = true;
+        this.jdField_a_of_type_JavaLangString = paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString;
+      }
       this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo = localVideoLinkInfo;
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.j();
       paramBannerViewHolder.b.setVisibility(0);
       paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      if (TextUtils.isEmpty(localVideoLinkInfo.e)) {
-        break label184;
+      if (!TextUtils.isEmpty(localVideoLinkInfo.e)) {
+        paramBannerViewHolder.b.setText(localVideoLinkInfo.e);
+      } else {
+        paramBannerViewHolder.b.setVisibility(8);
       }
-      paramBannerViewHolder.b.setText(localVideoLinkInfo.e);
-    }
-    for (;;)
-    {
       paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localVideoLinkInfo.b());
       paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
-      if ((localVideoLinkInfo.b != 1) || (!localStoryVideoItem.isUploading())) {
-        break label196;
+      if ((localVideoLinkInfo.b == 1) && (localStoryVideoItem.isUploading()))
+      {
+        paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846862);
+        return;
       }
-      paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846984);
-      return;
-      this.c = true;
-      this.jdField_a_of_type_JavaLangString = paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString;
-      break;
-      label184:
-      paramBannerViewHolder.b.setVisibility(8);
-    }
-    label196:
-    if (TextUtils.isEmpty(localVideoLinkInfo.d))
-    {
-      paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839756);
+      if (TextUtils.isEmpty(localVideoLinkInfo.d))
+      {
+        paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839613);
+        return;
+      }
+      BannerVideoInfoWidget3.a(localVideoLinkInfo.d, paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramBannerViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramBannerViewHolder.jdField_a_of_type_Int, paramBannerViewHolder.jdField_a_of_type_Int);
       return;
     }
-    BannerVideoInfoWidget3.a(localVideoLinkInfo.d, paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramBannerViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramBannerViewHolder.jdField_a_of_type_Int, paramBannerViewHolder.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.k();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.LinkVideoInfoController
  * JD-Core Version:    0.7.0.1
  */

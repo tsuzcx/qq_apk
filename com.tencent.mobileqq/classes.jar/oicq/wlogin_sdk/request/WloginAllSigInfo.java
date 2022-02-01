@@ -1,6 +1,8 @@
 package oicq.wlogin_sdk.request;
 
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.TreeMap;
 import oicq.wlogin_sdk.sharemem.WloginSigInfo;
 import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
@@ -14,70 +16,29 @@ public class WloginAllSigInfo
   public WloginSimpleInfo _useInfo = new WloginSimpleInfo();
   public int mainSigMap;
   
-  /* Error */
   public WloginAllSigInfo get_clone()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 45	java/lang/Object:clone	()Ljava/lang/Object;
-    //   4: checkcast 2	oicq/wlogin_sdk/request/WloginAllSigInfo
-    //   7: astore 4
-    //   9: aload 4
-    //   11: astore_3
-    //   12: aload_0
-    //   13: getfield 34	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
-    //   16: ifnull +79 -> 95
-    //   19: aload_0
-    //   20: getfield 34	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
-    //   23: invokevirtual 49	java/util/TreeMap:keySet	()Ljava/util/Set;
-    //   26: invokeinterface 55 1 0
-    //   31: astore 5
-    //   33: aload 4
-    //   35: astore_3
-    //   36: aload 5
-    //   38: invokeinterface 61 1 0
-    //   43: ifeq +52 -> 95
-    //   46: aload 5
-    //   48: invokeinterface 64 1 0
-    //   53: checkcast 66	java/lang/Long
-    //   56: invokevirtual 70	java/lang/Long:longValue	()J
-    //   59: lstore_1
-    //   60: aload_0
-    //   61: getfield 34	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
-    //   64: lload_1
-    //   65: invokestatic 74	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   68: invokevirtual 78	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   71: checkcast 80	oicq/wlogin_sdk/sharemem/WloginSigInfo
-    //   74: astore_3
-    //   75: aload_3
-    //   76: ifnull -43 -> 33
-    //   79: aload_3
-    //   80: aconst_null
-    //   81: putfield 84	oicq/wlogin_sdk/sharemem/WloginSigInfo:cacheTickets	Ljava/util/List;
-    //   84: aload_3
-    //   85: lconst_0
-    //   86: putfield 87	oicq/wlogin_sdk/sharemem/WloginSigInfo:cacheUpdateStamp	J
-    //   89: goto -56 -> 33
-    //   92: astore_3
-    //   93: aconst_null
-    //   94: astore_3
-    //   95: aload_3
-    //   96: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	97	0	this	WloginAllSigInfo
-    //   59	6	1	l	long
-    //   11	74	3	localObject	Object
-    //   92	1	3	localException	java.lang.Exception
-    //   94	2	3	localWloginAllSigInfo1	WloginAllSigInfo
-    //   7	27	4	localWloginAllSigInfo2	WloginAllSigInfo
-    //   31	16	5	localIterator	java.util.Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   0	9	92	java/lang/Exception
-    //   12	33	92	java/lang/Exception
-    //   36	75	92	java/lang/Exception
-    //   79	89	92	java/lang/Exception
+    try
+    {
+      WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)clone();
+      if (this._tk_map != null)
+      {
+        Iterator localIterator = this._tk_map.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          long l = ((Long)localIterator.next()).longValue();
+          WloginSigInfo localWloginSigInfo = (WloginSigInfo)this._tk_map.get(Long.valueOf(l));
+          if (localWloginSigInfo != null)
+          {
+            localWloginSigInfo.cacheTickets = null;
+            localWloginSigInfo.cacheUpdateStamp = 0L;
+          }
+        }
+      }
+      return localWloginAllSigInfo;
+    }
+    catch (Exception localException) {}
+    return null;
   }
   
   public void putNewST(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -114,11 +75,11 @@ public class WloginAllSigInfo
       localWloginSigInfo.mainSigMap = this.mainSigMap;
       this._tk_map.put(Long.valueOf(paramLong1), localWloginSigInfo.Set(paramLong2, paramLong3, paramLong4, paramLong5, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte, paramArrayOfLong, paramInt));
     }
-    for (;;)
+    else
     {
-      return 0;
       this._tk_map.put(Long.valueOf(paramLong1), new WloginSigInfo(paramLong2, paramLong3, paramLong4, paramLong5, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte, paramArrayOfLong, paramInt, this.mainSigMap));
     }
+    return 0;
   }
   
   public int put_siginfo(long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -138,19 +99,18 @@ public class WloginAllSigInfo
   
   public int put_simpleinfo(WloginSimpleInfo paramWloginSimpleInfo)
   {
-    if (this._useInfo == null) {
+    WloginSimpleInfo localWloginSimpleInfo = this._useInfo;
+    if (localWloginSimpleInfo == null) {
       this._useInfo = paramWloginSimpleInfo;
+    } else {
+      localWloginSimpleInfo.set_info(paramWloginSimpleInfo);
     }
-    for (;;)
-    {
-      return 0;
-      this._useInfo.set_info(paramWloginSimpleInfo);
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.request.WloginAllSigInfo
  * JD-Core Version:    0.7.0.1
  */

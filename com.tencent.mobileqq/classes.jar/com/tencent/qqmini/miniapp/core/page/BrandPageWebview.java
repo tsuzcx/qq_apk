@@ -121,243 +121,284 @@ public class BrandPageWebview
   
   private boolean checkEnableIPV6Only()
   {
-    return WnsConfig.getConfig("qqminiapp", "ipv6_proxy_enable", 0) == 1;
+    boolean bool = false;
+    if (WnsConfig.getConfig("qqminiapp", "ipv6_proxy_enable", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   private WebResourceResponse doInterceptPrefFile(String paramString, WebResourceResponse paramWebResourceResponse)
   {
-    String str = paramString.substring("https://appservice.qq.com/".length());
+    String str = paramString.substring(26);
     str = ((MiniAppFileManager)this.mContext.getManager(MiniAppFileManager.class)).getAbsolutePath(str);
-    if ((ImageUtil.isJpgFile(paramString)) || (ImageUtil.isPngFile(paramString)))
+    if ((!ImageUtil.isJpgFile(paramString)) && (!ImageUtil.isPngFile(paramString)))
     {
-      bool = ImageUtil.isPngFile(paramString);
-      if (bool)
+      if ((paramString.endsWith(".gif")) || (paramString.endsWith(".svg")))
       {
-        paramString = "image/png";
-        paramWebResourceResponse = new WebResourceResponse(paramString, "UTF-8", ImageUtil.getLocalImageStream(str, bool));
+        if (paramString.endsWith(".gif")) {
+          paramString = "image/gif";
+        } else {
+          paramString = "image/svg+xml";
+        }
+        return new WebResourceResponse(paramString, "UTF-8", ImageUtil.getLocalNoBitmapImageStream(str));
       }
     }
-    while ((!paramString.endsWith(".gif")) && (!paramString.endsWith(".svg"))) {
-      for (;;)
-      {
-        boolean bool;
-        return paramWebResourceResponse;
+    else
+    {
+      boolean bool = ImageUtil.isPngFile(paramString);
+      if (bool) {
+        paramString = "image/png";
+      } else {
         paramString = "image/jpg";
       }
+      paramWebResourceResponse = new WebResourceResponse(paramString, "UTF-8", ImageUtil.getLocalImageStream(str, bool));
     }
-    if (paramString.endsWith(".gif")) {}
-    for (paramString = "image/gif";; paramString = "image/svg+xml") {
-      return new WebResourceResponse(paramString, "UTF-8", ImageUtil.getLocalNoBitmapImageStream(str));
-    }
+    return paramWebResourceResponse;
   }
   
   /* Error */
   private WebResourceResponse doInterceptPrefHtml(WebResourceResponse paramWebResourceResponse)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore 5
-    //   5: aload_0
-    //   6: getfield 182	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:mContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   9: ldc_w 312
-    //   12: invokeinterface 261 2 0
-    //   17: checkcast 312	com/tencent/qqmini/sdk/core/BaseRuntimeImpl$BaselibProvider
-    //   20: invokevirtual 316	com/tencent/qqmini/sdk/core/BaseRuntimeImpl$BaselibProvider:getBasePageFrameStr	()Ljava/lang/String;
-    //   23: astore 6
-    //   25: aload_1
-    //   26: astore 4
-    //   28: aload 6
-    //   30: invokestatic 322	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   33: ifne +124 -> 157
-    //   36: aload_3
-    //   37: astore 4
-    //   39: aload_0
-    //   40: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   43: ifnull +14 -> 57
-    //   46: aload_3
-    //   47: astore 4
-    //   49: aload_0
-    //   50: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   53: arraylength
-    //   54: ifne +18 -> 72
-    //   57: aload_3
-    //   58: astore 4
-    //   60: aload_0
-    //   61: aload 6
-    //   63: ldc_w 280
-    //   66: invokevirtual 328	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   69: putfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   72: aload_3
-    //   73: astore 4
-    //   75: new 330	java/io/ByteArrayInputStream
-    //   78: dup
-    //   79: aload_0
-    //   80: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   83: iconst_0
-    //   84: aload_0
-    //   85: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   88: arraylength
-    //   89: invokespecial 333	java/io/ByteArrayInputStream:<init>	([BII)V
-    //   92: astore_3
-    //   93: new 278	com/tencent/smtt/export/external/interfaces/WebResourceResponse
-    //   96: dup
-    //   97: ldc_w 335
-    //   100: ldc_w 280
-    //   103: aload_3
-    //   104: invokespecial 287	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
-    //   107: astore 4
-    //   109: new 337	java/lang/StringBuilder
-    //   112: dup
-    //   113: invokespecial 338	java/lang/StringBuilder:<init>	()V
-    //   116: ldc_w 340
-    //   119: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: astore_1
-    //   123: aload_0
-    //   124: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   127: ifnull +33 -> 160
-    //   130: aload_0
-    //   131: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   134: arraylength
-    //   135: istore_2
-    //   136: ldc 41
-    //   138: aload_1
-    //   139: iload_2
-    //   140: invokevirtual 347	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   143: invokevirtual 350	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   146: invokestatic 356	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   149: aload_3
-    //   150: ifnull +114 -> 264
-    //   153: aload_3
-    //   154: invokevirtual 359	java/io/ByteArrayInputStream:close	()V
-    //   157: aload 4
-    //   159: areturn
-    //   160: iconst_0
+    //   0: aload_0
+    //   1: getfield 182	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:mContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   4: ldc_w 308
+    //   7: invokeinterface 257 2 0
+    //   12: checkcast 308	com/tencent/qqmini/sdk/core/BaseRuntimeImpl$BaselibProvider
+    //   15: invokevirtual 312	com/tencent/qqmini/sdk/core/BaseRuntimeImpl$BaselibProvider:getBasePageFrameStr	()Ljava/lang/String;
+    //   18: astore 6
+    //   20: aload 6
+    //   22: invokestatic 318	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   25: ifne +277 -> 302
+    //   28: aconst_null
+    //   29: astore 7
+    //   31: aconst_null
+    //   32: astore 5
+    //   34: aload 5
+    //   36: astore 4
+    //   38: aload_0
+    //   39: getfield 320	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   42: astore 8
+    //   44: aload 8
+    //   46: ifnull +15 -> 61
+    //   49: aload 5
+    //   51: astore 4
+    //   53: aload_0
+    //   54: getfield 320	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   57: arraylength
+    //   58: ifne +19 -> 77
+    //   61: aload 5
+    //   63: astore 4
+    //   65: aload_0
+    //   66: aload 6
+    //   68: ldc_w 285
+    //   71: invokevirtual 324	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   74: putfield 320	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   77: aload 5
+    //   79: astore 4
+    //   81: aload_0
+    //   82: getfield 320	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   85: astore 6
+    //   87: aload 5
+    //   89: astore 4
+    //   91: aload_0
+    //   92: getfield 320	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   95: arraylength
+    //   96: istore_3
+    //   97: iconst_0
+    //   98: istore_2
+    //   99: aload 5
+    //   101: astore 4
+    //   103: new 326	java/io/ByteArrayInputStream
+    //   106: dup
+    //   107: aload 6
+    //   109: iconst_0
+    //   110: iload_3
+    //   111: invokespecial 329	java/io/ByteArrayInputStream:<init>	([BII)V
+    //   114: astore 5
+    //   116: new 283	com/tencent/smtt/export/external/interfaces/WebResourceResponse
+    //   119: dup
+    //   120: ldc_w 331
+    //   123: ldc_w 285
+    //   126: aload 5
+    //   128: invokespecial 292	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
+    //   131: astore 4
+    //   133: new 333	java/lang/StringBuilder
+    //   136: dup
+    //   137: invokespecial 334	java/lang/StringBuilder:<init>	()V
+    //   140: astore_1
+    //   141: aload_1
+    //   142: ldc_w 336
+    //   145: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: pop
+    //   149: aload_0
+    //   150: getfield 320	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   153: ifnull +9 -> 162
+    //   156: aload_0
+    //   157: getfield 320	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   160: arraylength
     //   161: istore_2
-    //   162: goto -26 -> 136
-    //   165: astore_1
-    //   166: aload_1
-    //   167: invokevirtual 362	java/io/IOException:printStackTrace	()V
-    //   170: aload 4
-    //   172: areturn
-    //   173: astore 4
-    //   175: aload 5
-    //   177: astore_3
-    //   178: aload 4
-    //   180: astore 5
-    //   182: aload_3
-    //   183: astore 4
-    //   185: aload 5
-    //   187: invokevirtual 363	java/io/UnsupportedEncodingException:printStackTrace	()V
-    //   190: aload_3
-    //   191: astore 4
-    //   193: ldc 41
-    //   195: ldc_w 365
-    //   198: aload 5
-    //   200: invokestatic 369	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   203: aload_1
-    //   204: astore 4
-    //   206: aload_3
-    //   207: ifnull -50 -> 157
-    //   210: aload_3
-    //   211: invokevirtual 359	java/io/ByteArrayInputStream:close	()V
-    //   214: aload_1
-    //   215: areturn
-    //   216: astore_3
-    //   217: aload_3
-    //   218: invokevirtual 362	java/io/IOException:printStackTrace	()V
-    //   221: aload_1
-    //   222: areturn
-    //   223: astore_1
-    //   224: aload 4
-    //   226: ifnull +8 -> 234
-    //   229: aload 4
-    //   231: invokevirtual 359	java/io/ByteArrayInputStream:close	()V
+    //   162: aload_1
+    //   163: iload_2
+    //   164: invokevirtual 343	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   167: pop
+    //   168: ldc 41
+    //   170: aload_1
+    //   171: invokevirtual 346	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   174: invokestatic 352	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   177: aload 5
+    //   179: invokevirtual 355	java/io/ByteArrayInputStream:close	()V
+    //   182: goto +8 -> 190
+    //   185: astore_1
+    //   186: aload_1
+    //   187: invokevirtual 358	java/io/IOException:printStackTrace	()V
+    //   190: aload 4
+    //   192: areturn
+    //   193: astore 6
+    //   195: aload 5
+    //   197: astore_1
+    //   198: aload 4
+    //   200: astore 5
+    //   202: goto +38 -> 240
+    //   205: astore_1
+    //   206: goto +74 -> 280
+    //   209: astore 6
+    //   211: aload 5
+    //   213: astore 4
+    //   215: aload_1
+    //   216: astore 5
+    //   218: aload 4
+    //   220: astore_1
+    //   221: goto +19 -> 240
+    //   224: astore_1
+    //   225: aload 4
+    //   227: astore 5
+    //   229: goto +51 -> 280
+    //   232: astore 6
     //   234: aload_1
-    //   235: athrow
-    //   236: astore_3
-    //   237: aload_3
-    //   238: invokevirtual 362	java/io/IOException:printStackTrace	()V
-    //   241: goto -7 -> 234
-    //   244: astore_1
-    //   245: aload_3
-    //   246: astore 4
-    //   248: goto -24 -> 224
-    //   251: astore 5
-    //   253: goto -71 -> 182
-    //   256: astore 5
-    //   258: aload 4
-    //   260: astore_1
-    //   261: goto -79 -> 182
-    //   264: aload 4
-    //   266: areturn
+    //   235: astore 5
+    //   237: aload 7
+    //   239: astore_1
+    //   240: aload_1
+    //   241: astore 4
+    //   243: aload 6
+    //   245: invokevirtual 359	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   248: aload_1
+    //   249: astore 4
+    //   251: ldc 41
+    //   253: ldc_w 361
+    //   256: aload 6
+    //   258: invokestatic 365	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   261: aload_1
+    //   262: ifnull +15 -> 277
+    //   265: aload_1
+    //   266: invokevirtual 355	java/io/ByteArrayInputStream:close	()V
+    //   269: goto +8 -> 277
+    //   272: astore_1
+    //   273: aload_1
+    //   274: invokevirtual 358	java/io/IOException:printStackTrace	()V
+    //   277: aload 5
+    //   279: areturn
+    //   280: aload 5
+    //   282: ifnull +18 -> 300
+    //   285: aload 5
+    //   287: invokevirtual 355	java/io/ByteArrayInputStream:close	()V
+    //   290: goto +10 -> 300
+    //   293: astore 4
+    //   295: aload 4
+    //   297: invokevirtual 358	java/io/IOException:printStackTrace	()V
+    //   300: aload_1
+    //   301: athrow
+    //   302: aload_1
+    //   303: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	267	0	this	BrandPageWebview
-    //   0	267	1	paramWebResourceResponse	WebResourceResponse
-    //   135	27	2	i	int
-    //   1	210	3	localObject1	Object
-    //   216	2	3	localIOException1	java.io.IOException
-    //   236	10	3	localIOException2	java.io.IOException
-    //   26	145	4	localObject2	Object
-    //   173	6	4	localUnsupportedEncodingException1	java.io.UnsupportedEncodingException
-    //   183	82	4	localObject3	Object
-    //   3	196	5	localObject4	Object
-    //   251	1	5	localUnsupportedEncodingException2	java.io.UnsupportedEncodingException
-    //   256	1	5	localUnsupportedEncodingException3	java.io.UnsupportedEncodingException
-    //   23	39	6	str	String
+    //   0	304	0	this	BrandPageWebview
+    //   0	304	1	paramWebResourceResponse	WebResourceResponse
+    //   98	66	2	i	int
+    //   96	15	3	j	int
+    //   36	214	4	localObject1	Object
+    //   293	3	4	localIOException	java.io.IOException
+    //   32	254	5	localObject2	Object
+    //   18	90	6	localObject3	Object
+    //   193	1	6	localUnsupportedEncodingException1	java.io.UnsupportedEncodingException
+    //   209	1	6	localUnsupportedEncodingException2	java.io.UnsupportedEncodingException
+    //   232	25	6	localUnsupportedEncodingException3	java.io.UnsupportedEncodingException
+    //   29	209	7	localObject4	Object
+    //   42	3	8	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   153	157	165	java/io/IOException
-    //   39	46	173	java/io/UnsupportedEncodingException
-    //   49	57	173	java/io/UnsupportedEncodingException
-    //   60	72	173	java/io/UnsupportedEncodingException
-    //   75	93	173	java/io/UnsupportedEncodingException
-    //   210	214	216	java/io/IOException
-    //   39	46	223	finally
-    //   49	57	223	finally
-    //   60	72	223	finally
-    //   75	93	223	finally
-    //   185	190	223	finally
-    //   193	203	223	finally
-    //   229	234	236	java/io/IOException
-    //   93	109	244	finally
-    //   109	136	244	finally
-    //   136	149	244	finally
-    //   93	109	251	java/io/UnsupportedEncodingException
-    //   109	136	256	java/io/UnsupportedEncodingException
-    //   136	149	256	java/io/UnsupportedEncodingException
+    //   177	182	185	java/io/IOException
+    //   133	149	193	java/io/UnsupportedEncodingException
+    //   149	162	193	java/io/UnsupportedEncodingException
+    //   162	177	193	java/io/UnsupportedEncodingException
+    //   116	133	205	finally
+    //   133	149	205	finally
+    //   149	162	205	finally
+    //   162	177	205	finally
+    //   116	133	209	java/io/UnsupportedEncodingException
+    //   38	44	224	finally
+    //   53	61	224	finally
+    //   65	77	224	finally
+    //   81	87	224	finally
+    //   91	97	224	finally
+    //   103	116	224	finally
+    //   243	248	224	finally
+    //   251	261	224	finally
+    //   38	44	232	java/io/UnsupportedEncodingException
+    //   53	61	232	java/io/UnsupportedEncodingException
+    //   65	77	232	java/io/UnsupportedEncodingException
+    //   81	87	232	java/io/UnsupportedEncodingException
+    //   91	97	232	java/io/UnsupportedEncodingException
+    //   103	116	232	java/io/UnsupportedEncodingException
+    //   265	269	272	java/io/IOException
+    //   285	290	293	java/io/IOException
   }
   
   private WebResourceResponse doInterceptRequest(WebView paramWebView, String paramString)
   {
-    if ((paramString.startsWith("https://appservice.qq.com/")) && (paramString.endsWith(".html"))) {
+    boolean bool = paramString.startsWith("https://appservice.qq.com/");
+    Object localObject = null;
+    if ((bool) && (paramString.endsWith(".html"))) {
       return doInterceptPrefHtml(null);
     }
     if (paramString.startsWith("https://appservice.qq.com/")) {
       return doInterceptPrefFile(paramString, null);
     }
+    paramWebView = localObject;
     if (paramString.startsWith("wxfile://"))
     {
       String str = ((MiniAppFileManager)this.mContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
-      if ((ImageUtil.isJpgFile(paramString)) || (ImageUtil.isPngFile(paramString)))
+      if ((!ImageUtil.isJpgFile(paramString)) && (!ImageUtil.isPngFile(paramString)))
       {
-        boolean bool = ImageUtil.isPngFile(paramString);
-        if (bool) {}
-        for (paramWebView = "image/png";; paramWebView = "image/jpg") {
-          return new WebResourceResponse(paramWebView, "UTF-8", ImageUtil.getLocalImageStream(str, bool));
+        if (!paramString.endsWith(".gif"))
+        {
+          paramWebView = localObject;
+          if (!paramString.endsWith(".svg")) {}
         }
-      }
-      if ((paramString.endsWith(".gif")) || (paramString.endsWith(".svg")))
-      {
-        if (paramString.endsWith(".gif")) {}
-        for (paramWebView = "image/gif";; paramWebView = "image/svg+xml") {
+        else
+        {
+          if (paramString.endsWith(".gif")) {
+            paramWebView = "image/gif";
+          } else {
+            paramWebView = "image/svg+xml";
+          }
           return new WebResourceResponse(paramWebView, "UTF-8", ImageUtil.getLocalNoBitmapImageStream(str));
         }
       }
+      else
+      {
+        bool = ImageUtil.isPngFile(paramString);
+        if (bool) {
+          paramWebView = "image/png";
+        } else {
+          paramWebView = "image/jpg";
+        }
+        paramWebView = new WebResourceResponse(paramWebView, "UTF-8", ImageUtil.getLocalImageStream(str, bool));
+      }
     }
-    return null;
+    return paramWebView;
   }
   
   private void initPageWebview()
@@ -381,61 +422,63 @@ public class BrandPageWebview
   private void webviewReport()
   {
     StateMachine.State localState = getCurrState();
-    if (localState == this.stateWaJsLoading) {
-      MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 18, "0");
-    }
-    do
+    if (localState == this.stateWaJsLoading)
     {
+      MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 18, "0");
       return;
-      if (this.stateRemoteDebugJsLoadSucc == localState)
-      {
-        MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 19, "0");
-        return;
-      }
-      if (this.stateInitial == localState)
-      {
-        MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 102, "0");
-        return;
-      }
-      if (this.stateInited == localState)
-      {
-        MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 103, "0");
-        return;
-      }
-      if (this.stateGlobalConfigJsLoading == localState)
-      {
-        MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 106, "0");
-        return;
-      }
-    } while (this.stateLoadSucc != localState);
-    MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 107, "0");
+    }
+    if (this.stateRemoteDebugJsLoadSucc == localState)
+    {
+      MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 19, "0");
+      return;
+    }
+    if (this.stateInitial == localState)
+    {
+      MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 102, "0");
+      return;
+    }
+    if (this.stateInited == localState)
+    {
+      MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 103, "0");
+      return;
+    }
+    if (this.stateGlobalConfigJsLoading == localState)
+    {
+      MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 106, "0");
+      return;
+    }
+    if (this.stateLoadSucc == localState) {
+      MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 107, "0");
+    }
   }
   
   public void cleanUp()
   {
-    if (this.customViewCallback != null) {
-      this.customViewCallback.onCustomViewHidden();
+    Object localObject = this.customViewCallback;
+    if (localObject != null) {
+      ((IX5WebChromeClient.CustomViewCallback)localObject).onCustomViewHidden();
     }
-    if (this.customContainer != null) {
-      this.customContainer.setVisibility(8);
+    localObject = this.customContainer;
+    if (localObject != null) {
+      ((FrameLayout)localObject).setVisibility(8);
     }
     try
     {
       this.customContainer.removeAllViews();
-      label39:
-      this.customContainer = null;
-      this.mFullscreenView = null;
-      this.customViewCallback = null;
-      if (this.mRealWebView != null)
-      {
-        this.mRealWebView.removeJavascriptInterface("WeixinJSCore");
-        this.mRealWebView.destroy();
-      }
-      return;
     }
     catch (Exception localException)
     {
-      break label39;
+      label40:
+      break label40;
+    }
+    this.customContainer = null;
+    this.mFullscreenView = null;
+    this.customViewCallback = null;
+    localObject = this.mRealWebView;
+    if (localObject != null)
+    {
+      ((PageWebview)localObject).removeJavascriptInterface("WeixinJSCore");
+      this.mRealWebView.destroy();
     }
   }
   
@@ -446,77 +489,78 @@ public class BrandPageWebview
   
   public boolean doDispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.isFullScreen)
+    if ((this.isFullScreen) && (this.mFullscreenView != null))
     {
-      bool1 = bool2;
-      if (this.mFullscreenView != null)
+      FrameLayout localFrameLayout = this.customContainer;
+      if ((localFrameLayout != null) && (localFrameLayout.getVisibility() == 0) && (paramKeyEvent.getKeyCode() == 4))
       {
-        bool1 = bool2;
-        if (this.customContainer != null)
-        {
-          bool1 = bool2;
-          if (this.customContainer.getVisibility() == 0)
-          {
-            bool1 = bool2;
-            if (paramKeyEvent.getKeyCode() == 4)
-            {
-              QMLog.d("miniapp-embedded", "KEYCODE_BACK");
-              this.isFullScreen = false;
-              evaluateSubscribeJS("onXWebVideoExitFullscreen", null, getWebViewId());
-              bool1 = true;
-            }
-          }
-        }
+        QMLog.d("miniapp-embedded", "KEYCODE_BACK");
+        this.isFullScreen = false;
+        evaluateSubscribeJS("onXWebVideoExitFullscreen", null, getWebViewId());
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public WebResourceResponse doIPV6OnlyRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
     paramWebView = paramWebResourceRequest.getUrl().toString();
-    String str = WnsConfig.getConfig("qqminiapp", "ipv6_http_proxy_url", "https://proxy.gtimg.cn/tx_tls_gate=");
-    HttpURLConnection localHttpURLConnection;
+    Object localObject1 = WnsConfig.getConfig("qqminiapp", "ipv6_http_proxy_url", "https://proxy.gtimg.cn/tx_tls_gate=");
     try
     {
-      str = str + paramWebView;
-      QMLog.e("BrandPageWebview", "ipv6 url = " + str);
-      localHttpURLConnection = (HttpURLConnection)new URL(str).openConnection();
-      localHttpURLConnection.setRequestMethod(paramWebResourceRequest.getMethod());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramWebView);
+      localObject1 = ((StringBuilder)localObject2).toString();
+      paramWebView = new StringBuilder();
+      paramWebView.append("ipv6 url = ");
+      paramWebView.append((String)localObject1);
+      QMLog.e("BrandPageWebview", paramWebView.toString());
+      localObject2 = (HttpURLConnection)new URL((String)localObject1).openConnection();
+      ((HttpURLConnection)localObject2).setRequestMethod(paramWebResourceRequest.getMethod());
       if (paramWebResourceRequest.getRequestHeaders() != null)
       {
         paramWebView = paramWebResourceRequest.getRequestHeaders().entrySet().iterator();
         while (paramWebView.hasNext())
         {
           paramWebResourceRequest = (Map.Entry)paramWebView.next();
-          localHttpURLConnection.setRequestProperty((String)paramWebResourceRequest.getKey(), (String)paramWebResourceRequest.getValue());
+          ((HttpURLConnection)localObject2).setRequestProperty((String)paramWebResourceRequest.getKey(), (String)paramWebResourceRequest.getValue());
         }
       }
-      localHttpURLConnection.setConnectTimeout(6000);
+      ((HttpURLConnection)localObject2).setConnectTimeout(6000);
+      ((HttpURLConnection)localObject2).setReadTimeout(6000);
+      paramWebResourceRequest = "";
+      paramWebView = paramWebResourceRequest;
+      if (((HttpURLConnection)localObject2).getHeaderFields() != null)
+      {
+        paramWebView = paramWebResourceRequest;
+        if (((HttpURLConnection)localObject2).getHeaderFields().containsKey("Content-Type")) {
+          paramWebView = (String)((List)((HttpURLConnection)localObject2).getHeaderFields().get("Content-Type")).get(0);
+        }
+      }
+      paramWebResourceRequest = IPV6OnlyUtils.getMimeType(paramWebView);
+      paramWebView = IPV6OnlyUtils.getEncoding(paramWebView);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ipv6 code:");
+      localStringBuilder.append(((HttpURLConnection)localObject2).getResponseCode());
+      localStringBuilder.append("  url:");
+      localStringBuilder.append((String)localObject1);
+      QMLog.e("BrandPageWebview", localStringBuilder.toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("ipv6 mimeType = ");
+      ((StringBuilder)localObject1).append(paramWebResourceRequest);
+      ((StringBuilder)localObject1).append("encoding:");
+      ((StringBuilder)localObject1).append(paramWebView);
+      QMLog.e("BrandPageWebview", ((StringBuilder)localObject1).toString());
+      paramWebView = new WebResourceResponse(paramWebResourceRequest, paramWebView, ((HttpURLConnection)localObject2).getInputStream());
+      return paramWebView;
     }
     catch (Exception paramWebView)
     {
       QMLog.e("BrandPageWebview", "shouldInterceptRequest: failed ", paramWebView);
-      return null;
     }
-    localHttpURLConnection.setReadTimeout(6000);
-    paramWebResourceRequest = "";
-    paramWebView = paramWebResourceRequest;
-    if (localHttpURLConnection.getHeaderFields() != null)
-    {
-      paramWebView = paramWebResourceRequest;
-      if (localHttpURLConnection.getHeaderFields().containsKey("Content-Type")) {
-        paramWebView = (String)((List)localHttpURLConnection.getHeaderFields().get("Content-Type")).get(0);
-      }
-    }
-    paramWebResourceRequest = IPV6OnlyUtils.getMimeType(paramWebView);
-    paramWebView = IPV6OnlyUtils.getEncoding(paramWebView);
-    QMLog.e("BrandPageWebview", "ipv6 code:" + localHttpURLConnection.getResponseCode() + "  url:" + str);
-    QMLog.e("BrandPageWebview", "ipv6 mimeType = " + paramWebResourceRequest + "encoding:" + paramWebView);
-    paramWebView = new WebResourceResponse(paramWebResourceRequest, paramWebView, localHttpURLConnection.getInputStream());
-    return paramWebView;
+    return null;
   }
   
   public void evaluateCallbackJs(int paramInt, String paramString)
@@ -531,37 +575,64 @@ public class BrandPageWebview
   
   public void evaluateJs(String paramString1, ValueCallback paramValueCallback, String paramString2)
   {
-    int i = 150;
-    if (QMLog.isColorLevel()) {
-      if (paramString1.length() <= 150) {
-        break label109;
-      }
-    }
-    for (;;)
+    if (QMLog.isColorLevel())
     {
+      int j = paramString1.length();
+      int i = 150;
+      if (j <= 150) {
+        i = paramString1.length();
+      }
       paramString2 = paramString1.substring(0, i);
-      QMLog.d("BrandPageWebview", "evaluateJs: " + paramString2 + "   (" + this + ") --> id:" + getWebViewId());
-      if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-        break;
-      }
-      if (this.mRealWebView != null) {
-        this.mRealWebView.evaluateJavascript(paramString1, AppBrandUtil.convertValueCallback(paramValueCallback));
-      }
-      return;
-      label109:
-      i = paramString1.length();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("evaluateJs: ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("   (");
+      localStringBuilder.append(this);
+      localStringBuilder.append(") --> id:");
+      localStringBuilder.append(getWebViewId());
+      QMLog.d("BrandPageWebview", localStringBuilder.toString());
     }
-    this.mMainHandler.post(new BrandPageWebview.6(this, paramString1, paramValueCallback));
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      paramString2 = this.mRealWebView;
+      if (paramString2 != null) {
+        paramString2.evaluateJavascript(paramString1, AppBrandUtil.convertValueCallback(paramValueCallback));
+      }
+    }
+    else
+    {
+      this.mMainHandler.post(new BrandPageWebview.7(this, paramString1, paramValueCallback));
+    }
   }
   
   public void evaluateSubscribeJS(String paramString1, String paramString2, int paramInt)
   {
-    evaluateJs("WeixinJSBridge.subscribeHandler(\"" + paramString1 + "\"," + paramString2 + "," + paramInt + "," + 0 + ")", null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("\",");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",");
+    localStringBuilder.append(0);
+    localStringBuilder.append(")");
+    evaluateJs(localStringBuilder.toString(), null);
   }
   
   public void evaluateSubscribeJSInService(String paramString1, String paramString2, int paramInt)
   {
-    evaluateJs("WeixinJSBridge.subscribeHandler(\"" + paramString1 + "\"," + paramString2 + "," + 0 + ",\"" + paramInt + "\")", null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("\",");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",");
+    localStringBuilder.append(0);
+    localStringBuilder.append(",\"");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("\")");
+    evaluateJs(localStringBuilder.toString(), null);
   }
   
   public String getJSGlobalConfig(ApkgInfo paramApkgInfo)
@@ -569,35 +640,59 @@ public class BrandPageWebview
     if (paramApkgInfo == null) {
       return "";
     }
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject3 = new JSONObject();
     try
     {
-      localJSONObject.put("appId", paramApkgInfo.appId);
-      localJSONObject.put("icon", paramApkgInfo.iconUrl);
-      localJSONObject.put("nickname", paramApkgInfo.apkgName);
-      String str2 = "release";
-      String str1 = "";
-      if (paramApkgInfo.mMiniAppInfo != null)
-      {
-        str2 = paramApkgInfo.mMiniAppInfo.getVerTypeStr();
-        str1 = paramApkgInfo.mMiniAppInfo.version;
-      }
-      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str2 + "'; __qqConfig.deviceinfo='" + QUAUtil.getSimpleDeviceInfo(AppLoaderFactory.g().getContext()) + "'; __qqConfig.miniapp_version='" + str1 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
-      str1 = str2;
-      if (StorageUtil.getPreference().getBoolean(paramApkgInfo.appId + "_debug", false)) {
-        str1 = str2 + "__qqConfig.debug=true;";
-      }
-      paramApkgInfo = WnsConfig.getConfig("qqminiapp", "opendatahosts", ".qlogo.com;.qlogo.cn;.qq.com;.tcb.qcloud.la");
-      paramApkgInfo = str1 + "__qqConfig.openDataHosts='" + paramApkgInfo + "';";
-      return paramApkgInfo + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};";
+      ((JSONObject)localObject3).put("appId", paramApkgInfo.appId);
+      ((JSONObject)localObject3).put("icon", paramApkgInfo.iconUrl);
+      ((JSONObject)localObject3).put("nickname", paramApkgInfo.apkgName);
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    if (paramApkgInfo.mMiniAppInfo != null)
+    {
+      localObject1 = paramApkgInfo.mMiniAppInfo.getVerTypeStr();
+      localObject2 = paramApkgInfo.mMiniAppInfo.version;
+    }
+    else
+    {
+      localObject2 = "";
+      localObject1 = "release";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("'; __qqConfig.deviceinfo='");
+    localStringBuilder.append(QUAUtil.getSimpleDeviceInfo(AppLoaderFactory.g().getContext()));
+    localStringBuilder.append("'; __qqConfig.miniapp_version='");
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append("';");
+    Object localObject1 = String.format(localStringBuilder.toString(), new Object[] { paramApkgInfo.mConfigStr, ((JSONObject)localObject3).toString() });
+    Object localObject2 = StorageUtil.getPreference();
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(paramApkgInfo.appId);
+    ((StringBuilder)localObject3).append("_debug");
+    paramApkgInfo = (ApkgInfo)localObject1;
+    if (((SharedPreferences)localObject2).getBoolean(((StringBuilder)localObject3).toString(), false))
+    {
+      paramApkgInfo = new StringBuilder();
+      paramApkgInfo.append((String)localObject1);
+      paramApkgInfo.append("__qqConfig.debug=true;");
+      paramApkgInfo = paramApkgInfo.toString();
+    }
+    localObject1 = WnsConfig.getConfig("qqminiapp", "opendatahosts", ".qlogo.com;.qlogo.cn;.qq.com;.tcb.qcloud.la");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramApkgInfo);
+    ((StringBuilder)localObject2).append("__qqConfig.openDataHosts='");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("';");
+    paramApkgInfo = ((StringBuilder)localObject2).toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramApkgInfo);
+    ((StringBuilder)localObject1).append("if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};");
+    return ((StringBuilder)localObject1).toString();
   }
   
   public String getJsDefaultConfig(boolean paramBoolean)
@@ -605,12 +700,19 @@ public class BrandPageWebview
     try
     {
       Object localObject1 = new JSONObject();
-      Object localObject2 = new JSONObject();
+      localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("USER_DATA_PATH", "qqfile://usr");
       ((JSONObject)localObject1).put("env", localObject2);
       ((JSONObject)localObject1).put("preload", paramBoolean);
-      localObject1 = String.format("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nvar window = window || {}; window.__webview_engine_version__ = 0.02; if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s');__qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.QUA='" + QUAUtil.getPlatformQUA() + "';__qqConfig.platform = 'android';", new Object[] { localObject1 });
-      localObject2 = (String)localObject1 + "__qqConfig.XWebVideoMinVersion=045100;";
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nvar window = window || {}; window.__webview_engine_version__ = 0.02; if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s');__qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.QUA='");
+      ((StringBuilder)localObject2).append(QUAUtil.getPlatformQUA());
+      ((StringBuilder)localObject2).append("';__qqConfig.platform = 'android';");
+      localObject1 = String.format(((StringBuilder)localObject2).toString(), new Object[] { localObject1 });
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("__qqConfig.XWebVideoMinVersion=045100;");
+      localObject2 = ((StringBuilder)localObject2).toString();
       localObject1 = localObject2;
       if (getRealView() != null)
       {
@@ -619,27 +721,51 @@ public class BrandPageWebview
         {
           paramBoolean = getRealView().getEmbeddedState().isEnableEmbeddedVideo();
           localObject1 = localObject2;
-          if (paramBoolean) {
-            localObject1 = (String)localObject2 + "__qqConfig.useXWebVideo=" + paramBoolean + ";";
+          if (paramBoolean)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append((String)localObject2);
+            ((StringBuilder)localObject1).append("__qqConfig.useXWebVideo=");
+            ((StringBuilder)localObject1).append(paramBoolean);
+            ((StringBuilder)localObject1).append(";");
+            localObject1 = ((StringBuilder)localObject1).toString();
           }
           paramBoolean = getRealView().getEmbeddedState().isEnableEmbeddedLive();
           localObject2 = localObject1;
-          if (paramBoolean) {
-            localObject2 = (String)localObject1 + "__qqConfig.useXWebLive=" + paramBoolean + ";";
+          if (paramBoolean)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append("__qqConfig.useXWebLive=");
+            ((StringBuilder)localObject2).append(paramBoolean);
+            ((StringBuilder)localObject2).append(";");
+            localObject2 = ((StringBuilder)localObject2).toString();
           }
           paramBoolean = getRealView().getEmbeddedState().isEnableEmbeddedElement();
           localObject1 = localObject2;
-          if (paramBoolean) {
-            localObject1 = (String)localObject2 + "__qqConfig.useXWebElement=" + paramBoolean + ";";
+          if (paramBoolean)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append((String)localObject2);
+            ((StringBuilder)localObject1).append("__qqConfig.useXWebElement=");
+            ((StringBuilder)localObject1).append(paramBoolean);
+            ((StringBuilder)localObject1).append(";");
+            localObject1 = ((StringBuilder)localObject1).toString();
           }
         }
       }
-      QMLog.d("minisdk-start", "getJsDefaultConfig pageWebview String: " + (String)localObject1);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getJsDefaultConfig pageWebview String: ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QMLog.d("minisdk-start", ((StringBuilder)localObject2).toString());
       return localObject1;
     }
     catch (Exception localException)
     {
-      QMLog.e("BrandPageWebview", "getJsDefaultConfig failed: " + localException);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getJsDefaultConfig failed: ");
+      ((StringBuilder)localObject2).append(localException);
+      QMLog.e("BrandPageWebview", ((StringBuilder)localObject2).toString());
     }
     return "";
   }
@@ -671,17 +797,17 @@ public class BrandPageWebview
   
   public boolean handleBackPressed()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("handleBackPressed : ");
-    if (this.mFullscreenView != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QMLog.d("miniapp-embedded", bool);
-      if (this.mFullscreenView == null) {
-        break;
-      }
-      return true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleBackPressed : ");
+    boolean bool;
+    if (this.mFullscreenView != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    return false;
+    localStringBuilder.append(bool);
+    QMLog.d("miniapp-embedded", localStringBuilder.toString());
+    return this.mFullscreenView != null;
   }
   
   public void initBaseJs(BaselibLoader.BaselibContent paramBaselibContent)
@@ -720,8 +846,9 @@ public class BrandPageWebview
     if ("initWeixinJSBridgeFinish".equals(paramString1)) {
       return "";
     }
-    if (this.mEventListener != null) {
-      return this.mEventListener.onWebViewNativeRequest(paramString1, paramString2, this, paramInt);
+    PageEventListener localPageEventListener = this.mEventListener;
+    if (localPageEventListener != null) {
+      return localPageEventListener.onWebViewNativeRequest(paramString1, paramString2, this, paramInt);
     }
     return "";
   }
@@ -759,24 +886,38 @@ public class BrandPageWebview
   @JavascriptInterface
   public void publishHandler(String paramString1, String paramString2, String paramString3)
   {
-    if (this.mEventListener != null) {
-      this.mEventListener.onWebViewEvent(paramString1, paramString2, this.mRealWebView.getPageWebViewId());
+    paramString3 = this.mEventListener;
+    if (paramString3 != null) {
+      paramString3.onWebViewEvent(paramString1, paramString2, this.mRealWebView.getPageWebViewId());
     }
     if ((paramString1.equals("custom_event_GenerateFuncReady")) && (this.mAppBrandPageContainer != null))
     {
-      QMLog.i("BrandPageWebview", "custom_event_GenerateFuncReady.(" + this + ") id:" + getWebViewId());
+      paramString3 = new StringBuilder();
+      paramString3.append("custom_event_GenerateFuncReady.(");
+      paramString3.append(this);
+      paramString3.append(") id:");
+      paramString3.append(getWebViewId());
+      QMLog.i("BrandPageWebview", paramString3.toString());
       appendEvent(Integer.valueOf(14));
     }
     if ((paramString1.equals("custom_event_PAGE_EVENT")) && (paramString2.contains("DOMReady")) && (this.mAppBrandPageContainer != null))
     {
-      QMLog.i("BrandPageWebview", "custom_event_PAGE_EVENT __DOMReady.  Show the page.(" + this + ") id:" + getWebViewId());
+      paramString1 = new StringBuilder();
+      paramString1.append("custom_event_PAGE_EVENT __DOMReady.  Show the page.(");
+      paramString1.append(this);
+      paramString1.append(") id:");
+      paramString1.append(getWebViewId());
+      QMLog.i("BrandPageWebview", paramString1.toString());
       this.mContext.performAction(AppStateEvent.obtain(11));
       if (this.mAppBrandPageContainer.getAppBrandPagePool() != null) {
         AppBrandTask.runTaskOnUiThreadDelay(new BrandPageWebview.4(this), 1000L);
       }
-      if ((this.mAppBrandPageContainer.getShowingPage() != null) && (this.mAppBrandPageContainer.getShowingPage().getVisibility() != 0) && (!this.mAppBrandPageContainer.getShowingPage().isHomePage())) {
+      if ((this.mAppBrandPageContainer.getShowingPage() != null) && (this.mAppBrandPageContainer.getShowingPage().getVisibility() != 0) && (!this.mAppBrandPageContainer.getShowingPage().isHomePage()))
+      {
         AppBrandTask.runTaskOnUiThread(new BrandPageWebview.5(this));
+        return;
       }
+      AppBrandTask.runTaskOnUiThreadDelay(new BrandPageWebview.6(this), 10L);
     }
   }
   
@@ -786,60 +927,71 @@ public class BrandPageWebview
       return;
     }
     this.mApkgInfo = paramApkgInfo;
-    String str = getJSGlobalConfig(paramApkgInfo);
-    this.stateGlobalConfigJsLoading.setJsContent(str);
+    Object localObject = getJSGlobalConfig(paramApkgInfo);
+    this.stateGlobalConfigJsLoading.setJsContent((String)localObject);
     appendEvent(Integer.valueOf(8));
-    if (StorageUtil.getPreference().getBoolean(this.mApkgInfo.appId + "_debug", false)) {
-      if (!TextUtils.isEmpty(this.waConsoleJsStr))
-      {
-        str = this.waConsoleJsStr;
-        this.statDebugJsLoading.setJsContent(str);
-      }
-    }
-    for (;;)
+    localObject = StorageUtil.getPreference();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mApkgInfo.appId);
+    localStringBuilder.append("_debug");
+    boolean bool = ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false);
+    localObject = "";
+    if (bool)
     {
-      appendEvent(Integer.valueOf(9));
-      paramApkgInfo = paramApkgInfo.getRootWxssJsContent();
-      this.stateWxssJsLoading.setJsContent(paramApkgInfo);
-      appendEvent(Integer.valueOf(10));
-      return;
-      str = "";
-      break;
+      if (!TextUtils.isEmpty(this.waConsoleJsStr)) {
+        localObject = this.waConsoleJsStr;
+      }
+      this.statDebugJsLoading.setJsContent((String)localObject);
+    }
+    else
+    {
       this.statDebugJsLoading.setJsContent("");
     }
+    appendEvent(Integer.valueOf(9));
+    paramApkgInfo = paramApkgInfo.getRootWxssJsContent();
+    this.stateWxssJsLoading.setJsContent(paramApkgInfo);
+    appendEvent(Integer.valueOf(10));
   }
   
   public void setCurrState(StateMachine.State paramState)
   {
     if (paramState == this.stateGenerateFuncReady)
     {
-      if (this.mEventListener == null) {
-        break label80;
+      StringBuilder localStringBuilder;
+      if (this.mEventListener != null)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onWebViewReady  (");
+        localStringBuilder.append(this);
+        localStringBuilder.append(")");
+        QMLog.d("BrandPageWebview", localStringBuilder.toString());
+        this.mEventListener.onWebViewReady(this.mOpenType, this.mShowingUrl, this.mRealWebView.getPageWebViewId());
       }
-      QMLog.d("BrandPageWebview", "onWebViewReady  (" + this + ")");
-      this.mEventListener.onWebViewReady(this.mOpenType, this.mShowingUrl, this.mRealWebView.getPageWebViewId());
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onWebViewReady no listener  (");
+        localStringBuilder.append(this);
+        localStringBuilder.append(")");
+        QMLog.d("BrandPageWebview", localStringBuilder.toString());
+      }
     }
-    for (;;)
-    {
-      webviewReport();
-      super.setCurrState(paramState);
-      return;
-      label80:
-      QMLog.d("BrandPageWebview", "onWebViewReady no listener  (" + this + ")");
-    }
+    webviewReport();
+    super.setCurrState(paramState);
   }
   
   public void setWebViewEventListener(PageEventListener paramPageEventListener)
   {
     this.mEventListener = paramPageEventListener;
-    if (this.mRealWebView != null) {
-      this.mRealWebView.setPageEventListener(paramPageEventListener);
+    PageWebview localPageWebview = this.mRealWebView;
+    if (localPageWebview != null) {
+      localPageWebview.setPageEventListener(paramPageEventListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.BrandPageWebview
  * JD-Core Version:    0.7.0.1
  */

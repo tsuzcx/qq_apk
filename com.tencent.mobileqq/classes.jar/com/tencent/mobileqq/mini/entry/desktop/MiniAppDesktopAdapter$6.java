@@ -24,7 +24,10 @@ class MiniAppDesktopAdapter$6
     }
     catch (Exception paramView)
     {
-      QLog.e("MiniAppDesktopAdapter", 1, "collectAdReport, exception: " + Log.getStackTraceString(paramView));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("collectAdReport, exception: ");
+      localStringBuilder.append(Log.getStackTraceString(paramView));
+      QLog.e("MiniAppDesktopAdapter", 1, localStringBuilder.toString());
     }
   }
   
@@ -32,7 +35,7 @@ class MiniAppDesktopAdapter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.6
  * JD-Core Version:    0.7.0.1
  */

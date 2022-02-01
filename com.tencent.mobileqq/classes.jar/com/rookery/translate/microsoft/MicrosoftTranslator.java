@@ -70,28 +70,12 @@ public class MicrosoftTranslator
   
   private void a(Context paramContext, List<String> paramList, Language paramLanguage, String paramString, Long paramLong, TranslateWithTimeCallback paramTranslateWithTimeCallback)
   {
-    if (paramLanguage == null) {
+    if (paramLanguage == null)
+    {
       paramLanguage = Language.MS_CHINESE_SIMPLIFIED.toString();
     }
-    for (;;)
+    else
     {
-      paramString = new BasicHeader("Authorization", "Bearer " + paramString);
-      try
-      {
-        localObject = new MicrosoftTranslator.2(this, paramList, paramTranslateWithTimeCallback, paramLong);
-        MicrosoftTranslateClient.a(paramContext, new Header[] { paramString }, paramList, paramLanguage, (AsyncHttpResponseHandler)localObject);
-        return;
-      }
-      catch (UnsupportedEncodingException paramContext)
-      {
-        Object localObject;
-        paramTranslateWithTimeCallback.a(new TranslateError(paramContext), paramLong);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        paramTranslateWithTimeCallback.a(new TranslateError(paramContext), paramLong);
-      }
       localObject = paramLanguage.toString();
       if (localObject != null)
       {
@@ -102,6 +86,25 @@ public class MicrosoftTranslator
       {
         paramLanguage = Language.MS_CHINESE_SIMPLIFIED.toString();
       }
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Bearer ");
+    ((StringBuilder)localObject).append(paramString);
+    paramString = new BasicHeader("Authorization", ((StringBuilder)localObject).toString());
+    try
+    {
+      localObject = new MicrosoftTranslator.2(this, paramList, paramTranslateWithTimeCallback, paramLong);
+      MicrosoftTranslateClient.a(paramContext, new Header[] { paramString }, paramList, paramLanguage, (AsyncHttpResponseHandler)localObject);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      paramTranslateWithTimeCallback.a(new TranslateError(paramContext), paramLong);
+      return;
+    }
+    catch (UnsupportedEncodingException paramContext)
+    {
+      paramTranslateWithTimeCallback.a(new TranslateError(paramContext), paramLong);
     }
   }
   

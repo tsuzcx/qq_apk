@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class MqqComicHeadPb$ComicReqHead
   extends MessageMicro<ComicReqHead>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 58, 66, 74, 82, 90, 98, 106, 114, 122 }, new String[] { "optTs", "src", "os", "clientVer", "net", "uin", "cmd", "screenQuality", "etag", "skey", "unifiedImei", "biz_subid", "cs_id", "obj_pos", "page_id" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Long.valueOf(0L), "", "", "", "", "", "", "", "", "" }, ComicReqHead.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField biz_subid = PBField.initString("");
   public final PBStringField clientVer = PBField.initString("");
   public final PBStringField cmd = PBField.initString("");
@@ -27,10 +27,16 @@ public final class MqqComicHeadPb$ComicReqHead
   public final PBInt32Field src = PBField.initInt32(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
   public final PBStringField unifiedImei = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 58, 66, 74, 82, 90, 98, 106, 114, 122 }, new String[] { "optTs", "src", "os", "clientVer", "net", "uin", "cmd", "screenQuality", "etag", "skey", "unifiedImei", "biz_subid", "cs_id", "obj_pos", "page_id" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, "", localInteger, Long.valueOf(0L), "", "", "", "", "", "", "", "", "" }, ComicReqHead.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.mqqcomic.MqqComicHeadPb.ComicReqHead
  * JD-Core Version:    0.7.0.1
  */

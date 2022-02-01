@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.JNICallCenter.DataPoint;
@@ -29,6 +30,7 @@ import com.tencent.device.utils.LightAppUtil;
 import com.tencent.device.utils.SmartDeviceReport;
 import com.tencent.device.utils.SmartDeviceUtil;
 import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.MsgProxyBannerProcessor;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.BusinessObserver;
@@ -52,7 +54,6 @@ import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
 import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.mobileqq.transfile.api.ITransFileController;
-import com.tencent.mobileqq.troop.data.TroopCreateUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.mobileqq.utils.StringUtil;
@@ -88,7 +89,7 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x90.SubMsgType0x90.PushBody;
 public class SmartDeviceProxyMgr
   extends BusinessHandler
 {
-  private static int f = 0;
+  private static int f;
   public int a;
   private long jdField_a_of_type_Long = 0L;
   SmartDeviceProxyMgr.BroadcastHandler jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr$BroadcastHandler = null;
@@ -169,10 +170,13 @@ public class SmartDeviceProxyMgr
   
   private QFindConfig a()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getFilesDir() + "/qfindconfig";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getFilesDir());
+    ((StringBuilder)localObject).append("/qfindconfig");
+    localObject = ((StringBuilder)localObject).toString();
     try
     {
-      localObject = FileUtils.a(new File((String)localObject));
+      localObject = FileUtils.readFileContent(new File((String)localObject));
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = QFindConfigUtil.a((String)localObject);
@@ -184,6 +188,16 @@ public class SmartDeviceProxyMgr
       localThrowable.printStackTrace();
     }
     return null;
+  }
+  
+  public static String a(int paramInt)
+  {
+    long l1 = paramInt & 0x7FFFFFFF;
+    long l2 = paramInt >> 31 & 0x1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(l1 | l2 << 31);
+    localStringBuilder.append("");
+    return localStringBuilder.toString();
   }
   
   private void a(int paramInt, long paramLong, byte[] paramArrayOfByte, String paramString1, String paramString2)
@@ -202,8 +216,9 @@ public class SmartDeviceProxyMgr
     if (paramString2 != null) {
       localBundle.putString("strAccessToken", paramString2);
     }
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null) {
-      this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
+    paramArrayOfByte = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte.a(localBundle);
     }
   }
   
@@ -242,73 +257,31 @@ public class SmartDeviceProxyMgr
     }
   }
   
-  /* Error */
   private boolean b()
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 262	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost	Lcooperation/smartdevice/ipc/SmartDeviceIPCHost;
-    //   8: ifnonnull +81 -> 89
-    //   11: aload_0
-    //   12: ldc_w 385
-    //   15: invokespecial 101	com/tencent/device/devicemgr/SmartDeviceProxyMgr:b	(Ljava/lang/String;)V
-    //   18: invokestatic 391	java/lang/System:currentTimeMillis	()J
-    //   21: lstore_2
-    //   22: aload_0
-    //   23: iconst_1
-    //   24: putfield 42	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_Boolean	Z
-    //   27: aload_0
-    //   28: new 311	cooperation/smartdevice/ipc/SmartDeviceIPCHost
-    //   31: dup
-    //   32: aload_0
-    //   33: getfield 96	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   36: invokespecial 393	cooperation/smartdevice/ipc/SmartDeviceIPCHost:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   39: putfield 262	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost	Lcooperation/smartdevice/ipc/SmartDeviceIPCHost;
-    //   42: aload_0
-    //   43: getfield 96	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   46: getstatic 396	com/tencent/mobileqq/app/BusinessHandlerFactory:DEVICEMSG_HANDLER	Ljava/lang/String;
-    //   49: invokevirtual 208	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   52: pop
-    //   53: invokestatic 391	java/lang/System:currentTimeMillis	()J
-    //   56: lstore 4
-    //   58: aload_0
-    //   59: new 214	java/lang/StringBuilder
-    //   62: dup
-    //   63: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   66: ldc_w 398
-    //   69: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: lload 4
-    //   74: lload_2
-    //   75: lsub
-    //   76: invokevirtual 401	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 235	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokespecial 101	com/tencent/device/devicemgr/SmartDeviceProxyMgr:b	(Ljava/lang/String;)V
-    //   85: aload_0
-    //   86: monitorexit
-    //   87: iload_1
-    //   88: ireturn
-    //   89: iconst_0
-    //   90: istore_1
-    //   91: goto -6 -> 85
-    //   94: astore 6
-    //   96: aload_0
-    //   97: monitorexit
-    //   98: aload 6
-    //   100: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	101	0	this	SmartDeviceProxyMgr
-    //   1	90	1	bool	boolean
-    //   21	54	2	l1	long
-    //   56	17	4	l2	long
-    //   94	5	6	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	85	94	finally
+    try
+    {
+      if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null)
+      {
+        b("SmartDeviceProxyMgr::initIPCHost start");
+        long l1 = System.currentTimeMillis();
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost = new SmartDeviceIPCHost(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+        long l2 = System.currentTimeMillis();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("SmartDeviceProxyMgr::initIPCHost init SmartDeviceIPCHost:cost ");
+        localStringBuilder.append(l2 - l1);
+        b(localStringBuilder.toString());
+        return true;
+      }
+      return false;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   private DeviceInfo[] b()
@@ -331,13 +304,13 @@ public class SmartDeviceProxyMgr
     if (paramInt == 0)
     {
       QLog.d("SmartDeviceProxyMgr", 2, "**davorteng**setAutoLoadDevicePlugin DEVICE_UNBINED");
-      BannerManager.a().a(39, 0, null);
+      BannerManager.a().a(MsgProxyBannerProcessor.jdField_a_of_type_Int, 0, null);
       f += 1;
     }
     if (f == 0)
     {
       QLog.d("SmartDeviceProxyMgr", 2, "**davorteng**setAutoLoadDevicePlugin DEVICE_BINED");
-      BannerManager.a().a(39, 0, null);
+      BannerManager.a().a(MsgProxyBannerProcessor.jdField_a_of_type_Int, 0, null);
       c();
       f += 1;
     }
@@ -345,107 +318,105 @@ public class SmartDeviceProxyMgr
   
   public int a(long paramLong)
   {
-    int j = 8;
-    int k = 0;
     Object localObject = a(paramLong);
+    int k = 0;
+    int j = 0;
     int i = k;
     if (localObject != null)
     {
       localObject = a(((DeviceInfo)localObject).productId);
       i = k;
-      if (localObject != null) {
-        if (!((ProductInfo)localObject).isSupportMainMsgType(8)) {
-          break label104;
+      if (localObject != null)
+      {
+        if (((ProductInfo)localObject).isSupportMainMsgType(8)) {
+          j = 8;
+        }
+        i = j;
+        if (((ProductInfo)localObject).isSupportMainMsgType(2)) {
+          i = j | 0x1;
+        }
+        j = i;
+        if (((ProductInfo)localObject).isSupportFuncMsgType(1)) {
+          j = i | 0x4;
+        }
+        i = j;
+        if (((ProductInfo)localObject).isSupportFuncMsgType(2)) {
+          i = j | 0x2;
         }
       }
     }
-    for (;;)
-    {
-      i = j;
-      if (((ProductInfo)localObject).isSupportMainMsgType(2)) {
-        i = j | 0x1;
-      }
-      j = i;
-      if (((ProductInfo)localObject).isSupportFuncMsgType(1)) {
-        j = i | 0x4;
-      }
-      if (((ProductInfo)localObject).isSupportFuncMsgType(2))
-      {
-        i = j | 0x2;
-        return i;
-      }
-      return j;
-      label104:
-      j = 0;
-    }
+    return i;
   }
   
   public int a(long paramLong, String paramString, int paramInt)
   {
     b("SmartDeviceProxyMgr::sendAudioMsg");
     a(false);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {}
-    do
+    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
+      return 0;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("notify_cmd", "sendAudioMsg");
+    localBundle.putString("filepath", paramString);
+    localBundle.putInt("duration", paramInt);
+    localBundle.putLong("din", paramLong);
+    paramString = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (paramString != null)
     {
-      Bundle localBundle;
-      do
-      {
-        return 0;
-        localBundle = new Bundle();
-        localBundle.putString("notify_cmd", "sendAudioMsg");
-        localBundle.putString("filepath", paramString);
-        localBundle.putInt("duration", paramInt);
-        localBundle.putLong("din", paramLong);
-      } while (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null);
-      paramString = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
-    } while (paramString == null);
-    return paramString.getInt("cookie");
+      paramString = paramString.a(localBundle);
+      if (paramString != null) {
+        return paramString.getInt("cookie");
+      }
+    }
+    return 0;
   }
   
   public int a(long paramLong1, String paramString1, long paramLong2, int paramInt, String paramString2)
   {
     b("SmartDeviceProxyMgr::sendVideoMsg");
     a(false);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {}
-    do
+    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
+      return 0;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("notify_cmd", "sendVideoMsg");
+    localBundle.putString("filepath", paramString1);
+    localBundle.putString("thumbPath", paramString2);
+    localBundle.putLong("din", paramLong1);
+    localBundle.putLong("filesize", paramLong2);
+    localBundle.putInt("duration", paramInt);
+    paramString1 = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (paramString1 != null)
     {
-      Bundle localBundle;
-      do
-      {
-        return 0;
-        localBundle = new Bundle();
-        localBundle.putString("notify_cmd", "sendVideoMsg");
-        localBundle.putString("filepath", paramString1);
-        localBundle.putString("thumbPath", paramString2);
-        localBundle.putLong("din", paramLong1);
-        localBundle.putLong("filesize", paramLong2);
-        localBundle.putInt("duration", paramInt);
-      } while (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null);
-      paramString1 = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
-    } while (paramString1 == null);
-    return paramString1.getInt("cookie");
+      paramString1 = paramString1.a(localBundle);
+      if (paramString1 != null) {
+        return paramString1.getInt("cookie");
+      }
+    }
+    return 0;
   }
   
   public int a(long paramLong, String paramString1, String paramString2)
   {
     b("SmartDeviceProxyMgr::sendImageMsg");
     a(false);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {}
-    do
+    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
+      return 0;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("notify_cmd", "sendImageMsg");
+    localBundle.putString("filepath", paramString1);
+    localBundle.putString("thumbPath", paramString2);
+    localBundle.putLong("din", paramLong);
+    paramString1 = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (paramString1 != null)
     {
-      Bundle localBundle;
-      do
-      {
-        return 0;
-        localBundle = new Bundle();
-        localBundle.putString("notify_cmd", "sendImageMsg");
-        localBundle.putString("filepath", paramString1);
-        localBundle.putString("thumbPath", paramString2);
-        localBundle.putLong("din", paramLong);
-      } while (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null);
-      paramString1 = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
-    } while (paramString1 == null);
-    return paramString1.getInt("cookie");
+      paramString1 = paramString1.a(localBundle);
+      if (paramString1 != null) {
+        return paramString1.getInt("cookie");
+      }
+    }
+    return 0;
   }
   
   public long a()
@@ -458,63 +429,67 @@ public class SmartDeviceProxyMgr
     Bundle localBundle = new Bundle();
     localBundle.putString("notify_cmd", "getselfuin");
     localBundle = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
-    if (localBundle != null) {}
-    for (long l = localBundle.getLong("selfuin", 0L);; l = 0L)
-    {
-      if (l != 0L) {
-        this.jdField_a_of_type_Long = l;
-      }
-      return this.jdField_a_of_type_Long;
+    long l;
+    if (localBundle != null) {
+      l = localBundle.getLong("selfuin", 0L);
+    } else {
+      l = 0L;
     }
+    if (l != 0L) {
+      this.jdField_a_of_type_Long = l;
+    }
+    return this.jdField_a_of_type_Long;
   }
   
   public long a(String paramString, int paramInt)
   {
     b("SmartDeviceProxyMgr::uploadMiniFile");
     a(false);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {}
-    do
+    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
+      return 0L;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("notify_cmd", "uploadMiniFile");
+    localBundle.putString("filepath", paramString);
+    localBundle.putInt("filetype", paramInt);
+    paramString = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (paramString != null)
     {
-      Bundle localBundle;
-      do
-      {
-        return 0L;
-        localBundle = new Bundle();
-        localBundle.putString("notify_cmd", "uploadMiniFile");
-        localBundle.putString("filepath", paramString);
-        localBundle.putInt("filetype", paramInt);
-      } while (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null);
-      paramString = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
-    } while (paramString == null);
-    return paramString.getLong("cookie");
+      paramString = paramString.a(localBundle);
+      if (paramString != null) {
+        return paramString.getLong("cookie");
+      }
+    }
+    return 0L;
   }
   
   public long a(String paramString1, String paramString2, int paramInt)
   {
     b("SmartDeviceProxyMgr::downloadMiniFile");
     a(false);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {}
-    do
+    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
+      return 0L;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("notify_cmd", "downloadMiniFile");
+    localBundle.putString("filekey", paramString1);
+    localBundle.putInt("filetype", paramInt);
+    localBundle.putString("fileKey2", paramString2);
+    paramString1 = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (paramString1 != null)
     {
-      Bundle localBundle;
-      do
-      {
-        return 0L;
-        localBundle = new Bundle();
-        localBundle.putString("notify_cmd", "downloadMiniFile");
-        localBundle.putString("filekey", paramString1);
-        localBundle.putInt("filetype", paramInt);
-        localBundle.putString("fileKey2", paramString2);
-      } while (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null);
-      paramString1 = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
-    } while (paramString1 == null);
-    return paramString1.getLong("cookie");
+      paramString1 = paramString1.a(localBundle);
+      if (paramString1 != null) {
+        return paramString1.getLong("cookie");
+      }
+    }
+    return 0L;
   }
   
   public DeviceInfo a(long paramLong)
   {
-    int i = 0;
     b("SmartDeviceProxyMgr::getDeviceInfoByDin");
+    int i = 0;
     a(false);
     if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
       return new DeviceInfo();
@@ -541,8 +516,8 @@ public class SmartDeviceProxyMgr
   
   public DeviceInfo a(String paramString, int paramInt)
   {
-    int i = 0;
     b("SmartDeviceProxyMgr::getDeviceInfoBySerialNum");
+    int i = 0;
     a(false);
     if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
       return null;
@@ -571,19 +546,20 @@ public class SmartDeviceProxyMgr
   public ProductInfo a(int paramInt)
   {
     a(false);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
       return null;
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-        return (ProductInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-      }
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("notify_cmd", "getProductInfo");
-      ((Bundle)localObject).putInt("productId", paramInt);
-      localObject = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a((Bundle)localObject);
-    } while (localObject == null);
-    Object localObject = (ProductInfo)((Bundle)localObject).getParcelable("productInfo");
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      return (ProductInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("notify_cmd", "getProductInfo");
+    ((Bundle)localObject).putInt("productId", paramInt);
+    localObject = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a((Bundle)localObject);
+    if (localObject == null) {
+      return null;
+    }
+    localObject = (ProductInfo)((Bundle)localObject).getParcelable("productInfo");
     this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
     return localObject;
   }
@@ -591,22 +567,24 @@ public class SmartDeviceProxyMgr
   public Boolean a(long paramLong)
   {
     b("SmartDeviceProxyMgr::isVasFlagEnable");
+    Boolean localBoolean = Boolean.valueOf(false);
     a(false);
     if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
-      return Boolean.valueOf(false);
+      return localBoolean;
     }
     Bundle localBundle = new Bundle();
     localBundle.putString("notify_cmd", "isVasFlagEnable");
     localBundle.putInt("bitIndex", 0);
     localBundle.putLong("din", paramLong);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null)
+    SmartDeviceIPCHost localSmartDeviceIPCHost = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (localSmartDeviceIPCHost != null)
     {
-      localBundle = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
+      localBundle = localSmartDeviceIPCHost.a(localBundle);
       if (localBundle != null) {
         return Boolean.valueOf(localBundle.getBoolean("isVasFlagEnable"));
       }
     }
-    return Boolean.valueOf(false);
+    return localBoolean;
   }
   
   public String a()
@@ -622,114 +600,136 @@ public class SmartDeviceProxyMgr
   {
     b("SmartDeviceProxyMgr::getLiteAppSettingList");
     a(false);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {}
-    Bundle localBundle;
-    do
-    {
+    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
       return null;
-      localBundle = new Bundle();
-      localBundle.putString("notify_cmd", "getLiteAppSettingList");
-      localBundle = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
-    } while (localBundle == null);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("notify_cmd", "getLiteAppSettingList");
+    localBundle = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
+    if (localBundle == null) {
+      return null;
+    }
     return localBundle.getParcelableArrayList("settinglist");
   }
   
   @TargetApi(18)
   void a()
   {
-    Object localObject;
-    if (Build.VERSION.SDK_INT >= 18) {
-      localObject = BaseApplication.getContext();
-    }
-    try
+    Object localObject1;
+    boolean bool1;
+    int j;
+    int i;
+    if (Build.VERSION.SDK_INT >= 18)
     {
-      bool1 = ((Context)localObject).getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+      localObject1 = BaseApplication.getContext();
+      try
+      {
+        bool1 = ((Context)localObject1).getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+      }
+      catch (Throwable localThrowable2)
+      {
+        localThrowable2.printStackTrace();
+        bool1 = false;
+      }
       if (bool1)
       {
-        String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        if ((str != null) && (!"".equals(str))) {}
-      }
-      else
-      {
-        return;
-      }
-    }
-    catch (Throwable localThrowable2)
-    {
-      SharedPreferences localSharedPreferences;
-      do
-      {
-        for (;;)
+        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        if (localObject2 != null)
         {
-          localThrowable2.printStackTrace();
-          bool1 = false;
+          if ("".equals(localObject2)) {
+            return;
+          }
+          Object localObject3 = ((Context)localObject1).getSharedPreferences("mobileQQ", 4);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("qfind_report_gps_bt_stat");
+          localStringBuilder.append((String)localObject2);
+          if (((SharedPreferences)localObject3).getBoolean(localStringBuilder.toString(), false))
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("qfind_ble_gps_reported");
+            localStringBuilder.append((String)localObject2);
+            if (!((SharedPreferences)localObject3).getBoolean(localStringBuilder.toString(), false))
+            {
+              localObject3 = ((SharedPreferences)localObject3).edit();
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("qfind_ble_gps_reported");
+              localStringBuilder.append((String)localObject2);
+              localObject2 = localStringBuilder.toString();
+              j = 1;
+              ((SharedPreferences.Editor)localObject3).putBoolean((String)localObject2, true).commit();
+              try
+              {
+                localObject2 = ((BluetoothManager)((Context)localObject1).getSystemService("bluetooth")).getAdapter();
+                if (localObject2 == null)
+                {
+                  i = 0;
+                }
+                else
+                {
+                  if (((BluetoothAdapter)localObject2).isEnabled()) {
+                    break label465;
+                  }
+                  i = 1;
+                }
+                SmartDeviceReport.a(null, "QFind_BleState", i, 0, 0);
+                if (QLog.isColorLevel())
+                {
+                  localObject2 = new StringBuilder();
+                  ((StringBuilder)localObject2).append("QFind_BleState bleResult=");
+                  ((StringBuilder)localObject2).append(i);
+                  QLog.i("QFind", 2, ((StringBuilder)localObject2).toString());
+                }
+              }
+              catch (Throwable localThrowable3)
+              {
+                localThrowable3.printStackTrace();
+              }
+            }
+          }
         }
-        localSharedPreferences = ((Context)localObject).getSharedPreferences("mobileQQ", 4);
-      } while ((!localSharedPreferences.getBoolean("qfind_report_gps_bt_stat" + localThrowable2, false)) || (localSharedPreferences.getBoolean("qfind_ble_gps_reported" + localThrowable2, false)));
-      localSharedPreferences.edit().putBoolean("qfind_ble_gps_reported" + localThrowable2, true).commit();
+      }
     }
     for (;;)
     {
-      for (;;)
+      boolean bool2;
+      try
       {
-        try
-        {
-          localBluetoothAdapter = ((BluetoothManager)((Context)localObject).getSystemService("bluetooth")).getAdapter();
-          if (localBluetoothAdapter != null) {
-            continue;
-          }
-          i = 0;
-          SmartDeviceReport.a(null, "QFind_BleState", i, 0, 0);
-          if (QLog.isColorLevel()) {
-            QLog.i("QFind", 2, "QFind_BleState bleResult=" + i);
-          }
+        localObject1 = (LocationManager)((Context)localObject1).getSystemService("location");
+        bool1 = ((LocationManager)localObject1).isProviderEnabled("gps");
+        bool2 = ((LocationManager)localObject1).isProviderEnabled("network");
+        if ((!bool1) || (!bool2)) {
+          break label470;
         }
-        catch (Throwable localThrowable3)
+        i = j;
+        SmartDeviceReport.a(null, "QFind_GPSState", i, 0, 0);
+        if (QLog.isColorLevel())
         {
-          BluetoothAdapter localBluetoothAdapter;
-          boolean bool2;
-          localThrowable3.printStackTrace();
-          continue;
-          if (!bool1) {
-            continue;
-          }
-          int i = 2;
-          continue;
-          if (!bool2) {
-            continue;
-          }
-          i = 3;
-          continue;
-          i = 0;
-          continue;
-        }
-        try
-        {
-          localObject = (LocationManager)((Context)localObject).getSystemService("location");
-          bool1 = ((LocationManager)localObject).isProviderEnabled("gps");
-          bool2 = ((LocationManager)localObject).isProviderEnabled("network");
-          if ((!bool1) || (!bool2)) {
-            continue;
-          }
-          i = 1;
-          SmartDeviceReport.a(null, "QFind_GPSState", i, 0, 0);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("QFind", 2, "QFind_GPSState gps=" + bool1 + ", 2g network=" + bool2 + ", gpsResult=" + i);
-          return;
-        }
-        catch (Throwable localThrowable1)
-        {
-          localThrowable1.printStackTrace();
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("QFind_GPSState gps=");
+          ((StringBuilder)localObject1).append(bool1);
+          ((StringBuilder)localObject1).append(", 2g network=");
+          ((StringBuilder)localObject1).append(bool2);
+          ((StringBuilder)localObject1).append(", gpsResult=");
+          ((StringBuilder)localObject1).append(i);
+          QLog.i("QFind", 2, ((StringBuilder)localObject1).toString());
           return;
         }
       }
-      bool1 = localBluetoothAdapter.isEnabled();
-      if (!bool1) {
-        i = 1;
-      } else {
+      catch (Throwable localThrowable1)
+      {
+        localThrowable1.printStackTrace();
+      }
+      return;
+      label465:
+      i = 2;
+      break;
+      label470:
+      if (bool1) {
         i = 2;
+      } else if (bool2) {
+        i = 3;
+      } else {
+        i = 0;
       }
     }
   }
@@ -744,47 +744,53 @@ public class SmartDeviceProxyMgr
   public void a(int paramInt, Bundle paramBundle)
   {
     a(false);
-    if (paramInt == 39) {}
-    label11:
-    int i;
-    long l;
-    do
+    if (paramInt == 39) {
+      return;
+    }
+    if (paramInt == 111)
     {
-      do
+      paramInt = paramBundle.getInt("msgtype", 0);
+      int i = paramBundle.getInt("devtime", 0);
+      long l = paramBundle.getLong("din", 0L);
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          break label11;
-          do
-          {
-            return;
-          } while (paramInt != 111);
-          paramInt = paramBundle.getInt("msgtype", 0);
-          i = paramBundle.getInt("devtime", 0);
-          l = paramBundle.getLong("din", 0L);
-          if (QLog.isColorLevel()) {
-            QLog.d("QFind", 2, "PushLostDevFound msgtype[" + paramInt + "], devtime=[" + i + "], din[" + l + "].");
-          }
-          a(false);
-          paramBundle = new Bundle();
-          paramBundle.putString("notify_cmd", "updateLostStatus");
-          if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null) {
-            this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(paramBundle);
-          }
-        } while (paramInt == 2);
-        if (paramInt == 6)
-        {
-          a(l, i, HardCodeUtil.a(2131714151));
-          return;
-        }
-      } while (paramInt == 7);
-      if (paramInt == 8)
-      {
-        a(l, i, HardCodeUtil.a(2131714150));
+        paramBundle = new StringBuilder();
+        paramBundle.append("PushLostDevFound msgtype[");
+        paramBundle.append(paramInt);
+        paramBundle.append("], devtime=[");
+        paramBundle.append(i);
+        paramBundle.append("], din[");
+        paramBundle.append(l);
+        paramBundle.append("].");
+        QLog.d("QFind", 2, paramBundle.toString());
+      }
+      a(false);
+      paramBundle = new Bundle();
+      paramBundle.putString("notify_cmd", "updateLostStatus");
+      SmartDeviceIPCHost localSmartDeviceIPCHost = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+      if (localSmartDeviceIPCHost != null) {
+        localSmartDeviceIPCHost.a(paramBundle);
+      }
+      if (paramInt == 2) {
         return;
       }
-    } while (paramInt != 9);
-    a(l, i, HardCodeUtil.a(2131714156));
+      if (paramInt == 6)
+      {
+        a(l, i, HardCodeUtil.a(2131714080));
+        return;
+      }
+      if (paramInt == 7) {
+        return;
+      }
+      if (paramInt == 8)
+      {
+        a(l, i, HardCodeUtil.a(2131714079));
+        return;
+      }
+      if (paramInt == 9) {
+        a(l, i, HardCodeUtil.a(2131714085));
+      }
+    }
   }
   
   public void a(int paramInt, String paramString)
@@ -804,26 +810,27 @@ public class SmartDeviceProxyMgr
   public void a(long paramLong)
   {
     QLog.d("SmartDeviceProxyMgr", 2, "sendUinSkeyMsg begin");
-    if (!a()) {}
-    do
-    {
+    if (!a()) {
       return;
-      localObject1 = new cmd0xac7.ReqBody();
-      ((cmd0xac7.ReqBody)localObject1).uint32_cmd.set(443);
-      ((cmd0xac7.ReqBody)localObject1).uint64_din.set(paramLong);
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    } while (localObject3 == null);
+    }
+    Object localObject1 = new cmd0xac7.ReqBody();
+    ((cmd0xac7.ReqBody)localObject1).uint32_cmd.set(443);
+    ((cmd0xac7.ReqBody)localObject1).uint64_din.set(paramLong);
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+    if (localObject3 == null) {
+      return;
+    }
     Object localObject2 = new cmd0xac7.BinderSig();
     ((cmd0xac7.BinderSig)localObject2).uint32_type.set(1);
     ((cmd0xac7.BinderSig)localObject2).uint64_uin.set(Long.valueOf((String)localObject3).longValue());
-    Object localObject3 = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
+    localObject3 = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
     ((cmd0xac7.BinderSig)localObject2).bytes_sig.set(ByteStringMicro.copyFromUtf8(((TicketManager)localObject3).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())));
     ((cmd0xac7.ReqBody)localObject1).msg_binder_sig.set((MessageMicro)localObject2);
     localObject2 = new oidb_sso.OIDBSSOPkg();
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2759);
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((cmd0xac7.ReqBody)localObject1).toByteArray()));
-    Object localObject1 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "OidbSvc_device.0xac7");
+    localObject1 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "OidbSvc_device.0xac7");
     ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
     sendPbReq((ToServiceMsg)localObject1);
   }
@@ -837,8 +844,9 @@ public class SmartDeviceProxyMgr
     localBundle.putString("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     localBundle.putLong("din", paramLong);
     localBundle.putInt("productId", paramInt);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null) {
-      this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
+    SmartDeviceIPCHost localSmartDeviceIPCHost = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (localSmartDeviceIPCHost != null) {
+      localSmartDeviceIPCHost.a(localBundle);
     }
   }
   
@@ -846,41 +854,45 @@ public class SmartDeviceProxyMgr
   {
     b("SmartDeviceProxyMgr::setDeviceVasFlag");
     a(false);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {}
-    Bundle localBundle;
-    do
-    {
+    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
       return;
-      localBundle = new Bundle();
-      localBundle.putString("notify_cmd", "setDeviceVasFlag");
-      localBundle.putInt("bitCount", paramInt2);
-      localBundle.putInt("beginIndex", paramInt1);
-      localBundle.putInt("bitValue", paramInt3);
-      localBundle.putLong("din", paramLong);
-    } while (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null);
-    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("notify_cmd", "setDeviceVasFlag");
+    localBundle.putInt("bitCount", paramInt2);
+    localBundle.putInt("beginIndex", paramInt1);
+    localBundle.putInt("bitValue", paramInt3);
+    localBundle.putLong("din", paramLong);
+    SmartDeviceIPCHost localSmartDeviceIPCHost = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (localSmartDeviceIPCHost != null) {
+      localSmartDeviceIPCHost.a(localBundle);
+    }
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt1, long paramLong3, int paramInt2, String paramString, byte[] paramArrayOfByte)
   {
-    b("onReceive Push Msg : " + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onReceive Push Msg : ");
+    ((StringBuilder)localObject).append(paramString);
+    b(((StringBuilder)localObject).toString());
     b();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("notify_cmd", "notifyCmdReceivePush");
-    localBundle.putLong("fromUin", paramLong1);
-    localBundle.putLong("toUin", paramLong2);
-    localBundle.putInt("msgSeq", paramInt1);
-    localBundle.putLong("msgUid", paramLong3);
-    localBundle.putInt("msgType", paramInt2);
-    localBundle.putBoolean("forceStart", true);
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("notify_cmd", "notifyCmdReceivePush");
+    ((Bundle)localObject).putLong("fromUin", paramLong1);
+    ((Bundle)localObject).putLong("toUin", paramLong2);
+    ((Bundle)localObject).putInt("msgSeq", paramInt1);
+    ((Bundle)localObject).putLong("msgUid", paramLong3);
+    ((Bundle)localObject).putInt("msgType", paramInt2);
+    ((Bundle)localObject).putBoolean("forceStart", true);
     if (paramString != null) {
-      localBundle.putString("sServiceCmd", paramString);
+      ((Bundle)localObject).putString("sServiceCmd", paramString);
     }
     if (paramArrayOfByte != null) {
-      localBundle.putByteArray("buffer", paramArrayOfByte);
+      ((Bundle)localObject).putByteArray("buffer", paramArrayOfByte);
     }
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null) {
-      this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
+    paramString = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (paramString != null) {
+      paramString.a((Bundle)localObject);
     }
   }
   
@@ -890,51 +902,39 @@ public class SmartDeviceProxyMgr
   {
     b("SmartDeviceProxyMgr::sendStructingShareMsg");
     a(false);
-    DataPoint localDataPoint;
-    AbsShareMsg localAbsShareMsg;
     if ((paramAbsStructMsg != null) && ((paramAbsStructMsg instanceof AbsShareMsg)))
     {
-      localDataPoint = new DataPoint();
-      localAbsShareMsg = (AbsShareMsg)paramAbsStructMsg;
-      if (paramAbsStructMsg.mMsgServiceID != 2) {
-        break label418;
+      Object localObject1 = new DataPoint();
+      Object localObject2 = (AbsShareMsg)paramAbsStructMsg;
+      if (paramAbsStructMsg.mMsgServiceID == 2) {
+        ((DataPoint)localObject1).mProperityId = 11003;
+      } else if (paramAbsStructMsg.mMsgServiceID == 32) {
+        ((DataPoint)localObject1).mProperityId = 32;
+      } else if (paramAbsStructMsg.mMsgServiceID == 1) {
+        ((DataPoint)localObject1).mProperityId = 11005;
       }
-      localDataPoint.mProperityId = 11003;
-    }
-    for (;;)
-    {
-      localDataPoint.mApiName = "set_data_point";
-      localDataPoint.mDin = paramLong;
+      ((DataPoint)localObject1).mApiName = "set_data_point";
+      ((DataPoint)localObject1).mDin = paramLong;
       try
       {
-        localDataPoint.mValue = new JSONObject().put("msg_time", (int)MessageCache.a()).put("senderDin", paramLong).put("msgUrl", localAbsShareMsg.mMsgUrl).put("contentSrc", localAbsShareMsg.mContentSrc).put("contentCover", localAbsShareMsg.mContentCover).put("contentTitle", localAbsShareMsg.mContentTitle).put("contentSummary", localAbsShareMsg.mContentSummary).put("msgAction", localAbsShareMsg.mMsgAction).put("msgActionData", localAbsShareMsg.mMsgActionData).put("msg_A_ActionData", localAbsShareMsg.mMsg_A_ActionData).put("msg_I_ActionData", localAbsShareMsg.mMsg_I_ActionData).put("sourceAppid", localAbsShareMsg.mSourceAppid).put("sourceUrl", localAbsShareMsg.mSourceUrl).put("sourceAction", localAbsShareMsg.mSourceAction).put("sourceActionData", localAbsShareMsg.mSourceActionData).put("source_A_ActionData", localAbsShareMsg.mSource_A_ActionData).put("source_I_ActionData", localAbsShareMsg.mSource_I_ActionData).put("sourceIcon", localAbsShareMsg.mSourceIcon).put("sourceName", localAbsShareMsg.mSourceName).put("msgBrief", localAbsShareMsg.mMsgBrief).put("fileName", localAbsShareMsg.mFileName).put("fileSize", localAbsShareMsg.mFileSize).put("compatibleText", localAbsShareMsg.mCompatibleText).toString();
-        localDataPoint.mValueType = "string";
-        paramAbsStructMsg = new Bundle();
-        paramAbsStructMsg.putParcelable("datapoint", localDataPoint);
-        paramAbsStructMsg.putLong("din", paramLong);
-        paramAbsStructMsg.putString("notify_cmd", "sendStructMsg");
-        b("SmartDeviceProxyMgr::sendStructingShareMsg dataPoint.mValue = " + localDataPoint.mValue);
-        if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null) {
-          this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(paramAbsStructMsg);
-        }
-        return;
-        label418:
-        if (paramAbsStructMsg.mMsgServiceID == 32)
-        {
-          localDataPoint.mProperityId = 32;
-          continue;
-        }
-        if (paramAbsStructMsg.mMsgServiceID != 1) {
-          continue;
-        }
-        localDataPoint.mProperityId = 11005;
+        ((DataPoint)localObject1).mValue = new JSONObject().put("msg_time", (int)MessageCache.a()).put("senderDin", paramLong).put("msgUrl", ((AbsShareMsg)localObject2).mMsgUrl).put("contentSrc", ((AbsShareMsg)localObject2).mContentSrc).put("contentCover", ((AbsShareMsg)localObject2).mContentCover).put("contentTitle", ((AbsShareMsg)localObject2).mContentTitle).put("contentSummary", ((AbsShareMsg)localObject2).mContentSummary).put("msgAction", ((AbsShareMsg)localObject2).mMsgAction).put("msgActionData", ((AbsShareMsg)localObject2).mMsgActionData).put("msg_A_ActionData", ((AbsShareMsg)localObject2).mMsg_A_ActionData).put("msg_I_ActionData", ((AbsShareMsg)localObject2).mMsg_I_ActionData).put("sourceAppid", ((AbsShareMsg)localObject2).mSourceAppid).put("sourceUrl", ((AbsShareMsg)localObject2).mSourceUrl).put("sourceAction", ((AbsShareMsg)localObject2).mSourceAction).put("sourceActionData", ((AbsShareMsg)localObject2).mSourceActionData).put("source_A_ActionData", ((AbsShareMsg)localObject2).mSource_A_ActionData).put("source_I_ActionData", ((AbsShareMsg)localObject2).mSource_I_ActionData).put("sourceIcon", ((AbsShareMsg)localObject2).mSourceIcon).put("sourceName", ((AbsShareMsg)localObject2).mSourceName).put("msgBrief", ((AbsShareMsg)localObject2).mMsgBrief).put("fileName", ((AbsShareMsg)localObject2).mFileName).put("fileSize", ((AbsShareMsg)localObject2).mFileSize).put("compatibleText", ((AbsShareMsg)localObject2).mCompatibleText).toString();
       }
       catch (JSONException paramAbsStructMsg)
       {
-        for (;;)
-        {
-          paramAbsStructMsg.printStackTrace();
-        }
+        paramAbsStructMsg.printStackTrace();
+      }
+      ((DataPoint)localObject1).mValueType = "string";
+      paramAbsStructMsg = new Bundle();
+      paramAbsStructMsg.putParcelable("datapoint", (Parcelable)localObject1);
+      paramAbsStructMsg.putLong("din", paramLong);
+      paramAbsStructMsg.putString("notify_cmd", "sendStructMsg");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("SmartDeviceProxyMgr::sendStructingShareMsg dataPoint.mValue = ");
+      ((StringBuilder)localObject2).append(((DataPoint)localObject1).mValue);
+      b(((StringBuilder)localObject2).toString());
+      localObject1 = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+      if (localObject1 != null) {
+        ((SmartDeviceIPCHost)localObject1).a(paramAbsStructMsg);
       }
     }
   }
@@ -951,8 +951,9 @@ public class SmartDeviceProxyMgr
     localBundle.putString("fileName", paramString3);
     localBundle.putInt("fileType", paramInt);
     localBundle.putBundle("otherParams", paramBundle);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null) {
-      this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
+    paramString1 = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (paramString1 != null) {
+      paramString1.a(localBundle);
     }
   }
   
@@ -963,13 +964,17 @@ public class SmartDeviceProxyMgr
   
   public void a(Activity paramActivity, DeviceInfo paramDeviceInfo, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKQQAgentPerf", 2, "liteAppEntry:" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("liteAppEntry:");
+      localStringBuilder.append(System.currentTimeMillis());
+      QLog.d("SDKQQAgentPerf", 2, localStringBuilder.toString());
     }
     a(false);
     if (paramDeviceInfo == null)
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131714159));
+      ToastUtil.a().a(HardCodeUtil.a(2131714088));
       return;
     }
     paramDeviceInfo.displayName = SmartDeviceUtil.a(paramDeviceInfo);
@@ -979,23 +984,23 @@ public class SmartDeviceProxyMgr
   public void a(Bundle paramBundle)
   {
     b("SmartDeviceProxyMgr::InvokeOpenChatMsgActivity");
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (paramBundle == null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramBundle != null))
     {
-      b("in SmartDeviceProxyMgr InvokeOpenChatMsgActivity app is null or params is null");
+      String str1 = paramBundle.getString("din");
+      String str2 = paramBundle.getString("devName");
+      Boolean localBoolean = Boolean.valueOf(paramBundle.getBoolean("bFromLightApp", false));
+      int i = paramBundle.getInt("operType");
+      int j = paramBundle.getInt("jumpTab");
+      paramBundle = Looper.getMainLooper();
+      if (Thread.currentThread() != paramBundle.getThread())
+      {
+        new Handler(paramBundle).post(new SmartDeviceProxyMgr.3(this, str1, str2, localBoolean, i, j));
+        return;
+      }
+      a(str1, str2, localBoolean, i, j);
       return;
     }
-    String str1 = paramBundle.getString("din");
-    String str2 = paramBundle.getString("devName");
-    Boolean localBoolean = Boolean.valueOf(paramBundle.getBoolean("bFromLightApp", false));
-    int i = paramBundle.getInt("operType");
-    int j = paramBundle.getInt("jumpTab");
-    paramBundle = Looper.getMainLooper();
-    if (Thread.currentThread() != paramBundle.getThread())
-    {
-      new Handler(paramBundle).post(new SmartDeviceProxyMgr.3(this, str1, str2, localBoolean, i, j));
-      return;
-    }
-    a(str1, str2, localBoolean, i, j);
+    b("in SmartDeviceProxyMgr InvokeOpenChatMsgActivity app is null or params is null");
   }
   
   public void a(DataPoint paramDataPoint, int paramInt1, long paramLong, int paramInt2)
@@ -1034,25 +1039,28 @@ public class SmartDeviceProxyMgr
     localBundle.putString("text", paramString);
     localBundle.putLong("msg_time", paramLong2);
     localBundle.putLong("msgSeq", paramLong3);
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null) {
-      this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
+    paramString = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (paramString != null) {
+      paramString.a(localBundle);
     }
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    String str = BaseApplicationImpl.getApplication().getFilesDir() + "/qfindpidlist";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getFilesDir());
+    ((StringBuilder)localObject).append("/qfindpidlist");
+    localObject = ((StringBuilder)localObject).toString();
     if (paramBoolean) {
-      FileUtils.e(str);
+      FileUtils.deleteFile((String)localObject);
+    } else if (paramString != null) {
+      FileUtils.writeFile((String)localObject, paramString);
     }
     try
     {
-      for (;;)
+      paramString = FileUtils.readFileContent(new File((String)localObject));
+      if (!TextUtils.isEmpty(paramString))
       {
-        paramString = FileUtils.a(new File(str));
-        if (TextUtils.isEmpty(paramString)) {
-          break;
-        }
         paramString = new JSONObject(paramString).getJSONArray("pidlist");
         this.jdField_b_of_type_JavaUtilArrayList.clear();
         int i = 0;
@@ -1062,46 +1070,55 @@ public class SmartDeviceProxyMgr
           this.jdField_b_of_type_JavaUtilArrayList.add(Long.valueOf(l));
           i += 1;
         }
-        if (paramString != null) {
-          FileUtils.a(str, paramString);
-        }
       }
-      if (this.jdField_b_of_type_JavaUtilArrayList.size() <= 0) {
-        break label262;
+      if (paramString.size() <= 0) {
+        break label294;
       }
     }
     catch (Throwable paramString)
     {
       paramString.printStackTrace();
-      if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-        break label262;
+      paramString = this.jdField_b_of_type_JavaUtilArrayList;
+      if (paramString == null) {
+        break label294;
       }
     }
     paramString = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4);
-    str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if ((str == null) || ("".equals(str))) {}
-    for (;;)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    if (localObject != null)
     {
-      return;
-      paramString = paramString.getString("qfind_assist" + str, "0");
-      if (!TextUtils.isEmpty(paramString)) {}
-      try
-      {
-        this.d = Integer.parseInt(paramString);
-        label262:
-        if (((this.d + this.c > 1) && (this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr != null) && (a() != null)) && ((this.jdField_b_of_type_JavaUtilArrayList == null) || (!QLog.isColorLevel()))) {
-          continue;
-        }
-        QLog.w("QFind", 2, "qfind pid count=" + this.jdField_b_of_type_JavaUtilArrayList.size());
+      if ("".equals(localObject)) {
         return;
       }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          this.d = 0;
-        }
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qfind_assist");
+      localStringBuilder.append((String)localObject);
+      paramString = paramString.getString(localStringBuilder.toString(), "0");
+      if (TextUtils.isEmpty(paramString)) {}
+    }
+    try
+    {
+      this.d = Integer.parseInt(paramString);
+    }
+    catch (Exception paramString)
+    {
+      label260:
+      break label260;
+    }
+    this.d = 0;
+    if ((this.d + this.c > 1) && (this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr != null))
+    {
+      a();
+      break label294;
+      return;
+    }
+    label294:
+    if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (QLog.isColorLevel()))
+    {
+      paramString = new StringBuilder();
+      paramString.append("qfind pid count=");
+      paramString.append(this.jdField_b_of_type_JavaUtilArrayList.size());
+      QLog.w("QFind", 2, paramString.toString());
     }
   }
   
@@ -1114,27 +1131,34 @@ public class SmartDeviceProxyMgr
     if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
       localBundle.putParcelableArrayList("settinglist", paramArrayList);
     }
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null) {
-      this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
+    paramArrayList = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (paramArrayList != null) {
+      paramArrayList.a(localBundle);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    b("startPlugin flag:" + this.e + " ipc:" + this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startPlugin flag:");
+    ((StringBuilder)localObject).append(this.e);
+    ((StringBuilder)localObject).append(" ipc:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost);
+    b(((StringBuilder)localObject).toString());
     if (this.e != 1) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder().append("SmartDeviceProxyMgr::startPlugin, forceRefresh: ");
-    if (paramBoolean) {}
-    for (String str = "yes";; str = "no")
-    {
-      b(str);
-      if (!b()) {
-        break;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SmartDeviceProxyMgr::startPlugin, forceRefresh: ");
+    if (paramBoolean) {
+      localObject = "yes";
+    } else {
+      localObject = "no";
+    }
+    localStringBuilder.append((String)localObject);
+    b(localStringBuilder.toString());
+    if (b()) {
       b(paramBoolean);
-      return;
     }
   }
   
@@ -1144,39 +1168,43 @@ public class SmartDeviceProxyMgr
     try
     {
       ((SubMsgType0x90.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-      switch (((SubMsgType0x90.MsgBody)localObject).msg_head.uint32_cmd.get())
+      int i = ((SubMsgType0x90.MsgBody)localObject).msg_head.uint32_cmd.get();
+      if (i != 1)
       {
-      default: 
+        if (i != 2) {
+          return;
+        }
+        paramArrayOfByte = ((SubMsgType0x90.MsgBody)localObject).msg_body.msg_occupy_microphone_body;
+        localObject = new Intent();
+        ((Intent)localObject).setAction("On_OccupyMicrophoneNotify_Push");
+        ((Intent)localObject).putExtra("din", paramArrayOfByte.uint64_din.get());
+        ((Intent)localObject).putExtra("uin", a(paramArrayOfByte.uint32_uin.get()));
+        BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject, "com.tencent.smartdevice.permission.broadcast");
         return;
       }
+      paramArrayOfByte = ((SubMsgType0x90.MsgBody)localObject).msg_body.msg_dp_notify_body;
+      localObject = new Intent();
+      ((Intent)localObject).setAction("On_DpNotify_Push");
+      ((Intent)localObject).putExtra("productid", paramArrayOfByte.uint32_pid.get());
+      ((Intent)localObject).putExtra("din", paramArrayOfByte.uint64_din.get());
+      ((Intent)localObject).putExtra("extras", paramArrayOfByte.string_extend_info.get());
+      int[] arrayOfInt = new int[paramArrayOfByte.rpt_msg_notify_info.size()];
+      i = 0;
+      while (i < paramArrayOfByte.rpt_msg_notify_info.size())
+      {
+        arrayOfInt[i] = ((SubMsgType0x90.NotifyItem)paramArrayOfByte.rpt_msg_notify_info.get(i)).uint32_propertyid.get();
+        i += 1;
+      }
+      ((Intent)localObject).putExtra("pids", arrayOfInt);
+      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject, "com.tencent.smartdevice.permission.broadcast");
+      return;
     }
     catch (Exception paramArrayOfByte)
     {
-      b("onRecvPush0x210_0x90, parse error");
-      return;
+      label246:
+      break label246;
     }
-    paramArrayOfByte = ((SubMsgType0x90.MsgBody)localObject).msg_body.msg_dp_notify_body;
-    localObject = new Intent();
-    ((Intent)localObject).setAction("On_DpNotify_Push");
-    ((Intent)localObject).putExtra("productid", paramArrayOfByte.uint32_pid.get());
-    ((Intent)localObject).putExtra("din", paramArrayOfByte.uint64_din.get());
-    ((Intent)localObject).putExtra("extras", paramArrayOfByte.string_extend_info.get());
-    int[] arrayOfInt = new int[paramArrayOfByte.rpt_msg_notify_info.size()];
-    int i = 0;
-    while (i < paramArrayOfByte.rpt_msg_notify_info.size())
-    {
-      arrayOfInt[i] = ((SubMsgType0x90.NotifyItem)paramArrayOfByte.rpt_msg_notify_info.get(i)).uint32_propertyid.get();
-      i += 1;
-    }
-    ((Intent)localObject).putExtra("pids", arrayOfInt);
-    BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject, "com.tencent.smartdevice.permission.broadcast");
-    return;
-    paramArrayOfByte = ((SubMsgType0x90.MsgBody)localObject).msg_body.msg_occupy_microphone_body;
-    localObject = new Intent();
-    ((Intent)localObject).setAction("On_OccupyMicrophoneNotify_Push");
-    ((Intent)localObject).putExtra("din", paramArrayOfByte.uint64_din.get());
-    ((Intent)localObject).putExtra("uin", TroopCreateUtils.a(paramArrayOfByte.uint32_uin.get()));
-    BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject, "com.tencent.smartdevice.permission.broadcast");
+    b("onRecvPush0x210_0x90, parse error");
   }
   
   public boolean a()
@@ -1207,8 +1235,8 @@ public class SmartDeviceProxyMgr
   
   public boolean a(long paramLong, int paramInt)
   {
-    boolean bool2 = false;
     Object localObject = a(paramLong);
+    boolean bool2 = false;
     boolean bool1 = bool2;
     if (localObject != null)
     {
@@ -1251,7 +1279,10 @@ public class SmartDeviceProxyMgr
     String str = a();
     if (!TextUtils.isEmpty(str))
     {
-      b("device login,a2 len is:" + str.length());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("device login,a2 len is:");
+      localStringBuilder.append(str.length());
+      b(localStringBuilder.toString());
       return HexUtil.hexStr2Bytes(a());
     }
     return HexUtil.hexStr2Bytes("");
@@ -1260,22 +1291,17 @@ public class SmartDeviceProxyMgr
   public DeviceInfo[] a()
   {
     a(false);
-    Object localObject;
     if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
-      localObject = null;
+      return null;
     }
-    DeviceInfo[] arrayOfDeviceInfo;
-    do
+    DeviceInfo[] arrayOfDeviceInfo = b();
+    if (arrayOfDeviceInfo == null)
     {
-      do
-      {
-        return localObject;
-        arrayOfDeviceInfo = b();
-        localObject = arrayOfDeviceInfo;
-      } while (arrayOfDeviceInfo != null);
-      localObject = arrayOfDeviceInfo;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1003);
+      MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+      if (localMqqHandler != null) {
+        localMqqHandler.sendEmptyMessage(1003);
+      }
+    }
     return arrayOfDeviceInfo;
   }
   
@@ -1286,7 +1312,12 @@ public class SmartDeviceProxyMgr
   
   public void b()
   {
-    b("startPlugin force flag:" + this.e + " ipc:" + this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startPlugin force flag:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" ipc:");
+    localStringBuilder.append(this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost);
+    b(localStringBuilder.toString());
     if (b()) {
       b(false);
     }
@@ -1296,8 +1327,12 @@ public class SmartDeviceProxyMgr
   {
     this.c = paramInt;
     SettingCloneUtil.writeValueForInt(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null, "qqsetting_antilost_key", this.c);
-    if (QLog.isColorLevel()) {
-      QLog.w("QFind", 2, "qfind mQfindAssist=" + this.c);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qfind mQfindAssist=");
+      localStringBuilder.append(this.c);
+      QLog.w("QFind", 2, localStringBuilder.toString());
     }
   }
   
@@ -1317,153 +1352,96 @@ public class SmartDeviceProxyMgr
     this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController.transferAsync(paramBundle);
   }
   
-  /* Error */
   public void b(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 214	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   9: ldc_w 1435
-    //   12: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: astore 4
-    //   17: iload_1
-    //   18: ifeq +41 -> 59
-    //   21: ldc_w 1241
-    //   24: astore_3
-    //   25: aload_0
-    //   26: aload 4
-    //   28: aload_3
-    //   29: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: invokevirtual 235	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: invokespecial 101	com/tencent/device/devicemgr/SmartDeviceProxyMgr:b	(Ljava/lang/String;)V
-    //   38: iconst_1
-    //   39: aload_0
-    //   40: getfield 63	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_Int	I
-    //   43: if_icmpeq +13 -> 56
-    //   46: aload_0
-    //   47: getfield 65	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_b_of_type_Int	I
-    //   50: istore_2
-    //   51: iconst_1
-    //   52: iload_2
-    //   53: if_icmpne +13 -> 66
-    //   56: aload_0
-    //   57: monitorexit
-    //   58: return
-    //   59: ldc_w 1247
-    //   62: astore_3
-    //   63: goto -38 -> 25
-    //   66: iload_1
-    //   67: ifeq +13 -> 80
-    //   70: aload_0
-    //   71: iconst_0
-    //   72: putfield 63	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_Int	I
-    //   75: aload_0
-    //   76: iconst_0
-    //   77: putfield 65	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_b_of_type_Int	I
-    //   80: aload_0
-    //   81: getfield 63	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_Int	I
-    //   84: ifeq +11 -> 95
-    //   87: iconst_3
-    //   88: aload_0
-    //   89: getfield 63	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_Int	I
-    //   92: if_icmpne -36 -> 56
-    //   95: aload_0
-    //   96: getfield 96	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   99: ifnull -43 -> 56
-    //   102: aload_0
-    //   103: getfield 96	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   106: invokevirtual 113	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   109: ifnull -53 -> 56
-    //   112: aload_0
-    //   113: ldc_w 1436
-    //   116: aload_0
-    //   117: getfield 96	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   120: invokevirtual 113	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   123: invokestatic 1375	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   126: aload_0
-    //   127: invokevirtual 1438	com/tencent/device/devicemgr/SmartDeviceProxyMgr:a	()[B
-    //   130: ldc_w 583
-    //   133: ldc_w 583
-    //   136: invokespecial 1440	com/tencent/device/devicemgr/SmartDeviceProxyMgr:a	(IJ[BLjava/lang/String;Ljava/lang/String;)V
-    //   139: aload_0
-    //   140: iconst_1
-    //   141: putfield 63	com/tencent/device/devicemgr/SmartDeviceProxyMgr:jdField_a_of_type_Int	I
-    //   144: goto -88 -> 56
-    //   147: astore_3
-    //   148: aload_0
-    //   149: monitorexit
-    //   150: aload_3
-    //   151: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	152	0	this	SmartDeviceProxyMgr
-    //   0	152	1	paramBoolean	boolean
-    //   50	4	2	i	int
-    //   24	39	3	str	String
-    //   147	4	3	localObject	Object
-    //   15	12	4	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	147	finally
-    //   25	51	147	finally
-    //   70	80	147	finally
-    //   80	95	147	finally
-    //   95	144	147	finally
+    for (;;)
+    {
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("SmartDeviceProxyMgr::loginAndFetchDeviceListInternal, forceRefresh: ");
+        if (paramBoolean)
+        {
+          String str1 = "yes";
+          localStringBuilder.append(str1);
+          b(localStringBuilder.toString());
+          if ((1 != this.jdField_a_of_type_Int) && (1 != this.jdField_b_of_type_Int))
+          {
+            if (paramBoolean)
+            {
+              this.jdField_a_of_type_Int = 0;
+              this.jdField_b_of_type_Int = 0;
+            }
+            if (((this.jdField_a_of_type_Int == 0) || (3 == this.jdField_a_of_type_Int)) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() != null))
+            {
+              a(1300000607, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), a(), "", "");
+              this.jdField_a_of_type_Int = 1;
+            }
+            return;
+          }
+          return;
+        }
+      }
+      finally {}
+      String str2 = "no";
+    }
   }
   
   public boolean b(long paramLong)
   {
-    if (a(paramLong).booleanValue()) {}
-    Object localObject;
-    do
+    if (a(paramLong).booleanValue()) {
+      return true;
+    }
+    Object localObject = a(paramLong);
+    if (localObject == null) {
+      return false;
+    }
+    if (((DeviceInfo)localObject).SSOBid_Platform == 1027) {
+      return true;
+    }
+    if (((DeviceInfo)localObject).SSOBid_Version == null) {
+      return false;
+    }
+    if ((((DeviceInfo)localObject).SSOBid_Platform == 0) && (((DeviceInfo)localObject).SSOBid_Version.equals(""))) {
+      return true;
+    }
+    localObject = ((DeviceInfo)localObject).SSOBid_Version.split("\\.");
+    if (localObject != null)
     {
-      do
-      {
-        do
-        {
-          return true;
-          localObject = a(paramLong);
-          if (localObject == null) {
-            return false;
-          }
-        } while (((DeviceInfo)localObject).SSOBid_Platform == 1027);
-        if (((DeviceInfo)localObject).SSOBid_Version == null) {
-          return false;
-        }
-      } while ((((DeviceInfo)localObject).SSOBid_Platform == 0) && (((DeviceInfo)localObject).SSOBid_Version.equals("")));
-      localObject = ((DeviceInfo)localObject).SSOBid_Version.split("\\.");
-      if ((localObject == null) || (localObject.length < 2)) {
+      if (localObject.length < 2) {
         return false;
       }
       if (Integer.parseInt(localObject[0]) < 1) {
         return false;
       }
-    } while ((Integer.parseInt(localObject[0]) != 1) || (Integer.parseInt(localObject[1]) >= 1));
+      return (Integer.parseInt(localObject[0]) != 1) || (Integer.parseInt(localObject[1]) >= 1);
+    }
     return false;
   }
   
   public void c()
   {
     QLog.d("SmartDeviceProxyMgr", 2, "**davorteng**sendMsgProxy");
-    if (!a()) {}
-    do
-    {
+    if (!a()) {
       return;
-      localObject1 = new cmd0xac7.ReqBody();
-      ((cmd0xac7.ReqBody)localObject1).uint32_cmd.set(442);
-      QLog.d("SmartDeviceProxyMgr", 2, "**davorteng**sendMsgProxy ...");
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    } while (localObject2 == null);
+    }
+    Object localObject1 = new cmd0xac7.ReqBody();
+    ((cmd0xac7.ReqBody)localObject1).uint32_cmd.set(442);
+    QLog.d("SmartDeviceProxyMgr", 2, "**davorteng**sendMsgProxy ...");
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    if (localObject2 == null) {
+      return;
+    }
     ((cmd0xac7.ReqBody)localObject1).uint64_din.set(Long.valueOf((String)localObject2).longValue());
-    QLog.d("SmartDeviceProxyMgr", 2, "**davorteng**sendMsgProxy din:" + Long.valueOf((String)localObject2).longValue());
-    Object localObject2 = new oidb_sso.OIDBSSOPkg();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("**davorteng**sendMsgProxy din:");
+    localStringBuilder.append(Long.valueOf((String)localObject2).longValue());
+    QLog.d("SmartDeviceProxyMgr", 2, localStringBuilder.toString());
+    localObject2 = new oidb_sso.OIDBSSOPkg();
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2759);
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((cmd0xac7.ReqBody)localObject1).toByteArray()));
-    Object localObject1 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "OidbSvc_device.0xac7");
+    localObject1 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "OidbSvc_device.0xac7");
     ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
     sendPbReq((ToServiceMsg)localObject1);
   }
@@ -1471,12 +1449,21 @@ public class SmartDeviceProxyMgr
   public boolean c(long paramLong)
   {
     Object localObject = a(paramLong);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     if (localObject != null)
     {
       localObject = a(((DeviceInfo)localObject).productId);
-      return (localObject != null) && (((ProductInfo)localObject).uConnectType == 1);
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (((ProductInfo)localObject).uConnectType == 1) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   public void d()
@@ -1485,30 +1472,38 @@ public class SmartDeviceProxyMgr
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("notify_cmd", "logout");
-      if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null) {
-        this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
+      SmartDeviceIPCHost localSmartDeviceIPCHost = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+      if (localSmartDeviceIPCHost != null) {
+        localSmartDeviceIPCHost.a(localBundle);
       }
     }
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 0;
     QLog.d("SmartDeviceProxyMgr", 2, "**davorteng**logout");
-    BannerManager.a().a(39, 0, null);
+    BannerManager.a().a(MsgProxyBannerProcessor.jdField_a_of_type_Int, 0, null);
   }
   
   public boolean d(long paramLong)
   {
     b("SmartDeviceProxyMgr::isDeviceHasUpdate");
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {}
-    Bundle localBundle;
-    do
-    {
+    Object localObject = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    boolean bool2 = false;
+    if (localObject == null) {
       return false;
-      localBundle = new Bundle();
-      localBundle.putString("notify_cmd", "isDeviceHasUpdate");
-      localBundle.putLong("din", paramLong);
-      localBundle = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
-    } while ((localBundle == null) || (!localBundle.getBoolean("hasUpdate", false)));
-    return true;
+    }
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("notify_cmd", "isDeviceHasUpdate");
+    ((Bundle)localObject).putLong("din", paramLong);
+    localObject = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a((Bundle)localObject);
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((Bundle)localObject).getBoolean("hasUpdate", false)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public void e()
@@ -1517,12 +1512,13 @@ public class SmartDeviceProxyMgr
     a(false);
     Bundle localBundle = new Bundle();
     localBundle.putString("notify_cmd", "updateDeviceStatus");
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null) {
-      this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a(localBundle);
+    SmartDeviceIPCHost localSmartDeviceIPCHost = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (localSmartDeviceIPCHost != null) {
+      localSmartDeviceIPCHost.a(localBundle);
     }
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return SmartDeviceObserver.class;
   }
@@ -1531,46 +1527,49 @@ public class SmartDeviceProxyMgr
   {
     b("SmartDeviceProxyMgr onDestroy");
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr$BroadcastHandler != null) {}
-    try
-    {
-      if (BaseApplicationImpl.getContext() != null) {
-        BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr$BroadcastHandler);
+    if (this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr$BroadcastHandler != null) {
+      try
+      {
+        if (BaseApplicationImpl.getContext() != null) {
+          BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr$BroadcastHandler);
+        }
+        this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr$BroadcastHandler = null;
       }
-      this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr$BroadcastHandler = null;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+    Object localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+      ((MqqHandler)localObject).removeCallbacksAndMessages(null);
       this.jdField_a_of_type_MqqOsMqqHandler = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController.removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+      ((ITransFileController)localObject).removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
       this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController.onDestroy();
       this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.getFilter().clear();
+      ((TransProcessorHandler)localObject).getFilter().clear();
       this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = null;
     }
-    if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost != null)
+    localObject = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a();
+      ((SmartDeviceIPCHost)localObject).a();
       this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost = null;
     }
-    if (this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr != null)
+    localObject = this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr.b();
+      ((QFindBLEScanMgr)localObject).b();
       this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr = null;
     }
     if (this.jdField_a_of_type_ArrayOfComTencentDeviceDatadefDeviceInfo != null) {
@@ -1588,77 +1587,77 @@ public class SmartDeviceProxyMgr
   {
     if (paramToServiceMsg != null)
     {
+      Object localObject1;
       if ("QFindSvc.ReqReportDevs".equals(paramToServiceMsg.getServiceCmd()))
       {
-        if (this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr != null) {
-          this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        localObject1 = this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr;
+        if (localObject1 != null) {
+          ((QFindBLEScanMgr)localObject1).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
         }
         return;
       }
       if ("OidbSvc_device.0xac7".equals(paramToServiceMsg.getServiceCmd()))
       {
         QLog.d("SmartDeviceProxyMgr", 2, "**davorteng**onReceive sendMsgProxy");
-        if (!paramFromServiceMsg.isSuccess()) {}
+        if (paramFromServiceMsg.isSuccess()) {
+          try
+          {
+            QLog.d("SmartDeviceProxyMgr", 2, "**davorteng**onReceive sendMsgProxy...");
+            localObject1 = new cmd0xac7.RspBody();
+            Object localObject2 = new oidb_sso.OIDBSSOPkg();
+            ((oidb_sso.OIDBSSOPkg)localObject2).mergeFrom(paramFromServiceMsg.getWupBuffer());
+            ((cmd0xac7.RspBody)localObject1).mergeFrom(((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.get().toByteArray());
+            localObject2 = new cmd0xac7.ReceiveMessageDevices();
+            ((cmd0xac7.ReceiveMessageDevices)localObject2).mergeFrom(((cmd0xac7.RspBody)localObject1).bytes_extd.get().toByteArray());
+            if (((cmd0xac7.ReceiveMessageDevices)localObject2).rpt_devices.size() > 0)
+            {
+              localObject2 = (cmd0xac7.DeviceInfo)((cmd0xac7.ReceiveMessageDevices)localObject2).rpt_devices.get(0);
+              if (localObject2 != null)
+              {
+                localObject1 = ((cmd0xac7.DeviceInfo)localObject2).bytes_name.get().toStringUtf8();
+                long l = ((cmd0xac7.DeviceInfo)localObject2).uint64_din.get();
+                localObject2 = Message.obtain();
+                ((Message)localObject2).what = 3000;
+                ((Message)localObject2).obj = new Pair(Long.valueOf(l), localObject1);
+                BannerManager.a().a(MsgProxyBannerProcessor.jdField_a_of_type_Int, 2, (Message)localObject2);
+              }
+            }
+            else
+            {
+              BannerManager.a().a(MsgProxyBannerProcessor.jdField_a_of_type_Int, 0, null);
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            localThrowable.printStackTrace();
+            BannerManager.a().a(MsgProxyBannerProcessor.jdField_a_of_type_Int, 0, null);
+          }
+        }
       }
     }
-    for (;;)
-    {
-      try
-      {
-        QLog.d("SmartDeviceProxyMgr", 2, "**davorteng**onReceive sendMsgProxy...");
-        localObject1 = new cmd0xac7.RspBody();
-        Object localObject2 = new oidb_sso.OIDBSSOPkg();
-        ((oidb_sso.OIDBSSOPkg)localObject2).mergeFrom(paramFromServiceMsg.getWupBuffer());
-        ((cmd0xac7.RspBody)localObject1).mergeFrom(((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.get().toByteArray());
-        localObject2 = new cmd0xac7.ReceiveMessageDevices();
-        ((cmd0xac7.ReceiveMessageDevices)localObject2).mergeFrom(((cmd0xac7.RspBody)localObject1).bytes_extd.get().toByteArray());
-        if (((cmd0xac7.ReceiveMessageDevices)localObject2).rpt_devices.size() <= 0) {
-          continue;
-        }
-        localObject2 = (cmd0xac7.DeviceInfo)((cmd0xac7.ReceiveMessageDevices)localObject2).rpt_devices.get(0);
-        if (localObject2 != null)
-        {
-          localObject1 = ((cmd0xac7.DeviceInfo)localObject2).bytes_name.get().toStringUtf8();
-          long l = ((cmd0xac7.DeviceInfo)localObject2).uint64_din.get();
-          localObject2 = Message.obtain();
-          ((Message)localObject2).what = 3000;
-          ((Message)localObject2).obj = new Pair(Long.valueOf(l), localObject1);
-          BannerManager.a().a(39, 2, (Message)localObject2);
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        Object localObject1;
-        localThrowable.printStackTrace();
-        BannerManager.a().a(39, 0, null);
-        continue;
-      }
-      b("onReceive Ack Msg");
-      b();
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("notify_cmd", "notifyCmdReceiveData");
-      if (paramToServiceMsg != null) {
-        ((Bundle)localObject1).putParcelable("req", paramToServiceMsg);
-      }
-      if (paramFromServiceMsg != null) {
-        ((Bundle)localObject1).putParcelable("res", paramFromServiceMsg);
-      }
-      if (paramObject != null) {
-        ((Bundle)localObject1).putByteArray("data", (byte[])paramObject);
-      }
-      ((Bundle)localObject1).putBoolean("forceStart", true);
-      if (this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost == null) {
-        break;
-      }
-      this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a((Bundle)localObject1);
-      return;
-      BannerManager.a().a(39, 0, null);
+    b("onReceive Ack Msg");
+    b();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("notify_cmd", "notifyCmdReceiveData");
+    if (paramToServiceMsg != null) {
+      localBundle.putParcelable("req", paramToServiceMsg);
+    }
+    if (paramFromServiceMsg != null) {
+      localBundle.putParcelable("res", paramFromServiceMsg);
+    }
+    if (paramObject != null) {
+      localBundle.putByteArray("data", (byte[])paramObject);
+    }
+    localBundle.putBoolean("forceStart", true);
+    paramToServiceMsg = this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost;
+    if (paramToServiceMsg != null) {
+      paramToServiceMsg.a(localBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.devicemgr.SmartDeviceProxyMgr
  * JD-Core Version:    0.7.0.1
  */

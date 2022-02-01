@@ -14,70 +14,60 @@ public final class AthenaReflect$Companion
   @NotNull
   public final String getBreadCrumbId(int paramInt, @Nullable AthenaInfo paramAthenaInfo)
   {
-    Object localObject1 = null;
-    String str = "";
-    label256:
     for (;;)
     {
       try
       {
-        Object localObject2;
         if ((AthenaReflect.access$getAthenaGenerateEvent$cp() == null) && (AthenaReflect.access$getAthenaInstance$cp() == null))
         {
-          Object localObject3 = Class.forName("com.tencent.qapmsdk.athena.BreadCrumb");
-          localObject2 = ((Class)localObject3).getDeclaredMethod("isEnable", new Class[0]);
-          Method localMethod = ((Class)localObject3).getDeclaredMethod("generateEvent", new Class[] { Integer.TYPE, AthenaInfo.class });
-          localObject3 = ((Class)localObject3).getDeclaredMethod("getInstance", new Class[0]).invoke(null, new Object[0]);
-          if (((Method)localObject2).invoke(localObject3, new Object[0]) != null)
+          localObject2 = Class.forName("com.tencent.qapmsdk.athena.BreadCrumb");
+          localObject1 = ((Class)localObject2).getDeclaredMethod("isEnable", new Class[0]);
+          Method localMethod = ((Class)localObject2).getDeclaredMethod("generateEvent", new Class[] { Integer.TYPE, AthenaInfo.class });
+          Object localObject3 = ((Class)localObject2).getDeclaredMethod("getInstance", new Class[0]).invoke(null, new Object[0]);
+          if (((Method)localObject1).invoke(localObject3, new Object[0]) != null)
           {
-            localObject2 = ((Method)localObject2).invoke(localObject3, new Object[0]);
-            if ((localObject2 instanceof Boolean)) {
-              break label256;
+            localObject2 = ((Method)localObject1).invoke(localObject3, new Object[0]);
+            localObject1 = localObject2;
+            if (!(localObject2 instanceof Boolean)) {
+              localObject1 = null;
             }
             localObject1 = (Boolean)localObject1;
-            if (localObject1 != null)
-            {
-              bool = ((Boolean)localObject1).booleanValue();
-              AthenaReflect.access$setBreadCrumb$cp(bool);
-            }
-          }
-          else
-          {
-            AthenaReflect.access$setAthenaGenerateEvent$cp(localMethod);
-            AthenaReflect.access$setAthenaInstance$cp(localObject3);
-          }
-        }
-        else
-        {
-          localObject1 = str;
-          if (AthenaReflect.access$isBreadCrumb$cp())
-          {
-            localObject1 = AthenaReflect.access$getAthenaGenerateEvent$cp();
             if (localObject1 == null) {
-              continue;
+              break label254;
             }
-            paramAthenaInfo = ((Method)localObject1).invoke(AthenaReflect.access$getAthenaInstance$cp(), new Object[] { Integer.valueOf(paramInt), paramAthenaInfo }).toString();
-            localObject1 = paramAthenaInfo;
+            bool = ((Boolean)localObject1).booleanValue();
+            AthenaReflect.access$setBreadCrumb$cp(bool);
           }
-          return localObject1;
+          AthenaReflect.access$setAthenaGenerateEvent$cp(localMethod);
+          AthenaReflect.access$setAthenaInstance$cp(localObject3);
         }
-        boolean bool = false;
-        continue;
-        paramAthenaInfo = "";
-        continue;
-        localObject1 = localObject2;
+        if (AthenaReflect.access$isBreadCrumb$cp())
+        {
+          localObject1 = AthenaReflect.access$getAthenaGenerateEvent$cp();
+          if (localObject1 != null)
+          {
+            paramAthenaInfo = ((Method)localObject1).invoke(AthenaReflect.access$getAthenaInstance$cp(), new Object[] { Integer.valueOf(paramInt), paramAthenaInfo }).toString();
+            return paramAthenaInfo;
+          }
+        }
       }
       catch (Exception paramAthenaInfo)
       {
-        Logger.INSTANCE.w(new String[] { "QAPM_base_AthenaReflect", "get bread crumb id may be error. " + paramAthenaInfo });
-        return "";
+        Object localObject1 = Logger.INSTANCE;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("get bread crumb id may be error. ");
+        ((StringBuilder)localObject2).append(paramAthenaInfo);
+        ((Logger)localObject1).w(new String[] { "QAPM_base_AthenaReflect", ((StringBuilder)localObject2).toString() });
       }
+      return "";
+      label254:
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.breadcrumbreflect.AthenaReflect.Companion
  * JD-Core Version:    0.7.0.1
  */

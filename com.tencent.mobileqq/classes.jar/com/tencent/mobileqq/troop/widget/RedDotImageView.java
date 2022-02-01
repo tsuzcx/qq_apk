@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class RedDotImageView
@@ -64,10 +64,18 @@ public class RedDotImageView
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850830);
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850766);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, " showRedDot() : " + this.jdField_b_of_type_Int + ",isShownBorder" + this.jdField_b_of_type_Boolean + "，this = " + this);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" showRedDot() : ");
+        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append(",isShownBorder");
+        localStringBuilder.append(this.jdField_b_of_type_Boolean);
+        localStringBuilder.append("，this = ");
+        localStringBuilder.append(this);
+        QLog.d("Q.recent", 2, localStringBuilder.toString());
       }
       postInvalidate();
     }
@@ -78,56 +86,106 @@ public class RedDotImageView
     return this.jdField_a_of_type_Boolean;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((QLog.isColorLevel()) && (toString().contains("qq_aio_panel_image"))) {
-      QLog.d("Q.recent", 2, " onDraw() : " + this.jdField_b_of_type_Int + ",isShownBorder" + this.jdField_b_of_type_Boolean + "，this = " + this);
+    Object localObject;
+    if ((QLog.isColorLevel()) && (toString().contains("qq_aio_panel_image")))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" onDraw() : ");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(",isShownBorder");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append("，this = ");
+      ((StringBuilder)localObject).append(this);
+      QLog.d("Q.recent", 2, ((StringBuilder)localObject).toString());
     }
-    int j;
     int i;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null))
+    double d1;
+    double d2;
+    int j;
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setState(getDrawableState());
-      if (this.c != 0) {
-        break label385;
-      }
-      j = (int)Math.ceil(getWidth() * 0.5D + this.jdField_b_of_type_Float * this.d - this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() * 0.5D);
-      i = (int)Math.ceil(getHeight() * 0.5D - this.jdField_b_of_type_Float * this.e - this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() * 0.5D);
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(j, i, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() + j, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() + i);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      if ((this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+      localObject = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(getDrawableState());
-        i = getWidth();
-        if (i <= this.jdField_a_of_type_Int * 2) {
-          break label463;
+        ((Drawable)localObject).setState(getDrawableState());
+        i = this.c;
+        double d3;
+        if (i == 0)
+        {
+          d1 = getWidth();
+          Double.isNaN(d1);
+          d2 = this.jdField_b_of_type_Float * this.d;
+          Double.isNaN(d2);
+          d3 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+          Double.isNaN(d3);
+          i = (int)Math.ceil(d1 * 0.5D + d2 - d3 * 0.5D);
+          d1 = getHeight();
+          Double.isNaN(d1);
+          d2 = this.jdField_b_of_type_Float * this.e;
+          Double.isNaN(d2);
+          d3 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+          Double.isNaN(d3);
         }
+        for (d1 = Math.ceil(d1 * 0.5D - d2 - d3 * 0.5D);; d1 = Math.ceil(d1 - d2 * 0.5D))
+        {
+          j = (int)d1;
+          break label386;
+          if (i != 1) {
+            break;
+          }
+          d1 = getWidth() + this.jdField_b_of_type_Float * this.d;
+          d2 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+          Double.isNaN(d2);
+          Double.isNaN(d1);
+          i = (int)Math.ceil(d1 - d2 * 0.5D);
+          d1 = -this.jdField_b_of_type_Float * this.e;
+          d2 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+          Double.isNaN(d2);
+          Double.isNaN(d1);
+        }
+        i = 0;
+        j = 0;
+        label386:
+        localObject = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        ((Drawable)localObject).setBounds(i, j, ((Drawable)localObject).getIntrinsicWidth() + i, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() + j);
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       }
-      label385:
-      label463:
-      for (i = (int)Math.ceil(i / 2);; i = (int)Math.ceil(i - this.jdField_a_of_type_Int - this.f))
+    }
+    if (this.jdField_b_of_type_Int > 0)
+    {
+      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, 0, this.jdField_a_of_type_Int + i, this.jdField_a_of_type_Int);
+        ((Drawable)localObject).setState(getDrawableState());
+        i = getWidth();
+        j = this.jdField_a_of_type_Int;
+        if (i > j * 2) {
+          d1 = Math.ceil(i / 2);
+        } else {
+          d1 = Math.ceil(i - j - this.f);
+        }
+        i = (int)d1;
+        localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        j = this.jdField_a_of_type_Int;
+        ((Drawable)localObject).setBounds(i, 0, i + j, j);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
         j = (int)Math.ceil(this.jdField_a_of_type_AndroidGraphicsPaint.measureText(String.valueOf(this.jdField_b_of_type_Int)));
         int k = this.jdField_b_of_type_Int;
-        double d1 = i;
-        paramCanvas.drawText(String.valueOf(k), (int)((this.jdField_a_of_type_Int - j) * 0.5D + d1), (int)(this.jdField_a_of_type_Int - this.jdField_a_of_type_Float * 0.5D), this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-        if (this.c != 1) {
-          break label485;
-        }
-        j = (int)Math.ceil(getWidth() + this.jdField_b_of_type_Float * this.d - this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() * 0.5D);
-        i = (int)Math.ceil(-this.jdField_b_of_type_Float * this.e - this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() * 0.5D);
-        break;
+        d1 = i;
+        i = this.jdField_a_of_type_Int;
+        d2 = i - j;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        float f1 = (int)(d1 + d2 * 0.5D);
+        d1 = i;
+        d2 = this.jdField_a_of_type_Float;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        paramCanvas.drawText(String.valueOf(k), f1, (int)(d1 - d2 * 0.5D), this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-      label485:
-      i = 0;
-      j = 0;
     }
   }
   
@@ -172,13 +230,23 @@ public class RedDotImageView
   
   public void setUnreadNumber(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, " setUnreadNumber() : " + paramInt + ",isShownBorder" + this.jdField_b_of_type_Boolean + "，this = " + this);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" setUnreadNumber() : ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",isShownBorder");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append("，this = ");
+      ((StringBuilder)localObject).append(this);
+      QLog.d("Q.recent", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramInt > 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
     {
-      this.jdField_a_of_type_Int = ((int)(this.jdField_b_of_type_Float * 20.0F));
-      this.f = ((int)(this.jdField_b_of_type_Float * 6.0F));
+      float f1 = this.jdField_b_of_type_Float;
+      this.jdField_a_of_type_Int = ((int)(20.0F * f1));
+      this.f = ((int)(f1 * 6.0F));
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
@@ -187,25 +255,22 @@ public class RedDotImageView
       }
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_b_of_type_Float * 12.0F);
-      Paint.FontMetrics localFontMetrics = new Paint.FontMetrics();
-      this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics(localFontMetrics);
-      this.jdField_a_of_type_Float = Math.abs(localFontMetrics.ascent);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label219;
+      localObject = new Paint.FontMetrics();
+      this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics((Paint.FontMetrics)localObject);
+      this.jdField_a_of_type_Float = Math.abs(((Paint.FontMetrics)localObject).ascent);
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845865);
+      } else {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850140);
       }
     }
-    label219:
-    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845990);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850213))
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      postInvalidate();
-      return;
-    }
+    this.jdField_b_of_type_Int = paramInt;
+    postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.RedDotImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -23,13 +23,14 @@ public final class TroopTips0x857$QQGroupDigestMsgSummary
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50 }, new String[] { "digest_oper", "op_type", "op_time", "digest_nick", "succ_cnt", "summary_info" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), null }, QQGroupDigestMsgSummary.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50 }, new String[] { "digest_oper", "op_type", "op_time", "digest_nick", "succ_cnt", "summary_info" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localByteStringMicro, localInteger, null }, QQGroupDigestMsgSummary.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x857.TroopTips0x857.QQGroupDigestMsgSummary
  * JD-Core Version:    0.7.0.1
  */

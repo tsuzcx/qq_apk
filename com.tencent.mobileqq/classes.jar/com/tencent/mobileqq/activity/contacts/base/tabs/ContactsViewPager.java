@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.base.tabs;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import android.view.ViewParent;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.mobileqq.activity.contacts.base.HeaderScrollView;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
@@ -36,38 +35,86 @@ public class ContactsViewPager
     if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView == null))
     {
       this.jdField_b_of_type_Boolean = true;
-      ViewParent localViewParent = getParent();
-      while ((localViewParent != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView == null)) {
-        if ((localViewParent instanceof HeaderScrollView)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView = ((HeaderScrollView)localViewParent);
-        } else if ((localViewParent instanceof View)) {
-          localViewParent = ((View)localViewParent).getParent();
+      localObject = getParent();
+      while ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView == null)) {
+        if ((localObject instanceof HeaderScrollView)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView = ((HeaderScrollView)localObject);
+        } else if ((localObject instanceof View)) {
+          localObject = ((View)localObject).getParent();
         } else {
-          localViewParent = null;
+          localObject = null;
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView.jdField_a_of_type_Boolean;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView;
+    if (localObject != null) {
+      return ((HeaderScrollView)localObject).jdField_a_of_type_Boolean;
     }
     return false;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool1 = false;
     int i = paramMotionEvent.getAction();
+    boolean bool1 = false;
     if (i == 0)
     {
       this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getX() + 0.5F));
       this.jdField_b_of_type_Int = ((int)(paramMotionEvent.getY() + 0.5F));
       this.jdField_a_of_type_Boolean = true;
       this.c = false;
-      FrameHelperActivity.c(false);
-      i = 0;
-      if (i != 0) {}
+      FrameHelperActivity.b(false);
     }
-    int j;
+    else
+    {
+      if (i == 2)
+      {
+        j = (int)(paramMotionEvent.getX() + 0.5F);
+        i = (int)(paramMotionEvent.getY() + 0.5F);
+        int k = Math.abs(j - this.jdField_a_of_type_Int);
+        i = Math.abs(i - this.jdField_b_of_type_Int);
+        int m = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+        if ((this.jdField_a_of_type_Boolean) && (k > m))
+        {
+          if ((k * 0.5F > i) && (this.jdField_a_of_type_Int > (int)(ScreenUtil.SCREEN_WIDTH * 0.1F))) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          if (i == 0) {
+            FrameHelperActivity.b(true);
+          }
+          this.jdField_a_of_type_Boolean = false;
+        }
+        else
+        {
+          i = 0;
+        }
+        if (a())
+        {
+          this.c = true;
+          return false;
+        }
+        j = i;
+        if (!this.c) {
+          break label237;
+        }
+        j = i;
+        if (k <= m * 3) {
+          break label237;
+        }
+        return false;
+      }
+      if ((i == 1) || (i == 3))
+      {
+        FrameHelperActivity.b(true);
+        this.jdField_a_of_type_Boolean = false;
+        this.c = false;
+      }
+    }
+    int j = 0;
+    label237:
+    if (j == 0) {}
     try
     {
       boolean bool2 = super.onInterceptTouchEvent(paramMotionEvent);
@@ -76,91 +123,35 @@ public class ContactsViewPager
       }
       return bool1;
     }
-    catch (Exception paramMotionEvent)
-    {
-      int k;
-      int m;
-      label173:
-      return false;
-    }
-    if (i == 2)
-    {
-      j = (int)(paramMotionEvent.getX() + 0.5F);
-      i = (int)(paramMotionEvent.getY() + 0.5F);
-      k = Math.abs(j - this.jdField_a_of_type_Int);
-      i = Math.abs(i - this.jdField_b_of_type_Int);
-      m = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-      if ((!this.jdField_a_of_type_Boolean) || (k <= m)) {
-        break label259;
-      }
-      if ((k * 0.5F <= i) || (this.jdField_a_of_type_Int <= (int)(ScreenUtil.SCREEN_WIDTH * 0.1F))) {
-        break label254;
-      }
-      j = 1;
-      if (j == 0) {
-        FrameHelperActivity.c(true);
-      }
-      this.jdField_a_of_type_Boolean = false;
-    }
-    for (;;)
-    {
-      if (a())
-      {
-        this.c = true;
-        return false;
-      }
-      i = j;
-      if (!this.c) {
-        break;
-      }
-      i = j;
-      if (k <= m * 3) {
-        break;
-      }
-      return false;
-      if ((i == 1) || (i == 3))
-      {
-        FrameHelperActivity.c(true);
-        this.jdField_a_of_type_Boolean = false;
-        this.c = false;
-      }
-      i = 0;
-      break;
-      label254:
-      j = 0;
-      break label173;
-      label259:
-      j = 0;
-    }
+    catch (Exception paramMotionEvent) {}
+    return false;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      FrameHelperActivity.c(false);
-    }
-    for (;;)
+    if (i == 0)
     {
-      try
-      {
-        boolean bool = super.onTouchEvent(paramMotionEvent);
-        return bool;
-      }
-      catch (Exception paramMotionEvent) {}
-      if ((i == 1) || (i == 3))
-      {
-        FrameHelperActivity.c(true);
-        this.jdField_a_of_type_Boolean = false;
-        this.c = false;
-      }
+      FrameHelperActivity.b(false);
     }
+    else if ((i == 1) || (i == 3))
+    {
+      FrameHelperActivity.b(true);
+      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
+    }
+    try
+    {
+      boolean bool = super.onTouchEvent(paramMotionEvent);
+      return bool;
+    }
+    catch (Exception paramMotionEvent) {}
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager
  * JD-Core Version:    0.7.0.1
  */

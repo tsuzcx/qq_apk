@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.emoticonview;
 
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.abtest.ABTestController;
-import com.tencent.mobileqq.abtest.ExpEntityInfo;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.core.util.EmotionSharedPreUtils;
 import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class EmoticonStoreTabEntryUtils
@@ -12,62 +10,51 @@ public class EmoticonStoreTabEntryUtils
   private static final String KEY_SHOW_EMOTICON_STORY_TAB_GUIDE = "key_show_emoticon_story_tab_guide";
   public static String URL_NEED_REPLEACE_BODY = "_wv=553648128&_cwv=8&_wwv=129";
   public static String URL_REPLEACE_BODY = "_wwv=128";
-  private static String mEmoticonStoreHomeURLHeader = null;
   
-  public static boolean checkIsMergeStoryEntry()
+  public static boolean checkIsNeedShowGuide()
   {
-    boolean bool = false;
-    ExpEntityInfo localExpEntityInfo = ABTestController.a("exp_qq_msg_marketface_recommendtab_2");
-    if (localExpEntityInfo.a()) {
-      bool = true;
+    return ((Boolean)EmotionSharedPreUtils.a("key_show_emoticon_story_tab_guide", Boolean.valueOf(true))).booleanValue();
+  }
+  
+  public static boolean checkTabListCanShowGuide(List<EmotionPanelInfo> paramList)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return false;
+      }
+      bool1 = bool2;
+      if (((EmotionPanelInfo)paramList.get(0)).type == 13) {
+        bool1 = true;
+      }
     }
-    while (!localExpEntityInfo.b()) {
+    return bool1;
+  }
+  
+  public static boolean checkURLIsEmoStore(String paramString1, String paramString2)
+  {
+    if ((!StringUtil.a(paramString1)) && (!StringUtil.a(paramString2)))
+    {
+      boolean bool = paramString1.startsWith(paramString2);
+      if ((!bool) && (QLog.isColorLevel()))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkURLIsEmoStore, url not equles compareURL = ");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("  \n orginEmotionStoreURL = ");
+        localStringBuilder.append(paramString2);
+        QLog.d("emoStore", 2, localStringBuilder.toString());
+      }
       return bool;
     }
     return false;
   }
   
-  public static boolean checkIsNeedShowGuide()
-  {
-    boolean bool = checkIsMergeStoryEntry();
-    Boolean localBoolean = (Boolean)SharedPreUtils.a("key_show_emoticon_story_tab_guide", Boolean.valueOf(true));
-    return (bool) && (localBoolean.booleanValue());
-  }
-  
-  public static boolean checkTabListCanShowGuide(List<EmotionPanelInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    return ((EmotionPanelInfo)paramList.get(0)).type == 13;
-  }
-  
-  public static boolean checkURLIsEmoStore(String paramString1, String paramString2)
-  {
-    if (StringUtil.a(paramString1)) {
-      return false;
-    }
-    String str = null;
-    if (!StringUtil.a(mEmoticonStoreHomeURLHeader)) {
-      str = mEmoticonStoreHomeURLHeader;
-    }
-    while (StringUtil.a(str))
-    {
-      return false;
-      if (!StringUtil.a(paramString2)) {
-        str = paramString2;
-      }
-    }
-    boolean bool = paramString1.startsWith(str);
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d("timweiliu_emoStore", 0, "checkURLIsEmoStore, url not equles compareURL = " + paramString1 + "  \n processHeader = " + str + "  \n orginEmotionStoreURL = " + paramString2);
-    }
-    return bool;
-  }
-  
   public static void doOnStoryGuideShowed()
   {
-    SharedPreUtils.a("key_show_emoticon_story_tab_guide", Boolean.valueOf(false));
+    EmotionSharedPreUtils.a("key_show_emoticon_story_tab_guide", Boolean.valueOf(false));
   }
   
   public static String processEmoStoreHomeUrl(String paramString)
@@ -80,58 +67,48 @@ public class EmoticonStoreTabEntryUtils
   
   public static boolean removeSettingAndRecommendEntry(List<EmotionPanelInfo> paramList)
   {
-    Object localObject1 = null;
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
-    }
     int i = 0;
-    Object localObject2 = null;
-    EmotionPanelInfo localEmotionPanelInfo;
-    if (i < paramList.size())
+    if (paramList != null)
     {
-      localEmotionPanelInfo = (EmotionPanelInfo)paramList.get(i);
-      if (localEmotionPanelInfo.type == 14) {
-        localObject2 = localEmotionPanelInfo;
+      if (paramList.size() == 0) {
+        return false;
       }
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      if (localEmotionPanelInfo.type == 8)
+      Object localObject1 = null;
+      Object localObject2 = null;
+      while (i < paramList.size())
       {
-        localObject1 = localEmotionPanelInfo;
-        continue;
-        if (localObject2 != null) {
-          paramList.remove(localObject2);
+        EmotionPanelInfo localEmotionPanelInfo = (EmotionPanelInfo)paramList.get(i);
+        Object localObject3;
+        if (localEmotionPanelInfo.type == 14)
+        {
+          localObject3 = localEmotionPanelInfo;
         }
-        if (localObject1 != null) {
-          paramList.remove(localObject1);
+        else
+        {
+          localObject3 = localObject1;
+          if (localEmotionPanelInfo.type == 8)
+          {
+            localObject2 = localEmotionPanelInfo;
+            localObject3 = localObject1;
+          }
         }
-        return true;
+        i += 1;
+        localObject1 = localObject3;
       }
+      if (localObject1 != null) {
+        paramList.remove(localObject1);
+      }
+      if (localObject2 != null) {
+        paramList.remove(localObject2);
+      }
+      return true;
     }
-  }
-  
-  public static void setEmoStoreHomeURL(String paramString)
-  {
-    if (StringUtil.a(paramString))
-    {
-      mEmoticonStoreHomeURLHeader = null;
-      return;
-    }
-    int i = paramString.indexOf("?");
-    if (i > 0)
-    {
-      mEmoticonStoreHomeURLHeader = paramString.substring(0, i);
-      return;
-    }
-    mEmoticonStoreHomeURLHeader = paramString;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonStoreTabEntryUtils
  * JD-Core Version:    0.7.0.1
  */

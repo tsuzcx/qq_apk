@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/AnimData;", "", "()V", "eles", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/data/ViewData;", "Lkotlin/collections/ArrayList;", "getEles", "()Ljava/util/ArrayList;", "setEles", "(Ljava/util/ArrayList;)V", "version", "", "getVersion", "()Ljava/lang/String;", "setVersion", "(Ljava/lang/String;)V", "versionCode", "", "getVersionCode", "()I", "setVersionCode", "(I)V", "versionMax", "getVersionMax", "setVersionMax", "versionMin", "getVersionMin", "setVersionMin", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/AnimData;", "", "()V", "eles", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/data/ViewData;", "Lkotlin/collections/ArrayList;", "getEles", "()Ljava/util/ArrayList;", "setEles", "(Ljava/util/ArrayList;)V", "version", "", "getVersion", "()Ljava/lang/String;", "setVersion", "(Ljava/lang/String;)V", "versionCode", "", "getVersionCode", "()I", "setVersionCode", "(I)V", "versionMax", "getVersionMax", "setVersionMax", "versionMin", "getVersionMin", "setVersionMin", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class AnimData
 {
@@ -74,7 +74,7 @@ public final class AnimData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.data.AnimData
  * JD-Core Version:    0.7.0.1
  */

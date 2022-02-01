@@ -16,37 +16,49 @@ public class CoverCache
   
   public void addCover(int paramInt, Bitmap paramBitmap)
   {
-    if (this.mCoverMap == null) {}
-    do
-    {
+    if (this.mCoverMap == null) {
       return;
-      Log.i("CoverCache", "addCover: " + paramInt);
-      this.mCoverMap.putIfAbsent(Integer.valueOf(paramInt), paramBitmap);
-    } while (this.mCoverListener == null);
-    this.mCoverListener.onCover(paramInt, paramBitmap);
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("addCover: ");
+    ((StringBuilder)localObject).append(paramInt);
+    Log.i("CoverCache", ((StringBuilder)localObject).toString());
+    this.mCoverMap.putIfAbsent(Integer.valueOf(paramInt), paramBitmap);
+    localObject = this.mCoverListener;
+    if (localObject != null) {
+      ((CoverListener)localObject).onCover(paramInt, paramBitmap);
+    }
   }
   
   public int getCacheSize()
   {
-    int i = 0;
-    if (this.mCoverMap != null) {
-      i = this.mCoverMap.size();
+    Object localObject = this.mCoverMap;
+    int i;
+    if (localObject != null) {
+      i = ((ConcurrentHashMap)localObject).size();
+    } else {
+      i = 0;
     }
-    Log.i("CoverCache", "getCacheSize: " + i);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getCacheSize: ");
+    ((StringBuilder)localObject).append(i);
+    Log.i("CoverCache", ((StringBuilder)localObject).toString());
     return i;
   }
   
   public Bitmap getCover(int paramInt)
   {
-    if (this.mCoverMap != null) {
-      return (Bitmap)this.mCoverMap.get(Integer.valueOf(paramInt));
+    ConcurrentHashMap localConcurrentHashMap = this.mCoverMap;
+    if (localConcurrentHashMap != null) {
+      return (Bitmap)localConcurrentHashMap.get(Integer.valueOf(paramInt));
     }
     return null;
   }
   
   public Bitmap getCoverByTime(long paramLong)
   {
-    if ((this.mProgressCoverMap != null) && (this.mProgressCoverMap.get(Long.valueOf(paramLong)) != null)) {
+    ConcurrentHashMap localConcurrentHashMap = this.mProgressCoverMap;
+    if ((localConcurrentHashMap != null) && (localConcurrentHashMap.get(Long.valueOf(paramLong)) != null)) {
       return (Bitmap)this.mProgressCoverMap.get(Long.valueOf(paramLong));
     }
     return null;
@@ -57,23 +69,27 @@ public class CoverCache
     try
     {
       Log.i("CoverCache", "release: ");
-      if (this.mCoverMap == null) {
-        break label84;
-      }
-      Iterator localIterator = this.mCoverMap.values().iterator();
-      while (localIterator.hasNext())
+      if (this.mCoverMap != null)
       {
-        Bitmap localBitmap = (Bitmap)localIterator.next();
-        if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-          localBitmap.recycle();
+        Iterator localIterator = this.mCoverMap.values().iterator();
+        while (localIterator.hasNext())
+        {
+          Bitmap localBitmap = (Bitmap)localIterator.next();
+          if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+            localBitmap.recycle();
+          }
         }
+        this.mCoverMap.clear();
+        this.mCoverMap = null;
       }
-      this.mCoverMap.clear();
+      this.mCoverListener = null;
+      return;
     }
     finally {}
-    this.mCoverMap = null;
-    label84:
-    this.mCoverListener = null;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   void setClipCoverListener(CoverListener paramCoverListener)
@@ -83,7 +99,7 @@ public class CoverCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.cover.CoverCache
  * JD-Core Version:    0.7.0.1
  */

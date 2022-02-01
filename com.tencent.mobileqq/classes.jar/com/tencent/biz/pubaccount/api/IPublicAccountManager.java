@@ -1,10 +1,8 @@
 package com.tencent.biz.pubaccount.api;
 
+import android.app.Activity;
 import android.content.Context;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mp.mobileqq_mp.ButtonInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
 import com.tencent.mobileqq.qroute.QRouteApi;
@@ -67,61 +65,63 @@ public abstract interface IPublicAccountManager
   public static final String SSO_COMMAND_SET_PUBLIC_FLAG = "set_function_flag";
   public static final String TAG = "PublicAccountManager";
   
-  public abstract void addPublicAccountToRu(QQAppInterface paramQQAppInterface, String paramString);
+  public abstract void addPublicAccountToRu(AppInterface paramAppInterface, String paramString);
   
   public abstract void clearBroadcastReceiver(Context paramContext);
   
   public abstract void clearOldPublicAccountData(String paramString);
   
-  public abstract mobileqq_mp.ButtonInfo getButtonInfoByMenuId(QQAppInterface paramQQAppInterface, String paramString, int paramInt);
+  public abstract mobileqq_mp.ButtonInfo getButtonInfoByMenuId(AppInterface paramAppInterface, String paramString, int paramInt);
   
   public abstract String getCurrentUin();
   
-  public abstract NewIntent getMenuSetting(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, BusinessObserver paramBusinessObserver, boolean paramBoolean);
+  public abstract NewIntent getMenuSetting(Context paramContext, AppInterface paramAppInterface, String paramString, BusinessObserver paramBusinessObserver, boolean paramBoolean);
   
-  public abstract long getMsgID(QQAppInterface paramQQAppInterface, String paramString);
+  public abstract long getMsgID(AppInterface paramAppInterface, String paramString);
   
   public abstract int getPublicAccountAioClass(String paramString, AppInterface paramAppInterface);
   
-  public abstract List<mobileqq_mp.ButtonInfo> getPublicAccountMenuButtonList(QQAppInterface paramQQAppInterface, String paramString);
+  public abstract List<mobileqq_mp.ButtonInfo> getPublicAccountMenuButtonList(AppInterface paramAppInterface, String paramString);
   
   public abstract int getPublicAccountMenuType(String paramString);
   
-  public abstract void handleButtonEvent(String paramString1, Context paramContext, QQAppInterface paramQQAppInterface, String paramString2, int paramInt1, BusinessObserver paramBusinessObserver, MqqHandler paramMqqHandler, int paramInt2, SessionInfo paramSessionInfo);
+  public abstract void handleButtonEvent(String paramString1, Context paramContext, AppInterface paramAppInterface, String paramString2, int paramInt1, BusinessObserver paramBusinessObserver, MqqHandler paramMqqHandler, int paramInt2, Object paramObject);
   
-  public abstract void handleUrlEvent(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3);
+  public abstract void handleUrlEvent(Context paramContext, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3);
   
   public abstract boolean hasPreloadWebProcessor();
   
-  public abstract void init(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, IPublicAccountManager.InitDoneObserver paramInitDoneObserver);
+  public abstract void init(Context paramContext, AppInterface paramAppInterface, String paramString1, String paramString2, IPublicAccountManager.InitDoneObserver paramInitDoneObserver);
   
-  public abstract boolean preloadWebProcess(QQAppInterface paramQQAppInterface);
+  public abstract boolean preloadWebProcess(AppInterface paramAppInterface);
   
   public abstract NewIntent refuseFollowAccount(String paramString, int paramInt, boolean paramBoolean, Context paramContext, AppInterface paramAppInterface, IPublicAccountManager.refuseAcceptDone paramrefuseAcceptDone);
   
   public abstract void refuseFollowAccountCancelCallback(NewIntent paramNewIntent);
   
-  public abstract void removeMsgID(QQAppInterface paramQQAppInterface, String paramString);
+  public abstract void removeMsgID(AppInterface paramAppInterface, String paramString);
   
-  public abstract void reportRecentList(QQAppInterface paramQQAppInterface);
+  public abstract void reportRecentList(AppInterface paramAppInterface);
   
-  public abstract void requestQidiKefu(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, BusinessObserver paramBusinessObserver);
+  public abstract void requestQidiKefu(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, BusinessObserver paramBusinessObserver);
   
-  public abstract void savePublicAccountMenuSetting(QQAppInterface paramQQAppInterface, String paramString, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse);
+  public abstract void savePublicAccountMenuSetting(AppInterface paramAppInterface, String paramString, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse);
   
-  public abstract void sendMenuEventequest(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2, BusinessObserver paramBusinessObserver);
+  public abstract void sendMenuEventequest(Context paramContext, AppInterface paramAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2, BusinessObserver paramBusinessObserver);
   
-  public abstract void sendMenuEventequest(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2, BusinessObserver paramBusinessObserver, int paramInt1, long paramLong, int paramInt2);
+  public abstract void sendMenuEventequest(Context paramContext, AppInterface paramAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2, BusinessObserver paramBusinessObserver, int paramInt1, long paramLong, int paramInt2);
   
   public abstract NewIntent sendMsgArriveReceipt(Context paramContext, AppInterface paramAppInterface, long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt, List<Long> paramList);
   
   public abstract void setHasPreloadWebProcessor(boolean paramBoolean);
   
-  public abstract void setMsgID(QQAppInterface paramQQAppInterface, String paramString, long paramLong);
+  public abstract void setKeepOldPublicAccountData(boolean paramBoolean);
+  
+  public abstract void setMsgID(AppInterface paramAppInterface, String paramString, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.IPublicAccountManager
  * JD-Core Version:    0.7.0.1
  */

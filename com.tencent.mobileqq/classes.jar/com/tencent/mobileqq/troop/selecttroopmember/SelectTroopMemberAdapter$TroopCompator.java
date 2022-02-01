@@ -7,10 +7,10 @@ public class SelectTroopMemberAdapter$TroopCompator
 {
   private String a(SelectTroopMemberAdapter.TroopMemInfoData paramTroopMemInfoData)
   {
-    if ((paramTroopMemInfoData.c == null) || (paramTroopMemInfoData.c.length() == 0)) {
-      return "#";
+    if ((paramTroopMemInfoData.c != null) && (paramTroopMemInfoData.c.length() != 0)) {
+      return paramTroopMemInfoData.c.substring(0, 1);
     }
-    return paramTroopMemInfoData.c.substring(0, 1);
+    return "#";
   }
   
   public int a(SelectTroopMemberAdapter.TroopMemInfoData paramTroopMemInfoData1, SelectTroopMemberAdapter.TroopMemInfoData paramTroopMemInfoData2)
@@ -20,7 +20,7 @@ public class SelectTroopMemberAdapter$TroopCompator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.SelectTroopMemberAdapter.TroopCompator
  * JD-Core Version:    0.7.0.1
  */

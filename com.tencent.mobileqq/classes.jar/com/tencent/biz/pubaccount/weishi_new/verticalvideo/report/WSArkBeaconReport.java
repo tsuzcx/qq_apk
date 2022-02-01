@@ -17,7 +17,7 @@ public class WSArkBeaconReport
   
   public static void a(String paramString, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    paramstSimpleMetaFeed = new WSStatisticsReporter.Builder().setSopName("chat_page").setTestId(WeishiUtils.a(10007)).setPushId("").setFlush(true).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("content", paramInt, paramstSimpleMetaFeed)).setOperationId("").setImmediatelyUpload(WeishiUtils.d());
+    paramstSimpleMetaFeed = new WSStatisticsReporter.Builder().setSopName("chat_page").setTestId(WeishiUtils.a(10007)).setPushId("").setFlush(true).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("content", paramInt, paramstSimpleMetaFeed)).setOperationId("");
     HashMap localHashMap = new HashMap();
     localHashMap.put("qq_group_num", paramString);
     localHashMap.put("card_type", "1");
@@ -27,7 +27,7 @@ public class WSArkBeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.WSArkBeaconReport
  * JD-Core Version:    0.7.0.1
  */

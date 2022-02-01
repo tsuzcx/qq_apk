@@ -8,23 +8,36 @@ public class TroopFeedParserHelper
 {
   public static TroopFeedParserHelper.FeedParser a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return null;
-    case 10: 
+      if (paramInt != 10)
+      {
+        if (paramInt != 12)
+        {
+          if (paramInt != 99)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 5) {
+                if (paramInt != 18)
+                {
+                  if (paramInt != 19) {
+                    return null;
+                  }
+                }
+                else {
+                  return new TroopFeedParserHelper.AblumFeedParser();
+                }
+              }
+              return new TroopFeedParserHelper.ProclamationFeedParser();
+            }
+            return new TroopFeedParserHelper.ShareFeedParser();
+          }
+          return new TroopFeedParserHelper.CommonFeedParser();
+        }
+        return new TroopFeedParserHelper.VoteFeedParser();
+      }
       return new TroopFeedParserHelper.VideoFeedParser();
-    case 12: 
-      return new TroopFeedParserHelper.VoteFeedParser();
-    case 18: 
-      return new TroopFeedParserHelper.AblumFeedParser();
-    case 5: 
-    case 19: 
-      return new TroopFeedParserHelper.ProclamationFeedParser();
-    case 4: 
-      return new TroopFeedParserHelper.ShareFeedParser();
-    case 99: 
-      return new TroopFeedParserHelper.CommonFeedParser();
     }
     return new TroopFeedParserHelper.PicFeedParser();
   }
@@ -32,7 +45,7 @@ public class TroopFeedParserHelper
   public static String a(long paramLong)
   {
     Calendar localCalendar = Calendar.getInstance();
-    Date localDate = new Date(1000L * paramLong);
+    Date localDate = new Date(paramLong * 1000L);
     localCalendar.setTime(localDate);
     return new SimpleDateFormat("MM月dd日").format(localDate);
   }
@@ -169,7 +182,7 @@ public class TroopFeedParserHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedParserHelper
  * JD-Core Version:    0.7.0.1
  */

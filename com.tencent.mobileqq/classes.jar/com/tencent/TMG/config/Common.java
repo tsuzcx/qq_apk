@@ -21,46 +21,37 @@ public class Common
   
   public static String getVersion(Context paramContext)
   {
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return "1.0";
-      try
+    }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0);
+      if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.versionName.trim())))
       {
-        paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0);
-        if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.versionName.trim())))
-        {
-          paramContext = paramContext.versionName.trim();
-          return paramContext;
-        }
+        paramContext = paramContext.versionName.trim();
+        return paramContext;
       }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
     }
     return "1.0";
   }
   
   public static int intPow(int paramInt1, int paramInt2)
   {
-    if (paramInt2 < 0)
-    {
-      j = 0;
-      return j;
+    if (paramInt2 < 0) {
+      return 0;
     }
-    int j = 1;
-    int i = paramInt2;
-    paramInt2 = j;
-    for (;;)
+    int i = 1;
+    while (paramInt2 > 0)
     {
-      j = paramInt2;
-      if (i <= 0) {
-        break;
-      }
-      paramInt2 *= paramInt1;
-      i -= 1;
+      i *= paramInt1;
+      paramInt2 -= 1;
     }
+    return i;
   }
   
   public static byte[] readFile(Context paramContext, String paramString)

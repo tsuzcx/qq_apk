@@ -40,7 +40,15 @@ public class VideoUrl
   
   public String toString()
   {
-    return "VideoUrl [url=" + this.url + ", decoderType=" + this.decoderType + ", videoRate=" + this.videoRate + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoUrl [url=");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append(", decoderType=");
+    localStringBuilder.append(this.decoderType);
+    localStringBuilder.append(", videoRate=");
+    localStringBuilder.append(this.videoRate);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -52,7 +60,7 @@ public class VideoUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.VideoUrl
  * JD-Core Version:    0.7.0.1
  */

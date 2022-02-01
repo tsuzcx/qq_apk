@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.mobileqq.shortvideo.mediadevice.TexturePreviewContext;
-import com.tencent.mobileqq.shortvideo.ptvfilter.test.PerformenceDataTag;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(14)
@@ -53,27 +52,28 @@ public class CameraTextureView
     try
     {
       super.onDetachedFromWindow();
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "onDetachedFromWindow");
-      }
-      return;
     }
     catch (RuntimeException localRuntimeException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("PEAK_CAMERA", 2, "onAttachedToWindow[crash]", localRuntimeException);
-        }
-        PerformenceDataTag.a(3);
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "onAttachedToWindow[crash]", localRuntimeException);
       }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("PEAK_CAMERA", 2, "onDetachedFromWindow");
     }
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraTextureView", 2, "onSurfaceTextureAvailable width " + paramInt1 + ", height " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSurfaceTextureAvailable width ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", height ");
+      localStringBuilder.append(paramInt2);
+      QLog.i("CameraTextureView", 2, localStringBuilder.toString());
     }
     this.a.onSurfaceTextureAvailable(paramSurfaceTexture, paramInt1, paramInt2);
   }
@@ -89,8 +89,14 @@ public class CameraTextureView
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraTextureView", 2, "onSurfaceTextureSizeChanged width " + paramInt1 + ", height " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSurfaceTextureSizeChanged width ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", height ");
+      localStringBuilder.append(paramInt2);
+      QLog.i("CameraTextureView", 2, localStringBuilder.toString());
     }
     this.a.onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);
   }
@@ -102,7 +108,7 @@ public class CameraTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.CameraTextureView
  * JD-Core Version:    0.7.0.1
  */

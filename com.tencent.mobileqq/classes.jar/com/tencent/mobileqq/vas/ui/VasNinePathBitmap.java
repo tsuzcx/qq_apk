@@ -12,7 +12,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/ui/VasNinePathBitmap;", "Lcom/tencent/mobileqq/vas/ui/INinePathBitmap;", "()V", "mBitmap", "Landroid/graphics/Bitmap;", "mNinePatch", "Landroid/graphics/NinePatch;", "tempBounds", "Landroid/graphics/Rect;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "src", "bounds", "paint", "Landroid/graphics/Paint;", "drawBitmap", "bitmap", "drawNinePath", "ninePath", "getBitmap", "getHeight", "", "getNinePatchChunk", "", "getWidth", "isEmpty", "", "next", "cache", "recycle", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/ui/VasNinePathBitmap;", "Lcom/tencent/mobileqq/vas/ui/INinePathBitmap;", "()V", "mBitmap", "Landroid/graphics/Bitmap;", "mNinePatch", "Landroid/graphics/NinePatch;", "tempBounds", "Landroid/graphics/Rect;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "src", "bounds", "paint", "Landroid/graphics/Paint;", "drawBitmap", "bitmap", "drawNinePath", "ninePath", "getBitmap", "getHeight", "", "getNinePatchChunk", "", "getWidth", "isEmpty", "", "next", "cache", "recycle", "Companion", "vas-temp-api_release"}, k=1, mv={1, 1, 16})
 public final class VasNinePathBitmap
   implements INinePathBitmap
 {
@@ -37,13 +37,10 @@ public final class VasNinePathBitmap
   {
     if (paramRect1 == null) {
       this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    }
-    for (;;)
-    {
-      paramCanvas.drawBitmap(paramBitmap, this.jdField_a_of_type_AndroidGraphicsRect, paramRect2, paramPaint);
-      return;
+    } else {
       this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect1);
     }
+    paramCanvas.drawBitmap(paramBitmap, this.jdField_a_of_type_AndroidGraphicsRect, paramRect2, paramPaint);
   }
   
   private final void a(NinePatch paramNinePatch, Canvas paramCanvas, Rect paramRect, Paint paramPaint)
@@ -51,46 +48,35 @@ public final class VasNinePathBitmap
     this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
     int i = paramNinePatch.getWidth();
     int j = paramNinePatch.getHeight();
-    Object localObject = jdField_a_of_type_ComTencentMobileqqVasUiVasNinePathBitmap$Companion.a(i, j, paramRect);
-    boolean bool1 = ((Boolean)((Triple)localObject).component1()).booleanValue();
-    boolean bool2 = ((Boolean)((Triple)localObject).component2()).booleanValue();
-    float f1 = ((Number)((Triple)localObject).component3()).floatValue();
-    int k;
-    int m;
-    float f2;
-    if ((bool1) || (bool2))
-    {
+    Triple localTriple = jdField_a_of_type_ComTencentMobileqqVasUiVasNinePathBitmap$Companion.a(i, j, paramRect);
+    boolean bool1 = ((Boolean)localTriple.component1()).booleanValue();
+    boolean bool2 = ((Boolean)localTriple.component2()).booleanValue();
+    float f1 = ((Number)localTriple.component3()).floatValue();
+    if ((!bool1) && (!bool2)) {
+      i = 0;
+    } else {
       i = 1;
-      if (i != 0)
+    }
+    if (i != 0)
+    {
+      paramCanvas.save();
+      float f2;
+      if (bool1)
       {
-        paramCanvas.save();
-        if (!bool1) {
-          break label196;
-        }
-        paramCanvas.scale(1 / f1, 1 / f1);
-        localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-        k = paramRect.left;
-        m = paramRect.top;
-        f2 = paramRect.right;
-        ((Rect)localObject).set(k, m, (int)((f1 - 1.0F) * paramRect.width() + f2), j + paramRect.top);
+        f2 = 1 / f1;
+        paramCanvas.scale(f2, f2);
+        this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect.left, paramRect.top, (int)(paramRect.right + paramRect.width() * (f1 - 1.0F)), paramRect.top + j);
+      }
+      else
+      {
+        f2 = 1 / f1;
+        paramCanvas.scale(f2, f2);
+        this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect.left, paramRect.top, (int)(paramRect.right + paramRect.width() * (f1 - 1.0F)), paramRect.top + j);
       }
     }
-    for (;;)
-    {
-      paramNinePatch.draw(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect, paramPaint);
-      if (i != 0) {
-        paramCanvas.restore();
-      }
-      return;
-      i = 0;
-      break;
-      label196:
-      paramCanvas.scale(1 / f1, 1 / f1);
-      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      k = paramRect.left;
-      m = paramRect.top;
-      f2 = paramRect.right;
-      ((Rect)localObject).set(k, m, (int)((f1 - 1.0F) * paramRect.width() + f2), j + paramRect.top);
+    paramNinePatch.draw(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect, paramPaint);
+    if (i != 0) {
+      paramCanvas.restore();
     }
   }
   
@@ -124,20 +110,17 @@ public final class VasNinePathBitmap
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    paramBitmap = paramBitmap.getNinePatchChunk();
-    if (paramBitmap != null) {
-      if (NinePatch.isNinePatchChunk(paramBitmap)) {
-        paramBitmap = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, null);
+    byte[] arrayOfByte = paramBitmap.getNinePatchChunk();
+    Object localObject = null;
+    paramBitmap = localObject;
+    if (arrayOfByte != null)
+    {
+      paramBitmap = localObject;
+      if (NinePatch.isNinePatchChunk(arrayOfByte)) {
+        paramBitmap = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, arrayOfByte, null);
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsNinePatch = paramBitmap;
-      return;
-      paramBitmap = null;
-      continue;
-      paramBitmap = null;
-    }
+    this.jdField_a_of_type_AndroidGraphicsNinePatch = paramBitmap;
   }
   
   public void a(@NotNull Canvas paramCanvas, @Nullable Rect paramRect1, @NotNull Rect paramRect2, @NotNull Paint paramPaint)
@@ -145,27 +128,28 @@ public final class VasNinePathBitmap
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
     Intrinsics.checkParameterIsNotNull(paramRect2, "bounds");
     Intrinsics.checkParameterIsNotNull(paramPaint, "paint");
-    if (paramRect2.height() == 0) {
-      a();
-    }
-    do
+    if (paramRect2.height() == 0)
     {
+      a();
       return;
-      if (this.jdField_a_of_type_AndroidGraphicsNinePatch != null)
-      {
-        paramRect1 = this.jdField_a_of_type_AndroidGraphicsNinePatch;
-        if (paramRect1 == null) {
-          Intrinsics.throwNpe();
-        }
-        a(paramRect1, paramCanvas, paramRect2, paramPaint);
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (localBitmap == null) {
-      Intrinsics.throwNpe();
     }
-    a(localBitmap, paramCanvas, paramRect1, paramRect2, paramPaint);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsNinePatch;
+    if (localObject != null)
+    {
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
+      a((NinePatch)localObject, paramCanvas, paramRect2, paramPaint);
+      return;
+    }
+    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject != null)
+    {
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
+      a((Bitmap)localObject, paramCanvas, paramRect1, paramRect2, paramPaint);
+    }
   }
   
   public final boolean a()
@@ -194,7 +178,7 @@ public final class VasNinePathBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.VasNinePathBitmap
  * JD-Core Version:    0.7.0.1
  */

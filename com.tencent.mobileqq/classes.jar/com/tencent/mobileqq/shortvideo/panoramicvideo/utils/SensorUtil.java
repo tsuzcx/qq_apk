@@ -23,23 +23,21 @@ public class SensorUtil
   public static void sensorRotationVectorToMatrix(SensorEvent paramSensorEvent, int paramInt, float[] paramArrayOfFloat)
   {
     paramSensorEvent = paramSensorEvent.values;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
       SensorManager.getRotationMatrixFromVector(mTmp, paramSensorEvent);
       SensorManager.remapCoordinateSystem(mTmp, 2, 129, paramArrayOfFloat);
     }
-    for (;;)
+    else
     {
-      Matrix.rotateM(paramArrayOfFloat, 0, 90.0F, 1.0F, 0.0F, 0.0F);
-      return;
       SensorManager.getRotationMatrixFromVector(paramArrayOfFloat, paramSensorEvent);
     }
+    Matrix.rotateM(paramArrayOfFloat, 0, 90.0F, 1.0F, 0.0F, 0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.utils.SensorUtil
  * JD-Core Version:    0.7.0.1
  */

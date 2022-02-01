@@ -18,8 +18,15 @@ class ThreadRegulator$1
     paramMessage = (ThreadRegulator.CpuBusyness)paramMessage.obj;
     if (paramMessage != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramMessage.jdField_a_of_type_Int);
+        localStringBuilder.append(" cost ");
+        localStringBuilder.append(paramMessage.b - paramMessage.jdField_a_of_type_Long);
+        localStringBuilder.append(", paused ");
+        localStringBuilder.append(paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+        QLog.d("ThreadManager.Regulaotr", 2, localStringBuilder.toString());
       }
       paramMessage.recycle();
     }
@@ -27,7 +34,7 @@ class ThreadRegulator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.threadpriority.ThreadRegulator.1
  * JD-Core Version:    0.7.0.1
  */

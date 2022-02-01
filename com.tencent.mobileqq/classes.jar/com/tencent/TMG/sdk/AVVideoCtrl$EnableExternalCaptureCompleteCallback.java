@@ -8,7 +8,12 @@ public class AVVideoCtrl$EnableExternalCaptureCompleteCallback
   
   protected void onComplete(boolean paramBoolean, int paramInt)
   {
-    Log.d("SdkJni", "EnableExternalCaptureCompleteCallback.OnComplete. enable = " + paramBoolean + "  result = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EnableExternalCaptureCompleteCallback.OnComplete. enable = ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("  result = ");
+    localStringBuilder.append(paramInt);
+    Log.d("SdkJni", localStringBuilder.toString());
   }
 }
 

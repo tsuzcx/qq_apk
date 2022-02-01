@@ -24,6 +24,7 @@ import com.tencent.upload.utils.UploadLog;
 import com.tencent.upload.utils.pool.ThreadPool;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -56,7 +57,21 @@ public class ImageUploadService
   
   private final boolean compressUploadTask(int paramInt, String paramString1, String paramString2, IUploadConfig.UploadImageSize paramUploadImageSize, boolean paramBoolean1, boolean paramBoolean2)
   {
-    UploadLog.d("ImageUploadService", "compressUploadTask[flowId: " + paramInt + ", path: " + paramString1 + ", md5: " + paramString2 + ", targetSize: " + paramUploadImageSize + ", autoRotate: " + paramBoolean1 + ", compressToWebp: " + paramBoolean2 + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("compressUploadTask[flowId: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", path: ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", md5: ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(", targetSize: ");
+    localStringBuilder.append(paramUploadImageSize);
+    localStringBuilder.append(", autoRotate: ");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(", compressToWebp: ");
+    localStringBuilder.append(paramBoolean2);
+    localStringBuilder.append("]");
+    UploadLog.d("ImageUploadService", localStringBuilder.toString());
     paramString1 = new ImageCompressRecord(paramInt, paramString1, paramString2, paramUploadImageSize, paramBoolean1, paramBoolean2);
     this.mCompressServiceProxy.compressFile(paramString1, this.mImageProcessorCallback);
     return true;
@@ -64,107 +79,115 @@ public class ImageUploadService
   
   private boolean compressUploadTask(AbstractUploadTask paramAbstractUploadTask)
   {
-    Object localObject = paramAbstractUploadTask.getFilePath();
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!new File((String)localObject).exists()))
+    Object localObject2 = paramAbstractUploadTask.getFilePath();
+    boolean bool1 = TextUtils.isEmpty((CharSequence)localObject2);
+    boolean bool2 = false;
+    if ((!bool1) && (new File((String)localObject2).exists()))
     {
-      paramAbstractUploadTask.onError(Const.UploadRetCode.FILE_NOT_EXIST.getCode(), Const.UploadRetCode.FILE_NOT_EXIST.getDesc());
-      UploadLog.e("ImageUploadService", "upload error path invalid !");
-      return false;
-    }
-    if (ImageCompressor.isGifPicture((String)localObject))
-    {
-      ImageCompressor.processGif(paramAbstractUploadTask);
-      this.mTaskManager.sendAsync(paramAbstractUploadTask);
-      return false;
-    }
-    boolean bool1;
-    int i;
-    if ((paramAbstractUploadTask instanceof ImageUploadTask))
-    {
-      bool1 = ((ImageUploadTask)paramAbstractUploadTask).autoRotate;
-      i = ((ImageUploadTask)paramAbstractUploadTask).iUploadType;
-    }
-    for (;;)
-    {
-      IUploadConfig.UploadImageSize localUploadImageSize = ImageCompressor.getUploadImageSize(paramAbstractUploadTask, i);
-      if (localUploadImageSize == null) {
-        break;
-      }
-      paramAbstractUploadTask.mTargetSize = localUploadImageSize;
-      paramAbstractUploadTask.md5 = FileUtils.getMd5ByFile_REAL(new File((String)localObject));
-      localObject = paramAbstractUploadTask.getUploadTaskType();
-      int j;
-      if ((localObject != null) && (((TaskTypeConfig)localObject).uploadType == 0))
+      if (ImageCompressor.isGifPicture((String)localObject2))
       {
-        j = 1;
-        localObject = UploadGlobalConfig.getConfig();
-        if ((j == 0) || (!Utility.needCompress2Webp(((IUploadConfig)localObject).getCompressToWebpFlag(), i))) {
-          break label227;
+        ImageCompressor.processGif(paramAbstractUploadTask);
+        this.mTaskManager.sendAsync(paramAbstractUploadTask);
+        return false;
+      }
+      boolean bool3 = paramAbstractUploadTask instanceof ImageUploadTask;
+      int i;
+      if (bool3)
+      {
+        localObject1 = (ImageUploadTask)paramAbstractUploadTask;
+        bool1 = ((ImageUploadTask)localObject1).autoRotate;
+        i = ((ImageUploadTask)localObject1).iUploadType;
+      }
+      else
+      {
+        i = 0;
+        bool1 = false;
+      }
+      Object localObject1 = ImageCompressor.getUploadImageSize(paramAbstractUploadTask, i);
+      if (localObject1 != null)
+      {
+        paramAbstractUploadTask.mTargetSize = ((IUploadConfig.UploadImageSize)localObject1);
+        paramAbstractUploadTask.md5 = FileUtils.getMd5ByFile_REAL(new File((String)localObject2));
+        localObject2 = paramAbstractUploadTask.getUploadTaskType();
+        int j;
+        if ((localObject2 != null) && (((TaskTypeConfig)localObject2).uploadType == 0)) {
+          j = 1;
+        } else {
+          j = 0;
         }
-      }
-      label227:
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        if ((paramAbstractUploadTask instanceof ImageUploadTask)) {
+        localObject2 = UploadGlobalConfig.getConfig();
+        if ((j != 0) && (Utility.needCompress2Webp(((IUploadConfig)localObject2).getCompressToWebpFlag(), i))) {
+          bool2 = true;
+        } else {
+          bool2 = false;
+        }
+        if (bool3) {
           ((ImageUploadTask)paramAbstractUploadTask).compressStartTime = System.currentTimeMillis();
         }
-        return compressUploadTask(paramAbstractUploadTask.flowId, paramAbstractUploadTask.getFilePath(), paramAbstractUploadTask.getMd5(), localUploadImageSize, bool1, bool2);
-        j = 0;
-        break;
+        bool2 = compressUploadTask(paramAbstractUploadTask.flowId, paramAbstractUploadTask.getFilePath(), paramAbstractUploadTask.getMd5(), (IUploadConfig.UploadImageSize)localObject1, bool1, bool2);
       }
-      i = 0;
-      bool1 = false;
+      return bool2;
     }
+    paramAbstractUploadTask.onError(Const.UploadRetCode.FILE_NOT_EXIST.getCode(), Const.UploadRetCode.FILE_NOT_EXIST.getDesc());
+    UploadLog.e("ImageUploadService", "upload error path invalid !");
+    return false;
   }
   
   private boolean driveNextBatch()
   {
-    int i = 0;
-    boolean bool = false;
+    try
+    {
+      UploadLog.d("ImageUploadService", "driveNext -- ");
+      int j = this.mReadyTasks.size();
+      int i = 0;
+      if (j <= 0) {
+        return false;
+      }
+      j = getBatchControlNumber();
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("ready:");
+      ((StringBuilder)localObject1).append(this.mReadyTasks.size());
+      ((StringBuilder)localObject1).append(" compressing:");
+      ((StringBuilder)localObject1).append(this.mCompressingTasks.size());
+      ((StringBuilder)localObject1).append(" batchMaxNum:");
+      ((StringBuilder)localObject1).append(j);
+      UploadLog.d("ImageUploadService", ((StringBuilder)localObject1).toString());
+      localObject1 = new ArrayList();
+      if (this.mReadyTasks.size() >= j) {
+        while (i < j)
+        {
+          ((List)localObject1).add(this.mReadyTasks.get(i));
+          i += 1;
+        }
+      }
+      ((List)localObject1).addAll(this.mReadyTasks);
+      this.mReadyTasks.removeAll((Collection)localObject1);
+      i = sBatchIdGenerator.incrementAndGet();
+      Object localObject3 = ((List)localObject1).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        AbstractUploadTask localAbstractUploadTask = (AbstractUploadTask)((Iterator)localObject3).next();
+        if (localAbstractUploadTask != null) {
+          localAbstractUploadTask.setBatchId(i);
+        }
+      }
+      localObject1 = new BatchControlTask((List)localObject1, this.mTaskManager);
+      ((BatchControlTask)localObject1).setBatchId(i);
+      this.mTaskManager.sendAsync((AbstractUploadTask)localObject1);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("driveNext end -- send taskId:");
+      ((StringBuilder)localObject3).append(((BatchControlTask)localObject1).getTaskId());
+      ((StringBuilder)localObject3).append(" batchId:");
+      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject3).append(" contain:");
+      ((StringBuilder)localObject3).append(((BatchControlTask)localObject1).printAllTaskInBatchControl());
+      UploadLog.d("ImageUploadService", ((StringBuilder)localObject3).toString());
+      return true;
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        UploadLog.d("ImageUploadService", "driveNext -- ");
-        int j = this.mReadyTasks.size();
-        if (j <= 0) {
-          return bool;
-        }
-        j = getBatchControlNumber();
-        UploadLog.d("ImageUploadService", "ready:" + this.mReadyTasks.size() + " compressing:" + this.mCompressingTasks.size() + " batchMaxNum:" + j);
-        ArrayList localArrayList = new ArrayList();
-        if (this.mReadyTasks.size() >= j)
-        {
-          if (i < j)
-          {
-            localArrayList.add(this.mReadyTasks.get(i));
-            i += 1;
-            continue;
-          }
-        }
-        else {
-          localArrayList.addAll(this.mReadyTasks);
-        }
-        this.mReadyTasks.removeAll(localArrayList);
-        i = sBatchIdGenerator.incrementAndGet();
-        Iterator localIterator = localArrayList.iterator();
-        if (localIterator.hasNext())
-        {
-          AbstractUploadTask localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
-          if (localAbstractUploadTask == null) {
-            continue;
-          }
-          localAbstractUploadTask.setBatchId(i);
-          continue;
-        }
-        localBatchControlTask = new BatchControlTask(localList, this.mTaskManager);
-      }
-      finally {}
-      BatchControlTask localBatchControlTask;
-      localBatchControlTask.setBatchId(i);
-      this.mTaskManager.sendAsync(localBatchControlTask);
-      UploadLog.d("ImageUploadService", "driveNext end -- send taskId:" + localBatchControlTask.getTaskId() + " batchId:" + i + " contain:" + localBatchControlTask.printAllTaskInBatchControl());
-      bool = true;
+      throw localObject2;
     }
   }
   
@@ -172,7 +195,10 @@ public class ImageUploadService
   {
     if ((paramAbstractUploadTask instanceof ImageUploadTask))
     {
-      UploadLog.w("ImageUploadService", "sendTask add task to queue: " + paramAbstractUploadTask.flowId);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendTask add task to queue: ");
+      localStringBuilder.append(paramAbstractUploadTask.flowId);
+      UploadLog.w("ImageUploadService", localStringBuilder.toString());
       this.mHandler.removeMessages(1000);
       this.mReadyTasks.add(paramAbstractUploadTask);
       paramAbstractUploadTask = Message.obtain(this.mHandler, new ImageUploadService.1(this));
@@ -189,43 +215,53 @@ public class ImageUploadService
     if (paramAbstractUploadTask == null) {
       return false;
     }
-    UploadLog.w("ImageUploadService", "cancel task flowId: " + paramAbstractUploadTask.flowId + ", path:" + paramAbstractUploadTask.uploadFilePath);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("cancel task flowId: ");
+    ((StringBuilder)localObject1).append(paramAbstractUploadTask.flowId);
+    ((StringBuilder)localObject1).append(", path:");
+    ((StringBuilder)localObject1).append(paramAbstractUploadTask.uploadFilePath);
+    UploadLog.w("ImageUploadService", ((StringBuilder)localObject1).toString());
     if (this.mCompressingTasks.get(paramAbstractUploadTask.flowId) != null)
     {
       this.mCompressServiceProxy.cancel(paramAbstractUploadTask.flowId);
       this.mCompressingTasks.remove(paramAbstractUploadTask.flowId);
-      UploadLog.w("ImageUploadService", "cancel task from compress queue! flowId:" + paramAbstractUploadTask.flowId + ", path:" + paramAbstractUploadTask.uploadFilePath);
-      i = 1;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("cancel task from compress queue! flowId:");
+      ((StringBuilder)localObject1).append(paramAbstractUploadTask.flowId);
+      ((StringBuilder)localObject1).append(", path:");
+      ((StringBuilder)localObject1).append(paramAbstractUploadTask.uploadFilePath);
+      UploadLog.w("ImageUploadService", ((StringBuilder)localObject1).toString());
     }
-    label250:
     for (;;)
     {
-      if (i == 0) {
-        this.mTaskManager.cancelTask(paramAbstractUploadTask);
-      }
-      driveNextBatch();
-      return true;
+      i = 1;
+      break;
+      Object localObject2 = null;
       Iterator localIterator = this.mReadyTasks.iterator();
-      AbstractUploadTask localAbstractUploadTask;
       do
       {
+        localObject1 = localObject2;
         if (!localIterator.hasNext()) {
           break;
         }
-        localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
-      } while (localAbstractUploadTask.flowId != paramAbstractUploadTask.flowId);
-      for (;;)
-      {
-        if (localAbstractUploadTask == null) {
-          break label250;
-        }
-        this.mReadyTasks.remove(localAbstractUploadTask);
-        UploadLog.w("ImageUploadService", "cancel task from ready queue! flowId:" + paramAbstractUploadTask.flowId + ", path:" + paramAbstractUploadTask.uploadFilePath);
-        i = 1;
+        localObject1 = (AbstractUploadTask)localIterator.next();
+      } while (((AbstractUploadTask)localObject1).flowId != paramAbstractUploadTask.flowId);
+      if (localObject1 == null) {
         break;
-        localAbstractUploadTask = null;
       }
+      this.mReadyTasks.remove(localObject1);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("cancel task from ready queue! flowId:");
+      ((StringBuilder)localObject1).append(paramAbstractUploadTask.flowId);
+      ((StringBuilder)localObject1).append(", path:");
+      ((StringBuilder)localObject1).append(paramAbstractUploadTask.uploadFilePath);
+      UploadLog.w("ImageUploadService", ((StringBuilder)localObject1).toString());
     }
+    if (i == 0) {
+      this.mTaskManager.cancelTask(paramAbstractUploadTask);
+    }
+    driveNextBatch();
+    return true;
   }
   
   protected void cancelAllTasks()
@@ -248,7 +284,10 @@ public class ImageUploadService
     }
     ImageProcessProxy.close();
     Process.killProcess(this.mCompressServicePid);
-    UploadLog.d("ImageUploadService", "kill compress process Pid:" + this.mCompressServicePid);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("kill compress process Pid:");
+    localStringBuilder.append(this.mCompressServicePid);
+    UploadLog.d("ImageUploadService", localStringBuilder.toString());
     this.mCompressServicePid = 0;
   }
   
@@ -266,49 +305,57 @@ public class ImageUploadService
     }
     paramAbstractUploadTask.onUploadProcessStart();
     boolean bool;
-    if ((paramAbstractUploadTask instanceof ImageUploadTask)) {
-      if (((ImageUploadTask)paramAbstractUploadTask).iUploadType != 3)
-      {
-        bool = true;
-        paramAbstractUploadTask.keepTmpFile(UploadGlobalConfig.needKeepImageTmpFile());
-      }
-    }
-    for (;;)
+    if ((paramAbstractUploadTask instanceof ImageUploadTask))
     {
-      SparseArray localSparseArray = this.mCompressingTasks;
-      if (bool) {
-        for (;;)
+      if (((ImageUploadTask)paramAbstractUploadTask).iUploadType != 3) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      paramAbstractUploadTask.keepTmpFile(UploadGlobalConfig.needKeepImageTmpFile());
+    }
+    else
+    {
+      bool = false;
+    }
+    SparseArray localSparseArray = this.mCompressingTasks;
+    if (bool) {}
+    try
+    {
+      if (UploadConfiguration.isPictureNeedToCompress(paramAbstractUploadTask.getFilePath()))
+      {
+        if (compressUploadTask(paramAbstractUploadTask))
         {
-          try
-          {
-            if (!UploadConfiguration.isPictureNeedToCompress(paramAbstractUploadTask.getFilePath())) {
-              break;
-            }
-            if (compressUploadTask(paramAbstractUploadTask))
-            {
-              paramAbstractUploadTask.needCompress = true;
-              this.mCompressingTasks.append(paramAbstractUploadTask.flowId, paramAbstractUploadTask);
-              return true;
-            }
-          }
-          finally {}
-          paramAbstractUploadTask.needCompress = false;
-          UploadLog.w("ImageUploadService", "upload task: " + paramAbstractUploadTask.flowId + " compressUploadTask == false");
+          paramAbstractUploadTask.needCompress = true;
+          this.mCompressingTasks.append(paramAbstractUploadTask.flowId, paramAbstractUploadTask);
         }
+        else
+        {
+          paramAbstractUploadTask.needCompress = false;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("upload task: ");
+          localStringBuilder.append(paramAbstractUploadTask.flowId);
+          localStringBuilder.append(" compressUploadTask == false");
+          UploadLog.w("ImageUploadService", localStringBuilder.toString());
+        }
+        return true;
       }
       paramAbstractUploadTask.needCompress = false;
-      UploadLog.w("ImageUploadService", "upload task: " + paramAbstractUploadTask.flowId + " is not need compress | needCompress:" + bool);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("upload task: ");
+      localStringBuilder.append(paramAbstractUploadTask.flowId);
+      localStringBuilder.append(" is not need compress | needCompress:");
+      localStringBuilder.append(bool);
+      UploadLog.w("ImageUploadService", localStringBuilder.toString());
       sendTask(paramAbstractUploadTask);
       return true;
-      bool = false;
-      break;
-      bool = false;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.impl.ImageUploadService
  * JD-Core Version:    0.7.0.1
  */

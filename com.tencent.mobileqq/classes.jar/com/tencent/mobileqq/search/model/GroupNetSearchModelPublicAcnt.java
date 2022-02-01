@@ -3,23 +3,23 @@ package com.tencent.mobileqq.search.model;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.business.addcontact.model.SearchResult;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import java.util.List;
 
 public class GroupNetSearchModelPublicAcnt
   implements ISearchResultGroupModel
 {
-  private SearchResult jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult;
+  private SearchResult jdField_a_of_type_ComTencentMobileqqSearchBusinessAddcontactModelSearchResult;
   private String jdField_a_of_type_JavaLangString;
   private List<ISearchResultModel> jdField_a_of_type_JavaUtilList;
   
@@ -27,7 +27,7 @@ public class GroupNetSearchModelPublicAcnt
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult = paramSearchResult;
+    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessAddcontactModelSearchResult = paramSearchResult;
   }
   
   public int a()
@@ -37,10 +37,14 @@ public class GroupNetSearchModelPublicAcnt
   
   public String a()
   {
-    if (UniteSearchActivity.d == 12) {
-      return HardCodeUtil.a(2131705371) + ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext());
+    if (UniteSearchActivity.d == 12)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131705445));
+      localStringBuilder.append(((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext()));
+      return localStringBuilder.toString();
     }
-    return HardCodeUtil.a(2131705370);
+    return HardCodeUtil.a(2131705444);
   }
   
   public List<ISearchResultModel> a()
@@ -56,7 +60,7 @@ public class GroupNetSearchModelPublicAcnt
     localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
     localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
     localIntent.putExtra("jump_src_key", 0);
-    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult);
+    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_ComTencentMobileqqSearchBusinessAddcontactModelSearchResult);
     paramView = paramView.getContext();
     if ((paramView != null) && ((paramView instanceof BaseActivity)))
     {
@@ -72,7 +76,7 @@ public class GroupNetSearchModelPublicAcnt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupNetSearchModelPublicAcnt
  * JD-Core Version:    0.7.0.1
  */

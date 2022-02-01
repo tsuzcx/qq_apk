@@ -20,10 +20,11 @@ public class BubbleDiyEntity
   
   public static void parsePasterMap(BubbleDiyEntity paramBubbleDiyEntity, HashMap<String, String> paramHashMap)
   {
-    if ((paramBubbleDiyEntity == null) || (paramHashMap == null)) {}
-    for (;;)
+    if (paramBubbleDiyEntity != null)
     {
-      return;
+      if (paramHashMap == null) {
+        return;
+      }
       Iterator localIterator = paramHashMap.keySet().iterator();
       while (localIterator.hasNext())
       {
@@ -61,7 +62,7 @@ public class BubbleDiyEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyEntity
  * JD-Core Version:    0.7.0.1
  */

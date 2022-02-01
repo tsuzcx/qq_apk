@@ -20,23 +20,27 @@ class GdtVideoImaxFragment$1
     GdtVideoImaxFragment.a(this.a).a().b(2);
     if (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() == 1)
     {
-      bool = this.a.a(paramView);
+      boolean bool = this.a.a(paramView);
       GdtVideoImaxFragment.a(this.a, bool);
       GdtVideoImaxFragment.a(this.a);
-    }
-    while (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() != 0)
-    {
-      boolean bool;
       return;
     }
-    GdtVideoImaxFragment.a(this.a).g();
-    paramView = GdtUIUtils.a(this.a.getActivity());
-    GdtVideoImaxFragment.a(this.a, paramView[1], GdtVideoImaxFragment.a(this.a).getLayoutParams().height, paramView[1]);
+    if (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() == 0)
+    {
+      GdtVideoImaxFragment.a(this.a).e();
+      paramView = GdtUIUtils.a(this.a.getBaseActivity());
+      GdtVideoImaxFragment localGdtVideoImaxFragment = this.a;
+      GdtVideoImaxFragment.a(localGdtVideoImaxFragment, paramView[1], GdtVideoImaxFragment.a(localGdtVideoImaxFragment).getLayoutParams().height, paramView[1]);
+    }
   }
   
   public void a(GdtVideoCommonView paramGdtVideoCommonView)
   {
-    GdtLog.a("GdtVideoImaxFragment", "onPrepared() called with: v = [" + paramGdtVideoCommonView + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPrepared() called with: v = [");
+    localStringBuilder.append(paramGdtVideoCommonView);
+    localStringBuilder.append("]");
+    GdtLog.a("GdtVideoImaxFragment", localStringBuilder.toString());
   }
   
   public void b(GdtVideoCommonView paramGdtVideoCommonView)
@@ -52,17 +56,25 @@ class GdtVideoImaxFragment$1
   
   public void c(GdtVideoCommonView paramGdtVideoCommonView)
   {
-    GdtLog.a("GdtVideoImaxFragment", "onStop() called with: v = [" + paramGdtVideoCommonView + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onStop() called with: v = [");
+    localStringBuilder.append(paramGdtVideoCommonView);
+    localStringBuilder.append("]");
+    GdtLog.a("GdtVideoImaxFragment", localStringBuilder.toString());
   }
   
   public void d(GdtVideoCommonView paramGdtVideoCommonView)
   {
-    GdtLog.a("GdtVideoImaxFragment", "onComplete() called with: v = [" + paramGdtVideoCommonView + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onComplete() called with: v = [");
+    localStringBuilder.append(paramGdtVideoCommonView);
+    localStringBuilder.append("]");
+    GdtLog.a("GdtVideoImaxFragment", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import java.net.SocketTimeoutException;
 class ConnectionProxy
   implements IConnectionListener, IConnectionProxy
 {
-  private static final String TAG = ConnectionProxy.class.getSimpleName();
+  private static final String TAG = "ConnectionProxy";
   private boolean mAborted;
   private Object mConnectionLock = new Object();
   private boolean mGotResponse;
@@ -32,13 +32,11 @@ class ConnectionProxy
   
   public IConnection connect(String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject;
-    long l2;
     try
     {
-      localObject = this.mConnectionLock;
-      long l1 = paramInt1;
-      l2 = l1;
+      Object localObject = this.mConnectionLock;
+      long l2 = paramInt1;
+      long l1 = l2;
       try
       {
         if (!this.mAborted)
@@ -49,26 +47,11 @@ class ConnectionProxy
           try
           {
             long l3 = System.nanoTime();
-            for (;;)
+            for (l1 = l2; (!this.mGotResponse) && (!this.mAborted) && (l1 > 0L); l1 = l2 - l1)
             {
-              l2 = l1;
-              if (this.mGotResponse) {
-                break;
-              }
-              l2 = l1;
-              if (this.mAborted) {
-                break;
-              }
-              l2 = l1;
-              if (l1 <= 0L) {
-                break;
-              }
               this.mConnectionLock.wait(l1);
-              l1 = paramInt1;
-              l2 = (System.nanoTime() - l3) / 1000000L;
-              l1 -= l2;
+              l1 = (System.nanoTime() - l3) / 1000000L;
             }
-            paramString = finally;
           }
           catch (InterruptedException paramString)
           {
@@ -76,30 +59,30 @@ class ConnectionProxy
             paramString.printStackTrace();
             throw new SocketTimeoutException();
           }
-          paramString = finally;
         }
+        if (!this.mAborted)
+        {
+          if (this.mResponse != null)
+          {
+            paramString = this.mResponse;
+            return paramString;
+          }
+          if (l1 <= 0L)
+          {
+            Log.w(TAG, "Connection timeout.");
+            throw new SocketTimeoutException();
+          }
+          Log.w(TAG, "Connection response is null.");
+          throw new SocketTimeoutException();
+        }
+        Log.i(TAG, "Connection aborted.");
+        throw new SocketTimeoutException();
       }
       finally {}
-      if (!this.mAborted) {
-        break label176;
-      }
+      throw paramString;
     }
     finally {}
-    Log.i(TAG, "Connection aborted.");
-    throw new SocketTimeoutException();
-    label176:
-    if (this.mResponse != null)
-    {
-      paramString = this.mResponse;
-      return paramString;
-    }
-    if (l2 <= 0L)
-    {
-      Log.w(TAG, "Connection timeout.");
-      throw new SocketTimeoutException();
-    }
-    Log.w(TAG, "Connection response is null.");
-    throw new SocketTimeoutException();
+    for (;;) {}
   }
   
   public void notifyConnection(IConnection paramIConnection)
@@ -115,7 +98,7 @@ class ConnectionProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.immersion.touchsensesdk.ConnectionProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -11,20 +11,21 @@ class ProfileContentSignComponent$5
   
   public int compare(oidb_0xd9f.TopicItem paramTopicItem1, oidb_0xd9f.TopicItem paramTopicItem2)
   {
-    if (paramTopicItem1 == null) {}
-    do
-    {
+    if (paramTopicItem1 == null) {
       return 1;
-      if (paramTopicItem2 == null) {
-        return -1;
-      }
-    } while (paramTopicItem1.uint32_frd_num.get() <= paramTopicItem2.uint32_frd_num.get());
-    return -1;
+    }
+    if (paramTopicItem2 == null) {
+      return -1;
+    }
+    if (paramTopicItem1.uint32_frd_num.get() > paramTopicItem2.uint32_frd_num.get()) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitysign.ProfileContentSignComponent.5
  * JD-Core Version:    0.7.0.1
  */

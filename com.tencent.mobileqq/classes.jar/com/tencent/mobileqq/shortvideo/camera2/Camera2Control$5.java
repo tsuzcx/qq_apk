@@ -19,18 +19,27 @@ class Camera2Control$5
   private void a(CaptureResult paramCaptureResult, CaptureRequest paramCaptureRequest)
   {
     paramCaptureRequest = paramCaptureRequest.getTag();
-    if ((!(paramCaptureRequest instanceof CameraProxy.FocusData)) || (((CameraProxy.FocusData)paramCaptureRequest).jdField_a_of_type_Boolean))
+    if ((paramCaptureRequest instanceof CameraProxy.FocusData))
     {
-      Camera2Utils.a(1, "[Camera2] mAfCaptureCallback handled!");
-      Camera2Control.d(this.a, false);
+      paramCaptureRequest = (CameraProxy.FocusData)paramCaptureRequest;
+      if (!paramCaptureRequest.jdField_a_of_type_Boolean)
+      {
+        paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[Camera2] mAfCaptureCallback:");
+        localStringBuilder.append(paramCaptureResult);
+        Camera2Utils.a(1, localStringBuilder.toString());
+        if (paramCaptureResult == null) {
+          return;
+        }
+        if ((4 == paramCaptureResult.intValue()) || (5 == paramCaptureResult.intValue())) {
+          a(true, paramCaptureRequest);
+        }
+        return;
+      }
     }
-    do
-    {
-      return;
-      paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
-      Camera2Utils.a(1, "[Camera2] mAfCaptureCallback:" + paramCaptureResult);
-    } while ((paramCaptureResult == null) || ((4 != paramCaptureResult.intValue()) && (5 != paramCaptureResult.intValue())));
-    a(true, (CameraProxy.FocusData)paramCaptureRequest);
+    Camera2Utils.a(1, "[Camera2] mAfCaptureCallback handled!");
+    Camera2Control.d(this.a, false);
   }
   
   private void a(boolean paramBoolean, CameraProxy.FocusData paramFocusData)
@@ -39,25 +48,31 @@ class Camera2Control$5
     Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(2));
     try
     {
-      Camera2Utils.a(1, "[Camera2] mAfCaptureCallback run, success:" + paramBoolean);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[Camera2] mAfCaptureCallback run, success:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      Camera2Utils.a(1, ((StringBuilder)localObject).toString());
       Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
       CameraCaptureSession localCameraCaptureSession = Camera2Control.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {}
-      for (CaptureRequest localCaptureRequest = Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a));; localCaptureRequest = Camera2Control.a(this.a).build())
+      if (this.a.jdField_a_of_type_Boolean) {
+        localObject = Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a));
+      } else {
+        localObject = Camera2Control.a(this.a).build();
+      }
+      localCameraCaptureSession.setRepeatingRequest((CaptureRequest)localObject, null, null);
+      if ((paramFocusData.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2RequestData.a != null) && (!paramFocusData.jdField_a_of_type_Boolean))
       {
-        localCameraCaptureSession.setRepeatingRequest(localCaptureRequest, null, null);
-        if ((paramFocusData.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2RequestData.a == null) || (paramFocusData.jdField_a_of_type_Boolean)) {
-          break;
-        }
         paramFocusData.jdField_a_of_type_Boolean = true;
         paramFocusData.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2RequestData.a.a(1, paramBoolean);
         return;
       }
-      return;
     }
     catch (Exception paramFocusData)
     {
-      Camera2Utils.a(2, "[Camera2] mAfCaptureCallback e:" + paramFocusData);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[Camera2] mAfCaptureCallback e:");
+      ((StringBuilder)localObject).append(paramFocusData);
+      Camera2Utils.a(2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -68,15 +83,22 @@ class Camera2Control$5
   
   public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
   {
-    Camera2Utils.a(2, "[Camera2] mAfCaptureCallback failure reason:" + paramCaptureFailure.getReason());
+    paramCameraCaptureSession = new StringBuilder();
+    paramCameraCaptureSession.append("[Camera2] mAfCaptureCallback failure reason:");
+    paramCameraCaptureSession.append(paramCaptureFailure.getReason());
+    Camera2Utils.a(2, paramCameraCaptureSession.toString());
     paramCameraCaptureSession = paramCaptureRequest.getTag();
-    if ((!(paramCameraCaptureSession instanceof CameraProxy.FocusData)) || (((CameraProxy.FocusData)paramCameraCaptureSession).jdField_a_of_type_Boolean))
+    if ((paramCameraCaptureSession instanceof CameraProxy.FocusData))
     {
-      Camera2Utils.a(1, "[Camera2] mAfCaptureCallback handled!");
-      Camera2Control.d(this.a, false);
-      return;
+      paramCameraCaptureSession = (CameraProxy.FocusData)paramCameraCaptureSession;
+      if (!paramCameraCaptureSession.jdField_a_of_type_Boolean)
+      {
+        a(false, paramCameraCaptureSession);
+        return;
+      }
     }
-    a(false, (CameraProxy.FocusData)paramCameraCaptureSession);
+    Camera2Utils.a(1, "[Camera2] mAfCaptureCallback handled!");
+    Camera2Control.d(this.a, false);
   }
   
   public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
@@ -86,7 +108,7 @@ class Camera2Control$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.5
  * JD-Core Version:    0.7.0.1
  */

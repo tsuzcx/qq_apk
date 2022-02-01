@@ -21,75 +21,59 @@ class StaggeredGridLayoutManager$LazySpanLookup
     }
     int j = this.mFullSpanItems.size();
     int i = 0;
-    if (i < j) {
-      if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i)).mPosition < paramInt) {}
-    }
-    for (;;)
+    while (i < j)
     {
-      if (i != -1)
-      {
-        localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i);
-        this.mFullSpanItems.remove(i);
-        return localFullSpanItem.mPosition;
-        i += 1;
-        break;
+      if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i)).mPosition >= paramInt) {
+        break label82;
       }
-      return -1;
-      i = -1;
+      i += 1;
     }
+    i = -1;
+    label82:
+    if (i != -1)
+    {
+      localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i);
+      this.mFullSpanItems.remove(i);
+      return localFullSpanItem.mPosition;
+    }
+    return -1;
   }
   
   private void offsetFullSpansForAddition(int paramInt1, int paramInt2)
   {
-    if (this.mFullSpanItems == null) {
+    Object localObject = this.mFullSpanItems;
+    if (localObject == null) {
       return;
     }
-    int i = this.mFullSpanItems.size() - 1;
-    label20:
-    StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem;
-    if (i >= 0)
+    int i = ((List)localObject).size() - 1;
+    while (i >= 0)
     {
-      localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i);
-      if (localFullSpanItem.mPosition >= paramInt1) {
-        break label55;
+      localObject = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i);
+      if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mPosition >= paramInt1) {
+        ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mPosition += paramInt2;
       }
-    }
-    for (;;)
-    {
       i -= 1;
-      break label20;
-      break;
-      label55:
-      localFullSpanItem.mPosition += paramInt2;
     }
   }
   
   private void offsetFullSpansForRemoval(int paramInt1, int paramInt2)
   {
-    if (this.mFullSpanItems == null) {
+    Object localObject = this.mFullSpanItems;
+    if (localObject == null) {
       return;
     }
-    int i = this.mFullSpanItems.size() - 1;
-    label20:
-    StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem;
-    if (i >= 0)
+    int i = ((List)localObject).size() - 1;
+    while (i >= 0)
     {
-      localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i);
-      if (localFullSpanItem.mPosition >= paramInt1) {
-        break label55;
+      localObject = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i);
+      if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mPosition >= paramInt1) {
+        if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mPosition < paramInt1 + paramInt2) {
+          this.mFullSpanItems.remove(i);
+        } else {
+          ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mPosition -= paramInt2;
+        }
       }
-    }
-    for (;;)
-    {
       i -= 1;
-      break label20;
-      break;
-      label55:
-      if (localFullSpanItem.mPosition < paramInt1 + paramInt2) {
-        this.mFullSpanItems.remove(i);
-      } else {
-        localFullSpanItem.mPosition -= paramInt2;
-      }
     }
   }
   
@@ -118,33 +102,37 @@ class StaggeredGridLayoutManager$LazySpanLookup
   
   void clear()
   {
-    if (this.mData != null) {
-      Arrays.fill(this.mData, -1);
+    int[] arrayOfInt = this.mData;
+    if (arrayOfInt != null) {
+      Arrays.fill(arrayOfInt, -1);
     }
     this.mFullSpanItems = null;
   }
   
   void ensureSize(int paramInt)
   {
-    if (this.mData == null)
+    int[] arrayOfInt1 = this.mData;
+    if (arrayOfInt1 == null)
     {
       this.mData = new int[Math.max(paramInt, 10) + 1];
       Arrays.fill(this.mData, -1);
-    }
-    while (paramInt < this.mData.length) {
       return;
     }
-    int[] arrayOfInt = this.mData;
-    this.mData = new int[sizeForPosition(paramInt)];
-    System.arraycopy(arrayOfInt, 0, this.mData, 0, arrayOfInt.length);
-    Arrays.fill(this.mData, arrayOfInt.length, this.mData.length, -1);
+    if (paramInt >= arrayOfInt1.length)
+    {
+      this.mData = new int[sizeForPosition(paramInt)];
+      System.arraycopy(arrayOfInt1, 0, this.mData, 0, arrayOfInt1.length);
+      int[] arrayOfInt2 = this.mData;
+      Arrays.fill(arrayOfInt2, arrayOfInt1.length, arrayOfInt2.length, -1);
+    }
   }
   
   int forceInvalidateAfter(int paramInt)
   {
-    if (this.mFullSpanItems != null)
+    List localList = this.mFullSpanItems;
+    if (localList != null)
     {
-      int i = this.mFullSpanItems.size() - 1;
+      int i = localList.size() - 1;
       while (i >= 0)
       {
         if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i)).mPosition >= paramInt) {
@@ -158,116 +146,108 @@ class StaggeredGridLayoutManager$LazySpanLookup
   
   public StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem getFirstFullSpanItemInRange(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    Object localObject;
-    if (this.mFullSpanItems == null)
-    {
-      localObject = null;
-      return localObject;
+    Object localObject = this.mFullSpanItems;
+    if (localObject == null) {
+      return null;
     }
-    int j = this.mFullSpanItems.size();
+    int j = ((List)localObject).size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label117;
-      }
-      StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i);
-      if (localFullSpanItem.mPosition >= paramInt2) {
+      localObject = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i);
+      if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mPosition >= paramInt2) {
         return null;
       }
-      if (localFullSpanItem.mPosition >= paramInt1)
-      {
-        localObject = localFullSpanItem;
-        if (paramInt3 == 0) {
-          break;
-        }
-        localObject = localFullSpanItem;
-        if (localFullSpanItem.mGapDir == paramInt3) {
-          break;
-        }
-        if (paramBoolean)
-        {
-          localObject = localFullSpanItem;
-          if (localFullSpanItem.mHasUnwantedGapAfter) {
-            break;
-          }
-        }
+      if ((((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mPosition >= paramInt1) && ((paramInt3 == 0) || (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mGapDir == paramInt3) || ((paramBoolean) && (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mHasUnwantedGapAfter)))) {
+        return localObject;
       }
       i += 1;
     }
-    label117:
     return null;
   }
   
   public StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem getFullSpanItem(int paramInt)
   {
-    Object localObject;
-    if (this.mFullSpanItems == null)
-    {
-      localObject = null;
-      return localObject;
+    Object localObject = this.mFullSpanItems;
+    if (localObject == null) {
+      return null;
     }
-    int i = this.mFullSpanItems.size() - 1;
-    for (;;)
+    int i = ((List)localObject).size() - 1;
+    while (i >= 0)
     {
-      if (i < 0) {
-        break label61;
-      }
-      StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i);
-      localObject = localFullSpanItem;
-      if (localFullSpanItem.mPosition == paramInt) {
-        break;
+      localObject = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.mFullSpanItems.get(i);
+      if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mPosition == paramInt) {
+        return localObject;
       }
       i -= 1;
     }
-    label61:
     return null;
   }
   
   int getSpan(int paramInt)
   {
-    if ((this.mData == null) || (paramInt >= this.mData.length)) {
-      return -1;
+    int[] arrayOfInt = this.mData;
+    if ((arrayOfInt != null) && (paramInt < arrayOfInt.length)) {
+      return arrayOfInt[paramInt];
     }
-    return this.mData[paramInt];
+    return -1;
   }
   
   int invalidateAfter(int paramInt)
   {
-    if (this.mData == null) {}
-    while (paramInt >= this.mData.length) {
+    int[] arrayOfInt = this.mData;
+    if (arrayOfInt == null) {
+      return -1;
+    }
+    if (paramInt >= arrayOfInt.length) {
       return -1;
     }
     int i = invalidateFullSpansAfter(paramInt);
     if (i == -1)
     {
-      Arrays.fill(this.mData, paramInt, this.mData.length, -1);
+      arrayOfInt = this.mData;
+      Arrays.fill(arrayOfInt, paramInt, arrayOfInt.length, -1);
       return this.mData.length;
     }
-    Arrays.fill(this.mData, paramInt, i + 1, -1);
-    return i + 1;
+    arrayOfInt = this.mData;
+    i += 1;
+    Arrays.fill(arrayOfInt, paramInt, i, -1);
+    return i;
   }
   
   void offsetForAddition(int paramInt1, int paramInt2)
   {
-    if ((this.mData == null) || (paramInt1 >= this.mData.length)) {
-      return;
+    int[] arrayOfInt = this.mData;
+    if (arrayOfInt != null)
+    {
+      if (paramInt1 >= arrayOfInt.length) {
+        return;
+      }
+      int i = paramInt1 + paramInt2;
+      ensureSize(i);
+      arrayOfInt = this.mData;
+      System.arraycopy(arrayOfInt, paramInt1, arrayOfInt, i, arrayOfInt.length - paramInt1 - paramInt2);
+      Arrays.fill(this.mData, paramInt1, i, -1);
+      offsetFullSpansForAddition(paramInt1, paramInt2);
     }
-    ensureSize(paramInt1 + paramInt2);
-    System.arraycopy(this.mData, paramInt1, this.mData, paramInt1 + paramInt2, this.mData.length - paramInt1 - paramInt2);
-    Arrays.fill(this.mData, paramInt1, paramInt1 + paramInt2, -1);
-    offsetFullSpansForAddition(paramInt1, paramInt2);
   }
   
   void offsetForRemoval(int paramInt1, int paramInt2)
   {
-    if ((this.mData == null) || (paramInt1 >= this.mData.length)) {
-      return;
+    int[] arrayOfInt = this.mData;
+    if (arrayOfInt != null)
+    {
+      if (paramInt1 >= arrayOfInt.length) {
+        return;
+      }
+      int i = paramInt1 + paramInt2;
+      ensureSize(i);
+      arrayOfInt = this.mData;
+      System.arraycopy(arrayOfInt, i, arrayOfInt, paramInt1, arrayOfInt.length - paramInt1 - paramInt2);
+      arrayOfInt = this.mData;
+      Arrays.fill(arrayOfInt, arrayOfInt.length - paramInt2, arrayOfInt.length, -1);
+      offsetFullSpansForRemoval(paramInt1, paramInt2);
     }
-    ensureSize(paramInt1 + paramInt2);
-    System.arraycopy(this.mData, paramInt1 + paramInt2, this.mData, paramInt1, this.mData.length - paramInt1 - paramInt2);
-    Arrays.fill(this.mData, this.mData.length - paramInt2, this.mData.length, -1);
-    offsetFullSpansForRemoval(paramInt1, paramInt2);
   }
   
   void setSpan(int paramInt, StaggeredGridLayoutManager.Span paramSpan)
@@ -287,7 +267,7 @@ class StaggeredGridLayoutManager$LazySpanLookup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.StaggeredGridLayoutManager.LazySpanLookup
  * JD-Core Version:    0.7.0.1
  */

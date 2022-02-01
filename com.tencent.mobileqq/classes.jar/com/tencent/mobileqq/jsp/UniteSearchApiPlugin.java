@@ -8,33 +8,30 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 public class UniteSearchApiPlugin
   extends WebViewPlugin
 {
-  public static final String a;
-  protected TroopMemberApiClient a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = UniteSearchApiPlugin.class.getSimpleName();
-  }
+  public static final String a = "UniteSearchApiPlugin";
+  protected TroopMemberApiClient a = TroopMemberApiClient.a();
   
   public UniteSearchApiPlugin()
   {
     this.mPluginNameSpace = "ftssearch";
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
+    this.a.a();
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
-    while ("ftssearch".equals(paramString2)) {
-      return false;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (paramVarArgs != null))
+    {
+      if (paramVarArgs.length == 0) {
+        return false;
+      }
+      if ("ftssearch".equals(paramString2)) {}
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UniteSearchApiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -15,18 +15,19 @@ class MethodAnimation$2
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.val$instance == null) || (this.val$instance.isDestroy()))
+    paramAnimator = this.val$instance;
+    if ((paramAnimator != null) && (!paramAnimator.isDestroy()))
     {
-      ViolaLogUtils.e("MethodAnimation", "RenderActionContextImpl-onAnimationEnd Instance == null NPE or instance is destroyed");
+      this.val$component.removeAnimationInfo(this.val$info);
+      ViolaBridgeManager.getInstance().callbackJavascript(this.val$instance.getInstanceId(), "animate", "callback", this.val$callBack, null, true);
       return;
     }
-    this.val$component.removeAnimationInfo(this.val$info);
-    ViolaBridgeManager.getInstance().callbackJavascript(this.val$instance.getInstanceId(), "animate", "callback", this.val$callBack, null, true);
+    ViolaLogUtils.e("MethodAnimation", "RenderActionContextImpl-onAnimationEnd Instance == null NPE or instance is destroyed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodAnimation.2
  * JD-Core Version:    0.7.0.1
  */

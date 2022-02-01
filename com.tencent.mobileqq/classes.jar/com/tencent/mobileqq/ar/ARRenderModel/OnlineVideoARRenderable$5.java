@@ -14,37 +14,36 @@ class OnlineVideoARRenderable$5
     {
       OnlineVideoARRenderable.a(this.this$0).stop();
     }
-    catch (Exception localException1)
+    catch (Exception localException1) {}
+    try
     {
-      for (;;)
-      {
-        try
-        {
-          OnlineVideoARRenderable.b(this.this$0, true);
-          OnlineVideoARRenderable.a(this.this$0, OnlineVideoARRenderable.a(this.this$0));
-          OnlineVideoARRenderable.h(this.this$0);
-          return;
-        }
-        catch (Exception localException2)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          localException2.printStackTrace();
-          QLog.d("AREngine_OnlineVideoARRenderable", 1, "onCompletion, exception=" + localException2.getMessage());
-        }
-        localException1 = localException1;
-        if (QLog.isColorLevel()) {
-          localException1.printStackTrace();
-        }
-        QLog.d("AREngine_OnlineVideoARRenderable", 1, "onCompletion, stop, exception=" + localException1.getMessage());
+      if (QLog.isColorLevel()) {
+        localException1.printStackTrace();
       }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCompletion, stop, exception=");
+      localStringBuilder.append(localException1.getMessage());
+      QLog.d("AREngine_OnlineVideoARRenderable", 1, localStringBuilder.toString());
+      OnlineVideoARRenderable.b(this.this$0, true);
+      OnlineVideoARRenderable.a(this.this$0, OnlineVideoARRenderable.a(this.this$0));
+      OnlineVideoARRenderable.h(this.this$0);
+      return;
+    }
+    catch (Exception localException2)
+    {
+      if (QLog.isColorLevel()) {
+        localException2.printStackTrace();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCompletion, exception=");
+      localStringBuilder.append(localException2.getMessage());
+      QLog.d("AREngine_OnlineVideoARRenderable", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.OnlineVideoARRenderable.5
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x59f.oidb_0x59f.BindContactInfo;
 import tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_808;
 import tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_808_web;
 import tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_common;
@@ -28,411 +29,303 @@ public class LoginWelcomeHandler
     super(paramQQAppInterface);
   }
   
-  /* Error */
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 6
-    //   3: aconst_null
-    //   4: astore 7
-    //   6: aload_2
-    //   7: invokevirtual 20	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   10: ifeq +332 -> 342
-    //   13: new 22	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   16: dup
-    //   17: invokespecial 25	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   20: astore_1
-    //   21: aload_1
-    //   22: aload_3
-    //   23: checkcast 27	[B
-    //   26: checkcast 27	[B
-    //   29: invokevirtual 31	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   32: pop
-    //   33: aload_1
-    //   34: getfield 35	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   37: invokevirtual 40	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   40: ifeq +226 -> 266
-    //   43: aload_1
-    //   44: getfield 35	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   47: invokevirtual 44	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   50: ifne +216 -> 266
-    //   53: new 46	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody
-    //   56: dup
-    //   57: invokespecial 47	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:<init>	()V
-    //   60: astore_3
-    //   61: aload_3
-    //   62: aload_1
-    //   63: getfield 51	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   66: invokevirtual 56	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   69: invokevirtual 62	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   72: invokevirtual 63	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   75: pop
-    //   76: aload_3
-    //   77: getfield 66	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:uint32_is_first_login	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   80: invokevirtual 40	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   83: ifeq +214 -> 297
-    //   86: aload_3
-    //   87: getfield 66	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:uint32_is_first_login	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   90: invokevirtual 44	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   93: iconst_1
-    //   94: if_icmpne +203 -> 297
-    //   97: iconst_4
-    //   98: anewarray 68	java/lang/Object
-    //   101: astore_1
-    //   102: aload_3
-    //   103: getfield 72	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:str_reg_mobile	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   106: invokevirtual 75	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   109: ifeq +141 -> 250
-    //   112: aload_3
-    //   113: getfield 72	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:str_reg_mobile	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   116: invokevirtual 78	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   119: astore_2
-    //   120: aload_1
-    //   121: iconst_0
-    //   122: aload_2
-    //   123: aastore
-    //   124: aload_3
-    //   125: getfield 82	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:msg_contact_bind_info	Ltencent/im/oidb/cmd0x59f/oidb_0x59f$BindContactInfo;
-    //   128: invokevirtual 85	tencent/im/oidb/cmd0x59f/oidb_0x59f$BindContactInfo:has	()Z
-    //   131: ifeq +124 -> 255
-    //   134: aload_3
-    //   135: getfield 82	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:msg_contact_bind_info	Ltencent/im/oidb/cmd0x59f/oidb_0x59f$BindContactInfo;
-    //   138: invokevirtual 88	tencent/im/oidb/cmd0x59f/oidb_0x59f$BindContactInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   141: checkcast 84	tencent/im/oidb/cmd0x59f/oidb_0x59f$BindContactInfo
-    //   144: astore_2
-    //   145: aload_1
-    //   146: iconst_1
-    //   147: aload_2
-    //   148: aastore
-    //   149: aload_3
-    //   150: getfield 91	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:uint32_gray_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   153: invokevirtual 40	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   156: ifeq +104 -> 260
-    //   159: aload_3
-    //   160: getfield 91	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:uint32_gray_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   163: invokevirtual 44	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   166: istore 4
-    //   168: aload_1
-    //   169: iconst_2
-    //   170: iload 4
-    //   172: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   175: aastore
-    //   176: aload 7
-    //   178: astore_2
-    //   179: aload_3
-    //   180: getfield 100	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:str_guide_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   183: invokevirtual 75	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   186: ifeq +11 -> 197
-    //   189: aload_3
-    //   190: getfield 100	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:str_guide_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   193: invokevirtual 78	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   196: astore_2
-    //   197: aload_1
-    //   198: iconst_3
-    //   199: aload_2
-    //   200: aastore
-    //   201: iconst_1
-    //   202: istore 5
-    //   204: aload_1
-    //   205: astore_2
-    //   206: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   209: ifeq +29 -> 238
-    //   212: ldc 107
-    //   214: iconst_2
-    //   215: new 109	java/lang/StringBuilder
-    //   218: dup
-    //   219: invokespecial 110	java/lang/StringBuilder:<init>	()V
-    //   222: ldc 112
-    //   224: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: iload 5
-    //   229: invokevirtual 119	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   232: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   235: invokestatic 126	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   238: aload_0
-    //   239: sipush 558
-    //   242: iload 5
-    //   244: aload_2
-    //   245: iconst_1
-    //   246: invokevirtual 130	com/tencent/mobileqq/loginwelcome/LoginWelcomeHandler:notifyUI	(IZLjava/lang/Object;Z)V
-    //   249: return
-    //   250: aconst_null
-    //   251: astore_2
-    //   252: goto -132 -> 120
-    //   255: aconst_null
-    //   256: astore_2
-    //   257: goto -112 -> 145
-    //   260: iconst_0
-    //   261: istore 4
-    //   263: goto -95 -> 168
-    //   266: ldc 107
-    //   268: iconst_1
-    //   269: new 109	java/lang/StringBuilder
-    //   272: dup
-    //   273: invokespecial 110	java/lang/StringBuilder:<init>	()V
-    //   276: ldc 132
-    //   278: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   281: aload_1
-    //   282: getfield 35	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   285: invokevirtual 44	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   288: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   291: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   294: invokestatic 138	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   297: aconst_null
-    //   298: astore_2
-    //   299: iconst_0
-    //   300: istore 5
-    //   302: goto -96 -> 206
-    //   305: astore_3
-    //   306: aconst_null
-    //   307: astore_1
-    //   308: aload_1
-    //   309: astore_2
-    //   310: iload 6
-    //   312: istore 5
-    //   314: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   317: ifeq -111 -> 206
-    //   320: ldc 107
-    //   322: iconst_2
-    //   323: ldc 140
-    //   325: aload_3
-    //   326: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   329: aload_1
-    //   330: astore_2
-    //   331: iload 6
-    //   333: istore 5
-    //   335: goto -129 -> 206
-    //   338: astore_3
-    //   339: goto -31 -> 308
-    //   342: aconst_null
-    //   343: astore_2
-    //   344: iload 6
-    //   346: istore 5
-    //   348: goto -142 -> 206
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	351	0	this	LoginWelcomeHandler
-    //   0	351	1	paramToServiceMsg	ToServiceMsg
-    //   0	351	2	paramFromServiceMsg	FromServiceMsg
-    //   0	351	3	paramObject	Object
-    //   166	96	4	i	int
-    //   202	145	5	bool1	boolean
-    //   1	344	6	bool2	boolean
-    //   4	173	7	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   13	102	305	java/lang/Throwable
-    //   266	297	305	java/lang/Throwable
-    //   102	120	338	java/lang/Throwable
-    //   124	145	338	java/lang/Throwable
-    //   149	168	338	java/lang/Throwable
-    //   168	176	338	java/lang/Throwable
-    //   179	197	338	java/lang/Throwable
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ToServiceMsg localToServiceMsg = makeOIDBPkg("OidbSvc.0x59f", 1439, 1, new oidb_0x59f.ReqBody().toByteArray());
-    localToServiceMsg.extraData.putBoolean("isFirst", paramBoolean);
-    sendPbReq(localToServiceMsg);
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginWelcomeHandler", 2, "requestGuide [" + paramBoolean + "]");
-    }
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
+    boolean bool4 = paramFromServiceMsg.isSuccess();
+    boolean bool3 = false;
     boolean bool2 = false;
-    if (paramFromServiceMsg.isSuccess()) {}
+    paramFromServiceMsg = null;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    boolean bool1 = bool3;
+    paramToServiceMsg = localObject2;
+    if (bool4) {}
     for (;;)
     {
       try
       {
         paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
         paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if ((!paramToServiceMsg.uint32_result.has()) || (paramToServiceMsg.uint32_result.get() != 0)) {
-          continue;
-        }
-        oidb_0x59f.RspBody localRspBody = new oidb_0x59f.RspBody();
-        localRspBody.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-        paramObject = new LoginWelcomeManager.ContactsGuideInfo();
-        int i;
-        if (localRspBody.uint32_addrlist_entrance_flag.has()) {
-          if (localRspBody.uint32_addrlist_entrance_flag.get() != 0)
+        if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0))
+        {
+          paramObject = new oidb_0x59f.RspBody();
+          paramObject.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+          if ((paramObject.uint32_is_first_login.has()) && (paramObject.uint32_is_first_login.get() == 1))
           {
-            bool1 = true;
-            paramObject.jdField_b_of_type_Boolean = bool1;
-            if (!localRspBody.msg_guidelines808.has()) {
+            paramToServiceMsg = new Object[4];
+            try
+            {
+              if (!paramObject.str_reg_mobile.has()) {
+                break label372;
+              }
+              paramFromServiceMsg = paramObject.str_reg_mobile.get();
+              paramToServiceMsg[0] = paramFromServiceMsg;
+              if (!paramObject.msg_contact_bind_info.has()) {
+                break label377;
+              }
+              paramFromServiceMsg = paramObject.msg_contact_bind_info.get();
+              paramToServiceMsg[1] = paramFromServiceMsg;
+              if (!paramObject.uint32_gray_flag.has()) {
+                break label382;
+              }
+              i = paramObject.uint32_gray_flag.get();
+              paramToServiceMsg[2] = Integer.valueOf(i);
+              paramFromServiceMsg = localObject1;
+              if (paramObject.str_guide_url.has()) {
+                paramFromServiceMsg = paramObject.str_guide_url.get();
+              }
+              paramToServiceMsg[3] = paramFromServiceMsg;
+              bool1 = true;
+            }
+            catch (Throwable paramObject)
+            {
+              paramFromServiceMsg = paramToServiceMsg;
               continue;
             }
-            paramToServiceMsg = (oidb_0x59f.Guidelines_808)localRspBody.msg_guidelines808.get();
-            if (paramToServiceMsg != null)
-            {
-              if (!paramToServiceMsg.uint32_welcomepage_flag.has()) {
-                continue;
-              }
-              if (paramToServiceMsg.uint32_welcomepage_flag.get() == 0) {
-                continue;
-              }
-              bool1 = true;
-              paramObject.jdField_a_of_type_Boolean = bool1;
-              if (!paramToServiceMsg.msg_guidelines_web.has()) {
-                continue;
-              }
-              paramToServiceMsg = (oidb_0x59f.Guidelines_808_web)paramToServiceMsg.msg_guidelines_web.get();
-              if (paramToServiceMsg != null)
-              {
-                if (!paramToServiceMsg.str_web_url.has()) {
-                  continue;
-                }
-                paramFromServiceMsg = paramToServiceMsg.str_web_url.get();
-                if (!TextUtils.isEmpty(paramFromServiceMsg)) {
-                  paramObject.jdField_a_of_type_JavaLangString = paramFromServiceMsg;
-                }
-                if (!paramToServiceMsg.uint32_friends_recomm_flag.has()) {
-                  continue;
-                }
-                i = paramToServiceMsg.uint32_friends_recomm_flag.get();
-                paramObject.jdField_a_of_type_Int = i;
-                if (!paramToServiceMsg.uint32_groups_recomm_flag.has()) {
-                  continue;
-                }
-                i = paramToServiceMsg.uint32_groups_recomm_flag.get();
-                paramObject.jdField_b_of_type_Int = i;
-              }
-            }
-            paramToServiceMsg = new Object[3];
-            paramToServiceMsg[0] = paramObject;
+          }
+          else
+          {
+            paramToServiceMsg = null;
+            bool1 = bool2;
           }
         }
-        try
+        else
         {
-          localCommonGuideInfo = new LoginWelcomeManager.CommonGuideInfo();
-          if (localRspBody.msg_guidelines813.has())
+          paramObject = new StringBuilder();
+          paramObject.append(" sso failed: ");
+          paramObject.append(paramToServiceMsg.uint32_result.get());
+          QLog.e("LoginWelcomeManager", 1, paramObject.toString());
+          bool1 = bool3;
+          paramToServiceMsg = localObject2;
+        }
+      }
+      catch (Throwable paramObject)
+      {
+        bool1 = bool3;
+        paramToServiceMsg = paramFromServiceMsg;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("LoginWelcomeManager", 2, "handleGetIsFirstLogin failed", paramObject);
+          paramToServiceMsg = paramFromServiceMsg;
+          bool1 = bool3;
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("handleGetIsFirstLogin, result ");
+        paramFromServiceMsg.append(bool1);
+        QLog.d("LoginWelcomeManager", 2, paramFromServiceMsg.toString());
+      }
+      notifyUI(558, bool1, paramToServiceMsg, true);
+      return;
+      label372:
+      paramFromServiceMsg = null;
+      continue;
+      label377:
+      paramFromServiceMsg = null;
+      continue;
+      label382:
+      int i = 0;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject = makeOIDBPkg("OidbSvc.0x59f", 1439, 1, new oidb_0x59f.ReqBody().toByteArray());
+    ((ToServiceMsg)localObject).extraData.putBoolean("isFirst", paramBoolean);
+    sendPbReq((ToServiceMsg)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("requestGuide [");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("LoginWelcomeHandler", 2, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool3 = paramFromServiceMsg.isSuccess();
+    LoginWelcomeManager.CommonGuideInfo localCommonGuideInfo = null;
+    paramFromServiceMsg = null;
+    Object localObject = null;
+    boolean bool2 = false;
+    paramToServiceMsg = paramFromServiceMsg;
+    boolean bool1 = bool2;
+    if (bool3) {}
+    for (;;)
+    {
+      try
+      {
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0))
+        {
+          oidb_0x59f.RspBody localRspBody = new oidb_0x59f.RspBody();
+          localRspBody.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+          paramObject = new LoginWelcomeManager.ContactsGuideInfo();
+          if ((!localRspBody.uint32_addrlist_entrance_flag.has()) || (localRspBody.uint32_addrlist_entrance_flag.get() == 0)) {
+            break label861;
+          }
+          bool1 = true;
+          paramObject.jdField_b_of_type_Boolean = bool1;
+          if (!localRspBody.msg_guidelines808.has()) {
+            break label867;
+          }
+          paramToServiceMsg = (oidb_0x59f.Guidelines_808)localRspBody.msg_guidelines808.get();
+          if (paramToServiceMsg != null)
           {
+            if ((!paramToServiceMsg.uint32_welcomepage_flag.has()) || (paramToServiceMsg.uint32_welcomepage_flag.get() == 0)) {
+              break label872;
+            }
+            bool1 = true;
+            paramObject.jdField_a_of_type_Boolean = bool1;
+            if (!paramToServiceMsg.msg_guidelines_web.has()) {
+              break label878;
+            }
+            paramToServiceMsg = (oidb_0x59f.Guidelines_808_web)paramToServiceMsg.msg_guidelines_web.get();
+            if (paramToServiceMsg != null)
+            {
+              if (!paramToServiceMsg.str_web_url.has()) {
+                break label883;
+              }
+              paramFromServiceMsg = paramToServiceMsg.str_web_url.get();
+              if (!TextUtils.isEmpty(paramFromServiceMsg)) {
+                paramObject.jdField_a_of_type_JavaLangString = paramFromServiceMsg;
+              }
+              if (!paramToServiceMsg.uint32_friends_recomm_flag.has()) {
+                break label890;
+              }
+              i = paramToServiceMsg.uint32_friends_recomm_flag.get();
+              paramObject.jdField_a_of_type_Int = i;
+              if (!paramToServiceMsg.uint32_groups_recomm_flag.has()) {
+                break label896;
+              }
+              i = paramToServiceMsg.uint32_groups_recomm_flag.get();
+              paramObject.jdField_b_of_type_Int = i;
+            }
+          }
+          paramToServiceMsg = new Object[3];
+          paramToServiceMsg[0] = paramObject;
+          try
+          {
+            localCommonGuideInfo = new LoginWelcomeManager.CommonGuideInfo();
+            if (!localRspBody.msg_guidelines813.has()) {
+              break label902;
+            }
             paramFromServiceMsg = (oidb_0x59f.Guidelines_common)localRspBody.msg_guidelines813.get();
             if (paramFromServiceMsg != null)
             {
               if (!paramFromServiceMsg.msg_guidelines_web.has()) {
-                continue;
+                break label907;
               }
               paramFromServiceMsg = (oidb_0x59f.Guidelines_common_web)paramFromServiceMsg.msg_guidelines_web.get();
               if (paramFromServiceMsg != null)
               {
-                if (!paramFromServiceMsg.str_web_url.has()) {
-                  continue;
+                paramObject = localObject;
+                if (paramFromServiceMsg.str_web_url.has()) {
+                  paramObject = paramFromServiceMsg.str_web_url.get();
                 }
-                paramObject = paramFromServiceMsg.str_web_url.get();
                 localCommonGuideInfo.jdField_a_of_type_JavaLangString = paramObject;
-                if ((!paramFromServiceMsg.uint32_groups_recomm_flag.has()) || (paramFromServiceMsg.uint32_groups_recomm_flag.get() != 1)) {
-                  continue;
+                if ((paramFromServiceMsg.uint32_groups_recomm_flag.has()) && (paramFromServiceMsg.uint32_groups_recomm_flag.get() == 1)) {
+                  localCommonGuideInfo.jdField_a_of_type_Int = 1;
+                } else if ((paramFromServiceMsg.uint32_set_gender.has()) && (paramFromServiceMsg.uint32_set_gender.get() == 1)) {
+                  localCommonGuideInfo.jdField_a_of_type_Int = 2;
+                } else if ((paramFromServiceMsg.uint32_set_birthday.has()) && (paramFromServiceMsg.uint32_set_birthday.get() == 1)) {
+                  localCommonGuideInfo.jdField_a_of_type_Int = 3;
+                } else if ((paramFromServiceMsg.uint32_set_head.has()) && (paramFromServiceMsg.uint32_set_head.get() == 1)) {
+                  localCommonGuideInfo.jdField_a_of_type_Int = 4;
+                } else if ((paramFromServiceMsg.uint32_set_school.has()) && (paramFromServiceMsg.uint32_set_school.get() == 1)) {
+                  localCommonGuideInfo.jdField_a_of_type_Int = 5;
+                } else if ((paramFromServiceMsg.uint32_set_region.has()) && (paramFromServiceMsg.uint32_set_region.get() == 1)) {
+                  localCommonGuideInfo.jdField_a_of_type_Int = 6;
+                } else if ((paramFromServiceMsg.uint32_set_company.has()) && (paramFromServiceMsg.uint32_set_company.get() == 1)) {
+                  localCommonGuideInfo.jdField_a_of_type_Int = 7;
+                } else {
+                  localCommonGuideInfo.jdField_a_of_type_Int = 0;
                 }
-                localCommonGuideInfo.jdField_a_of_type_Int = 1;
               }
             }
             if (QLog.isColorLevel()) {
               QLog.d("LoginWelcomeManager", 2, String.format("813 guide :type %s, url %s", new Object[] { Integer.valueOf(localCommonGuideInfo.jdField_a_of_type_Int), localCommonGuideInfo.jdField_a_of_type_JavaLangString }));
             }
             paramToServiceMsg[1] = localCommonGuideInfo;
-            if ((!localRspBody.uint32_need_not_req_nexttime.has()) || (localRspBody.uint32_need_not_req_nexttime.get() != 1)) {
-              continue;
+            if ((localRspBody.uint32_need_not_req_nexttime.has()) && (localRspBody.uint32_need_not_req_nexttime.get() == 1)) {
+              paramToServiceMsg[2] = Boolean.FALSE;
+            } else {
+              paramToServiceMsg[2] = Boolean.TRUE;
             }
-            paramToServiceMsg[2] = Boolean.FALSE;
             bool1 = true;
-            paramFromServiceMsg = paramToServiceMsg;
-            if (QLog.isColorLevel()) {
-              QLog.d("LoginWelcomeManager", 2, "handleRequestGuide, result " + bool1);
-            }
-            notifyUI(559, bool1, paramFromServiceMsg, true);
-            return;
-            bool1 = false;
-            continue;
-            bool1 = false;
-            continue;
-            paramToServiceMsg = null;
-            continue;
-            bool1 = false;
-            continue;
-            bool1 = false;
-            continue;
-            paramToServiceMsg = null;
-            continue;
-            paramFromServiceMsg = "";
-            continue;
-            i = 0;
-            continue;
-            i = 0;
-            continue;
           }
-          else
+          catch (Throwable paramObject)
           {
-            paramFromServiceMsg = null;
+            paramFromServiceMsg = paramToServiceMsg;
             continue;
           }
-          paramFromServiceMsg = null;
-          continue;
-          paramObject = null;
-          continue;
-          if ((!paramFromServiceMsg.uint32_set_gender.has()) || (paramFromServiceMsg.uint32_set_gender.get() != 1)) {
-            continue;
-          }
-          localCommonGuideInfo.jdField_a_of_type_Int = 2;
-          continue;
-          paramFromServiceMsg = paramToServiceMsg;
-        }
-        catch (Throwable paramObject) {}
-      }
-      catch (Throwable paramObject)
-      {
-        LoginWelcomeManager.CommonGuideInfo localCommonGuideInfo;
-        paramToServiceMsg = null;
-        continue;
-      }
-      boolean bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("LoginWelcomeManager", 2, "handleRequestGuide failed", paramObject);
-        paramFromServiceMsg = paramToServiceMsg;
-        bool1 = bool2;
-        continue;
-        if ((paramFromServiceMsg.uint32_set_birthday.has()) && (paramFromServiceMsg.uint32_set_birthday.get() == 1))
-        {
-          localCommonGuideInfo.jdField_a_of_type_Int = 3;
-        }
-        else if ((paramFromServiceMsg.uint32_set_head.has()) && (paramFromServiceMsg.uint32_set_head.get() == 1))
-        {
-          localCommonGuideInfo.jdField_a_of_type_Int = 4;
-        }
-        else if ((paramFromServiceMsg.uint32_set_school.has()) && (paramFromServiceMsg.uint32_set_school.get() == 1))
-        {
-          localCommonGuideInfo.jdField_a_of_type_Int = 5;
-        }
-        else if ((paramFromServiceMsg.uint32_set_region.has()) && (paramFromServiceMsg.uint32_set_region.get() == 1))
-        {
-          localCommonGuideInfo.jdField_a_of_type_Int = 6;
-        }
-        else if ((paramFromServiceMsg.uint32_set_company.has()) && (paramFromServiceMsg.uint32_set_company.get() == 1))
-        {
-          localCommonGuideInfo.jdField_a_of_type_Int = 7;
         }
         else
         {
-          localCommonGuideInfo.jdField_a_of_type_Int = 0;
-          continue;
-          paramToServiceMsg[2] = Boolean.TRUE;
-          continue;
-          QLog.e("LoginWelcomeManager", 1, "handleRequestGuide sso failed: " + paramToServiceMsg.uint32_result.get());
-          paramFromServiceMsg = null;
-          bool1 = false;
-          continue;
-          paramFromServiceMsg = null;
+          paramObject = new StringBuilder();
+          paramObject.append("handleRequestGuide sso failed: ");
+          paramObject.append(paramToServiceMsg.uint32_result.get());
+          QLog.e("LoginWelcomeManager", 1, paramObject.toString());
+          paramToServiceMsg = paramFromServiceMsg;
           bool1 = bool2;
         }
       }
+      catch (Throwable paramObject)
+      {
+        paramFromServiceMsg = localCommonGuideInfo;
+        paramToServiceMsg = paramFromServiceMsg;
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("LoginWelcomeManager", 2, "handleRequestGuide failed", paramObject);
+          bool1 = bool2;
+          paramToServiceMsg = paramFromServiceMsg;
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("handleRequestGuide, result ");
+        paramFromServiceMsg.append(bool1);
+        QLog.d("LoginWelcomeManager", 2, paramFromServiceMsg.toString());
+      }
+      notifyUI(559, bool1, paramToServiceMsg, true);
+      return;
+      label861:
+      bool1 = false;
+      continue;
+      label867:
+      paramToServiceMsg = null;
+      continue;
+      label872:
+      bool1 = false;
+      continue;
+      label878:
+      paramToServiceMsg = null;
+      continue;
+      label883:
+      paramFromServiceMsg = "";
+      continue;
+      label890:
+      int i = 0;
+      continue;
+      label896:
+      i = 0;
+      continue;
+      label902:
+      paramFromServiceMsg = null;
+      continue;
+      label907:
+      paramFromServiceMsg = null;
     }
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return LoginWelcomeManager.class;
   }
@@ -450,7 +343,7 @@ public class LoginWelcomeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginWelcomeHandler
  * JD-Core Version:    0.7.0.1
  */

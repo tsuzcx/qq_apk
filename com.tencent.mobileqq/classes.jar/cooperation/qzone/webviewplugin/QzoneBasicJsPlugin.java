@@ -20,24 +20,40 @@ public class QzoneBasicJsPlugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!paramString2.equals("Qzone")) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {}
-    for (;;)
+    if ((paramString2.equals("Qzone")) && (this.parentPlugin != null))
     {
-      return false;
-      if (("openUrl".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.TAG, 2, "openUrl=" + paramVarArgs[0]);
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if (("openUrl".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramJsBridgeListener = this.TAG;
+          paramString1 = new StringBuilder();
+          paramString1.append("openUrl=");
+          paramString1.append(paramVarArgs[0]);
+          QLog.i(paramJsBridgeListener, 2, paramString1.toString());
+        }
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).getString("url");
+          this.parentPlugin.mRuntime.a().loadUrl(paramJsBridgeListener);
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          QLog.e(this.TAG, 1, "handle openUrl", paramJsBridgeListener);
         }
       }
-      try
+      if (("shareFriendMsg".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
       {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]).getString("url");
-        this.parentPlugin.mRuntime.a().loadUrl(paramJsBridgeListener);
-        if ((!"shareFriendMsg".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length < 1)) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i(this.TAG, 2, "shareFriendMsg: arg=" + paramVarArgs[0]);
+        if (QLog.isColorLevel())
+        {
+          paramJsBridgeListener = this.TAG;
+          paramString1 = new StringBuilder();
+          paramString1.append("shareFriendMsg: arg=");
+          paramString1.append(paramVarArgs[0]);
+          QLog.i(paramJsBridgeListener, 2, paramString1.toString());
         }
         try
         {
@@ -57,22 +73,15 @@ public class QzoneBasicJsPlugin
         catch (Throwable paramJsBridgeListener)
         {
           QLog.e(this.TAG, 1, "handle shareFriendMsg", paramJsBridgeListener);
-          return false;
-        }
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        for (;;)
-        {
-          QLog.e(this.TAG, 1, "handle openUrl", paramJsBridgeListener);
         }
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneBasicJsPlugin
  * JD-Core Version:    0.7.0.1
  */

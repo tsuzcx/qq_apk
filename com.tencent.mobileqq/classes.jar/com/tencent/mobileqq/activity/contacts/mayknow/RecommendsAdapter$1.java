@@ -13,19 +13,32 @@ class RecommendsAdapter$1
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.RecommendsAdapter", 2, "onScrollStateChanged firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
-    }
-    if ((paramInt1 >= 1) && (paramInt1 - 1 >= 0) && (paramInt1 - 1 < this.a.getCount()))
+    if (QLog.isColorLevel())
     {
-      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 - 1);
-      if (paramAbsListView != null) {
-        this.a.a.b(paramAbsListView, 20, 0, 1);
+      paramAbsListView = new StringBuilder();
+      paramAbsListView.append("onScrollStateChanged firstVisibleItem: ");
+      paramAbsListView.append(paramInt1);
+      paramAbsListView.append(" visibleItemCount: ");
+      paramAbsListView.append(paramInt2);
+      paramAbsListView.append(" totalItemCount: ");
+      paramAbsListView.append(paramInt3);
+      QLog.d("contacts.RecommendsAdapter", 2, paramAbsListView.toString());
+    }
+    if (paramInt1 >= 1)
+    {
+      int i = paramInt1 - 1;
+      if ((i >= 0) && (i < this.a.getCount()))
+      {
+        paramAbsListView = (MayKnowRecommend)this.a.getItem(i);
+        if (paramAbsListView != null) {
+          this.a.a.b(paramAbsListView, 20, 0, 1);
+        }
       }
     }
-    if ((paramInt1 + paramInt2 < paramInt3) && (paramInt1 + paramInt2 >= 0) && (paramInt1 + paramInt2 < this.a.getCount()))
+    paramInt1 += paramInt2;
+    if ((paramInt1 < paramInt3) && (paramInt1 >= 0) && (paramInt1 < this.a.getCount()))
     {
-      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 + paramInt2);
+      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1);
       if (paramAbsListView != null) {
         this.a.a.b(paramAbsListView, 20, 0, 1);
       }
@@ -42,7 +55,7 @@ class RecommendsAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.RecommendsAdapter.1
  * JD-Core Version:    0.7.0.1
  */

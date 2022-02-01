@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,7 +14,7 @@ class QfileRecentPicFileTabView$3
   
   public void run()
   {
-    Object localObject = QfileTimeUtils.a(this.a.srvTime);
+    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getHistoryGroupByTime(this.a.srvTime);
     if (!this.this$0.a.containsKey(localObject)) {
       this.this$0.a.put(localObject, new ArrayList());
     }
@@ -27,7 +28,7 @@ class QfileRecentPicFileTabView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,32 +13,33 @@ public class TenDocGroupListEntryConfigBean
   
   public static TenDocGroupListEntryConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      paramArrayOfQConfItem = null;
-    }
-    TenDocGroupListEntryConfigBean localTenDocGroupListEntryConfigBean;
-    for (;;)
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      return paramArrayOfQConfItem;
-      localTenDocGroupListEntryConfigBean = new TenDocGroupListEntryConfigBean();
+      TenDocGroupListEntryConfigBean localTenDocGroupListEntryConfigBean = new TenDocGroupListEntryConfigBean();
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("AndroidGroupListJumpURL"))
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        boolean bool = paramArrayOfQConfItem.has("AndroidGroupListJumpURL");
+        if (bool)
         {
-          localTenDocGroupListEntryConfigBean.jdField_a_of_type_JavaLangString = localJSONObject.getString("AndroidGroupListJumpURL");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig mAndroidGroupListJumpURL = " + localTenDocGroupListEntryConfigBean.jdField_a_of_type_JavaLangString);
-          }
-        }
-        paramArrayOfQConfItem = localTenDocGroupListEntryConfigBean;
-        if (localJSONObject.has("AndroidGroupListWebEnable"))
-        {
-          localTenDocGroupListEntryConfigBean.jdField_a_of_type_Boolean = localJSONObject.getBoolean("AndroidGroupListWebEnable");
-          paramArrayOfQConfItem = localTenDocGroupListEntryConfigBean;
+          localTenDocGroupListEntryConfigBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.getString("AndroidGroupListJumpURL");
           if (QLog.isColorLevel())
           {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig AndroidGroupListWebEnable = " + localTenDocGroupListEntryConfigBean.jdField_a_of_type_Boolean);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handleTenDocGroupListEntryConfig mAndroidGroupListJumpURL = ");
+            localStringBuilder.append(localTenDocGroupListEntryConfigBean.jdField_a_of_type_JavaLangString);
+            QLog.d("TencentDocUserConfigBean", 2, localStringBuilder.toString());
+          }
+        }
+        if (paramArrayOfQConfItem.has("AndroidGroupListWebEnable"))
+        {
+          localTenDocGroupListEntryConfigBean.jdField_a_of_type_Boolean = paramArrayOfQConfItem.getBoolean("AndroidGroupListWebEnable");
+          if (QLog.isColorLevel())
+          {
+            paramArrayOfQConfItem = new StringBuilder();
+            paramArrayOfQConfItem.append("handleTenDocGroupListEntryConfig AndroidGroupListWebEnable = ");
+            paramArrayOfQConfItem.append(localTenDocGroupListEntryConfigBean.jdField_a_of_type_Boolean);
+            QLog.d("TencentDocUserConfigBean", 2, paramArrayOfQConfItem.toString());
             return localTenDocGroupListEntryConfigBean;
           }
         }
@@ -47,8 +48,9 @@ public class TenDocGroupListEntryConfigBean
       {
         paramArrayOfQConfItem.printStackTrace();
       }
+      return localTenDocGroupListEntryConfigBean;
     }
-    return localTenDocGroupListEntryConfigBean;
+    return null;
   }
   
   public String a()
@@ -66,7 +68,7 @@ public class TenDocGroupListEntryConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TenDocGroupListEntryConfigBean
  * JD-Core Version:    0.7.0.1
  */

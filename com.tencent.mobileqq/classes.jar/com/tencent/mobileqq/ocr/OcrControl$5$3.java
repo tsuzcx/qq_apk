@@ -24,13 +24,16 @@ class OcrControl$5$3
     catch (Exception localException)
     {
       localException.printStackTrace();
-      QLog.d("Q.ocr.control", 1, "collectPerformance exception: " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("collectPerformance exception: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.d("Q.ocr.control", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrControl.5.3
  * JD-Core Version:    0.7.0.1
  */

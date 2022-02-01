@@ -7,36 +7,36 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.activity.UserguideActivity;
 import com.tencent.mobileqq.activity.qfileJumpActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.GlobalImageCache;
-import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.LocaleManager;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.identity.AccountLifeCycleClient;
+import com.tencent.mobileqq.app.guard.GuardManager;
+import com.tencent.mobileqq.app.identity.IAccountApi;
 import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.kandian.biz.push.api.IKanDianMergeManager;
 import com.tencent.mobileqq.loginregister.ILoginRegisterApi;
 import com.tencent.mobileqq.managers.MsgPushReportHelper;
 import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
+import com.tencent.mobileqq.qqsec.api.ISafeBlockApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.statistics.ViewExposeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.MagnifierSDK;
+import com.tencent.qqperf.monitor.crash.tools.ActivityLifeCycleInfoRecordHelper;
 import com.tencent.qqperf.opt.clearmemory.MemoryConfigs;
 import com.tencent.util.QQKRPUtil;
 import com.tencent.widget.immersive.SystemBarCompact;
@@ -56,26 +56,21 @@ public class BaseActivityLifecycleCallbackImpl
     ILoginRegisterApi localILoginRegisterApi = (ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class);
     if (((!QBaseActivity.mAppForground) || (("com.tencent.mobileqq".equals(BaseApplicationImpl.processName)) && (!QBaseActivity.isUnLockSuccess))) && (paramQBaseActivity.getCanLock()) && (str != null) && (GesturePWDUtils.getJumpLock(paramQBaseActivity, str)) && (!(paramQBaseActivity instanceof GesturePWDUnlockActivity)) && (!(paramQBaseActivity instanceof UserguideActivity)) && (!(paramQBaseActivity instanceof JumpActivity)) && (!(paramQBaseActivity instanceof qfileJumpActivity)) && (!(paramQBaseActivity instanceof QfavJumpActivity)) && (!localILoginRegisterApi.getLoginActivityClass().isInstance(paramQBaseActivity)) && (!(paramQBaseActivity instanceof QlinkBridgeActivity)) && (!(paramQBaseActivity instanceof QlinkShareJumpActivity))) {
       paramQBaseActivity.startUnlockActivity();
+    } else if ((!QBaseActivity.mAppForground) && (paramQBaseActivity.isCanLock())) {
+      paramQBaseActivity.checkUnlockForSpecial();
+    } else if ((!QBaseActivity.mAppForground) && (!paramQBaseActivity.isCanLock())) {
+      QBaseActivity.isUnLockSuccess = true;
     }
-    for (;;)
+    if (((!QBaseActivity.mAppForground) || (((IAccountApi)QRoute.api(IAccountApi.class)).isIdentityFirstInit())) && (!TextUtils.isEmpty(str))) {
+      ((IAccountApi)QRoute.api(IAccountApi.class)).onForegroundSwitch();
+    }
+    if ((!QBaseActivity.mAppForground) && (!(paramQBaseActivity instanceof JumpActivity)))
     {
-      if ((!QBaseActivity.mAppForground) && (str != null)) {
-        AccountLifeCycleClient.a().b();
-      }
-      if ((!QBaseActivity.mAppForground) && (!(paramQBaseActivity instanceof JumpActivity)))
-      {
-        QBaseActivity.mAppForground = true;
-        GesturePWDUtils.setAppForground(paramQBaseActivity, QBaseActivity.mAppForground);
-      }
-      paramQBaseActivity.setStopFlag(0);
-      paramQBaseActivity.setCanLock(true);
-      return;
-      if ((!QBaseActivity.mAppForground) && (paramQBaseActivity.isCanLock())) {
-        paramQBaseActivity.checkUnlockForSpecial();
-      } else if ((!QBaseActivity.mAppForground) && (!paramQBaseActivity.isCanLock())) {
-        QBaseActivity.isUnLockSuccess = true;
-      }
+      QBaseActivity.mAppForground = true;
+      GesturePWDUtils.setAppForground(paramQBaseActivity, QBaseActivity.mAppForground);
     }
+    paramQBaseActivity.setStopFlag(0);
+    paramQBaseActivity.setCanLock(true);
   }
   
   private void b(QBaseActivity paramQBaseActivity)
@@ -96,7 +91,10 @@ public class BaseActivityLifecycleCallbackImpl
     }
     catch (Throwable paramQBaseActivity)
     {
-      while (!QLog.isDevelopLevel()) {}
+      label70:
+      break label70;
+    }
+    if (QLog.isDevelopLevel()) {
       QLog.i("qqBaseActivity", 4, "registerNFCEvent failed");
     }
   }
@@ -118,7 +116,10 @@ public class BaseActivityLifecycleCallbackImpl
     }
     catch (Throwable paramQBaseActivity)
     {
-      while (!QLog.isDevelopLevel()) {}
+      label70:
+      break label70;
+    }
+    if (QLog.isDevelopLevel()) {
       QLog.i("qqBaseActivity", 4, "disableNFCEvent failed");
     }
   }
@@ -129,7 +130,7 @@ public class BaseActivityLifecycleCallbackImpl
   
   public void doOnActivityCreate(Activity paramActivity, Bundle paramBundle)
   {
-    StatisticCollector.getInstance(paramActivity).logOnCreate(paramActivity);
+    ActivityLifeCycleInfoRecordHelper.a(paramActivity);
     if ((paramActivity instanceof BaseActivity)) {
       ((BaseActivity)paramActivity).updateAppRuntime();
     }
@@ -139,16 +140,17 @@ public class BaseActivityLifecycleCallbackImpl
   {
     if ((paramActivity instanceof QBaseActivity))
     {
-      StatisticCollector.getInstance(paramActivity).logOnDestroy(paramActivity);
-      AccountLifeCycleClient.a().a(paramActivity);
-      AppRuntime localAppRuntime = ((QBaseActivity)paramActivity).getAppRuntime();
+      ActivityLifeCycleInfoRecordHelper.d(paramActivity);
+      ((IAccountApi)QRoute.api(IAccountApi.class)).onActivityDestroy(paramActivity);
+      QBaseActivity localQBaseActivity = (QBaseActivity)paramActivity;
+      AppRuntime localAppRuntime = localQBaseActivity.getAppRuntime();
       if ((localAppRuntime instanceof AppInterface)) {
         ((AppInterface)localAppRuntime).removeHandler(paramActivity.getClass());
       }
       if ((MagnifierSDK.a().a().a > 0.0F) && (GlobalImageCache.a != null)) {
         GlobalImageCache.a.releaseLargeCache();
       }
-      e((QBaseActivity)paramActivity);
+      e(localQBaseActivity);
     }
   }
   
@@ -183,11 +185,12 @@ public class BaseActivityLifecycleCallbackImpl
   {
     if ((paramActivity instanceof QBaseActivity))
     {
-      paramBundle = ((QBaseActivity)paramActivity).getAppRuntime();
+      paramActivity = (QBaseActivity)paramActivity;
+      paramBundle = paramActivity.getAppRuntime();
       if ((paramBundle instanceof QQAppInterface)) {
-        QQKRPUtil.a((QQAppInterface)paramBundle, (QBaseActivity)paramActivity);
+        QQKRPUtil.a((QQAppInterface)paramBundle, paramActivity);
       }
-      d((QBaseActivity)paramActivity);
+      d(paramActivity);
     }
   }
   
@@ -199,23 +202,21 @@ public class BaseActivityLifecycleCallbackImpl
   
   public void doOnActivityPrePaused(Activity paramActivity)
   {
-    StatisticCollector.getInstance(paramActivity).logOnPause(paramActivity);
+    ActivityLifeCycleInfoRecordHelper.c(paramActivity);
   }
   
   public void doOnActivityPreResumed(Activity paramActivity)
   {
-    StatisticCollector.getInstance(paramActivity).logOnResume(paramActivity);
+    ActivityLifeCycleInfoRecordHelper.b(paramActivity);
   }
   
   public void doOnActivityResume(Activity paramActivity)
   {
-    if ((paramActivity instanceof QBaseActivity)) {
-      if (!(paramActivity instanceof NotificationActivity)) {
-        break label270;
-      }
-    }
-    for (;;)
+    if ((paramActivity instanceof QBaseActivity))
     {
+      if (!((ISafeBlockApi)QRoute.api(ISafeBlockApi.class)).isBlockNotifyActivity(paramActivity)) {
+        EquipmentLockImpl.a().a();
+      }
       if (EquipmentLockImpl.a == true) {
         EquipmentLockImpl.a().b();
       }
@@ -244,14 +245,12 @@ public class BaseActivityLifecycleCallbackImpl
         ViewExposeUtil.a(SystemClock.elapsedRealtime() - QBaseActivity.mAppBackgroundTime);
       }
       QBaseActivity.mAppBackgroundTime = 0L;
-      a((QBaseActivity)paramActivity);
+      paramActivity = (QBaseActivity)paramActivity;
+      a(paramActivity);
       if (GuardManager.a != null) {
-        GuardManager.a.b(1, ((QBaseActivity)paramActivity).getPreProcess());
+        GuardManager.a.b(1, paramActivity.getPreProcess());
       }
-      b((QBaseActivity)paramActivity);
-      return;
-      label270:
-      EquipmentLockImpl.a().a();
+      b(paramActivity);
     }
   }
   
@@ -283,79 +282,76 @@ public class BaseActivityLifecycleCallbackImpl
   
   public void doOnWindowFocusChanged(Activity paramActivity, boolean paramBoolean)
   {
-    int i = 2;
     QBaseActivity localQBaseActivity;
-    Object localObject;
     QQAppInterface localQQAppInterface;
     if ((paramActivity instanceof QBaseActivity))
     {
       localQBaseActivity = (QBaseActivity)paramActivity;
-      localObject = ((QBaseActivity)paramActivity).getAppRuntime();
-      if ((localObject instanceof QQAppInterface))
+      paramActivity = localQBaseActivity.getAppRuntime();
+      if ((paramActivity instanceof QQAppInterface))
       {
-        localQQAppInterface = (QQAppInterface)localObject;
-        if (!paramBoolean) {
-          break label248;
-        }
+        localQQAppInterface = (QQAppInterface)paramActivity;
+        if (!paramBoolean) {}
       }
     }
-    for (;;)
+    try
     {
-      try
+      boolean bool = AppSetting.c.equalsIgnoreCase("Xiaomi-MI 5");
+      i = 2;
+      if (bool)
       {
-        if (!AppSetting.c.equalsIgnoreCase("Xiaomi-MI 5")) {
-          continue;
-        }
-        localObject = localQBaseActivity.getRunnableRemoveNotification();
-        paramActivity = (Activity)localObject;
-        if (localObject == null) {
+        Runnable localRunnable = localQBaseActivity.getRunnableRemoveNotification();
+        paramActivity = localRunnable;
+        if (localRunnable == null) {
           paramActivity = new BaseActivityLifecycleCallbackImpl.1(this, localQBaseActivity, localQQAppInterface);
         }
         ThreadManager.getUIHandler().postDelayed(paramActivity, 3000L);
-        if ((localQBaseActivity.isNeedInterruptDoMulitWindow()) && (!localQBaseActivity.isAttachedToWindow()) && (localQBaseActivity.isInMultiWindow()))
-        {
-          boolean bool = localQBaseActivity.isNeedStatusBarGone();
-          if ((localQBaseActivity.getSystemBarComp() != null) && (localQBaseActivity.getSystemBarComp().isStatusBarVisible == bool))
-          {
-            if (!bool) {
-              break label276;
-            }
-            localQBaseActivity.getSystemBarComp().setStatusBarVisible(i, 0);
-            localQBaseActivity.setStatusBarVisibility(i);
-            localQBaseActivity.doInMultiWindowModeStatusBarVisibilityChange(i);
-          }
-        }
-        localQBaseActivity.setAttachedToWindow(true);
       }
-      catch (Throwable paramActivity)
+      else
       {
-        if (!QLog.isDevelopLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("notification", 2, "BaseActivity doOnWindowFocusChanged removeNotification");
         }
-        QLog.i("qqBaseActivity", 4, "doOnWindowFocusChanged failed");
+        localQQAppInterface.removeNotification();
+      }
+      if ((!localQBaseActivity.isNeedInterruptDoMulitWindow()) || (localQBaseActivity.isAttachedToWindow()) || (!localQBaseActivity.isInMultiWindow())) {
+        break label199;
+      }
+      bool = localQBaseActivity.isNeedStatusBarGone();
+      if ((localQBaseActivity.getSystemBarComp() == null) || (localQBaseActivity.getSystemBarComp().isStatusBarVisible != bool)) {
+        break label199;
+      }
+      if (!bool) {
+        break label275;
+      }
+    }
+    catch (Throwable paramActivity)
+    {
+      for (;;)
+      {
         continue;
+        int i = 0;
       }
-      paramActivity = (KandianMergeManager)localQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
-      if (paramActivity != null) {
-        paramActivity.a(paramBoolean, getClass());
-      }
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("notification", 2, "BaseActivity doOnWindowFocusChanged removeNotification");
-      }
-      localQQAppInterface.removeNotification();
-      continue;
-      label248:
-      paramActivity = ((QBaseActivity)paramActivity).getRunnableRemoveNotification();
+    }
+    localQBaseActivity.getSystemBarComp().setStatusBarVisible(i, 0);
+    localQBaseActivity.setStatusBarVisibility(i);
+    localQBaseActivity.doInMultiWindowModeStatusBarVisibilityChange(i);
+    label199:
+    localQBaseActivity.setAttachedToWindow(true);
+    break label249;
+    if (QLog.isDevelopLevel())
+    {
+      QLog.i("qqBaseActivity", 4, "doOnWindowFocusChanged failed");
+      break label249;
+      paramActivity = localQBaseActivity.getRunnableRemoveNotification();
       if (paramActivity != null)
       {
         ThreadManager.getUIHandler().removeCallbacks(paramActivity);
         localQBaseActivity.setRunnableRemoveNotification(null);
-        continue;
-        label276:
-        i = 0;
       }
     }
+    label249:
+    ((IKanDianMergeManager)localQQAppInterface.getRuntimeService(IKanDianMergeManager.class)).baseActivityFocusChange(paramBoolean, getClass());
   }
   
   public void onAccountChanged(Activity paramActivity)
@@ -385,7 +381,7 @@ public class BaseActivityLifecycleCallbackImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.lifecycle.BaseActivityLifecycleCallbackImpl
  * JD-Core Version:    0.7.0.1
  */

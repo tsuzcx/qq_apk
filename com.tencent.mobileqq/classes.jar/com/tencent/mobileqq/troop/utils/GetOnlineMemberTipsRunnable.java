@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.troop.onlinemember.api.ITroopOnlineMemberHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -23,27 +23,30 @@ public class GetOnlineMemberTipsRunnable
   public void run()
   {
     TroopChatPie localTroopChatPie = (TroopChatPie)this.a.get();
-    if (localTroopChatPie == null) {}
-    do
+    if (localTroopChatPie == null) {
+      return;
+    }
+    if ((localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (!localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) && (localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
     {
-      do
-      {
+      if (localTroopChatPie.a() == null) {
         return;
-      } while ((localTroopChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (localTroopChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) || (localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localTroopChatPie.a() == null));
-      TroopHandler localTroopHandler = (TroopHandler)localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+      }
+      ITroopOnlineMemberHandler localITroopOnlineMemberHandler = (ITroopOnlineMemberHandler)localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_ONLINE_MEMBER_HANDLER);
       String str = localTroopChatPie.a().a;
       if (!TextUtils.isEmpty(str))
       {
-        localTroopHandler.r(str);
+        localITroopOnlineMemberHandler.c(str);
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i(localTroopChatPie.b, 2, "mGetOnlineMemberTipsRunnable, getSessionInfo().curFriendUin == null");
+      if (QLog.isColorLevel()) {
+        QLog.i(localTroopChatPie.b, 2, "mGetOnlineMemberTipsRunnable, getSessionInfo().curFriendUin == null");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.GetOnlineMemberTipsRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -21,18 +21,19 @@ public abstract class StudyRoomBaseWebViewPlugin
   protected abstract boolean a(String paramString1, String paramString2, String paramString3, String... paramVarArgs);
   
   @Deprecated
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase(a()))) {
-      return false;
+    if ((paramString2 != null) && (paramString2.equalsIgnoreCase(a())))
+    {
+      this.a = paramJsBridgeListener;
+      return a(paramString1, paramString2, paramString3, paramVarArgs);
     }
-    this.a = paramJsBridgeListener;
-    return a(paramString1, paramString2, paramString3, paramVarArgs);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.webview.StudyRoomBaseWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -15,21 +15,21 @@ import com.tencent.mobileqq.utils.ContactUtils;
 public class TroopAioMsgNavigateFocusWord
   extends BaseTroopFocusAioMsgNavigateBar
 {
-  public TroopAioMsgNavigateFocusWord(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public TroopAioMsgNavigateFocusWord(QQAppInterface paramQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    super(paramQQAppInterface, paramContext, paramBaseSessionInfo);
     this.jdField_a_of_type_Int = 100;
   }
   
   public int a(int paramInt)
   {
-    return 2130847835;
+    return 2130847702;
   }
   
   public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString)
   {
     paramTextView1.setText(paramString);
-    paramTextView2.setText(2131699387);
+    paramTextView2.setText(2131699492);
     paramTextView2.setVisibility(0);
     paramTextView1.setVisibility(0);
   }
@@ -37,36 +37,37 @@ public class TroopAioMsgNavigateFocusWord
   public void a(int paramInt1, TroopAioAgent.Message paramMessage, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong)
   {
     super.a(paramInt1, paramMessage, paramString, paramInt2, paramTextView1, paramTextView2, paramLong);
-    paramString = null;
     if (paramLong != TroopAioMsgNavigateBar.a) {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, paramLong);
+    } else {
+      paramString = null;
     }
     if (paramString != null) {
-      paramTextView1.setText(ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramString.senderuin));
+      paramTextView1.setText(ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, paramString.senderuin));
     }
     if (((paramString instanceof MessageForQQWalletMsg)) && (MessageForQQWalletMsg.isRedPacketMsg(paramString)))
     {
       paramString = (MessageForQQWalletMsg)paramString;
-      if ((paramString.messageType == 7) || (paramString.messageType == 8))
+      if ((paramString.messageType != 7) && (paramString.messageType != 8))
       {
-        paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131719042));
-        paramMessage.b = true;
+        paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131718742));
+        paramMessage.a = true;
+        return;
       }
-    }
-    while (paramInt2 <= 0)
-    {
-      return;
-      paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131719026));
-      paramMessage.a = true;
+      paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131718758));
+      paramMessage.b = true;
       return;
     }
-    paramMessage.a = false;
-    paramString = this.jdField_a_of_type_AndroidContentContext.getResources();
-    if (paramInt2 > 99) {}
-    for (paramMessage = "99+";; paramMessage = Integer.valueOf(paramInt2))
+    if (paramInt2 > 0)
     {
-      paramTextView1.setText(paramString.getString(2131699390, new Object[] { paramMessage }));
-      return;
+      paramMessage.a = false;
+      paramString = this.jdField_a_of_type_AndroidContentContext.getResources();
+      if (paramInt2 > 99) {
+        paramMessage = "99+";
+      } else {
+        paramMessage = Integer.valueOf(paramInt2);
+      }
+      paramTextView1.setText(paramString.getString(2131699495, new Object[] { paramMessage }));
     }
   }
   
@@ -76,7 +77,7 @@ public class TroopAioMsgNavigateFocusWord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateFocusWord
  * JD-Core Version:    0.7.0.1
  */

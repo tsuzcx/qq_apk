@@ -18,7 +18,7 @@ class SuperWebView$1
       while (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        SuperWebView.access$101(this.this$0, str.substring("javascript:".length()), null);
+        SuperWebView.access$101(this.this$0, str.substring(11), null);
       }
     }
     Iterator localIterator = SuperWebView.access$000(this.this$0).iterator();
@@ -32,7 +32,7 @@ class SuperWebView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.SuperWebView.1
  * JD-Core Version:    0.7.0.1
  */

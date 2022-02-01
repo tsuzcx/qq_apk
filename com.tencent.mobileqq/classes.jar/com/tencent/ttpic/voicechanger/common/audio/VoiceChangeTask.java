@@ -6,7 +6,7 @@ import com.tencent.ttpic.baseutils.log.LogUtils;
 public class VoiceChangeTask
   extends AsyncTask<String, Integer, Integer>
 {
-  private static final String TAG = VoiceChangeTask.class.getSimpleName();
+  private static final String TAG = "VoiceChangeTask";
   private int mEnvironment;
   VoiceChangeTask.VoiceChangeTaskListener mListener;
   private String mOutputPath;
@@ -29,37 +29,63 @@ public class VoiceChangeTask
   
   protected void onCancelled()
   {
-    LogUtils.i(TAG, "<<<<<<<<<<【任务】变声：" + this.mSrcFile + " -> 取消");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<<<<<<<<<<【任务】变声：");
+    localStringBuilder.append(this.mSrcFile);
+    localStringBuilder.append(" -> 取消");
+    LogUtils.i(str, localStringBuilder.toString());
   }
   
   protected void onPostExecute(Integer paramInteger)
   {
     long l = System.currentTimeMillis() - this.timeStarted;
-    LogUtils.d(TAG, "<<<<<<<<<<【任务】变声：" + this.mOutputPath + "(" + String.valueOf(l) + ") -> 完成");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<<<<<<<<<<【任务】变声：");
+    localStringBuilder.append(this.mOutputPath);
+    localStringBuilder.append("(");
+    localStringBuilder.append(String.valueOf(l));
+    localStringBuilder.append(") -> 完成");
+    LogUtils.d(str, localStringBuilder.toString());
     if (this.mListener != null)
     {
-      if (paramInteger.intValue() == 1) {
+      if (paramInteger.intValue() == 1)
+      {
         this.mListener.onVoiceChangeTaskSuccess(l);
+        return;
       }
+      this.mListener.onVoiceChangeTaskFailed(paramInteger.intValue());
     }
-    else {
-      return;
-    }
-    this.mListener.onVoiceChangeTaskFailed(paramInteger.intValue());
   }
   
   protected void onPreExecute()
   {
-    LogUtils.d(TAG, ">>>>>>>>>>【任务】变声：" + this.mSrcFile + "(" + this.mVoiceKind + ", " + this.mEnvironment + ") -> 开始");
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">>>>>>>>>>【任务】变声：");
+    localStringBuilder.append(this.mSrcFile);
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.mVoiceKind);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.mEnvironment);
+    localStringBuilder.append(") -> 开始");
+    LogUtils.d((String)localObject, localStringBuilder.toString());
     this.timeStarted = System.currentTimeMillis();
-    if (this.mListener != null) {
-      this.mListener.onVoiceChangeTaskStart();
+    localObject = this.mListener;
+    if (localObject != null) {
+      ((VoiceChangeTask.VoiceChangeTaskListener)localObject).onVoiceChangeTaskStart();
     }
   }
   
   protected void onProgressUpdate(Integer... paramVarArgs)
   {
-    LogUtils.d(TAG, "onProgressUpdate(" + paramVarArgs + ")");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onProgressUpdate(");
+    localStringBuilder.append(paramVarArgs);
+    localStringBuilder.append(")");
+    LogUtils.d(str, localStringBuilder.toString());
   }
   
   public void setListener(VoiceChangeTask.VoiceChangeTaskListener paramVoiceChangeTaskListener)
@@ -69,7 +95,7 @@ public class VoiceChangeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.VoiceChangeTask
  * JD-Core Version:    0.7.0.1
  */

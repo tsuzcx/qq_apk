@@ -1,20 +1,23 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.Context;
-
-public final class Blueberry
+public class Blueberry
   extends Thread
 {
-  public Blueberry(Bryony.do paramdo, Context paramContext) {}
+  public Blueberry(Bullace paramBullace) {}
   
   public void run()
   {
-    this.yj.ph.a(this.Hg);
+    try
+    {
+      Bullace.a(this.this$0);
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Blueberry
  * JD-Core Version:    0.7.0.1
  */

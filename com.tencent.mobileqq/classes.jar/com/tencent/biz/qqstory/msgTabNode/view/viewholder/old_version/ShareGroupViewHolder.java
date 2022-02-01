@@ -35,55 +35,62 @@ public class ShareGroupViewHolder
     if (localShareGroupItem == null) {
       new GetShareGroupInfoHandler(paramMsgTabNodeInfo.a, String.valueOf(System.currentTimeMillis())).a();
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("zivonchen", 2, "ShareGroupViewHolder groupItem = " + localShareGroupItem + ", unionId = " + paramMsgTabNodeInfo.a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ShareGroupViewHolder groupItem = ");
+      localStringBuilder.append(localShareGroupItem);
+      localStringBuilder.append(", unionId = ");
+      localStringBuilder.append(paramMsgTabNodeInfo.a);
+      QLog.e("zivonchen", 2, localStringBuilder.toString());
     }
   }
   
   protected void a(ShareGroupItem paramShareGroupItem)
   {
     String str;
-    Object localObject;
-    int i;
-    RelativeLayout.LayoutParams localLayoutParams;
-    if ((paramShareGroupItem == null) || (TextUtils.isEmpty(paramShareGroupItem.getName())))
+    if ((paramShareGroupItem != null) && (!TextUtils.isEmpty(paramShareGroupItem.getName()))) {
+      str = paramShareGroupItem.getName();
+    } else {
+      str = HardCodeUtil.a(2131713807);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    Object localObject = (ShareGroupIconManager)SuperManager.a(24);
+    int i = this.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources().getDimensionPixelSize(2131298600);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    if (localLayoutParams == null)
     {
-      str = HardCodeUtil.a(2131713879);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      localObject = (ShareGroupIconManager)SuperManager.a(24);
-      i = this.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources().getDimensionPixelSize(2131298605);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      if (localLayoutParams != null) {
-        break label116;
-      }
       localLayoutParams = new RelativeLayout.LayoutParams(i, i);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      label91:
-      if (paramShareGroupItem != null) {
-        break label131;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((ShareGroupIconManager)localObject).a());
     }
-    label116:
-    do
+    else
     {
-      return;
-      str = paramShareGroupItem.getName();
-      break;
       localLayoutParams.width = i;
       localLayoutParams.height = i;
-      break label91;
-      localObject = ((ShareGroupIconManager)localObject).a(paramShareGroupItem.headerUnionIdList, str);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    } while (!QLog.isColorLevel());
-    label131:
-    paramShareGroupItem = new StringBuilder("nickname = ").append(str).append(", headerUnionIdList = ").append(paramShareGroupItem.headerUnionIdList);
-    QLog.e("zivonxxx", 2, "ShareGroupViewHolder: " + paramShareGroupItem.toString());
+    }
+    if (paramShareGroupItem == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((ShareGroupIconManager)localObject).a());
+      return;
+    }
+    localObject = ((ShareGroupIconManager)localObject).a(paramShareGroupItem.headerUnionIdList, str);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder("nickname = ");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(", headerUnionIdList = ");
+      ((StringBuilder)localObject).append(paramShareGroupItem.headerUnionIdList);
+      paramShareGroupItem = new StringBuilder();
+      paramShareGroupItem.append("ShareGroupViewHolder: ");
+      paramShareGroupItem.append(((StringBuilder)localObject).toString());
+      QLog.e("zivonxxx", 2, paramShareGroupItem.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.ShareGroupViewHolder
  * JD-Core Version:    0.7.0.1
  */

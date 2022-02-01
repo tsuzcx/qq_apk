@@ -20,18 +20,17 @@ public class ConfigProtocol$RelaySvrUDPCheckTLV
   public boolean Unpack(ByteBuffer paramByteBuffer)
   {
     int i = 0;
-    if (paramByteBuffer == null) {}
-    int k;
-    int j;
-    do
-    {
-      do
-      {
-        return false;
-        k = getLength();
-      } while (k < 2);
-      j = paramByteBuffer.ReadUInt16();
-    } while (j != (k - 2) / 6);
+    if (paramByteBuffer == null) {
+      return false;
+    }
+    int k = getLength();
+    if (k < 2) {
+      return false;
+    }
+    int j = paramByteBuffer.ReadUInt16();
+    if (j != (k - 2) / 6) {
+      return false;
+    }
     while (i < j)
     {
       k = paramByteBuffer.ReadUInt32();
@@ -47,10 +46,10 @@ public class ConfigProtocol$RelaySvrUDPCheckTLV
   
   public ConfigProtocol.stNetAddress getRelaySvrAddrByIndex(int paramInt)
   {
-    if ((paramInt >= this.addrList.size()) || (paramInt < 0)) {
-      return null;
+    if ((paramInt < this.addrList.size()) && (paramInt >= 0)) {
+      return (ConfigProtocol.stNetAddress)this.addrList.get(paramInt);
     }
-    return (ConfigProtocol.stNetAddress)this.addrList.get(paramInt);
+    return null;
   }
   
   public int getRelaySvrAddrCount()

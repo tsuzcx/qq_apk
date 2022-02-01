@@ -12,7 +12,6 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -23,6 +22,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.pic.UpCallBack;
 import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.selectmember.ResultRecord;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
@@ -110,25 +110,20 @@ public class ForwardMultServerShare
     localReqBody.msg_body.set(ForwardShareByServerHelper.a(this.jdField_a_of_type_AndroidOsBundle, paramString1, paramString2, null));
     paramString1 = new ArrayList();
     paramString2 = this.jdField_a_of_type_JavaUtilList.iterator();
-    if (paramString2.hasNext())
+    while (paramString2.hasNext())
     {
       ResultRecord localResultRecord = (ResultRecord)paramString2.next();
       oidb_cmd0xdc2.BatchSendReq localBatchSendReq = new oidb_cmd0xdc2.BatchSendReq();
       localBatchSendReq.recv_uin.set(ForwardUtils.a(localResultRecord.uin));
       if (localResultRecord.uinType == 0) {
         localBatchSendReq.send_type.set(0);
+      } else if (localResultRecord.uinType == 1) {
+        localBatchSendReq.send_type.set(1);
+      } else if (localResultRecord.uinType == 3000) {
+        localBatchSendReq.send_type.set(2);
       }
-      for (;;)
-      {
-        a(paramMap, localResultRecord, localBatchSendReq);
-        paramString1.add(localBatchSendReq);
-        break;
-        if (localResultRecord.uinType == 1) {
-          localBatchSendReq.send_type.set(1);
-        } else if (localResultRecord.uinType == 3000) {
-          localBatchSendReq.send_type.set(2);
-        }
-      }
+      a(paramMap, localResultRecord, localBatchSendReq);
+      paramString1.add(localBatchSendReq);
     }
     localReqBody.batch_send_req.set(paramString1);
     return localReqBody;
@@ -136,7 +131,8 @@ public class ForwardMultServerShare
   
   private void a()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(93), 500L);
+    MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+    localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(93), 500L);
     if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg instanceof StructMsgForImageShare))
     {
       d();
@@ -281,18 +277,17 @@ public class ForwardMultServerShare
       paramList = AIOUtils.a(localIntent, new int[] { 2 });
       this.jdField_a_of_type_AndroidOsBundle.remove("share_from_aio");
     }
-    for (;;)
+    else
     {
-      paramList.putExtra("open_chatfragment", false);
-      paramList.putExtra("fragment_id", 1);
-      paramList.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramList);
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardDialogMgr.b(this.jdField_a_of_type_AndroidAppActivity);
-      ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity);
-      return;
       paramList = AIOUtils.a(localIntent, null);
       paramList.putExtra("share_from_aio", true);
     }
+    paramList.putExtra("open_chatfragment", false);
+    paramList.putExtra("fragment_id", 1);
+    paramList.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramList);
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardDialogMgr.b(this.jdField_a_of_type_AndroidAppActivity);
+    ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity);
   }
   
   private void c()
@@ -319,12 +314,14 @@ public class ForwardMultServerShare
   {
     QLog.d(jdField_a_of_type_JavaLangString, 1, "reportException");
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ForwardUtils.a(localQQAppInterface, "0X800A739", new String[] { Integer.toString(i) });
-      return;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    int i;
+    if (localList == null) {
+      i = 0;
+    } else {
+      i = localList.size();
     }
+    ForwardUtils.a(localQQAppInterface, "0X800A739", new String[] { Integer.toString(i) });
   }
   
   void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
@@ -337,76 +334,81 @@ public class ForwardMultServerShare
   void a(List<ResultRecord> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    if ((paramList == null) || (paramList.isEmpty()))
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "null == multiTargetWithoutDataLine || multiTargetWithoutDataLine.isEmpty()");
-      e();
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mApp");
+        e();
+        return;
+      }
+      paramList = this.jdField_a_of_type_AndroidOsBundle;
+      if (paramList == null)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mExtraData");
+        e();
+        return;
+      }
+      if (this.jdField_a_of_type_AndroidAppActivity == null)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mActivity");
+        e();
+        return;
+      }
+      paramList = StructMsgFactory.a(paramList);
+      if (!(paramList instanceof AbsShareMsg))
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error !(structMsg instanceof AbsShareMsg)");
+        e();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)paramList);
+      if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidAppActivity))
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "sendArkWithStruct no network");
+        ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, HardCodeUtil.a(2131704894));
+        return;
+      }
+      a();
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mApp");
-      e();
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidOsBundle == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mExtraData");
-      e();
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidAppActivity == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mActivity");
-      e();
-      return;
-    }
-    paramList = StructMsgFactory.a(this.jdField_a_of_type_AndroidOsBundle);
-    if (!(paramList instanceof AbsShareMsg))
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error !(structMsg instanceof AbsShareMsg)");
-      e();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)paramList);
-    if (!NetworkUtil.d(this.jdField_a_of_type_AndroidAppActivity))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "sendArkWithStruct no network");
-      ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, HardCodeUtil.a(2131704818));
-      return;
-    }
-    a();
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "null == multiTargetWithoutDataLine || multiTargetWithoutDataLine.isEmpty()");
+    e();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 93)
     {
+      if (i == 94)
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "MSG_SDK_SHARE_REQUEST_TIMEOUT_STATUS");
+        this.jdField_a_of_type_Boolean = true;
+        if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
+        {
+          this.jdField_a_of_type_ComTencentMobileqqForwardForwardDialogMgr.b(this.jdField_a_of_type_AndroidAppActivity);
+          ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, HardCodeUtil.a(2131704893));
+        }
+        else
+        {
+          e();
+        }
+      }
     }
-    for (;;)
+    else
     {
-      return false;
       QLog.d(jdField_a_of_type_JavaLangString, 1, "MSG_SDK_SHARE_REQUEST_LOADING_STATUS");
       this.jdField_a_of_type_ComTencentMobileqqForwardForwardDialogMgr.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(94), 10000L);
-      continue;
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "MSG_SDK_SHARE_REQUEST_TIMEOUT_STATUS");
-      this.jdField_a_of_type_Boolean = true;
-      if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardDialogMgr.b(this.jdField_a_of_type_AndroidAppActivity);
-        ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, HardCodeUtil.a(2131704817));
-      }
-      else
-      {
-        e();
-      }
+      paramMessage = this.jdField_a_of_type_MqqOsMqqHandler;
+      paramMessage.sendMessageDelayed(paramMessage.obtainMessage(94), 10000L);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMultServerShare
  * JD-Core Version:    0.7.0.1
  */

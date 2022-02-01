@@ -15,48 +15,43 @@ class ImageCache$1
   
   protected int a(String paramString, Drawable paramDrawable)
   {
+    boolean bool = paramDrawable instanceof BitmapDrawable;
     int i = 0;
-    int j = 0;
-    if ((paramDrawable instanceof BitmapDrawable))
+    if (bool)
     {
       paramString = ((BitmapDrawable)paramDrawable).getBitmap();
       if (paramString != null) {
-        j = paramString.getRowBytes() * paramString.getHeight();
+        return paramString.getRowBytes() * paramString.getHeight();
       }
+      return 0;
     }
-    int m;
-    int k;
-    do
+    if ((paramDrawable instanceof AnimationDrawable))
     {
-      do
-      {
-        return j;
-      } while (!(paramDrawable instanceof AnimationDrawable));
       paramString = (AnimationDrawable)paramDrawable;
-      m = paramString.getNumberOfFrames();
-      k = 0;
-      j = i;
-    } while (k >= m);
-    paramDrawable = paramString.getFrame(k);
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
+      int m = paramString.getNumberOfFrames();
+      int k;
+      for (int j = 0; i < m; j = k)
       {
-        j = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * j + i;
+        paramDrawable = paramString.getFrame(i);
+        k = j;
+        if ((paramDrawable instanceof BitmapDrawable))
+        {
+          paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+          k = j;
+          if (paramDrawable != null) {
+            k = j + paramDrawable.getRowBytes() * paramDrawable.getHeight();
+          }
+        }
+        i += 1;
       }
+      return j;
     }
-    for (;;)
-    {
-      k += 1;
-      break;
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ImageCache.1
  * JD-Core Version:    0.7.0.1
  */

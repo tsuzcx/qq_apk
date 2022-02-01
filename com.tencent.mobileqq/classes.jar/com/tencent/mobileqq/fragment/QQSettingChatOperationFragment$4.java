@@ -1,65 +1,65 @@
 package com.tencent.mobileqq.fragment;
 
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.roamsetting.RoamSettingObserver;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
 class QQSettingChatOperationFragment$4
-  extends FriendListObserver
+  extends RoamSettingObserver
 {
   QQSettingChatOperationFragment$4(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
   
-  public void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map<String, Integer> paramMap)
+  protected void a(boolean paramBoolean, String paramString, Map<String, Integer> paramMap)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
-    }
-    this.a.a();
-    paramMap = this.a.getActivity();
-    if (paramMap == null)
+    if (!TextUtils.isEmpty(paramString))
     {
-      QLog.e("QQSettingChatOperationFragment", 1, "onSetGeneralSettingsC2CRoaming: activity is null");
-      return;
-    }
-    if (paramBoolean)
-    {
-      QQToast.a(paramMap.getApplicationContext(), 2, 2131695013, 0).b(this.a.getActivity().getTitleBarHeight());
-      return;
-    }
-    FormSwitchItem localFormSwitchItem;
-    if (QQSettingChatOperationFragment.a(this.a) != null)
-    {
-      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(null);
-      localFormSwitchItem = QQSettingChatOperationFragment.a(this.a);
-      if (QQSettingChatOperationFragment.a(this.a).getC2CRoamingSetting() != 1) {
-        break label176;
+      if (!paramString.startsWith("sync.c2c_message")) {
+        return;
       }
-    }
-    label176:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localFormSwitchItem.setChecked(paramBoolean);
-      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(this.a);
-      QQToast.a(paramMap.getApplicationContext(), 2131695012, 0).b(paramMap.getTitleBarHeight());
-      return;
-    }
-  }
-  
-  public void onSetMessageRaoam(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      QQSettingChatOperationFragment.a(this.a);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("onSetGeneralSettingsC2CRoaming issuc =");
+        paramString.append(paramBoolean);
+        QLog.d("SecuritySettingActivity", 2, paramString.toString());
+      }
+      this.a.a();
+      paramString = this.a.getBaseActivity();
+      boolean bool = true;
+      if (paramString == null)
+      {
+        QLog.e("QQSettingChatOperationFragment", 1, "onSetGeneralSettingsC2CRoaming: activity is null");
+        return;
+      }
+      if (paramBoolean)
+      {
+        QQToast.a(paramString.getApplicationContext(), 2, 2131695003, 0).b(this.a.getBaseActivity().getTitleBarHeight());
+        return;
+      }
+      if (QQSettingChatOperationFragment.a(this.a) != null)
+      {
+        QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(null);
+        paramMap = QQSettingChatOperationFragment.a(this.a);
+        if (QQSettingChatOperationFragment.a(this.a).getC2CRoamingSetting() == 1) {
+          paramBoolean = bool;
+        } else {
+          paramBoolean = false;
+        }
+        paramMap.setChecked(paramBoolean);
+        QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(this.a);
+      }
+      QQToast.a(paramString.getApplicationContext(), 2131695002, 0).b(paramString.getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.4
  * JD-Core Version:    0.7.0.1
  */

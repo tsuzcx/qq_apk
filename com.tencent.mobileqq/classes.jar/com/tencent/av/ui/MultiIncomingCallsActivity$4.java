@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.av.SessionMgr;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 
 class MultiIncomingCallsActivity$4
   extends BroadcastReceiver
@@ -16,9 +16,10 @@ class MultiIncomingCallsActivity$4
   {
     if (paramIntent.getAction().equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
     {
-      long l = AudioHelper.b();
+      long l = QQAudioHelper.b();
       paramContext = SessionMgr.a().a();
-      this.a.a(l, "BroadcastReceiver_qzone", this.a.getIntent(), paramContext);
+      paramIntent = this.a;
+      paramIntent.a(l, "BroadcastReceiver_qzone", paramIntent.getIntent(), paramContext);
       this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
       this.a.b("BroadcastReceiver_qzone");
     }
@@ -26,7 +27,7 @@ class MultiIncomingCallsActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallsActivity.4
  * JD-Core Version:    0.7.0.1
  */

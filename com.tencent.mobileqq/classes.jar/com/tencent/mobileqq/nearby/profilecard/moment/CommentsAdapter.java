@@ -12,7 +12,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.nearby.profilecard.moment.data.CommentInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -52,67 +51,76 @@ public class CommentsAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    paramView = LayoutInflater.from(paramViewGroup.getContext());
     int j = 0;
-    TextView localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561384, paramViewGroup, false);
+    TextView localTextView = (TextView)paramView.inflate(2131561223, paramViewGroup, false);
     CommentInfo localCommentInfo = (CommentInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject2 = localCommentInfo.a;
-    Object localObject1 = localObject2;
-    if (localObject2 != null)
+    Object localObject = localCommentInfo.a;
+    paramView = (View)localObject;
+    if (localObject != null)
     {
-      localObject1 = localObject2;
-      if (((String)localObject2).length() > 9) {
-        localObject1 = ((String)localObject2).substring(0, 8) + "...";
+      paramView = (View)localObject;
+      if (((String)localObject).length() > 9)
+      {
+        paramView = new StringBuilder();
+        paramView.append(((String)localObject).substring(0, 8));
+        paramView.append("...");
+        paramView = paramView.toString();
       }
     }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder((CharSequence)localObject1);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramView);
     localSpannableStringBuilder.setSpan(new StyleSpan(1), 0, localSpannableStringBuilder.length(), 33);
-    localObject2 = localCommentInfo.b;
-    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    localObject = localCommentInfo.b;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       localSpannableStringBuilder.append(" 回复 ");
-      localObject1 = localObject2;
-      if (((String)localObject2).length() > 9) {
-        localObject1 = ((String)localObject2).substring(0, 8) + "...";
+      paramView = (View)localObject;
+      if (((String)localObject).length() > 9)
+      {
+        paramView = new StringBuilder();
+        paramView.append(((String)localObject).substring(0, 8));
+        paramView.append("...");
+        paramView = paramView.toString();
       }
-      localSpannableStringBuilder.append((CharSequence)localObject1);
-      localSpannableStringBuilder.setSpan(new StyleSpan(1), localSpannableStringBuilder.length() - ((String)localObject1).length(), localSpannableStringBuilder.length(), 33);
+      localSpannableStringBuilder.append(paramView);
+      localSpannableStringBuilder.setSpan(new StyleSpan(1), localSpannableStringBuilder.length() - paramView.length(), localSpannableStringBuilder.length(), 33);
     }
     localSpannableStringBuilder.append("：").append(localCommentInfo.c);
-    localObject1 = localTextView.getPaint();
-    localObject2 = new ArrayList();
+    paramView = localTextView.getPaint();
+    localObject = new ArrayList();
     if (this.jdField_a_of_type_Int == 0) {
       this.jdField_a_of_type_Int = (UIUtils.a(localTextView.getContext()) - UIUtils.a(localTextView.getContext(), 85.0F));
     }
     int i = 0;
-    while (i < localSpannableStringBuilder.length())
+    paramInt = j;
+    while (paramInt < localSpannableStringBuilder.length())
     {
-      int k = j;
-      if (((TextPaint)localObject1).measureText(localSpannableStringBuilder.subSequence(j, i).toString()) > this.jdField_a_of_type_Int)
+      j = i;
+      if (paramView.measureText(localSpannableStringBuilder.subSequence(i, paramInt).toString()) > this.jdField_a_of_type_Int)
       {
-        ((List)localObject2).add(Integer.valueOf(i - 1));
-        k = i;
+        ((List)localObject).add(Integer.valueOf(paramInt - 1));
+        j = paramInt;
       }
-      i += 1;
-      j = k;
+      paramInt += 1;
+      i = j;
     }
-    localObject1 = ((List)localObject2).iterator();
-    while (((Iterator)localObject1).hasNext())
+    paramView = ((List)localObject).iterator();
+    while (paramView.hasNext())
     {
-      localObject2 = (Integer)((Iterator)localObject1).next();
-      if (((Integer)localObject2).intValue() < localSpannableStringBuilder.length() - 1) {
-        localSpannableStringBuilder.insert(((Integer)localObject2).intValue(), "\n");
+      localObject = (Integer)paramView.next();
+      if (((Integer)localObject).intValue() < localSpannableStringBuilder.length() - 1) {
+        localSpannableStringBuilder.insert(((Integer)localObject).intValue(), "\n");
       }
     }
     localTextView.setText(localSpannableStringBuilder);
     localTextView.setMovementMethod(LinkMovementMethod.getInstance());
     localTextView.setOnClickListener(new CommentsAdapter.1(this, paramViewGroup));
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localTextView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.CommentsAdapter
  * JD-Core Version:    0.7.0.1
  */

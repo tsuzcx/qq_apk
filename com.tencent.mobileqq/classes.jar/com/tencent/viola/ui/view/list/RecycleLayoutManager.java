@@ -33,88 +33,80 @@ public class RecycleLayoutManager
   {
     StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
     int i = this.mRecyclerView.getChildLayoutPosition(paramView);
-    if (localLayoutParams.getSpanIndex() % this.mColumn == 0)
-    {
-      paramInt3 = this.mInsetArry[3] + 0;
-      paramInt1 = this.mCellWidth + paramInt3;
+    if (localLayoutParams.getSpanIndex() % this.mColumn == 0) {
+      paramInt1 = this.mInsetArry[3] + 0;
     }
-    int k;
-    int j;
-    for (;;)
+    for (paramInt3 = this.mCellWidth;; paramInt3 = this.mCellWidth)
     {
-      k = paramView.getMeasuredHeight();
-      j = this.mPortraitInterval + paramInt2;
-      k += j;
-      if (!isFooterCell(i)) {
-        break label199;
-      }
-      if (i != 0) {
+      paramInt3 += paramInt1;
+      break;
+      paramInt1 = localLayoutParams.getSpanIndex();
+      paramInt3 = this.mColumn;
+      if (paramInt1 % paramInt3 == paramInt3 - 1)
+      {
+        paramInt3 = this.mParentWidth - this.mInsetArry[1];
+        paramInt1 = paramInt3 - this.mCellWidth;
         break;
       }
-      paramView.layout(0, paramInt2, this.mParentWidth, paramInt4);
-      return;
-      if (localLayoutParams.getSpanIndex() % this.mColumn == this.mColumn - 1)
-      {
-        paramInt1 = this.mParentWidth - this.mInsetArry[1];
-        paramInt3 = paramInt1 - this.mCellWidth;
-      }
-      else
-      {
-        paramInt1 = this.mCellWidth;
-        paramInt3 = this.mTransverseInterval;
-        j = localLayoutParams.getSpanIndex();
-        paramInt3 = this.mInsetArry[3] + j * (paramInt1 + paramInt3);
-        paramInt1 = this.mCellWidth + paramInt3;
-      }
+      paramInt1 = this.mCellWidth;
+      paramInt3 = this.mTransverseInterval;
+      j = localLayoutParams.getSpanIndex();
+      paramInt1 = this.mInsetArry[3] + (paramInt1 + paramInt3) * j;
     }
-    paramView.layout(0, j, this.mParentWidth, k);
-    return;
-    label199:
-    paramView.layout(paramInt3, j, paramInt1, k);
+    int k = paramView.getMeasuredHeight();
+    int j = this.mPortraitInterval + paramInt2;
+    k += j;
+    if (isFooterCell(i))
+    {
+      if (i == 0)
+      {
+        paramView.layout(0, paramInt2, this.mParentWidth, paramInt4);
+        return;
+      }
+      paramView.layout(0, j, this.mParentWidth, k);
+      return;
+    }
+    paramView.layout(paramInt1, j, paramInt3, k);
   }
   
   public void layoutDecoratedWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
     int i = this.mRecyclerView.getChildLayoutPosition(paramView);
-    if (localLayoutParams.getSpanIndex() % this.mColumn == 0)
-    {
-      paramInt3 = this.mInsetArry[3] + 0;
-      paramInt1 = this.mCellWidth + paramInt3;
+    if (localLayoutParams.getSpanIndex() % this.mColumn == 0) {
+      paramInt1 = this.mInsetArry[3] + 0;
     }
-    int k;
-    int j;
-    for (;;)
+    for (paramInt3 = this.mCellWidth;; paramInt3 = this.mCellWidth)
     {
-      k = paramView.getMeasuredHeight();
-      j = this.mPortraitInterval + paramInt2;
-      k += j;
-      if (!isFooterCell(i)) {
-        break label199;
-      }
-      if (i != 0) {
+      paramInt3 += paramInt1;
+      break;
+      paramInt1 = localLayoutParams.getSpanIndex();
+      paramInt3 = this.mColumn;
+      if (paramInt1 % paramInt3 == paramInt3 - 1)
+      {
+        paramInt3 = this.mParentWidth - this.mInsetArry[1];
+        paramInt1 = paramInt3 - this.mCellWidth;
         break;
       }
-      paramView.layout(0, paramInt2, this.mParentWidth, paramInt4);
-      return;
-      if (localLayoutParams.getSpanIndex() % this.mColumn == this.mColumn - 1)
-      {
-        paramInt1 = this.mParentWidth - this.mInsetArry[1];
-        paramInt3 = paramInt1 - this.mCellWidth;
-      }
-      else
-      {
-        paramInt1 = this.mCellWidth;
-        paramInt3 = this.mTransverseInterval;
-        j = localLayoutParams.getSpanIndex();
-        paramInt3 = this.mInsetArry[3] + j * (paramInt1 + paramInt3);
-        paramInt1 = this.mCellWidth + paramInt3;
-      }
+      paramInt1 = this.mCellWidth;
+      paramInt3 = this.mTransverseInterval;
+      j = localLayoutParams.getSpanIndex();
+      paramInt1 = this.mInsetArry[3] + (paramInt1 + paramInt3) * j;
     }
-    paramView.layout(0, j, this.mParentWidth, k);
-    return;
-    label199:
-    paramView.layout(paramInt3, j, paramInt1, k);
+    int k = paramView.getMeasuredHeight();
+    int j = this.mPortraitInterval + paramInt2;
+    k += j;
+    if (isFooterCell(i))
+    {
+      if (i == 0)
+      {
+        paramView.layout(0, paramInt2, this.mParentWidth, paramInt4);
+        return;
+      }
+      paramView.layout(0, j, this.mParentWidth, k);
+      return;
+    }
+    paramView.layout(paramInt1, j, paramInt3, k);
   }
   
   public void setAdapter(VRecyclerViewAdapter paramVRecyclerViewAdapter)
@@ -159,7 +151,7 @@ public class RecycleLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.RecycleLayoutManager
  * JD-Core Version:    0.7.0.1
  */

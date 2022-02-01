@@ -14,7 +14,7 @@ public final class oidb_cmd0xde0$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xde0.oidb_cmd0xde0.ReqBody
  * JD-Core Version:    0.7.0.1
  */

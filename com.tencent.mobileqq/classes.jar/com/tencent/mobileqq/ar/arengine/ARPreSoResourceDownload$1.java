@@ -7,7 +7,7 @@ import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
 import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -25,31 +25,34 @@ class ARPreSoResourceDownload$1
   
   public void onResp(NetResp paramNetResp)
   {
-    if (paramNetResp.mResult == 3) {
-      QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download init. url = " + ((HttpNetReq)paramNetResp.mReq).mReqUrl);
-    }
-    for (;;)
+    int i = paramNetResp.mResult;
+    boolean bool2 = true;
+    if (i == 3)
     {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("Download init. url = ");
+      ((StringBuilder)???).append(((HttpNetReq)paramNetResp.mReq).mReqUrl);
+      QLog.i("AREngine_ARPreSoResourceDownload", 1, ((StringBuilder)???).toString());
       return;
-      int i;
-      synchronized (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload))
+    }
+    label460:
+    synchronized (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload))
+    {
+      if (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload) != null)
       {
-        if (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload) != null)
+        i = 0;
+        if (i < ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).size())
         {
-          i = 0;
-          label67:
-          if (i < ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).size())
-          {
-            if (!((ARPreSoResourceDownload.DownloadInfo)ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.jdField_a_of_type_JavaLangString)) {
-              break label342;
-            }
-            ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).remove(i);
+          if (!((ARPreSoResourceDownload.DownloadInfo)ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.jdField_a_of_type_JavaLangString)) {
+            break label460;
           }
+          ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).remove(i);
         }
       }
       synchronized (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload))
       {
         ??? = (ARPreSoResourceDownload.ARResourceDownloadCallback)ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).get(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.b);
+        boolean bool1;
         if (paramNetResp.mResult == 0)
         {
           if (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload) != null) {
@@ -57,43 +60,64 @@ class ARPreSoResourceDownload$1
           }
           ??? = new File(((HttpNetReq)paramNetResp.mReq).mOutPath);
           String str = PortalUtils.a(((File)???).getAbsolutePath());
-          if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.b))) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.jdField_a_of_type_Int != 1))
+          if (!TextUtils.isEmpty(str))
           {
-            QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download end. MD5 check error. url = " + ((HttpNetReq)paramNetResp.mReq).mReqUrl + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
-            if (??? == null) {
-              continue;
+            bool1 = bool2;
+            if (str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.b)) {}
+          }
+          else
+          {
+            bool1 = bool2;
+            if (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.jdField_a_of_type_Int != 1)
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("Download end. MD5 check error. url = ");
+              localStringBuilder.append(((HttpNetReq)paramNetResp.mReq).mReqUrl);
+              localStringBuilder.append(", fileName = ");
+              localStringBuilder.append(((File)???).getAbsolutePath());
+              localStringBuilder.append(", fileMD5 = ");
+              localStringBuilder.append(str);
+              QLog.i("AREngine_ARPreSoResourceDownload", 1, localStringBuilder.toString());
+              if (??? != null) {
+                ((ARPreSoResourceDownload.ARResourceDownloadCallback)???).a(false, this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo);
+              }
             }
-            ((ARPreSoResourceDownload.ARResourceDownloadCallback)???).a(false, this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo);
-            return;
-            label342:
-            i += 1;
-            break label67;
-            paramNetResp = finally;
-            throw paramNetResp;
           }
         }
-      }
-      for (boolean bool = true; ??? != null; bool = false)
-      {
-        ((ARPreSoResourceDownload.ARResourceDownloadCallback)???).a(bool, this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo);
-        return;
-        if (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload) != null) {
-          ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).preDownloadSuccess(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.jdField_a_of_type_JavaLangString, -1L);
+        else
+        {
+          if (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload) != null) {
+            ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).preDownloadSuccess(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.jdField_a_of_type_JavaLangString, -1L);
+          }
+          bool1 = false;
         }
+        if (??? != null) {
+          ((ARPreSoResourceDownload.ARResourceDownloadCallback)???).a(bool1, this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo);
+        }
+        return;
       }
     }
   }
   
   public void onUpdateProgeress(NetReq arg1, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARPreSoResourceDownload", 2, "onUpdateProgeress. url = " + ((HttpNetReq)???).mReqUrl + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onUpdateProgeress. url = ");
+      ((StringBuilder)localObject1).append(((HttpNetReq)???).mReqUrl);
+      ((StringBuilder)localObject1).append(", total size = ");
+      ((StringBuilder)localObject1).append(paramLong2);
+      ((StringBuilder)localObject1).append(", cur downloaded size = ");
+      ((StringBuilder)localObject1).append(paramLong1);
+      QLog.d("AREngine_ARPreSoResourceDownload", 2, ((StringBuilder)localObject1).toString());
     }
     synchronized (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload))
     {
-      ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = (ARPreSoResourceDownload.ARResourceDownloadCallback)ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).get(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.b);
-      if (localARResourceDownloadCallback != null) {
-        localARResourceDownloadCallback.a(paramLong1, paramLong2);
+      localObject1 = (ARPreSoResourceDownload.ARResourceDownloadCallback)ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).get(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.b);
+      if (localObject1 != null) {
+        ((ARPreSoResourceDownload.ARResourceDownloadCallback)localObject1).a(paramLong1, paramLong2);
       }
       return;
     }
@@ -101,7 +125,7 @@ class ARPreSoResourceDownload$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.1
  * JD-Core Version:    0.7.0.1
  */

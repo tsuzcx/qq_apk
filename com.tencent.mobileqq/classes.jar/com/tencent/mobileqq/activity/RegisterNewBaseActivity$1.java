@@ -10,27 +10,28 @@ class RegisterNewBaseActivity$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 101)
     {
-    default: 
-      return;
-    case 101: 
-      this.a.closeDialog();
-      String str = paramMessage.obj.toString();
-      paramMessage = str;
-      if (str == null) {
-        paramMessage = this.a.getString(2131720376);
+      if (i != 110) {
+        return;
       }
-      this.a.notifyToast(paramMessage, 1);
+      this.a.closeDialog();
+      this.a.finish();
       return;
     }
     this.a.closeDialog();
-    this.a.finish();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131720115);
+    }
+    this.a.notifyToast(paramMessage, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterNewBaseActivity.1
  * JD-Core Version:    0.7.0.1
  */

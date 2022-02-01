@@ -39,16 +39,32 @@ public class GPUBaseFilter
   
   protected static void a(int paramInt, String paramString)
   {
-    if ((paramInt < 0) && (TopicSDK.b().a().a())) {
-      throw new RuntimeException("Unable to locate '" + paramString + "' in program");
+    if (paramInt < 0)
+    {
+      if (!TopicSDK.b().a().a()) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to locate '");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("' in program");
+      throw new RuntimeException(localStringBuilder.toString());
     }
   }
   
   private static void a(String paramString)
   {
     int i = GLES20.glGetError();
-    if ((i != 0) && (TopicSDK.b().a().a())) {
-      throw new RuntimeException(paramString + ": glError " + i);
+    if (i != 0)
+    {
+      if (!TopicSDK.b().a().a()) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(i);
+      throw new RuntimeException(localStringBuilder.toString());
     }
   }
   
@@ -114,19 +130,20 @@ public class GPUBaseFilter
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      ProgramTools.ProgramInfo localProgramInfo = ProgramTools.createProgram(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
-      if (localProgramInfo == null)
+      Object localObject = ProgramTools.createProgram(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+      if (localObject == null)
       {
-        if (TopicSDK.b().a().a()) {
-          throw new RuntimeException("failed creating program " + getClass().getSimpleName());
+        if (!TopicSDK.b().a().a()) {
+          return;
         }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("failed creating program ");
+        ((StringBuilder)localObject).append(getClass().getSimpleName());
+        throw new RuntimeException(((StringBuilder)localObject).toString());
       }
-      else
-      {
-        this.c = localProgramInfo.programId;
-        this.jdField_a_of_type_Boolean = true;
-        a();
-      }
+      this.c = ((ProgramTools.ProgramInfo)localObject).programId;
+      this.jdField_a_of_type_Boolean = true;
+      a();
     }
   }
   
@@ -140,7 +157,7 @@ public class GPUBaseFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.ttpic.GPUBaseFilter
  * JD-Core Version:    0.7.0.1
  */

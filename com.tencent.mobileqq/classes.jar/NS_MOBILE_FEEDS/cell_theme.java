@@ -50,25 +50,29 @@ public final class cell_theme
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.major_forecolor != null) {
-      paramJceOutputStream.write(this.major_forecolor, 0);
+    Object localObject = this.major_forecolor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.minor_forecolor != null) {
-      paramJceOutputStream.write(this.minor_forecolor, 1);
+    localObject = this.minor_forecolor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.is_deepcolor, 2);
-    if (this.photourl != null) {
-      paramJceOutputStream.write(this.photourl, 3);
+    localObject = this.photourl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
     paramJceOutputStream.write(this.is_optpalette, 4);
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 5);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_theme
  * JD-Core Version:    0.7.0.1
  */

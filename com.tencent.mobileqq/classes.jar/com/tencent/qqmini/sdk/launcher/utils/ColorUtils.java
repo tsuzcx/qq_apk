@@ -21,11 +21,15 @@ public class ColorUtils
   
   static
   {
-    sColorNameMap.put("transparent", Integer.valueOf(0));
-    sColorNameMap.put("none", Integer.valueOf(0));
+    Object localObject1 = sColorNameMap;
+    Object localObject2 = Integer.valueOf(0);
+    ((HashMap)localObject1).put("transparent", localObject2);
+    sColorNameMap.put("none", localObject2);
     sColorNameMap.put("aliceblue", Integer.valueOf(-984833));
     sColorNameMap.put("antiquewhite", Integer.valueOf(-332841));
-    sColorNameMap.put("aqua", Integer.valueOf(-16711681));
+    localObject1 = sColorNameMap;
+    localObject2 = Integer.valueOf(-16711681);
+    ((HashMap)localObject1).put("aqua", localObject2);
     sColorNameMap.put("aquamarine", Integer.valueOf(-8388652));
     sColorNameMap.put("azure", Integer.valueOf(-983041));
     sColorNameMap.put("beige", Integer.valueOf(-657956));
@@ -43,7 +47,7 @@ public class ColorUtils
     sColorNameMap.put("cornflowerblue", Integer.valueOf(-10185235));
     sColorNameMap.put("cornsilk", Integer.valueOf(-1828));
     sColorNameMap.put("crimson", Integer.valueOf(-2354116));
-    sColorNameMap.put("cyan", Integer.valueOf(-16711681));
+    sColorNameMap.put("cyan", localObject2);
     sColorNameMap.put("darkblue", Integer.valueOf(-16777077));
     sColorNameMap.put("darkcyan", Integer.valueOf(-16741493));
     sColorNameMap.put("darkgoldenrod", Integer.valueOf(-4684277));
@@ -63,20 +67,26 @@ public class ColorUtils
     sColorNameMap.put("darkviolet", Integer.valueOf(-7077677));
     sColorNameMap.put("deeppink", Integer.valueOf(-60269));
     sColorNameMap.put("deepskyblue", Integer.valueOf(-16728065));
-    sColorNameMap.put("dimgray", Integer.valueOf(-9868951));
-    sColorNameMap.put("dimgrey", Integer.valueOf(-9868951));
+    localObject1 = sColorNameMap;
+    localObject2 = Integer.valueOf(-9868951);
+    ((HashMap)localObject1).put("dimgray", localObject2);
+    sColorNameMap.put("dimgrey", localObject2);
     sColorNameMap.put("dodgerblue", Integer.valueOf(-14774017));
     sColorNameMap.put("firebrick", Integer.valueOf(-5103070));
     sColorNameMap.put("floralwhite", Integer.valueOf(-1296));
     sColorNameMap.put("forestgreen", Integer.valueOf(-14513374));
-    sColorNameMap.put("fuchsia", Integer.valueOf(-65281));
+    localObject2 = sColorNameMap;
+    localObject1 = Integer.valueOf(-65281);
+    ((HashMap)localObject2).put("fuchsia", localObject1);
     sColorNameMap.put("gainsboro", Integer.valueOf(-2302756));
     sColorNameMap.put("ghostwhite", Integer.valueOf(-460545));
     sColorNameMap.put("gold", Integer.valueOf(-10496));
     sColorNameMap.put("goldenrod", Integer.valueOf(-2448096));
     sColorNameMap.put("gray", Integer.valueOf(-7829368));
     sColorNameMap.put("grey", Integer.valueOf(-8355712));
-    sColorNameMap.put("green", Integer.valueOf(-16711936));
+    HashMap localHashMap = sColorNameMap;
+    localObject2 = Integer.valueOf(-16711936);
+    localHashMap.put("green", localObject2);
     sColorNameMap.put("greenyellow", Integer.valueOf(-5374161));
     sColorNameMap.put("honeydew", Integer.valueOf(-983056));
     sColorNameMap.put("hotpink", Integer.valueOf(-38476));
@@ -92,21 +102,25 @@ public class ColorUtils
     sColorNameMap.put("lightcoral", Integer.valueOf(-1015680));
     sColorNameMap.put("lightcyan", Integer.valueOf(-2031617));
     sColorNameMap.put("lightgoldenrodyellow", Integer.valueOf(-329006));
-    sColorNameMap.put("lightgray", Integer.valueOf(-2894893));
-    sColorNameMap.put("lightgrey", Integer.valueOf(-2894893));
+    localHashMap = sColorNameMap;
+    Integer localInteger = Integer.valueOf(-2894893);
+    localHashMap.put("lightgray", localInteger);
+    sColorNameMap.put("lightgrey", localInteger);
     sColorNameMap.put("lightgreen", Integer.valueOf(-7278960));
     sColorNameMap.put("lightpink", Integer.valueOf(-18751));
     sColorNameMap.put("lightsalmon", Integer.valueOf(-24454));
     sColorNameMap.put("lightseagreen", Integer.valueOf(-14634326));
     sColorNameMap.put("lightskyblue", Integer.valueOf(-7876870));
-    sColorNameMap.put("lightslategray", Integer.valueOf(-8943463));
-    sColorNameMap.put("lightslategrey", Integer.valueOf(-8943463));
+    localHashMap = sColorNameMap;
+    localInteger = Integer.valueOf(-8943463);
+    localHashMap.put("lightslategray", localInteger);
+    sColorNameMap.put("lightslategrey", localInteger);
     sColorNameMap.put("lightsteelblue", Integer.valueOf(-5192482));
     sColorNameMap.put("lightyellow", Integer.valueOf(-32));
-    sColorNameMap.put("lime", Integer.valueOf(-16711936));
+    sColorNameMap.put("lime", localObject2);
     sColorNameMap.put("limegreen", Integer.valueOf(-13447886));
     sColorNameMap.put("linen", Integer.valueOf(-331546));
-    sColorNameMap.put("magenta", Integer.valueOf(-65281));
+    sColorNameMap.put("magenta", localObject1);
     sColorNameMap.put("maroon", Integer.valueOf(-8388608));
     sColorNameMap.put("mediumaquamarine", Integer.valueOf(-10039894));
     sColorNameMap.put("mediumblue", Integer.valueOf(-16777011));
@@ -178,101 +192,105 @@ public class ColorUtils
     }
     String str = paramString.substring(paramString.length() - 2);
     paramString = paramString.substring(1, paramString.length() - 2);
-    return "#" + str + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("#");
+    localStringBuilder.append(str);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   private static Integer getColorByRGB(String paramString)
   {
-    Object localObject2 = null;
     if (paramString.startsWith("rgba")) {
       paramString = new StringTokenizer(paramString, "rgba()");
+    } else if (paramString.startsWith("rgb")) {
+      paramString = new StringTokenizer(paramString, "rgb()");
+    } else {
+      paramString = null;
     }
-    for (;;)
+    while ((paramString != null) && (paramString.hasMoreElements()))
     {
-      Object localObject1 = localObject2;
-      if (paramString != null)
+      Object localObject = paramString.nextToken();
+      if (localObject != null)
       {
-        localObject1 = localObject2;
-        if (paramString.hasMoreElements())
-        {
-          localObject1 = paramString.nextToken();
-          if (localObject1 == null) {
-            continue;
-          }
-          localObject1 = ((String)localObject1).split(",");
-          if (localObject1.length != 4) {
-            break label145;
-          }
-          localObject1 = Integer.valueOf(Color.argb((int)(Float.valueOf(localObject1[3].trim()).floatValue() * 255.0F), Integer.valueOf(localObject1[0].trim()).intValue(), Integer.valueOf(localObject1[1].trim()).intValue(), Integer.valueOf(localObject1[2].trim()).intValue()));
+        localObject = ((String)localObject).split(",");
+        if (localObject.length == 4) {
+          return Integer.valueOf(Color.argb((int)(Float.valueOf(localObject[3].trim()).floatValue() * 255.0F), Integer.valueOf(localObject[0].trim()).intValue(), Integer.valueOf(localObject[1].trim()).intValue(), Integer.valueOf(localObject[2].trim()).intValue()));
         }
-      }
-      return localObject1;
-      if (paramString.startsWith("rgb"))
-      {
-        paramString = new StringTokenizer(paramString, "rgb()");
-        continue;
-        label145:
-        if (localObject1.length == 3) {
-          return Integer.valueOf(Color.rgb(Integer.valueOf(localObject1[0].trim()).intValue(), Integer.valueOf(localObject1[1].trim()).intValue(), Integer.valueOf(localObject1[2].trim()).intValue()));
+        if (localObject.length == 3) {
+          return Integer.valueOf(Color.rgb(Integer.valueOf(localObject[0].trim()).intValue(), Integer.valueOf(localObject[1].trim()).intValue(), Integer.valueOf(localObject[2].trim()).intValue()));
         }
-      }
-      else
-      {
-        paramString = null;
       }
     }
+    return null;
   }
   
   private static int getColorBySharp(String paramString)
   {
     long l2 = Long.parseLong(paramString.substring(1), 16);
     int k;
-    int i;
     int j;
-    long l1;
     if (paramString.length() == 4)
     {
       k = Integer.parseInt(paramString.substring(1, 4), 16);
       i = k & 0xF00;
       j = k & 0xF0;
       k &= 0xF;
-      l1 = Color.rgb(i >> 8 | i >> 4, j | j >> 4, k | k << 4);
     }
-    for (;;)
+    long l1;
+    for (int i = Color.rgb(i >> 8 | i >> 4, j | j >> 4, k | k << 4);; i = Color.argb(i, i, i, i))
     {
-      return (int)l1;
-      if (paramString.length() == 5)
-      {
-        int m = Integer.parseInt(paramString.substring(1, 5), 16);
-        i = m & 0xF;
-        j = m & 0xF;
-        k = m & 0xF;
-        m &= 0xF;
-        l1 = Color.argb(m | m << 4, i | i << 4, j | j << 4, k | k << 4);
+      l1 = i;
+      break label172;
+      if (paramString.length() != 5) {
+        break;
       }
-      else if (paramString.length() == 7)
-      {
-        l1 = l2 | 0xFF000000;
-      }
-      else
-      {
-        l1 = l2;
-        if (paramString.length() == 9) {
-          l1 = (l2 & 0xFFFFFF00) >> 8 | (0xFF & l2) << 24;
-        }
+      i = Integer.parseInt(paramString.substring(1, 5), 16) & 0xF;
+      i |= i << 4;
+    }
+    if (paramString.length() == 7)
+    {
+      l1 = l2 | 0xFF000000;
+    }
+    else
+    {
+      l1 = l2;
+      if (paramString.length() == 9) {
+        l1 = (0xFF & l2) << 24 | (l2 & 0xFFFFFF00) >> 8;
       }
     }
+    label172:
+    return (int)l1;
   }
   
   public static boolean isColor(String paramString)
   {
-    if ((Integer)sColorNameMap.get(paramString.toLowerCase(Locale.ROOT)) != null) {
+    Integer localInteger = (Integer)sColorNameMap.get(paramString.toLowerCase(Locale.ROOT));
+    boolean bool2 = true;
+    if (localInteger != null) {
       return true;
     }
-    if ((paramString.startsWith("#")) || (paramString.startsWith("rgb")) || (paramString.endsWith(")")) || (paramString.startsWith("rgba")) || (paramString.endsWith(")"))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    boolean bool1 = bool2;
+    if (!paramString.startsWith("#"))
+    {
+      bool1 = bool2;
+      if (!paramString.startsWith("rgb"))
+      {
+        bool1 = bool2;
+        if (!paramString.endsWith(")"))
+        {
+          bool1 = bool2;
+          if (!paramString.startsWith("rgba"))
+          {
+            if (paramString.endsWith(")")) {
+              return true;
+            }
+            bool1 = false;
+          }
+        }
+      }
     }
+    return bool1;
   }
   
   public static int parseColor(String paramString)
@@ -282,36 +300,34 @@ public class ColorUtils
       if (TextUtils.isEmpty(paramString)) {
         return 0;
       }
-      if ((paramString.startsWith("rgba")) || (paramString.startsWith("rgb")))
+      if ((!paramString.startsWith("rgba")) && (!paramString.startsWith("rgb")))
       {
-        paramString = getColorByRGB(paramString);
+        if (paramString.charAt(0) == '#') {
+          return getColorBySharp(paramString);
+        }
+        paramString = (Integer)sColorNameMap.get(paramString.toLowerCase(Locale.ROOT));
         if (paramString != null) {
           return paramString.intValue();
         }
       }
       else
       {
-        if (paramString.charAt(0) == '#') {
-          return getColorBySharp(paramString);
-        }
-        paramString = (Integer)sColorNameMap.get(paramString.toLowerCase(Locale.ROOT));
+        paramString = getColorByRGB(paramString);
         if (paramString != null)
         {
           int i = paramString.intValue();
           return i;
         }
       }
-    }
-    catch (Exception paramString)
-    {
       return 0;
     }
+    catch (Exception paramString) {}
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.ColorUtils
  * JD-Core Version:    0.7.0.1
  */

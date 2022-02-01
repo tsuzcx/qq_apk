@@ -36,16 +36,19 @@ public class GeneralRecommendFeedItem
   {
     super.copy(paramObject);
     paramObject = (GeneralRecommendFeedItem)paramObject;
-    if (paramObject.mUserUIItem != null)
+    Object localObject = paramObject.mUserUIItem;
+    if (localObject != null)
     {
-      this.mUserUIItem = paramObject.mUserUIItem;
-      AssertUtils.a(this.mUserUIItem);
+      this.mUserUIItem = ((QQUserUIItem)localObject);
+      AssertUtils.checkNotNull(this.mUserUIItem);
     }
-    if (paramObject.blurb != null) {
-      this.blurb = paramObject.blurb;
+    localObject = paramObject.blurb;
+    if (localObject != null) {
+      this.blurb = ((String)localObject);
     }
-    if (paramObject.recommendId != -1L) {
-      this.recommendId = paramObject.recommendId;
+    long l = paramObject.recommendId;
+    if (l != -1L) {
+      this.recommendId = l;
     }
     if (!TextUtils.isEmpty(paramObject.recommendTitle)) {
       this.recommendTitle = paramObject.recommendTitle;
@@ -57,34 +60,32 @@ public class GeneralRecommendFeedItem
     this.feedId = paramString;
     super.setDate(String.valueOf(paramGeneralFeed.date.get()));
     this.mVideoSeq = paramGeneralFeed.seq.get();
-    if (paramGeneralFeed.is_end.get() == 1)
-    {
+    boolean bool;
+    if (paramGeneralFeed.is_end.get() == 1) {
       bool = true;
-      this.mIsVideoEnd = bool;
-      if (paramGeneralFeed.share_to_discover.get() != 1) {
-        break label195;
-      }
-    }
-    label195:
-    for (boolean bool = true;; bool = false)
-    {
-      this.mIsContribute = bool;
-      this.mVideoNextCookie = paramGeneralFeed.next_cookie.get().toStringUtf8();
-      this.mVideoPullType = paramGeneralFeed.pull_type.get();
-      if (paramGeneralFeed.ws_schemas.size() == 2)
-      {
-        this.wsSchemaForMain = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(0)).toStringUtf8();
-        this.wsSchemaForMemories = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(1)).toStringUtf8();
-      }
-      paramString = new QQUserUIItem();
-      paramString.convertFrom(paramGeneralFeed.user);
-      this.mUserUIItem = ((UserManager)SuperManager.a(2)).a(paramString);
-      AssertUtils.a(this.mUserUIItem);
-      this.ownerId = this.mUserUIItem.getUnionId();
-      return true;
+    } else {
       bool = false;
-      break;
     }
+    this.mIsVideoEnd = bool;
+    if (paramGeneralFeed.share_to_discover.get() == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.mIsContribute = bool;
+    this.mVideoNextCookie = paramGeneralFeed.next_cookie.get().toStringUtf8();
+    this.mVideoPullType = paramGeneralFeed.pull_type.get();
+    if (paramGeneralFeed.ws_schemas.size() == 2)
+    {
+      this.wsSchemaForMain = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(0)).toStringUtf8();
+      this.wsSchemaForMemories = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(1)).toStringUtf8();
+    }
+    paramString = new QQUserUIItem();
+    paramString.convertFrom(paramGeneralFeed.user);
+    this.mUserUIItem = ((UserManager)SuperManager.a(2)).a(paramString);
+    AssertUtils.checkNotNull(this.mUserUIItem);
+    this.ownerId = this.mUserUIItem.getUnionId();
+    return true;
   }
   
   public byte[] covertToByte()
@@ -93,22 +94,24 @@ public class GeneralRecommendFeedItem
     SerializationPB.VideoListFeed localVideoListFeed = super.writeVideoListFeedLocalPB();
     localGeneralRecommendFeed.video_list_feed.set(localVideoListFeed);
     PBStringField localPBStringField = localGeneralRecommendFeed.blurb;
-    if (TextUtils.isEmpty(this.blurb)) {}
-    for (String str = "";; str = this.blurb)
-    {
-      localPBStringField.set(str);
-      localGeneralRecommendFeed.recommend_id.set(this.recommendId);
-      if (!TextUtils.isEmpty(this.recommendTitle)) {
-        localGeneralRecommendFeed.title_wording.set(ByteStringMicro.copyFromUtf8(this.recommendTitle));
-      }
-      if (!TextUtils.isEmpty(this.wsSchemaForMain)) {
-        localVideoListFeed.ws_schema_main.set(ByteStringMicro.copyFromUtf8(this.wsSchemaForMain));
-      }
-      if (!TextUtils.isEmpty(this.wsSchemaForMemories)) {
-        localVideoListFeed.ws_schema_memories.set(ByteStringMicro.copyFromUtf8(this.wsSchemaForMemories));
-      }
-      return localGeneralRecommendFeed.toByteArray();
+    String str;
+    if (TextUtils.isEmpty(this.blurb)) {
+      str = "";
+    } else {
+      str = this.blurb;
     }
+    localPBStringField.set(str);
+    localGeneralRecommendFeed.recommend_id.set(this.recommendId);
+    if (!TextUtils.isEmpty(this.recommendTitle)) {
+      localGeneralRecommendFeed.title_wording.set(ByteStringMicro.copyFromUtf8(this.recommendTitle));
+    }
+    if (!TextUtils.isEmpty(this.wsSchemaForMain)) {
+      localVideoListFeed.ws_schema_main.set(ByteStringMicro.copyFromUtf8(this.wsSchemaForMain));
+    }
+    if (!TextUtils.isEmpty(this.wsSchemaForMemories)) {
+      localVideoListFeed.ws_schema_memories.set(ByteStringMicro.copyFromUtf8(this.wsSchemaForMemories));
+    }
+    return localGeneralRecommendFeed.toByteArray();
   }
   
   @NonNull
@@ -163,12 +166,18 @@ public class GeneralRecommendFeedItem
   
   public String toString()
   {
-    return "GeneralRecommendFeedItem{blurb='" + this.blurb + '\'' + '}' + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GeneralRecommendFeedItem{blurb='");
+    localStringBuilder.append(this.blurb);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.transition;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class TransitionAnimHelper$2
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   TransitionAnimHelper$2(TransitionAnimHelper paramTransitionAnimHelper, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
@@ -26,7 +26,7 @@ class TransitionAnimHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.transition.TransitionAnimHelper.2
  * JD-Core Version:    0.7.0.1
  */

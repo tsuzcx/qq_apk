@@ -3,45 +3,82 @@ package com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodu
 import android.support.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.ilive.litepages.room.webmodule.event.SendChatInputEvent;
+import com.tencent.ilive.audiencepages.room.events.PlayerStateEvent;
+import com.tencent.ilive.interfaces.IAudienceRoomPager;
+import com.tencent.ilivesdk.avplayerbuilderservice_interface.AVPlayerBuilderServiceInterface;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class CustomWebModule$7
-  implements Observer<SendChatInputEvent>
+  implements Observer<PlayerStateEvent>
 {
   CustomWebModule$7(CustomWebModule paramCustomWebModule) {}
   
-  public void a(@Nullable SendChatInputEvent paramSendChatInputEvent)
+  public void a(@Nullable PlayerStateEvent paramPlayerStateEvent)
   {
-    if ((paramSendChatInputEvent == null) || (this.a.a == null)) {}
-    int i;
-    do
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("PlayerStateEvent playerState = ");
+    ((StringBuilder)localObject).append(paramPlayerStateEvent.playerState);
+    ((StringBuilder)localObject).append(" errCode = ");
+    ((StringBuilder)localObject).append(paramPlayerStateEvent.errCode);
+    QLog.d("IliveCustomWebModule", 1, ((StringBuilder)localObject).toString());
+    int j = CustomWebModule.18.a[paramPlayerStateEvent.playerState.ordinal()];
+    int i = 4;
+    if ((j != 1) && (j != 2))
     {
-      return;
-      i = paramSendChatInputEvent.mType;
-      if (i == 1) {
-        try
+      if (j != 3)
+      {
+        if (j != 4)
         {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("content", paramSendChatInputEvent.mContent);
-          paramSendChatInputEvent = "javascript:(__WEBVIEW_SENDTEXT(" + localJSONObject.toString() + "))";
-          this.a.a.evaluateJavascript(paramSendChatInputEvent, new CustomWebModule.7.1(this));
-          return;
+          if (j != 5) {
+            i = 0;
+          }
         }
-        catch (JSONException paramSendChatInputEvent)
+        else
         {
-          paramSendChatInputEvent.printStackTrace();
-          return;
+          i = 12;
+          localObject = this.a.getAudienceRoomPager();
+          j = ((IAudienceRoomPager)localObject).getCurrentIndex() + 1;
+          if (j <= ((IAudienceRoomPager)localObject).getCount() - 1) {
+            ((IAudienceRoomPager)localObject).setCurrentItem(j);
+          }
+          this.a.jdField_a_of_type_ComTencentIlivesdkAvplayerbuilderservice_interfaceAVPlayerBuilderServiceInterface.seekTo(0);
+          CustomWebModule.a(this.a, 0);
         }
       }
-    } while (i != 2);
-    this.a.a.evaluateJavascript("javascript:__WEBVIEW_CANCELKEYBOARD()", new CustomWebModule.7.2(this));
+      else {
+        i = 9;
+      }
+    }
+    else {
+      i = 11;
+    }
+    try
+    {
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("state", String.valueOf(i));
+      ((JSONObject)localObject).put("errCode", String.valueOf(paramPlayerStateEvent.errCode));
+      paramPlayerStateEvent = new StringBuilder();
+      paramPlayerStateEvent.append("javascript:(__WEBVIEW_CLIENTAVSTATE(");
+      paramPlayerStateEvent.append(((JSONObject)localObject).toString());
+      paramPlayerStateEvent.append("))");
+      paramPlayerStateEvent = paramPlayerStateEvent.toString();
+      if (this.a.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+      {
+        this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.evaluateJavascript(paramPlayerStateEvent, new CustomWebModule.7.1(this));
+        return;
+      }
+    }
+    catch (JSONException paramPlayerStateEvent)
+    {
+      paramPlayerStateEvent.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.CustomWebModule.7
  * JD-Core Version:    0.7.0.1
  */

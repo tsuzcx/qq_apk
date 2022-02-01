@@ -18,16 +18,22 @@ final class PendantDataManager$2
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    Object localObject = null;
-    if (paramBoolean) {}
-    for (paramJSONObject = PendantDataManager.access$100(this.val$appId, this.val$scene, paramJSONObject); PendantDataManager.access$300(paramJSONObject); paramJSONObject = localObject)
+    if (paramBoolean)
+    {
+      paramJSONObject = PendantDataManager.access$100(this.val$appId, this.val$scene, paramJSONObject);
+    }
+    else
+    {
+      QMLog.e("PendantDataManager", "TianShuResponse response fail");
+      PendantDataManager.access$200(paramJSONObject);
+      paramJSONObject = null;
+    }
+    if (PendantDataManager.access$300(paramJSONObject))
     {
       PendantDataManager.access$400(this.val$context, paramJSONObject);
       PendantDataManager.wirteTianshuCache(paramJSONObject);
       PendantDataManager.access$500(this.val$context, this.val$iMiniAppContext, this.val$appId, this.val$scene, this.val$channelProxy, this.val$proxy, paramJSONObject);
       return;
-      QMLog.e("PendantDataManager", "TianShuResponse response fail");
-      PendantDataManager.access$200(paramJSONObject);
     }
     if (PendantDataManager.requestTianshuCache(this.val$appId, this.val$context, this.val$iMiniAppContext, this.val$scene, this.val$channelProxy, this.val$proxy))
     {
@@ -47,7 +53,7 @@ final class PendantDataManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.PendantDataManager.2
  * JD-Core Version:    0.7.0.1
  */

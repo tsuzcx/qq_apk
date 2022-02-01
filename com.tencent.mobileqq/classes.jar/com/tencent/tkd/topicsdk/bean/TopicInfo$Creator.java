@@ -18,10 +18,13 @@ public final class TopicInfo$Creator
     String str1 = paramParcel.readString();
     String str2 = paramParcel.readString();
     String str3 = paramParcel.readString();
-    if (paramParcel.readInt() != 0) {}
-    for (boolean bool = true;; bool = false) {
-      return new TopicInfo(l, str1, str2, str3, bool, paramParcel.readLong(), paramParcel.readInt());
+    boolean bool;
+    if (paramParcel.readInt() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return new TopicInfo(l, str1, str2, str3, bool, paramParcel.readLong(), paramParcel.readInt());
   }
   
   @NotNull
@@ -32,7 +35,7 @@ public final class TopicInfo$Creator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.TopicInfo.Creator
  * JD-Core Version:    0.7.0.1
  */

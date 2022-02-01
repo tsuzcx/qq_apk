@@ -1,11 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload;
 
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import com.tencent.mobileqq.kandian.biz.skin.entity.BaseResData;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Arrays;
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x885.oidb_0x885.RspBody;
@@ -19,6 +18,7 @@ public class MaterialData
   public int ad_type;
   public String adid;
   public String animFileName;
+  public int bid_mask;
   public int delivery_effect;
   public int enable_4g = 0;
   public long end_time;
@@ -49,7 +49,12 @@ public class MaterialData
     this.animFileName = paramJSONObject.optString("animFileName");
     this.superMaskType = paramJSONObject.optInt("superMaskType");
     this.normal_mask = paramJSONObject.optInt("normal_mask");
-    this.id = (this.ad_source + "_" + this.adid);
+    this.bid_mask = paramJSONObject.optInt("bid_mask");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.ad_source);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.adid);
+    this.id = localStringBuilder.toString();
     this.url = paramJSONObject.optString("res_url");
   }
   
@@ -58,11 +63,12 @@ public class MaterialData
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass()))
+    {
+      paramObject = (MaterialData)paramObject;
+      return this.id.equals(paramObject.id);
     }
-    paramObject = (MaterialData)paramObject;
-    return this.id.equals(paramObject.id);
+    return false;
   }
   
   public int hashCode()
@@ -97,6 +103,7 @@ public class MaterialData
       localJSONObject.put("animFileName", this.animFileName);
       localJSONObject.put("superMaskType", this.superMaskType);
       localJSONObject.put("normal_mask", this.normal_mask);
+      localJSONObject.put("bid_mask", this.bid_mask);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -106,15 +113,42 @@ public class MaterialData
     return localJSONObject;
   }
   
-  @NotNull
   public String toString()
   {
-    return "MaterialData{start_time=" + this.start_time + ", sub_adid='" + this.sub_adid + '\'' + ", ad_type=" + this.ad_type + ", res_version=" + this.res_version + ", end_time=" + this.end_time + ", res_md5='" + this.res_md5 + '\'' + ", adid='" + this.adid + '\'' + ", res_path='" + this.res_path + '\'' + ", ad_source='" + this.ad_source + '\'' + ", enable_4g='" + this.enable_4g + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MaterialData{start_time=");
+    localStringBuilder.append(this.start_time);
+    localStringBuilder.append(", sub_adid='");
+    localStringBuilder.append(this.sub_adid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ad_type=");
+    localStringBuilder.append(this.ad_type);
+    localStringBuilder.append(", res_version=");
+    localStringBuilder.append(this.res_version);
+    localStringBuilder.append(", end_time=");
+    localStringBuilder.append(this.end_time);
+    localStringBuilder.append(", res_md5='");
+    localStringBuilder.append(this.res_md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", adid='");
+    localStringBuilder.append(this.adid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", res_path='");
+    localStringBuilder.append(this.res_path);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ad_source='");
+    localStringBuilder.append(this.ad_source);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", enable_4g='");
+    localStringBuilder.append(this.enable_4g);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData
  * JD-Core Version:    0.7.0.1
  */

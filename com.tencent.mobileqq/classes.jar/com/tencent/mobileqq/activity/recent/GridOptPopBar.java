@@ -16,8 +16,8 @@ import java.util.List;
 public class GridOptPopBar
 {
   public static PopupMenuDialog.MenuItem a;
-  public static PopupMenuDialog.MenuItem b = new PopupMenuDialog.MenuItem(2131364855, BaseApplicationImpl.getContext().getString(2131719787), BaseApplicationImpl.getContext().getString(2131719787), 2130844469);
-  public static PopupMenuDialog.MenuItem c = new PopupMenuDialog.MenuItem(2131364852, BaseApplicationImpl.getContext().getString(2131719785), BaseApplicationImpl.getContext().getString(2131719785), 2130844468);
+  public static PopupMenuDialog.MenuItem b = new PopupMenuDialog.MenuItem(2131364741, BaseApplicationImpl.getContext().getString(2131719511), BaseApplicationImpl.getContext().getString(2131719511), 2130844375);
+  public static PopupMenuDialog.MenuItem c = new PopupMenuDialog.MenuItem(2131364738, BaseApplicationImpl.getContext().getString(2131719509), BaseApplicationImpl.getContext().getString(2131719509), 2130844374);
   public Activity a;
   RedTouch jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = null;
   private PopupMenuDialog.OnClickActionListener jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnClickActionListener;
@@ -27,7 +27,7 @@ public class GridOptPopBar
   
   static
   {
-    jdField_a_of_type_ComTencentWidgetPopupMenuDialog$MenuItem = new PopupMenuDialog.MenuItem(2131364854, BaseApplicationImpl.getContext().getString(2131719786), BaseApplicationImpl.getContext().getString(2131719786), 2130844470);
+    jdField_a_of_type_ComTencentWidgetPopupMenuDialog$MenuItem = new PopupMenuDialog.MenuItem(2131364740, BaseApplicationImpl.getContext().getString(2131719510), BaseApplicationImpl.getContext().getString(2131719510), 2130844376);
   }
   
   public GridOptPopBar(Activity paramActivity, List<PopupMenuDialog.MenuItem> paramList, PopupMenuDialog.OnClickActionListener paramOnClickActionListener)
@@ -40,13 +40,15 @@ public class GridOptPopBar
   @NonNull
   private boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog != null) && (this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.isShowing());
+    PopupMenuDialog localPopupMenuDialog = this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog;
+    return (localPopupMenuDialog != null) && (localPopupMenuDialog.isShowing());
   }
   
   private void b()
   {
     ArrayList localArrayList = new ArrayList();
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() > 0))
     {
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
@@ -55,7 +57,7 @@ public class GridOptPopBar
         i += 1;
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog = PopupMenuDialog.a(this.jdField_a_of_type_AndroidAppActivity, localArrayList, this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnClickActionListener, this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnDismissListener);
+    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog = PopupMenuDialog.build(this.jdField_a_of_type_AndroidAppActivity, localArrayList, this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnClickActionListener, this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnDismissListener);
   }
   
   public void a()
@@ -80,7 +82,7 @@ public class GridOptPopBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.GridOptPopBar
  * JD-Core Version:    0.7.0.1
  */

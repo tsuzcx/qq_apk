@@ -20,13 +20,13 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.core.SystemEmotionPanelManager;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.IEmoticonPackage;
+import com.tencent.mobileqq.emosm.api.IEmoticonManagerService;
 import com.tencent.mobileqq.emoticon.IEmotionPanelDataCallback;
-import com.tencent.mobileqq.emoticonview.api.IMagicEmotionService;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.emoticon.api.IEmojiManagerService;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmojiManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerServiceProxy;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MqqWeakReferenceHandler;
 import com.tencent.widget.AbsListView.LayoutParams;
@@ -62,10 +62,10 @@ public class MagicFaceAdapter
       QLog.d("MagicFaceAdapter", 2, "getMagicView");
     }
     RelativeLayout localRelativeLayout = new RelativeLayout(this.mContext);
-    localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, (int)(72.0F * this.density)));
+    localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, (int)(this.density * 72.0F)));
     Object localObject = new URLImageView(this.mContext);
-    ((URLImageView)localObject).setId(2131378813);
-    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams((int)(56.0F * this.density), (int)(56.0F * this.density));
+    ((URLImageView)localObject).setId(2131378202);
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams((int)(this.density * 56.0F), (int)(this.density * 56.0F));
     localLayoutParams1.addRule(10, -1);
     localLayoutParams1.addRule(14, -1);
     ((URLImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
@@ -74,32 +74,32 @@ public class MagicFaceAdapter
     localRelativeLayout.addView((View)localObject);
     localObject = new TextView(this.mContext);
     ((TextView)localObject).setVisibility(8);
-    ((TextView)localObject).setId(2131374858);
+    ((TextView)localObject).setId(2131374392);
     ((TextView)localObject).setTextSize(11.0F);
     localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams1.addRule(3, 2131378813);
-    localLayoutParams1.topMargin = ((int)(5.0F * this.density));
+    localLayoutParams1.addRule(3, 2131378202);
+    localLayoutParams1.topMargin = ((int)(this.density * 5.0F));
     localLayoutParams1.addRule(14, -1);
     localRelativeLayout.addView((View)localObject, localLayoutParams1);
     localObject = new ImageView(this.mContext);
     ((ImageView)localObject).setVisibility(8);
-    ((ImageView)localObject).setId(2131374859);
+    ((ImageView)localObject).setId(2131374393);
     localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams1.addRule(8, 2131378813);
-    localLayoutParams1.addRule(7, 2131378813);
+    localLayoutParams1.addRule(8, 2131378202);
+    localLayoutParams1.addRule(7, 2131378202);
     localRelativeLayout.addView((View)localObject, localLayoutParams1);
     localObject = new ImageView(this.mContext);
-    ((ImageView)localObject).setId(2131366257);
+    ((ImageView)localObject).setId(2131366145);
     localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams1.addRule(5, 2131378813);
-    localLayoutParams1.addRule(6, 2131378813);
+    localLayoutParams1.addRule(5, 2131378202);
+    localLayoutParams1.addRule(6, 2131378202);
     ProgressBar localProgressBar = new ProgressBar(this.mContext);
     localProgressBar.setVisibility(8);
-    localProgressBar.setId(2131366254);
-    localProgressBar.setIndeterminateDrawable(this.mContext.getResources().getDrawable(2130846582));
-    RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams((int)(16.0F * this.density), (int)(16.0F * this.density));
+    localProgressBar.setId(2131366142);
+    localProgressBar.setIndeterminateDrawable(this.mContext.getResources().getDrawable(2130846461));
+    RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams((int)(this.density * 16.0F), (int)(this.density * 16.0F));
     localLayoutParams2.addRule(14, -1);
-    localLayoutParams2.topMargin = ((int)(20.0F * this.density));
+    localLayoutParams2.topMargin = ((int)(this.density * 20.0F));
     localRelativeLayout.addView(localProgressBar, localLayoutParams2);
     localRelativeLayout.addView((View)localObject, localLayoutParams1);
     if (AppSetting.d) {
@@ -110,118 +110,147 @@ public class MagicFaceAdapter
   
   private ProgressBar getProgressBarByEp(EmoticonPackage paramEmoticonPackage)
   {
-    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
-    while ((this.proBars == null) || (this.proBars.size() <= 0)) {
-      return null;
-    }
-    Iterator localIterator = this.proBars.iterator();
-    while (localIterator.hasNext())
+    if (paramEmoticonPackage != null)
     {
-      ProgressBar localProgressBar = (ProgressBar)localIterator.next();
-      Object localObject = localProgressBar.getTag();
-      if ((localObject instanceof String)) {}
-      for (localObject = (String)localObject; (!TextUtils.isEmpty((CharSequence)localObject)) && (paramEmoticonPackage.epId.equals(localObject)); localObject = null) {
-        return localProgressBar;
+      if (TextUtils.isEmpty(paramEmoticonPackage.epId)) {
+        return null;
+      }
+      Object localObject = this.proBars;
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        Iterator localIterator = this.proBars.iterator();
+        while (localIterator.hasNext())
+        {
+          ProgressBar localProgressBar = (ProgressBar)localIterator.next();
+          localObject = localProgressBar.getTag();
+          if ((localObject instanceof String)) {
+            localObject = (String)localObject;
+          } else {
+            localObject = null;
+          }
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramEmoticonPackage.epId.equals(localObject))) {
+            return localProgressBar;
+          }
+        }
       }
     }
+    return null;
   }
   
   private void updateImageView(URLImageView paramURLImageView, PicEmoticonInfo paramPicEmoticonInfo)
   {
-    if ((paramURLImageView == null) || (paramPicEmoticonInfo == null))
+    if ((paramURLImageView != null) && (paramPicEmoticonInfo != null))
     {
-      QLog.e("MagicFaceAdapter", 1, "updateImageView view or info = null");
-      return;
-    }
-    Object localObject = (RelativeLayout.LayoutParams)paramURLImageView.getLayoutParams();
-    if ("push".equals(paramPicEmoticonInfo.action))
-    {
-      ((RelativeLayout.LayoutParams)localObject).width = ((int)(this.density * 63.0F));
-      ((RelativeLayout.LayoutParams)localObject).height = ((int)(this.density * 63.0F));
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicFaceAdapter", 2, "show push_btn drawable.");
-      }
-      paramPicEmoticonInfo = this.mContext.getSharedPreferences("mobileQQ", 0);
-      localObject = this.app.getCurrentAccountUin();
-      boolean bool = paramPicEmoticonInfo.getBoolean("magic_promotion_is_new_content_" + (String)localObject, false);
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.mContext.getResources().getDrawable(2130846569);
-      if (bool)
+      Object localObject1 = (RelativeLayout.LayoutParams)paramURLImageView.getLayoutParams();
+      Object localObject2;
+      if ("push".equals(paramPicEmoticonInfo.action))
       {
-        paramPicEmoticonInfo = paramPicEmoticonInfo.getString("magic_promotion_gifUrl", "");
-        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-        if (TextUtils.isEmpty(paramPicEmoticonInfo)) {
-          break label258;
+        ((RelativeLayout.LayoutParams)localObject1).width = ((int)(this.density * 63.0F));
+        ((RelativeLayout.LayoutParams)localObject1).height = ((int)(this.density * 63.0F));
+        if (QLog.isColorLevel()) {
+          QLog.d("MagicFaceAdapter", 2, "show push_btn drawable.");
         }
-      }
-      for (;;)
-      {
-        try
+        paramPicEmoticonInfo = this.mContext.getSharedPreferences("mobileQQ", 0);
+        localObject1 = this.app.getCurrentAccountUin();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("magic_promotion_is_new_content_");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        boolean bool = paramPicEmoticonInfo.getBoolean(((StringBuilder)localObject2).toString(), false);
+        localObject1 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.mContext.getResources().getDrawable(2130846448);
+        if (bool)
         {
-          paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramPicEmoticonInfo, (URLDrawable.URLDrawableOptions)localObject));
-          if (!AppSetting.d) {
-            break;
-          }
-          paramURLImageView.setContentDescription(this.mContext.getString(2131699630));
-          return;
+          paramPicEmoticonInfo = paramPicEmoticonInfo.getString("magic_promotion_gifUrl", "");
+          ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
+        }
+        else
+        {
           paramPicEmoticonInfo = paramPicEmoticonInfo.getString("magic_promotion_imgUrl", "");
         }
-        catch (IllegalArgumentException paramPicEmoticonInfo)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("MagicFaceAdapter", 2, paramPicEmoticonInfo.getMessage());
-          }
-          paramURLImageView.setImageDrawable(null);
-          continue;
-        }
-        label258:
-        paramURLImageView.setImageDrawable(null);
-      }
-    }
-    Emoticon localEmoticon = paramPicEmoticonInfo.emoticon;
-    if ((localEmoticon == null) || (TextUtils.isEmpty(localEmoticon.epId)))
-    {
-      QLog.e("MagicFaceAdapter", 1, "updateImageView emotion is null or epid is null");
-      return;
-    }
-    IEmoticonPackage localIEmoticonPackage = ((IMagicEmotionService)QRoute.api(IMagicEmotionService.class)).syncFindEmoticonPackageById(this.app, localEmoticon.epId);
-    localObject = localEmoticon.epId + "_" + localEmoticon.eId;
-    if (((localIEmoticonPackage instanceof EmoticonPackage)) && ((!((EmoticonPackage)localIEmoticonPackage).valid) || (2 != ((EmoticonPackage)localIEmoticonPackage).status)) && (!paramPicEmoticonInfo.isDownLoad)) {}
-    for (paramPicEmoticonInfo = (String)localObject + "_panel_magic_gray";; paramPicEmoticonInfo = (PicEmoticonInfo)localObject) {
-      try
-      {
-        paramPicEmoticonInfo = new URL("emotion_pic", "fromPanel", paramPicEmoticonInfo);
-        if (paramPicEmoticonInfo != null)
-        {
-          localObject = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.mContext.getResources().getDrawable(2130846568);
-          ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.mContext.getResources().getDrawable(2130846574);
-          paramPicEmoticonInfo = URLDrawable.getDrawable(paramPicEmoticonInfo, (URLDrawable.URLDrawableOptions)localObject);
-          paramPicEmoticonInfo.setTag(localEmoticon);
-          paramPicEmoticonInfo.addHeader("my_uin", this.app.getCurrentAccountUin());
-          if (paramPicEmoticonInfo != null)
+        if (!TextUtils.isEmpty(paramPicEmoticonInfo)) {
+          try
           {
-            paramURLImageView.setImageDrawable(paramPicEmoticonInfo);
-            paramURLImageView.setBackgroundDrawable(null);
-            return;
+            paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramPicEmoticonInfo, (URLDrawable.URLDrawableOptions)localObject1));
           }
+          catch (IllegalArgumentException paramPicEmoticonInfo)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("MagicFaceAdapter", 2, paramPicEmoticonInfo.getMessage());
+            }
+            paramURLImageView.setImageDrawable(null);
+          }
+        } else {
+          paramURLImageView.setImageDrawable(null);
+        }
+        if (AppSetting.d) {
+          paramURLImageView.setContentDescription(this.mContext.getString(2131699749));
         }
       }
-      catch (MalformedURLException paramPicEmoticonInfo)
+      else
       {
-        for (;;)
+        Emoticon localEmoticon = paramPicEmoticonInfo.emoticon;
+        if ((localEmoticon == null) || (TextUtils.isEmpty(localEmoticon.epId))) {
+          break label565;
+        }
+        EmoticonPackage localEmoticonPackage = ((EmoticonManagerServiceProxy)this.app.getRuntimeService(IEmoticonManagerService.class)).syncFindEmoticonPackageById(localEmoticon.epId);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(localEmoticon.epId);
+        ((StringBuilder)localObject1).append("_");
+        ((StringBuilder)localObject1).append(localEmoticon.eId);
+        localObject2 = ((StringBuilder)localObject1).toString();
+        if (localEmoticonPackage.valid)
+        {
+          localObject1 = localObject2;
+          if (2 == localEmoticonPackage.status) {}
+        }
+        else
+        {
+          localObject1 = localObject2;
+          if (!paramPicEmoticonInfo.isDownLoad)
+          {
+            paramPicEmoticonInfo = new StringBuilder();
+            paramPicEmoticonInfo.append((String)localObject2);
+            paramPicEmoticonInfo.append("_panel_magic_gray");
+            localObject1 = paramPicEmoticonInfo.toString();
+          }
+        }
+        try
+        {
+          paramPicEmoticonInfo = new URL("emotion_pic", "fromPanel", (String)localObject1);
+        }
+        catch (MalformedURLException paramPicEmoticonInfo)
         {
           if (QLog.isColorLevel()) {
             QLog.d("MagicFaceAdapter", 2, "updateImageView ,", paramPicEmoticonInfo);
           }
           paramPicEmoticonInfo = null;
-          continue;
-          paramURLImageView.setVisibility(4);
-          continue;
+        }
+        if (paramPicEmoticonInfo != null)
+        {
+          localObject1 = URLDrawable.URLDrawableOptions.obtain();
+          ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.mContext.getResources().getDrawable(2130846447);
+          ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.mContext.getResources().getDrawable(2130846453);
+          paramPicEmoticonInfo = URLDrawable.getDrawable(paramPicEmoticonInfo, (URLDrawable.URLDrawableOptions)localObject1);
+          paramPicEmoticonInfo.setTag(localEmoticon);
+          paramPicEmoticonInfo.addHeader("my_uin", this.app.getCurrentAccountUin());
+        }
+        else
+        {
           paramPicEmoticonInfo = null;
         }
+        if (paramPicEmoticonInfo != null) {
+          paramURLImageView.setImageDrawable(paramPicEmoticonInfo);
+        } else {
+          paramURLImageView.setVisibility(4);
+        }
+        paramURLImageView.setBackgroundDrawable(null);
       }
+      return;
+      label565:
+      QLog.e("MagicFaceAdapter", 1, "updateImageView emotion is null or epid is null");
+      return;
     }
+    QLog.e("MagicFaceAdapter", 1, "updateImageView view or info = null");
   }
   
   private void updateUI(View paramView, EmotionPanelData paramEmotionPanelData)
@@ -229,85 +258,88 @@ public class MagicFaceAdapter
     if (QLog.isColorLevel()) {
       QLog.d("MagicFaceAdapter", 2, "updateUI");
     }
-    if ((paramView == null) || (paramEmotionPanelData == null)) {
-      return;
-    }
-    if ((paramEmotionPanelData instanceof EmoticonInfo)) {}
-    for (paramEmotionPanelData = (PicEmoticonInfo)paramEmotionPanelData;; paramEmotionPanelData = null)
+    if (paramView != null)
     {
-      if (paramEmotionPanelData == null)
+      if (paramEmotionPanelData == null) {
+        return;
+      }
+      Object localObject = null;
+      if ((paramEmotionPanelData instanceof EmoticonInfo)) {
+        localObject = (PicEmoticonInfo)paramEmotionPanelData;
+      }
+      int i = 1;
+      if (localObject == null)
       {
         QLog.e("MagicFaceAdapter", 1, "updateUI emotionInfo = null");
         return;
       }
       paramView.setVisibility(0);
-      paramView.setTag(paramEmotionPanelData);
-      Object localObject1 = (URLImageView)paramView.findViewById(2131378813);
-      ((URLImageView)localObject1).setVisibility(0);
-      updateImageView((URLImageView)localObject1, paramEmotionPanelData);
-      Object localObject2 = (TextView)paramView.findViewById(2131374858);
-      ImageView localImageView = (ImageView)paramView.findViewById(2131366257);
-      localObject1 = (ImageView)paramView.findViewById(2131374859);
-      paramView = (ProgressBar)paramView.findViewById(2131366254);
-      if ("push".equals(paramEmotionPanelData.action))
+      paramView.setTag(localObject);
+      paramEmotionPanelData = (URLImageView)paramView.findViewById(2131378202);
+      paramEmotionPanelData.setVisibility(0);
+      updateImageView(paramEmotionPanelData, (PicEmoticonInfo)localObject);
+      paramEmotionPanelData = (TextView)paramView.findViewById(2131374392);
+      ImageView localImageView1 = (ImageView)paramView.findViewById(2131366145);
+      ImageView localImageView2 = (ImageView)paramView.findViewById(2131374393);
+      paramView = (ProgressBar)paramView.findViewById(2131366142);
+      if ("push".equals(((PicEmoticonInfo)localObject).action))
       {
-        ((TextView)localObject2).setVisibility(8);
-        localImageView.setVisibility(8);
-        ((ImageView)localObject1).setVisibility(8);
+        paramEmotionPanelData.setVisibility(8);
+        localImageView1.setVisibility(8);
+        localImageView2.setVisibility(8);
         paramView.setVisibility(8);
         return;
       }
-      paramEmotionPanelData = paramEmotionPanelData.emoticon;
-      if ((paramEmotionPanelData == null) || (TextUtils.isEmpty(paramEmotionPanelData.epId)))
+      localObject = ((PicEmoticonInfo)localObject).emoticon;
+      if ((localObject != null) && (!TextUtils.isEmpty(((Emoticon)localObject).epId)))
       {
-        QLog.e("MagicFaceAdapter", 1, "updateUI emotion is null or epid is null");
-        return;
-      }
-      String str = paramEmotionPanelData.name;
-      if (!TextUtils.isEmpty(str))
-      {
-        ((TextView)localObject2).setVisibility(0);
-        if (str.length() > 5)
+        String str = ((Emoticon)localObject).name;
+        if (!TextUtils.isEmpty(str))
         {
-          ((TextView)localObject2).setText(str.substring(0, 4) + "...");
-          if (AppSetting.d) {
-            ((TextView)localObject2).setContentDescription(str);
-          }
-          label269:
-          localImageView.setVisibility(8);
-          ((ImageView)localObject1).setVisibility(8);
-          localObject2 = ((IMagicEmotionService)QRoute.api(IMagicEmotionService.class)).syncFindEmoticonPackageById(this.app, paramEmotionPanelData.epId);
-          if (((localObject2 instanceof EmoticonPackage)) && (!((EmoticonPackage)localObject2).valid))
+          paramEmotionPanelData.setVisibility(0);
+          if (str.length() > 5)
           {
-            ((ImageView)localObject1).setImageResource(2130846583);
-            ((ImageView)localObject1).setVisibility(0);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str.substring(0, 4));
+            localStringBuilder.append("...");
+            paramEmotionPanelData.setText(localStringBuilder.toString());
           }
-          paramView.setVisibility(8);
-          paramView.setTag(paramEmotionPanelData.epId);
-          if (!this.proBars.contains(paramView)) {
-            this.proBars.add(paramView);
+          else
+          {
+            paramEmotionPanelData.setText(str);
           }
-          if (((IMagicEmotionService)QRoute.api(IMagicEmotionService.class)).getEmoticonPackageLoadingProgress(this.app, paramEmotionPanelData.epId) < 0.0F) {
-            break label437;
+          if (AppSetting.d) {
+            paramEmotionPanelData.setContentDescription(str);
           }
         }
-      }
-      label437:
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label442;
+        else
+        {
+          paramEmotionPanelData.setVisibility(8);
         }
-        paramView.setVisibility(0);
+        localImageView1.setVisibility(8);
+        localImageView2.setVisibility(8);
+        if (!((EmoticonManagerServiceProxy)this.app.getRuntimeService(IEmoticonManagerService.class)).syncFindEmoticonPackageById(((Emoticon)localObject).epId).valid)
+        {
+          localImageView2.setImageResource(2130846462);
+          localImageView2.setVisibility(0);
+        }
+        paramView.setVisibility(8);
+        paramView.setTag(((Emoticon)localObject).epId);
+        if (!this.proBars.contains(paramView)) {
+          this.proBars.add(paramView);
+        }
+        if (((EmojiManagerServiceProxy)this.app.getRuntimeService(IEmojiManagerService.class)).getEmoticonPackageLoadingProgress(((Emoticon)localObject).epId) < 0.0F) {
+          i = 0;
+        }
+        if (i != 0)
+        {
+          paramView.setVisibility(0);
+          return;
+        }
+        paramView.setVisibility(8);
         return;
-        ((TextView)localObject2).setText(str);
-        break;
-        ((TextView)localObject2).setVisibility(8);
-        break label269;
       }
-      label442:
-      paramView.setVisibility(8);
-      return;
+      QLog.e("MagicFaceAdapter", 1, "updateUI emotion is null or epid is null");
     }
   }
   
@@ -322,49 +354,57 @@ public class MagicFaceAdapter
   
   public View getEmotionView(BaseEmotionAdapter.ViewHolder paramViewHolder, int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int j = 0;
     paramViewGroup = (MagicFaceAdapter.MagicFaceViewHolder)paramViewHolder;
-    int i;
+    int j = 0;
+    int i = j;
+    paramViewHolder = paramView;
     if (paramView == null)
     {
       paramView = EmotionPanelViewPool.getInstance().getView(this.panelType);
       if (paramView == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MagicFaceAdapter", 2, "getEmotionView position = " + paramInt + ";view from infalter");
+        if (QLog.isColorLevel())
+        {
+          paramViewHolder = new StringBuilder();
+          paramViewHolder.append("getEmotionView position = ");
+          paramViewHolder.append(paramInt);
+          paramViewHolder.append(";view from infalter");
+          QLog.d("MagicFaceAdapter", 2, paramViewHolder.toString());
         }
-        paramView = new EmoticonPanelLinearLayout(this.mContext, SystemEmotionPanelManager.a().a(this.mContext, false));
+        paramView = new EmoticonPanelLinearLayout(this.mContext, new QQEmoticonPanelLinearLayoutHelper(this.mContext, null));
         paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
         paramView.setOrientation(0);
         if (paramInt == 0) {
-          paramView.setPadding(0, (int)(16.0F * this.density), 0, 0);
+          paramView.setPadding(0, (int)(this.density * 16.0F), 0, 0);
+        } else {
+          paramView.setPadding(0, (int)(this.density * 14.0F), 0, 0);
         }
+        i = 0;
         for (;;)
         {
-          i = 0;
-          for (;;)
-          {
-            paramViewHolder = paramView;
-            if (i >= this.columnNum) {
-              break;
-            }
-            paramViewHolder = getMagicView();
-            LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, -1);
-            paramViewHolder.setGravity(17);
-            paramViewHolder.setVisibility(8);
-            paramViewHolder.setLayoutParams(localLayoutParams);
-            paramViewHolder.setFocusable(true);
-            paramViewHolder.setFocusableInTouchMode(true);
-            paramView.addView(paramViewHolder);
-            i += 1;
+          paramViewHolder = paramView;
+          if (i >= this.columnNum) {
+            break;
           }
-          paramView.setPadding(0, (int)(14.0F * this.density), 0, 0);
+          paramViewHolder = getMagicView();
+          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, -1);
+          paramViewHolder.setGravity(17);
+          paramViewHolder.setVisibility(8);
+          paramViewHolder.setLayoutParams(localLayoutParams);
+          paramViewHolder.setFocusable(true);
+          paramViewHolder.setFocusableInTouchMode(true);
+          paramView.addView(paramViewHolder);
+          i += 1;
         }
       }
       paramViewHolder = paramView;
       if (QLog.isColorLevel())
       {
-        QLog.d("MagicFaceAdapter", 2, "getEmotionView position = " + paramInt + ";view from cache");
+        paramViewHolder = new StringBuilder();
+        paramViewHolder.append("getEmotionView position = ");
+        paramViewHolder.append(paramInt);
+        paramViewHolder.append(";view from cache");
+        QLog.d("MagicFaceAdapter", 2, paramViewHolder.toString());
         paramViewHolder = paramView;
       }
       ((EmoticonPanelLinearLayout)paramViewHolder).setCallBack(this.callback);
@@ -380,51 +420,41 @@ public class MagicFaceAdapter
       paramViewHolder.setTag(paramViewGroup);
       i = j;
     }
-    for (;;)
+    try
     {
-      try
+      while (i < this.columnNum)
       {
-        if (i < this.columnNum)
+        j = this.columnNum * paramInt + i;
+        if (j > this.data.size() - 1)
         {
-          j = this.columnNum * paramInt + i;
-          if (j > this.data.size() - 1)
-          {
-            paramViewGroup.contentViews[i].setTag(null);
-            paramViewGroup.contentViews[i].setVisibility(8);
-          }
-          else
-          {
-            updateUI(paramViewGroup.contentViews[i], (EmotionPanelData)this.data.get(j));
-          }
+          paramViewGroup.contentViews[i].setTag(null);
+          paramViewGroup.contentViews[i].setVisibility(8);
         }
+        else
+        {
+          updateUI(paramViewGroup.contentViews[i], (EmotionPanelData)this.data.get(j));
+        }
+        i += 1;
       }
-      catch (OutOfMemoryError paramView)
-      {
-        QLog.e("MagicFaceAdapter", 1, "updateUI oom");
-      }
-      return paramViewHolder;
-      paramViewHolder = paramView;
-      i = j;
-      continue;
-      i += 1;
     }
+    catch (OutOfMemoryError paramView)
+    {
+      label474:
+      break label474;
+    }
+    QLog.e("MagicFaceAdapter", 1, "updateUI oom");
+    return paramViewHolder;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 100)
     {
-    }
-    for (;;)
-    {
-      return true;
-      paramMessage = getProgressBarByEp((EmoticonPackage)paramMessage.obj);
-      if (paramMessage != null)
+      if (i == 101)
       {
-        paramMessage.setVisibility(0);
-        continue;
         ProgressBar localProgressBar = getProgressBarByEp((EmoticonPackage)paramMessage.obj);
-        int i = paramMessage.arg1;
+        i = paramMessage.arg1;
         if (localProgressBar != null)
         {
           localProgressBar.setVisibility(8);
@@ -434,6 +464,14 @@ public class MagicFaceAdapter
         }
       }
     }
+    else
+    {
+      paramMessage = getProgressBarByEp((EmoticonPackage)paramMessage.obj);
+      if (paramMessage != null) {
+        paramMessage.setVisibility(0);
+      }
+    }
+    return true;
   }
   
   public BaseEmotionAdapter.ViewHolder newHolder()
@@ -475,12 +513,12 @@ public class MagicFaceAdapter
     if (QLog.isColorLevel()) {
       QLog.d("MagicFaceAdapter", 2, "refreshPanelData");
     }
-    ((IMagicEmotionService)QRoute.api(IMagicEmotionService.class)).asyncGetEmotionPanelData(this.app, this.panelType, null, -1, 0, false, this);
+    EmotionPanelDataBuilder.getInstance().asyncGetEmotionPanelData(this.app, this.panelType, null, -1, 0, false, this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.MagicFaceAdapter
  * JD-Core Version:    0.7.0.1
  */

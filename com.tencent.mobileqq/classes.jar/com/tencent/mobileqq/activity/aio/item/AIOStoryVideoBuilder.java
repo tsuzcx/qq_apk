@@ -32,7 +32,7 @@ public class AIOStoryVideoBuilder
   extends AbstractChatItemBuilder
 {
   public int a;
-  public int c = 0;
+  public int b = 0;
   public int d = 0;
   public int e;
   public int f = 0;
@@ -42,12 +42,12 @@ public class AIOStoryVideoBuilder
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
     this.jdField_a_of_type_Int = 0;
     this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131298210);
-    int i = paramContext.getResources().getDimensionPixelSize(2131298211);
+    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131298205);
+    int i = paramContext.getResources().getDimensionPixelSize(2131298206);
     this.f = i;
     this.jdField_e_of_type_Int = i;
-    this.d = (paramContext.getResources().getDisplayMetrics().widthPixels - paramContext.getResources().getDimensionPixelSize(2131296421) * 2);
-    this.c = paramContext.getResources().getDimensionPixelSize(2131298209);
+    this.d = (paramContext.getResources().getDisplayMetrics().widthPixels - paramContext.getResources().getDimensionPixelSize(2131296400) * 2);
+    this.b = paramContext.getResources().getDimensionPixelSize(2131298204);
   }
   
   private View a(View paramView, AIOStoryVideoBuilder.Holder paramHolder)
@@ -55,12 +55,12 @@ public class AIOStoryVideoBuilder
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558897, null);
-      paramHolder.jdField_b_of_type_AndroidViewView = localView.findViewById(2131365294);
-      paramHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362537));
-      paramHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362538));
-      paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)localView.findViewById(2131362535));
-      paramHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362536));
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558795, null);
+      paramHolder.jdField_b_of_type_AndroidViewView = localView.findViewById(2131365169);
+      paramHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362493));
+      paramHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362494));
+      paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)localView.findViewById(2131362491));
+      paramHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362492));
       paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(this.jdField_a_of_type_Int);
       paramView = new SquareRoundImageUtils.SquareRoundColorDrawable(-1, this.jdField_e_of_type_Int, this.f);
       paramHolder.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
@@ -68,47 +68,52 @@ public class AIOStoryVideoBuilder
     return localView;
   }
   
-  public View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramLinearLayout = (MessageForAIOStoryVideo)paramMessageRecord;
-    paramViewHolder = (AIOStoryVideoBuilder.Holder)paramViewHolder;
-    paramView = a(paramView, paramViewHolder);
-    paramMessageRecord = (String)paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getTag(2131374572);
-    if ((!TextUtils.isEmpty(paramLinearLayout.cover)) && (Utils.a(paramLinearLayout.cover, paramMessageRecord))) {}
-    for (int i = 0;; i = 1)
-    {
-      if (i != 0) {}
-      try
-      {
-        paramMessageRecord = new URL(paramLinearLayout.cover);
-        if (paramMessageRecord != null)
-        {
-          QQStoryCoverImageViewHelper.a(paramViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramLinearLayout.cover);
-          paramMessageRecord = URLDrawable.getDrawable(paramMessageRecord, this.d, this.c);
-          paramMessageRecord.setDecodeHandler(URLDrawableDecodeHandler.t);
-          paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(paramMessageRecord);
-          paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(2131374572, paramLinearLayout.cover);
-        }
-        if (jdField_e_of_type_Boolean) {
-          paramView.setContentDescription(paramLinearLayout.text);
-        }
-        paramViewHolder.jdField_b_of_type_AndroidViewView.setOnClickListener(new AIOStoryVideoBuilder.1(this, paramLinearLayout));
-        return paramView;
-      }
-      catch (Exception paramMessageRecord)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ChatItemBuilder", 2, " AIOStoryVideoBuilder:  url has problem");
-          }
-          paramMessageRecord = null;
-        }
-      }
+    paramOnLongClickAndTouchListener = (AIOStoryVideoBuilder.Holder)paramViewHolder;
+    paramView = a(paramView, paramOnLongClickAndTouchListener);
+    paramMessageRecord = (String)paramOnLongClickAndTouchListener.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getTag(2131374110);
+    int i;
+    if ((!TextUtils.isEmpty(paramLinearLayout.cover)) && (Utils.a(paramLinearLayout.cover, paramMessageRecord))) {
+      i = 0;
+    } else {
+      i = 1;
     }
+    if (i != 0) {
+      paramViewHolder = null;
+    }
+    try
+    {
+      paramMessageRecord = new URL(paramLinearLayout.cover);
+    }
+    catch (Exception paramMessageRecord)
+    {
+      label89:
+      break label89;
+    }
+    paramMessageRecord = paramViewHolder;
+    if (QLog.isColorLevel())
+    {
+      QLog.e("ChatItemBuilder", 2, " AIOStoryVideoBuilder:  url has problem");
+      paramMessageRecord = paramViewHolder;
+    }
+    if (paramMessageRecord != null)
+    {
+      QQStoryCoverImageViewHelper.a(paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidWidgetImageView, paramLinearLayout.cover);
+      paramMessageRecord = URLDrawable.getDrawable(paramMessageRecord, this.d, this.b);
+      paramMessageRecord.setDecodeHandler(URLDrawableDecodeHandler.r);
+      paramOnLongClickAndTouchListener.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(paramMessageRecord);
+      paramOnLongClickAndTouchListener.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(2131374110, paramLinearLayout.cover);
+    }
+    if (jdField_e_of_type_Boolean) {
+      paramView.setContentDescription(paramLinearLayout.text);
+    }
+    paramOnLongClickAndTouchListener.jdField_b_of_type_AndroidViewView.setOnClickListener(new AIOStoryVideoBuilder.1(this, paramLinearLayout));
+    return paramView;
   }
   
-  public AbstractChatItemBuilder.ViewHolder a()
+  protected AbstractChatItemBuilder.ViewHolder a()
   {
     return new AIOStoryVideoBuilder.Holder(this);
   }
@@ -122,7 +127,7 @@ public class AIOStoryVideoBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.AIOStoryVideoBuilder
  * JD-Core Version:    0.7.0.1
  */

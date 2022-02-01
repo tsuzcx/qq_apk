@@ -93,79 +93,71 @@ public class PBUtils
   private static <PB extends MessageMicro<PB>> void a(PB paramPB, JSONObject paramJSONObject)
   {
     Field[] arrayOfField = paramPB.getClass().getDeclaredFields();
-    for (;;)
+    try
     {
-      int i;
-      Object localObject1;
-      String str;
-      try
+      int j = arrayOfField.length;
+      int i = 0;
+      while (i < j)
       {
-        int j = arrayOfField.length;
-        i = 0;
-        if (i < j)
+        Object localObject1 = arrayOfField[i];
+        String str = ((Field)localObject1).getName();
+        if (Modifier.isPublic(((Field)localObject1).getModifiers()))
         {
-          localObject1 = arrayOfField[i];
-          str = ((Field)localObject1).getName();
-          if (!Modifier.isPublic(((Field)localObject1).getModifiers())) {
-            break label343;
-          }
           localObject1 = ((Field)localObject1).get(paramPB);
-          if ((!(localObject1 instanceof MessageMicro)) || (!((MessageMicro)localObject1).has())) {
-            break label98;
-          }
-          paramJSONObject.put(str, a((MessageMicro)localObject1));
-        }
-      }
-      catch (Exception paramPB)
-      {
-        paramPB.printStackTrace();
-      }
-      return;
-      label98:
-      if (((localObject1 instanceof PBPrimitiveField)) && (((PBPrimitiveField)localObject1).has()))
-      {
-        paramJSONObject.put(str, a((PBPrimitiveField)localObject1));
-      }
-      else
-      {
-        Object localObject2;
-        if ((localObject1 instanceof PBRepeatField))
-        {
-          localObject2 = ((PBRepeatField)localObject1).get();
-          localObject1 = new JSONArray();
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
+          if (((localObject1 instanceof MessageMicro)) && (((MessageMicro)localObject1).has()))
           {
-            Object localObject3 = ((Iterator)localObject2).next();
-            if ((localObject3 instanceof PBPrimitiveField)) {
-              ((JSONArray)localObject1).put(a((PBPrimitiveField)localObject3));
-            } else if ((localObject3 instanceof ByteStringMicro)) {
-              ((JSONArray)localObject1).put(((ByteStringMicro)localObject3).toStringUtf8());
-            } else {
-              ((JSONArray)localObject1).put(String.valueOf(localObject3));
+            paramJSONObject.put(str, a((MessageMicro)localObject1));
+          }
+          else if (((localObject1 instanceof PBPrimitiveField)) && (((PBPrimitiveField)localObject1).has()))
+          {
+            paramJSONObject.put(str, a((PBPrimitiveField)localObject1));
+          }
+          else
+          {
+            Object localObject2;
+            if ((localObject1 instanceof PBRepeatField))
+            {
+              localObject2 = ((PBRepeatField)localObject1).get();
+              localObject1 = new JSONArray();
+              localObject2 = ((List)localObject2).iterator();
+              while (((Iterator)localObject2).hasNext())
+              {
+                Object localObject3 = ((Iterator)localObject2).next();
+                if ((localObject3 instanceof PBPrimitiveField)) {
+                  ((JSONArray)localObject1).put(a((PBPrimitiveField)localObject3));
+                } else if ((localObject3 instanceof ByteStringMicro)) {
+                  ((JSONArray)localObject1).put(((ByteStringMicro)localObject3).toStringUtf8());
+                } else {
+                  ((JSONArray)localObject1).put(String.valueOf(localObject3));
+                }
+              }
+              paramJSONObject.put(str, localObject1);
+            }
+            else if ((localObject1 instanceof PBRepeatMessageField))
+            {
+              localObject2 = ((PBRepeatMessageField)localObject1).get();
+              localObject1 = new JSONArray();
+              localObject2 = ((List)localObject2).iterator();
+              while (((Iterator)localObject2).hasNext()) {
+                ((JSONArray)localObject1).put(a((MessageMicro)((Iterator)localObject2).next()));
+              }
+              paramJSONObject.put(str, localObject1);
             }
           }
-          paramJSONObject.put(str, localObject1);
         }
-        else if ((localObject1 instanceof PBRepeatMessageField))
-        {
-          localObject2 = ((PBRepeatMessageField)localObject1).get();
-          localObject1 = new JSONArray();
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            ((JSONArray)localObject1).put(a((MessageMicro)((Iterator)localObject2).next()));
-          }
-          paramJSONObject.put(str, localObject1);
-        }
+        i += 1;
       }
-      label343:
-      i += 1;
+      return;
+    }
+    catch (Exception paramPB)
+    {
+      paramPB.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.PBUtils
  * JD-Core Version:    0.7.0.1
  */

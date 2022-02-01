@@ -10,52 +10,63 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Messenger;
-import com.huawei.hms.push.f;
-import com.huawei.hms.push.m;
-import com.huawei.hms.push.x;
+import com.huawei.hms.push.c;
+import com.huawei.hms.push.i;
+import com.huawei.hms.push.t;
 import com.huawei.hms.support.log.HMSLog;
 
 public class HmsMsgService
   extends Service
 {
-  private static void c(Context paramContext, Bundle paramBundle)
+  public static void c(Context paramContext, Bundle paramBundle)
+  {
+    if (!t.a(paramContext))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext.getPackageName());
+      ((StringBuilder)localObject).append(" disable display notification.");
+      HMSLog.i("HmsMsgService", ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new Intent();
+    ((Intent)localObject).setAction("com.huawei.push.msg.NOTIFY_MSG");
+    ((Intent)localObject).putExtra("selfshow_info", c.a(paramBundle, "selfshow_info"));
+    ((Intent)localObject).putExtra("selfshow_token", c.a(paramBundle, "selfshow_token"));
+    ((Intent)localObject).setPackage(c.c(paramBundle, "push_package"));
+    i.a(paramContext, (Intent)localObject);
+    HMSLog.i("HmsMsgService", "invokeSelfShow done");
+  }
+  
+  public static void d(Context paramContext, Bundle paramBundle)
   {
     try
     {
       Intent localIntent = new Intent();
       localIntent.setAction("com.huawei.android.push.intent.RECEIVE");
-      localIntent.putExtra("msg_data", f.c(paramBundle, "msg_data"));
-      localIntent.putExtra("device_token", f.c(paramBundle, "device_token"));
-      localIntent.putExtra("msgIdStr", f.b(paramBundle, "msgIdStr"));
+      localIntent.putExtra("msg_data", c.a(paramBundle, "msg_data"));
+      localIntent.putExtra("device_token", c.a(paramBundle, "device_token"));
+      localIntent.putExtra("msgIdStr", c.c(paramBundle, "msgIdStr"));
       localIntent.setFlags(32);
-      localIntent.setPackage(f.b(paramBundle, "push_package"));
-      paramContext.sendBroadcast(localIntent, paramContext.getPackageName() + ".permission.PROCESS_PUSH_MSG");
+      localIntent.setPackage(c.c(paramBundle, "push_package"));
+      paramBundle = new StringBuilder();
+      paramBundle.append(paramContext.getPackageName());
+      paramBundle.append(".permission.PROCESS_PUSH_MSG");
+      paramContext.sendBroadcast(localIntent, paramBundle.toString());
       HMSLog.i("HmsMsgService", "send broadcast passby done");
       return;
     }
     catch (SecurityException paramContext)
     {
-      HMSLog.i("HmsMsgService", "send broadcast SecurityException");
-      return;
+      break label121;
     }
     catch (Exception paramContext)
     {
-      HMSLog.i("HmsMsgService", "send broadcast Exception");
+      label113:
+      label121:
+      break label113;
     }
-  }
-  
-  private static void d(Context paramContext, Bundle paramBundle)
-  {
-    if (!x.a(paramContext)) {
-      HMSLog.i("HmsMsgService", paramContext.getPackageName() + " disable display notification.");
-    }
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.huawei.push.msg.NOTIFY_MSG");
-    localIntent.putExtra("selfshow_info", f.c(paramBundle, "selfshow_info"));
-    localIntent.putExtra("selfshow_token", f.c(paramBundle, "selfshow_token"));
-    localIntent.setPackage(f.b(paramBundle, "push_package"));
-    m.a(paramContext, localIntent);
-    HMSLog.i("HmsMsgService", "invokeSelfShow done");
+    HMSLog.i("HmsMsgService", "send broadcast Exception");
+    return;
+    HMSLog.i("HmsMsgService", "send broadcast SecurityException");
   }
   
   public IBinder onBind(Intent paramIntent)

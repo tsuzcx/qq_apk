@@ -18,29 +18,35 @@ public class MsgBackupObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return;
+            }
+            b(paramBoolean);
+            return;
+          }
+          a(paramBoolean, (MsgBackupQryStateRsp)paramObject);
+          return;
+        }
+        a(paramBoolean);
+        return;
+      }
       b(paramBoolean, paramObject);
       return;
-    case 3: 
-      a(paramBoolean);
-      return;
-    case 4: 
-      a(paramBoolean, (MsgBackupQryStateRsp)paramObject);
-      return;
     }
-    b(paramBoolean);
+    a(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.authentication.MsgBackupObserver
  * JD-Core Version:    0.7.0.1
  */

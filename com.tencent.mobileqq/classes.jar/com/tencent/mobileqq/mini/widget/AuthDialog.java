@@ -122,154 +122,161 @@ public class AuthDialog
   
   public AuthDialog(@NonNull Activity paramActivity)
   {
-    super(paramActivity, 2131755238);
+    super(paramActivity, 2131755403);
     this.mContext = paramActivity;
     initView(paramActivity);
   }
   
   public AuthDialog(Activity paramActivity, int paramInt)
   {
-    super(paramActivity, 2131755238);
+    super(paramActivity, 2131755403);
     this.mContext = paramActivity;
     this.mType = paramInt;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    }
-    for (;;)
-    {
-      setCanceledOnTouchOutside(true);
-      paramActivity = getWindow();
-      if (paramActivity != null) {
-        paramActivity.setGravity(80);
+      if (paramInt != 2)
+      {
+        if ((paramInt == 3) || (paramInt == 4)) {
+          initOnceSubMsgView(paramActivity, paramInt);
+        }
       }
-      setActivityResultListener();
-      return;
-      initView(paramActivity);
-      continue;
-      initPhoneNumberView(paramActivity);
-      continue;
-      initOnceSubMsgView(paramActivity, paramInt);
+      else {
+        initPhoneNumberView(paramActivity);
+      }
     }
+    else {
+      initView(paramActivity);
+    }
+    setCanceledOnTouchOutside(true);
+    paramActivity = getWindow();
+    if (paramActivity != null) {
+      paramActivity.setGravity(80);
+    }
+    setActivityResultListener();
   }
   
   private void initOnceSubMsgView(Context paramContext, int paramInt)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559510, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559384, null);
     this.mRootView = paramContext;
     setContentView(paramContext);
-    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131371505));
-    this.mMiniAppName = ((TextView)paramContext.findViewById(2131371520));
-    this.mAuthTitle = ((TextView)paramContext.findViewById(2131363129));
-    this.mLeftBtn = ((TextView)paramContext.findViewById(2131370274));
-    this.mRightBtn = ((TextView)paramContext.findViewById(2131377083));
-    this.onceSubLayout1 = ((RelativeLayout)paramContext.findViewById(2131377249));
-    this.onceSubLayout2 = ((RelativeLayout)paramContext.findViewById(2131377250));
-    this.onceSubLayout3 = ((RelativeLayout)paramContext.findViewById(2131377251));
-    this.onceSubCheckBox1 = ((CheckBox)paramContext.findViewById(2131364497));
+    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131371125));
+    this.mMiniAppName = ((TextView)paramContext.findViewById(2131371140));
+    this.mAuthTitle = ((TextView)paramContext.findViewById(2131363069));
+    this.mLeftBtn = ((TextView)paramContext.findViewById(2131369942));
+    this.mRightBtn = ((TextView)paramContext.findViewById(2131376561));
+    this.onceSubLayout1 = ((RelativeLayout)paramContext.findViewById(2131376708));
+    this.onceSubLayout2 = ((RelativeLayout)paramContext.findViewById(2131376709));
+    this.onceSubLayout3 = ((RelativeLayout)paramContext.findViewById(2131376710));
+    this.onceSubCheckBox1 = ((CheckBox)paramContext.findViewById(2131364387));
     this.onceSubCheckBox1.setOnCheckedChangeListener(this.onceSubOnCheckedChangeListener);
-    this.onceSubCheckBox2 = ((CheckBox)paramContext.findViewById(2131364498));
+    this.onceSubCheckBox2 = ((CheckBox)paramContext.findViewById(2131364388));
     this.onceSubCheckBox2.setOnCheckedChangeListener(this.onceSubOnCheckedChangeListener);
-    this.onceSubCheckBox3 = ((CheckBox)paramContext.findViewById(2131364499));
+    this.onceSubCheckBox3 = ((CheckBox)paramContext.findViewById(2131364389));
     this.onceSubCheckBox3.setOnCheckedChangeListener(this.onceSubOnCheckedChangeListener);
-    this.onceSubMaintainCheckBox = ((CheckBox)paramContext.findViewById(2131364491));
-    this.onceSubTextView1 = ((TextView)paramContext.findViewById(2131380494));
-    this.onceSubTextView2 = ((TextView)paramContext.findViewById(2131380495));
-    this.onceSubTextView3 = ((TextView)paramContext.findViewById(2131380496));
-    this.onceSubTips1 = ((ImageView)paramContext.findViewById(2131369738));
-    this.onceSubTips2 = ((ImageView)paramContext.findViewById(2131369739));
-    this.onceSubTips3 = ((ImageView)paramContext.findViewById(2131369740));
+    this.onceSubMaintainCheckBox = ((CheckBox)paramContext.findViewById(2131364382));
+    this.onceSubTextView1 = ((TextView)paramContext.findViewById(2131379795));
+    this.onceSubTextView2 = ((TextView)paramContext.findViewById(2131379796));
+    this.onceSubTextView3 = ((TextView)paramContext.findViewById(2131379797));
+    this.onceSubTips1 = ((ImageView)paramContext.findViewById(2131369431));
+    this.onceSubTips2 = ((ImageView)paramContext.findViewById(2131369432));
+    this.onceSubTips3 = ((ImageView)paramContext.findViewById(2131369433));
     if (paramInt == 4) {
-      paramContext.findViewById(2131377242).setVisibility(8);
+      paramContext.findViewById(2131376700).setVisibility(8);
     }
   }
   
   private void initPhoneNumberView(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559514, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559388, null);
     this.mRootView = paramContext;
     setContentView(paramContext);
-    this.mMiniAppInfoLayout = ((LinearLayout)paramContext.findViewById(2131371506));
-    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131371505));
-    this.mMiniAppName = ((TextView)paramContext.findViewById(2131371520));
-    this.mAuthInfoImageView = ((ImageView)paramContext.findViewById(2131371449));
+    this.mMiniAppInfoLayout = ((LinearLayout)paramContext.findViewById(2131371126));
+    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131371125));
+    this.mMiniAppName = ((TextView)paramContext.findViewById(2131371140));
+    this.mAuthInfoImageView = ((ImageView)paramContext.findViewById(2131371069));
     this.mAuthInfoImageView.setOnClickListener(this);
-    this.mAuthTitle = ((TextView)paramContext.findViewById(2131363129));
-    this.mPhoneNumberLayout = ((RelativeLayout)paramContext.findViewById(2131371456));
-    this.mPhoneNumberLayout1 = ((RelativeLayout)paramContext.findViewById(2131371527));
-    this.mPhoneNumber1 = ((TextView)paramContext.findViewById(2131371523));
-    this.mPhoneNumberSection1 = ((ImageView)paramContext.findViewById(2131371550));
+    this.mAuthTitle = ((TextView)paramContext.findViewById(2131363069));
+    this.mPhoneNumberLayout = ((RelativeLayout)paramContext.findViewById(2131371076));
+    this.mPhoneNumberLayout1 = ((RelativeLayout)paramContext.findViewById(2131371147));
+    this.mPhoneNumber1 = ((TextView)paramContext.findViewById(2131371143));
+    this.mPhoneNumberSection1 = ((ImageView)paramContext.findViewById(2131371170));
     this.mPhoneNumberLayout1.setOnClickListener(this);
-    this.mPhoneNumberLayout2 = ((RelativeLayout)paramContext.findViewById(2131371528));
-    this.mPhoneNumber2 = ((TextView)paramContext.findViewById(2131371524));
-    this.mPhoneNumberSection2 = ((ImageView)paramContext.findViewById(2131371551));
+    this.mPhoneNumberLayout2 = ((RelativeLayout)paramContext.findViewById(2131371148));
+    this.mPhoneNumber2 = ((TextView)paramContext.findViewById(2131371144));
+    this.mPhoneNumberSection2 = ((ImageView)paramContext.findViewById(2131371171));
     this.mPhoneNumberLayout2.setOnClickListener(this);
-    this.mPhoneNumberLayout3 = ((RelativeLayout)paramContext.findViewById(2131371529));
-    this.mPhoneNumber3 = ((TextView)paramContext.findViewById(2131371525));
-    this.mPhoneNumberSection3 = ((ImageView)paramContext.findViewById(2131371552));
+    this.mPhoneNumberLayout3 = ((RelativeLayout)paramContext.findViewById(2131371149));
+    this.mPhoneNumber3 = ((TextView)paramContext.findViewById(2131371145));
+    this.mPhoneNumberSection3 = ((ImageView)paramContext.findViewById(2131371172));
     this.mPhoneNumberLayout3.setOnClickListener(this);
-    this.mLineView1 = paramContext.findViewById(2131371451);
-    this.mLineView2 = paramContext.findViewById(2131371452);
-    this.mLineView3 = paramContext.findViewById(2131371453);
-    this.mLineView4 = paramContext.findViewById(2131371454);
-    this.mOperateNumberBtn = ((TextView)paramContext.findViewById(2131371455));
+    this.mLineView1 = paramContext.findViewById(2131371071);
+    this.mLineView2 = paramContext.findViewById(2131371072);
+    this.mLineView3 = paramContext.findViewById(2131371073);
+    this.mLineView4 = paramContext.findViewById(2131371074);
+    this.mOperateNumberBtn = ((TextView)paramContext.findViewById(2131371075));
     this.mOperateNumberBtn.setOnClickListener(this);
-    this.mConfirmLayout = ((LinearLayout)paramContext.findViewById(2131371444));
-    this.mLeftBtn = ((TextView)paramContext.findViewById(2131371514));
-    this.mRightBtn = ((TextView)paramContext.findViewById(2131371580));
-    this.mAuthInfoLayout = ((RelativeLayout)paramContext.findViewById(2131371450));
-    this.mAuthInfoBackIcon = ((ImageView)paramContext.findViewById(2131371445));
-    this.mAuthInfoTitle = ((TextView)paramContext.findViewById(2131371448));
-    this.mAuthInfoDetailText1 = ((TextView)paramContext.findViewById(2131371446));
-    this.mAuthInfoDetailText2 = ((TextView)paramContext.findViewById(2131371447));
+    this.mConfirmLayout = ((LinearLayout)paramContext.findViewById(2131371064));
+    this.mLeftBtn = ((TextView)paramContext.findViewById(2131371134));
+    this.mRightBtn = ((TextView)paramContext.findViewById(2131371200));
+    this.mAuthInfoLayout = ((RelativeLayout)paramContext.findViewById(2131371070));
+    this.mAuthInfoBackIcon = ((ImageView)paramContext.findViewById(2131371065));
+    this.mAuthInfoTitle = ((TextView)paramContext.findViewById(2131371068));
+    this.mAuthInfoDetailText1 = ((TextView)paramContext.findViewById(2131371066));
+    this.mAuthInfoDetailText2 = ((TextView)paramContext.findViewById(2131371067));
     this.mAuthInfoBackIcon.setOnClickListener(this);
     this.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
   }
   
   private void initView(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559498, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559372, null);
     this.mRootView = paramContext;
     setContentView(paramContext);
-    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131371505));
-    this.mMiniAppName = ((TextView)paramContext.findViewById(2131371520));
-    this.mAuthTitle = ((TextView)paramContext.findViewById(2131363129));
-    this.mUserIcon = ((ImageView)paramContext.findViewById(2131381054));
-    this.mUserName = ((TextView)paramContext.findViewById(2131381082));
-    this.mAuthDesc = ((TextView)paramContext.findViewById(2131363117));
-    this.mLeftBtn = ((TextView)paramContext.findViewById(2131370274));
-    this.mRightBtn = ((TextView)paramContext.findViewById(2131377083));
+    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131371125));
+    this.mMiniAppName = ((TextView)paramContext.findViewById(2131371140));
+    this.mAuthTitle = ((TextView)paramContext.findViewById(2131363069));
+    this.mUserIcon = ((ImageView)paramContext.findViewById(2131380319));
+    this.mUserName = ((TextView)paramContext.findViewById(2131380347));
+    this.mAuthDesc = ((TextView)paramContext.findViewById(2131363057));
+    this.mLeftBtn = ((TextView)paramContext.findViewById(2131369942));
+    this.mRightBtn = ((TextView)paramContext.findViewById(2131376561));
   }
   
   private void loadOnceSubItemView(List<INTERFACE.StSubscribeMessage> paramList, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.onceSubTextView1.setText(((INTERFACE.StSubscribeMessage)paramList.get(0)).example.title.get());
-      this.onceSubTips1.setOnClickListener(new AuthDialog.5(this, paramList));
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        this.onceSubTextView3.setText(((INTERFACE.StSubscribeMessage)paramList.get(2)).example.title.get());
+        this.onceSubTips3.setOnClickListener(new AuthDialog.7(this, paramList));
+        return;
+      }
       this.onceSubTextView2.setText(((INTERFACE.StSubscribeMessage)paramList.get(1)).example.title.get());
       this.onceSubTips2.setOnClickListener(new AuthDialog.6(this, paramList));
       return;
     }
-    this.onceSubTextView3.setText(((INTERFACE.StSubscribeMessage)paramList.get(2)).example.title.get());
-    this.onceSubTips3.setOnClickListener(new AuthDialog.7(this, paramList));
+    this.onceSubTextView1.setText(((INTERFACE.StSubscribeMessage)paramList.get(0)).example.title.get());
+    this.onceSubTips1.setOnClickListener(new AuthDialog.5(this, paramList));
   }
   
   private void loadOnceSubMsgBottomBtn()
   {
-    if (this.mLeftBtn != null)
+    TextView localTextView = this.mLeftBtn;
+    if (localTextView != null)
     {
-      this.mLeftBtn.setText(HardCodeUtil.a(2131701089));
+      localTextView.setText(HardCodeUtil.a(2131701230));
       this.mLeftBtn.setVisibility(0);
       this.mLeftBtn.setOnClickListener(new AuthDialog.3(this));
     }
-    if (this.mRightBtn != null)
+    localTextView = this.mRightBtn;
+    if (localTextView != null)
     {
-      this.mRightBtn.setText(HardCodeUtil.a(2131701088));
+      localTextView.setText(HardCodeUtil.a(2131701229));
       this.mRightBtn.setVisibility(0);
       this.mRightBtn.setOnClickListener(new AuthDialog.4(this));
     }
@@ -277,73 +284,78 @@ public class AuthDialog
   
   private void loadOnceSubMsgView()
   {
-    Object localObject1 = getData();
-    if (localObject1 != null)
+    Object localObject = getData();
+    if (localObject != null)
     {
-      Object localObject2 = ((Bundle)localObject1).getByteArray("key_once_sub_rsp_data");
-      localObject1 = new INTERFACE.StGetUserSettingRsp();
-      if (localObject2 != null) {}
-      try
-      {
-        ((INTERFACE.StGetUserSettingRsp)localObject1).mergeFrom((byte[])localObject2);
-        if (((INTERFACE.StGetUserSettingRsp)localObject1).setting != null)
+      byte[] arrayOfByte = ((Bundle)localObject).getByteArray("key_once_sub_rsp_data");
+      localObject = new INTERFACE.StGetUserSettingRsp();
+      if (arrayOfByte != null) {
+        try
         {
-          localObject1 = ((INTERFACE.StGetUserSettingRsp)localObject1).setting.subItems.get();
-          localObject2 = new ArrayList();
-          int i = 0;
-          while (i < ((List)localObject1).size())
-          {
-            INTERFACE.StSubscribeMessage localStSubscribeMessage = (INTERFACE.StSubscribeMessage)((List)localObject1).get(i);
-            if (localStSubscribeMessage.authState.get() == 0) {
-              ((List)localObject2).add(localStSubscribeMessage);
-            }
-            i += 1;
-          }
+          ((INTERFACE.StGetUserSettingRsp)localObject).mergeFrom(arrayOfByte);
         }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
+        catch (Throwable localThrowable)
         {
           QLog.e("AuthDialog", 1, "loadOnceSubMsgView - rsp.mergeFrom(onceSubRspByteArr) get a Throwable", localThrowable);
         }
-        switch (localThrowable.size())
+      }
+      if (((INTERFACE.StGetUserSettingRsp)localObject).setting != null)
+      {
+        localObject = ((INTERFACE.StGetUserSettingRsp)localObject).setting.subItems.get();
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < ((List)localObject).size())
         {
-        default: 
-          QLog.e("AuthDialog", 1, "subMsgNoMaintainAuth size > 3 || size == 0!!");
+          INTERFACE.StSubscribeMessage localStSubscribeMessage = (INTERFACE.StSubscribeMessage)((List)localObject).get(i);
+          if (localStSubscribeMessage.authState.get() == 0) {
+            localArrayList.add(localStSubscribeMessage);
+          }
+          i += 1;
         }
+        i = localArrayList.size();
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              QLog.e("AuthDialog", 1, "subMsgNoMaintainAuth size > 3 || size == 0!!");
+              return;
+            }
+            this.onceSubLayout1.setVisibility(0);
+            this.onceSubLayout2.setVisibility(0);
+            this.onceSubLayout3.setVisibility(0);
+            loadOnceSubItemView(localArrayList, 0);
+            loadOnceSubItemView(localArrayList, 1);
+            loadOnceSubItemView(localArrayList, 2);
+            return;
+          }
+          this.onceSubLayout1.setVisibility(0);
+          this.onceSubLayout2.setVisibility(0);
+          this.onceSubLayout3.setVisibility(8);
+          loadOnceSubItemView(localArrayList, 0);
+          loadOnceSubItemView(localArrayList, 1);
+          return;
+        }
+        this.onceSubLayout1.setVisibility(0);
+        this.onceSubLayout2.setVisibility(8);
+        this.onceSubLayout3.setVisibility(8);
+        loadOnceSubItemView(localArrayList, 0);
       }
     }
-    return;
-    this.onceSubLayout1.setVisibility(0);
-    this.onceSubLayout2.setVisibility(8);
-    this.onceSubLayout3.setVisibility(8);
-    loadOnceSubItemView(localThrowable, 0);
-    return;
-    this.onceSubLayout1.setVisibility(0);
-    this.onceSubLayout2.setVisibility(0);
-    this.onceSubLayout3.setVisibility(8);
-    loadOnceSubItemView(localThrowable, 0);
-    loadOnceSubItemView(localThrowable, 1);
-    return;
-    this.onceSubLayout1.setVisibility(0);
-    this.onceSubLayout2.setVisibility(0);
-    this.onceSubLayout3.setVisibility(0);
-    loadOnceSubItemView(localThrowable, 0);
-    loadOnceSubItemView(localThrowable, 1);
-    loadOnceSubItemView(localThrowable, 2);
   }
   
   private void realReportTo4239(String paramString)
   {
     String str2 = this.mResBuilder.getReportSubAction();
     MiniAppConfig localMiniAppConfig = this.mResBuilder.getMiniAppConfig();
-    if (localMiniAppConfig.isReportTypeMiniGame()) {}
-    for (String str1 = "1";; str1 = "0")
-    {
-      MiniProgramLpReportDC04239.reportMiniAppEvent(localMiniAppConfig, str1, null, "scope", str2, paramString, null);
-      return;
+    String str1;
+    if (localMiniAppConfig.isReportTypeMiniGame()) {
+      str1 = "1";
+    } else {
+      str1 = "0";
     }
+    MiniProgramLpReportDC04239.reportMiniAppEvent(localMiniAppConfig, str1, null, "scope", str2, paramString, null);
   }
   
   private void setActivityResultListener()
@@ -353,140 +365,159 @@ public class AuthDialog
   
   private void showOnceSubItemDetailDialog(INTERFACE.StSubscribeMessage paramStSubscribeMessage)
   {
-    int j = -1;
-    QLog.e("AuthDialog", 1, "showOnceSubItemDetailDialog detailItem: " + paramStSubscribeMessage.example.title.get());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("showOnceSubItemDetailDialog detailItem: ");
+    ((StringBuilder)localObject).append(paramStSubscribeMessage.example.title.get());
+    QLog.e("AuthDialog", 1, ((StringBuilder)localObject).toString());
+    localObject = this.mRootView;
     int i;
-    if (this.mRootView != null)
+    int j;
+    if (localObject != null)
     {
-      i = this.mRootView.getHeight();
+      i = ((View)localObject).getHeight();
       j = this.mRootView.getWidth();
     }
-    for (;;)
+    else
     {
-      new AuthDetailDialog(this.mContext, paramStSubscribeMessage, i, j, 1).show();
-      return;
       i = -1;
+      j = -1;
     }
+    new AuthDetailDialog(this.mContext, paramStSubscribeMessage, i, j, 1).show();
   }
   
   private void updatePhoneNumberView(JSONArray paramJSONArray)
   {
-    String str;
     if (paramJSONArray != null)
     {
-      str = StorageUtil.getPreference().getString(this.uin + "_PhoneNumber", "");
-      QLog.d("AuthDialog", 1, "updatePhoneNumberView phoneNumberArray length : " + paramJSONArray.length());
-      switch (paramJSONArray.length())
+      Object localObject1 = StorageUtil.getPreference();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.uin);
+      ((StringBuilder)localObject2).append("_PhoneNumber");
+      localObject1 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), "");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("updatePhoneNumberView phoneNumberArray length : ");
+      ((StringBuilder)localObject2).append(paramJSONArray.length());
+      QLog.d("AuthDialog", 1, ((StringBuilder)localObject2).toString());
+      int i = paramJSONArray.length();
+      if (i != 1)
       {
-      }
-    }
-    JSONObject localJSONObject1;
-    label466:
-    JSONObject localJSONObject2;
-    do
-    {
-      do
-      {
-        do
+        if (i != 2)
         {
-          return;
-          paramJSONArray = paramJSONArray.optJSONObject(0);
-        } while (paramJSONArray == null);
-        this.mPhoneNumberLayout.setVisibility(0);
-        this.mPhoneNumberLayout1.setVisibility(0);
-        this.mPhoneNumberLayout2.setVisibility(8);
-        this.mPhoneNumberLayout3.setVisibility(8);
-        this.mPhoneNumber1.setText(paramJSONArray.optString("purePhoneNumber"));
-        this.mPhoneNumberSection1.setVisibility(0);
-        this.mPhoneNumberSection2.setVisibility(8);
-        this.mPhoneNumberSection3.setVisibility(8);
-        this.mSelectPhoneNumber = 1;
-        this.mLineView1.setVisibility(0);
-        this.mLineView2.setVisibility(0);
-        this.mLineView3.setVisibility(8);
-        this.mLineView4.setVisibility(8);
-        this.mOperateNumberBtn.setText("使用其他号码");
-        this.mOperateNumberBtn.setVisibility(0);
-        return;
-        localJSONObject1 = paramJSONArray.optJSONObject(0);
-        paramJSONArray = paramJSONArray.optJSONObject(1);
-      } while ((localJSONObject1 == null) || (paramJSONArray == null));
-      this.mPhoneNumberLayout.setVisibility(0);
-      this.mPhoneNumberLayout1.setVisibility(0);
-      this.mPhoneNumberLayout2.setVisibility(0);
-      this.mPhoneNumberLayout3.setVisibility(8);
-      this.mPhoneNumber1.setText(localJSONObject1.optString("purePhoneNumber"));
-      this.mPhoneNumber2.setText(paramJSONArray.optString("purePhoneNumber"));
-      if (str.equals(localJSONObject1.optString("purePhoneNumber")))
-      {
-        this.mPhoneNumberSection1.setVisibility(0);
-        this.mSelectPhoneNumber = 1;
-        if (!str.equals(paramJSONArray.optString("purePhoneNumber"))) {
-          break label466;
+          if (i != 3) {
+            return;
+          }
+          localObject2 = paramJSONArray.optJSONObject(0);
+          JSONObject localJSONObject = paramJSONArray.optJSONObject(1);
+          paramJSONArray = paramJSONArray.optJSONObject(2);
+          if ((localObject2 != null) && (localJSONObject != null) && (paramJSONArray != null))
+          {
+            this.mPhoneNumberLayout.setVisibility(0);
+            this.mPhoneNumberLayout1.setVisibility(0);
+            this.mPhoneNumberLayout2.setVisibility(0);
+            this.mPhoneNumberLayout3.setVisibility(0);
+            this.mPhoneNumber1.setText(((JSONObject)localObject2).optString("purePhoneNumber"));
+            this.mPhoneNumber2.setText(localJSONObject.optString("purePhoneNumber"));
+            this.mPhoneNumber3.setText(paramJSONArray.optString("purePhoneNumber"));
+            if (((String)localObject1).equals(((JSONObject)localObject2).optString("purePhoneNumber")))
+            {
+              this.mPhoneNumberSection1.setVisibility(0);
+              this.mSelectPhoneNumber = 1;
+            }
+            else
+            {
+              this.mPhoneNumberSection1.setVisibility(8);
+            }
+            if (((String)localObject1).equals(localJSONObject.optString("purePhoneNumber")))
+            {
+              this.mPhoneNumberSection2.setVisibility(0);
+              this.mSelectPhoneNumber = 2;
+            }
+            else
+            {
+              this.mPhoneNumberSection2.setVisibility(8);
+            }
+            if (((String)localObject1).equals(paramJSONArray.optString("purePhoneNumber")))
+            {
+              this.mPhoneNumberSection3.setVisibility(0);
+              this.mSelectPhoneNumber = 3;
+            }
+            else
+            {
+              this.mPhoneNumberSection3.setVisibility(8);
+            }
+            this.mLineView1.setVisibility(0);
+            this.mLineView2.setVisibility(0);
+            this.mLineView3.setVisibility(0);
+            this.mLineView4.setVisibility(0);
+            this.mOperateNumberBtn.setText("管理手机号码");
+            this.mOperateNumberBtn.setVisibility(0);
+          }
         }
-        this.mPhoneNumberSection2.setVisibility(0);
-        this.mSelectPhoneNumber = 2;
+        else
+        {
+          localObject2 = paramJSONArray.optJSONObject(0);
+          paramJSONArray = paramJSONArray.optJSONObject(1);
+          if ((localObject2 != null) && (paramJSONArray != null))
+          {
+            this.mPhoneNumberLayout.setVisibility(0);
+            this.mPhoneNumberLayout1.setVisibility(0);
+            this.mPhoneNumberLayout2.setVisibility(0);
+            this.mPhoneNumberLayout3.setVisibility(8);
+            this.mPhoneNumber1.setText(((JSONObject)localObject2).optString("purePhoneNumber"));
+            this.mPhoneNumber2.setText(paramJSONArray.optString("purePhoneNumber"));
+            if (((String)localObject1).equals(((JSONObject)localObject2).optString("purePhoneNumber")))
+            {
+              this.mPhoneNumberSection1.setVisibility(0);
+              this.mSelectPhoneNumber = 1;
+            }
+            else
+            {
+              this.mPhoneNumberSection1.setVisibility(8);
+            }
+            if (((String)localObject1).equals(paramJSONArray.optString("purePhoneNumber")))
+            {
+              this.mPhoneNumberSection2.setVisibility(0);
+              this.mSelectPhoneNumber = 2;
+            }
+            else
+            {
+              this.mPhoneNumberSection2.setVisibility(8);
+            }
+            if (TextUtils.isEmpty((CharSequence)localObject1)) {
+              this.mPhoneNumberSection1.setVisibility(0);
+            }
+            this.mPhoneNumberSection3.setVisibility(8);
+            this.mLineView1.setVisibility(0);
+            this.mLineView2.setVisibility(0);
+            this.mLineView3.setVisibility(0);
+            this.mLineView4.setVisibility(8);
+            this.mOperateNumberBtn.setText("管理手机号码");
+            this.mOperateNumberBtn.setVisibility(0);
+          }
+        }
       }
-      for (;;)
+      else
       {
-        if (TextUtils.isEmpty(str)) {
+        paramJSONArray = paramJSONArray.optJSONObject(0);
+        if (paramJSONArray != null)
+        {
+          this.mPhoneNumberLayout.setVisibility(0);
+          this.mPhoneNumberLayout1.setVisibility(0);
+          this.mPhoneNumberLayout2.setVisibility(8);
+          this.mPhoneNumberLayout3.setVisibility(8);
+          this.mPhoneNumber1.setText(paramJSONArray.optString("purePhoneNumber"));
           this.mPhoneNumberSection1.setVisibility(0);
+          this.mPhoneNumberSection2.setVisibility(8);
+          this.mPhoneNumberSection3.setVisibility(8);
+          this.mSelectPhoneNumber = 1;
+          this.mLineView1.setVisibility(0);
+          this.mLineView2.setVisibility(0);
+          this.mLineView3.setVisibility(8);
+          this.mLineView4.setVisibility(8);
+          this.mOperateNumberBtn.setText("使用其他号码");
+          this.mOperateNumberBtn.setVisibility(0);
         }
-        this.mPhoneNumberSection3.setVisibility(8);
-        this.mLineView1.setVisibility(0);
-        this.mLineView2.setVisibility(0);
-        this.mLineView3.setVisibility(0);
-        this.mLineView4.setVisibility(8);
-        this.mOperateNumberBtn.setText("管理手机号码");
-        this.mOperateNumberBtn.setVisibility(0);
-        return;
-        this.mPhoneNumberSection1.setVisibility(8);
-        break;
-        this.mPhoneNumberSection2.setVisibility(8);
       }
-      localJSONObject1 = paramJSONArray.optJSONObject(0);
-      localJSONObject2 = paramJSONArray.optJSONObject(1);
-      paramJSONArray = paramJSONArray.optJSONObject(2);
-    } while ((localJSONObject1 == null) || (localJSONObject2 == null) || (paramJSONArray == null));
-    this.mPhoneNumberLayout.setVisibility(0);
-    this.mPhoneNumberLayout1.setVisibility(0);
-    this.mPhoneNumberLayout2.setVisibility(0);
-    this.mPhoneNumberLayout3.setVisibility(0);
-    this.mPhoneNumber1.setText(localJSONObject1.optString("purePhoneNumber"));
-    this.mPhoneNumber2.setText(localJSONObject2.optString("purePhoneNumber"));
-    this.mPhoneNumber3.setText(paramJSONArray.optString("purePhoneNumber"));
-    if (str.equals(localJSONObject1.optString("purePhoneNumber")))
-    {
-      this.mPhoneNumberSection1.setVisibility(0);
-      this.mSelectPhoneNumber = 1;
-      if (!str.equals(localJSONObject2.optString("purePhoneNumber"))) {
-        break label730;
-      }
-      this.mPhoneNumberSection2.setVisibility(0);
-      this.mSelectPhoneNumber = 2;
-      label640:
-      if (!str.equals(paramJSONArray.optString("purePhoneNumber"))) {
-        break label742;
-      }
-      this.mPhoneNumberSection3.setVisibility(0);
-      this.mSelectPhoneNumber = 3;
-    }
-    for (;;)
-    {
-      this.mLineView1.setVisibility(0);
-      this.mLineView2.setVisibility(0);
-      this.mLineView3.setVisibility(0);
-      this.mLineView4.setVisibility(0);
-      this.mOperateNumberBtn.setText("管理手机号码");
-      this.mOperateNumberBtn.setVisibility(0);
-      return;
-      this.mPhoneNumberSection1.setVisibility(8);
-      break;
-      label730:
-      this.mPhoneNumberSection2.setVisibility(8);
-      break label640;
-      label742:
-      this.mPhoneNumberSection3.setVisibility(8);
     }
   }
   
@@ -522,25 +553,26 @@ public class AuthDialog
   
   protected URLDrawable getUrlDrawable(String paramString, int paramInt)
   {
-    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = false;
-    ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = paramInt;
-    ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = paramInt;
-    Object localObject1 = null;
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramInt;
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramInt;
     try
     {
-      localObject2 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject2);
-      localObject1 = localObject2;
+      localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+      return localObject;
     }
     catch (Exception localException)
     {
-      do
+      localException.printStackTrace();
+      if (QLog.isColorLevel())
       {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("AuthDialog", 2, "getIcon url: " + paramString);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getIcon url: ");
+        localStringBuilder.append(paramString);
+        QLog.e("AuthDialog", 2, localStringBuilder.toString());
+      }
     }
-    return localObject1;
     return null;
   }
   
@@ -560,30 +592,31 @@ public class AuthDialog
     {
     default: 
       return;
-    case 2131371527: 
-      this.mPhoneNumberSection1.setVisibility(0);
-      this.mPhoneNumberSection2.setVisibility(8);
-      this.mPhoneNumberSection3.setVisibility(8);
-      this.mSelectPhoneNumber = 1;
-      return;
-    case 2131371528: 
-      this.mPhoneNumberSection1.setVisibility(8);
-      this.mPhoneNumberSection2.setVisibility(0);
-      this.mPhoneNumberSection3.setVisibility(8);
-      this.mSelectPhoneNumber = 2;
-      return;
-    case 2131371529: 
+    case 2131371149: 
       this.mPhoneNumberSection1.setVisibility(8);
       this.mPhoneNumberSection2.setVisibility(8);
       this.mPhoneNumberSection3.setVisibility(0);
       this.mSelectPhoneNumber = 3;
       return;
-    case 2131371455: 
+    case 2131371148: 
+      this.mPhoneNumberSection1.setVisibility(8);
+      this.mPhoneNumberSection2.setVisibility(0);
+      this.mPhoneNumberSection3.setVisibility(8);
+      this.mSelectPhoneNumber = 2;
+      return;
+    case 2131371147: 
+      this.mPhoneNumberSection1.setVisibility(0);
+      this.mPhoneNumberSection2.setVisibility(8);
+      this.mPhoneNumberSection3.setVisibility(8);
+      this.mSelectPhoneNumber = 1;
+      return;
+    case 2131371075: 
       paramView = new Intent();
       paramView.putExtra("appId", this.mAppId);
       if (this.mOperateNumberBtn.getText().equals("管理手机号码"))
       {
-        if ((this.mResBuilder != null) && (this.mResBuilder.getPhoneNumberList() != null) && (this.mResBuilder.getPhoneNumberList().length() > 0)) {
+        AuthDialog.AuthDialogResBuilder localAuthDialogResBuilder = this.mResBuilder;
+        if ((localAuthDialogResBuilder != null) && (localAuthDialogResBuilder.getPhoneNumberList() != null) && (this.mResBuilder.getPhoneNumberList().length() > 0)) {
           paramView.putExtra("phoneNumberList", this.mResBuilder.getPhoneNumberList().toString());
         }
         PublicFragmentActivity.Launcher.a(this.mContext, paramView, PublicFragmentActivityForMini.class, PhoneNumberManagementFragment.class, 1089);
@@ -591,7 +624,7 @@ public class AuthDialog
       }
       PublicFragmentActivity.Launcher.a(this.mContext, paramView, PublicFragmentActivityForMini.class, AddPhoneNumberFragment.class, 1088);
       return;
-    case 2131371449: 
+    case 2131371069: 
       this.mAuthInfoLayout.setVisibility(0);
       this.mAuthTitle.setVisibility(4);
       this.mMiniAppInfoLayout.setVisibility(4);
@@ -664,7 +697,7 @@ public class AuthDialog
       if (localURLDrawable != null)
       {
         localURLDrawable.setTag(URLDrawableDecodeHandler.b(i, i, ViewUtils.b(5.0F)));
-        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.j);
+        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.i);
         this.mMiniAppIcon.setImageDrawable(localURLDrawable);
       }
     }
@@ -674,8 +707,7 @@ public class AuthDialog
     if ((this.mAuthTitle != null) && (!TextUtils.isEmpty(paramAuthDialogResBuilder.getAuthTitle()))) {
       this.mAuthTitle.setText(paramAuthDialogResBuilder.getAuthTitle());
     }
-    if (this.mUserIcon != null)
-    {
+    if (this.mUserIcon != null) {
       if (!TextUtils.isEmpty(paramAuthDialogResBuilder.getUserIconUrl()))
       {
         int j = ViewUtils.b(40.0F);
@@ -688,90 +720,82 @@ public class AuthDialog
         }
         this.mUserIcon.setVisibility(0);
       }
-    }
-    else
-    {
-      if (this.mUserName != null)
+      else
       {
-        if (TextUtils.isEmpty(paramAuthDialogResBuilder.getUserName())) {
-          break label413;
-        }
+        this.mUserIcon.setVisibility(8);
+      }
+    }
+    if (this.mUserName != null) {
+      if (!TextUtils.isEmpty(paramAuthDialogResBuilder.getUserName()))
+      {
         this.mUserName.setText(paramAuthDialogResBuilder.getUserName());
         this.mUserName.setVisibility(0);
       }
-      label304:
-      if ((this.mType != 3) && (this.mType != 4)) {
-        break label425;
-      }
-      loadOnceSubMsgBottomBtn();
-      label324:
-      if (this.mAuthDesc != null)
+      else
       {
-        if (TextUtils.isEmpty(paramAuthDialogResBuilder.getAuthDesc())) {
-          break label560;
+        this.mUserName.setVisibility(8);
+      }
+    }
+    i = this.mType;
+    if ((i != 3) && (i != 4))
+    {
+      if (this.mLeftBtn != null) {
+        if (!TextUtils.isEmpty(paramAuthDialogResBuilder.getLeftBtnText()))
+        {
+          this.mLeftBtn.setText(paramAuthDialogResBuilder.getLeftBtnText());
+          this.mLeftBtn.setVisibility(0);
+          if (paramAuthDialogResBuilder.getLeftBtnClickListener() != null) {
+            this.mLeftBtn.setOnClickListener(paramAuthDialogResBuilder.getLeftBtnClickListener());
+          }
         }
+        else
+        {
+          this.mLeftBtn.setVisibility(8);
+        }
+      }
+      if (this.mRightBtn != null) {
+        if (!TextUtils.isEmpty(paramAuthDialogResBuilder.getRightBtnText()))
+        {
+          this.mRightBtn.setText(paramAuthDialogResBuilder.getRightBtnText());
+          this.mRightBtn.setVisibility(0);
+          if (paramAuthDialogResBuilder.getRightBtnClickListener() != null) {
+            this.mRightBtn.setOnClickListener(paramAuthDialogResBuilder.getRightBtnClickListener());
+          }
+        }
+        else
+        {
+          this.mRightBtn.setVisibility(8);
+        }
+      }
+    }
+    else
+    {
+      loadOnceSubMsgBottomBtn();
+    }
+    if (this.mAuthDesc != null) {
+      if (!TextUtils.isEmpty(paramAuthDialogResBuilder.getAuthDesc()))
+      {
         this.mAuthDesc.setVisibility(0);
         this.mAuthDesc.setText(paramAuthDialogResBuilder.getAuthDesc());
       }
-    }
-    for (;;)
-    {
-      if (this.mType == 2) {
-        updatePhoneNumberView(paramAuthDialogResBuilder.getPhoneNumberList());
-      }
-      if ((this.mType == 3) || (this.mType == 4)) {
-        loadOnceSubMsgView();
-      }
-      show();
-      return;
-      this.mUserIcon.setVisibility(8);
-      break;
-      label413:
-      this.mUserName.setVisibility(8);
-      break label304;
-      label425:
-      if (this.mLeftBtn != null)
+      else
       {
-        if (TextUtils.isEmpty(paramAuthDialogResBuilder.getLeftBtnText())) {
-          break label536;
-        }
-        this.mLeftBtn.setText(paramAuthDialogResBuilder.getLeftBtnText());
-        this.mLeftBtn.setVisibility(0);
-        if (paramAuthDialogResBuilder.getLeftBtnClickListener() != null) {
-          this.mLeftBtn.setOnClickListener(paramAuthDialogResBuilder.getLeftBtnClickListener());
-        }
+        this.mAuthDesc.setVisibility(8);
       }
-      for (;;)
-      {
-        if (this.mRightBtn == null) {
-          break label546;
-        }
-        if (TextUtils.isEmpty(paramAuthDialogResBuilder.getRightBtnText())) {
-          break label548;
-        }
-        this.mRightBtn.setText(paramAuthDialogResBuilder.getRightBtnText());
-        this.mRightBtn.setVisibility(0);
-        if (paramAuthDialogResBuilder.getRightBtnClickListener() == null) {
-          break;
-        }
-        this.mRightBtn.setOnClickListener(paramAuthDialogResBuilder.getRightBtnClickListener());
-        break;
-        label536:
-        this.mLeftBtn.setVisibility(8);
-      }
-      label546:
-      break label324;
-      label548:
-      this.mRightBtn.setVisibility(8);
-      break label324;
-      label560:
-      this.mAuthDesc.setVisibility(8);
     }
+    if (this.mType == 2) {
+      updatePhoneNumberView(paramAuthDialogResBuilder.getPhoneNumberList());
+    }
+    i = this.mType;
+    if ((i == 3) || (i == 4)) {
+      loadOnceSubMsgView();
+    }
+    show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.AuthDialog
  * JD-Core Version:    0.7.0.1
  */

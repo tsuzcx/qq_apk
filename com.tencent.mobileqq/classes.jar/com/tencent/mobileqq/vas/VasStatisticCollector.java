@@ -3,8 +3,9 @@ package com.tencent.mobileqq.vas;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.beacon.upload.TunnelInfo;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.statistics.QQUserAction;
+import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.ilive.manager.IliveAuthManager;
 import java.util.HashMap;
 import java.util.Map;
 import kotlin.Metadata;
@@ -17,7 +18,7 @@ import kotlin.math.MathKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/VasStatisticCollector;", "", "()V", "APP_KEY", "", "TAG", "hit", "", "calculateHit", "i", "", "calculateHit$AQQLiteApp_release", "isHit", "report", "", "eventCode", "elapse", "", "params", "", "Lkotlin/Pair;", "(Ljava/lang/String;J[Lkotlin/Pair;)V", "", "reportReal", "isReal", "isImmediately", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/VasStatisticCollector;", "", "()V", "APP_KEY", "", "TAG", "hit", "", "calculateHit", "i", "", "calculateHit$vas_temp_api_release", "isHit", "report", "", "eventCode", "elapse", "", "params", "", "Lkotlin/Pair;", "(Ljava/lang/String;J[Lkotlin/Pair;)V", "", "reportReal", "isReal", "isImmediately", "vas-temp-api_release"}, k=1, mv={1, 1, 16})
 public final class VasStatisticCollector
 {
   public static final VasStatisticCollector a;
@@ -28,12 +29,7 @@ public final class VasStatisticCollector
     VasStatisticCollector localVasStatisticCollector = new VasStatisticCollector();
     jdField_a_of_type_ComTencentMobileqqVasVasStatisticCollector = localVasStatisticCollector;
     UserAction.registerTunnel(new TunnelInfo("00000TEDPU36RWUZ", AppSetting.f(), "1000"));
-    if (localVasStatisticCollector.a(100)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    jdField_a_of_type_Boolean = localVasStatisticCollector.a(100);
   }
   
   @JvmStatic
@@ -78,18 +74,32 @@ public final class VasStatisticCollector
   public static final void a(@NotNull String paramString, @Nullable Map<String, String> paramMap, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "eventCode");
-    if (QLog.isColorLevel()) {
-      QLog.e("VasStatisticCollector", 1, "eventCode=" + paramString + ", elapse=" + paramLong + ", params=" + String.valueOf(paramMap));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("eventCode=");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", elapse=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(", params=");
+      ((StringBuilder)localObject).append(String.valueOf(paramMap));
+      QLog.e("VasStatisticCollector", 1, ((StringBuilder)localObject).toString());
     }
     if (paramMap == null)
     {
       paramMap = new HashMap();
-      paramMap.put("qquin", String.valueOf(IliveAuthManager.getLongUin()));
-      UserAction.onUserActionToTunnel("00000TEDPU36RWUZ", paramString, true, paramLong, -1L, (Map)paramMap, paramBoolean1, paramBoolean2);
+      paramMap.put("qquin", VasUtil.a());
+      paramMap.put("cost_time", String.valueOf(paramLong));
+      paramMap.put("consume_time", String.valueOf(paramLong));
+      QQUserAction.a("00000TEDPU36RWUZ", paramString, true, paramLong, -1L, (Map)paramMap, paramBoolean1, paramBoolean2);
       return;
     }
-    paramMap.put("qquin", String.valueOf(IliveAuthManager.getLongUin()));
-    UserAction.onUserActionToTunnel("00000TEDPU36RWUZ", paramString, true, paramLong, -1L, paramMap, paramBoolean1, paramBoolean2);
+    Object localObject = VasUtil.a();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "VasUtil.getCurrentUin()");
+    paramMap.put("qquin", localObject);
+    paramMap.put("cost_time", String.valueOf(paramLong));
+    paramMap.put("consume_time", String.valueOf(paramLong));
+    QQUserAction.a("00000TEDPU36RWUZ", paramString, true, paramLong, -1L, paramMap, paramBoolean1, paramBoolean2);
   }
   
   @JvmStatic
@@ -123,12 +133,15 @@ public final class VasStatisticCollector
   
   public final boolean a(int paramInt)
   {
-    return MathKt.roundToInt(Math.floor(paramInt * Math.random())) == paramInt / 2;
+    double d1 = paramInt;
+    double d2 = Math.random();
+    Double.isNaN(d1);
+    return MathKt.roundToInt(Math.floor(d1 * d2)) == paramInt / 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasStatisticCollector
  * JD-Core Version:    0.7.0.1
  */

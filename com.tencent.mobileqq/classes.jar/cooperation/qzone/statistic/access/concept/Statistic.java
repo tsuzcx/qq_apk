@@ -17,18 +17,18 @@ public class Statistic
   
   public Object getValue(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt > this.keys.length - 1)) {
-      return null;
+    if ((paramInt >= 0) && (paramInt <= this.keys.length - 1)) {
+      return this.values[paramInt];
     }
-    return this.values[paramInt];
+    return null;
   }
   
   public Object getValue(Key paramKey)
   {
-    if ((paramKey == null) || (paramKey.index < 0) || (paramKey.index > this.keys.length - 1)) {
-      return null;
+    if ((paramKey != null) && (paramKey.index >= 0) && (paramKey.index <= this.keys.length - 1)) {
+      return this.values[paramKey.index];
     }
-    return this.values[paramKey.index];
+    return null;
   }
   
   public Object[] getValues()
@@ -44,11 +44,12 @@ public class Statistic
   
   public Statistic setValue(Key paramKey, Object paramObject)
   {
-    if ((paramKey == null) || (paramKey.index < 0) || (paramKey.index > this.keys.length - 1)) {
-      return null;
+    if ((paramKey != null) && (paramKey.index >= 0) && (paramKey.index <= this.keys.length - 1))
+    {
+      this.values[paramKey.index] = paramObject;
+      return this;
     }
-    this.values[paramKey.index] = paramObject;
-    return this;
+    return null;
   }
   
   public void setValues(Object[] paramArrayOfObject)
@@ -58,7 +59,7 @@ public class Statistic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.concept.Statistic
  * JD-Core Version:    0.7.0.1
  */

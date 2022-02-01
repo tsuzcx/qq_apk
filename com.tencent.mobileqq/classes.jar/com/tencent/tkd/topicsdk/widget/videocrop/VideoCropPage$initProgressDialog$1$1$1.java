@@ -24,14 +24,14 @@ final class VideoCropPage$initProgressDialog$1$1$1
   
   public final void invoke()
   {
-    String str = AppContext.a.a().getString(R.string.j);
+    String str = AppContext.a.a().getString(R.string.g);
     Intrinsics.checkExpressionValueIsNotNull(str, "AppContext.instance.getS…g.cancel_video_crop_tips)");
     TopicSDKHelperKt.a(str, false, null, 6, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPage.initProgressDialog.1.1.1
  * JD-Core Version:    0.7.0.1
  */

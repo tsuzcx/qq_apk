@@ -41,10 +41,31 @@ public class OCRPerformUtil$OCRLanHolder
   
   public String a()
   {
-    String str1 = "ocrLan:" + this.jdField_a_of_type_JavaLangString + ", ocrLanOptions:" + this.jdField_a_of_type_JavaUtilList.toString();
-    String str2 = "srcLan:" + this.jdField_b_of_type_JavaLangString + ", srcLanOptions:" + this.jdField_b_of_type_JavaUtilList.toString();
-    String str3 = "dstLan:" + this.jdField_c_of_type_JavaLangString + ", dstLanOptions:" + this.jdField_c_of_type_JavaUtilList.toString();
-    return str1 + "\n" + str2 + "\n" + str3;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("ocrLan:");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(", ocrLanOptions:");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.toString());
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("srcLan:");
+    ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(", srcLanOptions:");
+    ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaUtilList.toString());
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("dstLan:");
+    ((StringBuilder)localObject3).append(this.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject3).append(", dstLanOptions:");
+    ((StringBuilder)localObject3).append(this.jdField_c_of_type_JavaUtilList.toString());
+    localObject3 = ((StringBuilder)localObject3).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("\n");
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append("\n");
+    localStringBuilder.append((String)localObject3);
+    return localStringBuilder.toString();
   }
   
   public String a(String paramString)
@@ -117,7 +138,7 @@ public class OCRPerformUtil$OCRLanHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformUtil.OCRLanHolder
  * JD-Core Version:    0.7.0.1
  */

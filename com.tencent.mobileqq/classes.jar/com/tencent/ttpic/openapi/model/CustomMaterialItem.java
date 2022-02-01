@@ -16,25 +16,26 @@ public class CustomMaterialItem
   
   public boolean hasCameraTexture()
   {
-    if (this.params == null) {
+    Object localObject1 = this.params;
+    if (localObject1 == null) {
       return false;
     }
-    Object localObject;
+    Object localObject2;
     do
     {
-      Iterator localIterator = this.params.iterator();
-      while (!((Iterator)localObject).hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (!((Iterator)localObject2).hasNext())
       {
-        if (!localIterator.hasNext()) {
+        if (!((Iterator)localObject1).hasNext()) {
           break;
         }
-        localObject = (CustomMaterialItem.CustomMaterialParams)localIterator.next();
-        if (((CustomMaterialItem.CustomMaterialParams)localObject).value == null) {
+        localObject2 = (CustomMaterialItem.CustomMaterialParams)((Iterator)localObject1).next();
+        if (((CustomMaterialItem.CustomMaterialParams)localObject2).value == null) {
           return false;
         }
-        localObject = ((CustomMaterialItem.CustomMaterialParams)localObject).value.iterator();
+        localObject2 = ((CustomMaterialItem.CustomMaterialParams)localObject2).value.iterator();
       }
-    } while (!((String)((Iterator)localObject).next()).equals("$cameraTexture"));
+    } while (!((String)((Iterator)localObject2).next()).equals("$cameraTexture"));
     return true;
     return false;
   }
@@ -59,7 +60,7 @@ public class CustomMaterialItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.CustomMaterialItem
  * JD-Core Version:    0.7.0.1
  */

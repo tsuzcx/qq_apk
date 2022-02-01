@@ -59,30 +59,42 @@ public class MiniChatMsgProxy
   
   public boolean a(int paramInt, String paramString)
   {
-    for (;;)
+    boolean bool2 = false;
+    try
     {
-      try
+      paramString = UinTypeUtil.a(paramString, paramInt);
+      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      boolean bool1 = bool2;
+      if (paramString != null)
       {
-        paramString = UinTypeUtil.a(paramString, paramInt);
-        paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-        if ((paramString != null) && (paramString.size() > 0))
+        bool1 = bool2;
+        if (paramString.size() > 0)
         {
           paramString = paramString.iterator();
-          if (paramString.hasNext())
+          do
           {
-            if ((IChatWindow)((WeakReference)paramString.next()).get() == null) {
-              continue;
+            bool1 = bool2;
+            if (!paramString.hasNext()) {
+              break;
             }
-            bool = true;
-            if (QLog.isColorLevel()) {
-              QLog.d(MiniPieHelper.a, 2, "hasOtherInstance -->" + bool);
-            }
-            return bool;
-          }
+          } while ((IChatWindow)((WeakReference)paramString.next()).get() == null);
+          bool1 = true;
         }
       }
-      finally {}
-      boolean bool = false;
+      if (QLog.isColorLevel())
+      {
+        paramString = MiniPieHelper.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("hasOtherInstance -->");
+        localStringBuilder.append(bool1);
+        QLog.d(paramString, 2, localStringBuilder.toString());
+      }
+      return bool1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -106,7 +118,7 @@ public class MiniChatMsgProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatMsgProxy
  * JD-Core Version:    0.7.0.1
  */

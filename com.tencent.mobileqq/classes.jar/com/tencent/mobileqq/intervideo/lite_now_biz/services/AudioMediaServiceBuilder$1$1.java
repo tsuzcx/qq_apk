@@ -11,14 +11,15 @@ class AudioMediaServiceBuilder$1$1
   
   public void a(T paramT, Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesClassLoaderCallback != null) {
-      this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesClassLoaderCallback.a(paramT, paramContext);
+    ClassLoaderCallback localClassLoaderCallback = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesClassLoaderCallback;
+    if (localClassLoaderCallback != null) {
+      localClassLoaderCallback.a(paramT, paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.AudioMediaServiceBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

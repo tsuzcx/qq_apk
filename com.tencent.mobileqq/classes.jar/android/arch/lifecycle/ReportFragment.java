@@ -17,18 +17,18 @@ public class ReportFragment
   private void dispatch(Lifecycle.Event paramEvent)
   {
     Object localObject = getActivity();
-    if ((localObject instanceof LifecycleRegistryOwner)) {
-      ((LifecycleRegistryOwner)localObject).getLifecycle().handleLifecycleEvent(paramEvent);
-    }
-    do
+    if ((localObject instanceof LifecycleRegistryOwner))
     {
-      do
-      {
-        return;
-      } while (!(localObject instanceof LifecycleOwner));
+      ((LifecycleRegistryOwner)localObject).getLifecycle().handleLifecycleEvent(paramEvent);
+      return;
+    }
+    if ((localObject instanceof LifecycleOwner))
+    {
       localObject = ((LifecycleOwner)localObject).getLifecycle();
-    } while (!(localObject instanceof LifecycleRegistry));
-    ((LifecycleRegistry)localObject).handleLifecycleEvent(paramEvent);
+      if ((localObject instanceof LifecycleRegistry)) {
+        ((LifecycleRegistry)localObject).handleLifecycleEvent(paramEvent);
+      }
+    }
   }
   
   private void dispatchCreate(ReportFragment.ActivityInitializationListener paramActivityInitializationListener)
@@ -114,7 +114,7 @@ public class ReportFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.lifecycle.ReportFragment
  * JD-Core Version:    0.7.0.1
  */

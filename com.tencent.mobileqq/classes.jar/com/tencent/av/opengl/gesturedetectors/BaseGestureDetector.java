@@ -21,14 +21,16 @@ public abstract class BaseGestureDetector
   
   protected void a()
   {
-    if (this.jdField_a_of_type_AndroidViewMotionEvent != null)
+    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+    if (localMotionEvent != null)
     {
-      this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+      localMotionEvent.recycle();
       this.jdField_a_of_type_AndroidViewMotionEvent = null;
     }
-    if (this.jdField_b_of_type_AndroidViewMotionEvent != null)
+    localMotionEvent = this.jdField_b_of_type_AndroidViewMotionEvent;
+    if (localMotionEvent != null)
     {
-      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+      localMotionEvent.recycle();
       this.jdField_b_of_type_AndroidViewMotionEvent = null;
     }
     this.jdField_a_of_type_Boolean = false;
@@ -38,23 +40,24 @@ public abstract class BaseGestureDetector
   
   protected void a(MotionEvent paramMotionEvent)
   {
-    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
-    if ((paramMotionEvent == null) || (localMotionEvent == null))
+    MotionEvent localMotionEvent1 = this.jdField_a_of_type_AndroidViewMotionEvent;
+    if ((paramMotionEvent != null) && (localMotionEvent1 != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
+      MotionEvent localMotionEvent2 = this.jdField_b_of_type_AndroidViewMotionEvent;
+      if (localMotionEvent2 != null)
+      {
+        localMotionEvent2.recycle();
+        this.jdField_b_of_type_AndroidViewMotionEvent = null;
       }
+      this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      this.jdField_a_of_type_Long = (paramMotionEvent.getEventTime() - localMotionEvent1.getEventTime());
+      this.jdField_a_of_type_Float = paramMotionEvent.getPressure(paramMotionEvent.getActionIndex());
+      this.jdField_b_of_type_Float = localMotionEvent1.getPressure(localMotionEvent1.getActionIndex());
       return;
     }
-    if (this.jdField_b_of_type_AndroidViewMotionEvent != null)
-    {
-      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
-      this.jdField_b_of_type_AndroidViewMotionEvent = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
     }
-    this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-    this.jdField_a_of_type_Long = (paramMotionEvent.getEventTime() - localMotionEvent.getEventTime());
-    this.jdField_a_of_type_Float = paramMotionEvent.getPressure(paramMotionEvent.getActionIndex());
-    this.jdField_b_of_type_Float = localMotionEvent.getPressure(localMotionEvent.getActionIndex());
   }
   
   public boolean a()
@@ -67,19 +70,17 @@ public abstract class BaseGestureDetector
     int i = paramMotionEvent.getAction() & 0xFF;
     if (!this.jdField_a_of_type_Boolean) {
       a(i, paramMotionEvent);
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       b(i, paramMotionEvent);
     }
+    return true;
   }
   
   protected abstract void b(int paramInt, MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.gesturedetectors.BaseGestureDetector
  * JD-Core Version:    0.7.0.1
  */

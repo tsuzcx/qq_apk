@@ -20,14 +20,30 @@ class LiteLiveWebViewFragment$3
   
   public void callJsFunctionByNative(String paramString, JSONObject paramJSONObject, JsBizAdapter.ValueCallback paramValueCallback)
   {
-    if ((this.a.isDestroyed) || (this.a.webView == null)) {
-      return;
-    }
-    if (paramJSONObject != null) {}
-    for (paramString = "javascript:(" + paramString + "(" + paramJSONObject.toString() + "))";; paramString = "javascript:" + paramString + "()")
+    if (!this.a.isDestroyed())
     {
-      this.a.webView.evaluateJavascript(paramString, new LiteLiveWebViewFragment.3.1(this, paramValueCallback));
-      return;
+      if (LiteLiveWebViewFragment.a(this.a) == null) {
+        return;
+      }
+      if (paramJSONObject != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("javascript:(");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("(");
+        localStringBuilder.append(paramJSONObject.toString());
+        localStringBuilder.append("))");
+        paramString = localStringBuilder.toString();
+      }
+      else
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("javascript:");
+        paramJSONObject.append(paramString);
+        paramJSONObject.append("()");
+        paramString = paramJSONObject.toString();
+      }
+      LiteLiveWebViewFragment.b(this.a).evaluateJavascript(paramString, new LiteLiveWebViewFragment.3.1(this, paramValueCallback));
     }
   }
   
@@ -66,7 +82,7 @@ class LiteLiveWebViewFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.fragment.LiteLiveWebViewFragment.3
  * JD-Core Version:    0.7.0.1
  */

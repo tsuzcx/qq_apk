@@ -21,8 +21,12 @@ public class j
   {
     if ((ServiceMsgWrapper)this.b.get(Integer.valueOf(this.c)) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.S.IPCTransportMonitorTask", 2, "transport msg to process timeout, ssoSeq is " + this.c);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("transport msg to process timeout, ssoSeq is ");
+        localStringBuilder.append(this.c);
+        QLog.d("MSF.S.IPCTransportMonitorTask", 2, localStringBuilder.toString());
       }
       this.b.remove(Integer.valueOf(this.c));
     }
@@ -30,7 +34,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.j
  * JD-Core Version:    0.7.0.1
  */

@@ -22,43 +22,64 @@ public class SystemMessageDecoder
 {
   private static void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())) {
-      if (QLog.isColorLevel()) {
-        QLog.e("SystemMessageDecoder", 2, "<---decodeC2CMsgPkg_AddFriend return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has() + ",isReaded:" + paramBoolean1 + "syncOther:" + paramBoolean2);
-      }
-    }
-    String str;
-    do
+    if ((paramMsg.msg_body.has()) && (((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()))
     {
-      do
-      {
-        return;
-        long l1 = Long.valueOf(paramMessageHandler.a.getCurrentAccountUin()).longValue();
-        long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-        short s = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_type.get();
-        if ((!paramBoolean1) && (!paramBoolean2) && (!paramBoolean3)) {
-          paramMessageHandler.a().a(l1, l2, s, -1006 - (s - 187), paramMsg, paramInt);
-        }
-        localObject = (msg_comm.MsgHead)paramMsg.msg_head.get();
-      } while (localObject == null);
-      paramMsg = "" + ((msg_comm.MsgHead)localObject).auth_uin.get();
-      str = ((msg_comm.MsgHead)localObject).auth_nick.get();
-      Object localObject = ((msg_comm.MsgHead)localObject).auth_remark.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("SystemMessageDecoder.sysnick", 2, "FriendSys auUin:" + paramMsg + "aunick:" + str + "auRemark:" + (String)localObject);
+      long l1 = Long.valueOf(paramMessageHandler.a.getCurrentAccountUin()).longValue();
+      long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+      short s = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_type.get();
+      if ((!paramBoolean1) && (!paramBoolean2) && (!paramBoolean3)) {
+        paramMessageHandler.a().a(l1, l2, s, -1006 - (s - 187), paramMsg, paramInt);
       }
-      if ((!TextUtils.isEmpty(paramMsg)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+      Object localObject = (msg_comm.MsgHead)paramMsg.msg_head.get();
+      if (localObject != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("SystemMessageDecoder.sysremark", 2, "FriendSys saveremark");
+        paramMsg = new StringBuilder();
+        paramMsg.append("");
+        paramMsg.append(((msg_comm.MsgHead)localObject).auth_uin.get());
+        paramMsg = paramMsg.toString();
+        String str = ((msg_comm.MsgHead)localObject).auth_nick.get();
+        localObject = ((msg_comm.MsgHead)localObject).auth_remark.get();
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("FriendSys auUin:");
+          localStringBuilder.append(paramMsg);
+          localStringBuilder.append("aunick:");
+          localStringBuilder.append(str);
+          localStringBuilder.append("auRemark:");
+          localStringBuilder.append((String)localObject);
+          QLog.d("SystemMessageDecoder.sysnick", 2, localStringBuilder.toString());
         }
-        paramMessageHandler.b(paramMsg, (String)localObject);
+        if ((!TextUtils.isEmpty(paramMsg)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("SystemMessageDecoder.sysremark", 2, "FriendSys saveremark");
+          }
+          paramMessageHandler.b(paramMsg, (String)localObject);
+        }
+        if ((!TextUtils.isEmpty(paramMsg)) && (!TextUtils.isEmpty(str)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("SystemMessageDecoder.sysnick", 2, "FriendSys savenick");
+          }
+          paramMessageHandler.a(paramMsg, str);
+        }
       }
-    } while ((TextUtils.isEmpty(paramMsg)) || (TextUtils.isEmpty(str)));
-    if (QLog.isColorLevel()) {
-      QLog.d("SystemMessageDecoder.sysnick", 2, "FriendSys savenick");
+      return;
     }
-    paramMessageHandler.a(paramMsg, str);
+    if (QLog.isColorLevel())
+    {
+      paramMessageHandler = new StringBuilder();
+      paramMessageHandler.append("<---decodeC2CMsgPkg_AddFriend return null:hasBody:");
+      paramMessageHandler.append(paramMsg.msg_body.has());
+      paramMessageHandler.append(",hasMsgContent");
+      paramMessageHandler.append(((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has());
+      paramMessageHandler.append(",isReaded:");
+      paramMessageHandler.append(paramBoolean1);
+      paramMessageHandler.append("syncOther:");
+      paramMessageHandler.append(paramBoolean2);
+      QLog.e("SystemMessageDecoder", 2, paramMessageHandler.toString());
+    }
   }
   
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
@@ -78,14 +99,14 @@ public class SystemMessageDecoder
     if ((!paramDecodeProtoPkgContext.c) && (i == 0)) {
       paramMessageHandler.a().a(2);
     }
-    paramDecodeProtoPkgContext.e = 9998L;
+    paramDecodeProtoPkgContext.g = 9998L;
     a(paramMessageHandler, paramMsg, paramDecodeProtoPkgContext.a, paramDecodeProtoPkgContext.f, paramDecodeProtoPkgContext.d, j);
-    MessageProtoCodec.a(paramMessageHandler, l1, j, l2, k);
+    MessageProtoCodec.a(l1, j, l2, k, paramMessageHandler.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.SystemMessageDecoder
  * JD-Core Version:    0.7.0.1
  */

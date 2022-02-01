@@ -11,45 +11,47 @@ class AssetWriterInput$2
   @RequiresApi(api=18)
   public void run()
   {
-    if (AssetWriterInput.access$200(this.this$0) == 1) {}
-    for (;;)
+    if (AssetWriterInput.access$200(this.this$0) == 1)
     {
       try
       {
         AssetWriterInput.access$300(this.this$0).endWriteVideoSample();
-        if (AssetWriterInput.access$400(this.this$0) != null) {
-          AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, -1L);
-        }
-        return;
       }
       catch (Throwable localThrowable1)
       {
-        if (AssetWriterInput.access$400(this.this$0) == null) {
-          continue;
-        }
-        AssetWriterInput.access$400(this.this$0).onError(new ExportErrorStatus(-123, localThrowable1));
-        return;
-      }
-      try
-      {
-        AssetWriterInput.access$300(this.this$0).endWriteAudioSample();
         if (AssetWriterInput.access$400(this.this$0) != null)
         {
-          AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, -1L);
+          AssetWriterInput.access$400(this.this$0).onError(new ExportErrorStatus(-123, localThrowable1));
           return;
         }
       }
+      if (AssetWriterInput.access$400(this.this$0) != null) {
+        AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, -1L);
+      }
+    }
+    else
+    {
+      try
+      {
+        AssetWriterInput.access$300(this.this$0).endWriteAudioSample();
+      }
       catch (Throwable localThrowable2)
       {
-        while (AssetWriterInput.access$400(this.this$0) == null) {}
-        AssetWriterInput.access$400(this.this$0).onError(new ExportErrorStatus(-124, localThrowable2));
+        if (AssetWriterInput.access$400(this.this$0) != null)
+        {
+          AssetWriterInput.access$400(this.this$0).onError(new ExportErrorStatus(-124, localThrowable2));
+          return;
+        }
+      }
+      if (AssetWriterInput.access$400(this.this$0) != null) {
+        AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, -1L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.AssetWriterInput.2
  * JD-Core Version:    0.7.0.1
  */

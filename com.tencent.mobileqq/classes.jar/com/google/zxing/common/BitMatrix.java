@@ -9,13 +9,15 @@ public final class BitMatrix
   
   public BitMatrix(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 1) || (paramInt2 < 1)) {
-      throw new IllegalArgumentException("Both dimensions must be greater than 0");
+    if ((paramInt1 >= 1) && (paramInt2 >= 1))
+    {
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.c = (paramInt1 + 31 >> 5);
+      this.jdField_a_of_type_ArrayOfInt = new int[this.c * paramInt2];
+      return;
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = (paramInt1 + 31 >> 5);
-    this.jdField_a_of_type_ArrayOfInt = new int[this.c * paramInt2];
+    throw new IllegalArgumentException("Both dimensions must be greater than 0");
   }
   
   public int a()
@@ -25,39 +27,44 @@ public final class BitMatrix
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt2 < 0) || (paramInt1 < 0)) {
-      throw new IllegalArgumentException("Left and top must be nonnegative");
-    }
-    if ((paramInt4 < 1) || (paramInt3 < 1)) {
+    if ((paramInt2 >= 0) && (paramInt1 >= 0))
+    {
+      if ((paramInt4 >= 1) && (paramInt3 >= 1))
+      {
+        int i = paramInt3 + paramInt1;
+        paramInt4 += paramInt2;
+        if ((paramInt4 <= this.b) && (i <= this.jdField_a_of_type_Int))
+        {
+          while (paramInt2 < paramInt4)
+          {
+            int j = this.c;
+            paramInt3 = paramInt1;
+            while (paramInt3 < i)
+            {
+              localObject = this.jdField_a_of_type_ArrayOfInt;
+              int k = (paramInt3 >> 5) + j * paramInt2;
+              localObject[k] |= 1 << (paramInt3 & 0x1F);
+              paramInt3 += 1;
+            }
+            paramInt2 += 1;
+          }
+          return;
+        }
+        throw new IllegalArgumentException("The region must fit inside the matrix");
+      }
       throw new IllegalArgumentException("Height and width must be at least 1");
     }
-    int i = paramInt1 + paramInt3;
-    paramInt4 = paramInt2 + paramInt4;
-    if ((paramInt4 > this.b) || (i > this.jdField_a_of_type_Int)) {
-      throw new IllegalArgumentException("The region must fit inside the matrix");
-    }
+    Object localObject = new IllegalArgumentException("Left and top must be nonnegative");
     for (;;)
     {
-      paramInt2 += 1;
-      if (paramInt2 >= paramInt4) {
-        break;
-      }
-      int j = this.c;
-      paramInt3 = paramInt1;
-      while (paramInt3 < i)
-      {
-        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-        int k = (paramInt3 >> 5) + paramInt2 * j;
-        arrayOfInt[k] |= 1 << (paramInt3 & 0x1F);
-        paramInt3 += 1;
-      }
+      throw ((Throwable)localObject);
     }
   }
   
   public boolean a(int paramInt1, int paramInt2)
   {
     int i = this.c;
-    return (this.jdField_a_of_type_ArrayOfInt[(i * paramInt2 + (paramInt1 >> 5))] >>> (paramInt1 & 0x1F) & 0x1) != 0;
+    return (this.jdField_a_of_type_ArrayOfInt[(paramInt2 * i + (paramInt1 >> 5))] >>> (paramInt1 & 0x1F) & 0x1) != 0;
   }
   
   public int b()
@@ -67,35 +74,38 @@ public final class BitMatrix
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof BitMatrix)) {}
-    do
-    {
+    if (!(paramObject instanceof BitMatrix)) {
       return false;
-      paramObject = (BitMatrix)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.jdField_a_of_type_ArrayOfInt.length != paramObject.jdField_a_of_type_ArrayOfInt.length));
-    int i = 0;
-    for (;;)
-    {
-      if (i >= this.jdField_a_of_type_ArrayOfInt.length) {
-        break label93;
-      }
-      if (this.jdField_a_of_type_ArrayOfInt[i] != paramObject.jdField_a_of_type_ArrayOfInt[i]) {
-        break;
-      }
-      i += 1;
     }
-    label93:
-    return true;
+    paramObject = (BitMatrix)paramObject;
+    if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && (this.c == paramObject.c))
+    {
+      if (this.jdField_a_of_type_ArrayOfInt.length != paramObject.jdField_a_of_type_ArrayOfInt.length) {
+        return false;
+      }
+      int i = 0;
+      for (;;)
+      {
+        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+        if (i >= arrayOfInt.length) {
+          break;
+        }
+        if (arrayOfInt[i] != paramObject.jdField_a_of_type_ArrayOfInt[i]) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
+    }
+    return false;
   }
   
   public int hashCode()
   {
     int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_Int;
-    int k = this.b;
-    j = this.c + ((i * 31 + j) * 31 + k) * 31;
+    int j = ((i * 31 + i) * 31 + this.b) * 31 + this.c;
     int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    k = arrayOfInt.length;
+    int k = arrayOfInt.length;
     i = 0;
     while (i < k)
     {
@@ -112,15 +122,16 @@ public final class BitMatrix
     while (i < this.b)
     {
       int j = 0;
-      if (j < this.jdField_a_of_type_Int)
+      while (j < this.jdField_a_of_type_Int)
       {
-        if (a(j, i)) {}
-        for (String str = "X ";; str = "  ")
-        {
-          localStringBuilder.append(str);
-          j += 1;
-          break;
+        String str;
+        if (a(j, i)) {
+          str = "X ";
+        } else {
+          str = "  ";
         }
+        localStringBuilder.append(str);
+        j += 1;
       }
       localStringBuilder.append('\n');
       i += 1;

@@ -51,27 +51,28 @@ public class StoryDetailListView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
-    SegmentView localSegmentView;
-    if (localIterator.hasNext())
-    {
-      localSegmentView = (SegmentView)localIterator.next();
-      if ((localSegmentView instanceof DetailCommentSegment)) {
-        i = localSegmentView.a() + i;
-      }
-    }
+    int j;
     for (;;)
     {
-      if (i == 0)
-      {
-        return 0;
-        i = localSegmentView.a() + i;
+      j = i;
+      if (!localIterator.hasNext()) {
         break;
       }
-      return i;
+      SegmentView localSegmentView = (SegmentView)localIterator.next();
+      if ((localSegmentView instanceof DetailCommentSegment))
+      {
+        j = i + localSegmentView.a();
+        break;
+      }
+      i += localSegmentView.a();
     }
+    if (j == 0) {
+      return 0;
+    }
+    return j;
   }
   
-  public void a()
+  protected void a()
   {
     super.setActTAG("list_qqstory_detail");
     this.jdField_a_of_type_JavaUtilList.add(new GeneralFeedProfileSegment(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b));
@@ -91,7 +92,7 @@ public class StoryDetailListView
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
-    super.setBackgroundResource(2130850857);
+    super.setBackgroundResource(2130850794);
   }
   
   public void a(Activity paramActivity)
@@ -128,25 +129,24 @@ public class StoryDetailListView
   public int b()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    SegmentView localSegmentView;
-    for (int i = 0;; i = localSegmentView.a() + i) {
-      if (localIterator.hasNext())
-      {
-        localSegmentView = (SegmentView)localIterator.next();
-        if (!(localSegmentView instanceof DetailCommentSegment)) {}
-      }
-      else
-      {
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      SegmentView localSegmentView = (SegmentView)localIterator.next();
+      if ((localSegmentView instanceof DetailCommentSegment)) {
         return i;
       }
+      i += localSegmentView.a();
     }
+    return i;
   }
   
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     super.onViewCompleteVisableAndReleased(paramInt, paramView, paramListView);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeRequestDataListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeRequestDataListener.a();
+    paramView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeRequestDataListener;
+    if (paramView != null) {
+      paramView.a();
     }
     return true;
   }
@@ -172,19 +172,13 @@ public class StoryDetailListView
   public void setProfileSegmentDisplay(boolean paramBoolean)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      SegmentView localSegmentView;
-      if (localIterator.hasNext())
-      {
-        localSegmentView = (SegmentView)localIterator.next();
-        if (!(localSegmentView instanceof DetailInteractSegment)) {}
-      }
-      else
-      {
+      SegmentView localSegmentView = (SegmentView)localIterator.next();
+      if ((localSegmentView instanceof DetailInteractSegment)) {
         return;
       }
-      localSegmentView.e_(paramBoolean);
+      localSegmentView.a_(paramBoolean);
     }
   }
   
@@ -195,7 +189,7 @@ public class StoryDetailListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView
  * JD-Core Version:    0.7.0.1
  */

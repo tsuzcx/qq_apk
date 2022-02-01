@@ -28,12 +28,20 @@ public class FontInfo
   
   public String toString()
   {
-    return "[id=" + this.fontId + ",fTypePath=" + this.fTypePath + ", tTYpePath=" + this.tTypePath + "]";
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append("[id=");
+    localStringBuffer.append(this.fontId);
+    localStringBuffer.append(",fTypePath=");
+    localStringBuffer.append(this.fTypePath);
+    localStringBuffer.append(", tTYpePath=");
+    localStringBuffer.append(this.tTypePath);
+    localStringBuffer.append("]");
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.font.FontInfo
  * JD-Core Version:    0.7.0.1
  */

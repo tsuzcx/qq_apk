@@ -15,14 +15,14 @@ public class QZoneJsConstants
   public static final String DEFAULT_DYNAMIC_ALBUM_NAME = "Default Dynamic Album";
   public static final String DEFAULT_DYNAMIC_ALBUM_TEMPLT_ID = "qixi-2017";
   public static final String DEFAULT_DYNAMIC_ALBUM_TEMPLT_ID_FOR_SHARE = "mv";
-  public static final String DYNAMIC_ALBUM_BUTTON = HardCodeUtil.a(2131711900);
+  public static final String DYNAMIC_ALBUM_BUTTON = HardCodeUtil.a(2131711875);
   public static final String DYNAMIC_ALBUM_CLIMAX_ENDURE = "climax_endure";
   public static final String DYNAMIC_ALBUM_CLIMAX_START = "climax_start";
   public static final String DYNAMIC_ALBUM_COVER_AID = "cover_aid";
   public static final String DYNAMIC_ALBUM_COVER_PIC = "cover_pic";
   public static final String DYNAMIC_ALBUM_COVER_URL = "cover_url";
   public static final String DYNAMIC_ALBUM_DESC = "mgz_desc";
-  public static final String DYNAMIC_ALBUM_DESC_TEXT = HardCodeUtil.a(2131711899);
+  public static final String DYNAMIC_ALBUM_DESC_TEXT = HardCodeUtil.a(2131711874);
   public static final String DYNAMIC_ALBUM_ID = "DYNAMIC_ALBUM_ID";
   public static final String DYNAMIC_ALBUM_IMAGE_QUALITY = "image_quality";
   public static final String DYNAMIC_ALBUM_INVISIBLE = "invisible";
@@ -65,7 +65,7 @@ public class QZoneJsConstants
   public static final String METHOD_DOWNLOADGIFT = "downloadGift";
   public static final String METHOD_DOWNLOAD_FONT = "downLoadFont";
   public static String METHOD_FAMOUST_SHOW_DIALOG = "JsFamousShare";
-  public static String METHOD_FAMOUS_JUBAO;
+  public static String METHOD_FAMOUS_JUBAO = "famousJubao";
   public static String METHOD_FAMOUS_SHARE_TO_QQ = "famousShareToQQFriend";
   public static String METHOD_FAMOUS_SHARE_TO_QZONE = "famousShareToQzone";
   public static String METHOD_FAMOUS_SHARE_TO_WX = "famousShareToWxFriend";
@@ -104,8 +104,8 @@ public class QZoneJsConstants
   public static final String METHOD_RESERVE_ADVERTISE = "reserveAdvertise";
   public static final String METHOD_SEND_REDPOCKET_GIFT = "sendRedPocketGift";
   public static final String METHOD_SETFRIENDNAVIDECO = "setFriendNaviDeco";
-  public static String METHOD_SETTING_KAPU_HOST_MESSAGE;
-  public static String METHOD_SETTING_MESSAGE_BOARD_GATE;
+  public static String METHOD_SETTING_KAPU_HOST_MESSAGE = "SetHostMessage";
+  public static String METHOD_SETTING_MESSAGE_BOARD_GATE = "setUserHomePageMsgBoardGate";
   public static final String METHOD_SETUSERTAIL = "SetUserTail";
   public static final String METHOD_SET_ALBUM_SKIN = "SetAlbumSkin";
   public static final String METHOD_SET_CUSTOM_TRACK = "setCustomTrack";
@@ -130,7 +130,7 @@ public class QZoneJsConstants
   public static final String METHOD_WEBVIEW_GENETATE_GIF = "generateGif";
   public static final String METHOD_WEBVIEW_SHARE_PICTURE = "sharePicture";
   public static final String METHOD_WRITEBLOGSUCCESS = "writeBlogSuccess";
-  public static String METHOD_WRITE_MOOD;
+  public static String METHOD_WRITE_MOOD = "writeMood";
   public static final String PACKAGENAME_QZONE = "com.qzone";
   public static final String PKGNAME = "Qzone";
   public static final String PKGNAME_DYNAMICALBUM = "qzDynamicAlbum";
@@ -174,6 +174,7 @@ public class QZoneJsConstants
   public static final String SEND_GIFT_FINISHED = "SendGiftFinished";
   public static final String SEND_GIFT_SUCCESS = "sendGiftSuccess";
   public static final String SET_HISTORY_EVENT_TAG = "setHistoryEventTag";
+  public static final String SET_NAVI_DECO = "SetNaviDeco";
   public static final String SHARE_SOURCE_NAME = "shareSource";
   public static final String SHARE_SOURCE_TYPE_MSGTAB_CAMERA = "msgTabCamera";
   public static final String SHOW_RECENT_IMAGE = "SHOW_RECNET_IMAGE";
@@ -185,39 +186,24 @@ public class QZoneJsConstants
   public static final String WRITE_MOOD_FROM_PROFILE_CARD = "writeMoodFromProfileCard";
   public static String[] forceRefresh = { "SetPersonalizeFinished", "setAvatar", "SetNaviDeco", "setFloat", "updateCustomPraise", "setcardfinish", "updatePloymorphicPraise", "setResponsiveLike", "OpenCustomVipSucc", "SetFacade", "setFriendNaviDeco", "SetPlayerDeco", "setDefaultFont", "refreshFeeds", "setCustomTrack" };
   
-  static
-  {
-    METHOD_FAMOUS_JUBAO = "famousJubao";
-    METHOD_SETTING_MESSAGE_BOARD_GATE = "setUserHomePageMsgBoardGate";
-    METHOD_SETTING_KAPU_HOST_MESSAGE = "SetHostMessage";
-    METHOD_WRITE_MOOD = "writeMood";
-  }
-  
   public static boolean isForce(String paramString)
   {
-    boolean bool2 = false;
     String[] arrayOfString = forceRefresh;
     int j = arrayOfString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfString[i].equalsIgnoreCase(paramString)) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (arrayOfString[i].equalsIgnoreCase(paramString)) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneJsConstants
  * JD-Core Version:    0.7.0.1
  */

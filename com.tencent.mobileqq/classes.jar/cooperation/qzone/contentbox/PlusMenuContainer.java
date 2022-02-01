@@ -34,7 +34,7 @@ public class PlusMenuContainer
   extends RelativeLayout
 {
   public static final String TAG = "PlusMenuContainer";
-  public static int[] defaultIcon = { 2130848814, 2130848810, 2130848819 };
+  public static int[] defaultIcon = { 2130848694, 2130848690, 2130848699 };
   public static String[] defaultScheme = { "mqqzone://arouse/writemood", "mqqzone://arouse/uploadphoto", "mqqzone://arouse/takevideo" };
   public static String[] defaultTitle = { QzoneConfig.getInstance().getConfig("QZoneTextSetting", "PlusMood", "说说"), QzoneConfig.getInstance().getConfig("QZoneTextSetting", "PlusAlbum", "相册"), QzoneConfig.getInstance().getConfig("QZoneTextSetting", "PlusShoot", "拍摄") };
   public Context context;
@@ -86,7 +86,7 @@ public class PlusMenuContainer
   public void initView()
   {
     this.reminder = new View(this.context);
-    this.reminder.setId(2131376214);
+    this.reminder.setId(2131375727);
     Object localObject1 = new RelativeLayout.LayoutParams(-1, -1);
     this.reminder.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     this.reminder.setBackgroundColor(0);
@@ -105,69 +105,66 @@ public class PlusMenuContainer
       if ((ImmersiveUtils.isSupporImmersive() == 1) && (!IPluginAdapterProxy.getProxy().isNightMode()))
       {
         localObject1 = new View(this.context);
-        localObject2 = new RelativeLayout.LayoutParams(ViewUtils.a(), ImmersiveUtils.getStatusBarHeight(this.context));
-        ((RelativeLayout.LayoutParams)localObject2).addRule(10);
-        ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        ((View)localObject1).setBackgroundColor(getResources().getColor(2131165553));
+        localObject3 = new RelativeLayout.LayoutParams(ViewUtils.a(), ImmersiveUtils.getStatusBarHeight(this.context));
+        ((RelativeLayout.LayoutParams)localObject3).addRule(10);
+        ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+        ((View)localObject1).setBackgroundColor(getResources().getColor(2131165529));
         this.mContainer.addView((View)localObject1);
-      }
-      localObject1 = new ImageView(this.context);
-      ((ImageView)localObject1).setId(2131376210);
-      ((ImageView)localObject1).setContentDescription(HardCodeUtil.a(2131708283));
-      localObject2 = new RelativeLayout.LayoutParams(ViewUtils.a(35.0F), ViewUtils.a(35.0F));
-      ((RelativeLayout.LayoutParams)localObject2).addRule(11);
-      ((RelativeLayout.LayoutParams)localObject2).setMargins(0, ImmersiveUtils.getStatusBarHeight(this.context) + ViewUtils.b(8.0F), ViewUtils.b(10.0F), 0);
-      ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((ImageView)localObject1).setPadding(ViewUtils.b(6.0F), ViewUtils.b(6.0F), 0, ViewUtils.b(6.0F));
-      ((ImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER);
-      ((ImageView)localObject1).setImageResource(2130848824);
-      this.mContainer.addView((View)localObject1);
-      ((ImageView)localObject1).setOnClickListener(this.plusItemClickListener);
-      this.operationItemViews = new ArrayList(3);
-      localObject1 = new LinearLayout(this.context);
-      ((LinearLayout)localObject1).setId(2131376213);
-      ((LinearLayout)localObject1).setWeightSum(3.0F);
-      localObject2 = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131376210);
-      ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject2 = (LayoutInflater)this.context.getSystemService("layout_inflater");
-      int i = 0;
-      while (i < 3)
-      {
-        RelativeLayout localRelativeLayout = (RelativeLayout)((LayoutInflater)localObject2).inflate(2131562551, null);
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -1, 1.0F);
-        ImageView localImageView = (ImageView)localRelativeLayout.findViewById(2131376038);
-        TextView localTextView = (TextView)localRelativeLayout.findViewById(2131376040);
-        localImageView.setImageDrawable(getResources().getDrawable(defaultIcon[i]));
-        localTextView.setText(defaultTitle[i]);
-        localTextView.setTextColor(getResources().getColor(2131166717));
-        localRelativeLayout.setTag(defaultScheme[i]);
-        ((LinearLayout)localObject1).addView(localRelativeLayout, localLayoutParams);
-        this.operationItemViews.add(localRelativeLayout);
-        localRelativeLayout.setOnClickListener(this.plusItemClickListener);
-        i += 1;
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QZLog.e("PlusMenuContainer", "set statusBar mask exception.", localException);
-      }
-      this.mContainer.addView(localException);
-      FrameLayout localFrameLayout = new FrameLayout(this.context);
-      Object localObject2 = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131376213);
-      localFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localFrameLayout.setBackgroundResource(2130848872);
-      this.mContainer.addView(localFrameLayout);
-      addView(this.mContainer);
-      this.mhidebBarAnimation = AnimationUtils.loadAnimation(this.context, 2130772140);
-      this.mhidebBarAnimation.setAnimationListener(this.mAnimationListener);
-      this.mhideBgAnimation = AnimationUtils.loadAnimation(this.context, 2130772126);
-      this.mhideBgAnimation.setAnimationListener(this.mAnimationListener);
-      setVisibility(8);
+      QZLog.e("PlusMenuContainer", "set statusBar mask exception.", localException);
     }
+    Object localObject2 = new ImageView(this.context);
+    ((ImageView)localObject2).setId(2131375723);
+    ((ImageView)localObject2).setContentDescription(HardCodeUtil.a(2131708292));
+    Object localObject3 = new RelativeLayout.LayoutParams(ViewUtils.a(35.0F), ViewUtils.a(35.0F));
+    ((RelativeLayout.LayoutParams)localObject3).addRule(11);
+    ((RelativeLayout.LayoutParams)localObject3).setMargins(0, ImmersiveUtils.getStatusBarHeight(this.context) + ViewUtils.b(8.0F), ViewUtils.b(10.0F), 0);
+    ((ImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    ((ImageView)localObject2).setPadding(ViewUtils.b(6.0F), ViewUtils.b(6.0F), 0, ViewUtils.b(6.0F));
+    ((ImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER);
+    ((ImageView)localObject2).setImageResource(2130848704);
+    this.mContainer.addView((View)localObject2);
+    ((ImageView)localObject2).setOnClickListener(this.plusItemClickListener);
+    this.operationItemViews = new ArrayList(3);
+    localObject2 = new LinearLayout(this.context);
+    ((LinearLayout)localObject2).setId(2131375726);
+    ((LinearLayout)localObject2).setWeightSum(3.0F);
+    localObject3 = new RelativeLayout.LayoutParams(-1, -2);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131375723);
+    ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    localObject3 = (LayoutInflater)this.context.getSystemService("layout_inflater");
+    int i = 0;
+    while (i < 3)
+    {
+      RelativeLayout localRelativeLayout = (RelativeLayout)((LayoutInflater)localObject3).inflate(2131562387, null);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -1, 1.0F);
+      ImageView localImageView = (ImageView)localRelativeLayout.findViewById(2131375554);
+      TextView localTextView = (TextView)localRelativeLayout.findViewById(2131375556);
+      localImageView.setImageDrawable(getResources().getDrawable(defaultIcon[i]));
+      localTextView.setText(defaultTitle[i]);
+      localTextView.setTextColor(getResources().getColor(2131166733));
+      localRelativeLayout.setTag(defaultScheme[i]);
+      ((LinearLayout)localObject2).addView(localRelativeLayout, localLayoutParams);
+      this.operationItemViews.add(localRelativeLayout);
+      localRelativeLayout.setOnClickListener(this.plusItemClickListener);
+      i += 1;
+    }
+    this.mContainer.addView((View)localObject2);
+    localObject2 = new FrameLayout(this.context);
+    localObject3 = new RelativeLayout.LayoutParams(-1, -2);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131375726);
+    ((FrameLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    ((FrameLayout)localObject2).setBackgroundResource(2130848752);
+    this.mContainer.addView((View)localObject2);
+    addView(this.mContainer);
+    this.mhidebBarAnimation = AnimationUtils.loadAnimation(this.context, 2130772166);
+    this.mhidebBarAnimation.setAnimationListener(this.mAnimationListener);
+    this.mhideBgAnimation = AnimationUtils.loadAnimation(this.context, 2130772152);
+    this.mhideBgAnimation.setAnimationListener(this.mAnimationListener);
+    setVisibility(8);
   }
   
   public void setActivity(Activity paramActivity)
@@ -178,15 +175,15 @@ public class PlusMenuContainer
   public void show()
   {
     setVisibility(0);
-    Animation localAnimation = AnimationUtils.loadAnimation(this.context, 2130772137);
+    Animation localAnimation = AnimationUtils.loadAnimation(this.context, 2130772163);
     this.mContainer.clearAnimation();
     this.mContainer.startAnimation(localAnimation);
-    this.reminder.startAnimation(AnimationUtils.loadAnimation(this.context, 2130772125));
+    this.reminder.startAnimation(AnimationUtils.loadAnimation(this.context, 2130772151));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.PlusMenuContainer
  * JD-Core Version:    0.7.0.1
  */

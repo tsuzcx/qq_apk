@@ -13,13 +13,16 @@ public class ByteData$a$a
     if ((paramInt == 0) && (paramObject != null))
     {
       ByteData.access$400(this.a.b).a((String)paramObject);
-      ByteData.logCat("poxy_java", "data: " + paramObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("data: ");
+      localStringBuilder.append(paramObject);
+      ByteData.logCat("poxy_java", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.secprotocol.ByteData.a.a
  * JD-Core Version:    0.7.0.1
  */

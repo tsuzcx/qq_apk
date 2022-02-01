@@ -20,28 +20,31 @@ public class SensorAPIJavaScript$QQSensorEventListener
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    switch (this.jdField_a_of_type_Byte)
+    int i = this.jdField_a_of_type_Byte;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      f1 = paramSensorEvent.values[0];
-      float f2 = paramSensorEvent.values[1];
-      float f3 = paramSensorEvent.values[2];
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1), String.valueOf(f2), String.valueOf(f3) });
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return;
+        }
+        f1 = paramSensorEvent.values[0];
+        this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
+        return;
+      }
       f1 = paramSensorEvent.values[0];
       this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
       return;
     }
     float f1 = paramSensorEvent.values[0];
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
+    float f2 = paramSensorEvent.values[1];
+    float f3 = paramSensorEvent.values[2];
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1), String.valueOf(f2), String.valueOf(f3) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.QQSensorEventListener
  * JD-Core Version:    0.7.0.1
  */

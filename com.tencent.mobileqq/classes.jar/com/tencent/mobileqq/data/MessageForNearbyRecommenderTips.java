@@ -11,33 +11,30 @@ public class MessageForNearbyRecommenderTips
   
   protected void doParse()
   {
+    Object localObject;
     try
     {
       MessageForNearbyRecommenderTips.NearbyRecommenderInfo localNearbyRecommenderInfo = (MessageForNearbyRecommenderTips.NearbyRecommenderInfo)MessagePkgUtils.a(this.msgData);
-      if (localNearbyRecommenderInfo != null)
-      {
-        this.uRecommendTime = localNearbyRecommenderInfo.uRecommendTime;
-        this.readFlag = localNearbyRecommenderInfo.readFlag;
-        this.strBrief = localNearbyRecommenderInfo.strBrief;
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject = null;
-      }
+      localException.printStackTrace();
+      localObject = null;
+    }
+    if (localObject != null)
+    {
+      this.uRecommendTime = localObject.uRecommendTime;
+      this.readFlag = localObject.readFlag;
+      this.strBrief = localObject.strBrief;
     }
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     serial();
   }
@@ -61,7 +58,7 @@ public class MessageForNearbyRecommenderTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForNearbyRecommenderTips
  * JD-Core Version:    0.7.0.1
  */

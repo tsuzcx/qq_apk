@@ -52,7 +52,10 @@ public class QZoneCheckSendGiftServlet
           localActivateFriendsManager.a(l, paramFromServiceMsg, 2);
         }
         notifyObserver(paramIntent, 110, true, null, ActivateFriendsObserver.class);
-        QLog.i("QZoneCheckSendGiftServlet", 1, "onReceive success, friendMap size =" + paramFromServiceMsg.size());
+        paramIntent = new StringBuilder();
+        paramIntent.append("onReceive success, friendMap size =");
+        paramIntent.append(paramFromServiceMsg.size());
+        QLog.i("QZoneCheckSendGiftServlet", 1, paramIntent.toString());
         return;
       }
       QLog.i("QZoneCheckSendGiftServlet", 1, "onReceive response == null.");
@@ -63,7 +66,10 @@ public class QZoneCheckSendGiftServlet
       QLog.e("QZoneCheckSendGiftServlet", 1, "onReceive fail, fromServiceMsg == null");
       return;
     }
-    QLog.e("QZoneCheckSendGiftServlet", 1, "onReceive fail, the resultCode is " + paramFromServiceMsg.getResultCode());
+    paramIntent = new StringBuilder();
+    paramIntent.append("onReceive fail, the resultCode is ");
+    paramIntent.append(paramFromServiceMsg.getResultCode());
+    QLog.e("QZoneCheckSendGiftServlet", 1, paramIntent.toString());
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -92,14 +98,17 @@ public class QZoneCheckSendGiftServlet
       paramIntent = new byte[4];
     }
     paramPacket.setTimeout(10000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localQZoneCheckSendGiftRequest.uniKey());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SQQzoneSvc.");
+    ((StringBuilder)localObject).append(localQZoneCheckSendGiftRequest.uniKey());
+    paramPacket.setSSOCommand(((StringBuilder)localObject).toString());
     paramPacket.putSendData(paramIntent);
     QLog.i("QZoneCheckSendGiftServlet", 1, "onSend success.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.gift.QZoneCheckSendGiftServlet
  * JD-Core Version:    0.7.0.1
  */

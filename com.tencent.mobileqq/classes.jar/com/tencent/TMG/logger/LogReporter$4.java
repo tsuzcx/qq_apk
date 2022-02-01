@@ -10,12 +10,12 @@ class LogReporter$4
   
   public void onCompleted(String paramString, int paramInt, byte[] paramArrayOfByte, Object paramObject)
   {
-    if ((paramInt != 200) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    if ((paramInt == 200) && (paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      Log.e("LogReporter", String.format("mReportLogFinishedListener|http request error code=%d", new Object[] { Integer.valueOf(paramInt) }));
+      Log.i("LogReporter", String.format("mReportLogFinishedListener|upload log finish.req=%s, resp=%s", new Object[] { paramObject, new String(paramArrayOfByte) }));
       return;
     }
-    Log.i("LogReporter", String.format("mReportLogFinishedListener|upload log finish.req=%s, resp=%s", new Object[] { paramObject, new String(paramArrayOfByte) }));
+    Log.e("LogReporter", String.format("mReportLogFinishedListener|http request error code=%d", new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 

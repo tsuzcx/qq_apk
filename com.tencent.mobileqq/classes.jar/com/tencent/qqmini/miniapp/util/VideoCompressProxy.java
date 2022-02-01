@@ -5,9 +5,9 @@ import com.tencent.qqmini.sdk.launcher.utils.LocalMediaInfo;
 public abstract class VideoCompressProxy
 {
   protected VideoCompress.Option compressOption;
-  public VideoCompress.Listener compresslistener;
-  public LocalMediaInfo mediaInfo;
-  public String outputPath;
+  protected VideoCompress.Listener compresslistener;
+  protected LocalMediaInfo mediaInfo;
+  protected String outputPath;
   
   public abstract void execute();
   
@@ -37,7 +37,7 @@ public abstract class VideoCompressProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.VideoCompressProxy
  * JD-Core Version:    0.7.0.1
  */

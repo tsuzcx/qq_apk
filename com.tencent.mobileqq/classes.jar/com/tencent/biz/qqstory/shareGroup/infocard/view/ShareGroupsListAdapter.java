@@ -44,68 +44,70 @@ public class ShareGroupsListAdapter
   
   private void a(List<HotSortVideoEntry> paramList)
   {
-    if (paramList.isEmpty()) {}
-    do
+    if (paramList.isEmpty()) {
+      return;
+    }
+    VideoCollectionItem localVideoCollectionItem;
+    if (this.b)
     {
-      int i;
-      int k;
-      do
+      localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+      if (localVideoCollectionItem.collectionType == 7)
       {
-        return;
-        if (this.b)
-        {
-          localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-          if (localVideoCollectionItem.collectionType == 7)
-          {
-            localVideoCollectionItem.hotSortVideoLIst.set(1, paramList.get(0));
-            paramList.remove(0);
-            this.b = false;
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "[hotlist]填了一个坑");
-            }
-          }
+        localVideoCollectionItem.hotSortVideoLIst.set(1, paramList.get(0));
+        paramList.remove(0);
+        this.b = false;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "[hotlist]填了一个坑");
         }
-        int m = paramList.size() / 2;
-        if (paramList.size() % 2 == 1) {}
-        for (i = 1;; i = 0)
-        {
-          int j = 0;
-          k = 0;
-          while (j < m)
-          {
-            localVideoCollectionItem = new VideoCollectionItem();
-            localVideoCollectionItem.collectionType = 7;
-            localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, String.valueOf(j), "0_xx");
-            localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k));
-            localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k + 1));
-            k += 2;
-            this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
-            this.b = false;
-            j += 1;
-          }
-        }
-      } while ((paramList.size() <= 0) || (i == 0));
-      VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+      }
+    }
+    int m = paramList.size() / 2;
+    int i;
+    if (paramList.size() % 2 == 1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j = 0;
+    int k = 0;
+    while (j < m)
+    {
+      localVideoCollectionItem = new VideoCollectionItem();
+      localVideoCollectionItem.collectionType = 7;
+      localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, String.valueOf(j), "0_xx");
+      localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k));
+      localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k + 1));
+      k += 2;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
+      this.b = false;
+      j += 1;
+    }
+    if ((paramList.size() > 0) && (i != 0))
+    {
+      localVideoCollectionItem = new VideoCollectionItem();
       localVideoCollectionItem.collectionType = 7;
       localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, String.valueOf(k), "0_xx");
       localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k));
       localVideoCollectionItem.hotSortVideoLIst.add(null);
       this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
       this.b = true;
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "[hotlist]又挖了一个坑");
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "[hotlist]又挖了一个坑");
+      }
+    }
   }
   
   private static void b(ImageView paramImageView, int paramInt, String paramString)
   {
-    if (paramImageView == null) {
-      SLog.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", "update imageView error. imageView is null.");
-    }
-    do
+    if (paramImageView == null)
     {
+      SLog.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", "update imageView error. imageView is null.");
       return;
-      paramImageView.setVisibility(paramInt);
-    } while (paramInt != 0);
+    }
+    paramImageView.setVisibility(paramInt);
+    if (paramInt != 0) {
+      return;
+    }
     UIUtils.b(paramImageView, ThumbnailUrlHelper.a(paramString), 80, 80, null, "StoryDiscoverHeadImage");
   }
   
@@ -113,45 +115,41 @@ public class ShareGroupsListAdapter
   {
     LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
     paramInt = getItemViewType(paramInt);
-    View localView = null;
     if (paramInt == 1)
     {
-      localView = localLayoutInflater.inflate(2131561922, paramViewGroup, false);
-      localView.setTag(new ShareGroupsListAdapter.DayCollectionViewHolder(localView, this));
+      paramViewGroup = localLayoutInflater.inflate(2131561769, paramViewGroup, false);
+      paramViewGroup.setTag(new ShareGroupsListAdapter.DayCollectionViewHolder(paramViewGroup, this));
+      return paramViewGroup;
     }
-    do
+    if (paramInt == 0)
     {
-      return localView;
-      if (paramInt == 0)
-      {
-        paramViewGroup = localLayoutInflater.inflate(2131561857, paramViewGroup, false);
-        paramViewGroup.setTag(new ShareGroupsListAdapter.YearCollectionViewHolder(paramViewGroup, this));
-        return paramViewGroup;
-      }
-      if (paramInt == 2)
-      {
-        paramViewGroup = localLayoutInflater.inflate(2131561921, paramViewGroup, false);
-        paramViewGroup.setTag(new ShareGroupsListAdapter.ProfilePlaceholderViewHolder(paramViewGroup, this));
-        return paramViewGroup;
-      }
-    } while (paramInt != 7);
-    paramViewGroup = localLayoutInflater.inflate(2131561918, paramViewGroup, false);
-    paramViewGroup.setTag(new ShareGroupsListAdapter.HotSortCollectionViewHolder(paramViewGroup, this));
-    return paramViewGroup;
+      paramViewGroup = localLayoutInflater.inflate(2131561708, paramViewGroup, false);
+      paramViewGroup.setTag(new ShareGroupsListAdapter.YearCollectionViewHolder(paramViewGroup, this));
+      return paramViewGroup;
+    }
+    if (paramInt == 2)
+    {
+      paramViewGroup = localLayoutInflater.inflate(2131561768, paramViewGroup, false);
+      paramViewGroup.setTag(new ShareGroupsListAdapter.ProfilePlaceholderViewHolder(paramViewGroup, this));
+      return paramViewGroup;
+    }
+    if (paramInt == 7)
+    {
+      paramViewGroup = localLayoutInflater.inflate(2131561765, paramViewGroup, false);
+      paramViewGroup.setTag(new ShareGroupsListAdapter.HotSortCollectionViewHolder(paramViewGroup, this));
+      return paramViewGroup;
+    }
+    return null;
   }
   
   public void a(HotSortVideoEntry paramHotSortVideoEntry)
   {
     int i = 0;
-    for (;;)
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      if (((HotSortVideoEntry)this.jdField_a_of_type_JavaUtilList.get(i)).storyId.equals(paramHotSortVideoEntry.storyId))
       {
-        if (((HotSortVideoEntry)this.jdField_a_of_type_JavaUtilList.get(i)).storyId.equals(paramHotSortVideoEntry.storyId)) {
-          this.jdField_a_of_type_JavaUtilList.set(i, paramHotSortVideoEntry);
-        }
-      }
-      else {
+        this.jdField_a_of_type_JavaUtilList.set(i, paramHotSortVideoEntry);
         return;
       }
       i += 1;
@@ -179,16 +177,19 @@ public class ShareGroupsListAdapter
     if ((paramList != null) && (paramList.get() != null))
     {
       VideoCollectionItem localVideoCollectionItem = ((MemoryManager)SuperManager.a(19)).a(paramString);
-      if (localVideoCollectionItem == null) {
-        break label55;
+      if (localVideoCollectionItem != null)
+      {
+        ((ShareGroupsListAdapter.DayCollectionViewHolder)paramList.get()).a.setData(localVideoCollectionItem);
+        return;
       }
-      ((ShareGroupsListAdapter.DayCollectionViewHolder)paramList.get()).a.setData(localVideoCollectionItem);
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("updateCollectionData: videoCollectionItem is null, collectionId:");
+        paramList.append(paramString);
+        QLog.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, paramList.toString());
+      }
     }
-    label55:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "updateCollectionData: videoCollectionItem is null, collectionId:" + paramString);
   }
   
   public void a(List<VideoCollectionItem> paramList, boolean paramBoolean)
@@ -231,7 +232,7 @@ public class ShareGroupsListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter
  * JD-Core Version:    0.7.0.1
  */

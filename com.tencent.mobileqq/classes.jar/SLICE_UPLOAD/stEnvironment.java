@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class stEnvironment
   extends JceStruct
 {
-  static int cache_entrance = 0;
-  static int cache_net = 0;
+  static int cache_entrance;
+  static int cache_net;
   public long client_ip = 0L;
   public String device = "";
   public String deviceInfo = "";
@@ -57,14 +57,15 @@ public final class stEnvironment
     paramJceOutputStream.write(this.refer, 6);
     paramJceOutputStream.write(this.entrance, 7);
     paramJceOutputStream.write(this.source, 8);
-    if (this.deviceInfo != null) {
-      paramJceOutputStream.write(this.deviceInfo, 9);
+    String str = this.deviceInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.stEnvironment
  * JD-Core Version:    0.7.0.1
  */

@@ -50,22 +50,17 @@ public class QAVGroupConfig$ConfigInfo
   public QAVGroupConfig.URLInfo a(String paramString)
   {
     long l = System.currentTimeMillis();
-    Object localObject1 = null;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    if (localIterator.hasNext())
+    Object localObject1 = null;
+    while (localIterator.hasNext())
     {
       Object localObject2 = (Map.Entry)localIterator.next();
       String str = (String)((Map.Entry)localObject2).getKey();
       localObject2 = (QAVGroupConfig.URLInfo)((Map.Entry)localObject2).getValue();
       if (l > ((QAVGroupConfig.URLInfo)localObject2).jdField_a_of_type_Long) {
         localIterator.remove();
-      }
-      for (localObject2 = localObject1;; localObject2 = localObject1) {
-        do
-        {
-          localObject1 = localObject2;
-          break;
-        } while ((localObject1 == null) && (TextUtils.equals(paramString, str)));
+      } else if ((localObject1 == null) && (TextUtils.equals(paramString, str))) {
+        localObject1 = localObject2;
       }
     }
     return localObject1;
@@ -73,28 +68,43 @@ public class QAVGroupConfig$ConfigInfo
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      if (TextUtils.isEmpty(paramString3)) {
+        return;
+      }
+      long l = 600000L;
+      if (QQAudioHelper.b()) {
+        l = 60000L;
+      }
+      QAVGroupConfig.URLInfo localURLInfo = new QAVGroupConfig.URLInfo();
+      localURLInfo.jdField_a_of_type_Long = (System.currentTimeMillis() + l);
+      localURLInfo.jdField_a_of_type_JavaLangString = paramString2;
+      localURLInfo.b = paramString3;
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localURLInfo);
     }
-    long l = 600000L;
-    if (AudioHelper.d()) {
-      l = 60000L;
-    }
-    QAVGroupConfig.URLInfo localURLInfo = new QAVGroupConfig.URLInfo();
-    localURLInfo.jdField_a_of_type_Long = (l + System.currentTimeMillis());
-    localURLInfo.jdField_a_of_type_JavaLangString = paramString2;
-    localURLInfo.b = paramString3;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localURLInfo);
   }
   
   public String toString()
   {
-    return "task_id[" + this.jdField_a_of_type_Int + "], max_gaudio_member[" + this.b + "], max_select_num[" + this.c + "], show_invite_box[" + this.e + "], auto_select_num[" + this.d + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("task_id[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("], max_gaudio_member[");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("], max_select_num[");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("], show_invite_box[");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("], auto_select_num[");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QAVGroupConfig.ConfigInfo
  * JD-Core Version:    0.7.0.1
  */

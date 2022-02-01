@@ -16,7 +16,7 @@ import com.tencent.tavkit.composition.builder.TAVCompositionBuilder;
 
 public class TavImageGenerator
 {
-  private int jdField_a_of_type_Int = -1;
+  private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler;
   @NonNull
   private final TavImageGenerator.ImageGeneratorThread jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavImageGenerator$ImageGeneratorThread;
@@ -27,10 +27,15 @@ public class TavImageGenerator
   private RenderContext jdField_a_of_type_ComTencentTavDecoderRenderContext;
   @Nullable
   private RenderContextParams jdField_a_of_type_ComTencentTavDecoderRenderContextParams;
-  private final String jdField_a_of_type_JavaLangString = "TavImageGenerator@" + Integer.toHexString(hashCode());
+  private final String jdField_a_of_type_JavaLangString;
   
   public TavImageGenerator(TAVComposition paramTAVComposition, CGSize paramCGSize)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TavImageGenerator@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    this.jdField_a_of_type_Int = -1;
     paramTAVComposition = new TAVCompositionBuilder(paramTAVComposition).buildSource();
     this.jdField_a_of_type_ComTencentTavAssetAsset = paramTAVComposition.getAsset();
     this.jdField_a_of_type_ComTencentTavCoreCompositionVideoComposition = paramTAVComposition.getVideoComposition();
@@ -51,7 +56,7 @@ public class TavImageGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavImageGenerator
  * JD-Core Version:    0.7.0.1
  */

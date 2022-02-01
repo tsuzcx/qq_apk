@@ -54,7 +54,10 @@ public class LebaQzoneStyleProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onReqFailed] failCode=");
+    localStringBuilder.append(paramInt);
+    QLog.i("LebaQzoneStyleProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -64,7 +67,7 @@ public class LebaQzoneStyleProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.config.LebaQzoneStyleProcessor
  * JD-Core Version:    0.7.0.1
  */

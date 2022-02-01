@@ -12,19 +12,22 @@ public class JceUtils
 {
   public static <T extends JceStruct> T decodeWup(T paramT, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    try
+    if (paramArrayOfByte != null)
     {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf8");
-      paramT.readFrom(paramArrayOfByte);
-      return paramT;
-    }
-    catch (Exception paramT)
-    {
-      paramT.printStackTrace();
+      if (paramArrayOfByte.length == 0) {
+        return null;
+      }
+      try
+      {
+        paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+        paramArrayOfByte.setServerEncoding("utf8");
+        paramT.readFrom(paramArrayOfByte);
+        return paramT;
+      }
+      catch (Exception paramT)
+      {
+        paramT.printStackTrace();
+      }
     }
     return null;
   }
@@ -67,46 +70,38 @@ public class JceUtils
   
   public static byte[] inflateByte(byte[] paramArrayOfByte)
   {
-    Object localObject1 = paramArrayOfByte;
-    Object localObject2;
     if (paramArrayOfByte != null)
     {
-      localObject2 = (BinaryPushInfo)decodeWup(BinaryPushInfo.class, paramArrayOfByte);
-      if (((BinaryPushInfo)localObject2).compressType != 0L) {
-        break label32;
+      Object localObject2 = (BinaryPushInfo)decodeWup(BinaryPushInfo.class, paramArrayOfByte);
+      if (((BinaryPushInfo)localObject2).compressType == 0L) {
+        return ((BinaryPushInfo)localObject2).pushBuffer;
       }
-      localObject1 = ((BinaryPushInfo)localObject2).pushBuffer;
-    }
-    label32:
-    do
-    {
-      return localObject1;
-      localObject1 = paramArrayOfByte;
-    } while (((BinaryPushInfo)localObject2).compressType != 2L);
-    ByteArrayOutputStream localByteArrayOutputStream;
-    try
-    {
-      localObject1 = new Inflater();
-      ((Inflater)localObject1).setInput(((BinaryPushInfo)localObject2).pushBuffer, 0, ((BinaryPushInfo)localObject2).pushBuffer.length);
-      localObject2 = new byte[4096];
-      localByteArrayOutputStream = new ByteArrayOutputStream();
-      while (!((Inflater)localObject1).finished()) {
-        localByteArrayOutputStream.write((byte[])localObject2, 0, ((Inflater)localObject1).inflate((byte[])localObject2));
+      if (((BinaryPushInfo)localObject2).compressType == 2L) {
+        try
+        {
+          Object localObject1 = new Inflater();
+          ((Inflater)localObject1).setInput(((BinaryPushInfo)localObject2).pushBuffer, 0, ((BinaryPushInfo)localObject2).pushBuffer.length);
+          localObject2 = new byte[4096];
+          ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+          while (!((Inflater)localObject1).finished()) {
+            localByteArrayOutputStream.write((byte[])localObject2, 0, ((Inflater)localObject1).inflate((byte[])localObject2));
+          }
+          ((Inflater)localObject1).end();
+          localObject1 = localByteArrayOutputStream.toByteArray();
+          return localObject1;
+        }
+        catch (Exception localException)
+        {
+          QZLog.e("JceUtils.inflateByte", "Push Buf decompresse error!", localException);
+        }
       }
-      localException.end();
     }
-    catch (Exception localException)
-    {
-      QZLog.e("JceUtils.inflateByte", "Push Buf decompresse error!", localException);
-      return paramArrayOfByte;
-    }
-    byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
-    return arrayOfByte;
+    return paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.JceUtils
  * JD-Core Version:    0.7.0.1
  */

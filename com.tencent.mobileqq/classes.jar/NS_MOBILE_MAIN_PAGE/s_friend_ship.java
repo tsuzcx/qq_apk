@@ -27,14 +27,15 @@ public final class s_friend_ship
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.intimacyScore, 0);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 1);
+    String str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_friend_ship
  * JD-Core Version:    0.7.0.1
  */

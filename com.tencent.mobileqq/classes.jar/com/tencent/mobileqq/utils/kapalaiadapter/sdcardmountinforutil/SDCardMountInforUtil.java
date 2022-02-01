@@ -41,7 +41,7 @@ public class SDCardMountInforUtil
     //   29: invokevirtual 45	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   32: astore_3
     //   33: aload_3
-    //   34: ifnull +48 -> 82
+    //   34: ifnull +28 -> 62
     //   37: aload_2
     //   38: astore_1
     //   39: aload_3
@@ -56,123 +56,126 @@ public class SDCardMountInforUtil
     //   55: invokevirtual 57	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   58: pop
     //   59: goto -33 -> 26
-    //   62: astore_3
-    //   63: aload_2
-    //   64: astore_1
-    //   65: aload_3
-    //   66: invokevirtual 60	java/lang/Exception:printStackTrace	()V
-    //   69: aload_2
-    //   70: ifnull +7 -> 77
-    //   73: aload_2
-    //   74: invokevirtual 63	java/io/BufferedReader:close	()V
-    //   77: aload_0
-    //   78: invokespecial 66	com/tencent/mobileqq/utils/kapalaiadapter/sdcardmountinforutil/SDCardMountInforUtil:d	()V
-    //   81: return
-    //   82: aload_2
-    //   83: astore_1
-    //   84: aload_0
-    //   85: getfield 23	com/tencent/mobileqq/utils/kapalaiadapter/sdcardmountinforutil/SDCardMountInforUtil:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   88: invokevirtual 69	java/util/ArrayList:trimToSize	()V
+    //   62: aload_2
+    //   63: astore_1
+    //   64: aload_0
+    //   65: getfield 23	com/tencent/mobileqq/utils/kapalaiadapter/sdcardmountinforutil/SDCardMountInforUtil:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   68: invokevirtual 60	java/util/ArrayList:trimToSize	()V
+    //   71: aload_2
+    //   72: invokevirtual 63	java/io/BufferedReader:close	()V
+    //   75: goto +38 -> 113
+    //   78: astore_3
+    //   79: goto +12 -> 91
+    //   82: astore_1
+    //   83: aconst_null
+    //   84: astore_2
+    //   85: goto +38 -> 123
+    //   88: astore_3
+    //   89: aconst_null
+    //   90: astore_2
     //   91: aload_2
-    //   92: ifnull -15 -> 77
-    //   95: aload_2
-    //   96: invokevirtual 63	java/io/BufferedReader:close	()V
-    //   99: goto -22 -> 77
-    //   102: astore_1
-    //   103: aload_1
-    //   104: invokevirtual 60	java/lang/Exception:printStackTrace	()V
-    //   107: goto -30 -> 77
-    //   110: astore_1
-    //   111: aload_1
-    //   112: invokevirtual 60	java/lang/Exception:printStackTrace	()V
-    //   115: goto -38 -> 77
-    //   118: astore_2
-    //   119: aconst_null
-    //   120: astore_1
-    //   121: aload_1
-    //   122: ifnull +7 -> 129
-    //   125: aload_1
-    //   126: invokevirtual 63	java/io/BufferedReader:close	()V
-    //   129: aload_2
-    //   130: athrow
-    //   131: astore_1
-    //   132: aload_1
-    //   133: invokevirtual 60	java/lang/Exception:printStackTrace	()V
-    //   136: goto -7 -> 129
-    //   139: astore_2
-    //   140: goto -19 -> 121
-    //   143: astore_3
-    //   144: aconst_null
-    //   145: astore_2
-    //   146: goto -83 -> 63
+    //   92: astore_1
+    //   93: aload_3
+    //   94: invokevirtual 66	java/lang/Exception:printStackTrace	()V
+    //   97: aload_2
+    //   98: ifnull +15 -> 113
+    //   101: aload_2
+    //   102: invokevirtual 63	java/io/BufferedReader:close	()V
+    //   105: goto +8 -> 113
+    //   108: astore_1
+    //   109: aload_1
+    //   110: invokevirtual 66	java/lang/Exception:printStackTrace	()V
+    //   113: aload_0
+    //   114: invokespecial 69	com/tencent/mobileqq/utils/kapalaiadapter/sdcardmountinforutil/SDCardMountInforUtil:d	()V
+    //   117: return
+    //   118: astore_3
+    //   119: aload_1
+    //   120: astore_2
+    //   121: aload_3
+    //   122: astore_1
+    //   123: aload_2
+    //   124: ifnull +15 -> 139
+    //   127: aload_2
+    //   128: invokevirtual 63	java/io/BufferedReader:close	()V
+    //   131: goto +8 -> 139
+    //   134: astore_2
+    //   135: aload_2
+    //   136: invokevirtual 66	java/lang/Exception:printStackTrace	()V
+    //   139: goto +5 -> 144
+    //   142: aload_1
+    //   143: athrow
+    //   144: goto -2 -> 142
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	149	0	this	SDCardMountInforUtil
-    //   27	57	1	localBufferedReader1	java.io.BufferedReader
-    //   102	2	1	localException1	Exception
-    //   110	2	1	localException2	Exception
-    //   120	6	1	localObject1	Object
-    //   131	2	1	localException3	Exception
-    //   25	71	2	localBufferedReader2	java.io.BufferedReader
-    //   118	12	2	localObject2	Object
-    //   139	1	2	localObject3	Object
-    //   145	1	2	localObject4	Object
+    //   0	147	0	this	SDCardMountInforUtil
+    //   27	37	1	localObject1	Object
+    //   82	1	1	localObject2	Object
+    //   92	1	1	localObject3	Object
+    //   108	12	1	localException1	Exception
+    //   122	21	1	localObject4	Object
+    //   25	103	2	localObject5	Object
+    //   134	2	2	localException2	Exception
     //   32	23	3	str	String
-    //   62	4	3	localException4	Exception
-    //   143	1	3	localException5	Exception
+    //   78	1	3	localException3	Exception
+    //   88	6	3	localException4	Exception
+    //   118	4	3	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   28	33	62	java/lang/Exception
-    //   39	48	62	java/lang/Exception
-    //   50	59	62	java/lang/Exception
-    //   84	91	62	java/lang/Exception
-    //   95	99	102	java/lang/Exception
-    //   73	77	110	java/lang/Exception
-    //   7	26	118	finally
-    //   125	129	131	java/lang/Exception
-    //   28	33	139	finally
-    //   39	48	139	finally
-    //   50	59	139	finally
-    //   65	69	139	finally
-    //   84	91	139	finally
-    //   7	26	143	java/lang/Exception
+    //   28	33	78	java/lang/Exception
+    //   39	48	78	java/lang/Exception
+    //   50	59	78	java/lang/Exception
+    //   64	71	78	java/lang/Exception
+    //   7	26	82	finally
+    //   7	26	88	java/lang/Exception
+    //   71	75	108	java/lang/Exception
+    //   101	105	108	java/lang/Exception
+    //   28	33	118	finally
+    //   39	48	118	finally
+    //   50	59	118	finally
+    //   64	71	118	finally
+    //   93	97	118	finally
+    //   127	131	134	java/lang/Exception
   }
   
   private void a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      c();
-      return;
-    case 0: 
-      a();
+      if (paramInt != 1)
+      {
+        c();
+        return;
+      }
+      b();
       return;
     }
-    b();
+    a();
   }
   
   private boolean a(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return false;
-      paramString = new File(paramString);
-      if ((!paramString.exists()) || (paramString.list() == null)) {
-        break;
-      }
+    }
+    paramString = new File(paramString);
+    if ((paramString.exists()) && (paramString.list() != null))
+    {
       paramString = paramString.list();
       int j = paramString.length;
       int i = 0;
       while (i < j)
       {
         String str = paramString[i];
-        if (QLog.isColorLevel()) {
-          QLog.i("kapalai", 2, "--------" + str);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("--------");
+          localStringBuilder.append(str);
+          QLog.i("kapalai", 2, localStringBuilder.toString());
         }
         i += 1;
       }
+      return false;
     }
     return true;
   }
@@ -199,7 +202,7 @@ public class SDCardMountInforUtil
     //   29: invokevirtual 45	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   32: astore_3
     //   33: aload_3
-    //   34: ifnull +48 -> 82
+    //   34: ifnull +28 -> 62
     //   37: aload_2
     //   38: astore_1
     //   39: aload_3
@@ -214,86 +217,85 @@ public class SDCardMountInforUtil
     //   55: invokevirtual 57	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   58: pop
     //   59: goto -33 -> 26
-    //   62: astore_3
-    //   63: aload_2
-    //   64: astore_1
-    //   65: aload_3
-    //   66: invokevirtual 60	java/lang/Exception:printStackTrace	()V
-    //   69: aload_2
-    //   70: ifnull +7 -> 77
-    //   73: aload_2
-    //   74: invokevirtual 63	java/io/BufferedReader:close	()V
-    //   77: aload_0
-    //   78: invokespecial 66	com/tencent/mobileqq/utils/kapalaiadapter/sdcardmountinforutil/SDCardMountInforUtil:d	()V
-    //   81: return
-    //   82: aload_2
-    //   83: astore_1
-    //   84: aload_0
-    //   85: getfield 23	com/tencent/mobileqq/utils/kapalaiadapter/sdcardmountinforutil/SDCardMountInforUtil:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   88: invokevirtual 69	java/util/ArrayList:trimToSize	()V
+    //   62: aload_2
+    //   63: astore_1
+    //   64: aload_0
+    //   65: getfield 23	com/tencent/mobileqq/utils/kapalaiadapter/sdcardmountinforutil/SDCardMountInforUtil:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   68: invokevirtual 60	java/util/ArrayList:trimToSize	()V
+    //   71: aload_2
+    //   72: invokevirtual 63	java/io/BufferedReader:close	()V
+    //   75: goto +38 -> 113
+    //   78: astore_3
+    //   79: goto +12 -> 91
+    //   82: astore_1
+    //   83: aconst_null
+    //   84: astore_2
+    //   85: goto +38 -> 123
+    //   88: astore_3
+    //   89: aconst_null
+    //   90: astore_2
     //   91: aload_2
-    //   92: ifnull -15 -> 77
-    //   95: aload_2
-    //   96: invokevirtual 63	java/io/BufferedReader:close	()V
-    //   99: goto -22 -> 77
-    //   102: astore_1
-    //   103: aload_1
-    //   104: invokevirtual 60	java/lang/Exception:printStackTrace	()V
-    //   107: goto -30 -> 77
-    //   110: astore_1
-    //   111: aload_1
-    //   112: invokevirtual 60	java/lang/Exception:printStackTrace	()V
-    //   115: goto -38 -> 77
-    //   118: astore_2
-    //   119: aconst_null
-    //   120: astore_1
-    //   121: aload_1
-    //   122: ifnull +7 -> 129
-    //   125: aload_1
-    //   126: invokevirtual 63	java/io/BufferedReader:close	()V
-    //   129: aload_2
-    //   130: athrow
-    //   131: astore_1
-    //   132: aload_1
-    //   133: invokevirtual 60	java/lang/Exception:printStackTrace	()V
-    //   136: goto -7 -> 129
-    //   139: astore_2
-    //   140: goto -19 -> 121
-    //   143: astore_3
-    //   144: aconst_null
-    //   145: astore_2
-    //   146: goto -83 -> 63
+    //   92: astore_1
+    //   93: aload_3
+    //   94: invokevirtual 66	java/lang/Exception:printStackTrace	()V
+    //   97: aload_2
+    //   98: ifnull +15 -> 113
+    //   101: aload_2
+    //   102: invokevirtual 63	java/io/BufferedReader:close	()V
+    //   105: goto +8 -> 113
+    //   108: astore_1
+    //   109: aload_1
+    //   110: invokevirtual 66	java/lang/Exception:printStackTrace	()V
+    //   113: aload_0
+    //   114: invokespecial 69	com/tencent/mobileqq/utils/kapalaiadapter/sdcardmountinforutil/SDCardMountInforUtil:d	()V
+    //   117: return
+    //   118: astore_3
+    //   119: aload_1
+    //   120: astore_2
+    //   121: aload_3
+    //   122: astore_1
+    //   123: aload_2
+    //   124: ifnull +15 -> 139
+    //   127: aload_2
+    //   128: invokevirtual 63	java/io/BufferedReader:close	()V
+    //   131: goto +8 -> 139
+    //   134: astore_2
+    //   135: aload_2
+    //   136: invokevirtual 66	java/lang/Exception:printStackTrace	()V
+    //   139: goto +5 -> 144
+    //   142: aload_1
+    //   143: athrow
+    //   144: goto -2 -> 142
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	149	0	this	SDCardMountInforUtil
-    //   27	57	1	localBufferedReader1	java.io.BufferedReader
-    //   102	2	1	localException1	Exception
-    //   110	2	1	localException2	Exception
-    //   120	6	1	localObject1	Object
-    //   131	2	1	localException3	Exception
-    //   25	71	2	localBufferedReader2	java.io.BufferedReader
-    //   118	12	2	localObject2	Object
-    //   139	1	2	localObject3	Object
-    //   145	1	2	localObject4	Object
+    //   0	147	0	this	SDCardMountInforUtil
+    //   27	37	1	localObject1	Object
+    //   82	1	1	localObject2	Object
+    //   92	1	1	localObject3	Object
+    //   108	12	1	localException1	Exception
+    //   122	21	1	localObject4	Object
+    //   25	103	2	localObject5	Object
+    //   134	2	2	localException2	Exception
     //   32	23	3	str	String
-    //   62	4	3	localException4	Exception
-    //   143	1	3	localException5	Exception
+    //   78	1	3	localException3	Exception
+    //   88	6	3	localException4	Exception
+    //   118	4	3	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   28	33	62	java/lang/Exception
-    //   39	48	62	java/lang/Exception
-    //   50	59	62	java/lang/Exception
-    //   84	91	62	java/lang/Exception
-    //   95	99	102	java/lang/Exception
-    //   73	77	110	java/lang/Exception
-    //   7	26	118	finally
-    //   125	129	131	java/lang/Exception
-    //   28	33	139	finally
-    //   39	48	139	finally
-    //   50	59	139	finally
-    //   65	69	139	finally
-    //   84	91	139	finally
-    //   7	26	143	java/lang/Exception
+    //   28	33	78	java/lang/Exception
+    //   39	48	78	java/lang/Exception
+    //   50	59	78	java/lang/Exception
+    //   64	71	78	java/lang/Exception
+    //   7	26	82	finally
+    //   7	26	88	java/lang/Exception
+    //   71	75	108	java/lang/Exception
+    //   101	105	108	java/lang/Exception
+    //   28	33	118	finally
+    //   39	48	118	finally
+    //   50	59	118	finally
+    //   64	71	118	finally
+    //   93	97	118	finally
+    //   127	131	134	java/lang/Exception
   }
   
   @TargetApi(9)
@@ -353,7 +355,7 @@ public class SDCardMountInforUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.kapalaiadapter.sdcardmountinforutil.SDCardMountInforUtil
  * JD-Core Version:    0.7.0.1
  */

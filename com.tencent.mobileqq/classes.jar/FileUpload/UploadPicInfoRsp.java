@@ -25,6 +25,8 @@ public final class UploadPicInfoRsp
   public String sOriPhotoID = "";
   public String sOriUrl = "";
   public String sPhotoID = "";
+  public String sPhotoMD5 = "";
+  public String sRealLloc = "";
   public String sSURL = "";
   public String sSloc = "";
   public byte[] vBusiNessDataRsp = null;
@@ -38,7 +40,7 @@ public final class UploadPicInfoRsp
   
   public UploadPicInfoRsp() {}
   
-  public UploadPicInfoRsp(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, int paramInt3, int paramInt4, String paramString7, int paramInt5, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, stWaterTemplate paramstWaterTemplate, int paramInt6, byte[] paramArrayOfByte)
+  public UploadPicInfoRsp(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, int paramInt3, int paramInt4, String paramString7, int paramInt5, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, stWaterTemplate paramstWaterTemplate, int paramInt6, byte[] paramArrayOfByte, String paramString13, String paramString14)
   {
     this.sSURL = paramString1;
     this.sBURL = paramString2;
@@ -60,6 +62,8 @@ public final class UploadPicInfoRsp
     this.waterTemplate = paramstWaterTemplate;
     this.iBusiNessType = paramInt6;
     this.vBusiNessDataRsp = paramArrayOfByte;
+    this.sRealLloc = paramString13;
+    this.sPhotoMD5 = paramString14;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -84,63 +88,87 @@ public final class UploadPicInfoRsp
     this.waterTemplate = ((stWaterTemplate)paramJceInputStream.read(cache_waterTemplate, 17, false));
     this.iBusiNessType = paramJceInputStream.read(this.iBusiNessType, 18, false);
     this.vBusiNessDataRsp = ((byte[])paramJceInputStream.read(cache_vBusiNessDataRsp, 19, false));
+    this.sRealLloc = paramJceInputStream.readString(20, false);
+    this.sPhotoMD5 = paramJceInputStream.readString(21, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sSURL != null) {
-      paramJceOutputStream.write(this.sSURL, 0);
+    Object localObject = this.sSURL;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.sBURL != null) {
-      paramJceOutputStream.write(this.sBURL, 1);
+    localObject = this.sBURL;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.sAlbumID != null) {
-      paramJceOutputStream.write(this.sAlbumID, 2);
+    localObject = this.sAlbumID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.sPhotoID != null) {
-      paramJceOutputStream.write(this.sPhotoID, 3);
+    localObject = this.sPhotoID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.sSloc != null) {
-      paramJceOutputStream.write(this.sSloc, 4);
+    localObject = this.sSloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.iWidth, 5);
     paramJceOutputStream.write(this.iHeight, 6);
-    if (this.sOriUrl != null) {
-      paramJceOutputStream.write(this.sOriUrl, 7);
+    localObject = this.sOriUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.iOriWidth, 8);
     paramJceOutputStream.write(this.iOriHeight, 9);
-    if (this.sOriPhotoID != null) {
-      paramJceOutputStream.write(this.sOriPhotoID, 10);
+    localObject = this.sOriPhotoID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.iPicType, 11);
-    if (this.sAdaptUrl_160 != null) {
-      paramJceOutputStream.write(this.sAdaptUrl_160, 12);
+    localObject = this.sAdaptUrl_160;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.sAdaptUrl_200 != null) {
-      paramJceOutputStream.write(this.sAdaptUrl_200, 13);
+    localObject = this.sAdaptUrl_200;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
-    if (this.sAdaptUrl_400 != null) {
-      paramJceOutputStream.write(this.sAdaptUrl_400, 14);
+    localObject = this.sAdaptUrl_400;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.sAdaptUrl_640 != null) {
-      paramJceOutputStream.write(this.sAdaptUrl_640, 15);
+    localObject = this.sAdaptUrl_640;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
-    if (this.sAdaptUrl_1000 != null) {
-      paramJceOutputStream.write(this.sAdaptUrl_1000, 16);
+    localObject = this.sAdaptUrl_1000;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
-    if (this.waterTemplate != null) {
-      paramJceOutputStream.write(this.waterTemplate, 17);
+    localObject = this.waterTemplate;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 17);
     }
     paramJceOutputStream.write(this.iBusiNessType, 18);
-    if (this.vBusiNessDataRsp != null) {
-      paramJceOutputStream.write(this.vBusiNessDataRsp, 19);
+    localObject = this.vBusiNessDataRsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 19);
+    }
+    localObject = this.sRealLloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
+    }
+    localObject = this.sPhotoMD5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.UploadPicInfoRsp
  * JD-Core Version:    0.7.0.1
  */

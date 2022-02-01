@@ -34,45 +34,45 @@ public final class JsonArray
   public void add(Boolean paramBoolean)
   {
     List localList = this.elements;
-    if (paramBoolean == null) {}
-    for (paramBoolean = JsonNull.INSTANCE;; paramBoolean = new JsonPrimitive(paramBoolean))
-    {
-      localList.add(paramBoolean);
-      return;
+    if (paramBoolean == null) {
+      paramBoolean = JsonNull.INSTANCE;
+    } else {
+      paramBoolean = new JsonPrimitive(paramBoolean);
     }
+    localList.add(paramBoolean);
   }
   
   public void add(Character paramCharacter)
   {
     List localList = this.elements;
-    if (paramCharacter == null) {}
-    for (paramCharacter = JsonNull.INSTANCE;; paramCharacter = new JsonPrimitive(paramCharacter))
-    {
-      localList.add(paramCharacter);
-      return;
+    if (paramCharacter == null) {
+      paramCharacter = JsonNull.INSTANCE;
+    } else {
+      paramCharacter = new JsonPrimitive(paramCharacter);
     }
+    localList.add(paramCharacter);
   }
   
   public void add(Number paramNumber)
   {
     List localList = this.elements;
-    if (paramNumber == null) {}
-    for (paramNumber = JsonNull.INSTANCE;; paramNumber = new JsonPrimitive(paramNumber))
-    {
-      localList.add(paramNumber);
-      return;
+    if (paramNumber == null) {
+      paramNumber = JsonNull.INSTANCE;
+    } else {
+      paramNumber = new JsonPrimitive(paramNumber);
     }
+    localList.add(paramNumber);
   }
   
   public void add(String paramString)
   {
     List localList = this.elements;
-    if (paramString == null) {}
-    for (paramString = JsonNull.INSTANCE;; paramString = new JsonPrimitive(paramString))
-    {
-      localList.add(paramString);
-      return;
+    if (paramString == null) {
+      paramString = JsonNull.INSTANCE;
+    } else {
+      paramString = new JsonPrimitive(paramString);
     }
+    localList.add(paramString);
   }
   
   public void addAll(JsonArray paramJsonArray)
@@ -237,7 +237,7 @@ public final class JsonArray
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.JsonArray
  * JD-Core Version:    0.7.0.1
  */

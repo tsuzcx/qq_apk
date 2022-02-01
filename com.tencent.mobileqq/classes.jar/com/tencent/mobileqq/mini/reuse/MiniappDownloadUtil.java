@@ -35,26 +35,28 @@ public class MiniappDownloadUtil
   
   public MiniappDownloadUtil()
   {
-    int i;
     if (this.resumableDownloader == null)
     {
       if (QDLog.getLog() == null) {
         QDLog.setLog(new MiniappDownloadUtil.1(this));
       }
-      if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_use_download_optimize", 1) != 1) {
-        break label143;
+      int i = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_use_download_optimize", 1);
+      boolean bool = false;
+      if (i == 1) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      if (i == 0) {
-        break label148;
+      if (i != 0)
+      {
+        Config.setConfig(new MiniDownloadConfig());
+        DownloaderFactory.getInstance(BaseApplicationImpl.getContext());
+        this.resumableDownloader = DownloaderFactory.createDownloader("mini_app_downloader");
       }
-      Config.setConfig(new MiniDownloadConfig());
-      DownloaderFactory.getInstance(BaseApplicationImpl.getContext());
-    }
-    label143:
-    label148:
-    for (this.resumableDownloader = DownloaderFactory.createDownloader("mini_app_downloader");; this.resumableDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader())
-    {
+      else
+      {
+        this.resumableDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
+      }
       this.resumableDownloader.enableResumeTransfer(true);
       if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_https_ipdirect_enable", 1) == 1) {
         bool = true;
@@ -72,8 +74,6 @@ public class MiniappDownloadUtil
       {
         QLog.e("[mini] MiniappDownloadUtil", 1, "", localThrowable);
       }
-      i = 0;
-      break;
     }
   }
   
@@ -91,119 +91,152 @@ public class MiniappDownloadUtil
   
   public static MiniappDownloadUtil getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new MiniappDownloadUtil();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new MiniappDownloadUtil();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private List<Integer> getRangeModeNetworkLevel()
   {
     try
     {
-      if (sRangeModeNetworkLevel == null)
+      if (sRangeModeNetworkLevel != null) {
+        break label136;
+      }
+      localObject1 = new ArrayList();
+      localObject3 = GameWnsUtils.getRangeModeNetworkLevel();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getRangeModeNetworkLevel wns config: ");
+      localStringBuilder.append((String)localObject3);
+      QLog.i("[mini] MiniappDownloadUtil", 1, localStringBuilder.toString());
+      if (TextUtils.isEmpty((CharSequence)localObject3)) {
+        break label132;
+      }
+      localObject3 = ((String)localObject3).split(",");
+      if ((localObject3 == null) || (localObject3.length <= 0)) {
+        break label132;
+      }
+      j = localObject3.length;
+      i = 0;
+    }
+    finally
+    {
+      for (;;)
       {
-        ArrayList localArrayList = new ArrayList();
-        Object localObject2 = GameWnsUtils.getRangeModeNetworkLevel();
-        QLog.i("[mini] MiniappDownloadUtil", 1, "getRangeModeNetworkLevel wns config: " + (String)localObject2);
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        Object localObject1;
+        Object localObject3;
+        StringBuilder localStringBuilder;
+        int j;
+        int i;
+        for (;;)
         {
-          localObject2 = ((String)localObject2).split(",");
-          if ((localObject2 != null) && (localObject2.length > 0))
-          {
-            int j = localObject2.length;
-            int i = 0;
-            for (;;)
-            {
-              if (i < j)
-              {
-                String str = localObject2[i];
-                try
-                {
-                  localArrayList.add(Integer.valueOf(str));
-                  i += 1;
-                }
-                catch (NumberFormatException localNumberFormatException)
-                {
-                  for (;;)
-                  {
-                    QLog.e("[mini] MiniappDownloadUtil", 1, "getRangeModeNetworkLevel exception:", localNumberFormatException);
-                  }
-                }
-              }
-            }
-          }
+          label132:
+          label136:
+          throw localObject2;
         }
-        sRangeModeNetworkLevel = localObject1;
+        i += 1;
       }
     }
-    finally {}
-    List localList = sRangeModeNetworkLevel;
-    return localList;
+    if (i < j)
+    {
+      localStringBuilder = localObject3[i];
+      try
+      {
+        ((List)localObject1).add(Integer.valueOf(localStringBuilder));
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        QLog.e("[mini] MiniappDownloadUtil", 1, "getRangeModeNetworkLevel exception:", localNumberFormatException);
+      }
+    }
+    else
+    {
+      sRangeModeNetworkLevel = (List)localObject1;
+      localObject1 = sRangeModeNetworkLevel;
+      return localObject1;
+    }
   }
   
   private List<Integer> getRangeModePerfLevel()
   {
     try
     {
-      if (sRangeModePerfLevel == null)
+      if (sRangeModePerfLevel != null) {
+        break label136;
+      }
+      localObject1 = new ArrayList();
+      localObject3 = GameWnsUtils.getRangeModePerfLevel();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getRangeModePerfLevel wns config: ");
+      localStringBuilder.append((String)localObject3);
+      QLog.i("[mini] MiniappDownloadUtil", 1, localStringBuilder.toString());
+      if (TextUtils.isEmpty((CharSequence)localObject3)) {
+        break label132;
+      }
+      localObject3 = ((String)localObject3).split(",");
+      if ((localObject3 == null) || (localObject3.length <= 0)) {
+        break label132;
+      }
+      j = localObject3.length;
+      i = 0;
+    }
+    finally
+    {
+      for (;;)
       {
-        ArrayList localArrayList = new ArrayList();
-        Object localObject2 = GameWnsUtils.getRangeModePerfLevel();
-        QLog.i("[mini] MiniappDownloadUtil", 1, "getRangeModePerfLevel wns config: " + (String)localObject2);
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        Object localObject1;
+        Object localObject3;
+        StringBuilder localStringBuilder;
+        int j;
+        int i;
+        for (;;)
         {
-          localObject2 = ((String)localObject2).split(",");
-          if ((localObject2 != null) && (localObject2.length > 0))
-          {
-            int j = localObject2.length;
-            int i = 0;
-            for (;;)
-            {
-              if (i < j)
-              {
-                String str = localObject2[i];
-                try
-                {
-                  localArrayList.add(Integer.valueOf(str));
-                  i += 1;
-                }
-                catch (NumberFormatException localNumberFormatException)
-                {
-                  for (;;)
-                  {
-                    QLog.e("[mini] MiniappDownloadUtil", 1, "getRangeModePerfLevel exception:", localNumberFormatException);
-                  }
-                }
-              }
-            }
-          }
+          label132:
+          label136:
+          throw localObject2;
         }
-        sRangeModePerfLevel = localObject1;
+        i += 1;
       }
     }
-    finally {}
-    List localList = sRangeModePerfLevel;
-    return localList;
+    if (i < j)
+    {
+      localStringBuilder = localObject3[i];
+      try
+      {
+        ((List)localObject1).add(Integer.valueOf(localStringBuilder));
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        QLog.e("[mini] MiniappDownloadUtil", 1, "getRangeModePerfLevel exception:", localNumberFormatException);
+      }
+    }
+    else
+    {
+      sRangeModePerfLevel = (List)localObject1;
+      localObject1 = sRangeModePerfLevel;
+      return localObject1;
+    }
   }
   
   private boolean isUrlSupportRange(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      str = paramString;
-      if (paramString.indexOf("?") > 0) {
-        str = paramString.substring(0, paramString.indexOf("?"));
-      }
-    } while (TextUtils.isEmpty(str));
+    }
+    String str = paramString;
+    if (paramString.indexOf("?") > 0) {
+      str = paramString.substring(0, paramString.indexOf("?"));
+    }
+    if (TextUtils.isEmpty(str)) {
+      return false;
+    }
     return str.toLowerCase().endsWith(".zip");
   }
   
@@ -215,13 +248,11 @@ public class MiniappDownloadUtil
   private boolean rangeDownloadEnvEnable()
   {
     List localList = getRangeModePerfLevel();
-    if ((localList != null) && (!localList.contains(Integer.valueOf(DeviceInfoUtils.a())))) {}
-    do
-    {
+    if ((localList != null) && (!localList.contains(Integer.valueOf(DeviceInfoUtils.a())))) {
       return false;
-      localList = getRangeModeNetworkLevel();
-    } while ((localList != null) && (!localList.contains(Integer.valueOf(NetworkState.g().getNetworkType()))));
-    return true;
+    }
+    localList = getRangeModeNetworkLevel();
+    return (localList == null) || (localList.contains(Integer.valueOf(NetworkState.g().getNetworkType())));
   }
   
   public void abort(String paramString)
@@ -251,7 +282,11 @@ public class MiniappDownloadUtil
       }
       return this.resumableDownloader.download(paramString1, paramBoolean);
     }
-    QLog.w("[mini] MiniappDownloadUtil", 1, "download unsupported url:" + paramString1 + ", callback fail");
+    paramString2 = new StringBuilder();
+    paramString2.append("download unsupported url:");
+    paramString2.append(paramString1);
+    paramString2.append(", callback fail");
+    QLog.w("[mini] MiniappDownloadUtil", 1, paramString2.toString());
     ThreadManager.excute(new MiniappDownloadUtil.3(this, paramDownloadListener, paramString1), 16, null, false);
     return false;
   }
@@ -273,43 +308,41 @@ public class MiniappDownloadUtil
   
   public Downloader.DownloadMode getDownloadMode(String paramString)
   {
-    Downloader.DownloadMode localDownloadMode2 = getDownloadMode();
-    Downloader.DownloadMode localDownloadMode1 = localDownloadMode2;
-    if (localDownloadMode2 == Downloader.DownloadMode.RangeMode) {
-      if (isUrlSupportRange(paramString))
-      {
-        localDownloadMode1 = localDownloadMode2;
-        if (rangeDownloadEnvEnable()) {}
-      }
-      else
-      {
-        localDownloadMode1 = Downloader.DownloadMode.StrictMode;
-      }
+    Downloader.DownloadMode localDownloadMode = getDownloadMode();
+    if ((localDownloadMode == Downloader.DownloadMode.RangeMode) && ((!isUrlSupportRange(paramString)) || (!rangeDownloadEnvEnable()))) {
+      return Downloader.DownloadMode.StrictMode;
     }
-    return localDownloadMode1;
+    return localDownloadMode;
   }
   
   public int getRangeNumber(long paramLong)
   {
     long l = GameWnsUtils.getRangeSize();
-    int j = GameWnsUtils.getMaxRangeNumber();
+    int k = GameWnsUtils.getMaxRangeNumber();
     int i;
     if ((paramLong > 0L) && (l > 0L))
     {
-      i = (int)Math.ceil(paramLong * 1.0D / l);
-      if (i <= j) {
-        break label88;
-      }
-      i = j;
+      double d1 = paramLong;
+      Double.isNaN(d1);
+      double d2 = l;
+      Double.isNaN(d2);
+      i = (int)Math.ceil(d1 * 1.0D / d2);
     }
-    label88:
-    for (;;)
+    else
     {
-      QLog.i("[mini] MiniappDownloadUtil", 1, "getRangeNumber return " + i + " for contentLength " + paramLong);
-      return i;
       i = -1;
-      break;
     }
+    int j = i;
+    if (i > k) {
+      j = k;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getRangeNumber return ");
+    localStringBuilder.append(j);
+    localStringBuilder.append(" for contentLength ");
+    localStringBuilder.append(paramLong);
+    QLog.i("[mini] MiniappDownloadUtil", 1, localStringBuilder.toString());
+    return j;
   }
   
   public boolean needPreConnect()
@@ -328,14 +361,17 @@ public class MiniappDownloadUtil
   {
     if (this.resumableDownloader != null)
     {
-      QLog.d("[mini] MiniappDownloadUtil", 1, "preconnect method = " + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preconnect method = ");
+      localStringBuilder.append(paramString);
+      QLog.d("[mini] MiniappDownloadUtil", 1, localStringBuilder.toString());
       this.resumableDownloader.preConnectHost(paramArrayList, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil
  * JD-Core Version:    0.7.0.1
  */

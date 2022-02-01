@@ -1,5 +1,6 @@
 package com.tencent.ttpic.openapi.filter;
 
+import android.graphics.PointF;
 import android.hardware.SensorEvent;
 import android.opengl.GLES20;
 import android.opengl.GLES30;
@@ -8,16 +9,19 @@ import android.util.Log;
 import com.tencent.aekit.openrender.internal.AEChainI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
+import com.tencent.ttpic.CommonUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.TransformUtils;
 import com.tencent.ttpic.openapi.listener.LightNodeAppliedListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.libpag.VideoDecoder;
 import org.light.AudioFrame;
 import org.light.AudioOutput;
 import org.light.CameraConfig;
@@ -29,9 +33,12 @@ import org.light.CameraController.CmShowCallback;
 import org.light.CameraController.DisplayType;
 import org.light.CameraController.MorphType;
 import org.light.Config.ConfigKeys;
+import org.light.DeviceCameraConfig;
 import org.light.LightAsset;
 import org.light.LightEngine;
 import org.light.LightSurface;
+import org.light.MaterialConfig;
+import org.light.PhotoClip;
 import org.light.RendererConfig;
 import org.light.VideoOutput;
 import org.light.bean.WMElement;
@@ -59,11 +66,15 @@ public class LightNode
   private CameraConfig cameraConfig;
   private CameraController cameraController;
   final String defaultSmoothVersion;
+  private DeviceCameraConfig deviceCameraConfig;
   private CameraConfig.ImageOrigin inputOrigin = CameraConfig.ImageOrigin.BottomLeft;
+  private boolean isAiAbilityPreLoad = false;
+  private boolean isPicNeedFlip = false;
   private LightEngine lightEngine;
   private LightSurface lightSurface;
   private boolean mAutoTest = false;
   private BaseFilter mCopyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private Frame mCopyFrame = new Frame();
   private int mFrameIndex = 0;
   private LightAssetListener mLightAssetListener;
   private boolean mNeedSetBundle = false;
@@ -80,12 +91,14 @@ public class LightNode
   
   public LightNode()
   {
-    this("defaultBeautyV6.json");
+    this("defaultBeautyV6.json", false);
   }
   
-  public LightNode(String paramString)
+  public LightNode(String paramString, boolean paramBoolean)
   {
+    this.isAiAbilityPreLoad = paramBoolean;
     this.defaultSmoothVersion = paramString;
+    VideoDecoder.SetMaxHardwareDecoderCount(CommonUtils.getPAGSupportedDecoderInstanceCount());
   }
   
   public static String getEmptyMaterialPath()
@@ -95,7 +108,12 @@ public class LightNode
   
   public static void initResourcePath(String paramString1, String paramString2)
   {
-    LogUtils.d("LightNode", "[initResourcePath] dirPath = " + paramString1 + " materialPath = " + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[initResourcePath] dirPath = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" materialPath = ");
+    localStringBuilder.append(paramString2);
+    LogUtils.d("LightNode", localStringBuilder.toString());
     assetsDir = paramString1;
     emptyMaterialPath = paramString2;
   }
@@ -104,7 +122,10 @@ public class LightNode
   {
     if ((paramString1 != null) && (paramString2 != null))
     {
-      LogUtils.i("LightNode", "setBundleToLightEngine " + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setBundleToLightEngine ");
+      localStringBuilder.append(paramString2);
+      LogUtils.i("LightNode", localStringBuilder.toString());
       this.cameraConfig.setLightAIModelPath(paramString1, paramString2);
     }
   }
@@ -113,15 +134,21 @@ public class LightNode
   {
     Log.d("LightNode", "setListenersForConfig: ");
     this.cameraConfig.setOnClickWatermarkListener(new LightNode.1(this));
-    if ((this.wmDelegateMap != null) && (this.wmDelegateMap.size() > 0))
+    Object localObject = this.wmDelegateMap;
+    if ((localObject != null) && (((HashMap)localObject).size() > 0))
     {
-      Iterator localIterator = this.wmDelegateMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject = this.wmDelegateMap.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
         if (localEntry != null)
         {
-          LogUtils.d("LightNode", "注入水印Delegate：" + (String)localEntry.getKey() + "|" + localEntry.getValue());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("注入水印Delegate：");
+          localStringBuilder.append((String)localEntry.getKey());
+          localStringBuilder.append("|");
+          localStringBuilder.append(localEntry.getValue());
+          LogUtils.d("LightNode", localStringBuilder.toString());
           this.cameraConfig.setWatermarkDelegate((String)localEntry.getKey(), (WatermarkDelegate)localEntry.getValue());
         }
       }
@@ -132,18 +159,17 @@ public class LightNode
   
   public void apply()
   {
-    if (isApplied()) {}
-    do
-    {
+    if (isApplied()) {
       return;
-      if ((TextUtils.isEmpty(assetsDir)) || (TextUtils.isEmpty(emptyMaterialPath)))
-      {
-        LogUtils.e("LightNode", "apply LightNode terminated with exception: path null ! --> assetsDir=" + assetsDir + " ,emptyMaterialPath=" + emptyMaterialPath);
-        return;
+    }
+    if ((!TextUtils.isEmpty(assetsDir)) && (!TextUtils.isEmpty(emptyMaterialPath)))
+    {
+      localObject = this.outTexs;
+      GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
+      localObject = new RendererConfig(assetsDir);
+      if (this.isAiAbilityPreLoad) {
+        ((RendererConfig)localObject).initMode = 1;
       }
-      GLES20.glGenTextures(this.outTexs.length, this.outTexs, 0);
-      Object localObject = new RendererConfig();
-      ((RendererConfig)localObject).bundlePath = assetsDir;
       this.lightEngine = LightEngine.Make(null, null, (RendererConfig)localObject);
       this.lightSurface = LightSurface.FromTexture(this.outTexs[0], this.previewWidth, this.previewHeight, false);
       this.lightEngine.setSurface(this.lightSurface);
@@ -151,6 +177,7 @@ public class LightNode
       this.audioReader = this.lightEngine.audioOutput();
       this.lightEngine.setBGMusicHidden(false);
       this.cameraConfig = CameraConfig.make();
+      this.cameraConfig.setLightBenchEnable(false);
       this.lightEngine.setConfig(this.cameraConfig);
       this.lightEngine.setDefaultBeautyVersion(this.defaultSmoothVersion);
       if (this.mNeedSetBundle)
@@ -179,40 +206,62 @@ public class LightNode
       this.startTime = System.nanoTime();
       this.mCopyFilter.applyFilterChain(true, this.previewWidth, this.previewHeight);
       this.mIsApplied = true;
-    } while (this.appliedListener == null);
-    this.appliedListener.onLightNodeApplied();
+      localObject = this.appliedListener;
+      if (localObject != null) {
+        ((LightNodeAppliedListener)localObject).onLightNodeApplied();
+      }
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("apply LightNode terminated with exception: path null ! --> assetsDir=");
+    ((StringBuilder)localObject).append(assetsDir);
+    ((StringBuilder)localObject).append(" ,emptyMaterialPath=");
+    ((StringBuilder)localObject).append(emptyMaterialPath);
+    LogUtils.e("LightNode", ((StringBuilder)localObject).toString());
   }
   
   public void clear()
   {
-    if (this.mCopyFilter != null)
+    Object localObject = this.mCopyFilter;
+    if (localObject != null)
     {
-      this.mCopyFilter.clearGLSL();
+      ((BaseFilter)localObject).clearGLSL();
       this.mCopyFilter = null;
     }
-    if (this.videoOutput != null)
+    localObject = this.mCopyFrame;
+    if (localObject != null)
     {
-      this.videoOutput.release();
+      ((Frame)localObject).clear();
+      this.mCopyFrame = null;
+    }
+    localObject = this.videoOutput;
+    if (localObject != null)
+    {
+      ((VideoOutput)localObject).release();
       this.videoOutput = null;
     }
-    if (this.audioReader != null)
+    localObject = this.audioReader;
+    if (localObject != null)
     {
-      this.audioReader.release();
+      ((AudioOutput)localObject).release();
       this.audioReader = null;
     }
-    if (this.cameraController != null)
+    localObject = this.cameraController;
+    if (localObject != null)
     {
-      this.cameraController.release();
+      ((CameraController)localObject).release();
       this.cameraController = null;
     }
-    if (this.lightEngine != null)
+    localObject = this.lightEngine;
+    if (localObject != null)
     {
-      this.lightEngine.release();
+      ((LightEngine)localObject).release();
       this.lightEngine = null;
     }
-    if (this.lightSurface != null)
+    localObject = this.lightSurface;
+    if (localObject != null)
     {
-      this.lightSurface.release();
+      ((LightSurface)localObject).release();
       this.lightSurface = null;
     }
     this.cameraConfig = null;
@@ -221,63 +270,72 @@ public class LightNode
   
   public void cmShowSetKapuAnimation(String paramString, CameraController.CmShowCallback paramCmShowCallback)
   {
-    if (this.cameraController != null) {
-      this.cameraController.setKapuAnimation(paramString, paramCmShowCallback);
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.setKapuAnimation(paramString, paramCmShowCallback);
     }
   }
   
   public void cmShowSetKapuCameraViewType(CameraController.CameraViewType paramCameraViewType)
   {
-    if (this.cameraController != null) {
-      this.cameraController.setKapuCameraViewType(paramCameraViewType);
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.setKapuCameraViewType(paramCameraViewType);
     }
   }
   
   public void cmShowSetKapuDisplayType(CameraController.DisplayType paramDisplayType)
   {
-    if (this.cameraController != null) {
-      this.cameraController.setKapuDisplayType(paramDisplayType);
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.setKapuDisplayType(paramDisplayType);
     }
   }
   
   public void cmShowSetKapuModel(HashMap<String, String> paramHashMap, String paramString, CameraController.CmShowCallback paramCmShowCallback)
   {
-    if (this.cameraController != null) {
-      this.cameraController.setKapuModel(paramHashMap, paramString, paramCmShowCallback);
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.setKapuModel(paramHashMap, paramString, paramCmShowCallback);
     }
   }
   
   public void cmShowUpdateKapuMorph(CameraController.MorphType paramMorphType)
   {
-    if (this.cameraController != null) {
-      this.cameraController.updateKapuMorph(paramMorphType);
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.updateKapuMorph(paramMorphType);
     }
   }
   
   public void cmShowUpdateTouchRotate(float[] paramArrayOfFloat)
   {
-    if (this.cameraController != null) {
-      this.cameraController.updateTouchRotate(paramArrayOfFloat);
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.updateTouchRotate(paramArrayOfFloat);
     }
   }
   
   public void cmShowUpdateTouchScale(float paramFloat)
   {
-    if (this.cameraController != null) {
-      this.cameraController.updateTouchScale(paramFloat);
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.updateTouchScale(paramFloat);
     }
   }
   
   public void cmShowUpdateViewParams(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat)
   {
-    if (this.cameraController != null) {
-      this.cameraController.updateViewParams(paramArrayOfFloat1, paramArrayOfFloat2, paramFloat);
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.updateViewParams(paramArrayOfFloat1, paramArrayOfFloat2, paramFloat);
     }
   }
   
   public boolean currentMaterialIsCyberpunk()
   {
-    return (this.cameraController != null) && (this.cameraController.needCyberpunkStyleAbility());
+    CameraController localCameraController = this.cameraController;
+    return (localCameraController != null) && (localCameraController.needCyberpunkStyleAbility());
   }
   
   public String filterName()
@@ -287,8 +345,9 @@ public class LightNode
   
   public void freeCache()
   {
-    if (this.lightSurface != null) {
-      this.lightSurface.freeCache();
+    LightSurface localLightSurface = this.lightSurface;
+    if (localLightSurface != null) {
+      localLightSurface.freeCache();
     }
   }
   
@@ -304,18 +363,20 @@ public class LightNode
   
   public List<WMElement> getEditableWMElement()
   {
-    if (this.cameraController != null) {
-      return this.cameraController.getEditableWMElement();
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      return localCameraController.getEditableWMElement();
     }
     return null;
   }
   
   public PTFaceAttr getPtFaceAttr()
   {
-    if (this.cameraConfig == null) {
+    CameraConfig localCameraConfig = this.cameraConfig;
+    if (localCameraConfig == null) {
       return null;
     }
-    return TransformUtils.lightFaceToPTFaceAttr(this.cameraConfig.getFaceData());
+    return TransformUtils.lightFaceToPTFaceAttr(localCameraConfig.getFaceData());
   }
   
   public void initPreviewSize(int paramInt1, int paramInt2)
@@ -326,10 +387,21 @@ public class LightNode
   
   public boolean isAbilityOn(String paramString)
   {
-    if ((this.cameraConfig == null) || (this.cameraConfig.getConfigData() == null) || (this.cameraConfig.getConfigData().get(paramString) == null)) {
-      return false;
+    CameraConfig localCameraConfig = this.cameraConfig;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localCameraConfig != null)
+    {
+      bool1 = bool2;
+      if (localCameraConfig.getConfigData() != null)
+      {
+        if (this.cameraConfig.getConfigData().get(paramString) == null) {
+          return false;
+        }
+        bool1 = Boolean.valueOf((String)this.cameraConfig.getConfigData().get(paramString)).booleanValue();
+      }
     }
-    return Boolean.valueOf((String)this.cameraConfig.getConfigData().get(paramString)).booleanValue();
+    return bool1;
   }
   
   public void onPause() {}
@@ -338,30 +410,55 @@ public class LightNode
   
   public Frame render(Frame paramFrame)
   {
-    this.cameraConfig.setCameraTexture(paramFrame.getTextureId(), this.previewWidth, this.previewHeight, CameraConfig.DeviceCameraOrientation.ROTATION_0, this.inputOrigin);
-    if (this.mAutoTest) {}
-    for (long l = this.mFrameIndex * 80000;; l = (System.nanoTime() - this.startTime) / 1000L)
+    int j = paramFrame.getTextureId();
+    int i = j;
+    if (this.isPicNeedFlip)
     {
-      if (this.videoOutput != null) {
-        this.videoOutput.readSample(l);
+      BaseFilter localBaseFilter = this.mCopyFilter;
+      if (localBaseFilter != null)
+      {
+        localBaseFilter.setRotationAndFlip(0, 0, 1);
+        this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), this.previewWidth, this.previewHeight, -1, 0.0D, this.mCopyFrame);
       }
-      int i = this.outTexs[0];
-      GLES20.glDisable(3042);
-      GLES30.glBindVertexArray(0);
-      GLES30.glBindBuffer(34962, 0);
-      GLES30.glBindBuffer(34963, 0);
-      paramFrame = new Frame();
-      paramFrame.setSizedTexture(this.outTexs[0], this.previewWidth, this.previewHeight);
-      return paramFrame;
+      paramFrame = this.mCopyFrame;
+      i = j;
+      if (paramFrame != null) {
+        i = paramFrame.getTextureId();
+      }
     }
+    this.cameraConfig.setCameraTexture(i, this.previewWidth, this.previewHeight, CameraConfig.DeviceCameraOrientation.ROTATION_0, this.inputOrigin);
+    long l;
+    if (this.mAutoTest) {
+      l = this.mFrameIndex * 80000;
+    } else {
+      l = (System.nanoTime() - this.startTime) / 1000L;
+    }
+    paramFrame = this.videoOutput;
+    if (paramFrame != null) {
+      paramFrame.readSample(l);
+    }
+    i = this.outTexs[0];
+    GLES20.glDisable(3042);
+    GLES30.glBindVertexArray(0);
+    GLES30.glBindBuffer(34962, 0);
+    GLES30.glBindBuffer(34963, 0);
+    paramFrame = new Frame();
+    paramFrame.setSizedTexture(this.outTexs[0], this.previewWidth, this.previewHeight);
+    return paramFrame;
   }
   
   public void resetAsset()
   {
-    if (this.cameraController != null)
+    Object localObject = this.cameraController;
+    if (localObject != null)
     {
-      this.cameraController.resetAsset();
-      LogUtils.d("LightNode", "[resetAsset] success, start time(" + this.startTime + ") is reset to " + System.nanoTime());
+      ((CameraController)localObject).resetAsset();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[resetAsset] success, start time(");
+      ((StringBuilder)localObject).append(this.startTime);
+      ((StringBuilder)localObject).append(") is reset to ");
+      ((StringBuilder)localObject).append(System.nanoTime());
+      LogUtils.d("LightNode", ((StringBuilder)localObject).toString());
       this.startTime = System.nanoTime();
       this.audioReader.seekTo(0L);
     }
@@ -375,6 +472,29 @@ public class LightNode
   public void setAutoTest(boolean paramBoolean)
   {
     this.mAutoTest = paramBoolean;
+  }
+  
+  public void setCustomMaterial(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Object localObject = this.asset;
+      if (localObject == null) {
+        return;
+      }
+      localObject = ((LightAsset)localObject).materialConfigs();
+      if (localObject != null)
+      {
+        if (localObject.length < 1) {
+          return;
+        }
+        localObject = localObject[0];
+        PhotoClip localPhotoClip = new PhotoClip();
+        localPhotoClip.path = paramString;
+        localPhotoClip.duration = 0L;
+        this.cameraController.setMaterialClipAssets(((MaterialConfig)localObject).key, new PhotoClip[] { localPhotoClip });
+      }
+    }
   }
   
   public void setExternalRenderCallback(ExternalRenderCallback paramExternalRenderCallback)
@@ -432,6 +552,11 @@ public class LightNode
     this.mWatermarkClickListener = paramIOnClickWatermarkListener;
   }
   
+  public void setPicNeedFlip(boolean paramBoolean)
+  {
+    this.isPicNeedFlip = paramBoolean;
+  }
+  
   public void setPresetData(String paramString1, String paramString2)
   {
     if ((paramString1 != null) && (this.cameraController != null))
@@ -444,83 +569,108 @@ public class LightNode
   
   public void setPtFaceAttr(PTFaceAttr paramPTFaceAttr)
   {
-    if (this.cameraConfig == null) {
+    CameraConfig localCameraConfig = this.cameraConfig;
+    if (localCameraConfig == null) {
       return;
     }
-    this.cameraConfig.setFaceData(TransformUtils.ptFaceAttrToLightFaceData(paramPTFaceAttr));
+    localCameraConfig.setFaceData(TransformUtils.ptFaceAttrToLightFaceData(paramPTFaceAttr));
   }
   
   public void setSensorEvent(SensorEvent paramSensorEvent)
   {
-    if (paramSensorEvent == null) {
-      LogUtils.e("LightNode", "[setSensorEvent]: event is null ");
-    }
-    do
+    if (paramSensorEvent == null)
     {
+      LogUtils.e("LightNode", "[setSensorEvent]: event is null ");
       return;
-      if (this.cameraConfig != null) {
-        break;
+    }
+    if (this.cameraConfig == null)
+    {
+      if (this.sensorEvent != paramSensorEvent)
+      {
+        this.sensorEvent = paramSensorEvent;
+        this.orientationChanged = true;
       }
-    } while (this.sensorEvent == paramSensorEvent);
-    this.sensorEvent = paramSensorEvent;
-    this.orientationChanged = true;
-    return;
-    this.sensorEvent = paramSensorEvent;
-    LogUtils.d("LightNode", "[setSensorEvent]: x=" + (int)this.sensorEvent.values[0] + " y=" + (int)this.sensorEvent.values[1]);
-    this.cameraConfig.onSensorOrientationChanged((int)this.sensorEvent.values[0], (int)this.sensorEvent.values[1]);
+    }
+    else
+    {
+      this.sensorEvent = paramSensorEvent;
+      paramSensorEvent = new StringBuilder();
+      paramSensorEvent.append("[setSensorEvent]: x=");
+      paramSensorEvent.append((int)this.sensorEvent.values[0]);
+      paramSensorEvent.append(" y=");
+      paramSensorEvent.append((int)this.sensorEvent.values[1]);
+      LogUtils.d("LightNode", paramSensorEvent.toString());
+      this.cameraConfig.onSensorOrientationChanged((int)this.sensorEvent.values[0], (int)this.sensorEvent.values[1]);
+    }
   }
   
   public void setSyncMode(boolean paramBoolean)
   {
-    if (this.cameraConfig != null) {
-      this.cameraConfig.setSyncMode(paramBoolean);
+    CameraConfig localCameraConfig = this.cameraConfig;
+    if (localCameraConfig != null) {
+      localCameraConfig.setSyncMode(paramBoolean);
     }
   }
   
   public void switchSegmentFastMode(boolean paramBoolean)
   {
-    if (this.cameraController != null) {
-      this.cameraController.setSegmentationFastMode(paramBoolean);
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.setSegmentationFastMode(paramBoolean);
     }
   }
   
   public void updateAsset(String paramString)
   {
-    if ((paramString == null) || (paramString.equals(this.assetPath))) {}
-    do
+    if (paramString != null)
     {
-      return;
+      if (paramString.equals(this.assetPath)) {
+        return;
+      }
       this.assetPath = paramString;
-      if (this.asset != null)
+      Object localObject = this.asset;
+      if (localObject != null)
       {
-        this.asset.nativeFinalize();
+        ((LightAsset)localObject).nativeFinalize();
         this.asset = null;
       }
-      LogUtils.i("LightNode", "LightAsset Path: " + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("LightAsset Path: ");
+      ((StringBuilder)localObject).append(paramString);
+      LogUtils.i("LightNode", ((StringBuilder)localObject).toString());
       this.asset = LightAsset.Load(paramString, 0);
-    } while (this.lightEngine == null);
-    this.cameraController = this.lightEngine.setAssetForCamera(this.asset);
-    this.startTime = System.nanoTime();
+      paramString = this.lightEngine;
+      if (paramString != null)
+      {
+        this.cameraController = paramString.setAssetForCamera(this.asset);
+        this.startTime = System.nanoTime();
+      }
+    }
   }
   
   public void updateAsset(LightAsset paramLightAsset)
   {
-    if ((paramLightAsset == null) || (this.asset == paramLightAsset))
+    if ((paramLightAsset != null) && (this.asset != paramLightAsset))
     {
-      LogUtils.d("LightNode", "[updateAsset] lightAsset is null or already set, return");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[configFilters][updateAsset] 更新素材:");
+      ((StringBuilder)localObject).append(paramLightAsset.toString());
+      LogUtils.d("LightNode", ((StringBuilder)localObject).toString());
+      localObject = this.asset;
+      if (localObject != null)
+      {
+        ((LightAsset)localObject).nativeFinalize();
+        this.asset = null;
+      }
+      this.asset = paramLightAsset;
+      paramLightAsset = this.lightEngine;
+      if (paramLightAsset != null) {
+        this.cameraController = paramLightAsset.setAssetForCamera(this.asset);
+      }
+      this.startTime = System.nanoTime();
       return;
     }
-    LogUtils.d("LightNode", "[configFilters][updateAsset] 更新素材:" + paramLightAsset.toString());
-    if (this.asset != null)
-    {
-      this.asset.nativeFinalize();
-      this.asset = null;
-    }
-    this.asset = paramLightAsset;
-    if (this.lightEngine != null) {
-      this.cameraController = this.lightEngine.setAssetForCamera(this.asset);
-    }
-    this.startTime = System.nanoTime();
+    LogUtils.d("LightNode", "[updateAsset] lightAsset is null or already set, return");
   }
   
   public void updateCameraConfigData(String paramString1, String paramString2)
@@ -535,25 +685,90 @@ public class LightNode
   
   public void updateCameraConfigData(Map<String, String> paramMap)
   {
-    if ((paramMap != null) && (this.cameraConfig != null)) {
-      this.cameraConfig.setConfigData(paramMap);
+    if (paramMap != null)
+    {
+      CameraConfig localCameraConfig = this.cameraConfig;
+      if (localCameraConfig != null) {
+        localCameraConfig.setConfigData(paramMap);
+      }
+    }
+  }
+  
+  public void updateCameraTextureTimestamp(long paramLong)
+  {
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.updateCameraTextureTimestamp(paramLong);
+    }
+  }
+  
+  public void updateDeviceCameraConfig(DeviceCameraConfig paramDeviceCameraConfig)
+  {
+    if (paramDeviceCameraConfig == null) {
+      return;
+    }
+    int j = 0;
+    if (this.deviceCameraConfig == null) {
+      this.deviceCameraConfig = new DeviceCameraConfig();
+    }
+    int i = j;
+    CameraConfig localCameraConfig;
+    if (paramDeviceCameraConfig.cameraHorizontalFov != this.deviceCameraConfig.cameraHorizontalFov)
+    {
+      localCameraConfig = this.cameraConfig;
+      i = j;
+      if (localCameraConfig != null)
+      {
+        localCameraConfig.setHorizontalFov(paramDeviceCameraConfig.cameraHorizontalFov);
+        i = 1;
+        this.deviceCameraConfig.cameraHorizontalFov = paramDeviceCameraConfig.cameraHorizontalFov;
+      }
+    }
+    if (i != 0)
+    {
+      paramDeviceCameraConfig = this.lightEngine;
+      if (paramDeviceCameraConfig != null)
+      {
+        localCameraConfig = this.cameraConfig;
+        if (localCameraConfig != null) {
+          paramDeviceCameraConfig.setConfig(localCameraConfig);
+        }
+      }
     }
   }
   
   public void updatePreviewSize(int paramInt1, int paramInt2)
   {
     initPreviewSize(paramInt1, paramInt2);
-    if (this.cameraConfig != null) {
-      this.cameraConfig.setRenderSize(paramInt1, paramInt2);
+    Object localObject = this.cameraConfig;
+    if (localObject != null) {
+      ((CameraConfig)localObject).setRenderSize(paramInt1, paramInt2);
     }
-    if (this.lightSurface != null) {
-      this.lightSurface.updateSize(paramInt1, paramInt2);
+    localObject = this.lightSurface;
+    if (localObject != null) {
+      ((LightSurface)localObject).updateSize(paramInt1, paramInt2);
+    }
+  }
+  
+  public void updateTouchEvent(int paramInt1, long paramLong1, long paramLong2, ArrayList<PointF> paramArrayList, int paramInt2, int paramInt3)
+  {
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.updateTouchEvent(paramInt1, paramLong1, paramLong2, paramArrayList, paramInt2, paramInt3);
+    }
+  }
+  
+  public void updateVoiceDecibel(float paramFloat)
+  {
+    CameraController localCameraController = this.cameraController;
+    if (localCameraController != null) {
+      localCameraController.updateVoiceDecibel(paramFloat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.LightNode
  * JD-Core Version:    0.7.0.1
  */

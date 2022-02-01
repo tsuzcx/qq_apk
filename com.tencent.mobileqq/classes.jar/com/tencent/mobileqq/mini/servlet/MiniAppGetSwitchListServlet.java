@@ -29,74 +29,66 @@ public class MiniAppGetSwitchListServlet
     if (QLog.isColorLevel()) {
       QLog.d("MiniAppGetSwitchListServlet", 2, "onReceive.");
     }
-    localBundle = new Bundle();
-    for (;;)
+    Bundle localBundle = new Bundle();
+    try
     {
-      try
+      localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
+      if (paramFromServiceMsg != null)
       {
-        localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-        if (paramFromServiceMsg == null) {
-          continue;
-        }
-        localStQWebRsp = new PROTOCAL.StQWebRsp();
+        PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
         localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
-        if (!paramFromServiceMsg.isSuccess()) {
-          continue;
+        if (paramFromServiceMsg.isSuccess())
+        {
+          localBundle.putParcelable("getSwitchList", paramFromServiceMsg);
+          localBundle.putLong("retCode", localStQWebRsp.retCode.get());
+          localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+          notifyObserver(paramIntent, 1049, true, localBundle, MiniAppObserver.class);
         }
-        localBundle.putParcelable("getSwitchList", paramFromServiceMsg);
-        localBundle.putLong("retCode", localStQWebRsp.retCode.get());
-        localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        notifyObserver(paramIntent, 1049, true, localBundle, MiniAppObserver.class);
+        else
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("onReceive. MiniAppGetSwitchListServlet rsp = ");
+            localStringBuilder.append(localStQWebRsp);
+            QLog.d("MiniAppGetSwitchListServlet", 2, localStringBuilder.toString());
+          }
+          notifyObserver(paramIntent, 1049, false, localBundle, MiniAppObserver.class);
+        }
       }
-      catch (Throwable localThrowable)
+      else
       {
-        PROTOCAL.StQWebRsp localStQWebRsp;
-        QLog.e("MiniAppGetSwitchListServlet", 1, localThrowable + "onReceive error");
-        localBundle.putInt("key_index", this.index);
-        notifyObserver(paramIntent, 1049, false, localBundle, MiniAppObserver.class);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniAppGetSwitchListServlet", 2, "onReceive. inform MiniAppGetSwitchListServlet resultcode fail.");
         }
-        QLog.d("MiniAppGetSwitchListServlet", 2, "onReceive. inform MiniAppGetSwitchListServlet resultcode fail.");
         notifyObserver(paramIntent, 1049, false, localBundle, MiniAppObserver.class);
-        continue;
       }
-      doReport(paramIntent, paramFromServiceMsg);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppGetSwitchListServlet", 2, "onReceive. MiniAppGetSwitchListServlet rsp = " + localStQWebRsp);
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localThrowable);
+      localStringBuilder.append("onReceive error");
+      QLog.e("MiniAppGetSwitchListServlet", 1, localStringBuilder.toString());
+      localBundle.putInt("key_index", this.index);
       notifyObserver(paramIntent, 1049, false, localBundle, MiniAppObserver.class);
     }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     this.index = paramIntent.getIntExtra("key_index", -1);
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    Object localObject = null;
-    if (arrayOfByte != null) {
+    byte[] arrayOfByte1 = paramIntent.getByteArrayExtra("key_ext");
+    if (arrayOfByte1 != null)
+    {
       localObject = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte);
-      arrayOfByte = new MiniAppGetSwitchListRequest((COMM.StCommonExt)localObject).encode(paramIntent, this.index, getTraceId());
-      localObject = arrayOfByte;
-      if (arrayOfByte == null) {
-        localObject = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte1);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetSwitchList");
-      paramPacket.putSendData(WupUtil.a((byte[])localObject));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MiniAppGetSwitchListServlet", 2, "onSend. mergeFrom extData exception!");
@@ -104,11 +96,24 @@ public class MiniAppGetSwitchListServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    else
+    {
+      localObject = null;
+    }
+    byte[] arrayOfByte2 = new MiniAppGetSwitchListRequest((COMM.StCommonExt)localObject).encode(paramIntent, this.index, getTraceId());
+    Object localObject = arrayOfByte2;
+    if (arrayOfByte2 == null) {
+      localObject = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetSwitchList");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetSwitchListServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -33,6 +33,7 @@ public final class oidb_cmd0xad6$ArticleCommonInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -47,12 +48,12 @@ public final class oidb_cmd0xad6$ArticleCommonInfo
     ByteStringMicro localByteStringMicro12 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro13 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro14 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 98, 104, 114, 120, 130, 138, 146, 154, 162, 168 }, new String[] { "bytes_row_key", "bytes_title", "bytes_desc", "bytes_account_name", "bytes_account_icon", "bytes_account_author", "bytes_date", "msg_cover", "bytes_share_words", "uint32_article_flag", "bytes_account_desc", "uint64_public_uin", "bytes_original_url", "bytes_tags", "bytes_article_id", "bytes_proteus_json_data", "bytes_article_url", "uint32_source" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, null, localByteStringMicro8, Integer.valueOf(0), localByteStringMicro9, Long.valueOf(0L), localByteStringMicro10, localByteStringMicro11, localByteStringMicro12, localByteStringMicro13, localByteStringMicro14, Integer.valueOf(0) }, ArticleCommonInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 98, 104, 114, 120, 130, 138, 146, 154, 162, 168 }, new String[] { "bytes_row_key", "bytes_title", "bytes_desc", "bytes_account_name", "bytes_account_icon", "bytes_account_author", "bytes_date", "msg_cover", "bytes_share_words", "uint32_article_flag", "bytes_account_desc", "uint64_public_uin", "bytes_original_url", "bytes_tags", "bytes_article_id", "bytes_proteus_json_data", "bytes_article_url", "uint32_source" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, null, localByteStringMicro8, localInteger, localByteStringMicro9, Long.valueOf(0L), localByteStringMicro10, localByteStringMicro11, localByteStringMicro12, localByteStringMicro13, localByteStringMicro14, localInteger }, ArticleCommonInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleCommonInfo
  * JD-Core Version:    0.7.0.1
  */

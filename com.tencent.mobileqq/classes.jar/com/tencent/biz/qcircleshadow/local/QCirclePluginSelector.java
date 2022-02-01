@@ -13,7 +13,6 @@ import com.tencent.biz.qcircleshadow.local.pluginselector.QCirclePluginSelectorS
 import com.tencent.biz.qcircleshadow.local.pluginselector.QCirclePluginSelectorWnsProcess;
 import com.tencent.biz.qcircleshadow.remoteCheck.QCirclePluginInfo;
 import com.tencent.biz.qcircleshadow.remoteCheck.QCirclePluginManager;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.config.api.IAppSettingApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -37,15 +36,16 @@ public class QCirclePluginSelector
   
   public static QCirclePluginSelector a()
   {
-    if (jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginSelector == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginSelector == null) {
-        jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginSelector = new QCirclePluginSelector();
+    if (jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginSelector == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginSelector == null) {
+          jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginSelector = new QCirclePluginSelector();
+        }
       }
-      return jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginSelector;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginSelector;
   }
   
   private QCircleSampleInfo a(Future<QCircleSampleInfo> paramFuture)
@@ -61,28 +61,32 @@ public class QCirclePluginSelector
     catch (Exception paramFuture)
     {
       QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_exception_msg").setExt1(paramFuture.getMessage()));
-      QLog.i("QCIRCLE_PLUGIN", 1, "createMangerUpdate():exception:" + paramFuture.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createMangerUpdate():exception:");
+      localStringBuilder.append(paramFuture.getMessage());
+      QLog.i("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
     }
     return null;
   }
   
   private String a(Future<QCircleSampleInfo> paramFuture)
   {
-    if (paramFuture != null) {
-      try
-      {
-        if (paramFuture.get() != null)
-        {
-          paramFuture = ((QCircleSampleInfo)paramFuture.get()).toString();
-          return paramFuture;
-        }
-      }
-      catch (Exception paramFuture)
-      {
-        QLog.i("QCIRCLE_PLUGIN", 1, " generateInfo failed");
+    if (paramFuture != null) {}
+    try
+    {
+      if (paramFuture.get() == null) {
         return "";
       }
+      paramFuture = ((QCircleSampleInfo)paramFuture.get()).toString();
+      return paramFuture;
     }
+    catch (Exception paramFuture)
+    {
+      break label34;
+    }
+    return "";
+    label34:
+    QLog.i("QCIRCLE_PLUGIN", 1, " generateInfo failed");
     return "";
   }
   
@@ -102,7 +106,10 @@ public class QCirclePluginSelector
   private boolean a()
   {
     boolean bool = BaseApplication.getContext().getSharedPreferences("QCIRCLE_PLUGIN_SHARE", 0).getBoolean("qcircle_is_net_open", false);
-    QLog.i("QCIRCLE_PLUGIN", 1, "isSettingOpen():openNet:" + bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isSettingOpen():openNet:");
+    localStringBuilder.append(bool);
+    QLog.i("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
     return bool;
   }
   
@@ -144,9 +151,6 @@ public class QCirclePluginSelector
   private void d()
   {
     QCirclePluginInfo localQCirclePluginInfo = new QCirclePluginInfo();
-    localQCirclePluginInfo.version = -2;
-    localQCirclePluginInfo.pluginZipPath = (AppConstants.SDCARD_ROOT + "/" + "qcircle-plugin.jpg");
-    localQCirclePluginInfo.pluginManagerPath = (AppConstants.SDCARD_ROOT + "/" + "qcircle-pluginmanager.jpg");
     this.b = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new QCircleDebugPluginParse("Q_CIRCLE_PLUGIN_TEST", localQCirclePluginInfo));
   }
   
@@ -170,7 +174,10 @@ public class QCirclePluginSelector
     }
     catch (Exception localException)
     {
-      QLog.i("QCIRCLE_PLUGIN", 1, "getMangerUpdate#:exception:" + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getMangerUpdate#:exception:");
+      localStringBuilder.append(localException.getMessage());
+      QLog.i("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
     }
     return null;
   }
@@ -187,8 +194,10 @@ public class QCirclePluginSelector
     }
     catch (Exception localException)
     {
-      QLog.i("QCIRCLE_PLUGIN", 1, " getInitInfo failed");
+      label55:
+      break label55;
     }
+    QLog.i("QCIRCLE_PLUGIN", 1, " getInitInfo failed");
     return localArrayList;
   }
   
@@ -203,7 +212,7 @@ public class QCirclePluginSelector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCirclePluginSelector
  * JD-Core Version:    0.7.0.1
  */

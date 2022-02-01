@@ -16,20 +16,20 @@ class Conversation$DragChangedListener
   
   public void a(int paramInt, List<RecentBaseData> paramList) {}
   
-  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
+  public void onChange(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
     if (paramDragFrameLayout.a() == -1)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.b.sendEmptyMessage(10);
-      FrameHelperActivity.c(true);
+      FrameHelperActivity.b(true);
       return;
     }
-    FrameHelperActivity.c(false);
+    FrameHelperActivity.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.DragChangedListener
  * JD-Core Version:    0.7.0.1
  */

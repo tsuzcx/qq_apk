@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.agent.util.SSOLog;
 
 public class OpenSdkConfProcessor
   extends IQConfigProcessor<OpenSdkConfBean>
@@ -18,12 +18,14 @@ public class OpenSdkConfProcessor
   public static boolean a()
   {
     OpenSdkConfBean localOpenSdkConfBean = a();
-    if (localOpenSdkConfBean != null) {}
-    for (boolean bool = localOpenSdkConfBean.b();; bool = false)
-    {
-      QLog.d("OpenSdkConfProcessor", 1, new Object[] { "isUseThirdTransformPkgName, useThirdTransformPkgName = ", Boolean.valueOf(bool) });
-      return bool;
+    boolean bool;
+    if (localOpenSdkConfBean != null) {
+      bool = localOpenSdkConfBean.b();
+    } else {
+      bool = false;
     }
+    SSOLog.a("OpenSdkConfProcessor", new Object[] { "isUseThirdTransformPkgName, useThirdTransformPkgName = ", Boolean.valueOf(bool) });
+    return bool;
   }
   
   @NonNull
@@ -35,9 +37,7 @@ public class OpenSdkConfProcessor
   @Nullable
   public OpenSdkConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
-    {
-      new OpenSdkConfBean();
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
       return OpenSdkConfBean.a(paramArrayOfQConfItem);
     }
     return null;
@@ -45,9 +45,15 @@ public class OpenSdkConfProcessor
   
   public void a(OpenSdkConfBean paramOpenSdkConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenSdkConfProcessor", 2, "onUpdate " + paramOpenSdkConfBean.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onUpdate ");
+    if (paramOpenSdkConfBean == null) {
+      paramOpenSdkConfBean = "";
+    } else {
+      paramOpenSdkConfBean = paramOpenSdkConfBean.toString();
     }
+    localStringBuilder.append(paramOpenSdkConfBean);
+    SSOLog.a("OpenSdkConfProcessor", localStringBuilder.toString());
   }
   
   public Class<OpenSdkConfBean> clazz()
@@ -84,7 +90,7 @@ public class OpenSdkConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkConfProcessor
  * JD-Core Version:    0.7.0.1
  */

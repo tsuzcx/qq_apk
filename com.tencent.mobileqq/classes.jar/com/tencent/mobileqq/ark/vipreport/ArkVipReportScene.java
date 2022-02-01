@@ -28,39 +28,41 @@ public class ArkVipReportScene
     {
       try
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+        String str2 = "";
+        if (!bool)
         {
           Object localObject = this.jdField_a_of_type_JavaLangString;
           localJSONObject.put("uin", localObject);
           if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-            break label285;
+            break label326;
           }
           localObject = this.jdField_b_of_type_JavaLangString;
           localJSONObject.put("phone", localObject);
           if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-            break label291;
+            break label332;
           }
           localObject = this.jdField_c_of_type_JavaLangString;
           localJSONObject.put("os", localObject);
           if (TextUtils.isEmpty(this.d)) {
-            break label297;
+            break label338;
           }
           localObject = this.d;
           localJSONObject.put("qqver", localObject);
           if (TextUtils.isEmpty(this.e)) {
-            break label303;
+            break label344;
           }
           localObject = this.e;
           localJSONObject.put("scene", localObject);
           if (TextUtils.isEmpty(this.f)) {
-            break label309;
+            break label350;
           }
           localObject = this.f;
           localJSONObject.put("startEvt", localObject);
-          if (TextUtils.isEmpty(this.g)) {
-            break label315;
+          localObject = str2;
+          if (!TextUtils.isEmpty(this.g)) {
+            localObject = this.g;
           }
-          localObject = this.g;
           localJSONObject.put("endEvt", localObject);
           localJSONObject.put("startTime", this.jdField_a_of_type_Long);
           localJSONObject.put("endTime", this.jdField_b_of_type_Long);
@@ -85,31 +87,28 @@ public class ArkVipReportScene
         QLog.e("ArkVipReportScene", 1, "getJsonObject()", localJSONException);
         return localJSONObject;
       }
-      String str = "";
+      String str1 = "";
       continue;
-      label285:
-      str = "";
+      label326:
+      str1 = "";
       continue;
-      label291:
-      str = "";
+      label332:
+      str1 = "";
       continue;
-      label297:
-      str = "";
+      label338:
+      str1 = "";
       continue;
-      label303:
-      str = "";
+      label344:
+      str1 = "";
       continue;
-      label309:
-      str = "";
-      continue;
-      label315:
-      str = "";
+      label350:
+      str1 = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.vipreport.ArkVipReportScene
  * JD-Core Version:    0.7.0.1
  */

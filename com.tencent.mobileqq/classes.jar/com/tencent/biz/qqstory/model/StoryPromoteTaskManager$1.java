@@ -20,24 +20,25 @@ class StoryPromoteTaskManager$1
   
   public void a(@NonNull GetPromoteTaskRequest paramGetPromoteTaskRequest, @Nullable GetPromoteTaskRequest.GetPromoteTaskResponse paramGetPromoteTaskResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramGetPromoteTaskResponse == null) {
-      SLog.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramGetPromoteTaskResponse });
-    }
-    do
+    if (paramGetPromoteTaskResponse == null)
     {
+      SLog.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramGetPromoteTaskResponse });
       return;
-      if (paramErrorMessage.errorCode == 15000)
-      {
-        SLog.a("StoryPromoteTaskManager", "onCmdRespond() no change of the request %s", paramGetPromoteTaskResponse);
-        this.a.jdField_a_of_type_Long = paramGetPromoteTaskResponse.a.uint64_expire_time.get();
-        return;
-      }
-      if (paramErrorMessage.isFail())
-      {
-        SLog.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramGetPromoteTaskResponse });
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Boolean);
+    }
+    if (paramErrorMessage.errorCode == 15000)
+    {
+      SLog.a("StoryPromoteTaskManager", "onCmdRespond() no change of the request %s", paramGetPromoteTaskResponse);
+      this.a.jdField_a_of_type_Long = paramGetPromoteTaskResponse.a.uint64_expire_time.get();
+      return;
+    }
+    if (paramErrorMessage.isFail())
+    {
+      SLog.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramGetPromoteTaskResponse });
+      return;
+    }
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
     this.a.jdField_a_of_type_JavaLangString = paramGetPromoteTaskResponse.a.bytes_cookie.get().toStringUtf8();
     this.a.jdField_a_of_type_Long = paramGetPromoteTaskResponse.a.uint64_expire_time.get();
     this.a.a();
@@ -53,7 +54,7 @@ class StoryPromoteTaskManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryPromoteTaskManager.1
  * JD-Core Version:    0.7.0.1
  */

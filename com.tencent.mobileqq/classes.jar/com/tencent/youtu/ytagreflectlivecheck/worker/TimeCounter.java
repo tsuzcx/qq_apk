@@ -48,9 +48,14 @@ public class TimeCounter
   public static String printAll()
   {
     Iterator localIterator = allMap.keySet().iterator();
-    String str2;
-    for (String str1 = ""; localIterator.hasNext(); str1 = str1 + "\n" + ((TimeCounter)allMap.get(str2)).print()) {
-      str2 = (String)localIterator.next();
+    StringBuilder localStringBuilder;
+    for (String str1 = ""; localIterator.hasNext(); str1 = localStringBuilder.toString())
+    {
+      String str2 = (String)localIterator.next();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str1);
+      localStringBuilder.append("\n");
+      localStringBuilder.append(((TimeCounter)allMap.get(str2)).print());
     }
     return str1;
   }
@@ -67,36 +72,50 @@ public class TimeCounter
   
   public void end(boolean paramBoolean)
   {
-    float f = (float)(getCurrentTime() - this.beginTime) / 1000.0F;
-    this.sum += f;
+    float f1 = (float)(getCurrentTime() - this.beginTime) / 1000.0F;
+    this.sum += f1;
     this.count += 1;
-    this.average = (this.sum / this.count);
-    if (this.count == 1)
+    float f2 = this.sum;
+    int i = this.count;
+    this.average = (f2 / i);
+    if (i == 1)
     {
-      this.min = f;
-      this.max = f;
+      this.min = f1;
+      this.max = f1;
     }
-    for (;;)
+    else
     {
-      this.last = f;
-      if (paramBoolean) {
-        print();
+      if (f1 < this.min) {
+        this.min = f1;
       }
-      return;
-      if (f < this.min) {
-        this.min = f;
+      if (f1 > this.max) {
+        this.max = f1;
       }
-      if (f > this.max) {
-        this.max = f;
-      }
+    }
+    this.last = f1;
+    if (paramBoolean) {
+      print();
     }
   }
   
   public String print()
   {
-    String str = this.name + " count:" + this.count + " avg:" + this.average + "ms max:" + this.max + "ms min:" + this.min + "ms last:" + this.last + "ms";
-    Log.i(TAG, str);
-    return str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.name);
+    ((StringBuilder)localObject).append(" count:");
+    ((StringBuilder)localObject).append(this.count);
+    ((StringBuilder)localObject).append(" avg:");
+    ((StringBuilder)localObject).append(this.average);
+    ((StringBuilder)localObject).append("ms max:");
+    ((StringBuilder)localObject).append(this.max);
+    ((StringBuilder)localObject).append("ms min:");
+    ((StringBuilder)localObject).append(this.min);
+    ((StringBuilder)localObject).append("ms last:");
+    ((StringBuilder)localObject).append(this.last);
+    ((StringBuilder)localObject).append("ms");
+    localObject = ((StringBuilder)localObject).toString();
+    Log.i(TAG, (String)localObject);
+    return localObject;
   }
   
   public void reset()
@@ -111,7 +130,7 @@ public class TimeCounter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.worker.TimeCounter
  * JD-Core Version:    0.7.0.1
  */

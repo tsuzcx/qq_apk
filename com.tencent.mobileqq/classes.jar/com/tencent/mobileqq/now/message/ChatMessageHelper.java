@@ -26,18 +26,19 @@ public class ChatMessageHelper
   
   public static String a(MessageForArkApp paramMessageForArkApp)
   {
-    if ((paramMessageForArkApp == null) || (paramMessageForArkApp.ark_app_message == null) || (TextUtils.isEmpty(paramMessageForArkApp.ark_app_message.metaList))) {}
-    for (;;)
+    if ((paramMessageForArkApp != null) && (paramMessageForArkApp.ark_app_message != null))
     {
-      return "";
+      if (TextUtils.isEmpty(paramMessageForArkApp.ark_app_message.metaList)) {
+        return "";
+      }
       try
       {
         paramMessageForArkApp = new JSONObject(paramMessageForArkApp.ark_app_message.metaList);
-        if (!TextUtils.isEmpty(paramMessageForArkApp.optString("msgInfo")))
-        {
-          paramMessageForArkApp = new JSONObject(paramMessageForArkApp.optString("msgInfo")).optString("jump_url");
-          return paramMessageForArkApp;
+        if (TextUtils.isEmpty(paramMessageForArkApp.optString("msgInfo"))) {
+          return "";
         }
+        paramMessageForArkApp = new JSONObject(paramMessageForArkApp.optString("msgInfo")).optString("jump_url");
+        return paramMessageForArkApp;
       }
       catch (JSONException paramMessageForArkApp)
       {
@@ -61,10 +62,12 @@ public class ChatMessageHelper
         return "";
       }
       int i = paramChatMessage.indexOf("ad_id=");
-      if (paramChatMessage.length() < i + 12) {
+      int j = paramChatMessage.length();
+      int k = i + 12;
+      if (j < k) {
         return paramChatMessage.substring(i + 6);
       }
-      paramChatMessage = paramChatMessage.substring(i + 6, i + 12);
+      paramChatMessage = paramChatMessage.substring(i + 6, k);
       return paramChatMessage;
     }
     catch (JSONException paramChatMessage)
@@ -76,7 +79,7 @@ public class ChatMessageHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.ChatMessageHelper
  * JD-Core Version:    0.7.0.1
  */

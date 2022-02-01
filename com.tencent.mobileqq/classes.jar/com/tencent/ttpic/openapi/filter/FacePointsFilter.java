@@ -80,11 +80,12 @@ public class FacePointsFilter
   
   public void updatePointsVis(List<Float[]> paramList, int paramInt)
   {
-    if (CollectionUtils.isEmpty(paramList)) {}
-    while (paramList.size() <= paramInt) {
+    if (CollectionUtils.isEmpty(paramList)) {
       return;
     }
-    updatePointsVis(toFlatArray((Float[])paramList.get(paramInt)));
+    if (paramList.size() > paramInt) {
+      updatePointsVis(toFlatArray((Float[])paramList.get(paramInt)));
+    }
   }
   
   public void updatePointsVis(float[] paramArrayOfFloat)
@@ -97,12 +98,17 @@ public class FacePointsFilter
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
     addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
-    addParam(new UniformParam.Float2fParam("faceDetectImageSize", (float)(paramInt1 * paramDouble), (float)(paramInt2 * paramDouble)));
+    double d = paramInt1;
+    Double.isNaN(d);
+    float f = (float)(d * paramDouble);
+    d = paramInt2;
+    Double.isNaN(d);
+    addParam(new UniformParam.Float2fParam("faceDetectImageSize", f, (float)(d * paramDouble)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.FacePointsFilter
  * JD-Core Version:    0.7.0.1
  */

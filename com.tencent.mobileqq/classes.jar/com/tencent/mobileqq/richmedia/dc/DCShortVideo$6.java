@@ -19,16 +19,20 @@ class DCShortVideo$6
     localProgressivePlayData.f = this.f;
     localProgressivePlayData.g = this.g;
     localProgressivePlayData.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    DataReport.ReportTask localReportTask = new DataReport.ReportTask("actStreamingVideoPlay", localProgressivePlayData.a("actStreamingVideoPlay"));
-    DataReport.a().a(localReportTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("DCShortVideo", 2, "reportProgressivePlayData():" + localProgressivePlayData.toString());
+    Object localObject = new DataReport.ReportTask("actStreamingVideoPlay", localProgressivePlayData.a("actStreamingVideoPlay"));
+    DataReport.a().a((DataReport.ReportTask)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportProgressivePlayData():");
+      ((StringBuilder)localObject).append(localProgressivePlayData.toString());
+      QLog.d("DCShortVideo", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DCShortVideo.6
  * JD-Core Version:    0.7.0.1
  */

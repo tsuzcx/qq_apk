@@ -27,30 +27,37 @@ public class QuestionClassInfo
   
   public void a(QuestionClassInfo paramQuestionClassInfo)
   {
-    if (paramQuestionClassInfo == null) {}
-    do
-    {
+    if (paramQuestionClassInfo == null) {
       return;
-      this.jdField_a_of_type_Int = paramQuestionClassInfo.jdField_a_of_type_Int;
-    } while (paramQuestionClassInfo.jdField_a_of_type_JavaUtilArrayList == null);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramQuestionClassInfo.jdField_a_of_type_JavaUtilArrayList);
+    }
+    this.jdField_a_of_type_Int = paramQuestionClassInfo.jdField_a_of_type_Int;
+    paramQuestionClassInfo = paramQuestionClassInfo.jdField_a_of_type_JavaUtilArrayList;
+    if (paramQuestionClassInfo != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramQuestionClassInfo);
+    }
   }
   
   public final void a(AvGameList.QuestionClassInfo paramQuestionClassInfo)
   {
-    int j = 0;
     if (paramQuestionClassInfo == null) {
       return;
     }
-    if (paramQuestionClassInfo.game_type.has()) {}
-    for (int i = paramQuestionClassInfo.game_type.get();; i = 0)
+    boolean bool = paramQuestionClassInfo.game_type.has();
+    int j = 0;
+    int i;
+    if (bool) {
+      i = paramQuestionClassInfo.game_type.get();
+    } else {
+      i = 0;
+    }
+    this.jdField_a_of_type_Int = i;
+    paramQuestionClassInfo = paramQuestionClassInfo.question_class_list.get();
+    if (paramQuestionClassInfo != null)
     {
-      this.jdField_a_of_type_Int = i;
-      paramQuestionClassInfo = paramQuestionClassInfo.question_class_list.get();
-      if ((paramQuestionClassInfo == null) || (paramQuestionClassInfo.size() == 0)) {
-        break;
-      }
       i = j;
+      if (paramQuestionClassInfo.size() == 0) {
+        return;
+      }
       while (i < paramQuestionClassInfo.size())
       {
         AvGameList.QuestionClassInfoItem localQuestionClassInfoItem = (AvGameList.QuestionClassInfoItem)paramQuestionClassInfo.get(i);
@@ -59,21 +66,25 @@ public class QuestionClassInfo
         this.jdField_a_of_type_JavaUtilArrayList.add(localQuestionClassInfoItem1);
         i += 1;
       }
-      break;
     }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("typeSvr").append("=").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("questionClassListSize").append("=").append(this.jdField_a_of_type_JavaUtilArrayList.size());
+    localStringBuilder.append("typeSvr");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append("questionClassListSize");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.QuestionClassInfo
  * JD-Core Version:    0.7.0.1
  */

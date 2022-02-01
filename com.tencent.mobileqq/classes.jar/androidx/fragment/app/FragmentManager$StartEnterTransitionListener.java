@@ -24,27 +24,22 @@ class FragmentManager$StartEnterTransitionListener
   
   void completeTransaction()
   {
-    boolean bool1 = false;
-    if (this.mNumPostponed > 0) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (this.mNumPostponed > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    Iterator localIterator = this.mRecord.mManager.getFragments().iterator();
+    while (localIterator.hasNext())
     {
-      localObject1 = this.mRecord.mManager.getFragments().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (Fragment)((Iterator)localObject1).next();
-        ((Fragment)localObject2).setOnStartEnterTransitionListener(null);
-        if ((i != 0) && (((Fragment)localObject2).isPostponed())) {
-          ((Fragment)localObject2).startPostponedEnterTransition();
-        }
+      Fragment localFragment = (Fragment)localIterator.next();
+      localFragment.setOnStartEnterTransitionListener(null);
+      if ((i != 0) && (localFragment.isPostponed())) {
+        localFragment.startPostponedEnterTransition();
       }
     }
-    Object localObject1 = this.mRecord.mManager;
-    Object localObject2 = this.mRecord;
-    boolean bool2 = this.mIsBack;
-    if (i == 0) {
-      bool1 = true;
-    }
-    ((FragmentManager)localObject1).completeExecute((BackStackRecord)localObject2, bool2, bool1, true);
+    this.mRecord.mManager.completeExecute(this.mRecord, this.mIsBack, i ^ 0x1, true);
   }
   
   public boolean isReady()
@@ -68,7 +63,7 @@ class FragmentManager$StartEnterTransitionListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentManager.StartEnterTransitionListener
  * JD-Core Version:    0.7.0.1
  */

@@ -30,46 +30,46 @@ public class MessageForTroopFile
   
   public void doParse()
   {
+    Object localObject;
     try
     {
       TroopFileData localTroopFileData = (TroopFileData)MessagePkgUtils.a(this.msgData);
-      if (localTroopFileData != null)
-      {
-        this.url = localTroopFileData.fileUrl;
-        this.sha1 = localTroopFileData.sha1;
-        this.md5 = localTroopFileData.md5;
-        this.dspFileSize = localTroopFileData.dspFileSize;
-        this.dspFileName = localTroopFileData.dspFileName;
-        this.bisID = localTroopFileData.bisID;
-        this.uuid = localTroopFileData.uuid;
-        this.fileSize = localTroopFileData.lfileSize;
-        this.fileName = localTroopFileData.fileName;
-        this.FromUin = localTroopFileData.FromUin;
-        this.lastTime = localTroopFileData.lastTime;
-        this.entitySessionId = localTroopFileData.entitySessionId;
-        this.width = localTroopFileData.width;
-        this.height = localTroopFileData.height;
-        this.duration = localTroopFileData.duration;
-        this.yybApkPackageName = localTroopFileData.yybApkPackageName;
-        this.yybApkName = localTroopFileData.yybApkName;
-        this.yybApkIconUrl = localTroopFileData.yybApkIconUrl;
-      }
-      this.msg = HardCodeUtil.a(2131706583);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject = null;
-      }
+      localException.printStackTrace();
+      localObject = null;
     }
+    if (localObject != null)
+    {
+      this.url = localObject.fileUrl;
+      this.sha1 = localObject.sha1;
+      this.md5 = localObject.md5;
+      this.dspFileSize = localObject.dspFileSize;
+      this.dspFileName = localObject.dspFileName;
+      this.bisID = localObject.bisID;
+      this.uuid = localObject.uuid;
+      this.fileSize = localObject.lfileSize;
+      this.fileName = localObject.fileName;
+      this.FromUin = localObject.FromUin;
+      this.lastTime = localObject.lastTime;
+      this.entitySessionId = localObject.entitySessionId;
+      this.width = localObject.width;
+      this.height = localObject.height;
+      this.duration = localObject.duration;
+      this.yybApkPackageName = localObject.yybApkPackageName;
+      this.yybApkName = localObject.yybApkName;
+      this.yybApkIconUrl = localObject.yybApkIconUrl;
+    }
+    this.msg = HardCodeUtil.a(2131706605);
   }
   
   public String getSummaryMsg()
   {
-    return HardCodeUtil.a(2131706632) + this.fileName;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131706654));
+    localStringBuilder.append(this.fileName);
+    return localStringBuilder.toString();
   }
   
   public boolean isSupportReply()
@@ -77,12 +77,12 @@ public class MessageForTroopFile
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     serial();
   }
@@ -121,7 +121,7 @@ public class MessageForTroopFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopFile
  * JD-Core Version:    0.7.0.1
  */

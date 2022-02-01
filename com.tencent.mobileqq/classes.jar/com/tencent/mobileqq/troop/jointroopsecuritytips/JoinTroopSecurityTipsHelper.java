@@ -16,110 +16,131 @@ public class JoinTroopSecurityTipsHelper
 {
   private static DialogInterface.OnClickListener a(boolean paramBoolean, String paramString, Context paramContext)
   {
-    if ((!paramBoolean) || (paramContext == null)) {
-      return null;
+    if ((paramBoolean) && (paramContext != null))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getBtnListener, isShow = ");
+        localStringBuilder.append(paramBoolean);
+        localStringBuilder.append(", jumpUrl = ");
+        localStringBuilder.append(paramString);
+        QLog.d("JoinTroopSecurityTipsHelper", 2, localStringBuilder.toString());
+      }
+      if (TextUtils.isEmpty(paramString)) {
+        return new JoinTroopSecurityTipsHelper.1();
+      }
+      return new JoinTroopSecurityTipsHelper.2(paramContext, paramString);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("JoinTroopSecurityTipsHelper", 2, "getBtnListener, isShow = " + paramBoolean + ", jumpUrl = " + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      return new JoinTroopSecurityTipsHelper.1();
-    }
-    return new JoinTroopSecurityTipsHelper.2(paramContext, paramString);
+    return null;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong, Context paramContext)
   {
-    if ((paramContext == null) || (paramQQAppInterface == null)) {}
-    label590:
-    for (;;)
+    if (paramContext != null)
     {
-      return;
-      Object localObject2 = (JoinTroopSecurityTipsConfig)QConfigManager.a().a(669);
-      if (localObject2 != null)
+      if (paramQQAppInterface == null) {
+        return;
+      }
+      Object localObject3 = (JoinTroopSecurityTipsConfig)QConfigManager.a().a(669);
+      if (localObject3 == null) {
+        return;
+      }
+      Object localObject2 = ((JoinTroopSecurityTipsConfig)localObject3).a(paramInt);
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = ((JoinTroopSecurityTipsConfig)localObject3).a(paramContext);
+      }
+      if ((localObject1 != null) && (((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaUtilList != null))
       {
-        Object localObject1 = ((JoinTroopSecurityTipsConfig)localObject2).a(paramInt);
-        if (localObject1 == null) {
-          localObject1 = ((JoinTroopSecurityTipsConfig)localObject2).a(paramContext);
+        if (((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaUtilList.size() == 0) {
+          return;
         }
-        for (;;)
+        String str2 = ((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaLangString;
+        localObject2 = ((JoinTroopSecurityTipsItem)localObject1).b;
+        localObject3 = Calendar.getInstance();
+        ((Calendar)localObject3).setTimeInMillis(paramLong);
+        int i = ((Calendar)localObject3).get(3);
+        int j = ((Calendar)localObject3).get(5);
+        String str3 = ((String)localObject2).replace("$M$", String.valueOf(i)).replace("$d$", String.valueOf(j));
+        localObject2 = ((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaUtilList;
+        boolean bool2 = false;
+        JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn localJoinTroopSecurityTipsBtn = (JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)((List)localObject2).get(0);
+        if (localJoinTroopSecurityTipsBtn == null) {
+          return;
+        }
+        boolean bool3 = TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString) ^ true;
+        boolean bool1 = TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.b);
+        String str1 = "";
+        if ((!bool1) && (!TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.c)) && (localJoinTroopSecurityTipsBtn.b.equals("web"))) {
+          localObject2 = localJoinTroopSecurityTipsBtn.c;
+        } else {
+          localObject2 = "";
+        }
+        Object localObject4 = null;
+        bool1 = bool2;
+        localObject3 = str1;
+        if (((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaUtilList.size() > 1)
         {
-          if ((localObject1 == null) || (((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaUtilList == null) || (((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaUtilList.size() == 0)) {
-            break label590;
-          }
-          String str1 = ((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaLangString;
-          localObject2 = ((JoinTroopSecurityTipsItem)localObject1).b;
-          Object localObject3 = Calendar.getInstance();
-          ((Calendar)localObject3).setTimeInMillis(paramLong);
-          int i = ((Calendar)localObject3).get(3);
-          int j = ((Calendar)localObject3).get(5);
-          String str2 = ((String)localObject2).replace("$M$", String.valueOf(i)).replace("$d$", String.valueOf(j));
-          JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn localJoinTroopSecurityTipsBtn = (JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaUtilList.get(0);
-          if (localJoinTroopSecurityTipsBtn == null) {
-            break;
-          }
-          if (!TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString)) {}
-          for (boolean bool3 = true;; bool3 = false)
+          localObject1 = (JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaUtilList.get(1);
+          bool1 = bool2;
+          localObject3 = str1;
+          localObject4 = localObject1;
+          if (localObject1 != null)
           {
-            if ((!TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.b)) && (!TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.c)) && (localJoinTroopSecurityTipsBtn.b.equals("web"))) {}
-            for (localObject3 = localJoinTroopSecurityTipsBtn.c;; localObject3 = "")
+            bool2 = TextUtils.isEmpty(((JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)localObject1).jdField_a_of_type_JavaLangString) ^ true;
+            bool1 = bool2;
+            localObject3 = str1;
+            localObject4 = localObject1;
+            if (!TextUtils.isEmpty(((JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)localObject1).b))
             {
-              boolean bool2 = false;
-              boolean bool1 = false;
-              if (((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaUtilList.size() > 1)
+              bool1 = bool2;
+              localObject3 = str1;
+              localObject4 = localObject1;
+              if (!TextUtils.isEmpty(((JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)localObject1).c))
               {
-                localObject1 = (JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)((JoinTroopSecurityTipsItem)localObject1).jdField_a_of_type_JavaUtilList.get(1);
-                if (localObject1 != null)
-                {
-                  if (!TextUtils.isEmpty(((JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)localObject1).jdField_a_of_type_JavaLangString)) {
-                    bool1 = true;
-                  }
-                  bool2 = bool1;
-                  if (!TextUtils.isEmpty(((JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)localObject1).b))
-                  {
-                    bool2 = bool1;
-                    if (!TextUtils.isEmpty(((JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)localObject1).c))
-                    {
-                      bool2 = bool1;
-                      if (((JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)localObject1).b.equals("web")) {
-                        localObject2 = ((JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)localObject1).c;
-                      }
-                    }
-                  }
-                }
-              }
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("JoinTroopSecurityTipsHelper", 2, "JoinTroopSecurityTipsHelper showTips tId = " + paramInt + ",time = " + paramLong + ",isShowFrist" + bool3 + ",isShowSecond" + bool1);
-                }
-                if ((bool3) && (bool1))
-                {
-                  DialogUtil.a(paramContext, 230, str1, str2, localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString, ((JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)localObject1).jdField_a_of_type_JavaLangString, a(bool1, (String)localObject2, paramContext), a(bool3, (String)localObject3, paramContext)).show();
-                  ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800B340", "0X800B340", 0, 0, "", "", "", "");
-                  return;
-                }
-                if (!bool3) {
-                  break;
-                }
-                localObject1 = DialogUtil.a(paramContext, 230);
-                if (localObject1 == null) {
-                  break;
-                }
-                ((QQCustomDialog)localObject1).setTitle(str1);
-                ((QQCustomDialog)localObject1).setMessage(str2);
-                ((QQCustomDialog)localObject1).setNegativeButton(localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString, a(bool3, (String)localObject3, paramContext));
-                ((QQCustomDialog)localObject1).show();
-                ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800B340", "0X800B340", 0, 0, "", "", "", "");
-                return;
-                localObject2 = "";
                 bool1 = bool2;
-                continue;
-                localObject2 = "";
-                bool1 = false;
-                localObject1 = null;
+                localObject3 = str1;
+                localObject4 = localObject1;
+                if (((JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)localObject1).b.equals("web"))
+                {
+                  localObject3 = ((JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)localObject1).c;
+                  localObject4 = localObject1;
+                  bool1 = bool2;
+                }
               }
             }
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("JoinTroopSecurityTipsHelper showTips tId = ");
+          ((StringBuilder)localObject1).append(paramInt);
+          ((StringBuilder)localObject1).append(",time = ");
+          ((StringBuilder)localObject1).append(paramLong);
+          ((StringBuilder)localObject1).append(",isShowFrist");
+          ((StringBuilder)localObject1).append(bool3);
+          ((StringBuilder)localObject1).append(",isShowSecond");
+          ((StringBuilder)localObject1).append(bool1);
+          QLog.d("JoinTroopSecurityTipsHelper", 2, ((StringBuilder)localObject1).toString());
+        }
+        if ((bool3) && (bool1))
+        {
+          DialogUtil.a(paramContext, 230, str2, str3, localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString, localObject4.jdField_a_of_type_JavaLangString, a(bool1, (String)localObject3, paramContext), a(bool3, (String)localObject2, paramContext)).show();
+          ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800B340", "0X800B340", 0, 0, "", "", "", "");
+          return;
+        }
+        if (bool3)
+        {
+          localObject1 = DialogUtil.a(paramContext, 230);
+          if (localObject1 != null)
+          {
+            ((QQCustomDialog)localObject1).setTitle(str2);
+            ((QQCustomDialog)localObject1).setMessage(str3);
+            ((QQCustomDialog)localObject1).setNegativeButton(localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString, a(bool3, (String)localObject2, paramContext));
+            ((QQCustomDialog)localObject1).show();
+            ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800B340", "0X800B340", 0, 0, "", "", "", "");
           }
         }
       }
@@ -128,7 +149,7 @@ public class JoinTroopSecurityTipsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jointroopsecuritytips.JoinTroopSecurityTipsHelper
  * JD-Core Version:    0.7.0.1
  */

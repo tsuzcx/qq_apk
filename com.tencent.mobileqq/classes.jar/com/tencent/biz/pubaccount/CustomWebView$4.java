@@ -12,7 +12,11 @@ class CustomWebView$4
     }
     try
     {
-      CustomWebView.access$001(this.this$0, "javascript:" + this.a);
+      CustomWebView localCustomWebView = this.this$0;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("javascript:");
+      localStringBuilder.append(this.a);
+      CustomWebView.access$001(localCustomWebView, localStringBuilder.toString());
       return;
     }
     catch (Exception localException)
@@ -23,7 +27,7 @@ class CustomWebView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.CustomWebView.4
  * JD-Core Version:    0.7.0.1
  */

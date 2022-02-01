@@ -15,10 +15,10 @@ public class JumpToNotificationSettingUtil
     if (("MIUI".equals(ROMUtil.getRomName())) && (Build.VERSION.SDK_INT > 19)) {
       return d(paramContext);
     }
-    if (("SMARTISAN".equals(ROMUtil.getRomName())) || ("360".equals(ROMUtil.getRomName()))) {
-      return c(paramContext);
+    if ((!"SMARTISAN".equals(ROMUtil.getRomName())) && (!"360".equals(ROMUtil.getRomName()))) {
+      return b(paramContext);
     }
-    return b(paramContext);
+    return c(paramContext);
   }
   
   public static Intent b(Context paramContext)
@@ -50,7 +50,10 @@ public class JumpToNotificationSettingUtil
   {
     Intent localIntent = new Intent();
     localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-    localIntent.setData(Uri.parse("package:" + paramContext.getPackageName()));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("package:");
+    localStringBuilder.append(paramContext.getPackageName());
+    localIntent.setData(Uri.parse(localStringBuilder.toString()));
     return localIntent;
   }
   
@@ -68,7 +71,7 @@ public class JumpToNotificationSettingUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpToNotificationSettingUtil
  * JD-Core Version:    0.7.0.1
  */

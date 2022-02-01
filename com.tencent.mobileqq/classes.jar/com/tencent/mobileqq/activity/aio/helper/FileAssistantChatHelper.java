@@ -39,27 +39,16 @@ public class FileAssistantChatHelper
     QLog.i("DatalineChatPie<FileAssistant>", 1, "--DatalineChatPie sendByFile--");
     if (56 == paramIntent.getIntExtra(AlbumConstants.h, -1))
     {
-      String str = paramIntent.getExtras().getString("file_send_path");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(str, localSessionInfo.b, localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.jdField_a_of_type_Int, true);
-      QLog.i("DatalineChatPie<FileAssistant>", 2, "sessionInfo.troopUin： " + localSessionInfo.b + "； sessionInfo.curFriendUin： " + localSessionInfo.jdField_a_of_type_JavaLangString);
+      Object localObject = paramIntent.getExtras().getString("file_send_path");
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a((String)localObject, localSessionInfo.b, localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.jdField_a_of_type_Int, true);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sessionInfo.troopUin： ");
+      ((StringBuilder)localObject).append(localSessionInfo.b);
+      ((StringBuilder)localObject).append("； sessionInfo.curFriendUin： ");
+      ((StringBuilder)localObject).append(localSessionInfo.jdField_a_of_type_JavaLangString);
+      QLog.i("DatalineChatPie<FileAssistant>", 2, ((StringBuilder)localObject).toString());
     }
     b(paramIntent);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (paramIntent != null)
-    {
-      if (paramInt1 != 2) {
-        break label15;
-      }
-      a(paramIntent);
-    }
-    label15:
-    while ((paramInt1 != 100004) || (paramIntent.getIntExtra(AlbumConstants.h, -1) != 2)) {
-      return;
-    }
-    a(paramIntent);
   }
   
   public void a(Intent paramIntent)
@@ -119,28 +108,43 @@ public class FileAssistantChatHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 1, 14 };
+    return new int[] { 1, 15 };
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramIntent != null)
+    {
+      if (paramInt1 == 2)
+      {
+        a(paramIntent);
+        return;
+      }
+      if ((paramInt1 == 10004) && (paramIntent.getIntExtra(AlbumConstants.h, -1) == 2)) {
+        a(paramIntent);
+      }
+    }
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new FileAssistantChatHelper.MyFMObserver(this, null);
+      if (paramInt != 15) {
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver == null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new FileAssistantChatHelper.MyFMObserver(this, null);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FileAssistantChatHelper
  * JD-Core Version:    0.7.0.1
  */

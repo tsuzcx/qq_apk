@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.colornote.settings;
 
 import com.tencent.mobileqq.colornote.ColorNoteCurd;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.OnColorNoteCurdListener;
+import com.tencent.mobileqq.colornote.OnColorNoteCurdListener;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 final class ColorNoteHistoryManager$1
-  extends ColorNoteCurd.OnColorNoteCurdListener
+  extends OnColorNoteCurdListener
 {
   ColorNoteHistoryManager$1(ColorNoteCurd paramColorNoteCurd, ColorNote paramColorNote) {}
   
@@ -16,7 +16,7 @@ final class ColorNoteHistoryManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.settings.ColorNoteHistoryManager.1
  * JD-Core Version:    0.7.0.1
  */

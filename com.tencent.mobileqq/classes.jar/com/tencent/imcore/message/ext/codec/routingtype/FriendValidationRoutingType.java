@@ -1,5 +1,6 @@
 package com.tencent.imcore.message.ext.codec.routingtype;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.core.codec.RoutingType;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -13,7 +14,7 @@ import msf.msgsvc.msg_svc.AuthTmp;
 import msf.msgsvc.msg_svc.RoutingHead;
 
 public class FriendValidationRoutingType
-  implements RoutingType
+  implements RoutingType<AppInterface>
 {
   public int a()
   {
@@ -25,15 +26,21 @@ public class FriendValidationRoutingType
     return false;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.AuthTmp localAuthTmp = new msg_svc.AuthTmp();
     localAuthTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.getMsgCache().h(paramMessageRecord.frienduin);
+    paramMessageRecord = ((QQAppInterface)paramAppInterface).getMsgCache().h(paramMessageRecord.frienduin);
     if (paramMessageRecord != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendValidationRoutingType", 2, "friendValidation------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      if (QLog.isColorLevel())
+      {
+        paramAppInterface = new StringBuilder();
+        paramAppInterface.append("friendValidation------>");
+        paramAppInterface.append(HexUtil.bytes2HexStr(paramMessageRecord));
+        paramAppInterface.append(",length:");
+        paramAppInterface.append(paramMessageRecord.length);
+        QLog.d("FriendValidationRoutingType", 2, paramAppInterface.toString());
       }
       localAuthTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
@@ -48,7 +55,7 @@ public class FriendValidationRoutingType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.FriendValidationRoutingType
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,6 @@
         </LinearLayout>
         <RadioGroup android:orientation="horizontal" android:id="@id/qz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </RelativeLayout>
-    <android.support.v4.view.ViewPager android:id="@id/r9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/pa" android:layout_below="@id/f0h" android:layout_alignParentLeft="true" />
+    <androidx.viewpager.widget.ViewPager android:id="@id/r9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/pa" android:layout_below="@id/f0h" android:layout_alignParentLeft="true" />
     <ViewStub android:id="@id/f0h" android:layout="@layout/bii" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ha1" />
 </RelativeLayout>

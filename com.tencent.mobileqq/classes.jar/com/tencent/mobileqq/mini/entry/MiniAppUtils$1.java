@@ -18,23 +18,21 @@ final class MiniAppUtils$1
     try
     {
       MiniAppDesktopAdapter.startMiniApp(this.val$activity, this.val$info, this.val$scene);
-      if (this.val$scene == 3008) {
-        MiniProgramLpReportDC04239.reportAsync("desktop", "featured", "click", null);
-      }
-      return;
     }
     catch (Exception paramView)
     {
-      for (;;)
-      {
-        QLog.e("MiniAppUtils", 1, "setJump failed");
-      }
+      label18:
+      break label18;
+    }
+    QLog.e("MiniAppUtils", 1, "setJump failed");
+    if (this.val$scene == 3008) {
+      MiniProgramLpReportDC04239.reportAsync("desktop", "featured", "click", null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.1
  * JD-Core Version:    0.7.0.1
  */

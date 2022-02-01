@@ -10,9 +10,9 @@ class TroopFileTransferManager$TaskPool$1
   
   public void run()
   {
-    synchronized (this.this$0)
+    for (;;)
     {
-      for (;;)
+      synchronized (this.this$0)
       {
         if (this.this$0.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
         {
@@ -21,21 +21,14 @@ class TroopFileTransferManager$TaskPool$1
         }
         TroopFileTransferManager.Task localTask = (TroopFileTransferManager.Task)this.this$0.jdField_a_of_type_JavaUtilLinkedList.remove(0);
         localTask.run();
-        if (localTask.a != 0) {
-          continue;
-        }
-        try
-        {
-          Thread.sleep(200L);
-        }
-        catch (InterruptedException localInterruptedException) {}
+        if (localTask.a != 0) {}
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool.1
  * JD-Core Version:    0.7.0.1
  */

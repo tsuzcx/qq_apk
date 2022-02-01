@@ -19,7 +19,9 @@ class QQCustomSingleButtonDialog$CustomDialogItemOnClickListener
   {
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a(this.jdField_a_of_type_Int));
+      DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a;
+      QQCustomSingleButtonDialog localQQCustomSingleButtonDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog;
+      localOnClickListener.onClick(localQQCustomSingleButtonDialog, localQQCustomSingleButtonDialog.a(this.jdField_a_of_type_Int));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -27,7 +29,7 @@ class QQCustomSingleButtonDialog$CustomDialogItemOnClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomSingleButtonDialog.CustomDialogItemOnClickListener
  * JD-Core Version:    0.7.0.1
  */

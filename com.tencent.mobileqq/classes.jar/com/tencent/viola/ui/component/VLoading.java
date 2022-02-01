@@ -28,14 +28,15 @@ public class VLoading
   public void destroy()
   {
     super.destroy();
-    if (this.mAnimator != null)
+    RotateAnimation localRotateAnimation = this.mAnimator;
+    if (localRotateAnimation != null)
     {
-      this.mAnimator.cancel();
+      localRotateAnimation.cancel();
       this.mAnimator = null;
     }
   }
   
-  public VImageView2 initComponentHostView(@NonNull Context paramContext)
+  protected VImageView2 initComponentHostView(@NonNull Context paramContext)
   {
     paramContext = super.initComponentHostView(paramContext);
     this.mAnimator = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
@@ -50,7 +51,7 @@ public class VLoading
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VLoading
  * JD-Core Version:    0.7.0.1
  */

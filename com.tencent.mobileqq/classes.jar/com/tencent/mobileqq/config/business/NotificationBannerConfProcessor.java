@@ -34,8 +34,12 @@ public class NotificationBannerConfProcessor
   
   public void a(NotificationBannerBean paramNotificationBannerBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NotificationBannerConfProcessor", 2, "onUpdate " + paramNotificationBannerBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramNotificationBannerBean.toString());
+      QLog.d("NotificationBannerConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -73,7 +77,7 @@ public class NotificationBannerConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.NotificationBannerConfProcessor
  * JD-Core Version:    0.7.0.1
  */

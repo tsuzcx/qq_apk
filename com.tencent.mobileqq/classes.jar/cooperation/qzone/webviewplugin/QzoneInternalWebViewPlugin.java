@@ -14,50 +14,59 @@ import org.json.JSONObject;
 
 public abstract class QzoneInternalWebViewPlugin
 {
-  public WebViewPlugin parentPlugin;
+  protected WebViewPlugin parentPlugin;
   
   public static void dispatchEventImpl(CustomWebView paramCustomWebView, String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (paramCustomWebView == null) {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("event", paramString);
-      if (paramJSONObject1 != null) {
-        localJSONObject.put("data", paramJSONObject1);
-      }
-      if (paramJSONObject2 != null) {
-        localJSONObject.put("options", paramJSONObject2);
-      }
-      paramString = "jsbridge://event/dispatchEvent?p=" + Uri.encode(localJSONObject.toString());
-      if (QLog.isDebugVersion()) {
-        QLog.i("QzoneInternalWebViewPlugin", 1, "dispatchEventImpl url:" + paramString);
-      }
-      if (Looper.myLooper() == Looper.getMainLooper())
+    if (paramCustomWebView != null) {
+      try
       {
-        paramCustomWebView.loadUrl(paramString);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("event", paramString);
+        if (paramJSONObject1 != null) {
+          localJSONObject.put("data", paramJSONObject1);
+        }
+        if (paramJSONObject2 != null) {
+          localJSONObject.put("options", paramJSONObject2);
+        }
+        paramString = new StringBuilder();
+        paramString.append("jsbridge://event/dispatchEvent?p=");
+        paramString.append(Uri.encode(localJSONObject.toString()));
+        paramString = paramString.toString();
+        if (QLog.isDebugVersion())
+        {
+          paramJSONObject1 = new StringBuilder();
+          paramJSONObject1.append("dispatchEventImpl url:");
+          paramJSONObject1.append(paramString);
+          QLog.i("QzoneInternalWebViewPlugin", 1, paramJSONObject1.toString());
+        }
+        if (Looper.myLooper() == Looper.getMainLooper())
+        {
+          paramCustomWebView.loadUrl(paramString);
+          return;
+        }
+        paramCustomWebView.post(new QzoneInternalWebViewPlugin.1(paramCustomWebView, paramString));
         return;
       }
+      catch (Exception paramCustomWebView)
+      {
+        paramCustomWebView.printStackTrace();
+      }
     }
-    catch (Exception paramCustomWebView)
-    {
-      paramCustomWebView.printStackTrace();
-      return;
-    }
-    paramCustomWebView.post(new QzoneInternalWebViewPlugin.1(paramCustomWebView, paramString));
   }
   
   public void dispatchEvent(String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null)) {}
-    for (CustomWebView localCustomWebView = this.parentPlugin.mRuntime.a();; localCustomWebView = null)
-    {
-      dispatchEventImpl(localCustomWebView, paramString, paramJSONObject1, paramJSONObject2);
-      return;
+    Object localObject = this.parentPlugin;
+    if ((localObject != null) && (((WebViewPlugin)localObject).mRuntime != null)) {
+      localObject = this.parentPlugin.mRuntime.a();
+    } else {
+      localObject = null;
     }
+    dispatchEventImpl((CustomWebView)localObject, paramString, paramJSONObject1, paramJSONObject2);
   }
   
   public Object handleEvent(String paramString, long paramLong)
@@ -83,7 +92,7 @@ public abstract class QzoneInternalWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneInternalWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

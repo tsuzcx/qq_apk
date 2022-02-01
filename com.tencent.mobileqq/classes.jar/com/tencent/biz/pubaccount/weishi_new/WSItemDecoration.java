@@ -21,37 +21,36 @@ public class WSItemDecoration
     if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
     {
       paramView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
-      i = paramView.getSpanIndex();
+      int i = paramView.getSpanIndex();
       if (paramView.isFullSpan())
       {
-        paramRect.left = a;
-        paramRect.right = a;
-        paramRect.top = a;
+        i = a;
+        paramRect.left = i;
+        paramRect.right = i;
       }
-    }
-    while ((!(paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) || (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).getOrientation() != 0)) {
-      for (;;)
+      else if (i % 2 == 0)
       {
-        int i;
-        return;
-        if (i % 2 == 0)
-        {
-          paramRect.left = a;
-          paramRect.right = (a / 2);
-        }
-        else
-        {
-          paramRect.left = (a / 2);
-          paramRect.right = a;
-        }
+        i = a;
+        paramRect.left = i;
+        paramRect.right = (i / 2);
       }
+      else
+      {
+        i = a;
+        paramRect.left = (i / 2);
+        paramRect.right = i;
+      }
+      paramRect.top = a;
+      return;
     }
-    paramRect.right = a;
+    if (((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).getOrientation() == 0)) {
+      paramRect.right = a;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSItemDecoration
  * JD-Core Version:    0.7.0.1
  */

@@ -82,13 +82,13 @@ public class AccelMagnetGyroProvider
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    float[] arrayOfFloat;
+    float[] arrayOfFloat1;
     if (!this.jdField_c_of_type_Boolean)
     {
-      arrayOfFloat = new float[9];
-      arrayOfFloat = SensorUtil.a(this.k);
-      SensorManager.getOrientation(arrayOfFloat, new float[3]);
-      this.l = SensorUtil.a(this.l, arrayOfFloat);
+      arrayOfFloat1 = new float[9];
+      arrayOfFloat1 = SensorUtil.a(this.k);
+      SensorManager.getOrientation(arrayOfFloat1, new float[3]);
+      this.l = SensorUtil.a(this.l, arrayOfFloat1);
       this.jdField_c_of_type_Boolean = true;
     }
     if ((this.jdField_a_of_type_Float != 0.0F) && (this.jdField_c_of_type_Boolean))
@@ -96,33 +96,43 @@ public class AccelMagnetGyroProvider
       float f7 = (float)paramSensorEvent.timestamp;
       float f8 = this.jdField_a_of_type_Float;
       System.arraycopy(paramSensorEvent.values, 0, this.i, 0, 3);
-      float f6 = this.i[0];
-      float f5 = this.i[1];
-      float f4 = this.i[2];
+      arrayOfFloat1 = this.i;
+      float f6 = arrayOfFloat1[0];
+      float f5 = arrayOfFloat1[1];
+      float f4 = arrayOfFloat1[2];
       float f9 = (float)Math.sqrt(f6 * f6 + f5 * f5 + f4 * f4);
       float f3 = f4;
-      float f2 = f5;
-      float f1 = f6;
+      float f2 = f6;
+      float f1 = f5;
       if (f9 > 1.0E-009F)
       {
-        f1 = f6 / f9;
-        f2 = f5 / f9;
+        f2 = f6 / f9;
+        f1 = f5 / f9;
         f3 = f4 / f9;
       }
-      f5 = (f7 - f8) * 1.0E-009F * f9 / 2.0F;
-      f4 = (float)Math.sin(f5);
-      f5 = (float)Math.cos(f5);
-      this.jdField_d_of_type_ArrayOfFloat[0] = (f1 * f4);
-      this.jdField_d_of_type_ArrayOfFloat[1] = (f2 * f4);
-      this.jdField_d_of_type_ArrayOfFloat[2] = (f3 * f4);
-      this.jdField_d_of_type_ArrayOfFloat[3] = f5;
-      arrayOfFloat = new float[9];
-      SensorUtil.c(arrayOfFloat, this.jdField_d_of_type_ArrayOfFloat);
-      this.l = SensorUtil.a(this.l, arrayOfFloat);
+      double d1 = f9 * ((f7 - f8) * 1.0E-009F) / 2.0F;
+      f4 = (float)Math.sin(d1);
+      f5 = (float)Math.cos(d1);
+      arrayOfFloat1 = this.jdField_d_of_type_ArrayOfFloat;
+      arrayOfFloat1[0] = (f2 * f4);
+      arrayOfFloat1[1] = (f1 * f4);
+      arrayOfFloat1[2] = (f4 * f3);
+      arrayOfFloat1[3] = f5;
+      float[] arrayOfFloat2 = new float[9];
+      SensorUtil.c(arrayOfFloat2, arrayOfFloat1);
+      this.l = SensorUtil.a(this.l, arrayOfFloat2);
       SensorManager.getOrientation(this.l, this.e);
       e();
-      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener != null)) {
-        a((float)(Math.toDegrees(this.e[0] + a()) + 360.0D) % 360.0F, (float)(this.e[1] * 180.0F / 3.141592653589793D), (float)(this.e[2] * 180.0F / 3.141592653589793D));
+      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener != null))
+      {
+        f1 = (float)(Math.toDegrees(this.e[0] + a()) + 360.0D);
+        arrayOfFloat1 = this.e;
+        d1 = arrayOfFloat1[1] * 180.0F;
+        Double.isNaN(d1);
+        f2 = (float)(d1 / 3.141592653589793D);
+        d1 = arrayOfFloat1[2] * 180.0F;
+        Double.isNaN(d1);
+        a(f1 % 360.0F, f2, (float)(d1 / 3.141592653589793D));
       }
     }
     this.jdField_a_of_type_Float = ((float)paramSensorEvent.timestamp);
@@ -147,129 +157,185 @@ public class AccelMagnetGyroProvider
   
   private void e()
   {
-    float[] arrayOfFloat;
-    double d2;
+    float[] arrayOfFloat1 = this.e;
+    float[] arrayOfFloat2;
+    float[] arrayOfFloat3;
     double d1;
-    if ((this.e[0] < -1.570796326794897D) && (this.k[0] > 0.0D))
+    double d2;
+    if (arrayOfFloat1[0] < -1.570796326794897D)
     {
-      this.f[0] = ((float)(0.9980000257492065D * (this.e[0] + 6.283185307179586D) + this.k[0] * 0.001999974F));
-      arrayOfFloat = this.f;
-      d2 = arrayOfFloat[0];
-      if (this.f[0] > 3.141592653589793D)
+      arrayOfFloat2 = this.k;
+      if (arrayOfFloat2[0] > 0.0D)
       {
-        d1 = 6.283185307179586D;
-        arrayOfFloat[0] = ((float)(d2 - d1));
-        label97:
-        if ((this.e[1] >= -1.570796326794897D) || (this.k[1] <= 0.0D)) {
-          break label493;
+        arrayOfFloat3 = this.f;
+        d1 = arrayOfFloat1[0];
+        Double.isNaN(d1);
+        d2 = arrayOfFloat2[0] * 0.001999974F;
+        Double.isNaN(d2);
+        arrayOfFloat3[0] = ((float)((d1 + 6.283185307179586D) * 0.9980000257492065D + d2));
+        d2 = arrayOfFloat3[0];
+        if (arrayOfFloat3[0] > 3.141592653589793D) {
+          d1 = 6.283185307179586D;
+        } else {
+          d1 = 0.0D;
         }
-        this.f[1] = ((float)(0.9980000257492065D * (this.e[1] + 6.283185307179586D) + this.k[1] * 0.001999974F));
-        arrayOfFloat = this.f;
-        d2 = arrayOfFloat[1];
-        if (this.f[1] <= 3.141592653589793D) {
-          break label488;
-        }
-        d1 = 6.283185307179586D;
-        label186:
-        arrayOfFloat[1] = ((float)(d2 - d1));
-        label194:
-        if ((this.e[2] >= -1.570796326794897D) || (this.k[2] <= 0.0D)) {
-          break label631;
-        }
-        arrayOfFloat = this.f;
-        d1 = this.e[2];
-        arrayOfFloat[2] = ((float)(0.001999974F * this.k[2] + 0.9980000257492065D * (d1 + 6.283185307179586D)));
-        arrayOfFloat = this.f;
-        d2 = arrayOfFloat[2];
-        if (this.f[2] <= 3.141592653589793D) {
-          break label626;
-        }
-        d1 = 6.283185307179586D;
-        label289:
-        arrayOfFloat[2] = ((float)(d2 - d1));
+        Double.isNaN(d2);
+        arrayOfFloat3[0] = ((float)(d2 - d1));
+        break label283;
       }
     }
-    for (;;)
+    arrayOfFloat1 = this.k;
+    double d3;
+    if (arrayOfFloat1[0] < -1.570796326794897D)
     {
-      this.l = SensorUtil.a(this.f);
-      SensorUtil.a(this.l, this.m);
-      if (this.jdField_a_of_type_Int != 1) {
-        super.a(this.m);
-      }
-      System.arraycopy(this.f, 0, this.e, 0, 3);
-      return;
-      d1 = 0.0D;
-      break;
-      if ((this.k[0] < -1.570796326794897D) && (this.e[0] > 0.0D))
+      arrayOfFloat2 = this.e;
+      if (arrayOfFloat2[0] > 0.0D)
       {
-        this.f[0] = ((float)(0.998F * this.e[0] + 0.001999974F * (this.k[0] + 6.283185307179586D)));
-        arrayOfFloat = this.f;
-        d2 = arrayOfFloat[0];
-        if (this.f[0] > 3.141592653589793D) {}
-        for (d1 = 6.283185307179586D;; d1 = 0.0D)
-        {
-          arrayOfFloat[0] = ((float)(d2 - d1));
-          break;
+        arrayOfFloat3 = this.f;
+        d1 = arrayOfFloat2[0] * 0.998F;
+        d2 = 0.001999974F;
+        d3 = arrayOfFloat1[0];
+        Double.isNaN(d3);
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        arrayOfFloat3[0] = ((float)(d1 + d2 * (d3 + 6.283185307179586D)));
+        d2 = arrayOfFloat3[0];
+        if (arrayOfFloat3[0] > 3.141592653589793D) {
+          d1 = 6.283185307179586D;
+        } else {
+          d1 = 0.0D;
         }
+        Double.isNaN(d2);
+        arrayOfFloat3[0] = ((float)(d2 - d1));
+        break label283;
       }
-      this.f[0] = (0.998F * this.e[0] + this.k[0] * 0.001999974F);
-      break label97;
-      label488:
-      d1 = 0.0D;
-      break label186;
-      label493:
-      if ((this.k[1] < -1.570796326794897D) && (this.e[1] > 0.0D))
-      {
-        this.f[1] = ((float)(0.998F * this.e[1] + 0.001999974F * (this.k[1] + 6.283185307179586D)));
-        arrayOfFloat = this.f;
-        d2 = arrayOfFloat[1];
-        if (this.f[1] > 3.141592653589793D) {}
-        for (d1 = 6.283185307179586D;; d1 = 0.0D)
-        {
-          arrayOfFloat[1] = ((float)(d2 - d1));
-          break;
-        }
-      }
-      this.f[1] = (0.998F * this.e[1] + this.k[1] * 0.001999974F);
-      break label194;
-      label626:
-      d1 = 0.0D;
-      break label289;
-      label631:
-      if ((this.k[2] < -1.570796326794897D) && (this.e[2] > 0.0D))
-      {
-        arrayOfFloat = this.f;
-        d1 = 0.998F * this.e[2];
-        arrayOfFloat[2] = ((float)(0.001999974F * (this.k[2] + 6.283185307179586D) + d1));
-        arrayOfFloat = this.f;
-        d2 = arrayOfFloat[2];
-        if (this.f[2] > 3.141592653589793D) {}
-        for (d1 = 6.283185307179586D;; d1 = 0.0D)
-        {
-          arrayOfFloat[2] = ((float)(d2 - d1));
-          break;
-        }
-      }
-      arrayOfFloat = this.f;
-      float f1 = this.e[2];
-      arrayOfFloat[2] = (0.001999974F * this.k[2] + 0.998F * f1);
     }
+    this.f[0] = (this.e[0] * 0.998F + this.k[0] * 0.001999974F);
+    label283:
+    arrayOfFloat1 = this.e;
+    if (arrayOfFloat1[1] < -1.570796326794897D)
+    {
+      arrayOfFloat2 = this.k;
+      if (arrayOfFloat2[1] > 0.0D)
+      {
+        arrayOfFloat3 = this.f;
+        d1 = arrayOfFloat1[1];
+        Double.isNaN(d1);
+        d2 = arrayOfFloat2[1] * 0.001999974F;
+        Double.isNaN(d2);
+        arrayOfFloat3[1] = ((float)((d1 + 6.283185307179586D) * 0.9980000257492065D + d2));
+        d2 = arrayOfFloat3[1];
+        if (arrayOfFloat3[1] > 3.141592653589793D) {
+          d1 = 6.283185307179586D;
+        } else {
+          d1 = 0.0D;
+        }
+        Double.isNaN(d2);
+        arrayOfFloat3[1] = ((float)(d2 - d1));
+        break label566;
+      }
+    }
+    arrayOfFloat1 = this.k;
+    if (arrayOfFloat1[1] < -1.570796326794897D)
+    {
+      arrayOfFloat2 = this.e;
+      if (arrayOfFloat2[1] > 0.0D)
+      {
+        arrayOfFloat3 = this.f;
+        d1 = arrayOfFloat2[1] * 0.998F;
+        d2 = 0.001999974F;
+        d3 = arrayOfFloat1[1];
+        Double.isNaN(d3);
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        arrayOfFloat3[1] = ((float)(d1 + d2 * (d3 + 6.283185307179586D)));
+        d2 = arrayOfFloat3[1];
+        if (arrayOfFloat3[1] > 3.141592653589793D) {
+          d1 = 6.283185307179586D;
+        } else {
+          d1 = 0.0D;
+        }
+        Double.isNaN(d2);
+        arrayOfFloat3[1] = ((float)(d2 - d1));
+        break label566;
+      }
+    }
+    this.f[1] = (this.e[1] * 0.998F + this.k[1] * 0.001999974F);
+    label566:
+    arrayOfFloat1 = this.e;
+    if (arrayOfFloat1[2] < -1.570796326794897D)
+    {
+      arrayOfFloat2 = this.k;
+      if (arrayOfFloat2[2] > 0.0D)
+      {
+        arrayOfFloat3 = this.f;
+        d1 = arrayOfFloat1[2];
+        Double.isNaN(d1);
+        d2 = 0.001999974F * arrayOfFloat2[2];
+        Double.isNaN(d2);
+        arrayOfFloat3[2] = ((float)((d1 + 6.283185307179586D) * 0.9980000257492065D + d2));
+        d2 = arrayOfFloat3[2];
+        if (arrayOfFloat3[2] > 3.141592653589793D) {
+          d1 = 6.283185307179586D;
+        } else {
+          d1 = 0.0D;
+        }
+        Double.isNaN(d2);
+        arrayOfFloat3[2] = ((float)(d2 - d1));
+        break label849;
+      }
+    }
+    arrayOfFloat1 = this.k;
+    if (arrayOfFloat1[2] < -1.570796326794897D)
+    {
+      arrayOfFloat2 = this.e;
+      if (arrayOfFloat2[2] > 0.0D)
+      {
+        arrayOfFloat3 = this.f;
+        d1 = arrayOfFloat2[2] * 0.998F;
+        d2 = 0.001999974F;
+        d3 = arrayOfFloat1[2];
+        Double.isNaN(d3);
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        arrayOfFloat3[2] = ((float)(d1 + d2 * (d3 + 6.283185307179586D)));
+        d2 = arrayOfFloat3[2];
+        if (arrayOfFloat3[2] > 3.141592653589793D) {
+          d1 = 6.283185307179586D;
+        } else {
+          d1 = 0.0D;
+        }
+        Double.isNaN(d2);
+        arrayOfFloat3[2] = ((float)(d2 - d1));
+        break label849;
+      }
+    }
+    this.f[2] = (this.e[2] * 0.998F + 0.001999974F * this.k[2]);
+    label849:
+    this.l = SensorUtil.a(this.f);
+    SensorUtil.a(this.l, this.m);
+    if (this.jdField_a_of_type_Int != 1) {
+      super.a(this.m);
+    }
+    System.arraycopy(this.f, 0, this.e, 0, 3);
   }
   
   void a()
   {
-    this.e[0] = 0.0F;
-    this.e[1] = 0.0F;
-    this.e[2] = 0.0F;
-    this.l[0] = 1.0F;
-    this.l[1] = 0.0F;
-    this.l[2] = 0.0F;
-    this.l[3] = 0.0F;
-    this.l[4] = 1.0F;
-    this.l[5] = 0.0F;
-    this.l[6] = 0.0F;
-    this.l[7] = 0.0F;
-    this.l[8] = 1.0F;
+    float[] arrayOfFloat = this.e;
+    arrayOfFloat[0] = 0.0F;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat = this.l;
+    arrayOfFloat[0] = 1.0F;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = 0.0F;
+    arrayOfFloat[4] = 1.0F;
+    arrayOfFloat[5] = 0.0F;
+    arrayOfFloat[6] = 0.0F;
+    arrayOfFloat[7] = 0.0F;
+    arrayOfFloat[8] = 1.0F;
   }
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
@@ -278,25 +344,25 @@ public class AccelMagnetGyroProvider
     {
       a(paramSensorEvent);
       b(paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], paramSensorEvent.timestamp);
-    }
-    do
-    {
       return;
-      if (paramSensorEvent.sensor.getType() == 2)
-      {
-        System.arraycopy(paramSensorEvent.values, 0, this.g, 0, 3);
-        this.jdField_b_of_type_Boolean = true;
-        return;
-      }
-    } while (paramSensorEvent.sensor.getType() != 1);
-    System.arraycopy(paramSensorEvent.values, 0, this.h, 0, 3);
-    d();
-    a(paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], paramSensorEvent.timestamp);
+    }
+    if (paramSensorEvent.sensor.getType() == 2)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.g, 0, 3);
+      this.jdField_b_of_type_Boolean = true;
+      return;
+    }
+    if (paramSensorEvent.sensor.getType() == 1)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.h, 0, 3);
+      d();
+      a(paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], paramSensorEvent.timestamp);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.AccelMagnetGyroProvider
  * JD-Core Version:    0.7.0.1
  */

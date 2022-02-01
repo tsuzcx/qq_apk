@@ -10,16 +10,28 @@ public class DownloadTaskInfo
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(this.versionCode).append("||").append(this.source).append("||").append(this.pkgName).append("||").append(this.url).append("||");
-    if (this.stackInfo == null) {}
-    for (String str = "";; str = this.stackInfo.replace("\r", " ").replace("\n", " ")) {
-      return str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.versionCode);
+    localStringBuilder.append("||");
+    localStringBuilder.append(this.source);
+    localStringBuilder.append("||");
+    localStringBuilder.append(this.pkgName);
+    localStringBuilder.append("||");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append("||");
+    String str = this.stackInfo;
+    if (str == null) {
+      str = "";
+    } else {
+      str = str.replace("\r", " ").replace("\n", " ");
     }
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.notify.DownloadTaskInfo
  * JD-Core Version:    0.7.0.1
  */

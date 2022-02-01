@@ -17,10 +17,16 @@ public class MoLvFilter
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     BaseFilter localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(57));
-    float f1 = (float)(-0.1843137254901961D * 0.292F);
-    float f2 = (float)(0.07058823529411765D * 0.292F);
-    float f3 = (float)(-0.1843137254901961D * 0.383F);
-    float f4 = (float)(0.07058823529411765D * 0.383F);
+    double d = 0.292F;
+    Double.isNaN(d);
+    float f1 = (float)(d * -0.1843137254901961D);
+    Double.isNaN(d);
+    float f2 = (float)(d * 0.07058823529411765D);
+    d = 0.383F;
+    Double.isNaN(d);
+    float f3 = (float)(-0.1843137254901961D * d);
+    Double.isNaN(d);
+    float f4 = (float)(d * 0.07058823529411765D);
     localBaseFilter2.addParam(new UniformParam.FloatsParam("shadowsShift", new float[] { f1, f2, 0.0F }));
     localBaseFilter2.addParam(new UniformParam.FloatsParam("midtonesShift", new float[] { f3, f4, 0.01960784F }));
     localBaseFilter2.addParam(new UniformParam.FloatsParam("highlightsShift", new float[] { 0.0627451F, -0.09411765F, 0.0F }));
@@ -29,7 +35,7 @@ public class MoLvFilter
     BaseFilter localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(60));
     localBaseFilter1.addParam(new UniformParam.FloatParam("inputH", 1.0F));
     localBaseFilter1.addParam(new UniformParam.FloatParam("inputS", 1.0F));
-    localBaseFilter1.addParam(new UniformParam.FloatParam("inputV", 0.292F / 2.0F + 1.0F));
+    localBaseFilter1.addParam(new UniformParam.FloatParam("inputV", 1.146F));
     localBaseFilter2.setNextFilter(localBaseFilter1, null);
     localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(54));
     localBaseFilter2.addParam(new TextureResParam("inputImageTexture2", "sh/molv_curve1.png", 33986));
@@ -43,7 +49,7 @@ public class MoLvFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.filter.ttpic.MoLvFilter
  * JD-Core Version:    0.7.0.1
  */

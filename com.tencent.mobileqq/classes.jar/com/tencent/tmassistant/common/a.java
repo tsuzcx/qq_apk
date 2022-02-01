@@ -10,21 +10,25 @@ class a
   
   public void run()
   {
-    if (s.b()) {}
-    try
-    {
-      this.b.a(this.a);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ab.c("DLSDK_PackageInstallReceiver", "halleytest installReport packageName = " + this.a, localException);
+    if (s.b()) {
+      try
+      {
+        this.b.a(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("halleytest installReport packageName = ");
+        localStringBuilder.append(this.a);
+        ab.c("DLSDK_PackageInstallReceiver", localStringBuilder.toString(), localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.a
  * JD-Core Version:    0.7.0.1
  */

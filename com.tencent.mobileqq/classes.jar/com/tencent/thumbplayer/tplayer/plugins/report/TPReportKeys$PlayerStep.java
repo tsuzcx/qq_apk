@@ -28,12 +28,13 @@ public final class TPReportKeys$PlayerStep
   public static final String PLAYER_SELECT_TRACK_TYPE = "tracktype";
   public static final String PLAYER_START_TIME = "stime";
   public static final String PLAYER_T302 = "t302";
+  public static final String PLAYER_TRACK_NAME = "name";
   public static final String PLAYER_URL = "url";
   public static final String PLAYER_URL_INDEX = "urlindex";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportKeys.PlayerStep
  * JD-Core Version:    0.7.0.1
  */

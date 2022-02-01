@@ -39,66 +39,73 @@ public class FeedListPageLoaderBase$FeedIdListCache
   
   public FeedListPageLoaderBase.GetFeedIdListResult a(int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    int i;
-    ArrayList localArrayList;
-    for (;;)
+    try
     {
-      try
-      {
-        FeedListPageLoaderBase.GetFeedIdListResult localGetFeedIdListResult1 = new FeedListPageLoaderBase.GetFeedIdListResult();
-        if (paramInt1 == 0)
-        {
-          localGetFeedIdListResult1.jdField_a_of_type_Boolean = bool;
-          if (this.jdField_a_of_type_JavaUtilList.size() <= paramInt1) {
-            break label330;
-          }
-          i = paramInt2;
-          if (paramInt1 + paramInt2 > this.jdField_a_of_type_JavaUtilList.size()) {
-            i = this.jdField_a_of_type_JavaUtilList.size() - paramInt1;
-          }
-          if ((paramInt1 + i >= this.jdField_a_of_type_JavaUtilList.size()) && (a())) {
-            localGetFeedIdListResult1.b = true;
-          }
-          localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-          localGetFeedIdListResult1.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt1 + i);
-          paramInt2 = paramInt1 + i;
-          if (paramInt2 >= this.jdField_a_of_type_JavaUtilList.size()) {
-            break label309;
-          }
-          FeedIdListSeqInfo localFeedIdListSeqInfo1 = (FeedIdListSeqInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
-          Iterator localIterator = localGetFeedIdListResult1.jdField_a_of_type_JavaUtilList.iterator();
-          if (!localFeedIdListSeqInfo1.b) {
-            break label309;
-          }
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          FeedIdListSeqInfo localFeedIdListSeqInfo2 = (FeedIdListSeqInfo)localIterator.next();
-          if ((!localFeedIdListSeqInfo2.b) || (!localFeedIdListSeqInfo2.c.equals(localFeedIdListSeqInfo1.c))) {
-            continue;
-          }
-          localIterator.remove();
-          SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "remove one fail info:%s", new Object[] { localFeedIdListSeqInfo2 });
-          continue;
-        }
-        bool = false;
+      localGetFeedIdListResult = new FeedListPageLoaderBase.GetFeedIdListResult();
+      if (paramInt1 != 0) {
+        break label339;
       }
-      finally {}
+      bool = true;
     }
-    if (localGetFeedIdListResult2.jdField_a_of_type_JavaUtilList.isEmpty())
+    finally
     {
-      localGetFeedIdListResult2.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt1 + i);
-      SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "bad luck for you have too much fail %s", new Object[] { localGetFeedIdListResult2.jdField_a_of_type_JavaUtilList });
+      for (;;)
+      {
+        FeedListPageLoaderBase.GetFeedIdListResult localGetFeedIdListResult;
+        int i;
+        ArrayList localArrayList;
+        FeedIdListSeqInfo localFeedIdListSeqInfo1;
+        Iterator localIterator;
+        for (;;)
+        {
+          throw localObject;
+        }
+        label339:
+        boolean bool = false;
+      }
     }
-    for (;;)
+    localGetFeedIdListResult.jdField_a_of_type_Boolean = bool;
+    if (this.jdField_a_of_type_JavaUtilList.size() > paramInt1)
     {
-      label309:
-      this.b = (localGetFeedIdListResult2.jdField_a_of_type_JavaUtilList.size() + paramInt1);
-      return localGetFeedIdListResult2;
-      label330:
-      localGetFeedIdListResult2.b = a();
+      i = paramInt2;
+      if (paramInt1 + paramInt2 > this.jdField_a_of_type_JavaUtilList.size()) {
+        i = this.jdField_a_of_type_JavaUtilList.size() - paramInt1;
+      }
+      paramInt2 = i + paramInt1;
+      if ((paramInt2 >= this.jdField_a_of_type_JavaUtilList.size()) && (a())) {
+        localGetFeedIdListResult.b = true;
+      }
+      localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+      localGetFeedIdListResult.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt2);
+      if (paramInt2 < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localFeedIdListSeqInfo1 = (FeedIdListSeqInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
+        localIterator = localGetFeedIdListResult.jdField_a_of_type_JavaUtilList.iterator();
+        if (localFeedIdListSeqInfo1.b)
+        {
+          while (localIterator.hasNext())
+          {
+            FeedIdListSeqInfo localFeedIdListSeqInfo2 = (FeedIdListSeqInfo)localIterator.next();
+            if ((localFeedIdListSeqInfo2.b) && (localFeedIdListSeqInfo2.c.equals(localFeedIdListSeqInfo1.c)))
+            {
+              localIterator.remove();
+              SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "remove one fail info:%s", new Object[] { localFeedIdListSeqInfo2 });
+            }
+          }
+          if (localGetFeedIdListResult.jdField_a_of_type_JavaUtilList.isEmpty())
+          {
+            localGetFeedIdListResult.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt2);
+            SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "bad luck for you have too much fail %s", new Object[] { localGetFeedIdListResult.jdField_a_of_type_JavaUtilList });
+          }
+        }
+      }
     }
+    else
+    {
+      localGetFeedIdListResult.b = a();
+    }
+    this.b = (paramInt1 + localGetFeedIdListResult.jdField_a_of_type_JavaUtilList.size());
+    return localGetFeedIdListResult;
   }
   
   public String a()
@@ -176,19 +183,32 @@ public class FeedListPageLoaderBase$FeedIdListCache
   {
     try
     {
-      String str = "FeedIdListCache{mFeedIdListCache=" + this.jdField_a_of_type_JavaUtilList + ", mFeedIdNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mCurFeedIdPosition=" + this.jdField_a_of_type_Int + ", mTempFeedIdPosition=" + this.b + '}';
-      return str;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("FeedIdListCache{mFeedIdListCache=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList);
+      ((StringBuilder)localObject1).append(", mFeedIdNextCookie='");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append('\'');
+      ((StringBuilder)localObject1).append(", mIsEnd=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(", mCurFeedIdPosition=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(", mTempFeedIdPosition=");
+      ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append('}');
+      localObject1 = ((StringBuilder)localObject1).toString();
+      return localObject1;
     }
     finally
     {
-      localObject = finally;
-      throw localObject;
+      localObject2 = finally;
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache
  * JD-Core Version:    0.7.0.1
  */

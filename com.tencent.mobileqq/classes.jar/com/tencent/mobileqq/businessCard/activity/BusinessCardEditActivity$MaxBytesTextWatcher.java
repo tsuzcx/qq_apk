@@ -31,60 +31,47 @@ class BusinessCardEditActivity$MaxBytesTextWatcher
   
   public void afterTextChanged(Editable paramEditable)
   {
-    int j = 1;
-    boolean bool;
-    label69:
-    int i;
     if ((this.jdField_b_of_type_Int == 1) && (!this.jdField_a_of_type_JavaLangString.equals(paramEditable.toString())))
     {
-      if (this.jdField_a_of_type_Boolean)
-      {
+      boolean bool;
+      if (this.jdField_a_of_type_Boolean) {
         bool = this.jdField_b_of_type_Boolean;
-        this.jdField_b_of_type_Boolean = bool;
+      } else {
+        bool = true;
       }
+      this.jdField_b_of_type_Boolean = bool;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText;
+    if ((paramEditable instanceof ClearEllipsisEditText)) {
+      paramEditable = ((ClearEllipsisEditText)paramEditable).a();
+    } else {
+      paramEditable = paramEditable.getText().toString();
+    }
+    int i = paramEditable.length();
+    int j;
+    if ((this.jdField_a_of_type_AndroidWidgetEditText.getTag() != null) && (((String)this.jdField_a_of_type_AndroidWidgetEditText.getTag()).equals("name")))
+    {
+      i = paramEditable.getBytes().length;
+      j = 1;
     }
     else
     {
-      this.jdField_a_of_type_Boolean = false;
-      if (!(this.jdField_a_of_type_AndroidWidgetEditText instanceof ClearEllipsisEditText)) {
-        break label155;
-      }
-      paramEditable = ((ClearEllipsisEditText)this.jdField_a_of_type_AndroidWidgetEditText).a();
-      i = paramEditable.length();
-      if ((this.jdField_a_of_type_AndroidWidgetEditText.getTag() == null) || (!((String)this.jdField_a_of_type_AndroidWidgetEditText.getTag()).equals("name"))) {
-        break label197;
-      }
-      i = paramEditable.getBytes().length;
+      j = 0;
     }
-    for (;;)
+    if (i > this.jdField_a_of_type_Int)
     {
-      if (i > this.jdField_a_of_type_Int)
+      while (i > this.jdField_a_of_type_Int)
       {
-        for (;;)
-        {
-          if (i <= this.jdField_a_of_type_Int) {
-            break label177;
-          }
-          paramEditable = paramEditable.substring(0, paramEditable.length() - 1);
-          if (j != 0)
-          {
-            i = paramEditable.getBytes().length;
-            continue;
-            bool = true;
-            break;
-            label155:
-            paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-            break label69;
-          }
+        paramEditable = paramEditable.substring(0, paramEditable.length() - 1);
+        if (j != 0) {
+          i = paramEditable.getBytes().length;
+        } else {
           i = paramEditable.length();
         }
-        label177:
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramEditable.length());
       }
-      return;
-      label197:
-      j = 0;
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramEditable.length());
     }
   }
   
@@ -97,7 +84,7 @@ class BusinessCardEditActivity$MaxBytesTextWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.MaxBytesTextWatcher
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,13 @@ class GdtDownloadReportManager$1
   
   public void installSucceed(String paramString1, String paramString2)
   {
-    if ((GdtDownloadReportManager.a(this.a) == null) || (GdtDownloadReportManager.a(this.a).getAppId() == null) || (GdtDownloadReportManager.a(this.a).getAppPackageName() == null) || (!GdtDownloadReportManager.a(this.a).getAppId().equals(paramString1)) || (!GdtDownloadReportManager.a(this.a).getAppPackageName().equals(paramString2)))
+    if ((GdtDownloadReportManager.a(this.a) != null) && (GdtDownloadReportManager.a(this.a).getAppId() != null) && (GdtDownloadReportManager.a(this.a).getAppPackageName() != null) && (GdtDownloadReportManager.a(this.a).getAppId().equals(paramString1)) && (GdtDownloadReportManager.a(this.a).getAppPackageName().equals(paramString2)))
     {
-      GdtLog.d("GdtDownloadReportManager", "no ad or not the same ad");
+      paramString2 = GdtDownloadReportManager.a(this.a, paramString2);
+      ThreadManager.getFileThreadHandler().post(new GdtDownloadReportManager.1.1(this, paramString2, paramString1));
       return;
     }
-    paramString2 = GdtDownloadReportManager.a(this.a, paramString2);
-    ThreadManager.getFileThreadHandler().post(new GdtDownloadReportManager.1.1(this, paramString2, paramString1));
+    GdtLog.d("GdtDownloadReportManager", "no ad or not the same ad");
   }
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
@@ -35,55 +35,76 @@ class GdtDownloadReportManager$1
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    if ((paramDownloadInfo == null) || (TextUtils.isEmpty(paramDownloadInfo.c))) {}
-    do
+    if (paramDownloadInfo != null)
     {
-      return;
-      GdtLog.a("GdtDownloadReportManager", "onDownloadFinish: infos:" + paramDownloadInfo.f);
+      if (TextUtils.isEmpty(paramDownloadInfo.c)) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadFinish: infos:");
+      ((StringBuilder)localObject).append(paramDownloadInfo.f);
+      GdtLog.a("GdtDownloadReportManager", ((StringBuilder)localObject).toString());
       if ((GdtDownloadReportManager.a(this.a).containsKey(paramDownloadInfo.c)) && (GdtDownloadReportManager.a(this.a).get(paramDownloadInfo.c) != null))
       {
         GdtTraceReporter.a((Ad)GdtDownloadReportManager.a(this.a).get(paramDownloadInfo.c), 274);
         return;
       }
-    } while (!GdtDownloadReportManager.a(this.a, paramDownloadInfo, GdtDownloadReportManager.a(this.a)));
-    GdtTraceReporter.a(GdtDownloadReportManager.a(this.a), 274);
+      localObject = this.a;
+      if (GdtDownloadReportManager.a((GdtDownloadReportManager)localObject, paramDownloadInfo, GdtDownloadReportManager.a((GdtDownloadReportManager)localObject))) {
+        GdtTraceReporter.a(GdtDownloadReportManager.a(this.a), 274);
+      }
+    }
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    if ((paramDownloadInfo == null) || (TextUtils.isEmpty(paramDownloadInfo.c))) {}
-    do
+    if (paramDownloadInfo != null)
     {
-      return;
-      GdtLog.a("GdtDownloadReportManager", "onDownloadPause: infos:" + paramDownloadInfo.f);
+      if (TextUtils.isEmpty(paramDownloadInfo.c)) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadPause: infos:");
+      ((StringBuilder)localObject).append(paramDownloadInfo.f);
+      GdtLog.a("GdtDownloadReportManager", ((StringBuilder)localObject).toString());
       if ((GdtDownloadReportManager.a(this.a).containsKey(paramDownloadInfo.c)) && (GdtDownloadReportManager.a(this.a).get(paramDownloadInfo.c) != null))
       {
         GdtTraceReporter.a((Ad)GdtDownloadReportManager.a(this.a).get(paramDownloadInfo.c), 273);
         GdtDownloadReportManager.b(this.a).put(paramDownloadInfo.c, GdtDownloadReportManager.a(this.a).get(paramDownloadInfo.c));
         return;
       }
-    } while (!GdtDownloadReportManager.a(this.a, paramDownloadInfo, GdtDownloadReportManager.a(this.a)));
-    GdtTraceReporter.a(GdtDownloadReportManager.a(this.a), 273);
+      localObject = this.a;
+      if (GdtDownloadReportManager.a((GdtDownloadReportManager)localObject, paramDownloadInfo, GdtDownloadReportManager.a((GdtDownloadReportManager)localObject))) {
+        GdtTraceReporter.a(GdtDownloadReportManager.a(this.a), 273);
+      }
+    }
   }
   
   public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
-      GdtLog.a("GdtDownloadReportManager", "onDownloadUpdate: infos:" + paramList.size());
+      if (paramList.size() == 0) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadUpdate: infos:");
+      ((StringBuilder)localObject).append(paramList.size());
+      GdtLog.a("GdtDownloadReportManager", ((StringBuilder)localObject).toString());
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        if ((localDownloadInfo != null) && (!TextUtils.isEmpty(localDownloadInfo.c)))
+        localObject = (DownloadInfo)paramList.next();
+        if ((localObject != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject).c)))
         {
-          GdtLog.a("GdtDownloadReportManager", "onDownloadUpdate: progress:" + localDownloadInfo.f);
-          if ((GdtDownloadReportManager.b(this.a).containsKey(localDownloadInfo.c)) && (GdtDownloadReportManager.b(this.a).get(localDownloadInfo.c) != null))
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onDownloadUpdate: progress:");
+          localStringBuilder.append(((DownloadInfo)localObject).f);
+          GdtLog.a("GdtDownloadReportManager", localStringBuilder.toString());
+          if ((GdtDownloadReportManager.b(this.a).containsKey(((DownloadInfo)localObject).c)) && (GdtDownloadReportManager.b(this.a).get(((DownloadInfo)localObject).c) != null))
           {
-            GdtTraceReporter.a((Ad)GdtDownloadReportManager.b(this.a).get(localDownloadInfo.c), 271);
-            GdtDownloadReportManager.b(this.a).remove(localDownloadInfo.c);
+            GdtTraceReporter.a((Ad)GdtDownloadReportManager.b(this.a).get(((DownloadInfo)localObject).c), 271);
+            GdtDownloadReportManager.b(this.a).remove(((DownloadInfo)localObject).c);
           }
         }
       }
@@ -101,7 +122,7 @@ class GdtDownloadReportManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.appbutton.GdtDownloadReportManager.1
  * JD-Core Version:    0.7.0.1
  */

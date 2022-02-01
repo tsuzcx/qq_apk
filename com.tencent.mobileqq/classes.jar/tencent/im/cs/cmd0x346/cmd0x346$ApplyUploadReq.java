@@ -25,13 +25,15 @@ public final class cmd0x346$ApplyUploadReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 80, 160, 240, 320, 402, 482, 562, 640, 720 }, new String[] { "uint64_sender_uin", "uint64_recver_uin", "uint32_file_type", "uint64_file_size", "str_file_name", "bytes_10m_md5", "str_local_filepath", "uint32_danger_level", "uint64_total_space" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), "", localByteStringMicro, "", Integer.valueOf(0), Long.valueOf(0L) }, ApplyUploadReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 80, 160, 240, 320, 402, 482, 562, 640, 720 }, new String[] { "uint64_sender_uin", "uint64_recver_uin", "uint32_file_type", "uint64_file_size", "str_file_name", "bytes_10m_md5", "str_local_filepath", "uint32_danger_level", "uint64_total_space" }, new Object[] { localLong, localLong, localInteger, localLong, "", localByteStringMicro, "", localInteger, localLong }, ApplyUploadReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadReq
  * JD-Core Version:    0.7.0.1
  */

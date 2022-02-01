@@ -18,11 +18,16 @@ final class ln$2
   
   public final void a(Runnable paramRunnable)
   {
-    if (paramRunnable == null) {}
-    while ((this.a.b == null) || (this.a.b.ad == null)) {
+    if (paramRunnable == null) {
       return;
     }
-    this.a.b.ad.postDelayed(paramRunnable, 100L);
+    if (this.a.b != null)
+    {
+      if (this.a.b.ad == null) {
+        return;
+      }
+      this.a.b.ad.postDelayed(paramRunnable, 100L);
+    }
   }
   
   public final GeoPoint b()
@@ -75,7 +80,7 @@ final class ln$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ln.2
  * JD-Core Version:    0.7.0.1
  */

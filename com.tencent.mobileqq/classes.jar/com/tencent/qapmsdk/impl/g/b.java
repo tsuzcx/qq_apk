@@ -31,12 +31,13 @@ public class b
   
   public static void a(int paramInt)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      k = bool;
-      return;
+    boolean bool;
+    if (paramInt == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    k = bool;
   }
   
   public static void a(Context paramContext)
@@ -72,7 +73,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.g.b
  * JD-Core Version:    0.7.0.1
  */

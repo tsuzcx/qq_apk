@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animated-vector android:drawable="@drawable/blf"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/blf" />
-    <item android:drawable="@drawable/ble" />
-</selector>
+    <target android:name="icon_null" android:animation="@anim/ja" />
+    <target android:name="box_outer_merged" android:animation="@anim/j_" />
+    <target android:name="box_inner_merged" android:animation="@anim/j9" />
+</animated-vector>

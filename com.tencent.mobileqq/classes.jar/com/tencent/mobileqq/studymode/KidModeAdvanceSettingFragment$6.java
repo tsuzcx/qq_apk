@@ -14,14 +14,14 @@ class KidModeAdvanceSettingFragment$6
   {
     ILebaHelperService localILebaHelperService = KidModeAdvanceSettingFragment.a(this.a);
     if (localILebaHelperService != null) {
-      localILebaHelperService.goToLebaMgrActivity(this.a.getActivity(), KidModeAdvanceSettingFragment.a(this.a));
+      localILebaHelperService.goToLebaMgrActivity(this.a.getBaseActivity(), KidModeAdvanceSettingFragment.a(this.a));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment.6
  * JD-Core Version:    0.7.0.1
  */

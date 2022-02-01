@@ -13,30 +13,33 @@ class QRDisplayActivity$26$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    do
-    {
-      do
-      {
+      if ((i != 1) && (i != 3)) {
         return true;
-      } while (QRDisplayActivity.a(this.a.this$0) == null);
-      QRDisplayActivity.a(this.a.this$0, false);
-      QRDisplayActivity.a(this.a.this$0).start();
-      return true;
+      }
       if (QRDisplayActivity.a(this.a.this$0) != null) {
         QRDisplayActivity.a(this.a.this$0).cancel();
       }
-    } while ((QRDisplayActivity.a(this.a.this$0)) || (paramMotionEvent.getAction() != 1));
-    AccessibilityUtil.c(this.a.this$0.d);
-    this.a.this$0.onClick(this.a.this$0.d);
+      if ((!QRDisplayActivity.a(this.a.this$0)) && (paramMotionEvent.getAction() == 1))
+      {
+        AccessibilityUtil.c(this.a.this$0.d);
+        this.a.this$0.onClick(this.a.this$0.d);
+        return true;
+      }
+    }
+    else if (QRDisplayActivity.a(this.a.this$0) != null)
+    {
+      QRDisplayActivity.a(this.a.this$0, false);
+      QRDisplayActivity.a(this.a.this$0).start();
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.26.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,13 +22,14 @@ public final class cmd0x8a1$ClientInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_pub_no", "uint32_version", "uint32_app_id", "string_inst_id" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, ClientInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_pub_no", "uint32_version", "uint32_app_id", "string_inst_id" }, new Object[] { localInteger, localInteger, localInteger, localByteStringMicro }, ClientInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a1.cmd0x8a1.ClientInfo
  * JD-Core Version:    0.7.0.1
  */

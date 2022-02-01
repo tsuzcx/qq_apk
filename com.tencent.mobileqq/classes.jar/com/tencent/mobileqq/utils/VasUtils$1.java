@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
 final class VasUtils$1
@@ -14,12 +14,13 @@ final class VasUtils$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
+    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    if ((localObject != null) && ((localObject instanceof BaseActivity)))
     {
-      FragmentActivity localFragmentActivity = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
-      if ((localFragmentActivity.getChatFragment() != null) && (localFragmentActivity.getChatFragment().a() != null))
+      localObject = (BaseActivity)localObject;
+      if ((((BaseActivity)localObject).getChatFragment() != null) && (((BaseActivity)localObject).getChatFragment().a() != null))
       {
-        localFragmentActivity.getChatFragment().a().Z();
+        ((BaseActivity)localObject).getChatFragment().a().G();
         if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
           QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, this.jdField_a_of_type_JavaLangString, 0).a();
         }
@@ -29,7 +30,7 @@ final class VasUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VasUtils.1
  * JD-Core Version:    0.7.0.1
  */

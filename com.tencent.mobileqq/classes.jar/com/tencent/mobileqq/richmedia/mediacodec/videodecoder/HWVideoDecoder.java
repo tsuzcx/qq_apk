@@ -29,7 +29,7 @@ public class HWVideoDecoder
   public static final int SPEED_TYPE_SLOW = 2;
   public static final int SPEED_TYPE_VERY_SLOW = 4;
   private static final String TAG = "HWVideoDecoder";
-  public static String debugDecodeFilePath = Environment.getExternalStorageDirectory() + "/Tencent/com/tencent/mobileqq/debugDecodeShortVideo";
+  public static String debugDecodeFilePath;
   private HWVideoDecoder.DecodeRunnable currentDecodeRunnable;
   private Thread currentDecodeThread;
   private DecodeOutputSurface decodeOutputSurface;
@@ -39,14 +39,26 @@ public class HWVideoDecoder
   private HandlerThread mPlayThread;
   private Object mSeekingFlag = new Object();
   
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append("/Tencent/com/tencent/mobileqq/debugDecodeShortVideo");
+    debugDecodeFilePath = localStringBuilder.toString();
+  }
+  
   private void assureThread()
   {
-    if ((this.mPlayThread != null) && (this.mPlayThread.isAlive()) && (this.mPlayHandler != null))
+    Object localObject = this.mPlayThread;
+    if ((localObject != null) && (((HandlerThread)localObject).isAlive()) && (this.mPlayHandler != null))
     {
       this.logger.d("HWVideoDecoder", "playThread: already start");
       return;
     }
-    this.mPlayThread = new HandlerThread("HWVideoDecoder_" + hashCode());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("HWVideoDecoder_");
+    ((StringBuilder)localObject).append(hashCode());
+    this.mPlayThread = new HandlerThread(((StringBuilder)localObject).toString());
     this.mPlayThread.start();
     while (!this.mPlayThread.isAlive()) {}
     this.mPlayHandler = new HWVideoDecoder.PlayHandler(this, this.mPlayThread.getLooper());
@@ -54,55 +66,65 @@ public class HWVideoDecoder
   
   public static final float getSpeedRate(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return 1.0F;
-    case 1: 
-      return 2.0F;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return 1.0F;
+            }
+            return -1.0F;
+          }
+          return 0.25F;
+        }
+        return 1.5F;
+      }
       return 0.5F;
-    case 3: 
-      return 1.5F;
-    case 4: 
-      return 0.25F;
     }
-    return -1.0F;
+    return 2.0F;
   }
   
   private void sendMessage(int paramInt1, int paramInt2, Object paramObject)
   {
-    HWVideoDecoder.PlayHandler localPlayHandler;
-    if (this.mPlayHandler != null)
+    HWVideoDecoder.PlayHandler localPlayHandler = this.mPlayHandler;
+    if (localPlayHandler != null)
     {
-      localPlayHandler = this.mPlayHandler;
-      if (paramInt1 != 0) {
-        break label34;
+      int i;
+      if (paramInt1 == 0) {
+        i = 1;
+      } else {
+        i = 2;
       }
-    }
-    label34:
-    for (int i = 1;; i = 2)
-    {
       localPlayHandler.obtainMessage(i, paramInt1, paramInt2, paramObject).sendToTarget();
-      return;
     }
   }
   
   private void startDecode(DecodeConfig paramDecodeConfig, Surface paramSurface, HWDecodeListener paramHWDecodeListener)
   {
-    if ((paramDecodeConfig == null) || (paramSurface == null)) {
-      throw new IllegalArgumentException("both decodeConfig and surface should not be null");
-    }
-    this.logger.i("HWVideoDecoder", "startDecode config = " + paramDecodeConfig);
-    Thread localThread;
-    if (this.currentDecodeThread != null)
+    if ((paramDecodeConfig != null) && (paramSurface != null))
     {
-      localThread = this.currentDecodeThread;
-      stopDecode();
-    }
-    try
-    {
-      localThread.join();
+      Object localObject = this.logger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startDecode config = ");
+      localStringBuilder.append(paramDecodeConfig);
+      ((Logger)localObject).i("HWVideoDecoder", localStringBuilder.toString());
+      localObject = this.currentDecodeThread;
+      if (localObject != null)
+      {
+        stopDecode();
+        try
+        {
+          ((Thread)localObject).join();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          localInterruptedException.printStackTrace();
+        }
+      }
       this.currentDecodeRunnable = new HWVideoDecoder.DecodeRunnable(paramDecodeConfig.inputFilePath, paramSurface, paramHWDecodeListener, this.mSeekingFlag);
       this.currentDecodeRunnable.setDecodeConfig(paramDecodeConfig);
       this.currentDecodeRunnable.setPKManager(this.mPKManager);
@@ -111,13 +133,7 @@ public class HWVideoDecoder
       assureThread();
       return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
+    throw new IllegalArgumentException("both decodeConfig and surface should not be null");
   }
   
   public void decodeFrame()
@@ -126,7 +142,11 @@ public class HWVideoDecoder
     if ((localDecodeRunnable != null) && (HWVideoDecoder.DecodeRunnable.access$000(localDecodeRunnable).get()))
     {
       sendMessage(0, 0, null);
-      this.logger.d("HWVideoDecoder", "decodeFrame, " + HWVideoDecoder.DecodeRunnable.access$000(localDecodeRunnable).get());
+      Logger localLogger = this.logger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("decodeFrame, ");
+      localStringBuilder.append(HWVideoDecoder.DecodeRunnable.access$000(localDecodeRunnable).get());
+      localLogger.d("HWVideoDecoder", localStringBuilder.toString());
       return;
     }
     this.logger.w("HWVideoDecoder", "decodeFrame failed, can not find DecodeRunnable");
@@ -143,78 +163,116 @@ public class HWVideoDecoder
   
   public long getProgress()
   {
-    if (this.currentDecodeRunnable == null) {
+    HWVideoDecoder.DecodeRunnable localDecodeRunnable = this.currentDecodeRunnable;
+    if (localDecodeRunnable == null) {
       return 0L;
     }
-    return this.currentDecodeRunnable.getProgress();
+    return localDecodeRunnable.getProgress();
   }
   
   public void handlePlay()
   {
     HWVideoDecoder.DecodeRunnable localDecodeRunnable = this.currentDecodeRunnable;
-    if (localDecodeRunnable != null) {}
-    synchronized (HWVideoDecoder.DecodeRunnable.access$100(localDecodeRunnable))
-    {
-      HWVideoDecoder.DecodeRunnable.access$100(localDecodeRunnable).notifyAll();
-      this.logger.d("HWVideoDecoder", "handlePlay");
-      return;
+    if (localDecodeRunnable != null) {
+      synchronized (HWVideoDecoder.DecodeRunnable.access$100(localDecodeRunnable))
+      {
+        HWVideoDecoder.DecodeRunnable.access$100(localDecodeRunnable).notifyAll();
+        this.logger.d("HWVideoDecoder", "handlePlay");
+        return;
+      }
     }
   }
   
   public void handleSeek(long paramLong)
   {
     HWVideoDecoder.DecodeRunnable localDecodeRunnable = this.currentDecodeRunnable;
-    if (localDecodeRunnable != null) {}
-    try
-    {
-      if (localDecodeRunnable.isSeeking()) {}
-      synchronized (this.mSeekingFlag)
+    if (localDecodeRunnable != null) {
+      try
       {
-        this.mSeekingFlag.wait(1000L);
-        localDecodeRunnable.seekTo(paramLong);
-        this.logger.d("HWVideoDecoder", "handleSeek " + paramLong + " ms");
+        if (localDecodeRunnable.isSeeking()) {
+          synchronized (this.mSeekingFlag)
+          {
+            this.mSeekingFlag.wait(1000L);
+          }
+        }
+        localObject2.seekTo(paramLong);
+        ??? = this.logger;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("handleSeek ");
+        ((StringBuilder)localObject3).append(paramLong);
+        ((StringBuilder)localObject3).append(" ms");
+        ((Logger)???).d("HWVideoDecoder", ((StringBuilder)localObject3).toString());
         return;
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      this.logger.e("HWVideoDecoder", "handleSeek " + paramLong + " ms", localException);
+      catch (Exception localException)
+      {
+        Object localObject3 = this.logger;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleSeek ");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append(" ms");
+        ((Logger)localObject3).e("HWVideoDecoder", localStringBuilder.toString(), localException);
+      }
     }
   }
   
   public void handleSeekNext(long paramLong)
   {
     HWVideoDecoder.DecodeRunnable localDecodeRunnable = this.currentDecodeRunnable;
-    if (localDecodeRunnable != null) {}
-    try
-    {
-      if (localDecodeRunnable.isSeeking()) {}
-      synchronized (this.mSeekingFlag)
+    if (localDecodeRunnable != null) {
+      try
       {
-        this.mSeekingFlag.wait(1000L);
-        localDecodeRunnable.nextTo(paramLong);
-        this.logger.d("HWVideoDecoder", "handleSeekNext " + paramLong + " ms");
+        if (localDecodeRunnable.isSeeking()) {
+          synchronized (this.mSeekingFlag)
+          {
+            this.mSeekingFlag.wait(1000L);
+          }
+        }
+        localObject2.nextTo(paramLong);
+        ??? = this.logger;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("handleSeekNext ");
+        ((StringBuilder)localObject3).append(paramLong);
+        ((StringBuilder)localObject3).append(" ms");
+        ((Logger)???).d("HWVideoDecoder", ((StringBuilder)localObject3).toString());
         return;
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      this.logger.e("HWVideoDecoder", "handleSeekNext " + paramLong + " ms", localException);
+      catch (Exception localException)
+      {
+        Object localObject3 = this.logger;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleSeekNext ");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append(" ms");
+        ((Logger)localObject3).e("HWVideoDecoder", localStringBuilder.toString(), localException);
+      }
     }
   }
   
   public void nextTo(long paramLong)
   {
-    if ((this.currentDecodeRunnable != null) && (this.mPlayHandler != null))
+    if (this.currentDecodeRunnable != null)
     {
-      this.mPlayHandler.removeMessages(2);
-      sendMessage(3, (int)paramLong, null);
-      this.logger.d("HWVideoDecoder", "nextTo " + paramLong + " ms");
-      return;
+      localObject = this.mPlayHandler;
+      if (localObject != null)
+      {
+        ((HWVideoDecoder.PlayHandler)localObject).removeMessages(2);
+        sendMessage(3, (int)paramLong, null);
+        localObject = this.logger;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("nextTo ");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append(" ms");
+        ((Logger)localObject).d("HWVideoDecoder", localStringBuilder.toString());
+        return;
+      }
     }
-    this.logger.w("HWVideoDecoder", "nextTo " + paramLong + " ms failed, can not find DecodeRunnable");
+    Object localObject = this.logger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("nextTo ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" ms failed, can not find DecodeRunnable");
+    ((Logger)localObject).w("HWVideoDecoder", localStringBuilder.toString());
   }
   
   public void pauseDecode()
@@ -224,7 +282,11 @@ public class HWVideoDecoder
     {
       HWVideoDecoder.DecodeRunnable.access$000(localDecodeRunnable).compareAndSet(false, true);
       sendMessage(1, 0, null);
-      this.logger.d("HWVideoDecoder", "pauseDecode " + HWVideoDecoder.DecodeRunnable.access$000(localDecodeRunnable).get());
+      Logger localLogger = this.logger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pauseDecode ");
+      localStringBuilder.append(HWVideoDecoder.DecodeRunnable.access$000(localDecodeRunnable).get());
+      localLogger.d("HWVideoDecoder", localStringBuilder.toString());
       return;
     }
     this.logger.w("HWVideoDecoder", "pauseDecode failed, can not find DecodeRunnable");
@@ -238,7 +300,11 @@ public class HWVideoDecoder
       localDecodeRunnable.clearTimeStamp();
       HWVideoDecoder.DecodeRunnable.access$000(localDecodeRunnable).compareAndSet(true, false);
       sendMessage(0, 0, null);
-      this.logger.d("HWVideoDecoder", "resumeDecode " + HWVideoDecoder.DecodeRunnable.access$000(localDecodeRunnable).get());
+      Logger localLogger = this.logger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resumeDecode ");
+      localStringBuilder.append(HWVideoDecoder.DecodeRunnable.access$000(localDecodeRunnable).get());
+      localLogger.d("HWVideoDecoder", localStringBuilder.toString());
       return;
     }
     this.logger.w("HWVideoDecoder", "resumeDecode failed, can not find DecodeRunnable");
@@ -246,14 +312,28 @@ public class HWVideoDecoder
   
   public void seekTo(int paramInt)
   {
-    if ((this.currentDecodeRunnable != null) && (this.mPlayHandler != null))
+    if (this.currentDecodeRunnable != null)
     {
-      this.mPlayHandler.removeMessages(2);
-      sendMessage(2, paramInt, null);
-      this.logger.d("HWVideoDecoder", "seekTo " + paramInt + " ms");
-      return;
+      localObject = this.mPlayHandler;
+      if (localObject != null)
+      {
+        ((HWVideoDecoder.PlayHandler)localObject).removeMessages(2);
+        sendMessage(2, paramInt, null);
+        localObject = this.logger;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("seekTo ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" ms");
+        ((Logger)localObject).d("HWVideoDecoder", localStringBuilder.toString());
+        return;
+      }
     }
-    this.logger.w("HWVideoDecoder", "seekTo " + paramInt + " ms failed, can not find DecodeRunnable");
+    Object localObject = this.logger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seekTo ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" ms failed, can not find DecodeRunnable");
+    ((Logger)localObject).w("HWVideoDecoder", localStringBuilder.toString());
   }
   
   public void setPKManager(PKManager paramPKManager)
@@ -266,7 +346,14 @@ public class HWVideoDecoder
     HWVideoDecoder.DecodeRunnable localDecodeRunnable = this.currentDecodeRunnable;
     if (localDecodeRunnable != null)
     {
-      this.logger.d("HWVideoDecoder", "setPlayRange [" + paramLong1 + " ms, " + paramLong2 + " ms]");
+      Logger localLogger = this.logger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPlayRange [");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(" ms, ");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append(" ms]");
+      localLogger.d("HWVideoDecoder", localStringBuilder.toString());
       localDecodeRunnable.setPlayRange(paramLong1, paramLong2);
       return;
     }
@@ -283,14 +370,23 @@ public class HWVideoDecoder
   
   public void setSpeedType(int paramInt)
   {
-    HWVideoDecoder.DecodeRunnable localDecodeRunnable = this.currentDecodeRunnable;
-    if (localDecodeRunnable != null)
+    Object localObject = this.currentDecodeRunnable;
+    if (localObject != null)
     {
-      localDecodeRunnable.setSpeedType(paramInt);
-      this.logger.d("HWVideoDecoder", "setSpeedType" + paramInt);
+      ((HWVideoDecoder.DecodeRunnable)localObject).setSpeedType(paramInt);
+      localObject = this.logger;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setSpeedType");
+      localStringBuilder.append(paramInt);
+      ((Logger)localObject).d("HWVideoDecoder", localStringBuilder.toString());
       return;
     }
-    this.logger.w("HWVideoDecoder", "setSpeedType " + paramInt + " failed, can not find DecodeRunnable");
+    localObject = this.logger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setSpeedType ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" failed, can not find DecodeRunnable");
+    ((Logger)localObject).w("HWVideoDecoder", localStringBuilder.toString());
   }
   
   public void startDecode(DecodeConfig paramDecodeConfig, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, HWDecodeListener paramHWDecodeListener)
@@ -301,14 +397,20 @@ public class HWVideoDecoder
   
   public void stopDecode()
   {
-    if ((this.mPlayThread != null) && (this.mPlayThread.isAlive()) && (this.mPlayHandler != null))
+    Object localObject = this.mPlayThread;
+    if ((localObject != null) && (((HandlerThread)localObject).isAlive()))
     {
-      this.mPlayHandler.removeMessages(1);
-      this.mPlayHandler.removeMessages(2);
-      this.mPlayThread.quit();
+      localObject = this.mPlayHandler;
+      if (localObject != null)
+      {
+        ((HWVideoDecoder.PlayHandler)localObject).removeMessages(1);
+        this.mPlayHandler.removeMessages(2);
+        this.mPlayThread.quit();
+      }
     }
-    if (this.currentDecodeThread != null) {
-      this.currentDecodeThread.interrupt();
+    localObject = this.currentDecodeThread;
+    if (localObject != null) {
+      ((Thread)localObject).interrupt();
     }
     this.currentDecodeThread = null;
     this.currentDecodeRunnable = null;
@@ -316,7 +418,7 @@ public class HWVideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

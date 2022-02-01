@@ -99,13 +99,16 @@ public class MoreItemList$Builder
       QMLog.w("MoreItemList", "Failed to add moreItem, moreItem is null");
       return this;
     }
-    if ((paramMoreItem.id < 100) || (paramMoreItem.id > 200))
+    if ((paramMoreItem.id >= 100) && (paramMoreItem.id <= 200))
     {
-      QMLog.w("MoreItemList", "Failed to add more item, id must in range of [100, 200], but the actual id is " + paramMoreItem.id);
+      paramMoreItem.visible = this.mDisplaySettings.isShowShareOthers;
+      this.mMoreItemList.add(paramMoreItem);
       return this;
     }
-    paramMoreItem.visible = this.mDisplaySettings.isShowShareOthers;
-    this.mMoreItemList.add(paramMoreItem);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Failed to add more item, id must in range of [100, 200], but the actual id is ");
+    localStringBuilder.append(paramMoreItem.id);
+    QMLog.w("MoreItemList", localStringBuilder.toString());
     return this;
   }
   
@@ -266,7 +269,7 @@ public class MoreItemList$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ui.MoreItemList.Builder
  * JD-Core Version:    0.7.0.1
  */

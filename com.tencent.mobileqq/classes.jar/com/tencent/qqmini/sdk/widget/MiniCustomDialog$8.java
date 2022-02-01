@@ -12,27 +12,28 @@ class MiniCustomDialog$8
   
   public void onClick(View paramView)
   {
-    if (this.val$nl != null) {
-      this.val$nl.onClick(this.this$0, 1);
+    DialogInterface.OnClickListener localOnClickListener = this.val$nl;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(this.this$0, 1);
     }
     try
     {
       if (this.this$0.isShowing()) {
         this.this$0.dismiss();
       }
-      label38:
+      label37:
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
     catch (Exception localException)
     {
-      break label38;
+      break label37;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.MiniCustomDialog.8
  * JD-Core Version:    0.7.0.1
  */

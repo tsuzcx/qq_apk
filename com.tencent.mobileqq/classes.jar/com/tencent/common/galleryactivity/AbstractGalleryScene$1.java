@@ -46,37 +46,39 @@ class AbstractGalleryScene$1
       this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.b();
     }
     this.a.h();
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.e();
+    this.a.jdField_a_of_type_ComTencentWidgetGallery.reset();
   }
   
   public void i()
   {
     this.a.i();
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("gallery onExitAnimationEnd ");
-      if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a() != this.a) {
-        break label87;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("gallery onExitAnimationEnd ");
+      boolean bool;
+      if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a() == this.a) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("GalleryComponent", 2, ((StringBuilder)localObject).toString());
     }
-    label87:
-    for (boolean bool = true;; bool = false)
+    Object localObject = this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a();
+    AbstractGalleryScene localAbstractGalleryScene = this.a;
+    if (localObject == localAbstractGalleryScene)
     {
-      QLog.d("GalleryComponent", 2, bool);
-      if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a() != this.a) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidAppActivity.finish();
+      localAbstractGalleryScene.jdField_a_of_type_AndroidAppActivity.finish();
       return;
     }
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
+    localAbstractGalleryScene.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
     this.a.n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AbstractGalleryScene.1
  * JD-Core Version:    0.7.0.1
  */

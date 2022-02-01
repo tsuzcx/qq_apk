@@ -9,18 +9,19 @@ public class Section32Header
   public Section32Header(ElfParser paramElfParser, Elf.Header paramHeader, int paramInt)
   {
     ByteBuffer localByteBuffer = ByteBuffer.allocate(4);
-    if (paramHeader.bigEndian) {}
-    for (ByteOrder localByteOrder = ByteOrder.BIG_ENDIAN;; localByteOrder = ByteOrder.LITTLE_ENDIAN)
-    {
-      localByteBuffer.order(localByteOrder);
-      this.info = paramElfParser.readWord(localByteBuffer, paramHeader.shoff + paramHeader.shentsize * paramInt + 28L);
-      return;
+    ByteOrder localByteOrder;
+    if (paramHeader.bigEndian) {
+      localByteOrder = ByteOrder.BIG_ENDIAN;
+    } else {
+      localByteOrder = ByteOrder.LITTLE_ENDIAN;
     }
+    localByteBuffer.order(localByteOrder);
+    this.info = paramElfParser.readWord(localByteBuffer, paramHeader.shoff + paramInt * paramHeader.shentsize + 28L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.relinker.elf.Section32Header
  * JD-Core Version:    0.7.0.1
  */

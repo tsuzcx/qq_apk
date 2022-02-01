@@ -20,21 +20,21 @@ class QQCustomArkDialog$2
   {
     WeakReference localWeakReference = new WeakReference(this.a);
     ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.1(this, localWeakReference, paramInt));
-    if (paramInt == 0) {}
-    do
-    {
+    if (paramInt == 0) {
       return;
-      QQCustomArkDialog.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(QQCustomArkDialog.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(QQCustomArkDialog.b(this.a)) });
-      }
-    } while (!QQCustomArkDialog.a(this.a));
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
+    }
+    QQCustomArkDialog.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(QQCustomArkDialog.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(QQCustomArkDialog.b(this.a)) });
+    }
+    if (QQCustomArkDialog.a(this.a)) {
+      ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomArkDialog.2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ public abstract interface QwUtils$AnsyListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     cooperation.qwallet.QwUtils.AnsyListener
  * JD-Core Version:    0.7.0.1
  */

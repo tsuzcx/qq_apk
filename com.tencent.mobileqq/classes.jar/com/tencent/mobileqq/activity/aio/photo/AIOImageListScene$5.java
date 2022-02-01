@@ -23,125 +23,122 @@ class AIOImageListScene$5
     return null;
   }
   
-  public void a(int paramInt)
+  public void onSelectBegin(int paramInt)
   {
-    boolean bool2 = false;
-    if (!AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {}
-    AIORichMediaInfo localAIORichMediaInfo;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a() == 2);
-      localAIORichMediaInfo = a(paramInt);
-    } while (localAIORichMediaInfo == null);
-    if (localAIORichMediaInfo.getSelected() == 1) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      this.jdField_a_of_type_Boolean = bool1;
-      AIOImageListScene localAIOImageListScene = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene;
-      bool1 = bool2;
-      if (!this.jdField_a_of_type_Boolean) {
-        bool1 = true;
-      }
-      if (localAIOImageListScene.a(localAIORichMediaInfo, bool1, true))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.w();
-        AIOImageListScene.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).invalidateViews();
-      }
-      this.jdField_b_of_type_Boolean = true;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("AIOImageListScene", 2, "onSelectBegin beginIndex:" + paramInt);
+    if (!AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {
       return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a() == 2) {
+      return;
+    }
+    Object localObject = a(paramInt);
+    if (localObject == null) {
+      return;
+    }
+    boolean bool;
+    if (((AIORichMediaInfo)localObject).getSelected() == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.jdField_a_of_type_Boolean = bool;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a((AIORichMediaInfo)localObject, this.jdField_a_of_type_Boolean ^ true, true))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.w();
+      AIOImageListScene.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).invalidateViews();
+    }
+    this.jdField_b_of_type_Boolean = true;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onSelectBegin beginIndex:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AIOImageListScene", 2, ((StringBuilder)localObject).toString());
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onSelectChanged(int paramInt1, int paramInt2)
   {
-    if (!AIOImageListScene.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {}
-    while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a() == 2) || (!this.jdField_b_of_type_Boolean)) {
+    if (!AIOImageListScene.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOImageListScene", 2, "onSelectChanged beginIndex:" + paramInt1 + " selectIndex:" + paramInt2);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a() == 2) {
+      return;
     }
-    int j;
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onSelectChanged beginIndex:");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" selectIndex:");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("AIOImageListScene", 2, ((StringBuilder)localObject).toString());
+    }
     int i;
+    int j;
     if (paramInt2 < paramInt1)
     {
-      j = paramInt1;
-      i = paramInt2;
-      if (this.jdField_b_of_type_Int > paramInt2)
-      {
+      if (this.jdField_b_of_type_Int > paramInt2) {
         this.jdField_b_of_type_Int = paramInt2;
-        i = paramInt2;
-        j = paramInt1;
       }
+      i = paramInt2;
+      j = paramInt1;
     }
-    AIORichMediaInfo localAIORichMediaInfo;
-    for (;;)
+    else
     {
-      paramInt1 = i;
-      for (;;)
-      {
-        if (paramInt1 > j) {
-          break label181;
-        }
-        localAIORichMediaInfo = a(paramInt1);
-        if (localAIORichMediaInfo != null) {
-          break;
-        }
-        paramInt1 += 1;
-      }
-      if (this.jdField_a_of_type_Int < paramInt2) {
-        this.jdField_a_of_type_Int = paramInt2;
-      }
-      j = paramInt2;
       i = paramInt1;
-    }
-    AIOImageListScene localAIOImageListScene = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene;
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localAIOImageListScene.a(localAIORichMediaInfo, bool, true);
-      break;
-    }
-    label181:
-    paramInt1 = j + 1;
-    if (paramInt1 <= this.jdField_a_of_type_Int)
-    {
-      localAIORichMediaInfo = a(paramInt1);
-      if (localAIORichMediaInfo == null) {}
-      for (;;)
+      j = paramInt2;
+      if (this.jdField_a_of_type_Int < paramInt2)
       {
-        paramInt1 += 1;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a(localAIORichMediaInfo, this.jdField_a_of_type_Boolean, true);
+        this.jdField_a_of_type_Int = paramInt2;
+        j = paramInt2;
+        i = paramInt1;
       }
+    }
+    paramInt1 = i;
+    while (paramInt1 <= j)
+    {
+      localObject = a(paramInt1);
+      if (localObject != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a((AIORichMediaInfo)localObject, this.jdField_a_of_type_Boolean ^ true, true);
+      }
+      paramInt1 += 1;
+    }
+    paramInt1 = j + 1;
+    while (paramInt1 <= this.jdField_a_of_type_Int)
+    {
+      localObject = a(paramInt1);
+      if (localObject != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a((AIORichMediaInfo)localObject, this.jdField_a_of_type_Boolean, true);
+      }
+      paramInt1 += 1;
     }
     paramInt1 = this.jdField_b_of_type_Int;
-    if (paramInt1 < i)
+    while (paramInt1 < i)
     {
-      localAIORichMediaInfo = a(paramInt1);
-      if (localAIORichMediaInfo == null) {}
-      for (;;)
-      {
-        paramInt1 += 1;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a(localAIORichMediaInfo, this.jdField_a_of_type_Boolean, true);
+      localObject = a(paramInt1);
+      if (localObject != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a((AIORichMediaInfo)localObject, this.jdField_a_of_type_Boolean, true);
       }
+      paramInt1 += 1;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.w();
     AIOImageListScene.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).invalidateViews();
   }
   
-  public void h()
+  public void onSelectEnd()
   {
-    if (!AIOImageListScene.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {}
-    while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a() == 2) || (!this.jdField_b_of_type_Boolean)) {
+    if (!AIOImageListScene.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a() == 2) {
+      return;
+    }
+    if (!this.jdField_b_of_type_Boolean) {
       return;
     }
     this.jdField_b_of_type_Boolean = false;
@@ -155,7 +152,7 @@ class AIOImageListScene$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageListScene.5
  * JD-Core Version:    0.7.0.1
  */

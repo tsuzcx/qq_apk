@@ -20,44 +20,21 @@ class ThreadPool$Worker<T>
     this.mListener = localObject;
   }
   
-  /* Error */
   public void cancel()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 48	com/tencent/upload/utils/pool/ThreadPool$Worker:mIsCancelled	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: iconst_1
-    //   16: putfield 48	com/tencent/upload/utils/pool/ThreadPool$Worker:mIsCancelled	Z
-    //   19: aload_0
-    //   20: getfield 50	com/tencent/upload/utils/pool/ThreadPool$Worker:mCancelListener	Lcom/tencent/upload/utils/pool/ThreadPool$CancelListener;
-    //   23: ifnull -12 -> 11
-    //   26: aload_0
-    //   27: getfield 50	com/tencent/upload/utils/pool/ThreadPool$Worker:mCancelListener	Lcom/tencent/upload/utils/pool/ThreadPool$CancelListener;
-    //   30: invokeinterface 55 1 0
-    //   35: goto -24 -> 11
-    //   38: astore_2
-    //   39: aload_0
-    //   40: monitorexit
-    //   41: aload_2
-    //   42: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	43	0	this	Worker
-    //   6	2	1	bool	boolean
-    //   38	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	38	finally
-    //   14	35	38	finally
+    try
+    {
+      boolean bool = this.mIsCancelled;
+      if (bool) {
+        return;
+      }
+      this.mIsCancelled = true;
+      if (this.mCancelListener != null) {
+        this.mCancelListener.onCancel();
+      }
+      return;
+    }
+    finally {}
   }
   
   public T get()
@@ -79,11 +56,14 @@ class ThreadPool$Worker<T>
           Log.w("Worker", "ignore exception", localException);
         }
       }
-      localObject2 = this.mResult;
+      Object localObject1 = this.mResult;
+      return localObject1;
     }
     finally {}
-    Object localObject2;
-    return localObject2;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public boolean isCancelled()
@@ -107,34 +87,32 @@ class ThreadPool$Worker<T>
   
   public void run()
   {
-    Object localObject4 = null;
-    Object localObject1 = localObject4;
-    if (setMode(1)) {}
+    FutureListener localFutureListener;
+    if (setMode(1)) {
+      try
+      {
+        Object localObject1 = this.mJob.run(this);
+      }
+      catch (Throwable localThrowable)
+      {
+        Log.w("Worker", "Exception in running a job", localThrowable);
+      }
+    } else {
+      localFutureListener = null;
+    }
     try
     {
-      localObject1 = this.mJob.run(this);
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        try
-        {
-          setMode(0);
-          this.mResult = localObject1;
-          this.mIsDone = true;
-          notifyAll();
-          if (this.mListener != null) {
-            this.mListener.onFutureDone(this);
-          }
-          return;
-        }
-        finally {}
-        localThrowable = localThrowable;
-        Log.w("Worker", "Exception in running a job", localThrowable);
-        Object localObject2 = localObject4;
+      setMode(0);
+      this.mResult = localFutureListener;
+      this.mIsDone = true;
+      notifyAll();
+      localFutureListener = this.mListener;
+      if (localFutureListener != null) {
+        localFutureListener.onFutureDone(this);
       }
+      return;
     }
+    finally {}
   }
   
   public void setCancelListener(ThreadPool.CancelListener paramCancelListener)
@@ -156,7 +134,7 @@ class ThreadPool$Worker<T>
   
   public boolean setMode(int paramInt)
   {
-    return !isCancelled();
+    return isCancelled() ^ true;
   }
   
   public void waitDone()
@@ -166,7 +144,7 @@ class ThreadPool$Worker<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.utils.pool.ThreadPool.Worker
  * JD-Core Version:    0.7.0.1
  */

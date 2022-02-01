@@ -12,27 +12,30 @@ public final class TrackGroup
   
   public TrackGroup(Format... paramVarArgs)
   {
-    if (paramVarArgs.length > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.formats = paramVarArgs;
-      this.length = paramVarArgs.length;
-      return;
+    boolean bool;
+    if (paramVarArgs.length > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    this.formats = paramVarArgs;
+    this.length = paramVarArgs.length;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (TrackGroup)paramObject;
-    } while ((this.length == paramObject.length) && (Arrays.equals(this.formats, paramObject.formats)));
+      return (this.length == paramObject.length) && (Arrays.equals(this.formats, paramObject.formats));
+    }
     return false;
   }
   
@@ -44,7 +47,7 @@ public final class TrackGroup
   public int hashCode()
   {
     if (this.hashCode == 0) {
-      this.hashCode = (Arrays.hashCode(this.formats) + 527);
+      this.hashCode = (527 + Arrays.hashCode(this.formats));
     }
     return this.hashCode;
   }
@@ -52,9 +55,13 @@ public final class TrackGroup
   public int indexOf(Format paramFormat)
   {
     int i = 0;
-    while (i < this.formats.length)
+    for (;;)
     {
-      if (paramFormat == this.formats[i]) {
+      Format[] arrayOfFormat = this.formats;
+      if (i >= arrayOfFormat.length) {
+        break;
+      }
+      if (paramFormat == arrayOfFormat[i]) {
         return i;
       }
       i += 1;
@@ -64,7 +71,7 @@ public final class TrackGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.TrackGroup
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,9 @@ class ContentLoadingProgressBar$2
   
   public void run()
   {
-    this.this$0.mPostedShow = false;
-    if (!this.this$0.mDismissed)
+    ContentLoadingProgressBar localContentLoadingProgressBar = this.this$0;
+    localContentLoadingProgressBar.mPostedShow = false;
+    if (!localContentLoadingProgressBar.mDismissed)
     {
       this.this$0.mStartTime = System.currentTimeMillis();
       this.this$0.setVisibility(0);
@@ -17,7 +18,7 @@ class ContentLoadingProgressBar$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.widget.ContentLoadingProgressBar.2
  * JD-Core Version:    0.7.0.1
  */

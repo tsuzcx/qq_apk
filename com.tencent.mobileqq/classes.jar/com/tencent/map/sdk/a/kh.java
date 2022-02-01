@@ -14,15 +14,16 @@ public final class kh
   
   public final Circle a(CircleOptions paramCircleOptions)
   {
-    if (this.a == null) {
+    ku localku = this.a;
+    if (localku == null) {
       return null;
     }
-    return this.a.a(paramCircleOptions, this);
+    return localku.a(paramCircleOptions, this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.kh
  * JD-Core Version:    0.7.0.1
  */

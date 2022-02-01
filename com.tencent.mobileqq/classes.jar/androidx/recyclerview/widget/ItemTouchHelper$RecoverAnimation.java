@@ -79,18 +79,26 @@ class ItemTouchHelper$RecoverAnimation
   
   public void update()
   {
-    if (this.mStartDx == this.mTargetX) {}
-    for (this.mX = this.mViewHolder.itemView.getTranslationX(); this.mStartDy == this.mTargetY; this.mX = (this.mStartDx + this.mFraction * (this.mTargetX - this.mStartDx)))
+    float f1 = this.mStartDx;
+    float f2 = this.mTargetX;
+    if (f1 == f2) {
+      this.mX = this.mViewHolder.itemView.getTranslationX();
+    } else {
+      this.mX = (f1 + this.mFraction * (f2 - f1));
+    }
+    f1 = this.mStartDy;
+    f2 = this.mTargetY;
+    if (f1 == f2)
     {
       this.mY = this.mViewHolder.itemView.getTranslationY();
       return;
     }
-    this.mY = (this.mStartDy + this.mFraction * (this.mTargetY - this.mStartDy));
+    this.mY = (f1 + this.mFraction * (f2 - f1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.ItemTouchHelper.RecoverAnimation
  * JD-Core Version:    0.7.0.1
  */

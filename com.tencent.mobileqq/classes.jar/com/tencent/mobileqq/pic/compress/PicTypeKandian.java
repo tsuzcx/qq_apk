@@ -2,7 +2,9 @@ package com.tencent.mobileqq.pic.compress;
 
 import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 
+@KeepClassConstructor
 public class PicTypeKandian
   extends PicTypeNormal
 {
@@ -24,13 +26,16 @@ public class PicTypeKandian
     int[] arrayOfInt = new int[2];
     arrayOfInt[0] = 2560;
     arrayOfInt[1] = (arrayOfInt[0] * 2);
-    Logger.a("PicTypeNormal", "getScaleLargerSide", "PicType.SendPhotoMaxLongSide = " + arrayOfInt[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PicType.SendPhotoMaxLongSide = ");
+    localStringBuilder.append(arrayOfInt[0]);
+    Logger.a("PicTypeNormal", "getScaleLargerSide", localStringBuilder.toString());
     return arrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.compress.PicTypeKandian
  * JD-Core Version:    0.7.0.1
  */

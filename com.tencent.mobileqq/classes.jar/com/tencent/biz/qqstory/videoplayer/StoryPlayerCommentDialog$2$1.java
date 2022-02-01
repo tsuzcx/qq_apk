@@ -15,21 +15,18 @@ class StoryPlayerCommentDialog$2$1
   public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
     if (paramBoolean) {
-      QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131714421), 0).a();
+      QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131714342), 0).a();
+    } else {
+      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714343), 0).a();
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryPlayerCommentDialog$2.a.a != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryPlayerCommentDialog$2.a.a.a(paramBoolean, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-      return;
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714422), 0).a();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryPlayerCommentDialog$2.a.a != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryPlayerCommentDialog$2.a.a.a(paramBoolean, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.videoplayer.StoryPlayerCommentDialog.2.1
  * JD-Core Version:    0.7.0.1
  */

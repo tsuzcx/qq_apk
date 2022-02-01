@@ -18,7 +18,7 @@ import java.util.List;
 
 public class a
 {
-  protected static int a = 0;
+  protected static int a;
   
   public static int a(JceStruct paramJceStruct)
   {
@@ -26,7 +26,7 @@ public class a
       return -1;
     }
     paramJceStruct = paramJceStruct.getClass().getSimpleName();
-    return IPCCmd.convert(paramJceStruct.substring(0, paramJceStruct.length() - "Request".length())).value();
+    return IPCCmd.convert(paramJceStruct.substring(0, paramJceStruct.length() - 7)).value();
   }
   
   public static JceStruct a(IPCResponse paramIPCResponse)
@@ -34,29 +34,29 @@ public class a
     try
     {
       int i = paramIPCResponse.head.cmdId;
-      ab.c("nemo", "unpackBodyStruct cmdid=" + i);
-      Object localObject = IPCCmd.convert(i).toString();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("unpackBodyStruct cmdid=");
+      ((StringBuilder)localObject).append(i);
+      ab.c("nemo", ((StringBuilder)localObject).toString());
+      localObject = IPCCmd.convert(i).toString();
       localObject = a((String)localObject);
-      if ((localObject != null) && (paramIPCResponse.body.length > 0)) {}
+      if ((localObject != null) && (paramIPCResponse.body.length > 0)) {
+        try
+        {
+          paramIPCResponse = new JceInputStream(paramIPCResponse.body);
+          paramIPCResponse.setServerEncoding("utf-8");
+          ((JceStruct)localObject).readFrom(paramIPCResponse);
+          return localObject;
+        }
+        catch (Exception paramIPCResponse)
+        {
+          paramIPCResponse.printStackTrace();
+        }
+      }
       return null;
     }
-    catch (Exception paramIPCResponse)
-    {
-      try
-      {
-        paramIPCResponse = new JceInputStream(paramIPCResponse.body);
-        paramIPCResponse.setServerEncoding("utf-8");
-        ((JceStruct)localObject).readFrom(paramIPCResponse);
-        return localObject;
-      }
-      catch (Exception paramIPCResponse)
-      {
-        paramIPCResponse.printStackTrace();
-        return null;
-      }
-      paramIPCResponse = paramIPCResponse;
-      return null;
-    }
+    catch (Exception paramIPCResponse) {}
+    return null;
   }
   
   private static JceStruct a(String paramString)
@@ -64,37 +64,33 @@ public class a
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    paramString = a.class.getPackage().getName() + ".jce." + paramString;
-    paramString = paramString + "Response";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a.class.getPackage().getName());
+    localStringBuilder.append(".jce.");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("Response");
+    paramString = localStringBuilder.toString();
     try
     {
       paramString = (JceStruct)Class.forName(paramString).newInstance();
       return paramString;
     }
-    catch (ClassNotFoundException paramString)
+    catch (InstantiationException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
+      paramString.printStackTrace();
     }
     catch (IllegalAccessException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
+      paramString.printStackTrace();
     }
-    catch (InstantiationException paramString)
+    catch (ClassNotFoundException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
+      paramString.printStackTrace();
     }
+    return null;
   }
   
   public static IPCRequest a(JceStruct paramJceStruct, String paramString)
@@ -119,24 +115,21 @@ public class a
   
   public static IPCResponse a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 4)) {
-      paramArrayOfByte = null;
-    }
-    for (;;)
+    if (paramArrayOfByte != null)
     {
-      return paramArrayOfByte;
+      if (paramArrayOfByte.length < 4) {
+        return null;
+      }
       IPCResponse localIPCResponse = new IPCResponse();
       try
       {
         paramArrayOfByte = new JceInputStream(paramArrayOfByte);
         paramArrayOfByte.setServerEncoding("utf-8");
         localIPCResponse.readFrom(paramArrayOfByte);
-        paramArrayOfByte = localIPCResponse;
-        if (!TextUtils.isEmpty(localIPCResponse.head.hostPackageName))
-        {
+        if (!TextUtils.isEmpty(localIPCResponse.head.hostPackageName)) {
           localIPCResponse.body = ProtocolPackage.decrypt(localIPCResponse.body, "ji*9^&43U0X-~./(".getBytes());
-          return localIPCResponse;
         }
+        return localIPCResponse;
       }
       catch (Exception paramArrayOfByte)
       {
@@ -151,23 +144,44 @@ public class a
     if (paramTMAssistantDownloadTaskInfo == null) {
       return null;
     }
-    ab.c("IPCPackageTools", "TMAssistantDownloadTaskInfo ......mAppName: " + paramTMAssistantDownloadTaskInfo.mAppName);
-    IPCSDKDownloadInfo localIPCSDKDownloadInfo = new IPCSDKDownloadInfo();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("TMAssistantDownloadTaskInfo ......mAppName: ");
+    ((StringBuilder)localObject).append(paramTMAssistantDownloadTaskInfo.mAppName);
+    ab.c("IPCPackageTools", ((StringBuilder)localObject).toString());
+    localObject = new IPCSDKDownloadInfo();
     if (paramTMAssistantDownloadTaskInfo != null)
     {
-      localIPCSDKDownloadInfo.appId = (paramTMAssistantDownloadTaskInfo.mAppId + "");
-      localIPCSDKDownloadInfo.appIconUrl = (paramTMAssistantDownloadTaskInfo.mIconUrl + "");
-      localIPCSDKDownloadInfo.appName = (paramTMAssistantDownloadTaskInfo.mAppName + "");
-      localIPCSDKDownloadInfo.downloadFinishTime = paramTMAssistantDownloadTaskInfo.mEndTime;
-      localIPCSDKDownloadInfo.packageName = (paramTMAssistantDownloadTaskInfo.mTaskPackageName + "");
-      localIPCSDKDownloadInfo.via = (paramTMAssistantDownloadTaskInfo.mVia + "");
-      localIPCSDKDownloadInfo.versionCode = paramTMAssistantDownloadTaskInfo.mTaskVersionCode;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramTMAssistantDownloadTaskInfo.mAppId);
+      localStringBuilder.append("");
+      ((IPCSDKDownloadInfo)localObject).appId = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramTMAssistantDownloadTaskInfo.mIconUrl);
+      localStringBuilder.append("");
+      ((IPCSDKDownloadInfo)localObject).appIconUrl = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramTMAssistantDownloadTaskInfo.mAppName);
+      localStringBuilder.append("");
+      ((IPCSDKDownloadInfo)localObject).appName = localStringBuilder.toString();
+      ((IPCSDKDownloadInfo)localObject).downloadFinishTime = paramTMAssistantDownloadTaskInfo.mEndTime;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramTMAssistantDownloadTaskInfo.mTaskPackageName);
+      localStringBuilder.append("");
+      ((IPCSDKDownloadInfo)localObject).packageName = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramTMAssistantDownloadTaskInfo.mVia);
+      localStringBuilder.append("");
+      ((IPCSDKDownloadInfo)localObject).via = localStringBuilder.toString();
+      ((IPCSDKDownloadInfo)localObject).versionCode = paramTMAssistantDownloadTaskInfo.mTaskVersionCode;
     }
-    localIPCSDKDownloadInfo.appState = paramTMAssistantDownloadTaskInfo.mState;
-    localIPCSDKDownloadInfo.receivedLen = paramTMAssistantDownloadTaskInfo.mReceiveDataLen;
-    localIPCSDKDownloadInfo.totalLen = paramTMAssistantDownloadTaskInfo.mTotalDataLen;
-    localIPCSDKDownloadInfo.url = (paramTMAssistantDownloadTaskInfo.mUrl + "");
-    return localIPCSDKDownloadInfo;
+    ((IPCSDKDownloadInfo)localObject).appState = paramTMAssistantDownloadTaskInfo.mState;
+    ((IPCSDKDownloadInfo)localObject).receivedLen = paramTMAssistantDownloadTaskInfo.mReceiveDataLen;
+    ((IPCSDKDownloadInfo)localObject).totalLen = paramTMAssistantDownloadTaskInfo.mTotalDataLen;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramTMAssistantDownloadTaskInfo.mUrl);
+    localStringBuilder.append("");
+    ((IPCSDKDownloadInfo)localObject).url = localStringBuilder.toString();
+    return localObject;
   }
   
   public static List<IPCSDKDownloadInfo> a(List<TMAssistantDownloadTaskInfo> paramList)
@@ -203,7 +217,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.a
  * JD-Core Version:    0.7.0.1
  */

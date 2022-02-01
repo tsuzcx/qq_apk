@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.PendingIntent;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
@@ -26,45 +27,23 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
-import android.os.SystemClock;
+import android.provider.MediaStore.Images.Media;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.SurfaceView;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.qq.taf.jce.JceInputStream;
-import com.tencent.biz.pubaccount.api.IPublicAccountJavascriptInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.QzoneLiveMainRuntime;
-import com.tencent.common.app.QzoneMainRuntime;
-import com.tencent.common.config.provider.QZConfigProviderUtil;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
-import com.tencent.mobileqq.activity.ShortcutGuideActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
-import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
-import com.tencent.mobileqq.minigame.data.PublishMoodInfo;
-import com.tencent.mobileqq.minigame.data.PublishMoodInfo.MediaInfo;
 import com.tencent.mobileqq.model.QZoneManager;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
+import com.tencent.mobileqq.selectmember.ResultRecord;
 import com.tencent.mobileqq.service.message.MessageUtils;
-import com.tencent.mobileqq.service.qzone.QZoneTitleTabManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.statistics.StatisticHitRateCollector;
@@ -72,42 +51,32 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.utils.QQTheme;
-import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.mobileqq.utils.ShortcutUtils;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webview.swift.WebViewPluginContainer;
-import com.tencent.mobileqq.webview.swift.WebViewPluginFactory;
+import com.tencent.open.base.MD5;
 import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.opt.suspendthread.DeviceOptSwitch;
+import com.tencent.qzonehub.api.IQZoneHelperProxy;
+import com.tencent.qzonehub.api.IQzonePluginProxyActivity;
 import com.tencent.qzonehub.api.utils.IQzoneHardwareRestriction;
+import com.tencent.qzonehub.api.utils.IQzoneVideoHelper;
 import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 import com.tencent.util.URLUtil;
 import com.tencent.util.pm.PackageUtil;
 import common.config.service.QzoneAlphaConfig;
 import common.config.service.QzoneConfig;
 import common.qzone.component.util.SecurityUtil;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
-import cooperation.qzone.api.QZoneApiProxy;
 import cooperation.qzone.cache.CacheManager;
 import cooperation.qzone.model.BaseBusinessAlbumInfo;
 import cooperation.qzone.model.CoverCacheData;
 import cooperation.qzone.model.PublishEventTag;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.QZoneLoginReportHelper;
 import cooperation.qzone.statistic.AccManager;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.util.PerfTracer;
 import cooperation.qzone.util.QZLog;
-import cooperation.qzone.video.QzoneVideoPluginProxyService;
-import dov.com.qq.im.QIMCameraCaptureActivity;
 import java.io.File;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -127,7 +96,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import mqq.app.AppRuntime;
-import oicq.wlogin_sdk.tools.MD5;
+import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -148,7 +117,7 @@ public class QZoneHelper
   public static final String ACTION_UNREAD_COUNT = "com.tencent.qq.unreadcount";
   public static final String ACTION_UPDATE_IS_SPEICAL_FOLLOW = "updateIsSpecialFollow";
   public static final String BROADCAST_SYNC_QUN_UNREAD_MESSAGE = "com.tencent.qq.syncQunMsg";
-  public static final String CACHEMAMAGER_IMAGE_FILE_CACHE_NAME = "file" + File.separator + "image";
+  public static final String CACHEMAMAGER_IMAGE_FILE_CACHE_NAME;
   public static final String CIPHERTEXT = "ciphertext";
   private static final String CLS_PHOTOPLUS_APPINTERFACE = "com.tencent.zebra.app.PhotoplusAppInterface";
   private static final String CLS_QZONEAPPINTERFACE = "com.qzone.app.QZoneAppInterface";
@@ -270,7 +239,7 @@ public class QZoneHelper
   public static final String QZ_COVER_FROM_QZoneHomePage = "userhome";
   public static final String QZ_COVER_FROM_UserSummary = "usersummary";
   public static final String Q_CIRCLE_PUBLISH_PAGE = "com.tencent.qcircle.QCirclePublishFeedActivity";
-  public static final String REDPOCKET = "com.tencent.mobileqq.activity.qwallet.SendHbActivity";
+  public static final String REDPOCKET = "com.tencent.mobileqq.qwallet.hb.send.impl.SendHbActivity";
   public static final String SCHEME_OPEN_HOME_PAGE = "mqzone://arouse/homepage";
   public static final String SECONDARY_AIO_QZDETAIL = "aio2qzonedetail";
   public static final String SEND_REDPOCKET_GIFT_JS_CALL_NATIVE_ACTION = "com.qzone.intent.action.SendRedPocketGiftJsCallNative";
@@ -302,11 +271,17 @@ public class QZoneHelper
   private static final int sDEFAULT_CORES = 1;
   private static final int sDEFAULT_CPU_FREQUENCE = 1100;
   private static final int sDEFAULT_MEMORY = 700;
-  public static int sQZoneHCCode = 0;
+  public static int sQZoneHCCode;
   
   static
   {
-    STR_TIPS_FLOAT_ITEM_NOT_ALLOW_TO_SHOW = HardCodeUtil.a(2131711886);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("image");
+    CACHEMAMAGER_IMAGE_FILE_CACHE_NAME = localStringBuilder.toString();
+    sQZoneHCCode = 0;
+    STR_TIPS_FLOAT_ITEM_NOT_ALLOW_TO_SHOW = HardCodeUtil.a(2131711861);
     comboqzProtectEnable = false;
     gIsBestPerformanceDevice = false;
     gIsInitPerformanceDeviceState = false;
@@ -323,27 +298,7 @@ public class QZoneHelper
   
   public static void addQZoneStatis(Intent paramIntent, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      paramIntent.putExtra("refer", "mqqSetProfile");
-      return;
-    case 2: 
-      paramIntent.putExtra("refer", "mqqAvatar");
-      return;
-    case 3: 
-      paramIntent.putExtra("refer", "mqqQuanzi");
-      return;
-    case 4: 
-      paramIntent.putExtra("refer", "mqqNearby");
-      return;
-    case 5: 
-      paramIntent.putExtra("refer", "mqqChat");
-      return;
-    }
-    paramIntent.putExtra("refer", "mqqQunSpace");
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).addQZoneStatis(paramIntent, paramInt);
   }
   
   public static final void addSource(Intent paramIntent)
@@ -360,32 +315,21 @@ public class QZoneHelper
     }
   }
   
-  public static void bindQzonePublishQueueService(QQAppInterface paramQQAppInterface, ServiceConnection paramServiceConnection)
+  public static final void addSource(ActivityURIRequest paramActivityURIRequest)
   {
-    if (paramQQAppInterface == null) {
-      return;
+    if (paramActivityURIRequest != null) {
+      paramActivityURIRequest.extra().putString("big_brother_source_key", "biz_src_jc_qzone");
     }
-    Intent localIntent = new Intent(paramQQAppInterface.getApp(), QzonePluginPublishQueueProxyService.class);
-    localIntent.putExtra("useSkinEngine", 1);
-    localIntent.setAction("com.qzone.intent.action.LAUNCH_PUBLISH_QUEUE");
-    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = QzonePluginProxyActivity.getQZonePluginName();
-    localPluginParams.e = "QQ空间";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    localPluginParams.f = "com.qzone.publish.business.publishqueue.PublishQueueService";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    if (QLog.isColorLevel()) {
-      QLog.d("QPlugin", 2, "start and bind QzonePublishQueueService");
-    }
-    IPluginManager.c(paramQQAppInterface.getApp(), localPluginParams);
+  }
+  
+  public static void bindQzonePublishQueueService(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection)
+  {
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).bindQzonePublishQueueService(paramAppRuntime, paramServiceConnection);
   }
   
   public static void bindQzoneVideoService(Context paramContext, String paramString, ServiceConnection paramServiceConnection)
   {
-    Intent localIntent = new Intent(paramContext, QzoneVideoPluginProxyService.class);
-    localIntent.putExtra("qzone_uin", paramString);
-    QzoneVideoPluginProxyService.bindService(paramContext, paramString, localIntent, paramServiceConnection);
+    ((IQzoneVideoHelper)QRoute.api(IQzoneVideoHelper.class)).bindService(paramContext, paramString, paramServiceConnection);
   }
   
   public static boolean canGifPlaySwitch()
@@ -393,30 +337,25 @@ public class QZoneHelper
     return QzoneConfig.getInstance().getConfig("GifSetting", "GifPlaySwitch", 1) != 0;
   }
   
-  public static void cancelQzoneAlive(QQAppInterface paramQQAppInterface)
+  public static void cancelQzoneAlive(AppRuntime paramAppRuntime)
   {
-    if ((paramQQAppInterface == null) || (checkQzoneEntranceProtectEnable())) {
-      return;
+    if (paramAppRuntime != null)
+    {
+      if (checkQzoneEntranceProtectEnable()) {
+        return;
+      }
+      Intent localIntent = new Intent(paramAppRuntime.getApp(), QzonePluginProxyService.class);
+      localIntent.setAction("com.qzone.intent.action.CANCEL_QZONE_ALIVE");
+      localIntent.putExtra("key_is_keep_alive", false);
+      ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).launchPluginService(paramAppRuntime.getApp(), null, paramAppRuntime.getCurrentAccountUin(), localIntent);
     }
-    Intent localIntent = new Intent(paramQQAppInterface.getApp(), QzonePluginProxyService.class);
-    localIntent.setAction("com.qzone.intent.action.CANCEL_QZONE_ALIVE");
-    localIntent.putExtra("key_is_keep_alive", false);
-    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = QzonePluginProxyActivity.getQZonePluginName();
-    localPluginParams.e = "QQ空间";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    localPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = null;
-    localPluginParams.f = "com.qzone.preview.service.PictureService";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localPluginParams.jdField_a_of_type_Boolean = true;
-    IPluginManager.c(paramQQAppInterface.getApp(), localPluginParams);
   }
   
   private static boolean checkIsFirstInit()
   {
     try
     {
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_short_video", 4);
+      SharedPreferences localSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("sp_short_video", 4);
       if ((localSharedPreferences != null) && (localSharedPreferences.getBoolean("is_first_init_key", true)))
       {
         localSharedPreferences.edit().putBoolean("is_first_init_key", false).commit();
@@ -439,308 +378,413 @@ public class QZoneHelper
   public static boolean checkQzoneEntranceProtectEnable()
   {
     comboqzProtectEnable = LocalMultiProcConfig.getBool("comboqz_protect_enable", false);
+    Object localObject;
     if (comboqzProtectEnable)
     {
-      String str = LocalMultiProcConfig.getString("comboqz_qua", "");
-      if (!QUA.getQUA3().equals(str))
+      localObject = LocalMultiProcConfig.getString("comboqz_qua", "");
+      if (!QUA.getQUA3().equals(localObject))
       {
         LocalMultiProcConfig.putBool("comboqz_protect_enable", false);
         return false;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneHelper", 2, "QzoneEntranceProtectEnable:" + comboqzProtectEnable);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QzoneEntranceProtectEnable:");
+      ((StringBuilder)localObject).append(comboqzProtectEnable);
+      QLog.d("QZoneHelper", 2, ((StringBuilder)localObject).toString());
     }
     return comboqzProtectEnable;
   }
   
   public static void clearCache(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
-    if (paramAppRuntime == null) {}
-    do
-    {
+    if (paramAppRuntime == null) {
       return;
-      Object localObject = paramAppRuntime.getApplication();
-      String str = paramAppRuntime.getAccount();
-      Intent localIntent = new Intent(BaseApplicationImpl.getContext(), QzonePictureViewerProxyService.class);
-      BaseApplicationImpl.getContext().stopService(localIntent);
-      Utils.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:picture");
-      localIntent = new Intent(BaseApplicationImpl.getContext(), QzonePluginProxyService.class);
-      BaseApplicationImpl.getContext().stopService(localIntent);
-      Utils.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:qzone");
-      Utils.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:qzonevideo");
-      CacheManager.clearFileCache((Context)localObject);
-      if (!TextUtils.isEmpty(str))
-      {
-        ((Context)localObject).deleteDatabase(SecurityUtil.a(str));
-        LocalMultiProcConfig.putInt("Widget_" + str, "WidgetID", -1);
-      }
-      ((Context)localObject).deleteDatabase(SecurityUtil.a("0"));
-      QZConfigProviderUtil.a();
-      localObject = ((Context)localObject).getFilesDir().getParent() + File.separator + "shared_prefs";
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        FileUtil.c((String)localObject + File.separator + "qz_predownload_config.xml");
-        FileUtil.c((String)localObject + File.separator + "QZ_Per_Config.xml");
-        FileUtil.c((String)localObject + File.separator + "QZONE_UNREAD.xml");
-      }
-      localObject = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace");
-      if (localObject != null) {
-        FileUtil.c((String)localObject);
-      }
-    } while ((!paramBoolean) || (!(paramAppRuntime instanceof QQAppInterface)));
-    ((IPublicAccountJavascriptInterface)QRoute.api(IPublicAccountJavascriptInterface.class)).deleteAllH5Data((QQAppInterface)paramAppRuntime);
+    }
+    Object localObject1 = paramAppRuntime.getApplication();
+    Object localObject2 = paramAppRuntime.getAccount();
+    Object localObject3 = new Intent(MobileQQ.getContext(), QzonePictureViewerProxyService.class);
+    MobileQQ.getContext().stopService((Intent)localObject3);
+    Utils.a(MobileQQ.getContext(), "com.tencent.mobileqq:picture");
+    localObject3 = new Intent(MobileQQ.getContext(), QzonePluginProxyService.class);
+    MobileQQ.getContext().stopService((Intent)localObject3);
+    Utils.a(MobileQQ.getContext(), "com.tencent.mobileqq:qzone");
+    Utils.a(MobileQQ.getContext(), "com.tencent.mobileqq:qzonevideo");
+    CacheManager.clearFileCache((Context)localObject1);
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      ((Context)localObject1).deleteDatabase(SecurityUtil.a((String)localObject2));
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("Widget_");
+      ((StringBuilder)localObject3).append((String)localObject2);
+      LocalMultiProcConfig.putInt(((StringBuilder)localObject3).toString(), "WidgetID", -1);
+    }
+    ((Context)localObject1).deleteDatabase(SecurityUtil.a("0"));
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).cleanAllQZconfig();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((Context)localObject1).getFilesDir().getParent());
+    ((StringBuilder)localObject2).append(File.separator);
+    ((StringBuilder)localObject2).append("shared_prefs");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append("qz_predownload_config.xml");
+      deleteFile(((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append("QZ_Per_Config.xml");
+      deleteFile(((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append("QZONE_UNREAD.xml");
+      deleteFile(((StringBuilder)localObject2).toString());
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    ((StringBuilder)localObject1).append(File.separator);
+    ((StringBuilder)localObject1).append("tencent");
+    ((StringBuilder)localObject1).append(File.separator);
+    ((StringBuilder)localObject1).append("MobileQQ");
+    ((StringBuilder)localObject1).append(File.separator);
+    ((StringBuilder)localObject1).append("trace");
+    localObject1 = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject1).toString());
+    if (localObject1 != null) {
+      deleteFile((String)localObject1);
+    }
+    if ((paramBoolean) && ((paramAppRuntime instanceof AppRuntime))) {
+      ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).deleteAllH5Data(paramAppRuntime);
+    }
   }
   
   public static void clearFeedsCache(Context paramContext, String paramString)
   {
-    if (paramContext == null) {}
-    do
-    {
+    if (paramContext == null) {
       return;
-      Intent localIntent = new Intent(BaseApplicationImpl.getContext(), QzonePictureViewerProxyService.class);
-      BaseApplicationImpl.getContext().stopService(localIntent);
-      Utils.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:picture");
-      localIntent = new Intent(BaseApplicationImpl.getContext(), QzonePluginProxyService.class);
-      BaseApplicationImpl.getContext().stopService(localIntent);
-      Utils.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:qzone");
-      Utils.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:qzonevideo");
-    } while (TextUtils.isEmpty(paramString));
-    paramContext.deleteDatabase(SecurityUtil.a(paramString));
+    }
+    Intent localIntent = new Intent(MobileQQ.getContext(), QzonePictureViewerProxyService.class);
+    MobileQQ.getContext().stopService(localIntent);
+    Utils.a(MobileQQ.getContext(), "com.tencent.mobileqq:picture");
+    localIntent = new Intent(MobileQQ.getContext(), QzonePluginProxyService.class);
+    MobileQQ.getContext().stopService(localIntent);
+    Utils.a(MobileQQ.getContext(), "com.tencent.mobileqq:qzone");
+    Utils.a(MobileQQ.getContext(), "com.tencent.mobileqq:qzonevideo");
+    if (!TextUtils.isEmpty(paramString)) {
+      paramContext.deleteDatabase(SecurityUtil.a(paramString));
+    }
   }
   
-  public static void createAlbumShortCut(@NonNull QQAppInterface paramQQAppInterface, String paramString1, String paramString2, Bitmap paramBitmap, long paramLong)
+  public static void createAlbumShortCut(AppRuntime paramAppRuntime, String paramString1, String paramString2, Bitmap paramBitmap, long paramLong)
   {
-    ThreadManager.post(new QZoneHelper.4(paramBitmap, paramQQAppInterface, paramString1, paramLong, paramString2), 2, null, true);
+    ThreadManager.post(new QZoneHelper.4(paramBitmap, paramAppRuntime, paramString1, paramLong, paramString2), 2, null, true);
   }
   
-  private static void createAlbumShortcutWithBmp(Bitmap paramBitmap, @NonNull QQAppInterface paramQQAppInterface, String paramString1, long paramLong, String paramString2)
+  private static void createAlbumShortcutWithBmp(Bitmap paramBitmap, @NonNull AppRuntime paramAppRuntime, String paramString1, long paramLong, String paramString2)
   {
-    if (paramBitmap == null) {
+    if (paramBitmap == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.w("QZoneHelper", 2, "createAlbumShortcutWithBmp end, iconBmp is null");
       }
-    }
-    for (;;)
-    {
       return;
-      if (Build.VERSION.SDK_INT < 26)
+    }
+    int i = Build.VERSION.SDK_INT;
+    boolean bool = false;
+    if (i < 26)
+    {
+      if (ShortcutUtils.a(paramAppRuntime.getApp(), new String[] { paramString1 }))
       {
-        if (QQUtils.a(paramQQAppInterface.getApp(), new String[] { paramString1 }))
-        {
-          ToastUtil.a().a(2131690078);
-          return;
-        }
-        QQUtils.a(paramQQAppInterface, getShortcutIntent(paramQQAppInterface, paramString1, paramLong), paramString2, paramBitmap);
-        Thread.sleep(1000L);
-        if (ShortcutUtils.a(paramQQAppInterface.getApplication(), new String[] { paramString1 }))
-        {
-          ToastUtil.a().a(2131691380);
-          return;
-        }
-        onCreateShortcutFailed(paramQQAppInterface);
+        ToastUtil.a().a(2131689994);
         return;
       }
-      BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-      ShortcutManager localShortcutManager = (ShortcutManager)localBaseApplication.getSystemService("shortcut");
-      if (isShortcutCreated_O(paramString1, localShortcutManager))
+      localObject = getShortcutIntent(paramAppRuntime, paramString1, paramLong);
+      ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).createShortcut(paramAppRuntime, (Intent)localObject, paramString2, paramBitmap);
+      Thread.sleep(1000L);
+      if (ShortcutUtils.a(paramAppRuntime.getApplication(), new String[] { paramString1 }))
       {
-        ToastUtil.a().a(2131690078);
+        ToastUtil.a().a(2131691302);
         return;
       }
-      if (localShortcutManager.isRequestPinShortcutSupported())
-      {
-        paramBitmap = getAlbumShortcutInfo(localBaseApplication, paramBitmap, paramString1, paramLong, paramString2, "android.intent.action.VIEW");
-        paramString2 = new Intent("com.qzone.album.CreateAlbumShortcutSucceedReceiver");
-        paramString2.putExtra("UploadPhoto.key_album_id", paramString1);
-      }
-      for (boolean bool = localShortcutManager.requestPinShortcut(paramBitmap, PendingIntent.getBroadcast(localBaseApplication, 0, paramString2, 134217728).getIntentSender()); !bool; bool = false)
-      {
-        onCreateShortcutFailed(paramQQAppInterface);
-        return;
-      }
+      onCreateShortcutFailed(paramAppRuntime);
+      return;
+    }
+    Object localObject = paramAppRuntime.getApp();
+    ShortcutManager localShortcutManager = (ShortcutManager)((Context)localObject).getSystemService("shortcut");
+    if (isShortcutCreated_O(paramString1, localShortcutManager))
+    {
+      ToastUtil.a().a(2131689994);
+      return;
+    }
+    if (localShortcutManager.isRequestPinShortcutSupported())
+    {
+      paramBitmap = getAlbumShortcutInfo((Context)localObject, paramBitmap, paramString1, paramLong, paramString2, "android.intent.action.VIEW");
+      paramString2 = new Intent("com.qzone.album.CreateAlbumShortcutSucceedReceiver");
+      paramString2.putExtra("UploadPhoto.key_album_id", paramString1);
+      bool = localShortcutManager.requestPinShortcut(paramBitmap, PendingIntent.getBroadcast((Context)localObject, 0, paramString2, 134217728).getIntentSender());
+    }
+    if (!bool) {
+      onCreateShortcutFailed(paramAppRuntime);
     }
   }
   
-  public static AppRuntime createPhotoPlusAppInterface(BaseApplicationImpl paramBaseApplicationImpl)
+  public static AppRuntime createPhotoPlusAppInterface(Context paramContext)
   {
-    if (paramBaseApplicationImpl == null) {
+    if (paramContext == null) {
       return null;
     }
-    try
+    for (;;)
     {
-      Class localClass = Class.forName("com.tencent.zebra.app.PhotoplusAppInterface");
-      paramBaseApplicationImpl = localClass;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
+      try
       {
         try
+        {
+          localObject = Class.forName("com.tencent.zebra.app.PhotoplusAppInterface");
+          paramContext = (Context)localObject;
+        }
+        catch (Exception paramContext) {}catch (NoSuchMethodException paramContext) {}catch (InvocationTargetException paramContext) {}catch (InstantiationException paramContext) {}catch (IllegalAccessException paramContext) {}catch (IllegalArgumentException paramContext) {}
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        Object localObject;
+        continue;
+      }
+      try
+      {
+        localObject = ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).getPhotoPlusClassLoader(paramContext);
+        paramContext = ((ClassLoader)localObject).loadClass("com.tencent.zebra.app.PhotoplusAppInterface");
+        BasicClassTypeUtil.setClassLoader(true, (ClassLoader)localObject);
+        if (paramContext == null)
         {
           QLog.e("QZLog", 1, "createPhotoPlusAppInterface load class fail");
           return null;
         }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          ClassLoader localClassLoader;
-          paramBaseApplicationImpl.printStackTrace();
+        paramContext = paramContext.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+        if ((paramContext == null) || (!(paramContext instanceof AppRuntime))) {
+          continue;
         }
-        localClassNotFoundException = localClassNotFoundException;
-        localClassLoader = QzonePluginProxyActivity.getPhotoPlusClassLoader(paramBaseApplicationImpl);
-        paramBaseApplicationImpl = localClassLoader.loadClass("com.tencent.zebra.app.PhotoplusAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+        paramContext = (AppRuntime)paramContext;
+        return paramContext;
       }
-      do
+      catch (ClassNotFoundException paramContext)
       {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
-      paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
+        paramContext.printStackTrace();
       }
     }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    if (paramBaseApplicationImpl != null) {}
+    paramContext.printStackTrace();
+    return null;
+    paramContext.printStackTrace();
+    return null;
+    paramContext.printStackTrace();
+    return null;
+    paramContext.printStackTrace();
+    return null;
+    paramContext.printStackTrace();
+    return null;
+    paramContext.printStackTrace();
+    return null;
+    return null;
   }
   
-  public static AppRuntime createQZoneAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  /* Error */
+  public static AppRuntime createQZoneAppInterface(Context paramContext, String paramString)
   {
-    PerfTracer.traceStart("Runtime_load_runtime");
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
-    {
-      QLog.e("QZLog", 1, "*createQZoneAppInterface  begin");
-      try
-      {
-        paramString = Class.forName("com.qzone.app.QZoneAppInterface");
-        paramBaseApplicationImpl = paramString;
-      }
-      catch (ClassNotFoundException paramString)
-      {
-        for (;;)
-        {
-          paramString = QzonePluginProxyActivity.getQZonePluginClassLoader(paramBaseApplicationImpl);
-          paramBaseApplicationImpl = paramString.loadClass("com.qzone.app.QZoneAppInterface");
-          BasicClassTypeUtil.setClassLoader(true, paramString);
-        }
-      }
-      if (paramBaseApplicationImpl == null)
-      {
-        QLog.e("QZLog", 1, "*createQZoneAppInterface load class fail");
-        return null;
-      }
-    }
-    catch (ClassNotFoundException paramBaseApplicationImpl)
-    {
-      QLog.e("QZoneHelper", 1, "createQZoneAppInterface", paramBaseApplicationImpl);
-      for (;;)
-      {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.newInstance();
-        if ((paramBaseApplicationImpl != null) && ((paramBaseApplicationImpl instanceof AppRuntime)))
-        {
-          QLog.e("QZLog", 1, "*createQZoneAppInterface  suscees");
-          paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-          return paramBaseApplicationImpl;
-        }
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        QLog.e("QZoneHelper", 1, "createQZoneAppInterface", paramBaseApplicationImpl);
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        QLog.e("QZoneHelper", 1, "createQZoneAppInterface", paramBaseApplicationImpl);
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        QLog.e("QZoneHelper", 1, "createQZoneAppInterface", paramBaseApplicationImpl);
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        QLog.e("QZoneHelper", 1, "createQZoneAppInterface", paramBaseApplicationImpl);
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        QLog.e("QZoneHelper", 1, "createQZoneAppInterface", paramBaseApplicationImpl);
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        QLog.e("QZoneHelper", 1, "createQZoneAppInterface", paramBaseApplicationImpl);
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    finally
-    {
-      PerfTracer.traceEnd("Runtime_load_runtime");
-    }
+    // Byte code:
+    //   0: ldc_w 994
+    //   3: invokestatic 999	cooperation/qzone/util/PerfTracer:traceStart	(Ljava/lang/String;)V
+    //   6: aload_0
+    //   7: ifnull +262 -> 269
+    //   10: aload_1
+    //   11: ifnonnull +5 -> 16
+    //   14: aconst_null
+    //   15: areturn
+    //   16: ldc_w 969
+    //   19: iconst_1
+    //   20: ldc_w 1001
+    //   23: invokestatic 974	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   26: ldc 60
+    //   28: invokestatic 950	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   31: astore_1
+    //   32: aload_1
+    //   33: astore_0
+    //   34: goto +31 -> 65
+    //   37: ldc_w 952
+    //   40: invokestatic 558	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   43: checkcast 952	com/tencent/qzonehub/api/IQzonePluginProxyActivity
+    //   46: aload_0
+    //   47: invokeinterface 1004 2 0
+    //   52: astore_1
+    //   53: aload_1
+    //   54: ldc 60
+    //   56: invokevirtual 961	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   59: astore_0
+    //   60: iconst_1
+    //   61: aload_1
+    //   62: invokestatic 967	com/qq/jce/wup/BasicClassTypeUtil:setClassLoader	(ZLjava/lang/ClassLoader;)V
+    //   65: aload_0
+    //   66: ifnonnull +21 -> 87
+    //   69: ldc_w 969
+    //   72: iconst_1
+    //   73: ldc_w 1006
+    //   76: invokestatic 974	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   79: ldc_w 994
+    //   82: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   85: aconst_null
+    //   86: areturn
+    //   87: aload_0
+    //   88: invokevirtual 1012	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   91: astore_0
+    //   92: aload_0
+    //   93: ifnull +160 -> 253
+    //   96: aload_0
+    //   97: instanceof 620
+    //   100: ifeq +153 -> 253
+    //   103: ldc_w 969
+    //   106: iconst_1
+    //   107: ldc_w 1014
+    //   110: invokestatic 974	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   113: aload_0
+    //   114: checkcast 620	mqq/app/AppRuntime
+    //   117: astore_0
+    //   118: ldc_w 994
+    //   121: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   124: aload_0
+    //   125: areturn
+    //   126: astore_0
+    //   127: goto +134 -> 261
+    //   130: astore_0
+    //   131: goto +27 -> 158
+    //   134: astore_0
+    //   135: goto +37 -> 172
+    //   138: astore_0
+    //   139: goto +47 -> 186
+    //   142: astore_0
+    //   143: goto +57 -> 200
+    //   146: astore_0
+    //   147: goto +67 -> 214
+    //   150: astore_0
+    //   151: goto +77 -> 228
+    //   154: astore_0
+    //   155: goto +87 -> 242
+    //   158: ldc_w 428
+    //   161: iconst_1
+    //   162: ldc_w 1015
+    //   165: aload_0
+    //   166: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   169: goto +84 -> 253
+    //   172: ldc_w 428
+    //   175: iconst_1
+    //   176: ldc_w 1015
+    //   179: aload_0
+    //   180: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   183: goto +70 -> 253
+    //   186: ldc_w 428
+    //   189: iconst_1
+    //   190: ldc_w 1015
+    //   193: aload_0
+    //   194: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   197: goto +56 -> 253
+    //   200: ldc_w 428
+    //   203: iconst_1
+    //   204: ldc_w 1015
+    //   207: aload_0
+    //   208: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   211: goto +42 -> 253
+    //   214: ldc_w 428
+    //   217: iconst_1
+    //   218: ldc_w 1015
+    //   221: aload_0
+    //   222: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   225: goto +28 -> 253
+    //   228: ldc_w 428
+    //   231: iconst_1
+    //   232: ldc_w 1015
+    //   235: aload_0
+    //   236: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   239: goto +14 -> 253
+    //   242: ldc_w 428
+    //   245: iconst_1
+    //   246: ldc_w 1015
+    //   249: aload_0
+    //   250: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   253: ldc_w 994
+    //   256: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   259: aconst_null
+    //   260: areturn
+    //   261: ldc_w 994
+    //   264: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   267: aload_0
+    //   268: athrow
+    //   269: aconst_null
+    //   270: areturn
+    //   271: astore_1
+    //   272: goto -235 -> 37
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	275	0	paramContext	Context
+    //   0	275	1	paramString	String
+    // Exception table:
+    //   from	to	target	type
+    //   16	26	126	finally
+    //   26	32	126	finally
+    //   37	65	126	finally
+    //   69	79	126	finally
+    //   87	92	126	finally
+    //   96	118	126	finally
+    //   158	169	126	finally
+    //   172	183	126	finally
+    //   186	197	126	finally
+    //   200	211	126	finally
+    //   214	225	126	finally
+    //   228	239	126	finally
+    //   242	253	126	finally
+    //   16	26	130	java/lang/Exception
+    //   26	32	130	java/lang/Exception
+    //   37	65	130	java/lang/Exception
+    //   69	79	130	java/lang/Exception
+    //   87	92	130	java/lang/Exception
+    //   96	118	130	java/lang/Exception
+    //   16	26	134	java/lang/NoSuchMethodException
+    //   26	32	134	java/lang/NoSuchMethodException
+    //   37	65	134	java/lang/NoSuchMethodException
+    //   69	79	134	java/lang/NoSuchMethodException
+    //   87	92	134	java/lang/NoSuchMethodException
+    //   96	118	134	java/lang/NoSuchMethodException
+    //   16	26	138	java/lang/reflect/InvocationTargetException
+    //   26	32	138	java/lang/reflect/InvocationTargetException
+    //   37	65	138	java/lang/reflect/InvocationTargetException
+    //   69	79	138	java/lang/reflect/InvocationTargetException
+    //   87	92	138	java/lang/reflect/InvocationTargetException
+    //   96	118	138	java/lang/reflect/InvocationTargetException
+    //   16	26	142	java/lang/InstantiationException
+    //   26	32	142	java/lang/InstantiationException
+    //   37	65	142	java/lang/InstantiationException
+    //   69	79	142	java/lang/InstantiationException
+    //   87	92	142	java/lang/InstantiationException
+    //   96	118	142	java/lang/InstantiationException
+    //   16	26	146	java/lang/IllegalAccessException
+    //   26	32	146	java/lang/IllegalAccessException
+    //   37	65	146	java/lang/IllegalAccessException
+    //   69	79	146	java/lang/IllegalAccessException
+    //   87	92	146	java/lang/IllegalAccessException
+    //   96	118	146	java/lang/IllegalAccessException
+    //   16	26	150	java/lang/IllegalArgumentException
+    //   26	32	150	java/lang/IllegalArgumentException
+    //   37	65	150	java/lang/IllegalArgumentException
+    //   69	79	150	java/lang/IllegalArgumentException
+    //   87	92	150	java/lang/IllegalArgumentException
+    //   96	118	150	java/lang/IllegalArgumentException
+    //   16	26	154	java/lang/ClassNotFoundException
+    //   37	65	154	java/lang/ClassNotFoundException
+    //   69	79	154	java/lang/ClassNotFoundException
+    //   87	92	154	java/lang/ClassNotFoundException
+    //   96	118	154	java/lang/ClassNotFoundException
+    //   26	32	271	java/lang/ClassNotFoundException
   }
   
   public static SurfaceView createQZoneFloatObjectView(Context paramContext, String paramString)
@@ -752,399 +796,474 @@ public class QZoneHelper
         ToastUtil.a().a(STR_TIPS_FLOAT_ITEM_NOT_ALLOW_TO_SHOW, 1);
         return null;
       }
-      try
-      {
-        Class localClass1 = Class.forName("com.qzone.personalize.floatobject.ui.FloatItemView");
-        if (localClass1 == null)
-        {
-          QLog.e("QZLog", 1, "*createQZoneFloatObjectView load class fail");
-          return null;
-        }
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        Class localClass2;
-        for (;;)
-        {
-          ClassLoader localClassLoader = QzonePluginProxyActivity.getQZonePluginClassLoader(paramContext);
-          localClass2 = localClassLoader.loadClass("com.qzone.personalize.floatobject.ui.FloatItemView");
-          BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-        }
-        paramContext = localClass2.getDeclaredConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
-        localClass2.getMethod("initObjects", new Class[] { String.class, Boolean.TYPE }).invoke(paramContext, new Object[] { paramString, Boolean.valueOf(true) });
-        if (paramContext == null) {
-          break label155;
-        }
-      }
-      if ((paramContext instanceof SurfaceView))
-      {
-        paramContext = (SurfaceView)paramContext;
-        return paramContext;
-      }
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      paramContext.printStackTrace();
-      return null;
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        label155:
-        paramContext.printStackTrace();
-      }
-    }
-  }
-  
-  public static AppRuntime createQZoneLiveMainRuntime(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
-  {
-    PerfTracer.traceStart("Runtime_load_live_main_runtime");
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
+      Class localClass;
+      ClassLoader localClassLoader;
+      paramContext.printStackTrace();
       return null;
     }
-    paramBaseApplicationImpl = new QzoneLiveMainRuntime();
-    PerfTracer.traceEnd("Runtime_load_live_main_runtime");
-    return paramBaseApplicationImpl;
-  }
-  
-  public static AppRuntime createQZoneMainRuntime(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
-  {
-    PerfTracer.traceStart("Runtime_load_main_runtime");
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    paramBaseApplicationImpl = new QzoneMainRuntime();
-    PerfTracer.traceEnd("Runtime_load_main_runtime");
-    return paramBaseApplicationImpl;
-  }
-  
-  public static AppRuntime createQZonePictureAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
-  {
-    PerfTracer.traceStart("Runtime_load_runtime");
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
+    catch (ClassNotFoundException paramContext)
+    {
+      label28:
+      paramContext.printStackTrace();
     }
     try
     {
-      paramString = Class.forName("com.qzone.preview.QZonePictureAppInterface");
-      paramBaseApplicationImpl = paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      for (;;)
-      {
-        paramString = paramString;
-        paramString = QzonePluginProxyActivity.getQZonePluginClassLoader(paramBaseApplicationImpl);
-        paramBaseApplicationImpl = paramString.loadClass("com.qzone.preview.QZonePictureAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, paramString);
-      }
-      for (;;)
-      {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-        if ((paramBaseApplicationImpl != null) && ((paramBaseApplicationImpl instanceof AppRuntime)))
-        {
-          paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-          return paramBaseApplicationImpl;
-        }
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        PerfTracer.traceEnd("Runtime_load_runtime");
-      }
-    }
-    finally
-    {
-      PerfTracer.traceEnd("Runtime_load_runtime");
-    }
-    if (paramBaseApplicationImpl != null) {}
-  }
-  
-  public static AppRuntime createQZoneVideoAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
-  {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
-    {
-      paramString = Class.forName("com.qzone.video.service.QZoneVideoAppInterface");
-      paramBaseApplicationImpl = paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      for (;;)
-      {
-        try
-        {
-          QLog.e("QZLog", 1, "*createQZoneVideoAppInterface load class fail");
-          return null;
-        }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          paramBaseApplicationImpl.printStackTrace();
-        }
-        paramString = paramString;
-        paramBaseApplicationImpl = QzonePluginProxyActivity.getQZonePluginClassLoader(paramBaseApplicationImpl).loadClass("com.qzone.video.service.QZoneVideoAppInterface");
-        continue;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-        if ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime))) {
-          break label87;
-        }
-        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-        return paramBaseApplicationImpl;
-      }
-      return null;
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    if (paramBaseApplicationImpl != null) {}
-  }
-  
-  public static AppRuntime createQzoneLiveAppInterface(BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    if (paramBaseApplicationImpl == null) {
-      return null;
-    }
-    try
-    {
-      Class localClass = Class.forName("com.qzone.live.app.QZoneLiveVideoAppInterface");
-      paramBaseApplicationImpl = localClass;
+      localClass = Class.forName("com.qzone.personalize.floatobject.ui.FloatItemView");
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
+      break label28;
+    }
+    localClassLoader = ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).getQZonePluginClassLoader(paramContext);
+    localClass = localClassLoader.loadClass("com.qzone.personalize.floatobject.ui.FloatItemView");
+    BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+    if (localClass == null)
+    {
+      QLog.e("QZLog", 1, "*createQZoneFloatObjectView load class fail");
+      return null;
+    }
+    paramContext = localClass.getDeclaredConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
+    localClass.getMethod("initObjects", new Class[] { String.class, Boolean.TYPE }).invoke(paramContext, new Object[] { paramString, Boolean.valueOf(true) });
+    if ((paramContext != null) && ((paramContext instanceof SurfaceView)))
+    {
+      paramContext = (SurfaceView)paramContext;
+      return paramContext;
+    }
+    return null;
+  }
+  
+  public static AppRuntime createQZoneLiveMainRuntime(Context paramContext, String paramString)
+  {
+    return ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).createQZoneLiveMainRuntime(paramContext, paramString);
+  }
+  
+  public static AppRuntime createQZoneMainRuntime(Context paramContext, String paramString)
+  {
+    return ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).createQZoneMainRuntime(paramContext, paramString);
+  }
+  
+  /* Error */
+  public static AppRuntime createQZonePictureAppInterface(Context paramContext, String paramString)
+  {
+    // Byte code:
+    //   0: ldc_w 994
+    //   3: invokestatic 999	cooperation/qzone/util/PerfTracer:traceStart	(Ljava/lang/String;)V
+    //   6: aload_0
+    //   7: ifnull +201 -> 208
+    //   10: aload_1
+    //   11: ifnonnull +5 -> 16
+    //   14: aconst_null
+    //   15: areturn
+    //   16: ldc 69
+    //   18: invokestatic 950	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   21: astore_1
+    //   22: aload_1
+    //   23: astore_0
+    //   24: goto +59 -> 83
+    //   27: astore_0
+    //   28: goto +172 -> 200
+    //   31: astore_0
+    //   32: goto +113 -> 145
+    //   35: astore_0
+    //   36: goto +116 -> 152
+    //   39: astore_0
+    //   40: goto +119 -> 159
+    //   43: astore_0
+    //   44: goto +122 -> 166
+    //   47: astore_0
+    //   48: goto +125 -> 173
+    //   51: astore_0
+    //   52: goto +128 -> 180
+    //   55: ldc_w 952
+    //   58: invokestatic 558	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   61: checkcast 952	com/tencent/qzonehub/api/IQzonePluginProxyActivity
+    //   64: aload_0
+    //   65: invokeinterface 1004 2 0
+    //   70: astore_1
+    //   71: aload_1
+    //   72: ldc 69
+    //   74: invokevirtual 961	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   77: astore_0
+    //   78: iconst_1
+    //   79: aload_1
+    //   80: invokestatic 967	com/qq/jce/wup/BasicClassTypeUtil:setClassLoader	(ZLjava/lang/ClassLoader;)V
+    //   83: aload_0
+    //   84: ifnonnull +21 -> 105
+    //   87: ldc_w 969
+    //   90: iconst_1
+    //   91: ldc_w 1063
+    //   94: invokestatic 974	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   97: ldc_w 994
+    //   100: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   103: aconst_null
+    //   104: areturn
+    //   105: aload_0
+    //   106: iconst_0
+    //   107: anewarray 946	java/lang/Class
+    //   110: invokevirtual 978	java/lang/Class:getDeclaredConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   113: iconst_0
+    //   114: anewarray 4	java/lang/Object
+    //   117: invokevirtual 984	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   120: astore_0
+    //   121: aload_0
+    //   122: ifnull +62 -> 184
+    //   125: aload_0
+    //   126: instanceof 620
+    //   129: ifeq +55 -> 184
+    //   132: aload_0
+    //   133: checkcast 620	mqq/app/AppRuntime
+    //   136: astore_0
+    //   137: ldc_w 994
+    //   140: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   143: aload_0
+    //   144: areturn
+    //   145: aload_0
+    //   146: invokevirtual 678	java/lang/Exception:printStackTrace	()V
+    //   149: goto +35 -> 184
+    //   152: aload_0
+    //   153: invokevirtual 985	java/lang/NoSuchMethodException:printStackTrace	()V
+    //   156: goto +28 -> 184
+    //   159: aload_0
+    //   160: invokevirtual 986	java/lang/reflect/InvocationTargetException:printStackTrace	()V
+    //   163: goto +21 -> 184
+    //   166: aload_0
+    //   167: invokevirtual 987	java/lang/InstantiationException:printStackTrace	()V
+    //   170: goto +14 -> 184
+    //   173: aload_0
+    //   174: invokevirtual 988	java/lang/IllegalAccessException:printStackTrace	()V
+    //   177: goto +7 -> 184
+    //   180: aload_0
+    //   181: invokevirtual 989	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   184: ldc_w 994
+    //   187: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   190: aconst_null
+    //   191: areturn
+    //   192: astore_0
+    //   193: aload_0
+    //   194: invokevirtual 990	java/lang/ClassNotFoundException:printStackTrace	()V
+    //   197: goto -13 -> 184
+    //   200: ldc_w 994
+    //   203: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   206: aload_0
+    //   207: athrow
+    //   208: aconst_null
+    //   209: areturn
+    //   210: astore_1
+    //   211: goto -156 -> 55
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	214	0	paramContext	Context
+    //   0	214	1	paramString	String
+    // Exception table:
+    //   from	to	target	type
+    //   16	22	27	finally
+    //   55	83	27	finally
+    //   87	97	27	finally
+    //   105	121	27	finally
+    //   125	137	27	finally
+    //   145	149	27	finally
+    //   152	156	27	finally
+    //   159	163	27	finally
+    //   166	170	27	finally
+    //   173	177	27	finally
+    //   180	184	27	finally
+    //   193	197	27	finally
+    //   16	22	31	java/lang/Exception
+    //   55	83	31	java/lang/Exception
+    //   87	97	31	java/lang/Exception
+    //   105	121	31	java/lang/Exception
+    //   125	137	31	java/lang/Exception
+    //   16	22	35	java/lang/NoSuchMethodException
+    //   55	83	35	java/lang/NoSuchMethodException
+    //   87	97	35	java/lang/NoSuchMethodException
+    //   105	121	35	java/lang/NoSuchMethodException
+    //   125	137	35	java/lang/NoSuchMethodException
+    //   16	22	39	java/lang/reflect/InvocationTargetException
+    //   55	83	39	java/lang/reflect/InvocationTargetException
+    //   87	97	39	java/lang/reflect/InvocationTargetException
+    //   105	121	39	java/lang/reflect/InvocationTargetException
+    //   125	137	39	java/lang/reflect/InvocationTargetException
+    //   16	22	43	java/lang/InstantiationException
+    //   55	83	43	java/lang/InstantiationException
+    //   87	97	43	java/lang/InstantiationException
+    //   105	121	43	java/lang/InstantiationException
+    //   125	137	43	java/lang/InstantiationException
+    //   16	22	47	java/lang/IllegalAccessException
+    //   55	83	47	java/lang/IllegalAccessException
+    //   87	97	47	java/lang/IllegalAccessException
+    //   105	121	47	java/lang/IllegalAccessException
+    //   125	137	47	java/lang/IllegalAccessException
+    //   16	22	51	java/lang/IllegalArgumentException
+    //   55	83	51	java/lang/IllegalArgumentException
+    //   87	97	51	java/lang/IllegalArgumentException
+    //   105	121	51	java/lang/IllegalArgumentException
+    //   125	137	51	java/lang/IllegalArgumentException
+    //   55	83	192	java/lang/ClassNotFoundException
+    //   87	97	192	java/lang/ClassNotFoundException
+    //   105	121	192	java/lang/ClassNotFoundException
+    //   125	137	192	java/lang/ClassNotFoundException
+    //   16	22	210	java/lang/ClassNotFoundException
+  }
+  
+  public static AppRuntime createQZoneVideoAppInterface(Context paramContext, String paramString)
+  {
+    if (paramContext != null)
+    {
+      if (paramString == null) {
+        return null;
+      }
       for (;;)
       {
         try
+        {
+          try
+          {
+            paramString = Class.forName("com.qzone.video.service.QZoneVideoAppInterface");
+            paramContext = paramString;
+          }
+          catch (Exception paramContext) {}catch (NoSuchMethodException paramContext) {}catch (InvocationTargetException paramContext) {}catch (InstantiationException paramContext) {}catch (IllegalAccessException paramContext) {}catch (IllegalArgumentException paramContext) {}
+        }
+        catch (ClassNotFoundException paramString)
+        {
+          continue;
+        }
+        try
+        {
+          paramContext = ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).getQZonePluginClassLoader(paramContext).loadClass("com.qzone.video.service.QZoneVideoAppInterface");
+          if (paramContext == null)
+          {
+            QLog.e("QZLog", 1, "*createQZoneVideoAppInterface load class fail");
+            return null;
+          }
+          paramContext = paramContext.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+          if ((paramContext == null) || (!(paramContext instanceof AppRuntime))) {
+            continue;
+          }
+          paramContext = (AppRuntime)paramContext;
+          return paramContext;
+        }
+        catch (ClassNotFoundException paramContext)
+        {
+          paramContext.printStackTrace();
+        }
+      }
+      paramContext.printStackTrace();
+      return null;
+      paramContext.printStackTrace();
+      return null;
+      paramContext.printStackTrace();
+      return null;
+      paramContext.printStackTrace();
+      return null;
+      paramContext.printStackTrace();
+      return null;
+      paramContext.printStackTrace();
+      return null;
+    }
+    return null;
+  }
+  
+  public static AppRuntime createQzoneLiveAppInterface(Context paramContext)
+  {
+    if (paramContext == null) {
+      return null;
+    }
+    for (;;)
+    {
+      try
+      {
+        try
+        {
+          localObject = Class.forName("com.qzone.live.app.QZoneLiveVideoAppInterface");
+          paramContext = (Context)localObject;
+        }
+        catch (Exception paramContext) {}catch (NoSuchMethodException paramContext) {}catch (InvocationTargetException paramContext) {}catch (InstantiationException paramContext) {}catch (IllegalAccessException paramContext) {}catch (IllegalArgumentException paramContext) {}
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        Object localObject;
+        continue;
+      }
+      try
+      {
+        localObject = ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).getQzoneLiveClassLoader(paramContext);
+        paramContext = ((ClassLoader)localObject).loadClass("com.qzone.live.app.QZoneLiveVideoAppInterface");
+        BasicClassTypeUtil.setClassLoader(true, (ClassLoader)localObject);
+        if (paramContext == null)
         {
           QLog.e("QZLog", 1, "createQzoneLiveAppInterface load class fail");
           return null;
         }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          ClassLoader localClassLoader;
-          paramBaseApplicationImpl.printStackTrace();
+        paramContext = paramContext.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+        if ((paramContext == null) || (!(paramContext instanceof AppRuntime))) {
+          continue;
         }
-        localClassNotFoundException = localClassNotFoundException;
-        localClassLoader = QzonePluginProxyActivity.getQzoneLiveClassLoader(paramBaseApplicationImpl);
-        paramBaseApplicationImpl = localClassLoader.loadClass("com.qzone.live.app.QZoneLiveVideoAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+        paramContext = (AppRuntime)paramContext;
+        return paramContext;
       }
-      do
+      catch (ClassNotFoundException paramContext)
       {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
-      paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
+        paramContext.printStackTrace();
       }
     }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    if (paramBaseApplicationImpl != null) {}
+    paramContext.printStackTrace();
+    return null;
+    paramContext.printStackTrace();
+    return null;
+    paramContext.printStackTrace();
+    return null;
+    paramContext.printStackTrace();
+    return null;
+    paramContext.printStackTrace();
+    return null;
+    paramContext.printStackTrace();
+    return null;
+    return null;
   }
   
-  public static AppRuntime createVerticalVideoAppInterface(BaseApplicationImpl paramBaseApplicationImpl)
+  public static AppRuntime createVerticalVideoAppInterface(Context paramContext)
   {
-    if (paramBaseApplicationImpl == null) {
+    if (paramContext == null) {
       return null;
     }
     try
     {
-      Class localClass = Class.forName("com.qzone.verticalvideo.app.QZoneVerticalVideoAppInterface");
-      paramBaseApplicationImpl = localClass;
+      try
+      {
+        localObject = Class.forName("com.qzone.verticalvideo.app.QZoneVerticalVideoAppInterface");
+        paramContext = (Context)localObject;
+      }
+      catch (Exception paramContext)
+      {
+        break label99;
+      }
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      for (;;)
-      {
-        localClassLoader = QzonePluginProxyActivity.getQzoneVerticalVideoClassLoader(paramBaseApplicationImpl);
-        paramBaseApplicationImpl = localClassLoader.loadClass("com.qzone.verticalvideo.app.QZoneVerticalVideoAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-      }
+      Object localObject;
+      label21:
+      break label21;
     }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      QLog.e("QZLog", 1, "createVerticalVideoAppInterface failed:", paramBaseApplicationImpl);
-      return null;
-    }
-    if (paramBaseApplicationImpl == null)
+    localObject = ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).getQzoneVerticalVideoClassLoader(paramContext);
+    paramContext = ((ClassLoader)localObject).loadClass("com.qzone.verticalvideo.app.QZoneVerticalVideoAppInterface");
+    BasicClassTypeUtil.setClassLoader(true, (ClassLoader)localObject);
+    if (paramContext == null)
     {
       QLog.e("QZLog", 1, "createVerticalVideoAppInterface load class fail");
       return null;
     }
-    do
+    paramContext = paramContext.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+    if ((paramContext != null) && ((paramContext instanceof AppRuntime)))
     {
-      ClassLoader localClassLoader;
-      paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-    } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
-    paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-    return paramBaseApplicationImpl;
+      paramContext = (AppRuntime)paramContext;
+      return paramContext;
+      label99:
+      QLog.e("QZLog", 1, "createVerticalVideoAppInterface failed:", paramContext);
+    }
+    return null;
   }
   
-  public static AppRuntime createWeishiFeedsAppInterface(BaseApplicationImpl paramBaseApplicationImpl)
+  public static AppRuntime createWeishiFeedsAppInterface(Context paramContext)
   {
-    if (paramBaseApplicationImpl == null) {
+    if (paramContext == null) {
       return null;
     }
     try
     {
-      Class localClass = Class.forName("com.qzone.verticalvideo.app.QZoneWeishiFeedsAppInterface");
-      paramBaseApplicationImpl = localClass;
+      try
+      {
+        localObject = Class.forName("com.qzone.verticalvideo.app.QZoneWeishiFeedsAppInterface");
+        paramContext = (Context)localObject;
+      }
+      catch (Exception paramContext)
+      {
+        break label99;
+      }
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      for (;;)
-      {
-        localClassLoader = QzonePluginProxyActivity.getQzoneWeishiFeedsClassLoader(paramBaseApplicationImpl);
-        paramBaseApplicationImpl = localClassLoader.loadClass("com.qzone.verticalvideo.app.QZoneWeishiFeedsAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-      }
+      Object localObject;
+      label21:
+      break label21;
     }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      QLog.e("QZLog", 1, "createWeishiFeedsAppInterface failed:", paramBaseApplicationImpl);
-      return null;
-    }
-    if (paramBaseApplicationImpl == null)
+    localObject = ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).getQzoneWeishiFeedsClassLoader(paramContext);
+    paramContext = ((ClassLoader)localObject).loadClass("com.qzone.verticalvideo.app.QZoneWeishiFeedsAppInterface");
+    BasicClassTypeUtil.setClassLoader(true, (ClassLoader)localObject);
+    if (paramContext == null)
     {
       QLog.e("QZLog", 1, "createWeishiFeedsAppInterface load class fail");
       return null;
     }
-    do
+    paramContext = paramContext.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+    if ((paramContext != null) && ((paramContext instanceof AppRuntime)))
     {
-      ClassLoader localClassLoader;
-      paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-    } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
-    paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-    return paramBaseApplicationImpl;
+      paramContext = (AppRuntime)paramContext;
+      return paramContext;
+      label99:
+      QLog.e("QZLog", 1, "createWeishiFeedsAppInterface failed:", paramContext);
+    }
+    return null;
   }
   
-  private static void deleteShortcut(Intent paramIntent, @NonNull QQAppInterface paramQQAppInterface, String paramString, Bitmap paramBitmap)
+  public static boolean deleteFile(File paramFile)
+  {
+    if (paramFile.isDirectory())
+    {
+      File[] arrayOfFile = paramFile.listFiles();
+      if ((arrayOfFile != null) && (arrayOfFile.length > 0))
+      {
+        int i = 0;
+        while (i < arrayOfFile.length)
+        {
+          deleteFile(arrayOfFile[i]);
+          i += 1;
+        }
+      }
+    }
+    return paramFile.delete();
+  }
+  
+  public static boolean deleteFile(String paramString)
+  {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (paramString != null)
+    {
+      bool1 = bool3;
+      if (paramString.length() > 0) {
+        try
+        {
+          bool3 = deleteFile(new File(paramString));
+          bool1 = bool3;
+          if (bool3)
+          {
+            bool2 = bool3;
+            tryDelMediaStore(paramString);
+            return bool3;
+          }
+        }
+        catch (Exception paramString)
+        {
+          bool1 = bool2;
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("");
+            localStringBuilder.append(paramString.getMessage());
+            QLog.d("Tools.delete", 2, localStringBuilder.toString());
+            bool1 = bool2;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private static void deleteShortcut(Intent paramIntent, @NonNull AppRuntime paramAppRuntime, String paramString, Bitmap paramBitmap)
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("android.intent.extra.shortcut.INTENT", paramIntent);
@@ -1152,7 +1271,7 @@ public class QZoneHelper
     localIntent.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", paramBitmap);
     localIntent.putExtra("duplicate", false);
     localIntent.setAction("com.android.launcher.action.UNINSTALL_SHORTCUT");
-    paramQQAppInterface.getApp().sendOrderedBroadcast(localIntent, null);
+    paramAppRuntime.getApp().sendOrderedBroadcast(localIntent, null);
   }
   
   public static boolean disableAioStoryFeedReq()
@@ -1170,16 +1289,16 @@ public class QZoneHelper
     return QzoneAlphaConfig.a().a("contentboxlaunch", "gocontentboxminiprogram", 0);
   }
   
-  public static boolean enableQZoneContextBox(QQAppInterface paramQQAppInterface)
+  public static boolean enableQZoneContextBox(AppRuntime paramAppRuntime)
   {
     try
     {
-      boolean bool = ((QZoneManager)paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER)).b();
+      boolean bool = ((QZoneManager)paramAppRuntime.getManager(((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQzoneManagerInQQManagerFactory())).b();
       return bool;
     }
-    catch (Throwable paramQQAppInterface)
+    catch (Throwable paramAppRuntime)
     {
-      QZLog.e("QZoneMsgManager.enableQZoneContextBox", 2, paramQQAppInterface, new Object[0]);
+      QZLog.e("enableQZoneContextBox", 2, paramAppRuntime, new Object[0]);
     }
     return false;
   }
@@ -1188,7 +1307,7 @@ public class QZoneHelper
   {
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
     localIntent.putExtra("jumpToDetailFromQQWhat", 1);
     localIntent.putExtra("startup_sceneid", 4);
     localIntent.putExtra("mqqflag", 1);
@@ -1199,7 +1318,7 @@ public class QZoneHelper
     if (QZoneLoginReportHelper.needAddLoginFromAIOFeedCard(localIntent, paramString2)) {
       QZoneLoginReportHelper.setLoginFromAIOFeedCard(localIntent);
     }
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt2);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt2);
   }
   
   public static void forwardFromQQSettingToPersonalAlbum(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Long paramLong, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -1211,13 +1330,13 @@ public class QZoneHelper
   {
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
     localIntent.putExtra("jumpToDetailFromQQWhat", 0);
     localIntent.putExtra("startup_sceneid", 4);
     localIntent.putExtra("mqqflag", 1);
     localIntent.putExtra("cell_operation.qq_url", paramString1);
     localIntent.putExtra("refer", paramString2);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardFromSearchToFriendFeed(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
@@ -1233,23 +1352,7 @@ public class QZoneHelper
   
   public static void forwardH5QZone(String paramString, Context paramContext)
   {
-    String str = LocalMultiProcConfig.getString("qzh5_url", "");
-    Object localObject = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject = "https://m.qzone.com/infocenter";
-    }
-    paramString = (String)localObject + "?sid=" + paramString;
-    if (paramContext == null) {
-      return;
-    }
-    localObject = new Intent(paramContext, QQBrowserActivity.class);
-    openWebSecurityVerify((Intent)localObject);
-    ((Intent)localObject).putExtra("plugin_start_time", System.nanoTime());
-    ((Intent)localObject).putExtra("click_start_time", System.currentTimeMillis());
-    ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-    ((Intent)localObject).putExtra("source_name", BaseApplicationImpl.getContext().getString(2131717706));
-    addSource((Intent)localObject);
-    paramContext.startActivity(((Intent)localObject).putExtra("url", paramString));
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).forwardH5QZone(paramString, paramContext);
   }
   
   public static void forwardMiniToTroopUploadPhoto(Activity paramActivity, String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2, String paramString3, String paramString4, int paramInt3, int paramInt4)
@@ -1262,15 +1365,15 @@ public class QZoneHelper
     paramString1.putExtra("up_way", paramInt4);
     paramString1.setFlags(402653184);
     setUserInfoToIntent(paramString1, localUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, localUserInfo.qzone_uin, paramString1, paramInt3);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramString1, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, localUserInfo.qzone_uin, paramString1, paramInt3);
   }
   
   public static void forwardOpenQzoneVip(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, long paramLong, String paramString2, int paramInt)
   {
     Intent localIntent = new Intent("com.tencent.intent.QZONE_OPEN_VIP");
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
     localIntent.putExtra("aid", paramString1);
     localIntent.putExtra("uin", paramLong);
     if (!TextUtils.isEmpty(paramString2))
@@ -1278,114 +1381,105 @@ public class QZoneHelper
       localIntent.putExtra("direct_go", false);
       localIntent.putExtra("key_open_qzone_vip_dialog_title", paramString2);
     }
-    for (;;)
+    else
     {
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
-      return;
       localIntent.putExtra("direct_go", true);
     }
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardOpenQzoneVip2(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, long paramLong, String paramString2, int paramInt, String paramString3, boolean paramBoolean)
   {
     Intent localIntent = new Intent("com.tencent.intent.QZONE_OPEN_VIP");
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
     localIntent.putExtra("aid", paramString1);
     localIntent.putExtra("provide_uin", paramLong);
     localIntent.putExtra("success_tips", paramString3);
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localIntent.putExtra("direct_go", paramBoolean);
-      localIntent.putExtra("need_loading_dialog", true);
-      localIntent.putExtra("key_open_qzone_vip_dialog_title", paramString2);
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
-      return;
-    }
+    localIntent.putExtra("direct_go", paramBoolean ^ true);
+    localIntent.putExtra("need_loading_dialog", true);
+    localIntent.putExtra("key_open_qzone_vip_dialog_title", paramString2);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static boolean forwardQZoneApp(Context paramContext, int paramInt, long paramLong, String paramString)
   {
-    boolean bool = true;
+    Bundle localBundle;
     try
     {
-      Object localObject1 = paramContext.getPackageManager().getPackageInfo("com.qzone", 0);
-      if (localObject1 != null)
-      {
-        i = ((PackageInfo)localObject1).versionCode;
-        if (i >= paramInt)
-        {
-          if (bool)
-          {
-            localObject1 = new Bundle();
-            ((Bundle)localObject1).putLong("qqid", paramLong);
-            ((Bundle)localObject1).putLong("uin", paramLong);
-            ((Bundle)localObject1).putBoolean("isbackmenu", false);
-            ((Bundle)localObject1).putString("selfUin", String.valueOf(paramLong));
-            ((Bundle)localObject1).putString("AccountInfoSync", "mobileqq.service");
-            ((Bundle)localObject1).putString("ClassNameSync", paramString);
-            paramString = new Intent();
-            paramString.setClassName("com.qzone", "com.qzone.QZoneSyncAccountActivity");
-            paramString.putExtras((Bundle)localObject1);
-            paramString.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-            paramContext.startActivity(paramString);
-          }
-          return bool;
-        }
-      }
+      PackageInfo localPackageInfo = paramContext.getPackageManager().getPackageInfo("com.qzone", 0);
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      for (;;)
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneHelper", 2, localNameNotFoundException.getMessage());
+      }
+      localBundle = null;
+    }
+    boolean bool = true;
+    if (localBundle != null)
+    {
+      int i = localBundle.versionCode;
+      if (i >= paramInt) {
+        break label111;
+      }
+      if (i >= 80)
       {
-        int i;
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneHelper", 2, localNameNotFoundException.getMessage());
-        }
-        Object localObject2 = null;
-        continue;
-        if (i >= 80)
-        {
-          paramString = new Intent();
-          paramString.setData(Uri.parse("mqzone://arouse/activefeed?source=qq&version=1"));
-          paramString.setPackage("com.qzone");
-          paramContext.startActivity(paramString);
-          return true;
-        }
-        bool = false;
+        paramString = new Intent();
+        paramString.setData(Uri.parse("mqzone://arouse/activefeed?source=qq&version=1"));
+        paramString.setPackage("com.qzone");
+        paramContext.startActivity(paramString);
+        return true;
       }
     }
+    bool = false;
+    label111:
+    if (bool)
+    {
+      localBundle = new Bundle();
+      localBundle.putLong("qqid", paramLong);
+      localBundle.putLong("uin", paramLong);
+      localBundle.putBoolean("isbackmenu", false);
+      localBundle.putString("selfUin", String.valueOf(paramLong));
+      localBundle.putString("AccountInfoSync", "mobileqq.service");
+      localBundle.putString("ClassNameSync", paramString);
+      paramString = new Intent();
+      paramString.setClassName("com.qzone", "com.qzone.QZoneSyncAccountActivity");
+      paramString.putExtras(localBundle);
+      paramString.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+      paramContext.startActivity(paramString);
+    }
+    return bool;
   }
   
   public static void forwardToAggregate(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
   {
     QZLog.e("QZoneHelper", "forwardToAggregate() unexpired call request!");
-    QzonePluginProxyActivity.setActivityNameToIntent(paramIntent, "com.qzone.commoncode.module.videostory.aggregate.VideoStoryAggregateActivity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString, paramIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramIntent, "com.qzone.commoncode.module.videostory.aggregate.VideoStoryAggregateActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramString, paramIntent, paramInt);
   }
   
   public static void forwardToBrowser(Activity paramActivity, String paramString1, int paramInt, Bundle paramBundle, String paramString2)
   {
-    Intent localIntent = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
+    Intent localIntent = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramActivity);
     localIntent.putExtra("url", paramString1);
     localIntent.putExtra("fromQZone", true);
     localIntent.putExtra("injectrecommend", true);
     localIntent.setData(Uri.parse(paramString1));
     openWebSecurityVerify(localIntent);
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (paramString1 = null;; paramString1 = paramString2.getBytes())
-    {
-      if (paramString1 != null) {
-        localIntent.putExtra("post_data", paramString1);
-      }
-      if (paramBundle != null) {
-        localIntent.putExtras(paramBundle);
-      }
-      addSource(localIntent);
-      paramActivity.startActivityForResult(localIntent, paramInt);
-      return;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = null;
+    } else {
+      paramString1 = paramString2.getBytes();
     }
+    if (paramString1 != null) {
+      localIntent.putExtra("post_data", paramString1);
+    }
+    if (paramBundle != null) {
+      localIntent.putExtras(paramBundle);
+    }
+    addSource(localIntent);
+    paramActivity.startActivityForResult(localIntent, paramInt);
   }
   
   public static void forwardToCategoryAlbum(Activity paramActivity, String paramString1, int paramInt1, String paramString2, int paramInt2)
@@ -1395,40 +1489,45 @@ public class QZoneHelper
       Intent localIntent = new Intent();
       localIntent.putExtra("categoryBusiType", paramInt1);
       localIntent.putExtra("categoryId", paramString2);
-      QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.album.business.albumlist.activity.QzonePhotoCategoryDetailsActivity");
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString1, localIntent, paramInt2);
+      ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.album.business.albumlist.activity.QzonePhotoCategoryDetailsActivity");
+      ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramString1, localIntent, paramInt2);
       return;
     }
-    QLog.e("QZoneHelper", 1, "forwardToCategoryAlbum fail type = " + paramInt1 + " id=" + paramString2);
+    paramActivity = new StringBuilder();
+    paramActivity.append("forwardToCategoryAlbum fail type = ");
+    paramActivity.append(paramInt1);
+    paramActivity.append(" id=");
+    paramActivity.append(paramString2);
+    QLog.e("QZoneHelper", 1, paramActivity.toString());
   }
   
   public static void forwardToCmActionUrl(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneHelper", 2, "jump forwardToCmActionUrl URL:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("jump forwardToCmActionUrl URL:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("QZoneHelper", 2, ((StringBuilder)localObject).toString());
     }
-    Intent localIntent = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
-    openWebSecurityVerify(localIntent);
-    localIntent.putExtra("url", paramString);
-    if (WebViewPluginFactory.a.containsKey("Qzone")) {
-      localIntent.putExtra("insertPluginsArray", new String[] { "Qzone" });
-    }
-    localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131717706));
-    localIntent.setData(Uri.parse(paramString));
-    localIntent.addFlags(268435456);
-    addSource(localIntent);
-    paramContext.startActivity(localIntent);
+    Object localObject = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramContext);
+    openWebSecurityVerify((Intent)localObject);
+    ((Intent)localObject).putExtra("url", paramString);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putWebViewPluginPackageName((Intent)localObject);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putQzoneSourceName((Intent)localObject);
+    ((Intent)localObject).setData(Uri.parse(paramString));
+    ((Intent)localObject).addFlags(268435456);
+    addSource((Intent)localObject);
+    paramContext.startActivity((Intent)localObject);
   }
   
   public static void forwardToCoverPhotoWall(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, CoverCacheData paramCoverCacheData, String paramString, int paramInt)
   {
     paramUserInfo = QZoneHelper.QZoneCoverConstants.getPhotoWallUrl(paramUserInfo.qzone_uin, paramString, "usersummary", true);
-    paramCoverCacheData = new Intent(paramActivity, QQBrowserActivity.class);
+    paramCoverCacheData = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramActivity);
     openWebSecurityVerify(paramCoverCacheData);
     paramCoverCacheData.putExtra("url", paramUserInfo);
-    if (WebViewPluginFactory.a.containsKey("Qzone")) {
-      paramCoverCacheData.putExtra("insertPluginsArray", new String[] { "Qzone" });
-    }
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putWebViewPluginPackageName(paramCoverCacheData);
     paramCoverCacheData.setData(Uri.parse(paramUserInfo));
     addSource(paramCoverCacheData);
     paramActivity.startActivityForResult(paramCoverCacheData, paramInt);
@@ -1438,7 +1537,7 @@ public class QZoneHelper
   {
     Intent localIntent = getQzoneActivityIntentForName(paramUserInfo, "com.qzone.album.business.dlna.activity.DLNAActivity");
     localIntent.putExtras(paramBundle);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   @Deprecated
@@ -1449,10 +1548,10 @@ public class QZoneHelper
     }
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
     localIntent.putExtra("mqqflag", 1);
     localIntent.putExtra("cell_operation.qq_url", paramString);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToDetail(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, int paramInt, String paramString2)
@@ -1462,34 +1561,31 @@ public class QZoneHelper
     }
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
     localIntent.putExtra("mqqflag", 1);
     localIntent.putExtra("cell_operation.qq_url", paramString1);
     localIntent.putExtra("blog_url", paramString2);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToDetail(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, long paramLong, String paramString2, int paramInt)
   {
     Intent localIntent = new Intent("android.intent.action.MAIN");
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
     localIntent.putExtra("startup_sceneid", 4);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      bool1 = bool2;
-      if (paramString2.contains("blog")) {
-        bool1 = true;
-      }
+    boolean bool;
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("blog"))) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    localIntent.putExtra("qzone.isFavorBlog", bool1);
+    localIntent.putExtra("qzone.isFavorBlog", bool);
     localIntent.putExtra("qzone.cellid", paramString1);
     localIntent.putExtra("qzone.sourceFrom", true);
     localIntent.putExtra("qzone.favorOwner", paramLong);
     QZoneLoginReportHelper.setLoginFromMyFav(localIntent);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToDetail(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, Bundle paramBundle)
@@ -1505,26 +1601,26 @@ public class QZoneHelper
     if (paramBoolean2) {
       localIntent.addFlags(268435456);
     }
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
     try
     {
       long l = Long.parseLong(paramString1);
       int i = Integer.valueOf(paramString2).intValue();
-      if (paramBundle != null) {}
-      for (paramString1 = paramBundle;; paramString1 = new Bundle())
-      {
-        paramString1.putLong("targetuin", l);
-        paramString1.putInt("appid", i);
-        paramString1.putString("subid", paramString4);
-        paramString1.putString("cellid", paramString3);
-        paramString1.putBoolean("messagelist", true);
-        if (paramBundle != null) {
-          paramString1.putAll(paramBundle);
-        }
-        localIntent.putExtras(paramString1);
-        QzonePluginProxyActivity.launchPluingActivityForResult(paramContext, paramUserInfo.qzone_uin, localIntent, paramInt, null, paramBoolean1);
-        return;
+      if (paramBundle != null) {
+        paramString1 = paramBundle;
+      } else {
+        paramString1 = new Bundle();
       }
+      paramString1.putLong("targetuin", l);
+      paramString1.putInt("appid", i);
+      paramString1.putString("subid", paramString4);
+      paramString1.putString("cellid", paramString3);
+      paramString1.putBoolean("messagelist", true);
+      if (paramBundle != null) {
+        paramString1.putAll(paramBundle);
+      }
+      localIntent.putExtras(paramString1);
+      ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramContext, paramUserInfo.qzone_uin, localIntent, paramInt, null, paramBoolean1);
       return;
     }
     catch (Exception paramContext)
@@ -1535,7 +1631,7 @@ public class QZoneHelper
   
   public static void forwardToExtendFeeds(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
   {
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString, paramIntent, paramInt, true);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramString, paramIntent, paramInt, true);
   }
   
   public static void forwardToFamousUserHome(Context paramContext, QZoneHelper.UserInfo paramUserInfo, String paramString1, int paramInt1, int paramInt2, PreloadProcHitPluginSession paramPreloadProcHitPluginSession, String paramString2, boolean paramBoolean)
@@ -1545,8 +1641,8 @@ public class QZoneHelper
       paramString1.addFlags(268435456);
     }
     paramString1.putExtra("famous_space_webview_url", paramString2);
-    QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramContext, paramUserInfo.qzone_uin, paramString1, paramInt1, paramPreloadProcHitPluginSession);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramString1, "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramContext, paramUserInfo.qzone_uin, paramString1, paramInt1, paramPreloadProcHitPluginSession);
   }
   
   public static void forwardToFeedActionPanel(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString5, int paramInt8, int paramInt9)
@@ -1554,39 +1650,28 @@ public class QZoneHelper
     if (paramInt6 == 0) {
       paramInt2 = -1;
     }
-    for (;;)
-    {
-      paramInt7 = paramInt2;
-      if (paramInt6 == 1)
-      {
-        paramInt7 = paramInt2;
-        if (paramInt2 == 1) {
-          if (paramInt2 != 1) {
-            break label170;
-          }
-        }
-      }
-      label170:
-      for (paramInt7 = 1;; paramInt7 = 0)
-      {
-        paramString1 = getFeedActionPanel(paramActivity, paramString1, paramString2, paramString3, paramString4, paramInt7, Integer.valueOf(0), null, paramInt1, "", false);
-        setUserInfoToIntent(paramString1, paramUserInfo);
-        paramString1.putExtra("showaticon", paramInt3);
-        paramString1.putExtra("showemotionicon", paramInt4);
-        paramString1.putExtra("showxuantuicon", paramInt5);
-        paramString1.putExtra("needtransemoj", 1);
-        paramString1.putExtra("sendbtntext", paramString5);
-        paramString1.putExtra("inputmax", paramInt8);
-        if (paramInt9 != 0)
-        {
-          paramString1.putExtra("extraIsQun", true);
-          paramString1.putExtra("extraIsQunID", String.valueOf(paramInt9));
-        }
-        QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.common.activities.FeedActionPanelActivity");
-        QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramString1, paramInt1);
-        return;
+    if ((paramInt6 == 1) && (paramInt2 == 1)) {
+      if (paramInt2 == 1) {
+        paramInt2 = 1;
+      } else {
+        paramInt2 = 0;
       }
     }
+    paramString1 = getFeedActionPanel(paramActivity, paramString1, paramString2, paramString3, paramString4, paramInt2, Integer.valueOf(0), null, paramInt1, "", false);
+    setUserInfoToIntent(paramString1, paramUserInfo);
+    paramString1.putExtra("showaticon", paramInt3);
+    paramString1.putExtra("showemotionicon", paramInt4);
+    paramString1.putExtra("showxuantuicon", paramInt5);
+    paramString1.putExtra("needtransemoj", 1);
+    paramString1.putExtra("sendbtntext", paramString5);
+    paramString1.putExtra("inputmax", paramInt8);
+    if (paramInt9 != 0)
+    {
+      paramString1.putExtra("extraIsQun", true);
+      paramString1.putExtra("extraIsQunID", String.valueOf(paramInt9));
+    }
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramString1, "com.qzone.common.activities.FeedActionPanelActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramString1, paramInt1);
   }
   
   public static void forwardToFeedActionPanel(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, boolean paramBoolean1, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString5, int paramInt8, int paramInt9, boolean paramBoolean2)
@@ -1604,73 +1689,62 @@ public class QZoneHelper
     if (paramInt6 == 0) {
       paramInt2 = -1;
     }
-    for (;;)
-    {
-      paramInt7 = paramInt2;
-      if (paramInt6 == 1)
-      {
-        paramInt7 = paramInt2;
-        if (paramInt2 == 1) {
-          if (paramInt2 != 1) {
-            break label322;
-          }
-        }
-      }
-      label322:
-      for (paramInt7 = 1;; paramInt7 = 0)
-      {
-        paramString1 = getFeedActionPanel(paramActivity, paramString1, paramString2, paramString3, paramString4, paramInt7, Integer.valueOf(0), null, paramInt1, "", false);
-        setUserInfoToIntent(paramString1, paramUserInfo);
-        paramString1.putExtra("showaticon", paramInt3);
-        paramString1.putExtra("showemotionicon", paramInt4);
-        paramString1.putExtra("showxuantuicon", paramInt5);
-        paramString1.putExtra("needtransemoj", 1);
-        paramString1.putExtra("sendbtntext", paramString5);
-        paramString1.putExtra("inputmax", paramInt8);
-        paramString1.putExtra("is_share", paramBoolean1);
-        if (paramInt9 != 0)
-        {
-          paramString1.putExtra("extraIsQun", true);
-          paramString1.putExtra("extraIsQunID", String.valueOf(paramInt9));
-        }
-        if (!TextUtils.isEmpty(paramString6)) {
-          paramString1.putExtra("extraCacheKey", paramString6);
-        }
-        paramString1.putExtra("is_live_mode", paramBoolean3);
-        QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.common.activities.FeedActionPanelActivity");
-        if (paramBundle != null)
-        {
-          paramString1.putExtra("disableAutoClose", paramBundle.getBoolean("disableAutoClose"));
-          paramString1.putExtra("catchHeightChange", paramBundle.getBoolean("catchHeightChange"));
-          paramString1.putExtra("catchClosePanel", paramBundle.getBoolean("catchClosePanel"));
-          paramString1.putExtra("input_text_allow_empty", paramBundle.getBoolean("input_text_allow_empty"));
-          paramString1.putExtra("isFromDIY", paramBundle.getBoolean("isFromDIY"));
-          paramString1.putExtra("extra_key_font_id", paramBundle.getInt("extra_key_font_id", -1));
-        }
-        paramString1.putExtra("extra_key_from_scene", 4);
-        QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramString1, paramInt1, null, paramBoolean2);
-        return;
+    if ((paramInt6 == 1) && (paramInt2 == 1)) {
+      if (paramInt2 == 1) {
+        paramInt2 = 1;
+      } else {
+        paramInt2 = 0;
       }
     }
+    paramString1 = getFeedActionPanel(paramActivity, paramString1, paramString2, paramString3, paramString4, paramInt2, Integer.valueOf(0), null, paramInt1, "", false);
+    setUserInfoToIntent(paramString1, paramUserInfo);
+    paramString1.putExtra("showaticon", paramInt3);
+    paramString1.putExtra("showemotionicon", paramInt4);
+    paramString1.putExtra("showxuantuicon", paramInt5);
+    paramString1.putExtra("needtransemoj", 1);
+    paramString1.putExtra("sendbtntext", paramString5);
+    paramString1.putExtra("inputmax", paramInt8);
+    paramString1.putExtra("is_share", paramBoolean1);
+    if (paramInt9 != 0)
+    {
+      paramString1.putExtra("extraIsQun", true);
+      paramString1.putExtra("extraIsQunID", String.valueOf(paramInt9));
+    }
+    if (!TextUtils.isEmpty(paramString6)) {
+      paramString1.putExtra("extraCacheKey", paramString6);
+    }
+    paramString1.putExtra("is_live_mode", paramBoolean3);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramString1, "com.qzone.common.activities.FeedActionPanelActivity");
+    if (paramBundle != null)
+    {
+      paramString1.putExtra("disableAutoClose", paramBundle.getBoolean("disableAutoClose"));
+      paramString1.putExtra("catchHeightChange", paramBundle.getBoolean("catchHeightChange"));
+      paramString1.putExtra("catchClosePanel", paramBundle.getBoolean("catchClosePanel"));
+      paramString1.putExtra("input_text_allow_empty", paramBundle.getBoolean("input_text_allow_empty"));
+      paramString1.putExtra("isFromDIY", paramBundle.getBoolean("isFromDIY"));
+      paramString1.putExtra("extra_key_font_id", paramBundle.getInt("extra_key_font_id", -1));
+    }
+    paramString1.putExtra("extra_key_from_scene", 4);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramString1, paramInt1, null, paramBoolean2);
   }
   
   public static void forwardToFeedDetail(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
     localIntent.putExtra("startup_sceneid", 4);
     localIntent.putExtra("mqqflag", 1);
     localIntent.putExtra("cell_operation.qq_url", paramString1);
     localIntent.putExtra("refer", paramString2);
     localIntent.putExtra("appid", paramInt1);
     localIntent.setFlags(67108864);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt2);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt2);
   }
   
   public static void forwardToFriendFeed(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, paramInt, paramOnDismissListener, true);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, paramInt, paramOnDismissListener, true);
   }
   
   public static void forwardToFriendFeed(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
@@ -1685,9 +1759,8 @@ public class QZoneHelper
     if (paramString2 != null) {
       paramIntent.putExtra("key_push_trans_channel", paramString2);
     }
-    QZoneTitleTabManager.a(paramIntent);
     if (!forwardToQZoneFriendFeedActivity(paramActivity, paramIntent, true)) {
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString1, paramIntent, paramInt);
+      ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramString1, paramIntent, paramInt);
     }
   }
   
@@ -1695,7 +1768,7 @@ public class QZoneHelper
   {
     Intent localIntent = new Intent("com.tencent.intent.QZONE_RESHIP_FROM_QUN_AIO_TO_QUN");
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
     localIntent.putExtra("startup_sceneid", 6);
     localIntent.putExtra("key_qun_id", paramString1);
     localIntent.putExtra("key_qun_code", paramString2);
@@ -1703,14 +1776,14 @@ public class QZoneHelper
     localIntent.putExtra("key_big_photo_uuid", paramString4);
     localIntent.putExtra("key_msg_time", paramLong);
     localIntent.putExtra("refer", "mqqChat");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToGroupAlbum(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, String paramString2, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<Long> paramArrayList, int paramInt, String paramString3, String paramString4)
   {
     Intent localIntent = new Intent("com.tencent.intent.QZONE_RESHIP_FROM_QUN_AIO_TO_QUN");
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
     localIntent.putExtra("startup_sceneid", 6);
     localIntent.putExtra("key_qun_id", paramString1);
     localIntent.putExtra("key_qun_code", paramString2);
@@ -1725,29 +1798,29 @@ public class QZoneHelper
     if (paramString4 != null) {
       localIntent.putExtra("UploadPhoto.key_album_name", paramString4);
     }
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToGroupFeed(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
   {
     Intent localIntent = new Intent();
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
     localIntent.putExtra("startup_sceneid", 8);
     localIntent.putExtra("key_qun_id", paramString2);
     localIntent.putExtra("ken_qun_name", paramString3);
     localIntent.putExtra("refer", "group_profile");
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.feed.ui.activity.QZoneQunFeedActivity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString1, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.feed.ui.activity.QZoneQunFeedActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramString1, localIntent, paramInt);
   }
   
   public static void forwardToMoodSelectLocation(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt)
   {
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.business.lbsv2.ui.QZoneMoodSelectLocation");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.business.lbsv2.ui.QZoneMoodSelectLocation");
     localIntent.putExtra("k_modal", true);
     localIntent.putExtra("k_hide_qzone_icon", true);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToMoodSelectLocation(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt, Bundle paramBundle)
@@ -1755,18 +1828,18 @@ public class QZoneHelper
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.business.lbsv2.ui.QZoneMoodSelectLocation");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.business.lbsv2.ui.QZoneMoodSelectLocation");
     localIntent.putExtra("k_modal", true);
     localIntent.putExtra("k_hide_qzone_icon", true);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToMoodSelectLocation(Context paramContext, String paramString, int paramInt, Bundle paramBundle)
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.business.lbsv2.ui.QZoneMoodSelectLocation");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramContext, paramString, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.business.lbsv2.ui.QZoneMoodSelectLocation");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramContext, paramString, localIntent, paramInt);
   }
   
   public static void forwardToNuanProfile(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString, int paramInt)
@@ -1775,9 +1848,9 @@ public class QZoneHelper
     {
       Intent localIntent = new Intent();
       setUserInfoToIntent(localIntent, paramUserInfo);
-      QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.feed.ui.activity.QZoneNuanProfileActivity");
+      ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.feed.ui.activity.QZoneNuanProfileActivity");
       localIntent.putExtra("key_uin", Long.parseLong(paramString));
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+      ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
       return;
     }
     catch (Throwable paramActivity)
@@ -1786,37 +1859,31 @@ public class QZoneHelper
     }
   }
   
-  public static void forwardToOpenRecordPanel(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, Activity paramActivity, String paramString1, String paramString2)
-  {
-    paramString2 = new Intent();
-    QzonePluginProxyActivity.setActivityNameToIntent(paramString2, "com.qzone.publish.ui.activity.QZonePublishVoiceMoodActivity");
-    paramString2.putExtra("key_entrance_is_voice_mood", false);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString1, paramString2, generateRequestCode(paramWebViewPlugin, paramPluginRuntime, 6));
-  }
-  
   public static void forwardToPermissionSetting(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt)
   {
     paramUserInfo = QzoneConfig.getInstance().getConfig("H5Url", "QzoneSettingMainPage", "https://h5.qzone.qq.com/qzone/setting?_wv=3&_proxy=1&uin={uin}").replace("{uin}", String.valueOf(paramUserInfo.qzone_uin)).replace("{host_uin}", paramUserInfo.qzone_uin).replace("{UIN}", String.valueOf(paramUserInfo.qzone_uin)).replace("{HOST_UIN}", paramUserInfo.qzone_uin);
     if (!URLUtil.b(paramUserInfo).containsKey("_wv")) {
       URLUtil.a(paramUserInfo, "_wv", "5");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneHelper", 2, "jump qzone setting URL:" + paramUserInfo);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("jump qzone setting URL:");
+      ((StringBuilder)localObject).append(paramUserInfo);
+      QLog.d("QZoneHelper", 2, ((StringBuilder)localObject).toString());
     }
-    Intent localIntent = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
-    openWebSecurityVerify(localIntent);
-    localIntent.putExtra("url", paramUserInfo);
-    localIntent.putExtra("isFromQQ", true);
-    localIntent.putExtra("fromQZone", false);
-    localIntent.putExtra("injectrecommend", true);
-    if (WebViewPluginFactory.a.containsKey("Qzone")) {
-      localIntent.putExtra("insertPluginsArray", new String[] { "Qzone" });
-    }
-    localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131717706));
-    localIntent.setData(Uri.parse(paramUserInfo));
-    localIntent.addFlags(268435456);
-    addSource(localIntent);
-    paramActivity.startActivity(localIntent);
+    Object localObject = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramActivity);
+    openWebSecurityVerify((Intent)localObject);
+    ((Intent)localObject).putExtra("url", paramUserInfo);
+    ((Intent)localObject).putExtra("isFromQQ", true);
+    ((Intent)localObject).putExtra("fromQZone", false);
+    ((Intent)localObject).putExtra("injectrecommend", true);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putWebViewPluginPackageName((Intent)localObject);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putQzoneSourceName((Intent)localObject);
+    ((Intent)localObject).setData(Uri.parse(paramUserInfo));
+    ((Intent)localObject).addFlags(268435456);
+    addSource((Intent)localObject);
+    paramActivity.startActivity((Intent)localObject);
   }
   
   public static void forwardToPersonalAlbum(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Long paramLong, int paramInt1, int paramInt2, int paramInt3)
@@ -1829,7 +1896,7 @@ public class QZoneHelper
     paramLong = getQzonePersonalAlbumActivityIntent(paramActivity, paramLong, paramInt1);
     setUserInfoToIntent(paramLong, paramUserInfo);
     addQZoneStatis(paramLong, paramInt2);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramLong, paramInt3, paramPreloadProcHitPluginSession);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramLong, paramInt3, paramPreloadProcHitPluginSession);
   }
   
   public static void forwardToPersonalAlbum(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Long paramLong, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -1847,20 +1914,20 @@ public class QZoneHelper
     paramLong.putExtra("refer", "mqqSetting");
     paramLong.putExtra("key_redTouch", paramBoolean);
     QZoneLoginReportHelper.handleLoginToMyAlbum(paramLong, paramInt3);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramLong, paramInt2);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramLong, paramInt2);
   }
   
   public static void forwardToPersonalAlbumPhotoList(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, BaseBusinessAlbumInfo paramBaseBusinessAlbumInfo, int paramInt)
   {
     paramBaseBusinessAlbumInfo = getAlbumPhotoListIntent(paramUserInfo, paramBaseBusinessAlbumInfo);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramBaseBusinessAlbumInfo, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramBaseBusinessAlbumInfo, paramInt);
   }
   
   public static void forwardToPersonalAlbumPhotoListFromShortcut(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, BaseBusinessAlbumInfo paramBaseBusinessAlbumInfo, int paramInt)
   {
     paramBaseBusinessAlbumInfo = getAlbumPhotoListIntent(paramUserInfo, paramBaseBusinessAlbumInfo);
     paramBaseBusinessAlbumInfo.putExtra("UploadPhoto.key_from_album_shortcut", true);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramBaseBusinessAlbumInfo, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramBaseBusinessAlbumInfo, paramInt);
   }
   
   public static void forwardToPersonalAlbumPhotoListV2(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, BaseBusinessAlbumInfo paramBaseBusinessAlbumInfo, int paramInt, String paramString)
@@ -1868,21 +1935,21 @@ public class QZoneHelper
     paramBaseBusinessAlbumInfo = getAlbumPhotoListIntent(paramUserInfo, paramBaseBusinessAlbumInfo);
     paramBaseBusinessAlbumInfo.putExtra("mqqflag", 1);
     paramBaseBusinessAlbumInfo.putExtra("cell_operation.qq_url", paramString);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramBaseBusinessAlbumInfo, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramBaseBusinessAlbumInfo, paramInt);
   }
   
   public static void forwardToPersonalAlbumSelect(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Bundle paramBundle, int paramInt)
   {
     Intent localIntent = getQzoneActivityIntentForName(paramUserInfo, "com.qzone.album.ui.activity.QZonePersonalAlbumSelectActivity");
     localIntent.putExtras(paramBundle);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToPersonalAlbumVideoList(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, BaseBusinessAlbumInfo paramBaseBusinessAlbumInfo, int paramInt, String paramString)
   {
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.album.business.photolist.activity.QZonePersonalPhotoListActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.album.business.photolist.activity.QZonePersonalPhotoListActivity");
     localIntent.putExtra("key_album_id", paramBaseBusinessAlbumInfo.mAlbumId);
     localIntent.putExtra("key_album_name", paramBaseBusinessAlbumInfo.mTitle);
     localIntent.putExtra("key_album_owner_uin", paramBaseBusinessAlbumInfo.mUin);
@@ -1897,14 +1964,14 @@ public class QZoneHelper
       paramActivity.startActivity(localIntent);
       return;
     }
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToPersonalPhotoList(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Bundle paramBundle, int paramInt)
   {
     Intent localIntent = getQzoneActivityIntentForName(paramUserInfo, "com.qzone.album.business.photolist.activity.QZonePersonalPhotoListActivity");
     localIntent.putExtras(paramBundle);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToPictureSetting(Context paramContext, QZoneHelper.UserInfo paramUserInfo)
@@ -1913,61 +1980,63 @@ public class QZoneHelper
     if (!URLUtil.b(paramUserInfo).containsKey("_wv")) {
       URLUtil.a(paramUserInfo, "_wv", "5");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneHelper", 2, "jump qzone setting URL:" + paramUserInfo);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("jump qzone setting URL:");
+      ((StringBuilder)localObject).append(paramUserInfo);
+      QLog.d("QZoneHelper", 2, ((StringBuilder)localObject).toString());
     }
-    Intent localIntent = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
-    openWebSecurityVerify(localIntent);
-    localIntent.putExtra("url", paramUserInfo);
-    localIntent.putExtra("isFromQQ", true);
-    localIntent.putExtra("fromQZone", false);
-    localIntent.putExtra("injectrecommend", true);
-    if (WebViewPluginFactory.a.containsKey("Qzone")) {
-      localIntent.putExtra("insertPluginsArray", new String[] { "Qzone" });
-    }
-    localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131717706));
-    localIntent.setData(Uri.parse(paramUserInfo));
-    localIntent.addFlags(268435456);
-    addSource(localIntent);
-    paramContext.startActivity(localIntent);
+    Object localObject = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramContext);
+    openWebSecurityVerify((Intent)localObject);
+    ((Intent)localObject).putExtra("url", paramUserInfo);
+    ((Intent)localObject).putExtra("isFromQQ", true);
+    ((Intent)localObject).putExtra("fromQZone", false);
+    ((Intent)localObject).putExtra("injectrecommend", true);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putWebViewPluginPackageName((Intent)localObject);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putQzoneSourceName((Intent)localObject);
+    ((Intent)localObject).setData(Uri.parse(paramUserInfo));
+    ((Intent)localObject).addFlags(268435456);
+    addSource((Intent)localObject);
+    paramContext.startActivity((Intent)localObject);
   }
   
   public static void forwardToPictureViewer(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Bundle paramBundle, int paramInt)
   {
-    RemoteHandleManager.getInstance().sendData("cmd.cancelKillPictureProcess", null, false);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).sendRemoteHandleManagerData("cmd.cancelKillPictureProcess", null, false);
     Intent localIntent = getQzoneActivityIntentForName(paramUserInfo, "com.qzone.preview.QzonePictureViewer");
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("fromQZone", false);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt, null, false);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt, null, false);
   }
   
   public static void forwardToPictureViewerForQzone(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Bundle paramBundle, int paramInt)
   {
-    RemoteHandleManager.getInstance().sendData("cmd.cancelKillPictureProcess", null, false);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).sendRemoteHandleManagerData("cmd.cancelKillPictureProcess", null, false);
     Intent localIntent = getQzoneActivityIntentForName(paramUserInfo, "com.qzone.preview.QzonePictureViewer");
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("fromQZone", true);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt, null, false);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt, null, false);
   }
   
   public static void forwardToPreviewLocalView(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt, String paramString, long paramLong1, long paramLong2)
   {
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.video.activity.VideoViewActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.video.activity.VideoViewActivity");
     localIntent.putExtra("video_type", paramInt);
     localIntent.putExtra("video_source_path", paramString);
     localIntent.putExtra("start_time", paramLong1);
     localIntent.putExtra("end_time", paramLong2);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, 0);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, 0);
   }
   
   public static void forwardToPublishBox(Context paramContext, Bundle paramBundle, int paramInt)
   {
     paramBundle = new Intent();
-    QzonePluginProxyActivity.setActivityNameToIntent(paramBundle, "com.qzone.publish.ui.activity.QZonePublishQueueAcitvity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramBundle, "com.qzone.publish.ui.activity.QZonePublishQueueAcitvity");
     paramBundle.putExtra("fromQZone", false);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramContext, "0", paramBundle, paramInt, null, false);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramContext, "0", paramBundle, paramInt, null, false);
   }
   
   public static void forwardToPublishMood(Activity paramActivity, Bundle paramBundle, QZoneHelper.UserInfo paramUserInfo, String paramString1, String paramString2, String paramString3, int paramInt)
@@ -1975,45 +2044,45 @@ public class QZoneHelper
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
     localIntent.putExtra("startup_sceneid", 5);
     localIntent.putExtra("key_file_path", paramString1);
     localIntent.putExtra("key_title", paramString2);
     localIntent.putExtra("key_desc", paramString3);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToPublishMood(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Intent paramIntent, int paramInt)
   {
     paramIntent = new Intent(paramIntent);
     setUserInfoToIntent(paramIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(paramIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, paramInt);
   }
   
   public static void forwardToPublishMood(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString, int paramInt)
   {
     Intent localIntent = new Intent("com.tencent.intent.QZONE_OPEN_SHARE");
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
     localIntent.putExtra("startup_sceneid", 5);
     localIntent.putExtra("key_file_path", paramString);
-    localIntent.putExtra("key_title", HardCodeUtil.a(2131711885));
+    localIntent.putExtra("key_title", HardCodeUtil.a(2131711860));
     localIntent.putExtra("key_desc", "");
     localIntent.putExtra("key_need_save_draft", false);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToPublishMood(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, String paramString2, String paramString3, int paramInt)
   {
     Intent localIntent = new Intent("com.tencent.intent.QZONE_PUBLISH_QR_CODE");
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
     localIntent.putExtra("startup_sceneid", 5);
     localIntent.putExtra("key_file_path", paramString1);
     localIntent.putExtra("key_title", paramString2);
     localIntent.putExtra("key_desc", paramString3);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToPublishQueue(Context paramContext, QZoneHelper.UserInfo paramUserInfo, int paramInt)
@@ -2028,13 +2097,13 @@ public class QZoneHelper
       localIntent = new Intent();
     }
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishQueueAcitvity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramContext, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishQueueAcitvity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramContext, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToQQPublicAccountPublishPage(Activity paramActivity, Intent paramIntent, int paramInt)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject = MobileQQ.getMobileQQ().waitAppRuntime(null);
     if (localObject != null)
     {
       long l = ((AppRuntime)localObject).getLongAccountUin();
@@ -2042,73 +2111,32 @@ public class QZoneHelper
       if (paramIntent == null) {
         localObject = new Intent();
       }
-      QzonePluginProxyActivity.setActivityNameToIntent((Intent)localObject, "com.tencent.pubaccount.publish.QQPublicAccountPublishFeedActivity");
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, String.valueOf(l), (Intent)localObject, paramInt);
+      ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent((Intent)localObject, "com.tencent.pubaccount.publish.QQPublicAccountPublishFeedActivity");
+      ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, String.valueOf(l), (Intent)localObject, paramInt);
     }
   }
   
   public static void forwardToQZoneFlashNickNameSetting(Activity paramActivity, String paramString)
   {
     Intent localIntent = new Intent();
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.personalize.flashnickname.ui.QZoneFlashNickNameSetting");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString, localIntent, 0);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.personalize.flashnickname.ui.QZoneFlashNickNameSetting");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramString, localIntent, 0);
   }
   
   public static boolean forwardToQZoneFriendFeedActivity(Context paramContext, Intent paramIntent, boolean paramBoolean)
   {
-    if (paramContext != null) {}
-    try
-    {
-      if (QQTheme.e())
-      {
-        if ((paramContext instanceof FragmentActivity))
-        {
-          if (QZoneApiProxy.isInQZoneEnvironment()) {
-            return false;
-          }
-          if (!QZoneApiProxy.needShowQzoneFrame((FragmentActivity)paramContext, ((FragmentActivity)paramContext).app)) {
-            return false;
-          }
-        }
-        Intent localIntent = paramIntent;
-        if (paramIntent == null) {
-          localIntent = new Intent();
-        }
-        paramIntent = paramContext;
-        if ((paramContext instanceof BasePluginActivity)) {
-          paramIntent = ((BasePluginActivity)paramContext).getOutActivity();
-        }
-        paramIntent.startActivity(getJumpQzoneTabIntent(paramIntent, localIntent));
-        return true;
-      }
-      if ((!paramBoolean) && (paramContext != null))
-      {
-        if ((paramContext instanceof BasePluginActivity)) {
-          QzonePluginProxyActivity.setActivityNameToIntent(paramIntent, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
-        }
-        paramContext.startActivity(paramIntent);
-        return true;
-      }
-      return false;
-    }
-    catch (Throwable paramContext)
-    {
-      QLog.e("QZoneHelper", 1, "qzone start error" + paramContext);
-    }
-    return false;
+    return ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).forwardToQZoneFriendFeedActivity(paramContext, paramIntent, paramBoolean);
   }
   
   public static void forwardToQunAlbumDetail(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, String paramString2, int paramInt)
   {
     paramUserInfo = QzoneConfig.getInstance().getConfig("QunAlbumSetting", "QunAlbumDetail", "https://h5.qzone.qq.com/groupphoto/inqq/detail/{QQ_URL}?_wv=3&_proxy=1").replace("{QQ_URL}", URLEncoder.encode(paramString1));
-    paramString1 = new Intent(BaseApplication.getContext(), QQBrowserDelegationActivity.class);
+    paramString1 = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramActivity);
     paramString1.putExtra("url", paramUserInfo);
     paramString1.putExtra("fromQZone", true);
     paramString1.putExtra("injectrecommend", true);
-    if (WebViewPluginFactory.a.containsKey("Qzone")) {
-      paramString1.putExtra("insertPluginsArray", new String[] { "Qzone" });
-    }
-    paramString1.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131717706));
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putWebViewPluginPackageName(paramString1);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putQzoneSourceName(paramString1);
     paramString1.setData(Uri.parse(paramUserInfo));
     paramActivity.startActivityForResult(paramString1, paramInt);
   }
@@ -2117,18 +2145,25 @@ public class QZoneHelper
   {
     paramString1 = QzoneConfig.getInstance().getConfig("QunAlbumSetting", "QunAlbum", "https://h5.qzone.qq.com/groupphoto/inqq/album/{QUN_ID}?_wv=3&_proxy=1").replace("{QUN_ID}", paramString1);
     paramUserInfo = paramString1;
-    if (!TextUtils.isEmpty(paramString3)) {
-      paramUserInfo = paramString1 + "&source=" + paramString3;
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramUserInfo = new StringBuilder();
+      paramUserInfo.append(paramString1);
+      paramUserInfo.append("&source=");
+      paramUserInfo.append(paramString3);
+      paramUserInfo = paramUserInfo.toString();
     }
-    paramString1 = new Intent(paramActivity, QQBrowserActivity.class);
+    paramString1 = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramActivity);
     openWebSecurityVerify(paramString1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneHelper", 2, "forwardToQunAlbumList:" + paramUserInfo);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("forwardToQunAlbumList:");
+      paramString2.append(paramUserInfo);
+      QLog.d("QZoneHelper", 2, paramString2.toString());
     }
     paramString1.putExtra("url", paramUserInfo);
-    if (WebViewPluginFactory.a.containsKey("Qzone")) {
-      paramString1.putExtra("insertPluginsArray", new String[] { "Qzone" });
-    }
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putWebViewPluginPackageName(paramString1);
     paramString1.setData(Uri.parse(paramUserInfo));
     addSource(paramString1);
     paramActivity.startActivityForResult(paramString1, paramInt2);
@@ -2140,12 +2175,10 @@ public class QZoneHelper
       return;
     }
     paramUserInfo = QzoneConfig.getInstance().getConfig("QunAlbumSetting", "QunAlbumSelect", "https://h5.qzone.qq.com/groupphoto/inqq/album/{QUN_ID}/select?_wv=3&_proxy=1").replace("{QUN_ID}", paramString1);
-    paramString1 = new Intent(paramActivity, QQBrowserActivity.class);
+    paramString1 = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramActivity);
     openWebSecurityVerify(paramString1);
     paramString1.putExtra("url", paramUserInfo);
-    if (WebViewPluginFactory.a.containsKey("Qzone")) {
-      paramString1.putExtra("insertPluginsArray", new String[] { "Qzone" });
-    }
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putWebViewPluginPackageName(paramString1);
     paramString1.setData(Uri.parse(paramUserInfo));
     addSource(paramString1);
     paramActivity.startActivityForResult(paramString1, paramInt);
@@ -2154,14 +2187,12 @@ public class QZoneHelper
   public static void forwardToQunFeed(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, String paramString2, boolean paramBoolean, int paramInt)
   {
     paramUserInfo = QzoneConfig.getInstance().getConfig("QunAlbumSetting", "QunFeed", "https://h5.qzone.qq.com/groupphoto/inqq/recent/{QUN_ID}/groupphoto?_wv=3&_proxy=1").replace("{QUN_ID}", paramString1);
-    paramString1 = new Intent(BaseApplication.getContext(), QQBrowserDelegationActivity.class);
+    paramString1 = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramActivity);
     paramString1.putExtra("url", paramUserInfo);
     paramString1.putExtra("fromQZone", true);
     paramString1.putExtra("injectrecommend", true);
-    if (WebViewPluginFactory.a.containsKey("Qzone")) {
-      paramString1.putExtra("insertPluginsArray", new String[] { "Qzone" });
-    }
-    paramString1.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131717706));
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putWebViewPluginPackageName(paramString1);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putQzoneSourceName(paramString1);
     paramString1.setData(Uri.parse(paramUserInfo));
     if (QZoneLoginReportHelper.needAddLoginFromQunAlbum(paramString1, paramInt)) {
       QZoneLoginReportHelper.reportLoginFromQunAlbum();
@@ -2172,14 +2203,12 @@ public class QZoneHelper
   public static void forwardToQunPassiveFeed(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString, int paramInt)
   {
     paramUserInfo = QzoneConfig.getInstance().getConfig("QunAlbumSetting", "QunPassiveFeed", "https://h5.qzone.qq.com/groupphoto/inqq/relatedme/{QUN_ID}/{UIN}?_wv=3&_proxy=1").replace("{QUN_ID}", paramString).replace("{UIN}", paramUserInfo.qzone_uin);
-    paramString = new Intent(BaseApplication.getContext(), QQBrowserDelegationActivity.class);
+    paramString = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramActivity);
     paramString.putExtra("url", paramUserInfo);
     paramString.putExtra("fromQZone", true);
     paramString.putExtra("injectrecommend", true);
-    if (WebViewPluginFactory.a.containsKey("Qzone")) {
-      paramString.putExtra("insertPluginsArray", new String[] { "Qzone" });
-    }
-    paramString.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131717706));
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putWebViewPluginPackageName(paramString);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putQzoneSourceName(paramString);
     paramString.setData(Uri.parse(paramUserInfo));
     if (QZoneLoginReportHelper.needAddLoginFromQunAlbum(paramString, paramInt)) {
       QZoneLoginReportHelper.reportLoginFromQunAlbum();
@@ -2190,17 +2219,17 @@ public class QZoneHelper
   public static void forwardToQzDynamicEditVideoActivity(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Bundle paramBundle, int paramInt)
   {
     Intent localIntent = new Intent();
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.album.ui.activity.QzDynamicVideoEditActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.album.ui.activity.QzDynamicVideoEditActivity");
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("extra_is_from_p2v_edit", true);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt, null, false);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt, null, false);
   }
   
   public static void forwardToQzoneAlbum(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, long paramLong1, long paramLong2, int paramInt2)
   {
     Intent localIntent = new Intent("com.tencent.intent.QZONE_QUOTE_FROM_AIO");
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
     localIntent.putExtra("startup_sceneid", 6);
     if (paramBoolean)
     {
@@ -2213,14 +2242,14 @@ public class QZoneHelper
     localIntent.putExtra("key_big_photo_uuid", paramString4);
     localIntent.putExtra("key_msg_time", paramLong1);
     localIntent.putExtra("refer", "mqqChat");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt2);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt2);
   }
   
   public static void forwardToQzoneAlbum(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<Long> paramArrayList3, ArrayList<Long> paramArrayList4, int paramInt2)
   {
     Intent localIntent = new Intent("com.tencent.intent.QZONE_QUOTE_FROM_AIO");
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
     localIntent.putExtra("startup_sceneid", 6);
     if (paramBoolean)
     {
@@ -2233,70 +2262,79 @@ public class QZoneHelper
     localIntent.putExtra("key_big_photo_uuids", paramArrayList2);
     localIntent.putExtra("key_msg_times", paramArrayList3);
     localIntent.putExtra("refer", "mqqChat");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt2);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt2);
   }
   
   public static void forwardToQzoneBrowser(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, int paramInt, Bundle paramBundle, String paramString2)
   {
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.cover.ui.activity.QZoneBrowserActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.cover.ui.activity.QZoneBrowserActivity");
     localIntent.putExtra("url", paramString1);
     localIntent.putExtra("fromQZone", true);
     localIntent.putExtra("injectrecommend", true);
     localIntent.setData(Uri.parse(paramString1));
     openWebSecurityVerify(localIntent);
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (paramString1 = null;; paramString1 = paramString2.getBytes())
-    {
-      if (paramString1 != null) {
-        localIntent.putExtra("post_data", paramString1);
-      }
-      if (paramBundle != null) {
-        localIntent.putExtras(paramBundle);
-      }
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
-      return;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = null;
+    } else {
+      paramString1 = paramString2.getBytes();
     }
+    if (paramString1 != null) {
+      localIntent.putExtra("post_data", paramString1);
+    }
+    if (paramBundle != null) {
+      localIntent.putExtras(paramBundle);
+    }
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static boolean forwardToQzoneDetailFromAIO(Activity paramActivity, String paramString1, String paramString2)
   {
-    if ((!paramString1.startsWith("http://mobile.qzone.qq.com")) && (!paramString1.startsWith("https://mobile.qzone.qq.com"))) {}
-    do
-    {
-      do
-      {
-        return false;
-        paramString2 = Uri.parse(paramString1);
-      } while (paramString2 == null);
-      paramString2 = paramString2.getQueryParameter("jumptoqzone");
-    } while ((TextUtils.isEmpty(paramString2)) || (!paramString2.equals("1")));
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "aio2qzonedetail", 1) == 1)
-    {
-      paramString2 = new Intent();
-      setUserInfoToIntent(paramString2, QZoneHelper.UserInfo.getInstance());
-      QzonePluginProxyActivity.setActivityNameToIntent(paramString2, "com.qzone.detail.ui.activity.QzoneDetailActivity");
-      paramString2.putExtra("startup_sceneid", 4);
-      paramString2.putExtra("mqqflag", 1);
-      paramString2.putExtra("cell_operation.qq_url", paramString1);
-      paramString2.putExtra("jumpToDetailFromQQWhat", 2);
-      paramString2.putExtra("refer", "mqqChat");
-      QZoneLoginReportHelper.setLoginFromAIOFeedShare(paramString2);
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, QZoneHelper.UserInfo.getInstance().qzone_uin, paramString2, 0);
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneHelper", 2, "forwardToQzoneDetailFromAIO success:url=" + paramString1);
-      }
+    if ((!paramString1.startsWith("http://mobile.qzone.qq.com")) && (!paramString1.startsWith("https://mobile.qzone.qq.com"))) {
+      return false;
     }
-    return true;
+    paramString2 = Uri.parse(paramString1);
+    if (paramString2 == null) {
+      return false;
+    }
+    paramString2 = paramString2.getQueryParameter("jumptoqzone");
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      if (!paramString2.equals("1")) {
+        return false;
+      }
+      if (QzoneConfig.getInstance().getConfig("QZoneSetting", "aio2qzonedetail", 1) == 1)
+      {
+        paramString2 = new Intent();
+        setUserInfoToIntent(paramString2, QZoneHelper.UserInfo.getInstance());
+        ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramString2, "com.qzone.detail.ui.activity.QzoneDetailActivity");
+        paramString2.putExtra("startup_sceneid", 4);
+        paramString2.putExtra("mqqflag", 1);
+        paramString2.putExtra("cell_operation.qq_url", paramString1);
+        paramString2.putExtra("jumpToDetailFromQQWhat", 2);
+        paramString2.putExtra("refer", "mqqChat");
+        QZoneLoginReportHelper.setLoginFromAIOFeedShare(paramString2);
+        ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, QZoneHelper.UserInfo.getInstance().qzone_uin, paramString2, 0);
+        if (QLog.isColorLevel())
+        {
+          paramActivity = new StringBuilder();
+          paramActivity.append("forwardToQzoneDetailFromAIO success:url=");
+          paramActivity.append(paramString1);
+          QLog.i("QZoneHelper", 2, paramActivity.toString());
+        }
+      }
+      return true;
+    }
+    return false;
   }
   
   public static void forwardToQzoneFeedsSearch(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Intent paramIntent, int paramInt)
   {
     paramIntent = new Intent(paramIntent);
     setUserInfoToIntent(paramIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(paramIntent, "com.qzone.homepage.ui.activity.QzoneSearchFeedActivity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramIntent, "com.qzone.homepage.ui.activity.QzoneSearchFeedActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, paramInt);
   }
   
   public static void forwardToQzoneTransluentActivity(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Intent paramIntent)
@@ -2309,14 +2347,11 @@ public class QZoneHelper
     setUserInfoToIntent(paramIntent, paramUserInfo);
     if (paramInt >= 0) {
       paramIntent.putExtra("bNeedCallBack", true);
-    }
-    for (;;)
-    {
-      QzonePluginProxyActivity.setActivityNameToIntent(paramIntent, "com.qzone.misc.web.QZoneTranslucentActivity");
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, paramInt);
-      return;
+    } else {
       paramIntent.putExtra("bNeedCallBack", false);
     }
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramIntent, "com.qzone.misc.web.QZoneTranslucentActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, paramInt);
   }
   
   public static void forwardToQzoneTransluentActivity(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Intent paramIntent, int paramInt, boolean paramBoolean)
@@ -2324,101 +2359,28 @@ public class QZoneHelper
     setUserInfoToIntent(paramIntent, paramUserInfo);
     if (paramInt >= 0) {
       paramIntent.putExtra("bNeedCallBack", true);
-    }
-    for (;;)
-    {
-      QzonePluginProxyActivity.setActivityNameToIntent(paramIntent, "com.qzone.misc.web.QZoneTranslucentActivity");
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, paramInt, null, paramBoolean);
-      return;
+    } else {
       paramIntent.putExtra("bNeedCallBack", false);
     }
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramIntent, "com.qzone.misc.web.QZoneTranslucentActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, paramInt, null, paramBoolean);
   }
   
   public static void forwardToQzoneTransluentActivity2(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, Intent paramIntent)
   {
     setUserInfoToIntent(paramIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(paramIntent, "com.qzone.misc.web.QZoneTranslucentActivity2");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, 0);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramIntent, "com.qzone.misc.web.QZoneTranslucentActivity2");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramIntent, 0);
   }
   
   public static void forwardToQzoneVideoCaptureNew(Activity paramActivity, Bundle paramBundle, int paramInt)
   {
-    if (CaptureUtil.a()) {
-      paramActivity.startActivityForResult(QIMCameraCaptureActivity.a(paramActivity, paramBundle), paramInt);
-    }
-    for (;;)
-    {
-      paramActivity.overridePendingTransition(2130772321, 2130772317);
-      return;
-      if (!paramActivity.isFinishing()) {
-        DialogUtil.a(paramActivity, 230).setMessage(HardCodeUtil.a(2131711888)).setPositiveButton(2131694615, new QZoneHelper.6()).show();
-      }
-    }
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).forwardToQzoneVideoCaptureNew(paramActivity, paramBundle, paramInt);
   }
   
-  public static void forwardToQzoneVideoCaptureNew(QQAppInterface paramQQAppInterface, Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, boolean paramBoolean3, boolean paramBoolean4, String paramString3, boolean paramBoolean5, String paramString4, String paramString5, boolean paramBoolean6, boolean paramBoolean7, boolean paramBoolean8, boolean paramBoolean9, String paramString6, boolean paramBoolean10, boolean paramBoolean11, boolean paramBoolean12, int paramInt2, boolean paramBoolean13, Bundle paramBundle)
+  public static void forwardToQzoneVideoCaptureNew(AppRuntime paramAppRuntime, Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, boolean paramBoolean3, boolean paramBoolean4, String paramString3, boolean paramBoolean5, String paramString4, String paramString5, boolean paramBoolean6, boolean paramBoolean7, boolean paramBoolean8, boolean paramBoolean9, String paramString6, boolean paramBoolean10, boolean paramBoolean11, boolean paramBoolean12, int paramInt2, boolean paramBoolean13, Bundle paramBundle)
   {
-    paramQQAppInterface = new Bundle();
-    paramQQAppInterface.putInt("edit_video_type", 10001);
-    LocalMultiProcConfig.putBool("support_trim", paramBoolean1);
-    paramQQAppInterface.putInt("from_type", 1);
-    paramQQAppInterface.putBoolean("enable_front", true);
-    paramQQAppInterface.putBoolean("enable_edit_video", paramBoolean4);
-    paramQQAppInterface.putBoolean("enable_local_video", true);
-    paramQQAppInterface.putBoolean("is_qzone_vip", paramBoolean3);
-    paramQQAppInterface.putString("set_user_callback", "cooperation.qzone.video.VideoComponentCallback");
-    paramQQAppInterface.putBoolean("flow_camera_video_mode", true);
-    paramQQAppInterface.putBoolean("flow_camera_capture_mode", paramBoolean2);
-    paramQQAppInterface.putString("short_video_refer", paramString2);
-    paramQQAppInterface.putString("callback", paramString4);
-    paramQQAppInterface.putString("dongxiao_id", paramString5);
-    paramQQAppInterface.putString("topic_id", paramString3);
-    paramQQAppInterface.putBoolean("enter_ptu", paramBoolean5);
-    paramQQAppInterface.putBoolean("enable_input_text", paramBoolean6);
-    paramQQAppInterface.putBoolean("enable_priv_list", paramBoolean7);
-    paramQQAppInterface.putBoolean("enable_sync_qzone", paramBoolean8);
-    paramQQAppInterface.putBoolean("enable_origin_video", paramBoolean9);
-    paramQQAppInterface.putString("confirm_text", paramString6);
-    paramQQAppInterface.putBoolean("enable_edit_button", paramBoolean10);
-    paramQQAppInterface.putBoolean("enable_local_button", paramBoolean11);
-    paramQQAppInterface.putBoolean("is_glance_video", paramBoolean12);
-    if (paramBoolean12)
-    {
-      paramQQAppInterface.putInt("video_min_frame_count", 5);
-      paramQQAppInterface.putLong("activity_start_time", SystemClock.elapsedRealtime());
-      if (paramBoolean2)
-      {
-        paramUserInfo = PlusPanelUtils.a(AppConstants.SDCARD_IMG_CAMERA);
-        paramQQAppInterface.putBoolean("support_photo_merge", true);
-        paramQQAppInterface.putString("qcamera_photo_filepath", paramUserInfo);
-        paramQQAppInterface.putInt("extra.busi_type", 3);
-        paramQQAppInterface.putString("PhotoConst.PLUGIN_APK", "qzone_plugin.apk");
-        paramQQAppInterface.putBoolean("DirectBackToQzone", true);
-        paramQQAppInterface.putString("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
-        paramQQAppInterface.putString("pic_confirm_text", HardCodeUtil.a(2131711890));
-      }
-      paramQQAppInterface.putInt("entry_source", paramInt2);
-      paramQQAppInterface.putBoolean("go_publish_activity", paramBoolean13);
-      if (paramBundle != null) {
-        paramQQAppInterface.putAll(paramBundle);
-      }
-      if (!CaptureUtil.a()) {
-        break label398;
-      }
-      QIMCameraCaptureActivity.a(paramActivity, paramQQAppInterface);
-    }
-    for (;;)
-    {
-      paramActivity.overridePendingTransition(2130772321, 2130772317);
-      return;
-      if (((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(0, 1)) {
-        break;
-      }
-      paramQQAppInterface.putInt("video_min_frame_count", 8);
-      break;
-      label398:
-      DialogUtil.a(paramActivity, 230).setMessage(HardCodeUtil.a(2131711888)).setPositiveButton(2131694615, new QZoneHelper.7()).show();
-    }
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).forwardToQzoneVideoCaptureNew(paramAppRuntime, paramActivity, paramUserInfo, paramInt1, paramBoolean1, paramBoolean2, paramString1, paramString2, paramBoolean3, paramBoolean4, paramString3, paramBoolean5, paramString4, paramString5, paramBoolean6, paramBoolean7, paramBoolean8, paramBoolean9, paramString6, paramBoolean10, paramBoolean11, paramBoolean12, paramInt2, paramBoolean13, paramBundle);
   }
   
   public static void forwardToQzoneVideoTrim(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2, String paramString3)
@@ -2436,14 +2398,14 @@ public class QZoneHelper
     }
     localIntent.putExtra("video_refer", paramString3);
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.video.activity.TrimVideoActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.video.activity.TrimVideoActivity");
     if (isRunningInQzoneProcess())
     {
       localIntent.setClassName(paramActivity, "com.qzone.video.activity.TrimVideoActivity");
       paramActivity.startActivity(localIntent);
       return;
     }
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt1);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt1);
   }
   
   public static void forwardToRedPocket(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, long paramLong, String paramString2, String paramString3, int paramInt)
@@ -2463,32 +2425,28 @@ public class QZoneHelper
       ((JSONObject)localObject).put("bus_type", 1);
       ((JSONObject)localObject).put("channel", 128);
       ((JSONObject)localObject).put("feedsid", paramString3);
-      paramActivity.extra().putString("userId", paramUserInfo.qzone_uin);
-      paramActivity.extra().putString("userName", paramUserInfo.nickname);
-      paramActivity.extra().putString("app_info", "appid#0|bargainor_id#1000030201|channel#qzonefeeds");
-      paramActivity.extra().putInt("come_from", 2);
-      paramActivity.extra().putString("extra_data", ((JSONObject)localObject).toString());
-      paramActivity.extra().putInt("startup_sceneid", 4);
-      paramActivity.extra().putBoolean("qzone.sourceFrom", true);
-      paramActivity.setFlags(536870912);
-      paramActivity.setRequestCode(paramInt);
-      QRoute.startUri(paramActivity, new QZoneHelper.3());
-      return;
     }
     catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
+      paramString1.printStackTrace();
     }
+    paramActivity.extra().putString("userId", paramUserInfo.qzone_uin);
+    paramActivity.extra().putString("userName", paramUserInfo.nickname);
+    paramActivity.extra().putString("app_info", "appid#0|bargainor_id#1000030201|channel#qzonefeeds");
+    paramActivity.extra().putInt("come_from", 2);
+    paramActivity.extra().putString("extra_data", ((JSONObject)localObject).toString());
+    paramActivity.extra().putInt("startup_sceneid", 4);
+    paramActivity.extra().putBoolean("qzone.sourceFrom", true);
+    paramActivity.setFlags(536870912);
+    paramActivity.setRequestCode(paramInt);
+    QRoute.startUri(paramActivity, new QZoneHelper.3());
   }
   
   public static void forwardToSharedFeedDetail(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, String paramString2, int paramInt)
   {
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
     localIntent.putExtra("startup_sceneid", 4);
     localIntent.putExtra("mqqflag", 1);
     localIntent.putExtra("cell_operation.qq_url", paramString1);
@@ -2496,7 +2454,7 @@ public class QZoneHelper
     if (QZoneLoginReportHelper.needAddLoginFromAIOFeedShare(localIntent, paramString2)) {
       QZoneLoginReportHelper.setLoginFromAIOFeedShare(localIntent);
     }
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToShuoshuoDailyCalendar(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt)
@@ -2506,43 +2464,43 @@ public class QZoneHelper
     if (!URLUtil.b(paramUserInfo).containsKey("_wv")) {
       URLUtil.a(paramUserInfo, "_wv", "1027");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneHelper", 2, "jump qzone ShuoshuoDailyCalendar URL:" + paramUserInfo);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("jump qzone ShuoshuoDailyCalendar URL:");
+      ((StringBuilder)localObject).append(paramUserInfo);
+      QLog.d("QZoneHelper", 2, ((StringBuilder)localObject).toString());
     }
-    Intent localIntent = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
-    openWebSecurityVerify(localIntent);
-    localIntent.putExtra("url", paramUserInfo);
-    localIntent.putExtra("isFromQQ", false);
-    localIntent.putExtra("fromQZone", true);
-    localIntent.putExtra("injectrecommend", true);
-    if (WebViewPluginFactory.a.containsKey("Qzone")) {
-      localIntent.putExtra("insertPluginsArray", new String[] { "Qzone" });
-    }
-    localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131717706));
-    localIntent.setData(Uri.parse(paramUserInfo));
-    localIntent.addFlags(268435456);
-    addSource(localIntent);
-    paramActivity.startActivity(localIntent);
+    Object localObject = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramActivity);
+    openWebSecurityVerify((Intent)localObject);
+    ((Intent)localObject).putExtra("url", paramUserInfo);
+    ((Intent)localObject).putExtra("isFromQQ", false);
+    ((Intent)localObject).putExtra("fromQZone", true);
+    ((Intent)localObject).putExtra("injectrecommend", true);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putWebViewPluginPackageName((Intent)localObject);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putQzoneSourceName((Intent)localObject);
+    ((Intent)localObject).setData(Uri.parse(paramUserInfo));
+    ((Intent)localObject).addFlags(268435456);
+    addSource((Intent)localObject);
+    paramActivity.startActivity((Intent)localObject);
   }
   
   public static void forwardToSinglePermissionSetting(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, long paramLong, int paramInt)
   {
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.permissionsetting.ui.activities.QZoneSinglePermissionSettingActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.permissionsetting.ui.activities.QZoneSinglePermissionSettingActivity");
     localIntent.putExtra("qqid", paramLong);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
   }
   
   public static void forwardToTroopAlbumViewPhoto(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
     paramUserInfo = QzoneConfig.getInstance().getConfig("QunAlbumSetting", "QunAlbumPhotoList", "https://h5.qzone.qq.com/groupphoto/inqq/photo/{QUN_ID}/{ALBUM_ID}?_wv=3&_proxy=1").replace("{QUN_ID}", paramString1).replace("{ALBUM_ID}", paramString2);
-    paramString1 = new Intent(paramActivity, QQBrowserActivity.class);
+    paramString1 = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQQBrowserActivityIntent(paramActivity);
     openWebSecurityVerify(paramString1);
     paramString1.putExtra("url", paramUserInfo);
-    if (WebViewPluginFactory.a.containsKey("Qzone")) {
-      paramString1.putExtra("insertPluginsArray", new String[] { "Qzone" });
-    }
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).putWebViewPluginPackageName(paramString1);
     paramString1.setData(Uri.parse(paramUserInfo));
     addSource(paramString1);
     paramActivity.startActivityForResult(paramString1, paramInt);
@@ -2553,32 +2511,28 @@ public class QZoneHelper
   {
     paramString1 = getQZoneUploadPhotoActivityIntent(null, 1, paramString1, paramString2, paramString3, paramString4, "mqqChat");
     setUserInfoToIntent(paramString1, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramString1, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
     if (paramString1 == null) {
       return;
     }
-    int i = paramInt1;
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    default: 
-      i = paramInt1;
+      if (paramInt1 == 2) {
+        paramInt1 = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getSendSizeSpecRAW();
+      }
     }
-    for (;;)
-    {
-      paramString1.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramArrayList);
-      paramString1.putExtra("key_quality", i);
-      paramString1.putExtra("key_album_upload_immediately", true);
-      paramString1.putExtra("photoactivity_key_type", 1);
-      paramString1.putExtra("up_way", paramInt3);
-      paramString2 = String.valueOf(MessageUtils.a());
-      paramIntent.putExtra("key_upload_client_key", paramString2);
-      paramString1.putExtra("key_upload_client_key", paramString2);
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramString1, paramInt2);
-      return;
-      i = 0;
-      continue;
-      i = 3;
+    else {
+      paramInt1 = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getSendSizeSpecNOR();
     }
+    paramString1.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramArrayList);
+    paramString1.putExtra("key_quality", paramInt1);
+    paramString1.putExtra("key_album_upload_immediately", true);
+    paramString1.putExtra("photoactivity_key_type", 1);
+    paramString1.putExtra("up_way", paramInt3);
+    paramString2 = String.valueOf(MessageUtils.a());
+    paramIntent.putExtra("key_upload_client_key", paramString2);
+    paramString1.putExtra("key_upload_client_key", paramString2);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramString1, paramInt2);
   }
   
   public static void forwardToTroopUploadPhoto(Activity paramActivity, String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2, String paramString3, String paramString4, int paramInt3, int paramInt4)
@@ -2590,8 +2544,8 @@ public class QZoneHelper
     paramString1.putExtra("up_way", paramInt4);
     paramString1.setFlags(67108864);
     setUserInfoToIntent(paramString1, localUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, localUserInfo.qzone_uin, paramString1, paramInt3);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramString1, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, localUserInfo.qzone_uin, paramString1, paramInt3);
   }
   
   public static void forwardToTroopUploadPhoto(Activity paramActivity, String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2, String paramString3, String paramString4, ArrayList<String> paramArrayList, int paramInt3, int paramInt4, int paramInt5)
@@ -2605,10 +2559,10 @@ public class QZoneHelper
     paramString1.putExtra("up_way", paramInt4);
     paramString1.setFlags(67108864);
     setUserInfoToIntent(paramString1, localUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, localUserInfo.qzone_uin, paramString1, paramInt3);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramString1, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, localUserInfo.qzone_uin, paramString1, paramInt3);
     if (1 == paramInt1) {
-      LpReportInfo_pf00064.allReport(40, 3, 4);
+      ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).reportTroopAlbumExp();
     }
   }
   
@@ -2622,26 +2576,8 @@ public class QZoneHelper
     paramString1.putExtra("key_begin_send_show_toast", paramString2);
     paramString1.setFlags(67108864);
     setUserInfoToIntent(paramString1, localUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, localUserInfo.qzone_uin, paramString1, paramInt3);
-  }
-  
-  public static void forwardToUploadPhoto(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, Activity paramActivity, String paramString1, String paramString2)
-  {
-    Intent localIntent = new Intent();
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
-    localIntent.putExtra("startup_sceneid", 6);
-    paramString2 = parseUrlParams(paramString2);
-    localIntent.putExtra("IsBack", true);
-    if (paramString2.containsKey("albumid")) {
-      localIntent.putExtra("UploadPhoto.key_album_id", paramString2.getString("albumid"));
-    }
-    if (paramString2.containsKey("albumtitle")) {
-      localIntent.putExtra("UploadPhoto.key_album_name", paramString2.getString("albumtitle"));
-    }
-    localIntent.putExtra("photoactivity_key_type", 1);
-    localIntent.putExtras(paramString2);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString1, localIntent, generateRequestCode(paramWebViewPlugin, paramPluginRuntime, 1));
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramString1, "com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, localUserInfo.qzone_uin, paramString1, paramInt3);
   }
   
   public static void forwardToUserHome(Context paramContext, QZoneHelper.UserInfo paramUserInfo, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -2656,41 +2592,38 @@ public class QZoneHelper
       localIntent.addFlags(268435456);
     }
     int i;
-    if ((isSupportWebViewCover()) && (parseAndSetQzoneCoverInfoToIntent(localIntent, paramArrayOfByte)))
-    {
+    if ((isSupportWebViewCover()) && (parseAndSetQzoneCoverInfoToIntent(localIntent, paramArrayOfByte))) {
       i = 1;
-      if (i == 0) {
-        break label106;
-      }
-      QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity");
-    }
-    for (;;)
-    {
-      if (QZoneLoginReportHelper.needAddLoginFromFriendProfile(localIntent, paramString, paramInt3)) {
-        QZoneLoginReportHelper.setLoginFromFriendProfile(localIntent);
-      }
-      localIntent.putExtra("startup_sceneid", 2);
-      addQZoneStatis(localIntent, paramInt1);
-      QzonePluginProxyActivity.launchPluingActivityForResult(paramContext, paramUserInfo.qzone_uin, localIntent, paramInt2, paramPreloadProcHitPluginSession);
-      return;
+    } else {
       i = 0;
-      break;
-      label106:
-      setUserInfoToIntent(localIntent, paramUserInfo);
-      QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.homepage.ui.activity.QZoneUserHomeActivity");
     }
+    if (i != 0)
+    {
+      ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity");
+    }
+    else
+    {
+      setUserInfoToIntent(localIntent, paramUserInfo);
+      ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.homepage.ui.activity.QZoneUserHomeActivity");
+    }
+    if (QZoneLoginReportHelper.needAddLoginFromFriendProfile(localIntent, paramString, paramInt3)) {
+      QZoneLoginReportHelper.setLoginFromFriendProfile(localIntent);
+    }
+    localIntent.putExtra("startup_sceneid", 2);
+    addQZoneStatis(localIntent, paramInt1);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramContext, paramUserInfo.qzone_uin, localIntent, paramInt2, paramPreloadProcHitPluginSession);
   }
   
-  public static void forwardToUserHomeByNearBy(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, ProfileActivity.AllInOne paramAllInOne)
+  public static void forwardToUserHomeByNearBy(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Parcelable paramParcelable)
   {
     paramString = getQZoneUserHomeActivityIntent(paramString, 6);
     setUserInfoToIntent(paramString, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(paramString, "com.qzone.homepage.ui.activity.QZoneUserHomeActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramString, "com.qzone.homepage.ui.activity.QZoneUserHomeActivity");
     paramString.putExtra("key_has_talk", paramBoolean);
-    paramString.putExtra("key_nearby_profile", paramAllInOne);
+    paramString.putExtra("key_nearby_profile", paramParcelable);
     paramString.putExtra("startup_sceneid", 2);
     addQZoneStatis(paramString, paramInt1);
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramString, paramInt2);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramString, paramInt2);
   }
   
   public static void forwardToVideoEditActionPanel(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString5, int paramInt8, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2, int paramInt9, int paramInt10, boolean paramBoolean3)
@@ -2700,38 +2633,7 @@ public class QZoneHelper
   
   public static void forwardToVideoEditActionPanel(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString5, int paramInt8, Bundle paramBundle1, boolean paramBoolean1, boolean paramBoolean2, int paramInt9, int paramInt10, boolean paramBoolean3, Bundle paramBundle2)
   {
-    if (paramInt6 == 0) {
-      paramInt2 = -1;
-    }
-    for (;;)
-    {
-      paramString1 = getFeedActionPanel(paramActivity, paramString1, paramString2, paramString3, paramString4, paramInt2, Integer.valueOf(0), null, paramInt1, "", false);
-      setUserInfoToIntent(paramString1, paramUserInfo);
-      paramString1.putExtra("showaticon", paramInt3);
-      paramString1.putExtra("showemotionicon", paramInt4);
-      paramString1.putExtra("showxuantuicon", paramInt5);
-      paramString1.putExtra("showfonticon", 1);
-      paramString1.putExtra("show_super_font", false);
-      if (paramBoolean3) {}
-      for (paramInt2 = 1;; paramInt2 = 0)
-      {
-        paramString1.putExtra("needtransemoj", paramInt2);
-        paramString1.putExtra("sendbtntext", paramString5);
-        paramString1.putExtra("inputmax", paramInt8);
-        paramString1.putExtra("extra_key_bundle_priv", paramBundle1);
-        paramString1.putExtra("video_edit_mode", true);
-        paramString1.putExtra("is_topic", paramBoolean1);
-        paramString1.putExtra("extraIsTopicSyncQzone", paramBoolean2);
-        paramString1.putExtra("extra_key_font_id", paramInt9);
-        paramString1.putExtra("extra_key_super_font_id", paramInt10);
-        if (paramBundle2 != null) {
-          paramString1.putExtras(paramBundle2);
-        }
-        QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.common.activities.FeedActionPanelActivity");
-        QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, paramString1, paramInt1, null, true);
-        return;
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static void forwardToWriteEventShuoShuo(Activity paramActivity, String paramString1, String paramString2, ArrayList<String> paramArrayList, ArrayList<ResultRecord> paramArrayList1, PublishEventTag paramPublishEventTag, int paramInt)
@@ -2766,18 +2668,8 @@ public class QZoneHelper
       localIntent.putExtra("event_tag", paramPublishEventTag);
     }
     localIntent.putExtra("isEmbedInTabActivity", true);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodTabActivity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString1, localIntent, paramInt);
-  }
-  
-  public static void forwardToWriteMood(Activity paramActivity, QQAppInterface paramQQAppInterface, Intent paramIntent, int paramInt, boolean paramBoolean)
-  {
-    publishMood(paramQQAppInterface, paramActivity, getPublishMoodInfo(paramIntent.getStringExtra("summary"), paramIntent.getStringExtra("filePath"), paramIntent.getIntExtra("reqType", 1)), paramIntent, paramInt, paramBoolean);
-  }
-  
-  public static void forwardToWriteMood(Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, boolean paramBoolean)
-  {
-    publishMood(paramQQAppInterface, paramActivity, getPublishMoodInfo(paramString1, paramString2, paramInt1), paramString3, paramInt2, paramBoolean);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodTabActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramString1, localIntent, paramInt);
   }
   
   public static void forwardToWriteMood(Activity paramActivity, String paramString, int paramInt)
@@ -2816,18 +2708,13 @@ public class QZoneHelper
     if (paramPublishEventTag != null) {
       localIntent.putExtra("event_tag", paramPublishEventTag);
     }
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString1, localIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramString1, localIntent, paramInt);
   }
   
-  public static int generateRequestCode(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, int paramInt)
+  public static void forwardToWriteMood(Activity paramActivity, AppRuntime paramAppRuntime, Intent paramIntent, int paramInt, boolean paramBoolean)
   {
-    paramPluginRuntime = paramPluginRuntime.a(paramPluginRuntime.a());
-    int i = paramInt;
-    if ((paramPluginRuntime instanceof WebViewPluginContainer)) {
-      i = ((WebViewPluginContainer)paramPluginRuntime).switchRequestCode(paramWebViewPlugin, (byte)paramInt);
-    }
-    return i;
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).forwardToWriteMood(paramActivity, paramAppRuntime, paramIntent, paramInt, paramBoolean);
   }
   
   @NonNull
@@ -2835,7 +2722,7 @@ public class QZoneHelper
   {
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.album.business.photolist.activity.QZonePersonalPhotoListActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.album.business.photolist.activity.QZonePersonalPhotoListActivity");
     localIntent.putExtra("key_album_id", paramBaseBusinessAlbumInfo.mAlbumId);
     localIntent.putExtra("key_photo_sort_type", paramBaseBusinessAlbumInfo.sortType);
     localIntent.putExtra("key_album_name", paramBaseBusinessAlbumInfo.mTitle);
@@ -2849,7 +2736,7 @@ public class QZoneHelper
   @RequiresApi(api=26)
   private static ShortcutInfo getAlbumShortcutInfo(Context paramContext, Bitmap paramBitmap, String paramString1, long paramLong, String paramString2, String paramString3)
   {
-    Intent localIntent = new Intent(paramContext, ShortcutGuideActivity.class);
+    Intent localIntent = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getShortcutIntent(paramContext);
     localIntent.setAction(paramString3);
     localIntent.putExtra("from", "shortcutFromQZonePhotolist");
     localIntent.putExtra("UploadPhoto.key_album_id", paramString1);
@@ -2860,46 +2747,56 @@ public class QZoneHelper
   
   public static int getDevicePerformanceLevel()
   {
-    int i = 3;
     if (g_playGifParformanceLevel != 0) {
       return g_playGifParformanceLevel;
     }
-    if (((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(3, 2)) {}
-    for (;;)
-    {
-      g_playGifParformanceLevel = i;
-      QLog.d("QZoneHelper", 2, "[jinqianli-performance] current mem level is " + ((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).getCurrentMemLevel() + ", current cpu level is " + ((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).getCurrentCpuLevel() + ", play gif parformance level is " + g_playGifParformanceLevel);
-      return i;
+    Object localObject = (IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class);
+    int i = 3;
+    if (!((IQzoneHardwareRestriction)localObject).meetHardwareRestriction(3, 2)) {
       if (((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(2, 1)) {
         i = 2;
       } else {
         i = 1;
       }
     }
+    g_playGifParformanceLevel = i;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[jinqianli-performance] current mem level is ");
+    ((StringBuilder)localObject).append(((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).getCurrentMemLevel());
+    ((StringBuilder)localObject).append(", current cpu level is ");
+    ((StringBuilder)localObject).append(((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).getCurrentCpuLevel());
+    ((StringBuilder)localObject).append(", play gif parformance level is ");
+    ((StringBuilder)localObject).append(g_playGifParformanceLevel);
+    QLog.d("QZoneHelper", 2, ((StringBuilder)localObject).toString());
+    return i;
   }
   
   public static int getDevicePerformanceLevelInfo()
   {
-    int i = 3;
     if (g_listScrollParformanceLevel != 0) {
       return g_listScrollParformanceLevel;
     }
-    if (((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).equalHardwareRestriction(3, 3)) {
+    Object localObject = (IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class);
+    int i = 3;
+    if (((IQzoneHardwareRestriction)localObject).equalHardwareRestriction(3, 3)) {
       i = 4;
-    }
-    for (;;)
-    {
-      g_listScrollParformanceLevel = i;
-      QLog.d("QZoneHelper", 2, "[jinqianli-performance] current mem level is " + ((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).getCurrentMemLevel() + ", current cpu level is " + ((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).getCurrentCpuLevel() + ", play gif parformance level is " + g_playGifParformanceLevel);
-      return i;
-      if (!((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).equalHardwareRestriction(2, 2)) {
-        if (((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).equalHardwareRestriction(1, 1)) {
-          i = 2;
-        } else {
-          i = 1;
-        }
+    } else if (!((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).equalHardwareRestriction(2, 2)) {
+      if (((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).equalHardwareRestriction(1, 1)) {
+        i = 2;
+      } else {
+        i = 1;
       }
     }
+    g_listScrollParformanceLevel = i;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[jinqianli-performance] current mem level is ");
+    ((StringBuilder)localObject).append(((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).getCurrentMemLevel());
+    ((StringBuilder)localObject).append(", current cpu level is ");
+    ((StringBuilder)localObject).append(((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).getCurrentCpuLevel());
+    ((StringBuilder)localObject).append(", play gif parformance level is ");
+    ((StringBuilder)localObject).append(g_playGifParformanceLevel);
+    QLog.d("QZoneHelper", 2, ((StringBuilder)localObject).toString());
+    return i;
   }
   
   public static Intent getFeedActionPanel(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, Serializable paramSerializable, Parcelable paramParcelable, int paramInt2, String paramString5, boolean paramBoolean)
@@ -2932,73 +2829,53 @@ public class QZoneHelper
   
   public static IUploadConfig.UploadImageSize getImageTargetSize(Context paramContext, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    try
+    for (;;)
     {
-      Class localClass = Class.forName("com.qzone.misc.network.uploader.QZoneImageSizeStrategy");
-      paramContext = localClass;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
+      try
       {
         try
+        {
+          localObject = Class.forName("com.qzone.misc.network.uploader.QZoneImageSizeStrategy");
+          paramContext = (Context)localObject;
+        }
+        catch (Exception paramContext) {}
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        Object localObject;
+        continue;
+      }
+      try
+      {
+        localObject = ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).getQZonePluginClassLoader(paramContext);
+        paramContext = ((ClassLoader)localObject).loadClass("com.qzone.misc.network.uploader.QZoneImageSizeStrategy");
+        BasicClassTypeUtil.setClassLoader(true, (ClassLoader)localObject);
+        if (paramContext == null)
         {
           QLog.e("QZLog", 1, "*QZoneImageSizeStrategy load class fail");
           return null;
         }
-        catch (ClassNotFoundException paramContext)
-        {
-          ClassLoader localClassLoader;
-          paramContext.printStackTrace();
-        }
-        localClassNotFoundException = localClassNotFoundException;
-        localClassLoader = QzonePluginProxyActivity.getQZonePluginClassLoader(paramContext);
-        paramContext = localClassLoader.loadClass("com.qzone.misc.network.uploader.QZoneImageSizeStrategy");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+        paramContext = (IUploadConfig.UploadImageSize)paramContext.getMethod("getTargetSize", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Boolean.TYPE }).invoke(null, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean) });
+        return paramContext;
       }
-      return null;
-      paramContext = (IUploadConfig.UploadImageSize)paramContext.getMethod("getTargetSize", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Boolean.TYPE }).invoke(null, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean) });
-      return paramContext;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
+      catch (ClassNotFoundException paramContext)
       {
         paramContext.printStackTrace();
+        return null;
       }
     }
-    if (paramContext != null) {}
+    paramContext.printStackTrace();
+    return null;
   }
   
   public static Intent getJumpQzoneTabIntent(Context paramContext, Intent paramIntent)
   {
-    paramIntent.setClass(paramContext, SplashActivity.class);
-    paramIntent.putExtra("fragment_id", 1);
-    paramIntent.putExtra("tab_index", FrameControllerUtil.i);
-    paramIntent.putExtra("open_qzone_tab_fragment", true);
-    paramIntent.setFlags(335544320);
-    return paramIntent;
+    return ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getJumpQzoneTabIntent(paramContext, paramIntent);
   }
   
   public static int getMaxRecentUserNum()
   {
     return QzoneConfig.getInstance().getConfig("QZoneSetting", "MaxNumInConverstation", 100);
-  }
-  
-  private static PublishMoodInfo getPublishMoodInfo(String paramString1, String paramString2, int paramInt)
-  {
-    PublishMoodInfo localPublishMoodInfo = new PublishMoodInfo();
-    ArrayList localArrayList = new ArrayList();
-    PublishMoodInfo.MediaInfo localMediaInfo = new PublishMoodInfo.MediaInfo();
-    localMediaInfo.mPath = paramString2;
-    if (paramInt == 4) {}
-    for (localMediaInfo.mType = 2;; localMediaInfo.mType = 1)
-    {
-      localArrayList.add(localMediaInfo);
-      localPublishMoodInfo.mText = paramString1;
-      localPublishMoodInfo.mMediaInfo = localArrayList;
-      return (PublishMoodInfo)((IMiniAppService)QRoute.api(IMiniAppService.class)).validMoodInfo(localPublishMoodInfo);
-    }
   }
   
   public static String getQUA()
@@ -3009,7 +2886,7 @@ public class QZoneHelper
   public static Intent getQZoneDetailActivity()
   {
     Intent localIntent = new Intent();
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.detail.ui.activity.QzoneDetailActivity");
     return localIntent;
   }
   
@@ -3033,45 +2910,72 @@ public class QZoneHelper
     try
     {
       localIntent.putExtra("qqid", Long.parseLong(paramString));
-      localIntent.putExtra("qzone_entry", paramInt);
-      localIntent.putExtra("hc_code", sQZoneHCCode);
-      sQZoneHCCode = 0;
-      putTimeRecord(localIntent);
-      return localIntent;
     }
     catch (NumberFormatException paramString)
     {
-      for (;;)
-      {
-        QZLog.e("QZoneHelper", "getQZoneUserHomeActivityIntent", paramString);
-      }
+      QZLog.e("QZoneHelper", "getQZoneUserHomeActivityIntent", paramString);
     }
+    localIntent.putExtra("qzone_entry", paramInt);
+    localIntent.putExtra("hc_code", sQZoneHCCode);
+    sQZoneHCCode = 0;
+    putTimeRecord(localIntent);
+    return localIntent;
+  }
+  
+  public static Intent getQZoneVideoDownloadActivityIntent(Context paramContext)
+  {
+    return ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQZoneVideoDownloadActivityIntent(paramContext);
   }
   
   private static Intent getQzoneActivityIntentForName(QZoneHelper.UserInfo paramUserInfo, String paramString)
   {
     Intent localIntent = new Intent();
     setUserInfoToIntent(localIntent, paramUserInfo);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, paramString);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, paramString);
     return localIntent;
   }
   
   public static BaseBusinessAlbumInfo getQzoneAlbumInfo(String paramString1, String paramString2)
   {
-    long l = LocalMultiProcConfig.getLong(MD5.toMD5(paramString1 + "_" + paramString2 + "_record_time"), 0L);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString1);
+    ((StringBuilder)localObject1).append("_");
+    ((StringBuilder)localObject1).append(paramString2);
+    ((StringBuilder)localObject1).append("_record_time");
+    long l = LocalMultiProcConfig.getLong(MD5.a(((StringBuilder)localObject1).toString()), 0L);
     if (QzoneConfig.getInstance().getConfig("PhotoUpload", "C2CAioAlbumCacheExpireTime", 60) * 60 * 1000L + l < System.currentTimeMillis())
     {
-      QZLog.i("QZoneHelper", 1, "getQzoneAlbumInfo cache expire. albumId=" + paramString2 + " recordTime=" + l);
+      paramString1 = new StringBuilder();
+      paramString1.append("getQzoneAlbumInfo cache expire. albumId=");
+      paramString1.append(paramString2);
+      paramString1.append(" recordTime=");
+      paramString1.append(l);
+      QZLog.i("QZoneHelper", 1, paramString1.toString());
       return null;
     }
-    String str2 = MD5.toMD5(paramString1 + "_" + paramString2 + "_album_id");
-    String str1 = MD5.toMD5(paramString1 + "_" + paramString2 + "_album_title");
-    paramString1 = MD5.toMD5(paramString1 + "_" + paramString2 + "_exist");
-    paramString2 = LocalMultiProcConfig.getString(str2, "");
-    str1 = LocalMultiProcConfig.getString(str1, "");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString1);
+    ((StringBuilder)localObject1).append("_");
+    ((StringBuilder)localObject1).append(paramString2);
+    ((StringBuilder)localObject1).append("_album_id");
+    localObject1 = MD5.a(((StringBuilder)localObject1).toString());
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramString1);
+    ((StringBuilder)localObject2).append("_");
+    ((StringBuilder)localObject2).append(paramString2);
+    ((StringBuilder)localObject2).append("_album_title");
+    localObject2 = MD5.a(((StringBuilder)localObject2).toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("_exist");
+    paramString1 = MD5.a(localStringBuilder.toString());
+    paramString2 = LocalMultiProcConfig.getString((String)localObject1, "");
+    localObject1 = LocalMultiProcConfig.getString((String)localObject2, "");
     boolean bool = LocalMultiProcConfig.getBool(paramString1, true);
     paramString1 = new BaseBusinessAlbumInfo(paramString2);
-    paramString1.mTitle = str1;
+    paramString1.mTitle = ((String)localObject1);
     paramString1.isAlbumExist = bool;
     return paramString1;
   }
@@ -3080,26 +2984,26 @@ public class QZoneHelper
   public static Intent getQzoneFriendFeedActivity(Context paramContext)
   {
     paramContext = new Intent();
-    QzonePluginProxyActivity.setActivityNameToIntent(paramContext, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramContext, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
     return paramContext;
   }
   
   public static Intent getQzoneMyFeedActivity(Context paramContext)
   {
     paramContext = new Intent();
-    QzonePluginProxyActivity.setActivityNameToIntent(paramContext, "com.qzone.feed.ui.activity.QZoneMyFeedActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramContext, "com.qzone.feed.ui.activity.QZoneMyFeedActivity");
     return paramContext;
   }
   
   private static Intent getQzonePersonalAlbumActivityIntent(Context paramContext, Long paramLong, int paramInt)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_left_tab_title", paramContext.getString(2131717404));
-    localIntent.putExtra("key_rihgt_tab_title", paramContext.getString(2131717485));
+    localIntent.putExtra("key_left_tab_title", paramContext.getString(2131717063));
+    localIntent.putExtra("key_rihgt_tab_title", paramContext.getString(2131717144));
     localIntent.putExtra("key_album_owner_uin", paramLong);
     localIntent.putExtra("key_selected_tab", paramInt);
     putTimeRecord(localIntent);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.album.business.albumlist.activity.QZonePersonalAlbumActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.album.business.albumlist.activity.QZonePersonalAlbumActivity");
     return localIntent;
   }
   
@@ -3111,15 +3015,35 @@ public class QZoneHelper
   public static Intent getQzoneSpecialFeedActivity(Context paramContext)
   {
     paramContext = new Intent();
-    QzonePluginProxyActivity.setActivityNameToIntent(paramContext, "com.qzone.feed.ui.activity.QZoneSpecialActiveFeedsActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(paramContext, "com.qzone.feed.ui.activity.QZoneSpecialActiveFeedsActivity");
     return paramContext;
+  }
+  
+  public static Intent getQzoneVerticalVideoDownloadActivityIntent(Context paramContext)
+  {
+    return ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQzoneVerticalVideoDownloadActivityIntent(paramContext);
+  }
+  
+  public static QIPCModule getQzoneVideoSoDownloadModule()
+  {
+    return ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQzoneVideoSoDownloadModule();
   }
   
   public static BaseBusinessAlbumInfo getSelectedAlbumInfo(String paramString1, String paramString2)
   {
-    String str = MD5.toMD5(paramString1 + "_" + paramString2 + "_album_id");
-    paramString1 = MD5.toMD5(paramString1 + "_" + paramString2 + "_album_title");
-    paramString2 = LocalMultiProcConfig.getString(str, "");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("_album_id");
+    localObject = MD5.a(((StringBuilder)localObject).toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("_album_title");
+    paramString1 = MD5.a(localStringBuilder.toString());
+    paramString2 = LocalMultiProcConfig.getString((String)localObject, "");
     paramString1 = LocalMultiProcConfig.getString(paramString1, "");
     paramString2 = new BaseBusinessAlbumInfo(paramString2);
     paramString2.mTitle = paramString1;
@@ -3127,24 +3051,33 @@ public class QZoneHelper
   }
   
   @NonNull
-  private static Intent getShortcutIntent(@NonNull QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  private static Intent getShortcutIntent(@NonNull AppRuntime paramAppRuntime, String paramString, long paramLong)
   {
-    Intent localIntent = new Intent("intent.start.shortcut.guide");
-    localIntent.setClassName(paramQQAppInterface.getApp(), ShortcutGuideActivity.class.getName());
-    localIntent.putExtra("from", "shortcutFromQZonePhotolist");
-    localIntent.putExtra("UploadPhoto.key_album_id", paramString);
-    localIntent.putExtra("UploadPhoto.key_album_owner_uin", paramLong);
-    localIntent.putExtra("UploadPhoto.key_from_album_shortcut", true);
-    localIntent.addCategory("android.intent.category.LAUNCHER");
-    localIntent.setFlags(337641472);
-    return localIntent;
+    paramAppRuntime = ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getShortcutIntent(paramAppRuntime.getApp());
+    paramAppRuntime.setAction("intent.start.shortcut.guide");
+    paramAppRuntime.putExtra("from", "shortcutFromQZonePhotolist");
+    paramAppRuntime.putExtra("UploadPhoto.key_album_id", paramString);
+    paramAppRuntime.putExtra("UploadPhoto.key_album_owner_uin", paramLong);
+    paramAppRuntime.putExtra("UploadPhoto.key_from_album_shortcut", true);
+    paramAppRuntime.addCategory("android.intent.category.LAUNCHER");
+    paramAppRuntime.setFlags(337641472);
+    return paramAppRuntime;
+  }
+  
+  public static boolean getSimpleQZoneUISwitch()
+  {
+    return ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getSimpleQZoneUISwitch();
   }
   
   public static int getUpdateCountIntervalWhenClickFeedTab()
   {
     int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "UpdateCountIntervalWhenClickFeedTab", 30) * 1000;
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneHelper.UndealCount", 2, "getUpdateCountIntervalWhenClickFeedTab:" + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getUpdateCountIntervalWhenClickFeedTab:");
+      localStringBuilder.append(i);
+      QLog.d("QZoneHelper.UndealCount", 2, localStringBuilder.toString());
     }
     return i;
   }
@@ -3188,17 +3121,32 @@ public class QZoneHelper
   
   public static boolean hideAioFeeds()
   {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "hideAioFeeds", 0) == 1;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("QZoneSetting", "hideAioFeeds", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean hideAioQCircleFeeds()
   {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "qqcircle_show_entrance_on_aio_feed", 0) == 1;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("QZoneSetting", "qqcircle_show_entrance_on_aio_feed", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean hideQzoneStatusInConverstation()
   {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "hideFeedsInConverstation", 0) == 1;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("QZoneSetting", "hideFeedsInConverstation", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isBestPerformanceDevice()
@@ -3213,7 +3161,6 @@ public class QZoneHelper
   
   private static boolean isBestPerformanceDeviceImpl()
   {
-    boolean bool2 = true;
     long l1 = System.currentTimeMillis();
     int i = QzoneConfig.getInstance().getConfig("QzoneCover", "HtmlStandardCpuCore", 1);
     int j = QzoneConfig.getInstance().getConfig("QzoneCover", "HtmlStandardCpuFequency", 1100);
@@ -3221,32 +3168,41 @@ public class QZoneHelper
     long l2 = DeviceInfoUtil.b() * DeviceInfoUtil.b();
     long l3 = i * j;
     boolean bool1;
-    if (l2 > 0L) {
-      if (l2 > l3) {
-        bool1 = true;
-      }
-    }
-    for (;;)
-    {
-      l2 = DeviceInfoUtil.a();
-      if (l2 > 0L) {
-        if ((bool1) && (l2 > 1048576L * k)) {
-          bool1 = bool2;
-        }
-      }
-      for (;;)
-      {
-        l3 = System.currentTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneHelper", 2, "isBestPerformanceDeviceImpl standardCpuCore=" + i + ",standardCpuFequency=" + j + ",standardRAMSize=" + k + ",cpu count=" + DeviceInfoUtil.b() + ",cpu frequency=" + DeviceInfoUtil.b() + ",total memory=" + l2 + ",use time=" + (l3 - l1));
-        }
-        return bool1;
-        bool1 = false;
-        break;
-        bool1 = false;
-      }
+    if ((l2 > 0L) && (l2 <= l3)) {
+      bool1 = false;
+    } else {
       bool1 = true;
     }
+    l2 = DeviceInfoUtil.a();
+    boolean bool2 = bool1;
+    if (l2 > 0L) {
+      if ((bool1) && (l2 > k * 1048576L)) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
+    }
+    l3 = System.currentTimeMillis();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isBestPerformanceDeviceImpl standardCpuCore=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(",standardCpuFequency=");
+      localStringBuilder.append(j);
+      localStringBuilder.append(",standardRAMSize=");
+      localStringBuilder.append(k);
+      localStringBuilder.append(",cpu count=");
+      localStringBuilder.append(DeviceInfoUtil.b());
+      localStringBuilder.append(",cpu frequency=");
+      localStringBuilder.append(DeviceInfoUtil.b());
+      localStringBuilder.append(",total memory=");
+      localStringBuilder.append(l2);
+      localStringBuilder.append(",use time=");
+      localStringBuilder.append(l3 - l1);
+      QLog.d("QZoneHelper", 2, localStringBuilder.toString());
+    }
+    return bool2;
   }
   
   private static boolean isBuildModelInList(String paramString)
@@ -3254,21 +3210,41 @@ public class QZoneHelper
     try
     {
       String str = Build.MODEL;
-      if ((str == null) || (str.length() == 0))
+      if ((str != null) && (str.length() != 0))
+      {
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("buildModel is '");
+          localStringBuilder.append(str);
+          localStringBuilder.append("'");
+          QLog.d("QZoneHelper", 2, localStringBuilder.toString());
+        }
+        if (paramString != null)
+        {
+          if (paramString.length() == 0) {
+            return false;
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(",");
+          localStringBuilder.append(str);
+          localStringBuilder.append(",");
+          str = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(",");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(",");
+          if (localStringBuilder.toString().contains(str))
+          {
+            QLog.i("QZoneHelper", 1, "命中禁止黑名单策略");
+            return true;
+          }
+        }
+      }
+      else
       {
         QLog.i("QZoneHelper", 1, "buildModel is empty,not show float items.命中禁止策略");
-        return true;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneHelper", 2, "buildModel is '" + str + "'");
-      }
-      if ((paramString == null) || (paramString.length() == 0)) {
-        break label161;
-      }
-      str = "," + str + ",";
-      if (("," + paramString + ",").contains(str))
-      {
-        QLog.i("QZoneHelper", 1, "命中禁止黑名单策略");
         return true;
       }
     }
@@ -3277,8 +3253,6 @@ public class QZoneHelper
       paramString.printStackTrace();
       return false;
     }
-    return false;
-    label161:
     return false;
   }
   
@@ -3289,8 +3263,8 @@ public class QZoneHelper
   
   public static boolean isInFloatItemBlacklist()
   {
-    boolean bool2 = false;
     String str = QzoneConfig.getInstance().getConfig("QZoneSetting", "FloatModelBlacklist", "N5117,R8007,Coolpad 8720L,R7007,GN9000L,G620-L75,R2017,R6007,R831S,HM 1SC,Coolpad 8705,HUAWEI B199,Coolpad 9190L,HM 1SW,Coolpad 8730L,Coolpad 9190_T00,HS-E620M,HUAWEI G660-L075,Coolpad 5952,HUAWEI G730-L075,Coolpad 8729,HUAWEI C8817L,Bird LT01,Coolpad 5892,Coolpad 7620L,GN9004,HS-X8T,iPhone 6plus,K-Touch Tou ch 2,K-Touch Tou ch3,K-Touch Tou ch3w,Lenovo A560,Lenovo A890e,Lenovo B8080-HV,Lenovo S810t,LT18,MI 3C,N5110,Nokia_XL_4G,R2010,R8000,TCL-P688L,U558,ZTE Grand S II LTE,ZTE Q505T,ZTE Q802T,Coolpad Y60-C1,Coolpad 8702,BOWAY TL2000,Best sonny_LT986,BOWAY TL6000,Coolpad 5200S,Coolpad 5311,Coolpad 5315,DOOV T35,DOOV T60,HS-EG971,HS-EG978,HTC D516d,HUAWEI G6-L22,HUAWEI G620-L72,i6200S,KliTON,koobee M2,L-002,L823,L826,L827,Lingwin K1,LNV-Lenovo A505e,M7009,M811,MI 3W,R830S,ZTE Q801L,ZTE Q701C,YUSUN L63,TCL P631M,TCL J738M,T-smart L818,OUKI G5,OPSSON Q3,　　,MT2L03,VOTO VT898,AOLE,N5111,LA2-L,vtel X5,ETON T3,BOWAY TL500,T-smart L808,DOOV T90,CHM-TL00,thl L968,TCL J938M,2013022,HUAWEI G750-T01,vivo Y20T,vivo Y17T,vivo Y13T,vivo Y15T,vivo X3S W,U707T,R823T,R819T,N1T,Hol-T00,H8S,H30-U10,2014011,M351,HUAWEI G610-T11,vivo X3t,HUAWEI P6-T00,HUAWEI G700-U00,ETON I6,vivo Y11i T,HM NOTE 1TD");
+    boolean bool2 = false;
     if (str == null) {
       return false;
     }
@@ -3363,8 +3337,7 @@ public class QZoneHelper
   
   private static boolean isPreload2QTADisable()
   {
-    File localFile = new File(Environment.getExternalStorageDirectory().getPath(), "disable_preload");
-    return (localFile != null) && (localFile.exists());
+    return new File(Environment.getExternalStorageDirectory().getPath(), "disable_preload").exists();
   }
   
   public static boolean isQzonePermissionPublic(long paramLong)
@@ -3374,18 +3347,21 @@ public class QZoneHelper
   
   public static boolean isQzoneProcessExist()
   {
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if ((localObject == null) || (((List)localObject).size() <= 0)) {
-      return false;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if ("com.tencent.mobileqq:qzone".equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneHelper", 2, "QzoneProcess is exist");
+    Object localObject = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getRunningAppProcesses();
+    if (localObject != null)
+    {
+      if (((List)localObject).size() <= 0) {
+        return false;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if ("com.tencent.mobileqq:qzone".equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneHelper", 2, "QzoneProcess is exist");
+          }
+          return true;
         }
-        return true;
       }
     }
     return false;
@@ -3396,7 +3372,7 @@ public class QZoneHelper
     boolean bool2 = false;
     try
     {
-      String str = BaseApplicationImpl.getApplication().getQQProcessName();
+      String str = MobileQQ.sMobileQQ.getQQProcessName();
       boolean bool1 = bool2;
       if (str != null)
       {
@@ -3432,7 +3408,7 @@ public class QZoneHelper
   public static boolean isShortcutCreated(String paramString, @NonNull Context paramContext)
   {
     if (Build.VERSION.SDK_INT < 26) {
-      return QQUtils.a(paramContext, new String[] { paramString });
+      return ShortcutUtils.a(paramContext, new String[] { paramString });
     }
     return isShortcutCreated_O(paramString, (ShortcutManager)paramContext.getSystemService(ShortcutManager.class));
   }
@@ -3440,37 +3416,44 @@ public class QZoneHelper
   @RequiresApi(api=25)
   public static boolean isShortcutCreated_O(String paramString, ShortcutManager paramShortcutManager)
   {
+    boolean bool2 = false;
     if (paramShortcutManager == null) {
       return false;
     }
     paramShortcutManager = paramShortcutManager.getPinnedShortcuts().iterator();
     do
     {
+      bool1 = bool2;
       if (!paramShortcutManager.hasNext()) {
         break;
       }
     } while (!paramString.equals(((ShortcutInfo)paramShortcutManager.next()).getId()));
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    boolean bool1 = true;
+    return bool1;
   }
   
   private static boolean isSupportWebViewCover()
   {
-    if (isBestPerformanceDevice())
+    boolean bool = isBestPerformanceDevice();
+    int i = 0;
+    if (bool)
     {
-      if (QzoneConfig.getInstance().getConfig("QzoneCover", "HtmlForceClose", 0) == 1) {}
-      for (int i = 1; i == 0; i = 0) {
-        return true;
+      if (QzoneConfig.getInstance().getConfig("QzoneCover", "HtmlForceClose", 0) == 1) {
+        i = 1;
       }
-      return false;
+      return i ^ 0x1;
     }
     return false;
   }
   
+  public static void killQZoneProcess()
+  {
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).killQZoneProcess();
+  }
+  
   public static void launchQZone(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
   {
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString, paramIntent, paramInt);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramString, paramIntent, paramInt);
   }
   
   public static void launchQZoneEncourageAdvActivity(Activity paramActivity, String paramString)
@@ -3480,14 +3463,15 @@ public class QZoneHelper
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("gdt_adv_activity_factory_info", paramString);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.preview.QZoneEncourageAdvActivity");
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.preview.QZoneEncourageAdvActivity");
     if (isRunningInQzoneProcess())
     {
       localIntent.setClassName(paramActivity, "com.qzone.preview.QZoneEncourageAdvActivity");
       paramActivity.startActivity(localIntent);
       return;
     }
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, BaseApplicationImpl.getApplication().getRuntime().getAccount(), localIntent, -1);
+    paramString = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramString, localIntent, -1);
   }
   
   public static void launchVideoCoverPreviewActivity(Activity paramActivity, int paramInt1, String paramString1, boolean paramBoolean, String paramString2, String paramString3, int paramInt2, int paramInt3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt4, Bundle paramBundle, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -3498,11 +3482,10 @@ public class QZoneHelper
     Intent localIntent = new Intent();
     localIntent.putExtra("PhotoConst.IS_VIDEO_SELECTED", true);
     localIntent.putExtra("PhotoConst.VIDEO_TYPE", paramInt1);
-    String str = paramString1;
     if (paramString1 == null) {
-      str = "";
+      paramString1 = "";
     }
-    localIntent.putExtra("PhotoConst.QZONE_ALBUM_VIDEO_ID", str);
+    localIntent.putExtra("PhotoConst.QZONE_ALBUM_VIDEO_ID", paramString1);
     localIntent.putExtra("file_send_path", paramString2);
     localIntent.putExtra("thumbnail_path", paramString3);
     localIntent.putExtra("thumbnail_height", paramInt3);
@@ -3525,22 +3508,22 @@ public class QZoneHelper
     if (!TextUtils.isEmpty(paramString6)) {
       localIntent.putExtra("video_refer", paramString6);
     }
-    paramString1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.cover.ui.activity.QzoneVideoCoverPreviewActivity");
+    paramString1 = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.cover.ui.activity.QzoneVideoCoverPreviewActivity");
     if (isRunningInQzoneProcess())
     {
       localIntent.setClassName(paramActivity, "com.qzone.cover.ui.activity.QzoneVideoCoverPreviewActivity");
       paramActivity.startActivity(localIntent);
       return;
     }
-    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString1, localIntent, -1);
+    ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramString1, localIntent, -1);
   }
   
-  private static void onCreateShortcutFailed(@NonNull QQAppInterface paramQQAppInterface)
+  private static void onCreateShortcutFailed(@NonNull AppRuntime paramAppRuntime)
   {
     Intent localIntent = new Intent("com.qzone.album.CreateAlbumShortcutSucceedReceiver");
     localIntent.putExtra("AlbumCreateShortcutFailed", true);
-    paramQQAppInterface.getApp().sendBroadcast(localIntent);
+    paramAppRuntime.getApp().sendBroadcast(localIntent);
   }
   
   public static void onMQzoneSchema(Context paramContext, String paramString)
@@ -3553,7 +3536,7 @@ public class QZoneHelper
   
   public static void onQQClearLocalCache(long paramLong)
   {
-    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QZoneHelper.11(paramLong));
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QZoneHelper.9(paramLong));
   }
   
   public static void openActivityAsync(boolean paramBoolean, QZoneHelper.StartActivity paramStartActivity)
@@ -3563,122 +3546,73 @@ public class QZoneHelper
       paramStartActivity.onStart(false, true);
       return;
     }
-    ThreadManager.postImmediately(new QZoneHelper.8(paramStartActivity), null, true);
+    ThreadManager.postImmediately(new QZoneHelper.6(paramStartActivity), null, true);
   }
   
   public static void openWebSecurityVerify(Intent paramIntent)
   {
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "openWebSecurityVerify", 1) == 1) {}
+    QzoneConfig.getInstance().getConfig("QZoneSetting", "openWebSecurityVerify", 1);
   }
   
   private static boolean parseAndSetQzoneCoverInfoToIntent(Intent paramIntent, byte[] paramArrayOfByte)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    Object localObject;
-    long l;
-    String str1;
-    String str2;
-    if (paramArrayOfByte != null)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      bool1 = bool2;
-      if (paramArrayOfByte.length > 0)
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      Object localObject = new RES_ITEM_COVER();
+      ((RES_ITEM_COVER)localObject).readFrom(paramArrayOfByte);
+      paramArrayOfByte = ((RES_ITEM_COVER)localObject).strJumpQzone;
+      int i;
+      long l;
+      if ((!TextUtils.isEmpty(paramArrayOfByte)) && (paramArrayOfByte.startsWith("mqzone://arouse/homepage")))
       {
-        paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-        localObject = new RES_ITEM_COVER();
-        ((RES_ITEM_COVER)localObject).readFrom(paramArrayOfByte);
-        localObject = ((RES_ITEM_COVER)localObject).strJumpQzone;
-        paramArrayOfByte = "";
-        l = 0L;
-        if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).startsWith("mqzone://arouse/homepage"))) {
-          break label207;
-        }
-        paramArrayOfByte = Uri.parse((String)localObject);
-        str1 = paramArrayOfByte.getQueryParameter("actiontype");
+        paramArrayOfByte = Uri.parse(paramArrayOfByte);
+        String str1 = paramArrayOfByte.getQueryParameter("actiontype");
         localObject = paramArrayOfByte.getQueryParameter("actionurl");
-        str2 = paramArrayOfByte.getQueryParameter("uin");
+        String str2 = paramArrayOfByte.getQueryParameter("uin");
         paramArrayOfByte = (byte[])localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {}
-      }
-    }
-    label207:
-    for (;;)
-    {
-      try
-      {
-        paramArrayOfByte = URLDecoder.decode((String)localObject, "UTF-8");
-        int i = 0;
-      }
-      catch (UnsupportedEncodingException paramIntent)
-      {
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          try
+          {
+            paramArrayOfByte = URLDecoder.decode((String)localObject, "UTF-8");
+          }
+          catch (UnsupportedEncodingException paramIntent)
+          {
+            QZLog.e("QZoneHelper", "parseAndSetQzoneCoverInfoToIntent", paramIntent);
+            return false;
+          }
+        }
         try
         {
           i = Integer.parseInt(str1);
           l = Long.parseLong(str2);
-          bool1 = bool2;
-          if (i == 35)
-          {
-            paramIntent.putExtra("qqid", l);
-            paramIntent.putExtra("famous_space_webview_url", paramArrayOfByte);
-            paramIntent.putExtra("click_time", System.currentTimeMillis());
-            bool1 = true;
-          }
-          return bool1;
         }
         catch (NumberFormatException paramIntent)
         {
           QZLog.e("QZoneHelper", "parseAndSetQzoneCoverInfoToIntent", paramIntent);
           return false;
         }
-        paramIntent = paramIntent;
-        QZLog.e("QZoneHelper", "parseAndSetQzoneCoverInfoToIntent", paramIntent);
-        return false;
       }
-    }
-  }
-  
-  public static Bundle parseUrlParams(String paramString)
-  {
-    int i = 0;
-    Bundle localBundle = new Bundle();
-    if (paramString == null) {
-      return localBundle;
-    }
-    int j = paramString.indexOf('?');
-    if ((j < 0) || (j + 1 >= paramString.length())) {
-      return localBundle;
-    }
-    paramString = paramString.substring(j + 1);
-    if (TextUtils.isEmpty(paramString)) {
-      return localBundle;
-    }
-    paramString = paramString.split("&");
-    for (;;)
-    {
-      if ((paramString != null) && (i < paramString.length))
+      else
       {
-        String[] arrayOfString = paramString[i].split("=");
-        if ((arrayOfString != null) && (arrayOfString.length == 2)) {}
-        try
-        {
-          localBundle.putString(arrayOfString[0], URLDecoder.decode(arrayOfString[1], "UTF-8"));
-          i += 1;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-          }
-        }
+        paramArrayOfByte = "";
+        l = 0L;
+        i = 0;
+      }
+      if (i == 35)
+      {
+        paramIntent.putExtra("qqid", l);
+        paramIntent.putExtra("famous_space_webview_url", paramArrayOfByte);
+        paramIntent.putExtra("click_time", System.currentTimeMillis());
+        return true;
       }
     }
-    return localBundle;
+    return false;
   }
   
-  public static void preloadInFriendProfileCard(QQAppInterface paramQQAppInterface, PreloadProcHitPluginSession paramPreloadProcHitPluginSession)
+  public static void preloadInFriendProfileCard(AppRuntime paramAppRuntime, PreloadProcHitPluginSession paramPreloadProcHitPluginSession)
   {
-    ThreadManager.post(new QZoneHelper.10(paramQQAppInterface, paramPreloadProcHitPluginSession), 8, null, false);
+    ThreadManager.post(new QZoneHelper.8(paramAppRuntime, paramPreloadProcHitPluginSession), 8, null, false);
   }
   
   public static void preloadQZoneForHaboReport(AppRuntime paramAppRuntime, String paramString1, int paramInt1, String paramString2, int paramInt2, long paramLong)
@@ -3686,235 +3620,153 @@ public class QZoneHelper
     AccManager.createStatistic(paramString1, paramInt1, paramString2, paramInt2);
   }
   
-  public static void preloadQunAlbum(QQAppInterface paramQQAppInterface, String paramString)
+  public static void preloadQunAlbum(AppRuntime paramAppRuntime, String paramString)
   {
-    if (paramQQAppInterface == null) {}
-    while (isQzoneProcessExist()) {
+    if (paramAppRuntime == null) {
       return;
     }
-    Intent localIntent = new Intent(paramQQAppInterface.getApp(), QzonePluginProxyService.class);
-    localIntent.putExtra("useSkinEngine", 1);
-    localIntent.setAction("com.qzone.intent.action.PRELOAD_QUN_ALBUM_FEEDS");
-    localIntent.putExtra("qunid", paramString);
-    localIntent.putExtra("qzone_uin", paramQQAppInterface.getCurrentAccountUin());
-    paramString = new IPluginManager.PluginParams(0);
-    paramString.b = QzonePluginProxyActivity.getQZonePluginName();
-    paramString.e = "QQ空间";
-    paramString.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    paramString.f = "com.qzone.preview.service.PictureService";
-    paramString.jdField_a_of_type_AndroidContentIntent = localIntent;
-    if (QLog.isColorLevel()) {
-      QLog.d("QPlugin", 2, "Start QZone QunAlbum Preload");
-    }
-    IPluginManager.c(paramQQAppInterface.getApp(), paramString);
-  }
-  
-  public static void preloadQzone(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    preloadQzone(paramQQAppInterface, paramString, null, false);
-  }
-  
-  public static void preloadQzone(QQAppInterface paramQQAppInterface, String paramString, PreloadProcHitPluginSession paramPreloadProcHitPluginSession, boolean paramBoolean)
-  {
-    if ((paramQQAppInterface == null) || (checkQzoneEntranceProtectEnable())) {
+    if (isQzoneProcessExist()) {
       return;
     }
-    ((IMiniAppService)QRoute.api(IMiniAppService.class)).checkPreloadMiniApp();
-    if ("MainAssistObserver".equals(paramString))
-    {
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005E9C", "0X8005E9C", 1, 0, "", "", "", "");
-      StatisticHitRateCollector.a().a("actQZLoadHitRateRed", true);
-    }
-    for (;;)
-    {
-      ThreadManager.postImmediately(new QZoneHelper.9(paramQQAppInterface), null, false);
-      try
-      {
-        localObject = BaseApplicationImpl.getApplication().getSharedPreferences("CrashControl_com.tencent.mobileqq:qzone", 4);
-        if ((localObject != null) && (!((SharedPreferences)localObject).getBoolean("allowpreload", true)))
-        {
-          long l1 = ((SharedPreferences)localObject).getLong("starttime", 0L);
-          int i = ((SharedPreferences)localObject).getInt("controlwindow", 86400);
-          long l2 = System.currentTimeMillis();
-          if ((l1 > 0L) && (i > 0) && (l2 > l1) && (l2 - l1 > i * 1000)) {
-            ((SharedPreferences)localObject).edit().putBoolean("allowpreload", true).commit();
-          }
-        }
-        else
-        {
-          label213:
-          QLog.d("qzone_launch", 1, "preloadQzone from: " + paramString);
-          localObject = new Intent(paramQQAppInterface.getApp(), QzonePluginProxyService.class);
-        }
-      }
-      catch (Exception localException)
-      {
-        try
-        {
-          Object localObject;
-          ((Intent)localObject).putExtra("useSkinEngine", 1);
-          if ("FriendProfileCardActivity".equals(paramString)) {
-            ((Intent)localObject).setAction("com.qzone.intent.action.PRELOAD_USER_HOME");
-          }
-          for (;;)
-          {
-            ((Intent)localObject).putExtra("cpuNum", DeviceInfoUtil.b());
-            ((Intent)localObject).putExtra("key_can_set_layoutInfalter_factory", enableLayoutInflaterFactory());
-            ((Intent)localObject).putExtra("key_is_keep_alive", paramBoolean);
-            if (!DeviceOptSwitch.c) {
-              break label508;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("Perf", 2, "disable preload qzone process");
-            }
-            DeviceOptSwitch.b = System.currentTimeMillis();
-            return;
-            if ("Leba".equals(paramString))
-            {
-              ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005E9C", "0X8005E9C", 1, 0, "", "", "", "");
-              StatisticHitRateCollector.a().a("actQZLoadHitRateLeba", true);
-              break;
-            }
-            if (!"FriendProfileCardActivity".equals(paramString)) {
-              break;
-            }
-            StatisticHitRateCollector.a().a("actQZLoadHitRateProfile", true);
-            break;
-            QLog.d("QZoneHelper", 1, "preloadQzone is not allowed as crash frequently.");
-            StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramQQAppInterface.getCurrentAccountUin(), "actNoPreloadQzone", true, 0L, 0L, null, "");
-            return;
-            localException = localException;
-            localException.printStackTrace();
-            break label213;
-            if (!"QCircle".equals(paramString)) {
-              break label497;
-            }
-            localException.setAction("com.qzone.intent.action.PRELOAD_QCIRCLE_PUBLISH");
-          }
-        }
-        catch (Exception paramString)
-        {
-          for (;;)
-          {
-            paramString.printStackTrace();
-            continue;
-            label497:
-            localException.setAction("com.qzone.intent.action.PRELOAD_FRIEND_FEEDS");
-          }
-          label508:
-          paramString = new IPluginManager.PluginParams(0);
-          paramString.b = QzonePluginProxyActivity.getQZonePluginName();
-          paramString.e = "QQ空间";
-          paramString.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-          paramString.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = paramPreloadProcHitPluginSession;
-          paramString.f = "com.qzone.preview.service.PictureService";
-          paramString.jdField_a_of_type_AndroidContentIntent = localException;
-          paramString.jdField_a_of_type_Boolean = true;
-          IPluginManager.c(paramQQAppInterface.getApp(), paramString);
-        }
-      }
-    }
-  }
-  
-  public static void preloadQzone(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
-  {
-    preloadQzone(paramQQAppInterface, paramString, null, paramBoolean);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).preloadQunAlbum(paramAppRuntime, paramString);
   }
   
   public static void preloadQzone(BaseApplication paramBaseApplication, String paramString1, String paramString2)
   {
-    if ((paramBaseApplication == null) || (checkQzoneEntranceProtectEnable())) {
-      return;
-    }
-    QLog.d("qzone_launch", 1, "preloadQzone from: " + paramString2);
-    Intent localIntent = new Intent(paramBaseApplication, QzonePluginProxyService.class);
-    try
+    if (paramBaseApplication != null)
     {
-      localIntent.putExtra("useSkinEngine", 1);
-      if ("album_select".equals(paramString2)) {
-        localIntent.setAction("com.qzone.intent.action.PRELOAD_NOTHING");
+      if (checkQzoneEntranceProtectEnable()) {
+        return;
       }
-      for (;;)
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("preloadQzone from: ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("qzone_launch", 1, ((StringBuilder)localObject).toString());
+      localObject = new Intent(paramBaseApplication, QzonePluginProxyService.class);
+      try
       {
-        localIntent.putExtra("cpuNum", DeviceInfoUtil.b());
-        localIntent.putExtra("key_can_set_layoutInfalter_factory", enableLayoutInflaterFactory());
-        if (!DeviceOptSwitch.c) {
-          break label164;
+        ((Intent)localObject).putExtra("useSkinEngine", 1);
+        if ("album_select".equals(paramString2)) {
+          ((Intent)localObject).setAction("com.qzone.intent.action.PRELOAD_NOTHING");
+        } else if ("FriendProfileCardActivity".equals(paramString2)) {
+          ((Intent)localObject).setAction("com.qzone.intent.action.PRELOAD_USER_HOME");
+        } else {
+          ((Intent)localObject).setAction("com.qzone.intent.action.PRELOAD_FRIEND_FEEDS");
         }
+        ((Intent)localObject).putExtra("cpuNum", DeviceInfoUtil.b());
+        ((Intent)localObject).putExtra("key_can_set_layoutInfalter_factory", enableLayoutInflaterFactory());
+      }
+      catch (Exception paramString2)
+      {
+        paramString2.printStackTrace();
+      }
+      if (DeviceOptSwitch.c)
+      {
         if (QLog.isColorLevel()) {
           QLog.d("Perf", 2, "disable preload qzone process");
         }
         DeviceOptSwitch.b = System.currentTimeMillis();
         return;
-        if (!"FriendProfileCardActivity".equals(paramString2)) {
-          break;
-        }
-        localIntent.setAction("com.qzone.intent.action.PRELOAD_USER_HOME");
       }
+      ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).launchPluginService(paramBaseApplication, null, paramString1, (Intent)localObject);
     }
-    catch (Exception paramString2)
+  }
+  
+  public static void preloadQzone(AppRuntime paramAppRuntime, String paramString)
+  {
+    preloadQzone(paramAppRuntime, paramString, null, false);
+  }
+  
+  public static void preloadQzone(AppRuntime paramAppRuntime, String paramString, PreloadProcHitPluginSession paramPreloadProcHitPluginSession, boolean paramBoolean)
+  {
+    if (paramAppRuntime != null)
     {
-      for (;;)
-      {
-        paramString2.printStackTrace();
-        continue;
-        localIntent.setAction("com.qzone.intent.action.PRELOAD_FRIEND_FEEDS");
+      if (checkQzoneEntranceProtectEnable()) {
+        return;
       }
-      label164:
-      paramString2 = new IPluginManager.PluginParams(0);
-      paramString2.b = QzonePluginProxyActivity.getQZonePluginName();
-      paramString2.e = "QQ空间";
-      paramString2.jdField_a_of_type_JavaLangString = paramString1;
-      paramString2.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = null;
-      paramString2.f = "com.qzone.preview.service.PictureService";
-      paramString2.jdField_a_of_type_AndroidContentIntent = localIntent;
-      IPluginManager.c(paramBaseApplication, paramString2);
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).checkPreloadMiniApp();
+      if ("MainAssistObserver".equals(paramString))
+      {
+        ReportController.b(paramAppRuntime, "CliOper", "", "", "0X8005E9C", "0X8005E9C", 1, 0, "", "", "", "");
+        StatisticHitRateCollector.a().a("actQZLoadHitRateRed", true);
+      }
+      else if ("Leba".equals(paramString))
+      {
+        ReportController.b(paramAppRuntime, "CliOper", "", "", "0X8005E9C", "0X8005E9C", 1, 0, "", "", "", "");
+        StatisticHitRateCollector.a().a("actQZLoadHitRateLeba", true);
+      }
+      else if ("FriendProfileCardActivity".equals(paramString))
+      {
+        StatisticHitRateCollector.a().a("actQZLoadHitRateProfile", true);
+      }
+      ThreadManager.postImmediately(new QZoneHelper.7(), null, false);
+      try
+      {
+        SharedPreferences localSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("CrashControl_com.tencent.mobileqq:qzone", 4);
+        if ((localSharedPreferences != null) && (!localSharedPreferences.getBoolean("allowpreload", true)))
+        {
+          long l1 = localSharedPreferences.getLong("starttime", 0L);
+          int i = localSharedPreferences.getInt("controlwindow", 86400);
+          long l2 = System.currentTimeMillis();
+          if ((l1 > 0L) && (i > 0) && (l2 > l1) && (l2 - l1 > i * 1000))
+          {
+            localSharedPreferences.edit().putBoolean("allowpreload", true).commit();
+          }
+          else
+          {
+            QLog.d("QZoneHelper", 1, "preloadQzone is not allowed as crash frequently.");
+            StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramAppRuntime.getCurrentAccountUin(), "actNoPreloadQzone", true, 0L, 0L, null, "");
+            return;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("preloadQzone from: ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("qzone_launch", 1, ((StringBuilder)localObject).toString());
+        localObject = new Intent(paramAppRuntime.getApp(), QzonePluginProxyService.class);
+        try
+        {
+          ((Intent)localObject).putExtra("useSkinEngine", 1);
+          if ("FriendProfileCardActivity".equals(paramString)) {
+            ((Intent)localObject).setAction("com.qzone.intent.action.PRELOAD_USER_HOME");
+          } else if ("QCircle".equals(paramString)) {
+            ((Intent)localObject).setAction("com.qzone.intent.action.PRELOAD_QCIRCLE_PUBLISH");
+          } else {
+            ((Intent)localObject).setAction("com.qzone.intent.action.PRELOAD_FRIEND_FEEDS");
+          }
+          ((Intent)localObject).putExtra("cpuNum", DeviceInfoUtil.b());
+          ((Intent)localObject).putExtra("key_can_set_layoutInfalter_factory", enableLayoutInflaterFactory());
+          ((Intent)localObject).putExtra("key_is_keep_alive", paramBoolean);
+        }
+        catch (Exception paramString)
+        {
+          paramString.printStackTrace();
+        }
+        if (DeviceOptSwitch.c)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Perf", 2, "disable preload qzone process");
+          }
+          DeviceOptSwitch.b = System.currentTimeMillis();
+          return;
+        }
+        ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).launchPluginService(paramAppRuntime.getApp(), paramPreloadProcHitPluginSession, paramAppRuntime.getCurrentAccountUin(), (Intent)localObject);
+      }
     }
+  }
+  
+  public static void preloadQzone(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
+  {
+    preloadQzone(paramAppRuntime, paramString, null, paramBoolean);
   }
   
   public static void prepareForQQPublicAccountPublishPage()
   {
-    ThreadManager.post(new QZoneHelper.12(), 5, null, false);
-  }
-  
-  private static void publishMood(QQAppInterface paramQQAppInterface, Activity paramActivity, PublishMoodInfo paramPublishMoodInfo, Intent paramIntent, int paramInt, boolean paramBoolean)
-  {
-    if ((paramActivity == null) || (paramPublishMoodInfo == null))
-    {
-      QLog.i("QZoneHelper", 2, "handle moodInfo is null");
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("summary", paramPublishMoodInfo.mText);
-    localBundle.putBoolean("key_need_save_draft", false);
-    localBundle.putString("shareSource", paramIntent.getStringExtra("source"));
-    localBundle.putStringArrayList("images", paramPublishMoodInfo.mAllImageAndVideo);
-    localBundle.putSerializable("PeakConstants.selectedMediaInfoHashMap", paramPublishMoodInfo.mMediaInfoHashMap);
-    localBundle.putString("qq_camera_top_title", paramIntent.getStringExtra("qq_camera_top_title"));
-    localBundle.putString("qq_camera_scheme", paramIntent.getStringExtra("qq_camera_scheme"));
-    if (paramBoolean) {
-      localBundle.putInt("key_max_photo_count", 1);
-    }
-    QZoneShareManager.publishToQzone(paramQQAppInterface, paramActivity, localBundle, null, paramInt);
-  }
-  
-  private static void publishMood(QQAppInterface paramQQAppInterface, Activity paramActivity, PublishMoodInfo paramPublishMoodInfo, String paramString, int paramInt, boolean paramBoolean)
-  {
-    if ((paramActivity == null) || (paramPublishMoodInfo == null))
-    {
-      QLog.i("QZoneHelper", 2, "handle moodInfo is null");
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("summary", paramPublishMoodInfo.mText);
-    localBundle.putBoolean("key_need_save_draft", false);
-    localBundle.putString("shareSource", paramString);
-    localBundle.putStringArrayList("images", paramPublishMoodInfo.mAllImageAndVideo);
-    localBundle.putSerializable("PeakConstants.selectedMediaInfoHashMap", paramPublishMoodInfo.mMediaInfoHashMap);
-    if (paramBoolean) {
-      localBundle.putInt("key_max_photo_count", 1);
-    }
-    QZoneShareManager.publishToQzone(paramQQAppInterface, paramActivity, localBundle, null, paramInt);
+    ThreadManager.post(new QZoneHelper.10(), 5, null, false);
   }
   
   public static void publishPictureMoodSilently(String paramString1, ArrayList<String> paramArrayList1, int paramInt1, LbsDataV2.PoiInfo paramPoiInfo, String paramString2, String paramString3, ArrayList<String> paramArrayList2, HashMap<String, String> paramHashMap1, HashMap<String, String> paramHashMap2, String paramString4, int paramInt2)
@@ -3923,27 +3775,24 @@ public class QZoneHelper
     paramString2.putString("param.content", paramString1);
     paramString2.putStringArrayList("param.images", paramArrayList1);
     paramString2.putSerializable("param.extendInfo", paramHashMap2);
-    if (!TextUtils.isEmpty(paramString3)) {}
-    try
-    {
-      paramString2.putInt("param.priv", Integer.parseInt(paramString3));
-      paramString2.putStringArrayList("param.privList", paramArrayList2);
-      paramString2.putParcelable("param.poiInfo", paramPoiInfo);
-      paramString2.putInt("param.syncWeibo", paramInt1);
-      paramString2.putSerializable("param.storeExtendInfo", paramHashMap1);
-      paramString2.putString("param.source", paramString4);
-      paramString2.putInt("param.subtype", paramInt2);
-      RemoteHandleManager.getInstance().sendData("cmd.publishMixMood", paramString2, false);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
+    if (!TextUtils.isEmpty(paramString3)) {
+      try
+      {
+        paramString2.putInt("param.priv", Integer.parseInt(paramString3));
+      }
+      catch (Exception paramString1)
       {
         QZLog.e("QZoneHelper", "publishPictureMoodSilently... exception:", paramString1);
         paramString2.putInt("param.priv", 1);
       }
     }
+    paramString2.putStringArrayList("param.privList", paramArrayList2);
+    paramString2.putParcelable("param.poiInfo", paramPoiInfo);
+    paramString2.putInt("param.syncWeibo", paramInt1);
+    paramString2.putSerializable("param.storeExtendInfo", paramHashMap1);
+    paramString2.putString("param.source", paramString4);
+    paramString2.putInt("param.subtype", paramInt2);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).sendRemoteHandleManagerData("cmd.publishMixMood", paramString2, false);
   }
   
   public static void publishPictureMoodSilently(String paramString1, ArrayList<String> paramArrayList1, int paramInt1, ArrayList<String> paramArrayList2, int paramInt2, int paramInt3, String paramString2, boolean paramBoolean, int paramInt4, String paramString3)
@@ -3965,24 +3814,24 @@ public class QZoneHelper
     localBundle.putString("extra_key_super_font_info", paramString3);
     localBundle.putBoolean("set_timer_delete", paramBoolean1);
     localBundle.putBoolean("param.isSyncToQQStory", paramBoolean2);
-    RemoteHandleManager.getInstance().sendData("cmd.publishMoodForAll", localBundle, false);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).sendRemoteHandleManagerData("cmd.publishMoodForAll", localBundle, false);
   }
   
   public static void publishPictureMoodSilently(String paramString1, ArrayList<String> paramArrayList, String paramString2)
   {
     String str;
-    if ("source_from_quick_shoot".equals(paramString2)) {
+    if ("source_from_quick_shoot".equals(paramString2))
+    {
       str = "value.sourceFromQqQuickShoot";
     }
-    for (;;)
+    else
     {
-      publishPictureMoodSilently(paramString1, paramArrayList, str, 2);
-      return;
       str = paramString2;
       if ("forward_source_to_qzone".equals(paramString2)) {
         str = "value.personalSign";
       }
     }
+    publishPictureMoodSilently(paramString1, paramArrayList, str, 2);
   }
   
   public static void publishPictureMoodSilently(String paramString1, ArrayList<String> paramArrayList, String paramString2, int paramInt)
@@ -3992,7 +3841,7 @@ public class QZoneHelper
     localBundle.putStringArrayList("param.images", paramArrayList);
     localBundle.putString("param.source", paramString2);
     localBundle.putInt("param.subtype", paramInt);
-    RemoteHandleManager.getInstance().sendData("cmd.publishMood", localBundle, false);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).sendRemoteHandleManagerData("cmd.publishMood", localBundle, false);
   }
   
   public static void putTimeRecord(Intent paramIntent)
@@ -4002,83 +3851,132 @@ public class QZoneHelper
   
   public static void reportIfIsFromQZone(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (!paramString.contains("mobile.qzone.qq.com")) {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    QZoneLoginReportHelper.reportLoginFromMQQSearchH5();
+    if (paramString.contains("mobile.qzone.qq.com")) {
+      QZoneLoginReportHelper.reportLoginFromMQQSearchH5();
+    }
+  }
+  
+  public static void restartQzone()
+  {
+    killQZoneProcess();
+    preloadQzone(MobileQQ.sMobileQQ.peekAppRuntime(), "QZoneDistributedAppCtrl");
   }
   
   public static void resumeQZoneFloatObjectView(Context paramContext, Object paramObject)
   {
-    if ((paramContext == null) || (paramObject == null)) {
-      return;
-    }
-    try
+    if (paramContext != null)
     {
-      Class localClass = Class.forName("com.qzone.personalize.floatobject.ui.FloatItemView");
-      paramContext = localClass;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
+      if (paramObject == null) {
+        return;
+      }
       for (;;)
       {
-        ClassLoader localClassLoader = QzonePluginProxyActivity.getQZonePluginClassLoader(paramContext);
-        paramContext = localClassLoader.loadClass("com.qzone.personalize.floatobject.ui.FloatItemView");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+        try
+        {
+          try
+          {
+            localObject = Class.forName("com.qzone.personalize.floatobject.ui.FloatItemView");
+            paramContext = (Context)localObject;
+          }
+          catch (Exception paramContext) {}
+        }
+        catch (ClassNotFoundException localClassNotFoundException)
+        {
+          Object localObject;
+          continue;
+        }
+        try
+        {
+          localObject = ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).getQZonePluginClassLoader(paramContext);
+          paramContext = ((ClassLoader)localObject).loadClass("com.qzone.personalize.floatobject.ui.FloatItemView");
+          BasicClassTypeUtil.setClassLoader(true, (ClassLoader)localObject);
+          if (paramContext == null)
+          {
+            QLog.e("QZLog", 1, "*createQZoneFloatObjectView load class fail");
+            return;
+          }
+          paramContext.getMethod("start", new Class[0]).invoke(paramObject, new Object[0]);
+          return;
+        }
+        catch (ClassNotFoundException paramContext)
+        {
+          paramContext.printStackTrace();
+        }
       }
-    }
-    catch (Exception paramContext)
-    {
       paramContext.printStackTrace();
       return;
     }
-    if (paramContext == null) {
-      try
-      {
-        QLog.e("QZLog", 1, "*createQZoneFloatObjectView load class fail");
-        return;
-      }
-      catch (ClassNotFoundException paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-    }
-    paramContext.getMethod("start", new Class[0]).invoke(paramObject, new Object[0]);
   }
   
   public static void saveQzoneAlbumInfo(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString3)) || (paramString2 == null)) {
-      return;
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      if (paramString2 == null) {
+        return;
+      }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append("_");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append("_album_id");
+      localObject1 = MD5.a(((StringBuilder)localObject1).toString());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(paramString2);
+      ((StringBuilder)localObject2).append("_album_title");
+      localObject2 = MD5.a(((StringBuilder)localObject2).toString());
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(paramString1);
+      ((StringBuilder)localObject3).append("_");
+      ((StringBuilder)localObject3).append(paramString2);
+      ((StringBuilder)localObject3).append("_record_time");
+      localObject3 = MD5.a(((StringBuilder)localObject3).toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("_exist");
+      paramString1 = MD5.a(localStringBuilder.toString());
+      LocalMultiProcConfig.putString((String)localObject1, paramString3);
+      LocalMultiProcConfig.putString((String)localObject2, paramString4);
+      LocalMultiProcConfig.putLong((String)localObject3, System.currentTimeMillis());
+      LocalMultiProcConfig.putBool(paramString1, paramBoolean);
+      paramString1 = new StringBuilder();
+      paramString1.append("saveQzoneAlbumInfo: albumId=");
+      paramString1.append(paramString3);
+      paramString1.append(" albumTitle=");
+      paramString1.append(paramString4);
+      paramString1.append(" isAlbumExist=");
+      paramString1.append(paramBoolean);
+      QZLog.i("QZoneHelper", 1, paramString1.toString());
     }
-    String str1 = MD5.toMD5(paramString1 + "_" + paramString2 + "_album_id");
-    String str2 = MD5.toMD5(paramString1 + "_" + paramString2 + "_album_title");
-    String str3 = MD5.toMD5(paramString1 + "_" + paramString2 + "_record_time");
-    paramString1 = MD5.toMD5(paramString1 + "_" + paramString2 + "_exist");
-    LocalMultiProcConfig.putString(str1, paramString3);
-    LocalMultiProcConfig.putString(str2, paramString4);
-    LocalMultiProcConfig.putLong(str3, System.currentTimeMillis());
-    LocalMultiProcConfig.putBool(paramString1, paramBoolean);
-    QZLog.i("QZoneHelper", 1, "saveQzoneAlbumInfo: albumId=" + paramString3 + " albumTitle=" + paramString4 + " isAlbumExist=" + paramBoolean);
   }
   
   public static void saveQzonePermission(boolean paramBoolean, long paramLong)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      LocalMultiProcConfig.putInt4Uin("isQzonePublic", i, paramLong);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static void saveSelectedAlbumInfo(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    String str = MD5.toMD5(paramString1 + "_" + paramString2 + "_album_id");
-    paramString1 = MD5.toMD5(paramString1 + "_" + paramString2 + "_album_title");
-    LocalMultiProcConfig.putString(str, paramString3);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("_album_id");
+    localObject = MD5.a(((StringBuilder)localObject).toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("_album_title");
+    paramString1 = MD5.a(localStringBuilder.toString());
+    LocalMultiProcConfig.putString((String)localObject, paramString3);
     LocalMultiProcConfig.putString(paramString1, paramString4);
   }
   
@@ -4099,12 +3997,12 @@ public class QZoneHelper
   
   public static void showQzoneVipOriginalVideoDialog(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener)
   {
-    DialogUtil.a(paramActivity, 230).setMessage(2131717987).setPositiveButton(2131717515, new QZoneHelper.1()).setNegativeButton(2131719344, paramOnClickListener).show();
+    DialogUtil.a(paramActivity, 230).setMessage(2131717646).setPositiveButton(2131717174, new QZoneHelper.1()).setNegativeButton(2131719062, paramOnClickListener).show();
   }
   
   public static void showQzoneVipOriginalVideoDialogForUpload(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener)
   {
-    DialogUtil.a(paramActivity, 230).setMessage(2131717988).setPositiveButton(2131719344, paramOnClickListener).setNegativeButton(2131717515, new QZoneHelper.2()).show();
+    DialogUtil.a(paramActivity, 230).setMessage(2131717647).setPositiveButton(2131719062, paramOnClickListener).setNegativeButton(2131717174, new QZoneHelper.2()).show();
   }
   
   public static void startTranslucentBrowserActivityForResult(Context paramContext, String paramString1, int paramInt, Bundle paramBundle, String paramString2)
@@ -4114,80 +4012,53 @@ public class QZoneHelper
   
   public static void startTranslucentBrowserActivityForResult(Context paramContext, String paramString1, int paramInt, Bundle paramBundle, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      ToastUtil.a().a(2131691162);
-      QLog.w("QZoneHelper", 1, "browse url fail:" + paramString1);
-    }
-    Intent localIntent;
-    do
-    {
-      return;
-      if (TextUtils.isEmpty(paramString2)) {}
-      for (paramString2 = null;; paramString2 = paramString2.getBytes())
-      {
-        localIntent = new Intent(BaseApplicationImpl.getContext(), QQTranslucentBrowserActivity.class);
-        localIntent.putExtra("post_data", paramString2);
-        localIntent.putExtra("url", paramString1);
-        localIntent.putExtra("fromQZone", true);
-        localIntent.putExtra("injectrecommend", true);
-        localIntent.putExtra("isTransparentTitle", true);
-        localIntent.putExtra("hide_left_button", paramBoolean1);
-        localIntent.setData(Uri.parse(paramString1));
-        if (!paramBoolean2) {
-          localIntent.putExtra("finish_animation_none", true);
-        }
-        if (paramBundle != null) {
-          localIntent.putExtras(paramBundle);
-        }
-        if (!(paramContext instanceof Activity)) {
-          break;
-        }
-        ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
-        return;
-      }
-    } while (localIntent == null);
-    localIntent.setFlags(268435456);
-    BaseApplicationImpl.getContext().startActivity(localIntent);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).startTranslucentBrowserActivityForResult(paramContext, paramString1, paramInt, paramBundle, paramString2, paramBoolean1, paramBoolean2);
   }
   
   public static void stopQZoneFloatObjectView(Context paramContext, Object paramObject)
   {
-    if ((paramContext == null) || (paramObject == null)) {
-      return;
-    }
-    try
+    if (paramContext != null)
     {
-      Class localClass = Class.forName("com.qzone.personalize.floatobject.ui.FloatItemView");
-      paramContext = localClass;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
+      if (paramObject == null) {
+        return;
+      }
       for (;;)
       {
-        ClassLoader localClassLoader = QzonePluginProxyActivity.getQZonePluginClassLoader(paramContext);
-        paramContext = localClassLoader.loadClass("com.qzone.personalize.floatobject.ui.FloatItemView");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+        try
+        {
+          try
+          {
+            localObject = Class.forName("com.qzone.personalize.floatobject.ui.FloatItemView");
+            paramContext = (Context)localObject;
+          }
+          catch (Exception paramContext) {}
+        }
+        catch (ClassNotFoundException localClassNotFoundException)
+        {
+          Object localObject;
+          continue;
+        }
+        try
+        {
+          localObject = ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).getQZonePluginClassLoader(paramContext);
+          paramContext = ((ClassLoader)localObject).loadClass("com.qzone.personalize.floatobject.ui.FloatItemView");
+          BasicClassTypeUtil.setClassLoader(true, (ClassLoader)localObject);
+          if (paramContext == null)
+          {
+            QLog.e("QZLog", 1, "*createQZoneFloatObjectView load class fail");
+            return;
+          }
+          paramContext.getMethod("stop", new Class[0]).invoke(paramObject, new Object[0]);
+          return;
+        }
+        catch (ClassNotFoundException paramContext)
+        {
+          paramContext.printStackTrace();
+        }
       }
-    }
-    catch (Exception paramContext)
-    {
       paramContext.printStackTrace();
       return;
     }
-    if (paramContext == null) {
-      try
-      {
-        QLog.e("QZLog", 1, "*createQZoneFloatObjectView load class fail");
-        return;
-      }
-      catch (ClassNotFoundException paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-    }
-    paramContext.getMethod("stop", new Class[0]).invoke(paramObject, new Object[0]);
   }
   
   public static void stopQzonePublishQueueService(Context paramContext)
@@ -4198,36 +4069,46 @@ public class QZoneHelper
     paramContext.stopService(new Intent(paramContext, QzonePluginPublishQueueProxyService.class));
   }
   
-  public static void updateAlbumShortCut(@NonNull QQAppInterface paramQQAppInterface, String paramString1, String paramString2, Bitmap paramBitmap, long paramLong)
+  public static void tryDelMediaStore(String paramString)
   {
-    ThreadManager.post(new QZoneHelper.5(paramQQAppInterface, paramString1, paramLong, paramString2, paramBitmap), 2, null, true);
-  }
-  
-  private static void updateShortcut(Intent paramIntent, @NonNull QQAppInterface paramQQAppInterface, String paramString1, String paramString2, Bitmap paramBitmap)
-  {
-    if (!QQUtils.a(paramQQAppInterface.getApp(), new String[] { paramString1 })) {
+    try
+    {
+      BaseApplication.getContext().getContentResolver().delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "_data=?", new String[] { paramString });
       return;
     }
-    deleteShortcut(paramIntent, paramQQAppInterface, paramString2, paramBitmap);
+    catch (Exception paramString) {}
+  }
+  
+  public static void updateAlbumShortCut(@NonNull AppRuntime paramAppRuntime, String paramString1, String paramString2, Bitmap paramBitmap, long paramLong)
+  {
+    ThreadManager.post(new QZoneHelper.5(paramAppRuntime, paramString1, paramLong, paramString2, paramBitmap), 2, null, true);
+  }
+  
+  private static void updateShortcut(Intent paramIntent, @NonNull AppRuntime paramAppRuntime, String paramString1, String paramString2, Bitmap paramBitmap)
+  {
+    if (!ShortcutUtils.a(paramAppRuntime.getApp(), new String[] { paramString1 })) {
+      return;
+    }
+    deleteShortcut(paramIntent, paramAppRuntime, paramString2, paramBitmap);
     Thread.sleep(1000L);
-    QQUtils.a(paramQQAppInterface, paramIntent, paramString2, paramBitmap);
+    ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).createShortcut(paramAppRuntime, paramIntent, paramString2, paramBitmap);
     Thread.sleep(1000L);
   }
   
   @RequiresApi(api=26)
-  private static void updateShortcut_O(Bitmap paramBitmap, @NonNull QQAppInterface paramQQAppInterface, String paramString1, long paramLong, String paramString2)
+  private static void updateShortcut_O(Bitmap paramBitmap, @NonNull AppRuntime paramAppRuntime, String paramString1, long paramLong, String paramString2)
   {
-    paramQQAppInterface = paramQQAppInterface.getApp();
-    ShortcutManager localShortcutManager = (ShortcutManager)paramQQAppInterface.getSystemService(ShortcutManager.class);
+    paramAppRuntime = paramAppRuntime.getApp();
+    ShortcutManager localShortcutManager = (ShortcutManager)paramAppRuntime.getSystemService(ShortcutManager.class);
     if (!isShortcutCreated_O(paramString1, localShortcutManager)) {
       return;
     }
-    localShortcutManager.updateShortcuts(Arrays.asList(new ShortcutInfo[] { getAlbumShortcutInfo(paramQQAppInterface, paramBitmap, paramString1, paramLong, paramString2, "update") }));
+    localShortcutManager.updateShortcuts(Arrays.asList(new ShortcutInfo[] { getAlbumShortcutInfo(paramAppRuntime, paramBitmap, paramString1, paramLong, paramString2, "update") }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper
  * JD-Core Version:    0.7.0.1
  */

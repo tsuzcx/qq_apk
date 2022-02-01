@@ -39,36 +39,37 @@ public class VoiceWaveScheduled
   private void b(VoiceWaveScheduled.IVoiceWaveScheduleAdapter paramIVoiceWaveScheduleAdapter)
   {
     this.b.clear();
-    do
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        this.b.addAll(this.jdField_a_of_type_JavaUtilList);
-        ??? = paramIVoiceWaveScheduleAdapter.a(this.b);
-        if (??? == null) {
-          return;
-        }
+      this.b.addAll(this.jdField_a_of_type_JavaUtilList);
+      ??? = paramIVoiceWaveScheduleAdapter.a(this.b);
+      if (??? == null) {
+        return;
       }
       this.c.clear();
       this.d.clear();
       int i = 0;
-      if (i < this.b.size())
+      while (i < this.b.size())
       {
         if (a(((Long)???.get(i)).longValue())) {
           this.c.add(String.valueOf(this.b.get(i)));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
+        } else {
           this.d.add(String.valueOf(this.b.get(i)));
         }
+        i += 1;
       }
       if (this.c.size() > 0) {
         paramIVoiceWaveScheduleAdapter.a(this.c);
       }
-    } while (this.d.size() <= 0);
-    paramIVoiceWaveScheduleAdapter.b(this.d);
+      if (this.d.size() > 0) {
+        paramIVoiceWaveScheduleAdapter.b(this.d);
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramIVoiceWaveScheduleAdapter;
+    }
   }
   
   public void a()
@@ -95,8 +96,9 @@ public class VoiceWaveScheduled
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService.shutdownNow();
+    ScheduledExecutorService localScheduledExecutorService = this.jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService;
+    if (localScheduledExecutorService != null) {
+      localScheduledExecutorService.shutdownNow();
     }
     this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = null;
   }
@@ -120,11 +122,15 @@ public class VoiceWaveScheduled
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.VoiceWaveScheduled
  * JD-Core Version:    0.7.0.1
  */

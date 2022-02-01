@@ -18,28 +18,33 @@ class WTogetherRealNameVideoProcessHelper$RealNameAuthReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    boolean bool;
-    do
+    if (paramIntent == null) {
+      return;
+    }
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (QLog.isColorLevel()) {
-          QLog.i("WTogetherRealNameVideoProcessHelper", 2, "onReceive action[" + paramContext + "]");
-        }
-      } while (!"tencent.video.q2v.avReceivePushMsg".equals(paramContext));
-      bool = paramIntent.getBooleanExtra("real_name_result", false);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive action[");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("]");
+      QLog.i("WTogetherRealNameVideoProcessHelper", 2, localStringBuilder.toString());
+    }
+    if ("tencent.video.q2v.avReceivePushMsg".equals(paramContext))
+    {
+      boolean bool = paramIntent.getBooleanExtra("real_name_result", false);
       paramContext = (WTogetherRealNameVideoProcessHelper)this.a.get();
-    } while (paramContext == null);
-    WTogetherRealNameVideoProcessHelper.a(paramContext, bool);
-    WTogetherRealNameVideoProcessHelper.b(paramContext);
+      if (paramContext != null)
+      {
+        WTogetherRealNameVideoProcessHelper.a(paramContext, bool);
+        WTogetherRealNameVideoProcessHelper.b(paramContext);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.WTogetherRealNameVideoProcessHelper.RealNameAuthReceiver
  * JD-Core Version:    0.7.0.1
  */

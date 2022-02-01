@@ -1,15 +1,13 @@
 package com.tencent.ark.open;
 
-import android.os.Looper;
-
 class ArkAppMgr$2
   implements Runnable
 {
-  ArkAppMgr$2(ArkAppMgr paramArkAppMgr, String paramString1, String paramString2, String paramString3, Object paramObject, ArkAppMgr.IGetAppPathByNameCallback paramIGetAppPathByNameCallback, Looper paramLooper) {}
+  ArkAppMgr$2(ArkAppMgr paramArkAppMgr, ArkAppMgr.GetAppPathByNameTask paramGetAppPathByNameTask) {}
   
   public void run()
   {
-    ArkAppMgr.access$200(this.this$0, this.val$appName, this.val$appView, this.val$minAppVersion, this.val$userdata, this.val$cb, this.val$originLooper);
+    ArkAppMgr.access$000(this.this$0, this.val$task);
   }
 }
 

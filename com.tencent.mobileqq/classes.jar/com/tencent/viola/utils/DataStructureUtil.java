@@ -21,10 +21,14 @@ public class DataStructureUtil
   
   private static int checkNonnegative(int paramInt, String paramString)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException(paramString + " cannot be negative but was: " + paramInt);
+    if (paramInt >= 0) {
+      return paramInt;
     }
-    return paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" cannot be negative but was: ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public static <K, V> HashMap<K, V> newHashMapWithExpectedSize(int paramInt)
@@ -34,7 +38,7 @@ public class DataStructureUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.utils.DataStructureUtil
  * JD-Core Version:    0.7.0.1
  */

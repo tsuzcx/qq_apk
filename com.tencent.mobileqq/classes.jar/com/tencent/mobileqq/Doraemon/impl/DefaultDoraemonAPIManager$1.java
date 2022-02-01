@@ -9,13 +9,14 @@ class DefaultDoraemonAPIManager$1
   
   public void a(MiniAppInfo paramMiniAppInfo, int paramInt)
   {
-    this.a.a = paramMiniAppInfo;
-    DefaultDoraemonAPIManager.a(this.a, paramInt);
+    DefaultDoraemonAPIManager localDefaultDoraemonAPIManager = this.a;
+    localDefaultDoraemonAPIManager.a = paramMiniAppInfo;
+    DefaultDoraemonAPIManager.a(localDefaultDoraemonAPIManager, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAPIManager.1
  * JD-Core Version:    0.7.0.1
  */

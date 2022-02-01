@@ -23,55 +23,43 @@ public class FriendClueConfigProcessor
   @Nullable
   public FriendClueConfig a(QConfItem[] paramArrayOfQConfItem)
   {
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    int i;
-    if (paramArrayOfQConfItem != null)
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      localObject1 = localObject3;
-      if (paramArrayOfQConfItem.length > 0)
+      int j = paramArrayOfQConfItem.length;
+      int i = 0;
+      while (i < j)
       {
-        int j = paramArrayOfQConfItem.length;
-        i = 0;
-        localObject1 = localObject3;
-        if (i < j)
-        {
-          localObject1 = paramArrayOfQConfItem[i];
-          if (localObject1 == null) {
-            break label179;
+        Object localObject = paramArrayOfQConfItem[i];
+        if (localObject != null) {
+          localObject = ((QConfItem)localObject).a;
+        } else {
+          localObject = null;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendClueConfigProcessor", 2, String.format("onParsed content=\n%s", new Object[] { localObject }));
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          try
+          {
+            FriendClueConfig localFriendClueConfig = new FriendClueConfig();
+            localObject = new JSONObject((String)localObject);
+            if (((JSONObject)localObject).has("friendClueSwitch")) {
+              localFriendClueConfig.a = ((JSONObject)localObject).getBoolean("friendClueSwitch");
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("FriendClueConfigProcessor", 2, String.format("onParsed friendClueConfig=%s", new Object[] { localFriendClueConfig }));
+            }
+            return localFriendClueConfig;
+          }
+          catch (Exception localException)
+          {
+            QLog.d("FriendClueConfigProcessor", 1, "onParsed fail.", localException);
           }
         }
+        i += 1;
       }
     }
-    label179:
-    Object localObject2;
-    for (localObject1 = ((QConfItem)localObject1).a;; localObject2 = null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendClueConfigProcessor", 2, String.format("onParsed content=\n%s", new Object[] { localObject1 }));
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        try
-        {
-          FriendClueConfig localFriendClueConfig = new FriendClueConfig();
-          localObject1 = new JSONObject((String)localObject1);
-          if (((JSONObject)localObject1).has("friendClueSwitch")) {
-            localFriendClueConfig.a = ((JSONObject)localObject1).getBoolean("friendClueSwitch");
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendClueConfigProcessor", 2, String.format("onParsed friendClueConfig=%s", new Object[] { localFriendClueConfig }));
-          }
-          localObject1 = localFriendClueConfig;
-          return localObject1;
-        }
-        catch (Exception localException)
-        {
-          QLog.d("FriendClueConfigProcessor", 1, "onParsed fail.", localException);
-        }
-      }
-      i += 1;
-      break;
-    }
+    return null;
   }
   
   public void a(FriendClueConfig paramFriendClueConfig)
@@ -115,7 +103,7 @@ public class FriendClueConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

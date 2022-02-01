@@ -2,9 +2,10 @@ package com.tencent.biz.widgets;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class TabLayout$2
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   TabLayout$2(TabLayout paramTabLayout, Animator.AnimatorListener paramAnimatorListener) {}
   
@@ -18,7 +19,7 @@ class TabLayout$2
   {
     this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
     TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.b();
+    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a();
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
@@ -33,7 +34,7 @@ class TabLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout.2
  * JD-Core Version:    0.7.0.1
  */

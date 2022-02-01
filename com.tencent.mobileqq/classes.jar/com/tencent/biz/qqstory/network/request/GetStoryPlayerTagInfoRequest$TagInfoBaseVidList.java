@@ -20,12 +20,23 @@ public class GetStoryPlayerTagInfoRequest$TagInfoBaseVidList
   
   public String toString()
   {
-    return "TagInfoBaseVidList{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tagInfo=" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase + ", comInfo=" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagCompInfoBase + ", extCfgInfo=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TagInfoBaseVidList{vid='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", tagInfo=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
+    localStringBuilder.append(", comInfo=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagCompInfoBase);
+    localStringBuilder.append(", extCfgInfo=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetStoryPlayerTagInfoRequest.TagInfoBaseVidList
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.av.utils.UITools;
 import com.tencent.mobileqq.profilecard.bussiness.guide.bean.ProfileGuide;
+import com.tencent.mobileqq.profilecard.utils.ProfileUIUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
 import kotlin.Metadata;
@@ -21,7 +21,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/bussiness/guide/view/ProfileGuideView;", "Landroid/widget/FrameLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleRes", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "clickListener", "Lcom/tencent/mobileqq/profilecard/bussiness/guide/view/ProfileGuideClickListener;", "closeButton", "Landroid/widget/ImageView;", "contentView", "Landroid/view/View;", "fillButton", "Landroid/widget/Button;", "fillLayout", "fillMainMsgView", "Landroid/widget/TextView;", "fillSecondaryMsgView", "updateArrow", "updateLayout", "updateMainMsgView", "initViews", "", "onClick", "view", "setClickListener", "setFillGuide", "profileGuide", "Lcom/tencent/mobileqq/profilecard/bussiness/guide/bean/ProfileGuide;", "setUpdateGuide", "updateProfileGuide", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/bussiness/guide/view/ProfileGuideView;", "Landroid/widget/FrameLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleRes", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "clickListener", "Lcom/tencent/mobileqq/profilecard/bussiness/guide/view/ProfileGuideClickListener;", "closeButton", "Landroid/widget/ImageView;", "contentView", "Landroid/view/View;", "fillButton", "Landroid/widget/Button;", "fillLayout", "fillMainMsgView", "Landroid/widget/TextView;", "fillSecondaryMsgView", "updateArrow", "updateLayout", "updateMainMsgView", "initViews", "", "onClick", "view", "setClickListener", "setFillGuide", "profileGuide", "Lcom/tencent/mobileqq/profilecard/bussiness/guide/bean/ProfileGuide;", "setUpdateGuide", "updateProfileGuide", "Companion", "profilecard-impl_release"}, k=1, mv={1, 1, 16})
 public final class ProfileGuideView
   extends FrameLayout
   implements View.OnClickListener
@@ -61,64 +61,65 @@ public final class ProfileGuideView
   
   private final void initViews()
   {
-    LayoutInflater.from(getContext()).inflate(2131561475, (ViewGroup)this, true);
-    Object localObject = findViewById(2131365294);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.content)");
-    this.contentView = ((View)localObject);
-    localObject = findViewById(2131366969);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.fill_layout)");
-    this.fillLayout = ((View)localObject);
-    localObject = findViewById(2131366970);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.fill_main_msg)");
-    this.fillMainMsgView = ((TextView)localObject);
-    localObject = findViewById(2131366971);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.fill_secondary_msg)");
-    this.fillSecondaryMsgView = ((TextView)localObject);
-    localObject = findViewById(2131366967);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.fill_btn)");
-    this.fillButton = ((Button)localObject);
-    localObject = this.fillButton;
-    if (localObject == null) {
+    LayoutInflater.from(getContext()).inflate(2131561319, (ViewGroup)this, true);
+    Object localObject1 = findViewById(2131365169);
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "findViewById(R.id.content)");
+    this.contentView = ((View)localObject1);
+    localObject1 = findViewById(2131366831);
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "findViewById(R.id.fill_layout)");
+    this.fillLayout = ((View)localObject1);
+    localObject1 = findViewById(2131366832);
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "findViewById(R.id.fill_main_msg)");
+    this.fillMainMsgView = ((TextView)localObject1);
+    localObject1 = findViewById(2131366833);
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "findViewById(R.id.fill_secondary_msg)");
+    this.fillSecondaryMsgView = ((TextView)localObject1);
+    localObject1 = findViewById(2131366829);
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "findViewById(R.id.fill_btn)");
+    this.fillButton = ((Button)localObject1);
+    localObject1 = this.fillButton;
+    if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("fillButton");
     }
-    ((Button)localObject).setOnTouchListener((View.OnTouchListener)UITools.a);
-    localObject = this.fillButton;
-    if (localObject == null) {
+    ((Button)localObject1).setOnTouchListener((View.OnTouchListener)ProfileUIUtils.ALPHA_TOUCH_LISTENER);
+    Object localObject2 = this.fillButton;
+    if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("fillButton");
     }
-    ((Button)localObject).setOnClickListener((View.OnClickListener)this);
-    localObject = findViewById(2131380956);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.update_layout)");
-    this.updateLayout = ((View)localObject);
-    localObject = this.updateLayout;
-    if (localObject == null) {
+    localObject1 = (View.OnClickListener)this;
+    ((Button)localObject2).setOnClickListener((View.OnClickListener)localObject1);
+    localObject2 = findViewById(2131380222);
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "findViewById(R.id.update_layout)");
+    this.updateLayout = ((View)localObject2);
+    localObject2 = this.updateLayout;
+    if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("updateLayout");
     }
-    ((View)localObject).setOnTouchListener((View.OnTouchListener)UITools.a);
-    localObject = this.updateLayout;
-    if (localObject == null) {
+    ((View)localObject2).setOnTouchListener((View.OnTouchListener)ProfileUIUtils.ALPHA_TOUCH_LISTENER);
+    localObject2 = this.updateLayout;
+    if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("updateLayout");
     }
-    ((View)localObject).setOnClickListener((View.OnClickListener)this);
-    localObject = findViewById(2131380957);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.update_main_msg)");
-    this.updateMainMsgView = ((TextView)localObject);
-    localObject = findViewById(2131380954);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.update_arrow)");
-    this.updateArrow = ((ImageView)localObject);
-    localObject = findViewById(2131368898);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.img_close)");
-    this.closeButton = ((ImageView)localObject);
-    localObject = this.closeButton;
-    if (localObject == null) {
+    ((View)localObject2).setOnClickListener((View.OnClickListener)localObject1);
+    localObject2 = findViewById(2131380223);
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "findViewById(R.id.update_main_msg)");
+    this.updateMainMsgView = ((TextView)localObject2);
+    localObject2 = findViewById(2131380220);
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "findViewById(R.id.update_arrow)");
+    this.updateArrow = ((ImageView)localObject2);
+    localObject2 = findViewById(2131368624);
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "findViewById(R.id.img_close)");
+    this.closeButton = ((ImageView)localObject2);
+    localObject2 = this.closeButton;
+    if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("closeButton");
     }
-    ((ImageView)localObject).setOnTouchListener((View.OnTouchListener)UITools.a);
-    localObject = this.closeButton;
-    if (localObject == null) {
+    ((ImageView)localObject2).setOnTouchListener((View.OnTouchListener)ProfileUIUtils.ALPHA_TOUCH_LISTENER);
+    localObject2 = this.closeButton;
+    if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("closeButton");
     }
-    ((ImageView)localObject).setOnClickListener((View.OnClickListener)this);
+    ((ImageView)localObject2).setOnClickListener((View.OnClickListener)localObject1);
   }
   
   private final void setFillGuide(ProfileGuide paramProfileGuide)
@@ -127,37 +128,36 @@ public final class ProfileGuideView
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("contentView");
     }
-    ((View)localObject).setBackgroundResource(2130846057);
+    ((View)localObject).setBackgroundResource(2130845932);
     localObject = this.fillLayout;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("fillLayout");
     }
+    int i = 0;
     ((View)localObject).setVisibility(0);
     localObject = this.fillMainMsgView;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("fillMainMsgView");
     }
     ((TextView)localObject).setText((CharSequence)paramProfileGuide.getGuideMainMsg());
-    if (TextUtils.isEmpty((CharSequence)paramProfileGuide.getGuideSecondaryMsg())) {}
-    for (int i = 8;; i = 0)
-    {
-      localObject = this.fillSecondaryMsgView;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("fillSecondaryMsgView");
-      }
-      ((TextView)localObject).setVisibility(i);
-      localObject = this.fillSecondaryMsgView;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("fillSecondaryMsgView");
-      }
-      ((TextView)localObject).setText((CharSequence)paramProfileGuide.getGuideSecondaryMsg());
-      paramProfileGuide = this.updateLayout;
-      if (paramProfileGuide == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("updateLayout");
-      }
-      paramProfileGuide.setVisibility(8);
-      return;
+    if (TextUtils.isEmpty((CharSequence)paramProfileGuide.getGuideSecondaryMsg())) {
+      i = 8;
     }
+    localObject = this.fillSecondaryMsgView;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("fillSecondaryMsgView");
+    }
+    ((TextView)localObject).setVisibility(i);
+    localObject = this.fillSecondaryMsgView;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("fillSecondaryMsgView");
+    }
+    ((TextView)localObject).setText((CharSequence)paramProfileGuide.getGuideSecondaryMsg());
+    paramProfileGuide = this.updateLayout;
+    if (paramProfileGuide == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("updateLayout");
+    }
+    paramProfileGuide.setVisibility(8);
   }
   
   private final void setUpdateGuide(ProfileGuide paramProfileGuide)
@@ -166,7 +166,7 @@ public final class ProfileGuideView
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("contentView");
     }
-    ((View)localObject).setBackgroundResource(2130846058);
+    ((View)localObject).setBackgroundResource(2130845933);
     localObject = this.fillLayout;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("fillLayout");
@@ -186,8 +186,9 @@ public final class ProfileGuideView
   
   public void _$_clearFindViewByIdCache()
   {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    HashMap localHashMap = this._$_findViewCache;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
@@ -209,56 +210,33 @@ public final class ProfileGuideView
   public void onClick(@Nullable View paramView)
   {
     Object localObject;
-    if (paramView != null)
-    {
+    if (paramView != null) {
       localObject = Integer.valueOf(paramView.getId());
-      if (localObject != null) {
-        break label37;
-      }
-      label16:
-      if (localObject != null) {
-        break label64;
-      }
-      label20:
-      if (localObject != null) {
-        break label91;
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       localObject = null;
-      break;
-      label37:
-      if (((Integer)localObject).intValue() != 2131366967) {
-        break label16;
-      }
+    }
+    if ((localObject != null) && (((Integer)localObject).intValue() == 2131366829))
+    {
       localObject = this.clickListener;
-      if (localObject != null)
-      {
+      if (localObject != null) {
         ((ProfileGuideClickListener)localObject).onFillClick();
-        continue;
-        label64:
-        if (((Integer)localObject).intValue() != 2131380956) {
-          break label20;
-        }
-        localObject = this.clickListener;
-        if (localObject != null)
-        {
-          ((ProfileGuideClickListener)localObject).onUpdateClick();
-          continue;
-          label91:
-          if (((Integer)localObject).intValue() == 2131368898)
-          {
-            localObject = this.clickListener;
-            if (localObject != null) {
-              ((ProfileGuideClickListener)localObject).onCloseClick();
-            }
-          }
-        }
       }
     }
+    else if ((localObject != null) && (((Integer)localObject).intValue() == 2131380222))
+    {
+      localObject = this.clickListener;
+      if (localObject != null) {
+        ((ProfileGuideClickListener)localObject).onUpdateClick();
+      }
+    }
+    else if ((localObject != null) && (((Integer)localObject).intValue() == 2131368624))
+    {
+      localObject = this.clickListener;
+      if (localObject != null) {
+        ((ProfileGuideClickListener)localObject).onCloseClick();
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public final void setClickListener(@NotNull ProfileGuideClickListener paramProfileGuideClickListener)
@@ -270,18 +248,19 @@ public final class ProfileGuideView
   public final void updateProfileGuide(@NotNull ProfileGuide paramProfileGuide)
   {
     Intrinsics.checkParameterIsNotNull(paramProfileGuide, "profileGuide");
-    if (paramProfileGuide.getGuideType() == 1) {
+    if (paramProfileGuide.getGuideType() == 1)
+    {
       setFillGuide(paramProfileGuide);
-    }
-    while (paramProfileGuide.getGuideType() != 2) {
       return;
     }
-    setUpdateGuide(paramProfileGuide);
+    if (paramProfileGuide.getGuideType() == 2) {
+      setUpdateGuide(paramProfileGuide);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.guide.view.ProfileGuideView
  * JD-Core Version:    0.7.0.1
  */

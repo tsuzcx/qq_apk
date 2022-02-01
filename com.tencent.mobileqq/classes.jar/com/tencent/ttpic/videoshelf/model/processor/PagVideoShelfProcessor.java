@@ -60,78 +60,81 @@ public class PagVideoShelfProcessor
   
   public PagVideoShelfProcessor()
   {
-    if (!PagUtil.isSupportPagForVideo()) {
-      throw new PagNotSupportSystemException("PagVideoShelfProcessor");
+    if (PagUtil.isSupportPagForVideo()) {
+      return;
     }
+    throw new PagNotSupportSystemException("PagVideoShelfProcessor");
   }
   
   private long getDuration()
   {
-    if ((this.mDuration == 0L) && (this.mPagFile != null))
+    if (this.mDuration == 0L)
     {
-      this.mDuration = this.mPagFile.duration();
-      TTPTLogger.i("PagVideoShelfProcessor", "duration:" + this.mDuration);
-      if (this.mDuration <= 0L) {
-        break label82;
+      Object localObject = this.mPagFile;
+      if (localObject != null)
+      {
+        this.mDuration = ((PAGFile)localObject).duration();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("duration:");
+        ((StringBuilder)localObject).append(this.mDuration);
+        TTPTLogger.i("PagVideoShelfProcessor", ((StringBuilder)localObject).toString());
+        long l = this.mDuration;
+        float f;
+        if (l > 0L) {
+          f = 40000.0F / (float)l;
+        } else {
+          f = 0.0F;
+        }
+        this.mFrameGap = f;
       }
     }
-    label82:
-    for (float f = 40000.0F / (float)this.mDuration;; f = 0.0F)
-    {
-      this.mFrameGap = f;
-      return this.mDuration;
-    }
+    return this.mDuration;
   }
   
   private void parseImageText(List<NodeGroup> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    Iterator localIterator1;
-    do
+    if (paramList != null)
     {
-      return;
-      localIterator1 = paramList.iterator();
-    } while (!localIterator1.hasNext());
-    Iterator localIterator2 = ((NodeGroup)localIterator1.next()).nodeItemList.iterator();
-    label48:
-    NodeItem localNodeItem;
-    if (localIterator2.hasNext())
-    {
-      localNodeItem = (NodeItem)localIterator2.next();
-      if (localNodeItem.type != 1) {
-        break label96;
+      if (paramList.size() == 0) {
+        return;
       }
-    }
-    label96:
-    for (paramList = localNodeItem.bitmap;; paramList = localNodeItem.cropBitmap)
-    {
-      replacesImg(paramList, localNodeItem.indexLayerForPag);
-      break label48;
-      break;
+      Iterator localIterator1 = paramList.iterator();
+      while (localIterator1.hasNext())
+      {
+        Iterator localIterator2 = ((NodeGroup)localIterator1.next()).nodeItemList.iterator();
+        while (localIterator2.hasNext())
+        {
+          NodeItem localNodeItem = (NodeItem)localIterator2.next();
+          if (localNodeItem.type == 1) {
+            paramList = localNodeItem.bitmap;
+          } else {
+            paramList = localNodeItem.cropBitmap;
+          }
+          replacesImg(paramList, localNodeItem.indexLayerForPag);
+        }
+      }
     }
   }
   
   private void proceeHashMapSetting(HashMap<String, int[]> paramHashMap)
   {
-    if (paramHashMap == null) {}
-    for (;;)
-    {
+    if (paramHashMap == null) {
       return;
-      if (this.mPagRenderer == null)
-      {
-        this.mReplaceImgs = paramHashMap;
-        return;
-      }
+    }
+    if (this.mPagRenderer == null)
+    {
       this.mReplaceImgs = paramHashMap;
-      paramHashMap = paramHashMap.entrySet().iterator();
-      while (paramHashMap.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramHashMap.next();
-        Bitmap localBitmap = BitmapUtils.decodeSampledBitmapFromFile((String)localEntry.getKey(), 1080, 1080);
-        replacesImg(localBitmap, (int[])localEntry.getValue());
-        if (localBitmap != null) {
-          localBitmap.recycle();
-        }
+      return;
+    }
+    this.mReplaceImgs = paramHashMap;
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
+      Bitmap localBitmap = BitmapUtils.decodeSampledBitmapFromFile((String)localEntry.getKey(), 1080, 1080);
+      replacesImg(localBitmap, (int[])localEntry.getValue());
+      if (localBitmap != null) {
+        localBitmap.recycle();
       }
     }
   }
@@ -165,23 +168,30 @@ public class PagVideoShelfProcessor
   
   public void clear()
   {
-    TTPTLogger.i("PagVideoShelfProcessor", "clear:" + this.mProgress);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("clear:");
+    ((StringBuilder)localObject).append(this.mProgress);
+    TTPTLogger.i("PagVideoShelfProcessor", ((StringBuilder)localObject).toString());
     this.mFilterContext = null;
-    if (this.mPagRenderer != null) {
-      this.mPagRenderer.setSurface(null);
+    localObject = this.mPagRenderer;
+    if (localObject != null) {
+      ((PAGRenderer)localObject).setSurface(null);
     }
-    if (this.mPagSurface != null) {
-      this.mPagSurface.freeCache();
+    localObject = this.mPagSurface;
+    if (localObject != null) {
+      ((PAGSurface)localObject).freeCache();
     }
-    if (this.mSurfaceTexture != null)
+    localObject = this.mSurfaceTexture;
+    if (localObject != null)
     {
-      this.mSurfaceTexture.setOnFrameAvailableListener(null);
+      ((SurfaceTexture)localObject).setOnFrameAvailableListener(null);
       this.mSurfaceTexture.release();
       this.mSurfaceTexture = null;
     }
     this.mParsedTxtID = 0;
-    if (this.copyFilter != null) {
-      this.copyFilter.clearGLSL();
+    localObject = this.copyFilter;
+    if (localObject != null) {
+      ((BaseFilter)localObject).clearGLSL();
     }
     this.mProgress = 0.0D;
     this.mLastFlushProgress = -1.0D;
@@ -192,20 +202,26 @@ public class PagVideoShelfProcessor
   
   public Frame draw()
   {
-    if (this.mPagRenderer == null) {}
-    while (!this.mNeedUpdateFrame) {
+    if (this.mPagRenderer == null) {
       return null;
     }
-    this.mOutFrame = this.copyFilter.RenderProcess(this.mParsedTxtID, this.mVideoWidth, this.mVideoHeight);
-    GLES20.glFinish();
-    this.mNeedUpdateFrame = false;
-    this.mDrawCount += 1;
-    return this.mOutFrame;
+    if (this.mNeedUpdateFrame)
+    {
+      this.mOutFrame = this.copyFilter.RenderProcess(this.mParsedTxtID, this.mVideoWidth, this.mVideoHeight);
+      GLES20.glFinish();
+      this.mNeedUpdateFrame = false;
+      this.mDrawCount += 1;
+      return this.mOutFrame;
+    }
+    return null;
   }
   
   public long getCurFrameTimeStamp()
   {
-    return (this.mProgress * this.mDuration * 0.001D);
+    double d1 = this.mProgress;
+    double d2 = this.mDuration;
+    Double.isNaN(d2);
+    return (d1 * d2 * 0.001D);
   }
   
   public int getProgress()
@@ -241,10 +257,11 @@ public class PagVideoShelfProcessor
   public int isPrepareInit()
   {
     this.mPagFile = PAGFile.Load(this.mPagFilePath);
-    if (this.mPagFile != null)
+    PAGFile localPAGFile = this.mPagFile;
+    if (localPAGFile != null)
     {
-      int i = this.mPagFile.tagLevel();
-      PAGFile localPAGFile = this.mPagFile;
+      int i = localPAGFile.tagLevel();
+      localPAGFile = this.mPagFile;
       if (i > PAGFile.MaxSupportedTagLevel()) {
         return 2;
       }
@@ -259,9 +276,10 @@ public class PagVideoShelfProcessor
   
   public boolean makeCurrent()
   {
-    if (this.mFilterContext != null)
+    FilterContext localFilterContext = this.mFilterContext;
+    if (localFilterContext != null)
     {
-      this.mFilterContext.usecurruntContext();
+      localFilterContext.usecurruntContext();
       return true;
     }
     return false;
@@ -269,10 +287,14 @@ public class PagVideoShelfProcessor
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if ((makeCurrent()) && (this.mSurfaceTexture != null))
+    if (makeCurrent())
     {
-      this.mSurfaceTexture.updateTexImage();
-      this.mNeedUpdateFrame = true;
+      paramSurfaceTexture = this.mSurfaceTexture;
+      if (paramSurfaceTexture != null)
+      {
+        paramSurfaceTexture.updateTexImage();
+        this.mNeedUpdateFrame = true;
+      }
     }
   }
   
@@ -281,7 +303,10 @@ public class PagVideoShelfProcessor
     if ((!this.mNeedUpdateFrame) && (this.mDrawCount == this.mGetFpsCount) && (this.mProgress > this.mLastFlushProgress))
     {
       boolean bool = this.mPagRenderer.flush();
-      Log.i("PagVideoShelfProcessor", "parseFrame:flush:" + this.mProgress);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseFrame:flush:");
+      localStringBuilder.append(this.mProgress);
+      Log.i("PagVideoShelfProcessor", localStringBuilder.toString());
       if (!bool) {
         this.mNeedUpdateFrame = true;
       }
@@ -292,123 +317,158 @@ public class PagVideoShelfProcessor
   
   public void setParam(String paramString, Object paramObject)
   {
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != -1549738368)
     {
-    default: 
       switch (i)
       {
-      }
-      break;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if (!paramString.equals("PagVideoShelfProcessor_0")) {
-                    break;
-                  }
-                  i = 0;
-                  break;
-                  if (!paramString.equals("outVideoWidthHeight")) {
-                    break;
-                  }
-                  i = 1;
-                  break;
-                  if (!paramString.equals("PagVideoShelfProcessor_1")) {
-                    break;
-                  }
-                  i = 2;
-                  break;
-                  if (!paramString.equals("PagVideoShelfProcessor_2")) {
-                    break;
-                  }
-                  i = 3;
-                  break;
-                  if (!paramString.equals("PagVideoShelfProcessor_3")) {
-                    break;
-                  }
-                  i = 4;
-                  break;
-                  if (!paramString.equals("PagVideoShelfProcessor_4")) {
-                    break;
-                  }
-                  i = 5;
-                  break;
-                } while (!(paramObject instanceof String));
-                this.mPagFilePath = ((String)paramObject);
-                return;
-              } while ((paramObject == null) || (!(paramObject instanceof int[])));
-              paramString = (int[])paramObject;
-              this.mVideoWidth = paramString[0];
-              this.mVideoHeight = paramString[1];
-              return;
-            } while ((paramObject == null) || (!(paramObject instanceof FilterContext)));
-            this.mFilterContext = ((FilterContext)paramObject);
-            return;
-          } while ((paramObject == null) || (!(paramObject instanceof PAGRenderer)));
-          this.mPagRenderer = ((PAGRenderer)paramObject);
-          if (AEOfflineConfig.isNeedSoftDecode()) {
-            PagUtil.useSoftDecode();
-          }
-          if (this.mPagSurface != null) {
-            this.mPagRenderer.setSurface(this.mPagSurface);
-          }
-          this.mProgress = this.mPagRenderer.getProgress();
-          return;
-        } while ((paramObject == null) || (!(paramObject instanceof Long)));
-        this.mDuration = ((Long)paramObject).longValue();
-        if (this.mDuration > 0L) {}
-        for (float f = 40000.0F / (float)this.mDuration;; f = 0.0F)
-        {
-          this.mFrameGap = f;
-          return;
+      default: 
+        break;
+      case -148748542: 
+        if (!paramString.equals("PagVideoShelfProcessor_4")) {
+          break;
         }
-      } while ((paramObject == null) || (!(paramObject instanceof HashMap)));
-      paramString = (HashMap)paramObject;
-    } while (paramString == null);
-    proceeHashMapSetting(paramString);
+        i = 5;
+        break;
+      case -148748543: 
+        if (!paramString.equals("PagVideoShelfProcessor_3")) {
+          break;
+        }
+        i = 4;
+        break;
+      case -148748544: 
+        if (!paramString.equals("PagVideoShelfProcessor_2")) {
+          break;
+        }
+        i = 3;
+        break;
+      case -148748545: 
+        if (!paramString.equals("PagVideoShelfProcessor_1")) {
+          break;
+        }
+        i = 2;
+        break;
+      case -148748546: 
+        if (!paramString.equals("PagVideoShelfProcessor_0")) {
+          break;
+        }
+        i = 0;
+        break;
+      }
+    }
+    else if (paramString.equals("outVideoWidthHeight"))
+    {
+      i = 1;
+      break label149;
+    }
+    i = -1;
+    label149:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i != 5) {
+                return;
+              }
+              if (paramObject == null) {
+                return;
+              }
+              if ((paramObject instanceof HashMap))
+              {
+                paramString = (HashMap)paramObject;
+                if (paramString == null) {
+                  return;
+                }
+                proceeHashMapSetting(paramString);
+              }
+            }
+            else if ((paramObject != null) && ((paramObject instanceof Long)))
+            {
+              this.mDuration = ((Long)paramObject).longValue();
+              long l = this.mDuration;
+              float f;
+              if (l > 0L) {
+                f = 40000.0F / (float)l;
+              } else {
+                f = 0.0F;
+              }
+              this.mFrameGap = f;
+            }
+          }
+          else if ((paramObject != null) && ((paramObject instanceof PAGRenderer)))
+          {
+            this.mPagRenderer = ((PAGRenderer)paramObject);
+            if (AEOfflineConfig.isNeedSoftDecode()) {
+              PagUtil.useSoftDecode();
+            }
+            paramString = this.mPagSurface;
+            if (paramString != null) {
+              this.mPagRenderer.setSurface(paramString);
+            }
+            this.mProgress = this.mPagRenderer.getProgress();
+          }
+        }
+        else if ((paramObject != null) && ((paramObject instanceof FilterContext))) {
+          this.mFilterContext = ((FilterContext)paramObject);
+        }
+      }
+      else if ((paramObject != null) && ((paramObject instanceof int[])))
+      {
+        paramString = (int[])paramObject;
+        this.mVideoWidth = paramString[0];
+        this.mVideoHeight = paramString[1];
+      }
+    }
+    else if ((paramObject instanceof String)) {
+      this.mPagFilePath = ((String)paramObject);
+    }
   }
   
   public boolean updateFrameCursor()
   {
-    if ((!this.mNeedUpdateFrame) && (this.mDrawCount > this.mGetFpsCount))
+    if (!this.mNeedUpdateFrame)
     {
-      if (this.mProgress < 1.0D)
+      int i = this.mDrawCount;
+      int j = this.mGetFpsCount;
+      if (i > j)
       {
-        this.mProgress += this.mFrameGap;
-        this.mGetFpsCount += 1;
-        if (this.mOutFrame != null) {
-          this.mOutFrame.unlock();
+        double d1 = this.mProgress;
+        if (d1 < 1.0D)
+        {
+          double d2 = this.mFrameGap;
+          Double.isNaN(d2);
+          this.mProgress = (d1 + d2);
+          this.mGetFpsCount = (j + 1);
+          Object localObject = this.mOutFrame;
+          if (localObject != null) {
+            ((Frame)localObject).unlock();
+          }
+          localObject = this.mPagRenderer;
+          if (localObject != null)
+          {
+            d1 = this.mProgress;
+            if (d1 <= 1.0D)
+            {
+              ((PAGRenderer)localObject).setProgress(d1);
+              return true;
+            }
+          }
         }
-        if ((this.mPagRenderer == null) || (this.mProgress > 1.0D)) {
-          break label97;
-        }
-        this.mPagRenderer.setProgress(this.mProgress);
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
-    label97:
-    return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.processor.PagVideoShelfProcessor
  * JD-Core Version:    0.7.0.1
  */

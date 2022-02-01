@@ -33,52 +33,48 @@ public class QPayReminderActivity
   {
     for (;;)
     {
-      Object localObject2;
       int i;
       try
       {
         Object localObject1 = getIntent();
-        if (((Intent)localObject1).getIntExtra("URGENCY", 1) == 1)
+        if (((Intent)localObject1).getIntExtra("URGENCY", 1) == 1) {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847488);
+        } else {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847487);
+        }
+        this.jdField_a_of_type_Int = ((Intent)localObject1).getIntExtra("TEMPLATE", 1);
+        localObject1 = new JSONObject(((Intent)localObject1).getStringExtra("CONTENT"));
+        setTitle(((JSONObject)localObject1).getJSONObject("title").getString("text"));
+        Object localObject2 = ((JSONObject)localObject1).getJSONObject("footnote").getString("text");
+        this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject2);
+        this.jdField_a_of_type_AndroidWidgetButton.setContentDescription((CharSequence)localObject2);
+        localObject1 = ((JSONObject)localObject1).getJSONArray("para");
+        localObject2 = new SpannableStringBuilder();
+        i = 0;
+        if (i < ((JSONArray)localObject1).length())
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847620);
-          this.jdField_a_of_type_Int = ((Intent)localObject1).getIntExtra("TEMPLATE", 1);
-          localObject1 = new JSONObject(((Intent)localObject1).getStringExtra("CONTENT"));
-          setTitle(((JSONObject)localObject1).getJSONObject("title").getString("text"));
-          localObject2 = ((JSONObject)localObject1).getJSONObject("footnote").getString("text");
-          this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject2);
-          this.jdField_a_of_type_AndroidWidgetButton.setContentDescription((CharSequence)localObject2);
-          localObject1 = ((JSONObject)localObject1).getJSONArray("para");
-          localObject2 = new SpannableStringBuilder();
-          i = 0;
-          if (i < ((JSONArray)localObject1).length())
+          if ((((JSONArray)localObject1).get(i) instanceof JSONObject))
           {
-            if (!(((JSONArray)localObject1).get(i) instanceof JSONObject)) {
-              break label279;
-            }
             JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(i).getJSONObject("span");
             int j = ((SpannableStringBuilder)localObject2).length();
             ((SpannableStringBuilder)localObject2).append(localJSONObject.getString("text"));
             int k = ((SpannableStringBuilder)localObject2).length();
             ((SpannableStringBuilder)localObject2).setSpan(new AbsoluteSizeSpan(localJSONObject.getInt("fontsize"), true), j, k, 33);
             ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(Color.parseColor(localJSONObject.getString("color"))), j, k, 33);
-            break label279;
           }
         }
         else
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847619);
-          continue;
+          this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+          this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((SpannableStringBuilder)localObject2).toString());
+          return true;
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
         return false;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((SpannableStringBuilder)localObject2).toString());
-      return true;
-      label279:
       i += 1;
     }
   }
@@ -92,16 +88,16 @@ public class QPayReminderActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562129);
-    setLeftButton(2131690946, this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372802));
+    super.setContentView(2131561965);
+    setLeftButton(2131690874, this);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372379));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372796));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372795));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372373));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372372));
     if (!a()) {
       finish();
     }
@@ -111,31 +107,30 @@ public class QPayReminderActivity
   public void finish()
   {
     super.finish();
-    overridePendingTransition(2130771992, 2130772316);
+    overridePendingTransition(2130772004, 2130772344);
   }
   
   public void onClick(View paramView)
   {
-    Object localObject;
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
     {
       localObject = new Intent(this, QQBrowserActivity.class);
       ((Intent)localObject).putExtra("url", "https://imgcache.qq.com/club/mqq/wallet/webank/qf/index.html?_wv=1027&pvsrc=1");
       startActivity((Intent)localObject);
-      localObject = this.app;
-      if (paramView != this.jdField_a_of_type_AndroidWidgetButton) {
-        break label92;
-      }
     }
-    label92:
-    for (int i = 1;; i = 2)
+    else
     {
-      ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X8004B3F", "0X8004B3F", 0, i, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       finish();
-      break;
     }
+    Object localObject = this.app;
+    int i;
+    if (paramView == this.jdField_a_of_type_AndroidWidgetButton) {
+      i = 1;
+    } else {
+      i = 2;
+    }
+    ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X8004B3F", "0X8004B3F", 0, i, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -147,7 +142,7 @@ public class QPayReminderActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QPayReminderActivity
  * JD-Core Version:    0.7.0.1
  */

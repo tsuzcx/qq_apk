@@ -28,17 +28,10 @@ public class LocationPlugin
   
   private String a(String paramString)
   {
-    String str;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (!"Unknown".equals(paramString)) {}
+    if ((paramString != null) && (!"Unknown".equals(paramString))) {
+      return paramString;
     }
-    else
-    {
-      str = "";
-    }
-    return str;
+    return "";
   }
   
   private void a(SosoLbsInfo paramSosoLbsInfo, String paramString)
@@ -78,6 +71,8 @@ public class LocationPlugin
           }
           localJSONObject1.put("pois", paramSosoLbsInfo);
         }
+        callJs(paramString, new String[] { "0", localJSONObject1.toString() });
+        return;
       }
       catch (Exception paramSosoLbsInfo)
       {
@@ -85,72 +80,69 @@ public class LocationPlugin
         callJs(paramString, new String[] { "-5", "{}" });
         return;
       }
-      callJs(paramString, new String[] { "0", localJSONObject1.toString() });
-      return;
     }
     callJs(paramString, new String[] { "-4", "{}" });
   }
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationPlugin", 2, "getPois:" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getPois:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("LocationPlugin", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.mRuntime.a() == null) {
+    if (this.mRuntime.a() == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.w("LocationPlugin", 2, "getWebView()==null, return");
       }
+      return;
     }
-    Activity localActivity;
-    String str;
-    do
+    Activity localActivity = this.mRuntime.a();
+    if ((localActivity != null) && (!localActivity.isFinishing()))
     {
-      for (;;)
-      {
-        return;
-        localActivity = this.mRuntime.a();
-        if ((localActivity == null) || (localActivity.isFinishing()))
+      localObject = paramString;
+      if (paramString.charAt(0) == '{') {
+        try
+        {
+          paramString = new JSONObject(paramString);
+          localObject = paramString.getString("callback");
+          paramString.optLong("allowCacheTime", 0L);
+        }
+        catch (JSONException paramString)
         {
           if (QLog.isColorLevel()) {
-            QLog.w("LocationPlugin", 2, "context==null || isFinishing, return");
+            QLog.w("LocationPlugin", 2, "getLocation exception:", paramString);
           }
-        }
-        else
-        {
-          str = paramString;
-          if (paramString.charAt(0) == '{') {}
-          try
-          {
-            paramString = new JSONObject(paramString);
-            str = paramString.getString("callback");
-            paramString.optLong("allowCacheTime", 0L);
-            if (!TextUtils.isEmpty(str))
-            {
-              if (!(localActivity instanceof AppActivity)) {
-                break label247;
-              }
-              paramString = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("webview");
-              if ((paramString == null) || (paramString.mLocation == null) || (paramString.mLocation.poi == null) || (paramString.mLocation.poi.size() <= 0)) {
-                break label219;
-              }
-              a(paramString, str);
-              return;
-            }
-          }
-          catch (JSONException paramString) {}
+          return;
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("LocationPlugin", 2, "getLocation exception:", paramString);
-    return;
-    label219:
-    ((AppActivity)localActivity).requestPermissions(new LocationPlugin.1(this, str), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-    return;
-    label247:
-    callJs(str, new String[] { "-4", "{}" });
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if ((localActivity instanceof AppActivity))
+        {
+          paramString = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("webview");
+          if ((paramString != null) && (paramString.mLocation != null) && (paramString.mLocation.poi != null) && (paramString.mLocation.poi.size() > 0))
+          {
+            a(paramString, (String)localObject);
+            return;
+          }
+          ((AppActivity)localActivity).requestPermissions(new LocationPlugin.1(this, (String)localObject), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          return;
+        }
+        callJs((String)localObject, new String[] { "-4", "{}" });
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("LocationPlugin", 2, "context==null || isFinishing, return");
+    }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     paramJsBridgeListener = paramVarArgs[0];
     if ("getLocationWithPoi".equals(paramString3)) {
@@ -161,7 +153,7 @@ public class LocationPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.LocationPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class MultiVideoCtrlLayerUIBase$4
   
   public void onClick(View paramView)
   {
-    ((TextView)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.findViewById(2131374098)).setVisibility(8);
+    ((TextView)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.findViewById(2131373653)).setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.f = true;
     ReportController.b(null, "CliOper", "", "", "0X800AEB8", "0X800AEB8", 0, 0, "", "", "", "");
@@ -24,7 +24,7 @@ class MultiVideoCtrlLayerUIBase$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.4
  * JD-Core Version:    0.7.0.1
  */

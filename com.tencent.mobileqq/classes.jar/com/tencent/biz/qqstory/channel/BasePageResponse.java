@@ -14,19 +14,18 @@ public class BasePageResponse
   public BasePageResponse(qqstory_struct.ErrorInfo paramErrorInfo, PBUInt32Field paramPBUInt32Field, PBBytesField paramPBBytesField)
   {
     super(paramErrorInfo);
-    if (paramPBUInt32Field.get() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramPBBytesField.get().toStringUtf8();
-      return;
+    int i = paramPBUInt32Field.get();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_JavaLangString = paramPBBytesField.get().toStringUtf8();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.BasePageResponse
  * JD-Core Version:    0.7.0.1
  */

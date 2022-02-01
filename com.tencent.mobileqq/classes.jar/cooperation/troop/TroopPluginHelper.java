@@ -15,85 +15,69 @@ public class TroopPluginHelper
     if (paramBaseApplicationImpl == null) {
       return null;
     }
-    if ("troop_member_card_plugin.apk".equals(paramString)) {}
-    label158:
-    for (String str = "com.tencent.mobileqq.memcard.base.TroopMemberCardAppInterface";; str = null) {
+    String str;
+    if ("troop_member_card_plugin.apk".equals(paramString)) {
+      str = "com.tencent.mobileqq.memcard.base.TroopMemberCardAppInterface";
+    } else if ("troop_manage_plugin.apk".equals(paramString)) {
+      str = "com.tencent.mobileqq.base.TroopManageAppInterface";
+    } else {
+      str = null;
+    }
+    for (;;)
+    {
       try
       {
-        for (;;)
+        try
         {
           Class localClass = Class.forName(str);
           paramBaseApplicationImpl = localClass;
-          if (paramBaseApplicationImpl != null) {
-            break;
-          }
-          try
-          {
-            QLog.e("TroopMemCardLog", 1, "*createTroopMemcardAppInterface load class fail");
-            return null;
-          }
-          catch (ClassNotFoundException paramBaseApplicationImpl)
-          {
-            paramBaseApplicationImpl.printStackTrace();
-            return null;
-          }
-          if (!"troop_manage_plugin.apk".equals(paramString)) {
-            break label158;
-          }
-          str = "com.tencent.mobileqq.base.TroopManageAppInterface";
         }
+        catch (Exception paramBaseApplicationImpl) {}catch (NoSuchMethodException paramBaseApplicationImpl) {}catch (InvocationTargetException paramBaseApplicationImpl) {}catch (InstantiationException paramBaseApplicationImpl) {}catch (IllegalAccessException paramBaseApplicationImpl) {}catch (IllegalArgumentException paramBaseApplicationImpl) {}
       }
       catch (ClassNotFoundException localClassNotFoundException)
       {
-        for (;;)
-        {
-          paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, paramString);
-          paramBaseApplicationImpl = paramString.loadClass(str);
-          BasicClassTypeUtil.setClassLoader(true, paramString);
-        }
+        continue;
       }
-      catch (IllegalArgumentException paramBaseApplicationImpl)
+      try
       {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
+        paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, paramString);
+        paramBaseApplicationImpl = paramString.loadClass(str);
+        BasicClassTypeUtil.setClassLoader(true, paramString);
+        if (paramBaseApplicationImpl == null)
+        {
+          QLog.e("TroopMemCardLog", 1, "*createTroopMemcardAppInterface load class fail");
+          return null;
+        }
         paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
         if ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime))) {
-          break;
+          continue;
         }
         paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
         return paramBaseApplicationImpl;
       }
-      catch (IllegalAccessException paramBaseApplicationImpl)
+      catch (ClassNotFoundException paramBaseApplicationImpl)
       {
         paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (InstantiationException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (InvocationTargetException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (NoSuchMethodException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (Exception paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
       }
     }
+    paramBaseApplicationImpl.printStackTrace();
+    return null;
+    paramBaseApplicationImpl.printStackTrace();
+    return null;
+    paramBaseApplicationImpl.printStackTrace();
+    return null;
+    paramBaseApplicationImpl.printStackTrace();
+    return null;
+    paramBaseApplicationImpl.printStackTrace();
+    return null;
+    paramBaseApplicationImpl.printStackTrace();
+    return null;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop.TroopPluginHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -17,18 +17,46 @@ public final class SubSequence<T>
     this.sequence = paramSequence;
     this.startIndex = paramInt1;
     this.endIndex = paramInt2;
-    if (this.startIndex >= 0) {}
-    for (paramInt1 = 1; paramInt1 == 0; paramInt1 = 0) {
-      throw ((Throwable)new IllegalArgumentException(("startIndex should be non-negative, but is " + this.startIndex).toString()));
+    paramInt1 = this.startIndex;
+    paramInt2 = 1;
+    if (paramInt1 >= 0) {
+      paramInt1 = 1;
+    } else {
+      paramInt1 = 0;
     }
-    if (this.endIndex >= 0) {}
-    for (paramInt1 = 1; paramInt1 == 0; paramInt1 = 0) {
-      throw ((Throwable)new IllegalArgumentException(("endIndex should be non-negative, but is " + this.endIndex).toString()));
+    if (paramInt1 != 0)
+    {
+      if (this.endIndex >= 0) {
+        paramInt1 = 1;
+      } else {
+        paramInt1 = 0;
+      }
+      if (paramInt1 != 0)
+      {
+        if (this.endIndex >= this.startIndex) {
+          paramInt1 = paramInt2;
+        } else {
+          paramInt1 = 0;
+        }
+        if (paramInt1 != 0) {
+          return;
+        }
+        paramSequence = new StringBuilder();
+        paramSequence.append("endIndex should be not less than startIndex, but was ");
+        paramSequence.append(this.endIndex);
+        paramSequence.append(" < ");
+        paramSequence.append(this.startIndex);
+        throw ((Throwable)new IllegalArgumentException(paramSequence.toString().toString()));
+      }
+      paramSequence = new StringBuilder();
+      paramSequence.append("endIndex should be non-negative, but is ");
+      paramSequence.append(this.endIndex);
+      throw ((Throwable)new IllegalArgumentException(paramSequence.toString().toString()));
     }
-    if (this.endIndex >= this.startIndex) {}
-    for (paramInt1 = i; paramInt1 == 0; paramInt1 = 0) {
-      throw ((Throwable)new IllegalArgumentException(("endIndex should be not less than startIndex, but was " + this.endIndex + " < " + this.startIndex).toString()));
-    }
+    paramSequence = new StringBuilder();
+    paramSequence.append("startIndex should be non-negative, but is ");
+    paramSequence.append(this.startIndex);
+    throw ((Throwable)new IllegalArgumentException(paramSequence.toString().toString()));
   }
   
   private final int getCount()
@@ -57,12 +85,14 @@ public final class SubSequence<T>
     if (paramInt >= getCount()) {
       return (Sequence)this;
     }
-    return (Sequence)new SubSequence(this.sequence, this.startIndex, this.startIndex + paramInt);
+    Sequence localSequence = this.sequence;
+    int i = this.startIndex;
+    return (Sequence)new SubSequence(localSequence, i, paramInt + i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.sequences.SubSequence
  * JD-Core Version:    0.7.0.1
  */

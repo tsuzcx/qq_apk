@@ -34,67 +34,72 @@ public final class SubripDecoder
     ArrayList localArrayList = new ArrayList();
     LongArray localLongArray = new LongArray();
     paramArrayOfByte = new ParsableByteArray(paramArrayOfByte, paramInt);
-    String str;
     for (;;)
     {
-      str = paramArrayOfByte.readLine();
-      if ((str == null) || (str.length() != 0)) {
-        try
-        {
-          Integer.parseInt(str);
-          str = paramArrayOfByte.readLine();
-          if (str != null) {
-            break;
-          }
-          Log.w("SubripDecoder", "Unexpected end");
-          paramArrayOfByte = new Cue[localArrayList.size()];
-          localArrayList.toArray(paramArrayOfByte);
-          return new SubripSubtitle(paramArrayOfByte, localLongArray.toArray());
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          Log.w("SubripDecoder", "Skipping invalid index: " + str);
-        }
-      }
-    }
-    Matcher localMatcher = SUBRIP_TIMING_LINE.matcher(str);
-    if (localMatcher.matches())
-    {
-      localLongArray.add(parseTimecode(localMatcher, 1));
-      if (TextUtils.isEmpty(localMatcher.group(6))) {
-        break label313;
-      }
-      localLongArray.add(parseTimecode(localMatcher, 6));
-    }
-    label313:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      this.textBuilder.setLength(0);
-      for (;;)
+      String str = paramArrayOfByte.readLine();
+      if ((str == null) || (str.length() != 0)) {}
+      try
       {
+        Integer.parseInt(str);
         str = paramArrayOfByte.readLine();
-        if (TextUtils.isEmpty(str)) {
+        if (str == null)
+        {
+          Log.w("SubripDecoder", "Unexpected end");
           break;
         }
-        if (this.textBuilder.length() > 0) {
-          this.textBuilder.append("<br>");
+        localObject = SUBRIP_TIMING_LINE.matcher(str);
+        if (((Matcher)localObject).matches())
+        {
+          paramInt = 1;
+          localLongArray.add(parseTimecode((Matcher)localObject, 1));
+          if (!TextUtils.isEmpty(((Matcher)localObject).group(6))) {
+            localLongArray.add(parseTimecode((Matcher)localObject, 6));
+          } else {
+            paramInt = 0;
+          }
+          this.textBuilder.setLength(0);
+          for (;;)
+          {
+            str = paramArrayOfByte.readLine();
+            if (TextUtils.isEmpty(str)) {
+              break;
+            }
+            if (this.textBuilder.length() > 0) {
+              this.textBuilder.append("<br>");
+            }
+            this.textBuilder.append(str.trim());
+          }
+          localArrayList.add(new Cue(Html.fromHtml(this.textBuilder.toString())));
+          if (paramInt == 0) {
+            continue;
+          }
+          localArrayList.add(null);
+          continue;
         }
-        this.textBuilder.append(str.trim());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Skipping invalid timing: ");
+        ((StringBuilder)localObject).append(str);
+        Log.w("SubripDecoder", ((StringBuilder)localObject).toString());
       }
-      Log.w("SubripDecoder", "Skipping invalid timing: " + str);
-      break;
-      localArrayList.add(new Cue(Html.fromHtml(this.textBuilder.toString())));
-      if (paramInt == 0) {
-        break;
+      catch (NumberFormatException localNumberFormatException)
+      {
+        Object localObject;
+        label273:
+        break label273;
       }
-      localArrayList.add(null);
-      break;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Skipping invalid index: ");
+      ((StringBuilder)localObject).append(str);
+      Log.w("SubripDecoder", ((StringBuilder)localObject).toString());
     }
+    paramArrayOfByte = new Cue[localArrayList.size()];
+    localArrayList.toArray(paramArrayOfByte);
+    return new SubripSubtitle(paramArrayOfByte, localLongArray.toArray());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.subrip.SubripDecoder
  * JD-Core Version:    0.7.0.1
  */

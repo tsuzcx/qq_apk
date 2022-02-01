@@ -61,23 +61,51 @@ public class ARScanAR
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("ScanAR{");
-    localStringBuffer.append("EntryType='").append(this.jdField_a_of_type_Int).append('\'');
-    localStringBuffer.append(", aRBegin=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", aREnd=").append(this.jdField_b_of_type_Long);
-    localStringBuffer.append(", userGuideBeginTime=").append(this.jdField_c_of_type_Long);
-    localStringBuffer.append(", userGuideEndTime=").append(this.jdField_d_of_type_Long);
-    localStringBuffer.append(", actType=").append(this.jdField_b_of_type_Int);
-    localStringBuffer.append(", userGuideShowCount=").append(this.jdField_c_of_type_Int);
-    localStringBuffer.append(", scanIconImg='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", scanIconPressed='").append(this.jdField_c_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", scanIconText='").append(this.e).append('\'');
-    localStringBuffer.append(", scanLine1='").append(this.f).append('\'');
-    localStringBuffer.append(", scanLine2='").append(this.g).append('\'');
-    localStringBuffer.append(", scanLineLink='").append(this.h).append('\'');
-    localStringBuffer.append(", scanLinkUrl='").append(this.i).append('\'');
-    localStringBuffer.append(", what2scanUrl='").append(this.j).append('\'');
-    localStringBuffer.append(", userGuideWording='").append(this.k).append('\'');
-    localStringBuffer.append(", userGuideType='").append(this.l).append('\'');
+    localStringBuffer.append("EntryType='");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", aRBegin=");
+    localStringBuffer.append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", aREnd=");
+    localStringBuffer.append(this.jdField_b_of_type_Long);
+    localStringBuffer.append(", userGuideBeginTime=");
+    localStringBuffer.append(this.jdField_c_of_type_Long);
+    localStringBuffer.append(", userGuideEndTime=");
+    localStringBuffer.append(this.jdField_d_of_type_Long);
+    localStringBuffer.append(", actType=");
+    localStringBuffer.append(this.jdField_b_of_type_Int);
+    localStringBuffer.append(", userGuideShowCount=");
+    localStringBuffer.append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(", scanIconImg='");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", scanIconPressed='");
+    localStringBuffer.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", scanIconText='");
+    localStringBuffer.append(this.e);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", scanLine1='");
+    localStringBuffer.append(this.f);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", scanLine2='");
+    localStringBuffer.append(this.g);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", scanLineLink='");
+    localStringBuffer.append(this.h);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", scanLinkUrl='");
+    localStringBuffer.append(this.i);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", what2scanUrl='");
+    localStringBuffer.append(this.j);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", userGuideWording='");
+    localStringBuffer.append(this.k);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", userGuideType='");
+    localStringBuffer.append(this.l);
+    localStringBuffer.append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
@@ -107,7 +135,7 @@ public class ARScanAR
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARScanAR
  * JD-Core Version:    0.7.0.1
  */

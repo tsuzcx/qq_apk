@@ -1,6 +1,5 @@
 package com.huawei.hms.adapter;
 
-import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -17,87 +16,88 @@ import com.huawei.hms.utils.Util;
 public class BinderAdapter
   implements ServiceConnection
 {
-  private static final Object e = new Object();
-  private Context a;
-  private String b;
-  private String c;
-  private BinderAdapter.BinderCallBack d;
-  private Handler f = null;
+  private static final Object LOCK_CONNECT_TIMEOUT_HANDLER = new Object();
+  private static final int MSG_CONN_TIMEOUT = 1001;
+  private static final String TAG = "BinderAdapter";
+  private boolean bindfail = false;
+  private BinderAdapter.BinderCallBack callback;
+  private String mAction;
+  private Handler mBinderTimeoutHandler = null;
+  private Context mContext;
+  private String mService;
   
   public BinderAdapter(Context paramContext, String paramString1, String paramString2)
   {
-    this.a = paramContext;
-    this.b = paramString1;
-    this.c = paramString2;
+    this.mContext = paramContext;
+    this.mAction = paramString1;
+    this.mService = paramString2;
   }
   
-  private void a()
+  private void bindCoreService()
   {
-    if (this.f != null) {
-      this.f.removeMessages(1001);
+    if ((TextUtils.isEmpty(this.mAction)) || (TextUtils.isEmpty(this.mService))) {
+      getBindFailPendingIntent();
     }
-    for (;;)
+    Intent localIntent = new Intent(this.mAction);
+    localIntent.setPackage(this.mService);
+    synchronized (LOCK_CONNECT_TIMEOUT_HANDLER)
     {
-      this.f.sendEmptyMessageDelayed(1001, 5000L);
+      if (this.mContext.bindService(localIntent, this, 1))
+      {
+        postConnDelayHandle();
+        return;
+      }
+      this.bindfail = true;
+      getBindFailPendingIntent();
       return;
-      this.f = new Handler(Looper.getMainLooper(), new BinderAdapter.1(this));
     }
   }
   
-  private void b()
+  private void binderServiceFailed()
   {
-    BinderAdapter.BinderCallBack localBinderCallBack = f();
+    BinderAdapter.BinderCallBack localBinderCallBack = getCallBack();
     if (localBinderCallBack != null) {
       localBinderCallBack.onBinderFailed(-1);
     }
   }
   
-  private void c()
+  private void cancelConnDelayHandle()
   {
-    if ((TextUtils.isEmpty(this.b)) || (TextUtils.isEmpty(this.c))) {
-      d();
-    }
-    Intent localIntent = new Intent(this.b);
-    localIntent.setPackage(this.c);
-    synchronized (e)
+    synchronized (LOCK_CONNECT_TIMEOUT_HANDLER)
     {
-      if (this.a.bindService(localIntent, this, 1))
+      if (this.mBinderTimeoutHandler != null)
       {
-        a();
-        return;
+        this.mBinderTimeoutHandler.removeMessages(1001);
+        this.mBinderTimeoutHandler = null;
       }
-      d();
       return;
     }
   }
   
-  private void d()
+  private void getBindFailPendingIntent()
   {
     HMSLog.e("BinderAdapter", "In connect, bind core service fail");
-    Object localObject = new ComponentName(this.a.getApplicationInfo().packageName, "com.huawei.hms.activity.BridgeActivity");
+    ComponentName localComponentName = new ComponentName(this.mContext.getApplicationInfo().packageName, "com.huawei.hms.activity.BridgeActivity");
     Intent localIntent = new Intent();
-    localIntent.setComponent((ComponentName)localObject);
+    localIntent.setComponent(localComponentName);
     localIntent.putExtra("intent.extra.DELEGATE_CLASS_OBJECT", BindingFailedResolution.class.getName());
-    localObject = PendingIntent.getActivity(this.a, 11, localIntent, 134217728);
-    this.d.onBinderFailed(-1, (PendingIntent)localObject);
+    this.callback.onBinderFailed(-1, localIntent);
   }
   
-  private void e()
+  private BinderAdapter.BinderCallBack getCallBack()
   {
-    synchronized (e)
-    {
-      if (this.f != null)
-      {
-        this.f.removeMessages(1001);
-        this.f = null;
-      }
-      return;
+    return this.callback;
+  }
+  
+  private void postConnDelayHandle()
+  {
+    Handler localHandler = this.mBinderTimeoutHandler;
+    if (localHandler != null) {
+      localHandler.removeMessages(1001);
+    } else {
+      this.mBinderTimeoutHandler = new Handler(Looper.getMainLooper(), new BinderAdapter.1(this));
     }
-  }
-  
-  private BinderAdapter.BinderCallBack f()
-  {
-    return this.d;
+    this.mBinderTimeoutHandler.sendEmptyMessageDelayed(1001, 5000L);
   }
   
   public void binder(BinderAdapter.BinderCallBack paramBinderCallBack)
@@ -105,15 +105,31 @@ public class BinderAdapter
     if (paramBinderCallBack == null) {
       return;
     }
-    this.d = paramBinderCallBack;
-    c();
+    this.callback = paramBinderCallBack;
+    bindCoreService();
+  }
+  
+  public void onNullBinding(ComponentName paramComponentName)
+  {
+    HMSLog.e("BinderAdapter", "Enter onNullBinding, than unBind.");
+    if (this.bindfail)
+    {
+      this.bindfail = false;
+      return;
+    }
+    unBind();
+    cancelConnDelayHandle();
+    BinderAdapter.BinderCallBack localBinderCallBack = getCallBack();
+    if (localBinderCallBack != null) {
+      localBinderCallBack.onNullBinding(paramComponentName);
+    }
   }
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     HMSLog.i("BinderAdapter", "Enter onServiceConnected.");
-    e();
-    BinderAdapter.BinderCallBack localBinderCallBack = f();
+    cancelConnDelayHandle();
+    BinderAdapter.BinderCallBack localBinderCallBack = getCallBack();
     if (localBinderCallBack != null) {
       localBinderCallBack.onServiceConnected(paramComponentName, paramIBinder);
     }
@@ -122,7 +138,7 @@ public class BinderAdapter
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
     HMSLog.i("BinderAdapter", "Enter onServiceDisconnected.");
-    BinderAdapter.BinderCallBack localBinderCallBack = f();
+    BinderAdapter.BinderCallBack localBinderCallBack = getCallBack();
     if (localBinderCallBack != null) {
       localBinderCallBack.onServiceDisconnected(paramComponentName);
     }
@@ -130,12 +146,12 @@ public class BinderAdapter
   
   public void unBind()
   {
-    Util.unBindServiceCatchException(this.a, this);
+    Util.unBindServiceCatchException(this.mContext, this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.adapter.BinderAdapter
  * JD-Core Version:    0.7.0.1
  */

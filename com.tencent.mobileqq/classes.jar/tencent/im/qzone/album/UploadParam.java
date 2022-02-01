@@ -20,13 +20,14 @@ public final class UploadParam
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42 }, new String[] { "uint32_full_image", "uint64_batchid", "uint64_image_number", "uint64_image_number_index", "bytes_qzone_albumid" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro }, UploadParam.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42 }, new String[] { "uint32_full_image", "uint64_batchid", "uint64_image_number", "uint64_image_number_index", "bytes_qzone_albumid" }, new Object[] { Integer.valueOf(0), localLong, localLong, localLong, localByteStringMicro }, UploadParam.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.qzone.album.UploadParam
  * JD-Core Version:    0.7.0.1
  */

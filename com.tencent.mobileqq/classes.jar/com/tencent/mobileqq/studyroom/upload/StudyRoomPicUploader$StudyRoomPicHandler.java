@@ -5,6 +5,7 @@ import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.studyroom.api.IStudyRoomPicUploadListener;
 import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
 import com.tencent.mobileqq.transfile.FileMsg;
 import com.tencent.mobileqq.transfile.TransProcessorHandler;
@@ -36,22 +37,26 @@ class StudyRoomPicUploader$StudyRoomPicHandler
   
   private static StudyRoomPicHandler b()
   {
-    if (jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler == null) {
-        jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler = new StudyRoomPicHandler();
+    if (jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler == null) {
+          jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler = new StudyRoomPicHandler();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler;
   }
   
   public void a()
   {
     try
     {
-      QLog.d("StudyRoomPicUploader", 2, "StudyRoomPicHandler release sHandlerInit=" + jdField_a_of_type_Boolean);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("StudyRoomPicHandler release sHandlerInit=");
+      localStringBuilder.append(jdField_a_of_type_Boolean);
+      QLog.d("StudyRoomPicUploader", 2, localStringBuilder.toString());
       if ((this.jdField_a_of_type_ComTencentMobileqqTransfileApiImplTransFileControllerImpl != null) && (jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_ComTencentMobileqqTransfileApiImplTransFileControllerImpl.removeHandle(this);
@@ -72,7 +77,10 @@ class StudyRoomPicUploader$StudyRoomPicHandler
   {
     try
     {
-      QLog.d("StudyRoomPicUploader", 2, "StudyRoomPicHandler init sHandlerInit=" + jdField_a_of_type_Boolean);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("StudyRoomPicHandler init sHandlerInit=");
+      localStringBuilder.append(jdField_a_of_type_Boolean);
+      QLog.d("StudyRoomPicUploader", 2, localStringBuilder.toString());
       if (!jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_ComTencentMobileqqTransfileApiImplTransFileControllerImpl = ((TransFileControllerImpl)paramITransFileController);
@@ -88,53 +96,68 @@ class StudyRoomPicUploader$StudyRoomPicHandler
   {
     super.handleMessage(paramMessage);
     FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.commandId != 80)) {}
-    while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      return;
-    }
-    IStudyRoomPicUploadListener localIStudyRoomPicUploadListener = (IStudyRoomPicUploadListener)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(localFileMsg.uniseq));
-    if (localIStudyRoomPicUploadListener == null)
+    Object localObject1;
+    Object localObject2;
+    if (localFileMsg != null)
     {
-      QLog.d("StudyRoomPicUploader", 2, "uploadListener == null");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(localFileMsg.uniseq));
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    case 1004: 
-    default: 
-      return;
-    case 1002: 
-      localIStudyRoomPicUploadListener.a((int)((float)localFileMsg.transferedSize * 100.0F / (float)localFileMsg.fileSize));
-      return;
-    case 1003: 
-      QLog.d("StudyRoomPicUploader", 2, "STATUS_SEND_FINISHED file uniseq:" + localFileMsg.uniseq);
-      Object localObject = new Bdh_extinfo.UploadPicExtInfo();
-      try
-      {
-        ((Bdh_extinfo.UploadPicExtInfo)localObject).mergeFrom(localFileMsg.bdhExtendInfo, 0, localFileMsg.bdhExtendInfo.length);
-        paramMessage = ((Bdh_extinfo.UploadPicExtInfo)localObject).bytes_download_url.get().toStringUtf8();
-        localObject = ((Bdh_extinfo.UploadPicExtInfo)localObject).bytes_thumb_download_url.get().toStringUtf8();
-        QLog.d("StudyRoomPicUploader", 2, "STATUS_SEND_FINISHED picUrl:" + paramMessage);
-        localIStudyRoomPicUploadListener.a(paramMessage, (String)localObject);
-        a(localFileMsg.uniseq);
+      if (localFileMsg.commandId != 80) {
         return;
       }
-      catch (InvalidProtocolBufferMicroException paramMessage)
+      localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      if (localObject1 == null) {
+        return;
+      }
+      localObject1 = (IStudyRoomPicUploadListener)((ConcurrentHashMap)localObject1).get(Long.valueOf(localFileMsg.uniseq));
+      if (localObject1 == null)
       {
-        for (;;)
+        QLog.d("StudyRoomPicUploader", 2, "uploadListener == null");
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(localFileMsg.uniseq));
+        return;
+      }
+      int i = paramMessage.what;
+      if (i != 1002)
+      {
+        if (i != 1003)
         {
-          localIStudyRoomPicUploadListener.a(101, "解析上传结果错误");
+          if (i != 1005) {
+            return;
+          }
+          ((IStudyRoomPicUploadListener)localObject1).a(localFileMsg.errorCode, "上传发生错误");
+          a(localFileMsg.uniseq);
+          return;
         }
+        paramMessage = new StringBuilder();
+        paramMessage.append("STATUS_SEND_FINISHED file uniseq:");
+        paramMessage.append(localFileMsg.uniseq);
+        QLog.d("StudyRoomPicUploader", 2, paramMessage.toString());
+        localObject2 = new Bdh_extinfo.UploadPicExtInfo();
       }
     }
-    localIStudyRoomPicUploadListener.a(localFileMsg.errorCode, "上传发生错误");
+    try
+    {
+      ((Bdh_extinfo.UploadPicExtInfo)localObject2).mergeFrom(localFileMsg.bdhExtendInfo, 0, localFileMsg.bdhExtendInfo.length);
+      paramMessage = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_download_url.get().toStringUtf8();
+      localObject2 = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_thumb_download_url.get().toStringUtf8();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("STATUS_SEND_FINISHED picUrl:");
+      localStringBuilder.append(paramMessage);
+      QLog.d("StudyRoomPicUploader", 2, localStringBuilder.toString());
+      ((IStudyRoomPicUploadListener)localObject1).a(paramMessage, (String)localObject2);
+    }
+    catch (InvalidProtocolBufferMicroException paramMessage)
+    {
+      label266:
+      break label266;
+    }
+    ((IStudyRoomPicUploadListener)localObject1).a(101, "解析上传结果错误");
     a(localFileMsg.uniseq);
+    return;
+    ((IStudyRoomPicUploadListener)localObject1).a((int)((float)localFileMsg.transferedSize * 100.0F / (float)localFileMsg.fileSize));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.upload.StudyRoomPicUploader.StudyRoomPicHandler
  * JD-Core Version:    0.7.0.1
  */

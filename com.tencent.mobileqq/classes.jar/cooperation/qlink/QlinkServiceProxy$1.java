@@ -14,7 +14,10 @@ class QlinkServiceProxy$1
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onServiceConnected service:");
+    localStringBuilder.append(paramComponentName);
+    QLog.d("QlinkServiceProxy", 1, localStringBuilder.toString());
     QlinkServiceProxy.a(this.a, IQlinkService.Stub.a(paramIBinder));
     QlinkServiceProxy.a(this.a, false);
     QlinkServiceProxy.a(this.a);
@@ -22,26 +25,25 @@ class QlinkServiceProxy$1
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onServiceDisconnected ");
+    localStringBuilder.append(paramComponentName);
+    QLog.d("QlinkServiceProxy", 1, localStringBuilder.toString());
     try
     {
       QlinkServiceProxy.a(this.a).getApplication().unbindService(QlinkServiceProxy.a(this.a));
-      QlinkServiceProxy.a(this.a, null);
-      QlinkServiceProxy.a(this.a, false);
-      return;
     }
     catch (Exception paramComponentName)
     {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
+      paramComponentName.printStackTrace();
     }
+    QlinkServiceProxy.a(this.a, null);
+    QlinkServiceProxy.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qlink.QlinkServiceProxy.1
  * JD-Core Version:    0.7.0.1
  */

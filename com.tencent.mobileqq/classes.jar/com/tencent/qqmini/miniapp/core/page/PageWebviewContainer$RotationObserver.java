@@ -37,21 +37,23 @@ class PageWebviewContainer$RotationObserver
   
   public void registerObserver()
   {
-    if (this.mResolver != null) {
-      this.mResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+    ContentResolver localContentResolver = this.mResolver;
+    if (localContentResolver != null) {
+      localContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
     }
   }
   
   public void unregisterObserver()
   {
-    if (this.mResolver != null) {
-      this.mResolver.unregisterContentObserver(this);
+    ContentResolver localContentResolver = this.mResolver;
+    if (localContentResolver != null) {
+      localContentResolver.unregisterContentObserver(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.PageWebviewContainer.RotationObserver
  * JD-Core Version:    0.7.0.1
  */

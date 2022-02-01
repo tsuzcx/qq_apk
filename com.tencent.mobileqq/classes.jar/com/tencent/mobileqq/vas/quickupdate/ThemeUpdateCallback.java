@@ -21,12 +21,14 @@ public class ThemeUpdateCallback
   
   private boolean checkNewVersionValid(String paramString)
   {
-    if ((paramString.startsWith("theme.android")) || (paramString.endsWith(".cfg")))
-    {
-      QLog.e("ThemeUpdateCallback", 1, "VasUpdate getItemInfo checkNewVersionValid filter scid = " + paramString);
-      return true;
+    if ((!paramString.startsWith("theme.android")) && (!paramString.endsWith(".cfg"))) {
+      return false;
     }
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VasUpdate getItemInfo checkNewVersionValid filter scid = ");
+    localStringBuilder.append(paramString);
+    QLog.e("ThemeUpdateCallback", 1, localStringBuilder.toString());
+    return true;
   }
   
   private void onThemeComplete(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
@@ -36,42 +38,54 @@ public class ThemeUpdateCallback
   
   public boolean deleteFiles(long paramLong, String paramString)
   {
-    if (!ThemeUtil.a(paramString))
+    Object localObject;
+    if (!ThemeUtil.isIOSTheme(paramString))
     {
-      Object localObject = ThemeUtil.b(paramString);
+      localObject = ThemeUtil.getIDFromSCID(paramString);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = new ThemeLocator().a((String)localObject);
-        if (paramString.startsWith(SCID_THEME_ZIP_PREFIX)) {}
-        for (paramString = ((ThemeLocator)localObject).a(MobileQQ.getContext(), paramString, "").c();; paramString = ((ThemeLocator)localObject).b(MobileQQ.getContext()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ThemeUpdateCallback", 2, "deleteFiles: " + paramString);
-          }
-          return new File(paramString).delete();
+        if (paramString.startsWith(SCID_THEME_ZIP_PREFIX)) {
+          paramString = ((ThemeLocator)localObject).a(MobileQQ.getContext(), paramString, "").c();
+        } else {
+          paramString = ((ThemeLocator)localObject).b(MobileQQ.getContext());
         }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("deleteFiles: ");
+          ((StringBuilder)localObject).append(paramString);
+          QLog.d("ThemeUpdateCallback", 2, ((StringBuilder)localObject).toString());
+        }
+        return new File(paramString).delete();
       }
     }
     else
     {
-      QLog.e("ThemeUpdateCallback", 1, "deleteFiles ignore ios theme:" + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("deleteFiles ignore ios theme:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("ThemeUpdateCallback", 1, ((StringBuilder)localObject).toString());
     }
     return false;
   }
   
   public void doOnCompleted(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    if (!ThemeUtil.a(paramString1))
+    if (!ThemeUtil.isIOSTheme(paramString1))
     {
       onThemeComplete(paramString1, paramString2, paramString3, paramInt1, paramInt2);
       return;
     }
-    QLog.e("ThemeUpdateCallback", 1, "onCompleted ignore ios theme:" + paramString1);
+    paramString2 = new StringBuilder();
+    paramString2.append("onCompleted ignore ios theme:");
+    paramString2.append(paramString1);
+    QLog.e("ThemeUpdateCallback", 1, paramString2.toString());
   }
   
   public void doOnProgress(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
   {
-    if (!ThemeUtil.a(paramString1)) {
+    if (!ThemeUtil.isIOSTheme(paramString1)) {
       ((IVasQuickUpdateAdapter)QRoute.api(IVasQuickUpdateAdapter.class)).onThemeProgress(paramString1, paramLong2, paramLong3);
     }
   }
@@ -83,57 +97,62 @@ public class ThemeUpdateCallback
   
   public TagItemInfo getItemInfo(long paramLong, String paramString)
   {
-    ThemeLocator localThemeLocator = null;
+    Object localObject1;
     if ("theme_mapping_config_android".equals(paramString))
     {
-      localObject = new TagItemInfo();
-      ((TagItemInfo)localObject).jdField_a_of_type_Boolean = false;
-      ((TagItemInfo)localObject).b = false;
-      ((TagItemInfo)localObject).jdField_a_of_type_JavaLangString = getSavePath(MobileQQ.getContext(), paramString);
+      localObject1 = new TagItemInfo();
+      ((TagItemInfo)localObject1).jdField_a_of_type_Boolean = false;
+      ((TagItemInfo)localObject1).b = false;
+      ((TagItemInfo)localObject1).jdField_a_of_type_JavaLangString = getSavePath(MobileQQ.getContext(), paramString);
+      return localObject1;
     }
-    String str;
-    do
+    if (checkNewVersionValid(paramString)) {
+      return null;
+    }
+    if (!ThemeUtil.isIOSTheme(paramString))
     {
-      do
+      Object localObject2 = ThemeUtil.getIDFromSCID(paramString);
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        return localObject;
-        localObject = localThemeLocator;
-      } while (checkNewVersionValid(paramString));
-      if (ThemeUtil.a(paramString)) {
-        break;
+        localObject1 = new TagItemInfo();
+        localObject2 = new ThemeLocator().a((String)localObject2);
+        if (paramString.startsWith(SCID_THEME_ZIP_PREFIX))
+        {
+          ((TagItemInfo)localObject1).jdField_a_of_type_Boolean = false;
+          ((TagItemInfo)localObject1).b = false;
+          ((TagItemInfo)localObject1).jdField_a_of_type_JavaLangString = ((ThemeLocator)localObject2).a(MobileQQ.getContext(), paramString, "").c();
+          return localObject1;
+        }
+        ((TagItemInfo)localObject1).jdField_a_of_type_Boolean = true;
+        ((TagItemInfo)localObject1).b = false;
+        ((TagItemInfo)localObject1).jdField_a_of_type_JavaLangString = ((ThemeLocator)localObject2).b(MobileQQ.getContext());
+        return localObject1;
       }
-      str = ThemeUtil.b(paramString);
-      localObject = localThemeLocator;
-    } while (TextUtils.isEmpty(str));
-    Object localObject = new TagItemInfo();
-    localThemeLocator = new ThemeLocator().a(str);
-    if (paramString.startsWith(SCID_THEME_ZIP_PREFIX))
-    {
-      ((TagItemInfo)localObject).jdField_a_of_type_Boolean = false;
-      ((TagItemInfo)localObject).b = false;
-      ((TagItemInfo)localObject).jdField_a_of_type_JavaLangString = localThemeLocator.a(MobileQQ.getContext(), paramString, "").c();
-      return localObject;
     }
-    ((TagItemInfo)localObject).jdField_a_of_type_Boolean = true;
-    ((TagItemInfo)localObject).b = false;
-    ((TagItemInfo)localObject).jdField_a_of_type_JavaLangString = localThemeLocator.b(MobileQQ.getContext());
-    return localObject;
-    QLog.e("ThemeUpdateCallback", 1, "getItemInfo ignore ios theme:" + paramString);
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getItemInfo ignore ios theme:");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.e("ThemeUpdateCallback", 1, ((StringBuilder)localObject1).toString());
+    }
     return null;
   }
   
   public boolean isFileExists(long paramLong, String paramString)
   {
-    if (!ThemeUtil.a(paramString))
+    if (!ThemeUtil.isIOSTheme(paramString))
     {
-      Object localObject = ThemeUtil.b(paramString);
+      Object localObject = ThemeUtil.getIDFromSCID(paramString);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = new ThemeLocator().a((String)localObject);
-        if (paramString.startsWith(SCID_THEME_ZIP_PREFIX)) {}
-        for (paramString = ((ThemeLocator)localObject).a(MobileQQ.getContext(), paramString, "").c();; paramString = ((ThemeLocator)localObject).b(MobileQQ.getContext())) {
-          return new File(paramString).exists();
+        if (paramString.startsWith(SCID_THEME_ZIP_PREFIX)) {
+          paramString = ((ThemeLocator)localObject).a(MobileQQ.getContext(), paramString, "").c();
+        } else {
+          paramString = ((ThemeLocator)localObject).b(MobileQQ.getContext());
         }
+        return new File(paramString).exists();
       }
     }
     return false;
@@ -141,7 +160,7 @@ public class ThemeUpdateCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.quickupdate.ThemeUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

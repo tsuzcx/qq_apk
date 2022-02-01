@@ -28,124 +28,234 @@ final class LongTextMsgManager$3
   
   public void a(DownCallBack.DownResult paramDownResult)
   {
+    Object localObject2 = ",errStr:";
+    label653:
+    label820:
+    try
+    {
+      if ((paramDownResult.jdField_a_of_type_Int == 0) && (paramDownResult.jdField_a_of_type_ArrayOfByte != null))
+      {
+        localObject1 = new HashMap();
+        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+      }
+    }
+    catch (Exception localException1)
+    {
+      Object localObject1;
+      Object localObject3;
+      Object localObject4;
+      Object localObject5;
+      String str;
+      long l;
+      StringBuilder localStringBuilder;
+      label583:
+      label881:
+      break label1121;
+    }
     for (;;)
     {
       try
       {
-        if ((paramDownResult.jdField_a_of_type_Int != 0) || (paramDownResult.jdField_a_of_type_ArrayOfByte == null)) {
-          continue;
-        }
-        Object localObject1 = new HashMap();
-        localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        try
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg mr:" + localMessageRecord.toString());
-          }
-          Object localObject4 = new MessageInfo();
-          ((MessageInfo)localObject4).jdField_a_of_type_Int = localMessageRecord.istroop;
-          ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(paramDownResult.jdField_a_of_type_ArrayOfByte, (HashMap)localObject1, null, (MessageInfo)localObject4);
-          if ((localArrayList1 == null) || (localArrayList1.size() != 1) || ((((MessageRecord)localArrayList1.get(0)).msgtype != -1000) && (((MessageRecord)localArrayList1.get(0)).msgtype != -1051) && (((MessageRecord)localArrayList1.get(0)).msgtype != -1035))) {
-            continue;
-          }
-          localObject1 = null;
-          if (((MessageRecord)localArrayList1.get(0)).msgtype == -1035)
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("requestDownloadLongTextMsg mr:");
+          ((StringBuilder)localObject4).append(((MessageRecord)localObject3).toString());
+          QLog.d("StructLongTextMsg", 2, ((StringBuilder)localObject4).toString());
+        }
+        localObject5 = new MessageInfo();
+        ((MessageInfo)localObject5).jdField_a_of_type_Int = ((MessageRecord)localObject3).istroop;
+        localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(paramDownResult.jdField_a_of_type_ArrayOfByte, (HashMap)localObject1, null, (MessageInfo)localObject5);
+        if ((localObject4 != null) && (((ArrayList)localObject4).size() == 1) && ((((MessageRecord)((ArrayList)localObject4).get(0)).msgtype == -1000) || (((MessageRecord)((ArrayList)localObject4).get(0)).msgtype == -1051) || (((MessageRecord)((ArrayList)localObject4).get(0)).msgtype == -1035)))
+        {
+          if (((MessageRecord)((ArrayList)localObject4).get(0)).msgtype == -1035)
           {
-            localObject1 = (MessageRecord)localArrayList1.get(0);
-            MessageRecord.copyMessageRecordStatusField((MessageRecord)localObject1, localMessageRecord);
-            ((MessageRecord)localObject1).selfuin = localMessageRecord.selfuin;
-            ((MessageRecord)localObject1).frienduin = localMessageRecord.frienduin;
-            ((MessageRecord)localObject1).senderuin = localMessageRecord.senderuin;
-            ((MessageRecord)localObject1).istroop = localMessageRecord.istroop;
-            ((MessageRecord)localObject1).msgId = localMessageRecord.msgId;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+            localObject1 = (MessageRecord)((ArrayList)localObject4).get(0);
+            MessageRecord.copyMessageRecordStatusField((MessageRecord)localObject1, (MessageRecord)localObject3);
+            ((MessageRecord)localObject1).selfuin = ((MessageRecord)localObject3).selfuin;
+            ((MessageRecord)localObject1).frienduin = ((MessageRecord)localObject3).frienduin;
+            ((MessageRecord)localObject1).senderuin = ((MessageRecord)localObject3).senderuin;
+            ((MessageRecord)localObject1).istroop = ((MessageRecord)localObject3).istroop;
+            ((MessageRecord)localObject1).msgId = ((MessageRecord)localObject3).msgId;
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(((MessageRecord)localObject3).frienduin, ((MessageRecord)localObject3).istroop, ((MessageRecord)localObject3).uniseq);
             ((MixedMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER)).a(true, this.jdField_a_of_type_Int);
-            if (((((MessageRecord)localArrayList1.get(0)).istroop == 1) && (localMessageRecord.istroop == 1)) || ((((MessageRecord)localArrayList1.get(0)).istroop == 3000) && (localMessageRecord.istroop == 3000) && (localObject4 != null)))
-            {
-              ((MessageInfo)localObject4).jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(13, this.jdField_a_of_type_Long);
-              ((MessageInfo)localObject4).jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(24, this.jdField_a_of_type_Long);
-              String str = localMessageRecord.frienduin;
-              long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(str, localMessageRecord.istroop);
-              if (QLog.isColorLevel()) {
-                QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg update MessageInfo-- groupUin:" + str + "lastSeq:" + l + ",shMsgSeq:" + localMessageRecord.shmsgseq + ",msgInfo.hasFlag:" + ((MessageInfo)localObject4).a());
-              }
-              if ((localMessageRecord.shmsgseq > l) && (((MessageInfo)localObject4).a()))
-              {
-                localMessageRecord.mMessageInfo = ((MessageInfo)localObject4);
-                localObject4 = (BaseMessageManagerForTroopAndDisc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(1);
-                ArrayList localArrayList2 = new ArrayList();
-                localArrayList2.add(localMessageRecord);
-                ((BaseMessageManagerForTroopAndDisc)localObject4).a(str, localArrayList2);
-              }
-            }
-            if ((((MessageRecord)localArrayList1.get(0)).msgtype != -1035) || (localObject1 == null)) {
-              continue;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(1000, true, this.jdField_a_of_type_JavaLangString);
-            if (QLog.isColorLevel()) {
-              QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg onDownload success end! cost:" + (System.currentTimeMillis() - this.b));
-            }
-            ((MessageForLongTextMsg)localMessageRecord).loading = false;
-            ((LongTextMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, paramDownResult.jdField_a_of_type_Int, 1);
-            return;
           }
-          localMessageRecord.msg = ((MessageRecord)localArrayList1.get(0)).msg;
-          localMessageRecord.saveExtInfoToExtStr("long_text_recv_state", "1");
-          localMessageRecord.removeExtInfoToExtStr("long_text_msg_resid");
-          continue;
-          if (localObject2 == null) {
+          else
+          {
+            ((MessageRecord)localObject3).msg = ((MessageRecord)((ArrayList)localObject4).get(0)).msg;
+            ((MessageRecord)localObject3).saveExtInfoToExtStr("long_text_recv_state", "1");
+            ((MessageRecord)localObject3).removeExtInfoToExtStr("long_text_msg_resid");
+            localObject1 = null;
+          }
+          if (((((MessageRecord)((ArrayList)localObject4).get(0)).istroop != 1) || (((MessageRecord)localObject3).istroop != 1)) && ((((MessageRecord)((ArrayList)localObject4).get(0)).istroop != 3000) || (((MessageRecord)localObject3).istroop != 3000))) {
             continue;
           }
-        }
-        catch (Exception localException1)
-        {
-          localObject2 = localMessageRecord;
+          ((MessageInfo)localObject5).jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(13, this.jdField_a_of_type_Long);
+          ((MessageInfo)localObject5).jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(24, this.jdField_a_of_type_Long);
+          str = ((MessageRecord)localObject3).frienduin;
+          l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(str, ((MessageRecord)localObject3).istroop);
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("requestDownloadLongTextMsg update MessageInfo-- groupUin:");
+          localStringBuilder.append(str);
+          localStringBuilder.append("lastSeq:");
+          localStringBuilder.append(l);
+          localStringBuilder.append(",shMsgSeq:");
         }
       }
       catch (Exception localException2)
       {
-        MessageRecord localMessageRecord;
-        Object localObject2;
-        Object localObject3 = null;
-        continue;
+        break label881;
+        break label583;
+        break label653;
       }
-      if ((localObject2 instanceof MessageForLongTextMsg))
+      try
       {
-        ((MessageForLongTextMsg)localObject2).loading = false;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg onDownload exception! resultCode:" + paramDownResult.jdField_a_of_type_Int + ",errCode: " + paramDownResult.b + ",errStr:" + paramDownResult.jdField_a_of_type_JavaLangString + ",cost:" + (System.currentTimeMillis() - this.b));
-        continue;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, localMessageRecord.msg);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extStr", localMessageRecord.extStr);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
-        continue;
-        ((MessageForLongTextMsg)localMessageRecord).loading = false;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
-        continue;
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        try
+        localStringBuilder.append(((MessageRecord)localObject3).shmsgseq);
+        localStringBuilder.append(",msgInfo.hasFlag:");
+        localStringBuilder.append(((MessageInfo)localObject5).a());
+        QLog.d("StructLongTextMsg", 2, localStringBuilder.toString());
+        if ((((MessageRecord)localObject3).shmsgseq > l) && (((MessageInfo)localObject5).a()))
         {
-          if ((localObject2 instanceof MessageForLongTextMsg))
-          {
-            ((MessageForLongTextMsg)localObject2).loading = false;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg onDownload failed! resultCode:" + paramDownResult.jdField_a_of_type_Int + ",errCode: " + paramDownResult.b + ",errStr:" + paramDownResult.jdField_a_of_type_JavaLangString + ",cost:" + (System.currentTimeMillis() - this.b));
-          }
+          ((MessageRecord)localObject3).mMessageInfo = ((MessageInfo)localObject5);
+          localObject2 = (BaseMessageManagerForTroopAndDisc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(1);
+          localObject5 = new ArrayList();
+          ((ArrayList)localObject5).add(localObject3);
+          ((BaseMessageManagerForTroopAndDisc)localObject2).a(str, (ArrayList)localObject5);
         }
-        catch (Exception localException3) {}
+        if ((((MessageRecord)((ArrayList)localObject4).get(0)).msgtype == -1035) && (localObject1 != null))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(1000, true, this.jdField_a_of_type_JavaLangString);
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, ((MessageRecord)localObject3).msg);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extStr", ((MessageRecord)localObject3).extStr);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
+          break label820;
+          ((MessageForLongTextMsg)localObject3).loading = false;
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("requestDownloadLongTextMsg onDownload success end! cost:");
+          ((StringBuilder)localObject1).append(System.currentTimeMillis() - this.b);
+          QLog.d("StructLongTextMsg", 2, ((StringBuilder)localObject1).toString());
+        }
+        ((MessageForLongTextMsg)localObject3).loading = false;
+      }
+      catch (Exception localException3)
+      {
+        break label976;
       }
     }
+    localObject4 = ",cost:";
+    localObject1 = localObject2;
+    localObject2 = localObject4;
+    break label1133;
+    localObject2 = ",cost:";
+    localObject3 = ",errStr:";
+    try
+    {
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    }
+    catch (Exception localException4)
+    {
+      boolean bool;
+      label972:
+      label976:
+      break label1118;
+    }
+    try
+    {
+      bool = localObject1 instanceof MessageForLongTextMsg;
+      if (!bool) {}
+    }
+    catch (Exception localException5)
+    {
+      break label1098;
+    }
+    try
+    {
+      ((MessageForLongTextMsg)localObject1).loading = false;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
+    }
+    catch (Exception localException6)
+    {
+      break label972;
+    }
+    localObject3 = localObject1;
+    localObject2 = ",cost:";
+    localObject1 = ",errStr:";
+    break label1133;
+    if (QLog.isColorLevel())
+    {
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("requestDownloadLongTextMsg onDownload failed! resultCode:");
+      ((StringBuilder)localObject4).append(paramDownResult.jdField_a_of_type_Int);
+      ((StringBuilder)localObject4).append(",errCode: ");
+      ((StringBuilder)localObject4).append(paramDownResult.b);
+    }
+    try
+    {
+      ((StringBuilder)localObject4).append((String)localObject3);
+      ((StringBuilder)localObject4).append(paramDownResult.jdField_a_of_type_JavaLangString);
+    }
+    catch (Exception localException7)
+    {
+      label1095:
+      label1098:
+      break label1095;
+    }
+    try
+    {
+      ((StringBuilder)localObject4).append((String)localObject2);
+      ((StringBuilder)localObject4).append(System.currentTimeMillis() - this.b);
+      QLog.d("StructLongTextMsg", 2, ((StringBuilder)localObject4).toString());
+    }
+    catch (Exception localException8)
+    {
+      break label1098;
+    }
+    localObject2 = ",cost:";
+    localObject4 = ",errStr:";
+    localObject3 = localObject1;
+    localObject1 = localObject4;
+    break label1133;
+    label1118:
+    label1121:
+    localObject2 = ",cost:";
+    localObject1 = ",errStr:";
+    localObject3 = null;
+    label1133:
+    if ((localObject3 != null) && ((localObject3 instanceof MessageForLongTextMsg)))
+    {
+      ((MessageForLongTextMsg)localObject3).loading = false;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("requestDownloadLongTextMsg onDownload exception! resultCode:");
+      ((StringBuilder)localObject3).append(paramDownResult.jdField_a_of_type_Int);
+      ((StringBuilder)localObject3).append(",errCode: ");
+      ((StringBuilder)localObject3).append(paramDownResult.b);
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append(paramDownResult.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append((String)localObject2);
+      ((StringBuilder)localObject3).append(System.currentTimeMillis() - this.b);
+      QLog.d("StructLongTextMsg", 2, ((StringBuilder)localObject3).toString());
+    }
+    ((LongTextMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, paramDownResult.jdField_a_of_type_Int, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.LongTextMsgManager.3
  * JD-Core Version:    0.7.0.1
  */

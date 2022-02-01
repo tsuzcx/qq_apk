@@ -11,42 +11,42 @@ public class DoutuData
   implements Parcelable
 {
   public static final Parcelable.Creator<DoutuData> CREATOR = new DoutuData.1();
-  public String pic_down_url;
-  public int pic_height;
-  public String pic_md5;
-  public long pic_size;
+  public String picDownUrl;
+  public int picHeight;
+  public String picMd5;
+  public long picSize;
   @notColumn
-  public int pic_type = 1;
-  public int pic_width;
-  public String suppliers_name;
-  public String thumb_down_url;
-  public int thumb_height;
-  public String thumb_md5;
-  public long thumb_size;
-  public int thumb_width;
+  public int picType = 1;
+  public int picWidth;
+  public String suppliersName;
+  public String thumbDownUrl;
+  public int thumbHeight;
+  public String thumbMd5;
+  public long thumbSize;
+  public int thumbWidth;
   
   public DoutuData() {}
   
   public DoutuData(Parcel paramParcel)
   {
-    this.pic_md5 = paramParcel.readString();
-    this.pic_size = paramParcel.readLong();
-    this.pic_height = paramParcel.readInt();
-    this.pic_width = paramParcel.readInt();
-    this.pic_down_url = paramParcel.readString();
-    this.thumb_md5 = paramParcel.readString();
-    this.thumb_size = paramParcel.readLong();
-    this.thumb_height = paramParcel.readInt();
-    this.thumb_width = paramParcel.readInt();
-    this.thumb_down_url = paramParcel.readString();
-    this.suppliers_name = paramParcel.readString();
-    this.pic_type = paramParcel.readInt();
+    this.picMd5 = paramParcel.readString();
+    this.picSize = paramParcel.readLong();
+    this.picHeight = paramParcel.readInt();
+    this.picWidth = paramParcel.readInt();
+    this.picDownUrl = paramParcel.readString();
+    this.thumbMd5 = paramParcel.readString();
+    this.thumbSize = paramParcel.readLong();
+    this.thumbHeight = paramParcel.readInt();
+    this.thumbWidth = paramParcel.readInt();
+    this.thumbDownUrl = paramParcel.readString();
+    this.suppliersName = paramParcel.readString();
+    this.picType = paramParcel.readInt();
   }
   
   public DoutuData(String paramString1, String paramString2)
   {
-    this.pic_md5 = paramString1;
-    this.thumb_down_url = paramString2;
+    this.picMd5 = paramString1;
+    this.thumbDownUrl = paramString2;
   }
   
   public int describeContents()
@@ -56,23 +56,23 @@ public class DoutuData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.pic_md5);
-    paramParcel.writeLong(this.pic_size);
-    paramParcel.writeInt(this.pic_height);
-    paramParcel.writeInt(this.pic_width);
-    paramParcel.writeString(this.pic_down_url);
-    paramParcel.writeString(this.thumb_md5);
-    paramParcel.writeLong(this.thumb_size);
-    paramParcel.writeInt(this.thumb_height);
-    paramParcel.writeInt(this.thumb_width);
-    paramParcel.writeString(this.thumb_down_url);
-    paramParcel.writeString(this.suppliers_name);
-    paramParcel.writeInt(this.pic_type);
+    paramParcel.writeString(this.picMd5);
+    paramParcel.writeLong(this.picSize);
+    paramParcel.writeInt(this.picHeight);
+    paramParcel.writeInt(this.picWidth);
+    paramParcel.writeString(this.picDownUrl);
+    paramParcel.writeString(this.thumbMd5);
+    paramParcel.writeLong(this.thumbSize);
+    paramParcel.writeInt(this.thumbHeight);
+    paramParcel.writeInt(this.thumbWidth);
+    paramParcel.writeString(this.thumbDownUrl);
+    paramParcel.writeString(this.suppliersName);
+    paramParcel.writeInt(this.picType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuData
  * JD-Core Version:    0.7.0.1
  */

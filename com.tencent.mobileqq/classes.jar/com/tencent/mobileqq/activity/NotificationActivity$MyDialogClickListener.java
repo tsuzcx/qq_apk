@@ -16,27 +16,30 @@ class NotificationActivity$MyDialogClickListener
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int == 1) {
-        NotificationActivity.access$1900(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
+    if (paramInt == 0)
+    {
+      paramInt = this.jdField_a_of_type_Int;
+      if (paramInt == 1)
+      {
+        NotificationActivity.access$2000(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
+        NotificationActivity.access$1600(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity).sendEmptyMessage(4);
+        return;
+      }
+      if (paramInt == 2)
+      {
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity;
+        NotificationActivity.access$1800(paramDialogInterface, NotificationActivity.access$1700(paramDialogInterface));
       }
     }
-    while (paramInt != 1)
+    else if (paramInt == 1)
     {
-      NotificationActivity.access$1500(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity).sendEmptyMessage(4);
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Int != 2);
-      NotificationActivity.access$1700(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.access$1600(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
-      return;
+      NotificationActivity.access$2100(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
     }
-    NotificationActivity.access$2000(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.MyDialogClickListener
  * JD-Core Version:    0.7.0.1
  */

@@ -23,16 +23,16 @@ public class TopRecommendBannerAdapter
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
+    RecyclerView localRecyclerView = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    if (localRecyclerView != null)
     {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
+      if (localRecyclerView.isComputingLayout())
+      {
         ThreadManager.getUIHandler().postDelayed(new TopRecommendBannerAdapter.1(this), 500L);
+        return;
       }
+      notifyDataSetChanged();
     }
-    else {
-      return;
-    }
-    notifyDataSetChanged();
   }
   
   private void b()
@@ -62,23 +62,21 @@ public class TopRecommendBannerAdapter
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
     if (this.jdField_a_of_type_JavaUtilList != null) {
       this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_JavaUtilList != null)
-      {
-        if (this.jdField_a_of_type_JavaUtilList.size() < 10) {
-          break;
-        }
-        b();
-        a();
-      }
-      return;
+    } else {
       this.jdField_a_of_type_JavaUtilList = paramList;
     }
-    this.b.addAll(paramList);
-    this.jdField_a_of_type_JavaUtilList.clear();
-    a();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() >= 10)
+      {
+        b();
+        a();
+        return;
+      }
+      this.b.addAll(paramList);
+      this.jdField_a_of_type_JavaUtilList.clear();
+      a();
+    }
   }
   
   public boolean a()
@@ -99,19 +97,13 @@ public class TopRecommendBannerAdapter
   
   public boolean c()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        this.b.add(this.jdField_a_of_type_JavaUtilList.remove(0));
-        notifyItemInserted(this.b.size());
-        bool1 = true;
-      }
+      this.b.add(this.jdField_a_of_type_JavaUtilList.remove(0));
+      notifyItemInserted(this.b.size());
+      return true;
     }
-    return bool1;
+    return false;
   }
   
   public void d(boolean paramBoolean)
@@ -121,15 +113,16 @@ public class TopRecommendBannerAdapter
   
   public int getItemCount()
   {
-    if (this.b != null) {
-      return this.b.size() + a();
+    List localList = this.b;
+    if (localList != null) {
+      return localList.size() + a();
     }
     return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.TopRecommendBannerAdapter
  * JD-Core Version:    0.7.0.1
  */

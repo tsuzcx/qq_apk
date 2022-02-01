@@ -19,25 +19,34 @@ class DataReport$ReportTask
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DataReport", 2, "You must set mEventCode before report data!");
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+      if ((localObject != null) && (!((HashMap)localObject).isEmpty()))
+      {
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, this.jdField_a_of_type_JavaLangString, true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("eventCode:");
+          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append("\n");
+          ((StringBuilder)localObject).append(localStringBuilder.toString());
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilHashMap.toString());
+          QLog.i("DataReport", 2, ((StringBuilder)localObject).toString());
+        }
+        return;
       }
     }
-    do
-    {
-      return;
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, this.jdField_a_of_type_JavaLangString, true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
-    } while (!QLog.isColorLevel());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("eventCode:" + this.jdField_a_of_type_JavaLangString + "\n");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilHashMap.toString());
-    QLog.i("DataReport", 2, localStringBuilder.toString());
+    if (QLog.isColorLevel()) {
+      QLog.i("DataReport", 2, "You must set mEventCode before report data!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DataReport.ReportTask
  * JD-Core Version:    0.7.0.1
  */

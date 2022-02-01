@@ -33,21 +33,28 @@ public class SpringFestivalRedpacketPopBannerConfBean
   
   public boolean a()
   {
-    return (this.a == null) || (this.a.length() == 0);
+    JSONArray localJSONArray = this.a;
+    return (localJSONArray == null) || (localJSONArray.length() == 0);
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("SpringFestivalRedpacketPopBannerConfBean{allConfigJa=");
-    if (this.a == null) {}
-    for (String str = "null";; str = this.a.toString()) {
-      return str + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SpringFestivalRedpacketPopBannerConfBean{allConfigJa=");
+    Object localObject = this.a;
+    if (localObject == null) {
+      localObject = "null";
+    } else {
+      localObject = ((JSONArray)localObject).toString();
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketPopBannerConfBean
  * JD-Core Version:    0.7.0.1
  */

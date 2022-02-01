@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.troop.shortcutbar;
 
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.ILifeCycleHelper;
-import com.tencent.mobileqq.activity.aio.helper.ShortcutBarAIOHelper;
+import com.tencent.mobileqq.activity.aio.helper.TroopAppShortcutBarHelper;
+import com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarContext;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo.TroopFansEntryConfig;
 import com.tencent.mobileqq.troop.shortcutbar.essencemsg.EssenceMsgProcessor;
@@ -16,24 +15,29 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 
 public class ShortBarDataProvider
   extends IShortcutBarDataProvider
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private ShortcutBarAIOHelper jdField_a_of_type_ComTencentMobileqqActivityAioHelperShortcutBarAIOHelper;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private TroopAppShortcutBarHelper jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper;
+  private AIOShortcutBarContext jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext;
   private ArrayList<IShortcutBarProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap<Integer, ArrayList<ShortcutBarInfo>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   public boolean a;
   private ArrayList<Integer> b = new ArrayList();
   
-  public ShortBarDataProvider(BaseChatPie paramBaseChatPie, ILifeCycleHelper paramILifeCycleHelper)
+  public ShortBarDataProvider(AIOShortcutBarContext paramAIOShortcutBarContext, TroopAppShortcutBarHelper paramTroopAppShortcutBarHelper)
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperShortcutBarAIOHelper = ((ShortcutBarAIOHelper)paramILifeCycleHelper);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext = paramAIOShortcutBarContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper = paramTroopAppShortcutBarHelper;
     j();
     e();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramAIOShortcutBarContext.a();
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAIOShortcutBarContext.a();
   }
   
   private TroopShortcutBarApp a(ShortcutBarInfo paramShortcutBarInfo)
@@ -73,32 +77,38 @@ public class ShortBarDataProvider
   private void b(int paramInt, ArrayList<ShortcutBarInfo> paramArrayList)
   {
     Object localObject2;
+    Object localObject1;
     if (paramInt == 0)
     {
       localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2));
       localObject1 = paramArrayList;
       paramArrayList = (ArrayList<ShortcutBarInfo>)localObject2;
     }
-    while ((localObject1 == null) || (paramArrayList == null))
+    else
     {
-      return;
       localObject1 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0));
     }
-    Object localObject1 = ((ArrayList)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    if (localObject1 != null)
     {
-      localObject2 = (ShortcutBarInfo)((Iterator)localObject1).next();
-      Iterator localIterator = paramArrayList.iterator();
-      while (localIterator.hasNext())
+      if (paramArrayList == null) {
+        return;
+      }
+      localObject1 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Object localObject3 = (ShortcutBarInfo)localIterator.next();
-        if (((ShortcutBarInfo)localObject2).b() == ((ShortcutBarInfo)localObject3).b())
+        localObject2 = (ShortcutBarInfo)((Iterator)localObject1).next();
+        Iterator localIterator = paramArrayList.iterator();
+        while (localIterator.hasNext())
         {
-          localObject3 = a((ShortcutBarInfo)localObject2);
-          if (localObject3 != null)
+          Object localObject3 = (ShortcutBarInfo)localIterator.next();
+          if (((ShortcutBarInfo)localObject2).b() == ((ShortcutBarInfo)localObject3).b())
           {
-            ((TroopShortcutBarApp)localObject3).b(false);
-            ((TroopShortcutBarApp)localObject3).b(0);
+            localObject3 = a((ShortcutBarInfo)localObject2);
+            if (localObject3 != null)
+            {
+              ((TroopShortcutBarApp)localObject3).b(false);
+              ((TroopShortcutBarApp)localObject3).b(0);
+            }
           }
         }
       }
@@ -127,26 +137,29 @@ public class ShortBarDataProvider
     this.b.clear();
     k();
     this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperShortcutBarAIOHelper = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper = null;
   }
   
   public void a(int paramInt, ArrayList<ShortcutBarInfo> paramArrayList, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperShortcutBarAIOHelper == null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramArrayList);
-    b(paramInt, paramArrayList);
-    if (this.b.contains(Integer.valueOf(paramInt)))
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperShortcutBarAIOHelper.a(1, a(), paramBoolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperShortcutBarAIOHelper.a(0, (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0)), this.jdField_a_of_type_Boolean);
-      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper == null) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramArrayList);
+      b(paramInt, paramArrayList);
+      if (this.b.contains(Integer.valueOf(paramInt)))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper.a(1, a(), paramBoolean);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper.a(0, (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0)), this.jdField_a_of_type_Boolean);
+        return;
+      }
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper.a(0, paramArrayList, paramBoolean);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper.a(1, a(), false);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperShortcutBarAIOHelper.a(0, paramArrayList, paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperShortcutBarAIOHelper.a(1, a(), false);
   }
   
   public void a(Object paramObject)
@@ -207,33 +220,37 @@ public class ShortBarDataProvider
   
   protected void f()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(new AppShortcutBarProcessor(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new AppShortcutBarProcessor(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext, this));
   }
   
   protected void g()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(new QCircleMsgProcessor(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new QCircleMsgProcessor(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext, this));
   }
   
   protected void h()
   {
     TroopFansEntryConfig localTroopFansEntryConfig = (TroopFansEntryConfig)QConfigManager.a().a(701);
-    if ((localTroopFansEntryConfig == null) || (!localTroopFansEntryConfig.isGroupEntranceSwitchOn())) {
-      return;
+    if (localTroopFansEntryConfig != null)
+    {
+      if (!localTroopFansEntryConfig.isGroupEntranceSwitchOn()) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(new FansBeatRankProcessor(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext, this));
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new FansBeatRankProcessor(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this));
   }
   
   protected void i()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.a == 1)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(new EssenceMsgProcessor(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this));
+    AIOShortcutBarContext localAIOShortcutBarContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext;
+    if ((localAIOShortcutBarContext != null) && (localAIOShortcutBarContext.a() == 3)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(new EssenceMsgProcessor(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext, this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.ShortBarDataProvider
  * JD-Core Version:    0.7.0.1
  */

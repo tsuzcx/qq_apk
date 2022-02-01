@@ -44,15 +44,39 @@ public class ARLocalGestureCircleRecogResult$ARGestureResult
   
   public String toString()
   {
-    if (this.b > 0) {}
-    for (String str = "(" + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].x + "," + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].y + ")";; str = "(-1,-1)") {
-      return "ARGestureResult{, state = " + this.jdField_a_of_type_Int + ", type = " + this.jdField_a_of_type_JavaLangString + ", pointCnt = " + this.b + ", newPoint(x,y) = " + str + ", mode = " + this.d + '}';
+    Object localObject;
+    if (this.b > 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("(");
+      ((StringBuilder)localObject).append((int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].x);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append((int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].y);
+      ((StringBuilder)localObject).append(")");
+      localObject = ((StringBuilder)localObject).toString();
     }
+    else
+    {
+      localObject = "(-1,-1)";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARGestureResult{, state = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", type = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", pointCnt = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", newPoint(x,y) = ");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", mode = ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult.ARGestureResult
  * JD-Core Version:    0.7.0.1
  */

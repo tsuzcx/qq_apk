@@ -1,767 +1,633 @@
 package com.tencent.mobileqq.utils;
 
-import GeneralSettings.Setting;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.RoamSettingManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.cooperation.ApkUtils;
-import com.tencent.mobileqq.data.RoamSetting;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.data.troop.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
-import com.tencent.mobileqq.studymode.StudyModeManager;
-import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberLevelUtils;
-import com.tencent.mobileqq.troop.troopgame.TroopGameCardConfig;
-import com.tencent.mobileqq.vas.ColorNickManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import friendlist.stTroopRemarkInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class DBUtils
 {
-  DBUtils.LimitQueuedRunnablePool a = new DBUtils.LimitQueuedRunnablePool(10, 32);
-  
-  public static int a(String paramString1, String paramString2, String paramString3)
-  {
-    int i = Build.VERSION.SDK_INT;
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (i > 10) {}
-    for (i = 4;; i = 0) {
-      return localBaseApplication.getSharedPreferences("troop_news_notify", i).getInt(paramString1 + paramString2 + paramString3, 0);
-    }
-  }
-  
   public static DBUtils a()
   {
     return DBUtils.DBUtilsHolder.a;
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DBUtils", 2, "setTroopLuckyCharacterStatus troopUin = " + paramString2 + ", wording = " + paramString3);
-    }
-    long l = System.currentTimeMillis();
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences(paramString1, 0).edit();
-    localEditor.putLong(paramString1 + "troop_lucky_character_status" + paramString2 + "time", l);
-    localEditor.putString(paramString1 + "troop_lucky_character_status" + paramString2 + "wording", paramString3);
-    localEditor.apply();
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    int i = Build.VERSION.SDK_INT;
-    Object localObject = BaseApplication.getContext();
-    if (i > 10) {}
-    for (i = 4;; i = 0)
-    {
-      localObject = ((BaseApplication)localObject).getSharedPreferences("troop_news_notify", i).edit();
-      ((SharedPreferences.Editor)localObject).putInt(paramString1 + paramString2 + paramString3, paramInt);
-      ((SharedPreferences.Editor)localObject).commit();
-      return;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences(paramString1, 0).edit();
-    if (paramBoolean)
-    {
-      localEditor.putBoolean(paramString1 + "group_file_inner_reddot_tim" + paramString3, true);
-      localEditor.putBoolean(paramString1 + "group_file_reddot_tim" + paramString3, true);
-    }
-    for (;;)
-    {
-      localEditor.putBoolean(paramString1 + paramString2 + paramString3, paramBoolean);
-      localEditor.commit();
-      return;
-      localEditor.putBoolean(paramString1 + "group_file_inner_reddot_tim" + paramString3, false);
-      localEditor.putBoolean(paramString1 + "group_file_reddot_tim" + paramString3, false);
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DBUtils", 2, "setTroopGameCardRedPoint troopUin = " + paramString2 + ", isShowRedPoint = " + paramBoolean);
-    }
-    BaseApplication.getContext().getSharedPreferences(paramString1, 0).edit().putBoolean(paramString1 + "troop_game_card_red_point" + paramString2, paramBoolean).commit();
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    boolean bool = BaseApplication.getContext().getSharedPreferences(paramString1, 0).getBoolean(paramString1 + "troop_game_card_red_point_has_showed" + paramString2, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("DBUtils", 2, "hasShowTroopGameCardRedPoint troopUin = " + paramString2 + ", isShow = " + bool);
-    }
-    return bool;
-  }
-  
-  public static boolean a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    return BaseApplication.getContext().getSharedPreferences(paramString1, 0).getBoolean(paramString1 + paramString2 + paramString3, paramBoolean);
-  }
-  
-  public static boolean a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString2)) {
-      paramBoolean = false;
-    }
-    boolean bool;
-    do
-    {
-      return paramBoolean;
-      if (StudyModeManager.a()) {
-        return false;
-      }
-      Object localObject = (TroopGameCardConfig)QConfigManager.a().a(695);
-      if ((localObject == null) || (!((TroopGameCardConfig)localObject).a(paramString2))) {
-        return false;
-      }
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localObject == null) {
-        return false;
-      }
-      localObject = ((TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString2);
-      if (localObject == null) {
-        return false;
-      }
-      if (((TroopInfo)localObject).isHomeworkTroop()) {
-        return false;
-      }
-      if (!((TroopInfo)localObject).isTroopGameCardEnabled()) {
-        return false;
-      }
-      localObject = BaseApplication.getContext().getSharedPreferences(paramString1, 0);
-      if (a(paramString1, paramString2)) {
-        return false;
-      }
-      bool = ((SharedPreferences)localObject).getBoolean(paramString1 + "troop_game_card_red_point" + paramString2, paramBoolean);
-      paramBoolean = bool;
-    } while (!QLog.isColorLevel());
-    QLog.d("DBUtils", 2, "isShowTroopGameCardRedPoint troopUin = " + paramString2 + ", isShow = " + bool);
-    return bool;
-  }
-  
-  public static Object[] a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(paramString1, 0);
-    long l = localSharedPreferences.getLong(paramString1 + "troop_lucky_character_status" + paramString2 + "time", 0L);
-    paramString1 = localSharedPreferences.getString(paramString1 + "troop_lucky_character_status" + paramString2 + "wording", paramString3);
-    if (QLog.isColorLevel()) {
-      QLog.d("DBUtils", 2, "getKeyTroopLuckyCharacterStatus troopUin = " + paramString2 + ", lastFetchTime = " + l + ",wording" + paramString1);
-    }
-    return new Object[] { Long.valueOf(l), paramString1 };
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences(paramString1, 0).edit();
-    localEditor.putBoolean(paramString1 + paramString2 + paramString3, paramBoolean);
-    localEditor.commit();
-  }
-  
-  public static void b(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DBUtils", 2, "setTroopGameCardRedPointHasShowed troopUin = " + paramString2 + ", isShowRedPoint = " + paramBoolean);
-    }
-    BaseApplication.getContext().getSharedPreferences(paramString1, 0).edit().putBoolean(paramString1 + "troop_game_card_red_point_has_showed" + paramString2, paramBoolean).commit();
-  }
-  
-  public static void b(String paramString, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences(paramString, 0).edit();
-    localEditor.putBoolean(paramString + "troop_lucky_character_red_point", paramBoolean);
-    localEditor.apply();
-  }
-  
-  public static boolean b(String paramString)
-  {
-    boolean bool1 = false;
-    if (TextUtils.isEmpty(paramString)) {}
-    boolean bool2;
-    do
-    {
-      return bool1;
-      bool2 = BaseApplication.getContext().getSharedPreferences(paramString, 0).getBoolean(paramString + "troop_lucky_character_red_point", true);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("DBUtils", 2, "isShowTroopLuckyCharacterRedPoint isShow = " + bool2);
-    return bool2;
-  }
-  
-  public static void c(String paramString, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences(paramString, 0).edit();
-    localEditor.putBoolean(paramString + "troop_lucky_character_red_point_aio", paramBoolean);
-    localEditor.apply();
-  }
-  
-  public static boolean c(String paramString)
-  {
-    boolean bool1 = false;
-    if (TextUtils.isEmpty(paramString)) {}
-    boolean bool2;
-    do
-    {
-      return bool1;
-      bool2 = BaseApplication.getContext().getSharedPreferences(paramString, 0).getBoolean(paramString + "troop_lucky_character_red_point_aio", true);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("DBUtils", 2, "isShowLuckyCharacterRedPointInAIOSetting isShow = " + bool2);
-    return bool2;
-  }
-  
   public int a(Context paramContext)
   {
     int i = paramContext.getSharedPreferences("subaccount_sp", 0).getInt("subaccount_sp_version", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "getSubAccountVersion() ver=" + i);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getSubAccountVersion() ver=");
+      paramContext.append(i);
+      QLog.d("SUB_ACCOUNT", 2, paramContext.toString());
     }
     return i;
   }
   
   public int a(String paramString)
   {
-    int j = 0;
-    int i = j;
+    int i = 0;
     if (paramString != null)
     {
-      if (paramString.length() != 0) {
-        break label19;
+      if (paramString.length() == 0) {
+        return 0;
       }
+      Object localObject = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
+      if (localObject == null) {
+        return 0;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stick2top_");
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
+      int j = ((SharedPreferences)localObject).getInt(paramString, 0);
       i = j;
-    }
-    label19:
-    do
-    {
-      SharedPreferences localSharedPreferences;
-      do
+      if (QLog.isColorLevel())
       {
-        return i;
-        localSharedPreferences = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(j);
+        QLog.d("DBUtils", 2, ((StringBuilder)localObject).toString());
         i = j;
-      } while (localSharedPreferences == null);
-      paramString = "stick2top_" + paramString;
-      j = localSharedPreferences.getInt(paramString, 0);
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.d("DBUtils", 2, paramString + ":" + j);
-    return j;
-  }
-  
-  public Map<String, Integer> a(List<String> paramList, int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    HashMap localHashMap = new HashMap();
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return localHashMap;
-    }
-    if (paramQQAppInterface == null) {
-      return localHashMap;
-    }
-    RoamSettingManager localRoamSettingManager;
-    ArrayList localArrayList;
-    for (;;)
-    {
-      String str1;
-      try
-      {
-        localRoamSettingManager = (RoamSettingManager)paramQQAppInterface.getManager(QQManagerFactory.ROAM_SETTING_MANAGER);
-        localArrayList = new ArrayList();
-        int i = 0;
-        if (i >= paramList.size()) {
-          break;
-        }
-        str1 = (String)paramList.get(i);
-        if ((str1 == null) || (str1.length() == 0))
-        {
-          i += 1;
-          continue;
-        }
-        paramQQAppInterface = new StringBuilder(40);
       }
-      catch (ClassCastException paramList)
-      {
-        paramList.printStackTrace();
-        return localHashMap;
-      }
-      paramQQAppInterface.append("message.group.policy.");
-      paramQQAppInterface.append(str1);
-      String str2 = paramQQAppInterface.toString();
-      RoamSetting localRoamSetting = localRoamSettingManager.a(str2);
-      paramQQAppInterface = localRoamSetting;
-      if (localRoamSetting == null)
-      {
-        paramQQAppInterface = localRoamSetting;
-        if (!TextUtils.isEmpty(str2))
-        {
-          paramQQAppInterface = new RoamSetting(str2, Integer.toString(paramInt));
-          localArrayList.add(paramQQAppInterface);
-        }
-      }
-      localHashMap.put(str1, Integer.valueOf(RoamSetting.getIntValue(paramQQAppInterface, paramInt)));
     }
-    if (localArrayList.size() > 0) {
-      this.a.a(new DBUtils.1(this, localArrayList, localRoamSettingManager));
-    }
-    return localHashMap;
-  }
-  
-  public void a(int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RoamSetting", 2, "saveGeneralSettingRevision=" + paramInt);
-    }
-    ((RoamSettingManager)paramQQAppInterface.getManager(QQManagerFactory.ROAM_SETTING_MANAGER)).a(paramInt);
-  }
-  
-  public void a(Context paramContext)
-  {
-    int i = ApkUtils.a(paramContext);
-    paramContext.getSharedPreferences("subaccount_sp", 0).edit().putInt("subaccount_sp_version", i).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "setSubAccountVersion() ver=" + i);
-    }
+    return i;
   }
   
   public void a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    paramString = paramString + "subaccount_show_in_recentlist_first";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("subaccount_show_in_recentlist_first");
+    paramString = localStringBuilder.toString();
     paramContext.getSharedPreferences("subaccount_sp", 0).edit().putBoolean(paramString, paramBoolean).commit();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, Context paramContext)
-  {
-    if ((paramString1 == null) || (paramString1.length() == 0)) {}
-    while (paramString2 == null) {
-      return;
-    }
-    paramString2 = paramContext.getSharedPreferences(paramString2, 0).edit();
-    paramString1 = "message.group.policy." + paramString1;
-    paramString2.remove(paramString1);
-    paramString2.commit();
-    ((RoamSettingManager)paramQQAppInterface.getManager(QQManagerFactory.ROAM_SETTING_MANAGER)).a(paramString1);
   }
   
   public void a(String paramString, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    do
+    if (paramString != null)
     {
-      SharedPreferences localSharedPreferences;
-      do
-      {
+      if (paramString.length() == 0) {
         return;
-        localSharedPreferences = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
-      } while (localSharedPreferences == null);
-      paramString = "stick2top_" + paramString;
+      }
+      Object localObject = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
+      if (localObject == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stick2top_");
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
       paramInt += 1;
-      localSharedPreferences.edit().putInt(paramString, paramInt).commit();
-    } while (!QLog.isColorLevel());
-    QLog.d("DBUtils", 2, "set " + paramString + "=" + paramInt);
+      ((SharedPreferences)localObject).edit().putInt(paramString, paramInt).commit();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("set ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("=");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("DBUtils", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
-    if (localSharedPreferences == null) {}
-    do
-    {
-      return;
-      paramString = paramString + "bindQQAgain";
-      localSharedPreferences.edit().putBoolean(paramString, paramBoolean).commit();
-    } while (!QLog.isColorLevel());
-    QLog.d("DBUtils", 2, "setShownAgainBindDialog() " + paramString + ":" + paramBoolean);
-  }
-  
-  public void a(ArrayList<Setting> paramArrayList, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+    Object localObject = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
+    if (localObject == null) {
       return;
     }
-    long l = 0L;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("bindQQAgain");
+    paramString = localStringBuilder.toString();
+    ((SharedPreferences)localObject).edit().putBoolean(paramString, paramBoolean).commit();
     if (QLog.isColorLevel())
     {
-      l = System.currentTimeMillis();
-      QLog.d("RoamSetting", 2, "saveGeneralSettings setting start size = " + paramArrayList.size());
-    }
-    RoamSettingManager localRoamSettingManager = (RoamSettingManager)paramQQAppInterface.getManager(QQManagerFactory.ROAM_SETTING_MANAGER);
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    Object localObject = null;
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    String str;
-    label175:
-    int j;
-    for (;;)
-    {
-      if (i < paramArrayList.size())
-      {
-        paramQQAppInterface = (Setting)paramArrayList.get(i);
-        str = paramQQAppInterface.Path;
-        paramQQAppInterface = paramQQAppInterface.Value;
-        if (QLog.isColorLevel()) {
-          QLog.d("RoamSetting", 2, "saveGeneralSettings path =" + str + "; value = " + paramQQAppInterface);
-        }
-        if (str == null)
-        {
-          paramQQAppInterface = (QQAppInterface)localObject;
-          i += 1;
-          localObject = paramQQAppInterface;
-        }
-        else
-        {
-          if ((paramQQAppInterface != null) && (paramQQAppInterface.length() != 0) && (!paramQQAppInterface.equalsIgnoreCase(""))) {
-            break label523;
-          }
-          j = RoamSettingController.a(str);
-          if (j == 1) {
-            paramQQAppInterface = String.valueOf(1);
-          }
-        }
-      }
-    }
-    label523:
-    for (;;)
-    {
-      label224:
-      RoamSetting localRoamSetting = localRoamSettingManager.a(str, paramQQAppInterface);
-      if (localRoamSetting != null) {
-        localArrayList.add(localRoamSetting);
-      }
-      if (("message.ring.switch".equals(str)) || ("message.vibrate.switch".equals(str)) || ("message.ring.care".equals(str)))
-      {
-        if (localObject == null) {
-          localObject = localSharedPreferences.edit();
-        }
-        for (;;)
-        {
-          for (;;)
-          {
-            try
-            {
-              ((SharedPreferences.Editor)localObject).putString(str, paramQQAppInterface);
-              paramQQAppInterface = (QQAppInterface)localObject;
-            }
-            catch (Exception paramQQAppInterface)
-            {
-              paramQQAppInterface.printStackTrace();
-              paramQQAppInterface = (QQAppInterface)localObject;
-            }
-            break label175;
-            if (j == 2)
-            {
-              paramQQAppInterface = String.valueOf(0);
-              break label224;
-            }
-            if (j == 3)
-            {
-              paramQQAppInterface = String.valueOf(0);
-              break label224;
-            }
-            if (j == 4)
-            {
-              paramQQAppInterface = "";
-              break label224;
-            }
-            if (j == 5)
-            {
-              paramQQAppInterface = "";
-              break label224;
-            }
-            if (j == 6)
-            {
-              paramQQAppInterface = String.valueOf(1);
-              break label224;
-            }
-            if (j == 7)
-            {
-              paramQQAppInterface = String.valueOf(0);
-              break label224;
-            }
-            paramQQAppInterface = "0";
-            break label224;
-            if (Looper.getMainLooper().getThread() == Thread.currentThread())
-            {
-              ThreadManager.post(new DBUtils.2(this, localRoamSettingManager, localArrayList), 5, null, false);
-              if (localObject == null) {}
-            }
-            try
-            {
-              ((SharedPreferences.Editor)localObject).commit();
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("DBUtils", 2, "GeneralSettings zsw saveGeneralSettings setting end, consume time =" + (System.currentTimeMillis() - l));
-              return;
-              localRoamSettingManager.a(localArrayList);
-            }
-            catch (Exception paramArrayList)
-            {
-              for (;;)
-              {
-                paramArrayList.printStackTrace();
-              }
-            }
-          }
-        }
-      }
-      paramQQAppInterface = (QQAppInterface)localObject;
-      break label175;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setShownAgainBindDialog() ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("DBUtils", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
-    if (localSharedPreferences == null) {}
-    do
-    {
+    Object localObject = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
+    if (localObject == null) {
       return;
-      localSharedPreferences.edit().putBoolean("hasShowBindDialog", paramBoolean).commit();
-    } while (!QLog.isColorLevel());
-    QLog.d("SUB_ACCOUNT", 2, "setHasShowBindDialog:" + paramBoolean);
+    }
+    ((SharedPreferences)localObject).edit().putBoolean("hasShowBindDialog", paramBoolean).commit();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setHasShowBindDialog:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   public boolean a()
   {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
-    boolean bool1;
-    if (localSharedPreferences == null) {
-      bool1 = true;
+    Object localObject = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
+    if (localObject == null) {
+      return true;
     }
-    boolean bool2;
-    do
+    boolean bool = ((SharedPreferences)localObject).getBoolean("hasShowBindDialog", false);
+    if (QLog.isColorLevel())
     {
-      return bool1;
-      bool2 = localSharedPreferences.getBoolean("hasShowBindDialog", false);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("SUB_ACCOUNT", 2, "hasShowBindDialog:" + bool2);
-    return bool2;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hasShowBindDialog:");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
+    }
+    return bool;
   }
   
   public boolean a(Context paramContext, String paramString)
   {
     boolean bool1 = false;
-    boolean bool2 = false;
-    if (paramString == null) {}
-    do
+    if (paramString == null) {
+      return false;
+    }
+    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences(paramString, 0);
+    paramContext = paramContext.getSharedPreferences("subaccount_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("subaccount_show_in_recentlist_first");
+    paramString = localStringBuilder.toString();
+    if (localSharedPreferences.getBoolean(paramString, false))
     {
-      return bool2;
-      SharedPreferences localSharedPreferences = paramContext.getSharedPreferences(paramString, 0);
-      paramContext = paramContext.getSharedPreferences("subaccount_sp", 0);
-      paramString = paramString + "subaccount_show_in_recentlist_first";
-      if (localSharedPreferences.getBoolean(paramString, false))
-      {
-        localSharedPreferences.edit().remove(paramString).commit();
-        paramContext.edit().putBoolean(paramString, true).commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("SUB_ACCOUNT", 2, "subAccountOldVersionUpdate() update showedBefore:=true");
-        }
+      localSharedPreferences.edit().remove(paramString).commit();
+      paramContext.edit().putBoolean(paramString, true).commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "subAccountOldVersionUpdate() update showedBefore:=true");
       }
-      if (localSharedPreferences.getBoolean("subaccount_is_top_in_recentlist", false))
+    }
+    if (localSharedPreferences.getBoolean("subaccount_is_top_in_recentlist", false))
+    {
+      boolean bool2 = localSharedPreferences.getBoolean("subaccount_is_top_in_recentlist", false);
+      localSharedPreferences.edit().remove("subaccount_is_top_in_recentlist").commit();
+      bool1 = bool2;
+      if (QLog.isColorLevel())
       {
-        bool2 = localSharedPreferences.getBoolean("subaccount_is_top_in_recentlist", false);
-        localSharedPreferences.edit().remove("subaccount_is_top_in_recentlist").commit();
+        paramContext = new StringBuilder();
+        paramContext.append("subAccountOldVersionUpdate() remove isTopRU=");
+        paramContext.append(bool2);
+        QLog.d("SUB_ACCOUNT", 2, paramContext.toString());
         bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("SUB_ACCOUNT", 2, "subAccountOldVersionUpdate() remove isTopRU=" + bool2);
-          bool1 = bool2;
-        }
       }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.d("SUB_ACCOUNT", 2, "subAccountOldVersionUpdate() isTop=" + bool1);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("subAccountOldVersionUpdate() isTop=");
+      paramContext.append(bool1);
+      QLog.d("SUB_ACCOUNT", 2, paramContext.toString());
+    }
     return bool1;
   }
   
   public boolean a(String paramString)
   {
-    if (((paramString == null) || (paramString.length() < 5)) && (QLog.isColorLevel())) {
-      QLog.d("SUB_ACCOUNT", 2, "shownBindQQAgain() return.FALSE: mainUin=" + paramString);
-    }
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
-    boolean bool1;
-    if (localSharedPreferences == null) {
-      bool1 = true;
-    }
-    boolean bool2;
-    do
+    if (((paramString == null) || (paramString.length() < 5)) && (QLog.isColorLevel()))
     {
-      return bool1;
-      paramString = paramString + "bindQQAgain";
-      bool2 = localSharedPreferences.getBoolean(paramString, false);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("SUB_ACCOUNT", 2, "shownBindQQAgain() " + paramString + ":" + bool2);
-    return bool2;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shownBindQQAgain() return.FALSE: mainUin=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = BaseApplication.getContext().getSharedPreferences("subaccount_sp", 0);
+    if (localObject == null) {
+      return true;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("bindQQAgain");
+    paramString = localStringBuilder.toString();
+    boolean bool = ((SharedPreferences)localObject).getBoolean(paramString, false);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shownBindQQAgain() ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
+    }
+    return bool;
   }
   
-  public Object[] a(QQAppInterface paramQQAppInterface, String paramString, ArrayList<stTroopRemarkInfo> paramArrayList)
+  /* Error */
+  public Object[] a(com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface, String paramString, java.util.ArrayList<friendlist.stTroopRemarkInfo> paramArrayList)
   {
-    Object[] arrayOfObject = new Object[2];
-    arrayOfObject[0] = null;
-    arrayOfObject[1] = Boolean.valueOf(false);
-    if (paramArrayList == null) {
-      return arrayOfObject;
-    }
-    EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
-    localEntityTransaction.begin();
-    ArrayList localArrayList = new ArrayList();
-    arrayOfObject[0] = localArrayList;
-    int i = 0;
-    label721:
-    for (;;)
-    {
-      try
-      {
-        if (i < paramArrayList.size())
-        {
-          stTroopRemarkInfo localstTroopRemarkInfo = (stTroopRemarkInfo)paramArrayList.get(i);
-          Object localObject = (TroopMemberCardInfo)localEntityManager.find(TroopMemberCardInfo.class, new String[] { paramString, String.valueOf(localstTroopRemarkInfo.MemberUin) });
-          int j;
-          if (localObject != null)
-          {
-            j = 1;
-            ((TroopMemberCardInfo)localObject).email = localstTroopRemarkInfo.sEmail;
-            ((TroopMemberCardInfo)localObject).memberuin = String.valueOf(localstTroopRemarkInfo.MemberUin);
-            ((TroopMemberCardInfo)localObject).memo = localstTroopRemarkInfo.sMemo;
-            ((TroopMemberCardInfo)localObject).colorNick = ColorNickManager.b(localstTroopRemarkInfo.sName.getBytes());
-            if (((TroopMemberCardInfo)localObject).colorNick == null) {
-              ((TroopMemberCardInfo)localObject).colorNick = localstTroopRemarkInfo.sName;
-            }
-            ((TroopMemberCardInfo)localObject).name = ColorNickManager.b(((TroopMemberCardInfo)localObject).colorNick);
-            ((TroopMemberCardInfo)localObject).nick = localstTroopRemarkInfo.strNick;
-            ((TroopMemberCardInfo)localObject).sex = localstTroopRemarkInfo.cGender;
-            ((TroopMemberCardInfo)localObject).tel = localstTroopRemarkInfo.sPhone;
-            ((TroopMemberCardInfo)localObject).troopuin = paramString;
-            ((TroopMemberCardInfo)localObject).level = localstTroopRemarkInfo.strRank;
-            ((TroopMemberCardInfo)localObject).job = localstTroopRemarkInfo.bytes_job;
-            ((TroopMemberCardInfo)localObject).charm = ((int)localstTroopRemarkInfo.GlamourLevel);
-            ((TroopMemberCardInfo)localObject).torchFlag = ((int)localstTroopRemarkInfo.TorchbearerFlag);
-            if (j != 0)
-            {
-              localEntityManager.update((Entity)localObject);
-              localArrayList.add(localObject);
-              j = TroopMemberLevelUtils.a(localstTroopRemarkInfo.vecGroupHonor);
-              TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)localEntityManager.find(TroopMemberInfo.class, new String[] { paramString, String.valueOf(localstTroopRemarkInfo.MemberUin) });
-              if (localTroopMemberInfo == null) {
-                break label721;
-              }
-              localTroopMemberInfo.troopColorNick = ((TroopMemberCardInfo)localObject).colorNick;
-              localTroopMemberInfo.troopnick = ((TroopMemberCardInfo)localObject).name;
-              localTroopMemberInfo.friendnick = localstTroopRemarkInfo.strNick;
-              localTroopMemberInfo.memberuin = String.valueOf(localstTroopRemarkInfo.MemberUin);
-              localTroopMemberInfo.sex = localstTroopRemarkInfo.cGender;
-              localTroopMemberInfo.troopuin = paramString;
-              localTroopMemberInfo.mGlamourLevel = ((int)localstTroopRemarkInfo.GlamourLevel);
-              localTroopMemberInfo.mVipType = ((TroopMemberCardInfo)localObject).mVipType;
-              localTroopMemberInfo.mVipLevel = ((TroopMemberCardInfo)localObject).mVipLevel;
-              localTroopMemberInfo.newRealLevel = j;
-              if ((localstTroopRemarkInfo.strRank != null) && (localstTroopRemarkInfo.strRank.length() > 0))
-              {
-                localObject = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-                if (localObject != null)
-                {
-                  localObject = ((TroopManager)localObject).b(paramString);
-                  if (localObject != null)
-                  {
-                    localObject = ((TroopInfo)localObject).getTroopLevelMap();
-                    if (localObject != null)
-                    {
-                      Iterator localIterator = ((ConcurrentHashMap)localObject).keySet().iterator();
-                      if (localIterator.hasNext())
-                      {
-                        Integer localInteger = (Integer)localIterator.next();
-                        if (!localstTroopRemarkInfo.strRank.equals(((ConcurrentHashMap)localObject).get(localInteger))) {
-                          continue;
-                        }
-                        localTroopMemberInfo.realLevel = localInteger.intValue();
-                      }
-                    }
-                  }
-                }
-              }
-              localEntityManager.update(localTroopMemberInfo);
-              break label721;
-            }
-          }
-          else
-          {
-            localObject = new TroopMemberCardInfo();
-            j = 0;
-            continue;
-          }
-          localEntityManager.persist((Entity)localObject);
-          continue;
-        }
-        i += 1;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        arrayOfObject[1] = Boolean.valueOf(false);
-        if (QLog.isColorLevel()) {
-          QLog.e("handlerGetTroopMemberCardInfoList()", 2, paramQQAppInterface.toString());
-        }
-        localEntityTransaction.end();
-        localEntityManager.close();
-        if (QLog.isColorLevel()) {
-          QLog.d("handlerGetTroopMemberCardInfoList", 2, "insertTroopMemberCardList bRet = " + arrayOfObject[1]);
-        }
-        return arrayOfObject;
-        arrayOfObject[1] = Boolean.valueOf(true);
-        localEntityTransaction.commit();
-        localEntityTransaction.end();
-        localEntityManager.close();
-      }
-      finally
-      {
-        localEntityTransaction.end();
-        localEntityManager.close();
-      }
-    }
+    // Byte code:
+    //   0: iconst_2
+    //   1: anewarray 4	java/lang/Object
+    //   4: astore 8
+    //   6: iconst_0
+    //   7: invokestatic 154	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   10: astore 6
+    //   12: aload 8
+    //   14: iconst_0
+    //   15: aconst_null
+    //   16: aastore
+    //   17: aload 8
+    //   19: iconst_1
+    //   20: aload 6
+    //   22: aastore
+    //   23: aload_3
+    //   24: ifnonnull +6 -> 30
+    //   27: aload 8
+    //   29: areturn
+    //   30: aload_1
+    //   31: invokevirtual 160	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   34: invokevirtual 166	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   37: astore 9
+    //   39: aload 9
+    //   41: invokevirtual 172	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   44: astore 10
+    //   46: aload 10
+    //   48: invokevirtual 177	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   51: new 179	java/util/ArrayList
+    //   54: dup
+    //   55: invokespecial 180	java/util/ArrayList:<init>	()V
+    //   58: astore 11
+    //   60: aload 8
+    //   62: iconst_0
+    //   63: aload 11
+    //   65: aastore
+    //   66: iconst_0
+    //   67: istore 4
+    //   69: iload 4
+    //   71: aload_3
+    //   72: invokevirtual 183	java/util/ArrayList:size	()I
+    //   75: if_icmpge +538 -> 613
+    //   78: aload_3
+    //   79: iload 4
+    //   81: invokevirtual 187	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   84: checkcast 189	friendlist/stTroopRemarkInfo
+    //   87: astore 12
+    //   89: aload 9
+    //   91: ldc 191
+    //   93: iconst_2
+    //   94: anewarray 66	java/lang/String
+    //   97: dup
+    //   98: iconst_0
+    //   99: aload_2
+    //   100: aastore
+    //   101: dup
+    //   102: iconst_1
+    //   103: aload 12
+    //   105: getfield 195	friendlist/stTroopRemarkInfo:MemberUin	J
+    //   108: invokestatic 198	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   111: aastore
+    //   112: invokevirtual 202	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   115: checkcast 191	com/tencent/mobileqq/data/troop/TroopMemberCardInfo
+    //   118: astore 7
+    //   120: aload 7
+    //   122: ifnull +9 -> 131
+    //   125: iconst_1
+    //   126: istore 5
+    //   128: goto +15 -> 143
+    //   131: new 191	com/tencent/mobileqq/data/troop/TroopMemberCardInfo
+    //   134: dup
+    //   135: invokespecial 203	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:<init>	()V
+    //   138: astore 7
+    //   140: iconst_0
+    //   141: istore 5
+    //   143: aload 7
+    //   145: aload 12
+    //   147: getfield 207	friendlist/stTroopRemarkInfo:sEmail	Ljava/lang/String;
+    //   150: putfield 210	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:email	Ljava/lang/String;
+    //   153: aload 7
+    //   155: aload 12
+    //   157: getfield 195	friendlist/stTroopRemarkInfo:MemberUin	J
+    //   160: invokestatic 198	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   163: putfield 213	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:memberuin	Ljava/lang/String;
+    //   166: aload 7
+    //   168: aload 12
+    //   170: getfield 216	friendlist/stTroopRemarkInfo:sMemo	Ljava/lang/String;
+    //   173: putfield 219	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:memo	Ljava/lang/String;
+    //   176: aload 7
+    //   178: aload 12
+    //   180: getfield 222	friendlist/stTroopRemarkInfo:sName	Ljava/lang/String;
+    //   183: invokevirtual 226	java/lang/String:getBytes	()[B
+    //   186: invokestatic 232	com/tencent/mobileqq/vas/ColorNickManager:b	([B)Ljava/lang/String;
+    //   189: putfield 235	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:colorNick	Ljava/lang/String;
+    //   192: aload 7
+    //   194: getfield 235	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:colorNick	Ljava/lang/String;
+    //   197: ifnonnull +13 -> 210
+    //   200: aload 7
+    //   202: aload 12
+    //   204: getfield 222	friendlist/stTroopRemarkInfo:sName	Ljava/lang/String;
+    //   207: putfield 235	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:colorNick	Ljava/lang/String;
+    //   210: aload 7
+    //   212: aload 7
+    //   214: getfield 235	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:colorNick	Ljava/lang/String;
+    //   217: invokestatic 238	com/tencent/mobileqq/vas/ColorNickManager:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   220: putfield 241	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:name	Ljava/lang/String;
+    //   223: aload 7
+    //   225: aload 12
+    //   227: getfield 244	friendlist/stTroopRemarkInfo:strNick	Ljava/lang/String;
+    //   230: putfield 247	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:nick	Ljava/lang/String;
+    //   233: aload 7
+    //   235: aload 12
+    //   237: getfield 251	friendlist/stTroopRemarkInfo:cGender	B
+    //   240: putfield 254	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:sex	B
+    //   243: aload 7
+    //   245: aload 12
+    //   247: getfield 257	friendlist/stTroopRemarkInfo:sPhone	Ljava/lang/String;
+    //   250: putfield 260	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:tel	Ljava/lang/String;
+    //   253: aload 7
+    //   255: aload_2
+    //   256: putfield 263	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:troopuin	Ljava/lang/String;
+    //   259: aload 7
+    //   261: aload 12
+    //   263: getfield 266	friendlist/stTroopRemarkInfo:strRank	Ljava/lang/String;
+    //   266: putfield 269	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:level	Ljava/lang/String;
+    //   269: aload 7
+    //   271: aload 12
+    //   273: getfield 272	friendlist/stTroopRemarkInfo:bytes_job	Ljava/lang/String;
+    //   276: putfield 275	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:job	Ljava/lang/String;
+    //   279: aload 7
+    //   281: aload 12
+    //   283: getfield 278	friendlist/stTroopRemarkInfo:GlamourLevel	J
+    //   286: l2i
+    //   287: putfield 282	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:charm	I
+    //   290: aload 7
+    //   292: aload 12
+    //   294: getfield 285	friendlist/stTroopRemarkInfo:TorchbearerFlag	J
+    //   297: l2i
+    //   298: putfield 288	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:torchFlag	I
+    //   301: iload 5
+    //   303: ifeq +14 -> 317
+    //   306: aload 9
+    //   308: aload 7
+    //   310: invokevirtual 292	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   313: pop
+    //   314: goto +10 -> 324
+    //   317: aload 9
+    //   319: aload 7
+    //   321: invokevirtual 296	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   324: aload 11
+    //   326: aload 7
+    //   328: invokevirtual 300	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   331: pop
+    //   332: aload 12
+    //   334: getfield 304	friendlist/stTroopRemarkInfo:vecGroupHonor	[B
+    //   337: invokestatic 309	com/tencent/mobileqq/troop/troopMemberLevel/TroopMemberLevelUtils:a	([B)I
+    //   340: istore 5
+    //   342: aload 9
+    //   344: ldc_w 311
+    //   347: iconst_2
+    //   348: anewarray 66	java/lang/String
+    //   351: dup
+    //   352: iconst_0
+    //   353: aload_2
+    //   354: aastore
+    //   355: dup
+    //   356: iconst_1
+    //   357: aload 12
+    //   359: getfield 195	friendlist/stTroopRemarkInfo:MemberUin	J
+    //   362: invokestatic 198	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   365: aastore
+    //   366: invokevirtual 202	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   369: checkcast 311	com/tencent/mobileqq/data/troop/TroopMemberInfo
+    //   372: astore 13
+    //   374: aload 13
+    //   376: ifnull +367 -> 743
+    //   379: aload 13
+    //   381: aload 7
+    //   383: getfield 235	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:colorNick	Ljava/lang/String;
+    //   386: putfield 314	com/tencent/mobileqq/data/troop/TroopMemberInfo:troopColorNick	Ljava/lang/String;
+    //   389: aload 13
+    //   391: aload 7
+    //   393: getfield 241	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:name	Ljava/lang/String;
+    //   396: putfield 317	com/tencent/mobileqq/data/troop/TroopMemberInfo:troopnick	Ljava/lang/String;
+    //   399: aload 13
+    //   401: aload 12
+    //   403: getfield 244	friendlist/stTroopRemarkInfo:strNick	Ljava/lang/String;
+    //   406: putfield 320	com/tencent/mobileqq/data/troop/TroopMemberInfo:friendnick	Ljava/lang/String;
+    //   409: aload 13
+    //   411: aload 12
+    //   413: getfield 195	friendlist/stTroopRemarkInfo:MemberUin	J
+    //   416: invokestatic 198	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   419: putfield 321	com/tencent/mobileqq/data/troop/TroopMemberInfo:memberuin	Ljava/lang/String;
+    //   422: aload 13
+    //   424: aload 12
+    //   426: getfield 251	friendlist/stTroopRemarkInfo:cGender	B
+    //   429: putfield 322	com/tencent/mobileqq/data/troop/TroopMemberInfo:sex	B
+    //   432: aload 13
+    //   434: aload_2
+    //   435: putfield 323	com/tencent/mobileqq/data/troop/TroopMemberInfo:troopuin	Ljava/lang/String;
+    //   438: aload 13
+    //   440: aload 12
+    //   442: getfield 278	friendlist/stTroopRemarkInfo:GlamourLevel	J
+    //   445: l2i
+    //   446: putfield 326	com/tencent/mobileqq/data/troop/TroopMemberInfo:mGlamourLevel	I
+    //   449: aload 13
+    //   451: aload 7
+    //   453: getfield 329	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:mVipType	I
+    //   456: putfield 330	com/tencent/mobileqq/data/troop/TroopMemberInfo:mVipType	I
+    //   459: aload 13
+    //   461: aload 7
+    //   463: getfield 333	com/tencent/mobileqq/data/troop/TroopMemberCardInfo:mVipLevel	I
+    //   466: putfield 334	com/tencent/mobileqq/data/troop/TroopMemberInfo:mVipLevel	I
+    //   469: aload 13
+    //   471: iload 5
+    //   473: putfield 337	com/tencent/mobileqq/data/troop/TroopMemberInfo:newRealLevel	I
+    //   476: aload 12
+    //   478: getfield 266	friendlist/stTroopRemarkInfo:strRank	Ljava/lang/String;
+    //   481: ifnull +259 -> 740
+    //   484: aload 12
+    //   486: getfield 266	friendlist/stTroopRemarkInfo:strRank	Ljava/lang/String;
+    //   489: invokevirtual 70	java/lang/String:length	()I
+    //   492: ifle +248 -> 740
+    //   495: aload_1
+    //   496: getstatic 342	com/tencent/mobileqq/app/QQManagerFactory:TROOP_MANAGER	I
+    //   499: invokevirtual 346	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   502: checkcast 348	com/tencent/mobileqq/app/TroopManager
+    //   505: astore 7
+    //   507: aload 7
+    //   509: ifnull +93 -> 602
+    //   512: aload 7
+    //   514: aload_2
+    //   515: invokevirtual 351	com/tencent/mobileqq/app/TroopManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/troop/TroopInfo;
+    //   518: astore 7
+    //   520: aload 7
+    //   522: ifnull +80 -> 602
+    //   525: aload 7
+    //   527: invokevirtual 357	com/tencent/mobileqq/data/troop/TroopInfo:getTroopLevelMap	()Ljava/util/concurrent/ConcurrentHashMap;
+    //   530: astore 7
+    //   532: aload 7
+    //   534: ifnull +68 -> 602
+    //   537: aload 7
+    //   539: invokevirtual 363	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
+    //   542: invokeinterface 369 1 0
+    //   547: astore 14
+    //   549: aload 14
+    //   551: invokeinterface 374 1 0
+    //   556: ifeq +46 -> 602
+    //   559: aload 14
+    //   561: invokeinterface 378 1 0
+    //   566: checkcast 380	java/lang/Integer
+    //   569: astore 15
+    //   571: aload 12
+    //   573: getfield 266	friendlist/stTroopRemarkInfo:strRank	Ljava/lang/String;
+    //   576: aload 7
+    //   578: aload 15
+    //   580: invokevirtual 383	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   583: invokevirtual 386	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   586: ifeq +151 -> 737
+    //   589: aload 13
+    //   591: aload 15
+    //   593: invokevirtual 389	java/lang/Integer:intValue	()I
+    //   596: putfield 392	com/tencent/mobileqq/data/troop/TroopMemberInfo:realLevel	I
+    //   599: goto +3 -> 602
+    //   602: aload 9
+    //   604: aload 13
+    //   606: invokevirtual 292	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   609: pop
+    //   610: goto +133 -> 743
+    //   613: aload 8
+    //   615: iconst_1
+    //   616: iconst_1
+    //   617: invokestatic 154	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   620: aastore
+    //   621: aload 10
+    //   623: invokevirtual 394	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   626: aload 10
+    //   628: invokevirtual 397	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   631: aload 9
+    //   633: invokevirtual 400	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   636: goto +38 -> 674
+    //   639: astore_1
+    //   640: goto +8 -> 648
+    //   643: astore_1
+    //   644: goto +75 -> 719
+    //   647: astore_1
+    //   648: aload 8
+    //   650: iconst_1
+    //   651: aload 6
+    //   653: aastore
+    //   654: invokestatic 41	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   657: ifeq -31 -> 626
+    //   660: ldc_w 402
+    //   663: iconst_2
+    //   664: aload_1
+    //   665: invokevirtual 403	java/lang/Exception:toString	()Ljava/lang/String;
+    //   668: invokestatic 406	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   671: goto -45 -> 626
+    //   674: invokestatic 41	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   677: ifeq +39 -> 716
+    //   680: new 43	java/lang/StringBuilder
+    //   683: dup
+    //   684: invokespecial 44	java/lang/StringBuilder:<init>	()V
+    //   687: astore_1
+    //   688: aload_1
+    //   689: ldc_w 408
+    //   692: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   695: pop
+    //   696: aload_1
+    //   697: aload 8
+    //   699: iconst_1
+    //   700: aaload
+    //   701: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   704: pop
+    //   705: ldc_w 413
+    //   708: iconst_2
+    //   709: aload_1
+    //   710: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   713: invokestatic 63	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   716: aload 8
+    //   718: areturn
+    //   719: aload 10
+    //   721: invokevirtual 397	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   724: aload 9
+    //   726: invokevirtual 400	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   729: goto +5 -> 734
+    //   732: aload_1
+    //   733: athrow
+    //   734: goto -2 -> 732
+    //   737: goto -188 -> 549
+    //   740: goto -138 -> 602
+    //   743: iload 4
+    //   745: iconst_1
+    //   746: iadd
+    //   747: istore 4
+    //   749: goto -680 -> 69
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	752	0	this	DBUtils
+    //   0	752	1	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
+    //   0	752	2	paramString	String
+    //   0	752	3	paramArrayList	java.util.ArrayList<friendlist.stTroopRemarkInfo>
+    //   67	681	4	i	int
+    //   126	346	5	j	int
+    //   10	642	6	localBoolean	java.lang.Boolean
+    //   118	459	7	localObject	Object
+    //   4	713	8	arrayOfObject	Object[]
+    //   37	688	9	localEntityManager	com.tencent.mobileqq.persistence.EntityManager
+    //   44	676	10	localEntityTransaction	com.tencent.mobileqq.persistence.EntityTransaction
+    //   58	267	11	localArrayList	java.util.ArrayList
+    //   87	485	12	localstTroopRemarkInfo	friendlist.stTroopRemarkInfo
+    //   372	233	13	localTroopMemberInfo	com.tencent.mobileqq.data.troop.TroopMemberInfo
+    //   547	13	14	localIterator	java.util.Iterator
+    //   569	23	15	localInteger	java.lang.Integer
+    // Exception table:
+    //   from	to	target	type
+    //   342	374	639	java/lang/Exception
+    //   379	507	639	java/lang/Exception
+    //   512	520	639	java/lang/Exception
+    //   525	532	639	java/lang/Exception
+    //   537	549	639	java/lang/Exception
+    //   549	599	639	java/lang/Exception
+    //   602	610	639	java/lang/Exception
+    //   613	626	639	java/lang/Exception
+    //   69	120	643	finally
+    //   131	140	643	finally
+    //   143	210	643	finally
+    //   210	301	643	finally
+    //   306	314	643	finally
+    //   317	324	643	finally
+    //   324	342	643	finally
+    //   342	374	643	finally
+    //   379	507	643	finally
+    //   512	520	643	finally
+    //   525	532	643	finally
+    //   537	549	643	finally
+    //   549	599	643	finally
+    //   602	610	643	finally
+    //   613	626	643	finally
+    //   654	671	643	finally
+    //   69	120	647	java/lang/Exception
+    //   131	140	647	java/lang/Exception
+    //   143	210	647	java/lang/Exception
+    //   210	301	647	java/lang/Exception
+    //   306	314	647	java/lang/Exception
+    //   317	324	647	java/lang/Exception
+    //   324	342	647	java/lang/Exception
   }
   
   public boolean b(Context paramContext, String paramString)
   {
-    paramString = paramString + "subaccount_show_in_recentlist_first";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("subaccount_show_in_recentlist_first");
+    paramString = localStringBuilder.toString();
     return paramContext.getSharedPreferences("subaccount_sp", 0).getBoolean(paramString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.DBUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -21,56 +21,65 @@ final class CrmUtils$2
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("success:");
+      ((StringBuilder)localObject).append(String.valueOf(paramBoolean));
+      QLog.d("CrmUtils", 2, ((StringBuilder)localObject).toString());
     }
-    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
     if (paramBoolean)
     {
       paramBundle = paramBundle.getByteArray("data");
       if (paramBundle != null) {
-        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+        localObject = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
       }
     }
-    for (;;)
+    try
     {
-      try
+      ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).mergeFrom(paramBundle);
+      if (((mobileqq_mp.RetInfo)((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).ret_info.get()).ret_code.get() == 0)
       {
-        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-        if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-        {
-          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
-          CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
-          CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("IVR_TS_CrmUtils", 4, "<<<end getDetail, ts=" + System.currentTimeMillis());
-          }
-          CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, paramBundle, this.jdField_a_of_type_JavaLangString);
-          CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695222);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+        paramBundle = new EqqDetail((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject);
+        CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
         CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
-        return;
+        if (QLog.isDevelopLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("<<<end getDetail, ts=");
+          ((StringBuilder)localObject).append(System.currentTimeMillis());
+          QLog.d("IVR_TS_CrmUtils", 4, ((StringBuilder)localObject).toString());
+        }
+        CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, paramBundle, this.jdField_a_of_type_JavaLangString);
       }
-      CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695222);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-      continue;
-      CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695222);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-      continue;
-      CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695222);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      else
+      {
+        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      }
     }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      label226:
+      break label226;
+    }
+    CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+    CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    return;
+    CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+    break label345;
+    CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+    label345:
+    CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.eqq.CrmUtils.2
  * JD-Core Version:    0.7.0.1
  */

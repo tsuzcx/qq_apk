@@ -14,7 +14,7 @@ public final class BubbleDiyComu$Bubble_GetDiyText_Rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_GetDiyText_Rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -22,8 +22,12 @@ class ShortVideoResourceManager$HttpEngineSession
   
   void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoResourceManager", 2, "HttpEngineTask[start]: " + this);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("HttpEngineTask[start]: ");
+      localStringBuilder.append(this);
+      QLog.d("ShortVideoResourceManager", 2, localStringBuilder.toString());
     }
     this.b = 1;
     ((IHttpEngineService)ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager).getRuntimeService(IHttpEngineService.class, "all")).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
@@ -31,7 +35,7 @@ class ShortVideoResourceManager$HttpEngineSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.HttpEngineSession
  * JD-Core Version:    0.7.0.1
  */

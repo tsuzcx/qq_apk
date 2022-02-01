@@ -25,24 +25,28 @@ public class DIYLottieLoader
   public void destroy()
   {
     super.destroy();
-    if (this.mMemoryCache != null)
+    Object localObject1 = this.mMemoryCache;
+    if (localObject1 != null)
     {
-      Iterator localIterator = this.mMemoryCache.getLargeCache().iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((MQLruCache)localObject1).getLargeCache().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        String str = (String)localIterator.next();
-        Object localObject = this.mMemoryCache.get(str);
-        if ((localObject != null) && ((localObject instanceof Bitmap)))
+        String str = (String)((Iterator)localObject1).next();
+        Object localObject2 = this.mMemoryCache.get(str);
+        if ((localObject2 != null) && ((localObject2 instanceof Bitmap)))
         {
-          ((Bitmap)localObject).recycle();
-          QLog.i("DIYLottieLoader", 4, "recycle bitmap key = " + str);
+          ((Bitmap)localObject2).recycle();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("recycle bitmap key = ");
+          ((StringBuilder)localObject2).append(str);
+          QLog.i("DIYLottieLoader", 4, ((StringBuilder)localObject2).toString());
         }
       }
       this.mMemoryCache.releaseLargeCache();
     }
   }
   
-  public MQLruCache<String, Object> getMemoryCache()
+  protected MQLruCache<String, Object> getMemoryCache()
   {
     return this.mMemoryCache;
   }
@@ -55,7 +59,7 @@ public class DIYLottieLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.common.DIYLottieLoader
  * JD-Core Version:    0.7.0.1
  */

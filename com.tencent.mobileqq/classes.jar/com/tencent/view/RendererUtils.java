@@ -31,22 +31,24 @@ public class RendererUtils
   
   public static void checkGlError(String paramString)
   {
-    if (!AEOpenRenderConfig.isEnableLog()) {}
-    for (;;)
-    {
+    if (!AEOpenRenderConfig.isEnableLog()) {
       return;
-      int i = GLES20.glGetError();
-      if (i != 0)
+    }
+    int i = GLES20.glGetError();
+    if (i != 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(i);
+      LogUtils.e("RendererUtils", localStringBuilder.toString());
+      paramString = (StackTraceElement[])Thread.getAllStackTraces().get(Thread.currentThread());
+      int j = paramString.length;
+      i = 0;
+      while (i < j)
       {
-        LogUtils.e("RendererUtils", paramString + ": glError " + i);
-        paramString = (StackTraceElement[])Thread.getAllStackTraces().get(Thread.currentThread());
-        int j = paramString.length;
-        i = 0;
-        while (i < j)
-        {
-          LogUtils.e("SS     ", paramString[i].toString());
-          i += 1;
-        }
+        LogUtils.e("SS     ", paramString[i].toString());
+        i += 1;
       }
     }
   }
@@ -66,13 +68,13 @@ public class RendererUtils
       str = "attribute vec4 a_position;\nattribute vec2 a_texcoord;\nvarying vec2 v_texcoord;\nvoid main() {\n  gl_Position = a_position;\n  v_texcoord = a_texcoord;\n}\n";
     }
     int i = loadShader(35633, str);
-    if (i == 0) {}
-    int j;
-    do
-    {
+    if (i == 0) {
       return null;
-      j = loadShader(35632, paramString2);
-    } while (j == 0);
+    }
+    int j = loadShader(35632, paramString2);
+    if (j == 0) {
+      return null;
+    }
     int k = GLES20.glCreateProgram();
     if (k != 0)
     {
@@ -89,7 +91,10 @@ public class RendererUtils
       {
         paramString1 = GLES20.glGetProgramInfoLog(k);
         GLES20.glDeleteProgram(k);
-        throw new RuntimeException("Could not link program: " + paramString1);
+        paramString2 = new StringBuilder();
+        paramString2.append("Could not link program: ");
+        paramString2.append(paramString1);
+        throw new RuntimeException(paramString2.toString());
       }
     }
     paramString2 = new RendererUtils.FilterContext();
@@ -118,13 +123,13 @@ public class RendererUtils
   private static RendererUtils.RenderContext createProgram(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, boolean paramBoolean)
   {
     int i = loadShader(35633, "attribute vec4 a_position;\nattribute vec2 a_texcoord;\nvarying vec2 v_texcoord;\nvoid main() {\n  gl_Position = a_position;\n  v_texcoord = a_texcoord;\n}\n");
-    if (i == 0) {}
-    int j;
-    do
-    {
+    if (i == 0) {
       return null;
-      j = loadShader(35632, "precision mediump float;\nuniform sampler2D tex_sampler;\nuniform float alpha;\nuniform vec4 bkg;\nvarying vec2 v_texcoord;\nvoid main() {\nvec4 color = texture2D(tex_sampler, v_texcoord);\ngl_FragColor = vec4(color.r*alpha + bkg.r*(1.0-alpha), color.g*alpha + bkg.g*(1.0-alpha), color.b*alpha + bkg.b*(1.0-alpha), color.a);\n}\n");
-    } while (j == 0);
+    }
+    int j = loadShader(35632, "precision mediump float;\nuniform sampler2D tex_sampler;\nuniform float alpha;\nuniform vec4 bkg;\nvarying vec2 v_texcoord;\nvoid main() {\nvec4 color = texture2D(tex_sampler, v_texcoord);\ngl_FragColor = vec4(color.r*alpha + bkg.r*(1.0-alpha), color.g*alpha + bkg.g*(1.0-alpha), color.b*alpha + bkg.b*(1.0-alpha), color.a);\n}\n");
+    if (j == 0) {
+      return null;
+    }
     int k = GLES20.glCreateProgram();
     if (k != 0)
     {
@@ -141,7 +146,10 @@ public class RendererUtils
       {
         paramArrayOfFloat1 = GLES20.glGetProgramInfoLog(k);
         GLES20.glDeleteProgram(k);
-        throw new RuntimeException("Could not link program: " + paramArrayOfFloat1);
+        paramArrayOfFloat2 = new StringBuilder();
+        paramArrayOfFloat2.append("Could not link program: ");
+        paramArrayOfFloat2.append(paramArrayOfFloat1);
+        throw new RuntimeException(paramArrayOfFloat2.toString());
       }
     }
     Object localObject = new RendererUtils.RenderContext();
@@ -177,30 +185,28 @@ public class RendererUtils
     try
     {
       GLUtils.texImage2D(3553, 0, paramBitmap, 0);
-      GLES20.glTexParameteri(3553, 10240, 9729);
-      GLES20.glTexParameteri(3553, 10241, 9729);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      checkGlError("texImage2D");
-      return i;
     }
     catch (IllegalArgumentException paramBitmap)
     {
-      for (;;)
-      {
-        paramBitmap.printStackTrace();
-      }
+      paramBitmap.printStackTrace();
     }
+    GLES20.glTexParameteri(3553, 10240, 9729);
+    GLES20.glTexParameteri(3553, 10241, 9729);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    checkGlError("texImage2D");
+    return i;
   }
   
   private static FloatBuffer createVerticesBuffer(float[] paramArrayOfFloat)
   {
-    if (paramArrayOfFloat.length != 8) {
-      throw new RuntimeException("Number of vertices should be four.");
+    if (paramArrayOfFloat.length == 8)
+    {
+      FloatBuffer localFloatBuffer = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      localFloatBuffer.put(paramArrayOfFloat).position(0);
+      return localFloatBuffer;
     }
-    FloatBuffer localFloatBuffer = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    localFloatBuffer.put(paramArrayOfFloat).position(0);
-    return localFloatBuffer;
+    throw new RuntimeException("Number of vertices should be four.");
   }
   
   public static void deleteProgram(int paramInt)
@@ -225,7 +231,7 @@ public class RendererUtils
     arrayOfFloat[1] *= f;
     arrayOfFloat[3] *= f;
     arrayOfFloat[5] *= f;
-    arrayOfFloat[7] = (f * arrayOfFloat[7]);
+    arrayOfFloat[7] *= f;
     return arrayOfFloat;
   }
   
@@ -238,12 +244,17 @@ public class RendererUtils
       GLES20.glCompileShader(i);
       paramString = new int[1];
       GLES20.glGetShaderiv(i, 35713, paramString, 0);
-      if (paramString[0] == 0)
-      {
-        paramString = GLES20.glGetShaderInfoLog(i);
-        GLES20.glDeleteShader(i);
-        throw new RuntimeException("Could not compile shader " + paramInt + ":" + paramString);
+      if (paramString[0] != 0) {
+        return i;
       }
+      paramString = GLES20.glGetShaderInfoLog(i);
+      GLES20.glDeleteShader(i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Could not compile shader ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramString);
+      throw new RuntimeException(localStringBuilder.toString());
     }
     return i;
   }
@@ -258,13 +269,10 @@ public class RendererUtils
   {
     if (paramInt != -1) {
       GLES20.glClearColor(Color.red(paramInt) / 255.0F, Color.green(paramInt) / 255.0F, Color.blue(paramInt) / 255.0F, Color.alpha(paramInt) / 255.0F);
-    }
-    for (;;)
-    {
-      GLES20.glClear(16384);
-      return;
+    } else {
       GLES20.glClearColor(1.0F, 1.0F, 1.0F, 1.0F);
     }
+    GLES20.glClear(16384);
   }
   
   public static void renderTexture(RendererUtils.RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3)
@@ -282,29 +290,28 @@ public class RendererUtils
       GLES20.glEnable(3042);
       GLES20.glBlendFunc(770, 771);
     }
-    for (;;)
+    else
     {
-      GLES20.glVertexAttribPointer(RendererUtils.RenderContext.access$400(paramRenderContext), 2, 5126, false, 0, RendererUtils.RenderContext.access$500(paramRenderContext));
-      GLES20.glEnableVertexAttribArray(RendererUtils.RenderContext.access$400(paramRenderContext));
-      GLES20.glVertexAttribPointer(RendererUtils.RenderContext.access$600(paramRenderContext), 2, 5126, false, 0, RendererUtils.RenderContext.access$000(paramRenderContext));
-      GLES20.glEnableVertexAttribArray(RendererUtils.RenderContext.access$600(paramRenderContext));
-      checkGlError("vertex attribute setup");
-      GLES20.glActiveTexture(33984);
-      checkGlError("glActiveTexture");
-      GLES20.glBindTexture(3553, paramInt1);
-      GLES20.glTexParameteri(3553, 10240, 9729);
-      GLES20.glTexParameteri(3553, 10241, 9729);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      checkGlError("glBindTexture");
-      GLES20.glUniform1i(RendererUtils.RenderContext.access$700(paramRenderContext), 0);
-      GLES20.glUniform1f(RendererUtils.RenderContext.access$800(paramRenderContext), RendererUtils.RenderContext.access$100(paramRenderContext));
-      GLES20.glUniform4f(RendererUtils.RenderContext.access$900(paramRenderContext), 0.203125F, 0.203125F, 0.2148438F, 1.0F);
-      GLES20.glDrawArrays(5, 0, 4);
-      GLES20.glFinish();
-      return;
       GLES20.glDisable(3042);
     }
+    GLES20.glVertexAttribPointer(RendererUtils.RenderContext.access$400(paramRenderContext), 2, 5126, false, 0, RendererUtils.RenderContext.access$500(paramRenderContext));
+    GLES20.glEnableVertexAttribArray(RendererUtils.RenderContext.access$400(paramRenderContext));
+    GLES20.glVertexAttribPointer(RendererUtils.RenderContext.access$600(paramRenderContext), 2, 5126, false, 0, RendererUtils.RenderContext.access$000(paramRenderContext));
+    GLES20.glEnableVertexAttribArray(RendererUtils.RenderContext.access$600(paramRenderContext));
+    checkGlError("vertex attribute setup");
+    GLES20.glActiveTexture(33984);
+    checkGlError("glActiveTexture");
+    GLES20.glBindTexture(3553, paramInt1);
+    GLES20.glTexParameteri(3553, 10240, 9729);
+    GLES20.glTexParameteri(3553, 10241, 9729);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    checkGlError("glBindTexture");
+    GLES20.glUniform1i(RendererUtils.RenderContext.access$700(paramRenderContext), 0);
+    GLES20.glUniform1f(RendererUtils.RenderContext.access$800(paramRenderContext), RendererUtils.RenderContext.access$100(paramRenderContext));
+    GLES20.glUniform4f(RendererUtils.RenderContext.access$900(paramRenderContext), 0.203125F, 0.203125F, 0.2148438F, 1.0F);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glFinish();
   }
   
   public static void renderTexture(RendererUtils.RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
@@ -368,18 +375,13 @@ public class RendererUtils
   
   public static Bitmap saveTexture(Frame paramFrame)
   {
-    Object localObject;
     if (paramFrame == null) {
-      localObject = null;
+      return null;
     }
-    Bitmap localBitmap;
-    do
-    {
-      return localObject;
-      localBitmap = Bitmap.createBitmap(paramFrame.width, paramFrame.height, Bitmap.Config.ARGB_8888);
-      localObject = localBitmap;
-    } while (localBitmap == null);
-    saveTextureToBitmap(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, localBitmap);
+    Bitmap localBitmap = Bitmap.createBitmap(paramFrame.width, paramFrame.height, Bitmap.Config.ARGB_8888);
+    if (localBitmap != null) {
+      saveTextureToBitmap(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, localBitmap);
+    }
     return localBitmap;
   }
   
@@ -537,32 +539,33 @@ public class RendererUtils
     }
     float[] arrayOfFloat2 = new float[8];
     System.arraycopy(arrayOfFloat1, 0, arrayOfFloat2, 0, arrayOfFloat2.length);
+    double d;
     float f1;
     if (paramFloat1 % 180.0F != 0.0F)
     {
-      f1 = (paramFloat1 - paramInt1 * 180) * 0.01745329F;
-      paramFloat1 = (float)Math.cos(f1);
-      f1 = (float)Math.sin(f1);
+      d = (paramFloat1 - paramInt1 * 180) * 0.01745329F;
+      paramFloat1 = (float)Math.cos(d);
+      f1 = (float)Math.sin(d);
       float f2 = 5.0F / (arrayOfFloat1[0] * f1 + 5.0F);
       arrayOfFloat2[0] = (arrayOfFloat1[0] * paramFloat1 * f2);
       arrayOfFloat1[1] *= f2;
       arrayOfFloat2[4] = arrayOfFloat2[0];
-      arrayOfFloat2[5] = (f2 * arrayOfFloat1[5]);
+      arrayOfFloat1[5] *= f2;
       f1 = 5.0F / (f1 * arrayOfFloat1[2] + 5.0F);
       arrayOfFloat2[2] = (paramFloat1 * arrayOfFloat1[2] * f1);
       arrayOfFloat1[3] *= f1;
       arrayOfFloat2[6] = arrayOfFloat2[2];
-      arrayOfFloat2[7] = (f1 * arrayOfFloat1[7]);
+      arrayOfFloat1[7] *= f1;
     }
     if (paramFloat2 % 180.0F != 0.0F)
     {
-      paramFloat2 = (paramFloat2 - paramInt2 * 180) * 0.01745329F;
-      paramFloat1 = (float)Math.cos(paramFloat2);
-      paramFloat2 = (float)Math.sin(paramFloat2);
+      d = (paramFloat2 - paramInt2 * 180) * 0.01745329F;
+      paramFloat1 = (float)Math.cos(d);
+      paramFloat2 = (float)Math.sin(d);
       f1 = 5.0F / (arrayOfFloat1[1] * paramFloat2 + 5.0F);
       arrayOfFloat1[0] *= f1;
       arrayOfFloat2[1] = (arrayOfFloat1[1] * paramFloat1 * f1);
-      arrayOfFloat2[2] = (f1 * arrayOfFloat1[2]);
+      arrayOfFloat1[2] *= f1;
       arrayOfFloat2[3] = arrayOfFloat2[1];
       paramFloat2 = 5.0F / (paramFloat2 * arrayOfFloat1[5] + 5.0F);
       arrayOfFloat1[4] *= paramFloat2;
@@ -575,31 +578,37 @@ public class RendererUtils
   
   public static void setRenderToRotate(RendererUtils.RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
   {
-    paramFloat = -paramFloat * 0.01745329F;
-    float f2 = (float)Math.cos(paramFloat);
-    float f3 = (float)Math.sin(paramFloat);
-    paramFloat = paramInt1 * f2;
-    float f1 = paramInt1 * f3;
-    f2 *= paramInt2;
-    f3 *= paramInt2;
+    double d = -paramFloat * 0.01745329F;
+    float f3 = (float)Math.cos(d);
+    float f2 = (float)Math.sin(d);
+    float f1 = paramInt1;
+    paramFloat = f3 * f1;
+    f1 *= f2;
+    float f4 = paramInt2;
+    f3 *= f4;
+    f2 *= f4;
     float[] arrayOfFloat = new float[8];
-    arrayOfFloat[0] = (-paramFloat + f3);
-    arrayOfFloat[1] = (-f1 - f2);
-    arrayOfFloat[2] = (f3 + paramFloat);
-    arrayOfFloat[3] = (f1 - f2);
+    f4 = -paramFloat;
+    paramInt1 = 0;
+    arrayOfFloat[0] = (f4 + f2);
+    arrayOfFloat[1] = (-f1 - f3);
+    arrayOfFloat[2] = (paramFloat + f2);
+    arrayOfFloat[3] = (f1 - f3);
     arrayOfFloat[4] = (-arrayOfFloat[2]);
     arrayOfFloat[5] = (-arrayOfFloat[3]);
     arrayOfFloat[6] = (-arrayOfFloat[0]);
     arrayOfFloat[7] = (-arrayOfFloat[1]);
-    paramFloat = Math.max(Math.abs(arrayOfFloat[0]), Math.abs(arrayOfFloat[2]));
+    f2 = Math.max(Math.abs(arrayOfFloat[0]), Math.abs(arrayOfFloat[2]));
     f1 = Math.max(Math.abs(arrayOfFloat[1]), Math.abs(arrayOfFloat[3]));
-    paramFloat = Math.min(paramInt3 / paramFloat, paramInt4 / f1);
-    paramInt1 = 0;
+    paramFloat = paramInt3;
+    f3 = paramFloat / f2;
+    f2 = paramInt4;
+    f1 = Math.min(f3, f2 / f1);
     while (paramInt1 < 8)
     {
-      arrayOfFloat[paramInt1] *= paramFloat / paramInt3;
+      arrayOfFloat[paramInt1] *= f1 / paramFloat;
       paramInt2 = paramInt1 + 1;
-      arrayOfFloat[paramInt2] *= paramFloat / paramInt4;
+      arrayOfFloat[paramInt2] *= f1 / f2;
       paramInt1 += 2;
     }
     RendererUtils.RenderContext.access$002(paramRenderContext, createVerticesBuffer(arrayOfFloat));
@@ -612,7 +621,7 @@ public class RendererUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.view.RendererUtils
  * JD-Core Version:    0.7.0.1
  */

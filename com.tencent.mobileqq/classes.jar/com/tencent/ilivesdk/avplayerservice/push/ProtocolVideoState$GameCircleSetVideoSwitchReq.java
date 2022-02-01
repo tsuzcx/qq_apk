@@ -31,14 +31,16 @@ public final class ProtocolVideoState$GameCircleSetVideoSwitchReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64 }, new String[] { "uuid", "sessionid", "OperType", "LiveType", "open_appid", "VideoChanel", "session_groupid", "uin" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, GameCircleSetVideoSwitchReq.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64 }, new String[] { "uuid", "sessionid", "OperType", "LiveType", "open_appid", "VideoChanel", "session_groupid", "uin" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localLong, localInteger, localInteger, localLong }, GameCircleSetVideoSwitchReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.ProtocolVideoState.GameCircleSetVideoSwitchReq
  * JD-Core Version:    0.7.0.1
  */

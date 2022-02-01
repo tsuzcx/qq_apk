@@ -24,70 +24,73 @@ public class JumpProfilePlugin
     this.mPluginNameSpace = "historicalSig";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (paramString2.equalsIgnoreCase("historicalSig"))
     {
       paramString1 = this.mRuntime.a().getAccount();
       paramJsBridgeListener = this.mRuntime.a();
-      if (paramString3.equalsIgnoreCase("historicalSiglist")) {}
-      do
+      if (paramString3.equalsIgnoreCase("historicalSiglist"))
       {
-        do
+        try
         {
-          do
+          paramString2 = new JSONObject(paramVarArgs[0]);
+          paramString1 = paramString2.optString("fromType");
+          paramString2 = paramString2.optString("fromUin");
+          if (ChatActivityUtils.a(paramString2))
           {
-            try
+            paramString3 = new Intent(paramJsBridgeListener, PublicFragmentActivity.class);
+            paramString3.putExtra("key_uin", paramString2);
+            if (paramString1.equalsIgnoreCase("1"))
             {
-              paramString2 = new JSONObject(paramVarArgs[0]);
-              paramString1 = paramString2.optString("fromType");
-              paramString2 = paramString2.optString("fromUin");
-              if (ChatActivityUtils.a(paramString2))
-              {
-                paramString3 = new Intent(paramJsBridgeListener, PublicFragmentActivity.class);
-                paramString3.putExtra("key_uin", paramString2);
-                if (paramString1.equalsIgnoreCase("1"))
-                {
-                  paramString3.putExtra("key_open_via", "history-msglist");
-                  paramJsBridgeListener.finish();
-                }
-                PublicFragmentActivity.Launcher.a(paramJsBridgeListener, paramString3, PublicFragmentActivity.class, SignatureHistoryFragment.class);
-              }
-              QLog.d("JumpProfilePlugin", 1, new Object[] { "historicalSiglist", "fromType=", paramString1, " fromUin", StringUtil.e(paramString2) });
+              paramString3.putExtra("key_open_via", "history-msglist");
+              paramJsBridgeListener.finish();
             }
-            catch (JSONException paramJsBridgeListener)
-            {
-              while (!QLog.isColorLevel()) {}
-              QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-              return true;
-            }
-            return true;
-            if (!paramString3.equalsIgnoreCase("personalTagList")) {
-              break;
-            }
-            try
-            {
-              paramString2 = new JSONObject(paramVarArgs[0]);
-              paramString1 = paramString2.optString("fromType");
-              paramString2 = paramString2.optString("fromUin");
-              if (ChatActivityUtils.a(paramString2))
-              {
-                paramString3 = new Intent(this.mRuntime.a(), PersonalityLabelGalleryActivity.class);
-                paramString3.putExtra("uin", paramString2);
-                if (paramString1.equalsIgnoreCase("1")) {
-                  paramString3.putExtra("fromType", 4);
-                }
-                paramJsBridgeListener.startActivity(paramString3);
-                paramJsBridgeListener.finish();
-              }
-              QLog.d("JumpProfilePlugin", 1, new Object[] { "personalTagList", "fromType=", paramString1, " fromUin", StringUtil.e(paramString2) });
-              return true;
-            }
-            catch (JSONException paramJsBridgeListener) {}
-          } while (!QLog.isColorLevel());
-          QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+            PublicFragmentActivity.Launcher.a(paramJsBridgeListener, paramString3, PublicFragmentActivity.class, SignatureHistoryFragment.class);
+          }
+          QLog.d("JumpProfilePlugin", 1, new Object[] { "historicalSiglist", "fromType=", paramString1, " fromUin", StringUtil.e(paramString2) });
           return true;
-        } while (!paramString3.equalsIgnoreCase("zanlist"));
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          if (!QLog.isColorLevel()) {
+            break label510;
+          }
+        }
+        QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        return true;
+      }
+      else if (paramString3.equalsIgnoreCase("personalTagList"))
+      {
+        try
+        {
+          paramString2 = new JSONObject(paramVarArgs[0]);
+          paramString1 = paramString2.optString("fromType");
+          paramString2 = paramString2.optString("fromUin");
+          if (ChatActivityUtils.a(paramString2))
+          {
+            paramString3 = new Intent(this.mRuntime.a(), PersonalityLabelGalleryActivity.class);
+            paramString3.putExtra("uin", paramString2);
+            if (paramString1.equalsIgnoreCase("1")) {
+              paramString3.putExtra("fromType", 4);
+            }
+            paramJsBridgeListener.startActivity(paramString3);
+            paramJsBridgeListener.finish();
+          }
+          QLog.d("JumpProfilePlugin", 1, new Object[] { "personalTagList", "fromType=", paramString1, " fromUin", StringUtil.e(paramString2) });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          if (!QLog.isColorLevel()) {
+            break label510;
+          }
+        }
+        QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        return true;
+      }
+      else if (paramString3.equalsIgnoreCase("zanlist"))
+      {
         try
         {
           paramString3 = new JSONObject(paramVarArgs[0]);
@@ -107,9 +110,14 @@ public class JumpProfilePlugin
           QLog.d("JumpProfilePlugin", 1, new Object[] { "zanlist", "fromType=", paramString2, " fromUin", StringUtil.e(paramString3) });
           return true;
         }
-        catch (JSONException paramJsBridgeListener) {}
-      } while (!QLog.isColorLevel());
-      QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        catch (JSONException paramJsBridgeListener)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+          }
+        }
+      }
+      label510:
       return true;
     }
     return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
@@ -117,7 +125,7 @@ public class JumpProfilePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.JumpProfilePlugin
  * JD-Core Version:    0.7.0.1
  */

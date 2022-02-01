@@ -17,20 +17,21 @@ class QCircleReporter$1
     if (paramMessage == null) {
       return;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 4097)
     {
-    default: 
-      return;
-    case 4097: 
-      QCircleReporter.access$000(this.this$0);
+      if (i != 4098) {
+        return;
+      }
+      QCircleReporter.access$100(this.this$0);
       return;
     }
-    QCircleReporter.access$100(this.this$0);
+    QCircleReporter.access$000(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReporter.1
  * JD-Core Version:    0.7.0.1
  */

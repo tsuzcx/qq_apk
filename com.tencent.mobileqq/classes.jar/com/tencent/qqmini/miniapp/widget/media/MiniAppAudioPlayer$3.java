@@ -13,7 +13,10 @@ class MiniAppAudioPlayer$3
   public void onReceiveListener(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    QMLog.i("MiniAppAudioPlayer", "onReceiveListener:" + paramContext);
+    paramIntent = new StringBuilder();
+    paramIntent.append("onReceiveListener:");
+    paramIntent.append(paramContext);
+    QMLog.i("MiniAppAudioPlayer", paramIntent.toString());
     if (("android.intent.action.SCREEN_OFF".equals(paramContext)) && (this.this$0.isPlaying())) {
       this.this$0.stop();
     }
@@ -21,7 +24,7 @@ class MiniAppAudioPlayer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.MiniAppAudioPlayer.3
  * JD-Core Version:    0.7.0.1
  */

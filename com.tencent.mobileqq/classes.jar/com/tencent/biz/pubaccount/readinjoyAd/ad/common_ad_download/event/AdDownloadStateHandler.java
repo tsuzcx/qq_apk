@@ -5,25 +5,22 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_action.AdAppDownloadUtil;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.RIJAdDownloadCache;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.data.AdDownloadInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.data.DownloadPercent;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadExKt;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadReport;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.IProgressView;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdDownloadService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import java.io.File;
 import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/event/AdDownloadStateHandler;", "", "(Ljava/lang/String;I)V", "doCallBack", "", "viewRIJ", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "info", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/data/AdDownloadInfo;", "onCallBack", "onCancelDownloadUI", "onErrorDownloadUI", "onInitUI", "onInstallSucceedUI", "onPauseDownloadUI", "onProgressUpdateUI", "onQueryResultUI", "onResumeDownloadUI", "onStartDownloadUI", "onSuccessDownloadUI", "onUninstallSucceedUI", "reportPercentIfNeed", "downloadInfo", "progress", "", "OnInitDownload", "OnStartDownload", "OnReplaceUrl", "OnPauseDownload", "OnResumeDownload", "OnCancelDownload", "OnSuccessDownload", "OnErrorDownload", "OnProgressUpdate", "OnInstallSucceed", "OnUninstallSucceed", "OnQueryResult", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/event/AdDownloadStateHandler;", "", "(Ljava/lang/String;I)V", "doCallBack", "", "viewRIJ", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "info", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/data/AdDownloadInfo;", "onCallBack", "onCancelDownloadUI", "onErrorDownloadUI", "onInitUI", "onInstallSucceedUI", "onPauseDownloadUI", "onProgressUpdateUI", "onQueryResultUI", "onResumeDownloadUI", "onStartDownloadUI", "onSuccessDownloadUI", "onUninstallSucceedUI", "reportPercentIfNeed", "downloadInfo", "progress", "", "showInitBtn", "OnInitDownload", "OnStartDownload", "OnReplaceUrl", "OnPauseDownload", "OnResumeDownload", "OnCancelDownload", "OnSuccessDownload", "OnErrorDownload", "OnProgressUpdate", "OnInstallSucceed", "OnUninstallSucceed", "OnQueryResult", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 public enum AdDownloadStateHandler
 {
   static
@@ -80,66 +77,39 @@ public enum AdDownloadStateHandler
       localObject = paramRIJDownloadView.a();
       if (localObject != null)
       {
-        if (!paramRIJDownloadView.c()) {
-          break label61;
+        if (paramRIJDownloadView.c()) {
+          paramRIJDownloadView = "下载";
+        } else {
+          paramRIJDownloadView = "立即下载";
         }
-        paramRIJDownloadView = (CharSequence)"下载";
-        ((TextView)localObject).setText(paramRIJDownloadView);
+        ((TextView)localObject).setText((CharSequence)paramRIJDownloadView);
       }
     }
-    label61:
-    while (paramRIJDownloadView == null) {
-      for (;;)
-      {
-        return;
-        paramRIJDownloadView = (CharSequence)"立即下载";
-      }
+    else if (paramRIJDownloadView != null)
+    {
+      paramRIJDownloadView.d();
     }
-    paramRIJDownloadView.d();
   }
   
   protected final void onErrorDownloadUI(@Nullable RIJDownloadView paramRIJDownloadView)
   {
-    Object localObject;
     if (paramRIJDownloadView != null)
     {
-      localObject = paramRIJDownloadView.a();
-      if (localObject != null) {
-        ((ADVideoAppDownloadData)localObject).a = 6;
+      ADVideoAppDownloadData localADVideoAppDownloadData = paramRIJDownloadView.a();
+      if (localADVideoAppDownloadData != null) {
+        localADVideoAppDownloadData.a = 6;
       }
     }
-    if ((paramRIJDownloadView != null) && (!paramRIJDownloadView.d()))
+    showInitBtn(paramRIJDownloadView);
+    if (paramRIJDownloadView != null)
     {
-      paramRIJDownloadView.e();
-      TextView localTextView = paramRIJDownloadView.a();
-      if (localTextView != null)
-      {
-        if (!paramRIJDownloadView.c()) {
-          break label101;
-        }
-        localObject = (CharSequence)"下载";
-        localTextView.setText((CharSequence)localObject);
-      }
-    }
-    for (;;)
-    {
+      paramRIJDownloadView = paramRIJDownloadView.getContext();
       if (paramRIJDownloadView != null)
       {
-        paramRIJDownloadView = paramRIJDownloadView.getContext();
-        if (paramRIJDownloadView != null)
-        {
-          paramRIJDownloadView = paramRIJDownloadView.getApplicationContext();
-          if (paramRIJDownloadView != null) {
-            QQToast.a(paramRIJDownloadView, (CharSequence)HardCodeUtil.a(2131712944), 0).a();
-          }
+        paramRIJDownloadView = paramRIJDownloadView.getApplicationContext();
+        if (paramRIJDownloadView != null) {
+          QQToast.a(paramRIJDownloadView, (CharSequence)HardCodeUtil.a(2131712919), 0).a();
         }
-      }
-      return;
-      label101:
-      localObject = (CharSequence)"立即下载";
-      break;
-      if (paramRIJDownloadView != null) {
-        paramRIJDownloadView.d();
       }
     }
   }
@@ -158,56 +128,53 @@ public enum AdDownloadStateHandler
     {
       paramRIJDownloadView.e();
       localObject = paramRIJDownloadView.a();
-      if (localObject != null)
-      {
+      if (localObject != null) {
         localObject = ((AdvertisementInfo)localObject).mAdBtnTxt;
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          break label151;
-        }
-        if (!AdvertisementInfo.isAppAdvertisementInfo((BaseArticleInfo)paramRIJDownloadView.a())) {
-          break label112;
-        }
-        localObject = paramRIJDownloadView.a();
-        if (localObject != null)
+      } else {
+        localObject = null;
+      }
+      localObject = (CharSequence)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo((AbsBaseArticleInfo)paramRIJDownloadView.a()))
         {
-          if (!paramRIJDownloadView.c()) {
-            break label103;
+          localObject = paramRIJDownloadView.a();
+          if (localObject != null)
+          {
+            if (paramRIJDownloadView.c()) {
+              paramRIJDownloadView = "下载";
+            } else {
+              paramRIJDownloadView = "立即下载";
+            }
+            ((TextView)localObject).setText((CharSequence)paramRIJDownloadView);
           }
-          paramRIJDownloadView = (CharSequence)"下载";
-          ((TextView)localObject).setText(paramRIJDownloadView);
+        }
+        else
+        {
+          localObject = paramRIJDownloadView.a();
+          if (localObject != null)
+          {
+            if (paramRIJDownloadView.c()) {
+              paramRIJDownloadView = "查看";
+            } else {
+              paramRIJDownloadView = "查看详情";
+            }
+            ((TextView)localObject).setText((CharSequence)paramRIJDownloadView);
+          }
+        }
+      }
+      else
+      {
+        paramRIJDownloadView = paramRIJDownloadView.a();
+        if (paramRIJDownloadView != null) {
+          paramRIJDownloadView.setText((CharSequence)localObject);
         }
       }
     }
-    label103:
-    label112:
-    while (paramRIJDownloadView == null)
+    else if (paramRIJDownloadView != null)
     {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            return;
-            localObject = null;
-            continue;
-            paramRIJDownloadView = (CharSequence)"立即下载";
-          }
-          localObject = paramRIJDownloadView.a();
-        } while (localObject == null);
-        if (paramRIJDownloadView.c()) {}
-        for (paramRIJDownloadView = (CharSequence)"查看";; paramRIJDownloadView = (CharSequence)"查看详情")
-        {
-          ((TextView)localObject).setText(paramRIJDownloadView);
-          return;
-        }
-        paramRIJDownloadView = paramRIJDownloadView.a();
-      } while (paramRIJDownloadView == null);
-      paramRIJDownloadView.setText((CharSequence)localObject);
-      return;
+      paramRIJDownloadView.d();
     }
-    label151:
-    paramRIJDownloadView.d();
   }
   
   protected final void onInstallSucceedUI(@Nullable RIJDownloadView paramRIJDownloadView)
@@ -215,47 +182,45 @@ public enum AdDownloadStateHandler
     if (paramRIJDownloadView != null) {
       paramRIJDownloadView.e();
     }
-    TextView localTextView;
+    Object localObject1;
     if (paramRIJDownloadView != null)
     {
-      localTextView = paramRIJDownloadView.a();
-      if (localTextView != null) {
-        if (paramRIJDownloadView.c() != true) {
-          break label100;
+      localObject2 = paramRIJDownloadView.a();
+      if (localObject2 != null)
+      {
+        if (paramRIJDownloadView.c() == true) {
+          localObject1 = "打开";
+        } else {
+          localObject1 = "立即打开";
         }
+        ((TextView)localObject2).setText((CharSequence)localObject1);
       }
     }
-    label100:
-    for (Object localObject = (CharSequence)"打开";; localObject = (CharSequence)"立即打开")
+    Object localObject2 = (IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class);
+    if (paramRIJDownloadView != null) {
+      localObject1 = paramRIJDownloadView.a();
+    } else {
+      localObject1 = null;
+    }
+    if ((((IRIJAdUtilService)localObject2).isGameGiftAd((AdvertisementInfo)localObject1)) && (paramRIJDownloadView != null))
     {
-      localTextView.setText((CharSequence)localObject);
-      if (paramRIJDownloadView != null)
-      {
-        localObject = paramRIJDownloadView.a();
-        if ((localObject != null) && (RIJAdDownloadExKt.g((AdvertisementInfo)localObject) == true))
-        {
-          localObject = paramRIJDownloadView.a();
-          if (localObject != null) {
-            ((TextView)localObject).setText((CharSequence)"领取");
-          }
-        }
+      localObject1 = paramRIJDownloadView.a();
+      if (localObject1 != null) {
+        ((TextView)localObject1).setText((CharSequence)"领取");
       }
-      if (paramRIJDownloadView != null)
-      {
-        paramRIJDownloadView = paramRIJDownloadView.a();
-        if (paramRIJDownloadView != null) {
-          paramRIJDownloadView.a = 1;
-        }
+    }
+    if (paramRIJDownloadView != null)
+    {
+      paramRIJDownloadView = paramRIJDownloadView.a();
+      if (paramRIJDownloadView != null) {
+        paramRIJDownloadView.a = 1;
       }
-      return;
     }
   }
   
   protected final void onPauseDownloadUI(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable AdDownloadInfo paramAdDownloadInfo)
   {
-    if (paramRIJDownloadView != null) {
-      paramRIJDownloadView.b(false);
-    }
+    showInitBtn(paramRIJDownloadView);
     if (paramRIJDownloadView != null)
     {
       paramAdDownloadInfo = paramRIJDownloadView.a();
@@ -263,71 +228,25 @@ public enum AdDownloadStateHandler
         paramAdDownloadInfo.a = 4;
       }
     }
-    Object localObject;
-    if (paramRIJDownloadView != null)
-    {
-      localObject = paramRIJDownloadView.a();
-      if (localObject != null)
-      {
-        paramAdDownloadInfo = paramRIJDownloadView.a();
-        if (paramAdDownloadInfo == null) {
-          break label159;
-        }
-        paramAdDownloadInfo = Integer.valueOf(paramAdDownloadInfo.b);
-        ((ADVideoAppDownloadData)localObject).b = paramAdDownloadInfo.intValue();
-      }
-    }
-    if (paramRIJDownloadView != null)
-    {
-      localObject = paramRIJDownloadView.a();
-      if (localObject != null)
-      {
-        if (!paramRIJDownloadView.c()) {
-          break label164;
-        }
-        paramAdDownloadInfo = "继续";
-        label94:
-        ((IProgressView)localObject).setProgressText(paramAdDownloadInfo);
-      }
-    }
     if (paramRIJDownloadView != null)
     {
       paramAdDownloadInfo = paramRIJDownloadView.a();
       if (paramAdDownloadInfo != null)
       {
-        localObject = paramRIJDownloadView.a();
-        if (localObject == null) {
-          break label171;
-        }
-      }
-    }
-    label159:
-    label164:
-    label171:
-    for (int i = ((ADVideoAppDownloadData)localObject).b;; i = 0)
-    {
-      paramAdDownloadInfo.setProgress(i);
-      if (paramRIJDownloadView != null)
-      {
         paramRIJDownloadView = paramRIJDownloadView.a();
         if (paramRIJDownloadView != null) {
-          paramRIJDownloadView.a();
+          paramRIJDownloadView = Integer.valueOf(paramRIJDownloadView.b);
+        } else {
+          paramRIJDownloadView = null;
         }
+        paramAdDownloadInfo.b = paramRIJDownloadView.intValue();
       }
-      return;
-      paramAdDownloadInfo = null;
-      break;
-      paramAdDownloadInfo = "继续下载";
-      break label94;
     }
   }
   
   protected final void onProgressUpdateUI(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable AdDownloadInfo paramAdDownloadInfo)
   {
-    Object localObject = null;
-    if (paramRIJDownloadView != null) {
-      paramRIJDownloadView.b(true);
-    }
+    showInitBtn(paramRIJDownloadView);
     ADVideoAppDownloadData localADVideoAppDownloadData;
     if (paramRIJDownloadView != null)
     {
@@ -341,69 +260,35 @@ public enum AdDownloadStateHandler
       localADVideoAppDownloadData = paramRIJDownloadView.a();
       if (localADVideoAppDownloadData != null)
       {
-        if (paramAdDownloadInfo == null) {
-          break label175;
+        if (paramAdDownloadInfo != null) {
+          paramRIJDownloadView = Integer.valueOf(paramAdDownloadInfo.b());
+        } else {
+          paramRIJDownloadView = null;
         }
-        paramAdDownloadInfo = Integer.valueOf(paramAdDownloadInfo.b());
-        localADVideoAppDownloadData.b = paramAdDownloadInfo.intValue();
+        localADVideoAppDownloadData.b = paramRIJDownloadView.intValue();
       }
-    }
-    if (paramRIJDownloadView != null)
-    {
-      paramAdDownloadInfo = paramRIJDownloadView.a();
-      if (paramAdDownloadInfo != null) {
-        paramAdDownloadInfo.b();
-      }
-    }
-    if (paramRIJDownloadView != null)
-    {
-      paramAdDownloadInfo = paramRIJDownloadView.a();
-      if (paramAdDownloadInfo != null)
-      {
-        localADVideoAppDownloadData = paramRIJDownloadView.a();
-        if (localADVideoAppDownloadData == null) {
-          break label180;
-        }
-      }
-    }
-    label175:
-    label180:
-    for (int i = localADVideoAppDownloadData.b;; i = 0)
-    {
-      paramAdDownloadInfo.setProgress(i);
-      if (paramRIJDownloadView != null)
-      {
-        paramAdDownloadInfo = paramRIJDownloadView.a();
-        if (paramAdDownloadInfo != null)
-        {
-          localADVideoAppDownloadData = paramRIJDownloadView.a();
-          paramRIJDownloadView = localObject;
-          if (localADVideoAppDownloadData != null) {
-            paramRIJDownloadView = String.valueOf(localADVideoAppDownloadData.b);
-          }
-          paramAdDownloadInfo.setProgressText(Intrinsics.stringPlus(paramRIJDownloadView, "%"));
-        }
-      }
-      return;
-      paramAdDownloadInfo = null;
-      break;
     }
   }
   
   protected final void onQueryResultUI(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable AdDownloadInfo paramAdDownloadInfo)
   {
-    if ((paramRIJDownloadView == null) || (paramAdDownloadInfo == null)) {}
-    do
+    if (paramRIJDownloadView != null)
     {
-      return;
-      if (AdAppDownloadUtil.a.a(paramAdDownloadInfo.a()))
+      if (paramAdDownloadInfo == null) {
+        return;
+      }
+      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppInstall(paramAdDownloadInfo.a()))
       {
         onInstallSucceedUI(paramRIJDownloadView);
         return;
       }
       Object localObject = paramRIJDownloadView.a();
-      if (localObject != null) {}
-      for (localObject = ((ADVideoAppDownloadData)localObject).i; ((!TextUtils.isEmpty((CharSequence)localObject)) && (new File((String)localObject).exists())) || (paramAdDownloadInfo.a() == 5); localObject = null)
+      if (localObject != null) {
+        localObject = ((ADVideoAppDownloadData)localObject).i;
+      } else {
+        localObject = null;
+      }
+      if (((!TextUtils.isEmpty((CharSequence)localObject)) && (new File((String)localObject).exists())) || (paramAdDownloadInfo.a() == 5))
       {
         onSuccessDownloadUI(paramRIJDownloadView);
         return;
@@ -419,57 +304,27 @@ public enum AdDownloadStateHandler
         onPauseDownloadUI(paramRIJDownloadView, paramAdDownloadInfo);
         return;
       }
-    } while (paramAdDownloadInfo.a() != 0);
-    onInitUI(paramRIJDownloadView);
+      if (paramAdDownloadInfo.a() == 0) {
+        onInitUI(paramRIJDownloadView);
+      }
+    }
   }
   
   protected final void onResumeDownloadUI(@Nullable RIJDownloadView paramRIJDownloadView)
   {
-    if (paramRIJDownloadView != null) {
-      paramRIJDownloadView.b(true);
-    }
-    if (paramRIJDownloadView != null)
-    {
-      ADVideoAppDownloadData localADVideoAppDownloadData = paramRIJDownloadView.a();
-      if (localADVideoAppDownloadData != null) {
-        localADVideoAppDownloadData.a = 3;
-      }
-    }
+    showInitBtn(paramRIJDownloadView);
     if (paramRIJDownloadView != null)
     {
       paramRIJDownloadView = paramRIJDownloadView.a();
       if (paramRIJDownloadView != null) {
-        paramRIJDownloadView.b();
+        paramRIJDownloadView.a = 3;
       }
     }
   }
   
   protected final void onStartDownloadUI(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable AdDownloadInfo paramAdDownloadInfo)
   {
-    if (paramRIJDownloadView != null) {
-      paramRIJDownloadView.b(true);
-    }
-    if (paramRIJDownloadView != null)
-    {
-      paramAdDownloadInfo = paramRIJDownloadView.a();
-      if (paramAdDownloadInfo != null) {
-        paramAdDownloadInfo.setProgress(0);
-      }
-    }
-    if (paramRIJDownloadView != null)
-    {
-      paramAdDownloadInfo = paramRIJDownloadView.a();
-      if (paramAdDownloadInfo != null) {
-        paramAdDownloadInfo.setProgressText("0%");
-      }
-    }
-    if (paramRIJDownloadView != null)
-    {
-      paramRIJDownloadView = paramRIJDownloadView.a();
-      if (paramRIJDownloadView != null) {
-        paramRIJDownloadView.b();
-      }
-    }
+    showInitBtn(paramRIJDownloadView);
   }
   
   protected final void onSuccessDownloadUI(@Nullable RIJDownloadView paramRIJDownloadView)
@@ -488,124 +343,142 @@ public enum AdDownloadStateHandler
     if (paramRIJDownloadView != null)
     {
       localObject = paramRIJDownloadView.a();
-      if (localObject != null) {
-        if (paramRIJDownloadView.c() != true) {
-          break label60;
+      if (localObject != null)
+      {
+        if (paramRIJDownloadView.c() == true) {
+          paramRIJDownloadView = "安装";
+        } else {
+          paramRIJDownloadView = "立即安装";
         }
+        ((TextView)localObject).setText((CharSequence)paramRIJDownloadView);
       }
-    }
-    label60:
-    for (paramRIJDownloadView = (CharSequence)"安装";; paramRIJDownloadView = (CharSequence)"立即安装")
-    {
-      ((TextView)localObject).setText(paramRIJDownloadView);
-      return;
     }
   }
   
   protected final void onUninstallSucceedUI(@Nullable RIJDownloadView paramRIJDownloadView)
   {
-    Object localObject;
     if (paramRIJDownloadView != null)
     {
       localObject = paramRIJDownloadView.a();
       if (localObject != null)
       {
         localObject = ((ADVideoAppDownloadData)localObject).i;
-        if ((TextUtils.isEmpty((CharSequence)localObject)) || (!new File((String)localObject).exists())) {
-          break label135;
+        break label23;
+      }
+    }
+    Object localObject = null;
+    label23:
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (new File((String)localObject).exists()))
+    {
+      if (paramRIJDownloadView != null) {
+        paramRIJDownloadView.e();
+      }
+      if (paramRIJDownloadView != null)
+      {
+        localObject = paramRIJDownloadView.a();
+        if (localObject != null) {
+          ((ADVideoAppDownloadData)localObject).a = 5;
         }
+      }
+      if (paramRIJDownloadView != null)
+      {
+        TextView localTextView = paramRIJDownloadView.a();
+        if (localTextView != null)
+        {
+          if (paramRIJDownloadView.c() == true) {
+            localObject = "安装";
+          } else {
+            localObject = "立即安装";
+          }
+          localTextView.setText((CharSequence)localObject);
+        }
+      }
+      if (paramRIJDownloadView != null)
+      {
+        paramRIJDownloadView = paramRIJDownloadView.a();
         if (paramRIJDownloadView != null) {
-          paramRIJDownloadView.e();
-        }
-        if (paramRIJDownloadView != null)
-        {
-          localObject = paramRIJDownloadView.a();
-          if (localObject != null) {
-            ((ADVideoAppDownloadData)localObject).a = 5;
-          }
-        }
-        if (paramRIJDownloadView != null)
-        {
-          TextView localTextView = paramRIJDownloadView.a();
-          if (localTextView != null)
-          {
-            if (paramRIJDownloadView.c() != true) {
-              break label125;
-            }
-            localObject = (CharSequence)"安装";
-            label96:
-            localTextView.setText((CharSequence)localObject);
-          }
-        }
-        if (paramRIJDownloadView != null)
-        {
-          paramRIJDownloadView = paramRIJDownloadView.a();
-          if (paramRIJDownloadView != null) {
-            paramRIJDownloadView.a = 5;
-          }
+          paramRIJDownloadView.a = 5;
         }
       }
     }
-    label125:
-    do
+    else
     {
-      do
+      onInitUI(paramRIJDownloadView);
+      if (paramRIJDownloadView != null)
       {
-        return;
-        localObject = null;
-        break;
-        localObject = (CharSequence)"立即安装";
-        break label96;
-        onInitUI(paramRIJDownloadView);
-      } while (paramRIJDownloadView == null);
-      paramRIJDownloadView = paramRIJDownloadView.a();
-    } while (paramRIJDownloadView == null);
-    label135:
-    paramRIJDownloadView.a = 0;
+        paramRIJDownloadView = paramRIJDownloadView.a();
+        if (paramRIJDownloadView != null) {
+          paramRIJDownloadView.a = 0;
+        }
+      }
+    }
   }
   
   protected final void reportPercentIfNeed(@Nullable AdDownloadInfo paramAdDownloadInfo, int paramInt)
   {
-    if (paramAdDownloadInfo != null) {}
-    for (String str = paramAdDownloadInfo.a();; str = null)
+    String str;
+    if (paramAdDownloadInfo != null) {
+      str = paramAdDownloadInfo.a();
+    } else {
+      str = null;
+    }
+    if ((paramInt >= 90) && (!((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).hasReportCache(str, DownloadPercent.PERCENT_90)))
     {
-      if ((paramInt >= 90) && (!RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_90)))
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).addReportCache(str, DownloadPercent.PERCENT_90);
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).reportBeacon("download90percent", paramAdDownloadInfo);
+    }
+    if ((paramInt >= 75) && (!((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).hasReportCache(str, DownloadPercent.PERCENT_75)))
+    {
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).addReportCache(str, DownloadPercent.PERCENT_75);
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).reportBeacon("download75percent", paramAdDownloadInfo);
+    }
+    if ((paramInt >= 50) && (!((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).hasReportCache(str, DownloadPercent.PERCENT_50)))
+    {
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).addReportCache(str, DownloadPercent.PERCENT_50);
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).reportBeacon("download50percent", paramAdDownloadInfo);
+    }
+    if ((paramInt >= 25) && (!((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).hasReportCache(str, DownloadPercent.PERCENT_25)))
+    {
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).addReportCache(str, DownloadPercent.PERCENT_25);
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).reportBeacon("download25percent", paramAdDownloadInfo);
+    }
+    if ((paramInt >= 10) && (!((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).hasReportCache(str, DownloadPercent.PERCENT_10)))
+    {
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).addReportCache(str, DownloadPercent.PERCENT_10);
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).reportBeacon("download10percent", paramAdDownloadInfo);
+    }
+    if ((paramInt >= 1) && (!((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).hasReportCache(str, DownloadPercent.PERCENT_1)))
+    {
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).addReportCache(str, DownloadPercent.PERCENT_1);
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).reportBeacon("download1percent", paramAdDownloadInfo);
+    }
+  }
+  
+  protected final void showInitBtn(@Nullable RIJDownloadView paramRIJDownloadView)
+  {
+    if ((paramRIJDownloadView != null) && (!paramRIJDownloadView.d()))
+    {
+      paramRIJDownloadView.e();
+      TextView localTextView = paramRIJDownloadView.a();
+      if (localTextView != null)
       {
-        RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_90);
-        RIJAdDownloadReport.a.a("download90percent", paramAdDownloadInfo);
+        if (paramRIJDownloadView.c()) {
+          paramRIJDownloadView = "下载";
+        } else {
+          paramRIJDownloadView = "立即下载";
+        }
+        localTextView.setText((CharSequence)paramRIJDownloadView);
       }
-      if ((paramInt >= 75) && (!RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_75)))
-      {
-        RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_75);
-        RIJAdDownloadReport.a.a("download75percent", paramAdDownloadInfo);
-      }
-      if ((paramInt >= 50) && (!RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_50)))
-      {
-        RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_50);
-        RIJAdDownloadReport.a.a("download50percent", paramAdDownloadInfo);
-      }
-      if ((paramInt >= 25) && (!RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_25)))
-      {
-        RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_25);
-        RIJAdDownloadReport.a.a("download25percent", paramAdDownloadInfo);
-      }
-      if ((paramInt >= 10) && (!RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_10)))
-      {
-        RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_10);
-        RIJAdDownloadReport.a.a("download10percent", paramAdDownloadInfo);
-      }
-      if ((paramInt >= 1) && (!RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_1)))
-      {
-        RIJAdDownloadCache.a.a(str, DownloadPercent.PERCENT_1);
-        RIJAdDownloadReport.a.a("download1percent", paramAdDownloadInfo);
-      }
-      return;
+    }
+    else if (paramRIJDownloadView != null)
+    {
+      paramRIJDownloadView.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadStateHandler
  * JD-Core Version:    0.7.0.1
  */

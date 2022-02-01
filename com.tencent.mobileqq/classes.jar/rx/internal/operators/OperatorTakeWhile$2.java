@@ -42,22 +42,22 @@ class OperatorTakeWhile$2
         this.val$subscriber.onNext(paramT);
         return;
       }
+      this.done = true;
+      this.val$subscriber.onCompleted();
+      unsubscribe();
+      return;
     }
     catch (Throwable localThrowable)
     {
       this.done = true;
       Exceptions.throwOrReport(localThrowable, this.val$subscriber, paramT);
       unsubscribe();
-      return;
     }
-    this.done = true;
-    this.val$subscriber.onCompleted();
-    unsubscribe();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorTakeWhile.2
  * JD-Core Version:    0.7.0.1
  */

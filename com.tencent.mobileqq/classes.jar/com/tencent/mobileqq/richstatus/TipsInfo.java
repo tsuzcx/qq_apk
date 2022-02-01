@@ -23,12 +23,40 @@ public class TipsInfo
   
   public String toString()
   {
-    return "TipsInfo{valid=" + this.valid + ", ret=" + this.ret + ", type=" + this.type + ", titleWording='" + this.titleWording + '\'' + ", wording='" + this.wording + '\'' + ", rightBtnWording='" + this.rightBtnWording + '\'' + ", leftBtnWording='" + this.leftBtnWording + '\'' + ", vipType='" + this.vipType + '\'' + ", vipMonth=" + this.vipMonth + ", url='" + this.url + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TipsInfo{valid=");
+    localStringBuilder.append(this.valid);
+    localStringBuilder.append(", ret=");
+    localStringBuilder.append(this.ret);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", titleWording='");
+    localStringBuilder.append(this.titleWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", wording='");
+    localStringBuilder.append(this.wording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", rightBtnWording='");
+    localStringBuilder.append(this.rightBtnWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", leftBtnWording='");
+    localStringBuilder.append(this.leftBtnWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", vipType='");
+    localStringBuilder.append(this.vipType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", vipMonth=");
+    localStringBuilder.append(this.vipMonth);
+    localStringBuilder.append(", url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.TipsInfo
  * JD-Core Version:    0.7.0.1
  */

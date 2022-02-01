@@ -3,14 +3,13 @@ package com.tencent.biz.pubaccount.conf;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
-import com.tencent.biz.pubaccount.util.api.impl.PublicAccountConfigUtilImpl;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
 public class ServiceAccountFolderConfProcessor
   extends IQConfigProcessor<ServiceAccountFolderConfBean>
@@ -24,7 +23,7 @@ public class ServiceAccountFolderConfProcessor
       if ((localObject instanceof QQAppInterface))
       {
         localObject = (QQAppInterface)localObject;
-        ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getServiceAccountFolderConfigData((QQAppInterface)localObject);
+        ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getServiceAccountFolderConfigData((AppInterface)localObject);
         return ServiceAccountFolderConfBean.a();
       }
     }
@@ -72,9 +71,11 @@ public class ServiceAccountFolderConfProcessor
   
   public int migrateOldVersion()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return PublicAccountConfigUtilImpl.getServiceAccountFolderConfigVersionCode((QQAppInterface)localAppRuntime);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      return ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getServiceAccountFolderConfigVersionCode((AppInterface)localObject);
     }
     return 0;
   }
@@ -88,7 +89,7 @@ public class ServiceAccountFolderConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.ServiceAccountFolderConfProcessor
  * JD-Core Version:    0.7.0.1
  */

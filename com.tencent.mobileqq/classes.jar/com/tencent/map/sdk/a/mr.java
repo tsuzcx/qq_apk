@@ -44,94 +44,107 @@ public final class mr
     this.n = paramlq;
     this.m = this.n.a;
     this.o = paramMarker;
-    if ((this.m == null) || (this.o == null) || (this.o.getOptions() == null)) {}
-    do
+    if (this.m != null)
     {
-      return;
-      k();
-      paramlq = this.m.az.b.f;
-    } while (paramlq == null);
-    this.h = new ir(paramlq, b(this.o.getOptions()));
-    or.a("create InfoWindowView:" + this.u);
-    a(fy.a(this.u));
+      paramlq = this.o;
+      if (paramlq != null)
+      {
+        if (paramlq.getOptions() == null) {
+          return;
+        }
+        k();
+        paramlq = this.m.az.b.f;
+        if (paramlq != null)
+        {
+          this.h = new ir(paramlq, b(this.o.getOptions()));
+          paramlq = new StringBuilder("create InfoWindowView:");
+          paramlq.append(this.u);
+          or.a(paramlq.toString());
+          a(fy.a(this.u));
+        }
+      }
+    }
   }
   
   static View a(Context paramContext, gj paramgj, TencentMap.InfoWindowAdapter paramInfoWindowAdapter, Marker paramMarker)
   {
-    if ((paramContext == null) || (paramgj == null))
+    if (paramContext != null)
     {
-      paramgj = null;
+      if (paramgj == null) {
+        return null;
+      }
+      String str1 = "";
+      String str2;
+      if (paramMarker != null)
+      {
+        str1 = paramMarker.getTitle();
+        str2 = paramMarker.getSnippet();
+      }
+      else
+      {
+        str2 = "";
+      }
+      if (paramInfoWindowAdapter == null) {
+        return a(paramContext, paramgj, str1, str2);
+      }
+      LinearLayout localLinearLayout = (LinearLayout)paramgj.g();
+      paramgj = localLinearLayout;
+      if (localLinearLayout == null) {
+        paramgj = a(paramContext);
+      }
+      paramContext = paramInfoWindowAdapter.getInfoWindow(paramMarker);
+      if (paramContext != null)
+      {
+        if (paramContext.getParent() == paramgj) {
+          return paramgj;
+        }
+        if ((paramContext.getParent() instanceof ViewGroup)) {
+          ((ViewGroup)paramContext.getParent()).removeAllViews();
+        }
+        paramgj.setBackgroundDrawable(null);
+        paramgj.removeAllViews();
+        paramgj.addView(paramContext);
+        return paramgj;
+      }
+      paramContext = paramInfoWindowAdapter.getInfoContents(paramMarker);
+      if (paramContext != null)
+      {
+        if (paramContext.getParent() == paramgj) {
+          return paramgj;
+        }
+        if ((paramContext.getParent() instanceof ViewGroup)) {
+          ((ViewGroup)paramContext.getParent()).removeAllViews();
+        }
+        a(paramgj, "marker_infowindow.9.png");
+        paramgj.removeAllViews();
+        paramgj.addView(paramContext);
+        return paramgj;
+      }
+      a(paramgj, "marker_infowindow.9.png");
+      paramgj.removeAllViews();
+      a(paramgj, "tencent_map_infowindow_content_title", str1);
+      a(paramgj, "tencent_map_infowindow_content_snippet", str2);
       return paramgj;
     }
-    String str2;
-    String str1;
-    if (paramMarker != null)
-    {
-      str2 = paramMarker.getTitle();
-      str1 = paramMarker.getSnippet();
-    }
-    for (;;)
-    {
-      if (paramInfoWindowAdapter == null) {
-        return a(paramContext, paramgj, str2, str1);
-      }
-      paramgj = (LinearLayout)paramgj.g();
-      if (paramgj == null) {}
-      for (paramContext = a(paramContext);; paramContext = paramgj)
-      {
-        View localView = paramInfoWindowAdapter.getInfoWindow(paramMarker);
-        if (localView != null)
-        {
-          paramgj = paramContext;
-          if (localView.getParent() == paramContext) {
-            break;
-          }
-          if ((localView.getParent() instanceof ViewGroup)) {
-            ((ViewGroup)localView.getParent()).removeAllViews();
-          }
-          paramContext.setBackgroundDrawable(null);
-          paramContext.removeAllViews();
-          paramContext.addView(localView);
-          return paramContext;
-        }
-        paramInfoWindowAdapter = paramInfoWindowAdapter.getInfoContents(paramMarker);
-        if (paramInfoWindowAdapter != null)
-        {
-          paramgj = paramContext;
-          if (paramInfoWindowAdapter.getParent() == paramContext) {
-            break;
-          }
-          if ((paramInfoWindowAdapter.getParent() instanceof ViewGroup)) {
-            ((ViewGroup)paramInfoWindowAdapter.getParent()).removeAllViews();
-          }
-          a(paramContext, "marker_infowindow.9.png");
-          paramContext.removeAllViews();
-          paramContext.addView(paramInfoWindowAdapter);
-          return paramContext;
-        }
-        a(paramContext, "marker_infowindow.9.png");
-        paramContext.removeAllViews();
-        a(paramContext, "tencent_map_infowindow_content_title", str2);
-        a(paramContext, "tencent_map_infowindow_content_snippet", str1);
-        return paramContext;
-      }
-      str1 = "";
-      str2 = "";
-    }
+    return null;
   }
   
   private static View a(Context paramContext, gj paramgj, String paramString1, String paramString2)
   {
     paramgj = (LinearLayout)paramgj.g();
-    if (paramgj == null) {}
-    for (paramContext = a(paramContext);; paramContext = paramgj)
+    if (paramgj == null)
     {
-      a(paramContext, "marker_infowindow.9.png");
-      a(paramContext, "tencent_map_infowindow_content_title", paramString1);
-      a(paramContext, "tencent_map_infowindow_content_snippet", paramString2);
-      return paramContext;
-      paramgj.removeAllViews();
+      paramContext = a(paramContext);
     }
+    else
+    {
+      paramgj.removeAllViews();
+      paramContext = paramgj;
+    }
+    a(paramContext, "marker_infowindow.9.png");
+    a(paramContext, "tencent_map_infowindow_content_title", paramString1);
+    a(paramContext, "tencent_map_infowindow_content_snippet", paramString2);
+    return paramContext;
   }
   
   private static LinearLayout a(Context paramContext)
@@ -150,15 +163,17 @@ public final class mr
   private void a(Bitmap paramBitmap)
   {
     this.i = paramBitmap;
-    if (paramBitmap == null) {}
-    String str;
-    do
-    {
+    if (paramBitmap == null) {
       return;
-      or.a("setBitmapAssist:".concat(String.valueOf(paramBitmap)));
-      str = paramBitmap.hashCode() + s.getAndIncrement();
-    } while (this.h == null);
-    this.h.a(str, new Bitmap[] { paramBitmap });
+    }
+    or.a("setBitmapAssist:".concat(String.valueOf(paramBitmap)));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramBitmap.hashCode() + s.getAndIncrement());
+    localObject = ((StringBuilder)localObject).toString();
+    ir localir = this.h;
+    if (localir != null) {
+      localir.a((String)localObject, new Bitmap[] { paramBitmap });
+    }
   }
   
   private static void a(ViewGroup paramViewGroup, String paramString)
@@ -176,30 +191,33 @@ public final class mr
   
   private static void a(LinearLayout paramLinearLayout, String paramString1, String paramString2)
   {
-    if ((paramLinearLayout == null) || (paramLinearLayout.getContext() == null)) {}
-    Context localContext;
-    TextView localTextView;
-    do
+    if (paramLinearLayout != null)
     {
-      return;
-      localContext = paramLinearLayout.getContext();
-      localTextView = (TextView)paramLinearLayout.findViewWithTag(paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        break;
+      if (paramLinearLayout.getContext() == null) {
+        return;
       }
-    } while (localTextView == null);
-    paramLinearLayout.removeView(localTextView);
-    return;
-    Object localObject = localTextView;
-    if (localTextView == null)
-    {
-      localObject = new pc(localContext);
-      ((TextView)localObject).setTag(paramString1);
-      ((TextView)localObject).setGravity(3);
-      ((TextView)localObject).setTextColor(-16777216);
-      paramLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(-2, -2));
+      Context localContext = paramLinearLayout.getContext();
+      TextView localTextView = (TextView)paramLinearLayout.findViewWithTag(paramString1);
+      if (TextUtils.isEmpty(paramString2))
+      {
+        if (localTextView != null) {
+          paramLinearLayout.removeView(localTextView);
+        }
+      }
+      else
+      {
+        Object localObject = localTextView;
+        if (localTextView == null)
+        {
+          localObject = new pc(localContext);
+          ((TextView)localObject).setTag(paramString1);
+          ((TextView)localObject).setGravity(3);
+          ((TextView)localObject).setTextColor(-16777216);
+          paramLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(-2, -2));
+        }
+        ((TextView)localObject).setText(paramString2);
+      }
     }
-    ((TextView)localObject).setText(paramString2);
   }
   
   private is b(MarkerOptions paramMarkerOptions)
@@ -226,67 +244,83 @@ public final class mr
   
   private void k()
   {
-    if ((this.m == null) || (this.m.ay == null)) {}
-    do
+    Object localObject = this.m;
+    if (localObject != null)
     {
-      return;
-      TencentMap.InfoWindowAdapter localInfoWindowAdapter = null;
-      if (this.n != null) {
-        localInfoWindowAdapter = this.n.e;
+      if (((pt)localObject).ay == null) {
+        return;
       }
-      this.u = a(this.m.ay, this, localInfoWindowAdapter, this.o);
-    } while (this.u == null);
-    this.u.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-    this.j = this.u.getMeasuredWidth();
-    this.k = this.u.getMeasuredHeight();
-    this.u.layout(0, 0, this.u.getMeasuredWidth(), this.u.getMeasuredHeight());
+      localObject = null;
+      lq locallq = this.n;
+      if (locallq != null) {
+        localObject = locallq.e;
+      }
+      this.u = a(this.m.ay, this, (TencentMap.InfoWindowAdapter)localObject, this.o);
+      localObject = this.u;
+      if (localObject != null)
+      {
+        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
+        this.j = this.u.getMeasuredWidth();
+        this.k = this.u.getMeasuredHeight();
+        localObject = this.u;
+        ((View)localObject).layout(0, 0, ((View)localObject).getMeasuredWidth(), this.u.getMeasuredHeight());
+      }
+    }
   }
   
   private void l()
   {
-    if ((this.o == null) || (this.m.ay == null)) {
-      return;
-    }
-    int i3 = this.o.getWidth(this.m.ay);
-    if (this.o.getOptions() != null) {}
-    for (float f1 = this.o.getOptions().getInfoWindowAnchorU();; f1 = 0.5F)
+    if (this.o != null)
     {
+      if (this.m.ay == null) {
+        return;
+      }
+      int i3 = this.o.getWidth(this.m.ay);
+      float f;
+      if (this.o.getOptions() != null) {
+        f = this.o.getOptions().getInfoWindowAnchorU();
+      } else {
+        f = 0.5F;
+      }
       int i2 = this.j;
       int i1 = i2;
       if (i2 == 0) {
         i1 = 1;
       }
-      float f2 = i3;
-      this.q = (f1 + (this.o.getAnchorU() - 0.5F) * f2 / i1);
-      return;
+      this.q = (f + i3 * (this.o.getAnchorU() - 0.5F) / i1);
     }
   }
   
   private void n()
   {
-    if ((this.o == null) || (this.m.ay == null)) {
-      return;
+    if (this.o != null)
+    {
+      if (this.m.ay == null) {
+        return;
+      }
+      int i3 = (int)(this.o.getHeight(this.m.ay) * this.o.getAnchorV());
+      int i2 = this.k;
+      float f1 = 1.0F;
+      if (this.o.getOptions() != null) {
+        f1 = this.o.getOptions().getInfoWindowAnchorV();
+      }
+      int i1 = i2;
+      if (i2 == 0) {
+        i1 = 1;
+      }
+      float f2 = i3;
+      float f3 = i1;
+      this.r = ((f2 + f1 * f3) / f3);
     }
-    int i3 = (int)(this.o.getHeight(this.m.ay) * this.o.getAnchorV());
-    int i2 = this.k;
-    float f1 = 1.0F;
-    if (this.o.getOptions() != null) {
-      f1 = this.o.getOptions().getInfoWindowAnchorV();
-    }
-    int i1 = i2;
-    if (i2 == 0) {
-      i1 = 1;
-    }
-    float f2 = i3;
-    this.r = ((f1 * i1 + f2) / i1);
   }
   
   public final Rect a(fu paramfu)
   {
-    if (this.h == null) {
+    ir localir = this.h;
+    if (localir == null) {
       return null;
     }
-    return this.h.a(paramfu);
+    return localir.a(paramfu);
   }
   
   public final void a(int paramInt1, int paramInt2)
@@ -301,51 +335,60 @@ public final class mr
   
   public final void a(LatLng paramLatLng)
   {
-    if (paramLatLng == null) {}
-    for (;;)
-    {
+    if (paramLatLng == null) {
       return;
-      if (this.l == null) {
-        this.l = fz.a(paramLatLng);
-      }
-      while (this.h != null)
-      {
-        this.h.a(this.l);
-        return;
-        this.l.setLatitudeE6((int)(paramLatLng.latitude * 1000000.0D));
-        this.l.setLongitudeE6((int)(paramLatLng.longitude * 1000000.0D));
-      }
+    }
+    GeoPoint localGeoPoint = this.l;
+    if (localGeoPoint == null)
+    {
+      this.l = fz.a(paramLatLng);
+    }
+    else
+    {
+      localGeoPoint.setLatitudeE6((int)(paramLatLng.latitude * 1000000.0D));
+      this.l.setLongitudeE6((int)(paramLatLng.longitude * 1000000.0D));
+    }
+    paramLatLng = this.h;
+    if (paramLatLng != null) {
+      paramLatLng.a(this.l);
     }
   }
   
   public final void a(MarkerOptions paramMarkerOptions)
   {
-    if ((paramMarkerOptions == null) || (this.h == null)) {}
-    do
+    if (paramMarkerOptions != null)
     {
-      return;
+      if (this.h == null) {
+        return;
+      }
       this.e = paramMarkerOptions.isVisible();
       d(paramMarkerOptions.getLevel());
       k();
       paramMarkerOptions = b(paramMarkerOptions);
-    } while (paramMarkerOptions == null);
-    this.h.a(paramMarkerOptions);
-    a(fy.a(this.u));
+      if (paramMarkerOptions == null) {
+        return;
+      }
+      this.h.a(paramMarkerOptions);
+      a(fy.a(this.u));
+    }
   }
   
   public final void a(GL10 paramGL10)
   {
-    if (!this.e) {}
-    while (this.h == null) {
+    if (!this.e) {
       return;
     }
-    this.h.a(paramGL10);
+    ir localir = this.h;
+    if (localir != null) {
+      localir.a(paramGL10);
+    }
   }
   
   public final void a(boolean paramBoolean)
   {
     this.t = paramBoolean;
-    if ((this.m != null) && (this.m.az != null)) {
+    pn localpn = this.m;
+    if ((localpn != null) && (localpn.az != null)) {
       this.m.az.b.k();
     }
   }
@@ -357,41 +400,44 @@ public final class mr
   
   public final boolean a(float paramFloat1, float paramFloat2)
   {
-    if (this.h == null) {
+    ir localir = this.h;
+    if (localir == null) {
       return false;
     }
-    return this.h.a(paramFloat1, paramFloat2);
+    return localir.a(paramFloat1, paramFloat2);
   }
   
   public final void a_()
   {
-    int i1 = 0;
-    int i2;
-    if ((this.o != null) && (this.o.getOptions() != null))
+    Object localObject = this.o;
+    int i2 = 0;
+    int i1;
+    if ((localObject != null) && (((Marker)localObject).getOptions() != null))
     {
       i2 = this.o.getOptions().getInfoWindowOffsetX();
       i1 = this.o.getOptions().getInfowindowOffsetY();
     }
-    for (;;)
+    else
     {
-      l();
-      n();
-      float f1 = this.q;
-      float f2 = i2 * 1.0F / this.j;
-      float f3 = this.r;
-      float f4 = i1 * 1.0F / this.k;
-      if (this.h != null) {
-        this.h.b(f1 - f2, f3 - f4);
-      }
-      return;
-      i2 = 0;
+      i1 = 0;
+    }
+    l();
+    n();
+    float f1 = this.q;
+    float f2 = i2 * 1.0F / this.j;
+    float f3 = this.r;
+    float f4 = i1 * 1.0F / this.k;
+    localObject = this.h;
+    if (localObject != null) {
+      ((ir)localObject).b(f1 - f2, f3 - f4);
     }
   }
   
   public final Rect b(fu paramfu)
   {
-    if (this.h != null) {
-      return this.h.b(paramfu);
+    ir localir = this.h;
+    if (localir != null) {
+      return localir.b(paramfu);
     }
     return new Rect(0, 0, 0, 0);
   }
@@ -404,16 +450,18 @@ public final class mr
   public final void b(boolean paramBoolean)
   {
     this.p = paramBoolean;
-    if (this.h != null) {
-      this.h.a(paramBoolean);
+    ir localir = this.h;
+    if (localir != null) {
+      localir.a(paramBoolean);
     }
   }
   
   public final void c()
   {
-    if (this.i != null)
+    Bitmap localBitmap = this.i;
+    if (localBitmap != null)
     {
-      this.i.recycle();
+      localBitmap.recycle();
       this.i = null;
     }
     this.o = null;
@@ -434,10 +482,11 @@ public final class mr
   
   public final void f()
   {
-    if (this.o == null) {
+    Marker localMarker = this.o;
+    if (localMarker == null) {
       return;
     }
-    a(this.o.getOptions());
+    a(localMarker.getOptions());
   }
   
   public final View g()
@@ -452,7 +501,7 @@ public final class mr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.mr
  * JD-Core Version:    0.7.0.1
  */

@@ -28,12 +28,13 @@ public final class oidb_cmd0x97b$SimpleInfo
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 48, 56, 66, 90, 98 }, new String[] { "bytes_nick", "bytes_header_url", "uint32_is_vip", "bytes_desc", "int64_like_total", "int64_publish_feeds_total", "rpt_msg_medal_info", "msg_sign_in", "msg_column_info" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Long.valueOf(0L), Long.valueOf(0L), null, null, null }, SimpleInfo.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 48, 56, 66, 90, 98 }, new String[] { "bytes_nick", "bytes_header_url", "uint32_is_vip", "bytes_desc", "int64_like_total", "int64_publish_feeds_total", "rpt_msg_medal_info", "msg_sign_in", "msg_column_info" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, localLong, localLong, null, null, null }, SimpleInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x97b.oidb_cmd0x97b.SimpleInfo
  * JD-Core Version:    0.7.0.1
  */

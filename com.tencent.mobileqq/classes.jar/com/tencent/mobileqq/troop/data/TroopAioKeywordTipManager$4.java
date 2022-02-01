@@ -2,12 +2,12 @@ package com.tencent.mobileqq.troop.data;
 
 import android.util.SparseArray;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopHandler.KeywordTipInfoObserver;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.observer.KeywordTipInfoObserver;
 import java.util.List;
 
 class TroopAioKeywordTipManager$4
-  extends TroopHandler.KeywordTipInfoObserver
+  extends KeywordTipInfoObserver
 {
   TroopAioKeywordTipManager$4(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, MessageRecord paramMessageRecord, TroopAioKeywordTipManager.Callback paramCallback) {}
   
@@ -33,7 +33,7 @@ class TroopAioKeywordTipManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -70,42 +70,51 @@ public final class cell_recomm_header
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.left_title != null) {
-      paramJceOutputStream.write(this.left_title, 0);
+    Object localObject = this.left_title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.btn_type, 1);
-    if (this.right_title != null) {
-      paramJceOutputStream.write(this.right_title, 2);
+    localObject = this.right_title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.custom_icon != null) {
-      paramJceOutputStream.write(this.custom_icon, 3);
+    localObject = this.custom_icon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.icon_width, 4);
     paramJceOutputStream.write(this.icon_height, 5);
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 6);
+    localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.mapCoverUrl != null) {
-      paramJceOutputStream.write(this.mapCoverUrl, 7);
+    localObject = this.mapCoverUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
     paramJceOutputStream.write(this.recomm_uin, 8);
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 9);
+    localObject = this.action_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.action_type != null) {
-      paramJceOutputStream.write(this.action_type, 10);
+    localObject = this.action_type;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.left_top_button != null) {
-      paramJceOutputStream.write(this.left_top_button, 11);
+    localObject = this.left_top_button;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.rightBgPic != null) {
-      paramJceOutputStream.write(this.rightBgPic, 12);
+    localObject = this.rightBgPic;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_recomm_header
  * JD-Core Version:    0.7.0.1
  */

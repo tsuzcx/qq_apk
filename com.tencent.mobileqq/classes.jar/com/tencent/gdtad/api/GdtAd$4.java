@@ -10,18 +10,19 @@ class GdtAd$4
   
   public void run()
   {
-    if ((this.a == null) || (this.a.get() == null) || (GdtAd.access$000((GdtAd)this.a.get()) == null) || (GdtAd.access$000((GdtAd)this.a.get()).get() == null))
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (GdtAd.access$000((GdtAd)this.a.get()) != null) && (GdtAd.access$000((GdtAd)this.a.get()).get() != null))
     {
-      GdtLog.d("GdtAd", "notifyClicked error");
+      GdtLog.b("GdtAd", "notifyClicked");
+      ((GdtAdListener)GdtAd.access$000((GdtAd)this.a.get()).get()).c((GdtAd)this.a.get());
       return;
     }
-    GdtLog.b("GdtAd", "notifyClicked");
-    ((GdtAdListener)GdtAd.access$000((GdtAd)this.a.get()).get()).c((GdtAd)this.a.get());
+    GdtLog.d("GdtAd", "notifyClicked error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.GdtAd.4
  * JD-Core Version:    0.7.0.1
  */

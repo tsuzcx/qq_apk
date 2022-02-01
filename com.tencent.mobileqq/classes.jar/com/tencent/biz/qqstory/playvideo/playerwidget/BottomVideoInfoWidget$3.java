@@ -17,20 +17,17 @@ class BottomVideoInfoWidget$3
   {
     if (this.jdField_a_of_type_Boolean) {
       BottomVideoInfoWidget.a(this.this$0).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
-    }
-    for (;;)
-    {
-      BottomVideoInfoWidget.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
-      FeedInfoChangeEvent localFeedInfoChangeEvent = new FeedInfoChangeEvent(1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId, 3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
-      StoryDispatcher.a().dispatch(localFeedInfoChangeEvent);
-      return;
+    } else {
       BottomVideoInfoWidget.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
     }
+    BottomVideoInfoWidget.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+    FeedInfoChangeEvent localFeedInfoChangeEvent = new FeedInfoChangeEvent(1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId, 3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+    StoryDispatcher.a().dispatch(localFeedInfoChangeEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.3
  * JD-Core Version:    0.7.0.1
  */

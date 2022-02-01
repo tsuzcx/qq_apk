@@ -22,22 +22,27 @@ public class DatalineMultiForwardHelper
     super(paramBaseChatPie);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet == null) {
-      this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet = new DatalineAIOShareActionSheet(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+    if (this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet == null)
+    {
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      Context localContext = this.jdField_a_of_type_AndroidContentContext;
+      Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+      BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+      this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet = new DatalineAIOShareActionSheet(localQQAppInterface, localContext, localActivity, localBaseChatPie, localBaseChatPie.a());
     }
     this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.aio.DatalineMultiForwardHelper
  * JD-Core Version:    0.7.0.1
  */

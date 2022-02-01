@@ -57,8 +57,13 @@ class FileTransferHandler$DiscDownloadInfo
     if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_check_sum.has()) {
       this.b = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_check_sum.get();
     }
-    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_cookie.has()) {
-      this.c = ("FTN5K=" + this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_cookie.get());
+    Object localObject;
+    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_cookie.has())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("FTN5K=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_cookie.get());
+      this.c = ((StringBuilder)localObject).toString();
     }
     if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.int32_ret_code.has()) {
       this.jdField_a_of_type_Long = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.int32_ret_code.get();
@@ -73,8 +78,8 @@ class FileTransferHandler$DiscDownloadInfo
     }
     if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_https_domain.has())
     {
-      String str = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_https_domain.get();
-      this.jdField_a_of_type_AndroidOsBundle.putString("strHttpsDomain", str);
+      localObject = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_https_domain.get();
+      this.jdField_a_of_type_AndroidOsBundle.putString("strHttpsDomain", (String)localObject);
     }
     if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.uint32_https_port.has()) {
       this.jdField_a_of_type_Short = ((short)this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.uint32_https_port.get());
@@ -122,7 +127,7 @@ class FileTransferHandler$DiscDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.DiscDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

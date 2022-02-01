@@ -11,7 +11,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ThemeImageWrapper;
 import com.tencent.widget.ThemeImageWrapper.DrawInterface;
@@ -39,34 +39,34 @@ public class TroopLabelTextView
     setTextColor(paramInt2);
     setMaxLines(1);
     setGravity(17);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, AIOUtils.a(16.0F, getResources()));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, ViewUtils.a(16.0F));
     localLayoutParams.rightMargin = 4;
-    paramInt2 = AIOUtils.a(4.0F, getResources());
-    int i = AIOUtils.a(4.0F, getResources());
-    int j = AIOUtils.a(0.0F, getResources());
-    int k = AIOUtils.a(0.0F, getResources());
+    paramInt2 = ViewUtils.a(4.0F);
+    int i = ViewUtils.a(4.0F);
+    int j = ViewUtils.a(0.0F);
+    int k = ViewUtils.a(0.0F);
     setTextSize(1, 10.0F);
-    if (paramInt3 == 2) {
-      paramInt1 = AIOUtils.a(10.0F, getResources());
-    }
-    for (;;)
+    if (paramInt3 == 2)
     {
-      setLayoutParams(localLayoutParams);
-      setPadding(paramInt1, j, i, k);
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
-      this.c = paramInt3;
-      this.jdField_b_of_type_Int = AIOUtils.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.d = AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      a();
-      return;
+      paramInt1 = ViewUtils.a(10.0F);
+    }
+    else
+    {
       paramInt1 = paramInt2;
       if (paramInt3 == 1)
       {
         setIncludeFontPadding(false);
-        localLayoutParams.height = AIOUtils.a(14.0F, getResources());
+        localLayoutParams.height = ViewUtils.a(14.0F);
         paramInt1 = paramInt2;
       }
     }
+    setLayoutParams(localLayoutParams);
+    setPadding(paramInt1, j, i, k);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramInt3;
+    this.jdField_b_of_type_Int = ViewUtils.a(2.0F);
+    this.d = ViewUtils.a(5.0F);
+    a();
   }
   
   private void a()
@@ -94,27 +94,24 @@ public class TroopLabelTextView
     super.onDraw(paramCanvas);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3 + (getPaddingLeft() + getPaddingRight()), paramInt4);
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    if (this.c == 1)
+    paramInt1 = this.c;
+    if (paramInt1 == 1)
     {
       localGradientDrawable.setColor(this.jdField_a_of_type_Int);
       localGradientDrawable.setCornerRadius(this.jdField_b_of_type_Int);
       setBackgroundDrawable(localGradientDrawable);
-    }
-    do
-    {
       return;
-      if (this.c == 0)
-      {
-        localGradientDrawable.setStroke(2, this.jdField_a_of_type_Int);
-        localGradientDrawable.setCornerRadius(getHeight() / 2);
-        setBackgroundDrawable(localGradientDrawable);
-        return;
-      }
-    } while (this.c != 2);
+    }
+    if (paramInt1 == 0)
+    {
+      localGradientDrawable.setStroke(2, this.jdField_a_of_type_Int);
+      localGradientDrawable.setCornerRadius(getHeight() / 2);
+      setBackgroundDrawable(localGradientDrawable);
+    }
   }
   
   public void setColor(int paramInt1, int paramInt2)
@@ -136,7 +133,10 @@ public class TroopLabelTextView
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      while (!QLog.isColorLevel()) {}
+      label78:
+      break label78;
+    }
+    if (QLog.isColorLevel()) {
       QLog.e("TroopLabelTextView", 2, "TroopLabelTextView setMaskImage OOM");
     }
   }
@@ -148,7 +148,7 @@ public class TroopLabelTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopLabelTextView
  * JD-Core Version:    0.7.0.1
  */

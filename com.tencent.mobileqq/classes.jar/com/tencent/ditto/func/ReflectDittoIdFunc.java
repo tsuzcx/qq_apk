@@ -29,34 +29,41 @@ public class ReflectDittoIdFunc
   
   public void setClickListener(DittoAreaView paramDittoAreaView, DittoArea paramDittoArea)
   {
-    if (this.clickMethod == null) {
+    Method localMethod = this.clickMethod;
+    if (localMethod == null) {
       return;
     }
-    if (this.clickMethod.getParameterTypes().length != 3) {
-      throw new RuntimeException("arguments of event method must be (DittoArea, MotionEvent, Object)");
+    if (localMethod.getParameterTypes().length == 3)
+    {
+      this.clickMethod.setAccessible(true);
+      paramDittoArea.clickListener = new ReflectDittoIdFunc.1(this, paramDittoAreaView);
+      return;
     }
-    this.clickMethod.setAccessible(true);
-    paramDittoArea.clickListener = new ReflectDittoIdFunc.1(this, paramDittoAreaView);
+    throw new RuntimeException("arguments of event method must be (DittoArea, MotionEvent, Object)");
   }
   
   public void setLongClickListener(DittoAreaView paramDittoAreaView, DittoArea paramDittoArea)
   {
-    if (this.longClickMethod == null) {
+    Method localMethod = this.longClickMethod;
+    if (localMethod == null) {
       return;
     }
-    if (this.longClickMethod.getParameterTypes().length != 3) {
-      throw new RuntimeException("arguments of event method must be (DittoArea, MotionEvent, Object)");
+    if (localMethod.getParameterTypes().length == 3)
+    {
+      this.longClickMethod.setAccessible(true);
+      paramDittoArea.longClickListener = new ReflectDittoIdFunc.2(this, paramDittoAreaView);
+      return;
     }
-    this.longClickMethod.setAccessible(true);
-    paramDittoArea.longClickListener = new ReflectDittoIdFunc.2(this, paramDittoAreaView);
+    throw new RuntimeException("arguments of event method must be (DittoArea, MotionEvent, Object)");
   }
   
   public void setValue(DittoAreaView paramDittoAreaView, DittoArea paramDittoArea)
   {
-    if (this.field == null) {
+    Field localField = this.field;
+    if (localField == null) {
       return;
     }
-    this.field.setAccessible(true);
+    localField.setAccessible(true);
     try
     {
       this.field.set(paramDittoAreaView, paramDittoArea);
@@ -70,7 +77,7 @@ public class ReflectDittoIdFunc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.func.ReflectDittoIdFunc
  * JD-Core Version:    0.7.0.1
  */

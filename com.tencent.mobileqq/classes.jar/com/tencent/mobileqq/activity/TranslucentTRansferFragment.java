@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.Window;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.DialogUtil;
@@ -15,9 +15,7 @@ public class TranslucentTRansferFragment
 {
   private void a()
   {
-    switch (getActivity().getIntent().getIntExtra("action", -1))
-    {
-    default: 
+    if (getBaseActivity().getIntent().getIntExtra("action", -1) != 4097) {
       return;
     }
     b();
@@ -25,17 +23,16 @@ public class TranslucentTRansferFragment
   
   private void b()
   {
-    if (getActivity() == null) {}
-    QQCustomDialog localQQCustomDialog;
-    do
-    {
+    if (getBaseActivity() == null) {
       return;
-      localQQCustomDialog = DialogUtil.a(getActivity(), 0, null, "你是否要去注册QQ？", null, null, null, null);
-      localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131714929), new TranslucentTRansferFragment.1(this, localQQCustomDialog));
-      localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131714927), new TranslucentTRansferFragment.2(this, localQQCustomDialog));
-      localQQCustomDialog.setOnDismissListener(new TranslucentTRansferFragment.3(this));
-    } while (getActivity().isFinishing());
-    localQQCustomDialog.show();
+    }
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(getBaseActivity(), 0, null, "你是否要去注册QQ？", null, null, null, null);
+    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131714859), new TranslucentTRansferFragment.1(this, localQQCustomDialog));
+    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131714857), new TranslucentTRansferFragment.2(this, localQQCustomDialog));
+    localQQCustomDialog.setOnDismissListener(new TranslucentTRansferFragment.3(this));
+    if (!getBaseActivity().isFinishing()) {
+      localQQCustomDialog.show();
+    }
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -59,7 +56,7 @@ public class TranslucentTRansferFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    if (getActivity() == null) {
+    if (getBaseActivity() == null) {
       return;
     }
     a();
@@ -68,16 +65,16 @@ public class TranslucentTRansferFragment
   public void onFinish()
   {
     super.onFinish();
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity == null) {
+    BaseActivity localBaseActivity = getBaseActivity();
+    if (localBaseActivity == null) {
       return;
     }
-    localFragmentActivity.overridePendingTransition(0, 0);
+    localBaseActivity.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TranslucentTRansferFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.shortvideo;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -15,36 +16,42 @@ class PtvTemplateManager$14
   
   public void run()
   {
-    if (this.this$0.a(this.a, true)) {
-      this.a.doodleUsable = true;
-    }
-    do
+    if (this.this$0.a(this.a, true))
     {
-      QQAppInterface localQQAppInterface;
-      do
-      {
-        return;
-        localQQAppInterface = this.this$0.a();
-        if (localQQAppInterface != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "reqApp:" + localQQAppInterface);
+      this.a.doodleUsable = true;
       return;
-      HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.mCallback = new PtvTemplateManager.14.1(this);
-      localHttpNetReq.mReqUrl = this.a.doodleUrl;
-      localHttpNetReq.mHttpMethod = 0;
-      localHttpNetReq.mOutPath = new File(PtvTemplateManager.b, this.a.doodleName).getPath();
-      localHttpNetReq.mContinuErrorLimit = NetworkUtil.a(NetworkCenter.getInstance().getNetType());
-      ((IHttpEngineService)localQQAppInterface.getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
-    } while (!QLog.isColorLevel());
-    QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.a.doodleUrl);
+    }
+    Object localObject1 = this.this$0.a();
+    if (localObject1 == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("reqApp:");
+        ((StringBuilder)localObject2).append(localObject1);
+        QLog.d("Doodle_Strokes_PtvTemplateManager", 2, ((StringBuilder)localObject2).toString());
+      }
+      return;
+    }
+    Object localObject2 = new HttpNetReq();
+    ((HttpNetReq)localObject2).mCallback = new PtvTemplateManager.14.1(this);
+    ((HttpNetReq)localObject2).mReqUrl = this.a.doodleUrl;
+    ((HttpNetReq)localObject2).mHttpMethod = 0;
+    ((HttpNetReq)localObject2).mOutPath = new File(PtvTemplateManager.b, this.a.doodleName).getPath();
+    ((HttpNetReq)localObject2).mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
+    ((IHttpEngineService)((QQAppInterface)localObject1).getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject2);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("startDownloadTemplate, url: ");
+      ((StringBuilder)localObject1).append(this.a.doodleUrl);
+      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, ((StringBuilder)localObject1).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.14
  * JD-Core Version:    0.7.0.1
  */

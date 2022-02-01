@@ -27,30 +27,29 @@ class OperatorScan$2
   
   public void onNext(T paramT)
   {
+    Object localObject;
     if (!this.once) {
       this.once = true;
+    } else {
+      localObject = this.value;
     }
-    for (;;)
+    try
     {
+      localObject = this.this$0.accumulator.call(localObject, paramT);
+      paramT = localObject;
       this.value = paramT;
       this.val$child.onNext(paramT);
       return;
-      Object localObject = this.value;
-      try
-      {
-        localObject = this.this$0.accumulator.call(localObject, paramT);
-        paramT = localObject;
-      }
-      catch (Throwable localThrowable)
-      {
-        Exceptions.throwOrReport(localThrowable, this.val$child, paramT);
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      Exceptions.throwOrReport(localThrowable, this.val$child, paramT);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorScan.2
  * JD-Core Version:    0.7.0.1
  */

@@ -44,53 +44,53 @@ public class EcShopHandler
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      do
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          paramArrayOfByte = null;
-        }
-        if (paramArrayOfByte.retcode.get() == 0) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("EcShopHandler", 2, "response from server error: " + paramArrayOfByte.retcode.get());
-      return;
-      if (!paramArrayOfByte.newusrrecmd.has()) {
-        break label175;
-      }
-      localObject = (qqshop.SQQSHPNewUserRecmd)paramArrayOfByte.newusrrecmd.get();
-      if ((!((qqshop.SQQSHPNewUserRecmd)localObject).recmdflag.has()) || (((qqshop.SQQSHPNewUserRecmd)localObject).recmdflag.get() != 1)) {
-        break label175;
-      }
-      localObject = ((qqshop.SQQSHPNewUserRecmd)localObject).recmdurl.get();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label175;
-      }
-      if (!QLog.isColorLevel()) {
-        break label167;
-      }
-      QLog.i("EcShopHandler", 2, "newusrrecmd url:" + (String)localObject);
-      label167:
-      notifyUI(0, true, localObject);
-      return;
-      label175:
-      if (!paramArrayOfByte.recmdlist.has()) {
-        break label210;
-      }
-      paramArrayOfByte = paramArrayOfByte.recmdlist.get();
-      if (paramArrayOfByte.size() <= 0) {
-        break label210;
-      }
-      notifyUI(0, true, paramArrayOfByte);
-      return;
-      label210:
-      notifyUI(0, false, null);
+      paramArrayOfByte.printStackTrace();
+      paramArrayOfByte = null;
     }
     if (paramArrayOfByte == null) {
       return;
     }
+    if (paramArrayOfByte.retcode.get() != 0)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("response from server error: ");
+        ((StringBuilder)localObject).append(paramArrayOfByte.retcode.get());
+        QLog.e("EcShopHandler", 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    if (paramArrayOfByte.newusrrecmd.has())
+    {
+      localObject = (qqshop.SQQSHPNewUserRecmd)paramArrayOfByte.newusrrecmd.get();
+      if ((((qqshop.SQQSHPNewUserRecmd)localObject).recmdflag.has()) && (((qqshop.SQQSHPNewUserRecmd)localObject).recmdflag.get() == 1))
+      {
+        localObject = ((qqshop.SQQSHPNewUserRecmd)localObject).recmdurl.get();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramArrayOfByte = new StringBuilder();
+            paramArrayOfByte.append("newusrrecmd url:");
+            paramArrayOfByte.append((String)localObject);
+            QLog.i("EcShopHandler", 2, paramArrayOfByte.toString());
+          }
+          notifyUI(0, true, localObject);
+          return;
+        }
+      }
+    }
+    if (paramArrayOfByte.recmdlist.has())
+    {
+      paramArrayOfByte = paramArrayOfByte.recmdlist.get();
+      if (paramArrayOfByte.size() > 0)
+      {
+        notifyUI(0, true, paramArrayOfByte);
+        return;
+      }
+    }
+    notifyUI(0, false, null);
   }
   
   private void b(byte[] paramArrayOfByte)
@@ -103,16 +103,8 @@ public class EcShopHandler
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      do
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          paramArrayOfByte = null;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("EcShopHandler", 2, "no bind uin found!");
-      return;
+      paramArrayOfByte.printStackTrace();
+      paramArrayOfByte = null;
     }
     if ((paramArrayOfByte != null) && (paramArrayOfByte.bindlist.has()))
     {
@@ -120,19 +112,23 @@ public class EcShopHandler
       if ((paramArrayOfByte != null) && (!paramArrayOfByte.isEmpty()))
       {
         paramArrayOfByte = (qqshop.SQQSHPAccoutRelation)paramArrayOfByte.get(0);
-        if ((!paramArrayOfByte.customerservice.has()) || (paramArrayOfByte.customerservice.get() != 1)) {
-          break label148;
-        }
-        if ((paramArrayOfByte.binduin.has()) && (paramArrayOfByte.puin.has()))
+        if ((paramArrayOfByte.customerservice.has()) && (paramArrayOfByte.customerservice.get() == 1))
         {
-          EcShopAssistantManager.a.put(String.valueOf(paramArrayOfByte.puin.get()), String.valueOf(paramArrayOfByte.binduin.get()));
-          notifyUI(3, true, null);
+          if ((paramArrayOfByte.binduin.has()) && (paramArrayOfByte.puin.has()))
+          {
+            EcShopAssistantManager.a.put(String.valueOf(paramArrayOfByte.puin.get()), String.valueOf(paramArrayOfByte.binduin.get()));
+            notifyUI(3, true, null);
+          }
+        }
+        else if (QLog.isColorLevel()) {
+          QLog.i("EcShopHandler", 2, "no bind uin found!");
         }
       }
-      return;
     }
-    label148:
-    notifyUI(3, false, null);
+    else
+    {
+      notifyUI(3, false, null);
+    }
   }
   
   public void a()
@@ -142,57 +138,53 @@ public class EcShopHandler
   
   public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {
+    if (paramArrayOfByte == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.e("EcShopHandler", 2, "onReceive data null.");
       }
+      return;
     }
-    do
+    paramIntent = paramIntent.getStringExtra("cmd");
+    if (TextUtils.isEmpty(paramIntent)) {
+      return;
+    }
+    if (paramIntent.equals("GetFolderInfo"))
     {
-      for (;;)
+      a(paramArrayOfByte);
+      return;
+    }
+    if (paramIntent.equals("GetShopBindUin")) {
+      return;
+    }
+    if (paramIntent.equals("UserEventReport")) {
+      return;
+    }
+    if (paramIntent.equals("GetShopCustomerservice"))
+    {
+      b(paramArrayOfByte);
+      return;
+    }
+    if (paramIntent.equals("GetRecommendShop"))
+    {
+      paramIntent = new qqshop.SQQSHPClientRsp();
+      try
       {
-        return;
-        paramIntent = paramIntent.getStringExtra("cmd");
-        if (!TextUtils.isEmpty(paramIntent))
-        {
-          if (paramIntent.equals("GetFolderInfo"))
-          {
-            a(paramArrayOfByte);
-            return;
-          }
-          if ((!paramIntent.equals("GetShopBindUin")) && (!paramIntent.equals("UserEventReport")))
-          {
-            if (paramIntent.equals("GetShopCustomerservice"))
-            {
-              b(paramArrayOfByte);
-              return;
-            }
-            if (paramIntent.equals("GetRecommendShop"))
-            {
-              paramIntent = new qqshop.SQQSHPClientRsp();
-              try
-              {
-                paramIntent.mergeFrom(paramArrayOfByte);
-                if ((paramIntent != null) && (paramIntent.rcpuin.has()))
-                {
-                  notifyUI(5, true, String.valueOf(paramIntent.rcpuin.get()));
-                  return;
-                }
-              }
-              catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-              {
-                for (;;)
-                {
-                  paramIntent = null;
-                  paramFromServiceMsg.printStackTrace();
-                }
-              }
-            }
-          }
-        }
+        paramIntent.mergeFrom(paramArrayOfByte);
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("EcShopHandler", 2, "EcShopHandler onReceive cmd cannot be recognized");
+      catch (InvalidProtocolBufferMicroException paramIntent)
+      {
+        paramIntent.printStackTrace();
+        paramIntent = null;
+      }
+      if ((paramIntent != null) && (paramIntent.rcpuin.has())) {
+        notifyUI(5, true, String.valueOf(paramIntent.rcpuin.get()));
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      QLog.e("EcShopHandler", 2, "EcShopHandler onReceive cmd cannot be recognized");
+    }
   }
   
   public void a(String paramString)
@@ -213,7 +205,7 @@ public class EcShopHandler
     this.a.startServlet(paramString);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return EcShopObserver.class;
   }
@@ -222,7 +214,7 @@ public class EcShopHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopHandler
  * JD-Core Version:    0.7.0.1
  */

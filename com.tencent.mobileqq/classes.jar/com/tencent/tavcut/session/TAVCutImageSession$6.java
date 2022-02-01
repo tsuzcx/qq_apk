@@ -9,12 +9,12 @@ class TAVCutImageSession$6
   
   public void run()
   {
-    TAVCutImageSession.access$002(this.this$0, this.val$imagePaths);
+    TAVCutImageSession.access$202(this.this$0, this.val$imagePaths);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutImageSession.6
  * JD-Core Version:    0.7.0.1
  */

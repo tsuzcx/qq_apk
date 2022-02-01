@@ -9,7 +9,7 @@ public final class EventWidgetInfo
 {
   static DescInfo cache_stDescInfo = new DescInfo();
   static VideoInfo cache_stVideoInfo = new VideoInfo();
-  static int cache_type = 0;
+  static int cache_type;
   public boolean bIsPreload = true;
   public boolean bShow = false;
   public DescInfo stDescInfo = null;
@@ -55,33 +55,40 @@ public final class EventWidgetInfo
   {
     paramJceOutputStream.write(this.bShow, 0);
     paramJceOutputStream.write(this.type, 1);
-    if (this.strMaterialUrl != null) {
-      paramJceOutputStream.write(this.strMaterialUrl, 2);
+    Object localObject = this.strMaterialUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.stDescInfo != null) {
-      paramJceOutputStream.write(this.stDescInfo, 3);
+    localObject = this.stDescInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.stVideoInfo != null) {
-      paramJceOutputStream.write(this.stVideoInfo, 4);
+    localObject = this.stVideoInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.strJumpUrl != null) {
-      paramJceOutputStream.write(this.strJumpUrl, 5);
+    localObject = this.strJumpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.bIsPreload, 6);
-    if (this.strBubbleDesc != null) {
-      paramJceOutputStream.write(this.strBubbleDesc, 7);
+    localObject = this.strBubbleDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.strTraceInfo != null) {
-      paramJceOutputStream.write(this.strTraceInfo, 8);
+    localObject = this.strTraceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.strDownloadAppPackageName != null) {
-      paramJceOutputStream.write(this.strDownloadAppPackageName, 9);
+    localObject = this.strDownloadAppPackageName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MOBILE_QZMALL_PROTOCOL.EventWidgetInfo
  * JD-Core Version:    0.7.0.1
  */

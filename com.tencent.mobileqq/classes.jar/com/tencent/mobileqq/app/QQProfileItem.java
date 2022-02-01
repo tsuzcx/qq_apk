@@ -5,12 +5,12 @@ import KQQ.RespItem;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.etrump.mixlayout.FontManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.ExtSnsFrdDataHandleHelper;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareUtil;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
-import com.tencent.mobileqq.apollo.api.model.ApolloBaseInfo;
+import com.tencent.mobileqq.apollo.model.ApolloBaseInfo;
+import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
 import com.tencent.mobileqq.app.utils.ClassicHeadActivityManager;
 import com.tencent.mobileqq.app.utils.ClassicHeadActivityManager.FriendHeadFlagItem;
 import com.tencent.mobileqq.app.utils.ExtensionInfoLogUtils;
@@ -26,7 +26,7 @@ import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.mutualmark.MutualMarkDataS2CHandleHelper;
 import com.tencent.mobileqq.mutualmark.oldlogic.FriendIntimateRelationshipHelper;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
+import com.tencent.mobileqq.nearby.INearbyCardManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -41,6 +41,7 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.util.MessageRecordUtil;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.vas.ColorRingManager;
+import com.tencent.mobileqq.vas.font.api.FontManagerConstants;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -89,32 +90,47 @@ public class QQProfileItem
   
   public static void a(long paramLong, String paramString, DiscussionManager paramDiscussionManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProfileItem", 2, "updateDiscussionMemberInfoName uin = " + paramLong + ",nickName = " + paramString);
-    }
-    Object localObject = paramDiscussionManager.a();
-    if (localObject != null)
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      ArrayList localArrayList = new ArrayList();
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("updateDiscussionMemberInfoName uin = ");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(",nickName = ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("QQProfileItem", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject2 = paramDiscussionManager.a();
+    if (localObject2 != null)
+    {
+      localObject1 = new ArrayList();
+      localObject2 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        DiscussionInfo localDiscussionInfo = (DiscussionInfo)((Iterator)localObject).next();
+        DiscussionInfo localDiscussionInfo = (DiscussionInfo)((Iterator)localObject2).next();
         DiscussionMemberInfo localDiscussionMemberInfo = paramDiscussionManager.a(localDiscussionInfo.uin, Long.toString(paramLong));
         if ((localDiscussionMemberInfo != null) && (a(paramString, localDiscussionMemberInfo.memberName)))
         {
           localDiscussionMemberInfo.memberName = paramString;
-          if (QLog.isColorLevel()) {
-            QLog.d("QQProfileItem", 2, "updateDiscussionMemberInfoName discussMem.memberName = " + localDiscussionMemberInfo.memberName + ",discussMem.inteRemark = " + localDiscussionMemberInfo.inteRemark + ",discussionUin = " + localDiscussionInfo.uin);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("updateDiscussionMemberInfoName discussMem.memberName = ");
+            localStringBuilder.append(localDiscussionMemberInfo.memberName);
+            localStringBuilder.append(",discussMem.inteRemark = ");
+            localStringBuilder.append(localDiscussionMemberInfo.inteRemark);
+            localStringBuilder.append(",discussionUin = ");
+            localStringBuilder.append(localDiscussionInfo.uin);
+            QLog.d("QQProfileItem", 2, localStringBuilder.toString());
           }
-          localArrayList.add(localDiscussionMemberInfo);
+          ((ArrayList)localObject1).add(localDiscussionMemberInfo);
         }
       }
-      if (localArrayList.size() > 0)
+      if (((ArrayList)localObject1).size() > 0)
       {
-        paramDiscussionManager.b(localArrayList);
+        paramDiscussionManager.b((List)localObject1);
         paramString = new HashMap();
-        paramString.put("count", String.valueOf(localArrayList.size()));
+        paramString.put("count", String.valueOf(((ArrayList)localObject1).size()));
         StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "updateDiscussMemberNick", true, 0L, 0L, paramString, "", true);
       }
     }
@@ -125,8 +141,14 @@ public class QQProfileItem
     Object localObject = paramFriendsManager.c();
     paramFriendsManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
     localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    int i;
+    for (;;)
     {
+      boolean bool = ((Iterator)localObject).hasNext();
+      i = 0;
+      if (!bool) {
+        break;
+      }
       Friends localFriends = (Friends)((Iterator)localObject).next();
       if ((localFriends.isShield()) && (!paramFriendsManager.containsKey(localFriends.uin)))
       {
@@ -139,7 +161,6 @@ public class QQProfileItem
         paramArrayList.add(localFriends);
       }
     }
-    int i = 0;
     while (i < paramInt)
     {
       if (paramArrayOfFriends[i] != null) {
@@ -172,9 +193,14 @@ public class QQProfileItem
   
   public static void a(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    Object localObject = new String();
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString, 2, "len = " + paramInt);
+    Object localObject1 = new String();
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("len = ");
+      ((StringBuilder)localObject2).append(paramInt);
+      QLog.d(paramString, 2, ((StringBuilder)localObject2).toString());
     }
     StringBuilder localStringBuilder = new StringBuilder("");
     int i = 0;
@@ -182,25 +208,43 @@ public class QQProfileItem
     {
       int j = paramArrayOfByte[i];
       int k = paramArrayOfByte[i];
-      String str = (String)localObject + "0123456789ABCDEF".charAt(j >> 4 & 0xF) + "" + "0123456789ABCDEF".charAt(k & 0xF) + " ";
-      localObject = str;
-      if ((i + 1) % 8 == 0)
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("0123456789ABCDEF".charAt(j >> 4 & 0xF));
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append("0123456789ABCDEF".charAt(k & 0xF));
+      ((StringBuilder)localObject2).append(" ");
+      localObject1 = ((StringBuilder)localObject2).toString();
+      j = i + 1;
+      if (j % 8 == 0)
       {
-        str = str + " ";
-        localObject = str;
-        if ((i + 1) % 16 == 0)
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" ");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localObject1 = localObject2;
+        i = j;
+        if (j % 16 == 0)
         {
-          if (QLog.isColorLevel()) {
-            localStringBuilder.append(str + "\n");
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append((String)localObject2);
+            ((StringBuilder)localObject1).append("\n");
+            localStringBuilder.append(((StringBuilder)localObject1).toString());
           }
-          localObject = "";
+          localObject1 = "";
+          i = j;
         }
       }
-      i += 1;
+      else
+      {
+        i = j;
+      }
     }
     QLog.d(paramString, 2, localStringBuilder.toString());
     if (QLog.isColorLevel()) {
-      QLog.d(paramString, 2, (String)localObject);
+      QLog.d(paramString, 2, (String)localObject1);
     }
   }
   
@@ -210,7 +254,7 @@ public class QQProfileItem
     // Byte code:
     //   0: aload_1
     //   1: invokevirtual 119	java/util/ArrayList:size	()I
-    //   4: ifle +51 -> 55
+    //   4: ifle +69 -> 73
     //   7: aload_2
     //   8: invokevirtual 260	com/tencent/mobileqq/app/FriendsManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   11: astore_2
@@ -221,44 +265,44 @@ public class QQProfileItem
     //   20: astore_1
     //   21: aload_1
     //   22: invokeinterface 76 1 0
-    //   27: ifeq +29 -> 56
+    //   27: ifeq +19 -> 46
     //   30: aload_3
     //   31: aload_1
     //   32: invokeinterface 80 1 0
     //   37: checkcast 267	com/tencent/mobileqq/data/troop/TroopInfo
     //   40: invokevirtual 272	com/tencent/mobileqq/app/TroopManager:b	(Lcom/tencent/mobileqq/data/troop/TroopInfo;)V
     //   43: goto -22 -> 21
-    //   46: astore_1
-    //   47: aload_1
-    //   48: invokevirtual 275	java/lang/Exception:printStackTrace	()V
-    //   51: aload_2
-    //   52: invokevirtual 278	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   55: return
-    //   56: aload_2
-    //   57: invokevirtual 280	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   60: aload_2
-    //   61: invokevirtual 278	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   64: return
-    //   65: astore_1
-    //   66: aload_2
-    //   67: invokevirtual 278	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   70: aload_1
-    //   71: athrow
+    //   46: aload_2
+    //   47: invokevirtual 274	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   50: goto +12 -> 62
+    //   53: astore_1
+    //   54: goto +13 -> 67
+    //   57: astore_1
+    //   58: aload_1
+    //   59: invokevirtual 277	java/lang/Exception:printStackTrace	()V
+    //   62: aload_2
+    //   63: invokevirtual 280	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   66: return
+    //   67: aload_2
+    //   68: invokevirtual 280	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   71: aload_1
+    //   72: athrow
+    //   73: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	72	0	this	QQProfileItem
-    //   0	72	1	paramArrayList	ArrayList<TroopInfo>
-    //   0	72	2	paramFriendsManager	FriendsManager
-    //   0	72	3	paramTroopManager	TroopManager
+    //   0	74	0	this	QQProfileItem
+    //   0	74	1	paramArrayList	ArrayList<TroopInfo>
+    //   0	74	2	paramFriendsManager	FriendsManager
+    //   0	74	3	paramTroopManager	TroopManager
     // Exception table:
     //   from	to	target	type
-    //   12	21	46	java/lang/Exception
-    //   21	43	46	java/lang/Exception
-    //   56	60	46	java/lang/Exception
-    //   12	21	65	finally
-    //   21	43	65	finally
-    //   47	51	65	finally
-    //   56	60	65	finally
+    //   12	21	53	finally
+    //   21	43	53	finally
+    //   46	50	53	finally
+    //   58	62	53	finally
+    //   12	21	57	java/lang/Exception
+    //   21	43	57	java/lang/Exception
+    //   46	50	57	java/lang/Exception
   }
   
   private void a(ArrayList<Friends> paramArrayList1, ArrayList<Friends> paramArrayList2)
@@ -290,28 +334,24 @@ public class QQProfileItem
   private void a(Oidb_0x5d0.SnsUpateBuffer paramSnsUpateBuffer, FriendsManager paramFriendsManager, ArrayList<SpecialCareInfo> paramArrayList, Map<String, Boolean> paramMap, ArrayList<String> paramArrayList1)
   {
     Object localObject1 = paramSnsUpateBuffer.rpt_msg_sns_update_item.get();
-    Object localObject2 = null;
     long l = paramSnsUpateBuffer.uint64_uin.get();
     Iterator localIterator = ((List)localObject1).iterator();
+    Object localObject2 = null;
     while (localIterator.hasNext())
     {
       Oidb_0x5d0.SnsUpdateItem localSnsUpdateItem = (Oidb_0x5d0.SnsUpdateItem)localIterator.next();
-      if ((localSnsUpdateItem != null) && (localSnsUpdateItem.uint32_update_sns_type.has()) && (localSnsUpdateItem.bytes_value.has()))
-      {
+      if ((localSnsUpdateItem != null) && (localSnsUpdateItem.uint32_update_sns_type.has()) && (localSnsUpdateItem.bytes_value.has())) {
         if (localSnsUpdateItem.uint32_update_sns_type.get() == 13578)
         {
           localObject1 = new FriendsStatusUtil.UpdateFriendStatusItem(String.valueOf(l), 13578, 18);
           if (!localSnsUpdateItem.bytes_value.has()) {
             ((FriendsStatusUtil.UpdateFriendStatusItem)localObject1).a(null);
-          }
-          for (;;)
-          {
-            FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FriendsStatusUtil.UpdateFriendStatusItem)localObject1, null);
-            break;
+          } else {
             ((FriendsStatusUtil.UpdateFriendStatusItem)localObject1).a(localSnsUpdateItem.bytes_value.get().toByteArray());
           }
+          FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FriendsStatusUtil.UpdateFriendStatusItem)localObject1, null);
         }
-        if (localSnsUpdateItem.uint32_update_sns_type.get() == 13579)
+        else if (localSnsUpdateItem.uint32_update_sns_type.get() == 13579)
         {
           if (QLog.isColorLevel()) {
             QLog.d("QQProfileItem", 2, "get do not disturb push");
@@ -323,7 +363,7 @@ public class QQProfileItem
         else
         {
           if (localSnsUpdateItem.uint32_update_sns_type.get() == 13568) {
-            QvipSpecialCareManager.a(String.valueOf(paramSnsUpateBuffer.uint64_uin.get()), localSnsUpdateItem.bytes_value.get().toStringUtf8(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            QvipSpecialCareUtil.a(String.valueOf(paramSnsUpateBuffer.uint64_uin.get()), localSnsUpdateItem.bytes_value.get().toStringUtf8(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
           }
           localObject1 = localObject2;
           if (localObject2 == null)
@@ -339,19 +379,32 @@ public class QQProfileItem
           int i = localSnsUpdateItem.uint32_update_sns_type.get();
           localObject2 = localSnsUpdateItem.bytes_value.get().toStringUtf8();
           FriendListHandler.initSpecialCareInfo((SpecialCareInfo)localObject1, i, (String)localObject2);
-          if (QLog.isColorLevel()) {
-            QLog.d("ProfileService.CheckUpdateReq", 2, "handleCheckUpdateRspBody uin=" + ((SpecialCareInfo)localObject1).uin + ", itemtype=" + i + ",itemVal=" + (String)localObject2);
+          Object localObject3;
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("handleCheckUpdateRspBody uin=");
+            ((StringBuilder)localObject3).append(((SpecialCareInfo)localObject1).uin);
+            ((StringBuilder)localObject3).append(", itemtype=");
+            ((StringBuilder)localObject3).append(i);
+            ((StringBuilder)localObject3).append(",itemVal=");
+            ((StringBuilder)localObject3).append((String)localObject2);
+            QLog.d("ProfileService.CheckUpdateReq", 2, ((StringBuilder)localObject3).toString());
           }
           if (localSnsUpdateItem.uint32_update_sns_type.get() == 13575)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("HotFriend_ProfileService.CheckUpdateReq", 2, "handleCheckUpdateRspBody uin= " + l);
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("handleCheckUpdateRspBody uin= ");
+              ((StringBuilder)localObject2).append(l);
+              QLog.d("HotFriend_ProfileService.CheckUpdateReq", 2, ((StringBuilder)localObject2).toString());
             }
             String str = String.valueOf(paramSnsUpateBuffer.uint64_uin.get());
             byte[] arrayOfByte = localSnsUpdateItem.bytes_value.get().toByteArray();
-            ExtensionInfo localExtensionInfo = paramFriendsManager.a(str);
-            localObject2 = localExtensionInfo;
-            if (localExtensionInfo == null)
+            localObject3 = paramFriendsManager.a(str);
+            localObject2 = localObject3;
+            if (localObject3 == null)
             {
               localObject2 = new ExtensionInfo();
               ((ExtensionInfo)localObject2).uin = str;
@@ -400,45 +453,53 @@ public class QQProfileItem
   
   private void a(Oidb_0x5e0.ContentItem paramContentItem, FriendsManager paramFriendsManager)
   {
-    int i = 1;
-    Object localObject;
-    long l;
-    int j;
     if (paramContentItem.msg_genderfiled.has())
     {
-      localObject = (Oidb_0x5e0.GenderFiled)paramContentItem.msg_genderfiled.get();
-      l = ((Oidb_0x5e0.GenderFiled)localObject).uint64_uin.get();
-      paramContentItem = paramFriendsManager.a(l + "");
-      if (paramContentItem != null)
+      paramContentItem = (Oidb_0x5e0.GenderFiled)paramContentItem.msg_genderfiled.get();
+      long l = paramContentItem.uint64_uin.get();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append("");
+      localObject = paramFriendsManager.a(((StringBuilder)localObject).toString());
+      if (localObject != null)
       {
-        j = ((Oidb_0x5e0.GenderFiled)localObject).uint32_gender.get();
-        if (j != 1) {
-          break label209;
+        int j = paramContentItem.uint32_gender.get();
+        int i;
+        if (j == 1)
+        {
+          i = 0;
         }
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      paramContentItem.shGender = ((short)i);
-      if (Utils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), String.valueOf(l)))
-      {
-        localObject = (NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
-        if (localObject != null) {
-          ((NearbyCardManager)localObject).b(paramContentItem.shGender);
+        else if (j == 2)
+        {
+          i = 1;
         }
-      }
-      paramFriendsManager.a(paramContentItem);
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileService.CheckUpdateReq", 2, "CheckUpdate  sex: uin = " + new StringBuilder().append(l).append("temp").toString().substring(0, 4) + " sex = " + i);
-      }
-      return;
-      label209:
-      if (j != 2) {
-        if (j == 0) {
-          i = 2;
-        } else {
+        else
+        {
           i = j;
+          if (j == 0) {
+            i = 2;
+          }
+        }
+        ((Card)localObject).shGender = ((short)i);
+        if (Utils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), String.valueOf(l)))
+        {
+          paramContentItem = (INearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
+          if (paramContentItem != null) {
+            paramContentItem.b(((Card)localObject).shGender);
+          }
+        }
+        paramFriendsManager.a((Card)localObject);
+        if (QLog.isColorLevel())
+        {
+          paramContentItem = new StringBuilder();
+          paramContentItem.append("CheckUpdate  sex: uin = ");
+          paramFriendsManager = new StringBuilder();
+          paramFriendsManager.append(l);
+          paramFriendsManager.append("temp");
+          paramContentItem.append(paramFriendsManager.toString().substring(0, 4));
+          paramContentItem.append(" sex = ");
+          paramContentItem.append(i);
+          QLog.d("ProfileService.CheckUpdateReq", 2, paramContentItem.toString());
         }
       }
     }
@@ -450,55 +511,68 @@ public class QQProfileItem
     localFriendHeadFlagItem.a();
     switch (paramContentItem.uint32_update_profile_id.get())
     {
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(localFriendHeadFlagItem.jdField_a_of_type_JavaLangString))
-      {
-        paramContentItem = (ClassicHeadActivityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CLASSIC_HEAD_ACIVITY_MANAGER);
-        if (paramContentItem != null) {
-          paramContentItem.a(localFriendHeadFlagItem);
-        }
-        localFriendHeadFlagItem.a();
+    case 8: 
+    case 14: 
+    default: 
+      break;
+    case 18: 
+      if (paramContentItem.msg_mutual_mark_data.has()) {
+        MutualMarkDataS2CHandleHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Oidb_0xd6b.MutualMarkData)paramContentItem.msg_mutual_mark_data.get());
       }
-      return;
-      a(paramContentItem, paramFriendsManager, paramArrayList1, paramArrayOfFriends, paramInt);
-      continue;
-      a(paramContentItem, paramFriendsManager);
-      continue;
-      a(paramContentItem, paramFriendsManager, paramArrayList2);
-      continue;
-      a(paramContentItem, paramTroopManager, paramArrayList);
-      continue;
-      a(paramContentItem);
-      continue;
-      a(paramContentItem, paramFriendsManager, paramArrayOfFriends, paramInt);
-      continue;
-      b(paramContentItem, paramFriendsManager);
-      continue;
-      a(paramContentItem, paramFriendsManager, paramArrayList3, paramMap, paramArrayList4);
-      continue;
-      c(paramContentItem, paramFriendsManager);
-      continue;
-      d(paramContentItem, paramFriendsManager);
-      continue;
-      e(paramContentItem, paramFriendsManager);
-      continue;
-      a(paramContentItem, paramFriendsManager, localFriendHeadFlagItem);
-      continue;
-      if (paramContentItem.msg_intimate_info.has())
-      {
+      break;
+    case 17: 
+      if (paramContentItem.msg_ext_sns_frd_data.has()) {
+        ExtSnsFrdDataHandleHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Oidb_0xd50.ExtSnsFrdData)paramContentItem.msg_ext_sns_frd_data.get());
+      }
+      break;
+    case 16: 
+      if (paramContentItem.msg_intimate_info.has()) {
         FriendIntimateRelationshipHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (intimate_relation.IntimateInfo)paramContentItem.msg_intimate_info.get());
-        continue;
-        if (paramContentItem.msg_ext_sns_frd_data.has())
-        {
-          ExtSnsFrdDataHandleHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Oidb_0xd50.ExtSnsFrdData)paramContentItem.msg_ext_sns_frd_data.get());
-          continue;
-          if (paramContentItem.msg_mutual_mark_data.has()) {
-            MutualMarkDataS2CHandleHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Oidb_0xd6b.MutualMarkData)paramContentItem.msg_mutual_mark_data.get());
-          }
-        }
       }
+      break;
+    case 15: 
+      a(paramContentItem, paramFriendsManager, localFriendHeadFlagItem);
+      break;
+    case 13: 
+      b(paramContentItem, paramFriendsManager);
+      break;
+    case 12: 
+      e(paramContentItem, paramFriendsManager);
+      break;
+    case 11: 
+      d(paramContentItem, paramFriendsManager);
+      break;
+    case 10: 
+      c(paramContentItem, paramFriendsManager);
+      break;
+    case 9: 
+      a(paramContentItem, paramFriendsManager, paramArrayList3, paramMap, paramArrayList4);
+      break;
+    case 7: 
+      a(paramContentItem, paramFriendsManager, paramArrayOfFriends, paramInt);
+      break;
+    case 6: 
+      a(paramContentItem);
+      break;
+    case 5: 
+      a(paramContentItem, paramTroopManager, paramArrayList);
+      break;
+    case 3: 
+      a(paramContentItem, paramFriendsManager, paramArrayList2);
+      break;
+    case 2: 
+      a(paramContentItem, paramFriendsManager);
+      break;
+    case 1: 
+      a(paramContentItem, paramFriendsManager, paramArrayList1, paramArrayOfFriends, paramInt);
+    }
+    if (!TextUtils.isEmpty(localFriendHeadFlagItem.jdField_a_of_type_JavaLangString))
+    {
+      paramContentItem = (ClassicHeadActivityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CLASSIC_HEAD_ACIVITY_MANAGER);
+      if (paramContentItem != null) {
+        paramContentItem.a(localFriendHeadFlagItem);
+      }
+      localFriendHeadFlagItem.a();
     }
   }
   
@@ -508,50 +582,79 @@ public class QQProfileItem
     {
       paramContentItem = (Oidb_0x5e0.ProfileInfo)paramContentItem.msg_profile_info.get();
       long l = paramContentItem.uint64_uin.get();
-      Object localObject = paramContentItem.rpt_msg_profile_info.get();
+      Object localObject2 = paramContentItem.rpt_msg_profile_info.get();
       paramFriendHeadFlagItem.a();
       paramFriendHeadFlagItem.jdField_a_of_type_JavaLangString = Long.toString(l);
-      paramContentItem = (IApolloManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-      ApolloBaseInfo localApolloBaseInfo = paramContentItem.getApolloBaseInfo(l + "");
+      IApolloManagerService localIApolloManagerService = (IApolloManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
+      paramContentItem = (IApolloDaoManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all");
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(l);
+      ((StringBuilder)localObject1).append("");
+      localObject1 = paramContentItem.getApolloBaseInfo(((StringBuilder)localObject1).toString());
+      localObject2 = ((List)localObject2).iterator();
       boolean bool = false;
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      while (((Iterator)localObject2).hasNext())
       {
-        Oidb_0x5e0.ProfileTvInfo localProfileTvInfo = (Oidb_0x5e0.ProfileTvInfo)((Iterator)localObject).next();
+        Oidb_0x5e0.ProfileTvInfo localProfileTvInfo = (Oidb_0x5e0.ProfileTvInfo)((Iterator)localObject2).next();
         int i = localProfileTvInfo.uint32_field_id.get();
         localProfileTvInfo.uint32_field_type.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("ProfileService.CheckUpdateReq", 2, "Check update for profile field uin: " + new StringBuilder().append(l).append("temp").toString().substring(0, 4) + ",field: " + i + ", int_value: " + 0L);
-        }
-        bool |= a(localProfileTvInfo, paramFriendsManager, l, i, paramContentItem, localApolloBaseInfo);
-        switch (i)
+        if (QLog.isColorLevel())
         {
-        default: 
-          break;
-        case 20015: 
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("Check update for profile field uin: ");
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append(l);
+          localStringBuilder2.append("temp");
+          localStringBuilder1.append(localStringBuilder2.toString().substring(0, 4));
+          localStringBuilder1.append(",field: ");
+          localStringBuilder1.append(i);
+          localStringBuilder1.append(", int_value: ");
+          localStringBuilder1.append(0L);
+          QLog.d("ProfileService.CheckUpdateReq", 2, localStringBuilder1.toString());
+        }
+        bool |= a(localProfileTvInfo, paramFriendsManager, l, i, localIApolloManagerService, (ApolloBaseInfo)localObject1);
+        if (i != 20015)
+        {
+          if (i != 27201)
+          {
+            if (i != 27218)
+            {
+              if (i != 27254)
+              {
+                if (i != 40530)
+                {
+                  if (i != 40556)
+                  {
+                    if (i == 42099) {
+                      paramFriendHeadFlagItem.jdField_a_of_type_Long = localProfileTvInfo.uint64_field_int_value.get();
+                    }
+                  }
+                  else {
+                    paramFriendHeadFlagItem.c = localProfileTvInfo.uint64_field_int_value.get();
+                  }
+                }
+                else {
+                  a(localProfileTvInfo, paramFriendsManager, l);
+                }
+              }
+              else {
+                c(localProfileTvInfo, paramFriendsManager, l);
+              }
+            }
+            else {
+              b(localProfileTvInfo, paramFriendsManager, l);
+            }
+          }
+          else {
+            d(localProfileTvInfo, paramFriendsManager, l);
+          }
+        }
+        else {
           paramFriendHeadFlagItem.b = localProfileTvInfo.uint64_field_int_value.get();
-          break;
-        case 27201: 
-          d(localProfileTvInfo, paramFriendsManager, l);
-          break;
-        case 40530: 
-          a(localProfileTvInfo, paramFriendsManager, l);
-          break;
-        case 27254: 
-          c(localProfileTvInfo, paramFriendsManager, l);
-          break;
-        case 42099: 
-          paramFriendHeadFlagItem.jdField_a_of_type_Long = localProfileTvInfo.uint64_field_int_value.get();
-          break;
-        case 40556: 
-          paramFriendHeadFlagItem.c = localProfileTvInfo.uint64_field_int_value.get();
-          break;
-        case 27218: 
-          b(localProfileTvInfo, paramFriendsManager, l);
         }
       }
       if (bool) {
-        paramContentItem.saveOrUpdateApolloBaseInfo(localApolloBaseInfo);
+        paramContentItem.saveOrUpdateApolloBaseInfo((ApolloBaseInfo)localObject1);
       }
     }
   }
@@ -565,16 +668,28 @@ public class QQProfileItem
       {
         long l = paramContentItem.uint64_uin.get();
         String str = paramContentItem.bytes_value.get().toStringUtf8();
-        if (QLog.isColorLevel()) {
-          QLog.d("ProfileService.CheckUpdateReq", 2, "CheckUpdate Remark：uin = " + new StringBuilder().append(l).append("temp").toString().substring(0, 4) + " 备注内容 = " + MessageRecordUtil.a(str));
+        if (QLog.isColorLevel())
+        {
+          paramContentItem = new StringBuilder();
+          paramContentItem.append("CheckUpdate Remark：uin = ");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(l);
+          ((StringBuilder)localObject).append("temp");
+          paramContentItem.append(((StringBuilder)localObject).toString().substring(0, 4));
+          paramContentItem.append(" 备注内容 = ");
+          paramContentItem.append(MessageRecordUtil.a(str));
+          QLog.d("ProfileService.CheckUpdateReq", 2, paramContentItem.toString());
         }
-        Friends localFriends = paramFriendsManager.e(Long.toString(l));
+        Object localObject = paramFriendsManager.e(Long.toString(l));
         paramContentItem = null;
-        if (localFriends != null) {
-          paramContentItem = localFriends.remark;
+        if (localObject != null) {
+          paramContentItem = ((Friends)localObject).remark;
         }
-        paramFriendsManager = paramFriendsManager.b(l + "", str);
-        if ((localFriends != null) && (localFriends.isFriend()) && (b(str, paramContentItem))) {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(l);
+        localStringBuilder.append("");
+        paramFriendsManager = paramFriendsManager.b(localStringBuilder.toString(), str);
+        if ((localObject != null) && (((Friends)localObject).isFriend()) && (b(str, paramContentItem))) {
           paramArrayList.add(paramFriendsManager);
         }
       }
@@ -583,54 +698,48 @@ public class QQProfileItem
   
   private void a(Oidb_0x5e0.ContentItem paramContentItem, FriendsManager paramFriendsManager, ArrayList<SpecialCareInfo> paramArrayList, Map<String, Boolean> paramMap, ArrayList<String> paramArrayList1)
   {
-    Oidb_0x5e0.GeneralBuffer localGeneralBuffer;
     if (paramContentItem.msg_general_buffer.has())
     {
-      localGeneralBuffer = (Oidb_0x5e0.GeneralBuffer)paramContentItem.msg_general_buffer.get();
-      if ((localGeneralBuffer != null) && (localGeneralBuffer.bytes_value.has())) {
+      Oidb_0x5e0.GeneralBuffer localGeneralBuffer = (Oidb_0x5e0.GeneralBuffer)paramContentItem.msg_general_buffer.get();
+      if ((localGeneralBuffer != null) && (localGeneralBuffer.bytes_value.has()))
+      {
         paramContentItem = new Oidb_0x5d0.SnsUpateBuffer();
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramContentItem.mergeFrom(localGeneralBuffer.bytes_value.get().toByteArray());
-        if ((paramContentItem != null) && (paramContentItem.uint64_uin.has()) && (paramContentItem.rpt_uin32_idlist.has()))
+        try
         {
+          paramContentItem.mergeFrom(localGeneralBuffer.bytes_value.get().toByteArray());
+        }
+        catch (Exception localException)
+        {
+          paramContentItem = null;
+          localException.printStackTrace();
+        }
+        if ((paramContentItem != null) && (paramContentItem.uint64_uin.has()) && (paramContentItem.rpt_uin32_idlist.has())) {
           paramMap = paramContentItem.rpt_uin32_idlist.get().iterator();
-          if (!paramMap.hasNext()) {
-            break label258;
-          }
-          if (((Integer)paramMap.next()).intValue() != 4051) {
-            continue;
-          }
-          paramArrayList = String.valueOf(paramContentItem.uint64_uin.get());
-          if (QLog.isColorLevel())
+        }
+        while (paramMap.hasNext()) {
+          if (((Integer)paramMap.next()).intValue() == 4051)
           {
-            if (paramArrayList.length() < 4) {
-              break label259;
+            paramArrayList = String.valueOf(paramContentItem.uint64_uin.get());
+            if (QLog.isColorLevel())
+            {
+              if (paramArrayList.length() >= 4) {
+                paramFriendsManager = paramArrayList.substring(paramArrayList.length() - 4);
+              } else {
+                paramFriendsManager = paramArrayList;
+              }
+              paramArrayList1 = new StringBuilder();
+              paramArrayList1.append("CheckUpdate ValueBit : shd: ");
+              paramArrayList1.append(paramFriendsManager);
+              QLog.d("ProfileService.CheckUpdateReq", 2, paramArrayList1.toString());
             }
-            paramFriendsManager = paramArrayList.substring(paramArrayList.length() - 4);
-            QLog.d("ProfileService.CheckUpdateReq", 2, "CheckUpdate ValueBit : shd: " + paramFriendsManager);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramArrayList, paramArrayList);
+            continue;
+            if ((paramContentItem != null) && (paramContentItem.uint64_uin.has()) && (paramContentItem.rpt_msg_sns_update_item.has())) {
+              a(paramContentItem, paramFriendsManager, paramArrayList, paramMap, paramArrayList1);
+            }
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramArrayList, paramArrayList);
-          continue;
         }
       }
-      catch (Exception localException)
-      {
-        paramContentItem = null;
-        localException.printStackTrace();
-        continue;
-        if ((paramContentItem != null) && (paramContentItem.uint64_uin.has()) && (paramContentItem.rpt_msg_sns_update_item.has())) {
-          a(paramContentItem, paramFriendsManager, paramArrayList, paramMap, paramArrayList1);
-        }
-      }
-      label258:
-      return;
-      label259:
-      paramFriendsManager = paramArrayList;
     }
   }
   
@@ -643,17 +752,29 @@ public class QQProfileItem
       {
         long l = paramContentItem.uint64_uin.get();
         String str = paramContentItem.bytes_value.get().toStringUtf8();
-        if (QLog.isColorLevel()) {
-          QLog.d("ProfileService.CheckUpdateReq", 2, "CheckUpdate  Nick：uin = " + new StringBuilder().append(l).append("temp").toString().substring(0, 4) + " 昵称 = " + MessageRecordUtil.a(str));
+        if (QLog.isColorLevel())
+        {
+          paramContentItem = new StringBuilder();
+          paramContentItem.append("CheckUpdate  Nick：uin = ");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(l);
+          ((StringBuilder)localObject).append("temp");
+          paramContentItem.append(((StringBuilder)localObject).toString().substring(0, 4));
+          paramContentItem.append(" 昵称 = ");
+          paramContentItem.append(MessageRecordUtil.a(str));
+          QLog.d("ProfileService.CheckUpdateReq", 2, paramContentItem.toString());
         }
-        Friends localFriends = paramFriendsManager.e(Long.toString(l));
+        Object localObject = paramFriendsManager.e(Long.toString(l));
         paramContentItem = null;
-        if (localFriends != null) {
-          paramContentItem = localFriends.name;
+        if (localObject != null) {
+          paramContentItem = ((Friends)localObject).name;
         }
-        paramFriendsManager = paramFriendsManager.a(l + "", str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(l);
+        localStringBuilder.append("");
+        paramFriendsManager = paramFriendsManager.a(localStringBuilder.toString(), str);
         paramArrayOfFriends[paramInt] = paramFriendsManager;
-        if ((localFriends != null) && (localFriends.isFriend()) && (a(str, paramContentItem))) {
+        if ((localObject != null) && (((Friends)localObject).isFriend()) && (a(str, paramContentItem))) {
           paramArrayList.add(paramFriendsManager);
         }
       }
@@ -662,79 +783,89 @@ public class QQProfileItem
   
   private void a(Oidb_0x5e0.ContentItem paramContentItem, FriendsManager paramFriendsManager, Friends[] paramArrayOfFriends, int paramInt)
   {
-    long l;
-    int k;
-    int j;
-    int i;
-    int n;
     if (paramContentItem.msg_value_bit.has())
     {
-      paramContentItem = (Oidb_0x5e0.ValueBit)paramContentItem.msg_value_bit.get();
-      if ((paramContentItem != null) && (paramContentItem.uint64_uin.has()))
+      Object localObject = (Oidb_0x5e0.ValueBit)paramContentItem.msg_value_bit.get();
+      if ((localObject != null) && (((Oidb_0x5e0.ValueBit)localObject).uint64_uin.has()))
       {
-        l = paramContentItem.uint64_uin.get();
-        paramFriendsManager = paramFriendsManager.e(Long.toString(l));
-        k = 0;
-        j = 0;
-        i = 0;
-        if (paramFriendsManager != null)
+        long l = ((Oidb_0x5e0.ValueBit)localObject).uint64_uin.get();
+        paramContentItem = paramFriendsManager.e(Long.toString(l));
+        int i;
+        int j;
+        int k;
+        if (paramContentItem != null)
         {
-          k = paramFriendsManager.qqVipInfo;
-          j = paramFriendsManager.superQqInfo;
-          i = paramFriendsManager.superVipInfo;
+          i = paramContentItem.qqVipInfo;
+          j = paramContentItem.superQqInfo;
+          k = paramContentItem.superVipInfo;
         }
-        if ((paramContentItem.bytes_identity_flag.has()) && (paramContentItem.bytes_identity_flag.get().size() >= 3))
+        else
         {
-          m = paramContentItem.bytes_identity_flag.get().byteAt(0);
-          n = paramContentItem.bytes_identity_flag.get().byteAt(2);
-          if (paramFriendsManager != null)
+          i = 0;
+          j = 0;
+          k = 0;
+        }
+        boolean bool = ((Oidb_0x5e0.ValueBit)localObject).bytes_identity_flag.has();
+        int n = 1;
+        int m;
+        int i1;
+        if ((bool) && (((Oidb_0x5e0.ValueBit)localObject).bytes_identity_flag.get().size() >= 3))
+        {
+          m = ((Oidb_0x5e0.ValueBit)localObject).bytes_identity_flag.get().byteAt(0);
+          i1 = ((Oidb_0x5e0.ValueBit)localObject).bytes_identity_flag.get().byteAt(2);
+          if (paramContentItem != null)
           {
-            int i1 = paramFriendsManager.qqVipInfo;
-            if ((m & 0xFC) == 0) {
-              break label402;
+            int i2 = paramContentItem.qqVipInfo;
+            if ((m & 0xFC) != 0) {
+              m = 1;
+            } else {
+              m = 0;
             }
-            m = 1;
-            paramFriendsManager.qqVipInfo = (m << 24 | i1);
-            i1 = paramFriendsManager.qqVipInfo;
-            if ((n & 0x60) == 0) {
-              break label408;
+            paramContentItem.qqVipInfo = (m << 24 | i2);
+            i2 = paramContentItem.qqVipInfo;
+            if ((i1 & 0x60) != 0) {
+              m = 1;
+            } else {
+              m = 0;
             }
-            m = 1;
-            label186:
-            paramFriendsManager.qqVipInfo = (m << 24 | i1);
+            paramContentItem.qqVipInfo = (i2 | m << 24);
           }
         }
-        if ((paramContentItem.bytes_ext_flag.has()) && (paramContentItem.bytes_ext_flag.get().size() >= 5))
+        if ((((Oidb_0x5e0.ValueBit)localObject).bytes_ext_flag.has()) && (((Oidb_0x5e0.ValueBit)localObject).bytes_ext_flag.get().size() >= 5))
         {
-          m = paramContentItem.bytes_ext_flag.get().byteAt(5);
-          if (paramFriendsManager != null)
+          m = ((Oidb_0x5e0.ValueBit)localObject).bytes_ext_flag.get().byteAt(5);
+          if (paramContentItem != null)
           {
-            n = paramFriendsManager.superVipInfo;
-            if ((m & 0x20) == 0) {
-              break label414;
+            i1 = paramContentItem.superVipInfo;
+            if ((m & 0x20) != 0) {
+              m = n;
+            } else {
+              m = 0;
             }
+            paramContentItem.superVipInfo = (m << 24 | i1);
           }
         }
-      }
-    }
-    label402:
-    label408:
-    label414:
-    for (int m = 1;; m = 0)
-    {
-      paramFriendsManager.superVipInfo = (m << 24 | n);
-      if ((paramFriendsManager != null) && ((paramFriendsManager.superVipInfo != i) || (paramFriendsManager.qqVipInfo != k) || (paramFriendsManager.superQqInfo != j)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ProfileService.CheckUpdateReq", 2, "find a vip user uin = " + new StringBuilder().append(l).append("temp").toString().substring(0, 4) + " superVipInfo = " + paramFriendsManager.superVipInfo + " qqVipInfo = " + paramFriendsManager.qqVipInfo + " superQqInfo = " + paramFriendsManager.superQqInfo);
+        if ((paramContentItem != null) && ((paramContentItem.superVipInfo != k) || (paramContentItem.qqVipInfo != i) || (paramContentItem.superQqInfo != j)))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramFriendsManager = new StringBuilder();
+            paramFriendsManager.append("find a vip user uin = ");
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(l);
+            ((StringBuilder)localObject).append("temp");
+            paramFriendsManager.append(((StringBuilder)localObject).toString().substring(0, 4));
+            paramFriendsManager.append(" superVipInfo = ");
+            paramFriendsManager.append(paramContentItem.superVipInfo);
+            paramFriendsManager.append(" qqVipInfo = ");
+            paramFriendsManager.append(paramContentItem.qqVipInfo);
+            paramFriendsManager.append(" superQqInfo = ");
+            paramFriendsManager.append(paramContentItem.superQqInfo);
+            QLog.d("ProfileService.CheckUpdateReq", 2, paramFriendsManager.toString());
+          }
+          paramArrayOfFriends[paramInt] = paramContentItem;
         }
-        paramArrayOfFriends[paramInt] = paramFriendsManager;
       }
-      return;
-      m = 0;
-      break;
-      m = 0;
-      break label186;
     }
   }
   
@@ -747,13 +878,25 @@ public class QQProfileItem
       {
         long l = paramContentItem.uint64_group_uin.get();
         paramContentItem = paramContentItem.bytes_value.get().toStringUtf8();
-        paramTroopManager = paramTroopManager.b(l + "");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(l);
+        localStringBuilder.append("");
+        paramTroopManager = paramTroopManager.b(localStringBuilder.toString());
         if (paramTroopManager != null)
         {
           paramTroopManager.troopname = paramContentItem;
           paramArrayList.add(paramTroopManager);
-          if (QLog.isColorLevel()) {
-            QLog.d("ProfileService.CheckUpdateReq", 2, "CheckUpdate TroopName：uin = " + new StringBuilder().append(l).append("temp").toString().substring(0, 4) + " 群名称内容 = " + MessageRecordUtil.a(paramContentItem));
+          if (QLog.isColorLevel())
+          {
+            paramTroopManager = new StringBuilder();
+            paramTroopManager.append("CheckUpdate TroopName：uin = ");
+            paramArrayList = new StringBuilder();
+            paramArrayList.append(l);
+            paramArrayList.append("temp");
+            paramTroopManager.append(paramArrayList.toString().substring(0, 4));
+            paramTroopManager.append(" 群名称内容 = ");
+            paramTroopManager.append(MessageRecordUtil.a(paramContentItem));
+            QLog.d("ProfileService.CheckUpdateReq", 2, paramTroopManager.toString());
           }
         }
       }
@@ -776,115 +919,165 @@ public class QQProfileItem
       paramProfileTvInfo.timestamp = System.currentTimeMillis();
       paramFriendsManager.a(paramProfileTvInfo);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProfileItem", 2, "update, Get magic font, uin= " + paramLong + ", magicfont = " + paramProfileTvInfo.magicFont);
+    if (QLog.isColorLevel())
+    {
+      paramFriendsManager = new StringBuilder();
+      paramFriendsManager.append("update, Get magic font, uin= ");
+      paramFriendsManager.append(paramLong);
+      paramFriendsManager.append(", magicfont = ");
+      paramFriendsManager.append(paramProfileTvInfo.magicFont);
+      QLog.d("QQProfileItem", 2, paramFriendsManager.toString());
     }
   }
   
   private void a(Oidb_0x5e0.RspBody paramRspBody)
   {
     FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    Object localObject2 = paramRspBody.rpt_msg_contentItem.get();
-    if (localObject2 == null) {
+    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    Object localObject5 = paramRspBody.rpt_msg_contentItem.get();
+    if (localObject5 == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(((List)localObject2).size());
-    if ((paramRspBody.uint32_over_flag.has()) && (paramRspBody.uint32_over_flag.get() == 1)) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(((List)localObject5).size());
+    boolean bool1;
+    if ((paramRspBody.uint32_over_flag.has()) && (paramRspBody.uint32_over_flag.get() == 1)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("QQProfileItem::handleCheckUpdateRspBody called contentitemlist size = ");
+    ((StringBuilder)localObject1).append(((List)localObject5).size());
+    ((StringBuilder)localObject1).append(" overFlag:");
+    ((StringBuilder)localObject1).append(bool1);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = "ProfileService.CheckUpdateReq";
+    QLog.i("ProfileService.CheckUpdateReq", 1, (String)localObject1);
+    localObject1 = new Friends[((List)localObject5).size()];
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    HashMap localHashMap1 = new HashMap();
+    ArrayList localArrayList3 = new ArrayList();
+    ArrayList localArrayList5 = new ArrayList();
+    ArrayList localArrayList4 = new ArrayList();
+    ArrayList localArrayList8 = localArrayList4;
+    ArrayList localArrayList9 = localArrayList5;
+    ArrayList localArrayList6 = localArrayList3;
+    HashMap localHashMap2 = localHashMap1;
+    ArrayList localArrayList7 = localArrayList2;
+    ArrayList localArrayList10 = localArrayList1;
+    Object localObject4 = localObject1;
+    Object localObject3 = localObject2;
+    boolean bool2 = bool1;
+    if (localObject5 != null)
     {
-      QLog.i("ProfileService.CheckUpdateReq", 1, "QQProfileItem::handleCheckUpdateRspBody called contentitemlist size = " + ((List)localObject2).size() + " overFlag:" + bool);
-      Friends[] arrayOfFriends = new Friends[((List)localObject2).size()];
-      ArrayList localArrayList1 = new ArrayList();
-      ArrayList localArrayList2 = new ArrayList();
-      HashMap localHashMap = new HashMap();
-      ArrayList localArrayList3 = new ArrayList();
-      ArrayList localArrayList4 = new ArrayList();
-      ArrayList localArrayList5 = new ArrayList();
-      if (localObject2 != null)
-      {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          Oidb_0x5e0.ContentItem localContentItem = (Oidb_0x5e0.ContentItem)((Iterator)localObject2).next();
-          if (localContentItem.uint32_update_profile_id.has()) {
-            a(localContentItem, localFriendsManager, (TroopManager)localObject1, localArrayList4, localArrayList5, arrayOfFriends, 0, localArrayList1, localArrayList2, localHashMap, localArrayList3);
-          }
-        }
-      }
-      a(localArrayList4, localArrayList5);
-      a(localArrayList1, localFriendsManager, (TroopManager)localObject1);
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileService.CheckUpdateReq", 2, "handleCheckUpdateRspBody, bulkSaveOrUpdateSpecialCareInfos,size=" + localArrayList2.size());
-      }
-      if (localArrayList2.size() > 0)
-      {
-        localFriendsManager.c(localArrayList2);
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(99, true, new Object[] { Boolean.valueOf(true), localArrayList2 });
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("tag_hidden_chat", 2, new Object[] { "0x5e0 hiddenChatMap.size:", Integer.valueOf(localHashMap.size()) });
-      }
-      if (localHashMap.size() > 0) {
-        FriendsStatusUtil.a(localHashMap, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      if (localArrayList3.size() > 0) {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(106, true, localArrayList3);
-      }
-      if ((bool) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 0))
-      {
-        localObject1 = new ArrayList();
-        a(localFriendsManager, arrayOfFriends, 0, (ArrayList)localObject1);
-        arrayOfFriends = new Friends[((ArrayList)localObject1).size()];
-        ((ArrayList)localObject1).toArray(arrayOfFriends);
-        if (QLog.isColorLevel()) {
-          QLog.d("ProfileService.CheckUpdateReq", 2, "CheckUpdate ValueBit update Friends count = " + 0 + " includeShield:" + arrayOfFriends.length);
-        }
-        localFriendsManager.a(arrayOfFriends, arrayOfFriends.length);
-      }
+      localObject5 = ((List)localObject5).iterator();
       for (;;)
       {
-        b(paramRspBody);
-        if ((!paramRspBody.uint32_over_flag.has()) || (paramRspBody.uint32_over_flag.get() != 1)) {
+        localArrayList8 = localArrayList4;
+        localArrayList9 = localArrayList5;
+        localArrayList6 = localArrayList3;
+        localHashMap2 = localHashMap1;
+        localArrayList7 = localArrayList2;
+        localArrayList10 = localArrayList1;
+        localObject4 = localObject1;
+        localObject3 = localObject2;
+        bool2 = bool1;
+        if (!((Iterator)localObject5).hasNext()) {
           break;
         }
-        this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = null;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ProfileService.CheckUpdateReq", 2, "CheckUpdate ValueBit update Friends count = " + 0);
+        localObject3 = (Oidb_0x5e0.ContentItem)((Iterator)localObject5).next();
+        if (((Oidb_0x5e0.ContentItem)localObject3).uint32_update_profile_id.has()) {
+          a((Oidb_0x5e0.ContentItem)localObject3, localFriendsManager, localTroopManager, localArrayList5, localArrayList4, (Friends[])localObject1, 0, localArrayList1, localArrayList2, localHashMap1, localArrayList3);
         }
-        localFriendsManager.a(arrayOfFriends, 0);
       }
-      if (!paramRspBody.bytes_svrcontext.has()) {
-        break;
+    }
+    a(localArrayList9, localArrayList8);
+    a(localArrayList10, localFriendsManager, localTroopManager);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleCheckUpdateRspBody, bulkSaveOrUpdateSpecialCareInfos,size=");
+      ((StringBuilder)localObject1).append(localArrayList7.size());
+      QLog.d((String)localObject3, 2, ((StringBuilder)localObject1).toString());
+    }
+    if (localArrayList7.size() > 0)
+    {
+      localFriendsManager.c(localArrayList7);
+      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(97, true, new Object[] { Boolean.valueOf(true), localArrayList7 });
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("tag_hidden_chat", 2, new Object[] { "0x5e0 hiddenChatMap.size:", Integer.valueOf(localHashMap2.size()) });
+    }
+    if (localHashMap2.size() > 0) {
+      FriendsStatusUtil.a(localHashMap2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    if (localArrayList6.size() > 0) {
+      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(104, true, localArrayList6);
+    }
+    if ((bool2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 0))
+    {
+      localObject1 = new ArrayList();
+      a(localFriendsManager, localObject4, 0, (ArrayList)localObject1);
+      localObject2 = new Friends[((ArrayList)localObject1).size()];
+      ((ArrayList)localObject1).toArray((Object[])localObject2);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("CheckUpdate ValueBit update Friends count = ");
+        ((StringBuilder)localObject1).append(0);
+        ((StringBuilder)localObject1).append(" includeShield:");
+        ((StringBuilder)localObject1).append(localObject2.length);
+        QLog.d((String)localObject3, 2, ((StringBuilder)localObject1).toString());
       }
+      localFriendsManager.a((Friends[])localObject2, localObject2.length);
+    }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("CheckUpdate ValueBit update Friends count = ");
+        ((StringBuilder)localObject1).append(0);
+        QLog.d((String)localObject3, 2, ((StringBuilder)localObject1).toString());
+      }
+      localFriendsManager.a(localObject4, 0);
+    }
+    b(paramRspBody);
+    if ((paramRspBody.uint32_over_flag.has()) && (paramRspBody.uint32_over_flag.get() == 1))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+      return;
+    }
+    if (paramRspBody.bytes_svrcontext.has())
+    {
       this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = paramRspBody.bytes_svrcontext.get();
       ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getCheckUpdate(false, 1);
-      return;
     }
   }
   
   public static boolean a(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString1))
+    boolean bool;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!paramString1.equals(paramString2))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if ((QLog.isColorLevel()) && (bool))
     {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        bool1 = bool2;
-        if (!paramString1.equals(paramString2)) {
-          bool1 = true;
-        }
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkShouldUpdateDiscussinMemberInfoByName newFriendName = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",oldFriendName = ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",result = ");
+      localStringBuilder.append(bool);
+      QLog.d("QQProfileItem", 2, localStringBuilder.toString());
     }
-    if ((QLog.isColorLevel()) && (bool1)) {
-      QLog.d("QQProfileItem", 2, "checkShouldUpdateDiscussinMemberInfoByName newFriendName = " + paramString1 + ",oldFriendName = " + paramString2 + ",result = " + bool1);
-    }
-    return bool1;
+    return bool;
   }
   
   private boolean a(Oidb_0x5e0.ProfileTvInfo paramProfileTvInfo, FriendsManager paramFriendsManager, long paramLong, int paramInt, IApolloManagerService paramIApolloManagerService, ApolloBaseInfo paramApolloBaseInfo)
@@ -893,98 +1086,134 @@ public class QQProfileItem
     switch (paramInt)
     {
     default: 
-    case 41999: 
-    case 42003: 
+      break;
     case 42980: 
-    case 42230: 
-    case 27059: 
-    case 27206: 
-      do
+      paramLong = (int)paramProfileTvInfo.uint64_field_int_value.get();
+      if ((paramApolloBaseInfo != null) && (paramApolloBaseInfo.apolloStatus != paramLong))
       {
-        do
+        paramApolloBaseInfo.apolloStatus = ((int)paramLong);
+        return true;
+      }
+      break;
+    case 42230: 
+      paramLong = (int)paramProfileTvInfo.uint64_field_int_value.get();
+      if ((paramApolloBaseInfo != null) && (paramApolloBaseInfo.cmshow3dFlag != paramLong))
+      {
+        paramApolloBaseInfo.cmshow3dFlag = ((int)paramLong);
+        return true;
+      }
+      break;
+    case 42003: 
+      paramLong = (int)paramProfileTvInfo.uint64_field_int_value.get();
+      if ((paramApolloBaseInfo != null) && (paramApolloBaseInfo.apolloVipFlag != paramLong))
+      {
+        paramApolloBaseInfo.apolloVipFlag = ((int)paramLong);
+        return true;
+      }
+      break;
+    case 41999: 
+      paramLong = (int)paramProfileTvInfo.uint64_field_int_value.get();
+      if ((paramApolloBaseInfo != null) && (paramApolloBaseInfo.apolloVipLevel != paramLong))
+      {
+        paramApolloBaseInfo.apolloVipLevel = ((int)paramLong);
+        return true;
+      }
+      break;
+    case 27210: 
+      long l = paramProfileTvInfo.uint64_field_int_value.get();
+      paramInt = paramApolloBaseInfo.apolloAISwitch;
+      int i = (int)l;
+      boolean bool1;
+      if (paramInt != i)
+      {
+        paramApolloBaseInfo.apolloAISwitch = i;
+        bool1 = bool2;
+        if (String.valueOf(paramLong).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()))
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return false;
-                  paramLong = (int)paramProfileTvInfo.uint64_field_int_value.get();
-                } while ((paramApolloBaseInfo == null) || (paramApolloBaseInfo.apolloVipLevel == paramLong));
-                paramApolloBaseInfo.apolloVipLevel = ((int)paramLong);
-                return true;
-                paramLong = (int)paramProfileTvInfo.uint64_field_int_value.get();
-              } while ((paramApolloBaseInfo == null) || (paramApolloBaseInfo.apolloVipFlag == paramLong));
-              paramApolloBaseInfo.apolloVipFlag = ((int)paramLong);
-              return true;
-              paramLong = (int)paramProfileTvInfo.uint64_field_int_value.get();
-            } while ((paramApolloBaseInfo == null) || (paramApolloBaseInfo.apolloStatus == paramLong));
-            paramApolloBaseInfo.apolloStatus = ((int)paramLong);
-            return true;
-            paramLong = (int)paramProfileTvInfo.uint64_field_int_value.get();
-          } while ((paramApolloBaseInfo == null) || (paramApolloBaseInfo.cmshow3dFlag == paramLong));
-          paramApolloBaseInfo.cmshow3dFlag = ((int)paramLong);
-          return true;
-          paramLong = paramProfileTvInfo.uint64_field_int_value.get();
-        } while ((paramApolloBaseInfo == null) || (paramApolloBaseInfo.apolloServerTS == paramLong));
+          paramIApolloManagerService.updateUserFlag(i, 3);
+          bool1 = bool2;
+        }
+      }
+      else
+      {
+        bool1 = false;
+      }
+      bool2 = bool1;
+      if (!QLog.isColorLevel()) {
+        break label428;
+      }
+      paramProfileTvInfo = new StringBuilder();
+      paramProfileTvInfo.append("apollo aiSwitch profileupdate :");
+      paramProfileTvInfo.append(l);
+      QLog.d("ProfileService.CheckUpdateReq", 2, paramProfileTvInfo.toString());
+      return bool1;
+    case 27206: 
+      paramLong = paramProfileTvInfo.uint64_field_int_value.get();
+      if ((paramLong < NetConnInfoCenter.getServerTime()) && (paramApolloBaseInfo != null) && (paramApolloBaseInfo.apolloSignValidTS != paramLong))
+      {
+        paramApolloBaseInfo.apolloLocalSignTs = paramApolloBaseInfo.apolloSignValidTS;
+        paramApolloBaseInfo.apolloSignValidTS = paramLong;
+        paramApolloBaseInfo.apolloSignStr = "";
+        return true;
+      }
+      break;
+    case 27059: 
+      paramLong = paramProfileTvInfo.uint64_field_int_value.get();
+      if ((paramApolloBaseInfo != null) && (paramApolloBaseInfo.apolloServerTS != paramLong))
+      {
         paramApolloBaseInfo.apolloServerTS = paramLong;
         return true;
-        paramLong = paramProfileTvInfo.uint64_field_int_value.get();
-      } while ((paramLong >= NetConnInfoCenter.getServerTime()) || (paramApolloBaseInfo == null) || (paramApolloBaseInfo.apolloSignValidTS == paramLong));
-      paramApolloBaseInfo.apolloLocalSignTs = paramApolloBaseInfo.apolloSignValidTS;
-      paramApolloBaseInfo.apolloSignValidTS = paramLong;
-      paramApolloBaseInfo.apolloSignStr = "";
-      return true;
-    }
-    long l = paramProfileTvInfo.uint64_field_int_value.get();
-    if (paramApolloBaseInfo.apolloAISwitch != (int)l)
-    {
-      paramApolloBaseInfo.apolloAISwitch = ((int)l);
-      bool1 = bool2;
-      if (String.valueOf(paramLong).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) {
-        paramIApolloManagerService.updateUserFlag((int)l, 3);
       }
+      break;
     }
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileService.CheckUpdateReq", 2, "apollo aiSwitch profileupdate :" + l);
-      }
-      return bool1;
-    }
+    bool2 = false;
+    label428:
+    return bool2;
   }
   
   public static void b(long paramLong, String paramString, DiscussionManager paramDiscussionManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProfileItem", 2, "updateDiscussionMemberInfoRemark uin = " + paramLong + ",remarkName = " + paramString);
-    }
-    Object localObject = paramDiscussionManager.a();
-    if (localObject != null)
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      ArrayList localArrayList = new ArrayList();
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("updateDiscussionMemberInfoRemark uin = ");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(",remarkName = ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("QQProfileItem", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject2 = paramDiscussionManager.a();
+    if (localObject2 != null)
+    {
+      localObject1 = new ArrayList();
+      localObject2 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        DiscussionInfo localDiscussionInfo = (DiscussionInfo)((Iterator)localObject).next();
+        DiscussionInfo localDiscussionInfo = (DiscussionInfo)((Iterator)localObject2).next();
         DiscussionMemberInfo localDiscussionMemberInfo = paramDiscussionManager.a(localDiscussionInfo.uin, Long.toString(paramLong));
         if ((localDiscussionMemberInfo != null) && (b(paramString, localDiscussionMemberInfo.inteRemark)))
         {
           localDiscussionMemberInfo.inteRemark = paramString;
-          if (QLog.isColorLevel()) {
-            QLog.d("QQProfileItem", 2, "updateDiscussionMemberInfoRemark discussMem.memberName = " + localDiscussionMemberInfo.memberName + ",discussMem.inteRemark = " + localDiscussionMemberInfo.inteRemark + ",discussionUin = " + localDiscussionInfo.uin);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("updateDiscussionMemberInfoRemark discussMem.memberName = ");
+            localStringBuilder.append(localDiscussionMemberInfo.memberName);
+            localStringBuilder.append(",discussMem.inteRemark = ");
+            localStringBuilder.append(localDiscussionMemberInfo.inteRemark);
+            localStringBuilder.append(",discussionUin = ");
+            localStringBuilder.append(localDiscussionInfo.uin);
+            QLog.d("QQProfileItem", 2, localStringBuilder.toString());
           }
-          localArrayList.add(localDiscussionMemberInfo);
+          ((ArrayList)localObject1).add(localDiscussionMemberInfo);
         }
       }
-      if (localArrayList.size() > 0)
+      if (((ArrayList)localObject1).size() > 0)
       {
-        paramDiscussionManager.b(localArrayList);
+        paramDiscussionManager.b((List)localObject1);
         paramString = new HashMap();
-        paramString.put("count", String.valueOf(localArrayList.size()));
+        paramString.put("count", String.valueOf(((ArrayList)localObject1).size()));
         StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "updateDiscussMemberRemark", true, 0L, 0L, paramString, "", true);
       }
     }
@@ -1001,7 +1230,7 @@ public class QQProfileItem
         if (paramContentItem.remaining() > 8)
         {
           long l1 = paramContentItem.getInt() & 0xFFFFFFFF;
-          long l2 = paramContentItem.getInt() & 0xFFFFFFFF;
+          long l2 = 0xFFFFFFFF & paramContentItem.getInt();
           byte[] arrayOfByte = new byte[paramContentItem.getShort() & 0xFFFF];
           paramContentItem.get(arrayOfByte);
           ExtensionInfo localExtensionInfo = paramFriendsManager.a(Long.toString(l1));
@@ -1018,8 +1247,14 @@ public class QQProfileItem
             paramContentItem.isAdded2C2C = SignatureManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(l1), ExtensionRichStatus.a(paramContentItem));
             ExtensionInfoLogUtils.a("QQProfileItem", "handleUpdateProfileItemIdxNewRichStatus before save，friendUin:", paramContentItem);
             paramFriendsManager.a(paramContentItem);
-            if (QLog.isColorLevel()) {
-              QLog.d("ProfileService.CheckUpdateReq", 2, "insertSignMsgIfNeeded from QQProfileItem uin = " + l1 + " result = " + paramContentItem.isAdded2C2C);
+            if (QLog.isColorLevel())
+            {
+              paramFriendsManager = new StringBuilder();
+              paramFriendsManager.append("insertSignMsgIfNeeded from QQProfileItem uin = ");
+              paramFriendsManager.append(l1);
+              paramFriendsManager.append(" result = ");
+              paramFriendsManager.append(paramContentItem.isAdded2C2C);
+              QLog.d("ProfileService.CheckUpdateReq", 2, paramFriendsManager.toString());
             }
           }
         }
@@ -1041,34 +1276,53 @@ public class QQProfileItem
     {
       paramProfileTvInfo.latestPLUpdateTimestamp = l;
       paramFriendsManager.a(paramProfileTvInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProfileItem", 2, "update uin=" + paramLong + " latestplNewsTs=" + l);
+      if (QLog.isColorLevel())
+      {
+        paramProfileTvInfo = new StringBuilder();
+        paramProfileTvInfo.append("update uin=");
+        paramProfileTvInfo.append(paramLong);
+        paramProfileTvInfo.append(" latestplNewsTs=");
+        paramProfileTvInfo.append(l);
+        QLog.d("QQProfileItem", 2, paramProfileTvInfo.toString());
       }
     }
   }
   
   private void b(Oidb_0x5e0.RspBody paramRspBody)
   {
-    Object localObject = paramRspBody.rpt_msg_ProfileListResult.get();
-    if (localObject != null)
+    Object localObject1 = paramRspBody.rpt_msg_ProfileListResult.get();
+    if (localObject1 != null)
     {
       paramRspBody = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Oidb_0x5e0.ProfileListResult localProfileListResult = (Oidb_0x5e0.ProfileListResult)((Iterator)localObject).next();
-        if ((localProfileListResult.uint32_result.has()) && (localProfileListResult.uint32_result.get() == 0))
+        Object localObject2 = (Oidb_0x5e0.ProfileListResult)((Iterator)localObject1).next();
+        if ((((Oidb_0x5e0.ProfileListResult)localObject2).uint32_result.has()) && (((Oidb_0x5e0.ProfileListResult)localObject2).uint32_result.get() == 0))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("ProfileService.CheckUpdateReq", 2, "get result =" + localProfileListResult.uint32_result.get());
-          }
-          if ((localProfileListResult.uint32_update_profile_id.has()) && (localProfileListResult.uint32_new_content_timestamp.has()))
+          if (QLog.isColorLevel())
           {
-            int i = localProfileListResult.uint32_update_profile_id.get();
-            int j = localProfileListResult.uint32_new_content_timestamp.get();
-            paramRspBody.putLong("inccheckupdatetimeStamp" + i, j);
-            if (QLog.isColorLevel()) {
-              QLog.d("ProfileService.CheckUpdateReq", 2, "handleCheckUpdateRspBody profileid:" + i + " uint32_new_content_timestamp =" + j);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("get result =");
+            localStringBuilder.append(((Oidb_0x5e0.ProfileListResult)localObject2).uint32_result.get());
+            QLog.d("ProfileService.CheckUpdateReq", 2, localStringBuilder.toString());
+          }
+          if ((((Oidb_0x5e0.ProfileListResult)localObject2).uint32_update_profile_id.has()) && (((Oidb_0x5e0.ProfileListResult)localObject2).uint32_new_content_timestamp.has()))
+          {
+            int i = ((Oidb_0x5e0.ProfileListResult)localObject2).uint32_update_profile_id.get();
+            int j = ((Oidb_0x5e0.ProfileListResult)localObject2).uint32_new_content_timestamp.get();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("inccheckupdatetimeStamp");
+            ((StringBuilder)localObject2).append(i);
+            paramRspBody.putLong(((StringBuilder)localObject2).toString(), j);
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("handleCheckUpdateRspBody profileid:");
+              ((StringBuilder)localObject2).append(i);
+              ((StringBuilder)localObject2).append(" uint32_new_content_timestamp =");
+              ((StringBuilder)localObject2).append(j);
+              QLog.d("ProfileService.CheckUpdateReq", 2, ((StringBuilder)localObject2).toString());
             }
           }
         }
@@ -1079,16 +1333,13 @@ public class QQProfileItem
   
   public static boolean b(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      bool1 = bool2;
-      if (!paramString1.equals(paramString2)) {
-        bool1 = true;
-      }
+    boolean bool1;
+    if ((!TextUtils.isEmpty(paramString1)) && (!paramString1.equals(paramString2))) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    bool2 = bool1;
+    boolean bool2 = bool1;
     if (TextUtils.isEmpty(paramString1))
     {
       bool2 = bool1;
@@ -1096,8 +1347,16 @@ public class QQProfileItem
         bool2 = true;
       }
     }
-    if ((QLog.isColorLevel()) && (bool2)) {
-      QLog.d("QQProfileItem", 2, "checkShouldUpdateDiscussinMemberInfoByRemark ,newRemark = " + paramString1 + ",oldRemark = " + paramString2 + ",result = " + bool2);
+    if ((QLog.isColorLevel()) && (bool2))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkShouldUpdateDiscussinMemberInfoByRemark ,newRemark = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",oldRemark = ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",result = ");
+      localStringBuilder.append(bool2);
+      QLog.d("QQProfileItem", 2, localStringBuilder.toString());
     }
     return bool2;
   }
@@ -1122,10 +1381,10 @@ public class QQProfileItem
         if (paramContentItem.remaining() >= 8)
         {
           l2 = paramContentItem.getLong();
-          ExtensionInfo localExtensionInfo = paramFriendsManager.a(String.valueOf(l1));
-          ExtensionInfoLogUtils.a("QQProfileItem", "handleUpdateProfileItemIdxFaceAddonId before fm.getExtensionInfo，friendUin:", localExtensionInfo);
-          paramContentItem = localExtensionInfo;
-          if (localExtensionInfo == null)
+          Object localObject = paramFriendsManager.a(String.valueOf(l1));
+          ExtensionInfoLogUtils.a("QQProfileItem", "handleUpdateProfileItemIdxFaceAddonId before fm.getExtensionInfo，friendUin:", (ExtensionInfo)localObject);
+          paramContentItem = (Oidb_0x5e0.ContentItem)localObject;
+          if (localObject == null)
           {
             paramContentItem = new ExtensionInfo();
             paramContentItem.uin = String.valueOf(l1);
@@ -1134,8 +1393,17 @@ public class QQProfileItem
           paramContentItem.timestamp = System.currentTimeMillis();
           ExtensionInfoLogUtils.a("QQProfileItem", "handleUpdateProfileItemIdxFaceAddonId before save，friendUin:", paramContentItem);
           paramFriendsManager.a(paramContentItem);
-          if (QLog.isColorLevel()) {
-            QLog.d("ProfileService.CheckUpdateReq", 2, "Check update, Get Pendant, uin=" + new StringBuilder().append(l1).append("temp").toString().substring(0, 4) + ", id=" + paramContentItem.pendantId);
+          if (QLog.isColorLevel())
+          {
+            paramFriendsManager = new StringBuilder();
+            paramFriendsManager.append("Check update, Get Pendant, uin=");
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(l1);
+            ((StringBuilder)localObject).append("temp");
+            paramFriendsManager.append(((StringBuilder)localObject).toString().substring(0, 4));
+            paramFriendsManager.append(", id=");
+            paramFriendsManager.append(paramContentItem.pendantId);
+            QLog.d("ProfileService.CheckUpdateReq", 2, paramFriendsManager.toString());
           }
         }
       }
@@ -1159,8 +1427,16 @@ public class QQProfileItem
       paramProfileTvInfo.fontEffectLastUpdateTime = NetConnInfoCenter.getServerTime();
       paramFriendsManager.a(paramProfileTvInfo);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProfileItem", 2, "update, Get font effect, uin= " + paramLong + ", fontEffect = " + paramProfileTvInfo.fontEffect + ", updateTime = " + paramProfileTvInfo.fontEffectLastUpdateTime);
+    if (QLog.isColorLevel())
+    {
+      paramFriendsManager = new StringBuilder();
+      paramFriendsManager.append("update, Get font effect, uin= ");
+      paramFriendsManager.append(paramLong);
+      paramFriendsManager.append(", fontEffect = ");
+      paramFriendsManager.append(paramProfileTvInfo.fontEffect);
+      paramFriendsManager.append(", updateTime = ");
+      paramFriendsManager.append(paramProfileTvInfo.fontEffectLastUpdateTime);
+      QLog.d("QQProfileItem", 2, paramFriendsManager.toString());
     }
   }
   
@@ -1191,14 +1467,25 @@ public class QQProfileItem
             paramContentItem = new ExtensionInfo();
             paramContentItem.uin = String.valueOf(l1);
           }
-          if (paramContentItem.uVipFont != i)
+          l2 = paramContentItem.uVipFont;
+          long l3 = i;
+          if (l2 != l3)
           {
-            paramContentItem.uVipFont = i;
+            paramContentItem.uVipFont = l3;
             paramContentItem.timestamp = System.currentTimeMillis();
             paramFriendsManager.a(paramContentItem);
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("ProfileService.CheckUpdateReq", 2, "Check update, Get Font, uin=" + new StringBuilder().append(l1).append("temp").toString().substring(0, 4) + ", id=" + i);
+          if (QLog.isColorLevel())
+          {
+            paramContentItem = new StringBuilder();
+            paramContentItem.append("Check update, Get Font, uin=");
+            paramFriendsManager = new StringBuilder();
+            paramFriendsManager.append(l1);
+            paramFriendsManager.append("temp");
+            paramContentItem.append(paramFriendsManager.toString().substring(0, 4));
+            paramContentItem.append(", id=");
+            paramContentItem.append(i);
+            QLog.d("ProfileService.CheckUpdateReq", 2, paramContentItem.toString());
           }
         }
       }
@@ -1215,15 +1502,23 @@ public class QQProfileItem
       paramProfileTvInfo = new ExtensionInfo();
       paramProfileTvInfo.uin = Long.toString(paramLong);
     }
-    if ((paramProfileTvInfo.uVipFont != FontManager.a(l)) || (paramProfileTvInfo.vipFontType != FontManager.b(l)))
+    if ((paramProfileTvInfo.uVipFont != FontManagerConstants.parseFontId(l)) || (paramProfileTvInfo.vipFontType != FontManagerConstants.parseFontType(l)))
     {
-      paramProfileTvInfo.uVipFont = FontManager.a(l);
-      paramProfileTvInfo.vipFontType = FontManager.b(l);
+      paramProfileTvInfo.uVipFont = FontManagerConstants.parseFontId(l);
+      paramProfileTvInfo.vipFontType = FontManagerConstants.parseFontType(l);
       paramProfileTvInfo.timestamp = System.currentTimeMillis();
       paramFriendsManager.a(paramProfileTvInfo);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProfileItem", 2, "update, Get Font, uin=" + paramLong + ", id=" + paramProfileTvInfo.uVipFont + ", type = " + paramProfileTvInfo.vipFontType);
+    if (QLog.isColorLevel())
+    {
+      paramFriendsManager = new StringBuilder();
+      paramFriendsManager.append("update, Get Font, uin=");
+      paramFriendsManager.append(paramLong);
+      paramFriendsManager.append(", id=");
+      paramFriendsManager.append(paramProfileTvInfo.uVipFont);
+      paramFriendsManager.append(", type = ");
+      paramFriendsManager.append(paramProfileTvInfo.vipFontType);
+      QLog.d("QQProfileItem", 2, paramFriendsManager.toString());
     }
   }
   
@@ -1254,15 +1549,26 @@ public class QQProfileItem
             paramContentItem = new ExtensionInfo();
             paramContentItem.uin = String.valueOf(l1);
           }
-          if (paramContentItem.colorRingId != i)
+          l2 = paramContentItem.colorRingId;
+          long l3 = i;
+          if (l2 != l3)
           {
-            paramContentItem.colorRingId = i;
+            paramContentItem.colorRingId = l3;
             paramContentItem.timestamp = System.currentTimeMillis();
             paramFriendsManager.a(paramContentItem);
             ColorRingManager.a(paramContentItem.uin, 1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("ProfileService.CheckUpdateReq", 2, "Check update, Get colorRing, uin=" + new StringBuilder().append(l1).append("temp").toString().substring(0, 4) + ", id=" + i);
+          if (QLog.isColorLevel())
+          {
+            paramContentItem = new StringBuilder();
+            paramContentItem.append("Check update, Get colorRing, uin=");
+            paramFriendsManager = new StringBuilder();
+            paramFriendsManager.append(l1);
+            paramFriendsManager.append("temp");
+            paramContentItem.append(paramFriendsManager.toString().substring(0, 4));
+            paramContentItem.append(", id=");
+            paramContentItem.append(i);
+            QLog.d("ProfileService.CheckUpdateReq", 2, paramContentItem.toString());
           }
         }
       }
@@ -1276,17 +1582,24 @@ public class QQProfileItem
   
   public ReqItem a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileService.CheckUpdateReq", 2, "QQProfileItem::getCheckUpdateItemData called checkUpdateType:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("QQProfileItem::getCheckUpdateItemData called checkUpdateType:");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("ProfileService.CheckUpdateReq", 2, ((StringBuilder)localObject1).toString());
     }
     ReqItem localReqItem = new ReqItem();
     localReqItem.eServiceID = 101;
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-    Object localObject2 = new long[19];
+    Object localObject3 = new long[19];
     int i = 0;
     while (i < 19)
     {
-      localObject2[i] = (((SharedPreferences)localObject1).getLong("inccheckupdatetimeStamp" + Integer.toString(i), 0L) - 0L);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("inccheckupdatetimeStamp");
+      ((StringBuilder)localObject2).append(Integer.toString(i));
+      localObject3[i] = (((SharedPreferences)localObject1).getLong(((StringBuilder)localObject2).toString(), 0L) - 0L);
       i += 1;
     }
     if (QLog.isColorLevel())
@@ -1295,217 +1608,226 @@ public class QQProfileItem
       i = 0;
       while (i < 19)
       {
-        ((StringBuilder)localObject1).append(Long.toString(localObject2[i])).append(" ");
+        ((StringBuilder)localObject1).append(Long.toString(localObject3[i]));
+        ((StringBuilder)localObject1).append(" ");
         i += 1;
       }
       QLog.d("ProfileService.CheckUpdateReq", 2, ((StringBuilder)localObject1).toString());
     }
+    Oidb_0x5e0.UpdateProfileList localUpdateProfileList1 = new Oidb_0x5e0.UpdateProfileList();
+    localUpdateProfileList1.uint32_need_content.set(0);
+    localUpdateProfileList1.uint32_update_profile_id.set(1);
+    localUpdateProfileList1.uint32_friendlist_type.set(1);
+    localUpdateProfileList1.uint32_get_content_timestamp.set((int)localObject3[1]);
     Oidb_0x5e0.UpdateProfileList localUpdateProfileList2 = new Oidb_0x5e0.UpdateProfileList();
     localUpdateProfileList2.uint32_need_content.set(0);
-    localUpdateProfileList2.uint32_update_profile_id.set(1);
+    localUpdateProfileList2.uint32_update_profile_id.set(2);
     localUpdateProfileList2.uint32_friendlist_type.set(1);
-    localUpdateProfileList2.uint32_get_content_timestamp.set((int)localObject2[1]);
+    localUpdateProfileList2.uint32_get_content_timestamp.set((int)localObject3[2]);
     Oidb_0x5e0.UpdateProfileList localUpdateProfileList3 = new Oidb_0x5e0.UpdateProfileList();
     localUpdateProfileList3.uint32_need_content.set(0);
-    localUpdateProfileList3.uint32_update_profile_id.set(2);
-    localUpdateProfileList3.uint32_friendlist_type.set(1);
-    localUpdateProfileList3.uint32_get_content_timestamp.set((int)localObject2[2]);
-    Oidb_0x5e0.UpdateProfileList localUpdateProfileList4 = new Oidb_0x5e0.UpdateProfileList();
-    localUpdateProfileList4.uint32_need_content.set(0);
-    localUpdateProfileList4.uint32_update_profile_id.set(3);
-    localUpdateProfileList4.uint32_friendlist_type.set(0);
-    localUpdateProfileList4.uint32_get_content_timestamp.set((int)localObject2[3]);
-    Oidb_0x5e0.UpdateProfileList localUpdateProfileList1 = null;
+    localUpdateProfileList3.uint32_update_profile_id.set(3);
+    localUpdateProfileList3.uint32_friendlist_type.set(0);
+    localUpdateProfileList3.uint32_get_content_timestamp.set((int)localObject3[3]);
+    Object localObject2 = null;
     if (!((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).isSyncingAllFriendsRichStatus())
     {
       localObject1 = new Oidb_0x5e0.UpdateProfileList();
       ((Oidb_0x5e0.UpdateProfileList)localObject1).uint32_need_content.set(0);
       ((Oidb_0x5e0.UpdateProfileList)localObject1).uint32_update_profile_id.set(13);
       ((Oidb_0x5e0.UpdateProfileList)localObject1).uint32_friendlist_type.set(1);
-      ((Oidb_0x5e0.UpdateProfileList)localObject1).uint32_get_content_timestamp.set((int)localObject2[13]);
+      ((Oidb_0x5e0.UpdateProfileList)localObject1).uint32_get_content_timestamp.set((int)localObject3[13]);
     }
-    for (;;)
+    else
     {
-      localUpdateProfileList1 = new Oidb_0x5e0.UpdateProfileList();
-      localUpdateProfileList1.uint32_need_content.set(0);
-      localUpdateProfileList1.uint32_update_profile_id.set(5);
-      localUpdateProfileList1.uint32_friendlist_type.set(0);
-      localUpdateProfileList1.uint32_get_content_timestamp.set((int)localObject2[5]);
-      Oidb_0x5e0.UpdateProfileList localUpdateProfileList5 = new Oidb_0x5e0.UpdateProfileList();
-      localUpdateProfileList5.uint32_need_content.set(1);
-      localUpdateProfileList5.uint32_update_profile_id.set(6);
-      localUpdateProfileList5.uint32_friendlist_type.set(0);
-      localUpdateProfileList5.uint32_get_content_timestamp.set((int)localObject2[6]);
-      Oidb_0x5e0.UpdateProfileList localUpdateProfileList6 = new Oidb_0x5e0.UpdateProfileList();
-      localUpdateProfileList6.uint32_need_content.set(0);
-      localUpdateProfileList6.uint32_update_profile_id.set(7);
-      localUpdateProfileList6.uint32_friendlist_type.set(1);
-      localUpdateProfileList6.uint32_get_content_timestamp.set((int)localObject2[7]);
-      Oidb_0x5e0.UpdateProfileList localUpdateProfileList7 = new Oidb_0x5e0.UpdateProfileList();
-      localUpdateProfileList7.uint32_need_content.set(0);
-      localUpdateProfileList7.uint32_update_profile_id.set(9);
-      localUpdateProfileList7.uint32_friendlist_type.set(1);
-      localUpdateProfileList7.uint32_get_content_timestamp.set((int)localObject2[9]);
-      Oidb_0x5e0.UpdateProfileList localUpdateProfileList8 = new Oidb_0x5e0.UpdateProfileList();
-      localUpdateProfileList8.uint32_need_content.set(0);
-      localUpdateProfileList8.uint32_update_profile_id.set(10);
-      localUpdateProfileList8.uint32_friendlist_type.set(1);
-      localUpdateProfileList8.uint32_get_content_timestamp.set((int)localObject2[10]);
-      Oidb_0x5e0.UpdateProfileList localUpdateProfileList9 = new Oidb_0x5e0.UpdateProfileList();
-      localUpdateProfileList9.uint32_need_content.set(0);
-      localUpdateProfileList9.uint32_update_profile_id.set(11);
-      localUpdateProfileList9.uint32_friendlist_type.set(1);
-      localUpdateProfileList9.uint32_get_content_timestamp.set((int)localObject2[11]);
-      Oidb_0x5e0.UpdateProfileList localUpdateProfileList10 = new Oidb_0x5e0.UpdateProfileList();
-      localUpdateProfileList10.uint32_need_content.set(0);
-      localUpdateProfileList10.uint32_update_profile_id.set(12);
-      localUpdateProfileList10.uint32_friendlist_type.set(1);
-      localUpdateProfileList10.uint32_get_content_timestamp.set((int)localObject2[12]);
-      Oidb_0x5e0.UpdateProfileList localUpdateProfileList11 = new Oidb_0x5e0.UpdateProfileList();
-      localUpdateProfileList11.uint32_need_content.set(0);
-      localUpdateProfileList11.uint32_update_profile_id.set(15);
-      localUpdateProfileList11.uint32_friendlist_type.set(1);
-      localUpdateProfileList11.uint32_get_content_timestamp.set((int)localObject2[15]);
-      localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(42003));
-      localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(41999));
-      localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(42980));
-      localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(27059));
-      localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(27206));
-      localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(27210));
-      localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(42230));
-      localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(27201));
-      localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(40530));
-      localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(27254));
-      Object localObject3 = (ClassicHeadActivityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CLASSIC_HEAD_ACIVITY_MANAGER);
-      if ((localObject3 != null) && (((ClassicHeadActivityManager)localObject3).a()))
-      {
-        localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(42099));
-        localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(40556));
-        localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(20015));
-        if (QLog.isColorLevel()) {
-          QLog.d("QQProfileItem", 2, "ClassicHeadActivity Params is add");
-        }
-      }
-      localUpdateProfileList11.rpt_uint32_profile_field_list.add(Integer.valueOf(27218));
-      localObject3 = new Oidb_0x5e0.UpdateProfileList();
-      ((Oidb_0x5e0.UpdateProfileList)localObject3).uint32_need_content.set(0);
-      ((Oidb_0x5e0.UpdateProfileList)localObject3).uint32_update_profile_id.set(16);
-      ((Oidb_0x5e0.UpdateProfileList)localObject3).uint32_friendlist_type.set(1);
-      ((Oidb_0x5e0.UpdateProfileList)localObject3).uint32_get_content_timestamp.set((int)localObject2[16]);
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileService.CheckUpdateReq", 2, "getCheckUpdateItemData IDX_INTIMATE_FIELD_LIST time::" + (int)localObject2[16]);
-      }
-      Oidb_0x5e0.UpdateProfileList localUpdateProfileList12 = new Oidb_0x5e0.UpdateProfileList();
-      localUpdateProfileList12.uint32_need_content.set(0);
-      localUpdateProfileList12.uint32_update_profile_id.set(17);
-      localUpdateProfileList12.uint32_friendlist_type.set(1);
-      localUpdateProfileList12.uint32_get_content_timestamp.set((int)localObject2[17]);
-      Object localObject4 = new Oidb_0xd50.ReqBody();
-      ((Oidb_0xd50.ReqBody)localObject4).appid.set(10002L);
-      ((Oidb_0xd50.ReqBody)localObject4).req_music_switch.set(1);
-      ((Oidb_0xd50.ReqBody)localObject4).req_ksing_switch.set(1);
-      ((Oidb_0xd50.ReqBody)localObject4).req_mutualmark_lbsshare.set(1);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProfileItem", 2, new Object[] { "getCheckUpdateItemData: invoked. ", " req lbs share profile. ", "此处很可能触发增量资料更新限频逻辑，会导致状态刷新不及时。（消息tab外显图标未刷新等等问题）" });
-      }
-      ((Oidb_0xd50.ReqBody)localObject4).req_mutualmark_alienation.set(1);
-      ((Oidb_0xd50.ReqBody)localObject4).req_aio_quick_app.set(1);
-      localUpdateProfileList12.msg_0xd50_req.set((MessageMicro)localObject4);
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileService.CheckUpdateReq", 2, "getCheckUpdateItemData profileid:17, " + (int)localObject2[17]);
-      }
-      localObject4 = new Oidb_0x5e0.UpdateProfileList();
-      ((Oidb_0x5e0.UpdateProfileList)localObject4).uint32_need_content.set(0);
-      ((Oidb_0x5e0.UpdateProfileList)localObject4).uint32_update_profile_id.set(18);
-      ((Oidb_0x5e0.UpdateProfileList)localObject4).uint32_friendlist_type.set(1);
-      ((Oidb_0x5e0.UpdateProfileList)localObject4).uint32_get_content_timestamp.set((int)localObject2[18]);
-      Oidb_0xd6b.ReqBody localReqBody = new Oidb_0xd6b.ReqBody();
-      localReqBody.start_time.set((int)localObject2[18]);
-      ((Oidb_0x5e0.UpdateProfileList)localObject4).msg_0xd6b_req.set(localReqBody);
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileService.CheckUpdateReq", 2, "getCheckUpdateItemData profileid:18, " + (int)localObject2[18]);
-      }
-      localObject2 = new Oidb_0x5e0.ReqBody();
-      if (this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro != null) {
-        ((Oidb_0x5e0.ReqBody)localObject2).bytes_svrcontext.set(this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro);
-      }
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList2);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList3);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList4);
-      if (localObject1 != null) {
-        ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add((MessageMicro)localObject1);
-      }
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList1);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList5);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList6);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList7);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList8);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList9);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList10);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList11);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add((MessageMicro)localObject3);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add(localUpdateProfileList12);
-      ((Oidb_0x5e0.ReqBody)localObject2).rpt_msg_update_profile_list.add((MessageMicro)localObject4);
-      if (paramInt == 8) {
-        ((Oidb_0x5e0.ReqBody)localObject2).uint32_forced_update.set(1);
-      }
-      localReqItem.vecParam = ((Oidb_0x5e0.ReqBody)localObject2).toByteArray();
-      return localReqItem;
-      localObject1 = localUpdateProfileList1;
+      localObject1 = localObject2;
       if (QLog.isColorLevel())
       {
         QLog.d("ProfileService.CheckUpdateReq", 2, "skip rich status check update");
-        localObject1 = localUpdateProfileList1;
+        localObject1 = localObject2;
       }
     }
+    localObject2 = new Oidb_0x5e0.UpdateProfileList();
+    ((Oidb_0x5e0.UpdateProfileList)localObject2).uint32_need_content.set(0);
+    ((Oidb_0x5e0.UpdateProfileList)localObject2).uint32_update_profile_id.set(5);
+    ((Oidb_0x5e0.UpdateProfileList)localObject2).uint32_friendlist_type.set(0);
+    ((Oidb_0x5e0.UpdateProfileList)localObject2).uint32_get_content_timestamp.set((int)localObject3[5]);
+    Oidb_0x5e0.UpdateProfileList localUpdateProfileList4 = new Oidb_0x5e0.UpdateProfileList();
+    localUpdateProfileList4.uint32_need_content.set(1);
+    localUpdateProfileList4.uint32_update_profile_id.set(6);
+    localUpdateProfileList4.uint32_friendlist_type.set(0);
+    localUpdateProfileList4.uint32_get_content_timestamp.set((int)localObject3[6]);
+    Oidb_0x5e0.UpdateProfileList localUpdateProfileList5 = new Oidb_0x5e0.UpdateProfileList();
+    localUpdateProfileList5.uint32_need_content.set(0);
+    localUpdateProfileList5.uint32_update_profile_id.set(7);
+    localUpdateProfileList5.uint32_friendlist_type.set(1);
+    localUpdateProfileList5.uint32_get_content_timestamp.set((int)localObject3[7]);
+    Oidb_0x5e0.UpdateProfileList localUpdateProfileList6 = new Oidb_0x5e0.UpdateProfileList();
+    localUpdateProfileList6.uint32_need_content.set(0);
+    localUpdateProfileList6.uint32_update_profile_id.set(9);
+    localUpdateProfileList6.uint32_friendlist_type.set(1);
+    localUpdateProfileList6.uint32_get_content_timestamp.set((int)localObject3[9]);
+    Oidb_0x5e0.UpdateProfileList localUpdateProfileList7 = new Oidb_0x5e0.UpdateProfileList();
+    localUpdateProfileList7.uint32_need_content.set(0);
+    localUpdateProfileList7.uint32_update_profile_id.set(10);
+    localUpdateProfileList7.uint32_friendlist_type.set(1);
+    localUpdateProfileList7.uint32_get_content_timestamp.set((int)localObject3[10]);
+    Oidb_0x5e0.UpdateProfileList localUpdateProfileList8 = new Oidb_0x5e0.UpdateProfileList();
+    localUpdateProfileList8.uint32_need_content.set(0);
+    localUpdateProfileList8.uint32_update_profile_id.set(11);
+    localUpdateProfileList8.uint32_friendlist_type.set(1);
+    localUpdateProfileList8.uint32_get_content_timestamp.set((int)localObject3[11]);
+    Oidb_0x5e0.UpdateProfileList localUpdateProfileList9 = new Oidb_0x5e0.UpdateProfileList();
+    localUpdateProfileList9.uint32_need_content.set(0);
+    localUpdateProfileList9.uint32_update_profile_id.set(12);
+    localUpdateProfileList9.uint32_friendlist_type.set(1);
+    localUpdateProfileList9.uint32_get_content_timestamp.set((int)localObject3[12]);
+    Oidb_0x5e0.UpdateProfileList localUpdateProfileList10 = new Oidb_0x5e0.UpdateProfileList();
+    localUpdateProfileList10.uint32_need_content.set(0);
+    localUpdateProfileList10.uint32_update_profile_id.set(15);
+    localUpdateProfileList10.uint32_friendlist_type.set(1);
+    localUpdateProfileList10.uint32_get_content_timestamp.set((int)localObject3[15]);
+    localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(42003));
+    localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(41999));
+    localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(42980));
+    localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(27059));
+    localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(27206));
+    localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(27210));
+    localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(42230));
+    localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(27201));
+    localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(40530));
+    localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(27254));
+    Object localObject4 = (ClassicHeadActivityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CLASSIC_HEAD_ACIVITY_MANAGER);
+    if ((localObject4 != null) && (((ClassicHeadActivityManager)localObject4).a()))
+    {
+      localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(42099));
+      localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(40556));
+      localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(20015));
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProfileItem", 2, "ClassicHeadActivity Params is add");
+      }
+    }
+    localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(27218));
+    localObject4 = new Oidb_0x5e0.UpdateProfileList();
+    ((Oidb_0x5e0.UpdateProfileList)localObject4).uint32_need_content.set(0);
+    ((Oidb_0x5e0.UpdateProfileList)localObject4).uint32_update_profile_id.set(16);
+    ((Oidb_0x5e0.UpdateProfileList)localObject4).uint32_friendlist_type.set(1);
+    ((Oidb_0x5e0.UpdateProfileList)localObject4).uint32_get_content_timestamp.set((int)localObject3[16]);
+    if (QLog.isColorLevel())
+    {
+      localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append("getCheckUpdateItemData IDX_INTIMATE_FIELD_LIST time::");
+      ((StringBuilder)localObject5).append((int)localObject3[16]);
+      QLog.d("ProfileService.CheckUpdateReq", 2, ((StringBuilder)localObject5).toString());
+    }
+    Object localObject5 = new Oidb_0x5e0.UpdateProfileList();
+    ((Oidb_0x5e0.UpdateProfileList)localObject5).uint32_need_content.set(0);
+    ((Oidb_0x5e0.UpdateProfileList)localObject5).uint32_update_profile_id.set(17);
+    ((Oidb_0x5e0.UpdateProfileList)localObject5).uint32_friendlist_type.set(1);
+    ((Oidb_0x5e0.UpdateProfileList)localObject5).uint32_get_content_timestamp.set((int)localObject3[17]);
+    Object localObject6 = new Oidb_0xd50.ReqBody();
+    ((Oidb_0xd50.ReqBody)localObject6).appid.set(10002L);
+    ((Oidb_0xd50.ReqBody)localObject6).req_music_switch.set(1);
+    ((Oidb_0xd50.ReqBody)localObject6).req_ksing_switch.set(1);
+    ((Oidb_0xd50.ReqBody)localObject6).req_mutualmark_lbsshare.set(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQProfileItem", 2, new Object[] { "getCheckUpdateItemData: invoked. ", " req lbs share profile. ", "此处很可能触发增量资料更新限频逻辑，会导致状态刷新不及时。（消息tab外显图标未刷新等等问题）" });
+    }
+    ((Oidb_0xd50.ReqBody)localObject6).req_mutualmark_alienation.set(1);
+    ((Oidb_0xd50.ReqBody)localObject6).req_aio_quick_app.set(1);
+    ((Oidb_0x5e0.UpdateProfileList)localObject5).msg_0xd50_req.set((MessageMicro)localObject6);
+    if (QLog.isColorLevel())
+    {
+      localObject6 = new StringBuilder();
+      ((StringBuilder)localObject6).append("getCheckUpdateItemData profileid:17, ");
+      ((StringBuilder)localObject6).append((int)localObject3[17]);
+      QLog.d("ProfileService.CheckUpdateReq", 2, ((StringBuilder)localObject6).toString());
+    }
+    localObject6 = new Oidb_0x5e0.UpdateProfileList();
+    ((Oidb_0x5e0.UpdateProfileList)localObject6).uint32_need_content.set(0);
+    ((Oidb_0x5e0.UpdateProfileList)localObject6).uint32_update_profile_id.set(18);
+    ((Oidb_0x5e0.UpdateProfileList)localObject6).uint32_friendlist_type.set(1);
+    ((Oidb_0x5e0.UpdateProfileList)localObject6).uint32_get_content_timestamp.set((int)localObject3[18]);
+    Object localObject7 = new Oidb_0xd6b.ReqBody();
+    ((Oidb_0xd6b.ReqBody)localObject7).start_time.set((int)localObject3[18]);
+    ((Oidb_0x5e0.UpdateProfileList)localObject6).msg_0xd6b_req.set((MessageMicro)localObject7);
+    if (QLog.isColorLevel())
+    {
+      localObject7 = new StringBuilder();
+      ((StringBuilder)localObject7).append("getCheckUpdateItemData profileid:18, ");
+      ((StringBuilder)localObject7).append((int)localObject3[18]);
+      QLog.d("ProfileService.CheckUpdateReq", 2, ((StringBuilder)localObject7).toString());
+    }
+    localObject3 = new Oidb_0x5e0.ReqBody();
+    if (this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro != null) {
+      ((Oidb_0x5e0.ReqBody)localObject3).bytes_svrcontext.set(this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro);
+    }
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList1);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList2);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList3);
+    if (localObject1 != null) {
+      ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add((MessageMicro)localObject1);
+    }
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add((MessageMicro)localObject2);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList4);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList5);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList6);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList7);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList8);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList9);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList10);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add((MessageMicro)localObject4);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add((MessageMicro)localObject5);
+    ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add((MessageMicro)localObject6);
+    if (paramInt == 8) {
+      ((Oidb_0x5e0.ReqBody)localObject3).uint32_forced_update.set(1);
+    }
+    localReqItem.vecParam = ((Oidb_0x5e0.ReqBody)localObject3).toByteArray();
+    return localReqItem;
   }
   
   public void a(RespItem paramRespItem)
   {
-    QLog.i("ProfileService.CheckUpdateReq", 1, "QQProfileItem::handleCheckUpdateItemData called item.cResult = " + paramRespItem.cResult);
-    Object localObject;
-    int i;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("QQProfileItem::handleCheckUpdateItemData called item.cResult = ");
+    ((StringBuilder)localObject).append(paramRespItem.cResult);
+    QLog.i("ProfileService.CheckUpdateReq", 1, ((StringBuilder)localObject).toString());
     if ((paramRespItem.eServiceID == 101) && (paramRespItem.cResult == 2))
     {
       paramRespItem = paramRespItem.vecUpdate;
       if (QLog.isColorLevel())
       {
-        localObject = new StringBuilder().append("handleCheckUpdateItemData pbdata.length=");
-        if (paramRespItem == null) {
-          break label115;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleCheckUpdateItemData pbdata.length=");
+        int i;
+        if (paramRespItem != null) {
+          i = paramRespItem.length;
+        } else {
+          i = 0;
         }
-        i = paramRespItem.length;
+        ((StringBuilder)localObject).append(i);
+        QLog.d("QQProfileItem", 2, ((StringBuilder)localObject).toString());
       }
-    }
-    for (;;)
-    {
-      QLog.d("QQProfileItem", 2, i);
       localObject = new Oidb_0x5e0.RspBody();
       try
       {
         paramRespItem = (Oidb_0x5e0.RspBody)((Oidb_0x5e0.RspBody)localObject).mergeFrom(paramRespItem);
-        if (paramRespItem == null)
-        {
-          return;
-          label115:
-          i = 0;
-        }
       }
       catch (Exception paramRespItem)
       {
-        for (;;)
-        {
-          paramRespItem.printStackTrace();
-          paramRespItem = null;
-        }
-        a(paramRespItem);
+        paramRespItem.printStackTrace();
+        paramRespItem = null;
       }
+      if (paramRespItem == null) {
+        return;
+      }
+      a(paramRespItem);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQProfileItem
  * JD-Core Version:    0.7.0.1
  */

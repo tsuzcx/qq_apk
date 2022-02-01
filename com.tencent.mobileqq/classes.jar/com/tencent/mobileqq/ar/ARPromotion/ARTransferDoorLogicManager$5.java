@@ -12,18 +12,19 @@ class ARTransferDoorLogicManager$5
   {
     if (this.a == true) {
       ARTransferDoorLogicManager.a(this.this$0).setVisibility(0);
-    }
-    for (;;)
-    {
-      QLog.d(ARTransferDoorLogicManager.a, 2, "makeARTransferPromotionTouchViewVisiable " + this.a);
-      return;
+    } else {
       ARTransferDoorLogicManager.a(this.this$0).setVisibility(8);
     }
+    String str = ARTransferDoorLogicManager.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("makeARTransferPromotionTouchViewVisiable ");
+    localStringBuilder.append(this.a);
+    QLog.d(str, 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.5
  * JD-Core Version:    0.7.0.1
  */

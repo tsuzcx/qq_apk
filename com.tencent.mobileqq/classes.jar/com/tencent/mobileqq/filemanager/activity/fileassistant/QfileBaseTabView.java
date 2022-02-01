@@ -7,12 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.contacts.base.HeaderScrollHelper.ScrollableContainer;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.api.ITabViewEvent;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.widget.HeaderScrollHelper.ScrollableContainer;
 import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
@@ -21,14 +22,14 @@ import mqq.os.MqqHandler;
 
 public class QfileBaseTabView
   extends RelativeLayout
-  implements HeaderScrollHelper.ScrollableContainer, IBaseTabViewEvent
+  implements IBaseTabViewEvent, ITabViewEvent, HeaderScrollHelper.ScrollableContainer
 {
   View a;
-  public QQAppInterface a;
+  protected BaseQQAppInterface a;
   public BaseFileAssistantActivity a;
   protected Runnable a;
-  public int d;
-  public boolean d;
+  protected int d;
+  protected boolean d;
   boolean e = true;
   
   public QfileBaseTabView(Context paramContext)
@@ -48,7 +49,7 @@ public class QfileBaseTabView
     this.jdField_d_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangRunnable = null;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app;
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = ((BaseQQAppInterface)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getAppRuntime());
   }
   
   public int a()
@@ -61,7 +62,7 @@ public class QfileBaseTabView
     return null;
   }
   
-  public BaseFileAssistantActivity a()
+  protected BaseFileAssistantActivity a()
   {
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
   }
@@ -75,7 +76,7 @@ public class QfileBaseTabView
   
   public void a(FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(Runnable paramRunnable)
+  protected void a(Runnable paramRunnable)
   {
     a().runOnUiThread(paramRunnable);
   }
@@ -99,7 +100,7 @@ public class QfileBaseTabView
     return null;
   }
   
-  public void aq_() {}
+  public void ak_() {}
   
   public void b() {}
   
@@ -114,7 +115,7 @@ public class QfileBaseTabView
   
   public void c(ArrayList<FileManagerEntity> paramArrayList) {}
   
-  public boolean c()
+  protected boolean c()
   {
     return this.e;
   }
@@ -150,7 +151,7 @@ public class QfileBaseTabView
     return a().e();
   }
   
-  public boolean g()
+  protected boolean g()
   {
     return (f()) || (e());
   }
@@ -194,7 +195,7 @@ public class QfileBaseTabView
     this.jdField_d_of_type_Boolean = false;
   }
   
-  public void u()
+  protected void u()
   {
     this.e = false;
     new Handler().postDelayed(new QfileBaseTabView.1(this), 2000L);
@@ -209,14 +210,14 @@ public class QfileBaseTabView
     }
   }
   
-  public void w()
+  protected void w()
   {
     a().l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileassistant.QfileBaseTabView
  * JD-Core Version:    0.7.0.1
  */

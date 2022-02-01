@@ -180,12 +180,7 @@ public class Assert
   
   public static void assertFalse(String paramString, boolean paramBoolean)
   {
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      assertTrue(paramString, paramBoolean);
-      return;
-    }
+    assertTrue(paramString, paramBoolean ^ true);
   }
   
   public static void assertFalse(boolean paramBoolean)
@@ -248,12 +243,13 @@ public class Assert
   
   public static void assertNotNull(String paramString, Object paramObject)
   {
-    if (paramObject != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      assertTrue(paramString, bool);
-      return;
+    boolean bool;
+    if (paramObject != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    assertTrue(paramString, bool);
   }
   
   public static void assertNotSame(Object paramObject1, Object paramObject2)
@@ -318,11 +314,10 @@ public class Assert
   
   private static boolean doubleIsDifferent(double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    if (Double.compare(paramDouble1, paramDouble2) == 0) {}
-    while (Math.abs(paramDouble1 - paramDouble2) <= paramDouble3) {
+    if (Double.compare(paramDouble1, paramDouble2) == 0) {
       return false;
     }
-    return true;
+    return Math.abs(paramDouble1 - paramDouble2) > paramDouble3;
   }
   
   private static boolean equalsRegardingNull(Object paramObject1, Object paramObject2)
@@ -348,11 +343,22 @@ public class Assert
   
   private static void failEquals(String paramString, Object paramObject)
   {
-    String str = "Values should be different. ";
-    if (paramString != null) {
-      str = paramString + ". ";
+    if (paramString != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(". ");
+      paramString = localStringBuilder.toString();
     }
-    fail(str + "Actual: " + paramObject);
+    else
+    {
+      paramString = "Values should be different. ";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("Actual: ");
+    localStringBuilder.append(paramObject);
+    fail(localStringBuilder.toString());
   }
   
   private static void failNotEquals(String paramString, Object paramObject1, Object paramObject2)
@@ -362,65 +368,125 @@ public class Assert
   
   private static void failNotNull(String paramString, Object paramObject)
   {
-    String str = "";
-    if (paramString != null) {
-      str = paramString + " ";
+    if (paramString != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
+      paramString = localStringBuilder.toString();
     }
-    fail(str + "expected null, but was:<" + paramObject + ">");
+    else
+    {
+      paramString = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("expected null, but was:<");
+    localStringBuilder.append(paramObject);
+    localStringBuilder.append(">");
+    fail(localStringBuilder.toString());
   }
   
   private static void failNotSame(String paramString, Object paramObject1, Object paramObject2)
   {
-    String str = "";
-    if (paramString != null) {
-      str = paramString + " ";
+    if (paramString != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
+      paramString = localStringBuilder.toString();
     }
-    fail(str + "expected same:<" + paramObject1 + "> was not:<" + paramObject2 + ">");
+    else
+    {
+      paramString = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("expected same:<");
+    localStringBuilder.append(paramObject1);
+    localStringBuilder.append("> was not:<");
+    localStringBuilder.append(paramObject2);
+    localStringBuilder.append(">");
+    fail(localStringBuilder.toString());
   }
   
   private static void failSame(String paramString)
   {
-    String str = "";
-    if (paramString != null) {
-      str = paramString + " ";
+    if (paramString != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
+      paramString = localStringBuilder.toString();
     }
-    fail(str + "expected not same");
+    else
+    {
+      paramString = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("expected not same");
+    fail(localStringBuilder.toString());
   }
   
   private static boolean floatIsDifferent(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (Float.compare(paramFloat1, paramFloat2) == 0) {}
-    while (Math.abs(paramFloat1 - paramFloat2) <= paramFloat3) {
+    if (Float.compare(paramFloat1, paramFloat2) == 0) {
       return false;
     }
-    return true;
+    return Math.abs(paramFloat1 - paramFloat2) > paramFloat3;
   }
   
   static String format(String paramString, Object paramObject1, Object paramObject2)
   {
-    String str2 = "";
-    String str1 = str2;
+    String str = "";
+    Object localObject = str;
     if (paramString != null)
     {
-      str1 = str2;
-      if (!paramString.equals("")) {
-        str1 = paramString + " ";
+      localObject = str;
+      if (!paramString.equals(""))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" ");
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
     paramString = String.valueOf(paramObject1);
-    str2 = String.valueOf(paramObject2);
-    if (paramString.equals(str2)) {
-      return str1 + "expected: " + formatClassAndValue(paramObject1, paramString) + " but was: " + formatClassAndValue(paramObject2, str2);
+    str = String.valueOf(paramObject2);
+    if (paramString.equals(str))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("expected: ");
+      localStringBuilder.append(formatClassAndValue(paramObject1, paramString));
+      localStringBuilder.append(" but was: ");
+      localStringBuilder.append(formatClassAndValue(paramObject2, str));
+      return localStringBuilder.toString();
     }
-    return str1 + "expected:<" + paramString + "> but was:<" + str2 + ">";
+    paramObject1 = new StringBuilder();
+    paramObject1.append((String)localObject);
+    paramObject1.append("expected:<");
+    paramObject1.append(paramString);
+    paramObject1.append("> but was:<");
+    paramObject1.append(str);
+    paramObject1.append(">");
+    return paramObject1.toString();
   }
   
   private static String formatClassAndValue(Object paramObject, String paramString)
   {
-    if (paramObject == null) {}
-    for (paramObject = "null";; paramObject = paramObject.getClass().getName()) {
-      return paramObject + "<" + paramString + ">";
+    if (paramObject == null) {
+      paramObject = "null";
+    } else {
+      paramObject = paramObject.getClass().getName();
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramObject);
+    localStringBuilder.append("<");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(">");
+    return localStringBuilder.toString();
   }
   
   private static void internalArrayEquals(String paramString, Object paramObject1, Object paramObject2)
@@ -435,7 +501,7 @@ public class Assert
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.Assert
  * JD-Core Version:    0.7.0.1
  */

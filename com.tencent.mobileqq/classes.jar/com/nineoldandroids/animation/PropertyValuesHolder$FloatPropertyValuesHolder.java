@@ -66,32 +66,33 @@ class PropertyValuesHolder$FloatPropertyValuesHolder
   
   void setAnimatedValue(Object paramObject)
   {
-    if (this.mFloatProperty != null) {
-      this.mFloatProperty.setValue(paramObject, this.mFloatAnimatedValue);
-    }
-    do
+    FloatProperty localFloatProperty = this.mFloatProperty;
+    if (localFloatProperty != null)
     {
+      localFloatProperty.setValue(paramObject, this.mFloatAnimatedValue);
       return;
-      if (this.mProperty != null)
+    }
+    if (this.mProperty != null)
+    {
+      this.mProperty.set(paramObject, Float.valueOf(this.mFloatAnimatedValue));
+      return;
+    }
+    if (this.mSetter != null) {
+      try
       {
-        this.mProperty.set(paramObject, Float.valueOf(this.mFloatAnimatedValue));
+        this.mTmpValueArray[0] = Float.valueOf(this.mFloatAnimatedValue);
+        this.mSetter.invoke(paramObject, this.mTmpValueArray);
         return;
       }
-    } while (this.mSetter == null);
-    try
-    {
-      this.mTmpValueArray[0] = Float.valueOf(this.mFloatAnimatedValue);
-      this.mSetter.invoke(paramObject, this.mTmpValueArray);
-      return;
-    }
-    catch (InvocationTargetException paramObject)
-    {
-      Log.e("PropertyValuesHolder", paramObject.toString());
-      return;
-    }
-    catch (IllegalAccessException paramObject)
-    {
-      Log.e("PropertyValuesHolder", paramObject.toString());
+      catch (IllegalAccessException paramObject)
+      {
+        Log.e("PropertyValuesHolder", paramObject.toString());
+        return;
+      }
+      catch (InvocationTargetException paramObject)
+      {
+        Log.e("PropertyValuesHolder", paramObject.toString());
+      }
     }
   }
   
@@ -111,7 +112,7 @@ class PropertyValuesHolder$FloatPropertyValuesHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.animation.PropertyValuesHolder.FloatPropertyValuesHolder
  * JD-Core Version:    0.7.0.1
  */

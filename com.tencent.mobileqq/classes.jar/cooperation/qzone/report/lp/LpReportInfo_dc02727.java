@@ -76,29 +76,39 @@ public class LpReportInfo_dc02727
   
   public static void report(JSONArray paramJSONArray, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() <= 0)) {
-      return;
-    }
-    int i = 0;
-    try
+    if (paramJSONArray != null)
     {
-      while (i < paramJSONArray.length())
-      {
-        report(new LpReportInfo_dc02727(paramJSONArray.getJSONObject(i)), paramBoolean1, paramBoolean2);
-        i += 1;
+      if (paramJSONArray.length() <= 0) {
+        return;
       }
-      QZLog.i("LpReportInfo_dc02727", "upload2: report to lp dc02727");
-      return;
-    }
-    catch (Throwable paramJSONArray)
-    {
-      paramJSONArray.printStackTrace();
+      int i = 0;
+      try
+      {
+        while (i < paramJSONArray.length())
+        {
+          report(new LpReportInfo_dc02727(paramJSONArray.getJSONObject(i)), paramBoolean1, paramBoolean2);
+          i += 1;
+        }
+        QZLog.i("LpReportInfo_dc02727", "upload2: report to lp dc02727");
+        return;
+      }
+      catch (Throwable paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+      }
     }
   }
   
   public String getSimpleInfo()
   {
-    return "dc02727: flowId=" + this.flow + ", file size=" + this.fileSize + ", cost time=" + this.elapse;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc02727: flowId=");
+    localStringBuilder.append(this.flow);
+    localStringBuilder.append(", file size=");
+    localStringBuilder.append(this.fileSize);
+    localStringBuilder.append(", cost time=");
+    localStringBuilder.append(this.elapse);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
@@ -131,7 +141,7 @@ public class LpReportInfo_dc02727
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc02727
  * JD-Core Version:    0.7.0.1
  */

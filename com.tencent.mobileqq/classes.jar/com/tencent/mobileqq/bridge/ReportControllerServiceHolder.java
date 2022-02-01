@@ -3,7 +3,6 @@ package com.tencent.mobileqq.bridge;
 import com.tencent.mobileqq.bridge.report.service.IReportDataProviderService;
 import com.tencent.mobileqq.bridge.report.service.IReportService;
 import com.tencent.mobileqq.bridge.report.service.ITouchEventService;
-import com.tencent.mobileqq.bridge.statistics.service.ICrashReportService;
 import com.tencent.mobileqq.bridge.statistics.service.ILocalMultiProcConfigService;
 import com.tencent.mobileqq.bridge.statistics.service.IStatisticsCollectorService;
 import com.tencent.mobileqq.data.entitymanager.Provider;
@@ -15,52 +14,48 @@ public class ReportControllerServiceHolder
   private static Provider<IReportService> c;
   private static Provider<ILocalMultiProcConfigService> d;
   private static Provider<IStatisticsCollectorService> e;
-  private static Provider<ICrashReportService> f;
   
   public static IReportDataProviderService a()
   {
-    if (a != null) {
-      return (IReportDataProviderService)a.get();
+    Provider localProvider = a;
+    if (localProvider != null) {
+      return (IReportDataProviderService)localProvider.get();
     }
     return null;
   }
   
   public static IReportService a()
   {
-    if (c != null) {
-      return (IReportService)c.get();
+    Provider localProvider = c;
+    if (localProvider != null) {
+      return (IReportService)localProvider.get();
     }
     return null;
   }
   
   public static ITouchEventService a()
   {
-    if (b != null) {
-      return (ITouchEventService)b.get();
-    }
-    return null;
-  }
-  
-  public static ICrashReportService a()
-  {
-    if (f != null) {
-      return (ICrashReportService)f.get();
+    Provider localProvider = b;
+    if (localProvider != null) {
+      return (ITouchEventService)localProvider.get();
     }
     return null;
   }
   
   public static ILocalMultiProcConfigService a()
   {
-    if (d != null) {
-      return (ILocalMultiProcConfigService)d.get();
+    Provider localProvider = d;
+    if (localProvider != null) {
+      return (ILocalMultiProcConfigService)localProvider.get();
     }
     return null;
   }
   
   public static IStatisticsCollectorService a()
   {
-    if (e != null) {
-      return (IStatisticsCollectorService)e.get();
+    Provider localProvider = e;
+    if (localProvider != null) {
+      return (IStatisticsCollectorService)localProvider.get();
     }
     return null;
   }
@@ -89,15 +84,10 @@ public class ReportControllerServiceHolder
   {
     e = paramProvider;
   }
-  
-  public static void f(Provider<ICrashReportService> paramProvider)
-  {
-    f = paramProvider;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bridge.ReportControllerServiceHolder
  * JD-Core Version:    0.7.0.1
  */

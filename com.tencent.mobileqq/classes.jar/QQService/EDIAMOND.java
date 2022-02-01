@@ -5,7 +5,7 @@ import java.io.Serializable;
 public final class EDIAMOND
   implements Serializable
 {
-  public static final EDIAMOND E_DIAMOND_10YEAR_YELLOW;
+  public static final EDIAMOND E_DIAMOND_10YEAR_YELLOW = new EDIAMOND(5, 111, "E_DIAMOND_10YEAR_YELLOW");
   public static final EDIAMOND E_DIAMOND_COUPLE_YELLOW;
   public static final EDIAMOND E_DIAMOND_GREEN;
   public static final EDIAMOND E_DIAMOND_RED;
@@ -17,25 +17,17 @@ public final class EDIAMOND
   public static final int _E_DIAMOND_RED = 101;
   public static final int _E_DIAMOND_SUPER_STAR = 105;
   public static final int _E_DIAMOND_YELLOW = 102;
-  private static EDIAMOND[] a;
+  private static EDIAMOND[] a = new EDIAMOND[6];
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!EDIAMOND.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      a = new EDIAMOND[6];
-      E_DIAMOND_RED = new EDIAMOND(0, 101, "E_DIAMOND_RED");
-      E_DIAMOND_YELLOW = new EDIAMOND(1, 102, "E_DIAMOND_YELLOW");
-      E_DIAMOND_GREEN = new EDIAMOND(2, 103, "E_DIAMOND_GREEN");
-      E_DIAMOND_COUPLE_YELLOW = new EDIAMOND(3, 104, "E_DIAMOND_COUPLE_YELLOW");
-      E_DIAMOND_SUPER_STAR = new EDIAMOND(4, 105, "E_DIAMOND_SUPER_STAR");
-      E_DIAMOND_10YEAR_YELLOW = new EDIAMOND(5, 111, "E_DIAMOND_10YEAR_YELLOW");
-      return;
-    }
+    E_DIAMOND_RED = new EDIAMOND(0, 101, "E_DIAMOND_RED");
+    E_DIAMOND_YELLOW = new EDIAMOND(1, 102, "E_DIAMOND_YELLOW");
+    E_DIAMOND_GREEN = new EDIAMOND(2, 103, "E_DIAMOND_GREEN");
+    E_DIAMOND_COUPLE_YELLOW = new EDIAMOND(3, 104, "E_DIAMOND_COUPLE_YELLOW");
+    E_DIAMOND_SUPER_STAR = new EDIAMOND(4, 105, "E_DIAMOND_SUPER_STAR");
   }
   
   private EDIAMOND(int paramInt1, int paramInt2, String paramString)
@@ -48,15 +40,16 @@ public final class EDIAMOND
   public static EDIAMOND convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].value() == paramInt) {
+      EDIAMOND[] arrayOfEDIAMOND = a;
+      if (i >= arrayOfEDIAMOND.length) {
+        break;
+      }
+      if (arrayOfEDIAMOND[i].value() == paramInt) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -64,15 +57,16 @@ public final class EDIAMOND
   public static EDIAMOND convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].toString().equals(paramString)) {
+      EDIAMOND[] arrayOfEDIAMOND = a;
+      if (i >= arrayOfEDIAMOND.length) {
+        break;
+      }
+      if (arrayOfEDIAMOND[i].toString().equals(paramString)) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }

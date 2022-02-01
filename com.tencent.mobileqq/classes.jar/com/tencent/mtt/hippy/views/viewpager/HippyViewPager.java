@@ -27,7 +27,6 @@ public class HippyViewPager
   private String mOverflow;
   private ViewPagerPageChangeListener mPageListener;
   private boolean mReNotifyOnAttach = false;
-  private boolean mScrollEnabled = true;
   
   public HippyViewPager(Context paramContext)
   {
@@ -98,21 +97,39 @@ public class HippyViewPager
     return null;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    LogUtils.d("HippyViewPager", "onAttachedToWindow: " + hashCode() + ", childCount=" + getChildCount() + ", repopulate=" + this.mNeedRepopulate + ", renotifyOnAttach=" + this.mReNotifyOnAttach);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAttachedToWindow: ");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append(", childCount=");
+    localStringBuilder.append(getChildCount());
+    localStringBuilder.append(", repopulate=");
+    localStringBuilder.append(this.mNeedRepopulate);
+    localStringBuilder.append(", renotifyOnAttach=");
+    localStringBuilder.append(this.mReNotifyOnAttach);
+    LogUtils.d("HippyViewPager", localStringBuilder.toString());
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    LogUtils.d("HippyViewPager", "onDetachedFromWindow: " + hashCode() + ", childCount=" + getChildCount() + ", repopulate=" + this.mNeedRepopulate + ", renotifyOnAttach=" + this.mReNotifyOnAttach);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDetachedFromWindow: ");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append(", childCount=");
+    localStringBuilder.append(getChildCount());
+    localStringBuilder.append(", repopulate=");
+    localStringBuilder.append(this.mNeedRepopulate);
+    localStringBuilder.append(", renotifyOnAttach=");
+    localStringBuilder.append(this.mReNotifyOnAttach);
+    LogUtils.d("HippyViewPager", localStringBuilder.toString());
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.mScrollEnabled) {
+    if (!isScrollEnabled()) {
       return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -120,7 +137,7 @@ public class HippyViewPager
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.mScrollEnabled) {
+    if (!isScrollEnabled()) {
       return false;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -141,7 +158,12 @@ public class HippyViewPager
   
   public void setChildCountAndUpdate(int paramInt)
   {
-    LogUtils.d("HippyViewPager", "doUpdateInternal: " + hashCode() + ", childCount=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doUpdateInternal: ");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append(", childCount=");
+    localStringBuilder.append(paramInt);
+    LogUtils.d("HippyViewPager", localStringBuilder.toString());
     if (this.mFirstUpdateChild)
     {
       setFirstLayoutParameter(true);
@@ -165,72 +187,67 @@ public class HippyViewPager
   public void setOverflow(String paramString)
   {
     this.mOverflow = paramString;
-    int i;
     if (!TextUtils.isEmpty(this.mOverflow))
     {
       paramString = this.mOverflow;
-      i = -1;
-      switch (paramString.hashCode())
+      int i = -1;
+      int j = paramString.hashCode();
+      if (j != -1217487446)
       {
-      default: 
-        switch (i)
-        {
+        if ((j == 466743410) && (paramString.equals("visible"))) {
+          i = 0;
         }
-        break;
+      }
+      else if (paramString.equals("hidden")) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        if (i == 1) {
+          setClipChildren(true);
+        }
+      }
+      else {
+        setClipChildren(false);
       }
     }
-    for (;;)
-    {
-      invalidate();
-      return;
-      if (!paramString.equals("visible")) {
-        break;
-      }
-      i = 0;
-      break;
-      if (!paramString.equals("hidden")) {
-        break;
-      }
-      i = 1;
-      break;
-      setClipChildren(false);
-      continue;
-      setClipChildren(true);
-    }
-  }
-  
-  public void setScrollEnabled(boolean paramBoolean)
-  {
-    this.mScrollEnabled = paramBoolean;
+    invalidate();
   }
   
   public void switchToPage(int paramInt, boolean paramBoolean)
   {
-    LogUtils.d("HippyViewPager", "switchToPage: " + hashCode() + ", item=" + paramInt + ", animated=" + paramBoolean);
-    if (getAdapter().getCount() == 0) {}
-    do
-    {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("switchToPage: ");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append(", item=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", animated=");
+    localStringBuilder.append(paramBoolean);
+    LogUtils.d("HippyViewPager", localStringBuilder.toString());
+    if (getAdapter().getCount() == 0) {
       return;
-      if (getCurrentItem() != paramInt)
+    }
+    if (getCurrentItem() != paramInt)
+    {
+      if (isSettling())
       {
-        if (isSettling())
-        {
-          setScrollingCacheEnabled(false);
-          this.mScroller.abortAnimation();
-          int i = getScrollX();
-          int j = getScrollY();
-          int k = this.mScroller.getCurrX();
-          int m = this.mScroller.getCurrY();
-          if ((i != k) || (j != m)) {
-            scrollTo(k, m);
-          }
-          setScrollState(0);
+        setScrollingCacheEnabled(false);
+        this.mScroller.abortAnimation();
+        int i = getScrollX();
+        int j = getScrollY();
+        int k = this.mScroller.getCurrX();
+        int m = this.mScroller.getCurrY();
+        if ((i != k) || (j != m)) {
+          scrollTo(k, m);
         }
-        setCurrentItem(paramInt, paramBoolean);
-        return;
+        setScrollState(0);
       }
-    } while (isFirstLayout());
-    this.mPageListener.onPageSelected(paramInt);
+      setCurrentItem(paramInt, paramBoolean);
+      return;
+    }
+    if (!isFirstLayout()) {
+      this.mPageListener.onPageSelected(paramInt);
+    }
   }
   
   public void triggerRequestLayout()
@@ -240,7 +257,7 @@ public class HippyViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.HippyViewPager
  * JD-Core Version:    0.7.0.1
  */

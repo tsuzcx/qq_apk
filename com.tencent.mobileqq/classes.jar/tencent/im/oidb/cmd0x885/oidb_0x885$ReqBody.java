@@ -30,15 +30,16 @@ public final class oidb_0x885$ReqBody
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58, 64, 74, 82, 90, 98, 104 }, new String[] { "uint64_uin", "msg_phone_info", "uint64_last_pull_time", "uint64_channel_id", "enum_ad_display", "msg_video_float_info", "rpt_bytes_req_row_key", "uint32_user_type", "user_location", "bytes_cookie", "bytes_ad_user_info", "msg_ad_req_info", "uint64_seq" }, new Object[] { Long.valueOf(0L), null, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(2), null, localByteStringMicro1, Integer.valueOf(0), null, localByteStringMicro2, localByteStringMicro3, null, Long.valueOf(0L) }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58, 64, 74, 82, 90, 98, 104 }, new String[] { "uint64_uin", "msg_phone_info", "uint64_last_pull_time", "uint64_channel_id", "enum_ad_display", "msg_video_float_info", "rpt_bytes_req_row_key", "uint32_user_type", "user_location", "bytes_cookie", "bytes_ad_user_info", "msg_ad_req_info", "uint64_seq" }, new Object[] { localLong, null, localLong, localLong, Integer.valueOf(2), null, localByteStringMicro1, Integer.valueOf(0), null, localByteStringMicro2, localByteStringMicro3, null, localLong }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x885.oidb_0x885.ReqBody
  * JD-Core Version:    0.7.0.1
  */

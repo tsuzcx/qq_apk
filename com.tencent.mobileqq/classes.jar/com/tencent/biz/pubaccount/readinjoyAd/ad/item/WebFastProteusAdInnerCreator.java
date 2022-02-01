@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.FastWeqAdUtils;
+import com.tencent.mobileqq.kandian.biz.fastweb.entity.BaseItemViewHolder;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.BaseData;
 import com.tencent.widget.AbsListView;
 import java.lang.ref.WeakReference;
 
@@ -31,27 +31,32 @@ public class WebFastProteusAdInnerCreator
   
   public void a(AbsListView paramAbsListView, int paramInt)
   {
-    Object localObject = null;
+    Object localObject;
     if (this.a != null) {
       localObject = (Context)this.a.get();
+    } else {
+      localObject = null;
     }
-    if ((!(localObject instanceof Activity)) || (((Activity)localObject).getWindow().getAttributes().softInputMode != 4)) {}
-    do
+    if ((localObject instanceof Activity))
     {
-      return;
+      if (((Activity)localObject).getWindow().getAttributes().softInputMode != 4) {
+        return;
+      }
       localObject = (InputMethodManager)((Context)localObject).getSystemService("input_method");
-    } while (localObject == null);
-    ((InputMethodManager)localObject).hideSoftInputFromWindow(paramAbsListView.getWindowToken(), 2);
+      if (localObject != null) {
+        ((InputMethodManager)localObject).hideSoftInputFromWindow(paramAbsListView.getWindowToken(), 2);
+      }
+    }
   }
   
   public boolean a(BaseData paramBaseData)
   {
-    return (paramBaseData != null) && (paramBaseData.s == 22);
+    return (paramBaseData != null) && (paramBaseData.u == 22);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.item.WebFastProteusAdInnerCreator
  * JD-Core Version:    0.7.0.1
  */

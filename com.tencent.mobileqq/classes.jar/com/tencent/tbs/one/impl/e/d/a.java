@@ -34,15 +34,17 @@ public final class a
     this.e = parama;
     this.f = paramFile;
     this.j = paramBundle;
-    this.g = com.tencent.tbs.one.impl.common.f.a(this.c, this.c, paramString, parama.a, parama.c);
+    paramContext = this.c;
+    this.g = com.tencent.tbs.one.impl.common.f.a(paramContext, paramContext, paramString, parama.a, parama.c);
   }
   
-  public final void a()
+  protected final void a()
   {
-    String str = this.e.d;
-    this.h = new com.tencent.tbs.one.impl.d.a(this.c, str);
-    this.h.f = this;
-    this.h.a(new a.1(this));
+    Object localObject = this.e.d;
+    this.h = new com.tencent.tbs.one.impl.d.a(this.c, (String)localObject);
+    localObject = this.h;
+    ((com.tencent.tbs.one.impl.d.a)localObject).f = this;
+    ((com.tencent.tbs.one.impl.d.a)localObject).a(new a.1(this));
   }
   
   public final void a(int paramInt, Map<String, List<String>> paramMap, InputStream paramInputStream)
@@ -53,81 +55,93 @@ public final class a
     int k = this.e.c;
     String str3 = this.e.d;
     File localFile2 = this.f;
-    if ((this.g != null) && (!this.g.exists())) {
+    File localFile1 = this.g;
+    if ((localFile1 != null) && (!localFile1.exists())) {
       this.g.mkdirs();
     }
-    if (this.g == null) {}
-    for (File localFile1 = null;; localFile1 = new File(this.g, this.e.a + ".tbs"))
+    localFile1 = this.g;
+    if (localFile1 == null)
     {
-      com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Receiving component response: [%d] %s", new Object[] { str1, str2, Integer.valueOf(paramInt), paramMap });
-      if ((paramInt == 200) && (paramInputStream != null)) {
-        break;
-      }
-      a(215, "Invalid component response stream, url: " + str3 + ", statusCode: " + paramInt, null);
-      return;
+      localFile1 = null;
     }
-    paramMap = (List)paramMap.get("Content-Length");
-    if ((paramMap != null) && (paramMap.size() > 0)) {}
-    for (;;)
+    else
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.e.a);
+      localStringBuilder.append(".tbs");
+      localFile1 = new File(localFile1, localStringBuilder.toString());
+    }
+    com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Receiving component response: [%d] %s", new Object[] { str1, str2, Integer.valueOf(paramInt), paramMap });
+    if ((paramInt == 200) && (paramInputStream != null))
+    {
+      paramMap = (List)paramMap.get("Content-Length");
+      if ((paramMap != null) && (paramMap.size() > 0)) {
+        try
+        {
+          this.i = Long.parseLong((String)paramMap.get(0));
+        }
+        catch (Exception localException)
+        {
+          com.tencent.tbs.one.impl.a.f.c("Failed to parse Content-Length header %s, url: %s", new Object[] { paramMap, str3, localException });
+        }
+      } else {
+        com.tencent.tbs.one.impl.a.f.a("No Content-Length header exists, url: %s", new Object[] { str3 });
+      }
+      paramMap = com.tencent.tbs.one.impl.common.a.b(localContext, str1);
+      if (paramMap != null)
+      {
+        paramInt = paramMap.shouldInterceptComponentResponse(str1, str2, k, null, paramInputStream, localFile2, new a.2(this, str1, str2, localFile2));
+        if (paramInt != 0)
+        {
+          com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Intercepted component download stream by runtime extension", new Object[] { str1, str2 });
+          this.b = paramInt;
+          return;
+        }
+      }
+      paramMap = this.e.e;
+      long l = this.i;
       try
       {
-        this.i = Long.parseLong((String)paramMap.get(0));
-        paramMap = com.tencent.tbs.one.impl.common.a.b(localContext, str1);
-        if (paramMap == null) {
-          break;
-        }
-        paramInt = paramMap.shouldInterceptComponentResponse(str1, str2, k, null, paramInputStream, localFile2, new a.2(this, str1, str2, localFile2));
-        if (paramInt == 0) {
-          break;
-        }
-        com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Intercepted component download stream by runtime extension", new Object[] { str1, str2 });
-        this.b = paramInt;
+        com.tencent.tbs.one.impl.e.f.a(paramInputStream, paramMap, l, localFile2, localFile1, new a.3(this));
+        com.tencent.tbs.one.impl.e.f.a(localFile2, localFile2);
+        com.tencent.tbs.one.impl.e.f.a(localFile2, k);
+        com.tencent.tbs.one.impl.e.f.a(this.c.getDir("tbs", 0));
+        com.tencent.tbs.one.impl.e.f.b(localFile2);
+        a(e.a(e.a.d, localFile2));
         return;
       }
-      catch (Exception localException)
+      catch (TBSOneException paramMap)
       {
-        com.tencent.tbs.one.impl.a.f.c("Failed to parse Content-Length header %s, url: %s", new Object[] { paramMap, str3, localException });
-        continue;
+        a(paramMap.getErrorCode(), paramMap.getMessage(), paramMap.getCause());
+        return;
       }
-      com.tencent.tbs.one.impl.a.f.a("No Content-Length header exists, url: %s", new Object[] { str3 });
     }
-    paramMap = this.e.e;
-    long l = this.i;
-    try
-    {
-      com.tencent.tbs.one.impl.e.f.a(paramInputStream, paramMap, l, localFile2, localFile1, new a.3(this));
-      com.tencent.tbs.one.impl.e.f.a(localFile2, localFile2);
-      com.tencent.tbs.one.impl.e.f.a(localFile2, k);
-      com.tencent.tbs.one.impl.e.f.a(this.c.getDir("tbs", 0));
-      com.tencent.tbs.one.impl.e.f.b(localFile2);
-      a(e.a(e.a.d, localFile2));
-      return;
-    }
-    catch (TBSOneException paramMap)
-    {
-      a(paramMap.getErrorCode(), paramMap.getMessage(), paramMap.getCause());
-    }
+    paramMap = new StringBuilder("Invalid component response stream, url: ");
+    paramMap.append(str3);
+    paramMap.append(", statusCode: ");
+    paramMap.append(paramInt);
+    a(215, paramMap.toString(), null);
   }
   
   public final void b()
   {
     super.b();
-    if (this.h != null) {
-      this.h.b();
+    Object localObject = this.h;
+    if (localObject != null) {
+      ((com.tencent.tbs.one.impl.d.a)localObject).b();
     }
     if (this.b != 0)
     {
-      TBSOneRuntimeExtension localTBSOneRuntimeExtension = com.tencent.tbs.one.impl.common.a.b(this.c, this.d);
-      if (localTBSOneRuntimeExtension != null) {
-        localTBSOneRuntimeExtension.cancel(this.b);
+      localObject = com.tencent.tbs.one.impl.common.a.b(this.c, this.d);
+      if (localObject != null) {
+        ((TBSOneRuntimeExtension)localObject).cancel(this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.d.a
  * JD-Core Version:    0.7.0.1
  */

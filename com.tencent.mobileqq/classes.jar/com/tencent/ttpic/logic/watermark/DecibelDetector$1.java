@@ -12,25 +12,31 @@ class DecibelDetector$1
   
   public void run()
   {
-    int i;
     synchronized (DecibelDetector.access$000(this.this$0))
     {
       if (DecibelDetector.access$100(this.this$0) == null) {
         return;
       }
-      i = DecibelDetector.access$100(this.this$0).read(DecibelDetector.access$200(this.this$0), 0, DecibelDetector.access$300(this.this$0));
+      int i = DecibelDetector.access$100(this.this$0).read(DecibelDetector.access$200(this.this$0), 0, DecibelDetector.access$300(this.this$0));
       if (i <= 1) {
         return;
       }
+      DecibelDetector.access$402(this.this$0, AudioUtil.getPcmDBFromShortBuffer(DecibelDetector.access$200(this.this$0), i));
+      String str = DecibelDetector.access$500();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[decibel] = ");
+      localStringBuilder.append(DecibelDetector.access$400(this.this$0));
+      localStringBuilder.append(", capture size = ");
+      localStringBuilder.append(i);
+      LogUtils.d(str, localStringBuilder.toString());
+      AudioUtil.getPcmFFTFromShortBuffer(DecibelDetector.access$200(this.this$0), i, DecibelDetector.access$600(this.this$0));
+      return;
     }
-    DecibelDetector.access$402(this.this$0, AudioUtil.getPcmDBFromShortBuffer(DecibelDetector.access$200(this.this$0), i));
-    LogUtils.d(DecibelDetector.access$500(), "[decibel] = " + DecibelDetector.access$400(this.this$0) + ", capture size = " + i);
-    AudioUtil.getPcmFFTFromShortBuffer(DecibelDetector.access$200(this.this$0), i, DecibelDetector.access$600(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.logic.watermark.DecibelDetector.1
  * JD-Core Version:    0.7.0.1
  */

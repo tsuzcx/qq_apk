@@ -7,10 +7,10 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDo
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData;
 import com.tencent.gamecenter.wadl.biz.listener.WadlProxyServiceCallBackInterface;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceUtil;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceWrap;
 import com.tencent.open.appstore.dl.DownloadManagerV2;
 import com.tencent.open.downloadnew.DownloadListener;
-import cooperation.wadl.ipc.WadlProxyServiceUtil;
-import cooperation.wadl.ipc.WadlProxyServiceWrap;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Map;
@@ -24,7 +24,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/RIJAdDownloadCache;", "", "()V", "downloadCache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "reportPercent_1", "Ljava/util/concurrent/CopyOnWriteArraySet;", "reportPercent_10", "reportPercent_25", "reportPercent_50", "reportPercent_75", "reportPercent_90", "viewCache", "", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "addDownloadCache", "", "data", "addReportCache", "packageName", "percent", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/data/DownloadPercent;", "addViewCache", "view", "getDownloadCache", "hasReportCache", "", "onDestroy", "removeReportCache", "removeViewCache", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/RIJAdDownloadCache;", "", "()V", "downloadCache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "reportPercent_1", "Ljava/util/concurrent/CopyOnWriteArraySet;", "reportPercent_10", "reportPercent_25", "reportPercent_50", "reportPercent_75", "reportPercent_90", "viewCache", "", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "addDownloadCache", "", "data", "addReportCache", "packageName", "percent", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/data/DownloadPercent;", "addViewCache", "view", "getDownloadCache", "hasReportCache", "", "onDestroy", "removeReportCache", "removeViewCache", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJAdDownloadCache
 {
   public static final RIJAdDownloadCache a;
@@ -106,44 +106,50 @@ public final class RIJAdDownloadCache
   
   public final void a(@Nullable String paramString)
   {
-    if ((paramString == null) || (TextUtils.isEmpty((CharSequence)paramString))) {
-      return;
+    if (paramString != null)
+    {
+      if (TextUtils.isEmpty((CharSequence)paramString)) {
+        return;
+      }
+      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
+      jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
+      c.remove(paramString);
+      d.remove(paramString);
+      e.remove(paramString);
+      f.remove(paramString);
     }
-    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
-    jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
-    c.remove(paramString);
-    d.remove(paramString);
-    e.remove(paramString);
-    f.remove(paramString);
   }
   
   public final void a(@Nullable String paramString, @NotNull DownloadPercent paramDownloadPercent)
   {
     Intrinsics.checkParameterIsNotNull(paramDownloadPercent, "percent");
-    if ((paramString == null) || (TextUtils.isEmpty((CharSequence)paramString))) {
-      return;
-    }
-    switch (RIJAdDownloadCache.WhenMappings.a[paramDownloadPercent.ordinal()])
+    if (paramString != null)
     {
-    default: 
-      return;
-    case 1: 
+      if (TextUtils.isEmpty((CharSequence)paramString)) {
+        return;
+      }
+      switch (RIJAdDownloadCache.WhenMappings.a[paramDownloadPercent.ordinal()])
+      {
+      default: 
+        return;
+      case 6: 
+        f.add(paramString);
+        return;
+      case 5: 
+        e.add(paramString);
+        return;
+      case 4: 
+        d.add(paramString);
+        return;
+      case 3: 
+        c.add(paramString);
+        return;
+      case 2: 
+        jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
+        return;
+      }
       jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
-      return;
-    case 2: 
-      jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
-      return;
-    case 3: 
-      c.add(paramString);
-      return;
-    case 4: 
-      d.add(paramString);
-      return;
-    case 5: 
-      e.add(paramString);
-      return;
     }
-    f.add(paramString);
   }
   
   public final boolean a(@Nullable String paramString, @NotNull DownloadPercent paramDownloadPercent)
@@ -156,18 +162,18 @@ public final class RIJAdDownloadCache
     {
     default: 
       throw new NoWhenBranchMatchedException();
-    case 1: 
-      return jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(paramString);
-    case 2: 
-      return jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(paramString);
-    case 3: 
-      return c.contains(paramString);
-    case 4: 
-      return d.contains(paramString);
+    case 6: 
+      return f.contains(paramString);
     case 5: 
       return e.contains(paramString);
+    case 4: 
+      return d.contains(paramString);
+    case 3: 
+      return c.contains(paramString);
+    case 2: 
+      return jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(paramString);
     }
-    return f.contains(paramString);
+    return jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(paramString);
   }
   
   public final void b(@Nullable RIJDownloadView paramRIJDownloadView)
@@ -179,7 +185,7 @@ public final class RIJAdDownloadCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.RIJAdDownloadCache
  * JD-Core Version:    0.7.0.1
  */

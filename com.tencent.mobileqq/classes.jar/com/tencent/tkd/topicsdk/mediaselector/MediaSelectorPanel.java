@@ -15,10 +15,10 @@ import android.widget.RelativeLayout;
 import com.tencent.tkd.R.id;
 import com.tencent.tkd.R.layout;
 import com.tencent.tkd.topicsdk.bean.Media;
+import com.tencent.tkd.topicsdk.common.PermissionUtils;
 import com.tencent.tkd.topicsdk.common.ViewExtensionsKt;
 import com.tencent.tkd.topicsdk.framework.TLog;
 import com.tencent.tkd.topicsdk.framework.ThreadManagerKt;
-import com.tencent.tkd.topicsdk.framework.TopicSDKHelperKt;
 import com.tencent.tkd.topicsdk.interfaces.IPermission.ISimpleCallback;
 import com.tencent.tkd.topicsdk.widget.AlbumPermissionView;
 import java.util.ArrayList;
@@ -94,15 +94,15 @@ public final class MediaSelectorPanel
     this.jdField_a_of_type_Long = 31457280L;
     this.jdField_a_of_type_JavaLangString = "";
     LayoutInflater.from(paramContext).inflate(R.layout.jdField_a_of_type_Int, (ViewGroup)this, true);
-    paramIPresenter = findViewById(R.id.aK);
+    paramIPresenter = findViewById(R.id.al);
     Intrinsics.checkExpressionValueIsNotNull(paramIPresenter, "findViewById(R.id.photo_grid)");
     this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)paramIPresenter);
     this.jdField_a_of_type_AndroidWidgetGridView.setOnScrollListener((AbsListView.OnScrollListener)new MediaSelectorPanel.1(this));
     ViewExtensionsKt.a((AbsListView)this.jdField_a_of_type_AndroidWidgetGridView, (Function4)new MediaSelectorPanel.2(this));
-    paramIPresenter = findViewById(R.id.d);
+    paramIPresenter = findViewById(R.id.jdField_a_of_type_Int);
     Intrinsics.checkExpressionValueIsNotNull(paramIPresenter, "findViewById(R.id.album_empty_layout)");
     this.jdField_a_of_type_AndroidViewView = paramIPresenter;
-    paramIPresenter = findViewById(R.id.e);
+    paramIPresenter = findViewById(R.id.b);
     Intrinsics.checkExpressionValueIsNotNull(paramIPresenter, "findViewById(R.id.album_permission_view)");
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView = ((AlbumPermissionView)paramIPresenter);
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView.setOnPermissionCallback((IPermission.ISimpleCallback)new MediaSelectorPanel.3(this));
@@ -163,19 +163,14 @@ public final class MediaSelectorPanel
   
   public final void a()
   {
-    if (!((Collection)this.jdField_c_of_type_JavaUtilArrayList).isEmpty()) {}
-    for (int i = 1;; i = 0)
+    if ((((Collection)this.jdField_c_of_type_JavaUtilArrayList).isEmpty() ^ true))
     {
-      if (i != 0)
-      {
-        this.jdField_c_of_type_JavaUtilArrayList.clear();
-        Object localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-        if (localObject != null) {
-          localObject = (Unit)((Function1)localObject).invoke(this.jdField_c_of_type_JavaUtilArrayList);
-        }
-        this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1.notifyDataSetChanged();
+      this.jdField_c_of_type_JavaUtilArrayList.clear();
+      Object localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+      if (localObject != null) {
+        localObject = (Unit)((Function1)localObject).invoke(this.jdField_c_of_type_JavaUtilArrayList);
       }
-      return;
+      this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1.notifyDataSetChanged();
     }
   }
   
@@ -193,20 +188,15 @@ public final class MediaSelectorPanel
       }
     }
     paramString = (List)localCollection;
-    if (!((Collection)paramString).isEmpty()) {}
-    for (int i = 1;; i = 0)
+    if ((((Collection)paramString).isEmpty() ^ true))
     {
-      if (i != 0)
-      {
-        paramString = (Media)paramString.get(0);
-        this.jdField_c_of_type_JavaUtilArrayList.remove(paramString);
-        paramString = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-        if (paramString != null) {
-          paramString = (Unit)paramString.invoke(this.jdField_c_of_type_JavaUtilArrayList);
-        }
-        this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1.notifyDataSetChanged();
+      paramString = (Media)paramString.get(0);
+      this.jdField_c_of_type_JavaUtilArrayList.remove(paramString);
+      paramString = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+      if (paramString != null) {
+        paramString = (Unit)paramString.invoke(this.jdField_c_of_type_JavaUtilArrayList);
       }
-      return;
+      this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1.notifyDataSetChanged();
     }
   }
   
@@ -241,12 +231,13 @@ public final class MediaSelectorPanel
   public void a(boolean paramBoolean)
   {
     View localView = this.jdField_a_of_type_AndroidViewView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localView.setVisibility(i);
   }
   
   public final boolean a()
@@ -288,7 +279,7 @@ public final class MediaSelectorPanel
     return this.jdField_c_of_type_KotlinJvmFunctionsFunction1;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.jdField_a_of_type_AndroidWidgetGridView.setAdapter((ListAdapter)this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1);
@@ -297,45 +288,49 @@ public final class MediaSelectorPanel
     if ((getContext() instanceof Activity))
     {
       localObject = getContext();
-      if (localObject == null) {
+      if (localObject != null) {
+        localObject = (Activity)localObject;
+      } else {
         throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
       }
-      localObject = (Activity)localObject;
     }
-    while (localObject != null) {
-      if (TopicSDKHelperKt.a((Activity)localObject))
+    else if ((getContext() instanceof ContextWrapper))
+    {
+      localObject = getContext();
+      if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView.setVisibility(8);
-        b();
-        return;
-        if ((getContext() instanceof ContextWrapper))
-        {
-          localObject = getContext();
-          if (localObject == null) {
-            throw new TypeCastException("null cannot be cast to non-null type android.content.ContextWrapper");
-          }
-          localObject = ((ContextWrapper)localObject).getBaseContext();
-          if (localObject == null) {
-            throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
-          }
+        localObject = ((ContextWrapper)localObject).getBaseContext();
+        if (localObject != null) {
           localObject = (Activity)localObject;
-        }
-        else
-        {
-          localObject = null;
+        } else {
+          throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView.setVisibility(0);
+        throw new TypeCastException("null cannot be cast to non-null type android.content.ContextWrapper");
+      }
+    }
+    else
+    {
+      localObject = null;
+    }
+    if (localObject != null)
+    {
+      if (PermissionUtils.a.a((Activity)localObject))
+      {
+        this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView.setVisibility(8);
+        b();
         return;
       }
+      this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView.setVisibility(0);
+      return;
     }
     TLog.a("MediaSelectorView", "onAttachedToWindow, activity=null");
     a(true);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IPresenter.a();
     super.onDetachedFromWindow();
@@ -430,7 +425,7 @@ public final class MediaSelectorPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel
  * JD-Core Version:    0.7.0.1
  */

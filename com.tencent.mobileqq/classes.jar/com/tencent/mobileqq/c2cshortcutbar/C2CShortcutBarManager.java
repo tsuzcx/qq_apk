@@ -63,10 +63,13 @@ public class C2CShortcutBarManager
   public Long a(Long paramLong)
   {
     paramLong = (Long)this.b.get(paramLong);
-    if (paramLong != null) {}
-    for (long l = paramLong.longValue();; l = 0L) {
-      return Long.valueOf(l);
+    long l;
+    if (paramLong != null) {
+      l = paramLong.longValue();
+    } else {
+      l = 0L;
     }
+    return Long.valueOf(l);
   }
   
   public List<C2CShortcutAppInfo> a(Long paramLong)
@@ -81,29 +84,35 @@ public class C2CShortcutBarManager
     {
       paramLong.addAll(((List)localObject).subList(0, i));
       localObject = new C2CShortcutAppInfo();
-      ((C2CShortcutAppInfo)localObject).b = BaseApplicationImpl.getContext().getResources().getString(2131690785);
+      ((C2CShortcutAppInfo)localObject).b = BaseApplicationImpl.getContext().getResources().getString(2131690713);
       ((C2CShortcutAppInfo)localObject).c = "https://qzonestyle.gtimg.cn/aoi/sola/20191009150544_g1DgkNhLui.png";
       paramLong.add(localObject);
-    }
-    for (;;)
-    {
       return paramLong;
-      paramLong.addAll((Collection)localObject);
     }
+    paramLong.addAll((Collection)localObject);
+    return paramLong;
   }
   
   public List<C2CShortcutAppInfo> a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CShortcutBarSwitcher", 2, "getC2CShortcutBarStoreInfo() data = " + this.c.get(paramString));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getC2CShortcutBarStoreInfo() data = ");
+      localStringBuilder.append(this.c.get(paramString));
+      QLog.d("C2CShortcutBarSwitcher", 2, localStringBuilder.toString());
     }
     return (List)this.c.get(paramString);
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CShortcutBarSwitcher", 2, "setShortcutBarMaxAppNum " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setShortcutBarMaxAppNum ");
+      localStringBuilder.append(paramInt);
+      QLog.d("C2CShortcutBarSwitcher", 2, localStringBuilder.toString());
     }
     if (paramInt > 0) {
       this.jdField_a_of_type_Int = paramInt;
@@ -112,8 +121,14 @@ public class C2CShortcutBarManager
   
   public void a(Long paramLong1, Long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CShortcutBarSwitcher", 2, "updateShortcutAppInfoReqTimeStamp friendUin = " + paramLong1 + ",nextReqTimeStamp = " + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateShortcutAppInfoReqTimeStamp friendUin = ");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(",nextReqTimeStamp = ");
+      localStringBuilder.append(paramLong2);
+      QLog.d("C2CShortcutBarSwitcher", 2, localStringBuilder.toString());
     }
     this.b.put(paramLong1, paramLong2);
   }
@@ -145,10 +160,20 @@ public class C2CShortcutBarManager
   
   public boolean a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
+    boolean bool1 = QLog.isColorLevel();
+    boolean bool2 = false;
+    if (bool1) {
       QLog.d("C2CShortcutBarSwitcher", 2, new Object[] { "isClickManager() position =", Integer.valueOf(paramInt1), " appListSize = ", Integer.valueOf(paramInt2), " shortcutBarMaxAppNum =", Integer.valueOf(this.jdField_a_of_type_Int) });
     }
-    return (paramInt1 == paramInt2 - 1) && (paramInt2 > this.jdField_a_of_type_Int);
+    bool1 = bool2;
+    if (paramInt1 == paramInt2 - 1)
+    {
+      bool1 = bool2;
+      if (paramInt2 > this.jdField_a_of_type_Int) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public boolean a(Long paramLong)
@@ -167,7 +192,7 @@ public class C2CShortcutBarManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarManager
  * JD-Core Version:    0.7.0.1
  */

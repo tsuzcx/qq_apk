@@ -1,13 +1,12 @@
-package com.tencent.mobileqq.troop.enterEffect;
+package com.tencent.mobileqq.troop.entereffect;
 
 import QQService.EVIPSPEC;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.friend.api.IFriendDataService;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -31,7 +30,7 @@ public class TroopEnterEffectConfig$GrayTipsConfig
   
   static
   {
-    jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131715163);
+    jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131715086);
   }
   
   public TroopEnterEffectConfig$GrayTipsConfig()
@@ -40,29 +39,33 @@ public class TroopEnterEffectConfig$GrayTipsConfig
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  public static int a(AppRuntime paramAppRuntime)
   {
-    String str = paramQQAppInterface.getCurrentUin();
-    paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(str);
-    if (paramQQAppInterface != null)
+    String str = paramAppRuntime.getCurrentUin();
+    paramAppRuntime = (IFriendDataService)paramAppRuntime.getRuntimeService(IFriendDataService.class, "all");
+    int j = 1;
+    paramAppRuntime = paramAppRuntime.getFriend(str, true);
+    int i = j;
+    if (paramAppRuntime != null)
     {
-      boolean bool = paramQQAppInterface.isServiceEnabled(EVIPSPEC.E_SP_QQVIP);
-      if (paramQQAppInterface.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP))
+      boolean bool = paramAppRuntime.isServiceEnabled(EVIPSPEC.E_SP_QQVIP);
+      if (paramAppRuntime.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP))
       {
-        if (paramQQAppInterface.getServiceType(EVIPSPEC.E_SP_SUPERVIP) == 1) {
+        if (paramAppRuntime.getServiceType(EVIPSPEC.E_SP_SUPERVIP) == 1) {
           return 22;
         }
         return 5;
       }
+      i = j;
       if (bool)
       {
-        if (paramQQAppInterface.getServiceType(EVIPSPEC.E_SP_QQVIP) == 1) {
+        if (paramAppRuntime.getServiceType(EVIPSPEC.E_SP_QQVIP) == 1) {
           return 21;
         }
-        return 4;
+        i = 4;
       }
     }
-    return 1;
+    return i;
   }
   
   private void a()
@@ -78,19 +81,28 @@ public class TroopEnterEffectConfig$GrayTipsConfig
         this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replaceFirst("]", "");
         i = j - 1;
       }
-      if ((i < this.jdField_a_of_type_JavaLangString.length() - 1) && (this.jdField_a_of_type_JavaLangString.charAt(i + 1) == '('))
+      if (i < this.jdField_a_of_type_JavaLangString.length() - 1)
       {
-        j = i + 2;
-        int m = this.jdField_a_of_type_JavaLangString.indexOf(')', j);
-        if (m > 0)
+        String str1 = this.jdField_a_of_type_JavaLangString;
+        j = i + 1;
+        if (str1.charAt(j) == '(')
         {
-          String str = this.jdField_a_of_type_JavaLangString.substring(j, m);
-          this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString.substring(0, j - 1) + this.jdField_a_of_type_JavaLangString.substring(m + 1, this.jdField_a_of_type_JavaLangString.length()));
-          TroopEnterEffectConfig.GrayTipsConfig.Link localLink = new TroopEnterEffectConfig.GrayTipsConfig.Link();
-          localLink.jdField_a_of_type_Int = k;
-          localLink.jdField_b_of_type_Int = (i + 1);
-          localLink.jdField_a_of_type_JavaLangString = str;
-          this.jdField_a_of_type_JavaUtilArrayList.add(localLink);
+          i += 2;
+          int m = this.jdField_a_of_type_JavaLangString.indexOf(')', i);
+          if (m > 0)
+          {
+            str1 = this.jdField_a_of_type_JavaLangString.substring(i, m);
+            Object localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString.substring(0, i - 1));
+            String str2 = this.jdField_a_of_type_JavaLangString;
+            ((StringBuilder)localObject).append(str2.substring(m + 1, str2.length()));
+            this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+            localObject = new TroopEnterEffectConfig.GrayTipsConfig.Link();
+            ((TroopEnterEffectConfig.GrayTipsConfig.Link)localObject).jdField_a_of_type_Int = k;
+            ((TroopEnterEffectConfig.GrayTipsConfig.Link)localObject).jdField_b_of_type_Int = j;
+            ((TroopEnterEffectConfig.GrayTipsConfig.Link)localObject).jdField_a_of_type_JavaLangString = str1;
+            this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          }
         }
       }
     }
@@ -98,71 +110,80 @@ public class TroopEnterEffectConfig$GrayTipsConfig
   
   public void a(JSONObject paramJSONObject)
   {
-    int i = 0;
     if (paramJSONObject == null)
     {
-      QLog.e("TroopEnterEffect.GrayTips", 1, "mergeFromJson error grayTipsObj == null");
+      QLog.e("GrayTipsConfig.GrayTips", 1, "mergeFromJson error grayTipsObj == null");
       return;
     }
     this.jdField_a_of_type_Int = paramJSONObject.optInt("id");
-    if (paramJSONObject.optInt("isValid") == 1)
-    {
+    int j = paramJSONObject.optInt("isValid");
+    int i = 0;
+    boolean bool;
+    if (j == 1) {
       bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("priority");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("wording");
-      a();
-      if (paramJSONObject.optInt("noLongerPrompt") != 1) {
-        break label236;
-      }
+    } else {
+      bool = false;
     }
-    for (boolean bool = true;; bool = false) {
-      for (;;)
-      {
-        this.jdField_b_of_type_Boolean = bool;
-        if (this.jdField_b_of_type_Boolean) {
-          this.jdField_a_of_type_JavaLangString += jdField_d_of_type_JavaLangString;
-        }
-        this.jdField_c_of_type_Int = paramJSONObject.optInt("linkType");
-        this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("serviceCode");
-        this.jdField_d_of_type_Int = paramJSONObject.optInt("hardType");
-        this.e = paramJSONObject.optInt("openMonth");
-        this.f = paramJSONObject.optInt("hardMonth");
-        this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("aidAndroid");
-        try
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("priority");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("wording");
+    a();
+    if (paramJSONObject.optInt("noLongerPrompt") == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.jdField_b_of_type_Boolean = bool;
+    Object localObject;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(jdField_d_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    }
+    this.jdField_c_of_type_Int = paramJSONObject.optInt("linkType");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("serviceCode");
+    this.jdField_d_of_type_Int = paramJSONObject.optInt("hardType");
+    this.e = paramJSONObject.optInt("openMonth");
+    this.f = paramJSONObject.optInt("hardMonth");
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("aidAndroid");
+    try
+    {
+      localObject = paramJSONObject.optJSONArray("vipType");
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
+        while (i < ((JSONArray)localObject).length())
         {
-          JSONArray localJSONArray = paramJSONObject.optJSONArray("vipType");
-          if ((localJSONArray == null) || (localJSONArray.length() <= 0)) {
-            break label272;
-          }
-          while (i < localJSONArray.length())
-          {
-            this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(localJSONArray.getInt(i)));
-            i += 1;
-          }
-          bool = false;
-        }
-        catch (Exception localException)
-        {
-          label236:
-          QLog.e("TroopEnterEffect.GrayTips", 1, "mergeFromJson error: " + localException.getMessage());
-          this.g = paramJSONObject.optInt("settingStatus");
+          this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
+          i += 1;
         }
       }
+      StringBuilder localStringBuilder;
+      return;
     }
-    label272:
+    catch (Exception localException)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mergeFromJson error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("GrayTipsConfig.GrayTips", 1, localStringBuilder.toString());
+      this.g = paramJSONObject.optInt("settingStatus");
+    }
   }
   
-  public boolean a(int paramInt, QQAppInterface paramQQAppInterface)
+  public boolean a(int paramInt, AppRuntime paramAppRuntime)
   {
+    int i = a(paramAppRuntime);
+    boolean bool3 = this.jdField_a_of_type_Boolean;
     boolean bool2 = false;
-    int i = a(paramQQAppInterface);
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Boolean) {
-      if (paramInt != this.g)
+    if (bool3)
+    {
+      int j = this.g;
+      if (paramInt != j)
       {
         bool1 = bool2;
-        if (this.g != 0) {}
+        if (j != 0) {}
       }
       else if (!this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(i)))
       {
@@ -179,7 +200,7 @@ public class TroopEnterEffectConfig$GrayTipsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig.GrayTipsConfig
  * JD-Core Version:    0.7.0.1
  */

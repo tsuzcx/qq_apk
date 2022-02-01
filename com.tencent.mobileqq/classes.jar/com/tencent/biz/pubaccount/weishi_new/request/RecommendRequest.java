@@ -29,7 +29,10 @@ public class RecommendRequest
     localstSimpleGetFeedListReq.linkStragetyArgs = WeishiLinkUtil.a();
     localstSimpleGetFeedListReq.qqNum = WeishiUtils.a();
     this.jdField_a_of_type_ComQqTafJceJceStruct = localstSimpleGetFeedListReq;
-    WSLog.d("RecommendRequest", "stSimpleGetFeedListReq  = " + localstSimpleGetFeedListReq.toString());
+    paramString1 = new StringBuilder();
+    paramString1.append("stSimpleGetFeedListReq  = ");
+    paramString1.append(localstSimpleGetFeedListReq.toString());
+    WSLog.d("RecommendRequest", paramString1.toString());
   }
   
   public String b()
@@ -42,7 +45,7 @@ public class RecommendRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.RecommendRequest
  * JD-Core Version:    0.7.0.1
  */

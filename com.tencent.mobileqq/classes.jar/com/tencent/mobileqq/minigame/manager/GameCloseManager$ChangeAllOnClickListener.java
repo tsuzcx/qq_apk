@@ -15,6 +15,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -43,16 +44,17 @@ class GameCloseManager$ChangeAllOnClickListener
   
   private COMM.StCommonExt processCommExtInfo()
   {
-    COMM.StCommonExt localStCommonExt = null;
+    Object localObject;
     if (this.ext != null)
     {
-      localStCommonExt = new COMM.StCommonExt();
+      COMM.StCommonExt localStCommonExt = new COMM.StCommonExt();
       if (this.ext.attachInfo != null) {
         localStCommonExt.attachInfo.set(this.ext.attachInfo);
       }
+      localObject = localStCommonExt;
       if (this.ext.mapInfo != null)
       {
-        ArrayList localArrayList = new ArrayList();
+        localObject = new ArrayList();
         Iterator localIterator = this.ext.mapInfo.keySet().iterator();
         while (localIterator.hasNext())
         {
@@ -61,12 +63,17 @@ class GameCloseManager$ChangeAllOnClickListener
           COMM.Entry localEntry = new COMM.Entry();
           localEntry.key.set(str1);
           localEntry.value.set(str2);
-          localArrayList.add(localEntry);
+          ((ArrayList)localObject).add(localEntry);
         }
-        localStCommonExt.mapInfo.set(localArrayList);
+        localStCommonExt.mapInfo.set((List)localObject);
+        return localStCommonExt;
       }
     }
-    return localStCommonExt;
+    else
+    {
+      localObject = null;
+    }
+    return localObject;
   }
   
   public void onClick(View paramView)
@@ -78,7 +85,7 @@ class GameCloseManager$ChangeAllOnClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameCloseManager.ChangeAllOnClickListener
  * JD-Core Version:    0.7.0.1
  */

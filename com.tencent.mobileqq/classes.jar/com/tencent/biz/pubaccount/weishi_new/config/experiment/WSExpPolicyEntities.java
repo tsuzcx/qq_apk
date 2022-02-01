@@ -36,26 +36,27 @@ public class WSExpPolicyEntities
   
   private String a(Map<String, stGrayPolicyInfo> paramMap)
   {
-    if ((paramMap == null) || (paramMap.isEmpty())) {
-      return "";
-    }
-    HashSet localHashSet = new HashSet();
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
+    if ((paramMap != null) && (!paramMap.isEmpty()))
     {
-      String str = ((stGrayPolicyInfo)((Map.Entry)paramMap.next()).getValue()).grayPolicyId;
-      if ((!TextUtils.isEmpty(str)) && (!localHashSet.contains(str)))
+      HashSet localHashSet = new HashSet();
+      StringBuilder localStringBuilder = new StringBuilder();
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
       {
-        localHashSet.add(str);
-        localStringBuilder.append(str);
-        localStringBuilder.append("_");
+        String str = ((stGrayPolicyInfo)((Map.Entry)paramMap.next()).getValue()).grayPolicyId;
+        if ((!TextUtils.isEmpty(str)) && (!localHashSet.contains(str)))
+        {
+          localHashSet.add(str);
+          localStringBuilder.append(str);
+          localStringBuilder.append("_");
+        }
       }
+      if (localStringBuilder.length() > 0) {
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      }
+      return localStringBuilder.toString();
     }
-    if (localStringBuilder.length() > 0) {
-      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    }
-    return localStringBuilder.toString();
+    return "";
   }
   
   public stGetAllABTestPolicyRsp a()
@@ -65,10 +66,10 @@ public class WSExpPolicyEntities
   
   public stGrayPolicyInfo a(String paramString)
   {
-    if ((this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo == null) || (this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo.isEmpty())) {
-      return null;
+    if ((this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo != null) && (!this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo.isEmpty())) {
+      return (stGrayPolicyInfo)this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo.get(paramString);
     }
-    return (stGrayPolicyInfo)this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo.get(paramString);
+    return null;
   }
   
   public String a()
@@ -88,49 +89,61 @@ public class WSExpPolicyEntities
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    Object localObject;
-    do
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject != null)
     {
-      do
-      {
-        return true;
-        if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-          return false;
-        }
-        paramObject = (WSExpPolicyEntities)paramObject;
-        if (!TextUtils.equals(paramObject.a(), a())) {
-          return false;
-        }
-        localObject = paramObject.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp;
-        paramObject = this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp;
-        if ((localObject != null) && (paramObject != null)) {
-          break;
-        }
-      } while (localObject == paramObject);
-      return false;
-      localObject = ((stGetAllABTestPolicyRsp)localObject).policyInfo;
-      paramObject = paramObject.policyInfo;
-      if (localObject != null) {
-        break;
+      if (getClass() != paramObject.getClass()) {
+        return false;
       }
-    } while (paramObject == null);
+      paramObject = (WSExpPolicyEntities)paramObject;
+      if (!TextUtils.equals(paramObject.a(), a())) {
+        return false;
+      }
+      Object localObject = paramObject.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp;
+      paramObject = this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp;
+      if ((localObject != null) && (paramObject != null))
+      {
+        localObject = ((stGetAllABTestPolicyRsp)localObject).policyInfo;
+        paramObject = paramObject.policyInfo;
+        if (localObject == null) {
+          return paramObject == null;
+        }
+        return ((Map)localObject).equals(paramObject);
+      }
+      return localObject == paramObject;
+    }
     return false;
-    return ((Map)localObject).equals(paramObject);
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("WSExpPolicyEntities{\nmUin='").append(this.jdField_a_of_type_JavaLangString).append('\'').append("\nmTestIds='").append(this.b).append('\'').append("\nserverTime='").append(this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.serverTime).append('\'').append("\nmPolicyInfoMap=");
-    if (this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo != null) {}
-    for (String str = this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo.toString();; str = "null") {
-      return str + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSExpPolicyEntities{\nmUin='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("\nmTestIds='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("\nserverTime='");
+    localStringBuilder.append(this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.serverTime);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("\nmPolicyInfoMap=");
+    String str;
+    if (this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo != null) {
+      str = this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo.toString();
+    } else {
+      str = "null";
     }
+    localStringBuilder.append(str);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpPolicyEntities
  * JD-Core Version:    0.7.0.1
  */

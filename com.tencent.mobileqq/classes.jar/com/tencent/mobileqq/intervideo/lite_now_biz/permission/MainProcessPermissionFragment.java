@@ -7,10 +7,9 @@ import android.app.FragmentTransaction;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment;
 
 public class MainProcessPermissionFragment
-  extends ReportFragment
+  extends Fragment
 {
   private PermissionListener a;
   
@@ -45,12 +44,12 @@ public class MainProcessPermissionFragment
       return;
     }
     paramBundle = getArguments().getStringArray("permission_list");
-    if ((paramBundle == null) || (Build.VERSION.SDK_INT < 23))
+    if ((paramBundle != null) && (Build.VERSION.SDK_INT >= 23))
     {
-      a();
+      requestPermissions(paramBundle, 1);
       return;
     }
-    requestPermissions(paramBundle, 1);
+    a();
   }
   
   public void onDestroy()
@@ -61,15 +60,16 @@ public class MainProcessPermissionFragment
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.a != null) {
-      this.a.a(paramArrayOfString, paramArrayOfInt);
+    PermissionListener localPermissionListener = this.a;
+    if (localPermissionListener != null) {
+      localPermissionListener.a(paramArrayOfString, paramArrayOfInt);
     }
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.permission.MainProcessPermissionFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -27,8 +27,9 @@ public final class RealResponseBody
   
   public MediaType contentType()
   {
-    if (this.contentTypeString != null) {
-      return MediaType.parse(this.contentTypeString);
+    String str = this.contentTypeString;
+    if (str != null) {
+      return MediaType.parse(str);
     }
     return null;
   }
@@ -40,7 +41,7 @@ public final class RealResponseBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http.RealResponseBody
  * JD-Core Version:    0.7.0.1
  */

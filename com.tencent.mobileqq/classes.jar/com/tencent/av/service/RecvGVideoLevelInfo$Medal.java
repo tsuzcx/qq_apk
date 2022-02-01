@@ -45,8 +45,9 @@ public class RecvGVideoLevelInfo$Medal
     }
     catch (RuntimeException paramParcel)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(RecvGVideoLevelInfo.jdField_a_of_type_JavaLangString, 2, "readFromParcel RuntimeException", paramParcel);
+      if (QLog.isColorLevel()) {
+        QLog.d("RecvGVideoLevelInfo", 2, "readFromParcel RuntimeException", paramParcel);
+      }
     }
   }
   
@@ -69,14 +70,15 @@ public class RecvGVideoLevelInfo$Medal
     }
     catch (RuntimeException paramParcel)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(RecvGVideoLevelInfo.jdField_a_of_type_JavaLangString, 2, "writeToParcel RuntimeException", paramParcel);
+      if (QLog.isColorLevel()) {
+        QLog.d("RecvGVideoLevelInfo", 2, "writeToParcel RuntimeException", paramParcel);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.RecvGVideoLevelInfo.Medal
  * JD-Core Version:    0.7.0.1
  */

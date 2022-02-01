@@ -64,7 +64,7 @@ public class AudioStreamUploadTask
     return TaskTypeConfig.AudioStreamUploadTaskType;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     if (!this.mKeepFileAfterUpload) {
       FileUtils.deleteTempFile(this.mFilePath);
@@ -72,25 +72,20 @@ public class AudioStreamUploadTask
     CacheUtil.deleteSessionId(this, this.mSessionId);
   }
   
-  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject2 = null;
+    Object localObject1;
     try
     {
-      localObject1 = (CUploadDownstream)JceEncoder.decode(CUploadDownstream.class, paramArrayOfByte);
-      localObject2 = localObject1;
+      CUploadDownstream localCUploadDownstream = (CUploadDownstream)JceEncoder.decode(CUploadDownstream.class, paramArrayOfByte);
       localObject1 = null;
+      localObject2 = localCUploadDownstream;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject1 = Log.getStackTraceString(localException);
-        UploadLog.w("AudioStreamUploadTask", localException);
-      }
-      onUploadSucceed(localObject2);
-      super.processFileUploadFinishRsp(paramArrayOfByte);
-      onDestroy();
+      localObject1 = Log.getStackTraceString(localException);
+      UploadLog.w("AudioStreamUploadTask", localException);
     }
     if (localObject2 == null)
     {
@@ -98,14 +93,21 @@ public class AudioStreamUploadTask
       if (localObject1 == null) {
         paramArrayOfByte = "音频上传回包解析出错！";
       }
-      onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), "errorMsg = " + paramArrayOfByte);
+      int i = Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("errorMsg = ");
+      ((StringBuilder)localObject1).append(paramArrayOfByte);
+      onError(i, ((StringBuilder)localObject1).toString());
       return;
     }
+    onUploadSucceed(localObject2);
+    super.processFileUploadFinishRsp(paramArrayOfByte);
+    onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.AudioStreamUploadTask
  * JD-Core Version:    0.7.0.1
  */

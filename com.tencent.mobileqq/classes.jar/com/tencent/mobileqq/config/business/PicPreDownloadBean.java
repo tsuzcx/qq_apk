@@ -48,14 +48,11 @@ public class PicPreDownloadBean
     {
       int i1 = paramArrayOfQConfItem.length;
       int n = 0;
-      if (n < i1)
+      while (n < i1)
       {
         Object localObject = paramArrayOfQConfItem[n];
-        if (localObject == null) {}
-        for (;;)
+        if (localObject != null)
         {
-          n += 1;
-          break;
           localObject = ((QConfItem)localObject).jdField_a_of_type_JavaLangString;
           try
           {
@@ -63,18 +60,22 @@ public class PicPreDownloadBean
             a(localJSONObject, localPicPreDownloadBean);
             b(localJSONObject, localPicPreDownloadBean);
             c(localJSONObject, localPicPreDownloadBean);
-            if (QLog.isColorLevel()) {
-              QLog.i("PicPreDownloadBean", 2, "parse: " + (String)localObject + " bean:" + localPicPreDownloadBean.toString());
-            }
           }
           catch (JSONException localJSONException)
           {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
+            localJSONException.printStackTrace();
+          }
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("parse: ");
+            localStringBuilder.append((String)localObject);
+            localStringBuilder.append(" bean:");
+            localStringBuilder.append(localPicPreDownloadBean.toString());
+            QLog.i("PicPreDownloadBean", 2, localStringBuilder.toString());
           }
         }
+        n += 1;
       }
     }
     return localPicPreDownloadBean;
@@ -151,12 +152,52 @@ public class PicPreDownloadBean
   
   public String toString()
   {
-    return "PicPreDownloadBean{PreDownSwitchNew=" + this.jdField_a_of_type_Long + ",PicAuDownTimePoint=" + this.jdField_b_of_type_Long + ",PreDownMaxWifiFlow=" + this.jdField_c_of_type_Long + ",PreDownMax4GFlow=" + this.jdField_d_of_type_Long + ",PreDownMax3GFlow=" + this.e + ",PreDownMax2GFlow=" + this.f + ",flowsCombination=" + this.jdField_a_of_type_JavaLangString + ",troopCombination=" + this.jdField_b_of_type_JavaLangString + ",requestListMaxSize=" + this.g + ",xGPreDownPolicy=" + this.jdField_c_of_type_JavaLangString + ",xgFlowHitFeedback=" + this.h + ",XgFlowMissFeedback=" + this.i + ",pisSizeAvg=" + this.j + ",pisSizeMax=" + this.k + ",mEnablePeakFlow=" + this.l + ",mPeakFlowTimePeriod=" + this.jdField_d_of_type_JavaLangString + ",mPeakFlowMaxPicSize=" + this.m + ",gifWifiPreDownloadLimit=" + this.jdField_a_of_type_Int + ",gifXgPreDownloadLimit=" + this.jdField_b_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PicPreDownloadBean{PreDownSwitchNew=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",PicAuDownTimePoint=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(",PreDownMaxWifiFlow=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(",PreDownMax4GFlow=");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(",PreDownMax3GFlow=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",PreDownMax2GFlow=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",flowsCombination=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",troopCombination=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",requestListMaxSize=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(",xGPreDownPolicy=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",xgFlowHitFeedback=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(",XgFlowMissFeedback=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(",pisSizeAvg=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(",pisSizeMax=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(",mEnablePeakFlow=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(",mPeakFlowTimePeriod=");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(",mPeakFlowMaxPicSize=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(",gifWifiPreDownloadLimit=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",gifXgPreDownloadLimit=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PicPreDownloadBean
  * JD-Core Version:    0.7.0.1
  */

@@ -10,19 +10,12 @@ class TroopAndDiscMsgProxy$2
 {
   public void run()
   {
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
-    String str = ((QQAppInterface)TroopAndDiscMsgProxy.a(this.this$0)).getCurrentAccountUin();
-    if (!this.a) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.collectPerformance(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
-      return;
-    }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(((QQAppInterface)TroopAndDiscMsgProxy.a(this.this$0)).getCurrentAccountUin(), "aio_break_point", this.a ^ true, 0L, 0L, new HashMap(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAndDiscMsgProxy.2
  * JD-Core Version:    0.7.0.1
  */

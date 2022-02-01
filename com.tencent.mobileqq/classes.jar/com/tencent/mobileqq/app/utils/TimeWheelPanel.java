@@ -51,14 +51,14 @@ public class TimeWheelPanel
     if ((this.jdField_a_of_type_AndroidViewLayoutInflater == null) || (this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null) || (this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null) || (this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null))
     {
       this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561123, this);
-      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131365589));
-      this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131368576));
-      this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131371787));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365590));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368577));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371788));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366374));
+      this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560985, this);
+      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131365432));
+      this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131368319));
+      this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131371413));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365433));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368320));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371414));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366257));
       this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
       this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
       this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
@@ -79,45 +79,29 @@ public class TimeWheelPanel
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (paramInt4 > 0)
-    {
-      this.h = paramInt4;
-      if ((paramInt1 < 0) || (paramInt1 >= this.h)) {
-        break label109;
-      }
-      label23:
-      this.i = paramInt1;
-      if ((paramInt2 < 0) || (paramInt2 >= 24)) {
-        break label114;
-      }
-      label38:
-      this.j = paramInt2;
-      if ((paramInt3 < 0) || (paramInt3 >= 60)) {
-        break label119;
-      }
-    }
-    for (;;)
-    {
-      this.k = paramInt3;
-      this.jdField_a_of_type_Int = this.i;
-      this.jdField_b_of_type_Int = this.j;
-      this.jdField_c_of_type_Int = this.k;
-      this.l = 1;
-      this.m = 1;
-      this.n = 1;
-      a();
-      return;
+    if (paramInt4 <= 0) {
       paramInt4 = 30;
-      break;
-      label109:
+    }
+    this.h = paramInt4;
+    if ((paramInt1 < 0) || (paramInt1 >= this.h)) {
       paramInt1 = 0;
-      break label23;
-      label114:
+    }
+    this.i = paramInt1;
+    if ((paramInt2 < 0) || (paramInt2 >= 24)) {
       paramInt2 = 0;
-      break label38;
-      label119:
+    }
+    this.j = paramInt2;
+    if ((paramInt3 < 0) || (paramInt3 >= 60)) {
       paramInt3 = 0;
     }
+    this.k = paramInt3;
+    this.jdField_a_of_type_Int = this.i;
+    this.jdField_b_of_type_Int = this.j;
+    this.jdField_c_of_type_Int = this.k;
+    this.l = 1;
+    this.m = 1;
+    this.n = 1;
+    a();
   }
   
   public void a(NumberWheelView paramNumberWheelView, VerticalGallery paramVerticalGallery)
@@ -126,8 +110,9 @@ public class TimeWheelPanel
     this.jdField_b_of_type_Int = this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView.a();
     this.jdField_c_of_type_Int = this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView.a();
     setValues(false);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel$ScrollStateListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel$ScrollStateListener.a(paramNumberWheelView, paramVerticalGallery);
+    TimeWheelPanel.ScrollStateListener localScrollStateListener = this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel$ScrollStateListener;
+    if (localScrollStateListener != null) {
+      localScrollStateListener.a(paramNumberWheelView, paramVerticalGallery);
     }
   }
   
@@ -152,13 +137,10 @@ public class TimeWheelPanel
     }
     if (this.jdField_b_of_type_Boolean) {
       this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString2);
-    }
-    for (;;)
-    {
-      this.jdField_d_of_type_AndroidWidgetTextView.post(new TimeWheelPanel.1(this));
-      return;
+    } else {
       this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString1);
     }
+    this.jdField_d_of_type_AndroidWidgetTextView.post(new TimeWheelPanel.1(this));
   }
   
   public void setScrollerStateListener(TimeWheelPanel.ScrollStateListener paramScrollStateListener)
@@ -168,46 +150,50 @@ public class TimeWheelPanel
   
   public void setValues(boolean paramBoolean)
   {
-    if ((this.l != 1) || (this.m != 1) || (this.n != 1)) {}
-    do
+    if ((this.l == 1) && (this.m == 1))
     {
-      return;
+      if (this.n != 1) {
+        return;
+      }
       if ((this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0) && (this.jdField_c_of_type_Int == 0) && (!this.jdField_a_of_type_Boolean))
       {
         this.jdField_c_of_type_Int = 1;
         this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setValue(this.jdField_c_of_type_Int);
       }
-    } while (!paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setValue(this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setValue(this.jdField_b_of_type_Int);
-    this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setValue(this.jdField_c_of_type_Int);
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setValue(this.jdField_a_of_type_Int);
+        this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setValue(this.jdField_b_of_type_Int);
+        this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setValue(this.jdField_c_of_type_Int);
+      }
+    }
   }
   
   public void setViewVisibility(int paramInt1, int paramInt2)
   {
-    if (paramInt1 == 0) {
-      findViewById(2131365585).setVisibility(paramInt2);
-    }
-    do
+    if (paramInt1 == 0)
     {
+      findViewById(2131365428).setVisibility(paramInt2);
       return;
-      if (paramInt1 == 1)
-      {
-        findViewById(2131368572).setVisibility(paramInt2);
-        return;
-      }
-      if (paramInt1 == 2)
-      {
-        findViewById(2131371784).setVisibility(paramInt2);
-        return;
-      }
-    } while (paramInt1 != 3);
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(paramInt2);
+    }
+    if (paramInt1 == 1)
+    {
+      findViewById(2131368315).setVisibility(paramInt2);
+      return;
+    }
+    if (paramInt1 == 2)
+    {
+      findViewById(2131371410).setVisibility(paramInt2);
+      return;
+    }
+    if (paramInt1 == 3) {
+      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(paramInt2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.TimeWheelPanel
  * JD-Core Version:    0.7.0.1
  */

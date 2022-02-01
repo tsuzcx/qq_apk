@@ -20,7 +20,6 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.MqqWeakReferenceHandler;
 import cooperation.plugin.IPluginManager;
-import cooperation.plugin.PluginInfo;
 
 public class DatalineBridgeActivity
   extends IphoneTitleBarActivity
@@ -35,23 +34,25 @@ public class DatalineBridgeActivity
   
   private void a(int paramInt)
   {
-    QLog.e("DatalineBridgeActivity", 1, "[DatalineBridgeActivity] handleFailed errCode:" + paramInt);
-    int i = getResources().getDimensionPixelSize(2131299166);
-    String str = HardCodeUtil.a(2131702782);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[DatalineBridgeActivity] handleFailed errCode:");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.e("DatalineBridgeActivity", 1, ((StringBuilder)localObject).toString());
+    int i = getResources().getDimensionPixelSize(2131299168);
+    localObject = HardCodeUtil.a(2131702914);
     if (-4 == paramInt) {
-      str = HardCodeUtil.a(2131702800);
-    }
-    for (;;)
+      localObject = HardCodeUtil.a(2131702932);
+    } else if ((-5 != paramInt) && (-1 != paramInt) && (-3 != paramInt) && (-2 != paramInt))
     {
-      QQToast.a(this.app.getApp(), 1, str, 0).b(i);
-      finish();
-      return;
-      if ((-5 == paramInt) || (-1 == paramInt) || (-3 == paramInt) || (-2 == paramInt)) {
-        str = HardCodeUtil.a(2131702795);
-      } else if (-6 == paramInt) {
-        str = HardCodeUtil.a(2131702798);
+      if (-6 == paramInt) {
+        localObject = HardCodeUtil.a(2131702930);
       }
     }
+    else {
+      localObject = HardCodeUtil.a(2131702927);
+    }
+    QQToast.a(this.app.getApp(), 1, (CharSequence)localObject, 0).b(i);
+    finish();
   }
   
   private void a(String paramString, PluginBaseInfo paramPluginBaseInfo)
@@ -81,10 +82,16 @@ public class DatalineBridgeActivity
       a(-1);
       return;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("DatalineBridgeActivity", 4, "[DatalineBridgeActivity] queryPluginInfo mState : " + paramPluginBaseInfo.mState + " progress:" + paramPluginBaseInfo.mDownloadProgress);
+    if (QLog.isDevelopLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("[DatalineBridgeActivity] queryPluginInfo mState : ");
+      paramString.append(paramPluginBaseInfo.mState);
+      paramString.append(" progress:");
+      paramString.append(paramPluginBaseInfo.mDownloadProgress);
+      QLog.d("DatalineBridgeActivity", 4, paramString.toString());
     }
-    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!NetworkUtil.g(getApplicationContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
+    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!NetworkUtil.isNetworkAvailable(getApplicationContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
     {
       a(-4);
       return;
@@ -94,8 +101,16 @@ public class DatalineBridgeActivity
     default: 
       a(-3);
       return;
-    case -1: 
-      a(-6);
+    case 4: 
+      b();
+      return;
+    case 3: 
+      if (i != 0)
+      {
+        a(-5);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
       return;
     case 0: 
       this.jdField_a_of_type_CooperationPluginIPluginManager.d("qqdataline.apk");
@@ -108,16 +123,8 @@ public class DatalineBridgeActivity
       }
       this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
       return;
-    case 3: 
-      if (i != 0)
-      {
-        a(-5);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
-      return;
-    case 4: 
-      b();
+    case -1: 
+      a(-6);
       return;
     }
     a(-2);
@@ -131,12 +138,13 @@ public class DatalineBridgeActivity
         return false;
       }
       this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
-      if (this.jdField_a_of_type_CooperationPluginIPluginManager == null)
+      Object localObject1 = this.jdField_a_of_type_CooperationPluginIPluginManager;
+      if (localObject1 == null)
       {
         a(-6);
         return false;
       }
-      Object localObject1 = this.jdField_a_of_type_CooperationPluginIPluginManager.a("qqdataline.apk");
+      localObject1 = ((IPluginManager)localObject1).a("qqdataline.apk");
       if ((localObject1 != null) && (((PluginBaseInfo)localObject1).mState != 4)) {
         return false;
       }
@@ -156,18 +164,14 @@ public class DatalineBridgeActivity
       localObject1 = this.app.getAccount();
       try
       {
-        localObject2 = ContactUtils.a(this.app, this.app.getAccount());
-        localObject1 = localObject2;
+        String str = ContactUtils.a(this.app, this.app.getAccount());
+        localObject1 = str;
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          Object localObject2;
-          localException.printStackTrace();
-        }
+        localException.printStackTrace();
       }
-      localObject2 = localObject1;
+      Object localObject2 = localObject1;
       if (localObject1 == null) {
         localObject2 = this.app.getAccount();
       }
@@ -199,21 +203,14 @@ public class DatalineBridgeActivity
     Object localObject1 = this.app.getAccount();
     try
     {
-      localObject2 = ContactUtils.a(this.app, this.app.getAccount());
-      localObject1 = localObject2;
+      String str = ContactUtils.a(this.app, this.app.getAccount());
+      localObject1 = str;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject2;
-        localException.printStackTrace();
-      }
-      localIntent.putExtra("userQqResources", 2);
-      DatalinePluginProxyActivity.a(this, localException, localIntent, this.jdField_a_of_type_JavaLangString, -1, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
-      overridePendingTransition(0, 0);
+      localException.printStackTrace();
     }
-    localObject2 = localObject1;
+    Object localObject2 = localObject1;
     if (localObject1 == null) {
       localObject2 = this.app.getAccount();
     }
@@ -224,42 +221,47 @@ public class DatalineBridgeActivity
       overridePendingTransition(0, 0);
       return;
     }
+    localIntent.putExtra("userQqResources", 2);
+    DatalinePluginProxyActivity.a(this, (String)localObject2, localIntent, this.jdField_a_of_type_JavaLangString, -1, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    overridePendingTransition(0, 0);
   }
   
   public void a()
   {
     this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
+    int i = 1;
     QLog.i("DatalineBridgeActivity", 1, "[DatalineBridgeActivity] onPluginManagerLoaded SUPPORT_NETWORKING:true");
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager == null) {
-      a(-6);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_CooperationPluginIPluginManager == null)
     {
+      a(-6);
       return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      PluginInfo localPluginInfo = this.jdField_a_of_type_CooperationPluginIPluginManager.a("qqdataline.apk");
-      int j = 0;
-      int i = j;
-      if (localPluginInfo != null)
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    Object localObject = this.jdField_a_of_type_CooperationPluginIPluginManager.a("qqdataline.apk");
+    if (localObject != null)
+    {
+      if (((PluginBaseInfo)localObject).mState == 4)
       {
-        if (localPluginInfo.mState != 4) {
-          break label124;
-        }
         b();
       }
-      for (i = 1; i == 0; i = j)
+      else
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131702794));
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-        }
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
-        return;
-        label124:
         QLog.i("DatalineBridgeActivity", 1, "[DatalineBridgeActivity] onPluginManagerLoaded start down or install...");
         this.jdField_a_of_type_CooperationPluginIPluginManager.d("qqdataline.apk");
       }
+    }
+    else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+      if (localObject != null)
+      {
+        ((QQProgressDialog)localObject).a(HardCodeUtil.a(2131702926));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      }
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
     }
   }
   
@@ -272,7 +274,7 @@ public class DatalineBridgeActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getBundleExtra("_param_");
@@ -281,8 +283,8 @@ public class DatalineBridgeActivity
     if (a()) {
       return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131299166));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131702796));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131299168));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131702928));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new DatalineBridgeActivity.1(this));
     this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new DatalineBridgeActivity.2(this), 300L);
     return true;
@@ -290,12 +292,8 @@ public class DatalineBridgeActivity
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 1001)
     {
-    }
-    for (;;)
-    {
-      return true;
       if (QLog.isDevelopLevel()) {
         QLog.d("DatalineBridgeActivity", 4, "[DatalineBridgeActivity]  ACTION_QUERY!");
       }
@@ -303,6 +301,7 @@ public class DatalineBridgeActivity
         a("qqdataline.apk", this.jdField_a_of_type_CooperationPluginIPluginManager.a("qqdataline.apk"));
       }
     }
+    return true;
   }
   
   @Override
@@ -315,27 +314,30 @@ public class DatalineBridgeActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      ((QQProgressDialog)localObject).dismiss();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
     }
-    if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null) {
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1001);
+    localObject = this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
+    if (localObject != null) {
+      ((MqqWeakReferenceHandler)localObject).removeMessages(1001);
     }
-    if ((this.jdField_a_of_type_CooperationPluginIPluginManager == null) || (QLog.isDevelopLevel())) {
+    localObject = this.jdField_a_of_type_CooperationPluginIPluginManager;
+    if (QLog.isDevelopLevel()) {
       QLog.d("QPlugin", 4, "DatalineBridgeActivity onDestroy");
     }
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqdataline.DatalineBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

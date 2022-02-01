@@ -49,22 +49,24 @@ public class LoadMoreXListView
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    AbsListView.OnScrollListener localOnScrollListener = this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
-    if (paramInt1 == this.jdField_a_of_type_Int) {}
-    do
-    {
+    if (paramInt1 == this.jdField_a_of_type_Int) {
       return;
-      this.jdField_a_of_type_Int = paramInt1;
-    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.a());
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.b(true);
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    if (paramInt3 - (paramInt1 + paramInt2) <= this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.a()) {
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.b(true);
+    }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
+    AbsListView.OnScrollListener localOnScrollListener = this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -75,7 +77,7 @@ public class LoadMoreXListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.LoadMoreXListView
  * JD-Core Version:    0.7.0.1
  */

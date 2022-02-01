@@ -16,22 +16,21 @@ class QzoneDynamicAlbumPlugin$5
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
+    if (paramMessage.what != 2) {
       return;
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String[])));
-    ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = (String[])paramMessage.obj;
-    localArrayList.add(QzoneDynamicAlbumPlugin.access$300(this.this$0, arrayOfString));
-    this.this$0.sendPhotoData(localArrayList, paramMessage.arg1);
+    }
+    if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String[])))
+    {
+      ArrayList localArrayList = new ArrayList();
+      String[] arrayOfString = (String[])paramMessage.obj;
+      localArrayList.add(QzoneDynamicAlbumPlugin.access$300(this.this$0, arrayOfString));
+      this.this$0.sendPhotoData(localArrayList, paramMessage.arg1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin.5
  * JD-Core Version:    0.7.0.1
  */

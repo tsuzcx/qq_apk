@@ -11,12 +11,12 @@ class CameraCaptureView$12
   
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131701375), 1).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131701515), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.12
  * JD-Core Version:    0.7.0.1
  */

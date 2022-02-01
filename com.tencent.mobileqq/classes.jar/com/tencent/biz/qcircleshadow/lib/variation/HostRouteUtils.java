@@ -8,9 +8,24 @@ import com.tencent.mobileqq.troop.api.ITroopUtilApi;
 
 public class HostRouteUtils
 {
+  public static String decodeRemoteCode(long paramLong)
+  {
+    return ((IQQBaseService)QRoute.api(IQQBaseService.class)).decodeRemoteCode(paramLong);
+  }
+  
+  public static int encodeLocCode(String paramString)
+  {
+    return ((IQQBaseService)QRoute.api(IQQBaseService.class)).encodeLocCode(paramString);
+  }
+  
   public static void openBottomTabSwitchActivity()
   {
     ((IQQBaseService)QRoute.api(IQQBaseService.class)).openBottomTabSwitchActivity();
+  }
+  
+  public static void openLocationSelectActivity(Context paramContext, Bundle paramBundle)
+  {
+    ((IQQBaseService)QRoute.api(IQQBaseService.class)).openLocationSelectActivity(paramContext, paramBundle);
   }
   
   public static void openTroopInfoActivity(Context paramContext, Bundle paramBundle)
@@ -20,7 +35,7 @@ public class HostRouteUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.variation.HostRouteUtils
  * JD-Core Version:    0.7.0.1
  */

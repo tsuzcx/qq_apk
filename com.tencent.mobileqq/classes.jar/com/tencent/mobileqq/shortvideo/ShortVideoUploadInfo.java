@@ -54,19 +54,45 @@ public class ShortVideoUploadInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nShortVideoUploadInfo");
-    localStringBuilder.append("\n |-").append("localPath:").append(this.jdField_h_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("thumbPath:").append(this.jdField_j_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("thumbWidth:").append(this.jdField_c_of_type_Int);
-    localStringBuilder.append("\n |-").append("thumbHeight:").append(this.d);
-    localStringBuilder.append("\n |-").append("sendSizeSpec:").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append("\n |-").append("fileTime:").append(this.jdField_f_of_type_Int);
-    localStringBuilder.append("\n |-").append("fileSource:").append(this.l);
-    localStringBuilder.append("\n |-").append("supportProgressive:").append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append("\n |-").append("fileWidth:").append(this.jdField_h_of_type_Int);
-    localStringBuilder.append("\n |-").append("fileHeight:").append(this.jdField_i_of_type_Int);
-    localStringBuilder.append("\n |-").append("templateId:").append(this.s);
-    localStringBuilder.append("\n |-").append("templateName:").append(this.t);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("localPath:");
+    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("md5:");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbPath:");
+    localStringBuilder.append(this.jdField_j_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbWidth:");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbHeight:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("sendSizeSpec:");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileTime:");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileSource:");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("supportProgressive:");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileWidth:");
+    localStringBuilder.append(this.jdField_h_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileHeight:");
+    localStringBuilder.append(this.jdField_i_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("templateId:");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("templateName:");
+    localStringBuilder.append(this.t);
     return localStringBuilder.toString();
   }
   
@@ -85,7 +111,7 @@ public class ShortVideoUploadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo
  * JD-Core Version:    0.7.0.1
  */

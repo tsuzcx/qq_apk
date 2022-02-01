@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 import com.tencent.mobileqq.widget.ISlidePanelListener;
 
 class PoiSlideBottomPanel$3
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   PoiSlideBottomPanel$3(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
@@ -34,7 +34,7 @@ class PoiSlideBottomPanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.PoiSlideBottomPanel.3
  * JD-Core Version:    0.7.0.1
  */

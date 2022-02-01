@@ -15,16 +15,20 @@ public final class a
       if (this.a.size() == 0) {
         return "";
       }
-      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject1 = new StringBuilder();
       Iterator localIterator = this.a.iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
-        localStringBuilder.append(((b)localIterator.next()).a());
-        localStringBuilder.append(";");
+        ((StringBuilder)localObject1).append(((b)localIterator.next()).a());
+        ((StringBuilder)localObject1).append(";");
       }
+      localObject1 = ((StringBuilder)localObject1).toString();
+      return localObject1;
     }
-    String str = localObject.toString();
-    return str;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public final void a(b paramb)
@@ -40,7 +44,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.c.a
  * JD-Core Version:    0.7.0.1
  */

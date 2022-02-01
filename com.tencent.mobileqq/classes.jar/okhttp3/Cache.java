@@ -7,10 +7,14 @@ import java.io.IOException;
 import java.util.Iterator;
 import javax.annotation.Nullable;
 import okhttp3.internal.Util;
+import okhttp3.internal.cache.CacheRequest;
+import okhttp3.internal.cache.CacheStrategy;
 import okhttp3.internal.cache.DiskLruCache;
 import okhttp3.internal.cache.DiskLruCache.Editor;
 import okhttp3.internal.cache.DiskLruCache.Snapshot;
 import okhttp3.internal.cache.InternalCache;
+import okhttp3.internal.http.HttpHeaders;
+import okhttp3.internal.http.HttpMethod;
 import okhttp3.internal.io.FileSystem;
 import okio.BufferedSource;
 import okio.ByteString;
@@ -58,20 +62,24 @@ public final class Cache
   
   static int readInt(BufferedSource paramBufferedSource)
   {
-    long l;
     try
     {
-      l = paramBufferedSource.readDecimalLong();
+      long l = paramBufferedSource.readDecimalLong();
       paramBufferedSource = paramBufferedSource.readUtf8LineStrict();
-      if ((l < 0L) || (l > 2147483647L) || (!paramBufferedSource.isEmpty())) {
-        throw new IOException("expected an int but was \"" + l + paramBufferedSource + "\"");
+      if ((l >= 0L) && (l <= 2147483647L) && (paramBufferedSource.isEmpty())) {
+        return (int)l;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("expected an int but was \"");
+      localStringBuilder.append(l);
+      localStringBuilder.append(paramBufferedSource);
+      localStringBuilder.append("\"");
+      throw new IOException(localStringBuilder.toString());
     }
     catch (NumberFormatException paramBufferedSource)
     {
       throw new IOException(paramBufferedSource.getMessage());
     }
-    return (int)l;
   }
   
   public void close()
@@ -109,24 +117,29 @@ public final class Cache
       if (localObject == null) {
         return null;
       }
-      try
+    }
+    catch (IOException paramRequest)
+    {
+      Cache.Entry localEntry;
+      label62:
+      return null;
+    }
+    try
+    {
+      localEntry = new Cache.Entry(((DiskLruCache.Snapshot)localObject).getSource(0));
+      localObject = localEntry.response((DiskLruCache.Snapshot)localObject);
+      if (!localEntry.matches(paramRequest, (Response)localObject))
       {
-        Cache.Entry localEntry = new Cache.Entry(((DiskLruCache.Snapshot)localObject).getSource(0));
-        localObject = localEntry.response((DiskLruCache.Snapshot)localObject);
-        if (!localEntry.matches(paramRequest, (Response)localObject))
-        {
-          Util.closeQuietly(((Response)localObject).body());
-          return null;
-        }
-      }
-      catch (IOException paramRequest)
-      {
-        Util.closeQuietly((Closeable)localObject);
+        Util.closeQuietly(((Response)localObject).body());
         return null;
       }
       return localObject;
     }
-    catch (IOException paramRequest) {}
+    catch (IOException paramRequest)
+    {
+      break label62;
+    }
+    Util.closeQuietly((Closeable)localObject);
     return null;
   }
   
@@ -173,83 +186,53 @@ public final class Cache
     }
   }
   
-  /* Error */
   @Nullable
-  okhttp3.internal.cache.CacheRequest put(Response paramResponse)
+  CacheRequest put(Response paramResponse)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokevirtual 213	okhttp3/Response:request	()Lokhttp3/Request;
-    //   4: invokevirtual 216	okhttp3/Request:method	()Ljava/lang/String;
-    //   7: astore_2
-    //   8: aload_1
-    //   9: invokevirtual 213	okhttp3/Response:request	()Lokhttp3/Request;
-    //   12: invokevirtual 216	okhttp3/Request:method	()Ljava/lang/String;
-    //   15: invokestatic 222	okhttp3/internal/http/HttpMethod:invalidatesCache	(Ljava/lang/String;)Z
-    //   18: ifeq +13 -> 31
-    //   21: aload_0
-    //   22: aload_1
-    //   23: invokevirtual 213	okhttp3/Response:request	()Lokhttp3/Request;
-    //   26: invokevirtual 226	okhttp3/Cache:remove	(Lokhttp3/Request;)V
-    //   29: aconst_null
-    //   30: areturn
-    //   31: aload_2
-    //   32: ldc 228
-    //   34: invokevirtual 232	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   37: ifeq -8 -> 29
-    //   40: aload_1
-    //   41: invokestatic 238	okhttp3/internal/http/HttpHeaders:hasVaryAll	(Lokhttp3/Response;)Z
-    //   44: ifne -15 -> 29
-    //   47: new 162	okhttp3/Cache$Entry
-    //   50: dup
-    //   51: aload_1
-    //   52: invokespecial 241	okhttp3/Cache$Entry:<init>	(Lokhttp3/Response;)V
-    //   55: astore_2
-    //   56: aload_0
-    //   57: getfield 56	okhttp3/Cache:cache	Lokhttp3/internal/cache/DiskLruCache;
-    //   60: aload_1
-    //   61: invokevirtual 213	okhttp3/Response:request	()Lokhttp3/Request;
-    //   64: invokevirtual 155	okhttp3/Request:url	()Lokhttp3/HttpUrl;
-    //   67: invokestatic 157	okhttp3/Cache:key	(Lokhttp3/HttpUrl;)Ljava/lang/String;
-    //   70: invokevirtual 245	okhttp3/internal/cache/DiskLruCache:edit	(Ljava/lang/String;)Lokhttp3/internal/cache/DiskLruCache$Editor;
-    //   73: astore_1
-    //   74: aload_1
-    //   75: ifnull -46 -> 29
-    //   78: aload_2
-    //   79: aload_1
-    //   80: invokevirtual 248	okhttp3/Cache$Entry:writeTo	(Lokhttp3/internal/cache/DiskLruCache$Editor;)V
-    //   83: new 250	okhttp3/Cache$CacheRequestImpl
-    //   86: dup
-    //   87: aload_0
-    //   88: aload_1
-    //   89: invokespecial 253	okhttp3/Cache$CacheRequestImpl:<init>	(Lokhttp3/Cache;Lokhttp3/internal/cache/DiskLruCache$Editor;)V
-    //   92: astore_2
-    //   93: aload_2
-    //   94: areturn
-    //   95: astore_1
-    //   96: aconst_null
-    //   97: astore_1
-    //   98: aload_0
-    //   99: aload_1
-    //   100: invokespecial 255	okhttp3/Cache:abortQuietly	(Lokhttp3/internal/cache/DiskLruCache$Editor;)V
-    //   103: aconst_null
-    //   104: areturn
-    //   105: astore_2
-    //   106: goto -8 -> 98
-    //   109: astore_1
-    //   110: aconst_null
-    //   111: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	112	0	this	Cache
-    //   0	112	1	paramResponse	Response
-    //   7	87	2	localObject	Object
-    //   105	1	2	localIOException	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   56	74	95	java/io/IOException
-    //   78	93	105	java/io/IOException
-    //   21	29	109	java/io/IOException
+    Object localObject = paramResponse.request().method();
+    if (HttpMethod.invalidatesCache(paramResponse.request().method())) {}
+    try
+    {
+      remove(paramResponse.request());
+      return null;
+    }
+    catch (IOException paramResponse)
+    {
+      return null;
+    }
+    if (!((String)localObject).equals("GET")) {
+      return null;
+    }
+    if (HttpHeaders.hasVaryAll(paramResponse)) {
+      return null;
+    }
+    localObject = new Cache.Entry(paramResponse);
+    try
+    {
+      paramResponse = this.cache.edit(key(paramResponse.request().url()));
+      if (paramResponse == null) {
+        return null;
+      }
+    }
+    catch (IOException paramResponse)
+    {
+      label101:
+      break label101;
+    }
+    try
+    {
+      ((Cache.Entry)localObject).writeTo(paramResponse);
+      localObject = new Cache.CacheRequestImpl(this, paramResponse);
+      return localObject;
+    }
+    catch (IOException localIOException)
+    {
+      break label103;
+    }
+    paramResponse = null;
+    label103:
+    abortQuietly(paramResponse);
+    return null;
   }
   
   void remove(Request paramRequest)
@@ -290,76 +273,48 @@ public final class Cache
     }
   }
   
-  /* Error */
-  void trackResponse(okhttp3.internal.cache.CacheStrategy paramCacheStrategy)
+  void trackResponse(CacheStrategy paramCacheStrategy)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: aload_0
-    //   4: getfield 259	okhttp3/Cache:requestCount	I
-    //   7: iconst_1
-    //   8: iadd
-    //   9: putfield 259	okhttp3/Cache:requestCount	I
-    //   12: aload_1
-    //   13: getfield 271	okhttp3/internal/cache/CacheStrategy:networkRequest	Lokhttp3/Request;
-    //   16: ifnull +16 -> 32
-    //   19: aload_0
-    //   20: aload_0
-    //   21: getfield 207	okhttp3/Cache:networkCount	I
-    //   24: iconst_1
-    //   25: iadd
-    //   26: putfield 207	okhttp3/Cache:networkCount	I
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: return
-    //   32: aload_1
-    //   33: getfield 275	okhttp3/internal/cache/CacheStrategy:cacheResponse	Lokhttp3/Response;
-    //   36: ifnull -7 -> 29
-    //   39: aload_0
-    //   40: aload_0
-    //   41: getfield 195	okhttp3/Cache:hitCount	I
-    //   44: iconst_1
-    //   45: iadd
-    //   46: putfield 195	okhttp3/Cache:hitCount	I
-    //   49: goto -20 -> 29
-    //   52: astore_1
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: aload_1
-    //   56: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	57	0	this	Cache
-    //   0	57	1	paramCacheStrategy	okhttp3.internal.cache.CacheStrategy
-    // Exception table:
-    //   from	to	target	type
-    //   2	29	52	finally
-    //   32	49	52	finally
+    try
+    {
+      this.requestCount += 1;
+      if (paramCacheStrategy.networkRequest != null) {
+        this.networkCount += 1;
+      } else if (paramCacheStrategy.cacheResponse != null) {
+        this.hitCount += 1;
+      }
+      return;
+    }
+    finally {}
   }
   
   void update(Response paramResponse1, Response paramResponse2)
   {
-    Cache.Entry localEntry = new Cache.Entry(paramResponse2);
-    paramResponse2 = ((Cache.CacheResponseBody)paramResponse1.body()).snapshot;
-    paramResponse1 = null;
+    paramResponse2 = new Cache.Entry(paramResponse2);
+    paramResponse1 = ((Cache.CacheResponseBody)paramResponse1.body()).snapshot;
     try
     {
-      paramResponse2 = paramResponse2.edit();
-      if (paramResponse2 != null)
-      {
-        paramResponse1 = paramResponse2;
-        localEntry.writeTo(paramResponse2);
-        paramResponse1 = paramResponse2;
-        paramResponse2.commit();
-      }
+      paramResponse1 = paramResponse1.edit();
+      if (paramResponse1 == null) {}
+    }
+    catch (IOException paramResponse1)
+    {
+      label39:
+      label41:
+      break label39;
+    }
+    try
+    {
+      paramResponse2.writeTo(paramResponse1);
+      paramResponse1.commit();
       return;
     }
     catch (IOException paramResponse2)
     {
-      abortQuietly(paramResponse1);
+      break label41;
     }
+    paramResponse1 = null;
+    abortQuietly(paramResponse1);
   }
   
   public Iterator<String> urls()
@@ -397,7 +352,7 @@ public final class Cache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.Cache
  * JD-Core Version:    0.7.0.1
  */

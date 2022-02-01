@@ -14,8 +14,8 @@ class StoryPickerListAdapter$DayItemViewHolder
   
   public StoryPickerListAdapter$DayItemViewHolder(StoryPickerListAdapter paramStoryPickerListAdapter, View paramView, StoryPickerHorizontalListView.OnHorizontalScrollListener paramOnHorizontalScrollListener)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365584));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView = ((StoryPickerHorizontalListView)paramView.findViewById(2131368522));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365427));
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView = ((StoryPickerHorizontalListView)paramView.findViewById(2131368267));
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setSelection(0);
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setOnHorizontalScrollListener(paramOnHorizontalScrollListener);
     paramView = (StoryPickerHorizontalListAdapter)this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.a();
@@ -33,7 +33,7 @@ class StoryPickerListAdapter$DayItemViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.widget.StoryPickerListAdapter.DayItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

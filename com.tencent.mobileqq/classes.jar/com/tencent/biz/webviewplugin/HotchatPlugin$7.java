@@ -9,17 +9,18 @@ class HotchatPlugin$7
 {
   HotchatPlugin$7(HotchatPlugin paramHotchatPlugin, String paramString) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void onClickAction(PopupMenuDialog.MenuItem paramMenuItem)
   {
     JSONObject localJSONObject = new JSONObject();
-    switch (paramMenuItem.a)
+    int i = paramMenuItem.id;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
+      if (i != 1) {
+        return;
+      }
       try
       {
-        localJSONObject.put("index", 0);
+        localJSONObject.put("index", 1);
         this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
         return;
       }
@@ -31,7 +32,7 @@ class HotchatPlugin$7
     }
     try
     {
-      localJSONObject.put("index", 1);
+      localJSONObject.put("index", 0);
       this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
       return;
     }
@@ -43,7 +44,7 @@ class HotchatPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.HotchatPlugin.7
  * JD-Core Version:    0.7.0.1
  */

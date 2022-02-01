@@ -18,23 +18,16 @@ public class HuaweiRomUtils
       Intent localIntent1 = new Intent();
       localIntent1.setFlags(268435456);
       localIntent1.setComponent(new ComponentName("com.huawei.systemmanager", "com.huawei.systemmanager.addviewmonitor.AddViewMonitorActivity"));
-      if (PhoneRomUtils.getEmuiVersion() == 3.1D) {}
-      for (;;)
-      {
-        paramContext.startActivity(localIntent1);
-        return;
+      if (PhoneRomUtils.getEmuiVersion() != 3.1D) {
         localIntent1.setComponent(new ComponentName("com.huawei.systemmanager", "com.huawei.notificationmanager.ui.NotificationManagmentActivity"));
       }
-      Intent localIntent2;
+      paramContext.startActivity(localIntent1);
       return;
     }
-    catch (SecurityException localSecurityException)
+    catch (Exception paramContext)
     {
-      localIntent2 = new Intent();
-      localIntent2.setFlags(268435456);
-      localIntent2.setComponent(new ComponentName("com.huawei.systemmanager", "com.huawei.permissionmanager.ui.MainActivity"));
-      paramContext.startActivity(localIntent2);
-      localSecurityException.printStackTrace();
+      Logger.e("HuaweiRomUtils", "进入设置页面失败，请手动设置");
+      paramContext.printStackTrace();
       return;
     }
     catch (ActivityNotFoundException localActivityNotFoundException)
@@ -46,16 +39,19 @@ public class HuaweiRomUtils
       localActivityNotFoundException.printStackTrace();
       return;
     }
-    catch (Exception paramContext)
+    catch (SecurityException localSecurityException)
     {
-      Logger.e("HuaweiRomUtils", "进入设置页面失败，请手动设置");
-      paramContext.printStackTrace();
+      Intent localIntent2 = new Intent();
+      localIntent2.setFlags(268435456);
+      localIntent2.setComponent(new ComponentName("com.huawei.systemmanager", "com.huawei.permissionmanager.ui.MainActivity"));
+      paramContext.startActivity(localIntent2);
+      localSecurityException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.permission.romutils.HuaweiRomUtils
  * JD-Core Version:    0.7.0.1
  */

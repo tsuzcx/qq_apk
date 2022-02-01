@@ -25,17 +25,34 @@ public class Mustache$VariableSegment
     paramTemplate = paramTemplate.getValueOrDefault(paramContext, this._name, this._line);
     if (paramTemplate == null)
     {
-      if (Template.isThisName(this._name)) {}
-      for (paramTemplate = "Resolved '.' to null (which is disallowed), on line " + this._line;; paramTemplate = "No key, method or field with name '" + this._name + "' on line " + this._line) {
-        throw new MustacheException.Context(paramTemplate, this._name, this._line);
+      if (Template.isThisName(this._name))
+      {
+        paramTemplate = new StringBuilder();
+        paramContext = "Resolved '.' to null (which is disallowed), on line ";
       }
+      else
+      {
+        paramTemplate = new StringBuilder();
+        paramTemplate.append("No key, method or field with name '");
+        paramTemplate.append(this._name);
+        paramContext = "' on line ";
+      }
+      paramTemplate.append(paramContext);
+      paramTemplate.append(this._line);
+      throw new MustacheException.Context(paramTemplate.toString(), this._name, this._line);
     }
     write(paramWriter, this._escaper.escape(this._formatter.format(paramTemplate)));
   }
   
   public String toString()
   {
-    return "Var(" + this._name + ":" + this._line + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Var(");
+    localStringBuilder.append(this._name);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this._line);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public void visit(Mustache.Visitor paramVisitor)

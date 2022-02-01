@@ -55,36 +55,44 @@ public final class pendantStageConfig
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.text_title != null) {
-      paramJceOutputStream.write(this.text_title, 0);
+    Object localObject = this.text_title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.text_description != null) {
-      paramJceOutputStream.write(this.text_description, 1);
+    localObject = this.text_description;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.text_button != null) {
-      paramJceOutputStream.write(this.text_button, 2);
+    localObject = this.text_button;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.icon_url != null) {
-      paramJceOutputStream.write(this.icon_url, 3);
+    localObject = this.icon_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 4);
+    localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.duration, 5);
-    if (this.h5url != null) {
-      paramJceOutputStream.write(this.h5url, 6);
+    localObject = this.h5url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.scheme_url != null) {
-      paramJceOutputStream.write(this.scheme_url, 7);
+    localObject = this.scheme_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.exp != null) {
-      paramJceOutputStream.write(this.exp, 8);
+    localObject = this.exp;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.pendantStageConfig
  * JD-Core Version:    0.7.0.1
  */

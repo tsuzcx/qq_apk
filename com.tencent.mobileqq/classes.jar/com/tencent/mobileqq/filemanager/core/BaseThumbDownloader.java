@@ -3,6 +3,7 @@ package com.tencent.mobileqq.filemanager.core;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.api.IFMConfig;
+import com.tencent.mobileqq.filemanager.api.IFMSettings;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.settings.FMSettings;
@@ -98,53 +99,74 @@ public class BaseThumbDownloader
     {
     default: 
       return "64*64";
-    case 0: 
-      return "16*16";
-    case 1: 
-      return "32*32";
-    case 2: 
-      return "64*64";
-    case 3: 
-      return "128*128";
-    case 4: 
-      return "320*320";
-    case 5: 
-      return "384*384";
-    case 6: 
-      return "640*640";
+    case 8: 
+      return "1024*1024";
     case 7: 
       return "750*750";
+    case 6: 
+      return "640*640";
+    case 5: 
+      return "384*384";
+    case 4: 
+      return "320*320";
+    case 3: 
+      return "128*128";
+    case 2: 
+      return "64*64";
+    case 1: 
+      return "32*32";
     }
-    return "1024*1024";
+    return "16*16";
   }
   
   protected String a(int paramInt, String paramString)
   {
     String str;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 5: 
-    case 7: 
-    default: 
-      str = "x-video-";
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 6)
+              {
+                if (paramInt != 8) {
+                  str = "x-video-";
+                } else {
+                  str = "screen-video-";
+                }
+              }
+              else {
+                str = "xlarge-video-";
+              }
+            }
+            else {
+              str = "large-video-";
+            }
+          }
+          else {
+            str = "middle-video-";
+          }
+        }
+        else {
+          str = "small-video-";
+        }
+      }
+      else {
+        str = "minni-video-";
+      }
     }
-    for (;;)
-    {
-      return str + paramString;
+    else {
       str = "micro-video-";
-      continue;
-      str = "minni-video-";
-      continue;
-      str = "small-video-";
-      continue;
-      str = "middle-video-";
-      continue;
-      str = "large-video-";
-      continue;
-      str = "xlarge-video-";
-      continue;
-      str = "screen-video-";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public List<String> a(long paramLong, String paramString, int paramInt, boolean paramBoolean, List<String> paramList)
@@ -154,7 +176,7 @@ public class BaseThumbDownloader
   
   protected void a()
   {
-    File localFile = new File(FMSettings.a().d());
+    File localFile = new File(FMSettings.a().getDefaultThumbPath());
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
@@ -164,18 +186,31 @@ public class BaseThumbDownloader
   {
     synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
     {
-      QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] removeSession");
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[downloadThumb]  ID[");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append("] removeSession");
+      QLog.i("BaseThumbDownloader<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
       if (QLog.isDevelopLevel())
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-        if (localIterator.hasNext())
+        localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          long l = ((Long)localIterator.next()).longValue();
-          QLog.i("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] call removeSession ID[" + l + "] in mMapDowloadSession");
+          long l = ((Long)((Iterator)localObject1).next()).longValue();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[downloadThumb] call removeSession ID[");
+          localStringBuilder.append(l);
+          localStringBuilder.append("] in mMapDowloadSession");
+          QLog.i("BaseThumbDownloader<FileAssistant>", 1, localStringBuilder.toString());
         }
       }
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramLong));
+      return;
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramLong));
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public void a(long paramLong, int paramInt, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
@@ -186,19 +221,54 @@ public class BaseThumbDownloader
   
   public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, ThumbHttpDownloader.DownloadTask paramDownloadTask)
   {
-    QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onDownloadCompleted suc:" + paramBoolean + " retCode[" + paramInt + "] thumbPath:" + paramString);
+    paramDownloadTask = new StringBuilder();
+    paramDownloadTask.append("[downloadThumb]  ID[");
+    paramDownloadTask.append(paramLong);
+    paramDownloadTask.append("] onDownloadCompleted suc:");
+    paramDownloadTask.append(paramBoolean);
+    paramDownloadTask.append(" retCode[");
+    paramDownloadTask.append(paramInt);
+    paramDownloadTask.append("] thumbPath:");
+    paramDownloadTask.append(paramString);
+    QLog.i("BaseThumbDownloader<FileAssistant>", 2, paramDownloadTask.toString());
     a(paramLong);
   }
   
   protected final void a(long paramLong, boolean paramBoolean1, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, boolean paramBoolean2, String paramString5, short paramShort, String paramString6)
   {
-    QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrlResult suc:" + paramBoolean1 + " strDomain:" + paramString1 + " port:" + paramInt + " urlParam:" + paramString2 + " cookie:" + paramString4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[downloadThumb]  ID[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("] onGetDownloadUrlResult suc:");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(" strDomain:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" port:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" urlParam:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" cookie:");
+    localStringBuilder.append(paramString4);
+    QLog.i("BaseThumbDownloader<FileAssistant>", 2, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a().a(paramLong, paramBoolean1, paramString1, paramInt, paramString2, paramString3, paramString4, paramBoolean2, paramString5, paramShort, paramString6, null);
   }
   
   protected final void a(long paramLong, boolean paramBoolean1, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, boolean paramBoolean2, String paramString5, short paramShort, String paramString6, Bundle paramBundle)
   {
-    QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrlResult suc:" + paramBoolean1 + " strDomain:" + paramString1 + " port:" + paramInt + " urlParam:" + paramString2 + " cookie:" + paramString4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[downloadThumb]  ID[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("] onGetDownloadUrlResult suc:");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(" strDomain:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" port:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" urlParam:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" cookie:");
+    localStringBuilder.append(paramString4);
+    QLog.i("BaseThumbDownloader<FileAssistant>", 2, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a().a(paramLong, paramBoolean1, paramString1, paramInt, paramString2, paramString3, paramString4, paramBoolean2, paramString5, paramShort, paramString6, paramBundle);
   }
   
@@ -211,51 +281,82 @@ public class BaseThumbDownloader
     }
     synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
     {
-      QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramSession.jdField_a_of_type_Long + "] addSession");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[downloadThumb]  ID[");
+      localStringBuilder.append(paramSession.jdField_a_of_type_Long);
+      localStringBuilder.append("] addSession");
+      QLog.i("BaseThumbDownloader<FileAssistant>", 2, localStringBuilder.toString());
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramSession.jdField_a_of_type_Long), paramSession);
       if (QLog.isDevelopLevel())
       {
         paramSession = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-        if (paramSession.hasNext())
+        while (paramSession.hasNext())
         {
           long l = ((Long)paramSession.next()).longValue();
-          QLog.i("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] call addSession ID[" + l + "] in mMapDowloadSession");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[downloadThumb] call addSession ID[");
+          localStringBuilder.append(l);
+          localStringBuilder.append("] in mMapDowloadSession");
+          QLog.i("BaseThumbDownloader<FileAssistant>", 1, localStringBuilder.toString());
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramSession;
     }
   }
   
   protected void a(BaseThumbDownloader.Session paramSession, String paramString)
   {
-    if ((paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext != null) && ((paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext instanceof String)) && ("igonFlow".equalsIgnoreCase((String)paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext))) {
-      paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext = null;
-    }
-    for (int i = 1;; i = 0)
+    if ((paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext != null) && ((paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext instanceof String)) && ("igonFlow".equalsIgnoreCase((String)paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext)))
     {
-      if ((i == 0) && (!((IFMConfig)QRoute.api(IFMConfig.class)).preDownloadThumb()) && (FileManagerUtil.a()))
-      {
-        QLog.i("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] size(wh)[" + paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ":" + paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + "]autoDownload Thumb switch is off!");
-        return;
-      }
-      long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a().a(paramString, this);
-      if (l == -1L)
-      {
-        QLog.w("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] size(wh)[" + paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ":" + paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + "] thumb is Downloading,waiting please!");
-        return;
-      }
-      paramString = paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-      i = paramString.mThumbRetryCount;
-      paramString.mThumbRetryCount = (i + 1);
-      if (i > 10)
-      {
-        QLog.w("BaseThumbDownloader<FileAssistant>", 1, "thumb retry over 10 count, igon!");
-        return;
-      }
-      paramSession.jdField_a_of_type_Long = l;
-      a(paramSession);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a().a();
+      paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext = null;
+      i = 1;
+    }
+    else
+    {
+      i = 0;
+    }
+    if ((i == 0) && (!((IFMConfig)QRoute.api(IFMConfig.class)).preDownloadThumb()) && (FileManagerUtil.a()))
+    {
+      paramString = new StringBuilder();
+      paramString.append("[downloadThumb] Id[");
+      paramString.append(paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      paramString.append("] size(wh)[");
+      paramString.append(paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth);
+      paramString.append(":");
+      paramString.append(paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight);
+      paramString.append("]autoDownload Thumb switch is off!");
+      QLog.i("BaseThumbDownloader<FileAssistant>", 1, paramString.toString());
       return;
     }
+    long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a().a(paramString, this);
+    if (l == -1L)
+    {
+      paramString = new StringBuilder();
+      paramString.append("[downloadThumb] Id[");
+      paramString.append(paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      paramString.append("] size(wh)[");
+      paramString.append(paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth);
+      paramString.append(":");
+      paramString.append(paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight);
+      paramString.append("] thumb is Downloading,waiting please!");
+      QLog.w("BaseThumbDownloader<FileAssistant>", 1, paramString.toString());
+      return;
+    }
+    paramString = paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    int i = paramString.mThumbRetryCount;
+    paramString.mThumbRetryCount = (i + 1);
+    if (i > 10)
+    {
+      QLog.w("BaseThumbDownloader<FileAssistant>", 1, "thumb retry over 10 count, igon!");
+      return;
+    }
+    paramSession.jdField_a_of_type_Long = l;
+    a(paramSession);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a().a();
   }
   
   public boolean a(long paramLong, ThumbHttpDownloader.DownloadTask paramDownloadTask)
@@ -267,7 +368,7 @@ public class BaseThumbDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.BaseThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

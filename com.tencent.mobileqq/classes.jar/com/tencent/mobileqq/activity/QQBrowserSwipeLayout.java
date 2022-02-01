@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.pubaccount.util.ReadinjoyH5ElementManager;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.biz.pubaccount.util.SwipeBackLayout;
+import com.tencent.mobileqq.kandian.biz.detail.web.ReadinjoyH5ElementManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQBrowserSwipeLayout
@@ -43,38 +43,36 @@ public class QQBrowserSwipeLayout
     if ((localViewPager != null) && (localViewPager.getCurrentItem() != 0)) {
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    do
-    {
-      for (;;)
-      {
-        return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-        this.jdField_d_of_type_Boolean = false;
-        int i = (int)paramMotionEvent.getRawX();
-        this.jdField_d_of_type_Int = i;
-        this.jdField_b_of_type_Int = i;
-        this.jdField_c_of_type_Int = ((int)paramMotionEvent.getRawY());
-        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_ComTencentBizPubaccountUtilReadinjoyH5ElementManager.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
-          this.jdField_d_of_type_Boolean = true;
-        }
+      if ((i == 2) && (this.jdField_d_of_type_Boolean) && ((int)paramMotionEvent.getRawX() - this.jdField_b_of_type_Int > this.jdField_a_of_type_Int) && (Math.abs((int)paramMotionEvent.getRawY() - this.jdField_c_of_type_Int) < this.jdField_a_of_type_Int)) {
+        return true;
       }
-    } while ((!this.jdField_d_of_type_Boolean) || ((int)paramMotionEvent.getRawX() - this.jdField_b_of_type_Int <= this.jdField_a_of_type_Int) || (Math.abs((int)paramMotionEvent.getRawY() - this.jdField_c_of_type_Int) >= this.jdField_a_of_type_Int));
-    return true;
+    }
+    else
+    {
+      this.jdField_d_of_type_Boolean = false;
+      i = (int)paramMotionEvent.getRawX();
+      this.jdField_d_of_type_Int = i;
+      this.jdField_b_of_type_Int = i;
+      this.jdField_c_of_type_Int = ((int)paramMotionEvent.getRawY());
+      if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizDetailWebReadinjoyH5ElementManager.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
+        this.jdField_d_of_type_Boolean = true;
+      }
+    }
+    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    StringBuilder localStringBuilder;
+    if (i != 1)
     {
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-      if (this.jdField_d_of_type_Boolean)
+      if ((i == 2) && (this.jdField_d_of_type_Boolean))
       {
-        int i = (int)paramMotionEvent.getRawX();
+        i = (int)paramMotionEvent.getRawX();
         int j = this.jdField_d_of_type_Int - i;
         this.jdField_d_of_type_Int = i;
         if ((i - this.jdField_b_of_type_Int > this.jdField_a_of_type_Int) && (Math.abs((int)paramMotionEvent.getRawY() - this.jdField_c_of_type_Int) < this.jdField_a_of_type_Int)) {
@@ -82,36 +80,52 @@ public class QQBrowserSwipeLayout
         }
         if ((i - this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Boolean))
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("QQBrowserSwipeLayout", 2, "moveX:" + i + "downX:" + this.jdField_b_of_type_Int + "deltaX:" + j);
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("moveX:");
+            localStringBuilder.append(i);
+            localStringBuilder.append("downX:");
+            localStringBuilder.append(this.jdField_b_of_type_Int);
+            localStringBuilder.append("deltaX:");
+            localStringBuilder.append(j);
+            QLog.i("QQBrowserSwipeLayout", 2, localStringBuilder.toString());
           }
           this.jdField_a_of_type_AndroidViewView.scrollBy(j, 0);
-          continue;
-          if (this.jdField_d_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Boolean = false;
-            if (QLog.isColorLevel()) {
-              QLog.i("QQBrowserSwipeLayout", 2, "event.getRawX():" + paramMotionEvent.getRawX() + "screenWidth:" + this.f + "viewWidth:" + this.jdField_e_of_type_Int);
-            }
-            if (paramMotionEvent.getRawX() - this.jdField_b_of_type_Int >= this.f / 2)
-            {
-              this.jdField_b_of_type_Boolean = true;
-              a();
-            }
-            else
-            {
-              postDelayed(new QQBrowserSwipeLayout.1(this), 100L);
-              this.jdField_b_of_type_Boolean = false;
-            }
-          }
         }
       }
     }
+    else if (this.jdField_d_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("event.getRawX():");
+        localStringBuilder.append(paramMotionEvent.getRawX());
+        localStringBuilder.append("screenWidth:");
+        localStringBuilder.append(this.f);
+        localStringBuilder.append("viewWidth:");
+        localStringBuilder.append(this.jdField_e_of_type_Int);
+        QLog.i("QQBrowserSwipeLayout", 2, localStringBuilder.toString());
+      }
+      if (paramMotionEvent.getRawX() - this.jdField_b_of_type_Int >= this.f / 2)
+      {
+        this.jdField_b_of_type_Boolean = true;
+        a();
+      }
+      else
+      {
+        postDelayed(new QQBrowserSwipeLayout.1(this), 100L);
+        this.jdField_b_of_type_Boolean = false;
+      }
+    }
+    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserSwipeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,17 @@ import android.os.Bundle;
 
 public abstract interface DownloaderInterface
 {
-  public abstract int a(boolean paramBoolean, String paramString);
+  public abstract int cancelTask(boolean paramBoolean, String paramString);
   
-  public abstract DownloadTask a(String paramString);
+  public abstract DownloadTask getTask(String paramString);
   
-  public abstract void a(DownloadTask paramDownloadTask, DownloadListener paramDownloadListener, Bundle paramBundle);
+  public abstract void onDestroy();
   
-  public abstract void b();
+  public abstract void startDownload(DownloadTask paramDownloadTask, DownloadListener paramDownloadListener, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.DownloaderInterface
  * JD-Core Version:    0.7.0.1
  */

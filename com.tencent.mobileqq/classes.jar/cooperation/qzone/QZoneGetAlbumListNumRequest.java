@@ -26,16 +26,13 @@ public class QZoneGetAlbumListNumRequest
   public static get_albumlist_num_rsp onResponse(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
-    get_albumlist_num_rsp localget_albumlist_num_rsp;
-    do
-    {
-      return paramArrayOfByte;
-      localget_albumlist_num_rsp = (get_albumlist_num_rsp)decode(paramArrayOfByte, "getAlbumListNum");
-      paramArrayOfByte = localget_albumlist_num_rsp;
-    } while (localget_albumlist_num_rsp != null);
-    return null;
+    paramArrayOfByte = (get_albumlist_num_rsp)QzoneExternalRequest.decode(paramArrayOfByte, "getAlbumListNum");
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return paramArrayOfByte;
   }
   
   public String getCmdString()
@@ -55,7 +52,7 @@ public class QZoneGetAlbumListNumRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QZoneGetAlbumListNumRequest
  * JD-Core Version:    0.7.0.1
  */

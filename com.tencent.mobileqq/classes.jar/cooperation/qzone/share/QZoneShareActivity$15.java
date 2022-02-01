@@ -10,28 +10,25 @@ class QZoneShareActivity$15
   
   public void run()
   {
-    Editable localEditable;
     if (this.this$0.mViewEdit != null)
     {
-      localEditable = this.this$0.mViewEdit.getText();
-      if (localEditable == null) {
-        break label71;
+      Editable localEditable = this.this$0.mViewEdit.getText();
+      int i;
+      if (localEditable != null) {
+        i = localEditable.length();
+      } else {
+        i = 0;
       }
-    }
-    label71:
-    for (int i = localEditable.length();; i = 0)
-    {
       this.this$0.mViewEdit.setSelection(i);
-      if ((!this.this$0.isFinishing()) && (!this.this$0.emoShow)) {
-        this.this$0.showKeyboard();
-      }
-      return;
+    }
+    if ((!this.this$0.isFinishing()) && (!this.this$0.emoShow)) {
+      this.this$0.showKeyboard();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.15
  * JD-Core Version:    0.7.0.1
  */

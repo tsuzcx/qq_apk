@@ -17,9 +17,17 @@ public class DetectionPolicy
   {
     if (VideoReportInner.getInstance().isDebugMode())
     {
-      Log.i("DetectionPolicy", "addBlacklist: activity = " + paramActivity);
-      if (sCurrentMode != 1) {
-        Log.e("DetectionPolicy", "addBlacklist: currentMode = " + sCurrentMode + " is not BLACKLIST");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addBlacklist: activity = ");
+      localStringBuilder.append(paramActivity);
+      Log.i("DetectionPolicy", localStringBuilder.toString());
+      if (sCurrentMode != 1)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addBlacklist: currentMode = ");
+        localStringBuilder.append(sCurrentMode);
+        localStringBuilder.append(" is not BLACKLIST");
+        Log.e("DetectionPolicy", localStringBuilder.toString());
       }
     }
     DetectionPolicy.BlacklistPolicyHolder.access$000().addBlacklist(paramActivity);
@@ -29,9 +37,17 @@ public class DetectionPolicy
   {
     if (VideoReportInner.getInstance().isDebugMode())
     {
-      Log.i("DetectionPolicy", "addWhitelist: activity = " + paramActivity);
-      if (sCurrentMode != 2) {
-        Log.e("DetectionPolicy", "addBlacklist: currentMode = " + sCurrentMode + " is not WHITELIST");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addWhitelist: activity = ");
+      localStringBuilder.append(paramActivity);
+      Log.i("DetectionPolicy", localStringBuilder.toString());
+      if (sCurrentMode != 2)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addBlacklist: currentMode = ");
+        localStringBuilder.append(sCurrentMode);
+        localStringBuilder.append(" is not WHITELIST");
+        Log.e("DetectionPolicy", localStringBuilder.toString());
       }
     }
     DetectionPolicy.WhitelistPolicyHolder.access$100().addWhitelist(paramActivity);
@@ -44,24 +60,25 @@ public class DetectionPolicy
   
   public static void setDetectionMode(@DetectionMode int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      sCurrentMode = 0;
-      sDetectionImpl = sDefaultPolicy;
-      return;
-    case 1: 
-      sCurrentMode = 1;
-      sDetectionImpl = DetectionPolicy.BlacklistPolicyHolder.access$000();
+      if (paramInt != 2)
+      {
+        sCurrentMode = 0;
+        sDetectionImpl = sDefaultPolicy;
+        return;
+      }
+      sCurrentMode = 2;
+      sDetectionImpl = DetectionPolicy.WhitelistPolicyHolder.access$100();
       return;
     }
-    sCurrentMode = 2;
-    sDetectionImpl = DetectionPolicy.WhitelistPolicyHolder.access$100();
+    sCurrentMode = 1;
+    sDetectionImpl = DetectionPolicy.BlacklistPolicyHolder.access$000();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.detection.DetectionPolicy
  * JD-Core Version:    0.7.0.1
  */

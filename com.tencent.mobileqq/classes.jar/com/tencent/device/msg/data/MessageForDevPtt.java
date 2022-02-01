@@ -18,52 +18,47 @@ public class MessageForDevPtt
   public void doParse()
   {
     super.doParse();
-    if ((this.urlAtServer != null) && (!TextUtils.isEmpty(this.urlAtServer)) && (this.msgTime != 0L)) {}
-    for (;;)
-    {
+    if ((this.urlAtServer != null) && (!TextUtils.isEmpty(this.urlAtServer)) && (this.msgTime != 0L)) {
       return;
-      try
-      {
-        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)MessagePkgUtils.a(this.msgData);
-        if (localMessageForDevPttSerial == null) {
-          continue;
-        }
-        this.url = localMessageForDevPttSerial.url;
-        this.fileSize = localMessageForDevPttSerial.fileSize;
-        this.itemType = localMessageForDevPttSerial.itemType;
-        this.isReadPtt = localMessageForDevPttSerial.isReadPtt;
-        this.urlAtServer = localMessageForDevPttSerial.urlAtServer;
-        this.md5 = localMessageForDevPttSerial.md5;
-        this.storageSource = localMessageForDevPttSerial.storageSource;
-        this.subVersion = localMessageForDevPttSerial.subVersion;
-        this.isReport = localMessageForDevPttSerial.isReport;
-        this.sttAbility = localMessageForDevPttSerial.sttAbility;
-        this.groupFileID = localMessageForDevPttSerial.groupFileID;
-        this.sttText = localMessageForDevPttSerial.sttText;
-        this.longPttVipFlag = localMessageForDevPttSerial.longPttVipFlag;
-        this.expandStt = localMessageForDevPttSerial.expandStt;
-        this.groupFileKeyStr = localMessageForDevPttSerial.groupFileKeyStr;
-        this.msgTime = localMessageForDevPttSerial.msgTime;
-        this.msgRecTime = localMessageForDevPttSerial.msgRecTime;
-        this.voiceType = localMessageForDevPttSerial.voiceType;
-        this.voiceLength = localMessageForDevPttSerial.voiceLength;
-        this.voiceChangeFlag = localMessageForDevPttSerial.voiceChangeFlag;
-        this.busiType = localMessageForDevPttSerial.busiType;
-        this.directUrl = localMessageForDevPttSerial.directUrl;
-        this.fullLocalPath = localMessageForDevPttSerial.fullLocalPath;
-        this.extFlag = localMessageForDevPttSerial.extFlag;
-        this.channeltype = localMessageForDevPttSerial.channeltype;
-        this.strFileKey2 = localMessageForDevPttSerial.strFileKey2;
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-          Object localObject = null;
-        }
-      }
+    }
+    Object localObject = null;
+    try
+    {
+      MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)MessagePkgUtils.a(this.msgData);
+      localObject = localMessageForDevPttSerial;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    if (localObject != null)
+    {
+      this.url = localObject.url;
+      this.fileSize = localObject.fileSize;
+      this.itemType = localObject.itemType;
+      this.isReadPtt = localObject.isReadPtt;
+      this.urlAtServer = localObject.urlAtServer;
+      this.md5 = localObject.md5;
+      this.storageSource = localObject.storageSource;
+      this.subVersion = localObject.subVersion;
+      this.isReport = localObject.isReport;
+      this.sttAbility = localObject.sttAbility;
+      this.groupFileID = localObject.groupFileID;
+      this.sttText = localObject.sttText;
+      this.longPttVipFlag = localObject.longPttVipFlag;
+      this.expandStt = localObject.expandStt;
+      this.groupFileKeyStr = localObject.groupFileKeyStr;
+      this.msgTime = localObject.msgTime;
+      this.msgRecTime = localObject.msgRecTime;
+      this.voiceType = localObject.voiceType;
+      this.voiceLength = localObject.voiceLength;
+      this.voiceChangeFlag = localObject.voiceChangeFlag;
+      this.busiType = localObject.busiType;
+      this.directUrl = localObject.directUrl;
+      this.fullLocalPath = localObject.fullLocalPath;
+      this.extFlag = localObject.extFlag;
+      this.channeltype = localObject.channeltype;
+      this.strFileKey2 = localObject.strFileKey2;
     }
   }
   
@@ -76,18 +71,18 @@ public class MessageForDevPtt
       if (this.fileSize > 0L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691366);
+          return ((QQAppInterface)localObject).getApp().getString(2131691287);
         }
-        return HardCodeUtil.a(2131706618);
+        return HardCodeUtil.a(2131706640);
       }
       if (this.fileSize == -1L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691366);
+          return ((QQAppInterface)localObject).getApp().getString(2131691287);
         }
-        return HardCodeUtil.a(2131706589);
+        return HardCodeUtil.a(2131706611);
       }
-      return HardCodeUtil.a(2131706590);
+      return HardCodeUtil.a(2131706612);
     }
     return null;
   }
@@ -134,7 +129,7 @@ public class MessageForDevPtt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevPtt
  * JD-Core Version:    0.7.0.1
  */

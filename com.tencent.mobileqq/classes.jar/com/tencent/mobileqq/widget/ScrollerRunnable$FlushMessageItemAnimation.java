@@ -14,13 +14,12 @@ public class ScrollerRunnable$FlushMessageItemAnimation
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    paramTransformation = this.jdField_a_of_type_AndroidViewView;
+    if (paramTransformation == null) {
       return;
     }
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.b;
-    float f3 = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb((int)((f1 + (f2 - f3) * paramFloat) * 255.0F), 255, 255, 255));
+    float f = this.jdField_a_of_type_Float;
+    paramTransformation.setBackgroundColor(Color.argb((int)((f + (this.b - f) * paramFloat) * 255.0F), 255, 255, 255));
   }
   
   public boolean willChangeBounds()
@@ -35,7 +34,7 @@ public class ScrollerRunnable$FlushMessageItemAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ScrollerRunnable.FlushMessageItemAnimation
  * JD-Core Version:    0.7.0.1
  */

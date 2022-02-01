@@ -27,27 +27,24 @@ public class SimpleUIMsgBubbleBgExecutor
   {
     boolean bool = paramChatMessage.isSend();
     Object localObject = this.a.getApp().getResources();
-    if (bool)
-    {
-      i = 2130850409;
-      paramChatMessage = ((Resources)localObject).getDrawable(i);
-      if (!bool) {
-        break label115;
-      }
+    int i;
+    if (bool) {
+      i = 2130850336;
+    } else {
+      i = 2130850160;
     }
-    label115:
-    for (int i = 2130850408;; i = 2130850232)
-    {
-      localObject = ((Resources)localObject).getDrawable(i);
-      StateListDrawable localStateListDrawable = new StateListDrawable();
-      localStateListDrawable.addState(new int[] { 16842919 }, paramChatMessage);
-      localStateListDrawable.addState(new int[] { 16842910 }, (Drawable)localObject);
-      paramViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localStateListDrawable);
-      paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = new BubbleInfo(0);
-      return;
-      i = 2130850233;
-      break;
+    paramChatMessage = ((Resources)localObject).getDrawable(i);
+    if (bool) {
+      i = 2130850335;
+    } else {
+      i = 2130850159;
     }
+    localObject = ((Resources)localObject).getDrawable(i);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramChatMessage);
+    localStateListDrawable.addState(new int[] { 16842910 }, (Drawable)localObject);
+    paramViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localStateListDrawable);
+    paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = new BubbleInfo(0);
   }
   
   public int a()
@@ -67,7 +64,7 @@ public class SimpleUIMsgBubbleBgExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.bubblebghandlerexecutor.SimpleUIMsgBubbleBgExecutor
  * JD-Core Version:    0.7.0.1
  */

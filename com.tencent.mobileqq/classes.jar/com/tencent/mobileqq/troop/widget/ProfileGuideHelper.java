@@ -14,11 +14,13 @@ public class ProfileGuideHelper
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null)
+    Object localObject = this.jdField_a_of_type_AndroidAppDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("750_troo_game_guide", false).apply();
+      ((Dialog)localObject).dismiss();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (localObject != null) {
+        ((QQAppInterface)localObject).getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("750_troo_game_guide", false).apply();
       }
       if (QLog.isColorLevel()) {
         QLog.d("ProfileGuideHelper", 2, "750 game guide clicked");
@@ -28,7 +30,7 @@ public class ProfileGuideHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ProfileGuideHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,11 @@ public class JDK7PlatformImplementations
   {
     Intrinsics.checkParameterIsNotNull(paramThrowable1, "cause");
     Intrinsics.checkParameterIsNotNull(paramThrowable2, "exception");
-    paramThrowable1.addSuppressed(paramThrowable2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.internal.jdk7.JDK7PlatformImplementations
  * JD-Core Version:    0.7.0.1
  */

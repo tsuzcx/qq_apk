@@ -11,24 +11,18 @@ public class RecvGVideoLevelInfo
   implements Parcelable, Cloneable, Comparable<RecvGVideoLevelInfo>
 {
   public static final Parcelable.Creator<RecvGVideoLevelInfo> CREATOR = new RecvGVideoLevelInfo.1();
-  static String a;
   public int a;
   public long a;
+  public String a;
   public List<RecvGVideoLevelInfo.Medal> a;
   public int b;
   public long b;
-  public String b;
   public int c;
   public int d;
   public int e;
   public int f;
   public int g;
   public int h;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "RecvGVideoLevelInfo";
-  }
   
   public RecvGVideoLevelInfo(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString, List<RecvGVideoLevelInfo.Medal> paramList)
   {
@@ -42,7 +36,7 @@ public class RecvGVideoLevelInfo
     this.f = paramInt6;
     this.g = paramInt7;
     this.h = paramInt8;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
@@ -54,20 +48,23 @@ public class RecvGVideoLevelInfo
   
   public int a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null)
     {
-      return 0;
+      if (((List)localObject).size() == 0) {
+        return 0;
+      }
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        RecvGVideoLevelInfo.Medal localMedal = (RecvGVideoLevelInfo.Medal)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localMedal.c == 1) {
-          return localMedal.jdField_b_of_type_Int;
+        localObject = (RecvGVideoLevelInfo.Medal)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (((RecvGVideoLevelInfo.Medal)localObject).c == 1) {
+          return ((RecvGVideoLevelInfo.Medal)localObject).jdField_b_of_type_Int;
         }
         i += 1;
       }
     }
+    return 0;
   }
   
   public int a(RecvGVideoLevelInfo paramRecvGVideoLevelInfo)
@@ -77,8 +74,10 @@ public class RecvGVideoLevelInfo
     if (i != j) {
       return i - j;
     }
-    if (this.h != paramRecvGVideoLevelInfo.h) {
-      return this.h - paramRecvGVideoLevelInfo.h;
+    i = this.h;
+    j = paramRecvGVideoLevelInfo.h;
+    if (i != j) {
+      return i - j;
     }
     return 0;
   }
@@ -96,15 +95,16 @@ public class RecvGVideoLevelInfo
       this.f = paramParcel.readInt();
       this.g = paramParcel.readInt();
       this.h = paramParcel.readInt();
-      this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
       paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilList, RecvGVideoLevelInfo.Medal.CREATOR);
       return;
     }
     catch (RuntimeException paramParcel)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "readFromParcel RuntimeException", paramParcel);
+      if (QLog.isColorLevel()) {
+        QLog.d("RecvGVideoLevelInfo", 2, "readFromParcel RuntimeException", paramParcel);
+      }
     }
   }
   
@@ -126,20 +126,21 @@ public class RecvGVideoLevelInfo
       paramParcel.writeInt(this.f);
       paramParcel.writeInt(this.g);
       paramParcel.writeInt(this.h);
-      paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
       paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
       return;
     }
     catch (RuntimeException paramParcel)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "writeToParcel RuntimeException", paramParcel);
+      if (QLog.isColorLevel()) {
+        QLog.d("RecvGVideoLevelInfo", 2, "writeToParcel RuntimeException", paramParcel);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.RecvGVideoLevelInfo
  * JD-Core Version:    0.7.0.1
  */

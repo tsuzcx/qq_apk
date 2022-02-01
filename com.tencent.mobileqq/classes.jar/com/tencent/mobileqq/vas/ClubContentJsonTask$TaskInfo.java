@@ -28,47 +28,49 @@ public class ClubContentJsonTask$TaskInfo
   
   public JSONObject a(Context paramContext)
   {
-    Object localObject = null;
-    for (;;)
+    try
     {
-      try
+      if (this.jdField_a_of_type_OrgJsonJSONObject != null)
       {
-        if (this.jdField_a_of_type_OrgJsonJSONObject != null)
-        {
-          paramContext = this.jdField_a_of_type_OrgJsonJSONObject;
-          return paramContext;
-        }
-        if ((paramContext == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-        {
-          QLog.e("TaskInfo", 1, "readLocalJsonFile, context or json_name null, context=" + paramContext + ", json_name=" + this.jdField_a_of_type_JavaLangString);
-          paramContext = localObject;
-          continue;
-        }
-        paramContext = new File(paramContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      }
-      finally {}
-      if (paramContext.exists()) {
-        paramContext = FileUtils.a(paramContext);
-      }
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramContext);
         paramContext = this.jdField_a_of_type_OrgJsonJSONObject;
+        return paramContext;
       }
-      catch (Exception paramContext)
+      if ((paramContext != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
       {
-        for (;;)
+        paramContext = new File(paramContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
+        if (paramContext.exists())
         {
-          this.jdField_a_of_type_OrgJsonJSONObject = null;
-          QLog.e("TaskInfo", 1, "readLocalJsonFile, exception=" + MsfSdkUtils.getStackTraceString(paramContext));
+          paramContext = FileUtils.readFileContent(paramContext);
+          try
+          {
+            this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramContext);
+          }
+          catch (Exception paramContext)
+          {
+            this.jdField_a_of_type_OrgJsonJSONObject = null;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("readLocalJsonFile, exception=");
+            localStringBuilder.append(MsfSdkUtils.getStackTraceString(paramContext));
+            QLog.e("TaskInfo", 1, localStringBuilder.toString());
+          }
         }
+        paramContext = this.jdField_a_of_type_OrgJsonJSONObject;
+        return paramContext;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("readLocalJsonFile, context or json_name null, context=");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append(", json_name=");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      QLog.e("TaskInfo", 1, localStringBuilder.toString());
+      return null;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo
  * JD-Core Version:    0.7.0.1
  */

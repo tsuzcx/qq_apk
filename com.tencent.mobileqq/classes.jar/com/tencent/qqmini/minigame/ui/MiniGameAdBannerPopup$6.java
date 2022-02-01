@@ -21,28 +21,25 @@ final class MiniGameAdBannerPopup$6
   public void onClick(View paramView)
   {
     this.val$dialog.dismiss();
-    if (((this.val$context instanceof Activity)) && (!TextUtils.isEmpty(this.val$jumpUrl)))
-    {
-      if (!MiniAppLauncher.isMiniAppUrl(this.val$jumpUrl)) {
-        break label76;
+    if (((this.val$context instanceof Activity)) && (!TextUtils.isEmpty(this.val$jumpUrl))) {
+      if (MiniAppLauncher.isMiniAppUrl(this.val$jumpUrl))
+      {
+        MiniSDK.startMiniApp((Activity)this.val$context, this.val$jumpUrl, 2094, null);
       }
-      MiniSDK.startMiniApp((Activity)this.val$context, this.val$jumpUrl, 2094, null);
+      else
+      {
+        Intent localIntent = new Intent();
+        localIntent.putExtra("url", this.val$jumpUrl);
+        this.val$miniAppProxy.startBrowserActivity((Activity)this.val$context, localIntent);
+      }
     }
-    for (;;)
-    {
-      MiniGameAdBannerPopup.access$300(this.val$adItem, this.val$type, 102);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label76:
-      Intent localIntent = new Intent();
-      localIntent.putExtra("url", this.val$jumpUrl);
-      this.val$miniAppProxy.startBrowserActivity((Activity)this.val$context, localIntent);
-    }
+    MiniGameAdBannerPopup.access$300(this.val$adItem, this.val$type, 102);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.MiniGameAdBannerPopup.6
  * JD-Core Version:    0.7.0.1
  */

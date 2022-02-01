@@ -233,12 +233,53 @@ public class DesktopDataManager$HongBaoResBuilder
   
   public String toString()
   {
-    return "HongBaoResBuilder{textColor=" + this.textColor + ", searchBackgroundResId=" + this.searchBackgroundResId + ", searchTitleColor=" + this.searchTitleColor + ", searchIconResId=" + this.searchIconResId + ", backgroundResId=" + this.backgroundResId + ", backgroundUrl='" + this.backgroundUrl + '\'' + ", backgroundLoadingResId=" + this.backgroundLoadingResId + ", backgroundFailedResId=" + this.backgroundFailedResId + ", capsuleLeftNormalResId=" + this.capsuleLeftNormalResId + ", capsuleRightNormalResId=" + this.capsuleRightNormalResId + ", capsuleLeftPressResId=" + this.capsuleLeftPressResId + ", capsuleRightPressResId=" + this.capsuleRightPressResId + ", moveUpGuideBgIconResId=" + this.moveUpGuideBgIconResId + ", moveUpGuideIconResId=" + this.moveUpGuideIconResId + ", moduleMoreIconResId=" + this.moduleMoreIconResId + ", fullScreenRefreshBgColor=" + this.fullScreenRefreshBgColor + ", refreshProgressResId=" + this.refreshProgressResId + ", refreshTextColor=" + this.refreshTextColor + ", refreshArrowColor=" + this.refreshArrowColor + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("HongBaoResBuilder{textColor=");
+    localStringBuilder.append(this.textColor);
+    localStringBuilder.append(", searchBackgroundResId=");
+    localStringBuilder.append(this.searchBackgroundResId);
+    localStringBuilder.append(", searchTitleColor=");
+    localStringBuilder.append(this.searchTitleColor);
+    localStringBuilder.append(", searchIconResId=");
+    localStringBuilder.append(this.searchIconResId);
+    localStringBuilder.append(", backgroundResId=");
+    localStringBuilder.append(this.backgroundResId);
+    localStringBuilder.append(", backgroundUrl='");
+    localStringBuilder.append(this.backgroundUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", backgroundLoadingResId=");
+    localStringBuilder.append(this.backgroundLoadingResId);
+    localStringBuilder.append(", backgroundFailedResId=");
+    localStringBuilder.append(this.backgroundFailedResId);
+    localStringBuilder.append(", capsuleLeftNormalResId=");
+    localStringBuilder.append(this.capsuleLeftNormalResId);
+    localStringBuilder.append(", capsuleRightNormalResId=");
+    localStringBuilder.append(this.capsuleRightNormalResId);
+    localStringBuilder.append(", capsuleLeftPressResId=");
+    localStringBuilder.append(this.capsuleLeftPressResId);
+    localStringBuilder.append(", capsuleRightPressResId=");
+    localStringBuilder.append(this.capsuleRightPressResId);
+    localStringBuilder.append(", moveUpGuideBgIconResId=");
+    localStringBuilder.append(this.moveUpGuideBgIconResId);
+    localStringBuilder.append(", moveUpGuideIconResId=");
+    localStringBuilder.append(this.moveUpGuideIconResId);
+    localStringBuilder.append(", moduleMoreIconResId=");
+    localStringBuilder.append(this.moduleMoreIconResId);
+    localStringBuilder.append(", fullScreenRefreshBgColor=");
+    localStringBuilder.append(this.fullScreenRefreshBgColor);
+    localStringBuilder.append(", refreshProgressResId=");
+    localStringBuilder.append(this.refreshProgressResId);
+    localStringBuilder.append(", refreshTextColor=");
+    localStringBuilder.append(this.refreshTextColor);
+    localStringBuilder.append(", refreshArrowColor=");
+    localStringBuilder.append(this.refreshArrowColor);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.HongBaoResBuilder
  * JD-Core Version:    0.7.0.1
  */

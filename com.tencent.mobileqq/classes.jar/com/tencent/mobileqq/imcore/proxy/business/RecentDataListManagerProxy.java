@@ -10,10 +10,11 @@ public class RecentDataListManagerProxy
   
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, List<RecentUser> paramList)
   {
-    if (a == null) {
+    RecentDataListManagerProxy.Proxy localProxy = a;
+    if (localProxy == null) {
       return;
     }
-    a.a(paramBaseQQAppInterface, paramList);
+    localProxy.a(paramBaseQQAppInterface, paramList);
   }
   
   public static void a(RecentDataListManagerProxy.Proxy paramProxy)
@@ -23,7 +24,7 @@ public class RecentDataListManagerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.business.RecentDataListManagerProxy
  * JD-Core Version:    0.7.0.1
  */

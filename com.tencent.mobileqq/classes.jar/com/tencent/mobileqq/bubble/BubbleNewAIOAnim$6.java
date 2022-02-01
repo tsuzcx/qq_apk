@@ -21,7 +21,11 @@ class BubbleNewAIOAnim$6
       this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.e.setVisibility(0);
       paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
       paramAnimator.jdField_a_of_type_Long = -1L;
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.a("show pendant, " + this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_Long);
+      BubbleNewAIOAnim localBubbleNewAIOAnim = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("show pendant, ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_Long);
+      localBubbleNewAIOAnim.a(localStringBuilder.toString());
       paramAnimator.b();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c != null) {
@@ -36,7 +40,11 @@ class BubbleNewAIOAnim$6
       this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.d.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.e.setVisibility(4);
       paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.a("stop show pendant, " + this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_Long);
+      BubbleNewAIOAnim localBubbleNewAIOAnim = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stop show pendant, ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_Long);
+      localBubbleNewAIOAnim.a(localStringBuilder.toString());
       paramAnimator.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_Long;
       paramAnimator.a();
     }
@@ -47,7 +55,7 @@ class BubbleNewAIOAnim$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleNewAIOAnim.6
  * JD-Core Version:    0.7.0.1
  */

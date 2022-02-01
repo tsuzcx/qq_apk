@@ -11,8 +11,8 @@ import java.util.HashMap;
 public class WSUniPacket
   extends UniAttribute
 {
-  static HashMap<String, byte[]> jdField_a_of_type_JavaUtilHashMap = null;
-  static HashMap<String, HashMap<String, byte[]>> b = null;
+  static HashMap<String, byte[]> jdField_a_of_type_JavaUtilHashMap;
+  static HashMap<String, HashMap<String, byte[]>> b;
   private int jdField_a_of_type_Int = 0;
   protected RequestPacket a;
   
@@ -71,76 +71,79 @@ public class WSUniPacket
   
   public void decode(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
-    }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
-      if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 3)
+    if (paramArrayOfByte.length >= 4) {
+      try
       {
-        a();
+        paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+        paramArrayOfByte.setServerEncoding(this.encodeName);
+        this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
+        if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 3)
+        {
+          a();
+          return;
+        }
+        this._newData = null;
+        b();
         return;
       }
-      this._newData = null;
-      b();
-      return;
+      catch (Exception paramArrayOfByte)
+      {
+        throw new RuntimeException(paramArrayOfByte);
+      }
     }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    throw new IllegalArgumentException("decode package must include size head");
   }
   
   public void decodeVersion2(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
+    if (paramArrayOfByte.length >= 4) {
+      try
+      {
+        paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+        paramArrayOfByte.setServerEncoding(this.encodeName);
+        this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
+        b();
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        throw new RuntimeException(paramArrayOfByte);
+      }
     }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
-      b();
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    throw new IllegalArgumentException("decode package must include size head");
   }
   
   public void decodeVersion3(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
+    if (paramArrayOfByte.length >= 4) {
+      try
+      {
+        paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+        paramArrayOfByte.setServerEncoding(this.encodeName);
+        this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
+        a();
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        throw new RuntimeException(paramArrayOfByte);
+      }
     }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
-      a();
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    throw new IllegalArgumentException("decode package must include size head");
   }
   
   public byte[] encode()
   {
     if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 2)
     {
-      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sServantName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sServantName.equals(""))) {
-        throw new IllegalArgumentException("servantName can not is null");
+      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sServantName != null) && (!this.jdField_a_of_type_ComQqTafRequestPacket.sServantName.equals("")))
+      {
+        if ((this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName.equals(""))) {
+          throw new IllegalArgumentException("funcName can not is null");
+        }
       }
-      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName.equals(""))) {
-        throw new IllegalArgumentException("funcName can not is null");
+      else {
+        throw new IllegalArgumentException("servantName can not is null");
       }
     }
     else
@@ -156,28 +159,31 @@ public class WSUniPacket
     ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
     if ((this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 2) && (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 1)) {
       ((JceOutputStream)localObject).write(this._newData, 0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
-      localObject = new JceOutputStream(0);
-      ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.writeTo((JceOutputStream)localObject);
-      localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
-      int i = localObject.length;
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
-      localByteBuffer.putInt(i + 4).put((byte[])localObject).flip();
-      return localByteBuffer.array();
+    } else {
       ((JceOutputStream)localObject).write(this._data, 0);
     }
+    this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+    localObject = new JceOutputStream(0);
+    ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
+    this.jdField_a_of_type_ComQqTafRequestPacket.writeTo((JceOutputStream)localObject);
+    localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+    int i = localObject.length + 4;
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(i);
+    localByteBuffer.putInt(i).put((byte[])localObject).flip();
+    return localByteBuffer.array();
   }
   
   public <T> void put(String paramString, T paramT)
   {
-    if (paramString.startsWith(".")) {
-      throw new IllegalArgumentException("put name can not startwith . , now is " + paramString);
+    if (!paramString.startsWith("."))
+    {
+      super.put(paramString, paramT);
+      return;
     }
-    super.put(paramString, paramT);
+    paramT = new StringBuilder();
+    paramT.append("put name can not startwith . , now is ");
+    paramT.append(paramString);
+    throw new IllegalArgumentException(paramT.toString());
   }
   
   public void useVersion3()
@@ -188,7 +194,7 @@ public class WSUniPacket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.WSUniPacket
  * JD-Core Version:    0.7.0.1
  */

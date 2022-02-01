@@ -3,10 +3,11 @@ package com.tencent.mobileqq.utils;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.DispatchKeyEventListener;
+import com.tencent.mobileqq.emoticonview.IEmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.IEmoticonMainPanel.DispatchKeyEventListener;
 
 class QQCustomDialogWtihEmoticonInput$3
-  implements EmoticonMainPanel.DispatchKeyEventListener
+  implements IEmoticonMainPanel.DispatchKeyEventListener
 {
   QQCustomDialogWtihEmoticonInput$3(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
@@ -14,9 +15,10 @@ class QQCustomDialogWtihEmoticonInput$3
   {
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
     {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-      this.a.c = false;
-      paramKeyEvent = this.a.getWindow().getAttributes();
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView());
+      paramKeyEvent = this.a;
+      paramKeyEvent.c = false;
+      paramKeyEvent = paramKeyEvent.getWindow().getAttributes();
       paramKeyEvent.y = 0;
       this.a.getWindow().setAttributes(paramKeyEvent);
       QQCustomDialogWtihEmoticonInput.a(this.a);
@@ -27,7 +29,7 @@ class QQCustomDialogWtihEmoticonInput$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.3
  * JD-Core Version:    0.7.0.1
  */

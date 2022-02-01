@@ -21,8 +21,12 @@ class MapActivity$2
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MapActivity", 2, "onLocationFinish errCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLocationFinish errCode=");
+      localStringBuilder.append(paramInt);
+      QLog.d("MapActivity", 2, localStringBuilder.toString());
     }
     if ((paramInt == 0) && (paramSosoLbsInfo != null))
     {
@@ -34,19 +38,24 @@ class MapActivity$2
       if (this.this$0.type == 2)
       {
         this.this$0.poiAdapter.reset();
-        MapActivity.access$002(this.this$0, (int)(this.this$0.fromLatLng.getLatitude() * 1000000.0D));
-        MapActivity.access$102(this.this$0, (int)(this.this$0.fromLatLng.getLongitude() * 1000000.0D));
-        MapActivity.access$200(this.this$0, MapActivity.access$000(this.this$0), MapActivity.access$100(this.this$0));
+        paramSosoLbsInfo = this.this$0;
+        MapActivity.access$002(paramSosoLbsInfo, (int)(paramSosoLbsInfo.fromLatLng.getLatitude() * 1000000.0D));
+        paramSosoLbsInfo = this.this$0;
+        MapActivity.access$102(paramSosoLbsInfo, (int)(paramSosoLbsInfo.fromLatLng.getLongitude() * 1000000.0D));
+        paramSosoLbsInfo = this.this$0;
+        MapActivity.access$200(paramSosoLbsInfo, MapActivity.access$000(paramSosoLbsInfo), MapActivity.access$100(this.this$0));
       }
-      return;
     }
-    this.this$0.dialog.setTitle(HardCodeUtil.a(2131706462)).setMessage(HardCodeUtil.a(2131706458)).setPositiveButton(HardCodeUtil.a(2131706460), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(HardCodeUtil.a(2131706459), Color.parseColor("#000000"), new MapActivity.2.1(this));
-    this.this$0.dialog.show();
+    else
+    {
+      this.this$0.dialog.setTitle(HardCodeUtil.a(2131706509)).setMessage(HardCodeUtil.a(2131706505)).setPositiveButton(HardCodeUtil.a(2131706507), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(HardCodeUtil.a(2131706506), Color.parseColor("#000000"), new MapActivity.2.1(this));
+      this.this$0.dialog.show();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.MapActivity.2
  * JD-Core Version:    0.7.0.1
  */

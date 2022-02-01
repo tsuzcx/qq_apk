@@ -44,7 +44,7 @@ public class MultiImageTextView
   
   public void a(float paramFloat)
   {
-    a((int)(getResources().getDisplayMetrics().density * paramFloat + 0.5F));
+    a((int)(paramFloat * getResources().getDisplayMetrics().density + 0.5F));
   }
   
   public void a(int paramInt)
@@ -56,7 +56,11 @@ public class MultiImageTextView
   
   public void a(SpanAdapter paramSpanAdapter)
   {
-    paramSpanAdapter.apendString = ("[" + this.jdField_a_of_type_JavaUtilArrayList.size() + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+    localStringBuilder.append("]");
+    paramSpanAdapter.apendString = localStringBuilder.toString();
     paramSpanAdapter.start = this.jdField_a_of_type_JavaLangStringBuilder.length();
     paramSpanAdapter.end = (paramSpanAdapter.start + paramSpanAdapter.apendString.length());
     this.jdField_a_of_type_JavaLangStringBuilder.append(paramSpanAdapter.apendString);
@@ -84,22 +88,22 @@ public class MultiImageTextView
   {
     if (!this.b)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      if (localArrayList != null) {
+        localArrayList.clear();
       }
       this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(paramCharSequence);
     }
-    for (;;)
+    else
     {
-      super.setText(paramCharSequence, paramBufferType);
-      return;
       this.b = false;
     }
+    super.setText(paramCharSequence, paramBufferType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.MultiImageTextView
  * JD-Core Version:    0.7.0.1
  */

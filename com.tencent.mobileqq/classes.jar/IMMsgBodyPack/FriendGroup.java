@@ -26,16 +26,18 @@ public final class FriendGroup
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.dwFuin = paramJceInputStream.read(this.dwFuin, 0, false);
-    if (cache_vOldGroupID == null)
+    ArrayList localArrayList = cache_vOldGroupID;
+    Long localLong = Long.valueOf(0L);
+    if (localArrayList == null)
     {
       cache_vOldGroupID = new ArrayList();
-      cache_vOldGroupID.add(Long.valueOf(0L));
+      cache_vOldGroupID.add(localLong);
     }
     this.vOldGroupID = ((ArrayList)paramJceInputStream.read(cache_vOldGroupID, 1, false));
     if (cache_vNewGroupID == null)
     {
       cache_vNewGroupID = new ArrayList();
-      cache_vNewGroupID.add(Long.valueOf(0L));
+      cache_vNewGroupID.add(localLong);
     }
     this.vNewGroupID = ((ArrayList)paramJceInputStream.read(cache_vNewGroupID, 2, false));
   }
@@ -43,17 +45,19 @@ public final class FriendGroup
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.dwFuin, 0);
-    if (this.vOldGroupID != null) {
-      paramJceOutputStream.write(this.vOldGroupID, 1);
+    ArrayList localArrayList = this.vOldGroupID;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
-    if (this.vNewGroupID != null) {
-      paramJceOutputStream.write(this.vNewGroupID, 2);
+    localArrayList = this.vNewGroupID;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.FriendGroup
  * JD-Core Version:    0.7.0.1
  */

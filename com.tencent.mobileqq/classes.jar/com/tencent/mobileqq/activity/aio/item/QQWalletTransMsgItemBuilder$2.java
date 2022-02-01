@@ -3,9 +3,11 @@ package com.tencent.mobileqq.activity.aio.item;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgObserver;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.QQWalletTransferMsg;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.transaction.INotifyMsgApi;
+import com.tencent.mobileqq.qwallet.transaction.NotifyMsgObserver;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -17,27 +19,36 @@ class QQWalletTransMsgItemBuilder$2
   
   public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQWalletTransMsgItemBuilder.jdField_a_of_type_JavaLangString, 2, "onNotifyMsg btype:" + paramInt + " bid:" + paramString);
-    }
-    if ((paramInt == 1) && (!TextUtils.isEmpty(paramString)) && (paramBundle != null))
+    Object localObject1;
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      SparseArray localSparseArray = (SparseArray)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localSparseArray != null)
+      localObject1 = QQWalletTransMsgItemBuilder.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onNotifyMsg btype:");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(" bid:");
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    if ((((INotifyMsgApi)QRoute.api(INotifyMsgApi.class)).isBusinessTypeAAPay(paramInt)) && (!TextUtils.isEmpty(paramString)) && (paramBundle != null))
+    {
+      localObject1 = (SparseArray)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (localObject1 != null)
       {
         paramInt = 0;
-        while (paramInt < localSparseArray.size())
+        while (paramInt < ((SparseArray)localObject1).size())
         {
-          Object localObject = (WeakReference)localSparseArray.valueAt(paramInt);
+          localObject2 = (WeakReference)((SparseArray)localObject1).valueAt(paramInt);
           paramBundle = null;
-          if (localObject != null) {
-            paramBundle = (QQWalletTransMsgItemBuilder.QWalletTransMsgHolder)((WeakReference)localObject).get();
+          if (localObject2 != null) {
+            paramBundle = (QQWalletTransMsgItemBuilder.QWalletTransMsgHolder)((WeakReference)localObject2).get();
           }
           if ((paramBundle != null) && ((paramBundle.a instanceof MessageForQQWalletMsg)))
           {
-            localObject = (MessageForQQWalletMsg)paramBundle.a;
-            if ((localObject != null) && (((MessageForQQWalletMsg)localObject).messageType == 16) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId != null) && (paramString.equals(((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId))) {
-              this.a.a(paramBundle, (MessageForQQWalletMsg)localObject, ((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.elem);
+            localObject2 = (MessageForQQWalletMsg)paramBundle.a;
+            if ((localObject2 != null) && (((MessageForQQWalletMsg)localObject2).messageType == 16) && (((MessageForQQWalletMsg)localObject2).mQQWalletTransferMsg != null) && (((MessageForQQWalletMsg)localObject2).mQQWalletTransferMsg.listId != null) && (paramString.equals(((MessageForQQWalletMsg)localObject2).mQQWalletTransferMsg.listId))) {
+              this.a.a(paramBundle, (MessageForQQWalletMsg)localObject2, ((MessageForQQWalletMsg)localObject2).mQQWalletTransferMsg.elem);
             }
           }
           paramInt += 1;
@@ -48,7 +59,7 @@ class QQWalletTransMsgItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQWalletTransMsgItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

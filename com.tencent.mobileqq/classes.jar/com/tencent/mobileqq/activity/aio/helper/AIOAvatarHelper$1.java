@@ -2,7 +2,6 @@ package com.tencent.mobileqq.activity.aio.helper;
 
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.avatar.observer.AvatarObserver;
-import com.tencent.mobileqq.extendfriend.apollo.aio.AioApolloHelper;
 import com.tencent.mobileqq.vas.avatar.AvatarLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
@@ -12,17 +11,18 @@ class AIOAvatarHelper$1
 {
   AIOAvatarHelper$1(AIOAvatarHelper paramAIOAvatarHelper) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOAvatarHelper", 2, "onUpdateCustomHead isSuccess: " + paramBoolean + "uin: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateCustomHead isSuccess: ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("uin: ");
+      localStringBuilder.append(paramString);
+      QLog.i("AIOAvatarHelper", 2, localStringBuilder.toString());
     }
     if (paramString == null) {
-      return;
-    }
-    if (AioApolloHelper.a(AIOAvatarHelper.a(this.a), AIOAvatarHelper.a(this.a), AIOAvatarHelper.a(this.a)))
-    {
-      AioApolloHelper.a(AIOAvatarHelper.a(this.a), AIOAvatarHelper.a(this.a), AIOAvatarHelper.a(this.a), AIOAvatarHelper.a(this.a).a, Collections.singletonList(paramString));
       return;
     }
     AvatarLayout.a(AIOAvatarHelper.a(this.a), AIOAvatarHelper.a(this.a).a, Collections.singletonList(paramString));
@@ -30,7 +30,7 @@ class AIOAvatarHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOAvatarHelper.1
  * JD-Core Version:    0.7.0.1
  */

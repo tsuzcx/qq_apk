@@ -17,34 +17,42 @@ public class j
   
   public static void a(long paramLong)
   {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("uploadlogpushseq", 0);
+    Object localObject2 = BaseApplication.getContext().getSharedPreferences("uploadlogpushseq", 0);
     String str = MsfService.getCore().getAccountCenter().i();
-    Object localObject = localSharedPreferences.getString("uploadlogpushseq" + str, null);
-    if (localObject == null) {}
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("uploadlogpushseq");
+    ((StringBuilder)localObject1).append(str);
+    localObject1 = ((SharedPreferences)localObject2).getString(((StringBuilder)localObject1).toString(), null);
+    if (localObject1 == null) {}
     for (;;)
     {
       try
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put(String.valueOf(paramLong), System.currentTimeMillis());
-        localSharedPreferences.edit().putString("uploadlogpushseq" + str, ((JSONObject)localObject).toString()).commit();
-        return;
+        localObject1 = new JSONObject();
+        continue;
+        localObject1 = new JSONObject((String)localObject1);
+        Object localObject3 = ((JSONObject)localObject1).keys();
+        if (((Iterator)localObject3).hasNext())
+        {
+          long l = ((Long)((JSONObject)localObject1).get((String)((Iterator)localObject3).next())).longValue();
+          if (System.currentTimeMillis() - l > 259200000L)
+          {
+            ((Iterator)localObject3).remove();
+            continue;
+            ((JSONObject)localObject1).put(String.valueOf(paramLong), System.currentTimeMillis());
+            localObject2 = ((SharedPreferences)localObject2).edit();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("uploadlogpushseq");
+            ((StringBuilder)localObject3).append(str);
+            ((SharedPreferences.Editor)localObject2).putString(((StringBuilder)localObject3).toString(), ((JSONObject)localObject1).toString()).commit();
+            return;
+          }
+        }
       }
       catch (JSONException localJSONException)
       {
-        Iterator localIterator;
-        long l;
         localJSONException.printStackTrace();
         return;
-      }
-      localObject = new JSONObject((String)localObject);
-      localIterator = ((JSONObject)localObject).keys();
-      if (localIterator.hasNext())
-      {
-        l = ((Long)((JSONObject)localObject).get((String)localIterator.next())).longValue();
-        if (System.currentTimeMillis() - l > 259200000L) {
-          localIterator.remove();
-        }
       }
     }
   }
@@ -53,7 +61,10 @@ public class j
   {
     Object localObject = BaseApplication.getContext().getSharedPreferences("uploadlogpushseq", 0);
     String str = MsfService.getCore().getAccountCenter().i();
-    localObject = ((SharedPreferences)localObject).getString("uploadlogpushseq" + str, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uploadlogpushseq");
+    localStringBuilder.append(str);
+    localObject = ((SharedPreferences)localObject).getString(localStringBuilder.toString(), null);
     if (localObject == null) {
       return false;
     }
@@ -71,7 +82,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.a.j
  * JD-Core Version:    0.7.0.1
  */

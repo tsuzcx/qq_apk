@@ -12,7 +12,7 @@ public final class stGetCommentReplyListRsp
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList<stMetaReply> cache_reply_list;
+  static ArrayList<stMetaReply> cache_reply_list = new ArrayList();
   public String attach_info = "";
   public boolean isFinished = true;
   public boolean isRFinished = true;
@@ -21,15 +21,8 @@ public final class stGetCommentReplyListRsp
   
   static
   {
-    if (!stGetCommentReplyListRsp.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_reply_list = new ArrayList();
-      stMetaReply localstMetaReply = new stMetaReply();
-      cache_reply_list.add(localstMetaReply);
-      return;
-    }
+    stMetaReply localstMetaReply = new stMetaReply();
+    cache_reply_list.add(localstMetaReply);
   }
   
   public stGetCommentReplyListRsp() {}
@@ -50,18 +43,17 @@ public final class stGetCommentReplyListRsp
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -86,13 +78,32 @@ public final class stGetCommentReplyListRsp
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stGetCommentReplyListRsp)paramObject;
-    } while ((!JceUtil.equals(this.attach_info, paramObject.attach_info)) || (!JceUtil.equals(this.reply_list, paramObject.reply_list)) || (!JceUtil.equals(this.isFinished, paramObject.isFinished)) || (!JceUtil.equals(this.total_reply_num, paramObject.total_reply_num)) || (!JceUtil.equals(this.isRFinished, paramObject.isRFinished)));
-    return true;
+    }
+    paramObject = (stGetCommentReplyListRsp)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.attach_info, paramObject.attach_info))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.reply_list, paramObject.reply_list))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.isFinished, paramObject.isFinished))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.total_reply_num, paramObject.total_reply_num))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.isRFinished, paramObject.isRFinished)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -183,7 +194,7 @@ public final class stGetCommentReplyListRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stGetCommentReplyListRsp
  * JD-Core Version:    0.7.0.1
  */

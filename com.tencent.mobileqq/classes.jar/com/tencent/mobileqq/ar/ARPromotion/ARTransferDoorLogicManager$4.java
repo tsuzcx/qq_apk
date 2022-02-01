@@ -12,29 +12,30 @@ class ARTransferDoorLogicManager$4
   {
     try
     {
-      AVGestureWrapper.clearCache();
-      this.this$0.i();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        QLog.i(ARTransferDoorLogicManager.a, 2, "AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = " + localUnsatisfiedLinkError.getMessage());
-      }
+      
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.i(ARTransferDoorLogicManager.a, 2, "AVGestureWrapper.clearCache failed. err = " + localException.getMessage());
-      }
+      str = ARTransferDoorLogicManager.a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AVGestureWrapper.clearCache failed. err = ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.i(str, 2, localStringBuilder.toString());
     }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      String str = ARTransferDoorLogicManager.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = ");
+      localStringBuilder.append(localUnsatisfiedLinkError.getMessage());
+      QLog.i(str, 2, localStringBuilder.toString());
+    }
+    this.this$0.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.4
  * JD-Core Version:    0.7.0.1
  */

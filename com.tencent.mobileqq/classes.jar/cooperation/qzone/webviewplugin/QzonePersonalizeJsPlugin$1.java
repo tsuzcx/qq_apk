@@ -11,8 +11,14 @@ class QzonePersonalizeJsPlugin$1
   
   public void result(int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("FontInterface.TrueTypeResult font:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", fontPath:");
+      localStringBuilder.append(paramString1);
+      QLog.d("QzonePersonalizeJsPlugin", 4, localStringBuilder.toString());
     }
     if (TextUtils.isEmpty(paramString1))
     {
@@ -24,7 +30,7 @@ class QzonePersonalizeJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzonePersonalizeJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

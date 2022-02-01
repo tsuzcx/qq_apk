@@ -22,11 +22,11 @@ public final class QzoneModuleInjector
   
   private static Object appendArray(Object paramObject1, Object paramObject2, boolean paramBoolean)
   {
-    int i = 0;
     Object localObject = paramObject1.getClass().getComponentType();
     int k = Array.getLength(paramObject1);
     int j = k + 1;
     localObject = Array.newInstance((Class)localObject, j);
+    int i = 0;
     if (paramBoolean)
     {
       Array.set(localObject, 0, paramObject2);
@@ -37,48 +37,42 @@ public final class QzoneModuleInjector
         i += 1;
       }
     }
-    if (i < j)
+    while (i < j)
     {
       if (i < k) {
         Array.set(localObject, i, Array.get(paramObject1, i));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         Array.set(localObject, i, paramObject2);
       }
+      i += 1;
     }
     return localObject;
   }
   
   private static Object combineArray(Object paramObject1, Object paramObject2, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (;;)
+    Object localObject2 = paramObject1;
+    Object localObject1 = paramObject2;
+    if (paramBoolean)
     {
-      Object localObject = paramObject2.getClass().getComponentType();
-      int j = Array.getLength(paramObject2);
-      int k = Array.getLength(paramObject1) + j;
-      localObject = Array.newInstance((Class)localObject, k);
-      int i = 0;
-      if (i < k)
-      {
-        if (i < j) {
-          Array.set(localObject, i, Array.get(paramObject2, i));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          Array.set(localObject, i, Array.get(paramObject1, i - j));
-        }
-      }
-      return localObject;
-      localObject = paramObject1;
-      paramObject1 = paramObject2;
-      paramObject2 = localObject;
+      localObject1 = paramObject1;
+      localObject2 = paramObject2;
     }
+    paramObject1 = localObject2.getClass().getComponentType();
+    int j = Array.getLength(localObject2);
+    int k = Array.getLength(localObject1) + j;
+    paramObject1 = Array.newInstance(paramObject1, k);
+    int i = 0;
+    while (i < k)
+    {
+      if (i < j) {
+        Array.set(paramObject1, i, Array.get(localObject2, i));
+      } else {
+        Array.set(paramObject1, i, Array.get(localObject1, i - j));
+      }
+      i += 1;
+    }
+    return paramObject1;
   }
   
   private static Object getDexElements(Object paramObject)
@@ -105,45 +99,53 @@ public final class QzoneModuleInjector
       Class.forName("dalvik.system.BaseDexClassLoader");
       return true;
     }
-    catch (ClassNotFoundException localClassNotFoundException) {}
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      label8:
+      break label8;
+    }
     return false;
   }
   
   public static boolean inject(Context paramContext, ClassLoader paramClassLoader, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (paramString1 == null) {}
-    while (!new File(paramString1).exists()) {
+    if (paramString1 == null) {
+      return false;
+    }
+    if (!new File(paramString1).exists()) {
       return false;
     }
     Object localObject;
     if (isAliyunOs())
     {
-      if ((paramClassLoader instanceof PathClassLoader)) {}
-      for (localObject = PathClassLoader.class;; localObject = DexClassLoader.class)
-      {
-        injectInAliyunOs(paramContext, paramClassLoader, (Class)localObject, paramString1, paramString2, paramBoolean);
-        return true;
-      }
-    }
-    if (!hasBaseDexClassLoader()) {
-      if ((paramClassLoader instanceof PathClassLoader))
-      {
+      if ((paramClassLoader instanceof PathClassLoader)) {
         localObject = PathClassLoader.class;
-        injectBelowApiLevel14(paramContext, paramClassLoader, (Class)localObject, paramString1, paramString2, paramBoolean);
+      } else {
+        localObject = DexClassLoader.class;
       }
-    }
-    for (;;)
-    {
+      injectInAliyunOs(paramContext, paramClassLoader, (Class)localObject, paramString1, paramString2, paramBoolean);
       return true;
-      localObject = DexClassLoader.class;
-      break;
-      injectAboveEqualApiLevel14(paramContext, paramClassLoader, paramString1, paramString2, paramBoolean);
     }
+    if (!hasBaseDexClassLoader())
+    {
+      if ((paramClassLoader instanceof PathClassLoader)) {
+        localObject = PathClassLoader.class;
+      } else {
+        localObject = DexClassLoader.class;
+      }
+      injectBelowApiLevel14(paramContext, paramClassLoader, (Class)localObject, paramString1, paramString2, paramBoolean);
+      return true;
+    }
+    injectAboveEqualApiLevel14(paramContext, paramClassLoader, paramString1, paramString2, paramBoolean);
+    return true;
   }
   
   private static void injectAboveEqualApiLevel14(Context paramContext, ClassLoader paramClassLoader, String paramString1, String paramString2, boolean paramBoolean)
   {
-    QMLog.d("QzoneModuleInjector", "injectAboveEqualApiLevel14, libPathL:" + paramString1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("injectAboveEqualApiLevel14, libPathL:");
+    localStringBuilder.append(paramString1);
+    QMLog.d("QzoneModuleInjector", localStringBuilder.toString());
     paramContext = new DexClassLoader(paramString1, paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramContext.getClassLoader());
     paramContext = combineArray(getDexElements(getPathList(paramClassLoader)), getDexElements(getPathList(paramContext)), paramBoolean);
     paramString1 = getPathList(paramClassLoader);
@@ -175,7 +177,12 @@ public final class QzoneModuleInjector
     new DexClassLoader(paramString1, paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramClassLoader);
     String str = new File(paramString1).getName().replaceAll("\\.[a-zA-Z0-9]+", ".lex");
     Class localClass = Class.forName("dalvik.system.LexClassLoader");
-    paramContext = localClass.getConstructor(new Class[] { String.class, String.class, String.class, ClassLoader.class }).newInstance(new Object[] { paramContext.getDir("dex", 0).getAbsolutePath() + File.separator + str, paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramClassLoader });
+    Constructor localConstructor = localClass.getConstructor(new Class[] { String.class, String.class, String.class, ClassLoader.class });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getDir("dex", 0).getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(str);
+    paramContext = localConstructor.newInstance(new Object[] { localStringBuilder.toString(), paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramClassLoader });
     if (!TextUtils.isEmpty(paramString2)) {
       localClass.getMethod("loadClass", new Class[] { String.class }).invoke(paramContext, new Object[] { paramString2 });
     }
@@ -194,7 +201,11 @@ public final class QzoneModuleInjector
       Class.forName("dalvik.system.LexClassLoader");
       return true;
     }
-    catch (ClassNotFoundException localClassNotFoundException) {}
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      label8:
+      break label8;
+    }
     return false;
   }
   
@@ -202,28 +213,27 @@ public final class QzoneModuleInjector
   {
     Object localObject = paramObject.getClass().getComponentType();
     int m = Array.getLength(paramObject);
-    if ((paramInt < 0) || (paramInt >= m)) {
-      return paramObject;
-    }
-    localObject = Array.newInstance((Class)localObject, m - 1);
-    int j = 0;
-    int i = 0;
-    if (j < m)
+    if (paramInt >= 0)
     {
-      if (j == paramInt) {
-        break label82;
+      if (paramInt >= m) {
+        return paramObject;
       }
-      int k = i + 1;
-      Array.set(localObject, i, Array.get(paramObject, j));
-      i = k;
-    }
-    label82:
-    for (;;)
-    {
-      j += 1;
-      break;
+      localObject = Array.newInstance((Class)localObject, m - 1);
+      int i = 0;
+      int k;
+      for (int j = 0; i < m; j = k)
+      {
+        k = j;
+        if (i != paramInt)
+        {
+          Array.set(localObject, j, Array.get(paramObject, i));
+          k = j + 1;
+        }
+        i += 1;
+      }
       return localObject;
     }
+    return paramObject;
   }
   
   private static void setField(Object paramObject1, Class<?> paramClass, String paramString, Object paramObject2)
@@ -243,8 +253,15 @@ public final class QzoneModuleInjector
       setField(paramClassLoader, paramClassLoader.getClass(), "dexElements", localObject);
       return "Success";
     }
-    catch (Throwable paramClassLoader) {}
-    return "unloadDexAboveEqualApiLevel14 error: " + Log.getStackTraceString(null);
+    catch (Throwable paramClassLoader)
+    {
+      label31:
+      break label31;
+    }
+    paramClassLoader = new StringBuilder();
+    paramClassLoader.append("unloadDexAboveEqualApiLevel14 error: ");
+    paramClassLoader.append(Log.getStackTraceString(null));
+    return paramClassLoader.toString();
   }
   
   @TargetApi(14)
@@ -263,8 +280,11 @@ public final class QzoneModuleInjector
     catch (Throwable paramClassLoader)
     {
       paramClassLoader.printStackTrace();
+      paramClass = new StringBuilder();
+      paramClass.append("unloadDexBelowApiLevel14 error: ");
+      paramClass.append(Log.getStackTraceString(paramClassLoader));
     }
-    return "unloadDexBelowApiLevel14 error: " + Log.getStackTraceString(paramClassLoader);
+    return paramClass.toString();
   }
   
   public static String unloadDexElement(ClassLoader paramClassLoader, int paramInt)
@@ -272,25 +292,33 @@ public final class QzoneModuleInjector
     Object localObject;
     if (isAliyunOs())
     {
-      if ((paramClassLoader instanceof PathClassLoader)) {}
-      for (localObject = PathClassLoader.class;; localObject = DexClassLoader.class) {
-        return unloadDexInAliyunOs(paramClassLoader, (Class)localObject, 0);
+      if ((paramClassLoader instanceof PathClassLoader)) {
+        localObject = PathClassLoader.class;
+      } else {
+        localObject = DexClassLoader.class;
       }
+      return unloadDexInAliyunOs(paramClassLoader, (Class)localObject, 0);
     }
-    if (!hasBaseDexClassLoader()) {
+    if (!hasBaseDexClassLoader()) {}
+    for (;;)
+    {
       try
       {
-        if ((paramClassLoader instanceof PathClassLoader)) {}
-        for (localObject = PathClassLoader.class;; localObject = DexClassLoader.class) {
-          return unloadDexBelowApiLevel14(paramClassLoader, (Class)localObject, 0);
+        if (!(paramClassLoader instanceof PathClassLoader)) {
+          break label78;
         }
-        return unloadDexAboveEqualApiLevel14(paramClassLoader, 0);
+        localObject = PathClassLoader.class;
+        paramClassLoader = unloadDexBelowApiLevel14(paramClassLoader, (Class)localObject, 0);
+        return paramClassLoader;
       }
       catch (Throwable paramClassLoader)
       {
         Log.e("QzoneModuleInjector", "fail to inject", paramClassLoader);
         return "";
       }
+      return unloadDexAboveEqualApiLevel14(paramClassLoader, 0);
+      label78:
+      localObject = DexClassLoader.class;
     }
   }
   
@@ -309,13 +337,16 @@ public final class QzoneModuleInjector
     catch (Throwable paramClassLoader)
     {
       paramClassLoader.printStackTrace();
+      paramClass = new StringBuilder();
+      paramClass.append("unloadDexInAliyunOs error: ");
+      paramClass.append(Log.getStackTraceString(paramClassLoader));
     }
-    return "unloadDexInAliyunOs error: " + Log.getStackTraceString(paramClassLoader);
+    return paramClass.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.QzoneModuleInjector
  * JD-Core Version:    0.7.0.1
  */

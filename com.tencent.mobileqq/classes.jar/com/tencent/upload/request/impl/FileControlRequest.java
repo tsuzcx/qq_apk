@@ -83,13 +83,34 @@ public class FileControlRequest
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("taskId=").append(getTaskId()).append(" reqId=").append(getRequestId()).append(" cmd=").append(getCmdId()).append(" mUin=").append(this.mUin).append(" mAppid=").append(this.mAppid).append(" mChecksum=").append(this.mChecksum).append(" mCheckType=").append(this.mCheckType).append(" mFileLength=").append(this.mFileLength).append(" mModel=").append(this.mModel).append(" mSession=").append(this.mSession).append(" mNeedIpRedirect=").append(this.mNeedIpRedirect);
+    localStringBuilder.append("taskId=");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(" reqId=");
+    localStringBuilder.append(getRequestId());
+    localStringBuilder.append(" cmd=");
+    localStringBuilder.append(getCmdId());
+    localStringBuilder.append(" mUin=");
+    localStringBuilder.append(this.mUin);
+    localStringBuilder.append(" mAppid=");
+    localStringBuilder.append(this.mAppid);
+    localStringBuilder.append(" mChecksum=");
+    localStringBuilder.append(this.mChecksum);
+    localStringBuilder.append(" mCheckType=");
+    localStringBuilder.append(this.mCheckType);
+    localStringBuilder.append(" mFileLength=");
+    localStringBuilder.append(this.mFileLength);
+    localStringBuilder.append(" mModel=");
+    localStringBuilder.append(this.mModel);
+    localStringBuilder.append(" mSession=");
+    localStringBuilder.append(this.mSession);
+    localStringBuilder.append(" mNeedIpRedirect=");
+    localStringBuilder.append(this.mNeedIpRedirect);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.request.impl.FileControlRequest
  * JD-Core Version:    0.7.0.1
  */

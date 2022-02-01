@@ -6,25 +6,12 @@ public final class b
   implements Serializable
 {
   public static final int a = 1;
-  public static final b b;
+  public static final b b = new b(0, 1, "CliLogCfgByTime");
   public static final int c = 2;
-  public static final b d;
-  private static b[] f;
+  public static final b d = new b(1, 2, "CliLogCfgSetLevel");
+  private static b[] f = new b[2];
   private int g;
   private String h = new String();
-  
-  static
-  {
-    if (!b.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      e = bool;
-      f = new b[2];
-      b = new b(0, 1, "CliLogCfgByTime");
-      d = new b(1, 2, "CliLogCfgSetLevel");
-      return;
-    }
-  }
   
   private b(int paramInt1, int paramInt2, String paramString)
   {
@@ -36,33 +23,49 @@ public final class b
   public static b a(int paramInt)
   {
     int i = 0;
-    while (i < f.length)
+    for (;;)
     {
-      if (f[i].a() == paramInt) {
+      localObject = f;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (localObject[i].a() == paramInt) {
         return f[i];
       }
       i += 1;
     }
-    if (!e) {
-      throw new AssertionError();
+    if (e) {
+      return null;
     }
-    return null;
+    Object localObject = new AssertionError();
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public static b a(String paramString)
   {
     int i = 0;
-    while (i < f.length)
+    for (;;)
     {
-      if (f[i].toString().equals(paramString)) {
+      b[] arrayOfb = f;
+      if (i >= arrayOfb.length) {
+        break;
+      }
+      if (arrayOfb[i].toString().equals(paramString)) {
         return f[i];
       }
       i += 1;
     }
-    if (!e) {
-      throw new AssertionError();
+    if (e) {
+      return null;
     }
-    return null;
+    paramString = new AssertionError();
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public int a()
@@ -77,7 +80,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.serverconfig.b
  * JD-Core Version:    0.7.0.1
  */

@@ -40,40 +40,37 @@ public class QQAudioUtils
         localObject = (IAudioFocusLossProcessor)((Class)localObject).newInstance();
         b.add(localObject);
       }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        QLog.e("QQAudioUtils", 1, "initAudioFocusLossProcessor error! ", localIllegalAccessException);
-      }
       catch (InstantiationException localInstantiationException)
       {
         QLog.e("QQAudioUtils", 1, "initAudioFocusLossProcessor error! ", localInstantiationException);
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        QLog.e("QQAudioUtils", 1, "initAudioFocusLossProcessor error! ", localIllegalAccessException);
       }
     }
   }
   
   public static byte a(InputStream paramInputStream)
   {
-    byte b1 = -1;
     byte[] arrayOfByte = new byte[10];
     paramInputStream.read(arrayOfByte, 0, arrayOfByte.length);
     if (a(arrayOfByte)) {
-      b1 = arrayOfByte[0];
+      return arrayOfByte[0];
     }
-    return b1;
+    return -1;
   }
   
   public static int a(byte paramByte)
   {
-    int j = 0;
-    int i = j;
     if (paramByte >= 0)
     {
-      i = j;
-      if (paramByte < jdField_a_of_type_ArrayOfInt.length) {
-        i = jdField_a_of_type_ArrayOfInt[paramByte];
+      int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+      if (paramByte < arrayOfInt.length) {
+        return arrayOfInt[paramByte];
       }
     }
-    return i;
+    return 0;
   }
   
   public static int a(byte paramByte, InputStream paramInputStream)
@@ -115,79 +112,84 @@ public class QQAudioUtils
   @TargetApi(8)
   public static boolean a(Context paramContext, boolean paramBoolean)
   {
-    if (paramContext == null) {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramContext == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("AudioUtil", 2, "context is null.");
       }
-    }
-    do
-    {
       return false;
-      if (VersionUtils.b()) {
-        break;
+    }
+    if (!VersionUtils.b())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQAudioUtils", 2, "Android 2.1 and below can not stop music");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQAudioUtils", 2, "Android 2.1 and below can not stop music");
-    return false;
+      return false;
+    }
     paramContext = (AudioManager)paramContext.getSystemService("audio");
     if (paramBoolean)
     {
-      if (paramContext.requestAudioFocus(null, 3, 2) == 1) {}
-      for (bool = true;; bool = false)
-      {
-        MediaFocusManager.a().a(1, jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$OnMediaFocusChangeListener);
-        if (QLog.isColorLevel()) {
-          QLog.d("QQAudioUtils", 2, "pauseMusic bMute=" + paramBoolean + " result=" + bool);
-        }
-        return bool;
+      if (paramContext.requestAudioFocus(null, 3, 2) == 1) {
+        bool1 = true;
       }
+      MediaFocusManager.a().a(1, jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$OnMediaFocusChangeListener);
     }
-    for (;;)
+    else
     {
+      bool1 = bool3;
       try
       {
-        for (;;)
-        {
-          int i = paramContext.abandonAudioFocus(null);
-          if (i != 1) {
-            break label173;
-          }
-          bool = true;
-          try
-          {
-            ThreadManager.getSubThreadHandler().postDelayed(new QQAudioUtils.2(), 1000L);
-          }
-          catch (NullPointerException paramContext) {}
+        if (paramContext.abandonAudioFocus(null) == 1) {
+          bool1 = true;
         }
+        bool2 = bool1;
+        ThreadManager.getSubThreadHandler().postDelayed(new QQAudioUtils.2(), 1000L);
       }
       catch (NullPointerException paramContext)
       {
-        label173:
-        bool = false;
-        continue;
+        QLog.e("QQAudioUtils", 1, "caught npe", paramContext);
+        bool1 = bool2;
       }
-      QLog.e("QQAudioUtils", 1, "caught npe", paramContext);
-      break;
-      bool = false;
     }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("pauseMusic bMute=");
+      paramContext.append(paramBoolean);
+      paramContext.append(" result=");
+      paramContext.append(bool1);
+      QLog.d("QQAudioUtils", 2, paramContext.toString());
+    }
+    return bool1;
   }
   
   public static boolean a(byte[] paramArrayOfByte)
   {
-    boolean bool = true;
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length != 10)) {
-      bool = false;
-    }
-    String str;
-    do
+    if (paramArrayOfByte != null)
     {
-      return bool;
-      str = PkgTools.utf8Byte2String(paramArrayOfByte, 1, 9);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQAudioUtils", 2, "getSilkFs " + paramArrayOfByte[0] + str);
+      if (paramArrayOfByte.length != 10) {
+        return false;
       }
-    } while (str.startsWith("#!SILK_V"));
-    QLog.e("QQAudioUtils", 1, "isSilkFileHead: headString = " + str);
+      String str = PkgTools.utf8Byte2String(paramArrayOfByte, 1, 9);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSilkFs ");
+        localStringBuilder.append(paramArrayOfByte[0]);
+        localStringBuilder.append(str);
+        QLog.d("QQAudioUtils", 2, localStringBuilder.toString());
+      }
+      if (str.startsWith("#!SILK_V")) {
+        return true;
+      }
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("isSilkFileHead: headString = ");
+      paramArrayOfByte.append(str);
+      QLog.e("QQAudioUtils", 1, paramArrayOfByte.toString());
+    }
     return false;
   }
   
@@ -200,7 +202,7 @@ public class QQAudioUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.QQAudioUtils
  * JD-Core Version:    0.7.0.1
  */

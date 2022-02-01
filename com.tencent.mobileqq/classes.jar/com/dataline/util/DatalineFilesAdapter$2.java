@@ -23,47 +23,39 @@ class DatalineFilesAdapter$2
   
   public void onClick(View paramView)
   {
-    boolean bool = true;
     Object localObject = (DatalineFilesAdapter.ItemHolder)paramView.getTag();
     int i = DataLineMsgRecord.getDevTypeBySeId(((DatalineFilesAdapter.ItemHolder)localObject).a.jdField_a_of_type_Long);
     DataLineMsgRecord localDataLineMsgRecord = DatalineFilesAdapter.a(this.a).getMessageFacade().a(i).a(((DatalineFilesAdapter.ItemHolder)localObject).a.jdField_a_of_type_Long);
-    if (localDataLineMsgRecord == null) {}
-    for (;;)
+    if (localDataLineMsgRecord != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       DLFileInfo localDLFileInfo = ((DatalineFilesAdapter.ItemHolder)localObject).a;
-      switch (localDLFileInfo.jdField_a_of_type_Int)
+      i = localDLFileInfo.jdField_a_of_type_Int;
+      boolean bool = false;
+      if (i != 0)
       {
-      default: 
-        break;
-      case 0: 
-      case 3: 
-        localObject = (DataLineHandler)DatalineFilesAdapter.a(this.a).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-        if ((localDataLineMsgRecord.strMoloKey != null) && (!localDataLineMsgRecord.isReportPause))
+        if ((i != 1) && (i != 2))
         {
-          localDataLineMsgRecord.isReportPause = true;
-          DataLineReportUtil.m(DatalineFilesAdapter.a(this.a));
+          if (i == 3) {
+            break label297;
+          }
+          if (i != 4)
+          {
+            if (i != 5) {
+              break label386;
+            }
+            DatalineFilesAdapter.a(this.a, localDataLineMsgRecord);
+            break label386;
+          }
         }
-        ((DataLineHandler)localObject).a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, false);
-        if (localDataLineMsgRecord.isSendFromLocal()) {
-          localDLFileInfo.jdField_a_of_type_Int = 1;
-        }
-        break;
-      case 1: 
-      case 2: 
-      case 4: 
-        if (NetworkUtil.d(DatalineFilesAdapter.a(this.a)))
+        if (NetworkUtil.isNetSupport(DatalineFilesAdapter.a(this.a)))
         {
           if ((FileManagerUtil.a()) && (localDLFileInfo.b > 3145728L))
           {
-            if (localDLFileInfo.jdField_a_of_type_Int == 1) {}
-            for (;;)
-            {
-              FileManagerUtil.a(bool, DatalineFilesAdapter.a(this.a), new DatalineFilesAdapter.2.1(this, localDataLineMsgRecord, (DatalineFilesAdapter.ItemHolder)localObject));
-              break;
-              bool = false;
+            if (localDLFileInfo.jdField_a_of_type_Int == 1) {
+              bool = true;
             }
+            FileManagerUtil.a(bool, DatalineFilesAdapter.a(this.a), new DatalineFilesAdapter.2.1(this, localDataLineMsgRecord, (DatalineFilesAdapter.ItemHolder)localObject));
+            break label386;
           }
           i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
           DataLineMsgSet localDataLineMsgSet = DatalineFilesAdapter.a(this.a).getDataLineMsgProxy(i).a(localDataLineMsgRecord.sessionid);
@@ -76,28 +68,35 @@ class DatalineFilesAdapter$2
               DataLineReportUtil.e(DatalineFilesAdapter.a(this.a));
             }
             DatalineFilesAdapter.a(this.a, (DatalineFilesAdapter.ItemHolder)localObject, localDataLineMsgRecord);
+            break label386;
           }
-          else
-          {
-            DatalineFilesAdapter.b(this.a, (DatalineFilesAdapter.ItemHolder)localObject, localDataLineMsgRecord);
-          }
+          DatalineFilesAdapter.b(this.a, (DatalineFilesAdapter.ItemHolder)localObject, localDataLineMsgRecord);
+          break label386;
         }
-        else
-        {
-          FMToastUtil.a(2131694510);
-        }
-        break;
-      case 5: 
-        DatalineFilesAdapter.a(this.a, localDataLineMsgRecord);
-        continue;
+        FMToastUtil.a(2131694475);
+        break label386;
+      }
+      label297:
+      localObject = (DataLineHandler)DatalineFilesAdapter.a(this.a).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      if ((localDataLineMsgRecord.strMoloKey != null) && (!localDataLineMsgRecord.isReportPause))
+      {
+        localDataLineMsgRecord.isReportPause = true;
+        DataLineReportUtil.m(DatalineFilesAdapter.a(this.a));
+      }
+      ((DataLineHandler)localObject).a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, false);
+      if (localDataLineMsgRecord.isSendFromLocal()) {
+        localDLFileInfo.jdField_a_of_type_Int = 1;
+      } else {
         localDLFileInfo.jdField_a_of_type_Int = 4;
       }
     }
+    label386:
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.DatalineFilesAdapter.2
  * JD-Core Version:    0.7.0.1
  */

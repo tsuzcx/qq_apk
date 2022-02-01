@@ -28,7 +28,15 @@ public class InviteToGroupInfo$UinInfo
   
   public String toString()
   {
-    return "UinInfo{uin=" + this.a + ", groupCode=" + this.b + ", confCode=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UinInfo{uin=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", groupCode=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", confCode=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -40,7 +48,7 @@ public class InviteToGroupInfo$UinInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.InviteToGroupInfo.UinInfo
  * JD-Core Version:    0.7.0.1
  */

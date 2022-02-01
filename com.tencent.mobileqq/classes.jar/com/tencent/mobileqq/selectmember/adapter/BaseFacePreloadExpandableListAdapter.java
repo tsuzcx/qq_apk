@@ -1,0 +1,212 @@
+package com.tencent.mobileqq.selectmember.adapter;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.adapter.FacePreloadHolder.ViewHolder;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.face.IFaceDecoder;
+import com.tencent.mobileqq.avatar.api.IQQAvatarService;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.utils.BaseImageUtil;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.PinnedHeaderExpandableListView.ExpandableListAdapter;
+
+public abstract class BaseFacePreloadExpandableListAdapter
+  extends PinnedHeaderExpandableListView.ExpandableListAdapter
+  implements DecodeTaskCompletionListener, AbsListView.OnScrollListener
+{
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
+  protected ExpandableListView a;
+  
+  public BaseFacePreloadExpandableListAdapter(Context paramContext, AppInterface paramAppInterface, ExpandableListView paramExpandableListView)
+  {
+    this.jdField_a_of_type_ComTencentWidgetExpandableListView = null;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
+    BaseImageUtil.f();
+  }
+  
+  protected void a(FacePreloadHolder.ViewHolder paramViewHolder, Bitmap paramBitmap)
+  {
+    a(paramViewHolder, paramBitmap, true);
+  }
+  
+  protected void a(FacePreloadHolder.ViewHolder paramViewHolder, Bitmap paramBitmap, boolean paramBoolean)
+  {
+    if (paramViewHolder.jdField_c_of_type_AndroidWidgetImageView == null) {
+      return;
+    }
+    if (AppConstants.DATALINE_PC_UIN.equals(paramViewHolder.a))
+    {
+      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844282);
+      return;
+    }
+    if (AppConstants.DATALINE_IPAD_UIN.equals(paramViewHolder.a))
+    {
+      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844277);
+      return;
+    }
+    if (AppConstants.DATALINE_PRINTER_UIN.equals(paramViewHolder.a))
+    {
+      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844285);
+      return;
+    }
+    if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(paramViewHolder.a))
+    {
+      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130839566);
+      return;
+    }
+    Bitmap localBitmap = paramBitmap;
+    if (paramBitmap == null) {
+      localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(paramViewHolder.jdField_c_of_type_Int, paramViewHolder.a);
+    }
+    paramBitmap = localBitmap;
+    if (localBitmap == null)
+    {
+      if (paramBoolean) {
+        localBitmap = BaseImageUtil.f();
+      }
+      paramBitmap = localBitmap;
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramViewHolder.a, paramViewHolder.jdField_c_of_type_Int, false);
+        paramBitmap = localBitmap;
+      }
+    }
+    if (paramBitmap != null) {
+      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+    }
+  }
+  
+  protected void a(String paramString, Bitmap paramBitmap)
+  {
+    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
+      if ((localObject != null) && ((localObject instanceof FacePreloadHolder.ViewHolder)))
+      {
+        localObject = (FacePreloadHolder.ViewHolder)localObject;
+        if (paramString == null)
+        {
+          a((FacePreloadHolder.ViewHolder)localObject, null, false);
+        }
+        else if (paramString.equals(((FacePreloadHolder.ViewHolder)localObject).a))
+        {
+          ((FacePreloadHolder.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+          return;
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  public void b()
+  {
+    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    if (localIFaceDecoder != null) {
+      localIFaceDecoder.destory();
+    }
+  }
+  
+  public void configHeaderView(View paramView, int paramInt) {}
+  
+  public Object getChild(int paramInt1, int paramInt2)
+  {
+    return null;
+  }
+  
+  public long getChildId(int paramInt1, int paramInt2)
+  {
+    return 0L;
+  }
+  
+  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public int getChildrenCount(int paramInt)
+  {
+    return 0;
+  }
+  
+  public Object getGroup(int paramInt)
+  {
+    return null;
+  }
+  
+  public int getGroupCount()
+  {
+    return 0;
+  }
+  
+  public long getGroupId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public int getHeaderViewLayoutResourceId()
+  {
+    return 0;
+  }
+  
+  public boolean hasStableIds()
+  {
+    return false;
+  }
+  
+  public boolean isChildSelectable(int paramInt1, int paramInt2)
+  {
+    return false;
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) && (paramBitmap != null)) {
+      a(paramString, paramBitmap);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.pause();
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
+      a(null, null);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.selectmember.adapter.BaseFacePreloadExpandableListAdapter
+ * JD-Core Version:    0.7.0.1
+ */

@@ -16,24 +16,21 @@ public class ScreenShareReportHelper
   {
     int j = paramSessionInfo.d;
     int i = j;
-    if (paramSessionInfo.c != null)
+    if (paramSessionInfo.b != null)
     {
       i = j;
-      if (paramSessionInfo.c.startsWith(String.valueOf(100)))
+      if (paramSessionInfo.b.startsWith(String.valueOf(100)))
       {
-        if (j != 3) {
-          break label40;
+        if (j == 3) {
+          return 1;
         }
-        i = 1;
+        i = j;
+        if (j == 4) {
+          i = 2;
+        }
       }
     }
-    label40:
-    do
-    {
-      return i;
-      i = j;
-    } while (j != 4);
-    return 2;
+    return i;
   }
   
   public static int a(String paramString)
@@ -48,22 +45,20 @@ public class ScreenShareReportHelper
   private static ScreenShareReportHelper.ScreenShareReportInfo a(String paramString, boolean paramBoolean)
   {
     if (TextUtils.isEmpty(paramString)) {
-      localObject = null;
+      return null;
     }
-    do
+    ScreenShareReportHelper.ScreenShareReportInfo localScreenShareReportInfo2 = (ScreenShareReportHelper.ScreenShareReportInfo)a.get(paramString);
+    ScreenShareReportHelper.ScreenShareReportInfo localScreenShareReportInfo1 = localScreenShareReportInfo2;
+    if (localScreenShareReportInfo2 == null)
     {
-      ScreenShareReportHelper.ScreenShareReportInfo localScreenShareReportInfo;
-      do
+      localScreenShareReportInfo1 = localScreenShareReportInfo2;
+      if (paramBoolean)
       {
-        return localObject;
-        localScreenShareReportInfo = (ScreenShareReportHelper.ScreenShareReportInfo)a.get(paramString);
-        localObject = localScreenShareReportInfo;
-      } while (localScreenShareReportInfo != null);
-      localObject = localScreenShareReportInfo;
-    } while (!paramBoolean);
-    Object localObject = new ScreenShareReportHelper.ScreenShareReportInfo(null);
-    a.put(paramString, localObject);
-    return localObject;
+        localScreenShareReportInfo1 = new ScreenShareReportHelper.ScreenShareReportInfo(null);
+        a.put(paramString, localScreenShareReportInfo1);
+      }
+    }
+    return localScreenShareReportInfo1;
   }
   
   public static void a(String paramString)
@@ -82,8 +77,18 @@ public class ScreenShareReportHelper
     if (localScreenShareReportInfo != null) {
       localScreenShareReportInfo.jdField_a_of_type_Int = paramInt;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ScreenShareReportHelper", 2, "saveScreenShareFromType, sessionId: " + paramString1 + ", screenShareFromType: " + paramInt + ", from: " + paramString2 + ", info: " + localScreenShareReportInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveScreenShareFromType, sessionId: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", screenShareFromType: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", from: ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(", info: ");
+      localStringBuilder.append(localScreenShareReportInfo);
+      QLog.i("ScreenShareReportHelper", 2, localStringBuilder.toString());
     }
   }
   
@@ -100,8 +105,16 @@ public class ScreenShareReportHelper
         b("0X800BA72", 0, String.valueOf(localScreenShareReportInfo.jdField_a_of_type_Int));
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ScreenShareReportHelper", 2, "markScreenShareStart, sessionId: " + paramString1 + ", from: " + paramString2 + ", info: " + localScreenShareReportInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("markScreenShareStart, sessionId: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", from: ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(", info: ");
+      localStringBuilder.append(localScreenShareReportInfo);
+      QLog.i("ScreenShareReportHelper", 2, localStringBuilder.toString());
     }
   }
   
@@ -115,8 +128,8 @@ public class ScreenShareReportHelper
   
   public static void b(String paramString1, String paramString2)
   {
-    long l1 = 0L;
     ScreenShareReportHelper.ScreenShareReportInfo localScreenShareReportInfo = a(paramString1, false);
+    long l1 = 0L;
     long l2 = l1;
     if (localScreenShareReportInfo != null)
     {
@@ -128,14 +141,24 @@ public class ScreenShareReportHelper
       a.remove(paramString1);
       l2 = l1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ScreenShareReportHelper", 2, "markScreenShareEnd, sessionId: " + paramString1 + ", from: " + paramString2 + ", cost: " + l2 + ", info: " + localScreenShareReportInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("markScreenShareEnd, sessionId: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", from: ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(", cost: ");
+      localStringBuilder.append(l2);
+      localStringBuilder.append(", info: ");
+      localStringBuilder.append(localScreenShareReportInfo);
+      QLog.i("ScreenShareReportHelper", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.screenshare.ScreenShareReportHelper
  * JD-Core Version:    0.7.0.1
  */

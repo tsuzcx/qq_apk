@@ -7,6 +7,7 @@ import com.tencent.tav.coremedia.CMTimeRange;
 
 public abstract interface IDecoder
 {
+  public static final String EXTRA_INFO_KEY_DECODE_INFO = "extra_info_key_decode_info";
   public static final long SAMPLE_STATE_ERROR = -3L;
   public static final long SAMPLE_STATE_FAILED = -2L;
   public static final long SAMPLE_STATE_FINISH = -1L;
@@ -27,7 +28,7 @@ public abstract interface IDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.IDecoder
  * JD-Core Version:    0.7.0.1
  */

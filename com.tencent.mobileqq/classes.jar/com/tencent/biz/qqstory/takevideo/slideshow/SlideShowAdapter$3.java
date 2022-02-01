@@ -17,22 +17,25 @@ class SlideShowAdapter$3
   {
     int i = this.a.a.getWidth();
     int j = this.a.a.getHeight();
-    if ((i == 0) || (j == 0)) {
-      return;
-    }
-    if (SlideShowAdapter.a(this.this$0) == null)
+    if (i != 0)
     {
-      int k = DisplayUtil.a(SlideShowAdapter.a(this.this$0), 1.0F);
-      new Paint().setTextSize(DisplayUtil.a(SlideShowAdapter.a(this.this$0), 11.0F));
-      int m = DisplayUtil.a(SlideShowAdapter.a(this.this$0), 2.0F);
-      SlideShowAdapter.a(this.this$0, GridListAdapter.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
+      if (j == 0) {
+        return;
+      }
+      if (SlideShowAdapter.a(this.this$0) == null)
+      {
+        int k = DisplayUtil.a(SlideShowAdapter.a(this.this$0), 1.0F);
+        new Paint().setTextSize(DisplayUtil.a(SlideShowAdapter.a(this.this$0), 11.0F));
+        int m = DisplayUtil.a(SlideShowAdapter.a(this.this$0), 2.0F);
+        SlideShowAdapter.a(this.this$0, GridListAdapter.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
+      }
+      this.a.a.setBackgroundDrawable(new BitmapDrawable(SlideShowAdapter.a(this.this$0).getResources(), SlideShowAdapter.a(this.this$0)));
     }
-    this.a.a.setBackgroundDrawable(new BitmapDrawable(SlideShowAdapter.a(this.this$0).getResources(), SlideShowAdapter.a(this.this$0)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideShowAdapter.3
  * JD-Core Version:    0.7.0.1
  */

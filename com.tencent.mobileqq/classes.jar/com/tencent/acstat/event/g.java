@@ -30,8 +30,9 @@ public class g
     if (this.e != null) {
       paramJSONObject.put("ut", this.e.getUserType());
     }
-    if (this.p != null) {
-      paramJSONObject.put("cfg", this.p);
+    JSONObject localJSONObject = this.p;
+    if (localJSONObject != null) {
+      paramJSONObject.put("cfg", localJSONObject);
     }
     if (StatCommonHelper.needCheckTime(this.n)) {
       paramJSONObject.put("ncts", 1);

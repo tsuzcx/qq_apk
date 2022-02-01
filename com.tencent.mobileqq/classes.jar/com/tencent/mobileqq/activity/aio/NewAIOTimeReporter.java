@@ -21,24 +21,27 @@ public class NewAIOTimeReporter
   
   public static NewAIOTimeReporter a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter == null) {
-        jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter = new NewAIOTimeReporter();
+    if (jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter == null) {
+          jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter = new NewAIOTimeReporter();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter;
   }
   
   private boolean a()
   {
-    if (new Random().nextInt(100) != 1) {}
-    while ((StartupTracker.a <= 0L) || (StartupTracker.a < 1000L)) {
+    if (new Random().nextInt(100) != 1) {
       return false;
     }
-    return true;
+    if (StartupTracker.a <= 0L) {
+      return false;
+    }
+    return StartupTracker.a >= 1000L;
   }
   
   private void b()
@@ -77,7 +80,7 @@ public class NewAIOTimeReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.NewAIOTimeReporter
  * JD-Core Version:    0.7.0.1
  */

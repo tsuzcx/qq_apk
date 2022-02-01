@@ -33,13 +33,18 @@ public final class mt
   
   public final void a(long paramLong)
   {
-    if ((paramLong > 0L) && (this.e != null))
+    if (paramLong > 0L)
     {
-      this.e.b(paramLong);
-      return;
+      locala = this.e;
+      if (locala != null)
+      {
+        locala.b(paramLong);
+        return;
+      }
     }
-    if (this.e != null) {
-      this.e.a();
+    mt.a locala = this.e;
+    if (locala != null) {
+      locala.a();
     }
     c();
     b();
@@ -47,10 +52,11 @@ public final class mt
   
   public final boolean a()
   {
-    if (this.c == null) {
+    MaskLayerOptions localMaskLayerOptions = this.c;
+    if (localMaskLayerOptions == null) {
       return false;
     }
-    int i = this.c.getColor();
+    int i = localMaskLayerOptions.getColor();
     if (this.e == null) {
       this.e = new mt.a(this, a(i), b(i), i & 0xFF, c(i));
     }
@@ -67,9 +73,10 @@ public final class mt
   
   public final void c()
   {
-    if (this.b != null)
+    pn localpn = this.b;
+    if (localpn != null)
     {
-      this.b.az.d(this.d);
+      localpn.az.d(this.d);
       this.b.az.b.k();
       this.d = -1;
     }
@@ -77,7 +84,7 @@ public final class mt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.mt
  * JD-Core Version:    0.7.0.1
  */

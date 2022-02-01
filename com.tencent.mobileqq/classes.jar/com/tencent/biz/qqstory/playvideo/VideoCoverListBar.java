@@ -49,38 +49,39 @@ public class VideoCoverListBar
   
   private void a(int paramInt, List<String> paramList)
   {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      ThreadManager.getUIHandler().post(new VideoCoverListBar.2(this, paramInt, paramList));
-    }
-    do
+    if (Thread.currentThread() != Looper.getMainLooper().getThread())
     {
+      ThreadManager.getUIHandler().post(new VideoCoverListBar.2(this, paramInt, paramList));
       return;
-      if (paramList == null) {}
-      for (this.jdField_a_of_type_JavaUtilList = new ArrayList();; this.jdField_a_of_type_JavaUtilList = paramList)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter.notifyDataSetChanged();
-        if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-          break;
-        }
-        setVisibility(8);
-        SLog.b("Q.qqstory.player:VideoCoverListBar", "video list too small, hide");
-        return;
-      }
-      setVisibility(0);
-      if (paramInt >= 0) {
-        ThreadManager.getUIHandler().postDelayed(new VideoCoverListBar.3(this, paramInt), 30L);
-      }
-    } while ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()));
-    StoryReportor.a("play_video", "exp_mini", 0, 0, new String[] { "2", "", "", (String)this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+    }
+    if (paramList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    } else {
+      this.jdField_a_of_type_JavaUtilList = paramList;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter.notifyDataSetChanged();
+    if (this.jdField_a_of_type_JavaUtilList.size() <= 1)
+    {
+      setVisibility(8);
+      SLog.b("Q.qqstory.player:VideoCoverListBar", "video list too small, hide");
+      return;
+    }
+    setVisibility(0);
+    if (paramInt >= 0) {
+      ThreadManager.getUIHandler().postDelayed(new VideoCoverListBar.3(this, paramInt), 30L);
+    }
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      StoryReportor.a("play_video", "exp_mini", 0, 0, new String[] { "2", "", "", (String)this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+    }
   }
   
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager = ((StoryManager)SuperManager.a(5));
     int i = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.jdField_a_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131299060);
-    this.jdField_b_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131299059);
-    this.c = getContext().getResources().getDimensionPixelOffset(2131299057);
+    this.jdField_a_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131299065);
+    this.jdField_b_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131299064);
+    this.c = getContext().getResources().getDimensionPixelOffset(2131299062);
     this.d = UIUtils.a(paramContext, 11.0F);
     this.jdField_a_of_type_ComTencentMobileqqDrawableEmptyDrawable = new EmptyDrawable(-2631721, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     this.jdField_b_of_type_ComTencentMobileqqDrawableEmptyDrawable = new EmptyDrawable(0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
@@ -139,7 +140,7 @@ public class VideoCoverListBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverListBar
  * JD-Core Version:    0.7.0.1
  */

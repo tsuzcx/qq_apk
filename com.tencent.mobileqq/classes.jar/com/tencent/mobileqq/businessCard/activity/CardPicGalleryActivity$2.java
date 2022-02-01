@@ -13,14 +13,14 @@ class CardPicGalleryActivity$2
   {
     if (!this.a.isFinishing())
     {
-      this.a.overridePendingTransition(0, 2130772375);
+      this.a.overridePendingTransition(0, 2130772405);
       this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity.2
  * JD-Core Version:    0.7.0.1
  */

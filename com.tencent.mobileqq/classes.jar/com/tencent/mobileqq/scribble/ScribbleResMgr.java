@@ -8,16 +8,16 @@ import android.text.TextUtils;
 import android.view.View;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
 import com.tencent.mobileqq.jsonconverter.JSONConverter;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.mobileqq.transfile.predownload.RunnableTask;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -28,23 +28,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ScribbleResMgr
+  extends BaseScribbleResMgr
 {
   static ScribbleResMgr jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr;
-  public static final Long a;
   static Object jdField_a_of_type_JavaLangObject = new Object();
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public static final String d;
-  public static final String e;
   protected Handler a;
   private final ArrayList<ScribbleResMgr.CallbackPack> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
   public boolean a;
   private final Handler jdField_b_of_type_AndroidOsHandler = new ScribbleResMgr.1(this, Looper.getMainLooper());
-  private ArrayList<ScribbleResMgr.ResInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<ResInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_b_of_type_Boolean = false;
-  private ArrayList<ScribbleResMgr.ResInfo> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<ResInfo> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_c_of_type_Boolean = false;
   private boolean d;
   private boolean e;
@@ -52,16 +47,6 @@ public class ScribbleResMgr
   private String g = "";
   private String h = "";
   private String i = "";
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = AppConstants.SCRIBBLE_FILE_DIR + "Config/";
-    jdField_b_of_type_JavaLangString = AppConstants.SCRIBBLE_FILE_DIR + "Config/paint/";
-    jdField_c_of_type_JavaLangString = AppConstants.SCRIBBLE_FILE_DIR + "Config/gif/";
-    jdField_d_of_type_JavaLangString = AppConstants.SCRIBBLE_FILE_DIR + "Config/line_icon/";
-    jdField_e_of_type_JavaLangString = AppConstants.SCRIBBLE_FILE_DIR + "Config/gif_icon/";
-    jdField_a_of_type_JavaLangLong = Long.valueOf(30000L);
-  }
   
   public ScribbleResMgr()
   {
@@ -73,39 +58,56 @@ public class ScribbleResMgr
   
   public static ScribbleResMgr a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr != null) {
-      return jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr;
+    ??? = jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr;
+    if (??? != null) {
+      return ???;
     }
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       if (jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr != null)
       {
-        ScribbleResMgr localScribbleResMgr1 = jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr;
-        return localScribbleResMgr1;
+        localScribbleResMgr = jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr;
+        return localScribbleResMgr;
       }
+      jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr = new ScribbleResMgr();
+      ScribbleResMgr localScribbleResMgr = jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr;
+      return localScribbleResMgr;
     }
-    jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr = new ScribbleResMgr();
-    ScribbleResMgr localScribbleResMgr2 = jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr;
-    return localScribbleResMgr2;
   }
   
   private String a()
   {
-    return AppConstants.SCRIBBLE_FILE_DIR + "paint_icon";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SCRIBBLE_FILE_DIR);
+    localStringBuilder.append("paint_icon");
+    return localStringBuilder.toString();
   }
   
   public static String a(int paramInt1, int paramInt2)
   {
-    if (paramInt1 == 1) {
-      return jdField_d_of_type_JavaLangString + "line_icon_" + String.valueOf(paramInt2) + ".png";
+    StringBuilder localStringBuilder;
+    if (paramInt1 == 1)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(jdField_d_of_type_JavaLangString);
+      localStringBuilder.append("line_icon_");
+      localStringBuilder.append(String.valueOf(paramInt2));
+      localStringBuilder.append(".png");
+      return localStringBuilder.toString();
     }
-    if (paramInt1 == 2) {
-      return jdField_e_of_type_JavaLangString + "gif_icon_" + String.valueOf(paramInt2) + ".png";
+    if (paramInt1 == 2)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(jdField_e_of_type_JavaLangString);
+      localStringBuilder.append("gif_icon_");
+      localStringBuilder.append(String.valueOf(paramInt2));
+      localStringBuilder.append(".png");
+      return localStringBuilder.toString();
     }
     return null;
   }
   
-  private ArrayList<ScribbleResMgr.ResInfo> a()
+  private ArrayList<ResInfo> a()
   {
     ArrayList localArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
@@ -116,21 +118,26 @@ public class ScribbleResMgr
         Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          ScribbleResMgr.ResInfo localResInfo = (ScribbleResMgr.ResInfo)localIterator.next();
+          ResInfo localResInfo = (ResInfo)localIterator.next();
           if (localResInfo != null) {
-            localArrayList.add(localResInfo.cpy(localResInfo));
+            localArrayList.add(localResInfo.a(localResInfo));
           }
         }
       }
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      return localArrayList;
     }
     finally
     {
       this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
     }
-    return localArrayList1;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
-  public static ArrayList<ScribbleResMgr.ResInfo> a(JSONArray paramJSONArray, int paramInt)
+  public static ArrayList<ResInfo> a(JSONArray paramJSONArray, int paramInt)
   {
     if (paramJSONArray == null) {
       return null;
@@ -141,93 +148,57 @@ public class ScribbleResMgr
       if (k <= 0) {
         return null;
       }
-      ArrayList localArrayList = new ArrayList(k);
+      localObject = new ArrayList(k);
       int j = 0;
       while (j < k)
       {
-        ScribbleResMgr.ResInfo localResInfo = (ScribbleResMgr.ResInfo)JSONConverter.a(paramJSONArray.getJSONObject(j), ScribbleResMgr.ResInfo.class);
+        ResInfo localResInfo = (ResInfo)JSONConverter.a(paramJSONArray.getJSONObject(j), ResInfo.class);
         if (localResInfo != null)
         {
-          localResInfo.resType = paramInt;
-          localArrayList.add(localResInfo);
+          localResInfo.jdField_a_of_type_Int = paramInt;
+          ((ArrayList)localObject).add(localResInfo);
         }
         j += 1;
       }
-      return localArrayList;
+      return localObject;
     }
     catch (JSONException paramJSONArray)
     {
+      Object localObject;
       if (QLog.isDevelopLevel())
       {
         paramJSONArray.printStackTrace();
-        QLog.e("ScribbleResMgr", 2, "convertFromErr: " + paramJSONArray);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("convertFromErr: ");
+        ((StringBuilder)localObject).append(paramJSONArray);
+        QLog.e("ScribbleResMgr", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
   }
   
-  /* Error */
-  private void a(int paramInt1, int paramInt2, View paramView, ScribbleResMgr.ResCallback paramResCallback)
+  private void a(int paramInt1, int paramInt2, View paramView, ResCallback paramResCallback)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 109	com/tencent/mobileqq/scribble/ScribbleResMgr:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   6: invokevirtual 173	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   9: astore 5
-    //   11: aload 5
-    //   13: invokeinterface 179 1 0
-    //   18: ifeq +41 -> 59
-    //   21: aload 5
-    //   23: invokeinterface 183 1 0
-    //   28: checkcast 245	com/tencent/mobileqq/scribble/ScribbleResMgr$CallbackPack
-    //   31: astore 6
-    //   33: aload 6
-    //   35: invokevirtual 248	com/tencent/mobileqq/scribble/ScribbleResMgr$CallbackPack:a	()Landroid/view/View;
-    //   38: aload_3
-    //   39: if_acmpne -28 -> 11
-    //   42: aload 6
-    //   44: new 250	java/lang/ref/WeakReference
-    //   47: dup
-    //   48: aload 4
-    //   50: invokespecial 253	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   53: putfield 256	com/tencent/mobileqq/scribble/ScribbleResMgr$CallbackPack:b	Ljava/lang/ref/WeakReference;
-    //   56: aload_0
-    //   57: monitorexit
-    //   58: return
-    //   59: aload_0
-    //   60: getfield 109	com/tencent/mobileqq/scribble/ScribbleResMgr:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   63: new 245	com/tencent/mobileqq/scribble/ScribbleResMgr$CallbackPack
-    //   66: dup
-    //   67: aload_0
-    //   68: iload_1
-    //   69: iload_2
-    //   70: aload_3
-    //   71: aload 4
-    //   73: invokespecial 259	com/tencent/mobileqq/scribble/ScribbleResMgr$CallbackPack:<init>	(Lcom/tencent/mobileqq/scribble/ScribbleResMgr;IILandroid/view/View;Lcom/tencent/mobileqq/scribble/ScribbleResMgr$ResCallback;)V
-    //   76: invokevirtual 193	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   79: pop
-    //   80: goto -24 -> 56
-    //   83: astore_3
-    //   84: aload_0
-    //   85: monitorexit
-    //   86: aload_3
-    //   87: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	88	0	this	ScribbleResMgr
-    //   0	88	1	paramInt1	int
-    //   0	88	2	paramInt2	int
-    //   0	88	3	paramView	View
-    //   0	88	4	paramResCallback	ScribbleResMgr.ResCallback
-    //   9	13	5	localIterator	Iterator
-    //   31	12	6	localCallbackPack	ScribbleResMgr.CallbackPack
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	83	finally
-    //   11	56	83	finally
-    //   59	80	83	finally
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        ScribbleResMgr.CallbackPack localCallbackPack = (ScribbleResMgr.CallbackPack)localIterator.next();
+        if (localCallbackPack.a() == paramView)
+        {
+          localCallbackPack.b = new WeakReference(paramResCallback);
+          return;
+        }
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(new ScribbleResMgr.CallbackPack(this, paramInt1, paramInt2, paramView, paramResCallback));
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramView;
+    }
   }
   
   private void a(int paramInt1, int paramInt2, boolean paramBoolean)
@@ -239,15 +210,15 @@ public class ScribbleResMgr
       this.jdField_b_of_type_Boolean = paramBoolean;
     }
     Iterator localIterator;
-    ScribbleResMgr.ResInfo localResInfo;
+    ResInfo localResInfo;
     if (paramInt1 == 2)
     {
       localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        localResInfo = (ScribbleResMgr.ResInfo)localIterator.next();
-        if ((localResInfo != null) && (localResInfo.sourceId == paramInt2)) {
-          localResInfo.downloading = paramBoolean;
+        localResInfo = (ResInfo)localIterator.next();
+        if ((localResInfo != null) && (localResInfo.b == paramInt2)) {
+          localResInfo.jdField_a_of_type_Boolean = paramBoolean;
         }
       }
     }
@@ -256,9 +227,9 @@ public class ScribbleResMgr
       localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        localResInfo = (ScribbleResMgr.ResInfo)localIterator.next();
-        if ((localResInfo != null) && (localResInfo.sourceId == paramInt2)) {
-          localResInfo.downloading = paramBoolean;
+        localResInfo = (ResInfo)localIterator.next();
+        if ((localResInfo != null) && (localResInfo.b == paramInt2)) {
+          localResInfo.jdField_a_of_type_Boolean = paramBoolean;
         }
       }
     }
@@ -275,156 +246,166 @@ public class ScribbleResMgr
     if (!this.jdField_a_of_type_Boolean)
     {
       long l1 = System.currentTimeMillis();
-      QLog.i("ScribbleResMgr", 2, "init=======================timenow:" + l1);
-      String str = SharedPreUtils.o(paramQQAppInterface.getApp().getApplicationContext());
-      paramQQAppInterface = SharedPreUtils.n(paramQQAppInterface.getApp().getApplicationContext());
-      if (!TextUtils.isEmpty(str)) {
-        a(str);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("init=======================timenow:");
+      ((StringBuilder)localObject).append(l1);
+      QLog.i("ScribbleResMgr", 2, ((StringBuilder)localObject).toString());
+      localObject = SharedPreUtils.p(paramQQAppInterface.getApp().getApplicationContext());
+      paramQQAppInterface = SharedPreUtils.o(paramQQAppInterface.getApp().getApplicationContext());
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        a((String)localObject);
       }
       if (!TextUtils.isEmpty(paramQQAppInterface)) {
         b(paramQQAppInterface);
       }
       this.jdField_a_of_type_Boolean = true;
       long l2 = System.currentTimeMillis();
-      QLog.i("ScribbleResMgr", 2, "init=======================timenow:" + l2);
-      QLog.i("ScribbleResMgr", 2, "init==========================timedec:" + (l2 - l1));
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("init=======================timenow:");
+      paramQQAppInterface.append(l2);
+      QLog.i("ScribbleResMgr", 2, paramQQAppInterface.toString());
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("init==========================timedec:");
+      paramQQAppInterface.append(l2 - l1);
+      QLog.i("ScribbleResMgr", 2, paramQQAppInterface.toString());
     }
   }
   
   private void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
-    int n = 0;
     a(paramQQAppInterface);
-    int j;
-    int k;
-    if (paramInt1 == 3) {
+    int n = 0;
+    if (paramInt1 == 3)
+    {
       if (TextUtils.isEmpty(this.f))
       {
-        j = 1;
-        k = j;
-        if (paramInt1 == 4)
-        {
-          if (!TextUtils.isEmpty(this.h)) {
-            break label140;
-          }
-          k = 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      j = k;
-      if (paramInt1 == 1)
-      {
-        if (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) {
-          break label167;
-        }
-        j = 1;
-      }
-      k = j;
-      if (paramInt1 == 2)
-      {
-        if (!this.jdField_b_of_type_JavaUtilArrayList.isEmpty()) {
-          break label277;
-        }
         k = 1;
+        break label48;
       }
-      if ((k != 0) && (!this.jdField_d_of_type_Boolean))
-      {
-        this.jdField_d_of_type_Boolean = true;
-        ConfigServlet.g(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin());
-      }
-      return;
       if (!this.jdField_c_of_type_Boolean) {
         a(paramQQAppInterface, paramInt1, 50L);
       }
-      j = 0;
-      break;
-      label140:
-      k = j;
-      if (!this.jdField_b_of_type_Boolean)
-      {
-        a(paramQQAppInterface, paramInt1, 50L);
-        k = j;
-      }
     }
-    label167:
-    Object localObject = a();
-    ScribbleResMgr.ResInfo localResInfo;
-    int m;
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      for (;;)
+    int k = 0;
+    label48:
+    int j = k;
+    if (paramInt1 == 4) {
+      if (TextUtils.isEmpty(this.h))
       {
-        if ((localObject != null) && (((Iterator)localObject).hasNext()))
+        j = 1;
+      }
+      else
+      {
+        j = k;
+        if (!this.jdField_b_of_type_Boolean)
         {
-          localResInfo = (ScribbleResMgr.ResInfo)((Iterator)localObject).next();
-          if ((localResInfo != null) && (localResInfo.sourceId == paramInt2)) {
-            if (!localResInfo.downloading)
-            {
-              localResInfo.downloading = true;
-              a(paramQQAppInterface, localResInfo, 50L, false);
-              m = 1;
-            }
-          }
+          a(paramQQAppInterface, paramInt1, 50L);
+          j = k;
         }
       }
     }
-    for (;;)
+    k = j;
+    Object localObject1;
+    Object localObject2;
+    if (paramInt1 == 1)
     {
-      j = k;
-      if (m != 0) {
-        break;
-      }
-      j = 1;
-      break;
-      label277:
-      localObject = b();
-      paramInt1 = n;
-      long l;
-      if (localObject != null)
+      if (this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) {}
+      int m;
+      label223:
+      do
       {
-        paramInt1 = n;
-        if (((ArrayList)localObject).size() > 0)
-        {
-          localObject = ((ArrayList)localObject).iterator();
-          do
-          {
-            paramInt1 = n;
-            if (localObject == null) {
-              break;
-            }
-            paramInt1 = n;
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-            localResInfo = (ScribbleResMgr.ResInfo)((Iterator)localObject).next();
-          } while ((localResInfo == null) || (localResInfo.sourceId != paramInt2));
-          if (localResInfo.downloading) {
-            break label464;
-          }
-          localResInfo.downloading = true;
-          l = Thread.currentThread().getId();
-          QLog.i("ScribbleResMgr", 2, "RESOURCE_TYPE_GIF threadId: " + l + " inf.resType:  " + localResInfo.resType + " resID: " + localResInfo.sourceId + " downloading is false set true");
-          a(paramQQAppInterface, localResInfo, 0L, false);
-        }
-      }
-      for (paramInt1 = 1;; paramInt1 = 1)
-      {
-        k = j;
-        if (paramInt1 != 0) {
-          break;
-        }
         k = 1;
         break;
-        label464:
-        l = Thread.currentThread().getId();
-        QLog.i("ScribbleResMgr", 2, "RESOURCE_TYPE_GIF threadId: " + l + " inf.resType:  " + localResInfo.resType + " resID: " + localResInfo.sourceId + "is downloading  ");
-      }
-      m = 1;
-      continue;
-      m = 0;
+        localObject1 = a();
+        if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
+        {
+          localObject1 = ((ArrayList)localObject1).iterator();
+          while ((localObject1 != null) && (((Iterator)localObject1).hasNext()))
+          {
+            localObject2 = (ResInfo)((Iterator)localObject1).next();
+            if ((localObject2 != null) && (((ResInfo)localObject2).b == paramInt2))
+            {
+              if (!((ResInfo)localObject2).jdField_a_of_type_Boolean)
+              {
+                ((ResInfo)localObject2).jdField_a_of_type_Boolean = true;
+                a(paramQQAppInterface, (ResInfo)localObject2, 50L, false);
+              }
+              m = 1;
+              break label223;
+            }
+          }
+        }
+        m = 0;
+        k = j;
+      } while (m == 0);
+    }
+    j = k;
+    if (paramInt1 == 2)
+    {
+      if (this.jdField_b_of_type_JavaUtilArrayList.isEmpty()) {}
+      do
+      {
+        j = 1;
+        break;
+        localObject1 = b();
+        paramInt1 = n;
+        if (localObject1 != null)
+        {
+          paramInt1 = n;
+          if (((ArrayList)localObject1).size() > 0)
+          {
+            localObject2 = ((ArrayList)localObject1).iterator();
+            do
+            {
+              paramInt1 = n;
+              if (localObject2 == null) {
+                break;
+              }
+              paramInt1 = n;
+              if (!((Iterator)localObject2).hasNext()) {
+                break;
+              }
+              localObject1 = (ResInfo)((Iterator)localObject2).next();
+            } while ((localObject1 == null) || (((ResInfo)localObject1).b != paramInt2));
+            long l;
+            if (!((ResInfo)localObject1).jdField_a_of_type_Boolean)
+            {
+              ((ResInfo)localObject1).jdField_a_of_type_Boolean = true;
+              l = Thread.currentThread().getId();
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("RESOURCE_TYPE_GIF threadId: ");
+              ((StringBuilder)localObject2).append(l);
+              ((StringBuilder)localObject2).append(" inf.resType:  ");
+              ((StringBuilder)localObject2).append(((ResInfo)localObject1).jdField_a_of_type_Int);
+              ((StringBuilder)localObject2).append(" resID: ");
+              ((StringBuilder)localObject2).append(((ResInfo)localObject1).b);
+              ((StringBuilder)localObject2).append(" downloading is false set true");
+              QLog.i("ScribbleResMgr", 2, ((StringBuilder)localObject2).toString());
+              a(paramQQAppInterface, (ResInfo)localObject1, 0L, false);
+            }
+            else
+            {
+              l = Thread.currentThread().getId();
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("RESOURCE_TYPE_GIF threadId: ");
+              ((StringBuilder)localObject2).append(l);
+              ((StringBuilder)localObject2).append(" inf.resType:  ");
+              ((StringBuilder)localObject2).append(((ResInfo)localObject1).jdField_a_of_type_Int);
+              ((StringBuilder)localObject2).append(" resID: ");
+              ((StringBuilder)localObject2).append(((ResInfo)localObject1).b);
+              ((StringBuilder)localObject2).append("is downloading  ");
+              QLog.i("ScribbleResMgr", 2, ((StringBuilder)localObject2).toString());
+            }
+            paramInt1 = 1;
+          }
+        }
+        j = k;
+      } while (paramInt1 == 0);
+    }
+    if ((j != 0) && (!this.jdField_d_of_type_Boolean))
+    {
+      this.jdField_d_of_type_Boolean = true;
+      ConfigServlet.e(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin());
     }
   }
   
@@ -433,185 +414,212 @@ public class ScribbleResMgr
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ScribbleResMgr.5(this, paramInt, paramQQAppInterface), paramLong);
   }
   
-  private void a(QQAppInterface paramQQAppInterface, ScribbleResMgr.ResInfo paramResInfo, long paramLong, boolean paramBoolean)
+  private void a(QQAppInterface paramQQAppInterface, ResInfo paramResInfo, long paramLong, boolean paramBoolean)
   {
     if (paramResInfo == null) {
       return;
     }
     ScribbleResMgr.4 local4 = new ScribbleResMgr.4(this, paramResInfo);
-    PreDownloadController localPreDownloadController;
-    String str;
     if (paramBoolean)
     {
-      localPreDownloadController = (PreDownloadController)paramQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
-      if (localPreDownloadController.isEnable())
+      IPreDownloadController localIPreDownloadController = (IPreDownloadController)paramQQAppInterface.getRuntimeService(IPreDownloadController.class);
+      if (localIPreDownloadController.isEnable())
       {
-        str = null;
-        if (paramResInfo.resType == 1) {
-          str = b(paramResInfo.resType, paramResInfo.sourceId);
+        String str = null;
+        if (paramResInfo.jdField_a_of_type_Int == 1) {
+          str = b(paramResInfo.jdField_a_of_type_Int, paramResInfo.b);
         }
-        if (paramResInfo.resType != 2) {
-          break label337;
+        if (paramResInfo.jdField_a_of_type_Int == 2) {
+          str = d(paramResInfo.b);
         }
-        str = d(paramResInfo.sourceId);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("download res, predownload enable:");
+          localStringBuilder.append(paramResInfo.b);
+          localStringBuilder.append(" ");
+          localStringBuilder.append(paramResInfo.jdField_a_of_type_Int);
+          localStringBuilder.append(" outpath:");
+          localStringBuilder.append(str);
+          localStringBuilder.append(" url:");
+          localStringBuilder.append(paramResInfo.jdField_a_of_type_JavaLangString);
+          QLog.d("ScribbleResMgr", 2, localStringBuilder.toString());
+        }
+        paramQQAppInterface = new RunnableTask(paramQQAppInterface, "doodle_msg_res", local4, 4000L);
+        localIPreDownloadController.requestPreDownload(10068, "prd", String.valueOf(paramResInfo.b), 0, paramResInfo.jdField_a_of_type_JavaLangString, str, 2, 0, true, paramQQAppInterface);
+        return;
       }
     }
-    label337:
-    for (;;)
+    paramQQAppInterface = (IPreDownloadController)paramQQAppInterface.getRuntimeService(IPreDownloadController.class);
+    if (paramQQAppInterface.isEnable())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScribbleResMgr", 2, "download res, predownload enable:" + paramResInfo.sourceId + " " + paramResInfo.resType + " outpath:" + str + " url:" + paramResInfo.sourceUrl);
-      }
-      paramQQAppInterface = new RunnableTask(paramQQAppInterface, "doodle_msg_res", local4, 4000L);
-      localPreDownloadController.requestPreDownload(10068, "prd", String.valueOf(paramResInfo.sourceId), 0, paramResInfo.sourceUrl, str, 2, 0, true, paramQQAppInterface);
-      return;
-      paramQQAppInterface = (PreDownloadController)paramQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
-      if (paramQQAppInterface.isEnable())
+      paramQQAppInterface.cancelPreDownload(paramResInfo.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
       {
-        paramQQAppInterface.cancelPreDownload(paramResInfo.sourceUrl);
-        if (QLog.isColorLevel()) {
-          QLog.d("ScribbleResMgr", 2, "download res, cancel predownload reqeust Url:" + paramResInfo.sourceUrl);
-        }
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("download res, cancel predownload reqeust Url:");
+        paramQQAppInterface.append(paramResInfo.jdField_a_of_type_JavaLangString);
+        QLog.d("ScribbleResMgr", 2, paramQQAppInterface.toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ScribbleResMgr", 2, "download res, normal download:" + paramResInfo.sourceId + " " + paramResInfo.resType + " Url:" + paramResInfo.sourceUrl);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(local4, paramLong);
-      return;
     }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("download res, normal download:");
+      paramQQAppInterface.append(paramResInfo.b);
+      paramQQAppInterface.append(" ");
+      paramQQAppInterface.append(paramResInfo.jdField_a_of_type_Int);
+      paramQQAppInterface.append(" Url:");
+      paramQQAppInterface.append(paramResInfo.jdField_a_of_type_JavaLangString);
+      QLog.d("ScribbleResMgr", 2, paramQQAppInterface.toString());
+    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(local4, paramLong);
   }
   
-  private void a(ScribbleResMgr.ResInfo paramResInfo, int paramInt)
+  private void a(ResInfo paramResInfo, int paramInt)
   {
     Message localMessage = new Message();
     localMessage.what = paramInt;
     localMessage.obj = paramResInfo;
-    localMessage.arg1 = paramResInfo.resType;
+    localMessage.arg1 = paramResInfo.jdField_a_of_type_Int;
     this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 0L);
-    b(paramResInfo.resType, paramResInfo.sourceId, false);
+    b(paramResInfo.jdField_a_of_type_Int, paramResInfo.b, false);
   }
   
   private void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
-      {
-        paramString = paramString.substring(0, paramString.lastIndexOf(File.separator));
-        if (!TextUtils.isEmpty(paramString))
-        {
-          paramString = new File(paramString);
-          if (!paramString.exists())
-          {
-            paramString.mkdirs();
-            return;
-          }
-        }
+    }
+    try
+    {
+      paramString = paramString.substring(0, paramString.lastIndexOf(File.separator));
+      if (TextUtils.isEmpty(paramString)) {
+        return;
       }
-      catch (Exception paramString)
+      paramString = new File(paramString);
+      if (!paramString.exists())
       {
-        QLog.d("ScribbleResMgrdownloading", 2, "makedir execption: " + paramString);
+        paramString.mkdirs();
+        return;
       }
+    }
+    catch (Exception paramString)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("makedir execption: ");
+      localStringBuilder.append(paramString);
+      QLog.d("ScribbleResMgrdownloading", 2, localStringBuilder.toString());
     }
   }
   
-  private void a(ArrayList<ScribbleResMgr.ResInfo> paramArrayList)
+  private void a(ArrayList<ResInfo> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() < 2)) {
-      return;
+    if (paramArrayList != null)
+    {
+      if (paramArrayList.size() < 2) {
+        return;
+      }
+      Collections.sort(paramArrayList, new ScribbleResMgr.3(this));
     }
-    Collections.sort(paramArrayList, new ScribbleResMgr.3(this));
   }
   
   public static boolean a(Context paramContext, String paramString)
   {
-    boolean bool = SharedPreUtils.o(paramContext, paramString);
-    QLog.d("ScribbleResMgr", 2, "getNeedScribbleRedShow" + bool);
+    boolean bool = SharedPreUtils.k(paramContext, paramString);
+    paramContext = new StringBuilder();
+    paramContext.append("getNeedScribbleRedShow");
+    paramContext.append(bool);
+    QLog.d("ScribbleResMgr", 2, paramContext.toString());
     return bool;
   }
   
   private boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject2 = null;
-    String str = SharedPreUtils.m(paramQQAppInterface.getApp().getBaseContext());
-    for (;;)
+    String str = SharedPreUtils.n(paramQQAppInterface.getApp().getBaseContext());
+    StringBuilder localStringBuilder = null;
+    JSONArray localJSONArray = null;
+    Object localObject1;
+    try
     {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      if (localJSONObject.has("version")) {
+        localObject1 = localJSONObject.getString("version");
+      } else {
+        localObject1 = null;
+      }
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        if (localJSONObject.has("version"))
-        {
-          localObject1 = localJSONObject.getString("version");
-          boolean bool;
-          Object localObject3;
-          return bool;
+        if (localJSONObject.has("iconUrl")) {
+          this.f = localJSONObject.getString("iconUrl");
         }
+        if (localJSONObject.has("iconMd5")) {
+          this.g = localJSONObject.getString("iconMd5");
+        }
+        if (localJSONObject.has("content")) {
+          localJSONArray = localJSONObject.getJSONArray("content");
+        }
+        bool = true;
       }
-      catch (JSONException localJSONException1)
-      {
-        try
-        {
-          if (localJSONObject.has("iconUrl")) {
-            this.f = localJSONObject.getString("iconUrl");
-          }
-          if (localJSONObject.has("iconMd5")) {
-            this.g = localJSONObject.getString("iconMd5");
-          }
-          if (localJSONObject.has("content")) {
-            localObject2 = localJSONObject.getJSONArray("content");
-          }
-          bool = true;
-          localObject2 = a((JSONArray)localObject2, 1);
-          c((ArrayList)localObject2);
-          if (((str != null) && (str.equalsIgnoreCase((String)localObject1))) || (!bool)) {
-            continue;
-          }
-          QLog.i("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_PAINT newVersion = " + (String)localObject1);
-          SharedPreUtils.w(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
-          SharedPreUtils.y(paramQQAppInterface.getApp().getBaseContext(), paramString);
-          a(paramQQAppInterface, 3, jdField_a_of_type_JavaLangLong.longValue());
-          if ((localObject2 == null) || (((ArrayList)localObject2).isEmpty())) {
-            break label394;
-          }
-          paramString = ((ArrayList)localObject2).iterator();
-          if (!paramString.hasNext()) {
-            break label394;
-          }
-          localObject1 = (ScribbleResMgr.ResInfo)paramString.next();
-          if (((ScribbleResMgr.ResInfo)localObject1).downloading) {
-            continue;
-          }
-          if ((((ScribbleResMgr.ResInfo)localObject1).predownload != 1) && (!this.jdField_d_of_type_Boolean)) {
-            continue;
-          }
-          a(paramQQAppInterface, (ScribbleResMgr.ResInfo)localObject1, jdField_a_of_type_JavaLangLong.longValue(), true);
-          continue;
-          localJSONException1 = localJSONException1;
-          localObject1 = null;
-        }
-        catch (JSONException localJSONException2)
-        {
-          continue;
-        }
-        localJSONException1.printStackTrace();
-        QLog.e("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_PAINT JSON EXCEPT");
-        bool = false;
-        localObject3 = null;
-        continue;
-        QLog.e("ScribbleResMgr", 2, "mArrPaintInfo index :" + ((ScribbleResMgr.ResInfo)localObject1).sourceId + " is downloading ");
-        continue;
-        QLog.i("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_PAINT newVersion = " + (String)localObject1 + " oldVersion=  " + str);
-      }
-      label394:
-      Object localObject1 = null;
+      catch (JSONException localJSONException1) {}
+      localJSONException2.printStackTrace();
     }
+    catch (JSONException localJSONException2)
+    {
+      localObject1 = null;
+    }
+    QLog.e("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_PAINT JSON EXCEPT");
+    boolean bool = false;
+    Object localObject2 = localStringBuilder;
+    localObject2 = a((JSONArray)localObject2, 1);
+    c((ArrayList)localObject2);
+    if (((str == null) || (!str.equalsIgnoreCase((String)localObject1))) && (bool))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RESOURCE_CONFIG_TASK_ID_PAINT newVersion = ");
+      localStringBuilder.append((String)localObject1);
+      QLog.i("ScribbleResMgr", 2, localStringBuilder.toString());
+      SharedPreUtils.m(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
+      SharedPreUtils.o(paramQQAppInterface.getApp().getBaseContext(), paramString);
+      a(paramQQAppInterface, 3, jdField_a_of_type_JavaLangLong.longValue());
+      if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty())) {
+        paramString = ((ArrayList)localObject2).iterator();
+      }
+    }
+    else
+    {
+      while (paramString.hasNext())
+      {
+        localObject1 = (ResInfo)paramString.next();
+        if (!((ResInfo)localObject1).jdField_a_of_type_Boolean)
+        {
+          if ((((ResInfo)localObject1).c == 1) || (this.jdField_d_of_type_Boolean)) {
+            a(paramQQAppInterface, (ResInfo)localObject1, jdField_a_of_type_JavaLangLong.longValue(), true);
+          }
+        }
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("mArrPaintInfo index :");
+          ((StringBuilder)localObject2).append(((ResInfo)localObject1).b);
+          ((StringBuilder)localObject2).append(" is downloading ");
+          QLog.e("ScribbleResMgr", 2, ((StringBuilder)localObject2).toString());
+          continue;
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("RESOURCE_CONFIG_TASK_ID_PAINT newVersion = ");
+          paramQQAppInterface.append((String)localObject1);
+          paramQQAppInterface.append(" oldVersion=  ");
+          paramQQAppInterface.append(str);
+          QLog.i("ScribbleResMgr", 2, paramQQAppInterface.toString());
+        }
+      }
+    }
+    return bool;
   }
   
   private boolean a(String paramString)
   {
-    localObject = null;
+    Object localObject = null;
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
@@ -628,12 +636,9 @@ public class ScribbleResMgr
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        QLog.e("ScribbleResMgr", 2, "parsePaintConfigInfo JSON EXCEPT");
-        paramString = localObject;
-      }
+      paramString.printStackTrace();
+      QLog.e("ScribbleResMgr", 2, "parsePaintConfigInfo JSON EXCEPT");
+      paramString = localObject;
     }
     c(a(paramString, 1));
     return true;
@@ -643,349 +648,398 @@ public class ScribbleResMgr
   public static boolean a(String paramString1, Context paramContext, String paramString2)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 10
-    //   3: iconst_0
-    //   4: istore 11
-    //   6: new 531	org/json/JSONObject
-    //   9: dup
-    //   10: aload_0
-    //   11: invokespecial 532	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   14: astore 12
-    //   16: aload 12
-    //   18: ldc_w 585
-    //   21: invokevirtual 537	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   24: ifeq +625 -> 649
-    //   27: aload 12
-    //   29: ldc_w 585
-    //   32: invokevirtual 541	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   35: invokestatic 590	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   38: invokevirtual 593	java/lang/Integer:intValue	()I
-    //   41: istore 6
-    //   43: iload 6
-    //   45: iconst_1
-    //   46: if_icmpne +365 -> 411
-    //   49: iconst_1
-    //   50: istore 7
-    //   52: aload 12
-    //   54: ldc_w 595
-    //   57: invokevirtual 537	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   60: ifeq +584 -> 644
-    //   63: aload 12
-    //   65: ldc_w 595
-    //   68: invokevirtual 541	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   71: invokestatic 600	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   74: invokevirtual 604	java/lang/Float:floatValue	()F
-    //   77: fstore_3
-    //   78: aload 12
-    //   80: ldc_w 606
-    //   83: invokevirtual 537	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   86: ifeq +552 -> 638
-    //   89: aload 12
-    //   91: ldc_w 606
-    //   94: invokevirtual 541	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   97: invokestatic 590	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   100: invokevirtual 593	java/lang/Integer:intValue	()I
-    //   103: istore 6
-    //   105: iload 6
-    //   107: iconst_1
-    //   108: if_icmpne +309 -> 417
-    //   111: iconst_1
-    //   112: istore 8
-    //   114: aload 12
-    //   116: ldc_w 608
-    //   119: invokevirtual 537	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   122: ifeq +510 -> 632
-    //   125: aload 12
-    //   127: ldc_w 608
-    //   130: invokevirtual 541	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   133: invokestatic 600	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   136: invokevirtual 604	java/lang/Float:floatValue	()F
-    //   139: fstore 4
-    //   141: iload 11
-    //   143: istore 9
-    //   145: aload 12
-    //   147: ldc_w 610
-    //   150: invokevirtual 537	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   153: ifeq +32 -> 185
-    //   156: aload 12
-    //   158: ldc_w 610
-    //   161: invokevirtual 541	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   164: invokestatic 590	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   167: invokevirtual 593	java/lang/Integer:intValue	()I
-    //   170: istore 6
-    //   172: iload 11
-    //   174: istore 9
-    //   176: iload 6
-    //   178: iconst_1
-    //   179: if_icmpne +6 -> 185
-    //   182: iconst_1
-    //   183: istore 9
-    //   185: iconst_1
-    //   186: istore 11
-    //   188: iload 7
-    //   190: istore 10
-    //   192: iload 8
-    //   194: istore 7
-    //   196: fload_3
-    //   197: fstore 5
-    //   199: fload 4
-    //   201: fstore_3
-    //   202: aload_1
-    //   203: iload 10
-    //   205: aload_2
-    //   206: invokestatic 613	com/tencent/mobileqq/utils/SharedPreUtils:b	(Landroid/content/Context;ZLjava/lang/String;)V
-    //   209: iload 7
-    //   211: ifeq +257 -> 468
-    //   214: aload_1
-    //   215: aload_2
-    //   216: invokestatic 616	com/tencent/mobileqq/utils/SharedPreUtils:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/Float;
-    //   219: invokevirtual 604	java/lang/Float:floatValue	()F
-    //   222: fstore 4
-    //   224: fload 5
-    //   226: fload 4
-    //   228: fcmpl
-    //   229: ifle +61 -> 290
-    //   232: aload_1
-    //   233: iload 7
-    //   235: invokestatic 276	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   238: aload_2
-    //   239: invokestatic 281	com/tencent/mobileqq/utils/SharedPreUtils:a	(Landroid/content/Context;Ljava/lang/Boolean;Ljava/lang/String;)V
-    //   242: aload_1
-    //   243: fload 5
-    //   245: invokestatic 619	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   248: aload_2
-    //   249: invokestatic 622	com/tencent/mobileqq/utils/SharedPreUtils:a	(Landroid/content/Context;Ljava/lang/Float;Ljava/lang/String;)V
-    //   252: ldc 233
-    //   254: iconst_2
-    //   255: new 27	java/lang/StringBuilder
-    //   258: dup
-    //   259: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   262: ldc_w 624
-    //   265: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: fload 4
-    //   270: invokevirtual 627	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   273: ldc_w 629
-    //   276: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   279: fload 5
-    //   281: invokevirtual 627	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   284: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   287: invokestatic 295	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   290: iload 9
-    //   292: ifeq +216 -> 508
-    //   295: aload_1
-    //   296: aload_2
-    //   297: invokestatic 631	com/tencent/mobileqq/utils/SharedPreUtils:b	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/Float;
-    //   300: invokevirtual 604	java/lang/Float:floatValue	()F
-    //   303: fstore 4
-    //   305: fload_3
-    //   306: fload 4
-    //   308: fcmpl
-    //   309: ifle +56 -> 365
-    //   312: aload_1
-    //   313: fload_3
-    //   314: invokestatic 619	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   317: aload_2
-    //   318: invokestatic 633	com/tencent/mobileqq/utils/SharedPreUtils:b	(Landroid/content/Context;Ljava/lang/Float;Ljava/lang/String;)V
-    //   321: aload_1
-    //   322: iload 9
-    //   324: aload_2
-    //   325: invokestatic 635	com/tencent/mobileqq/utils/SharedPreUtils:c	(Landroid/content/Context;ZLjava/lang/String;)V
-    //   328: ldc 233
-    //   330: iconst_2
-    //   331: new 27	java/lang/StringBuilder
-    //   334: dup
-    //   335: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   338: ldc_w 637
-    //   341: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   344: fload 4
-    //   346: invokevirtual 627	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   349: ldc_w 639
-    //   352: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   355: fload_3
-    //   356: invokevirtual 627	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   359: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   362: invokestatic 295	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   365: invokestatic 407	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   368: ifeq +40 -> 408
-    //   371: ldc 233
-    //   373: iconst_2
-    //   374: new 27	java/lang/StringBuilder
-    //   377: dup
-    //   378: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   381: ldc_w 641
-    //   384: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   387: iload 10
-    //   389: invokevirtual 522	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   392: ldc_w 643
-    //   395: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   398: aload_0
-    //   399: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   402: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   405: invokestatic 295	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   408: iload 11
-    //   410: ireturn
-    //   411: iconst_0
-    //   412: istore 7
-    //   414: goto -362 -> 52
-    //   417: iconst_0
-    //   418: istore 8
-    //   420: goto -306 -> 114
-    //   423: astore 12
-    //   425: fconst_0
-    //   426: fstore 4
-    //   428: iconst_0
-    //   429: istore 7
-    //   431: iconst_0
-    //   432: istore 8
-    //   434: fconst_0
-    //   435: fstore_3
-    //   436: aload 12
-    //   438: invokevirtual 231	org/json/JSONException:printStackTrace	()V
-    //   441: ldc 233
-    //   443: iconst_2
-    //   444: ldc_w 645
-    //   447: invokestatic 241	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   450: iconst_0
-    //   451: istore 11
-    //   453: fload 4
-    //   455: fstore 5
-    //   457: iload 10
-    //   459: istore 9
-    //   461: iload 8
-    //   463: istore 10
-    //   465: goto -263 -> 202
-    //   468: ldc 233
-    //   470: iconst_2
-    //   471: new 27	java/lang/StringBuilder
-    //   474: dup
-    //   475: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   478: ldc_w 647
-    //   481: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   484: iload 7
-    //   486: invokevirtual 522	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   489: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   492: invokestatic 295	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   495: aload_1
-    //   496: iload 7
-    //   498: invokestatic 276	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   501: aload_2
-    //   502: invokestatic 281	com/tencent/mobileqq/utils/SharedPreUtils:a	(Landroid/content/Context;Ljava/lang/Boolean;Ljava/lang/String;)V
-    //   505: goto -215 -> 290
-    //   508: ldc 233
-    //   510: iconst_2
-    //   511: new 27	java/lang/StringBuilder
-    //   514: dup
-    //   515: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   518: ldc_w 649
-    //   521: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   524: iload 9
-    //   526: invokevirtual 522	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   529: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   532: invokestatic 295	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   535: aload_1
-    //   536: iload 9
-    //   538: aload_2
-    //   539: invokestatic 635	com/tencent/mobileqq/utils/SharedPreUtils:c	(Landroid/content/Context;ZLjava/lang/String;)V
-    //   542: goto -177 -> 365
-    //   545: astore 12
-    //   547: fconst_0
-    //   548: fstore 4
-    //   550: iconst_0
-    //   551: istore 9
-    //   553: iload 7
-    //   555: istore 8
-    //   557: fconst_0
-    //   558: fstore_3
-    //   559: iload 9
-    //   561: istore 7
-    //   563: goto -127 -> 436
-    //   566: astore 12
-    //   568: fload_3
-    //   569: fstore 4
-    //   571: iload 7
-    //   573: istore 8
-    //   575: iconst_0
-    //   576: istore 7
-    //   578: fconst_0
-    //   579: fstore_3
-    //   580: goto -144 -> 436
-    //   583: astore 12
-    //   585: fload_3
-    //   586: fstore 4
-    //   588: iload 7
-    //   590: istore 9
-    //   592: fconst_0
-    //   593: fstore_3
-    //   594: iload 8
-    //   596: istore 7
-    //   598: iload 9
-    //   600: istore 8
-    //   602: goto -166 -> 436
-    //   605: astore 12
-    //   607: fload_3
-    //   608: fstore 5
-    //   610: iload 7
-    //   612: istore 9
-    //   614: fload 4
-    //   616: fstore_3
-    //   617: fload 5
-    //   619: fstore 4
-    //   621: iload 8
-    //   623: istore 7
-    //   625: iload 9
-    //   627: istore 8
-    //   629: goto -193 -> 436
-    //   632: fconst_0
-    //   633: fstore 4
-    //   635: goto -494 -> 141
-    //   638: iconst_0
-    //   639: istore 8
-    //   641: goto -527 -> 114
-    //   644: fconst_0
-    //   645: fstore_3
-    //   646: goto -568 -> 78
-    //   649: iconst_0
-    //   650: istore 7
-    //   652: goto -600 -> 52
+    //   0: fconst_0
+    //   1: fstore 6
+    //   3: fconst_0
+    //   4: fstore 5
+    //   6: fconst_0
+    //   7: fstore 4
+    //   9: iconst_0
+    //   10: istore 15
+    //   12: iconst_1
+    //   13: istore 16
+    //   15: new 498	org/json/JSONObject
+    //   18: dup
+    //   19: aload_0
+    //   20: invokespecial 499	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   23: astore 17
+    //   25: aload 17
+    //   27: ldc_w 555
+    //   30: invokevirtual 504	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   33: ifeq +31 -> 64
+    //   36: aload 17
+    //   38: ldc_w 555
+    //   41: invokevirtual 508	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   44: invokestatic 560	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   47: invokevirtual 563	java/lang/Integer:intValue	()I
+    //   50: istore 8
+    //   52: iload 8
+    //   54: iconst_1
+    //   55: if_icmpne +9 -> 64
+    //   58: iconst_1
+    //   59: istore 10
+    //   61: goto +6 -> 67
+    //   64: iconst_0
+    //   65: istore 10
+    //   67: aload 17
+    //   69: ldc_w 565
+    //   72: invokevirtual 504	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   75: ifeq +21 -> 96
+    //   78: aload 17
+    //   80: ldc_w 565
+    //   83: invokevirtual 508	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   86: invokestatic 570	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   89: invokevirtual 574	java/lang/Float:floatValue	()F
+    //   92: fstore_3
+    //   93: goto +5 -> 98
+    //   96: fconst_0
+    //   97: fstore_3
+    //   98: aload 17
+    //   100: ldc_w 576
+    //   103: invokevirtual 504	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   106: ifeq +31 -> 137
+    //   109: aload 17
+    //   111: ldc_w 576
+    //   114: invokevirtual 508	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   117: invokestatic 560	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   120: invokevirtual 563	java/lang/Integer:intValue	()I
+    //   123: istore 8
+    //   125: iload 8
+    //   127: iconst_1
+    //   128: if_icmpne +9 -> 137
+    //   131: iconst_1
+    //   132: istore 9
+    //   134: goto +6 -> 140
+    //   137: iconst_0
+    //   138: istore 9
+    //   140: fload 6
+    //   142: fstore 5
+    //   144: aload 17
+    //   146: ldc_w 578
+    //   149: invokevirtual 504	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   152: ifeq +23 -> 175
+    //   155: fload 6
+    //   157: fstore 5
+    //   159: aload 17
+    //   161: ldc_w 578
+    //   164: invokevirtual 508	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   167: invokestatic 570	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   170: invokevirtual 574	java/lang/Float:floatValue	()F
+    //   173: fstore 4
+    //   175: fload 4
+    //   177: fstore 5
+    //   179: iload 9
+    //   181: istore 14
+    //   183: fload_3
+    //   184: fstore 7
+    //   186: iload 10
+    //   188: istore 11
+    //   190: fload 4
+    //   192: fstore 6
+    //   194: iload 15
+    //   196: istore 12
+    //   198: iload 16
+    //   200: istore 13
+    //   202: aload 17
+    //   204: ldc_w 580
+    //   207: invokevirtual 504	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   210: ifeq +146 -> 356
+    //   213: fload 4
+    //   215: fstore 5
+    //   217: aload 17
+    //   219: ldc_w 580
+    //   222: invokevirtual 508	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   225: invokestatic 560	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   228: invokevirtual 563	java/lang/Integer:intValue	()I
+    //   231: istore 8
+    //   233: iload 9
+    //   235: istore 14
+    //   237: fload_3
+    //   238: fstore 7
+    //   240: iload 10
+    //   242: istore 11
+    //   244: fload 4
+    //   246: fstore 6
+    //   248: iload 15
+    //   250: istore 12
+    //   252: iload 16
+    //   254: istore 13
+    //   256: iload 8
+    //   258: iconst_1
+    //   259: if_icmpne +97 -> 356
+    //   262: iconst_1
+    //   263: istore 12
+    //   265: iload 9
+    //   267: istore 14
+    //   269: fload_3
+    //   270: fstore 7
+    //   272: iload 10
+    //   274: istore 11
+    //   276: fload 4
+    //   278: fstore 6
+    //   280: iload 16
+    //   282: istore 13
+    //   284: goto +72 -> 356
+    //   287: astore 17
+    //   289: goto +31 -> 320
+    //   292: astore 17
+    //   294: iconst_0
+    //   295: istore 9
+    //   297: goto +23 -> 320
+    //   300: astore 17
+    //   302: iconst_0
+    //   303: istore 9
+    //   305: fconst_0
+    //   306: fstore_3
+    //   307: goto +13 -> 320
+    //   310: astore 17
+    //   312: iconst_0
+    //   313: istore 9
+    //   315: fconst_0
+    //   316: fstore_3
+    //   317: iconst_0
+    //   318: istore 10
+    //   320: aload 17
+    //   322: invokevirtual 206	org/json/JSONException:printStackTrace	()V
+    //   325: ldc 213
+    //   327: iconst_2
+    //   328: ldc_w 582
+    //   331: invokestatic 216	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   334: iconst_0
+    //   335: istore 13
+    //   337: iload 15
+    //   339: istore 12
+    //   341: fload 5
+    //   343: fstore 6
+    //   345: iload 10
+    //   347: istore 11
+    //   349: fload_3
+    //   350: fstore 7
+    //   352: iload 9
+    //   354: istore 14
+    //   356: aload_1
+    //   357: iload 11
+    //   359: aload_2
+    //   360: invokestatic 585	com/tencent/mobileqq/utils/SharedPreUtils:b	(Landroid/content/Context;ZLjava/lang/String;)V
+    //   363: iload 14
+    //   365: ifeq +95 -> 460
+    //   368: aload_1
+    //   369: aload_2
+    //   370: invokestatic 588	com/tencent/mobileqq/utils/SharedPreUtils:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/Float;
+    //   373: invokevirtual 574	java/lang/Float:floatValue	()F
+    //   376: fstore_3
+    //   377: fload 7
+    //   379: fload_3
+    //   380: fcmpl
+    //   381: ifle +126 -> 507
+    //   384: aload_1
+    //   385: iload 14
+    //   387: invokestatic 248	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   390: aload_2
+    //   391: invokestatic 253	com/tencent/mobileqq/utils/SharedPreUtils:a	(Landroid/content/Context;Ljava/lang/Boolean;Ljava/lang/String;)V
+    //   394: aload_1
+    //   395: fload 7
+    //   397: invokestatic 591	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   400: aload_2
+    //   401: invokestatic 594	com/tencent/mobileqq/utils/SharedPreUtils:a	(Landroid/content/Context;Ljava/lang/Float;Ljava/lang/String;)V
+    //   404: new 99	java/lang/StringBuilder
+    //   407: dup
+    //   408: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   411: astore 17
+    //   413: aload 17
+    //   415: ldc_w 596
+    //   418: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   421: pop
+    //   422: aload 17
+    //   424: fload_3
+    //   425: invokevirtual 599	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   428: pop
+    //   429: aload 17
+    //   431: ldc_w 601
+    //   434: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   437: pop
+    //   438: aload 17
+    //   440: fload 7
+    //   442: invokevirtual 599	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   445: pop
+    //   446: ldc 213
+    //   448: iconst_2
+    //   449: aload 17
+    //   451: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   454: invokestatic 267	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   457: goto +50 -> 507
+    //   460: new 99	java/lang/StringBuilder
+    //   463: dup
+    //   464: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   467: astore 17
+    //   469: aload 17
+    //   471: ldc_w 603
+    //   474: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   477: pop
+    //   478: aload 17
+    //   480: iload 14
+    //   482: invokevirtual 489	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   485: pop
+    //   486: ldc 213
+    //   488: iconst_2
+    //   489: aload 17
+    //   491: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   494: invokestatic 267	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   497: aload_1
+    //   498: iload 14
+    //   500: invokestatic 248	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   503: aload_2
+    //   504: invokestatic 253	com/tencent/mobileqq/utils/SharedPreUtils:a	(Landroid/content/Context;Ljava/lang/Boolean;Ljava/lang/String;)V
+    //   507: iload 12
+    //   509: ifeq +86 -> 595
+    //   512: aload_1
+    //   513: aload_2
+    //   514: invokestatic 605	com/tencent/mobileqq/utils/SharedPreUtils:b	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/Float;
+    //   517: invokevirtual 574	java/lang/Float:floatValue	()F
+    //   520: fstore_3
+    //   521: fload 6
+    //   523: fload_3
+    //   524: fcmpl
+    //   525: ifle +114 -> 639
+    //   528: aload_1
+    //   529: fload 6
+    //   531: invokestatic 591	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   534: aload_2
+    //   535: invokestatic 607	com/tencent/mobileqq/utils/SharedPreUtils:b	(Landroid/content/Context;Ljava/lang/Float;Ljava/lang/String;)V
+    //   538: aload_1
+    //   539: iload 12
+    //   541: aload_2
+    //   542: invokestatic 609	com/tencent/mobileqq/utils/SharedPreUtils:c	(Landroid/content/Context;ZLjava/lang/String;)V
+    //   545: new 99	java/lang/StringBuilder
+    //   548: dup
+    //   549: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   552: astore_1
+    //   553: aload_1
+    //   554: ldc_w 611
+    //   557: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   560: pop
+    //   561: aload_1
+    //   562: fload_3
+    //   563: invokevirtual 599	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   566: pop
+    //   567: aload_1
+    //   568: ldc_w 613
+    //   571: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   574: pop
+    //   575: aload_1
+    //   576: fload 6
+    //   578: invokevirtual 599	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   581: pop
+    //   582: ldc 213
+    //   584: iconst_2
+    //   585: aload_1
+    //   586: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   589: invokestatic 267	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   592: goto +47 -> 639
+    //   595: new 99	java/lang/StringBuilder
+    //   598: dup
+    //   599: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   602: astore 17
+    //   604: aload 17
+    //   606: ldc_w 615
+    //   609: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   612: pop
+    //   613: aload 17
+    //   615: iload 12
+    //   617: invokevirtual 489	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   620: pop
+    //   621: ldc 213
+    //   623: iconst_2
+    //   624: aload 17
+    //   626: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   629: invokestatic 267	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   632: aload_1
+    //   633: iload 12
+    //   635: aload_2
+    //   636: invokestatic 609	com/tencent/mobileqq/utils/SharedPreUtils:c	(Landroid/content/Context;ZLjava/lang/String;)V
+    //   639: invokestatic 374	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   642: ifeq +50 -> 692
+    //   645: new 99	java/lang/StringBuilder
+    //   648: dup
+    //   649: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   652: astore_1
+    //   653: aload_1
+    //   654: ldc_w 617
+    //   657: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   660: pop
+    //   661: aload_1
+    //   662: iload 11
+    //   664: invokevirtual 489	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   667: pop
+    //   668: aload_1
+    //   669: ldc_w 619
+    //   672: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   675: pop
+    //   676: aload_1
+    //   677: aload_0
+    //   678: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   681: pop
+    //   682: ldc 213
+    //   684: iconst_2
+    //   685: aload_1
+    //   686: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   689: invokestatic 267	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   692: iload 13
+    //   694: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	655	0	paramString1	String
-    //   0	655	1	paramContext	Context
-    //   0	655	2	paramString2	String
-    //   77	569	3	f1	float
-    //   139	495	4	f2	float
-    //   197	421	5	f3	float
-    //   41	139	6	j	int
-    //   50	601	7	bool1	boolean
-    //   112	528	8	bool2	boolean
-    //   143	483	9	bool3	boolean
-    //   1	463	10	bool4	boolean
-    //   4	448	11	bool5	boolean
-    //   14	143	12	localJSONObject	JSONObject
-    //   423	14	12	localJSONException1	JSONException
-    //   545	1	12	localJSONException2	JSONException
-    //   566	1	12	localJSONException3	JSONException
-    //   583	1	12	localJSONException4	JSONException
-    //   605	1	12	localJSONException5	JSONException
+    //   0	695	0	paramString1	String
+    //   0	695	1	paramContext	Context
+    //   0	695	2	paramString2	String
+    //   92	471	3	f1	float
+    //   7	270	4	f2	float
+    //   4	338	5	f3	float
+    //   1	576	6	f4	float
+    //   184	257	7	f5	float
+    //   50	210	8	j	int
+    //   132	221	9	bool1	boolean
+    //   59	287	10	bool2	boolean
+    //   188	475	11	bool3	boolean
+    //   196	438	12	bool4	boolean
+    //   200	493	13	bool5	boolean
+    //   181	318	14	bool6	boolean
+    //   10	328	15	bool7	boolean
+    //   13	268	16	bool8	boolean
+    //   23	195	17	localJSONObject	JSONObject
+    //   287	1	17	localJSONException1	JSONException
+    //   292	1	17	localJSONException2	JSONException
+    //   300	1	17	localJSONException3	JSONException
+    //   310	11	17	localJSONException4	JSONException
+    //   411	214	17	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   6	43	423	org/json/JSONException
-    //   52	78	545	org/json/JSONException
-    //   78	105	566	org/json/JSONException
-    //   114	141	583	org/json/JSONException
-    //   145	172	605	org/json/JSONException
+    //   144	155	287	org/json/JSONException
+    //   159	175	287	org/json/JSONException
+    //   202	213	287	org/json/JSONException
+    //   217	233	287	org/json/JSONException
+    //   98	125	292	org/json/JSONException
+    //   67	93	300	org/json/JSONException
+    //   15	52	310	org/json/JSONException
   }
   
   private String b()
   {
-    return AppConstants.SCRIBBLE_FILE_DIR + "gif_icon";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SCRIBBLE_FILE_DIR);
+    localStringBuilder.append("gif_icon");
+    return localStringBuilder.toString();
   }
   
   public static String b(int paramInt1, int paramInt2)
   {
-    if (paramInt1 == 1) {
-      return jdField_b_of_type_JavaLangString + "line_orig_" + String.valueOf(paramInt2) + ".png";
+    if (paramInt1 == 1)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(jdField_b_of_type_JavaLangString);
+      localStringBuilder.append("line_orig_");
+      localStringBuilder.append(String.valueOf(paramInt2));
+      localStringBuilder.append(".png");
+      return localStringBuilder.toString();
     }
     if (paramInt1 == 2) {
       return e(paramInt2);
@@ -993,7 +1047,7 @@ public class ScribbleResMgr
     return null;
   }
   
-  private ArrayList<ScribbleResMgr.ResInfo> b()
+  private ArrayList<ResInfo> b()
   {
     ArrayList localArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
@@ -1004,32 +1058,38 @@ public class ScribbleResMgr
         Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          ScribbleResMgr.ResInfo localResInfo = (ScribbleResMgr.ResInfo)localIterator.next();
+          ResInfo localResInfo = (ResInfo)localIterator.next();
           if (localResInfo != null) {
-            localArrayList.add(localResInfo.cpy(localResInfo));
+            localArrayList.add(localResInfo.a(localResInfo));
           }
         }
       }
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      return localArrayList;
     }
     finally
     {
       this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
     }
-    return localArrayList1;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void b(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     Message localMessage = new Message();
-    if (paramBoolean) {}
-    for (int j = 1001;; j = 1002)
-    {
-      localMessage.what = j;
-      localMessage.arg1 = paramInt1;
-      localMessage.arg2 = paramInt2;
-      this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 0L);
-      return;
+    int j;
+    if (paramBoolean) {
+      j = 1001;
+    } else {
+      j = 1002;
     }
+    localMessage.what = j;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 0L);
   }
   
   public static void b(Context paramContext, String paramString)
@@ -1038,112 +1098,122 @@ public class ScribbleResMgr
     QLog.d("ScribbleResMgr", 2, "setScribblePlusRedShowed false");
   }
   
-  private void b(ArrayList<ScribbleResMgr.ResInfo> paramArrayList)
+  private void b(ArrayList<ResInfo> paramArrayList)
   {
-    if ((paramArrayList != null) && (!paramArrayList.isEmpty())) {
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
+    {
       this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    }
-    try
-    {
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
-      this.jdField_b_of_type_JavaUtilArrayList.addAll(paramArrayList);
-      a(this.jdField_b_of_type_JavaUtilArrayList);
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      try
+      {
+        this.jdField_b_of_type_JavaUtilArrayList.clear();
+        this.jdField_b_of_type_JavaUtilArrayList.addAll(paramArrayList);
+        a(this.jdField_b_of_type_JavaUtilArrayList);
+        return;
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
     }
   }
   
   public static boolean b(Context paramContext, String paramString)
   {
     boolean bool1 = c(paramContext, paramString);
-    boolean bool2 = SharedPreUtils.p(paramContext, paramString);
-    QLog.d("ScribbleResMgr", 2, "getNeedScribblePlusRedShow" + bool2);
+    boolean bool2 = SharedPreUtils.l(paramContext, paramString);
+    paramContext = new StringBuilder();
+    paramContext.append("getNeedScribblePlusRedShow");
+    paramContext.append(bool2);
+    QLog.d("ScribbleResMgr", 2, paramContext.toString());
     return (bool2) && (bool1);
   }
   
   private boolean b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject2 = null;
-    String str = SharedPreUtils.l(paramQQAppInterface.getApp().getBaseContext());
-    for (;;)
+    String str = SharedPreUtils.m(paramQQAppInterface.getApp().getBaseContext());
+    StringBuilder localStringBuilder = null;
+    JSONArray localJSONArray = null;
+    Object localObject1;
+    try
     {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      if (localJSONObject.has("version")) {
+        localObject1 = localJSONObject.getString("version");
+      } else {
+        localObject1 = null;
+      }
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        if (localJSONObject.has("version"))
-        {
-          localObject1 = localJSONObject.getString("version");
-          boolean bool;
-          Object localObject3;
-          return bool;
+        if (localJSONObject.has("iconUrl")) {
+          this.h = localJSONObject.getString("iconUrl");
         }
+        if (localJSONObject.has("iconMd5")) {
+          this.i = localJSONObject.getString("iconMd5");
+        }
+        if (localJSONObject.has("content")) {
+          localJSONArray = localJSONObject.getJSONArray("content");
+        }
+        bool = true;
       }
-      catch (JSONException localJSONException1)
-      {
-        try
-        {
-          if (localJSONObject.has("iconUrl")) {
-            this.h = localJSONObject.getString("iconUrl");
-          }
-          if (localJSONObject.has("iconMd5")) {
-            this.i = localJSONObject.getString("iconMd5");
-          }
-          if (localJSONObject.has("content")) {
-            localObject2 = localJSONObject.getJSONArray("content");
-          }
-          bool = true;
-          localObject2 = a((JSONArray)localObject2, 2);
-          b((ArrayList)localObject2);
-          if (((str != null) && (str.equalsIgnoreCase((String)localObject1))) || (!bool)) {
-            continue;
-          }
-          QLog.i("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_GIF newVersion = " + (String)localObject1);
-          SharedPreUtils.v(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
-          SharedPreUtils.x(paramQQAppInterface.getApp().getBaseContext(), paramString);
-          a(paramQQAppInterface, 4, jdField_a_of_type_JavaLangLong.longValue());
-          if ((localObject2 == null) || (((ArrayList)localObject2).isEmpty())) {
-            break label398;
-          }
-          paramString = ((ArrayList)localObject2).iterator();
-          if ((paramString == null) || (!paramString.hasNext())) {
-            break label398;
-          }
-          localObject1 = (ScribbleResMgr.ResInfo)paramString.next();
-          if (((ScribbleResMgr.ResInfo)localObject1).downloading) {
-            continue;
-          }
-          if ((((ScribbleResMgr.ResInfo)localObject1).predownload != 1) && (!this.jdField_d_of_type_Boolean)) {
-            continue;
-          }
-          a(paramQQAppInterface, (ScribbleResMgr.ResInfo)localObject1, jdField_a_of_type_JavaLangLong.longValue(), true);
-          continue;
-          localJSONException1 = localJSONException1;
-          localObject1 = null;
-        }
-        catch (JSONException localJSONException2)
-        {
-          continue;
-        }
-        localJSONException1.printStackTrace();
-        QLog.e("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_Gif JSON EXCEPT");
-        bool = false;
-        localObject3 = null;
-        continue;
-        QLog.e("ScribbleResMgr", 2, "mArrGifInfo index :" + ((ScribbleResMgr.ResInfo)localObject1).sourceId + " is downloading ");
-        continue;
-        QLog.i("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_GIF newVersion = " + (String)localObject1 + " oldVersion=  " + str);
-      }
-      label398:
-      Object localObject1 = null;
+      catch (JSONException localJSONException1) {}
+      localJSONException2.printStackTrace();
     }
+    catch (JSONException localJSONException2)
+    {
+      localObject1 = null;
+    }
+    QLog.e("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_Gif JSON EXCEPT");
+    boolean bool = false;
+    Object localObject2 = localStringBuilder;
+    localObject2 = a((JSONArray)localObject2, 2);
+    b((ArrayList)localObject2);
+    if (((str == null) || (!str.equalsIgnoreCase((String)localObject1))) && (bool))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RESOURCE_CONFIG_TASK_ID_GIF newVersion = ");
+      localStringBuilder.append((String)localObject1);
+      QLog.i("ScribbleResMgr", 2, localStringBuilder.toString());
+      SharedPreUtils.l(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
+      SharedPreUtils.n(paramQQAppInterface.getApp().getBaseContext(), paramString);
+      a(paramQQAppInterface, 4, jdField_a_of_type_JavaLangLong.longValue());
+      if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty())) {
+        paramString = ((ArrayList)localObject2).iterator();
+      }
+    }
+    else
+    {
+      while ((paramString != null) && (paramString.hasNext()))
+      {
+        localObject1 = (ResInfo)paramString.next();
+        if (!((ResInfo)localObject1).jdField_a_of_type_Boolean)
+        {
+          if ((((ResInfo)localObject1).c == 1) || (this.jdField_d_of_type_Boolean)) {
+            a(paramQQAppInterface, (ResInfo)localObject1, jdField_a_of_type_JavaLangLong.longValue(), true);
+          }
+        }
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("mArrGifInfo index :");
+          ((StringBuilder)localObject2).append(((ResInfo)localObject1).b);
+          ((StringBuilder)localObject2).append(" is downloading ");
+          QLog.e("ScribbleResMgr", 2, ((StringBuilder)localObject2).toString());
+          continue;
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("RESOURCE_CONFIG_TASK_ID_GIF newVersion = ");
+          paramQQAppInterface.append((String)localObject1);
+          paramQQAppInterface.append(" oldVersion=  ");
+          paramQQAppInterface.append(str);
+          QLog.i("ScribbleResMgr", 2, paramQQAppInterface.toString());
+        }
+      }
+    }
+    return bool;
   }
   
   private boolean b(String paramString)
   {
-    localObject = null;
+    Object localObject = null;
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
@@ -1160,12 +1230,9 @@ public class ScribbleResMgr
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        QLog.e("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_Gif JSON EXCEPT");
-        paramString = localObject;
-      }
+      paramString.printStackTrace();
+      QLog.e("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_Gif JSON EXCEPT");
+      paramString = localObject;
     }
     b(a(paramString, 2));
     return true;
@@ -1173,7 +1240,12 @@ public class ScribbleResMgr
   
   private static String c(int paramInt)
   {
-    return jdField_c_of_type_JavaLangString + "gif_zip_tmp" + String.valueOf(paramInt) + "/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("gif_zip_tmp");
+    localStringBuilder.append(String.valueOf(paramInt));
+    localStringBuilder.append("/");
+    return localStringBuilder.toString();
   }
   
   private void c()
@@ -1185,39 +1257,52 @@ public class ScribbleResMgr
     this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 0L);
   }
   
-  private void c(ArrayList<ScribbleResMgr.ResInfo> paramArrayList)
+  private void c(ArrayList<ResInfo> paramArrayList)
   {
-    if ((paramArrayList != null) && (!paramArrayList.isEmpty())) {
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
+    {
       this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    }
-    try
-    {
-      this.jdField_c_of_type_JavaUtilArrayList.clear();
-      this.jdField_c_of_type_JavaUtilArrayList.addAll(paramArrayList);
-      a(this.jdField_c_of_type_JavaUtilArrayList);
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      try
+      {
+        this.jdField_c_of_type_JavaUtilArrayList.clear();
+        this.jdField_c_of_type_JavaUtilArrayList.addAll(paramArrayList);
+        a(this.jdField_c_of_type_JavaUtilArrayList);
+        return;
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
     }
   }
   
   public static boolean c(Context paramContext, String paramString)
   {
-    boolean bool = SharedPreUtils.n(paramContext, paramString);
-    QLog.d("ScribbleResMgr", 2, "canShowEnter" + bool);
+    boolean bool = SharedPreUtils.j(paramContext, paramString);
+    paramContext = new StringBuilder();
+    paramContext.append("canShowEnter");
+    paramContext.append(bool);
+    QLog.d("ScribbleResMgr", 2, paramContext.toString());
     return bool;
   }
   
   private static String d(int paramInt)
   {
-    return c(paramInt) + "gif_zip_tmp" + String.valueOf(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c(paramInt));
+    localStringBuilder.append("gif_zip_tmp");
+    localStringBuilder.append(String.valueOf(paramInt));
+    return localStringBuilder.toString();
   }
   
   private static String e(int paramInt)
   {
-    return c(paramInt) + "gif_orig_" + String.valueOf(paramInt) + ".gif";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c(paramInt));
+    localStringBuilder.append("gif_orig_");
+    localStringBuilder.append(String.valueOf(paramInt));
+    localStringBuilder.append(".gif");
+    return localStringBuilder.toString();
   }
   
   public ArrayList<Integer> a(QQAppInterface paramQQAppInterface)
@@ -1232,18 +1317,23 @@ public class ScribbleResMgr
         Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          ScribbleResMgr.ResInfo localResInfo = (ScribbleResMgr.ResInfo)localIterator.next();
-          if ((localResInfo.resType == 1) && (localResInfo.isShow == 1) && ((localResInfo.showInApp & 0x2) > 0)) {
-            paramQQAppInterface.add(Integer.valueOf(localResInfo.sourceId));
+          ResInfo localResInfo = (ResInfo)localIterator.next();
+          if ((localResInfo.jdField_a_of_type_Int == 1) && (localResInfo.d == 1) && ((localResInfo.e & 0x2) > 0)) {
+            paramQQAppInterface.add(Integer.valueOf(localResInfo.b));
           }
         }
       }
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      return paramQQAppInterface;
     }
     finally
     {
       this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
     }
-    return paramQQAppInterface;
+    for (;;)
+    {
+      throw paramQQAppInterface;
+    }
   }
   
   public void a()
@@ -1252,7 +1342,7 @@ public class ScribbleResMgr
     QLog.d("ScribbleResMgr", 2, "setGetConfigFinished");
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, View paramView, ScribbleResMgr.ResCallback paramResCallback)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, View paramView, ResCallback paramResCallback)
   {
     a(paramInt1, paramInt2, paramView, paramResCallback);
     paramQQAppInterface = new ScribbleResMgr.2(this, paramQQAppInterface, paramInt1, paramInt2);
@@ -1261,9 +1351,11 @@ public class ScribbleResMgr
   
   public boolean a(String paramString, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    boolean bool = true;
+    boolean bool;
     if (paramInt == 2598) {
       bool = a(paramQQAppInterface, paramString);
+    } else {
+      bool = true;
     }
     if (paramInt == 2599) {
       bool = b(paramQQAppInterface, paramString);
@@ -1286,18 +1378,23 @@ public class ScribbleResMgr
         Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          ScribbleResMgr.ResInfo localResInfo = (ScribbleResMgr.ResInfo)localIterator.next();
-          if ((localResInfo.resType == 2) && (localResInfo.isShow == 1) && ((localResInfo.showInApp & 0x2) > 0)) {
-            paramQQAppInterface.add(Integer.valueOf(localResInfo.sourceId));
+          ResInfo localResInfo = (ResInfo)localIterator.next();
+          if ((localResInfo.jdField_a_of_type_Int == 2) && (localResInfo.d == 1) && ((localResInfo.e & 0x2) > 0)) {
+            paramQQAppInterface.add(Integer.valueOf(localResInfo.b));
           }
         }
       }
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      return paramQQAppInterface;
     }
     finally
     {
       this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
     }
-    return paramQQAppInterface;
+    for (;;)
+    {
+      throw paramQQAppInterface;
+    }
   }
   
   public void b()
@@ -1309,7 +1406,7 @@ public class ScribbleResMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleResMgr
  * JD-Core Version:    0.7.0.1
  */

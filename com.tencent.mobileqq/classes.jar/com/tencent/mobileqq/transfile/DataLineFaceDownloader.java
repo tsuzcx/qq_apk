@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.OutputStream;
 
 public class DataLineFaceDownloader
-  extends ChatImageDownloader
+  extends AbstractImageDownloader
 {
   public static final String PROTOCOL_DATALINE_FACE = "datalineface";
   static final String TAG = "DataLineFaceDownloader";
@@ -39,39 +39,55 @@ public class DataLineFaceDownloader
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if ((paramDownloadParams.tag instanceof MessageForPic)) {}
-    for (paramDownloadParams = ((MessageForPic)paramDownloadParams.tag).path;; paramDownloadParams = null)
+    if ((paramDownloadParams.tag instanceof MessageForPic)) {
+      paramDownloadParams = ((MessageForPic)paramDownloadParams.tag).path;
+    } else {
+      paramDownloadParams = null;
+    }
+    if (TextUtils.isEmpty(paramDownloadParams)) {
+      return null;
+    }
+    File localFile = new File(paramDownloadParams);
+    if (localFile.exists())
     {
-      if (TextUtils.isEmpty(paramDownloadParams)) {}
-      File localFile1;
-      do
-      {
-        return null;
-        localFile1 = new File(paramDownloadParams);
-      } while (!localFile1.exists());
-      File localFile2;
-      if (localFile1.length() >= 1048576L)
+      Object localObject;
+      if (localFile.length() >= 1048576L)
       {
         String str = compressImage(this.application.getApplicationContext(), paramDownloadParams);
-        if (!FileUtils.a(str)) {
-          break label203;
+        localObject = localFile;
+        if (FileUtils.fileExists(str))
+        {
+          localObject = new File(str);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("DatalineChat downloadImage compress, orgFilePath:");
+          localStringBuilder.append(paramDownloadParams);
+          localStringBuilder.append(" orgFileSize:");
+          localStringBuilder.append(localFile.length());
+          localStringBuilder.append(" compressPath:");
+          localStringBuilder.append(str);
+          localStringBuilder.append(" compressFileSize:");
+          localStringBuilder.append(((File)localObject).length());
+          QLog.i("DataLineFaceDownloader", 1, localStringBuilder.toString());
         }
-        localFile2 = new File(str);
-        QLog.i("DataLineFaceDownloader", 1, "DatalineChat downloadImage compress, orgFilePath:" + paramDownloadParams + " orgFileSize:" + localFile1.length() + " compressPath:" + str + " compressFileSize:" + localFile2.length());
       }
-      label203:
-      for (paramDownloadParams = localFile2;; paramDownloadParams = localFile1)
+      else
       {
-        ChatImageDownloader.copyFromFile(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-        return null;
-        QLog.i("DataLineFaceDownloader", 1, "DatalineChat downloadImage uncompress, orgFilePath:" + paramDownloadParams + " orgFileSize:" + localFile1.length());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("DatalineChat downloadImage uncompress, orgFilePath:");
+        ((StringBuilder)localObject).append(paramDownloadParams);
+        ((StringBuilder)localObject).append(" orgFileSize:");
+        ((StringBuilder)localObject).append(localFile.length());
+        QLog.i("DataLineFaceDownloader", 1, ((StringBuilder)localObject).toString());
+        localObject = localFile;
       }
+      copyFromFile(paramOutputStream, (File)localObject, paramURLDrawableHandler);
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.DataLineFaceDownloader
  * JD-Core Version:    0.7.0.1
  */

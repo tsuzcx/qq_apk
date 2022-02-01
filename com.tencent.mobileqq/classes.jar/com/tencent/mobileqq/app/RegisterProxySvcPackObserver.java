@@ -11,38 +11,39 @@ public class RegisterProxySvcPackObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 2)
       {
-        do
+        if (paramInt != 3) {
+          return;
+        }
+        if (paramObject != null)
         {
-          do
-          {
-            do
-            {
-              return;
-            } while (paramObject == null);
-            paramObject = (Object[])paramObject;
-            a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-            return;
-          } while (paramObject == null);
           paramObject = (Object[])paramObject;
-        } while (paramObject.length != 1);
-        b(((Integer)paramObject[0]).intValue());
-        return;
-      } while (paramObject == null);
+          if (paramObject.length >= 1) {
+            a(((Integer)paramObject[0]).intValue());
+          }
+        }
+      }
+      else if (paramObject != null)
+      {
+        paramObject = (Object[])paramObject;
+        if (paramObject.length == 1) {
+          b(((Integer)paramObject[0]).intValue());
+        }
+      }
+    }
+    else if (paramObject != null)
+    {
       paramObject = (Object[])paramObject;
-    } while (paramObject.length < 1);
-    a(((Integer)paramObject[0]).intValue());
+      a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.RegisterProxySvcPackObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -47,12 +47,22 @@ public class GdtUserInfoAuthorizationHelper$UserInfoEntity
   @NonNull
   public String toString()
   {
-    return "UserInfoEntity : [name -> " + this.jdField_a_of_type_JavaLangString + ", phone -> " + this.b + ", city -> " + this.c + ", errCode -> " + this.jdField_a_of_type_Int + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UserInfoEntity : [name -> ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", phone -> ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", city -> ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", errCode -> ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtUserInfoAuthorizationHelper.UserInfoEntity
  * JD-Core Version:    0.7.0.1
  */

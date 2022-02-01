@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.AdDownloadScene;
@@ -14,6 +13,7 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.Horizo
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.IDownloadStyle;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadUtil;
+import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJAdDownloadViewBase;", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "vafContext", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/VafContext;", "(Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/VafContext;)V", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "getAdInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "setAdInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)V", "buttonStyleJson", "Lorg/json/JSONObject;", "getButtonStyleJson", "()Lorg/json/JSONObject;", "setButtonStyleJson", "(Lorg/json/JSONObject;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "getContext", "()Landroid/content/Context;", "downloadData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "getDownloadData", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "setDownloadData", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;)V", "downloadStyle", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "getDownloadStyle", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "setDownloadStyle", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;)V", "progressStyleJson", "getProgressStyleJson", "setProgressStyleJson", "rijDownloadView", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "getRijDownloadView", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "setRijDownloadView", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;)V", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "checkAttribute", "", "convertJsonToButtonStyle", "convertJsonToProgressStyle", "getAdvertisementInfoFromParams", "value", "", "getComMeasuredHeight", "", "getComMeasuredWidth", "getNativeView", "initView", "onComLayout", "changed", "", "l", "t", "r", "b", "onComMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPause", "onResume", "setAdData", "advertisementInfo", "setAttribute", "key", "setDefaultDownloadStyle", "updateAdData", "Builder", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJAdDownloadViewBase;", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "vafContext", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/VafContext;", "(Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/VafContext;)V", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "getAdInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "setAdInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)V", "buttonStyleJson", "Lorg/json/JSONObject;", "getButtonStyleJson", "()Lorg/json/JSONObject;", "setButtonStyleJson", "(Lorg/json/JSONObject;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "getContext", "()Landroid/content/Context;", "downloadData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "getDownloadData", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "setDownloadData", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;)V", "downloadStyle", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "getDownloadStyle", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "setDownloadStyle", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;)V", "progressStyleJson", "getProgressStyleJson", "setProgressStyleJson", "rijDownloadView", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "getRijDownloadView", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "setRijDownloadView", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;)V", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "checkAttribute", "", "convertJsonToButtonStyle", "convertJsonToProgressStyle", "getAdvertisementInfoFromParams", "value", "", "getComMeasuredHeight", "", "getComMeasuredWidth", "getNativeView", "initView", "onComLayout", "changed", "", "l", "t", "r", "b", "onComMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPause", "onResume", "setAdData", "advertisementInfo", "setAttribute", "key", "setDefaultDownloadStyle", "updateAdData", "Builder", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJAdDownloadViewBase
   extends ViewBase
 {
@@ -76,181 +76,186 @@ public final class RIJAdDownloadViewBase
   
   private final void a(JSONObject paramJSONObject)
   {
+    Object localObject;
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle instanceof HorizontalProgressStyle))
     {
       localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle");
-      }
-      ((HorizontalProgressStyle)localObject).setBtnTextSize(paramJSONObject.optInt("buttonTextSize", 12));
-      paramJSONObject = paramJSONObject.optString("buttonTextColor");
-      if (!TextUtils.isEmpty((CharSequence)paramJSONObject))
+      if (localObject != null)
       {
-        localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-        if (localObject == null) {
+        ((HorizontalProgressStyle)localObject).setBtnTextSize(paramJSONObject.optInt("buttonTextSize", 12));
+        paramJSONObject = paramJSONObject.optString("buttonTextColor");
+        if (!TextUtils.isEmpty((CharSequence)paramJSONObject))
+        {
+          localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
+          if (localObject != null)
+          {
+            localObject = (HorizontalProgressStyle)localObject;
+            if (paramJSONObject == null) {
+              paramJSONObject = "#FF12B7F5";
+            }
+            ((HorizontalProgressStyle)localObject).setBtnTextColor(paramJSONObject);
+            return;
+          }
           throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle");
         }
-        localObject = (HorizontalProgressStyle)localObject;
-        if (paramJSONObject == null) {
-          break label96;
-        }
-        ((HorizontalProgressStyle)localObject).setBtnTextColor(paramJSONObject);
+      }
+      else
+      {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle");
       }
     }
-    label96:
-    do
+    else if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle instanceof RoundProgressStyle))
     {
-      do
-      {
-        return;
-        paramJSONObject = "#FF12B7F5";
-        break;
-      } while (!(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle instanceof RoundProgressStyle));
       localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
-      }
-      RoundProgressStyle localRoundProgressStyle = (RoundProgressStyle)localObject;
-      localObject = paramJSONObject.optString("buttonBackgroundColor");
-      if (localObject != null) {}
-      for (;;)
+      if (localObject != null)
       {
+        RoundProgressStyle localRoundProgressStyle = (RoundProgressStyle)localObject;
+        localObject = paramJSONObject.optString("buttonBackgroundColor");
+        if (localObject == null) {
+          localObject = "#12B7F5";
+        }
         localRoundProgressStyle.setBtnDrawableNormalColor((String)localObject);
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-        if (localObject != null) {
-          break;
+        if (localObject != null)
+        {
+          ((RoundProgressStyle)localObject).setBtnTextSize(paramJSONObject.optInt("buttonTextSize", 12));
+          paramJSONObject = paramJSONObject.optString("buttonTextColor");
+          if (!TextUtils.isEmpty((CharSequence)paramJSONObject))
+          {
+            localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
+            if (localObject != null)
+            {
+              localObject = (RoundProgressStyle)localObject;
+              if (paramJSONObject == null) {
+                paramJSONObject = "#FFFFFF";
+              }
+              ((RoundProgressStyle)localObject).setBtnTextColor(paramJSONObject);
+              return;
+            }
+            throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
+          }
         }
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
-        localObject = "#12B7F5";
+        else
+        {
+          throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
+        }
       }
-      ((RoundProgressStyle)localObject).setBtnTextSize(paramJSONObject.optInt("buttonTextSize", 12));
-      paramJSONObject = paramJSONObject.optString("buttonTextColor");
-    } while (TextUtils.isEmpty((CharSequence)paramJSONObject));
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
-    }
-    localObject = (RoundProgressStyle)localObject;
-    if (paramJSONObject != null) {}
-    for (;;)
-    {
-      ((RoundProgressStyle)localObject).setBtnTextColor(paramJSONObject);
-      return;
-      paramJSONObject = "#FFFFFF";
+      else
+      {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
+      }
     }
   }
   
   private final void b(JSONObject paramJSONObject)
   {
+    Object localObject;
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle instanceof HorizontalProgressStyle))
     {
       localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle");
-      }
-      ((HorizontalProgressStyle)localObject).setProgressTextSize(paramJSONObject.optInt("textSize", 12));
-      paramJSONObject = paramJSONObject.optString("textColor");
-      if (!TextUtils.isEmpty((CharSequence)paramJSONObject))
+      if (localObject != null)
       {
-        localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-        if (localObject == null) {
+        ((HorizontalProgressStyle)localObject).setProgressTextSize(paramJSONObject.optInt("textSize", 12));
+        paramJSONObject = paramJSONObject.optString("textColor");
+        if (!TextUtils.isEmpty((CharSequence)paramJSONObject))
+        {
+          localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
+          if (localObject != null)
+          {
+            localObject = (HorizontalProgressStyle)localObject;
+            if (paramJSONObject == null) {
+              paramJSONObject = "#FFFFFF";
+            }
+            ((HorizontalProgressStyle)localObject).setProgressTextColor(paramJSONObject);
+            return;
+          }
           throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle");
         }
-        localObject = (HorizontalProgressStyle)localObject;
-        if (paramJSONObject == null) {
-          break label96;
-        }
-        ((HorizontalProgressStyle)localObject).setProgressTextColor(paramJSONObject);
       }
-    }
-    label96:
-    while (!(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle instanceof RoundProgressStyle)) {
-      for (;;)
+      else
       {
-        return;
-        paramJSONObject = "#FFFFFF";
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle");
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
-    }
-    RoundProgressStyle localRoundProgressStyle = (RoundProgressStyle)localObject;
-    localObject = paramJSONObject.optString("progressColor");
-    if (localObject != null) {}
-    for (;;)
+    else if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle instanceof RoundProgressStyle))
     {
-      localRoundProgressStyle.setPauseRectColor((String)localObject);
       localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-      if (localObject != null) {
-        break;
+      if (localObject != null)
+      {
+        RoundProgressStyle localRoundProgressStyle = (RoundProgressStyle)localObject;
+        localObject = paramJSONObject.optString("progressColor");
+        if (localObject == null) {
+          localObject = "#12B7F5";
+        }
+        localRoundProgressStyle.setPauseRectColor((String)localObject);
+        localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
+        if (localObject != null)
+        {
+          localRoundProgressStyle = (RoundProgressStyle)localObject;
+          localObject = paramJSONObject.optString("progressColor");
+          if (localObject == null) {
+            localObject = "#12B7F5";
+          }
+          localRoundProgressStyle.setProgressColorHighLight((String)localObject);
+          localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
+          if (localObject != null)
+          {
+            localObject = (RoundProgressStyle)localObject;
+            paramJSONObject = paramJSONObject.optString("progressBg");
+            if (paramJSONObject == null) {
+              paramJSONObject = "#CCCCCC";
+            }
+            ((RoundProgressStyle)localObject).setProgressColorNormal(paramJSONObject);
+            return;
+          }
+          throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
+        }
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
-      localObject = "#12B7F5";
-    }
-    localRoundProgressStyle = (RoundProgressStyle)localObject;
-    localObject = paramJSONObject.optString("progressColor");
-    if (localObject != null) {}
-    for (;;)
-    {
-      localRoundProgressStyle.setProgressColorHighLight((String)localObject);
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-      if (localObject != null) {
-        break;
-      }
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
-      localObject = "#12B7F5";
-    }
-    localObject = (RoundProgressStyle)localObject;
-    paramJSONObject = paramJSONObject.optString("progressBg");
-    if (paramJSONObject != null) {}
-    for (;;)
-    {
-      ((RoundProgressStyle)localObject).setProgressColorNormal(paramJSONObject);
-      return;
-      paramJSONObject = "#CCCCCC";
     }
   }
   
   private final void c()
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater");
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.view.LayoutInflater");
-    }
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131560173, null);
-    localObject = this.jdField_a_of_type_AndroidViewView;
-    if (localObject != null) {}
-    for (localObject = (RIJDownloadView)((View)localObject).findViewById(2131362078);; localObject = null)
+    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater");
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView = ((RIJDownloadView)localObject);
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
-      if (localObject != null) {
-        ((RIJDownloadView)localObject).setDownloadScene(AdDownloadScene.PTSCard);
+      Object localObject2 = (LayoutInflater)localObject1;
+      localObject1 = null;
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject2).inflate(2131560059, null);
+      localObject2 = this.jdField_a_of_type_AndroidViewView;
+      if (localObject2 != null) {
+        localObject1 = (RIJDownloadView)((View)localObject2).findViewById(2131362106);
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView = ((RIJDownloadView)localObject1);
+      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+      if (localObject1 != null) {
+        ((RIJDownloadView)localObject1).setDownloadScene(AdDownloadScene.PTSCard);
       }
       return;
     }
+    throw new TypeCastException("null cannot be cast to non-null type android.view.LayoutInflater");
   }
   
   private final void d()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) {}
-    Object localObject;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) {
       return;
-      e();
-      localObject = this.jdField_a_of_type_OrgJsonJSONObject;
-      if (localObject != null) {
-        b((JSONObject)localObject);
-      }
-      localObject = this.b;
-      if (localObject != null) {
-        a((JSONObject)localObject);
-      }
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
-    } while (localObject == null);
-    ((RIJDownloadView)localObject).setProgressStyle(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle);
+    }
+    e();
+    Object localObject = this.jdField_a_of_type_OrgJsonJSONObject;
+    if (localObject != null) {
+      b((JSONObject)localObject);
+    }
+    localObject = this.b;
+    if (localObject != null) {
+      a((JSONObject)localObject);
+    }
+    localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+    if (localObject != null) {
+      ((RIJDownloadView)localObject).setProgressStyle(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle);
+    }
   }
   
   private final void e()
@@ -332,38 +337,22 @@ public final class RIJAdDownloadViewBase
     }
   }
   
-  public boolean setAttribute(int paramInt, @Nullable Object paramObject)
+  protected boolean setAttribute(int paramInt, @Nullable Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1042)
     {
-    default: 
-      return super.setAttribute(paramInt, paramObject);
-    case 1042: 
-      AdvertisementInfo localAdvertisementInfo = a(paramObject);
-      if (localAdvertisementInfo != null) {
-        if ((Intrinsics.areEqual(getTag(), paramObject) ^ true))
-        {
-          localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-          if (localObject == null) {
-            break label161;
-          }
-        }
-      }
-      for (Object localObject = ((AdvertisementInfo)localObject).mAdTraceId;; localObject = null)
+      if (paramInt != 1054)
       {
-        if ((Intrinsics.areEqual(localObject, localAdvertisementInfo.mAdTraceId) ^ true))
+        if (paramInt != 1055) {
+          return super.setAttribute(paramInt, paramObject);
+        }
+        if ((paramObject instanceof JSONObject))
         {
-          QLog.d("AD_DOWNLOAD_TAG", 1, "tag = " + getTag() + "  value = " + paramObject);
-          setTag(paramObject);
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = localAdvertisementInfo;
+          this.b = ((JSONObject)paramObject);
           d();
-          a(localAdvertisementInfo);
         }
         return true;
-        return true;
       }
-    case 1054: 
-      label161:
       if ((paramObject instanceof JSONObject))
       {
         this.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)paramObject);
@@ -371,17 +360,35 @@ public final class RIJAdDownloadViewBase
       }
       return true;
     }
-    if ((paramObject instanceof JSONObject))
+    AdvertisementInfo localAdvertisementInfo = a(paramObject);
+    if ((localAdvertisementInfo != null) && ((Intrinsics.areEqual(getTag(), paramObject) ^ true)))
     {
-      this.b = ((JSONObject)paramObject);
-      d();
+      Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+      if (localObject != null) {
+        localObject = ((AdvertisementInfo)localObject).mAdTraceId;
+      } else {
+        localObject = null;
+      }
+      if ((Intrinsics.areEqual(localObject, localAdvertisementInfo.mAdTraceId) ^ true))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("tag = ");
+        ((StringBuilder)localObject).append(getTag());
+        ((StringBuilder)localObject).append("  value = ");
+        ((StringBuilder)localObject).append(paramObject);
+        QLog.d("AD_DOWNLOAD_TAG", 1, ((StringBuilder)localObject).toString());
+        setTag(paramObject);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = localAdvertisementInfo;
+        d();
+        a(localAdvertisementInfo);
+      }
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJAdDownloadViewBase
  * JD-Core Version:    0.7.0.1
  */

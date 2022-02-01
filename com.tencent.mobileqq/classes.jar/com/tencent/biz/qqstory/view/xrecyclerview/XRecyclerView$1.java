@@ -19,23 +19,21 @@ class XRecyclerView$1
       paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
       int i = paramRecyclerView.getItemCount();
       int[] arrayOfInt = paramRecyclerView.findFirstVisibleItemPositions(null);
-      if (i - paramInt > paramRecyclerView.getSpanCount() * 3 + arrayOfInt[0]) {
-        break label76;
+      int j = paramRecyclerView.getSpanCount();
+      if (i - paramInt <= arrayOfInt[0] + j * 3) {
+        paramInt = 1;
+      } else {
+        paramInt = 0;
       }
-    }
-    label76:
-    for (paramInt = 1;; paramInt = 0)
-    {
       if (paramInt != 0) {
         XRecyclerView.a(this.a).b(false);
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.xrecyclerview.XRecyclerView.1
  * JD-Core Version:    0.7.0.1
  */

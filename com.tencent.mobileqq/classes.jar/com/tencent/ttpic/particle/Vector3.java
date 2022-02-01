@@ -27,7 +27,15 @@ public class Vector3
   @NonNull
   public String toString()
   {
-    return "(" + this.x + ", " + this.y + ", " + this.z + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.z);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public Vector2 xy()
@@ -37,7 +45,7 @@ public class Vector3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.particle.Vector3
  * JD-Core Version:    0.7.0.1
  */

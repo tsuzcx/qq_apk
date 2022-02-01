@@ -11,8 +11,8 @@ class LoginInfoActivity$20
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    LoginInfoActivity.access$4300(this.a).setVisibility(4);
-    LoginInfoActivity.access$4300(this.a).clearAnimation();
+    LoginInfoActivity.access$4000(this.a).setVisibility(4);
+    LoginInfoActivity.access$4000(this.a).clearAnimation();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -21,7 +21,7 @@ class LoginInfoActivity$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.20
  * JD-Core Version:    0.7.0.1
  */

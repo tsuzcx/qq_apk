@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
+import com.tencent.aelight.camera.api.ICameraCompatible;
+import com.tencent.aelight.camera.constants.CameraCompatibleConstants;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class PTVSwitchControl
 {
@@ -8,14 +10,14 @@ public class PTVSwitchControl
   
   static
   {
-    if (CameraCompatibleList.e(CameraCompatibleList.B)) {
+    if (((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProductManufacturer(CameraCompatibleConstants.B)) {
       a = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.PTVSwitchControl
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.profile;
 
 import ProfileLogic.QC.setUserProfileRsp;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.SVIPObserver;
 
 class CoverDetailFragment$3
@@ -13,41 +13,51 @@ class CoverDetailFragment$3
   
   public void onDefaultCardRsp(boolean paramBoolean, Object paramObject)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
-      } while (!(paramObject instanceof setUserProfileRsp));
-      int i = ((setUserProfileRsp)paramObject).ret;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, "onDefaultCardRsp: [setUserProfileRsp] ret=" + i);
-      }
-      if (i == 0)
-      {
-        paramObject = new Intent();
-        paramObject.putExtra("cover_id_key", CoverDetailFragment.a(this.a));
-        localFragmentActivity.setResult(-1, paramObject);
-        localFragmentActivity.finish();
-        return;
-      }
-      CoverDetailFragment.a(this.a, localFragmentActivity);
+    BaseActivity localBaseActivity = this.a.getBaseActivity();
+    if (localBaseActivity == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, "onDefaultCardRsp: isSuccess=false, cmd=" + paramObject);
+    }
+    if (paramBoolean)
+    {
+      if ((paramObject instanceof setUserProfileRsp))
+      {
+        int i = ((setUserProfileRsp)paramObject).ret;
+        if (QLog.isColorLevel())
+        {
+          paramObject = new StringBuilder();
+          paramObject.append("onDefaultCardRsp: [setUserProfileRsp] ret=");
+          paramObject.append(i);
+          QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, paramObject.toString());
+        }
+        if (i == 0)
+        {
+          paramObject = new Intent();
+          paramObject.putExtra("cover_id_key", CoverDetailFragment.a(this.a));
+          localBaseActivity.setResult(-1, paramObject);
+          localBaseActivity.finish();
+          return;
+        }
+        CoverDetailFragment.a(this.a, localBaseActivity);
       }
-    } while (!"profilelogic.setUserProfile".equals(paramObject));
-    CoverDetailFragment.a(this.a, localFragmentActivity);
+    }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDefaultCardRsp: isSuccess=false, cmd=");
+        localStringBuilder.append(paramObject);
+        QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, localStringBuilder.toString());
+      }
+      if ("profilelogic.setUserProfile".equals(paramObject)) {
+        CoverDetailFragment.a(this.a, localBaseActivity);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.CoverDetailFragment.3
  * JD-Core Version:    0.7.0.1
  */

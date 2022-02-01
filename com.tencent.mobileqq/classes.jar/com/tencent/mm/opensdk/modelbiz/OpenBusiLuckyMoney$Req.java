@@ -16,11 +16,39 @@ public class OpenBusiLuckyMoney$Req
   
   public boolean checkArgs()
   {
-    if ((this.appId == null) || (this.appId.length() <= 0)) {}
-    while ((this.timeStamp == null) || (this.timeStamp.length() <= 0) || (this.nonceStr == null) || (this.nonceStr.length() <= 0) || (this.signType == null) || (this.signType.length() <= 0) || (this.signature == null) || (this.signature.length() <= 0)) {
-      return false;
+    String str = this.appId;
+    if (str != null)
+    {
+      if (str.length() <= 0) {
+        return false;
+      }
+      str = this.timeStamp;
+      if (str != null)
+      {
+        if (str.length() <= 0) {
+          return false;
+        }
+        str = this.nonceStr;
+        if (str != null)
+        {
+          if (str.length() <= 0) {
+            return false;
+          }
+          str = this.signType;
+          if (str != null)
+          {
+            if (str.length() <= 0) {
+              return false;
+            }
+            str = this.signature;
+            if (str != null) {
+              return str.length() > 0;
+            }
+          }
+        }
+      }
     }
-    return true;
+    return false;
   }
   
   public int getType()
@@ -41,7 +69,7 @@ public class OpenBusiLuckyMoney$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.OpenBusiLuckyMoney.Req
  * JD-Core Version:    0.7.0.1
  */

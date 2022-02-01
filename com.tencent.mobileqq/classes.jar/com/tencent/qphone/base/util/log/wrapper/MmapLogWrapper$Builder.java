@@ -10,13 +10,14 @@ public class MmapLogWrapper$Builder
   
   public MmapLogWrapper create()
   {
-    if (this.logFilePath == null) {
-      throw new IllegalArgumentException("logFilePath cannot be null");
-    }
-    if (this.bufferFilePath == null) {
+    if (this.logFilePath != null)
+    {
+      if (this.bufferFilePath != null) {
+        return new MmapLogWrapper(this);
+      }
       throw new RuntimeException("need bufferFilePath path");
     }
-    return new MmapLogWrapper(this);
+    throw new IllegalArgumentException("logFilePath cannot be null");
   }
   
   public Builder setBufferFilePath(String paramString)
@@ -51,7 +52,7 @@ public class MmapLogWrapper$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.wrapper.MmapLogWrapper.Builder
  * JD-Core Version:    0.7.0.1
  */

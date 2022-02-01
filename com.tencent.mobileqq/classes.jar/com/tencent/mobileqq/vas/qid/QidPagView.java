@@ -15,6 +15,7 @@ import android.util.AttributeSet;
 import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.vas.ui.IVasPagViewApi;
 import com.tencent.mobileqq.vas.ui.VasPagView;
 import com.tencent.mobileqq.vas.util.NinePatchUtil;
 import com.tencent.mobileqq.vas.util.NinePatchUtil.NinePatchParams;
@@ -52,34 +53,49 @@ public class QidPagView
     this.jdField_a_of_type_Boolean = false;
   }
   
+  private void a(Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      paramBitmap = new Canvas(paramBitmap);
+      paramDrawable.setBounds(0, 0, paramInt2, paramInt3);
+      if (paramInt1 == 3) {
+        paramDrawable.setColorFilter(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData.jdField_a_of_type_Int, PorterDuff.Mode.SRC_ATOP);
+      }
+      paramDrawable.draw(paramBitmap);
+      if (this.jdField_a_of_type_Boolean) {
+        paramDrawable.clearColorFilter();
+      }
+    }
+  }
+  
   private void a(PAGView paramPAGView)
   {
     this.jdField_a_of_type_OrgLibpagPAGView = paramPAGView;
-    if (this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData.jdField_a_of_type_JavaLangString));
-        paramPAGView.setScaleMode(3);
-        localObject = QidCardManager.a(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData.jdField_a_of_type_JavaLangString);
-        if (localObject != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QidPagView", 1, "QID_QR, localFile,empty ");
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData;
+    if (localObject == null) {
       return;
-      localObject = PAGFile.Load(((File)localObject).getAbsolutePath());
-      if (localObject != null) {
-        break;
+    }
+    if (TextUtils.isEmpty(((QidPagView.QidData)localObject).jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    paramPAGView.setScaleMode(3);
+    localObject = QidCardManager.a(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QidPagView", 1, "QID_QR, localFile,empty ");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("QidPagView", 1, "QID_QR, pagFile,empty ");
-    return;
+      return;
+    }
+    localObject = PAGFile.Load(((File)localObject).getAbsolutePath());
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QidPagView", 1, "QID_QR, pagFile,empty ");
+      }
+      return;
+    }
     if (((PAGFile)localObject).numTexts() > 2)
     {
       PAGText localPAGText = ((PAGFile)localObject).getTextData(0);
@@ -120,11 +136,15 @@ public class QidPagView
         paramBitmap.setScaleMode(1);
       }
       paramPAGView.replaceImage(paramInt, paramBitmap);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("QidPagView", 2, "QID_QR,replaceImage bitmap is empty " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramPAGView = new StringBuilder();
+      paramPAGView.append("QID_QR,replaceImage bitmap is empty ");
+      paramPAGView.append(paramInt);
+      QLog.d("QidPagView", 2, paramPAGView.toString());
+    }
   }
   
   private void a(PAGView paramPAGView, int paramInt, Drawable paramDrawable)
@@ -152,16 +172,21 @@ public class QidPagView
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString + "?" + System.currentTimeMillis(), null);
-    localURLDrawable.setURLDrawableListener(new QidPagView.3(this, paramPAGView, paramInt, paramString));
-    localURLDrawable.startDownload();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    localObject = URLDrawable.getDrawable(((StringBuilder)localObject).toString(), null);
+    ((URLDrawable)localObject).setURLDrawableListener(new QidPagView.3(this, paramPAGView, paramInt, paramString));
+    ((URLDrawable)localObject).startDownload();
   }
   
   public Bitmap a()
   {
-    if (this.jdField_a_of_type_OrgLibpagPAGView != null)
+    PAGView localPAGView = this.jdField_a_of_type_OrgLibpagPAGView;
+    if (localPAGView != null)
     {
-      this.jdField_a_of_type_OrgLibpagPAGView.flush(true);
+      localPAGView.flush(true);
       return this.jdField_a_of_type_OrgLibpagPAGView.getBitmap();
     }
     return null;
@@ -169,84 +194,74 @@ public class QidPagView
   
   Bitmap a(Drawable paramDrawable, int paramInt)
   {
-    if (paramDrawable == null) {}
-    Object localObject1;
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        do
-        {
-          return null;
-          if ((paramDrawable instanceof BitmapDrawable))
-          {
-            localObject1 = ((BitmapDrawable)paramDrawable).getBitmap();
-            if (paramInt != 3) {
-              return localObject1;
-            }
-          }
-          i = paramDrawable.getIntrinsicWidth();
-          j = paramDrawable.getIntrinsicHeight();
-        } while ((i <= 0) || (j <= 0));
-        if (paramInt != 1) {
-          break;
-        }
-        paramInt = (int)(603.0F * jdField_a_of_type_Float);
-        i = (int)(71.0F * jdField_a_of_type_Float);
-        localObject1 = new Rect((int)(40.0F * jdField_a_of_type_Float), 2, (int)(this.jdField_a_of_type_Int + 205.0F * jdField_a_of_type_Float) * 2, i);
-      } while (!(paramDrawable instanceof URLDrawable));
-      paramDrawable = ((URLDrawable)paramDrawable).getCurrDrawable();
-    } while (!(paramDrawable instanceof RegionDrawable));
-    paramDrawable = ((RegionDrawable)paramDrawable).getBitmap();
-    if (paramDrawable != null) {
-      return NinePatchUtil.a(paramDrawable, new NinePatchUtil.NinePatchParams(paramInt * 2, i, paramDrawable.getWidth() / 2, 1, paramDrawable.getHeight() / 2, 1), (Rect)localObject1);
-    }
     Object localObject2 = null;
-    for (;;)
+    if (paramDrawable == null) {
+      return null;
+    }
+    if ((paramDrawable instanceof BitmapDrawable))
     {
-      return localObject2;
-      try
-      {
-        if (paramDrawable.getOpacity() != -1) {}
-        for (localObject1 = Bitmap.Config.ARGB_8888;; localObject1 = Bitmap.Config.RGB_565)
-        {
-          localObject1 = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject1);
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            break;
-          }
-          localObject2 = new Canvas((Bitmap)localObject1);
-          paramDrawable.setBounds(0, 0, i, j);
-          if (paramInt == 3) {
-            paramDrawable.setColorFilter(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData.jdField_a_of_type_Int, PorterDuff.Mode.SRC_ATOP);
-          }
-          paramDrawable.draw((Canvas)localObject2);
-          localObject2 = localObject1;
-          if (!this.jdField_a_of_type_Boolean) {
-            break;
-          }
-          paramDrawable.clearColorFilter();
-          localObject2 = localObject1;
-          break;
-        }
+      localObject1 = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramInt != 3) {
+        return localObject1;
+      }
+    }
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    Object localObject1 = localObject2;
+    if (i > 0)
+    {
+      if (j <= 0) {
         return null;
       }
-      catch (OutOfMemoryError paramDrawable) {}
+      if (paramInt == 1)
+      {
+        float f = jdField_a_of_type_Float;
+        paramInt = (int)(603.0F * f);
+        i = (int)(71.0F * f);
+        Rect localRect = new Rect((int)(40.0F * f), 2, (int)(this.jdField_a_of_type_Int + f * 205.0F) * 2, i);
+        if (!(paramDrawable instanceof URLDrawable)) {
+          return null;
+        }
+        paramDrawable = ((URLDrawable)paramDrawable).getCurrDrawable();
+        if (!(paramDrawable instanceof RegionDrawable)) {
+          return null;
+        }
+        paramDrawable = ((RegionDrawable)paramDrawable).getBitmap();
+        localObject1 = localObject2;
+        if (paramDrawable == null) {
+          break label236;
+        }
+        return NinePatchUtil.a(paramDrawable, new NinePatchUtil.NinePatchParams(paramInt * 2, i, paramDrawable.getWidth() / 2, 1, paramDrawable.getHeight() / 2, 1), localRect);
+      }
     }
+    try
+    {
+      if (paramDrawable.getOpacity() != -1) {
+        localObject1 = Bitmap.Config.ARGB_8888;
+      } else {
+        localObject1 = Bitmap.Config.RGB_565;
+      }
+      localObject1 = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject1);
+      a(paramDrawable, paramInt, i, j, (Bitmap)localObject1);
+      label236:
+      return localObject1;
+    }
+    catch (OutOfMemoryError paramDrawable) {}
+    return null;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData != null) && (this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
+    QidPagView.QidData localQidData = this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData;
+    if ((localQidData != null) && (localQidData.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
       this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData.jdField_a_of_type_AndroidGraphicsDrawableDrawable.clearColorFilter();
     }
   }
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData != null) && (this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
+    QidPagView.QidData localQidData = this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData;
+    if ((localQidData != null) && (localQidData.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
       this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
     }
   }
@@ -256,14 +271,14 @@ public class QidPagView
     if (paramQidData == null) {
       return;
     }
-    b();
+    a().a();
     this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData = paramQidData;
-    a(new QidPagView.1(this));
+    a().a(new QidPagView.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qid.QidPagView
  * JD-Core Version:    0.7.0.1
  */

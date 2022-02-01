@@ -1,70 +1,49 @@
 package com.tencent.mobileqq.activity;
 
-import android.graphics.Rect;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.widget.FixedBounceScrollView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.utils.QQTheme;
 
 class QQSettingMe$5
-  extends Handler
+  implements Runnable
 {
-  QQSettingMe$5(QQSettingMe paramQQSettingMe, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  QQSettingMe$5(QQSettingMe paramQQSettingMe, boolean paramBoolean) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    Object localObject;
-    switch (paramMessage.what)
+    if ((!this.a) && (QQTheme.e()))
     {
-    default: 
-      return;
-    case 0: 
-      paramMessage = new Rect();
-      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[4];
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.offsetDescendantRectToMyCoords((View)localObject, paramMessage);
-      localObject = new Rect();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.getDrawingRect((Rect)localObject);
-      boolean bool = ((Rect)localObject).contains(paramMessage);
-      if (!bool) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.scrollTo(this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.getScrollX(), paramMessage.top);
+      this.this$0.a(Boolean.valueOf(false));
+      QQSettingMe.a(this.this$0).setImageResource(2130846234);
+      QQSettingMe.b(this.this$0).setImageResource(2130846250);
+      QQSettingMe.b(this.this$0).setTextColor(-16777216);
+      if (QQSettingMe.c(this.this$0) != null) {
+        QQSettingMe.c(this.this$0).setTextColor(-16777216);
       }
-      if (bool) {}
-      for (long l = 0L;; l = 50L)
-      {
-        sendEmptyMessageDelayed(1, l);
-        return;
-      }
-    case 1: 
-      paramMessage = new Rect();
-      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[4];
-      ((View)localObject).getHitRect(paramMessage);
-      localObject = ((View)localObject).findViewById(2131369437);
-      paramMessage.offset(((View)localObject).getLeft() + AIOUtils.a(34.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), ((View)localObject).getTop() - AIOUtils.a(18.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()));
-      localObject = (FrameLayout.LayoutParams)QQSettingMe.b(this.a).getLayoutParams();
-      ((FrameLayout.LayoutParams)localObject).leftMargin = paramMessage.left;
-      ((FrameLayout.LayoutParams)localObject).topMargin = paramMessage.top;
-      QQSettingMe.b(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-      QQSettingMe.b(this.a).setPadding(AIOUtils.a(6.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), AIOUtils.a(4.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), AIOUtils.a(6.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), AIOUtils.a(8.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()));
-      QQSettingMe.b(this.a).setVisibility(0);
-      return;
-    case 2: 
-      QQSettingMe.a(this.a, paramMessage);
+      localTextView = (TextView)QQSettingMe.a(this.this$0).findViewById(2131365972);
+      localTextView.setTextColor(Color.parseColor("#FFB0B3BF"));
+      ((ImageView)QQSettingMe.a(this.this$0).findViewById(2131365959)).setColorFilter(localTextView.getCurrentTextColor());
       return;
     }
-    QQSettingMe.b(this.a, paramMessage);
+    this.this$0.a(Boolean.valueOf(this.a));
+    QQSettingMe.a(this.this$0).setImageResource(2130846233);
+    QQSettingMe.b(this.this$0).setImageResource(2130846249);
+    QQSettingMe.b(this.this$0).setTextColor(QQSettingMe.a(this.this$0).getResources().getColor(2131166492));
+    if (QQSettingMe.c(this.this$0) != null) {
+      QQSettingMe.c(this.this$0).setTextColor(QQSettingMe.a(this.this$0).getResources().getColor(2131166492));
+    }
+    TextView localTextView = (TextView)QQSettingMe.a(this.this$0).findViewById(2131365972);
+    localTextView.setTextColor(QQSettingMe.a(this.this$0).getResources().getColor(2131166490));
+    ((ImageView)QQSettingMe.a(this.this$0).findViewById(2131365959)).setColorFilter(localTextView.getCurrentTextColor());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.5
  * JD-Core Version:    0.7.0.1
  */

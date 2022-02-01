@@ -17,7 +17,7 @@ public class LimitedAgeMemoryCache
   public LimitedAgeMemoryCache(MemoryCache paramMemoryCache, long paramLong)
   {
     this.cache = paramMemoryCache;
-    this.maxAge = (1000L * paramLong);
+    this.maxAge = (paramLong * 1000L);
   }
   
   public void clear()
@@ -59,7 +59,7 @@ public class LimitedAgeMemoryCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.cache.memory.impl.LimitedAgeMemoryCache
  * JD-Core Version:    0.7.0.1
  */

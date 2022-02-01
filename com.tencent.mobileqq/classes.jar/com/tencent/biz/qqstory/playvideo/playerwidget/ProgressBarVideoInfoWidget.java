@@ -42,9 +42,28 @@ public class ProgressBarVideoInfoWidget
     boolean bool = ScreenUtil.checkDeviceHasNavigationBar(this.jdField_a_of_type_AndroidViewView.getContext());
     int m = ScreenUtil.getRealWidth(this.jdField_a_of_type_AndroidViewView.getContext());
     int n = ScreenUtil.getRealHeight(this.jdField_a_of_type_AndroidViewView.getContext());
-    SLog.b("FredguoFix", "hasNavi: " + bool + ", naviHeight " + k);
-    SLog.b("FredguoFix", "debug: instantWidth " + i + ", instantHeight" + j + ", rawWidth " + m + ", rawHeight " + n);
-    SLog.b("FredguoFix", "ScreenWidth " + ScreenUtil.SCREEN_WIDTH + ", ScreenHeight " + ScreenUtil.SCREEN_HIGHT);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hasNavi: ");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(", naviHeight ");
+    localStringBuilder.append(k);
+    SLog.b("FredguoFix", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("debug: instantWidth ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(", instantHeight");
+    localStringBuilder.append(j);
+    localStringBuilder.append(", rawWidth ");
+    localStringBuilder.append(m);
+    localStringBuilder.append(", rawHeight ");
+    localStringBuilder.append(n);
+    SLog.b("FredguoFix", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ScreenWidth ");
+    localStringBuilder.append(ScreenUtil.SCREEN_WIDTH);
+    localStringBuilder.append(", ScreenHeight ");
+    localStringBuilder.append(ScreenUtil.SCREEN_HIGHT);
+    SLog.b("FredguoFix", localStringBuilder.toString());
     if (bool) {
       return -2;
     }
@@ -58,11 +77,11 @@ public class ProgressBarVideoInfoWidget
   
   protected void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = ((SplitedProgressBar)paramView.findViewById(2131381504));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = ((SplitedProgressBar)paramView.findViewById(2131380755));
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoNewProgressControler = new NewProgressControler(this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar);
     if (LiuHaiUtils.c(b()))
     {
-      paramView = (LinearLayout)a().jdField_a_of_type_AndroidViewView.findViewById(2131363822);
+      paramView = (LinearLayout)a().jdField_a_of_type_AndroidViewView.findViewById(2131363750);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
       localLayoutParams.height = d();
       if (!ScreenUtil.checkDeviceHasNavigationBar(this.jdField_a_of_type_AndroidViewView.getContext())) {
@@ -85,8 +104,9 @@ public class ProgressBarVideoInfoWidget
       h();
       j();
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoNewProgressControler != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoNewProgressControler.a(paramIVideoView);
+    NewProgressControler localNewProgressControler = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoNewProgressControler;
+    if (localNewProgressControler != null) {
+      localNewProgressControler.a(paramIVideoView);
     }
   }
   
@@ -99,7 +119,7 @@ public class ProgressBarVideoInfoWidget
   
   protected int b()
   {
-    return 2131561967;
+    return 2131561811;
   }
   
   protected void f() {}
@@ -111,7 +131,7 @@ public class ProgressBarVideoInfoWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.ProgressBarVideoInfoWidget
  * JD-Core Version:    0.7.0.1
  */

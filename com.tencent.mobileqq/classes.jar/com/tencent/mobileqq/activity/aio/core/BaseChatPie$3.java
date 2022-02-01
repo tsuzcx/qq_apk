@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.widget.XEditTextEx;
+import android.os.Bundle;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.widget.QQBlur.OnDrawBgListener;
 
 class BaseChatPie$3
-  implements View.OnLongClickListener
+  implements QQBlur.OnDrawBgListener
 {
   BaseChatPie$3(BaseChatPie paramBaseChatPie) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    if ("//findcrash".equals(this.a.a.getText().toString())) {
-      ThreadManager.post(new LocalCrashCollector(this.a), 8, null, true);
-    }
-    return true;
+    this.a.a.b(false);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.3
  * JD-Core Version:    0.7.0.1
  */

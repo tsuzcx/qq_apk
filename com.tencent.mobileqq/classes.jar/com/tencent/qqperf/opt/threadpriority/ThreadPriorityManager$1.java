@@ -14,20 +14,21 @@ final class ThreadPriorityManager$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      ThreadPriorityManager.a();
+      if (i != 2) {
+        return;
+      }
+      ThreadPriorityManager.b();
       return;
     }
-    ThreadPriorityManager.b();
+    ThreadPriorityManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.threadpriority.ThreadPriorityManager.1
  * JD-Core Version:    0.7.0.1
  */

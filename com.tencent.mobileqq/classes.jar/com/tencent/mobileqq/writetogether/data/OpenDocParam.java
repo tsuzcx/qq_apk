@@ -75,27 +75,69 @@ public class OpenDocParam
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("bytes_global_padid").append(this.jdField_f_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("uint32_doc_type").append(this.jdField_a_of_type_Int).append("\n");
-    localStringBuilder.append("bytes_title").append(this.jdField_g_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("aTextName").append(this.jdField_d_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("aTextSubId").append(this.jdField_e_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("aTextText").append(this.jdField_a_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("aTextAttr").append(this.jdField_b_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("aTextAPool").append(this.jdField_c_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("bytes_subid").append(this.jdField_h_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("uint32_baseRev").append(this.jdField_b_of_type_Int).append("\n");
-    localStringBuilder.append("uint32_baseLen").append(this.jdField_c_of_type_Int).append("\n");
-    localStringBuilder.append("bytes_meta").append(this.i).append("\n");
-    localStringBuilder.append("uint32_sheetPosLen").append(this.jdField_d_of_type_Int).append("\n");
-    localStringBuilder.append("bytes_owner_appid").append(this.j).append("\n");
-    localStringBuilder.append("uint64_baseLen").append(this.jdField_a_of_type_Long).append("\n");
-    localStringBuilder.append("uint64_sheetPosLen").append(this.jdField_b_of_type_Long).append("\n");
-    localStringBuilder.append("ownerUin").append(this.jdField_c_of_type_Long).append("\n");
-    localStringBuilder.append("maxLen").append(this.jdField_e_of_type_Int).append("\n");
-    localStringBuilder.append("uint64_group_code").append(this.k).append("\n");
-    localStringBuilder.append("launchType").append(this.jdField_f_of_type_Int).append("\n");
-    localStringBuilder.append("showSoftInput").append(this.jdField_g_of_type_Int).append("\n");
+    localStringBuilder.append("bytes_global_padid");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("uint32_doc_type");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("bytes_title");
+    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("aTextName");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("aTextSubId");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("aTextText");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("aTextAttr");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("aTextAPool");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("bytes_subid");
+    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("uint32_baseRev");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("uint32_baseLen");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("bytes_meta");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("uint32_sheetPosLen");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("bytes_owner_appid");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("uint64_baseLen");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("uint64_sheetPosLen");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("ownerUin");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("maxLen");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("uint64_group_code");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("launchType");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("showSoftInput");
+    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append("\n");
     return localStringBuilder.toString();
   }
   
@@ -127,7 +169,7 @@ public class OpenDocParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.data.OpenDocParam
  * JD-Core Version:    0.7.0.1
  */

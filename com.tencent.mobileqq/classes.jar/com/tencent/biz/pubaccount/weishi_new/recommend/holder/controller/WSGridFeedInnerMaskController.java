@@ -4,10 +4,10 @@ import UserGrowth.stH5OpInfo;
 import UserGrowth.stSimpleMetaFeed;
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
 import com.tencent.biz.pubaccount.weishi_new.config.WSGlobalConfig;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader;
+import com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView;
 
 public class WSGridFeedInnerMaskController
   extends AbsWsUIGroup<stSimpleMetaFeed>
@@ -29,38 +29,38 @@ public class WSGridFeedInnerMaskController
   {
     if (a())
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
-      WeishiUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.maskImgUrl);
+      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(0);
+      WSPicLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.maskImgUrl);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(8);
   }
   
-  public void a()
+  protected void a()
   {
     this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560537;
+    return 2131560426;
   }
   
-  public void b()
+  protected void b()
   {
     f();
   }
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131369394));
+    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)a(2131369122));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedInnerMaskController
  * JD-Core Version:    0.7.0.1
  */

@@ -27,14 +27,15 @@ public final class MetaSdkInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.sdk, 0);
-    if (this.sdkVersion != null) {
-      paramJceOutputStream.write(this.sdkVersion, 1);
+    String str = this.sdkVersion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaSdkInfo
  * JD-Core Version:    0.7.0.1
  */

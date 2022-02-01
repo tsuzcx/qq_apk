@@ -39,8 +39,13 @@ public class InterstitialAdPlugin
   
   private int getAdType()
   {
-    if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.isEngineTypeMiniApp())) {}
-    for (int i = 0; i == 0; i = 1) {
+    int i;
+    if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.isEngineTypeMiniApp())) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i == 0) {
       return 10;
     }
     return 11;
@@ -48,44 +53,44 @@ public class InterstitialAdPlugin
   
   static boolean isAdUnitIdValid(String paramString)
   {
-    return !TextUtils.isEmpty(paramString);
+    return TextUtils.isEmpty(paramString) ^ true;
   }
   
   InterstitialAdPlugin.MiniInterstitialAd getMiniInterstitialAd(int paramInt, String paramString, RequestEvent paramRequestEvent)
   {
+    boolean bool = this.mInterstitialMap.containsKey(Integer.valueOf(paramInt));
     Object localObject2 = null;
     Object localObject1;
-    if (this.mInterstitialMap.containsKey(Integer.valueOf(paramInt)))
+    if (bool)
     {
       paramString = (InterstitialAdPlugin.MiniInterstitialAd)this.mInterstitialMap.get(Integer.valueOf(paramInt));
-      if (paramString != null)
-      {
-        localObject1 = localObject2;
-        if (this.mMiniAppContext != null) {
-          localObject1 = this.mMiniAppContext.getAttachedActivity();
-        }
-        paramString.setJsService(paramRequestEvent.jsService);
-        paramString.setActivity((Activity)localObject1);
-      }
-      return paramString;
     }
-    if ((this.mMiniAppContext != null) && (this.mApkgInfo != null))
+    else
     {
-      localObject1 = this.mApkgInfo.appId;
-      label101:
-      if (this.mMiniAppContext == null) {
-        break label163;
+      if ((this.mMiniAppContext != null) && (this.mApkgInfo != null)) {
+        localObject1 = this.mApkgInfo.appId;
+      } else {
+        localObject1 = "";
       }
-    }
-    label163:
-    for (Activity localActivity = this.mMiniAppContext.getAttachedActivity();; localActivity = null)
-    {
+      Activity localActivity;
+      if (this.mMiniAppContext != null) {
+        localActivity = this.mMiniAppContext.getAttachedActivity();
+      } else {
+        localActivity = null;
+      }
       paramString = new InterstitialAdPlugin.MiniInterstitialAd(this, localActivity, paramInt, paramString, (String)localObject1, paramRequestEvent.jsService);
       this.mInterstitialMap.put(Integer.valueOf(paramInt), paramString);
-      break;
-      localObject1 = "";
-      break label101;
     }
+    if (paramString != null)
+    {
+      localObject1 = localObject2;
+      if (this.mMiniAppContext != null) {
+        localObject1 = this.mMiniAppContext.getAttachedActivity();
+      }
+      paramString.setJsService(paramRequestEvent.jsService);
+      paramString.setActivity((Activity)localObject1);
+    }
+    return paramString;
   }
   
   public void onDestroy()
@@ -104,84 +109,86 @@ public class InterstitialAdPlugin
   @JsEvent({"operateInterstitialAd"})
   public String operateInterstitialAd(RequestEvent paramRequestEvent)
   {
+    JSONObject localJSONObject;
     try
     {
-      QMLog.e("InterstitialAdPlugin", "operateInterstitialAd, jsonParams = " + paramRequestEvent.jsonParams);
-      JSONObject localJSONObject1 = new JSONObject(paramRequestEvent.jsonParams);
-      int j = localJSONObject1.optInt("id", -1);
-      Object localObject = localJSONObject1.optString("adUnitId", null);
-      if (!isAdUnitIdValid((String)localObject))
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("operateInterstitialAd, jsonParams = ");
+      ((StringBuilder)localObject1).append(paramRequestEvent.jsonParams);
+      QMLog.e("InterstitialAdPlugin", ((StringBuilder)localObject1).toString());
+      localObject1 = new JSONObject(paramRequestEvent.jsonParams);
+      int j = ((JSONObject)localObject1).optInt("id", -1);
+      Object localObject2 = ((JSONObject)localObject1).optString("adUnitId", null);
+      if (!isAdUnitIdValid((String)localObject2))
       {
-        localJSONObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, localJSONObject1);
-        localJSONObject1.put("errCode", 1002);
-        localObject = localJSONObject1.toString();
-        paramRequestEvent.fail(localJSONObject1, "广告单元无效");
-        return localObject;
+        localObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, (JSONObject)localObject1);
+        ((JSONObject)localObject1).put("errCode", 1002);
+        localObject2 = ((JSONObject)localObject1).toString();
+        paramRequestEvent.fail((JSONObject)localObject1, "广告单元无效");
+        return localObject2;
       }
-      localObject = getMiniInterstitialAd(j, (String)localObject, paramRequestEvent);
-      String str = localJSONObject1.optString("type");
-      int i = localJSONObject1.optInt("compId", -1);
-      if ("load".equals(str)) {
-        if (!((InterstitialAdPlugin.MiniInterstitialAd)localObject).load(i, paramRequestEvent.callbackId))
-        {
-          localJSONObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, localJSONObject1);
-          localJSONObject1.put("errCode", 1003);
-          paramRequestEvent.fail(localJSONObject1, "内部错误");
-        }
-      }
-      for (;;)
+      localObject2 = getMiniInterstitialAd(j, (String)localObject2, paramRequestEvent);
+      String str = ((JSONObject)localObject1).optString("type");
+      int i = ((JSONObject)localObject1).optInt("compId", -1);
+      if ("load".equals(str))
       {
-        return "";
-        if ("show".equals(str))
+        if (!((InterstitialAdPlugin.MiniInterstitialAd)localObject2).load(i, paramRequestEvent.callbackId))
         {
-          j = AdFrequencyLimit.canShowInterstitialAdNow();
-          if (j != 0)
-          {
-            localJSONObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, localJSONObject1);
-            localJSONObject1.put("errCode", j);
-            paramRequestEvent.fail(localJSONObject1, "内部错误");
-            return localJSONObject1.toString();
-          }
-          if (((InterstitialAdPlugin.MiniInterstitialAd)localObject).show(i, paramRequestEvent.callbackId)) {
-            continue;
-          }
-          localJSONObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, localJSONObject1);
-          localJSONObject1.put("errCode", 1003);
-          paramRequestEvent.fail(localJSONObject1, "内部错误");
-          continue;
-        }
-        try
-        {
-          localJSONObject2.put("errCode", 1003);
-          paramRequestEvent.fail(localJSONObject2, "内部错误");
-          return localJSONObject2.toString();
-          if (!"destroy".equals(str)) {
-            continue;
-          }
-          if (((InterstitialAdPlugin.MiniInterstitialAd)localObject).destroy()) {}
-          for (JSONObject localJSONObject2 = ApiUtil.wrapCallbackOk(paramRequestEvent.event, localJSONObject2);; localJSONObject2 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, localJSONObject2, "内部错误").put("errCode", 1003).put("errMsg", "内部错误"))
-          {
-            paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, localJSONObject2.toString());
-            this.mInterstitialMap.remove(Integer.valueOf(j));
-            break;
-          }
-        }
-        catch (Throwable paramRequestEvent)
-        {
-          break label339;
+          localObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, (JSONObject)localObject1);
+          ((JSONObject)localObject1).put("errCode", 1003);
+          paramRequestEvent.fail((JSONObject)localObject1, "内部错误");
         }
       }
+      else if ("show".equals(str))
+      {
+        j = AdFrequencyLimit.canShowInterstitialAdNow();
+        if (j != 0)
+        {
+          localObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, (JSONObject)localObject1);
+          ((JSONObject)localObject1).put("errCode", j);
+          paramRequestEvent.fail((JSONObject)localObject1, "内部错误");
+          return ((JSONObject)localObject1).toString();
+        }
+        if (!((InterstitialAdPlugin.MiniInterstitialAd)localObject2).show(i, paramRequestEvent.callbackId))
+        {
+          localObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, (JSONObject)localObject1);
+          ((JSONObject)localObject1).put("errCode", 1003);
+          paramRequestEvent.fail((JSONObject)localObject1, "内部错误");
+        }
+      }
+      else if ("destroy".equals(str))
+      {
+        if (((InterstitialAdPlugin.MiniInterstitialAd)localObject2).destroy()) {
+          localObject1 = ApiUtil.wrapCallbackOk(paramRequestEvent.event, (JSONObject)localObject1);
+        } else {
+          localObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, (JSONObject)localObject1, "内部错误").put("errCode", 1003).put("errMsg", "内部错误");
+        }
+        paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, ((JSONObject)localObject1).toString());
+        this.mInterstitialMap.remove(Integer.valueOf(j));
+      }
+      return "";
     }
     catch (Throwable localThrowable)
     {
       QMLog.e("InterstitialAdPlugin", "operateInterstitialAdfailed e:", localThrowable);
-      localJSONObject2 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null);
+      localJSONObject = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null);
+    }
+    try
+    {
+      localJSONObject.put("errCode", 1003);
+      paramRequestEvent.fail(localJSONObject, "内部错误");
+      label446:
+      return localJSONObject.toString();
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      break label446;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InterstitialAdPlugin
  * JD-Core Version:    0.7.0.1
  */

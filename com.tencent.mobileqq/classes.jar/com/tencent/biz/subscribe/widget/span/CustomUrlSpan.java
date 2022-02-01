@@ -14,16 +14,18 @@ public class CustomUrlSpan
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomUrlSpan$OnCustomUrlClickListener != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomUrlSpan$OnCustomUrlClickListener.a(this.jdField_a_of_type_JavaLangString, this.b);
+    paramView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomUrlSpan$OnCustomUrlClickListener;
+    if (paramView != null) {
+      paramView.a(this.jdField_a_of_type_JavaLangString, this.b);
     }
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (this.jdField_a_of_type_Int != -2147483648)
+    int i = this.jdField_a_of_type_Int;
+    if (i != -2147483648)
     {
-      paramTextPaint.setColor(this.jdField_a_of_type_Int);
+      paramTextPaint.setColor(i);
       return;
     }
     super.updateDrawState(paramTextPaint);
@@ -31,7 +33,7 @@ public class CustomUrlSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.span.CustomUrlSpan
  * JD-Core Version:    0.7.0.1
  */

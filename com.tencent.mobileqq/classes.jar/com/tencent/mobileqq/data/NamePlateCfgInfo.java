@@ -35,53 +35,68 @@ public class NamePlateCfgInfo
     if (QLog.isColorLevel()) {
       QLog.i("QVIP.NamePlateCfgInfo", 2, "NamePlate converItem2JsonObject");
     }
-    if ((paramItemCfgInfo == null) || (paramItemCfgInfo.itemJumUrl == null)) {
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    HashMap localHashMap;
-    try
+    if (paramItemCfgInfo != null)
     {
-      localHashMap = new HashMap();
-      Iterator localIterator = paramItemCfgInfo.itemJumUrl.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        localHashMap.put(String.valueOf(((Long)localEntry.getKey()).longValue()), localEntry.getValue());
+      if (paramItemCfgInfo.itemJumUrl == null) {
+        return null;
       }
-      localJSONObject.put("vipType", paramItemCfgInfo.vipType);
+      Object localObject = new JSONObject();
+      try
+      {
+        HashMap localHashMap = new HashMap();
+        Iterator localIterator = paramItemCfgInfo.itemJumUrl.entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          localHashMap.put(String.valueOf(((Long)localEntry.getKey()).longValue()), localEntry.getValue());
+        }
+        ((JSONObject)localObject).put("vipType", paramItemCfgInfo.vipType);
+        ((JSONObject)localObject).put("itemJumUrl", new JSONObject(localHashMap));
+        return localObject;
+      }
+      catch (Exception paramItemCfgInfo)
+      {
+        paramItemCfgInfo.printStackTrace();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("converItem2JsonObject exception message = ");
+        ((StringBuilder)localObject).append(paramItemCfgInfo.getMessage());
+        QLog.e("QVIP.NamePlateCfgInfo", 1, ((StringBuilder)localObject).toString());
+      }
     }
-    catch (Exception paramItemCfgInfo)
-    {
-      paramItemCfgInfo.printStackTrace();
-      QLog.e("QVIP.NamePlateCfgInfo", 1, "converItem2JsonObject exception message = " + paramItemCfgInfo.getMessage());
-      return null;
-    }
-    localJSONObject.put("itemJumUrl", new JSONObject(localHashMap));
-    return localJSONObject;
+    return null;
   }
   
   public static String convert2Json(ArrayList<ItemCfgInfo> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      JSONObject localJSONObject = converItem2JsonObject((ItemCfgInfo)paramArrayList.next());
-      if (localJSONObject != null) {
-        localJSONArray.put(localJSONObject);
+      JSONArray localJSONArray = new JSONArray();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        JSONObject localJSONObject = converItem2JsonObject((ItemCfgInfo)paramArrayList.next());
+        if (localJSONObject != null) {
+          localJSONArray.put(localJSONObject);
+        }
       }
+      return localJSONArray.toString();
     }
-    return localJSONArray.toString();
+    return null;
   }
   
   public static String getCfgJumpUrl(int paramInt, long paramLong, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QVIP.NamePlateCfgInfo", 2, "getCfgJumpUrl type = " + paramInt + " nameplateId = " + paramLong + " json = \n" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getCfgJumpUrl type = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" nameplateId = ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" json = \n");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("QVIP.NamePlateCfgInfo", 2, ((StringBuilder)localObject).toString());
     }
     paramString = parseJsonArray2List(paramString);
     if (paramString == null) {
@@ -91,7 +106,6 @@ public class NamePlateCfgInfo
     do
     {
       paramString = paramString.iterator();
-      Object localObject;
       while (!((Iterator)localObject).hasNext())
       {
         do
@@ -140,14 +154,15 @@ public class NamePlateCfgInfo
   
   public static Map<Long, String> parseJson2Map(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      localObject = JsonUtil.a(paramString);
-    } while (localObject == null);
+    }
+    Object localObject = JsonUtil.a(paramString);
+    if (localObject == null) {
+      return null;
+    }
     paramString = new HashMap(((Map)localObject).size());
-    Object localObject = ((Map)localObject).entrySet().iterator();
+    localObject = ((Map)localObject).entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
@@ -166,26 +181,29 @@ public class NamePlateCfgInfo
     try
     {
       paramString = new JSONArray(paramString);
-      ArrayList localArrayList = new ArrayList();
+      localObject1 = new ArrayList();
       int i = 0;
       while (i < paramString.length())
       {
-        Object localObject = paramString.optJSONObject(i);
-        if (localObject != null)
+        Object localObject2 = paramString.optJSONObject(i);
+        if (localObject2 != null)
         {
-          localObject = parseJsonObject2Item(((JSONObject)localObject).toString());
-          if (localObject != null) {
-            localArrayList.add(localObject);
+          localObject2 = parseJsonObject2Item(((JSONObject)localObject2).toString());
+          if (localObject2 != null) {
+            ((ArrayList)localObject1).add(localObject2);
           }
         }
         i += 1;
       }
-      return localArrayList;
+      return localObject1;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      QLog.e("QVIP.NamePlateCfgInfo", 1, "parseJsonArray2List exception message = " + paramString.getMessage());
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parseJsonArray2List exception message = ");
+      ((StringBuilder)localObject1).append(paramString.getMessage());
+      QLog.e("QVIP.NamePlateCfgInfo", 1, ((StringBuilder)localObject1).toString());
     }
     return null;
   }
@@ -198,23 +216,30 @@ public class NamePlateCfgInfo
     try
     {
       paramString = new JSONObject(paramString);
-      ItemCfgInfo localItemCfgInfo = new ItemCfgInfo();
-      localItemCfgInfo.vipType = paramString.optInt("vipType");
-      localItemCfgInfo.itemJumUrl = parseJson2Map(paramString.optString("itemJumUrl"));
-      return localItemCfgInfo;
+      localObject = new ItemCfgInfo();
+      ((ItemCfgInfo)localObject).vipType = paramString.optInt("vipType");
+      ((ItemCfgInfo)localObject).itemJumUrl = parseJson2Map(paramString.optString("itemJumUrl"));
+      return localObject;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      QLog.e("QVIP.NamePlateCfgInfo", 1, "parseJsonObject2Item exception message = " + paramString.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parseJsonObject2Item exception message = ");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      QLog.e("QVIP.NamePlateCfgInfo", 1, ((StringBuilder)localObject).toString());
     }
     return null;
   }
   
   public static void vipNamePlateClickReport(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QVIP.NamePlateCfgInfo", 2, "NamePlate vipNamePlateClickReport namePlateId = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("NamePlate vipNamePlateClickReport namePlateId = ");
+      localStringBuilder.append(paramLong);
+      QLog.i("QVIP.NamePlateCfgInfo", 2, localStringBuilder.toString());
     }
     ReportController.b(paramQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A59C", (int)paramLong, 0, "", "", "", "");
   }
@@ -223,8 +248,12 @@ public class NamePlateCfgInfo
   {
     if (paramLong > 0L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QVIP.NamePlateCfgInfo", 2, "NamePlate vipNamePlateExposeReport namePlateId = " + paramLong);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("NamePlate vipNamePlateExposeReport namePlateId = ");
+        localStringBuilder.append(paramLong);
+        QLog.i("QVIP.NamePlateCfgInfo", 2, localStringBuilder.toString());
       }
       ReportController.b(paramQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A59B", (int)paramLong, 0, "", "", "", "");
     }
@@ -236,18 +265,20 @@ public class NamePlateCfgInfo
     if (localFriendsManager != null)
     {
       paramString = localFriendsManager.e(paramString);
-      if (paramString == null) {}
+      if (paramString != null)
+      {
+        l = paramString.bigClubTemplateId;
+        break label39;
+      }
     }
-    for (long l = paramString.bigClubTemplateId;; l = 0L)
-    {
-      vipNamePlateExposeReport(paramQQAppInterface, l);
-      return;
-    }
+    long l = 0L;
+    label39:
+    vipNamePlateExposeReport(paramQQAppInterface, l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.NamePlateCfgInfo
  * JD-Core Version:    0.7.0.1
  */

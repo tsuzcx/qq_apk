@@ -1,28 +1,38 @@
 package com.tencent.mobileqq.adapter;
 
-import com.tencent.mobileqq.app.TroopBusinessObserver;
+import com.tencent.mobileqq.troop.robot.api.TroopRobotObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class RobotAdapter$4
-  extends TroopBusinessObserver
+  extends TroopRobotObserver
 {
   RobotAdapter$4(RobotAdapter paramRobotAdapter) {}
   
-  public void onAddRobot(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(RobotAdapter.a(this.a))))
+    Object localObject = String.valueOf(paramLong1);
+    if ((localObject != null) && (((String)localObject).equals(RobotAdapter.a(this.a))))
     {
       RobotAdapter.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
-      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onAddRobot  success");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" resultCode ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("RobotAdapter", 2, ((StringBuilder)localObject).toString());
       return;
     }
-    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + RobotAdapter.a(this.a));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onAddRobot  troop");
+    ((StringBuilder)localObject).append(paramLong1);
+    ((StringBuilder)localObject).append(" cur ");
+    ((StringBuilder)localObject).append(RobotAdapter.a(this.a));
+    QLog.i("RobotAdapter", 2, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.RobotAdapter.4
  * JD-Core Version:    0.7.0.1
  */

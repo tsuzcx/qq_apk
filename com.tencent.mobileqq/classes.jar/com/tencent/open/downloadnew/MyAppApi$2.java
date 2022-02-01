@@ -1,26 +1,40 @@
 package com.tencent.open.downloadnew;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
+import com.tencent.tmassistantbase.util.GlobalUtil;
 
-class MyAppApi$2
-  extends BroadcastReceiver
+final class MyAppApi$2
+  implements Runnable
 {
-  MyAppApi$2(MyAppApi paramMyAppApi) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    LogUtility.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
-    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))) {
-      this.a.f();
+    try
+    {
+      if (!ControlPolicyUtil.k()) {
+        return;
+      }
+      GlobalUtil.getInstance().setContext(CommonDataAdapter.a().a());
+      if (MyAppApi.h())
+      {
+        MyAppApi.k();
+        return;
+      }
+      MyAppApi.l();
+      return;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("activity not found error:");
+      localStringBuilder.append(localException.getMessage());
+      LogUtility.e("TAMST_WAKE", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.2
  * JD-Core Version:    0.7.0.1
  */

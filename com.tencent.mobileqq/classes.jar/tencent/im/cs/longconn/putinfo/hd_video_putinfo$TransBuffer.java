@@ -22,7 +22,7 @@ public final class hd_video_putinfo$TransBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.putinfo.hd_video_putinfo.TransBuffer
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class RichMsgElemDecoder
   
   public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, MessageInfo paramMessageInfo, TempSessionInfo paramTempSessionInfo, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    new MessagePBElemDecoder().f(paramList, paramList1, paramStringBuilder, paramMsg, paramMessageInfo);
+    new MessagePBElemDecoder().i(paramList, paramList1, paramStringBuilder, paramMsg, paramMessageInfo);
     return true;
   }
   
@@ -31,7 +31,7 @@ public class RichMsgElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.RichMsgElemDecoder
  * JD-Core Version:    0.7.0.1
  */

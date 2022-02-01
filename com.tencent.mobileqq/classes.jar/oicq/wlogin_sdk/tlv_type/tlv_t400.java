@@ -37,7 +37,7 @@ public class tlv_t400
     util.int16_to_buf(paramArrayOfByte4, 0, this._version);
     util.int64_to_buf(paramArrayOfByte4, 2, paramLong1);
     System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte4, 10, paramArrayOfByte1.length);
-    int i = paramArrayOfByte1.length + 10;
+    int i = 10 + paramArrayOfByte1.length;
     System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte4, i, paramArrayOfByte2.length);
     i += paramArrayOfByte2.length;
     util.int32_to_buf(paramArrayOfByte4, i, (int)paramLong2);
@@ -45,8 +45,7 @@ public class tlv_t400
     util.int32_to_buf(paramArrayOfByte4, i, (int)paramLong3);
     i += 4;
     util.int64_to_buf32(paramArrayOfByte4, i, util.get_server_cur_time());
-    i += 4;
-    System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte4, i, paramArrayOfByte3.length);
+    System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte4, i + 4, paramArrayOfByte3.length);
     i = paramArrayOfByte3.length;
     paramArrayOfByte1 = cryptor.encrypt(paramArrayOfByte4, 0, paramArrayOfByte4.length, arrayOfByte);
     this._t400_body_len = paramArrayOfByte1.length;
@@ -58,7 +57,7 @@ public class tlv_t400
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t400
  * JD-Core Version:    0.7.0.1
  */

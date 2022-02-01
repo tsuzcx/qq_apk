@@ -7,7 +7,7 @@ class AEOpenRenderConfig$StrictModeCheckFailedException
   
   public AEOpenRenderConfig$StrictModeCheckFailedException(String paramString)
   {
-    super("[StrictMode] " + paramString);
+    super(localStringBuilder.toString());
   }
 }
 

@@ -25,15 +25,32 @@ public class ResDownloadManager$DownloadParam
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("|_DownloadParam_start");
-    localStringBuilder.append("|").append(" type:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("|").append(" md5:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("|").append(" endFix:").append(this.c);
-    localStringBuilder.append("|").append(" retryCount:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("|").append(" needUnzip:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("|").append(" needVerify:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("|").append(" url:").append(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_JavaLangObject != null) {
-      localStringBuilder.append("|").append(" userData:").append(this.jdField_a_of_type_JavaLangObject);
+    localStringBuilder.append("|");
+    localStringBuilder.append(" type:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(" md5:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append(" endFix:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("|");
+    localStringBuilder.append(" retryCount:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(" needUnzip:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("|");
+    localStringBuilder.append(" needVerify:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("|");
+    localStringBuilder.append(" url:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaLangObject != null)
+    {
+      localStringBuilder.append("|");
+      localStringBuilder.append(" userData:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
     }
     localStringBuilder.append("|end");
     return localStringBuilder.toString();
@@ -41,7 +58,7 @@ public class ResDownloadManager$DownloadParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ResDownloadManager.DownloadParam
  * JD-Core Version:    0.7.0.1
  */

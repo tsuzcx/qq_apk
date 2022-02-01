@@ -6,15 +6,16 @@ public final class kg
   
   public final void a()
   {
-    if (this.a == null) {
+    kt localkt = this.a;
+    if (localkt == null) {
       return;
     }
-    this.a.a();
+    localkt.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.kg
  * JD-Core Version:    0.7.0.1
  */

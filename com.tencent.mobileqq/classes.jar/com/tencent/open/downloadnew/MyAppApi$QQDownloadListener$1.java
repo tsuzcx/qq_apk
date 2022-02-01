@@ -13,78 +13,130 @@ class MyAppApi$QQDownloadListener$1
   
   public void run()
   {
-    Object localObject = null;
-    int i;
-    DownloadManager localDownloadManager;
-    DownloadInfo localDownloadInfo;
     if (this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
     {
-      LogUtility.a("State_Log", "OpenSDK onDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param SNGAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
-      i = DownloadManager.a(this.jdField_a_of_type_Int);
-      LogUtility.c("State_Log", "onDownloadTaskStateChanged--localState = " + i + "state = " + this.jdField_a_of_type_Int + "errorCode = " + this.b);
-      localDownloadManager = DownloadManager.a();
-      localDownloadInfo = localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId, i);
-      if ((localDownloadInfo != null) || (this.jdField_a_of_type_Int == 6)) {
-        break label413;
-      }
-      localDownloadInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, null);
-      localDownloadManager.e(localDownloadInfo);
-      localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId, i);
-      localObject = null;
-    }
-    for (;;)
-    {
-      if (localDownloadInfo != null)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("OpenSDK onDownloadTaskStateChanged state=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(" errorCode=");
+      ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(" param SNGAppId=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId);
+      ((StringBuilder)localObject1).append(" apkId=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId);
+      ((StringBuilder)localObject1).append(" taskAppId=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId);
+      ((StringBuilder)localObject1).append(" packageName=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName);
+      ((StringBuilder)localObject1).append(" version=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion);
+      ((StringBuilder)localObject1).append(" uin=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin);
+      ((StringBuilder)localObject1).append(" via=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
+      LogUtility.a("State_Log", ((StringBuilder)localObject1).toString());
+      int i = DownloadManager.a(this.jdField_a_of_type_Int);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onDownloadTaskStateChanged--localState = ");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append("state = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append("errorCode = ");
+      ((StringBuilder)localObject1).append(this.b);
+      LogUtility.c("State_Log", ((StringBuilder)localObject1).toString());
+      DownloadManager localDownloadManager = DownloadManager.a();
+      DownloadInfo localDownloadInfo2 = localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId, i);
+      Object localObject3 = null;
+      Object localObject4 = null;
+      Object localObject2;
+      DownloadInfo localDownloadInfo1;
+      if ((localDownloadInfo2 == null) && (this.jdField_a_of_type_Int != 6))
       {
-        LogUtility.c("State_Log", "onDownloadTaskStateChanged notifyListener localState=" + i + " dlInfo=" + localDownloadInfo.toString());
-        localDownloadManager.a(i, localDownloadInfo, this.b, this.jdField_a_of_type_JavaLangString);
+        localObject2 = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, null);
+        localDownloadManager.e((DownloadInfo)localObject2);
+        localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId, i);
+        localObject1 = localObject3;
       }
-      for (;;)
+      else
       {
-        for (;;)
+        int j = this.jdField_a_of_type_Int;
+        if (j != 2)
         {
-          DownloadManagerV2.a().a(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Int, (TMAssistantCallYYBTaskInfo)localObject, this.b, this.jdField_a_of_type_JavaLangString);
-          return;
-          LogUtility.a("State_Log", "OpenSDK onDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param== null");
-          return;
-          label413:
-          if (((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3)) || (!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.e())) {
-            break label571;
-          }
-          try
+          localObject2 = localDownloadInfo2;
+          localObject1 = localObject3;
+          if (j != 3) {}
+        }
+        else
+        {
+          localObject2 = localDownloadInfo2;
+          localObject1 = localObject3;
+          if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.e())
           {
-            TMAssistantCallYYBTaskInfo localTMAssistantCallYYBTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct);
-            if (localTMAssistantCallYYBTaskInfo != null)
+            localObject1 = localObject4;
+            try
             {
-              localObject = localTMAssistantCallYYBTaskInfo;
-              long l1 = localTMAssistantCallYYBTaskInfo.mReceiveDataLen;
-              localObject = localTMAssistantCallYYBTaskInfo;
-              long l2 = localTMAssistantCallYYBTaskInfo.mTotalDataLen;
-              localObject = localTMAssistantCallYYBTaskInfo;
-              int j = (int)((float)l1 * 100.0F / (float)l2);
-              localObject = localTMAssistantCallYYBTaskInfo;
-              localDownloadInfo.f = j;
-              localObject = localTMAssistantCallYYBTaskInfo;
-              LogUtility.a("MyAppApi", "onDownloadTaskStateChanged info progress = " + j);
+              localObject3 = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct);
+              localObject2 = localDownloadInfo2;
+              localObject1 = localObject3;
+              if (localObject3 != null)
+              {
+                localObject1 = localObject3;
+                long l1 = ((TMAssistantCallYYBTaskInfo)localObject3).mReceiveDataLen;
+                localObject1 = localObject3;
+                long l2 = ((TMAssistantCallYYBTaskInfo)localObject3).mTotalDataLen;
+                localObject1 = localObject3;
+                j = (int)((float)l1 * 100.0F / (float)l2);
+                localObject1 = localObject3;
+                localDownloadInfo2.f = j;
+                localObject1 = localObject3;
+                localObject2 = new StringBuilder();
+                localObject1 = localObject3;
+                ((StringBuilder)localObject2).append("onDownloadTaskStateChanged info progress = ");
+                localObject1 = localObject3;
+                ((StringBuilder)localObject2).append(j);
+                localObject1 = localObject3;
+                LogUtility.a("MyAppApi", ((StringBuilder)localObject2).toString());
+                localObject2 = localDownloadInfo2;
+                localObject1 = localObject3;
+              }
             }
-            localObject = localTMAssistantCallYYBTaskInfo;
-          }
-          catch (Exception localException)
-          {
-            LogUtility.c("MyAppApi", "getDownloadTaskState>>>", localException);
+            catch (Exception localException)
+            {
+              LogUtility.c("MyAppApi", "getDownloadTaskState>>>", localException);
+              localDownloadInfo1 = localDownloadInfo2;
+            }
           }
         }
-        break;
+      }
+      if (localDownloadInfo1 != null)
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("onDownloadTaskStateChanged notifyListener localState=");
+        ((StringBuilder)localObject3).append(i);
+        ((StringBuilder)localObject3).append(" dlInfo=");
+        ((StringBuilder)localObject3).append(localDownloadInfo1.toString());
+        LogUtility.c("State_Log", ((StringBuilder)localObject3).toString());
+        localDownloadManager.a(i, localDownloadInfo1, this.b, this.jdField_a_of_type_JavaLangString);
+      }
+      else
+      {
         LogUtility.c("MyAppApi", "onDownloadTaskStateChanged notifyListener error dlInfo == null");
       }
-      label571:
-      localObject = null;
+      DownloadManagerV2.a().a(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Int, (TMAssistantCallYYBTaskInfo)localObject1, this.b, this.jdField_a_of_type_JavaLangString);
+      return;
     }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("OpenSDK onDownloadTaskStateChanged state=");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(" errorCode=");
+    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append(" param== null");
+    LogUtility.a("State_Log", ((StringBuilder)localObject1).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.1
  * JD-Core Version:    0.7.0.1
  */

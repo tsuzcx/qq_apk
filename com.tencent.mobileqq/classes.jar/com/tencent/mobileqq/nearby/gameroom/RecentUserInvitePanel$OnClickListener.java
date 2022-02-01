@@ -6,11 +6,11 @@ abstract interface RecentUserInvitePanel$OnClickListener
 {
   public abstract void a(View paramView);
   
-  public abstract void a(View paramView, WerewolvesDataManager.InviteUser paramInviteUser);
+  public abstract void a(View paramView, InviteUser paramInviteUser);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel.OnClickListener
  * JD-Core Version:    0.7.0.1
  */

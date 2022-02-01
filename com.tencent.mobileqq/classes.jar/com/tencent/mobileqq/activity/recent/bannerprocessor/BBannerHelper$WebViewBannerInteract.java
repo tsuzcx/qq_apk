@@ -51,28 +51,38 @@ class BBannerHelper$WebViewBannerInteract
   
   public void onClose()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
       return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
+    }
     BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
   }
   
   public void onEnter()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "onEnter: " + this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner + " / " + this.b + " / " + this.jdField_a_of_type_Int + " / " + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {}
-    QQAppInterface localQQAppInterface;
-    do
+    if (QLog.isColorLevel())
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onEnter: ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+      ((StringBuilder)localObject1).append(" / ");
+      ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(" / ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(" / ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("Q.recent.banner", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
       return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
+    }
     Object localObject3 = QQBrowserActivity.class;
     Object localObject1 = localObject3;
     if (!TextUtils.isEmpty(this.b)) {}
@@ -94,24 +104,24 @@ class BBannerHelper$WebViewBannerInteract
         ((Intent)localObject1).putExtra("url", this.jdField_a_of_type_JavaLangString);
         ((Intent)localObject1).putExtra("banner_webview_extra", this.jdField_a_of_type_AndroidOsBundle);
         ((Intent)localObject1).putExtra("force_no_reload", this.jdField_a_of_type_Boolean);
-      }
-      for (;;)
-      {
         try
         {
           ((Context)localObject3).startActivity((Intent)localObject1);
-          BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
-          return;
         }
         catch (Exception localException)
         {
-          QLog.d("Q.recent.banner", 1, "startActivity,error =" + localException);
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("startActivity,error =");
+          ((StringBuilder)localObject3).append(localException);
+          QLog.d("Q.recent.banner", 1, ((StringBuilder)localObject3).toString());
         }
       }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+      }
+      BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+      return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
@@ -124,14 +134,19 @@ class BBannerHelper$WebViewBannerInteract
   
   public void onOverride()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "banner for " + this.jdField_a_of_type_JavaLangString + " is overrided");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("banner for ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(" is overrided");
+      QLog.d("Q.recent.banner", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper.WebViewBannerInteract
  * JD-Core Version:    0.7.0.1
  */

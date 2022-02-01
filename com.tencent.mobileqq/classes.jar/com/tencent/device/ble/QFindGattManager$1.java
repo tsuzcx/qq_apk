@@ -17,8 +17,12 @@ class QFindGattManager$1
   {
     if (paramMessage.what == 100)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE2", 2, "QFindGattManager write data timeout bleSN " + (String)paramMessage.obj);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("QFindGattManager write data timeout bleSN ");
+        localStringBuilder.append((String)paramMessage.obj);
+        QLog.i("DeviceBLE2", 2, localStringBuilder.toString());
       }
       QFindGattManager.a(this.a, paramMessage.arg1);
       this.a.a((String)paramMessage.obj);
@@ -27,7 +31,7 @@ class QFindGattManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.ble.QFindGattManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class VideoActionSheet
   public static VideoActionSheet a(Context paramContext)
   {
     paramContext = new VideoActionSheet(paramContext, false, false);
-    paramContext.getWindow().setWindowAnimations(2131755233);
+    paramContext.getWindow().setWindowAnimations(2131755398);
     return paramContext;
   }
   
@@ -66,7 +66,7 @@ public class VideoActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.VideoActionSheet
  * JD-Core Version:    0.7.0.1
  */

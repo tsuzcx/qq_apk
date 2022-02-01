@@ -1,8 +1,10 @@
 package com.tencent.mtt.hippy.uimanager;
 
 import android.text.TextUtils;
+import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.common.HippyArray;
 import com.tencent.mtt.hippy.common.HippyMap;
+import com.tencent.mtt.hippy.utils.LogUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -57,78 +59,65 @@ public class DiffUtils
       diffToNode(paramRenderNode1, paramRenderNode2, localArrayList);
       return localArrayList;
     }
-    catch (Throwable paramRenderNode1) {}
+    catch (Throwable paramRenderNode1)
+    {
+      paramRenderNode2 = new StringBuilder();
+      paramRenderNode2.append("diff: ");
+      paramRenderNode2.append(paramRenderNode1.getMessage());
+      LogUtils.d("DiffUtils", paramRenderNode2.toString());
+    }
     return localArrayList;
   }
   
   private static HippyArray diffArray(HippyArray paramHippyArray1, HippyArray paramHippyArray2, int paramInt)
   {
-    if (paramHippyArray1.size() != paramHippyArray2.size()) {}
-    int j;
-    Object localObject1;
-    Object localObject2;
-    do
-    {
+    if (paramHippyArray1.size() != paramHippyArray2.size()) {
       return paramHippyArray2;
-      int k = paramHippyArray1.size();
-      j = 0;
-      if (j >= k) {
-        break label231;
-      }
-      localObject1 = paramHippyArray1.getObject(j);
-      localObject2 = paramHippyArray2.getObject(j);
-      if (!(localObject1 instanceof Boolean)) {
-        break;
-      }
-    } while (((Boolean)localObject1).booleanValue() != ((Boolean)localObject2).booleanValue());
-    label231:
-    label233:
-    label237:
-    for (;;)
+    }
+    int k = paramHippyArray1.size();
+    int i = 0;
+    while (i < k)
     {
-      j += 1;
-      break;
-      int i;
-      if ((localObject1 instanceof Number))
+      Object localObject1 = paramHippyArray1.getObject(i);
+      Object localObject2 = paramHippyArray2.getObject(i);
+      if ((localObject1 instanceof Boolean))
+      {
+        if (((Boolean)localObject1).booleanValue() != ((Boolean)localObject2).booleanValue()) {
+          return paramHippyArray2;
+        }
+      }
+      else if ((localObject1 instanceof Number))
       {
         double d = ((Number)localObject1).doubleValue();
-        if (!(localObject2 instanceof Number)) {
-          break label233;
+        int j;
+        if (((localObject2 instanceof Number)) && (d == ((Number)localObject2).doubleValue())) {
+          j = 1;
+        } else {
+          j = 0;
         }
-        if (d == ((Number)localObject2).doubleValue()) {
-          i = 1;
+        if (j == 0) {
+          return paramHippyArray2;
         }
       }
-      for (;;)
+      else if ((localObject1 instanceof String))
       {
-        if (i != 0) {
-          break label237;
-        }
-        return paramHippyArray2;
-        i = 0;
-        continue;
-        if ((localObject1 instanceof String))
-        {
-          if (TextUtils.equals((String)localObject1, (String)localObject2)) {
-            break;
-          }
+        if (!TextUtils.equals((String)localObject1, (String)localObject2)) {
           return paramHippyArray2;
         }
-        if ((localObject1 instanceof HippyArray))
-        {
-          if ((!(localObject2 instanceof HippyArray)) || (diffArray((HippyArray)localObject1, (HippyArray)localObject2, paramInt) == null)) {
-            break;
-          }
-          return paramHippyArray2;
-        }
-        if ((!(localObject1 instanceof HippyMap)) || (!(localObject2 instanceof HippyMap)) || (diffProps((HippyMap)localObject1, (HippyMap)localObject2, paramInt) == null)) {
-          break;
-        }
-        return paramHippyArray2;
-        return null;
-        i = 0;
       }
+      else if ((localObject1 instanceof HippyArray))
+      {
+        if (((localObject2 instanceof HippyArray)) && (diffArray((HippyArray)localObject1, (HippyArray)localObject2, paramInt) != null)) {
+          return paramHippyArray2;
+        }
+      }
+      else if (((localObject1 instanceof HippyMap)) && ((localObject2 instanceof HippyMap)) && (diffProps((HippyMap)localObject1, (HippyMap)localObject2, paramInt) != null))
+      {
+        return paramHippyArray2;
+      }
+      i += 1;
     }
+    return null;
   }
   
   private static DiffUtils.ExtraPatch diffExtra(RenderNode paramRenderNode1, RenderNode paramRenderNode2)
@@ -141,6 +130,7 @@ public class DiffUtils
   
   private static void diffFromNode(RenderNode paramRenderNode1, RenderNode paramRenderNode2, ArrayList<DiffUtils.PatchType> paramArrayList)
   {
+    Object localObject;
     if (TextUtils.equals(paramRenderNode1.getClassName(), paramRenderNode2.getClassName()))
     {
       paramArrayList.add(new DiffUtils.PatchType(4, new DiffUtils.ReplacePatch(paramRenderNode1.getId(), paramRenderNode2.getId())));
@@ -158,24 +148,19 @@ public class DiffUtils
       }
     }
     int i = 0;
-    RenderNode localRenderNode;
-    if (i < paramRenderNode1.getChildCount())
+    while (i < paramRenderNode1.getChildCount())
     {
-      localRenderNode = paramRenderNode1.getChildAt(i);
-      if (i >= paramRenderNode2.getChildCount()) {
-        break label400;
+      RenderNode localRenderNode = paramRenderNode1.getChildAt(i);
+      localObject = null;
+      if (i < paramRenderNode2.getChildCount()) {
+        localObject = paramRenderNode2.getChildAt(i);
       }
-    }
-    label400:
-    for (Object localObject = paramRenderNode2.getChildAt(i);; localObject = null)
-    {
-      if ((localObject != null) && (TextUtils.equals(localRenderNode.getClassName(), ((RenderNode)localObject).getClassName()))) {
+      if ((localObject != null) && (TextUtils.equals(localRenderNode.getClassName(), ((RenderNode)localObject).getClassName())))
+      {
         diffFromNode(localRenderNode, (RenderNode)localObject, paramArrayList);
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         if (localObject != null)
         {
           paramArrayList.add(new DiffUtils.PatchType(5, new DiffUtils.CreatePatch((RenderNode)localObject)));
@@ -186,16 +171,16 @@ public class DiffUtils
         }
         paramArrayList.add(new DiffUtils.PatchType(0, new DiffUtils.DeletePatch(localRenderNode.getId(), localRenderNode.getParent().getId(), localRenderNode.getParent().getClassName())));
       }
-      return;
+      i += 1;
     }
   }
   
   private static DiffUtils.LayoutPatch diffLayout(RenderNode paramRenderNode1, RenderNode paramRenderNode2)
   {
-    if ((paramRenderNode1 == null) || (paramRenderNode1.getX() != paramRenderNode2.getX()) || (paramRenderNode1.getY() != paramRenderNode2.getY()) || (paramRenderNode1.getWidth() != paramRenderNode2.getWidth()) || (paramRenderNode1.getHeight() != paramRenderNode2.getHeight())) {
-      return new DiffUtils.LayoutPatch(paramRenderNode2.getX(), paramRenderNode2.getY(), paramRenderNode2.getHeight(), paramRenderNode2.getWidth(), paramRenderNode2.getId(), paramRenderNode2.mParent.getId(), paramRenderNode2.getClassName());
+    if ((paramRenderNode1 != null) && (paramRenderNode1.getX() == paramRenderNode2.getX()) && (paramRenderNode1.getY() == paramRenderNode2.getY()) && (paramRenderNode1.getWidth() == paramRenderNode2.getWidth()) && (paramRenderNode1.getHeight() == paramRenderNode2.getHeight())) {
+      return null;
     }
-    return null;
+    return new DiffUtils.LayoutPatch(paramRenderNode2.getX(), paramRenderNode2.getY(), paramRenderNode2.getHeight(), paramRenderNode2.getWidth(), paramRenderNode2.getId(), paramRenderNode2.mParent.getId(), paramRenderNode2.getClassName());
   }
   
   public static HippyMap diffProps(HippyMap paramHippyMap1, HippyMap paramHippyMap2, int paramInt)
@@ -204,143 +189,137 @@ public class DiffUtils
       return paramHippyMap2;
     }
     HippyMap localHippyMap = new HippyMap();
-    Object localObject2 = paramHippyMap1.keySet().iterator();
-    label517:
-    label521:
-    for (;;)
+    Iterator localIterator = paramHippyMap1.keySet().iterator();
+    label178:
+    label190:
+    Object localObject2;
+    while (localIterator.hasNext())
     {
-      String str;
-      Object localObject1;
-      Object localObject3;
-      int i;
-      if (((Iterator)localObject2).hasNext())
+      String str = (String)localIterator.next();
+      if (!str.equals("dt_elementBizLeafIdentifier"))
       {
-        str = (String)((Iterator)localObject2).next();
         localObject1 = paramHippyMap1.get(str);
-        localObject3 = paramHippyMap2.get(str);
+        Object localObject3 = paramHippyMap2.get(str);
+        boolean bool;
         if ((localObject1 instanceof Boolean))
         {
-          boolean bool = ((Boolean)localObject1).booleanValue();
-          if ((localObject3 != null) && (bool == ((Boolean)localObject3).booleanValue())) {
+          bool = ((Boolean)localObject1).booleanValue();
+          if ((localObject3 == null) || (bool != ((Boolean)localObject3).booleanValue())) {}
+        }
+        else
+        {
+          if (!(localObject1 instanceof Number)) {
+            break label190;
+          }
+          double d = ((Number)localObject1).doubleValue();
+          bool = localObject3 instanceof Number;
+          int j = 0;
+          int i = j;
+          if (bool)
+          {
+            i = j;
+            if (d == ((Number)localObject3).doubleValue()) {
+              i = 1;
+            }
+          }
+          if (i != 0) {
             continue;
           }
-          localHippyMap.pushObject(str, localObject3);
-          continue;
         }
-        if ((localObject1 instanceof Number))
+        for (;;)
         {
-          double d = ((Number)localObject1).doubleValue();
-          if (!(localObject3 instanceof Number)) {
-            break label517;
-          }
-          if (d == ((Number)localObject3).doubleValue()) {
-            i = 1;
-          }
-        }
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          break label521;
-        }
-        localHippyMap.pushObject(str, localObject3);
-        break;
-        i = 0;
-        continue;
-        if ((localObject1 instanceof String))
-        {
-          if ((localObject3 != null) && (TextUtils.equals(localObject1.toString(), localObject3.toString()))) {
-            break;
-          }
           localHippyMap.pushObject(str, localObject3);
           break;
-        }
-        if ((localObject1 instanceof HippyArray))
-        {
-          if ((localObject3 != null) && ((localObject3 instanceof HippyArray)))
+          if ((localObject1 instanceof String))
           {
-            localObject1 = diffArray((HippyArray)localObject1, (HippyArray)localObject3, paramInt + 1);
-            if ((str.equals("tintColors")) || (str.equals("tintColor"))) {
-              localObject1 = (HippyArray)localObject3;
+            if ((localObject3 == null) || (!TextUtils.equals(localObject1.toString(), localObject3.toString()))) {
+              continue;
             }
-            if (localObject1 == null) {
-              break;
-            }
-            localHippyMap.pushObject(str, localObject3);
             break;
           }
+          if (!(localObject1 instanceof HippyArray)) {
+            break label314;
+          }
+          if ((localObject3 == null) || (!(localObject3 instanceof HippyArray))) {
+            break label303;
+          }
+          localObject1 = (HippyArray)localObject1;
+          localObject2 = (HippyArray)localObject3;
+          localObject1 = diffArray((HippyArray)localObject1, (HippyArray)localObject2, paramInt + 1);
+          if ((str.equals("tintColors")) || (str.equals("tintColor"))) {
+            localObject1 = localObject2;
+          }
+          if (localObject1 == null) {
+            break;
+          }
+        }
+        label303:
+        label314:
+        do
+        {
           localHippyMap.pushObject(str, null);
           break;
-        }
-        if (!(localObject1 instanceof HippyMap)) {
-          break;
-        }
-        if ((localObject3 != null) && ((localObject3 instanceof HippyMap)))
-        {
-          localObject1 = diffProps((HippyMap)localObject1, (HippyMap)localObject3, paramInt + 1);
-          if ((localObject1 == null) || (((HippyMap)localObject1).size() <= 0)) {
+          if (!(localObject1 instanceof HippyMap)) {
             break;
           }
-          if ((paramInt == 0) && (str.equals("style")))
+          if ((localObject3 != null) && ((localObject3 instanceof HippyMap)))
           {
+            localObject1 = diffProps((HippyMap)localObject1, (HippyMap)localObject3, paramInt + 1);
+            if ((localObject1 == null) || (((HippyMap)localObject1).size() <= 0)) {
+              break;
+            }
+            if ((paramInt != 0) || (!str.equals("style"))) {
+              break label178;
+            }
             localHippyMap.pushObject(str, localObject1);
             break;
           }
-          localHippyMap.pushObject(str, localObject3);
-          break;
-        }
-        if ((paramInt == 0) && (str.equals("style")))
-        {
-          localHippyMap.pushMap(str, diffProps((HippyMap)localObject1, new HippyMap(), paramInt + 1));
-          break;
-        }
-        localHippyMap.pushObject(str, null);
-        break;
-        localObject1 = paramHippyMap2.keySet().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (String)((Iterator)localObject1).next();
-          if (paramHippyMap1.get((String)localObject2) == null) {
-            localHippyMap.pushObject((String)localObject2, paramHippyMap2.get((String)localObject2));
-          }
-        }
-        return localHippyMap;
-        i = 0;
+        } while ((paramInt != 0) || (!str.equals("style")));
+        localHippyMap.pushMap(str, diffProps((HippyMap)localObject1, new HippyMap(), paramInt + 1));
       }
     }
+    Object localObject1 = paramHippyMap2.keySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (String)((Iterator)localObject1).next();
+      if ((paramHippyMap1.get((String)localObject2) == null) && (!((String)localObject2).equals("dt_elementBizLeafIdentifier"))) {
+        localHippyMap.pushObject((String)localObject2, paramHippyMap2.get((String)localObject2));
+      }
+    }
+    return localHippyMap;
   }
   
   private static void diffToNode(RenderNode paramRenderNode1, RenderNode paramRenderNode2, ArrayList<DiffUtils.PatchType> paramArrayList)
   {
-    if ((paramRenderNode1 == null) || (paramRenderNode2 == null)) {
-      return;
-    }
-    int i = 0;
-    label11:
-    if (i < paramRenderNode2.getChildCount())
+    if (paramRenderNode1 != null)
     {
-      if (i < paramRenderNode1.getChildCount()) {
-        break label169;
+      if (paramRenderNode2 == null) {
+        return;
       }
-      RenderNode localRenderNode = paramRenderNode2.getChildAt(i);
-      paramArrayList.add(new DiffUtils.PatchType(5, new DiffUtils.CreatePatch(localRenderNode)));
-      if (TextUtils.equals(localRenderNode.getClassName(), "Text")) {
-        paramArrayList.add(new DiffUtils.PatchType(3, new DiffUtils.ExtraPatch(localRenderNode.mId, localRenderNode.mTextExtra, localRenderNode.getClassName())));
+      int i = 0;
+      while (i < paramRenderNode2.getChildCount())
+      {
+        if (i >= paramRenderNode1.getChildCount())
+        {
+          RenderNode localRenderNode = paramRenderNode2.getChildAt(i);
+          paramArrayList.add(new DiffUtils.PatchType(5, new DiffUtils.CreatePatch(localRenderNode)));
+          if (TextUtils.equals(localRenderNode.getClassName(), "Text")) {
+            paramArrayList.add(new DiffUtils.PatchType(3, new DiffUtils.ExtraPatch(localRenderNode.mId, localRenderNode.mTextExtra, localRenderNode.getClassName())));
+          }
+          paramArrayList.add(new DiffUtils.PatchType(2, new DiffUtils.LayoutPatch(localRenderNode.mX, localRenderNode.mY, localRenderNode.mHeight, localRenderNode.getWidth(), localRenderNode.mId, localRenderNode.mParent.mId, localRenderNode.mClassName)));
+        }
+        else
+        {
+          diffToNode(paramRenderNode1.getChildAt(i), paramRenderNode2.getChildAt(i), paramArrayList);
+        }
+        i += 1;
       }
-      paramArrayList.add(new DiffUtils.PatchType(2, new DiffUtils.LayoutPatch(localRenderNode.mX, localRenderNode.mY, localRenderNode.mHeight, localRenderNode.getWidth(), localRenderNode.mId, localRenderNode.mParent.mId, localRenderNode.mClassName)));
-    }
-    for (;;)
-    {
-      i += 1;
-      break label11;
-      break;
-      label169:
-      diffToNode(paramRenderNode1.getChildAt(i), paramRenderNode2.getChildAt(i), paramArrayList);
     }
   }
   
   public static void doPatch(ControllerManager paramControllerManager, List<DiffUtils.PatchType> paramList)
   {
+    HippyEngineContext localHippyEngineContext = paramControllerManager.a;
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -348,7 +327,22 @@ public class DiffUtils
       if (((DiffUtils.PatchType)localObject).mType == 1)
       {
         localObject = (DiffUtils.PropsPatch)((DiffUtils.PatchType)localObject).mPatch;
-        paramControllerManager.a(((DiffUtils.PropsPatch)localObject).mId, ((DiffUtils.PropsPatch)localObject).mClassName, ((DiffUtils.PropsPatch)localObject).mPropsToUpdate);
+        HippyMap localHippyMap1 = ((DiffUtils.PropsPatch)localObject).mPropsToUpdate;
+        RenderNode localRenderNode = localHippyEngineContext.getRenderManager().getRenderNode(((DiffUtils.PropsPatch)localObject).mId);
+        if (localRenderNode != null)
+        {
+          HippyMap localHippyMap2 = localRenderNode.getProps();
+          if (localRenderNode.mHasSetDteblId)
+          {
+            if (localHippyMap1.containsKey("dt_elementBizLeafIdentifier")) {
+              localHippyMap1.remove("dt_elementBizLeafIdentifier");
+            }
+          }
+          else if ((localHippyMap2 != null) && (localHippyMap2.containsKey("dt_elementBizLeafIdentifier"))) {
+            localHippyMap1.pushString("dt_elementBizLeafIdentifier", localHippyMap2.getString("dt_elementBizLeafIdentifier"));
+          }
+        }
+        paramControllerManager.a(((DiffUtils.PropsPatch)localObject).mId, ((DiffUtils.PropsPatch)localObject).mClassName, localHippyMap1);
       }
       else if (((DiffUtils.PatchType)localObject).mType == 2)
       {
@@ -381,7 +375,7 @@ public class DiffUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.DiffUtils
  * JD-Core Version:    0.7.0.1
  */

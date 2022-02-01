@@ -12,22 +12,21 @@ class FileChooserHelper$5
   
   public void onClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt == 1) {
+        FileChooserHelper.access$200(this.this$0, this.val$caller, this.val$accept);
+      }
     }
-    for (;;)
-    {
-      this.val$actionSheet.dismiss();
-      return;
+    else {
       FileChooserHelper.access$400(this.this$0, this.val$caller);
-      continue;
-      FileChooserHelper.access$200(this.this$0, this.val$caller, this.val$accept);
     }
+    this.val$actionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.FileChooserHelper.5
  * JD-Core Version:    0.7.0.1
  */

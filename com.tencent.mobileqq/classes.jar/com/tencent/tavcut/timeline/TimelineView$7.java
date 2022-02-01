@@ -13,12 +13,15 @@ class TimelineView$7
   public void onScrolled(@NonNull RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    Log.d("lingeng_ui", "onScrolled:  dx = " + paramInt1);
+    paramRecyclerView = new StringBuilder();
+    paramRecyclerView.append("onScrolled:  dx = ");
+    paramRecyclerView.append(paramInt1);
+    Log.d("lingeng_ui", paramRecyclerView.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.timeline.TimelineView.7
  * JD-Core Version:    0.7.0.1
  */

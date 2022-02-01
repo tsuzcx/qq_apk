@@ -15,17 +15,17 @@ class TroopMemberListActivity$29
   public void onClick(View paramView)
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.a.b.iterator();
+    Iterator localIterator = this.a.mAdapter.b.iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
     }
-    TroopMemberListActivity.a(this.a, localArrayList);
+    TroopMemberListActivity.access$1800(this.a, localArrayList);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.29
  * JD-Core Version:    0.7.0.1
  */

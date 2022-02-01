@@ -11,25 +11,34 @@ public class ab$a
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.RemoteServiceProxy", 2, "delay send queueSize: " + ab.f.size());
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("delay send queueSize: ");
+      ((StringBuilder)localObject).append(ab.f.size());
+      QLog.d("MSF.D.RemoteServiceProxy", 2, ((StringBuilder)localObject).toString());
     }
     this.a.p = false;
     if (ab.f.size() > 0) {
       while (!ab.f.isEmpty())
       {
-        ToServiceMsg localToServiceMsg = (ToServiceMsg)ab.f.poll();
-        this.a.sendMsg(localToServiceMsg);
+        localObject = (ToServiceMsg)ab.f.poll();
+        this.a.sendMsg((ToServiceMsg)localObject);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.RemoteServiceProxy", 2, "delay send finished queueSize: " + ab.f.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("delay send finished queueSize: ");
+      ((StringBuilder)localObject).append(ab.f.size());
+      QLog.d("MSF.D.RemoteServiceProxy", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.ab.a
  * JD-Core Version:    0.7.0.1
  */

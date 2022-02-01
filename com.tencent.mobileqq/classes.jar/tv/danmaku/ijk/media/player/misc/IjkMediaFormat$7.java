@@ -12,15 +12,15 @@ class IjkMediaFormat$7
   {
     int i = paramIjkMediaFormat.getInteger("fps_num");
     int j = paramIjkMediaFormat.getInteger("fps_den");
-    if ((i <= 0) || (j <= 0)) {
-      return null;
+    if ((i > 0) && (j > 0)) {
+      return String.valueOf(i / j);
     }
-    return String.valueOf(i / j);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.misc.IjkMediaFormat.7
  * JD-Core Version:    0.7.0.1
  */

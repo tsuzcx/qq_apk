@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.leba.qcircle.mainbiz;
 
 import android.text.TextUtils;
-import android.util.Pair;
 import com.tencent.common.config.provider.QZConfigProviderUtil;
 import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
 import com.tencent.mobileqq.app.QBaseActivity;
@@ -15,8 +14,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qcircle.api.IQCircleRedPointService;
 import com.tencent.mobileqq.qcircle.api.helper.QCircleChatBoxHelper;
+import com.tencent.mobileqq.qcircle.api.utils.QCircleHostConfig;
 import com.tencent.mobileqq.qcircle.api.utils.QCircleHostUtil;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,212 +36,205 @@ class LebaQCirclePart$1
   
   public void run()
   {
-    long l = 0L;
-    int k = 0;
-    int m = ((Integer)QCircleChatBoxHelper.getInstance().getUnReadInfo().first).intValue();
-    if (m > 0) {}
-    boolean bool3;
-    boolean bool2;
-    Object localObject3;
-    Object localObject1;
-    boolean bool5;
-    boolean bool1;
-    boolean bool4;
-    Object localObject4;
-    boolean bool6;
-    QQCircleCounter.RedPointInfo localRedPointInfo;
-    Object localObject2;
-    for (int i = m;; i = 0)
-    {
-      bool3 = false;
-      bool2 = false;
-      localObject3 = null;
-      localObject1 = null;
-      bool5 = false;
-      bool1 = false;
-      bool4 = false;
-      localObject4 = null;
-      this.this$0.jdField_b_of_type_JavaLangString = null;
-      bool6 = QZConfigProviderUtil.a();
-      localRedPointInfo = QCircleUtils.a().getOuterEntranceRedPointInfoByAppid("circle_entrance");
-      if (localRedPointInfo == null) {
-        break label1018;
-      }
-      l = localRedPointInfo.outLayerInfo.combineRedTypes.get();
-      k = localRedPointInfo.redTotalNum.get();
-      if (k <= 0) {
-        break label1015;
-      }
-      i += k;
-      bool3 = bool2;
-      if (QCircleHostUtil.checkOperateMaskEnabled(l, 1)) {
-        bool3 = true;
-      }
-      localObject2 = localRedPointInfo.rptRedInfo.get();
-      localObject3 = localObject1;
-      if (localObject2 == null) {
-        break;
-      }
-      localObject3 = localObject1;
-      if (((List)localObject2).size() <= 0) {
-        break;
-      }
-      localObject1 = new ArrayList();
-      localObject2 = ((List)localObject2).iterator();
-      for (;;)
-      {
-        localObject3 = localObject1;
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        ((List)localObject1).add(((QQCircleCounter.RedDisplayInfo)((Iterator)localObject2).next()).headImg.get());
-      }
-    }
-    label269:
-    Object localObject5;
+    int m = QCircleChatBoxHelper.getInstance().getUnReadChatNum();
     int j;
-    if (!TextUtils.isEmpty(((QQCircleCounter.SmallRedPointInfoExt)localRedPointInfo.smallRedInfoExt.get()).wording.get()))
+    if (m > 0) {
+      j = m;
+    } else {
+      j = 0;
+    }
+    this.this$0.jdField_b_of_type_JavaLangString = null;
+    boolean bool4 = QZConfigProviderUtil.a();
+    Object localObject4 = QCircleUtils.a().getOuterEntranceRedPointInfoByAppid("circle_entrance");
+    long l;
+    int k;
+    int i;
+    boolean bool3;
+    Object localObject2;
+    Object localObject1;
+    boolean bool2;
+    boolean bool1;
+    String str;
+    if (localObject4 != null)
     {
-      localObject2 = ((QQCircleCounter.SmallRedPointInfoExt)localRedPointInfo.smallRedInfoExt.get()).wording.get();
-      localObject1 = localObject2;
-      bool2 = bool5;
+      l = ((QQCircleCounter.RedPointInfo)localObject4).outLayerInfo.combineRedTypes.get();
+      k = ((QQCircleCounter.RedPointInfo)localObject4).redTotalNum.get();
+      i = j;
+      if (k > 0) {
+        i = j + k;
+      }
+      bool3 = QCircleHostUtil.checkOperateMaskEnabled(l, 1);
+      localObject2 = ((QQCircleCounter.RedPointInfo)localObject4).rptRedInfo.get();
+      if ((localObject2 != null) && (((List)localObject2).size() > 0))
+      {
+        localObject1 = new ArrayList();
+        localObject3 = ((List)localObject2).iterator();
+        for (;;)
+        {
+          localObject2 = localObject1;
+          if (!((Iterator)localObject3).hasNext()) {
+            break;
+          }
+          ((List)localObject1).add(((QQCircleCounter.RedDisplayInfo)((Iterator)localObject3).next()).headImg.get());
+        }
+      }
+      localObject2 = null;
+      if (!TextUtils.isEmpty(((QQCircleCounter.SmallRedPointInfoExt)((QQCircleCounter.RedPointInfo)localObject4).smallRedInfoExt.get()).wording.get())) {
+        localObject1 = ((QQCircleCounter.SmallRedPointInfoExt)((QQCircleCounter.RedPointInfo)localObject4).smallRedInfoExt.get()).wording.get();
+      } else {
+        localObject1 = null;
+      }
       if (m <= 0)
       {
-        localObject1 = localObject2;
         if (QCircleHostUtil.checkOperateMaskEnabled(l, 6))
         {
-          localObject1 = localRedPointInfo.pymkRedInfo.wording.get();
-          bool4 = true;
+          localObject1 = ((QQCircleCounter.RedPointInfo)localObject4).pymkRedInfo.wording.get();
+          bool2 = true;
         }
-        bool1 = bool4;
-        bool2 = bool5;
+        else
+        {
+          bool2 = false;
+        }
         if (QCircleHostUtil.checkOperateMaskEnabled(l, 3))
         {
-          localObject2 = localRedPointInfo.allPushInfo.wording.get();
-          bool5 = true;
-          localObject1 = localObject2;
-          bool1 = bool4;
-          bool2 = bool5;
-          if (localRedPointInfo.redJumpInfo.has())
+          localObject1 = ((QQCircleCounter.RedPointInfo)localObject4).allPushInfo.wording.get();
+          if (((QQCircleCounter.RedPointInfo)localObject4).redJumpInfo.has())
           {
-            localObject5 = localRedPointInfo.redJumpInfo.redPointSources.get();
-            localObject1 = localObject2;
-            bool1 = bool4;
-            bool2 = bool5;
-            if (localObject5 != null)
-            {
-              localObject1 = localObject2;
-              bool1 = bool4;
-              bool2 = bool5;
-              if (((List)localObject5).size() > 0)
-              {
-                localObject1 = localObject2;
-                bool1 = bool4;
-                bool2 = bool5;
-                if (((List)localObject5).contains(Integer.valueOf(3)))
-                {
-                  this.this$0.jdField_b_of_type_JavaLangString = localRedPointInfo.redJumpInfo.jumpLink.get();
-                  bool2 = bool5;
-                  bool1 = bool4;
-                  localObject1 = localObject2;
-                }
-              }
+            localObject3 = ((QQCircleCounter.RedPointInfo)localObject4).redJumpInfo.redPointSources.get();
+            if ((localObject3 != null) && (((List)localObject3).size() > 0) && (((List)localObject3).contains(Integer.valueOf(3)))) {
+              this.this$0.jdField_b_of_type_JavaLangString = ((QQCircleCounter.RedPointInfo)localObject4).redJumpInfo.jumpLink.get();
             }
           }
+          bool1 = true;
+        }
+        else
+        {
+          bool1 = false;
         }
       }
-      localObject5 = localRedPointInfo.extend.get();
-      if ((i > 0) || (bool3) || (bool2) || (bool1))
+      else
       {
-        ByteStringMicro localByteStringMicro = localRedPointInfo.transInfo.get();
-        localObject2 = localObject4;
-        if (localByteStringMicro != null)
-        {
-          localObject2 = localObject4;
-          if (localByteStringMicro.size() > 0) {
-            localObject2 = localByteStringMicro.toByteArray();
-          }
+        bool1 = false;
+        bool2 = false;
+      }
+      str = ((QQCircleCounter.RedPointInfo)localObject4).extend.get();
+      if ((i <= 0) && (!bool3) && (!bool1) && (!bool2))
+      {
+        localObject3 = null;
+        j = -1;
+      }
+      else
+      {
+        localObject3 = ((QQCircleCounter.RedPointInfo)localObject4).transInfo.get();
+        if ((localObject3 != null) && (((ByteStringMicro)localObject3).size() > 0)) {
+          localObject3 = ((ByteStringMicro)localObject3).toByteArray();
+        } else {
+          localObject3 = null;
         }
-        j = localRedPointInfo.tabType.get();
-        bool4 = bool2;
-        localObject4 = localObject5;
-        bool2 = bool1;
-        bool1 = bool4;
+        j = ((QQCircleCounter.RedPointInfo)localObject4).tabType.get();
       }
     }
-    for (;;)
+    else
     {
-      this.this$0.jdField_a_of_type_JavaLangString = localObject4;
-      this.this$0.jdField_a_of_type_ArrayOfByte = ((byte[])localObject2);
-      this.this$0.jdField_a_of_type_Int = j;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("[updateQQCircleRedFlag]").append("  isQQCircleUseEeveeRedPoint = ").append(bool6).append(", redDotCombineTypes = ").append(l).append(", pushUnReadNum = ").append(k).append(", chatUnReadNum = ").append(m).append(", showActiveRedDot = ").append(bool3).append(", showPYMKRedDot = ").append(bool2).append(", uinList = ").append(localObject3).append(", showRecommendRedDot = ").append(bool1).append(", recommendRedDotWording = ").append((String)localObject1).append(", entranceTargetTabType = ").append(j).append(", redDotReportExt = ").append(localObject4);
-      QLog.d("QCircleEeveeRedPoint_LebaQCirclePartImpl", 2, new Object[] { localObject2 });
-      if (localObject3 == null) {}
-      for (j = 0;; j = localObject3.size())
-      {
-        if (this.this$0.jdField_b_of_type_Int != i)
-        {
-          this.this$0.jdField_b_of_type_Int = i;
-          this.this$0.jdField_a_of_type_Boolean = true;
-        }
-        if (this.this$0.jdField_b_of_type_Boolean != bool3)
-        {
-          this.this$0.jdField_b_of_type_Boolean = bool3;
-          this.this$0.jdField_a_of_type_Boolean = true;
-        }
-        if (this.this$0.jdField_c_of_type_Int != j)
-        {
-          this.this$0.jdField_c_of_type_Int = j;
-          this.this$0.jdField_a_of_type_Boolean = true;
-        }
-        if (this.this$0.jdField_c_of_type_Boolean)
-        {
-          this.this$0.jdField_c_of_type_Boolean = false;
-          this.this$0.jdField_a_of_type_Boolean = true;
-        }
-        if (this.this$0.e != bool2)
-        {
-          this.this$0.e = bool2;
-          this.this$0.jdField_a_of_type_Boolean = true;
-        }
-        if (this.this$0.d != bool1)
-        {
-          this.this$0.d = bool1;
-          this.this$0.jdField_a_of_type_Boolean = true;
-        }
-        if (!TextUtils.equals(this.this$0.jdField_c_of_type_JavaLangString, (CharSequence)localObject1))
-        {
-          this.this$0.jdField_c_of_type_JavaLangString = ((String)localObject1);
-          this.this$0.jdField_a_of_type_Boolean = true;
-        }
-        this.this$0.a(i, bool3, localObject3, false, bool1, bool2, (String)localObject1, this.a);
-        return;
-      }
-      localObject2 = null;
+      l = 0L;
+      i = j;
+      localObject3 = null;
       j = -1;
-      bool4 = bool1;
-      bool1 = bool2;
-      bool2 = bool4;
-      localObject4 = localObject5;
-      continue;
-      localObject2 = null;
-      break label269;
-      label1015:
-      break;
-      label1018:
-      localObject2 = null;
-      localObject1 = null;
-      localObject4 = null;
-      j = -1;
-      bool2 = false;
       bool1 = false;
+      localObject1 = null;
+      k = 0;
+      bool3 = false;
+      str = null;
+      localObject2 = null;
+      bool2 = false;
     }
+    localObject4 = this.this$0;
+    ((LebaQCirclePart)localObject4).jdField_a_of_type_JavaLangString = str;
+    ((LebaQCirclePart)localObject4).jdField_a_of_type_ArrayOfByte = ((byte[])localObject3);
+    ((LebaQCirclePart)localObject4).jdField_a_of_type_Int = j;
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("[updateQQCircleRedFlag]");
+    ((StringBuilder)localObject3).append("  isQQCircleUseEeveeRedPoint = ");
+    ((StringBuilder)localObject3).append(bool4);
+    ((StringBuilder)localObject3).append(", redDotCombineTypes = ");
+    ((StringBuilder)localObject3).append(l);
+    ((StringBuilder)localObject3).append(", pushUnReadNum = ");
+    ((StringBuilder)localObject3).append(k);
+    ((StringBuilder)localObject3).append(", chatUnReadNum = ");
+    ((StringBuilder)localObject3).append(m);
+    ((StringBuilder)localObject3).append(", showActiveRedDot = ");
+    ((StringBuilder)localObject3).append(bool3);
+    ((StringBuilder)localObject3).append(", showPYMKRedDot = ");
+    ((StringBuilder)localObject3).append(bool2);
+    ((StringBuilder)localObject3).append(", uinList = ");
+    ((StringBuilder)localObject3).append(localObject2);
+    ((StringBuilder)localObject3).append(", showRecommendRedDot = ");
+    ((StringBuilder)localObject3).append(bool1);
+    ((StringBuilder)localObject3).append(", recommendRedDotWording = ");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append(", entranceTargetTabType = ");
+    ((StringBuilder)localObject3).append(j);
+    ((StringBuilder)localObject3).append(", redDotReportExt = ");
+    ((StringBuilder)localObject3).append(str);
+    QLog.d("QCircleEeveeRedPoint_LebaQCirclePartImpl", 2, new Object[] { localObject3 });
+    if (localObject2 == null) {
+      j = 0;
+    } else {
+      j = ((List)localObject2).size();
+    }
+    if (this.this$0.jdField_b_of_type_Int != i)
+    {
+      localObject3 = this.this$0;
+      ((LebaQCirclePart)localObject3).jdField_b_of_type_Int = i;
+      ((LebaQCirclePart)localObject3).jdField_a_of_type_Boolean = true;
+    }
+    if (this.this$0.jdField_b_of_type_Boolean != bool3)
+    {
+      localObject3 = this.this$0;
+      ((LebaQCirclePart)localObject3).jdField_b_of_type_Boolean = bool3;
+      ((LebaQCirclePart)localObject3).jdField_a_of_type_Boolean = true;
+    }
+    if (this.this$0.jdField_c_of_type_Int != j)
+    {
+      localObject3 = this.this$0;
+      ((LebaQCirclePart)localObject3).jdField_c_of_type_Int = j;
+      ((LebaQCirclePart)localObject3).jdField_a_of_type_Boolean = true;
+    }
+    if (this.this$0.jdField_c_of_type_Boolean)
+    {
+      localObject3 = this.this$0;
+      ((LebaQCirclePart)localObject3).jdField_c_of_type_Boolean = false;
+      ((LebaQCirclePart)localObject3).jdField_a_of_type_Boolean = true;
+    }
+    if (this.this$0.e != bool2)
+    {
+      localObject3 = this.this$0;
+      ((LebaQCirclePart)localObject3).e = bool2;
+      ((LebaQCirclePart)localObject3).jdField_a_of_type_Boolean = true;
+    }
+    if (this.this$0.d != bool1)
+    {
+      localObject3 = this.this$0;
+      ((LebaQCirclePart)localObject3).d = bool1;
+      ((LebaQCirclePart)localObject3).jdField_a_of_type_Boolean = true;
+    }
+    if (!TextUtils.equals(this.this$0.jdField_c_of_type_JavaLangString, (CharSequence)localObject1))
+    {
+      localObject3 = this.this$0;
+      ((LebaQCirclePart)localObject3).jdField_c_of_type_JavaLangString = ((String)localObject1);
+      ((LebaQCirclePart)localObject3).jdField_a_of_type_Boolean = true;
+    }
+    if ((QzoneConfig.getQQCircleShowGuideOnLebaEntrance()) && (QCircleHostConfig.isNeedShowLebaQCircleEnterGuideNew() != 0)) {
+      bool4 = true;
+    } else {
+      bool4 = false;
+    }
+    this.this$0.a(i, bool3, (List)localObject2, false, bool1, bool2, (String)localObject1, this.a, bool4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.qcircle.mainbiz.LebaQCirclePart.1
  * JD-Core Version:    0.7.0.1
  */

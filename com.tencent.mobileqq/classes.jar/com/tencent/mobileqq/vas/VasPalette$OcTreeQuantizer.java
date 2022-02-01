@@ -13,10 +13,11 @@ public class VasPalette$OcTreeQuantizer
   
   public List<VasPalette.OcNode> a()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return null;
     }
-    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
+    return Collections.unmodifiableList(localList);
   }
   
   public void a(int[] paramArrayOfInt, int paramInt)
@@ -46,7 +47,7 @@ public class VasPalette$OcTreeQuantizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasPalette.OcTreeQuantizer
  * JD-Core Version:    0.7.0.1
  */

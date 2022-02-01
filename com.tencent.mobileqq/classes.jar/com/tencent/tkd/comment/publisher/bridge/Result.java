@@ -19,12 +19,21 @@ public class Result<T>
   
   public String toString()
   {
-    return "Result{status=" + this.status + ", message='" + this.message + '\'' + ", data=" + this.data + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Result{status=");
+    localStringBuilder.append(this.status);
+    localStringBuilder.append(", message='");
+    localStringBuilder.append(this.message);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", data=");
+    localStringBuilder.append(this.data);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.bridge.Result
  * JD-Core Version:    0.7.0.1
  */

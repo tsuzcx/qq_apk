@@ -18,45 +18,41 @@ class InternalJSPlugin$2
   
   public void run()
   {
-    Object localObject2 = Storage.open(InternalJSPlugin.access$000(this.this$0), String.valueOf(LoginManager.getInstance().getAccount()), InternalJSPlugin.access$100(this.this$0).getMiniAppInfo().appId);
+    Object localObject = Storage.open(InternalJSPlugin.access$000(this.this$0), String.valueOf(LoginManager.getInstance().getAccount()), InternalJSPlugin.access$100(this.this$0).getMiniAppInfo().appId);
     String[] arrayOfString;
-    if (localObject2 != null)
+    if (localObject != null)
     {
-      arrayOfString = ((Storage)localObject2).read("");
-      ((Storage)localObject2).close();
+      arrayOfString = ((Storage)localObject).read("");
+      ((Storage)localObject).close();
     }
-    for (;;)
+    else
     {
-      if ((arrayOfString != null) && (arrayOfString.length == 2) && (TextUtils.isEmpty(arrayOfString[1]))) {
-        ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getMiniAppStoreAppList(1, new InternalJSPlugin.2.1(this));
-      }
-      if ((arrayOfString != null) && (arrayOfString.length == 2))
+      arrayOfString = null;
+    }
+    if ((arrayOfString != null) && (arrayOfString.length == 2) && (TextUtils.isEmpty(arrayOfString[1]))) {
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getMiniAppStoreAppList(1, new InternalJSPlugin.2.1(this));
+    }
+    if ((arrayOfString != null) && (arrayOfString.length == 2))
+    {
+      localObject = new JSONObject();
+      try
       {
-        localObject2 = new JSONObject();
-        try
-        {
-          ((JSONObject)localObject2).put("data", arrayOfString[0]);
-          ((JSONObject)localObject2).put("dataType", arrayOfString[1]);
-          this.val$req.ok((JSONObject)localObject2);
-          return;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
+        ((JSONObject)localObject).put("data", arrayOfString[0]);
+        ((JSONObject)localObject).put("dataType", arrayOfString[1]);
       }
-      this.val$req.fail();
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      this.val$req.ok((JSONObject)localObject);
       return;
-      Object localObject1 = null;
     }
+    this.val$req.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InternalJSPlugin.2
  * JD-Core Version:    0.7.0.1
  */

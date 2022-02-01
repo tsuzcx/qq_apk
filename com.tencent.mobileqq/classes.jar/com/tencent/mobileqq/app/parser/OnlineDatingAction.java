@@ -2,16 +2,18 @@ package com.tencent.mobileqq.app.parser;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.intervideo.od.ODProxy;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
 
 public class OnlineDatingAction
-  extends JumpActionBase
+  extends JumpAction
 {
   public OnlineDatingAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
@@ -22,86 +24,82 @@ public class OnlineDatingAction
   {
     try
     {
-      boolean bool = e();
+      boolean bool = b();
       return bool;
     }
     catch (Exception localException)
     {
-      QLog.e("OnlineDatingAction", 1, "doAction error: " + localException.getMessage());
-      a("OnlineDatingAction");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doAction error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("OnlineDatingAction", 1, localStringBuilder.toString());
+      b_("OnlineDatingAction");
     }
     return false;
   }
   
-  public boolean e()
+  public boolean b()
   {
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("roomid");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromid");
-    Object localObject3 = "";
-    Object localObject1 = localObject3;
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"))) {}
-    try
-    {
-      localObject1 = URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"), "utf-8");
-      str1 = "";
-      localObject3 = str1;
-      if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("userdata"))) {}
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
-    {
+    String str7 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("roomid");
+    String str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromid");
+    boolean bool = TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"));
+    String str5 = "";
+    String str2;
+    if (!bool) {
       try
       {
-        localObject3 = URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"), "utf-8");
-        long l1 = 0L;
-        try
-        {
-          long l2 = Long.parseLong(str3);
-          l1 = l2;
-        }
-        catch (NumberFormatException localNumberFormatException1)
-        {
-          for (;;)
-          {
-            int i;
-            localNumberFormatException1.printStackTrace();
-          }
-        }
-        i = 0;
-        try
-        {
-          int j = Integer.parseInt(str2);
-          i = j;
-        }
-        catch (NumberFormatException localNumberFormatException2)
-        {
-          for (;;)
-          {
-            Object localObject2;
-            Object localObject4;
-            localNumberFormatException2.printStackTrace();
-          }
-        }
-        ((ODProxy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.ODPROXY_MGR)).a(this.jdField_a_of_type_AndroidContentContext, l1, "launcher", (String)localObject1, (String)localObject3, i);
-        return true;
-        localUnsupportedEncodingException1 = localUnsupportedEncodingException1;
+        String str1 = URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"), "utf-8");
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+      {
         localUnsupportedEncodingException1.printStackTrace();
-        localObject2 = localObject3;
+      }
+    } else {
+      str2 = "";
+    }
+    String str3 = str5;
+    String str4;
+    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("userdata"))) {
+      try
+      {
+        str3 = URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"), "utf-8");
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException2)
       {
-        for (;;)
-        {
-          String str1;
-          localUnsupportedEncodingException2.printStackTrace();
-          localObject4 = str1;
-        }
+        localUnsupportedEncodingException2.printStackTrace();
+        str4 = str5;
       }
     }
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(str7);
+      l1 = l2;
+    }
+    catch (NumberFormatException localNumberFormatException1)
+    {
+      for (;;)
+      {
+        localNumberFormatException1.printStackTrace();
+      }
+    }
+    int i;
+    try
+    {
+      i = Integer.parseInt(str6);
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      localNumberFormatException2.printStackTrace();
+      i = 0;
+    }
+    ((ODProxy)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getManager(QQManagerFactory.ODPROXY_MGR)).a(this.jdField_a_of_type_AndroidContentContext, l1, "launcher", str2, str4, i);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.OnlineDatingAction
  * JD-Core Version:    0.7.0.1
  */

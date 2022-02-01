@@ -16,44 +16,40 @@ class GameCenterAPIJavaScript$GameMessageReceiver
     String str = paramIntent.getAction();
     if (QLog.isColorLevel())
     {
-      if ("[onRecevier] action:" + str + ",data:" + paramIntent.getExtras() != null)
-      {
+      paramContext = new StringBuilder();
+      paramContext.append("[onRecevier] action:");
+      paramContext.append(str);
+      paramContext.append(",data:");
+      paramContext.append(paramIntent.getExtras());
+      if (paramContext.toString() != null) {
         paramContext = paramIntent.getExtras().toString();
-        QLog.d("GCApi", 2, paramContext);
+      } else {
+        paramContext = null;
       }
+      QLog.d("GCApi", 2, paramContext);
     }
-    else {
-      if (str != null) {
-        break label70;
-      }
+    if (str == null) {
+      return;
     }
-    label70:
-    label104:
-    do
+    if ("action_qgame_messgae_change".equals(str))
     {
-      do
-      {
-        do
-        {
-          return;
-          paramContext = null;
-          break;
-          if (!"action_qgame_messgae_change".equals(str)) {
-            break label104;
-          }
-          paramContext = GameCenterAPIJavaScript.parseGameMessageChange(paramIntent.getExtras());
-        } while (paramContext == null);
+      paramContext = GameCenterAPIJavaScript.parseGameMessageChange(paramIntent.getExtras());
+      if (paramContext != null) {
         this.a.dispatchJsEvent(GameCenterAPIJavaScript.EVENT_UPDATE_SESSION_INFO, paramContext, null);
-        return;
-      } while (!"action_qgame_unread_change".equals(str));
+      }
+    }
+    else if ("action_qgame_unread_change".equals(str))
+    {
       paramContext = GameCenterAPIJavaScript.parseGameMessageUnreadCount(paramIntent.getExtras());
-    } while (paramContext == null);
-    this.a.dispatchJsEvent(GameCenterAPIJavaScript.EVENT_UPDATE_UNREAD_CNT, paramContext, null);
+      if (paramContext != null) {
+        this.a.dispatchJsEvent(GameCenterAPIJavaScript.EVENT_UPDATE_UNREAD_CNT, paramContext, null);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GameCenterAPIJavaScript.GameMessageReceiver
  * JD-Core Version:    0.7.0.1
  */

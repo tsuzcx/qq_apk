@@ -17,8 +17,9 @@ public class QQToastNotifier
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidWidgetToast != null) {
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+    Toast localToast = this.jdField_a_of_type_AndroidWidgetToast;
+    if (localToast != null) {
+      localToast.cancel();
     }
   }
   
@@ -51,7 +52,7 @@ public class QQToastNotifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToastNotifier
  * JD-Core Version:    0.7.0.1
  */

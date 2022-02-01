@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
@@ -36,9 +36,9 @@ public class MusicGeneQQBrowserActivity
     WebViewFragment localWebViewFragment = getCurrentWebViewFragment();
     if (localWebViewFragment != null)
     {
-      if ((localWebViewFragment.webView != null) && (localWebViewFragment.webView.canGoBack()))
+      if ((localWebViewFragment.getWebView() != null) && (localWebViewFragment.getWebView().canGoBack()))
       {
-        localWebViewFragment.webView.goBack();
+        localWebViewFragment.getWebView().goBack();
         return;
       }
       finish();
@@ -49,7 +49,7 @@ public class MusicGeneQQBrowserActivity
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong)
   {
-    paramString6 = new AbsShareMsg.Builder(StructMsgForAudioShare.class).c(2).a(HardCodeUtil.a(2131707038)).a();
+    paramString6 = new AbsShareMsg.Builder(StructMsgForAudioShare.class).c(2).a(HardCodeUtil.a(2131707060)).a();
     paramString6.mContentSrc = paramString3;
     paramString6.mContentTitle = paramString5;
     paramString6.mContentCover = paramString1;
@@ -65,31 +65,28 @@ public class MusicGeneQQBrowserActivity
     paramString1.putInt("forward_type", 11);
     if (!TextUtils.isEmpty(paramString3)) {
       paramString1.putInt("req_type", 2);
-    }
-    for (;;)
-    {
-      paramString1.putString("app_name", HardCodeUtil.a(2131707037));
-      paramString1.putString("detail_url", paramString6.mMsgUrl);
-      paramString1.putString("audio_url", paramString6.mContentSrc);
-      paramString1.putString("image_url_remote", paramString6.mContentCover);
-      paramString1.putString("title", paramString6.mContentTitle);
-      paramString1.putString("desc", paramString6.mContentSummary);
-      paramString1.putString("struct_share_key_source_icon", paramString6.mSourceIcon);
-      paramString1.putString("struct_share_key_source_action", paramString6.mSourceAction);
-      paramString1.putString("struct_share_key_source_a_action_data", paramString6.mSource_A_ActionData);
-      paramString1.putLong("req_share_id", paramString6.mSourceAppid);
-      paramString1.putString("brief_key", paramString6.mMsgBrief);
-      paramString1.putBoolean("k_send", false);
-      paramString1.putBoolean("k_qzone", false);
-      paramString1.putBoolean("k_favorites", false);
-      paramString1.putBoolean("k_dataline", false);
-      paramString2 = new Intent();
-      paramString2.putExtra("refuse_show_share_result_dialog", true);
-      paramString2.putExtras(paramString1);
-      ForwardBaseOption.a(this, paramString2);
-      return;
+    } else {
       paramString1.putInt("req_type", 1);
     }
+    paramString1.putString("app_name", HardCodeUtil.a(2131707059));
+    paramString1.putString("detail_url", paramString6.mMsgUrl);
+    paramString1.putString("audio_url", paramString6.mContentSrc);
+    paramString1.putString("image_url_remote", paramString6.mContentCover);
+    paramString1.putString("title", paramString6.mContentTitle);
+    paramString1.putString("desc", paramString6.mContentSummary);
+    paramString1.putString("struct_share_key_source_icon", paramString6.mSourceIcon);
+    paramString1.putString("struct_share_key_source_action", paramString6.mSourceAction);
+    paramString1.putString("struct_share_key_source_a_action_data", paramString6.mSource_A_ActionData);
+    paramString1.putLong("req_share_id", paramString6.mSourceAppid);
+    paramString1.putString("brief_key", paramString6.mMsgBrief);
+    paramString1.putBoolean("k_send", false);
+    paramString1.putBoolean("k_qzone", false);
+    paramString1.putBoolean("k_favorites", false);
+    paramString1.putBoolean("k_dataline", false);
+    paramString2 = new Intent();
+    paramString2.putExtra("refuse_show_share_result_dialog", true);
+    paramString2.putExtras(paramString1);
+    ForwardBaseOption.a(this, paramString2);
   }
   
   @Override
@@ -111,7 +108,7 @@ public class MusicGeneQQBrowserActivity
     return super.doOnKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void doOnStart()
+  protected void doOnStart()
   {
     try
     {
@@ -129,7 +126,7 @@ public class MusicGeneQQBrowserActivity
     }
   }
   
-  public void doOnStop()
+  protected void doOnStop()
   {
     try
     {
@@ -157,7 +154,7 @@ public class MusicGeneQQBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

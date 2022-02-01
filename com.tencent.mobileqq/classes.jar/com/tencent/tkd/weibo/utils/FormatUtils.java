@@ -16,32 +16,32 @@ public final class FormatUtils
     if (paramLong != 0L)
     {
       Object localObject = new StringBuilder();
-      if (paramLong > 99990000) {
+      if (paramLong > 99990000)
+      {
         ((StringBuilder)localObject).append("9999万+");
       }
-      for (;;)
+      else if (paramLong > 10000)
       {
-        localObject = ((StringBuilder)localObject).toString();
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "sb.toString()");
-        return localObject;
-        if (paramLong > 10000)
-        {
-          double d = paramLong / 10000.0D;
-          ((StringBuilder)localObject).append(new DecimalFormat("0.0").format(d));
-          ((StringBuilder)localObject).append("万");
-        }
-        else
-        {
-          ((StringBuilder)localObject).append(paramLong);
-        }
+        double d = paramLong;
+        Double.isNaN(d);
+        d /= 10000.0D;
+        ((StringBuilder)localObject).append(new DecimalFormat("0.0").format(d));
+        ((StringBuilder)localObject).append("万");
       }
+      else
+      {
+        ((StringBuilder)localObject).append(paramLong);
+      }
+      localObject = ((StringBuilder)localObject).toString();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "sb.toString()");
+      return localObject;
     }
     return "0";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.utils.FormatUtils
  * JD-Core Version:    0.7.0.1
  */

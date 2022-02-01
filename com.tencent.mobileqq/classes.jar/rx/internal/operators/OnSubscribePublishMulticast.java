@@ -30,18 +30,23 @@ public final class OnSubscribePublishMulticast<T>
   
   public OnSubscribePublishMulticast(int paramInt, boolean paramBoolean)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("prefetch > 0 required but it was " + paramInt);
-    }
-    this.prefetch = paramInt;
-    this.delayError = paramBoolean;
-    if (UnsafeAccess.isUnsafeAvailable()) {}
-    for (this.queue = new SpscArrayQueue(paramInt);; this.queue = new SpscAtomicArrayQueue(paramInt))
+    if (paramInt > 0)
     {
+      this.prefetch = paramInt;
+      this.delayError = paramBoolean;
+      if (UnsafeAccess.isUnsafeAvailable()) {
+        this.queue = new SpscArrayQueue(paramInt);
+      } else {
+        this.queue = new SpscAtomicArrayQueue(paramInt);
+      }
       this.subscribers = ((OnSubscribePublishMulticast.PublishProducer[])EMPTY);
       this.parent = new OnSubscribePublishMulticast.ParentSubscriber(this);
       return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("prefetch > 0 required but it was ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   boolean add(OnSubscribePublishMulticast.PublishProducer<T> paramPublishProducer)
@@ -49,21 +54,20 @@ public final class OnSubscribePublishMulticast<T>
     if (this.subscribers == TERMINATED) {
       return false;
     }
-    OnSubscribePublishMulticast.PublishProducer[] arrayOfPublishProducer1;
     try
     {
-      arrayOfPublishProducer1 = this.subscribers;
+      OnSubscribePublishMulticast.PublishProducer[] arrayOfPublishProducer1 = this.subscribers;
       if (arrayOfPublishProducer1 == TERMINATED) {
         return false;
       }
+      int i = arrayOfPublishProducer1.length;
+      OnSubscribePublishMulticast.PublishProducer[] arrayOfPublishProducer2 = new OnSubscribePublishMulticast.PublishProducer[i + 1];
+      System.arraycopy(arrayOfPublishProducer1, 0, arrayOfPublishProducer2, 0, i);
+      arrayOfPublishProducer2[i] = paramPublishProducer;
+      this.subscribers = arrayOfPublishProducer2;
+      return true;
     }
     finally {}
-    int i = arrayOfPublishProducer1.length;
-    OnSubscribePublishMulticast.PublishProducer[] arrayOfPublishProducer2 = new OnSubscribePublishMulticast.PublishProducer[i + 1];
-    System.arraycopy(arrayOfPublishProducer1, 0, arrayOfPublishProducer2, 0, i);
-    arrayOfPublishProducer2[i] = paramPublishProducer;
-    this.subscribers = arrayOfPublishProducer2;
-    return true;
   }
   
   public void call(Subscriber<? super T> paramSubscriber)
@@ -92,7 +96,6 @@ public final class OnSubscribePublishMulticast<T>
   
   boolean checkTerminated(boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool = true;
     int j = 0;
     int k = 0;
     int m = 0;
@@ -110,27 +113,20 @@ public final class OnSubscribePublishMulticast<T>
           if (localObject2 != null)
           {
             j = localObject1.length;
-            for (;;)
+            while (i < j)
             {
-              paramBoolean1 = bool;
-              if (i >= j) {
-                break;
-              }
               localObject1[i].actual.onError((Throwable)localObject2);
               i += 1;
             }
           }
           k = localObject1.length;
           i = j;
-          for (;;)
+          while (i < k)
           {
-            paramBoolean1 = bool;
-            if (i >= k) {
-              break;
-            }
             localObject1[i].actual.onCompleted();
             i += 1;
           }
+          return true;
         }
       }
       else
@@ -142,35 +138,28 @@ public final class OnSubscribePublishMulticast<T>
           localObject2 = terminate();
           j = localObject2.length;
           i = k;
-          for (;;)
+          while (i < j)
           {
-            paramBoolean1 = bool;
-            if (i >= j) {
-              break;
-            }
             localObject2[i].actual.onError((Throwable)localObject1);
             i += 1;
           }
+          return true;
         }
         if (paramBoolean2)
         {
           localObject1 = terminate();
           j = localObject1.length;
           i = m;
-          for (;;)
+          while (i < j)
           {
-            paramBoolean1 = bool;
-            if (i >= j) {
-              break;
-            }
             localObject1[i].actual.onCompleted();
             i += 1;
           }
+          return true;
         }
       }
     }
-    paramBoolean1 = false;
-    return paramBoolean1;
+    return false;
   }
   
   void drain()
@@ -181,10 +170,6 @@ public final class OnSubscribePublishMulticast<T>
     Queue localQueue = this.queue;
     int i = 0;
     int j;
-    label200:
-    label204:
-    label206:
-    label245:
     do
     {
       OnSubscribePublishMulticast.PublishProducer[] arrayOfPublishProducer = this.subscribers;
@@ -197,51 +182,47 @@ public final class OnSubscribePublishMulticast<T>
         l1 = Math.min(l1, arrayOfPublishProducer[j].get());
         j += 1;
       }
-      if (k != 0) {
-        for (long l2 = 0L;; l2 = 1L + l2)
+      if (k != 0)
+      {
+        Object localObject;
+        for (long l2 = 0L; l2 != l1; l2 += 1L)
         {
-          boolean bool2;
-          Object localObject;
-          if (l2 != l1)
-          {
-            bool2 = this.done;
-            localObject = localQueue.poll();
-            if (localObject != null) {
-              break label200;
-            }
+          boolean bool2 = this.done;
+          localObject = localQueue.poll();
+          boolean bool1;
+          if (localObject == null) {
+            bool1 = true;
+          } else {
+            bool1 = false;
           }
-          for (boolean bool1 = true;; bool1 = false)
-          {
-            if (checkTerminated(bool2, bool1)) {
-              break label204;
-            }
-            if (!bool1) {
-              break label206;
-            }
-            if ((l2 == l1) && (checkTerminated(this.done, localQueue.isEmpty()))) {
-              break;
-            }
-            if (l2 == 0L) {
-              break label245;
-            }
-            localObject = this.producer;
-            if (localObject != null) {
-              ((Producer)localObject).request(l2);
-            }
-            k = arrayOfPublishProducer.length;
-            j = 0;
-            while (j < k)
-            {
-              BackpressureUtils.produced(arrayOfPublishProducer[j], l2);
-              j += 1;
-            }
+          if (checkTerminated(bool2, bool1)) {
+            return;
           }
-          break;
+          if (bool1) {
+            break;
+          }
           k = arrayOfPublishProducer.length;
           j = 0;
           while (j < k)
           {
             arrayOfPublishProducer[j].actual.onNext(localObject);
+            j += 1;
+          }
+        }
+        if ((l2 == l1) && (checkTerminated(this.done, localQueue.isEmpty()))) {
+          return;
+        }
+        if (l2 != 0L)
+        {
+          localObject = this.producer;
+          if (localObject != null) {
+            ((Producer)localObject).request(l2);
+          }
+          k = arrayOfPublishProducer.length;
+          j = 0;
+          while (j < k)
+          {
+            BackpressureUtils.produced(arrayOfPublishProducer[j], l2);
             j += 1;
           }
         }
@@ -282,40 +263,52 @@ public final class OnSubscribePublishMulticast<T>
   
   void remove(OnSubscribePublishMulticast.PublishProducer<T> paramPublishProducer)
   {
-    int i = 0;
     OnSubscribePublishMulticast.PublishProducer[] arrayOfPublishProducer = this.subscribers;
-    if ((arrayOfPublishProducer == TERMINATED) || (arrayOfPublishProducer == EMPTY)) {
-      return;
-    }
-    try
+    int k;
+    int m;
+    int i;
+    int j;
+    if (arrayOfPublishProducer != TERMINATED)
     {
-      arrayOfPublishProducer = this.subscribers;
-      if ((arrayOfPublishProducer == TERMINATED) || (arrayOfPublishProducer == EMPTY)) {
+      if (arrayOfPublishProducer == EMPTY) {
         return;
       }
+      try
+      {
+        arrayOfPublishProducer = this.subscribers;
+        if ((arrayOfPublishProducer != TERMINATED) && (arrayOfPublishProducer != EMPTY))
+        {
+          k = -1;
+          m = arrayOfPublishProducer.length;
+          i = 0;
+          break label136;
+          if (j < 0) {
+            return;
+          }
+          if (m == 1)
+          {
+            paramPublishProducer = (OnSubscribePublishMulticast.PublishProducer[])EMPTY;
+          }
+          else
+          {
+            paramPublishProducer = new OnSubscribePublishMulticast.PublishProducer[m - 1];
+            System.arraycopy(arrayOfPublishProducer, 0, paramPublishProducer, 0, j);
+            System.arraycopy(arrayOfPublishProducer, j + 1, paramPublishProducer, j, m - j - 1);
+          }
+          this.subscribers = paramPublishProducer;
+          return;
+        }
+        return;
+      }
+      finally {}
     }
-    finally {}
-    int k = -1;
-    int m = arrayOfPublishProducer.length;
-    break label132;
-    int j;
-    if (j < 0) {
+    else
+    {
       return;
-    }
-    if (m == 1) {
-      paramPublishProducer = (OnSubscribePublishMulticast.PublishProducer[])EMPTY;
     }
     for (;;)
     {
-      this.subscribers = paramPublishProducer;
-      return;
-      paramPublishProducer = new OnSubscribePublishMulticast.PublishProducer[m - 1];
-      System.arraycopy(arrayOfPublishProducer, 0, paramPublishProducer, 0, j);
-      System.arraycopy(arrayOfPublishProducer, j + 1, paramPublishProducer, j, m - j - 1);
-    }
-    for (;;)
-    {
-      label132:
+      label136:
       j = k;
       if (i >= m) {
         break;
@@ -364,7 +357,7 @@ public final class OnSubscribePublishMulticast<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OnSubscribePublishMulticast
  * JD-Core Version:    0.7.0.1
  */

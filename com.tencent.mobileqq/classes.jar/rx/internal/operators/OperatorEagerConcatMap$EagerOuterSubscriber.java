@@ -44,9 +44,14 @@ final class OperatorEagerConcatMap$EagerOuterSubscriber<T, R>
       ArrayList localArrayList = new ArrayList(this.subscribers);
       this.subscribers.clear();
       ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((Subscription)((Iterator)???).next()).unsubscribe();
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -59,125 +64,117 @@ final class OperatorEagerConcatMap$EagerOuterSubscriber<T, R>
     Subscriber localSubscriber = this.actual;
     NotificationLite localNotificationLite = NotificationLite.instance();
     int i = 1;
-    label30:
-    if (this.cancelled)
-    {
-      cleanup();
-      return;
-    }
-    boolean bool = this.done;
-    OperatorEagerConcatMap.EagerInnerSubscriber localEagerInnerSubscriber;
-    int j;
     for (;;)
     {
+      if (this.cancelled)
+      {
+        cleanup();
+        return;
+      }
+      boolean bool = this.done;
       synchronized (this.subscribers)
       {
-        localEagerInnerSubscriber = (OperatorEagerConcatMap.EagerInnerSubscriber)this.subscribers.peek();
-        if (localEagerInnerSubscriber == null)
-        {
+        OperatorEagerConcatMap.EagerInnerSubscriber localEagerInnerSubscriber = (OperatorEagerConcatMap.EagerInnerSubscriber)this.subscribers.peek();
+        if (localEagerInnerSubscriber == null) {
           j = 1;
-          if (!bool) {
-            break label130;
-          }
+        } else {
+          j = 0;
+        }
+        if (bool)
+        {
           ??? = this.error;
-          if (??? == null) {
-            break;
+          if (??? != null)
+          {
+            cleanup();
+            localSubscriber.onError((Throwable)???);
+            return;
           }
-          cleanup();
-          localSubscriber.onError((Throwable)???);
+          if (j != 0)
+          {
+            localSubscriber.onCompleted();
+            return;
+          }
+        }
+        if (j == 0)
+        {
+          long l2 = localEagerOuterProducer.get();
+          if (l2 == 9223372036854775807L) {
+            j = 1;
+          } else {
+            j = 0;
+          }
+          Queue localQueue = localEagerInnerSubscriber.queue;
+          long l1 = 0L;
+          for (;;)
+          {
+            bool = localEagerInnerSubscriber.done;
+            ??? = localQueue.peek();
+            int k;
+            if (??? == null) {
+              k = 1;
+            } else {
+              k = 0;
+            }
+            if (bool)
+            {
+              Throwable localThrowable2 = localEagerInnerSubscriber.error;
+              if (localThrowable2 != null)
+              {
+                cleanup();
+                localSubscriber.onError(localThrowable2);
+                return;
+              }
+              if (k != 0) {
+                synchronized (this.subscribers)
+                {
+                  this.subscribers.poll();
+                  localEagerInnerSubscriber.unsubscribe();
+                  k = 1;
+                }
+              }
+            }
+            if ((k != 0) || (l2 == 0L))
+            {
+              k = 0;
+              if (l1 != 0L)
+              {
+                if (j == 0) {
+                  localEagerOuterProducer.addAndGet(l1);
+                }
+                if (k == 0) {
+                  localEagerInnerSubscriber.requestMore(-l1);
+                }
+              }
+              if (k == 0) {
+                break label359;
+              }
+              break;
+            }
+            localQueue.poll();
+            try
+            {
+              localObserver.onNext(localNotificationLite.getValue(???));
+              l2 -= 1L;
+              l1 -= 1L;
+            }
+            catch (Throwable localThrowable1)
+            {
+              Exceptions.throwOrReport(localThrowable1, localObserver, ???);
+              return;
+            }
+          }
+        }
+        label359:
+        int j = this.wip.addAndGet(-i);
+        i = j;
+        if (j == 0) {
           return;
         }
       }
-      j = 0;
-    }
-    if (j != 0)
-    {
-      localObject1.onCompleted();
-      return;
-    }
-    label130:
-    long l2;
-    long l1;
-    Queue localQueue;
-    int n;
-    if (j == 0)
-    {
-      l2 = localEagerOuterProducer.get();
-      l1 = 0L;
-      if (l2 == 9223372036854775807L)
-      {
-        j = 1;
-        localQueue = localEagerInnerSubscriber.queue;
-        n = 0;
-      }
     }
     for (;;)
     {
-      bool = localEagerInnerSubscriber.done;
-      ??? = localQueue.peek();
-      int k;
-      if (??? == null) {
-        k = 1;
-      }
-      for (;;)
-      {
-        if (bool)
-        {
-          Throwable localThrowable2 = localEagerInnerSubscriber.error;
-          if (localThrowable2 != null)
-          {
-            cleanup();
-            localObject1.onError(localThrowable2);
-            return;
-            j = 0;
-            break;
-            k = 0;
-            continue;
-          }
-          if (k == 0) {}
-        }
-      }
-      do
-      {
-        do
-        {
-          synchronized (this.subscribers)
-          {
-            this.subscribers.poll();
-            localEagerInnerSubscriber.unsubscribe();
-            m = 1;
-            if (l1 != 0L)
-            {
-              if (j == 0) {
-                localEagerOuterProducer.addAndGet(l1);
-              }
-              if (m == 0) {
-                localEagerInnerSubscriber.requestMore(-l1);
-              }
-            }
-            if (m != 0) {
-              break label30;
-            }
-            i = this.wip.addAndGet(-i);
-            if (i == 0) {
-              break;
-            }
-          }
-          m = n;
-        } while (k != 0);
-        int m = n;
-      } while (l2 == 0L);
-      localQueue.poll();
-      try
-      {
-        localObserver.onNext(localNotificationLite.getValue(???));
-        l2 -= 1L;
-        l1 -= 1L;
-      }
-      catch (Throwable localThrowable1)
-      {
-        Exceptions.throwOrReport(localThrowable1, localObserver, ???);
-      }
+      throw localObject1;
     }
   }
   
@@ -204,20 +201,11 @@ final class OperatorEagerConcatMap$EagerOuterSubscriber<T, R>
   
   public void onNext(T arg1)
   {
-    OperatorEagerConcatMap.EagerInnerSubscriber localEagerInnerSubscriber;
-    do
+    try
     {
-      try
-      {
-        Observable localObservable = (Observable)this.mapper.call(???);
-        localEagerInnerSubscriber = new OperatorEagerConcatMap.EagerInnerSubscriber(this, this.bufferSize);
-        if (this.cancelled) {
-          return;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        Exceptions.throwOrReport(localThrowable, this.actual, ???);
+      Observable localObservable = (Observable)this.mapper.call(???);
+      OperatorEagerConcatMap.EagerInnerSubscriber localEagerInnerSubscriber = new OperatorEagerConcatMap.EagerInnerSubscriber(this, this.bufferSize);
+      if (this.cancelled) {
         return;
       }
       synchronized (this.subscribers)
@@ -225,16 +213,25 @@ final class OperatorEagerConcatMap$EagerOuterSubscriber<T, R>
         if (this.cancelled) {
           return;
         }
+        this.subscribers.add(localEagerInnerSubscriber);
+        if (this.cancelled) {
+          return;
+        }
+        localObservable.unsafeSubscribe(localEagerInnerSubscriber);
+        drain();
+        return;
       }
-      this.subscribers.add(localEagerInnerSubscriber);
-    } while (this.cancelled);
-    localObject.unsafeSubscribe(localEagerInnerSubscriber);
-    drain();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      Exceptions.throwOrReport(localThrowable, this.actual, ???);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorEagerConcatMap.EagerOuterSubscriber
  * JD-Core Version:    0.7.0.1
  */

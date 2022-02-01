@@ -11,7 +11,7 @@ import mqq.app.MobileQQ;
 
 public class QQConfMeetingLogReportHelper
 {
-  static QQConfMeetingLogReportHelper jdField_a_of_type_ComTencentMobileqqAppUtilsQQConfMeetingLogReportHelper = null;
+  static QQConfMeetingLogReportHelper jdField_a_of_type_ComTencentMobileqqAppUtilsQQConfMeetingLogReportHelper;
   private ShareAppLogHelper.OnGetLocalLogListener jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper$OnGetLocalLogListener = new QQConfMeetingLogReportHelper.1(this);
   ShareAppLogHelper jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper;
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;
@@ -29,7 +29,13 @@ public class QQConfMeetingLogReportHelper
   
   private void a(String paramString)
   {
-    QLog.w("QQConfMeetingLogReportHelper", 1, "sendFile begin, path[" + paramString + "], Thread[" + Thread.currentThread().getId() + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sendFile begin, path[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], Thread[");
+    localStringBuilder.append(Thread.currentThread().getId());
+    localStringBuilder.append("]");
+    QLog.w("QQConfMeetingLogReportHelper", 1, localStringBuilder.toString());
     ThreadManager.post(new QQConfMeetingLogReportHelper.2(this, paramString), 2, null, true);
   }
   
@@ -44,7 +50,13 @@ public class QQConfMeetingLogReportHelper
   {
     Time localTime = new Time();
     localTime.set(paramLong);
-    return localTime.year + "-" + (localTime.month + 1) + "-" + localTime.monthDay;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localTime.year);
+    localStringBuilder.append("-");
+    localStringBuilder.append(localTime.month + 1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(localTime.monthDay);
+    return localStringBuilder.toString();
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -54,22 +66,40 @@ public class QQConfMeetingLogReportHelper
     if (paramLong2 - paramLong1 < 1800000L) {
       l1 = paramLong2 - 1800000L;
     }
-    Object localObject2 = String.format("%02d", new Object[] { Integer.valueOf(a(l1)) });
+    Object localObject3 = String.format("%02d", new Object[] { Integer.valueOf(a(l1)) });
     Object localObject1 = String.format("%02d", new Object[] { Integer.valueOf(a(paramLong2)) });
-    String str2 = a(l1);
-    String str1 = a(paramLong2);
-    localObject2 = ShareAppLogHelper.a(str2 + "-" + (String)localObject2, "-");
-    localObject1 = ShareAppLogHelper.a(str1 + "-" + (String)localObject1, "-");
+    Object localObject4 = a(l1);
+    Object localObject2 = a(paramLong2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject4);
+    localStringBuilder.append("-");
+    localStringBuilder.append((String)localObject3);
+    localObject3 = ShareAppLogHelper.a(localStringBuilder.toString(), "-");
+    localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append((String)localObject2);
+    ((StringBuilder)localObject4).append("-");
+    ((StringBuilder)localObject4).append((String)localObject1);
+    localObject1 = ShareAppLogHelper.a(((StringBuilder)localObject4).toString(), "-");
     this.jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper = new ShareAppLogHelper(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getBaseContext());
     this.jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper.a(this.jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper$OnGetLocalLogListener);
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper.a((Time)localObject2, (Time)localObject1, true);
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper.a((Time)localObject3, (Time)localObject1, true);
     paramLong1 = System.currentTimeMillis();
-    QLog.w("QQConfMeetingLogReportHelper", 1, "doReportLocalLog, ret[" + bool + "], startTime[" + localObject2 + "], endTime[" + localObject1 + "], cost[" + (paramLong1 - l2) + "]");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("doReportLocalLog, ret[");
+    ((StringBuilder)localObject2).append(bool);
+    ((StringBuilder)localObject2).append("], startTime[");
+    ((StringBuilder)localObject2).append(localObject3);
+    ((StringBuilder)localObject2).append("], endTime[");
+    ((StringBuilder)localObject2).append(localObject1);
+    ((StringBuilder)localObject2).append("], cost[");
+    ((StringBuilder)localObject2).append(paramLong1 - l2);
+    ((StringBuilder)localObject2).append("]");
+    QLog.w("QQConfMeetingLogReportHelper", 1, ((StringBuilder)localObject2).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.QQConfMeetingLogReportHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -43,13 +43,15 @@ public class QQFriendJsPlugin
     }
     catch (Exception localException)
     {
-      paramRequestEvent.fail();
+      label51:
+      break label51;
     }
+    paramRequestEvent.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.QQFriendJsPlugin
  * JD-Core Version:    0.7.0.1
  */

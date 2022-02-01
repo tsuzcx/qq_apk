@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileassistant.aio;
 
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.msglist.IReadConfirmCallback;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
@@ -15,8 +15,8 @@ public class FileAssistReadConfirmCallback
 {
   public void a(AIOContext paramAIOContext)
   {
-    if (QFileAssistantUtils.a(paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
-      ((DataLineHandler)paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).g();
+    if (QFileAssistantUtils.a(paramAIOContext.a().a)) {
+      ((DataLineHandler)paramAIOContext.a().getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).g();
     }
   }
   
@@ -26,7 +26,7 @@ public class FileAssistReadConfirmCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.aio.FileAssistReadConfirmCallback
  * JD-Core Version:    0.7.0.1
  */

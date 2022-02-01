@@ -11,16 +11,17 @@ class AppBrandRuntime$3
   
   public void onSnapshotReady(Bitmap paramBitmap)
   {
-    if (this.val$callback != null)
+    ICaptureImageCallback localICaptureImageCallback = this.val$callback;
+    if (localICaptureImageCallback != null)
     {
-      this.val$callback.onResult(paramBitmap);
+      localICaptureImageCallback.onResult(paramBitmap);
       this.this$0.isGettingScreenShot = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.AppBrandRuntime.3
  * JD-Core Version:    0.7.0.1
  */

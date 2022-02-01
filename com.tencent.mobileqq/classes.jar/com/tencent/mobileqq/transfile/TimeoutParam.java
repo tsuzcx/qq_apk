@@ -35,37 +35,48 @@ public class TimeoutParam
   
   public int getConnectTimeout(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return this.connectTimeoutFor2G + this.connectTimeoutBias;
-    case 1: 
-    case 4: 
-    case 5: 
-      return this.connectTimeoutForWifi + this.connectTimeoutBias;
+    int i;
+    if (paramInt != 1) {
+      if (paramInt != 3)
+      {
+        if ((paramInt == 4) || (paramInt == 5)) {
+          break label47;
+        }
+        i = this.connectTimeoutFor2G;
+        paramInt = this.connectTimeoutBias;
+      }
     }
-    return this.connectTimeoutFor3G + this.connectTimeoutBias;
+    for (;;)
+    {
+      return i + paramInt;
+      i = this.connectTimeoutFor3G;
+      paramInt = this.connectTimeoutBias;
+      continue;
+      label47:
+      i = this.connectTimeoutForWifi;
+      paramInt = this.connectTimeoutBias;
+    }
   }
   
   public int getReadTimeout(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return this.readTimeoutFor2G;
-    case 1: 
-    case 4: 
-    case 5: 
-      return this.readTimeoutForWifi;
+    if (paramInt != 1) {
+      if (paramInt != 3)
+      {
+        if ((paramInt != 4) && (paramInt != 5)) {
+          return this.readTimeoutFor2G;
+        }
+      }
+      else {
+        return this.readTimeoutFor3G;
+      }
     }
-    return this.readTimeoutFor3G;
+    return this.readTimeoutForWifi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.TimeoutParam
  * JD-Core Version:    0.7.0.1
  */

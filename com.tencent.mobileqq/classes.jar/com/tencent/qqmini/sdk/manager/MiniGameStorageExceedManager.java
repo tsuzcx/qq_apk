@@ -9,7 +9,7 @@ import java.lang.ref.WeakReference;
 public class MiniGameStorageExceedManager
 {
   private static boolean hasShowStorageExceedDialog = false;
-  private static int storageExceedCount = 0;
+  private static int storageExceedCount;
   
   public static void resetStorageExceedDialogStatus()
   {
@@ -34,7 +34,7 @@ public class MiniGameStorageExceedManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.MiniGameStorageExceedManager
  * JD-Core Version:    0.7.0.1
  */

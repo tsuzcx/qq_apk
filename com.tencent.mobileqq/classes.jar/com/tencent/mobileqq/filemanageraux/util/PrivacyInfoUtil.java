@@ -40,17 +40,17 @@ public class PrivacyInfoUtil
   
   public void a(String paramString)
   {
-    if (paramString != null) {}
-    for (paramString = paramString.getBytes();; paramString = null)
-    {
-      this.j = paramString;
-      return;
+    if (paramString != null) {
+      paramString = paramString.getBytes();
+    } else {
+      paramString = null;
     }
+    this.j = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.util.PrivacyInfoUtil
  * JD-Core Version:    0.7.0.1
  */

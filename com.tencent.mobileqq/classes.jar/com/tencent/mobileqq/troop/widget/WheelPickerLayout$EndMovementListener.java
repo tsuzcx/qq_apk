@@ -14,7 +14,7 @@ class WheelPickerLayout$EndMovementListener
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(VerticalGallery paramVerticalGallery)
+  public void onEndMovement(VerticalGallery paramVerticalGallery)
   {
     int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
     if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
@@ -24,7 +24,7 @@ class WheelPickerLayout$EndMovementListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.WheelPickerLayout.EndMovementListener
  * JD-Core Version:    0.7.0.1
  */

@@ -12,21 +12,22 @@ class BaseGaInvite$TimerHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.a.b();
+      if (i != 1) {
+        return;
+      }
+      this.a.a("Msg");
+      super.sendEmptyMessageDelayed(1, 2000L);
       return;
     }
-    this.a.a("Msg");
-    super.sendEmptyMessageDelayed(1, 2000L);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.BaseGaInvite.TimerHandler
  * JD-Core Version:    0.7.0.1
  */

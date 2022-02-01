@@ -2,15 +2,16 @@ package com.tencent.weseevideo.model.template.auto;
 
 import android.text.TextUtils;
 import com.tencent.autotemplate.model.TAVTransitionAutomaticEffect;
-import com.tencent.weseevideo.model.BaseMediaModel;
 import com.tencent.weseevideo.model.template.movie.MovieSegmentModel;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AutomaticMediaTemplateModel
-  extends BaseMediaModel
 {
+  public static final String SCALE_MODE_ASPECT_FILL = "aspectFill";
+  public static final String SCALE_MODE_ASPECT_FIT = "aspectFit";
   public static final String TEMPLATE_ASSET_PATH = "pag";
+  private AEFrameModel aeFrameModel;
   private String assetDir = "";
   private String imagePagAssetDir = "";
   private boolean isRhythmTemplate;
@@ -37,23 +38,31 @@ public class AutomaticMediaTemplateModel
   
   public void clearSecondEffectIndices()
   {
-    if (this.rhythmSecondEffectIndices != null) {
-      this.rhythmSecondEffectIndices.clear();
+    List localList = this.rhythmSecondEffectIndices;
+    if (localList != null) {
+      localList.clear();
     }
   }
   
   public void clearSegmentModels()
   {
-    if (this.rhythmSegmentModels != null) {
-      this.rhythmSegmentModels.clear();
+    List localList = this.rhythmSegmentModels;
+    if (localList != null) {
+      localList.clear();
     }
   }
   
   public void clearTransitionEffects()
   {
-    if (this.mTransitionEffects != null) {
-      this.mTransitionEffects.clear();
+    ArrayList localArrayList = this.mTransitionEffects;
+    if (localArrayList != null) {
+      localArrayList.clear();
     }
+  }
+  
+  public AEFrameModel getAEFrameModel()
+  {
+    return this.aeFrameModel;
   }
   
   public String getAssetDir()
@@ -108,7 +117,8 @@ public class AutomaticMediaTemplateModel
   
   public boolean isContainSegments()
   {
-    return (this.rhythmSegmentModels != null) && (!this.rhythmSegmentModels.isEmpty());
+    List localList = this.rhythmSegmentModels;
+    return (localList != null) && (!localList.isEmpty());
   }
   
   public boolean isEmpty()
@@ -124,6 +134,11 @@ public class AutomaticMediaTemplateModel
   public boolean isSwitchToTemplateByUser()
   {
     return this.isSwitchToTemplateByUser;
+  }
+  
+  public void setAEFrameModel(AEFrameModel paramAEFrameModel)
+  {
+    this.aeFrameModel = paramAEFrameModel;
   }
   
   public void setAssetDir(String paramString)
@@ -188,7 +203,7 @@ public class AutomaticMediaTemplateModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.auto.AutomaticMediaTemplateModel
  * JD-Core Version:    0.7.0.1
  */

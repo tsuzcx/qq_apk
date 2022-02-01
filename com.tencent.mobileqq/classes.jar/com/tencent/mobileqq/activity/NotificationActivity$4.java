@@ -5,6 +5,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.qqsec.api.ISecControllerInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class NotificationActivity$4
@@ -14,9 +15,11 @@ class NotificationActivity$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("NotificationActivity", 1, "setNegativeButton.onClick: invoked.  isDialogShow: " + NotificationActivity.access$000(this.a));
-    paramDialogInterface = new Intent("qqplayer_exit_action");
-    this.a.sendBroadcast(paramDialogInterface);
+    paramDialogInterface = new StringBuilder();
+    paramDialogInterface.append("setNegativeButton.onClick: invoked.  isDialogShow: ");
+    paramDialogInterface.append(NotificationActivity.access$000(this.a));
+    QLog.i("NotificationActivity", 1, paramDialogInterface.toString());
+    NotificationActivity.access$100().a(this.a, false, false);
     paramDialogInterface = new Bundle();
     paramDialogInterface.putString("password", null);
     paramDialogInterface = new Intent().putExtras(paramDialogInterface).addFlags(67108864);
@@ -26,7 +29,7 @@ class NotificationActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.4
  * JD-Core Version:    0.7.0.1
  */

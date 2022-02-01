@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
 
 class AvatarPendantActivity$4
   implements Runnable
@@ -9,12 +9,13 @@ class AvatarPendantActivity$4
   
   public void run()
   {
-    AvatarPendantActivity.a(this.this$0, this.this$0.a.a);
+    AvatarPendantActivity localAvatarPendantActivity = this.this$0;
+    AvatarPendantActivity.a(localAvatarPendantActivity, localAvatarPendantActivity.a.uin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.4
  * JD-Core Version:    0.7.0.1
  */

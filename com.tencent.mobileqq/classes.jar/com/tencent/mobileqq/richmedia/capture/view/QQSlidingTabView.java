@@ -66,37 +66,35 @@ public class QQSlidingTabView
     a(paramContext, paramAttributeSet);
   }
   
-  private int a(int paramInt, View paramView)
-  {
-    if (paramInt < 0) {
-      return -1;
-    }
-    paramView.setOnClickListener(new QQSlidingTabView.1(this, paramInt));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, paramInt);
-    return 0;
-  }
-  
+  @TargetApi(11)
   private void a()
   {
-    int i2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int i1 = 0;
-    if (i1 < i2)
+    int i1 = this.o;
+    int i2 = this.n;
+    if (i1 != i2)
     {
-      View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i1);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -1);
-      if (i1 == 0) {
-        localLayoutParams.setMargins(this.e, 0, 0, 0);
-      }
-      for (;;)
+      Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i1);
+      View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(this.n);
+      if ((localObject != null) && (localView != null))
       {
-        localView.setLayoutParams(localLayoutParams);
-        i1 += 1;
-        break;
-        if (i1 == i2 - 1) {
-          localLayoutParams.setMargins(0, 0, this.e, 0);
+        i1 = ((View)localObject).getLeft();
+        i2 = localView.getLeft();
+        if ((i1 == 0) && (i2 == 0))
+        {
+          this.jdField_a_of_type_Boolean = true;
+          return;
         }
+        this.jdField_a_of_type_Boolean = false;
+        localObject = ValueAnimator.ofInt(new int[] { i1, i2 });
+        ((ValueAnimator)localObject).setDuration(100L);
+        ((ValueAnimator)localObject).addUpdateListener(new QQSlidingTabView.2(this));
+        ((ValueAnimator)localObject).start();
       }
+    }
+    else
+    {
+      this.i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i2).getLeft();
+      invalidate();
     }
   }
   
@@ -138,206 +136,125 @@ public class QQSlidingTabView
     this.q = ScreenUtil.dip2px(this.p);
   }
   
-  @TargetApi(11)
-  private void b()
-  {
-    if (this.o != this.n)
-    {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(this.o);
-      View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(this.n);
-      int i1;
-      int i2;
-      if ((localObject != null) && (localView != null))
-      {
-        i1 = ((View)localObject).getLeft();
-        i2 = localView.getLeft();
-        if ((i1 == 0) && (i2 == 0)) {
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-      else
-      {
-        return;
-      }
-      this.jdField_a_of_type_Boolean = false;
-      localObject = ValueAnimator.ofInt(new int[] { i1, i2 });
-      ((ValueAnimator)localObject).setDuration(100L);
-      ((ValueAnimator)localObject).addUpdateListener(new QQSlidingTabView.2(this));
-      ((ValueAnimator)localObject).start();
-      return;
-    }
-    this.i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(this.n).getLeft();
-    invalidate();
-  }
-  
   private void b(int paramInt)
   {
     int i2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
     int i1 = 0;
-    if (i1 < i2)
+    while (i1 < i2)
     {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i1);
-      View localView;
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (i1 < this.jdField_a_of_type_JavaUtilArrayList.size()))
+      Object localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i1);
+      Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+      if ((localObject1 != null) && (i1 < ((ArrayList)localObject1).size()))
       {
-        localView = (View)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        if (i1 != paramInt) {
-          break label188;
-        }
-        if (!(localView instanceof ImageView)) {
-          break label110;
-        }
-        localObject = (Bundle)localView.getTag();
-        if (localObject != null) {
-          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130847009));
-        }
-      }
-      for (;;)
-      {
-        i1 += 1;
-        break;
-        label110:
-        if ((localView instanceof RedDotTextView))
+        localObject1 = (View)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+        if (i1 == paramInt)
         {
-          if (this.r == i1) {
-            ((RedDotTextView)localObject).setTextColor(this.c);
-          }
-          for (;;)
+          if ((localObject1 instanceof ImageView))
           {
-            ((RedDotTextView)localObject).a(false);
-            break;
-            ((RedDotTextView)localObject).setTextColor(this.b);
-          }
-        }
-        if ((localView instanceof TextView))
-        {
-          ((TextView)localObject).setTextColor(this.b);
-          continue;
-          label188:
-          if ((localView instanceof ImageView))
-          {
-            localObject = (Bundle)localView.getTag();
-            if (localObject != null) {
-              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130847008));
+            localObject2 = (Bundle)((View)localObject1).getTag();
+            if (localObject2 != null) {
+              ((ImageView)localObject1).setImageResource(((Bundle)localObject2).getInt("checked_image_bg_id", 2130846887));
             }
           }
-          else if ((localView instanceof RedDotTextView))
+          else if ((localObject1 instanceof RedDotTextView))
           {
-            ((RedDotTextView)localObject).setTextColor(this.jdField_a_of_type_Int);
+            if (this.r == i1) {
+              ((RedDotTextView)localObject2).setTextColor(this.c);
+            } else {
+              ((RedDotTextView)localObject2).setTextColor(this.b);
+            }
+            ((RedDotTextView)localObject2).a(false);
           }
-          else if ((localView instanceof TextView))
+          else if ((localObject1 instanceof TextView))
           {
-            ((TextView)localObject).setTextColor(this.jdField_a_of_type_Int);
+            ((TextView)localObject2).setTextColor(this.b);
           }
         }
+        else if ((localObject1 instanceof ImageView))
+        {
+          localObject2 = (Bundle)((View)localObject1).getTag();
+          if (localObject2 != null) {
+            ((ImageView)localObject1).setImageResource(((Bundle)localObject2).getInt("normal_image_bg_id", 2130846886));
+          }
+        }
+        else if ((localObject1 instanceof RedDotTextView))
+        {
+          ((RedDotTextView)localObject2).setTextColor(this.jdField_a_of_type_Int);
+        }
+        else if ((localObject1 instanceof TextView))
+        {
+          ((TextView)localObject2).setTextColor(this.jdField_a_of_type_Int);
+        }
       }
+      i1 += 1;
     }
   }
   
   private void c(int paramInt)
   {
     View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
-    int i1;
     if (localView != null)
     {
       paramInt = getScrollX();
-      i1 = this.f * 4;
+      int i1 = this.f * 4;
       int i2 = localView.getRight() - paramInt - getWidth() + i1;
-      if (i2 <= 0) {
-        break label53;
+      if (i2 > 0)
+      {
+        smoothScrollBy(i2, 0);
+        return;
       }
-      smoothScrollBy(i2, 0);
-    }
-    label53:
-    do
-    {
-      return;
       paramInt = localView.getLeft() - paramInt - i1;
-    } while (paramInt >= 0);
-    smoothScrollBy(paramInt, 0);
-  }
-  
-  public ArrayList<View> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+      if (paramInt < 0) {
+        smoothScrollBy(paramInt, 0);
+      }
+    }
   }
   
   public void a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return;
-    }
-    this.n = paramInt;
-    b(paramInt);
-    c(paramInt);
-    b();
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener.a(paramInt);
-    }
-    this.o = this.n;
-  }
-  
-  public void a(ArrayList<QQSlidingTabView.TabIcon> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    if (paramInt >= 0)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    int i1 = 0;
-    int i2 = -1;
-    while (i1 < paramArrayList.size())
-    {
-      RedDotTextView localRedDotTextView = new RedDotTextView(getContext());
-      localRedDotTextView.setText(((QQSlidingTabView.TabIcon)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
-      localRedDotTextView.setContentDescription(((QQSlidingTabView.TabIcon)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
-      localRedDotTextView.setGravity(17);
-      localRedDotTextView.setSingleLine();
-      localRedDotTextView.setTextSize(0, this.d);
-      localRedDotTextView.setPadding(this.f, 0, this.f, 0);
-      localRedDotTextView.a(((QQSlidingTabView.TabIcon)paramArrayList.get(i1)).jdField_a_of_type_Boolean);
-      if (((QQSlidingTabView.TabIcon)paramArrayList.get(i1)).b) {
-        i2 = i1;
+      if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        return;
       }
-      a(i1, localRedDotTextView);
-      i1 += 1;
+      this.n = paramInt;
+      b(paramInt);
+      c(paramInt);
+      a();
+      QQSlidingTabView.IOnTabCheckListener localIOnTabCheckListener = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener;
+      if (localIOnTabCheckListener != null) {
+        localIOnTabCheckListener.a(paramInt);
+      }
+      this.o = this.n;
     }
-    this.r = i2;
-    a();
-    b(this.n);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i2 = getHeight();
-    View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(this.n);
-    if (localView != null)
+    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(this.n);
+    if (localObject != null)
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        this.i = localView.getLeft();
+        this.i = ((View)localObject).getLeft();
         c(this.n);
         this.jdField_a_of_type_Boolean = false;
       }
-      if ((this.n == 0) && (this.i < localView.getLeft())) {
-        this.i = localView.getLeft();
+      if ((this.n == 0) && (this.i < ((View)localObject).getLeft())) {
+        this.i = ((View)localObject).getLeft();
       }
-      if (this.r != this.n) {
-        break label183;
+      if (this.r == this.n) {
+        i1 = this.c;
+      } else {
+        i1 = this.k;
       }
-    }
-    label183:
-    for (int i1 = this.c;; i1 = this.k)
-    {
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i1);
-      float f1 = this.i + this.g;
-      float f2 = i2 - this.j;
-      i1 = this.i;
-      paramCanvas.drawRoundRect(new RectF(f1, f2, localView.getWidth() + i1 - this.g, i2), this.q, this.q, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
+      int i1 = this.i;
+      localObject = new RectF(this.g + i1, i2 - this.j, i1 + ((View)localObject).getWidth() - this.g, i2);
+      i1 = this.q;
+      paramCanvas.drawRoundRect((RectF)localObject, i1, i1, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
@@ -355,7 +272,7 @@ public class QQSlidingTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView
  * JD-Core Version:    0.7.0.1
  */

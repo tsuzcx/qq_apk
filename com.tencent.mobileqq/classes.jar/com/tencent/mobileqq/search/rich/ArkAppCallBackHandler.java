@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.search.rich;
 
-import android.text.TextUtils;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Application;
 import com.tencent.ark.ark.ApplicationCallback;
@@ -9,15 +8,12 @@ import com.tencent.ark.ark.ModuleRegister;
 import com.tencent.ark.open.ArkAppConfigMgr;
 import com.tencent.ark.open.security.ArkAppUrlChecker;
 import com.tencent.biz.common.util.Util;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
-import com.tencent.mobileqq.ark.API.ArkCommonUtil;
 import com.tencent.mobileqq.ark.ArkAiAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenterEvent;
 import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.ark.security.ArkSecurityReporter;
+import com.tencent.mobileqq.ark.api.IArkAPIService;
+import com.tencent.mobileqq.ark.api.IArkAppLifeEvent;
+import com.tencent.mobileqq.ark.api.IArkSecureReport;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -33,59 +29,52 @@ public class ArkAppCallBackHandler
   private IRichNode a(long paramLong)
   {
     ark.Container localContainer = ark.arkGetContainer(paramLong);
-    IRichNode localIRichNode;
     if (localContainer == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ArkNodeContainer", 2, "getArkNode, arkcontainer is null");
       }
-      localIRichNode = null;
+      return null;
     }
-    label150:
-    label154:
-    for (;;)
+    if (this.a.size() == 0)
     {
-      return localIRichNode;
-      if (this.a.size() == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkNodeContainer", 2, "getArkNode, list is null");
-        }
-        return null;
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkNodeContainer", 2, "getArkNode, list is null");
       }
-      int i = 0;
-      if (i < this.a.size())
-      {
-        localIRichNode = (IRichNode)((WeakReference)this.a.get(i)).get();
-        if ((localIRichNode == null) || (!(localIRichNode instanceof ArkRichNode))) {
-          break label150;
-        }
-      }
-      for (ArkNodeContainer localArkNodeContainer = ((ArkRichNode)localIRichNode).a();; localArkNodeContainer = null)
-      {
-        if ((localArkNodeContainer != null) && (localArkNodeContainer.getContainer() == localContainer)) {
-          break label154;
-        }
-        i += 1;
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkNodeContainer", 2, "getArkNode, not found");
-        }
-        return null;
-      }
+      return null;
     }
+    int i = 0;
+    while (i < this.a.size())
+    {
+      IRichNode localIRichNode = (IRichNode)((WeakReference)this.a.get(i)).get();
+      ArkNodeContainer localArkNodeContainer;
+      if ((localIRichNode != null) && ((localIRichNode instanceof ArkRichNode))) {
+        localArkNodeContainer = ((ArkRichNode)localIRichNode).a();
+      } else {
+        localArkNodeContainer = null;
+      }
+      if ((localArkNodeContainer != null) && (localArkNodeContainer.getContainer() == localContainer)) {
+        return localIRichNode;
+      }
+      i += 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkNodeContainer", 2, "getArkNode, not found");
+    }
+    return null;
   }
   
   public void AppCreate(ark.Application paramApplication)
   {
-    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
+    paramApplication = paramApplication.GetSpecific("appName");
+    ((IArkAppLifeEvent)QRoute.api(IArkAppLifeEvent.class)).doAction(0, paramApplication, null);
   }
   
   public void AppDestroy(ark.Application paramApplication)
   {
     paramApplication = paramApplication.GetSpecific("appName");
-    ArkAppCenterEvent.a(1, paramApplication, null);
-    ArkSecurityReporter.a(paramApplication);
+    ((IArkAppLifeEvent)QRoute.api(IArkAppLifeEvent.class)).doAction(1, paramApplication, null);
+    ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportAccumulatedValidURL(paramApplication);
   }
   
   public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
@@ -93,40 +82,39 @@ public class ArkAppCallBackHandler
     paramApplication = paramApplication.GetSpecific("appName");
     ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
     boolean bool;
-    int i;
     if (localArkAppUrlChecker != null)
     {
       int j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
-      if (j == 0)
-      {
+      if (j == 0) {
         bool = true;
-        if (bool) {
-          break label170;
-        }
-        if (ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication)) {
-          break label165;
-        }
-        QLog.e("ArkNodeContainer", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback seach appName=", paramApplication, ",url=", Util.b(paramString, new String[0]), ", isValid set=true" });
-        i = 2;
-        bool = true;
-        label97:
-        ArkSecurityReporter.a(paramApplication, paramString, j, i, "");
+      } else {
+        bool = false;
       }
+      int i;
+      if (!bool)
+      {
+        if (!ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication))
+        {
+          QLog.e("ArkNodeContainer", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback seach appName=", paramApplication, ",url=", Util.b(paramString, new String[0]), ", isValid set=true" });
+          i = 2;
+          bool = true;
+        }
+        else
+        {
+          i = 1;
+        }
+      }
+      else {
+        i = 0;
+      }
+      ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportResourceURLAccess(paramApplication, paramString, j, i, "");
     }
-    for (;;)
+    else
     {
-      QLog.e("ArkNodeContainer", 1, new Object[] { "ArkSafe.EngineCallback search appName=", paramApplication, ",url=", Util.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool) });
-      return bool;
-      bool = false;
-      break;
-      label165:
-      i = 1;
-      break label97;
-      label170:
-      i = 0;
-      break label97;
       bool = true;
     }
+    QLog.e("ArkNodeContainer", 1, new Object[] { "ArkSafe.EngineCallback search appName=", paramApplication, ",url=", Util.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool) });
+    return bool;
   }
   
   public void OutputScriptError(String paramString1, String paramString2)
@@ -134,42 +122,22 @@ public class ArkAppCallBackHandler
     if (paramString1 == null) {
       paramString1 = "";
     }
-    for (;;)
-    {
-      if (paramString2 == null) {
-        paramString2 = "";
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ArkNodeContainer", 2, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
-        }
-        ArkAppDataReport.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
-        return;
-      }
+    if (paramString2 == null) {
+      paramString2 = "";
     }
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkNodeContainer", 2, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
+    }
+    ArkAppDataReport.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
   }
   
   public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
   {
-    ArkAppModuleReg.a(paramModuleRegister, paramApplication);
-    String str = paramApplication.GetSpecific("appName");
-    ArkAppModule localArkAppModule = new ArkAppModule(paramApplication, ArkAppModuleReg.a(str));
-    localArkAppModule.a(this);
-    paramApplication = ArkCommonUtil.a();
-    if ((!TextUtils.isEmpty(str)) && (paramApplication != null))
-    {
-      paramApplication = (ArkAppCenter)paramApplication.getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER);
-      if (paramApplication == null) {}
-    }
-    for (paramApplication = paramApplication.a();; paramApplication = null)
-    {
-      if (paramApplication != null) {
-        localArkAppModule.a((List)ArkAiAppCenter.a.get(localArkAppModule.GetTypeName()));
-      }
-      paramModuleRegister.RegCallbackWrapper(localArkAppModule);
-      return;
-    }
+    ((IArkAPIService)QRoute.api(IArkAPIService.class)).registerModules(paramModuleRegister, paramApplication);
+    paramApplication = new ArkAppModule(paramApplication, 0);
+    paramApplication.a(this);
+    paramApplication.a((List)ArkAiAppCenter.a.get(paramApplication.GetTypeName()));
+    paramModuleRegister.RegCallbackWrapper(paramApplication);
   }
   
   public void a(long paramLong, String paramString)
@@ -182,12 +150,18 @@ public class ArkAppCallBackHandler
   
   public void a(long paramLong, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkNodeContainer", 2, "onNotify, KEY：" + paramString1 + " VALUE:" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onNotify, KEY：");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" VALUE:");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("ArkNodeContainer", 2, ((StringBuilder)localObject).toString());
     }
-    IRichNode localIRichNode = a(paramLong);
-    if ((localIRichNode != null) && ((localIRichNode instanceof ArkRichNode))) {
-      ((ArkRichNode)localIRichNode).a(paramString1, paramString2);
+    Object localObject = a(paramLong);
+    if ((localObject != null) && ((localObject instanceof ArkRichNode))) {
+      ((ArkRichNode)localObject).a(paramString1, paramString2);
     }
   }
   
@@ -207,23 +181,22 @@ public class ArkAppCallBackHandler
   
   public void b(ArkRichNode paramArkRichNode)
   {
-    if (paramArkRichNode == null) {}
-    WeakReference localWeakReference;
-    do
-    {
+    if (paramArkRichNode == null) {
       return;
-      Iterator localIterator;
-      while (!localIterator.hasNext()) {
-        localIterator = this.a.iterator();
+    }
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if (localWeakReference.get() == paramArkRichNode) {
+        this.a.remove(localWeakReference);
       }
-      localWeakReference = (WeakReference)localIterator.next();
-    } while (localWeakReference.get() != paramArkRichNode);
-    this.a.remove(localWeakReference);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkAppCallBackHandler
  * JD-Core Version:    0.7.0.1
  */

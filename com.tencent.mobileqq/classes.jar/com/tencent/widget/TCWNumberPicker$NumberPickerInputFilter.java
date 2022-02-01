@@ -10,35 +10,31 @@ class TCWNumberPicker$NumberPickerInputFilter
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    int i = 0;
-    if (TCWNumberPicker.a(this.a) == null)
-    {
-      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      return paramCharSequence;
+    if (TCWNumberPicker.a(this.a) == null) {
+      return TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
     }
-    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
-    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
-    String[] arrayOfString = TCWNumberPicker.a(this.a);
-    paramInt2 = arrayOfString.length;
-    paramInt1 = i;
-    for (;;)
+    paramCharSequence = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
+    Object localObject = new StringBuilder();
+    paramInt1 = 0;
+    ((StringBuilder)localObject).append(String.valueOf(paramSpanned.subSequence(0, paramInt3)));
+    ((StringBuilder)localObject).append(paramCharSequence);
+    ((StringBuilder)localObject).append(paramSpanned.subSequence(paramInt4, paramSpanned.length()));
+    paramSpanned = String.valueOf(((StringBuilder)localObject).toString()).toLowerCase();
+    localObject = TCWNumberPicker.a(this.a);
+    paramInt2 = localObject.length;
+    while (paramInt1 < paramInt2)
     {
-      if (paramInt1 >= paramInt2) {
-        break label154;
-      }
-      paramCharSequence = str;
-      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
-        break;
+      if (localObject[paramInt1].toLowerCase().startsWith(paramSpanned)) {
+        return paramCharSequence;
       }
       paramInt1 += 1;
     }
-    label154:
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.TCWNumberPicker.NumberPickerInputFilter
  * JD-Core Version:    0.7.0.1
  */

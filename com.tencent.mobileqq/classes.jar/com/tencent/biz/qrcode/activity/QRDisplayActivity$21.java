@@ -14,14 +14,15 @@ class QRDisplayActivity$21
     if (this.a.h) {
       return;
     }
-    this.a.i = -1;
-    this.a.h = true;
-    QRDisplayActivity.a(this.a).dismiss();
+    paramDialogInterface = this.a;
+    paramDialogInterface.i = -1;
+    paramDialogInterface.h = true;
+    QRDisplayActivity.a(paramDialogInterface).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.21
  * JD-Core Version:    0.7.0.1
  */

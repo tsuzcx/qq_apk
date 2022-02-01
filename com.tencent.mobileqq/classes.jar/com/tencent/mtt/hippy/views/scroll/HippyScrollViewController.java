@@ -19,12 +19,12 @@ public class HippyScrollViewController<T extends ViewGroup,  extends HippyScroll
   protected static final String SCROLL_TO = "scrollTo";
   private static final String SCROLL_TO_WITHOPTIONS = "scrollToWithOptions";
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return null;
   }
   
-  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     if ((paramHippyMap != null) && (paramHippyMap.containsKey("horizontal")) && (paramHippyMap.getBoolean("horizontal"))) {
       return new HippyHorizontalScrollView(paramContext);
@@ -35,37 +35,34 @@ public class HippyScrollViewController<T extends ViewGroup,  extends HippyScroll
   public void dispatchFunction(View paramView, String paramString, HippyArray paramHippyArray)
   {
     super.dispatchFunction(paramView, paramString, paramHippyArray);
-    int i;
-    int j;
-    if ((paramView instanceof HippyScrollView)) {
+    if ((paramView instanceof HippyScrollView))
+    {
+      int i;
+      int j;
       if (TextUtils.equals("scrollTo", paramString))
       {
         i = Math.round(PixelUtil.dp2px(paramHippyArray.getDouble(0)));
         j = Math.round(PixelUtil.dp2px(paramHippyArray.getDouble(1)));
-        if (!paramHippyArray.getBoolean(2)) {
-          break label156;
+        if (paramHippyArray.getBoolean(2)) {
+          ((HippyScrollView)paramView).callSmoothScrollTo(i, j, 0);
+        } else {
+          paramView.scrollTo(i, j);
         }
-        ((HippyScrollView)paramView).callSmoothScrollTo(i, j, 0);
       }
-    }
-    for (;;)
-    {
       if ((TextUtils.equals("scrollToWithOptions", paramString)) && (paramHippyArray != null) && (paramHippyArray.size() > 0))
       {
         paramString = paramHippyArray.getMap(0);
         i = Math.round(PixelUtil.dp2px(paramString.getInt("x")));
         j = Math.round(PixelUtil.dp2px(paramString.getInt("y")));
         int k = paramString.getInt("duration");
-        if (k <= 0) {
-          break;
+        if (k > 0)
+        {
+          ((HippyScrollView)paramView).callSmoothScrollTo(i, j, k);
+          return;
         }
-        ((HippyScrollView)paramView).callSmoothScrollTo(i, j, k);
+        paramView.scrollTo(i, j);
       }
-      return;
-      label156:
-      paramView.scrollTo(i, j);
     }
-    paramView.scrollTo(i, j);
   }
   
   @HippyControllerProps(name="contentOffset4Reuse")
@@ -148,7 +145,7 @@ public class HippyScrollViewController<T extends ViewGroup,  extends HippyScroll
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.scroll.HippyScrollViewController
  * JD-Core Version:    0.7.0.1
  */

@@ -16,29 +16,30 @@ class QfavFileForwardManager$1
   
   public void handleMessage(Message paramMessage)
   {
-    boolean bool = true;
     int i = paramMessage.what;
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QfavFileForwardManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
-      }
-      if (bool) {
-        break;
-      }
-      return;
+    boolean bool;
+    if (paramMessage.arg1 == 1) {
+      bool = true;
+    } else {
       bool = false;
     }
-    paramMessage = (oidb_cmd0xd68.RspBody)paramMessage.obj;
-    switch (i)
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("receive passwdredbags from group or disgroup, isSuccess = ");
+      localStringBuilder.append(bool);
+      QLog.d("QfavFileForwardManager", 2, localStringBuilder.toString());
     }
+    if (!bool) {
+      return;
+    }
+    paramMessage = (oidb_cmd0xd68.RspBody)paramMessage.obj;
+    if ((i != 1) && (i != 2) && (i != 3)) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.forward.QfavFileForwardManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -24,40 +24,43 @@ class QfavHelper$4$1
         paramPluginManagerClient.installPlugin("qqfav.apk", this.a.a);
         return;
       }
+      paramPluginManagerClient = this.a.a;
+      if (paramPluginManagerClient == null) {
+        break label104;
+      }
+      try
+      {
+        this.a.a.onInstallFinish("qqfav.apk");
+        return;
+      }
+      catch (RemoteException paramPluginManagerClient)
+      {
+        paramPluginManagerClient.printStackTrace();
+        return;
+      }
     }
     catch (Exception paramPluginManagerClient)
     {
-      if (this.a.a != null)
+      label73:
+      label104:
+      break label73;
+    }
+    if (this.a.a != null) {
+      try
       {
-        try
-        {
-          this.a.a.onInstallError("qqfav.apk", -1);
-          return;
-        }
-        catch (RemoteException paramPluginManagerClient)
-        {
-          paramPluginManagerClient.printStackTrace();
-          return;
-        }
-        paramPluginManagerClient = this.a.a;
-        if (paramPluginManagerClient != null) {
-          try
-          {
-            this.a.a.onInstallFinish("qqfav.apk");
-            return;
-          }
-          catch (RemoteException paramPluginManagerClient)
-          {
-            paramPluginManagerClient.printStackTrace();
-          }
-        }
+        this.a.a.onInstallError("qqfav.apk", -1);
+        return;
+      }
+      catch (RemoteException paramPluginManagerClient)
+      {
+        paramPluginManagerClient.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.QfavHelper.4.1
  * JD-Core Version:    0.7.0.1
  */

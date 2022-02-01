@@ -8,22 +8,34 @@ final class TdsReaderGlobal$LogImpl
 {
   public void d(String paramString1, String paramString2)
   {
-    QLog.d("TdsReaderView_" + paramString1, 2, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TdsReaderView_");
+    localStringBuilder.append(paramString1);
+    QLog.d(localStringBuilder.toString(), 2, paramString2);
   }
   
   public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    QLog.d("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TdsReaderView_");
+    localStringBuilder.append(paramString1);
+    QLog.d(localStringBuilder.toString(), 2, paramString2, paramThrowable);
   }
   
   public void e(String paramString1, String paramString2)
   {
-    QLog.e("TdsReaderView_" + paramString1, 1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TdsReaderView_");
+    localStringBuilder.append(paramString1);
+    QLog.e(localStringBuilder.toString(), 1, paramString2);
   }
   
   public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    QLog.e("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TdsReaderView_");
+    localStringBuilder.append(paramString1);
+    QLog.e(localStringBuilder.toString(), 1, paramString2, paramThrowable);
   }
   
   public int getLogLevel()
@@ -33,37 +45,55 @@ final class TdsReaderGlobal$LogImpl
   
   public void i(String paramString1, String paramString2)
   {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TdsReaderView_");
+    localStringBuilder.append(paramString1);
+    QLog.i(localStringBuilder.toString(), 2, paramString2);
   }
   
   public void i(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TdsReaderView_");
+    localStringBuilder.append(paramString1);
+    QLog.i(localStringBuilder.toString(), 2, paramString2, paramThrowable);
   }
   
   public void v(String paramString1, String paramString2)
   {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TdsReaderView_");
+    localStringBuilder.append(paramString1);
+    QLog.i(localStringBuilder.toString(), 2, paramString2);
   }
   
   public void v(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TdsReaderView_");
+    localStringBuilder.append(paramString1);
+    QLog.i(localStringBuilder.toString(), 2, paramString2, paramThrowable);
   }
   
   public void w(String paramString1, String paramString2)
   {
-    QLog.w("TdsReaderView_" + paramString1, 1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TdsReaderView_");
+    localStringBuilder.append(paramString1);
+    QLog.w(localStringBuilder.toString(), 1, paramString2);
   }
   
   public void w(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    QLog.w("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TdsReaderView_");
+    localStringBuilder.append(paramString1);
+    QLog.w(localStringBuilder.toString(), 1, paramString2, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal.LogImpl
  * JD-Core Version:    0.7.0.1
  */

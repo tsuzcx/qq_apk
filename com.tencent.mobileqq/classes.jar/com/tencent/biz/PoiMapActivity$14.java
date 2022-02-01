@@ -12,11 +12,14 @@ class PoiMapActivity$14
   
   public boolean onPreDraw()
   {
-    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
-    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
+    PoiMapActivity localPoiMapActivity = this.a;
+    localPoiMapActivity.o = PoiMapActivity.e(localPoiMapActivity).getMeasuredHeight();
+    localPoiMapActivity = this.a;
+    PoiMapActivity.a(localPoiMapActivity, PoiMapActivity.a(localPoiMapActivity).getMeasuredHeight());
     if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
     {
-      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
+      localPoiMapActivity = this.a;
+      localPoiMapActivity.a((localPoiMapActivity.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
       PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
       PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
     }
@@ -25,7 +28,7 @@ class PoiMapActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.PoiMapActivity.14
  * JD-Core Version:    0.7.0.1
  */

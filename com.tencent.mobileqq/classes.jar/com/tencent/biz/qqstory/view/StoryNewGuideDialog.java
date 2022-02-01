@@ -16,12 +16,12 @@ public class StoryNewGuideDialog
   
   public StoryNewGuideDialog(Context paramContext)
   {
-    super(paramContext, 2131755017);
-    View localView = LayoutInflater.from(paramContext).inflate(2131561870, null);
+    super(paramContext, 2131755015);
+    View localView = LayoutInflater.from(paramContext).inflate(2131561721, null);
     localView.setOnTouchListener(new StoryNewGuideDialog.1(this));
     super.setContentView(localView);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362739));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368176));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362695));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367929));
     this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(UIUtils.a(paramContext, 25.0F));
     this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
     this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
@@ -52,7 +52,7 @@ public class StoryNewGuideDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.StoryNewGuideDialog
  * JD-Core Version:    0.7.0.1
  */

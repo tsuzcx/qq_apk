@@ -18,10 +18,14 @@ public class AnimateUtils$BezierEvaluator
   private PointF calculateBezierPointForQuadratic(float paramFloat, PointF paramPointF1, PointF paramPointF2, PointF paramPointF3)
   {
     PointF localPointF = new PointF();
-    float f1 = 1.0F - paramFloat;
-    localPointF.x = (f1 * f1 * paramPointF1.x + 2.0F * paramFloat * f1 * paramPointF2.x + paramFloat * paramFloat * paramPointF3.x);
-    float f2 = paramPointF1.y;
-    localPointF.y = (f1 * (2.0F * paramFloat) * paramPointF2.y + f1 * f1 * f2 + paramFloat * paramFloat * paramPointF3.y);
+    float f3 = 1.0F - paramFloat;
+    float f1 = f3 * f3;
+    float f2 = paramPointF1.x;
+    f3 = 2.0F * paramFloat * f3;
+    float f4 = paramPointF2.x;
+    paramFloat *= paramFloat;
+    localPointF.x = (f2 * f1 + f4 * f3 + paramPointF3.x * paramFloat);
+    localPointF.y = (f1 * paramPointF1.y + f3 * paramPointF2.y + paramFloat * paramPointF3.y);
     return localPointF;
   }
   
@@ -32,7 +36,7 @@ public class AnimateUtils$BezierEvaluator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.animation.AnimateUtils.BezierEvaluator
  * JD-Core Version:    0.7.0.1
  */

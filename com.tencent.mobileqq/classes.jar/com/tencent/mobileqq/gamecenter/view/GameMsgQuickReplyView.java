@@ -24,7 +24,8 @@ public class GameMsgQuickReplyView
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.getParent() != null))
+    OverScrollCallbackHorizontalListView localOverScrollCallbackHorizontalListView = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView;
+    if ((localOverScrollCallbackHorizontalListView != null) && (localOverScrollCallbackHorizontalListView.getParent() != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("GameMsgQuickReplyView", 2, "[onDestroy], remove shortcutContainer");
@@ -35,36 +36,41 @@ public class GameMsgQuickReplyView
   
   public void a(ArrayList<GameMsgQuickReplyInfo> paramArrayList)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a() == null)) {}
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie;
+    if ((localObject != null) && (((GameMsgChatPie)localObject).a != null))
     {
-      return;
-      View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a().findViewById(2131377560);
-      if (localView != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a() == null) {
+        return;
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a().findViewById(2131377004);
+      if (localObject != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("GameMsgQuickReplyView", 2, "init remove shortcutContainer");
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a().removeView(localView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a().removeView((View)localObject);
       }
       this.jdField_a_of_type_ComTencentMobileqqGamecenterAdapterGameMsgQuickReplayAdapter = new GameMsgQuickReplayAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a, paramArrayList);
       this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView = new OverScrollCallbackHorizontalListView(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setId(2131377560);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setId(2131377004);
       this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqGamecenterAdapterGameMsgQuickReplayAdapter);
       this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOnItemClickListener(new GameMsgQuickReplyView.1(this));
       this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOverScrollMode(0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setDividerWidth(ViewUtils.a(8.0F));
       this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setPadding(ViewUtils.a(14.0F), ViewUtils.a(10.0F), 0, 0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setClipToPadding(false);
-    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.getParent() != null);
-    paramArrayList = new RelativeLayout.LayoutParams(-1, ViewUtils.a(39.0F));
-    paramArrayList.addRule(2, 2131369142);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a().addView(this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView, paramArrayList);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.getParent() == null)
+      {
+        paramArrayList = new RelativeLayout.LayoutParams(-1, ViewUtils.a(39.0F));
+        paramArrayList.addRule(2, 2131368875);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a().addView(this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView, paramArrayList);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.GameMsgQuickReplyView
  * JD-Core Version:    0.7.0.1
  */

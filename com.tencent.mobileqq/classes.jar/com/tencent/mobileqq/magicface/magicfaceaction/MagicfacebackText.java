@@ -10,19 +10,25 @@ public class MagicfacebackText
   
   public String a(int paramInt, float paramFloat)
   {
-    String str = null;
-    if (this.c != null)
+    String str = this.c;
+    if (str != null)
     {
-      str = this.c.replaceFirst("%param%", "" + paramInt);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt);
+      str = str.replaceFirst("%param%", localStringBuilder.toString());
       paramFloat = new BigDecimal(paramFloat).setScale(1, 4).floatValue();
-      str = str.replaceFirst("%param%", "" + paramFloat);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramFloat);
+      return str.replaceFirst("%param%", localStringBuilder.toString());
     }
-    return str;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.magicfaceaction.MagicfacebackText
  * JD-Core Version:    0.7.0.1
  */

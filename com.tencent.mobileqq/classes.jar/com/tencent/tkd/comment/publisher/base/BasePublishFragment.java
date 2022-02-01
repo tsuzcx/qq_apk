@@ -11,11 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportDialogFragment;
 import com.tencent.tkd.comment.util.CommonUtil;
 
 public abstract class BasePublishFragment
-  extends ReportDialogFragment
+  extends DialogFragment
 {
   public static final int STATUS_HIDE_HOLDER = 0;
   public static final int STATUS_SHOW_EXPRESSION = 1;
@@ -55,12 +54,12 @@ public abstract class BasePublishFragment
   
   public Dialog onCreateDialog(Bundle paramBundle)
   {
-    paramBundle = new BasePublishFragment.1(this, getActivity(), 2131756043);
+    paramBundle = new BasePublishFragment.1(this, getActivity(), R.style.b);
     this.vRoot = LayoutInflater.from(getActivity()).inflate(getContentLayoutId(), null);
     paramBundle.setContentView(this.vRoot);
     paramBundle.getWindow().setLayout(-1, -2);
     paramBundle.getWindow().setGravity(80);
-    paramBundle.getWindow().setWindowAnimations(2131756042);
+    paramBundle.getWindow().setWindowAnimations(R.style.a);
     this.gravityCache = paramBundle.getWindow().getAttributes().gravity;
     return paramBundle;
   }
@@ -80,12 +79,11 @@ public abstract class BasePublishFragment
       paramFragmentManager.show(this);
       getDialog().show();
     }
-    for (;;)
+    else
     {
-      paramFragmentManager.commitAllowingStateLoss();
-      return;
       paramFragmentManager.add(this, paramString);
     }
+    paramFragmentManager.commitAllowingStateLoss();
   }
   
   public void unLockCurrentHeight()
@@ -95,7 +93,7 @@ public abstract class BasePublishFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.base.BasePublishFragment
  * JD-Core Version:    0.7.0.1
  */

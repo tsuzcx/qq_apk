@@ -43,16 +43,27 @@ public abstract class ImageBase
     super.onParseValueFinished();
     if ((this.mDynamicRate[0] > 0.0D) && (this.mParams != null))
     {
-      if ((this.mSizeChangeAccord != 1) || (this.mParams.mLayoutWidth <= 0)) {
-        break label64;
+      Layout.Params localParams;
+      double d1;
+      double d2;
+      if ((this.mSizeChangeAccord == 1) && (this.mParams.mLayoutWidth > 0))
+      {
+        localParams = this.mParams;
+        d1 = this.mParams.mLayoutWidth;
+        d2 = this.mDynamicRate[0];
+        Double.isNaN(d1);
+        localParams.mLayoutHeight = ((int)(d1 / d2));
+        return;
       }
-      this.mParams.mLayoutHeight = ((int)(this.mParams.mLayoutWidth / this.mDynamicRate[0]));
+      if ((this.mSizeChangeAccord == 2) && (this.mParams.mLayoutHeight > 0))
+      {
+        localParams = this.mParams;
+        d1 = this.mParams.mLayoutHeight;
+        d2 = this.mDynamicRate[0];
+        Double.isNaN(d1);
+        localParams.mLayoutWidth = ((int)(d1 * d2));
+      }
     }
-    label64:
-    while ((this.mSizeChangeAccord != 2) || (this.mParams.mLayoutHeight <= 0)) {
-      return;
-    }
-    this.mParams.mLayoutWidth = ((int)(this.mParams.mLayoutHeight * this.mDynamicRate[0]));
   }
   
   public void reset()
@@ -60,48 +71,58 @@ public abstract class ImageBase
     super.reset();
   }
   
-  public boolean setAttribute(int paramInt, Object paramObject)
+  protected boolean setAttribute(int paramInt, Object paramObject)
   {
     boolean bool2 = super.setAttribute(paramInt, paramObject);
     boolean bool1 = bool2;
-    if (!bool2) {}
-    switch (paramInt)
+    if (!bool2)
     {
-    default: 
-      bool1 = false;
-      return bool1;
-    case 23: 
+      bool1 = true;
+      if (paramInt != 23)
+      {
+        if (paramInt != 55) {
+          return false;
+        }
+        this.mSizeChangeAccord = JsonUtils.getDynamicRateSize(this.mDynamicRate, paramObject);
+        return true;
+      }
       this.mSrc = JsonUtils.getStringValue(paramObject, 0);
-      return true;
     }
-    this.mSizeChangeAccord = JsonUtils.getDynamicRateSize(this.mDynamicRate, paramObject);
-    return true;
+    return bool1;
   }
   
-  public boolean setAttribute(int paramInt, String paramString)
+  protected boolean setAttribute(int paramInt, String paramString)
   {
     boolean bool2 = super.setAttribute(paramInt, paramString);
     boolean bool1 = bool2;
     if (!bool2)
     {
       bool1 = true;
-      switch (paramInt)
+      if (paramInt != 23)
       {
-      default: 
-        bool1 = false;
+        if (paramInt != 24)
+        {
+          if (paramInt != 51) {
+            return false;
+          }
+          paramString = Utils.toInteger(paramString);
+          if (paramString != null)
+          {
+            this.mScaleType = paramString.intValue();
+            return true;
+          }
+        }
+        else
+        {
+          this.mSrc = paramString;
+          return true;
+        }
+      }
+      else {
+        this.mSrc = paramString;
       }
     }
-    do
-    {
-      return bool1;
-      this.mSrc = paramString;
-      return true;
-      this.mSrc = paramString;
-      return true;
-      paramString = Utils.toInteger(paramString);
-    } while (paramString == null);
-    this.mScaleType = paramString.intValue();
-    return true;
+    return bool1;
   }
   
   public void setBitmap(Bitmap paramBitmap)
@@ -115,7 +136,7 @@ public abstract class ImageBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.ImageBase
  * JD-Core Version:    0.7.0.1
  */

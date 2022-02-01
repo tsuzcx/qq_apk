@@ -14,7 +14,8 @@ class AdExposureChecker$6
   
   void onScrollChangedOverDuration()
   {
-    if (!AdExposureChecker.access$1300(this.this$0, (View)AdExposureChecker.access$100(this.this$0).get()))
+    AdExposureChecker localAdExposureChecker = this.this$0;
+    if (!AdExposureChecker.access$1300(localAdExposureChecker, (View)AdExposureChecker.access$100(localAdExposureChecker).get()))
     {
       AdLog.e("AdExposureChecker", "onScrollChangedOverDuration view invisible");
       AdExposureChecker.access$1400(this.this$0);

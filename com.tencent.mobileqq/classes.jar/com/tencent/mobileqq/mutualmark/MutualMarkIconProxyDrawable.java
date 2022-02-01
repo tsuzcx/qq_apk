@@ -71,8 +71,12 @@ public class MutualMarkIconProxyDrawable
       this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
       this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload(true);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkIconProxyDrawable", 2, "MutualMarkIconProxyDrawable density : " + i);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("MutualMarkIconProxyDrawable density : ");
+      paramContext.append(i);
+      QLog.i("MutualMarkIconProxyDrawable", 2, paramContext.toString());
     }
   }
   
@@ -85,21 +89,28 @@ public class MutualMarkIconProxyDrawable
     this.jdField_a_of_type_ComTencentImageURLDrawable.setTargetDensity(i);
     this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback(paramView);
     setCallback(paramView);
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkIconProxyDrawable", 2, "MutualMarkIconProxyDrawable density : " + i);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("MutualMarkIconProxyDrawable density : ");
+      paramContext.append(i);
+      QLog.i("MutualMarkIconProxyDrawable", 2, paramContext.toString());
     }
   }
   
   private Drawable a()
   {
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    Object localObject = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    if (localObject != null) {
+      return localObject;
     }
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      return this.jdField_a_of_type_ComTencentImageURLDrawable;
+    localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    if (localObject != null) {
+      return localObject;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (localObject != null) {
+      return localObject;
     }
     return null;
   }
@@ -111,9 +122,10 @@ public class MutualMarkIconProxyDrawable
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      localHandler.removeMessages(0);
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     }
     setAlpha(this.e);
@@ -121,26 +133,36 @@ public class MutualMarkIconProxyDrawable
   
   public void a(String paramString)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      a();
-    }
-    do
+    if (Build.VERSION.SDK_INT < 16)
     {
+      a();
       return;
-      if (this.jdField_a_of_type_AndroidOsHandler == null) {
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-      }
-      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-        b();
-      }
-      this.jdField_a_of_type_JavaLangString = paramString;
-    } while ((this.jdField_a_of_type_AndroidOsHandler == null) || (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)));
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!paramString.equals(this.jdField_a_of_type_JavaLangString))) {
+      b();
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    paramString = this.jdField_a_of_type_AndroidOsHandler;
+    if ((paramString != null) && (!paramString.hasMessages(0))) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentImageURLDrawable == null) || (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1);
+    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    boolean bool = true;
+    if (localURLDrawable != null)
+    {
+      if (localURLDrawable.getStatus() == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public void applyTheme(@NonNull Resources.Theme paramTheme)
@@ -156,9 +178,10 @@ public class MutualMarkIconProxyDrawable
     this.jdField_b_of_type_Int = 255;
     this.c = 0;
     this.d = 0;
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      localHandler.removeMessages(0);
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     }
     setAlpha(this.jdField_b_of_type_Int);
@@ -182,25 +205,19 @@ public class MutualMarkIconProxyDrawable
   
   public void draw(@NonNull Canvas paramCanvas)
   {
-    Rect localRect;
     if (a() != null)
     {
-      localRect = a().getBounds();
+      Rect localRect = a().getBounds();
       if ((localRect.width() > 0) && (localRect.height() > 0))
       {
-        if (Build.VERSION.SDK_INT < 21) {
-          break label79;
+        if (Build.VERSION.SDK_INT >= 21) {
+          paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.right, localRect.bottom, this.jdField_b_of_type_Int);
+        } else {
+          paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.right, localRect.bottom, this.jdField_b_of_type_Int, 31);
         }
-        paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.right, localRect.bottom, this.jdField_b_of_type_Int);
+        a().draw(paramCanvas);
+        paramCanvas.restore();
       }
-    }
-    for (;;)
-    {
-      a().draw(paramCanvas);
-      paramCanvas.restore();
-      return;
-      label79:
-      paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.right, localRect.bottom, this.jdField_b_of_type_Int, 31);
     }
   }
   
@@ -281,8 +298,14 @@ public class MutualMarkIconProxyDrawable
     if (a() != null)
     {
       int i = a().getIntrinsicHeight();
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkIconProxyDrawable", 2, "getIntrinsicHeight height : " + i + " limitHeight=" + this.jdField_a_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getIntrinsicHeight height : ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" limitHeight=");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
       }
       return this.jdField_a_of_type_Int;
     }
@@ -303,8 +326,12 @@ public class MutualMarkIconProxyDrawable
           i = j * this.jdField_a_of_type_Int / k;
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkIconProxyDrawable", 2, "getIntrinsicWidth width : " + i);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getIntrinsicWidth width : ");
+        localStringBuilder.append(i);
+        QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
       }
       return i;
     }
@@ -324,8 +351,12 @@ public class MutualMarkIconProxyDrawable
     if (a() != null)
     {
       int i = a().getMinimumHeight();
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkIconProxyDrawable", 2, "getMinimumHeight height : " + i);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getMinimumHeight height : ");
+        localStringBuilder.append(i);
+        QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
       }
       return i;
     }
@@ -337,8 +368,12 @@ public class MutualMarkIconProxyDrawable
     if (a() != null)
     {
       int i = a().getMinimumWidth();
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkIconProxyDrawable", 2, "getMinimumWidth width : " + i);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getMinimumWidth width : ");
+        localStringBuilder.append(i);
+        QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
       }
       return i;
     }
@@ -391,57 +426,52 @@ public class MutualMarkIconProxyDrawable
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       return false;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if (this.jdField_b_of_type_Int <= 0)
-      {
-        this.c = 0;
-        label50:
-        if (this.c != 0) {
-          break label170;
-        }
-        this.jdField_b_of_type_Int += 5;
-        if (this.jdField_b_of_type_Int >= 255) {
-          this.jdField_b_of_type_Int = 255;
-        }
+      if (i != 1) {
+        return true;
       }
-      for (;;)
-      {
-        setAlpha(this.jdField_b_of_type_Int);
-        invalidateSelf();
-        if (this.jdField_b_of_type_Int == 0) {
-          this.d += 1;
-        }
-        if ((this.d < 3) || (this.jdField_b_of_type_Int < this.e)) {
-          break label195;
-        }
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        break;
-        if (this.jdField_b_of_type_Int < 255) {
-          break label50;
-        }
-        this.c = 1;
-        break label50;
-        label170:
-        this.jdField_b_of_type_Int -= 5;
-        if (this.jdField_b_of_type_Int <= 0) {
-          this.jdField_b_of_type_Int = 0;
-        }
-      }
-      label195:
-      if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 20);
-      continue;
       setAlpha(102);
       invalidateSelf();
+      return true;
     }
+    i = this.jdField_b_of_type_Int;
+    if (i <= 0) {
+      this.c = 0;
+    } else if (i >= 255) {
+      this.c = 1;
+    }
+    if (this.c == 0)
+    {
+      this.jdField_b_of_type_Int += 5;
+      if (this.jdField_b_of_type_Int >= 255) {
+        this.jdField_b_of_type_Int = 255;
+      }
+    }
+    else
+    {
+      this.jdField_b_of_type_Int -= 5;
+      if (this.jdField_b_of_type_Int <= 0) {
+        this.jdField_b_of_type_Int = 0;
+      }
+    }
+    setAlpha(this.jdField_b_of_type_Int);
+    invalidateSelf();
+    if (this.jdField_b_of_type_Int == 0) {
+      this.d += 1;
+    }
+    if ((this.d >= 3) && (this.jdField_b_of_type_Int >= this.e))
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      return true;
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 20);
+    return true;
   }
   
   public void inflate(@NonNull Resources paramResources, @NonNull XmlPullParser paramXmlPullParser, @NonNull AttributeSet paramAttributeSet)
@@ -506,13 +536,14 @@ public class MutualMarkIconProxyDrawable
     Drawable localDrawable = a();
     if (localDrawable != null)
     {
-      if ((localDrawable instanceof SkinnableBitmapDrawable)) {
+      if ((localDrawable instanceof SkinnableBitmapDrawable))
+      {
         this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((SkinnableBitmapDrawable)a()).mutate2();
-      }
-      while (!(localDrawable instanceof URLDrawable)) {
         return this;
       }
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localDrawable.mutate();
+      if ((localDrawable instanceof URLDrawable)) {
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localDrawable.mutate();
+      }
       return this;
     }
     return super.mutate();
@@ -536,33 +567,40 @@ public class MutualMarkIconProxyDrawable
   {
     int k = paramURLDrawable.getIntrinsicWidth();
     int m = paramURLDrawable.getIntrinsicHeight();
-    int j = m;
-    int i = k;
+    int j = k;
+    int i = m;
     if (m > 0)
     {
-      j = m;
-      i = k;
+      j = k;
+      i = m;
       if (k > 0)
       {
-        i = k * this.jdField_a_of_type_Int / m;
-        j = this.jdField_a_of_type_Int;
+        i = this.jdField_a_of_type_Int;
+        j = k * i / m;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkIconProxyDrawable", 2, "onLoadSuccessed width : " + i + " height:" + j);
-    }
-    if ((i > 0) && (j > 0))
+    if (QLog.isColorLevel())
     {
-      setBounds(0, 0, i, j);
+      paramURLDrawable = new StringBuilder();
+      paramURLDrawable.append("onLoadSuccessed width : ");
+      paramURLDrawable.append(j);
+      paramURLDrawable.append(" height:");
+      paramURLDrawable.append(i);
+      QLog.i("MutualMarkIconProxyDrawable", 2, paramURLDrawable.toString());
+    }
+    if ((j > 0) && (i > 0))
+    {
+      setBounds(0, 0, j, i);
       invalidateSelf();
       if ((getCallback() != null) && ((getCallback() instanceof View)))
       {
         ((View)getCallback()).invalidate();
         ((View)getCallback()).requestLayout();
       }
-      if (this.jdField_a_of_type_MqqUtilWeakReference != null)
+      paramURLDrawable = this.jdField_a_of_type_MqqUtilWeakReference;
+      if (paramURLDrawable != null)
       {
-        paramURLDrawable = (MutualMarkIconProxyDrawable.LoadSuccessCallback)this.jdField_a_of_type_MqqUtilWeakReference.get();
+        paramURLDrawable = (MutualMarkIconProxyDrawable.LoadSuccessCallback)paramURLDrawable.get();
         if (paramURLDrawable != null) {
           paramURLDrawable.a();
         }
@@ -593,8 +631,12 @@ public class MutualMarkIconProxyDrawable
   
   public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkIconProxyDrawable", 2, "setBounds [left, top right, bottom] : " + new Rect(paramInt1, paramInt2, paramInt3, paramInt4));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setBounds [left, top right, bottom] : ");
+      localStringBuilder.append(new Rect(paramInt1, paramInt2, paramInt3, paramInt4));
+      QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
     }
     if (a() != null) {
       a().setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -604,8 +646,12 @@ public class MutualMarkIconProxyDrawable
   
   public void setBounds(@NonNull Rect paramRect)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkIconProxyDrawable", 2, "setBounds bounds : " + paramRect);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setBounds bounds : ");
+      localStringBuilder.append(paramRect);
+      QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
     }
     if (a() != null) {
       a().setBounds(paramRect);
@@ -718,7 +764,7 @@ public class MutualMarkIconProxyDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.MutualMarkIconProxyDrawable
  * JD-Core Version:    0.7.0.1
  */

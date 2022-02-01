@@ -18,20 +18,10 @@ public class ExtraRenderWrapper
   
   public int a(CameraFrame paramCameraFrame, RenderParams paramRenderParams)
   {
-    int j = 0;
-    int i = j;
-    if (paramRenderParams.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null)
-    {
-      i = j;
-      if (paramRenderParams.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != null)
-      {
-        i = j;
-        if (paramRenderParams.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.needHMirror) {
-          i = 1;
-        }
-      }
+    if ((paramRenderParams.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (paramRenderParams.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != null) && (paramRenderParams.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.needHMirror)) {
+      return 1;
     }
-    return i;
+    return 0;
   }
   
   public void a()
@@ -48,15 +38,13 @@ public class ExtraRenderWrapper
   
   public void a(CameraFrame paramCameraFrame, RenderParams paramRenderParams, GLTexture paramGLTexture, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender == null) {}
-    do
+    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender == null) {
+      return;
+    }
+    this.jdField_a_of_type_Int = a(paramCameraFrame, paramRenderParams);
+    this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender.a())
     {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Int = a(paramCameraFrame, paramRenderParams);
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender.a(this.jdField_a_of_type_Int);
-      } while (!this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender.a());
       if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a != null) {
         this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a.a("extraRenderIn");
       }
@@ -68,31 +56,42 @@ public class ExtraRenderWrapper
         paramGLTexture.b = paramCameraFrame.b;
         paramCameraFrame.a();
       }
-    } while (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a == null);
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a.b("extraRenderIn");
+      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a != null) {
+        this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a.b("extraRenderIn");
+      }
+    }
   }
   
   public void a(GLTexture paramGLTexture, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
   {
-    int j = 0;
     if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender == null) {
       return;
     }
+    int j = 0;
+    int i;
     if ((!paramBoolean1) && (!paramBoolean2))
     {
       i = j;
-      label23:
-      if (i == 0) {
-        break label201;
+    }
+    else
+    {
+      i = j;
+      if (paramBoolean1)
+      {
+        i = j;
+        if (paramBoolean2) {
+          i = 1;
+        }
       }
     }
-    label201:
-    for (int i = this.b;; i = this.jdField_a_of_type_Int)
+    if (i != 0) {
+      i = this.b;
+    } else {
+      i = this.jdField_a_of_type_Int;
+    }
+    this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender.a(i);
+    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender.a())
     {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender.a(i);
-      if (!this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender.a()) {
-        break;
-      }
       if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a != null) {
         this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a.a("extraRenderOut");
       }
@@ -104,48 +103,25 @@ public class ExtraRenderWrapper
         paramGLTexture.b = localGLTexture.b;
         localGLTexture.a();
       }
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a == null) {
-        break;
+      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a != null) {
+        this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a.b("extraRenderOut");
       }
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a.b("extraRenderOut");
-      return;
-      if ((paramBoolean1) && (paramBoolean2))
-      {
-        i = 1;
-        break label23;
-      }
-      if (!paramBoolean1)
-      {
-        i = j;
-        if (paramBoolean2) {
-          break label23;
-        }
-      }
-      i = j;
-      if (!paramBoolean1) {
-        break label23;
-      }
-      i = j;
-      if (paramBoolean2) {
-        break label23;
-      }
-      i = j;
-      break label23;
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender != null)
+    ExtraTextureRender localExtraTextureRender = this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender;
+    if (localExtraTextureRender != null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender.a();
+      localExtraTextureRender.a();
       this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraTextureRender = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.ExtraRenderWrapper
  * JD-Core Version:    0.7.0.1
  */

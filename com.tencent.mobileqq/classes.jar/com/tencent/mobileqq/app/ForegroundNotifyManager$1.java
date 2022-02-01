@@ -25,29 +25,22 @@ class ForegroundNotifyManager$1
       ((NewMsgNotificationManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
       localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
-      {
-        bool = true;
-        ((FormSwitchItem)localObject).setChecked(bool);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager));
-      }
+      ((FormSwitchItem)localObject).setChecked(((FormSwitchItem)localObject).a() ^ true);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager));
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
       if (SettingsConfigHelper.a(ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager))) {
         ReportClickEventHelper.a(ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager), "0X800B845", paramBoolean);
       }
       SettingCloneUtil.writeValue(ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager).getApp(), ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager).getCurrentUin(), null, "top_msg_notification_key", paramBoolean);
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ForegroundNotifyManager.1
  * JD-Core Version:    0.7.0.1
  */

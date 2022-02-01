@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
-import android.os.Environment;
+import android.os.Build;
 import android.os.StatFs;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedReader;
@@ -24,14 +24,20 @@ public class c
   
   public static int a(byte[] paramArrayOfByte, int paramInt)
   {
-    return paramArrayOfByte[(paramInt + 3)] & 0xFF | paramArrayOfByte[(paramInt + 2)] << 8 & 0xFF00 | paramArrayOfByte[(paramInt + 1)] << 16 & 0xFF0000 | paramArrayOfByte[(paramInt + 0)] << 24 & 0xFF000000;
+    int i = paramArrayOfByte[(paramInt + 3)];
+    int j = paramArrayOfByte[(paramInt + 2)];
+    int k = paramArrayOfByte[(paramInt + 1)];
+    return paramArrayOfByte[(paramInt + 0)] << 24 & 0xFF000000 | i & 0xFF | j << 8 & 0xFF00 | k << 16 & 0xFF0000;
   }
   
   public static File a(String paramString)
   {
     try
     {
-      paramString = new File(paramString + "/load/");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("/load/");
+      paramString = new File(localStringBuilder.toString());
       if (!paramString.exists()) {
         paramString.mkdirs();
       }
@@ -44,79 +50,217 @@ public class c
     }
   }
   
+  /* Error */
   public static String a(Context paramContext)
   {
-    Object localObject1 = null;
-    for (;;)
-    {
-      try
-      {
-        localObject2 = paramContext.getFilesDir();
-        if (localObject2 != null) {
-          continue;
-        }
-        paramContext = paramContext.getCacheDir();
-        if (paramContext != null) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          break label293;
-        }
-        QLog.w("MSF.C.CoreUtil", 2, "load cache dir is null");
-        paramContext = null;
-        if (paramContext != null) {
-          continue;
-        }
-        localObject2 = Environment.getExternalStorageDirectory().getPath() + "/MSF/files";
-        File localFile = new File((String)localObject2);
-        paramContext = (Context)localObject2;
-        if (!localFile.exists())
-        {
-          localFile.mkdirs();
-          paramContext = (Context)localObject2;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.CoreUtil", 2, "load save root dir is " + paramContext);
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        Object localObject2;
-        int i;
-        paramContext = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("MSF.C.CoreUtil", 2, "getSaveRootPath error ", localThrowable);
-        paramContext = localObject1;
-        continue;
-      }
-      finally {}
-      return paramContext;
-      localObject2 = paramContext.getAbsolutePath();
-      i = ((String)localObject2).lastIndexOf('/');
-      paramContext = (Context)localObject2;
-      if (i != -1)
-      {
-        paramContext = ((String)localObject2).substring(0, i);
-        paramContext = paramContext + "/files/";
-        continue;
-        paramContext = ((File)localObject2).getAbsolutePath();
-        continue;
-        localObject2 = new File(paramContext);
-        if (!((File)localObject2).exists()) {
-          ((File)localObject2).mkdirs();
-        }
-        if ((!((File)localObject2).exists()) || (!((File)localObject2).canWrite()))
-        {
-          paramContext = Environment.getExternalStorageDirectory().getPath() + "/MSF/files";
-          new File(paramContext).mkdirs();
-          continue;
-          label293:
-          paramContext = null;
-        }
-      }
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: aload_0
+    //   4: invokevirtual 56	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   7: astore_2
+    //   8: aload_2
+    //   9: ifnonnull +84 -> 93
+    //   12: aload_0
+    //   13: invokevirtual 59	android/content/Context:getCacheDir	()Ljava/io/File;
+    //   16: astore_0
+    //   17: aload_0
+    //   18: ifnonnull +20 -> 38
+    //   21: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   24: ifeq +287 -> 311
+    //   27: ldc 11
+    //   29: iconst_2
+    //   30: ldc 66
+    //   32: invokestatic 70	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: goto +276 -> 311
+    //   38: aload_0
+    //   39: invokevirtual 73	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   42: astore_2
+    //   43: aload_2
+    //   44: bipush 47
+    //   46: invokevirtual 79	java/lang/String:lastIndexOf	(I)I
+    //   49: istore_1
+    //   50: aload_2
+    //   51: astore_0
+    //   52: iload_1
+    //   53: iconst_m1
+    //   54: if_icmpeq +44 -> 98
+    //   57: aload_2
+    //   58: iconst_0
+    //   59: iload_1
+    //   60: invokevirtual 83	java/lang/String:substring	(II)Ljava/lang/String;
+    //   63: astore_0
+    //   64: new 24	java/lang/StringBuilder
+    //   67: dup
+    //   68: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   71: astore_2
+    //   72: aload_2
+    //   73: aload_0
+    //   74: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: pop
+    //   78: aload_2
+    //   79: ldc 85
+    //   81: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: pop
+    //   85: aload_2
+    //   86: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   89: astore_0
+    //   90: goto +8 -> 98
+    //   93: aload_2
+    //   94: invokevirtual 73	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   97: astore_0
+    //   98: aload_0
+    //   99: ifnonnull +62 -> 161
+    //   102: new 24	java/lang/StringBuilder
+    //   105: dup
+    //   106: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   109: astore_0
+    //   110: aload_0
+    //   111: invokestatic 90	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   114: invokevirtual 93	java/io/File:getPath	()Ljava/lang/String;
+    //   117: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: pop
+    //   121: aload_0
+    //   122: ldc 95
+    //   124: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: pop
+    //   128: aload_0
+    //   129: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   132: astore_2
+    //   133: new 33	java/io/File
+    //   136: dup
+    //   137: aload_2
+    //   138: invokespecial 40	java/io/File:<init>	(Ljava/lang/String;)V
+    //   141: astore_3
+    //   142: aload_2
+    //   143: astore_0
+    //   144: aload_3
+    //   145: invokevirtual 44	java/io/File:exists	()Z
+    //   148: ifne +91 -> 239
+    //   151: aload_3
+    //   152: invokevirtual 47	java/io/File:mkdirs	()Z
+    //   155: pop
+    //   156: aload_2
+    //   157: astore_0
+    //   158: goto +81 -> 239
+    //   161: new 33	java/io/File
+    //   164: dup
+    //   165: aload_0
+    //   166: invokespecial 40	java/io/File:<init>	(Ljava/lang/String;)V
+    //   169: astore_2
+    //   170: aload_2
+    //   171: invokevirtual 44	java/io/File:exists	()Z
+    //   174: ifne +8 -> 182
+    //   177: aload_2
+    //   178: invokevirtual 47	java/io/File:mkdirs	()Z
+    //   181: pop
+    //   182: aload_2
+    //   183: invokevirtual 44	java/io/File:exists	()Z
+    //   186: ifeq +10 -> 196
+    //   189: aload_2
+    //   190: invokevirtual 98	java/io/File:canWrite	()Z
+    //   193: ifne +46 -> 239
+    //   196: new 24	java/lang/StringBuilder
+    //   199: dup
+    //   200: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   203: astore_0
+    //   204: aload_0
+    //   205: invokestatic 90	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   208: invokevirtual 93	java/io/File:getPath	()Ljava/lang/String;
+    //   211: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: pop
+    //   215: aload_0
+    //   216: ldc 95
+    //   218: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: pop
+    //   222: aload_0
+    //   223: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   226: astore_0
+    //   227: new 33	java/io/File
+    //   230: dup
+    //   231: aload_0
+    //   232: invokespecial 40	java/io/File:<init>	(Ljava/lang/String;)V
+    //   235: invokevirtual 47	java/io/File:mkdirs	()Z
+    //   238: pop
+    //   239: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   242: ifeq +34 -> 276
+    //   245: new 24	java/lang/StringBuilder
+    //   248: dup
+    //   249: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   252: astore_2
+    //   253: aload_2
+    //   254: ldc 100
+    //   256: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: pop
+    //   260: aload_2
+    //   261: aload_0
+    //   262: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   265: pop
+    //   266: ldc 11
+    //   268: iconst_2
+    //   269: aload_2
+    //   270: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   273: invokestatic 103	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   276: ldc 2
+    //   278: monitorexit
+    //   279: aload_0
+    //   280: areturn
+    //   281: astore_0
+    //   282: goto +24 -> 306
+    //   285: astore_0
+    //   286: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   289: ifeq +12 -> 301
+    //   292: ldc 11
+    //   294: iconst_2
+    //   295: ldc 105
+    //   297: aload_0
+    //   298: invokestatic 108	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   301: ldc 2
+    //   303: monitorexit
+    //   304: aconst_null
+    //   305: areturn
+    //   306: ldc 2
+    //   308: monitorexit
+    //   309: aload_0
+    //   310: athrow
+    //   311: aconst_null
+    //   312: astore_0
+    //   313: goto -215 -> 98
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	316	0	paramContext	Context
+    //   49	11	1	i	int
+    //   7	263	2	localObject	Object
+    //   141	11	3	localFile	File
+    // Exception table:
+    //   from	to	target	type
+    //   3	8	281	finally
+    //   12	17	281	finally
+    //   21	35	281	finally
+    //   38	50	281	finally
+    //   57	90	281	finally
+    //   93	98	281	finally
+    //   102	142	281	finally
+    //   144	156	281	finally
+    //   161	182	281	finally
+    //   182	189	281	finally
+    //   189	196	281	finally
+    //   196	239	281	finally
+    //   239	276	281	finally
+    //   286	301	281	finally
+    //   3	8	285	java/lang/Throwable
+    //   12	17	285	java/lang/Throwable
+    //   21	35	285	java/lang/Throwable
+    //   38	50	285	java/lang/Throwable
+    //   57	90	285	java/lang/Throwable
+    //   93	98	285	java/lang/Throwable
+    //   102	142	285	java/lang/Throwable
+    //   144	156	285	java/lang/Throwable
+    //   161	182	285	java/lang/Throwable
+    //   182	189	285	java/lang/Throwable
+    //   189	196	285	java/lang/Throwable
+    //   196	239	285	java/lang/Throwable
+    //   239	276	285	java/lang/Throwable
   }
   
   public static String a(InputStream paramInputStream)
@@ -138,176 +282,209 @@ public class c
   public static void a(Context paramContext, int paramInt)
   {
     // Byte code:
-    //   0: new 26	java/io/File
+    //   0: new 33	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokestatic 135	com/tencent/mobileqq/msf/core/c:h	(Landroid/content/Context;)Ljava/lang/String;
-    //   8: invokespecial 42	java/io/File:<init>	(Ljava/lang/String;)V
-    //   11: astore_0
-    //   12: aload_0
-    //   13: invokevirtual 46	java/io/File:exists	()Z
+    //   5: invokestatic 133	com/tencent/mobileqq/msf/core/c:h	(Landroid/content/Context;)Ljava/lang/String;
+    //   8: invokespecial 40	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: astore_3
+    //   12: aload_3
+    //   13: invokevirtual 44	java/io/File:exists	()Z
     //   16: ifeq +8 -> 24
-    //   19: aload_0
-    //   20: invokevirtual 138	java/io/File:delete	()Z
+    //   19: aload_3
+    //   20: invokevirtual 136	java/io/File:delete	()Z
     //   23: pop
-    //   24: aload_0
-    //   25: invokevirtual 141	java/io/File:createNewFile	()Z
-    //   28: pop
-    //   29: new 143	java/io/FileOutputStream
-    //   32: dup
-    //   33: aload_0
-    //   34: invokespecial 146	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   37: astore_2
-    //   38: aload_2
-    //   39: astore_0
-    //   40: aload_2
-    //   41: iload_1
-    //   42: invokestatic 149	com/tencent/mobileqq/msf/core/c:a	(I)[B
-    //   45: invokevirtual 153	java/io/FileOutputStream:write	([B)V
-    //   48: aload_2
-    //   49: ifnull +7 -> 56
-    //   52: aload_2
-    //   53: invokevirtual 156	java/io/FileOutputStream:close	()V
-    //   56: return
-    //   57: astore_3
-    //   58: aconst_null
-    //   59: astore_2
-    //   60: aload_2
-    //   61: astore_0
-    //   62: aload_3
-    //   63: invokevirtual 159	java/lang/Exception:printStackTrace	()V
-    //   66: aload_2
-    //   67: ifnull -11 -> 56
-    //   70: aload_2
-    //   71: invokevirtual 156	java/io/FileOutputStream:close	()V
-    //   74: return
-    //   75: astore_0
-    //   76: aload_0
-    //   77: invokevirtual 160	java/io/IOException:printStackTrace	()V
-    //   80: return
-    //   81: astore_2
-    //   82: aconst_null
-    //   83: astore_0
-    //   84: aload_0
-    //   85: ifnull +7 -> 92
-    //   88: aload_0
-    //   89: invokevirtual 156	java/io/FileOutputStream:close	()V
-    //   92: aload_2
-    //   93: athrow
-    //   94: astore_0
-    //   95: aload_0
-    //   96: invokevirtual 160	java/io/IOException:printStackTrace	()V
-    //   99: goto -7 -> 92
-    //   102: astore_0
-    //   103: goto -27 -> 76
-    //   106: astore_2
-    //   107: goto -23 -> 84
-    //   110: astore_3
-    //   111: goto -51 -> 60
+    //   24: aconst_null
+    //   25: astore 4
+    //   27: aconst_null
+    //   28: astore_2
+    //   29: aload_2
+    //   30: astore_0
+    //   31: aload_3
+    //   32: invokevirtual 139	java/io/File:createNewFile	()Z
+    //   35: pop
+    //   36: aload_2
+    //   37: astore_0
+    //   38: new 141	java/io/FileOutputStream
+    //   41: dup
+    //   42: aload_3
+    //   43: invokespecial 144	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   46: astore_2
+    //   47: aload_2
+    //   48: iload_1
+    //   49: invokestatic 147	com/tencent/mobileqq/msf/core/c:a	(I)[B
+    //   52: invokevirtual 151	java/io/FileOutputStream:write	([B)V
+    //   55: aload_2
+    //   56: invokevirtual 154	java/io/FileOutputStream:close	()V
+    //   59: return
+    //   60: astore_0
+    //   61: aload_0
+    //   62: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   65: return
+    //   66: astore_0
+    //   67: goto +36 -> 103
+    //   70: astore_0
+    //   71: aload_0
+    //   72: astore_3
+    //   73: goto +15 -> 88
+    //   76: astore_3
+    //   77: aload_0
+    //   78: astore_2
+    //   79: aload_3
+    //   80: astore_0
+    //   81: goto +22 -> 103
+    //   84: astore_3
+    //   85: aload 4
+    //   87: astore_2
+    //   88: aload_2
+    //   89: astore_0
+    //   90: aload_3
+    //   91: invokevirtual 158	java/lang/Exception:printStackTrace	()V
+    //   94: aload_2
+    //   95: ifnull +7 -> 102
+    //   98: aload_2
+    //   99: invokevirtual 154	java/io/FileOutputStream:close	()V
+    //   102: return
+    //   103: aload_2
+    //   104: ifnull +15 -> 119
+    //   107: aload_2
+    //   108: invokevirtual 154	java/io/FileOutputStream:close	()V
+    //   111: goto +8 -> 119
+    //   114: astore_2
+    //   115: aload_2
+    //   116: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   119: aload_0
+    //   120: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	114	0	paramContext	Context
-    //   0	114	1	paramInt	int
-    //   37	34	2	localFileOutputStream	FileOutputStream
-    //   81	12	2	localObject1	Object
-    //   106	1	2	localObject2	Object
-    //   57	6	3	localException1	Exception
-    //   110	1	3	localException2	Exception
+    //   0	121	0	paramContext	Context
+    //   0	121	1	paramInt	int
+    //   28	80	2	localObject1	Object
+    //   114	2	2	localIOException	IOException
+    //   11	62	3	localObject2	Object
+    //   76	4	3	localObject3	Object
+    //   84	7	3	localException	Exception
+    //   25	61	4	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   24	38	57	java/lang/Exception
-    //   70	74	75	java/io/IOException
-    //   24	38	81	finally
-    //   88	92	94	java/io/IOException
-    //   52	56	102	java/io/IOException
-    //   40	48	106	finally
-    //   62	66	106	finally
-    //   40	48	110	java/lang/Exception
+    //   55	59	60	java/io/IOException
+    //   98	102	60	java/io/IOException
+    //   47	55	66	finally
+    //   47	55	70	java/lang/Exception
+    //   31	36	76	finally
+    //   38	47	76	finally
+    //   90	94	76	finally
+    //   31	36	84	java/lang/Exception
+    //   38	47	84	java/lang/Exception
+    //   107	111	114	java/io/IOException
   }
   
   private static void a(Context paramContext, String paramString, int paramInt, String[] paramArrayOfString)
   {
     QLog.d("MSF.C.CoreUtil", 1, "MsfCore init ->realCopySoLib begin.");
-    String[] arrayOfString = paramContext.getAssets().list("lib/" + paramString);
-    String str1 = d(paramContext);
-    Object localObject;
-    if (arrayOfString != null)
+    Object localObject1 = paramContext.getAssets();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("lib/");
+    ((StringBuilder)localObject2).append(paramString);
+    localObject1 = ((AssetManager)localObject1).list(((StringBuilder)localObject2).toString());
+    localObject2 = d(paramContext);
+    StringBuilder localStringBuilder1;
+    if (localObject1 != null)
     {
-      localObject = new StringBuilder("realCopySoLib list assetsFileNames: ");
-      j = arrayOfString.length;
+      localStringBuilder1 = new StringBuilder("realCopySoLib list assetsFileNames: ");
+      j = localObject1.length;
       i = 0;
       while (i < j)
       {
-        ((StringBuilder)localObject).append(arrayOfString[i]).append(" ");
+        localStringBuilder1.append(localObject1[i]);
+        localStringBuilder1.append(" ");
         i += 1;
       }
-      QLog.i("MSF.C.CoreUtil", 1, ((StringBuilder)localObject).toString());
+      QLog.i("MSF.C.CoreUtil", 1, localStringBuilder1.toString());
     }
-    int i2 = arrayOfString.length;
-    int i = 0;
-    int k = 0;
+    int i2 = localObject1.length;
     int j = 0;
-    if (i < i2)
+    int k = 0;
+    int n;
+    for (int i = 0; j < i2; i = n)
     {
-      localObject = arrayOfString[i];
+      localStringBuilder1 = localObject1[j];
       int i3 = paramArrayOfString.length;
       int i1 = 0;
+      int m;
       for (;;)
       {
-        int m = k;
-        int n = j;
-        if (i1 < i3)
-        {
-          if (!paramArrayOfString[i1].equals(localObject)) {
-            break label410;
-          }
-          String str2 = "lib/" + paramString + "/" + (String)localObject;
-          File localFile = new File(str1 + (String)localObject);
-          if ((localFile.exists()) && (!localFile.delete())) {
-            QLog.w("MSF.C.CoreUtil", 1, "realCopySoLib delete " + localFile.getName() + " failed.");
-          }
-          boolean bool = a(str2, str1, paramContext);
-          QLog.i("MSF.C.CoreUtil", 1, "realCopySoLib " + (String)localObject + " size=" + new File(new StringBuilder().append(str1).append((String)localObject).toString()).length() + " " + bool);
-          if (bool) {
-            break label397;
-          }
-          n = j + 1;
-          m = k;
-        }
-        for (;;)
-        {
-          i += 1;
-          k = m;
-          j = n;
+        m = k;
+        n = i;
+        if (i1 >= i3) {
           break;
-          label397:
-          m = k + 1;
-          n = j;
         }
-        label410:
+        if (paramArrayOfString[i1].equals(localStringBuilder1))
+        {
+          Object localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("lib/");
+          ((StringBuilder)localObject3).append(paramString);
+          ((StringBuilder)localObject3).append("/");
+          ((StringBuilder)localObject3).append(localStringBuilder1);
+          localObject3 = ((StringBuilder)localObject3).toString();
+          Object localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append((String)localObject2);
+          ((StringBuilder)localObject4).append(localStringBuilder1);
+          localObject4 = new File(((StringBuilder)localObject4).toString());
+          if ((((File)localObject4).exists()) && (!((File)localObject4).delete()))
+          {
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("realCopySoLib delete ");
+            localStringBuilder2.append(((File)localObject4).getName());
+            localStringBuilder2.append(" failed.");
+            QLog.w("MSF.C.CoreUtil", 1, localStringBuilder2.toString());
+          }
+          boolean bool = a((String)localObject3, (String)localObject2, paramContext);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("realCopySoLib ");
+          ((StringBuilder)localObject3).append(localStringBuilder1);
+          ((StringBuilder)localObject3).append(" size=");
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append((String)localObject2);
+          ((StringBuilder)localObject4).append(localStringBuilder1);
+          ((StringBuilder)localObject3).append(new File(((StringBuilder)localObject4).toString()).length());
+          ((StringBuilder)localObject3).append(" ");
+          ((StringBuilder)localObject3).append(bool);
+          QLog.i("MSF.C.CoreUtil", 1, ((StringBuilder)localObject3).toString());
+          if (!bool)
+          {
+            m = k + 1;
+            n = i;
+            break;
+          }
+          n = i + 1;
+          m = k;
+          break;
+        }
         i1 += 1;
       }
+      j += 1;
+      k = m;
     }
-    if (j == 0)
+    if (k == 0)
     {
       QLog.i("MSF.C.CoreUtil", 1, "realCopySoLib update versionCode and jniFile");
       a(paramContext, paramInt);
       j(paramContext);
     }
-    QLog.d("MSF.C.CoreUtil", 1, "MsfCore init ->realCopySoLib end. copyFailCount:" + j + " copySuccCount=" + k);
+    paramContext = new StringBuilder();
+    paramContext.append("MsfCore init ->realCopySoLib end. copyFailCount:");
+    paramContext.append(k);
+    paramContext.append(" copySuccCount=");
+    paramContext.append(i);
+    QLog.d("MSF.C.CoreUtil", 1, paramContext.toString());
   }
   
   public static void a(Context paramContext, String paramString, boolean paramBoolean, int paramInt, String[] paramArrayOfString)
   {
     if (paramBoolean) {
       a(paramContext, paramString, paramInt, paramArrayOfString);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.CoreUtil", 2, "MsfCore init ->copySoLib end.");
-      }
-      return;
+    } else {
       try
       {
         String[] arrayOfString1 = m(paramContext);
@@ -318,109 +495,129 @@ public class c
       }
       catch (Exception paramContext)
       {
-        QLog.w("MSF.C.CoreUtil", 1, "check package jni id error " + paramContext);
+        paramString = new StringBuilder();
+        paramString.append("check package jni id error ");
+        paramString.append(paramContext);
+        QLog.w("MSF.C.CoreUtil", 1, paramString.toString());
       }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.CoreUtil", 2, "MsfCore init ->copySoLib end.");
     }
   }
   
   public static boolean a()
   {
-    System.out.println("bRet=" + false);
+    PrintStream localPrintStream = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bRet=");
+    localStringBuilder.append(false);
+    localPrintStream.println(localStringBuilder.toString());
     return false;
   }
   
   public static boolean a(String paramString, Context paramContext)
   {
-    boolean bool2;
-    if (paramContext == null)
+    if (paramContext == null) {
+      return false;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(d(paramContext));
+    ((StringBuilder)localObject).append("lib");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(".so");
+    File localFile = new File(((StringBuilder)localObject).toString());
+    localObject = localFile;
+    if (!localFile.exists())
     {
-      bool2 = false;
-      return bool2;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext.getFilesDir().getParent());
+      ((StringBuilder)localObject).append("/lib/lib");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(".so");
+      localObject = new File(((StringBuilder)localObject).toString());
     }
-    File localFile2 = new File(d(paramContext) + "lib" + paramString + ".so");
-    File localFile1 = localFile2;
-    if (!localFile2.exists()) {
-      localFile1 = new File(paramContext.getFilesDir().getParent() + "/lib/lib" + paramString + ".so");
-    }
-    if (localFile1.exists()) {}
-    for (;;)
+    if (((File)localObject).exists()) {}
+    try
     {
-      try
-      {
-        System.load(localFile1.getAbsolutePath());
-        boolean bool1 = true;
-        bool2 = bool1;
-        if (bool1) {
-          break;
-        }
-        bool1 = false;
-      }
-      catch (UnsatisfiedLinkError paramContext)
-      {
-        try
-        {
-          System.loadLibrary(paramString);
-          return true;
-        }
-        catch (UnsatisfiedLinkError paramContext)
-        {
-          if (!QLog.isColorLevel()) {
-            break label212;
-          }
-          QLog.d("MSF.C.CoreUtil", 2, "cannot load library " + paramString);
-        }
-        paramContext = paramContext;
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.CoreUtil", 2, "cannot load library " + localFile1.getAbsolutePath());
-        }
-      }
+      System.load(((File)localObject).getAbsolutePath());
+      bool = true;
     }
-    label212:
+    catch (UnsatisfiedLinkError paramContext)
+    {
+      boolean bool;
+      label142:
+      break label142;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("cannot load library ");
+      paramContext.append(((File)localObject).getAbsolutePath());
+      QLog.d("MSF.C.CoreUtil", 2, paramContext.toString());
+    }
+    bool = false;
+    if (!bool) {}
+    try
+    {
+      System.loadLibrary(paramString);
+      return true;
+    }
+    catch (UnsatisfiedLinkError paramContext)
+    {
+      label195:
+      break label195;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("cannot load library ");
+      paramContext.append(paramString);
+      QLog.d("MSF.C.CoreUtil", 2, paramContext.toString());
+    }
     return false;
+    return bool;
   }
   
   private static boolean a(String paramString1, String paramString2, Context paramContext)
   {
-    localObject = null;
     boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramContext != null)
-    {
-      bool1 = bool2;
-      if (paramString1 == null) {}
-    }
+    if ((paramContext != null) && (paramString1 != null)) {}
     for (;;)
     {
       String str;
       int i;
+      StringBuilder localStringBuilder;
       try
       {
-        bool1 = paramString1.contains(".so");
-        if (!bool1)
+        if (paramString1.contains(".so"))
         {
-          bool1 = bool2;
-          return bool1;
-        }
-        if (paramString2 != null)
-        {
-          str = paramString2;
-          if (paramString2.trim().length() != 0) {}
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("MSF.C.CoreUtil", 2, "not define lib out path");
+          if (paramString2 != null)
+          {
+            str = paramString2;
+            if (paramString2.trim().length() != 0) {}
           }
-          str = paramContext.getFilesDir().getAbsolutePath();
-        }
-        new File(str).mkdirs();
-        i = paramString1.lastIndexOf('/');
-        if (i >= 0)
-        {
+          else
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("MSF.C.CoreUtil", 2, "not define lib out path");
+            }
+            str = paramContext.getFilesDir().getAbsolutePath();
+          }
+          new File(str).mkdirs();
+          i = paramString1.lastIndexOf('/');
+          if (i < 0) {
+            break label352;
+          }
           paramString2 = paramString1.substring(i + 1);
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.CoreUtil", 2, "copy lib:" + paramString1);
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("copy lib:");
+            localStringBuilder.append(paramString1);
+            QLog.d("MSF.C.CoreUtil", 2, localStringBuilder.toString());
           }
+          localStringBuilder = null;
         }
       }
       finally {}
@@ -430,63 +627,75 @@ public class c
       }
       catch (Exception paramString1)
       {
-        paramString1 = null;
-        paramString2 = localObject;
         continue;
       }
       try
       {
-        paramString2 = new File(str + "/" + paramString2);
+        paramContext = new StringBuilder();
+        paramContext.append(str);
+        paramContext.append("/");
+        paramContext.append(paramString2);
+        paramString2 = new File(paramContext.toString());
         if (paramString2.exists()) {
           paramString2.delete();
         }
         paramString2.createNewFile();
         paramString2 = new FileOutputStream(paramString2);
-        try
-        {
-          paramContext = new byte[4096];
-          if (paramString1.available() > 0)
-          {
-            i = paramString1.read(paramContext);
-            if (i > 0)
-            {
-              paramString2.write(paramContext, 0, i);
-              continue;
-              if (paramString2 == null) {}
-            }
-          }
-        }
-        catch (Exception paramContext) {}
       }
       catch (Exception paramString2)
       {
-        paramString2 = localObject;
         continue;
       }
       try
       {
-        paramString2.close();
-        bool1 = bool2;
-        if (paramString1 == null) {
-          continue;
-        }
-        try
+        paramContext = new byte[4096];
+        if (paramString1.available() > 0)
         {
-          paramString1.close();
-          bool1 = bool2;
+          i = paramString1.read(paramContext);
+          if (i > 0)
+          {
+            paramString2.write(paramContext, 0, i);
+            continue;
+          }
         }
-        catch (IOException paramString1)
-        {
-          bool1 = bool2;
-        }
-        continue;
-        paramString2 = paramString1;
-        continue;
         paramString2.close();
         paramString1.close();
         bool1 = true;
       }
-      catch (IOException paramString2) {}
+      catch (Exception paramContext)
+      {
+        continue;
+      }
+      continue;
+      paramString2 = localStringBuilder;
+      continue;
+      paramString1 = null;
+      paramString2 = localStringBuilder;
+      if (paramString2 != null) {}
+      try
+      {
+        paramString2.close();
+      }
+      catch (IOException paramString2)
+      {
+        continue;
+      }
+      boolean bool1 = bool2;
+      if (paramString1 != null) {}
+      try
+      {
+        paramString1.close();
+        bool1 = bool2;
+      }
+      catch (IOException paramString1)
+      {
+        bool1 = bool2;
+        continue;
+      }
+      return bool1;
+      return false;
+      label352:
+      paramString2 = paramString1;
     }
   }
   
@@ -499,7 +708,10 @@ public class c
   {
     try
     {
-      paramString = new File(paramString + "/cacheTemp/");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("/cacheTemp/");
+      paramString = new File(localStringBuilder.toString());
       if (!paramString.exists()) {
         paramString.mkdirs();
       }
@@ -512,150 +724,82 @@ public class c
     }
   }
   
-  /* Error */
   public static String b(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: invokevirtual 58	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   7: invokevirtual 90	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   10: astore_1
-    //   11: aload_1
-    //   12: ifnonnull +25 -> 37
-    //   15: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   18: ifeq +12 -> 30
-    //   21: ldc 11
-    //   23: iconst_2
-    //   24: ldc_w 314
-    //   27: invokestatic 72	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   30: aconst_null
-    //   31: astore_0
-    //   32: ldc 2
-    //   34: monitorexit
-    //   35: aload_0
-    //   36: areturn
-    //   37: new 26	java/io/File
-    //   40: dup
-    //   41: aload_1
-    //   42: invokespecial 42	java/io/File:<init>	(Ljava/lang/String;)V
-    //   45: astore_2
-    //   46: aload_1
-    //   47: astore_0
-    //   48: aload_2
-    //   49: invokevirtual 46	java/io/File:exists	()Z
-    //   52: ifne -20 -> 32
-    //   55: aload_2
-    //   56: invokevirtual 49	java/io/File:mkdirs	()Z
-    //   59: pop
-    //   60: aload_1
-    //   61: astore_0
-    //   62: goto -30 -> 32
-    //   65: astore_0
-    //   66: ldc 2
-    //   68: monitorexit
-    //   69: aload_0
-    //   70: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	71	0	paramContext	Context
-    //   10	51	1	str	String
-    //   45	11	2	localFile	File
-    // Exception table:
-    //   from	to	target	type
-    //   3	11	65	finally
-    //   15	30	65	finally
-    //   37	46	65	finally
-    //   48	60	65	finally
+    try
+    {
+      paramContext = paramContext.getFilesDir().getAbsolutePath();
+      if (paramContext == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("MSF.C.CoreUtil", 2, "getFilePath dir is null");
+        }
+        return null;
+      }
+      File localFile = new File(paramContext);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      return paramContext;
+    }
+    finally {}
   }
   
-  /* Error */
   public static String c(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 320	android/os/Build:CPU_ABI	Ljava/lang/String;
-    //   6: astore_0
-    //   7: aload_0
-    //   8: ifnull +22 -> 30
-    //   11: aload_0
-    //   12: ldc_w 322
-    //   15: invokevirtual 284	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   18: ifeq +12 -> 30
-    //   21: ldc_w 322
-    //   24: astore_0
-    //   25: ldc 2
-    //   27: monitorexit
-    //   28: aload_0
-    //   29: areturn
-    //   30: aload_0
-    //   31: ifnull +20 -> 51
-    //   34: aload_0
-    //   35: ldc_w 324
-    //   38: invokevirtual 284	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   41: ifeq +10 -> 51
-    //   44: ldc_w 326
-    //   47: astore_0
-    //   48: goto -23 -> 25
-    //   51: ldc_w 328
-    //   54: astore_0
-    //   55: goto -30 -> 25
-    //   58: astore_0
-    //   59: ldc 2
-    //   61: monitorexit
-    //   62: aload_0
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	64	0	paramContext	Context
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	58	finally
-    //   11	21	58	finally
-    //   34	44	58	finally
+    try
+    {
+      paramContext = Build.CPU_ABI;
+      if ((paramContext != null) && (paramContext.contains("x86"))) {
+        return "x86";
+      }
+      if ((paramContext != null) && (paramContext.contains("mip"))) {
+        return "mips";
+      }
+      return "armeabi";
+    }
+    finally {}
   }
   
   public static String d(Context paramContext)
   {
-    return paramContext.getFilesDir().getParent() + "/txlib/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getFilesDir().getParent());
+    localStringBuilder.append("/txlib/");
+    return localStringBuilder.toString();
   }
   
   public static int e(Context paramContext)
   {
-    PackageManager localPackageManager;
-    if ((a == -1) && (paramContext != null)) {
-      localPackageManager = paramContext.getPackageManager();
-    }
-    try
+    if ((a == -1) && (paramContext != null))
     {
-      a = localPackageManager.getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      return a;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
+      PackageManager localPackageManager = paramContext.getPackageManager();
+      try
+      {
+        a = localPackageManager.getPackageInfo(paramContext.getPackageName(), 0).versionCode;
+      }
+      catch (Exception paramContext)
       {
         paramContext.printStackTrace();
       }
     }
+    return a;
   }
   
   public static String f(Context paramContext)
   {
-    Object localObject = "";
-    if (paramContext != null) {
-      localObject = paramContext.getPackageManager();
-    }
-    try
+    if (paramContext != null)
     {
-      localObject = ((PackageManager)localObject).getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      return localObject;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
+      PackageManager localPackageManager = paramContext.getPackageManager();
+      try
+      {
+        paramContext = localPackageManager.getPackageInfo(paramContext.getPackageName(), 0).versionName;
+        return paramContext;
+      }
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
     return "";
   }
@@ -664,31 +808,31 @@ public class c
   public static int g(Context paramContext)
   {
     // Byte code:
-    //   0: iconst_m1
-    //   1: istore_2
-    //   2: new 26	java/io/File
-    //   5: dup
-    //   6: aload_0
-    //   7: invokestatic 358	com/tencent/mobileqq/msf/core/c:i	(Landroid/content/Context;)Ljava/lang/String;
-    //   10: invokespecial 42	java/io/File:<init>	(Ljava/lang/String;)V
-    //   13: astore 4
-    //   15: aload 4
-    //   17: invokevirtual 46	java/io/File:exists	()Z
-    //   20: ifeq +9 -> 29
-    //   23: aload 4
-    //   25: invokevirtual 138	java/io/File:delete	()Z
-    //   28: pop
-    //   29: new 26	java/io/File
-    //   32: dup
-    //   33: aload_0
-    //   34: invokestatic 135	com/tencent/mobileqq/msf/core/c:h	(Landroid/content/Context;)Ljava/lang/String;
-    //   37: invokespecial 42	java/io/File:<init>	(Ljava/lang/String;)V
-    //   40: astore_0
-    //   41: iload_2
-    //   42: istore_3
-    //   43: aload_0
-    //   44: invokevirtual 46	java/io/File:exists	()Z
-    //   47: ifeq +70 -> 117
+    //   0: new 33	java/io/File
+    //   3: dup
+    //   4: aload_0
+    //   5: invokestatic 358	com/tencent/mobileqq/msf/core/c:i	(Landroid/content/Context;)Ljava/lang/String;
+    //   8: invokespecial 40	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: astore 4
+    //   13: aload 4
+    //   15: invokevirtual 44	java/io/File:exists	()Z
+    //   18: ifeq +9 -> 27
+    //   21: aload 4
+    //   23: invokevirtual 136	java/io/File:delete	()Z
+    //   26: pop
+    //   27: new 33	java/io/File
+    //   30: dup
+    //   31: aload_0
+    //   32: invokestatic 133	com/tencent/mobileqq/msf/core/c:h	(Landroid/content/Context;)Ljava/lang/String;
+    //   35: invokespecial 40	java/io/File:<init>	(Ljava/lang/String;)V
+    //   38: astore_0
+    //   39: aload_0
+    //   40: invokevirtual 44	java/io/File:exists	()Z
+    //   43: istore_3
+    //   44: iconst_m1
+    //   45: istore_2
+    //   46: iload_3
+    //   47: ifeq +130 -> 177
     //   50: new 360	java/io/FileInputStream
     //   53: dup
     //   54: aload_0
@@ -720,213 +864,220 @@ public class c
     //   99: invokestatic 365	com/tencent/mobileqq/msf/core/c:a	([BI)I
     //   102: istore_1
     //   103: iload_1
-    //   104: istore_3
+    //   104: istore_2
     //   105: aload 4
-    //   107: ifnull +10 -> 117
-    //   110: aload 4
-    //   112: invokevirtual 366	java/io/FileInputStream:close	()V
-    //   115: iload_1
-    //   116: istore_3
-    //   117: iload_3
+    //   107: invokevirtual 366	java/io/FileInputStream:close	()V
+    //   110: iload_1
+    //   111: ireturn
+    //   112: astore_0
+    //   113: aload_0
+    //   114: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   117: iload_2
     //   118: ireturn
     //   119: astore 5
-    //   121: aconst_null
-    //   122: astore 4
-    //   124: aload 4
-    //   126: astore_0
-    //   127: aload 5
-    //   129: invokevirtual 159	java/lang/Exception:printStackTrace	()V
-    //   132: iload_2
-    //   133: istore_3
-    //   134: aload 4
-    //   136: ifnull -19 -> 117
-    //   139: aload 4
-    //   141: invokevirtual 366	java/io/FileInputStream:close	()V
-    //   144: iconst_m1
-    //   145: ireturn
-    //   146: astore_0
-    //   147: iload_2
-    //   148: istore_1
-    //   149: aload_0
-    //   150: invokevirtual 160	java/io/IOException:printStackTrace	()V
-    //   153: iload_1
-    //   154: ireturn
-    //   155: astore 4
-    //   157: aconst_null
-    //   158: astore_0
-    //   159: aload_0
-    //   160: ifnull +7 -> 167
-    //   163: aload_0
-    //   164: invokevirtual 366	java/io/FileInputStream:close	()V
-    //   167: aload 4
-    //   169: athrow
-    //   170: astore_0
-    //   171: aload_0
-    //   172: invokevirtual 160	java/io/IOException:printStackTrace	()V
-    //   175: goto -8 -> 167
-    //   178: astore_0
-    //   179: goto -30 -> 149
-    //   182: astore 4
-    //   184: goto -25 -> 159
-    //   187: astore 5
-    //   189: goto -65 -> 124
+    //   121: goto +15 -> 136
+    //   124: astore 4
+    //   126: aconst_null
+    //   127: astore_0
+    //   128: goto +30 -> 158
+    //   131: astore 5
+    //   133: aconst_null
+    //   134: astore 4
+    //   136: aload 4
+    //   138: astore_0
+    //   139: aload 5
+    //   141: invokevirtual 158	java/lang/Exception:printStackTrace	()V
+    //   144: aload 4
+    //   146: ifnull +31 -> 177
+    //   149: aload 4
+    //   151: invokevirtual 366	java/io/FileInputStream:close	()V
+    //   154: iconst_m1
+    //   155: ireturn
+    //   156: astore 4
+    //   158: aload_0
+    //   159: ifnull +15 -> 174
+    //   162: aload_0
+    //   163: invokevirtual 366	java/io/FileInputStream:close	()V
+    //   166: goto +8 -> 174
+    //   169: astore_0
+    //   170: aload_0
+    //   171: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   174: aload 4
+    //   176: athrow
+    //   177: iconst_m1
+    //   178: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	192	0	paramContext	Context
-    //   61	93	1	i	int
-    //   1	147	2	j	int
-    //   42	92	3	k	int
-    //   13	127	4	localObject1	Object
-    //   155	13	4	localObject2	Object
-    //   182	1	4	localObject3	Object
+    //   0	179	0	paramContext	Context
+    //   61	50	1	i	int
+    //   45	73	2	j	int
+    //   43	4	3	bool	boolean
+    //   11	95	4	localObject1	Object
+    //   124	1	4	localObject2	Object
+    //   134	16	4	localObject3	Object
+    //   156	19	4	localObject4	Object
     //   80	17	5	arrayOfByte	byte[]
-    //   119	9	5	localException1	Exception
-    //   187	1	5	localException2	Exception
+    //   119	1	5	localException1	Exception
+    //   131	9	5	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   50	60	119	java/lang/Exception
-    //   139	144	146	java/io/IOException
-    //   50	60	155	finally
-    //   163	167	170	java/io/IOException
-    //   110	115	178	java/io/IOException
-    //   65	74	182	finally
-    //   77	82	182	finally
-    //   85	93	182	finally
-    //   96	103	182	finally
-    //   127	132	182	finally
-    //   65	74	187	java/lang/Exception
-    //   77	82	187	java/lang/Exception
-    //   85	93	187	java/lang/Exception
-    //   96	103	187	java/lang/Exception
+    //   105	110	112	java/io/IOException
+    //   149	154	112	java/io/IOException
+    //   65	74	119	java/lang/Exception
+    //   77	82	119	java/lang/Exception
+    //   85	93	119	java/lang/Exception
+    //   96	103	119	java/lang/Exception
+    //   50	60	124	finally
+    //   50	60	131	java/lang/Exception
+    //   65	74	156	finally
+    //   77	82	156	finally
+    //   85	93	156	finally
+    //   96	103	156	finally
+    //   139	144	156	finally
+    //   162	166	169	java/io/IOException
   }
   
   public static String h(Context paramContext)
   {
-    return paramContext.getFilesDir() + "/verFile";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getFilesDir());
+    localStringBuilder.append("/verFile");
+    return localStringBuilder.toString();
   }
   
   public static String i(Context paramContext)
   {
-    return paramContext.getFilesDir() + "/verFile2";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getFilesDir());
+    localStringBuilder.append("/verFile2");
+    return localStringBuilder.toString();
   }
   
   /* Error */
   public static void j(Context paramContext)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore_2
-    //   4: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   7: ifeq +12 -> 19
-    //   10: ldc 11
-    //   12: iconst_2
-    //   13: ldc_w 372
-    //   16: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   19: aload_0
-    //   20: invokevirtual 167	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   23: ldc_w 374
-    //   26: invokevirtual 304	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   29: astore 4
-    //   31: aload 4
-    //   33: astore_2
-    //   34: new 143	java/io/FileOutputStream
-    //   37: dup
-    //   38: new 28	java/lang/StringBuilder
-    //   41: dup
-    //   42: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   45: aload_0
-    //   46: invokevirtual 58	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   49: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   0: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 11
+    //   8: iconst_2
+    //   9: ldc_w 372
+    //   12: invokestatic 103	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aconst_null
+    //   16: astore 4
+    //   18: aconst_null
+    //   19: astore_3
+    //   20: aload_0
+    //   21: invokevirtual 165	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   24: ldc_w 374
+    //   27: invokevirtual 302	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   30: astore_2
+    //   31: new 24	java/lang/StringBuilder
+    //   34: dup
+    //   35: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   38: astore 5
+    //   40: aload 5
+    //   42: aload_0
+    //   43: invokevirtual 56	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   46: invokevirtual 243	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   49: pop
+    //   50: aload 5
     //   52: ldc_w 376
-    //   55: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokespecial 377	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   64: astore_0
-    //   65: sipush 128
-    //   68: newarray byte
-    //   70: astore_3
-    //   71: aload_2
-    //   72: aload_3
-    //   73: invokevirtual 120	java/io/InputStream:read	([B)I
-    //   76: istore_1
-    //   77: iload_1
-    //   78: ifle +52 -> 130
-    //   81: aload_0
-    //   82: aload_3
-    //   83: iconst_0
+    //   55: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: pop
+    //   59: new 141	java/io/FileOutputStream
+    //   62: dup
+    //   63: aload 5
+    //   65: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   68: invokespecial 377	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   71: astore_0
+    //   72: sipush 128
+    //   75: newarray byte
+    //   77: astore_3
+    //   78: aload_2
+    //   79: aload_3
+    //   80: invokevirtual 118	java/io/InputStream:read	([B)I
+    //   83: istore_1
     //   84: iload_1
-    //   85: invokevirtual 380	java/io/OutputStream:write	([BII)V
-    //   88: goto -17 -> 71
-    //   91: astore_3
-    //   92: aload_2
-    //   93: ifnull +7 -> 100
-    //   96: aload_2
-    //   97: invokevirtual 310	java/io/InputStream:close	()V
-    //   100: aload_0
-    //   101: ifnull +7 -> 108
-    //   104: aload_0
-    //   105: invokevirtual 381	java/io/OutputStream:close	()V
-    //   108: return
-    //   109: astore_0
-    //   110: aconst_null
-    //   111: astore_2
-    //   112: aload_2
-    //   113: ifnull +7 -> 120
-    //   116: aload_2
-    //   117: invokevirtual 310	java/io/InputStream:close	()V
-    //   120: aload_3
-    //   121: ifnull +7 -> 128
-    //   124: aload_3
-    //   125: invokevirtual 381	java/io/OutputStream:close	()V
-    //   128: aload_0
-    //   129: athrow
-    //   130: aload_2
-    //   131: ifnull +7 -> 138
-    //   134: aload_2
-    //   135: invokevirtual 310	java/io/InputStream:close	()V
-    //   138: aload_0
-    //   139: ifnull -31 -> 108
-    //   142: goto -38 -> 104
-    //   145: astore_0
-    //   146: goto -34 -> 112
-    //   149: astore 4
-    //   151: aload_0
-    //   152: astore_3
-    //   153: aload 4
-    //   155: astore_0
-    //   156: goto -44 -> 112
-    //   159: astore_0
-    //   160: aconst_null
-    //   161: astore_0
-    //   162: goto -70 -> 92
-    //   165: astore_0
-    //   166: aconst_null
-    //   167: astore_0
-    //   168: goto -76 -> 92
+    //   85: ifle +13 -> 98
+    //   88: aload_0
+    //   89: aload_3
+    //   90: iconst_0
+    //   91: iload_1
+    //   92: invokevirtual 380	java/io/OutputStream:write	([BII)V
+    //   95: goto -17 -> 78
+    //   98: aload_2
+    //   99: ifnull +7 -> 106
+    //   102: aload_2
+    //   103: invokevirtual 308	java/io/InputStream:close	()V
+    //   106: aload_0
+    //   107: invokevirtual 381	java/io/OutputStream:close	()V
+    //   110: return
+    //   111: astore 4
+    //   113: aload_0
+    //   114: astore_3
+    //   115: aload 4
+    //   117: astore_0
+    //   118: goto +13 -> 131
+    //   121: goto +33 -> 154
+    //   124: astore_0
+    //   125: goto +6 -> 131
+    //   128: astore_0
+    //   129: aconst_null
+    //   130: astore_2
+    //   131: aload_2
+    //   132: ifnull +7 -> 139
+    //   135: aload_2
+    //   136: invokevirtual 308	java/io/InputStream:close	()V
+    //   139: aload_3
+    //   140: ifnull +7 -> 147
+    //   143: aload_3
+    //   144: invokevirtual 381	java/io/OutputStream:close	()V
+    //   147: aload_0
+    //   148: athrow
+    //   149: aconst_null
+    //   150: astore_2
+    //   151: aload 4
+    //   153: astore_0
+    //   154: aload_2
+    //   155: ifnull +7 -> 162
+    //   158: aload_2
+    //   159: invokevirtual 308	java/io/InputStream:close	()V
+    //   162: aload_0
+    //   163: ifnull +7 -> 170
+    //   166: aload_0
+    //   167: invokevirtual 381	java/io/OutputStream:close	()V
+    //   170: return
+    //   171: astore_0
+    //   172: goto -23 -> 149
+    //   175: astore_0
+    //   176: aload 4
+    //   178: astore_0
+    //   179: goto -25 -> 154
+    //   182: astore_3
+    //   183: goto -62 -> 121
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	171	0	paramContext	Context
-    //   76	9	1	i	int
-    //   3	132	2	localObject1	Object
-    //   1	82	3	arrayOfByte	byte[]
-    //   91	34	3	localException	Exception
-    //   152	1	3	localContext	Context
-    //   29	3	4	localInputStream	InputStream
-    //   149	5	4	localObject2	Object
+    //   0	186	0	paramContext	Context
+    //   83	9	1	i	int
+    //   30	129	2	localInputStream	InputStream
+    //   19	125	3	localObject1	Object
+    //   182	1	3	localException	Exception
+    //   16	1	4	localObject2	Object
+    //   111	66	4	localObject3	Object
+    //   38	26	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   65	71	91	java/lang/Exception
-    //   71	77	91	java/lang/Exception
-    //   81	88	91	java/lang/Exception
-    //   19	31	109	finally
-    //   34	65	145	finally
-    //   65	71	149	finally
-    //   71	77	149	finally
-    //   81	88	149	finally
-    //   19	31	159	java/lang/Exception
-    //   34	65	165	java/lang/Exception
+    //   72	78	111	finally
+    //   78	84	111	finally
+    //   88	95	111	finally
+    //   31	72	124	finally
+    //   20	31	128	finally
+    //   20	31	171	java/lang/Exception
+    //   31	72	175	java/lang/Exception
+    //   72	78	182	java/lang/Exception
+    //   78	84	182	java/lang/Exception
+    //   88	95	182	java/lang/Exception
   }
   
   public static long k(Context paramContext)
@@ -938,99 +1089,113 @@ public class c
       l = paramContext.getAvailableBlocks() * l / 1024L;
       return l;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label32:
+      break label32;
+    }
     return 0L;
   }
   
   private static String[] l(Context paramContext)
   {
-    int k = 0;
     String[] arrayOfString = new String[2];
+    int k = 0;
     arrayOfString[0] = "";
     arrayOfString[1] = "";
     for (;;)
     {
+      int j;
       try
       {
-        paramContext = new FileInputStream(paramContext.getFilesDir() + "/jni.ini");
-        if (paramContext == null) {}
-      }
-      catch (IOException paramContext)
-      {
-        int i;
-        String str;
-        int j;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("MSF.C.CoreUtil", 2, "get oldJniID FileNotFoundException " + paramContext.getMessage());
-        paramContext.printStackTrace();
-        continue;
-        j += 1;
-        continue;
-      }
-      try
-      {
-        paramContext = new BufferedReader(new InputStreamReader(paramContext));
-        i = 0;
-        str = paramContext.readLine();
-        j = k;
-        if (str != null)
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramContext.getFilesDir());
+        ((StringBuilder)localObject).append("/jni.ini");
+        paramContext = new FileInputStream(((StringBuilder)localObject).toString());
+        try
         {
+          paramContext = new BufferedReader(new InputStreamReader(paramContext));
+          int i = 0;
+          localObject = paramContext.readLine();
           j = k;
-          if (i < 2)
+          if (localObject != null)
           {
-            arrayOfString[i] = str;
-            i += 1;
-            continue;
+            j = k;
+            if (i < 2)
+            {
+              arrayOfString[i] = localObject;
+              i += 1;
+              continue;
+            }
           }
+          if (j < arrayOfString.length)
+          {
+            if (arrayOfString[j] == null) {
+              break label307;
+            }
+            arrayOfString[j].trim();
+            if (arrayOfString[j].length() <= 4) {
+              break label307;
+            }
+            arrayOfString[j] = arrayOfString[j].substring(4);
+            break label307;
+          }
+          paramContext.close();
         }
-        if (j < arrayOfString.length)
+        catch (IOException paramContext)
         {
-          if (arrayOfString[j] == null) {
-            continue;
+          if (!QLog.isColorLevel()) {
+            break label268;
           }
-          arrayOfString[j].trim();
-          if (arrayOfString[j].length() <= 4) {
-            continue;
-          }
-          arrayOfString[j] = arrayOfString[j].substring(4);
-          continue;
         }
-        paramContext.close();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("get oldJniID IOException ");
+        ((StringBuilder)localObject).append(paramContext.getMessage());
+        QLog.d("MSF.C.CoreUtil", 2, ((StringBuilder)localObject).toString());
       }
       catch (IOException paramContext)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        Object localObject;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("get oldJniID FileNotFoundException ");
+          ((StringBuilder)localObject).append(paramContext.getMessage());
+          QLog.d("MSF.C.CoreUtil", 2, ((StringBuilder)localObject).toString());
         }
-        QLog.d("MSF.C.CoreUtil", 2, "get oldJniID IOException " + paramContext.getMessage());
+        paramContext.printStackTrace();
       }
+      label268:
+      paramContext = new StringBuilder();
+      paramContext.append("get old jni id = ");
+      paramContext.append(Arrays.toString(arrayOfString));
+      QLog.d("MSF.C.CoreUtil", 1, paramContext.toString());
+      return arrayOfString;
+      label307:
+      j += 1;
     }
-    QLog.d("MSF.C.CoreUtil", 1, "get old jni id = " + Arrays.toString(arrayOfString));
-    return arrayOfString;
   }
   
   private static String[] m(Context paramContext)
   {
-    String[] arrayOfString = new String[2];
+    Object localObject1 = new String[2];
     for (;;)
     {
-      Object localObject;
+      Object localObject2;
       int i;
       int j;
       try
       {
-        localObject = paramContext.getAssets().open("jni.ini");
-        paramContext = arrayOfString;
-        if (localObject == null) {
+        localObject2 = paramContext.getAssets().open("jni.ini");
+        paramContext = (Context)localObject1;
+        if (localObject2 == null) {
           continue;
         }
-        paramContext = new BufferedReader(new InputStreamReader((InputStream)localObject));
+        paramContext = new BufferedReader(new InputStreamReader((InputStream)localObject2));
         i = 0;
-        localObject = paramContext.readLine();
-        if (localObject == null) {
-          break label223;
+        localObject2 = paramContext.readLine();
+        if (localObject2 == null) {
+          break label217;
         }
         j = 1;
       }
@@ -1039,50 +1204,57 @@ public class c
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d("MSF.C.CoreUtil", 2, "read jni error " + paramContext);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("read jni error ");
+        ((StringBuilder)localObject1).append(paramContext);
+        QLog.d("MSF.C.CoreUtil", 2, ((StringBuilder)localObject1).toString());
         paramContext = new String[2];
         paramContext[0] = "0";
         paramContext[1] = "0";
-        QLog.d("MSF.C.CoreUtil", 1, "get new jni id = " + Arrays.toString(paramContext));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("get new jni id = ");
+        ((StringBuilder)localObject1).append(Arrays.toString(paramContext));
+        QLog.d("MSF.C.CoreUtil", 1, ((StringBuilder)localObject1).toString());
         return paramContext;
       }
-      paramContext = arrayOfString;
-      if (i < arrayOfString.length)
+      paramContext = (Context)localObject1;
+      if (i < localObject1.length)
       {
-        if (arrayOfString[i] != null)
+        if (localObject1[i] != null)
         {
-          arrayOfString[i].trim();
-          if (arrayOfString[i].length() > 4) {
-            arrayOfString[i] = arrayOfString[i].substring(4);
+          localObject1[i].trim();
+          if (localObject1[i].length() > 4) {
+            localObject1[i] = localObject1[i].substring(4);
           }
         }
         i += 1;
       }
       else
       {
-        label197:
-        if (i < 2) {}
-        for (int k = 1;; k = 0)
-        {
-          if ((k & j) == 0) {
-            break label233;
-          }
-          arrayOfString[i] = localObject;
-          i += 1;
-          break;
-          label223:
-          j = 0;
-          break label197;
+        label217:
+        j = 0;
+        int k;
+        if (i < 2) {
+          k = 1;
+        } else {
+          k = 0;
         }
-        label233:
-        i = 0;
+        if ((j & k) != 0)
+        {
+          localObject1[i] = localObject2;
+          i += 1;
+        }
+        else
+        {
+          i = 0;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.c
  * JD-Core Version:    0.7.0.1
  */

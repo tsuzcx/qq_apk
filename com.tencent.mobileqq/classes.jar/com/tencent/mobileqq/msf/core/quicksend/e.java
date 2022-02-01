@@ -14,29 +14,23 @@ class e
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1000) {
       return;
     }
     try
     {
       d.a(this.a);
-      d.b(this.a).sendEmptyMessageDelayed(1000, 1800000L);
-      return;
     }
     catch (Throwable paramMessage)
     {
-      for (;;)
-      {
-        paramMessage.printStackTrace();
-      }
+      paramMessage.printStackTrace();
     }
+    d.b(this.a).sendEmptyMessageDelayed(1000, 1800000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.quicksend.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
 import com.tencent.mobileqq.app.AppConstants.RichMediaErrorCode;
-import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.transfile.api.IProtoReqManager;
@@ -26,31 +25,57 @@ public abstract class BaseHandler
   
   public static int getHandlerNetType(int paramInt)
   {
-    int j = 6;
-    int i = j;
-    switch (paramInt)
+    int i = 3;
+    if (paramInt != 1)
     {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      String str = NetworkCenter.getInstance().getApnType();
-      paramInt = i;
-      if (str != null)
+      if (paramInt != 2)
       {
-        paramInt = i;
-        if (str.contains("wap")) {
-          paramInt = 5;
+        if (paramInt == 3) {
+          break label34;
         }
+        if (paramInt == 4) {}
       }
-      return paramInt;
-      i = 3;
-      continue;
-      i = 7;
-      continue;
+      else
+      {
+        i = 6;
+        break label37;
+      }
       i = 8;
+      break label37;
+      label34:
+      i = 7;
     }
+    label37:
+    String str = NetworkCenter.getInstance().getApnType();
+    paramInt = i;
+    if (str != null)
+    {
+      paramInt = i;
+      if (str.contains("wap")) {
+        paramInt = 5;
+      }
+    }
+    return paramInt;
+  }
+  
+  public static String getTimeoutReasonForRichMedia(FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramFromServiceMsg != null)
+    {
+      if (paramFromServiceMsg.getResultCode() == 1013) {
+        return String.valueOf(1013);
+      }
+      if (paramFromServiceMsg.getResultCode() == 1002)
+      {
+        String str = (String)paramFromServiceMsg.getAttribute("_tag_socket_connerror", "timeout_reason_UNKNOWN");
+        paramFromServiceMsg = str;
+        if (str.equals("conSucc")) {
+          paramFromServiceMsg = "timeout_reason_SERVER_NO_RESPONSE";
+        }
+        return paramFromServiceMsg;
+      }
+    }
+    return null;
   }
   
   public void cancel(RichProto.RichProtoReq paramRichProtoReq) {}
@@ -71,44 +96,44 @@ public abstract class BaseHandler
   public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     FromServiceMsg localFromServiceMsg = paramProtoResp.resp;
-    Object localObject = paramProtoResp.resp.getWupBuffer();
+    byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
     StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
-    int i;
     if (localFromServiceMsg.getResultCode() != 1000)
     {
       paramProtoResp = (String)localFromServiceMsg.getAttribute("_tag_socket_connerror", "");
-      if ((paramProtoResp.equals("conSucc")) || (paramProtoResp.equals("")))
+      if ((!paramProtoResp.equals("conSucc")) && (!paramProtoResp.equals("")))
       {
-        i = localFromServiceMsg.getResultCode();
-        if ((i == 1002) || (i == 1013))
+        setResult(-1, 9313, paramProtoResp, localFromServiceMsg.getBusinessFailMsg(), localStatictisInfo, localRichProtoResp.resps);
+      }
+      else
+      {
+        int i = localFromServiceMsg.getResultCode();
+        if ((i != 1002) && (i != 1013))
         {
-          localObject = MessageHandler.b(localFromServiceMsg);
-          paramProtoReq = localFromServiceMsg.getBusinessFailMsg();
-          paramProtoResp = paramProtoReq;
-          if (paramProtoReq == null) {
+          paramProtoResp = localFromServiceMsg.getBusinessFailMsg();
+          if (paramProtoResp == null) {
             paramProtoResp = "";
           }
-          setResult(-1, 9311, (String)localObject, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
+          setResult(-1, 9044, String.valueOf(i), paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
+        }
+        else
+        {
+          paramProtoReq = getTimeoutReasonForRichMedia(localFromServiceMsg);
+          paramProtoResp = localFromServiceMsg.getBusinessFailMsg();
+          if (paramProtoResp == null) {
+            paramProtoResp = "";
+          }
+          setResult(-1, 9311, paramProtoReq, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
         }
       }
     }
-    for (;;)
+    else
     {
-      RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
-      return;
-      paramProtoReq = localFromServiceMsg.getBusinessFailMsg();
-      paramProtoResp = paramProtoReq;
-      if (paramProtoReq == null) {
-        paramProtoResp = "";
-      }
-      setResult(-1, 9044, String.valueOf(i), paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
-      continue;
-      setResult(-1, 9313, paramProtoResp, localFromServiceMsg.getBusinessFailMsg(), localStatictisInfo, localRichProtoResp.resps);
-      continue;
-      handleSucResp(localFromServiceMsg, (byte[])localObject, localRichProtoReq, localRichProtoResp, localStatictisInfo, paramProtoResp, paramProtoReq);
+      handleSucResp(localFromServiceMsg, arrayOfByte, localRichProtoReq, localRichProtoResp, localStatictisInfo, paramProtoResp, paramProtoReq);
     }
+    RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
   }
   
   public void setResult(int paramInt1, int paramInt2, String paramString1, String paramString2, StatictisInfo paramStatictisInfo, RichProto.RichProtoResp.RespCommon paramRespCommon)
@@ -125,7 +150,16 @@ public abstract class BaseHandler
     }
     paramRespCommon.successCount = 0;
     paramRespCommon.failCount = paramStatictisInfo.c;
-    QLog.d("Q.richmedia.BaseHandler", 1, "result:" + paramInt1 + " errCode:" + paramInt2 + " reason:" + paramString1 + " errStr:" + paramString2);
+    paramStatictisInfo = new StringBuilder();
+    paramStatictisInfo.append("result:");
+    paramStatictisInfo.append(paramInt1);
+    paramStatictisInfo.append(" errCode:");
+    paramStatictisInfo.append(paramInt2);
+    paramStatictisInfo.append(" reason:");
+    paramStatictisInfo.append(paramString1);
+    paramStatictisInfo.append(" errStr:");
+    paramStatictisInfo.append(paramString2);
+    QLog.d("Q.richmedia.BaseHandler", 1, paramStatictisInfo.toString());
   }
   
   public void setResult(int paramInt1, int paramInt2, String paramString1, String paramString2, StatictisInfo paramStatictisInfo, List<RichProto.RichProtoResp.RespCommon> paramList)
@@ -135,10 +169,15 @@ public abstract class BaseHandler
       setResult(paramInt1, paramInt2, paramString1, paramString2, paramStatictisInfo, (RichProto.RichProtoResp.RespCommon)paramList.next());
     }
   }
+  
+  public boolean shouldRetryByRetCodeForGroup(int paramInt)
+  {
+    return (paramInt != 196) && (paramInt != 194) && (paramInt != 197) && (paramInt != 199) && (paramInt != 200) && (paramInt != 201) && (paramInt != 203) && (paramInt != 202);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.BaseHandler
  * JD-Core Version:    0.7.0.1
  */

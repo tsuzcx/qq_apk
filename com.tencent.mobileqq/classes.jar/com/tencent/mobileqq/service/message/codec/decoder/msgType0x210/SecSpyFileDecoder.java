@@ -23,23 +23,31 @@ public class SecSpyFileDecoder
 {
   public static void a(int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SecSpyFileDecoder", 4, "OnLinePushMessageProcessor receive 0x7c push message, seq = " + paramInt1 + "submsgtype:" + paramInt2);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OnLinePushMessageProcessor receive 0x7c push message, seq = ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("submsgtype:");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("SecSpyFileDecoder", 4, ((StringBuilder)localObject).toString());
     }
-    submsgtype0x7c.MsgBody localMsgBody = new submsgtype0x7c.MsgBody();
+    Object localObject = new submsgtype0x7c.MsgBody();
     try
     {
-      localMsgBody.mergeFrom(paramArrayOfByte);
-      long l = localMsgBody.uint64_uin.get();
-      if (paramQQAppInterface.getCurrentAccountUin().equals(String.valueOf(l))) {
-        ((SecSpyFileManager)paramQQAppInterface.getManager(QQManagerFactory.SEC_SPY_FILEMANAGER)).a(localMsgBody, 3);
+      ((submsgtype0x7c.MsgBody)localObject).mergeFrom(paramArrayOfByte);
+      long l = ((submsgtype0x7c.MsgBody)localObject).uint64_uin.get();
+      if (paramQQAppInterface.getCurrentAccountUin().equals(String.valueOf(l)))
+      {
+        ((SecSpyFileManager)paramQQAppInterface.getManager(QQManagerFactory.SEC_SPY_FILEMANAGER)).a((submsgtype0x7c.MsgBody)localObject, 3);
+        return;
       }
-      return;
     }
     catch (InvalidProtocolBufferMicroException paramQQAppInterface)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("SecSpyFileDecoder", 2, "parse 0x7c push msg error", paramQQAppInterface);
+      if (QLog.isColorLevel()) {
+        QLog.e("SecSpyFileDecoder", 2, "parse 0x7c push msg error", paramQQAppInterface);
+      }
     }
   }
   
@@ -53,7 +61,7 @@ public class SecSpyFileDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.SecSpyFileDecoder
  * JD-Core Version:    0.7.0.1
  */

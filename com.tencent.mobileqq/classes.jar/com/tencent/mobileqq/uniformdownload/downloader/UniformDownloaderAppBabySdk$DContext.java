@@ -39,7 +39,15 @@ class UniformDownloaderAppBabySdk$DContext
   {
     synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      QLog.i(UniformDownloaderAppBabySdk.jdField_a_of_type_JavaLangString, 1, "[UniformDL] setStatus:" + this.jdField_a_of_type_Int + " -> " + paramInt + "url:" + this.jdField_a_of_type_JavaLangString);
+      String str = UniformDownloaderAppBabySdk.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL] setStatus:");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(" -> ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("url:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      QLog.i(str, 1, localStringBuilder.toString());
       this.jdField_a_of_type_Int = paramInt;
       return;
     }
@@ -56,7 +64,7 @@ class UniformDownloaderAppBabySdk$DContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloaderAppBabySdk.DContext
  * JD-Core Version:    0.7.0.1
  */

@@ -40,12 +40,40 @@ public class LiveWatchMediaInfo
   
   public String toString()
   {
-    return "LiveWatchMediaInfo{mVideoStatus=" + this.mVideoStatus + ", mRtmp_url='" + this.mRtmp_url + '\'' + ", mHLS_url='" + this.mHLS_url + '\'' + ", mFlv_url='" + this.mFlv_url + '\'' + ", forceSwitch=" + this.forceSwitch + ", mUrl='" + this.mUrl + '\'' + ", mLevel=" + this.mLevel + ", mUrlHigh='" + this.mUrlHigh + '\'' + ", mUrlLow='" + this.mUrlLow + '\'' + ", mRtmpType=" + this.mRtmpType + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LiveWatchMediaInfo{mVideoStatus=");
+    localStringBuilder.append(this.mVideoStatus);
+    localStringBuilder.append(", mRtmp_url='");
+    localStringBuilder.append(this.mRtmp_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mHLS_url='");
+    localStringBuilder.append(this.mHLS_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mFlv_url='");
+    localStringBuilder.append(this.mFlv_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", forceSwitch=");
+    localStringBuilder.append(this.forceSwitch);
+    localStringBuilder.append(", mUrl='");
+    localStringBuilder.append(this.mUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mLevel=");
+    localStringBuilder.append(this.mLevel);
+    localStringBuilder.append(", mUrlHigh='");
+    localStringBuilder.append(this.mUrlHigh);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mUrlLow='");
+    localStringBuilder.append(this.mUrlLow);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mRtmpType=");
+    localStringBuilder.append(this.mRtmpType);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice_interface.model.LiveWatchMediaInfo
  * JD-Core Version:    0.7.0.1
  */

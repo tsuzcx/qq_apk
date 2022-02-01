@@ -1,6 +1,7 @@
 package com.tencent.xaction.api.base;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import androidx.annotation.Keep;
 import com.tencent.xaction.api.IAnim;
@@ -8,10 +9,12 @@ import com.tencent.xaction.api.IRuleManager;
 import com.tencent.xaction.api.data.FloatViewData;
 import com.tencent.xaction.api.data.InterpolatorData;
 import com.tencent.xaction.impl.AnimStateListener;
-import com.tencent.xaction.impl.XAEngine;
+import com.tencent.xaction.impl.Expression;
 import com.tencent.xaction.impl.XATimeline;
 import com.tencent.xaction.manager.InterpolatorManager;
 import com.tencent.xaction.manager.InterpolatorManager.Companion;
+import com.tencent.xaction.openapi.api.IPublicView;
+import com.tencent.xaction.openapi.api.IXAEngine;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -24,7 +27,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/base/BaseAnim;", "Lcom/tencent/xaction/api/IAnim;", "", "()V", "delay", "", "getDelay", "()J", "setDelay", "(J)V", "duration", "", "getDuration", "()I", "setDuration", "(I)V", "engine", "Lcom/tencent/xaction/impl/XAEngine;", "getEngine", "()Lcom/tencent/xaction/impl/XAEngine;", "setEngine", "(Lcom/tencent/xaction/impl/XAEngine;)V", "float", "", "getFloat", "()Ljava/lang/String;", "setFloat", "(Ljava/lang/String;)V", "floatData", "Lcom/tencent/xaction/api/data/FloatViewData;", "getFloatData", "()Lcom/tencent/xaction/api/data/FloatViewData;", "setFloatData", "(Lcom/tencent/xaction/api/data/FloatViewData;)V", "inpt", "Lcom/tencent/xaction/api/data/InterpolatorData;", "getInpt", "()Lcom/tencent/xaction/api/data/InterpolatorData;", "setInpt", "(Lcom/tencent/xaction/api/data/InterpolatorData;)V", "interpolator", "Landroid/view/animation/Interpolator;", "getInterpolator", "()Landroid/view/animation/Interpolator;", "setInterpolator", "(Landroid/view/animation/Interpolator;)V", "isFirst", "Ljava/util/concurrent/atomic/AtomicBoolean;", "()Ljava/util/concurrent/atomic/AtomicBoolean;", "setFirst", "(Ljava/util/concurrent/atomic/AtomicBoolean;)V", "last", "", "getLast", "()Z", "setLast", "(Z)V", "realtime", "getRealtime", "setRealtime", "rules", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getRules", "()Ljava/util/HashMap;", "setRules", "(Ljava/util/HashMap;)V", "status", "getStatus", "setStatus", "type", "getType", "setType", "view", "Landroid/view/View;", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "animStateListener", "", "timeline", "Lcom/tencent/xaction/impl/XATimeline;", "it", "clone", "doFrame", "frameTime", "doFrameUpdate", "animTime", "", "end", "init", "play", "preStart", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/base/BaseAnim;", "Lcom/tencent/xaction/api/IAnim;", "", "()V", "delay", "", "getDelay", "()J", "setDelay", "(J)V", "duration", "", "getDuration", "()I", "setDuration", "(I)V", "engine", "Lcom/tencent/xaction/openapi/api/IXAEngine;", "getEngine", "()Lcom/tencent/xaction/openapi/api/IXAEngine;", "setEngine", "(Lcom/tencent/xaction/openapi/api/IXAEngine;)V", "expressionList", "Ljava/util/HashMap;", "", "Lcom/tencent/xaction/impl/Expression;", "Lkotlin/collections/HashMap;", "getExpressionList", "()Ljava/util/HashMap;", "setExpressionList", "(Ljava/util/HashMap;)V", "exps", "getExps", "setExps", "float", "getFloat", "()Ljava/lang/String;", "setFloat", "(Ljava/lang/String;)V", "floatData", "Lcom/tencent/xaction/api/data/FloatViewData;", "getFloatData", "()Lcom/tencent/xaction/api/data/FloatViewData;", "setFloatData", "(Lcom/tencent/xaction/api/data/FloatViewData;)V", "forward", "", "getForward", "()Z", "setForward", "(Z)V", "inpt", "Lcom/tencent/xaction/api/data/InterpolatorData;", "getInpt", "()Lcom/tencent/xaction/api/data/InterpolatorData;", "setInpt", "(Lcom/tencent/xaction/api/data/InterpolatorData;)V", "interpolator", "Landroid/view/animation/Interpolator;", "getInterpolator", "()Landroid/view/animation/Interpolator;", "setInterpolator", "(Landroid/view/animation/Interpolator;)V", "isFirst", "Ljava/util/concurrent/atomic/AtomicBoolean;", "()Ljava/util/concurrent/atomic/AtomicBoolean;", "setFirst", "(Ljava/util/concurrent/atomic/AtomicBoolean;)V", "isLink", "setLink", "last", "getLast", "setLast", "removeIds", "", "getRemoveIds", "()[Ljava/lang/Integer;", "setRemoveIds", "([Ljava/lang/Integer;)V", "[Ljava/lang/Integer;", "rules", "getRules", "setRules", "status", "getStatus", "setStatus", "type", "getType", "setType", "view", "Landroid/view/View;", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "animStateListener", "", "timeline", "Lcom/tencent/xaction/impl/XATimeline;", "it", "clone", "doFrame", "frameTime", "doFrameUpdate", "animTime", "", "end", "init", "play", "preStart", "removeViewWhenEnd", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public abstract class BaseAnim
   implements IAnim, Cloneable
@@ -32,19 +35,26 @@ public abstract class BaseAnim
   private long delay;
   private int duration;
   @Nullable
-  private transient XAEngine engine;
+  private transient IXAEngine engine;
+  @NotNull
+  private transient HashMap<String, Expression> expressionList = new HashMap();
+  @NotNull
+  private HashMap<String, String> exps = new HashMap();
   @Nullable
   private String jdField_float;
   @NotNull
   private transient FloatViewData floatData = new FloatViewData();
+  private boolean forward = true;
   @Nullable
   private InterpolatorData inpt;
   @Nullable
   private transient Interpolator interpolator;
   @NotNull
   private transient AtomicBoolean isFirst = new AtomicBoolean(true);
+  private boolean isLink = true;
   private boolean last;
-  private boolean realtime;
+  @Nullable
+  private Integer[] removeIds;
   @NotNull
   private HashMap<String, String> rules = new HashMap();
   @NotNull
@@ -53,6 +63,60 @@ public abstract class BaseAnim
   private String type = "";
   @Nullable
   private transient View view;
+  
+  private final void removeViewWhenEnd()
+  {
+    Integer[] arrayOfInteger = this.removeIds;
+    if (arrayOfInteger != null)
+    {
+      int j = arrayOfInteger.length;
+      int i = 0;
+      while (i < j)
+      {
+        int k = ((Number)arrayOfInteger[i]).intValue();
+        Object localObject1 = this.engine;
+        if (localObject1 != null) {
+          localObject1 = ((IXAEngine)localObject1).findById(k);
+        } else {
+          localObject1 = null;
+        }
+        Object localObject2;
+        if (localObject1 != null) {
+          localObject2 = ((IPublicView)localObject1).getDecor();
+        } else {
+          localObject2 = null;
+        }
+        if ((localObject2 instanceof DecorView))
+        {
+          localObject1 = ((IPublicView)localObject1).getDecor();
+          if (localObject1 != null)
+          {
+            localObject2 = ((DecorView)localObject1).getProxy();
+            if (localObject2 != null) {
+              localObject1 = ((View)localObject2).getParent();
+            } else {
+              localObject1 = null;
+            }
+            if ((localObject1 instanceof ViewGroup))
+            {
+              localObject1 = ((View)localObject2).getParent();
+              if (localObject1 != null) {
+                ((ViewGroup)localObject1).removeView((View)localObject2);
+              } else {
+                throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
+              }
+            }
+          }
+          else
+          {
+            throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.api.base.DecorView");
+          }
+        }
+        i += 1;
+      }
+    }
+    this.removeIds = ((Integer[])null);
+  }
   
   public final void animStateListener(@NotNull XATimeline paramXATimeline, @Nullable View paramView)
   {
@@ -64,16 +128,20 @@ public abstract class BaseAnim
   public BaseAnim clone()
   {
     Object localObject1 = super.clone();
-    if (localObject1 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.api.base.BaseAnim");
-    }
-    localObject1 = (BaseAnim)localObject1;
-    Object localObject2 = this.rules.clone();
-    if (localObject2 == null) {
+    if (localObject1 != null)
+    {
+      localObject1 = (BaseAnim)localObject1;
+      Object localObject2 = this.rules.clone();
+      if (localObject2 != null)
+      {
+        ((BaseAnim)localObject1).rules = ((HashMap)localObject2);
+        ((BaseAnim)localObject1).isFirst = new AtomicBoolean(true);
+        ((BaseAnim)localObject1).floatData = new FloatViewData();
+        return localObject1;
+      }
       throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.String, kotlin.String> /* = java.util.HashMap<kotlin.String, kotlin.String> */");
     }
-    ((BaseAnim)localObject1).rules = ((HashMap)localObject2);
-    return localObject1;
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.api.base.BaseAnim");
   }
   
   public void doFrame(long paramLong)
@@ -81,19 +149,22 @@ public abstract class BaseAnim
     paramLong -= this.delay;
     if ((this.duration >= paramLong) && (paramLong >= 0L))
     {
-      if ((this.isFirst.get()) && (this.last) && (this.view != null))
+      if ((this.isFirst.get()) && (this.last))
       {
         localObject = this.view;
-        if (localObject == null) {
-          Intrinsics.throwNpe();
+        if (localObject != null)
+        {
+          if (localObject == null) {
+            Intrinsics.throwNpe();
+          }
+          preStart((View)localObject);
         }
-        preStart((View)localObject);
       }
-      f2 = (float)paramLong * 1.0F / this.duration;
-      f1 = f2;
-      if (this.interpolator != null)
+      float f2 = (float)paramLong * 1.0F / this.duration;
+      Object localObject = this.interpolator;
+      float f1 = f2;
+      if (localObject != null)
       {
-        localObject = this.interpolator;
         if (localObject == null) {
           Intrinsics.throwNpe();
         }
@@ -101,17 +172,15 @@ public abstract class BaseAnim
       }
       this.isFirst.set(false);
       doFrameUpdate(f1);
-    }
-    while ((this.isFirst.get()) || (this.duration >= paramLong))
-    {
-      Object localObject;
-      float f2;
-      float f1;
       return;
     }
-    doFrameUpdate(1.0F);
-    this.isFirst.set(true);
-    end();
+    if ((!this.isFirst.get()) && (this.duration < paramLong))
+    {
+      doFrameUpdate(1.0F);
+      this.isFirst.set(true);
+      end();
+      removeViewWhenEnd();
+    }
   }
   
   public abstract void doFrameUpdate(float paramFloat);
@@ -129,9 +198,21 @@ public abstract class BaseAnim
   }
   
   @Nullable
-  public final XAEngine getEngine()
+  public final IXAEngine getEngine()
   {
     return this.engine;
+  }
+  
+  @NotNull
+  public final HashMap<String, Expression> getExpressionList()
+  {
+    return this.expressionList;
+  }
+  
+  @NotNull
+  public final HashMap<String, String> getExps()
+  {
+    return this.exps;
   }
   
   @Nullable
@@ -144,6 +225,11 @@ public abstract class BaseAnim
   public final FloatViewData getFloatData()
   {
     return this.floatData;
+  }
+  
+  public final boolean getForward()
+  {
+    return this.forward;
   }
   
   @Nullable
@@ -163,9 +249,10 @@ public abstract class BaseAnim
     return this.last;
   }
   
-  public final boolean getRealtime()
+  @Nullable
+  public final Integer[] getRemoveIds()
   {
-    return this.realtime;
+    return this.removeIds;
   }
   
   @NotNull
@@ -192,18 +279,32 @@ public abstract class BaseAnim
     return this.view;
   }
   
-  public final void init(@NotNull View paramView, @NotNull XAEngine paramXAEngine)
+  public final void init(@NotNull View paramView, @NotNull IXAEngine paramIXAEngine)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "view");
-    Intrinsics.checkParameterIsNotNull(paramXAEngine, "engine");
-    this.engine = paramXAEngine;
+    Intrinsics.checkParameterIsNotNull(paramIXAEngine, "engine");
+    this.engine = paramIXAEngine;
     preStart(paramView);
+    this.expressionList.clear();
+    paramView = ((Map)this.exps).entrySet().iterator();
+    while (paramView.hasNext())
+    {
+      paramIXAEngine = (Map.Entry)paramView.next();
+      Expression localExpression = new Expression(null);
+      localExpression.a((String)paramIXAEngine.getValue());
+      ((Map)this.expressionList).put(paramIXAEngine.getKey(), localExpression);
+    }
   }
   
   @NotNull
   public final AtomicBoolean isFirst()
   {
     return this.isFirst;
+  }
+  
+  public final boolean isLink()
+  {
+    return this.isLink;
   }
   
   public void play() {}
@@ -213,27 +314,32 @@ public abstract class BaseAnim
     Intrinsics.checkParameterIsNotNull(paramView, "view");
     this.view = paramView;
     this.isFirst.set(true);
-    Object localObject;
+    Object localObject1;
     if (this.inpt != null)
     {
       paramView = InterpolatorManager.a;
-      localObject = this.inpt;
-      if (localObject == null) {
+      localObject1 = this.inpt;
+      if (localObject1 == null) {
         Intrinsics.throwNpe();
       }
-      this.interpolator = paramView.a((InterpolatorData)localObject);
+      this.interpolator = paramView.a((InterpolatorData)localObject1);
     }
     if (this.engine != null)
     {
       paramView = ((Map)this.rules).entrySet().iterator();
       while (paramView.hasNext())
       {
-        localObject = (Map.Entry)paramView.next();
-        XAEngine localXAEngine = this.engine;
-        if (localXAEngine == null) {
+        localObject1 = (Map.Entry)paramView.next();
+        Object localObject2 = this.engine;
+        if (localObject2 == null) {
           Intrinsics.throwNpe();
         }
-        localXAEngine.getRuleManager().a(this, (String)((Map.Entry)localObject).getKey(), (String)((Map.Entry)localObject).getValue());
+        localObject2 = ((IXAEngine)localObject2).getRuleManager();
+        if (localObject2 != null) {
+          ((IRuleManager)localObject2).refreshAnimRuleValue(this, (String)((Map.Entry)localObject1).getKey(), (String)((Map.Entry)localObject1).getValue());
+        } else {
+          throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.api.IRuleManager");
+        }
       }
     }
   }
@@ -248,9 +354,21 @@ public abstract class BaseAnim
     this.duration = paramInt;
   }
   
-  public final void setEngine(@Nullable XAEngine paramXAEngine)
+  public final void setEngine(@Nullable IXAEngine paramIXAEngine)
   {
-    this.engine = paramXAEngine;
+    this.engine = paramIXAEngine;
+  }
+  
+  public final void setExpressionList(@NotNull HashMap<String, Expression> paramHashMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "<set-?>");
+    this.expressionList = paramHashMap;
+  }
+  
+  public final void setExps(@NotNull HashMap<String, String> paramHashMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "<set-?>");
+    this.exps = paramHashMap;
   }
   
   public final void setFirst(@NotNull AtomicBoolean paramAtomicBoolean)
@@ -270,6 +388,11 @@ public abstract class BaseAnim
     this.floatData = paramFloatViewData;
   }
   
+  public final void setForward(boolean paramBoolean)
+  {
+    this.forward = paramBoolean;
+  }
+  
   public final void setInpt(@Nullable InterpolatorData paramInterpolatorData)
   {
     this.inpt = paramInterpolatorData;
@@ -285,9 +408,14 @@ public abstract class BaseAnim
     this.last = paramBoolean;
   }
   
-  public final void setRealtime(boolean paramBoolean)
+  public final void setLink(boolean paramBoolean)
   {
-    this.realtime = paramBoolean;
+    this.isLink = paramBoolean;
+  }
+  
+  public final void setRemoveIds(@Nullable Integer[] paramArrayOfInteger)
+  {
+    this.removeIds = paramArrayOfInteger;
   }
   
   public final void setRules(@NotNull HashMap<String, String> paramHashMap)
@@ -315,7 +443,7 @@ public abstract class BaseAnim
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.base.BaseAnim
  * JD-Core Version:    0.7.0.1
  */

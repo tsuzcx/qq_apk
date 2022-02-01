@@ -26,8 +26,9 @@ public enum AdThreadManager
   
   private AdThreadManagerAdapter getAdapter()
   {
-    if (this.adapter != null) {
-      return (AdThreadManagerAdapter)this.adapter.get();
+    WeakReference localWeakReference = this.adapter;
+    if (localWeakReference != null) {
+      return (AdThreadManagerAdapter)localWeakReference.get();
     }
     return null;
   }

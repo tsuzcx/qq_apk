@@ -20,9 +20,8 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.log.GdtLog;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LiuHaiUtils;
 
@@ -33,14 +32,27 @@ public class GdtUIUtils
   
   public static double a(View paramView)
   {
-    if (paramView == null) {}
-    Rect localRect;
-    do
-    {
+    if (paramView == null) {
       return 0.0D;
-      localRect = new Rect();
-    } while ((!paramView.getGlobalVisibleRect(localRect)) || (localRect.left >= b(paramView.getContext())) || (localRect.top >= d(paramView.getContext())) || (localRect.right <= 0) || (localRect.bottom <= 0));
-    return 1.0D * localRect.width() * localRect.height() / (paramView.getWidth() * paramView.getHeight());
+    }
+    Rect localRect = new Rect();
+    if (!paramView.getGlobalVisibleRect(localRect)) {
+      return 0.0D;
+    }
+    if ((localRect.left < b(paramView.getContext())) && (localRect.top < c(paramView.getContext())) && (localRect.right > 0))
+    {
+      if (localRect.bottom <= 0) {
+        return 0.0D;
+      }
+      double d1 = localRect.width();
+      Double.isNaN(d1);
+      double d2 = localRect.height();
+      Double.isNaN(d2);
+      double d3 = paramView.getWidth() * paramView.getHeight();
+      Double.isNaN(d3);
+      return d1 * 1.0D * d2 / d3;
+    }
+    return 0.0D;
   }
   
   public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -53,17 +65,23 @@ public class GdtUIUtils
     if (paramFloat == 0.0F) {
       return 0;
     }
-    return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
   }
   
   public static int a(@ColorInt int paramInt1, @IntRange(from=0L, to=255L) int paramInt2)
   {
-    return 0xFFFFFF & paramInt1 | paramInt2 << 24;
+    return paramInt1 & 0xFFFFFF | paramInt2 << 24;
   }
   
   public static int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    return Double.valueOf(1.0D * paramInt1 * paramInt3 / paramInt2).intValue();
+    double d1 = paramInt1;
+    Double.isNaN(d1);
+    double d2 = paramInt3;
+    Double.isNaN(d2);
+    double d3 = paramInt2;
+    Double.isNaN(d3);
+    return Double.valueOf(d1 * 1.0D * d2 / d3).intValue();
   }
   
   private static int a(Activity paramActivity)
@@ -73,80 +91,87 @@ public class GdtUIUtils
   
   public static int a(Context paramContext)
   {
-    if ((paramContext == null) || (paramContext.getResources() == null) || (paramContext.getResources().getConfiguration() == null)) {
-      return 0;
+    if ((paramContext != null) && (paramContext.getResources() != null) && (paramContext.getResources().getConfiguration() != null)) {
+      return paramContext.getResources().getConfiguration().orientation;
     }
-    return paramContext.getResources().getConfiguration().orientation;
+    return 0;
   }
   
   public static int a(Context paramContext, int paramInt1, int paramInt2)
   {
+    int i = a(paramContext);
     int j = 0;
-    int i;
-    if (a(paramContext) == 1) {
+    if (i == 1) {
       i = b(paramContext);
+    } else if (a(paramContext) == 2) {
+      i = c(paramContext);
+    } else {
+      i = 0;
     }
-    for (;;)
+    if (paramInt1 != 0)
     {
-      if (paramInt1 != 0)
-      {
-        double d = paramInt2;
-        j = Double.valueOf(i * (1.0D * d) / paramInt1).intValue();
-      }
-      return j;
-      if (a(paramContext) == 2) {
-        i = d(paramContext);
-      } else {
-        i = 0;
-      }
+      double d1 = paramInt2;
+      Double.isNaN(d1);
+      double d2 = i;
+      Double.isNaN(d2);
+      double d3 = paramInt1;
+      Double.isNaN(d3);
+      j = Double.valueOf(d1 * 1.0D * d2 / d3).intValue();
     }
+    return j;
   }
   
   public static Drawable a(@ColorInt int paramInt1, int paramInt2, int paramInt3)
   {
-    float f4 = 0.0F;
     int i = Math.max(paramInt2, 2);
     PaintDrawable localPaintDrawable = new PaintDrawable();
     localPaintDrawable.setShape(new RectShape());
     int[] arrayOfInt = new int[i];
     int j = Color.alpha(paramInt1);
     paramInt2 = 0;
-    while (paramInt2 < i)
-    {
-      arrayOfInt[paramInt2] = a(paramInt1, (int)(a(0.0F, 1.0F, (float)Math.pow(paramInt2 * 1.0F / (i - 1), 3.0D)) * j));
-      paramInt2 += 1;
-    }
-    float f2;
-    float f1;
-    float f3;
-    switch (paramInt3 & 0x7)
-    {
-    case 4: 
-    default: 
-      f2 = 0.0F;
-      f1 = 0.0F;
-      switch (paramInt3 & 0x70)
-      {
-      default: 
-        f3 = 0.0F;
-      }
-      break;
-    }
+    float f4;
+    float f5;
     for (;;)
     {
-      localPaintDrawable.setShaderFactory(new GdtUIUtils.1(f1, f3, f2, f4, arrayOfInt));
-      return localPaintDrawable;
-      f2 = 0.0F;
-      f1 = 1.0F;
-      break;
-      f2 = 1.0F;
-      f1 = 0.0F;
-      break;
-      f3 = 1.0F;
-      continue;
-      f3 = 0.0F;
-      f4 = 1.0F;
+      f4 = 0.0F;
+      f5 = 0.0F;
+      if (paramInt2 >= i) {
+        break;
+      }
+      f1 = a(0.0F, 1.0F, (float)Math.pow(paramInt2 * 1.0F / (i - 1), 3.0D));
+      arrayOfInt[paramInt2] = a(paramInt1, (int)(j * f1));
+      paramInt2 += 1;
     }
+    paramInt1 = paramInt3 & 0x7;
+    if (paramInt1 != 3) {
+      if (paramInt1 == 5) {}
+    }
+    float f2;
+    float f3;
+    for (float f1 = 0.0F;; f1 = 1.0F)
+    {
+      f2 = 0.0F;
+      f3 = f1;
+      break;
+      f3 = 0.0F;
+      f2 = 1.0F;
+      break;
+    }
+    paramInt1 = paramInt3 & 0x70;
+    if (paramInt1 != 48) {
+      if (paramInt1 == 80) {}
+    }
+    for (f1 = f5;; f1 = 1.0F)
+    {
+      f4 = 0.0F;
+      break;
+      f5 = 1.0F;
+      f1 = f4;
+      f4 = f5;
+      break;
+    }
+    localPaintDrawable.setShaderFactory(new GdtUIUtils.1(f3, f1, f2, f4, arrayOfInt));
+    return localPaintDrawable;
   }
   
   public static String a(long paramLong)
@@ -166,7 +191,7 @@ public class GdtUIUtils
     if (LiuHaiUtils.enableNotch(paramActivity))
     {
       a(paramActivity);
-      GdtLog.a("GdtMvViewController", "enableNotch && updateLiuhaiTopHeight 0");
+      GdtLog.a("GdtUIUtils", "enableNotch && updateLiuhaiTopHeight 0");
     }
   }
   
@@ -175,7 +200,7 @@ public class GdtUIUtils
     if (paramView == null) {
       return;
     }
-    if ((BaseApplicationImpl.getApplication() != null) && (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)))
+    if (ThemeUtil.isNowThemeIsNight(null, false, null))
     {
       paramView.setVisibility(0);
       return;
@@ -193,7 +218,7 @@ public class GdtUIUtils
   
   public static void a(FrameLayout paramFrameLayout)
   {
-    if ((paramFrameLayout != null) && (BaseApplicationImpl.getApplication() != null) && (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))) {
+    if ((paramFrameLayout != null) && (ThemeUtil.isNowThemeIsNight(null, false, null))) {
       paramFrameLayout.setForeground(new ColorDrawable(1996488704));
     }
   }
@@ -206,7 +231,10 @@ public class GdtUIUtils
   public static boolean a(Activity paramActivity)
   {
     LiuHaiUtils.a(paramActivity);
-    GdtLog.a("GdtMvViewController", "hasTopLiuHai  " + LiuHaiUtils.a);
+    paramActivity = new StringBuilder();
+    paramActivity.append("hasTopLiuHai  ");
+    paramActivity.append(LiuHaiUtils.a);
+    GdtLog.a("GdtUIUtils", paramActivity.toString());
     return LiuHaiUtils.a;
   }
   
@@ -216,34 +244,21 @@ public class GdtUIUtils
     if (paramActivity == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("GdtVideoCommonView", 2, "getPortraitScreenSize ERROR activity == null");
+        QLog.d("GdtUIUtils", 2, "getPortraitScreenSize ERROR activity == null");
       }
       return new int[] { 0, 0 };
     }
-    Object localObject;
-    Point localPoint;
     if ((a == 0) || (b == 0))
     {
-      localObject = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay();
-      localPoint = new Point();
-      if (Build.VERSION.SDK_INT < 17) {
-        break label167;
+      Object localObject = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay();
+      Point localPoint = new Point();
+      if (Build.VERSION.SDK_INT >= 17)
+      {
+        ((Display)localObject).getRealSize(localPoint);
+        a = localPoint.x;
+        b = localPoint.y;
       }
-      ((Display)localObject).getRealSize(localPoint);
-      a = localPoint.x;
-      b = localPoint.y;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GdtVideoCommonView", 2, "getPortraitScreenSize screenWidth=" + a + ", screenHeight=" + b);
-      }
-      if (b >= a) {
-        break;
-      }
-      return new int[] { b, a };
-      label167:
-      if (Build.VERSION.SDK_INT >= 15)
+      else if (Build.VERSION.SDK_INT >= 15)
       {
         ((Display)localObject).getSize(localPoint);
         a = localPoint.x;
@@ -257,22 +272,32 @@ public class GdtUIUtils
         b = ((DisplayMetrics)localObject).heightPixels;
       }
     }
-    return new int[] { a, b };
-  }
-  
-  public static int b(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 != 0) {
-      return Double.valueOf(1.0D * paramInt2 * c(BaseApplicationImpl.getContext()) / paramInt1).intValue();
+    if (QLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("getPortraitScreenSize screenWidth=");
+      paramActivity.append(a);
+      paramActivity.append(", screenHeight=");
+      paramActivity.append(b);
+      QLog.d("GdtUIUtils", 2, paramActivity.toString());
     }
-    return 0;
+    int i = b;
+    int j = a;
+    if (i < j) {
+      return new int[] { i, j };
+    }
+    return new int[] { j, i };
   }
   
   private static int b(Activity paramActivity)
   {
     int i = Build.VERSION.SDK_INT;
-    if (QLog.isColorLevel()) {
-      QLog.i("GdtUIUtils", 1, "getNotchInScreenHeight apiVersion: " + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNotchInScreenHeight apiVersion: ");
+      localStringBuilder.append(i);
+      QLog.i("GdtUIUtils", 1, localStringBuilder.toString());
     }
     if (i > 27) {
       return LiuHaiUtils.a(paramActivity);
@@ -282,8 +307,7 @@ public class GdtUIUtils
   
   public static int b(Context paramContext)
   {
-    if (paramContext == null) {}
-    while ((paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null))
+    if ((paramContext == null) || (paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null))
     {
       GdtLog.d("GdtUIUtils", "getScreenWidth error");
       return -2147483648;
@@ -293,31 +317,7 @@ public class GdtUIUtils
   
   public static int c(Context paramContext)
   {
-    int i;
-    if (paramContext == null)
-    {
-      GdtLog.d("GdtUIUtils", "getScreenWidth error");
-      i = -2147483648;
-    }
-    int k;
-    int j;
-    do
-    {
-      return i;
-      if ((paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null)) {
-        break;
-      }
-      k = paramContext.getResources().getDisplayMetrics().widthPixels;
-      j = paramContext.getResources().getDisplayMetrics().heightPixels;
-      i = j;
-    } while (k > j);
-    return k;
-  }
-  
-  public static int d(Context paramContext)
-  {
-    if (paramContext == null) {}
-    while ((paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null))
+    if ((paramContext == null) || (paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null))
     {
       GdtLog.d("GdtUIUtils", "getScreenHeight error");
       return -2147483648;
@@ -325,37 +325,47 @@ public class GdtUIUtils
     return paramContext.getResources().getDisplayMetrics().heightPixels;
   }
   
-  public static int e(Context paramContext)
+  public static int d(Context paramContext)
   {
-    if ((paramContext != null) && ((paramContext instanceof Activity))) {
-      paramContext = a((Activity)paramContext);
-    }
-    for (int i = Math.max(paramContext[0], paramContext[1]);; i = 1920)
+    int i;
+    if ((paramContext != null) && ((paramContext instanceof Activity)))
     {
-      if (i <= 0) {
-        return 1920;
-      }
-      return i;
+      paramContext = a((Activity)paramContext);
+      i = Math.max(paramContext[0], paramContext[1]);
     }
+    else
+    {
+      i = 1920;
+    }
+    int j = i;
+    if (i <= 0) {
+      j = 1920;
+    }
+    return j;
   }
   
-  public static int f(Context paramContext)
+  public static int e(Context paramContext)
   {
-    if ((paramContext != null) && ((paramContext instanceof Activity))) {
-      paramContext = a((Activity)paramContext);
-    }
-    for (int i = Math.min(paramContext[0], paramContext[1]);; i = 1080)
+    int i;
+    if ((paramContext != null) && ((paramContext instanceof Activity)))
     {
-      if (i <= 0) {
-        return 1080;
-      }
-      return i;
+      paramContext = a((Activity)paramContext);
+      i = Math.min(paramContext[0], paramContext[1]);
     }
+    else
+    {
+      i = 1080;
+    }
+    int j = i;
+    if (i <= 0) {
+      j = 1080;
+    }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.GdtUIUtils
  * JD-Core Version:    0.7.0.1
  */

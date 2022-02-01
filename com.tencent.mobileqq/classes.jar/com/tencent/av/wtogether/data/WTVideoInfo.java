@@ -32,90 +32,166 @@ public class WTVideoInfo
   
   public int a()
   {
-    int i = 0;
-    if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {}
-    try
-    {
-      i = Integer.parseInt(this.e);
-      return i;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("WTogether", 1, "init WTVideoInfo", localThrowable);
+    int i = this.jdField_a_of_type_Int;
+    if ((i == 3) || (i == 4)) {
+      try
+      {
+        i = Integer.parseInt(this.e);
+        return i;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.i("WTogether", 1, "init WTVideoInfo", localThrowable);
+      }
     }
     return 0;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_Int + "_" + this.jdField_b_of_type_JavaLangString + "_" + this.d + "_" + this.e + "_" + this.f + "_" + this.jdField_b_of_type_Int + "_" + this.g + "_" + this.jdField_a_of_type_Long;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4);
+    int i = this.jdField_a_of_type_Int;
+    return (i == 2) || (i == 4);
   }
   
   public boolean a(WTVideoInfo paramWTVideoInfo)
   {
-    boolean bool;
+    boolean bool1;
     if (this == paramWTVideoInfo) {
-      bool = true;
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    while ((!bool) && (paramWTVideoInfo != null)) {
-      if ((this.jdField_a_of_type_Int == paramWTVideoInfo.jdField_a_of_type_Int) && (this.jdField_a_of_type_Long != paramWTVideoInfo.jdField_a_of_type_Long) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramWTVideoInfo.jdField_b_of_type_JavaLangString)) && (TextUtils.equals(this.d, paramWTVideoInfo.d)) && (TextUtils.equals(this.e, paramWTVideoInfo.e)) && (TextUtils.equals(this.f, paramWTVideoInfo.f)) && (this.jdField_b_of_type_Int == paramWTVideoInfo.jdField_b_of_type_Int) && (TextUtils.equals(this.g, paramWTVideoInfo.g)))
+    boolean bool2 = bool1;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      if (paramWTVideoInfo != null)
       {
-        return true;
-        bool = false;
-      }
-      else
-      {
-        return false;
+        if ((this.jdField_a_of_type_Int == paramWTVideoInfo.jdField_a_of_type_Int) && (this.jdField_a_of_type_Long != paramWTVideoInfo.jdField_a_of_type_Long) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramWTVideoInfo.jdField_b_of_type_JavaLangString)) && (TextUtils.equals(this.d, paramWTVideoInfo.d)) && (TextUtils.equals(this.e, paramWTVideoInfo.e)) && (TextUtils.equals(this.f, paramWTVideoInfo.f)) && (this.jdField_b_of_type_Int == paramWTVideoInfo.jdField_b_of_type_Int) && (TextUtils.equals(this.g, paramWTVideoInfo.g))) {
+          return true;
+        }
+        bool2 = false;
       }
     }
-    return bool;
+    return bool2;
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 3);
+    int i = this.jdField_a_of_type_Int;
+    return (i == 4) || (i == 3);
   }
   
   public boolean c()
   {
-    boolean bool = true;
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    boolean bool2 = false;
+    boolean bool1;
+    if ((i != 0) && (i != 1) && (i != 2))
     {
-    default: 
-      bool = false;
-    }
-    do
-    {
-      do
+      if (i != 3)
       {
-        do
+        if (i != 4) {
+          return false;
+        }
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(this.d))
         {
-          return bool;
-        } while (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
-        return false;
-      } while ((!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)));
-      return false;
-    } while ((!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g)));
-    return false;
+          bool1 = bool2;
+          if (!TextUtils.isEmpty(this.e))
+          {
+            bool1 = bool2;
+            if (!TextUtils.isEmpty(this.f))
+            {
+              bool1 = bool2;
+              if (TextUtils.isEmpty(this.g)) {}
+            }
+          }
+        }
+      }
+      else
+      {
+        for (;;)
+        {
+          return true;
+          bool1 = bool2;
+          if (TextUtils.isEmpty(this.d)) {
+            break;
+          }
+          bool1 = bool2;
+          if (TextUtils.isEmpty(this.e)) {
+            break;
+          }
+          bool1 = bool2;
+          if (TextUtils.isEmpty(this.f)) {
+            break;
+          }
+        }
+      }
+    }
+    else {
+      bool1 = TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString) ^ true;
+    }
+    return bool1;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("VideoInfo{videoSrcType: ").append(this.jdField_a_of_type_Int).append(", title: ").append(this.jdField_a_of_type_JavaLangString).append(", url: ");
-    if (this.jdField_b_of_type_JavaLangString == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(this.jdField_b_of_type_JavaLangString.length())) {
-      return localObject + ", cookie: " + this.c + ", vid: " + this.d + ", strPlatForm: " + this.e + ", strSDTForm: " + this.f + ", isPay: " + this.jdField_b_of_type_Int + ", strLivePid: " + this.g + ", mediaFormat: " + this.jdField_a_of_type_Long + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoInfo{videoSrcType: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", title: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", url: ");
+    Object localObject = this.jdField_b_of_type_JavaLangString;
+    if (localObject == null) {
+      localObject = "null";
+    } else {
+      localObject = Integer.valueOf(((String)localObject).length());
     }
+    localStringBuilder.append(localObject);
+    localStringBuilder.append(", cookie: ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", vid: ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", strPlatForm: ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", strSDTForm: ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", isPay: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", strLivePid: ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", mediaFormat: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.data.WTVideoInfo
  * JD-Core Version:    0.7.0.1
  */

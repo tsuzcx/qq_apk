@@ -19,32 +19,36 @@ class StorageJsPlugin$4
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("limitSize", StorageJsPlugin.access$000(this.this$0).getLimitSize());
-      localJSONObject.put("currentSize", StorageJsPlugin.access$000(this.this$0).getCurrentSize());
-      Object localObject = StorageJsPlugin.access$000(this.this$0).keys();
-      HashSet localHashSet = new HashSet();
-      if (localObject != null)
+      Object localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("limitSize", StorageJsPlugin.access$000(this.this$0).getLimitSize());
+      ((JSONObject)localObject1).put("currentSize", StorageJsPlugin.access$000(this.this$0).getCurrentSize());
+      Object localObject3 = StorageJsPlugin.access$000(this.this$0).keys();
+      localObject2 = new HashSet();
+      if (localObject3 != null)
       {
-        localObject = ((Set)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          localHashSet.add(URLUtil.decodeUrl((String)((Iterator)localObject).next()));
+        localObject3 = ((Set)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          ((Set)localObject2).add(URLUtil.decodeUrl((String)((Iterator)localObject3).next()));
         }
       }
-      localException.put("keys", DiskLruCacheUtil.setToJSONArray(localHashSet));
+      ((JSONObject)localObject1).put("keys", DiskLruCacheUtil.setToJSONArray((Set)localObject2));
+      localObject1 = this.val$req.ok((JSONObject)localObject1);
+      return localObject1;
     }
     catch (Exception localException)
     {
-      QMLog.e("StorageJsPlugin", this.val$req.event + " result error." + localException);
-      return this.val$req.fail("json error");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.val$req.event);
+      ((StringBuilder)localObject2).append(" result error.");
+      ((StringBuilder)localObject2).append(localException);
+      QMLog.e("StorageJsPlugin", ((StringBuilder)localObject2).toString());
     }
-    String str = this.val$req.ok(localException);
-    return str;
+    return this.val$req.fail("json error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.StorageJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

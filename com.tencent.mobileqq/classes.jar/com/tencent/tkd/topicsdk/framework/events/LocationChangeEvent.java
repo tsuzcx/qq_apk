@@ -1,5 +1,6 @@
 package com.tencent.tkd.topicsdk.framework.events;
 
+import .r8.java8methods.utility.Integer.hashCode.II;
 import com.tencent.tkd.topicsdk.framework.eventdispatch.IEvent;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
@@ -28,34 +29,40 @@ public final class LocationChangeEvent
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof LocationChangeEvent))
       {
         paramObject = (LocationChangeEvent)paramObject;
-        if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {}
+        if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
   {
-    return Integer.hashCode(this.jdField_a_of_type_Int) * 31 + Integer.hashCode(this.b);
+    return .r8.java8methods.utility.Integer.hashCode.II.hashCode(this.jdField_a_of_type_Int) * 31 + .r8.java8methods.utility.Integer.hashCode.II.hashCode(this.b);
   }
   
   @NotNull
   public String toString()
   {
-    return "LocationChangeEvent(eventKey=" + this.jdField_a_of_type_Int + ", pageId=" + this.b + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LocationChangeEvent(eventKey=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", pageId=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.events.LocationChangeEvent
  * JD-Core Version:    0.7.0.1
  */

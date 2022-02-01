@@ -73,6 +73,16 @@ public class MessageData
   
   public MessageData(qqstory_710_message.StoryMessage paramStoryMessage)
   {
+    boolean bool3 = false;
+    boolean bool4 = false;
+    boolean bool8 = false;
+    boolean bool9 = false;
+    boolean bool10 = false;
+    boolean bool5 = false;
+    boolean bool6 = false;
+    boolean bool2 = false;
+    boolean bool7 = false;
+    boolean bool1 = false;
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Int = 0;
@@ -94,308 +104,288 @@ public class MessageData
       this.m = ((qqstory_710_message.StoryLikeInfo)localObject).share_union_id.get().toStringUtf8();
       this.jdField_h_of_type_Int = ((qqstory_710_message.StoryLikeInfo)localObject).share_type.get();
     }
-    for (;;)
+    else if (paramStoryMessage.comment_info.has())
     {
-      if (paramStoryMessage.video_info.has())
-      {
-        this.u = paramStoryMessage.video_info.cover_url.get().toStringUtf8();
-        this.jdField_b_of_type_JavaLangString = paramStoryMessage.video_info.vid.get().toStringUtf8();
-        this.jdField_c_of_type_JavaLangString = paramStoryMessage.video_info.union_id.get().toStringUtf8();
-        this.jdField_g_of_type_JavaLangString = paramStoryMessage.video_info.vote_attr.get().toStringUtf8();
-        if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
-          this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout = StoryVideoItem.PollLayout.a(this.jdField_g_of_type_JavaLangString);
-        }
-        if (!TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString)) {
-          this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$InteractPasterLayout = StoryVideoItem.InteractPasterLayout.a(this.jdField_h_of_type_JavaLangString);
-        }
+      localObject = (qqstory_710_message.StoryCommentInfo)paramStoryMessage.comment_info.get();
+      this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryCommentInfo)localObject).union_id.get().toStringUtf8();
+      this.jdField_a_of_type_Long = (((qqstory_710_message.StoryCommentInfo)localObject).comment_time.get() * 1000L);
+      if (((qqstory_710_message.StoryCommentInfo)localObject).is_bigv.get() == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      this.jdField_f_of_type_JavaLangString = paramStoryMessage.feed_id.get().toStringUtf8();
-      this.jdField_d_of_type_Int = paramStoryMessage.message_id.get();
-      this.jdField_f_of_type_Int = paramStoryMessage.src_type.get();
-      this.jdField_b_of_type_Long = paramStoryMessage.src_uid.get();
-      return;
-      if (paramStoryMessage.comment_info.has())
+      this.jdField_b_of_type_Boolean = bool1;
+      if (((qqstory_710_message.StoryCommentInfo)localObject).comment_del.get() == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.jdField_a_of_type_Boolean = bool1;
+      this.jdField_e_of_type_JavaLangString = ((qqstory_710_message.StoryCommentInfo)localObject).content.get().toStringUtf8();
+      this.jdField_c_of_type_Int = ((qqstory_710_message.StoryCommentInfo)localObject).comment_id.get();
+      if ((!((qqstory_710_message.StoryCommentInfo)localObject).reply_uid.has()) && (!((qqstory_710_message.StoryCommentInfo)localObject).reply_union_id.has()))
       {
-        localObject = (qqstory_710_message.StoryCommentInfo)paramStoryMessage.comment_info.get();
-        this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryCommentInfo)localObject).union_id.get().toStringUtf8();
-        this.jdField_a_of_type_Long = (((qqstory_710_message.StoryCommentInfo)localObject).comment_time.get() * 1000L);
-        if (((qqstory_710_message.StoryCommentInfo)localObject).is_bigv.get() == 1)
-        {
+        this.jdField_a_of_type_Int = 2;
+      }
+      else
+      {
+        this.jdField_d_of_type_JavaLangString = ((qqstory_710_message.StoryCommentInfo)localObject).reply_union_id.get().toStringUtf8();
+        bool1 = bool3;
+        if (((qqstory_710_message.StoryCommentInfo)localObject).reply_is_bigv.get() == 1) {
           bool1 = true;
-          label425:
-          this.jdField_b_of_type_Boolean = bool1;
-          if (((qqstory_710_message.StoryCommentInfo)localObject).comment_del.get() != 1) {
-            break label599;
-          }
+        }
+        this.jdField_c_of_type_Boolean = bool1;
+        this.jdField_a_of_type_Int = 3;
+      }
+      this.jdField_b_of_type_Int = ((qqstory_710_message.StoryCommentInfo)localObject).type.get();
+      this.k = ((qqstory_710_message.StoryCommentInfo)localObject).share_name.get().toStringUtf8();
+      this.m = ((qqstory_710_message.StoryCommentInfo)localObject).share_union_id.get().toStringUtf8();
+      this.jdField_h_of_type_Int = ((qqstory_710_message.StoryCommentInfo)localObject).share_type.get();
+    }
+    else if (paramStoryMessage.publish_info.has())
+    {
+      localObject = (qqstory_710_message.StoryPublishInfo)paramStoryMessage.publish_info.get();
+      this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryPublishInfo)localObject).union_id.get().toStringUtf8();
+      this.jdField_a_of_type_Long = (((qqstory_710_message.StoryPublishInfo)localObject).publish_time.get() * 1000L);
+      if (((qqstory_710_message.StoryPublishInfo)localObject).is_bigv.get() == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.jdField_b_of_type_Boolean = bool1;
+      this.jdField_a_of_type_Int = 4;
+      bool1 = bool4;
+      if (((qqstory_710_message.StoryPublishInfo)localObject).video_del.has())
+      {
+        bool1 = bool4;
+        if (((qqstory_710_message.StoryPublishInfo)localObject).video_del.get() == 1) {
           bool1 = true;
-          label444:
-          this.jdField_a_of_type_Boolean = bool1;
-          this.jdField_e_of_type_JavaLangString = ((qqstory_710_message.StoryCommentInfo)localObject).content.get().toStringUtf8();
-          this.jdField_c_of_type_Int = ((qqstory_710_message.StoryCommentInfo)localObject).comment_id.get();
-          if ((!((qqstory_710_message.StoryCommentInfo)localObject).reply_uid.has()) && (!((qqstory_710_message.StoryCommentInfo)localObject).reply_union_id.has())) {
-            break label609;
-          }
-          this.jdField_d_of_type_JavaLangString = ((qqstory_710_message.StoryCommentInfo)localObject).reply_union_id.get().toStringUtf8();
-          if (((qqstory_710_message.StoryCommentInfo)localObject).reply_is_bigv.get() != 1) {
-            break label604;
-          }
-          bool1 = bool2;
-          label527:
-          this.jdField_c_of_type_Boolean = bool1;
-        }
-        label599:
-        label604:
-        label609:
-        for (this.jdField_a_of_type_Int = 3;; this.jdField_a_of_type_Int = 2)
-        {
-          this.jdField_b_of_type_Int = ((qqstory_710_message.StoryCommentInfo)localObject).type.get();
-          this.k = ((qqstory_710_message.StoryCommentInfo)localObject).share_name.get().toStringUtf8();
-          this.m = ((qqstory_710_message.StoryCommentInfo)localObject).share_union_id.get().toStringUtf8();
-          this.jdField_h_of_type_Int = ((qqstory_710_message.StoryCommentInfo)localObject).share_type.get();
-          break;
-          bool1 = false;
-          break label425;
-          bool1 = false;
-          break label444;
-          bool1 = false;
-          break label527;
         }
       }
-      if (paramStoryMessage.publish_info.has())
+      this.jdField_a_of_type_Boolean = bool1;
+      this.k = ((qqstory_710_message.StoryPublishInfo)localObject).share_name.get().toStringUtf8();
+      this.m = ((qqstory_710_message.StoryPublishInfo)localObject).share_union_id.get().toStringUtf8();
+      this.jdField_h_of_type_Int = ((qqstory_710_message.StoryPublishInfo)localObject).share_type.get();
+    }
+    else if (paramStoryMessage.official_info.has())
+    {
+      localObject = (qqstory_710_message.StoryOfficialInfo)paramStoryMessage.official_info.get();
+      this.jdField_c_of_type_Long = ((qqstory_710_message.StoryOfficialInfo)localObject).official_uin.get();
+      this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryOfficialInfo)localObject).union_id.get().toStringUtf8();
+      this.jdField_i_of_type_JavaLangString = ((qqstory_710_message.StoryOfficialInfo)localObject).jump_url.get().toStringUtf8();
+      this.jdField_g_of_type_Int = ((qqstory_710_message.StoryOfficialInfo)localObject).url_type.get();
+      this.j = ((qqstory_710_message.StoryOfficialInfo)localObject).content.get().toStringUtf8();
+      this.jdField_a_of_type_Long = (((qqstory_710_message.StoryOfficialInfo)localObject).push_time.get() * 1000L);
+      bool1 = bool8;
+      if (((qqstory_710_message.StoryOfficialInfo)localObject).is_bigv.get() == 1) {
+        bool1 = true;
+      }
+      this.jdField_b_of_type_Boolean = bool1;
+      this.u = paramStoryMessage.official_info.cover_url.get().toStringUtf8();
+      this.jdField_a_of_type_Int = 5;
+    }
+    else if (paramStoryMessage.share_info.has())
+    {
+      localObject = (qqstory_710_message.ShareGroupInfo)paramStoryMessage.share_info.get();
+      this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.ShareGroupInfo)localObject).union_id.get().toStringUtf8();
+      this.k = ((qqstory_710_message.ShareGroupInfo)localObject).share_name.get().toStringUtf8();
+      int i1 = ((qqstory_710_message.ShareGroupInfo)localObject).oper_type.get();
+      if (i1 != 1)
       {
-        localObject = (qqstory_710_message.StoryPublishInfo)paramStoryMessage.publish_info.get();
-        this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryPublishInfo)localObject).union_id.get().toStringUtf8();
-        this.jdField_a_of_type_Long = (((qqstory_710_message.StoryPublishInfo)localObject).publish_time.get() * 1000L);
-        if (((qqstory_710_message.StoryPublishInfo)localObject).is_bigv.get() == 1)
+        if (i1 != 2)
         {
-          bool1 = true;
-          label685:
-          this.jdField_b_of_type_Boolean = bool1;
-          this.jdField_a_of_type_Int = 4;
-          if ((!((qqstory_710_message.StoryPublishInfo)localObject).video_del.has()) || (((qqstory_710_message.StoryPublishInfo)localObject).video_del.get() != 1)) {
-            break label776;
+          if (i1 != 3)
+          {
+            if (i1 != 4)
+            {
+              if (i1 == 5)
+              {
+                this.jdField_a_of_type_Int = 11;
+                this.jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131706597);
+              }
+            }
+            else
+            {
+              this.jdField_a_of_type_Int = 9;
+              this.jdField_e_of_type_JavaLangString = StoryApi.a(2131699929, new Object[] { this.k });
+            }
+          }
+          else {
+            this.jdField_a_of_type_Int = 8;
           }
         }
-        label776:
-        for (bool1 = bool6;; bool1 = false)
+        else
         {
-          this.jdField_a_of_type_Boolean = bool1;
-          this.k = ((qqstory_710_message.StoryPublishInfo)localObject).share_name.get().toStringUtf8();
-          this.m = ((qqstory_710_message.StoryPublishInfo)localObject).share_union_id.get().toStringUtf8();
-          this.jdField_h_of_type_Int = ((qqstory_710_message.StoryPublishInfo)localObject).share_type.get();
-          break;
-          bool1 = false;
-          break label685;
-        }
-      }
-      if (paramStoryMessage.official_info.has())
-      {
-        localObject = (qqstory_710_message.StoryOfficialInfo)paramStoryMessage.official_info.get();
-        this.jdField_c_of_type_Long = ((qqstory_710_message.StoryOfficialInfo)localObject).official_uin.get();
-        this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryOfficialInfo)localObject).union_id.get().toStringUtf8();
-        this.jdField_i_of_type_JavaLangString = ((qqstory_710_message.StoryOfficialInfo)localObject).jump_url.get().toStringUtf8();
-        this.jdField_g_of_type_Int = ((qqstory_710_message.StoryOfficialInfo)localObject).url_type.get();
-        this.j = ((qqstory_710_message.StoryOfficialInfo)localObject).content.get().toStringUtf8();
-        this.jdField_a_of_type_Long = (((qqstory_710_message.StoryOfficialInfo)localObject).push_time.get() * 1000L);
-        if (((qqstory_710_message.StoryOfficialInfo)localObject).is_bigv.get() == 1) {}
-        for (bool1 = bool8;; bool1 = false)
-        {
-          this.jdField_b_of_type_Boolean = bool1;
-          this.u = paramStoryMessage.official_info.cover_url.get().toStringUtf8();
-          this.jdField_a_of_type_Int = 5;
-          break;
-        }
-      }
-      if (paramStoryMessage.share_info.has())
-      {
-        localObject = (qqstory_710_message.ShareGroupInfo)paramStoryMessage.share_info.get();
-        this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.ShareGroupInfo)localObject).union_id.get().toStringUtf8();
-        this.k = ((qqstory_710_message.ShareGroupInfo)localObject).share_name.get().toStringUtf8();
-        switch (((qqstory_710_message.ShareGroupInfo)localObject).oper_type.get())
-        {
-        default: 
-          label1032:
-          this.jdField_a_of_type_Long = (((qqstory_710_message.ShareGroupInfo)localObject).push_time.get() * 1000L);
-          if (((qqstory_710_message.ShareGroupInfo)localObject).is_bigv.get() != 1) {
-            break;
-          }
-        }
-        for (bool1 = bool9;; bool1 = false)
-        {
-          this.jdField_b_of_type_Boolean = bool1;
-          this.m = ((qqstory_710_message.ShareGroupInfo)localObject).share_union_id.get().toStringUtf8();
-          this.jdField_h_of_type_Int = ((qqstory_710_message.ShareGroupInfo)localObject).share_type.get();
-          break;
-          this.jdField_a_of_type_Int = 6;
-          this.jdField_e_of_type_JavaLangString = StoryApi.a(2131699782, new Object[] { this.k });
-          break label1032;
           this.jdField_a_of_type_Int = 7;
           this.l = ((qqstory_710_message.ShareGroupInfo)localObject).share_new_name.get().toStringUtf8();
-          this.jdField_e_of_type_JavaLangString = StoryApi.a(2131699783, new Object[] { this.l });
-          break label1032;
-          this.jdField_a_of_type_Int = 8;
-          break label1032;
-          this.jdField_a_of_type_Int = 9;
-          this.jdField_e_of_type_JavaLangString = StoryApi.a(2131699788, new Object[] { this.k });
-          break label1032;
-          this.jdField_a_of_type_Int = 11;
-          this.jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131706574);
-          break label1032;
-        }
-      }
-      if (paramStoryMessage.medal_info.has())
-      {
-        localObject = (qqstory_710_message.StoryMedalInfo)paramStoryMessage.medal_info.get();
-        this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryMedalInfo)localObject).union_id.get().toStringUtf8();
-        this.jdField_a_of_type_Long = (((qqstory_710_message.StoryMedalInfo)localObject).push_time.get() * 1000L);
-        this.jdField_e_of_type_JavaLangString = ((qqstory_710_message.StoryMedalInfo)localObject).content.get().toStringUtf8();
-        if (((qqstory_710_message.StoryMedalInfo)localObject).is_bigv.get() == 1) {}
-        for (bool1 = bool10;; bool1 = false)
-        {
-          this.jdField_b_of_type_Boolean = bool1;
-          this.u = ((qqstory_710_message.StoryMedalInfo)localObject).cover_url.get().toStringUtf8();
-          this.jdField_a_of_type_Int = 10;
-          break;
-        }
-      }
-      if (paramStoryMessage.vote_info.has())
-      {
-        localObject = (qqstory_710_message.StoryVoteInfo)paramStoryMessage.vote_info.get();
-        this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryVoteInfo)localObject).union_id.get().toStringUtf8();
-        this.jdField_a_of_type_Long = (((qqstory_710_message.StoryVoteInfo)localObject).vote_time.get() * 1000L);
-        if (((qqstory_710_message.StoryVoteInfo)localObject).is_bigv.get() == 1) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          this.jdField_b_of_type_Boolean = bool1;
-          bool1 = bool4;
-          if (((qqstory_710_message.StoryVoteInfo)localObject).video_del.has())
-          {
-            bool1 = bool4;
-            if (((qqstory_710_message.StoryVoteInfo)localObject).video_del.get() == 1) {
-              bool1 = true;
-            }
-          }
-          this.jdField_a_of_type_Boolean = bool1;
-          this.n = ((qqstory_710_message.StoryVoteInfo)localObject).vote_question.get().toStringUtf8();
-          this.o = ((qqstory_710_message.StoryVoteInfo)localObject).vote_answer.get().toStringUtf8();
-          this.p = ((qqstory_710_message.StoryVoteInfo)localObject).nick_postfix.get().toStringUtf8();
-          if (((qqstory_710_message.StoryVoteInfo)localObject).vote_type.get() != 1) {
-            break label1535;
-          }
-          this.jdField_a_of_type_Int = 12;
-          break;
-        }
-        label1535:
-        if (((qqstory_710_message.StoryVoteInfo)localObject).is_my_vote.get() == 1) {
-          this.jdField_a_of_type_Int = 13;
-        } else {
-          this.jdField_a_of_type_Int = 14;
-        }
-      }
-      else if (paramStoryMessage.grade_info.has())
-      {
-        localObject = (qqstory_710_message.StoryGradeInfo)paramStoryMessage.grade_info.get();
-        this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryGradeInfo)localObject).union_id.get().toStringUtf8();
-        this.jdField_a_of_type_Long = (((qqstory_710_message.StoryGradeInfo)localObject).grade_time.get() * 1000L);
-        if (((qqstory_710_message.StoryGradeInfo)localObject).is_bigv.get() == 1) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          this.jdField_b_of_type_Boolean = bool1;
-          bool1 = bool5;
-          if (((qqstory_710_message.StoryGradeInfo)localObject).video_del.has())
-          {
-            bool1 = bool5;
-            if (((qqstory_710_message.StoryGradeInfo)localObject).video_del.get() == 1) {
-              bool1 = true;
-            }
-          }
-          this.jdField_a_of_type_Boolean = bool1;
-          this.q = ((qqstory_710_message.StoryGradeInfo)localObject).grade_question.get().toStringUtf8();
-          this.jdField_i_of_type_Int = ((qqstory_710_message.StoryGradeInfo)localObject).grade_option.get();
-          this.p = ((qqstory_710_message.StoryGradeInfo)localObject).nick_postfix.get().toStringUtf8();
-          if (((qqstory_710_message.StoryGradeInfo)localObject).grade_type.get() != 1) {
-            break label1742;
-          }
-          this.jdField_a_of_type_Int = 15;
-          break;
-        }
-        label1742:
-        if (((qqstory_710_message.StoryGradeInfo)localObject).is_my_grade.get() == 1) {
-          this.jdField_a_of_type_Int = 16;
-        } else {
-          this.jdField_a_of_type_Int = 17;
+          this.jdField_e_of_type_JavaLangString = StoryApi.a(2131699924, new Object[] { this.l });
         }
       }
       else
       {
-        if (paramStoryMessage.photo_info.has())
-        {
-          localObject = (qqstory_710_message.StoryPhotoTogetherInfo)paramStoryMessage.photo_info.get();
-          this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryPhotoTogetherInfo)localObject).union_id.get().toStringUtf8();
-          this.jdField_a_of_type_Long = (((qqstory_710_message.StoryPhotoTogetherInfo)localObject).photo_time.get() * 1000L);
-          if (((qqstory_710_message.StoryPhotoTogetherInfo)localObject).is_bigv.get() == 1)
-          {
-            bool1 = true;
-            label1840:
-            this.jdField_b_of_type_Boolean = bool1;
-            if ((!((qqstory_710_message.StoryPhotoTogetherInfo)localObject).video_del.has()) || (((qqstory_710_message.StoryPhotoTogetherInfo)localObject).video_del.get() != 1)) {
-              break label1947;
-            }
-            bool1 = true;
-            label1870:
-            this.jdField_a_of_type_Boolean = bool1;
-            if ((!((qqstory_710_message.StoryPhotoTogetherInfo)localObject).comment_del.has()) || (((qqstory_710_message.StoryPhotoTogetherInfo)localObject).comment_del.get() != 1)) {
-              break label1952;
-            }
-          }
-          label1947:
-          label1952:
-          for (bool1 = bool3;; bool1 = false)
-          {
-            this.jdField_e_of_type_Boolean = bool1;
-            this.r = ((qqstory_710_message.StoryPhotoTogetherInfo)localObject).photo_feed_id.get().toStringUtf8();
-            this.jdField_e_of_type_Int = ((qqstory_710_message.StoryPhotoTogetherInfo)localObject).at_video_ts.get();
-            this.jdField_a_of_type_Int = 18;
-            break;
-            bool1 = false;
-            break label1840;
-            bool1 = false;
-            break label1870;
-          }
+        this.jdField_a_of_type_Int = 6;
+        this.jdField_e_of_type_JavaLangString = StoryApi.a(2131699923, new Object[] { this.k });
+      }
+      this.jdField_a_of_type_Long = (((qqstory_710_message.ShareGroupInfo)localObject).push_time.get() * 1000L);
+      bool1 = bool9;
+      if (((qqstory_710_message.ShareGroupInfo)localObject).is_bigv.get() == 1) {
+        bool1 = true;
+      }
+      this.jdField_b_of_type_Boolean = bool1;
+      this.m = ((qqstory_710_message.ShareGroupInfo)localObject).share_union_id.get().toStringUtf8();
+      this.jdField_h_of_type_Int = ((qqstory_710_message.ShareGroupInfo)localObject).share_type.get();
+    }
+    else if (paramStoryMessage.medal_info.has())
+    {
+      localObject = (qqstory_710_message.StoryMedalInfo)paramStoryMessage.medal_info.get();
+      this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryMedalInfo)localObject).union_id.get().toStringUtf8();
+      this.jdField_a_of_type_Long = (((qqstory_710_message.StoryMedalInfo)localObject).push_time.get() * 1000L);
+      this.jdField_e_of_type_JavaLangString = ((qqstory_710_message.StoryMedalInfo)localObject).content.get().toStringUtf8();
+      bool1 = bool10;
+      if (((qqstory_710_message.StoryMedalInfo)localObject).is_bigv.get() == 1) {
+        bool1 = true;
+      }
+      this.jdField_b_of_type_Boolean = bool1;
+      this.u = ((qqstory_710_message.StoryMedalInfo)localObject).cover_url.get().toStringUtf8();
+      this.jdField_a_of_type_Int = 10;
+    }
+    else if (paramStoryMessage.vote_info.has())
+    {
+      localObject = (qqstory_710_message.StoryVoteInfo)paramStoryMessage.vote_info.get();
+      this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryVoteInfo)localObject).union_id.get().toStringUtf8();
+      this.jdField_a_of_type_Long = (((qqstory_710_message.StoryVoteInfo)localObject).vote_time.get() * 1000L);
+      if (((qqstory_710_message.StoryVoteInfo)localObject).is_bigv.get() == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.jdField_b_of_type_Boolean = bool1;
+      bool1 = bool5;
+      if (((qqstory_710_message.StoryVoteInfo)localObject).video_del.has())
+      {
+        bool1 = bool5;
+        if (((qqstory_710_message.StoryVoteInfo)localObject).video_del.get() == 1) {
+          bool1 = true;
         }
-        if (paramStoryMessage.chall_info.has())
-        {
-          localObject = (qqstory_710_message.StoryChallengeInfo)paramStoryMessage.chall_info.get();
-          this.jdField_c_of_type_Int = ((qqstory_710_message.StoryChallengeInfo)localObject).comment_id.get();
-          this.jdField_a_of_type_Long = (((qqstory_710_message.StoryChallengeInfo)localObject).challenge_time.get() * 1000L);
-          this.jdField_e_of_type_JavaLangString = ((qqstory_710_message.StoryChallengeInfo)localObject).content.get().toStringUtf8();
-          if (((qqstory_710_message.StoryChallengeInfo)localObject).comment_del.get() == 1)
-          {
-            bool1 = true;
-            label2037:
-            this.jdField_f_of_type_Boolean = bool1;
-            if (((qqstory_710_message.StoryChallengeInfo)localObject).video_del.get() != 1) {
-              break label2106;
-            }
-          }
-          label2106:
-          for (bool1 = bool7;; bool1 = false)
-          {
-            this.jdField_g_of_type_Boolean = bool1;
-            this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryChallengeInfo)localObject).union_id.get().toStringUtf8();
-            this.s = ((qqstory_710_message.StoryChallengeInfo)localObject).challenge_feed_id.get().toStringUtf8();
-            this.jdField_a_of_type_Int = 19;
-            break;
-            bool1 = false;
-            break label2037;
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("MessageData", 2, "Story message item wrong data, no info in response.");
-        }
-        this.jdField_d_of_type_Boolean = false;
+      }
+      this.jdField_a_of_type_Boolean = bool1;
+      this.n = ((qqstory_710_message.StoryVoteInfo)localObject).vote_question.get().toStringUtf8();
+      this.o = ((qqstory_710_message.StoryVoteInfo)localObject).vote_answer.get().toStringUtf8();
+      this.p = ((qqstory_710_message.StoryVoteInfo)localObject).nick_postfix.get().toStringUtf8();
+      if (((qqstory_710_message.StoryVoteInfo)localObject).vote_type.get() == 1) {
+        this.jdField_a_of_type_Int = 12;
+      } else if (((qqstory_710_message.StoryVoteInfo)localObject).is_my_vote.get() == 1) {
+        this.jdField_a_of_type_Int = 13;
+      } else {
+        this.jdField_a_of_type_Int = 14;
       }
     }
+    else if (paramStoryMessage.grade_info.has())
+    {
+      localObject = (qqstory_710_message.StoryGradeInfo)paramStoryMessage.grade_info.get();
+      this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryGradeInfo)localObject).union_id.get().toStringUtf8();
+      this.jdField_a_of_type_Long = (((qqstory_710_message.StoryGradeInfo)localObject).grade_time.get() * 1000L);
+      if (((qqstory_710_message.StoryGradeInfo)localObject).is_bigv.get() == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.jdField_b_of_type_Boolean = bool1;
+      bool1 = bool6;
+      if (((qqstory_710_message.StoryGradeInfo)localObject).video_del.has())
+      {
+        bool1 = bool6;
+        if (((qqstory_710_message.StoryGradeInfo)localObject).video_del.get() == 1) {
+          bool1 = true;
+        }
+      }
+      this.jdField_a_of_type_Boolean = bool1;
+      this.q = ((qqstory_710_message.StoryGradeInfo)localObject).grade_question.get().toStringUtf8();
+      this.jdField_i_of_type_Int = ((qqstory_710_message.StoryGradeInfo)localObject).grade_option.get();
+      this.p = ((qqstory_710_message.StoryGradeInfo)localObject).nick_postfix.get().toStringUtf8();
+      if (((qqstory_710_message.StoryGradeInfo)localObject).grade_type.get() == 1) {
+        this.jdField_a_of_type_Int = 15;
+      } else if (((qqstory_710_message.StoryGradeInfo)localObject).is_my_grade.get() == 1) {
+        this.jdField_a_of_type_Int = 16;
+      } else {
+        this.jdField_a_of_type_Int = 17;
+      }
+    }
+    else if (paramStoryMessage.photo_info.has())
+    {
+      localObject = (qqstory_710_message.StoryPhotoTogetherInfo)paramStoryMessage.photo_info.get();
+      this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryPhotoTogetherInfo)localObject).union_id.get().toStringUtf8();
+      this.jdField_a_of_type_Long = (((qqstory_710_message.StoryPhotoTogetherInfo)localObject).photo_time.get() * 1000L);
+      if (((qqstory_710_message.StoryPhotoTogetherInfo)localObject).is_bigv.get() == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.jdField_b_of_type_Boolean = bool1;
+      if ((((qqstory_710_message.StoryPhotoTogetherInfo)localObject).video_del.has()) && (((qqstory_710_message.StoryPhotoTogetherInfo)localObject).video_del.get() == 1)) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.jdField_a_of_type_Boolean = bool1;
+      bool1 = bool2;
+      if (((qqstory_710_message.StoryPhotoTogetherInfo)localObject).comment_del.has())
+      {
+        bool1 = bool2;
+        if (((qqstory_710_message.StoryPhotoTogetherInfo)localObject).comment_del.get() == 1) {
+          bool1 = true;
+        }
+      }
+      this.jdField_e_of_type_Boolean = bool1;
+      this.r = ((qqstory_710_message.StoryPhotoTogetherInfo)localObject).photo_feed_id.get().toStringUtf8();
+      this.jdField_e_of_type_Int = ((qqstory_710_message.StoryPhotoTogetherInfo)localObject).at_video_ts.get();
+      this.jdField_a_of_type_Int = 18;
+    }
+    else if (paramStoryMessage.chall_info.has())
+    {
+      localObject = (qqstory_710_message.StoryChallengeInfo)paramStoryMessage.chall_info.get();
+      this.jdField_c_of_type_Int = ((qqstory_710_message.StoryChallengeInfo)localObject).comment_id.get();
+      this.jdField_a_of_type_Long = (((qqstory_710_message.StoryChallengeInfo)localObject).challenge_time.get() * 1000L);
+      this.jdField_e_of_type_JavaLangString = ((qqstory_710_message.StoryChallengeInfo)localObject).content.get().toStringUtf8();
+      if (((qqstory_710_message.StoryChallengeInfo)localObject).comment_del.get() == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.jdField_f_of_type_Boolean = bool1;
+      bool1 = bool7;
+      if (((qqstory_710_message.StoryChallengeInfo)localObject).video_del.get() == 1) {
+        bool1 = true;
+      }
+      this.jdField_g_of_type_Boolean = bool1;
+      this.jdField_a_of_type_JavaLangString = ((qqstory_710_message.StoryChallengeInfo)localObject).union_id.get().toStringUtf8();
+      this.s = ((qqstory_710_message.StoryChallengeInfo)localObject).challenge_feed_id.get().toStringUtf8();
+      this.jdField_a_of_type_Int = 19;
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("MessageData", 2, "Story message item wrong data, no info in response.");
+      }
+      this.jdField_d_of_type_Boolean = false;
+    }
+    if (paramStoryMessage.video_info.has())
+    {
+      this.u = paramStoryMessage.video_info.cover_url.get().toStringUtf8();
+      this.jdField_b_of_type_JavaLangString = paramStoryMessage.video_info.vid.get().toStringUtf8();
+      this.jdField_c_of_type_JavaLangString = paramStoryMessage.video_info.union_id.get().toStringUtf8();
+      this.jdField_g_of_type_JavaLangString = paramStoryMessage.video_info.vote_attr.get().toStringUtf8();
+      if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout = StoryVideoItem.PollLayout.a(this.jdField_g_of_type_JavaLangString);
+      }
+      if (!TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$InteractPasterLayout = StoryVideoItem.InteractPasterLayout.a(this.jdField_h_of_type_JavaLangString);
+      }
+    }
+    this.jdField_f_of_type_JavaLangString = paramStoryMessage.feed_id.get().toStringUtf8();
+    this.jdField_d_of_type_Int = paramStoryMessage.message_id.get();
+    this.jdField_f_of_type_Int = paramStoryMessage.src_type.get();
+    this.jdField_b_of_type_Long = paramStoryMessage.src_uid.get();
   }
   
   public String a()
@@ -416,7 +406,7 @@ public class MessageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.messagenotify.MessageData
  * JD-Core Version:    0.7.0.1
  */

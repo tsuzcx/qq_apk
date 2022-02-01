@@ -13,9 +13,9 @@ import android.widget.TextView;
 import com.tencent.av.utils.UITools;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.c2cshortcutbar.C2CShortcutAppInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.troop.utils.TroopAppShortcutUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,31 +27,32 @@ public class C2CShortcutBarStoreView$C2CShortcutBarStoreAdapter
   
   public C2CShortcutBarStoreView.C2CShortcutBarStoreViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558830, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558728, paramViewGroup, false);
     return new C2CShortcutBarStoreView.C2CShortcutBarStoreViewHolder(this.a, paramViewGroup);
   }
   
   @SuppressLint({"RecyclerView"})
   public void a(C2CShortcutBarStoreView.C2CShortcutBarStoreViewHolder paramC2CShortcutBarStoreViewHolder, int paramInt)
   {
-    boolean bool = true;
     C2CShortcutAppInfo localC2CShortcutAppInfo = (C2CShortcutAppInfo)C2CShortcutBarStoreView.a(this.a).get(paramInt);
     Object localObject = this.a.getContext();
     ImageView localImageView = paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidWidgetImageView;
     String str = localC2CShortcutAppInfo.c;
-    if (localC2CShortcutAppInfo.jdField_b_of_type_Int == 1)
-    {
-      TroopAppShortcutUtils.a((Context)localObject, localImageView, str, 19.0F, bool);
-      paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localC2CShortcutAppInfo.jdField_b_of_type_JavaLangString);
-      paramC2CShortcutBarStoreViewHolder.b.setText(localC2CShortcutAppInfo.e);
-      if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-        break label254;
-      }
+    int i = localC2CShortcutAppInfo.jdField_b_of_type_Int;
+    boolean bool = true;
+    if (i != 1) {
+      bool = false;
+    }
+    TroopAppShortcutUtils.a((Context)localObject, localImageView, str, 19.0F, bool);
+    paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localC2CShortcutAppInfo.jdField_b_of_type_JavaLangString);
+    paramC2CShortcutBarStoreViewHolder.b.setText(localC2CShortcutAppInfo.e);
+    if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
       paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
-      label113:
-      if ((localC2CShortcutAppInfo.a == null) || (localC2CShortcutAppInfo.a.size() <= 0)) {
-        break label269;
-      }
+    } else {
+      paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF03081A"));
+    }
+    if ((localC2CShortcutAppInfo.a != null) && (localC2CShortcutAppInfo.a.size() > 0))
+    {
       localObject = new Paint();
       ((Paint)localObject).setTextSize(ViewUtils.b(17.0F));
       float f1 = ViewUtils.a();
@@ -59,20 +60,13 @@ public class C2CShortcutBarStoreView$C2CShortcutBarStoreAdapter
       float f3 = UITools.a(this.a.getContext(), 72.0F);
       C2CShortcutBarStoreView.a(this.a, (int)(f1 - f2 - f3), paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout, localC2CShortcutAppInfo.a);
     }
-    for (;;)
+    else
     {
-      paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(UITools.a);
-      paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(new C2CShortcutBarStoreView.C2CShortcutBarStoreAdapter.1(this, paramInt));
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramC2CShortcutBarStoreViewHolder, paramInt, getItemId(paramInt));
-      return;
-      bool = false;
-      break;
-      label254:
-      paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF03081A"));
-      break label113;
-      label269:
       paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
+    paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(UITools.a);
+    paramC2CShortcutBarStoreViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(new C2CShortcutBarStoreView.C2CShortcutBarStoreAdapter.1(this, paramInt));
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramC2CShortcutBarStoreViewHolder, paramInt, getItemId(paramInt));
   }
   
   public int getItemCount()
@@ -82,7 +76,7 @@ public class C2CShortcutBarStoreView$C2CShortcutBarStoreAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.store.C2CShortcutBarStoreView.C2CShortcutBarStoreAdapter
  * JD-Core Version:    0.7.0.1
  */

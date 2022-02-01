@@ -9,7 +9,7 @@ public class LocationUtil
 {
   private static double a(double paramDouble)
   {
-    return 3.141592653589793D * paramDouble / 180.0D;
+    return paramDouble * 3.141592653589793D / 180.0D;
   }
   
   private static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
@@ -18,8 +18,7 @@ public class LocationUtil
     paramDouble3 = a(paramDouble3);
     paramDouble2 = a(paramDouble2);
     paramDouble4 = a(paramDouble4);
-    double d = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
-    return Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d)) * 2.0D * 6378137.0D;
+    return Math.asin(Math.sqrt(Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D) + Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D))) * 2.0D * 6378137.0D;
   }
   
   public static double a(LatLng paramLatLng1, LatLng paramLatLng2)
@@ -34,7 +33,7 @@ public class LocationUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.LocationUtil
  * JD-Core Version:    0.7.0.1
  */

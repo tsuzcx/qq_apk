@@ -23,7 +23,7 @@ public class AccountsPlugin
     return localActivity;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (("accounts".equals(paramString2)) && ("faceDelete".equals(paramString3)))
     {
@@ -35,7 +35,7 @@ public class AccountsPlugin
     return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.a = a();
@@ -43,7 +43,7 @@ public class AccountsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.AccountsPlugin
  * JD-Core Version:    0.7.0.1
  */

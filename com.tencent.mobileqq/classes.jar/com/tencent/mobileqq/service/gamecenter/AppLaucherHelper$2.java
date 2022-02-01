@@ -19,8 +19,13 @@ class AppLaucherHelper$2
   public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
     super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "geta1 OnException " + paramErrMsg);
+    if (QLog.isColorLevel())
+    {
+      paramWUserSigInfo = getClass().getSimpleName();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("geta1 OnException ");
+      localStringBuilder.append(paramErrMsg);
+      QLog.d(paramWUserSigInfo, 2, localStringBuilder.toString());
     }
     AppLaucherHelper.a = false;
     this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b.removeMessages(0);
@@ -32,8 +37,13 @@ class AppLaucherHelper$2
     AppLaucherHelper.a = false;
     if (paramInt2 != 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "geta1 failed " + paramInt2);
+      if (QLog.isColorLevel())
+      {
+        paramString = getClass().getSimpleName();
+        paramArrayOfByte1 = new StringBuilder();
+        paramArrayOfByte1.append("geta1 failed ");
+        paramArrayOfByte1.append(paramInt2);
+        QLog.d(paramString, 2, paramArrayOfByte1.toString());
       }
       return;
     }
@@ -45,7 +55,7 @@ class AppLaucherHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.gamecenter.AppLaucherHelper.2
  * JD-Core Version:    0.7.0.1
  */

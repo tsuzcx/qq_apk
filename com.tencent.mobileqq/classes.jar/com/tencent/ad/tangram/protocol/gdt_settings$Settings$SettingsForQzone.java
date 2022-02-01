@@ -3,7 +3,6 @@ package com.tencent.ad.tangram.protocol;
 public final class gdt_settings$Settings$SettingsForQzone
 {
   public boolean rewardedVideoSwitchToTangram = false;
-  public boolean storeExposureCheckerInMap = false;
 }
 
 

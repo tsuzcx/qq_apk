@@ -41,8 +41,9 @@ public final class mobile_sub_set_cover_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.MulRelsotionUrl != null) {
-      paramJceOutputStream.write(this.MulRelsotionUrl, 1);
+    Map localMap = this.MulRelsotionUrl;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
     paramJceOutputStream.write(this.syncflag, 2);
     paramJceOutputStream.write(this.coverScene, 3);
@@ -50,7 +51,7 @@ public final class mobile_sub_set_cover_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_set_cover_rsp
  * JD-Core Version:    0.7.0.1
  */

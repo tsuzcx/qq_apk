@@ -79,10 +79,13 @@ public class CircleOptions
   
   public CircleOptions level(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
-      return this;
+    if (paramInt >= OverlayLevel.OverlayLevelAboveRoads)
+    {
+      if (paramInt > OverlayLevel.OverlayLevelAboveLabels) {
+        return this;
+      }
+      this.i = paramInt;
     }
-    this.i = paramInt;
     return this;
   }
   
@@ -131,7 +134,7 @@ public class CircleOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.CircleOptions
  * JD-Core Version:    0.7.0.1
  */

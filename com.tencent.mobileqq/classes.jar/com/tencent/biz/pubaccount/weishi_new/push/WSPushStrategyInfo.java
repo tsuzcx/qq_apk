@@ -72,7 +72,17 @@ public class WSPushStrategyInfo
   
   public String toString()
   {
-    return "WSPushStrategyInfo{mScheme='" + this.mScheme + '\'' + ", mType=" + this.mType + ", mAbTest='" + this.mAbTest + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSPushStrategyInfo{mScheme='");
+    localStringBuilder.append(this.mScheme);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mType=");
+    localStringBuilder.append(this.mType);
+    localStringBuilder.append(", mAbTest='");
+    localStringBuilder.append(this.mAbTest);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -87,7 +97,7 @@ public class WSPushStrategyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo
  * JD-Core Version:    0.7.0.1
  */

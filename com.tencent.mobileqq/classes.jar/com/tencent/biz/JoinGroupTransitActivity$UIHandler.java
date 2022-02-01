@@ -17,23 +17,27 @@ class JoinGroupTransitActivity$UIHandler
   public void handleMessage(Message paramMessage)
   {
     JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
-    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
-      return;
-    }
-    switch (paramMessage.what)
+    if ((paramMessage != null) && (localJoinGroupTransitActivity != null))
     {
-    default: 
-      return;
-    case 0: 
+      if (localJoinGroupTransitActivity.isFinishing()) {
+        return;
+      }
+      int i = paramMessage.what;
+      if (i != 0)
+      {
+        if ((i != 1) && (i != 2) && (i != 3)) {
+          return;
+        }
+        localJoinGroupTransitActivity.finish();
+        return;
+      }
       JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
-      return;
     }
-    localJoinGroupTransitActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.JoinGroupTransitActivity.UIHandler
  * JD-Core Version:    0.7.0.1
  */

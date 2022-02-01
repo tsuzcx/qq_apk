@@ -8,6 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import unite.DynamicSearch.ResultItemGroup;
 
 public final class UniteSearch$RspBody
   extends MessageMicro<RspBody>
@@ -24,14 +25,15 @@ public final class UniteSearch$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 58, 64 }, new String[] { "result_code", "error_msg", "item_groups", "tab_groups", "is_end_topic", "cookie_topic", "search_ver", "trigger_netword_num" }, new Object[] { Integer.valueOf(0), "", null, null, Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 58, 64 }, new String[] { "result_code", "error_msg", "item_groups", "tab_groups", "is_end_topic", "cookie_topic", "search_ver", "trigger_netword_num" }, new Object[] { localInteger, "", null, null, localInteger, localByteStringMicro1, localByteStringMicro2, localInteger }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     pb.unite.search.UniteSearch.RspBody
  * JD-Core Version:    0.7.0.1
  */

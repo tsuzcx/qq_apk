@@ -18,10 +18,13 @@ public class AutoSaveUtils
   private static Set<String> a(boolean paramBoolean)
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("setting_auto_save_sp", 4);
-    if (paramBoolean) {}
-    for (String str = "qqsetting_auto_save_path_pic_key";; str = "qqsetting_auto_save_path_video_key") {
-      return SharedPreferencesHandler.a(localSharedPreferences, str, new HashSet());
+    String str;
+    if (paramBoolean) {
+      str = "qqsetting_auto_save_path_pic_key";
+    } else {
+      str = "qqsetting_auto_save_path_video_key";
     }
+    return SharedPreferencesHandler.a(localSharedPreferences, str, new HashSet());
   }
   
   public static void a(String paramString, boolean paramBoolean)
@@ -34,27 +37,26 @@ public class AutoSaveUtils
     if (a(paramBoolean1))
     {
       paramString = new AutoSaveUtils.1(paramString, paramBoolean1);
-      if (paramBoolean2) {
+      if (paramBoolean2)
+      {
         paramString.run();
+        return;
       }
+      ThreadManagerV2.executeOnFileThread(paramString);
     }
-    else
-    {
-      return;
-    }
-    ThreadManagerV2.executeOnFileThread(paramString);
   }
   
   private static void a(boolean paramBoolean)
   {
     SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("setting_auto_save_sp", 4).edit();
-    if (paramBoolean) {}
-    for (String str = "qqsetting_auto_save_path_pic_key";; str = "qqsetting_auto_save_path_video_key")
-    {
-      localEditor.putStringSet(str, new HashSet());
-      localEditor.commit();
-      return;
+    String str;
+    if (paramBoolean) {
+      str = "qqsetting_auto_save_path_pic_key";
+    } else {
+      str = "qqsetting_auto_save_path_video_key";
     }
+    localEditor.putStringSet(str, new HashSet());
+    localEditor.commit();
   }
   
   public static void a(boolean paramBoolean, String paramString)
@@ -67,76 +69,96 @@ public class AutoSaveUtils
   
   public static void a(boolean paramBoolean, List<String> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    while (!a(paramBoolean)) {
-      return;
-    }
-    Set localSet = a(paramBoolean);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      String str = (String)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoSaveUtils", 2, "autoSaveMediaInSp: isPic " + paramBoolean + ",path=" + str);
+      if (paramList.size() == 0) {
+        return;
       }
-      if (localSet.contains(str)) {
-        a(str, paramBoolean);
+      if (a(paramBoolean))
+      {
+        Set localSet = a(paramBoolean);
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          String str = (String)paramList.next();
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("autoSaveMediaInSp: isPic ");
+            localStringBuilder.append(paramBoolean);
+            localStringBuilder.append(",path=");
+            localStringBuilder.append(str);
+            QLog.d("AutoSaveUtils", 2, localStringBuilder.toString());
+          }
+          if (localSet.contains(str)) {
+            a(str, paramBoolean);
+          }
+        }
+        a(paramBoolean);
       }
     }
-    a(paramBoolean);
   }
   
   public static void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("setting_auto_save_sp", 4).edit();
     StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean1) {}
-    for (String str = "qqsetting_auto_save_pic_key";; str = "qqsetting_auto_save_video_key")
-    {
-      localEditor.putBoolean(str + BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramBoolean2);
-      localEditor.commit();
-      return;
+    String str;
+    if (paramBoolean1) {
+      str = "qqsetting_auto_save_pic_key";
+    } else {
+      str = "qqsetting_auto_save_video_key";
     }
+    localStringBuilder.append(str);
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localEditor.putBoolean(localStringBuilder.toString(), paramBoolean2);
+    localEditor.commit();
   }
   
   public static boolean a(boolean paramBoolean)
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("setting_auto_save_sp", 4);
     StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean) {}
-    for (String str = "qqsetting_auto_save_pic_key";; str = "qqsetting_auto_save_video_key") {
-      return localSharedPreferences.getBoolean(str + BaseApplicationImpl.getApplication().getRuntime().getAccount(), false);
+    String str;
+    if (paramBoolean) {
+      str = "qqsetting_auto_save_pic_key";
+    } else {
+      str = "qqsetting_auto_save_video_key";
     }
+    localStringBuilder.append(str);
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
   }
   
   public static void b(boolean paramBoolean, String paramString)
   {
-    HashSet localHashSet;
-    SharedPreferences.Editor localEditor;
     if (a(paramBoolean))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoSaveUtils", 2, "addAutoSavePath: isPic " + paramBoolean + ",tempPath=" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("addAutoSavePath: isPic ");
+        ((StringBuilder)localObject).append(paramBoolean);
+        ((StringBuilder)localObject).append(",tempPath=");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("AutoSaveUtils", 2, ((StringBuilder)localObject).toString());
       }
-      localHashSet = new HashSet(a(paramBoolean));
-      localHashSet.add(paramString);
-      localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("setting_auto_save_sp", 4).edit();
-      if (!paramBoolean) {
-        break label104;
+      Object localObject = new HashSet(a(paramBoolean));
+      ((Set)localObject).add(paramString);
+      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("setting_auto_save_sp", 4).edit();
+      if (paramBoolean) {
+        paramString = "qqsetting_auto_save_path_pic_key";
+      } else {
+        paramString = "qqsetting_auto_save_path_video_key";
       }
-    }
-    label104:
-    for (paramString = "qqsetting_auto_save_path_pic_key";; paramString = "qqsetting_auto_save_path_video_key")
-    {
-      SharedPreferencesHandler.a(localEditor, paramString, localHashSet);
+      SharedPreferencesHandler.a(localEditor, paramString, (Set)localObject);
       localEditor.commit();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.AutoSaveUtils
  * JD-Core Version:    0.7.0.1
  */

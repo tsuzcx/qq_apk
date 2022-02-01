@@ -1,55 +1,41 @@
 package com.tencent.mobileqq.profilecard.base.component;
 
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.avatar.observer.AvatarObserver;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class AbsProfileHeaderComponent$4
-  implements ActionSheet.OnButtonClickListener
+  extends AvatarObserver
 {
-  AbsProfileHeaderComponent$4(AbsProfileHeaderComponent paramAbsProfileHeaderComponent, String paramString1, String paramString2, int paramInt, boolean paramBoolean, ActionSheet paramActionSheet) {}
+  AbsProfileHeaderComponent$4(AbsProfileHeaderComponent paramAbsProfileHeaderComponent) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((paramInt == 0) && (AbsProfileHeaderComponent.access$700(this.this$0) != null))
-    {
-      paramView = new Intent(AbsProfileHeaderComponent.access$800(this.this$0), EditInfoActivity.class);
-      paramView.putExtra("title", this.val$tipsTemp);
-      paramView.putExtra("default_text", this.val$strDefault);
-      paramView.putExtra("uin", ((ProfileCardInfo)AbsProfileHeaderComponent.access$900(this.this$0)).jdField_a_of_type_ComTencentMobileqqDataCard.uin);
-      paramView.putExtra("edit_action", this.val$editAction);
-      paramView.putExtra("max_limit_mode", 1);
-      paramView.putExtra("edit_type", 2);
-      if (!this.val$isEditTroopCardTemp) {
-        break label169;
-      }
-      paramView.putExtra("max_num", 60);
-      paramView.putExtra("isTroopNick", true);
-      paramView.putExtra("troopUin", ((ProfileCardInfo)AbsProfileHeaderComponent.access$1000(this.this$0)).jdField_a_of_type_JavaLangString);
+    if ((paramBoolean) && (paramString.equals(((ProfileCardInfo)AbsProfileHeaderComponent.access$1000(this.this$0)).allInOne.uin)) && (this.this$0.mHeaderView != null)) {
+      this.this$0.mHeaderView.updateAvatar(((ProfileCardInfo)AbsProfileHeaderComponent.access$1100(this.this$0)).allInOne);
     }
-    for (;;)
+  }
+  
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsProfileHeaderComponent", 2, String.format("onUpdateMobileQQHead isSuccess=%s mobileNumber=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    }
+    if ((paramBoolean) && (((ProfileCardInfo)AbsProfileHeaderComponent.access$700(this.this$0)).allInOne != null))
     {
-      AbsProfileHeaderComponent.access$1100(this.this$0).startActivityForResult(paramView, 1034);
-      this.val$actionSheet.dismiss();
-      return;
-      label169:
-      paramInt = 36;
-      if (this.val$editAction == 2) {
-        paramInt = 60;
+      String str = ProfileUtils.getMobileNumberWithNationCode(((ProfileCardInfo)AbsProfileHeaderComponent.access$800(this.this$0)).allInOne);
+      if ((str != null) && (str.equals(paramString)) && (this.this$0.mHeaderView != null)) {
+        this.this$0.mHeaderView.updateAvatar(((ProfileCardInfo)AbsProfileHeaderComponent.access$900(this.this$0)).allInOne, 1, str, false);
       }
-      paramView.putExtra("max_num", paramInt);
-      paramView.putExtra("support_emotion", true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.component.AbsProfileHeaderComponent.4
  * JD-Core Version:    0.7.0.1
  */

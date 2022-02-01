@@ -41,23 +41,25 @@ public class AVGameLobbySurvivalContentInfo
   public String a()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    if ((this.jdField_a_of_type_Long <= 0L) || (this.jdField_b_of_type_Long <= 0L) || (this.jdField_a_of_type_Long > this.jdField_b_of_type_Long)) {
-      return "";
-    }
-    long l1 = this.jdField_b_of_type_Long;
-    long l2 = this.jdField_a_of_type_Long;
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MM月dd日 HH:mm");
-    localStringBuffer.append("时间：");
-    localStringBuffer.append(localSimpleDateFormat.format(Long.valueOf(this.jdField_a_of_type_Long * 1000L)));
-    localStringBuffer.append("～");
-    if (l1 - l2 >= 86400L) {
-      localStringBuffer.append(new SimpleDateFormat("MM月dd日 HH:mm").format(Long.valueOf(this.jdField_b_of_type_Long * 1000L)));
-    }
-    for (;;)
+    long l1 = this.jdField_a_of_type_Long;
+    if (l1 > 0L)
     {
-      return localStringBuffer.toString();
-      localStringBuffer.append(new SimpleDateFormat("HH:mm").format(Long.valueOf(this.jdField_b_of_type_Long * 1000L)));
+      long l2 = this.jdField_b_of_type_Long;
+      if ((l2 > 0L) && (l1 <= l2))
+      {
+        SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MM月dd日 HH:mm");
+        localStringBuffer.append("时间：");
+        localStringBuffer.append(localSimpleDateFormat.format(Long.valueOf(this.jdField_a_of_type_Long * 1000L)));
+        localStringBuffer.append("～");
+        if (l2 - l1 >= 86400L) {
+          localStringBuffer.append(new SimpleDateFormat("MM月dd日 HH:mm").format(Long.valueOf(this.jdField_b_of_type_Long * 1000L)));
+        } else {
+          localStringBuffer.append(new SimpleDateFormat("HH:mm").format(Long.valueOf(this.jdField_b_of_type_Long * 1000L)));
+        }
+        return localStringBuffer.toString();
+      }
     }
+    return "";
   }
   
   public List a()
@@ -131,14 +133,15 @@ public class AVGameLobbySurvivalContentInfo
     if (this.jdField_a_of_type_Long >= this.jdField_b_of_type_Long) {
       return 0;
     }
-    long l = System.currentTimeMillis() / 1000L;
-    if (l >= this.jdField_b_of_type_Long) {
+    long l1 = System.currentTimeMillis() / 1000L;
+    if (l1 >= this.jdField_b_of_type_Long) {
       return 4;
     }
-    if (l >= this.jdField_a_of_type_Long) {
+    long l2 = this.jdField_a_of_type_Long;
+    if (l1 >= l2) {
       return 3;
     }
-    if (this.jdField_a_of_type_Long - l > 900L) {
+    if (l2 - l1 > 900L) {
       return 1;
     }
     return 2;
@@ -251,7 +254,7 @@ public class AVGameLobbySurvivalContentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.data.AVGameLobbySurvivalContentInfo
  * JD-Core Version:    0.7.0.1
  */

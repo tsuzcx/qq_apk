@@ -101,43 +101,58 @@ public abstract class BorderCorner
   
   final void set(float paramFloat1, float paramFloat2, float paramFloat3, @NonNull RectF paramRectF, float paramFloat4)
   {
-    boolean bool2 = true;
-    int i;
-    if ((!FloatUtils.floatsEqual(this.mCornerRadius, paramFloat1)) || (!FloatUtils.floatsEqual(this.mPreBorderWidth, paramFloat2)) || (!FloatUtils.floatsEqual(this.mPostBorderWidth, paramFloat3)) || (!FloatUtils.floatsEqual(this.mAngleBisector, paramFloat4)) || ((this.mBorderBox != null) && (this.mBorderBox.equals(paramRectF))))
+    boolean bool1 = FloatUtils.floatsEqual(this.mCornerRadius, paramFloat1);
+    boolean bool2 = false;
+    if ((bool1) && (FloatUtils.floatsEqual(this.mPreBorderWidth, paramFloat2)) && (FloatUtils.floatsEqual(this.mPostBorderWidth, paramFloat3)) && (FloatUtils.floatsEqual(this.mAngleBisector, paramFloat4)))
     {
-      i = 1;
-      if (i != 0)
+      RectF localRectF = this.mBorderBox;
+      if ((localRectF == null) || (!localRectF.equals(paramRectF)))
       {
-        this.mCornerRadius = paramFloat1;
-        this.mPreBorderWidth = paramFloat2;
-        this.mPostBorderWidth = paramFloat3;
-        this.mBorderBox = paramRectF;
-        this.mAngleBisector = paramFloat4;
-        if ((this.mCornerRadius <= 0.0F) || (FloatUtils.floatsEqual(0.0F, this.mCornerRadius))) {
-          break label212;
-        }
-        bool1 = true;
-        label125:
-        this.hasOuterCorner = bool1;
-        if ((!this.hasOuterCorner) || (getPreBorderWidth() < 0.0F) || (getPostBorderWidth() < 0.0F) || (getOuterCornerRadius() <= getPreBorderWidth()) || (getOuterCornerRadius() <= getPostBorderWidth())) {
-          break label218;
-        }
+        i = 0;
+        break label85;
       }
     }
-    label212:
-    label218:
-    for (boolean bool1 = bool2;; bool1 = false)
+    int i = 1;
+    label85:
+    if (i != 0)
     {
+      this.mCornerRadius = paramFloat1;
+      this.mPreBorderWidth = paramFloat2;
+      this.mPostBorderWidth = paramFloat3;
+      this.mBorderBox = paramRectF;
+      this.mAngleBisector = paramFloat4;
+      paramFloat1 = this.mCornerRadius;
+      if ((paramFloat1 > 0.0F) && (!FloatUtils.floatsEqual(0.0F, paramFloat1))) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.hasOuterCorner = bool1;
+      bool1 = bool2;
+      if (this.hasOuterCorner)
+      {
+        bool1 = bool2;
+        if (getPreBorderWidth() >= 0.0F)
+        {
+          bool1 = bool2;
+          if (getPostBorderWidth() >= 0.0F)
+          {
+            bool1 = bool2;
+            if (getOuterCornerRadius() > getPreBorderWidth())
+            {
+              bool1 = bool2;
+              if (getOuterCornerRadius() > getPostBorderWidth()) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
       this.hasInnerCorner = bool1;
       if (this.hasOuterCorner) {
         prepareOval();
       }
       prepareRoundCorner();
-      return;
-      i = 0;
-      break;
-      bool1 = false;
-      break label125;
     }
   }
   
@@ -183,7 +198,7 @@ public abstract class BorderCorner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.style.BorderCorner
  * JD-Core Version:    0.7.0.1
  */

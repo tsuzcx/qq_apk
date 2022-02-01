@@ -14,13 +14,16 @@ class MiniSDKClientQIPCModule$1
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
     paramBundle = paramBundle.getString("shareJson");
-    QLog.d("MiniSDKClientQIPCModule", 1, "handleDirectShareSucCallback shareJsonString after = " + paramBundle);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleDirectShareSucCallback shareJsonString after = ");
+    localStringBuilder.append(paramBundle);
+    QLog.d("MiniSDKClientQIPCModule", 1, localStringBuilder.toString());
     MiniSDKClientQIPCModule.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

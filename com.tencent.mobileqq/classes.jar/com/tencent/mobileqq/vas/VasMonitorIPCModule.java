@@ -19,35 +19,44 @@ public class VasMonitorIPCModule
   
   public static VasMonitorIPCModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new VasMonitorIPCModule("VasMonitorIPCModule");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new VasMonitorIPCModule("VasMonitorIPCModule");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasMonitorIPCModule", 2, "action = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("action = ");
+      localStringBuilder.append(paramString);
+      QLog.d("VasMonitorIPCModule", 2, localStringBuilder.toString());
     }
-    if (paramBundle == null) {
-      QLog.d("VasMonitorIPCModule", 2, "vasreport Err params=null, action=" + paramString);
-    }
-    while ((!"action_vas_monitor".equals(paramString)) || (BaseApplicationImpl.getApplication() == null) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) || ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() == null)) {
+    if (paramBundle == null)
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("vasreport Err params=null, action=");
+      paramBundle.append(paramString);
+      QLog.d("VasMonitorIPCModule", 2, paramBundle.toString());
       return null;
     }
-    VasMonitorHandler.a(null, paramBundle.getString("key_appid"), paramBundle.getString("key_err_code"), paramBundle.getString("key_log"), paramBundle.getString("key_key4"), paramBundle.getString("key_key5"), paramBundle.getString("key_key6"), paramBundle.getFloat("key_value2"), paramBundle.getFloat("key_value3"));
+    if (("action_vas_monitor".equals(paramString)) && (BaseApplicationImpl.getApplication() != null) && ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) && ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() != null)) {
+      VasMonitorHandler.a(null, paramBundle.getString("key_appid"), paramBundle.getString("key_err_code"), paramBundle.getString("key_log"), paramBundle.getString("key_key4"), paramBundle.getString("key_key5"), paramBundle.getString("key_key6"), paramBundle.getFloat("key_value2"), paramBundle.getFloat("key_value3"));
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasMonitorIPCModule
  * JD-Core Version:    0.7.0.1
  */

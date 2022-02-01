@@ -11,11 +11,10 @@ public class l
 {
   public static boolean a(Context paramContext)
   {
-    boolean bool = true;
     if (Looper.getMainLooper() != Looper.myLooper()) {
-      bool = b(paramContext);
+      return b(paramContext);
     }
-    return bool;
+    return true;
   }
   
   private static boolean a(File paramFile)
@@ -29,71 +28,69 @@ public class l
     }
     catch (Throwable paramFile)
     {
-      Log.e("TbsCheckUtils", "isOatFileBroken exception: " + paramFile);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isOatFileBroken exception: ");
+      localStringBuilder.append(paramFile);
+      Log.e("TbsCheckUtils", localStringBuilder.toString());
     }
     return false;
   }
   
   public static boolean b(Context paramContext)
   {
-    for (;;)
+    try
     {
-      int i;
-      try
+      if (Build.VERSION.SDK_INT >= 21)
       {
-        if (Build.VERSION.SDK_INT >= 21)
+        if (Build.VERSION.SDK_INT > 25) {
+          return true;
+        }
+        paramContext = c(paramContext);
+        if (paramContext == null) {
+          return true;
+        }
+        Object localObject = paramContext.listFiles(new l.1());
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
         {
-          if (Build.VERSION.SDK_INT > 25) {
-            return true;
-          }
-          paramContext = c(paramContext);
-          if (paramContext != null)
+          paramContext = localObject[i];
+          if ((paramContext.isFile()) && (paramContext.exists()))
           {
-            paramContext = paramContext.listFiles(new l.1());
-            int j = paramContext.length;
-            i = 0;
-            if (i < j)
+            boolean bool = a(paramContext);
+            if (bool)
             {
-              File localFile = paramContext[i];
-              if ((!localFile.isFile()) || (!localFile.exists())) {
-                break label159;
-              }
-              if (a(localFile))
-              {
-                TbsLog.w("TbsCheckUtils", "" + localFile + " is invalid --> check failed!");
-                localFile.delete();
-                return false;
-              }
-              TbsLog.i("TbsCheckUtils", "" + localFile + " #4 check success!");
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("");
+              ((StringBuilder)localObject).append(paramContext);
+              ((StringBuilder)localObject).append(" is invalid --> check failed!");
+              TbsLog.w("TbsCheckUtils", ((StringBuilder)localObject).toString());
+              paramContext.delete();
+              return false;
             }
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("");
+            localStringBuilder.append(paramContext);
+            localStringBuilder.append(" #4 check success!");
+            TbsLog.i("TbsCheckUtils", localStringBuilder.toString());
           }
+          i += 1;
         }
       }
-      catch (Throwable paramContext)
-      {
-        paramContext.printStackTrace();
-        TbsLog.i("TbsCheckUtils", "checkTbsValidity -->#5 check ok!");
-      }
       return true;
-      label159:
-      i += 1;
     }
+    catch (Throwable paramContext)
+    {
+      paramContext.printStackTrace();
+      TbsLog.i("TbsCheckUtils", "checkTbsValidity -->#5 check ok!");
+    }
+    return true;
   }
   
   private static File c(Context paramContext)
   {
-    File localFile = new File(QbSdk.getTbsFolderDir(paramContext), "core_share");
-    if (localFile != null)
-    {
-      if (localFile.isDirectory())
-      {
-        paramContext = localFile;
-        if (localFile.exists()) {}
-      }
-      else
-      {
-        paramContext = null;
-      }
+    paramContext = new File(QbSdk.getTbsFolderDir(paramContext), "core_share");
+    if ((paramContext.isDirectory()) && (paramContext.exists())) {
       return paramContext;
     }
     return null;
@@ -101,7 +98,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.l
  * JD-Core Version:    0.7.0.1
  */

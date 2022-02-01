@@ -11,7 +11,7 @@ public final class WeishiAggregatePageRsp
   extends JceStruct
 {
   static s_button cache_bottom_button = new s_button();
-  static int cache_page_type = 0;
+  static int cache_page_type;
   static s_outshare cache_share_info = new s_outshare();
   static s_weishi cache_weishi_info = new s_weishi();
   public s_button bottom_button = null;
@@ -57,35 +57,42 @@ public final class WeishiAggregatePageRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 0);
+    Object localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 1);
+    localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.page_type, 2);
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 3);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.video_num, 4);
     paramJceOutputStream.write(this.like_num, 5);
-    if (this.shot_page_title != null) {
-      paramJceOutputStream.write(this.shot_page_title, 6);
+    localObject = this.shot_page_title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.bottom_button != null) {
-      paramJceOutputStream.write(this.bottom_button, 7);
+    localObject = this.bottom_button;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.share_info != null) {
-      paramJceOutputStream.write(this.share_info, 8);
+    localObject = this.share_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.weishi_info != null) {
-      paramJceOutputStream.write(this.weishi_info, 9);
+    localObject = this.weishi_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.WeishiAggregatePageRsp
  * JD-Core Version:    0.7.0.1
  */

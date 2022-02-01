@@ -35,39 +35,47 @@ public class ReqComResult
   
   public void a(WTogetherCommon.Result paramResult)
   {
-    if (paramResult != null)
-    {
+    if (paramResult != null) {
       this.b = paramResult.errcode.get();
-      if (paramResult == null) {
-        break label53;
-      }
-      this.jdField_a_of_type_JavaLangString = paramResult.errmsg.get();
-      label30:
-      if (this.b != 0) {
-        break label61;
-      }
-    }
-    label53:
-    label61:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    } else {
       this.b = -1;
-      break;
-      this.jdField_a_of_type_JavaLangString = null;
-      break label30;
     }
+    if (paramResult != null) {
+      this.jdField_a_of_type_JavaLangString = paramResult.errmsg.get();
+    } else {
+      this.jdField_a_of_type_JavaLangString = null;
+    }
+    boolean bool;
+    if (this.b == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.jdField_a_of_type_Boolean = bool;
   }
   
   public String toString()
   {
-    return "ComResult{from: " + this.jdField_a_of_type_Int + ", roomId: " + this.jdField_a_of_type_Long + ", isSuccess: " + this.jdField_a_of_type_Boolean + ", errCode: " + this.b + ", errMsg: " + this.jdField_a_of_type_JavaLangString + ", action: " + this.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ComResult{from: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", roomId: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", isSuccess: ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", errCode: ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", errMsg: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", action: ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.data.ReqComResult
  * JD-Core Version:    0.7.0.1
  */

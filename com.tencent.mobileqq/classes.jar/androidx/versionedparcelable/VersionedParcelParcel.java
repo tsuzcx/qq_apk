@@ -44,9 +44,10 @@ class VersionedParcelParcel
   
   public void closeField()
   {
-    if (this.mCurrentField >= 0)
+    int i = this.mCurrentField;
+    if (i >= 0)
     {
-      int i = this.mPositionLookup.get(this.mCurrentField);
+      i = this.mPositionLookup.get(i);
       int j = this.mParcel.dataPosition();
       this.mParcel.setDataPosition(i);
       this.mParcel.writeInt(j - i);
@@ -57,11 +58,16 @@ class VersionedParcelParcel
   protected VersionedParcel createSubParcel()
   {
     Parcel localParcel = this.mParcel;
-    int j = this.mParcel.dataPosition();
-    if (this.mNextRead == this.mOffset) {}
-    for (int i = this.mEnd;; i = this.mNextRead) {
-      return new VersionedParcelParcel(localParcel, j, i, this.mPrefix + "  ", this.mReadCache, this.mWriteCache, this.mParcelizerCache);
+    int k = localParcel.dataPosition();
+    int j = this.mNextRead;
+    int i = j;
+    if (j == this.mOffset) {
+      i = this.mEnd;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mPrefix);
+    localStringBuilder.append("  ");
+    return new VersionedParcelParcel(localParcel, k, i, localStringBuilder.toString(), this.mReadCache, this.mWriteCache, this.mParcelizerCache);
   }
   
   public boolean readBoolean()
@@ -97,22 +103,21 @@ class VersionedParcelParcel
   
   public boolean readField(int paramInt)
   {
-    if (this.mNextRead < this.mEnd) {
-      if (this.mFieldId != paramInt) {}
-    }
-    while (this.mFieldId == paramInt)
+    while (this.mNextRead < this.mEnd)
     {
-      return true;
-      if (String.valueOf(this.mFieldId).compareTo(String.valueOf(paramInt)) > 0) {
+      int i = this.mFieldId;
+      if (i == paramInt) {
+        return true;
+      }
+      if (String.valueOf(i).compareTo(String.valueOf(paramInt)) > 0) {
         return false;
       }
       this.mParcel.setDataPosition(this.mNextRead);
-      int i = this.mParcel.readInt();
+      i = this.mParcel.readInt();
       this.mFieldId = this.mParcel.readInt();
-      this.mNextRead = (i + this.mNextRead);
-      break;
+      this.mNextRead += i;
     }
-    return false;
+    return this.mFieldId == paramInt;
   }
   
   public float readFloat()
@@ -156,13 +161,7 @@ class VersionedParcelParcel
   
   public void writeBoolean(boolean paramBoolean)
   {
-    Parcel localParcel = this.mParcel;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localParcel.writeInt(i);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void writeBundle(Bundle paramBundle)
@@ -239,7 +238,7 @@ class VersionedParcelParcel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.versionedparcelable.VersionedParcelParcel
  * JD-Core Version:    0.7.0.1
  */

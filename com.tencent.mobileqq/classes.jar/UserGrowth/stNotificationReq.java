@@ -30,20 +30,23 @@ public final class stNotificationReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.personid != null) {
-      paramJceOutputStream.write(this.personid, 0);
+    Object localObject = this.personid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.linkStrategyArgs != null) {
-      paramJceOutputStream.write(this.linkStrategyArgs, 1);
+    localObject = this.linkStrategyArgs;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.push_info != null) {
-      paramJceOutputStream.write(this.push_info, 2);
+    localObject = this.push_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stNotificationReq
  * JD-Core Version:    0.7.0.1
  */

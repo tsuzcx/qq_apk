@@ -24,13 +24,15 @@ public final class oidb_cmd0xad6$ArtcleCache
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 13, 16, 26, 32, 40, 50, 56, 80 }, new String[] { "fixed32_modify_time", "uint32_use_webview", "msg_rsp_body", "uint64_low_version", "uint64_under", "bytes_zip_html", "uint32_compatible", "uint64_expired_time" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Long.valueOf(0L) }, ArtcleCache.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 13, 16, 26, 32, 40, 50, 56, 80 }, new String[] { "fixed32_modify_time", "uint32_use_webview", "msg_rsp_body", "uint64_low_version", "uint64_under", "bytes_zip_html", "uint32_compatible", "uint64_expired_time" }, new Object[] { localInteger, localInteger, null, localLong, localLong, localByteStringMicro, localInteger, localLong }, ArtcleCache.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArtcleCache
  * JD-Core Version:    0.7.0.1
  */

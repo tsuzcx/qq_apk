@@ -16,12 +16,30 @@ class ModelFastColorFont
   
   public String toString()
   {
-    return "FounderColorModel{type=" + this.jdField_a_of_type_Int + ", charAt=" + this.jdField_a_of_type_Char + ", width=" + this.b + ", height=" + this.c + ", left=" + this.d + ", top=" + this.e + ", lineIndex=" + this.f + ", isMissingWord=" + this.jdField_a_of_type_Boolean + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FounderColorModel{type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", charAt=");
+    localStringBuilder.append(this.jdField_a_of_type_Char);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", left=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", top=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", lineIndex=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", isMissingWord=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.Vas.ColorFont.ModelFastColorFont
  * JD-Core Version:    0.7.0.1
  */

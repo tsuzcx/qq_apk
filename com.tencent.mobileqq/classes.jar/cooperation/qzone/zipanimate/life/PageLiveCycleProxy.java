@@ -1,8 +1,8 @@
 package cooperation.qzone.zipanimate.life;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle.Event;
+import androidx.lifecycle.LifecycleOwner;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,19 +19,17 @@ public class PageLiveCycleProxy
   
   public static void addPageLifeCycle(PageLifeCycle paramPageLifeCycle)
   {
-    ArrayList localArrayList;
     if (paramPageLifeCycle != null)
     {
-      localArrayList = getPageLifeCycleList();
-      if (localArrayList != null) {
-        break label13;
+      ArrayList localArrayList = getPageLifeCycleList();
+      if (localArrayList == null) {
+        return;
       }
+      if (localArrayList.contains(paramPageLifeCycle)) {
+        return;
+      }
+      localArrayList.add(paramPageLifeCycle);
     }
-    label13:
-    while (localArrayList.contains(paramPageLifeCycle)) {
-      return;
-    }
-    localArrayList.add(paramPageLifeCycle);
   }
   
   private static Lifecycle getCurrentLifecycle()
@@ -48,13 +46,12 @@ public class PageLiveCycleProxy
     if (localLifecycle == null) {
       return null;
     }
-    if ((!mPageLifeCycleList.containsKey(localLifecycle)) || (mPageLifeCycleList.get(localLifecycle) == null))
-    {
-      ArrayList localArrayList = new ArrayList();
-      mPageLifeCycleList.put(localLifecycle, localArrayList);
-      return localArrayList;
+    if ((mPageLifeCycleList.containsKey(localLifecycle)) && (mPageLifeCycleList.get(localLifecycle) != null)) {
+      return (ArrayList)mPageLifeCycleList.get(localLifecycle);
     }
-    return (ArrayList)mPageLifeCycleList.get(localLifecycle);
+    ArrayList localArrayList = new ArrayList();
+    mPageLifeCycleList.put(localLifecycle, localArrayList);
+    return localArrayList;
   }
   
   private static void onLifeCycleDestory()
@@ -80,7 +77,12 @@ public class PageLiveCycleProxy
         if (mLifeCycleList.search(paramLifecycle) == 1) {
           return;
         }
-        QLog.i("PageLiveCycleProxy", 1, "sBindLifeCycle = " + paramLifecycle.getClass().getName() + " data = " + paramLifecycle);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sBindLifeCycle = ");
+        localStringBuilder.append(paramLifecycle.getClass().getName());
+        localStringBuilder.append(" data = ");
+        localStringBuilder.append(paramLifecycle);
+        QLog.i("PageLiveCycleProxy", 1, localStringBuilder.toString());
         paramLifecycle.addObserver(mProxy);
         mLifeCycleList.push(paramLifecycle);
         return;
@@ -94,49 +96,49 @@ public class PageLiveCycleProxy
   
   public static void sUnBindLifeCycle(Lifecycle paramLifecycle)
   {
-    if (paramLifecycle != null) {}
-    try
-    {
-      QLog.i("PageLiveCycleProxy", 1, "sUnBindLifeCycle = " + paramLifecycle.getClass().getName());
-      paramLifecycle.removeObserver(mProxy);
-      if (!mLifeCycleList.isEmpty())
+    if (paramLifecycle != null) {
+      try
       {
-        onLifeCycleDestory();
-        mLifeCycleList.pop();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sUnBindLifeCycle = ");
+        localStringBuilder.append(paramLifecycle.getClass().getName());
+        QLog.i("PageLiveCycleProxy", 1, localStringBuilder.toString());
+        paramLifecycle.removeObserver(mProxy);
+        if (!mLifeCycleList.isEmpty())
+        {
+          onLifeCycleDestory();
+          mLifeCycleList.pop();
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception paramLifecycle)
-    {
-      paramLifecycle.printStackTrace();
+      catch (Exception paramLifecycle)
+      {
+        paramLifecycle.printStackTrace();
+      }
     }
   }
   
   public void onLifecycleChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
     Object localObject = getPageLifeCycleList();
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((PageLifeCycle)((Iterator)localObject).next()).onLifecycleChanged(paramLifecycleOwner, paramEvent);
-      }
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PageLifeCycle)((Iterator)localObject).next()).onLifecycleChanged(paramLifecycleOwner, paramEvent);
     }
   }
   
   public void onPageCreate(LifecycleOwner paramLifecycleOwner)
   {
     Object localObject = getPageLifeCycleList();
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((PageLifeCycle)((Iterator)localObject).next()).onPageCreate(paramLifecycleOwner);
-      }
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PageLifeCycle)((Iterator)localObject).next()).onPageCreate(paramLifecycleOwner);
     }
   }
   
@@ -145,62 +147,54 @@ public class PageLiveCycleProxy
   public void onPagePause(LifecycleOwner paramLifecycleOwner)
   {
     Object localObject = getPageLifeCycleList();
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((PageLifeCycle)((Iterator)localObject).next()).onPagePause(paramLifecycleOwner);
-      }
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PageLifeCycle)((Iterator)localObject).next()).onPagePause(paramLifecycleOwner);
     }
   }
   
   public void onPageResume(LifecycleOwner paramLifecycleOwner)
   {
     Object localObject = getPageLifeCycleList();
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((PageLifeCycle)((Iterator)localObject).next()).onPageResume(paramLifecycleOwner);
-      }
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PageLifeCycle)((Iterator)localObject).next()).onPageResume(paramLifecycleOwner);
     }
   }
   
   public void onPageStart(LifecycleOwner paramLifecycleOwner)
   {
     Object localObject = getPageLifeCycleList();
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((PageLifeCycle)((Iterator)localObject).next()).onPageStart(paramLifecycleOwner);
-      }
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PageLifeCycle)((Iterator)localObject).next()).onPageStart(paramLifecycleOwner);
     }
   }
   
   public void onPageStop(LifecycleOwner paramLifecycleOwner)
   {
     Object localObject = getPageLifeCycleList();
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((PageLifeCycle)((Iterator)localObject).next()).onPageStop(paramLifecycleOwner);
-      }
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PageLifeCycle)((Iterator)localObject).next()).onPageStop(paramLifecycleOwner);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.zipanimate.life.PageLiveCycleProxy
  * JD-Core Version:    0.7.0.1
  */

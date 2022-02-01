@@ -25,31 +25,34 @@ public class HighwayConfBean
   {
     RequestFinishQuery.QUERY_HOLE_MAX_COUNT = paramAppRuntime.getApplication().getSharedPreferences("sp_highway_request_query_finish", 0).getInt("sp_highway_request_query_finish_count", 3);
     RequestFinishQuery.QUERY_HOLE_INTERVAL = paramAppRuntime.getApplication().getSharedPreferences("sp_highway_request_query_finish", 0).getInt("sp_highway_request_query_finish_interval", 5000);
-    BdhLogUtil.LogEvent("E", "init: QUERY_HOLE_MAX_COUNT:" + RequestFinishQuery.QUERY_HOLE_MAX_COUNT + " QUERY_HOLE_INTERVAL:" + RequestFinishQuery.QUERY_HOLE_INTERVAL);
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("init: QUERY_HOLE_MAX_COUNT:");
+    paramAppRuntime.append(RequestFinishQuery.QUERY_HOLE_MAX_COUNT);
+    paramAppRuntime.append(" QUERY_HOLE_INTERVAL:");
+    paramAppRuntime.append(RequestFinishQuery.QUERY_HOLE_INTERVAL);
+    BdhLogUtil.LogEvent("E", paramAppRuntime.toString());
   }
   
   public static HighwayConfBean parse(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return null;
-      try
+    }
+    try
+    {
+      paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
+      Object localObject = paramString.getElementsByTagName("bdh_config");
+      if ((localObject != null) && (((NodeList)localObject).getLength() > 0))
       {
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-        Object localObject = paramString.getElementsByTagName("bdh_config");
-        if ((localObject != null) && (((NodeList)localObject).getLength() > 0))
-        {
-          localObject = new HighwayConfBean();
-          ((HighwayConfBean)localObject).requestQueryFinishCount = Integer.parseInt(paramString.getElementsByTagName("max_finish_query_hole_time").item(0).getFirstChild().getNodeValue());
-          ((HighwayConfBean)localObject).requestQueryFinishInterval = Integer.parseInt(paramString.getElementsByTagName("finish_query_hole_interval").item(0).getFirstChild().getNodeValue());
-          return localObject;
-        }
+        localObject = new HighwayConfBean();
+        ((HighwayConfBean)localObject).requestQueryFinishCount = Integer.parseInt(paramString.getElementsByTagName("max_finish_query_hole_time").item(0).getFirstChild().getNodeValue());
+        ((HighwayConfBean)localObject).requestQueryFinishInterval = Integer.parseInt(paramString.getElementsByTagName("finish_query_hole_interval").item(0).getFirstChild().getNodeValue());
+        return localObject;
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
     return null;
   }
@@ -60,12 +63,17 @@ public class HighwayConfBean
     paramAppRuntime.getApplication().getSharedPreferences("sp_highway_request_query_finish", 0).edit().putInt("sp_highway_request_query_finish_interval", paramHighwayConfBean.requestQueryFinishInterval).commit();
     RequestFinishQuery.QUERY_HOLE_MAX_COUNT = paramHighwayConfBean.requestQueryFinishCount;
     RequestFinishQuery.QUERY_HOLE_INTERVAL = paramHighwayConfBean.requestQueryFinishInterval;
-    BdhLogUtil.LogEvent("E", "updateHighwayConf: QUERY_HOLE_MAX_COUNT:" + RequestFinishQuery.QUERY_HOLE_MAX_COUNT + " QUERY_HOLE_INTERVAL:" + RequestFinishQuery.QUERY_HOLE_INTERVAL);
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("updateHighwayConf: QUERY_HOLE_MAX_COUNT:");
+    paramAppRuntime.append(RequestFinishQuery.QUERY_HOLE_MAX_COUNT);
+    paramAppRuntime.append(" QUERY_HOLE_INTERVAL:");
+    paramAppRuntime.append(RequestFinishQuery.QUERY_HOLE_INTERVAL);
+    BdhLogUtil.LogEvent("E", paramAppRuntime.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.api.HighwayConfBean
  * JD-Core Version:    0.7.0.1
  */

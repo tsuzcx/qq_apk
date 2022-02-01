@@ -1,5 +1,6 @@
 package com.tencent.avgame.gamelogic.data;
 
+import androidx.annotation.Nullable;
 import com.tencent.avgame.gamelogic.GameUtil;
 import com.tencent.avgame.gamelogic.ITopic;
 import com.tencent.avgame.gamelogic.Indexable;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nullable;
 import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
 import trpc.qq_vgame.common.AvGameCommon.GameQuestionInfo;
 import trpc.qq_vgame.common.AvGameCommon.QuestionFeedbackInfo;
@@ -95,8 +95,9 @@ public abstract class TopicBase
     this.jdField_b_of_type_JavaUtilArrayList.addAll(paramTopicBase.jdField_b_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_JavaUtilList.addAll(paramTopicBase.jdField_a_of_type_JavaUtilList);
     this.jdField_c_of_type_Int = paramTopicBase.jdField_c_of_type_Int;
-    if (paramTopicBase.jdField_c_of_type_JavaUtilArrayList != null) {
-      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(paramTopicBase.jdField_c_of_type_JavaUtilArrayList);
+    ArrayList localArrayList = paramTopicBase.jdField_c_of_type_JavaUtilArrayList;
+    if (localArrayList != null) {
+      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(localArrayList);
     }
     this.e = paramTopicBase.e;
     this.d = paramTopicBase.d;
@@ -176,11 +177,19 @@ public abstract class TopicBase
   
   public boolean a(ITopic paramITopic)
   {
-    if (paramITopic == null) {}
-    while ((!Utils.a(c(), paramITopic.c())) || (!Utils.a(b(), paramITopic.b()))) {
+    boolean bool2 = false;
+    if (paramITopic == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (Utils.a(c(), paramITopic.c()))
+    {
+      bool1 = bool2;
+      if (Utils.a(b(), paramITopic.b())) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   @Nullable
@@ -196,10 +205,11 @@ public abstract class TopicBase
   
   public int c()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes == null) {
+    AVRes localAVRes = this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes;
+    if (localAVRes == null) {
       return 0;
     }
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes.jdField_a_of_type_Int;
+    return localAVRes.jdField_a_of_type_Int;
   }
   
   public String c()
@@ -223,27 +233,66 @@ public abstract class TopicBase
     if (this.jdField_a_of_type_Boolean)
     {
       localStringBuilder.append("\n【题库】:");
-      localStringBuilder.append("topicsCount").append("=").append(this.jdField_a_of_type_JavaUtilList.size()).append("|");
-      localStringBuilder.append("【题目列表】").append("=").append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray())).append("|");
+      localStringBuilder.append("topicsCount");
+      localStringBuilder.append("=");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+      localStringBuilder.append("|");
+      localStringBuilder.append("【题目列表】");
+      localStringBuilder.append("=");
+      localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray()));
+      localStringBuilder.append("|");
     }
-    for (;;)
+    else
     {
-      return localStringBuilder.toString();
       localStringBuilder.append("\n【题目】:");
-      localStringBuilder.append("id").append("=").append(this.jdField_a_of_type_Int).append("|");
-      localStringBuilder.append("gameType").append("=").append(b()).append("|");
-      localStringBuilder.append("index").append("=").append(this.jdField_b_of_type_Int).append("|");
-      localStringBuilder.append("contentRes").append("=").append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes).append("|");
-      localStringBuilder.append("answerRes").append("=").append(this.jdField_b_of_type_ComTencentAvgameGamelogicDataAVRes).append("|");
-      localStringBuilder.append("tips").append("=").append(GameUtil.a(this.jdField_a_of_type_JavaUtilArrayList)).append("|");
-      localStringBuilder.append("feedBacks").append("=").append(Arrays.toString(this.jdField_b_of_type_JavaUtilArrayList.toArray())).append("|");
-      localStringBuilder.append("answerOptionForClick=").append(this.jdField_c_of_type_JavaUtilArrayList).append("|");
-      localStringBuilder.append("answerScoreForClick=").append(this.e).append("|");
-      localStringBuilder.append("isBusinessFlag=").append(this.jdField_b_of_type_Boolean).append("|");
-      localStringBuilder.append("businessAdsTips=").append(this.jdField_c_of_type_JavaLangString).append("|");
-      localStringBuilder.append("prizeId=").append(this.f).append("|");
-      localStringBuilder.append("answerIndexForClick=").append(this.d).append("|");
+      localStringBuilder.append("id");
+      localStringBuilder.append("=");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("|");
+      localStringBuilder.append("gameType");
+      localStringBuilder.append("=");
+      localStringBuilder.append(b());
+      localStringBuilder.append("|");
+      localStringBuilder.append("index");
+      localStringBuilder.append("=");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append("|");
+      localStringBuilder.append("contentRes");
+      localStringBuilder.append("=");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes);
+      localStringBuilder.append("|");
+      localStringBuilder.append("answerRes");
+      localStringBuilder.append("=");
+      localStringBuilder.append(this.jdField_b_of_type_ComTencentAvgameGamelogicDataAVRes);
+      localStringBuilder.append("|");
+      localStringBuilder.append("tips");
+      localStringBuilder.append("=");
+      localStringBuilder.append(GameUtil.a(this.jdField_a_of_type_JavaUtilArrayList));
+      localStringBuilder.append("|");
+      localStringBuilder.append("feedBacks");
+      localStringBuilder.append("=");
+      localStringBuilder.append(Arrays.toString(this.jdField_b_of_type_JavaUtilArrayList.toArray()));
+      localStringBuilder.append("|");
+      localStringBuilder.append("answerOptionForClick=");
+      localStringBuilder.append(this.jdField_c_of_type_JavaUtilArrayList);
+      localStringBuilder.append("|");
+      localStringBuilder.append("answerScoreForClick=");
+      localStringBuilder.append(this.e);
+      localStringBuilder.append("|");
+      localStringBuilder.append("isBusinessFlag=");
+      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append("|");
+      localStringBuilder.append("businessAdsTips=");
+      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append("|");
+      localStringBuilder.append("prizeId=");
+      localStringBuilder.append(this.f);
+      localStringBuilder.append("|");
+      localStringBuilder.append("answerIndexForClick=");
+      localStringBuilder.append(this.d);
+      localStringBuilder.append("|");
     }
+    return localStringBuilder.toString();
   }
   
   public int e()
@@ -253,7 +302,7 @@ public abstract class TopicBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.TopicBase
  * JD-Core Version:    0.7.0.1
  */

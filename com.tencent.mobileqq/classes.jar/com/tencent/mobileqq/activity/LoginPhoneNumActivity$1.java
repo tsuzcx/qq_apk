@@ -24,39 +24,39 @@ class LoginPhoneNumActivity$1
   {
     switch (paramMessage.what)
     {
-    }
-    do
-    {
+    default: 
       return;
-      this.a.finish();
-      return;
-      this.a.finish();
-      return;
+    case 2016: 
       QLog.d("LoginPhoneNumActivity", 1, "fangshuiqiang ticket return");
-    } while (!LoginPhoneNumActivity.access$000(this.a));
-    Object localObject = (Bundle)paramMessage.obj;
-    paramMessage = ((Bundle)localObject).getString("ticket", "");
-    String str = ((Bundle)localObject).getString("randstr", "");
-    localObject = ((Bundle)localObject).getString("appid", "0");
-    GatewayVerify.ReqBody localReqBody = new GatewayVerify.ReqBody();
-    localReqBody.msg_req_bind_phone_login.msg_pic_verify_info.bytes_verify_sig.set(ByteStringMicro.copyFromUtf8(paramMessage));
-    localReqBody.msg_req_bind_phone_login.msg_pic_verify_info.bytes_rand_key.set(ByteStringMicro.copyFromUtf8(str));
-    localReqBody.msg_req_bind_phone_login.msg_pic_verify_info.uint64_appid.set(Long.parseLong((String)localObject));
-    localReqBody.msg_req_bind_phone_login.msg_pic_verify_info.setHasFlag(true);
-    localReqBody.msg_req_bind_phone_login.setHasFlag(true);
-    localReqBody.msg_req_cmd_17.msg_req_phone_sms_extend_login.uint32_support_flag.set(1);
-    localReqBody.msg_req_cmd_17.msg_req_phone_sms_extend_login.setHasFlag(true);
-    localReqBody.msg_req_cmd_17.str_mobile_phone.set(this.a.phoneNum);
-    localReqBody.msg_req_cmd_17.uint32_country_code.set(Integer.parseInt(this.a.countryCode));
-    localReqBody.msg_req_cmd_17.setHasFlag(true);
-    localReqBody.setHasFlag(true);
-    LoginPhoneNumActivity.access$102(this.a, localReqBody.toByteArray());
-    LoginPhoneNumActivity.access$200(this.a);
+      Object localObject = (Bundle)paramMessage.obj;
+      paramMessage = ((Bundle)localObject).getString("ticket", "");
+      String str = ((Bundle)localObject).getString("randstr", "");
+      localObject = ((Bundle)localObject).getString("appid", "0");
+      GatewayVerify.ReqBody localReqBody = new GatewayVerify.ReqBody();
+      localReqBody.msg_req_bind_phone_login.msg_pic_verify_info.bytes_verify_sig.set(ByteStringMicro.copyFromUtf8(paramMessage));
+      localReqBody.msg_req_bind_phone_login.msg_pic_verify_info.bytes_rand_key.set(ByteStringMicro.copyFromUtf8(str));
+      localReqBody.msg_req_bind_phone_login.msg_pic_verify_info.uint64_appid.set(Long.parseLong((String)localObject));
+      localReqBody.msg_req_bind_phone_login.msg_pic_verify_info.setHasFlag(true);
+      localReqBody.msg_req_bind_phone_login.setHasFlag(true);
+      localReqBody.msg_req_cmd_17.msg_req_phone_sms_extend_login.uint32_support_flag.set(1);
+      localReqBody.msg_req_cmd_17.msg_req_phone_sms_extend_login.setHasFlag(true);
+      localReqBody.msg_req_cmd_17.str_mobile_phone.set(this.a.phoneNum);
+      localReqBody.msg_req_cmd_17.uint32_country_code.set(Integer.parseInt(this.a.countryCode));
+      localReqBody.msg_req_cmd_17.setHasFlag(true);
+      localReqBody.setHasFlag(true);
+      LoginPhoneNumActivity.access$002(this.a, localReqBody.toByteArray());
+      LoginPhoneNumActivity.access$100(this.a);
+      return;
+    case 2015: 
+      this.a.finish();
+      return;
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginPhoneNumActivity.1
  * JD-Core Version:    0.7.0.1
  */

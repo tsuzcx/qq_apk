@@ -14,7 +14,8 @@ class VcCamera$CloseCompleteRunnable
   
   public void run()
   {
-    if ((this.mHost != null) && (this.mHost.get() != null)) {
+    WeakReference localWeakReference = this.mHost;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       ((VcCamera)this.mHost.get()).onCloseCamera();
     }
   }

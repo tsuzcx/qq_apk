@@ -21,8 +21,8 @@ public class QZoneUnreadServletLogic$WMDConfig
   
   public void a()
   {
-    JSONArray localJSONArray;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
       try
       {
         JSONObject localJSONObject = new JSONObject();
@@ -33,37 +33,40 @@ public class QZoneUnreadServletLogic$WMDConfig
         localJSONObject.put("report_time", this.d);
         if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
         {
-          localJSONArray = new JSONArray();
+          localObject = new JSONArray();
           Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
           while (localIterator.hasNext())
           {
             String str = (String)localIterator.next();
-            if (!TextUtils.isEmpty(str))
-            {
-              localJSONArray.put(str);
-              continue;
-              return;
+            if (!TextUtils.isEmpty(str)) {
+              ((JSONArray)localObject).put(str);
             }
           }
+          localJSONObject.put("blacks", localObject);
         }
+        LocalMultiProcConfig.putString4Uin("qzone_wmd_config", localJSONObject.toString(), BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("save wmd config:");
+        ((StringBuilder)localObject).append(localJSONObject.toString());
+        QLog.i("UndealCount.QZoneUnreadServletLogic", 2, ((StringBuilder)localObject).toString());
+        return;
       }
       catch (Exception localException)
       {
         QLog.e("UndealCount.QZoneUnreadServletLogic", 1, localException, new Object[0]);
+        return;
       }
     }
-    do
+    else
     {
-      do
-      {
-        localException.put("blacks", localJSONArray);
-        LocalMultiProcConfig.putString4Uin("qzone_wmd_config", localException.toString(), BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-      } while (!QLog.isColorLevel());
-      QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "save wmd config:" + localException.toString());
-      return;
       LocalMultiProcConfig.putString4Uin("qzone_wmd_config", "", BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "save wmd config:null");
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "save wmd config:null");
+      }
+    }
   }
   
   public boolean a()
@@ -72,8 +75,12 @@ public class QZoneUnreadServletLogic$WMDConfig
     try
     {
       Object localObject = LocalMultiProcConfig.getString4Uin("qzone_wmd_config", "", BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "load wmd config:" + (String)localObject);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("load wmd config:");
+        localStringBuilder.append((String)localObject);
+        QLog.i("UndealCount.QZoneUnreadServletLogic", 2, localStringBuilder.toString());
       }
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
@@ -106,25 +113,13 @@ public class QZoneUnreadServletLogic$WMDConfig
   
   public boolean a(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    return (localArrayList != null) && (localArrayList.size() > 0) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic.WMDConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -23,33 +23,36 @@ public final class JankCanaryAgent$Companion
   
   private final JankTraceLevel toJankTraceLevel(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return JankTraceLevel.NONE;
-    case 1: 
-      return JankTraceLevel.DETAIL;
+      if (paramInt != 2) {
+        return JankTraceLevel.NONE;
+      }
+      return JankTraceLevel.BRIEF;
     }
-    return JankTraceLevel.BRIEF;
+    return JankTraceLevel.DETAIL;
   }
   
   private final int toNative(@NotNull JankTraceLevel paramJankTraceLevel)
   {
-    switch (JankCanaryAgent.Companion.WhenMappings.$EnumSwitchMapping$0[paramJankTraceLevel.ordinal()])
+    int i = JankCanaryAgent.Companion.WhenMappings.$EnumSwitchMapping$0[paramJankTraceLevel.ordinal()];
+    if (i != 1)
     {
-    default: 
-      throw new NoWhenBranchMatchedException();
-    case 1: 
-      return 0;
-    case 2: 
+      if (i != 2)
+      {
+        if (i == 3) {
+          return 2;
+        }
+        throw new NoWhenBranchMatchedException();
+      }
       return 1;
     }
-    return 2;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.debug.JankCanaryAgent.Companion
  * JD-Core Version:    0.7.0.1
  */

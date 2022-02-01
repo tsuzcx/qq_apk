@@ -13,11 +13,19 @@ class PinnedHeadAndFootExpandableListView$1
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      long l = this.a.getExpandableListPosition(this.a.getFirstVisiblePosition());
+      paramMotionEvent = this.a;
+      long l = paramMotionEvent.getExpandableListPosition(paramMotionEvent.getFirstVisiblePosition());
       if ((ExpandableListView.getPackedPositionType(l) == 0) || (ExpandableListView.getPackedPositionType(l) == 1))
       {
         int i = ExpandableListView.getPackedPositionGroup(l);
-        if ((this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener == null) || (!this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener.onGroupClick(this.a, paramView, i, this.a.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$ExpandableListAdapter.getGroupId(i)))) {
+        if (this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener != null)
+        {
+          paramMotionEvent = this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener;
+          PinnedHeadAndFootExpandableListView localPinnedHeadAndFootExpandableListView = this.a;
+          if (paramMotionEvent.onGroupClick(localPinnedHeadAndFootExpandableListView, paramView, i, localPinnedHeadAndFootExpandableListView.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$ExpandableListAdapter.getGroupId(i))) {}
+        }
+        else
+        {
           this.a.collapseGroup(i);
         }
       }
@@ -27,7 +35,7 @@ class PinnedHeadAndFootExpandableListView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PinnedHeadAndFootExpandableListView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,12 @@ class OverlayView$3
     if (paramLottieDrawable != null)
     {
       OverlayView.b(this.a, paramLottieDrawable);
-      if (QLog.isColorLevel()) {
-        QLog.d("OverlayView", 2, "loadLottieAnim success needRecoverFriendHeadCheerLottie = " + OverlayView.b(this.a));
+      if (QLog.isColorLevel())
+      {
+        paramLottieDrawable = new StringBuilder();
+        paramLottieDrawable.append("loadLottieAnim success needRecoverFriendHeadCheerLottie = ");
+        paramLottieDrawable.append(OverlayView.b(this.a));
+        QLog.d("OverlayView", 2, paramLottieDrawable.toString());
       }
       if (OverlayView.b(this.a))
       {
@@ -29,7 +33,7 @@ class OverlayView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.overlay.OverlayView.3
  * JD-Core Version:    0.7.0.1
  */

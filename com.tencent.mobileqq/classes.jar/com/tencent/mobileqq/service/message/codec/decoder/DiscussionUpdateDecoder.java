@@ -17,33 +17,33 @@ public class DiscussionUpdateDecoder
 {
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    if ((paramList == null) || (paramMsg == null) || (!paramMsg.msg_body.has()) || (!paramMsg.msg_body.msg_content.has())) {}
-    do
+    if ((paramList != null) && (paramMsg != null) && (paramMsg.msg_body.has()))
     {
-      int i;
-      do
-      {
-        do
-        {
-          return;
-          paramMsg = paramMsg.msg_body.msg_content.get().toByteArray();
-          PkgTools.getLongData(paramMsg, 0);
-          i = paramMsg[4];
-          if (i != 25) {
-            break;
-          }
-        } while (paramDecodeProtoPkgContext.d);
-        DiscMessageProcessor.a(paramMessageHandler.a, paramMsg, 5, null, false);
+      if (!paramMsg.msg_body.msg_content.has()) {
         return;
-      } while (i != 35);
-      QLog.i("ApolloPushManager", 1, "[discuss.OffLine]");
-    } while (paramDecodeProtoPkgContext.d);
-    DiscMessageProcessor.b(paramMessageHandler.a, paramMsg, 5, null, false);
+      }
+      paramMsg = paramMsg.msg_body.msg_content.get().toByteArray();
+      PkgTools.getLongData(paramMsg, 0);
+      int i = paramMsg[4];
+      if (i == 25)
+      {
+        if (!paramDecodeProtoPkgContext.d) {
+          DiscMessageProcessor.a(paramMessageHandler.a, paramMsg, 5, null, false);
+        }
+      }
+      else if (i == 35)
+      {
+        QLog.i("ApolloPushManager", 1, "[discuss.OffLine]");
+        if (!paramDecodeProtoPkgContext.d) {
+          DiscMessageProcessor.b(paramMessageHandler.a, paramMsg, 5, null, false);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.DiscussionUpdateDecoder
  * JD-Core Version:    0.7.0.1
  */

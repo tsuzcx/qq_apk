@@ -20,7 +20,7 @@ class HotPicPageView$MyViewHolder
     if (paramOnHolderItemClickListener != null)
     {
       this.a = paramOnHolderItemClickListener;
-      this.d = ((ImageView)paramView.findViewById(2131368560));
+      this.d = ((ImageView)paramView.findViewById(2131368303));
       this.d.setTag("HotPicControlTag");
       this.itemView.setOnClickListener(this);
       this.itemView.setOnLongClickListener(this);
@@ -30,26 +30,27 @@ class HotPicPageView$MyViewHolder
   
   public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a(paramView, getPosition());
+    OnHolderItemClickListener localOnHolderItemClickListener = this.a;
+    if (localOnHolderItemClickListener != null) {
+      localOnHolderItemClickListener.a(paramView, getPosition());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onLongClick(View paramView)
   {
-    boolean bool = false;
-    if (this.a != null)
+    OnHolderItemClickListener localOnHolderItemClickListener = this.a;
+    if (localOnHolderItemClickListener != null)
     {
-      this.a.b(paramView, getPosition());
-      bool = true;
+      localOnHolderItemClickListener.b(paramView, getPosition());
+      return true;
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.MyViewHolder
  * JD-Core Version:    0.7.0.1
  */

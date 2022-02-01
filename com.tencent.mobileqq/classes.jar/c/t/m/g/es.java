@@ -37,37 +37,47 @@ public final class es
     {
       ScanResult localScanResult = (ScanResult)localIterator.next();
       String str = localScanResult.BSSID;
-      if ((str == null) || (str.equals("000000000000")) || (str.equals("00-00-00-00-00-00")) || (str.equals("00:00:00:00:00:00")) || (localScanResult.level >= 0)) {
+      if ((str != null) && (!str.equals("000000000000")) && (!str.equals("00-00-00-00-00-00")) && (!str.equals("00:00:00:00:00:00")) && (localScanResult.level < 0))
+      {
+        if (localHashSet.contains(str)) {
+          localIterator.remove();
+        } else {
+          localHashSet.add(str);
+        }
+      }
+      else {
         localIterator.remove();
-      } else if (localHashSet.contains(str)) {
-        localIterator.remove();
-      } else {
-        localHashSet.add(str);
       }
     }
     new StringBuilder("after step1 filter : ").append(paramList.size());
     try
     {
       b(paramList);
-      label142:
+      label145:
       new StringBuilder("after step2 filter : ").append(paramList.size());
       return;
     }
     catch (Throwable localThrowable)
     {
-      break label142;
+      break label145;
     }
   }
   
   @SuppressLint({"NewApi"})
   private static void b(List<ScanResult> paramList)
   {
-    ArrayList localArrayList2 = null;
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    ArrayList localArrayList2;
+    Object localObject;
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return;
+      }
+      int i = Build.VERSION.SDK_INT;
+      localArrayList2 = null;
+      localObject = localArrayList2;
+      if (i < 21) {}
     }
-    Object localObject = localArrayList2;
-    if (Build.VERSION.SDK_INT >= 21) {}
     try
     {
       localObject = ((ScanResult)paramList.get(0)).getClass().getField("wifiSsid");
@@ -77,16 +87,20 @@ public final class es
       while (paramList.hasNext())
       {
         ScanResult localScanResult = (ScanResult)paramList.next();
-        if ((Build.VERSION.SDK_INT >= 21) && (localObject != null)) {
-          try
+        if ((Build.VERSION.SDK_INT >= 21) && (localObject != null)) {}
+        try
+        {
+          if (((Field)localObject).get(localScanResult) == null)
           {
-            if (((Field)localObject).get(localScanResult) == null)
-            {
-              paramList.remove();
-              localArrayList2.add(localScanResult);
-            }
+            paramList.remove();
+            localArrayList2.add(localScanResult);
           }
-          catch (Exception localException) {}
+        }
+        catch (Exception localException)
+        {
+          label124:
+          ArrayList localArrayList1;
+          break label124;
         }
       }
       localArrayList2.size();
@@ -96,14 +110,14 @@ public final class es
     {
       for (;;)
       {
-        ArrayList localArrayList1 = localArrayList2;
+        localArrayList1 = localArrayList2;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.es
  * JD-Core Version:    0.7.0.1
  */

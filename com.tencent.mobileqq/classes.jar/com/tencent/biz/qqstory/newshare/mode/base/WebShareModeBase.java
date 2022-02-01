@@ -31,7 +31,12 @@ public abstract class WebShareModeBase
   {
     super.a(paramShareQQData);
     paramShareQQData.b = 2;
-    paramShareQQData.d = ("[" + QQStoryConstant.a + "] " + this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(QQStoryConstant.a);
+    localStringBuilder.append("] ");
+    localStringBuilder.append(this.a);
+    paramShareQQData.d = localStringBuilder.toString();
     paramShareQQData.a = this.d;
     paramShareQQData.k = this.a;
     paramShareQQData.l = this.b;
@@ -51,9 +56,10 @@ public abstract class WebShareModeBase
   {
     super.a(paramShareSinaData);
     paramShareSinaData.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    paramShareSinaData.e = this.d;
+    String str = this.d;
+    paramShareSinaData.e = str;
     paramShareSinaData.a = this.a;
-    paramShareSinaData.d = ShareUtils.a(this.d);
+    paramShareSinaData.d = ShareUtils.a(str);
   }
   
   public void a(ShareWeChatData paramShareWeChatData)
@@ -78,7 +84,7 @@ public abstract class WebShareModeBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.WebShareModeBase
  * JD-Core Version:    0.7.0.1
  */

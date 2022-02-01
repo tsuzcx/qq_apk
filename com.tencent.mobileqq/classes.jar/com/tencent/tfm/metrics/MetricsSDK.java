@@ -102,21 +102,21 @@ public class MetricsSDK
     if (paramMetricsConfig.getReportInterval() >= 1000L) {
       this.collector.updateReportInterval(paramMetricsConfig.getReportInterval());
     }
-    if (paramMetricsConfig.getDimensionProvider() == null) {}
-    for (paramContext = new DefaultDimensionProvider(localContext);; paramContext = paramMetricsConfig.getDimensionProvider())
-    {
-      this.dimensionProvider = paramContext;
-      AppInfo.setChannel(paramMetricsConfig.getChannel());
-      paramContext = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-      localContext.registerReceiver(new NetworkStateReceiver(), paramContext);
-      setLogEnable(paramMetricsConfig.isLogEnable());
-      return;
+    if (paramMetricsConfig.getDimensionProvider() == null) {
+      paramContext = new DefaultDimensionProvider(localContext);
+    } else {
+      paramContext = paramMetricsConfig.getDimensionProvider();
     }
+    this.dimensionProvider = paramContext;
+    AppInfo.setChannel(paramMetricsConfig.getChannel());
+    paramContext = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+    localContext.registerReceiver(new NetworkStateReceiver(), paramContext);
+    setLogEnable(paramMetricsConfig.isLogEnable());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.MetricsSDK
  * JD-Core Version:    0.7.0.1
  */

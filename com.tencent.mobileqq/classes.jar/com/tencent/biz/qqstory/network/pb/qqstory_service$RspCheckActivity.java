@@ -8,14 +8,20 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class qqstory_service$RspCheckActivity
   extends MessageMicro<RspCheckActivity>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "result", "is_activity", "next_check_time" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0) }, RspCheckActivity.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field is_activity = PBField.initUInt32(0);
   public final PBUInt32Field next_check_time = PBField.initUInt32(0);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "result", "is_activity", "next_check_time" }, new Object[] { null, localInteger, localInteger }, RspCheckActivity.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity
  * JD-Core Version:    0.7.0.1
  */

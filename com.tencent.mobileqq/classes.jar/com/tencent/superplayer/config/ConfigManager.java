@@ -33,18 +33,21 @@ public class ConfigManager
   
   public static String groupName2OriginGroupName(String paramString)
   {
-    return RequestRootGroup.getRequestRootGroup() + GROUP_SEPARATOR + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(RequestRootGroup.getRequestRootGroup());
+    localStringBuilder.append(GROUP_SEPARATOR);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static boolean needLoadConfig(int paramInt)
   {
-    if (SuperPlayerSDKMgr.getContext() == null) {
+    if (SuperPlayerSDKMgr.getContext() == null)
+    {
       LogUtil.w("ConfigManager", "needLoadConfig false for context is null");
-    }
-    while ((SuperPlayerSDKMgr.getPlatform() == 170303) && (paramInt != 104)) {
       return false;
     }
-    return true;
+    return (SuperPlayerSDKMgr.getPlatform() != 170303) || (paramInt == 104);
   }
   
   private boolean needRequest()
@@ -63,7 +66,12 @@ public class ConfigManager
     long l2 = SuperPlayerSDKMgr.getSdkOption().configRequestIntervalInHour * 60;
     if (l1 < l2)
     {
-      LogUtil.w("ConfigManager", "Your app is not need to Request. currentIntervalInMinute：" + l1 + ",    configRequestIntervalInMinute：" + l2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Your app is not need to Request. currentIntervalInMinute：");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(",    configRequestIntervalInMinute：");
+      localStringBuilder.append(l2);
+      LogUtil.w("ConfigManager", localStringBuilder.toString());
       return false;
     }
     return true;
@@ -87,15 +95,16 @@ public class ConfigManager
   
   public void init()
   {
-    if (SuperPlayerSDKMgr.getContext() == null) {}
-    do
-    {
+    if (SuperPlayerSDKMgr.getContext() == null) {
       return;
-      this.mSharedPreferences = SuperPlayerSDKMgr.getContext().getSharedPreferences(SP_FILE_NAME, 0);
-    } while ((!SuperPlayerSDKMgr.getSdkOption().serverConfigEnable) || (!needRequest()));
-    this.mSharedPreferences.edit().putLong(SP_KEY_LAST_REQUEST_TIME, System.currentTimeMillis()).apply();
-    LogUtil.d("ConfigManager", "PullConfigFromServer from rainbow.");
-    pullConfigFromServer();
+    }
+    this.mSharedPreferences = SuperPlayerSDKMgr.getContext().getSharedPreferences(SP_FILE_NAME, 0);
+    if ((SuperPlayerSDKMgr.getSdkOption().serverConfigEnable) && (needRequest()))
+    {
+      this.mSharedPreferences.edit().putLong(SP_KEY_LAST_REQUEST_TIME, System.currentTimeMillis()).apply();
+      LogUtil.d("ConfigManager", "PullConfigFromServer from rainbow.");
+      pullConfigFromServer();
+    }
   }
   
   public void setCallback(ConfigManager.OnConfigCallback paramOnConfigCallback)
@@ -105,7 +114,7 @@ public class ConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.config.ConfigManager
  * JD-Core Version:    0.7.0.1
  */

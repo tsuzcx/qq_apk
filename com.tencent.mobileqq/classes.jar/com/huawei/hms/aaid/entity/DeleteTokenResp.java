@@ -7,7 +7,7 @@ public class DeleteTokenResp
   implements IMessageEntity
 {
   @Packed
-  private int retCode = 0;
+  public int retCode = 0;
   
   public int getRetCode()
   {
@@ -21,7 +21,7 @@ public class DeleteTokenResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.aaid.entity.DeleteTokenResp
  * JD-Core Version:    0.7.0.1
  */

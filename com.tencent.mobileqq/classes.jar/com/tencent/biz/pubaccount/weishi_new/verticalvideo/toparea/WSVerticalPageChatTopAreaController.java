@@ -1,7 +1,5 @@
 package com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea;
 
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
 import android.view.View;
 import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
@@ -11,45 +9,39 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalUtils
 public class WSVerticalPageChatTopAreaController
   extends AbsWsUIGroup<Object>
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private final WSVerticalPageFragment a;
   
-  public WSVerticalPageChatTopAreaController(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public WSVerticalPageChatTopAreaController(WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
+    super(paramWSVerticalPageFragment.getContext());
+    this.a = paramWSVerticalPageFragment;
   }
   
-  public void a()
+  protected void a() {}
+  
+  protected int b()
   {
-    if ((a() != null) && ((a() instanceof stSimpleMetaFeed))) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
-    }
+    return 2131560008;
   }
   
-  public int b()
+  protected void b() {}
+  
+  protected void c() {}
+  
+  protected void e()
   {
-    return 2131560127;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) {
+    if (this.a == null) {
       return;
     }
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131381213);
-    WSVerticalUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), localRelativeLayout);
-    a(2131381214).setOnClickListener(new WSVerticalPageChatTopAreaController.1(this));
-    a(2131381215).setOnClickListener(new WSVerticalPageChatTopAreaController.2(this));
+    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380469);
+    WSVerticalUtils.a(this.a.getBaseActivity(), localRelativeLayout);
+    a(2131380470).setOnClickListener(new WSVerticalPageChatTopAreaController.1(this));
+    a(2131380471).setOnClickListener(new WSVerticalPageChatTopAreaController.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea.WSVerticalPageChatTopAreaController
  * JD-Core Version:    0.7.0.1
  */

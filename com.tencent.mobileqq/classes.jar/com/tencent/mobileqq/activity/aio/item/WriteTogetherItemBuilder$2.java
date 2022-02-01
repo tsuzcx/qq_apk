@@ -17,12 +17,12 @@ class WriteTogetherItemBuilder$2
       return;
     }
     WriteTogetherItemBuilder.a(this.this$0, this.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, Integer.valueOf(2131382002), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, -4, Boolean.valueOf(true));
+    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, Integer.valueOf(2131381207), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, -4, Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.WriteTogetherItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

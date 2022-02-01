@@ -16,37 +16,33 @@ class TimelineView$ViewHolder
   
   private void setCover()
   {
-    Object localObject2 = null;
     int i = getAdapterPosition();
-    if ((i == 0) || (i == TimelineView.access$1900(this.this$0) + 1))
+    if ((i != 0) && (i != TimelineView.access$1900(this.this$0) + 1))
     {
-      ((ImageView)this.itemView).setImageBitmap(null);
-      return;
-    }
-    Object localObject1 = localObject2;
-    if (TimelineView.access$2400(this.this$0) != null)
-    {
-      Bitmap localBitmap = TimelineView.access$2400(this.this$0).getCover(i - 1);
-      localObject1 = localObject2;
-      if (localBitmap != null)
+      Bitmap localBitmap;
+      if (TimelineView.access$2400(this.this$0) != null)
       {
-        localObject1 = localObject2;
-        if (!localBitmap.isRecycled()) {
-          localObject1 = localBitmap;
-        }
+        localBitmap = TimelineView.access$2400(this.this$0).getCover(i - 1);
+        if ((localBitmap != null) && (!localBitmap.isRecycled())) {}
       }
-    }
-    if ((localObject1 != null) && (!localObject1.isRecycled()))
-    {
-      ((ImageView)this.itemView).setImageBitmap(localObject1);
+      else
+      {
+        localBitmap = null;
+      }
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
+      {
+        ((ImageView)this.itemView).setImageBitmap(localBitmap);
+        return;
+      }
+      ((ImageView)this.itemView).setImageDrawable(TimelineView.access$2500(this.this$0));
       return;
     }
-    ((ImageView)this.itemView).setImageDrawable(TimelineView.access$2500(this.this$0));
+    ((ImageView)this.itemView).setImageBitmap(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.timeline.TimelineView.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

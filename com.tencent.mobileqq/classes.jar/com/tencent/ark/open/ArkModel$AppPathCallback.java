@@ -1,6 +1,6 @@
 package com.tencent.ark.open;
 
-import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.Logger;
 import java.lang.ref.WeakReference;
 
 class ArkModel$AppPathCallback
@@ -13,27 +13,22 @@ class ArkModel$AppPathCallback
     this.mWeakWrapper = paramWeakReference;
   }
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo)
   {
     ArkModel localArkModel = (ArkModel)this.mWeakWrapper.get();
     if (localArkModel == null)
     {
-      ArkModel.access$000().logE("ArkApp.ArkModel", "onGetAppPathByName.wrapper == null");
+      Logger.logE("ArkApp.ArkModel", "onGetAppPathByName.wrapper == null");
       return;
     }
-    if (paramAppPathInfo != null) {}
-    for (paramObject = paramAppPathInfo.path;; paramObject = null)
-    {
-      localArkModel.mExtraTimerRecord.getAppFromLocal = false;
-      localArkModel.mExtraTimerRecord.endOfGetApp = System.currentTimeMillis();
-      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
-      {
-        paramAppPathInfo = paramAppPathInfo.appTempInfo.templateView;
-        ArkModel.access$100(localArkModel).view = paramAppPathInfo;
-      }
-      ArkModel.access$200(localArkModel, paramObject, paramInt, paramString);
-      return;
+    if (paramAppPathInfo != null) {
+      paramAppPathInfo = paramAppPathInfo.path;
+    } else {
+      paramAppPathInfo = null;
     }
+    localArkModel.mExtraTimerRecord.getAppFromLocal = false;
+    localArkModel.mExtraTimerRecord.endOfGetApp = System.currentTimeMillis();
+    ArkModel.access$100(localArkModel, paramAppPathInfo, ArkModel.access$000(localArkModel), paramInt, paramString);
   }
 }
 

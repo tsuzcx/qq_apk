@@ -1,20 +1,90 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import android.widget.TextView;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 class TroopActivity$5
-  implements Runnable
+  implements TabBarView.OnTabChangeListener
 {
-  TroopActivity$5(TroopActivity paramTroopActivity, TextView paramTextView) {}
+  TroopActivity$5(TroopActivity paramTroopActivity) {}
   
-  public void run()
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    this.a.sendAccessibilityEvent(8);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b();
+    }
+    if (this.a.b != 2)
+    {
+      if (paramInt2 != 0)
+      {
+        if (paramInt2 != 1)
+        {
+          ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+          ReportController.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+          this.a.jdField_a_of_type_Int = 0;
+        }
+        else
+        {
+          ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
+          ReportController.b(this.a.app, "CliOper", "", "", "0X8006621", "0X8006621", 0, 0, "", "", "", "");
+          this.a.jdField_a_of_type_Int = 1;
+        }
+      }
+      else
+      {
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        ReportController.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+      }
+    }
+    else if (paramInt2 != 0)
+    {
+      if (paramInt2 != 1)
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {
+          localObject = "0";
+        } else {
+          localObject = "1";
+        }
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", (String)localObject, "", "");
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
+      }
+      else
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {
+          localObject = "0";
+        } else {
+          localObject = "1";
+        }
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", (String)localObject, "", "");
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
+      }
+    }
+    else
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {
+        localObject = "0";
+      } else {
+        localObject = "1";
+      }
+      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", (String)localObject, "", "");
+      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
+      this.a.jdField_a_of_type_Int = 0;
+    }
+    Object localObject = this.a;
+    ((TroopActivity)localObject).a(((TroopActivity)localObject).jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1234);
+    TroopActivity.a(this.a, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopActivity.5
  * JD-Core Version:    0.7.0.1
  */

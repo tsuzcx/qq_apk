@@ -7,31 +7,31 @@ class CameraRoamingStrategy$4
 {
   CameraRoamingStrategy$4(CameraRoamingStrategy paramCameraRoamingStrategy) {}
   
-  public void doOnDeleteEmoResult(int paramInt)
+  protected void doOnDeleteEmoResult(int paramInt)
   {
     CameraRoamingStrategy.a(this.a, false);
     if (this.a.a != null) {
-      this.a.a.e();
+      this.a.a.k();
     }
   }
   
-  public void doOnGetEmoListResult(int paramInt)
+  protected void doOnGetEmoListResult(int paramInt)
   {
     if ((paramInt == 0) && (this.a.a != null)) {
-      this.a.a.e();
+      this.a.a.k();
     }
   }
   
-  public void onCameraEmoSend(boolean paramBoolean, int paramInt)
+  protected void onCameraEmoSend(boolean paramBoolean, int paramInt)
   {
     if (this.a.a != null) {
-      this.a.a.e();
+      this.a.a.k();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.CameraRoamingStrategy.4
  * JD-Core Version:    0.7.0.1
  */

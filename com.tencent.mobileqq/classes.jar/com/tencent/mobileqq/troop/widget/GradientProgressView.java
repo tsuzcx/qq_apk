@@ -37,7 +37,8 @@ public class GradientProgressView
       int i = this.c;
       int j = this.d;
       this.jdField_a_of_type_AndroidGraphicsSweepGradient = new SweepGradient(paramInt1 / 2, paramInt2 / 2, new int[] { i, j }, new float[] { 0.0F, 1.0F });
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, paramInt1 - this.jdField_a_of_type_Int, paramInt2 - this.jdField_a_of_type_Int);
+      i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(i, i, paramInt1 - i, paramInt2 - i);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
@@ -45,7 +46,7 @@ public class GradientProgressView
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidGraphicsSweepGradient == null) {
@@ -54,15 +55,16 @@ public class GradientProgressView
     int i = getWidth();
     int j = getHeight();
     this.b += 3;
-    if (this.b > 360) {
-      this.b -= 360;
+    int k = this.b;
+    if (k > 360) {
+      this.b = (k - 360);
     }
     paramCanvas.rotate(this.b, i / 2, j / 2);
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, 360.0F, true, this.jdField_a_of_type_AndroidGraphicsPaint);
     postInvalidate();
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     a(paramInt1, paramInt2);
@@ -82,7 +84,7 @@ public class GradientProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.GradientProgressView
  * JD-Core Version:    0.7.0.1
  */

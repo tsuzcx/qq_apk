@@ -13,18 +13,24 @@ class AntiFraudConfigFileUtil$3
 {
   AntiFraudConfigFileUtil$3(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil) {}
   
-  public void b(int paramInt, Bundle paramBundle)
+  protected void a(int paramInt, Bundle paramBundle)
   {
     Object localObject = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
     if (localObject != null) {
       ((QQAppInterface)localObject).removeObserver(AntiFraudConfigFileUtil.a(this.a));
     }
-    if (paramInt != 1) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SecSvcObserver", 2, "invalid notification type for onGetUinSafetyWordingConfig:" + Integer.toString(paramInt));
+    if (paramInt != 1)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("invalid notification type for onGetUinSafetyWordingConfig:");
+        paramBundle.append(Integer.toString(paramInt));
+        QLog.d("SecSvcObserver", 2, paramBundle.toString());
       }
+      return;
     }
-    while (paramBundle == null) {
+    if (paramBundle == null) {
       return;
     }
     String str = paramBundle.getString("config_name");
@@ -41,7 +47,7 @@ class AntiFraudConfigFileUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AntiFraudConfigFileUtil.3
  * JD-Core Version:    0.7.0.1
  */

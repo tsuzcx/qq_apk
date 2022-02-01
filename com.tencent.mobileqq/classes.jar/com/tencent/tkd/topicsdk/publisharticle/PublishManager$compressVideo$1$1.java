@@ -19,7 +19,10 @@ public final class PublishManager$compressVideo$1$1
       return;
     }
     this.a.jdField_a_of_type_ComTencentTkdTopicsdkBeanVideoInfo.setCompressProgress((int)paramFloat);
-    TLog.b("PublishManager", "onCompressProgress, progress=" + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCompressProgress, progress=");
+    localStringBuilder.append(paramFloat);
+    TLog.b("PublishManager", localStringBuilder.toString());
     PublishManager.a.a(this.a.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getPublishId(), (int)this.a.jdField_a_of_type_ComTencentTkdTopicsdkBeanVideoInfo.getProgress());
   }
   
@@ -34,7 +37,7 @@ public final class PublishManager$compressVideo$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.PublishManager.compressVideo.1.1
  * JD-Core Version:    0.7.0.1
  */

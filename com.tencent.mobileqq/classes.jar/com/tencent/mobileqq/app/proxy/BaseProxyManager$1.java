@@ -13,36 +13,37 @@ class BaseProxyManager$1
   public void run()
   {
     BaseProxyManager.access$002(this.this$0, System.currentTimeMillis());
-    while (!this.this$0.isDestroyed) {
-      synchronized (this.this$0.msgQueueLock)
+    while (!this.this$0.isDestroyed)
+    {
+      try
       {
-        try
+        synchronized (this.this$0.msgQueueLock)
         {
           BaseProxyManager.access$100(this.this$0);
           this.this$0.msgQueueLock.wait(BaseProxyManager.access$200());
-          ThreadRegulatorProxy.checkInNextBusiness();
-          if (((!this.this$0.msgQueue.isEmpty()) || (BaseProxyManager.access$300(this.this$0).getQueue().size() > 0)) && (this.this$0.isSaveDBAtOnce()))
-          {
-            this.this$0.transSaveToDatabase();
-            BaseProxyManager.access$300(this.this$0).transSaveToDatabase();
-          }
         }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("Q.msg.MsgProxy", 2, "writeRunable Exception:", localException);
-            }
-          }
+        if (!this.this$0.msgQueue.isEmpty()) {}
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.msg.MsgProxy", 2, "writeRunable Exception:", localException);
         }
+        ThreadRegulatorProxy.checkInNextBusiness();
+      }
+      if ((BaseProxyManager.access$300(this.this$0).getQueue().size() > 0) && (this.this$0.isSaveDBAtOnce()))
+      {
+        this.this$0.transSaveToDatabase();
+        BaseProxyManager.access$300(this.this$0).transSaveToDatabase();
+        continue;
+        throw localException;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.BaseProxyManager.1
  * JD-Core Version:    0.7.0.1
  */

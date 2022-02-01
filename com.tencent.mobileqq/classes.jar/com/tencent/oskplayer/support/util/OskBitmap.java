@@ -68,16 +68,22 @@ public class OskBitmap
   
   public static void printDebugPixelValue(Bitmap paramBitmap)
   {
-    String str4 = "";
-    String str3 = "";
-    String str2 = "";
-    String str1 = "";
     if (paramBitmap != null)
     {
+      Object localObject1 = "";
+      Object localObject2 = localObject1;
+      Object localObject3 = localObject2;
+      Object localObject4 = localObject3;
       int i = 0;
       while (i < paramBitmap.getHeight())
       {
+        localObject5 = localObject2;
+        Object localObject6 = localObject1;
         int j = 0;
+        localObject1 = localObject4;
+        localObject2 = localObject3;
+        localObject3 = localObject5;
+        localObject4 = localObject6;
         while (j < paramBitmap.getWidth())
         {
           int i1 = paramBitmap.getPixel(j, i);
@@ -85,23 +91,71 @@ public class OskBitmap
           int m = Color.blue(i1);
           int n = Color.green(i1);
           i1 = Color.alpha(i1);
-          str4 = str4 + k + ",";
-          str3 = str3 + n + ",";
-          str2 = str2 + m + ",";
-          str1 = str1 + i1 + ",";
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append((String)localObject4);
+          ((StringBuilder)localObject5).append(k);
+          ((StringBuilder)localObject5).append(",");
+          localObject4 = ((StringBuilder)localObject5).toString();
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append((String)localObject3);
+          ((StringBuilder)localObject5).append(n);
+          ((StringBuilder)localObject5).append(",");
+          localObject3 = ((StringBuilder)localObject5).toString();
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append((String)localObject2);
+          ((StringBuilder)localObject5).append(m);
+          ((StringBuilder)localObject5).append(",");
+          localObject2 = ((StringBuilder)localObject5).toString();
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append((String)localObject1);
+          ((StringBuilder)localObject5).append(i1);
+          ((StringBuilder)localObject5).append(",");
+          localObject1 = ((StringBuilder)localObject5).toString();
           j += 1;
         }
-        str4 = str4 + "\n";
-        str3 = str3 + "\n";
-        str2 = str2 + "\n";
-        str1 = str1 + "\n";
+        localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append((String)localObject4);
+        ((StringBuilder)localObject5).append("\n");
+        localObject5 = ((StringBuilder)localObject5).toString();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append((String)localObject3);
+        ((StringBuilder)localObject4).append("\n");
+        localObject3 = ((StringBuilder)localObject4).toString();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append((String)localObject2);
+        ((StringBuilder)localObject4).append("\n");
+        localObject6 = ((StringBuilder)localObject4).toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("\n");
+        localObject4 = ((StringBuilder)localObject2).toString();
         i += 1;
+        localObject2 = localObject3;
+        localObject3 = localObject6;
+        localObject1 = localObject5;
       }
-      Log.v("OskBitmap", "S:\n" + paramBitmap.getWidth() + "*" + paramBitmap.getHeight());
-      Log.v("OskBitmap", "R:\n" + str4);
-      Log.v("OskBitmap", "G:\n" + str3);
-      Log.v("OskBitmap", "B:\n" + str2);
-      Log.v("OskBitmap", "A:\n" + str1);
+      Object localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append("S:\n");
+      ((StringBuilder)localObject5).append(paramBitmap.getWidth());
+      ((StringBuilder)localObject5).append("*");
+      ((StringBuilder)localObject5).append(paramBitmap.getHeight());
+      Log.v("OskBitmap", ((StringBuilder)localObject5).toString());
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("R:\n");
+      paramBitmap.append((String)localObject1);
+      Log.v("OskBitmap", paramBitmap.toString());
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("G:\n");
+      paramBitmap.append((String)localObject2);
+      Log.v("OskBitmap", paramBitmap.toString());
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("B:\n");
+      paramBitmap.append((String)localObject3);
+      Log.v("OskBitmap", paramBitmap.toString());
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("A:\n");
+      paramBitmap.append((String)localObject4);
+      Log.v("OskBitmap", paramBitmap.toString());
       return;
     }
     Log.v("OskBitmap", "invalid bitmap");
@@ -109,7 +163,7 @@ public class OskBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.support.util.OskBitmap
  * JD-Core Version:    0.7.0.1
  */

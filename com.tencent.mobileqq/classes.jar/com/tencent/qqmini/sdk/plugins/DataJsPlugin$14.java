@@ -14,38 +14,47 @@ class DataJsPlugin$14
   {
     if (paramBoolean)
     {
-      QMLog.d("DataJsPlugin", "call getUserInfo ： " + paramJSONObject.toString());
-      if (("webapi_getuserinfo_opendata".equals(this.val$apiName)) && (paramJSONObject != null)) {}
-      try
-      {
-        paramJSONObject.remove("signature");
-        paramJSONObject.remove("encryptedData");
-        paramJSONObject.remove("iv");
-        paramJSONObject.remove("cloudID");
-        if (paramJSONObject.has("data"))
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("call getUserInfo ： ");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QMLog.d("DataJsPlugin", ((StringBuilder)localObject).toString());
+      if (("webapi_getuserinfo_opendata".equals(this.val$apiName)) && (paramJSONObject != null)) {
+        try
         {
-          JSONObject localJSONObject = new JSONObject(paramJSONObject.get("data").toString());
-          localJSONObject.remove("signature");
-          paramJSONObject.put("data", localJSONObject);
+          paramJSONObject.remove("signature");
+          paramJSONObject.remove("encryptedData");
+          paramJSONObject.remove("iv");
+          paramJSONObject.remove("cloudID");
+          if (paramJSONObject.has("data"))
+          {
+            localObject = new JSONObject(paramJSONObject.get("data").toString());
+            ((JSONObject)localObject).remove("signature");
+            paramJSONObject.put("data", localObject);
+          }
         }
-        this.val$req.ok(paramJSONObject);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
+        catch (Throwable localThrowable)
         {
           QMLog.e("DataJsPlugin", "webapi_getuserinfo_opendata error, ", localThrowable);
         }
       }
+      this.val$req.ok(paramJSONObject);
+      return;
     }
-    QMLog.d("DataJsPlugin", "call getUserInfo failed. ");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("call getUserInfo failed:");
+    localStringBuilder.append(paramJSONObject);
+    QMLog.d("DataJsPlugin", localStringBuilder.toString());
+    if (paramJSONObject != null)
+    {
+      this.val$req.fail(paramJSONObject, paramJSONObject.optString("errMsg", ""));
+      return;
+    }
     this.val$req.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.DataJsPlugin.14
  * JD-Core Version:    0.7.0.1
  */

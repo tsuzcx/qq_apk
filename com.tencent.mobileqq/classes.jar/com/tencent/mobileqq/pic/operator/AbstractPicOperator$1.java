@@ -18,62 +18,75 @@ class AbstractPicOperator$1
   
   public void handleMessage(Message paramMessage)
   {
-    Logger.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack == null) {}
-    do
-    {
+    Object localObject1 = this.a.b;
+    String str = this.a.jdField_a_of_type_JavaLangString;
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("what:");
+    ((StringBuilder)localObject3).append(paramMessage.what);
+    ((StringBuilder)localObject3).append(",result:");
+    ((StringBuilder)localObject3).append(paramMessage.arg1);
+    ((StringBuilder)localObject3).append(",obj:");
+    ((StringBuilder)localObject3).append(paramMessage.obj);
+    Logger.a((String)localObject1, str, "dispatchMessage", ((StringBuilder)localObject3).toString());
+    if (this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack == null) {
       return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        i = paramMessage.arg1;
-        paramMessage = (PicResult)paramMessage.obj;
-        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(i, paramMessage);
-        return;
-      case 1: 
-        paramMessage = (PicResult)paramMessage.obj;
-      }
-    } while (!(paramMessage.a instanceof Integer));
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a_(((Integer)paramMessage.a).intValue(), paramMessage.c);
-    return;
-    int i = paramMessage.arg1;
-    paramMessage = (PicResult)paramMessage.obj;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.b(i, paramMessage);
-    return;
-    i = paramMessage.arg1;
-    paramMessage = (PicResult)paramMessage.obj;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.c(i, paramMessage);
-    return;
-    i = paramMessage.arg1;
-    paramMessage = (PicResult)paramMessage.obj;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.d(i, paramMessage);
-    return;
-    if (paramMessage.obj != null) {}
-    for (;;)
+    }
+    switch (paramMessage.what)
     {
-      try
-      {
-        ArrayList localArrayList = (ArrayList)paramMessage.obj;
-        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(paramMessage.arg1, localArrayList);
-        return;
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        localObject = null;
-        continue;
-      }
+    default: 
+      return;
+    case 6: 
       paramMessage = (PicResult)paramMessage.obj;
       this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(((Integer)paramMessage.a).intValue());
       return;
-      Object localObject = null;
+    case 5: 
+      localObject3 = paramMessage.obj;
+      str = null;
+      localObject1 = str;
+      if (localObject3 == null) {
+        break;
+      }
+    }
+    try
+    {
+      localObject1 = (ArrayList)paramMessage.obj;
+      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(paramMessage.arg1, (ArrayList)localObject1);
+      return;
+      int i = paramMessage.arg1;
+      paramMessage = (PicResult)paramMessage.obj;
+      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.d(i, paramMessage);
+      return;
+      i = paramMessage.arg1;
+      paramMessage = (PicResult)paramMessage.obj;
+      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.c(i, paramMessage);
+      return;
+      i = paramMessage.arg1;
+      paramMessage = (PicResult)paramMessage.obj;
+      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.b(i, paramMessage);
+      return;
+      paramMessage = (PicResult)paramMessage.obj;
+      if ((paramMessage.a instanceof Integer))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a_(((Integer)paramMessage.a).intValue(), paramMessage.c);
+        return;
+        i = paramMessage.arg1;
+        paramMessage = (PicResult)paramMessage.obj;
+        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(i, paramMessage);
+      }
+      return;
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      for (;;)
+      {
+        Object localObject2 = str;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.AbstractPicOperator.1
  * JD-Core Version:    0.7.0.1
  */

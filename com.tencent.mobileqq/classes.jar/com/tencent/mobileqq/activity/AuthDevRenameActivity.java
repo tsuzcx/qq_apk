@@ -27,24 +27,10 @@ public class AuthDevRenameActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, TextView.OnEditorActionListener
 {
-  public static String a;
-  public static String b = "appname";
-  public static String c = "appid";
-  public static String d = "sub_appid";
-  public static String e = "device_guid";
-  public static String f = "target_name";
-  public static String g = "target_type_info";
-  public static String h = "target_desc";
-  public static String i = "index";
   private Handler jdField_a_of_type_AndroidOsHandler = new AuthDevRenameActivity.3(this);
   private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new AuthDevRenameActivity.2(this);
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "uin";
-  }
   
   private void a()
   {
@@ -65,101 +51,93 @@ public class AuthDevRenameActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561183);
+    super.setContentView(2131561046);
     super.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
-    super.setRightButton(2131692073, this);
-    this.leftView.setText(2131690800);
+    super.setRightButton(2131691992, this);
+    this.leftView.setText(2131690728);
     this.leftView.setOnClickListener(this);
     if ((this.centerView != null) && ((this.centerView instanceof TextView))) {
       this.centerView.setVisibility(8);
     }
-    paramBundle = super.getIntent();
-    String str;
-    if (paramBundle != null)
+    Object localObject1 = super.getIntent();
+    paramBundle = null;
+    if (localObject1 != null)
     {
-      str = paramBundle.getStringExtra(f);
-      paramBundle = paramBundle.getStringExtra(g);
+      paramBundle = ((Intent)localObject1).getStringExtra("target_name");
+      localObject1 = ((Intent)localObject1).getStringExtra("target_type_info");
     }
-    for (;;)
+    else
     {
-      Object localObject = super.findViewById(2131379487);
-      if (localObject != null)
-      {
-        ((View)localObject).setVisibility(0);
-        TextView localTextView = (TextView)((View)localObject).findViewById(2131379532);
-        if (localTextView != null) {
-          localTextView.setText(2131692120);
-        }
-        localObject = (TextView)((View)localObject).findViewById(2131379462);
-        if ((localObject != null) && (!TextUtils.isEmpty(paramBundle))) {
-          ((TextView)localObject).setText(paramBundle);
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131363120));
-        if (!TextUtils.isEmpty(str)) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(str);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeOptions(6);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnEditorActionListener(this);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeActionLabel(getString(2131693888), 6);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFilters(new InputFilter[] { new AuthDevRenameActivity.1(this) });
-        return true;
-        super.setTitle(2131692120);
-      }
-      paramBundle = null;
-      str = null;
+      localObject1 = null;
     }
+    Object localObject2 = super.findViewById(2131378837);
+    if (localObject2 != null)
+    {
+      ((View)localObject2).setVisibility(0);
+      TextView localTextView = (TextView)((View)localObject2).findViewById(2131378880);
+      if (localTextView != null) {
+        localTextView.setText(2131692039);
+      }
+      localObject2 = (TextView)((View)localObject2).findViewById(2131378814);
+      if ((localObject2 != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
+        ((TextView)localObject2).setText((CharSequence)localObject1);
+      }
+    }
+    else
+    {
+      super.setTitle(2131692039);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131363060));
+    if (!TextUtils.isEmpty(paramBundle)) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(paramBundle);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeOptions(6);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnEditorActionListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeActionLabel(getString(2131693842), 6);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFilters(new InputFilter[] { new AuthDevRenameActivity.1(this) });
+    return true;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131369233)
     {
-    default: 
-      super.finish();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!NetworkUtil.d(this))
+      if (!NetworkUtil.isNetSupport(this))
       {
-        QQToast.a(this, getString(2131692257), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
+        break label174;
       }
-      else
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getEditableText().toString();
+      if (TextUtils.isEmpty((CharSequence)localObject1))
       {
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getEditableText().toString();
-        if (TextUtils.isEmpty((CharSequence)localObject1))
+        QQToast.a(this, getString(2131692008), 0).b(getTitleBarHeight());
+        break label174;
+      }
+      Object localObject2 = super.getIntent();
+      if (localObject2 != null)
+      {
+        String str = ((Intent)localObject2).getStringExtra("target_name");
+        if ((!TextUtils.isEmpty(str)) && (!TextUtils.equals(str, (CharSequence)localObject1)))
         {
-          QQToast.a(this, getString(2131692089), 0).b(getTitleBarHeight());
-        }
-        else
-        {
-          Object localObject2 = super.getIntent();
-          if (localObject2 == null) {
-            break;
-          }
-          String str = ((Intent)localObject2).getStringExtra(f);
-          if ((TextUtils.isEmpty(str)) || (TextUtils.equals(str, (CharSequence)localObject1))) {
-            break;
-          }
           localObject2 = ((Intent)localObject2).getExtras();
-          ((Bundle)localObject2).putString(f, (String)localObject1);
-          ((Bundle)localObject2).putString(jdField_a_of_type_JavaLangString, this.app.getCurrentAccountUin());
+          ((Bundle)localObject2).putString("target_name", (String)localObject1);
+          ((Bundle)localObject2).putString("uin", this.app.getCurrentAccountUin());
           localObject1 = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
-          if (localObject1 == null) {
-            break;
+          if (localObject1 != null)
+          {
+            a();
+            ((SecSvcHandler)localObject1).a((Bundle)localObject2);
+            break label174;
           }
-          a();
-          ((SecSvcHandler)localObject1).a((Bundle)localObject2);
         }
       }
     }
+    super.finish();
+    label174:
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -169,7 +147,7 @@ public class AuthDevRenameActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     b();
     super.onDestroy();
@@ -188,7 +166,7 @@ public class AuthDevRenameActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevRenameActivity
  * JD-Core Version:    0.7.0.1
  */

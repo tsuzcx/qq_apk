@@ -51,7 +51,8 @@ public class SparkDot
   
   Bitmap a(int paramInt)
   {
-    Bitmap localBitmap = Bitmap.createBitmap(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
+    int i = this.jdField_b_of_type_Int;
+    Bitmap localBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
@@ -61,7 +62,8 @@ public class SparkDot
     if (this.jdField_a_of_type_Boolean) {
       localPaint.setMaskFilter(new BlurMaskFilter(this.jdField_a_of_type_Float * 3.0F, BlurMaskFilter.Blur.SOLID));
     }
-    localCanvas.drawOval(new RectF(this.jdField_a_of_type_Float * 3.0F, this.jdField_a_of_type_Float * 3.0F, this.jdField_a_of_type_Float * 10.0F, this.jdField_a_of_type_Float * 10.0F), localPaint);
+    float f1 = this.jdField_a_of_type_Float;
+    localCanvas.drawOval(new RectF(f1 * 3.0F, 3.0F * f1, f1 * 10.0F, f1 * 10.0F), localPaint);
     return localBitmap;
   }
   
@@ -69,18 +71,19 @@ public class SparkDot
   void a()
   {
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().scaledDensity;
-    this.jdField_b_of_type_Int = ((int)(13.0F * this.jdField_a_of_type_Float));
+    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 13.0F));
     this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.g);
     this.jdField_b_of_type_AndroidGraphicsBitmap = a(this.f);
-    int i = 0;
-    while (i < this.e)
+    int j;
+    for (int i = 0; i < this.e; i = j)
     {
       ImageView localImageView = new ImageView(getContext());
       localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      localImageView.layout(this.jdField_b_of_type_Int * i, 0, this.jdField_b_of_type_Int * (i + 1), this.jdField_b_of_type_Int);
+      int k = this.jdField_b_of_type_Int;
+      j = i + 1;
+      localImageView.layout(k * i, 0, k * j, k);
       this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i] = localImageView;
       super.addViewInLayout(localImageView, getChildCount(), generateDefaultLayoutParams());
-      i += 1;
     }
   }
   
@@ -99,9 +102,10 @@ public class SparkDot
   public void b()
   {
     this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    if (localRunnable != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localRunnable);
       this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[this.d].setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
       this.d = 0;
       this.c = 0;
@@ -110,17 +114,19 @@ public class SparkDot
   
   public void c()
   {
-    if (this.jdField_b_of_type_Boolean) {}
-    do
-    {
+    if (this.jdField_b_of_type_Boolean) {
       return;
-      this.jdField_b_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_JavaLangRunnable == null);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
+    }
+    this.jdField_b_of_type_Boolean = true;
+    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    if (localRunnable != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localRunnable);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
+    }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
     localLayoutParams.width = (this.jdField_b_of_type_Int * this.e);
@@ -153,7 +159,7 @@ public class SparkDot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.SparkDot
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,10 @@ public class TroopInfoHandlerConfigProcessor
   @NonNull
   public TroopInfoHandlerConfig a(int paramInt)
   {
-    QLog.d("TroopInfoHandlerConfigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopInfoHandlerConfigProcessor", 2, localStringBuilder.toString());
     return new TroopInfoHandlerConfig();
   }
   
@@ -52,7 +55,10 @@ public class TroopInfoHandlerConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TroopInfoHandlerConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopInfoHandlerConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -62,7 +68,7 @@ public class TroopInfoHandlerConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopInfoHandlerConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

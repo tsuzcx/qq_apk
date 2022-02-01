@@ -8,11 +8,11 @@ import androidx.annotation.Nullable;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.api.util.QStorage;
 import com.tencent.mobileqq.filemanager.app.QFileConfigManager;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class QFileFileReaderConfigProcessor
   extends IQConfigProcessor<QFileFileReaderConfigBean>
@@ -35,19 +35,28 @@ public class QFileFileReaderConfigProcessor
   
   public void a(QFileFileReaderConfigBean paramQFileFileReaderConfigBean)
   {
-    if (paramQFileFileReaderConfigBean == null) {
-      QLog.i("QFileFileReaderConfigProcessor<QFile>", 1, "onUpdate: newConf is null.");
-    }
-    do
+    if (paramQFileFileReaderConfigBean == null)
     {
+      QLog.i("QFileFileReaderConfigProcessor<QFile>", 1, "onUpdate: newConf is null.");
       return;
-      QLog.i("QFileFileReaderConfigProcessor<QFile>", 1, "onUpdate: config[" + paramQFileFileReaderConfigBean.a + "]");
-      localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getApp();
-    } while (localObject == null);
-    Object localObject = ((BaseQQAppInterface)localObject).getApplicationContext().getSharedPreferences("file_config_" + ((BaseQQAppInterface)localObject).getCurrentUin(), 0).edit();
-    ((SharedPreferences.Editor)localObject).putString("file_reader_key", paramQFileFileReaderConfigBean.a);
-    ((SharedPreferences.Editor)localObject).apply();
-    QFileConfigManager.a().a(paramQFileFileReaderConfigBean);
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onUpdate: config[");
+    ((StringBuilder)localObject1).append(paramQFileFileReaderConfigBean.strConfigContent);
+    ((StringBuilder)localObject1).append("]");
+    QLog.i("QFileFileReaderConfigProcessor<QFile>", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = QQFileManagerUtilImpl.a();
+    if (localObject1 != null)
+    {
+      Object localObject2 = ((BaseQQAppInterface)localObject1).getApplicationContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file_config_");
+      localStringBuilder.append(((BaseQQAppInterface)localObject1).getCurrentUin());
+      localObject2 = ((Context)localObject2).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      ((SharedPreferences.Editor)localObject2).putString("file_reader_key", paramQFileFileReaderConfigBean.strConfigContent);
+      ((SharedPreferences.Editor)localObject2).apply();
+      QFileConfigManager.a((AppRuntime)localObject1).a(paramQFileFileReaderConfigBean);
+    }
   }
   
   public Class<QFileFileReaderConfigBean> clazz()
@@ -84,7 +93,7 @@ public class QFileFileReaderConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileFileReaderConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

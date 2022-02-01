@@ -12,7 +12,7 @@ import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import org.json.JSONObject;
 
 public class GdtQQHippyDemoFragment
@@ -25,7 +25,8 @@ public class GdtQQHippyDemoFragment
   {
     GdtLog.b("GdtQQHippyDemoFragment", "initHippy");
     JSONObject localJSONObject = new JSONObject();
-    this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.initHippy(this.jdField_a_of_type_AndroidViewViewGroup, localJSONObject, false, new GdtQQHippyDemoFragment.1(this));
+    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380915);
+    this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.initHippyInContainer(localViewGroup, localJSONObject, false, new GdtQQHippyDemoFragment.1(this));
   }
   
   public static void a(Activity paramActivity)
@@ -40,7 +41,7 @@ public class GdtQQHippyDemoFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     GdtLog.b("GdtQQHippyDemoFragment", "onCreateView");
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2131559253, paramViewGroup, false));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2131559129, paramViewGroup, false));
     if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine == null)
     {
       this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = new GdtHippyEngine(this, "tangramHippyPage", null);
@@ -48,7 +49,7 @@ public class GdtQQHippyDemoFragment
     }
     a();
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewViewGroup;
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -56,9 +57,10 @@ public class GdtQQHippyDemoFragment
   {
     GdtLog.b("GdtQQHippyDemoFragment", "onDestroy");
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine != null)
+    HippyQQEngine localHippyQQEngine = this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine;
+    if (localHippyQQEngine != null)
     {
-      this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.onDestroy();
+      localHippyQQEngine.onDestroy();
       this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = null;
     }
   }
@@ -67,8 +69,9 @@ public class GdtQQHippyDemoFragment
   {
     GdtLog.b("GdtQQHippyDemoFragment", "onPause");
     super.onPause();
-    if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine != null) {
-      this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.onPause();
+    HippyQQEngine localHippyQQEngine = this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine;
+    if (localHippyQQEngine != null) {
+      localHippyQQEngine.onPause();
     }
   }
   
@@ -76,8 +79,9 @@ public class GdtQQHippyDemoFragment
   {
     GdtLog.b("GdtQQHippyDemoFragment", "onResume");
     super.onResume();
-    if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine != null) {
-      this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.onResume();
+    HippyQQEngine localHippyQQEngine = this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine;
+    if (localHippyQQEngine != null) {
+      localHippyQQEngine.onResume();
     }
   }
   
@@ -89,7 +93,7 @@ public class GdtQQHippyDemoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtQQHippyDemoFragment
  * JD-Core Version:    0.7.0.1
  */

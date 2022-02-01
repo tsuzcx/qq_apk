@@ -17,11 +17,13 @@ public class ErrorReportingRunner
   
   public ErrorReportingRunner(Class<?> paramClass, Throwable paramThrowable)
   {
-    if (paramClass == null) {
-      throw new NullPointerException("Test class cannot be null");
+    if (paramClass != null)
+    {
+      this.testClass = paramClass;
+      this.causes = getCauses(paramThrowable);
+      return;
     }
-    this.testClass = paramClass;
-    this.causes = getCauses(paramThrowable);
+    throw new NullPointerException("Test class cannot be null");
   }
   
   private Description describeCause(Throwable paramThrowable)
@@ -71,7 +73,7 @@ public class ErrorReportingRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.internal.runners.ErrorReportingRunner
  * JD-Core Version:    0.7.0.1
  */

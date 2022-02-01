@@ -40,19 +40,21 @@ public final class CommonInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cookie != null) {
-      paramJceOutputStream.write(this.cookie, 0);
+    Object localObject = this.cookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.hasMore, 1);
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 2);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
     paramJceOutputStream.write(this.isRefresh, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_KUOLIE_PROTOCOL.CommonInfo
  * JD-Core Version:    0.7.0.1
  */

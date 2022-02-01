@@ -19,24 +19,21 @@ class WebAudioManager$6
     try
     {
       localJSONObject.put("bufferId", i);
-      if (this.val$argument != null) {
-        this.val$argument.subscribe("onWebAudioScriptProcessorAudioProcess", localJSONObject.toString());
-      }
-      TritonAudioThreadPool.getAudioThreadPool().schedule(this, this.val$interval, TimeUnit.MILLISECONDS);
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    Argument localArgument = this.val$argument;
+    if (localArgument != null) {
+      localArgument.subscribe("onWebAudioScriptProcessorAudioProcess", localJSONObject.toString());
+    }
+    TritonAudioThreadPool.getAudioThreadPool().schedule(this, this.val$interval, TimeUnit.MILLISECONDS);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.webaudio.WebAudioManager.6
  * JD-Core Version:    0.7.0.1
  */

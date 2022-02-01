@@ -22,14 +22,20 @@ class MoreVideoInfoWidget$8$1
   public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.l();
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.jdField_b_of_type_JavaLangString, 2, "troop story delete result, code=" + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      paramBundle = this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.jdField_b_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("troop story delete result, code=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d(paramBundle, 2, ((StringBuilder)localObject).toString());
     }
     if ((paramInt == 0) && (paramArrayOfByte != null)) {
       try
       {
         paramBundle = this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.a.jdField_b_of_type_JavaLangString;
-        Object localObject = new qqstory_group.RspGroupVideoDelete();
+        localObject = new qqstory_group.RspGroupVideoDelete();
         ((qqstory_group.RspGroupVideoDelete)localObject).mergeFrom(paramArrayOfByte);
         paramArrayOfByte = (qqstory_struct.ErrorInfo)((qqstory_group.RspGroupVideoDelete)localObject).result.get();
         this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoManager.a(paramBundle, 0, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
@@ -58,7 +64,7 @@ class MoreVideoInfoWidget$8$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.MoreVideoInfoWidget.8.1
  * JD-Core Version:    0.7.0.1
  */

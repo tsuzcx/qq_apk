@@ -1,48 +1,95 @@
 package com.tencent.mobileqq.activity.home.impl;
 
+import com.tencent.mobileqq.activity.qqsettingme.api.IVasApngUtilApi;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class FrameControllerUtil
+  extends BaseFrameControllerUtil
 {
-  public static int a;
-  public static final String a;
-  public static int b;
-  public static final String b;
-  public static int c;
-  public static final String c;
-  public static int d;
-  public static final String d;
-  public static int e;
-  public static final String e;
-  public static int f;
-  public static final String f;
-  public static int g;
-  public static final String g;
-  public static int h = 2;
-  public static int i = 8;
-  public static int j = 9;
+  public static final String a = HardCodeUtil.a(2131693875);
+  public static final String b = HardCodeUtil.a(2131693874);
+  public static final String c = HardCodeUtil.a(2131719445);
+  public static final String d = HardCodeUtil.a(2131693876);
+  public static final String e = HardCodeUtil.a(2131699906);
+  public static final String f = HardCodeUtil.a(2131693524);
+  public static final String g = HardCodeUtil.a(2131697851);
   
-  static
+  public static int a(int paramInt)
   {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131693919);
-    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131693918);
-    jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131719721);
-    jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131693920);
-    jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131699765);
-    jdField_f_of_type_JavaLangString = HardCodeUtil.a(2131693569);
-    jdField_g_of_type_JavaLangString = HardCodeUtil.a(2131697845);
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 1;
-    jdField_c_of_type_Int = 2;
-    jdField_d_of_type_Int = 3;
-    jdField_e_of_type_Int = 4;
-    jdField_f_of_type_Int = 5;
-    jdField_g_of_type_Int = 7;
+    int i = 0;
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 5)
+              {
+                if (paramInt != 99) {
+                  return 0;
+                }
+                return 99;
+              }
+              return 5;
+            }
+            return 4;
+          }
+          return 3;
+        }
+        return 2;
+      }
+      i = 1;
+    }
+    return i;
+  }
+  
+  public static boolean a()
+  {
+    return ((IVasApngUtilApi)QRoute.api(IVasApngUtilApi.class)).updateIsDefaultTheme();
+  }
+  
+  public static int b(int paramInt)
+  {
+    int i = 5;
+    if (paramInt != -1) {
+      if (paramInt != 0)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt == 4) {
+            return i;
+          }
+          if (paramInt != 5)
+          {
+            if (paramInt == 9) {
+              return 4;
+            }
+          }
+          else {
+            return 1;
+          }
+        }
+        else
+        {
+          return 6;
+        }
+      }
+      else {
+        return 2;
+      }
+    }
+    i = 0;
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.impl.FrameControllerUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,17 @@ class UniteSearchActivity$10
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 101)
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
       UniteSearchActivity.a(this.a, 3);
       this.a.h();
     }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.UniteSearchActivity.10
  * JD-Core Version:    0.7.0.1
  */

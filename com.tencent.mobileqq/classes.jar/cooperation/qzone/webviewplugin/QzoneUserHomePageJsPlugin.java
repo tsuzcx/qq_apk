@@ -25,96 +25,117 @@ public class QzoneUserHomePageJsPlugin
   
   private void handleSetKapuHostMessage(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    Activity localActivity;
-    do
+    String str = "";
+    if (paramArrayOfString != null)
     {
-      return;
-      localActivity = paramWebViewPlugin.mRuntime.a();
-    } while ((localActivity == null) || (localActivity.isFinishing()));
-    paramWebViewPlugin = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).optString("text", "");
-      paramWebViewPlugin = paramArrayOfString;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
+      if (paramArrayOfString.length == 0) {
+        return;
+      }
+      Activity localActivity = paramWebViewPlugin.mRuntime.a();
+      if (localActivity != null)
       {
-        QZLog.e("QzoneUserHomePageJsPlugin", "handleSetMessageBoardGate: parse json data error", paramArrayOfString);
+        if (localActivity.isFinishing()) {
+          return;
+        }
+        try
+        {
+          paramWebViewPlugin = new JSONObject(paramArrayOfString[0]).optString("text", "");
+        }
+        catch (JSONException paramWebViewPlugin)
+        {
+          QZLog.e("QzoneUserHomePageJsPlugin", "handleSetMessageBoardGate: parse json data error", paramWebViewPlugin);
+          paramWebViewPlugin = str;
+        }
+        paramArrayOfString = new Intent("QzoneUserHome.ACTION_openKapuHostMsg");
+        paramArrayOfString.putExtra("text", paramWebViewPlugin);
+        localActivity.sendBroadcast(paramArrayOfString);
+        paramArrayOfString = new StringBuilder();
+        paramArrayOfString.append("handleSetKapuHostMessage: sendBroadcast,text:");
+        paramArrayOfString.append(paramWebViewPlugin);
+        QZLog.i("QzoneUserHomePageJsPlugin", 2, paramArrayOfString.toString());
       }
     }
-    paramArrayOfString = new Intent("QzoneUserHome.ACTION_openKapuHostMsg");
-    paramArrayOfString.putExtra("text", paramWebViewPlugin);
-    localActivity.sendBroadcast(paramArrayOfString);
-    QZLog.i("QzoneUserHomePageJsPlugin", 2, "handleSetKapuHostMessage: sendBroadcast,text:" + paramWebViewPlugin);
   }
   
   private boolean handleSetMessageBoardGate(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
   {
-    boolean bool = false;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
-      return false;
-    }
-    Activity localActivity = paramWebViewPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return false;
+    boolean bool3 = false;
+    boolean bool1 = false;
+    boolean bool2;
+    if (paramArrayOfString != null)
+    {
+      if (paramArrayOfString.length == 0) {
+        return false;
+      }
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      if (paramWebViewPlugin != null)
+      {
+        if (paramWebViewPlugin.isFinishing()) {
+          return false;
+        }
+        bool2 = bool3;
+      }
     }
     for (;;)
     {
+      int i;
       try
       {
-        paramWebViewPlugin = new JSONObject(paramArrayOfString[0]);
-        i = paramWebViewPlugin.optInt("open_msg_board", 0);
-        if (i == 0) {
-          bool = false;
+        paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+        bool2 = bool3;
+        if (paramArrayOfString.optInt("open_msg_board", 0) != 0) {
+          break label181;
         }
+        bool2 = bool1;
+        i = paramArrayOfString.optInt("update_msg_board", 1);
       }
-      catch (JSONException paramWebViewPlugin) {}
-      try
+      catch (JSONException paramArrayOfString)
       {
-        i = paramWebViewPlugin.optInt("update_msg_board", 1);
-        paramWebViewPlugin = new Intent("QzoneUserHome.ACTION_openMsgBoard");
-        paramWebViewPlugin.putExtra("openMsgBoard", bool);
-        paramWebViewPlugin.putExtra("updateMsgBoard", i);
-        localActivity.sendBroadcast(paramWebViewPlugin);
-        QZLog.i("QzoneUserHomePageJsPlugin", 2, "handleSetMessageBoardGate: sendBroadcast,isOpenMsgBoard:" + bool + " ,updateType：" + i);
-        return true;
+        QZLog.e("QzoneUserHomePageJsPlugin", "handleSetMessageBoardGate: parse json data error", paramArrayOfString);
+        i = 1;
+        bool1 = bool2;
       }
-      catch (JSONException paramWebViewPlugin)
-      {
-        break label149;
-      }
-      bool = true;
-      continue;
-      label149:
-      QZLog.e("QzoneUserHomePageJsPlugin", "handleSetMessageBoardGate: parse json data error", paramWebViewPlugin);
-      int i = 1;
+      paramArrayOfString = new Intent("QzoneUserHome.ACTION_openMsgBoard");
+      paramArrayOfString.putExtra("openMsgBoard", bool1);
+      paramArrayOfString.putExtra("updateMsgBoard", i);
+      paramWebViewPlugin.sendBroadcast(paramArrayOfString);
+      paramWebViewPlugin = new StringBuilder();
+      paramWebViewPlugin.append("handleSetMessageBoardGate: sendBroadcast,isOpenMsgBoard:");
+      paramWebViewPlugin.append(bool1);
+      paramWebViewPlugin.append(" ,updateType：");
+      paramWebViewPlugin.append(i);
+      QZLog.i("QzoneUserHomePageJsPlugin", 2, paramWebViewPlugin.toString());
+      return true;
+      return false;
+      label181:
+      bool1 = true;
     }
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!paramString2.equals(PKG_NAME)) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {
-      return false;
-    }
-    if (QZoneJsConstants.METHOD_SETTING_MESSAGE_BOARD_GATE.equalsIgnoreCase(paramString3))
+    if ((paramString2.equals(PKG_NAME)) && (this.parentPlugin != null))
     {
-      handleSetMessageBoardGate(this.parentPlugin, paramVarArgs);
-      return true;
-    }
-    if (QZoneJsConstants.METHOD_SETTING_KAPU_HOST_MESSAGE.equalsIgnoreCase(paramString3))
-    {
-      handleSetKapuHostMessage(this.parentPlugin, paramVarArgs);
-      return true;
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if (QZoneJsConstants.METHOD_SETTING_MESSAGE_BOARD_GATE.equalsIgnoreCase(paramString3))
+      {
+        handleSetMessageBoardGate(this.parentPlugin, paramVarArgs);
+        return true;
+      }
+      if (QZoneJsConstants.METHOD_SETTING_KAPU_HOST_MESSAGE.equalsIgnoreCase(paramString3))
+      {
+        handleSetKapuHostMessage(this.parentPlugin, paramVarArgs);
+        return true;
+      }
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneUserHomePageJsPlugin
  * JD-Core Version:    0.7.0.1
  */

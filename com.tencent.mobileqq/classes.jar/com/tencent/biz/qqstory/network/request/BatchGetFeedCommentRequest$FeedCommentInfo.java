@@ -19,32 +19,36 @@ public class BatchGetFeedCommentRequest$FeedCommentInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (FeedCommentInfo)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      String str = this.jdField_a_of_type_JavaLangString;
+      if (str != null) {
+        return str.equals(paramObject.jdField_a_of_type_JavaLangString);
       }
-    } while (paramObject.jdField_a_of_type_JavaLangString == null);
+      return paramObject.jdField_a_of_type_JavaLangString == null;
+    }
     return false;
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.hashCode();
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {
+      return str.hashCode();
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.BatchGetFeedCommentRequest.FeedCommentInfo
  * JD-Core Version:    0.7.0.1
  */

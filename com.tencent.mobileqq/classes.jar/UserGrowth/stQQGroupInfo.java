@@ -38,29 +38,35 @@ public final class stQQGroupInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.openID != null) {
-      paramJceOutputStream.write(this.openID, 0);
+    String str = this.openID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.groupCode != null) {
-      paramJceOutputStream.write(this.groupCode, 1);
+    str = this.groupCode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.groupOpenID != null) {
-      paramJceOutputStream.write(this.groupOpenID, 2);
+    str = this.groupOpenID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.groupName != null) {
-      paramJceOutputStream.write(this.groupName, 3);
+    str = this.groupName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.groupAvatar != null) {
-      paramJceOutputStream.write(this.groupAvatar, 4);
+    str = this.groupAvatar;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.groupAuth != null) {
-      paramJceOutputStream.write(this.groupAuth, 5);
+    str = this.groupAuth;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stQQGroupInfo
  * JD-Core Version:    0.7.0.1
  */

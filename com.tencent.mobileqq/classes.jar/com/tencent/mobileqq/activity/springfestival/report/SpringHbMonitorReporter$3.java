@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.activity.springfestival.report;
 
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.IQWalletApi;
 import com.tencent.mobileqq.qwallet.preload.IPreloadModule;
 import com.tencent.mobileqq.qwallet.preload.IPreloadResource;
 import com.tencent.mobileqq.qwallet.preload.IPreloadService;
@@ -20,45 +22,45 @@ final class SpringHbMonitorReporter$3
     if (QLog.isColorLevel()) {
       QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[checkResCover] start");
     }
-    QQAppInterface localQQAppInterface = QWalletTools.a();
-    if (localQQAppInterface == null) {}
-    do
-    {
+    Object localObject1 = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getQQAppInterface();
+    if (localObject1 == null) {
       return;
-      Object localObject1 = (IPreloadService)localQQAppInterface.getRuntimeService(IPreloadService.class, "");
-      if (localObject1 != null)
+    }
+    Object localObject2 = (IPreloadService)((BaseQQAppInterface)localObject1).getRuntimeService(IPreloadService.class, "");
+    if (localObject2 != null)
+    {
+      localObject2 = ((IPreloadService)localObject2).getModuleByName("2021_shuayishua");
+      if (localObject2 != null)
       {
-        localObject1 = ((IPreloadService)localObject1).getModuleByName("2021_shuayishua");
-        if (localObject1 != null)
+        Object localObject3 = ((IPreloadModule)localObject2).getResApiList();
+        if (((List)localObject3).size() > 0)
         {
-          Object localObject2 = ((IPreloadModule)localObject1).getResApiList();
-          if (((List)localObject2).size() > 0)
-          {
-            localObject2 = ((List)localObject2).iterator();
-            int i = 0;
-            boolean bool = true;
-            if (((Iterator)localObject2).hasNext())
-            {
-              if (!((IPreloadResource)((Iterator)localObject2).next()).isResFileExist((IPreloadModule)localObject1)) {
-                bool = false;
-              }
-              for (;;)
-              {
-                break;
-                i += 1;
-              }
+          localObject3 = ((List)localObject3).iterator();
+          boolean bool = true;
+          int i = 0;
+          while (((Iterator)localObject3).hasNext()) {
+            if (!((IPreloadResource)((Iterator)localObject3).next()).isResFileExist((IPreloadModule)localObject2)) {
+              bool = false;
+            } else {
+              i += 1;
             }
-            SpringHbMonitorReporter.a(bool, i, localQQAppInterface, this.a);
           }
+          SpringHbMonitorReporter.a(bool, i, (AppInterface)localObject1, this.a);
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[checkResCover] finished cost:" + (System.currentTimeMillis() - l));
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[checkResCover] finished cost:");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+      QLog.i("shua2021report_SpringHbMonitorReporter", 2, ((StringBuilder)localObject1).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbMonitorReporter.3
  * JD-Core Version:    0.7.0.1
  */

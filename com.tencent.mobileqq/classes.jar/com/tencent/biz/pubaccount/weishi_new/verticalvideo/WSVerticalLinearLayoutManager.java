@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView.Recycler;
 import android.support.v7.widget.RecyclerView.State;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.view.VideoFeedsRecyclerView;
 
 public class WSVerticalLinearLayoutManager
   extends LinearLayoutManager
@@ -21,19 +21,15 @@ public class WSVerticalLinearLayoutManager
   
   private boolean a(View paramView)
   {
-    if (paramView == null) {}
-    int i;
-    int j;
-    do
-    {
+    if (paramView == null) {
       return false;
-      i = this.a.getChildViewHolder(paramView).getLayoutPosition();
-      j = this.a.b();
-    } while ((j < 0) || ((i != j + 1) && (i != j - 1)));
-    return true;
+    }
+    int i = this.a.getChildViewHolder(paramView).getLayoutPosition();
+    int j = this.a.b();
+    return (j >= 0) && ((i == j + 1) || (i == j - 1));
   }
   
-  public int getExtraLayoutSpace(RecyclerView.State paramState)
+  protected int getExtraLayoutSpace(RecyclerView.State paramState)
   {
     return super.getExtraLayoutSpace(paramState) + 200;
   }
@@ -54,7 +50,7 @@ public class WSVerticalLinearLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalLinearLayoutManager
  * JD-Core Version:    0.7.0.1
  */

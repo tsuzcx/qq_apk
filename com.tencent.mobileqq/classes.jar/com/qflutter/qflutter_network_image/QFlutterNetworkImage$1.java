@@ -24,35 +24,36 @@ class QFlutterNetworkImage$1
     long l2 = NativeBitmap.getBitmapPixelDataMemoryPtr(paramBitmap);
     int j = paramBitmap.getWidth();
     int k = paramBitmap.getHeight();
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (int i = paramBitmap.getAllocationByteCount();; i = paramBitmap.getByteCount())
-    {
-      long l3 = System.currentTimeMillis();
-      paramBitmap = new StringBuilder();
-      paramBitmap.append("[getNetworkImage] address=");
-      paramBitmap.append(l2);
-      paramBitmap.append(", length=");
-      paramBitmap.append(i);
-      paramBitmap.append(", width=");
-      paramBitmap.append(j);
-      paramBitmap.append(", height=");
-      paramBitmap.append(k);
-      paramBitmap.append(", cost=");
-      paramBitmap.append(l3 - l1);
-      Log.d("QFlutterNetworkImage", paramBitmap.toString());
-      paramBitmap = new HashMap();
-      paramBitmap.put("rawDataAddress", Long.valueOf(l2));
-      paramBitmap.put("rawDataLength", Integer.valueOf(i));
-      paramBitmap.put("width", Integer.valueOf(j));
-      paramBitmap.put("height", Integer.valueOf(k));
-      this.val$result.success(paramBitmap);
-      return;
+    int i;
+    if (Build.VERSION.SDK_INT >= 19) {
+      i = paramBitmap.getAllocationByteCount();
+    } else {
+      i = paramBitmap.getByteCount();
     }
+    long l3 = System.currentTimeMillis();
+    paramBitmap = new StringBuilder();
+    paramBitmap.append("[getNetworkImage] address=");
+    paramBitmap.append(l2);
+    paramBitmap.append(", length=");
+    paramBitmap.append(i);
+    paramBitmap.append(", width=");
+    paramBitmap.append(j);
+    paramBitmap.append(", height=");
+    paramBitmap.append(k);
+    paramBitmap.append(", cost=");
+    paramBitmap.append(l3 - l1);
+    Log.d("QFlutterNetworkImage", paramBitmap.toString());
+    paramBitmap = new HashMap();
+    paramBitmap.put("rawDataAddress", Long.valueOf(l2));
+    paramBitmap.put("rawDataLength", Integer.valueOf(i));
+    paramBitmap.put("width", Integer.valueOf(j));
+    paramBitmap.put("height", Integer.valueOf(k));
+    this.val$result.success(paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qflutter_network_image.QFlutterNetworkImage.1
  * JD-Core Version:    0.7.0.1
  */

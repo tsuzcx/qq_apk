@@ -7,14 +7,14 @@ class RegisterProxy$MyAutomatorObserver
 {
   private RegisterProxy$MyAutomatorObserver(RegisterProxy paramRegisterProxy) {}
   
-  public void a()
+  protected void a()
   {
-    this.a.a(10000L);
+    this.a.updateTimeout(10000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.RegisterProxy.MyAutomatorObserver
  * JD-Core Version:    0.7.0.1
  */

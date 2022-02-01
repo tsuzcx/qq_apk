@@ -15,51 +15,58 @@ public class UserScaleAnimation
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    float f1 = 1.0F;
+    float f2 = 1.0F;
+    float f1;
     if (paramFloat < 0.1666667F)
     {
-      paramFloat = (this.jdField_a_of_type_Float - 0.2F) * paramFloat / 0.1666667F + 0.2F;
-      f1 = paramFloat;
+      f1 = (this.jdField_a_of_type_Float - 0.2F) * paramFloat / 0.1666667F + 0.2F;
     }
-    for (;;)
+    else
     {
-      paramTransformation.getMatrix().setScale(f1, paramFloat, this.jdField_a_of_type_Int * 0.5F, this.jdField_b_of_type_Int * 0.5F);
-      return;
-      if (paramFloat < 0.1666667F * 2.0F)
+      f1 = 0.3333333F;
+      float f3;
+      if (paramFloat < 0.3333333F)
       {
         f1 = this.jdField_a_of_type_Float;
-        paramFloat = (1.0F - this.jdField_a_of_type_Float) * (paramFloat - 0.1666667F) / 0.1666667F + f1;
-        f1 = paramFloat;
+        f3 = 1.0F - f1;
+        f2 = paramFloat - 0.1666667F;
+        paramFloat = f3;
       }
-      else if (paramFloat < 0.1666667F * 3.0F)
+      for (;;)
       {
-        paramFloat = 1.0F + (this.jdField_b_of_type_Float - 1.0F) * (paramFloat - 0.1666667F * 2.0F) / 0.1666667F;
-        f1 = paramFloat;
-      }
-      else if (paramFloat < 4.0F * 0.1666667F)
-      {
-        f1 = this.jdField_b_of_type_Float;
-        paramFloat = (1.0F - this.jdField_b_of_type_Float) * (paramFloat - 0.1666667F * 3.0F) / 0.1666667F + f1;
-        f1 = paramFloat;
-      }
-      else if (paramFloat < 5.0F * 0.1666667F)
-      {
-        paramFloat = 1.0F + (this.c - 1.0F) * (paramFloat - 4.0F * 0.1666667F) / 0.1666667F;
-        f1 = paramFloat;
-      }
-      else if (paramFloat < 6.0F * 0.1666667F)
-      {
-        f1 = this.c;
-        paramFloat = (1.0F - this.c) * (paramFloat - 5.0F * 0.1666667F) / 0.1666667F + f1;
-        f1 = paramFloat;
-      }
-      else
-      {
-        float f2 = 1.0F;
-        paramFloat = f1;
+        f1 = paramFloat * f2 / 0.1666667F + f1;
+        break;
+        if (paramFloat < 0.5F) {}
+        for (f2 = this.jdField_b_of_type_Float;; f2 = this.c)
+        {
+          f1 = 1.0F + (f2 - 1.0F) * (paramFloat - f1) / 0.1666667F;
+          break label180;
+          f1 = 0.6666667F;
+          if (paramFloat < 0.6666667F)
+          {
+            f1 = this.jdField_b_of_type_Float;
+            f3 = 1.0F - f1;
+            f2 = paramFloat - 0.5F;
+            paramFloat = f3;
+            break;
+          }
+          if (paramFloat >= 0.8333334F) {
+            break label149;
+          }
+        }
+        label149:
         f1 = f2;
+        if (paramFloat >= 1.0F) {
+          break;
+        }
+        f1 = this.c;
+        f3 = 1.0F - f1;
+        f2 = paramFloat - 0.8333334F;
+        paramFloat = f3;
       }
     }
+    label180:
+    paramTransformation.getMatrix().setScale(f1, f1, this.jdField_a_of_type_Int * 0.5F, this.jdField_b_of_type_Int * 0.5F);
   }
   
   public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -71,7 +78,7 @@ public class UserScaleAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserScaleAnimation
  * JD-Core Version:    0.7.0.1
  */

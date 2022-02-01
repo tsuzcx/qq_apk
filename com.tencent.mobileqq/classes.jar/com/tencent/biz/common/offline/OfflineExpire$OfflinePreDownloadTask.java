@@ -1,6 +1,6 @@
 package com.tencent.biz.common.offline;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
 import com.tencent.qphone.base.util.QLog;
 
@@ -9,26 +9,34 @@ public class OfflineExpire$OfflinePreDownloadTask
 {
   BidDownloader a;
   
-  public OfflineExpire$OfflinePreDownloadTask(QQAppInterface paramQQAppInterface, String paramString, BidDownloader paramBidDownloader)
+  public OfflineExpire$OfflinePreDownloadTask(BaseQQAppInterface paramBaseQQAppInterface, String paramString, BidDownloader paramBidDownloader)
   {
-    super(paramQQAppInterface, paramString);
+    super(paramBaseQQAppInterface, paramString);
     this.a = paramBidDownloader;
   }
   
-  public void realCancel()
+  protected void realCancel()
   {
-    QLog.i(OfflineExpire.a, 1, "cancel predown bid=" + this.a.a);
+    String str = OfflineExpire.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cancel predown bid=");
+    localStringBuilder.append(this.a.a);
+    QLog.i(str, 1, localStringBuilder.toString());
   }
   
-  public void realStart()
+  protected void realStart()
   {
-    QLog.i(OfflineExpire.a, 1, "start predown bid=" + this.a.a);
+    String str = OfflineExpire.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start predown bid=");
+    localStringBuilder.append(this.a.a);
+    QLog.i(str, 1, localStringBuilder.toString());
     this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.offline.OfflineExpire.OfflinePreDownloadTask
  * JD-Core Version:    0.7.0.1
  */

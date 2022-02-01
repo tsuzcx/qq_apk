@@ -26,27 +26,31 @@ public final class IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnchecked$$inlin
   {
     Intrinsics.checkParameterIsNotNull(paramUnit, "value");
     paramUnit = this.$completion;
-    Object localObject;
-    do
+    try
     {
-      try
+      Object localObject = this.$this_createCoroutineUnchecked$inlined;
+      if (localObject != null)
       {
-        Function2 localFunction2 = this.$this_createCoroutineUnchecked$inlined;
-        if (localFunction2 == null) {
-          throw new TypeCastException("null cannot be cast to non-null type (R, kotlin.coroutines.experimental.Continuation<T>) -> kotlin.Any?");
+        localObject = ((Function2)TypeIntrinsics.beforeCheckcastToFunctionOfArity(localObject, 2)).invoke(this.$receiver$inlined, this.$completion$inlined);
+        if (localObject != IntrinsicsKt.getCOROUTINE_SUSPENDED())
+        {
+          if (paramUnit != null)
+          {
+            paramUnit.resume(localObject);
+            return;
+          }
+          throw new TypeCastException("null cannot be cast to non-null type kotlin.coroutines.experimental.Continuation<kotlin.Any?>");
         }
       }
-      catch (Throwable localThrowable)
+      else
       {
-        paramUnit.resumeWithException(localThrowable);
-        return;
+        throw new TypeCastException("null cannot be cast to non-null type (R, kotlin.coroutines.experimental.Continuation<T>) -> kotlin.Any?");
       }
-      localObject = ((Function2)TypeIntrinsics.beforeCheckcastToFunctionOfArity(localThrowable, 2)).invoke(this.$receiver$inlined, this.$completion$inlined);
-    } while (localObject == IntrinsicsKt.getCOROUTINE_SUSPENDED());
-    if (paramUnit == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.coroutines.experimental.Continuation<kotlin.Any?>");
     }
-    paramUnit.resume(localObject);
+    catch (Throwable localThrowable)
+    {
+      paramUnit.resumeWithException(localThrowable);
+    }
   }
   
   public void resumeWithException(@NotNull Throwable paramThrowable)
@@ -57,7 +61,7 @@ public final class IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnchecked$$inlin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsJvmKt.createCoroutineUnchecked..inlined.buildContinuationByInvokeCall.IntrinsicsKt__IntrinsicsJvmKt.2
  * JD-Core Version:    0.7.0.1
  */

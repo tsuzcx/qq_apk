@@ -9,7 +9,7 @@ import com.tencent.mobileqq.location.data.LocationItem;
 import com.tencent.mobileqq.location.data.LocationRoom;
 import com.tencent.mobileqq.location.data.LocationRoom.RoomKey;
 import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.net.LocationHandler;
+import com.tencent.mobileqq.location.net.LocationShareLocationManager;
 import com.tencent.mobileqq.location.ui.MapWidget;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.widget.RoundImageView;
@@ -66,7 +66,7 @@ public class FloatMapWidget
     View localView1 = localView2;
     if (localView2 == null)
     {
-      localView1 = inflate(getContext(), 2131559244, null);
+      localView1 = inflate(getContext(), 2131559120, null);
       this.jdField_b_of_type_JavaUtilMap.put(paramString, localView1);
     }
     return localView1;
@@ -80,34 +80,34 @@ public class FloatMapWidget
     {
       localMarker = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramLocationItem.a()).icon(BitmapDescriptorFactory.fromView(paramView)));
       paramView = localMarker;
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.d("FloatMapWidget", 2, new Object[] { "findHeadMarker: invoked. ", " headMarker: ", localMarker, "isDestroyed: ", Boolean.valueOf(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.isDestroyed()) });
+        paramView = localMarker;
       }
     }
-    for (paramView = localMarker;; paramView = localMarker)
+    else
     {
-      paramView.setTag(str);
-      this.jdField_a_of_type_JavaUtilMap.put(str, paramView);
-      if (QLog.isColorLevel()) {
-        QLog.d("FloatMapWidget", 4, new Object[] { "dev: findHeadMarker: invoked. ", " item: ", paramLocationItem });
-      }
-      return paramView;
       localMarker.setIcon(BitmapDescriptorFactory.fromView(paramView));
+      paramView = localMarker;
     }
+    paramView.setTag(str);
+    this.jdField_a_of_type_JavaUtilMap.put(str, paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatMapWidget", 4, new Object[] { "dev: findHeadMarker: invoked. ", " item: ", paramLocationItem });
+    }
+    return paramView;
   }
   
   private void a(LocationItem paramLocationItem, View paramView)
   {
-    paramView = (ImageView)paramView.findViewById(2131367138);
+    paramView = (ImageView)paramView.findViewById(2131366975);
     if (paramLocationItem.a().equals(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a().a())) {
-      paramView.setBackgroundResource(2130840744);
+      paramView.setBackgroundResource(2130840619);
+    } else {
+      paramView.setBackgroundResource(2130840620);
     }
-    for (;;)
-    {
-      paramView.setRotation((float)(paramLocationItem.a() + 315.0D));
-      return;
-      paramView.setBackgroundResource(2130840745);
-    }
+    paramView.setRotation((float)(paramLocationItem.a() + 315.0D));
   }
   
   private void d()
@@ -124,14 +124,15 @@ public class FloatMapWidget
   
   private void e()
   {
-    View localView = inflate(getContext(), 2131559245, null);
+    View localView = inflate(getContext(), 2131559121, null);
     LocationRoom.Venue localVenue = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
     if (QLog.isColorLevel()) {
       QLog.d("FloatMapWidget", 2, new Object[] { "drawMapVenue: invoked. ", " venue: ", localVenue, " mLastDrawVenue: ", this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue });
     }
     this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue = localVenue;
-    if (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker != null) {
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker.remove();
+    Marker localMarker = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker;
+    if (localMarker != null) {
+      localMarker.remove();
     }
     if (localVenue != null)
     {
@@ -140,7 +141,7 @@ public class FloatMapWidget
     }
   }
   
-  public void a()
+  protected void a()
   {
     super.a();
     if (this.jdField_a_of_type_Boolean) {
@@ -166,8 +167,12 @@ public class FloatMapWidget
         if (QLog.isColorLevel())
         {
           paramRoomKey = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition();
-          if (paramRoomKey != null) {
-            QLog.d("FloatMapWidget", 2, "[map][location]onUpdateUserLocations invoked.  zoom: " + paramRoomKey.zoom);
+          if (paramRoomKey != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[map][location]onUpdateUserLocations invoked.  zoom: ");
+            localStringBuilder.append(paramRoomKey.zoom);
+            QLog.d("FloatMapWidget", 2, localStringBuilder.toString());
           }
         }
         this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a(false);
@@ -186,23 +191,20 @@ public class FloatMapWidget
     }
   }
   
-  public void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean)
+  protected void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean)
   {
     paramBoolean = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.isDestroyed();
-    if ((!QLog.isColorLevel()) || (paramBoolean)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramLatLng == null);
-        if ((!paramLatLng.equals(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng)) || (paramDouble == null) || (Math.abs(paramDouble.doubleValue() - this.jdField_a_of_type_JavaLangDouble.doubleValue()) >= 5.0D)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
+    QLog.isColorLevel();
+    if (paramBoolean) {
       return;
+    }
+    if (paramLatLng != null)
+    {
+      if ((paramLatLng.equals(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng)) && (paramDouble != null) && (Math.abs(paramDouble.doubleValue() - this.jdField_a_of_type_JavaLangDouble.doubleValue()) < 5.0D))
+      {
+        QLog.isColorLevel();
+        return;
+      }
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
       this.jdField_a_of_type_JavaLangDouble = paramDouble;
       LocationItem localLocationItem = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
@@ -210,7 +212,8 @@ public class FloatMapWidget
       paramLatLng = a(localLocationItem.a());
       a(localLocationItem, paramLatLng);
       a(localLocationItem, paramLatLng).refreshInfoWindow();
-    } while (!QLog.isColorLevel());
+      QLog.isColorLevel();
+    }
   }
   
   public void a(String paramString, Bitmap paramBitmap)
@@ -219,48 +222,58 @@ public class FloatMapWidget
     if (QLog.isColorLevel()) {
       QLog.d("FloatMapWidget", 2, new Object[] { "updateUserHead: invoked. ", " mapDestroyed: ", Boolean.valueOf(bool) });
     }
-    if (bool) {}
-    LocationItem localLocationItem;
-    do
-    {
+    if (bool) {
       return;
-      localLocationItem = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a(paramString);
-      int i = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.d().size();
-      if (this.jdField_b_of_type_Int != i)
-      {
-        this.jdField_b_of_type_JavaUtilMap.clear();
-        this.jdField_a_of_type_JavaUtilMap.clear();
-        this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.clear();
-        d();
-        this.jdField_b_of_type_Int = i;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FloatMapWidget", 2, new Object[] { "[map][head]updateUserHead invoked. ", "LocationItem = [" + localLocationItem + "], uin = [" + paramString + "], avatar = [" + paramBitmap + "]" });
-      }
-    } while (localLocationItem == null);
-    View localView = a(paramString);
-    ((RoundImageView)localView.findViewById(2131367139)).setImageBitmap(paramBitmap);
-    a(localLocationItem, localView);
-    paramBitmap = a(localLocationItem, localView);
-    if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a().a())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("FloatMapWidget", 2, new Object[] { "updateUserHead: invoked. no need refresh self. ", " uin: ", paramString });
-      }
     }
-    for (;;)
+    LocationItem localLocationItem = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a(paramString);
+    int i = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.d().size();
+    if (this.jdField_b_of_type_Int != i)
     {
-      paramBitmap.refreshInfoWindow();
-      return;
-      paramString = localLocationItem.a();
-      if (paramString != null)
+      this.jdField_b_of_type_JavaUtilMap.clear();
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.clear();
+      d();
+      this.jdField_b_of_type_Int = i;
+    }
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("LocationItem = [");
+      ((StringBuilder)localObject).append(localLocationItem);
+      ((StringBuilder)localObject).append("], uin = [");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("], avatar = [");
+      ((StringBuilder)localObject).append(paramBitmap);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("FloatMapWidget", 2, new Object[] { "[map][head]updateUserHead invoked. ", ((StringBuilder)localObject).toString() });
+    }
+    if (localLocationItem != null)
+    {
+      localObject = a(paramString);
+      ((RoundImageView)((View)localObject).findViewById(2131366976)).setImageBitmap(paramBitmap);
+      a(localLocationItem, (View)localObject);
+      paramBitmap = a(localLocationItem, (View)localObject);
+      if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a().a()))
       {
-        paramBitmap.setZIndex(localLocationItem.a());
-        paramBitmap.setPosition(paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("FloatMapWidget", 2, new Object[] { "updateUserHead: invoked. no need refresh self. ", " uin: ", paramString });
+        }
       }
+      else
+      {
+        paramString = localLocationItem.a();
+        if (paramString != null)
+        {
+          paramBitmap.setZIndex(localLocationItem.a());
+          paramBitmap.setPosition(paramString);
+        }
+      }
+      paramBitmap.refreshInfoWindow();
     }
   }
   
-  public void a(boolean paramBoolean, Float paramFloat)
+  protected void a(boolean paramBoolean, Float paramFloat)
   {
     LocationItem localLocationItem = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
     localLocationItem.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.b());
@@ -276,90 +289,78 @@ public class FloatMapWidget
           localFloat = Float.valueOf(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition().zoom);
         }
         this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.animateCamera(CameraUpdateFactory.newCameraPosition(CameraPosition.fromLatLngZoom(localLocationItem.a(), localFloat.floatValue())));
+        return;
       }
+      Float localFloat = paramFloat;
+      if (paramFloat == null) {
+        localFloat = Float.valueOf(15.0F);
+      }
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition.fromLatLngZoom(localLocationItem.a(), localFloat.floatValue())));
     }
-    else
-    {
-      return;
-    }
-    Float localFloat = paramFloat;
-    if (paramFloat == null) {
-      localFloat = Float.valueOf(15.0F);
-    }
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition.fromLatLngZoom(localLocationItem.a(), localFloat.floatValue())));
   }
   
-  public void b()
+  protected void b()
   {
     int i = DisplayUtil.a(getContext(), 16.0F);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.b();
-    label310:
-    label353:
-    for (;;)
+    List localList = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.b();
+    Object localObject1 = localList;
+    Object localObject2;
+    try
     {
-      try
+      if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a() != -1)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a() == -1) {
-          break label353;
-        }
-        Object localObject2 = new ArrayList();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
+        localObject1 = new ArrayList();
         try
         {
           if (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng != null) {
-            ((List)localObject2).add(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+            ((List)localObject1).add(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
           }
-          localObject1 = localObject2;
-          if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a() != null)
-          {
-            ((List)localObject2).add(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a().jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-            localObject1 = localObject2;
+          if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a() != null) {
+            ((List)localObject1).add(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a().jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("FloatMapWidget", 2, new Object[] { "zoomMapToShowAll: invoked. ", " mPolyLine: ", this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline });
-          }
-          if ((this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline == null) || (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a() == -1)) {
-            continue;
-          }
-          localObject2 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline.getPoints();
-          if (localObject2 != null) {
-            ((List)localObject1).addAll((Collection)localObject2);
-          }
-          localObject1 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.calculateZoomToSpanLevel(null, (List)localObject1, i, i, i, i);
-          if (localObject1 == null) {
-            break label310;
-          }
-          this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.animateCamera(CameraUpdateFactory.newCameraPosition((CameraPosition)localObject1));
-          if (QLog.isColorLevel()) {
-            QLog.d("FloatMapWidget", 2, new Object[] { "[map][init]zoomMapToShowAll invoked. target: ", ((CameraPosition)localObject1).target + " zoom: " + ((CameraPosition)localObject1).zoom });
-          }
-          return;
         }
-        catch (Throwable localThrowable2)
-        {
-          localObject1 = localThrowable1;
-          Object localObject3 = localThrowable2;
-          continue;
-        }
-        localThrowable1 = localThrowable1;
-        QLog.e("FloatMapWidget", 1, "zoomMapToShowAll: failed. ", localThrowable1);
-        continue;
-        if ((this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null) || (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a() == -1)) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FloatMapWidget", 2, new Object[] { "zoomMapToShowAll: invoked. need wait route draw. ", " latLngs: ", localObject1 });
-        return;
+        catch (Throwable localThrowable1) {}
       }
-      QLog.d("FloatMapWidget", 2, new Object[] { "zoomMapToShowAll: invoked. check padding", " cameraPosition: ", localObject1 });
+    }
+    catch (Throwable localThrowable2)
+    {
+      localObject1 = localThrowable1;
+      localObject2 = localThrowable2;
+      QLog.e("FloatMapWidget", 1, "zoomMapToShowAll: failed. ", (Throwable)localObject2);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatMapWidget", 2, new Object[] { "zoomMapToShowAll: invoked. ", " mPolyLine: ", this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline });
+    }
+    if ((this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null) && (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a() != -1))
+    {
+      localObject2 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline.getPoints();
+      if (localObject2 != null) {
+        ((List)localObject1).addAll((Collection)localObject2);
+      }
+    }
+    else if ((this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline == null) && (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a() != -1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FloatMapWidget", 2, new Object[] { "zoomMapToShowAll: invoked. need wait route draw. ", " latLngs: ", localObject1 });
+      }
       return;
+    }
+    localObject1 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.calculateZoomToSpanLevel(null, (List)localObject1, i, i, i, i);
+    if (localObject1 != null)
+    {
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.animateCamera(CameraUpdateFactory.newCameraPosition((CameraPosition)localObject1));
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(((CameraPosition)localObject1).target);
+        ((StringBuilder)localObject2).append(" zoom: ");
+        ((StringBuilder)localObject2).append(((CameraPosition)localObject1).zoom);
+        QLog.d("FloatMapWidget", 2, new Object[] { "[map][init]zoomMapToShowAll invoked. target: ", ((StringBuilder)localObject2).toString() });
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("FloatMapWidget", 2, new Object[] { "zoomMapToShowAll: invoked. check padding", " cameraPosition: ", localObject1 });
     }
   }
   
@@ -367,7 +368,7 @@ public class FloatMapWidget
   {
     super.onDestroy();
     setListener(null);
-    LocationHandler.a().a(null);
+    LocationShareLocationManager.a().a(null);
     this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnMapLoadedCallback = null;
     this.jdField_b_of_type_JavaUtilMap.clear();
     this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline = null;
@@ -381,7 +382,7 @@ public class FloatMapWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.FloatMapWidget
  * JD-Core Version:    0.7.0.1
  */

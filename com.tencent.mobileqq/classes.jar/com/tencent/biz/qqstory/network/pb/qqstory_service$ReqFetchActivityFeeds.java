@@ -20,13 +20,14 @@ public final class qqstory_service$ReqFetchActivityFeeds
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40 }, new String[] { "start_cookie", "num", "fetch_time", "feed_video_num", "feeds_seq" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, ReqFetchActivityFeeds.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40 }, new String[] { "start_cookie", "num", "fetch_time", "feed_video_num", "feeds_seq" }, new Object[] { localByteStringMicro, localInteger, localInteger, localInteger, Long.valueOf(0L) }, ReqFetchActivityFeeds.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFetchActivityFeeds
  * JD-Core Version:    0.7.0.1
  */

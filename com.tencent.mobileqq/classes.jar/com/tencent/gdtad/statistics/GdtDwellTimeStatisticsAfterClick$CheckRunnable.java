@@ -14,15 +14,19 @@ final class GdtDwellTimeStatisticsAfterClick$CheckRunnable
   
   public void run()
   {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return;
+    WeakReference localWeakReference = this.a;
+    if (localWeakReference != null)
+    {
+      if (localWeakReference.get() == null) {
+        return;
+      }
+      GdtDwellTimeStatisticsAfterClick.a((GdtDwellTimeStatisticsAfterClick)this.a.get());
     }
-    GdtDwellTimeStatisticsAfterClick.a((GdtDwellTimeStatisticsAfterClick)this.a.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick.CheckRunnable
  * JD-Core Version:    0.7.0.1
  */

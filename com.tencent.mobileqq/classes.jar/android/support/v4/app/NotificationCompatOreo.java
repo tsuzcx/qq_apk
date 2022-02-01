@@ -18,41 +18,34 @@ class NotificationCompatOreo
   
   public NotificationCompatOreo(Context paramContext, Notification paramNotification, CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3, RemoteViews paramRemoteViews, int paramInt1, PendingIntent paramPendingIntent1, PendingIntent paramPendingIntent2, Bitmap paramBitmap, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, int paramInt4, CharSequence paramCharSequence4, String paramString)
   {
-    paramContext = new Notification.Builder(paramContext).setWhen(paramNotification.when).setShowWhen(true).setSmallIcon(paramNotification.icon, paramNotification.iconLevel).setContent(paramNotification.contentView).setTicker(paramNotification.tickerText, paramRemoteViews).setSound(paramNotification.sound, paramNotification.audioStreamType).setVibrate(paramNotification.vibrate).setLights(paramNotification.ledARGB, paramNotification.ledOnMS, paramNotification.ledOffMS);
-    if ((paramNotification.flags & 0x2) != 0)
-    {
-      bool = true;
-      paramContext = paramContext.setOngoing(bool);
-      if ((paramNotification.flags & 0x8) == 0) {
-        break label248;
-      }
-      bool = true;
-      label116:
-      paramContext = paramContext.setOnlyAlertOnce(bool);
-      if ((paramNotification.flags & 0x10) == 0) {
-        break label254;
-      }
-      bool = true;
-      label136:
-      paramContext = paramContext.setAutoCancel(bool).setDefaults(paramNotification.defaults).setContentTitle(paramCharSequence1).setContentText(paramCharSequence2).setSubText(paramCharSequence4).setContentInfo(paramCharSequence3).setContentIntent(paramPendingIntent1).setDeleteIntent(paramNotification.deleteIntent);
-      if ((paramNotification.flags & 0x80) == 0) {
-        break label260;
-      }
+    paramContext = new Notification.Builder(paramContext).setWhen(paramNotification.when);
+    boolean bool2 = true;
+    paramContext = paramContext.setShowWhen(true).setSmallIcon(paramNotification.icon, paramNotification.iconLevel).setContent(paramNotification.contentView).setTicker(paramNotification.tickerText, paramRemoteViews).setSound(paramNotification.sound, paramNotification.audioStreamType).setVibrate(paramNotification.vibrate).setLights(paramNotification.ledARGB, paramNotification.ledOnMS, paramNotification.ledOffMS);
+    boolean bool1;
+    if ((paramNotification.flags & 0x2) != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    label260:
-    for (boolean bool = true;; bool = false)
-    {
-      this.b = paramContext.setFullScreenIntent(paramPendingIntent2, bool).setLargeIcon(paramBitmap).setNumber(paramInt1).setUsesChronometer(paramBoolean2).setPriority(paramInt4).setProgress(paramInt2, paramInt3, paramBoolean1).setChannelId(paramString);
-      return;
-      bool = false;
-      break;
-      label248:
-      bool = false;
-      break label116;
-      label254:
-      bool = false;
-      break label136;
+    paramContext = paramContext.setOngoing(bool1);
+    if ((paramNotification.flags & 0x8) != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    paramContext = paramContext.setOnlyAlertOnce(bool1);
+    if ((paramNotification.flags & 0x10) != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    paramContext = paramContext.setAutoCancel(bool1).setDefaults(paramNotification.defaults).setContentTitle(paramCharSequence1).setContentText(paramCharSequence2).setSubText(paramCharSequence4).setContentInfo(paramCharSequence3).setContentIntent(paramPendingIntent1).setDeleteIntent(paramNotification.deleteIntent);
+    if ((paramNotification.flags & 0x80) != 0) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    this.b = paramContext.setFullScreenIntent(paramPendingIntent2, bool1).setLargeIcon(paramBitmap).setNumber(paramInt1).setUsesChronometer(paramBoolean2).setPriority(paramInt4).setProgress(paramInt2, paramInt3, paramBoolean1).setChannelId(paramString);
   }
   
   public void addAction(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent)

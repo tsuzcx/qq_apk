@@ -58,43 +58,47 @@ class QAVNotification$NotifyData
   
   private boolean a()
   {
-    return (this.jdField_a_of_type_Int == 47) || (this.jdField_a_of_type_Int == 42) || (this.jdField_a_of_type_Int == 48) || (this.jdField_a_of_type_Int == 44);
+    int i = this.jdField_a_of_type_Int;
+    return (i == 47) || (i == 42) || (i == 48) || (i == 44);
   }
   
   private boolean a(NotifyData paramNotifyData)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramNotifyData != null) {
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramNotifyData.jdField_a_of_type_JavaLangString))
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_Int != paramNotifyData.jdField_a_of_type_Int)
-        {
-          bool1 = bool2;
-          if (!paramNotifyData.a()) {}
-        }
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (paramNotifyData != null) && ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramNotifyData.jdField_a_of_type_JavaLangString)) || ((this.jdField_a_of_type_Int != paramNotifyData.jdField_a_of_type_Int) && (paramNotifyData.a())));
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("NotifyData{sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], id[").append(this.jdField_c_of_type_JavaLangString).append("], type[").append(this.jdField_a_of_type_Int).append("], uinType[").append(this.jdField_b_of_type_Int).append("], name[").append(this.jdField_b_of_type_JavaLangString).append("], extraName[").append(this.d).append("], head[");
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool + "], isHide[" + this.jdField_a_of_type_Boolean + "]}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NotifyData{sessionId[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("], id[");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("], type[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("], uinType[");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("], name[");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("], extraName[");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("], head[");
+    boolean bool;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localStringBuilder.append(bool);
+    localStringBuilder.append("], isHide[");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("]}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.QAVNotification.NotifyData
  * JD-Core Version:    0.7.0.1
  */

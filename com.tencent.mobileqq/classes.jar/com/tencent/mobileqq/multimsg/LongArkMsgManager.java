@@ -34,8 +34,8 @@ public class LongArkMsgManager
       paramQQAppInterface.getMessageFacade().a(paramMessageForArkApp);
     }
     paramMessageForArkApp.mPendantAnimatable = true;
-    byte[] arrayOfByte = paramQQAppInterface.getProxyManager().a().a(paramMessageForArkApp);
-    if (arrayOfByte == null)
+    Object localObject = paramQQAppInterface.getProxyManager().a().a(paramMessageForArkApp);
+    if (localObject == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StructLongTextMsg", 2, "step2: sendLongTextMsg pack failed! packData is null.............................");
@@ -47,23 +47,29 @@ public class LongArkMsgManager
       long l = paramMessageForArkApp.uniseq;
       ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(paramMessageForArkApp.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
     }
-    paramBoolean = ((LongTextMsgManager)paramQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageForArkApp.frienduin, paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq, 1035, new LongArkMsgManager.1(this, paramMessageForArkApp, paramQQAppInterface));
+    paramBoolean = ((LongTextMsgManager)paramQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(paramQQAppInterface, (byte[])localObject, paramQQAppInterface.getCurrentAccountUin(), paramMessageForArkApp.frienduin, paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq, 1035, new LongArkMsgManager.1(this, paramMessageForArkApp, paramQQAppInterface));
     if (paramBoolean)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StructLongTextMsg", 2, "sendLongTextMsg successful, uploadLongTextMsgPkg start!");
       }
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongTextMsg", 2, "sendLongTextMsg failed! isSuccess:" + paramBoolean);
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sendLongTextMsg failed! isSuccess:");
+        ((StringBuilder)localObject).append(paramBoolean);
+        QLog.d("StructLongTextMsg", 2, ((StringBuilder)localObject).toString());
+      }
+      LongTextMsgManager.a(paramQQAppInterface, paramMessageForArkApp);
     }
-    LongTextMsgManager.a(paramQQAppInterface, paramMessageForArkApp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.LongArkMsgManager
  * JD-Core Version:    0.7.0.1
  */

@@ -33,21 +33,23 @@ class Camera2Control$2
     Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, Camera2Control.a(this.a));
     if (this.a.jdField_a_of_type_Boolean)
     {
-      Camera2Control.a(this.a, Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a)));
-      this.a.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession$CaptureCallback = Camera2Control.a(this.a).createCaptureCallback(Camera2Control.a(this.a), Camera2Control.a(this.a));
+      paramCameraCaptureSession = this.a;
+      Camera2Control.a(paramCameraCaptureSession, Camera2Control.a(paramCameraCaptureSession).buildCaptureRequest(Camera2Control.a(this.a)));
+      paramCameraCaptureSession = this.a;
+      paramCameraCaptureSession.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession$CaptureCallback = Camera2Control.a(paramCameraCaptureSession).createCaptureCallback(Camera2Control.a(this.a), Camera2Control.a(this.a));
     }
-    for (;;)
+    else
     {
-      Camera2Control.a(this.a);
-      Camera2Control.a(this.a).release();
-      return;
-      Camera2Control.b(this.a, Camera2Control.a(this.a).build());
+      paramCameraCaptureSession = this.a;
+      Camera2Control.b(paramCameraCaptureSession, Camera2Control.a(paramCameraCaptureSession).build());
     }
+    Camera2Control.a(this.a);
+    Camera2Control.a(this.a).release();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.2
  * JD-Core Version:    0.7.0.1
  */

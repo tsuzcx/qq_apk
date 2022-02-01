@@ -48,111 +48,120 @@ public class AlphaLoadingView
   {
     int j = View.MeasureSpec.getMode(paramInt);
     int i = View.MeasureSpec.getSize(paramInt);
-    switch (j)
+    if (j != -2147483648)
     {
-    default: 
-      if (paramBoolean) {
-        return this.c;
+      if (j != 0)
+      {
+        paramInt = i;
+        if (j != 1073741824)
+        {
+          if (paramBoolean) {
+            return this.c;
+          }
+          paramInt = this.d;
+        }
+        return paramInt;
       }
-      break;
-    case 1073741824: 
-      return i;
-    case -2147483648: 
-      if (paramBoolean) {}
-      for (paramInt = this.c;; paramInt = this.d) {
-        return Math.min(paramInt, i);
-      }
-    case 0: 
       if (paramBoolean) {
         return this.c;
       }
       return this.d;
     }
-    return this.d;
+    if (paramBoolean) {
+      paramInt = this.c;
+    } else {
+      paramInt = this.d;
+    }
+    return Math.min(paramInt, i);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      localHandler.sendEmptyMessage(1);
       setVisibility(0);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      localHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_Boolean = true;
       setVisibility(8);
     }
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     a();
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     b();
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(null);
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    int i = 255;
-    int j = 30;
     super.onDraw(paramCanvas);
-    int k;
-    if (this.e < this.jdField_a_of_type_Int)
-    {
-      this.e += 30;
-      k = 255 - this.e * 255 / this.jdField_a_of_type_Int;
-      if (k <= 255) {
-        break label190;
-      }
+    int i = this.e;
+    if (i < this.jdField_a_of_type_Int) {
+      this.e = (i + 30);
+    } else {
+      this.e = this.f;
     }
-    for (;;)
-    {
-      if (i < 30) {
-        i = j;
-      }
-      for (;;)
-      {
-        String str = Integer.toHexString(i);
-        i = Color.parseColor("#" + str + this.jdField_a_of_type_JavaLangString.substring(1, this.jdField_a_of_type_JavaLangString.length()));
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
-        paramCanvas.drawLine(this.jdField_a_of_type_Int / 2 - this.e / 2, this.d / 2, this.jdField_a_of_type_Int / 2 + this.e / 2, this.d / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-        this.e = this.f;
-        break;
-      }
-      label190:
-      i = k;
+    int j = 255 - this.e * 255 / this.jdField_a_of_type_Int;
+    i = j;
+    if (j > 255) {
+      i = 255;
     }
+    j = i;
+    if (i < 30) {
+      j = 30;
+    }
+    String str = Integer.toHexString(j);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("#");
+    localStringBuilder.append(str);
+    str = this.jdField_a_of_type_JavaLangString;
+    localStringBuilder.append(str.substring(1, str.length()));
+    i = Color.parseColor(localStringBuilder.toString());
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
+    i = this.jdField_a_of_type_Int;
+    int k = i / 2;
+    j = this.e;
+    float f1 = k - j / 2;
+    k = this.d;
+    paramCanvas.drawLine(f1, k / 2, i / 2 + j / 2, k / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(a(paramInt1, true), a(paramInt2, false));
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    if (this.jdField_a_of_type_Int < this.e) {
-      this.jdField_a_of_type_Int = this.e;
+    paramInt1 = this.jdField_a_of_type_Int;
+    paramInt2 = this.e;
+    if (paramInt1 < paramInt2) {
+      this.jdField_a_of_type_Int = paramInt2;
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.b);
   }
@@ -166,7 +175,7 @@ public class AlphaLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.AlphaLoadingView
  * JD-Core Version:    0.7.0.1
  */

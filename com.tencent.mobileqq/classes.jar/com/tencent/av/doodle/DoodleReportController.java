@@ -36,14 +36,20 @@ public class DoodleReportController
       long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
       if (l > 3000L)
       {
-        HashMap localHashMap = new HashMap();
+        Object localObject = new HashMap();
         String str1 = Integer.toHexString(paramInt);
         String str2 = String.valueOf(l);
-        localHashMap.put("color", str1);
-        localHashMap.put("duration", str2);
-        UserAction.onUserAction("actAVFunChatDrawing", true, -1L, -1L, localHashMap, true);
-        if (QLog.isColorLevel()) {
-          QLog.d("DoodleReportController", 2, "onUserAction colorString = " + str1 + ", durationString = " + str2);
+        ((Map)localObject).put("color", str1);
+        ((Map)localObject).put("duration", str2);
+        UserAction.onUserAction("actAVFunChatDrawing", true, -1L, -1L, (Map)localObject, true);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onUserAction colorString = ");
+          ((StringBuilder)localObject).append(str1);
+          ((StringBuilder)localObject).append(", durationString = ");
+          ((StringBuilder)localObject).append(str2);
+          QLog.d("DoodleReportController", 2, ((StringBuilder)localObject).toString());
         }
         this.b = true;
       }
@@ -81,7 +87,7 @@ public class DoodleReportController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.DoodleReportController
  * JD-Core Version:    0.7.0.1
  */

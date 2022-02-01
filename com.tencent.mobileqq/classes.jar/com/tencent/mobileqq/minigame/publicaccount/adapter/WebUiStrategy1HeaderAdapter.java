@@ -36,69 +36,72 @@ public class WebUiStrategy1HeaderAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    TextView localTextView = null;
-    RelativeLayout.LayoutParams localLayoutParams = null;
-    if ((this.mMsgInfoList == null) || (this.mMsgInfoList.size() == 0))
+    if ((this.mMsgInfoList != null) && (this.mMsgInfoList.size() != 0))
     {
-      localObject = createEmptyView();
-      paramViewGroup.addView((View)localObject);
-      paramViewGroup = (ViewGroup)localObject;
-      return paramViewGroup;
-    }
-    if (paramInt < this.mMsgInfoList.size()) {}
-    for (Object localObject = (QQGameMsgInfo)this.mMsgInfoList.get(paramInt);; localObject = null)
-    {
-      IHeaderView localIHeaderView = (IHeaderView)this.mHeaderRecords.get(paramInt);
-      if (localIHeaderView == null)
+      int i = this.mMsgInfoList.size();
+      TextView localTextView = null;
+      if (paramInt < i) {
+        localObject1 = (QQGameMsgInfo)this.mMsgInfoList.get(paramInt);
+      } else {
+        localObject1 = null;
+      }
+      Object localObject2 = (IHeaderView)this.mHeaderRecords.get(paramInt);
+      if (localObject2 == null)
       {
-        paramViewGroup = localLayoutParams;
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("WebUiStrategy1HeaderAdapter", 2, "headerView = null");
         }
-        QLog.d("WebUiStrategy1HeaderAdapter", 2, "headerView = null");
         return null;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("WebUiStrategy1HeaderAdapter", 2, "headerView = " + localIHeaderView.getClass().getSimpleName());
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("headerView = ");
+        ((StringBuilder)localObject3).append(localObject2.getClass().getSimpleName());
+        QLog.d("WebUiStrategy1HeaderAdapter", 2, ((StringBuilder)localObject3).toString());
       }
-      RelativeLayout localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
-      if (((View)localIHeaderView).getParent() != null) {
-        ((ViewGroup)((View)localIHeaderView).getParent()).removeView((View)localIHeaderView);
+      Object localObject3 = new RelativeLayout(paramViewGroup.getContext());
+      View localView = (View)localObject2;
+      if (localView.getParent() != null) {
+        ((ViewGroup)localView.getParent()).removeView(localView);
       }
-      if (localObject != null)
+      if (localObject1 != null)
       {
         localTextView = new TextView(this.mActivity);
         localTextView.setTextColor(-1);
         localTextView.setTextSize(1, 10.0F);
-        localTextView.setText(TimeFormatterUtils.a(this.mActivity, 3, ((QQGameMsgInfo)localObject).msgTime * 1000L));
+        localTextView.setText(TimeFormatterUtils.a(this.mActivity, 3, ((QQGameMsgInfo)localObject1).msgTime * 1000L));
         localTextView.setPadding(12, 0, 12, 0);
-        localTextView.setId(2131379343);
-        localLayoutParams = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-        localObject = localLayoutParams;
-        if (localLayoutParams == null) {
-          localObject = new RelativeLayout.LayoutParams(-2, AIOUtils.a(15.0F, this.mActivity.getResources()));
+        localTextView.setId(2131378695);
+        localObject2 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = new RelativeLayout.LayoutParams(-2, AIOUtils.b(15.0F, this.mActivity.getResources()));
         }
         localTextView.setGravity(17);
-        ((RelativeLayout.LayoutParams)localObject).addRule(14);
-        ((RelativeLayout.LayoutParams)localObject).addRule(10);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(14);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(10);
         localTextView.bringToFront();
       }
-      for (;;)
+      else
       {
-        if (localTextView != null) {
-          localRelativeLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject);
-        }
-        localObject = new RelativeLayout.LayoutParams(-1, -2);
-        ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131379343);
-        localRelativeLayout.addView((View)localIHeaderView, (ViewGroup.LayoutParams)localObject);
-        paramViewGroup.addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject);
-        if (paramInt == 0) {
-          initArk(0);
-        }
-        return localRelativeLayout;
-        localObject = null;
+        localObject1 = null;
       }
+      if (localTextView != null) {
+        ((RelativeLayout)localObject3).addView(localTextView, (ViewGroup.LayoutParams)localObject1);
+      }
+      localObject1 = new RelativeLayout.LayoutParams(-1, -2);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131378695);
+      ((RelativeLayout)localObject3).addView(localView, (ViewGroup.LayoutParams)localObject1);
+      paramViewGroup.addView((View)localObject3, (ViewGroup.LayoutParams)localObject1);
+      if (paramInt == 0) {
+        initArk(0);
+      }
+      return localObject3;
     }
+    Object localObject1 = createEmptyView();
+    paramViewGroup.addView((View)localObject1);
+    return localObject1;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -108,7 +111,7 @@ public class WebUiStrategy1HeaderAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.adapter.WebUiStrategy1HeaderAdapter
  * JD-Core Version:    0.7.0.1
  */

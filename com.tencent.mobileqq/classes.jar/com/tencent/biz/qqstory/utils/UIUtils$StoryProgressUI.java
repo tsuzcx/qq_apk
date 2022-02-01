@@ -13,14 +13,15 @@ public class UIUtils$StoryProgressUI
   
   public void a()
   {
-    if ((this.a != null) && (this.a.isShowing())) {
+    QQProgressDialog localQQProgressDialog = this.a;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
       this.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.UIUtils.StoryProgressUI
  * JD-Core Version:    0.7.0.1
  */

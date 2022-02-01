@@ -15,16 +15,16 @@ class AnonymousView$2
     {
       AnonymousView.access$000(this.this$0).cancelPendingRequests();
       AnonymousView.access$000(this.this$0).pause();
-    }
-    while (!AnonymousView.access$000(this.this$0).isPausing()) {
       return;
     }
-    AnonymousView.access$000(this.this$0).resume();
+    if (AnonymousView.access$000(this.this$0).isPausing()) {
+      AnonymousView.access$000(this.this$0).resume();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView.2
  * JD-Core Version:    0.7.0.1
  */

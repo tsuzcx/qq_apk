@@ -48,7 +48,7 @@ public class OpenCenterPlugin
     this.a.put(((BaseInterface)localObject).getInterfaceName(), localObject);
   }
   
-  public Method getJsMethod(String paramString1, String paramString2, int paramInt)
+  protected Method getJsMethod(String paramString1, String paramString2, int paramInt)
   {
     paramString1 = (BaseInterface)this.a.get(paramString1);
     if (paramString1 != null)
@@ -73,12 +73,12 @@ public class OpenCenterPlugin
     return new String[] { "opencenter", "qqZoneAppList", "q_download_vip", "qzone_http", "qzone_app", "q_download", "q_download_now", "q_download_v2" };
   }
   
-  public String getNameSpace()
+  protected String getNameSpace()
   {
     return "opencenter";
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 8589934593L) {
       OpenAppClient.a(this.mRuntime.a());
@@ -86,89 +86,90 @@ public class OpenCenterPlugin
     return false;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    Method[] arrayOfMethod = null;
-    paramString1 = null;
     if (this.a == null) {
       a();
     }
     BaseInterface localBaseInterface = (BaseInterface)this.a.get(paramString2);
-    paramString2 = arrayOfMethod;
-    int i;
     if (localBaseInterface != null)
     {
-      arrayOfMethod = localBaseInterface.getClass().getDeclaredMethods();
+      Method[] arrayOfMethod = localBaseInterface.getClass().getDeclaredMethods();
       int j = arrayOfMethod.length;
-      i = 0;
-      paramString2 = paramString1;
-      if (i < j)
+      paramString1 = null;
+      int i = 0;
+      for (;;)
       {
-        paramString2 = arrayOfMethod[i];
-        if ((!paramString2.getName().equals(paramString3)) || (paramString2.getParameterTypes().length != paramVarArgs.length)) {
-          break label184;
+        paramString2 = paramString1;
+        if (i >= j) {
+          break;
         }
+        Method localMethod = arrayOfMethod[i];
+        paramString2 = paramString1;
+        if (localMethod.getName().equals(paramString3))
+        {
+          paramString2 = paramString1;
+          if (localMethod.getParameterTypes().length == paramVarArgs.length) {
+            paramString2 = localMethod;
+          }
+        }
+        i += 1;
         paramString1 = paramString2;
       }
     }
-    label184:
-    for (;;)
+    paramString2 = null;
+    if (paramString2 != null) {}
+    try
     {
-      i += 1;
-      break;
-      if (paramString2 != null) {
-        try
-        {
-          if (paramVarArgs.length == 0) {}
-          for (paramString1 = paramString2.invoke(localBaseInterface, new Object[0]);; paramString1 = paramString2.invoke(localBaseInterface, paramVarArgs))
-          {
-            paramString2 = paramString2.getReturnType();
-            if ((paramString2 != Void.TYPE) && (paramString2 != Void.class)) {
-              break;
-            }
-            if (paramJsBridgeListener == null) {
-              break label187;
-            }
-            paramJsBridgeListener.a(null);
-            break label187;
-          }
-          if (paramJsBridgeListener == null) {
-            break label187;
-          }
+      if (paramVarArgs.length == 0) {
+        paramString1 = paramString2.invoke(localBaseInterface, new Object[0]);
+      } else {
+        paramString1 = paramString2.invoke(localBaseInterface, paramVarArgs);
+      }
+      paramString2 = paramString2.getReturnType();
+      if ((paramString2 != Void.TYPE) && (paramString2 != Void.class))
+      {
+        if (paramJsBridgeListener != null) {
           paramJsBridgeListener.a(paramString1);
         }
-        catch (Exception paramJsBridgeListener) {}
       }
-      return false;
+      else if (paramJsBridgeListener != null) {
+        paramJsBridgeListener.a(null);
+      }
+      return true;
     }
-    label187:
-    return true;
+    catch (Exception paramJsBridgeListener) {}
+    return false;
+    return false;
   }
   
   public void onAppRuntimeReady(AppRuntime paramAppRuntime) {}
   
-  public void onCreate() {}
+  protected void onCreate() {}
   
-  public void onDestroy()
+  protected void onDestroy()
   {
-    if (this.a == null) {}
-    for (;;)
-    {
+    Object localObject = this.a;
+    if (localObject == null) {
       return;
-      Iterator localIterator = this.a.entrySet().iterator();
-      while (localIterator.hasNext()) {
-        try
-        {
-          ((BaseInterface)((Map.Entry)localIterator.next()).getValue()).destroy();
-        }
-        catch (Exception localException) {}
+    }
+    localObject = ((Map)localObject).entrySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      try
+      {
+        ((BaseInterface)((Map.Entry)((Iterator)localObject).next()).getValue()).destroy();
+      }
+      catch (Exception localException)
+      {
+        label54:
+        break label54;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OpenCenterPlugin
  * JD-Core Version:    0.7.0.1
  */

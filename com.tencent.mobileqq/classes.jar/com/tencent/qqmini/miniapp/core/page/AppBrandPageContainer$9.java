@@ -13,35 +13,31 @@ class AppBrandPageContainer$9
   
   public void run()
   {
-    for (int i = -1;; i = -16777216)
+    int i = -1;
+    try
     {
-      try
-      {
-        boolean bool = "light".equals(new JSONObject(this.val$req.jsonParams).optString("textStyle", "light"));
-        if (!bool) {
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Iterator localIterator;
-          QMLog.e("minisdk-start-AppBrandPageContainer", this.val$req.event + " error.", localException);
-          i = -1;
-        }
-        this.val$req.ok();
-      }
-      localIterator = AppBrandPageContainer.access$400(this.this$0).iterator();
-      while (localIterator.hasNext()) {
-        ((AppBrandPage)localIterator.next()).notifyChangePullDownRefreshStyle(i);
+      boolean bool = "light".equals(new JSONObject(this.val$req.jsonParams).optString("textStyle", "light"));
+      if (!bool) {
+        i = -16777216;
       }
     }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.val$req.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("minisdk-start-AppBrandPageContainer", localStringBuilder.toString(), localException);
+    }
+    Iterator localIterator = AppBrandPageContainer.access$400(this.this$0).iterator();
+    while (localIterator.hasNext()) {
+      ((AppBrandPage)localIterator.next()).notifyChangePullDownRefreshStyle(i);
+    }
+    this.val$req.ok();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.9
  * JD-Core Version:    0.7.0.1
  */

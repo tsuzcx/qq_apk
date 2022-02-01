@@ -59,34 +59,28 @@ class ViewPropertyAnimatorPreHC$AnimatorEventListener
       }
     }
     paramValueAnimator = paramValueAnimator.mNameValuesHolder;
-    int j;
-    int i;
     if (paramValueAnimator != null)
     {
-      j = paramValueAnimator.size();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i >= j)
+      int j = paramValueAnimator.size();
+      int i = 0;
+      while (i < j)
       {
-        paramValueAnimator = (View)ViewPropertyAnimatorPreHC.access$4(this.this$0).get();
-        if (paramValueAnimator != null) {
-          paramValueAnimator.invalidate();
-        }
-        return;
+        localObject = (ViewPropertyAnimatorPreHC.NameValuesHolder)paramValueAnimator.get(i);
+        float f2 = ((ViewPropertyAnimatorPreHC.NameValuesHolder)localObject).mFromValue;
+        float f3 = ((ViewPropertyAnimatorPreHC.NameValuesHolder)localObject).mDeltaValue;
+        ViewPropertyAnimatorPreHC.access$5(this.this$0, ((ViewPropertyAnimatorPreHC.NameValuesHolder)localObject).mNameConstant, f2 + f3 * f1);
+        i += 1;
       }
-      localObject = (ViewPropertyAnimatorPreHC.NameValuesHolder)paramValueAnimator.get(i);
-      float f2 = ((ViewPropertyAnimatorPreHC.NameValuesHolder)localObject).mFromValue;
-      float f3 = ((ViewPropertyAnimatorPreHC.NameValuesHolder)localObject).mDeltaValue;
-      ViewPropertyAnimatorPreHC.access$5(this.this$0, ((ViewPropertyAnimatorPreHC.NameValuesHolder)localObject).mNameConstant, f2 + f3 * f1);
-      i += 1;
+    }
+    paramValueAnimator = (View)ViewPropertyAnimatorPreHC.access$4(this.this$0).get();
+    if (paramValueAnimator != null) {
+      paramValueAnimator.invalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.view.ViewPropertyAnimatorPreHC.AnimatorEventListener
  * JD-Core Version:    0.7.0.1
  */

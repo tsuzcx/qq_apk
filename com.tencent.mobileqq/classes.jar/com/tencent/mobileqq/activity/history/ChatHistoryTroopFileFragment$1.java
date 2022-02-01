@@ -17,12 +17,13 @@ class ChatHistoryTroopFileFragment$1
   public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
     paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L) {
+      l = System.currentTimeMillis();
+    } else {
+      l = this.a.jdField_a_of_type_Long;
     }
+    paramView.c(l);
   }
   
   public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
@@ -31,12 +32,13 @@ class ChatHistoryTroopFileFragment$1
       QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisable");
     }
     paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
-      return;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L) {
+      l = System.currentTimeMillis();
+    } else {
+      l = this.a.jdField_a_of_type_Long;
     }
+    paramView.b(l);
   }
   
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
@@ -45,13 +47,15 @@ class ChatHistoryTroopFileFragment$1
       QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisableAndReleased");
     }
     paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L) {
+      l = System.currentTimeMillis();
+    } else {
+      l = this.a.jdField_a_of_type_Long;
+    }
+    paramView.a(l);
+    if (NetworkUtil.isNetworkAvailable(this.a.getBaseActivity()))
     {
-      paramView.a(l);
-      if (!NetworkUtil.g(this.a.getActivity())) {
-        break;
-      }
       ChatHistoryTroopFileFragment.a(this.a).a(0, 0);
       return true;
     }
@@ -69,7 +73,7 @@ class ChatHistoryTroopFileFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.1
  * JD-Core Version:    0.7.0.1
  */

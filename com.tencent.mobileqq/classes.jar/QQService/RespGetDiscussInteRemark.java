@@ -40,14 +40,15 @@ public final class RespGetDiscussInteRemark
   {
     paramJceOutputStream.write(this.DiscussUin, 0);
     paramJceOutputStream.write(this.InteRemarks, 1);
-    if (this.DiscussName != null) {
-      paramJceOutputStream.write(this.DiscussName, 2);
+    String str = this.DiscussName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespGetDiscussInteRemark
  * JD-Core Version:    0.7.0.1
  */

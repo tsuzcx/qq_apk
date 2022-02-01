@@ -47,7 +47,10 @@ public class StructMsgItemType
   public void a(XmlSerializer paramXmlSerializer)
   {
     paramXmlSerializer.startTag(null, "type");
-    paramXmlSerializer.text(this.o + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.o);
+    localStringBuilder.append("");
+    paramXmlSerializer.text(localStringBuilder.toString());
     paramXmlSerializer.endTag(null, "type");
   }
   
@@ -59,22 +62,19 @@ public class StructMsgItemType
     try
     {
       this.o = Integer.valueOf(MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false)).intValue();
-      return true;
     }
     catch (Exception paramStructMsgNode)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("StructMsgItemType", 2, paramStructMsgNode, new Object[0]);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("StructMsgItemType", 2, paramStructMsgNode, new Object[0]);
       }
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemType
  * JD-Core Version:    0.7.0.1
  */

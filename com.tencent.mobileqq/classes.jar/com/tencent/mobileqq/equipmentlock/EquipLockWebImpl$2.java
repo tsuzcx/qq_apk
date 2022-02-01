@@ -14,8 +14,12 @@ class EquipLockWebImpl$2
   
   public void onCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramWUserSigInfo = new StringBuilder();
+      paramWUserSigInfo.append("OnCheckDevLockSms ret=");
+      paramWUserSigInfo.append(paramInt);
+      QLog.d("EquipLockWebImpl", 2, paramWUserSigInfo.toString());
     }
     if (paramInt == 0)
     {
@@ -30,15 +34,17 @@ class EquipLockWebImpl$2
         EquipLockWebImpl.a(this.a, false);
         EquipLockWebImpl.b(this.a, false);
       }
-      return;
     }
-    EquipLockWebImpl.a(this.a, false);
-    EquipLockWebImpl.c(this.a, false);
+    else
+    {
+      EquipLockWebImpl.a(this.a, false);
+      EquipLockWebImpl.c(this.a, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.equipmentlock.EquipLockWebImpl.2
  * JD-Core Version:    0.7.0.1
  */

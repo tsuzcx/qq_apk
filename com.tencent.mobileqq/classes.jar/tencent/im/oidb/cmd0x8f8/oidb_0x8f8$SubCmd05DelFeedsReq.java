@@ -17,13 +17,14 @@ public final class oidb_0x8f8$SubCmd05DelFeedsReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_feeds_id", "uint32_del_type", "uint32_edu_id" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, SubCmd05DelFeedsReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_feeds_id", "uint32_del_type", "uint32_edu_id" }, new Object[] { localByteStringMicro, localInteger, localInteger }, SubCmd05DelFeedsReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f8.oidb_0x8f8.SubCmd05DelFeedsReq
  * JD-Core Version:    0.7.0.1
  */

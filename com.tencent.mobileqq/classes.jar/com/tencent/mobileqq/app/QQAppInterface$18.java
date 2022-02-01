@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.app;
 
 import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.OfflineUtils;
+import com.tencent.mobileqq.kandian.biz.pts.api.IOfflineUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class QQAppInterface$18
   implements Runnable
@@ -15,13 +16,12 @@ class QQAppInterface$18
       localAdvertisementVideoPreloadManager.a(1);
     }
     this.this$0.setTalkbackSwitch();
-    QQAppInterface.access$3100(this.this$0);
-    OfflineUtils.b();
+    ((IOfflineUtils)QRoute.api(IOfflineUtils.class)).checkOfflineDirExist();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.18
  * JD-Core Version:    0.7.0.1
  */

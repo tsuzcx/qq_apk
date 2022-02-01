@@ -61,8 +61,10 @@ public class BaseLibInfo
       }
       catch (Exception paramJSONObject)
       {
-        QLog.e("BaseLibInfo", 1, "[MiniEng]BaseLibInfo create from json failed " + DebugUtil.getPrintableStackTrace(paramJSONObject));
-        return null;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[MiniEng]BaseLibInfo create from json failed ");
+        localStringBuilder.append(DebugUtil.getPrintableStackTrace(paramJSONObject));
+        QLog.e("BaseLibInfo", 1, localStringBuilder.toString());
       }
     }
     return null;
@@ -70,23 +72,30 @@ public class BaseLibInfo
   
   public static String getKey(int paramInt)
   {
-    return "BaseLibInfo_" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BaseLibInfo_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public static boolean needUpdateVersion(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    for (;;)
+    boolean bool3 = TextUtils.isEmpty(paramString1);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!bool3)
     {
-      return false;
+      if (TextUtils.isEmpty(paramString2)) {
+        return false;
+      }
       paramString1 = paramString1.split("\\.");
       paramString2 = paramString2.split("\\.");
       int m = Math.min(paramString1.length, paramString2.length);
-      int i = 0;
       int j = 0;
-      while (j < m)
+      int k;
+      for (int i = 0; j < m; i = k)
       {
-        int k = paramString1[j].length() - paramString2[j].length();
+        k = paramString1[j].length() - paramString2[j].length();
         i = k;
         if (k != 0) {
           break;
@@ -97,15 +106,16 @@ public class BaseLibInfo
           break;
         }
         j += 1;
-        i = k;
       }
-      if (i != 0) {}
-      while (i > 0)
-      {
-        return true;
+      if (i == 0) {
         i = paramString1.length - paramString2.length;
       }
+      bool1 = bool2;
+      if (i > 0) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   public int describeContents()
@@ -132,7 +142,10 @@ public class BaseLibInfo
   
   public String getKey()
   {
-    return "BaseLibInfo_" + this.baseLibType;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BaseLibInfo_");
+    localStringBuilder.append(this.baseLibType);
+    return localStringBuilder.toString();
   }
   
   public JSONObject toJSONObject()
@@ -149,14 +162,34 @@ public class BaseLibInfo
     }
     catch (Exception localException)
     {
-      QLog.e("BaseLibInfo", 1, "[MiniEng]BaseLibInfo convert to json failed " + DebugUtil.getPrintableStackTrace(localException));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[MiniEng]BaseLibInfo convert to json failed ");
+      localStringBuilder.append(DebugUtil.getPrintableStackTrace(localException));
+      QLog.e("BaseLibInfo", 1, localStringBuilder.toString());
     }
     return localJSONObject;
   }
   
   public String toString()
   {
-    return "BaseLibInfo{baseLibUrl='" + this.baseLibUrl + '\'' + ", baseLibKey='" + this.baseLibKey + '\'' + ", baseLibVersion='" + this.baseLibVersion + '\'' + ", baseLibDesc='" + this.baseLibDesc + '\'' + ", baseLibType='" + this.baseLibType + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BaseLibInfo{baseLibUrl='");
+    localStringBuilder.append(this.baseLibUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", baseLibKey='");
+    localStringBuilder.append(this.baseLibKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", baseLibVersion='");
+    localStringBuilder.append(this.baseLibVersion);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", baseLibDesc='");
+    localStringBuilder.append(this.baseLibDesc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", baseLibType='");
+    localStringBuilder.append(this.baseLibType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void updateFor64IfNeed() {}
@@ -172,7 +205,7 @@ public class BaseLibInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.BaseLibInfo
  * JD-Core Version:    0.7.0.1
  */

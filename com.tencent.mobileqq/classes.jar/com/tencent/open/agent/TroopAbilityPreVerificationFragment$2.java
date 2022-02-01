@@ -10,9 +10,14 @@ class TroopAbilityPreVerificationFragment$2
 {
   TroopAbilityPreVerificationFragment$2(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
   
-  public void a(boolean paramBoolean, OpenID paramOpenID)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    QLog.d("TroopAbility.PreVerification", 1, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("-->onGetOpenId, isSuccess: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" data: ");
+    localStringBuilder.append(paramOpenID);
+    QLog.d("TroopAbility.PreVerification", 1, localStringBuilder.toString());
     if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
     {
       if (!paramOpenID.openID.equals(this.a.b))
@@ -24,12 +29,12 @@ class TroopAbilityPreVerificationFragment$2
       this.a.c();
       return;
     }
-    this.a.c(HardCodeUtil.a(2131714988));
+    this.a.c(HardCodeUtil.a(2131714911));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.TroopAbilityPreVerificationFragment.2
  * JD-Core Version:    0.7.0.1
  */

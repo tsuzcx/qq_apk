@@ -22,22 +22,27 @@ public class SubscribeMessage$Req
   
   public boolean checkArgs()
   {
-    if ((this.templateID == null) || (this.templateID.length() == 0))
-    {
-      Log.e("MicroMsg.SDK.SubscribeMessage.Req", "checkArgs fail, templateID is null");
-      return false;
+    String str = this.templateID;
+    if ((str != null) && (str.length() != 0)) {
+      if (this.templateID.length() > 1024) {
+        str = "checkArgs fail, templateID is too long";
+      }
     }
-    if (this.templateID.length() > 1024)
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.SubscribeMessage.Req", "checkArgs fail, templateID is too long");
+      Log.e("MicroMsg.SDK.SubscribeMessage.Req", str);
       return false;
+      str = this.reserved;
+      if ((str != null) && (str.length() > 1024))
+      {
+        str = "checkArgs fail, reserved is too long";
+      }
+      else
+      {
+        return true;
+        str = "checkArgs fail, templateID is null";
+      }
     }
-    if ((this.reserved != null) && (this.reserved.length() > 1024))
-    {
-      Log.e("MicroMsg.SDK.SubscribeMessage.Req", "checkArgs fail, reserved is too long");
-      return false;
-    }
-    return true;
   }
   
   public void fromBundle(Bundle paramBundle)
@@ -63,7 +68,7 @@ public class SubscribeMessage$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.SubscribeMessage.Req
  * JD-Core Version:    0.7.0.1
  */

@@ -16,27 +16,32 @@ class ShareAppLogHelper$1
   {
     switch (paramMessage.what)
     {
-    }
-    do
-    {
-      do
+    default: 
+    case 1002: 
+      if (ShareAppLogHelper.a(this.a) != null)
       {
-        do
-        {
-          return;
-        } while (ShareAppLogHelper.a(this.a) == null);
-        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
+        ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
         return;
-      } while (ShareAppLogHelper.a(this.a) == null);
-      ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
-      return;
-    } while (ShareAppLogHelper.a(this.a) == null);
-    ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
+      }
+      break;
+    case 1001: 
+      if (ShareAppLogHelper.a(this.a) != null)
+      {
+        ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
+        return;
+      }
+      break;
+    case 1000: 
+      if (ShareAppLogHelper.a(this.a) != null) {
+        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
+      }
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.testassister.ShareAppLogHelper.1
  * JD-Core Version:    0.7.0.1
  */

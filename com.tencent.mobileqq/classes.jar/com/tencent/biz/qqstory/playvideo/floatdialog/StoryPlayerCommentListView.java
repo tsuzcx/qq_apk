@@ -60,23 +60,23 @@ public class StoryPlayerCommentListView
   private void a(int paramInt, CommentEntry paramCommentEntry)
   {
     DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a();
-    if ((localDetailFeedItem == null) || (localDetailFeedItem.a == null))
+    if ((localDetailFeedItem != null) && (localDetailFeedItem.a != null))
     {
-      SLog.d("Q.qqstory.player.StoryPlayerCommentListView", "feed item null , notify feed info change error!");
-      return;
-    }
-    FeedInfoChangeEvent localFeedInfoChangeEvent;
-    if ((paramInt == 2) || (paramInt == 1))
-    {
-      localFeedInfoChangeEvent = new FeedInfoChangeEvent(2, paramCommentEntry.feedId, paramInt);
-      localFeedInfoChangeEvent.c = paramCommentEntry.commentId;
-    }
-    for (paramCommentEntry = localFeedInfoChangeEvent;; paramCommentEntry = new FeedInfoChangeEvent(2, localDetailFeedItem.a.feedId, paramInt, localDetailFeedItem.a))
-    {
+      if ((paramInt != 2) && (paramInt != 1))
+      {
+        paramCommentEntry = new FeedInfoChangeEvent(2, localDetailFeedItem.a.feedId, paramInt, localDetailFeedItem.a);
+      }
+      else
+      {
+        FeedInfoChangeEvent localFeedInfoChangeEvent = new FeedInfoChangeEvent(2, paramCommentEntry.feedId, paramInt);
+        localFeedInfoChangeEvent.c = paramCommentEntry.commentId;
+        paramCommentEntry = localFeedInfoChangeEvent;
+      }
       paramCommentEntry.a = localDetailFeedItem.a;
       StoryDispatcher.a().dispatch(paramCommentEntry);
       return;
     }
+    SLog.d("Q.qqstory.player.StoryPlayerCommentListView", "feed item null , notify feed info change error!");
   }
   
   private void b()
@@ -90,21 +90,19 @@ public class StoryPlayerCommentListView
   public int a()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    SegmentView localSegmentView;
-    for (int i = 0;; i = localSegmentView.a() + i) {
-      if (localIterator.hasNext())
-      {
-        localSegmentView = (SegmentView)localIterator.next();
-        if (!(localSegmentView instanceof PlayerCommentSegment)) {}
-      }
-      else
-      {
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      SegmentView localSegmentView = (SegmentView)localIterator.next();
+      if ((localSegmentView instanceof PlayerCommentSegment)) {
         return i;
       }
+      i += localSegmentView.a();
     }
+    return i;
   }
   
-  public void a()
+  protected void a()
   {
     super.setActTAG("list_qqstory_detail");
     Object localObject = new PlayerDoubleTabSegment(getContext());
@@ -130,7 +128,7 @@ public class StoryPlayerCommentListView
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a(paramCommentEntry, paramBoolean);
     StoryFailCommentCacher.a().a();
     p();
-    QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131714428), 0).a();
+    QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131714349), 0).a();
     a(2, paramCommentEntry);
   }
   
@@ -170,46 +168,49 @@ public class StoryPlayerCommentListView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
-    SegmentView localSegmentView;
-    if (localIterator.hasNext())
-    {
-      localSegmentView = (SegmentView)localIterator.next();
-      if ((localSegmentView instanceof PlayerCommentSegment)) {
-        i = localSegmentView.a() + i;
-      }
-    }
+    int j;
     for (;;)
     {
-      if (i == 0)
-      {
-        return 0;
-        i = localSegmentView.a() + i;
+      j = i;
+      if (!localIterator.hasNext()) {
         break;
       }
-      return i;
+      SegmentView localSegmentView = (SegmentView)localIterator.next();
+      if ((localSegmentView instanceof PlayerCommentSegment))
+      {
+        j = i + localSegmentView.a();
+        break;
+      }
+      i += localSegmentView.a();
     }
+    if (j == 0) {
+      return 0;
+    }
+    return j;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt < a()) {}
-    do
-    {
+    if (paramInt < a()) {
       return;
-      paramInt -= a();
-      paramAdapterView = ((PlayerCommentSegment)a("PlayerCommentSegment")).a(paramInt);
-      if (paramAdapterView == null)
-      {
-        SLog.e("Q.qqstory.player.StoryPlayerCommentListView", "the clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
-        return;
-      }
-      if (paramAdapterView.type == 1)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
-        return;
-      }
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener == null);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener.a(paramAdapterView, paramInt, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
+    }
+    paramInt -= a();
+    paramAdapterView = ((PlayerCommentSegment)a("PlayerCommentSegment")).a(paramInt);
+    if (paramAdapterView == null)
+    {
+      SLog.e("Q.qqstory.player.StoryPlayerCommentListView", "the clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
+      return;
+    }
+    if (paramAdapterView.type == 1)
+    {
+      paramAdapterView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController;
+      paramAdapterView.a(paramAdapterView.a());
+      return;
+    }
+    paramView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener;
+    if (paramView != null) {
+      paramView.a(paramAdapterView, paramInt, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
+    }
   }
   
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -225,31 +226,33 @@ public class StoryPlayerCommentListView
       return false;
     }
     paramAdapterView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a();
-    if ((paramAdapterView != null) && (paramAdapterView.a != null)) {
-      if (!paramAdapterView.a.getOwner().isMe()) {
-        break label147;
-      }
-    }
-    label147:
-    for (paramAdapterView = "2";; paramAdapterView = "1")
+    if ((paramAdapterView != null) && (paramAdapterView.a != null))
     {
-      StoryReportor.a("home_page", "press_reply", 0, 0, new String[] { paramAdapterView, StoryReportor.a(this.jdField_a_of_type_Int) });
-      if (paramView.type != 1) {
-        break;
+      if (paramAdapterView.a.getOwner().isMe()) {
+        paramAdapterView = "2";
+      } else {
+        paramAdapterView = "1";
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
+      StoryReportor.a("home_page", "press_reply", 0, 0, new String[] { paramAdapterView, StoryReportor.a(this.jdField_a_of_type_Int) });
+    }
+    if (paramView.type == 1)
+    {
+      paramAdapterView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController;
+      paramAdapterView.a(paramAdapterView.a());
       return true;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener.b(paramView, paramInt, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
+    paramAdapterView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener;
+    if (paramAdapterView != null) {
+      paramAdapterView.b(paramView, paramInt, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
     }
     return true;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener.a(paramMotionEvent);
+    paramView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener;
+    if (paramView != null) {
+      return paramView.a(paramMotionEvent);
     }
     return false;
   }
@@ -257,15 +260,16 @@ public class StoryPlayerCommentListView
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     super.onViewCompleteVisableAndReleased(paramInt, paramView, paramListView);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener.a();
+    paramView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener;
+    if (paramView != null) {
+      paramView.a();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView
  * JD-Core Version:    0.7.0.1
  */

@@ -20,8 +20,8 @@ public class ColorNickColorPanelAdapter$GradientViewHolder
   {
     super(paramView);
     this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter = paramColorNickColorPanelAdapter;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364938));
-    this.b = ((ImageView)paramView.findViewById(2131364939));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364822));
+    this.b = ((ImageView)paramView.findViewById(2131364823));
     paramView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener = paramOnColorSelectListener;
   }
@@ -29,15 +29,16 @@ public class ColorNickColorPanelAdapter$GradientViewHolder
   public void onClick(View paramView)
   {
     this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter.a(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter.a(this.jdField_a_of_type_Int));
+    ColorNickColorPanelAdapter.OnColorSelectListener localOnColorSelectListener = this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener;
+    if (localOnColorSelectListener != null) {
+      localOnColorSelectListener.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter.a(this.jdField_a_of_type_Int));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickColorPanelAdapter.GradientViewHolder
  * JD-Core Version:    0.7.0.1
  */

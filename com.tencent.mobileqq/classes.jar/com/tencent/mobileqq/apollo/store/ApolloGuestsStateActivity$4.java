@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.store;
 
-import com.tencent.mobileqq.apollo.ApolloRenderInterfaceImpl;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.IRenderCallback;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRenderInterfaceImpl;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.IRenderCallback;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloGuestsStateActivity$4
@@ -15,7 +15,7 @@ class ApolloGuestsStateActivity$4
     if (this.a.mSurfaceView != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
+        QLog.d("[cmshow]ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
       }
       this.a.mSurfaceView.getRenderImpl().a(0L);
     }
@@ -25,7 +25,7 @@ class ApolloGuestsStateActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.4
  * JD-Core Version:    0.7.0.1
  */

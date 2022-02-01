@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
@@ -19,76 +20,94 @@ class ScoreQAVFragment$1
   
   public void a(Object paramObject, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScoreActivity", 2, "ratingScore : " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("ratingScore : ");
+      paramObject.append(paramInt);
+      QLog.d("ScoreActivity", 2, paramObject.toString());
     }
-    this.a.e = paramInt;
-    if (paramInt <= 3) {}
-    for (;;)
+    paramObject = this.a;
+    paramObject.e = paramInt;
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (paramInt <= 3)
     {
       try
       {
-        if (ImageResUtil.a("qav_score_bad.jpg")) {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), ImageResUtil.b() + "qav_score_bad.jpg"));
-        }
-        ScoreQAVFragment.a(this.a).setVisibility(0);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.b.setText(2131695831);
-        if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
+        if (ImageResUtil.a("qav_score_bad.jpg"))
         {
-          ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
-          if (paramInt <= 0) {
-            break label398;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
-          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-          return;
+          paramObject = this.a.jdField_a_of_type_AndroidWidgetImageView;
+          localObject = this.a.getResources();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(ImageResUtil.a());
+          localStringBuilder.append("qav_score_bad.jpg");
+          paramObject.setBackgroundDrawable(new BitmapDrawable((Resources)localObject, localStringBuilder.toString()));
         }
       }
       catch (OutOfMemoryError paramObject)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mIcon OOM: ");
+          ((StringBuilder)localObject).append(paramObject);
+          QLog.w("ScoreActivity", 2, ((StringBuilder)localObject).toString());
         }
-        QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
-        continue;
       }
-      if (paramInt > 3)
-      {
-        ScoreQAVFragment.a(this.a).setVisibility(8);
-        try
-        {
-          if (ImageResUtil.a("qav_score_good.jpg")) {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), ImageResUtil.b() + "qav_score_good.jpg"));
-          }
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-          this.a.b.setText(2131695831);
-        }
-        catch (OutOfMemoryError paramObject)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-            }
-          }
-        }
-        label398:
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
+      ScoreQAVFragment.a(this.a).setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.b.setText(2131695845);
+      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0)) {
+        ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
+      } else if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
       }
     }
+    else if (paramInt > 3)
+    {
+      ScoreQAVFragment.a(paramObject).setVisibility(8);
+      try
+      {
+        if (ImageResUtil.a("qav_score_good.jpg"))
+        {
+          paramObject = this.a.jdField_a_of_type_AndroidWidgetImageView;
+          localObject = this.a.getResources();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(ImageResUtil.a());
+          localStringBuilder.append("qav_score_good.jpg");
+          paramObject.setBackgroundDrawable(new BitmapDrawable((Resources)localObject, localStringBuilder.toString()));
+        }
+      }
+      catch (OutOfMemoryError paramObject)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mIcon OOM: ");
+          ((StringBuilder)localObject).append(paramObject);
+          QLog.w("ScoreActivity", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.a.b.setText(2131695845);
+    }
+    if (paramInt > 0)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
+    }
+    else
+    {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
+    }
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ScoreQAVFragment.1
  * JD-Core Version:    0.7.0.1
  */

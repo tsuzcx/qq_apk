@@ -33,20 +33,18 @@ public class AppleItemSetting
   
   public void updateItemWidth(int paramInt)
   {
+    int i = this.mScaleFactor;
     float f = 1.0F;
-    if (this.mScaleFactor == 0) {}
-    for (;;)
-    {
-      this.mItemWidth = ((int)(this.mItemWidth * f));
-      this.mItemHeight = ((int)(f * this.mItemHeight));
-      return;
-      f = 1.0F * paramInt / this.mScaleFactor;
+    if (i != 0) {
+      f = paramInt * 1.0F / i;
     }
+    this.mItemWidth = ((int)(this.mItemWidth * f));
+    this.mItemHeight = ((int)(this.mItemHeight * f));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.juyoujinggame.AppleItemSetting
  * JD-Core Version:    0.7.0.1
  */

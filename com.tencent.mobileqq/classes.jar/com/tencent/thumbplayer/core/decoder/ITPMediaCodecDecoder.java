@@ -1,7 +1,7 @@
 package com.tencent.thumbplayer.core.decoder;
 
-import android.support.annotation.NonNull;
 import android.view.Surface;
+import androidx.annotation.NonNull;
 
 public abstract interface ITPMediaCodecDecoder
 {
@@ -63,7 +63,7 @@ public abstract interface ITPMediaCodecDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.ITPMediaCodecDecoder
  * JD-Core Version:    0.7.0.1
  */

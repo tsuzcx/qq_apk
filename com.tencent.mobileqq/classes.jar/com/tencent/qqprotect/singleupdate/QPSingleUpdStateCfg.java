@@ -22,7 +22,10 @@ public class QPSingleUpdStateCfg
     this.jdField_a_of_type_Int = 3;
     this.jdField_b_of_type_Int = 0;
     Object localObject = BaseApplication.getContext();
-    this.jdField_a_of_type_JavaLangString = (((Context)localObject).getFilesDir().getAbsolutePath() + "/TxSingleUpd/UpdState.cfg");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((Context)localObject).getFilesDir().getAbsolutePath());
+    localStringBuilder.append("/TxSingleUpd/UpdState.cfg");
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     localObject = new File(this.jdField_a_of_type_JavaLangString);
     if (!((File)localObject).exists()) {
       try
@@ -44,167 +47,153 @@ public class QPSingleUpdStateCfg
   public void a()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore_2
-    //   4: new 80	java/io/FileOutputStream
-    //   7: dup
-    //   8: aload_0
-    //   9: getfield 18	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12: invokespecial 81	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   15: astore_1
-    //   16: aload_1
-    //   17: ifnull +190 -> 207
-    //   20: new 83	java/io/DataOutputStream
-    //   23: dup
-    //   24: aload_1
-    //   25: invokespecial 86	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   28: astore_2
-    //   29: aload_2
-    //   30: astore_3
-    //   31: aload_2
-    //   32: ifnull +45 -> 77
-    //   35: aload_2
-    //   36: aload_0
-    //   37: getfield 20	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Long	J
-    //   40: invokevirtual 90	java/io/DataOutputStream:writeLong	(J)V
-    //   43: aload_2
-    //   44: aload_0
-    //   45: getfield 22	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Long	J
-    //   48: invokevirtual 90	java/io/DataOutputStream:writeLong	(J)V
-    //   51: aload_2
-    //   52: aload_0
-    //   53: getfield 24	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:c	J
-    //   56: invokevirtual 90	java/io/DataOutputStream:writeLong	(J)V
-    //   59: aload_2
-    //   60: aload_0
-    //   61: getfield 26	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Int	I
-    //   64: invokevirtual 94	java/io/DataOutputStream:writeInt	(I)V
-    //   67: aload_2
-    //   68: aload_0
-    //   69: getfield 28	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Int	I
-    //   72: invokevirtual 94	java/io/DataOutputStream:writeInt	(I)V
-    //   75: aload_2
-    //   76: astore_3
-    //   77: aload_3
-    //   78: ifnull +7 -> 85
-    //   81: aload_3
-    //   82: invokevirtual 97	java/io/DataOutputStream:close	()V
-    //   85: aload_1
-    //   86: ifnull +7 -> 93
-    //   89: aload_1
-    //   90: invokevirtual 98	java/io/FileOutputStream:close	()V
-    //   93: return
-    //   94: astore_2
-    //   95: aload_2
-    //   96: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   99: goto -14 -> 85
-    //   102: astore_1
-    //   103: aload_1
-    //   104: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   107: return
+    //   0: new 80	java/io/FileOutputStream
+    //   3: dup
+    //   4: aload_0
+    //   5: getfield 18	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   8: invokespecial 81	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   11: astore_2
+    //   12: new 83	java/io/DataOutputStream
+    //   15: dup
+    //   16: aload_2
+    //   17: invokespecial 86	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   20: astore_3
+    //   21: aload_3
+    //   22: aload_0
+    //   23: getfield 20	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Long	J
+    //   26: invokevirtual 90	java/io/DataOutputStream:writeLong	(J)V
+    //   29: aload_3
+    //   30: aload_0
+    //   31: getfield 22	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Long	J
+    //   34: invokevirtual 90	java/io/DataOutputStream:writeLong	(J)V
+    //   37: aload_3
+    //   38: aload_0
+    //   39: getfield 24	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:c	J
+    //   42: invokevirtual 90	java/io/DataOutputStream:writeLong	(J)V
+    //   45: aload_3
+    //   46: aload_0
+    //   47: getfield 26	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Int	I
+    //   50: invokevirtual 94	java/io/DataOutputStream:writeInt	(I)V
+    //   53: aload_3
+    //   54: aload_0
+    //   55: getfield 28	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Int	I
+    //   58: invokevirtual 94	java/io/DataOutputStream:writeInt	(I)V
+    //   61: aload_3
+    //   62: ifnull +15 -> 77
+    //   65: aload_3
+    //   66: invokevirtual 97	java/io/DataOutputStream:close	()V
+    //   69: goto +8 -> 77
+    //   72: astore_1
+    //   73: aload_1
+    //   74: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   77: aload_2
+    //   78: invokevirtual 98	java/io/FileOutputStream:close	()V
+    //   81: return
+    //   82: astore_1
+    //   83: aload_2
+    //   84: astore 4
+    //   86: aload_3
+    //   87: astore_2
+    //   88: goto +30 -> 118
+    //   91: aload_3
+    //   92: astore_1
+    //   93: goto +65 -> 158
+    //   96: astore_1
+    //   97: aconst_null
+    //   98: astore_3
+    //   99: aload_2
+    //   100: astore 4
+    //   102: aload_3
+    //   103: astore_2
+    //   104: goto +14 -> 118
+    //   107: aconst_null
     //   108: astore_1
-    //   109: aconst_null
-    //   110: astore_3
-    //   111: aload_2
+    //   109: goto +49 -> 158
     //   112: astore_1
-    //   113: aload_3
+    //   113: aconst_null
     //   114: astore_2
     //   115: aload_2
-    //   116: ifnull +7 -> 123
-    //   119: aload_2
-    //   120: invokevirtual 97	java/io/DataOutputStream:close	()V
-    //   123: aload_1
-    //   124: ifnull -31 -> 93
-    //   127: aload_1
-    //   128: invokevirtual 98	java/io/FileOutputStream:close	()V
-    //   131: return
-    //   132: astore_1
-    //   133: aload_1
-    //   134: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   137: return
-    //   138: astore_2
-    //   139: aload_2
-    //   140: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   143: goto -20 -> 123
-    //   146: astore_2
-    //   147: aconst_null
-    //   148: astore_1
-    //   149: aload_3
-    //   150: ifnull +7 -> 157
-    //   153: aload_3
-    //   154: invokevirtual 97	java/io/DataOutputStream:close	()V
-    //   157: aload_1
-    //   158: ifnull +7 -> 165
-    //   161: aload_1
-    //   162: invokevirtual 98	java/io/FileOutputStream:close	()V
-    //   165: aload_2
-    //   166: athrow
-    //   167: astore_3
-    //   168: aload_3
-    //   169: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   172: goto -15 -> 157
-    //   175: astore_1
-    //   176: aload_1
-    //   177: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   180: goto -15 -> 165
-    //   183: astore_2
-    //   184: goto -35 -> 149
-    //   187: astore 4
-    //   189: aload_2
-    //   190: astore_3
-    //   191: aload 4
-    //   193: astore_2
-    //   194: goto -45 -> 149
-    //   197: astore_2
-    //   198: aconst_null
-    //   199: astore_2
-    //   200: goto -85 -> 115
-    //   203: astore_3
-    //   204: goto -89 -> 115
-    //   207: aconst_null
-    //   208: astore_3
-    //   209: goto -132 -> 77
+    //   116: astore 4
+    //   118: aload_2
+    //   119: ifnull +15 -> 134
+    //   122: aload_2
+    //   123: invokevirtual 97	java/io/DataOutputStream:close	()V
+    //   126: goto +8 -> 134
+    //   129: astore_2
+    //   130: aload_2
+    //   131: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   134: aload 4
+    //   136: ifnull +16 -> 152
+    //   139: aload 4
+    //   141: invokevirtual 98	java/io/FileOutputStream:close	()V
+    //   144: goto +8 -> 152
+    //   147: astore_2
+    //   148: aload_2
+    //   149: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   152: aload_1
+    //   153: athrow
+    //   154: aconst_null
+    //   155: astore_2
+    //   156: aload_2
+    //   157: astore_1
+    //   158: aload_1
+    //   159: ifnull +15 -> 174
+    //   162: aload_1
+    //   163: invokevirtual 97	java/io/DataOutputStream:close	()V
+    //   166: goto +8 -> 174
+    //   169: astore_1
+    //   170: aload_1
+    //   171: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   174: aload_2
+    //   175: ifnull +13 -> 188
+    //   178: aload_2
+    //   179: invokevirtual 98	java/io/FileOutputStream:close	()V
+    //   182: return
+    //   183: astore_1
+    //   184: aload_1
+    //   185: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   188: return
+    //   189: astore_1
+    //   190: goto -36 -> 154
+    //   193: astore_1
+    //   194: goto -87 -> 107
+    //   197: astore_1
+    //   198: goto -107 -> 91
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	212	0	this	QPSingleUpdStateCfg
-    //   15	75	1	localFileOutputStream	java.io.FileOutputStream
-    //   102	2	1	localIOException1	IOException
-    //   108	1	1	localException1	java.lang.Exception
-    //   112	16	1	localIOException2	IOException
-    //   132	2	1	localIOException3	IOException
-    //   148	14	1	localObject1	Object
-    //   175	2	1	localIOException4	IOException
-    //   3	73	2	localDataOutputStream	java.io.DataOutputStream
-    //   94	18	2	localIOException5	IOException
-    //   114	6	2	localObject2	Object
-    //   138	2	2	localIOException6	IOException
-    //   146	20	2	localObject3	Object
-    //   183	7	2	localObject4	Object
-    //   193	1	2	localObject5	Object
-    //   197	1	2	localException2	java.lang.Exception
-    //   199	1	2	localObject6	Object
-    //   1	153	3	localObject7	Object
-    //   167	2	3	localIOException7	IOException
-    //   190	1	3	localObject8	Object
-    //   203	1	3	localException3	java.lang.Exception
-    //   208	1	3	localObject9	Object
-    //   187	5	4	localObject10	Object
+    //   0	201	0	this	QPSingleUpdStateCfg
+    //   72	2	1	localIOException1	IOException
+    //   82	1	1	localObject1	Object
+    //   92	1	1	localDataOutputStream1	java.io.DataOutputStream
+    //   96	1	1	localObject2	Object
+    //   108	1	1	localObject3	Object
+    //   112	41	1	localObject4	Object
+    //   157	6	1	localObject5	Object
+    //   169	2	1	localIOException2	IOException
+    //   183	2	1	localIOException3	IOException
+    //   189	1	1	localException1	java.lang.Exception
+    //   193	1	1	localException2	java.lang.Exception
+    //   197	1	1	localException3	java.lang.Exception
+    //   11	112	2	localObject6	Object
+    //   129	2	2	localIOException4	IOException
+    //   147	2	2	localIOException5	IOException
+    //   155	24	2	localObject7	Object
+    //   20	83	3	localDataOutputStream2	java.io.DataOutputStream
+    //   84	56	4	localObject8	Object
     // Exception table:
     //   from	to	target	type
-    //   81	85	94	java/io/IOException
-    //   89	93	102	java/io/IOException
-    //   4	16	108	java/lang/Exception
-    //   127	131	132	java/io/IOException
-    //   119	123	138	java/io/IOException
-    //   4	16	146	finally
-    //   153	157	167	java/io/IOException
-    //   161	165	175	java/io/IOException
-    //   20	29	183	finally
-    //   35	75	187	finally
-    //   20	29	197	java/lang/Exception
-    //   35	75	203	java/lang/Exception
+    //   65	69	72	java/io/IOException
+    //   21	61	82	finally
+    //   12	21	96	finally
+    //   0	12	112	finally
+    //   122	126	129	java/io/IOException
+    //   139	144	147	java/io/IOException
+    //   162	166	169	java/io/IOException
+    //   77	81	183	java/io/IOException
+    //   178	182	183	java/io/IOException
+    //   0	12	189	java/lang/Exception
+    //   12	21	193	java/lang/Exception
+    //   21	61	197	java/lang/Exception
   }
   
   /* Error */
@@ -212,188 +201,183 @@ public class QPSingleUpdStateCfg
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_2
-    //   2: new 45	java/io/File
-    //   5: dup
-    //   6: aload_0
-    //   7: getfield 18	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   10: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
-    //   13: invokevirtual 65	java/io/File:exists	()Z
-    //   16: ifne +32 -> 48
-    //   19: aload_0
-    //   20: lconst_0
-    //   21: putfield 20	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Long	J
-    //   24: aload_0
-    //   25: lconst_0
-    //   26: putfield 22	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Long	J
-    //   29: aload_0
-    //   30: lconst_0
-    //   31: putfield 24	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:c	J
-    //   34: aload_0
-    //   35: iconst_3
-    //   36: putfield 26	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Int	I
-    //   39: aload_0
-    //   40: iconst_0
-    //   41: putfield 28	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Int	I
-    //   44: aload_0
-    //   45: invokevirtual 70	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:a	()V
-    //   48: new 100	java/io/FileInputStream
-    //   51: dup
-    //   52: aload_0
-    //   53: getfield 18	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   56: invokespecial 101	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   59: astore_1
-    //   60: aload_1
-    //   61: ifnull +184 -> 245
-    //   64: new 103	java/io/DataInputStream
-    //   67: dup
-    //   68: aload_1
-    //   69: invokespecial 106	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   72: astore_3
-    //   73: aload_3
-    //   74: astore_2
-    //   75: aload_3
-    //   76: ifnull +45 -> 121
-    //   79: aload_0
-    //   80: aload_3
-    //   81: invokevirtual 110	java/io/DataInputStream:readLong	()J
-    //   84: putfield 20	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Long	J
-    //   87: aload_0
-    //   88: aload_3
-    //   89: invokevirtual 110	java/io/DataInputStream:readLong	()J
-    //   92: putfield 22	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Long	J
-    //   95: aload_0
-    //   96: aload_3
-    //   97: invokevirtual 110	java/io/DataInputStream:readLong	()J
-    //   100: putfield 24	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:c	J
-    //   103: aload_0
-    //   104: aload_3
-    //   105: invokevirtual 114	java/io/DataInputStream:readInt	()I
-    //   108: putfield 26	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Int	I
-    //   111: aload_0
-    //   112: aload_3
-    //   113: invokevirtual 114	java/io/DataInputStream:readInt	()I
-    //   116: putfield 28	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Int	I
-    //   119: aload_3
-    //   120: astore_2
-    //   121: aload_2
-    //   122: ifnull +7 -> 129
-    //   125: aload_2
-    //   126: invokevirtual 115	java/io/DataInputStream:close	()V
-    //   129: aload_1
-    //   130: ifnull +7 -> 137
-    //   133: aload_1
-    //   134: invokevirtual 116	java/io/FileInputStream:close	()V
-    //   137: return
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_3
+    //   5: new 45	java/io/File
+    //   8: dup
+    //   9: aload_0
+    //   10: getfield 18	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   13: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
+    //   16: invokevirtual 65	java/io/File:exists	()Z
+    //   19: ifne +32 -> 51
+    //   22: aload_0
+    //   23: lconst_0
+    //   24: putfield 20	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Long	J
+    //   27: aload_0
+    //   28: lconst_0
+    //   29: putfield 22	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Long	J
+    //   32: aload_0
+    //   33: lconst_0
+    //   34: putfield 24	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:c	J
+    //   37: aload_0
+    //   38: iconst_3
+    //   39: putfield 26	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Int	I
+    //   42: aload_0
+    //   43: iconst_0
+    //   44: putfield 28	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Int	I
+    //   47: aload_0
+    //   48: invokevirtual 70	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:a	()V
+    //   51: new 100	java/io/FileInputStream
+    //   54: dup
+    //   55: aload_0
+    //   56: getfield 18	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   59: invokespecial 101	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   62: astore_1
+    //   63: new 103	java/io/DataInputStream
+    //   66: dup
+    //   67: aload_1
+    //   68: invokespecial 106	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   71: astore_2
+    //   72: aload_0
+    //   73: aload_2
+    //   74: invokevirtual 110	java/io/DataInputStream:readLong	()J
+    //   77: putfield 20	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Long	J
+    //   80: aload_0
+    //   81: aload_2
+    //   82: invokevirtual 110	java/io/DataInputStream:readLong	()J
+    //   85: putfield 22	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Long	J
+    //   88: aload_0
+    //   89: aload_2
+    //   90: invokevirtual 110	java/io/DataInputStream:readLong	()J
+    //   93: putfield 24	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:c	J
+    //   96: aload_0
+    //   97: aload_2
+    //   98: invokevirtual 114	java/io/DataInputStream:readInt	()I
+    //   101: putfield 26	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_a_of_type_Int	I
+    //   104: aload_0
+    //   105: aload_2
+    //   106: invokevirtual 114	java/io/DataInputStream:readInt	()I
+    //   109: putfield 28	com/tencent/qqprotect/singleupdate/QPSingleUpdStateCfg:jdField_b_of_type_Int	I
+    //   112: aload_2
+    //   113: ifnull +15 -> 128
+    //   116: aload_2
+    //   117: invokevirtual 115	java/io/DataInputStream:close	()V
+    //   120: goto +8 -> 128
+    //   123: astore_2
+    //   124: aload_2
+    //   125: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   128: aload_1
+    //   129: invokevirtual 116	java/io/FileInputStream:close	()V
+    //   132: return
+    //   133: astore 4
+    //   135: aload_2
+    //   136: astore_3
+    //   137: aload_1
     //   138: astore_2
-    //   139: aload_2
-    //   140: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   143: goto -14 -> 129
-    //   146: astore_1
-    //   147: aload_1
-    //   148: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   151: return
-    //   152: astore_1
-    //   153: aconst_null
+    //   139: aload 4
+    //   141: astore_1
+    //   142: goto +25 -> 167
+    //   145: goto +61 -> 206
+    //   148: astore 4
+    //   150: aload_1
+    //   151: astore_2
+    //   152: aload 4
     //   154: astore_1
-    //   155: aload_2
-    //   156: ifnull +7 -> 163
-    //   159: aload_2
-    //   160: invokevirtual 115	java/io/DataInputStream:close	()V
-    //   163: aload_1
-    //   164: ifnull -27 -> 137
-    //   167: aload_1
-    //   168: invokevirtual 116	java/io/FileInputStream:close	()V
-    //   171: return
-    //   172: astore_1
-    //   173: aload_1
-    //   174: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   177: return
-    //   178: astore_2
-    //   179: aload_2
+    //   155: goto +12 -> 167
+    //   158: aload 4
+    //   160: astore_2
+    //   161: goto +45 -> 206
+    //   164: astore_1
+    //   165: aconst_null
+    //   166: astore_2
+    //   167: aload_3
+    //   168: ifnull +15 -> 183
+    //   171: aload_3
+    //   172: invokevirtual 115	java/io/DataInputStream:close	()V
+    //   175: goto +8 -> 183
+    //   178: astore_3
+    //   179: aload_3
     //   180: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   183: goto -20 -> 163
-    //   186: astore_2
-    //   187: aconst_null
-    //   188: astore_1
-    //   189: aconst_null
-    //   190: astore_3
-    //   191: aload_3
-    //   192: ifnull +7 -> 199
-    //   195: aload_3
-    //   196: invokevirtual 115	java/io/DataInputStream:close	()V
+    //   183: aload_2
+    //   184: ifnull +15 -> 199
+    //   187: aload_2
+    //   188: invokevirtual 116	java/io/FileInputStream:close	()V
+    //   191: goto +8 -> 199
+    //   194: astore_2
+    //   195: aload_2
+    //   196: invokevirtual 73	java/io/IOException:printStackTrace	()V
     //   199: aload_1
-    //   200: ifnull +7 -> 207
-    //   203: aload_1
-    //   204: invokevirtual 116	java/io/FileInputStream:close	()V
-    //   207: aload_2
-    //   208: athrow
-    //   209: astore_3
-    //   210: aload_3
-    //   211: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   214: goto -15 -> 199
-    //   217: astore_1
-    //   218: aload_1
+    //   200: athrow
+    //   201: aconst_null
+    //   202: astore_1
+    //   203: aload 4
+    //   205: astore_2
+    //   206: aload_2
+    //   207: ifnull +15 -> 222
+    //   210: aload_2
+    //   211: invokevirtual 115	java/io/DataInputStream:close	()V
+    //   214: goto +8 -> 222
+    //   217: astore_2
+    //   218: aload_2
     //   219: invokevirtual 73	java/io/IOException:printStackTrace	()V
-    //   222: goto -15 -> 207
-    //   225: astore_2
-    //   226: aconst_null
-    //   227: astore_3
-    //   228: goto -37 -> 191
-    //   231: astore_2
-    //   232: goto -41 -> 191
-    //   235: astore_3
-    //   236: goto -81 -> 155
-    //   239: astore_2
-    //   240: aload_3
+    //   222: aload_1
+    //   223: ifnull +13 -> 236
+    //   226: aload_1
+    //   227: invokevirtual 116	java/io/FileInputStream:close	()V
+    //   230: return
+    //   231: astore_1
+    //   232: aload_1
+    //   233: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   236: return
+    //   237: astore_1
+    //   238: goto -37 -> 201
     //   241: astore_2
-    //   242: goto -87 -> 155
-    //   245: aconst_null
-    //   246: astore_2
-    //   247: goto -126 -> 121
+    //   242: goto -84 -> 158
+    //   245: astore_3
+    //   246: goto -101 -> 145
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	250	0	this	QPSingleUpdStateCfg
-    //   59	75	1	localFileInputStream	java.io.FileInputStream
-    //   146	2	1	localIOException1	IOException
-    //   152	1	1	localException1	java.lang.Exception
-    //   154	14	1	localObject1	Object
-    //   172	2	1	localIOException2	IOException
-    //   188	16	1	localObject2	Object
-    //   217	2	1	localIOException3	IOException
-    //   1	125	2	localObject3	Object
-    //   138	22	2	localIOException4	IOException
-    //   178	2	2	localIOException5	IOException
-    //   186	22	2	localObject4	Object
-    //   225	1	2	localObject5	Object
-    //   231	1	2	localObject6	Object
-    //   239	1	2	localException2	java.lang.Exception
-    //   241	6	2	localObject7	Object
-    //   72	124	3	localDataInputStream	java.io.DataInputStream
-    //   209	2	3	localIOException6	IOException
-    //   227	1	3	localObject8	Object
-    //   235	6	3	localException3	java.lang.Exception
+    //   0	249	0	this	QPSingleUpdStateCfg
+    //   62	93	1	localObject1	Object
+    //   164	36	1	localObject2	Object
+    //   202	25	1	localObject3	Object
+    //   231	2	1	localIOException1	IOException
+    //   237	1	1	localException1	java.lang.Exception
+    //   71	46	2	localDataInputStream	java.io.DataInputStream
+    //   123	13	2	localIOException2	IOException
+    //   138	50	2	localObject4	Object
+    //   194	2	2	localIOException3	IOException
+    //   205	6	2	localObject5	Object
+    //   217	2	2	localIOException4	IOException
+    //   241	1	2	localException2	java.lang.Exception
+    //   4	168	3	localObject6	Object
+    //   178	2	3	localIOException5	IOException
+    //   245	1	3	localException3	java.lang.Exception
+    //   1	1	4	localObject7	Object
+    //   133	7	4	localObject8	Object
+    //   148	56	4	localObject9	Object
     // Exception table:
     //   from	to	target	type
-    //   125	129	138	java/io/IOException
-    //   133	137	146	java/io/IOException
-    //   2	48	152	java/lang/Exception
-    //   48	60	152	java/lang/Exception
-    //   167	171	172	java/io/IOException
-    //   159	163	178	java/io/IOException
-    //   2	48	186	finally
-    //   48	60	186	finally
-    //   195	199	209	java/io/IOException
-    //   203	207	217	java/io/IOException
-    //   64	73	225	finally
-    //   79	119	231	finally
-    //   64	73	235	java/lang/Exception
-    //   79	119	239	java/lang/Exception
+    //   116	120	123	java/io/IOException
+    //   72	112	133	finally
+    //   63	72	148	finally
+    //   5	51	164	finally
+    //   51	63	164	finally
+    //   171	175	178	java/io/IOException
+    //   187	191	194	java/io/IOException
+    //   210	214	217	java/io/IOException
+    //   128	132	231	java/io/IOException
+    //   226	230	231	java/io/IOException
+    //   5	51	237	java/lang/Exception
+    //   51	63	237	java/lang/Exception
+    //   63	72	241	java/lang/Exception
+    //   72	112	245	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPSingleUpdStateCfg
  * JD-Core Version:    0.7.0.1
  */

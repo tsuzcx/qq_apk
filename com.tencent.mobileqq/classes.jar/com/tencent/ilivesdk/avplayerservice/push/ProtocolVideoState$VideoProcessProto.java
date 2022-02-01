@@ -22,7 +22,7 @@ public final class ProtocolVideoState$VideoProcessProto
   public static final int MSGSETVIDEOSWITCHRESP_FIELD_NUMBER = 7;
   public static final int SDK_TYPE_FIELD_NUMBER = 14;
   public static final int SUBCMD_FIELD_NUMBER = 1;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 112 }, new String[] { "SubCmd", "MsgPushOnVideoReq", "MsgPushOnVideoRes", "MsgGetRoomVideoInfoReq", "MsgGetRoomVideoInfoRes", "MsgSetVideoSwitchReq", "MsgSetVideoSwitchResp", "MsgNotifyVideoArriveByVideoSvrReq", "MsgNotifyVideoArriveByVideoSvrResp", "MsgNotifyRemoveVideoByVideoSvrReq", "MsgNotifyRemoveVideoByVideoSvrResp", "MsgNotifyVideoSvrRemoveVideoReq", "MsgNotifyVideoSvrRemoveVideoResp", "sdk_type" }, new Object[] { Integer.valueOf(0), null, null, null, null, null, null, null, null, null, null, null, null, Integer.valueOf(0) }, VideoProcessProto.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public ProtocolVideoState.GetRoomVideoInfoReq MsgGetRoomVideoInfoReq = new ProtocolVideoState.GetRoomVideoInfoReq();
   public ProtocolVideoState.GetRoomVideoInfoRes MsgGetRoomVideoInfoRes = new ProtocolVideoState.GetRoomVideoInfoRes();
   public ProtocolVideoState.NotifyRemoveVideoByVideoSvrReq MsgNotifyRemoveVideoByVideoSvrReq = new ProtocolVideoState.NotifyRemoveVideoByVideoSvrReq();
@@ -37,10 +37,16 @@ public final class ProtocolVideoState$VideoProcessProto
   public ProtocolVideoState.SetVideoSwitchResp MsgSetVideoSwitchResp = new ProtocolVideoState.SetVideoSwitchResp();
   public final PBUInt32Field SubCmd = PBField.initUInt32(0);
   public final PBUInt32Field sdk_type = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 112 }, new String[] { "SubCmd", "MsgPushOnVideoReq", "MsgPushOnVideoRes", "MsgGetRoomVideoInfoReq", "MsgGetRoomVideoInfoRes", "MsgSetVideoSwitchReq", "MsgSetVideoSwitchResp", "MsgNotifyVideoArriveByVideoSvrReq", "MsgNotifyVideoArriveByVideoSvrResp", "MsgNotifyRemoveVideoByVideoSvrReq", "MsgNotifyRemoveVideoByVideoSvrResp", "MsgNotifyVideoSvrRemoveVideoReq", "MsgNotifyVideoSvrRemoveVideoResp", "sdk_type" }, new Object[] { localInteger, null, null, null, null, null, null, null, null, null, null, null, null, localInteger }, VideoProcessProto.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.ProtocolVideoState.VideoProcessProto
  * JD-Core Version:    0.7.0.1
  */

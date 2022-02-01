@@ -24,7 +24,10 @@ public class MiniMsgCallbackImpl
   
   public boolean show(int paramInt)
   {
-    WSLog.a("AIOLog", 1, "MiniMsgUser show = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniMsgUser show = ");
+    localStringBuilder.append(paramInt);
+    WSLog.a("AIOLog", 1, localStringBuilder.toString());
     return false;
   }
   
@@ -35,12 +38,17 @@ public class MiniMsgCallbackImpl
   
   public void updateUnreadCount(int paramInt, boolean paramBoolean)
   {
-    WSLog.a("AIOLog", 1, "MiniMsgUser updateUnreadCount i = " + paramInt + ", b = " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniMsgUser updateUnreadCount i = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", b = ");
+    localStringBuilder.append(paramBoolean);
+    WSLog.a("AIOLog", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.miniaio.MiniMsgCallbackImpl
  * JD-Core Version:    0.7.0.1
  */

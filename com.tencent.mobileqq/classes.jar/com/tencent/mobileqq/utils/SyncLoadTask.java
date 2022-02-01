@@ -13,7 +13,11 @@ public abstract class SyncLoadTask
   
   public SyncLoadTask(String paramString)
   {
-    this.TAG = (paramString + "_" + AudioHelperUtil.a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(AudioHelperUtil.a());
+    this.TAG = localStringBuilder.toString();
   }
   
   public static void requestSyncTask(Resources paramResources, ArrayList<SyncLoadTask> paramArrayList, SyncLoadTask.OnSyncTaskListener paramOnSyncTaskListener)
@@ -44,7 +48,8 @@ public abstract class SyncLoadTask
   
   public final boolean isNeedRunTask()
   {
-    return (this.mTaskStatus != 20) && (this.mTaskStatus != 2);
+    int i = this.mTaskStatus;
+    return (i != 20) && (i != 2);
   }
   
   final boolean isRunning()
@@ -76,7 +81,7 @@ public abstract class SyncLoadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SyncLoadTask
  * JD-Core Version:    0.7.0.1
  */

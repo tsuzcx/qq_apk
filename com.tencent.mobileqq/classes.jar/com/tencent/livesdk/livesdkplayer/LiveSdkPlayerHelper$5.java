@@ -9,29 +9,53 @@ class LiveSdkPlayerHelper$5
   
   public void onError(IMediaPlayerMgr paramIMediaPlayerMgr, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    TPLogUtil.e("LiveSdkPlayerHelper", "onError: errorCode" + paramInt2 + ", errorType " + paramInt1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onError: errorCode");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", errorType ");
+    localStringBuilder.append(paramInt1);
+    TPLogUtil.e("LiveSdkPlayerHelper", localStringBuilder.toString());
     if ((paramInt1 == 1103) || (paramInt1 == 1102) || (paramInt1 == 2001) || (paramInt1 == 1101))
     {
       if (LiveSdkPlayerHelper.access$400(this.this$0) != null) {
         LiveSdkPlayerHelper.access$400(this.this$0).onNetworkAnomaly();
       }
-      if (LiveSdkPlayerHelper.access$600(this.this$0) < 3)
+      if (LiveSdkPlayerHelper.access$1000(this.this$0) < 3)
       {
-        TPLogUtil.i("LiveSdkPlayerHelper", "onError :  errorType = " + paramInt1 + ", errorCode = " + paramInt2 + ", 网络原因，尝试重试策略：当前已重试次数" + LiveSdkPlayerHelper.access$600(this.this$0));
-        this.this$0.stopPlay();
-        this.this$0.openPlay();
-        LiveSdkPlayerHelper.access$608(this.this$0);
+        paramIMediaPlayerMgr = new StringBuilder();
+        paramIMediaPlayerMgr.append("onError :  errorType = ");
+        paramIMediaPlayerMgr.append(paramInt1);
+        paramIMediaPlayerMgr.append(", errorCode = ");
+        paramIMediaPlayerMgr.append(paramInt2);
+        paramIMediaPlayerMgr.append(", 网络原因，尝试重试策略：当前已重试次数");
+        paramIMediaPlayerMgr.append(LiveSdkPlayerHelper.access$1000(this.this$0));
+        TPLogUtil.e("LiveSdkPlayerHelper", paramIMediaPlayerMgr.toString());
+        try
+        {
+          this.this$0.reset();
+          this.this$0.stopPlay();
+          this.this$0.openPlay();
+        }
+        catch (Exception paramIMediaPlayerMgr)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("retry exception:");
+          localStringBuilder.append(paramIMediaPlayerMgr.getMessage());
+          TPLogUtil.e("LiveSdkPlayerHelper", localStringBuilder.toString());
+          paramIMediaPlayerMgr.printStackTrace();
+        }
+        LiveSdkPlayerHelper.access$1008(this.this$0);
+        return;
       }
     }
-    while (LiveSdkPlayerHelper.access$400(this.this$0) == null) {
-      return;
+    if (LiveSdkPlayerHelper.access$400(this.this$0) != null) {
+      LiveSdkPlayerHelper.access$400(this.this$0).onError(paramIMediaPlayerMgr, paramInt2, "");
     }
-    LiveSdkPlayerHelper.access$400(this.this$0).onError(paramIMediaPlayerMgr, paramInt2, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.LiveSdkPlayerHelper.5
  * JD-Core Version:    0.7.0.1
  */

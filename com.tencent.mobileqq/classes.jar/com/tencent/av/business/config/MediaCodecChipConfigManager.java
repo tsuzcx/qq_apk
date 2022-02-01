@@ -3,14 +3,13 @@ package com.tencent.av.business.config;
 import com.tencent.av.HardWareCodecSSO.ConfigRsp;
 import com.tencent.av.config.MediaCodecChipConfigInfo;
 import com.tencent.av.config.MediaCodecFileUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class MediaCodecChipConfigManager
 {
-  private static MediaCodecChipConfigManager jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager = null;
+  private static MediaCodecChipConfigManager jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager;
   private MediaCodecChipConfigInfo jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo;
   
   private MediaCodecChipConfigManager()
@@ -22,17 +21,18 @@ public class MediaCodecChipConfigManager
   
   public static MediaCodecChipConfigManager a()
   {
-    if (jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager == null)
+    if (jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager == null) {
+      try
       {
-        jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager = new MediaCodecChipConfigManager();
-        jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager.a();
+        if (jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager == null)
+        {
+          jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager = new MediaCodecChipConfigManager();
+          jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager.a();
+        }
       }
-      return jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager;
   }
   
   private void a() {}
@@ -47,16 +47,18 @@ public class MediaCodecChipConfigManager
       try
       {
         if (this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo == null) {
-          this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo = MediaCodecChipConfigInfo.a(MediaCodecFileUtils.a(BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath(), "av_mediacodec_file_config"));
+          this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo = MediaCodecChipConfigInfo.a(MediaCodecFileUtils.a(BaseApplication.getContext().getFilesDir().getAbsolutePath(), "av_mediacodec_file_config"));
         }
         Object localObject1;
         if (QLog.isColorLevel())
         {
-          StringBuilder localStringBuilder = new StringBuilder().append("getMediaCodecChipConfigInfo content:=");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getMediaCodecChipConfigInfo content:=");
           if (this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo != null)
           {
             localObject1 = this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo.toString();
-            QLog.d("MediaCodecChipConfigManager", 2, (String)localObject1);
+            localStringBuilder.append((String)localObject1);
+            QLog.d("MediaCodecChipConfigManager", 2, localStringBuilder.toString());
           }
         }
         else
@@ -79,10 +81,14 @@ public class MediaCodecChipConfigManager
     try
     {
       String str = paramConfigRsp.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("MediaCodecChipConfigManager", 2, "saveMediaCodecChipConfigContent jsonContent:=" + str);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveMediaCodecChipConfigContent jsonContent:=");
+        localStringBuilder.append(str);
+        QLog.d("MediaCodecChipConfigManager", 2, localStringBuilder.toString());
       }
-      MediaCodecFileUtils.a(str, BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath(), "av_mediacodec_file_config");
+      MediaCodecFileUtils.a(str, BaseApplication.getContext().getFilesDir().getAbsolutePath(), "av_mediacodec_file_config");
       this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo = paramConfigRsp;
       return;
     }
@@ -91,7 +97,7 @@ public class MediaCodecChipConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.config.MediaCodecChipConfigManager
  * JD-Core Version:    0.7.0.1
  */

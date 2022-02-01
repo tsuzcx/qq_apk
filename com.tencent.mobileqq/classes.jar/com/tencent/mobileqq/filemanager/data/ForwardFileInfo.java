@@ -231,10 +231,10 @@ public class ForwardFileInfo
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (!(paramObject instanceof ForwardFileInfo))) {
-      return false;
+    if ((paramObject != null) && ((paramObject instanceof ForwardFileInfo))) {
+      return a((ForwardFileInfo)paramObject);
     }
-    return a((ForwardFileInfo)paramObject);
+    return false;
   }
   
   public String f()
@@ -249,12 +249,32 @@ public class ForwardFileInfo
   
   public int hashCode()
   {
-    return (d() + d()).hashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(d());
+    localStringBuilder.append(d());
+    return localStringBuilder.toString().hashCode();
   }
   
   public String toString()
   {
-    return "type[" + this.jdField_b_of_type_Int + "], cloudTYpe[" + this.jdField_c_of_type_Int + "], sessionId[" + this.jdField_a_of_type_Long + "], uniseq[" + this.jdField_b_of_type_Long + "], uuid[" + this.jdField_b_of_type_JavaLangString + "], fileId[" + this.jdField_c_of_type_JavaLangString + "], weiYunSrcType[" + this.jdField_d_of_type_Int + "], uuidTroopFile[" + this.jdField_e_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("type[");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("], cloudTYpe[");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("], sessionId[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("], uniseq[");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("], uuid[");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("], fileId[");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("], weiYunSrcType[");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append("], uuidTroopFile[");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -279,7 +299,7 @@ public class ForwardFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.ForwardFileInfo
  * JD-Core Version:    0.7.0.1
  */

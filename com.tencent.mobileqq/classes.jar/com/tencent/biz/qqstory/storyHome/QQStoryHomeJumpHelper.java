@@ -17,7 +17,7 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpActionLegacy;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -59,45 +59,46 @@ public class QQStoryHomeJumpHelper
   {
     String str = paramIntent.getStringExtra("tag_id");
     paramIntent = paramIntent.getStringExtra("tag_type");
-    if ((str == null) || (paramIntent == null))
+    if ((str != null) && (paramIntent != null))
     {
-      SLog.e("Q.qqstory.home.QQStoryHomeJumpHelper", "handleOpenTagAction parm error");
+      StoryTagUtil.a(paramActivity, str, paramIntent);
       return;
     }
-    StoryTagUtil.a(paramActivity, str, paramIntent);
+    SLog.e("Q.qqstory.home.QQStoryHomeJumpHelper", "handleOpenTagAction parm error");
   }
   
   public static void d(Activity paramActivity, Intent paramIntent)
   {
-    paramIntent = (String)((StoryConfigManager)SuperManager.a(10)).b("mainHallConfig", "");
-    if (!TextUtils.isEmpty(paramIntent)) {}
-    for (;;)
-    {
+    paramIntent = (StoryConfigManager)SuperManager.a(10);
+    Object localObject = "";
+    String str = (String)paramIntent.b("mainHallConfig", "");
+    paramIntent = (Intent)localObject;
+    if (!TextUtils.isEmpty(str)) {
       try
       {
-        paramIntent = new JSONObject(paramIntent).optString("url");
-        if (!TextUtils.isEmpty(paramIntent)) {
-          break;
-        }
-        SLog.d("Q.qqstory.home.QQStoryHomeJumpHelper", "square config not ready , use default config instead");
-        return;
+        paramIntent = new JSONObject(str).optString("url");
       }
       catch (Exception paramIntent)
       {
         SLog.d("Q.qqstory.home.QQStoryHomeJumpHelper", "analyze config error , error :%s", new Object[] { paramIntent.getMessage() });
+        paramIntent = (Intent)localObject;
       }
-      paramIntent = "";
     }
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramIntent);
-    paramActivity.startActivity(localIntent);
+    if (TextUtils.isEmpty(paramIntent))
+    {
+      SLog.d("Q.qqstory.home.QQStoryHomeJumpHelper", "square config not ready , use default config instead");
+      return;
+    }
+    localObject = new Intent(paramActivity, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramIntent);
+    paramActivity.startActivity((Intent)localObject);
   }
   
   private void e(Intent paramIntent)
   {
     paramIntent = (HashMap)paramIntent.getSerializableExtra("extra_jump_attrs");
     String str = (String)paramIntent.get("parter_api");
-    JumpAction.c(QQStoryContext.a(), this.jdField_a_of_type_AndroidAppActivity, paramIntent, str);
+    JumpActionLegacy.a(QQStoryContext.a(), this.jdField_a_of_type_AndroidAppActivity, paramIntent, str);
   }
   
   private void f(Intent paramIntent)
@@ -105,14 +106,20 @@ public class QQStoryHomeJumpHelper
     int i = paramIntent.getIntExtra("extra_share_from_type", -1);
     paramIntent.getLongExtra("extra_topic_id", -1L);
     paramIntent.getStringExtra("extra_topic_name");
-    JumpAction.d(i + "");
+    paramIntent = new StringBuilder();
+    paramIntent.append(i);
+    paramIntent.append("");
+    JumpActionLegacy.a(paramIntent.toString());
   }
   
   private void g(Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("extra_share_from_type", -1);
-    JumpAction.d(i + "");
-    if ("1".equals(paramIntent.getStringExtra("to_new_version"))) {}
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i);
+    localStringBuilder.append("");
+    JumpActionLegacy.a(localStringBuilder.toString());
+    "1".equals(paramIntent.getStringExtra("to_new_version"));
   }
   
   private void h(Intent paramIntent)
@@ -140,27 +147,38 @@ public class QQStoryHomeJumpHelper
   
   public boolean a(int paramInt, Intent paramIntent)
   {
-    SLog.b("Q.qqstory.home.QQStoryHomeJumpHelper", "handleAction=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleAction=");
+    localStringBuilder.append(paramInt);
+    SLog.b("Q.qqstory.home.QQStoryHomeJumpHelper", localStringBuilder.toString());
     switch (paramInt)
     {
     case 3: 
     default: 
       return false;
-    case 1: 
-      this.jdField_a_of_type_AndroidAppActivity.setIntent(paramIntent);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryHomeJumpHelper$JumpListener.a(false, true, 16, null);
+    case 15: 
+      d(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
       return true;
-    case 2: 
-      a(paramIntent);
+    case 14: 
+      c(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
       return true;
-    case 5: 
-      e(paramIntent);
-      return true;
-    case 4: 
-      f(paramIntent);
+    case 13: 
+      b(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
       return true;
     case 12: 
       g(paramIntent);
+      return true;
+    case 11: 
+      a(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
+      return true;
+    case 10: 
+      d(paramIntent);
+      return true;
+    case 9: 
+      c(paramIntent);
+      return true;
+    case 8: 
+      b(paramIntent);
       return true;
     case 7: 
       h(paramIntent);
@@ -168,26 +186,18 @@ public class QQStoryHomeJumpHelper
     case 6: 
       i(paramIntent);
       return true;
-    case 8: 
-      b(paramIntent);
+    case 5: 
+      e(paramIntent);
       return true;
-    case 9: 
-      c(paramIntent);
+    case 4: 
+      f(paramIntent);
       return true;
-    case 10: 
-      d(paramIntent);
-      return true;
-    case 11: 
-      a(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
-      return true;
-    case 13: 
-      b(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
-      return true;
-    case 14: 
-      c(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
+    case 2: 
+      a(paramIntent);
       return true;
     }
-    d(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
+    this.jdField_a_of_type_AndroidAppActivity.setIntent(paramIntent);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryHomeJumpHelper$JumpListener.a(false, true, 16, null);
     return true;
   }
   
@@ -221,7 +231,7 @@ public class QQStoryHomeJumpHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryHomeJumpHelper
  * JD-Core Version:    0.7.0.1
  */

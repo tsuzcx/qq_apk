@@ -29,7 +29,11 @@ class BitmapLoadCache$3
         Bitmap localBitmap = (Bitmap)localIterator.next();
         if ((localBitmap != null) && (!localBitmap.isRecycled()))
         {
-          Log.i(BitmapLoadCache.access$300(this.this$0), "recycle:" + localBitmap.hashCode());
+          String str = BitmapLoadCache.access$300(this.this$0);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("recycle:");
+          localStringBuilder.append(localBitmap.hashCode());
+          Log.i(str, localStringBuilder.toString());
           localBitmap.recycle();
         }
       }
@@ -40,7 +44,7 @@ class BitmapLoadCache$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.cache.BitmapLoadCache.3
  * JD-Core Version:    0.7.0.1
  */

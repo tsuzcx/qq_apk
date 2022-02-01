@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#fff4f9f9" android:endColor="#fff9fafa" android:angle="315.0" android:type="linear" android:gradientRadius="11.0dip" />
-    <corners android:radius="11.0dip" />
-</shape>
+    <item android:state_checked="false" android:drawable="@drawable/dqn" />
+    <item android:state_checked="true" android:drawable="@drawable/dqp" />
+</selector>

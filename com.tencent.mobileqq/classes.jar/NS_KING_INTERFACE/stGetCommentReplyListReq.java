@@ -15,16 +15,6 @@ public final class stGetCommentReplyListReq
   public int direction = 0;
   public String feed_id = "";
   
-  static
-  {
-    if (!stGetCommentReplyListReq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public stGetCommentReplyListReq() {}
   
   public stGetCommentReplyListReq(String paramString1, String paramString2, String paramString3, int paramInt)
@@ -42,18 +32,17 @@ public final class stGetCommentReplyListReq
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -76,13 +65,28 @@ public final class stGetCommentReplyListReq
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stGetCommentReplyListReq)paramObject;
-    } while ((!JceUtil.equals(this.attach_info, paramObject.attach_info)) || (!JceUtil.equals(this.feed_id, paramObject.feed_id)) || (!JceUtil.equals(this.commentId, paramObject.commentId)) || (!JceUtil.equals(this.direction, paramObject.direction)));
-    return true;
+    }
+    paramObject = (stGetCommentReplyListReq)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.attach_info, paramObject.attach_info))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.feed_id, paramObject.feed_id))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.commentId, paramObject.commentId))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.direction, paramObject.direction)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -161,7 +165,7 @@ public final class stGetCommentReplyListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stGetCommentReplyListReq
  * JD-Core Version:    0.7.0.1
  */

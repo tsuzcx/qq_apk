@@ -11,15 +11,16 @@ class VideoPlayerDefault$6
   
   public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onInfo(this.this$0, paramInt1, paramInt2);
+    paramMediaPlayer = this.val$listener;
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.onInfo(this.this$0, paramInt1, paramInt2);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.VideoPlayerDefault.6
  * JD-Core Version:    0.7.0.1
  */

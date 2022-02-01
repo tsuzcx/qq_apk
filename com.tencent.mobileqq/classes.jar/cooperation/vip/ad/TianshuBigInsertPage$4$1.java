@@ -15,7 +15,6 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qwallet.preload.IPreloadService.PathResult;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.QwUtils;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 
 class TianshuBigInsertPage$4$1
@@ -26,7 +25,7 @@ class TianshuBigInsertPage$4$1
   public void run()
   {
     QLog.d("TianshuBigInsertPage", 2, "show insert page...");
-    QwUtils.a(TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage$4.a));
+    ViewUtils.a(TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage$4.a));
     TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage$4.a).addView(TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage$4.a));
     Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
     localObject1 = URLDrawable.getFileDrawable(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$PathResult.filePath, (URLDrawable.URLDrawableOptions)localObject1);
@@ -35,12 +34,20 @@ class TianshuBigInsertPage$4$1
       Object localObject2 = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
       BitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$PathResult.filePath, (BitmapFactory.Options)localObject2);
-      QLog.d("TianshuBigInsertPage", 2, "bitmap w: " + ((BitmapFactory.Options)localObject2).outWidth + ", h: " + ((BitmapFactory.Options)localObject2).outHeight);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bitmap w: ");
+      localStringBuilder.append(((BitmapFactory.Options)localObject2).outWidth);
+      localStringBuilder.append(", h: ");
+      localStringBuilder.append(((BitmapFactory.Options)localObject2).outHeight);
+      QLog.d("TianshuBigInsertPage", 2, localStringBuilder.toString());
       int i = ViewUtils.a();
       i = (int)(((BitmapFactory.Options)localObject2).outHeight * 1.0F / ((BitmapFactory.Options)localObject2).outWidth * i);
       if (i > 0)
       {
-        QLog.d("TianshuBigInsertPage", 2, "calc height: " + i);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("calc height: ");
+        ((StringBuilder)localObject2).append(i);
+        QLog.d("TianshuBigInsertPage", 2, ((StringBuilder)localObject2).toString());
         localObject2 = TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage$4.a).getLayoutParams();
         ((ViewGroup.LayoutParams)localObject2).height = i;
         TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage$4.a).setLayoutParams((ViewGroup.LayoutParams)localObject2);
@@ -48,10 +55,7 @@ class TianshuBigInsertPage$4$1
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
     TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage$4.a).setBackgroundDrawable((Drawable)localObject1);
     TianshuBigInsertPage.a(TianshuBigInsertPage.b(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage$4.a));
@@ -62,7 +66,7 @@ class TianshuBigInsertPage$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.ad.TianshuBigInsertPage.4.1
  * JD-Core Version:    0.7.0.1
  */

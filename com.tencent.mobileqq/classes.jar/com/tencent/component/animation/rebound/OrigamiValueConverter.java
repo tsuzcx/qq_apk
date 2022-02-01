@@ -7,7 +7,7 @@ public class OrigamiValueConverter
     if (paramDouble == 0.0D) {
       return 0.0D;
     }
-    return (paramDouble - 8.0D) * 3.0D + 25.0D;
+    return 25.0D + (paramDouble - 8.0D) * 3.0D;
   }
   
   public static double origamiValueFromFriction(double paramDouble)
@@ -15,7 +15,7 @@ public class OrigamiValueConverter
     if (paramDouble == 0.0D) {
       return 0.0D;
     }
-    return (paramDouble - 25.0D) / 3.0D + 8.0D;
+    return 8.0D + (paramDouble - 25.0D) / 3.0D;
   }
   
   public static double origamiValueFromTension(double paramDouble)
@@ -23,7 +23,7 @@ public class OrigamiValueConverter
     if (paramDouble == 0.0D) {
       return 0.0D;
     }
-    return (paramDouble - 194.0D) / 3.62D + 30.0D;
+    return 30.0D + (paramDouble - 194.0D) / 3.62D;
   }
   
   public static double tensionFromOrigamiValue(double paramDouble)
@@ -31,12 +31,12 @@ public class OrigamiValueConverter
     if (paramDouble == 0.0D) {
       return 0.0D;
     }
-    return (paramDouble - 30.0D) * 3.62D + 194.0D;
+    return 194.0D + (paramDouble - 30.0D) * 3.62D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.animation.rebound.OrigamiValueConverter
  * JD-Core Version:    0.7.0.1
  */

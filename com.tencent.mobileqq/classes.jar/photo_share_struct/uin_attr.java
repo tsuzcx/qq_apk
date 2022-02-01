@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class uin_attr
   extends JceStruct
 {
-  static int cache_status = 0;
+  static int cache_status;
   public long add_time = 0L;
   public String nick = "";
   public byte priv = 3;
@@ -37,19 +37,21 @@ public final class uin_attr
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.status, 0);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 1);
+    String str = this.nick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.priv, 2);
-    if (this.share_albumid != null) {
-      paramJceOutputStream.write(this.share_albumid, 3);
+    str = this.share_albumid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.add_time, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     photo_share_struct.uin_attr
  * JD-Core Version:    0.7.0.1
  */

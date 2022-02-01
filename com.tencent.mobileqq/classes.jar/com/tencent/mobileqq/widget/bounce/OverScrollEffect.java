@@ -2,8 +2,8 @@ package com.tencent.mobileqq.widget.bounce;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
-import android.support.v4.view.PagerAdapter;
 import android.view.animation.DecelerateInterpolator;
+import androidx.viewpager.widget.PagerAdapter;
 
 public class OverScrollEffect
 {
@@ -22,7 +22,7 @@ public class OverScrollEffect
     this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager, "Pull", new float[] { this.jdField_a_of_type_Float, 0.0F });
     this.jdField_a_of_type_AndroidAnimationAnimator.setInterpolator(new DecelerateInterpolator());
     float f = Math.abs(-this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_AndroidAnimationAnimator.setDuration((f * this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_AndroidAnimationAnimator.setDuration((this.jdField_a_of_type_Int * f));
     this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new OverScrollEffect.1(this));
     this.jdField_a_of_type_AndroidAnimationAnimator.start();
   }
@@ -35,20 +35,22 @@ public class OverScrollEffect
   
   protected boolean a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Float < 0.0F)) {}
-    for (;;)
-    {
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Float < 0.0F)) {
       return true;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getAdapter().getCount() - 1 == this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem()) {}
-      for (int i = 1; (i == 0) || (this.jdField_a_of_type_Float <= 0.0F); i = 0) {
-        return false;
-      }
     }
+    int i;
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getAdapter().getCount() - 1 == this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem()) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    return (i != 0) && (this.jdField_a_of_type_Float > 0.0F);
   }
   
   protected void b()
   {
-    if ((this.jdField_a_of_type_AndroidAnimationAnimator != null) && (this.jdField_a_of_type_AndroidAnimationAnimator.isRunning()))
+    Animator localAnimator = this.jdField_a_of_type_AndroidAnimationAnimator;
+    if ((localAnimator != null) && (localAnimator.isRunning()))
     {
       this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new OverScrollEffect.2(this));
       this.jdField_a_of_type_AndroidAnimationAnimator.cancel();
@@ -59,7 +61,7 @@ public class OverScrollEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.bounce.OverScrollEffect
  * JD-Core Version:    0.7.0.1
  */

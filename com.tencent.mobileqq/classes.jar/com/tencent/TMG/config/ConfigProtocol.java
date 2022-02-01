@@ -32,32 +32,59 @@ public class ConfigProtocol
   
   public ConfigProtocol.TLVBase CreateS2CTLV(short paramShort1, short paramShort2)
   {
-    if (paramShort2 <= 0) {
-      if (QLog.isColorLevel()) {
-        QLog.d("simonchwang", 0, "[TLVBase::CreateS2CTLV] length <= 0, type=" + paramShort1 + " length=" + paramShort2);
-      }
-    }
-    do
+    Object localObject = null;
+    if (paramShort2 <= 0)
     {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[TLVBase::CreateS2CTLV] length <= 0, type=");
+        ((StringBuilder)localObject).append(paramShort1);
+        ((StringBuilder)localObject).append(" length=");
+        ((StringBuilder)localObject).append(paramShort2);
+        QLog.d("simonchwang", 0, ((StringBuilder)localObject).toString());
+      }
       return null;
+    }
+    if (paramShort1 != 14) {
       switch (paramShort1)
       {
+      default: 
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[TLVBase::CreateS2CTLV] Error ,Unknow type:");
+        ((StringBuilder)localObject).append(paramShort1);
+        QLog.d("simonchwang", 0, ((StringBuilder)localObject).toString());
+        return null;
+      case 11: 
+        return new ConfigProtocol.AVSwitchTypeTLV(this);
+      case 10: 
+        return new ConfigProtocol.SharpInfoTLV(this, paramShort2);
+      case 9: 
+        return new ConfigProtocol.ConnPriorityInfoTLV(this, paramShort2);
+      case 8: 
+        return new ConfigProtocol.CameraAngleInfoTLV(this, paramShort2);
+      case 7: 
+        return new ConfigProtocol.AudioEngineNeedInfoTLV(this, paramShort2);
+      case 6: 
+        return new ConfigProtocol.VideoEngineNeedInfoTLV(this, paramShort2);
+      case 5: 
+        return new ConfigProtocol.ConnForbidTypeTLV(this);
+      case 4: 
+        return new ConfigProtocol.StunServerAddrTLV(this, paramShort2);
+      case 3: 
+        return new ConfigProtocol.RelaySvrUDPCheckTLV(this, paramShort2);
+      case 2: 
+        return new ConfigProtocol.LocalLogUploadTLV(this, paramShort2);
+      case 1: 
+        return new ConfigProtocol.WriteLocalLogTLV(this);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("simonchwang", 0, "[TLVBase::CreateS2CTLV] Error ,Unknow type:" + paramShort1);
-    return null;
-    return new ConfigProtocol.WriteLocalLogTLV(this);
-    return new ConfigProtocol.LocalLogUploadTLV(this, paramShort2);
-    return new ConfigProtocol.RelaySvrUDPCheckTLV(this, paramShort2);
-    return new ConfigProtocol.StunServerAddrTLV(this, paramShort2);
-    return new ConfigProtocol.ConnForbidTypeTLV(this);
-    return new ConfigProtocol.VideoEngineNeedInfoTLV(this, paramShort2);
-    return new ConfigProtocol.AudioEngineNeedInfoTLV(this, paramShort2);
-    return new ConfigProtocol.CameraAngleInfoTLV(this, paramShort2);
-    return new ConfigProtocol.ConnPriorityInfoTLV(this, paramShort2);
-    return new ConfigProtocol.SharpInfoTLV(this, paramShort2);
-    return new ConfigProtocol.AVSwitchTypeTLV(this);
-    return new ConfigProtocol.SharpConfigPayloadTLV(this, paramShort2);
+    } else {
+      localObject = new ConfigProtocol.SharpConfigPayloadTLV(this, paramShort2);
+    }
+    return localObject;
   }
 }
 

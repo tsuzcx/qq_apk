@@ -17,13 +17,14 @@ public final class ilive_feeds_tmem$FeedsListItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "feed_id", "create_time", "feed_status" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, FeedsListItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "feed_id", "create_time", "feed_status" }, new Object[] { localByteStringMicro, localInteger, localInteger }, FeedsListItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_tmem.FeedsListItem
  * JD-Core Version:    0.7.0.1
  */

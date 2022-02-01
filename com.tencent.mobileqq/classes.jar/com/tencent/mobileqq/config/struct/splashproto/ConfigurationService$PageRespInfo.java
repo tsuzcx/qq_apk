@@ -25,13 +25,14 @@ public final class ConfigurationService$PageRespInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 56, 64, 74 }, new String[] { "task_id", "version", "compress", "total_size", "page_size", "md5", "report", "next_offset", "cookies" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(-1), localByteStringMicro }, PageRespInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 56, 64, 74 }, new String[] { "task_id", "version", "compress", "total_size", "page_size", "md5", "report", "next_offset", "cookies" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localInteger, "", localInteger, Integer.valueOf(-1), localByteStringMicro }, PageRespInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.PageRespInfo
  * JD-Core Version:    0.7.0.1
  */

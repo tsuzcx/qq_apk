@@ -11,24 +11,26 @@ final class SegmentPool
   
   static void recycle(Segment paramSegment)
   {
-    if ((paramSegment.next != null) || (paramSegment.prev != null)) {
-      throw new IllegalArgumentException();
-    }
-    if (paramSegment.shared) {
-      return;
-    }
-    try
+    if ((paramSegment.next == null) && (paramSegment.prev == null))
     {
-      if (byteCount + 8192L > 65536L) {
+      if (paramSegment.shared) {
         return;
       }
+      try
+      {
+        if (byteCount + 8192L > 65536L) {
+          return;
+        }
+        byteCount += 8192L;
+        paramSegment.next = next;
+        paramSegment.limit = 0;
+        paramSegment.pos = 0;
+        next = paramSegment;
+        return;
+      }
+      finally {}
     }
-    finally {}
-    byteCount += 8192L;
-    paramSegment.next = next;
-    paramSegment.limit = 0;
-    paramSegment.pos = 0;
-    next = paramSegment;
+    throw new IllegalArgumentException();
   }
   
   static Segment take()
@@ -50,7 +52,7 @@ final class SegmentPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.SegmentPool
  * JD-Core Version:    0.7.0.1
  */

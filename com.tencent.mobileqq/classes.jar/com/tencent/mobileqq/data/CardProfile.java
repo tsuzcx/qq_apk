@@ -83,8 +83,9 @@ public class CardProfile
     localCardProfile.dwLikeCustomId = this.dwLikeCustomId;
     localCardProfile.bIsLastVoteCharged = this.bIsLastVoteCharged;
     localCardProfile.vRichSign = this.vRichSign;
-    if (this.lTime > 0) {
-      localCardProfile.strTime = TimeFormatterUtils.a(this.lTime * 1000L, true, "yyyy-MM-dd");
+    int i = this.lTime;
+    if (i > 0) {
+      localCardProfile.strTime = TimeFormatterUtils.a(i * 1000L, true, "yyyy-MM-dd");
     }
     return localCardProfile;
   }
@@ -92,16 +93,46 @@ public class CardProfile
   public String getSimpleZanInfo()
   {
     StringBuilder localStringBuilder = new StringBuilder("zanInfo:");
-    localStringBuilder.append(",").append("uin").append("=").append(this.lEctID);
-    localStringBuilder.append(",").append("t").append("=").append(this.type);
-    localStringBuilder.append(",").append("n").append("=").append(this.strNick);
-    localStringBuilder.append(",").append("bVC").append("=").append(this.bVoteCnt);
-    localStringBuilder.append(",").append("bAailC").append("=").append(this.bAvailableCnt);
-    localStringBuilder.append(",").append("bTVC").append("=").append(this.bTodayVotedCnt);
-    localStringBuilder.append(",").append("bClose").append("=").append(this.bCloseNeighborVote);
-    localStringBuilder.append(",").append("bCharged").append("=").append(this.bIsLastVoteCharged);
-    localStringBuilder.append(",").append("payVC").append("=").append(this.payVoteCount);
-    localStringBuilder.append(",").append("bMutual").append("=").append(this.bMutualFriends);
+    localStringBuilder.append(",");
+    localStringBuilder.append("uin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.lEctID);
+    localStringBuilder.append(",");
+    localStringBuilder.append("t");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(",");
+    localStringBuilder.append("n");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.strNick);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bVC");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bVoteCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bAailC");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bAvailableCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bTVC");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bTodayVotedCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bClose");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bCloseNeighborVote);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bCharged");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bIsLastVoteCharged);
+    localStringBuilder.append(",");
+    localStringBuilder.append("payVC");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.payVoteCount);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bMutual");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bMutualFriends);
     return localStringBuilder.toString();
   }
   
@@ -134,8 +165,9 @@ public class CardProfile
     this.bVoteCnt = paramUserProfile.bVoteCnt;
     this.bAvailableCnt = paramUserProfile.bAvailableCnt;
     this.bTodayVotedCnt = paramUserProfile.bTodayVotedCnt;
-    if (this.lTime > 0) {
-      this.strTime = TimeFormatterUtils.a(this.lTime * 1000L, true, "yyyy-MM-dd");
+    int i = this.lTime;
+    if (i > 0) {
+      this.strTime = TimeFormatterUtils.a(i * 1000L, true, "yyyy-MM-dd");
     }
     this.uSource = paramUserProfile.uSource;
     this.bCloseNeighborVote = ((byte)paramUserProfile.bCloseNeighborVote);
@@ -148,27 +180,54 @@ public class CardProfile
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("CardProfile");
-    localStringBuilder.append(",").append("lEctID").append(":").append(this.lEctID);
-    localStringBuilder.append(",").append("strNick").append(":").append(this.strNick);
-    localStringBuilder.append(",").append("bVC").append(":").append(this.bVoteCnt);
-    localStringBuilder.append(",").append("bAailC").append(":").append(this.bAvailableCnt);
-    localStringBuilder.append(",").append("bTVC").append(":").append(this.bTodayVotedCnt);
-    localStringBuilder.append(",").append("bClose").append(":").append(this.bCloseNeighborVote);
-    localStringBuilder.append(",").append("strTime").append(":").append(this.strTime);
-    localStringBuilder.append(",").append("type").append(":").append(this.type);
-    localStringBuilder.append(",").append("bMutual").append("=").append(this.bMutualFriends);
+    localStringBuilder.append(",");
+    localStringBuilder.append("lEctID");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.lEctID);
+    localStringBuilder.append(",");
+    localStringBuilder.append("strNick");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.strNick);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bVC");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.bVoteCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bAailC");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.bAvailableCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bTVC");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.bTodayVotedCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bClose");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.bCloseNeighborVote);
+    localStringBuilder.append(",");
+    localStringBuilder.append("strTime");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.strTime);
+    localStringBuilder.append(",");
+    localStringBuilder.append("type");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bMutual");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bMutualFriends);
     return localStringBuilder.toString();
   }
   
   public void updateTime(long paramLong)
   {
     this.lTime = ((int)paramLong);
-    this.strTime = TimeFormatterUtils.a(1000L * paramLong, true, "yyyy-MM-dd");
+    this.strTime = TimeFormatterUtils.a(paramLong * 1000L, true, "yyyy-MM-dd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.CardProfile
  * JD-Core Version:    0.7.0.1
  */

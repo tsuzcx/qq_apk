@@ -1,7 +1,17 @@
 package com.tencent.mobileqq.app;
 
+import com.tencent.av.aio.message.DavBubbleElemDecoder;
+import com.tencent.imcore.message.BaseMessageManager;
+import com.tencent.imcore.message.BaseMessageManagerCallback;
+import com.tencent.imcore.message.BaseMessageManagerForTroopAndDisc;
+import com.tencent.imcore.message.BaseMessageManagerForTroopAndDiscCallback;
+import com.tencent.imcore.message.BaseMessageProcessor;
+import com.tencent.imcore.message.BaseMessageProcessorCallback;
+import com.tencent.imcore.message.C2CMessageManager;
+import com.tencent.imcore.message.C2CMessageManagerCallback;
+import com.tencent.imcore.message.C2CMessageProcessor;
+import com.tencent.imcore.message.C2CMessageProcessorCallback;
 import com.tencent.imcore.message.ConversationFacade;
-import com.tencent.imcore.message.ConversationFacade.Callback;
 import com.tencent.imcore.message.ConversationFacadeCallback;
 import com.tencent.imcore.message.MessageRecordCursor;
 import com.tencent.imcore.message.MessageRecordCursorCallback;
@@ -12,12 +22,66 @@ import com.tencent.imcore.message.MsgProxyContainerCallback;
 import com.tencent.imcore.message.MsgProxyUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.Registry;
+import com.tencent.imcore.message.adder.AddMessageHandlerGenerator;
+import com.tencent.imcore.message.adder.C2CAddMessageHandlerGenerator;
+import com.tencent.imcore.message.adder.C2CIMaxAdAccountAddMessageHandler;
+import com.tencent.imcore.message.adder.C2CIceBreakingAddMessageHandler;
+import com.tencent.imcore.message.adder.C2CPaAdAddMessageHandler;
+import com.tencent.imcore.message.adder.C2CTroopVideoAddMessageHandler;
+import com.tencent.imcore.message.adder.CommonAddMessageHandler;
+import com.tencent.imcore.message.adder.LongMixAddMessageHandler;
+import com.tencent.imcore.message.adder.LongTextAddMessageHandler;
+import com.tencent.imcore.message.adder.StructingAddMessageHandler;
+import com.tencent.imcore.message.adder.UniteGrayTipAddMessageHandler;
+import com.tencent.imcore.message.aiolist.AioMsgHandlerGenerator;
+import com.tencent.imcore.message.aiolist.ArkAioMsgHandler;
+import com.tencent.imcore.message.aiolist.ChatAioMsgHandler;
+import com.tencent.imcore.message.aiolist.GrayTipsAioMsgHandler;
+import com.tencent.imcore.message.aiolist.PokeAioMsgHandler;
+import com.tencent.imcore.message.aiolist.StructingAioMsgHandler;
+import com.tencent.imcore.message.aiolist.TofuMsgHandler;
 import com.tencent.imcore.message.core.CreateMessageRecordCallbackGenerator;
 import com.tencent.imcore.message.core.ExtractMessageSummaryCallbackGenerator;
 import com.tencent.imcore.message.core.GetAioListCallbackGenerator;
 import com.tencent.imcore.message.core.GetUnreadMsgNumCallbackGenerator;
 import com.tencent.imcore.message.core.codec.RoutingTypeGenerator;
 import com.tencent.imcore.message.core.codec.UinTypeRoutingTypeMap;
+import com.tencent.imcore.message.decoder.ActiveFriendsMsgDecoder;
+import com.tencent.imcore.message.decoder.ApolloMsgDecoder;
+import com.tencent.imcore.message.decoder.ArkAppMsgDecoder;
+import com.tencent.imcore.message.decoder.ArkBabyQReplyMsgDecoder;
+import com.tencent.imcore.message.decoder.ArkSdkShareMsgDecoder;
+import com.tencent.imcore.message.decoder.DefaultMsgDecoder;
+import com.tencent.imcore.message.decoder.DeviceFileMsgDecoder;
+import com.tencent.imcore.message.decoder.FileMsgDecoder;
+import com.tencent.imcore.message.decoder.FlashChatMsgDecoder;
+import com.tencent.imcore.message.decoder.FuDaiMsgDecoder;
+import com.tencent.imcore.message.decoder.GrayTipsMsgDecoder;
+import com.tencent.imcore.message.decoder.HiboomMsgDecoder;
+import com.tencent.imcore.message.decoder.MarketFaceMsgDecoder;
+import com.tencent.imcore.message.decoder.MessageDecoderGenerator;
+import com.tencent.imcore.message.decoder.MixMsgDecoder;
+import com.tencent.imcore.message.decoder.MixedMsgDecoder;
+import com.tencent.imcore.message.decoder.PicMsgDecoder;
+import com.tencent.imcore.message.decoder.PokeEmoMsgDecoder;
+import com.tencent.imcore.message.decoder.PokeMsgDecoder;
+import com.tencent.imcore.message.decoder.PttMsgDecoder;
+import com.tencent.imcore.message.decoder.PublicAccountMsgDecoder;
+import com.tencent.imcore.message.decoder.QQStoryMsgDecoder;
+import com.tencent.imcore.message.decoder.SecretaryMsgDecoder;
+import com.tencent.imcore.message.decoder.ShakeWindowMsgDecoder;
+import com.tencent.imcore.message.decoder.StickerMsgDecoder;
+import com.tencent.imcore.message.decoder.StructMsgDecoder;
+import com.tencent.imcore.message.decoder.SystemMsgDecoder;
+import com.tencent.imcore.message.decoder.SystemStructMsgDecoder;
+import com.tencent.imcore.message.decoder.TextMsgDecoder;
+import com.tencent.imcore.message.decoder.TribeShortVideoMsgDecoder;
+import com.tencent.imcore.message.decoder.TroopConfessMsgDecoder;
+import com.tencent.imcore.message.decoder.TroopEffectPicMsgDecoder;
+import com.tencent.imcore.message.decoder.TroopRewardMsgDecoder;
+import com.tencent.imcore.message.decoder.TroopSignMsgDecoder;
+import com.tencent.imcore.message.decoder.UniteGrayMsgDecoder;
+import com.tencent.imcore.message.decoder.WalletMsgDecoder;
 import com.tencent.imcore.message.ext.codec.LbsGetAioList;
 import com.tencent.imcore.message.ext.codec.PaiYiPaiGetAioList;
 import com.tencent.imcore.message.ext.codec.PublicAccountGetAioList;
@@ -78,7 +142,6 @@ import com.tencent.imcore.message.ext.codec.routingtype.GrpRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.GrpTmpRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.HotchatTopicRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.LBSFriendRoutingType;
-import com.tencent.imcore.message.ext.codec.routingtype.LimitChatTmpRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.MatchCampusChatTmpRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.MatchChatTmpRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.MovieTicketTmpRoutingType;
@@ -93,9 +156,78 @@ import com.tencent.imcore.message.ext.codec.routingtype.SameStateRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.TribeTmpRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.WPARoutingType;
 import com.tencent.imcore.message.ext.summary.WriteTogetherMessageSummaryCallback;
+import com.tencent.imcore.message.msgboxappender.ConfessMsgBoxAppender;
+import com.tencent.imcore.message.msgboxappender.LbsFriendMsgBoxAppender;
+import com.tencent.imcore.message.msgboxappender.LbsHelloMsgBoxAppender;
+import com.tencent.imcore.message.msgboxappender.MatchChatOrCircleMsgBoxAppender;
+import com.tencent.imcore.message.msgboxappender.MsgBoxAppenderGenerator;
+import com.tencent.imcore.message.msgboxappender.RecommendMsgBoxAppender;
+import com.tencent.imcore.message.msgboxappender.SameStateMsgBoxAppender;
+import com.tencent.imcore.message.msgboxappender.SystemMsgBoxAppender;
+import com.tencent.imcore.message.msgboxappender.TroopSuspiciousMsgBoxAppender;
+import com.tencent.imcore.message.msgboxappender.TroopSystemMsgBoxAppender;
+import com.tencent.imcore.message.msgboxappender.VoteMsgBoxAppender;
 import com.tencent.imcore.message.msgproxy.MsgProxyUtilsCallback;
 import com.tencent.mobileqq.activity.recent.msgbox.MsgBoxGetUnreadMsgNumCallback;
-import com.tencent.mobileqq.apollo.message.ApolloElemDecoder;
+import com.tencent.mobileqq.apollo.utils.ApolloClassFactoryApi;
+import com.tencent.mobileqq.app.generalflag.BubbleMsgGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.DouTuMsgGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.ExtensionInfoGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.FileAssistantGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.GeneralFlagProviderGenerator;
+import com.tencent.mobileqq.app.generalflag.KplRoleGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.PasteMsgGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.PicMsgAioSyncGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.PicMsgCustomFeatureGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.PicMsgSyncQZoneGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.PttMsgGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.RedBagGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.ReplyTextGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.RobotGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.ShortVideoGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.StickerMsgGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.StructLongTextGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.TroopRobotGeneralFlagProvider;
+import com.tencent.mobileqq.app.generalflag.WantGiftGeneralFlagProvider;
+import com.tencent.mobileqq.app.message.hookparcel.ParcelHooker;
+import com.tencent.mobileqq.app.message.hookparcel.ParcelHookerCallback;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyManager;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyManagerCallback;
+import com.tencent.mobileqq.app.pbsendhandler.AnonymousMsgPbSendReqHandler;
+import com.tencent.mobileqq.app.pbsendhandler.ClassicHeadActivityPbSendReqHandler;
+import com.tencent.mobileqq.app.pbsendhandler.ClearingMsgPbSendReqHandler;
+import com.tencent.mobileqq.app.pbsendhandler.CreatePbSendReqHandler;
+import com.tencent.mobileqq.app.pbsendhandler.GeneralFlagPbSendReqHandler;
+import com.tencent.mobileqq.app.pbsendhandler.KplTempMsgPbSendReqHandler;
+import com.tencent.mobileqq.app.pbsendhandler.PbSendReqHandlerGenerator;
+import com.tencent.mobileqq.app.pbsendhandler.PicMsgPbSendReqHandler;
+import com.tencent.mobileqq.app.pbsendhandler.RedBagPbSendReqHandler;
+import com.tencent.mobileqq.app.pbsendhandler.StructingMsgPbSendReqHandler;
+import com.tencent.mobileqq.app.richtext.AISpecialGuideRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.ArkAppRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.ArkSDKShakeRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.BabyQReplyRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.FlashChatRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.HiboomRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.LimitChatConfirmRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.MediaMarkfaceRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.MediaPicRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.MediaPttRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.MediaShortVideoRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.MixMsgRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.PokeEmoMsgRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.PokeMsgRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.ReplyTextMsgRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.RichTextAndMsgViaProviderGenerator;
+import com.tencent.mobileqq.app.richtext.ScribbleMsgRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.ShakeWindowRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.StickerMsgRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.StructLongTextRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.StructMsgRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.TextMsgRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.TroopStoryRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.TroopWantGiftMsgRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.VasApolloRichTextAndMsgViaProvider;
 import com.tencent.mobileqq.data.AtTroopMemberInfo;
 import com.tencent.mobileqq.data.AtTroopMemberInfo.Callback;
 import com.tencent.mobileqq.data.AtTroopMemberInfoCallback;
@@ -106,9 +238,17 @@ import com.tencent.mobileqq.data.MessageNavInfoCallback;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.MessageRecord.Callback;
 import com.tencent.mobileqq.data.MessageRecordCallback;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtilCallback;
+import com.tencent.mobileqq.graytip.UniteGrayTipParam;
+import com.tencent.mobileqq.graytip.UniteGrayTipParamCallback;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageCacheCallback;
+import com.tencent.mobileqq.service.message.MessageFactoryReceiver;
+import com.tencent.mobileqq.service.message.MessageFactoryReceiverCallback;
+import com.tencent.mobileqq.service.message.MessageFactorySender;
+import com.tencent.mobileqq.service.message.MessageFactorySenderCallback;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.service.message.codec.decoder.AppShareInfoDecoder;
 import com.tencent.mobileqq.service.message.codec.decoder.C2CMessageDecoderGenerator;
@@ -129,6 +269,7 @@ import com.tencent.mobileqq.service.message.codec.decoder.buddyMessage.BuddyMess
 import com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.MsgType0x210Decoder;
 import com.tencent.mobileqq.service.message.mrcallback.CreateMessageRecordCallBackTofuAioMiniProfile;
 import com.tencent.mobileqq.service.message.mrcallback.CreateMessageRecordCallBackTofuAskAnonymously;
+import com.tencent.mobileqq.service.message.mrcallback.CreateMessageRecordCallbackForBeancurd;
 import com.tencent.mobileqq.service.message.mrcallback.CreateMessageRecordCallbackTofuBaseProfile;
 import com.tencent.mobileqq.service.message.mrcallback.CreateMessageRecordCallbackTofuIntimateAnniversary;
 import com.tencent.mobileqq.service.message.mrcallback.CreateMessageRecordCallbackTofuNicePics;
@@ -137,14 +278,14 @@ import com.tencent.mobileqq.service.message.mrcallback.CreateMessageRecordCallba
 import com.tencent.mobileqq.troop.blocktroop.TroopUnreadMsgNumCallback;
 import com.tencent.mobileqq.troop.data.MessageNavInfo;
 import com.tencent.mobileqq.troop.data.MessageNavInfo.Callback;
+import com.tencent.mobileqq.troop.data.TroopMessageProcessor;
+import com.tencent.mobileqq.troop.data.TroopMessageProcessorCallback;
 import java.util.ArrayList;
 
 public class QQMessageFacadeConfig
 {
   @ConfigInject(configPath="IMCore/src/main/resources/Inject_IMCoreCustomizedConfig.yml", version=2)
   public static ArrayList<Class<? extends AtTroopMemberInfo.Callback>> sAtTroopMemberInfoCallbackCls;
-  @ConfigInject(configPath="IMCore/src/main/resources/Inject_IMCoreCustomizedConfig.yml", version=3)
-  public static ArrayList<Class<? extends ConversationFacade.Callback>> sConversationFacadeCallbackCls;
   @ConfigInject(configPath="IMCore/src/main/resources/Inject_IMCoreCustomizedConfig.yml", version=3)
   public static ArrayList<Class<? extends ConversationInfo.Callback>> sConversationInfoCallbackCls;
   @ConfigInject(configPath="IMCore/src/main/resources/Inject_IMCoreCustomizedConfig.yml", version=2)
@@ -162,15 +303,12 @@ public class QQMessageFacadeConfig
     sAtTroopMemberInfoCallbackCls.add(AtTroopMemberInfoCallback.class);
     sConversationInfoCallbackCls = new ArrayList();
     sConversationInfoCallbackCls.add(ConversationInfoCallback.class);
-    sConversationFacadeCallbackCls = new ArrayList();
-    sConversationFacadeCallbackCls.add(ConversationFacadeCallback.class);
     initAtClsInit();
   }
   
   public QQMessageFacadeConfig(QQMessageFacade paramQQMessageFacade)
   {
     this.mFacade = paramQQMessageFacade;
-    this.mFacade.a(this);
   }
   
   private static void initAtClsInit()
@@ -179,12 +317,46 @@ public class QQMessageFacadeConfig
     registerMessageNavInfo();
     registerAtTroopMemberInfo();
     registerConversationInfo();
-    registerConversationFacade();
+    ConversationFacade.a(new ConversationFacadeCallback());
     MsgProxy.a(new MsgProxyCallback());
     MsgProxyContainer.a(new MsgProxyContainerCallback());
     MessageRecordCursor.a(new MessageRecordCursorCallback());
     MessageCache.a(new MessageCacheCallback());
     MsgProxyUtils.a(new MsgProxyUtilsCallback());
+    UniteGrayTipParam.a(new UniteGrayTipParamCallback());
+    UniteGrayTipMsgUtil.a(new UniteGrayTipMsgUtilCallback());
+    BaseMessageProcessor.a(new BaseMessageProcessorCallback());
+    MsgNotifyManager.a(new MsgNotifyManagerCallback());
+    C2CMessageProcessor.a(new C2CMessageProcessorCallback());
+    BaseMessageManager.a(new BaseMessageManagerCallback());
+    BaseMessageManagerForTroopAndDisc.a(new BaseMessageManagerForTroopAndDiscCallback());
+    MessageFactorySender.a(new MessageFactorySenderCallback());
+    MessageFactoryReceiver.a(new MessageFactoryReceiverCallback());
+    ParcelHooker.a(new ParcelHookerCallback());
+    MessageHandlerUtils.a(new MessageHandlerUtilsCallback());
+    TroopMessageProcessor.a(new TroopMessageProcessorCallback());
+    C2CMessageManager.a(new C2CMessageManagerCallback());
+  }
+  
+  private void registerAddMessageHandler(Registry paramRegistry)
+  {
+    paramRegistry = paramRegistry.a();
+    paramRegistry.a(UniteGrayTipAddMessageHandler.class);
+    paramRegistry.a(StructingAddMessageHandler.class);
+    paramRegistry.a(CommonAddMessageHandler.class);
+    paramRegistry.a(LongTextAddMessageHandler.class);
+    paramRegistry.a(LongMixAddMessageHandler.class);
+  }
+  
+  private void registerAioMsgHandler(Registry paramRegistry)
+  {
+    paramRegistry = paramRegistry.a();
+    paramRegistry.a(ArkAioMsgHandler.class);
+    paramRegistry.a(TofuMsgHandler.class);
+    paramRegistry.a(ChatAioMsgHandler.class);
+    paramRegistry.a(GrayTipsAioMsgHandler.class);
+    paramRegistry.a(StructingAioMsgHandler.class);
+    paramRegistry.a(PokeAioMsgHandler.class);
   }
   
   private static void registerAtTroopMemberInfo()
@@ -203,20 +375,13 @@ public class QQMessageFacadeConfig
     }
   }
   
-  private static void registerConversationFacade()
+  private void registerC2CAddMessageHandler(Registry paramRegistry)
   {
-    if (sConversationFacadeCallbackCls.isEmpty()) {
-      return;
-    }
-    try
-    {
-      ConversationFacade.a((ConversationFacade.Callback)((Class)sConversationFacadeCallbackCls.get(0)).newInstance());
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    paramRegistry = paramRegistry.a();
+    paramRegistry.a(C2CTroopVideoAddMessageHandler.class);
+    paramRegistry.a(C2CPaAdAddMessageHandler.class);
+    paramRegistry.a(C2CIMaxAdAccountAddMessageHandler.class);
+    paramRegistry.a(C2CIceBreakingAddMessageHandler.class);
   }
   
   private static void registerConversationInfo()
@@ -245,6 +410,30 @@ public class QQMessageFacadeConfig
     localCreateMessageRecordCallbackGenerator.a(Integer.valueOf(-7013), CreateMessageRecordCallbackTofuQCircleIceBreak.class);
     localCreateMessageRecordCallbackGenerator.a(Integer.valueOf(-7014), CreateMessageRecordCallbackWriteTogether.class);
     localCreateMessageRecordCallbackGenerator.a(Integer.valueOf(-7015), CreateMessageRecordCallBackTofuAskAnonymously.class);
+    localCreateMessageRecordCallbackGenerator.a(Integer.valueOf(-7016), CreateMessageRecordCallbackForBeancurd.class);
+  }
+  
+  private void registerGeneralFlagProvider(Registry paramRegistry)
+  {
+    paramRegistry = paramRegistry.a();
+    paramRegistry.a(BubbleMsgGeneralFlagProvider.class);
+    paramRegistry.a(RedBagGeneralFlagProvider.class);
+    paramRegistry.a(StickerMsgGeneralFlagProvider.class);
+    paramRegistry.a(StructLongTextGeneralFlagProvider.class);
+    paramRegistry.a(ExtensionInfoGeneralFlagProvider.class);
+    paramRegistry.a(WantGiftGeneralFlagProvider.class);
+    paramRegistry.a(RobotGeneralFlagProvider.class);
+    paramRegistry.a(PasteMsgGeneralFlagProvider.class);
+    paramRegistry.a(TroopRobotGeneralFlagProvider.class);
+    paramRegistry.a(DouTuMsgGeneralFlagProvider.class);
+    paramRegistry.a(PicMsgCustomFeatureGeneralFlagProvider.class);
+    paramRegistry.a(KplRoleGeneralFlagProvider.class);
+    paramRegistry.a(ShortVideoGeneralFlagProvider.class);
+    paramRegistry.a(PicMsgAioSyncGeneralFlagProvider.class);
+    paramRegistry.a(PicMsgSyncQZoneGeneralFlagProvider.class);
+    paramRegistry.a(PttMsgGeneralFlagProvider.class);
+    paramRegistry.a(ReplyTextGeneralFlagProvider.class);
+    paramRegistry.a(FileAssistantGeneralFlagProvider.class);
   }
   
   private void registerGetAioListCallback(Registry paramRegistry)
@@ -253,6 +442,46 @@ public class QQMessageFacadeConfig
     paramRegistry.a(LbsGetAioList.class);
     paramRegistry.a(PublicAccountGetAioList.class);
     paramRegistry.a(PaiYiPaiGetAioList.class);
+  }
+  
+  private void registerMessageDecoder(Registry paramRegistry)
+  {
+    paramRegistry = paramRegistry.a();
+    paramRegistry.a(SecretaryMsgDecoder.class);
+    paramRegistry.a(SystemStructMsgDecoder.class);
+    paramRegistry.a(StructMsgDecoder.class);
+    paramRegistry.a(ActiveFriendsMsgDecoder.class);
+    paramRegistry.a(TextMsgDecoder.class);
+    paramRegistry.a(PokeMsgDecoder.class);
+    paramRegistry.a(PokeEmoMsgDecoder.class);
+    paramRegistry.a(UniteGrayMsgDecoder.class);
+    paramRegistry.a(MixedMsgDecoder.class);
+    paramRegistry.a(SystemMsgDecoder.class);
+    paramRegistry.a(MarketFaceMsgDecoder.class);
+    paramRegistry.a(StickerMsgDecoder.class);
+    paramRegistry.a(MixMsgDecoder.class);
+    paramRegistry.a(GrayTipsMsgDecoder.class);
+    paramRegistry.a(DeviceFileMsgDecoder.class);
+    paramRegistry.a(PublicAccountMsgDecoder.class);
+    paramRegistry.a(PicMsgDecoder.class);
+    paramRegistry.a(FileMsgDecoder.class);
+    paramRegistry.a(ShakeWindowMsgDecoder.class);
+    paramRegistry.a(PttMsgDecoder.class);
+    paramRegistry.a(WalletMsgDecoder.class);
+    paramRegistry.a(FuDaiMsgDecoder.class);
+    paramRegistry.a(ApolloMsgDecoder.class);
+    paramRegistry.a(ArkAppMsgDecoder.class);
+    paramRegistry.a(ArkBabyQReplyMsgDecoder.class);
+    paramRegistry.a(ArkSdkShareMsgDecoder.class);
+    paramRegistry.a(FlashChatMsgDecoder.class);
+    paramRegistry.a(HiboomMsgDecoder.class);
+    paramRegistry.a(TroopRewardMsgDecoder.class);
+    paramRegistry.a(QQStoryMsgDecoder.class);
+    paramRegistry.a(TribeShortVideoMsgDecoder.class);
+    paramRegistry.a(TroopSignMsgDecoder.class);
+    paramRegistry.a(TroopEffectPicMsgDecoder.class);
+    paramRegistry.a(TroopConfessMsgDecoder.class);
+    paramRegistry.a(DefaultMsgDecoder.class);
   }
   
   private static void registerMessageNavInfo()
@@ -292,6 +521,64 @@ public class QQMessageFacadeConfig
     paramRegistry.a().a(WriteTogetherMessageSummaryCallback.class);
   }
   
+  private void registerMsgBoxAppender(Registry paramRegistry)
+  {
+    paramRegistry = paramRegistry.a();
+    paramRegistry.a(SameStateMsgBoxAppender.class);
+    paramRegistry.a(LbsHelloMsgBoxAppender.class);
+    paramRegistry.a(LbsFriendMsgBoxAppender.class);
+    paramRegistry.a(SystemMsgBoxAppender.class);
+    paramRegistry.a(TroopSystemMsgBoxAppender.class);
+    paramRegistry.a(TroopSuspiciousMsgBoxAppender.class);
+    paramRegistry.a(VoteMsgBoxAppender.class);
+    paramRegistry.a(RecommendMsgBoxAppender.class);
+    paramRegistry.a(ConfessMsgBoxAppender.class);
+    paramRegistry.a(MatchChatOrCircleMsgBoxAppender.class);
+  }
+  
+  private void registerPbSendReqHandler(Registry paramRegistry)
+  {
+    paramRegistry = paramRegistry.a();
+    paramRegistry.a(RedBagPbSendReqHandler.class);
+    paramRegistry.a(AnonymousMsgPbSendReqHandler.class);
+    paramRegistry.a(ClearingMsgPbSendReqHandler.class);
+    paramRegistry.a(ClassicHeadActivityPbSendReqHandler.class);
+    paramRegistry.a(KplTempMsgPbSendReqHandler.class);
+    paramRegistry.a(CreatePbSendReqHandler.class);
+    paramRegistry.a(StructingMsgPbSendReqHandler.class);
+    paramRegistry.a(GeneralFlagPbSendReqHandler.class);
+    paramRegistry.a(PicMsgPbSendReqHandler.class);
+  }
+  
+  private void registerRichTextAndMsgViaProvider(Registry paramRegistry)
+  {
+    paramRegistry = paramRegistry.a();
+    paramRegistry.a(TextMsgRichTextAndMsgViaProvider.class);
+    paramRegistry.a(ReplyTextMsgRichTextAndMsgViaProvider.class);
+    paramRegistry.a(TroopWantGiftMsgRichTextAndMsgViaProvider.class);
+    paramRegistry.a(MediaPicRichTextAndMsgViaProvider.class);
+    paramRegistry.a(MediaPttRichTextAndMsgViaProvider.class);
+    paramRegistry.a(MediaMarkfaceRichTextAndMsgViaProvider.class);
+    paramRegistry.a(StickerMsgRichTextAndMsgViaProvider.class);
+    paramRegistry.a(VasApolloRichTextAndMsgViaProvider.class);
+    paramRegistry.a(StructMsgRichTextAndMsgViaProvider.class);
+    paramRegistry.a(ShakeWindowRichTextAndMsgViaProvider.class);
+    paramRegistry.a(MediaShortVideoRichTextAndMsgViaProvider.class);
+    paramRegistry.a(ArkAppRichTextAndMsgViaProvider.class);
+    paramRegistry.a(FlashChatRichTextAndMsgViaProvider.class);
+    paramRegistry.a(HiboomRichTextAndMsgViaProvider.class);
+    paramRegistry.a(PokeMsgRichTextAndMsgViaProvider.class);
+    paramRegistry.a(PokeEmoMsgRichTextAndMsgViaProvider.class);
+    paramRegistry.a(StructLongTextRichTextAndMsgViaProvider.class);
+    paramRegistry.a(AISpecialGuideRichTextAndMsgViaProvider.class);
+    paramRegistry.a(MixMsgRichTextAndMsgViaProvider.class);
+    paramRegistry.a(TroopStoryRichTextAndMsgViaProvider.class);
+    paramRegistry.a(ScribbleMsgRichTextAndMsgViaProvider.class);
+    paramRegistry.a(BabyQReplyRichTextAndMsgViaProvider.class);
+    paramRegistry.a(ArkSDKShakeRichTextAndMsgViaProvider.class);
+    paramRegistry.a(LimitChatConfirmRichTextAndMsgViaProvider.class);
+  }
+  
   private void registerRoutingType(Registry paramRegistry)
   {
     paramRegistry = paramRegistry.a();
@@ -318,7 +605,6 @@ public class QQMessageFacadeConfig
     paramRegistry.a(Integer.valueOf(20), NearbyAssistantRoutingType.class);
     paramRegistry.a(Integer.valueOf(21), HotchatTopicRoutingType.class);
     paramRegistry.a(Integer.valueOf(22), ApprovalTmpRoutingType.class);
-    paramRegistry.a(Integer.valueOf(28), LimitChatTmpRoutingType.class);
     paramRegistry.a(Integer.valueOf(27), CmgameTmpRoutingType.class);
     paramRegistry.a(Integer.valueOf(29), MatchChatTmpRoutingType.class);
     paramRegistry.a(Integer.valueOf(30), MatchCampusChatTmpRoutingType.class);
@@ -341,7 +627,7 @@ public class QQMessageFacadeConfig
     paramRegistry.a(ShakeWindowElemDecoder.class);
     paramRegistry.a(TroopConfessElemDecoder.class);
     paramRegistry.a(DeliverGiftElemDecoder.class);
-    paramRegistry.a(ApolloElemDecoder.class);
+    paramRegistry.a(ApolloClassFactoryApi.c());
     paramRegistry.a(GroupFileElemDecoder.class);
     paramRegistry.a(ArkAppElemDecoder.class);
     paramRegistry.a(MarketTransmissionElemDecoder.class);
@@ -378,6 +664,7 @@ public class QQMessageFacadeConfig
     paramRegistry.a(ConfessMsgElemDecoder.class);
     paramRegistry.a(GameInterCommElemDecoder.class);
     paramRegistry.a(WriteTogetherElemDecoder.class);
+    paramRegistry.a(DavBubbleElemDecoder.class);
   }
   
   protected void registerUinTypeRoutingType(Registry paramRegistry)
@@ -406,7 +693,6 @@ public class QQMessageFacadeConfig
     paramRegistry.a(1010, 19);
     paramRegistry.a(7400, 22);
     paramRegistry.a(1026, 21);
-    paramRegistry.a(1037, 28);
     paramRegistry.a(1036, 27);
     paramRegistry.a(1044, 29);
     paramRegistry.a(1045, 30);
@@ -465,11 +751,19 @@ public class QQMessageFacadeConfig
     registerMessageSummary(localRegistry);
     registerUnreadMsgNumCallback(localRegistry);
     registerGetAioListCallback(localRegistry);
+    registerMessageDecoder(localRegistry);
+    registerAddMessageHandler(localRegistry);
+    registerAioMsgHandler(localRegistry);
+    registerC2CAddMessageHandler(localRegistry);
+    registerMsgBoxAppender(localRegistry);
+    registerGeneralFlagProvider(localRegistry);
+    registerPbSendReqHandler(localRegistry);
+    registerRichTextAndMsgViaProvider(localRegistry);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQMessageFacadeConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -10,29 +10,31 @@ public class QzoneWebViewPluginManager
   
   public static QzoneWebViewPluginManager getInstance()
   {
-    if (mInstance == null) {}
-    synchronized (obj)
-    {
-      if (mInstance == null) {
-        mInstance = new QzoneWebViewPluginManager();
+    if (mInstance == null) {
+      synchronized (obj)
+      {
+        if (mInstance == null) {
+          mInstance = new QzoneWebViewPluginManager();
+        }
       }
-      return mInstance;
     }
+    return mInstance;
   }
   
   public QzoneWebViewRuntime getRuntime()
   {
-    if (this.mApp == null) {}
-    synchronized (obj)
-    {
-      if (this.mApp == null)
+    if (this.mApp == null) {
+      synchronized (obj)
       {
-        QzoneWebViewRuntime localQzoneWebViewRuntime = new QzoneWebViewRuntime(BaseApplicationImpl.getApplication(), "qzonelive");
-        localQzoneWebViewRuntime.onCreate(null);
-        this.mApp = localQzoneWebViewRuntime;
+        if (this.mApp == null)
+        {
+          QzoneWebViewRuntime localQzoneWebViewRuntime = new QzoneWebViewRuntime(BaseApplicationImpl.getApplication(), "qzonelive");
+          localQzoneWebViewRuntime.onCreate(null);
+          this.mApp = localQzoneWebViewRuntime;
+        }
       }
-      return this.mApp;
     }
+    return this.mApp;
   }
   
   public void initApp(QzoneWebViewRuntime paramQzoneWebViewRuntime)
@@ -42,7 +44,7 @@ public class QzoneWebViewPluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewwrapper.QzoneWebViewPluginManager
  * JD-Core Version:    0.7.0.1
  */

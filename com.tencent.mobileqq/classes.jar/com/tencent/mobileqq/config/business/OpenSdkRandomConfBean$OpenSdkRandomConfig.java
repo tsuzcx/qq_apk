@@ -37,39 +37,41 @@ public class OpenSdkRandomConfBean$OpenSdkRandomConfig
             localRandomInfo.a = localJSONObject.optString("nick", "");
             localRandomInfo.b = localJSONObject.optString("headid", "");
             localRandomInfo.c = localJSONObject.optString("url", "");
-            if ((!TextUtils.isEmpty(localRandomInfo.a)) && (!TextUtils.isEmpty(localRandomInfo.b)) && (!TextUtils.isEmpty(localRandomInfo.c))) {
-              break label230;
+            if ((!TextUtils.isEmpty(localRandomInfo.a)) && (!TextUtils.isEmpty(localRandomInfo.b))) {
+              if (!TextUtils.isEmpty(localRandomInfo.c)) {
+                break label233;
+              }
             }
             if (!QLog.isColorLevel()) {
-              break label235;
+              break label238;
             }
             QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse.find invalid,index=", Integer.valueOf(i) });
-            break label235;
+            break label238;
             if (j == 0) {
-              break label240;
+              break label243;
             }
             this.a.add(localRandomInfo);
-            break label240;
+            break label243;
           }
         }
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse=", toString() });
+          return;
         }
-        QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse=", toString() });
-        return;
       }
       catch (JSONException paramString)
       {
         QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config.getException.", paramString);
-        return;
       }
-      label230:
+      return;
+      label233:
       int j = 1;
       continue;
-      label235:
+      label238:
       j = 0;
       continue;
-      label240:
+      label243:
       i += 1;
     }
   }
@@ -84,7 +86,7 @@ public class OpenSdkRandomConfBean$OpenSdkRandomConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkRandomConfBean.OpenSdkRandomConfig
  * JD-Core Version:    0.7.0.1
  */

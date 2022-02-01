@@ -1,22 +1,21 @@
 package com.tencent.open.business.cgireport;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
+import android.text.TextUtils;
 import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.APNUtil;
 import com.tencent.open.base.LogUtility;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ReportDataModal
 {
-  protected static final String a;
+  protected static final String a = "com.tencent.open.business.cgireport.ReportDataModal";
   protected SQLiteDatabase a;
   protected ReportDataModal.DataBaseHelper a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = ReportDataModal.class.getName();
-  }
   
   public ReportDataModal()
   {
@@ -29,253 +28,418 @@ public class ReportDataModal
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 44
-    //   4: ldc 46
-    //   6: invokestatic 52	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   9: new 54	java/util/ArrayList
+    //   2: ldc 38
+    //   4: ldc 40
+    //   6: invokestatic 46	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   9: new 48	java/util/ArrayList
     //   12: dup
-    //   13: invokespecial 55	java/util/ArrayList:<init>	()V
-    //   16: astore 5
+    //   13: invokespecial 49	java/util/ArrayList:<init>	()V
+    //   16: astore 7
     //   18: aload_0
     //   19: aload_0
-    //   20: getfield 39	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper	Lcom/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper;
-    //   23: invokevirtual 59	com/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   26: putfield 61	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   20: getfield 33	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper	Lcom/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper;
+    //   23: invokevirtual 53	com/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   26: putfield 55	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
     //   29: aconst_null
-    //   30: astore 4
-    //   32: aload_0
-    //   33: getfield 61	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   36: new 63	java/lang/StringBuilder
-    //   39: dup
-    //   40: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   43: ldc 66
-    //   45: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: aload_1
-    //   49: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: ldc 72
-    //   54: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: ldc 74
-    //   59: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: ldc 76
-    //   64: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   70: iconst_1
-    //   71: anewarray 81	java/lang/String
-    //   74: dup
-    //   75: iconst_0
-    //   76: aload_2
-    //   77: aastore
-    //   78: invokevirtual 87	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   81: astore_3
-    //   82: aload_3
-    //   83: ifnull +325 -> 408
-    //   86: aload_3
-    //   87: invokeinterface 93 1 0
+    //   30: astore 6
+    //   32: aconst_null
+    //   33: astore 5
+    //   35: aload 5
+    //   37: astore 4
+    //   39: aload 6
+    //   41: astore_3
+    //   42: aload_0
+    //   43: getfield 55	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   46: astore 8
+    //   48: aload 5
+    //   50: astore 4
+    //   52: aload 6
+    //   54: astore_3
+    //   55: new 57	java/lang/StringBuilder
+    //   58: dup
+    //   59: invokespecial 58	java/lang/StringBuilder:<init>	()V
+    //   62: astore 9
+    //   64: aload 5
+    //   66: astore 4
+    //   68: aload 6
+    //   70: astore_3
+    //   71: aload 9
+    //   73: ldc 60
+    //   75: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: pop
+    //   79: aload 5
+    //   81: astore 4
+    //   83: aload 6
+    //   85: astore_3
+    //   86: aload 9
+    //   88: aload_1
+    //   89: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   92: pop
-    //   93: aload_3
-    //   94: invokeinterface 96 1 0
-    //   99: ifne +309 -> 408
-    //   102: aload_3
-    //   103: aload_3
-    //   104: ldc 98
-    //   106: invokeinterface 102 2 0
-    //   111: invokeinterface 106 2 0
-    //   116: astore 4
-    //   118: aload_3
-    //   119: aload_3
-    //   120: ldc 108
-    //   122: invokeinterface 102 2 0
-    //   127: invokeinterface 106 2 0
-    //   132: astore 6
-    //   134: aload_3
-    //   135: aload_3
-    //   136: ldc 110
-    //   138: invokeinterface 102 2 0
-    //   143: invokeinterface 106 2 0
-    //   148: astore 7
-    //   150: aload_3
-    //   151: aload_3
-    //   152: ldc 112
-    //   154: invokeinterface 102 2 0
-    //   159: invokeinterface 106 2 0
-    //   164: astore 8
-    //   166: aload_3
-    //   167: aload_3
-    //   168: ldc 114
-    //   170: invokeinterface 102 2 0
-    //   175: invokeinterface 106 2 0
-    //   180: astore 9
-    //   182: aload_3
-    //   183: aload_3
-    //   184: ldc 116
-    //   186: invokeinterface 102 2 0
-    //   191: invokeinterface 106 2 0
-    //   196: astore 10
-    //   198: aload_3
-    //   199: aload_3
-    //   200: ldc 118
-    //   202: invokeinterface 102 2 0
-    //   207: invokeinterface 106 2 0
-    //   212: astore 11
-    //   214: aload_3
-    //   215: aload_3
-    //   216: ldc 120
-    //   218: invokeinterface 102 2 0
-    //   223: invokeinterface 106 2 0
-    //   228: astore 12
-    //   230: aload 5
-    //   232: new 122	com/tencent/open/business/cgireport/reportItem
-    //   235: dup
-    //   236: aload 4
-    //   238: aload 6
-    //   240: aload 7
-    //   242: aload 8
-    //   244: aload 9
-    //   246: aload 10
-    //   248: aload 11
-    //   250: aload_3
-    //   251: aload_3
-    //   252: ldc 124
-    //   254: invokeinterface 102 2 0
-    //   259: invokeinterface 106 2 0
-    //   264: aload_3
-    //   265: aload_3
-    //   266: ldc 126
-    //   268: invokeinterface 102 2 0
-    //   273: invokeinterface 106 2 0
-    //   278: aload 12
-    //   280: aload_2
-    //   281: invokespecial 129	com/tencent/open/business/cgireport/reportItem:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   284: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   287: pop
-    //   288: aload_3
-    //   289: invokeinterface 136 1 0
-    //   294: pop
-    //   295: goto -202 -> 93
-    //   298: astore 4
-    //   300: aload_3
-    //   301: astore_2
-    //   302: aload 4
-    //   304: astore_3
-    //   305: getstatic 18	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   308: new 63	java/lang/StringBuilder
-    //   311: dup
-    //   312: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   315: ldc 138
-    //   317: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   320: aload_1
-    //   321: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   324: ldc 140
-    //   326: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   329: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   332: aload_3
-    //   333: invokestatic 143	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   336: aload_2
-    //   337: ifnull +9 -> 346
-    //   340: aload_2
-    //   341: invokeinterface 146 1 0
-    //   346: aload_0
-    //   347: getfield 61	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   350: invokevirtual 147	android/database/sqlite/SQLiteDatabase:close	()V
-    //   353: ldc 44
-    //   355: new 63	java/lang/StringBuilder
-    //   358: dup
-    //   359: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   362: ldc 138
-    //   364: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   367: aload_1
-    //   368: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   371: ldc 149
-    //   373: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   376: aload 5
-    //   378: invokevirtual 153	java/util/ArrayList:size	()I
-    //   381: invokevirtual 156	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   384: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   387: invokestatic 52	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   390: aload_0
-    //   391: monitorexit
-    //   392: aload 5
-    //   394: areturn
-    //   395: astore_1
-    //   396: getstatic 18	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   399: ldc 158
-    //   401: aload_1
-    //   402: invokestatic 143	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   405: goto -15 -> 390
-    //   408: aload_3
-    //   409: ifnull -63 -> 346
-    //   412: aload_3
-    //   413: invokeinterface 146 1 0
-    //   418: goto -72 -> 346
-    //   421: astore_1
-    //   422: aload_0
-    //   423: monitorexit
-    //   424: aload_1
-    //   425: athrow
-    //   426: astore_1
-    //   427: aconst_null
-    //   428: astore_3
-    //   429: aload_3
-    //   430: ifnull +9 -> 439
-    //   433: aload_3
-    //   434: invokeinterface 146 1 0
-    //   439: aload_1
-    //   440: athrow
-    //   441: astore_1
-    //   442: goto -13 -> 429
-    //   445: astore_1
-    //   446: aload_2
-    //   447: astore_3
-    //   448: goto -19 -> 429
-    //   451: astore_3
-    //   452: aload 4
-    //   454: astore_2
-    //   455: goto -150 -> 305
+    //   93: aload 5
+    //   95: astore 4
+    //   97: aload 6
+    //   99: astore_3
+    //   100: aload 9
+    //   102: ldc 66
+    //   104: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: pop
+    //   108: aload 5
+    //   110: astore 4
+    //   112: aload 6
+    //   114: astore_3
+    //   115: aload 9
+    //   117: ldc 68
+    //   119: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: pop
+    //   123: aload 5
+    //   125: astore 4
+    //   127: aload 6
+    //   129: astore_3
+    //   130: aload 9
+    //   132: ldc 70
+    //   134: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: pop
+    //   138: aload 5
+    //   140: astore 4
+    //   142: aload 6
+    //   144: astore_3
+    //   145: aload 8
+    //   147: aload 9
+    //   149: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   152: iconst_1
+    //   153: anewarray 76	java/lang/String
+    //   156: dup
+    //   157: iconst_0
+    //   158: aload_2
+    //   159: aastore
+    //   160: invokevirtual 82	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   163: astore 5
+    //   165: aload 5
+    //   167: ifnull +322 -> 489
+    //   170: aload 5
+    //   172: astore 4
+    //   174: aload 5
+    //   176: astore_3
+    //   177: aload 5
+    //   179: invokeinterface 88 1 0
+    //   184: pop
+    //   185: aload 5
+    //   187: astore 4
+    //   189: aload 5
+    //   191: astore_3
+    //   192: aload 5
+    //   194: invokeinterface 91 1 0
+    //   199: ifne +290 -> 489
+    //   202: aload 5
+    //   204: astore 4
+    //   206: aload 5
+    //   208: astore_3
+    //   209: aload 5
+    //   211: aload 5
+    //   213: ldc 93
+    //   215: invokeinterface 97 2 0
+    //   220: invokeinterface 101 2 0
+    //   225: astore 6
+    //   227: aload 5
+    //   229: astore 4
+    //   231: aload 5
+    //   233: astore_3
+    //   234: aload 5
+    //   236: aload 5
+    //   238: ldc 103
+    //   240: invokeinterface 97 2 0
+    //   245: invokeinterface 101 2 0
+    //   250: astore 8
+    //   252: aload 5
+    //   254: astore 4
+    //   256: aload 5
+    //   258: astore_3
+    //   259: aload 5
+    //   261: aload 5
+    //   263: ldc 105
+    //   265: invokeinterface 97 2 0
+    //   270: invokeinterface 101 2 0
+    //   275: astore 9
+    //   277: aload 5
+    //   279: astore 4
+    //   281: aload 5
+    //   283: astore_3
+    //   284: aload 5
+    //   286: aload 5
+    //   288: ldc 107
+    //   290: invokeinterface 97 2 0
+    //   295: invokeinterface 101 2 0
+    //   300: astore 10
+    //   302: aload 5
+    //   304: astore 4
+    //   306: aload 5
+    //   308: astore_3
+    //   309: aload 5
+    //   311: aload 5
+    //   313: ldc 109
+    //   315: invokeinterface 97 2 0
+    //   320: invokeinterface 101 2 0
+    //   325: astore 11
+    //   327: aload 5
+    //   329: astore 4
+    //   331: aload 5
+    //   333: astore_3
+    //   334: aload 5
+    //   336: aload 5
+    //   338: ldc 111
+    //   340: invokeinterface 97 2 0
+    //   345: invokeinterface 101 2 0
+    //   350: astore 12
+    //   352: aload 5
+    //   354: astore 4
+    //   356: aload 5
+    //   358: astore_3
+    //   359: aload 5
+    //   361: aload 5
+    //   363: ldc 113
+    //   365: invokeinterface 97 2 0
+    //   370: invokeinterface 101 2 0
+    //   375: astore 13
+    //   377: aload 5
+    //   379: astore 4
+    //   381: aload 5
+    //   383: astore_3
+    //   384: aload 5
+    //   386: aload 5
+    //   388: ldc 115
+    //   390: invokeinterface 97 2 0
+    //   395: invokeinterface 101 2 0
+    //   400: astore 14
+    //   402: aload 5
+    //   404: astore 4
+    //   406: aload 5
+    //   408: astore_3
+    //   409: aload 7
+    //   411: new 117	com/tencent/open/business/cgireport/reportItem
+    //   414: dup
+    //   415: aload 6
+    //   417: aload 8
+    //   419: aload 9
+    //   421: aload 10
+    //   423: aload 11
+    //   425: aload 12
+    //   427: aload 13
+    //   429: aload 5
+    //   431: aload 5
+    //   433: ldc 119
+    //   435: invokeinterface 97 2 0
+    //   440: invokeinterface 101 2 0
+    //   445: aload 5
+    //   447: aload 5
+    //   449: ldc 121
+    //   451: invokeinterface 97 2 0
+    //   456: invokeinterface 101 2 0
+    //   461: aload 14
+    //   463: aload_2
+    //   464: invokespecial 124	com/tencent/open/business/cgireport/reportItem:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   467: invokevirtual 128	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   470: pop
+    //   471: aload 5
+    //   473: astore 4
+    //   475: aload 5
+    //   477: astore_3
+    //   478: aload 5
+    //   480: invokeinterface 131 1 0
+    //   485: pop
+    //   486: goto -301 -> 185
+    //   489: aload 5
+    //   491: ifnull +93 -> 584
+    //   494: aload 5
+    //   496: astore_3
+    //   497: aload_3
+    //   498: invokeinterface 134 1 0
+    //   503: goto +81 -> 584
+    //   506: astore_1
+    //   507: goto +136 -> 643
+    //   510: astore_2
+    //   511: aload_3
+    //   512: astore 4
+    //   514: getstatic 136	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   517: astore 5
+    //   519: aload_3
+    //   520: astore 4
+    //   522: new 57	java/lang/StringBuilder
+    //   525: dup
+    //   526: invokespecial 58	java/lang/StringBuilder:<init>	()V
+    //   529: astore 6
+    //   531: aload_3
+    //   532: astore 4
+    //   534: aload 6
+    //   536: ldc 138
+    //   538: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   541: pop
+    //   542: aload_3
+    //   543: astore 4
+    //   545: aload 6
+    //   547: aload_1
+    //   548: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   551: pop
+    //   552: aload_3
+    //   553: astore 4
+    //   555: aload 6
+    //   557: ldc 140
+    //   559: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   562: pop
+    //   563: aload_3
+    //   564: astore 4
+    //   566: aload 5
+    //   568: aload 6
+    //   570: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   573: aload_2
+    //   574: invokestatic 143	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   577: aload_3
+    //   578: ifnull +6 -> 584
+    //   581: goto -84 -> 497
+    //   584: aload_0
+    //   585: getfield 55	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   588: invokevirtual 144	android/database/sqlite/SQLiteDatabase:close	()V
+    //   591: new 57	java/lang/StringBuilder
+    //   594: dup
+    //   595: invokespecial 58	java/lang/StringBuilder:<init>	()V
+    //   598: astore_2
+    //   599: aload_2
+    //   600: ldc 138
+    //   602: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   605: pop
+    //   606: aload_2
+    //   607: aload_1
+    //   608: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   611: pop
+    //   612: aload_2
+    //   613: ldc 146
+    //   615: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   618: pop
+    //   619: aload_2
+    //   620: aload 7
+    //   622: invokevirtual 150	java/util/ArrayList:size	()I
+    //   625: invokevirtual 153	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   628: pop
+    //   629: ldc 38
+    //   631: aload_2
+    //   632: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   635: invokestatic 46	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   638: aload_0
+    //   639: monitorexit
+    //   640: aload 7
+    //   642: areturn
+    //   643: aload 4
+    //   645: ifnull +10 -> 655
+    //   648: aload 4
+    //   650: invokeinterface 134 1 0
+    //   655: aload_1
+    //   656: athrow
+    //   657: astore_1
+    //   658: getstatic 136	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   661: ldc 155
+    //   663: aload_1
+    //   664: invokestatic 143	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   667: aload_0
+    //   668: monitorexit
+    //   669: aload 7
+    //   671: areturn
+    //   672: astore_1
+    //   673: aload_0
+    //   674: monitorexit
+    //   675: goto +5 -> 680
+    //   678: aload_1
+    //   679: athrow
+    //   680: goto -2 -> 678
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	458	0	this	ReportDataModal
-    //   0	458	1	paramString1	String
-    //   0	458	2	paramString2	String
-    //   81	367	3	localObject	Object
-    //   451	1	3	localException1	Exception
-    //   30	207	4	str1	String
-    //   298	155	4	localException2	Exception
-    //   16	377	5	localArrayList	ArrayList
-    //   132	107	6	str2	String
-    //   148	93	7	str3	String
-    //   164	79	8	str4	String
-    //   180	65	9	str5	String
-    //   196	51	10	str6	String
-    //   212	37	11	str7	String
-    //   228	51	12	str8	String
+    //   0	683	0	this	ReportDataModal
+    //   0	683	1	paramString1	String
+    //   0	683	2	paramString2	String
+    //   41	537	3	localObject1	Object
+    //   37	612	4	localObject2	Object
+    //   33	534	5	localObject3	Object
+    //   30	539	6	localObject4	Object
+    //   16	654	7	localArrayList	ArrayList
+    //   46	372	8	localObject5	Object
+    //   62	358	9	localObject6	Object
+    //   300	122	10	str1	String
+    //   325	99	11	str2	String
+    //   350	76	12	str3	String
+    //   375	53	13	str4	String
+    //   400	62	14	str5	String
     // Exception table:
     //   from	to	target	type
-    //   86	93	298	java/lang/Exception
-    //   93	295	298	java/lang/Exception
-    //   18	29	395	java/lang/Exception
-    //   2	18	421	finally
-    //   18	29	421	finally
-    //   340	346	421	finally
-    //   346	390	421	finally
-    //   396	405	421	finally
-    //   412	418	421	finally
-    //   433	439	421	finally
-    //   439	441	421	finally
-    //   32	82	426	finally
-    //   86	93	441	finally
-    //   93	295	441	finally
-    //   305	336	445	finally
-    //   32	82	451	java/lang/Exception
+    //   42	48	506	finally
+    //   55	64	506	finally
+    //   71	79	506	finally
+    //   86	93	506	finally
+    //   100	108	506	finally
+    //   115	123	506	finally
+    //   130	138	506	finally
+    //   145	165	506	finally
+    //   177	185	506	finally
+    //   192	202	506	finally
+    //   209	227	506	finally
+    //   234	252	506	finally
+    //   259	277	506	finally
+    //   284	302	506	finally
+    //   309	327	506	finally
+    //   334	352	506	finally
+    //   359	377	506	finally
+    //   384	402	506	finally
+    //   409	471	506	finally
+    //   478	486	506	finally
+    //   514	519	506	finally
+    //   522	531	506	finally
+    //   534	542	506	finally
+    //   545	552	506	finally
+    //   555	563	506	finally
+    //   566	577	506	finally
+    //   42	48	510	java/lang/Exception
+    //   55	64	510	java/lang/Exception
+    //   71	79	510	java/lang/Exception
+    //   86	93	510	java/lang/Exception
+    //   100	108	510	java/lang/Exception
+    //   115	123	510	java/lang/Exception
+    //   130	138	510	java/lang/Exception
+    //   145	165	510	java/lang/Exception
+    //   177	185	510	java/lang/Exception
+    //   192	202	510	java/lang/Exception
+    //   209	227	510	java/lang/Exception
+    //   234	252	510	java/lang/Exception
+    //   259	277	510	java/lang/Exception
+    //   284	302	510	java/lang/Exception
+    //   309	327	510	java/lang/Exception
+    //   334	352	510	java/lang/Exception
+    //   359	377	510	java/lang/Exception
+    //   384	402	510	java/lang/Exception
+    //   409	471	510	java/lang/Exception
+    //   478	486	510	java/lang/Exception
+    //   18	29	657	java/lang/Exception
+    //   2	18	672	finally
+    //   18	29	672	finally
+    //   497	503	672	finally
+    //   584	638	672	finally
+    //   648	655	672	finally
+    //   655	657	672	finally
+    //   658	667	672	finally
   }
   
   public int a(String paramString)
   {
     try
     {
-      int i = 0 + a("newdata_report", paramString);
-      LogUtility.b(jdField_a_of_type_JavaLangString, "new_table>>count=" + i);
+      int i = a("newdata_report", paramString) + 0;
+      Object localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("new_table>>count=");
+      localStringBuilder.append(i);
+      LogUtility.b((String)localObject, localStringBuilder.toString());
       i += a("olddata_report", paramString);
-      LogUtility.b(jdField_a_of_type_JavaLangString, "all_table>>>count=" + i);
+      paramString = jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("all_table>>>count=");
+      ((StringBuilder)localObject).append(i);
+      LogUtility.b(paramString, ((StringBuilder)localObject).toString());
       return i;
     }
     finally
@@ -285,153 +449,125 @@ public class ReportDataModal
     }
   }
   
-  /* Error */
   public int a(String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: aload_2
-    //   6: invokestatic 177	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   9: ifeq +64 -> 73
-    //   12: aconst_null
-    //   13: astore 5
-    //   15: aload_2
-    //   16: invokestatic 177	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   19: istore 4
-    //   21: iload 4
-    //   23: ifeq +57 -> 80
-    //   26: aload 6
-    //   28: astore_2
-    //   29: aload_0
-    //   30: aload_0
-    //   31: getfield 39	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper	Lcom/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper;
-    //   34: invokevirtual 59	com/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   37: putfield 61	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   40: aload_0
-    //   41: getfield 61	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   44: aload_1
-    //   45: aconst_null
-    //   46: aload 5
-    //   48: aload_2
-    //   49: aconst_null
-    //   50: aconst_null
-    //   51: aconst_null
-    //   52: invokevirtual 181	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   55: astore_1
-    //   56: aload_1
-    //   57: invokeinterface 184 1 0
-    //   62: istore_3
-    //   63: aload_1
-    //   64: invokeinterface 146 1 0
-    //   69: aload_0
-    //   70: monitorexit
-    //   71: iload_3
-    //   72: ireturn
-    //   73: ldc 186
-    //   75: astore 5
-    //   77: goto -62 -> 15
-    //   80: iconst_1
-    //   81: anewarray 81	java/lang/String
-    //   84: astore 6
-    //   86: aload 6
-    //   88: iconst_0
-    //   89: aload_2
-    //   90: aastore
-    //   91: aload 6
-    //   93: astore_2
-    //   94: goto -65 -> 29
-    //   97: astore_1
-    //   98: aload_0
-    //   99: monitorexit
-    //   100: aload_1
-    //   101: athrow
-    //   102: astore_1
-    //   103: getstatic 18	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   106: ldc 158
-    //   108: aload_1
-    //   109: invokestatic 143	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   112: iconst_0
-    //   113: istore_3
-    //   114: goto -45 -> 69
-    //   117: astore_1
-    //   118: getstatic 18	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   121: aload_1
-    //   122: invokevirtual 189	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
-    //   125: aload_1
-    //   126: invokestatic 192	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   129: iconst_0
-    //   130: istore_3
-    //   131: goto -62 -> 69
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	134	0	this	ReportDataModal
-    //   0	134	1	paramString1	String
-    //   0	134	2	paramString2	String
-    //   62	69	3	i	int
-    //   19	3	4	bool	boolean
-    //   13	63	5	str	String
-    //   1	91	6	arrayOfString	String[]
-    // Exception table:
-    //   from	to	target	type
-    //   5	12	97	finally
-    //   15	21	97	finally
-    //   29	40	97	finally
-    //   40	69	97	finally
-    //   80	86	97	finally
-    //   103	112	97	finally
-    //   118	129	97	finally
-    //   29	40	102	java/lang/Exception
-    //   40	69	117	java/lang/Exception
+    try
+    {
+      boolean bool = TextUtils.isEmpty(paramString2);
+      arrayOfString = null;
+      if (!bool) {
+        break label137;
+      }
+      str = null;
+    }
+    finally
+    {
+      label137:
+      label144:
+      for (;;)
+      {
+        String[] arrayOfString;
+        for (;;)
+        {
+          throw paramString1;
+        }
+        String str = "appid=?";
+      }
+    }
+    if (TextUtils.isEmpty(paramString2))
+    {
+      paramString2 = arrayOfString;
+    }
+    else
+    {
+      arrayOfString = new String[1];
+      arrayOfString[0] = paramString2;
+      paramString2 = arrayOfString;
+      break label144;
+      try
+      {
+        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper.getReadableDatabase();
+        try
+        {
+          paramString1 = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.query(paramString1, null, str, paramString2, null, null, null);
+          int i = paramString1.getCount();
+          paramString1.close();
+          return i;
+        }
+        catch (Exception paramString1)
+        {
+          LogUtility.c(jdField_a_of_type_JavaLangString, paramString1.getLocalizedMessage(), paramString1);
+          return 0;
+        }
+        paramString1 = finally;
+      }
+      catch (Exception paramString1)
+      {
+        LogUtility.a(jdField_a_of_type_JavaLangString, "getOldItems>>>", paramString1);
+        return 0;
+      }
+    }
   }
   
   public int a(ArrayList<reportItem> paramArrayList)
   {
-    int i;
     try
     {
-      LogUtility.b("cgi_report_debug", "ReportDataModal backupOldItems count = " + paramArrayList.size());
-      paramArrayList = new ArrayList(paramArrayList).iterator();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ReportDataModal backupOldItems count = ");
+      ((StringBuilder)localObject).append(paramArrayList.size());
+      LogUtility.b("cgi_report_debug", ((StringBuilder)localObject).toString());
       i = 0;
+      paramArrayList = new ArrayList(paramArrayList).iterator();
+    }
+    finally
+    {
       for (;;)
       {
-        if (paramArrayList.hasNext())
+        Object localObject;
+        int i;
+        ContentValues localContentValues;
+        for (;;)
         {
-          reportItem localreportItem = (reportItem)paramArrayList.next();
-          ContentValues localContentValues = new ContentValues();
-          localContentValues.put("apn", localreportItem.jdField_a_of_type_JavaLangString);
-          localContentValues.put("frequency", localreportItem.b);
-          localContentValues.put("commandid", localreportItem.c);
-          localContentValues.put("resultcode", localreportItem.d);
-          localContentValues.put("tmcost", localreportItem.e);
-          localContentValues.put("reqsize", localreportItem.f);
-          localContentValues.put("rspsize", localreportItem.g);
-          localContentValues.put("touin", localreportItem.h);
-          localContentValues.put("deviceinfo", localreportItem.i);
-          localContentValues.put("detail", localreportItem.j);
-          localContentValues.put("appid", localreportItem.k);
-          try
-          {
-            this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper.getWritableDatabase();
-            this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.insertOrThrow("olddata_report", null, localContentValues);
-            this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.close();
-            i += 1;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              LogUtility.c(jdField_a_of_type_JavaLangString, "update>>>", localException);
-            }
-          }
+          throw paramArrayList;
         }
+        i += 1;
       }
-      LogUtility.b("cgi_report_debug", "ReportDataModal backupOldItems succ_count = " + i);
     }
-    finally {}
-    return i;
+    if (paramArrayList.hasNext())
+    {
+      localObject = (reportItem)paramArrayList.next();
+      localContentValues = new ContentValues();
+      localContentValues.put("apn", ((reportItem)localObject).jdField_a_of_type_JavaLangString);
+      localContentValues.put("frequency", ((reportItem)localObject).b);
+      localContentValues.put("commandid", ((reportItem)localObject).c);
+      localContentValues.put("resultcode", ((reportItem)localObject).d);
+      localContentValues.put("tmcost", ((reportItem)localObject).e);
+      localContentValues.put("reqsize", ((reportItem)localObject).f);
+      localContentValues.put("rspsize", ((reportItem)localObject).g);
+      localContentValues.put("touin", ((reportItem)localObject).h);
+      localContentValues.put("deviceinfo", ((reportItem)localObject).i);
+      localContentValues.put("detail", ((reportItem)localObject).j);
+      localContentValues.put("appid", ((reportItem)localObject).k);
+      try
+      {
+        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper.getWritableDatabase();
+        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.insertOrThrow("olddata_report", null, localContentValues);
+        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.close();
+      }
+      catch (Exception localException)
+      {
+        LogUtility.c(jdField_a_of_type_JavaLangString, "update>>>", localException);
+      }
+    }
+    else
+    {
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("ReportDataModal backupOldItems succ_count = ");
+      paramArrayList.append(i);
+      LogUtility.b("cgi_report_debug", paramArrayList.toString());
+      return i;
+    }
   }
   
   public ArrayList<reportItem> a(String paramString)
@@ -448,337 +584,209 @@ public class ReportDataModal
     }
   }
   
-  public boolean a(String paramString)
-  {
-    boolean bool = false;
-    try
-    {
-      LogUtility.b("cgi_report_debug", "ReportDataModal deleteOldItems start");
-      try
-      {
-        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper.getWritableDatabase();
-        paramString = "delete from olddata_report where appid=" + paramString + ";";
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          label75:
-          LogUtility.a(jdField_a_of_type_JavaLangString, "deleteOldItems>>>", paramString);
-        }
-      }
-    }
-    finally {}
-    try
-    {
-      this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.execSQL(paramString);
-      this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.close();
-      LogUtility.b("cgi_report_debug", "ReportDataModal deleteOldItems success");
-      bool = true;
-    }
-    catch (Exception paramString)
-    {
-      LogUtility.a(jdField_a_of_type_JavaLangString, "deleteOldItems>>>", paramString);
-      this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.close();
-      break label75;
-    }
-    return bool;
-  }
-  
   /* Error */
-  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
+  public boolean a(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_3
-    //   3: astore 13
-    //   5: aload_3
-    //   6: ldc_w 280
-    //   9: invokevirtual 283	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   12: ifeq +14 -> 26
-    //   15: aload_3
-    //   16: ldc_w 285
-    //   19: invokevirtual 289	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   22: iconst_0
-    //   23: aaload
-    //   24: astore 13
-    //   26: ldc 44
-    //   28: new 63	java/lang/StringBuilder
-    //   31: dup
-    //   32: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   35: ldc_w 291
-    //   38: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: aload_1
-    //   42: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: ldc_w 293
-    //   48: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2: ldc 38
+    //   4: ldc_w 262
+    //   7: invokestatic 46	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   10: aload_0
+    //   11: aload_0
+    //   12: getfield 33	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper	Lcom/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper;
+    //   15: invokevirtual 246	com/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   18: putfield 55	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   21: new 57	java/lang/StringBuilder
+    //   24: dup
+    //   25: invokespecial 58	java/lang/StringBuilder:<init>	()V
+    //   28: astore_2
+    //   29: aload_2
+    //   30: ldc_w 264
+    //   33: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: aload_2
+    //   38: aload_1
+    //   39: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: pop
+    //   43: aload_2
+    //   44: ldc_w 266
+    //   47: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: pop
     //   51: aload_2
-    //   52: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: ldc_w 295
-    //   58: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: aload 13
-    //   63: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: ldc_w 297
-    //   69: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: aload 4
-    //   74: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: ldc_w 299
-    //   80: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: aload 5
-    //   85: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: ldc_w 301
-    //   91: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: aload 6
-    //   96: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: ldc_w 303
-    //   102: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: aload 7
-    //   107: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 52	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   116: new 213	android/content/ContentValues
-    //   119: dup
-    //   120: invokespecial 214	android/content/ContentValues:<init>	()V
-    //   123: astore_3
-    //   124: aload_3
-    //   125: ldc 98
-    //   127: new 63	java/lang/StringBuilder
-    //   130: dup
-    //   131: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   134: aload_1
-    //   135: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: ldc_w 305
-    //   141: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   144: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   147: invokevirtual 218	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   150: aload_3
-    //   151: ldc 108
-    //   153: new 63	java/lang/StringBuilder
-    //   156: dup
-    //   157: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   160: aload_2
-    //   161: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: ldc_w 305
-    //   167: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   173: invokevirtual 218	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   176: aload_3
-    //   177: ldc 110
-    //   179: new 63	java/lang/StringBuilder
-    //   182: dup
-    //   183: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   186: aload 13
-    //   188: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: ldc_w 305
-    //   194: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   200: invokevirtual 218	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   203: aload_3
-    //   204: ldc 112
-    //   206: new 63	java/lang/StringBuilder
-    //   209: dup
-    //   210: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   213: aload 4
-    //   215: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: ldc_w 305
-    //   221: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   224: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: invokevirtual 218	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   230: aload_3
-    //   231: ldc 114
-    //   233: new 63	java/lang/StringBuilder
-    //   236: dup
-    //   237: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   240: aload 5
-    //   242: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   245: ldc_w 305
-    //   248: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   251: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   254: invokevirtual 218	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   257: aload_3
-    //   258: ldc 116
-    //   260: new 63	java/lang/StringBuilder
-    //   263: dup
-    //   264: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   267: aload 6
-    //   269: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   272: ldc_w 305
-    //   275: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   278: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   281: invokevirtual 218	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   284: aload_3
-    //   285: ldc 118
-    //   287: new 63	java/lang/StringBuilder
-    //   290: dup
-    //   291: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   294: aload 7
-    //   296: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   299: ldc_w 305
-    //   302: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   305: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   308: invokevirtual 218	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   311: aload_3
-    //   312: ldc 124
-    //   314: new 63	java/lang/StringBuilder
-    //   317: dup
-    //   318: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   321: aload 8
-    //   323: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   326: ldc_w 305
-    //   329: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   332: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   335: invokevirtual 218	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   338: aload_3
-    //   339: ldc 74
-    //   341: new 63	java/lang/StringBuilder
-    //   344: dup
-    //   345: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   348: aload 10
-    //   350: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   353: ldc_w 305
-    //   356: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   359: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   362: invokevirtual 218	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   365: new 63	java/lang/StringBuilder
-    //   368: dup
-    //   369: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   372: astore_2
-    //   373: aload_2
-    //   374: ldc_w 307
-    //   377: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   380: aload_1
-    //   381: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   384: bipush 38
-    //   386: invokevirtual 310	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   389: pop
-    //   390: aload_2
-    //   391: ldc_w 312
-    //   394: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   397: astore_1
-    //   398: invokestatic 317	android/os/Environment:getExternalStorageState	()Ljava/lang/String;
-    //   401: ldc_w 319
-    //   404: invokevirtual 322	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   407: ifeq +172 -> 579
-    //   410: iconst_1
-    //   411: istore 11
-    //   413: aload_1
-    //   414: iload 11
-    //   416: invokevirtual 156	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   419: bipush 38
-    //   421: invokevirtual 310	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   424: pop
-    //   425: aload_2
-    //   426: ldc_w 324
-    //   429: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   432: invokestatic 29	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
-    //   435: invokevirtual 32	com/tencent/open/adapter/CommonDataAdapter:a	()Landroid/content/Context;
-    //   438: invokestatic 329	com/tencent/open/base/APNUtil:e	(Landroid/content/Context;)Ljava/lang/String;
-    //   441: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   444: pop
-    //   445: aload_3
-    //   446: ldc 126
-    //   448: aload_2
-    //   449: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   452: invokevirtual 218	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   455: new 63	java/lang/StringBuilder
-    //   458: dup
-    //   459: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   462: ldc_w 331
-    //   465: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   468: invokestatic 29	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
-    //   471: invokevirtual 334	com/tencent/open/adapter/CommonDataAdapter:a	()J
-    //   474: invokevirtual 337	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   477: ldc_w 305
-    //   480: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   483: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   486: astore_2
-    //   487: aload_2
-    //   488: astore_1
-    //   489: aload 9
-    //   491: ifnull +35 -> 526
-    //   494: new 63	java/lang/StringBuilder
-    //   497: dup
-    //   498: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   501: aload_2
-    //   502: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   505: ldc_w 339
-    //   508: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   511: aload 9
-    //   513: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   516: ldc_w 305
-    //   519: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   522: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   525: astore_1
-    //   526: aload_3
-    //   527: ldc 120
-    //   529: aload_1
-    //   530: invokevirtual 218	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   533: aload_0
-    //   534: aload_0
-    //   535: getfield 39	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper	Lcom/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper;
-    //   538: invokevirtual 249	com/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   541: putfield 61	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   544: aload_0
-    //   545: getfield 61	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   548: ldc 162
-    //   550: aconst_null
-    //   551: aload_3
-    //   552: invokevirtual 253	android/database/sqlite/SQLiteDatabase:insertOrThrow	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
-    //   555: pop2
-    //   556: aload_0
-    //   557: getfield 61	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   560: invokevirtual 147	android/database/sqlite/SQLiteDatabase:close	()V
-    //   563: ldc 44
-    //   565: ldc_w 341
-    //   568: invokestatic 52	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   571: iconst_1
-    //   572: istore 12
-    //   574: aload_0
-    //   575: monitorexit
-    //   576: iload 12
-    //   578: ireturn
-    //   579: iconst_0
-    //   580: istore 11
-    //   582: goto -169 -> 413
-    //   585: astore_1
-    //   586: ldc 44
-    //   588: ldc_w 343
-    //   591: invokestatic 345	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   594: iconst_0
-    //   595: istore 12
-    //   597: goto -23 -> 574
-    //   600: astore_1
-    //   601: aload_0
-    //   602: monitorexit
-    //   603: aload_1
-    //   604: athrow
+    //   52: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: astore_1
+    //   56: aload_0
+    //   57: getfield 55	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   60: aload_1
+    //   61: invokevirtual 270	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
+    //   64: aload_0
+    //   65: getfield 55	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   68: invokevirtual 144	android/database/sqlite/SQLiteDatabase:close	()V
+    //   71: ldc 38
+    //   73: ldc_w 272
+    //   76: invokestatic 46	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: aload_0
+    //   80: monitorexit
+    //   81: iconst_1
+    //   82: ireturn
+    //   83: astore_1
+    //   84: getstatic 136	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   87: ldc_w 274
+    //   90: aload_1
+    //   91: invokestatic 143	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   94: aload_0
+    //   95: getfield 55	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   98: invokevirtual 144	android/database/sqlite/SQLiteDatabase:close	()V
+    //   101: aload_0
+    //   102: monitorexit
+    //   103: iconst_0
+    //   104: ireturn
+    //   105: astore_1
+    //   106: getstatic 136	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   109: ldc_w 274
+    //   112: aload_1
+    //   113: invokestatic 143	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   116: aload_0
+    //   117: monitorexit
+    //   118: iconst_0
+    //   119: ireturn
+    //   120: astore_1
+    //   121: aload_0
+    //   122: monitorexit
+    //   123: aload_1
+    //   124: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	605	0	this	ReportDataModal
-    //   0	605	1	paramString1	String
-    //   0	605	2	paramString2	String
-    //   0	605	3	paramString3	String
-    //   0	605	4	paramString4	String
-    //   0	605	5	paramString5	String
-    //   0	605	6	paramString6	String
-    //   0	605	7	paramString7	String
-    //   0	605	8	paramString8	String
-    //   0	605	9	paramString9	String
-    //   0	605	10	paramString10	String
-    //   411	170	11	i	int
-    //   572	24	12	bool	boolean
-    //   3	184	13	str	String
+    //   0	125	0	this	ReportDataModal
+    //   0	125	1	paramString	String
+    //   28	24	2	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   533	571	585	java/lang/Exception
-    //   5	26	600	finally
-    //   26	410	600	finally
-    //   413	487	600	finally
-    //   494	526	600	finally
-    //   526	533	600	finally
-    //   533	571	600	finally
-    //   586	594	600	finally
+    //   56	64	83	java/lang/Exception
+    //   10	21	105	java/lang/Exception
+    //   2	10	120	finally
+    //   10	21	120	finally
+    //   21	56	120	finally
+    //   56	64	120	finally
+    //   64	79	120	finally
+    //   84	101	120	finally
+    //   106	116	120	finally
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
+  {
+    String str = paramString3;
+    for (;;)
+    {
+      try
+      {
+        if (paramString3.contains("?")) {
+          str = paramString3.split("\\?")[0];
+        }
+        paramString3 = new StringBuilder();
+        paramString3.append("ReportDataModal addNewItem apn=");
+        paramString3.append(paramString1);
+        paramString3.append(",frequency=");
+        paramString3.append(paramString2);
+        paramString3.append(",commandid=");
+        paramString3.append(str);
+        paramString3.append(",resultCode=");
+        paramString3.append(paramString4);
+        paramString3.append(",costTime=");
+        paramString3.append(paramString5);
+        paramString3.append(",reqSzie=");
+        paramString3.append(paramString6);
+        paramString3.append(",rspSize=");
+        paramString3.append(paramString7);
+        LogUtility.b("cgi_report_debug", paramString3.toString());
+        paramString3 = new ContentValues();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("");
+        paramString3.put("apn", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append("");
+        paramString3.put("frequency", localStringBuilder.toString());
+        paramString2 = new StringBuilder();
+        paramString2.append(str);
+        paramString2.append("");
+        paramString3.put("commandid", paramString2.toString());
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString4);
+        paramString2.append("");
+        paramString3.put("resultcode", paramString2.toString());
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString5);
+        paramString2.append("");
+        paramString3.put("tmcost", paramString2.toString());
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString6);
+        paramString2.append("");
+        paramString3.put("reqsize", paramString2.toString());
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString7);
+        paramString2.append("");
+        paramString3.put("rspsize", paramString2.toString());
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString8);
+        paramString2.append("");
+        paramString3.put("touin", paramString2.toString());
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString10);
+        paramString2.append("");
+        paramString3.put("appid", paramString2.toString());
+        paramString2 = new StringBuilder();
+        paramString2.append("network=");
+        paramString2.append(paramString1);
+        paramString2.append('&');
+        paramString2.append("sdcard=");
+        if (!Environment.getExternalStorageState().equals("mounted")) {
+          break label717;
+        }
+        i = 1;
+        paramString2.append(i);
+        paramString2.append('&');
+        paramString2.append("wifi=");
+        paramString2.append(APNUtil.e(CommonDataAdapter.a().a()));
+        paramString3.put("deviceinfo", paramString2.toString());
+        paramString1 = new StringBuilder();
+        paramString1.append("current login uin=");
+        paramString1.append(CommonDataAdapter.a().a());
+        paramString1.append("");
+        paramString2 = paramString1.toString();
+        paramString1 = paramString2;
+        if (paramString9 != null)
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append(paramString2);
+          paramString1.append("&");
+          paramString1.append(paramString9);
+          paramString1.append("");
+          paramString1 = paramString1.toString();
+        }
+        paramString3.put("detail", paramString1);
+      }
+      finally {}
+      try
+      {
+        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper.getWritableDatabase();
+        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.insertOrThrow("newdata_report", null, paramString3);
+        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.close();
+        LogUtility.b("cgi_report_debug", "ReportDataModal addNewItem success");
+        return true;
+      }
+      catch (Exception paramString1)
+      {
+        continue;
+      }
+      LogUtility.e("cgi_report_debug", "ReportDataModal addNewItem failed");
+      return false;
+      label717:
+      int i = 0;
+    }
   }
   
   public ArrayList<reportItem> b(String paramString)
@@ -795,46 +803,100 @@ public class ReportDataModal
     }
   }
   
+  /* Error */
   public boolean b(String paramString)
   {
-    boolean bool = false;
-    try
-    {
-      LogUtility.b("cgi_report_debug", "ReportDataModal deleteNewItems start");
-      try
-      {
-        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper.getWritableDatabase();
-        paramString = "delete from newdata_report where appid=" + paramString + ";";
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          label75:
-          LogUtility.a(jdField_a_of_type_JavaLangString, "deleteNewItems>>>", paramString);
-        }
-      }
-    }
-    finally {}
-    try
-    {
-      this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.execSQL(paramString);
-      this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.close();
-      LogUtility.b("cgi_report_debug", "ReportDataModal deleteNewItems success");
-      bool = true;
-    }
-    catch (Exception paramString)
-    {
-      LogUtility.a(jdField_a_of_type_JavaLangString, "deleteNewItems>>>", paramString);
-      this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.close();
-      break label75;
-    }
-    return bool;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 38
+    //   4: ldc_w 344
+    //   7: invokestatic 46	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   10: aload_0
+    //   11: aload_0
+    //   12: getfield 33	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal$DataBaseHelper	Lcom/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper;
+    //   15: invokevirtual 246	com/tencent/open/business/cgireport/ReportDataModal$DataBaseHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   18: putfield 55	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   21: new 57	java/lang/StringBuilder
+    //   24: dup
+    //   25: invokespecial 58	java/lang/StringBuilder:<init>	()V
+    //   28: astore_2
+    //   29: aload_2
+    //   30: ldc_w 346
+    //   33: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: aload_2
+    //   38: aload_1
+    //   39: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: pop
+    //   43: aload_2
+    //   44: ldc_w 266
+    //   47: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: pop
+    //   51: aload_2
+    //   52: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: astore_1
+    //   56: aload_0
+    //   57: getfield 55	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   60: aload_1
+    //   61: invokevirtual 270	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
+    //   64: aload_0
+    //   65: getfield 55	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   68: invokevirtual 144	android/database/sqlite/SQLiteDatabase:close	()V
+    //   71: ldc 38
+    //   73: ldc_w 348
+    //   76: invokestatic 46	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: aload_0
+    //   80: monitorexit
+    //   81: iconst_1
+    //   82: ireturn
+    //   83: astore_1
+    //   84: getstatic 136	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   87: ldc_w 350
+    //   90: aload_1
+    //   91: invokestatic 143	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   94: aload_0
+    //   95: getfield 55	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   98: invokevirtual 144	android/database/sqlite/SQLiteDatabase:close	()V
+    //   101: aload_0
+    //   102: monitorexit
+    //   103: iconst_0
+    //   104: ireturn
+    //   105: astore_1
+    //   106: getstatic 136	com/tencent/open/business/cgireport/ReportDataModal:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   109: ldc_w 350
+    //   112: aload_1
+    //   113: invokestatic 143	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   116: aload_0
+    //   117: monitorexit
+    //   118: iconst_0
+    //   119: ireturn
+    //   120: astore_1
+    //   121: aload_0
+    //   122: monitorexit
+    //   123: aload_1
+    //   124: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	125	0	this	ReportDataModal
+    //   0	125	1	paramString	String
+    //   28	24	2	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   56	64	83	java/lang/Exception
+    //   10	21	105	java/lang/Exception
+    //   2	10	120	finally
+    //   10	21	120	finally
+    //   21	56	120	finally
+    //   56	64	120	finally
+    //   64	79	120	finally
+    //   84	101	120	finally
+    //   106	116	120	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.business.cgireport.ReportDataModal
  * JD-Core Version:    0.7.0.1
  */

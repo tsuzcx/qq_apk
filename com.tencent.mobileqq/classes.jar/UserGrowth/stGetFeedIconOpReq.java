@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class stGetFeedIconOpReq
   extends JceStruct
@@ -42,20 +43,23 @@ public final class stGetFeedIconOpReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.opInfo != null) {
-      paramJceOutputStream.write(this.opInfo, 0);
+    Object localObject = this.opInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.preOpInfos != null) {
-      paramJceOutputStream.write(this.preOpInfos, 1);
+    localObject = this.preOpInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.postOpInfos != null) {
-      paramJceOutputStream.write(this.postOpInfos, 2);
+    localObject = this.postOpInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stGetFeedIconOpReq
  * JD-Core Version:    0.7.0.1
  */

@@ -38,30 +38,35 @@ public class MemoryInfoEntry
       if (!TextUtils.isEmpty(paramObject.unionId)) {
         this.unionId = paramObject.unionId;
       }
-      if (paramObject.maxCollectionIndex != -1L) {
-        this.maxCollectionIndex = paramObject.maxCollectionIndex;
+      long l = paramObject.maxCollectionIndex;
+      if (l != -1L) {
+        this.maxCollectionIndex = l;
       }
-      if (paramObject.seq != -1L) {
-        this.seq = paramObject.seq;
+      l = paramObject.seq;
+      if (l != -1L) {
+        this.seq = l;
       }
-      if (paramObject.timeZone != -1) {
-        this.timeZone = paramObject.timeZone;
+      int i = paramObject.timeZone;
+      if (i != -1) {
+        this.timeZone = i;
       }
       if (!TextUtils.isEmpty(paramObject.cookie)) {
         this.cookie = paramObject.cookie;
       }
-      if (paramObject.isEnd != -1) {
-        this.isEnd = paramObject.isEnd;
+      i = paramObject.isEnd;
+      if (i != -1) {
+        this.isEnd = i;
       }
-      if (paramObject.isFriend != -1) {
-        this.isFriend = paramObject.isFriend;
+      i = paramObject.isFriend;
+      if (i != -1) {
+        this.isFriend = i;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.MemoryInfoEntry
  * JD-Core Version:    0.7.0.1
  */

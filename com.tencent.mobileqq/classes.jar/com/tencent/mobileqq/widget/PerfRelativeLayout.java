@@ -27,25 +27,35 @@ public class PerfRelativeLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.a != null) {
-      this.a.b();
+    paramCanvas = this.a;
+    if (paramCanvas != null) {
+      paramCanvas.b();
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("PerfRelativeLayout", 4, "dispatchDraw, " + this.a);
+    if (QLog.isDevelopLevel())
+    {
+      paramCanvas = new StringBuilder();
+      paramCanvas.append("dispatchDraw, ");
+      paramCanvas.append(this.a);
+      QLog.i("PerfRelativeLayout", 4, paramCanvas.toString());
     }
   }
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.a != null) {
-      this.a.b();
+    paramCanvas = this.a;
+    if (paramCanvas != null) {
+      paramCanvas.b();
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("PerfRelativeLayout", 4, "draw, " + this.a);
+    if (QLog.isDevelopLevel())
+    {
+      paramCanvas = new StringBuilder();
+      paramCanvas.append("draw, ");
+      paramCanvas.append(this.a);
+      QLog.i("PerfRelativeLayout", 4, paramCanvas.toString());
     }
   }
   
@@ -56,7 +66,7 @@ public class PerfRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PerfRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

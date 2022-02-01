@@ -16,12 +16,16 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.qwallet.utils.OSUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.qqpay.ui.R.drawable;
+import com.tencent.mobileqq.qqpay.ui.R.id;
+import com.tencent.mobileqq.qqpay.ui.R.layout;
+import com.tencent.mobileqq.qqpay.ui.R.string;
+import com.tencent.mobileqq.qqpay.ui.R.style;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class QWalletLoadingDialog
-  extends ReportDialog
+  extends Dialog
 {
   Animatable mAnimatedDrawale = null;
   protected boolean mBackupActivityCanLock = true;
@@ -38,121 +42,152 @@ public class QWalletLoadingDialog
   
   public QWalletLoadingDialog(Context paramContext, boolean paramBoolean)
   {
-    this(paramContext, 2131755845, paramBoolean);
+    this(paramContext, R.style.d, paramBoolean);
   }
   
   public void dismiss()
   {
     super.dismiss();
-    if ((this.mIsNeedOpenPatternLock) && ((this.mContext instanceof BaseActivity)))
+    if (this.mIsNeedOpenPatternLock)
     {
-      ((BaseActivity)this.mContext).setCanLock(this.mBackupActivityCanLock);
-      BaseActivity.isUnLockSuccess = true;
+      localObject = this.mContext;
+      if ((localObject instanceof QBaseActivity))
+      {
+        ((QBaseActivity)localObject).setCanLock(this.mBackupActivityCanLock);
+        QBaseActivity.isUnLockSuccess = true;
+      }
     }
-    if (this.mAnimatedDrawale != null) {
-      this.mAnimatedDrawale.stop();
+    Object localObject = this.mAnimatedDrawale;
+    if (localObject != null) {
+      ((Animatable)localObject).stop();
     }
   }
   
   protected void init(Context paramContext)
   {
-    Object localObject;
-    if ((this.mIsNeedOpenPatternLock) && ((paramContext instanceof BaseActivity)))
+    if ((this.mIsNeedOpenPatternLock) && ((paramContext instanceof QBaseActivity)))
     {
-      localObject = (BaseActivity)paramContext;
-      this.mBackupActivityCanLock = ((BaseActivity)localObject).getCanLock();
-      ((BaseActivity)localObject).setCanLock(false);
+      localObject = (QBaseActivity)paramContext;
+      this.mBackupActivityCanLock = ((QBaseActivity)localObject).getCanLock();
+      ((QBaseActivity)localObject).setCanLock(false);
     }
     super.requestWindowFeature(1);
     this.mContext = paramContext;
-    label342:
-    for (;;)
+    WindowManager.LayoutParams localLayoutParams1 = null;
+    localObject = localLayoutParams1;
+    try
     {
-      try
+      Window localWindow = getWindow();
+      if (localWindow != null)
       {
-        localObject = getWindow();
-        if ((localObject != null) && (ImmersiveUtils.isSupporImmersive() == 1))
+        localObject = localLayoutParams1;
+        if (ImmersiveUtils.isSupporImmersive() == 1)
         {
-          if ((Build.VERSION.SDK_INT >= 21) && (!OSUtils.isEMUI3_1()))
+          localObject = localLayoutParams1;
+          if (Build.VERSION.SDK_INT >= 21)
           {
-            if (Build.VERSION.SDK_INT >= 28)
+            localObject = localLayoutParams1;
+            if (!OSUtils.isEMUI3_1())
             {
-              localLayoutParams = ((Window)localObject).getAttributes();
-              if (localLayoutParams != null)
+              localObject = localLayoutParams1;
+              if (Build.VERSION.SDK_INT >= 28)
               {
-                localLayoutParams.layoutInDisplayCutoutMode = 1;
-                ((Window)localObject).setAttributes(localLayoutParams);
+                localObject = localLayoutParams1;
+                WindowManager.LayoutParams localLayoutParams2 = localWindow.getAttributes();
+                if (localLayoutParams2 != null)
+                {
+                  localObject = localLayoutParams1;
+                  localLayoutParams2.layoutInDisplayCutoutMode = 1;
+                  localObject = localLayoutParams1;
+                  localWindow.setAttributes(localLayoutParams2);
+                }
               }
+              localObject = localLayoutParams1;
+              getWindow().clearFlags(67108864);
+              localObject = localLayoutParams1;
+              getWindow().addFlags(-2147483648);
+              localObject = localLayoutParams1;
+              getWindow().setStatusBarColor(0);
+              localObject = localLayoutParams1;
+              getWindow().getDecorView().setSystemUiVisibility(1280);
+              break label187;
             }
-            getWindow().clearFlags(67108864);
-            getWindow().addFlags(-2147483648);
-            getWindow().setStatusBarColor(0);
-            getWindow().getDecorView().setSystemUiVisibility(1280);
           }
-        }
-        else {
-          paramContext = LayoutInflater.from(paramContext).inflate(2131562225, null);
+          localObject = localLayoutParams1;
+          getWindow().addFlags(4194304);
         }
       }
-      catch (Throwable paramContext)
+      label187:
+      localObject = localLayoutParams1;
+      paramContext = LayoutInflater.from(paramContext).inflate(R.layout.y, null);
+      localObject = paramContext;
+      setContentView(paramContext);
+      localObject = paramContext;
+      paramContext.findViewById(R.id.bX).getLayoutParams().height = ImmersiveUtils.getStatusBarHeight(this.mContext);
+      localObject = paramContext;
+      paramContext.setFitsSystemWindows(false);
+      if (localWindow != null)
       {
-        WindowManager.LayoutParams localLayoutParams;
-        paramContext = null;
+        localObject = paramContext;
+        localLayoutParams1 = localWindow.getAttributes();
+        localObject = paramContext;
+        localLayoutParams1.width = -1;
+        localObject = paramContext;
+        localLayoutParams1.height = -1;
+        localObject = paramContext;
+        localWindow.setAttributes(localLayoutParams1);
       }
-      try
-      {
-        setContentView(paramContext);
-        paramContext.findViewById(2131378435).getLayoutParams().height = ImmersiveUtils.getStatusBarHeight(this.mContext);
-        paramContext.setFitsSystemWindows(false);
-        localLayoutParams = ((Window)localObject).getAttributes();
-        localLayoutParams.width = -1;
-        localLayoutParams.height = -1;
-        ((Window)localObject).setAttributes(localLayoutParams);
-        setCanceledOnTouchOutside(false);
-        this.mCenterView = ((TextView)paramContext.findViewById(2131369534));
-        if (this.mCenterView != null)
-        {
-          this.mCenterView.setVisibility(0);
-          this.mCenterView.setText(2131717214);
-        }
-        paramContext = (ImageView)paramContext.findViewById(2131369507);
-        if (paramContext != null)
-        {
-          paramContext.setVisibility(0);
-          paramContext.setImageResource(2130847667);
-        }
-        paramContext = (ImageView)super.findViewById(2131374168);
-        localObject = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
-        ((TranslateAnimation)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
-        ((TranslateAnimation)localObject).setDuration(800L);
-        ((TranslateAnimation)localObject).setRepeatCount(-1);
-        paramContext.startAnimation((Animation)localObject);
-        super.setCancelable(false);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        break label342;
-      }
-      getWindow().addFlags(4194304);
+      localObject = paramContext;
+      setCanceledOnTouchOutside(false);
     }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        paramContext = (Context)localObject;
+      }
+    }
+    this.mCenterView = ((TextView)paramContext.findViewById(R.id.aw));
+    localObject = this.mCenterView;
+    if (localObject != null)
+    {
+      ((TextView)localObject).setVisibility(0);
+      this.mCenterView.setText(R.string.do);
+    }
+    paramContext = (ImageView)paramContext.findViewById(R.id.au);
+    if (paramContext != null)
+    {
+      paramContext.setVisibility(0);
+      paramContext.setImageResource(R.drawable.Y);
+    }
+    paramContext = (ImageView)super.findViewById(R.id.be);
+    localObject = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
+    ((TranslateAnimation)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
+    ((TranslateAnimation)localObject).setDuration(800L);
+    ((TranslateAnimation)localObject).setRepeatCount(-1);
+    paramContext.startAnimation((Animation)localObject);
+    super.setCancelable(false);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    this.mAnimatedDrawale = ((Animatable)this.mContext.getResources().getDrawable(2130839549));
-    if ((this.mAnimatedDrawale != null) && (this.mCenterView != null))
+    this.mAnimatedDrawale = ((Animatable)this.mContext.getResources().getDrawable(R.drawable.b));
+    if (this.mAnimatedDrawale != null)
     {
-      this.mCenterView.setCompoundDrawablePadding(10);
-      this.mCenterView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.mAnimatedDrawale, null, null, null);
-      this.mAnimatedDrawale.start();
+      TextView localTextView = this.mCenterView;
+      if (localTextView != null)
+      {
+        localTextView.setCompoundDrawablePadding(10);
+        this.mCenterView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.mAnimatedDrawale, null, null, null);
+        this.mAnimatedDrawale.start();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

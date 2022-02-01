@@ -18,19 +18,22 @@ class RecommendBannerItemView$1
       return false;
     }
     FeedbackSheetHelper.a(this.a.getContext(), RecommendBannerItemView.a(this.a), new RecommendBannerItemView.1.1(this), new RecommendBannerItemView.1.2(this));
-    if (RecommendBannerItemView.a(this.a)) {
-      VSReporter.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_press", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
-    }
-    for (;;)
+    if (RecommendBannerItemView.a(this.a))
     {
+      VSReporter.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_press", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
       return true;
-      VSReporter.a(RecommendBannerItemView.a(this.a).id.get(), "auth_page", "recom_remove", 0, 0, new String[] { "", RecommendBannerItemView.a(this.a) + "", RecommendBannerItemView.a(this.a).nick.get() });
     }
+    paramView = RecommendBannerItemView.a(this.a).id.get();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(RecommendBannerItemView.a(this.a));
+    localStringBuilder.append("");
+    VSReporter.a(paramView, "auth_page", "recom_remove", 0, 0, new String[] { "", localStringBuilder.toString(), RecommendBannerItemView.a(this.a).nick.get() });
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView.1
  * JD-Core Version:    0.7.0.1
  */

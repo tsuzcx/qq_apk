@@ -79,17 +79,21 @@ public final class b
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 0);
-    if (this.b != null) {
-      paramJceOutputStream.write(this.b, 1);
+    ArrayList localArrayList = this.b;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    localArrayList = this.c;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
-    if (this.d != null) {
-      paramJceOutputStream.write(this.d, 3);
+    localArrayList = this.d;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
-    if (this.e != null) {
-      paramJceOutputStream.write(this.e, 4);
+    localArrayList = this.e;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
     paramJceOutputStream.write(this.f, 5);
     paramJceOutputStream.write(this.g, 6);
@@ -99,7 +103,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.a.b
  * JD-Core Version:    0.7.0.1
  */

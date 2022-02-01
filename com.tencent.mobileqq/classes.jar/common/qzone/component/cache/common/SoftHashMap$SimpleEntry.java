@@ -24,13 +24,21 @@ class SoftHashMap$SimpleEntry<K, V>
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof Map.Entry)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof Map.Entry;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (Map.Entry)paramObject;
-    } while ((!a(this.a, paramObject.getKey())) || (!a(this.b, paramObject.getValue())));
-    return true;
+    }
+    paramObject = (Map.Entry)paramObject;
+    bool1 = bool2;
+    if (a(this.a, paramObject.getKey()))
+    {
+      bool1 = bool2;
+      if (a(this.b, paramObject.getValue())) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public K getKey()
@@ -45,23 +53,19 @@ class SoftHashMap$SimpleEntry<K, V>
   
   public int hashCode()
   {
+    Object localObject = this.a;
     int j = 0;
     int i;
-    if (this.a == null)
-    {
+    if (localObject == null) {
       i = 0;
-      if (this.b != null) {
-        break label33;
-      }
+    } else {
+      i = localObject.hashCode();
     }
-    for (;;)
-    {
-      return i ^ j;
-      i = this.a.hashCode();
-      break;
-      label33:
-      j = this.b.hashCode();
+    localObject = this.b;
+    if (localObject != null) {
+      j = localObject.hashCode();
     }
+    return i ^ j;
   }
   
   public V setValue(V paramV)
@@ -73,12 +77,16 @@ class SoftHashMap$SimpleEntry<K, V>
   
   public String toString()
   {
-    return this.a + "=" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     common.qzone.component.cache.common.SoftHashMap.SimpleEntry
  * JD-Core Version:    0.7.0.1
  */

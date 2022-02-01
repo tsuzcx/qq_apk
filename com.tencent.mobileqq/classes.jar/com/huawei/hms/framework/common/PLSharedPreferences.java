@@ -22,60 +22,60 @@ public class PLSharedPreferences
       return null;
     }
     Context localContext = paramContext;
-    SharedPreferences localSharedPreferences;
     if (Build.VERSION.SDK_INT >= 24)
     {
       localContext = paramContext.createDeviceProtectedStorageContext();
-      localSharedPreferences = localContext.getSharedPreferences("grs_move2DE_records", 0);
-      if (localSharedPreferences.getBoolean(paramString, false)) {
-        break label90;
+      SharedPreferences localSharedPreferences = localContext.getSharedPreferences("grs_move2DE_records", 0);
+      if (!localSharedPreferences.getBoolean(paramString, false)) {
+        if (!localContext.moveSharedPreferencesFrom(paramContext, paramString))
+        {
+          localContext = paramContext;
+        }
+        else
+        {
+          paramContext = localSharedPreferences.edit();
+          paramContext.putBoolean(paramString, true);
+          paramContext.apply();
+        }
       }
-      if (localContext.moveSharedPreferencesFrom(paramContext, paramString)) {
-        break label67;
-      }
-      localContext = paramContext;
     }
-    label67:
-    label90:
-    for (;;)
-    {
-      return localContext.getSharedPreferences(paramString, 0);
-      paramContext = localSharedPreferences.edit();
-      paramContext.putBoolean(paramString, true);
-      paramContext.apply();
-    }
+    return localContext.getSharedPreferences(paramString, 0);
   }
   
   public void clear()
   {
-    if (this.sp == null) {
+    SharedPreferences localSharedPreferences = this.sp;
+    if (localSharedPreferences == null) {
       return;
     }
-    this.sp.edit().clear().apply();
+    localSharedPreferences.edit().clear().apply();
   }
   
   public SharedPreferences.Editor edit()
   {
-    if (this.sp == null) {
+    SharedPreferences localSharedPreferences = this.sp;
+    if (localSharedPreferences == null) {
       return null;
     }
-    return this.sp.edit();
+    return localSharedPreferences.edit();
   }
   
   public Map<String, ?> getAll()
   {
-    if (this.sp == null) {
+    SharedPreferences localSharedPreferences = this.sp;
+    if (localSharedPreferences == null) {
       return null;
     }
-    return this.sp.getAll();
+    return localSharedPreferences.getAll();
   }
   
   public long getLong(String paramString, long paramLong)
   {
-    if (this.sp == null) {
+    SharedPreferences localSharedPreferences = this.sp;
+    if (localSharedPreferences == null) {
       return paramLong;
     }
-    return this.sp.getLong(paramString, paramLong);
+    return localSharedPreferences.getLong(paramString, paramLong);
   }
   
   public String getString(String paramString)
@@ -85,47 +85,52 @@ public class PLSharedPreferences
   
   public String getString(String paramString1, String paramString2)
   {
-    if (this.sp == null) {
+    SharedPreferences localSharedPreferences = this.sp;
+    if (localSharedPreferences == null) {
       return paramString2;
     }
-    return this.sp.getString(paramString1, paramString2);
+    return localSharedPreferences.getString(paramString1, paramString2);
   }
   
   public void putLong(String paramString, long paramLong)
   {
-    if (this.sp == null) {
+    SharedPreferences localSharedPreferences = this.sp;
+    if (localSharedPreferences == null) {
       return;
     }
-    this.sp.edit().putLong(paramString, paramLong).apply();
+    localSharedPreferences.edit().putLong(paramString, paramLong).apply();
   }
   
   public void putString(String paramString1, String paramString2)
   {
-    if (this.sp == null) {
+    SharedPreferences localSharedPreferences = this.sp;
+    if (localSharedPreferences == null) {
       return;
     }
-    this.sp.edit().putString(paramString1, paramString2).apply();
+    localSharedPreferences.edit().putString(paramString1, paramString2).apply();
   }
   
   public void remove(String paramString)
   {
-    if (this.sp == null) {
+    SharedPreferences localSharedPreferences = this.sp;
+    if (localSharedPreferences == null) {
       return;
     }
-    this.sp.edit().remove(paramString).apply();
+    localSharedPreferences.edit().remove(paramString).apply();
   }
   
   public void removeKeyValue(String paramString)
   {
-    if (this.sp == null) {
+    SharedPreferences localSharedPreferences = this.sp;
+    if (localSharedPreferences == null) {
       return;
     }
-    this.sp.edit().remove(paramString).apply();
+    localSharedPreferences.edit().remove(paramString).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.common.PLSharedPreferences
  * JD-Core Version:    0.7.0.1
  */

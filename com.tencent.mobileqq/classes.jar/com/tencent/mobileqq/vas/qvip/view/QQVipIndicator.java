@@ -3,15 +3,15 @@ package com.tencent.mobileqq.vas.qvip.view;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
 public class QQVipIndicator
   extends RadioGroup
@@ -56,46 +56,46 @@ public class QQVipIndicator
     localLayoutParams.bottomMargin = i;
     localLayoutParams.topMargin = i;
     local1.setButtonDrawable(null);
-    local1.setBackgroundResource(2130847298);
+    local1.setBackgroundResource(2130847167);
     local1.setGravity(17);
     local1.setText(String.valueOf(paramInt1));
     if (paramInt2 + 1 == paramInt1) {
       local1.setTextColor(-1);
-    }
-    for (;;)
-    {
-      local1.setTextSize(12.0F);
-      local1.setTextColor(-1);
-      local1.setLayoutParams(localLayoutParams);
-      local1.setClickable(false);
-      local1.setFocusable(false);
-      return local1;
+    } else {
       local1.setTextColor(Color.parseColor("#9B9B9B"));
     }
+    local1.setTextSize(12.0F);
+    local1.setTextColor(-1);
+    local1.setLayoutParams(localLayoutParams);
+    local1.setClickable(false);
+    local1.setFocusable(false);
+    return local1;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null) {}
-    do
-    {
+    Object localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    if (localObject == null) {
       return;
-      localObject = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter();
-    } while (localObject == null);
+    }
+    localObject = ((ViewPager)localObject).getAdapter();
+    if (localObject == null) {
+      return;
+    }
     int k = ((PagerAdapter)localObject).getCount();
     super.removeAllViews();
-    int j = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem();
+    int j = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.getCurrentItem();
     int i = 0;
     while (i < k)
     {
-      super.addView(a(i + 1, j));
       i += 1;
+      super.addView(a(i, j));
     }
     i = j;
     if (j >= super.getChildCount()) {
       i = super.getChildCount() - 1;
     }
-    Object localObject = (RadioButton)super.getChildAt(i);
+    localObject = (RadioButton)super.getChildAt(i);
     if (localObject != null) {
       ((RadioButton)localObject).setChecked(true);
     }
@@ -111,32 +111,37 @@ public class QQVipIndicator
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator$IPageListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator$IPageListener.a(paramInt1, paramFloat, paramInt2);
+    QQVipIndicator.IPageListener localIPageListener = this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator$IPageListener;
+    if (localIPageListener != null) {
+      localIPageListener.a(paramInt1, paramFloat, paramInt2);
     }
   }
   
   public void onPageSelected(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null) {
-      break label7;
-    }
-    label7:
-    while ((this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter() == null) || (super.getChildCount() <= paramInt)) {
+    Object localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    if (localObject == null) {
       return;
     }
-    if (paramInt >= super.getChildCount()) {}
-    for (int i = super.getChildCount() - 1;; i = paramInt)
-    {
-      RadioButton localRadioButton = (RadioButton)super.getChildAt(i);
-      if (localRadioButton != null) {
-        localRadioButton.setChecked(true);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator$IPageListener == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator$IPageListener.a(paramInt);
+    if (((ViewPager)localObject).getAdapter() == null) {
       return;
+    }
+    if (super.getChildCount() <= paramInt) {
+      return;
+    }
+    int i;
+    if (paramInt >= super.getChildCount()) {
+      i = super.getChildCount() - 1;
+    } else {
+      i = paramInt;
+    }
+    localObject = (RadioButton)super.getChildAt(i);
+    if (localObject != null) {
+      ((RadioButton)localObject).setChecked(true);
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator$IPageListener;
+    if (localObject != null) {
+      ((QQVipIndicator.IPageListener)localObject).a(paramInt);
     }
   }
   
@@ -159,15 +164,16 @@ public class QQVipIndicator
   
   public void setViewPager(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(this);
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = paramViewPager;
+    paramViewPager = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    if (paramViewPager != null) {
+      paramViewPager.setOnPageChangeListener(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.QQVipIndicator
  * JD-Core Version:    0.7.0.1
  */

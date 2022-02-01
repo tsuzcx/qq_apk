@@ -46,55 +46,58 @@ public class HttpGetAppInfoByIdRequest
     }
   }
   
-  public byte[] getBusiBuf()
+  protected byte[] getBusiBuf()
   {
     return this.req.toByteArray();
   }
   
-  public String getCmdName()
+  protected String getCmdName()
   {
     return "GetAppInfoById";
   }
   
-  public String getModule()
+  protected String getModule()
   {
     return "mini_app_info";
   }
   
-  public JSONObject onResponse(int paramInt, byte[] paramArrayOfByte)
+  protected JSONObject onResponse(int paramInt, byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
       return null;
     }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    Object localObject = new PROTOCAL.StQWebRsp();
     INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
     try
     {
-      localStQWebRsp.mergeFrom(WupUtil.b(paramArrayOfByte));
-      localStGetAppInfoByIdRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      QLog.d("GetAppInfoByIdRequest", 1, "[miniapp-http].onResponse, retCode: " + localStQWebRsp.retCode.get() + ", errMsg: " + localStQWebRsp.errMsg.get().toStringUtf8());
-      if (localStGetAppInfoByIdRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("mini_app_info_data", MiniAppInfo.from(localStGetAppInfoByIdRsp.appInfo));
-        paramArrayOfByte.put("mini_app_info_pb_data", localStGetAppInfoByIdRsp.appInfo.toByteArray());
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
-      }
-      QLog.e("GetAppInfoByIdRequest", 1, "onResponse fail.rsp = null");
-      return null;
+      ((PROTOCAL.StQWebRsp)localObject).mergeFrom(WupUtil.b(paramArrayOfByte));
+      localStGetAppInfoByIdRsp.mergeFrom(((PROTOCAL.StQWebRsp)localObject).busiBuff.get().toByteArray());
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("[miniapp-http].onResponse, retCode: ");
+      paramArrayOfByte.append(((PROTOCAL.StQWebRsp)localObject).retCode.get());
+      paramArrayOfByte.append(", errMsg: ");
+      paramArrayOfByte.append(((PROTOCAL.StQWebRsp)localObject).errMsg.get().toStringUtf8());
+      QLog.d("GetAppInfoByIdRequest", 1, paramArrayOfByte.toString());
+      paramArrayOfByte = new JSONObject();
+      paramArrayOfByte.put("mini_app_info_data", MiniAppInfo.from(localStGetAppInfoByIdRsp.appInfo));
+      paramArrayOfByte.put("mini_app_info_pb_data", localStGetAppInfoByIdRsp.appInfo.toByteArray());
+      paramArrayOfByte.put("retCode", ((PROTOCAL.StQWebRsp)localObject).retCode.get());
+      paramArrayOfByte.put("errMsg", ((PROTOCAL.StQWebRsp)localObject).errMsg.get().toStringUtf8());
+      return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      QLog.e("GetAppInfoByIdRequest", 1, "onResponse fail." + Log.getStackTraceString(paramArrayOfByte));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse fail.");
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramArrayOfByte));
+      QLog.e("GetAppInfoByIdRequest", 1, ((StringBuilder)localObject).toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.network.http.httpRequest.HttpGetAppInfoByIdRequest
  * JD-Core Version:    0.7.0.1
  */

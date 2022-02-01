@@ -28,53 +28,59 @@ public class e$d
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    if (this.f == 0) {
+    int i = this.f;
+    if (i == 0)
+    {
       if (paramInt >= 10)
       {
         this.g = SystemClock.uptimeMillis();
         this.f = paramInt;
       }
     }
-    do
+    else if ((i > 0) && (paramInt > i))
     {
-      do
+      this.f = paramInt;
+      this.h += 1;
+      if ((this.g > 0L) && (this.h >= 5) && (Math.abs(SystemClock.uptimeMillis() - this.g) > 300000L) && (!this.e))
       {
-        return;
-        if ((this.f <= 0) || (paramInt <= this.f)) {
-          break;
+        this.e = true;
+        String str = MsfSdkUtils.getThreadStackString("MSF-Receiver");
+        a();
+        a("queuesize", String.valueOf(paramInt));
+        a("time", "5");
+        a("uin", paramString2);
+        a("cmd", paramString1);
+        if (MsfServiceSdk.get().getProxy() != null) {
+          paramString1 = Boolean.valueOf(MsfServiceSdk.get().getProxy().serviceConnected());
+        } else {
+          paramString1 = "false";
         }
-        this.f = paramInt;
-        this.h += 1;
-      } while ((this.g <= 0L) || (this.h < 5) || (Math.abs(SystemClock.uptimeMillis() - this.g) <= 300000L) || (this.e));
-      this.e = true;
-      String str = MsfSdkUtils.getThreadStackString("MSF-Receiver");
-      a();
-      a("queuesize", String.valueOf(paramInt));
-      a("time", "5");
-      a("uin", paramString2);
-      a("cmd", paramString1);
-      if (MsfServiceSdk.get().getProxy() != null) {}
-      for (paramString1 = Boolean.valueOf(MsfServiceSdk.get().getProxy().serviceConnected());; paramString1 = "false")
-      {
         a("binder", String.valueOf(paramString1));
         a("stack", str);
-        QLog.w("EventMsfReceiverHeld", 1, "MSF-Receiver held 5min " + BaseApplication.gMsfReceiverStarted);
-        a.a(new b("MSF-Receiver Held " + BaseApplication.gMsfReceiverStarted), "MSFReceiverHeldCatchedException", "MSF-Receiver线程卡住5分钟");
-        if ((MsfCore.sCore == null) || (MsfCore.sCore.statReporter == null)) {
-          break;
+        paramString1 = new StringBuilder();
+        paramString1.append("MSF-Receiver held 5min ");
+        paramString1.append(BaseApplication.gMsfReceiverStarted);
+        QLog.w("EventMsfReceiverHeld", 1, paramString1.toString());
+        paramString1 = new StringBuilder();
+        paramString1.append("MSF-Receiver Held ");
+        paramString1.append(BaseApplication.gMsfReceiverStarted);
+        a.a(new b(paramString1.toString()), "MSFReceiverHeldCatchedException", "MSF-Receiver线程卡住5分钟");
+        if ((MsfCore.sCore != null) && (MsfCore.sCore.statReporter != null)) {
+          MsfCore.sCore.statReporter.a("msf.sdk.MsfReceiverHeld", true, SystemClock.elapsedRealtime() - this.g, 0L, new HashMap(), false, false);
         }
-        MsfCore.sCore.statReporter.a("msf.sdk.MsfReceiverHeld", true, SystemClock.elapsedRealtime() - this.g, 0L, new HashMap(), false, false);
-        return;
       }
-    } while (paramInt > this.f);
-    this.f = 0;
-    this.g = 0L;
-    this.h = 0;
+    }
+    else if (paramInt <= this.f)
+    {
+      this.f = 0;
+      this.g = 0L;
+      this.h = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.b.e.d
  * JD-Core Version:    0.7.0.1
  */

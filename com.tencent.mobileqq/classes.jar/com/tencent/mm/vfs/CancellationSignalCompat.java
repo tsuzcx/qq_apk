@@ -40,18 +40,17 @@ public class CancellationSignalCompat
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      if (this.signal.isCanceled()) {
-        throw new OperationCanceledException();
+      if (!this.signal.isCanceled()) {
+        return;
       }
+      throw new OperationCanceledException();
     }
-    else {
-      this.signalBeforeJB.throwIfCanceled();
-    }
+    this.signalBeforeJB.throwIfCanceled();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.CancellationSignalCompat
  * JD-Core Version:    0.7.0.1
  */

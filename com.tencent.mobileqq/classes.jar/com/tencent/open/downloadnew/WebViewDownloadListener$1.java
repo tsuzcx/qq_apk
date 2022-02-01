@@ -15,7 +15,10 @@ class WebViewDownloadListener$1
     if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (CallBackEvent.a().a())) {
       try
       {
-        LogUtility.a("WebViewDownloadListener", "wb.loadUrl(loadJs):" + this.jdField_a_of_type_JavaLangString);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("wb.loadUrl(loadJs):");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        LogUtility.a("WebViewDownloadListener", localStringBuilder.toString());
         if (Build.VERSION.SDK_INT < 19)
         {
           this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
@@ -33,7 +36,7 @@ class WebViewDownloadListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.WebViewDownloadListener.1
  * JD-Core Version:    0.7.0.1
  */

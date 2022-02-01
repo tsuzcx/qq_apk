@@ -68,13 +68,14 @@ public class LineLayer
     int[] tmp9_5 = tmp5_4;
     tmp9_5[1] = 0;
     tmp9_5;
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject == null) {
       return arrayOfInt;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      PathDesc localPathDesc = (PathDesc)localIterator.next();
+      PathDesc localPathDesc = (PathDesc)((Iterator)localObject).next();
       arrayOfInt[0] += 1;
     }
     return arrayOfInt;
@@ -84,9 +85,10 @@ public class LineLayer
   {
     this.i += 1;
     this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.i));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob != null)
+    LineLayer.LoadTempFileJob localLoadTempFileJob = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob;
+    if (localLoadTempFileJob != null)
     {
-      ThreadManager.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob);
+      ThreadManager.remove(localLoadTempFileJob);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob = new LineLayer.LoadTempFileJob(this, this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaUtilMap, this.i, this);
@@ -95,50 +97,53 @@ public class LineLayer
   
   private void f()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      g();
-      return;
-    }
-    if (!c()) {
-      d();
-    }
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList.size() - 1 > this.e)
-    {
-      j = this.e;
-      while (j < this.jdField_a_of_type_JavaUtilList.size() - 1)
+      if (!c()) {
+        d();
+      }
+      int k = this.jdField_a_of_type_JavaUtilList.size();
+      int j = this.e;
+      if (k - 1 > j)
       {
-        a(this.jdField_a_of_type_AndroidGraphicsCanvas, (PathDesc)this.jdField_a_of_type_JavaUtilList.get(j), false);
-        j += 1;
-      }
-      this.f = 0;
-      this.e = (this.jdField_a_of_type_JavaUtilList.size() - 1);
-    }
-    for (;;)
-    {
-      PathDesc localPathDesc = (PathDesc)this.jdField_a_of_type_JavaUtilList.get(this.e);
-      j = localPathDesc.a();
-      if (j <= this.f) {
-        break;
-      }
-      localPathDesc.a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.f, j);
-      this.f = j;
-      if (this.f != 1) {
-        break;
-      }
-      this.f = 0;
-      return;
-      if (this.e > this.jdField_a_of_type_JavaUtilList.size() - 1) {
+        while (j < this.jdField_a_of_type_JavaUtilList.size() - 1)
+        {
+          a(this.jdField_a_of_type_AndroidGraphicsCanvas, (PathDesc)this.jdField_a_of_type_JavaUtilList.get(j), false);
+          j += 1;
+        }
+        this.f = 0;
         this.e = (this.jdField_a_of_type_JavaUtilList.size() - 1);
       }
+      else if (j > this.jdField_a_of_type_JavaUtilList.size() - 1)
+      {
+        this.e = (this.jdField_a_of_type_JavaUtilList.size() - 1);
+      }
+      localObject = (PathDesc)this.jdField_a_of_type_JavaUtilList.get(this.e);
+      j = ((PathDesc)localObject).a();
+      k = this.f;
+      if (j > k)
+      {
+        ((PathDesc)localObject).a(this.jdField_a_of_type_AndroidGraphicsCanvas, k, j);
+        this.f = j;
+        if (this.f == 1) {
+          this.f = 0;
+        }
+      }
+      return;
     }
+    g();
   }
   
   private void g()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsCanvas != null) && (this.jdField_a_of_type_AndroidGraphicsPaint != null)) {
-      this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_a_of_type_AndroidGraphicsPaint);
+    Canvas localCanvas = this.jdField_a_of_type_AndroidGraphicsCanvas;
+    if (localCanvas != null)
+    {
+      Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+      if (localPaint != null) {
+        localCanvas.drawPaint(localPaint);
+      }
     }
     this.e = 0;
     this.f = 0;
@@ -188,58 +193,98 @@ public class LineLayer
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob = null;
     Object localObject = (Integer)this.jdField_c_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt1));
-    if (localObject == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("LineLayer", 2, "undo result, seq not exist:" + paramInt1 + "-" + paramInt2 + "-" + paramInt3);
-      }
-    }
-    do
+    if (localObject == null)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          return;
-          if (paramInt3 == ((Integer)localObject).intValue()) {
-            break;
-          }
-          this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(paramInt1), localObject);
-        } while (!QLog.isColorLevel());
-        QLog.d("LineLayer", 2, "undo result, seq not match:" + paramInt1 + "-" + paramInt2 + "-" + paramInt3 + "-" + ((Integer)localObject).intValue());
-        return;
-        if (paramInt1 == this.jdField_a_of_type_JavaUtilList.size()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("LineLayer", 2, "undo result, pathsize not match:" + paramInt1 + "-" + paramInt2 + "-" + paramInt3 + "-" + this.jdField_a_of_type_JavaUtilList.size());
+        paramBitmap = new StringBuilder();
+        paramBitmap.append("undo result, seq not exist:");
+        paramBitmap.append(paramInt1);
+        paramBitmap.append("-");
+        paramBitmap.append(paramInt2);
+        paramBitmap.append("-");
+        paramBitmap.append(paramInt3);
+        QLog.d("LineLayer", 2, paramBitmap.toString());
+      }
       return;
-      if ((paramInt2 != 0) && (paramBitmap != null)) {
-        break;
-      }
-      g();
-      super.b();
-    } while (!QLog.isColorLevel());
-    QLog.d("LineLayer", 2, "undo result, no cache:" + paramInt1 + "-" + paramInt2 + "-" + paramInt3);
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("LineLayer", 2, "undo result, use cache:" + paramInt1 + "-" + paramInt2);
     }
-    localObject = new Paint();
-    ((Paint)localObject).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, (Paint)localObject);
-    this.e = (paramInt2 - 1);
-    paramBitmap = (PathDesc)this.jdField_a_of_type_JavaUtilList.get(this.e);
-    if (paramBitmap != null)
+    if (paramInt3 != ((Integer)localObject).intValue())
     {
-      this.f = paramBitmap.a();
-      if (this.f == 1) {
-        this.f = 0;
+      this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(paramInt1), localObject);
+      if (QLog.isColorLevel())
+      {
+        paramBitmap = new StringBuilder();
+        paramBitmap.append("undo result, seq not match:");
+        paramBitmap.append(paramInt1);
+        paramBitmap.append("-");
+        paramBitmap.append(paramInt2);
+        paramBitmap.append("-");
+        paramBitmap.append(paramInt3);
+        paramBitmap.append("-");
+        paramBitmap.append(((Integer)localObject).intValue());
+        QLog.d("LineLayer", 2, paramBitmap.toString());
       }
+      return;
     }
-    if (paramInt2 < this.jdField_a_of_type_JavaUtilList.size()) {
-      f();
+    if (paramInt1 != this.jdField_a_of_type_JavaUtilList.size())
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBitmap = new StringBuilder();
+        paramBitmap.append("undo result, pathsize not match:");
+        paramBitmap.append(paramInt1);
+        paramBitmap.append("-");
+        paramBitmap.append(paramInt2);
+        paramBitmap.append("-");
+        paramBitmap.append(paramInt3);
+        paramBitmap.append("-");
+        paramBitmap.append(this.jdField_a_of_type_JavaUtilList.size());
+        QLog.d("LineLayer", 2, paramBitmap.toString());
+      }
+      return;
     }
+    if ((paramInt2 != 0) && (paramBitmap != null))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("undo result, use cache:");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append("-");
+        ((StringBuilder)localObject).append(paramInt2);
+        QLog.d("LineLayer", 2, ((StringBuilder)localObject).toString());
+      }
+      localObject = new Paint();
+      ((Paint)localObject).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+      this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, (Paint)localObject);
+      this.e = (paramInt2 - 1);
+      paramBitmap = (PathDesc)this.jdField_a_of_type_JavaUtilList.get(this.e);
+      if (paramBitmap != null)
+      {
+        this.f = paramBitmap.a();
+        if (this.f == 1) {
+          this.f = 0;
+        }
+      }
+      if (paramInt2 < this.jdField_a_of_type_JavaUtilList.size()) {
+        f();
+      }
+      super.b();
+      return;
+    }
+    g();
     super.b();
+    if (QLog.isColorLevel())
+    {
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("undo result, no cache:");
+      paramBitmap.append(paramInt1);
+      paramBitmap.append("-");
+      paramBitmap.append(paramInt2);
+      paramBitmap.append("-");
+      paramBitmap.append(paramInt3);
+      QLog.d("LineLayer", 2, paramBitmap.toString());
+    }
   }
   
   public void a(LineLayer.LineLayerListener paramLineLayerListener)
@@ -258,9 +303,10 @@ public class LineLayer
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidGraphicsCanvas = null;
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      if (localBitmap != null)
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        localBitmap.recycle();
         this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       }
     }
@@ -268,39 +314,57 @@ public class LineLayer
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
   {
-    Integer localInteger = (Integer)this.jdField_b_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt1));
-    if (localInteger == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("LineLayer", 2, "save result, seq not exist:" + paramInt1 + "-" + paramInt2);
-      }
-    }
-    do
+    Object localObject = (Integer)this.jdField_b_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt1));
+    if (localObject == null)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        return;
-        if (paramInt2 == localInteger.intValue()) {
-          break;
-        }
-        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt1), localInteger);
-      } while (!QLog.isColorLevel());
-      QLog.d("LineLayer", 2, "save result, seq not match:" + paramInt1 + "-" + paramInt2 + "-" + localInteger.intValue());
-      return;
-      if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt1), paramString);
+        paramString = new StringBuilder();
+        paramString.append("save result, seq not exist:");
+        paramString.append(paramInt1);
+        paramString.append("-");
+        paramString.append(paramInt2);
+        QLog.d("LineLayer", 2, paramString.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("LineLayer", 2, "save result, add cache:" + paramInt1 + "-" + paramString + " : " + this.jdField_a_of_type_JavaUtilMap.size());
+      return;
+    }
+    if (paramInt2 != ((Integer)localObject).intValue())
+    {
+      this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt1), localObject);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("save result, seq not match:");
+        paramString.append(paramInt1);
+        paramString.append("-");
+        paramString.append(paramInt2);
+        paramString.append("-");
+        paramString.append(((Integer)localObject).intValue());
+        QLog.d("LineLayer", 2, paramString.toString());
+      }
+      return;
+    }
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt1), paramString);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("save result, add cache:");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("-");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" : ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilMap.size());
+      QLog.d("LineLayer", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   public boolean a(Canvas paramCanvas)
   {
-    boolean bool = false;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
+    for (boolean bool = false; localIterator.hasNext(); bool = true) {
       a(paramCanvas, new PathDesc((PathDesc)localIterator.next()), true);
-      bool = true;
     }
     return bool;
   }
@@ -308,8 +372,7 @@ public class LineLayer
   public int b()
   {
     int[] arrayOfInt = a();
-    int j = arrayOfInt[0];
-    return arrayOfInt[1] + j;
+    return arrayOfInt[0] + arrayOfInt[1];
   }
   
   public void b(int paramInt)
@@ -336,12 +399,14 @@ public class LineLayer
   
   public boolean b(MotionEvent paramMotionEvent)
   {
-    int m = 0;
-    if (this.h > 10000)
+    int j = this.h;
+    int k = 0;
+    if (j > 10000)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener != null)
+      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener;
+      if (paramMotionEvent != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener.a(2, 10000);
+        paramMotionEvent.a(2, 10000);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener.a();
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = null;
@@ -349,104 +414,111 @@ public class LineLayer
     }
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    j = paramMotionEvent.getAction();
+    if (j != 0)
     {
-    default: 
-    case 0: 
-    case 2: 
-      for (;;)
+      if (j != 1)
       {
-        return true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = new PathDesc(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam, a(), null, this.g);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a();
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a(f1, f2);
-        this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc);
-        this.h = c();
-        continue;
+        if (j != 2) {
+          return true;
+        }
         long l1 = System.currentTimeMillis();
         long l2 = this.jdField_a_of_type_Long;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc != null)
+        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc;
+        if (paramMotionEvent != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a(f1, f2, l1 - l2);
+          paramMotionEvent.a(f1, f2, l1 - l2);
           this.h += 1;
+          return true;
+        }
+      }
+      else
+      {
+        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.a();
+        }
+        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc;
+        if (paramMotionEvent != null)
+        {
+          paramMotionEvent.a(false);
+          f();
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a(true);
+          this.f = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a();
+          if (this.f == 1) {
+            this.f = 0;
+          }
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = null;
+        this.h = c();
+        paramMotionEvent = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+        j = 0;
+        while (paramMotionEvent.hasNext())
+        {
+          m = ((Integer)paramMotionEvent.next()).intValue();
+          if (j < m) {
+            j = m;
+          }
+        }
+        paramMotionEvent = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+        while (paramMotionEvent.hasNext())
+        {
+          m = ((Integer)paramMotionEvent.next()).intValue();
+          if (j < m) {
+            j = m;
+          }
+        }
+        int m = 0;
+        while (k < j)
+        {
+          m += ((PathDesc)this.jdField_a_of_type_JavaUtilList.get(k)).b();
+          k += 1;
+        }
+        if (m + 100 < this.h)
+        {
+          f();
+          this.i += 1;
+          this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.i));
+          ThreadManager.post(new LineLayer.SaveTempFileJob(this, this.jdField_a_of_type_JavaUtilList.size(), this.i, this.jdField_a_of_type_AndroidGraphicsBitmap, this), 5, null, true);
+          return true;
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener.a();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc != null)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a(false);
-      f();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a(true);
-      this.f = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a();
-      if (this.f == 1) {
-        this.f = 0;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = new PathDesc(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam, a(), null, this.g);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a();
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a(f1, f2);
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc);
+      this.h = c();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = null;
-    this.h = c();
-    paramMotionEvent = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    int j = 0;
-    label306:
-    int k;
-    if (paramMotionEvent.hasNext())
-    {
-      k = ((Integer)paramMotionEvent.next()).intValue();
-      if (j >= k) {
-        break label530;
-      }
-      j = k;
-    }
-    label530:
-    for (;;)
-    {
-      break label306;
-      paramMotionEvent = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
-      while (paramMotionEvent.hasNext())
-      {
-        k = ((Integer)paramMotionEvent.next()).intValue();
-        if (j < k) {
-          j = k;
-        }
-      }
-      int n;
-      for (k = 0; m < j; k = n + k)
-      {
-        n = ((PathDesc)this.jdField_a_of_type_JavaUtilList.get(m)).b();
-        m += 1;
-      }
-      if (k + 100 >= this.h) {
-        break;
-      }
-      f();
-      this.i += 1;
-      this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.i));
-      ThreadManager.post(new LineLayer.SaveTempFileJob(this, this.jdField_a_of_type_JavaUtilList.size(), this.i, this.jdField_a_of_type_AndroidGraphicsBitmap, this), 5, null, true);
-      break;
-    }
+    return true;
   }
   
   public int c()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    int j = 0;
+    if (localObject == null) {
       return 0;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int j = 0; localIterator.hasNext(); j = ((PathDesc)localIterator.next()).b() + j) {}
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      j += ((PathDesc)((Iterator)localObject).next()).b();
+    }
     return j;
   }
   
   public void c()
   {
     super.c();
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((PathDesc)localIterator.next()).a();
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PathDesc)((Iterator)localObject).next()).a();
       }
       this.jdField_a_of_type_JavaUtilList.clear();
     }
@@ -456,9 +528,10 @@ public class LineLayer
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob = null;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = null;
     this.jdField_a_of_type_AndroidGraphicsCanvas = null;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      ((Bitmap)localObject).recycle();
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
     this.d = 0;
@@ -470,8 +543,9 @@ public class LineLayer
   
   public void c(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (paramCanvas != null)) {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, null);
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (paramCanvas != null)) {
+      paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
     }
   }
   
@@ -485,12 +559,14 @@ public class LineLayer
     if (QLog.isColorLevel()) {
       QLog.d("LineLayer", 2, "undo begin");
     }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (!localList.isEmpty()))
     {
       this.jdField_b_of_type_JavaUtilMap.remove(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
       this.jdField_c_of_type_JavaUtilMap.remove(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
       this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
-      this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+      localList = this.jdField_a_of_type_JavaUtilList;
+      localList.remove(localList.size() - 1);
       if (this.jdField_a_of_type_JavaUtilList.size() == 0)
       {
         this.h = 0;
@@ -500,46 +576,47 @@ public class LineLayer
         this.jdField_a_of_type_JavaUtilMap.clear();
         g();
       }
-    }
-    else
-    {
-      if (this.h >= 100) {
-        break label242;
+      else
+      {
+        this.h = c();
       }
+    }
+    if (this.h < 100)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("LineLayer", 2, "undo draw directly");
       }
       g();
       super.b();
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LineLayer", 2, "undo end");
-      }
-      return;
-      this.h = c();
-      break;
-      label242:
       e();
       if (QLog.isColorLevel()) {
         QLog.d("LineLayer", 2, "undo try use cache");
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("LineLayer", 2, "undo end");
+    }
   }
   
   public boolean d()
   {
-    boolean bool = false;
     int j = this.jdField_a_of_type_AndroidGraphicsRect.width();
     int k = this.jdField_a_of_type_AndroidGraphicsRect.height();
-    if ((j <= 0) || (k <= 0)) {
-      return false;
-    }
-    try
+    if (j > 0)
     {
-      if ((this.jdField_c_of_type_Int != j) || (this.d != k) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsCanvas == null))
+      if (k <= 0) {
+        return false;
+      }
+      try
       {
+        if ((this.jdField_c_of_type_Int == j) && (this.d == k) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+          if (this.jdField_a_of_type_AndroidGraphicsCanvas != null) {
+            break label269;
+          }
+        }
         if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
         {
           this.jdField_a_of_type_AndroidGraphicsCanvas = null;
@@ -555,43 +632,53 @@ public class LineLayer
         }
         this.e = 0;
         this.f = 0;
-        bool = true;
+        return true;
       }
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      catch (OutOfMemoryError localOutOfMemoryError)
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("checkcache oom:");
+          localStringBuilder.append(localOutOfMemoryError.toString());
+          QLog.e("LineLayer", 2, localStringBuilder.toString());
+        }
+        this.jdField_c_of_type_Int = 0;
+        this.d = 0;
+        this.jdField_a_of_type_AndroidGraphicsCanvas = null;
+        this.e = 0;
+        this.f = 0;
         this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        return true;
       }
-      this.jdField_c_of_type_Int = 0;
-      this.d = 0;
-      this.jdField_a_of_type_AndroidGraphicsCanvas = null;
-      this.e = 0;
-      this.f = 0;
-      return true;
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        if (localBitmap != null)
+        {
+          localBitmap.recycle();
+          this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        }
+        this.jdField_c_of_type_Int = 0;
+        this.d = 0;
+        this.jdField_a_of_type_AndroidGraphicsCanvas = null;
+        this.e = 0;
+        this.f = 0;
+        return true;
+      }
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("LineLayer", 2, "checkcache oom:" + localOutOfMemoryError.toString());
-      }
-      this.jdField_c_of_type_Int = 0;
-      this.d = 0;
-      this.jdField_a_of_type_AndroidGraphicsCanvas = null;
-      this.e = 0;
-      this.f = 0;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      return false;
     }
-    return true;
+    label269:
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LineLayer
  * JD-Core Version:    0.7.0.1
  */

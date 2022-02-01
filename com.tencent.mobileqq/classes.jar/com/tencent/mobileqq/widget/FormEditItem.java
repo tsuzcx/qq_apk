@@ -57,35 +57,31 @@ public class FormEditItem
   public FormEditItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int i1 = getResources().getDimensionPixelSize(2131298280);
-    int i2 = getResources().getDimensionPixelSize(2131296786);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.G);
-    this.i = paramAttributeSet.getDimensionPixelSize(R.styleable.e, i1);
-    this.h = paramAttributeSet.getDimensionPixelSize(R.styleable.d, i2);
-    this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(R.styleable.k);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(R.styleable.h);
-    this.j = paramAttributeSet.getDimensionPixelSize(R.styleable.j, 0);
-    this.k = paramAttributeSet.getDimensionPixelSize(R.styleable.i, 0);
+    int i1 = getResources().getDimensionPixelSize(2131298275);
+    int i2 = getResources().getDimensionPixelSize(2131296766);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_U_of_type_ArrayOfInt);
+    this.i = paramAttributeSet.getDimensionPixelSize(R.styleable.P, i1);
+    this.h = paramAttributeSet.getDimensionPixelSize(R.styleable.O, i2);
+    this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(R.styleable.V);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(R.styleable.S);
+    this.j = paramAttributeSet.getDimensionPixelSize(R.styleable.jdField_U_of_type_Int, 0);
+    this.k = paramAttributeSet.getDimensionPixelSize(R.styleable.T, 0);
     this.k = Math.min(this.h, this.k);
-    this.jdField_b_of_type_JavaLangCharSequence = paramAttributeSet.getString(R.styleable.r);
-    this.g = paramAttributeSet.getInt(R.styleable.s, 0);
-    this.jdField_a_of_type_Int = paramAttributeSet.getInt(R.styleable.jdField_c_of_type_Int, -1);
-    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.n, true);
-    i1 = 300;
-    this.jdField_c_of_type_JavaLangCharSequence = paramAttributeSet.getString(R.styleable.f);
+    this.jdField_b_of_type_JavaLangCharSequence = paramAttributeSet.getString(R.styleable.ac);
+    this.g = paramAttributeSet.getInt(R.styleable.ad, 0);
+    this.jdField_a_of_type_Int = paramAttributeSet.getInt(R.styleable.N, -1);
+    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.Y, true);
+    this.jdField_c_of_type_JavaLangCharSequence = paramAttributeSet.getString(R.styleable.Q);
     try
     {
-      i2 = paramContext.getResources().getDimensionPixelSize(2131296779);
-      i1 = i2;
+      i1 = paramContext.getResources().getDimensionPixelSize(2131296759);
     }
     catch (Resources.NotFoundException paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
+      paramContext.printStackTrace();
+      i1 = 300;
     }
-    this.n = paramAttributeSet.getDimensionPixelSize(R.styleable.g, i1);
+    this.n = paramAttributeSet.getDimensionPixelSize(R.styleable.R, i1);
     paramAttributeSet.recycle();
     QQUIDelegate.a();
     this.jdField_b_of_type_Boolean = QQUIDelegate.a();
@@ -100,9 +96,9 @@ public class FormEditItem
     setFocusable(true);
     setClickable(true);
     this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131367393);
+    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131367175);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(FormResHelper.a(getResources(), this.g));
-    int i1 = getContext().getResources().getDimensionPixelSize(2131296784);
+    int i1 = getContext().getResources().getDimensionPixelSize(2131296764);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, i1);
     this.jdField_b_of_type_AndroidWidgetTextView.setGravity(19);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
@@ -114,60 +110,62 @@ public class FormEditItem
       this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
       this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
       this.jdField_b_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
-      addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetEditText = new EditText(getContext());
-      this.jdField_a_of_type_AndroidWidgetEditText.setId(2131367390);
-      this.jdField_a_of_type_AndroidWidgetEditText.setMinWidth(this.n);
-      i1 = getContext().getResources().getDimensionPixelSize(2131296784);
-      this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(0, i1);
-      this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(-16777216);
-      this.jdField_a_of_type_AndroidWidgetEditText.setGravity(21);
-      this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundDrawable(null);
-      localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
-      localLayoutParams.leftMargin = this.i;
-      localLayoutParams.addRule(0, 2131367393);
-      localLayoutParams.addRule(15);
-      addView(this.jdField_a_of_type_AndroidWidgetEditText, localLayoutParams);
-      if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangCharSequence))
-      {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHintTextColor(-7829368);
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_c_of_type_JavaLangCharSequence);
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367391);
-      i1 = getContext().getResources().getDimensionPixelSize(2131296784);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167033));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, i1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
-      setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.j, this.k);
-      localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
-      localLayoutParams.leftMargin = this.i;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label554;
-      }
+    }
+    else
+    {
+      i1 = this.i;
+      localLayoutParams.topMargin = i1;
+      localLayoutParams.bottomMargin = i1;
+    }
+    addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetEditText = new EditText(getContext());
+    this.jdField_a_of_type_AndroidWidgetEditText.setId(2131367172);
+    this.jdField_a_of_type_AndroidWidgetEditText.setMinWidth(this.n);
+    i1 = getContext().getResources().getDimensionPixelSize(2131296764);
+    this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(0, i1);
+    this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(-16777216);
+    this.jdField_a_of_type_AndroidWidgetEditText.setGravity(21);
+    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundDrawable(null);
+    localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
+    localLayoutParams.leftMargin = this.i;
+    localLayoutParams.addRule(0, 2131367175);
+    localLayoutParams.addRule(15);
+    addView(this.jdField_a_of_type_AndroidWidgetEditText, localLayoutParams);
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangCharSequence))
+    {
+      this.jdField_a_of_type_AndroidWidgetEditText.setHintTextColor(-7829368);
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_c_of_type_JavaLangCharSequence);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367173);
+    i1 = getContext().getResources().getDimensionPixelSize(2131296764);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167056));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, i1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
+    setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.j, this.k);
+    localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
+    i1 = this.i;
+    localLayoutParams.leftMargin = i1;
+    if (this.jdField_a_of_type_Boolean)
+    {
       this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
       this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
       this.jdField_a_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
     }
-    for (;;)
+    else
     {
-      localLayoutParams.addRule(9);
-      localLayoutParams.addRule(0, 2131367390);
-      localLayoutParams.addRule(15);
-      this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.l);
-      addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-      getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      if (this.jdField_a_of_type_Int >= 0) {
-        setBackgroundDrawable(FormResHelper.a(getResources(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean));
-      }
-      return;
-      localLayoutParams.topMargin = this.i;
-      localLayoutParams.bottomMargin = this.i;
-      break;
-      label554:
-      localLayoutParams.topMargin = this.i;
-      localLayoutParams.bottomMargin = this.i;
+      localLayoutParams.topMargin = i1;
+      localLayoutParams.bottomMargin = i1;
       setMinimumHeight(this.h);
+    }
+    localLayoutParams.addRule(9);
+    localLayoutParams.addRule(0, 2131367172);
+    localLayoutParams.addRule(15);
+    this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.l);
+    addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
+    getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    if (this.jdField_a_of_type_Int >= 0) {
+      setBackgroundDrawable(FormResHelper.a(getResources(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean));
     }
   }
   
@@ -180,154 +178,143 @@ public class FormEditItem
       if (bool) {
         paramCharSequence = "";
       }
-      if ((!bool) || (paramBoolean)) {
-        break label52;
+      if ((bool) && (!paramBoolean)) {
+        paramInt = 8;
+      } else {
+        paramInt = 0;
       }
-    }
-    label52:
-    for (paramInt = 8;; paramInt = 0)
-    {
       paramTextView.setText(paramCharSequence);
       paramTextView.setContentDescription(paramCharSequence);
       paramTextView.setVisibility(paramInt);
-      return;
     }
   }
   
   private void b()
   {
-    TextView localTextView;
-    int i1;
-    CharSequence localCharSequence;
     if (this.p > 0)
     {
       c();
-      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      i1 = this.l;
-      localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        break label72;
+      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      int i1 = this.l;
+      CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+      boolean bool;
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label72:
-    for (boolean bool = true;; bool = false)
-    {
       a(localTextView, i1, localCharSequence, bool);
       a(this.jdField_b_of_type_AndroidWidgetTextView, this.m, this.jdField_b_of_type_JavaLangCharSequence, false);
       this.jdField_a_of_type_AndroidWidgetEditText.setMaxWidth(this.o);
-      return;
     }
   }
   
   private void c()
   {
-    int i6 = 0;
-    int i3 = this.p - this.n - this.i * 2;
+    int i5 = this.p - this.n - this.i * 2;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    int i3 = 0;
     int i1;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      if (this.j == 0)
-      {
-        i1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-        i1 += this.i;
-      }
-    }
-    for (;;)
+    if (localDrawable != null)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {}
-      for (int i2 = (int)this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_a_of_type_JavaLangCharSequence.toString());; i2 = 0)
-      {
-        i2 = i1 + i2;
-        if (i2 > 0) {}
-        for (i1 = i3 - this.i;; i1 = i3)
-        {
-          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangCharSequence)) {}
-          for (int i4 = (int)this.jdField_b_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_b_of_type_JavaLangCharSequence.toString());; i4 = 0)
-          {
-            i3 = i1 / 2;
-            int i5;
-            if ((i2 >= i3) && (i4 >= i3))
-            {
-              i5 = i3;
-              i1 = i3;
-              i3 = i6;
-            }
-            for (;;)
-            {
-              this.l = i1;
-              this.m = i5;
-              this.o = (this.n + i3);
-              return;
-              i1 = this.j;
-              break;
-              if ((i2 > i3) && (i4 < i3))
-              {
-                int i7 = i1 - i4;
-                i3 = i6;
-                i5 = i4;
-                i1 = i7;
-                if (i2 < i7)
-                {
-                  i3 = i7 - i2;
-                  i1 = i2;
-                  i5 = i4;
-                }
-              }
-              else if ((i2 < i3) && (i4 > i3))
-              {
-                i5 = i1 - i2;
-                if (i4 < i5)
-                {
-                  i3 = i5 - i4;
-                  i1 = i2;
-                  i5 = i4;
-                }
-                else
-                {
-                  i1 = i2;
-                  i3 = i6;
-                }
-              }
-              else
-              {
-                i3 = i1 - i2 - i4;
-                i1 = i2;
-                i5 = i4;
-              }
-            }
-          }
-        }
+      i2 = this.j;
+      i1 = i2;
+      if (i2 == 0) {
+        i1 = localDrawable.getIntrinsicWidth();
       }
+      i1 = this.i + i1;
+    }
+    else
+    {
       i1 = 0;
     }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+      i2 = (int)this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_a_of_type_JavaLangCharSequence.toString());
+    } else {
+      i2 = 0;
+    }
+    int i4 = i1 + i2;
+    int i2 = i5;
+    if (i4 > 0) {
+      i2 = i5 - this.i;
+    }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangCharSequence)) {
+      i1 = (int)this.jdField_b_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_b_of_type_JavaLangCharSequence.toString());
+    } else {
+      i1 = 0;
+    }
+    i5 = i2 / 2;
+    if ((i4 >= i5) && (i1 >= i5))
+    {
+      i2 = i5;
+      i1 = i2;
+    }
+    else if ((i4 > i5) && (i1 < i5))
+    {
+      i2 -= i1;
+      if (i4 < i2)
+      {
+        i3 = i2 - i4;
+        i2 = i4;
+      }
+    }
+    else
+    {
+      if ((i4 < i5) && (i1 > i5))
+      {
+        i2 -= i4;
+        if (i1 >= i2)
+        {
+          i1 = i2;
+          i2 = i4;
+          break label262;
+        }
+      }
+      else
+      {
+        i2 -= i4;
+      }
+      i3 = i2 - i1;
+      i2 = i4;
+    }
+    label262:
+    this.l = i2;
+    this.m = i1;
+    this.o = (this.n + i3);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_b_of_type_Boolean) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2)))
+    if (this.jdField_b_of_type_Boolean)
     {
-      int i1 = getMeasuredWidth();
-      int i2 = getMeasuredHeight();
-      this.jdField_a_of_type_AndroidGraphicsRect.set(d, i2 - jdField_b_of_type_Int, i1, i2);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      int i1 = this.jdField_a_of_type_Int;
+      if ((i1 == 1) || (i1 == 2))
+      {
+        i1 = getMeasuredWidth();
+        int i2 = getMeasuredHeight();
+        this.jdField_a_of_type_AndroidGraphicsRect.set(d, i2 - jdField_b_of_type_Int, i1, i2);
+        paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
     }
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      try
-      {
-        super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.h, 1073741824));
-        setMeasuredDimension(getMeasuredWidth(), this.h);
-        return;
-      }
-      catch (Exception localException)
-      {
-        setMinimumHeight(this.h);
-        super.onMeasure(paramInt1, paramInt2);
-        return;
-      }
+    if (this.jdField_a_of_type_Boolean) {}
+    try
+    {
+      super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.h, 1073741824));
+      setMeasuredDimension(getMeasuredWidth(), this.h);
+      return;
     }
+    catch (Exception localException)
+    {
+      label35:
+      break label35;
+    }
+    setMinimumHeight(this.h);
+    super.onMeasure(paramInt1, paramInt2);
+    return;
     super.onMeasure(paramInt1, paramInt2);
   }
   
@@ -351,36 +338,35 @@ public class FormEditItem
   
   public void setLeftIcon(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      if (paramDrawable == null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      if (paramDrawable == null)
+      {
+        localTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    if (paramDrawable.getIntrinsicHeight() > this.h)
-    {
-      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.h);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramDrawable, null, null, null);
-    }
-    for (;;)
-    {
+      if (paramDrawable.getIntrinsicHeight() > this.h)
+      {
+        paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.h);
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramDrawable, null, null, null);
+      }
+      else
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramDrawable, null, null, null);
+      }
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(this.i);
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramDrawable, null, null, null);
     }
   }
   
   public void setLeftIcon(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    if ((paramDrawable == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (paramInt1 < 0) || (paramInt2 < 0)) {}
-    do
+    if ((paramDrawable != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (paramInt1 >= 0))
     {
-      return;
+      if (paramInt2 < 0) {
+        return;
+      }
       if ((paramInt1 > 0) && (paramInt2 > 0))
       {
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
@@ -391,8 +377,10 @@ public class FormEditItem
         this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(this.i);
         return;
       }
-    } while ((paramInt1 != 0) && (paramInt2 != 0));
-    setLeftIcon(paramDrawable);
+      if ((paramInt1 == 0) || (paramInt2 == 0)) {
+        setLeftIcon(paramDrawable);
+      }
+    }
   }
   
   public void setLeftText(CharSequence paramCharSequence)
@@ -412,7 +400,7 @@ public class FormEditItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormEditItem
  * JD-Core Version:    0.7.0.1
  */

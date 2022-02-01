@@ -51,13 +51,11 @@ public final class Version
   public int compareTo(@NotNull Version paramVersion)
   {
     Intrinsics.checkParameterIsNotNull(paramVersion, "other");
-    int k = compareVersion(this.version, paramVersion.version);
-    int i = k;
-    int j;
-    if (k == 0) {
-      j = this.timeStamp < paramVersion.timeStamp;
+    int i = compareVersion(this.version, paramVersion.version);
+    if (i == 0) {
+      return this.timeStamp < paramVersion.timeStamp;
     }
-    return j;
+    return i;
   }
   
   @NotNull
@@ -80,18 +78,18 @@ public final class Version
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof Version))
       {
         paramObject = (Version)paramObject;
-        if ((!Intrinsics.areEqual(this.version, paramObject.version)) || (this.timeStamp != paramObject.timeStamp)) {}
+        if ((Intrinsics.areEqual(this.version, paramObject.version)) && (this.timeStamp == paramObject.timeStamp)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final long getTimeStamp()
@@ -108,23 +106,31 @@ public final class Version
   public int hashCode()
   {
     String str = this.version;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      long l = this.timeStamp;
-      return i * 31 + (int)(l ^ l >>> 32);
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    long l = this.timeStamp;
+    return i * 31 + (int)(l ^ l >>> 32);
   }
   
   @NotNull
   public String toString()
   {
-    return "Version(version=" + this.version + ", timeStamp=" + this.timeStamp + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Version(version=");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append(", timeStamp=");
+    localStringBuilder.append(this.timeStamp);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.model.Version
  * JD-Core Version:    0.7.0.1
  */

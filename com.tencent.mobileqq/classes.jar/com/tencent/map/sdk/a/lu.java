@@ -50,14 +50,14 @@ public final class lu
         this.a.requestLayout();
       }
     }
-    int n = 4;
-    int m = 20;
+    int m = 4;
+    int n = 20;
     if (this.b.az != null)
     {
-      n = this.b.az.d;
-      m = this.b.az.c;
+      m = this.b.az.d;
+      n = this.b.az.c;
     }
-    this.d = new jr(this.a.getContext().getApplicationContext(), n, m);
+    this.d = new jr(this.a.getContext().getApplicationContext(), m, n);
     paramBaseMapView = this.b;
     paramIMapRenderView = this.d;
     paramBaseMapView.m = paramIMapRenderView;
@@ -67,44 +67,36 @@ public final class lu
     this.c = new js(this.a.getContext(), this.b);
     this.g.add(this.d);
     this.g.add(this.c);
-    this.b.r = this;
-    this.b.a(this);
+    paramBaseMapView = this.b;
+    paramBaseMapView.r = this;
+    paramBaseMapView.a(this);
   }
   
   public final void a(float paramFloat)
   {
-    float f2 = 1.3F;
-    float f1 = 0.7F;
-    jr localjr;
-    if (this.d != null)
+    jr localjr = this.d;
+    if (localjr != null)
     {
-      localjr = this.d;
-      if (paramFloat <= 1.3F) {
-        break label58;
+      float f1 = paramFloat;
+      if (paramFloat > 1.3F) {
+        f1 = 1.3F;
       }
-      paramFloat = f2;
-    }
-    label58:
-    for (;;)
-    {
-      if (paramFloat < 0.7F) {
-        paramFloat = f1;
+      paramFloat = f1;
+      if (f1 < 0.7F) {
+        paramFloat = 0.7F;
       }
-      for (;;)
-      {
-        localjr.g = 0;
-        localjr.p = paramFloat;
-        localjr.e();
-        return;
-      }
+      localjr.g = 0;
+      localjr.p = paramFloat;
+      localjr.e();
     }
   }
   
   public final void a(int paramInt)
   {
-    if (this.d != null)
+    jr localjr = this.d;
+    if (localjr != null)
     {
-      this.d.a(gh.b.a(paramInt));
+      localjr.a(gh.b.a(paramInt));
       j();
     }
   }
@@ -123,9 +115,10 @@ public final class lu
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (this.d != null)
+    jr localjr = this.d;
+    if (localjr != null)
     {
-      this.d.a(gh.b.a(paramInt1));
+      localjr.a(gh.b.a(paramInt1));
       this.d.a(gh.a.d, paramInt2);
       this.d.a(gh.a.c, paramInt3);
       this.d.a(gh.a.a, paramInt4);
@@ -141,26 +134,38 @@ public final class lu
     {
       gh.b localb = gh.b.a(paramInt);
       this.d.a(localb);
-      switch (lu.2.a[localb.ordinal()])
+      paramInt = lu.2.a[localb.ordinal()];
+      if (paramInt != 1)
       {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt == 4)
+            {
+              this.d.a(gh.a.d, paramArrayOfInt[0]);
+              this.d.a(gh.a.b, paramArrayOfInt[1]);
+            }
+          }
+          else
+          {
+            this.d.a(gh.a.c, paramArrayOfInt[0]);
+            this.d.a(gh.a.b, paramArrayOfInt[1]);
+          }
+        }
+        else
+        {
+          this.d.a(gh.a.c, paramArrayOfInt[0]);
+          this.d.a(gh.a.a, paramArrayOfInt[1]);
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        this.d.a(gh.a.d, paramArrayOfInt[0]);
+        this.d.a(gh.a.a, paramArrayOfInt[1]);
+      }
       this.d.e();
       j();
-      return;
-      this.d.a(gh.a.d, paramArrayOfInt[0]);
-      this.d.a(gh.a.a, paramArrayOfInt[1]);
-      continue;
-      this.d.a(gh.a.c, paramArrayOfInt[0]);
-      this.d.a(gh.a.a, paramArrayOfInt[1]);
-      continue;
-      this.d.a(gh.a.c, paramArrayOfInt[0]);
-      this.d.a(gh.a.b, paramArrayOfInt[1]);
-      continue;
-      this.d.a(gh.a.d, paramArrayOfInt[0]);
-      this.d.a(gh.a.b, paramArrayOfInt[1]);
     }
   }
   
@@ -179,15 +184,13 @@ public final class lu
     if (((js)localObject).a != null)
     {
       localObject = ((js)localObject).a;
-      if (!paramBoolean) {
-        break label29;
+      int m;
+      if (paramBoolean) {
+        m = 0;
+      } else {
+        m = 4;
       }
-    }
-    label29:
-    for (int m = 0;; m = 4)
-    {
       ((ZoomControls)localObject).setVisibility(m);
-      return;
     }
   }
   
@@ -199,25 +202,28 @@ public final class lu
   
   public final void b(int paramInt)
   {
-    if (this.d != null)
+    jr localjr = this.d;
+    if (localjr != null)
     {
-      this.d.b(gh.b.a(paramInt));
+      localjr.b(gh.b.a(paramInt));
       j();
     }
   }
   
   public final void b(int paramInt1, int paramInt2)
   {
-    if (this.b != null) {
-      this.b.b(paramInt1, paramInt2);
+    pn localpn = this.b;
+    if (localpn != null) {
+      localpn.b(paramInt1, paramInt2);
     }
   }
   
   public final void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (this.d != null)
+    jr localjr = this.d;
+    if (localjr != null)
     {
-      this.d.b(gh.b.a(paramInt1));
+      localjr.b(gh.b.a(paramInt1));
       this.d.b(gh.a.d, paramInt2);
       this.d.b(gh.a.c, paramInt3);
       this.d.b(gh.a.a, paramInt4);
@@ -244,9 +250,9 @@ public final class lu
   
   public final void c(int paramInt)
   {
-    if (this.b != null)
+    pn localpn = this.b;
+    if (localpn != null)
     {
-      pn localpn = this.b;
       localpn.U = paramInt;
       localpn.b(localpn.T, paramInt);
       localpn.s();
@@ -257,12 +263,13 @@ public final class lu
   {
     this.l = paramBoolean;
     jt localjt = this.c.b;
-    if (paramBoolean) {}
-    for (int m = 0;; m = 8)
-    {
-      localjt.setVisibility(m);
-      return;
+    int m;
+    if (paramBoolean) {
+      m = 0;
+    } else {
+      m = 8;
     }
+    localjt.setVisibility(m);
   }
   
   public final boolean c()
@@ -272,9 +279,9 @@ public final class lu
   
   public final void d(int paramInt)
   {
-    if (this.d != null)
+    jr localjr = this.d;
+    if (localjr != null)
     {
-      jr localjr = this.d;
       localjr.g = paramInt;
       localjr.p = 1.4E-45F;
       localjr.e();
@@ -293,9 +300,9 @@ public final class lu
   
   public final void e(int paramInt)
   {
-    if (this.c != null)
+    js localjs = this.c;
+    if (localjs != null)
     {
-      js localjs = this.c;
       gh.b localb = gh.b.a(paramInt);
       if (localjs.d != localb)
       {
@@ -342,8 +349,9 @@ public final class lu
   
   public final boolean h()
   {
-    if (this.j != null) {
-      return this.j.b;
+    ij localij = this.j;
+    if (localij != null) {
+      return localij.b;
     }
     return false;
   }
@@ -359,8 +367,9 @@ public final class lu
   
   public final boolean i()
   {
-    if (this.d != null) {
-      return this.d.n;
+    jr localjr = this.d;
+    if (localjr != null) {
+      return localjr.n;
     }
     return false;
   }
@@ -375,9 +384,9 @@ public final class lu
   
   public final void j(boolean paramBoolean)
   {
-    if (this.d != null)
+    jr localjr = this.d;
+    if (localjr != null)
     {
-      jr localjr = this.d;
       localjr.n = paramBoolean;
       if ((localjr.m != null) && (!paramBoolean)) {
         localjr.o.setVisibility(8);
@@ -394,54 +403,46 @@ public final class lu
   
   public final void k(boolean paramBoolean)
   {
-    Object localObject;
-    if (this.d != null)
+    Object localObject = this.d;
+    if (localObject != null)
     {
-      localObject = this.d;
       ((jr)localObject).c = paramBoolean;
       if (((jr)localObject).b != null)
       {
         localObject = ((jr)localObject).b;
-        if (!paramBoolean) {
-          break label41;
+        int m;
+        if (paramBoolean) {
+          m = 0;
+        } else {
+          m = 4;
         }
+        ((ImageView)localObject).setVisibility(m);
       }
-    }
-    label41:
-    for (int m = 0;; m = 4)
-    {
-      ((ImageView)localObject).setVisibility(m);
-      return;
     }
   }
   
   public final void l(boolean paramBoolean)
   {
-    Object localObject;
-    if (this.d != null)
+    Object localObject = this.d;
+    if ((localObject != null) && (((jr)localObject).m != null))
     {
-      localObject = this.d;
-      if (((jr)localObject).m != null)
-      {
-        localObject = ((jr)localObject).o;
-        if (!paramBoolean) {
-          break label36;
-        }
+      localObject = ((jr)localObject).o;
+      int m;
+      if (paramBoolean) {
+        m = 0;
+      } else {
+        m = 8;
       }
-    }
-    label36:
-    for (int m = 0;; m = 8)
-    {
       ((LinearLayout)localObject).setVisibility(m);
-      return;
     }
   }
   
   public final void m(boolean paramBoolean)
   {
-    if ((this.b != null) && (this.b.az != null))
+    Object localObject = this.b;
+    if ((localObject != null) && (((pt)localObject).az != null))
     {
-      Object localObject = this.b.az;
+      localObject = this.b.az;
       if (((pm)localObject).b != null)
       {
         localObject = ((pm)localObject).b;
@@ -455,20 +456,23 @@ public final class lu
   public final void n(boolean paramBoolean)
   {
     ij localij = this.j;
-    if ((localij.a == null) || (localij.a.getMap() == null)) {
-      return;
-    }
-    if (paramBoolean) {}
-    for (localij.b = true;; localij.b = false)
+    if (localij.a != null)
     {
+      if (localij.a.getMap() == null) {
+        return;
+      }
+      if (paramBoolean) {
+        localij.b = true;
+      } else {
+        localij.b = false;
+      }
       localij.a(localij.b);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.lu
  * JD-Core Version:    0.7.0.1
  */

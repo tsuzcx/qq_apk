@@ -27,9 +27,11 @@ public class C2CShortcutBarStoreController
     boolean bool1 = C2CShortcutBarSwitcher.b(paramQQAppInterface);
     boolean bool2 = C2CShortcutBarSwitcher.a(paramQQAppInterface, paramString);
     if (paramBoolean) {
-      bool1 = false;
+      paramBoolean = false;
+    } else {
+      paramBoolean = bool1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView = new C2CShortcutBarStoreView(paramQQAppInterface, paramContext, paramString, bool1, bool2, paramList, this);
+    this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView = new C2CShortcutBarStoreView(paramQQAppInterface, paramContext, paramString, paramBoolean, bool2, paramList, this);
   }
   
   public void a()
@@ -39,8 +41,9 @@ public class C2CShortcutBarStoreController
   
   public void a(int paramInt, C2CShortcutAppInfo paramC2CShortcutAppInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreController$IStoreItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreController$IStoreItemClickListener.a(paramInt, paramC2CShortcutAppInfo);
+    C2CShortcutBarStoreController.IStoreItemClickListener localIStoreItemClickListener = this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreController$IStoreItemClickListener;
+    if (localIStoreItemClickListener != null) {
+      localIStoreItemClickListener.a(paramInt, paramC2CShortcutAppInfo);
     }
     b();
   }
@@ -62,7 +65,7 @@ public class C2CShortcutBarStoreController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.store.C2CShortcutBarStoreController
  * JD-Core Version:    0.7.0.1
  */

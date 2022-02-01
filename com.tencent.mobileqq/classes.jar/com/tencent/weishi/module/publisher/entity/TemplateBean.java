@@ -60,8 +60,9 @@ public class TemplateBean
     localTemplateBean.canChange = this.canChange;
     localTemplateBean.reserveSource = this.reserveSource;
     localTemplateBean.templateUiType = this.templateUiType;
-    if (this.musicMaterialMetaDataBean != null) {
-      localTemplateBean.musicMaterialMetaDataBean = this.musicMaterialMetaDataBean.deepClone();
+    MusicMaterialMetaDataBean localMusicMaterialMetaDataBean = this.musicMaterialMetaDataBean;
+    if (localMusicMaterialMetaDataBean != null) {
+      localTemplateBean.musicMaterialMetaDataBean = localMusicMaterialMetaDataBean.deepClone();
     }
     localTemplateBean.status = this.status;
     localTemplateBean.zipFile = this.zipFile;
@@ -75,16 +76,15 @@ public class TemplateBean
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof TemplateBean)) {
-        return false;
-      }
-      paramObject = (TemplateBean)paramObject;
-    } while ((this.templateId != null) && (this.templateId.equals(paramObject.templateId)));
-    return false;
+    }
+    if (!(paramObject instanceof TemplateBean)) {
+      return false;
+    }
+    paramObject = (TemplateBean)paramObject;
+    String str = this.templateId;
+    return (str != null) && (str.equals(paramObject.templateId));
   }
   
   public String getCategory()
@@ -238,13 +238,14 @@ public class TemplateBean
   public void setTemplateType(int paramInt)
   {
     this.templateType = paramInt;
-    if (paramInt == 2) {
+    if (paramInt == 2)
+    {
       this.category = "videofunny";
-    }
-    while (paramInt != 1) {
       return;
     }
-    this.category = "autoTemplate";
+    if (paramInt == 1) {
+      this.category = "autoTemplate";
+    }
   }
   
   public void setTemplateUiType(int paramInt)
@@ -265,12 +266,20 @@ public class TemplateBean
   @NotNull
   public String toString()
   {
-    return "TemplateBean{templateId='" + this.templateId + '\'' + ", templateName='" + this.templateName + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TemplateBean{templateId='");
+    localStringBuilder.append(this.templateId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", templateName='");
+    localStringBuilder.append(this.templateName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.publisher.entity.TemplateBean
  * JD-Core Version:    0.7.0.1
  */

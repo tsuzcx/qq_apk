@@ -86,17 +86,19 @@ public final class HttpDownloadResp
     paramJceOutputStream.write(this.encryFrom, 8);
     paramJceOutputStream.write(this.encryTo, 9);
     paramJceOutputStream.write(this.vFileData, 10);
-    if (this.stVerifyCode != null) {
-      paramJceOutputStream.write(this.stVerifyCode, 11);
+    Object localObject = this.stVerifyCode;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.strFileName != null) {
-      paramJceOutputStream.write(this.strFileName, 12);
+    localObject = this.strFileName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQFS.HttpDownloadResp
  * JD-Core Version:    0.7.0.1
  */

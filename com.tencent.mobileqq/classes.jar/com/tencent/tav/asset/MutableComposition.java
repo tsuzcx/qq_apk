@@ -20,32 +20,32 @@ public class MutableComposition
   private int getCorrectTrackID(int paramInt)
   {
     Iterator localIterator = this.tracks.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    } while (((MutableCompositionTrack)localIterator.next()).getTrackID() != paramInt);
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (paramInt > 0)) {
-        return paramInt;
-      }
-      if (paramInt == -1)
+    while (localIterator.hasNext()) {
+      if (((MutableCompositionTrack)localIterator.next()).getTrackID() == paramInt)
       {
-        paramInt = this.trackIndex;
-        this.trackIndex = (paramInt + 1);
-        return paramInt;
+        i = 1;
+        break label42;
       }
-      if (this.trackIndex >= paramInt)
-      {
-        paramInt = this.trackIndex;
-        this.trackIndex = (paramInt + 1);
-        return paramInt;
-      }
-      this.trackIndex = paramInt;
-      return this.trackIndex;
     }
+    int i = 0;
+    label42:
+    if ((i == 0) && (paramInt > 0)) {
+      return paramInt;
+    }
+    if (paramInt == -1)
+    {
+      paramInt = this.trackIndex;
+      this.trackIndex = (paramInt + 1);
+      return paramInt;
+    }
+    if (this.trackIndex >= paramInt)
+    {
+      paramInt = this.trackIndex;
+      this.trackIndex = (paramInt + 1);
+      return paramInt;
+    }
+    this.trackIndex = paramInt;
+    return this.trackIndex;
   }
   
   public MutableCompositionTrack addMutableTrackWithMediaType(int paramInt1, int paramInt2)
@@ -105,52 +105,53 @@ public class MutableComposition
   
   public boolean insertTimeRange(CMTimeRange paramCMTimeRange, Asset paramAsset, CMTime paramCMTime)
   {
-    if ((paramCMTimeRange.getDuration().value <= 0L) || (paramAsset == null) || (paramAsset.getTrackCount() == 0)) {}
-    Object localObject;
-    int i;
-    label42:
-    AssetTrack localAssetTrack;
-    label72:
-    MutableCompositionTrack localMutableCompositionTrack;
-    do
+    if ((paramCMTimeRange.getDuration().value > 0L) && (paramAsset != null))
     {
-      return false;
-      localObject = paramAsset.getTracks();
+      if (paramAsset.getTrackCount() == 0) {
+        return false;
+      }
+      Object localObject = paramAsset.getTracks();
       paramAsset = new ArrayList();
-      i = 0;
-      if (i >= ((List)localObject).size()) {
-        break label226;
-      }
-      localAssetTrack = (AssetTrack)((List)localObject).get(i);
-      j = i;
-      if (j >= this.tracks.size()) {
-        break label284;
-      }
-      localMutableCompositionTrack = (MutableCompositionTrack)this.tracks.get(j);
-      if (localMutableCompositionTrack.getMediaType() != localAssetTrack.getMediaType()) {
-        break;
-      }
-    } while (!localMutableCompositionTrack.insertTimeRange(paramCMTimeRange, localAssetTrack, paramCMTime));
-    paramAsset.add(Integer.valueOf(localMutableCompositionTrack.getTrackID()));
-    label284:
-    for (int j = 1;; j = 0)
-    {
-      if (j == 0)
+      int i = 0;
+      for (;;)
       {
-        j = localAssetTrack.getMediaType();
-        int k = this.trackIndex;
-        this.trackIndex = (k + 1);
-        localMutableCompositionTrack = addMutableTrackWithMediaType(j, k);
-        if (!localMutableCompositionTrack.insertTimeRange(paramCMTimeRange, localAssetTrack, paramCMTime)) {
+        int j = ((List)localObject).size();
+        int k = 1;
+        if (i >= j) {
           break;
         }
-        paramAsset.add(Integer.valueOf(localMutableCompositionTrack.getTrackID()));
+        AssetTrack localAssetTrack = (AssetTrack)((List)localObject).get(i);
+        j = i;
+        MutableCompositionTrack localMutableCompositionTrack;
+        while (j < this.tracks.size())
+        {
+          localMutableCompositionTrack = (MutableCompositionTrack)this.tracks.get(j);
+          if (localMutableCompositionTrack.getMediaType() == localAssetTrack.getMediaType())
+          {
+            if (!localMutableCompositionTrack.insertTimeRange(paramCMTimeRange, localAssetTrack, paramCMTime)) {
+              return false;
+            }
+            paramAsset.add(Integer.valueOf(localMutableCompositionTrack.getTrackID()));
+            j = k;
+            break label170;
+          }
+          j += 1;
+        }
+        j = 0;
+        label170:
+        if (j == 0)
+        {
+          j = localAssetTrack.getMediaType();
+          k = this.trackIndex;
+          this.trackIndex = (k + 1);
+          localMutableCompositionTrack = addMutableTrackWithMediaType(j, k);
+          if (!localMutableCompositionTrack.insertTimeRange(paramCMTimeRange, localAssetTrack, paramCMTime)) {
+            return false;
+          }
+          paramAsset.add(Integer.valueOf(localMutableCompositionTrack.getTrackID()));
+        }
+        i += 1;
       }
-      i += 1;
-      break label42;
-      j += 1;
-      break label72;
-      label226:
       paramCMTime = this.tracks.iterator();
       while (paramCMTime.hasNext())
       {
@@ -161,6 +162,7 @@ public class MutableComposition
       }
       return true;
     }
+    return false;
   }
   
   @Nullable
@@ -261,7 +263,7 @@ public class MutableComposition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.asset.MutableComposition
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,33 @@
 package com.huawei.hms.api;
 
-import android.app.Activity;
-import com.huawei.hms.support.api.ResolveResult;
-import com.huawei.hms.support.api.client.ResultCallback;
-import com.huawei.hms.support.api.client.Status;
-import com.huawei.hms.support.api.entity.core.JosGetNoticeResp;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.huawei.hms.support.log.HMSLog;
-import com.huawei.hms.utils.Util;
-import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class HuaweiApiClientImpl$c
-  implements ResultCallback<ResolveResult<JosGetNoticeResp>>
+  implements Handler.Callback
 {
-  private HuaweiApiClientImpl$c(HuaweiApiClientImpl paramHuaweiApiClientImpl) {}
+  HuaweiApiClientImpl$c(HuaweiApiClientImpl paramHuaweiApiClientImpl) {}
   
-  public void a(ResolveResult<JosGetNoticeResp> paramResolveResult)
+  public boolean handleMessage(Message paramMessage)
   {
-    Object localObject;
-    if ((paramResolveResult != null) && (paramResolveResult.getStatus().isSuccess()))
+    if ((paramMessage != null) && (paramMessage.what == 3))
     {
-      localObject = (JosGetNoticeResp)paramResolveResult.getValue();
-      paramResolveResult = ((JosGetNoticeResp)localObject).getNoticeIntent();
-      if ((paramResolveResult != null) && (((JosGetNoticeResp)localObject).getStatusCode() == 0))
+      HMSLog.e("HuaweiApiClientImpl", "In connect, process time out");
+      if (HuaweiApiClientImpl.b(this.a).get() == 2)
       {
-        HMSLog.i("HuaweiApiClientImpl", "get notice has intent.");
-        localObject = Util.getValidActivity((Activity)HuaweiApiClientImpl.d(this.a).get(), this.a.getTopActivity());
-        if (localObject != null) {
-          break label81;
-        }
-        HMSLog.e("HuaweiApiClientImpl", "showNotice no valid activity!");
+        HuaweiApiClientImpl.a(this.a, 1);
+        HuaweiApiClientImpl.c(this.a);
       }
+      return true;
     }
-    return;
-    label81:
-    HuaweiApiClientImpl.a(this.a, true);
-    ((Activity)localObject).startActivity(paramResolveResult);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.HuaweiApiClientImpl.c
  * JD-Core Version:    0.7.0.1
  */

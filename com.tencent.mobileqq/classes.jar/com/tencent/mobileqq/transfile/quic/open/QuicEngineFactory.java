@@ -12,7 +12,7 @@ public class QuicEngineFactory
   
   private static boolean checkSoDownloaded()
   {
-    return (FileUtils.a(Utils.getAndromedaSoPath())) && (FileUtils.a(Utils.getQuicEngineSoPath()));
+    return (FileUtils.fileExists(Utils.getAndromedaSoPath())) && (FileUtils.fileExists(Utils.getQuicEngineSoPath()));
   }
   
   public static IQuicEngine createEngine()
@@ -27,20 +27,21 @@ public class QuicEngineFactory
       QLog.e("quic", 4, "so not downloaded ！");
       return null;
     }
-    if (sQuicEngine == null) {}
-    try
-    {
-      if (sQuicEngine == null) {
-        sQuicEngine = new QuicEngineImp(new LoadSoImp());
+    if (sQuicEngine == null) {
+      try
+      {
+        if (sQuicEngine == null) {
+          sQuicEngine = new QuicEngineImp(new LoadSoImp());
+        }
       }
-      return sQuicEngine;
+      finally {}
     }
-    finally {}
+    return sQuicEngine;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.quic.open.QuicEngineFactory
  * JD-Core Version:    0.7.0.1
  */

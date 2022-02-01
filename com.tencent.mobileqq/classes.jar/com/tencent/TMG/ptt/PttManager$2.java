@@ -10,15 +10,16 @@ class PttManager$2
   
   public void onCompleted(int paramInt, String paramString, TokenFetcher.DownloadInfo paramDownloadInfo)
   {
-    if ((paramInt == 0) && (paramDownloadInfo != null)) {
-      CosFileTransfer.downloadFile(paramDownloadInfo.file_url, this.val$savePath, paramDownloadInfo.token, null, new PttManager.2.1(this));
-    }
-    do
+    if ((paramInt == 0) && (paramDownloadInfo != null))
     {
+      CosFileTransfer.downloadFile(paramDownloadInfo.file_url, this.val$savePath, paramDownloadInfo.token, null, new PttManager.2.1(this));
       return;
-      Log.e("PTTManager", "downloadFile|get download file token failed");
-    } while (this.val$monitor == null);
-    this.val$monitor.onCompleted(paramInt, this.val$savePath, this.val$downloadUrl);
+    }
+    Log.e("PTTManager", "downloadFile|get download file token failed");
+    paramString = this.val$monitor;
+    if (paramString != null) {
+      paramString.onCompleted(paramInt, this.val$savePath, this.val$downloadUrl);
+    }
   }
 }
 

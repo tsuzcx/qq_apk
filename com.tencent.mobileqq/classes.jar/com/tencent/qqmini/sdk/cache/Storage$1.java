@@ -14,26 +14,20 @@ class Storage$1
   {
     int j = 0;
     int i;
-    if (paramString1 == null)
-    {
+    if (paramString1 == null) {
       i = 0;
-      if (paramString2 != null) {
-        break label26;
-      }
-    }
-    for (;;)
-    {
-      return j + i;
+    } else {
       i = paramString1.length();
-      break;
-      label26:
+    }
+    if (paramString2 != null) {
       j = paramString2.length();
     }
+    return i + j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.cache.Storage.1
  * JD-Core Version:    0.7.0.1
  */

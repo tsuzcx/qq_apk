@@ -13,11 +13,12 @@ class ViolaInstance$3
   
   public void run()
   {
-    if (this.val$moduleMap != null)
+    Object localObject = this.val$moduleMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.val$moduleMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((BaseModule)localIterator.next()).onActivityDestroy();
+      localObject = ((Map)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((BaseModule)((Iterator)localObject).next()).onActivityDestroy();
       }
     }
     ViolaModuleManager.destroy(ViolaInstance.access$400(this.this$0));
@@ -25,7 +26,7 @@ class ViolaInstance$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaInstance.3
  * JD-Core Version:    0.7.0.1
  */

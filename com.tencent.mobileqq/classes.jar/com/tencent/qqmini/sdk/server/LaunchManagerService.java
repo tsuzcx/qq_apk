@@ -24,6 +24,7 @@ import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.manager.BaseLibManager;
 import com.tencent.qqmini.sdk.manager.EngineManager;
 import com.tencent.qqmini.sdk.report.MiniAppReportManager2;
 import com.tencent.qqmini.sdk.server.launch.AppLaunchStrategy;
@@ -51,25 +52,30 @@ public class LaunchManagerService
   
   private void addProcessorInfo(MiniProcessorConfig paramMiniProcessorConfig)
   {
-    QMLog.i("minisdk-start_LaunchManagerService", "registerProcessInfo " + paramMiniProcessorConfig);
-    switch (LaunchManagerService.5.$SwitchMap$com$tencent$qqmini$sdk$launcher$shell$ProcessType[paramMiniProcessorConfig.processType.ordinal()])
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("registerProcessInfo ");
+    localStringBuilder.append(paramMiniProcessorConfig);
+    QMLog.i("minisdk-start_LaunchManagerService", localStringBuilder.toString());
+    int i = LaunchManagerService.5.$SwitchMap$com$tencent$qqmini$sdk$launcher$shell$ProcessType[paramMiniProcessorConfig.processType.ordinal()];
+    if (i != 1)
     {
-    }
-    do
-    {
-      do
+      if (i != 2)
       {
-        do
-        {
+        if (i != 3) {
           return;
-        } while (paramMiniProcessorConfig.appUIClass == null);
-        this.mAppProcessConfig.add(paramMiniProcessorConfig);
-        return;
-      } while (paramMiniProcessorConfig.appUIClass == null);
-      this.mGameProcessConfig.add(paramMiniProcessorConfig);
-      return;
-    } while (paramMiniProcessorConfig.appUIClass == null);
-    this.mInternalProcessConfig.add(paramMiniProcessorConfig);
+        }
+        if (paramMiniProcessorConfig.appUIClass != null) {
+          this.mInternalProcessConfig.add(paramMiniProcessorConfig);
+        }
+      }
+      else if (paramMiniProcessorConfig.appUIClass != null)
+      {
+        this.mGameProcessConfig.add(paramMiniProcessorConfig);
+      }
+    }
+    else if (paramMiniProcessorConfig.appUIClass != null) {
+      this.mAppProcessConfig.add(paramMiniProcessorConfig);
+    }
   }
   
   private void checkMiniAppInfoCache()
@@ -80,71 +86,68 @@ public class LaunchManagerService
   @SuppressLint({"WrongConstant"})
   private void doStartMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    for (;;)
+    try
     {
-      Object localObject;
-      Intent localIntent;
-      int i;
-      try
-      {
-        localObject = getLaunchStrategy(paramMiniAppInfo).startMiniApp(paramMiniAppInfo);
-        MiniAppReportManager2.reportPageView("2click", null, paramMiniAppInfo.launchParam.entryPath, paramMiniAppInfo);
-        localIntent = ((LaunchStrategy.LaunchData)localObject).getIntent();
-        if (((LaunchStrategy.LaunchData)localObject).getProcessState() == ProcessState.EMPTY)
-        {
-          localIntent.putExtra("start_mode", 3);
-          localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-          localIntent.putExtra("KEY_LOGININFO", new LoginInfo(((MiniAppProxy)localObject).getLoginType(), ((MiniAppProxy)localObject).getAccount(), ((MiniAppProxy)localObject).getNickName(), ((MiniAppProxy)localObject).getPayOpenId(), ((MiniAppProxy)localObject).getPayOpenKey(), ((MiniAppProxy)localObject).getPayAccessToken(), ((MiniAppProxy)localObject).getLoginSig(), ((MiniAppProxy)localObject).getPlatformId(), ((MiniAppProxy)localObject).getAppId()));
-          localIntent.putExtra("KEY_APPINFO", paramMiniAppInfo);
-          localIntent.putExtra("KEY_MINI_SERVICE_MANAGER", MiniServer.g().getMiniServiceFetcher());
-          localIntent.putExtra("sdk_mode", true);
-          localIntent.putExtra("receiver", paramResultReceiver);
-          localIntent.putExtra("startDuration", System.currentTimeMillis());
-          localObject = EngineManager.g();
-          if (paramMiniAppInfo.engineType != 1) {
-            break label364;
-          }
-          i = 2;
-          localIntent.putExtra("engineChannel", ((EngineManager)localObject).getChannelForType(i));
-          if (paramBundle != null) {
-            localIntent.putExtras(paramBundle);
-          }
-          if (paramActivity == null) {
-            break label370;
-          }
-          paramActivity.startActivity(localIntent);
-          QMLog.i("minisdk-start_LaunchManagerService", "---startApp----  appid:" + paramMiniAppInfo.appId + " appName:" + paramMiniAppInfo.name + " intent:" + localIntent);
-          return;
-        }
-      }
-      catch (IllegalStateException paramActivity)
-      {
-        QMLog.e("minisdk-start_LaunchManagerService", "---startApp---- failed appid:" + paramMiniAppInfo.appId + " appName:" + paramMiniAppInfo.name, paramActivity);
-        return;
-      }
-      if (((LaunchStrategy.LaunchData)localObject).getProcessState() == ProcessState.PRELOADED)
-      {
+      Object localObject = getLaunchStrategy(paramMiniAppInfo).startMiniApp(paramMiniAppInfo);
+      MiniAppReportManager2.reportPageView("2click", null, paramMiniAppInfo.launchParam.entryPath, paramMiniAppInfo);
+      Intent localIntent = ((LaunchStrategy.LaunchData)localObject).getIntent();
+      ProcessState localProcessState1 = ((LaunchStrategy.LaunchData)localObject).getProcessState();
+      ProcessState localProcessState2 = ProcessState.EMPTY;
+      int i = 2;
+      if (localProcessState1 == localProcessState2) {
+        localIntent.putExtra("start_mode", 3);
+      } else if (((LaunchStrategy.LaunchData)localObject).getProcessState() == ProcessState.PRELOADED) {
         localIntent.putExtra("start_mode", 1);
+      } else {
+        localIntent.putExtra("start_mode", 2);
+      }
+      localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+      localIntent.putExtra("KEY_LOGININFO", new LoginInfo(((MiniAppProxy)localObject).getLoginType(), ((MiniAppProxy)localObject).getAccount(), ((MiniAppProxy)localObject).getNickName(), ((MiniAppProxy)localObject).getPayOpenId(), ((MiniAppProxy)localObject).getPayOpenKey(), ((MiniAppProxy)localObject).getPayAccessToken(), ((MiniAppProxy)localObject).getLoginSig(), ((MiniAppProxy)localObject).getPlatformId(), ((MiniAppProxy)localObject).getAppId()));
+      localIntent.putExtra("KEY_APPINFO", paramMiniAppInfo);
+      localIntent.putExtra("KEY_MINI_SERVICE_MANAGER", MiniServer.g().getMiniServiceFetcher());
+      localIntent.putExtra("sdk_mode", true);
+      localIntent.putExtra("receiver", paramResultReceiver);
+      localIntent.putExtra("startDuration", System.currentTimeMillis());
+      localObject = EngineManager.g();
+      if (paramMiniAppInfo.engineType != 1) {
+        i = 3;
+      }
+      localIntent.putExtra("engineChannel", ((EngineManager)localObject).getChannelForType(i));
+      if (paramBundle != null) {
+        localIntent.putExtras(paramBundle);
+      }
+      if (paramActivity != null)
+      {
+        paramActivity.startActivity(localIntent);
+      }
+      else if (paramResultReceiver != null)
+      {
+        paramActivity = new Bundle();
+        paramActivity.putParcelable("LAUNCH_ACTIVITY_INTENT", localIntent);
+        paramResultReceiver.send(1, paramActivity);
       }
       else
       {
-        localIntent.putExtra("start_mode", 2);
-        continue;
-        label364:
-        i = 3;
-        continue;
-        label370:
-        if (paramResultReceiver != null)
-        {
-          paramActivity = new Bundle();
-          paramActivity.putParcelable("LAUNCH_ACTIVITY_INTENT", localIntent);
-          paramResultReceiver.send(1, paramActivity);
-        }
-        else
-        {
-          this.mContext.startActivity(localIntent);
-        }
+        this.mContext.startActivity(localIntent);
       }
+      paramActivity = new StringBuilder();
+      paramActivity.append("---startApp----  appid:");
+      paramActivity.append(paramMiniAppInfo.appId);
+      paramActivity.append(" appName:");
+      paramActivity.append(paramMiniAppInfo.name);
+      paramActivity.append(" intent:");
+      paramActivity.append(localIntent);
+      QMLog.i("minisdk-start_LaunchManagerService", paramActivity.toString());
+      return;
+    }
+    catch (IllegalStateException paramActivity)
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("---startApp---- failed appid:");
+      paramBundle.append(paramMiniAppInfo.appId);
+      paramBundle.append(" appName:");
+      paramBundle.append(paramMiniAppInfo.name);
+      QMLog.e("minisdk-start_LaunchManagerService", paramBundle.toString(), paramActivity);
     }
   }
   
@@ -207,49 +210,25 @@ public class LaunchManagerService
     return (isMiniAppProcess(paramString)) || (isMiniGameProcess(paramString));
   }
   
-  /* Error */
   private void updateBaseLib()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 393	com/tencent/qqmini/sdk/utils/QUAUtil:isQQMainApp	()Z
-    //   5: istore_1
-    //   6: iload_1
-    //   7: ifeq +6 -> 13
-    //   10: aload_0
-    //   11: monitorexit
-    //   12: return
-    //   13: invokestatic 398	com/tencent/qqmini/sdk/manager/BaseLibManager:g	()Lcom/tencent/qqmini/sdk/manager/BaseLibManager;
-    //   16: new 400	com/tencent/qqmini/sdk/server/LaunchManagerService$3
-    //   19: dup
-    //   20: aload_0
-    //   21: invokespecial 401	com/tencent/qqmini/sdk/server/LaunchManagerService$3:<init>	(Lcom/tencent/qqmini/sdk/server/LaunchManagerService;)V
-    //   24: invokevirtual 404	com/tencent/qqmini/sdk/manager/BaseLibManager:updateBaseLib	(Lcom/tencent/qqmini/sdk/manager/BaseLibManager$UpdateListener;)V
-    //   27: goto -17 -> 10
-    //   30: astore_2
-    //   31: ldc 8
-    //   33: ldc_w 406
-    //   36: aload_2
-    //   37: invokestatic 312	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   40: goto -30 -> 10
-    //   43: astore_2
-    //   44: aload_0
-    //   45: monitorexit
-    //   46: aload_2
-    //   47: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	48	0	this	LaunchManagerService
-    //   5	2	1	bool	boolean
-    //   30	7	2	localThrowable	Throwable
-    //   43	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   13	27	30	java/lang/Throwable
-    //   2	6	43	finally
-    //   13	27	43	finally
-    //   31	40	43	finally
+    try
+    {
+      boolean bool = QUAUtil.isQQMainApp();
+      if (bool) {
+        return;
+      }
+      try
+      {
+        BaseLibManager.g().updateBaseLib(new LaunchManagerService.3(this));
+      }
+      catch (Throwable localThrowable)
+      {
+        QMLog.e("minisdk-start_LaunchManagerService", "updateBaseLib failed ", localThrowable);
+      }
+      return;
+    }
+    finally {}
   }
   
   public IBinder getBinder()
@@ -264,13 +243,15 @@ public class LaunchManagerService
   
   public void init(Context paramContext)
   {
-    if (this.mContext != null) {
-      throw new IllegalArgumentException();
+    if (this.mContext == null)
+    {
+      this.mContext = paramContext;
+      this.mAppLaunchStrategy = new AppLaunchStrategy(this.mContext, this.mAppProcessConfig, this.mInternalProcessConfig);
+      this.mGameLaunchStrategy = new GameLaunchStrategy(this.mContext, this.mGameProcessConfig, GameLaunchConfig.fromWnsConfig(), new LaunchManagerService.GameProcessPreloader(this, null), ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion());
+      checkMiniAppInfoCache();
+      return;
     }
-    this.mContext = paramContext;
-    this.mAppLaunchStrategy = new AppLaunchStrategy(this.mContext, this.mAppProcessConfig, this.mInternalProcessConfig);
-    this.mGameLaunchStrategy = new GameLaunchStrategy(this.mContext, this.mGameProcessConfig, GameLaunchConfig.fromWnsConfig(), new LaunchManagerService.GameProcessPreloader(this, null), ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion());
-    checkMiniAppInfoCache();
+    throw new IllegalArgumentException();
   }
   
   public void onAppBackground(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle)
@@ -287,14 +268,11 @@ public class LaunchManagerService
   {
     if (paramMiniAppBaseInfo != null) {
       getLaunchStrategy(paramMiniAppBaseInfo).onAppStart(paramString, paramMiniAppBaseInfo, paramBundle);
-    }
-    for (;;)
-    {
-      updateBaseLib();
-      initWnsConfig();
-      return;
+    } else {
       getLaunchStrategy(paramString).onPreloaded(paramString, paramBundle);
     }
+    updateBaseLib();
+    initWnsConfig();
   }
   
   public void onAppStop(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle)
@@ -310,55 +288,63 @@ public class LaunchManagerService
   {
     this.mAppLaunchStrategy.onRecvCommand(paramString1, paramString2, paramBundle);
     paramBundle.setClassLoader(MiniAppInfo.class.getClassLoader());
-    if (("cmd_notify_runtime_lifecycle".equals(paramString1)) && ("first_frame".equals(paramBundle.getString("bundle_key_runtime_lifecycle", "N/A")))) {}
-    do
+    if (("cmd_notify_runtime_lifecycle".equals(paramString1)) && ("first_frame".equals(paramBundle.getString("bundle_key_runtime_lifecycle", "N/A"))))
     {
       this.mGameLaunchStrategy.preloadProcess(null);
-      do
-      {
-        return;
-      } while (!"cmd_notify_runtime_info".equals(paramString1));
+      return;
+    }
+    if ("cmd_notify_runtime_info".equals(paramString1))
+    {
       paramBundle.setClassLoader(MiniAppInfo.class.getClassLoader());
       paramString1 = paramBundle.getParcelableArrayList("bundle_key_runtime_list");
-    } while (paramString1 == null);
-    getLaunchStrategy(paramString2).onReceiveProcessRunningAppInfos(paramString2, paramString1);
+      if (paramString1 != null) {
+        getLaunchStrategy(paramString2).onReceiveProcessRunningAppInfos(paramString2, paramString1);
+      }
+    }
   }
   
   public void preloadMiniApp(Bundle paramBundle)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        updateBaseLib();
-        if (paramBundle == null) {
-          return;
-        }
-        if (TextUtils.equals(paramBundle.getString("mini_key_preload_type"), "preload_game")) {
-          this.mGameLaunchStrategy.preloadProcess(paramBundle);
-        } else {
-          this.mAppLaunchStrategy.preloadProcess(paramBundle);
-        }
+      updateBaseLib();
+      if (paramBundle == null) {
+        return;
       }
-      finally {}
+      if (TextUtils.equals(paramBundle.getString("mini_key_preload_type"), "preload_game")) {
+        this.mGameLaunchStrategy.preloadProcess(paramBundle);
+      } else {
+        this.mAppLaunchStrategy.preloadProcess(paramBundle);
+      }
+      return;
     }
+    finally {}
   }
   
   public void registerClientMessenger(String paramString, Messenger paramMessenger)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramMessenger == null)) {
-      return;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramMessenger == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("registerClientMessenger pName=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" messenger:");
+      localStringBuilder.append(paramMessenger);
+      QMLog.w("minisdk-start_LaunchManagerService", localStringBuilder.toString());
+      getLaunchStrategy(paramString).registerProcessMessenger(paramString, paramMessenger);
     }
-    QMLog.w("minisdk-start_LaunchManagerService", "registerClientMessenger pName=" + paramString + " messenger:" + paramMessenger);
-    getLaunchStrategy(paramString).registerProcessMessenger(paramString, paramMessenger);
   }
   
   public void registerProcessInfo(List<MiniProcessorConfig> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.size() <= 0) {
+        return;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -372,67 +358,77 @@ public class LaunchManagerService
   
   public boolean sendCmdToMiniProcess(int paramInt, Bundle paramBundle, MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver)
   {
-    if (paramMiniAppInfo == null) {
-      QMLog.e("minisdk-start_LaunchManagerService", "sendCmdToMiniProcess failed! miniAppInfo is null.");
-    }
-    do
+    if (paramMiniAppInfo == null)
     {
+      QMLog.e("minisdk-start_LaunchManagerService", "sendCmdToMiniProcess failed! miniAppInfo is null.");
       return false;
-      Message localMessage = Message.obtain();
-      localMessage.what = paramInt;
-      Bundle localBundle = paramBundle;
-      if (paramBundle == null) {
-        localBundle = new Bundle();
-      }
-      localBundle.putParcelable("KEY_APPINFO", paramMiniAppInfo);
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = paramInt;
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    localBundle.putParcelable("KEY_APPINFO", paramMiniAppInfo);
+    if (paramResultReceiver != null) {
+      localBundle.putParcelable("receiver", paramResultReceiver);
+    }
+    localMessage.setData(localBundle);
+    try
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("Messenger sendCmdToMiniProcess cmd=");
+      paramBundle.append(paramInt);
+      QMLog.i("minisdk-start_LaunchManagerService", paramBundle.toString());
+      getLaunchStrategy(paramMiniAppInfo).sendMessageToMiniProcess(paramMiniAppInfo, localMessage);
+      return true;
+    }
+    catch (Throwable paramBundle)
+    {
+      QMLog.e("minisdk-start_LaunchManagerService", "Messenger sendCmdToMiniProcess exception!", paramBundle);
       if (paramResultReceiver != null) {
-        localBundle.putParcelable("receiver", paramResultReceiver);
+        paramResultReceiver.send(-1, new Bundle());
       }
-      localMessage.setData(localBundle);
-      try
-      {
-        QMLog.i("minisdk-start_LaunchManagerService", "Messenger sendCmdToMiniProcess cmd=" + paramInt);
-        getLaunchStrategy(paramMiniAppInfo).sendMessageToMiniProcess(paramMiniAppInfo, localMessage);
-        return true;
-      }
-      catch (Throwable paramBundle)
-      {
-        QMLog.e("minisdk-start_LaunchManagerService", "Messenger sendCmdToMiniProcess exception!", paramBundle);
-      }
-    } while (paramResultReceiver == null);
-    paramResultReceiver.send(-1, new Bundle());
+    }
     return false;
   }
   
   public void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    if (paramMiniAppInfo == null) {
-      QMLog.e("minisdk-start_LaunchManagerService", "startMiniApp params is empty! ,appConfig=" + paramMiniAppInfo + " Activity=" + paramActivity);
-    }
-    do
+    if (paramMiniAppInfo == null)
     {
+      paramBundle = new StringBuilder();
+      paramBundle.append("startMiniApp params is empty! ,appConfig=");
+      paramBundle.append(paramMiniAppInfo);
+      paramBundle.append(" Activity=");
+      paramBundle.append(paramActivity);
+      QMLog.e("minisdk-start_LaunchManagerService", paramBundle.toString());
       return;
-      QMLog.i("minisdk-start_LaunchManagerService", "---startApp---- appid:" + paramMiniAppInfo.appId + " appName:" + paramMiniAppInfo.name);
-      doStartMiniApp(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
-      if ((paramActivity != null) && (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.launchParam.scene != 2004)) {
-        paramActivity.overridePendingTransition(R.anim.mini_sdk_activity_slide_in_from_bottom, R.anim.mini_sdk_activity_slide_out_to_back);
-      }
-    } while ((paramMiniAppInfo.isFakeAppInfo()) || (paramMiniAppInfo.isShortcutFakeApp()));
-    paramResultReceiver = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-    if (paramMiniAppInfo.launchParam != null)
-    {
-      paramActivity = String.valueOf(paramMiniAppInfo.launchParam.scene);
-      if (paramMiniAppInfo.via == null) {
-        break label218;
-      }
     }
-    label218:
-    for (paramBundle = paramMiniAppInfo.via;; paramBundle = "")
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("---startApp---- appid:");
+    localStringBuilder.append(paramMiniAppInfo.appId);
+    localStringBuilder.append(" appName:");
+    localStringBuilder.append(paramMiniAppInfo.name);
+    QMLog.i("minisdk-start_LaunchManagerService", localStringBuilder.toString());
+    doStartMiniApp(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
+    if ((paramActivity != null) && (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.launchParam.scene != 2004)) {
+      paramActivity.overridePendingTransition(R.anim.mini_sdk_activity_slide_in_from_bottom, R.anim.mini_sdk_activity_slide_out_to_back);
+    }
+    if ((!paramMiniAppInfo.isFakeAppInfo()) && (!paramMiniAppInfo.isShortcutFakeApp()))
     {
+      paramResultReceiver = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+      if (paramMiniAppInfo.launchParam != null) {
+        paramActivity = String.valueOf(paramMiniAppInfo.launchParam.scene);
+      } else {
+        paramActivity = "";
+      }
+      if (paramMiniAppInfo.via != null) {
+        paramBundle = paramMiniAppInfo.via;
+      } else {
+        paramBundle = "";
+      }
       paramResultReceiver.useUserApp(paramMiniAppInfo.appId, paramMiniAppInfo.verType, 0, paramActivity, paramBundle, null, new LaunchManagerService.1(this));
-      return;
-      paramActivity = "";
-      break;
     }
   }
   
@@ -449,7 +445,7 @@ public class LaunchManagerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.LaunchManagerService
  * JD-Core Version:    0.7.0.1
  */

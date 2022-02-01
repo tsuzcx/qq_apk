@@ -3,7 +3,8 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.video;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.open.appstore.dl.DownloadProxy;
 import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.qphone.base.util.QLog;
@@ -19,66 +20,85 @@ class ADVideoAppDownloadManager$2
     String str1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.a;
     String str2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.e;
     Object localObject2;
-    if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+    {
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.b)))
+      {
+        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+        ((ADVideoAppDownloadData)localObject2).c = ADVideoAppDownloadManager.a(this.this$0, ((ADVideoAppDownloadData)localObject2).b, 1);
+      }
+      localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c;
+      if (TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ADVideoAppDownloadManager", 2, "downloadUrl null");
+        }
+        return;
+      }
+      Object localObject3 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("VideoDownloadUrl : ");
+      localStringBuilder.append((String)localObject2);
+      ((IRIJAdLogService)localObject3).d("ADVideoAppDownloadManager", localStringBuilder.toString());
+      localObject3 = new Bundle();
+      ((Bundle)localObject3).putString(DownloadConstants.f, (String)localObject1);
+      ((Bundle)localObject3).putString(DownloadConstants.b, str1);
+      ((Bundle)localObject3).putString(DownloadConstants.j, (String)localObject2);
+      ((Bundle)localObject3).putString(DownloadConstants.l, str2);
+      ((Bundle)localObject3).putInt(DownloadConstants.k, 2);
+      ((Bundle)localObject3).putInt(DownloadConstants.G, 0);
+      ((Bundle)localObject3).putBoolean(DownloadConstants.y, false);
+      ((Bundle)localObject3).putInt(DownloadConstants.J, 0);
+      ((Bundle)localObject3).putBoolean(DownloadConstants.z, true);
+      ((Bundle)localObject3).putBoolean(DownloadConstants.h, true);
+      ((Bundle)localObject3).putBoolean(DownloadConstants.s, false);
+      ((Bundle)localObject3).putBoolean(DownloadConstants.L, false);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.f)) {
+        ((Bundle)localObject3).putString(DownloadConstants.i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.f);
+      }
+      ((Bundle)localObject3).putString("big_brother_ref_source_key", "biz_src_feeds_kandian");
       if (QLog.isColorLevel())
       {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("startRealDownload packageName:").append((String)localObject1).append(", appid:").append(str1).append(", appName:").append(str2);
-        QLog.d("ADVideoAppDownloadManager", 2, ((StringBuilder)localObject2).toString());
-      }
-    }
-    do
-    {
-      String str3;
-      do
-      {
-        return;
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.b))) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c = ADVideoAppDownloadManager.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.b, 1);
-        }
-        str3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c;
-        if (!TextUtils.isEmpty(str3)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ADVideoAppDownloadManager", 2, "downloadUrl null");
-      return;
-      ReadInJoyAdLog.a("ADVideoAppDownloadManager", "VideoDownloadUrl : " + str3);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString(DownloadConstants.f, (String)localObject1);
-      ((Bundle)localObject2).putString(DownloadConstants.b, str1);
-      ((Bundle)localObject2).putString(DownloadConstants.j, str3);
-      ((Bundle)localObject2).putString(DownloadConstants.l, str2);
-      ((Bundle)localObject2).putInt(DownloadConstants.k, 2);
-      ((Bundle)localObject2).putInt(DownloadConstants.F, 0);
-      ((Bundle)localObject2).putBoolean(DownloadConstants.x, false);
-      ((Bundle)localObject2).putInt(DownloadConstants.I, 0);
-      ((Bundle)localObject2).putBoolean(DownloadConstants.y, true);
-      ((Bundle)localObject2).putBoolean(DownloadConstants.h, true);
-      ((Bundle)localObject2).putBoolean(DownloadConstants.r, false);
-      ((Bundle)localObject2).putBoolean(DownloadConstants.K, false);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.f)) {
-        ((Bundle)localObject2).putString(DownloadConstants.i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.f);
-      }
-      ((Bundle)localObject2).putString("big_brother_ref_source_key", "biz_src_feeds_kandian");
-      if (QLog.isColorLevel()) {
-        QLog.d("ADVideoAppDownloadManager", 2, "startRealDownload pkg:" + (String)localObject1 + ", appid:" + str1 + ", name:" + str2 + ", url:" + str3);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("startRealDownload pkg:");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(", appid:");
+        localStringBuilder.append(str1);
+        localStringBuilder.append(", name:");
+        localStringBuilder.append(str2);
+        localStringBuilder.append(", url:");
+        localStringBuilder.append((String)localObject2);
+        QLog.d("ADVideoAppDownloadManager", 2, localStringBuilder.toString());
       }
       this.this$0.a.remove(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
       this.this$0.a.add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
       localObject1 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localObject1 != null) && (!((Activity)localObject1).isFinishing())) {
-        break;
+      if ((localObject1 != null) && (!((Activity)localObject1).isFinishing()))
+      {
+        DownloadProxy.a().a((Activity)localObject1, (Bundle)localObject3, "biz_src_feeds_kandianads", null, 0);
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ADVideoAppDownloadManager", 2, "ac=null");
-    return;
-    DownloadProxy.a().a((Activity)localObject1, (Bundle)localObject2, "biz_src_feeds_kandianads", null, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("ADVideoAppDownloadManager", 2, "ac=null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("startRealDownload packageName:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(", appid:");
+      ((StringBuilder)localObject2).append(str1);
+      ((StringBuilder)localObject2).append(", appName:");
+      ((StringBuilder)localObject2).append(str2);
+      QLog.d("ADVideoAppDownloadManager", 2, ((StringBuilder)localObject2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

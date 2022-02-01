@@ -18,16 +18,13 @@ public class GetUserSelfInfoStep$Request
     try
     {
       localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
-      return new GetUserSelfInfoStep.Response(localRspGetUserSelfInfo);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        SLog.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
-      }
+      paramArrayOfByte.printStackTrace();
+      SLog.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
     }
+    return new GetUserSelfInfoStep.Response(localRspGetUserSelfInfo);
   }
   
   public String a()
@@ -35,14 +32,14 @@ public class GetUserSelfInfoStep$Request
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserSelfInfoStep.Request
  * JD-Core Version:    0.7.0.1
  */

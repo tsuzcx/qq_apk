@@ -41,16 +41,20 @@ public abstract class TextureSurfaceRenderer
   
   private EGLConfig chooseEglConfig()
   {
-    int[] arrayOfInt1 = new int[1];
+    Object localObject = new int[1];
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt2 = getConfig();
-    if (!this.egl.eglChooseConfig(this.eglDisplay, arrayOfInt2, arrayOfEGLConfig, 1, arrayOfInt1)) {
-      throw new IllegalArgumentException("Failed to choose config: " + GLUtils.getEGLErrorString(this.egl.eglGetError()));
+    int[] arrayOfInt = getConfig();
+    if (this.egl.eglChooseConfig(this.eglDisplay, arrayOfInt, arrayOfEGLConfig, 1, (int[])localObject))
+    {
+      if (localObject[0] > 0) {
+        return arrayOfEGLConfig[0];
+      }
+      return null;
     }
-    if (arrayOfInt1[0] > 0) {
-      return arrayOfEGLConfig[0];
-    }
-    return null;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Failed to choose config: ");
+    ((StringBuilder)localObject).append(GLUtils.getEGLErrorString(this.egl.eglGetError()));
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   private EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
@@ -82,28 +86,34 @@ public abstract class TextureSurfaceRenderer
   
   private void initGL()
   {
-    do
+    try
     {
-      try
+      this.egl = ((EGL10)EGLContext.getEGL());
+      this.eglDisplay = this.egl.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+      Object localObject = new int[2];
+      this.egl.eglInitialize(this.eglDisplay, (int[])localObject);
+      localObject = chooseEglConfig();
+      this.eglContext = createContext(this.egl, this.eglDisplay, (EGLConfig)localObject);
+      this.eglSurface = this.egl.eglCreateWindowSurface(this.eglDisplay, (EGLConfig)localObject, this.surface, null);
+      if ((this.eglSurface != null) && (this.eglSurface != EGL10.EGL_NO_SURFACE))
       {
-        this.egl = ((EGL10)EGLContext.getEGL());
-        this.eglDisplay = this.egl.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-        Object localObject = new int[2];
-        this.egl.eglInitialize(this.eglDisplay, (int[])localObject);
-        localObject = chooseEglConfig();
-        this.eglContext = createContext(this.egl, this.eglDisplay, (EGLConfig)localObject);
-        this.eglSurface = this.egl.eglCreateWindowSurface(this.eglDisplay, (EGLConfig)localObject, this.surface, null);
-        if ((this.eglSurface == null) || (this.eglSurface == EGL10.EGL_NO_SURFACE)) {
-          throw new RuntimeException("GL Error: " + GLUtils.getEGLErrorString(this.egl.eglGetError()));
+        if (this.egl.eglMakeCurrent(this.eglDisplay, this.eglSurface, this.eglSurface, this.eglContext)) {
+          return;
         }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("GL Make current error: ");
+        ((StringBuilder)localObject).append(GLUtils.getEGLErrorString(this.egl.eglGetError()));
+        throw new RuntimeException(((StringBuilder)localObject).toString());
       }
-      catch (Throwable localThrowable)
-      {
-        QMLog.e("miniapp-embedded", "initGL error.", localThrowable);
-        return;
-      }
-    } while (this.egl.eglMakeCurrent(this.eglDisplay, this.eglSurface, this.eglSurface, this.eglContext));
-    throw new RuntimeException("GL Make current error: " + GLUtils.getEGLErrorString(this.egl.eglGetError()));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("GL Error: ");
+      ((StringBuilder)localObject).append(GLUtils.getEGLErrorString(this.egl.eglGetError()));
+      throw new RuntimeException(((StringBuilder)localObject).toString());
+    }
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("miniapp-embedded", "initGL error.", localThrowable);
+    }
   }
   
   private void pingFps()
@@ -148,43 +158,50 @@ public abstract class TextureSurfaceRenderer
   
   public void run()
   {
-    try
+    for (;;)
     {
-      initGL();
-      initGLComponents();
-      QMLog.d("miniapp-embedded", "OpenGL init OK.");
-      while (this.running) {
-        if (!this.pause)
+      try
+      {
+        initGL();
+        initGLComponents();
+        QMLog.d("miniapp-embedded", "OpenGL init OK.");
+        if (this.running)
         {
-          long l1 = System.currentTimeMillis();
+          if (this.pause) {
+            continue;
+          }
+          l1 = System.currentTimeMillis();
           pingFps();
           if (draw()) {
             this.egl.eglSwapBuffers(this.eglDisplay, this.eglSurface);
           }
           long l2 = System.currentTimeMillis();
           l1 = 16L - (l2 - l1);
-          if (l1 > 0L) {
-            try
-            {
-              Thread.sleep(l1);
-            }
-            catch (InterruptedException localInterruptedException) {}
+          if (l1 <= 0L) {
+            continue;
           }
         }
       }
+      catch (Throwable localThrowable)
+      {
+        long l1;
+        QMLog.e("miniapp-embedded", "TextureSurfaceRenderer run error,", localThrowable);
+        return;
+      }
+      try
+      {
+        Thread.sleep(l1);
+      }
+      catch (InterruptedException localInterruptedException) {}
       deinitGLComponents();
       deinitGL();
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QMLog.e("miniapp-embedded", "TextureSurfaceRenderer run error,", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.TextureRender.TextureSurfaceRenderer
  * JD-Core Version:    0.7.0.1
  */

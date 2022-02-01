@@ -31,12 +31,13 @@ public final class iy
   
   private static int a(Uri paramUri)
   {
-    if (paramUri == null) {}
-    do
-    {
+    if (paramUri == null) {
       return -1;
-      paramUri = paramUri.getLastPathSegment();
-    } while (paramUri == null);
+    }
+    paramUri = paramUri.getLastPathSegment();
+    if (paramUri == null) {
+      return -1;
+    }
     try
     {
       int i = Integer.parseInt(paramUri);
@@ -82,42 +83,38 @@ public final class iy
     if (this.d == null) {
       this.d = new ja(this);
     }
-    ja localja = this.d;
-    Object localObject = null;
+    Object localObject2 = this.d;
+    Object localObject1 = null;
     TileProvider localTileProvider = paramTileOverlayOptions.getTileProvider();
-    if (localTileProvider != null)
-    {
-      if (!(localTileProvider instanceof je)) {
-        break label134;
-      }
-      localObject = new iz(localja.a, paramTileOverlayOptions);
-    }
-    for (;;)
-    {
-      paramTileOverlayOptions = localja.a;
-      if ((localObject != null) && (((ix)localObject).i > 0))
-      {
-        "zl save tileOverlay:".concat(String.valueOf(localObject));
-        new StringBuilder("id:").append(((ix)localObject).i).toString();
-        os.a();
-        paramTileOverlayOptions.b.put(Integer.valueOf(((ix)localObject).i), localObject);
-      }
-      return new TileOverlay((ix)localObject);
-      label134:
-      if ((localTileProvider instanceof ka)) {
-        localObject = new jb(localja.a, paramTileOverlayOptions);
+    if (localTileProvider != null) {
+      if ((localTileProvider instanceof je)) {
+        localObject1 = new iz(((ja)localObject2).a, paramTileOverlayOptions);
+      } else if ((localTileProvider instanceof ka)) {
+        localObject1 = new jb(((ja)localObject2).a, paramTileOverlayOptions);
       } else {
-        localObject = new ix(localja.a, paramTileOverlayOptions);
+        localObject1 = new ix(((ja)localObject2).a, paramTileOverlayOptions);
       }
     }
+    paramTileOverlayOptions = ((ja)localObject2).a;
+    if ((localObject1 != null) && (((ix)localObject1).i > 0))
+    {
+      "zl save tileOverlay:".concat(String.valueOf(localObject1));
+      localObject2 = new StringBuilder("id:");
+      ((StringBuilder)localObject2).append(((ix)localObject1).i);
+      ((StringBuilder)localObject2).toString();
+      os.a();
+      paramTileOverlayOptions.b.put(Integer.valueOf(((ix)localObject1).i), localObject1);
+    }
+    return new TileOverlay((ix)localObject1);
   }
   
   final void a(int paramInt1, int paramInt2)
   {
-    if (this.a == null) {
+    pf localpf = this.a;
+    if (localpf == null) {
       return;
     }
-    this.a.b(paramInt1, paramInt2);
+    localpf.b(paramInt1, paramInt2);
   }
   
   public final byte[] a(String paramString)
@@ -140,34 +137,41 @@ public final class iy
       i = a((Uri)localObject1, "x");
       int j = a((Uri)localObject1, "y");
       int k = a((Uri)localObject1, "z");
-      if ((paramString.l == null) || (paramString.l.getTileProvider() == null) || (k < 0))
+      localObject1 = paramString.l;
+      if ((localObject1 != null) && (paramString.l.getTileProvider() != null) && (k >= 0))
       {
-        or.b("TileOverlay", "无效坐标，返回空瓦块");
-        return fy.a();
-      }
-      localObject1 = om.b(paramString.l.getVersionInfo());
-      localObject1 = String.format(ix.h, new Object[] { localObject1, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-      localObject2 = paramString.l.getTileProvider().getTile(i, j, k);
-      if (localObject2 == null)
-      {
-        or.b("TileOverlay", "Provider没有瓦片数据，返回空瓦块");
-        return fy.a();
-      }
-      localObject2 = ((Tile)localObject2).mData;
-      if ((localObject2 != null) && (localObject2.length > 0))
-      {
-        "put to cache of cacheId:".concat(String.valueOf(localObject1));
-        os.a();
-        iu localiu = new iu((byte[])localObject2);
-        if (paramString.m != null)
+        localObject1 = om.b(paramString.l.getVersionInfo());
+        localObject1 = String.format(ix.h, new Object[] { localObject1, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+        localObject2 = paramString.l.getTileProvider().getTile(i, j, k);
+        if (localObject2 == null)
         {
-          oh localoh = oc.a(paramString.m);
-          if (localoh != null) {
-            localoh.b((String)localObject1, localiu);
-          } else {
+          or.b("TileOverlay", "Provider没有瓦片数据，返回空瓦块");
+          return fy.a();
+        }
+        localObject2 = ((Tile)localObject2).mData;
+        if ((localObject2 != null) && (localObject2.length > 0))
+        {
+          "put to cache of cacheId:".concat(String.valueOf(localObject1));
+          os.a();
+          iu localiu = new iu((byte[])localObject2);
+          if (paramString.m != null)
+          {
+            oh localoh = oc.a(paramString.m);
+            if (localoh != null)
+            {
+              localoh.b((String)localObject1, localiu);
+              return localObject2;
+            }
             paramString.m.a((String)localObject1, localiu);
+            return localObject2;
           }
         }
+      }
+      else
+      {
+        or.b("TileOverlay", "无效坐标，返回空瓦块");
+        paramString = fy.a();
+        return paramString;
       }
     }
     catch (Exception paramString)
@@ -180,7 +184,7 @@ public final class iy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.iy
  * JD-Core Version:    0.7.0.1
  */

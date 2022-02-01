@@ -15,6 +15,7 @@ public final class BaseListView$onScrollListener$1
   
   public void onScrollStateChanged(@Nullable AbsListView paramAbsListView, int paramInt)
   {
+    int i = 1;
     if (paramInt == 1)
     {
       Object localObject = this.a.a();
@@ -22,19 +23,19 @@ public final class BaseListView$onScrollListener$1
         localObject = (Unit)((Function0)localObject).invoke();
       }
     }
-    if ((paramAbsListView != null) && (paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (!BaseListView.a(this.a))) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0) {
-        BaseListView.a(this.a).b();
-      }
-      return;
+    if ((paramAbsListView != null) && (paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (!BaseListView.a(this.a))) {
+      paramInt = i;
+    } else {
+      paramInt = 0;
+    }
+    if (paramInt != 0) {
+      BaseListView.a(this.a).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.framework.mvp.BaseListView.onScrollListener.1
  * JD-Core Version:    0.7.0.1
  */

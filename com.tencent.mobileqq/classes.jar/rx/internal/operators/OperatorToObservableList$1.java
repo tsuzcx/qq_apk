@@ -17,19 +17,20 @@ class OperatorToObservableList$1
   
   public void onCompleted()
   {
-    if (!this.completed) {
+    if (!this.completed)
+    {
       this.completed = true;
-    }
-    try
-    {
-      ArrayList localArrayList = new ArrayList(this.list);
-      this.list = null;
-      this.val$producer.setValue(localArrayList);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      Exceptions.throwOrReport(localThrowable, this);
+      try
+      {
+        ArrayList localArrayList = new ArrayList(this.list);
+        this.list = null;
+        this.val$producer.setValue(localArrayList);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        Exceptions.throwOrReport(localThrowable, this);
+      }
     }
   }
   
@@ -52,7 +53,7 @@ class OperatorToObservableList$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorToObservableList.1
  * JD-Core Version:    0.7.0.1
  */

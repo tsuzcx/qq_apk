@@ -19,11 +19,15 @@ public class MiniAppLauncher
   
   public static boolean isFakeUrl(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("https://m.q.qq.com/a/")) && (!paramString.startsWith("http://m.q.qq.com/a/"))) {
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if ((paramString.startsWith("https://m.q.qq.com/a/")) || (paramString.startsWith("http://m.q.qq.com/a/"))) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private static boolean isMiniAppADSchemeV3(String paramString)
@@ -57,16 +61,20 @@ public class MiniAppLauncher
   
   public static boolean isMiniAppUrl(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!isFakeUrl(paramString)) && (!isMiniAppScheme(paramString))) {
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if ((isFakeUrl(paramString)) || (isMiniAppScheme(paramString))) {
+      bool1 = true;
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniAppLauncher
  * JD-Core Version:    0.7.0.1
  */

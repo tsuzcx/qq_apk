@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewTreeObserver;
 import android.view.Window;
@@ -79,7 +80,7 @@ public class QQCustomDialog
   public QQCustomDialog(Context paramContext)
   {
     super(paramContext);
-    super.getWindow().setWindowAnimations(2131755132);
+    super.getWindow().setWindowAnimations(2131755294);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -89,7 +90,7 @@ public class QQCustomDialog
   public QQCustomDialog(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    super.getWindow().setWindowAnimations(2131755132);
+    super.getWindow().setWindowAnimations(2131755294);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -99,7 +100,7 @@ public class QQCustomDialog
   protected QQCustomDialog(Context paramContext, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     super(paramContext, paramBoolean, paramOnCancelListener);
-    super.getWindow().setWindowAnimations(2131755132);
+    super.getWindow().setWindowAnimations(2131755294);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -118,12 +119,12 @@ public class QQCustomDialog
   
   public static void showPermissionSettingDialog(Activity paramActivity, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(paramActivity, 2131755842);
-    localQQCustomDialog.setContentView(2131559084);
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(paramActivity, 2131756189);
+    localQQCustomDialog.setContentView(2131558978);
     localQQCustomDialog.setTitle(paramString1);
     localQQCustomDialog.setMessage(paramString2);
-    localQQCustomDialog.setNegativeButton(2131690800, paramOnClickListener1);
-    localQQCustomDialog.setPositiveButton(2131694615, paramOnClickListener2);
+    localQQCustomDialog.setNegativeButton(2131690728, paramOnClickListener1);
+    localQQCustomDialog.setPositiveButton(2131694583, paramOnClickListener2);
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     if (paramString1 != null)
     {
@@ -132,7 +133,7 @@ public class QQCustomDialog
     }
     else
     {
-      paramActivity = QQUIDelegate.a(2131710178);
+      paramActivity = QQUIDelegate.a(2131710159);
     }
     localQQCustomDialog.setTitle(paramActivity);
     if (paramString2 != null)
@@ -142,11 +143,11 @@ public class QQCustomDialog
     }
     else
     {
-      paramActivity = QQUIDelegate.a(2131710170);
+      paramActivity = QQUIDelegate.a(2131710151);
     }
     localQQCustomDialog.setMessage(paramActivity);
-    localQQCustomDialog.setNegativeButton(QQUIDelegate.a(2131710177), paramOnClickListener1);
-    localQQCustomDialog.setPositiveButton(QQUIDelegate.a(2131710162), paramOnClickListener2);
+    localQQCustomDialog.setNegativeButton(QQUIDelegate.a(2131710158), paramOnClickListener1);
+    localQQCustomDialog.setPositiveButton(QQUIDelegate.a(2131710143), paramOnClickListener2);
     localQQCustomDialog.setOnCancelListener(paramOnCancelListener);
     localQQCustomDialog.show();
   }
@@ -162,17 +163,20 @@ public class QQCustomDialog
   
   public void addPreviewView(View paramView)
   {
-    if (paramView == null) {}
-    while (this.rootView == null) {
+    if (paramView == null) {
+      return;
+    }
+    Object localObject = this.rootView;
+    if (localObject == null) {
       return;
     }
     int i = 0;
-    int j = this.rootView.getChildCount();
+    int j = ((ViewGroup)localObject).getChildCount();
     while (i < j)
     {
-      View localView = this.rootView.getChildAt(i);
-      if ((localView != null) && (localView.getVisibility() == 0)) {
-        localView.setVisibility(4);
+      localObject = this.rootView.getChildAt(i);
+      if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {
+        ((View)localObject).setVisibility(4);
       }
       i += 1;
     }
@@ -199,11 +203,12 @@ public class QQCustomDialog
   
   public void adjustMessageBottomMargin(float paramFloat)
   {
-    if (this.bodyLayout != null)
+    Object localObject = this.bodyLayout;
+    if (localObject != null)
     {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-      localLayoutParams.bottomMargin = QQUIDelegate.a(getContext(), paramFloat);
-      this.bodyLayout.setLayoutParams(localLayoutParams);
+      localObject = (RelativeLayout.LayoutParams)((LinearLayout)localObject).getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = QQUIDelegate.a(getContext(), paramFloat);
+      this.bodyLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
@@ -224,12 +229,13 @@ public class QQCustomDialog
   
   public void adjustMessageTopBottomMargin(float paramFloat1, float paramFloat2)
   {
-    if (this.bodyLayout != null)
+    Object localObject = this.bodyLayout;
+    if (localObject != null)
     {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-      localLayoutParams.bottomMargin = QQUIDelegate.a(getContext(), paramFloat2);
-      localLayoutParams.topMargin = QQUIDelegate.a(getContext(), paramFloat1);
-      this.bodyLayout.setLayoutParams(localLayoutParams);
+      localObject = (RelativeLayout.LayoutParams)((LinearLayout)localObject).getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = QQUIDelegate.a(getContext(), paramFloat2);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = QQUIDelegate.a(getContext(), paramFloat1);
+      this.bodyLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
@@ -255,34 +261,33 @@ public class QQCustomDialog
     //   9: astore_1
     //   10: aload_0
     //   11: invokestatic 285	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
-    //   14: return
-    //   15: astore_1
-    //   16: aload_0
-    //   17: invokestatic 285	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
-    //   20: aload_1
-    //   21: athrow
+    //   14: aload_1
+    //   15: athrow
+    //   16: astore_1
+    //   17: goto -13 -> 4
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	22	0	this	QQCustomDialog
-    //   9	1	1	localException	java.lang.Exception
-    //   15	6	1	localObject	Object
+    //   0	20	0	this	QQCustomDialog
+    //   9	6	1	localObject	Object
+    //   16	1	1	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   0	4	9	java/lang/Exception
-    //   0	4	15	finally
+    //   0	4	9	finally
+    //   0	4	16	java/lang/Exception
   }
   
   public void dismissMessage()
   {
-    if (this.bodyLayout != null) {
-      this.bodyLayout.setVisibility(8);
+    LinearLayout localLinearLayout = this.bodyLayout;
+    if (localLinearLayout != null) {
+      localLinearLayout.setVisibility(8);
     }
   }
   
   public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
     if (paramAccessibilityEvent.getEventType() == 32) {
-      paramAccessibilityEvent.getText().add(getContext().getString(2131691197));
+      paramAccessibilityEvent.getText().add(getContext().getString(2131691118));
     }
     super.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
     paramAccessibilityEvent.setClassName(Dialog.class.getName());
@@ -301,7 +306,8 @@ public class QQCustomDialog
   
   public boolean getCheckBoxState()
   {
-    if ((this.checkBox != null) && (this.checkBox.getVisibility() == 0)) {
+    CheckBox localCheckBox = this.checkBox;
+    if ((localCheckBox != null) && (localCheckBox.getVisibility() == 0)) {
       return this.checkBox.isChecked();
     }
     return false;
@@ -309,23 +315,21 @@ public class QQCustomDialog
   
   protected int getDialogListItemLayout()
   {
-    return 2131559072;
+    return 2131558966;
   }
   
   public String getEditString()
   {
-    Object localObject;
-    if (this.dialogEdit == null) {
-      localObject = null;
+    Object localObject = this.dialogEdit;
+    if (localObject == null) {
+      return null;
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = this.dialogEdit.getText().toString();
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return this.dialogEdit.getHint().toString();
+    String str = ((EditText)localObject).getText().toString();
+    localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = this.dialogEdit.getHint().toString();
+    }
+    return localObject;
   }
   
   public EditText getEditText()
@@ -345,20 +349,22 @@ public class QQCustomDialog
   
   public TextView getMessageTextView_Plain_Text()
   {
-    return (TextView)findViewById(2131365809);
+    return (TextView)findViewById(2131365646);
   }
   
   public int getRootViewHeight()
   {
-    if (this.rootView == null) {
+    ViewGroup localViewGroup = this.rootView;
+    if (localViewGroup == null) {
       return -1;
     }
-    return this.rootView.getMeasuredHeight();
+    return localViewGroup.getMeasuredHeight();
   }
   
   public boolean getSwitchState()
   {
-    if ((this.mSwitch != null) && (this.mSwitch.getVisibility() == 0)) {
+    FormSwitchItem localFormSwitchItem = this.mSwitch;
+    if ((localFormSwitchItem != null) && (localFormSwitchItem.getVisibility() == 0)) {
       return this.mSwitch.a();
     }
     return false;
@@ -376,18 +382,19 @@ public class QQCustomDialog
   
   public boolean hasPreViewInDialog()
   {
-    if (this.rootView == null) {
+    Object localObject = this.rootView;
+    if (localObject == null) {
       return false;
     }
-    int i = this.rootView.getChildCount() - 1;
+    int i = ((ViewGroup)localObject).getChildCount() - 1;
     if (i < 0) {
       return false;
     }
-    View localView = this.rootView.getChildAt(i);
-    if (localView == null) {
+    localObject = this.rootView.getChildAt(i);
+    if (localObject == null) {
       return false;
     }
-    return ((localView.getTag() instanceof Integer)) && (((Integer)localView.getTag()).intValue() == 1001);
+    return ((((View)localObject).getTag() instanceof Integer)) && (((Integer)((View)localObject).getTag()).intValue() == 1001);
   }
   
   public void hideSoftInputFromWindow()
@@ -399,42 +406,36 @@ public class QQCustomDialog
   
   public void removePreviewView()
   {
-    if (this.rootView == null) {
+    Object localObject = this.rootView;
+    if (localObject == null) {
       return;
     }
-    int i = this.rootView.getChildCount() - 1;
+    int i = ((ViewGroup)localObject).getChildCount() - 1;
     if (i >= 0) {
       this.rootView.removeViewAt(i);
     }
     i -= 1;
-    label34:
-    View localView;
-    if (i >= 0)
+    while (i >= 0)
     {
-      localView = this.rootView.getChildAt(i);
-      if (localView != null) {
-        break label58;
-      }
-    }
-    for (;;)
-    {
-      i -= 1;
-      break label34;
-      break;
-      label58:
-      if (((localView.getTag() instanceof Integer)) && (((Integer)localView.getTag()).intValue() == 1001))
+      localObject = this.rootView.getChildAt(i);
+      if (localObject != null)
       {
-        localView.setVisibility(0);
-        return;
+        if (((((View)localObject).getTag() instanceof Integer)) && (((Integer)((View)localObject).getTag()).intValue() == 1001))
+        {
+          ((View)localObject).setVisibility(0);
+          return;
+        }
+        ((View)localObject).setVisibility(0);
       }
-      localView.setVisibility(0);
+      i -= 1;
     }
   }
   
   public void setBackground(int paramInt)
   {
-    if (this.rootView != null) {
-      this.rootView.setBackgroundResource(paramInt);
+    ViewGroup localViewGroup = this.rootView;
+    if (localViewGroup != null) {
+      localViewGroup.setBackgroundResource(paramInt);
     }
   }
   
@@ -452,11 +453,12 @@ public class QQCustomDialog
   
   public QQCustomDialog setCheckBox(String paramString, boolean paramBoolean, DialogInterface.OnClickListener paramOnClickListener)
   {
-    findViewById(2131370089).setVisibility(0);
+    findViewById(2131369767).setVisibility(0);
     this.checkTxt.setText(paramString);
-    if (this.checkBox != null)
+    paramString = this.checkBox;
+    if (paramString != null)
     {
-      this.checkBox.setChecked(paramBoolean);
+      paramString.setChecked(paramBoolean);
       this.checkBox.setOnCheckedChangeListener(new QQCustomDialog.3(this, paramOnClickListener));
     }
     setSeperatorState();
@@ -466,34 +468,34 @@ public class QQCustomDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.title = ((TextView)findViewById(2131365811));
-    this.text = ((TextView)findViewById(2131365807));
-    this.dialogEdit = ((EditText)findViewById(2131365791));
-    this.countText = ((TextView)findViewById(2131365784));
-    this.dummyFirstPreviewImage = ((TextView)findViewById(2131366077));
-    this.previewImage = ((TextView)findViewById(2131373455));
-    this.operateImage = ((ImageView)findViewById(2131372559));
-    this.framePreviewImage = ((ImageView)findViewById(2131367459));
-    this.framePreview = findViewById(2131367458);
-    this.mVideoIcon = ((ImageView)findViewById(2131381391));
-    this.mVideoSize = ((TextView)findViewById(2131370848));
-    this.mVideoTime = ((TextView)findViewById(2131370849));
-    this.lBtn = ((TextView)findViewById(2131365796));
-    this.rBtn = ((TextView)findViewById(2131365802));
-    this.editPicTag = ((TextView)findViewById(2131365792));
-    this.progressBar = ((ProgressBar)findViewById(2131365835));
+    this.title = ((TextView)findViewById(2131365648));
+    this.text = ((TextView)findViewById(2131365644));
+    this.dialogEdit = ((EditText)findViewById(2131365628));
+    this.countText = ((TextView)findViewById(2131365621));
+    this.dummyFirstPreviewImage = ((TextView)findViewById(2131365994));
+    this.previewImage = ((TextView)findViewById(2131373032));
+    this.operateImage = ((ImageView)findViewById(2131372143));
+    this.framePreviewImage = ((ImageView)findViewById(2131367217));
+    this.framePreview = findViewById(2131367216);
+    this.mVideoIcon = ((ImageView)findViewById(2131380648));
+    this.mVideoSize = ((TextView)findViewById(2131370478));
+    this.mVideoTime = ((TextView)findViewById(2131370479));
+    this.lBtn = ((TextView)findViewById(2131365633));
+    this.rBtn = ((TextView)findViewById(2131365639));
+    this.editPicTag = ((TextView)findViewById(2131365629));
+    this.progressBar = ((ProgressBar)findViewById(2131365672));
     this.lBtn.setVisibility(8);
     this.rBtn.setVisibility(8);
-    this.bodyLayout = ((LinearLayout)findViewById(2131363757));
-    this.checkBox = ((CheckBox)findViewById(2131379720));
-    this.mSwitch = ((FormSwitchItem)findViewById(2131379722));
-    this.checkTxt = ((TextView)findViewById(2131380749));
-    this.list = ((ListView)findViewById(2131370452));
-    this.rootView = ((ViewGroup)findViewById(2131365803));
+    this.bodyLayout = ((LinearLayout)findViewById(2131363688));
+    this.checkBox = ((CheckBox)findViewById(2131379059));
+    this.mSwitch = ((FormSwitchItem)findViewById(2131379061));
+    this.checkTxt = ((TextView)findViewById(2131380017));
+    this.list = ((ListView)findViewById(2131370110));
+    this.rootView = ((ViewGroup)findViewById(2131365640));
     if ((this.list != null) && (Build.VERSION.SDK_INT >= 9)) {
       this.list.setOverScrollMode(2);
     }
-    this.mBrandColorManager.a(findViewById(2131365767));
+    this.mBrandColorManager.a(findViewById(2131365604));
   }
   
   public void setEditLint(String paramString)
@@ -525,30 +527,31 @@ public class QQCustomDialog
   
   public QQCustomDialog setImageOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    if ((paramOnClickListener != null) && (this.framePreviewImage != null))
+    if (paramOnClickListener != null)
     {
-      this.framePreviewImage.setOnClickListener(paramOnClickListener);
-      this.countText.setVisibility(8);
+      ImageView localImageView = this.framePreviewImage;
+      if (localImageView != null)
+      {
+        localImageView.setOnClickListener(paramOnClickListener);
+        this.countText.setVisibility(8);
+      }
     }
     return this;
   }
   
   public QQCustomDialog setItems(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    Object localObject = null;
+    String[] arrayOfString2;
     try
     {
-      String[] arrayOfString = getContext().getResources().getStringArray(paramInt);
-      localObject = arrayOfString;
+      String[] arrayOfString1 = getContext().getResources().getStringArray(paramInt);
     }
     catch (Resources.NotFoundException localNotFoundException)
     {
-      for (;;)
-      {
-        localNotFoundException.printStackTrace();
-      }
+      localNotFoundException.printStackTrace();
+      arrayOfString2 = null;
     }
-    return setItems(localObject, paramOnClickListener);
+    return setItems(arrayOfString2, paramOnClickListener);
   }
   
   public QQCustomDialog setItems(String[] paramArrayOfString, DialogInterface.OnClickListener paramOnClickListener)
@@ -603,9 +606,10 @@ public class QQCustomDialog
   
   public QQCustomDialog setMessageMaxLine(int paramInt)
   {
-    if (this.text != null)
+    TextView localTextView = this.text;
+    if (localTextView != null)
     {
-      this.text.setMaxLines(paramInt);
+      localTextView.setMaxLines(paramInt);
       this.text.setEllipsize(TextUtils.TruncateAt.END);
     }
     return this;
@@ -614,14 +618,16 @@ public class QQCustomDialog
   public void setMessageTextColor(int paramInt)
   {
     ColorStateList localColorStateList = getContext().getResources().getColorStateList(paramInt);
-    if ((this.text != null) && (this.text.getVisibility() == 0)) {
+    TextView localTextView = this.text;
+    if ((localTextView != null) && (localTextView.getVisibility() == 0)) {
       this.text.setTextColor(localColorStateList);
     }
   }
   
   public void setMessageTextSize(float paramFloat)
   {
-    if ((this.text != null) && (this.text.getVisibility() == 0)) {
+    TextView localTextView = this.text;
+    if ((localTextView != null) && (localTextView.getVisibility() == 0)) {
       this.text.setTextSize(paramFloat);
     }
   }
@@ -647,7 +653,7 @@ public class QQCustomDialog
       this.text.setMovementMethod(LinkMovementMethod.getInstance());
       this.text.setText(paramString);
       this.text.setContentDescription(paramString);
-      this.text.setLinkTextColor(getContext().getResources().getColor(2131165804));
+      this.text.setLinkTextColor(getContext().getResources().getColor(2131165795));
       this.text.setVisibility(0);
       return this;
     }
@@ -671,9 +677,10 @@ public class QQCustomDialog
   
   public QQCustomDialog setMsgMaxLineWithEnd(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.text != null)
+    TextView localTextView = this.text;
+    if (localTextView != null)
     {
-      this.text.setMaxLines(paramInt);
+      localTextView.setMaxLines(paramInt);
       this.text.getViewTreeObserver().addOnGlobalLayoutListener(new QQCustomDialog.2(this, paramInt, paramString, paramBoolean1, paramBoolean2));
     }
     return this;
@@ -687,7 +694,11 @@ public class QQCustomDialog
       return this;
     }
     this.lBtn.setText(paramInt);
-    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691194));
+    TextView localTextView = this.lBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getContext().getString(paramInt));
+    localStringBuilder.append(getContext().getString(2131691115));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.lBtn.setVisibility(0);
     this.lBtn.setOnClickListener(new QQCustomDialog.8(this, paramOnClickListener));
     setSeperatorState();
@@ -713,7 +724,11 @@ public class QQCustomDialog
       return this;
     }
     this.lBtn.setText(paramString);
-    this.lBtn.setContentDescription(paramString + getContext().getString(2131691194));
+    TextView localTextView = this.lBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(getContext().getString(2131691115));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.lBtn.setVisibility(0);
     this.lBtn.setOnClickListener(new QQCustomDialog.5(this, paramOnClickListener));
     setSeperatorState();
@@ -727,24 +742,29 @@ public class QQCustomDialog
   
   public QQCustomDialog setOperateImage(Drawable paramDrawable)
   {
-    if (this.operateImage != null)
+    ImageView localImageView = this.operateImage;
+    if (localImageView != null)
     {
-      this.operateImage.setImageDrawable(paramDrawable);
-      if (paramDrawable == null) {
-        break label45;
+      localImageView.setImageDrawable(paramDrawable);
+      if (paramDrawable != null)
+      {
+        this.operateImage.setVisibility(0);
+        paramDrawable = this.operateImage;
+        if (paramDrawable != null)
+        {
+          paramDrawable.setVisibility(8);
+          return this;
+        }
       }
-      this.operateImage.setVisibility(0);
-      if (this.operateImage != null) {
+      else
+      {
         this.operateImage.setVisibility(8);
+        paramDrawable = this.operateImage;
+        if (paramDrawable != null) {
+          paramDrawable.setVisibility(0);
+        }
       }
     }
-    label45:
-    do
-    {
-      return this;
-      this.operateImage.setVisibility(8);
-    } while (this.operateImage == null);
-    this.operateImage.setVisibility(0);
     return this;
   }
   
@@ -771,7 +791,11 @@ public class QQCustomDialog
       return this;
     }
     this.rBtn.setText(paramInt);
-    this.rBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691194));
+    TextView localTextView = this.rBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getContext().getString(paramInt));
+    localStringBuilder.append(getContext().getString(2131691115));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.rBtn.setVisibility(0);
     this.rBtn.setOnClickListener(new QQCustomDialog.7(this, paramOnClickListener, paramBoolean));
     setSeperatorState();
@@ -797,7 +821,11 @@ public class QQCustomDialog
       return this;
     }
     this.rBtn.setText(paramString);
-    this.rBtn.setContentDescription(paramString + getContext().getString(2131691194));
+    TextView localTextView = this.rBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(getContext().getString(2131691115));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.rBtn.setVisibility(0);
     this.rBtn.setOnClickListener(new QQCustomDialog.6(this, paramOnClickListener));
     setSeperatorState();
@@ -845,23 +873,23 @@ public class QQCustomDialog
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         this.framePreviewImage.setLayoutParams(localLayoutParams);
       }
-      for (;;)
+      else
       {
-        this.framePreviewImage.setImageDrawable(paramDrawable);
-        if (paramInt >= 2) {
-          break;
-        }
-        this.framePreview.setBackgroundDrawable(null);
-        return this;
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         this.framePreviewImage.setLayoutParams(localLayoutParams);
       }
-      if (paramInt == 2)
+      this.framePreviewImage.setImageDrawable(paramDrawable);
+      if (paramInt < 2)
       {
-        this.framePreview.setBackgroundResource(2130840291);
+        this.framePreview.setBackgroundDrawable(null);
         return this;
       }
-      this.framePreview.setBackgroundResource(2130840292);
+      if (paramInt == 2)
+      {
+        this.framePreview.setBackgroundResource(2130840150);
+        return this;
+      }
+      this.framePreview.setBackgroundResource(2130840151);
       return this;
     }
     this.framePreview.setVisibility(8);
@@ -880,25 +908,29 @@ public class QQCustomDialog
   public QQCustomDialog setPreviewImageScaleType(boolean paramBoolean)
   {
     ImageView localImageView = this.framePreviewImage;
-    if (paramBoolean) {}
-    for (ImageView.ScaleType localScaleType = ImageView.ScaleType.CENTER_INSIDE;; localScaleType = ImageView.ScaleType.CENTER_CROP)
-    {
-      localImageView.setScaleType(localScaleType);
-      return this;
+    ImageView.ScaleType localScaleType;
+    if (paramBoolean) {
+      localScaleType = ImageView.ScaleType.CENTER_INSIDE;
+    } else {
+      localScaleType = ImageView.ScaleType.CENTER_CROP;
     }
+    localImageView.setScaleType(localScaleType);
+    return this;
   }
   
   public void setProgress(int paramInt)
   {
-    if (this.progressBar != null) {
-      this.progressBar.setProgress(paramInt);
+    ProgressBar localProgressBar = this.progressBar;
+    if (localProgressBar != null) {
+      localProgressBar.setProgress(paramInt);
     }
   }
   
   public void setProgressBarVisibility(int paramInt)
   {
-    if (this.progressBar != null) {
-      this.progressBar.setVisibility(paramInt);
+    ProgressBar localProgressBar = this.progressBar;
+    if (localProgressBar != null) {
+      localProgressBar.setVisibility(paramInt);
     }
   }
   
@@ -906,9 +938,10 @@ public class QQCustomDialog
   
   public QQCustomDialog setSwitch(String paramString, boolean paramBoolean, DialogInterface.OnClickListener paramOnClickListener)
   {
-    if (this.mSwitch != null)
+    FormSwitchItem localFormSwitchItem = this.mSwitch;
+    if (localFormSwitchItem != null)
     {
-      this.mSwitch.setVisibility(0);
+      localFormSwitchItem.setVisibility(0);
       this.mSwitch.setText(paramString);
       this.mSwitch.setChecked(paramBoolean);
       if (paramOnClickListener != null) {
@@ -949,7 +982,7 @@ public class QQCustomDialog
       this.title.setText(paramString);
       this.title.setContentDescription(paramString);
       this.title.setVisibility(0);
-      if (this.items == null) {}
+      paramString = this.items;
       return this;
     }
     this.title.setVisibility(8);
@@ -981,49 +1014,76 @@ public class QQCustomDialog
   
   public QQCustomDialog setVideoFormat(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    if ((paramBoolean1) && (this.mVideoIcon != null))
+    Object localObject;
+    if (paramBoolean1)
     {
-      this.mVideoIcon.setVisibility(0);
-      if ((!paramBoolean2) || (this.editPicTag == null)) {
-        break label125;
+      localObject = this.mVideoIcon;
+      if (localObject != null)
+      {
+        ((ImageView)localObject).setVisibility(0);
+        break label46;
       }
-      this.editPicTag.setVisibility(0);
-      label38:
-      if ((TextUtils.isEmpty(paramString1)) || (this.mVideoSize == null)) {
-        break label148;
-      }
-      this.mVideoSize.setVisibility(0);
-      this.mVideoSize.setText(paramString1);
-      label68:
-      if ((TextUtils.isEmpty(paramString2)) || (this.mVideoTime == null)) {
-        break label174;
-      }
-      this.mVideoTime.setVisibility(0);
-      this.mVideoTime.setText(paramString2);
     }
-    label125:
-    while ((!TextUtils.isEmpty(paramString2)) || (this.mVideoTime == null))
+    if (!paramBoolean1)
     {
-      return this;
-      if ((paramBoolean1) || (this.mVideoIcon == null)) {
-        break;
+      localObject = this.mVideoIcon;
+      if (localObject != null) {
+        ((ImageView)localObject).setVisibility(8);
       }
-      this.mVideoIcon.setVisibility(8);
-      break;
-      if ((paramBoolean2) || (this.editPicTag == null)) {
-        break label38;
-      }
-      this.editPicTag.setVisibility(8);
-      break label38;
-      if ((!TextUtils.isEmpty(paramString1)) || (this.mVideoSize == null)) {
-        break label68;
-      }
-      this.mVideoSize.setVisibility(8);
-      break label68;
     }
-    label148:
-    label174:
-    this.mVideoTime.setVisibility(8);
+    label46:
+    if (paramBoolean2)
+    {
+      localObject = this.editPicTag;
+      if (localObject != null)
+      {
+        ((TextView)localObject).setVisibility(0);
+        break label92;
+      }
+    }
+    if (!paramBoolean2)
+    {
+      localObject = this.editPicTag;
+      if (localObject != null) {
+        ((TextView)localObject).setVisibility(8);
+      }
+    }
+    label92:
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      localObject = this.mVideoSize;
+      if (localObject != null)
+      {
+        ((TextView)localObject).setVisibility(0);
+        this.mVideoSize.setText(paramString1);
+        break label149;
+      }
+    }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramString1 = this.mVideoSize;
+      if (paramString1 != null) {
+        paramString1.setVisibility(8);
+      }
+    }
+    label149:
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = this.mVideoTime;
+      if (paramString1 != null)
+      {
+        paramString1.setVisibility(0);
+        this.mVideoTime.setText(paramString2);
+        return this;
+      }
+    }
+    if (TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = this.mVideoTime;
+      if (paramString1 != null) {
+        paramString1.setVisibility(8);
+      }
+    }
     return this;
   }
   
@@ -1036,7 +1096,7 @@ public class QQCustomDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialog
  * JD-Core Version:    0.7.0.1
  */

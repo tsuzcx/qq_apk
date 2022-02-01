@@ -14,17 +14,31 @@ class IlivePluginDownloadManager$IliveDownloadListener
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    if ((paramDownloadTask.a() == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0)) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((paramDownloadTask.a() == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("IlivePluginDownloadManager", 2, "onDone , url = " + paramDownloadTask.c + " isSuccess = " + bool + " errorCode = " + paramDownloadTask.jdField_a_of_type_Int + " httpCode = " + paramDownloadTask.f + " errMsg = " + paramDownloadTask.b);
-      }
-      IlivePluginDownloadManager.a(this.a).remove(paramDownloadTask);
-      IlivePluginDownloadManager.a(this.a);
-      if (!bool) {
-        break;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDone , url = ");
+      localStringBuilder.append(paramDownloadTask.c);
+      localStringBuilder.append(" isSuccess = ");
+      localStringBuilder.append(bool);
+      localStringBuilder.append(" errorCode = ");
+      localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Int);
+      localStringBuilder.append(" httpCode = ");
+      localStringBuilder.append(paramDownloadTask.f);
+      localStringBuilder.append(" errMsg = ");
+      localStringBuilder.append(paramDownloadTask.b);
+      QLog.e("IlivePluginDownloadManager", 2, localStringBuilder.toString());
+    }
+    IlivePluginDownloadManager.a(this.a).remove(paramDownloadTask);
+    IlivePluginDownloadManager.a(this.a);
+    if (bool)
+    {
       IlivePluginDownloadManager.b(this.a);
       return;
     }
@@ -34,8 +48,16 @@ class IlivePluginDownloadManager$IliveDownloadListener
   public void onProgress(DownloadTask paramDownloadTask)
   {
     super.onProgress(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.e("IlivePluginDownloadManager", 2, "onProgress ,  percent = " + paramDownloadTask.jdField_a_of_type_Float + " url = " + paramDownloadTask.c + " runTime = " + BaseApplicationImpl.getApplication().getRuntime().getClass());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onProgress ,  percent = ");
+      localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Float);
+      localStringBuilder.append(" url = ");
+      localStringBuilder.append(paramDownloadTask.c);
+      localStringBuilder.append(" runTime = ");
+      localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getClass());
+      QLog.e("IlivePluginDownloadManager", 2, localStringBuilder.toString());
     }
     if (IlivePluginDownloadManager.a(this.a) != null) {
       IlivePluginDownloadManager.a(this.a).onProgress(paramDownloadTask.jdField_a_of_type_Float);
@@ -44,7 +66,7 @@ class IlivePluginDownloadManager$IliveDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IlivePluginDownloadManager.IliveDownloadListener
  * JD-Core Version:    0.7.0.1
  */

@@ -33,30 +33,47 @@ public class RoamDate
   public RoamDate()
   {
     int i = 0;
-    while (i < this.lastMsgTime.length)
+    Object localObject;
+    for (;;)
     {
-      this.lastMsgTime[i] = 0L;
+      localObject = this.lastMsgTime;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject[i] = 0L;
       i += 1;
     }
-    this.lastMsgTimeData = new byte[this.lastMsgTime.length * 8];
+    this.lastMsgTimeData = new byte[localObject.length * 8];
     i = 0;
-    while (i < this.lastMsgTimeData.length)
+    for (;;)
     {
-      this.lastMsgTimeData[i] = 0;
+      localObject = this.lastMsgTimeData;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject[i] = 0;
       i += 1;
     }
     this.random = new long[31];
     i = 0;
-    while (i < this.random.length)
+    for (;;)
     {
-      this.random[i] = 0L;
+      localObject = this.random;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject[i] = 0L;
       i += 1;
     }
-    this.randomData = new byte[this.random.length * 8];
+    this.randomData = new byte[localObject.length * 8];
     i = 0;
-    while (i < this.randomData.length)
+    for (;;)
     {
-      this.randomData[i] = 0;
+      localObject = this.randomData;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject[i] = 0;
       i += 1;
     }
   }
@@ -83,19 +100,11 @@ public class RoamDate
   
   public static int getDays(int paramInt1, int paramInt2)
   {
-    switch (paramInt2)
+    if (paramInt2 != 2)
     {
-    case 3: 
-    case 5: 
-    case 7: 
-    case 8: 
-    case 10: 
-    default: 
-      return 31;
-    case 4: 
-    case 6: 
-    case 9: 
-    case 11: 
+      if ((paramInt2 != 4) && (paramInt2 != 6) && (paramInt2 != 9) && (paramInt2 != 11)) {
+        return 31;
+      }
       return 30;
     }
     if (((paramInt1 % 4 == 0) && (paramInt1 % 100 != 0)) || (paramInt1 % 400 == 0)) {
@@ -106,7 +115,7 @@ public class RoamDate
   
   private int getOneBit(int paramInt1, int paramInt2)
   {
-    if ((1 << 31 - paramInt2 & paramInt1) != 0) {
+    if ((paramInt1 & 1 << 31 - paramInt2) != 0) {
       return 1;
     }
     return 0;
@@ -133,22 +142,23 @@ public class RoamDate
   {
     int k = getDays();
     int i = 0;
-    int j = paramInt2;
-    if (i < paramInt2)
+    int j;
+    for (;;)
     {
       j = paramInt2;
-      if (i < k)
-      {
-        if (getOneBit(paramInt1, i) == 0) {
-          setSerTwoBits(1, i);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          setSerTwoBits(2, i);
-        }
+      if (i >= paramInt2) {
+        break;
       }
+      j = paramInt2;
+      if (i >= k) {
+        break;
+      }
+      if (getOneBit(paramInt1, i) == 0) {
+        setSerTwoBits(1, i);
+      } else {
+        setSerTwoBits(2, i);
+      }
+      i += 1;
     }
     while (j < k)
     {
@@ -159,12 +169,16 @@ public class RoamDate
   
   private void setLocTwoBits(int paramInt1, int paramInt2)
   {
-    this.locindex = (paramInt1 << 62 - paramInt2 * 2 | (3L << 62 - paramInt2 * 2 ^ 0xFFFFFFFF) & this.locindex);
+    long l = paramInt1;
+    paramInt1 = 62 - paramInt2 * 2;
+    this.locindex = ((3L << paramInt1 ^ 0xFFFFFFFF) & this.locindex | l << paramInt1);
   }
   
   private void setSerTwoBits(int paramInt1, int paramInt2)
   {
-    this.serindex = (paramInt1 << 62 - paramInt2 * 2 | (3L << 62 - paramInt2 * 2 ^ 0xFFFFFFFF) & this.serindex);
+    long l = paramInt1;
+    paramInt1 = 62 - paramInt2 * 2;
+    this.serindex = ((3L << paramInt1 ^ 0xFFFFFFFF) & this.serindex | l << paramInt1);
   }
   
   public void clearLocState()
@@ -179,35 +193,37 @@ public class RoamDate
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
-      do
-      {
-        return true;
-        if (paramObject == null) {
-          return false;
-        }
-        if (getClass() != paramObject.getClass()) {
-          return false;
-        }
-        paramObject = (RoamDate)paramObject;
-        if (this.uin == null)
-        {
-          if (paramObject.uin != null) {
-            return false;
-          }
-        }
-        else if (!this.uin.equals(paramObject.uin)) {
-          return false;
-        }
-        if (this.date != null) {
-          break;
-        }
-      } while (paramObject.date == null);
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
       return false;
-    } while (this.date.equals(paramObject.date));
-    return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (RoamDate)paramObject;
+    String str = this.uin;
+    if (str == null)
+    {
+      if (paramObject.uin != null) {
+        return false;
+      }
+    }
+    else if (!str.equals(paramObject.uin)) {
+      return false;
+    }
+    str = this.date;
+    if (str == null)
+    {
+      if (paramObject.date != null) {
+        return false;
+      }
+    }
+    else if (!str.equals(paramObject.date)) {
+      return false;
+    }
+    return true;
   }
   
   public int getDays()
@@ -218,18 +234,26 @@ public class RoamDate
   
   public long getLastMsgTime(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= getDays())) {
-      throw new IllegalArgumentException("day must [0 - " + (getDays() - 1) + "]");
+    if ((paramInt >= 0) && (paramInt < getDays())) {
+      return this.lastMsgTime[paramInt];
     }
-    return this.lastMsgTime[paramInt];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("day must [0 - ");
+    localStringBuilder.append(getDays() - 1);
+    localStringBuilder.append("]");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public int getLocState(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= getDays())) {
-      throw new IllegalArgumentException("day must [0 - " + (getDays() - 1) + "]");
+    if ((paramInt >= 0) && (paramInt < getDays())) {
+      return getTwoBits(this.locindex, paramInt);
     }
-    return getTwoBits(this.locindex, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("day must [0 - ");
+    localStringBuilder.append(getDays() - 1);
+    localStringBuilder.append("]");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public int getMonth()
@@ -239,18 +263,26 @@ public class RoamDate
   
   public long getRandom(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= getDays())) {
-      throw new IllegalArgumentException("day must [0 - " + (getDays() - 1) + "]");
+    if ((paramInt >= 0) && (paramInt < getDays())) {
+      return this.random[paramInt];
     }
-    return this.random[paramInt];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("day must [0 - ");
+    localStringBuilder.append(getDays() - 1);
+    localStringBuilder.append("]");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public int getSerState(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= getDays())) {
-      throw new IllegalArgumentException("day must [0 - " + (getDays() - 1) + "]");
+    if ((paramInt >= 0) && (paramInt < getDays())) {
+      return getTwoBits(this.serindex, paramInt);
     }
-    return getTwoBits(this.serindex, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("day must [0 - ");
+    localStringBuilder.append(getDays() - 1);
+    localStringBuilder.append("]");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public String getTableName()
@@ -265,62 +297,76 @@ public class RoamDate
   
   public int hashCode()
   {
+    String str = this.uin;
     int j = 0;
     int i;
-    if (this.uin == null)
-    {
+    if (str == null) {
       i = 0;
-      if (this.date != null) {
-        break label39;
-      }
+    } else {
+      i = str.hashCode();
     }
+    str = this.date;
+    if (str != null) {
+      j = str.hashCode();
+    }
+    return (i + 31) * 31 + j;
+  }
+  
+  protected void postRead()
+  {
+    int k = 0;
+    int j = 0;
+    int i = 0;
+    long[] arrayOfLong;
     for (;;)
     {
-      return (i + 31) * 31 + j;
-      i = this.uin.hashCode();
-      break;
-      label39:
-      j = this.date.hashCode();
-    }
-  }
-  
-  public void postRead()
-  {
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    while (j < this.lastMsgTime.length)
-    {
-      this.lastMsgTime[j] = bytes2Long(this.lastMsgTimeData, i);
+      arrayOfLong = this.lastMsgTime;
+      if (j >= arrayOfLong.length) {
+        break;
+      }
+      arrayOfLong[j] = bytes2Long(this.lastMsgTimeData, i);
       j += 1;
       i += 8;
     }
-    j = 0;
-    i = k;
-    while (j < this.random.length)
+    i = 0;
+    j = k;
+    for (;;)
     {
-      this.random[j] = bytes2Long(this.randomData, i);
+      arrayOfLong = this.random;
+      if (j >= arrayOfLong.length) {
+        break;
+      }
+      arrayOfLong[j] = bytes2Long(this.randomData, i);
       j += 1;
       i += 8;
     }
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     int k = 0;
-    int i = 0;
     int j = 0;
-    while (j < this.lastMsgTime.length)
+    int i = 0;
+    long[] arrayOfLong;
+    for (;;)
     {
-      long2Bytes(this.lastMsgTimeData, i, this.lastMsgTime[j]);
+      arrayOfLong = this.lastMsgTime;
+      if (j >= arrayOfLong.length) {
+        break;
+      }
+      long2Bytes(this.lastMsgTimeData, i, arrayOfLong[j]);
       j += 1;
       i += 8;
     }
-    j = 0;
-    i = k;
-    while (j < this.random.length)
+    i = 0;
+    j = k;
+    for (;;)
     {
-      long2Bytes(this.randomData, i, this.random[j]);
+      arrayOfLong = this.random;
+      if (j >= arrayOfLong.length) {
+        break;
+      }
+      long2Bytes(this.randomData, i, arrayOfLong[j]);
       j += 1;
       i += 8;
     }
@@ -328,34 +374,58 @@ public class RoamDate
   
   public void setLastMsgTime(int paramInt, long paramLong)
   {
-    if ((paramInt < 0) || (paramInt >= getDays())) {
-      throw new IllegalArgumentException("day must [0 - " + (getDays() - 1) + "]");
+    if ((paramInt >= 0) && (paramInt < getDays()))
+    {
+      this.lastMsgTime[paramInt] = paramLong;
+      return;
     }
-    this.lastMsgTime[paramInt] = paramLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("day must [0 - ");
+    localStringBuilder.append(getDays() - 1);
+    localStringBuilder.append("]");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void setLocState(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= getDays()) || (paramInt2 < 0) || (paramInt2 > 3)) {
-      throw new IllegalArgumentException("day must [0 - " + (getDays() - 1) + "], state must [0 - 3]");
+    if ((paramInt1 >= 0) && (paramInt1 < getDays()) && (paramInt2 >= 0) && (paramInt2 <= 3))
+    {
+      setLocTwoBits(paramInt2, paramInt1);
+      return;
     }
-    setLocTwoBits(paramInt2, paramInt1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("day must [0 - ");
+    localStringBuilder.append(getDays() - 1);
+    localStringBuilder.append("], state must [0 - 3]");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void setRandom(int paramInt, long paramLong)
   {
-    if ((paramInt < 0) || (paramInt >= getDays())) {
-      throw new IllegalArgumentException("day must [0 - " + (getDays() - 1) + "]");
+    if ((paramInt >= 0) && (paramInt < getDays()))
+    {
+      this.random[paramInt] = paramLong;
+      return;
     }
-    this.random[paramInt] = paramLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("day must [0 - ");
+    localStringBuilder.append(getDays() - 1);
+    localStringBuilder.append("]");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void setSerState(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= getDays()) || (paramInt2 < 0) || (paramInt2 > 3)) {
-      throw new IllegalArgumentException("day must [0 - " + (getDays() - 1) + "], state must [0 - 3]");
+    if ((paramInt1 >= 0) && (paramInt1 < getDays()) && (paramInt2 >= 0) && (paramInt2 <= 3))
+    {
+      setSerTwoBits(paramInt2, paramInt1);
+      return;
     }
-    setSerTwoBits(paramInt2, paramInt1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("day must [0 - ");
+    localStringBuilder.append(getDays() - 1);
+    localStringBuilder.append("], state must [0 - 3]");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void setSerindex(int paramInt1, int paramInt2)
@@ -365,12 +435,25 @@ public class RoamDate
   
   public String toString()
   {
-    return "uin = " + this.uin + ", date = " + this.date + ", serindex = " + this.serindex + ", locindex = " + this.locindex + ", lastMsgTime = " + Arrays.toString(this.lastMsgTime) + ", random = " + Arrays.toString(this.random);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin = ");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(", date = ");
+    localStringBuilder.append(this.date);
+    localStringBuilder.append(", serindex = ");
+    localStringBuilder.append(this.serindex);
+    localStringBuilder.append(", locindex = ");
+    localStringBuilder.append(this.locindex);
+    localStringBuilder.append(", lastMsgTime = ");
+    localStringBuilder.append(Arrays.toString(this.lastMsgTime));
+    localStringBuilder.append(", random = ");
+    localStringBuilder.append(Arrays.toString(this.random));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.RoamDate
  * JD-Core Version:    0.7.0.1
  */

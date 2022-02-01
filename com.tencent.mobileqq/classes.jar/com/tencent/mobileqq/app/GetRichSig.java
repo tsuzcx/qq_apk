@@ -6,7 +6,7 @@ import com.qq.jce.wup.UniPacket;
 import com.tencent.common.app.BaseProtocolCoder;
 import com.tencent.mobileqq.service.MobileQQServiceExtend;
 import com.tencent.mobileqq.service.profile.CheckUpdateItemInterface;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.mobileqq.subaccount.api.ISubAccountService;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.util.ArrayList;
@@ -30,36 +30,40 @@ public class GetRichSig
   
   public ReqItem a(int paramInt)
   {
-    Object localObject2 = new ArrayList(2);
-    ((ArrayList)localObject2).add(this.app.getAccount());
-    Object localObject1 = (SubAccountManager)this.app.getManager(QQManagerFactory.SUB_ACCOUNT_MANAGER);
-    if (localObject1 != null) {}
-    for (localObject1 = ((SubAccountManager)localObject1).a();; localObject1 = null)
+    Object localObject3 = new ArrayList(2);
+    ((ArrayList)localObject3).add(this.app.getAccount());
+    Object localObject1 = (ISubAccountService)this.app.getRuntimeService(ISubAccountService.class, "");
+    Object localObject2 = null;
+    if (localObject1 != null) {
+      localObject1 = ((ISubAccountService)localObject1).getAllSubUin();
+    } else {
+      localObject1 = null;
+    }
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0)) {
+      ((ArrayList)localObject3).addAll((Collection)localObject1);
+    }
+    localObject1 = new String[((ArrayList)localObject3).size()];
+    ((ArrayList)localObject3).toArray((Object[])localObject1);
+    getRichStatus((String[])localObject1);
+    localObject1 = localObject2;
+    if (this.a != null)
     {
-      if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0)) {
-        ((ArrayList)localObject2).addAll((Collection)localObject1);
-      }
-      localObject1 = new String[((ArrayList)localObject2).size()];
-      ((ArrayList)localObject2).toArray((Object[])localObject1);
-      getRichStatus((String[])localObject1);
-      if (this.a != null)
+      BaseProtocolCoder localBaseProtocolCoder = this.app.mqqService.lookupCoder(this.a.getServiceCmd());
+      localObject1 = localObject2;
+      if (localBaseProtocolCoder != null)
       {
-        localObject2 = this.app.mqqService.lookupCoder(this.a.getServiceCmd());
-        if (localObject2 != null)
+        localObject3 = new UniPacket(true);
+        ((UniPacket)localObject3).setEncodeName("utf-8");
+        localObject1 = localObject2;
+        if (localBaseProtocolCoder.encodeReqMsg(this.a, (UniPacket)localObject3))
         {
-          localObject1 = new UniPacket(true);
-          ((UniPacket)localObject1).setEncodeName("utf-8");
-          if (((BaseProtocolCoder)localObject2).encodeReqMsg(this.a, (UniPacket)localObject1))
-          {
-            localObject2 = new ReqItem();
-            ((ReqItem)localObject2).eServiceID = 119;
-            ((ReqItem)localObject2).vecParam = ((UniPacket)localObject1).encode();
-            return localObject2;
-          }
+          localObject1 = new ReqItem();
+          ((ReqItem)localObject1).eServiceID = 119;
+          ((ReqItem)localObject1).vecParam = ((UniPacket)localObject3).encode();
         }
       }
-      return null;
     }
+    return localObject1;
   }
   
   public void a(RespItem paramRespItem)
@@ -80,7 +84,7 @@ public class GetRichSig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.GetRichSig
  * JD-Core Version:    0.7.0.1
  */

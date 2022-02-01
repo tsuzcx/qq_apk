@@ -29,14 +29,17 @@ public class SurfaceTextureWrapper
       synchronized (this.syncObj)
       {
         this.syncObj.wait(paramLong);
-        label22:
-        return this.hasImage;
       }
     }
     catch (InterruptedException localInterruptedException)
     {
-      break label22;
+      label30:
+      break label30;
     }
+    break label40;
+    throw localObject2;
+    label40:
+    return this.hasImage;
   }
   
   public int getOesTextureId()
@@ -76,8 +79,9 @@ public class SurfaceTextureWrapper
   
   public void release()
   {
-    if (this.st != null) {
-      this.st.release();
+    SurfaceTexture localSurfaceTexture = this.st;
+    if (localSurfaceTexture != null) {
+      localSurfaceTexture.release();
     }
   }
   

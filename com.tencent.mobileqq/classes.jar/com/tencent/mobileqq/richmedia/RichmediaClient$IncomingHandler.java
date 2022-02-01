@@ -20,39 +20,45 @@ class RichmediaClient$IncomingHandler
   
   public void handleMessage(Message paramMessage)
   {
-    LOG.a("PTV.RichmediaClient", "handleMessage, msg.what = " + paramMessage.what);
-    RichmediaClient localRichmediaClient = (RichmediaClient)this.a.get();
-    if (localRichmediaClient == null) {}
-    do
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleMessage, msg.what = ");
+    ((StringBuilder)localObject).append(paramMessage.what);
+    LOG.a("PTV.RichmediaClient", ((StringBuilder)localObject).toString());
+    localObject = (RichmediaClient)this.a.get();
+    if (localObject == null) {
       return;
-      if (paramMessage.getData() != null) {
-        paramMessage.getData().getInt("msg_sub_cmd");
-      }
-      switch (paramMessage.what)
+    }
+    if (paramMessage.getData() != null) {
+      paramMessage.getData().getInt("msg_sub_cmd");
+    }
+    int i = paramMessage.what;
+    if (i != 300) {}
+    switch (i)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+      return;
+    case 1002: 
+      LOG.a("PTV.RichmediaClient", "handleMessage MSG_S2C_VIDEO_SLICE_UPLOAD_FINISH");
+      paramMessage = paramMessage.getData();
+      if (paramMessage != null)
       {
-      case 1001: 
-      default: 
-        super.handleMessage(paramMessage);
+        paramMessage = paramMessage.getString("vidoe_record_uniseq");
+        ((RichmediaClient)localObject).a().a(paramMessage);
         return;
-      case 1000: 
-        LOG.a("PTV.RichmediaClient", "handleMessage MSG_S2C_TEST");
-        return;
-      case 1002: 
-        LOG.a("PTV.RichmediaClient", "handleMessage MSG_S2C_VIDEO_SLICE_UPLOAD_FINISH");
-        paramMessage = paramMessage.getData();
       }
-    } while (paramMessage == null);
-    paramMessage = paramMessage.getString("vidoe_record_uniseq");
-    localRichmediaClient.a().a(paramMessage);
-    return;
-    paramMessage = paramMessage.getData();
-    AIOGalleryMsgRevokeMgr.a().a(paramMessage);
+      break;
+    case 1000: 
+      LOG.a("PTV.RichmediaClient", "handleMessage MSG_S2C_TEST");
+      return;
+      paramMessage = paramMessage.getData();
+      AIOGalleryMsgRevokeMgr.a().a(paramMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaClient.IncomingHandler
  * JD-Core Version:    0.7.0.1
  */

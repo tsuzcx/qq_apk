@@ -38,15 +38,19 @@ public class ImageInfo
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (!(paramObject instanceof ImageInfo))) {
-      return false;
+    if ((paramObject != null) && ((paramObject instanceof ImageInfo))) {
+      return a((ImageInfo)paramObject);
     }
-    return a((ImageInfo)paramObject);
+    return false;
   }
   
   public int hashCode()
   {
-    return (this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_Long + this.jdField_b_of_type_Long).hashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    return localStringBuilder.toString().hashCode();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -60,7 +64,7 @@ public class ImageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.file.ImageInfo
  * JD-Core Version:    0.7.0.1
  */

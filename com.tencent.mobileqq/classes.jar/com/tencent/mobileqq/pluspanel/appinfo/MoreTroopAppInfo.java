@@ -14,7 +14,7 @@ public class MoreTroopAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130842640;
+    return 2130842539;
   }
   
   public int getAppID()
@@ -38,7 +38,7 @@ public class MoreTroopAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.MoreTroopAppInfo
  * JD-Core Version:    0.7.0.1
  */

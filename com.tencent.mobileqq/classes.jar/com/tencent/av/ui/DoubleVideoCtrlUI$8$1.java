@@ -14,8 +14,21 @@ class DoubleVideoCtrlUI$8$1
     if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a != null) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a() != null))
     {
       SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a();
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.d, 1, "StartGlassCheck, lCurrent[" + this.jdField_a_of_type_Long + "], lLastTickFinal[" + this.b + "], VideoGlassWaitTime[" + localSessionInfo.S + "], DefaultTimeOutRule[" + localSessionInfo.T + "], GlassSwitch[" + localSessionInfo.R + "]");
-      if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a(localSessionInfo.T)) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a().R != 0)) {
+      String str = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("StartGlassCheck, lCurrent[");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("], lLastTickFinal[");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("], VideoGlassWaitTime[");
+      localStringBuilder.append(localSessionInfo.Q);
+      localStringBuilder.append("], DefaultTimeOutRule[");
+      localStringBuilder.append(localSessionInfo.R);
+      localStringBuilder.append("], GlassSwitch[");
+      localStringBuilder.append(localSessionInfo.P);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
+      if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a(localSessionInfo.R)) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a().P != 0)) {
         DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0, false);
       }
     }
@@ -23,7 +36,7 @@ class DoubleVideoCtrlUI$8$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.8.1
  * JD-Core Version:    0.7.0.1
  */

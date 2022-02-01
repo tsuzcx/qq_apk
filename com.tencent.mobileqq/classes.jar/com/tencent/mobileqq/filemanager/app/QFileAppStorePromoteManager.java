@@ -10,9 +10,9 @@ import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.api.IQFileAppStorePromoteConfigBean;
-import com.tencent.mobileqq.filemanager.api.IQFileAppStorePromoteDialogConfigBean;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.config.business.qfile.IQFileAppStorePromoteConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileAppStorePromoteDialogConfigBean;
+import com.tencent.mobileqq.filemanager.api.IQFileConfigManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.uniformdownload.api.IUniformDownloadMgr;
 import com.tencent.mobileqq.utils.DialogUtil;
@@ -27,7 +27,7 @@ import mqq.app.AppRuntime;
 
 public class QFileAppStorePromoteManager
 {
-  private static long jdField_a_of_type_Long = 0L;
+  private static long jdField_a_of_type_Long;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private QFileAppStorePromoteManager.FetchAppInfoCallback jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$FetchAppInfoCallback;
   private HashMap<Integer, QFileAppStorePromoteManager.IGetAppDetailCallback> jdField_a_of_type_JavaUtilHashMap;
@@ -43,18 +43,22 @@ public class QFileAppStorePromoteManager
   private static String a(String paramString, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder("tmast://appdetails?");
-    localStringBuilder.append("pname=").append(paramString);
+    localStringBuilder.append("pname=");
+    localStringBuilder.append(paramString);
     if (paramInt == 2)
     {
-      localStringBuilder.append("&via=").append("ANDROIDQQ.NEWYYB.APKBYYBAPK");
+      localStringBuilder.append("&via=");
+      localStringBuilder.append("ANDROIDQQ.NEWYYB.APKBYYBAPK");
       ReportController.b(null, "dc00898", "", "", "0X800B00E", "0X800B00E", 0, 0, "", "", "", "");
     }
-    for (;;)
+    else
     {
-      localStringBuilder.append("&qimei=").append(UserAction.getQIMEI());
-      return localStringBuilder.toString();
-      localStringBuilder.append("&via=").append("ANDROIDQQ.YYB.APKBYYBAPK");
+      localStringBuilder.append("&via=");
+      localStringBuilder.append("ANDROIDQQ.YYB.APKBYYBAPK");
     }
+    localStringBuilder.append("&qimei=");
+    localStringBuilder.append(UserAction.getQIMEI());
+    return localStringBuilder.toString();
   }
   
   public static void a(String paramString, int paramInt)
@@ -68,12 +72,22 @@ public class QFileAppStorePromoteManager
     if (TextUtils.isEmpty(paramString)) {
       QLog.i("QFileAppStorePromoteManager<QFile>", 1, "startAppStoreByTmast : error. apk package name can not be null.");
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("QFileAppStorePromoteManager<QFile>", 1, "startAppStoreByTmast : apkPkgName[" + paramString + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startAppStoreByTmast : apkPkgName[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("QFileAppStorePromoteManager<QFile>", 1, ((StringBuilder)localObject).toString());
     }
     paramString = a(paramString, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("QFileAppStorePromoteManager<QFile>", 1, "startAppStoreByTmast : jumpTmast[" + paramString + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startAppStoreByTmast : jumpTmast[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("QFileAppStorePromoteManager<QFile>", 1, ((StringBuilder)localObject).toString());
     }
     Object localObject = new Bundle();
     ((Bundle)localObject).putString("url", paramString);
@@ -90,8 +104,26 @@ public class QFileAppStorePromoteManager
     }
     catch (Exception paramString)
     {
-      QLog.i("QFileAppStorePromoteManager<QFile>", 1, "startAppStoreByTmast : error. " + paramString.getMessage());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startAppStoreByTmast : error. ");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      QLog.i("QFileAppStorePromoteManager<QFile>", 1, ((StringBuilder)localObject).toString());
     }
+  }
+  
+  public static void b()
+  {
+    ReportController.b(null, "dc00898", "", "", "0X800B00D", "0X800B00D", 0, 0, "", "", "", "");
+  }
+  
+  IQFileAppStorePromoteConfigBean a()
+  {
+    return ((IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class)).getYYBPromoteConfig();
+  }
+  
+  IQFileAppStorePromoteDialogConfigBean a()
+  {
+    return ((IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class)).getYYBPromoteDialogConfig();
   }
   
   protected IUniformDownloadMgr a()
@@ -101,10 +133,10 @@ public class QFileAppStorePromoteManager
   
   public String a(Context paramContext)
   {
-    String str2 = ((IQFileAppStorePromoteConfigBean)QRoute.api(IQFileAppStorePromoteConfigBean.class)).getActionHint();
+    String str2 = a().a();
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = paramContext.getString(2131698245);
+      str1 = paramContext.getString(2131698310);
     }
     return str1;
   }
@@ -126,7 +158,7 @@ public class QFileAppStorePromoteManager
     if (a().getApp() == null)
     {
       paramString = new Bundle();
-      paramString.putString("_filename_from_dlg", paramContext.getString(2131694610));
+      paramString.putString("_filename_from_dlg", paramContext.getString(2131694578));
       paramString.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
       paramString.putBundle("_user_data", (Bundle)localObject);
       localObject = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
@@ -136,7 +168,7 @@ public class QFileAppStorePromoteManager
       return;
     }
     paramString = new Bundle();
-    paramString.putString("_filename_from_dlg", paramContext.getString(2131694610));
+    paramString.putString("_filename_from_dlg", paramContext.getString(2131694578));
     paramString.putString("big_brother_source_key", "biz_src_jc_file");
     paramString.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
     paramString.putBundle("_user_data", (Bundle)localObject);
@@ -153,37 +185,31 @@ public class QFileAppStorePromoteManager
   {
     a();
     int i = TMAssistantCallYYB_V2.getInstance().checkQQDownloaderInstalled();
-    if ((i == 2) || (i == 0))
-    {
+    if ((i != 2) && (i != 0)) {
+      i = 0;
+    } else {
       i = 1;
-      if (i == 0) {
-        break label53;
-      }
     }
-    label53:
-    for (int j = GlobalUtil.getInstance().getQQDownloaderVersionCode();; j = 0)
-    {
-      if ((i != 0) && (j > 7342130))
-      {
-        return true;
-        i = 0;
-        break;
-      }
-      return false;
+    int j;
+    if (i != 0) {
+      j = GlobalUtil.getInstance().getQQDownloaderVersionCode();
+    } else {
+      j = 0;
     }
+    return (i != 0) && (j > 7342130);
   }
   
   public boolean a(Context paramContext, String paramString, QFileAppStorePromoteManager.IAppStoreRemindCallback paramIAppStoreRemindCallback)
   {
-    if (((IQFileAppStorePromoteDialogConfigBean)QRoute.api(IQFileAppStorePromoteDialogConfigBean.class)).getDialogSwitch())
+    if (a().a())
     {
-      String str1 = paramContext.getString(2131698251);
-      paramString = String.format(paramContext.getString(2131698248), new Object[] { paramString });
-      String str2 = paramContext.getString(2131698249);
-      String str3 = paramContext.getString(2131698250);
+      String str1 = paramContext.getString(2131698316);
+      paramString = String.format(paramContext.getString(2131698313), new Object[] { paramString });
+      String str2 = paramContext.getString(2131698314);
+      String str3 = paramContext.getString(2131698315);
       QFileAppStorePromoteManager.3 local3 = new QFileAppStorePromoteManager.3(this, paramIAppStoreRemindCallback);
       paramIAppStoreRemindCallback = new QFileAppStorePromoteManager.4(this, paramIAppStoreRemindCallback);
-      DialogUtil.a(paramContext, 0, str1, paramString, str2, str3, paramContext.getString(2131690800), local3, paramIAppStoreRemindCallback).show();
+      DialogUtil.a(paramContext, 0, str1, paramString, str2, str3, paramContext.getString(2131690728), local3, paramIAppStoreRemindCallback).show();
       ReportController.b(null, "dc00898", "", "", "0X800AE3F", "0X800AE3F", 0, 0, "", "", "", "");
       return true;
     }
@@ -194,21 +220,21 @@ public class QFileAppStorePromoteManager
   {
     if (a().isExistedDownloadOfUrl("https://a.app.qq.com/o/myapp-down?g_f=1116518"))
     {
-      QQToast.a(paramContext, 0, 2131698247, 0).a();
+      QQToast.a(paramContext, 0, 2131698312, 0).a();
       return;
     }
-    String str = paramContext.getString(2131698246);
-    DialogUtil.a((Activity)paramContext, str, 2131690800, 2131694615, new QFileAppStorePromoteManager.5(this, paramContext, paramString), new QFileAppStorePromoteManager.6(this)).show();
+    String str = paramContext.getString(2131698311);
+    DialogUtil.a((Activity)paramContext, str, 2131690728, 2131694583, new QFileAppStorePromoteManager.5(this, paramContext, paramString), new QFileAppStorePromoteManager.6(this)).show();
   }
   
   public boolean b()
   {
-    return ((IQFileAppStorePromoteConfigBean)QRoute.api(IQFileAppStorePromoteConfigBean.class)).getActionSwitch();
+    return a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager
  * JD-Core Version:    0.7.0.1
  */

@@ -32,22 +32,25 @@ public class AnimWebpImage
   
   public boolean isRecycled()
   {
-    if (this.drawable != null) {
-      return this.drawable.isRunning();
+    WebpDrawable localWebpDrawable = this.drawable;
+    if (localWebpDrawable != null) {
+      return localWebpDrawable.isRunning();
     }
     return false;
   }
   
   public void recycle()
   {
-    if (this.drawable != null) {
-      this.drawable.stop();
+    WebpDrawable localWebpDrawable = this.drawable;
+    if (localWebpDrawable != null) {
+      localWebpDrawable.stop();
     }
   }
   
   public int size()
   {
-    if ((this.drawable != null) && (this.drawable.getCurrentBitmap() != null)) {
+    WebpDrawable localWebpDrawable = this.drawable;
+    if ((localWebpDrawable != null) && (localWebpDrawable.getCurrentBitmap() != null)) {
       return BitmapUtils.getBitmapAllocSize(this.drawable.getCurrentBitmap());
     }
     return 0;
@@ -55,7 +58,7 @@ public class AnimWebpImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.animwebp.AnimWebpImage
  * JD-Core Version:    0.7.0.1
  */

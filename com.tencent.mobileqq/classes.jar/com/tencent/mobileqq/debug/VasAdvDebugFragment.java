@@ -35,7 +35,11 @@ public final class VasAdvDebugFragment
   private final void a(boolean paramBoolean)
   {
     BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putBoolean("enableWebviewDebug", paramBoolean).apply();
-    QLog.d("VasAdvDebugFragment", 1, "setEnableWebviewDebug: " + paramBoolean + ' ');
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setEnableWebviewDebug: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(' ');
+    QLog.d("VasAdvDebugFragment", 1, localStringBuilder.toString());
   }
   
   private final boolean a()
@@ -46,24 +50,25 @@ public final class VasAdvDebugFragment
   private final void b()
   {
     View localView = this.mContentView;
-    Object localObject = (CheckBox)localView.findViewById(2131364504);
+    Object localObject = (CheckBox)localView.findViewById(2131364393);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "cbWebViewDebug");
     ((CheckBox)localObject).setChecked(a());
     ((CheckBox)localObject).setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)new VasAdvDebugFragment.initView..inlined.apply.lambda.1(this));
-    ((TextView)localView.findViewById(2131380660)).setOnClickListener((View.OnClickListener)new VasAdvDebugFragment.initView..inlined.apply.lambda.2(this));
-    localObject = (EditText)localView.findViewById(2131366461);
-    EditText localEditText = (EditText)localView.findViewById(2131366462);
-    ((TextView)localView.findViewById(2131380661)).setOnClickListener((View.OnClickListener)new VasAdvDebugFragment.initView.1.3(localView, (EditText)localObject, localEditText));
+    ((TextView)localView.findViewById(2131379935)).setOnClickListener((View.OnClickListener)new VasAdvDebugFragment.initView..inlined.apply.lambda.2(this));
+    localObject = (EditText)localView.findViewById(2131366340);
+    EditText localEditText = (EditText)localView.findViewById(2131366341);
+    ((TextView)localView.findViewById(2131379936)).setOnClickListener((View.OnClickListener)new VasAdvDebugFragment.initView.1.3(localView, (EditText)localObject, localEditText));
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
-  public void doOnCreateView(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
+  protected void doOnCreateView(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
@@ -71,14 +76,14 @@ public final class VasAdvDebugFragment
     b();
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131561735;
+    return 2131561578;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.debug.VasAdvDebugFragment
  * JD-Core Version:    0.7.0.1
  */

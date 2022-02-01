@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.event.FollowUpdateEvent;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQZoneApiProxy;
 import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.api.QZoneApiProxy;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import mqq.app.AppRuntime;
 
 public class QzonePublicAccountHelper
 {
@@ -20,14 +22,16 @@ public class QzonePublicAccountHelper
   
   public static void broadcastFollowIfNeed(Activity paramActivity, FollowUpdateEvent paramFollowUpdateEvent)
   {
-    if ((paramActivity == null) || (paramActivity.getIntent() == null)) {}
-    ExtraTypeInfo localExtraTypeInfo;
-    do
+    if (paramActivity != null)
     {
-      return;
-      localExtraTypeInfo = (ExtraTypeInfo)paramActivity.getIntent().getSerializableExtra("key_subscribe_intent_extra_type_info");
-    } while ((localExtraTypeInfo == null) || (localExtraTypeInfo.sourceType != 9002) || (paramFollowUpdateEvent == null));
-    broadcastFollowIfNeed(paramActivity, paramFollowUpdateEvent.useId, paramFollowUpdateEvent.followStatus);
+      if (paramActivity.getIntent() == null) {
+        return;
+      }
+      ExtraTypeInfo localExtraTypeInfo = (ExtraTypeInfo)paramActivity.getIntent().getSerializableExtra("key_subscribe_intent_extra_type_info");
+      if ((localExtraTypeInfo != null) && (localExtraTypeInfo.sourceType == 9002) && (paramFollowUpdateEvent != null)) {
+        broadcastFollowIfNeed(paramActivity, paramFollowUpdateEvent.useId, paramFollowUpdateEvent.followStatus);
+      }
+    }
   }
   
   public static void broadcastFollowIfNeed(Context paramContext, FollowUpdateEvent paramFollowUpdateEvent)
@@ -39,43 +43,47 @@ public class QzonePublicAccountHelper
   
   public static void broadcastFollowIfNeed(Context paramContext, String paramString, int paramInt)
   {
-    if ((paramContext == null) || (paramString == null)) {
-      return;
+    if (paramContext != null)
+    {
+      if (paramString == null) {
+        return;
+      }
+      Intent localIntent = new Intent("action.qzone_public_account_follow");
+      localIntent.putExtra("followed", paramInt);
+      localIntent.putExtra("uin", paramString);
+      paramContext.sendBroadcast(localIntent, "com.tencent.qzone.permission.notify");
     }
-    Intent localIntent = new Intent("action.qzone_public_account_follow");
-    localIntent.putExtra("followed", paramInt);
-    localIntent.putExtra("uin", paramString);
-    paramContext.sendBroadcast(localIntent, "com.tencent.qzone.permission.notify");
   }
   
-  public static boolean isQZonePluginReady(Context paramContext, QQAppInterface paramQQAppInterface)
+  public static boolean isQZonePluginReady(Context paramContext, AppRuntime paramAppRuntime)
   {
-    ClassLoader localClassLoader;
-    StringBuilder localStringBuilder;
-    if (QZoneApiProxy.needLoadQZoneEnv())
+    boolean bool2 = QZoneApiProxy.needLoadQZoneEnv();
+    boolean bool1 = false;
+    if (bool2)
     {
-      localClassLoader = QzonePluginProxyActivity.getQZonePluginClassLoaderInUI();
-      localStringBuilder = new StringBuilder().append("QzonePublicAccountHelper: start to load qzone plugin ");
-      if (localClassLoader == null) {
-        break label68;
-      }
-    }
-    label68:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("QzonePublicAccountHelper", 1, bool);
+      ClassLoader localClassLoader = QzonePluginProxyActivity.getQZonePluginClassLoaderInUI();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QzonePublicAccountHelper: start to load qzone plugin ");
       if (localClassLoader != null) {
-        break;
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QzonePublicAccountHelper.1(paramContext, paramQQAppInterface));
-      return false;
+      localStringBuilder.append(bool1);
+      QLog.i("QzonePublicAccountHelper", 1, localStringBuilder.toString());
+      if (localClassLoader == null)
+      {
+        QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QzonePublicAccountHelper.1(paramContext, paramAppRuntime));
+        return false;
+      }
+      bool1 = ((IQZoneApiProxy)QRoute.api(IQZoneApiProxy.class)).needShowMsgFeedList((Activity)paramContext, paramAppRuntime);
     }
-    return QZoneApiProxy.needShowMsgFeedList((Activity)paramContext, paramQQAppInterface);
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.util.QzonePublicAccountHelper
  * JD-Core Version:    0.7.0.1
  */

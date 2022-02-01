@@ -13,13 +13,14 @@ final class eq$a
   
   static a a(TencentLocation paramTencentLocation)
   {
-    int i = 2;
     a locala = new a();
     locala.a = paramTencentLocation.getLatitude();
     locala.b = paramTencentLocation.getLongitude();
     locala.c = paramTencentLocation.getTime();
     locala.e = paramTencentLocation.getSpeed();
-    if (TencentLocationUtils.isFromGps(paramTencentLocation))
+    boolean bool = TencentLocationUtils.isFromGps(paramTencentLocation);
+    int i = 2;
+    if (bool)
     {
       if (paramTencentLocation.getAccuracy() < 100.0F) {
         i = 3;
@@ -27,23 +28,26 @@ final class eq$a
       locala.d = i;
       return locala;
     }
-    if (paramTencentLocation.getAccuracy() < 500.0F) {}
-    for (;;)
-    {
-      locala.d = i;
-      return locala;
+    if (paramTencentLocation.getAccuracy() >= 500.0F) {
       i = 1;
     }
+    locala.d = i;
+    return locala;
   }
   
   public final String toString()
   {
-    return "[" + this.a + "," + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.eq.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,25 @@ final class ix$b
   ix$b(ix paramix)
   {
     Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-    {
-      this.a = ((ThreadGroup)localObject);
-      this.c = ("tileOverlay-" + paramix.i + "-thread-");
-      return;
+    if (localObject != null) {
+      localObject = ((SecurityManager)localObject).getThreadGroup();
+    } else {
+      localObject = Thread.currentThread().getThreadGroup();
     }
+    this.a = ((ThreadGroup)localObject);
+    localObject = new StringBuilder("tileOverlay-");
+    ((StringBuilder)localObject).append(paramix.i);
+    ((StringBuilder)localObject).append("-thread-");
+    this.c = ((StringBuilder)localObject).toString();
   }
   
   public final Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = new Thread(this.a, paramRunnable, this.c + this.b.getAndIncrement(), 0L);
+    ThreadGroup localThreadGroup = this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.b.getAndIncrement());
+    paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
     }
@@ -36,7 +43,7 @@ final class ix$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ix.b
  * JD-Core Version:    0.7.0.1
  */

@@ -68,49 +68,60 @@ public final class stMetaPerson
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    String str = this.id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.type, 1);
-    if (this.uid != null) {
-      paramJceOutputStream.write(this.uid, 2);
+    str = this.uid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.createtime, 3);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 4);
+    str = this.nick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.avatar != null) {
-      paramJceOutputStream.write(this.avatar, 5);
+    str = this.avatar;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.sex, 6);
-    if (this.feedlist_time_id != null) {
-      paramJceOutputStream.write(this.feedlist_time_id, 7);
+    str = this.feedlist_time_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.feedlist_hot_id != null) {
-      paramJceOutputStream.write(this.feedlist_hot_id, 8);
+    str = this.feedlist_hot_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.related_feedlist_id != null) {
-      paramJceOutputStream.write(this.related_feedlist_id, 9);
+    str = this.related_feedlist_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.followerlist_id != null) {
-      paramJceOutputStream.write(this.followerlist_id, 10);
+    str = this.followerlist_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.interesterlist_id != null) {
-      paramJceOutputStream.write(this.interesterlist_id, 11);
+    str = this.interesterlist_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.chatlist_id != null) {
-      paramJceOutputStream.write(this.chatlist_id, 12);
+    str = this.chatlist_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
     paramJceOutputStream.write(this.rich_flag, 13);
     paramJceOutputStream.write(this.age, 14);
-    if (this.address != null) {
-      paramJceOutputStream.write(this.address, 15);
+    str = this.address;
+    if (str != null) {
+      paramJceOutputStream.write(str, 15);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stMetaPerson
  * JD-Core Version:    0.7.0.1
  */

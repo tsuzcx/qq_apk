@@ -12,7 +12,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class MaskView
@@ -48,31 +48,38 @@ public class MaskView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845913);
-    this.jdField_a_of_type_Int = AIOUtils.a(3.0F, getResources());
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845786);
+    this.jdField_a_of_type_Int = DisplayUtil.a(getContext(), 3.0F);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
-    int j;
     int i;
+    int j;
     if (localDisplayMetrics.widthPixels < localDisplayMetrics.heightPixels)
+    {
+      i = localDisplayMetrics.widthPixels;
+      j = localDisplayMetrics.heightPixels;
+    }
+    else
     {
       j = localDisplayMetrics.widthPixels;
       i = localDisplayMetrics.heightPixels;
     }
-    for (;;)
-    {
-      int k = j - AIOUtils.a(18.0F, getResources());
-      int m = k * 424 / 680;
-      int n = (j - k) / 2 + 0;
-      int i1 = (i - m) / 2 + 0;
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(n, i1, n + k, i1 + m);
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect(this.jdField_a_of_type_Int + n, this.jdField_a_of_type_Int + i1, k + n - this.jdField_a_of_type_Int, m + i1 - this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(this.jdField_b_of_type_AndroidGraphicsRect.left * 1.0F / j, this.jdField_b_of_type_AndroidGraphicsRect.top * 1.0F / i, this.jdField_b_of_type_AndroidGraphicsRect.right * 1.0F / j, this.jdField_b_of_type_AndroidGraphicsRect.bottom * 1.0F / i);
-      if (QLog.isColorLevel()) {
-        QLog.d("MaskView", 2, new Object[] { "MaskView init mBoxRect:", this.jdField_a_of_type_AndroidGraphicsRect, " screenHeight: ", Integer.valueOf(i), " screenWidth: ", Integer.valueOf(j), "mPreviewRect:", this.jdField_b_of_type_AndroidGraphicsRect, "mPreviewRectF:", this.jdField_a_of_type_AndroidGraphicsRectF });
-      }
-      return;
-      i = localDisplayMetrics.widthPixels;
-      j = localDisplayMetrics.heightPixels;
+    int n = i - DisplayUtil.a(getContext(), 18.0F);
+    int i1 = n * 424 / 680;
+    int k = (i - n) / 2 + 0;
+    int m = (j - i1) / 2 + 0;
+    n += k;
+    i1 += m;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(k, m, n, i1);
+    int i2 = this.jdField_a_of_type_Int;
+    this.jdField_b_of_type_AndroidGraphicsRect = new Rect(k + i2, m + i2, n - i2, i1 - i2);
+    float f2 = this.jdField_b_of_type_AndroidGraphicsRect.left;
+    float f1 = i;
+    f2 = f2 * 1.0F / f1;
+    float f3 = this.jdField_b_of_type_AndroidGraphicsRect.top;
+    float f4 = j;
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f2, f3 * 1.0F / f4, this.jdField_b_of_type_AndroidGraphicsRect.right * 1.0F / f1, this.jdField_b_of_type_AndroidGraphicsRect.bottom * 1.0F / f4);
+    if (QLog.isColorLevel()) {
+      QLog.d("MaskView", 2, new Object[] { "MaskView init mBoxRect:", this.jdField_a_of_type_AndroidGraphicsRect, " screenHeight: ", Integer.valueOf(j), " screenWidth: ", Integer.valueOf(i), "mPreviewRect:", this.jdField_b_of_type_AndroidGraphicsRect, "mPreviewRectF:", this.jdField_a_of_type_AndroidGraphicsRectF });
     }
   }
   
@@ -86,7 +93,7 @@ public class MaskView
     return this.jdField_a_of_type_AndroidGraphicsRectF;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (!this.jdField_a_of_type_Boolean) {
@@ -94,21 +101,20 @@ public class MaskView
     }
     if (this.jdField_b_of_type_Boolean) {
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-2147483648);
     }
-    for (;;)
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    paramCanvas.drawRect(new Rect(0, 0, getWidth(), this.jdField_b_of_type_AndroidGraphicsRect.top), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRect(new Rect(0, this.jdField_b_of_type_AndroidGraphicsRect.bottom, getWidth(), getHeight()), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRect(new Rect(0, this.jdField_b_of_type_AndroidGraphicsRect.top, this.jdField_b_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_AndroidGraphicsRect.bottom), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRect(new Rect(this.jdField_b_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_AndroidGraphicsRect.top, getHeight(), this.jdField_b_of_type_AndroidGraphicsRect.bottom), this.jdField_a_of_type_AndroidGraphicsPaint);
+    Drawable localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    if ((localDrawable != null) && (this.jdField_b_of_type_Boolean))
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      paramCanvas.drawRect(new Rect(0, 0, getWidth(), this.jdField_b_of_type_AndroidGraphicsRect.top), this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(new Rect(0, this.jdField_b_of_type_AndroidGraphicsRect.bottom, getWidth(), getHeight()), this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(new Rect(0, this.jdField_b_of_type_AndroidGraphicsRect.top, this.jdField_b_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_AndroidGraphicsRect.bottom), this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(new Rect(this.jdField_b_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_AndroidGraphicsRect.top, getHeight(), this.jdField_b_of_type_AndroidGraphicsRect.bottom), this.jdField_a_of_type_AndroidGraphicsPaint);
-      if ((this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) || (!this.jdField_b_of_type_Boolean)) {
-        break;
-      }
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
+      localDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       return;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-2147483648);
     }
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
@@ -136,7 +142,7 @@ public class MaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.MaskView
  * JD-Core Version:    0.7.0.1
  */

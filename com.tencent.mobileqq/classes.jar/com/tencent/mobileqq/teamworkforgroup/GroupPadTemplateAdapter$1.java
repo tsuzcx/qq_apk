@@ -13,8 +13,12 @@ class GroupPadTemplateAdapter$1
   {
     if (!GroupPadTemplateAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateAdapter).contains(this.jdField_a_of_type_JavaLangString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupPadTemplateAdapter", 2, "onFileDownloadFailed url: " + this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onFileDownloadFailed url: ");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        QLog.d("GroupPadTemplateAdapter", 2, localStringBuilder.toString());
       }
       GroupPadTemplateAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateAdapter).add(this.jdField_a_of_type_JavaLangString);
     }
@@ -26,7 +30,7 @@ class GroupPadTemplateAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateAdapter.1
  * JD-Core Version:    0.7.0.1
  */

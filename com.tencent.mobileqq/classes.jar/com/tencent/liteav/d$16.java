@@ -1,0 +1,29 @@
+package com.tencent.liteav;
+
+class d$16
+  implements Runnable
+{
+  d$16(d paramd, boolean paramBoolean) {}
+  
+  public void run()
+  {
+    k localk = d.f(this.b);
+    if (localk == null) {
+      return;
+    }
+    localk.f(d.e(this.b).h);
+    localk.e(d.e(this.b).l);
+    localk.a(d.e(this.b).k);
+    localk.b(d.e(this.b).a, d.e(this.b).b);
+    localk.e(d.e(this.b).U);
+    if ((this.a) && (localk.d())) {
+      localk.b(false);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+ * Qualified Name:     com.tencent.liteav.d.16
+ * JD-Core Version:    0.7.0.1
+ */

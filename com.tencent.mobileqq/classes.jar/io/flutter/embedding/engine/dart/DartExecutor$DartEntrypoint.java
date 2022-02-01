@@ -29,26 +29,21 @@ public class DartExecutor$DartEntrypoint
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (paramObject == null);
-        bool1 = bool2;
-      } while (getClass() != paramObject.getClass());
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
       paramObject = (DartEntrypoint)paramObject;
-      bool1 = bool2;
-    } while (!this.pathToBundle.equals(paramObject.pathToBundle));
-    return this.dartEntrypointFunctionName.equals(paramObject.dartEntrypointFunctionName);
+      if (!this.pathToBundle.equals(paramObject.pathToBundle)) {
+        return false;
+      }
+      return this.dartEntrypointFunctionName.equals(paramObject.dartEntrypointFunctionName);
+    }
+    return false;
   }
   
   public int hashCode()
@@ -70,7 +65,7 @@ public class DartExecutor$DartEntrypoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.dart.DartExecutor.DartEntrypoint
  * JD-Core Version:    0.7.0.1
  */

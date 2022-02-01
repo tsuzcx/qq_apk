@@ -77,24 +77,33 @@ public class SoftKeyboardStateHelper
     Rect localRect = new Rect();
     this.activityRootView.getWindowVisibleDisplayFrame(localRect);
     int i = this.activityRootView.getRootView().getHeight() - (localRect.bottom - localRect.top) - DisplayUtil.getStatusBarHeight(this.activityRootView.getContext());
-    QMLog.d("SoftKeyboardStateHelper", "onGlobalLayout , activityRootView.Height = " + this.activityRootView.getRootView().getHeight() + " heightDiff = " + i + " (r.bottom - r.top) = " + (localRect.bottom - localRect.top));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGlobalLayout , activityRootView.Height = ");
+    localStringBuilder.append(this.activityRootView.getRootView().getHeight());
+    localStringBuilder.append(" heightDiff = ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" (r.bottom - r.top) = ");
+    localStringBuilder.append(localRect.bottom - localRect.top);
+    QMLog.d("SoftKeyboardStateHelper", localStringBuilder.toString());
     if ((!this.isSoftKeyboardOpened) && (i > 200))
     {
       this.isSoftKeyboardOpened = true;
       notifyOnSoftKeyboardOpened(i);
-    }
-    while ((!this.isSoftKeyboardOpened) || (i >= 200)) {
       return;
     }
-    this.isSoftKeyboardOpened = false;
-    notifyOnSoftKeyboardClosed();
+    if ((this.isSoftKeyboardOpened) && (i < 200))
+    {
+      this.isSoftKeyboardOpened = false;
+      notifyOnSoftKeyboardClosed();
+    }
   }
   
   public void removeSoftKeyboardStateListener()
   {
     this.listeners.clear();
-    if (this.activityRootView != null) {
-      this.activityRootView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    View localView = this.activityRootView;
+    if (localView != null) {
+      localView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
   
@@ -110,7 +119,7 @@ public class SoftKeyboardStateHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.SoftKeyboardStateHelper
  * JD-Core Version:    0.7.0.1
  */

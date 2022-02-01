@@ -9,8 +9,10 @@ class ArkViewModelBase$14
   
   public void run()
   {
-    if (!this.this$0.mRectContainerF.isEmpty()) {
-      this.this$0.Update(this.this$0.mRectContainerF.left, this.this$0.mRectContainerF.top, this.this$0.mRectContainerF.right, this.this$0.mRectContainerF.bottom);
+    if (!this.this$0.mRectContainerF.isEmpty())
+    {
+      ArkViewModelBase localArkViewModelBase = this.this$0;
+      localArkViewModelBase.Update(localArkViewModelBase.mRectContainerF.left, this.this$0.mRectContainerF.top, this.this$0.mRectContainerF.right, this.this$0.mRectContainerF.bottom);
     }
   }
 }

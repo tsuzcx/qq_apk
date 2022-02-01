@@ -27,14 +27,15 @@ public final class SetReq
   
   public static SetReq[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new SetReq[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new SetReq[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static SetReq parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -62,36 +63,43 @@ public final class SetReq
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    long l = this.roomid;
     int i = j;
-    if (this.roomid != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, this.roomid);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
+    Object localObject = this.attrs;
     j = i;
-    if (this.attrs != null)
+    if (localObject != null)
     {
       j = i;
-      if (this.attrs.length > 0)
+      if (localObject.length > 0)
       {
-        j = 0;
-        while (j < this.attrs.length)
+        k = 0;
+        for (;;)
         {
-          Tlv localTlv = this.attrs[j];
-          int k = i;
-          if (localTlv != null) {
-            k = i + CodedOutputByteBufferNano.computeMessageSize(2, localTlv);
+          localObject = this.attrs;
+          j = i;
+          if (k >= localObject.length) {
+            break;
           }
-          j += 1;
-          i = k;
+          localObject = localObject[k];
+          j = i;
+          if (localObject != null) {
+            j = i + CodedOutputByteBufferNano.computeMessageSize(2, (MessageNano)localObject);
+          }
+          k += 1;
+          i = j;
         }
-        j = i;
       }
     }
+    localObject = this.tags;
     i = j;
-    if (this.tags != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(3, this.tags);
+    if (localObject != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(3, (MessageNano)localObject);
     }
     j = i;
     if (!this.source.equals("")) {
@@ -105,17 +113,20 @@ public final class SetReq
     if (!this.machine.equals("")) {
       j = i + CodedOutputByteBufferNano.computeStringSize(6, this.machine);
     }
+    int k = this.closePgcCrossLimit;
     i = j;
-    if (this.closePgcCrossLimit != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(7, this.closePgcCrossLimit);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(7, k);
     }
+    k = this.closeSubAccountLimit;
     j = i;
-    if (this.closeSubAccountLimit != 0) {
-      j = i + CodedOutputByteBufferNano.computeInt32Size(8, this.closeSubAccountLimit);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(8, k);
     }
+    k = this.distributeSource;
     i = j;
-    if (this.distributeSource != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(9, this.distributeSource);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(9, k);
     }
     return i;
   }
@@ -125,23 +136,72 @@ public final class SetReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.roomid = paramCodedInputByteBufferNano.readUInt64();
+      if (i == 0) {
         break;
-      case 18: 
-        int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
-        if (this.attrs == null) {}
-        Tlv[] arrayOfTlv;
-        for (i = 0;; i = this.attrs.length)
+      }
+      if (i != 8)
+      {
+        if (i != 18)
         {
+          if (i != 26)
+          {
+            if (i != 34)
+            {
+              if (i != 42)
+              {
+                if (i != 50)
+                {
+                  if (i != 56)
+                  {
+                    if (i != 64)
+                    {
+                      if (i != 72)
+                      {
+                        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                          return this;
+                        }
+                      }
+                      else {
+                        this.distributeSource = paramCodedInputByteBufferNano.readInt32();
+                      }
+                    }
+                    else {
+                      this.closeSubAccountLimit = paramCodedInputByteBufferNano.readInt32();
+                    }
+                  }
+                  else {
+                    this.closePgcCrossLimit = paramCodedInputByteBufferNano.readInt32();
+                  }
+                }
+                else {
+                  this.machine = paramCodedInputByteBufferNano.readString();
+                }
+              }
+              else {
+                this.programId = paramCodedInputByteBufferNano.readString();
+              }
+            }
+            else {
+              this.source = paramCodedInputByteBufferNano.readString();
+            }
+          }
+          else
+          {
+            if (this.tags == null) {
+              this.tags = new RoomRichTitle();
+            }
+            paramCodedInputByteBufferNano.readMessage(this.tags);
+          }
+        }
+        else
+        {
+          int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
+          Tlv[] arrayOfTlv = this.attrs;
+          if (arrayOfTlv == null) {
+            i = 0;
+          } else {
+            i = arrayOfTlv.length;
+          }
           arrayOfTlv = new Tlv[j + i];
           j = i;
           if (i != 0)
@@ -156,56 +216,44 @@ public final class SetReq
             paramCodedInputByteBufferNano.readTag();
             j += 1;
           }
+          arrayOfTlv[j] = new Tlv();
+          paramCodedInputByteBufferNano.readMessage(arrayOfTlv[j]);
+          this.attrs = arrayOfTlv;
         }
-        arrayOfTlv[j] = new Tlv();
-        paramCodedInputByteBufferNano.readMessage(arrayOfTlv[j]);
-        this.attrs = arrayOfTlv;
-        break;
-      case 26: 
-        if (this.tags == null) {
-          this.tags = new RoomRichTitle();
-        }
-        paramCodedInputByteBufferNano.readMessage(this.tags);
-        break;
-      case 34: 
-        this.source = paramCodedInputByteBufferNano.readString();
-        break;
-      case 42: 
-        this.programId = paramCodedInputByteBufferNano.readString();
-        break;
-      case 50: 
-        this.machine = paramCodedInputByteBufferNano.readString();
-        break;
-      case 56: 
-        this.closePgcCrossLimit = paramCodedInputByteBufferNano.readInt32();
-        break;
-      case 64: 
-        this.closeSubAccountLimit = paramCodedInputByteBufferNano.readInt32();
-        break;
       }
-      this.distributeSource = paramCodedInputByteBufferNano.readInt32();
+      else {
+        this.roomid = paramCodedInputByteBufferNano.readUInt64();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.roomid != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, this.roomid);
+    long l = this.roomid;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    if ((this.attrs != null) && (this.attrs.length > 0))
+    Object localObject = this.attrs;
+    if ((localObject != null) && (localObject.length > 0))
     {
-      int i = 0;
-      while (i < this.attrs.length)
+      i = 0;
+      for (;;)
       {
-        Tlv localTlv = this.attrs[i];
-        if (localTlv != null) {
-          paramCodedOutputByteBufferNano.writeMessage(2, localTlv);
+        localObject = this.attrs;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeMessage(2, (MessageNano)localObject);
         }
         i += 1;
       }
     }
-    if (this.tags != null) {
-      paramCodedOutputByteBufferNano.writeMessage(3, this.tags);
+    localObject = this.tags;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(3, (MessageNano)localObject);
     }
     if (!this.source.equals("")) {
       paramCodedOutputByteBufferNano.writeString(4, this.source);
@@ -216,21 +264,24 @@ public final class SetReq
     if (!this.machine.equals("")) {
       paramCodedOutputByteBufferNano.writeString(6, this.machine);
     }
-    if (this.closePgcCrossLimit != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(7, this.closePgcCrossLimit);
+    int i = this.closePgcCrossLimit;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(7, i);
     }
-    if (this.closeSubAccountLimit != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(8, this.closeSubAccountLimit);
+    i = this.closeSubAccountLimit;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(8, i);
     }
-    if (this.distributeSource != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(9, this.distributeSource);
+    i = this.distributeSource;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(9, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.SetReq
  * JD-Core Version:    0.7.0.1
  */

@@ -2,77 +2,100 @@ package com.tencent.mobileqq.colornote;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.colornote.data.ColorNoteRecentConfBean;
 import com.tencent.mobileqq.colornote.data.ColorNoteRecentConfigProcessor;
 import com.tencent.mobileqq.colornote.data.ColorNoteUtils;
-import com.tencent.mobileqq.colornote.ipc.ColorNoteQIPCModule;
+import com.tencent.mobileqq.colornote.ipc.IColorNoteProcessState;
 import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class ColorNoteRecentView
 {
   private ColorNoteCurd a;
   
-  private static SharedPreferences a()
+  private static SharedPreferences a(AppRuntime paramAppRuntime)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "color_note_recent_view_switch" + str;
-    return BaseApplicationImpl.getApplication().getSharedPreferences(str, 4);
+    paramAppRuntime = paramAppRuntime.getAccount();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("color_note_recent_view_switch");
+    localStringBuilder.append(paramAppRuntime);
+    paramAppRuntime = localStringBuilder.toString();
+    return MobileQQ.getContext().getSharedPreferences(paramAppRuntime, 4);
   }
   
-  public static void a(boolean paramBoolean)
+  public static void a(AppRuntime paramAppRuntime)
   {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null)
+    paramAppRuntime = a(paramAppRuntime);
+    if (paramAppRuntime != null) {
+      paramAppRuntime.edit().putBoolean("color_note_recent_first_visit", false).apply();
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    paramAppRuntime = a(paramAppRuntime);
+    if (paramAppRuntime != null)
     {
-      localSharedPreferences.edit().putBoolean("color_note_recently_viewed_switch", paramBoolean).apply();
+      paramAppRuntime.edit().putBoolean("color_note_recently_viewed_switch", paramBoolean).apply();
       if (!paramBoolean) {
-        ColorNoteSmallScreenUtil.a(BaseApplicationImpl.getContext(), 5, false);
+        ColorNoteSmallScreenUtil.a(MobileQQ.getContext(), 5, false);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteRecentView", 2, "setRecentColorNoteSwitch: " + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        paramAppRuntime = new StringBuilder();
+        paramAppRuntime.append("setRecentColorNoteSwitch: ");
+        paramAppRuntime.append(paramBoolean);
+        QLog.d("ColorNoteRecentView", 2, paramAppRuntime.toString());
       }
     }
   }
   
   public static boolean a()
   {
-    boolean bool = true;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("color_note_recently_viewed_switch", true);
-    }
-    return bool;
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("color_recent_permission_shown", paramBoolean).apply();
-    }
-  }
-  
-  public static boolean b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if ((localSharedPreferences != null) && (!localSharedPreferences.getBoolean("color_note_recent_first_visit", false)))
+    Object localObject = a(MobileQQ.getMobileQQ().waitAppRuntime(null));
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject != null)
     {
-      localSharedPreferences.edit().putBoolean("color_note_recent_first_visit", true).apply();
-      return true;
+      bool1 = bool2;
+      if (!((SharedPreferences)localObject).getBoolean("color_note_recent_first_visit", false))
+      {
+        localObject = ((SharedPreferences)localObject).edit();
+        bool1 = true;
+        ((SharedPreferences.Editor)localObject).putBoolean("color_note_recent_first_visit", true).apply();
+      }
     }
-    return false;
+    return bool1;
   }
   
-  public static boolean c()
+  public static boolean a(AppRuntime paramAppRuntime)
   {
+    paramAppRuntime = a(paramAppRuntime);
+    if (paramAppRuntime != null) {
+      return paramAppRuntime.getBoolean("color_note_recently_viewed_switch", true);
+    }
+    return true;
+  }
+  
+  public static void b(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    paramAppRuntime = a(paramAppRuntime);
+    if (paramAppRuntime != null) {
+      paramAppRuntime.edit().putBoolean("color_recent_permission_shown", paramBoolean).apply();
+    }
+  }
+  
+  public static boolean b(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = a(paramAppRuntime);
     boolean bool = false;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("color_recent_permission_shown", false);
+    if (paramAppRuntime != null) {
+      bool = paramAppRuntime.getBoolean("color_recent_permission_shown", false);
     }
     return bool;
   }
@@ -84,35 +107,30 @@ public class ColorNoteRecentView
   
   public void a(ColorNote paramColorNote)
   {
-    boolean bool3 = false;
     Object localObject = ColorNoteRecentConfigProcessor.a();
-    if ((localObject != null) && (((ColorNoteRecentConfBean)localObject).a())) {}
-    for (boolean bool1 = true;; bool1 = false)
+    int i;
+    if ((localObject != null) && (((ColorNoteRecentConfBean)localObject).a())) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i != 0) && (paramColorNote != null) && (this.a != null) && (((IColorNoteProcessState)QRoute.api(IColorNoteProcessState.class)).isRecentColorNoteTurnOn(MobileQQ.getMobileQQ().waitAppRuntime(null))))
     {
-      if ((bool1) && (paramColorNote != null) && (this.a != null) && (ColorNoteQIPCModule.a().a()))
+      localObject = ColorNoteUtils.a(paramColorNote);
+      this.a.c((ColorNote)localObject);
+      if (QLog.isColorLevel())
       {
-        localObject = ColorNoteUtils.a(paramColorNote);
-        this.a.c((ColorNote)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("ColorNoteRecentView", 2, "updateRecentNote: " + paramColorNote.toString());
-        }
-        return;
-      }
-      if (paramColorNote != null) {}
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        if (this.a != null) {
-          bool3 = true;
-        }
-        QLog.d("ColorNoteRecentView", 1, new Object[] { "[updateRecentNote] recentSwitch: ", Boolean.valueOf(bool1), ", note: ", Boolean.valueOf(bool2), ", curd: ", Boolean.valueOf(bool3), "recentTurnOn: ", Boolean.valueOf(ColorNoteQIPCModule.a().a()) });
-        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateRecentNote: ");
+        ((StringBuilder)localObject).append(paramColorNote.toString());
+        QLog.d("ColorNoteRecentView", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.ColorNoteRecentView
  * JD-Core Version:    0.7.0.1
  */

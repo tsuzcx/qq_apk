@@ -47,33 +47,28 @@ public class FriendGroup
       int i1 = localJSONArray2.length();
       ArrayList localArrayList2 = new ArrayList(i1);
       int j = 0;
-      if (j < i1)
+      while (j < i1)
       {
         Object localObject = localJSONArray2.getJSONObject(j);
-        String str = ((JSONObject)localObject).getString("data");
-        if (((JSONObject)localObject).has("nick"))
-        {
+        String str2 = ((JSONObject)localObject).getString("data");
+        boolean bool = ((JSONObject)localObject).has("nick");
+        String str1 = null;
+        if (bool) {
           paramJSONObject = ((JSONObject)localObject).getString("nick");
-          label129:
-          if (!((JSONObject)localObject).has("label")) {
-            break label216;
-          }
-        }
-        label216:
-        for (localObject = ((JSONObject)localObject).getString("label");; localObject = null)
-        {
-          Friend localFriend = new Friend();
-          localFriend.jdField_a_of_type_JavaLangString = str;
-          localFriend.jdField_b_of_type_JavaLangString = StringAddition.a(paramJSONObject);
-          localFriend.jdField_c_of_type_JavaLangString = StringAddition.a((String)localObject);
-          localFriend.jdField_b_of_type_Int = m;
-          localFriend.jdField_c_of_type_Int = k;
-          localArrayList2.add(localFriend);
-          j += 1;
-          break;
+        } else {
           paramJSONObject = null;
-          break label129;
         }
+        if (((JSONObject)localObject).has("label")) {
+          str1 = ((JSONObject)localObject).getString("label");
+        }
+        localObject = new Friend();
+        ((Friend)localObject).jdField_a_of_type_JavaLangString = str2;
+        ((Friend)localObject).jdField_b_of_type_JavaLangString = StringAddition.a(paramJSONObject);
+        ((Friend)localObject).jdField_c_of_type_JavaLangString = StringAddition.a(str1);
+        ((Friend)localObject).jdField_b_of_type_Int = m;
+        ((Friend)localObject).jdField_c_of_type_Int = k;
+        localArrayList2.add(localObject);
+        j += 1;
       }
       paramJSONObject = new FriendGroup();
       paramJSONObject.jdField_a_of_type_Int = i;
@@ -87,71 +82,67 @@ public class FriendGroup
   
   public static final List<FriendGroup> b(JSONObject paramJSONObject)
   {
-    JSONArray localJSONArray1 = paramJSONObject.getJSONArray("data");
-    int m = localJSONArray1.length();
+    JSONArray localJSONArray = paramJSONObject.getJSONArray("data");
+    int i = localJSONArray.length();
     int n = paramJSONObject.optInt("app_tid", -1);
     int i1 = paramJSONObject.optInt("app_rid", -1);
-    ArrayList localArrayList1 = new ArrayList(m + 3);
+    ArrayList localArrayList1 = new ArrayList(i + 3);
     ArrayList localArrayList2 = new ArrayList();
     FriendGroup localFriendGroup = new FriendGroup();
     localFriendGroup.jdField_a_of_type_Int = 0;
-    localFriendGroup.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704895);
+    localFriendGroup.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704971);
     localFriendGroup.jdField_a_of_type_JavaUtilList = localArrayList2;
     localArrayList1.add(localFriendGroup);
-    int j = 0;
-    int i = 1;
-    while (j < m)
+    int k = 0;
+    int j = 1;
+    for (;;)
     {
-      JSONObject localJSONObject1 = localJSONArray1.getJSONObject(j);
-      JSONArray localJSONArray2 = localJSONObject1.getJSONArray("friends");
-      int i2 = localJSONArray2.length();
-      ArrayList localArrayList3 = new ArrayList(i2);
-      int k = 0;
-      while (k < i2)
-      {
-        JSONObject localJSONObject2 = localJSONArray2.getJSONObject(k);
-        if (localJSONObject2.getInt("unabled") == 1)
-        {
-          k += 1;
-        }
-        else
-        {
-          String str2 = localJSONObject2.getString("openid");
-          if (localJSONObject2.has("nickname"))
-          {
-            localObject = localJSONObject2.getString("nickname");
-            label202:
-            if (!localJSONObject2.has("remark")) {
-              break label307;
-            }
-          }
-          label307:
-          for (String str1 = localJSONObject2.getString("remark");; str1 = null)
-          {
-            Friend localFriend = new Friend();
-            localFriend.jdField_a_of_type_JavaLangString = str2;
-            localFriend.jdField_b_of_type_JavaLangString = StringAddition.a((String)localObject);
-            localFriend.jdField_c_of_type_JavaLangString = StringAddition.a(str1);
-            if (localJSONObject2.getInt("specified") == 1)
-            {
-              localFriend.jdField_b_of_type_Int = i1;
-              localFriend.jdField_c_of_type_Int = n;
-              localArrayList2.add(localFriend);
-            }
-            localArrayList3.add(localFriend);
-            break;
-            localObject = null;
-            break label202;
-          }
-        }
+      int m = 0;
+      if (k >= i) {
+        break;
       }
-      Object localObject = new FriendGroup();
-      ((FriendGroup)localObject).jdField_a_of_type_Int = i;
+      JSONObject localJSONObject1 = localJSONArray.getJSONObject(k);
+      Object localObject = localJSONObject1.getJSONArray("friends");
+      int i2 = ((JSONArray)localObject).length();
+      ArrayList localArrayList3 = new ArrayList(i2);
+      while (m < i2)
+      {
+        JSONObject localJSONObject2 = ((JSONArray)localObject).getJSONObject(m);
+        if (localJSONObject2.getInt("unabled") != 1)
+        {
+          String str3 = localJSONObject2.getString("openid");
+          boolean bool = localJSONObject2.has("nickname");
+          String str2 = null;
+          String str1;
+          if (bool) {
+            str1 = localJSONObject2.getString("nickname");
+          } else {
+            str1 = null;
+          }
+          if (localJSONObject2.has("remark")) {
+            str2 = localJSONObject2.getString("remark");
+          }
+          Friend localFriend = new Friend();
+          localFriend.jdField_a_of_type_JavaLangString = str3;
+          localFriend.jdField_b_of_type_JavaLangString = StringAddition.a(str1);
+          localFriend.jdField_c_of_type_JavaLangString = StringAddition.a(str2);
+          if (localJSONObject2.getInt("specified") == 1)
+          {
+            localFriend.jdField_b_of_type_Int = i1;
+            localFriend.jdField_c_of_type_Int = n;
+            localArrayList2.add(localFriend);
+          }
+          localArrayList3.add(localFriend);
+        }
+        m += 1;
+      }
+      localObject = new FriendGroup();
+      ((FriendGroup)localObject).jdField_a_of_type_Int = j;
       ((FriendGroup)localObject).jdField_a_of_type_JavaLangString = StringAddition.a(localJSONObject1.getString("groupname"));
       ((FriendGroup)localObject).jdField_a_of_type_JavaUtilList = localArrayList3;
       localArrayList1.add(localObject);
+      k += 1;
       j += 1;
-      i += 1;
     }
     if (paramJSONObject.getInt("only") == 1)
     {
@@ -161,8 +152,8 @@ public class FriendGroup
     }
     if (localArrayList2.size() == 0)
     {
-      localArrayList1.remove(0);
       i = 0;
+      localArrayList1.remove(0);
       while (i < localArrayList1.size())
       {
         paramJSONObject = (FriendGroup)localArrayList1.get(i);
@@ -176,77 +167,73 @@ public class FriendGroup
   public static final List<FriendGroup> c(JSONObject paramJSONObject)
   {
     JSONArray localJSONArray1 = paramJSONObject.getJSONArray("qqlist");
-    int m = localJSONArray1.length();
-    int n = paramJSONObject.optInt("app_tid", -1);
-    int i1 = paramJSONObject.optInt("app_rid", -1);
+    int i = localJSONArray1.length();
+    int i1 = paramJSONObject.optInt("app_tid", -1);
+    int i2 = paramJSONObject.optInt("app_rid", -1);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     FriendGroup localFriendGroup2 = new FriendGroup();
     localFriendGroup2.jdField_a_of_type_Int = 0;
-    localFriendGroup2.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704894);
+    localFriendGroup2.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704970);
     localFriendGroup2.jdField_a_of_type_JavaUtilList = localArrayList2;
     localArrayList1.add(localFriendGroup2);
-    int i = 0;
+    int j = 0;
     FriendGroup localFriendGroup1 = null;
-    int j = 1;
-    if (i < m)
+    int k = 1;
+    while (j < i)
     {
-      JSONObject localJSONObject1 = localJSONArray1.getJSONObject(i);
+      JSONObject localJSONObject1 = localJSONArray1.getJSONObject(j);
+      Object localObject = "data";
       JSONArray localJSONArray2 = localJSONObject1.getJSONArray("data");
-      int i2 = localJSONArray2.length();
+      int m = localJSONArray2.length();
       ArrayList localArrayList3 = new ArrayList();
-      int k = 0;
-      Object localObject;
-      if (k < i2)
+      int n = 0;
+      while (n < m)
       {
-        JSONObject localJSONObject2 = localJSONArray2.getJSONObject(k);
-        String str2 = localJSONObject2.getString("data");
-        if (localJSONObject2.has("nick"))
-        {
-          localObject = localJSONObject2.getString("nick");
-          label181:
-          if (!localJSONObject2.has("label")) {
-            break label294;
-          }
+        JSONObject localJSONObject2 = localJSONArray2.getJSONObject(n);
+        String str3 = localJSONObject2.getString((String)localObject);
+        String str1;
+        if (localJSONObject2.has("nick")) {
+          str1 = localJSONObject2.getString("nick");
+        } else {
+          str1 = null;
         }
-        label294:
-        for (String str1 = localJSONObject2.getString("label");; str1 = null)
-        {
-          Friend localFriend = new Friend();
-          localFriend.jdField_a_of_type_JavaLangString = str2;
-          localFriend.jdField_b_of_type_JavaLangString = ((String)localObject);
-          localFriend.jdField_c_of_type_JavaLangString = str1;
-          if ((localJSONObject2.getInt("specified") == 1) && (!localArrayList2.contains(localFriend)))
-          {
-            localFriend.jdField_b_of_type_Int = i1;
-            localFriend.jdField_c_of_type_Int = n;
-            localArrayList2.add(localFriend);
-          }
-          localArrayList3.add(localFriend);
-          k += 1;
-          break;
-          localObject = null;
-          break label181;
+        String str2;
+        if (localJSONObject2.has("label")) {
+          str2 = localJSONObject2.getString("label");
+        } else {
+          str2 = null;
         }
+        Friend localFriend = new Friend();
+        localFriend.jdField_a_of_type_JavaLangString = str3;
+        localFriend.jdField_b_of_type_JavaLangString = str1;
+        localFriend.jdField_c_of_type_JavaLangString = str2;
+        if ((localJSONObject2.getInt("specified") == 1) && (!localArrayList2.contains(localFriend)))
+        {
+          localFriend.jdField_b_of_type_Int = i2;
+          localFriend.jdField_c_of_type_Int = i1;
+          localArrayList2.add(localFriend);
+        }
+        localArrayList3.add(localFriend);
+        n += 1;
       }
-      if (HardCodeUtil.a(2131704893).equals(localJSONObject1.getString("label")))
+      if (HardCodeUtil.a(2131704969).equals(localJSONObject1.getString("label")))
       {
         localFriendGroup1 = new FriendGroup();
         localFriendGroup1.jdField_a_of_type_Int = 0;
         localFriendGroup1.jdField_a_of_type_JavaLangString = StringAddition.a(localJSONObject1.getString("label"));
         localFriendGroup1.jdField_a_of_type_JavaUtilList = localArrayList3;
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         localObject = new FriendGroup();
-        ((FriendGroup)localObject).jdField_a_of_type_Int = j;
+        ((FriendGroup)localObject).jdField_a_of_type_Int = k;
         ((FriendGroup)localObject).jdField_a_of_type_JavaLangString = StringAddition.a(localJSONObject1.getString("label"));
         ((FriendGroup)localObject).jdField_a_of_type_JavaUtilList = localArrayList3;
         localArrayList1.add(localObject);
-        j += 1;
+        k += 1;
       }
+      j += 1;
     }
     if (paramJSONObject.getInt("only") == 1)
     {
@@ -256,18 +243,18 @@ public class FriendGroup
     }
     if (localArrayList2.size() == 0)
     {
-      if ((localFriendGroup1 == null) || (localFriendGroup1.jdField_a_of_type_JavaUtilList == null) || (localFriendGroup1.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label493;
+      if (localFriendGroup1 != null)
+      {
+        paramJSONObject = localFriendGroup1.jdField_a_of_type_JavaUtilList;
+        if ((paramJSONObject != null) && (paramJSONObject.size() > 0))
+        {
+          localArrayList1.remove(0);
+          localArrayList1.add(0, localFriendGroup1);
+          return localArrayList1;
+        }
       }
-      localArrayList1.remove(0);
-      localArrayList1.add(0, localFriendGroup1);
-    }
-    for (;;)
-    {
-      return localArrayList1;
-      label493:
-      localArrayList1.remove(0);
       i = 0;
+      localArrayList1.remove(0);
       while (i < localArrayList1.size())
       {
         paramJSONObject = (FriendGroup)localArrayList1.get(i);
@@ -275,6 +262,7 @@ public class FriendGroup
         i += 1;
       }
     }
+    return localArrayList1;
   }
   
   public void a(ContentValues paramContentValues)
@@ -304,7 +292,7 @@ public class FriendGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.datamodel.FriendGroup
  * JD-Core Version:    0.7.0.1
  */

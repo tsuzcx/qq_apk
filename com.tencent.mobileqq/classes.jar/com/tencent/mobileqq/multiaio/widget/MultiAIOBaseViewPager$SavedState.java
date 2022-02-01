@@ -32,7 +32,13 @@ public class MultiAIOBaseViewPager$SavedState
   
   public String toString()
   {
-    return "FragmentPager.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " position=" + this.jdField_a_of_type_Int + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FragmentPager.SavedState{");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    localStringBuilder.append(" position=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -44,7 +50,7 @@ public class MultiAIOBaseViewPager$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState
  * JD-Core Version:    0.7.0.1
  */

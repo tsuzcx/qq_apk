@@ -40,36 +40,49 @@ class MultiMsgManager$MultiMsgUploadCallback
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
+    Object localObject;
     if (paramSendResult.jdField_a_of_type_Int == 0)
     {
-      MessageForStructing localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localMessageForStructing.structingMsg.mResid = paramSendResult.c;
-      localMessageForStructing.structingMsg.mFileName = String.valueOf(localMessageForStructing.uniseq);
-      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localMessageForStructing.uniseq, localMessageForStructing.structingMsg.getBytes());
+      localObject = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      ((MessageForStructing)localObject).structingMsg.mResid = paramSendResult.c;
+      ((MessageForStructing)localObject).structingMsg.mFileName = String.valueOf(((MessageForStructing)localObject).uniseq);
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, ((MessageForStructing)localObject).uniseq, ((MessageForStructing)localObject).structingMsg.getBytes());
       ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "send real struct msg done, cost : " + (System.currentTimeMillis() - MultiMsgManager.b()));
+      if (QLog.isColorLevel())
+      {
+        paramSendResult = new StringBuilder();
+        paramSendResult.append("send real struct msg done, cost : ");
+        paramSendResult.append(System.currentTimeMillis() - MultiMsgManager.b());
+        QLog.d("MultiMsg_TAG", 2, paramSendResult.toString());
       }
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG", 2, "upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("upload multi msg pack failed, result.errStr=");
+        ((StringBuilder)localObject).append(paramSendResult.b);
+        ((StringBuilder)localObject).append(",result.errStr=");
+        ((StringBuilder)localObject).append(paramSendResult.jdField_a_of_type_JavaLangString);
+        QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject).toString());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMsgCache().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+      paramSendResult = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMessageFacade().getLastMessage(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      if ((paramSendResult != null) && (paramSendResult.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
+        paramSendResult.extraflag = 32768;
+      }
+      paramSendResult = this.jdField_a_of_type_JavaLangString;
+      int i = this.jdField_a_of_type_Int;
+      long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
+      ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(this.jdField_a_of_type_Int), false, new Object[] { paramSendResult, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
-    ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMsgCache().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    paramSendResult = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    if ((paramSendResult != null) && (paramSendResult.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
-      paramSendResult.extraflag = 32768;
-    }
-    paramSendResult = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
-    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
-    ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(this.jdField_a_of_type_Int), false, new Object[] { paramSendResult, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgManager.MultiMsgUploadCallback
  * JD-Core Version:    0.7.0.1
  */

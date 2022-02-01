@@ -25,8 +25,8 @@ public class VoiceTextBottomViewHelper
   
   public void a(VoiceTextPanel paramVoiceTextPanel)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramVoiceTextPanel.findViewById(2131363829));
-    this.jdField_a_of_type_AndroidViewView = paramVoiceTextPanel.findViewById(2131370380);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramVoiceTextPanel.findViewById(2131363756));
+    this.jdField_a_of_type_AndroidViewView = paramVoiceTextPanel.findViewById(2131370041);
   }
   
   public void b()
@@ -47,7 +47,7 @@ public class VoiceTextBottomViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextBottomViewHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.channel.CmdTaskManger;
 import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
@@ -51,83 +52,119 @@ final class QQStoryWatcherListActivity$GetWatcherHelper
   
   private void b()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
-      QQStoryWatcherListActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, true, true, null);
-      return;
-    }
-    if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: requireWatcherByPage return, currentReqSeek = " + this.jdField_a_of_type_Int + ", uinCount = " + this.jdField_a_of_type_JavaUtilList.size());
-      }
-      QQStoryWatcherListActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, true, true, null);
-      return;
-    }
-    this.jdField_b_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(this.jdField_a_of_type_Int, Math.min(this.jdField_a_of_type_Int + 20, this.jdField_a_of_type_JavaUtilList.size()));
-    int i = this.jdField_b_of_type_JavaUtilList.size();
-    if (this.jdField_b_of_type_JavaUtilList.isEmpty())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: requireWatcherByPage return, because toRequireList.isEmpty(), currentReqSeek = " + this.jdField_a_of_type_Int + ", uinCount = " + this.jdField_a_of_type_JavaUtilList.size());
-      }
-      QQStoryWatcherListActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, true, true, null);
-      return;
-    }
-    Object localObject = (UserManager)SuperManager.a(2);
-    ArrayList localArrayList2 = new ArrayList(i);
-    ArrayList localArrayList1 = new ArrayList(i);
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = ((qqstory_struct.UserSimpleInfo)localIterator.next()).union_id.get().toStringUtf8();
-      QQUserUIItem localQQUserUIItem = ((UserManager)localObject).b(str);
-      if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable())) {
-        localArrayList2.add(new QQUserUIItem.UserID("", str));
-      } else {
-        localArrayList1.add(localQQUserUIItem);
-      }
-    }
-    if (localArrayList2.isEmpty())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: requireWatcherByPage load localData userIDS = " + localArrayList2);
-      }
-      this.jdField_a_of_type_Int += i;
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity;
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {}
-      for (boolean bool = true;; bool = false)
+      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size())
       {
-        QQStoryWatcherListActivity.b((QQStoryWatcherListActivity)localObject, true, bool, localArrayList1);
+        if (QLog.isDevelopLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("GetWatcherHelper: requireWatcherByPage return, currentReqSeek = ");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append(", uinCount = ");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+          QLog.e("Q.qqstory.player.watcherlist.activity", 2, ((StringBuilder)localObject1).toString());
+        }
+        QQStoryWatcherListActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, true, true, null);
         return;
       }
+      localObject1 = this.jdField_a_of_type_JavaUtilList;
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_b_of_type_JavaUtilList = ((List)localObject1).subList(i, Math.min(i + 20, ((List)localObject1).size()));
+      i = this.jdField_b_of_type_JavaUtilList.size();
+      if (this.jdField_b_of_type_JavaUtilList.isEmpty())
+      {
+        if (QLog.isDevelopLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("GetWatcherHelper: requireWatcherByPage return, because toRequireList.isEmpty(), currentReqSeek = ");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append(", uinCount = ");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+          QLog.e("Q.qqstory.player.watcherlist.activity", 2, ((StringBuilder)localObject1).toString());
+        }
+        QQStoryWatcherListActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, true, true, null);
+        return;
+      }
+      Object localObject3 = (UserManager)SuperManager.a(2);
+      localObject1 = new ArrayList(i);
+      Object localObject2 = new ArrayList(i);
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = ((qqstory_struct.UserSimpleInfo)localIterator.next()).union_id.get().toStringUtf8();
+        QQUserUIItem localQQUserUIItem = ((UserManager)localObject3).b(str);
+        if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
+          ((List)localObject2).add(localQQUserUIItem);
+        } else {
+          ((List)localObject1).add(new QQUserUIItem.UserID("", str));
+        }
+      }
+      if (((List)localObject1).isEmpty())
+      {
+        if (QLog.isDevelopLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("GetWatcherHelper: requireWatcherByPage load localData userIDS = ");
+          ((StringBuilder)localObject3).append(localObject1);
+          QLog.e("Q.qqstory.player.watcherlist.activity", 2, ((StringBuilder)localObject3).toString());
+        }
+        this.jdField_a_of_type_Int += i;
+        localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity;
+        boolean bool;
+        if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        QQStoryWatcherListActivity.b((QQStoryWatcherListActivity)localObject1, true, bool, (List)localObject2);
+        return;
+      }
+      if (QLog.isDevelopLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("GetWatcherHelper: requireWatcherByPage requestUserIds = ");
+        ((StringBuilder)localObject2).append(localObject1);
+        QLog.e("Q.qqstory.player.watcherlist.activity", 2, ((StringBuilder)localObject2).toString());
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler.a(1, (List)localObject1);
+      return;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.e("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: requireWatcherByPage requestUserIds = " + localArrayList2);
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler.a(1, localArrayList2);
+    QQStoryWatcherListActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, true, true, null);
   }
   
   public void a()
   {
-    GetVideoWatcherListRequest localGetVideoWatcherListRequest = new GetVideoWatcherListRequest();
-    localGetVideoWatcherListRequest.b = this.jdField_a_of_type_JavaLangString;
-    CmdTaskManger.a().a(localGetVideoWatcherListRequest, this);
-    if (QLog.isDevelopLevel()) {
-      QLog.w("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: requireWatcherIds feedId = " + this.jdField_a_of_type_JavaLangString);
+    Object localObject = new GetVideoWatcherListRequest();
+    ((GetVideoWatcherListRequest)localObject).b = this.jdField_a_of_type_JavaLangString;
+    CmdTaskManger.a().a((NetworkRequest)localObject, this);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("GetWatcherHelper: requireWatcherIds feedId = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      QLog.w("Q.qqstory.player.watcherlist.activity", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    boolean bool = true;
-    if (QLog.isDevelopLevel()) {
-      QLog.e("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: onCallback errorInfo = " + paramUpdateUserInfoEvent.a);
+    Object localObject;
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("GetWatcherHelper: onCallback errorInfo = ");
+      ((StringBuilder)localObject).append(paramUpdateUserInfoEvent.a);
+      QLog.e("Q.qqstory.player.watcherlist.activity", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramUpdateUserInfoEvent.a.isSuccess())
+    boolean bool3 = paramUpdateUserInfoEvent.a.isSuccess();
+    boolean bool1 = true;
+    boolean bool2 = false;
+    if (bool3)
     {
       int i = this.jdField_b_of_type_JavaUtilList.size();
-      Object localObject = (UserManager)SuperManager.a(2);
+      localObject = (UserManager)SuperManager.a(2);
       paramUpdateUserInfoEvent = new ArrayList(i);
       Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
@@ -139,71 +176,83 @@ final class QQStoryWatcherListActivity$GetWatcherHelper
       }
       this.jdField_a_of_type_Int += i;
       localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity;
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {}
-      for (bool = true;; bool = false)
-      {
-        QQStoryWatcherListActivity.b((QQStoryWatcherListActivity)localObject, true, bool, paramUpdateUserInfoEvent);
-        return;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {
+        bool1 = true;
       }
+      QQStoryWatcherListActivity.b((QQStoryWatcherListActivity)localObject, true, bool1, paramUpdateUserInfoEvent);
+      return;
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.jdField_a_of_type_Boolean)
     {
       paramUpdateUserInfoEvent = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity;
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {}
-      for (;;)
-      {
-        QQStoryWatcherListActivity.b(paramUpdateUserInfoEvent, false, bool, null);
-        return;
-        bool = false;
+      if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size()) {
+        bool1 = false;
       }
+      QQStoryWatcherListActivity.b(paramUpdateUserInfoEvent, false, bool1, null);
+      return;
     }
     new Handler(Looper.getMainLooper()).post(new QQStoryWatcherListActivity.GetWatcherHelper.1(this));
   }
   
   public void a(@NonNull GetVideoWatcherListRequest paramGetVideoWatcherListRequest, @Nullable GetVideoWatcherListResponse paramGetVideoWatcherListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    int i = 0;
-    if (QLog.isDevelopLevel()) {
-      QLog.w("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: onResponseOnUIThread errorMsg = " + paramErrorMessage);
+    if (QLog.isDevelopLevel())
+    {
+      paramGetVideoWatcherListRequest = new StringBuilder();
+      paramGetVideoWatcherListRequest.append("GetWatcherHelper: onResponseOnUIThread errorMsg = ");
+      paramGetVideoWatcherListRequest.append(paramErrorMessage);
+      QLog.w("Q.qqstory.player.watcherlist.activity", 2, paramGetVideoWatcherListRequest.toString());
     }
-    if ((paramErrorMessage.isSuccess()) && (paramGetVideoWatcherListResponse != null))
+    boolean bool = paramErrorMessage.isSuccess();
+    int i = 0;
+    if ((bool) && (paramGetVideoWatcherListResponse != null))
     {
       this.jdField_a_of_type_Long = paramGetVideoWatcherListResponse.jdField_a_of_type_Long;
       this.jdField_b_of_type_Long = paramGetVideoWatcherListResponse.jdField_b_of_type_Long;
-      if (this.jdField_b_of_type_Long < this.jdField_a_of_type_Long) {
-        this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+      long l1 = this.jdField_b_of_type_Long;
+      long l2 = this.jdField_a_of_type_Long;
+      if (l1 < l2) {
+        this.jdField_b_of_type_Long = l2;
       }
-      if (this.jdField_b_of_type_Long > 0L) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.setTitle(QQStoryWatcherListActivity.a() + UIUtils.a(this.jdField_b_of_type_Long));
+      if (this.jdField_b_of_type_Long > 0L)
+      {
+        paramGetVideoWatcherListRequest = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity;
+        paramErrorMessage = new StringBuilder();
+        paramErrorMessage.append(QQStoryWatcherListActivity.a());
+        paramErrorMessage.append(UIUtils.a(this.jdField_b_of_type_Long));
+        paramGetVideoWatcherListRequest.setTitle(paramErrorMessage.toString());
       }
       this.jdField_a_of_type_JavaUtilList = paramGetVideoWatcherListResponse.jdField_a_of_type_JavaUtilList;
       if (QLog.isDevelopLevel())
       {
-        paramGetVideoWatcherListRequest = new StringBuilder().append("GetWatcherHelper: onResponseOnUIThread isSuccess mTotalWatcherCount = ").append(this.jdField_a_of_type_Long).append(", mTotalReadTime = ").append(this.jdField_b_of_type_Long).append(", uinCount = ");
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          break label244;
+        paramGetVideoWatcherListRequest = new StringBuilder();
+        paramGetVideoWatcherListRequest.append("GetWatcherHelper: onResponseOnUIThread isSuccess mTotalWatcherCount = ");
+        paramGetVideoWatcherListRequest.append(this.jdField_a_of_type_Long);
+        paramGetVideoWatcherListRequest.append(", mTotalReadTime = ");
+        paramGetVideoWatcherListRequest.append(this.jdField_b_of_type_Long);
+        paramGetVideoWatcherListRequest.append(", uinCount = ");
+        paramGetVideoWatcherListResponse = this.jdField_a_of_type_JavaUtilList;
+        if (paramGetVideoWatcherListResponse != null) {
+          i = paramGetVideoWatcherListResponse.size();
         }
+        paramGetVideoWatcherListRequest.append(i);
+        QLog.w("Q.qqstory.player.watcherlist.activity", 2, paramGetVideoWatcherListRequest.toString());
       }
-      for (;;)
+      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)
       {
-        QLog.w("Q.qqstory.player.watcherlist.activity", 2, i);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)
-        {
-          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.mViewTotalTime = this.jdField_b_of_type_Long;
-          ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
-        }
-        b();
-        return;
-        label244:
-        i = this.jdField_a_of_type_JavaUtilList.size();
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.mViewTotalTime = this.jdField_b_of_type_Long;
+        ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
       }
+      b();
+      return;
     }
     QQStoryWatcherListActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, false, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity.GetWatcherHelper
  * JD-Core Version:    0.7.0.1
  */

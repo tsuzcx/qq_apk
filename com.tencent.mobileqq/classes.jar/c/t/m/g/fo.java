@@ -18,21 +18,18 @@ public final class fo
   
   public static String a(String paramString, Pattern paramPattern)
   {
-    String str;
     if (paramString == null) {
-      str = "";
+      return "";
     }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (paramPattern.matcher(paramString).matches());
-    return "";
+    if (!paramPattern.matcher(paramString).matches()) {
+      return "";
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.fo
  * JD-Core Version:    0.7.0.1
  */

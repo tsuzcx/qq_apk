@@ -1,47 +1,50 @@
 package com.huawei.hms.framework.network.grs;
 
-import com.huawei.hms.framework.common.Logger;
-import com.huawei.hms.framework.network.restclient.hianalytics.RCEventListener;
-import com.huawei.hms.framework.network.restclient.hwhttp.Interceptor.Chain;
-import com.huawei.hms.framework.network.restclient.hwhttp.RealInterceptorChain;
-import com.huawei.hms.framework.network.restclient.hwhttp.Request;
-import com.huawei.hms.framework.network.restclient.hwhttp.Request.Builder;
-import com.huawei.hms.framework.network.restclient.hwhttp.Response;
-import com.huawei.hms.framework.network.restclient.hwhttp.plugin.PluginInterceptor;
-import com.huawei.hms.framework.network.restclient.hwhttp.url.HttpUrl;
+import android.content.Context;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class e
-  implements PluginInterceptor
 {
-  private static final String a = e.class.getSimpleName();
+  private static Map<String, d> a = new ConcurrentHashMap(16);
+  private static final Object b = new Object();
   
-  public Response intercept(Interceptor.Chain paramChain)
+  public static d a(GrsBaseInfo paramGrsBaseInfo, Context paramContext)
   {
-    paramChain = (RealInterceptorChain)paramChain;
-    Request localRequest = paramChain.request();
-    String str = localRequest.getUrl().getUrl();
-    if (GrsManager.isGRSSchema(str))
+    synchronized (b)
     {
-      Logger.v(a, "request url is grs schema.");
-      RCEventListener localRCEventListener = paramChain.getRCEventListener();
-      localRCEventListener.convertGrsStart(str);
-      str = GrsManager.getInstance().parseGrs(str);
-      localRequest = localRequest.newBuilder().url(new HttpUrl(str)).build();
-      Logger.v(a, "origin url is grs schema and by intercepted,and now request is:%s", new Object[] { localRequest.toString() });
-      localRCEventListener.convertGrsEnd(str);
-      return paramChain.proceed(localRequest);
+      int i = paramGrsBaseInfo.uniqueCode();
+      Object localObject2 = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getPackageName());
+      localStringBuilder.append(i);
+      localObject2 = (d)((Map)localObject2).get(localStringBuilder.toString());
+      if (localObject2 != null)
+      {
+        if (((d)localObject2).a(new d(paramGrsBaseInfo))) {
+          return localObject2;
+        }
+        paramGrsBaseInfo = new d(paramContext, paramGrsBaseInfo);
+        localObject2 = a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramContext.getPackageName());
+        localStringBuilder.append(i);
+        ((Map)localObject2).put(localStringBuilder.toString(), paramGrsBaseInfo);
+        return paramGrsBaseInfo;
+      }
+      paramGrsBaseInfo = new d(paramContext, paramGrsBaseInfo);
+      localObject2 = a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getPackageName());
+      localStringBuilder.append(i);
+      ((Map)localObject2).put(localStringBuilder.toString(), paramGrsBaseInfo);
+      return paramGrsBaseInfo;
     }
-    return paramChain.proceed(localRequest);
-  }
-  
-  public String pluginName()
-  {
-    return getClass().getSimpleName();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.e
  * JD-Core Version:    0.7.0.1
  */

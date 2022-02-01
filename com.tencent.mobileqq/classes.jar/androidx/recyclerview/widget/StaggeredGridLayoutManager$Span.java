@@ -34,20 +34,17 @@ class StaggeredGridLayoutManager$Span
   void cacheReferenceLineAndClear(boolean paramBoolean, int paramInt)
   {
     int i;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = getEndLine(-2147483648);
-      clear();
-      if (i != -2147483648) {
-        break label32;
-      }
-    }
-    label32:
-    while (((paramBoolean) && (i < this.this$0.mPrimaryOrientation.getEndAfterPadding())) || ((!paramBoolean) && (i > this.this$0.mPrimaryOrientation.getStartAfterPadding())))
-    {
-      return;
+    } else {
       i = getStartLine(-2147483648);
-      break;
+    }
+    clear();
+    if (i == -2147483648) {
+      return;
+    }
+    if (((paramBoolean) && (i < this.this$0.mPrimaryOrientation.getEndAfterPadding())) || ((!paramBoolean) && (i > this.this$0.mPrimaryOrientation.getStartAfterPadding()))) {
+      return;
     }
     int j = i;
     if (paramInt != -2147483648) {
@@ -59,16 +56,15 @@ class StaggeredGridLayoutManager$Span
   
   void calculateCachedEnd()
   {
-    Object localObject = (View)this.mViews.get(this.mViews.size() - 1);
+    Object localObject = this.mViews;
+    localObject = (View)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
     StaggeredGridLayoutManager.LayoutParams localLayoutParams = getLayoutParams((View)localObject);
     this.mCachedEnd = this.this$0.mPrimaryOrientation.getDecoratedEnd((View)localObject);
     if (localLayoutParams.mFullSpan)
     {
       localObject = this.this$0.mLazySpanLookup.getFullSpanItem(localLayoutParams.getViewLayoutPosition());
-      if ((localObject != null) && (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mGapDir == 1))
-      {
-        int i = this.mCachedEnd;
-        this.mCachedEnd = (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).getGapForSpan(this.mIndex) + i);
+      if ((localObject != null) && (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).mGapDir == 1)) {
+        this.mCachedEnd += ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).getGapForSpan(this.mIndex);
       }
     }
   }
@@ -146,67 +142,36 @@ class StaggeredGridLayoutManager$Span
   {
     int m = this.this$0.mPrimaryOrientation.getStartAfterPadding();
     int n = this.this$0.mPrimaryOrientation.getEndAfterPadding();
-    int j;
-    int k;
-    if (paramInt2 > paramInt1)
-    {
-      j = 1;
-      k = paramInt1;
+    int i;
+    if (paramInt2 > paramInt1) {
+      i = 1;
+    } else {
+      i = -1;
     }
-    while (k != paramInt2)
+    while (paramInt1 != paramInt2)
     {
-      View localView = (View)this.mViews.get(k);
+      View localView = (View)this.mViews.get(paramInt1);
       int i1 = this.this$0.mPrimaryOrientation.getDecoratedStart(localView);
       int i2 = this.this$0.mPrimaryOrientation.getDecoratedEnd(localView);
-      label97:
-      int i;
-      if (paramBoolean3) {
-        if (i1 <= n)
-        {
-          paramInt1 = 1;
-          if (!paramBoolean3) {
-            break label191;
-          }
-          if (i2 < m) {
-            break label185;
-          }
-          i = 1;
-        }
+      int k = 0;
+      int j;
+      if (paramBoolean3 ? i1 <= n : i1 < n) {
+        j = 1;
+      } else {
+        j = 0;
       }
-      for (;;)
-      {
-        if ((paramInt1 != 0) && (i != 0))
+      if (paramBoolean3 ? i2 >= m : i2 > m) {
+        k = 1;
+      }
+      if ((j != 0) && (k != 0)) {
+        if ((paramBoolean1) && (paramBoolean2))
         {
-          if ((paramBoolean1) && (paramBoolean2))
-          {
-            if ((i1 < m) || (i2 > n)) {
-              break label249;
-            }
+          if ((i1 >= m) && (i2 <= n)) {
             return this.this$0.getPosition(localView);
-            j = -1;
-            k = paramInt1;
-            break;
-            paramInt1 = 0;
-            break label97;
-            if (i1 < n)
-            {
-              paramInt1 = 1;
-              break label97;
-            }
-            paramInt1 = 0;
-            break label97;
-            label185:
-            i = 0;
-            continue;
-            label191:
-            if (i2 > m)
-            {
-              i = 1;
-              continue;
-            }
-            i = 0;
-            continue;
           }
+        }
+        else
+        {
           if (paramBoolean2) {
             return this.this$0.getPosition(localView);
           }
@@ -215,8 +180,7 @@ class StaggeredGridLayoutManager$Span
           }
         }
       }
-      label249:
-      k += j;
+      paramInt1 += i;
     }
     return -1;
   }
@@ -238,8 +202,9 @@ class StaggeredGridLayoutManager$Span
   
   int getEndLine()
   {
-    if (this.mCachedEnd != -2147483648) {
-      return this.mCachedEnd;
+    int i = this.mCachedEnd;
+    if (i != -2147483648) {
+      return i;
     }
     calculateCachedEnd();
     return this.mCachedEnd;
@@ -247,10 +212,11 @@ class StaggeredGridLayoutManager$Span
   
   int getEndLine(int paramInt)
   {
-    if (this.mCachedEnd != -2147483648) {
-      paramInt = this.mCachedEnd;
+    int i = this.mCachedEnd;
+    if (i != -2147483648) {
+      return i;
     }
-    while (this.mViews.size() == 0) {
+    if (this.mViews.size() == 0) {
       return paramInt;
     }
     calculateCachedEnd();
@@ -259,45 +225,63 @@ class StaggeredGridLayoutManager$Span
   
   public View getFocusableViewAfter(int paramInt1, int paramInt2)
   {
-    View localView2 = null;
-    View localView1 = null;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    View localView;
     if (paramInt2 == -1)
     {
       int i = this.mViews.size();
       paramInt2 = 0;
       for (;;)
       {
-        if (paramInt2 < i)
+        localObject2 = localObject1;
+        if (paramInt2 >= i) {
+          break;
+        }
+        localView = (View)this.mViews.get(paramInt2);
+        if (this.this$0.mReverseLayout)
         {
-          localView2 = (View)this.mViews.get(paramInt2);
-          if (((!this.this$0.mReverseLayout) || (this.this$0.getPosition(localView2) > paramInt1)) && ((this.this$0.mReverseLayout) || (this.this$0.getPosition(localView2) < paramInt1))) {
-            break label88;
+          localObject2 = localObject1;
+          if (this.this$0.getPosition(localView) <= paramInt1) {
+            break;
           }
         }
-        label88:
-        while (!localView2.hasFocusable()) {
-          return localView1;
+        if ((!this.this$0.mReverseLayout) && (this.this$0.getPosition(localView) >= paramInt1)) {
+          return localObject1;
+        }
+        localObject2 = localObject1;
+        if (!localView.hasFocusable()) {
+          break;
         }
         paramInt2 += 1;
-        localView1 = localView2;
+        localObject1 = localView;
       }
     }
     paramInt2 = this.mViews.size() - 1;
-    for (localView1 = localView2; paramInt2 >= 0; localView1 = localView2)
+    for (localObject1 = localObject2;; localObject1 = localView)
     {
-      localView2 = (View)this.mViews.get(paramInt2);
-      if ((this.this$0.mReverseLayout) && (this.this$0.getPosition(localView2) >= paramInt1)) {
+      localObject2 = localObject1;
+      if (paramInt2 < 0) {
         break;
       }
-      if ((!this.this$0.mReverseLayout) && (this.this$0.getPosition(localView2) <= paramInt1)) {
-        return localView1;
+      localView = (View)this.mViews.get(paramInt2);
+      if (this.this$0.mReverseLayout)
+      {
+        localObject2 = localObject1;
+        if (this.this$0.getPosition(localView) >= paramInt1) {
+          break;
+        }
       }
-      if (!localView2.hasFocusable()) {
+      if ((!this.this$0.mReverseLayout) && (this.this$0.getPosition(localView) <= paramInt1)) {
+        return localObject1;
+      }
+      localObject2 = localObject1;
+      if (!localView.hasFocusable()) {
         break;
       }
       paramInt2 -= 1;
     }
-    return localView1;
+    return localObject2;
   }
   
   StaggeredGridLayoutManager.LayoutParams getLayoutParams(View paramView)
@@ -307,8 +291,9 @@ class StaggeredGridLayoutManager$Span
   
   int getStartLine()
   {
-    if (this.mCachedStart != -2147483648) {
-      return this.mCachedStart;
+    int i = this.mCachedStart;
+    if (i != -2147483648) {
+      return i;
     }
     calculateCachedStart();
     return this.mCachedStart;
@@ -316,10 +301,11 @@ class StaggeredGridLayoutManager$Span
   
   int getStartLine(int paramInt)
   {
-    if (this.mCachedStart != -2147483648) {
-      paramInt = this.mCachedStart;
+    int i = this.mCachedStart;
+    if (i != -2147483648) {
+      return i;
     }
-    while (this.mViews.size() == 0) {
+    if (this.mViews.size() == 0) {
       return paramInt;
     }
     calculateCachedStart();
@@ -334,11 +320,13 @@ class StaggeredGridLayoutManager$Span
   
   void onOffset(int paramInt)
   {
-    if (this.mCachedStart != -2147483648) {
-      this.mCachedStart += paramInt;
+    int i = this.mCachedStart;
+    if (i != -2147483648) {
+      this.mCachedStart = (i + paramInt);
     }
-    if (this.mCachedEnd != -2147483648) {
-      this.mCachedEnd += paramInt;
+    i = this.mCachedEnd;
+    if (i != -2147483648) {
+      this.mCachedEnd = (i + paramInt);
     }
   }
   
@@ -393,7 +381,7 @@ class StaggeredGridLayoutManager$Span
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.StaggeredGridLayoutManager.Span
  * JD-Core Version:    0.7.0.1
  */

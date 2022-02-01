@@ -14,10 +14,12 @@ final class RealBufferedSink
   
   RealBufferedSink(Sink paramSink)
   {
-    if (paramSink == null) {
-      throw new NullPointerException("sink == null");
+    if (paramSink != null)
+    {
+      this.sink = paramSink;
+      return;
     }
-    this.sink = paramSink;
+    throw new NullPointerException("sink == null");
   }
   
   public Buffer buffer()
@@ -27,83 +29,83 @@ final class RealBufferedSink
   
   public void close()
   {
-    if (this.closed) {}
-    do
-    {
+    if (this.closed) {
       return;
-      localObject2 = null;
-      localObject1 = localObject2;
-      for (;;)
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    try
+    {
+      if (this.buffer.size > 0L)
       {
-        try
-        {
-          if (this.buffer.size > 0L)
-          {
-            this.sink.write(this.buffer, this.buffer.size);
-            localObject1 = localObject2;
-          }
-        }
-        catch (Throwable localThrowable1)
-        {
-          continue;
-        }
-        try
-        {
-          this.sink.close();
-          localObject2 = localObject1;
-        }
-        catch (Throwable localThrowable2)
-        {
-          localObject2 = localObject1;
-          if (localObject1 != null) {
-            continue;
-          }
-          localObject2 = localThrowable2;
-        }
+        this.sink.write(this.buffer, this.buffer.size);
+        localObject1 = localObject2;
       }
-      this.closed = true;
-    } while (localObject2 == null);
-    Util.sneakyRethrow(localObject2);
+    }
+    catch (Throwable localThrowable1) {}
+    try
+    {
+      this.sink.close();
+      localObject2 = localThrowable1;
+    }
+    catch (Throwable localThrowable2)
+    {
+      localObject2 = localThrowable1;
+      if (localThrowable1 == null) {
+        localObject2 = localThrowable2;
+      }
+    }
+    this.closed = true;
+    if (localObject2 != null) {
+      Util.sneakyRethrow(localObject2);
+    }
   }
   
   public BufferedSink emit()
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      long l = this.buffer.size();
+      if (l > 0L) {
+        this.sink.write(this.buffer, l);
+      }
+      return this;
     }
-    long l = this.buffer.size();
-    if (l > 0L) {
-      this.sink.write(this.buffer, l);
-    }
-    return this;
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink emitCompleteSegments()
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      long l = this.buffer.completeSegmentByteCount();
+      if (l > 0L) {
+        this.sink.write(this.buffer, l);
+      }
+      return this;
     }
-    long l = this.buffer.completeSegmentByteCount();
-    if (l > 0L) {
-      this.sink.write(this.buffer, l);
-    }
-    return this;
+    throw new IllegalStateException("closed");
   }
   
   public void flush()
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      if (this.buffer.size > 0L)
+      {
+        Sink localSink = this.sink;
+        Buffer localBuffer = this.buffer;
+        localSink.write(localBuffer, localBuffer.size);
+      }
+      this.sink.flush();
+      return;
     }
-    if (this.buffer.size > 0L) {
-      this.sink.write(this.buffer, this.buffer.size);
-    }
-    this.sink.flush();
+    throw new IllegalStateException("closed");
   }
   
   public boolean isOpen()
   {
-    return !this.closed;
+    return this.closed ^ true;
   }
   
   public OutputStream outputStream()
@@ -118,26 +120,32 @@ final class RealBufferedSink
   
   public String toString()
   {
-    return "buffer(" + this.sink + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("buffer(");
+    localStringBuilder.append(this.sink);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public int write(ByteBuffer paramByteBuffer)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      int i = this.buffer.write(paramByteBuffer);
+      emitCompleteSegments();
+      return i;
     }
-    int i = this.buffer.write(paramByteBuffer);
-    emitCompleteSegments();
-    return i;
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink write(ByteString paramByteString)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.write(paramByteString);
+      return emitCompleteSegments();
     }
-    this.buffer.write(paramByteString);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink write(Source paramSource, long paramLong)
@@ -145,189 +153,216 @@ final class RealBufferedSink
     while (paramLong > 0L)
     {
       long l = paramSource.read(this.buffer, paramLong);
-      if (l == -1L) {
+      if (l != -1L)
+      {
+        paramLong -= l;
+        emitCompleteSegments();
+      }
+      else
+      {
         throw new EOFException();
       }
-      paramLong -= l;
-      emitCompleteSegments();
     }
     return this;
   }
   
   public BufferedSink write(byte[] paramArrayOfByte)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.write(paramArrayOfByte);
+      return emitCompleteSegments();
     }
-    this.buffer.write(paramArrayOfByte);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.write(paramArrayOfByte, paramInt1, paramInt2);
+      return emitCompleteSegments();
     }
-    this.buffer.write(paramArrayOfByte, paramInt1, paramInt2);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public void write(Buffer paramBuffer, long paramLong)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.write(paramBuffer, paramLong);
+      emitCompleteSegments();
+      return;
     }
-    this.buffer.write(paramBuffer, paramLong);
-    emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public long writeAll(Source paramSource)
   {
-    if (paramSource == null) {
-      throw new IllegalArgumentException("source == null");
+    if (paramSource != null)
+    {
+      long l1 = 0L;
+      for (;;)
+      {
+        long l2 = paramSource.read(this.buffer, 8192L);
+        if (l2 == -1L) {
+          break;
+        }
+        l1 += l2;
+        emitCompleteSegments();
+      }
+      return l1;
     }
-    long l1 = 0L;
+    paramSource = new IllegalArgumentException("source == null");
     for (;;)
     {
-      long l2 = paramSource.read(this.buffer, 8192L);
-      if (l2 == -1L) {
-        break;
-      }
-      l1 += l2;
-      emitCompleteSegments();
+      throw paramSource;
     }
-    return l1;
   }
   
   public BufferedSink writeByte(int paramInt)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeByte(paramInt);
+      return emitCompleteSegments();
     }
-    this.buffer.writeByte(paramInt);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeDecimalLong(long paramLong)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeDecimalLong(paramLong);
+      return emitCompleteSegments();
     }
-    this.buffer.writeDecimalLong(paramLong);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeHexadecimalUnsignedLong(long paramLong)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeHexadecimalUnsignedLong(paramLong);
+      return emitCompleteSegments();
     }
-    this.buffer.writeHexadecimalUnsignedLong(paramLong);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeInt(int paramInt)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeInt(paramInt);
+      return emitCompleteSegments();
     }
-    this.buffer.writeInt(paramInt);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeIntLe(int paramInt)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeIntLe(paramInt);
+      return emitCompleteSegments();
     }
-    this.buffer.writeIntLe(paramInt);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeLong(long paramLong)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeLong(paramLong);
+      return emitCompleteSegments();
     }
-    this.buffer.writeLong(paramLong);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeLongLe(long paramLong)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeLongLe(paramLong);
+      return emitCompleteSegments();
     }
-    this.buffer.writeLongLe(paramLong);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeShort(int paramInt)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeShort(paramInt);
+      return emitCompleteSegments();
     }
-    this.buffer.writeShort(paramInt);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeShortLe(int paramInt)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeShortLe(paramInt);
+      return emitCompleteSegments();
     }
-    this.buffer.writeShortLe(paramInt);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeString(String paramString, int paramInt1, int paramInt2, Charset paramCharset)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeString(paramString, paramInt1, paramInt2, paramCharset);
+      return emitCompleteSegments();
     }
-    this.buffer.writeString(paramString, paramInt1, paramInt2, paramCharset);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeString(String paramString, Charset paramCharset)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeString(paramString, paramCharset);
+      return emitCompleteSegments();
     }
-    this.buffer.writeString(paramString, paramCharset);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeUtf8(String paramString)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeUtf8(paramString);
+      return emitCompleteSegments();
     }
-    this.buffer.writeUtf8(paramString);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeUtf8(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeUtf8(paramString, paramInt1, paramInt2);
+      return emitCompleteSegments();
     }
-    this.buffer.writeUtf8(paramString, paramInt1, paramInt2);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
   
   public BufferedSink writeUtf8CodePoint(int paramInt)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      this.buffer.writeUtf8CodePoint(paramInt);
+      return emitCompleteSegments();
     }
-    this.buffer.writeUtf8CodePoint(paramInt);
-    return emitCompleteSegments();
+    throw new IllegalStateException("closed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.RealBufferedSink
  * JD-Core Version:    0.7.0.1
  */

@@ -28,10 +28,10 @@ class Observable$TCHashMap<K, V>
       while (i < localArrayList.size())
       {
         Object localObject = localArrayList.get(i);
-        if ((localObject == paramV) || ((localObject != null) && (localObject.equals(paramV)))) {
-          ((ArrayList)localEntry.getValue()).remove(paramV);
-        } else {
+        if ((localObject != paramV) && ((localObject == null) || (!localObject.equals(paramV)))) {
           i += 1;
+        } else {
+          ((ArrayList)localEntry.getValue()).remove(paramV);
         }
       }
     }
@@ -53,7 +53,7 @@ class Observable$TCHashMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.common.Observable.TCHashMap
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class stPhotoTag
   extends JceStruct
 {
-  static int cache_direction = 0;
-  static int cache_type = 0;
+  static int cache_direction;
+  static int cache_type;
   public String content = "";
   public int direction = 0;
   public String poiTagStreet = "";
@@ -49,14 +49,15 @@ public final class stPhotoTag
     paramJceOutputStream.write(this.x_scale, 3);
     paramJceOutputStream.write(this.y_scale, 4);
     paramJceOutputStream.write(this.direction, 5);
-    if (this.poiTagStreet != null) {
-      paramJceOutputStream.write(this.poiTagStreet, 6);
+    String str = this.poiTagStreet;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.stPhotoTag
  * JD-Core Version:    0.7.0.1
  */

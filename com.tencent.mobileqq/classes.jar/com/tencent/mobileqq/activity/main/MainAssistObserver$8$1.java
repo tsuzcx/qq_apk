@@ -14,24 +14,27 @@ class MainAssistObserver$8$1
   public void run()
   {
     SplashActivity localSplashActivity = this.a.a.a;
-    if ((localSplashActivity == null) || (localSplashActivity.app == null)) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = localSplashActivity.app;
-    int i = 0;
-    int j = QCallFacade.a(localQQAppInterface);
-    QQMessageFacade localQQMessageFacade = localQQAppInterface.getMessageFacade();
-    if (localQQMessageFacade != null)
+    if (localSplashActivity != null)
     {
-      ServiceAccountFolderManager.a().a(localQQAppInterface);
-      i = localQQMessageFacade.b();
+      if (localSplashActivity.app == null) {
+        return;
+      }
+      QQAppInterface localQQAppInterface = localSplashActivity.app;
+      int i = 0;
+      int j = QCallFacade.a(localQQAppInterface);
+      QQMessageFacade localQQMessageFacade = localQQAppInterface.getMessageFacade();
+      if (localQQMessageFacade != null)
+      {
+        ServiceAccountFolderManager.a().a(localQQAppInterface);
+        i = localQQMessageFacade.b();
+      }
+      localSplashActivity.runOnUiThread(new MainAssistObserver.8.1.1(this, i + j));
     }
-    localSplashActivity.runOnUiThread(new MainAssistObserver.8.1.1(this, i + j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.8.1
  * JD-Core Version:    0.7.0.1
  */

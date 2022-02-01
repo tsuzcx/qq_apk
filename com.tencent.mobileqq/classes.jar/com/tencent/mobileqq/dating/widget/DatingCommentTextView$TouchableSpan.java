@@ -41,11 +41,12 @@ public class DatingCommentTextView$TouchableSpan
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
+    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    if (localObject != null)
     {
-      View.OnClickListener localOnClickListener = (View.OnClickListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (localOnClickListener != null) {
-        localOnClickListener.onClick(paramView);
+      localObject = (View.OnClickListener)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((View.OnClickListener)localObject).onClick(paramView);
       }
     }
   }
@@ -54,37 +55,38 @@ public class DatingCommentTextView$TouchableSpan
   {
     super.updateDrawState(paramTextPaint);
     paramTextPaint.setUnderlineText(false);
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);
-        paramTextPaint.setColor(i);
-        label46:
-        if (this.b == null) {
-          break label122;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label107;
-        }
-      }
-    }
-    label107:
-    for (int i = this.b.getColorForState(new int[] { 16842919 }, 0);; i = this.b.getColorForState(new int[0], 0))
+    ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+    int i;
+    if (localColorStateList != null)
     {
+      if (this.jdField_a_of_type_Boolean) {
+        i = localColorStateList.getColorForState(new int[] { 16842919 }, 0);
+      } else {
+        i = localColorStateList.getColorForState(new int[0], 0);
+      }
+      paramTextPaint.setColor(i);
+    }
+    else
+    {
+      paramTextPaint.setColor(-16777216);
+    }
+    localColorStateList = this.b;
+    if (localColorStateList != null)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        i = localColorStateList.getColorForState(new int[] { 16842919 }, 0);
+      } else {
+        i = localColorStateList.getColorForState(new int[0], 0);
+      }
       paramTextPaint.bgColor = i;
       return;
-      i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0);
-      break;
-      paramTextPaint.setColor(-16777216);
-      break label46;
     }
-    label122:
     paramTextPaint.bgColor = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.widget.DatingCommentTextView.TouchableSpan
  * JD-Core Version:    0.7.0.1
  */

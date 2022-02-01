@@ -29,26 +29,27 @@ class VideoCallStateMonitor$TimerHandler
   {
     super.handleMessage(paramMessage);
     VideoCallStateMonitor localVideoCallStateMonitor = (VideoCallStateMonitor)this.a.get();
-    if (localVideoCallStateMonitor != null) {}
-    switch (paramMessage.what)
+    if (localVideoCallStateMonitor != null)
     {
-    case 2: 
-    default: 
-    case 1: 
-      do
+      int i = paramMessage.what;
+      if (i != 1)
       {
+        if (i != 3) {
+          return;
+        }
+        VideoCallStateMonitor.a(localVideoCallStateMonitor);
         return;
-        VideoCallStateMonitor.a(localVideoCallStateMonitor, paramMessage.what);
-      } while (VideoCallStateMonitor.a(localVideoCallStateMonitor) == 2);
-      sendMessageDelayed(obtainMessage(paramMessage.what), 15000L);
-      return;
+      }
+      VideoCallStateMonitor.a(localVideoCallStateMonitor, paramMessage.what);
+      if (VideoCallStateMonitor.a(localVideoCallStateMonitor) != 2) {
+        sendMessageDelayed(obtainMessage(paramMessage.what), 15000L);
+      }
     }
-    VideoCallStateMonitor.a(localVideoCallStateMonitor);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoCallStateMonitor.TimerHandler
  * JD-Core Version:    0.7.0.1
  */

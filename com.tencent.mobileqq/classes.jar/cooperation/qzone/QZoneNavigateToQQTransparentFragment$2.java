@@ -2,12 +2,12 @@ package cooperation.qzone;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 final class QZoneNavigateToQQTransparentFragment$2
   implements DialogInterface.OnDismissListener
 {
-  QZoneNavigateToQQTransparentFragment$2(FragmentActivity paramFragmentActivity) {}
+  QZoneNavigateToQQTransparentFragment$2(BaseActivity paramBaseActivity) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
@@ -16,7 +16,7 @@ final class QZoneNavigateToQQTransparentFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneNavigateToQQTransparentFragment.2
  * JD-Core Version:    0.7.0.1
  */

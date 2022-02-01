@@ -18,14 +18,15 @@ public final class QQCircleMsgPaelem$CommInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "uint32_msg_flag", "bytes_apns_wording", "bytes_0x4d8_content", "uint32_group_member_flag" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, CommInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "uint32_msg_flag", "bytes_apns_wording", "bytes_0x4d8_content", "uint32_group_member_flag" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localInteger }, CommInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleMsgPaelem.CommInfo
  * JD-Core Version:    0.7.0.1
  */

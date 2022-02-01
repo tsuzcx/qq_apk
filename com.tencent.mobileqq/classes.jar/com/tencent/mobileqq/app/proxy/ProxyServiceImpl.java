@@ -25,12 +25,12 @@ public class ProxyServiceImpl
   
   public boolean isSQLiteReportVersion()
   {
-    return StatisticCollector.SQLite3OptimizeReport();
+    return StatisticCollector.sqlite3Optimizereport();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.ProxyServiceImpl
  * JD-Core Version:    0.7.0.1
  */

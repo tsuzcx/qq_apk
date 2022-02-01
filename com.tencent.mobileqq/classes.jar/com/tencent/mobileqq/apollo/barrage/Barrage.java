@@ -46,7 +46,7 @@ public class Barrage
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_c_of_type_Boolean = true;
     this.jdField_g_of_type_Int = ((int)(12.0F * paramFloat1));
-    this.jdField_h_of_type_Int = ((int)(6.0F * paramFloat1));
+    this.jdField_h_of_type_Int = ((int)(paramFloat1 * 6.0F));
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, paramFloat2, paramFloat3);
     long l = System.currentTimeMillis();
     this.jdField_a_of_type_Long = l;
@@ -56,20 +56,23 @@ public class Barrage
   
   public Bitmap a()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
       return this.jdField_a_of_type_AndroidGraphicsBitmap;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache.a(this);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache;
+    if (localObject != null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = ((AbsBarrageCache)localObject).a(this);
     }
     return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache != null)
+    AbsBarrageCache localAbsBarrageCache = this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache;
+    if (localAbsBarrageCache != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache.a(this);
+      localAbsBarrageCache.a(this);
       this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache.a(this);
     }
   }
@@ -81,41 +84,80 @@ public class Barrage
   
   public void b()
   {
-    long l = System.currentTimeMillis();
-    this.jdField_e_of_type_Float += this.jdField_c_of_type_Float * (float)(l - this.jdField_b_of_type_Long);
-    this.jdField_f_of_type_Float += this.jdField_d_of_type_Float * (float)(l - this.jdField_b_of_type_Long);
-    this.jdField_b_of_type_Long = l;
-    if (this.jdField_e_of_type_Float + this.jdField_e_of_type_Int >= 0.0F) {
+    long l1 = System.currentTimeMillis();
+    float f1 = this.jdField_e_of_type_Float;
+    float f2 = this.jdField_c_of_type_Float;
+    long l2 = this.jdField_b_of_type_Long;
+    this.jdField_e_of_type_Float = (f1 + f2 * (float)(l1 - l2));
+    this.jdField_f_of_type_Float += this.jdField_d_of_type_Float * (float)(l1 - l2);
+    this.jdField_b_of_type_Long = l1;
+    if (this.jdField_e_of_type_Float + this.jdField_e_of_type_Int >= 0.0F)
+    {
       this.jdField_c_of_type_Boolean = true;
     }
-    for (;;)
+    else if (this.jdField_b_of_type_Boolean)
     {
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= this.jdField_c_of_type_Int) {
-        this.jdField_c_of_type_Boolean = false;
-      }
-      return;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_e_of_type_Float = this.jdField_a_of_type_AndroidGraphicsRectF.width();
-        this.jdField_c_of_type_Boolean = true;
-      }
-      else
-      {
-        this.jdField_c_of_type_Boolean = false;
-      }
+      this.jdField_e_of_type_Float = this.jdField_a_of_type_AndroidGraphicsRectF.width();
+      this.jdField_c_of_type_Boolean = true;
+    }
+    else
+    {
+      this.jdField_c_of_type_Boolean = false;
+    }
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= this.jdField_c_of_type_Int) {
+      this.jdField_c_of_type_Boolean = false;
     }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mIsAlive: ").append(this.jdField_c_of_type_Boolean).append(" mText: ").append(this.jdField_a_of_type_JavaLangCharSequence).append(" mMeasured: ").append(this.jdField_a_of_type_Boolean).append(" mBgFilePath: ").append(this.jdField_a_of_type_JavaLangString).append(" mActionId: ").append(this.jdField_a_of_type_Int).append(" mStartX: ").append(this.jdField_a_of_type_Float).append(" mStartY: ").append(this.jdField_b_of_type_Float).append(" mSpeedX: ").append(this.jdField_c_of_type_Float).append(" mSpeedY: ").append(this.jdField_d_of_type_Float).append(" mCurrentX: ").append(this.jdField_e_of_type_Float).append(" mCurrentY: ").append(this.jdField_f_of_type_Float).append(" mTextColor: ").append(this.jdField_b_of_type_Int).append(" mTextSize: ").append(this.jdField_g_of_type_Float).append(" mStartTime: ").append(this.jdField_a_of_type_Long).append(" mAlpha: ").append(this.jdField_d_of_type_Int).append(" mWidth: ").append(this.jdField_e_of_type_Int).append(" mHeight: ").append(this.jdField_f_of_type_Int).append(" mLeftPadding: ").append(this.jdField_g_of_type_Int).append(" mTopPadding: ").append(this.jdField_h_of_type_Int).append(" mViewRect: ").append(this.jdField_a_of_type_AndroidGraphicsRectF);
+    localStringBuilder.append("mIsAlive: ");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(" mText: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence);
+    localStringBuilder.append(" mMeasured: ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" mBgFilePath: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mActionId: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" mStartX: ");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(" mStartY: ");
+    localStringBuilder.append(this.jdField_b_of_type_Float);
+    localStringBuilder.append(" mSpeedX: ");
+    localStringBuilder.append(this.jdField_c_of_type_Float);
+    localStringBuilder.append(" mSpeedY: ");
+    localStringBuilder.append(this.jdField_d_of_type_Float);
+    localStringBuilder.append(" mCurrentX: ");
+    localStringBuilder.append(this.jdField_e_of_type_Float);
+    localStringBuilder.append(" mCurrentY: ");
+    localStringBuilder.append(this.jdField_f_of_type_Float);
+    localStringBuilder.append(" mTextColor: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" mTextSize: ");
+    localStringBuilder.append(this.jdField_g_of_type_Float);
+    localStringBuilder.append(" mStartTime: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" mAlpha: ");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(" mWidth: ");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(" mHeight: ");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(" mLeftPadding: ");
+    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append(" mTopPadding: ");
+    localStringBuilder.append(this.jdField_h_of_type_Int);
+    localStringBuilder.append(" mViewRect: ");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsRectF);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.Barrage
  * JD-Core Version:    0.7.0.1
  */

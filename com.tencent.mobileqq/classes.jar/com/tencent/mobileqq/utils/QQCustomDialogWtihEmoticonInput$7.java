@@ -19,25 +19,23 @@ class QQCustomDialogWtihEmoticonInput$7
   
   public void delete()
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart() == 0) {}
-    for (;;)
-    {
+    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart() == 0) {
       return;
-      try
+    }
+    try
+    {
+      Editable localEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
+      int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
+      int j = android.text.TextUtils.getOffsetBefore(this.a.jdField_a_of_type_AndroidWidgetEditText.getText(), i);
+      if (i != j)
       {
-        Editable localEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
-        int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-        int j = android.text.TextUtils.getOffsetBefore(this.a.jdField_a_of_type_AndroidWidgetEditText.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
+        localEditable.delete(Math.min(i, j), Math.max(i, j));
+        return;
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
@@ -62,37 +60,34 @@ class QQCustomDialogWtihEmoticonInput$7
     {
       i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
       j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
+      if ((i >= 0) && (j >= 0) && (j >= i)) {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
+      }
     }
-    SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo;
-    int k;
-    int m;
-    do
+    else if ((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo))
     {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
-      do
-      {
-        return;
-      } while (!(paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo));
-      localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
+      SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
       i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
       j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-      k = localSystemAndEmojiEmoticonInfo.emotionType;
-      m = localSystemAndEmojiEmoticonInfo.code;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
+      int k = localSystemAndEmojiEmoticonInfo.emotionType;
+      int m = localSystemAndEmojiEmoticonInfo.code;
+      if ((i >= 0) && (j >= 0) && (j >= i))
+      {
+        if ((k == 2) && (m == -1)) {
+          return;
+        }
+        if (k == 1) {
+          paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(m);
+        } else {
+          paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, paramEmoticonInfo);
+        this.a.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
       }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(m);; paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, paramEmoticonInfo);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
       if (this.a.jdField_a_of_type_Boolean) {
         localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
       }
       QQSysAndEmojiResMgr.getInstance().getResImpl(k).reportEmoClick(m, 5);
-      return;
     }
   }
   
@@ -100,7 +95,7 @@ class QQCustomDialogWtihEmoticonInput$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.7
  * JD-Core Version:    0.7.0.1
  */

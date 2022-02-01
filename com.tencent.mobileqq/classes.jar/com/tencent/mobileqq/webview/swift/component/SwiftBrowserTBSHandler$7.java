@@ -9,8 +9,6 @@ import mqq.os.MqqHandler;
 class SwiftBrowserTBSHandler$7
   implements View.OnClickListener
 {
-  SwiftBrowserTBSHandler$7(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
-  
   public void onClick(View paramView)
   {
     if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
@@ -22,7 +20,7 @@ class SwiftBrowserTBSHandler$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.7
  * JD-Core Version:    0.7.0.1
  */

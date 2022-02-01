@@ -50,94 +50,52 @@ public class AppRuntimeLoaderManager
     this.mMaxLoaderCount = WnsConfig.getConfig("qqminiapp", "MiniAppRuntimeCacheMax", 3);
     this.mGameMaxLoaderCount = WnsConfig.getConfig("qqminiapp", "mini_game_multi_instance", 1);
     this.mRuntimeLoaderRecycleTime = WnsConfig.getConfig("qqminiapp", "mini_app_runtime_recycle_time", 900000L);
-    QMLog.i("minisdk-start_AppRuntimeLoaderManager", "RuntimeLoaderConfig:" + this.mRuntimeConfiguration.toString() + " ProcessType=" + this.mProcessType + " maxRuntime=" + this.mMaxLoaderCount);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RuntimeLoaderConfig:");
+    localStringBuilder.append(this.mRuntimeConfiguration.toString());
+    localStringBuilder.append(" ProcessType=");
+    localStringBuilder.append(this.mProcessType);
+    localStringBuilder.append(" maxRuntime=");
+    localStringBuilder.append(this.mMaxLoaderCount);
+    QMLog.i("minisdk-start_AppRuntimeLoaderManager", localStringBuilder.toString());
   }
   
-  /* Error */
   private void addRuntimeLoader(BaseRuntimeLoader paramBaseRuntimeLoader)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +18 -> 21
-    //   6: aload_1
-    //   7: invokevirtual 192	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:getMiniAppInfo	()Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
-    //   10: ifnull +11 -> 21
-    //   13: aload_0
-    //   14: getfield 65	com/tencent/qqmini/sdk/runtime/AppRuntimeLoaderManager:loadedRuntimeLinkedList	Ljava/util/LinkedList;
-    //   17: aload_1
-    //   18: invokevirtual 196	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
-    //   21: aload_0
-    //   22: getfield 93	com/tencent/qqmini/sdk/runtime/AppRuntimeLoaderManager:mMaxLoaderCount	I
-    //   25: istore_2
-    //   26: aload_0
-    //   27: getfield 91	com/tencent/qqmini/sdk/runtime/AppRuntimeLoaderManager:mProcessType	I
-    //   30: iconst_4
-    //   31: if_icmpne +8 -> 39
-    //   34: aload_0
-    //   35: getfield 128	com/tencent/qqmini/sdk/runtime/AppRuntimeLoaderManager:mGameMaxLoaderCount	I
-    //   38: istore_2
-    //   39: iload_2
-    //   40: iconst_1
-    //   41: if_icmplt +64 -> 105
-    //   44: aload_0
-    //   45: getfield 65	com/tencent/qqmini/sdk/runtime/AppRuntimeLoaderManager:loadedRuntimeLinkedList	Ljava/util/LinkedList;
-    //   48: invokevirtual 200	java/util/LinkedList:size	()I
-    //   51: iload_2
-    //   52: if_icmple +53 -> 105
-    //   55: aload_0
-    //   56: getfield 65	com/tencent/qqmini/sdk/runtime/AppRuntimeLoaderManager:loadedRuntimeLinkedList	Ljava/util/LinkedList;
-    //   59: invokevirtual 204	java/util/LinkedList:removeLast	()Ljava/lang/Object;
-    //   62: checkcast 188	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader
-    //   65: astore_1
-    //   66: aload_1
-    //   67: invokevirtual 207	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:destroy	()V
-    //   70: new 135	java/lang/StringBuilder
-    //   73: dup
-    //   74: invokespecial 136	java/lang/StringBuilder:<init>	()V
-    //   77: ldc 209
-    //   79: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: astore_3
-    //   83: aload_1
-    //   84: ifnull +28 -> 112
-    //   87: aload_1
-    //   88: invokevirtual 212	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:toSimpleString	()Ljava/lang/String;
-    //   91: astore_1
-    //   92: ldc 19
-    //   94: aload_3
-    //   95: aload_1
-    //   96: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   102: invokestatic 215	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   105: aload_0
-    //   106: invokespecial 218	com/tencent/qqmini/sdk/runtime/AppRuntimeLoaderManager:notifyRuntimeListInfo	()V
-    //   109: aload_0
-    //   110: monitorexit
-    //   111: return
-    //   112: ldc 220
-    //   114: astore_1
-    //   115: goto -23 -> 92
-    //   118: astore_1
-    //   119: aload_0
-    //   120: monitorexit
-    //   121: aload_1
-    //   122: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	123	0	this	AppRuntimeLoaderManager
-    //   0	123	1	paramBaseRuntimeLoader	BaseRuntimeLoader
-    //   25	28	2	i	int
-    //   82	13	3	localStringBuilder	java.lang.StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   6	21	118	finally
-    //   21	26	118	finally
-    //   26	39	118	finally
-    //   44	83	118	finally
-    //   87	92	118	finally
-    //   92	105	118	finally
-    //   105	109	118	finally
+    if (paramBaseRuntimeLoader != null) {}
+    for (;;)
+    {
+      try
+      {
+        if (paramBaseRuntimeLoader.getMiniAppInfo() != null) {
+          this.loadedRuntimeLinkedList.addFirst(paramBaseRuntimeLoader);
+        }
+        int i = this.mMaxLoaderCount;
+        if (this.mProcessType == 4) {
+          i = this.mGameMaxLoaderCount;
+        }
+        if ((i >= 1) && (this.loadedRuntimeLinkedList.size() > i))
+        {
+          paramBaseRuntimeLoader = (BaseRuntimeLoader)this.loadedRuntimeLinkedList.removeLast();
+          paramBaseRuntimeLoader.destroy();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("RuntimeLoader count exceed the maxcount, remove the last one! removed=");
+          if (paramBaseRuntimeLoader != null)
+          {
+            paramBaseRuntimeLoader = paramBaseRuntimeLoader.toSimpleString();
+            localStringBuilder.append(paramBaseRuntimeLoader);
+            QMLog.w("minisdk-start_AppRuntimeLoaderManager", localStringBuilder.toString());
+          }
+        }
+        else
+        {
+          notifyRuntimeListInfo();
+          return;
+        }
+      }
+      finally {}
+      paramBaseRuntimeLoader = "N/A";
+    }
   }
   
   private void cleanRuntimeLoader()
@@ -153,30 +111,34 @@ public class AppRuntimeLoaderManager
         BaseRuntimeLoader localBaseRuntimeLoader = (BaseRuntimeLoader)this.loadedRuntimeLinkedList.removeLast();
         if (localBaseRuntimeLoader != null)
         {
-          QMLog.i("minisdk-start_AppRuntimeLoaderManager", "removed RuntimeLoader:" + localBaseRuntimeLoader.toSimpleString());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("removed RuntimeLoader:");
+          localStringBuilder.append(localBaseRuntimeLoader.toSimpleString());
+          QMLog.i("minisdk-start_AppRuntimeLoaderManager", localStringBuilder.toString());
           localBaseRuntimeLoader.destroy();
         }
       }
       notifyRuntimeListInfo();
+      preloadRuntime(null);
+      return;
     }
     catch (Throwable localThrowable)
     {
       QMLog.e("minisdk-start_AppRuntimeLoaderManager", "cleanRuntimeLoader exception!", localThrowable);
-      return;
     }
-    preloadRuntime(null);
   }
   
   public static AppRuntimeLoaderManager g()
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new AppRuntimeLoaderManager();
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new AppRuntimeLoaderManager();
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   private boolean hasRunningRuntimeLoader()
@@ -201,38 +163,44 @@ public class AppRuntimeLoaderManager
   
   private void initProcessConfig(Bundle paramBundle)
   {
-    if (this.mProcessType >= 0) {}
-    do
+    if (this.mProcessType >= 0) {
+      return;
+    }
+    MiniProcessorConfig localMiniProcessorConfig = MiniAppEnv.g().getCurrentProcessConfig();
+    if (localMiniProcessorConfig != null) {
+      this.mProcessType = localMiniProcessorConfig.supportRuntimeType;
+    }
+    if (this.mProcessType >= 0) {
+      return;
+    }
+    if ((paramBundle != null) && (paramBundle.containsKey("mini_key_preload_type")))
     {
-      do
-      {
-        return;
-        MiniProcessorConfig localMiniProcessorConfig = MiniAppEnv.g().getCurrentProcessConfig();
-        if (localMiniProcessorConfig != null) {
-          this.mProcessType = localMiniProcessorConfig.supportRuntimeType;
-        }
-      } while ((this.mProcessType >= 0) || (paramBundle == null) || (!paramBundle.containsKey("mini_key_preload_type")));
       paramBundle = paramBundle.getString("mini_key_preload_type");
       if ("preload_app".equals(paramBundle))
       {
         this.mProcessType = 3;
         return;
       }
-    } while (!"preload_game".equals(paramBundle));
-    this.mProcessType = 4;
+      if ("preload_game".equals(paramBundle)) {
+        this.mProcessType = 4;
+      }
+    }
   }
   
   private boolean isMatch(BaseRuntimeLoader paramBaseRuntimeLoader, MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramBaseRuntimeLoader == null) || (paramMiniAppInfo == null)) {
-      return false;
-    }
-    Iterator localIterator = this.mRuntimeConfiguration.getLoaderInfoListForPreload().iterator();
-    while (localIterator.hasNext())
+    if (paramBaseRuntimeLoader != null)
     {
-      RuntimeLoaderConfiguration.RuntimeLoaderInfo localRuntimeLoaderInfo = (RuntimeLoaderConfiguration.RuntimeLoaderInfo)localIterator.next();
-      if ((localRuntimeLoaderInfo != null) && (paramBaseRuntimeLoader.getClass() == localRuntimeLoaderInfo.runtimeLoaderClass) && (localRuntimeLoaderInfo.creator != null) && (localRuntimeLoaderInfo.creator.support(paramMiniAppInfo)) && ((paramBaseRuntimeLoader.getMiniAppInfo() == null) || (paramBaseRuntimeLoader.getMiniAppInfo().equals(paramMiniAppInfo)))) {
-        return true;
+      if (paramMiniAppInfo == null) {
+        return false;
+      }
+      Iterator localIterator = this.mRuntimeConfiguration.getLoaderInfoListForPreload().iterator();
+      while (localIterator.hasNext())
+      {
+        RuntimeLoaderConfiguration.RuntimeLoaderInfo localRuntimeLoaderInfo = (RuntimeLoaderConfiguration.RuntimeLoaderInfo)localIterator.next();
+        if ((localRuntimeLoaderInfo != null) && (paramBaseRuntimeLoader.getClass() == localRuntimeLoaderInfo.runtimeLoaderClass) && (localRuntimeLoaderInfo.creator != null) && (localRuntimeLoaderInfo.creator.support(paramMiniAppInfo)) && ((paramBaseRuntimeLoader.getMiniAppInfo() == null) || (paramBaseRuntimeLoader.getMiniAppInfo().equals(paramMiniAppInfo)))) {
+          return true;
+        }
       }
     }
     return false;
@@ -246,8 +214,13 @@ public class AppRuntimeLoaderManager
       while (localIterator.hasNext()) {
         ((AppRuntimeEventCenter.RuntimeStateObserver)localIterator.next()).onStateChange(paramMiniAppStateMessage);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramMiniAppStateMessage;
+    }
   }
   
   private void notifyRuntimeListInfo()
@@ -267,22 +240,32 @@ public class AppRuntimeLoaderManager
       RuntimeLoaderConfiguration.RuntimeLoaderInfo localRuntimeLoaderInfo = (RuntimeLoaderConfiguration.RuntimeLoaderInfo)localIterator.next();
       if (!localRuntimeLoaderInfo.creator.isEnginePrepared(paramBundle))
       {
-        QMLog.i("minisdk-start_AppRuntimeLoaderManager", "RuntimeLoader engine is not prepared! " + localRuntimeLoaderInfo.creator);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("RuntimeLoader engine is not prepared! ");
+        localStringBuilder.append(localRuntimeLoaderInfo.creator);
+        QMLog.i("minisdk-start_AppRuntimeLoaderManager", localStringBuilder.toString());
       }
       else if (localRuntimeLoaderInfo.creator.support(paramMiniAppInfo))
       {
-        QMLog.i("minisdk-start_AppRuntimeLoaderManager", "RuntimeLoader engine support: " + localRuntimeLoaderInfo.creator);
+        paramMiniAppInfo = new StringBuilder();
+        paramMiniAppInfo.append("RuntimeLoader engine support: ");
+        paramMiniAppInfo.append(localRuntimeLoaderInfo.creator);
+        QMLog.i("minisdk-start_AppRuntimeLoaderManager", paramMiniAppInfo.toString());
         if (this.mProcessType < 0)
         {
-          QMLog.w("minisdk-start_AppRuntimeLoaderManager", "set ProcessType to " + this.mProcessType);
+          paramMiniAppInfo = new StringBuilder();
+          paramMiniAppInfo.append("set ProcessType to ");
+          paramMiniAppInfo.append(this.mProcessType);
+          QMLog.w("minisdk-start_AppRuntimeLoaderManager", paramMiniAppInfo.toString());
           this.mProcessType = localRuntimeLoaderInfo.type;
         }
-        if (this.mEmptyRuntimeLoaderList.containsKey(localRuntimeLoaderInfo.runtimeLoaderClass)) {}
-        for (paramMiniAppInfo = (BaseRuntimeLoader)this.mEmptyRuntimeLoaderList.remove(localRuntimeLoaderInfo.runtimeLoaderClass);; paramMiniAppInfo = (BaseRuntimeLoader)localRuntimeLoaderInfo.creator.create(MiniAppEnv.g().getContext(), paramBundle))
-        {
-          paramMiniAppInfo.addRuntimeStateObserver(this.mRuntimeObserver);
-          return paramMiniAppInfo;
+        if (this.mEmptyRuntimeLoaderList.containsKey(localRuntimeLoaderInfo.runtimeLoaderClass)) {
+          paramMiniAppInfo = (BaseRuntimeLoader)this.mEmptyRuntimeLoaderList.remove(localRuntimeLoaderInfo.runtimeLoaderClass);
+        } else {
+          paramMiniAppInfo = (BaseRuntimeLoader)localRuntimeLoaderInfo.creator.create(MiniAppEnv.g().getContext(), paramBundle);
         }
+        paramMiniAppInfo.addRuntimeStateObserver(this.mRuntimeObserver);
+        return paramMiniAppInfo;
       }
     }
     return null;
@@ -296,13 +279,8 @@ public class AppRuntimeLoaderManager
       if (!this.mObservers.contains(paramRuntimeStateObserver)) {
         this.mObservers.addElement(paramRuntimeStateObserver);
       }
-      return;
     }
-    finally
-    {
-      paramRuntimeStateObserver = finally;
-      throw paramRuntimeStateObserver;
-    }
+    finally {}
   }
   
   public void bringToFront(BaseRuntimeLoader paramBaseRuntimeLoader)
@@ -330,16 +308,33 @@ public class AppRuntimeLoaderManager
     {
       if ((this.mPreloadRuntimeLoader != null) && (!isMatch(this.mPreloadRuntimeLoader, paramMiniAppInfo)) && (this.mPreloadRuntimeLoader.isRunning()))
       {
-        QMLog.i("minisdk-start_AppRuntimeLoaderManager", "createAppRuntimeLoader, stop the preloading runtimeloader " + this.mPreloadRuntimeLoader.toSimpleString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createAppRuntimeLoader, stop the preloading runtimeloader ");
+        localStringBuilder.append(this.mPreloadRuntimeLoader.toSimpleString());
+        QMLog.i("minisdk-start_AppRuntimeLoaderManager", localStringBuilder.toString());
         this.mPreloadRuntimeLoader.pause();
       }
       if ((this.mPrelaunchRuntimeLoader != null) && (!isMatch(this.mPrelaunchRuntimeLoader, paramMiniAppInfo)) && (this.mPrelaunchRuntimeLoader.isRunning()))
       {
-        QMLog.i("minisdk-start_AppRuntimeLoaderManager", "createAppRuntimeLoader, stop the prelaunch runtimeloader " + this.mPrelaunchRuntimeLoader.toSimpleString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createAppRuntimeLoader, stop the prelaunch runtimeloader ");
+        localStringBuilder.append(this.mPrelaunchRuntimeLoader.toSimpleString());
+        QMLog.i("minisdk-start_AppRuntimeLoaderManager", localStringBuilder.toString());
         this.mPrelaunchRuntimeLoader.pause();
       }
       paramBundle = obtainEmptyRuntimeLoader(paramMiniAppInfo, paramBundle);
-      QMLog.i("minisdk-start_AppRuntimeLoaderManager", "createAppRuntimeLoader appId=" + paramMiniAppInfo.appId + " name=" + paramMiniAppInfo.name + " versionType=" + paramMiniAppInfo.verType + " version=" + paramMiniAppInfo.version + " obtainRuntimeLoader:" + paramBundle);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createAppRuntimeLoader appId=");
+      localStringBuilder.append(paramMiniAppInfo.appId);
+      localStringBuilder.append(" name=");
+      localStringBuilder.append(paramMiniAppInfo.name);
+      localStringBuilder.append(" versionType=");
+      localStringBuilder.append(paramMiniAppInfo.verType);
+      localStringBuilder.append(" version=");
+      localStringBuilder.append(paramMiniAppInfo.version);
+      localStringBuilder.append(" obtainRuntimeLoader:");
+      localStringBuilder.append(paramBundle);
+      QMLog.i("minisdk-start_AppRuntimeLoaderManager", localStringBuilder.toString());
       paramBundle.setRuntimeLoadListener(new AppRuntimeLoaderManager.3(this, paramOnAppRuntimeLoadListener));
       paramBundle.setMiniAppInfo(paramMiniAppInfo);
       addRuntimeLoader(paramBundle);
@@ -358,13 +353,8 @@ public class AppRuntimeLoaderManager
     try
     {
       this.mObservers.removeElement(paramRuntimeStateObserver);
-      return;
     }
-    finally
-    {
-      paramRuntimeStateObserver = finally;
-      throw paramRuntimeStateObserver;
-    }
+    finally {}
   }
   
   public ArrayList<MiniAppInfo> getAllLoadedAppInfos()
@@ -426,50 +416,72 @@ public class AppRuntimeLoaderManager
       return;
     }
     Object localObject = WnsConfig.getConfig("qqminiapp", "prelaunch_white_list", "1108291530,1109896843");
-    QMLog.i("minisdk-start_AppRuntimeLoaderManager", "preLaunch whitelist=" + (String)localObject + " appid=" + paramMiniAppInfo.appId);
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains(paramMiniAppInfo.appId)))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("preLaunch whitelist=");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" appid=");
+    localStringBuilder.append(paramMiniAppInfo.appId);
+    QMLog.i("minisdk-start_AppRuntimeLoaderManager", localStringBuilder.toString());
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).contains(paramMiniAppInfo.appId)))
     {
-      QMLog.e("minisdk-start_AppRuntimeLoaderManager", "preLaunch white list not hit, Stop preLaunch!");
-      return;
-    }
-    if (this.mPrelaunchRuntimeLoader != null)
-    {
-      QMLog.e("minisdk-start_AppRuntimeLoaderManager", "There is a preLaunch loader now! Stop preLaunch!");
-      return;
-    }
-    MiniAppPrelaunchRecorder.get().onPrelaunch(paramMiniAppInfo.appId);
-    try
-    {
-      localObject = queryAppRunTimeLoader(paramMiniAppInfo);
-      if (localObject != null)
+      if (this.mPrelaunchRuntimeLoader != null)
       {
-        QMLog.w("minisdk-start_AppRuntimeLoaderManager", "preLaunchRuntimeLoader, There is a loader now! No need PreLaunch! " + ((BaseRuntimeLoader)localObject).toSimpleString());
+        QMLog.e("minisdk-start_AppRuntimeLoaderManager", "There is a preLaunch loader now! Stop preLaunch!");
+        return;
+      }
+      MiniAppPrelaunchRecorder.get().onPrelaunch(paramMiniAppInfo.appId);
+      try
+      {
+        localObject = queryAppRunTimeLoader(paramMiniAppInfo);
+        if (localObject != null)
+        {
+          paramMiniAppInfo = new StringBuilder();
+          paramMiniAppInfo.append("preLaunchRuntimeLoader, There is a loader now! No need PreLaunch! ");
+          paramMiniAppInfo.append(((BaseRuntimeLoader)localObject).toSimpleString());
+          QMLog.w("minisdk-start_AppRuntimeLoaderManager", paramMiniAppInfo.toString());
+          return;
+        }
+        if (hasRunningRuntimeLoader())
+        {
+          QMLog.w("minisdk-start_AppRuntimeLoaderManager", "preLaunchRuntimeLoader, There is a running loader now! Stop prelaunch!");
+          return;
+        }
+        if ((this.mPreloadRuntimeLoader != null) && (this.mPreloadRuntimeLoader.isRunning()))
+        {
+          paramMiniAppInfo = new StringBuilder();
+          paramMiniAppInfo.append("preLaunchRuntimeLoader, There is a running preload loader now ");
+          paramMiniAppInfo.append(this.mPreloadRuntimeLoader.toSimpleString());
+          QMLog.i("minisdk-start_AppRuntimeLoaderManager", paramMiniAppInfo.toString());
+          return;
+        }
+        paramBundle = obtainEmptyRuntimeLoader(paramMiniAppInfo, paramBundle);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("preLaunchRuntimeLoader, appId=");
+        ((StringBuilder)localObject).append(paramMiniAppInfo.appId);
+        ((StringBuilder)localObject).append(" name=");
+        ((StringBuilder)localObject).append(paramMiniAppInfo.name);
+        ((StringBuilder)localObject).append(" versionType=");
+        ((StringBuilder)localObject).append(paramMiniAppInfo.verType);
+        ((StringBuilder)localObject).append(" version=");
+        ((StringBuilder)localObject).append(paramMiniAppInfo.version);
+        ((StringBuilder)localObject).append(" obtainRuntimeLoader:");
+        ((StringBuilder)localObject).append(paramBundle.toSimpleString());
+        QMLog.i("minisdk-start_AppRuntimeLoaderManager", ((StringBuilder)localObject).toString());
+        paramBundle.setRuntimeLoadListener(new AppRuntimeLoaderManager.4(this, paramOnAppRuntimeLoadListener));
+        paramBundle.setMiniAppInfo(paramMiniAppInfo);
+        paramBundle.getAppStateManager().isFromPrelaunch = true;
+        this.mPrelaunchRuntimeLoader = paramBundle;
+        paramBundle.start();
+        addRuntimeLoader(paramBundle);
+        return;
+      }
+      catch (Throwable paramMiniAppInfo)
+      {
+        QMLog.e("minisdk-start_AppRuntimeLoaderManager", "preLaunchRuntimeLoader exception!", paramMiniAppInfo);
         return;
       }
     }
-    catch (Throwable paramMiniAppInfo)
-    {
-      QMLog.e("minisdk-start_AppRuntimeLoaderManager", "preLaunchRuntimeLoader exception!", paramMiniAppInfo);
-      return;
-    }
-    if (hasRunningRuntimeLoader())
-    {
-      QMLog.w("minisdk-start_AppRuntimeLoaderManager", "preLaunchRuntimeLoader, There is a running loader now! Stop prelaunch!");
-      return;
-    }
-    if ((this.mPreloadRuntimeLoader != null) && (this.mPreloadRuntimeLoader.isRunning()))
-    {
-      QMLog.i("minisdk-start_AppRuntimeLoaderManager", "preLaunchRuntimeLoader, There is a running preload loader now " + this.mPreloadRuntimeLoader.toSimpleString());
-      return;
-    }
-    paramBundle = obtainEmptyRuntimeLoader(paramMiniAppInfo, paramBundle);
-    QMLog.i("minisdk-start_AppRuntimeLoaderManager", "preLaunchRuntimeLoader, appId=" + paramMiniAppInfo.appId + " name=" + paramMiniAppInfo.name + " versionType=" + paramMiniAppInfo.verType + " version=" + paramMiniAppInfo.version + " obtainRuntimeLoader:" + paramBundle.toSimpleString());
-    paramBundle.setRuntimeLoadListener(new AppRuntimeLoaderManager.4(this, paramOnAppRuntimeLoadListener));
-    paramBundle.setMiniAppInfo(paramMiniAppInfo);
-    paramBundle.getAppStateManager().isFromPrelaunch = true;
-    this.mPrelaunchRuntimeLoader = paramBundle;
-    paramBundle.start();
-    addRuntimeLoader(paramBundle);
+    QMLog.e("minisdk-start_AppRuntimeLoaderManager", "preLaunch white list not hit, Stop preLaunch!");
   }
   
   public void preloadRuntime(Bundle paramBundle)
@@ -478,62 +490,69 @@ public class AppRuntimeLoaderManager
     if (paramBundle != null) {
       this.mPreloadBundle = paramBundle;
     }
-    QMLog.w("minisdk-start_AppRuntimeLoaderManager", "preloadRuntime with ProcessType=" + this.mProcessType);
-    if (this.mProcessType < 0) {}
-    RuntimeLoaderConfiguration.RuntimeLoaderInfo localRuntimeLoaderInfo;
-    label265:
-    do
-    {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("preloadRuntime with ProcessType=");
+    ((StringBuilder)localObject1).append(this.mProcessType);
+    QMLog.w("minisdk-start_AppRuntimeLoaderManager", ((StringBuilder)localObject1).toString());
+    if (this.mProcessType < 0) {
       return;
-      for (;;)
+    }
+    if (hasRunningRuntimeLoader())
+    {
+      QMLog.w("minisdk-start_AppRuntimeLoaderManager", "There is a running loader now! Stop preload!");
+      return;
+    }
+    localObject1 = this.mPreloadRuntimeLoader;
+    if (localObject1 != null)
+    {
+      if (((BaseRuntimeLoader)localObject1).isPause())
       {
-        if (hasRunningRuntimeLoader())
+        paramBundle = new StringBuilder();
+        paramBundle.append("Resume the preload runtime! ");
+        paramBundle.append(this.mPreloadRuntimeLoader.toSimpleString());
+        QMLog.w("minisdk-start_AppRuntimeLoaderManager", paramBundle.toString());
+        this.mPreloadRuntimeLoader.resume();
+        return;
+      }
+      if (this.mPreloadRuntimeLoader.isRunning())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("There is already a preload runtime now! ");
+        paramBundle.append(this.mPreloadRuntimeLoader.toSimpleString());
+        QMLog.w("minisdk-start_AppRuntimeLoaderManager", paramBundle.toString());
+        return;
+      }
+    }
+    Object localObject2 = this.mRuntimeConfiguration.getLoaderInfoListForPreload().iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject1 = (RuntimeLoaderConfiguration.RuntimeLoaderInfo)((Iterator)localObject2).next();
+      if ((this.mProcessType & ((RuntimeLoaderConfiguration.RuntimeLoaderInfo)localObject1).type) != 0)
+      {
+        Object localObject3;
+        if (!((RuntimeLoaderConfiguration.RuntimeLoaderInfo)localObject1).creator.isEnginePrepared(paramBundle))
         {
-          QMLog.w("minisdk-start_AppRuntimeLoaderManager", "There is a running loader now! Stop preload!");
-          return;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("The loader engine is not prepared! ");
+          ((StringBuilder)localObject3).append(((RuntimeLoaderConfiguration.RuntimeLoaderInfo)localObject1).runtimeLoaderClass.getSimpleName());
+          QMLog.e("minisdk-start_AppRuntimeLoaderManager", ((StringBuilder)localObject3).toString());
+          ((RuntimeLoaderConfiguration.RuntimeLoaderInfo)localObject1).creator.doPrepareEngine(paramBundle);
         }
-        if (this.mPreloadRuntimeLoader != null)
+        else if (!this.mEmptyRuntimeLoaderList.containsKey(((RuntimeLoaderConfiguration.RuntimeLoaderInfo)localObject1).runtimeLoaderClass))
         {
-          if (this.mPreloadRuntimeLoader.isPause())
-          {
-            QMLog.w("minisdk-start_AppRuntimeLoaderManager", "Resume the preload runtime! " + this.mPreloadRuntimeLoader.toSimpleString());
-            this.mPreloadRuntimeLoader.resume();
-            return;
+          localObject2 = ((RuntimeLoaderConfiguration.RuntimeLoaderInfo)localObject1).creator;
+          localObject3 = MiniAppEnv.g().getContext();
+          if (paramBundle == null) {
+            paramBundle = new Bundle();
           }
-          if (this.mPreloadRuntimeLoader.isRunning())
-          {
-            QMLog.w("minisdk-start_AppRuntimeLoaderManager", "There is already a preload runtime now! " + this.mPreloadRuntimeLoader.toSimpleString());
-            return;
-          }
-        }
-        localObject = this.mRuntimeConfiguration.getLoaderInfoListForPreload().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          localRuntimeLoaderInfo = (RuntimeLoaderConfiguration.RuntimeLoaderInfo)((Iterator)localObject).next();
-          if ((this.mProcessType & localRuntimeLoaderInfo.type) != 0)
-          {
-            if (localRuntimeLoaderInfo.creator.isEnginePrepared(paramBundle)) {
-              break label265;
-            }
-            QMLog.e("minisdk-start_AppRuntimeLoaderManager", "The loader engine is not prepared! " + localRuntimeLoaderInfo.runtimeLoaderClass.getSimpleName());
-            localRuntimeLoaderInfo.creator.doPrepareEngine(paramBundle);
-          }
+          paramBundle = (BaseRuntimeLoader)((BaseRuntimeLoader.Creator)localObject2).create((Context)localObject3, paramBundle);
+          paramBundle.addRuntimeStateObserver(this.mRuntimeObserver);
+          paramBundle.getAppStateManager().isFromPreload = true;
+          paramBundle.start();
+          this.mEmptyRuntimeLoaderList.put(((RuntimeLoaderConfiguration.RuntimeLoaderInfo)localObject1).runtimeLoaderClass, paramBundle);
+          this.mPreloadRuntimeLoader = paramBundle;
         }
       }
-    } while (this.mEmptyRuntimeLoaderList.containsKey(localRuntimeLoaderInfo.runtimeLoaderClass));
-    Object localObject = localRuntimeLoaderInfo.creator;
-    Context localContext = MiniAppEnv.g().getContext();
-    if (paramBundle != null) {}
-    for (;;)
-    {
-      paramBundle = (BaseRuntimeLoader)((BaseRuntimeLoader.Creator)localObject).create(localContext, paramBundle);
-      paramBundle.addRuntimeStateObserver(this.mRuntimeObserver);
-      paramBundle.getAppStateManager().isFromPreload = true;
-      paramBundle.start();
-      this.mEmptyRuntimeLoaderList.put(localRuntimeLoaderInfo.runtimeLoaderClass, paramBundle);
-      this.mPreloadRuntimeLoader = paramBundle;
-      return;
-      paramBundle = new Bundle();
     }
   }
   
@@ -543,13 +562,22 @@ public class AppRuntimeLoaderManager
     if (paramMiniAppInfo == null) {
       return null;
     }
-    QMLog.i("minisdk-start_AppRuntimeLoaderManager", "queryAppRunTimeLoader appId=" + paramMiniAppInfo.appId + " name=" + paramMiniAppInfo.name + " versionType=" + paramMiniAppInfo.verType + " version=" + paramMiniAppInfo.version);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("queryAppRunTimeLoader appId=");
+    ((StringBuilder)localObject).append(paramMiniAppInfo.appId);
+    ((StringBuilder)localObject).append(" name=");
+    ((StringBuilder)localObject).append(paramMiniAppInfo.name);
+    ((StringBuilder)localObject).append(" versionType=");
+    ((StringBuilder)localObject).append(paramMiniAppInfo.verType);
+    ((StringBuilder)localObject).append(" version=");
+    ((StringBuilder)localObject).append(paramMiniAppInfo.version);
+    QMLog.i("minisdk-start_AppRuntimeLoaderManager", ((StringBuilder)localObject).toString());
     try
     {
-      Iterator localIterator = new ArrayList(this.loadedRuntimeLinkedList).iterator();
-      while (localIterator.hasNext())
+      localObject = new ArrayList(this.loadedRuntimeLinkedList).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        BaseRuntimeLoader localBaseRuntimeLoader = (BaseRuntimeLoader)localIterator.next();
+        BaseRuntimeLoader localBaseRuntimeLoader = (BaseRuntimeLoader)((Iterator)localObject).next();
         if (localBaseRuntimeLoader.getMiniAppInfo() != null)
         {
           boolean bool = localBaseRuntimeLoader.getMiniAppInfo().equals(paramMiniAppInfo);
@@ -573,22 +601,20 @@ public class AppRuntimeLoaderManager
     {
       if (this.loadedRuntimeLinkedList.remove(paramBaseRuntimeLoader))
       {
-        QMLog.i("minisdk-start_AppRuntimeLoaderManager", "removed RuntimeLoader:" + paramBaseRuntimeLoader.toSimpleString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("removed RuntimeLoader:");
+        localStringBuilder.append(paramBaseRuntimeLoader.toSimpleString());
+        QMLog.i("minisdk-start_AppRuntimeLoaderManager", localStringBuilder.toString());
         paramBaseRuntimeLoader.destroy();
         notifyRuntimeListInfo();
       }
-      return;
     }
-    finally
-    {
-      paramBaseRuntimeLoader = finally;
-      throw paramBaseRuntimeLoader;
-    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppRuntimeLoaderManager
  * JD-Core Version:    0.7.0.1
  */

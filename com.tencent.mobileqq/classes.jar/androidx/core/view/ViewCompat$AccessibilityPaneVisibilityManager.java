@@ -18,17 +18,18 @@ class ViewCompat$AccessibilityPaneVisibilityManager
   @RequiresApi(19)
   private void checkPaneVisibility(View paramView, boolean paramBoolean)
   {
-    if (paramView.getVisibility() == 0) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (paramView.getVisibility() == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (paramBoolean != bool)
     {
-      if (paramBoolean != bool)
-      {
-        if (bool) {
-          ViewCompat.notifyViewAccessibilityStateChangedIfNeeded(paramView, 16);
-        }
-        this.mPanesToVisible.put(paramView, Boolean.valueOf(bool));
+      if (bool) {
+        ViewCompat.notifyViewAccessibilityStateChangedIfNeeded(paramView, 16);
       }
-      return;
+      this.mPanesToVisible.put(paramView, Boolean.valueOf(bool));
     }
   }
   
@@ -48,15 +49,16 @@ class ViewCompat$AccessibilityPaneVisibilityManager
   void addAccessibilityPane(View paramView)
   {
     WeakHashMap localWeakHashMap = this.mPanesToVisible;
-    if (paramView.getVisibility() == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localWeakHashMap.put(paramView, Boolean.valueOf(bool));
-      paramView.addOnAttachStateChangeListener(this);
-      if (paramView.isAttachedToWindow()) {
-        registerForLayoutCallback(paramView);
-      }
-      return;
+    boolean bool;
+    if (paramView.getVisibility() == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localWeakHashMap.put(paramView, Boolean.valueOf(bool));
+    paramView.addOnAttachStateChangeListener(this);
+    if (paramView.isAttachedToWindow()) {
+      registerForLayoutCallback(paramView);
     }
   }
   
@@ -89,7 +91,7 @@ class ViewCompat$AccessibilityPaneVisibilityManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.ViewCompat.AccessibilityPaneVisibilityManager
  * JD-Core Version:    0.7.0.1
  */

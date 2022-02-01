@@ -21,15 +21,22 @@ class MiniGameAdBannerPopup$GetAdCallback
   
   public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    QLog.d("MiniGameAdBannerPopup", 1, "onGetAdvs() called with: result = [" + paramBoolean + "], getAdsRsp = [" + paramGetAdsRsp + "]");
-    if ((this.context != null) && (this.context.get() != null)) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onGetAdvs() called with: result = [");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append("], getAdsRsp = [");
+    ((StringBuilder)localObject).append(paramGetAdsRsp);
+    ((StringBuilder)localObject).append("]");
+    QLog.d("MiniGameAdBannerPopup", 1, ((StringBuilder)localObject).toString());
+    localObject = this.context;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
       MiniGameAdBannerPopup.access$100((Context)this.context.get(), this.miniAppConfig, paramBoolean, paramGetAdsRsp);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGameAdBannerPopup.GetAdCallback
  * JD-Core Version:    0.7.0.1
  */

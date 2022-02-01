@@ -34,50 +34,55 @@ public class ShareTransActivity
     {
       this.v.putExtra("start_flag", -1);
       Bundle localBundle = this.v.getExtras();
-      Intent localIntent = new Intent("com.sina.weibo.sdk.action.ACTION_WEIBO_ACTIVITY");
-      localIntent.putExtras(paramWeiboMultiMessage.writeToBundle(localBundle));
-      localIntent.putExtra("_weibo_sdkVersion", "0041005000");
-      localIntent.putExtra("_weibo_appPackage", getPackageName());
-      localIntent.putExtra("_weibo_appKey", com.sina.weibo.sdk.a.a().getAppKey());
-      localIntent.putExtra("_weibo_flag", 538116905);
-      localIntent.putExtra("_weibo_sign", com.sina.weibo.sdk.c.d.e(e.e(this, getPackageName())));
+      localObject = new Intent("com.sina.weibo.sdk.action.ACTION_WEIBO_ACTIVITY");
+      ((Intent)localObject).putExtras(paramWeiboMultiMessage.writeToBundle(localBundle));
+      ((Intent)localObject).putExtra("_weibo_sdkVersion", "0041005000");
+      ((Intent)localObject).putExtra("_weibo_appPackage", getPackageName());
+      ((Intent)localObject).putExtra("_weibo_appKey", com.sina.weibo.sdk.a.a().getAppKey());
+      ((Intent)localObject).putExtra("_weibo_flag", 538116905);
+      ((Intent)localObject).putExtra("_weibo_sign", com.sina.weibo.sdk.c.d.e(e.e(this, getPackageName())));
       paramWeiboMultiMessage = this.v.getStringExtra("start_web_activity");
       if ((!TextUtils.isEmpty(paramWeiboMultiMessage)) && ("com.sina.weibo.sdk.web.WebActivity".equals(paramWeiboMultiMessage)))
       {
-        localIntent.setClassName(this, paramWeiboMultiMessage);
-        startActivityForResult(localIntent, 10001);
+        ((Intent)localObject).setClassName(this, paramWeiboMultiMessage);
+        startActivityForResult((Intent)localObject, 10001);
         return;
       }
       if (com.sina.weibo.sdk.a.a(this))
       {
         paramWeiboMultiMessage = com.sina.weibo.sdk.c.a.c(this);
         if (paramWeiboMultiMessage != null) {
-          localIntent.setPackage(paramWeiboMultiMessage.packageName);
+          ((Intent)localObject).setPackage(paramWeiboMultiMessage.packageName);
         }
-        startActivityForResult(localIntent, 10001);
+        startActivityForResult((Intent)localObject, 10001);
         return;
       }
+      c("Start weibo client's composer fail. And Weibo client is not installed.");
+      return;
     }
     catch (Throwable paramWeiboMultiMessage)
     {
-      c.b("WBShareTag", "start wb composer fail," + paramWeiboMultiMessage.getMessage());
-      c("Start weibo client's composer fail. " + paramWeiboMultiMessage.getMessage());
-      return;
+      Object localObject = new StringBuilder("start wb composer fail,");
+      ((StringBuilder)localObject).append(paramWeiboMultiMessage.getMessage());
+      c.b("WBShareTag", ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder("Start weibo client's composer fail. ");
+      ((StringBuilder)localObject).append(paramWeiboMultiMessage.getMessage());
+      c(((StringBuilder)localObject).toString());
     }
-    c("Start weibo client's composer fail. And Weibo client is not installed.");
   }
   
   private void c(String paramString)
   {
-    if (this.w != null) {
-      this.w.setVisibility(4);
+    Object localObject = this.w;
+    if (localObject != null) {
+      ((FrameLayout)localObject).setVisibility(4);
     }
-    Intent localIntent = new Intent();
+    localObject = new Intent();
     Bundle localBundle = new Bundle();
     localBundle.putInt("_weibo_resp_errcode", 2);
     localBundle.putString("_weibo_resp_errstr", paramString);
-    localIntent.putExtras(localBundle);
-    setResult(-1, localIntent);
+    ((Intent)localObject).putExtras(localBundle);
+    setResult(-1, (Intent)localObject);
     finish();
   }
   
@@ -94,8 +99,9 @@ public class ShareTransActivity
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     c.a("WBShareTag", "onActivityResult.");
-    if (this.y != null) {
-      this.y.sendEmptyMessageDelayed(0, 100L);
+    paramIntent = this.y;
+    if (paramIntent != null) {
+      paramIntent.sendEmptyMessageDelayed(0, 100L);
     }
   }
   
@@ -111,55 +117,59 @@ public class ShareTransActivity
     super.onCreate(paramBundle);
     c.a("WBShareTag", "start share activity.");
     this.v = getIntent();
-    if (this.v == null)
+    paramBundle = this.v;
+    if (paramBundle == null)
     {
       finish();
       return;
     }
-    if (this.v.getIntExtra("start_flag", -1) != 0)
+    if (paramBundle.getIntExtra("start_flag", -1) != 0)
     {
       finish();
       return;
     }
     this.w = new FrameLayout(this);
     int i = getIntent().getIntExtra("progress_id", -1);
-    if (i != -1) {}
-    for (paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(i, null);; paramBundle = new ProgressBar(this))
+    if (i != -1) {
+      paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(i, null);
+    } else {
+      paramBundle = new ProgressBar(this);
+    }
+    Object localObject = new FrameLayout.LayoutParams(-2, -2);
+    ((FrameLayout.LayoutParams)localObject).gravity = 17;
+    this.w.addView(paramBundle, (ViewGroup.LayoutParams)localObject);
+    this.w.setBackgroundColor(855638016);
+    setContentView(this.w);
+    c.a("WBShareTag", "prepare wb resource.");
+    localObject = this.v.getExtras();
+    if (localObject == null)
     {
-      localObject = new FrameLayout.LayoutParams(-2, -2);
-      ((FrameLayout.LayoutParams)localObject).gravity = 17;
-      this.w.addView(paramBundle, (ViewGroup.LayoutParams)localObject);
-      this.w.setBackgroundColor(855638016);
-      setContentView(this.w);
-      c.a("WBShareTag", "prepare wb resource.");
-      paramBundle = this.v.getExtras();
-      if (paramBundle != null) {
-        break;
-      }
       finish();
       return;
     }
-    Object localObject = new WeiboMultiMessage();
-    ((WeiboMultiMessage)localObject).readFromBundle(paramBundle);
-    if ((((WeiboMultiMessage)localObject).multiImageObject != null) || (((WeiboMultiMessage)localObject).videoSourceObject != null))
+    paramBundle = new WeiboMultiMessage();
+    paramBundle.readFromBundle((Bundle)localObject);
+    if ((paramBundle.multiImageObject == null) && (paramBundle.videoSourceObject == null))
     {
-      if (this.D != null) {
-        this.D.cancel(true);
-      }
-      this.D = new d(this, new ShareTransActivity.2(this));
-      this.D.execute(new WeiboMultiMessage[] { localObject });
+      a(paramBundle);
       return;
     }
-    a((WeiboMultiMessage)localObject);
+    localObject = this.D;
+    if (localObject != null) {
+      ((d)localObject).cancel(true);
+    }
+    this.D = new d(this, new ShareTransActivity.2(this));
+    this.D.execute(new WeiboMultiMessage[] { paramBundle });
   }
   
   protected void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
     c.a("WBShareTag", "start share activity again.");
-    if (this.y != null)
+    Handler localHandler = this.y;
+    if (localHandler != null)
     {
-      this.y.removeMessages(0);
+      localHandler.removeMessages(0);
       this.y = null;
     }
     setResult(-1, paramIntent);

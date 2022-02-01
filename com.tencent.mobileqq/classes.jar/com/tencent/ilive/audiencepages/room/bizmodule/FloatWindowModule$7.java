@@ -12,16 +12,16 @@ class FloatWindowModule$7
   
   public void onChanged(@Nullable PlayerCatonEvent paramPlayerCatonEvent)
   {
-    if ((FloatWindowModule.access$000(this.this$0) != null) && (FloatWindowModule.access$000(this.this$0).isReallyShow()))
+    if ((this.this$0.floatWindowComponent != null) && (this.this$0.floatWindowComponent.isReallyShow()))
     {
-      FloatWindowModule.access$300(this.this$0, "主播网络异常");
-      FloatWindowModule.access$400(this.this$0, 2);
+      FloatWindowModule.access$200(this.this$0, "主播网络异常");
+      FloatWindowModule.access$300(this.this$0, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.FloatWindowModule.7
  * JD-Core Version:    0.7.0.1
  */

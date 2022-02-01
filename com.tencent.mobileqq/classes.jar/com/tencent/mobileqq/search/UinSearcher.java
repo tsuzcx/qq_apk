@@ -37,18 +37,45 @@ public class UinSearcher
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
+    int i = 1;
+    if (paramInt != 0)
     {
-    default: 
-      return 0;
-    case 0: 
-      return 1;
-    case 1: 
-      return 2;
-    case 3000: 
-      return 3;
+      if (paramInt != 1)
+      {
+        if (paramInt != 1006) {
+          if (paramInt != 3000)
+          {
+            if ((paramInt == 1020) || (paramInt == 1021)) {}
+          }
+          else {
+            switch (paramInt)
+            {
+            default: 
+              switch (paramInt)
+              {
+              default: 
+                switch (paramInt)
+                {
+                default: 
+                  switch (paramInt)
+                  {
+                  default: 
+                    return 0;
+                    return 3;
+                  }
+                  break;
+                }
+                break;
+              }
+              break;
+            }
+          }
+        }
+        return 4;
+      }
+      i = 2;
     }
-    return 4;
+    return i;
   }
   
   public static int a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
@@ -59,16 +86,19 @@ public class UinSearcher
     if (ChatActivityUtils.a(paramInt)) {
       return 3;
     }
-    switch (paramInt)
+    int i = 1;
+    if (paramInt != 0)
     {
-    default: 
-      return -1;
-    case 3000: 
-      return 4;
-    case 1: 
-      return 2;
+      if (paramInt != 1)
+      {
+        if (paramInt != 3000) {
+          return -1;
+        }
+        return 4;
+      }
+      i = 2;
     }
-    return 1;
+    return i;
   }
   
   private void a()
@@ -100,45 +130,45 @@ public class UinSearcher
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
     paramString = paramChatMessage.selfuin;
-    if ((!paramChatMessage.isSend()) && (!paramChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin()))) {}
-    for (this.c = paramChatMessage.senderuin;; this.c = paramChatMessage.frienduin)
-    {
-      this.jdField_a_of_type_Int = paramChatMessage.istroop;
-      this.jdField_b_of_type_JavaLangString = (System.currentTimeMillis() + "");
-      paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppUnifySearchObserver);
-      paramQQAppInterface = (CardHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a(paramString, this.c, 1, 0L, (byte)1, 0L, 0L, null, "", 8192L, 10004, null, (byte)0);
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramContext);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.e(17);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(null);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.f(2130839549);
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.getWindow() != null) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.getWindow().setDimAmount(0.0F);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new UinSearcher.2(this));
-        if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-        }
-      }
-      catch (RuntimeException paramQQAppInterface)
-      {
-        for (;;)
-        {
-          QLog.e("UinSearcher", 1, paramQQAppInterface, new Object[0]);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppUnifySearchHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 20, SearchUtil.a(this.jdField_a_of_type_ArrayOfLong), null, null, 0, 0.0D, 0.0D, null, "{ \"search_by_id_only\": 1 }");
-      return;
+    if ((!paramChatMessage.isSend()) && (!paramChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin()))) {
+      this.c = paramChatMessage.senderuin;
+    } else {
+      this.c = paramChatMessage.frienduin;
     }
+    this.jdField_a_of_type_Int = paramChatMessage.istroop;
+    paramChatMessage = new StringBuilder();
+    paramChatMessage.append(System.currentTimeMillis());
+    paramChatMessage.append("");
+    this.jdField_b_of_type_JavaLangString = paramChatMessage.toString();
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppUnifySearchObserver);
+    paramQQAppInterface = (CardHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramString, this.c, 1, 0L, (byte)1, 0L, 0L, null, "", 8192L, 10004, null, (byte)0);
+    }
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramContext);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.e(17);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(null);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.f(2130839406);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.getWindow() != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.getWindow().setDimAmount(0.0F);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new UinSearcher.2(this));
+      if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      }
+    }
+    catch (RuntimeException paramQQAppInterface)
+    {
+      QLog.e("UinSearcher", 1, paramQQAppInterface, new Object[0]);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppUnifySearchHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 20, SearchUtil.a(this.jdField_a_of_type_ArrayOfLong), null, null, 0, 0.0D, 0.0D, null, "{ \"search_by_id_only\": 1 }");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.UinSearcher
  * JD-Core Version:    0.7.0.1
  */

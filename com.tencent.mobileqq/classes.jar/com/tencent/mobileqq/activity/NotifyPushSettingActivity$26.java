@@ -18,34 +18,32 @@ class NotifyPushSettingActivity$26
     {
       paramContext = paramIntent.getStringExtra("uin");
       NotifyPushSettingActivity.a(this.a, paramContext);
-    }
-    do
-    {
-      boolean bool;
-      do
-      {
-        return;
-        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
-          break;
-        }
-        paramContext = paramIntent.getStringExtra("uin");
-        bool = paramIntent.getBooleanExtra("configPCActive", false);
-      } while (!this.a.app.getAccount().equals(paramContext));
-      if (true == bool)
-      {
-        NotifyPushSettingActivity.g(this.a).setVisibility(0);
-        return;
-      }
-      NotifyPushSettingActivity.g(this.a).setVisibility(8);
       return;
-    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
-    paramContext = paramIntent.getStringExtra("uin");
-    NotifyPushSettingActivity.b(this.a, paramContext);
+    }
+    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive"))
+    {
+      paramContext = paramIntent.getStringExtra("uin");
+      boolean bool = paramIntent.getBooleanExtra("configPCActive", false);
+      if (this.a.app.getAccount().equals(paramContext))
+      {
+        if (true == bool)
+        {
+          NotifyPushSettingActivity.g(this.a).setVisibility(0);
+          return;
+        }
+        NotifyPushSettingActivity.g(this.a).setVisibility(8);
+      }
+    }
+    else if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"))
+    {
+      paramContext = paramIntent.getStringExtra("uin");
+      NotifyPushSettingActivity.b(this.a, paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotifyPushSettingActivity.26
  * JD-Core Version:    0.7.0.1
  */

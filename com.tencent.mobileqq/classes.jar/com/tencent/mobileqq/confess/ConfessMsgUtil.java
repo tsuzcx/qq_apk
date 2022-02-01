@@ -7,6 +7,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.BaseMsgProxy;
 import com.tencent.imcore.message.ConversationFacade;
@@ -29,6 +30,7 @@ import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.nearby.NearbyURLSafeUtil;
 import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
@@ -67,20 +69,19 @@ import tencent.im.msg.im_msg_body.RichText;
 public class ConfessMsgUtil
 {
   public static final String a;
-  public static boolean a;
+  public static boolean a = false;
   
   static
   {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702457);
+    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702589);
   }
   
   public static int a(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 1033) {
-      paramInt2 = (0x200000 | paramInt2 << 3) >>> 3;
+      return (0x200000 | paramInt2 << 3) >>> 3;
     }
-    while (paramInt1 == 1034) {
+    if (paramInt1 == 1034) {
       return paramInt2;
     }
     return 0;
@@ -88,68 +89,66 @@ public class ConfessMsgUtil
   
   public static MessageRecord a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord.isSelfConfessor()) {}
-    for (int i = 1033;; i = 1034)
-    {
-      Message localMessage = paramQQAppInterface.getMessageFacade().a(paramMessageRecord.senderuin, i, paramMessageRecord.getConfessTopicId());
-      MessageRecord localMessageRecord = paramMessageRecord;
-      if (localMessage != null) {
-        localMessageRecord = paramQQAppInterface.getMessageFacade().a(paramMessageRecord.senderuin, i, localMessage.uniseq);
-      }
-      return localMessageRecord;
+    int i;
+    if (paramMessageRecord.isSelfConfessor()) {
+      i = 1033;
+    } else {
+      i = 1034;
     }
+    Message localMessage = paramQQAppInterface.getMessageFacade().a(paramMessageRecord.senderuin, i, paramMessageRecord.getConfessTopicId());
+    if (localMessage != null) {
+      return paramQQAppInterface.getMessageFacade().a(paramMessageRecord.senderuin, i, localMessage.uniseq);
+    }
+    return paramMessageRecord;
   }
   
   public static String a(QQAppInterface paramQQAppInterface, ConfessInfo paramConfessInfo, String paramString)
   {
     String str = paramQQAppInterface.getCurrentAccountUin();
     if ((paramConfessInfo.isSysMsg == 1) && (!TextUtils.equals(paramConfessInfo.confessorUinStr, str))) {
-      return HardCodeUtil.a(2131702454);
+      return HardCodeUtil.a(2131702586);
     }
     if (!TextUtils.equals(paramConfessInfo.confessorUinStr, str)) {
       return paramConfessInfo.confessorNick;
     }
-    return ContactUtils.c(paramQQAppInterface, paramString, true);
+    return ContactUtils.a(paramQQAppInterface, paramString, true);
   }
   
   public static im_msg_body.Elem a(MessageRecord paramMessageRecord)
   {
-    Object localObject1 = null;
     String str = paramMessageRecord.getExtInfoFromExtStr("ext_key_frd_chat_confess_info");
-    if (TextUtils.isEmpty(str)) {}
-    im_msg_body.Elem localElem;
-    do
-    {
-      do
-      {
-        return localObject1;
-        localObject2 = ConfessManager.FrdChatExtra.a(str);
-      } while (localObject2 == null);
-      localElem = new im_msg_body.Elem();
-      localObject1 = new hummer_commelem.MsgElemInfo_servtype21();
-      hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext localC2CConfessContext = new hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext();
-      localC2CConfessContext.uint64_confessor_uin.set(Long.parseLong(((ConfessManager.FrdChatExtra)localObject2).jdField_c_of_type_JavaLangString));
-      localC2CConfessContext.uint64_confess_to_uin.set(Long.parseLong(((ConfessManager.FrdChatExtra)localObject2).jdField_b_of_type_JavaLangString));
-      localC2CConfessContext.uint64_send_uin.set(Long.parseLong(paramMessageRecord.senderuin));
-      localC2CConfessContext.bytes_confess.set(ByteStringMicro.copyFromUtf8(((ConfessManager.FrdChatExtra)localObject2).jdField_d_of_type_JavaLangString));
-      localC2CConfessContext.bytes_confessor_nick.set(ByteStringMicro.copyFromUtf8(((ConfessManager.FrdChatExtra)localObject2).jdField_e_of_type_JavaLangString));
-      localC2CConfessContext.uint64_confess_time.set(((ConfessManager.FrdChatExtra)localObject2).jdField_a_of_type_Long);
-      localC2CConfessContext.uint32_bg_type.set(((ConfessManager.FrdChatExtra)localObject2).jdField_b_of_type_Int);
-      localC2CConfessContext.uint32_topic_id.set(((ConfessManager.FrdChatExtra)localObject2).jdField_a_of_type_Int);
-      localC2CConfessContext.uint32_confessor_sex.set(((ConfessManager.FrdChatExtra)localObject2).jdField_c_of_type_Int);
-      localC2CConfessContext.uint32_confess_num.set(((ConfessManager.FrdChatExtra)localObject2).jdField_d_of_type_Int);
-      localC2CConfessContext.uint32_biz_type.set(((ConfessManager.FrdChatExtra)localObject2).f);
-      localC2CConfessContext.uint32_confess_to_sex.set(((ConfessManager.FrdChatExtra)localObject2).jdField_e_of_type_Int);
-      ((hummer_commelem.MsgElemInfo_servtype21)localObject1).c2c_confess_ctx.set(localC2CConfessContext);
-      Object localObject2 = new im_msg_body.CommonElem();
-      ((im_msg_body.CommonElem)localObject2).uint32_service_type.set(21);
-      ((im_msg_body.CommonElem)localObject2).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype21)localObject1).toByteArray()));
-      ((im_msg_body.CommonElem)localObject2).uint32_business_type.set(2);
-      localElem.common_elem.set((MessageMicro)localObject2);
-      paramMessageRecord.removeExtInfoToExtStr("ext_key_frd_chat_confess_info");
-      localObject1 = localElem;
-    } while (!QLog.isColorLevel());
-    QLog.i("ConfessMsgUtil", 2, String.format("bindC2CFirstMsgConfessInfoElem frdChatConfessJson:%s  frienduin:%s senderuin:%s", new Object[] { str, paramMessageRecord.frienduin, paramMessageRecord.senderuin }));
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    Object localObject = ConfessManager.FrdChatExtra.a(str);
+    if (localObject == null) {
+      return null;
+    }
+    im_msg_body.Elem localElem = new im_msg_body.Elem();
+    hummer_commelem.MsgElemInfo_servtype21 localMsgElemInfo_servtype21 = new hummer_commelem.MsgElemInfo_servtype21();
+    hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext localC2CConfessContext = new hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext();
+    localC2CConfessContext.uint64_confessor_uin.set(Long.parseLong(((ConfessManager.FrdChatExtra)localObject).jdField_c_of_type_JavaLangString));
+    localC2CConfessContext.uint64_confess_to_uin.set(Long.parseLong(((ConfessManager.FrdChatExtra)localObject).jdField_b_of_type_JavaLangString));
+    localC2CConfessContext.uint64_send_uin.set(Long.parseLong(paramMessageRecord.senderuin));
+    localC2CConfessContext.bytes_confess.set(ByteStringMicro.copyFromUtf8(((ConfessManager.FrdChatExtra)localObject).jdField_d_of_type_JavaLangString));
+    localC2CConfessContext.bytes_confessor_nick.set(ByteStringMicro.copyFromUtf8(((ConfessManager.FrdChatExtra)localObject).jdField_e_of_type_JavaLangString));
+    localC2CConfessContext.uint64_confess_time.set(((ConfessManager.FrdChatExtra)localObject).jdField_a_of_type_Long);
+    localC2CConfessContext.uint32_bg_type.set(((ConfessManager.FrdChatExtra)localObject).jdField_b_of_type_Int);
+    localC2CConfessContext.uint32_topic_id.set(((ConfessManager.FrdChatExtra)localObject).jdField_a_of_type_Int);
+    localC2CConfessContext.uint32_confessor_sex.set(((ConfessManager.FrdChatExtra)localObject).jdField_c_of_type_Int);
+    localC2CConfessContext.uint32_confess_num.set(((ConfessManager.FrdChatExtra)localObject).jdField_d_of_type_Int);
+    localC2CConfessContext.uint32_biz_type.set(((ConfessManager.FrdChatExtra)localObject).f);
+    localC2CConfessContext.uint32_confess_to_sex.set(((ConfessManager.FrdChatExtra)localObject).jdField_e_of_type_Int);
+    localMsgElemInfo_servtype21.c2c_confess_ctx.set(localC2CConfessContext);
+    localObject = new im_msg_body.CommonElem();
+    ((im_msg_body.CommonElem)localObject).uint32_service_type.set(21);
+    ((im_msg_body.CommonElem)localObject).bytes_pb_elem.set(ByteStringMicro.copyFrom(localMsgElemInfo_servtype21.toByteArray()));
+    ((im_msg_body.CommonElem)localObject).uint32_business_type.set(2);
+    localElem.common_elem.set((MessageMicro)localObject);
+    paramMessageRecord.removeExtInfoToExtStr("ext_key_frd_chat_confess_info");
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessMsgUtil", 2, String.format("bindC2CFirstMsgConfessInfoElem frdChatConfessJson:%s  frienduin:%s senderuin:%s", new Object[] { str, paramMessageRecord.frienduin, paramMessageRecord.senderuin }));
+    }
     return localElem;
   }
   
@@ -167,6 +166,77 @@ public class ConfessMsgUtil
     paramContext.startActivity(localIntent);
   }
   
+  public static void a(AppInterface paramAppInterface, List<MessageRecord> paramList)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkInsertConfessCardMsg ");
+      ((StringBuilder)localObject1).append(paramList.size());
+      QLog.i("ConfessMsgUtil", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = new HashSet();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if ((!localMessageRecord.isSend()) && (UinTypeUtil.a(localMessageRecord.istroop) == 1032) && (a(localMessageRecord)))
+      {
+        Object localObject2 = new ConfessInfo();
+        ((ConfessInfo)localObject2).parseFromJsonStr(localMessageRecord.getExtInfoFromExtStr("ext_key_confess_info"));
+        if ((localMessageRecord.istroop == 1033) && (!((Set)localObject1).contains(Integer.valueOf(localMessageRecord.getConfessTopicId()))))
+        {
+          ((Set)localObject1).add(Integer.valueOf(localMessageRecord.getConfessTopicId()));
+          Object localObject3 = ((QQAppInterface)paramAppInterface).getMessageProxy(localMessageRecord.istroop).a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.getConfessTopicId());
+          int k = i;
+          if (localObject3 != null)
+          {
+            int j = 0;
+            for (;;)
+            {
+              k = i;
+              if (j >= ((List)localObject3).size()) {
+                break;
+              }
+              if (((MessageRecord)((List)localObject3).get(j)).getConfessTopicId() == localMessageRecord.getConfessTopicId())
+              {
+                k = 1;
+                break;
+              }
+              j += 1;
+            }
+          }
+          i = k;
+          if (k == 0)
+          {
+            localObject2 = ((ConfessInfo)localObject2).topic;
+            i = k;
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
+            {
+              localObject3 = MessageRecordFactory.a(paramAppInterface, paramAppInterface.getCurrentUin(), localMessageRecord.senderuin, null, localMessageRecord.istroop, (byte)0, (byte)0, (short)0, (String)localObject2);
+              ((MessageRecord)localObject3).setConfessTopicId(localMessageRecord.getConfessTopicId());
+              ((MessageRecord)localObject3).setSelfIsConfessor(localMessageRecord.isSelfConfessor());
+              ((MessageRecord)localObject3).saveExtInfoToExtStr("ext_key_confess_info", localMessageRecord.getExtInfoFromExtStr("ext_key_confess_info"));
+              ((MessageRecord)localObject3).time = (localMessageRecord.time - 1L);
+              localArrayList.add(0, localObject3);
+              i = k;
+              if (QLog.isColorLevel())
+              {
+                QLog.i("ConfessMsgUtil", 2, String.format("checkInsertConfessCardMsg B:%s topic:%s", new Object[] { localMessageRecord.frienduin, localObject2 }));
+                i = k;
+              }
+            }
+          }
+        }
+      }
+    }
+    if (localArrayList.size() > 0) {
+      paramList.addAll(0, localArrayList);
+    }
+  }
+  
   public static void a(QQAppInterface paramQQAppInterface)
   {
     if (QLog.isColorLevel()) {
@@ -182,43 +252,45 @@ public class ConfessMsgUtil
     if (QLog.isColorLevel()) {
       QLog.i("ConfessMsgUtil", 2, String.format("enterConfessDetail topicId:%d confessUin:%s confessGender:%d recUin:%s", new Object[] { Integer.valueOf(paramInt1), paramString1, Integer.valueOf(paramInt2), paramString2 }));
     }
-    if ((paramInt1 <= 0) || (!ChatActivityUtils.a(paramString1)) || (!ChatActivityUtils.a(paramString2))) {
-      return;
-    }
-    paramQQAppInterface = (ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER);
-    if (paramQQAppInterface == null)
+    if ((paramInt1 > 0) && (ChatActivityUtils.a(paramString1)))
     {
-      paramQQAppInterface = null;
-      if (paramQQAppInterface != null) {
-        break label187;
+      if (!ChatActivityUtils.a(paramString2)) {
+        return;
       }
-    }
-    label187:
-    for (paramQQAppInterface = "https://ti.qq.com/honest-say/confess-detail.html?_bid=3104&_wv=9191&_nav_alpha=0&_nav_txtclr=ffffff&_nav_titleclr=ffffff&_nav_anim=true&ADTAG=aio_card";; paramQQAppInterface = paramQQAppInterface.n)
-    {
+      paramQQAppInterface = (ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER);
+      if (paramQQAppInterface == null) {
+        paramQQAppInterface = null;
+      } else {
+        paramQQAppInterface = paramQQAppInterface.b();
+      }
+      if (paramQQAppInterface == null) {
+        paramQQAppInterface = "https://ti.qq.com/honest-say/confess-detail.html?_bid=3104&_wv=9191&_nav_alpha=0&_nav_txtclr=ffffff&_nav_titleclr=ffffff&_nav_anim=true&ADTAG=aio_card";
+      } else {
+        paramQQAppInterface = paramQQAppInterface.n;
+      }
       paramString1 = String.format("&topicId=%d&fromEncodeUin=%s&fromGender=%d&toUin=%s", new Object[] { Integer.valueOf(paramInt1), NearbyURLSafeUtil.a(paramString1), Integer.valueOf(paramInt2), NearbyURLSafeUtil.a(paramString2) });
       paramString2 = new Intent(paramContext, QQBrowserActivity.class);
-      paramString2.putExtra("url", paramQQAppInterface + paramString1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramQQAppInterface);
+      localStringBuilder.append(paramString1);
+      paramString2.putExtra("url", localStringBuilder.toString());
       paramContext.startActivity(paramString2);
-      return;
-      paramQQAppInterface = paramQQAppInterface.b();
-      break;
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, RecentItemConfessMsg paramRecentItemConfessMsg, boolean paramBoolean)
   {
-    if ((paramQQAppInterface == null) || (paramRecentItemConfessMsg == null)) {}
-    for (;;)
+    if (paramQQAppInterface != null)
     {
-      return;
-      if ((paramRecentItemConfessMsg.mType == 1032) && (TextUtils.equals(paramRecentItemConfessMsg.mUin, AppConstants.CONFESS_FRD_REC_UIN))) {
+      if (paramRecentItemConfessMsg == null) {
+        return;
+      }
+      if ((paramRecentItemConfessMsg.mType == 1032) && (TextUtils.equals(paramRecentItemConfessMsg.mUin, AppConstants.CONFESS_FRD_REC_UIN)))
+      {
         b(paramQQAppInterface, paramBoolean);
       }
-      while (QLog.isDevelopLevel())
+      else
       {
-        QLog.i("Q.recent", 4, "clearConfessUnread");
-        return;
         int i = paramQQAppInterface.getConversationFacade().a(paramRecentItemConfessMsg.getRecentUserUin(), paramRecentItemConfessMsg.getRecentUserType(), paramRecentItemConfessMsg.mConfessInfo.topicId);
         if (paramBoolean) {
           paramQQAppInterface.getMessageFacade().a(AppConstants.CONFESS_UIN, 1032, paramRecentItemConfessMsg.getRecentUserUin(), paramQQAppInterface.getCurrentAccountUin(), paramRecentItemConfessMsg.mType, paramRecentItemConfessMsg.mConfessInfo.topicId);
@@ -227,134 +299,124 @@ public class ConfessMsgUtil
           paramQQAppInterface.getMessageFacade().a(paramRecentItemConfessMsg.getRecentUserUin(), paramRecentItemConfessMsg.getRecentUserType(), paramRecentItemConfessMsg.mConfessInfo.topicId, true, false);
         }
       }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("Q.recent", 4, "clearConfessUnread");
+      }
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
   {
-    if ((paramQQAppInterface == null) || (paramMessageRecord == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if ((paramQQAppInterface != null) && (paramMessageRecord != null))
     {
-      do
-      {
+      if (TextUtils.isEmpty(paramString)) {
         return;
-        paramQQAppInterface = (ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER);
-      } while ((paramQQAppInterface == null) || (!paramQQAppInterface.a(paramString)));
-      paramString = paramQQAppInterface.a();
-      if (paramString != null)
-      {
-        paramMessageRecord.saveExtInfoToExtStr("ext_key_frd_chat_confess_info", paramString.a());
-        paramQQAppInterface.a(paramString.jdField_b_of_type_JavaLangString, paramString.jdField_c_of_type_JavaLangString, paramString.jdField_a_of_type_Int);
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("ConfessMsgUtil", 2, String.format("bindC2CFirstMsgConfessInfo ExtStr: %s", new Object[] { paramMessageRecord.extStr }));
+      paramQQAppInterface = (ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER);
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.a(paramString)))
+      {
+        paramString = paramQQAppInterface.a();
+        if (paramString != null)
+        {
+          paramMessageRecord.saveExtInfoToExtStr("ext_key_frd_chat_confess_info", paramString.a());
+          paramQQAppInterface.a(paramString.jdField_b_of_type_JavaLangString, paramString.jdField_c_of_type_JavaLangString, paramString.jdField_a_of_type_Int);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("ConfessMsgUtil", 2, String.format("bindC2CFirstMsgConfessInfo ExtStr: %s", new Object[] { paramMessageRecord.extStr }));
+        }
+      }
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt1, int paramInt2)
   {
-    if ((paramInt2 <= 0) || (UinTypeUtil.a(paramInt1) != 1032)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ConfessMsgUtil", 2, String.format("bindConfessInfo return. frdUin:%s uinType:%d topicId:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      }
-    }
-    ConfessInfo localConfessInfo;
-    boolean bool;
-    do
+    if ((paramInt2 > 0) && (UinTypeUtil.a(paramInt1) == 1032))
     {
-      return;
-      localConfessInfo = ((ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).a().a(paramString, paramInt1, paramInt2);
+      ConfessInfo localConfessInfo = ((ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).a().a(paramString, paramInt1, paramInt2);
       if (localConfessInfo != null)
       {
         paramMessageRecord.saveExtInfoToExtStr("ext_key_confess_info", localConfessInfo.toJsonStr());
-        if (paramInt1 != 1033) {
-          break;
+        boolean bool;
+        if (paramInt1 == 1033) {
+          bool = true;
+        } else {
+          bool = false;
         }
-        bool = true;
         paramMessageRecord.setSelfIsConfessor(bool);
         paramMessageRecord.setConfessTopicId(paramInt2);
       }
-    } while (!QLog.isColorLevel());
-    if (localConfessInfo == null)
-    {
-      paramQQAppInterface = "null";
-      label133:
-      if (localConfessInfo != null) {
-        break label204;
+      if (QLog.isColorLevel())
+      {
+        if (localConfessInfo == null) {
+          paramQQAppInterface = "null";
+        } else {
+          paramQQAppInterface = localConfessInfo.confessorNick;
+        }
+        int i;
+        if (localConfessInfo == null) {
+          i = -1;
+        } else {
+          i = localConfessInfo.confessorSex;
+        }
+        QLog.i("ConfessMsgUtil", 2, String.format("bindConfessInfo friendUin:%s uinType:%d topicId:%d confessorNick:%s confessorSex:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramQQAppInterface, Integer.valueOf(i) }));
       }
-    }
-    label204:
-    for (int i = -1;; i = localConfessInfo.confessorSex)
-    {
-      QLog.i("ConfessMsgUtil", 2, String.format("bindConfessInfo friendUin:%s uinType:%d topicId:%d confessorNick:%s confessorSex:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramQQAppInterface, Integer.valueOf(i) }));
       return;
-      bool = false;
-      break;
-      paramQQAppInterface = localConfessInfo.confessorNick;
-      break label133;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessMsgUtil", 2, String.format("bindConfessInfo return. frdUin:%s uinType:%d topicId:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, ConfessInfo paramConfessInfo)
   {
-    if (QLog.isColorLevel()) {
-      if (paramConfessInfo != null) {
-        break label62;
-      }
-    }
-    label62:
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel())
     {
-      QLog.i("ConfessMsgUtil", 2, String.format("addShieldSucTipsMessage frdUin:%s uinType:%d topicId:%d confessInfo==null:%b", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) }));
-      if (paramConfessInfo != null) {
-        break;
+      if (paramConfessInfo == null) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      QLog.i("ConfessMsgUtil", 2, String.format("addShieldSucTipsMessage frdUin:%s uinType:%d topicId:%d confessInfo==null:%b", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) }));
+    }
+    if (paramConfessInfo == null) {
       return;
     }
     Object localObject1 = ((ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).b();
-    int i;
-    long l;
-    if (localObject1 == null)
-    {
+    if (localObject1 == null) {
       i = 24;
-      Object localObject2 = String.format(ConfessConfig.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(i) });
-      localObject1 = HardCodeUtil.a(2131702455);
-      i = ((String)localObject2).indexOf((String)localObject1);
-      int j = ((String)localObject1).length();
-      localObject1 = new UniteGrayTipParam(paramString, paramString, (String)localObject2, paramInt1, -5020, 655369, MessageCache.a());
-      ((UniteGrayTipParam)localObject1).jdField_c_of_type_JavaLangString = ((String)localObject2);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putInt("key_action", 31);
-      ((UniteGrayTipParam)localObject1).a(i, j + i, (Bundle)localObject2);
-      paramString = paramQQAppInterface.getMessageFacade().a(paramString, paramInt1);
-      if ((paramString == null) || (paramString.isEmpty())) {
-        break label336;
-      }
-      l = ((ChatMessage)paramString.get(paramString.size() - 1)).shmsgseq;
-      label244:
-      paramString = new MessageForUniteGrayTip();
-      paramString.initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject1);
-      paramString.isread = true;
-      paramString.shmsgseq = l;
-      paramString.mNeedTimeStamp = true;
-      paramString.updateUniteGrayTipMsgData(paramQQAppInterface);
-      paramString.setConfessTopicId(paramInt2);
-      if (paramInt1 != 1033) {
-        break label355;
-      }
-    }
-    label336:
-    label355:
-    for (bool = true;; bool = false)
-    {
-      paramString.setSelfIsConfessor(bool);
-      paramString.saveExtInfoToExtStr("ext_key_confess_info", paramConfessInfo.toJsonStr());
-      paramQQAppInterface.getMessageFacade().a(paramString, paramQQAppInterface.getCurrentAccountUin());
-      return;
+    } else {
       i = ((ConfessConfig)localObject1).j;
-      break;
-      l = Math.abs(new Random().nextInt());
-      break label244;
     }
+    Object localObject2 = String.format(ConfessConfig.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(i) });
+    localObject1 = HardCodeUtil.a(2131702587);
+    int i = ((String)localObject2).indexOf((String)localObject1);
+    int j = ((String)localObject1).length();
+    localObject1 = new UniteGrayTipParam(paramString, paramString, (String)localObject2, paramInt1, -5020, 655369, MessageCache.a());
+    ((UniteGrayTipParam)localObject1).jdField_c_of_type_JavaLangString = ((String)localObject2);
+    localObject2 = new Bundle();
+    ((Bundle)localObject2).putInt("key_action", 31);
+    ((UniteGrayTipParam)localObject1).a(i, i + j, (Bundle)localObject2);
+    paramString = paramQQAppInterface.getMessageFacade().b(paramString, paramInt1);
+    long l;
+    if ((paramString != null) && (!paramString.isEmpty())) {
+      l = ((ChatMessage)paramString.get(paramString.size() - 1)).shmsgseq;
+    } else {
+      l = Math.abs(new Random().nextInt());
+    }
+    paramString = new MessageForUniteGrayTip();
+    paramString.initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject1);
+    boolean bool = true;
+    paramString.isread = true;
+    paramString.shmsgseq = l;
+    paramString.mNeedTimeStamp = true;
+    paramString.updateUniteGrayTipMsgData(paramQQAppInterface);
+    paramString.setConfessTopicId(paramInt2);
+    if (paramInt1 != 1033) {
+      bool = false;
+    }
+    paramString.setSelfIsConfessor(bool);
+    paramString.saveExtInfoToExtStr("ext_key_confess_info", paramConfessInfo.toJsonStr());
+    paramQQAppInterface.getMessageFacade().a(paramString, paramQQAppInterface.getCurrentAccountUin());
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
@@ -372,158 +434,85 @@ public class ConfessMsgUtil
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessMsgUtil", 2, "addHolmesGrayTipsMessage " + paramString1 + " " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addHolmesGrayTipsMessage ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.i("ConfessMsgUtil", 2, ((StringBuilder)localObject).toString());
     }
-    UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(paramString1, paramString1, paramString2, paramInt1, -5040, 655377, MessageCache.a());
-    localUniteGrayTipParam.jdField_c_of_type_JavaLangString = paramString2;
-    String str = HardCodeUtil.a(2131702452);
+    Object localObject = new UniteGrayTipParam(paramString1, paramString1, paramString2, paramInt1, -5040, 655377, MessageCache.a());
+    ((UniteGrayTipParam)localObject).jdField_c_of_type_JavaLangString = paramString2;
+    String str = HardCodeUtil.a(2131702584);
     int i = paramString2.indexOf(str);
     int j = str.length();
     paramString2 = new Bundle();
     paramString2.putInt("key_action", 34);
-    localUniteGrayTipParam.a(i, j + i, paramString2);
-    paramString1 = paramQQAppInterface.getMessageFacade().a(paramString1, paramInt1);
+    ((UniteGrayTipParam)localObject).a(i, j + i, paramString2);
+    paramString1 = paramQQAppInterface.getMessageFacade().b(paramString1, paramInt1);
+    boolean bool = true;
     long l;
-    if ((paramString1 != null) && (!paramString1.isEmpty()))
-    {
+    if ((paramString1 != null) && (!paramString1.isEmpty())) {
       l = ((ChatMessage)paramString1.get(paramString1.size() - 1)).shmsgseq;
-      paramString1 = new MessageForUniteGrayTip();
-      paramString1.initGrayTipMsg(paramQQAppInterface, localUniteGrayTipParam);
-      paramString1.isread = true;
-      paramString1.shmsgseq = l;
-      paramString1.mNeedTimeStamp = true;
-      paramString1.updateUniteGrayTipMsgData(paramQQAppInterface);
-      paramString1.setConfessTopicId(paramInt2);
-      if (paramInt1 != 1033) {
-        break label258;
-      }
-    }
-    label258:
-    for (boolean bool = true;; bool = false)
-    {
-      paramString1.setSelfIsConfessor(bool);
-      paramQQAppInterface.getMessageFacade().a(paramString1, paramQQAppInterface.getCurrentAccountUin());
-      return;
+    } else {
       l = Math.abs(new Random().nextInt());
-      break;
     }
+    paramString1 = new MessageForUniteGrayTip();
+    paramString1.initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject);
+    paramString1.isread = true;
+    paramString1.shmsgseq = l;
+    paramString1.mNeedTimeStamp = true;
+    paramString1.updateUniteGrayTipMsgData(paramQQAppInterface);
+    paramString1.setConfessTopicId(paramInt2);
+    if (paramInt1 != 1033) {
+      bool = false;
+    }
+    paramString1.setSelfIsConfessor(bool);
+    paramQQAppInterface.getMessageFacade().a(paramString1, paramQQAppInterface.getCurrentAccountUin());
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, ConfessInfo paramConfessInfo)
   {
-    if (QLog.isColorLevel())
+    boolean bool1 = QLog.isColorLevel();
+    boolean bool2 = false;
+    if (bool1)
     {
       localObject = MessageRecordUtil.a(paramString2);
-      if (paramConfessInfo != null) {
-        break label74;
+      if (paramConfessInfo == null) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
+      QLog.i("ConfessMsgUtil", 2, String.format("addGrayTipsMessage frdUin:%s uinType:%d topicId:%d msg:%s confessInfo==null:%b", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), localObject, Boolean.valueOf(bool1) }));
     }
-    label74:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("ConfessMsgUtil", 2, String.format("addGrayTipsMessage frdUin:%s uinType:%d topicId:%d msg:%s confessInfo==null:%b", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), localObject, Boolean.valueOf(bool) }));
-      if (paramConfessInfo != null) {
-        break;
-      }
+    if (paramConfessInfo == null) {
       return;
     }
     Object localObject = new UniteGrayTipParam(paramString1, paramString1, paramString2, paramInt1, -5020, 655376, MessageCache.a());
     ((UniteGrayTipParam)localObject).jdField_c_of_type_JavaLangString = paramString2;
-    paramString1 = paramQQAppInterface.getMessageFacade().a(paramString1, paramInt1);
+    paramString1 = paramQQAppInterface.getMessageFacade().b(paramString1, paramInt1);
     long l;
-    if ((paramString1 != null) && (!paramString1.isEmpty()))
-    {
+    if ((paramString1 != null) && (!paramString1.isEmpty())) {
       l = ((ChatMessage)paramString1.get(paramString1.size() - 1)).shmsgseq;
-      paramString1 = new MessageForUniteGrayTip();
-      paramString1.initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject);
-      paramString1.isread = true;
-      paramString1.shmsgseq = l;
-      paramString1.mNeedTimeStamp = true;
-      paramString1.updateUniteGrayTipMsgData(paramQQAppInterface);
-      paramString1.setConfessTopicId(paramInt2);
-      if (paramInt1 != 1033) {
-        break label255;
-      }
-    }
-    label255:
-    for (bool = true;; bool = false)
-    {
-      paramString1.setSelfIsConfessor(bool);
-      paramString1.saveExtInfoToExtStr("ext_key_confess_info", paramConfessInfo.toJsonStr());
-      paramQQAppInterface.getMessageFacade().a(paramString1, paramQQAppInterface.getCurrentAccountUin());
-      return;
+    } else {
       l = Math.abs(new Random().nextInt());
-      break;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessMsgUtil", 2, "checkInsertConfessCardMsg " + paramList.size());
+    paramString1 = new MessageForUniteGrayTip();
+    paramString1.initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject);
+    paramString1.isread = true;
+    paramString1.shmsgseq = l;
+    paramString1.mNeedTimeStamp = true;
+    paramString1.updateUniteGrayTipMsgData(paramQQAppInterface);
+    paramString1.setConfessTopicId(paramInt2);
+    bool1 = bool2;
+    if (paramInt1 == 1033) {
+      bool1 = true;
     }
-    HashSet localHashSet = new HashSet();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    int i = 0;
-    int j;
-    if (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if ((localMessageRecord.isSend()) || (UinTypeUtil.a(localMessageRecord.istroop) != 1032) || (!a(localMessageRecord))) {
-        break label427;
-      }
-      Object localObject1 = new ConfessInfo();
-      ((ConfessInfo)localObject1).parseFromJsonStr(localMessageRecord.getExtInfoFromExtStr("ext_key_confess_info"));
-      if ((localMessageRecord.istroop != 1033) || (localHashSet.contains(Integer.valueOf(localMessageRecord.getConfessTopicId())))) {
-        break label427;
-      }
-      localHashSet.add(Integer.valueOf(localMessageRecord.getConfessTopicId()));
-      Object localObject2 = paramQQAppInterface.getMessageProxy(localMessageRecord.istroop).a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.getConfessTopicId());
-      if (localObject2 == null) {
-        break label424;
-      }
-      j = 0;
-      label220:
-      if (j >= ((List)localObject2).size()) {
-        break label424;
-      }
-      if (((MessageRecord)((List)localObject2).get(j)).getConfessTopicId() == localMessageRecord.getConfessTopicId())
-      {
-        i = 1;
-        label255:
-        if (i == 0)
-        {
-          localObject1 = ((ConfessInfo)localObject1).topic;
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            localObject2 = MessageRecordFactory.a(paramQQAppInterface, paramQQAppInterface.getCurrentUin(), localMessageRecord.senderuin, null, localMessageRecord.istroop, (byte)0, (byte)0, (short)0, (String)localObject1);
-            ((MessageRecord)localObject2).setConfessTopicId(localMessageRecord.getConfessTopicId());
-            ((MessageRecord)localObject2).setSelfIsConfessor(localMessageRecord.isSelfConfessor());
-            ((MessageRecord)localObject2).saveExtInfoToExtStr("ext_key_confess_info", localMessageRecord.getExtInfoFromExtStr("ext_key_confess_info"));
-            ((MessageRecord)localObject2).time = (localMessageRecord.time - 1L);
-            localArrayList.add(0, localObject2);
-            if (QLog.isColorLevel()) {
-              QLog.i("ConfessMsgUtil", 2, String.format("checkInsertConfessCardMsg B:%s topic:%s", new Object[] { localMessageRecord.frienduin, localObject1 }));
-            }
-          }
-        }
-      }
-    }
-    label424:
-    label427:
-    for (;;)
-    {
-      break;
-      j += 1;
-      break label220;
-      if (localArrayList.size() > 0) {
-        paramList.addAll(0, localArrayList);
-      }
-      return;
-      break label255;
-    }
+    paramString1.setSelfIsConfessor(bool1);
+    paramString1.saveExtInfoToExtStr("ext_key_confess_info", paramConfessInfo.toJsonStr());
+    paramQQAppInterface.getMessageFacade().a(paramString1, paramQQAppInterface.getCurrentAccountUin());
   }
   
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -534,17 +523,28 @@ public class ConfessMsgUtil
   
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessMsgUtil", 2, "setClearConfessBoxUnreadFlag:" + paramBoolean1 + " isRed:" + paramBoolean2);
-    }
-    if (paramBoolean2) {}
-    for (String str = "red_unread_clear_flag";; str = "blue_unread_clear_flag")
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      paramQQAppInterface = BaseApplicationImpl.getApplication().getSharedPreferences("confess_unread_file" + paramQQAppInterface.getCurrentAccountUin(), 0);
-      if (paramQQAppInterface.getBoolean(str, false) != paramBoolean1) {
-        paramQQAppInterface.edit().putBoolean(str, paramBoolean1).apply();
-      }
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setClearConfessBoxUnreadFlag:");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append(" isRed:");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      QLog.i("ConfessMsgUtil", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramBoolean2) {
+      localObject = "red_unread_clear_flag";
+    } else {
+      localObject = "blue_unread_clear_flag";
+    }
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("confess_unread_file");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    paramQQAppInterface = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0);
+    if (paramQQAppInterface.getBoolean((String)localObject, false) != paramBoolean1) {
+      paramQQAppInterface.edit().putBoolean((String)localObject, paramBoolean1).apply();
     }
   }
   
@@ -559,413 +559,451 @@ public class ConfessMsgUtil
     }
   }
   
-  public static void a(msg_comm.Msg paramMsg, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public static void a(msg_comm.Msg paramMsg, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
-    label8:
-    Object localObject2;
-    StringBuilder localStringBuilder;
-    if ((paramMessageRecord == null) || (paramQQAppInterface == null))
+    if (paramMessageRecord != null)
     {
-      return;
-    }
-    else
-    {
-      localObject2 = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();
+      if (paramAppInterface == null) {
+        return;
+      }
+      Object localObject2 = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();
+      Object localObject1;
       if (QLog.isColorLevel())
       {
-        localStringBuilder = new StringBuilder().append("<---decodePttConfessElem: elems: ");
-        if (localObject2 != null) {
-          break label175;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<---decodePttConfessElem: elems: ");
+        if (localObject2 == null) {
+          localObject1 = null;
+        } else {
+          localObject1 = Integer.valueOf(((List)localObject2).size());
+        }
+        localStringBuilder.append(localObject1);
+        QLog.d("ConfessMsgUtil", 2, localStringBuilder.toString());
+      }
+      if (localObject2 != null)
+      {
+        if (((List)localObject2).size() <= 0) {
+          return;
+        }
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject1 = (im_msg_body.Elem)((Iterator)localObject2).next();
+          if ((((im_msg_body.Elem)localObject1).common_elem.has()) && (21 == ((im_msg_body.Elem)localObject1).common_elem.uint32_service_type.get()))
+          {
+            localObject2 = new ArrayList(1);
+            ((ArrayList)localObject2).add(paramMessageRecord);
+            a(paramMsg, (im_msg_body.Elem)localObject1, (List)localObject2, paramAppInterface);
+          }
         }
       }
-    }
-    label175:
-    for (Object localObject1 = null;; localObject1 = Integer.valueOf(((List)localObject2).size()))
-    {
-      QLog.d("ConfessMsgUtil", 2, localObject1);
-      if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
-        break label8;
-      }
-      localObject2 = ((List)localObject2).iterator();
-      if (!((Iterator)localObject2).hasNext()) {
-        break label8;
-      }
-      localObject1 = (im_msg_body.Elem)((Iterator)localObject2).next();
-      if ((!((im_msg_body.Elem)localObject1).common_elem.has()) || (21 != ((im_msg_body.Elem)localObject1).common_elem.uint32_service_type.get())) {
-        break;
-      }
-      localObject2 = new ArrayList(1);
-      ((ArrayList)localObject2).add(paramMessageRecord);
-      a(paramMsg, (im_msg_body.Elem)localObject1, (List)localObject2, paramQQAppInterface);
-      return;
     }
   }
   
-  public static void a(msg_comm.Msg paramMsg, im_msg_body.Elem paramElem, List<MessageRecord> paramList, QQAppInterface paramQQAppInterface)
+  public static void a(msg_comm.Msg paramMsg, im_msg_body.Elem paramElem, List<MessageRecord> paramList, AppInterface paramAppInterface)
   {
-    if ((paramElem == null) || (paramList == null) || (paramQQAppInterface == null) || (paramList.size() <= 0)) {}
-    Object localObject2;
-    long l2;
-    long l1;
-    label311:
-    label464:
-    label471:
-    label601:
-    Object localObject3;
-    String str1;
-    label1033:
-    label1061:
-    label1089:
-    label1117:
-    label1145:
-    long l3;
-    label1550:
-    do
+    Object localObject1;
+    if ((paramElem != null) && (paramList != null) && (paramAppInterface != null))
     {
-      do
+      if (paramList.size() <= 0) {
+        return;
+      }
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                for (;;)
-                {
-                  return;
-                  if (QLog.isColorLevel()) {
-                    QLog.i("ConfessMsgUtil", 2, "decodeConfessMsgElem app:" + paramQQAppInterface);
-                  }
-                  try
-                  {
-                    if ((21 != paramElem.common_elem.uint32_service_type.get()) || (!paramElem.common_elem.bytes_pb_elem.has()) || (paramElem.common_elem.uint32_business_type.get() != 1)) {
-                      break label601;
-                    }
-                    localObject2 = new hummer_commelem.MsgElemInfo_servtype21();
-                    ((hummer_commelem.MsgElemInfo_servtype21)localObject2).mergeFrom(paramElem.common_elem.bytes_pb_elem.get().toByteArray());
-                    if ((((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint32_topic_id.has()) && (((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint64_confessor_uin.has()) && (((hummer_commelem.MsgElemInfo_servtype21)localObject2).bytes_confessor_nick.has()) && (((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint32_confessor_sex.has()))
-                    {
-                      paramElem = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-                      localObject1 = ((MessageRecord)paramList.get(0)).frienduin;
-                      j = ((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint32_topic_id.get();
-                      l2 = ((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint64_confessor_uin.get();
-                      paramQQAppInterface = ((hummer_commelem.MsgElemInfo_servtype21)localObject2).bytes_confessor_nick.get().toStringUtf8();
-                      k = ((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint32_confessor_sex.get();
-                      if (((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint32_sysmsg_flag.has())
-                      {
-                        i = ((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint32_sysmsg_flag.get();
-                        if (!((hummer_commelem.MsgElemInfo_servtype21)localObject2).bytes_topic.has()) {
-                          break label464;
-                        }
-                        paramMsg = ((hummer_commelem.MsgElemInfo_servtype21)localObject2).bytes_topic.get().toStringUtf8();
-                        bool = Long.toString(l2).equals(paramElem);
-                        if (!((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint64_confess_time.has()) {
-                          break label2293;
-                        }
-                        l1 = ((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint64_confess_time.get();
-                        paramElem = paramMsg;
-                        if (i == 1)
-                        {
-                          paramElem = paramMsg;
-                          if (!bool)
-                          {
-                            paramElem = paramMsg;
-                            if ((paramList.get(0) instanceof MessageForText)) {
-                              paramElem = ((MessageForText)paramList.get(0)).msg;
-                            }
-                          }
-                        }
-                        if ((j > 0) && (l2 > 0L) && (!TextUtils.isEmpty(paramQQAppInterface)) && (!TextUtils.isEmpty(paramElem))) {
-                          break label471;
-                        }
-                        if (!QLog.isColorLevel()) {
-                          continue;
-                        }
-                        paramElem = Long.toString(l2);
-                        paramMsg = paramQQAppInterface;
-                        if (paramQQAppInterface == null) {
-                          paramMsg = "null";
-                        }
-                        QLog.i("ConfessMsgUtil", 2, String.format("decodeConfessMsgElem data err confessorUin:%s topicId:%d nick:%s", new Object[] { paramElem, Integer.valueOf(j), paramMsg }));
-                      }
-                    }
-                  }
-                  catch (InvalidProtocolBufferMicroException paramMsg)
-                  {
-                    boolean bool;
-                    while (QLog.isColorLevel())
-                    {
-                      QLog.i("ConfessMsgUtil", 2, paramMsg.getMessage(), paramMsg);
-                      return;
-                      i = 0;
-                      continue;
-                      paramMsg = "";
-                    }
-                    paramMsg = paramList.iterator();
-                    while (paramMsg.hasNext())
-                    {
-                      paramList = (MessageRecord)paramMsg.next();
-                      paramList.saveExtInfoToExtStr("ext_key_confess_info", ConfessInfo.toJsonStr(j, l2, k, paramQQAppInterface, i, paramElem, l1));
-                      paramList.setConfessTopicId(j);
-                      paramList.setSelfIsConfessor(bool);
-                    }
-                  }
-                  catch (Exception paramMsg) {}
-                }
-              } while (!QLog.isColorLevel());
-              QLog.i("ConfessMsgUtil", 2, paramMsg.getMessage(), paramMsg);
-              return;
-            } while (!QLog.isColorLevel());
-            QLog.i("ConfessMsgUtil", 2, String.format("decodeConfessMsgElem confessorUin:%s topicId:%d frdUin:%s topic:%s", new Object[] { Long.toString(l2), Integer.valueOf(j), localObject1, paramElem }));
-            return;
-            if ((21 != paramElem.common_elem.uint32_service_type.get()) || (!paramElem.common_elem.bytes_pb_elem.has()) || (paramElem.common_elem.uint32_business_type.get() != 2) || (paramQQAppInterface == null)) {
-              break;
-            }
-            localObject2 = new hummer_commelem.MsgElemInfo_servtype21();
-            ((hummer_commelem.MsgElemInfo_servtype21)localObject2).mergeFrom(paramElem.common_elem.bytes_pb_elem.get().toByteArray());
-          } while (!((hummer_commelem.MsgElemInfo_servtype21)localObject2).c2c_confess_ctx.has());
-          if ((QLog.isColorLevel()) && (((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)((hummer_commelem.MsgElemInfo_servtype21)localObject2).c2c_confess_ctx.get()).bytes_confess.has())) {
-            QLog.i("ConfessMsgUtil", 2, String.format("decodeConfessMsgElem confess: %s", new Object[] { ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)((hummer_commelem.MsgElemInfo_servtype21)localObject2).c2c_confess_ctx.get()).bytes_confess.get().toStringUtf8() }));
-          }
-          paramElem = "";
-          localObject3 = paramQQAppInterface.getCurrentAccountUin();
-          paramList = String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get());
-          localObject1 = String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get());
-          if (TextUtils.equals((CharSequence)localObject3, paramList)) {
-            paramElem = (im_msg_body.Elem)localObject1;
-          }
-          for (;;)
-          {
-            localObject2 = (hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)((hummer_commelem.MsgElemInfo_servtype21)localObject2).c2c_confess_ctx.get();
-            localObject3 = String.valueOf(((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint64_confess_to_uin.get());
-            str1 = String.valueOf(((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint64_confessor_uin.get());
-            i = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_topic_id.get();
-            l1 = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint64_send_uin.get();
-            if ((TextUtils.isEmpty(paramElem)) || (!TextUtils.equals(paramList, String.valueOf(l1))) || (!TextUtils.equals((CharSequence)localObject1, (CharSequence)localObject3))) {
-              break;
-            }
-            paramList = (ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER);
-            if (paramList.a(paramElem, (String)localObject3, str1, i) != 1) {
-              break;
-            }
-            localObject1 = new ConfessManager.FrdChatExtra();
-            ((ConfessManager.FrdChatExtra)localObject1).jdField_a_of_type_Int = i;
-            ((ConfessManager.FrdChatExtra)localObject1).jdField_b_of_type_Int = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_bg_type.get();
-            ((ConfessManager.FrdChatExtra)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject3);
-            ((ConfessManager.FrdChatExtra)localObject1).jdField_c_of_type_JavaLangString = str1;
-            ((ConfessManager.FrdChatExtra)localObject1).jdField_d_of_type_JavaLangString = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).bytes_confess.get().toStringUtf8();
-            ((ConfessManager.FrdChatExtra)localObject1).jdField_e_of_type_JavaLangString = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).bytes_confessor_nick.get().toStringUtf8();
-            ((ConfessManager.FrdChatExtra)localObject1).jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentNickname();
-            if (!((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_confessor_sex.has()) {
-              break label2299;
-            }
-            i = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_confessor_sex.get();
-            ((ConfessManager.FrdChatExtra)localObject1).jdField_c_of_type_Int = i;
-            if (!((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint64_confess_time.has()) {
-              break label2305;
-            }
-            l1 = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint64_confess_time.get();
-            ((ConfessManager.FrdChatExtra)localObject1).jdField_a_of_type_Long = l1;
-            if (!((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_confess_num.has()) {
-              break label2311;
-            }
-            i = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_confess_num.get();
-            ((ConfessManager.FrdChatExtra)localObject1).jdField_d_of_type_Int = i;
-            if (!((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_biz_type.has()) {
-              break label2317;
-            }
-            i = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_biz_type.get();
-            ((ConfessManager.FrdChatExtra)localObject1).f = i;
-            if (!((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_confess_to_sex.has()) {
-              break label2323;
-            }
-            i = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_confess_to_sex.get();
-            ((ConfessManager.FrdChatExtra)localObject1).jdField_e_of_type_Int = i;
-            l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get() - 1L;
-            l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get() - 1L;
-            paramList.a(paramElem, (ConfessManager.FrdChatExtra)localObject1, l1, l2);
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            l3 = MessageCache.a();
-            QLog.i("ConfessMsgUtil", 2, "decodeConfessMsgElem strConfessorDesc:" + ((ConfessManager.FrdChatExtra)localObject1).jdField_d_of_type_JavaLangString + " msgTime:" + l1 + " msgSeq:" + l2 + " nowTime" + l3);
-            return;
-            if (TextUtils.equals((CharSequence)localObject3, (CharSequence)localObject1)) {
-              paramElem = paramList;
-            }
-          }
-        } while ((21 != paramElem.common_elem.uint32_service_type.get()) || (!paramElem.common_elem.bytes_pb_elem.has()) || (paramElem.common_elem.uint32_business_type.get() != 4) || (paramQQAppInterface == null));
-        paramList = new hummer_commelem.MsgElemInfo_servtype21();
-        paramList.mergeFrom(paramElem.common_elem.bytes_pb_elem.get().toByteArray());
-      } while (!paramList.group_confess_ctx.has());
-      if ((QLog.isColorLevel()) && (((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)paramList.group_confess_ctx.get()).bytes_topic.has())) {
-        QLog.i("ConfessMsgUtil", 2, String.format("decodeConfessMsgElem confess: %s", new Object[] { ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)paramList.group_confess_ctx.get()).bytes_topic.get().toStringUtf8() }));
-      }
-      if ((!paramMsg.msg_head.has()) || (!((msg_comm.MsgHead)paramMsg.msg_head.get()).group_info.has()) || (!((msg_comm.GroupInfo)((msg_comm.MsgHead)paramMsg.msg_head.get()).group_info.get()).group_code.has())) {
-        break;
-      }
-      paramElem = String.valueOf(((msg_comm.GroupInfo)((msg_comm.MsgHead)paramMsg.msg_head.get()).group_info.get()).group_code.get());
-      if (paramMsg.msg_head.group_info.group_type.get() != 127) {
-        break label2332;
-      }
-      i = 1;
-      break label2329;
-      if (TextUtils.isEmpty(paramElem)) {
-        break label2330;
-      }
-      localObject3 = (hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)paramList.group_confess_ctx.get();
-      str1 = String.valueOf(((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint64_send_uin.get());
-    } while (!TextUtils.equals(str1, String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get())));
-    paramList = String.valueOf(((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint64_confess_to_uin.get());
-    String str2 = String.valueOf(((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint64_confessor_uin.get());
-    int j = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint32_topic_id.get();
-    Object localObject1 = (ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER);
-    int k = ((ConfessManager)localObject1).a(paramElem, paramList, str1, str2, j);
-    if ((i == 0) && (k == 1))
-    {
-      localObject2 = new ConfessManager.GroupChatExtra();
-      ((ConfessManager.GroupChatExtra)localObject2).jdField_a_of_type_JavaLangString = paramElem;
-      ((ConfessManager.GroupChatExtra)localObject2).jdField_a_of_type_Int = j;
-      ((ConfessManager.GroupChatExtra)localObject2).jdField_b_of_type_Int = (j % 4);
-      ((ConfessManager.GroupChatExtra)localObject2).jdField_d_of_type_JavaLangString = paramList;
-      ((ConfessManager.GroupChatExtra)localObject2).jdField_e_of_type_JavaLangString = str2;
-      if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_topic.has()) {
-        break label2338;
-      }
-      paramList = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_topic.get().toStringUtf8();
-      label1749:
-      ((ConfessManager.GroupChatExtra)localObject2).f = paramList;
-      if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint32_confessor_sex.has()) {
-        break label2345;
-      }
-      i = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint32_confessor_sex.get();
-      label1776:
-      ((ConfessManager.GroupChatExtra)localObject2).jdField_c_of_type_Int = i;
-      if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_confessor_nick.has()) {
-        break label2351;
-      }
-      paramList = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_confessor_nick.get().toStringUtf8();
-      label1806:
-      if (TextUtils.isEmpty(paramList)) {
-        if (((ConfessManager.GroupChatExtra)localObject2).jdField_c_of_type_Int == 1)
-        {
-          paramList = HardCodeUtil.a(2131702453);
-          label1829:
-          ((ConfessManager.GroupChatExtra)localObject2).g = paramList;
-          label1835:
-          if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_confess_to_nick.has()) {
-            break label2358;
-          }
-          paramList = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_confess_to_nick.get().toStringUtf8();
-          label1858:
-          ((ConfessManager.GroupChatExtra)localObject2).jdField_c_of_type_JavaLangString = paramList;
-          if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint64_confess_time.has()) {
-            break label2365;
-          }
-          l1 = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint64_confess_time.get();
-          label1885:
-          ((ConfessManager.GroupChatExtra)localObject2).jdField_a_of_type_Long = l1;
-          if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint32_confess_to_nick_type.has()) {
-            break label2371;
-          }
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("decodeConfessMsgElem app:");
+        ((StringBuilder)localObject1).append(paramAppInterface);
+        QLog.i("ConfessMsgUtil", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    label2305:
-    label2311:
-    label2317:
-    label2323:
-    label2329:
-    label2330:
-    label2332:
-    label2338:
-    label2345:
-    label2351:
-    label2358:
-    label2365:
-    label2371:
-    for (int i = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint32_confess_to_nick_type.get();; i = 0)
+    for (;;)
     {
-      ((ConfessManager.GroupChatExtra)localObject2).jdField_d_of_type_Int = i;
-      ((ConfessManager.GroupChatExtra)localObject2).jdField_b_of_type_JavaLangString = str1;
-      l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get() - 1L;
-      long l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
-      paramMsg = paramQQAppInterface.getMessageFacade().a(paramElem, 1);
-      l2 = -1L;
-      l1 = l2;
-      if (paramMsg != null)
+      try
       {
-        l1 = l2;
-        if (!paramMsg.isEmpty()) {
-          l1 = ((ChatMessage)paramMsg.get(paramMsg.size() - 1)).shmsgseq;
+        localObject1 = paramElem.common_elem;
+        try
+        {
+          i = ((im_msg_body.CommonElem)localObject1).uint32_service_type.get();
+          localObject1 = "";
+          Object localObject3;
+          Object localObject2;
+          int j;
+          long l2;
+          int k;
+          if ((21 == i) && (paramElem.common_elem.bytes_pb_elem.has()) && (paramElem.common_elem.uint32_business_type.get() == 1))
+          {
+            localObject3 = new hummer_commelem.MsgElemInfo_servtype21();
+            ((hummer_commelem.MsgElemInfo_servtype21)localObject3).mergeFrom(paramElem.common_elem.bytes_pb_elem.get().toByteArray());
+            if ((!((hummer_commelem.MsgElemInfo_servtype21)localObject3).uint32_topic_id.has()) || (!((hummer_commelem.MsgElemInfo_servtype21)localObject3).uint64_confessor_uin.has()) || (!((hummer_commelem.MsgElemInfo_servtype21)localObject3).bytes_confessor_nick.has()) || (!((hummer_commelem.MsgElemInfo_servtype21)localObject3).uint32_confessor_sex.has())) {
+              break label2415;
+            }
+            paramElem = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+            localObject2 = ((MessageRecord)paramList.get(0)).frienduin;
+            j = ((hummer_commelem.MsgElemInfo_servtype21)localObject3).uint32_topic_id.get();
+            l2 = ((hummer_commelem.MsgElemInfo_servtype21)localObject3).uint64_confessor_uin.get();
+            paramAppInterface = ((hummer_commelem.MsgElemInfo_servtype21)localObject3).bytes_confessor_nick.get().toStringUtf8();
+            k = ((hummer_commelem.MsgElemInfo_servtype21)localObject3).uint32_confessor_sex.get();
+            if (!((hummer_commelem.MsgElemInfo_servtype21)localObject3).uint32_sysmsg_flag.has()) {
+              break label2416;
+            }
+            i = ((hummer_commelem.MsgElemInfo_servtype21)localObject3).uint32_sysmsg_flag.get();
+            paramMsg = (msg_comm.Msg)localObject1;
+            if (((hummer_commelem.MsgElemInfo_servtype21)localObject3).bytes_topic.has()) {
+              paramMsg = ((hummer_commelem.MsgElemInfo_servtype21)localObject3).bytes_topic.get().toStringUtf8();
+            }
+            boolean bool = Long.toString(l2).equals(paramElem);
+            if (!((hummer_commelem.MsgElemInfo_servtype21)localObject3).uint64_confess_time.has()) {
+              break label2422;
+            }
+            l1 = ((hummer_commelem.MsgElemInfo_servtype21)localObject3).uint64_confess_time.get();
+            paramElem = paramMsg;
+            if (i == 1)
+            {
+              paramElem = paramMsg;
+              if (!bool)
+              {
+                paramElem = paramMsg;
+                if ((paramList.get(0) instanceof MessageForText)) {
+                  paramElem = ((MessageForText)paramList.get(0)).msg;
+                }
+              }
+            }
+            if ((j > 0) && (l2 > 0L) && (!TextUtils.isEmpty(paramAppInterface)) && (!TextUtils.isEmpty(paramElem)))
+            {
+              paramMsg = paramList.iterator();
+              if (paramMsg.hasNext())
+              {
+                paramList = (MessageRecord)paramMsg.next();
+                paramList.saveExtInfoToExtStr("ext_key_confess_info", ConfessInfo.toJsonStr(j, l2, k, paramAppInterface, i, paramElem, l1));
+                paramList.setConfessTopicId(j);
+                paramList.setSelfIsConfessor(bool);
+                continue;
+              }
+              if (!QLog.isColorLevel()) {
+                break label2415;
+              }
+              QLog.i("ConfessMsgUtil", 2, String.format("decodeConfessMsgElem confessorUin:%s topicId:%d frdUin:%s topic:%s", new Object[] { Long.toString(l2), Integer.valueOf(j), localObject2, paramElem }));
+              return;
+            }
+            if (QLog.isColorLevel())
+            {
+              paramElem = Long.toString(l2);
+              paramMsg = paramAppInterface;
+              if (paramAppInterface == null) {
+                paramMsg = "null";
+              }
+              try
+              {
+                QLog.i("ConfessMsgUtil", 2, String.format("decodeConfessMsgElem data err confessorUin:%s topicId:%d nick:%s", new Object[] { paramElem, Integer.valueOf(j), paramMsg }));
+                return;
+              }
+              catch (InvalidProtocolBufferMicroException paramMsg) {}
+            }
+          }
+          else
+          {
+            i = paramElem.common_elem.uint32_service_type.get();
+            long l3;
+            if ((21 == i) && (paramElem.common_elem.bytes_pb_elem.has()) && (paramElem.common_elem.uint32_business_type.get() == 2) && (paramAppInterface != null))
+            {
+              localObject3 = new hummer_commelem.MsgElemInfo_servtype21();
+              ((hummer_commelem.MsgElemInfo_servtype21)localObject3).mergeFrom(paramElem.common_elem.bytes_pb_elem.get().toByteArray());
+              if (!((hummer_commelem.MsgElemInfo_servtype21)localObject3).c2c_confess_ctx.has()) {
+                break label2415;
+              }
+              if ((QLog.isColorLevel()) && (((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)((hummer_commelem.MsgElemInfo_servtype21)localObject3).c2c_confess_ctx.get()).bytes_confess.has())) {
+                QLog.i("ConfessMsgUtil", 2, String.format("decodeConfessMsgElem confess: %s", new Object[] { ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)((hummer_commelem.MsgElemInfo_servtype21)localObject3).c2c_confess_ctx.get()).bytes_confess.get().toStringUtf8() }));
+              }
+              str1 = paramAppInterface.getCurrentAccountUin();
+              paramList = String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get());
+              localObject2 = String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get());
+              if (TextUtils.equals(str1, paramList))
+              {
+                paramElem = (im_msg_body.Elem)localObject2;
+              }
+              else
+              {
+                paramElem = (im_msg_body.Elem)localObject1;
+                if (TextUtils.equals(str1, (CharSequence)localObject2)) {
+                  paramElem = paramList;
+                }
+              }
+              localObject1 = (hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)((hummer_commelem.MsgElemInfo_servtype21)localObject3).c2c_confess_ctx.get();
+              localObject3 = String.valueOf(((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint64_confess_to_uin.get());
+              str1 = String.valueOf(((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint64_confessor_uin.get());
+              i = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint32_topic_id.get();
+              l1 = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint64_send_uin.get();
+              if ((TextUtils.isEmpty(paramElem)) || (!TextUtils.equals(paramList, String.valueOf(l1))) || (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject3))) {
+                break label2415;
+              }
+              localObject2 = (ConfessManager)paramAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER);
+              if (((ConfessManager)localObject2).a(paramElem, (String)localObject3, str1, i) != 1) {
+                break label2415;
+              }
+              paramList = new ConfessManager.FrdChatExtra();
+              paramList.jdField_a_of_type_Int = i;
+              paramList.jdField_b_of_type_Int = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint32_bg_type.get();
+              paramList.jdField_b_of_type_JavaLangString = ((String)localObject3);
+              paramList.jdField_c_of_type_JavaLangString = str1;
+              paramList.jdField_d_of_type_JavaLangString = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).bytes_confess.get().toStringUtf8();
+              paramList.jdField_e_of_type_JavaLangString = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).bytes_confessor_nick.get().toStringUtf8();
+              paramList.jdField_a_of_type_JavaLangString = paramAppInterface.getCurrentNickname();
+              if (!((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint32_confessor_sex.has()) {
+                break label2428;
+              }
+              i = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint32_confessor_sex.get();
+              paramList.jdField_c_of_type_Int = i;
+              if (!((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint64_confess_time.has()) {
+                break label2434;
+              }
+              l1 = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint64_confess_time.get();
+              paramList.jdField_a_of_type_Long = l1;
+              if (!((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint32_confess_num.has()) {
+                break label2440;
+              }
+              i = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint32_confess_num.get();
+              paramList.jdField_d_of_type_Int = i;
+              if (!((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint32_biz_type.has()) {
+                break label2446;
+              }
+              i = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint32_biz_type.get();
+              paramList.f = i;
+              if (!((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint32_confess_to_sex.has()) {
+                break label2452;
+              }
+              i = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject1).uint32_confess_to_sex.get();
+              paramList.jdField_e_of_type_Int = i;
+              l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get() - 1L;
+              l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get() - 1L;
+              ((ConfessManager)localObject2).a(paramElem, paramList, l1, l2);
+              if (!QLog.isColorLevel()) {
+                break label2415;
+              }
+              l3 = MessageCache.a();
+              paramMsg = new StringBuilder();
+              paramMsg.append("decodeConfessMsgElem strConfessorDesc:");
+              paramMsg.append(paramList.jdField_d_of_type_JavaLangString);
+              paramMsg.append(" msgTime:");
+              paramMsg.append(l1);
+              paramMsg.append(" msgSeq:");
+              paramMsg.append(l2);
+              paramMsg.append(" nowTime");
+              paramMsg.append(l3);
+              QLog.i("ConfessMsgUtil", 2, paramMsg.toString());
+              return;
+            }
+            if ((21 != paramElem.common_elem.uint32_service_type.get()) || (!paramElem.common_elem.bytes_pb_elem.has()) || (paramElem.common_elem.uint32_business_type.get() != 4) || (paramAppInterface == null)) {
+              break label2415;
+            }
+            localObject1 = new hummer_commelem.MsgElemInfo_servtype21();
+            ((hummer_commelem.MsgElemInfo_servtype21)localObject1).mergeFrom(paramElem.common_elem.bytes_pb_elem.get().toByteArray());
+            if (!((hummer_commelem.MsgElemInfo_servtype21)localObject1).group_confess_ctx.has()) {
+              break label2415;
+            }
+            if ((!QLog.isColorLevel()) || (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)((hummer_commelem.MsgElemInfo_servtype21)localObject1).group_confess_ctx.get()).bytes_topic.has())) {
+              break label2458;
+            }
+            QLog.i("ConfessMsgUtil", 2, String.format("decodeConfessMsgElem confess: %s", new Object[] { ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)((hummer_commelem.MsgElemInfo_servtype21)localObject1).group_confess_ctx.get()).bytes_topic.get().toStringUtf8() }));
+            if ((!paramMsg.msg_head.has()) || (!((msg_comm.MsgHead)paramMsg.msg_head.get()).group_info.has()) || (!((msg_comm.GroupInfo)((msg_comm.MsgHead)paramMsg.msg_head.get()).group_info.get()).group_code.has())) {
+              break label2461;
+            }
+            paramList = String.valueOf(((msg_comm.GroupInfo)((msg_comm.MsgHead)paramMsg.msg_head.get()).group_info.get()).group_code.get());
+            paramElem = paramList;
+            if (paramMsg.msg_head.group_info.group_type.get() != 127) {
+              break label2465;
+            }
+            i = 1;
+            paramElem = paramList;
+            if (TextUtils.isEmpty(paramElem)) {
+              break label2415;
+            }
+            localObject3 = (hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)((hummer_commelem.MsgElemInfo_servtype21)localObject1).group_confess_ctx.get();
+            String str1 = String.valueOf(((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint64_send_uin.get());
+            if (!TextUtils.equals(str1, String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get()))) {
+              return;
+            }
+            paramList = String.valueOf(((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint64_confess_to_uin.get());
+            String str2 = String.valueOf(((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint64_confessor_uin.get());
+            j = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint32_topic_id.get();
+            localObject2 = (ConfessManager)paramAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER);
+            k = ((ConfessManager)localObject2).a(paramElem, paramList, str1, str2, j);
+            if ((i == 0) && (k == 1))
+            {
+              localObject1 = new ConfessManager.GroupChatExtra();
+              ((ConfessManager.GroupChatExtra)localObject1).jdField_a_of_type_JavaLangString = paramElem;
+              ((ConfessManager.GroupChatExtra)localObject1).jdField_a_of_type_Int = j;
+              ((ConfessManager.GroupChatExtra)localObject1).jdField_b_of_type_Int = (j % 4);
+              ((ConfessManager.GroupChatExtra)localObject1).jdField_d_of_type_JavaLangString = paramList;
+              ((ConfessManager.GroupChatExtra)localObject1).jdField_e_of_type_JavaLangString = str2;
+              if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_topic.has()) {
+                break label2471;
+              }
+              paramList = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_topic.get().toStringUtf8();
+              ((ConfessManager.GroupChatExtra)localObject1).f = paramList;
+              if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint32_confessor_sex.has()) {
+                break label2478;
+              }
+              i = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint32_confessor_sex.get();
+              ((ConfessManager.GroupChatExtra)localObject1).jdField_c_of_type_Int = i;
+              if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_confessor_nick.has()) {
+                break label2484;
+              }
+              paramList = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_confessor_nick.get().toStringUtf8();
+              if (TextUtils.isEmpty(paramList))
+              {
+                if (((ConfessManager.GroupChatExtra)localObject1).jdField_c_of_type_Int == 1) {
+                  paramList = HardCodeUtil.a(2131702585);
+                } else {
+                  paramList = HardCodeUtil.a(2131702588);
+                }
+                ((ConfessManager.GroupChatExtra)localObject1).g = paramList;
+              }
+              else
+              {
+                ((ConfessManager.GroupChatExtra)localObject1).g = paramList;
+              }
+              if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_confess_to_nick.has()) {
+                break label2491;
+              }
+              paramList = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).bytes_confess_to_nick.get().toStringUtf8();
+              ((ConfessManager.GroupChatExtra)localObject1).jdField_c_of_type_JavaLangString = paramList;
+              if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint64_confess_time.has()) {
+                break label2498;
+              }
+              l1 = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint64_confess_time.get();
+              ((ConfessManager.GroupChatExtra)localObject1).jdField_a_of_type_Long = l1;
+              if (!((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint32_confess_to_nick_type.has()) {
+                break label2504;
+              }
+              i = ((hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext)localObject3).uint32_confess_to_nick_type.get();
+              ((ConfessManager.GroupChatExtra)localObject1).jdField_d_of_type_Int = i;
+              ((ConfessManager.GroupChatExtra)localObject1).jdField_b_of_type_JavaLangString = str1;
+              l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get() - 1L;
+              long l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
+              paramMsg = (IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "");
+              l2 = -1L;
+              paramMsg = paramMsg.getAIOList(paramElem, 1, -1L);
+              l1 = l2;
+              if (paramMsg != null)
+              {
+                l1 = l2;
+                if (!paramMsg.isEmpty()) {
+                  l1 = ((ChatMessage)paramMsg.get(paramMsg.size() - 1)).shmsgseq;
+                }
+              }
+              if ((l4 < l1 - 5L) && (l1 >= 0L))
+              {
+                if (QLog.isColorLevel())
+                {
+                  paramMsg = new StringBuilder();
+                  paramMsg.append("decodeConfessMsgElem 1 in if lastseq:");
+                  paramMsg.append(l1);
+                  paramMsg.append("  msgSeq:");
+                  paramMsg.append(l4);
+                  paramMsg = paramMsg.toString();
+                  QLog.i("ConfessMsgUtil", 2, paramMsg);
+                }
+                ThreadManager.getSubThreadHandler().postDelayed(new ConfessMsgUtil.1((ConfessManager)localObject2, paramElem, (ConfessManager.GroupChatExtra)localObject1, l3, l4), 250L);
+                return;
+              }
+              ((ConfessManager)localObject2).a(paramElem, (ConfessManager.GroupChatExtra)localObject1, l3, l3, l4);
+              if (!QLog.isColorLevel()) {
+                break label2415;
+              }
+              l1 = MessageCache.a();
+              paramMsg = new StringBuilder();
+              paramMsg.append("decodeConfessMsgElem 2 strConfessorDesc:");
+              paramMsg.append(((ConfessManager.GroupChatExtra)localObject1).f);
+              paramMsg.append(" msgTime:");
+              paramMsg.append(l3);
+              paramMsg.append(" msgSeq:");
+              paramMsg.append(l4);
+              paramMsg.append(" nowTime");
+              paramMsg.append(l1);
+              QLog.i("ConfessMsgUtil", 2, paramMsg.toString());
+              return;
+            }
+            if ((!paramMsg.msg_head.has()) || (!((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.has())) {
+              break label2415;
+            }
+            ((ConfessManager)localObject2).a(paramElem, paramList, str1, str2, j, ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get());
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramMsg) {}
+        if (!QLog.isColorLevel()) {
+          break label2415;
         }
       }
-      if ((l4 < l1 - 5L) && (l1 >= 0L))
+      catch (Exception paramMsg)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("ConfessMsgUtil", 2, "decodeConfessMsgElem 1 in if lastseq:" + l1 + "  msgSeq:" + l4);
+        if (!QLog.isColorLevel()) {
+          break label2415;
         }
-        ThreadManager.getSubThreadHandler().postDelayed(new ConfessMsgUtil.1((ConfessManager)localObject1, paramElem, (ConfessManager.GroupChatExtra)localObject2, l3, l4), 250L);
+        QLog.i("ConfessMsgUtil", 2, paramMsg.getMessage(), paramMsg);
         return;
-        paramList = HardCodeUtil.a(2131702456);
-        break label1829;
-        ((ConfessManager.GroupChatExtra)localObject2).g = paramList;
-        break label1835;
       }
-      ((ConfessManager)localObject1).a(paramElem, (ConfessManager.GroupChatExtra)localObject2, l3, l3, l4);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      l1 = MessageCache.a();
-      QLog.i("ConfessMsgUtil", 2, "decodeConfessMsgElem 2 strConfessorDesc:" + ((ConfessManager.GroupChatExtra)localObject2).f + " msgTime:" + l3 + " msgSeq:" + l4 + " nowTime" + l1);
+      catch (InvalidProtocolBufferMicroException paramMsg) {}
+      QLog.i("ConfessMsgUtil", 2, paramMsg.getMessage(), paramMsg);
+      label2415:
       return;
-      if ((!paramMsg.msg_head.has()) || (!((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.has())) {
-        break;
-      }
-      ((ConfessManager)localObject1).a(paramElem, paramList, str1, str2, j, ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get());
-      return;
+      label2416:
+      int i = 0;
+      continue;
+      label2422:
+      long l1 = 0L;
+      continue;
+      label2428:
       i = 0;
+      continue;
+      label2434:
+      l1 = 0L;
+      continue;
+      label2440:
+      i = 0;
+      continue;
+      label2446:
+      i = 0;
+      continue;
+      label2452:
+      i = 0;
+      continue;
+      label2458:
+      continue;
+      label2461:
       paramElem = "";
-      break label1550;
-      label2293:
-      l1 = 0L;
-      break label311;
-      label2299:
+      label2465:
       i = 0;
-      break label1033;
-      l1 = 0L;
-      break label1061;
-      i = 0;
-      break label1089;
-      i = 0;
-      break label1117;
-      i = 0;
-      break label1145;
-      for (;;)
-      {
-        break label1550;
-        break;
-        i = 0;
-      }
+      continue;
+      label2471:
       paramList = "";
-      break label1749;
+      continue;
+      label2478:
       i = 0;
-      break label1776;
+      continue;
+      label2484:
       paramList = "";
-      break label1806;
+      continue;
+      label2491:
       paramList = "";
-      break label1858;
+      continue;
+      label2498:
       l1 = 0L;
-      break label1885;
+      continue;
+      label2504:
+      i = 0;
     }
   }
   
   public static void a(im_msg_body.Elem paramElem, MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord.istroop == 1033) || (paramMessageRecord.istroop == 1034)) {}
-    for (int i = 1; i == 0; i = 0) {
+    int i;
+    if ((paramMessageRecord.istroop != 1033) && (paramMessageRecord.istroop != 1034)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i == 0) {
       return;
     }
     Object localObject2 = paramMessageRecord.getExtInfoFromExtStr("ext_key_confess_info");
@@ -980,171 +1018,176 @@ public class ConfessMsgUtil
     ((hummer_commelem.MsgElemInfo_servtype21)localObject2).bytes_confessor_nick.set(ByteStringMicro.copyFromUtf8(((ConfessInfo)localObject1).confessorNick));
     ((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint32_confessor_sex.set(((ConfessInfo)localObject1).confessorSex);
     ((hummer_commelem.MsgElemInfo_servtype21)localObject2).uint32_sysmsg_flag.set(0);
-    if (!TextUtils.isEmpty(((ConfessInfo)localObject1).topic)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool) {
-        ((hummer_commelem.MsgElemInfo_servtype21)localObject2).bytes_topic.set(ByteStringMicro.copyFromUtf8(((ConfessInfo)localObject1).topic));
-      }
-      localObject1 = new im_msg_body.CommonElem();
-      ((im_msg_body.CommonElem)localObject1).uint32_service_type.set(21);
-      ((im_msg_body.CommonElem)localObject1).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype21)localObject2).toByteArray()));
-      ((im_msg_body.CommonElem)localObject1).uint32_business_type.set(1);
-      paramElem.common_elem.set((MessageMicro)localObject1);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
+    boolean bool = TextUtils.isEmpty(((ConfessInfo)localObject1).topic) ^ true;
+    if (bool) {
+      ((hummer_commelem.MsgElemInfo_servtype21)localObject2).bytes_topic.set(ByteStringMicro.copyFromUtf8(((ConfessInfo)localObject1).topic));
+    }
+    localObject1 = new im_msg_body.CommonElem();
+    ((im_msg_body.CommonElem)localObject1).uint32_service_type.set(21);
+    ((im_msg_body.CommonElem)localObject1).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype21)localObject2).toByteArray()));
+    ((im_msg_body.CommonElem)localObject1).uint32_business_type.set(1);
+    paramElem.common_elem.set((MessageMicro)localObject1);
+    if (QLog.isColorLevel()) {
       QLog.i("ConfessMsgUtil", 2, String.format("bindConfessInfoElem frdUin:%s type:%d topicId:%d needBindTopic:%b", new Object[] { paramMessageRecord.frienduin, Integer.valueOf(paramMessageRecord.istroop), Integer.valueOf(paramMessageRecord.getConfessTopicId()), Boolean.valueOf(bool) }));
-      return;
     }
   }
   
   public static boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((UinTypeUtil.a(paramInt1) == 1032) || (UinTypeUtil.a(paramInt3) == 1032)) {}
-    for (int i = 1; (i == 0) || ((paramInt1 == paramInt3) && (paramInt2 == paramInt4)); i = 0) {
-      return true;
+    int i = UinTypeUtil.a(paramInt1);
+    boolean bool2 = false;
+    if ((i != 1032) && (UinTypeUtil.a(paramInt3) != 1032)) {
+      i = 0;
+    } else {
+      i = 1;
     }
-    return false;
+    if (i != 0)
+    {
+      boolean bool1 = bool2;
+      if (paramInt1 == paramInt3)
+      {
+        bool1 = bool2;
+        if (paramInt2 == paramInt4) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    return true;
   }
   
   public static boolean a(SessionInfo paramSessionInfo)
   {
-    if (paramSessionInfo == null) {}
-    while ((paramSessionInfo.jdField_a_of_type_Int != 1033) && (paramSessionInfo.jdField_a_of_type_Int != 1034)) {
+    boolean bool = false;
+    if (paramSessionInfo == null) {
       return false;
     }
-    return true;
+    if ((paramSessionInfo.jdField_a_of_type_Int == 1033) || (paramSessionInfo.jdField_a_of_type_Int == 1034)) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (String str = "red_unread_clear_flag";; str = "blue_unread_clear_flag")
-    {
-      boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("confess_unread_file" + paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean(str, false);
-      if (QLog.isColorLevel()) {
-        QLog.i("ConfessMsgUtil", 2, "isConfessBoxUnreadCleared:" + bool + " isRed:" + paramBoolean);
-      }
-      return bool;
+    String str;
+    if (paramBoolean) {
+      str = "red_unread_clear_flag";
+    } else {
+      str = "blue_unread_clear_flag";
     }
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("confess_unread_file");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    boolean bool = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean(str, false);
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("isConfessBoxUnreadCleared:");
+      paramQQAppInterface.append(bool);
+      paramQQAppInterface.append(" isRed:");
+      paramQQAppInterface.append(paramBoolean);
+      QLog.i("ConfessMsgUtil", 2, paramQQAppInterface.toString());
+    }
+    return bool;
   }
   
   public static boolean a(ChatMessage paramChatMessage)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramChatMessage.istroop != 1033) || (!paramChatMessage.isSend()))
-    {
-      bool1 = bool2;
-      if (paramChatMessage.istroop == 1034)
-      {
-        bool1 = bool2;
-        if (paramChatMessage.isSend()) {}
-      }
-    }
-    else
-    {
-      bool1 = true;
-    }
-    return bool1;
+    return ((paramChatMessage.istroop == 1033) && (paramChatMessage.isSend())) || ((paramChatMessage.istroop == 1034) && (!paramChatMessage.isSend()));
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {}
-    while (TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("ext_key_confess_info"))) {
+    if (paramMessageRecord == null) {
       return false;
     }
-    return true;
+    return !TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("ext_key_confess_info"));
   }
   
   public static im_msg_body.Elem b(MessageRecord paramMessageRecord)
   {
-    Object localObject1 = null;
     String str = paramMessageRecord.getExtInfoFromExtStr("ext_key_group_chat_confess_info");
-    if (TextUtils.isEmpty(str)) {}
-    im_msg_body.Elem localElem;
-    do
-    {
-      do
-      {
-        return localObject1;
-        localObject2 = ConfessManager.GroupChatExtra.a(str);
-      } while (localObject2 == null);
-      localElem = new im_msg_body.Elem();
-      localObject1 = new hummer_commelem.MsgElemInfo_servtype21();
-      hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext localGroupConfessContext = new hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext();
-      localGroupConfessContext.uint64_confessor_uin.set(Long.parseLong(((ConfessManager.GroupChatExtra)localObject2).jdField_e_of_type_JavaLangString));
-      localGroupConfessContext.uint64_confess_to_uin.set(Long.parseLong(((ConfessManager.GroupChatExtra)localObject2).jdField_d_of_type_JavaLangString));
-      localGroupConfessContext.uint64_send_uin.set(Long.parseLong(paramMessageRecord.senderuin));
-      localGroupConfessContext.bytes_topic.set(ByteStringMicro.copyFromUtf8(((ConfessManager.GroupChatExtra)localObject2).f));
-      localGroupConfessContext.bytes_confess_to_nick.set(ByteStringMicro.copyFromUtf8(((ConfessManager.GroupChatExtra)localObject2).jdField_c_of_type_JavaLangString));
-      localGroupConfessContext.uint64_confess_time.set(((ConfessManager.GroupChatExtra)localObject2).jdField_a_of_type_Long);
-      localGroupConfessContext.uint32_topic_id.set(((ConfessManager.GroupChatExtra)localObject2).jdField_a_of_type_Int);
-      localGroupConfessContext.uint32_confessor_sex.set(((ConfessManager.GroupChatExtra)localObject2).jdField_c_of_type_Int);
-      localGroupConfessContext.uint32_confess_to_nick_type.set(((ConfessManager.GroupChatExtra)localObject2).jdField_d_of_type_Int);
-      localGroupConfessContext.bytes_confessor_nick.set(ByteStringMicro.copyFromUtf8(((ConfessManager.GroupChatExtra)localObject2).g));
-      ((hummer_commelem.MsgElemInfo_servtype21)localObject1).group_confess_ctx.set(localGroupConfessContext);
-      Object localObject2 = new im_msg_body.CommonElem();
-      ((im_msg_body.CommonElem)localObject2).uint32_service_type.set(21);
-      ((im_msg_body.CommonElem)localObject2).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype21)localObject1).toByteArray()));
-      ((im_msg_body.CommonElem)localObject2).uint32_business_type.set(4);
-      localElem.common_elem.set((MessageMicro)localObject2);
-      paramMessageRecord.removeExtInfoToExtStr("ext_key_group_chat_confess_info");
-      localObject1 = localElem;
-    } while (!QLog.isColorLevel());
-    QLog.i("ConfessMsgUtil", 2, String.format("bindGroupFirstMsgConfessInfoElem groupChatConfessJson:%s  frienduin:%s senderuin:%s", new Object[] { str, paramMessageRecord.frienduin, paramMessageRecord.senderuin }));
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    Object localObject = ConfessManager.GroupChatExtra.a(str);
+    if (localObject == null) {
+      return null;
+    }
+    im_msg_body.Elem localElem = new im_msg_body.Elem();
+    hummer_commelem.MsgElemInfo_servtype21 localMsgElemInfo_servtype21 = new hummer_commelem.MsgElemInfo_servtype21();
+    hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext localGroupConfessContext = new hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext();
+    localGroupConfessContext.uint64_confessor_uin.set(Long.parseLong(((ConfessManager.GroupChatExtra)localObject).jdField_e_of_type_JavaLangString));
+    localGroupConfessContext.uint64_confess_to_uin.set(Long.parseLong(((ConfessManager.GroupChatExtra)localObject).jdField_d_of_type_JavaLangString));
+    localGroupConfessContext.uint64_send_uin.set(Long.parseLong(paramMessageRecord.senderuin));
+    localGroupConfessContext.bytes_topic.set(ByteStringMicro.copyFromUtf8(((ConfessManager.GroupChatExtra)localObject).f));
+    localGroupConfessContext.bytes_confess_to_nick.set(ByteStringMicro.copyFromUtf8(((ConfessManager.GroupChatExtra)localObject).jdField_c_of_type_JavaLangString));
+    localGroupConfessContext.uint64_confess_time.set(((ConfessManager.GroupChatExtra)localObject).jdField_a_of_type_Long);
+    localGroupConfessContext.uint32_topic_id.set(((ConfessManager.GroupChatExtra)localObject).jdField_a_of_type_Int);
+    localGroupConfessContext.uint32_confessor_sex.set(((ConfessManager.GroupChatExtra)localObject).jdField_c_of_type_Int);
+    localGroupConfessContext.uint32_confess_to_nick_type.set(((ConfessManager.GroupChatExtra)localObject).jdField_d_of_type_Int);
+    localGroupConfessContext.bytes_confessor_nick.set(ByteStringMicro.copyFromUtf8(((ConfessManager.GroupChatExtra)localObject).g));
+    localMsgElemInfo_servtype21.group_confess_ctx.set(localGroupConfessContext);
+    localObject = new im_msg_body.CommonElem();
+    ((im_msg_body.CommonElem)localObject).uint32_service_type.set(21);
+    ((im_msg_body.CommonElem)localObject).bytes_pb_elem.set(ByteStringMicro.copyFrom(localMsgElemInfo_servtype21.toByteArray()));
+    ((im_msg_body.CommonElem)localObject).uint32_business_type.set(4);
+    localElem.common_elem.set((MessageMicro)localObject);
+    paramMessageRecord.removeExtInfoToExtStr("ext_key_group_chat_confess_info");
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessMsgUtil", 2, String.format("bindGroupFirstMsgConfessInfoElem groupChatConfessJson:%s  frienduin:%s senderuin:%s", new Object[] { str, paramMessageRecord.frienduin, paramMessageRecord.senderuin }));
+    }
     return localElem;
   }
   
   public static void b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
   {
-    if ((paramQQAppInterface == null) || (paramMessageRecord == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if ((paramQQAppInterface != null) && (paramMessageRecord != null))
     {
-      do
-      {
+      if (TextUtils.isEmpty(paramString)) {
         return;
-        paramQQAppInterface = (ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER);
-      } while ((paramQQAppInterface == null) || (!paramQQAppInterface.b(paramString)));
-      ConfessManager.GroupChatExtra localGroupChatExtra = paramQQAppInterface.a();
-      if (localGroupChatExtra != null)
-      {
-        paramMessageRecord.saveExtInfoToExtStr("ext_key_group_chat_confess_info", localGroupChatExtra.a());
-        paramQQAppInterface.a(paramString, localGroupChatExtra.jdField_d_of_type_JavaLangString, localGroupChatExtra.jdField_b_of_type_JavaLangString, localGroupChatExtra.jdField_e_of_type_JavaLangString, localGroupChatExtra.jdField_a_of_type_Int);
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("ConfessMsgUtil", 2, String.format("bindGroupFirstMsgConfessInfo ExtStr: %s", new Object[] { paramMessageRecord.extStr }));
+      paramQQAppInterface = (ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER);
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.b(paramString)))
+      {
+        ConfessManager.GroupChatExtra localGroupChatExtra = paramQQAppInterface.a();
+        if (localGroupChatExtra != null)
+        {
+          paramMessageRecord.saveExtInfoToExtStr("ext_key_group_chat_confess_info", localGroupChatExtra.a());
+          paramQQAppInterface.a(paramString, localGroupChatExtra.jdField_d_of_type_JavaLangString, localGroupChatExtra.jdField_b_of_type_JavaLangString, localGroupChatExtra.jdField_e_of_type_JavaLangString, localGroupChatExtra.jdField_a_of_type_Int);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("ConfessMsgUtil", 2, String.format("bindGroupFirstMsgConfessInfo ExtStr: %s", new Object[] { paramMessageRecord.extStr }));
+        }
+      }
+    }
   }
   
   public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (paramQQAppInterface == null) {}
-    Object localObject;
-    do
-    {
+    if (paramQQAppInterface == null) {
       return;
-      localObject = (LocalRedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-      RedTouchItem localRedTouchItem = ((LocalRedTouchManager)localObject).a(10018);
-      if ((paramBoolean) && (localRedTouchItem != null)) {
-        localRedTouchItem.extMsgs = null;
-      }
-      ((LocalRedTouchManager)localObject).a(10018);
-      localObject = ((ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).a();
-      if ((localObject != null) && (((FrdConfessInfo)localObject).jdField_a_of_type_Int > 0)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("ConfessMsgUtil", 4, String.format(Locale.getDefault(), "clearConfessFrdRecUnread no need to deal ! [toDelItem: %s]", new Object[] { Boolean.valueOf(paramBoolean) }));
-    return;
-    boolean bool1;
-    label126:
-    boolean bool2;
-    if (localObject != null) {
-      if (((FrdConfessInfo)localObject).jdField_a_of_type_Int != 0)
+    }
+    Object localObject = (LocalRedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    RedTouchItem localRedTouchItem = ((LocalRedTouchManager)localObject).a(10018);
+    if ((paramBoolean) && (localRedTouchItem != null)) {
+      localRedTouchItem.extMsgs = null;
+    }
+    ((LocalRedTouchManager)localObject).a(10018);
+    localObject = ((ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).a();
+    if ((localObject != null) && (((FrdConfessInfo)localObject).jdField_a_of_type_Int > 0))
+    {
+      boolean bool2;
+      if (localObject != null)
       {
-        bool1 = true;
+        boolean bool1;
+        if (((FrdConfessInfo)localObject).jdField_a_of_type_Int != 0) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
         ((FrdConfessInfo)localObject).jdField_a_of_type_Int = 0;
         bool2 = bool1;
         if (paramBoolean)
@@ -1157,20 +1200,20 @@ public class ConfessMsgUtil
         }
         ThreadManager.post(new ConfessMsgUtil.2((FrdConfessInfo)localObject), 8, null, false);
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        bool2 = false;
+      }
       if (bool2) {
         ((ConfessHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFESS_HANDLER)).a((FrdConfessInfo)localObject);
       }
-      if (!QLog.isDevelopLevel()) {
-        break;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("ConfessMsgUtil", 4, String.format(Locale.getDefault(), "clearConfessFrdRecUnread toDelItem: %s, needUpdate: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool2) }));
       }
-      QLog.i("ConfessMsgUtil", 4, String.format(Locale.getDefault(), "clearConfessFrdRecUnread toDelItem: %s, needUpdate: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool2) }));
       return;
-      bool1 = false;
-      break label126;
-      bool2 = false;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ConfessMsgUtil", 4, String.format(Locale.getDefault(), "clearConfessFrdRecUnread no need to deal ! [toDelItem: %s]", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
   }
   
@@ -1181,7 +1224,7 @@ public class ConfessMsgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessMsgUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -37,22 +37,19 @@ public class DatalineAIOShareActionSheet
   
   private boolean a(int paramInt)
   {
-    boolean bool2 = false;
     int i = 0;
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (i < a.length)
-      {
-        if (paramInt == a[i]) {
-          bool1 = true;
-        }
+      int[] arrayOfInt = a;
+      if (i >= arrayOfInt.length) {
+        break;
       }
-      else {
-        return bool1;
+      if (paramInt == arrayOfInt[i]) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public List<ShareActionSheetBuilder.ActionSheetItem>[] a(Context paramContext)
@@ -63,7 +60,7 @@ public class DatalineAIOShareActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.aio.DatalineAIOShareActionSheet
  * JD-Core Version:    0.7.0.1
  */

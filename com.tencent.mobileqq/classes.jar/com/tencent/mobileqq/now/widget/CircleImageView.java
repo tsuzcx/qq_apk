@@ -51,12 +51,13 @@ public class CircleImageView
   
   private Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    if (paramBitmap == null) {}
-    do
-    {
+    if (paramBitmap == null) {
       return null;
-      paramBitmap = a(paramBitmap, paramInt, paramInt);
-    } while (paramBitmap == null);
+    }
+    paramBitmap = a(paramBitmap, paramInt, paramInt);
+    if (paramBitmap == null) {
+      return null;
+    }
     Bitmap localBitmap = Bitmap.createBitmap(paramInt, paramInt, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     Paint localPaint = new Paint();
@@ -64,7 +65,8 @@ public class CircleImageView
     localPaint.setAntiAlias(true);
     localPaint.setFilterBitmap(true);
     localPaint.setDither(true);
-    localCanvas.drawCircle(paramInt / 2.0F, paramInt / 2.0F, paramInt / 2.0F, localPaint);
+    float f = paramInt / 2.0F;
+    localCanvas.drawCircle(f, f, f, localPaint);
     localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
     localCanvas.drawBitmap(paramBitmap, localRect, localRect, localPaint);
     return localBitmap;
@@ -72,34 +74,38 @@ public class CircleImageView
   
   private Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    if ((paramBitmap == null) || (paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return null;
+    if ((paramBitmap != null) && (paramInt1 > 0) && (paramInt2 > 0))
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, paramBitmap.getConfig());
+      float f5 = paramBitmap.getWidth();
+      float f3 = paramBitmap.getHeight();
+      Canvas localCanvas = new Canvas(localBitmap);
+      float f6 = paramInt1;
+      float f1 = f6 / f5;
+      float f4 = paramInt2;
+      float f2 = f4 / f3;
+      f5 = (f6 - f5 * f1) / 2.0F;
+      f3 = (f4 - f3 * f2) / 1.0F;
+      Matrix localMatrix = new Matrix();
+      localMatrix.postTranslate(f5, f3);
+      localMatrix.preScale(f1, f2);
+      Paint localPaint = new Paint();
+      localPaint.setFilterBitmap(true);
+      localCanvas.drawBitmap(paramBitmap, localMatrix, localPaint);
+      return localBitmap;
     }
-    Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, paramBitmap.getConfig());
-    float f4 = paramBitmap.getWidth();
-    float f3 = paramBitmap.getHeight();
-    Canvas localCanvas = new Canvas(localBitmap);
-    float f1 = paramInt1 / f4;
-    float f2 = paramInt2 / f3;
-    f4 = (paramInt1 - f4 * f1) / 2.0F;
-    f3 = (paramInt2 - f3 * f2) / 1.0F;
-    Matrix localMatrix = new Matrix();
-    localMatrix.postTranslate(f4, f3);
-    localMatrix.preScale(f1, f2);
-    Paint localPaint = new Paint();
-    localPaint.setFilterBitmap(true);
-    localCanvas.drawBitmap(paramBitmap, localMatrix, localPaint);
-    return localBitmap;
+    return null;
   }
   
   private void a(AttributeSet paramAttributeSet)
   {
-    if (paramAttributeSet == null) {}
-    do
-    {
+    if (paramAttributeSet == null) {
       return;
-      paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.CircleImageView);
-    } while (paramAttributeSet == null);
+    }
+    paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.CircleImageView);
+    if (paramAttributeSet == null) {
+      return;
+    }
     this.a = paramAttributeSet.getDimensionPixelSize(5, 0);
     paramAttributeSet.recycle();
   }
@@ -108,52 +114,52 @@ public class CircleImageView
   {
     int i = getMeasuredWidth();
     int j = getMeasuredHeight();
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
-    {
-      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, i, j);
-      paramDrawable.draw(localCanvas);
-      return localObject;
+    if (paramDrawable.getOpacity() != -1) {
+      localObject = Bitmap.Config.ARGB_8888;
+    } else {
+      localObject = Bitmap.Config.RGB_565;
     }
+    Object localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    paramDrawable.setBounds(0, 0, i, j);
+    paramDrawable.draw(localCanvas);
+    return localObject;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     Object localObject = getDrawable();
-    if ((localObject != null) && (getWidth() != 0) && (getHeight() != 0)) {}
-    try
-    {
-      Bitmap localBitmap = a((Drawable)localObject);
-      localObject = localBitmap;
-      if (localBitmap == null) {
-        localObject = a();
-      }
-      localObject = a(((Bitmap)localObject).copy(((Bitmap)localObject).getConfig(), true), getWidth() - this.a * 2);
-      if (localObject != null)
+    if ((localObject != null) && (getWidth() != 0) && (getHeight() != 0)) {
+      try
       {
-        paramCanvas.drawBitmap((Bitmap)localObject, this.a, this.a, null);
-        paramCanvas.save();
-        paramCanvas.restore();
+        Bitmap localBitmap = a((Drawable)localObject);
+        localObject = localBitmap;
+        if (localBitmap == null) {
+          localObject = a();
+        }
+        localObject = a(((Bitmap)localObject).copy(((Bitmap)localObject).getConfig(), true), getWidth() - this.a * 2);
+        if (localObject != null)
+        {
+          paramCanvas.drawBitmap((Bitmap)localObject, this.a, this.a, null);
+          paramCanvas.save();
+          paramCanvas.restore();
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception paramCanvas)
-    {
-      paramCanvas.printStackTrace();
-      return;
-    }
-    catch (OutOfMemoryError paramCanvas)
-    {
-      paramCanvas.printStackTrace();
+      catch (OutOfMemoryError paramCanvas)
+      {
+        paramCanvas.printStackTrace();
+        return;
+      }
+      catch (Exception paramCanvas)
+      {
+        paramCanvas.printStackTrace();
+      }
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i;
-    int j;
     try
     {
       Drawable localDrawable = getDrawable();
@@ -162,35 +168,37 @@ public class CircleImageView
         setMeasuredDimension(0, 0);
         return;
       }
-      i = View.MeasureSpec.getSize(paramInt1);
-      j = View.MeasureSpec.getSize(paramInt2);
+      int i = View.MeasureSpec.getSize(paramInt1);
+      int j = View.MeasureSpec.getSize(paramInt2);
       if ((j == 0) && (i == 0))
       {
         setMeasuredDimension(i, j);
         return;
       }
+      if (j == 0)
+      {
+        setMeasuredDimension(i, localDrawable.getIntrinsicHeight() * i / localDrawable.getIntrinsicWidth());
+        return;
+      }
+      if (i == 0)
+      {
+        setMeasuredDimension(localDrawable.getIntrinsicWidth() * j / localDrawable.getIntrinsicHeight(), j);
+        return;
+      }
+      setMeasuredDimension(i, j);
+      return;
     }
     catch (Exception localException)
     {
-      super.onMeasure(paramInt1, paramInt2);
-      return;
+      label103:
+      break label103;
     }
-    if (j == 0)
-    {
-      setMeasuredDimension(i, localException.getIntrinsicHeight() * i / localException.getIntrinsicWidth());
-      return;
-    }
-    if (i == 0)
-    {
-      setMeasuredDimension(localException.getIntrinsicWidth() * j / localException.getIntrinsicHeight(), j);
-      return;
-    }
-    setMeasuredDimension(i, j);
+    super.onMeasure(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.widget.CircleImageView
  * JD-Core Version:    0.7.0.1
  */

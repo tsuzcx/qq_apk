@@ -46,39 +46,42 @@ public class TVKMediaPlayerConfig$TvPlayerSpecialParams
     hevc_player = new TVKConfigField("auto");
     live_hevc_player = new TVKConfigField("auto");
     encrypt_ver = new TVKConfigField(Integer.valueOf(65));
-    is_allow_preload_video = new TVKConfigField(Boolean.valueOf(false));
-    is_allow_preload_postrollad = new TVKConfigField(Boolean.valueOf(false));
-    is_allow_decreases_definition = new TVKConfigField(Boolean.valueOf(true));
-    is_use_cgi_cache_for_vod = new TVKConfigField(Boolean.valueOf(false));
-    is_allow_switch_2_soft_in_ffmpeg = new TVKConfigField(Boolean.valueOf(false));
-    is_allow_switch_2_soft_in_mgr = new TVKConfigField(Boolean.valueOf(true));
-    is_use_hevc = new TVKConfigField(Boolean.valueOf(true));
+    Boolean localBoolean1 = Boolean.valueOf(false);
+    is_allow_preload_video = new TVKConfigField(localBoolean1);
+    is_allow_preload_postrollad = new TVKConfigField(localBoolean1);
+    Boolean localBoolean2 = Boolean.valueOf(true);
+    is_allow_decreases_definition = new TVKConfigField(localBoolean2);
+    is_use_cgi_cache_for_vod = new TVKConfigField(localBoolean1);
+    is_allow_switch_2_soft_in_ffmpeg = new TVKConfigField(localBoolean1);
+    is_allow_switch_2_soft_in_mgr = new TVKConfigField(localBoolean2);
+    is_use_hevc = new TVKConfigField(localBoolean2);
     captureMode = new TVKConfigField(Integer.valueOf(2));
     buffer_timeout_1080 = new TVKConfigField(Integer.valueOf(50000));
     buffer_timeout_1080_below = new TVKConfigField(Integer.valueOf(35000));
-    use_proxy = new TVKConfigField(Boolean.valueOf(true));
-    live_use_proxy = new TVKConfigField(Boolean.valueOf(true));
-    mediacodec_inputbuffer_timeout = new TVKConfigField(Integer.valueOf(20));
-    mediacodec_outputbuffer_timeout = new TVKConfigField(Integer.valueOf(20));
-    is_use_new_def_switch = new TVKConfigField(Boolean.valueOf(false));
-    reset_decoder_on_def_switch = new TVKConfigField(Boolean.valueOf(true));
-    is_use_logo = new TVKConfigField(Boolean.valueOf(false));
-    is_only_audio_support = new TVKConfigField(Boolean.valueOf(false));
-    set_display_mul_times_surfaceCreate = new TVKConfigField(Boolean.valueOf(false));
-    reset_del_view = new TVKConfigField(Boolean.valueOf(true));
-    cgi_in_uithread = new TVKConfigField(Boolean.valueOf(false));
+    use_proxy = new TVKConfigField(localBoolean2);
+    live_use_proxy = new TVKConfigField(localBoolean2);
+    Integer localInteger = Integer.valueOf(20);
+    mediacodec_inputbuffer_timeout = new TVKConfigField(localInteger);
+    mediacodec_outputbuffer_timeout = new TVKConfigField(localInteger);
+    is_use_new_def_switch = new TVKConfigField(localBoolean1);
+    reset_decoder_on_def_switch = new TVKConfigField(localBoolean2);
+    is_use_logo = new TVKConfigField(localBoolean1);
+    is_only_audio_support = new TVKConfigField(localBoolean1);
+    set_display_mul_times_surfaceCreate = new TVKConfigField(localBoolean1);
+    reset_del_view = new TVKConfigField(localBoolean2);
+    cgi_in_uithread = new TVKConfigField(localBoolean1);
     dolby_track_player = new TVKConfigField("system");
-    selfplayer_prepared_timeout_enable = new TVKConfigField(Boolean.valueOf(true));
-    secondbuffer_check_compact_enable = new TVKConfigField(Boolean.valueOf(true));
-    early_push_enable = new TVKConfigField(Boolean.valueOf(true));
-    buffer_report_compact_enable = new TVKConfigField(Boolean.valueOf(true));
-    secondbuffer_check_network_enable = new TVKConfigField(Boolean.valueOf(true));
-    hevc_to_h264_to_sd = new TVKConfigField(Boolean.valueOf(false));
+    selfplayer_prepared_timeout_enable = new TVKConfigField(localBoolean2);
+    secondbuffer_check_compact_enable = new TVKConfigField(localBoolean2);
+    early_push_enable = new TVKConfigField(localBoolean2);
+    buffer_report_compact_enable = new TVKConfigField(localBoolean2);
+    secondbuffer_check_network_enable = new TVKConfigField(localBoolean2);
+    hevc_to_h264_to_sd = new TVKConfigField(localBoolean1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.config.TVKMediaPlayerConfig.TvPlayerSpecialParams
  * JD-Core Version:    0.7.0.1
  */

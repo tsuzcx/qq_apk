@@ -33,13 +33,16 @@ final class Common$2
     catch (Exception localException)
     {
       Common.jdField_a_of_type_Boolean = false;
-      Common.Log.a("KingKongCommon", " SetSafeStatus Exception : " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" SetSafeStatus Exception : ");
+      localStringBuilder.append(localException);
+      Common.Log.a("KingKongCommon", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kingkong.Common.2
  * JD-Core Version:    0.7.0.1
  */

@@ -34,33 +34,41 @@ class MiniAppEntryAdapter$MicroAppViewHolder
   public MiniAppEntryAdapter$MicroAppViewHolder(View paramView)
   {
     super(paramView);
-    this.imageView = ((ImageView)paramView.findViewById(2131371751));
-    if ((this.imageView instanceof ThemeImageView)) {
-      ((ThemeImageView)this.imageView).setMaskShape(ThemeImageWrapper.MODE_OTHER);
+    this.imageView = ((ImageView)paramView.findViewById(2131371377));
+    ImageView localImageView = this.imageView;
+    if ((localImageView instanceof ThemeImageView)) {
+      ((ThemeImageView)localImageView).setMaskShape(ThemeImageWrapper.MODE_OTHER);
     }
-    this.textView = ((TextView)paramView.findViewById(2131371754));
-    this.versionTypeMark = ((TextView)paramView.findViewById(2131371755));
-    this.dividerLine = ((ViewGroup)paramView.findViewById(2131371738));
-    this.recommendBadge = ((ImageView)paramView.findViewById(2131371574));
-    this.viewFlipper = ((ViewFlipper)paramView.findViewById(2131371621));
-    this.redDot = ((TextView)paramView.findViewById(2131371579));
+    this.textView = ((TextView)paramView.findViewById(2131371380));
+    this.versionTypeMark = ((TextView)paramView.findViewById(2131371381));
+    this.dividerLine = ((ViewGroup)paramView.findViewById(2131371364));
+    this.recommendBadge = ((ImageView)paramView.findViewById(2131371194));
+    this.viewFlipper = ((ViewFlipper)paramView.findViewById(2131371241));
+    this.redDot = ((TextView)paramView.findViewById(2131371199));
   }
   
   private void startSwitchAnimation()
   {
     long l = this.picCount * 2200;
-    QLog.d("MiniAppEntryAdapter", 1, "[mini_app_anim].startSwitchAnimation, picCount = " + this.picCount + ", isPlayAnim: " + this.isPlayAnim + ", duration: " + l);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[mini_app_anim].startSwitchAnimation, picCount = ");
+    ((StringBuilder)localObject).append(this.picCount);
+    ((StringBuilder)localObject).append(", isPlayAnim: ");
+    ((StringBuilder)localObject).append(this.isPlayAnim);
+    ((StringBuilder)localObject).append(", duration: ");
+    ((StringBuilder)localObject).append(l);
+    QLog.d("MiniAppEntryAdapter", 1, ((StringBuilder)localObject).toString());
     this.viewFlipper.setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-    localTranslateAnimation.setDuration(700L);
-    localTranslateAnimation.setInterpolator(new MiniAppEntryAdapter.SpringTranslationInterpolator(0.4F));
-    localTranslateAnimation.setFillAfter(true);
-    this.viewFlipper.setInAnimation(localTranslateAnimation);
-    localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -1.0F);
-    localTranslateAnimation.setDuration(700L);
-    localTranslateAnimation.setInterpolator(new LinearInterpolator());
-    localTranslateAnimation.setFillAfter(false);
-    this.viewFlipper.setOutAnimation(localTranslateAnimation);
+    localObject = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
+    ((Animation)localObject).setDuration(700L);
+    ((Animation)localObject).setInterpolator(new MiniAppEntryAdapter.SpringTranslationInterpolator(0.4F));
+    ((Animation)localObject).setFillAfter(true);
+    this.viewFlipper.setInAnimation((Animation)localObject);
+    localObject = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -1.0F);
+    ((Animation)localObject).setDuration(700L);
+    ((Animation)localObject).setInterpolator(new LinearInterpolator());
+    ((Animation)localObject).setFillAfter(false);
+    this.viewFlipper.setOutAnimation((Animation)localObject);
     this.viewFlipper.setFlipInterval(2200);
     this.viewFlipper.setAnimateFirstView(true);
     this.viewFlipper.startFlipping();
@@ -75,25 +83,36 @@ class MiniAppEntryAdapter$MicroAppViewHolder
   public void startAnimation()
   {
     this.isPlayAnim = true;
-    Drawable localDrawable = MiniAppUtils.getIcon(this.imageView.getContext(), this.miniAppInfo.appStoreAnimPicUrl, true, 2130841190, 48);
+    Drawable localDrawable = MiniAppUtils.getIcon(this.imageView.getContext(), this.miniAppInfo.appStoreAnimPicUrl, true, 2130841066, 48);
     this.imageView.setImageDrawable(localDrawable);
     this.imageView.invalidate();
-    QLog.d("MiniAppEntryAdapter", 1, "[mini_app_anim].startAnimation, picCount = " + this.picCount + ", pic Url = " + this.miniAppInfo.appStoreAnimPicUrl + ", drawable = " + localDrawable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[mini_app_anim].startAnimation, picCount = ");
+    localStringBuilder.append(this.picCount);
+    localStringBuilder.append(", pic Url = ");
+    localStringBuilder.append(this.miniAppInfo.appStoreAnimPicUrl);
+    localStringBuilder.append(", drawable = ");
+    localStringBuilder.append(localDrawable);
+    QLog.d("MiniAppEntryAdapter", 1, localStringBuilder.toString());
     startSwitchAnimation();
   }
   
   public void stopAnimation()
   {
-    QLog.d("MiniAppEntryAdapter", 1, "[mini_app_anim].stopAnimation, isPlayAnim: " + this.isPlayAnim);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[mini_app_anim].stopAnimation, isPlayAnim: ");
+    ((StringBuilder)localObject).append(this.isPlayAnim);
+    QLog.d("MiniAppEntryAdapter", 1, ((StringBuilder)localObject).toString());
     this.isPlayAnim = false;
     this.viewFlipper.stopFlipping();
-    this.imageView.setImageDrawable(MiniAppUtils.getIcon(this.imageView.getContext(), this.miniAppInfo.iconUrl, true));
+    localObject = this.imageView;
+    ((ImageView)localObject).setImageDrawable(MiniAppUtils.getIcon(((ImageView)localObject).getContext(), this.miniAppInfo.iconUrl, true));
     this.viewFlipper.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryAdapter.MicroAppViewHolder
  * JD-Core Version:    0.7.0.1
  */

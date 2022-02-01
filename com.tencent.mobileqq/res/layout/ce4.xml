@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">] <com.tencent.biz.pubaccount.readinjoy.view.ClipDianDianTouchAreaLayout android:id="@id/by1" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton android:id="@id/lgg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.0" />
-    </com.tencent.biz.pubaccount.readinjoy.view.ClipDianDianTouchAreaLayout>
+  xmlns:android="http://schemas.android.com/apk/res/android">] <com.tencent.mobileqq.kandian.base.view.widget.ClipDianDianTouchAreaLayout android:id="@id/by1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.kandian.biz.reddot.ReadInJoyColorBandEntranceButton android:id="@id/lgg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.0" />
+    </com.tencent.mobileqq.kandian.base.view.widget.ClipDianDianTouchAreaLayout>
 </FrameLayout>

@@ -43,14 +43,18 @@ class AsyncHttpClient$1
   
   public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Translator", 2, "[AsyncHttpClient] host:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[AsyncHttpClient] host:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("Translator", 2, ((StringBuilder)localObject).toString());
     }
-    String str = paramString;
+    Object localObject = paramString;
     if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
-      str = "accesscontrol.windows.net";
+      localObject = "accesscontrol.windows.net";
     }
-    return this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramSSLSession);
+    return this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify((String)localObject, paramSSLSession);
   }
 }
 

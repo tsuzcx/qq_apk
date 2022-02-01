@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.mini.api;
 
 import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
+import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +12,7 @@ import android.os.Parcelable;
 import android.os.ResultReceiver;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.mini.api.data.SimpleMiniAppConfig;
 import com.tencent.mobileqq.mini.api.entry.BaseContactsMiniAppEntryManager;
 import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
@@ -40,6 +43,10 @@ public abstract interface IMiniAppService
   public abstract void addDesktopChangeListener(MiniAppPullInterface paramMiniAppPullInterface, DesktopChangeListener paramDesktopChangeListener);
   
   public abstract void addMiniProgramReportData(Object paramObject);
+  
+  public abstract void addSearchItemAndCheckReport(SimpleMiniAppConfig paramSimpleMiniAppConfig, String paramString1, String paramString2);
+  
+  public abstract void addSearchItemAndCheckReport(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5);
   
   public abstract boolean asyncShareMiniProgram(Object paramObject);
   
@@ -89,6 +96,8 @@ public abstract interface IMiniAppService
   
   public abstract byte[] getGetUserAppListRequestBusiBuf(long paramLong1, long paramLong2);
   
+  public abstract void getHotSearchApps(COMM.StCommonExt paramStCommonExt, MiniAppCmdInterface paramMiniAppCmdInterface);
+  
   public abstract Drawable getIcon(Context paramContext, String paramString, boolean paramBoolean);
   
   public abstract Drawable getIcon(Context paramContext, String paramString, boolean paramBoolean, int paramInt1, int paramInt2);
@@ -127,6 +136,8 @@ public abstract interface IMiniAppService
   
   public abstract String getTmpPathFromOut(String paramString1, String paramString2);
   
+  public abstract void guessYouLike(COMM.StCommonExt paramStCommonExt, int paramInt, MiniAppCmdInterface paramMiniAppCmdInterface);
+  
   public abstract void handleMiniAppMoreClick(Activity paramActivity);
   
   public abstract void handleWXEntryActivityIntent(Activity paramActivity, Intent paramIntent);
@@ -149,11 +160,17 @@ public abstract interface IMiniAppService
   
   public abstract void launchMainPageFragmentForMiniGame(Context paramContext, Parcelable paramParcelable, int paramInt, boolean paramBoolean);
   
+  public abstract void launchMiniAppByApiAppInfo(@NonNull Activity paramActivity, @NonNull INTERFACE.StApiAppInfo paramStApiAppInfo, int paramInt);
+  
+  public abstract void launchMiniAppByAppInfo(Activity paramActivity, INTERFACE.StUserAppInfo paramStUserAppInfo, int paramInt);
+  
   public abstract void launchMiniAppById(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, MiniAppLaunchListener paramMiniAppLaunchListener);
   
   public abstract boolean launchMiniAppByScheme(Context paramContext, HashMap<String, String> paramHashMap, int paramInt, EntryModel paramEntryModel, MiniAppLaunchListener paramMiniAppLaunchListener);
   
   public abstract void launchMiniGamePublicAccount(Context paramContext);
+  
+  public abstract void launchMiniGamePublicAccount(Context paramContext, String paramString);
   
   public abstract void launchPermissionSettingFragmentForResult(Activity paramActivity, String paramString1, String paramString2, int paramInt);
   
@@ -177,8 +194,6 @@ public abstract interface IMiniAppService
   
   public abstract void processControlInfo(String paramString, MiniAppControlInfo paramMiniAppControlInfo);
   
-  public abstract void registerMiniArkShareMessageProcessorAfterProcessRestart();
-  
   public abstract void removeDesktopChangeListener(MiniAppPullInterface paramMiniAppPullInterface, DesktopChangeListener paramDesktopChangeListener);
   
   public abstract void report4239Async(SimpleMiniAppConfig paramSimpleMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4);
@@ -193,6 +208,12 @@ public abstract interface IMiniAppService
   
   public abstract void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4);
   
+  public abstract void reportColorNoteExpoForMiniApp(String paramString, boolean paramBoolean);
+  
+  public abstract void reportColorSignClickAndStartMiniApp(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt);
+  
+  public abstract void reportColorSignClickWithNoAppInfo(int paramInt);
+  
   public abstract void reportEshopExpo(String paramString1, String paramString2);
   
   public abstract void reportMiniAppExposureData(SimpleMiniAppConfig paramSimpleMiniAppConfig, int paramInt);
@@ -203,9 +224,11 @@ public abstract interface IMiniAppService
   
   public abstract void reportShare(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2);
   
+  public abstract void searchApp(COMM.StCommonExt paramStCommonExt, String paramString, MiniAppCmdInterface paramMiniAppCmdInterface);
+  
   public abstract void sendUserAppListRequest(Manager paramManager, long paramLong1, long paramLong2);
   
-  public abstract void shareAsArkMessage(Activity paramActivity, MiniArkShareModel paramMiniArkShareModel, boolean paramBoolean, int paramInt, COMM.StCommonExt paramStCommonExt);
+  public abstract void shareAsArkMessage(Activity paramActivity, MiniArkShareModel paramMiniArkShareModel);
   
   public abstract void shareAsQzoneFeeds(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4, String paramString8, String paramString9, MiniAppCmdInterface paramMiniAppCmdInterface);
   
@@ -223,6 +246,8 @@ public abstract interface IMiniAppService
   
   public abstract boolean startMiniApp(Context paramContext, String paramString, int paramInt, EntryModel paramEntryModel, MiniAppLaunchListener paramMiniAppLaunchListener);
   
+  public abstract void submitSearchReportData();
+  
   public abstract void updateDataDbFromNetResultInLocalSearchManager(MiniAppLocalSearchEntity paramMiniAppLocalSearchEntity);
   
   public abstract void updateMiniAppList(int paramInt);
@@ -237,7 +262,7 @@ public abstract interface IMiniAppService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.api.IMiniAppService
  * JD-Core Version:    0.7.0.1
  */

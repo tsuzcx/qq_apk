@@ -26,10 +26,10 @@ class ExpandableListConnector$GroupMetadata
   
   public int compareTo(GroupMetadata paramGroupMetadata)
   {
-    if (paramGroupMetadata == null) {
-      throw new IllegalArgumentException();
+    if (paramGroupMetadata != null) {
+      return this.gPos - paramGroupMetadata.gPos;
     }
-    return this.gPos - paramGroupMetadata.gPos;
+    throw new IllegalArgumentException();
   }
   
   public int describeContents()
@@ -47,7 +47,7 @@ class ExpandableListConnector$GroupMetadata
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ExpandableListConnector.GroupMetadata
  * JD-Core Version:    0.7.0.1
  */

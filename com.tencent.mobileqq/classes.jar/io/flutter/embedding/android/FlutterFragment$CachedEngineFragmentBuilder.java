@@ -57,23 +57,18 @@ public class FlutterFragment$CachedEngineFragmentBuilder
     Bundle localBundle = new Bundle();
     localBundle.putString("cached_engine_id", this.engineId);
     localBundle.putBoolean("destroy_engine_with_fragment", this.destroyEngineWithFragment);
-    if (this.renderMode != null)
-    {
-      localObject = this.renderMode;
-      localBundle.putString("flutterview_render_mode", ((RenderMode)localObject).name());
-      if (this.transparencyMode == null) {
-        break label91;
-      }
-    }
-    label91:
-    for (Object localObject = this.transparencyMode;; localObject = TransparencyMode.transparent)
-    {
-      localBundle.putString("flutterview_transparency_mode", ((TransparencyMode)localObject).name());
-      localBundle.putBoolean("should_attach_engine_to_activity", this.shouldAttachEngineToActivity);
-      return localBundle;
+    Object localObject = this.renderMode;
+    if (localObject == null) {
       localObject = RenderMode.surface;
-      break;
     }
+    localBundle.putString("flutterview_render_mode", ((RenderMode)localObject).name());
+    localObject = this.transparencyMode;
+    if (localObject == null) {
+      localObject = TransparencyMode.transparent;
+    }
+    localBundle.putString("flutterview_transparency_mode", ((TransparencyMode)localObject).name());
+    localBundle.putBoolean("should_attach_engine_to_activity", this.shouldAttachEngineToActivity);
+    return localBundle;
   }
   
   @NonNull
@@ -106,7 +101,7 @@ public class FlutterFragment$CachedEngineFragmentBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragment.CachedEngineFragmentBuilder
  * JD-Core Version:    0.7.0.1
  */

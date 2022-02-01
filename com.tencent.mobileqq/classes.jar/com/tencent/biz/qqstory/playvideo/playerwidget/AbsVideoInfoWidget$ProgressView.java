@@ -27,25 +27,25 @@ public class AbsVideoInfoWidget$ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131562006, this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373545));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379091));
+    LayoutInflater.from(paramContext).inflate(2131561839, this);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373123));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378460));
   }
   
   public void setProgressText(CharSequence paramCharSequence)
   {
-    if ((paramCharSequence == null) || (paramCharSequence.length() <= 0))
+    if ((paramCharSequence != null) && (paramCharSequence.length() > 0))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget.ProgressView
  * JD-Core Version:    0.7.0.1
  */

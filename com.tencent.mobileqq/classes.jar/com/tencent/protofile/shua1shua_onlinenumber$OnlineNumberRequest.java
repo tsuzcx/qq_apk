@@ -10,7 +10,7 @@ public final class shua1shua_onlinenumber$OnlineNumberRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protofile.shua1shua_onlinenumber.OnlineNumberRequest
  * JD-Core Version:    0.7.0.1
  */

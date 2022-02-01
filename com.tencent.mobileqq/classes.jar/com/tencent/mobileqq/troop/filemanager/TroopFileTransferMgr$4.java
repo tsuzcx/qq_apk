@@ -1,24 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil.GetApkPackageInfoCallback;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-
 class TroopFileTransferMgr$4
-  implements FileCategoryUtil.GetApkPackageInfoCallback
+  implements Runnable
 {
-  TroopFileTransferMgr$4(TroopFileTransferMgr paramTroopFileTransferMgr, TroopFileTransferManager.Item paramItem) {}
+  TroopFileTransferMgr$4(TroopFileTransferMgr paramTroopFileTransferMgr) {}
   
-  public void a(String paramString1, String paramString2)
+  public void run()
   {
-    TroopFileTransferMgr.c(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferMgr).getFileManagerEngine().a().a(paramString2, new TroopFileTransferMgr.4.1(this));
+    TroopFileTransferMgr.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferMgr.4
  * JD-Core Version:    0.7.0.1
  */

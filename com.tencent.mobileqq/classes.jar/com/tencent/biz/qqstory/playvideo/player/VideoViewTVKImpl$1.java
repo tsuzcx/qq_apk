@@ -32,23 +32,19 @@ class VideoViewTVKImpl$1
     {
       paramVarArgs = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager.a();
       SLog.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_JavaLangString, "get url key:%s", paramVarArgs);
-      if (TextUtils.isEmpty(paramVarArgs)) {
-        break label85;
+      if (!TextUtils.isEmpty(paramVarArgs)) {
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.d = URLUtil.a(paramJobContext, "authkey", paramVarArgs);
+      } else {
+        ThreadManager.getUIHandler().post(new VideoViewTVKImpl.1.1(this));
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.d = URLUtil.a(paramJobContext, "authkey", paramVarArgs);
     }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.1.2(this));
-      return null;
-      label85:
-      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.1.1(this));
-    }
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.1.2(this));
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.1
  * JD-Core Version:    0.7.0.1
  */

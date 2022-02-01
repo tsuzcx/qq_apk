@@ -13,28 +13,31 @@ public abstract class AVBaseReport
   implements AVReportInterface
 {
   private static final String REPORT_URL = "https://h.trace.qq.com/kv";
-  private static final String TAG = "AVReport";
+  private static final String TAG = "AVBaseReport";
   SimpleCoreHttpImpl httpComponent;
   protected Map<String, String> reportData = new HashMap();
   
   private String getUrl()
   {
-    Object localObject = new StringBuilder("https://h.trace.qq.com/kv");
-    ((StringBuilder)localObject).append("?");
-    ((StringBuilder)localObject).append("_dc=");
-    ((StringBuilder)localObject).append(Math.random());
-    Iterator localIterator = this.reportData.entrySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = new StringBuilder("https://h.trace.qq.com/kv");
+    ((StringBuilder)localObject1).append("?");
+    ((StringBuilder)localObject1).append("_dc=");
+    ((StringBuilder)localObject1).append(Math.random());
+    Object localObject2 = this.reportData.entrySet().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      ((StringBuilder)localObject).append("&");
-      ((StringBuilder)localObject).append((String)localEntry.getKey());
-      ((StringBuilder)localObject).append("=");
-      ((StringBuilder)localObject).append((String)localEntry.getValue());
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+      ((StringBuilder)localObject1).append("&");
+      ((StringBuilder)localObject1).append((String)localEntry.getKey());
+      ((StringBuilder)localObject1).append("=");
+      ((StringBuilder)localObject1).append((String)localEntry.getValue());
     }
-    localObject = ((StringBuilder)localObject).toString();
-    AVReportLog.d("AVReport", "url=" + (String)localObject, new Object[0]);
-    return localObject;
+    localObject1 = ((StringBuilder)localObject1).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("url=");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    AVReportLog.d("AVBaseReport", ((StringBuilder)localObject2).toString(), new Object[0]);
+    return localObject1;
   }
   
   public AVReportInterface addAll(Map<String, String> paramMap)
@@ -90,7 +93,7 @@ public abstract class AVBaseReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.report.impl.AVBaseReport
  * JD-Core Version:    0.7.0.1
  */

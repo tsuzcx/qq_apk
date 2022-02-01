@@ -38,55 +38,76 @@ public class SPBufferRangeController
   private int[] computeBufferange(long paramLong1, long paramLong2)
   {
     long l = this.predictor.getCurrentPrediction();
-    if ((paramLong2 > 0L) && (paramLong1 > 0L)) {}
-    for (int i = (int)(paramLong2 / 1024L * 8L / paramLong1);; i = 0)
-    {
-      LogUtil.d("VideoBufferRangeController", "getBufferRange: fileSize=" + paramLong2 + ", duration=" + paramLong1);
-      if (!isPeakPeriod(getEffectiveTimeConfigs()))
-      {
-        localObject = getConfigsForUnPeekPeriod();
-        LogUtil.d("VideoBufferRangeController", "computeBufferange: no peak period，use defaultConfig, range=" + localObject[0] + ", " + localObject[1]);
-        return localObject;
-      }
-      Object localObject = getEmergencyTimeConfigs();
-      List localList = getSafePlayTimeConfigs();
-      int j = judgeStrategy((List)localObject, l, i);
-      int k = judgeStrategy(localList, l, i);
-      LogUtil.d("VideoBufferRangeController", "getBufferRange: bandwidth=" + l + ", bitrate=" + i + ", range=" + j + ", " + k);
-      return new int[] { j, k };
+    int i;
+    if ((paramLong2 > 0L) && (paramLong1 > 0L)) {
+      i = (int)(paramLong2 / 1024L * 8L / paramLong1);
+    } else {
+      i = 0;
     }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getBufferRange: fileSize=");
+    ((StringBuilder)localObject1).append(paramLong2);
+    ((StringBuilder)localObject1).append(", duration=");
+    ((StringBuilder)localObject1).append(paramLong1);
+    LogUtil.d("VideoBufferRangeController", ((StringBuilder)localObject1).toString());
+    if (!isPeakPeriod(getEffectiveTimeConfigs()))
+    {
+      localObject1 = getConfigsForUnPeekPeriod();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("computeBufferange: no peak period，use defaultConfig, range=");
+      ((StringBuilder)localObject2).append(localObject1[0]);
+      ((StringBuilder)localObject2).append(", ");
+      ((StringBuilder)localObject2).append(localObject1[1]);
+      LogUtil.d("VideoBufferRangeController", ((StringBuilder)localObject2).toString());
+      return localObject1;
+    }
+    localObject1 = getEmergencyTimeConfigs();
+    Object localObject2 = getSafePlayTimeConfigs();
+    int j = judgeStrategy((List)localObject1, l, i);
+    int k = judgeStrategy((List)localObject2, l, i);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getBufferRange: bandwidth=");
+    ((StringBuilder)localObject1).append(l);
+    ((StringBuilder)localObject1).append(", bitrate=");
+    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append(", range=");
+    ((StringBuilder)localObject1).append(j);
+    ((StringBuilder)localObject1).append(", ");
+    ((StringBuilder)localObject1).append(k);
+    LogUtil.d("VideoBufferRangeController", ((StringBuilder)localObject1).toString());
+    return new int[] { j, k };
   }
   
   private List<Integer[]> decodeConfigs(String paramString)
   {
-    int i = 0;
     ArrayList localArrayList = new ArrayList();
     Object localObject = (String)this.configMap.get(paramString);
-    LogUtil.d("VideoBufferRangeController", "decodeConfigs: key=" + paramString + ", configStr=" + (String)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("decodeConfigs: key=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", configStr=");
+    localStringBuilder.append((String)localObject);
+    LogUtil.d("VideoBufferRangeController", localStringBuilder.toString());
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return localArrayList;
     }
     paramString = ((String)localObject).split("\\|");
     int j = paramString.length;
-    for (;;)
+    int i = 0;
+    while (i < j)
     {
-      if (i < j)
-      {
-        localObject = paramString[i].split(",");
-        if (localObject.length == 2) {}
+      localObject = paramString[i].split(",");
+      if (localObject.length == 2) {
         try
         {
           localArrayList.add(new Integer[] { Integer.valueOf(localObject[0]), Integer.valueOf(localObject[1]) });
-          i += 1;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            LogUtil.e("VideoBufferRangeController", "getConfigs: ", localException);
-          }
+          LogUtil.e("VideoBufferRangeController", "getConfigs: ", localException);
         }
       }
+      i += 1;
     }
     Collections.sort(localArrayList, this);
     return localArrayList;
@@ -95,16 +116,19 @@ public class SPBufferRangeController
   private int[] getConfigsForUnPeekPeriod()
   {
     Object localObject = decodeConfigs("uneffective_time_config");
-    if (((List)localObject).size() > 0) {
+    int i = ((List)localObject).size();
+    Integer localInteger = Integer.valueOf(0);
+    if (i > 0)
+    {
       localObject = (Integer[])((List)localObject).get(0);
     }
-    for (;;)
+    else
     {
-      return new int[] { localObject[0].intValue(), localObject[1].intValue() };
       localObject = new Integer[2];
-      localObject[0] = Integer.valueOf(0);
-      localObject[1] = Integer.valueOf(0);
+      localObject[0] = localInteger;
+      localObject[1] = localInteger;
     }
+    return new int[] { localObject[0].intValue(), localObject[1].intValue() };
   }
   
   private List<Integer[]> getEffectiveTimeConfigs()
@@ -126,18 +150,27 @@ public class SPBufferRangeController
   {
     int i = Calendar.getInstance().get(11);
     paramList = paramList.iterator();
-    while (paramList.hasNext())
+    boolean bool1;
+    Integer[] arrayOfInteger;
+    do
     {
-      Integer[] arrayOfInteger = (Integer[])paramList.next();
-      if ((i >= arrayOfInteger[0].intValue()) && (i < arrayOfInteger[1].intValue())) {
-        return true;
-      }
-    }
-    return false;
+      do
+      {
+        boolean bool2 = paramList.hasNext();
+        bool1 = false;
+        if (!bool2) {
+          break;
+        }
+        arrayOfInteger = (Integer[])paramList.next();
+      } while (i < arrayOfInteger[0].intValue());
+      bool1 = true;
+    } while (i >= arrayOfInteger[1].intValue());
+    return bool1;
   }
   
   private int judgeStrategy(List<Integer[]> paramList, long paramLong, int paramInt)
   {
+    int i = 0;
     if ((paramLong > 0L) && (paramInt > 0))
     {
       Iterator localIterator = paramList.iterator();
@@ -149,14 +182,16 @@ public class SPBufferRangeController
         }
       }
     }
+    paramInt = i;
     if (!paramList.isEmpty())
     {
       paramList = (Integer[])paramList.get(paramList.size() - 1);
+      paramInt = i;
       if (paramList[0].intValue() <= 0) {
-        return paramList[1].intValue();
+        paramInt = paramList[1].intValue();
       }
     }
-    return 0;
+    return paramInt;
   }
   
   public int compare(Integer[] paramArrayOfInteger1, Integer[] paramArrayOfInteger2)
@@ -171,7 +206,7 @@ public class SPBufferRangeController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.SPBufferRangeController
  * JD-Core Version:    0.7.0.1
  */

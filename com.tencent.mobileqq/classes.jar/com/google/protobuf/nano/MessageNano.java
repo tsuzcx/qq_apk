@@ -27,41 +27,36 @@ public abstract class MessageNano
     }
     catch (IOException paramT)
     {
-      throw new RuntimeException("Reading from a byte array threw an IOException (should never happen).");
+      label20:
+      break label20;
     }
+    throw new RuntimeException("Reading from a byte array threw an IOException (should never happen).");
   }
   
   public static final boolean messageNanoEquals(MessageNano paramMessageNano1, MessageNano paramMessageNano2)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (paramMessageNano1 == paramMessageNano2) {
-      bool1 = true;
+      return true;
     }
-    int i;
-    do
+    if (paramMessageNano1 != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool2;
-          } while (paramMessageNano1 == null);
-          bool1 = bool2;
-        } while (paramMessageNano2 == null);
-        bool1 = bool2;
-      } while (paramMessageNano1.getClass() != paramMessageNano2.getClass());
-      i = paramMessageNano1.getSerializedSize();
-      bool1 = bool2;
-    } while (paramMessageNano2.getSerializedSize() != i);
-    byte[] arrayOfByte1 = new byte[i];
-    byte[] arrayOfByte2 = new byte[i];
-    toByteArray(paramMessageNano1, arrayOfByte1, 0, i);
-    toByteArray(paramMessageNano2, arrayOfByte2, 0, i);
-    return Arrays.equals(arrayOfByte1, arrayOfByte2);
+      if (paramMessageNano2 == null) {
+        return false;
+      }
+      if (paramMessageNano1.getClass() != paramMessageNano2.getClass()) {
+        return false;
+      }
+      int i = paramMessageNano1.getSerializedSize();
+      if (paramMessageNano2.getSerializedSize() != i) {
+        return false;
+      }
+      byte[] arrayOfByte1 = new byte[i];
+      byte[] arrayOfByte2 = new byte[i];
+      toByteArray(paramMessageNano1, arrayOfByte1, 0, i);
+      toByteArray(paramMessageNano2, arrayOfByte2, 0, i);
+      return Arrays.equals(arrayOfByte1, arrayOfByte2);
+    }
+    return false;
   }
   
   public static final void toByteArray(MessageNano paramMessageNano, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -122,7 +117,7 @@ public abstract class MessageNano
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.protobuf.nano.MessageNano
  * JD-Core Version:    0.7.0.1
  */

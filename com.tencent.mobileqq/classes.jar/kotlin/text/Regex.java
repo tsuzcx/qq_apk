@@ -131,9 +131,9 @@ public final class Regex
   @NotNull
   public final String replace(@NotNull CharSequence paramCharSequence, @NotNull Function1<? super MatchResult, ? extends CharSequence> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "input");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "transform");
+    int i = 0;
     Object localObject = find$default(this, paramCharSequence, 0, 2, null);
     if (localObject != null)
     {
@@ -179,34 +179,48 @@ public final class Regex
   @NotNull
   public final List<String> split(@NotNull CharSequence paramCharSequence, int paramInt)
   {
-    int j = 10;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "input");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Limit must be non-negative, but was " + paramInt + '.').toString()));
+    int j = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    Matcher localMatcher = this.nativePattern.matcher(paramCharSequence);
-    if ((!localMatcher.find()) || (paramInt == 1)) {
+    if (i != 0)
+    {
+      Matcher localMatcher = this.nativePattern.matcher(paramCharSequence);
+      if ((localMatcher.find()) && (paramInt != 1))
+      {
+        i = 10;
+        if (paramInt > 0) {
+          i = RangesKt.coerceAtMost(paramInt, 10);
+        }
+        ArrayList localArrayList = new ArrayList(i);
+        int k = paramInt - 1;
+        paramInt = j;
+        do
+        {
+          localArrayList.add(paramCharSequence.subSequence(paramInt, localMatcher.start()).toString());
+          i = localMatcher.end();
+          if ((k >= 0) && (localArrayList.size() == k)) {
+            break;
+          }
+          paramInt = i;
+        } while (localMatcher.find());
+        localArrayList.add(paramCharSequence.subSequence(i, paramCharSequence.length()).toString());
+        return (List)localArrayList;
+      }
       return CollectionsKt.listOf(paramCharSequence.toString());
     }
-    i = j;
-    if (paramInt > 0) {
-      i = RangesKt.coerceAtMost(paramInt, 10);
-    }
-    ArrayList localArrayList = new ArrayList(i);
-    j = paramInt - 1;
-    paramInt = 0;
-    localArrayList.add(paramCharSequence.subSequence(paramInt, localMatcher.start()).toString());
-    i = localMatcher.end();
-    if ((j >= 0) && (localArrayList.size() == j)) {}
+    paramCharSequence = new StringBuilder();
+    paramCharSequence.append("Limit must be non-negative, but was ");
+    paramCharSequence.append(paramInt);
+    paramCharSequence.append('.');
+    paramCharSequence = (Throwable)new IllegalArgumentException(paramCharSequence.toString().toString());
     for (;;)
     {
-      localArrayList.add(paramCharSequence.subSequence(i, paramCharSequence.length()).toString());
-      return (List)localArrayList;
-      paramInt = i;
-      if (localMatcher.find()) {
-        break;
-      }
+      throw paramCharSequence;
     }
   }
   
@@ -226,7 +240,7 @@ public final class Regex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.Regex
  * JD-Core Version:    0.7.0.1
  */

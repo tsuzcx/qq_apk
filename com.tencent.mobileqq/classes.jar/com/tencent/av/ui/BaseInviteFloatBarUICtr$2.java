@@ -9,15 +9,20 @@ class BaseInviteFloatBarUICtr$2
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.a, 2, "timeout~ mPeerUin:" + this.this$0.c);
+    if (QLog.isColorLevel())
+    {
+      String str = this.this$0.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("timeout~ mPeerUin:");
+      localStringBuilder.append(this.this$0.c);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     this.this$0.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.BaseInviteFloatBarUICtr.2
  * JD-Core Version:    0.7.0.1
  */

@@ -21,14 +21,15 @@ public final class PersonGiftListNewRsp
   
   public static PersonGiftListNewRsp[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new PersonGiftListNewRsp[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new PersonGiftListNewRsp[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static PersonGiftListNewRsp parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -50,26 +51,30 @@ public final class PersonGiftListNewRsp
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
-    int m = 0;
-    int i = super.computeSerializedSize();
-    int j = i;
-    if (this.retsult != 0) {
-      j = i + CodedOutputByteBufferNano.computeInt32Size(1, this.retsult);
+    int j = super.computeSerializedSize();
+    int k = this.retsult;
+    int i = j;
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(1, k);
     }
-    i = j;
-    Object localObject;
-    if (this.giftInfoList != null)
+    Object localObject = this.giftInfoList;
+    int m = 0;
+    j = i;
+    if (localObject != null)
     {
-      i = j;
-      if (this.giftInfoList.length > 0)
+      j = i;
+      if (localObject.length > 0)
       {
-        i = j;
         j = 0;
-        while (j < this.giftInfoList.length)
+        for (;;)
         {
-          localObject = this.giftInfoList[j];
+          localObject = this.giftInfoList;
+          if (j >= localObject.length) {
+            break;
+          }
+          localObject = localObject[j];
           k = i;
           if (localObject != null) {
             k = i + CodedOutputByteBufferNano.computeMessageSize(2, (MessageNano)localObject);
@@ -77,28 +82,31 @@ public final class PersonGiftListNewRsp
           j += 1;
           i = k;
         }
+        j = i;
       }
     }
-    int k = i;
-    if (this.hideGiftInfoList != null)
+    localObject = this.hideGiftInfoList;
+    k = j;
+    if (localObject != null)
     {
-      k = i;
-      if (this.hideGiftInfoList.length > 0)
+      k = j;
+      if (localObject.length > 0)
       {
-        j = m;
+        i = m;
         for (;;)
         {
-          k = i;
-          if (j >= this.hideGiftInfoList.length) {
+          localObject = this.hideGiftInfoList;
+          k = j;
+          if (i >= localObject.length) {
             break;
           }
-          localObject = this.hideGiftInfoList[j];
-          k = i;
+          localObject = localObject[i];
+          k = j;
           if (localObject != null) {
-            k = i + CodedOutputByteBufferNano.computeMessageSize(3, (MessageNano)localObject);
+            k = j + CodedOutputByteBufferNano.computeMessageSize(3, (MessageNano)localObject);
           }
-          j += 1;
-          i = k;
+          i += 1;
+          j = k;
         }
       }
     }
@@ -110,23 +118,58 @@ public final class PersonGiftListNewRsp
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      Object localObject;
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.retsult = paramCodedInputByteBufferNano.readInt32();
+      if (i == 0) {
         break;
-      case 18: 
-        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
-        if (this.giftInfoList == null) {}
-        for (i = 0;; i = this.giftInfoList.length)
+      }
+      if (i != 8)
+      {
+        int j;
+        Object localObject;
+        if (i != 18)
         {
+          if (i != 26)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else
+          {
+            j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 26);
+            localObject = this.hideGiftInfoList;
+            if (localObject == null) {
+              i = 0;
+            } else {
+              i = localObject.length;
+            }
+            localObject = new GiftInfoRsp[j + i];
+            j = i;
+            if (i != 0)
+            {
+              System.arraycopy(this.hideGiftInfoList, 0, localObject, 0, i);
+              j = i;
+            }
+            while (j < localObject.length - 1)
+            {
+              localObject[j] = new GiftInfoRsp();
+              paramCodedInputByteBufferNano.readMessage(localObject[j]);
+              paramCodedInputByteBufferNano.readTag();
+              j += 1;
+            }
+            localObject[j] = new GiftInfoRsp();
+            paramCodedInputByteBufferNano.readMessage(localObject[j]);
+            this.hideGiftInfoList = ((GiftInfoRsp[])localObject);
+          }
+        }
+        else
+        {
+          j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
+          localObject = this.giftInfoList;
+          if (localObject == null) {
+            i = 0;
+          } else {
+            i = localObject.length;
+          }
           localObject = new TabAndGiftInfo[j + i];
           j = i;
           if (i != 0)
@@ -141,63 +184,54 @@ public final class PersonGiftListNewRsp
             paramCodedInputByteBufferNano.readTag();
             j += 1;
           }
-        }
-        localObject[j] = new TabAndGiftInfo();
-        paramCodedInputByteBufferNano.readMessage(localObject[j]);
-        this.giftInfoList = ((TabAndGiftInfo[])localObject);
-        break;
-      }
-      int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 26);
-      if (this.hideGiftInfoList == null) {}
-      for (i = 0;; i = this.hideGiftInfoList.length)
-      {
-        localObject = new GiftInfoRsp[j + i];
-        j = i;
-        if (i != 0)
-        {
-          System.arraycopy(this.hideGiftInfoList, 0, localObject, 0, i);
-          j = i;
-        }
-        while (j < localObject.length - 1)
-        {
-          localObject[j] = new GiftInfoRsp();
+          localObject[j] = new TabAndGiftInfo();
           paramCodedInputByteBufferNano.readMessage(localObject[j]);
-          paramCodedInputByteBufferNano.readTag();
-          j += 1;
+          this.giftInfoList = ((TabAndGiftInfo[])localObject);
         }
       }
-      localObject[j] = new GiftInfoRsp();
-      paramCodedInputByteBufferNano.readMessage(localObject[j]);
-      this.hideGiftInfoList = ((GiftInfoRsp[])localObject);
+      else
+      {
+        this.retsult = paramCodedInputByteBufferNano.readInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    int j = 0;
-    if (this.retsult != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(1, this.retsult);
+    int i = this.retsult;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(1, i);
     }
-    int i;
-    Object localObject;
-    if ((this.giftInfoList != null) && (this.giftInfoList.length > 0))
+    Object localObject = this.giftInfoList;
+    int j = 0;
+    if ((localObject != null) && (localObject.length > 0))
     {
       i = 0;
-      while (i < this.giftInfoList.length)
+      for (;;)
       {
-        localObject = this.giftInfoList[i];
+        localObject = this.giftInfoList;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
         if (localObject != null) {
           paramCodedOutputByteBufferNano.writeMessage(2, (MessageNano)localObject);
         }
         i += 1;
       }
     }
-    if ((this.hideGiftInfoList != null) && (this.hideGiftInfoList.length > 0))
+    localObject = this.hideGiftInfoList;
+    if ((localObject != null) && (localObject.length > 0))
     {
       i = j;
-      while (i < this.hideGiftInfoList.length)
+      for (;;)
       {
-        localObject = this.hideGiftInfoList[i];
+        localObject = this.hideGiftInfoList;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
         if (localObject != null) {
           paramCodedOutputByteBufferNano.writeMessage(3, (MessageNano)localObject);
         }
@@ -209,7 +243,7 @@ public final class PersonGiftListNewRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveGiftInfoNew.nano.PersonGiftListNewRsp
  * JD-Core Version:    0.7.0.1
  */

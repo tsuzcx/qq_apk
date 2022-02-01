@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager;
+import com.tencent.mobileqq.troop.trooplink.api.ITroopLinkApi;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ProfileNameView$1
@@ -18,7 +19,7 @@ class ProfileNameView$1
   
   public void onClick(View paramView)
   {
-    String str = TroopLinkManager.a().a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+    String str = ((ITroopLinkApi)QRoute.api(ITroopLinkApi.class)).getTroopMemberHonorUrl(this.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.troopUin, this.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin);
     Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
     localIntent.putExtra("url", str);
     paramView.getContext().startActivity(localIntent);
@@ -28,7 +29,7 @@ class ProfileNameView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileNameView.1
  * JD-Core Version:    0.7.0.1
  */

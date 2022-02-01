@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.recent;
 import android.app.Dialog;
 import android.view.View;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.apollo.api.script.ISpriteCommFunc;
+import com.tencent.mobileqq.apollo.script.api.ISpriteCommFunc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.DeleteRecordDialog.OnDeleteRecordDialogClickListener;
@@ -17,15 +17,15 @@ class RecentAdapter$10$2
   public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
     this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), 3000);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().e(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), 3000);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), 3000);
     ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_confirm_del_msg");
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_AndroidContentContext, 2, 2131691562, 0).a();
+    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_AndroidContentContext, 2, 2131691483, 0).a();
     RecentAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter, this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.a.jdField_a_of_type_JavaLangString, this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.10.2
  * JD-Core Version:    0.7.0.1
  */

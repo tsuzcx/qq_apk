@@ -22,12 +22,12 @@ class ViewCompat$UnhandledKeyEventManager
   
   static UnhandledKeyEventManager at(View paramView)
   {
-    UnhandledKeyEventManager localUnhandledKeyEventManager2 = (UnhandledKeyEventManager)paramView.getTag(2131378924);
+    UnhandledKeyEventManager localUnhandledKeyEventManager2 = (UnhandledKeyEventManager)paramView.getTag(2131378312);
     UnhandledKeyEventManager localUnhandledKeyEventManager1 = localUnhandledKeyEventManager2;
     if (localUnhandledKeyEventManager2 == null)
     {
       localUnhandledKeyEventManager1 = new UnhandledKeyEventManager();
-      paramView.setTag(2131378924, localUnhandledKeyEventManager1);
+      paramView.setTag(2131378312, localUnhandledKeyEventManager1);
     }
     return localUnhandledKeyEventManager1;
   }
@@ -35,13 +35,12 @@ class ViewCompat$UnhandledKeyEventManager
   @Nullable
   private View dispatchInOrder(View paramView, KeyEvent paramKeyEvent)
   {
-    Object localObject;
-    if ((this.mViewsContainingListeners == null) || (!this.mViewsContainingListeners.containsKey(paramView))) {
-      localObject = null;
-    }
-    do
+    Object localObject = this.mViewsContainingListeners;
+    if (localObject != null)
     {
-      return localObject;
+      if (!((WeakHashMap)localObject).containsKey(paramView)) {
+        return null;
+      }
       if ((paramView instanceof ViewGroup))
       {
         localObject = (ViewGroup)paramView;
@@ -55,8 +54,10 @@ class ViewCompat$UnhandledKeyEventManager
           i -= 1;
         }
       }
-      localObject = paramView;
-    } while (onUnhandledKeyEvent(paramView, paramKeyEvent));
+      if (onUnhandledKeyEvent(paramView, paramKeyEvent)) {
+        return paramView;
+      }
+    }
     return null;
   }
   
@@ -70,7 +71,7 @@ class ViewCompat$UnhandledKeyEventManager
   
   private boolean onUnhandledKeyEvent(@NonNull View paramView, @NonNull KeyEvent paramKeyEvent)
   {
-    ArrayList localArrayList = (ArrayList)paramView.getTag(2131378925);
+    ArrayList localArrayList = (ArrayList)paramView.getTag(2131378313);
     if (localArrayList != null)
     {
       int i = localArrayList.size() - 1;
@@ -87,46 +88,39 @@ class ViewCompat$UnhandledKeyEventManager
   
   private void recalcViewsWithUnhandled()
   {
-    if (this.mViewsContainingListeners != null) {
-      this.mViewsContainingListeners.clear();
+    Object localObject1 = this.mViewsContainingListeners;
+    if (localObject1 != null) {
+      ((WeakHashMap)localObject1).clear();
     }
     if (sViewsWithListeners.isEmpty()) {
       return;
     }
-    for (;;)
+    int i;
+    synchronized (sViewsWithListeners)
     {
-      int i;
-      synchronized (sViewsWithListeners)
+      if (this.mViewsContainingListeners == null) {
+        this.mViewsContainingListeners = new WeakHashMap();
+      }
+      i = sViewsWithListeners.size() - 1;
+      if (i >= 0)
       {
-        if (this.mViewsContainingListeners == null) {
-          this.mViewsContainingListeners = new WeakHashMap();
-        }
-        i = sViewsWithListeners.size() - 1;
-        if (i >= 0)
+        localObject1 = (View)((WeakReference)sViewsWithListeners.get(i)).get();
+        if (localObject1 == null)
         {
-          Object localObject1 = (View)((WeakReference)sViewsWithListeners.get(i)).get();
-          if (localObject1 == null)
-          {
-            sViewsWithListeners.remove(i);
-          }
-          else
-          {
-            this.mViewsContainingListeners.put(localObject1, Boolean.TRUE);
-            localObject1 = ((View)localObject1).getParent();
-            if ((localObject1 instanceof View))
-            {
-              this.mViewsContainingListeners.put((View)localObject1, Boolean.TRUE);
-              localObject1 = ((ViewParent)localObject1).getParent();
-              continue;
-            }
-          }
+          sViewsWithListeners.remove(i);
         }
         else
         {
-          return;
+          this.mViewsContainingListeners.put(localObject1, Boolean.TRUE);
+          for (localObject1 = ((View)localObject1).getParent(); (localObject1 instanceof View); localObject1 = ((ViewParent)localObject1).getParent()) {
+            this.mViewsContainingListeners.put((View)localObject1, Boolean.TRUE);
+          }
         }
       }
-      i -= 1;
+      else
+      {
+        return;
+      }
     }
   }
   
@@ -142,6 +136,10 @@ class ViewCompat$UnhandledKeyEventManager
       }
       sViewsWithListeners.add(new WeakReference(paramView));
       return;
+    }
+    for (;;)
+    {
+      throw paramView;
     }
   }
   
@@ -163,8 +161,13 @@ class ViewCompat$UnhandledKeyEventManager
           return;
         }
       }
-      finally {}
-      i += 1;
+      finally
+      {
+        continue;
+        throw paramView;
+        continue;
+        i += 1;
+      }
     }
   }
   
@@ -186,13 +189,14 @@ class ViewCompat$UnhandledKeyEventManager
   
   boolean preDispatch(KeyEvent paramKeyEvent)
   {
-    if ((this.mLastDispatchedPreViewKeyEvent != null) && (this.mLastDispatchedPreViewKeyEvent.get() == paramKeyEvent)) {
+    Object localObject1 = this.mLastDispatchedPreViewKeyEvent;
+    if ((localObject1 != null) && (((WeakReference)localObject1).get() == paramKeyEvent)) {
       return false;
     }
     this.mLastDispatchedPreViewKeyEvent = new WeakReference(paramKeyEvent);
     Object localObject2 = null;
     SparseArray localSparseArray = getCapturedKeys();
-    Object localObject1 = localObject2;
+    localObject1 = localObject2;
     if (paramKeyEvent.getAction() == 1)
     {
       int i = localSparseArray.indexOfKey(paramKeyEvent.getKeyCode());
@@ -220,7 +224,7 @@ class ViewCompat$UnhandledKeyEventManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.ViewCompat.UnhandledKeyEventManager
  * JD-Core Version:    0.7.0.1
  */

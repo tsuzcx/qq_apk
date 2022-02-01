@@ -42,41 +42,40 @@ public class TimeSplitStrategy
     paramList.a(((SplitConfig.TimeSplitConfig)a()).jdField_a_of_type_Long, ((SplitConfig.TimeSplitConfig)a()).jdField_b_of_type_Long);
     paramList.a(a());
     paramList.b = ((SplitConfig.TimeSplitConfig)a()).c;
-    Object localObject = StoryManager.a(QQStoryContext.a().a().createEntityManager(), StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), "albumType=1 or albumType=6", null);
-    if (localObject != null)
+    Object localObject1 = StoryManager.a(QQStoryContext.a().a().createEntityManager(), StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), "albumType=1 or albumType=6", null);
+    if (localObject1 != null)
     {
-      SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", " there is an old time album : " + ((List)localObject).size());
-      localObject = ((List)localObject).iterator();
-    }
-    for (;;)
-    {
-      StoryAlbumEntry localStoryAlbumEntry;
-      if (((Iterator)localObject).hasNext())
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" there is an old time album : ");
+      ((StringBuilder)localObject2).append(((List)localObject1).size());
+      SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", ((StringBuilder)localObject2).toString());
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localStoryAlbumEntry = (StoryAlbumEntry)((Iterator)localObject).next();
-        if ((!TextUtils.equals(localStoryAlbumEntry.albumName, paramList.b)) || (localStoryAlbumEntry.startTime < ((SplitConfig.TimeSplitConfig)a()).jdField_a_of_type_Long) || (localStoryAlbumEntry.startTime > ((SplitConfig.TimeSplitConfig)a()).jdField_b_of_type_Long)) {}
-      }
-      else
-      {
-        try
-        {
-          paramList.b(StoryAlbum.a(localStoryAlbumEntry));
-          paramList.a(localStoryAlbumEntry.getId());
-          SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", "time album  :" + paramList);
-          if (paramList.b() >= ((SplitConfig.TimeSplitConfig)a()).jdField_b_of_type_Int) {
-            break;
+        localObject2 = (StoryAlbumEntry)((Iterator)localObject1).next();
+        if ((TextUtils.equals(((StoryAlbumEntry)localObject2).albumName, paramList.b)) && (((StoryAlbumEntry)localObject2).startTime >= ((SplitConfig.TimeSplitConfig)a()).jdField_a_of_type_Long) && (((StoryAlbumEntry)localObject2).startTime <= ((SplitConfig.TimeSplitConfig)a()).jdField_b_of_type_Long)) {
+          try
+          {
+            paramList.b(StoryAlbum.a((StoryAlbumEntry)localObject2));
+            paramList.a(((StoryAlbumEntry)localObject2).getId());
           }
-          return null;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          for (;;)
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
           {
             localInvalidProtocolBufferMicroException.printStackTrace();
           }
         }
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("old time album is not match :");
+        localStringBuilder2.append(((StoryAlbumEntry)localObject2).startTime);
+        SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", localStringBuilder2.toString());
       }
-      SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", "old time album is not match :" + localStoryAlbumEntry.startTime);
+    }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("time album  :");
+    localStringBuilder1.append(paramList);
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", localStringBuilder1.toString());
+    if (paramList.b() < ((SplitConfig.TimeSplitConfig)a()).jdField_b_of_type_Int) {
+      return null;
     }
     localArrayList.add(paramList);
     return localArrayList;
@@ -85,17 +84,16 @@ public class TimeSplitStrategy
   public List<StoryAlbum> b()
   {
     List localList = a();
-    if ((localList == null) || (localList.size() == 0))
-    {
-      SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", "data is null");
-      return null;
+    if ((localList != null) && (localList.size() != 0)) {
+      return a(localList);
     }
-    return a(localList);
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", "data is null");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.strategy.TimeSplitStrategy
  * JD-Core Version:    0.7.0.1
  */

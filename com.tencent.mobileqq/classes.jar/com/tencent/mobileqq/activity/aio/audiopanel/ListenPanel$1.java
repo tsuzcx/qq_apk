@@ -13,17 +13,21 @@ class ListenPanel$1
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (ListenPanel.a(this.a) < 1000.0D) {}
-    for (int i = 0;; i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D))
-    {
-      paramAccessibilityNodeInfoCompat.setContentDescription(i + this.a.getContext().getString(2131691193));
-      return;
+    int i;
+    if (ListenPanel.a(this.a) < 1000.0D) {
+      i = 0;
+    } else {
+      i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D);
     }
+    paramView = new StringBuilder();
+    paramView.append(i);
+    paramView.append(this.a.getContext().getString(2131691114));
+    paramAccessibilityNodeInfoCompat.setContentDescription(paramView.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel.1
  * JD-Core Version:    0.7.0.1
  */

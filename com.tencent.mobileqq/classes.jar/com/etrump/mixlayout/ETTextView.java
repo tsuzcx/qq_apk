@@ -13,7 +13,6 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.text.Spannable;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
@@ -33,10 +32,10 @@ import com.Vas.ColorFont.FounderBaseLayout;
 import com.Vas.ColorFont.FounderBaseLayout.FounderHighlightInterface;
 import com.Vas.ColorFont.FounderColorLayout;
 import com.Vas.ColorFont.StrikingLayout;
+import com.etrump.mixlayout.api.ETFontUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -44,17 +43,21 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder.Holder;
 import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.bubble.BubbleInfo;
 import com.tencent.mobileqq.bubble.VipBubbleDrawable;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.profilecard.api.IProfileCardApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.text.style.EmoticonSpan;
-import com.tencent.mobileqq.vas.VasMonitorDT;
 import com.tencent.mobileqq.vas.VasMonitorHandler;
+import com.tencent.mobileqq.vas.font.api.FontManagerConstants;
 import com.tencent.mobileqq.vas.font.api.IETextView;
+import com.tencent.mobileqq.vas.font.api.IFontManagerService;
+import com.tencent.mobileqq.vas.util.VasMonitorDT;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 import com.tencent.qphone.base.util.QLog;
@@ -71,7 +74,6 @@ public class ETTextView
   public static final int MSG_DECORATION_UPDATE = 1;
   public static final int MSG_RECYCLE_BITMAP = 3;
   static final String TAG = "ETTextView";
-  public static boolean enableAnimation = true;
   public static Handler mCreateDecorationHandler;
   private static boolean mReportError = false;
   private static Bitmap mSwapBitmap;
@@ -140,115 +142,125 @@ public class ETTextView
   
   public static void clearCache()
   {
-    if (mUIHandler != null) {
-      mUIHandler.removeCallbacksAndMessages(null);
+    Handler localHandler = mUIHandler;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(null);
     }
-    if (mCreateDecorationHandler != null)
+    localHandler = mCreateDecorationHandler;
+    if (localHandler != null)
     {
-      mCreateDecorationHandler.removeCallbacksAndMessages(null);
+      localHandler.removeCallbacksAndMessages(null);
       mCreateDecorationHandler.sendEmptyMessage(3);
     }
   }
   
   private void createFounderLayout(Class<? extends FounderBaseLayout> paramClass)
   {
-    if ((this.mFounderColorLayout == null) || (this.mFounderColorLayout.getClass() != paramClass))
+    Object localObject = this.mFounderColorLayout;
+    if ((localObject == null) || (localObject.getClass() != paramClass))
     {
-      if (paramClass == FounderColorLayout.class) {
+      if (paramClass == FounderColorLayout.class)
+      {
         this.mFounderColorLayout = new FounderColorLayout(this, this.mFont);
+        return;
+      }
+      if (paramClass == StrikingLayout.class)
+      {
+        this.mFounderColorLayout = new StrikingLayout(this, this.mFont);
+        return;
+      }
+      if (paramClass == DynamicMultipleStyleLayout.class)
+      {
+        this.mFounderColorLayout = new DynamicMultipleStyleLayout(this, this.mFont);
+        return;
+      }
+      if (paramClass == ExpressionLayout.class) {
+        this.mFounderColorLayout = new ExpressionLayout(this, this.mFont);
       }
     }
-    else {
-      return;
-    }
-    if (paramClass == StrikingLayout.class)
+    else
     {
-      this.mFounderColorLayout = new StrikingLayout(this, this.mFont);
       return;
     }
-    if (paramClass == DynamicMultipleStyleLayout.class)
-    {
-      this.mFounderColorLayout = new DynamicMultipleStyleLayout(this, this.mFont);
-      return;
-    }
-    if (paramClass == ExpressionLayout.class)
-    {
-      this.mFounderColorLayout = new ExpressionLayout(this, this.mFont);
-      return;
-    }
-    throw new RuntimeException("Unkown class: " + paramClass.getName());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Unkown class: ");
+    ((StringBuilder)localObject).append(paramClass.getName());
+    throw new RuntimeException(((StringBuilder)localObject).toString());
   }
   
   private void dealSmallEmojiClick(int paramInt1, int paramInt2)
   {
     Object localObject1 = this.mLayout.a(paramInt1, paramInt2);
-    if ((localObject1 instanceof EmoticonSpan)) {}
-    for (localObject1 = (EmoticonSpan)localObject1;; localObject1 = null)
+    if ((localObject1 instanceof EmoticonSpan)) {
+      localObject1 = (EmoticonSpan)localObject1;
+    } else {
+      localObject1 = null;
+    }
+    if (localObject1 != null)
     {
-      Object localObject2;
-      Resources localResources;
-      boolean bool;
-      if (localObject1 != null)
+      localObject1 = (BubbleInfo)getTag(2131364116);
+      Object localObject2 = (ChatMessage)getTag(2131364568);
+      Resources localResources = getResources();
+      boolean bool = false;
+      if (localObject2 != null) {
+        bool = ((ChatMessage)localObject2).isSend();
+      }
+      localObject2 = getBackground();
+      if ((localObject2 != null) && ((localObject2 instanceof VipBubbleDrawable)))
       {
-        localObject1 = (BubbleInfo)getTag(2131364199);
-        localObject2 = (ChatMessage)getTag(2131364681);
-        localResources = getResources();
-        bool = false;
-        if (localObject2 != null) {
-          bool = ((ChatMessage)localObject2).isSend();
-        }
-        localObject2 = getBackground();
-        if ((localObject2 == null) || (!(localObject2 instanceof VipBubbleDrawable))) {
-          break label103;
-        }
         ((VipBubbleDrawable)localObject2).jdField_a_of_type_Boolean = true;
-      }
-      label103:
-      while ((localObject2 == null) || (localObject1 == null)) {
         return;
       }
-      if (bool) {}
-      for (paramInt1 = 2130850408;; paramInt1 = 2130850232)
+      if ((localObject2 != null) && (localObject1 != null))
       {
+        if (bool) {
+          paramInt1 = 2130850335;
+        } else {
+          paramInt1 = 2130850159;
+        }
         ((BubbleInfo)localObject1).a(this, localResources.getDrawable(paramInt1));
-        return;
       }
     }
   }
   
   private boolean hasDecorAnimation()
   {
-    if (this.mLayout == null) {}
-    while ((this.mDecoration == null) || (this.mDecoration.getFrameNum() <= 0)) {
+    Object localObject = this.mLayout;
+    boolean bool = false;
+    if (localObject == null) {
       return false;
     }
-    return true;
+    localObject = this.mDecoration;
+    if (localObject == null) {
+      return false;
+    }
+    if (((ETDecoration)localObject).getFrameNum() > 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   private static void initHandler()
   {
-    Object localObject;
     if (mCreateDecorationHandler == null)
     {
       mUIHandler = new ETTextView.UpdateUIHandler(null);
-      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-        break label87;
+      Object localObject;
+      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+      {
+        localObject = (IFontManagerService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IFontManagerService.class, "");
+        if ((localObject != null) && (((IFontManagerService)localObject).getHandlerThread() != null) && (((IFontManagerService)localObject).getHandlerThread().getLooper() != null)) {
+          mCreateDecorationHandler = new ETTextView.DecorationHandler(((IFontManagerService)localObject).getHandlerThread().getLooper());
+        }
       }
-      localObject = (FontManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.CHAT_FONT_MANAGER);
-      if ((localObject != null) && (((FontManager)localObject).a != null) && (((FontManager)localObject).a.getLooper() != null)) {
-        mCreateDecorationHandler = new ETTextView.DecorationHandler(((FontManager)localObject).a.getLooper());
+      else if ((BaseApplicationImpl.getApplication().getRuntime() instanceof ToolAppRuntime))
+      {
+        localObject = FontManagerForTool.a();
+        if (localObject != null) {
+          mCreateDecorationHandler = new ETTextView.DecorationHandler(((FontManagerForTool)localObject).a.getLooper());
+        }
       }
     }
-    label87:
-    do
-    {
-      do
-      {
-        return;
-      } while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof ToolAppRuntime));
-      localObject = FontManagerForTool.a();
-    } while (localObject == null);
-    mCreateDecorationHandler = new ETTextView.DecorationHandler(((FontManagerForTool)localObject).a.getLooper());
   }
   
   private void setFont(ETFont paramETFont, long paramLong, int paramInt)
@@ -256,37 +268,40 @@ public class ETTextView
     if (this.mMsgId != paramLong) {
       this.hasComputeComplexScript = false;
     }
-    if (this.mFont == null)
+    ETFont localETFont = this.mFont;
+    if (localETFont == null)
     {
       this.mFont = new ETFont(paramETFont.mFontId, paramETFont.mFontPath, getTextSize(), paramETFont.mFontType, paramETFont.mTypeface);
       this.mFont.copy(paramETFont);
       this.mFont.setSize(getTextSize());
     }
-    for (;;)
+    else
     {
-      this.mFont.mComboIndex = paramInt;
-      if ((this.mFont.mFontType != 1) && (this.mFont.mTypeface != null)) {
-        setTypeface(this.mFont.mTypeface);
-      }
-      if (this.mFont.mFontId == 0) {
-        setTypeface(null);
-      }
-      this.mMsgId = paramLong;
-      if (this.mLayout == null) {
-        this.mLayout = new ETLayout();
-      }
-      this.mFont.setColor(getCurrentTextColor());
-      if (this.mOnBeforeTextOrFontChangeListener != null) {
-        this.mOnBeforeTextOrFontChangeListener.a(this);
-      }
-      return;
-      this.mFont.copy(paramETFont);
-      this.mFont.mAnimationId = paramLong;
-      this.mFont.mText = paramETFont.mText;
+      localETFont.copy(paramETFont);
+      localETFont = this.mFont;
+      localETFont.mAnimationId = paramLong;
+      localETFont.mText = paramETFont.mText;
       if (paramETFont.mFontType != 1) {
         this.mFont.mTypeface = paramETFont.mTypeface;
       }
       this.mFont.mDiyHandle = paramETFont.mDiyHandle;
+    }
+    paramETFont = this.mFont;
+    paramETFont.mComboIndex = paramInt;
+    if ((paramETFont.mFontType != 1) && (this.mFont.mTypeface != null)) {
+      setTypeface(this.mFont.mTypeface);
+    }
+    if (this.mFont.mFontId == 0) {
+      setTypeface(null);
+    }
+    this.mMsgId = paramLong;
+    if (this.mLayout == null) {
+      this.mLayout = new ETLayout();
+    }
+    this.mFont.setColor(getCurrentTextColor());
+    paramETFont = this.mOnBeforeTextOrFontChangeListener;
+    if (paramETFont != null) {
+      paramETFont.a(this);
     }
   }
   
@@ -301,26 +316,35 @@ public class ETTextView
   
   public void clearHighlightContent()
   {
-    if (isUsingFZColorFont2()) {
-      if ((this.mFounderColorLayout instanceof FounderBaseLayout.FounderHighlightInterface)) {
-        ((FounderBaseLayout.FounderHighlightInterface)this.mFounderColorLayout).d();
+    Object localObject;
+    if (isUsingFZColorFont2())
+    {
+      localObject = this.mFounderColorLayout;
+      if ((localObject instanceof FounderBaseLayout.FounderHighlightInterface)) {
+        ((FounderBaseLayout.FounderHighlightInterface)localObject).d();
       }
     }
-    do
+    else if (isUsingHYFont())
     {
-      return;
-      if (!isUsingHYFont()) {
-        break;
+      localObject = this.mTextSelection;
+      if (localObject != null) {
+        ((ETTextSelection)localObject).a();
       }
-    } while (this.mTextSelection == null);
-    this.mTextSelection.a();
-    return;
-    super.clearHighlightContent();
+    }
+    else
+    {
+      super.clearHighlightContent();
+    }
   }
   
   public ETLayout getETLayout()
   {
     return this.mLayout;
+  }
+  
+  public int getETMaxWidth()
+  {
+    return this.mMaxWidth;
   }
   
   public TextGraphMap getTextGraphMap()
@@ -333,12 +357,13 @@ public class ETTextView
   
   public boolean hasFounderAnimationFont()
   {
+    ETFont localETFont = this.mFont;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.mFont != null)
+    if (localETFont != null)
     {
       bool1 = bool2;
-      if (this.mFont.mFontId != 0)
+      if (localETFont.mFontId != 0)
       {
         bool1 = bool2;
         if (this.mFont.mFontType == 4)
@@ -361,22 +386,19 @@ public class ETTextView
   
   public boolean hasHYFont()
   {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    if (((this.mFont != null) && (this.mFont.mFontId != 0) && (this.mFont.mFontType == 1)) || (isDrawDefaultByHY())) {
-      if (ETEngine.getInstance().native_containComplexScript(getText().toString())) {
-        break label61;
-      }
+    ETFont localETFont = this.mFont;
+    if (((localETFont != null) && (localETFont.mFontId != 0) && (this.mFont.mFontType == 1)) || (isDrawDefaultByHY())) {
+      return ETEngine.getInstance().native_containComplexScript(getText().toString()) ^ true;
     }
-    label61:
-    for (bool1 = bool2;; bool1 = false) {
-      return bool1;
-    }
+    return false;
   }
   
   public void highlightContent()
   {
-    if (isUsingFZColorFont2()) {
+    int i;
+    int j;
+    if (isUsingFZColorFont2())
+    {
       if ((this.mFounderColorLayout instanceof FounderBaseLayout.FounderHighlightInterface))
       {
         i = getTextGraphMap().a(startIndex());
@@ -384,18 +406,18 @@ public class ETTextView
         ((FounderBaseLayout.FounderHighlightInterface)this.mFounderColorLayout).a(i, j);
       }
     }
-    do
+    else if (isUsingHYFont())
     {
-      return;
-      if (!isUsingHYFont()) {
-        break;
+      if (this.mTextSelection != null)
+      {
+        i = getTextGraphMap().a(startIndex());
+        j = getTextGraphMap().a(endIndex() - 1);
+        this.mTextSelection.a(i, j);
       }
-    } while (this.mTextSelection == null);
-    int i = getTextGraphMap().a(startIndex());
-    int j = getTextGraphMap().a(endIndex() - 1);
-    this.mTextSelection.a(i, j);
-    return;
-    super.highlightContent();
+    }
+    else {
+      super.highlightContent();
+    }
   }
   
   protected void init()
@@ -411,14 +433,16 @@ public class ETTextView
   
   public boolean isDrawDefaultByHY()
   {
-    return (this.mFont != null) && (this.mFont.mFontId == 9999) && (!android.text.TextUtils.isEmpty(this.mFont.mFontPath)) && (VasShieldFont.jdField_a_of_type_Int == 4);
+    ETFont localETFont = this.mFont;
+    return (localETFont != null) && (localETFont.mFontId == 9999) && (!android.text.TextUtils.isEmpty(this.mFont.mFontPath)) && (VasShieldFont.jdField_a_of_type_Int == 4);
   }
   
   public boolean isUseExpressFont()
   {
+    boolean bool3 = isUsingFZColorFont2();
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (isUsingFZColorFont2())
+    if (bool3)
     {
       int i = FastColorFontCache.b(this.mFont.mFontId);
       int j = FastColorFontCache.c(this.mFont.mFontId);
@@ -445,7 +469,8 @@ public class ETTextView
       this.hasComplexScript = com.tencent.mobileqq.text.TextUtils.isContainComplexScript(getText().toString());
       this.hasComputeComplexScript = true;
     }
-    return (this.mFont != null) && (this.mFont.mFontId != 0) && (this.mFont.mFontType == 4) && (!this.hasComplexScript);
+    ETFont localETFont = this.mFont;
+    return (localETFont != null) && (localETFont.mFontId != 0) && (this.mFont.mFontType == 4) && (!this.hasComplexScript);
   }
   
   public boolean isUsingFounderAnimationFont()
@@ -455,14 +480,23 @@ public class ETTextView
   
   public boolean isUsingHYFont()
   {
-    return (hasHYFont()) && (this.mLayout != null) && (this.mLayout.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    if (hasHYFont())
+    {
+      ETLayout localETLayout = this.mLayout;
+      if ((localETLayout != null) && (localETLayout.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean isViewVisible()
   {
-    if ((getContext() instanceof FragmentActivity))
+    boolean bool1 = getContext() instanceof BaseActivity;
+    boolean bool2 = true;
+    if (bool1)
     {
-      Object localObject1 = ((FragmentActivity)getContext()).getChatFragment();
+      Object localObject1 = ((BaseActivity)getContext()).getChatFragment();
       if ((localObject1 != null) && (((ChatFragment)localObject1).a() != null) && (((ChatFragment)localObject1).a().a != null))
       {
         localObject1 = ((ChatFragment)localObject1).a().a;
@@ -471,93 +505,112 @@ public class ETTextView
         if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof TextItemBuilder.Holder)))
         {
           localObject2 = (TextItemBuilder.Holder)((View)localObject1).getTag();
-          if ((((TextItemBuilder.Holder)localObject2).d == null) || (((TextItemBuilder.Holder)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131299166))) {}
-        }
-        else
-        {
-          do
-          {
+          if ((((TextItemBuilder.Holder)localObject2).d != null) && (((TextItemBuilder.Holder)localObject2).d.getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299168))) {
             return true;
-            if ((localObject1 == null) || (!(AIOUtils.a((View)localObject1) instanceof RichStatItemBuilder.Holder))) {
-              break;
-            }
-            localObject2 = (RichStatItemBuilder.Holder)AIOUtils.a((View)localObject1);
-          } while (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299166));
+          }
+        }
+        else if ((localObject1 != null) && ((AIOUtils.a((View)localObject1) instanceof RichStatItemBuilder.Holder)))
+        {
+          localObject2 = (RichStatItemBuilder.Holder)AIOUtils.a((View)localObject1);
+          if (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299168)) {
+            return true;
+          }
         }
       }
     }
-    if (((getContext() instanceof QQBrowserActivity)) || ((getContext() instanceof PublicFragmentActivity)) || ((getContext() instanceof FriendProfileCardActivity))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    boolean bool3 = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).isProfileCardActivity(getContext());
+    bool1 = bool2;
+    if (!(getContext() instanceof QQBrowserActivity))
+    {
+      bool1 = bool2;
+      if (!(getContext() instanceof PublicFragmentActivity))
+      {
+        if (bool3) {
+          return true;
+        }
+        bool1 = false;
+      }
     }
+    return bool1;
   }
   
   public void locationByIndex(int paramInt, int[] paramArrayOfInt, boolean paramBoolean)
   {
-    if (isUsingFZColorFont2()) {
+    if (isUsingFZColorFont2())
+    {
       if ((this.mFounderColorLayout instanceof FounderBaseLayout.FounderHighlightInterface))
       {
         paramInt = getTextGraphMap().a(paramInt);
         ((FounderBaseLayout.FounderHighlightInterface)this.mFounderColorLayout).a(paramInt, paramArrayOfInt, paramBoolean);
       }
     }
-    do
+    else if (isUsingHYFont())
     {
-      return;
-      if (!isUsingHYFont()) {
-        break;
+      if (this.mTextSelection != null)
+      {
+        paramInt = getTextGraphMap().a(paramInt);
+        this.mTextSelection.a(paramInt, paramArrayOfInt, paramBoolean);
       }
-    } while (this.mTextSelection == null);
-    paramInt = getTextGraphMap().a(paramInt);
-    this.mTextSelection.a(paramInt, paramArrayOfInt, paramBoolean);
-    return;
-    super.locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
-  }
-  
-  public void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    if (this.mFounderColorLayout != null) {
-      this.mFounderColorLayout.e();
+    }
+    else {
+      super.locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  public void onAnimationEnd(int paramInt)
+  {
+    ETTextView.TextAnimationListener localTextAnimationListener = this.mAnimationListener;
+    if (localTextAnimationListener != null) {
+      localTextAnimationListener.a(this.mMessage, paramInt);
+    }
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    FounderBaseLayout localFounderBaseLayout = this.mFounderColorLayout;
+    if (localFounderBaseLayout != null) {
+      localFounderBaseLayout.e();
+    }
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
   {
     if (android.text.TextUtils.isEmpty(getText()))
     {
       super.onDraw(paramCanvas);
       return;
     }
-    if ((!isUsingHYFont()) && (!isUsingFZColorFont2()))
+    boolean bool2 = isUsingHYFont();
+    boolean bool1 = true;
+    if ((!bool2) && (!isUsingFZColorFont2()))
     {
-      if ((this.mFont != null) && (this.mFont.mFontId != 0))
-      {
-        if ((this.mFont.mFontType != 1) || (!ETEngine.getInstance().native_isColorVariantFont(this.mFont))) {
-          break label123;
-        }
-        setTextColor(ETEngine.getInstance().native_getTextColor(this.mFont));
-      }
-      for (;;)
-      {
-        try
+      ??? = this.mFont;
+      if ((??? != null) && (((ETFont)???).mFontId != 0)) {
+        if ((this.mFont.mFontType == 1) && (ETEngine.getInstance().native_isColorVariantFont(this.mFont)))
         {
-          super.onDraw(paramCanvas);
-          return;
+          setTextColor(ETEngine.getInstance().native_getTextColor(this.mFont));
         }
-        catch (Exception paramCanvas)
-        {
-          QLog.e("ETTextView", 1, "onDraw failed of:" + getText(), paramCanvas);
-          return;
-        }
-        label123:
-        if (this.mFont.mFontType == 4)
+        else if (this.mFont.mFontType == 4)
         {
           ??? = this.mFZColor;
           if (FastColorFontHelper.a().a(this.mFont.mFontId, this.mFont.mComboIndex, (int[])???) == 1) {
             setTextColor(Color.argb(???[3], ???[0], ???[1], ???[2]));
           }
         }
+      }
+      try
+      {
+        super.onDraw(paramCanvas);
+        return;
+      }
+      catch (Exception paramCanvas)
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("onDraw failed of:");
+        ((StringBuilder)???).append(getText());
+        QLog.e("ETTextView", 1, ((StringBuilder)???).toString(), paramCanvas);
+        return;
       }
     }
     long l1;
@@ -569,9 +622,10 @@ public class ETTextView
       if (this.shouldStartAnimation) {
         startDecorAnimation(false, false);
       }
-      if (this.mTextSelection != null)
+      ??? = this.mTextSelection;
+      if (??? != null)
       {
-        ??? = this.mTextSelection.a();
+        ??? = ((ETTextSelection)???).a();
         this.mSelectPaint.setColor(highlightBackgroundColor());
         if (??? != null)
         {
@@ -592,108 +646,286 @@ public class ETTextView
       synchronized (this.mBitmapLocker)
       {
         Object localObject2 = this.mBitmapLocker.a();
-        int m;
-        int k;
         if ((localObject2 != null) && (!((Bitmap)localObject2).isRecycled()))
         {
-          m = getPaddingLeft();
-          k = getPaddingTop();
+          int m = getPaddingLeft();
+          int k = getPaddingTop();
           if ((this.mDecorRunning) && (this.mDecoration != null))
           {
             paramCanvas.drawBitmap((Bitmap)localObject2, m, k, null);
-            j = k;
             i = m;
+            j = k;
             if (this.mDecoration.getDecorationType() == 1)
             {
               this.mLayout.a(paramCanvas, m, k);
               i = m;
               j = k;
             }
-            this.mLayout.b(paramCanvas, i, j);
           }
+          else
+          {
+            ETEngine localETEngine = ETEngine.getInstance();
+            if ((this.mDecoration == null) || (this.mDecoration.isLastFrame())) {
+              break label700;
+            }
+            ((Bitmap)localObject2).eraseColor(0);
+            this.mLayout.a(localETEngine, (Bitmap)localObject2, this.mDecoration, bool1);
+            this.mLayout.a(paramCanvas, m, k, (Bitmap)localObject2);
+            i = m;
+            j = k;
+            if (this.mDecoration != null)
+            {
+              localObject2 = this.mDecoration.mMargins;
+              i = m;
+              j = k;
+              if (localObject2 != null)
+              {
+                i = m + ((Rect)localObject2).left;
+                j = k + ((Rect)localObject2).top;
+              }
+            }
+            this.mLayout.a(paramCanvas, i, j);
+          }
+          this.mLayout.b(paramCanvas, i, j);
+        }
+        l2 = System.currentTimeMillis();
+        FontReportUtils.a("action_draw", this.mFont.mFontId, this.mFont.mFontType, getText().length(), l2 - l1);
+        return;
+      }
+      if (isUsingFZColorFont2())
+      {
+        l1 = System.currentTimeMillis();
+        ??? = this.mFounderColorLayout;
+        if ((??? != null) && (!((FounderBaseLayout)???).a(paramCanvas)))
+        {
+          super.onDraw(paramCanvas);
         }
         else
         {
           l2 = System.currentTimeMillis();
-          FontReportUtils.a("action_draw", this.mFont.mFontId, this.mFont.mFontType, getText().length(), l2 - l1);
-          return;
+          FontReportUtils.a("action_draw", this.mFont.mFontId, 4, getText().length(), l2 - l1);
         }
-        ETEngine localETEngine = ETEngine.getInstance();
-        if ((this.mDecoration == null) || (this.mDecoration.isLastFrame())) {
-          break label677;
+        if (hasFounderAnimationFont()) {
+          startFounderDecorAnimation(false, false);
         }
-        bool = true;
-        ((Bitmap)localObject2).eraseColor(0);
-        this.mLayout.a(localETEngine, (Bitmap)localObject2, this.mDecoration, bool);
-        this.mLayout.a(paramCanvas, m, k, (Bitmap)localObject2);
-        j = k;
-        i = m;
-        if (this.mDecoration != null)
-        {
-          localObject2 = this.mDecoration.mMargins;
-          j = k;
-          i = m;
-          if (localObject2 != null)
-          {
-            i = m + ((Rect)localObject2).left;
-            j = k + ((Rect)localObject2).top;
-          }
-        }
-        this.mLayout.a(paramCanvas, i, j);
       }
-      if (!isUsingFZColorFont2()) {
-        break;
-      }
-      l1 = System.currentTimeMillis();
-      if ((this.mFounderColorLayout != null) && (!this.mFounderColorLayout.a(paramCanvas))) {
-        super.onDraw(paramCanvas);
-      }
-      while (hasFounderAnimationFont())
-      {
-        startFounderDecorAnimation(false, false);
-        return;
-        l2 = System.currentTimeMillis();
-        FontReportUtils.a("action_draw", this.mFont.mFontId, 4, getText().length(), l2 - l1);
-      }
-      break;
-      label677:
-      boolean bool = false;
+      return;
+      label700:
+      bool1 = false;
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     if (android.text.TextUtils.isEmpty(getText()))
     {
       super.onMeasure(paramInt1, paramInt2);
       return;
     }
-    int i;
-    int j;
+    label1413:
+    label1419:
+    label1425:
+    label1431:
+    label1446:
     for (;;)
     {
+      int i;
+      int j;
+      int i1;
+      int m;
+      boolean bool;
       try
       {
-        if (!isUsingFZColorFont2()) {
-          break label366;
-        }
-        i = FastColorFontCache.b(this.mFont.mFontId);
-        j = FastColorFontCache.c(this.mFont.mFontId);
-        if (i != 8) {
-          break label334;
-        }
-        if ((j == 1) || (j == 2))
+        Object localObject1;
+        if (isUsingFZColorFont2())
         {
-          createFounderLayout(StrikingLayout.class);
-          if (QLog.isColorLevel()) {
-            QLog.d("ETTextView", 2, "createFounderLayout: " + this.mFont.mFontId + "," + i + "," + j + "," + this.mFounderColorLayout);
+          i = FastColorFontCache.b(this.mFont.mFontId);
+          j = FastColorFontCache.c(this.mFont.mFontId);
+          if (i == 8)
+          {
+            if (j != 1)
+            {
+              if (j != 2) {
+                break label1392;
+              }
+              continue;
+              createFounderLayout(FounderColorLayout.class);
+              continue;
+              createFounderLayout(ExpressionLayout.class);
+              continue;
+            }
+            createFounderLayout(StrikingLayout.class);
           }
-          int[] arrayOfInt = this.mFounderColorLayout.a(paramInt1, paramInt2, this.mMsgId, this.mMagicFont, this.mFont);
-          if ((arrayOfInt == null) || (arrayOfInt[0] <= 0) || (arrayOfInt[1] <= 0)) {
-            break;
+          else if (i == 7)
+          {
+            createFounderLayout(DynamicMultipleStyleLayout.class);
           }
-          setMeasuredDimension(arrayOfInt[0], arrayOfInt[1]);
-          return;
+          else
+          {
+            createFounderLayout(FounderColorLayout.class);
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("createFounderLayout: ");
+            ((StringBuilder)localObject1).append(this.mFont.mFontId);
+            ((StringBuilder)localObject1).append(",");
+            ((StringBuilder)localObject1).append(i);
+            ((StringBuilder)localObject1).append(",");
+            ((StringBuilder)localObject1).append(j);
+            ((StringBuilder)localObject1).append(",");
+            ((StringBuilder)localObject1).append(this.mFounderColorLayout);
+            QLog.d("ETTextView", 2, ((StringBuilder)localObject1).toString());
+          }
+          localObject1 = this.mFounderColorLayout.a(paramInt1, paramInt2, this.mMsgId, this.mMagicFont, this.mFont);
+          if ((localObject1 != null) && (localObject1[0] > 0) && (localObject1[1] > 0))
+          {
+            setMeasuredDimension(localObject1[0], localObject1[1]);
+            return;
+          }
+          super.onMeasure(paramInt1, paramInt2);
+        }
+        else
+        {
+          if (!hasHYFont())
+          {
+            super.onMeasure(paramInt1, paramInt2);
+            return;
+          }
+          i1 = View.MeasureSpec.getMode(paramInt1);
+          int n = View.MeasureSpec.getMode(paramInt2);
+          m = View.MeasureSpec.getSize(paramInt1);
+          int k = View.MeasureSpec.getSize(paramInt2);
+          Object localObject3 = this.mLayout;
+          localObject1 = null;
+          if ((localObject3 == null) || (this.mLayout.jdField_a_of_type_Long != this.mMsgId) || ((this.mFont != null) && (!this.mFont.equals(this.mLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont))) || (!this.mCacheMeasureResult) || (this.mLayout.jdField_b_of_type_Boolean != this.mMagicFont))
+          {
+            this.mDecorRunning = false;
+            this.mLayout = new ETLayout();
+            this.mTextSelection = new ETTextSelection(this, this.mLayout);
+            if (this.mDecoration != null)
+            {
+              this.mDecoration.deleteDescriptor();
+              this.mDecoration = null;
+            }
+            int i2 = getLinkTextColors().getDefaultColor();
+            if (this.mFont != null)
+            {
+              this.mFont.setColor(getCurrentTextColor());
+              this.mFont.setSize(getTextSize());
+              if ((getPaint().getFlags() & 0x20) <= 0) {
+                break label1413;
+              }
+              bool = true;
+              this.mFont.setBold(bool);
+              if (this.mShadowRadius > 0.0F) {
+                this.mFont.setShadow(true, this.mShadowColor, (int)this.mShadowDx, (int)this.mShadowDy, (int)this.mShadowRadius);
+              } else {
+                this.mFont.setShadow(false, 0, 0, 0, 0);
+              }
+            }
+            localObject1 = ETEngine.getInstance();
+            localObject3 = getPaint().getFontMetrics();
+            float f1 = ((Paint.FontMetrics)localObject3).descent;
+            float f2 = ((Paint.FontMetrics)localObject3).ascent;
+            float f3 = ((Paint.FontMetrics)localObject3).leading;
+            this.mLayout.jdField_a_of_type_Int = ((int)(f1 - f2 + f3));
+            this.mLayout.jdField_a_of_type_Long = this.mMsgId;
+            this.mLayout.jdField_b_of_type_Boolean = this.mMagicFont;
+            this.mLayout.a(this.mLinkBackcolor);
+            localObject3 = new ETFont(this.mFont.mFontId, this.mFont.mFontPath, getTextSize());
+            ((ETFont)localObject3).copy(this.mFont);
+            i = this.mMaxWidth;
+            if ((i1 == -2147483648) || (i1 == 1073741824)) {
+              i = Math.min(this.mMaxWidth, m);
+            }
+            j = i - (getPaddingLeft() + getPaddingRight());
+            i = j;
+            if (i1 == -2147483648) {
+              i = Math.min(m, j);
+            }
+            if (this.mLayout.jdField_b_of_type_Boolean)
+            {
+              f1 = FontManagerConstants.magicFontNormalSize1;
+              if (FontSettingManager.getFontLevel() == 18.0F) {
+                f1 = FontManagerConstants.magicFontMaxSize1;
+              }
+              ((ETFont)localObject3).setSize(f1 * getTextSize());
+            }
+            j = ((ETEngine)localObject1).native_getHorizontalMarginThreshold((ETFont)localObject3, i);
+            ((ETFont)localObject3).setSize(getTextSize());
+            if ((j <= 0) || (j >= i)) {
+              break label1419;
+            }
+            bool = this.mLayout.a((ETEngine)localObject1, i - j, getText(), (ETFont)localObject3, i2, true, i);
+            this.mDecoration = this.mLayout.a((ETEngine)localObject1, true);
+            if (this.mDecoration == null)
+            {
+              bool = this.mLayout.a((ETEngine)localObject1, i, getText(), (ETFont)localObject3, i2, false, i);
+              this.mDecoration = this.mLayout.a((ETEngine)localObject1, true);
+            }
+            if (!bool)
+            {
+              this.mFont.mFontId = 0;
+              this.mLayout.jdField_a_of_type_Long = -1L;
+              super.onMeasure(paramInt1, paramInt2);
+              return;
+            }
+            if ((this.mLayout.jdField_b_of_type_Int >= 2048) || (this.mLayout.c >= 2048)) {
+              continue;
+            }
+            if (!this.mLayout.jdField_a_of_type_Boolean)
+            {
+              i = this.mLayout.jdField_b_of_type_Int;
+              j = this.mLayout.c;
+              if (this.mDecoration == null) {
+                break label1425;
+              }
+              localObject1 = this.mDecoration.mMargins;
+              i += ((Rect)localObject1).left + ((Rect)localObject1).right;
+              j += ((Rect)localObject1).top + ((Rect)localObject1).bottom;
+              ETTextView.BitmapLocker.a(this.mBitmapLocker, i, j);
+            }
+          }
+          else
+          {
+            if (this.mDecoration == null) {
+              break label1431;
+            }
+            localObject1 = this.mDecoration.mMargins;
+            break label1431;
+            j = this.mLayout.jdField_b_of_type_Int + getPaddingLeft() + getPaddingRight();
+            i = j;
+            if (localObject1 != null) {
+              i = j + (((Rect)localObject1).left + ((Rect)localObject1).right);
+            }
+            m = Math.min(i, this.mMaxWidth);
+            if (n == 1073741824)
+            {
+              i = k;
+            }
+            else
+            {
+              j = this.mLayout.c + getPaddingTop() + getPaddingBottom();
+              i = j;
+              if (localObject1 != null) {
+                i = j + (((Rect)localObject1).top + ((Rect)localObject1).bottom);
+              }
+              if (n != -2147483648) {
+                break label1446;
+              }
+              i = Math.min(i, k);
+            }
+            setMeasuredDimension(Math.max(m, this.mMinWidth), Math.max(i, this.mMinHeight));
+            return;
+          }
+          throw new Exception("no text use system measure2");
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("large bitmap width=");
+          ((StringBuilder)localObject1).append(0);
+          ((StringBuilder)localObject1).append(", height=");
+          ((StringBuilder)localObject1).append(0);
+          throw new Exception(((StringBuilder)localObject1).toString());
         }
       }
       catch (Throwable localThrowable)
@@ -711,190 +943,22 @@ public class ETTextView
         super.onMeasure(paramInt1, paramInt2);
         return;
       }
-      if ((j == 3) || (j == 4) || (j == 5))
-      {
-        createFounderLayout(ExpressionLayout.class);
-      }
-      else
-      {
-        createFounderLayout(FounderColorLayout.class);
-        continue;
-        label334:
-        if (i == 7) {
-          createFounderLayout(DynamicMultipleStyleLayout.class);
-        } else {
-          createFounderLayout(FounderColorLayout.class);
-        }
-      }
-    }
-    super.onMeasure(paramInt1, paramInt2);
-    return;
-    label366:
-    if (!hasHYFont())
-    {
-      super.onMeasure(paramInt1, paramInt2);
-      return;
-    }
-    int i1 = View.MeasureSpec.getMode(paramInt1);
-    int n = View.MeasureSpec.getMode(paramInt2);
-    int m = View.MeasureSpec.getSize(paramInt1);
-    int k = View.MeasureSpec.getSize(paramInt2);
-    boolean bool1;
-    Object localObject1;
-    if ((this.mLayout == null) || (this.mLayout.jdField_a_of_type_Long != this.mMsgId) || ((this.mFont != null) && (!this.mFont.equals(this.mLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont))) || (!this.mCacheMeasureResult) || (this.mLayout.jdField_b_of_type_Boolean != this.mMagicFont))
-    {
-      this.mDecorRunning = false;
-      this.mLayout = new ETLayout();
-      this.mTextSelection = new ETTextSelection(this, this.mLayout);
-      if (this.mDecoration != null)
-      {
-        this.mDecoration.deleteDescriptor();
-        this.mDecoration = null;
-      }
-      int i2 = getLinkTextColors().getDefaultColor();
-      if (this.mFont != null)
-      {
-        this.mFont.setColor(getCurrentTextColor());
-        this.mFont.setSize(getTextSize());
-        if ((getPaint().getFlags() & 0x20) <= 0) {
-          break label1397;
-        }
-        bool1 = true;
-        this.mFont.setBold(bool1);
-        if (this.mShadowRadius <= 0.0F) {
-          break label1005;
-        }
-        this.mFont.setShadow(true, this.mShadowColor, (int)this.mShadowDx, (int)this.mShadowDy, (int)this.mShadowRadius);
-      }
-      for (;;)
-      {
-        localObject1 = ETEngine.getInstance();
-        Object localObject2 = getPaint().getFontMetrics();
-        float f1 = ((Paint.FontMetrics)localObject2).descent;
-        float f2 = ((Paint.FontMetrics)localObject2).ascent;
-        float f3 = ((Paint.FontMetrics)localObject2).leading;
-        this.mLayout.jdField_a_of_type_Int = ((int)(f3 + (f1 - f2)));
-        this.mLayout.jdField_a_of_type_Long = this.mMsgId;
-        this.mLayout.jdField_b_of_type_Boolean = this.mMagicFont;
-        this.mLayout.a(this.mLinkBackcolor);
-        localObject2 = new ETFont(this.mFont.mFontId, this.mFont.mFontPath, getTextSize());
-        ((ETFont)localObject2).copy(this.mFont);
-        boolean bool2 = false;
-        i = this.mMaxWidth;
-        if ((i1 == -2147483648) || (i1 == 1073741824)) {
-          i = Math.min(this.mMaxWidth, m);
-        }
-        j = i - (getPaddingLeft() + getPaddingRight());
-        i = j;
-        if (i1 == -2147483648) {
-          i = Math.min(m, j);
-        }
-        if (this.mLayout.jdField_b_of_type_Boolean)
+      label1392:
+      if ((j != 3) && (j != 4)) {
+        if (j == 5)
         {
-          f1 = FontManager.c;
-          if (FontSettingManager.getFontLevel() == 18.0F) {
-            f1 = FontManager.e;
-          }
-          ((ETFont)localObject2).setSize(f1 * getTextSize());
-        }
-        j = ((ETEngine)localObject1).native_getHorizontalMarginThreshold((ETFont)localObject2, i);
-        ((ETFont)localObject2).setSize(getTextSize());
-        bool1 = bool2;
-        if (j > 0)
-        {
-          bool1 = bool2;
-          if (j < i)
-          {
-            bool1 = this.mLayout.a((ETEngine)localObject1, i - j, getText(), (ETFont)localObject2, i2, true, i);
-            this.mDecoration = this.mLayout.a((ETEngine)localObject1, true);
+          continue;
+          bool = false;
+          continue;
+          bool = false;
+          continue;
+          Object localObject2 = null;
+          continue;
+          if (i1 == 1073741824) {
+            i = m;
           }
         }
-        if (this.mDecoration == null)
-        {
-          bool1 = this.mLayout.a((ETEngine)localObject1, i, getText(), (ETFont)localObject2, i2, false, i);
-          this.mDecoration = this.mLayout.a((ETEngine)localObject1, true);
-        }
-        if (bool1) {
-          break;
-        }
-        this.mFont.mFontId = 0;
-        this.mLayout.jdField_a_of_type_Long = -1L;
-        super.onMeasure(paramInt1, paramInt2);
-        return;
-        label1005:
-        this.mFont.setShadow(false, 0, 0, 0, 0);
       }
-      if ((this.mLayout.jdField_b_of_type_Int >= 2048) || (this.mLayout.c >= 2048)) {
-        throw new Exception("large bitmap width=" + 0 + ", height=" + 0);
-      }
-      if (this.mLayout.jdField_a_of_type_Boolean) {
-        throw new Exception("no text use system measure2");
-      }
-      i = this.mLayout.jdField_b_of_type_Int;
-      j = this.mLayout.c;
-      if (this.mDecoration != null)
-      {
-        localObject1 = this.mDecoration.mMargins;
-        int i4 = ((Rect)localObject1).left;
-        int i5 = ((Rect)localObject1).right;
-        i2 = ((Rect)localObject1).top;
-        int i3 = ((Rect)localObject1).bottom;
-        i += i4 + i5;
-        j += i2 + i3;
-        label1187:
-        ETTextView.BitmapLocker.a(this.mBitmapLocker, i, j);
-        label1198:
-        if (this.mDecoration != null)
-        {
-          localObject1 = this.mDecoration.mMargins;
-          break label1403;
-        }
-      }
-    }
-    for (;;)
-    {
-      label1217:
-      m = Math.min(i, this.mMaxWidth);
-      if (n == 1073741824)
-      {
-        j = k;
-        label1240:
-        setMeasuredDimension(Math.max(m, this.mMinWidth), Math.max(j, this.mMinHeight));
-        return;
-      }
-      label1397:
-      label1403:
-      do
-      {
-        j = this.mLayout.jdField_b_of_type_Int + getPaddingLeft() + getPaddingRight();
-        i = j;
-        if (localObject1 == null) {
-          break label1217;
-        }
-        i = j + (((Rect)localObject1).left + ((Rect)localObject1).right);
-        break label1217;
-        j = this.mLayout.c + getPaddingTop() + getPaddingBottom();
-        i = j;
-        if (localObject1 != null)
-        {
-          i = ((Rect)localObject1).top;
-          i = j + (((Rect)localObject1).bottom + i);
-        }
-        j = i;
-        if (n != -2147483648) {
-          break label1240;
-        }
-        j = Math.min(i, k);
-        break label1240;
-        continue;
-        localObject1 = null;
-        break label1187;
-        localObject1 = null;
-        break label1198;
-        bool1 = false;
-        break;
-      } while (i1 != 1073741824);
-      i = m;
     }
   }
   
@@ -922,8 +986,13 @@ public class ETTextView
     }
     if (this.onDoubleClick != null)
     {
+      int i;
+      int j;
+      int k;
+      int m;
       int n;
       int i1;
+      Object localObject;
       if ((this.mPreviousUpEvent != null) && (paramMotionEvent.getAction() == 0))
       {
         this.touchL = paramMotionEvent.getX();
@@ -940,24 +1009,26 @@ public class ETTextView
           dealSmallEmojiClick(i - k + n, j - m + i1);
         }
         this.mCurrentDownEvent = MotionEvent.obtain(paramMotionEvent);
-        if ((this.mPreviousUpEvent != null) && (this.mCurrentDownEvent != null) && (isConsideredDoubleTap(this.mCurrentDownEvent, this.mPreviousUpEvent, paramMotionEvent)))
+        localObject = this.mPreviousUpEvent;
+        if (localObject != null)
         {
-          this.isSingleClick = false;
-          this.mCurrentDownEvent = null;
-          this.mPreviousUpEvent = null;
-          if (this.onDoubleClick != null)
+          MotionEvent localMotionEvent = this.mCurrentDownEvent;
+          if ((localMotionEvent != null) && (isConsideredDoubleTap(localMotionEvent, (MotionEvent)localObject, paramMotionEvent)))
           {
-            this.doublleClicked = true;
-            this.onDoubleClick.a(this);
-            return true;
+            this.isSingleClick = false;
+            this.mCurrentDownEvent = null;
+            this.mPreviousUpEvent = null;
+            if (this.onDoubleClick != null)
+            {
+              this.doublleClicked = true;
+              this.onDoubleClick.a(this);
+              return true;
+            }
           }
         }
       }
-      else
+      else if ((this.mPreviousUpEvent == null) && (paramMotionEvent.getAction() == 0))
       {
-        if ((this.mPreviousUpEvent != null) || (paramMotionEvent.getAction() != 0)) {
-          break label331;
-        }
         this.isSingleClick = true;
         this.touchL = paramMotionEvent.getX();
         this.touchT = paramMotionEvent.getY();
@@ -976,41 +1047,39 @@ public class ETTextView
           QLog.d("ETTextView", 2, "reserve to initial status");
         }
       }
-    }
-    label331:
-    while (paramMotionEvent.getAction() != 1) {
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ETTextView", 2, "action up");
-    }
-    int k = (int)paramMotionEvent.getX();
-    int i = (int)paramMotionEvent.getY();
-    int m = getPaddingLeft();
-    int j = getPaddingTop();
-    k = k - m + getScrollX();
-    i = i - j + getScrollY();
-    this.mEmojiX = k;
-    this.mEmojiY = i;
-    if (isUsingHYFont()) {
-      i = this.mLayout.b(k, i) + 1;
-    }
-    for (;;)
-    {
-      ClickableSpan[] arrayOfClickableSpan = (ClickableSpan[])((Spannable)getText()).getSpans(i, i, ClickableSpan.class);
-      if (arrayOfClickableSpan.length != 0)
+      else if (paramMotionEvent.getAction() == 1)
       {
-        arrayOfClickableSpan[0].onClick(this);
-        return true;
-        if (isUsingFZColorFont2()) {
-          i = this.mFounderColorLayout.a(k, i, getTextGraphMap());
+        if (QLog.isColorLevel()) {
+          QLog.d("ETTextView", 2, "action up");
         }
-      }
-      else
-      {
+        k = (int)paramMotionEvent.getX();
+        i = (int)paramMotionEvent.getY();
+        m = getPaddingLeft();
+        j = getPaddingTop();
+        k = k - m + getScrollX();
+        i = i - j + getScrollY();
+        this.mEmojiX = k;
+        this.mEmojiY = i;
+        if (isUsingHYFont()) {
+          i = this.mLayout.b(k, i) + 1;
+        } else if (isUsingFZColorFont2()) {
+          i = this.mFounderColorLayout.a(k, i, getTextGraphMap());
+        } else {
+          i = 0;
+        }
+        localObject = (ClickableSpan[])((Spannable)getText()).getSpans(i, i, ClickableSpan.class);
+        if (localObject.length != 0)
+        {
+          localObject[0].onClick(this);
+          return true;
+        }
         this.mPreviousUpEvent = MotionEvent.obtain(paramMotionEvent);
-        if ((isUsingHYFont()) && (!this.mDecorRunning) && (this.mDecoration != null)) {
-          this.mDecoration.gotoLastFrame();
+        if ((isUsingHYFont()) && (!this.mDecorRunning))
+        {
+          localObject = this.mDecoration;
+          if (localObject != null) {
+            ((ETDecoration)localObject).gotoLastFrame();
+          }
         }
         if (this.doublleClicked)
         {
@@ -1018,10 +1087,9 @@ public class ETTextView
           this.mPreviousUpEvent = null;
         }
         postDelayed(this.mTimerForSecondClick, 200L);
-        break;
       }
-      i = 0;
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void pauseAnimation()
@@ -1031,15 +1099,17 @@ public class ETTextView
   
   public void pauseFounderColorFontAnimation()
   {
-    if (this.mFounderColorLayout != null) {
-      this.mFounderColorLayout.f();
+    FounderBaseLayout localFounderBaseLayout = this.mFounderColorLayout;
+    if (localFounderBaseLayout != null) {
+      localFounderBaseLayout.f();
     }
   }
   
   public void restartFounderColorFontAnimation()
   {
-    if (this.mFounderColorLayout != null) {
-      this.mFounderColorLayout.g();
+    FounderBaseLayout localFounderBaseLayout = this.mFounderColorLayout;
+    if (localFounderBaseLayout != null) {
+      localFounderBaseLayout.g();
     }
   }
   
@@ -1055,45 +1125,47 @@ public class ETTextView
   public void setDefaultFont(Typeface paramTypeface, long paramLong)
   {
     setTypeface(paramTypeface);
-    if (VasShieldFont.jdField_a_of_type_Int == 4) {
-      if (this.mFont == null)
+    if (VasShieldFont.jdField_a_of_type_Int == 4)
+    {
+      paramTypeface = this.mFont;
+      if (paramTypeface == null)
       {
         this.mFont = new ETFont(9999, VasShieldFont.a(), getTextSize());
-        this.mMsgId = paramLong;
-        this.mFont.mFontType = -1;
       }
+      else
+      {
+        paramTypeface.mFontId = 9999;
+        paramTypeface.setPath(VasShieldFont.a());
+        this.mFont.setSize(getTextSize());
+      }
+      this.mMsgId = paramLong;
+      this.mFont.mFontType = -1;
     }
-    for (;;)
+    else
     {
-      if (this.mOnBeforeTextOrFontChangeListener != null) {
-        this.mOnBeforeTextOrFontChangeListener.a(this);
-      }
-      return;
-      this.mFont.mFontId = 9999;
-      this.mFont.setPath(VasShieldFont.a());
-      this.mFont.setSize(getTextSize());
-      break;
       this.mFont = null;
+    }
+    paramTypeface = this.mOnBeforeTextOrFontChangeListener;
+    if (paramTypeface != null) {
+      paramTypeface.a(this);
     }
   }
   
   public void setFont(int paramInt, long paramLong)
   {
-    if (this.mFont == null) {
+    ETFont localETFont = this.mFont;
+    if (localETFont == null) {
       this.mFont = new ETFont(paramInt, "", getTextSize());
+    } else {
+      localETFont.mFontId = paramInt;
     }
-    for (;;)
-    {
-      if (this.mFont.mFontId == 0) {
-        setTypeface(null);
-      }
-      if (this.mMsgId != paramLong) {
-        this.hasComputeComplexScript = false;
-      }
-      this.mMsgId = paramLong;
-      return;
-      this.mFont.mFontId = paramInt;
+    if (this.mFont.mFontId == 0) {
+      setTypeface(null);
     }
+    if (this.mMsgId != paramLong) {
+      this.hasComputeComplexScript = false;
+    }
+    this.mMsgId = paramLong;
   }
   
   public void setFont(ETFont paramETFont, long paramLong)
@@ -1103,36 +1175,32 @@ public class ETTextView
   
   public void setFont(ETFont paramETFont, ChatMessage paramChatMessage, SessionInfo paramSessionInfo)
   {
-    Object localObject;
     if ((paramETFont.mText == null) && ((paramChatMessage instanceof MessageForText)))
     {
-      localObject = (MessageForText)paramChatMessage;
-      if (android.text.TextUtils.isEmpty(((MessageForText)localObject).sb)) {
-        break label114;
-      }
-      if (android.text.TextUtils.isEmpty(((MessageForText)localObject).sb2)) {
-        break label104;
-      }
-      localObject = ((MessageForText)localObject).sb2;
-    }
-    for (;;)
-    {
-      paramETFont.mText = ((CharSequence)localObject);
-      localObject = paramChatMessage.getExtInfoFromExtStr("vip_sub_font_id");
-      int i = 0;
-      if (!android.text.TextUtils.isEmpty((CharSequence)localObject)) {
-        i = Integer.parseInt((String)localObject);
-      }
-      setFont(paramETFont, paramChatMessage.uniseq, i);
-      this.mMessage = paramChatMessage;
-      this.mSessionInfo = paramSessionInfo;
-      return;
-      label104:
-      localObject = ((MessageForText)localObject).sb;
-      continue;
-      label114:
+      MessageForText localMessageForText = (MessageForText)paramChatMessage;
       localObject = null;
+      if (!android.text.TextUtils.isEmpty(localMessageForText.sb)) {
+        if (!android.text.TextUtils.isEmpty(localMessageForText.sb2)) {
+          localObject = localMessageForText.sb2;
+        } else {
+          localObject = localMessageForText.sb;
+        }
+      }
+      paramETFont.mText = ((CharSequence)localObject);
     }
+    Object localObject = paramChatMessage.getExtInfoFromExtStr("vip_sub_font_id");
+    int i = 0;
+    if (!android.text.TextUtils.isEmpty((CharSequence)localObject)) {
+      i = Integer.parseInt((String)localObject);
+    }
+    setFont(paramETFont, paramChatMessage.uniseq, i);
+    this.mMessage = paramChatMessage;
+    this.mSessionInfo = paramSessionInfo;
+  }
+  
+  public void setIsFounderAnimating(boolean paramBoolean)
+  {
+    this.isFounderAnimating = paramBoolean;
   }
   
   public void setMaxWidth(int paramInt)
@@ -1169,8 +1237,9 @@ public class ETTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    if (this.mOnBeforeTextOrFontChangeListener != null) {
-      this.mOnBeforeTextOrFontChangeListener.a(this, paramCharSequence);
+    ETTextView.OnTextOrFontChangeListener localOnTextOrFontChangeListener = this.mOnBeforeTextOrFontChangeListener;
+    if (localOnTextOrFontChangeListener != null) {
+      localOnTextOrFontChangeListener.a(this, paramCharSequence);
     }
     super.setText(paramCharSequence, paramBufferType);
   }
@@ -1182,17 +1251,18 @@ public class ETTextView
   
   public final void setTextMsg(CharSequence paramCharSequence)
   {
-    if (getText() != null) {}
-    for (String str = getText().toString();; str = "")
+    String str;
+    if (getText() != null) {
+      str = getText().toString();
+    } else {
+      str = "";
+    }
+    if ((paramCharSequence != null) && (!paramCharSequence.toString().equals(str)))
     {
-      if ((paramCharSequence != null) && (!paramCharSequence.toString().equals(str)))
-      {
-        setText(paramCharSequence);
-        this.mMsgId = System.currentTimeMillis();
-        requestLayout();
-        invalidate();
-      }
-      return;
+      setText(paramCharSequence);
+      this.mMsgId = System.currentTimeMillis();
+      requestLayout();
+      invalidate();
     }
   }
   
@@ -1208,126 +1278,151 @@ public class ETTextView
     }
     catch (Exception paramTypeface)
     {
-      QLog.e("ETTextView", 1, "fail to setTypeface", paramTypeface);
+      label19:
+      break label19;
     }
+    QLog.e("ETTextView", 1, "fail to setTypeface", paramTypeface);
   }
   
   public void startAnimation(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (isUsingHYFont()) {
+    if (isUsingHYFont())
+    {
       startDecorAnimation(paramBoolean1, paramBoolean2);
-    }
-    while (!hasFounderAnimationFont()) {
       return;
     }
-    startFounderDecorAnimation(paramBoolean1, paramBoolean2);
+    if (hasFounderAnimationFont()) {
+      startFounderDecorAnimation(paramBoolean1, paramBoolean2);
+    }
   }
   
   public void startDecorAnimation(boolean paramBoolean1, boolean paramBoolean2)
   {
     this.mPauseAnimation = false;
-    if ((!hasDecorAnimation()) || (!isViewVisible()) || (this.isParsingMagicFont)) {
-      return;
-    }
-    if ((enableAnimation) && (!this.mPauseAnimation)) {}
-    for (boolean bool = true;; bool = false)
+    if ((hasDecorAnimation()) && (isViewVisible()))
     {
+      if (this.isParsingMagicFont) {
+        return;
+      }
+      boolean bool;
+      if ((ETFontUtil.enableAnimation) && (!this.mPauseAnimation)) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       this.mDecorAnimating = bool;
-      if ((!this.mDecorAnimating) || (this.mDecorRunning) || ((paramBoolean2) && (this.mDecoration.isLastFrame()))) {
-        break;
+      if ((this.mDecorAnimating) && (!this.mDecorRunning))
+      {
+        if ((paramBoolean2) && (this.mDecoration.isLastFrame())) {
+          return;
+        }
+        this.mDecorRunning = true;
+        this.shouldStartAnimation = false;
+        mUIHandler.obtainMessage(0, ETTextView.DecorationHolder.a(this)).sendToTarget();
+        if (!paramBoolean2)
+        {
+          ETTextView.TextAnimationListener localTextAnimationListener = this.mAnimationListener;
+          if (localTextAnimationListener != null) {
+            localTextAnimationListener.a(this.mMessage, paramBoolean1, this.mFont.mFontId);
+          }
+        }
       }
-      this.mDecorRunning = true;
-      this.shouldStartAnimation = false;
-      mUIHandler.obtainMessage(0, ETTextView.DecorationHolder.a(this)).sendToTarget();
-      if ((paramBoolean2) || (this.mAnimationListener == null)) {
-        break;
-      }
-      this.mAnimationListener.a(this.mMessage, paramBoolean1, this.mFont.mFontId);
-      return;
     }
   }
   
   public void startFounderColorFontAnimation()
   {
-    if (this.mFounderColorLayout != null) {
-      this.mFounderColorLayout.b();
+    FounderBaseLayout localFounderBaseLayout = this.mFounderColorLayout;
+    if (localFounderBaseLayout != null) {
+      localFounderBaseLayout.b();
     }
   }
   
   public void startFounderDecorAnimation(boolean paramBoolean1, boolean paramBoolean2)
   {
     this.mPauseAnimation = false;
-    if ((this.mFont == null) || (!isViewVisible())) {}
-    int i;
-    int j;
-    do
+    if (this.mFont != null)
     {
+      if (!isViewVisible()) {
+        return;
+      }
       Object localObject;
-      do
+      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
       {
-        do
+        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (localObject != null)
         {
-          do
+          localObject = (IFontManagerService)((QQAppInterface)localObject).getRuntimeService(IFontManagerService.class, "");
+          if ((localObject != null) && (!((IFontManagerService)localObject).getFounderDynamicFontAbility())) {
+            return;
+          }
+        }
+      }
+      int i;
+      int j;
+      if ((ETFontUtil.enableAnimation) && (!this.mPauseAnimation))
+      {
+        if ((this.mFounderColorLayout != null) && ((this.shouldStartAnimation) || (paramBoolean1) || (paramBoolean2)))
+        {
+          i = this.mFounderColorLayout.e;
+          localObject = this.mFounderColorLayout.i;
+          if (localObject != null)
           {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-                    break;
-                  }
-                  localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-                  if (localObject == null) {
-                    break;
-                  }
-                  localObject = (FontManager)((QQAppInterface)localObject).getManager(QQManagerFactory.CHAT_FONT_MANAGER);
-                } while ((localObject != null) && (!((FontManager)localObject).b()));
-                if ((!enableAnimation) || (this.mPauseAnimation)) {
-                  break;
-                }
-              } while ((this.mFounderColorLayout == null) || ((!this.shouldStartAnimation) && (!paramBoolean1) && (!paramBoolean2)));
-              i = this.mFounderColorLayout.e;
-              localObject = this.mFounderColorLayout.i;
-            } while (localObject == null);
             j = localObject[0];
-          } while ((paramBoolean2) && (i == 0));
-          if (i == 0) {
-            startFounderColorFontAnimation();
-          }
-          for (this.isFounderAnimating = true;; this.isFounderAnimating = true)
-          {
-            do
-            {
-              this.shouldStartAnimation = false;
-              if ((paramBoolean2) || (this.mAnimationListener == null)) {
-                break;
-              }
-              this.mAnimationListener.a(this.mMessage, paramBoolean1, this.mFont.mFontId);
+            if ((paramBoolean2) && (i == 0)) {
               return;
-            } while ((i <= 0) || (i >= j));
-            restartFounderColorFontAnimation();
+            }
+            if (i == 0)
+            {
+              startFounderColorFontAnimation();
+              this.isFounderAnimating = true;
+            }
+            else if ((i > 0) && (i < j))
+            {
+              restartFounderColorFontAnimation();
+              this.isFounderAnimating = true;
+            }
+            this.shouldStartAnimation = false;
+            if (!paramBoolean2)
+            {
+              localObject = this.mAnimationListener;
+              if (localObject != null) {
+                ((ETTextView.TextAnimationListener)localObject).a(this.mMessage, paramBoolean1, this.mFont.mFontId);
+              }
+            }
           }
-        } while (this.mFounderColorLayout == null);
-        i = this.mFounderColorLayout.e;
-        localObject = this.mFounderColorLayout.i;
-      } while (localObject == null);
-      j = localObject[0];
-    } while ((i <= 0) || (i >= j));
-    pauseFounderColorFontAnimation();
+        }
+      }
+      else
+      {
+        localObject = this.mFounderColorLayout;
+        if (localObject != null)
+        {
+          i = ((FounderBaseLayout)localObject).e;
+          localObject = this.mFounderColorLayout.i;
+          if (localObject != null)
+          {
+            j = localObject[0];
+            if ((i > 0) && (i < j)) {
+              pauseFounderColorFontAnimation();
+            }
+          }
+        }
+      }
+    }
   }
   
   public void stopAllDecorAnimation()
   {
-    if (mUIHandler != null)
+    Handler localHandler = mUIHandler;
+    if (localHandler != null)
     {
-      mUIHandler.removeMessages(0);
+      localHandler.removeMessages(0);
       mUIHandler.removeMessages(1);
     }
-    if (mCreateDecorationHandler != null) {
-      mCreateDecorationHandler.removeMessages(2);
+    localHandler = mCreateDecorationHandler;
+    if (localHandler != null) {
+      localHandler.removeMessages(2);
     }
     this.mDecorAnimating = false;
     if (hasDecorAnimation()) {
@@ -1337,36 +1432,41 @@ public class ETTextView
   
   public void stopFounderColorFontAnimation()
   {
-    if (this.mFounderColorLayout != null) {
-      this.mFounderColorLayout.a(true);
+    FounderBaseLayout localFounderBaseLayout = this.mFounderColorLayout;
+    if (localFounderBaseLayout != null) {
+      localFounderBaseLayout.a(true);
     }
   }
   
   public int touchIndex(int paramInt1, int paramInt2)
   {
-    int i = -1;
-    if (isUsingFZColorFont2()) {
-      if ((this.mFounderColorLayout instanceof FounderBaseLayout.FounderHighlightInterface))
-      {
-        paramInt1 = ((FounderBaseLayout.FounderHighlightInterface)this.mFounderColorLayout).a(paramInt1, paramInt2);
-        i = getTextGraphMap().b(paramInt1);
-      }
-    }
-    do
+    Object localObject;
+    if (isUsingFZColorFont2())
     {
-      return i;
-      if (!isUsingHYFont()) {
-        break;
+      localObject = this.mFounderColorLayout;
+      if ((localObject instanceof FounderBaseLayout.FounderHighlightInterface))
+      {
+        paramInt1 = ((FounderBaseLayout.FounderHighlightInterface)localObject).a(paramInt1, paramInt2);
+        return getTextGraphMap().b(paramInt1);
       }
-    } while (this.mTextSelection == null);
-    paramInt1 = this.mTextSelection.a(paramInt1, paramInt2);
-    return getTextGraphMap().b(paramInt1);
+      return -1;
+    }
+    if (isUsingHYFont())
+    {
+      localObject = this.mTextSelection;
+      if (localObject != null)
+      {
+        paramInt1 = ((ETTextSelection)localObject).a(paramInt1, paramInt2);
+        return getTextGraphMap().b(paramInt1);
+      }
+      return -1;
+    }
     return super.touchIndex(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.ETTextView
  * JD-Core Version:    0.7.0.1
  */

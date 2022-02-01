@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.view.View;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -41,17 +42,23 @@ public abstract class AbsWsUI<T>
     return this.jdField_a_of_type_Int;
   }
   
-  public Context a()
+  protected Context a()
   {
     return this.jdField_a_of_type_AndroidContentContext;
   }
   
-  public Resources a()
+  protected Resources a()
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null) {
-      return this.jdField_a_of_type_AndroidContentContext.getResources();
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    if (localContext != null) {
+      return localContext.getResources();
     }
     return null;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
   public T a()
@@ -63,8 +70,23 @@ public abstract class AbsWsUI<T>
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      localView.setVisibility(paramInt);
+    }
+  }
+  
+  protected void a(@Nullable View paramView, boolean paramBoolean)
+  {
+    if (paramView != null)
+    {
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
+      }
+      paramView.setVisibility(i);
     }
   }
   
@@ -103,7 +125,7 @@ public abstract class AbsWsUI<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUI
  * JD-Core Version:    0.7.0.1
  */

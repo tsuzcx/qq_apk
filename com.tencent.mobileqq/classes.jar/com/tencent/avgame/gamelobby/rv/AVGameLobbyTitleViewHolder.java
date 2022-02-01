@@ -9,7 +9,7 @@ import com.tencent.avgame.gamelobby.data.AVGameLobbyTitleContentInfo;
 public class AVGameLobbyTitleViewHolder
   extends BaseViewHolder<AVGameLobbyTitleContentInfo>
 {
-  private static final String jdField_a_of_type_JavaLangString = AVGameLobbyTitleViewHolder.class.getName();
+  private static final String jdField_a_of_type_JavaLangString = "com.tencent.avgame.gamelobby.rv.AVGameLobbyTitleViewHolder";
   private Context jdField_a_of_type_AndroidContentContext = null;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   
@@ -17,7 +17,7 @@ public class AVGameLobbyTitleViewHolder
   {
     super(paramView);
     this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363295));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363227));
   }
   
   protected void a()
@@ -36,7 +36,7 @@ public class AVGameLobbyTitleViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.rv.AVGameLobbyTitleViewHolder
  * JD-Core Version:    0.7.0.1
  */

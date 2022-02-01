@@ -2,12 +2,14 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt;
 
 import UserGrowth.stSimpleMetaFeed;
 import UserGrowth.stSimpleMetaGdtAdInfo;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.ad.tangram.util.AdExposureChecker;
 import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
 import com.tencent.biz.pubaccount.weishi_new.baseui.IWSItemView;
 import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerParam;
 import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerWrapper;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.AbsWSVideoItemView;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoAreaController;
@@ -22,6 +24,13 @@ public class GdtAdWSVerticalCommonVideoHolder
 {
   public AdExposureChecker.ExposureCallback a;
   public ArrayList<AdExposureChecker> a;
+  
+  public GdtAdWSVerticalCommonVideoHolder(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  {
+    super(paramViewGroup, 2131560028, paramInt, paramWSVerticalPageFragment);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = null;
+  }
   
   public int a()
   {
@@ -47,15 +56,15 @@ public class GdtAdWSVerticalCommonVideoHolder
   
   public IWSItemView<WSVerticalItemData> a(int paramInt)
   {
-    return new GdtAdWSVerticalVideoItemView(a(), this);
+    return new GdtAdWSVerticalVideoItemView(getContext(), this);
   }
   
   public void a()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
         ((AdExposureChecker)((Iterator)localObject).next()).onActivityResume();
       }
@@ -72,17 +81,17 @@ public class GdtAdWSVerticalCommonVideoHolder
     }
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return true;
   }
   
   public void b()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
         ((AdExposureChecker)((Iterator)localObject).next()).onActivityPause();
       }
@@ -92,31 +101,30 @@ public class GdtAdWSVerticalCommonVideoHolder
       localObject = ((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject).a();
       if ((((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject).a() != null) && (localObject != null) && (((stSimpleMetaFeed)localObject).gdt_ad_type == 1) && (((stSimpleMetaFeed)localObject).gdt_ad_info != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper != null))
       {
-        if (!((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject).a().isGdtAdclicked) {
-          break label183;
+        if (((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject).a().isGdtAdclicked)
+        {
+          GdtAdWsVideoReport.a((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, false, 2);
+          ((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject).a().isGdtAdclicked = false;
         }
-        GdtAdWsVideoReport.a((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, 2);
-        ((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject).a().isGdtAdclicked = false;
+        else
+        {
+          GdtAdWsVideoReport.a((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, false, 3);
+        }
+        ((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject).a().isGdtAdVidoReport = true;
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper.a();
       }
-    }
-    for (;;)
-    {
-      ((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject).a().isGdtAdVidoReport = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper.a();
-      return;
-      label183:
-      GdtAdWsVideoReport.a((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, 3);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        AdExposureChecker localAdExposureChecker = (AdExposureChecker)localIterator.next();
+        AdExposureChecker localAdExposureChecker = (AdExposureChecker)((Iterator)localObject).next();
         localAdExposureChecker.onActivityDestroy();
         localAdExposureChecker.setCallback(null);
       }
@@ -130,7 +138,7 @@ public class GdtAdWSVerticalCommonVideoHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.GdtAdWSVerticalCommonVideoHolder
  * JD-Core Version:    0.7.0.1
  */

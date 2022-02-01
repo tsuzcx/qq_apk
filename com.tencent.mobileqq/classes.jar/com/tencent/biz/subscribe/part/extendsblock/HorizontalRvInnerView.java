@@ -33,21 +33,23 @@ public class HorizontalRvInnerView
   
   public void setData(ArrayList paramArrayList)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView$HorizontalRvAdapter != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView$HorizontalRvAdapter.a(paramArrayList);
+    HorizontalRvInnerView.HorizontalRvAdapter localHorizontalRvAdapter = this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView$HorizontalRvAdapter;
+    if (localHorizontalRvAdapter != null) {
+      localHorizontalRvAdapter.a(paramArrayList);
     }
   }
   
   public void setOrientation(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(paramInt);
+    LinearLayoutManager localLinearLayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+    if (localLinearLayoutManager != null) {
+      localLinearLayoutManager.setOrientation(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.extendsblock.HorizontalRvInnerView
  * JD-Core Version:    0.7.0.1
  */

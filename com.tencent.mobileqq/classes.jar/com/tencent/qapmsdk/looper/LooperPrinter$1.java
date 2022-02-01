@@ -13,19 +13,23 @@ class LooperPrinter$1
   
   public boolean onAfterStack(long paramLong)
   {
-    if ((Debug.isDebuggerConnected()) || (paramLong == 0L)) {
-      return true;
-    }
-    paramLong = SystemClock.uptimeMillis() - paramLong;
-    if ((LooperPrinter.access$000(this.this$0) != 0L) && (paramLong > 3000L))
+    if (!Debug.isDebuggerConnected())
     {
-      LooperPrinter.access$002(this.this$0, 0L);
-      MonitorInfo localMonitorInfo = (MonitorInfo)LooperMonitor.monitorMap.get(LooperPrinter.access$100(this.this$0));
-      Logger.INSTANCE.i(new String[] { "QAPM_looper_LooperPrinter", LooperPrinter.access$100(this.this$0), ", cost=", String.valueOf(paramLong), ", more than 3s, force!!", LooperPrinter.access$200(this.this$0) });
-      this.this$0.gotoReport(localMonitorInfo, paramLong);
-      return true;
+      if (paramLong == 0L) {
+        return true;
+      }
+      paramLong = SystemClock.uptimeMillis() - paramLong;
+      if ((LooperPrinter.access$000(this.this$0) != 0L) && (paramLong > 3000L))
+      {
+        LooperPrinter.access$002(this.this$0, 0L);
+        MonitorInfo localMonitorInfo = (MonitorInfo)LooperMonitor.monitorMap.get(LooperPrinter.access$100(this.this$0));
+        Logger.INSTANCE.i(new String[] { "QAPM_looper_LooperPrinter", LooperPrinter.access$100(this.this$0), ", cost=", String.valueOf(paramLong), ", more than 3s, force!!", LooperPrinter.access$200(this.this$0) });
+        this.this$0.gotoReport(localMonitorInfo, paramLong);
+        return true;
+      }
+      return false;
     }
-    return false;
+    return true;
   }
   
   public void onMonitorEnd()
@@ -35,7 +39,7 @@ class LooperPrinter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.LooperPrinter.1
  * JD-Core Version:    0.7.0.1
  */

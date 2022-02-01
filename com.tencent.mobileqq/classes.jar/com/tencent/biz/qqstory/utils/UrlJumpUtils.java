@@ -13,28 +13,32 @@ public class UrlJumpUtils
 {
   public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean)
   {
-    boolean bool1 = false;
     paramQQAppInterface = JumpParser.a(paramQQAppInterface, paramContext, paramString);
-    if (paramQQAppInterface != null) {
-      bool1 = paramQQAppInterface.a();
-    }
-    for (boolean bool2 = true;; bool2 = false)
+    boolean bool1 = false;
+    boolean bool2;
+    if (paramQQAppInterface != null)
     {
-      if ((!bool2) && (paramBoolean))
-      {
-        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", paramString);
-        localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131715775));
-        paramContext.startActivity(localIntent);
-      }
-      SLog.b("UrlJumpUtils", "jump %s, actionResult = %b, handled = %b", paramQQAppInterface, Boolean.valueOf(bool1), Boolean.valueOf(bool2));
-      return bool2;
+      bool2 = paramQQAppInterface.a();
+      bool1 = true;
     }
+    else
+    {
+      bool2 = false;
+    }
+    if ((!bool1) && (paramBoolean))
+    {
+      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramString);
+      localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131715699));
+      paramContext.startActivity(localIntent);
+    }
+    SLog.b("UrlJumpUtils", "jump %s, actionResult = %b, handled = %b", paramQQAppInterface, Boolean.valueOf(bool2), Boolean.valueOf(bool1));
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.UrlJumpUtils
  * JD-Core Version:    0.7.0.1
  */

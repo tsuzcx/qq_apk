@@ -6,11 +6,11 @@ public abstract interface EditableModifier
   
   public abstract void c();
   
-  public abstract void i_(boolean paramBoolean);
+  public abstract void k_(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.EditableModifier
  * JD-Core Version:    0.7.0.1
  */

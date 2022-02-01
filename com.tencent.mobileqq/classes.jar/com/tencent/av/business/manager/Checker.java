@@ -4,6 +4,7 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
+import com.tencent.av.business.manager.pendant.ItemBase;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -40,7 +41,7 @@ public class Checker
       a();
       return;
     }
-    if (paramItemRecord.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase == null)
+    if (paramItemRecord.jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase == null)
     {
       paramItemRecord.jdField_a_of_type_Int += 1;
       a();
@@ -50,111 +51,136 @@ public class Checker
     ThreadManager.excute(new Checker.1(this, paramItemRecord, paramString), 16, null, false);
   }
   
-  public void a(EffectConfigBase.ItemBase paramItemBase, String paramString1, String paramString2, ArrayList<String> paramArrayList, boolean paramBoolean)
+  public void a(ItemBase paramItemBase, String paramString1, String paramString2, ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    Object localObject;
-    if (paramItemBase == null)
-    {
-      localObject = null;
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(localObject))) {
-        break label51;
-      }
+    String str;
+    if (paramItemBase == null) {
+      str = null;
+    } else {
+      str = paramItemBase.getId();
     }
-    label51:
-    Checker.ItemRecord localItemRecord1;
-    do
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      return;
-      localObject = paramItemBase.getId();
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.i("Checker", 2, "addToCheck, item[" + paramItemBase + "]");
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(str)) {
+        return;
       }
-      Checker.ItemRecord localItemRecord2 = (Checker.ItemRecord)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-      localItemRecord1 = localItemRecord2;
-      if (localItemRecord2 == null)
+      if (QLog.isColorLevel())
       {
-        localItemRecord1 = new Checker.ItemRecord(paramItemBase, paramArrayList, paramBoolean);
-        localItemRecord1.jdField_a_of_type_JavaLangString = paramString1;
-        localItemRecord1.jdField_b_of_type_JavaLangString = paramString2;
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, localItemRecord1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("addToCheck, item[");
+        ((StringBuilder)localObject).append(paramItemBase);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("Checker", 2, ((StringBuilder)localObject).toString());
       }
-    } while (localItemRecord1.a());
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(localObject);
-    a();
+      Checker.ItemRecord localItemRecord = (Checker.ItemRecord)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      Object localObject = localItemRecord;
+      if (localItemRecord == null)
+      {
+        localObject = new Checker.ItemRecord(paramItemBase, paramArrayList, paramBoolean);
+        ((Checker.ItemRecord)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((Checker.ItemRecord)localObject).jdField_b_of_type_JavaLangString = paramString2;
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject);
+      }
+      if (((Checker.ItemRecord)localObject).a()) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(str);
+      a();
+    }
   }
   
   void a(String paramString, Checker.ItemRecord paramItemRecord)
   {
-    boolean bool = paramItemRecord.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase.isUsable();
+    boolean bool = paramItemRecord.jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase.isUsable();
     int j;
-    if ((bool) && (!FileUtils.a(paramItemRecord.jdField_b_of_type_JavaLangString))) {
+    StringBuilder localStringBuilder2;
+    if ((bool) && (!FileUtils.fileExists(paramItemRecord.jdField_b_of_type_JavaLangString)))
+    {
       j = 1;
     }
-    for (;;)
+    else if ((bool) && (paramItemRecord.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      if (j != 0) {}
+      int i = 0;
+      while (i < paramItemRecord.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        String str = (String)paramItemRecord.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (!TextUtils.isEmpty(str))
+        {
+          if (paramItemRecord.jdField_b_of_type_JavaLangString.endsWith(File.separator))
+          {
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append(paramItemRecord.jdField_b_of_type_JavaLangString);
+            localStringBuilder2.append(str);
+            str = localStringBuilder2.toString();
+          }
+          else
+          {
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append(paramItemRecord.jdField_b_of_type_JavaLangString);
+            localStringBuilder2.append(File.separator);
+            localStringBuilder2.append(str);
+            str = localStringBuilder2.toString();
+          }
+          if (!FileUtils.fileExists(str))
+          {
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder2 = new StringBuilder();
+              localStringBuilder2.append("realCheck, id[");
+              localStringBuilder2.append(paramString);
+              localStringBuilder2.append("], unExistFile[");
+              localStringBuilder2.append(str);
+              localStringBuilder2.append("]");
+              QLog.i("Checker", 2, localStringBuilder2.toString());
+            }
+            i = 1;
+            break label262;
+          }
+        }
+        i += 1;
+      }
+      i = 0;
+      label262:
+      j = i;
+      if (i != 0)
+      {
+        FileUtils.deleteDirectory(paramItemRecord.jdField_b_of_type_JavaLangString);
+        j = i;
+      }
+    }
+    else
+    {
+      j = 0;
+    }
+    if (j != 0)
+    {
       try
       {
-        FileUtils.a(paramItemRecord.jdField_a_of_type_JavaLangString, paramItemRecord.jdField_b_of_type_JavaLangString, false);
+        FileUtils.uncompressZip(paramItemRecord.jdField_a_of_type_JavaLangString, paramItemRecord.jdField_b_of_type_JavaLangString, false);
         paramItemRecord.jdField_b_of_type_Boolean = true;
-        if ((!paramItemRecord.jdField_b_of_type_Boolean) && (paramItemRecord.a()) && (paramItemRecord.jdField_a_of_type_Boolean))
-        {
-          FileUtils.e(paramItemRecord.jdField_a_of_type_JavaLangString);
-          if (QLog.isColorLevel()) {
-            QLog.i("Checker", 2, "realCheck, del zip id[" + paramString + "], path[" + paramItemRecord.jdField_a_of_type_JavaLangString + "]");
-          }
-        }
-        return;
-        if ((bool) && (paramItemRecord.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-        {
-          i = 0;
-          label144:
-          if (i < paramItemRecord.jdField_a_of_type_JavaUtilArrayList.size())
-          {
-            String str = (String)paramItemRecord.jdField_a_of_type_JavaUtilArrayList.get(i);
-            if (TextUtils.isEmpty(str)) {}
-            label327:
-            for (;;)
-            {
-              i += 1;
-              break label144;
-              if (paramItemRecord.jdField_b_of_type_JavaLangString.endsWith(File.separator)) {}
-              for (str = paramItemRecord.jdField_b_of_type_JavaLangString + str;; str = paramItemRecord.jdField_b_of_type_JavaLangString + File.separator + str)
-              {
-                if (FileUtils.a(str)) {
-                  break label327;
-                }
-                if (!QLog.isColorLevel()) {
-                  break label371;
-                }
-                QLog.i("Checker", 2, "realCheck, id[" + paramString + "], unExistFile[" + str + "]");
-                i = 1;
-                j = i;
-                if (i == 0) {
-                  break;
-                }
-                FileUtils.a(paramItemRecord.jdField_b_of_type_JavaLangString);
-                j = i;
-                break;
-              }
-            }
-          }
-        }
       }
       catch (IOException localIOException)
       {
-        for (;;)
+        paramItemRecord.jdField_b_of_type_Boolean = false;
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("realCheck, uncompressZip fail, record[");
+        localStringBuilder2.append(paramItemRecord);
+        localStringBuilder2.append("]");
+        QLog.i("Checker", 2, localStringBuilder2.toString(), localIOException);
+      }
+      if ((!paramItemRecord.jdField_b_of_type_Boolean) && (paramItemRecord.a()) && (paramItemRecord.jdField_a_of_type_Boolean))
+      {
+        FileUtils.deleteFile(paramItemRecord.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel())
         {
-          paramItemRecord.jdField_b_of_type_Boolean = false;
-          QLog.i("Checker", 2, "realCheck, uncompressZip fail, record[" + paramItemRecord + "]", localIOException);
-          continue;
-          label371:
-          int i = 1;
-          continue;
-          i = 0;
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("realCheck, del zip id[");
+          localStringBuilder1.append(paramString);
+          localStringBuilder1.append("], path[");
+          localStringBuilder1.append(paramItemRecord.jdField_a_of_type_JavaLangString);
+          localStringBuilder1.append("]");
+          QLog.i("Checker", 2, localStringBuilder1.toString());
         }
-        j = 0;
       }
     }
   }
@@ -175,7 +201,7 @@ public class Checker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.Checker
  * JD-Core Version:    0.7.0.1
  */

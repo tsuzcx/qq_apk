@@ -8,63 +8,61 @@ public class ActivityLeakSolution
 {
   public static void a(Dialog paramDialog)
   {
-    if (paramDialog == null) {}
-    for (;;)
-    {
+    if (paramDialog == null) {
       return;
-      String[] arrayOfString = new String[3];
-      arrayOfString[0] = "mDismissMessage";
-      arrayOfString[1] = "mCancelMessage";
-      arrayOfString[2] = "mShowMessage";
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
+    }
+    String[] arrayOfString = new String[3];
+    arrayOfString[0] = "mDismissMessage";
+    arrayOfString[1] = "mCancelMessage";
+    arrayOfString[2] = "mShowMessage";
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = arrayOfString[i];
+      try
       {
-        Object localObject = arrayOfString[i];
-        try
+        localObject = Dialog.class.getDeclaredField((String)localObject);
+        if (localObject != null)
         {
-          localObject = Dialog.class.getDeclaredField((String)localObject);
-          if (localObject != null)
+          if (!((Field)localObject).isAccessible()) {
+            ((Field)localObject).setAccessible(true);
+          }
+          localObject = ((Field)localObject).get(paramDialog);
+          if ((localObject instanceof Message))
           {
-            if (!((Field)localObject).isAccessible()) {
-              ((Field)localObject).setAccessible(true);
-            }
-            localObject = ((Field)localObject).get(paramDialog);
-            if ((localObject instanceof Message))
+            localObject = (Message)localObject;
+            if (((Message)localObject).obj != null)
             {
-              localObject = (Message)localObject;
-              if (((Message)localObject).obj != null)
-              {
-                ((Message)localObject).obj = null;
-                ((Message)localObject).what = 0;
-              }
+              ((Message)localObject).obj = null;
+              ((Message)localObject).what = 0;
             }
           }
         }
-        catch (NoSuchFieldException localNoSuchFieldException)
-        {
-          localNoSuchFieldException.printStackTrace();
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          localIllegalArgumentException.printStackTrace();
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          localIllegalAccessException.printStackTrace();
-        }
-        catch (Throwable localThrowable)
-        {
-          localThrowable.printStackTrace();
-        }
-        i += 1;
       }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        localIllegalArgumentException.printStackTrace();
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        localNoSuchFieldException.printStackTrace();
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.ActivityLeakSolution
  * JD-Core Version:    0.7.0.1
  */

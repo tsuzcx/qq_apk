@@ -17,53 +17,69 @@ class NearbyFaceScoreManager$3
 {
   NearbyFaceScoreManager$3(NearbyFaceScoreManager paramNearbyFaceScoreManager, FaceScoreCallBack paramFaceScoreCallBack, long paramLong) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "onResult errorCode=" + paramInt + ", data=" + paramArrayOfByte);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onResult errorCode=");
+      paramBundle.append(paramInt);
+      paramBundle.append(", data=");
+      paramBundle.append(paramArrayOfByte);
+      QLog.e("Q..troop.faceScore", 2, paramBundle.toString());
     }
     if (paramInt == 0)
     {
       if (paramArrayOfByte != null) {
-        for (;;)
+        try
         {
-          try
+          paramBundle = new oidb_0x8da.RspBody();
+          paramBundle.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = paramBundle.rpt_msg_tiny_info.get().iterator();
+          while (paramArrayOfByte.hasNext())
           {
-            paramBundle = new oidb_0x8da.RspBody();
-            paramBundle.mergeFrom(paramArrayOfByte);
-            paramArrayOfByte = paramBundle.rpt_msg_tiny_info.get().iterator();
-            if (paramArrayOfByte.hasNext())
+            paramBundle = (oidb_0x8da.TinyInfo)paramArrayOfByte.next();
+            if (paramBundle.uint32_result.get() == 0)
             {
-              paramBundle = (oidb_0x8da.TinyInfo)paramArrayOfByte.next();
-              if (paramBundle.uint32_result.get() == 0) {
-                this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(paramBundle.uint64_uin.get(), paramBundle.uint64_tinyid.get());
-              }
+              this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(paramBundle.uint64_uin.get(), paramBundle.uint64_tinyid.get());
             }
             else
             {
-              return;
+              this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(this.jdField_a_of_type_Long, -1L);
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("getTinyIdByUin oidb_0x8da onResult  uin=");
+              localStringBuilder.append(paramBundle.uint64_uin.get());
+              localStringBuilder.append(" tinyid=");
+              localStringBuilder.append(paramBundle.uint64_tinyid.get());
+              localStringBuilder.append(" result=");
+              localStringBuilder.append(paramBundle.uint32_result.get());
+              QLog.e("Q..troop.faceScore", 2, localStringBuilder.toString());
             }
-          }
-          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("Q..troop.faceScore", 2, "onResult exception=" + paramArrayOfByte.toString());
-            }
-            this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(this.jdField_a_of_type_Long, -1L);
           }
           this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(this.jdField_a_of_type_Long, -1L);
-          QLog.e("Q..troop.faceScore", 2, "getTinyIdByUin oidb_0x8da onResult  uin=" + paramBundle.uint64_uin.get() + " tinyid=" + paramBundle.uint64_tinyid.get() + " result=" + paramBundle.uint32_result.get());
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append("onResult exception=");
+            paramBundle.append(paramArrayOfByte.toString());
+            QLog.e("Q..troop.faceScore", 2, paramBundle.toString());
+          }
+          this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(this.jdField_a_of_type_Long, -1L);
+          return;
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(this.jdField_a_of_type_Long, -1L);
-      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(this.jdField_a_of_type_Long, -1L);
+    else {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(this.jdField_a_of_type_Long, -1L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFaceScoreManager.3
  * JD-Core Version:    0.7.0.1
  */

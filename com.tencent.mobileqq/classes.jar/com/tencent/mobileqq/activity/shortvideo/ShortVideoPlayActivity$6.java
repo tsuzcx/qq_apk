@@ -12,12 +12,12 @@ class ShortVideoPlayActivity$6
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoPlayActivity", 2, "mStartHidingRunnable run");
     }
-    this.this$0.f();
+    this.this$0.startHiding();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.6
  * JD-Core Version:    0.7.0.1
  */

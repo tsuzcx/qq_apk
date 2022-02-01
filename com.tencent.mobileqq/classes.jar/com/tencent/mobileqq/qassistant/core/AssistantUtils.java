@@ -1,53 +1,63 @@
 package com.tencent.mobileqq.qassistant.core;
 
 import android.app.Activity;
-import android.app.KeyguardManager;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.qassistant.command.jump.QAssistantConfigItemFactory;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.aio.BaseAIOUtils;
+import com.tencent.mobileqq.qassistant.api.IVoiceAssistantCore;
+import com.tencent.mobileqq.qassistant.config.QAssistantConfigItemFactory;
 import com.tencent.mobileqq.qassistant.data.CommandInfo;
 import com.tencent.mobileqq.qassistant.data.JumpInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
+import com.tencent.mobileqq.transfile.TransFileUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class AssistantUtils
 {
-  public static QQAppInterface a()
+  public static AppInterface a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
+    AppRuntime localAppRuntime = a();
+    if ((localAppRuntime instanceof AppInterface)) {
+      return (AppInterface)localAppRuntime;
     }
     return null;
   }
   
-  public static VoiceAssistantManager a()
+  public static IVoiceAssistantCore a()
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null) {
-      return (VoiceAssistantManager)localQQAppInterface.getManager(QQManagerFactory.VOICE_ASSISTANT_MANAGER);
-    }
-    return null;
+    return (IVoiceAssistantCore)a().getRuntimeService(IVoiceAssistantCore.class, "");
+  }
+  
+  public static BaseApplication a()
+  {
+    return MobileQQ.sMobileQQ;
   }
   
   public static String a()
   {
-    return System.currentTimeMillis() + "_" + ((int)(Math.random() * 900.0D) + 100);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("_");
+    localStringBuilder.append((int)(Math.random() * 900.0D) + 100);
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(int paramInt)
+  {
+    return MobileQQ.sMobileQQ.getString(paramInt);
   }
   
   public static String a(String paramString)
@@ -60,61 +70,83 @@ public class AssistantUtils
   
   public static String a(String paramString1, String paramString2)
   {
-    return b() + paramString1 + "." + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b());
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
+  }
+  
+  public static AppRuntime a()
+  {
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
   }
   
   public static void a(Activity paramActivity, CommandInfo paramCommandInfo)
   {
-    if ((paramActivity == null) || (paramCommandInfo == null) || (paramCommandInfo.a == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AssistantUtils", 2, "executeJumpAction jump params is null activity = " + paramActivity + ", commandInformation = " + paramCommandInfo);
-      }
-    }
-    do
+    if ((paramActivity != null) && (paramCommandInfo != null) && (paramCommandInfo.a != null))
     {
-      return;
       if (paramCommandInfo.a.jdField_a_of_type_Int == 115)
       {
         a(paramActivity, paramCommandInfo.a.jdField_a_of_type_JavaLangString, paramCommandInfo.a.jdField_b_of_type_JavaLangString, paramCommandInfo.a.jdField_b_of_type_Int);
         return;
       }
       paramCommandInfo = QAssistantConfigItemFactory.a(paramCommandInfo.a.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty(paramCommandInfo)) {
-        break;
+      if (TextUtils.isEmpty(paramCommandInfo))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AssistantUtils", 2, "executeJumpAction openAction is null");
+        }
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("AssistantUtils", 2, "executeJumpAction openAction is null");
-    return;
-    a(paramActivity, paramCommandInfo);
+      a(paramActivity, paramCommandInfo);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("executeJumpAction jump params is null activity = ");
+      localStringBuilder.append(paramActivity);
+      localStringBuilder.append(", commandInformation = ");
+      localStringBuilder.append(paramCommandInfo);
+      QLog.d("AssistantUtils", 2, localStringBuilder.toString());
+    }
   }
   
   public static void a(Activity paramActivity, String paramString)
   {
-    paramString = "mqqaudioassistant://mqq.jump.qq/default?jumpaction=" + paramString;
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setData(Uri.parse(paramString));
-    localIntent.setFlags(268435456);
-    localIntent.setComponent(new ComponentName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity"));
-    paramActivity.startActivity(localIntent);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mqqaudioassistant://mqq.jump.qq/default?jumpaction=");
+    ((StringBuilder)localObject).append(paramString);
+    paramString = ((StringBuilder)localObject).toString();
+    localObject = new Intent();
+    ((Intent)localObject).setAction("android.intent.action.VIEW");
+    ((Intent)localObject).setData(Uri.parse(paramString));
+    ((Intent)localObject).setFlags(268435456);
+    ((Intent)localObject).setComponent(new ComponentName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity"));
+    paramActivity.startActivity((Intent)localObject);
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
-    if ((paramString1 != null) && (!paramString1.equals("")))
+    if (!TextUtils.isEmpty(paramString1))
     {
-      Intent localIntent = AIOUtils.a(new Intent(paramActivity, SplashActivity.class), null);
-      localIntent.putExtra("uin", paramString1);
-      localIntent.putExtra("uinname", paramString2);
-      localIntent.putExtra("uintype", paramInt);
-      localIntent.putExtra("isNeedUpdate", true);
-      paramActivity.startActivity(localIntent);
+      paramActivity = BaseAIOUtils.a(new ActivityURIRequest(paramActivity, "/base/start/splash"), null);
+      paramActivity.extra().putString("uin", paramString1);
+      paramActivity.extra().putString("uinname", paramString2);
+      paramActivity.extra().putInt("uintype", paramInt);
+      paramActivity.extra().putBoolean("isNeedUpdate", true);
+      QRoute.startUri(paramActivity, null);
     }
   }
   
   public static void a(String paramString)
   {
-    ((VoiceAssistantManager)a().getManager(QQManagerFactory.VOICE_ASSISTANT_MANAGER)).b(paramString);
+    IVoiceAssistantCore localIVoiceAssistantCore = a();
+    if (localIVoiceAssistantCore != null) {
+      localIVoiceAssistantCore.setPerformanceText(paramString);
+    }
   }
   
   public static void a(String paramString1, String paramString2)
@@ -126,51 +158,40 @@ public class AssistantUtils
   
   public static void a(boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return;
-    }
     HashMap localHashMap = new HashMap();
     localHashMap.put("echo_android_id", DeviceInfoUtil.f());
     localHashMap.put("echo_manufacturer", Build.MANUFACTURER);
     localHashMap.put("echo_brand", Build.BRAND);
     localHashMap.put("echo_model", Build.MODEL);
     localHashMap.put("echo_fingerprint", Build.FINGERPRINT);
-    StatisticCollector.getInstance(localQQAppInterface.getApp()).collectPerformance(localQQAppInterface.getCurrentAccountUin(), "AcousticEchoCanceler", paramBoolean, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(a()).collectPerformance(a().getCurrentAccountUin(), "AcousticEchoCanceler", paramBoolean, 0L, 0L, localHashMap, null);
   }
   
   public static void a(boolean paramBoolean, int paramInt)
   {
     HashMap localHashMap = new HashMap();
-    if (!paramBoolean) {
-      localHashMap.put("downloadError", "" + paramInt);
+    if (!paramBoolean)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt);
+      localHashMap.put("downloadError", localStringBuilder.toString());
     }
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null) {
-      StatisticCollector.getInstance(localQQAppInterface.getApp()).collectPerformance(localQQAppInterface.getCurrentAccountUin(), "WakeDataDownloadMonitor", paramBoolean, 0L, 0L, localHashMap, null);
-    }
+    StatisticCollector.getInstance(a()).collectPerformance(a().getCurrentAccountUin(), "WakeDataDownloadMonitor", paramBoolean, 0L, 0L, localHashMap, null);
   }
   
   public static void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return;
-    }
     HashMap localHashMap = new HashMap();
     localHashMap.put("voiceId", paramString);
     localHashMap.put("stCode", String.valueOf(paramInt1));
     localHashMap.put("wxCode", String.valueOf(paramInt2));
     localHashMap.put("lpCode", String.valueOf(paramInt3));
-    StatisticCollector.getInstance(localQQAppInterface.getApp()).collectPerformance(localQQAppInterface.getCurrentAccountUin(), "VoiceRequestMonitor", paramBoolean, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(a()).collectPerformance(a().getCurrentAccountUin(), "VoiceRequestMonitor", paramBoolean, 0L, 0L, localHashMap, null);
   }
   
   public static void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return;
-    }
     HashMap localHashMap = new HashMap();
     localHashMap.put("totalSize", String.valueOf(paramInt1));
     localHashMap.put("totalTime", String.valueOf(paramLong1));
@@ -184,25 +205,16 @@ public class AssistantUtils
     localHashMap.put("tailorLoc", String.valueOf(paramLong6));
     localHashMap.put("tailorNet", String.valueOf(paramLong7));
     localHashMap.put("contactCount", String.valueOf(paramInt2));
-    StatisticCollector.getInstance(localQQAppInterface.getApp()).collectPerformance(localQQAppInterface.getCurrentAccountUin(), "VoiceTimeMonitor", paramBoolean, 0L, 0L, localHashMap, null);
-  }
-  
-  public static boolean a()
-  {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null)
-    {
-      boolean bool = ((KeyguardManager)localQQAppInterface.getApp().getApplicationContext().getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-      a("HelloQQWake", "MSG_IS_IN_BACKGROUND_ROTATION isBackgroundStop:" + localQQAppInterface.isBackgroundStop + ",isScreenLocked:" + bool);
-      return (localQQAppInterface.isBackgroundStop) || (bool);
-    }
-    return false;
+    StatisticCollector.getInstance(a()).collectPerformance(a().getCurrentAccountUin(), "VoiceTimeMonitor", paramBoolean, 0L, 0L, localHashMap, null);
   }
   
   public static String b()
   {
-    String str = BuddyTransfileProcessor.getTransferFilePath(a().getCurrentAccountUin(), null, 327697, null, false);
-    return str.substring(0, str.lastIndexOf(File.separator)) + "/";
+    String str = TransFileUtil.getTransferFilePath(a().getCurrentAccountUin(), null, 327697, null, false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str.substring(0, str.lastIndexOf(File.separator)));
+    localStringBuilder.append("/");
+    return localStringBuilder.toString();
   }
   
   public static String b(String paramString)
@@ -210,12 +222,137 @@ public class AssistantUtils
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    return a().getCurrentAccountUin() + "_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a().getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public static void b(String paramString)
+  {
+    a("AssistantUtils", paramString);
+  }
+  
+  /* Error */
+  public static String c(String paramString)
+  {
+    // Byte code:
+    //   0: new 37	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 38	java/lang/StringBuilder:<init>	()V
+    //   7: astore 4
+    //   9: aconst_null
+    //   10: astore_3
+    //   11: aconst_null
+    //   12: astore_1
+    //   13: new 370	java/io/BufferedReader
+    //   16: dup
+    //   17: new 372	java/io/FileReader
+    //   20: dup
+    //   21: aload_0
+    //   22: invokespecial 374	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   25: invokespecial 377	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   28: astore_0
+    //   29: aload_0
+    //   30: invokevirtual 380	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   33: astore_1
+    //   34: aload_1
+    //   35: ifnull +37 -> 72
+    //   38: new 37	java/lang/StringBuilder
+    //   41: dup
+    //   42: invokespecial 38	java/lang/StringBuilder:<init>	()V
+    //   45: astore_2
+    //   46: aload_2
+    //   47: aload_1
+    //   48: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: pop
+    //   52: aload_2
+    //   53: bipush 10
+    //   55: invokevirtual 383	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   58: pop
+    //   59: aload 4
+    //   61: aload_2
+    //   62: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   65: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: pop
+    //   69: goto -40 -> 29
+    //   72: aload_0
+    //   73: invokevirtual 386	java/io/BufferedReader:close	()V
+    //   76: aload_0
+    //   77: invokevirtual 386	java/io/BufferedReader:close	()V
+    //   80: goto +44 -> 124
+    //   83: astore_1
+    //   84: goto +46 -> 130
+    //   87: astore_2
+    //   88: goto +14 -> 102
+    //   91: astore_2
+    //   92: aload_1
+    //   93: astore_0
+    //   94: aload_2
+    //   95: astore_1
+    //   96: goto +34 -> 130
+    //   99: astore_2
+    //   100: aload_3
+    //   101: astore_0
+    //   102: aload_0
+    //   103: astore_1
+    //   104: aload_2
+    //   105: invokevirtual 389	java/lang/Exception:printStackTrace	()V
+    //   108: aload_0
+    //   109: ifnull +15 -> 124
+    //   112: aload_0
+    //   113: invokevirtual 386	java/io/BufferedReader:close	()V
+    //   116: goto +8 -> 124
+    //   119: astore_0
+    //   120: aload_0
+    //   121: invokevirtual 390	java/io/IOException:printStackTrace	()V
+    //   124: aload 4
+    //   126: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   129: areturn
+    //   130: aload_0
+    //   131: ifnull +15 -> 146
+    //   134: aload_0
+    //   135: invokevirtual 386	java/io/BufferedReader:close	()V
+    //   138: goto +8 -> 146
+    //   141: astore_0
+    //   142: aload_0
+    //   143: invokevirtual 390	java/io/IOException:printStackTrace	()V
+    //   146: goto +5 -> 151
+    //   149: aload_1
+    //   150: athrow
+    //   151: goto -2 -> 149
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	154	0	paramString	String
+    //   12	36	1	str	String
+    //   83	10	1	localObject1	Object
+    //   95	55	1	localObject2	Object
+    //   45	17	2	localStringBuilder1	StringBuilder
+    //   87	1	2	localException1	java.lang.Exception
+    //   91	4	2	localObject3	Object
+    //   99	6	2	localException2	java.lang.Exception
+    //   10	91	3	localObject4	Object
+    //   7	118	4	localStringBuilder2	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   29	34	83	finally
+    //   38	69	83	finally
+    //   72	76	83	finally
+    //   29	34	87	java/lang/Exception
+    //   38	69	87	java/lang/Exception
+    //   72	76	87	java/lang/Exception
+    //   13	29	91	finally
+    //   104	108	91	finally
+    //   13	29	99	java/lang/Exception
+    //   76	80	119	java/io/IOException
+    //   112	116	119	java/io/IOException
+    //   134	138	141	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.AssistantUtils
  * JD-Core Version:    0.7.0.1
  */

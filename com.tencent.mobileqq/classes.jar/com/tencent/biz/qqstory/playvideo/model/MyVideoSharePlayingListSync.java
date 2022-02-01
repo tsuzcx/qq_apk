@@ -25,7 +25,6 @@ public class MyVideoSharePlayingListSync
   protected void a()
   {
     Object localObject = (StoryManager)SuperManager.a(5);
-    Iterator localIterator;
     StoryVideoItem localStoryVideoItem;
     if (QQStoryContext.a().a(this.jdField_c_of_type_JavaLangString))
     {
@@ -43,17 +42,17 @@ public class MyVideoSharePlayingListSync
       }
       Collections.sort((List)localObject, new MyVideoSharePlayingListSync.1(this));
     }
-    for (;;)
+    else
     {
-      localIterator = ((List)localObject).iterator();
-      while (localIterator.hasNext())
-      {
-        localStoryVideoItem = (StoryVideoItem)localIterator.next();
-        if (TextUtils.isEmpty(localStoryVideoItem.mOwnerUid)) {
-          localStoryVideoItem.mOwnerUid = QQStoryContext.a().b();
-        }
-      }
       localObject = ((StoryManager)localObject).a(this.jdField_c_of_type_JavaLangString);
+    }
+    Iterator localIterator = ((List)localObject).iterator();
+    while (localIterator.hasNext())
+    {
+      localStoryVideoItem = (StoryVideoItem)localIterator.next();
+      if (TextUtils.isEmpty(localStoryVideoItem.mOwnerUid)) {
+        localStoryVideoItem.mOwnerUid = QQStoryContext.a().b();
+      }
     }
     if (((List)localObject).size() > 0)
     {
@@ -63,21 +62,20 @@ public class MyVideoSharePlayingListSync
           localIterator.remove();
         }
       }
-      if (((List)localObject).size() != 0) {
-        break label224;
+      if (((List)localObject).size() == 0) {
+        return;
       }
+      if (((StoryVideoItem)((List)localObject).get(((List)localObject).size() - 1)).mCreateTime / 1000L != this.jdField_a_of_type_Long) {
+        return;
+      }
+      this.jdField_b_of_type_Boolean = true;
+      localObject = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_Boolean = true;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_b_of_type_Boolean = true;
+      StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
     }
-    label224:
-    while (((StoryVideoItem)((List)localObject).get(((List)localObject).size() - 1)).mCreateTime / 1000L != this.jdField_a_of_type_Long) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    localObject = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-    ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_Boolean = true;
-    ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_b_of_type_Boolean = true;
-    StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
   }
   
   protected void b()
@@ -90,7 +88,7 @@ public class MyVideoSharePlayingListSync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.MyVideoSharePlayingListSync
  * JD-Core Version:    0.7.0.1
  */

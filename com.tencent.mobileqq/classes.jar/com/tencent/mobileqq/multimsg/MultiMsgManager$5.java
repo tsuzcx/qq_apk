@@ -18,37 +18,34 @@ class MultiMsgManager$5
   public void run()
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    int j;
-    int k;
-    StringBuilder localStringBuilder;
     if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)localObject).structingMsg.mMsgAction)))
     {
       localObject = MultiMsgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
       if (localObject != null)
       {
-        j = ((List)localObject).size();
-        k = MultiMsgManager.a().a((Collection)localObject);
+        int i = ((List)localObject).size();
+        int j = MultiMsgManager.a().a((Collection)localObject);
         localObject = new HashMap();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_Boolean ^ true);
+        localStringBuilder.append("");
+        ((HashMap)localObject).put("result", localStringBuilder.toString());
         localStringBuilder = new StringBuilder();
-        if (!this.jdField_a_of_type_Boolean) {
-          break label228;
-        }
+        localStringBuilder.append(i);
+        localStringBuilder.append("");
+        ((HashMap)localObject).put("msgCount", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(j);
+        localStringBuilder.append("");
+        ((HashMap)localObject).put("picCount", localStringBuilder.toString());
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "multiMsgSend", this.jdField_a_of_type_Boolean, 30000L, 0L, (HashMap)localObject, "");
       }
-    }
-    label228:
-    for (int i = 0;; i = 1)
-    {
-      ((HashMap)localObject).put("result", i + "");
-      ((HashMap)localObject).put("msgCount", j + "");
-      ((HashMap)localObject).put("picCount", k + "");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "multiMsgSend", this.jdField_a_of_type_Boolean, 30000L, 0L, (HashMap)localObject, "");
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgManager.5
  * JD-Core Version:    0.7.0.1
  */

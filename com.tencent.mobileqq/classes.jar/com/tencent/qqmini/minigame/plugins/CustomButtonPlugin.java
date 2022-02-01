@@ -50,32 +50,34 @@ public class CustomButtonPlugin
     if (!TextUtils.isEmpty(paramRequestEvent.jsonParams)) {
       try
       {
-        Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-        String str = ((JSONObject)localObject).optString("operateType");
-        long l = ((JSONObject)localObject).optLong("compId");
+        Object localObject1 = new JSONObject(paramRequestEvent.jsonParams);
+        localObject2 = ((JSONObject)localObject1).optString("operateType");
+        long l = ((JSONObject)localObject1).optLong("compId");
         boolean bool = false;
-        if ("create".equals(str)) {
-          bool = OperateCustomButton.obtain(this.mMiniAppContext).operate("create", l, (JSONObject)localObject, new CustomButtonPlugin.1(this, (JSONObject)localObject));
+        if ("create".equals(localObject2)) {
+          bool = OperateCustomButton.obtain(this.mMiniAppContext).operate("create", l, (JSONObject)localObject1, new CustomButtonPlugin.1(this, (JSONObject)localObject1));
+        } else if ("show".equals(localObject2)) {
+          bool = OperateCustomButton.obtain(this.mMiniAppContext).operate("show", l, (JSONObject)localObject1, new CustomButtonPlugin.2(this, (JSONObject)localObject1));
+        } else if ("hide".equals(localObject2)) {
+          bool = OperateCustomButton.obtain(this.mMiniAppContext).operate("hide", l, (JSONObject)localObject1, null);
+        } else if ("destroy".equals(localObject2)) {
+          bool = OperateCustomButton.obtain(this.mMiniAppContext).operate("destroy", l, (JSONObject)localObject1, null);
+        } else if ("update".equals(localObject2)) {
+          bool = OperateCustomButton.obtain(this.mMiniAppContext).operate("update", l, (JSONObject)localObject1, new CustomButtonPlugin.3(this, (JSONObject)localObject1));
         }
-        while (bool)
-        {
+        if (bool) {
           return paramRequestEvent.ok();
-          if ("show".equals(str)) {
-            bool = OperateCustomButton.obtain(this.mMiniAppContext).operate("show", l, (JSONObject)localObject, new CustomButtonPlugin.2(this, (JSONObject)localObject));
-          } else if ("hide".equals(str)) {
-            bool = OperateCustomButton.obtain(this.mMiniAppContext).operate("hide", l, (JSONObject)localObject, null);
-          } else if ("destroy".equals(str)) {
-            bool = OperateCustomButton.obtain(this.mMiniAppContext).operate("destroy", l, (JSONObject)localObject, null);
-          } else if ("update".equals(str)) {
-            bool = OperateCustomButton.obtain(this.mMiniAppContext).operate("update", l, (JSONObject)localObject, new CustomButtonPlugin.3(this, (JSONObject)localObject));
-          }
         }
-        localObject = paramRequestEvent.fail("button not found");
-        return localObject;
+        localObject1 = paramRequestEvent.fail("button not found");
+        return localObject1;
       }
       catch (JSONException localJSONException)
       {
-        QMLog.e("CustomButtonPlugin", paramRequestEvent.event + " parse json exception " + paramRequestEvent.jsonParams, localJSONException);
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramRequestEvent.event);
+        ((StringBuilder)localObject2).append(" parse json exception ");
+        ((StringBuilder)localObject2).append(paramRequestEvent.jsonParams);
+        QMLog.e("CustomButtonPlugin", ((StringBuilder)localObject2).toString(), localJSONException);
         return paramRequestEvent.fail("json parse error");
       }
     }
@@ -84,7 +86,7 @@ public class CustomButtonPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.CustomButtonPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -18,9 +18,8 @@ class WerewolvesPluginManager$1
   public void handleMessage(Message paramMessage)
   {
     int i = paramMessage.arg1;
-    switch (paramMessage.what)
-    {
-    default: 
+    int j = paramMessage.what;
+    if ((j != 1) && (j != 2)) {
       return;
     }
     ((WerewolvesHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).notifyUI(3, true, Integer.valueOf(i));
@@ -28,7 +27,7 @@ class WerewolvesPluginManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesPluginManager.1
  * JD-Core Version:    0.7.0.1
  */

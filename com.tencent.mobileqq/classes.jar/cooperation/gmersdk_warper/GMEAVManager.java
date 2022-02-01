@@ -18,7 +18,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class GMEAVManager
 {
-  private static GMEAVManager jdField_a_of_type_CooperationGmersdk_warperGMEAVManager = null;
+  private static GMEAVManager jdField_a_of_type_CooperationGmersdk_warperGMEAVManager;
   private static String b = "LimixiuAVManager";
   private Context jdField_a_of_type_AndroidContentContext = null;
   AVContext jdField_a_of_type_ComTencentTMGSdkAVContext = null;
@@ -44,7 +44,22 @@ public class GMEAVManager
     localGMEAVEngineStartParams.engineCtrlType = 2;
     localGMEAVEngineStartParams.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$AppInfo.f).intValue();
     localGMEAVEngineStartParams.jdField_a_of_type_Long = Long.valueOf(this.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$AppInfo.g).longValue();
-    QLog.i("AVManager", 1, "getStartParams|param.sdkAppId=" + localGMEAVEngineStartParams.sdkAppId + ", param.accountType=" + localGMEAVEngineStartParams.accountType + ", param.appIdAt3rd=" + localGMEAVEngineStartParams.appIdAt3rd + ", param.identifier=" + localGMEAVEngineStartParams.identifier + ", param.engineCtrlType=" + localGMEAVEngineStartParams.engineCtrlType + ", param.nGameID=" + localGMEAVEngineStartParams.jdField_a_of_type_Int + ", param.lGameRoomID=" + localGMEAVEngineStartParams.jdField_a_of_type_Long);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getStartParams|param.sdkAppId=");
+    localStringBuilder.append(localGMEAVEngineStartParams.sdkAppId);
+    localStringBuilder.append(", param.accountType=");
+    localStringBuilder.append(localGMEAVEngineStartParams.accountType);
+    localStringBuilder.append(", param.appIdAt3rd=");
+    localStringBuilder.append(localGMEAVEngineStartParams.appIdAt3rd);
+    localStringBuilder.append(", param.identifier=");
+    localStringBuilder.append(localGMEAVEngineStartParams.identifier);
+    localStringBuilder.append(", param.engineCtrlType=");
+    localStringBuilder.append(localGMEAVEngineStartParams.engineCtrlType);
+    localStringBuilder.append(", param.nGameID=");
+    localStringBuilder.append(localGMEAVEngineStartParams.jdField_a_of_type_Int);
+    localStringBuilder.append(", param.lGameRoomID=");
+    localStringBuilder.append(localGMEAVEngineStartParams.jdField_a_of_type_Long);
+    QLog.i("AVManager", 1, localStringBuilder.toString());
     return localGMEAVEngineStartParams;
   }
   
@@ -56,24 +71,31 @@ public class GMEAVManager
   
   public static GMEAVManager a(Context paramContext)
   {
-    if (jdField_a_of_type_CooperationGmersdk_warperGMEAVManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationGmersdk_warperGMEAVManager == null) {
-        jdField_a_of_type_CooperationGmersdk_warperGMEAVManager = new GMEAVManager(paramContext);
+    if (jdField_a_of_type_CooperationGmersdk_warperGMEAVManager == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationGmersdk_warperGMEAVManager == null) {
+          jdField_a_of_type_CooperationGmersdk_warperGMEAVManager = new GMEAVManager(paramContext);
+        }
       }
-      return jdField_a_of_type_CooperationGmersdk_warperGMEAVManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationGmersdk_warperGMEAVManager;
   }
   
   public int a()
   {
-    int i = 1003;
-    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
-      i = this.jdField_a_of_type_ComTencentTMGSdkAVContext.exitRoom();
+    Object localObject = this.jdField_a_of_type_ComTencentTMGSdkAVContext;
+    int i;
+    if (localObject != null) {
+      i = ((AVContext)localObject).exitRoom();
+    } else {
+      i = 1003;
     }
-    QLog.i("AVManager", 1, "exitRoom|ret=" + i);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("exitRoom|ret=");
+    ((StringBuilder)localObject).append(i);
+    QLog.i("AVManager", 1, ((StringBuilder)localObject).toString());
     return i;
   }
   
@@ -84,29 +106,33 @@ public class GMEAVManager
   
   public void a(AVCallback paramAVCallback)
   {
-    int i = 0;
     AVChannelManager.setIMChannelType(1);
     com.tencent.TMG.utils.SoUtil.customLibPath = TMG_Downloader.a();
+    int i = 0;
     AVLoggerChooser.setUseImsdk(false);
     if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null) {
       this.jdField_a_of_type_ComTencentTMGSdkAVContext = AVContext.createInstance(this.jdField_a_of_type_AndroidContentContext, false);
     }
-    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null) {
+    Object localObject = this.jdField_a_of_type_ComTencentTMGSdkAVContext;
+    if (localObject == null)
+    {
       if (AVContext.getSoExtractError() != 0) {
         i = AVContext.getSoExtractError();
+      } else {
+        i = 1101;
       }
     }
-    for (;;)
+    else
     {
-      QLog.i("AVManager", 1, "startContext|ret=" + i);
-      if (i != 0) {
-        paramAVCallback.onComplete(i, "internal error.");
-      }
-      return;
-      i = 1101;
-      continue;
-      this.jdField_a_of_type_ComTencentTMGSdkAVContext.setAppVersion(this.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$AppInfo.e);
+      ((AVContext)localObject).setAppVersion(this.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$AppInfo.e);
       this.jdField_a_of_type_ComTencentTMGSdkAVContext.start(a(), null, paramAVCallback);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startContext|ret=");
+    ((StringBuilder)localObject).append(i);
+    QLog.i("AVManager", 1, ((StringBuilder)localObject).toString());
+    if (i != 0) {
+      paramAVCallback.onComplete(i, "internal error.");
     }
   }
   
@@ -124,78 +150,92 @@ public class GMEAVManager
   {
     QLog.i("AVManager", 1, "enterRoom.");
     this.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$EnterRoomCallback = paramEnterRoomCallback;
-    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null)
+    paramEnterRoomCallback = this.jdField_a_of_type_ComTencentTMGSdkAVContext;
+    if (paramEnterRoomCallback == null)
     {
       Log.e("AVManager", "enterRoom| enter room faild, because of context not started.");
-      if (this.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$EnterRoomCallback != null) {
-        this.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$EnterRoomCallback.a(1101, "context not started.");
+      paramString = this.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$EnterRoomCallback;
+      if (paramString != null) {
+        paramString.a(1101, "context not started.");
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().startTRAEService();
+    paramEnterRoomCallback.getAudioCtrl().startTRAEService();
     QLog.e("AVManager", 1, "enterRoom| try enter room implement!!!!!!!!!");
     this.jdField_a_of_type_ComTencentTMGSdkAVContext.enterRoom(this.jdField_a_of_type_ComTencentTMGSdkAVRoomMulti$EventListener, a(paramString, paramBoolean1, paramBoolean2, paramInt));
   }
   
   public void a(boolean paramBoolean, AVAudioCtrl.EnableMicCompleteCallback paramEnableMicCompleteCallback)
   {
-    AVAudioCtrl localAVAudioCtrl = null;
-    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
-      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    Object localObject = this.jdField_a_of_type_ComTencentTMGSdkAVContext;
+    if (localObject != null) {
+      localObject = ((AVContext)localObject).getAudioCtrl();
+    } else {
+      localObject = null;
     }
-    if (localAVAudioCtrl != null) {
-      localAVAudioCtrl.enableMic(paramBoolean, paramEnableMicCompleteCallback);
+    if (localObject != null) {
+      ((AVAudioCtrl)localObject).enableMic(paramBoolean, paramEnableMicCompleteCallback);
     }
   }
   
   public void a(boolean paramBoolean, AVAudioCtrl.EnableSpeakerCompleteCallback paramEnableSpeakerCompleteCallback)
   {
-    AVAudioCtrl localAVAudioCtrl = null;
-    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
-      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    Object localObject = this.jdField_a_of_type_ComTencentTMGSdkAVContext;
+    if (localObject != null) {
+      localObject = ((AVContext)localObject).getAudioCtrl();
+    } else {
+      localObject = null;
     }
-    if (localAVAudioCtrl != null) {
-      localAVAudioCtrl.enableSpeaker(paramBoolean, paramEnableSpeakerCompleteCallback);
+    if (localObject != null) {
+      ((AVAudioCtrl)localObject).enableSpeaker(paramBoolean, paramEnableSpeakerCompleteCallback);
     }
   }
   
   public boolean a()
   {
+    Object localObject = this.jdField_a_of_type_ComTencentTMGSdkAVContext;
+    if (localObject != null) {
+      localObject = ((AVContext)localObject).getAudioCtrl();
+    } else {
+      localObject = null;
+    }
     boolean bool = false;
-    AVAudioCtrl localAVAudioCtrl = null;
-    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
-      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    int i;
+    if (localObject != null) {
+      i = ((AVAudioCtrl)localObject).getMicState();
+    } else {
+      i = 0;
     }
-    if (localAVAudioCtrl != null) {}
-    for (int i = localAVAudioCtrl.getMicState();; i = 0)
-    {
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
+    if (i != 0) {
+      bool = true;
     }
+    return bool;
   }
   
   public boolean b()
   {
+    Object localObject = this.jdField_a_of_type_ComTencentTMGSdkAVContext;
+    if (localObject != null) {
+      localObject = ((AVContext)localObject).getAudioCtrl();
+    } else {
+      localObject = null;
+    }
     boolean bool = false;
-    AVAudioCtrl localAVAudioCtrl = null;
-    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
-      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    int i;
+    if (localObject != null) {
+      i = ((AVAudioCtrl)localObject).getSpeakerState();
+    } else {
+      i = 0;
     }
-    if (localAVAudioCtrl != null) {}
-    for (int i = localAVAudioCtrl.getSpeakerState();; i = 0)
-    {
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
+    if (i != 0) {
+      bool = true;
     }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.gmersdk_warper.GMEAVManager
  * JD-Core Version:    0.7.0.1
  */

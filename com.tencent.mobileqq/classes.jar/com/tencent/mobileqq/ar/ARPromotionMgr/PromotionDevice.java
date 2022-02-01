@@ -2,10 +2,6 @@ package com.tencent.mobileqq.ar.ARPromotionMgr;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.dpc.api.IDPCApi;
-import com.tencent.mobileqq.dpc.enumname.DPCNames;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -23,27 +19,57 @@ public class PromotionDevice
   public static boolean a(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
   {
     int i = DeviceInfoUtil.a();
+    String str;
+    StringBuilder localStringBuilder;
     if (i < paramInt2)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error OSversion[" + paramInt2 + "->" + i + "]");
+      str = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice, error OSversion[");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("->");
+      localStringBuilder.append(i);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
       return false;
     }
     paramInt2 = DeviceInfoUtil.b();
     if (paramInt2 < paramInt1)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error cpucount[" + paramInt1 + "->" + paramInt2 + "]");
+      str = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice, error cpucount[");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
       return false;
     }
     long l = DeviceInfoUtil.b();
     if (l < paramLong1)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error cpuFrequency[" + paramLong1 + "->" + l + "]");
+      str = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice, error cpuFrequency[");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("->");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
       return false;
     }
     paramLong1 = DeviceInfoUtil.a();
     if (paramLong1 < paramLong2)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error memory[" + paramLong2 + "->" + paramLong1 + "]");
+      str = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice, error memory[");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
       return false;
     }
     return true;
@@ -56,91 +82,48 @@ public class PromotionDevice
   
   public static boolean c()
   {
-    if (jdField_a_of_type_Int == -1) {
-      if (Build.VERSION.SDK_INT <= 20) {
-        break label118;
-      }
-    }
-    label111:
-    label116:
-    label118:
-    for (int i = 1;; i = 0)
+    int i = jdField_a_of_type_Int;
+    boolean bool = false;
+    if (i == -1)
     {
+      if (Build.VERSION.SDK_INT > 20) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       int j;
-      if ((a(8, 1367L, 2800000000L, 15)) || (a(4, 2099L, 2800000000L, 15)))
-      {
-        j = 1;
-        if ((j == 0) || (i == 0)) {
-          break label111;
-        }
-      }
-      for (i = 1;; i = 0)
-      {
-        jdField_a_of_type_Int = i;
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "isDevicesSupport, DeviceSupportFromLocal[" + jdField_a_of_type_Int + "]");
-        if (jdField_a_of_type_Int != 1) {
-          break label116;
-        }
-        return true;
+      if ((!a(8, 1367L, 2800000000L, 15)) && (!a(4, 2099L, 2800000000L, 15))) {
         j = 0;
-        break;
+      } else {
+        j = 1;
       }
-      return false;
+      if ((j != 0) && (i != 0)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      jdField_a_of_type_Int = i;
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isDevicesSupport, DeviceSupportFromLocal[");
+      localStringBuilder.append(jdField_a_of_type_Int);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
+    if (jdField_a_of_type_Int == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean d()
   {
-    String str;
-    Object localObject;
-    int j;
-    boolean bool;
-    if (b == -1)
-    {
-      str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.ARCfg.name());
-      if (TextUtils.isEmpty(str)) {
-        break label170;
-      }
-      localObject = new String[13];
-      j = ((IDPCApi)QRoute.api(IDPCApi.class)).parseComplexParamsBySimpleStringParser(str, (String[])localObject);
-      if (localObject.length <= 12) {
-        break label183;
-      }
-      localObject = localObject[12];
-      if (TextUtils.equals((CharSequence)localObject, "1")) {
-        break label160;
-      }
-      bool = true;
-    }
-    for (;;)
-    {
-      if (bool) {}
-      for (int i = 1;; i = 0)
-      {
-        b = i;
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "isEnableInDPC, isEnable[" + bool + "], arCfg[" + str + "], size[" + j + "], params[" + (String)localObject + "]");
-        if (b != 1) {
-          break label181;
-        }
-        return true;
-        label160:
-        bool = false;
-        break;
-      }
-      label170:
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isEnableInDPC, 没拉到dpc配置");
-      return true;
-      label181:
-      return false;
-      label183:
-      localObject = null;
-      bool = true;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionDevice
  * JD-Core Version:    0.7.0.1
  */

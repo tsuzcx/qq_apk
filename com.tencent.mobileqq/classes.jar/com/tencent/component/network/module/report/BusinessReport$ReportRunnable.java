@@ -46,129 +46,116 @@ public class BusinessReport$ReportRunnable
       QDLog.e("BusinessReport", "listToSend is empty.");
       return;
     }
-    Object localObject = this.listToSend;
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject2 = this.listToSend;
+    Object localObject1 = new JSONObject();
     try
     {
-      localJSONObject.put("count", ((ArrayList)localObject).size());
+      ((JSONObject)localObject1).put("count", ((ArrayList)localObject2).size());
       JSONArray localJSONArray = new JSONArray();
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        localJSONArray.put(((ReportObj)((Iterator)localObject).next()).toJSON());
-        continue;
-        this.url = ReportObj.getReportUrl(this.appid, this.op);
+      localObject2 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        localJSONArray.put(((ReportObj)((Iterator)localObject2).next()).toJSON());
       }
+      ((JSONObject)localObject1).put("data", localJSONArray);
     }
     catch (JSONException localJSONException)
     {
-      localJSONObject = null;
+      localObject1 = null;
       QDLog.e("BusinessReport", "JSONException when uploadReport.", localJSONException);
     }
-    for (;;)
+    this.url = ReportObj.getReportUrl(this.appid, this.op);
+    if (QDLog.isInfoEnable())
     {
-      if (QDLog.isInfoEnable()) {
-        QDLog.i("BusinessReport", "url : " + this.url);
-      }
-      if (localJSONObject != null) {
-        this.body = localJSONObject.toString();
-      }
-      if (QDLog.isInfoEnable()) {
-        QDLog.i("BusinessReport", "json : " + this.body);
-      }
-      this.inited = true;
-      return;
-      localJSONObject.put("data", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url : ");
+      localStringBuilder.append(this.url);
+      QDLog.i("BusinessReport", localStringBuilder.toString());
     }
+    if (localObject1 != null) {
+      this.body = ((JSONObject)localObject1).toString();
+    }
+    if (QDLog.isInfoEnable())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("json : ");
+      ((StringBuilder)localObject1).append(this.body);
+      QDLog.i("BusinessReport", ((StringBuilder)localObject1).toString());
+    }
+    this.inited = true;
   }
   
   public void run()
   {
     init();
-    if ((TextUtils.isEmpty(this.url)) || (TextUtils.isEmpty(this.body))) {}
-    for (;;)
+    if (!TextUtils.isEmpty(this.url))
     {
-      return;
+      if (TextUtils.isEmpty(this.body)) {
+        return;
+      }
       if (QDLog.isInfoEnable()) {
         QDLog.i("BusinessReport", "start report thread.");
       }
       try
       {
         HttpResponse localHttpResponse = HttpUtil.executeHttpPost(Global.getContext(), this.url, new StringEntity(this.body));
-        if (localHttpResponse.getStatusLine() != null)
-        {
-          if (localHttpResponse.getStatusLine().getStatusCode() != 200) {
-            break label136;
+        if (localHttpResponse.getStatusLine() != null) {
+          if (localHttpResponse.getStatusLine().getStatusCode() == 200)
+          {
+            this.listToSend.clear();
+            this.successed = true;
+            if (QDLog.isInfoEnable()) {
+              QDLog.i("BusinessReport", "report success.");
+            }
           }
-          this.listToSend.clear();
-          this.successed = true;
-          if (QDLog.isInfoEnable()) {
-            QDLog.i("BusinessReport", "report success.");
+          else
+          {
+            this.tryCount += 1;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("HttpStatus error when report : ");
+            localStringBuilder.append(localHttpResponse.getStatusLine().getStatusCode());
+            QDLog.e("BusinessReport", localStringBuilder.toString());
           }
-        }
-        while ((!this.successed) && (this.tryCount <= 0))
-        {
-          BusinessReport.access$200().postDelay(this, 60000L);
-          return;
-          label136:
-          this.tryCount += 1;
-          QDLog.e("BusinessReport", "HttpStatus error when report : " + localHttpResponse.getStatusLine().getStatusCode());
-        }
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        for (;;)
-        {
-          this.tryCount += 1;
-          QDLog.w("BusinessReport", "exception when report", localUnsupportedEncodingException);
-        }
-      }
-      catch (ClientProtocolException localClientProtocolException)
-      {
-        for (;;)
-        {
-          this.tryCount += 1;
-          QDLog.w("BusinessReport", "exception when report", localClientProtocolException);
-        }
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          this.tryCount += 1;
-          QDLog.w("BusinessReport", "exception when report", localIOException);
-        }
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        for (;;)
-        {
-          this.tryCount += 1;
-          QDLog.w("BusinessReport", "exception when report", localIllegalArgumentException);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          this.tryCount += 1;
-          QDLog.w("BusinessReport", "exception when report", localException);
         }
       }
       catch (Error localError)
       {
-        for (;;)
-        {
-          this.tryCount += 1;
-          QDLog.w("BusinessReport", "error when report", localError);
-        }
+        this.tryCount += 1;
+        QDLog.w("BusinessReport", "error when report", localError);
+      }
+      catch (Exception localException)
+      {
+        this.tryCount += 1;
+        QDLog.w("BusinessReport", "exception when report", localException);
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        this.tryCount += 1;
+        QDLog.w("BusinessReport", "exception when report", localIllegalArgumentException);
+      }
+      catch (IOException localIOException)
+      {
+        this.tryCount += 1;
+        QDLog.w("BusinessReport", "exception when report", localIOException);
+      }
+      catch (ClientProtocolException localClientProtocolException)
+      {
+        this.tryCount += 1;
+        QDLog.w("BusinessReport", "exception when report", localClientProtocolException);
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        this.tryCount += 1;
+        QDLog.w("BusinessReport", "exception when report", localUnsupportedEncodingException);
+      }
+      if ((!this.successed) && (this.tryCount <= 0)) {
+        BusinessReport.access$200().postDelay(this, 60000L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.report.BusinessReport.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

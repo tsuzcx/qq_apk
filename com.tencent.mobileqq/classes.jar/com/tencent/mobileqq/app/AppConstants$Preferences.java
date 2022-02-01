@@ -400,6 +400,7 @@ public abstract interface AppConstants$Preferences
   public static final String LOGIN_RECEIVE = "login_receive";
   public static final String LOGIN_SAVE_PSW_NO_AUTO = "login_save_psw_no_auto";
   public static final String LOGIN_SILENCE = "login_silence";
+  public static final String LOGIN_UNVERIFIED_PHONE_SHOW_RED_DOT = "login_unverified_phone_show_red_dot";
   public static final String LOGO_START_TIME = "logoStartTime";
   public static final String LONG_TEXT_MSG_CONFIG_VERSION = "long_text_msg_config_version";
   public static final String LONG_TEXT_MSG_SWITCH = "long_text_msg_switch";
@@ -926,6 +927,7 @@ public abstract interface AppConstants$Preferences
   public static final String TEAMWORK_TIPS_CONFIG_VERSION = "teamwork_tips_version";
   public static final String TEMP_MSG_SETTING_AUDIO_ROOM = "temp_msg_setting_audio_room";
   public static final String TEMP_MSG_SETTING_CIRCLE = "temp_msg_setting_circle_v2";
+  public static final String TEMP_MSG_SETTING_COMPANY = "temp_msg_setting_company_";
   public static final String TEMP_MSG_SETTING_CONSULT = "temp_msg_setting_consult_";
   public static final String TEMP_MSG_SETTING_CONTACT = "temp_msg_setting_contact_";
   public static final String TEMP_MSG_SETTING_GAMEBUDDY = "temp_msg_setting_game_buddy_";
@@ -1070,7 +1072,7 @@ public abstract interface AppConstants$Preferences
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.AppConstants.Preferences
  * JD-Core Version:    0.7.0.1
  */

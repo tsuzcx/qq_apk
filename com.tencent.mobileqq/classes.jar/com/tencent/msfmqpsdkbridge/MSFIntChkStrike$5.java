@@ -19,48 +19,48 @@ class MSFIntChkStrike$5
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     long l = paramIntent.getLongExtra("extra_download_id", -1L);
-    String str;
-    Object localObject;
     if (MSFIntChkStrike.access$200(this.this$0) == l)
     {
-      str = "";
-      localObject = new DownloadManager.Query();
+      Object localObject = new DownloadManager.Query();
       ((DownloadManager.Query)localObject).setFilterById(new long[] { l });
       paramIntent = null;
-    }
-    try
-    {
-      Cursor localCursor = this.val$downloader.query((DownloadManager.Query)localObject);
-      localObject = str;
-      if (localCursor != null)
+      try
       {
-        localObject = str;
-        paramIntent = localCursor;
-        if (localCursor.moveToFirst())
+        localObject = this.val$downloader.query((DownloadManager.Query)localObject);
+        if (localObject != null)
         {
-          paramIntent = localCursor;
-          localObject = localCursor.getString(localCursor.getColumnIndex("local_filename"));
+          paramIntent = (Intent)localObject;
+          if (((Cursor)localObject).moveToFirst())
+          {
+            paramIntent = (Intent)localObject;
+            String str = ((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("local_filename"));
+            paramIntent = str;
+            break label105;
+          }
+        }
+        paramIntent = "";
+        label105:
+        if (localObject != null) {
+          ((Cursor)localObject).close();
+        }
+        if (TextUtils.isEmpty(paramIntent))
+        {
+          FileManagerUtil.b(paramContext, paramIntent);
+          return;
         }
       }
-      if (localCursor != null) {
-        localCursor.close();
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        FileManagerUtil.b(paramContext, (String)localObject);
-      }
-      return;
-    }
-    finally
-    {
-      if (paramIntent != null) {
-        paramIntent.close();
+      finally
+      {
+        if (paramIntent != null) {
+          paramIntent.close();
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msfmqpsdkbridge.MSFIntChkStrike.5
  * JD-Core Version:    0.7.0.1
  */

@@ -18,81 +18,103 @@ public abstract class RMVideoState
   
   public void a(Object paramObject, int paramInt, Object... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoState", 2, "[@] notify called eventId=" + paramInt);
-    }
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if ((paramObject instanceof AudioCapture)) {
-      switch (paramInt)
-      {
-      }
-    }
-    label304:
-    label332:
-    do
+    if (QLog.isColorLevel())
     {
-      do
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[@] notify called eventId=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("RMVideoState", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = RMVideoStateMgr.a();
+    if ((paramObject instanceof AudioCapture))
+    {
+      if (paramInt != 9) {
+        return;
+      }
+      ((RMVideoStateMgr)localObject).i();
+      return;
+    }
+    if ((paramObject instanceof CameraProxy.CameraPreviewObservable))
+    {
+      paramObject = new StringBuilder();
+      paramObject.append(" notify EVENT_SET_CAMERA_PARAM eventId");
+      paramObject.append(paramInt);
+      paramObject.append(", rmStateMgr:");
+      paramObject.append(localObject);
+      QLog.d("faceuu", 2, paramObject.toString());
+      if (localObject != null)
       {
-        do
+        if (paramInt != 2)
         {
-          do
-          {
+          if (paramInt != 10) {
             return;
-            localRMVideoStateMgr.i();
-            return;
-          } while (!(paramObject instanceof CameraProxy.CameraPreviewObservable));
-          QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM eventId" + paramInt + ", rmStateMgr:" + localRMVideoStateMgr);
-          if (localRMVideoStateMgr == null) {
-            break label392;
           }
-          switch (paramInt)
+          if (QLog.isColorLevel())
           {
-          default: 
-            return;
-          case 2: 
-            if ((paramVarArgs == null) || (localRMVideoStateMgr.a == null)) {
-              break label332;
-            }
-            if (!(paramVarArgs[0] instanceof CameraControl.CustomSize)) {
-              break label304;
-            }
+            paramObject = new StringBuilder();
+            paramObject.append("RMVideoState viewST:");
+            paramObject.append(((RMVideoStateMgr)localObject).a);
+            QLog.d("faceuu", 2, paramObject.toString());
+          }
+          if (((RMVideoStateMgr)localObject).a != null) {
+            ((RMVideoStateMgr)localObject).a.i();
+          }
+        }
+        else if ((paramVarArgs != null) && (((RMVideoStateMgr)localObject).a != null))
+        {
+          if ((paramVarArgs[0] instanceof CameraControl.CustomSize))
+          {
             paramObject = (CameraControl.CustomSize)paramVarArgs[0];
             try
             {
-              localRMVideoStateMgr.a.a(paramObject.a, paramObject.b);
+              ((RMVideoStateMgr)localObject).a.a(paramObject.a, paramObject.b);
               QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[success]");
               return;
             }
             catch (NullPointerException paramObject)
             {
               paramObject.printStackTrace();
+              if (localObject == null) {
+                return;
+              }
             }
+            paramObject = new StringBuilder();
+            paramObject.append("[@] EVENT_SET_CAMERA_PARAM:rmStateMgr=");
+            paramObject.append(localObject);
+            paramObject.append(" viewST=");
+            paramObject.append(((RMVideoStateMgr)localObject).a);
+            QLog.d("RMVideoState", 2, paramObject.toString());
           }
-        } while (localRMVideoStateMgr == null);
-        QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM:rmStateMgr=" + localRMVideoStateMgr + " viewST=" + localRMVideoStateMgr.a);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("faceuu", 2, "RMVideoState viewST:" + localRMVideoStateMgr.a);
+          else
+          {
+            paramObject = new StringBuilder();
+            paramObject.append("[@] EVENT_SET_CAMERA_PARAM: no CustomSize obj[0]=");
+            paramObject.append(paramVarArgs[0]);
+            QLog.d("RMVideoState", 2, paramObject.toString());
+          }
         }
-      } while (localRMVideoStateMgr.a == null);
-      localRMVideoStateMgr.a.p();
-      return;
-      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM: no CustomSize obj[0]=" + paramVarArgs[0]);
-      return;
-      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:obj=" + paramVarArgs);
-    } while (localRMVideoStateMgr == null);
-    QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:viewST=" + localRMVideoStateMgr.a);
-    return;
-    label392:
-    QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM  rmStateMgr==null");
+        else
+        {
+          paramObject = new StringBuilder();
+          paramObject.append("[@] EVENT_SET_CAMERA_PARAM[2]:obj=");
+          paramObject.append(paramVarArgs);
+          QLog.d("RMVideoState", 2, paramObject.toString());
+          if (localObject != null)
+          {
+            paramObject = new StringBuilder();
+            paramObject.append("[@] EVENT_SET_CAMERA_PARAM[2]:viewST=");
+            paramObject.append(((RMVideoStateMgr)localObject).a);
+            QLog.d("RMVideoState", 2, paramObject.toString());
+          }
+        }
+      }
+      else {
+        QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM  rmStateMgr==null");
+      }
+    }
   }
   
   public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
   
   public abstract void b();
   
@@ -102,7 +124,7 @@ public abstract class RMVideoState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoState
  * JD-Core Version:    0.7.0.1
  */

@@ -33,22 +33,23 @@ class GetStackRunnable
   private int checkInterval = PluginCombination.loopStackPlugin.threshold;
   private Object dropFrameInstance = null;
   private Field dropFrameSceneField = null;
-  private int randomRange = 500 - this.checkInterval;
+  private int randomRange;
   private ArrayList<String> stackStorage;
   private final String[] systemStackElementPrefix = { "java.", "android.", "com.android.", "dalvik.", "com.google", "libcore.", "sun.", "com.qihoo360.", "com.lbe." };
   private Thread watchingThread;
   
   GetStackRunnable(Thread paramThread)
   {
-    if (this.randomRange > 0) {}
-    for (int i = this.randomRange;; i = this.checkInterval * 4)
-    {
-      this.randomRange = i;
-      this.stackStorage = new ArrayList(100);
-      this.watchingThread = paramThread;
-      handler = new Handler(ThreadManager.getStackThreadLooper());
-      return;
+    int j = this.checkInterval;
+    this.randomRange = (500 - j);
+    int i = this.randomRange;
+    if (i <= 0) {
+      i = j * 4;
     }
+    this.randomRange = i;
+    this.stackStorage = new ArrayList(100);
+    this.watchingThread = paramThread;
+    handler = new Handler(ThreadManager.getStackThreadLooper());
   }
   
   private String getDropFrameScene()
@@ -69,8 +70,10 @@ class GetStackRunnable
     }
     catch (Exception localException)
     {
-      Logger.INSTANCE.w(new String[] { "QAPM_looper_GetStackRunnable", "get dropFrame scene may be error" });
+      label78:
+      break label78;
     }
+    Logger.INSTANCE.w(new String[] { "QAPM_looper_GetStackRunnable", "get dropFrame scene may be error" });
     return "";
   }
   
@@ -78,6 +81,7 @@ class GetStackRunnable
   {
     for (;;)
     {
+      int k;
       try
       {
         this.stackStorage.clear();
@@ -104,16 +108,17 @@ class GetStackRunnable
         arrayOfString = this.systemStackElementPrefix;
         m = arrayOfString.length;
         j = 0;
-        if (j < m)
+        if (j >= m) {
+          break label265;
+        }
+        if (!str.startsWith(arrayOfString[j])) {
+          break label258;
+        }
+        if (str.startsWith("android.support.v4."))
         {
-          if (!str.startsWith(arrayOfString[j])) {
-            break label271;
-          }
-          if (!str.startsWith("android.support.v4.")) {
-            break label266;
-          }
-          j = 0;
-          break label253;
+          break label265;
+          this.stackStorage.add(str);
+          break label291;
         }
       }
       else
@@ -124,11 +129,11 @@ class GetStackRunnable
           i = this.stackStorage.size() - 1;
           if ((i >= 0) && (i > this.stackStorage.size() - 1 - 100) && (this.builder.length() < 30000))
           {
-            this.builder.append((String)this.stackStorage.get(i)).append(",");
+            localObject = this.builder;
+            ((StringBuilder)localObject).append((String)this.stackStorage.get(i));
+            ((StringBuilder)localObject).append(",");
             i -= 1;
             continue;
-            this.stackStorage.add(str);
-            break label289;
           }
           if (this.builder.length() > 0)
           {
@@ -138,40 +143,36 @@ class GetStackRunnable
           return null;
         }
         return null;
+        label245:
+        k = 0;
+        i = 0;
+        continue;
       }
-      int j = 0;
-      break label253;
-      label245:
-      int k = 0;
-      int i = 0;
-      continue;
-      for (;;)
-      {
-        label253:
-        if (j == 0) {
-          break label278;
-        }
-        j = i;
-        if (i == 0) {
-          break label289;
-        }
-        break;
-        label266:
-        j = 1;
-      }
-      label271:
+      int j = 1;
+      break label267;
+      label258:
       j += 1;
       continue;
-      label278:
-      j = i;
-      if (i == 0)
+      label265:
+      j = 0;
+      label267:
+      if (j != 0)
       {
+        j = i;
+        if (i == 0) {}
+      }
+      else
+      {
+        j = i;
+        if (i != 0) {
+          continue;
+        }
         j = 1;
         continue;
-        label289:
-        k += 1;
-        i = j;
       }
+      label291:
+      k += 1;
+      int i = j;
     }
   }
   
@@ -207,7 +208,7 @@ class GetStackRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.GetStackRunnable
  * JD-Core Version:    0.7.0.1
  */

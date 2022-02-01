@@ -43,37 +43,36 @@ public class ShareGroupIconManager$UrlBitmapDownloaderImp
       localObject = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
       ((URLDrawable)localObject).setURLDrawableListener(new ShareGroupIconManager.UrlBitmapDownloaderImp.InnerURLDrawableListener(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
       ((URLDrawable)localObject).setAutoDownload(true);
-      if (((URLDrawable)localObject).getStatus() != 1) {
-        break label177;
-      }
-      SLog.a("story.icon.ShareGroupIconManager", "download url success directly. %s", paramString);
-      localObject = a((URLDrawable)localObject, paramInt1, paramInt2);
-      if (localObject != null)
+      if (((URLDrawable)localObject).getStatus() == 1)
       {
-        paramListener.a(paramString, (Bitmap)localObject);
+        SLog.a("story.icon.ShareGroupIconManager", "download url success directly. %s", paramString);
+        localObject = a((URLDrawable)localObject, paramInt1, paramInt2);
+        if (localObject != null)
+        {
+          paramListener.a(paramString, (Bitmap)localObject);
+          return;
+        }
+        SLog.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
+        paramListener.a(paramString, new Throwable("getBitmapFromDrawable failed"));
         return;
       }
+      SLog.a("story.icon.ShareGroupIconManager", "download url pending. %s", paramString);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(paramString, new HashSet());
+      ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(paramListener);
+      this.jdField_a_of_type_JavaUtilHashSet.add(localObject);
+      ((URLDrawable)localObject).startDownload();
+      return;
     }
     catch (MalformedURLException localMalformedURLException)
     {
-      SLog.d("story.icon.ShareGroupIconManager", localMalformedURLException, "can not download url. %s", new Object[] { paramString });
+      SLog.c("story.icon.ShareGroupIconManager", localMalformedURLException, "can not download url. %s", new Object[] { paramString });
       paramListener.a(paramString, new Throwable("getBitmapFromDrawable failed"));
-      return;
     }
-    SLog.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
-    paramListener.a(paramString, new Throwable("getBitmapFromDrawable failed"));
-    return;
-    label177:
-    SLog.a("story.icon.ShareGroupIconManager", "download url pending. %s", paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(paramString, new HashSet());
-    ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(paramListener);
-    this.jdField_a_of_type_JavaUtilHashSet.add(localMalformedURLException);
-    localMalformedURLException.startDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager.UrlBitmapDownloaderImp
  * JD-Core Version:    0.7.0.1
  */

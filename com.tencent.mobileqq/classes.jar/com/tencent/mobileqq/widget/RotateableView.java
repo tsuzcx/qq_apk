@@ -46,32 +46,35 @@ public class RotateableView
     invalidate();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.rotate(this.jdField_a_of_type_Float, this.b / 2.0F, this.c / 2.0F);
     paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, localPaint);
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap != null) {
+      paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, localPaint);
     }
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Float += 8.0F;
-      if (this.jdField_a_of_type_Float >= 360.0F) {
-        this.jdField_a_of_type_Float -= 360.0F;
+      float f = this.jdField_a_of_type_Float;
+      if (f >= 360.0F) {
+        this.jdField_a_of_type_Float = (f - 360.0F);
       }
       invalidate();
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap != null)
     {
-      this.c = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      this.c = localBitmap.getHeight();
       this.b = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
     }
     setMeasuredDimension(this.b, this.c);
@@ -86,7 +89,7 @@ public class RotateableView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RotateableView
  * JD-Core Version:    0.7.0.1
  */

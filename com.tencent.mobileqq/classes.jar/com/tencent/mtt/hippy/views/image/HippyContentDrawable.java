@@ -20,9 +20,10 @@ class HippyContentDrawable
   
   private byte[] createNinePatchTrunk(Bitmap paramBitmap, Rect paramRect)
   {
-    int i = 0;
     int[] arrayOfInt1 = new int[2];
-    arrayOfInt1[0] = paramRect.left;
+    int j = paramRect.left;
+    int i = 0;
+    arrayOfInt1[0] = j;
     arrayOfInt1[1] = (paramBitmap.getWidth() - paramRect.right);
     int[] arrayOfInt2 = new int[2];
     arrayOfInt2[0] = paramRect.top;
@@ -77,7 +78,7 @@ class HippyContentDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.image.HippyContentDrawable
  * JD-Core Version:    0.7.0.1
  */

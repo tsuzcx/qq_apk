@@ -44,32 +44,32 @@ public final class AdFile
     }
     catch (Throwable localThrowable1)
     {
-      for (;;)
+      AdLog.e("AdFile", "close", localThrowable1);
+    }
+    try
+    {
+      if (this.randomAccessFile != null)
       {
-        try
-        {
-          if (this.randomAccessFile != null)
-          {
-            this.randomAccessFile.close();
-            this.randomAccessFile = null;
-          }
-          return;
-        }
-        catch (Throwable localThrowable2)
-        {
-          AdLog.e("AdFile", "close", localThrowable2);
-        }
-        localThrowable1 = localThrowable1;
-        AdLog.e("AdFile", "close", localThrowable1);
+        this.randomAccessFile.close();
+        this.randomAccessFile = null;
+        return;
       }
+    }
+    catch (Throwable localThrowable2)
+    {
+      AdLog.e("AdFile", "close", localThrowable2);
     }
   }
   
   public boolean open()
   {
-    if (!isValid()) {}
-    while ((this.randomAccessFile != null) || (this.fileLock != null)) {
+    if (!isValid()) {
       return false;
+    }
+    if (this.randomAccessFile == null) {
+      if (this.fileLock != null) {
+        return false;
+      }
     }
     for (;;)
     {
@@ -78,35 +78,35 @@ public final class AdFile
         Object localObject = new File(this.directoryPath);
         File localFile = new File((File)localObject, this.filename);
         if ((this.writable) && (!((File)localObject).exists()) && (!((File)localObject).mkdirs())) {
-          break;
-        }
-        if (this.writable)
-        {
-          localObject = "rwd";
-          this.randomAccessFile = new RandomAccessFile(localFile, (String)localObject);
-          if (!this.writable) {
-            break label154;
-          }
-          this.fileLock = this.randomAccessFile.getChannel().lock();
-          if ((localFile.exists()) && (localFile.isFile())) {
-            break label176;
-          }
-          close();
           return false;
         }
+        if (!this.writable) {
+          break label180;
+        }
+        localObject = "rwd";
+        this.randomAccessFile = new RandomAccessFile(localFile, (String)localObject);
+        if (this.writable) {
+          this.fileLock = this.randomAccessFile.getChannel().lock();
+        } else {
+          this.fileLock = this.randomAccessFile.getChannel().tryLock(0L, 9223372036854775807L, true);
+        }
+        if (localFile.exists()) {
+          if (localFile.isFile()) {
+            break;
+          }
+        }
+        close();
+        return false;
       }
       catch (Throwable localThrowable)
       {
         AdLog.e("AdFile", "open", localThrowable);
         close();
-        return false;
       }
+      return false;
+      label180:
       String str = "r";
-      continue;
-      label154:
-      this.fileLock = this.randomAccessFile.getChannel().tryLock(0L, 9223372036854775807L, true);
     }
-    label176:
     return true;
   }
   
@@ -117,59 +117,73 @@ public final class AdFile
   
   public String readFully(int paramInt)
   {
-    if (!isValid()) {}
-    for (;;)
-    {
+    if (!isValid()) {
       return null;
-      if ((this.randomAccessFile != null) && (this.fileLock != null))
-      {
-        int i;
-        if (paramInt != -2147483648) {
-          i = paramInt;
-        }
-        try
-        {
-          if (this.randomAccessFile.length() <= paramInt) {
-            i = Long.valueOf(this.randomAccessFile.length()).intValue();
-          }
-          if (i > 0)
-          {
-            Object localObject = new byte[i];
-            if (this.randomAccessFile.read((byte[])localObject, 0, i) == i)
-            {
-              localObject = new String((byte[])localObject, 0, i, this.charsetName);
-              return localObject;
-            }
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          AdLog.e("AdFile", "read", localThrowable);
-        }
+    }
+    Object localObject = this.randomAccessFile;
+    int i;
+    if (localObject != null)
+    {
+      if (this.fileLock == null) {
+        return null;
+      }
+      if (paramInt != -2147483648) {
+        i = paramInt;
       }
     }
+    do
+    {
+      try
+      {
+        if (((RandomAccessFile)localObject).length() > paramInt) {
+          continue;
+        }
+        i = Long.valueOf(this.randomAccessFile.length()).intValue();
+      }
+      catch (Throwable localThrowable)
+      {
+        AdLog.e("AdFile", "read", localThrowable);
+      }
+      localObject = new byte[i];
+      if (this.randomAccessFile.read((byte[])localObject, 0, i) == i)
+      {
+        localObject = new String((byte[])localObject, 0, i, this.charsetName);
+        return localObject;
+      }
+      return null;
+      return null;
+    } while (i > 0);
     return null;
   }
   
   public boolean writeFully(String paramString)
   {
-    if (!isValid()) {}
-    while ((!this.writable) || (this.randomAccessFile == null) || (this.fileLock == null)) {
+    if (!isValid()) {
       return false;
     }
-    try
-    {
-      this.randomAccessFile.setLength(0L);
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = paramString.getBytes(this.charsetName);
-        this.randomAccessFile.write(paramString);
-      }
-      return true;
+    if (!this.writable) {
+      return false;
     }
-    catch (Throwable paramString)
+    RandomAccessFile localRandomAccessFile = this.randomAccessFile;
+    if (localRandomAccessFile != null)
     {
-      AdLog.e("AdFile", "write", paramString);
+      if (this.fileLock == null) {
+        return false;
+      }
+      try
+      {
+        localRandomAccessFile.setLength(0L);
+        if (!TextUtils.isEmpty(paramString))
+        {
+          paramString = paramString.getBytes(this.charsetName);
+          this.randomAccessFile.write(paramString);
+        }
+        return true;
+      }
+      catch (Throwable paramString)
+      {
+        AdLog.e("AdFile", "write", paramString);
+      }
     }
     return false;
   }

@@ -35,53 +35,47 @@ public class VideoThumbDownloader
   
   private Bitmap queryVideoThumbnail(String paramString)
   {
+    int i = Build.VERSION.SDK_INT;
     Object localObject = null;
-    Cursor localCursor = null;
-    if (Build.VERSION.SDK_INT < 5)
-    {
-      localObject = localCursor;
-      label17:
-      return localObject;
+    if (i < 5) {
+      return null;
     }
     try
     {
       localCursor = queryVideoCursor(paramString);
-      paramString = (String)localObject;
-      if (localCursor != null) {
-        paramString = (String)localObject;
+      paramString = localObject;
+      if (localCursor != null)
+      {
+        paramString = localObject;
+        try
+        {
+          if (localCursor.getCount() > 0)
+          {
+            long l = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
+            paramString = localObject;
+            if (localCursor.moveToFirst()) {
+              paramString = MediaStore.Video.Thumbnails.getThumbnail(BaseApplicationImpl.getContext().getContentResolver(), l, 1, null);
+            }
+          }
+        }
+        finally
+        {
+          break label110;
+        }
       }
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      return paramString;
     }
     finally
     {
-      try
-      {
-        if (localCursor.getCount() > 0)
-        {
-          long l = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
-          paramString = (String)localObject;
-          if (localCursor.moveToFirst()) {
-            paramString = MediaStore.Video.Thumbnails.getThumbnail(BaseApplicationImpl.getContext().getContentResolver(), l, 1, null);
-          }
-        }
-        localObject = paramString;
-        if (localCursor == null) {
-          break label17;
-        }
+      Cursor localCursor = null;
+      label110:
+      if (localCursor != null) {
         localCursor.close();
-        return paramString;
       }
-      finally
-      {
-        break label112;
-      }
-      paramString = finally;
-      localCursor = null;
     }
-    label112:
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    throw paramString;
   }
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -96,7 +90,11 @@ public class VideoThumbDownloader
   
   public Cursor queryVideoCursor(String paramString)
   {
-    paramString = "_data='" + DeviceMsgThumbDownloader.processPath(paramString) + "' COLLATE NOCASE";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("_data='");
+    localStringBuilder.append(DeviceMsgThumbDownloader.processPath(paramString));
+    localStringBuilder.append("' COLLATE NOCASE");
+    paramString = localStringBuilder.toString();
     return BaseApplicationImpl.getContext().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, PROJECTION_VIDEO, paramString, null, null);
   }
   
@@ -107,7 +105,7 @@ public class VideoThumbDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VideoThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,13 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.video;
 
 import android.content.Context;
 import android.os.Handler;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.videofeeds.BaseVideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.videofeeds.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.kandian.ad.api.entity.IADVideoAppDownloadManager;
+import com.tencent.mobileqq.kandian.biz.ad.entity.VideoAdInfo;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.viewholder.VideoItemHolder;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.open.appstore.dl.DownloadManagerV2;
 import com.tencent.open.downloadnew.DownloadInfo;
@@ -26,13 +27,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ADVideoAppDownloadManager
-  implements DownloadListener
+  implements IADVideoAppDownloadManager, DownloadListener
 {
   private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private BaseVideoItemHolder jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsBaseVideoItemHolder = null;
   private ADVideoAppDownloadData jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
   private ADVideoAppUIPresenter jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppUIPresenter;
   private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new ADVideoAppDownloadManager.3(this);
@@ -82,218 +82,326 @@ public class ADVideoAppDownloadManager
   private String a(String paramString, int paramInt)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 4
-    //   6: aload_1
-    //   7: invokestatic 151	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   10: ifeq +6 -> 16
-    //   13: aload 4
-    //   15: areturn
-    //   16: invokestatic 157	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   19: ifeq +37 -> 56
-    //   22: ldc 159
-    //   24: iconst_2
-    //   25: new 161	java/lang/StringBuilder
-    //   28: dup
-    //   29: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   32: ldc 164
-    //   34: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: aload_1
-    //   38: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: ldc 169
-    //   43: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: iload_2
-    //   47: invokevirtual 172	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   50: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   56: ldc 178
-    //   58: astore_3
-    //   59: ldc 180
-    //   61: ldc 182
-    //   63: invokestatic 188	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   66: astore 6
-    //   68: aload 6
-    //   70: astore_3
-    //   71: new 161	java/lang/StringBuilder
-    //   74: dup
-    //   75: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   78: aload_1
-    //   79: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: ldc 190
-    //   84: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: aload_3
-    //   88: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   94: astore_1
-    //   95: invokestatic 157	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   98: ifeq +28 -> 126
-    //   101: ldc 159
-    //   103: iconst_2
-    //   104: new 161	java/lang/StringBuilder
-    //   107: dup
-    //   108: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   111: ldc 192
-    //   113: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: aload_1
-    //   117: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   120: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   123: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   126: new 194	java/net/URL
-    //   129: dup
-    //   130: aload_1
-    //   131: invokespecial 197	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   134: invokevirtual 201	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   137: checkcast 203	java/net/HttpURLConnection
-    //   140: astore_3
-    //   141: aload_3
-    //   142: ldc 205
-    //   144: invokevirtual 208	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   147: aload_3
-    //   148: ldc 210
-    //   150: ldc 212
-    //   152: invokevirtual 216	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   155: aload_3
-    //   156: ldc 218
-    //   158: ldc 220
-    //   160: invokevirtual 216	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   163: aload_3
-    //   164: ldc 222
-    //   166: ldc 224
-    //   168: invokevirtual 216	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   171: aload_3
-    //   172: sipush 3000
-    //   175: invokevirtual 227	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   178: aload_3
-    //   179: sipush 3000
-    //   182: invokevirtual 230	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   185: aload_3
-    //   186: invokevirtual 234	java/net/HttpURLConnection:getResponseCode	()I
-    //   189: sipush 200
-    //   192: if_icmpne +120 -> 312
-    //   195: aload_0
-    //   196: aload_3
-    //   197: invokevirtual 238	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   200: invokespecial 240	com/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadManager:a	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   203: astore_1
-    //   204: aload_1
-    //   205: invokestatic 151	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   208: ifne +43 -> 251
-    //   211: new 242	org/json/JSONObject
-    //   214: dup
-    //   215: aload_1
-    //   216: invokespecial 243	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   219: astore_1
-    //   220: getstatic 248	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil:a	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil;
-    //   223: aload_1
-    //   224: invokevirtual 251	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil:a	(Lorg/json/JSONObject;)Ljava/lang/String;
-    //   227: astore_1
-    //   228: aload_1
-    //   229: astore 4
-    //   231: aload_3
-    //   232: ifnull -219 -> 13
-    //   235: aload_3
-    //   236: invokevirtual 254	java/net/HttpURLConnection:disconnect	()V
-    //   239: aload_1
-    //   240: areturn
-    //   241: astore 6
-    //   243: aload 6
-    //   245: invokevirtual 257	java/lang/Exception:printStackTrace	()V
-    //   248: goto -177 -> 71
-    //   251: ldc 159
-    //   253: iconst_1
-    //   254: ldc_w 259
-    //   257: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   0: aload_1
+    //   1: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: istore_3
+    //   5: aconst_null
+    //   6: astore 7
+    //   8: aconst_null
+    //   9: astore 8
+    //   11: aconst_null
+    //   12: astore 6
+    //   14: iload_3
+    //   15: ifeq +5 -> 20
+    //   18: aconst_null
+    //   19: areturn
+    //   20: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   23: ifeq +53 -> 76
+    //   26: new 158	java/lang/StringBuilder
+    //   29: dup
+    //   30: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   33: astore 4
+    //   35: aload 4
+    //   37: ldc 161
+    //   39: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: pop
+    //   43: aload 4
+    //   45: aload_1
+    //   46: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: pop
+    //   50: aload 4
+    //   52: ldc 166
+    //   54: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: pop
+    //   58: aload 4
+    //   60: iload_2
+    //   61: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   64: pop
+    //   65: ldc 171
+    //   67: iconst_2
+    //   68: aload 4
+    //   70: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   73: invokestatic 175	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   76: ldc 177
+    //   78: ldc 179
+    //   80: invokestatic 185	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   83: astore 4
+    //   85: goto +14 -> 99
+    //   88: astore 4
+    //   90: aload 4
+    //   92: invokevirtual 188	java/lang/Exception:printStackTrace	()V
+    //   95: ldc 190
+    //   97: astore 4
+    //   99: new 158	java/lang/StringBuilder
+    //   102: dup
+    //   103: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   106: astore 5
+    //   108: aload 5
+    //   110: aload_1
+    //   111: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: pop
+    //   115: aload 5
+    //   117: ldc 192
+    //   119: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: pop
+    //   123: aload 5
+    //   125: aload 4
+    //   127: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: pop
+    //   131: aload 5
+    //   133: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   136: astore_1
+    //   137: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   140: ifeq +38 -> 178
+    //   143: new 158	java/lang/StringBuilder
+    //   146: dup
+    //   147: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   150: astore 4
+    //   152: aload 4
+    //   154: ldc 194
+    //   156: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: pop
+    //   160: aload 4
+    //   162: aload_1
+    //   163: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   166: pop
+    //   167: ldc 171
+    //   169: iconst_2
+    //   170: aload 4
+    //   172: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   175: invokestatic 175	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   178: new 196	java/net/URL
+    //   181: dup
+    //   182: aload_1
+    //   183: invokespecial 199	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   186: invokevirtual 203	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   189: checkcast 205	java/net/HttpURLConnection
+    //   192: astore 5
+    //   194: aload 5
+    //   196: astore 4
+    //   198: aload 5
+    //   200: ldc 207
+    //   202: invokevirtual 210	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   205: aload 5
+    //   207: astore 4
+    //   209: aload 5
+    //   211: ldc 212
+    //   213: ldc 214
+    //   215: invokevirtual 218	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   218: aload 5
+    //   220: astore 4
+    //   222: aload 5
+    //   224: ldc 220
+    //   226: ldc 222
+    //   228: invokevirtual 218	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   231: aload 5
+    //   233: astore 4
+    //   235: aload 5
+    //   237: ldc 224
+    //   239: ldc 226
+    //   241: invokevirtual 218	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   244: aload 5
+    //   246: astore 4
+    //   248: aload 5
+    //   250: sipush 3000
+    //   253: invokevirtual 229	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   256: aload 5
+    //   258: astore 4
     //   260: aload 5
-    //   262: astore_1
-    //   263: goto -35 -> 228
-    //   266: astore 5
-    //   268: aload_3
-    //   269: astore_1
-    //   270: aload 5
-    //   272: astore_3
-    //   273: ldc 159
-    //   275: iconst_1
-    //   276: new 161	java/lang/StringBuilder
-    //   279: dup
-    //   280: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   283: ldc_w 261
-    //   286: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: aload_3
-    //   290: invokevirtual 262	java/lang/Exception:toString	()Ljava/lang/String;
-    //   293: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   296: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   299: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   302: aload_1
-    //   303: ifnull -290 -> 13
-    //   306: aload_1
-    //   307: invokevirtual 254	java/net/HttpURLConnection:disconnect	()V
-    //   310: aconst_null
-    //   311: areturn
-    //   312: ldc 159
-    //   314: iconst_1
-    //   315: new 161	java/lang/StringBuilder
-    //   318: dup
-    //   319: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   322: ldc_w 264
-    //   325: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   328: aload_3
-    //   329: invokevirtual 234	java/net/HttpURLConnection:getResponseCode	()I
-    //   332: invokevirtual 172	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   335: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   338: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   341: aload 5
-    //   343: astore_1
-    //   344: goto -116 -> 228
-    //   347: astore 4
-    //   349: aload_3
+    //   262: sipush 3000
+    //   265: invokevirtual 232	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   268: aload 5
+    //   270: astore 4
+    //   272: aload 5
+    //   274: invokevirtual 236	java/net/HttpURLConnection:getResponseCode	()I
+    //   277: sipush 200
+    //   280: if_icmpne +74 -> 354
+    //   283: aload 5
+    //   285: astore 4
+    //   287: aload_0
+    //   288: aload 5
+    //   290: invokevirtual 240	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   293: invokespecial 242	com/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadManager:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   296: astore_1
+    //   297: aload 5
+    //   299: astore 4
+    //   301: aload_1
+    //   302: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   305: ifne +31 -> 336
+    //   308: aload 5
+    //   310: astore 4
+    //   312: new 244	org/json/JSONObject
+    //   315: dup
+    //   316: aload_1
+    //   317: invokespecial 245	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   320: astore_1
+    //   321: aload 5
+    //   323: astore 4
+    //   325: getstatic 250	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil:a	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil;
+    //   328: aload_1
+    //   329: invokevirtual 253	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil:a	(Lorg/json/JSONObject;)Ljava/lang/String;
+    //   332: astore_1
+    //   333: goto +76 -> 409
+    //   336: aload 5
+    //   338: astore 4
+    //   340: ldc 171
+    //   342: iconst_1
+    //   343: ldc 255
+    //   345: invokestatic 175	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   348: aload 6
     //   350: astore_1
-    //   351: aload 4
-    //   353: astore_3
-    //   354: aload_1
-    //   355: ifnull +7 -> 362
-    //   358: aload_1
-    //   359: invokevirtual 254	java/net/HttpURLConnection:disconnect	()V
-    //   362: aload_3
-    //   363: athrow
-    //   364: astore_3
-    //   365: aconst_null
-    //   366: astore_1
-    //   367: goto -13 -> 354
-    //   370: astore_3
-    //   371: goto -17 -> 354
-    //   374: astore_3
-    //   375: aconst_null
-    //   376: astore_1
-    //   377: goto -104 -> 273
+    //   351: goto +58 -> 409
+    //   354: aload 5
+    //   356: astore 4
+    //   358: new 158	java/lang/StringBuilder
+    //   361: dup
+    //   362: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   365: astore_1
+    //   366: aload 5
+    //   368: astore 4
+    //   370: aload_1
+    //   371: ldc_w 257
+    //   374: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   377: pop
+    //   378: aload 5
+    //   380: astore 4
+    //   382: aload_1
+    //   383: aload 5
+    //   385: invokevirtual 236	java/net/HttpURLConnection:getResponseCode	()I
+    //   388: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   391: pop
+    //   392: aload 5
+    //   394: astore 4
+    //   396: ldc 171
+    //   398: iconst_1
+    //   399: aload_1
+    //   400: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   403: invokestatic 175	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   406: aload 6
+    //   408: astore_1
+    //   409: aload_1
+    //   410: astore 4
+    //   412: aload 5
+    //   414: ifnull +103 -> 517
+    //   417: aload_1
+    //   418: astore 4
+    //   420: aload 5
+    //   422: invokevirtual 260	java/net/HttpURLConnection:disconnect	()V
+    //   425: aload 4
+    //   427: areturn
+    //   428: astore 6
+    //   430: aload 5
+    //   432: astore_1
+    //   433: goto +14 -> 447
+    //   436: astore_1
+    //   437: aconst_null
+    //   438: astore 4
+    //   440: goto +81 -> 521
+    //   443: astore 6
+    //   445: aconst_null
+    //   446: astore_1
+    //   447: aload_1
+    //   448: astore 4
+    //   450: new 158	java/lang/StringBuilder
+    //   453: dup
+    //   454: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   457: astore 5
+    //   459: aload_1
+    //   460: astore 4
+    //   462: aload 5
+    //   464: ldc_w 262
+    //   467: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   470: pop
+    //   471: aload_1
+    //   472: astore 4
+    //   474: aload 5
+    //   476: aload 6
+    //   478: invokevirtual 263	java/lang/Exception:toString	()Ljava/lang/String;
+    //   481: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   484: pop
+    //   485: aload_1
+    //   486: astore 4
+    //   488: ldc 171
+    //   490: iconst_1
+    //   491: aload 5
+    //   493: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   496: invokestatic 175	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   499: aload 8
+    //   501: astore 4
+    //   503: aload_1
+    //   504: ifnull +13 -> 517
+    //   507: aload 7
+    //   509: astore 4
+    //   511: aload_1
+    //   512: astore 5
+    //   514: goto -94 -> 420
+    //   517: aload 4
+    //   519: areturn
+    //   520: astore_1
+    //   521: aload 4
+    //   523: ifnull +8 -> 531
+    //   526: aload 4
+    //   528: invokevirtual 260	java/net/HttpURLConnection:disconnect	()V
+    //   531: goto +5 -> 536
+    //   534: aload_1
+    //   535: athrow
+    //   536: goto -2 -> 534
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	380	0	this	ADVideoAppDownloadManager
-    //   0	380	1	paramString	String
-    //   0	380	2	paramInt	int
-    //   58	305	3	localObject1	Object
-    //   364	1	3	localObject2	Object
-    //   370	1	3	localObject3	Object
-    //   374	1	3	localException1	java.lang.Exception
-    //   4	226	4	str1	String
-    //   347	5	4	localObject4	Object
-    //   1	260	5	localObject5	Object
-    //   266	76	5	localException2	java.lang.Exception
-    //   66	3	6	str2	String
-    //   241	3	6	localException3	java.lang.Exception
+    //   0	539	0	this	ADVideoAppDownloadManager
+    //   0	539	1	paramString	String
+    //   0	539	2	paramInt	int
+    //   4	11	3	bool	boolean
+    //   33	51	4	localObject1	Object
+    //   88	3	4	localException1	java.lang.Exception
+    //   97	430	4	localObject2	Object
+    //   106	407	5	localObject3	Object
+    //   12	395	6	localObject4	Object
+    //   428	1	6	localException2	java.lang.Exception
+    //   443	34	6	localException3	java.lang.Exception
+    //   6	502	7	localObject5	Object
+    //   9	491	8	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   59	68	241	java/lang/Exception
-    //   141	228	266	java/lang/Exception
-    //   251	260	266	java/lang/Exception
-    //   312	341	266	java/lang/Exception
-    //   141	228	347	finally
-    //   251	260	347	finally
-    //   312	341	347	finally
-    //   126	141	364	finally
-    //   273	302	370	finally
-    //   126	141	374	java/lang/Exception
+    //   76	85	88	java/lang/Exception
+    //   198	205	428	java/lang/Exception
+    //   209	218	428	java/lang/Exception
+    //   222	231	428	java/lang/Exception
+    //   235	244	428	java/lang/Exception
+    //   248	256	428	java/lang/Exception
+    //   260	268	428	java/lang/Exception
+    //   272	283	428	java/lang/Exception
+    //   287	297	428	java/lang/Exception
+    //   301	308	428	java/lang/Exception
+    //   312	321	428	java/lang/Exception
+    //   325	333	428	java/lang/Exception
+    //   340	348	428	java/lang/Exception
+    //   358	366	428	java/lang/Exception
+    //   370	378	428	java/lang/Exception
+    //   382	392	428	java/lang/Exception
+    //   396	406	428	java/lang/Exception
+    //   178	194	436	finally
+    //   178	194	443	java/lang/Exception
+    //   198	205	520	finally
+    //   209	218	520	finally
+    //   222	231	520	finally
+    //   235	244	520	finally
+    //   248	256	520	finally
+    //   260	268	520	finally
+    //   272	283	520	finally
+    //   287	297	520	finally
+    //   301	308	520	finally
+    //   312	321	520	finally
+    //   325	333	520	finally
+    //   340	348	520	finally
+    //   358	366	520	finally
+    //   370	378	520	finally
+    //   382	392	520	finally
+    //   396	406	520	finally
+    //   450	459	520	finally
+    //   462	471	520	finally
+    //   474	485	520	finally
+    //   488	499	520	finally
   }
   
   private void a(boolean paramBoolean, long paramLong) {}
@@ -313,67 +421,79 @@ public class ADVideoAppDownloadManager
     }
   }
   
-  public void a(VideoItemHolder paramVideoItemHolder) {}
-  
   public void a(ADVideoAppDownloadData paramADVideoAppDownloadData) {}
+  
+  public void a(VideoItemHolder paramVideoItemHolder) {}
   
   protected void a(DownloadInfo paramDownloadInfo, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 2: 
-    default: 
-    case 0: 
-      do
+      if (paramInt != 1)
       {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5)
+            {
+              if (paramInt != 6) {
+                return;
+              }
+              onDownloadError(paramDownloadInfo, 0, "", paramInt);
+              return;
+            }
+            onDownloadFinish(paramDownloadInfo);
+            return;
+          }
+          onDownloadPause(paramDownloadInfo);
+          return;
+        }
+        onDownloadUpdate(new ArrayList(1));
         return;
-      } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData == null);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppUIPresenter.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
-      return;
-    case 3: 
-      onDownloadUpdate(new ArrayList(1));
-      return;
-    case 5: 
-      onDownloadFinish(paramDownloadInfo);
-      return;
-    case 1: 
+      }
       installSucceed(paramDownloadInfo.k, paramDownloadInfo.e);
       return;
-    case 4: 
-      onDownloadPause(paramDownloadInfo);
-      return;
     }
-    onDownloadError(paramDownloadInfo, 0, "", paramInt);
+    paramDownloadInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+    if (paramDownloadInfo != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppUIPresenter.c(paramDownloadInfo);
+    }
   }
   
-  public boolean a(VideoInfo paramVideoInfo)
+  public void a(Object paramObject)
   {
-    boolean bool1 = true;
-    if (paramVideoInfo == null) {}
-    while ((paramVideoInfo.a == null) || (paramVideoInfo == null) || (paramVideoInfo.a == null) || (paramVideoInfo.a.c != 12)) {
-      return false;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramVideoInfo = new JSONObject(paramVideoInfo.a.r);
-        boolean bool2 = PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, paramVideoInfo.optString("pkg_name"));
-        if (bool2) {
-          return bool1;
-        }
-      }
-      catch (JSONException paramVideoInfo)
-      {
-        QLog.d("ADVideoAppDownloadManager", 1, "isAppInstalled JSONException = " + paramVideoInfo.toString());
-        return false;
-      }
-      bool1 = false;
-    }
+    a((VideoItemHolder)paramObject);
   }
   
   public boolean a(ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
+    return false;
+  }
+  
+  public boolean a(VideoInfo paramVideoInfo)
+  {
+    if (paramVideoInfo == null) {
+      return false;
+    }
+    if (paramVideoInfo.a == null) {
+      return false;
+    }
+    if ((paramVideoInfo != null) && (paramVideoInfo.a != null) && (paramVideoInfo.a.c == 12)) {
+      try
+      {
+        paramVideoInfo = new JSONObject(paramVideoInfo.a.r);
+        boolean bool = PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, paramVideoInfo.optString("pkg_name"));
+        return bool;
+      }
+      catch (JSONException paramVideoInfo)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isAppInstalled JSONException = ");
+        localStringBuilder.append(paramVideoInfo.toString());
+        QLog.d("ADVideoAppDownloadManager", 1, localStringBuilder.toString());
+      }
+    }
     return false;
   }
   
@@ -391,32 +511,48 @@ public class ADVideoAppDownloadManager
   
   public void installSucceed(String paramString1, String paramString2)
   {
-    ReadInJoyAdLog.a("ADVideoAppDownloadManager", "installSucceed " + paramString2);
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.c = paramString1;
-    localDownloadInfo.e = paramString2;
+    Object localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("installSucceed ");
+    localStringBuilder.append(paramString2);
+    ((IRIJAdLogService)localObject).d("ADVideoAppDownloadManager", localStringBuilder.toString());
+    localObject = new DownloadInfo();
+    ((DownloadInfo)localObject).c = paramString1;
+    ((DownloadInfo)localObject).e = paramString2;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppUIPresenter.a(paramString1, paramString2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
   }
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADVideoAppDownloadManager", 2, "onDownloadCancel " + paramDownloadInfo.e);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadCancel ");
+      localStringBuilder.append(paramDownloadInfo.e);
+      QLog.d("ADVideoAppDownloadManager", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppUIPresenter.a(paramDownloadInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADVideoAppDownloadManager", 2, "onDownloadError " + paramDownloadInfo.e);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadError ");
+      localStringBuilder.append(paramDownloadInfo.e);
+      QLog.d("ADVideoAppDownloadManager", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppUIPresenter.a(paramDownloadInfo, paramInt1, paramString, paramInt2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    ReadInJoyAdLog.a("ADVideoAppDownloadManager", "onDownloadFinish " + paramDownloadInfo.e);
+    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadFinish ");
+    localStringBuilder.append(paramDownloadInfo.e);
+    localIRIJAdLogService.d("ADVideoAppDownloadManager", localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppUIPresenter.b(paramDownloadInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
   }
   
@@ -431,29 +567,37 @@ public class ADVideoAppDownloadManager
   
   public void packageReplaced(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADVideoAppDownloadManager", 2, "packageReplaced " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("packageReplaced ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("ADVideoAppDownloadManager", 2, ((StringBuilder)localObject).toString());
     }
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.c = paramString1;
-    localDownloadInfo.e = paramString2;
+    Object localObject = new DownloadInfo();
+    ((DownloadInfo)localObject).c = paramString1;
+    ((DownloadInfo)localObject).e = paramString2;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppUIPresenter.c(paramString1, paramString2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
   }
   
   public void uninstallSucceed(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADVideoAppDownloadManager", 2, "uninstallSucceed " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("uninstallSucceed ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("ADVideoAppDownloadManager", 2, ((StringBuilder)localObject).toString());
     }
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.c = paramString1;
-    localDownloadInfo.e = paramString2;
+    Object localObject = new DownloadInfo();
+    ((DownloadInfo)localObject).c = paramString1;
+    ((DownloadInfo)localObject).e = paramString2;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppUIPresenter.b(paramString1, paramString2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadManager
  * JD-Core Version:    0.7.0.1
  */

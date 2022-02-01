@@ -12,8 +12,16 @@ class VideoCombineHelper$CombineTask$1$1
   {
     if (QLog.isColorLevel())
     {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineMp4_M4a end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineMp4_M4aTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("combineMp4_M4a end! isSuccess:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" path = ");
+      localStringBuilder.append(paramString1);
+      QLog.d(".troop.VideoCombineHelper", 2, localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("combineMp4_M4aTime:");
+      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      QLog.d(".troop.trace_video_combine", 2, localStringBuilder.toString());
     }
     paramString1 = new File(paramString1);
     if ((paramBoolean) && (paramString1.exists()))
@@ -28,7 +36,7 @@ class VideoCombineHelper$CombineTask$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.CombineTask.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,21 +19,19 @@ public class QQPluginCommunicationChannel
   
   public String getNickName()
   {
-    String str = null;
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface != null) {
-      str = localQQAppInterface.getCurrentNickname();
+      return localQQAppInterface.getCurrentNickname();
     }
-    return str;
+    return null;
   }
   
   public String getSKey()
   {
-    String str = null;
     if (a() != null) {
-      str = "getSKey";
+      return "getSKey";
     }
-    return str;
+    return null;
   }
   
   public String getSid()
@@ -43,17 +41,16 @@ public class QQPluginCommunicationChannel
   
   public long getUin()
   {
-    long l = 0L;
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface != null) {
-      l = localQQAppInterface.getLongAccountUin();
+      return localQQAppInterface.getLongAccountUin();
     }
-    return l;
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.QQPluginCommunicationChannel
  * JD-Core Version:    0.7.0.1
  */

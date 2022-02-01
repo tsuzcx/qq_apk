@@ -2,9 +2,9 @@ package com.gyailib.library;
 
 public class FaceDetectorFeaturePerspective
 {
-  public float[] face_points_3d_x;
-  public float[] face_points_3d_y;
-  public float[] face_points_3d_z;
+  public float[] facePoints3dX;
+  public float[] facePoints3dY;
+  public float[] facePoints3dZ;
   public float pitch;
   public float roll;
   public float[] transform;
@@ -12,9 +12,9 @@ public class FaceDetectorFeaturePerspective
   
   public FaceDetectorFeaturePerspective(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3, float paramFloat1, float paramFloat2, float paramFloat3, float[] paramArrayOfFloat4)
   {
-    this.face_points_3d_x = paramArrayOfFloat1;
-    this.face_points_3d_y = paramArrayOfFloat2;
-    this.face_points_3d_z = paramArrayOfFloat3;
+    this.facePoints3dX = paramArrayOfFloat1;
+    this.facePoints3dY = paramArrayOfFloat2;
+    this.facePoints3dZ = paramArrayOfFloat3;
     this.pitch = paramFloat1;
     this.yaw = paramFloat2;
     this.roll = paramFloat3;
@@ -23,7 +23,7 @@ public class FaceDetectorFeaturePerspective
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.gyailib.library.FaceDetectorFeaturePerspective
  * JD-Core Version:    0.7.0.1
  */

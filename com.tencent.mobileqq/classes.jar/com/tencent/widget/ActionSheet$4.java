@@ -10,7 +10,10 @@ class ActionSheet$4
   
   public void onFileDownloadFailed(int paramInt)
   {
-    QLog.i("ActionSheet", 1, "onFileDownloadFailed " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onFileDownloadFailed ");
+    localStringBuilder.append(paramInt);
+    QLog.i("ActionSheet", 1, localStringBuilder.toString());
   }
   
   public void onFileDownloadStarted()
@@ -20,12 +23,15 @@ class ActionSheet$4
   
   public void onFileDownloadSucceed(long paramLong)
   {
-    QLog.i("ActionSheet", 1, "onFileDownloadSucceed " + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onFileDownloadSucceed ");
+    localStringBuilder.append(paramLong);
+    QLog.i("ActionSheet", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ActionSheet.4
  * JD-Core Version:    0.7.0.1
  */

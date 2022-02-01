@@ -13,42 +13,39 @@ public class DeepCleanConfigProcessor
 {
   public static String a(Context paramContext, boolean paramBoolean)
   {
-    Object localObject1 = (DeepCleanConfigProcessor.DeepCleanConfigBean)QConfigManager.a().a(678);
-    if (localObject1 != null) {
-      if (paramBoolean) {
-        localObject1 = DeepCleanConfigProcessor.DeepCleanConfigBean.a((DeepCleanConfigProcessor.DeepCleanConfigBean)localObject1);
-      }
-    }
-    for (;;)
-    {
-      Object localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = paramContext.getString(2131691550);
-      }
-      return localObject2;
-      if (a(paramContext))
+    Object localObject = (DeepCleanConfigProcessor.DeepCleanConfigBean)QConfigManager.a().a(678);
+    String str = "";
+    if (localObject != null) {
+      if (paramBoolean)
       {
-        localObject1 = DeepCleanConfigProcessor.DeepCleanConfigBean.b((DeepCleanConfigProcessor.DeepCleanConfigBean)localObject1);
+        str = DeepCleanConfigProcessor.DeepCleanConfigBean.a((DeepCleanConfigProcessor.DeepCleanConfigBean)localObject);
+      }
+      else if (a(paramContext))
+      {
+        str = DeepCleanConfigProcessor.DeepCleanConfigBean.b((DeepCleanConfigProcessor.DeepCleanConfigBean)localObject);
       }
       else
       {
         int i = ((Integer)SharedPreUtils.a(paramContext, "", "key_deep_clean_show_time", Integer.valueOf(0))).intValue();
         a(paramContext, i);
-        switch (i)
+        if (i != 0)
         {
-        default: 
-          localObject1 = DeepCleanConfigProcessor.DeepCleanConfigBean.d((DeepCleanConfigProcessor.DeepCleanConfigBean)localObject1);
-          break;
-        case 0: 
-          localObject1 = DeepCleanConfigProcessor.DeepCleanConfigBean.b((DeepCleanConfigProcessor.DeepCleanConfigBean)localObject1);
-          break;
-        case 1: 
-          localObject1 = DeepCleanConfigProcessor.DeepCleanConfigBean.c((DeepCleanConfigProcessor.DeepCleanConfigBean)localObject1);
-          continue;
-          localObject1 = "";
+          if (i != 1) {
+            str = DeepCleanConfigProcessor.DeepCleanConfigBean.d((DeepCleanConfigProcessor.DeepCleanConfigBean)localObject);
+          } else {
+            str = DeepCleanConfigProcessor.DeepCleanConfigBean.c((DeepCleanConfigProcessor.DeepCleanConfigBean)localObject);
+          }
+        }
+        else {
+          str = DeepCleanConfigProcessor.DeepCleanConfigBean.b((DeepCleanConfigProcessor.DeepCleanConfigBean)localObject);
         }
       }
     }
+    localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = paramContext.getString(2131691471);
+    }
+    return localObject;
   }
   
   public static void a()
@@ -89,8 +86,12 @@ public class DeepCleanConfigProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("DeepCleanConfigProcessor", 2, "onParsed, content:" + paramArrayOfQConfItem);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed, content:");
+        localStringBuilder.append(paramArrayOfQConfItem);
+        QLog.d("DeepCleanConfigProcessor", 2, localStringBuilder.toString());
       }
       return DeepCleanConfigProcessor.DeepCleanConfigBean.a(paramArrayOfQConfItem);
     }
@@ -140,7 +141,7 @@ public class DeepCleanConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.DeepCleanConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

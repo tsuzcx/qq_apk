@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
+import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PanelManager;
 import com.tencent.mobileqq.hotpic.HotPicMainPanel;
 
 class AIOIceBreakView$1$1
@@ -11,12 +13,15 @@ class AIOIceBreakView$1$1
   
   public void run()
   {
-    AIOIceBreakView.a(this.a.a).a.a.setCurrentItem(AIOIceBreakView.a(this.a.a).a.e, true);
+    HotPicMainPanel localHotPicMainPanel = (HotPicMainPanel)AIOIceBreakView.a(this.a.a).b().a().b(24);
+    if (localHotPicMainPanel != null) {
+      localHotPicMainPanel.a.setCurrentItem(localHotPicMainPanel.e, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakView.1.1
  * JD-Core Version:    0.7.0.1
  */

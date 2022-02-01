@@ -2,23 +2,20 @@ package com.tencent.mobileqq.activity.aio.photo;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
 
 class PhotoListPanel$11
   implements DialogInterface.OnClickListener
 {
-  PhotoListPanel$11(PhotoListPanel paramPhotoListPanel) {}
+  PhotoListPanel$11(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.11
  * JD-Core Version:    0.7.0.1
  */

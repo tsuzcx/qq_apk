@@ -27,31 +27,29 @@ class VideoServerInfoManager$1
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         long l = this.a.a.jdField_a_of_type_Long;
-        if (l != 0L) {}
-      }
-      try
-      {
-        paramVarArgs = new VideoServerInfoManager.ServerInfo();
-        localObject = new JSONObject((String)localObject);
-        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
-        paramVarArgs.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(((JSONObject)localObject).getString("ak"));
-        this.a.a = paramVarArgs;
-        SLog.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
-        return null;
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
-        {
-          SLog.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
+        if (l == 0L) {
+          try
+          {
+            paramVarArgs = new VideoServerInfoManager.ServerInfo();
+            localObject = new JSONObject((String)localObject);
+            paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
+            paramVarArgs.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(((JSONObject)localObject).getString("ak"));
+            this.a.a = paramVarArgs;
+            SLog.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
+          }
+          catch (Exception paramVarArgs)
+          {
+            SLog.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
+          }
         }
       }
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.VideoServerInfoManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,15 @@ class VideoPlayerDefault$7
   
   public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onSeekComplete(this.this$0);
+    paramMediaPlayer = this.val$listener;
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.onSeekComplete(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.VideoPlayerDefault.7
  * JD-Core Version:    0.7.0.1
  */

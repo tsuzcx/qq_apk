@@ -2,8 +2,10 @@ package com.tencent.mobileqq.hotpic;
 
 import android.content.Intent;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.emosearch.EmotionSearchManager;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.emosm.api.IEmotionSearchManagerService;
+import com.tencent.mobileqq.emoticonview.api.IEmosmService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -18,14 +20,13 @@ public class HotPicServlet
     AppRuntime localAppRuntime = getAppRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface)))
     {
-      if (paramIntent.getBooleanExtra("isFrom_EmoSearch", false)) {
-        EmotionSearchManager.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
+      if (paramIntent.getBooleanExtra("isFrom_EmoSearch", false))
+      {
+        ((IEmotionSearchManagerService)((BaseQQAppInterface)localAppRuntime).getRuntimeService(IEmotionSearchManagerService.class)).handleResonpse(paramIntent, paramFromServiceMsg);
+        return;
       }
+      ((IEmosmService)QRoute.api(IEmosmService.class)).handleResonpse((BaseQQAppInterface)localAppRuntime, paramIntent, paramFromServiceMsg);
     }
-    else {
-      return;
-    }
-    HotPicManager.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -42,7 +43,7 @@ public class HotPicServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,37 @@
 package com.tencent.beacon.event;
 
 import android.annotation.TargetApi;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.beacon.core.b.f;
-import com.tencent.beacon.core.event.TunnelModule;
-import com.tencent.beacon.core.event.UserEventModule;
+import android.util.Log;
+import com.tencent.beacon.a.c.f;
+import com.tencent.beacon.base.net.c.b;
 import com.tencent.beacon.core.info.BeaconPubParams;
-import com.tencent.beacon.core.info.a;
-import com.tencent.beacon.core.info.e;
-import com.tencent.beacon.core.info.g;
+import com.tencent.beacon.event.open.BeaconConfig;
+import com.tencent.beacon.event.open.BeaconConfig.Builder;
+import com.tencent.beacon.event.open.BeaconEvent;
+import com.tencent.beacon.event.open.BeaconEvent.Builder;
+import com.tencent.beacon.event.open.BeaconReport;
+import com.tencent.beacon.event.open.EventResult;
+import com.tencent.beacon.event.open.EventType;
+import com.tencent.beacon.module.EventModule;
+import com.tencent.beacon.module.ModuleName;
 import com.tencent.beacon.qimei.IAsyncQimeiListener;
+import com.tencent.beacon.qimei.Qimei;
 import com.tencent.beacon.qimei.QimeiSDK;
 import com.tencent.beacon.upload.InitHandleListener;
 import com.tencent.beacon.upload.TunnelInfo;
 import com.tencent.beacon.upload.UploadHandleListener;
-import com.tencent.beacon.upload.UploadStrategy;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.atomic.AtomicBoolean;
 
+@Deprecated
 public class UserAction
 {
-  private static boolean a;
-  public static List<com.tencent.beacon.core.c> beaconModules = new ArrayList();
+  private static String a;
+  private static BeaconConfig.Builder b = ;
+  private static String c;
+  private static boolean d = true;
   public static Context mContext;
   
   @Deprecated
@@ -36,54 +39,51 @@ public class UserAction
   
   public static void doUploadRecords()
   {
-    com.tencent.beacon.core.a.d.a().a(new c());
+    EventModule localEventModule = (EventModule)com.tencent.beacon.a.c.c.d().a(ModuleName.EVENT);
+    if (localEventModule != null) {
+      localEventModule.a(false);
+    }
   }
   
-  public static void flushObjectsToDB(boolean paramBoolean)
-  {
-    TunnelModule.flushObjectsToDB(paramBoolean);
-  }
+  public static void flushObjectsToDB(boolean paramBoolean) {}
   
   public static Map<String, String> getAdditionalInfo()
   {
-    return TunnelModule.getAdditionalInfo(null);
+    return getAdditionalInfo(null);
   }
   
   public static Map<String, String> getAdditionalInfo(String paramString)
   {
-    return TunnelModule.getAdditionalInfo(paramString);
+    EventModule localEventModule = (EventModule)com.tencent.beacon.a.c.c.d().a(ModuleName.EVENT);
+    if (localEventModule != null) {
+      return localEventModule.a(paramString);
+    }
+    return null;
   }
   
   public static String getAppKey()
   {
-    return com.tencent.beacon.core.info.b.b;
+    return a;
   }
   
   public static String getCloudParas(String paramString)
   {
-    if (mContext == null) {}
-    Map localMap;
-    do
-    {
-      return null;
-      localMap = com.tencent.beacon.core.strategy.c.g().e();
-    } while (localMap == null);
-    return (String)localMap.get(paramString);
+    return "";
   }
   
   public static BeaconPubParams getCommonParams()
   {
-    return BeaconPubParams.getPubParams(getAppKey());
+    return BeaconReport.getInstance().getCommonParams(mContext);
   }
   
   public static String getEventDomain()
   {
-    return com.tencent.beacon.core.c.a.b.c;
+    return b.c;
   }
   
   public static String getQIMEI()
   {
-    return QimeiSDK.getInstance().getQimeiInternal(null);
+    return QimeiSDK.getInstance().getQimeiInternal();
   }
   
   public static void getQimei(IAsyncQimeiListener paramIAsyncQimeiListener)
@@ -93,52 +93,49 @@ public class UserAction
   
   public static String getQimeiByKey(String paramString)
   {
-    return QimeiSDK.getInstance().getQimeiByKey(null, paramString);
+    Qimei localQimei = BeaconReport.getInstance().getQimei();
+    if ((localQimei != null) && (!localQimei.isEmpty())) {
+      return (String)localQimei.getQimeiMap().get(paramString);
+    }
+    return "";
   }
   
   public static String getQimeiNew()
   {
-    return QimeiSDK.getInstance().getQimeiNew(null);
+    Qimei localQimei = BeaconReport.getInstance().getQimei();
+    if (localQimei != null) {
+      return localQimei.getQimeiNew();
+    }
+    return "";
   }
   
   @Deprecated
   public static String getRtQIMEI(Context paramContext)
   {
-    try
-    {
-      paramContext = com.tencent.beacon.qimei.i.c(paramContext);
-      StringBuilder localStringBuilder = new StringBuilder();
-      com.tencent.beacon.core.e.d.a("[userAction] load qimeiJson: " + paramContext, new Object[0]);
-      paramContext = com.tencent.beacon.qimei.i.a(paramContext);
-      if (paramContext != null)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder = localStringBuilder.append("[userAction] get A3: ");
-        com.tencent.beacon.core.e.d.a((String)paramContext.get("A3"), new Object[0]);
-        paramContext = (String)paramContext.get("A3");
-        return paramContext;
-      }
+    if (paramContext == null) {
+      return null;
     }
-    catch (Exception paramContext)
-    {
-      com.tencent.beacon.core.e.d.b("load qimei error ", new Object[] { paramContext.getMessage() });
-    }
-    return "";
+    com.tencent.beacon.a.c.c.d().a(paramContext.getApplicationContext());
+    return com.tencent.beacon.qimei.a.a().b().getQimeiOld();
   }
   
   public static String getSDKVersion()
   {
-    return com.tencent.beacon.core.info.b.i();
+    return BeaconReport.getInstance().getSDKVersion();
   }
   
   public static String getStrategyDomain()
   {
-    return com.tencent.beacon.core.c.a.b.d;
+    return b.d;
   }
   
   public static String getUserID(String paramString)
   {
-    return TunnelModule.getUserId(paramString);
+    EventModule localEventModule = (EventModule)com.tencent.beacon.a.c.c.d().a(ModuleName.EVENT);
+    if (localEventModule != null) {
+      return localEventModule.b(paramString);
+    }
+    return "";
   }
   
   public static void initUserAction(Context paramContext)
@@ -159,62 +156,19 @@ public class UserAction
   @TargetApi(14)
   public static void initUserAction(Context paramContext, boolean paramBoolean, long paramLong, InitHandleListener paramInitHandleListener, UploadHandleListener paramUploadHandleListener)
   {
-    if (mContext != null)
+    if (d)
     {
-      com.tencent.beacon.core.e.d.b("[core] SDK is already initialized.", new Object[0]);
+      mContext = paramContext;
+      BeaconReport.getInstance().start(paramContext, a, b.build());
       return;
     }
-    if (paramContext == null)
-    {
-      com.tencent.beacon.core.e.d.i("[core] context is null! init failed!", new Object[0]);
-      return;
-    }
-    Object localObject = paramContext.getApplicationContext();
-    if (localObject != null) {
-      mContext = (Context)localObject;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!a)
-        {
-          a = true;
-          com.tencent.beacon.core.e.b.b(mContext);
-          a.f(mContext);
-          if (Integer.valueOf(Build.VERSION.SDK).intValue() >= 14)
-          {
-            localObject = new com.tencent.beacon.core.a.j();
-            ((Application)mContext).registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)localObject);
-            ((Application)mContext).registerActivityLifecycleCallbacks(new com.tencent.beacon.core.a.k());
-          }
-          for (;;)
-          {
-            com.tencent.beacon.core.d.k.a(mContext).b(paramBoolean);
-            if (paramUploadHandleListener != null) {
-              com.tencent.beacon.core.d.k.a(mContext).a(paramUploadHandleListener);
-            }
-            f.a().a(paramContext);
-            com.tencent.beacon.core.d.i.a(paramContext).a(UploadStrategy.defaultErrorRandomBound);
-            com.tencent.beacon.core.a.d.a().a(new b(paramContext, paramInitHandleListener, paramLong));
-            return;
-            mContext = paramContext;
-            break;
-            localObject = new com.tencent.beacon.core.a.b(mContext);
-            com.tencent.beacon.core.a.d.a().a((Runnable)localObject);
-          }
-        }
-        return;
-      }
-      finally {}
-    }
+    Log.e("beacon", "UserAction.initUserAction is not available");
   }
   
   public static boolean loginEvent(boolean paramBoolean, long paramLong, Map<String, String> paramMap)
   {
-    Context localContext = mContext;
-    if (localContext != null) {
-      paramMap.put("A33", e.d(localContext).k(mContext));
+    if (mContext != null) {
+      paramMap.put("A19", f.p().w());
     }
     return onUserAction("rqd_wgLogin", paramBoolean, paramLong, 0L, paramMap, true);
   }
@@ -226,11 +180,21 @@ public class UserAction
     }
     if (paramMap != null)
     {
-      paramContext = com.tencent.beacon.core.info.c.a(paramContext);
+      com.tencent.beacon.a.c.c.d().a(paramContext);
+      paramContext = f.p();
       paramMap = new HashMap(paramMap);
-      paramMap.put("dt_imei2", "" + paramContext.d());
-      paramMap.put("dt_meid", "" + paramContext.h());
-      paramMap.put("dt_mf", "" + paramContext.g());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramContext.n());
+      paramMap.put("dt_imei2", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramContext.u());
+      paramMap.put("dt_meid", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramContext.t());
+      paramMap.put("dt_mf", localStringBuilder.toString());
       return onUserAction(paramString, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2, paramBoolean3);
     }
     return onUserAction(paramString, paramBoolean1, paramLong1, paramLong2, null, paramBoolean2, paramBoolean3);
@@ -243,11 +207,21 @@ public class UserAction
     }
     if (paramMap != null)
     {
-      paramContext = com.tencent.beacon.core.info.c.a(paramContext);
+      com.tencent.beacon.a.c.c.d().a(paramContext);
+      paramContext = f.p();
       paramMap = new HashMap(paramMap);
-      paramMap.put("dt_imei2", "" + paramContext.d());
-      paramMap.put("dt_meid", "" + paramContext.h());
-      paramMap.put("dt_mf", "" + paramContext.g());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramContext.n());
+      paramMap.put("dt_imei2", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramContext.u());
+      paramMap.put("dt_meid", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramContext.t());
+      paramMap.put("dt_mf", localStringBuilder.toString());
       return onUserActionToTunnel(paramString1, paramString2, paramMap, paramBoolean1, paramBoolean2);
     }
     return onUserActionToTunnel(paramString1, paramString2, null, paramBoolean1, paramBoolean2);
@@ -255,12 +229,12 @@ public class UserAction
   
   public static void onPageIn(String paramString)
   {
-    com.tencent.beacon.core.event.k.a(com.tencent.beacon.core.e.c.c(paramString));
+    com.tencent.beacon.d.a.a(com.tencent.beacon.event.c.c.c(paramString));
   }
   
   public static void onPageOut(String paramString)
   {
-    com.tencent.beacon.core.event.k.b(com.tencent.beacon.core.e.c.c(paramString));
+    com.tencent.beacon.d.a.b(com.tencent.beacon.event.c.c.c(paramString));
   }
   
   public static boolean onUserAction(String paramString, Map<String, String> paramMap, boolean paramBoolean1, boolean paramBoolean2)
@@ -275,8 +249,14 @@ public class UserAction
   
   public static boolean onUserAction(String paramString, boolean paramBoolean1, long paramLong1, long paramLong2, Map<String, String> paramMap, boolean paramBoolean2, boolean paramBoolean3)
   {
-    com.tencent.beacon.core.e.i.a(paramMap);
-    return TunnelModule.onUserAction(null, paramString, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2, paramBoolean3);
+    BeaconEvent.Builder localBuilder = BeaconEvent.builder().withCode(paramString);
+    if (paramBoolean2) {
+      paramString = EventType.REALTIME;
+    } else {
+      paramString = EventType.NORMAL;
+    }
+    paramString = localBuilder.withType(paramString).withParams(paramMap).withAppKey(a).withIsSucceed(paramBoolean1).build();
+    return BeaconReport.getInstance().report(paramString).isSuccess();
   }
   
   public static boolean onUserActionToTunnel(String paramString1, String paramString2, Map<String, String> paramMap, boolean paramBoolean1, boolean paramBoolean2)
@@ -286,41 +266,36 @@ public class UserAction
   
   public static boolean onUserActionToTunnel(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, Map<String, String> paramMap, boolean paramBoolean2, boolean paramBoolean3)
   {
-    return TunnelModule.onUserAction(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2, paramBoolean3);
+    BeaconEvent.Builder localBuilder = BeaconEvent.builder().withCode(paramString2);
+    if (paramBoolean2) {
+      paramString2 = EventType.REALTIME;
+    } else {
+      paramString2 = EventType.NORMAL;
+    }
+    paramString1 = localBuilder.withType(paramString2).withParams(paramMap).withAppKey(paramString1).withIsSucceed(paramBoolean1).build();
+    return BeaconReport.getInstance().report(paramString1).isSuccess();
   }
   
-  public static void registerTunnel(TunnelInfo paramTunnelInfo)
-  {
-    TunnelModule.registerTunnel(paramTunnelInfo);
-  }
+  public static void registerTunnel(TunnelInfo paramTunnelInfo) {}
   
   public static void setAdditionalInfo(String paramString, Map<String, String> paramMap)
   {
-    TunnelModule.setAdditionalInfo(paramString, paramMap);
+    BeaconReport.getInstance().setAdditionalParams(paramString, paramMap);
   }
   
   public static void setAdditionalInfo(Map<String, String> paramMap)
   {
-    TunnelModule.setAdditionalInfo(null, paramMap);
+    setAdditionalInfo(null, paramMap);
   }
   
   public static void setAppKey(String paramString)
   {
-    if (!com.tencent.beacon.core.e.j.b(paramString))
-    {
-      com.tencent.beacon.core.info.b.b = paramString;
-      TunnelModule localTunnelModule = TunnelModule.getInstance();
-      if (localTunnelModule != null) {
-        localTunnelModule.setAppKey(paramString);
-      }
-    }
+    a = paramString;
   }
   
   public static void setAppVersion(String paramString)
   {
-    if (!com.tencent.beacon.core.e.j.b(paramString)) {
-      com.tencent.beacon.core.info.b.c = paramString;
-    }
+    c = paramString;
   }
   
   @Deprecated
@@ -328,115 +303,77 @@ public class UserAction
   
   public static void setChannelID(String paramString)
   {
-    if (!com.tencent.beacon.core.e.j.b(paramString)) {
-      com.tencent.beacon.core.info.b.d = com.tencent.beacon.core.e.c.a(paramString);
-    }
+    BeaconReport.getInstance().setChannelID(paramString);
   }
   
   public static void setCollectImei(boolean paramBoolean)
   {
-    UploadStrategy.IS_COLLECT_IMEI = paramBoolean;
+    b.collectIMEIEnable(paramBoolean);
   }
   
   public static void setCollectMAC(boolean paramBoolean)
   {
-    UploadStrategy.IS_COLLECT_MAC = paramBoolean;
+    b.collectMACEnable(paramBoolean);
   }
   
-  public static void setJsClientId(String paramString)
-  {
-    g.b(mContext).d(paramString);
-  }
+  public static void setJsClientId(String paramString) {}
   
   public static void setLogAble(boolean paramBoolean1, boolean paramBoolean2)
   {
-    com.tencent.beacon.core.e.d.b(paramBoolean1);
-    com.tencent.beacon.core.e.d.a(paramBoolean2);
-    com.tencent.beacon.core.e.d.c(paramBoolean1 & paramBoolean2);
+    com.tencent.beacon.base.util.c.a(paramBoolean1);
+    com.tencent.beacon.base.util.c.b(paramBoolean1);
   }
   
   public static void setOAID(String paramString)
   {
-    if (!com.tencent.beacon.core.e.j.b(paramString)) {
-      com.tencent.beacon.core.info.c.b = paramString;
-    }
+    BeaconReport.getInstance().setOAID(paramString);
+  }
+  
+  @Deprecated
+  public static void setOldInitMethodEnable(boolean paramBoolean)
+  {
+    d = paramBoolean;
   }
   
   public static void setOmgId(String paramString)
   {
-    if (!com.tencent.beacon.core.e.j.b(paramString)) {
-      com.tencent.beacon.core.info.c.c = paramString;
-    }
+    BeaconReport.getInstance().setOmgID(paramString);
   }
   
   public static void setQQ(String paramString)
   {
-    if (paramString != null) {
-      try
-      {
-        if (Long.parseLong(paramString) > 10000L) {
-          com.tencent.beacon.core.info.c.d = paramString;
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        com.tencent.beacon.core.e.d.i("[core] set qq is not available !", new Object[0]);
-        return;
-      }
-    }
-    com.tencent.beacon.core.e.d.i("[core] set qq is null !", new Object[0]);
+    BeaconReport.getInstance().setQQ(paramString);
   }
   
   public static void setReportDomain(String paramString1, String paramString2)
   {
-    com.tencent.beacon.core.strategy.c.g().a(paramString1, paramString2);
+    b.a(paramString1, paramString2);
   }
   
   public static void setReportIP(String paramString1, String paramString2)
   {
-    com.tencent.beacon.core.c.a.b.a(paramString1, paramString2);
+    b.b(paramString1, paramString2);
   }
   
   public static void setScheduledService(ScheduledExecutorService paramScheduledExecutorService)
   {
-    if (paramScheduledExecutorService != null)
-    {
-      com.tencent.beacon.core.a.d.a(com.tencent.beacon.core.a.d.a(paramScheduledExecutorService));
-      return;
-    }
-    com.tencent.beacon.core.e.d.b("service param error!", new Object[0]);
-  }
-  
-  public static void setStopBackgroundTask(boolean paramBoolean)
-  {
-    UploadStrategy.IS_STOP_BACKGROUND_TASK = paramBoolean;
+    b.setExecutorService(paramScheduledExecutorService);
   }
   
   public static void setStrictMode(boolean paramBoolean)
   {
-    com.tencent.beacon.core.e.i.a.set(paramBoolean);
-    Context localContext = mContext;
-    if (localContext != null) {
-      com.tencent.beacon.core.e.i.a(localContext);
-    }
+    BeaconReport.getInstance().setStrictMode(paramBoolean);
   }
   
   public static void setUploadMode(boolean paramBoolean)
   {
-    Object localObject = UserEventModule.getInstance();
-    if (localObject != null) {
-      ((UserEventModule)localObject).setUploadMode(paramBoolean);
-    }
-    for (;;)
+    EventModule localEventModule = (EventModule)com.tencent.beacon.a.c.c.d().a(ModuleName.EVENT);
+    if (localEventModule != null)
     {
-      localObject = TunnelModule.getInstance();
-      if (localObject != null) {
-        ((TunnelModule)localObject).setUploadMode(paramBoolean);
-      }
+      localEventModule.b(paramBoolean);
       return;
-      com.tencent.beacon.core.e.d.i("[core] UserEventModule is null, init sdk first!", new Object[0]);
     }
+    b.eventReportEnable(paramBoolean);
   }
   
   public static void setUserID(String paramString)
@@ -446,13 +383,12 @@ public class UserAction
   
   public static void setUserID(String paramString1, String paramString2)
   {
-    com.tencent.beacon.core.e.d.d("[core] setUserID:" + paramString2, new Object[0]);
-    TunnelModule.setUserId(paramString1, paramString2);
+    BeaconReport.getInstance().setUserID(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.beacon.event.UserAction
  * JD-Core Version:    0.7.0.1
  */

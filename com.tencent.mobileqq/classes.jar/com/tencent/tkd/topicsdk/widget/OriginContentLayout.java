@@ -30,17 +30,17 @@ public final class OriginContentLayout
   public OriginContentLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(R.layout.F, (ViewGroup)this, true);
-    paramContext = findViewById(R.id.ag);
+    LayoutInflater.from(paramContext).inflate(R.layout.D, (ViewGroup)this, true);
+    paramContext = findViewById(R.id.Q);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.image)");
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext);
-    paramContext = findViewById(R.id.bB);
+    paramContext = findViewById(R.id.aX);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_duration)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    paramContext = findViewById(R.id.bO);
+    paramContext = findViewById(R.id.bi);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_title)");
     this.b = ((TextView)paramContext);
-    paramContext = findViewById(R.id.bM);
+    paramContext = findViewById(R.id.bg);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_summary)");
     this.c = ((TextView)paramContext);
     setBackgroundColor(Color.parseColor("#F5F6FA"));
@@ -51,67 +51,61 @@ public final class OriginContentLayout
   {
     Intrinsics.checkParameterIsNotNull(paramOriginContentInfo, "info");
     ((View)this).setVisibility(0);
-    Object localObject = (View)this.jdField_a_of_type_AndroidWidgetTextView;
-    int i;
-    if (paramOriginContentInfo.getType() == 2)
-    {
+    Object localObject1 = (View)this.jdField_a_of_type_AndroidWidgetTextView;
+    int i = paramOriginContentInfo.getType();
+    int j = 1;
+    if (i == 2) {
       i = 1;
-      if (i == 0) {
-        break label222;
-      }
+    } else {
       i = 0;
-      label38:
-      ((View)localObject).setVisibility(i);
-      if (((CharSequence)paramOriginContentInfo.getDurationString()).length() <= 0) {
-        break label228;
-      }
-      i = 1;
-      label60:
-      if (i == 0) {
-        break label233;
-      }
+    }
+    if (i != 0) {
+      i = 0;
+    } else {
+      i = 8;
+    }
+    ((View)localObject1).setVisibility(i);
+    if (((CharSequence)paramOriginContentInfo.getDurationString()).length() > 0) {
+      i = j;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramOriginContentInfo.getDurationString());
-      label86:
-      localObject = (String)CollectionsKt.firstOrNull(paramOriginContentInfo.getImageUrlArray());
-      if (localObject == null) {
-        break label245;
-      }
-      localObject = StringKt.a((String)localObject, paramOriginContentInfo.getDefaultImageUrl());
-      if (localObject == null) {
-        break label245;
-      }
     }
-    for (;;)
+    else
     {
-      String str = StringKt.a(paramOriginContentInfo.getTitle(), paramOriginContentInfo.getDefaultTitle());
-      paramOriginContentInfo = StringKt.a(paramOriginContentInfo.getSummary(), paramOriginContentInfo.getDefaultSummary());
-      com.tencent.tkd.topicsdk.framework.bridge.ImageLoader localImageLoader = com.tencent.tkd.topicsdk.framework.bridge.ImageLoader.a;
-      Context localContext = getContext();
-      Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-      localImageLoader.a(localContext).a(this.jdField_a_of_type_AndroidWidgetImageView).a((String)localObject);
-      this.b.setText((CharSequence)("@ " + str));
-      this.c.setText((CharSequence)paramOriginContentInfo);
-      return;
-      i = 0;
-      break;
-      label222:
-      i = 8;
-      break label38;
-      label228:
-      i = 0;
-      break label60;
-      label233:
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label86;
-      label245:
-      localObject = paramOriginContentInfo.getDefaultImageUrl();
     }
+    localObject1 = (String)CollectionsKt.firstOrNull(paramOriginContentInfo.getImageUrlArray());
+    if (localObject1 != null)
+    {
+      localObject1 = StringKt.a((String)localObject1, paramOriginContentInfo.getDefaultImageUrl());
+      if (localObject1 != null) {}
+    }
+    else
+    {
+      localObject1 = paramOriginContentInfo.getDefaultImageUrl();
+    }
+    String str = StringKt.a(paramOriginContentInfo.getTitle(), paramOriginContentInfo.getDefaultTitle());
+    paramOriginContentInfo = StringKt.a(paramOriginContentInfo.getSummary(), paramOriginContentInfo.getDefaultSummary());
+    Object localObject2 = com.tencent.tkd.topicsdk.framework.bridge.ImageLoader.a;
+    Context localContext = getContext();
+    Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
+    ((com.tencent.tkd.topicsdk.framework.bridge.ImageLoader)localObject2).a(localContext).a(this.jdField_a_of_type_AndroidWidgetImageView).a((String)localObject1);
+    localObject1 = this.b;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("@ ");
+    ((StringBuilder)localObject2).append(str);
+    ((TextView)localObject1).setText((CharSequence)((StringBuilder)localObject2).toString());
+    this.c.setText((CharSequence)paramOriginContentInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.OriginContentLayout
  * JD-Core Version:    0.7.0.1
  */

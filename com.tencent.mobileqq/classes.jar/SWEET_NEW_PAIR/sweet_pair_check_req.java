@@ -42,7 +42,7 @@ public final class sweet_pair_check_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_PAIR.sweet_pair_check_req
  * JD-Core Version:    0.7.0.1
  */

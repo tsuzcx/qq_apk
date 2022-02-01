@@ -19,8 +19,12 @@ public class ShortVideoUtils$ShortVideoPlayConfig
     if (!sReadFromDPC)
     {
       localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.ShortVideoPlayInAIO.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initConfig(), videoPlayConfig=" + (String)localObject);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("initConfig(), videoPlayConfig=");
+        localStringBuilder.append((String)localObject);
+        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, localStringBuilder.toString());
       }
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
@@ -37,24 +41,30 @@ public class ShortVideoUtils$ShortVideoPlayConfig
     try
     {
       sRequestedFPS = Integer.parseInt(localObject[1]);
-      sReadFromDPC = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initVideoPlayConfig(), sReadFromDPC=" + sReadFromDPC + ", sAutoPlayInAIO:" + sAutoPlayInAIO + ", sRequestedFPS:" + sRequestedFPS);
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        sRequestedFPS = 18;
-      }
+      label129:
+      break label129;
+    }
+    sRequestedFPS = 18;
+    sReadFromDPC = true;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initVideoPlayConfig(), sReadFromDPC=");
+      ((StringBuilder)localObject).append(sReadFromDPC);
+      ((StringBuilder)localObject).append(", sAutoPlayInAIO:");
+      ((StringBuilder)localObject).append(sAutoPlayInAIO);
+      ((StringBuilder)localObject).append(", sRequestedFPS:");
+      ((StringBuilder)localObject).append(sRequestedFPS);
+      QLog.d("ShortVideo.ShortVideoPlayConfig", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoUtils.ShortVideoPlayConfig
  * JD-Core Version:    0.7.0.1
  */

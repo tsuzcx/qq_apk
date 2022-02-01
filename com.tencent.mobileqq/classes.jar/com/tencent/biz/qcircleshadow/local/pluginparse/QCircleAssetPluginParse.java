@@ -12,132 +12,110 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.List<Ljava.lang.String;>;
 import java.util.Map;
 import mqq.app.MobileQQ;
-import org.xmlpull.v1.XmlPullParser;
 
 public class QCircleAssetPluginParse
   extends QCircleBasePluginParse
 {
-  private final String f = QCircleBasePluginParse.b + QCircleHostConstants._AppSetting.getVersion() + "/" + "qcircle-plugin.jpg".replace(".jpg", ".zip");
-  private final String g = QCircleBasePluginParse.b + QCircleHostConstants._AppSetting.getVersion() + "/" + "qcircle-pluginmanager.jpg".replace(".jpg", ".apk");
+  private final String f;
+  private final String g;
   private String h;
   private String i;
   
   public QCircleAssetPluginParse(String paramString, QCirclePluginInfo paramQCirclePluginInfo)
   {
     super(paramString, paramQCirclePluginInfo);
-  }
-  
-  private HashMap<String, String> a(XmlPullParser paramXmlPullParser, int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramInt != 1)
-    {
-      switch (paramInt)
-      {
-      }
-      for (;;)
-      {
-        paramInt = paramXmlPullParser.next();
-        break;
-        String str = paramXmlPullParser.getName();
-        if ("qcirclePlugin".equals(str))
-        {
-          str = paramXmlPullParser.nextText();
-          QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#parseInfoXml pluginFileName:" + str);
-          localHashMap.put("qcircle-plugin", str);
-        }
-        else if ("qcirclePluginManager".equals(str))
-        {
-          str = paramXmlPullParser.nextText();
-          QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#parseInfoXml pluginManagerFileName:" + str);
-          localHashMap.put("qcircle-pluginmanager", str);
-        }
-      }
-    }
-    return localHashMap;
+    paramString = new StringBuilder();
+    paramString.append(QCircleBasePluginParse.b);
+    paramString.append(QCircleHostConstants._AppSetting.getVersion());
+    paramString.append("/");
+    paramString.append("qcircle-plugin.jpg".replace(".jpg", ".zip"));
+    this.f = paramString.toString();
+    paramString = new StringBuilder();
+    paramString.append(QCircleBasePluginParse.b);
+    paramString.append(QCircleHostConstants._AppSetting.getVersion());
+    paramString.append("/");
+    paramString.append("qcircle-pluginmanager.jpg".replace(".jpg", ".apk"));
+    this.g = paramString.toString();
   }
   
   private Map<String, String> a()
   {
-    int j = 0;
-    Object localObject = b();
-    if (localObject != null)
+    Object localObject1 = b();
+    if (localObject1 != null)
     {
       QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset# getAssetFileName with pluginInfoXml");
-      return localObject;
+      return localObject1;
     }
     for (;;)
     {
-      HashMap localHashMap;
-      ArrayList localArrayList1;
-      ArrayList localArrayList2;
+      int j;
       try
       {
         long l = System.currentTimeMillis();
-        localObject = MobileQQ.sMobileQQ.getAssets().list("qqcircle");
-        QLog.i("QCIRCLE_PLUGIN", 1, "parsetAsset# assets list cost:" + (System.currentTimeMillis() - l));
-        if ((localObject == null) || (localObject.length == 0))
+        localObject1 = MobileQQ.sMobileQQ.getAssets().list("qqcircle");
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("parsetAsset# assets list cost:");
+        ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+        QLog.i("QCIRCLE_PLUGIN", 1, ((StringBuilder)localObject2).toString());
+        if ((localObject1 != null) && (localObject1.length != 0))
+        {
+          localObject2 = new HashMap();
+          ArrayList localArrayList1 = new ArrayList();
+          ArrayList localArrayList2 = new ArrayList();
+          int k = localObject1.length;
+          j = 0;
+          if (j < k)
+          {
+            String str = localObject1[j];
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("file");
+            localStringBuilder.append(str);
+            QLog.i("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
+            boolean bool = str.contains("qcircle-pluginmanager");
+            if ((bool) && (str.endsWith(".jpg"))) {
+              localArrayList1.add(str);
+            } else if ((str.contains("qcircle-plugin")) && (str.endsWith(".jpg"))) {
+              localArrayList2.add(str);
+            }
+          }
+          else
+          {
+            a(localArrayList1, "qcircle-pluginmanager");
+            a(localArrayList2, "qcircle-plugin");
+            if ((localArrayList1.size() > 0) && (localArrayList2.size() > 0))
+            {
+              ((Map)localObject2).put("qcircle-pluginmanager", localArrayList1.get(0));
+              ((Map)localObject2).put("qcircle-plugin", localArrayList2.get(0));
+              return localObject2;
+            }
+            QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#:asset empty list");
+            return null;
+          }
+        }
+        else
         {
           QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#:can not list file");
           return null;
-        }
-        localHashMap = new HashMap();
-        localArrayList1 = new ArrayList();
-        localArrayList2 = new ArrayList();
-        int k = localObject.length;
-        if (j < k)
-        {
-          String str = localObject[j];
-          QLog.i("QCIRCLE_PLUGIN", 1, "file" + str);
-          if ((str.contains("qcircle-pluginmanager")) && (str.endsWith(".jpg"))) {
-            localArrayList1.add(str);
-          } else if ((str.contains("qcircle-plugin")) && (str.endsWith(".jpg"))) {
-            localArrayList2.add(str);
-          }
         }
       }
       catch (IOException localIOException)
       {
         localIOException.printStackTrace();
-        QLog.e("QCIRCLE_PLUGIN", 1, "parseAsset#exception:" + localIOException.toString());
-      }
-      for (;;)
-      {
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("parseAsset#exception:");
+        ((StringBuilder)localObject2).append(localIOException.toString());
+        QLog.e("QCIRCLE_PLUGIN", 1, ((StringBuilder)localObject2).toString());
         return null;
-        a(localArrayList1, "qcircle-pluginmanager");
-        a(localArrayList2, "qcircle-plugin");
-        if ((localArrayList1.size() > 0) && (localArrayList2.size() > 0))
-        {
-          localHashMap.put("qcircle-pluginmanager", localArrayList1.get(0));
-          localHashMap.put("qcircle-plugin", localArrayList2.get(0));
-          return localHashMap;
-        }
-        QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#:asset empty list");
       }
       j += 1;
-    }
-  }
-  
-  private void a(InputStream paramInputStream)
-  {
-    if (paramInputStream != null) {}
-    try
-    {
-      paramInputStream.close();
-      return;
-    }
-    catch (IOException paramInputStream)
-    {
-      paramInputStream.printStackTrace();
-      QLog.e("QCIRCLE_PLUGIN", 1, "closeInputStream#exception:" + paramInputStream.toString());
     }
   }
   
@@ -157,19 +135,27 @@ public class QCircleAssetPluginParse
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
       {
-        String str2 = (String)localIterator.next();
-        String str1 = str2.substring(paramString.length(), str2.indexOf(".jpg"));
-        paramList = str1;
-        if (TextUtils.isEmpty(str1)) {
+        String str = (String)localIterator.next();
+        Object localObject = str.substring(paramString.length(), str.indexOf(".jpg"));
+        paramList = (List<String>)localObject;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
           paramList = "0";
         }
-        QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#" + str2 + ":" + paramList);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseAsset#");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(paramList);
+        QLog.i("QCIRCLE_PLUGIN", 1, ((StringBuilder)localObject).toString());
       }
       return;
     }
     catch (Exception paramList)
     {
-      QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#sort exception:" + paramList.toString());
+      paramString = new StringBuilder();
+      paramString.append("parseAsset#sort exception:");
+      paramString.append(paramList.toString());
+      QLog.i("QCIRCLE_PLUGIN", 1, paramString.toString());
     }
   }
   
@@ -184,51 +170,52 @@ public class QCircleAssetPluginParse
   
   private boolean a(String paramString, boolean paramBoolean)
   {
-    boolean bool2 = true;
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
     Object localObject = MobileQQ.sMobileQQ.getSharedPreferences("QCIRCLE_PLUGIN_SHARE", 0);
-    String str;
-    boolean bool1;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       str = "qcircle-plugin";
-      str = ((SharedPreferences)localObject).getString(str, "");
-      localObject = new StringBuilder().append("parseAsset#checkAssetFileUpdate :");
-      if (paramString.equals(str)) {
-        break label117;
-      }
-      bool1 = true;
-      label71:
-      QLog.i("QCIRCLE_PLUGIN", 1, bool1 + " ,isZip:" + paramBoolean);
-      if (paramString.equals(str)) {
-        break label122;
-      }
-    }
-    label117:
-    label122:
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      return paramBoolean;
+    } else {
       str = "qcircle-pluginmanager";
-      break;
-      bool1 = false;
-      break label71;
     }
+    String str = ((SharedPreferences)localObject).getString(str, "");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseAsset#checkAssetFileUpdate :");
+    ((StringBuilder)localObject).append(paramString.equals(str) ^ true);
+    ((StringBuilder)localObject).append(" ,isZip:");
+    ((StringBuilder)localObject).append(paramBoolean);
+    QLog.i("QCIRCLE_PLUGIN", 1, ((StringBuilder)localObject).toString());
+    return paramString.equals(str) ^ true;
   }
   
   private boolean a(Map<String, String> paramMap)
   {
     this.h = ((String)paramMap.get("qcircle-plugin"));
     this.i = ((String)paramMap.get("qcircle-pluginmanager"));
-    boolean bool1 = a(this.h, true);
-    boolean bool2 = a(this.i, false);
-    if ((!((IFileUtilsApi)QRoute.api(IFileUtilsApi.class)).fileExists(this.f)) || (!((IFileUtilsApi)QRoute.api(IFileUtilsApi.class)).fileExists(this.g))) {}
-    for (int j = 1; (bool1) || (bool2) || (j != 0); j = 0) {
-      return true;
+    paramMap = this.h;
+    boolean bool2 = true;
+    boolean bool3 = a(paramMap, true);
+    boolean bool4 = a(this.i, false);
+    int j;
+    if ((((IFileUtilsApi)QRoute.api(IFileUtilsApi.class)).fileExists(this.f)) && (((IFileUtilsApi)QRoute.api(IFileUtilsApi.class)).fileExists(this.g))) {
+      j = 0;
+    } else {
+      j = 1;
     }
-    return false;
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      bool1 = bool2;
+      if (!bool4)
+      {
+        if (j != 0) {
+          return true;
+        }
+        bool1 = false;
+      }
+    }
+    return bool1;
   }
   
   private QCircleSampleInfo b()
@@ -239,10 +226,16 @@ public class QCircleAssetPluginParse
       QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#:no asset info");
       return null;
     }
+    StringBuilder localStringBuilder;
     if (!a((Map)localObject))
     {
       localObject = new File(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalPluginparseQCircleUnZip.a("", new File(this.f)), "config.json").getAbsolutePath();
-      QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#:current file asset has unzip already,version:" + this.jdField_a_of_type_Int + "configPath:" + (String)localObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseAsset#:current file asset has unzip already,version:");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("configPath:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
       return a((String)localObject, this.f, this.g, "");
     }
     if (!a())
@@ -250,13 +243,17 @@ public class QCircleAssetPluginParse
       QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#:copy asset plugin fail");
       return null;
     }
-    localObject = this.jdField_a_of_type_ComTencentBizQcircleshadowLocalPluginparseQCircleUnZip.a(new File(this.f));
+    localObject = this.jdField_a_of_type_ComTencentBizQcircleshadowLocalPluginparseQCircleUnZip;
+    localObject = QCircleUnZip.a(new File(this.f));
     boolean bool = a((String)localObject, this.f, "parseAsset#");
     localObject = new File(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalPluginparseQCircleUnZip.a((String)localObject, new File(this.f)), "config.json").getAbsolutePath();
     if (bool)
     {
       a(this.h, this.i);
-      QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#:unZip asset plugin success\n" + (String)localObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseAsset#:unZip asset plugin success\n");
+      localStringBuilder.append((String)localObject);
+      QLog.i("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
     }
     return a((String)localObject, this.f, this.g, "");
   }
@@ -265,141 +262,100 @@ public class QCircleAssetPluginParse
   private Map<String, String> b()
   {
     // Byte code:
-    //   0: invokestatic 116	java/lang/System:currentTimeMillis	()J
-    //   3: lstore_1
-    //   4: getstatic 122	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
-    //   7: invokevirtual 126	mqq/app/MobileQQ:getAssets	()Landroid/content/res/AssetManager;
-    //   10: ldc_w 368
-    //   13: invokevirtual 372	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   16: astore 4
-    //   18: aload 4
+    //   0: getstatic 84	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
+    //   3: invokevirtual 88	mqq/app/MobileQQ:getAssets	()Landroid/content/res/AssetManager;
+    //   6: ldc_w 339
+    //   9: invokevirtual 343	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   12: astore_2
+    //   13: aload_2
+    //   14: astore_1
+    //   15: aload_0
+    //   16: aload_2
+    //   17: invokevirtual 346	com/tencent/biz/qcircleshadow/local/pluginparse/QCircleAssetPluginParse:a	(Ljava/io/InputStream;)Ljava/util/HashMap;
     //   20: astore_3
-    //   21: invokestatic 378	org/xmlpull/v1/XmlPullParserFactory:newInstance	()Lorg/xmlpull/v1/XmlPullParserFactory;
-    //   24: astore 5
-    //   26: aload 4
+    //   21: aload_0
+    //   22: aload_2
+    //   23: invokevirtual 349	com/tencent/biz/qcircleshadow/local/pluginparse/QCircleAssetPluginParse:a	(Ljava/io/InputStream;)V
+    //   26: aload_3
+    //   27: areturn
     //   28: astore_3
-    //   29: aload 5
-    //   31: iconst_1
-    //   32: invokevirtual 382	org/xmlpull/v1/XmlPullParserFactory:setNamespaceAware	(Z)V
-    //   35: aload 4
-    //   37: astore_3
-    //   38: aload 5
-    //   40: invokevirtual 386	org/xmlpull/v1/XmlPullParserFactory:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
-    //   43: astore 5
-    //   45: aload 4
-    //   47: astore_3
-    //   48: aload 5
-    //   50: aload 4
-    //   52: ldc_w 388
-    //   55: invokeinterface 392 3 0
+    //   29: goto +12 -> 41
+    //   32: astore_1
+    //   33: aconst_null
+    //   34: astore_2
+    //   35: goto +72 -> 107
+    //   38: astore_3
+    //   39: aconst_null
+    //   40: astore_2
+    //   41: aload_2
+    //   42: astore_1
+    //   43: aload_3
+    //   44: invokevirtual 350	java/lang/Exception:printStackTrace	()V
+    //   47: aload_2
+    //   48: astore_1
+    //   49: new 15	java/lang/StringBuilder
+    //   52: dup
+    //   53: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   56: astore 4
+    //   58: aload_2
+    //   59: astore_1
     //   60: aload 4
-    //   62: astore_3
-    //   63: aload_0
-    //   64: aload 5
-    //   66: aload 5
-    //   68: invokeinterface 395 1 0
-    //   73: invokespecial 397	com/tencent/biz/qcircleshadow/local/pluginparse/QCircleAssetPluginParse:a	(Lorg/xmlpull/v1/XmlPullParser;I)Ljava/util/HashMap;
-    //   76: astore 5
-    //   78: aload 4
-    //   80: astore_3
-    //   81: aload 5
-    //   83: invokevirtual 398	java/util/HashMap:size	()I
-    //   86: iconst_2
-    //   87: if_icmpne +45 -> 132
-    //   90: aload 4
-    //   92: astore_3
-    //   93: ldc 82
-    //   95: iconst_1
-    //   96: new 15	java/lang/StringBuilder
-    //   99: dup
-    //   100: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   103: ldc_w 400
-    //   106: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: invokestatic 116	java/lang/System:currentTimeMillis	()J
-    //   112: lload_1
-    //   113: lsub
-    //   114: invokevirtual 139	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   117: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: invokestatic 89	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   123: aload_0
-    //   124: aload 4
-    //   126: invokespecial 402	com/tencent/biz/qcircleshadow/local/pluginparse/QCircleAssetPluginParse:a	(Ljava/io/InputStream;)V
-    //   129: aload 5
-    //   131: areturn
-    //   132: aload_0
-    //   133: aload 4
-    //   135: invokespecial 402	com/tencent/biz/qcircleshadow/local/pluginparse/QCircleAssetPluginParse:a	(Ljava/io/InputStream;)V
-    //   138: aconst_null
-    //   139: areturn
-    //   140: astore 5
-    //   142: aconst_null
-    //   143: astore 4
-    //   145: aload 4
-    //   147: astore_3
-    //   148: aload 5
-    //   150: invokevirtual 403	java/lang/Exception:printStackTrace	()V
-    //   153: aload 4
-    //   155: astore_3
-    //   156: ldc 82
-    //   158: iconst_1
-    //   159: new 15	java/lang/StringBuilder
-    //   162: dup
-    //   163: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   166: ldc_w 405
-    //   169: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: aload 5
-    //   174: invokevirtual 408	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   177: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   183: aload 5
-    //   185: invokestatic 411	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   188: aload_0
-    //   189: aload 4
-    //   191: invokespecial 402	com/tencent/biz/qcircleshadow/local/pluginparse/QCircleAssetPluginParse:a	(Ljava/io/InputStream;)V
-    //   194: goto -56 -> 138
-    //   197: astore 4
-    //   199: aconst_null
-    //   200: astore_3
-    //   201: aload_0
-    //   202: aload_3
-    //   203: invokespecial 402	com/tencent/biz/qcircleshadow/local/pluginparse/QCircleAssetPluginParse:a	(Ljava/io/InputStream;)V
-    //   206: aload 4
-    //   208: athrow
-    //   209: astore 4
-    //   211: goto -10 -> 201
-    //   214: astore 5
-    //   216: goto -71 -> 145
+    //   62: ldc_w 352
+    //   65: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: pop
+    //   69: aload_2
+    //   70: astore_1
+    //   71: aload 4
+    //   73: aload_3
+    //   74: invokevirtual 355	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   77: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: pop
+    //   81: aload_2
+    //   82: astore_1
+    //   83: ldc 65
+    //   85: iconst_1
+    //   86: aload 4
+    //   88: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   91: aload_3
+    //   92: invokestatic 358	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   95: aload_0
+    //   96: aload_2
+    //   97: invokevirtual 349	com/tencent/biz/qcircleshadow/local/pluginparse/QCircleAssetPluginParse:a	(Ljava/io/InputStream;)V
+    //   100: aconst_null
+    //   101: areturn
+    //   102: astore_3
+    //   103: aload_1
+    //   104: astore_2
+    //   105: aload_3
+    //   106: astore_1
+    //   107: aload_0
+    //   108: aload_2
+    //   109: invokevirtual 349	com/tencent/biz/qcircleshadow/local/pluginparse/QCircleAssetPluginParse:a	(Ljava/io/InputStream;)V
+    //   112: aload_1
+    //   113: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	219	0	this	QCircleAssetPluginParse
-    //   3	110	1	l	long
-    //   20	183	3	localInputStream1	InputStream
-    //   16	174	4	localInputStream2	InputStream
-    //   197	10	4	localObject1	Object
-    //   209	1	4	localObject2	Object
-    //   24	106	5	localObject3	Object
-    //   140	44	5	localException1	Exception
-    //   214	1	5	localException2	Exception
+    //   0	114	0	this	QCircleAssetPluginParse
+    //   14	1	1	localObject1	Object
+    //   32	1	1	localObject2	Object
+    //   42	71	1	localObject3	Object
+    //   12	97	2	localObject4	Object
+    //   20	7	3	localHashMap	HashMap
+    //   28	1	3	localException1	Exception
+    //   38	54	3	localException2	Exception
+    //   102	4	3	localObject5	Object
+    //   56	31	4	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   0	18	140	java/lang/Exception
-    //   0	18	197	finally
-    //   21	26	209	finally
-    //   29	35	209	finally
-    //   38	45	209	finally
-    //   48	60	209	finally
-    //   63	78	209	finally
-    //   81	90	209	finally
-    //   93	123	209	finally
-    //   148	153	209	finally
-    //   156	188	209	finally
-    //   21	26	214	java/lang/Exception
-    //   29	35	214	java/lang/Exception
-    //   38	45	214	java/lang/Exception
-    //   48	60	214	java/lang/Exception
-    //   63	78	214	java/lang/Exception
-    //   81	90	214	java/lang/Exception
-    //   93	123	214	java/lang/Exception
+    //   15	21	28	java/lang/Exception
+    //   0	13	32	finally
+    //   0	13	38	java/lang/Exception
+    //   15	21	102	finally
+    //   43	47	102	finally
+    //   49	58	102	finally
+    //   60	69	102	finally
+    //   71	81	102	finally
+    //   83	95	102	finally
   }
   
   public QCircleSampleInfo a()
@@ -411,226 +367,278 @@ public class QCircleAssetPluginParse
   {
     Object localObject = a(paramString1);
     if (TextUtils.isEmpty((CharSequence)localObject)) {
-      localObject = null;
+      return null;
     }
-    QCircleSampleInfo localQCircleSampleInfo;
-    do
+    localObject = a((String)localObject);
+    if (localObject != null)
     {
-      return localObject;
-      localQCircleSampleInfo = a((String)localObject);
-      localObject = localQCircleSampleInfo;
-    } while (localQCircleSampleInfo == null);
-    localQCircleSampleInfo.a(paramString2);
-    localQCircleSampleInfo.d(this.e);
-    localQCircleSampleInfo.b(paramString3);
-    localQCircleSampleInfo.e(paramString4);
-    localQCircleSampleInfo.c(paramString1);
-    return localQCircleSampleInfo;
+      ((QCircleSampleInfo)localObject).a(paramString2);
+      ((QCircleSampleInfo)localObject).d(this.e);
+      ((QCircleSampleInfo)localObject).b(paramString3);
+      ((QCircleSampleInfo)localObject).e(paramString4);
+      ((QCircleSampleInfo)localObject).c(paramString1);
+    }
+    return localObject;
   }
   
   /* Error */
   protected boolean a(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aconst_null
-    //   4: astore 7
-    //   6: aload_1
-    //   7: invokestatic 256	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   10: ifne +10 -> 20
-    //   13: aload_2
-    //   14: invokestatic 256	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   17: ifeq +5 -> 22
-    //   20: iconst_0
-    //   21: ireturn
-    //   22: new 320	java/io/File
-    //   25: dup
-    //   26: aload_2
-    //   27: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
-    //   30: astore 8
-    //   32: aload 8
-    //   34: invokevirtual 437	java/io/File:exists	()Z
-    //   37: ifeq +9 -> 46
-    //   40: aload 8
-    //   42: invokevirtual 439	java/io/File:delete	()Z
-    //   45: pop
-    //   46: new 320	java/io/File
-    //   49: dup
-    //   50: new 15	java/lang/StringBuilder
-    //   53: dup
-    //   54: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   57: aload_2
-    //   58: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: ldc_w 441
-    //   64: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   70: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
-    //   73: astore 9
-    //   75: aload 9
-    //   77: invokevirtual 437	java/io/File:exists	()Z
-    //   80: ifeq +9 -> 89
-    //   83: aload 9
-    //   85: invokevirtual 439	java/io/File:delete	()Z
-    //   88: pop
-    //   89: ldc_w 270
-    //   92: invokestatic 276	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   95: checkcast 270	com/tencent/mobileqq/qqcommon/api/IFileUtilsApi
-    //   98: aload 9
-    //   100: invokevirtual 339	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   103: invokeinterface 444 2 0
-    //   108: getstatic 122	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
-    //   111: invokevirtual 126	mqq/app/MobileQQ:getAssets	()Landroid/content/res/AssetManager;
-    //   114: new 15	java/lang/StringBuilder
-    //   117: dup
-    //   118: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   121: ldc_w 446
-    //   124: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: aload_1
-    //   128: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokevirtual 372	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   137: astore_1
-    //   138: new 448	java/io/FileOutputStream
-    //   141: dup
-    //   142: aload 9
-    //   144: invokespecial 451	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   147: astore_2
-    //   148: sipush 8192
-    //   151: newarray byte
-    //   153: astore 6
-    //   155: aload_1
-    //   156: aload 6
-    //   158: invokevirtual 455	java/io/InputStream:read	([B)I
-    //   161: istore_3
-    //   162: iload_3
-    //   163: iconst_m1
-    //   164: if_icmpeq +125 -> 289
-    //   167: aload_2
-    //   168: aload 6
-    //   170: iconst_0
-    //   171: iload_3
-    //   172: invokevirtual 461	java/io/OutputStream:write	([BII)V
-    //   175: goto -20 -> 155
-    //   178: astore 7
-    //   180: aload_2
-    //   181: astore 6
-    //   183: aload 7
-    //   185: astore_2
-    //   186: ldc 82
-    //   188: iconst_1
-    //   189: new 15	java/lang/StringBuilder
-    //   192: dup
-    //   193: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   196: ldc_w 463
-    //   199: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: aload_2
-    //   203: invokevirtual 265	java/lang/Exception:toString	()Ljava/lang/String;
-    //   206: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   212: invokestatic 89	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   215: aload_1
-    //   216: invokestatic 469	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   219: aload 6
-    //   221: invokestatic 469	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   224: aload 8
-    //   226: invokevirtual 437	java/io/File:exists	()Z
-    //   229: ifeq +122 -> 351
-    //   232: aload 8
-    //   234: invokevirtual 439	java/io/File:delete	()Z
-    //   237: istore 4
-    //   239: aload 9
-    //   241: aload 8
-    //   243: invokevirtual 473	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   246: istore 5
-    //   248: ldc 82
-    //   250: iconst_1
-    //   251: new 15	java/lang/StringBuilder
-    //   254: dup
-    //   255: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   258: ldc_w 475
-    //   261: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   264: iload 5
-    //   266: invokevirtual 299	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   269: ldc_w 477
-    //   272: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: iload 4
-    //   277: invokevirtual 299	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   280: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   283: invokestatic 89	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   286: iload 5
-    //   288: ireturn
-    //   289: aload_1
-    //   290: invokestatic 469	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   293: aload_2
-    //   294: invokestatic 469	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   297: goto -73 -> 224
-    //   300: astore_2
-    //   301: aconst_null
-    //   302: astore_1
-    //   303: aload_1
-    //   304: invokestatic 469	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   307: aload 6
-    //   309: invokestatic 469	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   312: aload_2
-    //   313: athrow
-    //   314: astore_2
-    //   315: goto -12 -> 303
-    //   318: astore 7
-    //   320: aload_2
-    //   321: astore 6
-    //   323: aload 7
-    //   325: astore_2
-    //   326: goto -23 -> 303
-    //   329: astore_2
-    //   330: goto -27 -> 303
-    //   333: astore_2
-    //   334: aconst_null
-    //   335: astore_1
-    //   336: aload 7
-    //   338: astore 6
-    //   340: goto -154 -> 186
-    //   343: astore_2
-    //   344: aload 7
-    //   346: astore 6
-    //   348: goto -162 -> 186
-    //   351: iconst_1
-    //   352: istore 4
-    //   354: goto -115 -> 239
+    //   0: aload_1
+    //   1: invokestatic 224	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifne +415 -> 419
+    //   7: aload_2
+    //   8: invokestatic 224	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   11: ifeq +5 -> 16
+    //   14: iconst_0
+    //   15: ireturn
+    //   16: new 291	java/io/File
+    //   19: dup
+    //   20: aload_2
+    //   21: invokespecial 297	java/io/File:<init>	(Ljava/lang/String;)V
+    //   24: astore 8
+    //   26: aload 8
+    //   28: invokevirtual 384	java/io/File:exists	()Z
+    //   31: ifeq +9 -> 40
+    //   34: aload 8
+    //   36: invokevirtual 386	java/io/File:delete	()Z
+    //   39: pop
+    //   40: new 15	java/lang/StringBuilder
+    //   43: dup
+    //   44: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   47: astore 6
+    //   49: aload 6
+    //   51: aload_2
+    //   52: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: pop
+    //   56: aload 6
+    //   58: ldc_w 388
+    //   61: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: pop
+    //   65: new 291	java/io/File
+    //   68: dup
+    //   69: aload 6
+    //   71: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   74: invokespecial 297	java/io/File:<init>	(Ljava/lang/String;)V
+    //   77: astore 9
+    //   79: aconst_null
+    //   80: astore 6
+    //   82: aconst_null
+    //   83: astore_2
+    //   84: aload 9
+    //   86: invokevirtual 384	java/io/File:exists	()Z
+    //   89: ifeq +9 -> 98
+    //   92: aload 9
+    //   94: invokevirtual 386	java/io/File:delete	()Z
+    //   97: pop
+    //   98: ldc 238
+    //   100: invokestatic 244	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   103: checkcast 238	com/tencent/mobileqq/qqcommon/api/IFileUtilsApi
+    //   106: aload 9
+    //   108: invokevirtual 310	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   111: invokeinterface 391 2 0
+    //   116: getstatic 84	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
+    //   119: invokevirtual 88	mqq/app/MobileQQ:getAssets	()Landroid/content/res/AssetManager;
+    //   122: astore 7
+    //   124: new 15	java/lang/StringBuilder
+    //   127: dup
+    //   128: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   131: astore 10
+    //   133: aload 10
+    //   135: ldc_w 393
+    //   138: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   141: pop
+    //   142: aload 10
+    //   144: aload_1
+    //   145: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: pop
+    //   149: aload 7
+    //   151: aload 10
+    //   153: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   156: invokevirtual 343	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   159: astore_1
+    //   160: new 395	java/io/FileOutputStream
+    //   163: dup
+    //   164: aload 9
+    //   166: invokespecial 398	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   169: astore_2
+    //   170: sipush 8192
+    //   173: newarray byte
+    //   175: astore 6
+    //   177: aload_1
+    //   178: aload 6
+    //   180: invokevirtual 404	java/io/InputStream:read	([B)I
+    //   183: istore_3
+    //   184: iload_3
+    //   185: iconst_m1
+    //   186: if_icmpeq +14 -> 200
+    //   189: aload_2
+    //   190: aload 6
+    //   192: iconst_0
+    //   193: iload_3
+    //   194: invokevirtual 410	java/io/OutputStream:write	([BII)V
+    //   197: goto -20 -> 177
+    //   200: aload_1
+    //   201: invokestatic 416	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   204: aload_2
+    //   205: astore_1
+    //   206: goto +109 -> 315
+    //   209: astore 7
+    //   211: aload_1
+    //   212: astore 6
+    //   214: aload_2
+    //   215: astore_1
+    //   216: aload 7
+    //   218: astore_2
+    //   219: goto +189 -> 408
+    //   222: astore 6
+    //   224: aload_1
+    //   225: astore 7
+    //   227: aload_2
+    //   228: astore_1
+    //   229: aload 7
+    //   231: astore_2
+    //   232: goto +39 -> 271
+    //   235: astore_2
+    //   236: aconst_null
+    //   237: astore 7
+    //   239: aload_1
+    //   240: astore 6
+    //   242: aload 7
+    //   244: astore_1
+    //   245: goto +163 -> 408
+    //   248: astore 6
+    //   250: aconst_null
+    //   251: astore 7
+    //   253: aload_1
+    //   254: astore_2
+    //   255: aload 7
+    //   257: astore_1
+    //   258: goto +13 -> 271
+    //   261: astore_2
+    //   262: aconst_null
+    //   263: astore_1
+    //   264: goto +144 -> 408
+    //   267: astore 6
+    //   269: aconst_null
+    //   270: astore_1
+    //   271: new 15	java/lang/StringBuilder
+    //   274: dup
+    //   275: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   278: astore 7
+    //   280: aload 7
+    //   282: ldc_w 418
+    //   285: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   288: pop
+    //   289: aload 7
+    //   291: aload 6
+    //   293: invokevirtual 233	java/lang/Exception:toString	()Ljava/lang/String;
+    //   296: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: pop
+    //   300: ldc 65
+    //   302: iconst_1
+    //   303: aload 7
+    //   305: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   308: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   311: aload_2
+    //   312: invokestatic 416	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   315: aload_1
+    //   316: invokestatic 416	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   319: aload 8
+    //   321: invokevirtual 384	java/io/File:exists	()Z
+    //   324: ifeq +13 -> 337
+    //   327: aload 8
+    //   329: invokevirtual 386	java/io/File:delete	()Z
+    //   332: istore 4
+    //   334: goto +6 -> 340
+    //   337: iconst_1
+    //   338: istore 4
+    //   340: aload 9
+    //   342: aload 8
+    //   344: invokevirtual 422	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   347: istore 5
+    //   349: new 15	java/lang/StringBuilder
+    //   352: dup
+    //   353: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   356: astore_1
+    //   357: aload_1
+    //   358: ldc_w 424
+    //   361: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   364: pop
+    //   365: aload_1
+    //   366: iload 5
+    //   368: invokevirtual 270	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   371: pop
+    //   372: aload_1
+    //   373: ldc_w 426
+    //   376: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   379: pop
+    //   380: aload_1
+    //   381: iload 4
+    //   383: invokevirtual 270	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   386: pop
+    //   387: ldc 65
+    //   389: iconst_1
+    //   390: aload_1
+    //   391: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   394: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   397: iload 5
+    //   399: ireturn
+    //   400: astore 7
+    //   402: aload_2
+    //   403: astore 6
+    //   405: aload 7
+    //   407: astore_2
+    //   408: aload 6
+    //   410: invokestatic 416	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   413: aload_1
+    //   414: invokestatic 416	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   417: aload_2
+    //   418: athrow
+    //   419: iconst_0
+    //   420: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	357	0	this	QCircleAssetPluginParse
-    //   0	357	1	paramString1	String
-    //   0	357	2	paramString2	String
-    //   161	11	3	j	int
-    //   237	116	4	bool1	boolean
-    //   246	41	5	bool2	boolean
-    //   1	346	6	localObject1	Object
-    //   4	1	7	localObject2	Object
-    //   178	6	7	localException	Exception
-    //   318	27	7	localObject3	Object
-    //   30	212	8	localFile1	File
-    //   73	167	9	localFile2	File
+    //   0	421	0	this	QCircleAssetPluginParse
+    //   0	421	1	paramString1	String
+    //   0	421	2	paramString2	String
+    //   183	11	3	j	int
+    //   332	50	4	bool1	boolean
+    //   347	51	5	bool2	boolean
+    //   47	166	6	localObject1	Object
+    //   222	1	6	localException1	Exception
+    //   240	1	6	str1	String
+    //   248	1	6	localException2	Exception
+    //   267	25	6	localException3	Exception
+    //   403	6	6	str2	String
+    //   122	28	7	localAssetManager	AssetManager
+    //   209	8	7	localObject2	Object
+    //   225	79	7	localObject3	Object
+    //   400	6	7	localObject4	Object
+    //   24	319	8	localFile1	File
+    //   77	264	9	localFile2	File
+    //   131	21	10	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   148	155	178	java/lang/Exception
-    //   155	162	178	java/lang/Exception
-    //   167	175	178	java/lang/Exception
-    //   75	89	300	finally
-    //   89	138	300	finally
-    //   138	148	314	finally
-    //   148	155	318	finally
-    //   155	162	318	finally
-    //   167	175	318	finally
-    //   186	215	329	finally
-    //   75	89	333	java/lang/Exception
-    //   89	138	333	java/lang/Exception
-    //   138	148	343	java/lang/Exception
+    //   170	177	209	finally
+    //   177	184	209	finally
+    //   189	197	209	finally
+    //   170	177	222	java/lang/Exception
+    //   177	184	222	java/lang/Exception
+    //   189	197	222	java/lang/Exception
+    //   160	170	235	finally
+    //   160	170	248	java/lang/Exception
+    //   84	98	261	finally
+    //   98	160	261	finally
+    //   84	98	267	java/lang/Exception
+    //   98	160	267	java/lang/Exception
+    //   271	311	400	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.pluginparse.QCircleAssetPluginParse
  * JD-Core Version:    0.7.0.1
  */

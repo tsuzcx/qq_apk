@@ -17,52 +17,40 @@ public class ViewDanmakuRender$ViewHolder
   
   public ViewDanmakuRender$ViewHolder(View paramView)
   {
-    if (paramView == null) {
-      throw new IllegalArgumentException("itemView may not be null");
+    if (paramView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      return;
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    throw new IllegalArgumentException("itemView may not be null");
   }
   
   private View a(View paramView, float paramFloat1, float paramFloat2)
   {
     RectF localRectF = new RectF();
-    int i = 0;
-    Object localObject = null;
     Iterator localIterator = paramView.getTouchables().iterator();
-    View localView;
-    float f1;
-    if (localIterator.hasNext())
+    int i = 0;
+    View localView1 = null;
+    while (localIterator.hasNext())
     {
-      localView = (View)localIterator.next();
-      f1 = localView.getX();
-      float f2 = localView.getY();
-      localRectF.set(f1, f2, localView.getMeasuredWidth() + f1, localView.getMeasuredWidth() + f2);
-      if (!localRectF.contains(paramFloat1, paramFloat2)) {
-        break label160;
-      }
-      if (localView.equals(paramView)) {
-        i = 1;
-      }
-    }
-    label160:
-    for (;;)
-    {
-      break;
-      localObject = localView;
-      if ((localView instanceof ViewGroup))
-      {
-        localObject = a(paramView, paramFloat1 - f1, paramFloat2 - paramFloat1);
-        continue;
-        if ((i != 0) && (localObject == null)) {
-          localObject = paramView;
+      View localView2 = (View)localIterator.next();
+      float f1 = localView2.getX();
+      float f2 = localView2.getY();
+      localRectF.set(f1, f2, localView2.getMeasuredWidth() + f1, localView2.getMeasuredWidth() + f2);
+      if (localRectF.contains(paramFloat1, paramFloat2)) {
+        if (localView2.equals(paramView)) {
+          i = 1;
+        } else if ((localView2 instanceof ViewGroup)) {
+          localView1 = a(paramView, paramFloat1 - f1, paramFloat2 - paramFloat1);
+        } else {
+          return localView2;
         }
       }
-      else
-      {
-        return localObject;
-      }
-      return localObject;
     }
+    if ((i != 0) && (localView1 == null)) {
+      return paramView;
+    }
+    return localView1;
   }
   
   public int a()
@@ -101,7 +89,7 @@ public class ViewDanmakuRender$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.render.ViewDanmakuRender.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

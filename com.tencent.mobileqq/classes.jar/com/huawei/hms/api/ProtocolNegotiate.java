@@ -4,35 +4,37 @@ import java.util.List;
 
 public class ProtocolNegotiate
 {
-  private static ProtocolNegotiate a = new ProtocolNegotiate();
-  private int b = 1;
+  private static ProtocolNegotiate b = new ProtocolNegotiate();
+  private int a = 1;
   
   public static ProtocolNegotiate getInstance()
   {
-    return a;
+    return b;
   }
   
   public int getVersion()
   {
-    return this.b;
+    return this.a;
   }
   
   public int negotiate(List<Integer> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      this.b = 1;
-      return this.b;
+      if (!paramList.contains(Integer.valueOf(2))) {
+        this.a = ((Integer)paramList.get(paramList.size() - 1)).intValue();
+      } else {
+        this.a = 2;
+      }
+      return this.a;
     }
-    if (!paramList.contains(Integer.valueOf(2))) {}
-    for (this.b = ((Integer)paramList.get(paramList.size() - 1)).intValue();; this.b = 2) {
-      return this.b;
-    }
+    this.a = 1;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.ProtocolNegotiate
  * JD-Core Version:    0.7.0.1
  */

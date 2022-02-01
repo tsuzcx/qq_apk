@@ -19,9 +19,7 @@ class SignatureAdapter$1
     if ((paramObject instanceof ArrayList))
     {
       paramObservable = (ArrayList)paramObject;
-      switch (((Integer)paramObservable.get(0)).intValue())
-      {
-      default: 
+      if (((Integer)paramObservable.get(0)).intValue() != 5) {
         return;
       }
       paramObservable = (RichStatus)paramObservable.get(1);
@@ -48,7 +46,7 @@ class SignatureAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.SignatureAdapter.1
  * JD-Core Version:    0.7.0.1
  */

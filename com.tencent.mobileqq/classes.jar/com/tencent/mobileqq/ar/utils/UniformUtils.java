@@ -29,23 +29,19 @@ public final class UniformUtils
   
   public static void a(Context paramContext, View paramView, boolean paramBoolean, int paramInt)
   {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams;
-    int i;
     if (ScreenUtil.checkDeviceHasNavigationBar(paramContext))
     {
-      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      i = paramInt;
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      int i = paramInt;
       if (paramBoolean) {
         i = paramInt + ScreenUtil.getNavigationBarHeight(paramContext);
       }
-      if (localMarginLayoutParams.bottomMargin != i) {}
+      if (localMarginLayoutParams.bottomMargin == i) {
+        return;
+      }
+      localMarginLayoutParams.bottomMargin = i;
+      paramView.setLayoutParams(localMarginLayoutParams);
     }
-    else
-    {
-      return;
-    }
-    localMarginLayoutParams.bottomMargin = i;
-    paramView.setLayoutParams(localMarginLayoutParams);
   }
   
   public static void a(String paramString, int paramInt)
@@ -55,7 +51,7 @@ public final class UniformUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.utils.UniformUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,19 @@ public class b$b
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if ((paramObject instanceof b.a)) {
+    if ((paramObject instanceof b.a))
+    {
       a((b.a)paramObject);
-    }
-    while (!(paramObject instanceof b.c)) {
       return;
     }
-    a((b.c)paramObject);
+    if ((paramObject instanceof b.c)) {
+      a((b.c)paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.app.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import com.tencent.ark.ArkDispatchTask;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.api.IArkThreadManager;
 import com.tencent.mobileqq.data.ArkFlashChatMessage;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.lang.ref.WeakReference;
 
 class ArkFlashChatItemBubbleBuilder$1
@@ -14,6 +14,11 @@ class ArkFlashChatItemBubbleBuilder$1
   
   public void a()
   {
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThreadDelay(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.ark_app_message.appName, new ArkFlashChatItemBubbleBuilder.1.1(this), 450);
+  }
+  
+  public void b()
+  {
     AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
     if ((localAutoStartProgressBar != null) && (localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat))
     {
@@ -21,15 +26,10 @@ class ArkFlashChatItemBubbleBuilder$1
       localAutoStartProgressBar.setVisibility(8);
     }
   }
-  
-  public void b()
-  {
-    ArkAppCenter.a().postDelayed(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.ark_app_message.appName, new ArkFlashChatItemBubbleBuilder.1.1(this), 450L);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder.1
  * JD-Core Version:    0.7.0.1
  */

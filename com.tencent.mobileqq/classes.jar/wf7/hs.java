@@ -48,39 +48,38 @@ public class hs
     {
       this.tx.aE(paramInt2);
       this.tS.tH = 0;
-    }
-    do
-    {
       return;
-      if (paramInt1 == 2)
-      {
-        this.tx.aF(paramInt2);
-        this.tS.tH = 1;
-        return;
-      }
-    } while (paramInt1 != 3);
-    this.tx.aG(paramInt2);
-    this.tS.tH = 2;
+    }
+    if (paramInt1 == 2)
+    {
+      this.tx.aF(paramInt2);
+      this.tS.tH = 1;
+      return;
+    }
+    if (paramInt1 == 3)
+    {
+      this.tx.aG(paramInt2);
+      this.tS.tH = 2;
+    }
   }
   
   private void a(List<hn> paramList, Collection paramCollection)
   {
-    if ((paramCollection == null) || (paramCollection.isEmpty())) {
-      return;
-    }
-    paramCollection = new ArrayList(paramCollection);
-    try
+    if (paramCollection != null)
     {
-      Collections.reverse(paramCollection);
-      paramList.addAll(paramCollection);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      if (paramCollection.isEmpty()) {
+        return;
+      }
+      paramCollection = new ArrayList(paramCollection);
+      try
+      {
+        Collections.reverse(paramCollection);
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
+      paramList.addAll(paramCollection);
     }
   }
   
@@ -93,13 +92,14 @@ public class hs
     if (paramString.allowedKeyManagement.get(1)) {
       return "WPA2";
     }
-    if ((paramString.allowedKeyManagement.get(2)) || (paramString.allowedKeyManagement.get(3))) {
-      return "EAP";
+    if ((!paramString.allowedKeyManagement.get(2)) && (!paramString.allowedKeyManagement.get(3)))
+    {
+      if (paramString.wepKeys[0] != null) {
+        return "WEP";
+      }
+      return "未加密";
     }
-    if (paramString.wepKeys[0] != null) {
-      return "WEP";
-    }
-    return "未加密";
+    return "EAP";
   }
   
   private void fA()
@@ -115,39 +115,53 @@ public class hs
   
   private void fB()
   {
-    if ((this.tT == null) || (this.tT.size() != 6))
+    Object localObject1 = this.tT;
+    if ((localObject1 != null) && (((LinkedHashMap)localObject1).size() == 6))
     {
-      this.tV = false;
-      return;
-    }
-    if (!ca.b(this.mContext))
-    {
-      this.tV = false;
-      this.mHandler.sendEmptyMessage(2);
-      return;
-    }
-    try
-    {
-      Object localObject1 = ca.getConnectionInfo();
+      if (!ca.b(this.mContext))
+      {
+        this.tV = false;
+        this.mHandler.sendEmptyMessage(2);
+        return;
+      }
+      localObject1 = null;
+      try
+      {
+        WifiInfo localWifiInfo = ca.getConnectionInfo();
+        localObject1 = localWifiInfo;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
       hp localhp = (hp)this.tT.get("ssid");
       if (localhp != null) {
         localhp.tD = ca.aI();
       }
       localhp = (hp)this.tT.get("singal_level");
-      if ((localhp != null) && (localObject1 != null)) {
-        localhp.tD = (ca.calculateSignalLevel(((WifiInfo)localObject1).getRssi(), 100) + "%");
+      Object localObject2;
+      if ((localhp != null) && (localObject1 != null))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(ca.calculateSignalLevel(((WifiInfo)localObject1).getRssi(), 100));
+        ((StringBuilder)localObject2).append("%");
+        localhp.tD = ((StringBuilder)localObject2).toString();
       }
       localhp = (hp)this.tT.get("security_type");
       if (localhp != null)
       {
-        String str = ae(ca.aI());
-        if (str != null) {
-          localhp.tD = str;
+        localObject2 = ae(ca.aI());
+        if (localObject2 != null) {
+          localhp.tD = ((String)localObject2);
         }
       }
       localhp = (hp)this.tT.get("link_speed");
-      if ((localhp != null) && (localObject1 != null)) {
-        localhp.tD = (((WifiInfo)localObject1).getLinkSpeed() + "Mbps");
+      if ((localhp != null) && (localObject1 != null))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(((WifiInfo)localObject1).getLinkSpeed());
+        ((StringBuilder)localObject2).append("Mbps");
+        localhp.tD = ((StringBuilder)localObject2).toString();
       }
       localObject1 = (hp)this.tT.get("ip");
       if (localObject1 != null) {
@@ -161,147 +175,142 @@ public class hs
       this.mHandler.sendEmptyMessageDelayed(2, 1000L);
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject2 = null;
-      }
-    }
+    this.tV = false;
   }
   
   private void fC()
   {
-    int m = 0;
+    Object localObject1 = this.tU;
+    int k = 0;
     int j = 0;
-    if ((this.tU == null) || (this.tU.size() != 5))
+    if ((localObject1 != null) && (((LinkedHashMap)localObject1).size() == 5))
     {
-      this.tW = false;
-      localObject = Message.obtain();
-      ((Message)localObject).what = 4;
-      ((Message)localObject).arg1 = 1;
-      ((Message)localObject).arg2 = 0;
-      this.mHandler.sendMessageDelayed((Message)localObject, 2000L);
-      return;
-    }
-    Object localObject = this.tU.values().iterator();
-    hp localhp;
-    while (((Iterator)localObject).hasNext())
-    {
-      localhp = (hp)((Iterator)localObject).next();
-      localhp.tG = 1;
-      localhp.tE = 0;
-      localhp.tD = this.mContext.getString(RProxy.string.tmsdk_wifi_security_item_safe);
-    }
-    if (!ca.b(this.mContext))
-    {
-      this.tW = true;
-      localObject = Message.obtain();
-      ((Message)localObject).what = 4;
-      ((Message)localObject).arg1 = 1;
-      ((Message)localObject).arg2 = 0;
-      this.mHandler.sendMessageDelayed((Message)localObject, 2000L);
-      return;
-    }
-    int i;
-    int k;
-    if ((this.tP != null) && (!this.tP.isEmpty()) && (!this.tP.contains(Integer.valueOf(1))))
-    {
-      Iterator localIterator = this.tP.iterator();
-      i = 0;
-      m = j;
-      k = i;
-      if (localIterator.hasNext())
+      localObject1 = this.tU.values().iterator();
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
       {
-        switch (((Integer)localIterator.next()).intValue())
-        {
-        default: 
-          k = j;
-          localObject = "";
-          localhp = null;
-          j = i;
-          i = k;
-        }
-        for (;;)
-        {
-          localhp.tE = 1;
-          localhp.tD = this.mContext.getString(RProxy.string.tmsdk_wifi_security_item_danger);
-          this.tU.remove(localObject);
-          this.tU.put(localObject, localhp);
-          k = j;
-          j = i;
-          i = k;
-          break;
-          localhp = (hp)this.tU.get("EST_DnsException");
-          if (localhp == null) {
-            break;
-          }
-          k = j + 1;
-          j = i;
-          localObject = "EST_DnsException";
-          i = k;
-          continue;
-          localhp = (hp)this.tU.get("EST_Phishing");
-          if (localhp == null) {
-            break;
-          }
-          k = j + 1;
-          j = i;
-          localObject = "EST_Phishing";
-          i = k;
-          continue;
-          localhp = (hp)this.tU.get("EST_PasswordLeak");
-          if (localhp == null) {
-            break;
-          }
-          k = i + 1;
-          localObject = "EST_PasswordLeak";
-          i = j;
-          j = k;
-          continue;
-          localhp = (hp)this.tU.get("EST_Fake");
-          if (localhp == null) {
-            break;
-          }
-          k = j + 1;
-          j = i;
-          localObject = "EST_Fake";
-          i = k;
-          continue;
-          localhp = (hp)this.tU.get("EST_Monitored");
-          if (localhp == null) {
-            break;
-          }
-          k = i + 1;
-          localObject = "EST_Monitored";
-          i = j;
-          j = k;
-        }
+        localObject2 = (hp)((Iterator)localObject1).next();
+        ((hp)localObject2).tG = 1;
+        ((hp)localObject2).tE = 0;
+        ((hp)localObject2).tD = this.mContext.getString(RProxy.string.tmsdk_wifi_security_item_safe);
       }
-    }
-    else
-    {
-      k = 0;
-    }
-    if (m > 0) {
-      i = 3;
-    }
-    for (;;)
-    {
-      this.tW = true;
-      localObject = Message.obtain();
-      ((Message)localObject).what = 4;
-      ((Message)localObject).arg1 = i;
-      ((Message)localObject).arg2 = (k + m);
-      this.mHandler.sendMessageDelayed((Message)localObject, 2000L);
-      return;
+      if (!ca.b(this.mContext))
+      {
+        this.tW = true;
+        localObject1 = Message.obtain();
+        ((Message)localObject1).what = 4;
+        ((Message)localObject1).arg1 = 1;
+        ((Message)localObject1).arg2 = 0;
+        this.mHandler.sendMessageDelayed((Message)localObject1, 2000L);
+        return;
+      }
+      localObject1 = this.tP;
+      int m = 2;
+      int i;
+      if ((localObject1 != null) && (!((List)localObject1).isEmpty()) && (!this.tP.contains(Integer.valueOf(1))))
+      {
+        Iterator localIterator = this.tP.iterator();
+        i = 0;
+        while (localIterator.hasNext())
+        {
+          localObject1 = (Integer)localIterator.next();
+          Object localObject3 = null;
+          k = ((Integer)localObject1).intValue();
+          if (k != 2)
+          {
+            if (k != 3)
+            {
+              if (k != 4)
+              {
+                if (k != 5)
+                {
+                  if (k != 6)
+                  {
+                    localObject2 = "";
+                    break label436;
+                  }
+                  localObject2 = "EST_Monitored";
+                  localObject3 = (hp)this.tU.get("EST_Monitored");
+                  localObject1 = localObject3;
+                  if (localObject3 != null) {}
+                }
+                else
+                {
+                  localObject1 = "EST_Fake";
+                  localObject3 = (hp)this.tU.get("EST_Fake");
+                  localObject2 = localObject3;
+                  if (localObject3 != null) {
+                    break label424;
+                  }
+                }
+              }
+              else
+              {
+                localObject2 = "EST_PasswordLeak";
+                localObject3 = (hp)this.tU.get("EST_PasswordLeak");
+                localObject1 = localObject3;
+                if (localObject3 == null) {
+                  continue;
+                }
+              }
+              j += 1;
+              localObject3 = localObject1;
+              break label436;
+            }
+            else
+            {
+              localObject1 = "EST_Phishing";
+              localObject3 = (hp)this.tU.get("EST_Phishing");
+              localObject2 = localObject3;
+              if (localObject3 != null) {}
+            }
+          }
+          else
+          {
+            localObject1 = "EST_DnsException";
+            localObject3 = (hp)this.tU.get("EST_DnsException");
+            localObject2 = localObject3;
+            if (localObject3 == null) {
+              continue;
+            }
+          }
+          label424:
+          i += 1;
+          localObject3 = localObject2;
+          localObject2 = localObject1;
+          label436:
+          ((hp)localObject3).tE = 1;
+          ((hp)localObject3).tD = this.mContext.getString(RProxy.string.tmsdk_wifi_security_item_danger);
+          this.tU.remove(localObject2);
+          this.tU.put(localObject2, localObject3);
+        }
+        k = i;
+      }
+      else
+      {
+        j = 0;
+      }
       if (k > 0) {
-        i = 2;
+        i = 3;
+      } else if (j > 0) {
+        i = m;
       } else {
         i = 1;
       }
+      this.tW = true;
+      localObject1 = Message.obtain();
+      ((Message)localObject1).what = 4;
+      ((Message)localObject1).arg1 = i;
+      ((Message)localObject1).arg2 = (j + k);
+      this.mHandler.sendMessageDelayed((Message)localObject1, 2000L);
+      return;
     }
+    this.tW = false;
+    localObject1 = Message.obtain();
+    ((Message)localObject1).what = 4;
+    ((Message)localObject1).arg1 = 1;
+    ((Message)localObject1).arg2 = 0;
+    this.mHandler.sendMessageDelayed((Message)localObject1, 2000L);
   }
   
   private void fz()
@@ -345,7 +354,7 @@ public class hs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.hs
  * JD-Core Version:    0.7.0.1
  */

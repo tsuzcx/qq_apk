@@ -54,10 +54,8 @@ public class AVPlayerBuilderService
       this.mPlayerAdapter.getLogger().i("AVPlayerBuilderService", "open sdk has init!", new Object[0]);
       this.openSdkPlayerService.init(this.context, this.mContainer);
     }
-    for (;;)
+    else
     {
-      this.openSdkPlayerService.setParams(paramPlayerParams);
-      return this.openSdkPlayerService;
       this.mPlayerAdapter.getLogger().i("AVPlayerBuilderService", "open sdk has not init!", new Object[0]);
       if (this.isLogin)
       {
@@ -69,6 +67,8 @@ public class AVPlayerBuilderService
         this.mPlayerAdapter.getLogger().i("AVPlayerBuilderService", "open sdk has not init, waiting login", new Object[0]);
       }
     }
+    this.openSdkPlayerService.setParams(paramPlayerParams);
+    return this.openSdkPlayerService;
   }
   
   private AVPlayerServiceInterface createTPPlayer(PlayerParams paramPlayerParams)
@@ -82,11 +82,11 @@ public class AVPlayerBuilderService
       this.thumbPlayerService.init(this.context, this.mContainer);
       this.mPlayerAdapter.getLogger().i("AVPlayerBuilderService", "new tp player", new Object[0]);
     }
-    for (;;)
+    else
     {
-      return this.thumbPlayerService;
       this.mPlayerAdapter.getLogger().i("AVPlayerBuilderService", "use old tp player", new Object[0]);
     }
+    return this.thumbPlayerService;
   }
   
   private AVPlayerType getPlayType(String paramString)
@@ -112,44 +112,51 @@ public class AVPlayerBuilderService
   
   private AVPlayerServiceInterface lazyCreatePlayer(PlayerParams paramPlayerParams)
   {
-    if (TextUtils.isEmpty(paramPlayerParams.url)) {
-      this.mPlayerAdapter.getLogger().e("AVPlayerBuilderService", "play url is null.", new Object[0]);
-    }
-    AVPlayerType localAVPlayerType;
-    do
+    if (TextUtils.isEmpty(paramPlayerParams.url))
     {
+      this.mPlayerAdapter.getLogger().e("AVPlayerBuilderService", "play url is null.", new Object[0]);
       return null;
-      localAVPlayerType = getPlayType(paramPlayerParams.url);
-      if (AVPlayerType.OPEN_SDK_PLAYER == localAVPlayerType) {
-        return createOpenSdkPlayer(paramPlayerParams);
-      }
-      if (AVPlayerType.THUMB_PLAYER == localAVPlayerType) {
-        return createTPPlayer(paramPlayerParams);
-      }
-    } while (AVPlayerType.UNKNOWN_PLAYER != localAVPlayerType);
-    this.mPlayerAdapter.getLogger().e("AVPlayerBuilderService", "unknown format url:" + paramPlayerParams.url, new Object[0]);
+    }
+    Object localObject = getPlayType(paramPlayerParams.url);
+    if (AVPlayerType.OPEN_SDK_PLAYER == localObject) {
+      return createOpenSdkPlayer(paramPlayerParams);
+    }
+    if (AVPlayerType.THUMB_PLAYER == localObject) {
+      return createTPPlayer(paramPlayerParams);
+    }
+    if (AVPlayerType.UNKNOWN_PLAYER == localObject)
+    {
+      localObject = this.mPlayerAdapter.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unknown format url:");
+      localStringBuilder.append(paramPlayerParams.url);
+      ((LogInterface)localObject).e("AVPlayerBuilderService", localStringBuilder.toString(), new Object[0]);
+    }
     return null;
   }
   
   public void clearEventOutput()
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.clearEventOutput();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.clearEventOutput();
     }
   }
   
   public long getCurrentPositionMs()
   {
-    if (this.currentPlayerService != null) {
-      return this.currentPlayerService.getCurrentPositionMs();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      return localAVPlayerServiceInterface.getCurrentPositionMs();
     }
     return 0L;
   }
   
   public Rect getDisplayViewRect()
   {
-    if (this.currentPlayerService != null) {
-      return this.currentPlayerService.getDisplayViewRect();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      return localAVPlayerServiceInterface.getDisplayViewRect();
     }
     return new Rect();
   }
@@ -161,24 +168,27 @@ public class AVPlayerBuilderService
   
   public long getVideoDurationMs()
   {
-    if (this.currentPlayerService != null) {
-      return this.currentPlayerService.getVideoDurationMs();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      return localAVPlayerServiceInterface.getVideoDurationMs();
     }
     return 0L;
   }
   
   public int getVideoHeight()
   {
-    if (this.currentPlayerService != null) {
-      return this.currentPlayerService.getVideoHeight();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      return localAVPlayerServiceInterface.getVideoHeight();
     }
     return 0;
   }
   
   public int getVideoWidth()
   {
-    if (this.currentPlayerService != null) {
-      return this.currentPlayerService.getVideoWidth();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      return localAVPlayerServiceInterface.getVideoWidth();
     }
     return 0;
   }
@@ -192,16 +202,18 @@ public class AVPlayerBuilderService
   
   public boolean isPaused()
   {
-    if (this.currentPlayerService != null) {
-      return this.currentPlayerService.isPaused();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      return localAVPlayerServiceInterface.isPaused();
     }
     return false;
   }
   
   public boolean isPlaying()
   {
-    if (this.currentPlayerService != null) {
-      return this.currentPlayerService.isPlaying();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      return localAVPlayerServiceInterface.isPlaying();
     }
     return false;
   }
@@ -226,89 +238,102 @@ public class AVPlayerBuilderService
   
   public boolean isUseLocalServerPreload()
   {
-    if (this.currentPlayerService != null) {
-      return this.currentPlayerService.isUseLocalServerPreload();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      return localAVPlayerServiceInterface.isUseLocalServerPreload();
     }
     return false;
   }
   
   public void mutePlay(boolean paramBoolean)
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.mutePlay(paramBoolean);
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.mutePlay(paramBoolean);
     }
   }
   
   public void onCreate(Context paramContext)
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.onCreate(paramContext);
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.onCreate(paramContext);
     }
   }
   
   public void onDestroy()
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.onDestroy();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.onDestroy();
     }
   }
   
   public void onLoginEvent(int paramInt, String paramString)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-    case 1: 
-      do
+      if (paramInt != 2)
       {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return;
+          }
+          sIsOpenSdkInit = false;
+          return;
+        }
+        sIsOpenSdkInit = true;
         return;
-        this.isLogin = true;
-      } while (!this.isWaitingLogin);
-      this.isWaitingLogin = false;
-      this.mPlayerAdapter.getAVMediaService().avInit(this.openSdkInitCallBack);
-      return;
-    case 2: 
+      }
       this.isLogin = false;
       return;
-    case 3: 
-      sIsOpenSdkInit = true;
-      return;
     }
-    sIsOpenSdkInit = false;
+    this.isLogin = true;
+    if (this.isWaitingLogin)
+    {
+      this.isWaitingLogin = false;
+      this.mPlayerAdapter.getAVMediaService().avInit(this.openSdkInitCallBack);
+    }
   }
   
   public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
   }
   
   public void onScreenOrientationChange(boolean paramBoolean)
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.onScreenOrientationChange(paramBoolean);
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.onScreenOrientationChange(paramBoolean);
     }
   }
   
   public void pausePlay()
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.pausePlay();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.pausePlay();
     }
   }
   
   public void preload()
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.preload();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.preload();
     }
   }
   
   public void preparePlay()
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.preparePlay();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.preparePlay();
     }
   }
   
@@ -319,29 +344,33 @@ public class AVPlayerBuilderService
   
   public void reportPreloadData(boolean paramBoolean)
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.reportPreloadData(paramBoolean);
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.reportPreloadData(paramBoolean);
     }
   }
   
   public void resetPlayer()
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.resetPlayer();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.resetPlayer();
     }
   }
   
   public void resumePlay()
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.resumePlay();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.resumePlay();
     }
   }
   
   public void seekTo(int paramInt)
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.seekTo(paramInt);
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.seekTo(paramInt);
     }
   }
   
@@ -353,12 +382,13 @@ public class AVPlayerBuilderService
   public void setParams(PlayerParams paramPlayerParams)
   {
     this.currentPlayerService = lazyCreatePlayer(paramPlayerParams);
-    if (this.currentPlayerService == null)
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface == null)
     {
       this.mPlayerAdapter.getLogger().e("AVPlayerBuilderService", "lazyCreatePlayer failed!", new Object[0]);
       return;
     }
-    this.currentPlayerService.setParams(paramPlayerParams);
+    localAVPlayerServiceInterface.setParams(paramPlayerParams);
   }
   
   public void setPlayerAdapter(AVPlayerServiceAdapter paramAVPlayerServiceAdapter)
@@ -373,36 +403,41 @@ public class AVPlayerBuilderService
   
   public void setPlayerStatusListener(PlayerStatusListener paramPlayerStatusListener)
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.setPlayerStatusListener(paramPlayerStatusListener);
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.setPlayerStatusListener(paramPlayerStatusListener);
     }
   }
   
   public void setPlayerSurface()
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.setPlayerSurface();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.setPlayerSurface();
     }
   }
   
   public void startPlay()
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.startPlay();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.startPlay();
     }
   }
   
   public void stopPlay()
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.stopPlay();
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.stopPlay();
     }
   }
   
   public void switchResolution(PlayerParams paramPlayerParams, PlayerStatusListener paramPlayerStatusListener)
   {
-    if (this.currentPlayerService != null) {
-      this.currentPlayerService.switchResolution(paramPlayerParams, paramPlayerStatusListener);
+    AVPlayerServiceInterface localAVPlayerServiceInterface = this.currentPlayerService;
+    if (localAVPlayerServiceInterface != null) {
+      localAVPlayerServiceInterface.switchResolution(paramPlayerParams, paramPlayerStatusListener);
     }
   }
   
@@ -410,13 +445,18 @@ public class AVPlayerBuilderService
   {
     if (this.isInit)
     {
-      if (this.openSdkPlayerService != null)
+      AVPlayerServiceInterface localAVPlayerServiceInterface = this.openSdkPlayerService;
+      if (localAVPlayerServiceInterface != null)
       {
-        this.openSdkPlayerService.stopPlay();
+        localAVPlayerServiceInterface.stopPlay();
         this.openSdkPlayerService.uninit();
+        this.openSdkPlayerService.onDestroy();
       }
-      if (this.thumbPlayerService != null) {
-        this.thumbPlayerService.uninit();
+      localAVPlayerServiceInterface = this.thumbPlayerService;
+      if (localAVPlayerServiceInterface != null)
+      {
+        localAVPlayerServiceInterface.uninit();
+        this.thumbPlayerService.onDestroy();
       }
       this.context = null;
       this.currentPlayerService = null;
@@ -429,7 +469,7 @@ public class AVPlayerBuilderService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerbuilderservice.AVPlayerBuilderService
  * JD-Core Version:    0.7.0.1
  */

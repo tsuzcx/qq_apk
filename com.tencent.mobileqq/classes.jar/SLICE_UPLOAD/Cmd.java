@@ -5,7 +5,7 @@ import java.io.Serializable;
 public final class Cmd
   implements Serializable
 {
-  public static final Cmd CMD_COMMIT;
+  public static final Cmd CMD_COMMIT = new Cmd(3, 3, "CMD_COMMIT");
   public static final Cmd CMD_CONTROL;
   public static final Cmd CMD_UNKNOWN;
   public static final Cmd CMD_UPLOAD;
@@ -13,23 +13,15 @@ public final class Cmd
   public static final int _CMD_CONTROL = 1;
   public static final int _CMD_UNKNOWN = 0;
   public static final int _CMD_UPLOAD = 2;
-  private static Cmd[] __values;
+  private static Cmd[] __values = new Cmd[4];
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!Cmd.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      __values = new Cmd[4];
-      CMD_UNKNOWN = new Cmd(0, 0, "CMD_UNKNOWN");
-      CMD_CONTROL = new Cmd(1, 1, "CMD_CONTROL");
-      CMD_UPLOAD = new Cmd(2, 2, "CMD_UPLOAD");
-      CMD_COMMIT = new Cmd(3, 3, "CMD_COMMIT");
-      return;
-    }
+    CMD_UNKNOWN = new Cmd(0, 0, "CMD_UNKNOWN");
+    CMD_CONTROL = new Cmd(1, 1, "CMD_CONTROL");
+    CMD_UPLOAD = new Cmd(2, 2, "CMD_UPLOAD");
   }
   
   private Cmd(int paramInt1, int paramInt2, String paramString)
@@ -42,15 +34,16 @@ public final class Cmd
   public static Cmd convert(int paramInt)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].value() == paramInt) {
+      Cmd[] arrayOfCmd = __values;
+      if (i >= arrayOfCmd.length) {
+        break;
+      }
+      if (arrayOfCmd[i].value() == paramInt) {
         return __values[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -58,15 +51,16 @@ public final class Cmd
   public static Cmd convert(String paramString)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].toString().equals(paramString)) {
+      Cmd[] arrayOfCmd = __values;
+      if (i >= arrayOfCmd.length) {
+        break;
+      }
+      if (arrayOfCmd[i].toString().equals(paramString)) {
         return __values[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -83,7 +77,7 @@ public final class Cmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.Cmd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,10 @@
 package com.huawei.secure.android.common;
 
 import android.content.Context;
-import android.os.Build.VERSION;
+import com.huawei.secure.android.common.ssl.SSLUtil;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
@@ -22,102 +19,54 @@ public class SecureSSLSocketFactory
 {
   public static final X509HostnameVerifier BROWSER_COMPATIBLE_HOSTNAME_VERIFIER = new BrowserCompatHostnameVerifier();
   public static final X509HostnameVerifier STRICT_HOSTNAME_VERIFIER = new StrictHostnameVerifier();
-  private static final String d = "TLS";
-  private static final String[] h = { "TEA", "SHA0", "MD2", "MD4", "RIPEMD", "NULL", "RC4", "DES", "DESX", "DES40", "RC2", "MD5", "ANON", "TLS_EMPTY_RENEGOTIATION_INFO_SCSV", "TLS_RSA" };
-  private static volatile SecureSSLSocketFactory i = null;
-  private static String[] j = null;
-  private SSLContext g = null;
-  private Context mContext;
+  private static volatile SecureSSLSocketFactory c = null;
+  private SSLContext a = null;
+  private Context b;
   
   private SecureSSLSocketFactory(Context paramContext)
   {
-    this.mContext = paramContext;
-    this.g = SSLContext.getInstance("TLS");
-    paramContext = new SecureX509TrustManager(this.mContext);
-    this.g.init(null, new X509TrustManager[] { paramContext }, null);
+    this.b = paramContext;
+    this.a = SSLUtil.setSSLContext();
+    paramContext = new SecureX509TrustManager(this.b);
+    this.a.init(null, new X509TrustManager[] { paramContext }, null);
   }
   
   @Deprecated
   public SecureSSLSocketFactory(InputStream paramInputStream, String paramString)
   {
-    this.g = SSLContext.getInstance("TLS");
+    this.a = SSLUtil.setSSLContext();
     paramInputStream = new HiCloudX509TrustManager(paramInputStream, paramString);
-    this.g.init(null, new X509TrustManager[] { paramInputStream }, null);
+    this.a.init(null, new X509TrustManager[] { paramInputStream }, null);
   }
   
   private void a(Socket paramSocket)
   {
-    if ((paramSocket != null) && ((paramSocket instanceof SSLSocket)))
-    {
-      setEnabledProtocols((SSLSocket)paramSocket);
-      setEnableSafeCipherSuites((SSLSocket)paramSocket);
-    }
+    paramSocket = (SSLSocket)paramSocket;
+    SSLUtil.setEnabledProtocols(paramSocket);
+    SSLUtil.setEnableSafeCipherSuites(paramSocket);
   }
   
   @Deprecated
   public static SecureSSLSocketFactory getInstance(Context paramContext)
   {
-    if (i == null) {}
-    try
-    {
-      if (i == null) {
-        i = new SecureSSLSocketFactory(paramContext);
+    if (c == null) {
+      try
+      {
+        if (c == null) {
+          c = new SecureSSLSocketFactory(paramContext);
+        }
       }
-      return i;
+      finally {}
     }
-    finally {}
-  }
-  
-  private static void setEnableSafeCipherSuites(SSLSocket paramSSLSocket)
-  {
-    if (paramSSLSocket == null) {
-      return;
-    }
-    String[] arrayOfString1 = paramSSLSocket.getEnabledCipherSuites();
-    ArrayList localArrayList = new ArrayList();
-    int n = arrayOfString1.length;
-    int k = 0;
-    String str1;
-    if (k < n)
-    {
-      str1 = arrayOfString1[k];
-      String str2 = str1.toUpperCase(Locale.ENGLISH);
-      String[] arrayOfString2 = h;
-      int i1 = arrayOfString2.length;
-      m = 0;
-      label59:
-      if (m >= i1) {
-        break label144;
-      }
-      if (!str2.contains(arrayOfString2[m].toUpperCase(Locale.ENGLISH))) {}
-    }
-    label144:
-    for (int m = 1;; m = 0)
-    {
-      if (m == 0) {
-        localArrayList.add(str1);
-      }
-      k += 1;
-      break;
-      m += 1;
-      break label59;
-      j = (String[])localArrayList.toArray(new String[localArrayList.size()]);
-      paramSSLSocket.setEnabledCipherSuites(j);
-      return;
-    }
-  }
-  
-  private void setEnabledProtocols(SSLSocket paramSSLSocket)
-  {
-    if ((paramSSLSocket != null) && (Build.VERSION.SDK_INT >= 16)) {
-      paramSSLSocket.setEnabledProtocols(new String[] { "TLSv1.1", "TLSv1.2" });
-    }
+    return c;
   }
   
   public Socket createSocket(String paramString, int paramInt)
   {
-    paramString = this.g.getSocketFactory().createSocket(paramString, paramInt);
-    a(paramString);
+    paramString = this.a.getSocketFactory().createSocket(paramString, paramInt);
+    if ((paramString instanceof SSLSocket)) {
+      a(paramString);
+    }
     return paramString;
   }
   
@@ -138,8 +87,10 @@ public class SecureSSLSocketFactory
   
   public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
   {
-    paramSocket = this.g.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
-    a(paramSocket);
+    paramSocket = this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
+    if ((paramSocket instanceof SSLSocket)) {
+      a(paramSocket);
+    }
     return paramSocket;
   }
   
@@ -155,7 +106,7 @@ public class SecureSSLSocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.SecureSSLSocketFactory
  * JD-Core Version:    0.7.0.1
  */

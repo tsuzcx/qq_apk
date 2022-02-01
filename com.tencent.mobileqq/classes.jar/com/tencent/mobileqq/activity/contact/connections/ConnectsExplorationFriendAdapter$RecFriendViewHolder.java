@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
 import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.adapter.FacePreloadHolder.ViewHolder;
 import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
 class ConnectsExplorationFriendAdapter$RecFriendViewHolder
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends FacePreloadHolder.ViewHolder
 {
   public TextView a;
   public MayKnowRecommend a;
@@ -18,7 +18,7 @@ class ConnectsExplorationFriendAdapter$RecFriendViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationFriendAdapter.RecFriendViewHolder
  * JD-Core Version:    0.7.0.1
  */

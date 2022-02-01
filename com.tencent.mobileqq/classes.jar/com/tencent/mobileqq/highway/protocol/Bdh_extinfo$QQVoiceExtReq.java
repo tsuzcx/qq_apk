@@ -26,13 +26,14 @@ public final class Bdh_extinfo$QQVoiceExtReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48 }, new String[] { "bytes_qid", "uint32_fmt", "uint32_rate", "uint32_bits", "uint32_channel", "uint32_pinyin" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, QQVoiceExtReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48 }, new String[] { "bytes_qid", "uint32_fmt", "uint32_rate", "uint32_bits", "uint32_channel", "uint32_pinyin" }, new Object[] { localByteStringMicro, localInteger, localInteger, localInteger, localInteger, localInteger }, QQVoiceExtReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.protocol.Bdh_extinfo.QQVoiceExtReq
  * JD-Core Version:    0.7.0.1
  */

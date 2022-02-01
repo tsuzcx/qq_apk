@@ -7,10 +7,10 @@ import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.selectmember.ResultRecord;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
@@ -35,38 +35,37 @@ class QQCustomDialogWtihForwardAvatar$ForwardTargetAdapter
   {
     int i = 1;
     if (paramInt == 1) {
-      i = 4;
+      return 4;
     }
-    do
-    {
-      return i;
-      if (paramInt == 3000) {
-        return 101;
-      }
-    } while (paramInt != 1006);
-    return 11;
+    if (paramInt == 3000) {
+      return 101;
+    }
+    if (paramInt == 1006) {
+      i = 11;
+    }
+    return i;
   }
   
   private void a(ImageView paramImageView, ResultRecord paramResultRecord)
   {
     if (AppConstants.DATALINE_PC_UIN.equals(paramResultRecord.uin))
     {
-      paramImageView.setImageResource(2130844376);
+      paramImageView.setImageResource(2130844282);
       return;
     }
     if (AppConstants.DATALINE_IPAD_UIN.equals(paramResultRecord.uin))
     {
-      paramImageView.setImageResource(2130844371);
+      paramImageView.setImageResource(2130844277);
       return;
     }
     if (AppConstants.DATALINE_PRINTER_UIN.equals(paramResultRecord.uin))
     {
-      paramImageView.setImageResource(2130844379);
+      paramImageView.setImageResource(2130844285);
       return;
     }
     if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(paramResultRecord.uin))
     {
-      paramImageView.setImageResource(2130839708);
+      paramImageView.setImageResource(2130839566);
       return;
     }
     int i = a(paramResultRecord.getUinType());
@@ -80,10 +79,11 @@ class QQCustomDialogWtihForwardAvatar$ForwardTargetAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
   
   public long getItemId(int paramInt)
@@ -99,21 +99,21 @@ class QQCustomDialogWtihForwardAvatar$ForwardTargetAdapter
       localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
       localImageView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.i, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.i));
     }
-    for (;;)
+    else
     {
-      a(localImageView, a(paramInt));
-      localImageView.setTag(a(paramInt));
-      localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localImageView.setFocusable(false);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localImageView;
       localImageView = (ImageView)paramView;
     }
+    a(localImageView, a(paramInt));
+    localImageView.setTag(a(paramInt));
+    localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    localImageView.setFocusable(false);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localImageView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihForwardAvatar.ForwardTargetAdapter
  * JD-Core Version:    0.7.0.1
  */

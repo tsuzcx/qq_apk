@@ -33,30 +33,35 @@ public abstract class SafePrintException
   public static String getStackTrace(String paramString, Throwable paramThrowable)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (!TextUtils.isEmpty(paramString)) {
-      localStringBuilder.append(paramString).append(" ");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
     }
-    localStringBuilder.append("Exception: ").append(paramThrowable.getClass().getName()).append('\n');
+    localStringBuilder.append("Exception: ");
+    localStringBuilder.append(paramThrowable.getClass().getName());
+    localStringBuilder.append('\n');
     if (!c(paramThrowable.getClass().getCanonicalName()))
     {
       paramString = paramThrowable.getStackTrace();
-      if (paramString != null) {
-        break label92;
-      }
-      localStringBuilder.append("Stack trace is NULL!").append('\n');
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      label92:
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
+      if (paramString == null)
       {
-        localStringBuilder.append(paramString[i].toString()).append('\n');
-        i += 1;
+        localStringBuilder.append("Stack trace is NULL!");
+        localStringBuilder.append('\n');
+      }
+      else
+      {
+        int j = paramString.length;
+        int i = 0;
+        while (i < j)
+        {
+          localStringBuilder.append(paramString[i].toString());
+          localStringBuilder.append('\n');
+          i += 1;
+        }
       }
     }
+    return localStringBuilder.toString();
   }
   
   public static void print(String paramString1, String paramString2, Throwable paramThrowable)
@@ -69,7 +74,7 @@ public abstract class SafePrintException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.util.SafePrintException
  * JD-Core Version:    0.7.0.1
  */

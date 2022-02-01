@@ -90,52 +90,47 @@ public class MiniAppReportManager
   private static void deleteReportDcDataFromDB(MiniAppReportEntity paramMiniAppReportEntity)
   {
     Object localObject = MiniAppUtils.getAppInterface();
-    if (!(localObject instanceof QQAppInterface)) {
-      QLog.e("MiniAppReportManager", 1, "deleteMiniAppFromDB, app is null.");
-    }
-    for (;;)
+    if (!(localObject instanceof QQAppInterface))
     {
+      QLog.e("MiniAppReportManager", 1, "deleteMiniAppFromDB, app is null.");
       return;
-      try
+    }
+    try
+    {
+      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+      if ((localObject != null) && (paramMiniAppReportEntity != null))
       {
-        localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-        if ((localObject != null) && (paramMiniAppReportEntity != null))
-        {
-          ((EntityManager)localObject).remove(paramMiniAppReportEntity);
-          return;
-        }
+        ((EntityManager)localObject).remove(paramMiniAppReportEntity);
+        return;
       }
-      catch (Throwable paramMiniAppReportEntity)
-      {
-        QLog.e("MiniAppReportManager", 1, "deleteReportDcDataFromDB exception", paramMiniAppReportEntity);
-      }
+    }
+    catch (Throwable paramMiniAppReportEntity)
+    {
+      QLog.e("MiniAppReportManager", 1, "deleteReportDcDataFromDB exception", paramMiniAppReportEntity);
     }
   }
   
   private static String getAppId(MiniAppConfig paramMiniAppConfig)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMiniAppConfig != null)
-    {
-      localObject1 = localObject2;
-      if (paramMiniAppConfig.launchParam != null) {
-        localObject1 = paramMiniAppConfig.launchParam.miniAppId;
-      }
+    String str1;
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {
+      str1 = paramMiniAppConfig.launchParam.miniAppId;
+    } else {
+      str1 = null;
     }
-    localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1))
+    String str2 = str1;
+    if (TextUtils.isEmpty(str1))
     {
-      localObject2 = localObject1;
+      str2 = str1;
       if (paramMiniAppConfig != null)
       {
-        localObject2 = localObject1;
+        str2 = str1;
         if (paramMiniAppConfig.config != null) {
-          localObject2 = paramMiniAppConfig.config.appId;
+          str2 = paramMiniAppConfig.config.appId;
         }
       }
     }
-    return localObject2;
+    return str2;
   }
   
   private static String getDurationAndDelete(MiniAppConfig paramMiniAppConfig)
@@ -155,12 +150,22 @@ public class MiniAppReportManager
   
   private static String getDurationKey(long paramLong, String paramString)
   {
-    return paramLong + "_" + paramString + "_duration";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_duration");
+    return localStringBuilder.toString();
   }
   
   private static SharedPreferences getDurationSp(long paramLong, String paramString)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences(paramLong + "_" + paramString, 0);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
   private static String getPatientDurationAndDelete(MiniAppConfig paramMiniAppConfig)
@@ -180,64 +185,73 @@ public class MiniAppReportManager
   
   private static String getSaveDuration(MiniAppReportEntity paramMiniAppReportEntity)
   {
-    String str1 = null;
     Object localObject3 = null;
+    String str1 = null;
     Object localObject4 = null;
     Object localObject2 = str1;
-    Object localObject1;
-    if (paramMiniAppReportEntity != null) {
-      localObject1 = localObject3;
-    }
-    try
+    if (paramMiniAppReportEntity != null)
     {
-      long l = CommonDataAdapter.a().a();
-      localObject1 = localObject3;
-      String str2 = paramMiniAppReportEntity.appId;
-      localObject2 = str1;
-      localObject1 = localObject3;
-      if (!TextUtils.isEmpty(str2))
+      Object localObject1 = localObject3;
+      try
       {
+        long l = CommonDataAdapter.a().a();
         localObject1 = localObject3;
-        localObject2 = getDurationSp(l, str2);
+        String str2 = paramMiniAppReportEntity.appId;
         localObject1 = localObject3;
-        str1 = getDurationKey(l, paramMiniAppReportEntity.launchId);
-        localObject1 = localObject3;
-        l = ((SharedPreferences)localObject2).getLong(str1, 0L);
-        paramMiniAppReportEntity = localObject4;
-        if (l > 0L)
+        localObject2 = str1;
+        if (!TextUtils.isEmpty(str2))
         {
           localObject1 = localObject3;
-          paramMiniAppReportEntity = String.valueOf(l);
-        }
-        localObject2 = paramMiniAppReportEntity;
-        localObject1 = paramMiniAppReportEntity;
-        if (QLog.isColorLevel())
-        {
+          localObject2 = getDurationSp(l, str2);
+          localObject1 = localObject3;
+          str1 = getDurationKey(l, paramMiniAppReportEntity.launchId);
+          localObject1 = localObject3;
+          l = ((SharedPreferences)localObject2).getLong(str1, 0L);
+          paramMiniAppReportEntity = localObject4;
+          if (l > 0L)
+          {
+            localObject1 = localObject3;
+            paramMiniAppReportEntity = String.valueOf(l);
+          }
           localObject1 = paramMiniAppReportEntity;
-          QLog.i("MiniAppReportManager", 2, "getSaveDuration " + paramMiniAppReportEntity + " key=" + str1);
           localObject2 = paramMiniAppReportEntity;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = paramMiniAppReportEntity;
+            localObject2 = new StringBuilder();
+            localObject1 = paramMiniAppReportEntity;
+            ((StringBuilder)localObject2).append("getSaveDuration ");
+            localObject1 = paramMiniAppReportEntity;
+            ((StringBuilder)localObject2).append(paramMiniAppReportEntity);
+            localObject1 = paramMiniAppReportEntity;
+            ((StringBuilder)localObject2).append(" key=");
+            localObject1 = paramMiniAppReportEntity;
+            ((StringBuilder)localObject2).append(str1);
+            localObject1 = paramMiniAppReportEntity;
+            QLog.i("MiniAppReportManager", 2, ((StringBuilder)localObject2).toString());
+            return paramMiniAppReportEntity;
+          }
         }
       }
-      return localObject2;
+      catch (Throwable paramMiniAppReportEntity)
+      {
+        QLog.e("MiniAppReportManager", 1, "getSaveDuration exception ", paramMiniAppReportEntity);
+        localObject2 = localObject1;
+      }
     }
-    catch (Throwable paramMiniAppReportEntity)
-    {
-      QLog.e("MiniAppReportManager", 1, "getSaveDuration exception ", paramMiniAppReportEntity);
-    }
-    return localObject1;
+    return localObject2;
   }
   
   private static long getTimeFromClickToHide(String paramString)
   {
     if ((paramString != null) && (clickTimeMap.containsKey(paramString)) && (appPauseTimeMap.containsKey(paramString)))
     {
-      long l1 = ((Long)clickTimeMap.get(paramString)).longValue();
-      long l2 = ((Long)appPauseTimeMap.get(paramString)).longValue() - l1;
-      l1 = l2;
-      if (l2 < 0L) {
-        l1 = 9999999L;
+      long l = ((Long)clickTimeMap.get(paramString)).longValue();
+      l = ((Long)appPauseTimeMap.get(paramString)).longValue() - l;
+      if (l < 0L) {
+        return 9999999L;
       }
-      return l1;
+      return l;
     }
     return 9999999L;
   }
@@ -250,7 +264,10 @@ public class MiniAppReportManager
     if (paramLong < 10000L)
     {
       paramLong /= 1000L;
-      return "timeout_" + paramLong;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("timeout_");
+      localStringBuilder.append(paramLong);
+      return localStringBuilder.toString();
     }
     if (paramLong < 15000L) {
       return "timeout_15";
@@ -264,21 +281,19 @@ public class MiniAppReportManager
   private static String getX5AndPkgCode(boolean paramBoolean1, boolean paramBoolean2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean1)
-    {
-      str = "hasX5";
-      localStringBuilder = localStringBuilder.append(str);
-      if (!paramBoolean2) {
-        break label46;
-      }
+    String str2 = "";
+    if (paramBoolean1) {
+      str1 = "hasX5";
+    } else {
+      str1 = "";
     }
-    label46:
-    for (String str = "_hasPkg";; str = "")
-    {
-      return str;
-      str = "";
-      break;
+    localStringBuilder.append(str1);
+    String str1 = str2;
+    if (paramBoolean2) {
+      str1 = "_hasPkg";
     }
+    localStringBuilder.append(str1);
+    return localStringBuilder.toString();
   }
   
   /* Error */
@@ -288,111 +303,123 @@ public class MiniAppReportManager
     //   0: invokestatic 210	com/tencent/mobileqq/mini/entry/MiniAppUtils:getAppInterface	()Lcom/tencent/common/app/AppInterface;
     //   3: astore_1
     //   4: aload_0
-    //   5: ifnull +19 -> 24
+    //   5: ifnull +168 -> 173
     //   8: aload_0
     //   9: invokeinterface 385 1 0
-    //   14: ifeq +10 -> 24
+    //   14: ifeq +159 -> 173
     //   17: aload_1
     //   18: instanceof 212
-    //   21: ifne +30 -> 51
-    //   24: ldc 45
-    //   26: iconst_1
-    //   27: new 295	java/lang/StringBuilder
-    //   30: dup
-    //   31: invokespecial 296	java/lang/StringBuilder:<init>	()V
-    //   34: ldc_w 387
-    //   37: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: aload_1
-    //   41: invokevirtual 390	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   44: invokevirtual 311	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   47: invokestatic 220	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   50: return
-    //   51: aload_1
-    //   52: invokevirtual 226	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   55: invokevirtual 232	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   58: astore_2
-    //   59: aload_2
-    //   60: ifnull -10 -> 50
-    //   63: aload_2
-    //   64: invokevirtual 394	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   67: astore_1
-    //   68: aload_1
-    //   69: invokevirtual 399	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   72: aload_0
-    //   73: invokeinterface 403 1 0
-    //   78: astore_0
-    //   79: aload_0
-    //   80: invokeinterface 408 1 0
-    //   85: ifeq +85 -> 170
-    //   88: aload_0
-    //   89: invokeinterface 412 1 0
-    //   94: checkcast 332	com/tencent/mobileqq/mini/report/MiniAppReportEntity
-    //   97: astore_3
-    //   98: aload_2
-    //   99: aload_3
-    //   100: invokestatic 416	com/tencent/mobileqq/mini/report/MiniAppReportManager:updateEntity	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   21: ifne +6 -> 27
+    //   24: goto +149 -> 173
+    //   27: aload_1
+    //   28: invokevirtual 226	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   31: invokevirtual 232	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   34: astore_2
+    //   35: aload_2
+    //   36: ifnull +136 -> 172
+    //   39: aload_2
+    //   40: invokevirtual 389	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   43: astore_1
+    //   44: aload_1
+    //   45: invokevirtual 394	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   48: aload_0
+    //   49: invokeinterface 398 1 0
+    //   54: astore_0
+    //   55: aload_0
+    //   56: invokeinterface 403 1 0
+    //   61: ifeq +67 -> 128
+    //   64: aload_0
+    //   65: invokeinterface 407 1 0
+    //   70: checkcast 332	com/tencent/mobileqq/mini/report/MiniAppReportEntity
+    //   73: astore_3
+    //   74: aload_2
+    //   75: aload_3
+    //   76: invokestatic 411	com/tencent/mobileqq/mini/report/MiniAppReportManager:updateEntity	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   79: pop
+    //   80: invokestatic 346	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   83: ifeq -28 -> 55
+    //   86: new 295	java/lang/StringBuilder
+    //   89: dup
+    //   90: invokespecial 296	java/lang/StringBuilder:<init>	()V
+    //   93: astore 4
+    //   95: aload 4
+    //   97: ldc_w 413
+    //   100: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: pop
-    //   104: invokestatic 346	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   107: ifeq -28 -> 79
-    //   110: ldc 45
-    //   112: iconst_2
-    //   113: new 295	java/lang/StringBuilder
-    //   116: dup
-    //   117: invokespecial 296	java/lang/StringBuilder:<init>	()V
-    //   120: ldc_w 418
-    //   123: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: aload_3
-    //   127: invokevirtual 419	com/tencent/mobileqq/mini/report/MiniAppReportEntity:toString	()Ljava/lang/String;
-    //   130: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: invokevirtual 311	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   136: invokestatic 353	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   139: goto -60 -> 79
-    //   142: astore_0
-    //   143: ldc 45
-    //   145: iconst_1
-    //   146: ldc_w 421
-    //   149: aload_0
-    //   150: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   153: aload_1
-    //   154: invokevirtual 424	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   157: return
-    //   158: astore_0
-    //   159: ldc 45
-    //   161: iconst_1
-    //   162: ldc_w 426
-    //   165: aload_0
-    //   166: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   169: return
-    //   170: aload_1
-    //   171: invokevirtual 429	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   174: aload_1
-    //   175: invokevirtual 424	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   178: return
-    //   179: astore_0
-    //   180: aload_1
-    //   181: invokevirtual 424	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   184: aload_0
-    //   185: athrow
+    //   104: aload 4
+    //   106: aload_3
+    //   107: invokevirtual 414	com/tencent/mobileqq/mini/report/MiniAppReportEntity:toString	()Ljava/lang/String;
+    //   110: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: pop
+    //   114: ldc 45
+    //   116: iconst_2
+    //   117: aload 4
+    //   119: invokevirtual 311	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   122: invokestatic 353	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   125: goto -70 -> 55
+    //   128: aload_1
+    //   129: invokevirtual 417	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   132: aload_1
+    //   133: invokevirtual 420	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   136: return
+    //   137: astore_0
+    //   138: goto +17 -> 155
+    //   141: astore_0
+    //   142: ldc 45
+    //   144: iconst_1
+    //   145: ldc_w 422
+    //   148: aload_0
+    //   149: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   152: goto -20 -> 132
+    //   155: aload_1
+    //   156: invokevirtual 420	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   159: aload_0
+    //   160: athrow
+    //   161: astore_0
+    //   162: ldc 45
+    //   164: iconst_1
+    //   165: ldc_w 424
+    //   168: aload_0
+    //   169: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   172: return
+    //   173: new 295	java/lang/StringBuilder
+    //   176: dup
+    //   177: invokespecial 296	java/lang/StringBuilder:<init>	()V
+    //   180: astore_0
+    //   181: aload_0
+    //   182: ldc_w 426
+    //   185: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: pop
+    //   189: aload_0
+    //   190: aload_1
+    //   191: invokevirtual 429	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   194: pop
+    //   195: ldc 45
+    //   197: iconst_1
+    //   198: aload_0
+    //   199: invokevirtual 311	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   202: invokestatic 220	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   205: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	186	0	paramList	List<MiniAppReportEntity>
-    //   3	178	1	localObject	Object
-    //   58	41	2	localEntityManager	EntityManager
-    //   97	30	3	localMiniAppReportEntity	MiniAppReportEntity
+    //   0	206	0	paramList	List<MiniAppReportEntity>
+    //   3	188	1	localObject	Object
+    //   34	41	2	localEntityManager	EntityManager
+    //   73	34	3	localMiniAppReportEntity	MiniAppReportEntity
+    //   93	25	4	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   72	79	142	java/lang/Exception
-    //   79	139	142	java/lang/Exception
-    //   170	174	142	java/lang/Exception
-    //   51	59	158	java/lang/Throwable
-    //   63	72	158	java/lang/Throwable
-    //   153	157	158	java/lang/Throwable
-    //   174	178	158	java/lang/Throwable
-    //   180	186	158	java/lang/Throwable
-    //   72	79	179	finally
-    //   79	139	179	finally
-    //   143	153	179	finally
-    //   170	174	179	finally
+    //   48	55	137	finally
+    //   55	125	137	finally
+    //   128	132	137	finally
+    //   142	152	137	finally
+    //   48	55	141	java/lang/Exception
+    //   55	125	141	java/lang/Exception
+    //   128	132	141	java/lang/Exception
+    //   27	35	161	java/lang/Throwable
+    //   39	48	161	java/lang/Throwable
+    //   132	136	161	java/lang/Throwable
+    //   155	161	161	java/lang/Throwable
   }
   
   private static boolean needCheckReportForeground()
@@ -402,14 +429,33 @@ public class MiniAppReportManager
   
   private static boolean needReport(String paramString1, String paramString2)
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (miniAppReportEntityHashMap.containsKey(paramString1)))
+    boolean bool3 = TextUtils.isEmpty(paramString2);
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (!bool3)
     {
-      paramString1 = (MiniAppReportEntity)miniAppReportEntityHashMap.get(paramString1);
-      if ((paramString1 != null) && (("load_fail".equals(paramString1.subActionType)) || ("show_fail".equals(paramString1.subActionType)) || ("show".equals(paramString1.subActionType)))) {
-        return (!"load_fail".equals(paramString2)) && (!"show_fail".equals(paramString2));
+      bool1 = bool2;
+      if (miniAppReportEntityHashMap.containsKey(paramString1))
+      {
+        paramString1 = (MiniAppReportEntity)miniAppReportEntityHashMap.get(paramString1);
+        bool1 = bool2;
+        if (paramString1 != null) {
+          if ((!"load_fail".equals(paramString1.subActionType)) && (!"show_fail".equals(paramString1.subActionType)))
+          {
+            bool1 = bool2;
+            if (!"show".equals(paramString1.subActionType)) {}
+          }
+          else
+          {
+            if ((!"load_fail".equals(paramString2)) && (!"show_fail".equals(paramString2))) {
+              return true;
+            }
+            bool1 = false;
+          }
+        }
       }
     }
-    return true;
+    return bool1;
   }
   
   public static void onEnterBackground()
@@ -453,34 +499,29 @@ public class MiniAppReportManager
   
   private static List<MiniAppReportEntity> queryReportDcDataFromDB()
   {
-    Object localObject1 = MiniAppUtils.getAppInterface();
-    if (!(localObject1 instanceof QQAppInterface)) {
-      QLog.e("MiniAppReportManager", 1, "queryReportDcDataFromDB, app is null.");
-    }
-    for (;;)
+    Object localObject = MiniAppUtils.getAppInterface();
+    if (!(localObject instanceof QQAppInterface))
     {
+      QLog.e("MiniAppReportManager", 1, "queryReportDcDataFromDB, app is null.");
       return null;
-      try
-      {
-        if (((AppInterface)localObject1).getAccount() != null)
-        {
-          localObject1 = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-          if (localObject1 == null) {
-            break label75;
-          }
-          localObject1 = ((EntityManager)localObject1).query(MiniAppReportEntity.class, MiniAppReportEntity.class.getSimpleName(), false, null, null, null, null, null, null);
-        }
+    }
+    try
+    {
+      if (((AppInterface)localObject).getAccount() == null) {
+        return null;
       }
-      catch (Throwable localThrowable)
+      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+      if (localObject != null)
       {
-        for (;;)
-        {
-          QLog.e("MiniAppReportManager", 1, "queryReportDcDataFromDB exception", localThrowable);
-          Object localObject2 = null;
-        }
+        localObject = ((EntityManager)localObject).query(MiniAppReportEntity.class, MiniAppReportEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+        return localObject;
       }
     }
-    return localObject1;
+    catch (Throwable localThrowable)
+    {
+      QLog.e("MiniAppReportManager", 1, "queryReportDcDataFromDB exception", localThrowable);
+    }
+    return null;
   }
   
   public static void recordDuration(MiniAppConfig paramMiniAppConfig, long paramLong)
@@ -490,10 +531,13 @@ public class MiniAppReportManager
   
   public static void recordReportItemToDB(List<APP_REPORT_TRANSFER.SingleDcData> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return;
+      }
+      ThreadManagerV2.excute(new MiniAppReportManager.8(paramList), 32, null, true);
     }
-    ThreadManagerV2.excute(new MiniAppReportManager.8(paramList), 32, null, true);
   }
   
   public static void registerActivityLifecycleCallbacks()
@@ -507,43 +551,58 @@ public class MiniAppReportManager
   
   private static void report(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, boolean paramBoolean)
   {
+    String str1 = paramString7;
     if ("click".equals(paramString5))
     {
       MiniProgramReportHelper.generateLaunchIdInMainProcess(paramMiniAppConfig);
       setClickTime(paramMiniAppConfig);
     }
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (String str2 = MiniProgramReportHelper.getLaunchIdFromMainProcess(paramMiniAppConfig);; str2 = paramString1)
+    String str2;
+    if (TextUtils.isEmpty(paramString1)) {
+      str2 = MiniProgramReportHelper.getLaunchIdFromMainProcess(paramMiniAppConfig);
+    } else {
+      str2 = paramString1;
+    }
+    if ((paramBoolean) && (!x5EnableSet.contains(str2)))
     {
-      if ((paramBoolean) && (!x5EnableSet.contains(str2)))
-      {
-        if (x5EnableSet.size() > 50) {
-          x5EnableSet.clear();
-        }
-        x5EnableSet.add(str2);
+      if (x5EnableSet.size() > 50) {
+        x5EnableSet.clear();
       }
-      if ((!hasPkgSet.contains(str2)) && (EnvUtils.isPkgDownloaded(paramMiniAppConfig)))
-      {
-        if (hasPkgSet.size() > 50) {
-          hasPkgSet.clear();
-        }
-        hasPkgSet.add(str2);
+      x5EnableSet.add(str2);
+    }
+    if ((!hasPkgSet.contains(str2)) && (EnvUtils.isPkgDownloaded(paramMiniAppConfig)))
+    {
+      if (hasPkgSet.size() > 50) {
+        hasPkgSet.clear();
       }
-      if (needReport(str2, paramString5)) {
-        break;
-      }
-      QLog.e("MiniAppReportManager", 1, "no need report! called with: [subActionType = " + paramString5 + "], [appType = " + paramString2 + "], [reserves = " + paramString6 + "], [reserves2 = " + paramString7 + "], [reserves3 = " + paramString8 + "], [launchid =" + str2);
+      hasPkgSet.add(str2);
+    }
+    if (!needReport(str2, paramString5))
+    {
+      paramMiniAppConfig = new StringBuilder();
+      paramMiniAppConfig.append("no need report! called with: [subActionType = ");
+      paramMiniAppConfig.append(paramString5);
+      paramMiniAppConfig.append("], [appType = ");
+      paramMiniAppConfig.append(paramString2);
+      paramMiniAppConfig.append("], [reserves = ");
+      paramMiniAppConfig.append(paramString6);
+      paramMiniAppConfig.append("], [reserves2 = ");
+      paramMiniAppConfig.append(str1);
+      paramMiniAppConfig.append("], [reserves3 = ");
+      paramMiniAppConfig.append(paramString8);
+      paramMiniAppConfig.append("], [launchid =");
+      paramMiniAppConfig.append(str2);
+      QLog.e("MiniAppReportManager", 1, paramMiniAppConfig.toString());
       return;
     }
-    String str1;
     if ("show".equals(paramString5))
     {
       setShowTime(paramMiniAppConfig);
       recordDuration(paramMiniAppConfig, 1L);
       getPatientDurationAndDelete(paramMiniAppConfig);
       paramBoolean = x5EnableSet.contains(str2);
-      boolean bool = hasPkgSet.contains(str2);
-      paramString1 = paramString7;
+      bool = hasPkgSet.contains(str2);
+      paramString1 = str1;
       if (TextUtils.isEmpty(paramString7)) {
         paramString1 = getX5AndPkgCode(paramBoolean, bool);
       }
@@ -551,56 +610,70 @@ public class MiniAppReportManager
       appPauseTimeMap.remove(str2);
       x5EnableSet.remove(str2);
       hasPkgSet.remove(str2);
-      str1 = paramString8;
-      if ((!"loading_page_kill".equals(paramString6)) && (!"loading_page_back_press".equals(paramString6))) {
-        break label685;
-      }
-      paramString8 = getPatientDurationAndDelete(paramMiniAppConfig);
-      paramBoolean = x5EnableSet.contains(str2);
-      bool = hasPkgSet.contains(str2);
-      paramString7 = paramString1;
-      if (TextUtils.isEmpty(paramString1)) {
-        paramString7 = getX5AndPkgCode(paramBoolean, bool);
-      }
-      jsErrorSet.remove(str2);
-      appPauseTimeMap.remove(str2);
-      x5EnableSet.remove(str2);
-      hasPkgSet.remove(str2);
-      paramString1 = paramString7;
+      paramString7 = paramString8;
     }
-    label685:
-    for (paramString7 = paramString8;; paramString7 = str1)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppReportManager", 2, "report called with: [subActionType = " + paramString5 + "], [appType = " + paramString2 + "], [reserves = " + paramString6 + "], [reserves2 = " + paramString1 + "], [reserves3 = " + paramString7 + "], [launchid =" + str2);
-      }
-      paramString8 = new ArrayList();
-      paramString8.addAll(MiniProgramReportHelper.newUserInfoEntries());
-      str1 = AppBrandUtil.getUrlWithoutParams(paramString3);
-      if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {}
-      for (paramString3 = String.valueOf(paramMiniAppConfig.launchParam.scene);; paramString3 = null)
+      paramString1 = str1;
+      paramString7 = paramString8;
+      if ("hide".equals(paramString5))
       {
-        paramString8.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, str1, paramString3, paramString4, paramString5, paramString6, paramString1, paramString7, null, null, null, paramString2, str2));
-        paramString8.addAll(MiniProgramReportHelper.newGenericEntries());
-        paramMiniAppConfig = MiniProgramReportHelper.newSingleReportData(2, paramString8, null);
-        MiniProgramReporter.getInstance().addDcData(paramMiniAppConfig);
-        updateReportMap(str2, paramMiniAppConfig);
-        return;
-        paramString1 = paramString7;
-        str1 = paramString8;
-        if (!"hide".equals(paramString5)) {
-          break;
-        }
         paramString1 = getDurationAndDelete(paramMiniAppConfig);
-        if (!"delay_report".equals(paramString7)) {
-          paramString8 = paramString1;
+        paramString7 = paramString8;
+        if (!"delay_report".equals(str1)) {
+          paramString7 = paramString1;
         }
         clearDuration(paramMiniAppConfig, str2);
-        paramString1 = paramString7;
-        str1 = paramString8;
-        break;
+        paramString1 = str1;
       }
     }
+    if ((!"loading_page_kill".equals(paramString6)) && (!"loading_page_back_press".equals(paramString6))) {
+      break label519;
+    }
+    paramString8 = getPatientDurationAndDelete(paramMiniAppConfig);
+    paramBoolean = x5EnableSet.contains(str2);
+    boolean bool = hasPkgSet.contains(str2);
+    paramString7 = paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      paramString7 = getX5AndPkgCode(paramBoolean, bool);
+    }
+    jsErrorSet.remove(str2);
+    appPauseTimeMap.remove(str2);
+    x5EnableSet.remove(str2);
+    hasPkgSet.remove(str2);
+    paramString1 = paramString7;
+    paramString7 = paramString8;
+    label519:
+    if (QLog.isColorLevel())
+    {
+      paramString8 = new StringBuilder();
+      paramString8.append("report called with: [subActionType = ");
+      paramString8.append(paramString5);
+      paramString8.append("], [appType = ");
+      paramString8.append(paramString2);
+      paramString8.append("], [reserves = ");
+      paramString8.append(paramString6);
+      paramString8.append("], [reserves2 = ");
+      paramString8.append(paramString1);
+      paramString8.append("], [reserves3 = ");
+      paramString8.append(paramString7);
+      paramString8.append("], [launchid =");
+      paramString8.append(str2);
+      QLog.d("MiniAppReportManager", 2, paramString8.toString());
+    }
+    paramString8 = new ArrayList();
+    paramString8.addAll(MiniProgramReportHelper.newUserInfoEntries());
+    str1 = AppBrandUtil.getUrlWithoutParams(paramString3);
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {
+      paramString3 = String.valueOf(paramMiniAppConfig.launchParam.scene);
+    } else {
+      paramString3 = null;
+    }
+    paramString8.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, str1, paramString3, paramString4, paramString5, paramString6, paramString1, paramString7, null, null, null, paramString2, str2));
+    paramString8.addAll(MiniProgramReportHelper.newGenericEntries());
+    paramMiniAppConfig = MiniProgramReportHelper.newSingleReportData(2, paramString8, null);
+    MiniProgramReporter.getInstance().addDcData(paramMiniAppConfig);
+    updateReportMap(str2, paramMiniAppConfig);
   }
   
   public static void reportClickDc04239(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
@@ -612,7 +685,14 @@ public class MiniAppReportManager
   {
     if (paramMiniAppReportEntity == null)
     {
-      QLog.e("MiniAppReportManager", 1, "reportPageViewToDc04239 fail, called with: [subActionType = " + paramString1 + "], [reserves = " + paramString2 + "], [reserves2 = " + paramString3);
+      paramMiniAppReportEntity = new StringBuilder();
+      paramMiniAppReportEntity.append("reportPageViewToDc04239 fail, called with: [subActionType = ");
+      paramMiniAppReportEntity.append(paramString1);
+      paramMiniAppReportEntity.append("], [reserves = ");
+      paramMiniAppReportEntity.append(paramString2);
+      paramMiniAppReportEntity.append("], [reserves2 = ");
+      paramMiniAppReportEntity.append(paramString3);
+      QLog.e("MiniAppReportManager", 1, paramMiniAppReportEntity.toString());
       return;
     }
     Object localObject = new MiniAppInfo();
@@ -621,14 +701,14 @@ public class MiniAppReportManager
     {
       ((MiniAppInfo)localObject).verType = Integer.valueOf(paramMiniAppReportEntity.verType).intValue();
       ((MiniAppInfo)localObject).setReportType(Integer.valueOf(paramMiniAppReportEntity.appType).intValue());
-      label99:
+      label113:
       localObject = new MiniAppConfig((MiniAppInfo)localObject);
       MiniProgramReporter.getInstance().getReportHandler().post(new MiniAppReportManager.3((MiniAppConfig)localObject, paramMiniAppReportEntity, paramString1, paramString2, paramString3, paramString4));
       return;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      break label99;
+      break label113;
     }
   }
   
@@ -698,29 +778,31 @@ public class MiniAppReportManager
   
   private static boolean updateEntity(EntityManager paramEntityManager, Entity paramEntity)
   {
-    boolean bool2 = false;
+    boolean bool2 = paramEntityManager.isOpen();
     boolean bool1 = false;
-    if (paramEntityManager.isOpen()) {
+    if (bool2)
+    {
       if (paramEntity.getStatus() == 1000)
       {
         paramEntityManager.persistOrReplace(paramEntity);
         if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
-        paramEntityManager.close();
       }
-    }
-    do
-    {
+      else if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002))
+      {
+        bool1 = paramEntityManager.update(paramEntity);
+      }
+      paramEntityManager.close();
       return bool1;
-      if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
-        break;
-      }
-      bool1 = paramEntityManager.update(paramEntity);
-      break;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniAppReportManager", 2, "updateEntity em closed e=" + paramEntity.getTableName());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramEntityManager = new StringBuilder();
+      paramEntityManager.append("updateEntity em closed e=");
+      paramEntityManager.append(paramEntity.getTableName());
+      QLog.d("MiniAppReportManager", 2, paramEntityManager.toString());
+    }
     return false;
   }
   
@@ -730,83 +812,90 @@ public class MiniAppReportManager
       miniAppReportEntityHashMap.clear();
     }
     MiniAppReportEntity localMiniAppReportEntity;
-    Object localObject;
-    String str3;
-    int i;
-    label78:
-    String str4;
-    String str5;
-    int j;
-    if (miniAppReportEntityHashMap.containsKey(paramString))
-    {
+    if (miniAppReportEntityHashMap.containsKey(paramString)) {
       localMiniAppReportEntity = (MiniAppReportEntity)miniAppReportEntityHashMap.get(paramString);
-      localObject = "";
-      Iterator localIterator = paramSingleDcData.report_data.get().iterator();
-      String str1 = "";
-      String str2 = "";
-      str3 = "";
-      i = 0;
-      paramSingleDcData = (APP_REPORT_TRANSFER.SingleDcData)localObject;
-      localObject = str2;
-      str4 = str1;
-      str5 = paramString;
+    } else {
+      localMiniAppReportEntity = new MiniAppReportEntity();
+    }
+    int i = 0;
+    Iterator localIterator = paramSingleDcData.report_data.get().iterator();
+    Object localObject3 = "";
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
+    Object localObject4 = localObject1;
+    paramSingleDcData = paramString;
+    Object localObject5 = localObject1;
+    paramString = (String)localObject2;
+    Object localObject6;
+    Object localObject7;
+    Object localObject8;
+    for (;;)
+    {
+      localObject6 = localObject3;
+      localObject7 = paramString;
+      localObject8 = paramSingleDcData;
       if (!localIterator.hasNext()) {
-        break label330;
+        break;
       }
       COMM.Entry localEntry = (COMM.Entry)localIterator.next();
+      localObject1 = paramSingleDcData;
       if ("launchid".equals(localEntry.key.get())) {
-        paramString = localEntry.value.get();
+        localObject1 = localEntry.value.get();
       }
+      localObject2 = localObject3;
       if ("appid".equals(localEntry.key.get())) {
-        str1 = localEntry.value.get();
+        localObject2 = localEntry.value.get();
       }
-      j = i;
+      int j = i;
+      localObject6 = paramString;
       if ("sub_actiontype".equals(localEntry.key.get()))
       {
-        str2 = localEntry.value.get();
-        if ((!"click".equals(str2)) && (!"load".equals(str2)) && (!"show".equals(str2)) && (!"load_fail".equals(str2)))
+        paramString = localEntry.value.get();
+        if ((!"click".equals(paramString)) && (!"load".equals(paramString)) && (!"show".equals(paramString)) && (!"load_fail".equals(paramString)))
         {
-          localObject = str2;
-          str4 = str1;
-          str5 = paramString;
-          if (!"show_fail".equals(str2)) {
-            break label330;
+          localObject6 = localObject2;
+          localObject7 = paramString;
+          localObject8 = localObject1;
+          if (!"show_fail".equals(paramString)) {
+            break;
           }
         }
         j = 1;
+        localObject6 = paramString;
       }
+      localObject7 = localObject5;
       if ("app_type".equals(localEntry.key.get())) {
-        str3 = localEntry.value.get();
+        localObject7 = localEntry.value.get();
       }
-      if (!"app_status".equals(localEntry.key.get())) {
-        break label385;
-      }
-      paramSingleDcData = localEntry.value.get();
-    }
-    label385:
-    for (;;)
-    {
       i = j;
-      break label78;
-      localMiniAppReportEntity = new MiniAppReportEntity();
-      break;
-      label330:
-      if ((localMiniAppReportEntity != null) && (i != 0))
+      localObject3 = localObject2;
+      paramString = (String)localObject6;
+      localObject5 = localObject7;
+      paramSingleDcData = (APP_REPORT_TRANSFER.SingleDcData)localObject1;
+      if ("app_status".equals(localEntry.key.get()))
       {
-        localMiniAppReportEntity.appId = str4;
-        localMiniAppReportEntity.appType = str3;
-        localMiniAppReportEntity.launchId = str5;
-        localMiniAppReportEntity.subActionType = ((String)localObject);
-        localMiniAppReportEntity.verType = paramSingleDcData;
-        miniAppReportEntityHashMap.put(str5, localMiniAppReportEntity);
+        localObject4 = localEntry.value.get();
+        i = j;
+        localObject3 = localObject2;
+        paramString = (String)localObject6;
+        localObject5 = localObject7;
+        paramSingleDcData = (APP_REPORT_TRANSFER.SingleDcData)localObject1;
       }
-      return;
+    }
+    if ((localMiniAppReportEntity != null) && (i != 0))
+    {
+      localMiniAppReportEntity.appId = ((String)localObject6);
+      localMiniAppReportEntity.appType = localObject5;
+      localMiniAppReportEntity.launchId = ((String)localObject8);
+      localMiniAppReportEntity.subActionType = ((String)localObject7);
+      localMiniAppReportEntity.verType = ((String)localObject4);
+      miniAppReportEntityHashMap.put(localObject8, localMiniAppReportEntity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportManager
  * JD-Core Version:    0.7.0.1
  */

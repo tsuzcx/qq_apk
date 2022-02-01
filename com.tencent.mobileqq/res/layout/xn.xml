@@ -4,7 +4,7 @@
     <FrameLayout android:id="@id/g8n" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true" android:contentDescription="@null">
         <ImageView android:id="@id/g8k" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/com" android:contentDescription="@null" />
         <TextView android:textSize="23.679993sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/g8m" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:contentDescription="@null" />
-        <ImageView android:layout_gravity="bottom" android:id="@id/g92" android:visibility="gone" android:layout_width="10.399994dip" android:layout_height="10.399994dip" android:layout_marginLeft="30.099976dip" android:src="@drawable/gwy" />
+        <ImageView android:layout_gravity="bottom" android:id="@id/g92" android:visibility="gone" android:layout_width="10.399994dip" android:layout_height="10.399994dip" android:layout_marginLeft="30.099976dip" android:src="@drawable/gzf" />
         <View android:layout_gravity="bottom" android:id="@id/m10" android:visibility="gone" android:layout_width="10.399994dip" android:layout_height="10.399994dip" android:layout_marginLeft="30.099976dip" />
     </FrameLayout>
     <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_toLeftOf="@id/g8_" android:layout_toRightOf="@id/g8n" android:layout_centerVertical="true">

@@ -19,7 +19,7 @@ public final class C2CType0x211_SubC2CType0x8$JudgeResult
   public static final int UINT32_FLAGS_WIFIPSW_FIELD_NUMBER = 7;
   public static final int UINT32_FORCE_WIFI_FIELD_NUMBER = 6;
   public static final int UINT32_IDLE_WAITING_FIELD_NUMBER = 5;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 56, 64 }, new String[] { "type", "str_ssid", "str_tips", "int32_idle_timeout", "uint32_idle_waiting", "uint32_force_wifi", "uint32_flags_wifipsw", "uint32_flags_netcheck" }, new Object[] { Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, JudgeResult.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field int32_idle_timeout = PBField.initInt32(0);
   public final PBStringField str_ssid = PBField.initString("");
   public final PBStringField str_tips = PBField.initString("");
@@ -28,10 +28,16 @@ public final class C2CType0x211_SubC2CType0x8$JudgeResult
   public final PBUInt32Field uint32_flags_wifipsw = PBField.initUInt32(0);
   public final PBUInt32Field uint32_force_wifi = PBField.initUInt32(0);
   public final PBUInt32Field uint32_idle_waiting = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 56, 64 }, new String[] { "type", "str_ssid", "str_tips", "int32_idle_timeout", "uint32_idle_waiting", "uint32_force_wifi", "uint32_flags_wifipsw", "uint32_flags_netcheck" }, new Object[] { localInteger, "", "", localInteger, localInteger, localInteger, localInteger, localInteger }, JudgeResult.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x8.C2CType0x211_SubC2CType0x8.JudgeResult
  * JD-Core Version:    0.7.0.1
  */

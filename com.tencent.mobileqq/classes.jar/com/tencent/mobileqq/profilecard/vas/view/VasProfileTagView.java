@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,7 +12,6 @@ import android.content.res.Resources;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -28,23 +28,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.profile.view.BreatheEffectView.BreatheListener;
 import com.tencent.mobileqq.profile.view.VipTagView;
 import com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable;
+import com.tencent.mobileqq.profilecard.base.component.IProfileActivityDelegate;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
 import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
 import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.entity.ProfileLabelInfo;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.drag_n_drop.DragAndDropDetector;
@@ -58,6 +60,7 @@ import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
 import com.tencent.mobileqq.widget.VoteView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import java.util.List;
 
 public class VasProfileTagView
   extends AbsProfileHeaderView
@@ -69,8 +72,9 @@ public class VasProfileTagView
   private static final int[] TAG_ADD_ORDER = { 3, 1, 0, 5, 4, 2, 6 };
   private static PointF[] TAG_POS = { new PointF(0.126562F, 0.478873F), new PointF(0.220312F, 0.242077F), new PointF(0.559375F, 0.206866F), new PointF(0.85F, 0.279049F), new PointF(0.889062F, 0.440141F), new PointF(0.815625F, 0.61F), new PointF(0.521875F, 0.75F), new PointF(0.18125F, 0.705F) };
   private static final String TAG_PRAISE_KEY = "%s-%d";
-  public boolean isDragging = false;
-  public boolean isFullScreen = false;
+  BreatheEffectView.BreatheListener aniEndBreatheListener;
+  public boolean isDragging;
+  public boolean isFullScreen;
   private TextView mAddTagTips;
   private ValueAnimator mAnimEnterFullScreen;
   private ValueAnimator mAnimLeaveFullScreen;
@@ -80,16 +84,18 @@ public class VasProfileTagView
   private BreatheEffectView mBreatheView;
   private int mColorScheme;
   private IComponentCenter mComponentCenter;
-  private ValueAnimator[] mDiffuseAnims = new ValueAnimator[TAG_POS.length];
+  private IProfileActivityDelegate mDelegate;
+  private ValueAnimator[] mDiffuseAnims;
   private final int mDistanceThreshold;
   private DragAndDropDetector mDragDetector;
+  private boolean mFromExtendFriend;
   private int mFullScreenHeight;
-  private ValueAnimator[] mGatherAnims = new ValueAnimator[TAG_POS.length];
+  private ValueAnimator[] mGatherAnims;
   private GestureDetector mGestureDetector;
   private HeartRiseLayerDrawable mHeartRiseDrawable;
-  private boolean mIsFirstAnimation = true;
+  private boolean mIsFirstAnimation;
   private boolean mIsFullAnimPlaying = false;
-  private boolean mIsScrollByExtendFriend = false;
+  private boolean mIsScrollByExtendFriend;
   private boolean mIsScrolled;
   private SharedPreferences mLikedTagStoreSP;
   private ProfileNameView mNickLabel;
@@ -98,24 +104,143 @@ public class VasProfileTagView
   private PointF mPhotoFullPos;
   private PointF mPhotoInitPos;
   private AvatarLayout mPhotoView;
+  ValueAnimator.AnimatorUpdateListener mSwitchScreenUpdateListener;
   private int mTagAnimCount;
   private int[] mTagCloudInWindow = new int[2];
   private RatioLayout mTagCloudLayout;
   private boolean mTagCloudNeedUpdate;
-  private View[] mTagViews = new View[TAG_POS.length];
+  private View[] mTagViews;
   
-  public VasProfileTagView(BaseActivity paramBaseActivity, ProfileCardInfo paramProfileCardInfo)
+  public VasProfileTagView(QBaseActivity paramQBaseActivity, ProfileCardInfo paramProfileCardInfo)
   {
-    super(paramBaseActivity, paramProfileCardInfo);
-    this.mActivity = paramBaseActivity;
-    this.mApp = paramBaseActivity.app;
-    this.mCardInfo = paramProfileCardInfo;
-    this.mDistanceThreshold = paramBaseActivity.getResources().getDimensionPixelSize(2131298641);
+    super(paramQBaseActivity, paramProfileCardInfo);
+    paramProfileCardInfo = TAG_POS;
+    this.mTagViews = new View[paramProfileCardInfo.length];
+    this.mDiffuseAnims = new ValueAnimator[paramProfileCardInfo.length];
+    this.mGatherAnims = new ValueAnimator[paramProfileCardInfo.length];
+    this.mIsScrollByExtendFriend = false;
+    this.mIsFirstAnimation = true;
+    this.isDragging = false;
+    this.isFullScreen = false;
+    this.mSwitchScreenUpdateListener = new VasProfileTagView.4(this);
+    this.aniEndBreatheListener = new VasProfileTagView.5(this);
+    this.mDistanceThreshold = paramQBaseActivity.getResources().getDimensionPixelSize(2131298636);
+  }
+  
+  private void addProfileTag(int paramInt, List<ProfileLabelInfo> paramList, ProfileCardInfo paramProfileCardInfo)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)paramList.get(i);
+      Object localObject;
+      if (this.mTagViews[i] == null)
+      {
+        localObject = new VipTagView(getContext());
+        this.mTagViews[i] = localObject;
+        this.mTagCloudLayout.addView((View)localObject);
+        ((VipTagView)localObject).setGravity(17);
+        ((VipTagView)localObject).setTag(2131374939, Integer.valueOf(i));
+        ((VipTagView)localObject).setTag(2131374941, Integer.valueOf(TAG_ADD_ORDER[i]));
+        ((VipTagView)localObject).setTextColor(-1);
+      }
+      VipTagView localVipTagView = (VipTagView)this.mTagViews[i];
+      if ((this.isFullScreen) && (!this.mIsFullAnimPlaying))
+      {
+        localObject = TAG_POS[TAG_ADD_ORDER[i]];
+        localObject = new RatioLayout.LayoutParams(-2, -2, 0.5F, 0.5F, ((PointF)localObject).x, ((PointF)localObject).y);
+        localVipTagView.setVisibility(0);
+        localVipTagView.setShakingState(true);
+      }
+      else
+      {
+        localObject = new RatioLayout.LayoutParams(-2, -2, 0.5F, 0.5F, 0.5F, 0.5F);
+        localVipTagView.setVisibility(4);
+      }
+      localVipTagView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localVipTagView.setLabelAndPraise(localProfileLabelInfo.labelName, localProfileLabelInfo.likeNum.intValue());
+      localVipTagView.setTag(2131374940, localProfileLabelInfo.labelId);
+      if ((checkTagLiked(localVipTagView)) && (paramProfileCardInfo.allInOne.pa != 0)) {
+        localVipTagView.setTagColor(getResources().getColor(2131166617), getResources().getColor(2131166615));
+      } else {
+        localVipTagView.setTagColor(getResources().getColor(2131166616), getResources().getColor(2131166614));
+      }
+      i += 1;
+    }
+  }
+  
+  private ValueAnimator enterFullScreen()
+  {
+    Object localObject = this.mDelegate;
+    if (localObject != null) {
+      ((IProfileActivityDelegate)localObject).scrollToListTop();
+    }
+    if (this.mFullScreenHeight == 0)
+    {
+      this.mFullScreenHeight = this.mActivity.findViewById(16908290).getHeight();
+      localObject = this.mActivity.findViewById(2131364110);
+      if (localObject != null) {
+        this.mFullScreenHeight -= ((View)localObject).getHeight();
+      }
+    }
+    localObject = this.mAnimEnterFullScreen;
+    if (localObject == null)
+    {
+      this.mAnimEnterFullScreen = ObjectAnimator.ofInt(new int[] { this.mTagCloudLayout.getHeight(), this.mFullScreenHeight });
+      return this.mAnimEnterFullScreen;
+    }
+    ((ValueAnimator)localObject).start();
+    return null;
+  }
+  
+  private ValueAnimator exitFullScreen()
+  {
+    ValueAnimator localValueAnimator = this.mAnimLeaveFullScreen;
+    if (localValueAnimator == null)
+    {
+      this.mAnimLeaveFullScreen = ObjectAnimator.ofInt(new int[] { this.mTagCloudLayout.getHeight(), getResources().getDimensionPixelSize(2131298627) });
+      return this.mAnimLeaveFullScreen;
+    }
+    localValueAnimator.start();
+    return null;
+  }
+  
+  private RatioLayout.LayoutParams getTagLayoutParams(View paramView)
+  {
+    Object localObject = (RatioLayout.LayoutParams)paramView.getLayoutParams();
+    ((RatioLayout.LayoutParams)localObject).a = 0.5F;
+    ((RatioLayout.LayoutParams)localObject).b = 0.5F;
+    ((RatioLayout.LayoutParams)localObject).c = 0.5F;
+    ((RatioLayout.LayoutParams)localObject).d = 0.5F;
+    paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    paramView = (RatioLayout.LayoutParams)this.mAddTagTips.getLayoutParams();
+    localObject = TAG_POS;
+    localObject = localObject[(localObject.length - 1)];
+    paramView.a = (((PointF)localObject).x + 0.07F);
+    paramView.b = ((PointF)localObject).y;
+    paramView.c = 0.0F;
+    paramView.d = 0.5F;
+    return paramView;
+  }
+  
+  private void hideOldProcileTag(int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      View localView = this.mTagViews[i];
+      if (((localView instanceof VipTagView)) && (localView.getVisibility() != 8))
+      {
+        ((VipTagView)localView).setShakingState(false);
+        localView.setVisibility(8);
+      }
+      i += 1;
+    }
   }
   
   private void initMainView(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131562194, this, true);
+    LayoutInflater.from(paramContext).inflate(2131562031, this, true);
   }
   
   private void loadColorScreen(IComponentCenter paramIComponentCenter)
@@ -131,37 +256,38 @@ public class VasProfileTagView
   
   private void updateAvatarArea(ProfileCardInfo paramProfileCardInfo, Context paramContext)
   {
-    this.mPhotoView = ((AvatarLayout)findViewById(2131369058));
-    this.mPhotoView.a(0, this.mPhotoView.findViewById(2131363511), false);
+    this.mPhotoView = ((AvatarLayout)findViewById(2131368780));
+    Object localObject = this.mPhotoView;
+    ((AvatarLayout)localObject).a(0, ((AvatarLayout)localObject).findViewById(2131363438), false);
     this.mHeaderChildMap.put("map_key_face", this.mPhotoView);
-    super.updateAvatar(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-    DataTag localDataTag = new DataTag(1, null);
-    this.mPhotoView.setTag(localDataTag);
+    super.updateAvatar(paramProfileCardInfo.allInOne);
+    localObject = new DataTag(1, null);
+    this.mPhotoView.setTag(localObject);
     this.mPhotoView.setOnClickListener(this.mOnClickListener);
-    if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {}
-    for (paramContext = paramContext.getString(2131691276);; paramContext = paramContext.getString(2131691275))
-    {
-      this.mPhotoView.setContentDescription(paramContext);
-      this.mAvatarPendantImage = ((ImageView)findViewById(2131368891));
-      this.mAvatarPendantImage.setVisibility(4);
-      this.mAvatarPendantImage.setOnClickListener(this.mOnClickListener);
-      this.mAvatarPendantImage.setTag(localDataTag);
-      this.mHeaderChildMap.put("map_key_avatar_pendant", this.mAvatarPendantImage);
-      super.updateAvatarPendantImage(paramProfileCardInfo, true);
-      return;
+    if (paramProfileCardInfo.allInOne.pa == 0) {
+      paramContext = paramContext.getString(2131691197);
+    } else {
+      paramContext = paramContext.getString(2131691196);
     }
+    this.mPhotoView.setContentDescription(paramContext);
+    this.mAvatarPendantImage = ((ImageView)findViewById(2131368617));
+    this.mAvatarPendantImage.setVisibility(4);
+    this.mAvatarPendantImage.setOnClickListener(this.mOnClickListener);
+    this.mAvatarPendantImage.setTag(localObject);
+    this.mHeaderChildMap.put("map_key_avatar_pendant", this.mAvatarPendantImage);
+    super.updateAvatarPendantImage(paramProfileCardInfo, true);
   }
   
   private void updateBaseInfoArea(ProfileCardInfo paramProfileCardInfo)
   {
-    this.mBasicInfoLabel = ((TextView)findViewById(2131369065));
+    this.mBasicInfoLabel = ((TextView)findViewById(2131368787));
     this.mHeaderChildMap.put("map_key_sex_age_area", this.mBasicInfoLabel);
     super.updateSexAgeArea(paramProfileCardInfo);
   }
   
   private void updateHeadArea(ProfileCardInfo paramProfileCardInfo)
   {
-    this.mNickLabel = ((ProfileNameView)findViewById(2131369073));
+    this.mNickLabel = ((ProfileNameView)findViewById(2131368795));
     this.mNickLabel.setClickListener(this.mOnClickListener);
     this.mHeaderChildMap.put("map_key_profile_nick_name", this.mNickLabel);
     super.updateHead(paramProfileCardInfo);
@@ -169,8 +295,8 @@ public class VasProfileTagView
   
   private void updateLikeArea(ProfileCardInfo paramProfileCardInfo)
   {
-    VoteView localVoteView = (VoteView)findViewById(2131381767);
-    HeartLayout localHeartLayout = (HeartLayout)findViewById(2131368400);
+    VoteView localVoteView = (VoteView)findViewById(2131380996);
+    HeartLayout localHeartLayout = (HeartLayout)findViewById(2131368151);
     localHeartLayout.setEnabled(false);
     localVoteView.setHeartLayout(this.mApp, localHeartLayout);
     this.mHeaderChildMap.put("map_key_like", localVoteView);
@@ -179,19 +305,19 @@ public class VasProfileTagView
   
   private void updateTagArea()
   {
-    this.mTagCloudLayout = ((RatioLayout)findViewById(2131378888));
+    this.mTagCloudLayout = ((RatioLayout)findViewById(2131378277));
     this.mHeaderChildMap.put("map_key_tag_cloud", this.mTagCloudLayout);
   }
   
   private void updateTipArea()
   {
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131369104);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131368825);
     this.mHeaderChildMap.put("map_key_tips", localLinearLayout);
   }
   
   void addLike(VipTagView paramVipTagView, long paramLong)
   {
-    Object localObject = String.format("%s-%d", new Object[] { this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin, Long.valueOf(paramLong) });
+    Object localObject = String.format("%s-%d", new Object[] { this.mCardInfo.card.uin, Long.valueOf(paramLong) });
     if (!this.mLikedTagStoreSP.getBoolean((String)localObject, false))
     {
       ReportController.b(this.mApp, "CliOper", "", "", "card_mall", "0X80047EF", 0, 0, Long.toString(paramLong), "", "", "");
@@ -203,9 +329,18 @@ public class VasProfileTagView
       if (localObject == null) {
         return;
       }
-      ((CardHandler)localObject).a(this.mApp.getCurrentAccountUin(), this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin, Long.valueOf(paramLong));
-      if (QLog.isColorLevel()) {
-        QLog.d(TAG, 2, "submit the network params ：srcUin = " + this.mApp.getCurrentAccountUin() + "destUin  = " + this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin + " labelId  = " + paramLong);
+      ((CardHandler)localObject).a(this.mApp.getCurrentAccountUin(), this.mCardInfo.card.uin, Long.valueOf(paramLong));
+      if (QLog.isColorLevel())
+      {
+        localObject = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("submit the network params ：srcUin = ");
+        localStringBuilder.append(this.mApp.getCurrentAccountUin());
+        localStringBuilder.append("destUin  = ");
+        localStringBuilder.append(this.mCardInfo.card.uin);
+        localStringBuilder.append(" labelId  = ");
+        localStringBuilder.append(paramLong);
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
       }
       paramVipTagView.a();
       return;
@@ -218,13 +353,13 @@ public class VasProfileTagView
   
   boolean checkTagLiked(VipTagView paramVipTagView)
   {
-    if (paramVipTagView.getTag(2131375422) == null) {
+    if (paramVipTagView.getTag(2131374940) == null) {
       return false;
     }
-    long l = ((Long)paramVipTagView.getTag(2131375422)).longValue();
-    if ((this.mCardInfo != null) && (this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (!TextUtils.isEmpty(this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin)))
+    long l = ((Long)paramVipTagView.getTag(2131374940)).longValue();
+    if ((this.mCardInfo != null) && (this.mCardInfo.card != null) && (!TextUtils.isEmpty(this.mCardInfo.card.uin)))
     {
-      paramVipTagView = String.format("%s-%d", new Object[] { this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin, Long.valueOf(l) });
+      paramVipTagView = String.format("%s-%d", new Object[] { this.mCardInfo.card.uin, Long.valueOf(l) });
       return this.mLikedTagStoreSP.getBoolean(paramVipTagView, false);
     }
     return false;
@@ -232,14 +367,13 @@ public class VasProfileTagView
   
   boolean checkTagUpdateFlag()
   {
-    boolean bool = false;
     if (this.mTagCloudNeedUpdate)
     {
       this.mTagCloudNeedUpdate = false;
       updateTagCloud(this.mCardInfo);
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   void doTagScale(VipTagView paramVipTagView)
@@ -255,25 +389,23 @@ public class VasProfileTagView
   void doTagSpringBack(VipTagView paramVipTagView, boolean paramBoolean)
   {
     Object localObject1 = (RatioLayout.LayoutParams)paramVipTagView.getLayoutParams();
-    if (localObject1 == null) {}
-    Object localObject2;
-    do
-    {
+    if (localObject1 == null) {
       return;
-      localObject2 = paramVipTagView.getTag(2131375423);
-    } while (localObject2 == null);
-    int i = ((Integer)localObject2).intValue();
-    float f1 = TAG_POS[i].x;
-    float f2 = TAG_POS[i].y;
-    float f3 = (paramVipTagView.getLeft() + paramVipTagView.getWidth() * ((RatioLayout.LayoutParams)localObject1).c) / this.mTagCloudLayout.getWidth();
-    float f4 = paramVipTagView.getTop();
-    float f5 = paramVipTagView.getHeight();
-    f4 = (((RatioLayout.LayoutParams)localObject1).d * f5 + f4) / this.mTagCloudLayout.getHeight();
-    localObject1 = ObjectAnimator.ofObject(new VasProfileTagView.7(this), new Object[] { new PointF(f3, f4), new PointF(f1, f2) });
-    ((ValueAnimator)localObject1).addUpdateListener(new VasProfileTagView.8(this, paramVipTagView));
-    ((ValueAnimator)localObject1).setDuration(400L);
-    ((ValueAnimator)localObject1).addListener(new VasProfileTagView.9(this, paramBoolean, paramVipTagView));
-    ((ValueAnimator)localObject1).start();
+    }
+    Object localObject2 = paramVipTagView.getTag(2131374941);
+    if (localObject2 != null)
+    {
+      int i = ((Integer)localObject2).intValue();
+      float f1 = TAG_POS[i].x;
+      float f2 = TAG_POS[i].y;
+      float f3 = (paramVipTagView.getLeft() + paramVipTagView.getWidth() * ((RatioLayout.LayoutParams)localObject1).c) / this.mTagCloudLayout.getWidth();
+      float f4 = (paramVipTagView.getTop() + paramVipTagView.getHeight() * ((RatioLayout.LayoutParams)localObject1).d) / this.mTagCloudLayout.getHeight();
+      localObject1 = ObjectAnimator.ofObject(new VasProfileTagView.7(this), new Object[] { new PointF(f3, f4), new PointF(f1, f2) });
+      ((ValueAnimator)localObject1).addUpdateListener(new VasProfileTagView.8(this, paramVipTagView));
+      ((ValueAnimator)localObject1).setDuration(400L);
+      ((ValueAnimator)localObject1).addListener(new VasProfileTagView.9(this, paramBoolean, paramVipTagView));
+      ((ValueAnimator)localObject1).start();
+    }
   }
   
   public DragAndDropDetector.Draggable findDraggableByPos(float paramFloat1, float paramFloat2)
@@ -303,25 +435,13 @@ public class VasProfileTagView
   
   void initTagLayout()
   {
-    this.mBreatheView = ((BreatheEffectView)findViewById(2131369059));
-    Object localObject1 = (ImageView)findViewById(2131368399);
+    this.mBreatheView = ((BreatheEffectView)findViewById(2131368781));
+    Object localObject = (ImageView)findViewById(2131368150);
     this.mHeartRiseDrawable = new HeartRiseLayerDrawable(5, getResources());
-    ((ImageView)localObject1).setImageDrawable(this.mHeartRiseDrawable);
-    this.mAddTagTips = ((TextView)findViewById(2131379403));
-    localObject1 = findViewById(2131368299);
-    Object localObject2 = (RatioLayout.LayoutParams)((View)localObject1).getLayoutParams();
-    ((RatioLayout.LayoutParams)localObject2).a = 0.5F;
-    ((RatioLayout.LayoutParams)localObject2).b = 0.5F;
-    ((RatioLayout.LayoutParams)localObject2).c = 0.5F;
-    ((RatioLayout.LayoutParams)localObject2).d = 0.5F;
-    ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    localObject1 = (RatioLayout.LayoutParams)this.mAddTagTips.getLayoutParams();
-    localObject2 = TAG_POS[(TAG_POS.length - 1)];
-    ((RatioLayout.LayoutParams)localObject1).a = (((PointF)localObject2).x + 0.07F);
-    ((RatioLayout.LayoutParams)localObject1).b = ((PointF)localObject2).y;
-    ((RatioLayout.LayoutParams)localObject1).c = 0.0F;
-    ((RatioLayout.LayoutParams)localObject1).d = 0.5F;
-    this.mAddTagTips.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    ((ImageView)localObject).setImageDrawable(this.mHeartRiseDrawable);
+    this.mAddTagTips = ((TextView)findViewById(2131378754));
+    localObject = getTagLayoutParams(findViewById(2131368051));
+    this.mAddTagTips.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.mDragDetector = new DragAndDropDetector(this, this.mBreatheView, true);
     this.mGestureDetector = new GestureDetector(getContext(), new VasProfileTagView.1(this));
   }
@@ -330,10 +450,15 @@ public class VasProfileTagView
   {
     if (this.isFullScreen)
     {
-      if (((this.mDragDetector == null) || (!this.mDragDetector.a(paramMotionEvent))) && (this.mGestureDetector != null) && (!this.mGestureDetector.onTouchEvent(paramMotionEvent))) {
-        dispatchTouchEvent(paramMotionEvent);
+      Object localObject = this.mDragDetector;
+      if ((localObject == null) || (!((DragAndDropDetector)localObject).a(paramMotionEvent)))
+      {
+        localObject = this.mGestureDetector;
+        if ((localObject != null) && (!((GestureDetector)localObject).onTouchEvent(paramMotionEvent))) {
+          dispatchTouchEvent(paramMotionEvent);
+        }
       }
-      if ((this.mActivity != null) && ((this.mActivity instanceof FriendProfileCardActivity)) && (((FriendProfileCardActivity)this.mActivity).e)) {
+      if (this.mFromExtendFriend) {
         return super.intercept(paramView, paramMotionEvent);
       }
       return true;
@@ -352,36 +477,32 @@ public class VasProfileTagView
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramAnimator != null)
-    {
-      if (paramAnimator != this.mAnimEnterFullScreen) {
-        break label36;
-      }
-      this.mBreatheView.a(new VasProfileTagView.5(this));
-    }
-    for (;;)
-    {
-      this.mTagCloudLayout.setSkipMeasure(false);
+    if (paramAnimator == null) {
       return;
-      label36:
-      if (Build.VERSION.SDK_INT < 11)
+    }
+    if (paramAnimator == this.mAnimEnterFullScreen)
+    {
+      this.mBreatheView.a(this.aniEndBreatheListener);
+    }
+    else
+    {
+      paramAnimator = (FrameLayout)this.mActivity.findViewById(16908290);
+      if ((paramAnimator != null) && (paramAnimator.getChildCount() > 0))
       {
-        ((FriendProfileCardActivity)this.mActivity).i();
-      }
-      else
-      {
-        paramAnimator = (FrameLayout)this.mActivity.findViewById(16908290);
-        if ((paramAnimator != null) && (paramAnimator.getChildCount() > 0))
+        paramAnimator = paramAnimator.getChildAt(0);
+        if (paramAnimator != null)
         {
-          paramAnimator = paramAnimator.getChildAt(0);
-          if (paramAnimator != null)
-          {
-            this.mBlurBackground = paramAnimator.getBackground();
-            paramAnimator.setBackgroundDrawable(null);
-          }
+          this.mBlurBackground = paramAnimator.getBackground();
+          paramAnimator.setBackgroundDrawable(null);
         }
       }
     }
+    this.mTagCloudLayout.setSkipMeasure(false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -392,17 +513,31 @@ public class VasProfileTagView
     paramAnimator = (FrameLayout)this.mActivity.findViewById(16908290);
     if (paramAnimator != null)
     {
-      if ((paramAnimator.getBackground() == null) && (this.mNormalBackground != null)) {
-        paramAnimator.setBackgroundDrawable(this.mNormalBackground);
+      Drawable localDrawable;
+      if (paramAnimator.getBackground() == null)
+      {
+        localDrawable = this.mNormalBackground;
+        if (localDrawable != null) {
+          paramAnimator.setBackgroundDrawable(localDrawable);
+        }
       }
       if (paramAnimator.getChildCount() > 0)
       {
         paramAnimator = paramAnimator.getChildAt(0);
-        if ((paramAnimator != null) && (paramAnimator.getBackground() == null) && (this.mBlurBackground != null)) {
-          paramAnimator.setBackgroundDrawable(this.mBlurBackground);
+        if ((paramAnimator != null) && (paramAnimator.getBackground() == null))
+        {
+          localDrawable = this.mBlurBackground;
+          if (localDrawable != null) {
+            paramAnimator.setBackgroundDrawable(localDrawable);
+          }
         }
       }
     }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
   }
   
   public void onApolloExpand(int paramInt)
@@ -415,8 +550,12 @@ public class VasProfileTagView
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((VoteView)localObject).getLayoutParams();
       localLayoutParams.bottomMargin = (ScreenUtil.dip2px(10.0F) + paramInt);
       ((VoteView)localObject).setLayoutParams(localLayoutParams);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard", 2, "onApolloExpand h:" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onApolloExpand h:");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("Q.profilecard", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -439,21 +578,24 @@ public class VasProfileTagView
     this.mBreatheView.a(null);
     if (paramDropTarget != null)
     {
-      ((VipTagView)paramDraggable).setTag(2131375420, Boolean.valueOf(true));
-      doTagScale((VipTagView)paramDraggable);
-      if ((!checkTagLiked((VipTagView)paramDraggable)) && (this.mCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != 0))
+      paramDropTarget = (VipTagView)paramDraggable;
+      paramDropTarget.setTag(2131374938, Boolean.valueOf(true));
+      doTagScale(paramDropTarget);
+      if ((!checkTagLiked(paramDropTarget)) && (this.mCardInfo.allInOne.pa != 0))
       {
-        int i = getResources().getDimensionPixelSize(2131298622);
+        int i = getResources().getDimensionPixelSize(2131298617);
         if (getHandler() != null) {
           this.mHeartRiseDrawable.a(getHandler(), 900, i);
         }
       }
-      return;
     }
-    doTagSpringBack((VipTagView)paramDraggable, false);
+    else
+    {
+      doTagSpringBack((VipTagView)paramDraggable, false);
+    }
   }
   
-  public void onInit(ProfileCardInfo paramProfileCardInfo)
+  protected void onInit(ProfileCardInfo paramProfileCardInfo)
   {
     Context localContext = getContext();
     this.mLikedTagStoreSP = this.mActivity.getSharedPreferences(this.mApp.getCurrentAccountUin(), 0);
@@ -469,52 +611,47 @@ public class VasProfileTagView
     updateTagCloud(paramProfileCardInfo);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     Object localObject;
-    float f;
     if (this.mPhotoInitPos == null)
     {
       getLocationOnScreen(this.mOffsetOnScreen);
-      this.mDragDetector.a(this.mOffsetOnScreen[0], this.mOffsetOnScreen[1]);
-      paramInt3 = this.mPhotoView.getWidth();
-      paramInt1 = this.mPhotoView.getHeight();
+      localObject = this.mDragDetector;
+      int[] arrayOfInt = this.mOffsetOnScreen;
+      ((DragAndDropDetector)localObject).a(arrayOfInt[0], arrayOfInt[1]);
+      paramInt1 = this.mPhotoView.getWidth();
+      paramInt3 = this.mPhotoView.getHeight();
       localObject = new int[2];
       this.mPhotoView.getLocationOnScreen((int[])localObject);
-      int i = localObject[0];
-      int j = this.mOffsetOnScreen[0];
-      f = (paramInt3 / 2 + (i - j)) / getWidth();
-      paramInt3 = localObject[1];
-      i = this.mOffsetOnScreen[1];
-      this.mPhotoInitPos = new PointF(f, (paramInt1 / 2 + (paramInt3 - i)) / getHeight());
-      if (this.mCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.f != 1) {
+      this.mPhotoInitPos = new PointF((localObject[0] - this.mOffsetOnScreen[0] + paramInt1 / 2) / getWidth(), (localObject[1] - this.mOffsetOnScreen[1] + paramInt3 / 2) / getHeight());
+      if (this.mCardInfo.allInOne.colorScreen != 1) {
         postDelayed(new VasProfileTagView.3(this), 300L);
       }
     }
-    if ((this.mFullScreenHeight > 0) && (paramInt4 - paramInt2 == this.mFullScreenHeight) && (this.mPhotoFullPos == null))
+    paramInt1 = this.mFullScreenHeight;
+    if ((paramInt1 > 0) && (paramInt4 - paramInt2 == paramInt1) && (this.mPhotoFullPos == null))
     {
-      paramInt2 = this.mPhotoView.getWidth();
-      paramInt1 = this.mPhotoView.getHeight();
+      paramInt1 = this.mPhotoView.getWidth();
+      paramInt2 = this.mPhotoView.getHeight();
       localObject = new int[2];
       this.mPhotoView.getLocationOnScreen((int[])localObject);
-      this.mBreatheView.setHoverHotArea(new Rect(localObject[0], localObject[1], localObject[0] + paramInt2, localObject[1] + paramInt1));
-      paramInt3 = localObject[0];
-      paramInt4 = this.mOffsetOnScreen[0];
-      f = (paramInt2 / 2 + (paramInt3 - paramInt4)) / getWidth();
-      paramInt2 = localObject[1];
-      paramInt3 = this.mOffsetOnScreen[1];
-      this.mPhotoFullPos = new PointF(f, (paramInt1 / 2 + (paramInt2 - paramInt3)) / getHeight());
+      this.mBreatheView.setHoverHotArea(new Rect(localObject[0], localObject[1], localObject[0] + paramInt1, localObject[1] + paramInt2));
+      this.mPhotoFullPos = new PointF((localObject[0] - this.mOffsetOnScreen[0] + paramInt1 / 2) / getWidth(), (localObject[1] - this.mOffsetOnScreen[1] + paramInt2 / 2) / getHeight());
       paramInt1 = this.mBasicInfoLabel.getHeight();
       this.mBasicInfoLabel.getLocationOnScreen((int[])localObject);
       paramInt2 = TAG_POS.length;
-      paramInt3 = (int)((45.0F * this.mDensity + 0.5D) / 2.0D);
-      f = (paramInt1 + (localObject[1] - this.mOffsetOnScreen[1]) + paramInt3) / getHeight();
+      double d = this.mDensity * 45.0F;
+      Double.isNaN(d);
+      paramInt3 = (int)((d + 0.5D) / 2.0D);
+      float f = (localObject[1] - this.mOffsetOnScreen[1] + paramInt1 + paramInt3) / getHeight();
       localObject = TAG_POS[(paramInt2 - 1)];
       ((PointF)localObject).set(((PointF)localObject).x, f);
-      if (this.mAddTagTips != null)
+      localObject = this.mAddTagTips;
+      if (localObject != null)
       {
-        localObject = (RatioLayout.LayoutParams)this.mAddTagTips.getLayoutParams();
+        localObject = (RatioLayout.LayoutParams)((TextView)localObject).getLayoutParams();
         if (localObject != null)
         {
           ((RatioLayout.LayoutParams)localObject).b = f;
@@ -527,7 +664,10 @@ public class VasProfileTagView
   public void onMove(DragAndDropDetector.Draggable paramDraggable, float paramFloat1, float paramFloat2)
   {
     paramDraggable = (View)paramDraggable;
-    this.mTagCloudLayout.a(paramDraggable, (int)paramFloat1 - this.mOffsetOnScreen[0], (int)paramFloat2 - this.mOffsetOnScreen[1]);
+    RatioLayout localRatioLayout = this.mTagCloudLayout;
+    int i = (int)paramFloat1;
+    int[] arrayOfInt = this.mOffsetOnScreen;
+    localRatioLayout.a(paramDraggable, i - arrayOfInt[0], (int)paramFloat2 - arrayOfInt[1]);
   }
   
   public void onResume()
@@ -536,8 +676,8 @@ public class VasProfileTagView
     if (this.mCardInfo != null)
     {
       super.updateAvatarPendantImage(this.mCardInfo, false);
-      if ((this.mCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) && (this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (this.mColorScheme != (int)this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor)) {
-        setColorScheme((int)this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor);
+      if ((this.mCardInfo.allInOne.pa == 0) && (this.mCardInfo.card != null) && (this.mColorScheme != (int)this.mCardInfo.card.backgroundColor)) {
+        setColorScheme((int)this.mCardInfo.card.backgroundColor);
       }
     }
     Object localObject = (View)this.mHeaderChildMap.get("map_key_like");
@@ -552,12 +692,8 @@ public class VasProfileTagView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramMotionEvent.getAction() == 1)
     {
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
       if ((!this.mIsScrolled) && (this.mOnClickListener != null))
       {
         this.mTagCloudLayout.setTag(new DataTag(29, null));
@@ -566,63 +702,80 @@ public class VasProfileTagView
       }
       this.mIsScrolled = false;
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void onUpdate(ProfileCardInfo paramProfileCardInfo, boolean paramBoolean)
   {
-    super.updateAvatar(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+    super.updateAvatar(paramProfileCardInfo.allInOne);
     super.updateSexAgeArea(paramProfileCardInfo);
     super.updateHead(paramProfileCardInfo);
     super.updateLike(paramProfileCardInfo);
     if (this.mIsFullAnimPlaying) {
       this.mTagCloudNeedUpdate = true;
-    }
-    for (;;)
-    {
-      super.updateAvatarPendantImage(paramProfileCardInfo, false);
-      return;
+    } else {
       updateTagCloud(paramProfileCardInfo);
     }
+    super.updateAvatarPendantImage(paramProfileCardInfo, false);
+  }
+  
+  protected boolean scrollAnimation(float paramFloat)
+  {
+    if (Math.abs(paramFloat) > this.mDistanceThreshold)
+    {
+      if ((paramFloat > 0.0F) && (this.isFullScreen))
+      {
+        if (switchScreenMode())
+        {
+          tagsGather();
+          this.mBreatheView.b(null);
+        }
+      }
+      else if ((paramFloat < 0.0F) && (!this.isFullScreen)) {
+        switchScreenMode();
+      }
+      return true;
+    }
+    return false;
   }
   
   void setColorScheme(int paramInt)
   {
-    int j = -1;
     this.mColorScheme = paramInt;
     Object localObject = this.mAddTagTips;
+    int j = -1;
     int i;
-    if (2 == paramInt)
-    {
+    if (2 == paramInt) {
       i = -1;
-      ((TextView)localObject).setTextColor(i);
-      localObject = this.mNickLabel;
-      if (2 != paramInt) {
-        break label72;
-      }
+    } else {
+      i = -16777216;
+    }
+    ((TextView)localObject).setTextColor(i);
+    localObject = this.mNickLabel;
+    if (2 == paramInt) {
       i = -1;
-      label39:
-      ((ProfileNameView)localObject).setTextColor(i);
-      localObject = this.mBasicInfoLabel;
-      if (2 != paramInt) {
-        break label79;
-      }
-    }
-    label72:
-    label79:
-    for (paramInt = j;; paramInt = -16777216)
-    {
-      ((TextView)localObject).setTextColor(paramInt);
-      return;
+    } else {
       i = -16777216;
-      break;
-      i = -16777216;
-      break label39;
     }
+    ((ProfileNameView)localObject).setTextColor(i);
+    localObject = this.mBasicInfoLabel;
+    if (2 == paramInt) {
+      paramInt = j;
+    } else {
+      paramInt = -16777216;
+    }
+    ((TextView)localObject).setTextColor(paramInt);
   }
   
-  public void setProfileArgs(IComponentCenter paramIComponentCenter)
+  public void setFromExtendFriend(boolean paramBoolean)
+  {
+    this.mFromExtendFriend = paramBoolean;
+  }
+  
+  public void setProfileArgs(IComponentCenter paramIComponentCenter, IProfileActivityDelegate paramIProfileActivityDelegate)
   {
     this.mComponentCenter = paramIComponentCenter;
+    this.mDelegate = paramIProfileActivityDelegate;
   }
   
   boolean switchScreenMode()
@@ -630,68 +783,36 @@ public class VasProfileTagView
     if (this.mIsFullAnimPlaying) {
       return false;
     }
-    if (((this.mActivity instanceof FriendProfileCardActivity)) && (((FriendProfileCardActivity)this.mActivity).e) && (!this.mIsScrollByExtendFriend))
+    if ((this.mFromExtendFriend) && (!this.mIsScrollByExtendFriend))
     {
       this.mIsScrollByExtendFriend = true;
       return false;
     }
     this.mIsFullAnimPlaying = true;
-    Object localObject;
-    if (this.isFullScreen) {
-      if (this.mAnimLeaveFullScreen == null)
-      {
-        this.mAnimLeaveFullScreen = ObjectAnimator.ofInt(new int[] { this.mTagCloudLayout.getHeight(), getResources().getDimensionPixelSize(2131298632) });
-        localObject = this.mAnimLeaveFullScreen;
-        label103:
-        if (this.isFullScreen) {
-          break label324;
-        }
-      }
-    }
-    label324:
-    for (boolean bool = true;; bool = false)
+    ValueAnimator localValueAnimator;
+    if (this.isFullScreen)
     {
-      this.isFullScreen = bool;
-      if (localObject != null)
-      {
-        ((ValueAnimator)localObject).setDuration(500L);
-        ((ValueAnimator)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
-        ((ValueAnimator)localObject).removeListener(this);
-        ((ValueAnimator)localObject).removeAllUpdateListeners();
-        ((ValueAnimator)localObject).addListener(this);
-        ((ValueAnimator)localObject).addUpdateListener(new VasProfileTagView.4(this));
-        ((ValueAnimator)localObject).start();
-      }
-      return true;
-      this.mAnimLeaveFullScreen.start();
-      localObject = null;
-      break label103;
-      ((FriendProfileCardActivity)this.mActivity).j();
-      if (this.mFullScreenHeight == 0)
-      {
-        localObject = this.mActivity.findViewById(16908290);
-        if (localObject == null) {
-          break;
-        }
-        this.mFullScreenHeight = ((View)localObject).getHeight();
-        localObject = this.mActivity.findViewById(2131364192);
-        if (localObject != null) {
-          this.mFullScreenHeight -= ((View)localObject).getHeight();
-        }
-      }
-      if (Build.VERSION.SDK_INT < 11) {
-        ((FriendProfileCardActivity)this.mActivity).h();
-      }
-      if (this.mAnimEnterFullScreen == null)
-      {
-        this.mAnimEnterFullScreen = ObjectAnimator.ofInt(new int[] { this.mTagCloudLayout.getHeight(), this.mFullScreenHeight });
-        localObject = this.mAnimEnterFullScreen;
-        break label103;
-      }
-      this.mAnimEnterFullScreen.start();
-      localObject = null;
-      break label103;
+      localValueAnimator = exitFullScreen();
     }
+    else
+    {
+      if ((this.mFullScreenHeight == 0) && (this.mActivity.findViewById(16908290) == null)) {
+        return false;
+      }
+      localValueAnimator = enterFullScreen();
+    }
+    this.isFullScreen ^= true;
+    if (localValueAnimator != null)
+    {
+      localValueAnimator.setDuration(500L);
+      localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+      localValueAnimator.removeListener(this);
+      localValueAnimator.removeAllUpdateListeners();
+      localValueAnimator.addListener(this);
+      localValueAnimator.addUpdateListener(this.mSwitchScreenUpdateListener);
+      localValueAnimator.start();
+    }
+    return true;
   }
   
   public void tagsDiffuse()
@@ -699,39 +820,39 @@ public class VasProfileTagView
     this.mTagAnimCount = 0;
     View[] arrayOfView = this.mTagViews;
     int k = arrayOfView.length;
-    int j = 0;
     int i = 0;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      View localView = arrayOfView[j];
-      Object localObject1;
+      View localView = arrayOfView[i];
       if ((localView != null) && (localView.getVisibility() != 8))
       {
-        localObject1 = (Integer)localView.getTag(2131375423);
-        if (localObject1 != null) {}
+        Object localObject = (Integer)localView.getTag(2131374941);
+        if (localObject != null)
+        {
+          PointF localPointF = TAG_POS[localObject.intValue()];
+          this.mTagAnimCount += 1;
+          ValueAnimator[] arrayOfValueAnimator = this.mDiffuseAnims;
+          ValueAnimator localValueAnimator = arrayOfValueAnimator[j];
+          localObject = localValueAnimator;
+          if (localValueAnimator == null)
+          {
+            localObject = ObjectAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+            arrayOfValueAnimator[j] = localObject;
+            ((ValueAnimator)localObject).addUpdateListener(new VasProfileTagView.10(this, localView, localPointF));
+            ((ValueAnimator)localObject).setInterpolator(new DecelerateInterpolator());
+            ((ValueAnimator)localObject).addListener(new VasProfileTagView.11(this, localView, localPointF));
+            ((ValueAnimator)localObject).setDuration(600L);
+          }
+          localView.setVisibility(0);
+          ((ValueAnimator)localObject).start();
+        }
       }
-      for (;;)
+      else
       {
         j += 1;
-        break;
-        PointF localPointF = TAG_POS[localObject1.intValue()];
-        this.mTagAnimCount += 1;
-        Object localObject2 = this.mDiffuseAnims[i];
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          localObject2 = this.mDiffuseAnims;
-          localObject1 = ObjectAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-          localObject2[i] = localObject1;
-          ((ValueAnimator)localObject1).addUpdateListener(new VasProfileTagView.10(this, localView, localPointF));
-          ((ValueAnimator)localObject1).setInterpolator(new DecelerateInterpolator());
-          ((ValueAnimator)localObject1).addListener(new VasProfileTagView.11(this, localView, localPointF));
-          ((ValueAnimator)localObject1).setDuration(600L);
-        }
-        localView.setVisibility(0);
-        ((ValueAnimator)localObject1).start();
-        i += 1;
       }
+      i += 1;
     }
     if (this.mTagAnimCount == 0)
     {
@@ -749,49 +870,49 @@ public class VasProfileTagView
     this.mTagAnimCount = 0;
     View[] arrayOfView = this.mTagViews;
     int k = arrayOfView.length;
-    int j = 0;
     int i = 0;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      View localView = arrayOfView[j];
-      Object localObject1;
+      View localView = arrayOfView[i];
       if ((localView != null) && (localView.getVisibility() == 0))
       {
         if ((localView instanceof VipTagView)) {
           ((VipTagView)localView).setShakingState(false);
         }
-        localObject1 = (Integer)localView.getTag(2131375423);
-        if (localObject1 != null) {}
+        Object localObject = (Integer)localView.getTag(2131374941);
+        if (localObject != null)
+        {
+          PointF localPointF = TAG_POS[localObject.intValue()];
+          localObject = (RatioLayout.LayoutParams)localView.getLayoutParams();
+          if (localObject != null)
+          {
+            ((RatioLayout.LayoutParams)localObject).a = this.mPhotoInitPos.x;
+            ((RatioLayout.LayoutParams)localObject).b = this.mPhotoInitPos.y;
+            localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          }
+          this.mTagAnimCount += 1;
+          ValueAnimator[] arrayOfValueAnimator = this.mGatherAnims;
+          ValueAnimator localValueAnimator = arrayOfValueAnimator[j];
+          localObject = localValueAnimator;
+          if (localValueAnimator == null)
+          {
+            localObject = ObjectAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+            arrayOfValueAnimator[j] = localObject;
+            ((ValueAnimator)localObject).addUpdateListener(new VasProfileTagView.12(this, localView, localPointF));
+            ((ValueAnimator)localObject).setInterpolator(new AccelerateInterpolator());
+            ((ValueAnimator)localObject).addListener(new VasProfileTagView.13(this, localView));
+            ((ValueAnimator)localObject).setDuration(600L);
+          }
+          this.mAddTagTips.setVisibility(4);
+          ((ValueAnimator)localObject).start();
+        }
       }
-      for (;;)
+      else
       {
         j += 1;
-        break;
-        PointF localPointF = TAG_POS[localObject1.intValue()];
-        localObject1 = (RatioLayout.LayoutParams)localView.getLayoutParams();
-        if (localObject1 != null)
-        {
-          ((RatioLayout.LayoutParams)localObject1).a = this.mPhotoInitPos.x;
-          ((RatioLayout.LayoutParams)localObject1).b = this.mPhotoInitPos.y;
-          localView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        }
-        this.mTagAnimCount += 1;
-        Object localObject2 = this.mGatherAnims[i];
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          localObject2 = this.mGatherAnims;
-          localObject1 = ObjectAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-          localObject2[i] = localObject1;
-          ((ValueAnimator)localObject1).addUpdateListener(new VasProfileTagView.12(this, localView, localPointF));
-          ((ValueAnimator)localObject1).setInterpolator(new AccelerateInterpolator());
-          ((ValueAnimator)localObject1).addListener(new VasProfileTagView.13(this, localView));
-          ((ValueAnimator)localObject1).setDuration(600L);
-        }
-        this.mAddTagTips.setVisibility(4);
-        ((ValueAnimator)localObject1).start();
-        i += 1;
       }
+      i += 1;
     }
     if (this.mTagAnimCount == 0)
     {
@@ -810,7 +931,7 @@ public class VasProfileTagView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView
  * JD-Core Version:    0.7.0.1
  */

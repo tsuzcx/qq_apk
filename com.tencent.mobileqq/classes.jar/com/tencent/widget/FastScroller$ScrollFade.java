@@ -17,11 +17,13 @@ public class FastScroller$ScrollFade
     if (this.this$0.getState() != 4) {
       return 208;
     }
-    long l = SystemClock.uptimeMillis();
-    if (l > this.mStartTime + this.mFadeDuration) {
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.mStartTime;
+    long l3 = this.mFadeDuration;
+    if (l1 > l2 + l3) {
       return 0;
     }
-    return (int)(208L - (l - this.mStartTime) * 208L / this.mFadeDuration);
+    return (int)(208L - (l1 - l2) * 208L / l3);
   }
   
   public void run()
@@ -48,7 +50,7 @@ public class FastScroller$ScrollFade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.FastScroller.ScrollFade
  * JD-Core Version:    0.7.0.1
  */

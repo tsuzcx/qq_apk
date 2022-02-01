@@ -18,7 +18,8 @@ public class ChooseCardFromWXCardPackage$Resp
   
   public boolean checkArgs()
   {
-    return (this.cardItemList != null) && (this.cardItemList.length() != 0);
+    String str = this.cardItemList;
+    return (str != null) && (str.length() != 0);
   }
   
   public void fromBundle(Bundle paramBundle)
@@ -46,7 +47,7 @@ public class ChooseCardFromWXCardPackage$Resp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.ChooseCardFromWXCardPackage.Resp
  * JD-Core Version:    0.7.0.1
  */

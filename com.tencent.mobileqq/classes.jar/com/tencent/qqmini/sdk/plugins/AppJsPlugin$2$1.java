@@ -27,7 +27,10 @@ class AppJsPlugin$2$1
     }
     catch (Exception localException)
     {
-      QMLog.e("AppJsPlugin", "onDownloadComplete exception, appid: " + this.this$1.val$appid, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadComplete exception, appid: ");
+      localStringBuilder.append(this.this$1.val$appid);
+      QMLog.e("AppJsPlugin", localStringBuilder.toString(), localException);
       JSONObject localJSONObject2 = ApiUtil.wrapCallbackFail(this.this$1.val$req.event, null);
       this.this$1.val$req.jsService.evaluateCallbackJs(this.this$1.val$req.callbackId, localJSONObject2.toString());
     }
@@ -35,22 +38,25 @@ class AppJsPlugin$2$1
   
   public void onDownloadFailed(int paramInt1, int paramInt2, String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new JSONObject();
     try
     {
-      localJSONObject.put("appid", this.this$1.val$appid);
-      localJSONObject.put("packagename", this.this$1.val$packagename);
-      localJSONObject.put("version", this.this$1.val$version);
-      localJSONObject.put("md5", this.this$1.val$md5);
-      localJSONObject.put("retCode", paramInt1);
-      localJSONObject.put("errMsg", paramString);
-      localJSONObject.put("state", "onDownloadAppFailed");
-      this.this$1.val$req.jsService.evaluateSubscribeJS("onAppDownloadStateChange", localJSONObject.toString(), 0);
+      ((JSONObject)localObject).put("appid", this.this$1.val$appid);
+      ((JSONObject)localObject).put("packagename", this.this$1.val$packagename);
+      ((JSONObject)localObject).put("version", this.this$1.val$version);
+      ((JSONObject)localObject).put("md5", this.this$1.val$md5);
+      ((JSONObject)localObject).put("retCode", paramInt1);
+      ((JSONObject)localObject).put("errMsg", paramString);
+      ((JSONObject)localObject).put("state", "onDownloadAppFailed");
+      this.this$1.val$req.jsService.evaluateSubscribeJS("onAppDownloadStateChange", ((JSONObject)localObject).toString(), 0);
       return;
     }
     catch (Exception paramString)
     {
-      QMLog.e("AppJsPlugin", "onDownloadFailed exception, appid: " + this.this$1.val$appid, paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadFailed exception, appid: ");
+      ((StringBuilder)localObject).append(this.this$1.val$appid);
+      QMLog.e("AppJsPlugin", ((StringBuilder)localObject).toString(), paramString);
       paramString = ApiUtil.wrapCallbackFail(this.this$1.val$req.event, null);
       this.this$1.val$req.jsService.evaluateCallbackJs(this.this$1.val$req.callbackId, paramString.toString());
     }
@@ -74,7 +80,10 @@ class AppJsPlugin$2$1
     }
     catch (Exception localException)
     {
-      QMLog.e("AppJsPlugin", "onDownloadProgress exception, appid: " + this.this$1.val$appid, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadProgress exception, appid: ");
+      localStringBuilder.append(this.this$1.val$appid);
+      QMLog.e("AppJsPlugin", localStringBuilder.toString(), localException);
       JSONObject localJSONObject2 = ApiUtil.wrapCallbackFail(this.this$1.val$req.event, null);
       this.this$1.val$req.jsService.evaluateCallbackJs(this.this$1.val$req.callbackId, localJSONObject2.toString());
     }
@@ -82,7 +91,7 @@ class AppJsPlugin$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.AppJsPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

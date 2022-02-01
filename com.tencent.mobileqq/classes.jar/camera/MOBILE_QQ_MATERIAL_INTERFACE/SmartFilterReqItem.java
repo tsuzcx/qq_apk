@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SmartFilterReqItem
   extends JceStruct
@@ -37,17 +38,19 @@ public final class SmartFilterReqItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.Rawdata != null) {
-      paramJceOutputStream.write(this.Rawdata, 0);
+    Object localObject = this.Rawdata;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 0);
     }
-    if (this.Faces != null) {
-      paramJceOutputStream.write(this.Faces, 1);
+    localObject = this.Faces;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem
  * JD-Core Version:    0.7.0.1
  */

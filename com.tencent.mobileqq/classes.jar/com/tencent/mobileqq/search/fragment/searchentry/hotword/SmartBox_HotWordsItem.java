@@ -89,56 +89,67 @@ public final class SmartBox_HotWordsItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sTitle != null) {
-      paramJceOutputStream.write(this.sTitle, 0);
+    String str = this.sTitle;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.iType, 1);
     paramJceOutputStream.write(this.iId, 2);
-    if (this.sShowTitle != null) {
-      paramJceOutputStream.write(this.sShowTitle, 3);
+    str = this.sShowTitle;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.sIcon != null) {
-      paramJceOutputStream.write(this.sIcon, 4);
+    str = this.sIcon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.sUrl != null) {
-      paramJceOutputStream.write(this.sUrl, 5);
+    str = this.sUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.iExposureCount, 6);
     paramJceOutputStream.write(this.iClickCount, 7);
-    if (this.sAppend != null) {
-      paramJceOutputStream.write(this.sAppend, 8);
+    str = this.sAppend;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.iSubType, 9);
-    if (this.sSubShowTitle != null) {
-      paramJceOutputStream.write(this.sSubShowTitle, 10);
+    str = this.sSubShowTitle;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
     paramJceOutputStream.write(this.iBubbleStyle, 11);
     paramJceOutputStream.write(this.iDuration, 12);
     paramJceOutputStream.write(this.iEndTimeStamp, 13);
-    if (this.symbolUrl != null) {
-      paramJceOutputStream.write(this.symbolUrl, 14);
+    str = this.symbolUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
     paramJceOutputStream.write(this.bubbleCanClose, 15);
     paramJceOutputStream.write(this.iDisplayPosition, 16);
     paramJceOutputStream.write(this.iIsForcedInsertion, 17);
     paramJceOutputStream.write(this.iWordSource, 18);
-    if (this.sItemExtInfo != null) {
-      paramJceOutputStream.write(this.sItemExtInfo, 19);
+    str = this.sItemExtInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 19);
     }
-    if (this.sTextSize != null) {
-      paramJceOutputStream.write(this.sTextSize, 20);
+    str = this.sTextSize;
+    if (str != null) {
+      paramJceOutputStream.write(str, 20);
     }
-    if (this.sTextColor != null) {
-      paramJceOutputStream.write(this.sTextColor, 21);
+    str = this.sTextColor;
+    if (str != null) {
+      paramJceOutputStream.write(str, 21);
     }
-    if (this.sTagUrl != null) {
-      paramJceOutputStream.write(this.sTagUrl, 22);
+    str = this.sTagUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 22);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hotword.SmartBox_HotWordsItem
  * JD-Core Version:    0.7.0.1
  */

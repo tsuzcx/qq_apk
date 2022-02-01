@@ -16,21 +16,29 @@ class MiniSdkLauncher$1$1
   {
     try
     {
-      QLog.d("MiniSdkLauncher", 1, "preLaunchMiniAppCheckinFromLeba onCmdListener" + MiniSdkLauncher.access$000());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("preLaunchMiniAppCheckinFromLeba onCmdListener");
+      ((StringBuilder)localObject).append(MiniSdkLauncher.access$000());
+      QLog.d("MiniSdkLauncher", 1, ((StringBuilder)localObject).toString());
       if (paramBoolean)
       {
         long l = paramJSONObject.optLong("retCode");
-        String str = paramJSONObject.optString("errMsg");
-        QLog.i("MiniSdkLauncher", 1, "preLaunchMiniAppCheckinFromLeba, retCode = " + l + ",errMsg = " + str);
+        localObject = paramJSONObject.optString("errMsg");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("preLaunchMiniAppCheckinFromLeba, retCode = ");
+        localStringBuilder.append(l);
+        localStringBuilder.append(",errMsg = ");
+        localStringBuilder.append((String)localObject);
+        QLog.i("MiniSdkLauncher", 1, localStringBuilder.toString());
         paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
         if (paramJSONObject != null)
         {
           MiniSdkLauncher.access$002(true);
           paramJSONObject = new MiniAppConfig(paramJSONObject);
           AppBrandLaunchManager.g().preLaunchMiniApp(BaseApplicationImpl.getContext(), paramJSONObject);
+          return;
         }
       }
-      return;
     }
     catch (Exception paramJSONObject)
     {
@@ -41,7 +49,7 @@ class MiniSdkLauncher$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.MiniSdkLauncher.1.1
  * JD-Core Version:    0.7.0.1
  */

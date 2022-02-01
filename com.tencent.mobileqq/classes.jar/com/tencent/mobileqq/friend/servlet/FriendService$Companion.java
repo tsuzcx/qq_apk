@@ -6,7 +6,7 @@ import kotlin.Metadata;
 public final class FriendService$Companion {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.servlet.FriendService.Companion
  * JD-Core Version:    0.7.0.1
  */

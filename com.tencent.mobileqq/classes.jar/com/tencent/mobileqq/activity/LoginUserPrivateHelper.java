@@ -20,7 +20,7 @@ import mqq.app.QQPermissionCallback;
 public class LoginUserPrivateHelper
   implements DialogInterface.OnClickListener, QQPermissionCallback
 {
-  public static boolean a;
+  public static boolean a = false;
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_PHONE_STATE" };
   private LoginUserPrivateHelper.LoginPermissionCallback jdField_a_of_type_ComTencentMobileqqActivityLoginUserPrivateHelper$LoginPermissionCallback;
   private AppActivity jdField_a_of_type_MqqAppAppActivity;
@@ -30,19 +30,15 @@ public class LoginUserPrivateHelper
   private boolean e;
   private boolean f;
   
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
-  
   private void a(AppActivity paramAppActivity, int paramInt)
   {
-    String str2 = QQDeviceInfo.getNoLoginUserId();
-    String str1 = "0X800A9DE";
+    String str = QQDeviceInfo.getNoLoginUserId();
     if ((paramAppActivity instanceof RegisterPhoneNumActivity)) {
-      str1 = "0X800A9DF";
+      paramAppActivity = "0X800A9DF";
+    } else {
+      paramAppActivity = "0X800A9DE";
     }
-    ReportController.a(null, "dc00898", "", "", str1, str1, paramInt, 0, "", "", str2, "");
+    ReportController.a(null, "dc00898", "", "", paramAppActivity, paramAppActivity, paramInt, 0, "", "", str, "");
   }
   
   public void a()
@@ -53,18 +49,17 @@ public class LoginUserPrivateHelper
     }
     LoginUserPrivateHelper.2 local2 = new LoginUserPrivateHelper.2(this);
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_MqqAppAppActivity, 230);
-    String str1 = HardCodeUtil.a(2131710178);
-    if (i > 1) {}
-    for (i = 2131693896;; i = 2131693895)
-    {
-      String str2 = HardCodeUtil.a(i);
-      localQQCustomDialog.setTitle(str1);
-      localQQCustomDialog.setMessage(str2);
-      localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131693894), local2);
-      localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131693893), local2);
-      localQQCustomDialog.show();
-      return;
+    String str1 = HardCodeUtil.a(2131710159);
+    int j = 2131693849;
+    if (i > 1) {
+      j = 2131693850;
     }
+    String str2 = HardCodeUtil.a(j);
+    localQQCustomDialog.setTitle(str1);
+    localQQCustomDialog.setMessage(str2);
+    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131693848), local2);
+    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131693847), local2);
+    localQQCustomDialog.show();
   }
   
   public void a(LoginUserPrivateHelper.LoginPermissionCallback paramLoginPermissionCallback)
@@ -78,11 +73,15 @@ public class LoginUserPrivateHelper
     if (Build.VERSION.SDK_INT > 28) {
       i = 1;
     }
-    boolean bool1 = b(paramContext);
+    boolean bool2 = b(paramContext);
+    boolean bool1 = bool2;
     if (i > 1)
     {
-      boolean bool2 = c(paramContext);
-      return (bool1) && (bool2);
+      bool1 = c(paramContext);
+      if ((bool2) && (bool1)) {
+        return true;
+      }
+      bool1 = false;
     }
     return bool1;
   }
@@ -122,82 +121,95 @@ public class LoginUserPrivateHelper
     if (Build.VERSION.SDK_INT > 28) {
       i = 1;
     }
-    if (this.jdField_a_of_type_MqqAppAppActivity.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[0]) == 0) {}
-    for (int j = 1; i == 1; j = 0)
+    int j;
+    if (this.jdField_a_of_type_MqqAppAppActivity.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[0]) == 0) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if (i == 1)
     {
       if (j == 0) {
         this.jdField_a_of_type_MqqAppAppActivity.requestPermissions(this, 0, new String[] { jdField_a_of_type_ArrayOfJavaLangString[0] });
       }
-      return;
     }
-    this.jdField_a_of_type_MqqAppAppActivity.requestPermissions(this, 0, jdField_a_of_type_ArrayOfJavaLangString);
+    else {
+      this.jdField_a_of_type_MqqAppAppActivity.requestPermissions(this, 0, jdField_a_of_type_ArrayOfJavaLangString);
+    }
   }
   
   public boolean b(Context paramContext)
   {
     boolean bool2 = this.e;
     boolean bool1 = bool2;
-    if (!bool2)
-    {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label51;
-      }
-      bool1 = bool2;
-      if (paramContext != null)
+    if (!bool2) {
+      if (Build.VERSION.SDK_INT >= 23)
       {
         bool1 = bool2;
-        if (paramContext.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[0]) == 0)
+        if (paramContext != null)
         {
-          this.e = true;
-          bool1 = this.e;
+          bool1 = bool2;
+          if (paramContext.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[0]) == 0)
+          {
+            this.e = true;
+            return this.e;
+          }
         }
+      }
+      else
+      {
+        this.e = true;
+        bool1 = this.e;
       }
     }
     return bool1;
-    label51:
-    this.e = true;
-    return this.e;
   }
   
   public boolean c(Context paramContext)
   {
     boolean bool2 = this.f;
     boolean bool1 = bool2;
-    if (!bool2)
-    {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label51;
-      }
-      bool1 = bool2;
-      if (paramContext != null)
+    if (!bool2) {
+      if (Build.VERSION.SDK_INT >= 23)
       {
         bool1 = bool2;
-        if (paramContext.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[1]) == 0)
+        if (paramContext != null)
         {
-          this.f = true;
-          bool1 = this.f;
+          bool1 = bool2;
+          if (paramContext.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[1]) == 0)
+          {
+            this.f = true;
+            return this.f;
+          }
         }
+      }
+      else
+      {
+        this.f = true;
+        bool1 = this.f;
       }
     }
     return bool1;
-    label51:
-    this.f = true;
-    return this.f;
   }
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityLoginUserPrivateHelper$LoginPermissionCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginUserPrivateHelper$LoginPermissionCallback.b();
+    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqActivityLoginUserPrivateHelper$LoginPermissionCallback;
+    if (paramArrayOfString != null) {
+      paramArrayOfString.b();
     }
     a(this.jdField_a_of_type_MqqAppAppActivity, 2);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QLog.d("LoginUserPrivateHelper", 1, "grant" + paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityLoginUserPrivateHelper$LoginPermissionCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginUserPrivateHelper$LoginPermissionCallback.a();
+    paramArrayOfString = new StringBuilder();
+    paramArrayOfString.append("grant");
+    paramArrayOfString.append(paramInt);
+    QLog.d("LoginUserPrivateHelper", 1, paramArrayOfString.toString());
+    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqActivityLoginUserPrivateHelper$LoginPermissionCallback;
+    if (paramArrayOfString != null) {
+      paramArrayOfString.a();
     }
     a(this.jdField_a_of_type_MqqAppAppActivity, 1);
   }
@@ -214,7 +226,7 @@ public class LoginUserPrivateHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginUserPrivateHelper
  * JD-Core Version:    0.7.0.1
  */

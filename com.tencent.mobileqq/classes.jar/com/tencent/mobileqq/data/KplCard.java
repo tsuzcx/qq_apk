@@ -43,7 +43,6 @@ public class KplCard
   
   public static KplCard parseProto(oidb_0xa28.RspBody paramRspBody, String paramString)
   {
-    long l2 = 0L;
     KplCard localKplCard = new KplCard();
     localKplCard.uin = paramString;
     paramString = (oidb_0xa28.Profile)paramRspBody.msg_profile_info.get();
@@ -54,41 +53,36 @@ public class KplCard
     localKplCard.commonInfo = paramString.bytes_common_info.get().toStringUtf8();
     localKplCard.bgUrl = paramString.str_bg_url.get();
     oidb_0xa28.Achievement localAchievement = paramRspBody.msg_game_info.msg_achieve_info;
-    long l1;
-    if (localAchievement.uint64_mvp_level.has())
-    {
+    boolean bool = localAchievement.uint64_mvp_level.has();
+    long l2 = 0L;
+    if (bool) {
       l1 = localAchievement.uint64_mvp_level.get();
-      localKplCard.mvpLevel = l1;
-      if (!localAchievement.uint64_super.has()) {
-        break label300;
-      }
-      l1 = localAchievement.uint64_super.get();
-      label168:
-      localKplCard.superLevel = l1;
-      if (!localAchievement.bytes_score.has()) {
-        break label305;
-      }
+    } else {
+      l1 = 0L;
     }
-    label300:
-    label305:
-    for (paramString = localAchievement.bytes_score.get().toStringUtf8();; paramString = "")
-    {
-      localKplCard.score = paramString;
-      l1 = l2;
-      if (localAchievement.uint64_round.has()) {
-        l1 = localAchievement.uint64_round.get();
-      }
-      localKplCard.round = l1;
-      paramString = paramRspBody.msg_game_info.msg_role_list.get();
-      paramRspBody = new ArrayList(paramString.size());
-      paramString = paramString.iterator();
-      while (paramString.hasNext()) {
-        paramRspBody.add(KplRoleInfo.parseProtoResp((oidb_0xa28.RoleInfo)paramString.next()));
-      }
+    localKplCard.mvpLevel = l1;
+    if (localAchievement.uint64_super.has()) {
+      l1 = localAchievement.uint64_super.get();
+    } else {
       l1 = 0L;
-      break;
-      l1 = 0L;
-      break label168;
+    }
+    localKplCard.superLevel = l1;
+    if (localAchievement.bytes_score.has()) {
+      paramString = localAchievement.bytes_score.get().toStringUtf8();
+    } else {
+      paramString = "";
+    }
+    localKplCard.score = paramString;
+    long l1 = l2;
+    if (localAchievement.uint64_round.has()) {
+      l1 = localAchievement.uint64_round.get();
+    }
+    localKplCard.round = l1;
+    paramString = paramRspBody.msg_game_info.msg_role_list.get();
+    paramRspBody = new ArrayList(paramString.size());
+    paramString = paramString.iterator();
+    while (paramString.hasNext()) {
+      paramRspBody.add(KplRoleInfo.parseProtoResp((oidb_0xa28.RoleInfo)paramString.next()));
     }
     localKplCard.roleList = paramRspBody;
     localKplCard.saveListAsString();
@@ -124,19 +118,19 @@ public class KplCard
         }
         i += 1;
       }
-      this.roleList = localJSONException;
+      this.roleList = localArrayList;
+      return;
     }
     catch (JSONException localJSONException)
     {
       QLog.e("KplCard", 1, "transStringToList exception:");
       localJSONException.printStackTrace();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.KplCard
  * JD-Core Version:    0.7.0.1
  */

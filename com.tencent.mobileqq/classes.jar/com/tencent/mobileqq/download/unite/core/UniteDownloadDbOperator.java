@@ -67,31 +67,34 @@ public class UniteDownloadDbOperator
     paramString = ((IUniformDownloadUtil)QRoute.api(IUniformDownloadUtil.class)).getApkName(paramDownloadInfo.l);
     if (!TextUtils.isEmpty(paramString))
     {
-      if (paramDownloadInfo.f) {
+      if (paramDownloadInfo.f)
+      {
         ReportHelperKt.a("0X800B53A", 0, "", paramString);
+        return;
       }
+      if (DownloadManagerInterceptor.a(paramDownloadInfo.m))
+      {
+        UniteDownloadUtil.b(paramString);
+        return;
+      }
+      UniteDownloadUtil.a(paramString);
     }
-    else {
-      return;
-    }
-    if (DownloadManagerInterceptor.a(paramDownloadInfo.m))
-    {
-      UniteDownloadUtil.b(paramString);
-      return;
-    }
-    UniteDownloadUtil.a(paramString);
   }
   
   public boolean a(String paramString, UniteDownloadEntity paramUniteDownloadEntity)
   {
     b(paramString);
+    boolean bool = false;
     QLog.d("[UniteDownload] UniteDownloadDbOperator", 1, new Object[] { "[db] insertOrReplaceEntity: invoked. ", " uniteDownloadEntity: ", paramUniteDownloadEntity });
     if (this.a.isOpen())
     {
       if (paramUniteDownloadEntity.getStatus() == 1000)
       {
         this.a.persistOrReplace(paramUniteDownloadEntity);
-        return paramUniteDownloadEntity.getStatus() == 1001;
+        if (paramUniteDownloadEntity.getStatus() == 1001) {
+          bool = true;
+        }
+        return bool;
       }
       if ((paramUniteDownloadEntity.getStatus() == 1001) || (paramUniteDownloadEntity.getStatus() == 1002)) {
         return this.a.update(paramUniteDownloadEntity);
@@ -102,7 +105,7 @@ public class UniteDownloadDbOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.core.UniteDownloadDbOperator
  * JD-Core Version:    0.7.0.1
  */

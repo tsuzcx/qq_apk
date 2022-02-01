@@ -21,12 +21,18 @@ public class DownloadInstContextMgr$DownloadInstContext
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaLangString = paramUniformDownloader.a();
     this.b = paramInt2;
-    QLog.i("DownloadInstContextMgr", 1, "[UniformDL] new DownloadInst.[ mUDID:[" + this.jdField_a_of_type_Long + "] url:" + this.jdField_a_of_type_JavaLangString + " ]");
+    paramBundle = new StringBuilder();
+    paramBundle.append("[UniformDL] new DownloadInst.[ mUDID:[");
+    paramBundle.append(this.jdField_a_of_type_Long);
+    paramBundle.append("] url:");
+    paramBundle.append(this.jdField_a_of_type_JavaLangString);
+    paramBundle.append(" ]");
+    QLog.i("DownloadInstContextMgr", 1, paramBundle.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.data.DownloadInstContextMgr.DownloadInstContext
  * JD-Core Version:    0.7.0.1
  */

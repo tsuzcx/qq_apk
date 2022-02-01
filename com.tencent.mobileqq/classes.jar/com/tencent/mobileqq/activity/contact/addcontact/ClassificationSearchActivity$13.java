@@ -23,45 +23,46 @@ class ClassificationSearchActivity$13
     Object localObject1;
     if (localObject2 != null)
     {
+      Object localObject3 = null;
       Iterator localIterator = ((List)localObject2).iterator();
-      while (localIterator.hasNext())
+      do
       {
-        localObject1 = (ReadInJoySearchHistoryEntity)localIterator.next();
-        if (((ReadInJoySearchHistoryEntity)localObject1).keyWord.equals(this.a)) {
-          localEntityManager.remove((Entity)localObject1);
+        localObject1 = localObject3;
+        if (!localIterator.hasNext()) {
+          break;
         }
-      }
-    }
-    for (;;)
-    {
+        localObject1 = (ReadInJoySearchHistoryEntity)localIterator.next();
+      } while (!((ReadInJoySearchHistoryEntity)localObject1).keyWord.equals(this.a));
+      localEntityManager.remove((Entity)localObject1);
       if (localObject1 != null) {
         ((List)localObject2).remove(localObject1);
       }
+      localObject1 = localObject2;
       if (((List)localObject2).size() == 20)
       {
         localEntityManager.remove((Entity)((List)localObject2).get(((List)localObject2).size() - 1));
         ((List)localObject2).remove(((List)localObject2).size() - 1);
+        localObject1 = localObject2;
       }
-      for (localObject1 = localObject2;; localObject1 = new ArrayList())
-      {
-        localObject2 = new ReadInJoySearchHistoryEntity();
-        ((ReadInJoySearchHistoryEntity)localObject2).keyWord = this.a;
-        ((ReadInJoySearchHistoryEntity)localObject2).timestamp = System.currentTimeMillis();
-        localEntityManager.persist((Entity)localObject2);
-        ((List)localObject1).add(0, localObject2);
-        localEntityManager.close();
-        localObject2 = this.this$0.a.obtainMessage(1);
-        ((Message)localObject2).obj = localObject1;
-        this.this$0.a.sendMessage((Message)localObject2);
-        return;
-      }
-      localObject1 = null;
     }
+    else
+    {
+      localObject1 = new ArrayList();
+    }
+    localObject2 = new ReadInJoySearchHistoryEntity();
+    ((ReadInJoySearchHistoryEntity)localObject2).keyWord = this.a;
+    ((ReadInJoySearchHistoryEntity)localObject2).timestamp = System.currentTimeMillis();
+    localEntityManager.persist((Entity)localObject2);
+    ((List)localObject1).add(0, localObject2);
+    localEntityManager.close();
+    localObject2 = this.this$0.a.obtainMessage(1);
+    ((Message)localObject2).obj = localObject1;
+    this.this$0.a.sendMessage((Message)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.13
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.livesdk.roomengine.RoomEngine;
 public abstract class LiveUseCase<T, Params>
 {
   private MutableLiveData<T> liveData;
-  public LogInterface mLogger;
+  protected LogInterface mLogger;
   
   public void execute(LifecycleOwner paramLifecycleOwner, Params paramParams, BaseObserver<T> paramBaseObserver)
   {
@@ -23,7 +23,7 @@ public abstract class LiveUseCase<T, Params>
   
   public void onDestroy() {}
   
-  public void post(T paramT)
+  protected void post(T paramT)
   {
     this.liveData.postValue(paramT);
   }
@@ -37,7 +37,7 @@ public abstract class LiveUseCase<T, Params>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.domain.factory.LiveUseCase
  * JD-Core Version:    0.7.0.1
  */

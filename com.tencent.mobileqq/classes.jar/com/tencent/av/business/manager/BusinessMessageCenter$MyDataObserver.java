@@ -25,7 +25,7 @@ class BusinessMessageCenter$MyDataObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.BusinessMessageCenter.MyDataObserver
  * JD-Core Version:    0.7.0.1
  */

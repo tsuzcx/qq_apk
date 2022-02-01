@@ -18,10 +18,10 @@ import com.tencent.mobileqq.activity.aio.intimate.info.LoveTreeInfo;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory.Options;
+import com.tencent.mobileqq.vas.apng.api.ApngOptions;
+import com.tencent.mobileqq.vas.apng.api.IVasApngFactory;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -77,23 +77,23 @@ public final class LoveTreeView
       if (!TextUtils.isEmpty((CharSequence)localLoveTreeInfo.c)) {
         ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(getContext(), localLoveTreeInfo.c, 2064, null);
       }
-      if (!localLoveTreeInfo.jdField_a_of_type_Boolean) {
-        break label80;
+      if (localLoveTreeInfo.jdField_a_of_type_Boolean)
+      {
+        ReportController.b(null, "dc00898", "", "", "0X800B791", "0X800B790", 0, 0, "1", "", "", "");
+        return;
       }
-      ReportController.b(null, "dc00898", "", "", "0X800B791", "0X800B790", 0, 0, "1", "", "", "");
-    }
-    for (;;)
-    {
-      return;
-      label80:
       ReportController.b(null, "dc00898", "", "", "0X800B791", "0X800B790", 0, 0, "2", "", "", "");
     }
   }
   
   private final void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoveTreeView", 2, "updateWaterDropPosition level = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateWaterDropPosition level = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("LoveTreeView", 2, ((StringBuilder)localObject).toString());
     }
     int i;
     if (paramInt == 0)
@@ -101,39 +101,35 @@ public final class LoveTreeView
       paramInt = ViewUtils.a(10.0F);
       i = ViewUtils.a(10.0F);
     }
-    for (;;)
+    else if (paramInt == 1)
     {
-      Object localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("waterLp");
-      }
-      ((RelativeLayout.LayoutParams)localObject).topMargin = paramInt;
-      localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("waterLp");
-      }
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = i;
-      localObject = this.jdField_b_of_type_AndroidWidgetImageView;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("waterView");
-      }
-      RelativeLayout.LayoutParams localLayoutParams = this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-      if (localLayoutParams == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("waterLp");
-      }
-      ((ImageView)localObject).setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
-      return;
-      if (paramInt == 1)
-      {
-        paramInt = ViewUtils.a(-5.0F);
-        i = ViewUtils.a(5.0F);
-      }
-      else
-      {
-        paramInt = ViewUtils.a(-10.0F);
-        i = ViewUtils.a(0.0F);
-      }
+      paramInt = ViewUtils.a(-5.0F);
+      i = ViewUtils.a(5.0F);
     }
+    else
+    {
+      paramInt = ViewUtils.a(-10.0F);
+      i = ViewUtils.a(0.0F);
+    }
+    Object localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("waterLp");
+    }
+    ((RelativeLayout.LayoutParams)localObject).topMargin = paramInt;
+    localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("waterLp");
+    }
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = i;
+    localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("waterView");
+    }
+    RelativeLayout.LayoutParams localLayoutParams = this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams;
+    if (localLayoutParams == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("waterLp");
+    }
+    ((ImageView)localObject).setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
   }
   
   private final void a(Context paramContext)
@@ -153,7 +149,8 @@ public final class LoveTreeView
     }
     paramContext.setId(this.jdField_b_of_type_Int);
     this.c = ViewUtils.a(100.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(this.c, this.c);
+    int i = this.c;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(i, i);
     paramContext = this.jdField_a_of_type_AndroidWidgetImageView;
     if (paramContext == null) {
       Intrinsics.throwUninitializedPropertyAccessException("treeView");
@@ -165,7 +162,8 @@ public final class LoveTreeView
     }
     addView(paramContext, (ViewGroup.LayoutParams)localObject);
     this.d = ViewUtils.a(45.0F);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(this.d, this.d);
+    i = this.d;
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(i, i);
     paramContext = this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams;
     if (paramContext == null) {
       Intrinsics.throwUninitializedPropertyAccessException("waterLp");
@@ -191,67 +189,85 @@ public final class LoveTreeView
   
   private final void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoveTreeView", 2, "updateLoveTreeURL url = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateLoveTreeURL url = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("LoveTreeView", 2, ((StringBuilder)localObject).toString());
     }
-    if (TextUtils.isEmpty((CharSequence)paramString)) {}
-    while (Intrinsics.areEqual(paramString, this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty((CharSequence)paramString)) {
+      return;
+    }
+    if (Intrinsics.areEqual(paramString, this.jdField_a_of_type_JavaLangString)) {
       return;
     }
     this.jdField_a_of_type_JavaLangString = paramString;
     paramString = URLDrawable.URLDrawableOptions.obtain();
-    paramString.mRequestWidth = this.c;
-    paramString.mRequestHeight = this.c;
-    paramString.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    paramString.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+    int i = this.c;
+    paramString.mRequestWidth = i;
+    paramString.mRequestHeight = i;
+    paramString.mLoadingDrawable = URLDrawableHelperConstants.a;
+    paramString.mFailedDrawable = URLDrawableHelperConstants.a;
     paramString = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, paramString);
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (localImageView == null) {
+    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("treeView");
     }
-    localImageView.setImageDrawable((Drawable)paramString);
+    ((ImageView)localObject).setImageDrawable((Drawable)paramString);
   }
   
   private final void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoveTreeView", 2, "showWaterDrop show = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showWaterDrop show = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("LoveTreeView", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBoolean)
     {
-      localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
-      if (localImageView == null) {
+      localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+      if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("waterView");
       }
-      localImageView.setVisibility(0);
+      ((ImageView)localObject).setVisibility(0);
       return;
     }
-    ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
-    if (localImageView == null) {
+    Object localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+    if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("waterView");
     }
-    localImageView.setVisibility(8);
+    ((ImageView)localObject).setVisibility(8);
   }
   
   private final void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoveTreeView", 2, "updateWaterDropURL url = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateWaterDropURL url = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("LoveTreeView", 2, ((StringBuilder)localObject).toString());
     }
-    if (TextUtils.isEmpty((CharSequence)paramString)) {}
-    while (Intrinsics.areEqual(paramString, this.jdField_b_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty((CharSequence)paramString)) {
+      return;
+    }
+    if (Intrinsics.areEqual(paramString, this.jdField_b_of_type_JavaLangString)) {
       return;
     }
     this.jdField_b_of_type_JavaLangString = paramString;
-    paramString = new VasApngFactory.Options();
+    paramString = new ApngOptions();
     paramString.a((Drawable)new ColorDrawable(7));
     paramString.b(this.d);
     paramString.c(this.d);
-    Object localObject = this.jdField_b_of_type_JavaLangString;
-    if (localObject == null) {
+    Object localObject = (IVasApngFactory)QRoute.api(IVasApngFactory.class);
+    String str = this.jdField_b_of_type_JavaLangString;
+    if (str == null) {
       Intrinsics.throwNpe();
     }
-    paramString = VasApngFactory.a((String)localObject, paramString, null, 4, null);
+    paramString = ((IVasApngFactory)localObject).getApngURLDrawable(str, paramString);
     localObject = this.jdField_b_of_type_AndroidWidgetImageView;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("waterView");
@@ -282,7 +298,7 @@ public final class LoveTreeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.LoveTreeView
  * JD-Core Version:    0.7.0.1
  */

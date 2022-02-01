@@ -11,7 +11,6 @@ import com.tencent.mobileqq.nearby.now.model.LocationInfo;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
 import com.tencent.mobileqq.statistics.ReportTask;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ShortVideoCommentsView$1
   implements View.OnClickListener
@@ -20,47 +19,42 @@ class ShortVideoCommentsView$1
   
   public void onClick(View paramView)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext(), QQBrowserActivity.class);
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lng;
-    String str4 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lat;
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.name;
-    String str1;
-    if (TextUtils.isEmpty(str2))
-    {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.getCity();
-      str1 = String.format("https://3gimg.qq.com/lightmap/v1/marker/?key=%s&referer=qqnearby&marker=coord:%s,%s;title:%s;addr:%s", new Object[] { "25TBZ-W4HCP-2BKDM-LBYH3-L4QRT-G3BDP", str4, str3, str1, str2 });
-      ((Intent)localObject).putExtra("url", str1);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext().startActivity((Intent)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoComments", 2, "when click location label ; the url is :" + str1);
-      }
-      localObject = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a).a("dc00899").b("grp_lbs").c("data_card").d("clk_lbs").e(String.valueOf(ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long));
-      if (!TextUtils.equals(String.valueOf(ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a.getCurrentAccountUin())) {
-        break label292;
-      }
-      str1 = "1";
-      label228:
-      if (ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView) == null) {
-        break label298;
-      }
+    Object localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext(), QQBrowserActivity.class);
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lng;
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lat;
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.name;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.getCity();
+    } else {
+      paramView = (View)localObject1;
     }
-    label292:
-    label298:
-    for (str2 = ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_JavaLangString;; str2 = "0")
+    paramView = String.format("https://3gimg.qq.com/lightmap/v1/marker/?key=%s&referer=qqnearby&marker=coord:%s,%s;title:%s;addr:%s", new Object[] { "25TBZ-W4HCP-2BKDM-LBYH3-L4QRT-G3BDP", str2, str1, paramView, localObject1 });
+    ((Intent)localObject2).putExtra("url", paramView);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext().startActivity((Intent)localObject2);
+    if (QLog.isColorLevel())
     {
-      ((ReportTask)localObject).a(new String[] { str1, "", "", str2 }).a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      str1 = str2;
-      break;
-      str1 = "2";
-      break label228;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("when click location label ; the url is :");
+      ((StringBuilder)localObject1).append(paramView);
+      QLog.i("ShortVideoComments", 2, ((StringBuilder)localObject1).toString());
     }
+    localObject2 = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_lbs").e(String.valueOf(ShortVideoCommentsView.access$000(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long));
+    if (TextUtils.equals(String.valueOf(ShortVideoCommentsView.access$000(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.app.getCurrentAccountUin())) {
+      paramView = "1";
+    } else {
+      paramView = "2";
+    }
+    if (ShortVideoCommentsView.access$000(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView) != null) {
+      localObject1 = ShortVideoCommentsView.access$000(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_JavaLangString;
+    } else {
+      localObject1 = "0";
+    }
+    ((ReportTask)localObject2).a(new String[] { paramView, "", "", localObject1 }).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.1
  * JD-Core Version:    0.7.0.1
  */

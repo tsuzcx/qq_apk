@@ -15,48 +15,43 @@ class QfileBaseCloudFileTabView$11
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
+    boolean bool2 = localObject instanceof QfileCloudFileBaseExpandableListAdapter.CloudItemHolder;
+    boolean bool1 = false;
     int i;
-    if ((localObject instanceof QfileCloudFileBaseExpandableListAdapter.CloudItemHolder))
+    if (bool2)
     {
       localObject = (QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)paramView.getTag();
       i = ((QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)localObject).c;
       localObject = (WeiYunFileInfo)((QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)localObject).a;
     }
-    for (;;)
+    else if ((localObject instanceof ImageHolder))
     {
-      QfileBaseCloudFileTabView localQfileBaseCloudFileTabView;
-      if (localObject != null)
-      {
-        if ((paramView.getId() == 2131366919) && (QfileBaseCloudFileTabView.c(this.a))) {
-          ReportController.b(QfileBaseCloudFileTabView.d(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-        }
-        localQfileBaseCloudFileTabView = this.a;
-        if (paramView.getId() != 2131366919) {
-          break label155;
-        }
-      }
-      label155:
-      for (boolean bool = true;; bool = false)
-      {
-        localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (!(localObject instanceof ImageHolder)) {
-          break label160;
-        }
-        localObject = (WeiYunFileInfo)((ImageHolder)paramView.getTag()).a;
-        i = -1;
-        break;
-      }
-      label160:
-      i = 0;
-      localObject = null;
+      localObject = (ImageHolder)paramView.getTag();
+      i = -1;
+      localObject = (WeiYunFileInfo)((ImageHolder)localObject).a;
     }
+    else
+    {
+      localObject = null;
+      i = 0;
+    }
+    if (localObject != null)
+    {
+      if ((paramView.getId() == 2131366781) && (QfileBaseCloudFileTabView.c(this.a))) {
+        ReportController.b(QfileBaseCloudFileTabView.d(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+      }
+      QfileBaseCloudFileTabView localQfileBaseCloudFileTabView = this.a;
+      if (paramView.getId() == 2131366781) {
+        bool1 = true;
+      }
+      localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.11
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.text.format.Formatter;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.common.util.Util;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
@@ -69,39 +71,40 @@ public class PubAccountWebViewHttpBridge
   
   private String a(String paramString)
   {
-    String str1 = "text/html";
-    String str2 = Uri.parse(paramString).getPath();
-    if (str2.contains(".css")) {
-      paramString = "text/css";
+    paramString = Uri.parse(paramString).getPath();
+    if (paramString.contains(".css")) {
+      return "text/css";
     }
-    do
-    {
-      return paramString;
-      if (str2.contains(".js")) {
-        return "application/x-javascript";
-      }
-      if ((str2.contains(".jpg")) || (str2.contains(".gif")) || (str2.contains(".png"))) {
-        break;
-      }
-      paramString = str1;
-    } while (!str2.contains(".jpeg"));
+    if (paramString.contains(".js")) {
+      return "application/x-javascript";
+    }
+    if ((!paramString.contains(".jpg")) && (!paramString.contains(".gif")) && (!paramString.contains(".png")) && (!paramString.contains(".jpeg"))) {
+      return "text/html";
+    }
     return "image/*";
   }
   
   private HttpURLConnection a(Intent paramIntent)
   {
-    localObject2 = null;
-    try
+    int j = 1;
+    for (;;)
     {
-      long l = System.currentTimeMillis();
-      localObject1 = "";
-      if (this.jdField_a_of_type_Boolean)
+      try
       {
-        paramIntent = a();
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountWebViewHttpBridge", 2, "get cookie cost: " + (System.currentTimeMillis() - l));
+        long l = System.currentTimeMillis();
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {
+          break label348;
         }
-        localObject1 = paramIntent;
+        paramIntent = a();
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("get cookie cost: ");
+          ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+          QLog.d("PubAccountWebViewHttpBridge", 2, ((StringBuilder)localObject1).toString());
+        }
+        Object localObject1 = paramIntent;
         if (TextUtils.isEmpty(paramIntent))
         {
           if (QLog.isColorLevel()) {
@@ -110,70 +113,63 @@ public class PubAccountWebViewHttpBridge
           this.jdField_c_of_type_JavaLangString = "Cookie_Not_Valid";
           localObject1 = paramIntent;
         }
-      }
-      paramIntent = (HttpURLConnection)new URL(this.jdField_a_of_type_JavaLangString).openConnection();
-      if (paramIntent != null) {}
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        Object localObject1;
-        int k;
-        int i;
-        paramIntent = localObject2;
-        if (QLog.isColorLevel()) {
-          QLog.e("PubAccountWebViewHttpBridge", 2, "http async get handleEvent exception !!!!", localException1);
-        }
-        if (paramIntent != null) {
-          paramIntent.disconnect();
-        }
-        int j = 1;
-        Intent localIntent = paramIntent;
-      }
-    }
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountWebViewHttpBridge", 2, "HttpURLConnection is null!");
-      }
-      this.jdField_c_of_type_JavaLangString = "URLConnection_NULL";
-      return null;
-    }
-    catch (Exception localException2)
-    {
-      break label297;
-      return localException2;
-    }
-    paramIntent.setConnectTimeout(15000);
-    paramIntent.setReadTimeout(15000);
-    paramIntent.setInstanceFollowRedirects(false);
-    paramIntent.setRequestProperty("Cookie", (String)localObject1);
-    paramIntent.setRequestProperty("Accept-Encoding", "gzip");
-    paramIntent.setRequestProperty("User-Agent", SwiftWebViewUtils.a(SwiftWebViewUtils.b("httpAsync 1.0"), "", false));
-    k = paramIntent.getResponseCode();
-    this.jdField_c_of_type_JavaLangString = String.valueOf(k);
-    if (k != 200) {}
-    for (i = 1;; i = 0)
-    {
-      localObject1 = paramIntent;
-      j = i;
-      if (k == 200)
-      {
-        this.jdField_b_of_type_JavaLangString = paramIntent.getHeaderField("Content-Length");
-        localObject1 = paramIntent;
-        j = i;
-        if (QLog.isColorLevel())
+        paramIntent = (HttpURLConnection)new URL(this.jdField_a_of_type_JavaLangString).openConnection();
+        if (paramIntent == null) {}
+        try
         {
-          QLog.d("PubAccountWebViewHttpBridge", 2, "length is " + this.jdField_b_of_type_JavaLangString);
-          j = i;
-          localObject1 = paramIntent;
+          if (QLog.isColorLevel()) {
+            QLog.d("PubAccountWebViewHttpBridge", 2, "HttpURLConnection is null!");
+          }
+          this.jdField_c_of_type_JavaLangString = "URLConnection_NULL";
+          return null;
         }
+        catch (Exception localException1) {}
+        paramIntent.setConnectTimeout(15000);
+        paramIntent.setReadTimeout(15000);
+        i = 0;
+        paramIntent.setInstanceFollowRedirects(false);
+        paramIntent.setRequestProperty("Cookie", (String)localObject1);
+        paramIntent.setRequestProperty("Accept-Encoding", "gzip");
+        paramIntent.setRequestProperty("User-Agent", SwiftWebViewUtils.a(SwiftWebViewUtils.c("httpAsync 1.0"), "", false));
+        int k = paramIntent.getResponseCode();
+        this.jdField_c_of_type_JavaLangString = String.valueOf(k);
+        if (k != 200) {
+          i = 1;
+        }
+        if (k == 200)
+        {
+          this.jdField_b_of_type_JavaLangString = paramIntent.getHeaderField("Content-Length");
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("length is ");
+            ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+            QLog.d("PubAccountWebViewHttpBridge", 2, ((StringBuilder)localObject1).toString());
+          }
+        }
+        localObject1 = paramIntent;
       }
-      if (j == 0) {
-        break;
+      catch (Exception localException2)
+      {
+        paramIntent = null;
       }
-      return null;
+      if (QLog.isColorLevel()) {
+        QLog.e("PubAccountWebViewHttpBridge", 2, "http async get handleEvent exception !!!!", localException2);
+      }
+      int i = j;
+      Object localObject2 = paramIntent;
+      if (paramIntent != null)
+      {
+        paramIntent.disconnect();
+        localObject2 = paramIntent;
+        i = j;
+      }
+      if (i != 0) {
+        return null;
+      }
+      return localObject2;
+      label348:
+      localObject2 = "";
     }
   }
   
@@ -193,15 +189,14 @@ public class PubAccountWebViewHttpBridge
   
   private void c()
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(1, 2)) {}
-    long l;
-    HttpURLConnection localHttpURLConnection;
-    do
-    {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(1, 2)) {
       return;
-      l = System.currentTimeMillis();
-      localHttpURLConnection = a(null);
-    } while (localHttpURLConnection == null);
+    }
+    long l = System.currentTimeMillis();
+    HttpURLConnection localHttpURLConnection = a(null);
+    if (localHttpURLConnection == null) {
+      return;
+    }
     a(l, localHttpURLConnection, true);
   }
   
@@ -213,83 +208,110 @@ public class PubAccountWebViewHttpBridge
     int i = NetUtil.a(null);
     JSONObject localJSONObject = new JSONObject();
     long l = System.currentTimeMillis();
-    for (;;)
+    Object localObject4;
+    try
     {
-      try
-      {
-        Uri localUri = Uri.parse(this.jdField_a_of_type_JavaLangString);
-        ??? = Uri.parse(???);
-        Object localObject1 = localUri.getHost() + localUri.getPath();
-        String str = ???.getHost() + ???.getPath();
-        if (!localUri.getHost().equalsIgnoreCase(???.getHost())) {
-          return null;
-        }
-        ??? = (String)localObject1;
-        if (!((String)localObject1).endsWith("/")) {
-          ??? = (String)localObject1 + "/";
-        }
-        localObject1 = str;
-        if (!str.endsWith("/")) {
-          localObject1 = str + "/";
-        }
-        if (!???.equalsIgnoreCase((String)localObject1)) {
-          return null;
-        }
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 2) {
-          continue;
-        }
+      Uri localUri = Uri.parse(this.jdField_a_of_type_JavaLangString);
+      ??? = Uri.parse(???);
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(localUri.getHost());
+      ((StringBuilder)localObject1).append(localUri.getPath());
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append(???.getHost());
+      ((StringBuilder)localObject4).append(???.getPath());
+      localObject4 = ((StringBuilder)localObject4).toString();
+      if (!localUri.getHost().equalsIgnoreCase(???.getHost())) {
+        return null;
       }
-      catch (Exception ???)
+      ??? = (String)localObject1;
+      if (!((String)localObject1).endsWith("/"))
       {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("PubAccountWebViewHttpBridge", 2, " some thing goes wrong！ WebResourceResponse is null!", ???);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("PubAccountWebViewHttpBridge", 2, "state not connecting: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
-        continue;
+        ??? = new StringBuilder();
+        ???.append((String)localObject1);
+        ???.append("/");
+        ??? = ???.toString();
       }
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
+      localObject1 = localObject4;
+      if (!((String)localObject4).endsWith("/"))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append((String)localObject4);
+        ((StringBuilder)localObject1).append("/");
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      if (!???.equalsIgnoreCase((String)localObject1)) {
+        return null;
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2)
       {
         try
         {
-          if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2) && (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
+          synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
           {
-            this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
-            if (QLog.isColorLevel()) {
-              QLog.d("PubAccountWebViewHttpBridge", 2, "now wait for response!");
+            if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2) && (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
+            {
+              this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+              if (QLog.isColorLevel()) {
+                QLog.d("PubAccountWebViewHttpBridge", 2, "now wait for response!");
+              }
+              this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.wait(30000L);
             }
-            this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.wait(30000L);
           }
         }
         catch (InterruptedException localInterruptedException)
         {
           QLog.e("PubAccountWebViewHttpBridge", 1, "wait fror response failed", localInterruptedException);
-          continue;
         }
-        if (this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesWebResourceResponse == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("PubAccountWebViewHttpBridge", 2, "asyncMode: 1, some thing goes wrong！ WebResourceResponse is null!");
-          }
-          this.jdField_a_of_type_JavaLangString = "";
-          return this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesWebResourceResponse;
-        }
+        throw localInterruptedException;
       }
+      else if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ???.append("state not connecting: ");
+        ???.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
+        QLog.d("PubAccountWebViewHttpBridge", 2, ???.toString());
+      }
+    }
+    catch (Exception ???)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PubAccountWebViewHttpBridge", 2, " some thing goes wrong！ WebResourceResponse is null!", ???);
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesWebResourceResponse == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("PubAccountWebViewHttpBridge", 2, "asyncMode: 1, some thing goes wrong！ WebResourceResponse is null!");
+      }
+    }
+    else
+    {
       if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(3, 4))
       {
         if (QLog.isColorLevel()) {
           QLog.w("PubAccountWebViewHttpBridge", 2, "can not use response !");
         }
         this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesWebResourceResponse = null;
-        this.jdField_b_of_type_Long = (System.currentTimeMillis() - l);
-        this.jdField_c_of_type_Long = (System.currentTimeMillis() - this.jdField_e_of_type_Long);
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountWebViewHttpBridge", 2, "return reponse for url, wait for : " + (System.currentTimeMillis() - l) + ", from click: " + this.jdField_c_of_type_Long + " , cache size=" + this.jdField_d_of_type_Long + "  ,cururl=" + this.jdField_a_of_type_JavaLangString);
-        }
+      }
+      else
+      {
+        this.jdField_c_of_type_Boolean = true;
+      }
+      this.jdField_b_of_type_Long = (System.currentTimeMillis() - l);
+      this.jdField_c_of_type_Long = (System.currentTimeMillis() - this.jdField_e_of_type_Long);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ???.append("return reponse for url, wait for : ");
+        ???.append(System.currentTimeMillis() - l);
+        ???.append(", from click: ");
+        ???.append(this.jdField_c_of_type_Long);
+        ???.append(" , cache size=");
+        ???.append(this.jdField_d_of_type_Long);
+        ???.append("  ,cururl=");
+        ???.append(this.jdField_a_of_type_JavaLangString);
+        QLog.d("PubAccountWebViewHttpBridge", 2, ???.toString());
       }
       try
       {
@@ -298,18 +320,23 @@ public class PubAccountWebViewHttpBridge
         localJSONObject.put("loadedSize", this.jdField_d_of_type_Long);
         localJSONObject.put("platform", "android");
         localJSONObject.put("position", paramInt);
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007775", "0X8007775", 0, 0, this.jdField_c_of_type_Boolean + "", "" + i, localJSONObject.toString(), this.jdField_b_of_type_JavaLangString);
-        continue;
-        this.jdField_c_of_type_Boolean = true;
       }
       catch (JSONException ???)
       {
-        for (;;)
-        {
-          ???.printStackTrace();
-        }
+        ???.printStackTrace();
       }
+      ??? = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(this.jdField_c_of_type_Boolean);
+      ((StringBuilder)localObject3).append("");
+      localObject3 = ((StringBuilder)localObject3).toString();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("");
+      ((StringBuilder)localObject4).append(i);
+      ???.publicAccountReportClickEvent(null, "", "0X8007775", "0X8007775", 0, 0, (String)localObject3, ((StringBuilder)localObject4).toString(), localJSONObject.toString(), this.jdField_b_of_type_JavaLangString);
     }
+    this.jdField_a_of_type_JavaLangString = "";
+    return this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesWebResourceResponse;
   }
   
   public String a()
@@ -325,195 +352,162 @@ public class PubAccountWebViewHttpBridge
         QLog.w("PubAccountWebViewHttpBridge", 2, "async http get cost too much time, now destroy!");
       }
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
-    }
-    for (;;)
-    {
       synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
       {
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.notify();
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_JavaLangThread = null;
-        this.jdField_a_of_type_JavaLangString = "";
-        return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
     }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangThread = null;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
   void a(long paramLong, HttpURLConnection paramHttpURLConnection, boolean paramBoolean)
   {
-    Object localObject1;
-    try
-    {
-      this.jdField_d_of_type_Long = paramHttpURLConnection.getContentLength();
-      if (QLog.isColorLevel())
-      {
-        localObject1 = Formatter.formatFileSize(BaseApplicationImpl.getApplication().getApplicationContext(), this.jdField_d_of_type_Long);
-        QLog.d("PubAccountWebViewHttpBridge", 2, "data encoding: " + paramHttpURLConnection.getContentEncoding() + " now read content: " + (String)localObject1 + " reportWebsiteLength: " + this.jdField_d_of_type_Long);
-      }
-      localObject1 = paramHttpURLConnection.getInputStream();
-      if (localObject1 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountWebViewHttpBridge", 2, "inputstream or contentType goes wrong!");
-        }
-        this.jdField_c_of_type_JavaLangString = "InputStream_Error";
-        throw new RuntimeException("InputStream is null!");
-      }
-    }
-    catch (Exception paramHttpURLConnection)
-    {
-      QLog.e("PubAccountWebViewHttpBridge", 1, "swiftHttp read data exception !!!! ", paramHttpURLConnection);
-    }
-    label169:
-    long l;
-    do
-    {
-      return;
-      if (!"gzip".equalsIgnoreCase(paramHttpURLConnection.getContentEncoding())) {
-        break;
-      }
-      localObject1 = new BufferedInputStream(new GZIPInputStream((InputStream)localObject1));
-      l = System.currentTimeMillis();
-    } while (!paramBoolean);
-    Object localObject2 = null;
-    byte[] arrayOfByte = new byte[10240];
-    int i = 0;
-    int j = 0;
     for (;;)
     {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      try
       {
-        i = ((BufferedInputStream)localObject1).read(arrayOfByte);
-        if (i != -1) {}
-      }
-      else
-      {
-        this.jdField_d_of_type_Long = j;
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountWebViewHttpBridge", 2, "now read data: " + j + ", now is ShouldIntercept: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-        }
-        localObject3 = localObject1;
-        if (i == -1)
+        this.jdField_d_of_type_Long = paramHttpURLConnection.getContentLength();
+        Object localObject2;
+        if (QLog.isColorLevel())
         {
-          localObject3 = localObject1;
-          if (j > 0)
+          localObject1 = Formatter.formatFileSize(BaseApplicationImpl.getApplication().getApplicationContext(), this.jdField_d_of_type_Long);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("data encoding: ");
+          ((StringBuilder)localObject2).append(paramHttpURLConnection.getContentEncoding());
+          ((StringBuilder)localObject2).append(" now read content: ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(" reportWebsiteLength: ");
+          ((StringBuilder)localObject2).append(this.jdField_d_of_type_Long);
+          QLog.d("PubAccountWebViewHttpBridge", 2, ((StringBuilder)localObject2).toString());
+        }
+        Object localObject1 = paramHttpURLConnection.getInputStream();
+        if (localObject1 == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PubAccountWebViewHttpBridge", 2, "inputstream or contentType goes wrong!");
+          }
+          this.jdField_c_of_type_JavaLangString = "InputStream_Error";
+          throw new RuntimeException("InputStream is null!");
+        }
+        if ("gzip".equalsIgnoreCase(paramHttpURLConnection.getContentEncoding())) {
+          localObject1 = new BufferedInputStream(new GZIPInputStream((InputStream)localObject1));
+        } else {
+          localObject1 = new BufferedInputStream((InputStream)localObject1);
+        }
+        long l = System.currentTimeMillis();
+        if (paramBoolean)
+        {
+          Object localObject4 = new byte[10240];
+          localObject2 = null;
+          int j = 0;
+          int i = 0;
+          if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
           {
-            if (QLog.isColorLevel()) {
-              QLog.i("PubAccountWebViewHttpBridge", 2, "now read all data!");
+            i = ((BufferedInputStream)localObject1).read((byte[])localObject4);
+            if (i != -1)
+            {
+              j += i;
+              localObject3 = localObject2;
+              if (localObject2 == null) {
+                localObject3 = new ByteArrayOutputStream();
+              }
+              ((ByteArrayOutputStream)localObject3).write((byte[])localObject4, 0, i);
+              Thread.sleep(20L);
+              localObject2 = localObject3;
+              continue;
             }
-            localObject3 = null;
-            paramHttpURLConnection.disconnect();
-            this.jdField_c_of_type_JavaLangString = "Read_All_Data";
+          }
+          this.jdField_d_of_type_Long = j;
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("now read data: ");
+            ((StringBuilder)localObject3).append(j);
+            ((StringBuilder)localObject3).append(", now is ShouldIntercept: ");
+            ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+            QLog.d("PubAccountWebViewHttpBridge", 2, ((StringBuilder)localObject3).toString());
+          }
+          if ((i != -1) || (j <= 0)) {
+            break label635;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("PubAccountWebViewHttpBridge", 2, "now read all data!");
+          }
+          paramHttpURLConnection.disconnect();
+          this.jdField_c_of_type_JavaLangString = "Read_All_Data";
+          localObject1 = null;
+          if (localObject2 == null) {
+            break label638;
+          }
+          localObject3 = new BufferedInputStream(new ByteArrayInputStream(((ByteArrayOutputStream)localObject2).toByteArray()));
+          if (QLog.isColorLevel())
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("read byte stream cost : ");
+            ((StringBuilder)localObject4).append(System.currentTimeMillis() - l);
+            ((StringBuilder)localObject4).append(", total cost: ");
+            ((StringBuilder)localObject4).append(System.currentTimeMillis() - paramLong);
+            QLog.d("PubAccountWebViewHttpBridge", 2, ((StringBuilder)localObject4).toString());
+          }
+          this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesWebResourceResponse = new WebResourceResponse(a(this.jdField_a_of_type_JavaLangString), "utf-8", new PubAccountWebViewHttpBridge.BridgeStream(this, (BufferedInputStream)localObject3, (BufferedInputStream)localObject1, (ByteArrayOutputStream)localObject2, paramHttpURLConnection));
+          if (QLog.isColorLevel())
+          {
+            paramHttpURLConnection = new StringBuilder();
+            paramHttpURLConnection.append("swiftHttp get cost ");
+            paramHttpURLConnection.append(System.currentTimeMillis() - paramLong);
+            QLog.d("PubAccountWebViewHttpBridge", 2, paramHttpURLConnection.toString());
+            paramHttpURLConnection = new StringBuilder();
+            paramHttpURLConnection.append("Web_qqbrowser_http_async_get, cost ");
+            paramHttpURLConnection.append(System.currentTimeMillis() - paramLong);
+            QLog.d("QQBrowser_report", 2, paramHttpURLConnection.toString());
+            return;
           }
         }
-        localObject1 = null;
-        if (localObject2 != null) {
-          localObject1 = new BufferedInputStream(new ByteArrayInputStream(((ByteArrayOutputStream)localObject2).toByteArray()));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountWebViewHttpBridge", 2, "read byte stream cost : " + (System.currentTimeMillis() - l) + ", total cost: " + (System.currentTimeMillis() - paramLong));
-        }
-        this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesWebResourceResponse = new WebResourceResponse(a(this.jdField_a_of_type_JavaLangString), "utf-8", new PubAccountWebViewHttpBridge.BridgeStream(this, (BufferedInputStream)localObject1, (BufferedInputStream)localObject3, (ByteArrayOutputStream)localObject2, paramHttpURLConnection));
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("PubAccountWebViewHttpBridge", 2, "swiftHttp get cost " + (System.currentTimeMillis() - paramLong));
-        QLog.d("QQBrowser_report", 2, "Web_qqbrowser_http_async_get, cost " + (System.currentTimeMillis() - paramLong));
-        return;
-        localObject1 = new BufferedInputStream((InputStream)localObject1);
-        break label169;
       }
-      j += i;
-      Object localObject3 = localObject2;
-      if (localObject2 == null) {
-        localObject3 = new ByteArrayOutputStream();
+      catch (Exception paramHttpURLConnection)
+      {
+        QLog.e("PubAccountWebViewHttpBridge", 1, "swiftHttp read data exception !!!! ", paramHttpURLConnection);
       }
-      ((ByteArrayOutputStream)localObject3).write(arrayOfByte, 0, i);
-      Thread.sleep(20L);
-      localObject2 = localObject3;
+      return;
+      label635:
+      continue;
+      label638:
+      Object localObject3 = null;
     }
   }
   
-  /* Error */
   public void a(String paramString, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 153	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: istore_3
-    //   7: iload_3
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 53	com/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   18: iconst_0
-    //   19: iconst_1
-    //   20: invokevirtual 282	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
-    //   23: pop
-    //   24: aload_0
-    //   25: invokestatic 120	java/lang/System:currentTimeMillis	()J
-    //   28: putfield 73	com/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge:jdField_e_of_type_Long	J
-    //   31: aload_0
-    //   32: aload_1
-    //   33: putfield 27	com/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   36: aload_0
-    //   37: iload_2
-    //   38: putfield 23	com/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge:jdField_a_of_type_Boolean	Z
-    //   41: aload_0
-    //   42: new 484	com/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge$1
-    //   45: dup
-    //   46: aload_0
-    //   47: invokespecial 486	com/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge$1:<init>	(Lcom/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge;)V
-    //   50: ldc 130
-    //   52: iconst_5
-    //   53: invokestatic 492	com/tencent/mobileqq/app/ThreadManager:newFreeThread	(Ljava/lang/Runnable;Ljava/lang/String;I)Ljava/lang/Thread;
-    //   56: putfield 368	com/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
-    //   59: invokestatic 128	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   62: ifeq +36 -> 98
-    //   65: ldc 130
-    //   67: iconst_2
-    //   68: new 132	java/lang/StringBuilder
-    //   71: dup
-    //   72: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   75: ldc_w 494
-    //   78: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: aload_1
-    //   82: iconst_0
-    //   83: anewarray 91	java/lang/String
-    //   86: invokestatic 499	com/tencent/biz/common/util/Util:b	(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
-    //   89: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 432	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   98: aload_0
-    //   99: getfield 368	com/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
-    //   102: invokevirtual 502	java/lang/Thread:start	()V
-    //   105: goto -94 -> 11
-    //   108: astore_1
-    //   109: aload_0
-    //   110: monitorexit
-    //   111: aload_1
-    //   112: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	113	0	this	PubAccountWebViewHttpBridge
-    //   0	113	1	paramString	String
-    //   0	113	2	paramBoolean	boolean
-    //   6	2	3	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	108	finally
-    //   14	98	108	finally
-    //   98	105	108	finally
+    try
+    {
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (bool) {
+        return;
+      }
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+      this.jdField_e_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(new PubAccountWebViewHttpBridge.1(this), "PubAccountWebViewHttpBridge", 5);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("now prepare async get ");
+        localStringBuilder.append(Util.b(paramString, new String[0]));
+        QLog.i("PubAccountWebViewHttpBridge", 2, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_JavaLangThread.start();
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountWebViewHttpBridge
  * JD-Core Version:    0.7.0.1
  */

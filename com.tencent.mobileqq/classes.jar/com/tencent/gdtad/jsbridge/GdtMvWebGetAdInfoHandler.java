@@ -1,7 +1,7 @@
 package com.tencent.gdtad.jsbridge;
 
 import android.app.Activity;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -10,43 +10,48 @@ class GdtMvWebGetAdInfoHandler
 {
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    if (paramGdtAdWebPlugin != null) {}
-    for (localActivity = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (localActivity == null); localActivity = null)
-    {
-      QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "webPlugin == null || activity == null");
-      return true;
+    Activity localActivity;
+    if (paramGdtAdWebPlugin != null) {
+      localActivity = paramGdtAdWebPlugin.a();
+    } else {
+      localActivity = null;
     }
-    localObject = "";
-    try
-    {
-      String str = new JSONObject(paramVarArgs[0]).optString("traceId");
-      localObject = str;
-    }
-    catch (Throwable localThrowable)
+    if ((paramGdtAdWebPlugin != null) && (localActivity != null))
     {
       try
       {
-        paramGdtAdWebPlugin.callJs(paramString, new String[] { localObject });
-        AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "getAdInfo", paramGdtAdWebPlugin.a());
-        return true;
-        localThrowable = localThrowable;
+        String str1 = new JSONObject(paramVarArgs[0]).optString("traceId");
+      }
+      catch (Throwable localThrowable)
+      {
         QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "json", localThrowable);
+        str2 = "";
+      }
+      String str2 = String.format("{\"adInfo\":%s}", new Object[] { a(str2) });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("args=");
+      localStringBuilder.append(paramVarArgs[0]);
+      localStringBuilder.append(",result=");
+      localStringBuilder.append(str2);
+      QLog.i("WebGdtMvWebGetAdInfoHandler", 1, localStringBuilder.toString());
+      try
+      {
+        paramGdtAdWebPlugin.callJs(paramString, new String[] { str2 });
       }
       catch (Throwable paramString)
       {
-        for (;;)
-        {
-          QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "callJs", paramString);
-        }
+        QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "callJs", paramString);
       }
+      AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "getAdInfo", paramGdtAdWebPlugin.a());
+      return true;
     }
-    localObject = String.format("{\"adInfo\":%s}", new Object[] { a((String)localObject) });
-    QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "args=" + paramVarArgs[0] + ",result=" + (String)localObject);
+    QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "webPlugin == null || activity == null");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtMvWebGetAdInfoHandler
  * JD-Core Version:    0.7.0.1
  */

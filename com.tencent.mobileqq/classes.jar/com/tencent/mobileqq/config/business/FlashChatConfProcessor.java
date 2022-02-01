@@ -9,6 +9,7 @@ import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class FlashChatConfProcessor
   extends IQConfigProcessor<FlashChatConfBean>
@@ -22,31 +23,32 @@ public class FlashChatConfProcessor
   @Nullable
   public FlashChatConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfQConfItem != null)
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      localObject1 = localObject2;
-      if (paramArrayOfQConfItem.length > 0)
+      FlashChatConfBean localFlashChatConfBean = FlashChatConfBean.a(paramArrayOfQConfItem[0].a);
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      paramArrayOfQConfItem = localFlashChatConfBean;
+      if ((localAppRuntime instanceof QQAppInterface))
       {
-        localObject1 = localObject2;
-        if (paramArrayOfQConfItem[0] != null)
-        {
-          localObject1 = FlashChatConfBean.a(paramArrayOfQConfItem[0].a);
-          paramArrayOfQConfItem = BaseApplicationImpl.getApplication().getRuntime();
-          if ((paramArrayOfQConfItem instanceof QQAppInterface)) {
-            ((FlashChatManager)((QQAppInterface)paramArrayOfQConfItem).getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).b(((FlashChatConfBean)localObject1).a);
-          }
-        }
+        ((FlashChatManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).b(localFlashChatConfBean.a);
+        return localFlashChatConfBean;
       }
     }
-    return localObject1;
+    else
+    {
+      paramArrayOfQConfItem = null;
+    }
+    return paramArrayOfQConfItem;
   }
   
   public void a(FlashChatConfBean paramFlashChatConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlashChatConfProcessor", 2, "onUpdate " + paramFlashChatConfBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramFlashChatConfBean.toString());
+      QLog.d("FlashChatConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -79,7 +81,7 @@ public class FlashChatConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.FlashChatConfProcessor
  * JD-Core Version:    0.7.0.1
  */

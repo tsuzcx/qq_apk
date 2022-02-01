@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/no4" android:paddingTop="13.5dip" android:paddingBottom="13.5dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/oku" android:background="@drawable/e8o" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_centerInParent="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="#7fffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ocj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:lines="1" android:drawableLeft="@drawable/e6w" android:drawablePadding="2.0dip" android:layout_toLeftOf="@id/n_a" android:layout_alignParentLeft="true" />
-    <ImageView android:id="@id/n_a" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/igd" android:scaleType="centerInside" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:layout_gravity="center_vertical" android:id="@id/okw" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginRight="7.0dip" />
+    <TextView android:textSize="13.0sp" android:textColor="#fffadf38" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/okv" android:layout_width="wrap_content" android:layout_height="24.0dip" android:singleLine="true" />
+</LinearLayout>

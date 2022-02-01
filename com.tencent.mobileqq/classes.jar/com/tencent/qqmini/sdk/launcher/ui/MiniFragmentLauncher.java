@@ -13,7 +13,11 @@ public class MiniFragmentLauncher
   
   private static Class findClass(String paramString)
   {
-    return AppLoaderFactory.g().findClass("com.tencent.qqmini.sdk.ui." + paramString);
+    AppLoaderFactory localAppLoaderFactory = AppLoaderFactory.g();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("com.tencent.qqmini.sdk.ui.");
+    localStringBuilder.append(paramString);
+    return localAppLoaderFactory.findClass(localStringBuilder.toString());
   }
   
   public static void start(Context paramContext, Intent paramIntent, MiniFragmentLauncher.FragmentType paramFragmentType)
@@ -62,7 +66,7 @@ public class MiniFragmentLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ui.MiniFragmentLauncher
  * JD-Core Version:    0.7.0.1
  */

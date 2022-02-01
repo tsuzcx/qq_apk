@@ -33,21 +33,24 @@ public final class AcsGetMsgReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.head != null) {
-      paramJceOutputStream.write(this.head, 0);
+    Object localObject = this.head;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.uin, 1);
-    if (this.msg_id != null) {
-      paramJceOutputStream.write(this.msg_id, 2);
+    localObject = this.msg_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.domain != null) {
-      paramJceOutputStream.write(this.domain, 3);
+    localObject = this.domain;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsGetMsgReq
  * JD-Core Version:    0.7.0.1
  */

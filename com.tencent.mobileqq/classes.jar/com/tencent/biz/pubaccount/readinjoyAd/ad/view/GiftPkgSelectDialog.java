@@ -11,8 +11,8 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
-import com.tencent.biz.pubaccount.util.PublicDrawableUtil;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUIService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.util.ArrayList;
@@ -32,20 +32,20 @@ public class GiftPkgSelectDialog
   
   public GiftPkgSelectDialog(Context paramContext, int paramInt)
   {
-    super(paramContext, 2131755346);
+    super(paramContext, 2131755540);
     requestWindowFeature(1);
     getWindow().setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(17170445)));
-    setContentView(2131560328);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370881));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370891));
+    setContentView(2131560215);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370515));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370525));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog$SelectAdatpter = new GiftPkgSelectDialog.SelectAdatpter(this);
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog$SelectAdatpter);
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new GiftPkgSelectDialog.1(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370891));
-    this.b = ((LinearLayout)findViewById(2131370894));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370525));
+    this.b = ((LinearLayout)findViewById(2131370528));
     this.b.setOnClickListener(this);
-    PublicDrawableUtil.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, AIOUtils.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
-    PublicDrawableUtil.a(this.jdField_a_of_type_AndroidWidgetListView, AIOUtils.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
+    ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).setGradientDrawable(this.jdField_a_of_type_AndroidWidgetLinearLayout, ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
+    ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).setGradientDrawable(this.jdField_a_of_type_AndroidWidgetListView, ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
     setCanceledOnTouchOutside(true);
   }
   
@@ -55,17 +55,12 @@ public class GiftPkgSelectDialog
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog$GiftSelectListener = paramGiftSelectListener;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog$SelectAdatpter.notifyDataSetChanged();
     int i = 0;
-    for (;;)
+    while (i < paramList.size())
     {
-      if (i < paramList.size())
+      paramGiftSelectListener = (GiftServiceBean)paramList.get(i);
+      if ((!TextUtils.isEmpty(paramGiftSelectListener.t)) && (paramGiftSelectListener.t.equals(paramString)))
       {
-        paramGiftSelectListener = (GiftServiceBean)paramList.get(i);
-        if ((!TextUtils.isEmpty(paramGiftSelectListener.t)) && (paramGiftSelectListener.t.equals(paramString))) {
-          this.jdField_a_of_type_Int = i;
-        }
-      }
-      else
-      {
+        this.jdField_a_of_type_Int = i;
         return;
       }
       i += 1;
@@ -74,20 +69,15 @@ public class GiftPkgSelectDialog
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (paramView.getId() == 2131370528) {
       dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPkgSelectDialog
  * JD-Core Version:    0.7.0.1
  */

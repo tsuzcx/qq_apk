@@ -60,101 +60,116 @@ public class MsgTabStoryNodeConfigManager
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
     this.d = ((QQStoryManager)paramQQAppInterface.getManager(QQManagerFactory.QQSTORY_MANAGER)).f();
     b(false);
-    paramQQAppInterface = StoryConfigManager.e();
+    paramQQAppInterface = StoryConfigManager.d();
     if (!TextUtils.isEmpty(paramQQAppInterface))
     {
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig = a(paramQQAppInterface);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.jdField_b_of_type_Boolean = StoryConfigManager.f();
+      paramQQAppInterface = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig;
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.jdField_b_of_type_Boolean = StoryConfigManager.e();
       }
     }
   }
   
   private MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig a(String paramString)
   {
-    boolean bool = true;
     if (TextUtils.isEmpty(paramString))
     {
       SLog.c("Q.qqstory.config.takevideo", "parseTakeVideoConfig is null");
       return null;
     }
-    try
+    for (;;)
     {
-      MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig localMsgTabTakeVideoNodeConfig = new MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig();
-      JSONObject localJSONObject = new JSONObject(paramString);
-      localMsgTabTakeVideoNodeConfig.jdField_a_of_type_Long = localJSONObject.optLong("startTime", -1L);
-      localMsgTabTakeVideoNodeConfig.jdField_b_of_type_Long = localJSONObject.optLong("endTime", -1L);
-      localMsgTabTakeVideoNodeConfig.jdField_a_of_type_JavaLangString = localJSONObject.optString("imageUrl", "");
-      localMsgTabTakeVideoNodeConfig.jdField_b_of_type_JavaLangString = localJSONObject.optString("desc", "");
-      localMsgTabTakeVideoNodeConfig.c = localJSONObject.optString("jumpUrl", "");
-      localMsgTabTakeVideoNodeConfig.d = localJSONObject.optString("contentId", "");
-      if (localJSONObject.optInt("oneTimeUse", 0) == 1) {}
-      for (;;)
+      try
       {
-        localMsgTabTakeVideoNodeConfig.jdField_a_of_type_Boolean = bool;
-        return localMsgTabTakeVideoNodeConfig;
-        bool = false;
+        MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig localMsgTabTakeVideoNodeConfig = new MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig();
+        localObject = new JSONObject(paramString);
+        localMsgTabTakeVideoNodeConfig.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("startTime", -1L);
+        localMsgTabTakeVideoNodeConfig.jdField_b_of_type_Long = ((JSONObject)localObject).optLong("endTime", -1L);
+        localMsgTabTakeVideoNodeConfig.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("imageUrl", "");
+        localMsgTabTakeVideoNodeConfig.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("desc", "");
+        localMsgTabTakeVideoNodeConfig.c = ((JSONObject)localObject).optString("jumpUrl", "");
+        localMsgTabTakeVideoNodeConfig.d = ((JSONObject)localObject).optString("contentId", "");
+        int i = ((JSONObject)localObject).optInt("oneTimeUse", 0);
+        bool = true;
+        if (i == 1)
+        {
+          localMsgTabTakeVideoNodeConfig.jdField_a_of_type_Boolean = bool;
+          return localMsgTabTakeVideoNodeConfig;
+        }
       }
-      return null;
-    }
-    catch (JSONException localJSONException)
-    {
-      SLog.c("Q.qqstory.config.takevideo", "parseTakeVideoConfig config error config=" + paramString, localJSONException);
+      catch (JSONException localJSONException)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseTakeVideoConfig config error config=");
+        ((StringBuilder)localObject).append(paramString);
+        SLog.c("Q.qqstory.config.takevideo", ((StringBuilder)localObject).toString(), localJSONException);
+        return null;
+      }
+      boolean bool = false;
     }
   }
   
   private void b()
   {
-    if ((!this.jdField_b_of_type_Boolean) || (!this.c) || (this.jdField_a_of_type_Byte != 0) || (this.h) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return;
-    }
-    SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request!");
-    this.h = true;
-    Object localObject = ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).getSosoInfo();
-    if ((localObject != null) && (((SosoLbsInfo)localObject).mLocation != null)) {}
-    long l1;
-    long l2;
-    for (localObject = new MsgTabCheckActiveRequest(((SosoLbsInfo)localObject).mLocation.cityCode);; localObject = new MsgTabCheckActiveRequest(null))
+    if ((this.jdField_b_of_type_Boolean) && (this.c) && (this.jdField_a_of_type_Byte == 0) && (!this.h))
     {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+        return;
+      }
+      SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request!");
+      this.h = true;
+      Object localObject = ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).getSosoInfo();
+      if ((localObject != null) && (((SosoLbsInfo)localObject).mLocation != null)) {
+        localObject = new MsgTabCheckActiveRequest(((SosoLbsInfo)localObject).mLocation.cityCode);
+      } else {
+        localObject = new MsgTabCheckActiveRequest(null);
+      }
       QQStoryManager localQQStoryManager = (QQStoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQSTORY_MANAGER);
       MsgTabStoryNodeConfigManager.1 local1 = new MsgTabStoryNodeConfigManager.1(this, (QQStoryHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER), localQQStoryManager);
-      l1 = localQQStoryManager.a();
-      l2 = NetConnInfoCenter.getServerTime();
-      if (l2 <= l1) {
-        break;
+      long l1 = localQQStoryManager.a();
+      long l2 = NetConnInfoCenter.getServerTime();
+      if (l2 > l1)
+      {
+        CmdTaskManger.a().a((NetworkRequest)localObject, local1);
+        SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request sent");
+        return;
       }
-      CmdTaskManger.a().a((NetworkRequest)localObject, local1);
-      SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request sent");
-      return;
+      SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request not send, check next time! %d, %d", Long.valueOf(l2), Long.valueOf(l1));
     }
-    SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request not send, check next time! %d, %d", Long.valueOf(l2), Long.valueOf(l1));
   }
   
   private void b(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "update cfg svr=" + this.jdField_b_of_type_Boolean + ", dpc=" + this.c + ", user=" + this.d);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("update cfg svr=");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(", dpc=");
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(", user=");
+      ((StringBuilder)localObject).append(this.d);
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, ((StringBuilder)localObject).toString());
     }
     boolean bool2 = this.jdField_a_of_type_Boolean;
     boolean bool1;
-    if ((this.jdField_b_of_type_Boolean) && (this.c) && (this.d))
-    {
+    if ((this.jdField_b_of_type_Boolean) && (this.c) && (this.d)) {
       bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_Int = 52;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label113;
-      }
-    }
-    label113:
-    while ((!paramBoolean) || (bool2 == this.jdField_a_of_type_Boolean))
-    {
-      return;
+    } else {
       bool1 = false;
-      break;
     }
-    ((TroopRedTouchHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GET_RED_POINT_EX_HANDLER)).notifyUI(105, true, null);
-    ((QQStoryHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1020, true, Boolean.valueOf(this.jdField_a_of_type_Boolean));
+    this.jdField_a_of_type_Boolean = bool1;
+    this.jdField_a_of_type_Int = 52;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject == null) {
+      return;
+    }
+    if ((paramBoolean) && (bool2 != this.jdField_a_of_type_Boolean))
+    {
+      ((TroopRedTouchHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.GET_RED_POINT_EX_HANDLER)).notifyUI(105, true, null);
+      ((QQStoryHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1020, true, Boolean.valueOf(this.jdField_a_of_type_Boolean));
+    }
   }
   
   private void c()
@@ -173,19 +188,17 @@ public class MsgTabStoryNodeConfigManager
   
   private void e()
   {
-    QQStoryHandler localQQStoryHandler;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject != null)
     {
-      localQQStoryHandler = (QQStoryHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER);
-      if ((!this.jdField_b_of_type_Boolean) || (!this.c)) {
-        break label50;
+      localObject = (QQStoryHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER);
+      boolean bool;
+      if ((this.jdField_b_of_type_Boolean) && (this.c)) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label50:
-    for (boolean bool = true;; bool = false)
-    {
-      localQQStoryHandler.notifyUI(1022, true, Boolean.valueOf(bool));
-      return;
+      ((QQStoryHandler)localObject).notifyUI(1022, true, Boolean.valueOf(bool));
     }
   }
   
@@ -198,7 +211,7 @@ public class MsgTabStoryNodeConfigManager
   {
     this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig = null;
     StoryConfigManager.e(false);
-    StoryConfigManager.f("");
+    StoryConfigManager.c("");
     SLog.c("Q.qqstory.config.takevideo", "configManager.clearMsgTabTakeVideoConfig");
     MsgTabStoryNodeConfigManager.UpdateTakeVideoConfigEvent localUpdateTakeVideoConfigEvent = new MsgTabStoryNodeConfigManager.UpdateTakeVideoConfigEvent();
     StoryDispatcher.a().dispatch(localUpdateTakeVideoConfigEvent);
@@ -206,62 +219,78 @@ public class MsgTabStoryNodeConfigManager
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject == null) {
       return;
     }
-    QQStoryManager localQQStoryManager = (QQStoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQSTORY_MANAGER);
+    localObject = (QQStoryManager)((QQAppInterface)localObject).getManager(QQManagerFactory.QQSTORY_MANAGER);
     this.d = paramBoolean;
-    localQQStoryManager.i(paramBoolean);
+    ((QQStoryManager)localObject).i(paramBoolean);
     b(true);
   }
   
   public boolean a()
   {
     String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.StoryCfg.name(), "1");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "getMsgTabDPC:" + str);
-    }
-    if (!TextUtils.isEmpty(str))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      Integer[] arrayOfInteger = new Integer[1];
-      arrayOfInteger[0] = Integer.valueOf(0);
-      if (((IDPCApi)QRoute.api(IDPCApi.class)).parseComplexParamsByStringToIntParser(str, arrayOfInteger) >= 0) {
-        return arrayOfInteger[0].intValue() == 1;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getMsgTabDPC:");
+      ((StringBuilder)localObject).append(str);
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, ((StringBuilder)localObject).toString());
+    }
+    boolean bool3 = TextUtils.isEmpty(str);
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      localObject = new Integer[1];
+      localObject[0] = Integer.valueOf(0);
+      bool1 = bool2;
+      if (((IDPCApi)QRoute.api(IDPCApi.class)).parseComplexParamsByStringToIntParser(str, (Integer[])localObject) >= 0)
+      {
+        if (localObject[0].intValue() == 1) {
+          return true;
+        }
+        bool1 = false;
       }
     }
-    return true;
+    return bool1;
   }
   
   public boolean a(String paramString)
   {
-    MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig localMsgTabTakeVideoNodeConfig = a(paramString);
-    if (localMsgTabTakeVideoNodeConfig != null)
+    MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig localMsgTabTakeVideoNodeConfig1 = a(paramString);
+    if (localMsgTabTakeVideoNodeConfig1 != null)
     {
-      if (TextUtils.isEmpty(localMsgTabTakeVideoNodeConfig.d)) {
+      if (TextUtils.isEmpty(localMsgTabTakeVideoNodeConfig1.d))
+      {
         SLog.e("Q.qqstory.config.takevideo", "configManager.handleMsgTabTakeVideoConfig contentId is null", new Object[] { paramString });
+        return false;
       }
+      MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig localMsgTabTakeVideoNodeConfig2 = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig;
+      if ((localMsgTabTakeVideoNodeConfig2 != null) && (TextUtils.equals(localMsgTabTakeVideoNodeConfig2.d, localMsgTabTakeVideoNodeConfig1.d)))
+      {
+        SLog.d("Q.qqstory.config.takevideo", "configManager.handleMsgTabTakeVideoConfig same config ignore, config=%s", new Object[] { paramString });
+        return false;
+      }
+      SLog.b("Q.qqstory.config.takevideo", "configManager.handleMsgTabTakeVideoConfig old config=%s, new config=%s", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig, paramString);
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig = localMsgTabTakeVideoNodeConfig1;
+      StoryConfigManager.e(false);
+      StoryConfigManager.c(paramString);
+      paramString = new MsgTabStoryNodeConfigManager.UpdateTakeVideoConfigEvent();
+      StoryDispatcher.a().dispatch(paramString);
+      return true;
     }
-    else {
-      return false;
-    }
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig != null) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.d, localMsgTabTakeVideoNodeConfig.d)))
-    {
-      SLog.d("Q.qqstory.config.takevideo", "configManager.handleMsgTabTakeVideoConfig same config ignore, config=%s", new Object[] { paramString });
-      return false;
-    }
-    SLog.b("Q.qqstory.config.takevideo", "configManager.handleMsgTabTakeVideoConfig old config=%s, new config=%s", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig, paramString);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig = localMsgTabTakeVideoNodeConfig;
-    StoryConfigManager.e(false);
-    StoryConfigManager.f(paramString);
-    paramString = new MsgTabStoryNodeConfigManager.UpdateTakeVideoConfigEvent();
-    StoryDispatcher.a().dispatch(paramString);
-    return true;
+    return false;
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
     }
     ((IDPCApi)QRoute.api(IDPCApi.class)).removeObserver(this.jdField_a_of_type_ComTencentMobileqqDpcDPCObserver);
     this.jdField_a_of_type_ComTencentMobileqqDpcDPCObserver = null;
@@ -269,7 +298,7 @@ public class MsgTabStoryNodeConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager
  * JD-Core Version:    0.7.0.1
  */

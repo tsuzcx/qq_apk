@@ -28,19 +28,25 @@ class AutoGifDrawable$GifDownloadListener
   
   public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
   {
-    if ((paramDrawable != null) && ((paramDrawable instanceof NewGifDrawable))) {}
-    try
-    {
-      this.this$0.realDrawable = ((NewGifDrawable)paramDrawable);
-      this.this$0.realDrawable.setCallback(AutoGifDrawable.access$200(this.this$0));
-      if (this.this$0.gifDownloadCallBackListener != null) {
-        this.this$0.gifDownloadCallBackListener.onImageLoaded(paramString, this.this$0.realDrawable, paramOptions);
+    if ((paramDrawable != null) && ((paramDrawable instanceof NewGifDrawable))) {
+      try
+      {
+        this.this$0.realDrawable = ((NewGifDrawable)paramDrawable);
+        this.this$0.realDrawable.setCallback(AutoGifDrawable.access$200(this.this$0));
+        if (this.this$0.gifDownloadCallBackListener != null)
+        {
+          this.this$0.gifDownloadCallBackListener.onImageLoaded(paramString, this.this$0.realDrawable, paramOptions);
+          return;
+        }
       }
-      return;
-    }
-    catch (NullPointerException paramString)
-    {
-      ImageManagerLog.e(AutoGifDrawable.access$100(), "catch an exception:" + Log.getStackTraceString(paramString));
+      catch (NullPointerException paramString)
+      {
+        paramDrawable = AutoGifDrawable.access$100();
+        paramOptions = new StringBuilder();
+        paramOptions.append("catch an exception:");
+        paramOptions.append(Log.getStackTraceString(paramString));
+        ImageManagerLog.e(paramDrawable, paramOptions.toString());
+      }
     }
   }
   
@@ -53,7 +59,7 @@ class AutoGifDrawable$GifDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.AutoGifDrawable.GifDownloadListener
  * JD-Core Version:    0.7.0.1
  */

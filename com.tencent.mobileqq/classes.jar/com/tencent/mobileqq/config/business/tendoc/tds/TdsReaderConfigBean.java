@@ -15,52 +15,46 @@ final class TdsReaderConfigBean
   
   public static TdsReaderConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    Object localObject1;
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0))
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error, confFiles is no-valid.");
-      localObject1 = null;
-      return localObject1;
-    }
-    TdsReaderConfigBean localTdsReaderConfigBean = new TdsReaderConfigBean();
-    int j = paramArrayOfQConfItem.length;
-    int i = 0;
-    for (;;)
-    {
-      localObject1 = localTdsReaderConfigBean;
-      if (i >= j) {
-        break;
-      }
-      localObject1 = paramArrayOfQConfItem[i];
-      try
+      TdsReaderConfigBean localTdsReaderConfigBean = new TdsReaderConfigBean();
+      int j = paramArrayOfQConfItem.length;
+      int i = 0;
+      while (i < j)
       {
-        localObject1 = new JSONObject(((QConfItem)localObject1).a);
-        if (localObject1 != null)
+        Object localObject = paramArrayOfQConfItem[i];
+        JSONObject localJSONObject;
+        try
         {
-          if (((JSONObject)localObject1).has("has_gray")) {
-            localTdsReaderConfigBean.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("has_gray");
+          localObject = new JSONObject(((QConfItem)localObject).a);
+        }
+        catch (JSONException localJSONException)
+        {
+          QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error", localJSONException);
+          localJSONObject = null;
+        }
+        if (localJSONObject != null)
+        {
+          if (localJSONObject.has("has_gray")) {
+            localTdsReaderConfigBean.jdField_a_of_type_Boolean = localJSONObject.optBoolean("has_gray");
           }
-          a((JSONObject)localObject1, localTdsReaderConfigBean.jdField_a_of_type_JavaUtilMap);
+          a(localJSONObject, localTdsReaderConfigBean.jdField_a_of_type_JavaUtilMap);
         }
         i += 1;
       }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error", localJSONException);
-          Object localObject2 = null;
-        }
-      }
+      return localTdsReaderConfigBean;
     }
+    QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error, confFiles is no-valid.");
+    return null;
   }
   
   public static void a(JSONObject paramJSONObject, Map<String, String> paramMap)
   {
-    if ((paramJSONObject == null) || (paramMap == null)) {}
-    do
+    if (paramJSONObject != null)
     {
-      return;
+      if (paramMap == null) {
+        return;
+      }
       if (paramJSONObject.has("facade_plugin_name")) {
         paramMap.put("facade_plugin_name", paramJSONObject.optString("facade_plugin_name"));
       }
@@ -94,38 +88,37 @@ final class TdsReaderConfigBean
       if (paramJSONObject.has("slides_plugin_info")) {
         paramMap.put("slides_plugin_info", paramJSONObject.optString("slides_plugin_info"));
       }
-    } while (!paramJSONObject.has("slides_res_info"));
-    paramMap.put("slides_res_info", paramJSONObject.optString("slides_res_info"));
+      if (paramJSONObject.has("slides_res_info")) {
+        paramMap.put("slides_res_info", paramJSONObject.optString("slides_res_info"));
+      }
+    }
   }
   
   public static void a(boolean paramBoolean, TdsReaderConfigBean paramTdsReaderConfigBean)
   {
-    if (paramTdsReaderConfigBean == null) {
-      QLog.w("TdsReaderView_TdsReaderConfigBean", 1, "source error, configBean is null.");
-    }
-    int i;
-    do
+    if (paramTdsReaderConfigBean == null)
     {
+      QLog.w("TdsReaderView_TdsReaderConfigBean", 1, "source error, configBean is null.");
       return;
-      if (!paramTdsReaderConfigBean.jdField_a_of_type_JavaUtilMap.isEmpty()) {}
-      for (i = 1;; i = 0)
-      {
-        if (i != 0) {
-          TdsReaderGlobal.a(paramBoolean, paramTdsReaderConfigBean.jdField_a_of_type_JavaUtilMap);
-        }
-        if (!paramTdsReaderConfigBean.jdField_a_of_type_Boolean) {
-          break;
-        }
-        TdsReaderGrayConfigProcessor.a();
-        return;
-      }
-    } while (i == 0);
+    }
+    boolean bool = paramTdsReaderConfigBean.jdField_a_of_type_JavaUtilMap.isEmpty() ^ true;
+    if (bool) {
+      TdsReaderGlobal.a(paramBoolean, paramTdsReaderConfigBean.jdField_a_of_type_JavaUtilMap);
+    }
+    if (paramTdsReaderConfigBean.jdField_a_of_type_Boolean)
+    {
+      TdsReaderGrayConfigProcessor.a();
+      return;
+    }
+    if (!bool) {
+      return;
+    }
     TdsReaderGlobal.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.tds.TdsReaderConfigBean
  * JD-Core Version:    0.7.0.1
  */

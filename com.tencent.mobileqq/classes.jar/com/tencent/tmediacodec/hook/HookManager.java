@@ -15,8 +15,14 @@ public final class HookManager
   public static void hookSurfaceCallback(@NonNull String paramString, @NonNull SurfaceCallback paramSurfaceCallback)
   {
     mHoldCallbackMap.put(paramString, paramSurfaceCallback);
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("HookManager", "after hookSurfaceCallback size:" + mHoldCallbackMap.size() + " mHoldCallbackMap:" + mHoldCallbackMap);
+    if (LogUtils.isLogEnable())
+    {
+      paramString = new StringBuilder();
+      paramString.append("after hookSurfaceCallback size:");
+      paramString.append(mHoldCallbackMap.size());
+      paramString.append(" mHoldCallbackMap:");
+      paramString.append(mHoldCallbackMap);
+      LogUtils.d("HookManager", paramString.toString());
     }
     if (!isSurfaceMethodHooked)
     {
@@ -29,14 +35,21 @@ public final class HookManager
   {
     try
     {
-      LogUtils.w("HookManager", "realReleaseSurfaceTexture surfaceTexture:" + paramSurfaceTexture);
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("realReleaseSurfaceTexture surfaceTexture:");
+      localStringBuilder1.append(paramSurfaceTexture);
+      LogUtils.w("HookManager", localStringBuilder1.toString());
       unHookSurfaceCallback(paramSurfaceTexture.toString());
       paramSurfaceTexture.release();
       return;
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.w("HookManager", "realReleaseSurfaceTexture surfaceTexture:" + paramSurfaceTexture + " ignoreThrowable", localThrowable);
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("realReleaseSurfaceTexture surfaceTexture:");
+      localStringBuilder2.append(paramSurfaceTexture);
+      localStringBuilder2.append(" ignoreThrowable");
+      LogUtils.w("HookManager", localStringBuilder2.toString(), localThrowable);
     }
   }
   
@@ -47,7 +60,7 @@ public final class HookManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.hook.HookManager
  * JD-Core Version:    0.7.0.1
  */

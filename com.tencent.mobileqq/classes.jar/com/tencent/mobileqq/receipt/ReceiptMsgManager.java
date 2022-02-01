@@ -18,6 +18,7 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.ChatActivityFacade.SendMsgParams;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -28,12 +29,13 @@ import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
 import com.tencent.mobileqq.multimsg.MultiMsgManager;
 import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.mobileqq.pic.DownCallBack;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.pic.api.ICompressOperator;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsShareMsg.Builder;
@@ -68,13 +70,13 @@ public class ReceiptMsgManager
   
   private Bitmap a(Resources paramResources, int paramInt)
   {
-    int i = AIOUtils.a(10.0F, paramResources);
-    int j = AIOUtils.a(8.0F, paramResources);
-    int k = AIOUtils.a(175.0F, paramResources);
-    int m = AIOUtils.a(240.0F, paramResources);
-    int n = AIOUtils.a(108.0F, paramResources);
+    int i = AIOUtils.b(10.0F, paramResources);
+    int j = AIOUtils.b(8.0F, paramResources);
+    int k = AIOUtils.b(175.0F, paramResources);
+    int m = AIOUtils.b(240.0F, paramResources);
+    int n = AIOUtils.b(108.0F, paramResources);
     Bitmap localBitmap1 = c(paramResources, paramInt);
-    Bitmap localBitmap2 = BitmapFactory.decodeResource(paramResources, 2130838357);
+    Bitmap localBitmap2 = BitmapFactory.decodeResource(paramResources, 2130838186);
     Canvas localCanvas = new Canvas();
     Bitmap localBitmap3 = Bitmap.createBitmap(m, n, Bitmap.Config.ARGB_8888);
     localBitmap3.setDensity(paramResources.getDisplayMetrics().densityDpi);
@@ -89,20 +91,21 @@ public class ReceiptMsgManager
   
   public static ReceiptMsgManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager == null) {
-        jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager = new ReceiptMsgManager();
+    if (jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager == null) {
+          jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager = new ReceiptMsgManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager;
   }
   
   private AbsShareMsg a(int paramInt)
   {
-    AbsShareMsg localAbsShareMsg = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(107).a(BaseApplicationImpl.getContext().getString(2131698492)).a(3).a("viewReceiptMessage", "", null, null, null).a();
+    AbsShareMsg localAbsShareMsg = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(107).a(BaseApplicationImpl.getContext().getString(2131698558)).a(3).a("viewReceiptMessage", "", null, null, null).a();
     StructMsgItemLayout29 localStructMsgItemLayout29 = new StructMsgItemLayout29();
     StructMsgItemType localStructMsgItemType = new StructMsgItemType();
     localStructMsgItemType.o = paramInt;
@@ -118,44 +121,52 @@ public class ReceiptMsgManager
   
   private String a(String paramString)
   {
+    localObject1 = "";
     long l = System.currentTimeMillis();
     try
     {
-      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
-      paramString = str1;
+      try
+      {
+        localObject2 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+        paramString = (String)localObject2;
+      }
+      catch (OutOfMemoryError paramString)
+      {
+        paramString.printStackTrace();
+        paramString = (String)localObject1;
+      }
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        paramString = new File(paramString);
-        if (!paramString.exists()) {
-          break;
-        }
-        try
-        {
-          String str2 = MD5FileUtil.a(paramString);
-          paramString = str2;
-          if (str2 == null) {
-            paramString = "";
-          }
-        }
-        catch (IOException paramString)
-        {
-          paramString = "";
-        }
-      }
+      Object localObject2;
+      label34:
+      break label34;
     }
-    catch (OutOfMemoryError paramString)
+    localObject2 = new File(paramString);
+    paramString = (String)localObject1;
+    if (((File)localObject2).exists()) {}
+    try
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
+      paramString = MD5FileUtil.a((File)localObject2);
+      if (paramString == null) {
         paramString = "";
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMsgManager", 2, new Object[] { "calcMD5", "md5:" + paramString + ",cost:" + (System.currentTimeMillis() - l) });
+    catch (IOException paramString)
+    {
+      for (;;)
+      {
+        paramString = (String)localObject1;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("md5:");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(",cost:");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+      QLog.d("ReceiptMsgManager", 2, new Object[] { "calcMD5", ((StringBuilder)localObject1).toString() });
     }
     return paramString;
   }
@@ -170,11 +181,11 @@ public class ReceiptMsgManager
       localObject = new Bundle();
       ((Bundle)localObject).putInt("ReceiptMsgManager.EXTRA_KEY_PHOTO_SIZE_SPEC", paramInt);
       a(paramQQAppInterface, paramSessionInfo, paramString, (Bundle)localObject);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.w("ReceiptMsgManager", 2, "create pic msg error");
+    if (QLog.isColorLevel()) {
+      QLog.w("ReceiptMsgManager", 2, "create pic msg error");
+    }
   }
   
   private void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ArrayList<ChatMessage> paramArrayList, @Nonnull Bundle paramBundle)
@@ -211,20 +222,20 @@ public class ReceiptMsgManager
   
   private void a(MessageForPic paramMessageForPic, int paramInt)
   {
-    CompressInfo localCompressInfo = new CompressInfo(paramMessageForPic.path, CompressOperator.a(paramInt), 1009);
-    CompressOperator.a(localCompressInfo);
+    CompressInfo localCompressInfo = new CompressInfo(paramMessageForPic.path, ((ICompressOperator)QRoute.api(ICompressOperator.class)).transformQuality(paramInt), 1009);
+    ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(localCompressInfo);
     paramMessageForPic.path = localCompressInfo.e;
     paramMessageForPic.size = FileUtil.a(paramMessageForPic.path);
   }
   
   private Bitmap b(Resources paramResources, int paramInt)
   {
-    int i = AIOUtils.a(10.0F, paramResources);
-    int j = AIOUtils.a(8.0F, paramResources);
-    int k = AIOUtils.a(245.0F, paramResources);
-    int m = AIOUtils.a(108.0F, paramResources);
+    int i = AIOUtils.b(10.0F, paramResources);
+    int j = AIOUtils.b(8.0F, paramResources);
+    int k = AIOUtils.b(245.0F, paramResources);
+    int m = AIOUtils.b(108.0F, paramResources);
     Bitmap localBitmap1 = c(paramResources, paramInt);
-    Bitmap localBitmap2 = BitmapFactory.decodeResource(paramResources, 2130838356);
+    Bitmap localBitmap2 = BitmapFactory.decodeResource(paramResources, 2130838185);
     Canvas localCanvas = new Canvas();
     Bitmap localBitmap3 = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
     localBitmap3.setDensity(paramResources.getDisplayMetrics().densityDpi);
@@ -245,31 +256,35 @@ public class ReceiptMsgManager
   private void b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
     String str = paramMessageRecord.senderuin;
-    switch (paramMessageRecord.istroop)
+    int i = paramMessageRecord.istroop;
+    if (i != 0)
     {
+      if (i != 1)
+      {
+        if (i == 3000) {
+          str = ContactUtils.a(paramQQAppInterface, paramMessageRecord.frienduin, paramMessageRecord.senderuin);
+        }
+      }
+      else {
+        str = ContactUtils.b(paramQQAppInterface, paramMessageRecord.frienduin, paramMessageRecord.senderuin);
+      }
     }
-    for (;;)
-    {
-      d(paramQQAppInterface, paramMessageRecord, str);
-      return;
-      str = ContactUtils.c(paramQQAppInterface, paramMessageRecord.senderuin, false);
-      continue;
-      str = ContactUtils.g(paramQQAppInterface, paramMessageRecord.frienduin, paramMessageRecord.senderuin);
-      continue;
-      str = ContactUtils.a(paramQQAppInterface, paramMessageRecord.frienduin, paramMessageRecord.senderuin);
+    else {
+      str = ContactUtils.a(paramQQAppInterface, paramMessageRecord.senderuin, false);
     }
+    d(paramQQAppInterface, paramMessageRecord, str);
   }
   
   private Bitmap c(Resources paramResources, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    default: 
-      return BitmapFactory.decodeResource(paramResources, 2130838360);
-    case 2: 
-      return BitmapFactory.decodeResource(paramResources, 2130838358);
+      if (paramInt != 3) {
+        return BitmapFactory.decodeResource(paramResources, 2130838189);
+      }
+      return BitmapFactory.decodeResource(paramResources, 2130838188);
     }
-    return BitmapFactory.decodeResource(paramResources, 2130838359);
+    return BitmapFactory.decodeResource(paramResources, 2130838187);
   }
   
   private static void c(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
@@ -281,49 +296,41 @@ public class ReceiptMsgManager
   
   private void d(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
   {
-    Object localObject = String.format(BaseApplicationImpl.getContext().getString(2131698507), new Object[] { paramString });
+    Object localObject = String.format(BaseApplicationImpl.getContext().getString(2131698573), new Object[] { paramString });
     paramString = new MessageForUniteGrayTip();
     localObject = new UniteGrayTipParam(paramMessageRecord.frienduin, paramMessageRecord.senderuin, (String)localObject, paramMessageRecord.istroop, -5022, 3211265, paramMessageRecord.time);
     ((UniteGrayTipParam)localObject).f = false;
     paramString.initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject);
     paramString.msgUid = paramMessageRecord.msgUid;
     paramString.shmsgseq = paramMessageRecord.shmsgseq;
-    UniteGrayTipUtil.a(paramQQAppInterface, paramString);
+    UniteGrayTipMsgUtil.a(paramQQAppInterface, paramString);
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800859B", "0X800859B", 0, 0, "", "", "", "");
   }
   
   public Bitmap a(Resources paramResources, boolean paramBoolean, int paramInt)
   {
     int i;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = 1000;
-      i += paramInt;
+    } else {
+      i = 2000;
     }
-    for (;;)
+    i += paramInt;
+    try
     {
-      try
-      {
-        Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (localBitmap != null)
-        {
-          paramResources = localBitmap;
-          return paramResources;
-          i = 2000;
-          break;
-        }
-        if (paramBoolean)
-        {
-          paramResources = a(paramResources, paramInt);
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramResources);
-        }
-        else
-        {
-          paramResources = b(paramResources, paramInt);
-        }
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      if (localBitmap != null) {
+        return localBitmap;
       }
-      finally {}
+      if (paramBoolean) {
+        paramResources = a(paramResources, paramInt);
+      } else {
+        paramResources = b(paramResources, paramInt);
+      }
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramResources);
+      return paramResources;
     }
+    finally {}
   }
   
   public void a()
@@ -340,30 +347,31 @@ public class ReceiptMsgManager
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, int paramInt1, int paramInt2, RecordParams.RecorderParam paramRecorderParam, int paramInt3, boolean paramBoolean)
-  {
-    if (!QLog.isColorLevel()) {}
-    for (;;)
-    {
-      ThreadManager.post(new ReceiptMsgManager.1(this, paramInt2, paramInt3, paramRecorderParam, paramString, paramInt1, paramBoolean, paramQQAppInterface, paramSessionInfo), 8, null, false);
-      return;
-      QLog.d("ReceiptMsgManager", 2, "sendPttMsg: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.toString());
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, ArrayList<AtTroopMemberInfo> paramArrayList, ChatActivityFacade.SendMsgParams paramSendMsgParams)
+  public void a(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, String paramString, ArrayList<AtTroopMemberInfo> paramArrayList, ChatActivityFacade.SendMsgParams paramSendMsgParams)
   {
     ArrayList localArrayList = new ArrayList(1);
-    paramString = ChatActivityFacade.a(paramQQAppInterface, paramSessionInfo, paramString, paramArrayList, paramSendMsgParams);
+    paramString = ChatActivityFacade.a(paramQQAppInterface, (SessionInfo)paramBaseSessionInfo, paramString, paramArrayList, paramSendMsgParams);
     if (paramString != null)
     {
       localArrayList.add(paramString);
-      a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.b, a(1), false, localArrayList, null);
-    }
-    while (!QLog.isColorLevel()) {
+      a(paramQQAppInterface, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_Int, paramBaseSessionInfo.b, a(1), false, localArrayList, null);
       return;
     }
-    QLog.w("ReceiptMsgManager", 2, "create text msg error");
+    if (QLog.isColorLevel()) {
+      QLog.w("ReceiptMsgManager", 2, "create text msg error");
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, int paramInt1, int paramInt2, RecordParams.RecorderParam paramRecorderParam, int paramInt3, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendPttMsg: ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.toString());
+      QLog.d("ReceiptMsgManager", 2, localStringBuilder.toString());
+    }
+    ThreadManager.post(new ReceiptMsgManager.1(this, paramInt2, paramInt3, paramRecorderParam, paramString, paramInt1, paramBoolean, paramQQAppInterface, paramSessionInfo), 8, null, false);
   }
   
   public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, List<String> paramList, int paramInt)
@@ -376,29 +384,50 @@ public class ReceiptMsgManager
   
   public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    String str = "receipt_gray_tip_showed-" + paramMessageRecord.istroop;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("receipt_gray_tip_showed-");
+    ((StringBuilder)localObject1).append(paramMessageRecord.istroop);
+    localObject1 = ((StringBuilder)localObject1).toString();
     if (this.jdField_a_of_type_JavaUtilMap == null) {
       this.jdField_a_of_type_JavaUtilMap = new HashMap(3);
     }
-    if (this.jdField_a_of_type_JavaUtilMap.get(paramQQAppInterface.getCurrentAccountUin() + str) != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMsgManager", 2, "mGrayTipsShowedMap has key: " + paramQQAppInterface.getCurrentAccountUin() + str);
-      }
-    }
-    SharedPreferences localSharedPreferences;
-    boolean bool;
-    do
+    Object localObject2 = this.jdField_a_of_type_JavaUtilMap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append((String)localObject1);
+    if (((Map)localObject2).get(localStringBuilder.toString()) != null)
     {
-      return;
-      localSharedPreferences = paramQQAppInterface.getPreferences();
-      bool = localSharedPreferences.getBoolean(str, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMsgManager", 2, "addGrayTipIfNeeded hasShowed: " + bool + " with key: " + str);
+      if (QLog.isColorLevel())
+      {
+        paramMessageRecord = new StringBuilder();
+        paramMessageRecord.append("mGrayTipsShowedMap has key: ");
+        paramMessageRecord.append(paramQQAppInterface.getCurrentAccountUin());
+        paramMessageRecord.append((String)localObject1);
+        QLog.d("ReceiptMsgManager", 2, paramMessageRecord.toString());
       }
-    } while (bool);
-    ThreadManager.postImmediately(new ReceiptMsgManager.3(this, paramQQAppInterface, paramMessageRecord), null, false);
-    this.jdField_a_of_type_JavaUtilMap.put(paramQQAppInterface.getCurrentAccountUin() + str, Boolean.valueOf(true));
-    localSharedPreferences.edit().putBoolean(str, true).apply();
+      return;
+    }
+    localObject2 = paramQQAppInterface.getPreferences();
+    boolean bool = ((SharedPreferences)localObject2).getBoolean((String)localObject1, false);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addGrayTipIfNeeded hasShowed: ");
+      localStringBuilder.append(bool);
+      localStringBuilder.append(" with key: ");
+      localStringBuilder.append((String)localObject1);
+      QLog.d("ReceiptMsgManager", 2, localStringBuilder.toString());
+    }
+    if (!bool)
+    {
+      ThreadManager.postImmediately(new ReceiptMsgManager.3(this, paramQQAppInterface, paramMessageRecord), null, false);
+      paramMessageRecord = this.jdField_a_of_type_JavaUtilMap;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append((String)localObject1);
+      paramMessageRecord.put(localStringBuilder.toString(), Boolean.valueOf(true));
+      ((SharedPreferences)localObject2).edit().putBoolean((String)localObject1, true).apply();
+    }
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, long paramLong, int paramInt2, DownCallBack paramDownCallBack)
@@ -408,7 +437,7 @@ public class ReceiptMsgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMsgManager
  * JD-Core Version:    0.7.0.1
  */

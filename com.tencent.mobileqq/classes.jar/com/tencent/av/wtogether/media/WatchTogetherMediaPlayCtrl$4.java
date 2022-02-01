@@ -22,15 +22,17 @@ class WatchTogetherMediaPlayCtrl$4
     }
     long l1 = this.a.getDurationMs();
     long l2 = this.a.getCurrentPositionMs();
-    WatchTogetherMediaPlayCtrl.a(this.this$0, (int)l1);
-    Object localObject = WatchTogetherMediaPlayCtrl.a(this.this$0).a;
+    Object localObject = this.this$0;
+    int i = (int)l1;
+    WatchTogetherMediaPlayCtrl.a((WatchTogetherMediaPlayCtrl)localObject, i);
+    localObject = WatchTogetherMediaPlayCtrl.a(this.this$0).a;
     WatchTogetherMediaPlayCtrl.a(this.this$0).a(((WTFileInfo)localObject).c(), WatchTogetherMediaPlayCtrl.a(this.this$0));
     localObject = WatchTogetherMediaPlayCtrl.a(this.this$0).iterator();
     while (((Iterator)localObject).hasNext())
     {
       WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((WatchTogetherMediaPlayerStatusCallback)localWeakReference.get()).a((int)l1);
+        ((WatchTogetherMediaPlayerStatusCallback)localWeakReference.get()).a(i);
       }
     }
     if (l1 - l2 <= 60000L)
@@ -50,7 +52,7 @@ class WatchTogetherMediaPlayCtrl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl.4
  * JD-Core Version:    0.7.0.1
  */

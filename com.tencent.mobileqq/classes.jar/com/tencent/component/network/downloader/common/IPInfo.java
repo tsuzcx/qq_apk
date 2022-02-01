@@ -48,22 +48,24 @@ public class IPInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (!(paramObject instanceof IPInfo))) {
-        break;
-      }
+    }
+    if ((paramObject != null) && ((paramObject instanceof IPInfo)))
+    {
       paramObject = (IPInfo)paramObject;
-    } while ((equalWith(paramObject.ip, this.ip)) && (paramObject.port == this.port));
-    return false;
+      return (equalWith(paramObject.ip, this.ip)) && (paramObject.port == this.port);
+    }
     return false;
   }
   
   public String toString()
   {
-    return new String(this.ip + ":" + this.port);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.ip);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.port);
+    return new String(localStringBuilder.toString());
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -77,7 +79,7 @@ public class IPInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.common.IPInfo
  * JD-Core Version:    0.7.0.1
  */

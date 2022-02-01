@@ -8,6 +8,8 @@ import mqq.app.api.IRuntimeService;
 public abstract interface IFriendNameService
   extends IRuntimeService
 {
+  public abstract String getBuddyName(String paramString, boolean paramBoolean);
+  
   public abstract String getFriendAlias(String paramString);
   
   public abstract String getFriendName(String paramString);
@@ -24,7 +26,7 @@ public abstract interface IFriendNameService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.api.IFriendNameService
  * JD-Core Version:    0.7.0.1
  */

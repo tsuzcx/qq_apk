@@ -9,30 +9,33 @@ public enum FlexNodeStyle$b
     switch (paramInt)
     {
     default: 
-      throw new IllegalArgumentException("Unknown enum value: " + paramInt);
-    case 0: 
-      return a;
-    case 1: 
-      return b;
-    case 2: 
-      return c;
-    case 3: 
-      return d;
-    case 4: 
-      return e;
-    case 5: 
-      return f;
-    case 6: 
-      return g;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unknown enum value: ");
+      localStringBuilder.append(paramInt);
+      throw new IllegalArgumentException(localStringBuilder.toString());
+    case 8: 
+      return i;
     case 7: 
       return h;
+    case 6: 
+      return g;
+    case 5: 
+      return f;
+    case 4: 
+      return e;
+    case 3: 
+      return d;
+    case 2: 
+      return c;
+    case 1: 
+      return b;
     }
-    return i;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.flexbox.FlexNodeStyle.b
  * JD-Core Version:    0.7.0.1
  */

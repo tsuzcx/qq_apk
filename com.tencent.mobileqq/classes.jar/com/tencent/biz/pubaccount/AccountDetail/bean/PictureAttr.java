@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.bean;
+package com.tencent.biz.pubaccount.accountdetail.bean;
 
 public class PictureAttr
 {
@@ -8,7 +8,7 @@ public class PictureAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.bean.PictureAttr
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.bean.PictureAttr
  * JD-Core Version:    0.7.0.1
  */

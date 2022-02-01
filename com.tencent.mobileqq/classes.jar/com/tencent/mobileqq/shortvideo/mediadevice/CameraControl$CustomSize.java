@@ -12,31 +12,41 @@ public class CameraControl$CustomSize
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_Double = (paramInt1 / paramInt2);
+    double d1 = paramInt1;
+    double d2 = paramInt2;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    this.jdField_a_of_type_Double = (d1 / d2);
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof CustomSize)) {
-        return false;
-      }
-      paramObject = (CustomSize)paramObject;
-    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b));
-    return false;
+    }
+    if (!(paramObject instanceof CustomSize)) {
+      return false;
+    }
+    paramObject = (CustomSize)paramObject;
+    return (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b);
   }
   
   public String toString()
   {
-    return "CustomSize[width=" + this.jdField_a_of_type_Int + ", height=" + this.b + ", scaleWH='" + this.jdField_a_of_type_Double + ']';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CustomSize[width=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", scaleWH='");
+    localStringBuilder.append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(']');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraControl.CustomSize
  * JD-Core Version:    0.7.0.1
  */

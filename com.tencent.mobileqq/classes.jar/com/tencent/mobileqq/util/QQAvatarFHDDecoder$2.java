@@ -16,17 +16,17 @@ class QQAvatarFHDDecoder$2
       return;
     }
     Setting localSetting = QQAvatarFHDDecoder.a(this.this$0).getQQHeadSettingFromDB(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Boolean) || (localSetting == null) || (TextUtils.isEmpty(localSetting.url)) || (System.currentTimeMillis() - localSetting.updateTimestamp > 86400000L))
+    if ((!this.jdField_a_of_type_Boolean) && (localSetting != null) && (!TextUtils.isEmpty(localSetting.url)) && (System.currentTimeMillis() - localSetting.updateTimestamp <= 86400000L))
     {
-      ((IQQAvatarHandlerService)QQAvatarFHDDecoder.a(this.this$0).getRuntimeService(IQQAvatarHandlerService.class, "")).getCustomHead(this.jdField_a_of_type_JavaLangString);
+      this.this$0.a(localSetting);
       return;
     }
-    this.this$0.a(localSetting);
+    ((IQQAvatarHandlerService)QQAvatarFHDDecoder.a(this.this$0).getRuntimeService(IQQAvatarHandlerService.class, "")).getCustomHead(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQAvatarFHDDecoder.2
  * JD-Core Version:    0.7.0.1
  */

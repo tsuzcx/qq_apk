@@ -34,6 +34,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -81,8 +82,16 @@ public class l
   
   private void a(FromServiceMsg paramFromServiceMsg)
   {
-    QLog.d("MSF.D.Proxy", 1, "onRecvServicePushResp, fromServiceMsg cmd = " + paramFromServiceMsg.getServiceCmd() + ", ssoSeq = " + paramFromServiceMsg.getRequestSsoSeq() + ", length = " + paramFromServiceMsg.getWupBuffer().length);
-    if (!b(null, paramFromServiceMsg)) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRecvServicePushResp, fromServiceMsg cmd = ");
+    localStringBuilder.append(paramFromServiceMsg.getServiceCmd());
+    localStringBuilder.append(", ssoSeq = ");
+    localStringBuilder.append(paramFromServiceMsg.getRequestSsoSeq());
+    localStringBuilder.append(", length = ");
+    localStringBuilder.append(paramFromServiceMsg.getWupBuffer().length);
+    QLog.d("MSF.D.Proxy", 1, localStringBuilder.toString());
+    if (!b(null, paramFromServiceMsg))
+    {
       if (paramFromServiceMsg.getMsfCommand() == MsfCommand.pushSetConfig)
       {
         QLog.setUIN_REPORTLOG_LEVEL(((Integer)paramFromServiceMsg.getAttribute(paramFromServiceMsg.getServiceCmd())).intValue());
@@ -94,192 +103,216 @@ public class l
           e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 17);
         }
       }
-    }
-    do
-    {
-      do
+      else
       {
-        do
+        if (this.a)
         {
+          this.r.addServicePushMsg(paramFromServiceMsg);
           return;
-          if (this.a)
-          {
-            this.r.addServicePushMsg(paramFromServiceMsg);
-            return;
-          }
-          if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-            e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 16);
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("MSF.D.Proxy", 2, " close msfServiceConn. push msg is droped." + paramFromServiceMsg);
-        return;
-        if (paramFromServiceMsg.getBusinessFailCode() != -2) {
-          break;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("MSF.D.Proxy", 2, "receive service ipc test push, length = " + paramFromServiceMsg.getWupBuffer().length);
-      return;
-    } while ((paramFromServiceMsg == null) || (paramFromServiceMsg.getServiceCmd() == null) || (!paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c")));
-    e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 15);
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
+          e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 16);
+        }
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" close msfServiceConn. push msg is droped.");
+          localStringBuilder.append(paramFromServiceMsg);
+          QLog.d("MSF.D.Proxy", 2, localStringBuilder.toString());
+        }
+      }
+    }
+    else if (paramFromServiceMsg.getBusinessFailCode() == -2)
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("receive service ipc test push, length = ");
+        localStringBuilder.append(paramFromServiceMsg.getWupBuffer().length);
+        QLog.d("MSF.D.Proxy", 2, localStringBuilder.toString());
+      }
+    }
+    else if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
+      e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 15);
+    }
   }
   
   public static void a(String paramString, boolean paramBoolean)
   {
-    String str = (Build.MANUFACTURER + "_" + Build.MODEL).toLowerCase();
-    Object localObject = h();
-    boolean bool3 = MsfServiceSdk.isUseNewProxy;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject1).append("_");
+    ((StringBuilder)localObject1).append(Build.MODEL);
+    localObject1 = ((StringBuilder)localObject1).toString().toLowerCase();
+    Object localObject2 = h();
+    boolean bool2 = MsfServiceSdk.isUseNewProxy;
+    int i = 1;
     boolean bool1;
-    int j;
-    int i;
-    label76:
-    boolean bool2;
-    if ((str != null) && (str.indexOf("vivo") >= 0))
-    {
+    if ((localObject1 != null) && (((String)localObject1).indexOf("vivo") >= 0)) {
       bool1 = true;
-      j = 0;
-      if ((bool3) || (!bool1)) {
-        break label343;
-      }
-      i = 1;
-      if (!"com.tencent.mobileqq".equals(localObject)) {
-        break label392;
-      }
-      bool2 = true;
-      label90:
-      if (Build.VERSION.SDK_INT < 21) {
-        break label398;
+    } else {
+      bool1 = false;
+    }
+    if ((bool2) || (!bool1)) {
+      if ((bool2) && (bool1)) {
+        i = 2;
+      } else if ((!bool2) && (!bool1)) {
+        i = 3;
+      } else if ((bool2) && (!bool1)) {
+        i = 4;
+      } else {
+        i = 0;
       }
     }
-    HashMap localHashMap;
-    label392:
-    label398:
-    for (str = "android5.0+";; str = "android4.x")
+    boolean bool3 = "com.tencent.mobileqq".equals(localObject2);
+    if (Build.VERSION.SDK_INT >= 21) {
+      localObject1 = "android5.0+";
+    } else {
+      localObject1 = "android4.x";
+    }
+    Object localObject3 = new HashMap();
+    ((HashMap)localObject3).put("proxy", String.valueOf(bool2));
+    ((HashMap)localObject3).put("vivo", String.valueOf(bool1));
+    ((HashMap)localObject3).put("param_FailCode", String.valueOf(i));
+    ((HashMap)localObject3).put("mainProcess", String.valueOf(bool3));
+    ((HashMap)localObject3).put("sdkver", localObject1);
+    if (paramBoolean)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("proxy", String.valueOf(bool3));
-      localHashMap.put("vivo", String.valueOf(bool1));
-      localHashMap.put("param_FailCode", String.valueOf(i));
-      localHashMap.put("mainProcess", String.valueOf(bool2));
-      localHashMap.put("sdkver", str);
-      if (!paramBoolean) {
-        break label406;
-      }
       if (QLog.isColorLevel()) {
         QLog.d("MSF.D.Proxy", 2, "MTA is not initConfig or unsupported.");
       }
-      localObject = BaseApplication.getContext().getSharedPreferences("pull_msf_succ" + (String)localObject, 0).edit();
-      ((SharedPreferences.Editor)localObject).putString("uin", paramString);
-      ((SharedPreferences.Editor)localObject).putString("proxy", String.valueOf(bool3));
-      ((SharedPreferences.Editor)localObject).putString("vivo", String.valueOf(bool1));
-      ((SharedPreferences.Editor)localObject).putString("param_FailCode", String.valueOf(i));
-      ((SharedPreferences.Editor)localObject).putString("mainProcess", String.valueOf(bool2));
-      ((SharedPreferences.Editor)localObject).putString("sdkver", String.valueOf(str));
-      a((SharedPreferences.Editor)localObject);
-      ((SharedPreferences.Editor)localObject).commit();
+      localObject3 = BaseApplication.getContext();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pull_msf_succ");
+      localStringBuilder.append((String)localObject2);
+      localObject2 = ((BaseApplication)localObject3).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      ((SharedPreferences.Editor)localObject2).putString("uin", paramString);
+      ((SharedPreferences.Editor)localObject2).putString("proxy", String.valueOf(bool2));
+      ((SharedPreferences.Editor)localObject2).putString("vivo", String.valueOf(bool1));
+      ((SharedPreferences.Editor)localObject2).putString("param_FailCode", String.valueOf(i));
+      ((SharedPreferences.Editor)localObject2).putString("mainProcess", String.valueOf(bool3));
+      ((SharedPreferences.Editor)localObject2).putString("sdkver", (String)localObject1);
+      a((SharedPreferences.Editor)localObject2);
+      ((SharedPreferences.Editor)localObject2).commit();
       return;
-      bool1 = false;
-      break;
-      label343:
-      if ((bool3) && (bool1))
-      {
-        i = 2;
-        break label76;
-      }
-      if ((!bool3) && (!bool1))
-      {
-        i = 3;
-        break label76;
-      }
-      i = j;
-      if (!bool3) {
-        break label76;
-      }
-      i = j;
-      if (bool1) {
-        break label76;
-      }
-      i = 4;
-      break label76;
-      bool2 = false;
-      break label90;
     }
-    label406:
     if ((MsfCore.sCore != null) && (MsfCore.sCore.statReporter != null)) {
-      MsfCore.sCore.statReporter.a("pullMsfReportQQ_V4", true, 0L, 0L, localHashMap, false, false);
+      MsfCore.sCore.statReporter.a("pullMsfReportQQ_V4", true, 0L, 0L, (Map)localObject3, false, false);
     }
-    localObject = BaseApplication.getContext().getSharedPreferences("pull_msf" + (String)localObject, 0).edit();
-    ((SharedPreferences.Editor)localObject).putString("uin", paramString);
-    ((SharedPreferences.Editor)localObject).putString("proxy", String.valueOf(bool3));
-    ((SharedPreferences.Editor)localObject).putString("vivo", String.valueOf(bool1));
-    ((SharedPreferences.Editor)localObject).putString("param_FailCode", String.valueOf(i));
-    ((SharedPreferences.Editor)localObject).putString("mainProcess", String.valueOf(bool2));
-    ((SharedPreferences.Editor)localObject).putString("sdkver", String.valueOf(str));
-    a((SharedPreferences.Editor)localObject);
-    ((SharedPreferences.Editor)localObject).commit();
+    localObject3 = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pull_msf");
+    localStringBuilder.append((String)localObject2);
+    localObject2 = ((BaseApplication)localObject3).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+    ((SharedPreferences.Editor)localObject2).putString("uin", paramString);
+    ((SharedPreferences.Editor)localObject2).putString("proxy", String.valueOf(bool2));
+    ((SharedPreferences.Editor)localObject2).putString("vivo", String.valueOf(bool1));
+    ((SharedPreferences.Editor)localObject2).putString("param_FailCode", String.valueOf(i));
+    ((SharedPreferences.Editor)localObject2).putString("mainProcess", String.valueOf(bool3));
+    ((SharedPreferences.Editor)localObject2).putString("sdkver", (String)localObject1);
+    a((SharedPreferences.Editor)localObject2);
+    ((SharedPreferences.Editor)localObject2).commit();
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    QLog.d("MSF.D.Proxy", 1, "onReceiveResp, fromServiceMsg = " + paramFromServiceMsg.getServiceCmd() + ", ssoSeq = " + paramFromServiceMsg.getRequestSsoSeq() + ", length = " + paramFromServiceMsg.getWupBuffer().length);
-    ToServiceMsg localToServiceMsg = (ToServiceMsg)e.remove(Integer.valueOf(paramToServiceMsg.getAppSeq()));
-    if (localToServiceMsg != null) {
-      if (("LongConn.OffPicUp".equalsIgnoreCase(localToServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(localToServiceMsg.getServiceCmd()))) {
-        QLog.d("MSF.D.Proxy", 1, "onReceiveResp." + localToServiceMsg.getStringForLog() + " isConnectedMsf:" + this.a);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onReceiveResp, fromServiceMsg = ");
+    ((StringBuilder)localObject).append(paramFromServiceMsg.getServiceCmd());
+    ((StringBuilder)localObject).append(", ssoSeq = ");
+    ((StringBuilder)localObject).append(paramFromServiceMsg.getRequestSsoSeq());
+    ((StringBuilder)localObject).append(", length = ");
+    ((StringBuilder)localObject).append(paramFromServiceMsg.getWupBuffer().length);
+    QLog.d("MSF.D.Proxy", 1, ((StringBuilder)localObject).toString());
+    localObject = (ToServiceMsg)e.remove(Integer.valueOf(paramToServiceMsg.getAppSeq()));
+    if (localObject != null)
+    {
+      if ((!"LongConn.OffPicUp".equalsIgnoreCase(((ToServiceMsg)localObject).getServiceCmd())) && (!"ImgStore.GroupPicUp".equalsIgnoreCase(((ToServiceMsg)localObject).getServiceCmd())))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(" onResponse ");
+          ((StringBuilder)localObject).append(paramToServiceMsg.getRequestSsoSeq());
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(paramFromServiceMsg);
+          QLog.d("MSF.D.Proxy", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onReceiveResp.");
+        localStringBuilder.append(((ToServiceMsg)localObject).getStringForLog());
+        localStringBuilder.append(" isConnectedMsf:");
+        localStringBuilder.append(this.a);
+        QLog.d("MSF.D.Proxy", 1, localStringBuilder.toString());
+      }
+      if (!b(paramToServiceMsg, paramFromServiceMsg))
+      {
+        if (this.a)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("add queue req:");
+            ((StringBuilder)localObject).append(paramToServiceMsg);
+            ((StringBuilder)localObject).append(" from:");
+            ((StringBuilder)localObject).append(paramFromServiceMsg);
+            QLog.d("MSF.D.Proxy", 2, ((StringBuilder)localObject).toString());
+          }
+          this.r.addServiceRespMsg(new MsfMessagePair(paramToServiceMsg, paramFromServiceMsg));
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(" close msfServiceConn. msg is droped.");
+          ((StringBuilder)localObject).append(paramToServiceMsg.getRequestSsoSeq());
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(paramFromServiceMsg);
+          QLog.d("MSF.D.Proxy", 2, ((StringBuilder)localObject).toString());
+        }
       }
     }
-    label218:
-    do
+    else if ((!"LongConn.OffPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"ImgStore.GroupPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
     {
-      do
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          break label218;
-          for (;;)
-          {
-            if (!b(paramToServiceMsg, paramFromServiceMsg))
-            {
-              if (!this.a) {
-                break;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("MSF.D.Proxy", 2, "add queue req:" + paramToServiceMsg + " from:" + paramFromServiceMsg);
-              }
-              this.r.addServiceRespMsg(new MsfMessagePair(paramToServiceMsg, paramFromServiceMsg));
-            }
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("MSF.D.Proxy", 2, " onResponse " + paramToServiceMsg.getRequestSsoSeq() + " " + paramFromServiceMsg);
-            }
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("MSF.D.Proxy", 2, " close msfServiceConn. msg is droped." + paramToServiceMsg.getRequestSsoSeq() + " " + paramFromServiceMsg);
-        return;
-        if ((!"LongConn.OffPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"ImgStore.GroupPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
-          break;
-        }
-        QLog.d("MSF.D.Proxy", 1, "onReceiveResp." + paramFromServiceMsg.getStringForLog() + " waiteTemp is null.");
-      } while (!paramFromServiceMsg.isSuccess());
-      paramToServiceMsg = new HashMap();
-      paramToServiceMsg.put("appSeq", String.valueOf(paramFromServiceMsg.getAppSeq()));
-      paramToServiceMsg.put("ssoSeq", String.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
-      paramFromServiceMsg = new RdmReq();
-      paramFromServiceMsg.eventName = "PicUpMsgErroCase1";
-      paramFromServiceMsg.isRealTime = true;
-      paramFromServiceMsg.params = paramToServiceMsg;
-      try
-      {
-        paramToServiceMsg = MsfMsgUtil.getRdmReportMsg(MsfServiceSdk.get().getMsfServiceName(), paramFromServiceMsg);
-        paramToServiceMsg.setTimeout(30000L);
-        MsfServiceSdk.get().sendMsg(paramToServiceMsg);
-        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" found timeout resp to:");
+        ((StringBuilder)localObject).append(paramToServiceMsg);
+        ((StringBuilder)localObject).append(" from:");
+        ((StringBuilder)localObject).append(paramFromServiceMsg);
+        QLog.d("MSF.D.Proxy", 2, ((StringBuilder)localObject).toString());
       }
-      catch (Exception paramToServiceMsg)
+    }
+    else
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("onReceiveResp.");
+      paramToServiceMsg.append(paramFromServiceMsg.getStringForLog());
+      paramToServiceMsg.append(" waiteTemp is null.");
+      QLog.d("MSF.D.Proxy", 1, paramToServiceMsg.toString());
+      if (paramFromServiceMsg.isSuccess())
       {
-        return;
+        paramToServiceMsg = new HashMap();
+        paramToServiceMsg.put("appSeq", String.valueOf(paramFromServiceMsg.getAppSeq()));
+        paramToServiceMsg.put("ssoSeq", String.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
+        paramFromServiceMsg = new RdmReq();
+        paramFromServiceMsg.eventName = "PicUpMsgErroCase1";
+        paramFromServiceMsg.isRealTime = true;
+        paramFromServiceMsg.params = paramToServiceMsg;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("MSF.D.Proxy", 2, " found timeout resp to:" + paramToServiceMsg + " from:" + paramFromServiceMsg);
+    }
+    try
+    {
+      paramToServiceMsg = MsfMsgUtil.getRdmReportMsg(MsfServiceSdk.get().getMsfServiceName(), paramFromServiceMsg);
+      paramToServiceMsg.setTimeout(30000L);
+      MsfServiceSdk.get().sendMsg(paramToServiceMsg);
+      return;
+    }
+    catch (Exception paramToServiceMsg) {}
   }
   
   public static String h()
@@ -288,20 +321,23 @@ public class l
     {
       int i = Process.myPid();
       Object localObject = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses().iterator();
-      while (((Iterator)localObject).hasNext())
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
+      do
       {
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-        if (localRunningAppProcessInfo.pid == i)
-        {
-          localObject = localRunningAppProcessInfo.processName;
-          return localObject;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
         }
-      }
+        localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+      } while (localRunningAppProcessInfo.pid != i);
+      localObject = localRunningAppProcessInfo.processName;
+      return localObject;
     }
     catch (Exception localException)
     {
-      QLog.d("MSF.D.Proxy", 1, "failed to get current process name");
+      label59:
+      break label59;
     }
+    QLog.d("MSF.D.Proxy", 1, "failed to get current process name");
     return null;
   }
   
@@ -309,17 +345,22 @@ public class l
   {
     try
     {
-      Object localObject = (ActivityManager)BaseApplication.getContext().getSystemService("activity");
-      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      ((ActivityManager)localObject).getMemoryInfo(localMemoryInfo);
-      QLog.d("MSF.D.Proxy", 1, "Property get avail memory:" + localMemoryInfo.availMem);
-      localObject = Formatter.formatFileSize(BaseApplication.getContext(), localMemoryInfo.availMem);
-      return localObject;
+      Object localObject2 = (ActivityManager)BaseApplication.getContext().getSystemService("activity");
+      Object localObject1 = new ActivityManager.MemoryInfo();
+      ((ActivityManager)localObject2).getMemoryInfo((ActivityManager.MemoryInfo)localObject1);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Property get avail memory:");
+      ((StringBuilder)localObject2).append(((ActivityManager.MemoryInfo)localObject1).availMem);
+      QLog.d("MSF.D.Proxy", 1, ((StringBuilder)localObject2).toString());
+      localObject1 = Formatter.formatFileSize(BaseApplication.getContext(), ((ActivityManager.MemoryInfo)localObject1).availMem);
+      return localObject1;
     }
     catch (Exception localException)
     {
-      QLog.d("MSF.D.Proxy", 1, "failed to get avail memory");
+      label74:
+      break label74;
     }
+    QLog.d("MSF.D.Proxy", 1, "failed to get avail memory");
     return null;
   }
   
@@ -327,74 +368,114 @@ public class l
   {
     try
     {
-      ActivityManager localActivityManager = (ActivityManager)BaseApplication.getContext().getSystemService("activity");
+      Object localObject = (ActivityManager)BaseApplication.getContext().getSystemService("activity");
       ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      localActivityManager.getMemoryInfo(localMemoryInfo);
-      QLog.d("MSF.D.Proxy", 1, "Property get low memory feature:" + localMemoryInfo.lowMemory);
+      ((ActivityManager)localObject).getMemoryInfo(localMemoryInfo);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Property get low memory feature:");
+      ((StringBuilder)localObject).append(localMemoryInfo.lowMemory);
+      QLog.d("MSF.D.Proxy", 1, ((StringBuilder)localObject).toString());
       boolean bool = localMemoryInfo.lowMemory;
       return String.valueOf(bool);
     }
     catch (Exception localException)
     {
-      QLog.d("MSF.D.Proxy", 1, "failed to get low memory feature");
+      label71:
+      break label71;
     }
+    QLog.d("MSF.D.Proxy", 1, "failed to get low memory feature");
     return null;
   }
   
   public static String l()
   {
-    boolean bool = false;
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningServices(256).iterator();
+      int i = 0;
+      Object localObject1 = null;
+      boolean bool = false;
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningServices(256).iterator();
-        Object localObject1 = null;
-        int i = 0;
-        Object localObject2;
-        if (localIterator.hasNext())
+        int j = i + 1;
+        localObject2 = (ActivityManager.RunningServiceInfo)localIterator.next();
+        i = j;
+        if (((ActivityManager.RunningServiceInfo)localObject2).process.trim().equals("com.tencent.mobileqq:MSF"))
         {
-          localObject2 = (ActivityManager.RunningServiceInfo)localIterator.next();
-          if (((ActivityManager.RunningServiceInfo)localObject2).process.trim().equals("com.tencent.mobileqq:MSF"))
-          {
-            bool = true;
-            localObject1 = localObject2;
-          }
+          localObject1 = localObject2;
+          bool = true;
+          i = j;
         }
-        else
-        {
-          QLog.d("MSF.D.Proxy", 1, "isMsfAlive:" + bool + ", cur service process count:" + i);
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("countService_").append(i).append(":");
-          if ((bool) && (localObject1 != null))
-          {
-            ((StringBuilder)localObject2).append("alive_").append(bool).append(":");
-            ((StringBuilder)localObject2).append("activeSince_").append(localObject1.activeSince).append(":");
-            ((StringBuilder)localObject2).append("clientCount_").append(localObject1.clientCount).append(":");
-            ((StringBuilder)localObject2).append("clientLabel_").append(localObject1.clientLabel).append(":");
-            ((StringBuilder)localObject2).append("clientPkg_").append(localObject1.clientPackage).append(":");
-            ((StringBuilder)localObject2).append("crashCount_").append(localObject1.crashCount).append(":");
-            ((StringBuilder)localObject2).append("flags_").append(localObject1.flags).append(":");
-            ((StringBuilder)localObject2).append("foreground_").append(localObject1.foreground).append(":");
-            ((StringBuilder)localObject2).append("lastActivityTime_").append(localObject1.lastActivityTime).append(":");
-            ((StringBuilder)localObject2).append("pid_").append(localObject1.pid).append(":");
-            ((StringBuilder)localObject2).append("process_").append(localObject1.process).append(":");
-            ((StringBuilder)localObject2).append("restarting_").append(localObject1.restarting).append(":");
-            ((StringBuilder)localObject2).append("started_").append(localObject1.started).append(":");
-            ((StringBuilder)localObject2).append("uid_").append(localObject1.uid);
-            return ((StringBuilder)localObject2).toString();
-          }
-          ((StringBuilder)localObject2).append("alive_").append(bool);
-          continue;
-        }
-        i += 1;
       }
-      catch (Exception localException)
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("isMsfAlive:");
+      ((StringBuilder)localObject2).append(bool);
+      ((StringBuilder)localObject2).append(", cur service process count:");
+      ((StringBuilder)localObject2).append(i);
+      QLog.d("MSF.D.Proxy", 1, ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("countService_");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(":");
+      if ((bool) && (localObject1 != null))
       {
-        QLog.d("MSF.D.Proxy", 1, "failed to getServiceState");
-        return null;
+        ((StringBuilder)localObject2).append("alive_");
+        ((StringBuilder)localObject2).append(bool);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("activeSince_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).activeSince);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("clientCount_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).clientCount);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("clientLabel_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).clientLabel);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("clientPkg_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).clientPackage);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("crashCount_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).crashCount);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("flags_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).flags);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("foreground_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).foreground);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("lastActivityTime_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).lastActivityTime);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("pid_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).pid);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("process_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).process);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("restarting_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).restarting);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("started_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).started);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append("uid_");
+        ((StringBuilder)localObject2).append(((ActivityManager.RunningServiceInfo)localObject1).uid);
       }
+      else
+      {
+        ((StringBuilder)localObject2).append("alive_");
+        ((StringBuilder)localObject2).append(bool);
+      }
+      localObject1 = ((StringBuilder)localObject2).toString();
+      return localObject1;
     }
+    catch (Exception localException)
+    {
+      label587:
+      break label587;
+    }
+    QLog.d("MSF.D.Proxy", 1, "failed to getServiceState");
+    return null;
   }
   
   private void n()
@@ -407,32 +488,29 @@ public class l
   
   protected int a(ToServiceMsg paramToServiceMsg)
   {
-    int i;
     if (paramToServiceMsg == null) {
-      i = -1;
+      return -1;
     }
-    int j;
-    do
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return i;
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.D.Proxy", 2, "proxy#sendMsgToService start: cmd = " + paramToServiceMsg.getServiceCmd());
-        }
-        paramToServiceMsg.setAppId(this.r.appid);
-        paramToServiceMsg.getAttributes().put("to_SendTime", Long.valueOf(System.currentTimeMillis()));
-        paramToServiceMsg.getAttributes().put("to_SenderProcessName", this.r.processName);
-        j = super.a(paramToServiceMsg);
-        i = j;
-      } while (!QLog.isColorLevel());
-      if (paramToServiceMsg.getServiceCmd() == null) {
-        break;
-      }
-      i = j;
-    } while ("socketnetflow".equals(paramToServiceMsg.getServiceCmd()));
-    QLog.d("MSF.D.Proxy", 2, " sendMsgToService " + paramToServiceMsg);
-    return j;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("proxy#sendMsgToService start: cmd = ");
+      localStringBuilder.append(paramToServiceMsg.getServiceCmd());
+      QLog.d("MSF.D.Proxy", 2, localStringBuilder.toString());
+    }
+    paramToServiceMsg.setAppId(this.r.appid);
+    paramToServiceMsg.getAttributes().put("to_SendTime", Long.valueOf(System.currentTimeMillis()));
+    paramToServiceMsg.getAttributes().put("to_SenderProcessName", this.r.processName);
+    int i = super.a(paramToServiceMsg);
+    if ((QLog.isColorLevel()) && ((paramToServiceMsg.getServiceCmd() == null) || (!"socketnetflow".equals(paramToServiceMsg.getServiceCmd()))))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" sendMsgToService ");
+      localStringBuilder.append(paramToServiceMsg);
+      QLog.d("MSF.D.Proxy", 2, localStringBuilder.toString());
+    }
+    return i;
   }
   
   void a()
@@ -445,16 +523,19 @@ public class l
     try
     {
       ComponentName localComponentName = new ComponentName(BaseApplication.getContext().getPackageName(), this.r.msfServiceName);
-      Intent localIntent = new Intent();
-      localIntent.setComponent(localComponentName);
-      localIntent.putExtra("to_SenderProcessName", this.r.processName);
-      BaseApplication.getContext().startService(localIntent);
+      localObject = new Intent();
+      ((Intent)localObject).setComponent(localComponentName);
+      ((Intent)localObject).putExtra("to_SenderProcessName", this.r.processName);
+      BaseApplication.getContext().startService((Intent)localObject);
       QLog.d("MSF.D.Proxy", 1, "MSF_Alive_Log start service finish");
       return;
     }
     catch (Exception localException)
     {
-      QLog.d("MSF.D.Proxy", 1, "MSF_Alive_Log " + localException, localException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("MSF_Alive_Log ");
+      ((StringBuilder)localObject).append(localException);
+      QLog.d("MSF.D.Proxy", 1, ((StringBuilder)localObject).toString(), localException);
     }
   }
   
@@ -465,35 +546,50 @@ public class l
   
   boolean b()
   {
+    boolean bool1 = com.tencent.mobileqq.msf.core.p.a();
     boolean bool2 = false;
-    if (!com.tencent.mobileqq.msf.core.p.a())
+    if (!bool1)
     {
       QLog.d("MSF.D.Proxy", 1, "bindBaseService no allow");
       return false;
     }
     c.a().onBindStart();
-    boolean bool1 = bool2;
+    bool1 = bool2;
     try
     {
-      ComponentName localComponentName = new ComponentName(BaseApplication.getContext().getPackageName(), this.r.msfServiceName);
+      Object localObject1 = new ComponentName(BaseApplication.getContext().getPackageName(), this.r.msfServiceName);
       bool1 = bool2;
-      Intent localIntent = new Intent();
+      localObject2 = new Intent();
       bool1 = bool2;
-      localIntent.putExtra("to_SenderProcessName", this.r.processName);
+      ((Intent)localObject2).putExtra("to_SenderProcessName", this.r.processName);
       bool1 = bool2;
-      localIntent.setComponent(localComponentName);
+      ((Intent)localObject2).setComponent((ComponentName)localObject1);
       bool1 = bool2;
-      bool2 = BaseApplication.getContext().bindService(localIntent, this.s, 1);
+      bool2 = BaseApplication.getContext().bindService((Intent)localObject2, this.s, 1);
       bool1 = bool2;
-      QLog.d("MSF.D.Proxy", 1, "threadID:" + Thread.currentThread().getId() + ", threadName: " + Thread.currentThread().getName() + " bind service finished " + bool2);
+      localObject1 = new StringBuilder();
+      bool1 = bool2;
+      ((StringBuilder)localObject1).append("threadID:");
+      bool1 = bool2;
+      ((StringBuilder)localObject1).append(Thread.currentThread().getId());
+      bool1 = bool2;
+      ((StringBuilder)localObject1).append(", threadName: ");
+      bool1 = bool2;
+      ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+      bool1 = bool2;
+      ((StringBuilder)localObject1).append(" bind service finished ");
+      bool1 = bool2;
+      ((StringBuilder)localObject1).append(bool2);
+      bool1 = bool2;
+      QLog.d("MSF.D.Proxy", 1, ((StringBuilder)localObject1).toString());
       bool1 = bool2;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.d("MSF.D.Proxy", 1, " " + localException, localException);
-      }
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" ");
+      ((StringBuilder)localObject2).append(localException);
+      QLog.d("MSF.D.Proxy", 1, ((StringBuilder)localObject2).toString(), localException);
     }
     c.a().onBindEnd(bool1);
     return bool1;
@@ -502,56 +598,67 @@ public class l
   public boolean b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     int i = paramFromServiceMsg.getBusinessFailCode();
-    if (paramFromServiceMsg.getAttributes().containsKey("_attr_sameDevice")) {}
-    for (boolean bool = ((Boolean)paramFromServiceMsg.getAttribute("_attr_sameDevice")).booleanValue();; bool = false)
+    boolean bool;
+    if (paramFromServiceMsg.getAttributes().containsKey("_attr_sameDevice")) {
+      bool = ((Boolean)paramFromServiceMsg.getAttribute("_attr_sameDevice")).booleanValue();
+    } else {
+      bool = false;
+    }
+    if (i != -2)
     {
-      switch (i)
+      if (i != 2001)
       {
-      default: 
-        bool = false;
-      case 2001: 
-      case 2011: 
-      case 2012: 
-      case 2013: 
-      case 2009: 
-      case 2008: 
-      case 2014: 
-        for (;;)
+        if (i != 2008)
         {
-          if (bool) {
-            QLog.d("MSF.D.Proxy", 1, new Object[] { "tokenExpired, failcode:", Integer.valueOf(i), " fromServiceMsg:", Integer.valueOf(paramFromServiceMsg.hashCode()) });
+          if (i != 2009) {
+            switch (i)
+            {
+            default: 
+              bool = false;
+              break;
+            case 2014: 
+              this.r.errorHandler.onInvalidSign(bool);
+              break;
+            case 2013: 
+              this.r.errorHandler.onKicked(paramToServiceMsg, paramFromServiceMsg, bool);
+              break;
+            case 2012: 
+              this.r.errorHandler.onKickedAndClearToken(paramToServiceMsg, paramFromServiceMsg, bool);
+              break;
+            case 2011: 
+              this.r.errorHandler.onRecvServerTip(paramToServiceMsg, paramFromServiceMsg, bool);
+              break;
+            }
+          } else {
+            this.r.errorHandler.onServerSuspended(paramToServiceMsg, paramFromServiceMsg, bool);
           }
-          return bool;
-          this.r.errorHandler.onUserTokenExpired(paramToServiceMsg, paramFromServiceMsg, bool);
-          bool = true;
-          continue;
-          this.r.errorHandler.onRecvServerTip(paramToServiceMsg, paramFromServiceMsg, bool);
-          bool = true;
-          continue;
-          this.r.errorHandler.onKickedAndClearToken(paramToServiceMsg, paramFromServiceMsg, bool);
-          bool = true;
-          continue;
-          this.r.errorHandler.onKicked(paramToServiceMsg, paramFromServiceMsg, bool);
-          bool = true;
-          continue;
-          this.r.errorHandler.onServerSuspended(paramToServiceMsg, paramFromServiceMsg, bool);
-          bool = true;
-          continue;
+        }
+        else {
           this.r.errorHandler.onGrayError(paramToServiceMsg, paramFromServiceMsg, bool);
-          bool = true;
-          continue;
-          this.r.errorHandler.onInvalidSign(bool);
-          bool = true;
         }
       }
-      return true;
+      else {
+        this.r.errorHandler.onUserTokenExpired(paramToServiceMsg, paramFromServiceMsg, bool);
+      }
+      bool = true;
+      if (bool) {
+        QLog.d("MSF.D.Proxy", 1, new Object[] { "tokenExpired, failcode:", Integer.valueOf(i), " fromServiceMsg:", Integer.valueOf(paramFromServiceMsg.hashCode()) });
+      }
+      return bool;
     }
+    return true;
   }
   
   protected void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.Proxy", 2, "add fail queue req:" + paramToServiceMsg + " from:" + paramFromServiceMsg);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("add fail queue req:");
+      localStringBuilder.append(paramToServiceMsg);
+      localStringBuilder.append(" from:");
+      localStringBuilder.append(paramFromServiceMsg);
+      QLog.d("MSF.D.Proxy", 2, localStringBuilder.toString());
     }
     this.r.addServiceRespMsg(new MsfMessagePair(paramToServiceMsg, paramFromServiceMsg));
   }
@@ -560,12 +667,15 @@ public class l
   {
     try
     {
-      ComponentName localComponentName = new ComponentName(BaseApplication.getContext().getPackageName(), this.r.msfServiceName);
+      Object localObject = new ComponentName(BaseApplication.getContext().getPackageName(), this.r.msfServiceName);
       Intent localIntent = new Intent();
-      localIntent.setComponent(localComponentName);
+      localIntent.setComponent((ComponentName)localObject);
       localIntent.putExtra("to_SenderProcessName", this.r.processName);
       boolean bool = BaseApplication.getContext().stopService(localIntent);
-      QLog.d("MSF.D.Proxy", 1, "stopService service finished " + bool);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("stopService service finished ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("MSF.D.Proxy", 1, ((StringBuilder)localObject).toString());
       return bool;
     }
     catch (Exception localException)
@@ -601,8 +711,13 @@ public class l
           a(localToServiceMsg);
         }
         catch (Exception localException) {}
-        if (localToServiceMsg.isNeedCallback()) {
-          c(localToServiceMsg, a(localToServiceMsg, localToServiceMsg.getServiceName() + "sendMsgToServiceFailed，" + localException.toString()));
+        if (localToServiceMsg.isNeedCallback())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localToServiceMsg.getServiceName());
+          localStringBuilder.append("sendMsgToServiceFailed，");
+          localStringBuilder.append(localException.toString());
+          c(localToServiceMsg, a(localToServiceMsg, localStringBuilder.toString()));
         }
       }
     }
@@ -615,83 +730,94 @@ public class l
   
   public void i()
   {
-    if (!com.tencent.mobileqq.msf.core.p.a()) {
-      QLog.d("MSF.D.Proxy", 1, "startBaseServiceConn no allow");
-    }
-    long l2;
-    do
+    if (!com.tencent.mobileqq.msf.core.p.a())
     {
-      long l1;
-      for (;;)
+      QLog.d("MSF.D.Proxy", 1, "startBaseServiceConn no allow");
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    if ((this.i != -1L) && (l1 - this.i <= 10000L))
+    {
+      try
       {
-        return;
-        l1 = System.currentTimeMillis();
-        if ((this.i == -1L) || (l1 - this.i > 10000L))
+        int i = Build.VERSION.SDK_INT;
+        Object localObject;
+        if (i >= 21)
         {
-          this.i = l1;
-          a();
-          b();
-          return;
-        }
-        try
-        {
-          if (Build.VERSION.SDK_INT >= 21)
+          l2 = l1 - this.j;
+          if ((this.j == -1L) || (l2 > 10000L))
           {
-            l2 = l1 - this.j;
-            if ((this.j == -1L) || (l2 > 10000L))
+            if (y == 0) {
+              z = l1;
+            }
+            y += 1;
+            this.j = l1;
+            if (y % 3 == 2)
             {
-              if (y == 0) {
-                z = l1;
-              }
-              y += 1;
-              this.j = l1;
-              if (y % 3 == 2)
-              {
-                c();
-                g();
-                QLog.d("MSF.D.Proxy", 1, "pullmsf to stop and unbind service above android 5");
-              }
-              Intent localIntent = new Intent("com.tencent.mobileqq.msf.startmsf");
-              localIntent.setPackage(BaseApplication.getContext().getPackageName());
-              BaseApplication.getContext().sendBroadcast(localIntent);
-              this.k = 1;
-              QLog.d("MSF.D.Proxy", 1, "start MsfService through Broadcast, " + y);
+              c();
+              g();
+              QLog.d("MSF.D.Proxy", 1, "pullmsf to stop and unbind service above android 5");
             }
-            if ((this.j == -1L) || (l2 <= this.k * 2000)) {
-              continue;
-            }
-            b();
-            this.k += 1;
-            QLog.d("MSF.D.Proxy", 1, "delay binding MSF Service");
+            localObject = new Intent("com.tencent.mobileqq.msf.startmsf");
+            ((Intent)localObject).setPackage(BaseApplication.getContext().getPackageName());
+            BaseApplication.getContext().sendBroadcast((Intent)localObject);
+            this.k = 1;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("start MsfService through Broadcast, ");
+            ((StringBuilder)localObject).append(y);
+            QLog.d("MSF.D.Proxy", 1, ((StringBuilder)localObject).toString());
           }
-        }
-        catch (Exception localException)
-        {
-          QLog.d("MSF.D.Proxy", 1, "start MsfService exception " + localException.toString());
+          if ((this.j == -1L) || (l2 <= this.k * 2000)) {
+            return;
+          }
+          b();
+          this.k += 1;
+          QLog.d("MSF.D.Proxy", 1, "delay binding MSF Service");
           return;
         }
-      }
-      l2 = l1 - this.j;
-      if ((this.j == -1L) || (l2 > 10000L))
-      {
-        if (y == 0) {
-          z = l1;
-        }
-        y += 1;
-        this.j = l1;
-        if (y % 3 == 2)
+        long l2 = l1 - this.j;
+        if ((this.j == -1L) || (l2 > 10000L))
         {
-          c();
-          g();
-          QLog.d("MSF.D.Proxy", 1, "pullmsf to stop and unbind service below android 5");
+          if (y == 0) {
+            z = l1;
+          }
+          y += 1;
+          this.j = l1;
+          if (y % 3 == 2)
+          {
+            c();
+            g();
+            QLog.d("MSF.D.Proxy", 1, "pullmsf to stop and unbind service below android 5");
+          }
+          this.k = 1;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("start MsfService ignore, ");
+          ((StringBuilder)localObject).append(y);
+          QLog.d("MSF.D.Proxy", 1, ((StringBuilder)localObject).toString());
         }
-        this.k = 1;
-        QLog.d("MSF.D.Proxy", 1, "start MsfService ignore, " + y);
+        if ((this.j == -1L) || (l2 <= this.k * 2000)) {
+          return;
+        }
+        b();
+        this.k += 1;
+        QLog.d("MSF.D.Proxy", 1, "delay binding MSF Service");
+        return;
       }
-    } while ((this.j == -1L) || (l2 <= this.k * 2000));
-    b();
-    this.k += 1;
-    QLog.d("MSF.D.Proxy", 1, "delay binding MSF Service");
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("start MsfService exception ");
+        localStringBuilder.append(localException.toString());
+        QLog.d("MSF.D.Proxy", 1, localStringBuilder.toString());
+        return;
+      }
+    }
+    else
+    {
+      this.i = l1;
+      a();
+      b();
+    }
   }
   
   public void init(MsfServiceSdk paramMsfServiceSdk)
@@ -705,15 +831,14 @@ public class l
       this.v = new Handler(paramMsfServiceSdk.getLooper());
       if (this.q != null)
       {
-        if (!this.o) {
-          break label81;
+        if (this.o)
+        {
+          this.v.postDelayed(this.q, 10000L);
+          return;
         }
-        this.v.postDelayed(this.q, 10000L);
+        this.v.postDelayed(this.q, 2000L);
       }
     }
-    return;
-    label81:
-    this.v.postDelayed(this.q, 2000L);
   }
   
   public void initMsfService()
@@ -734,31 +859,28 @@ public class l
     this.a = true;
     if ((QLog.isColorLevel()) && (((MsfServiceBindInfo)localObject).getMsfServiceCallbacker() != null))
     {
-      if (((MsfServiceBindInfo)localObject).getMsfServiceCallbacker() != null)
-      {
+      if (((MsfServiceBindInfo)localObject).getMsfServiceCallbacker() != null) {
         localObject = Integer.toHexString(((MsfServiceBindInfo)localObject).getMsfServiceCallbacker().hashCode());
-        QLog.d("MSF.D.Proxy", 2, "registerMsfService processName=" + this.r.processName + " callback=" + (String)localObject);
+      } else {
+        localObject = "null";
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("registerMsfService processName=");
+      localStringBuilder.append(this.r.processName);
+      localStringBuilder.append(" callback=");
+      localStringBuilder.append((String)localObject);
+      QLog.d("MSF.D.Proxy", 2, localStringBuilder.toString());
     }
-    else
+    if (paramBoolean1)
     {
-      if (!paramBoolean1) {
-        break label236;
+      if (paramBoolean2)
+      {
+        this.v.postAtFrontOfQueue(new o(this, localToServiceMsg));
+        return 0;
       }
-      if (!paramBoolean2) {
-        break label215;
-      }
-      this.v.postAtFrontOfQueue(new o(this, localToServiceMsg));
-    }
-    for (;;)
-    {
-      return 0;
-      localObject = "null";
-      break;
-      label215:
       this.v.post(new p(this, localToServiceMsg));
+      return 0;
     }
-    label236:
     return sendMsg(localToServiceMsg);
   }
   
@@ -773,125 +895,133 @@ public class l
   
   public int sendMsg(ToServiceMsg paramToServiceMsg)
   {
-    int i = 0;
-    if (paramToServiceMsg == null) {}
+    if (paramToServiceMsg == null) {
+      return -1;
+    }
+    if (d(paramToServiceMsg))
+    {
+      c(paramToServiceMsg);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("add delaySendQueue sCmd:");
+        ((StringBuilder)???).append(paramToServiceMsg.getServiceCmd());
+        ((StringBuilder)???).append(" ssoSeq:");
+        ((StringBuilder)???).append(paramToServiceMsg.getRequestSsoSeq());
+        ((StringBuilder)???).append(" appSeq:");
+        ((StringBuilder)???).append(paramToServiceMsg.getAppSeq());
+        QLog.d("MSF.D.Proxy", 2, ((StringBuilder)???).toString());
+      }
+      return -1;
+    }
+    c.a().onSendMsg(paramToServiceMsg, m());
+    if (paramToServiceMsg.getServiceCmd().equals("RegPrxySvc.PbSyncMsg")) {
+      paramToServiceMsg.setMsfCommand(MsfCommand.msf_pbSyncMsg);
+    }
+    if (paramToServiceMsg.getAppSeq() < 0) {
+      paramToServiceMsg.setAppSeq(MsfSdkUtils.getNextAppSeq());
+    }
     for (;;)
     {
-      return -1;
-      if (d(paramToServiceMsg))
+      try
       {
-        c(paramToServiceMsg);
-        if (QLog.isColorLevel())
+        synchronized (this.c)
         {
-          QLog.d("MSF.D.Proxy", 2, "add delaySendQueue sCmd:" + paramToServiceMsg.getServiceCmd() + " ssoSeq:" + paramToServiceMsg.getRequestSsoSeq() + " appSeq:" + paramToServiceMsg.getAppSeq());
-          return -1;
-        }
-      }
-      else
-      {
-        c.a().onSendMsg(paramToServiceMsg, m());
-        if (paramToServiceMsg.getServiceCmd().equals("RegPrxySvc.PbSyncMsg")) {
-          paramToServiceMsg.setMsfCommand(MsfCommand.msf_pbSyncMsg);
-        }
-        if (paramToServiceMsg.getAppSeq() < 0) {
-          paramToServiceMsg.setAppSeq(MsfSdkUtils.getNextAppSeq());
-        }
-        try
-        {
-          synchronized (this.c)
+          if (this.v == null)
           {
-            if (this.v == null)
+            HandlerThread localHandlerThread = new HandlerThread("MsfServiceTimeoutChecker", 5);
+            localHandlerThread.start();
+            this.v = new Handler(localHandlerThread.getLooper());
+          }
+          if (!m()) {
+            break label730;
+          }
+          i = 1;
+          if (paramToServiceMsg.getTimeout() == -1L) {
+            paramToServiceMsg.setTimeout(30000L);
+          }
+          if (paramToServiceMsg.isNeedCallback())
+          {
+            paramToServiceMsg.addAttribute("appTimeoutReq", Integer.valueOf(this.l.incrementAndGet()));
+            e.put(Integer.valueOf(paramToServiceMsg.getAppSeq()), paramToServiceMsg);
+            ??? = new ab.b(this, paramToServiceMsg);
+            if ((!"LongConn.OffPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())) && (!"ImgStore.GroupPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())))
             {
-              HandlerThread localHandlerThread = new HandlerThread("MsfServiceTimeoutChecker", 5);
-              localHandlerThread.start();
-              this.v = new Handler(localHandlerThread.getLooper());
-            }
-            if (m()) {
-              i = 1;
-            }
-            if (paramToServiceMsg.getTimeout() == -1L) {
-              paramToServiceMsg.setTimeout(30000L);
-            }
-            if (paramToServiceMsg.isNeedCallback())
-            {
-              paramToServiceMsg.addAttribute("appTimeoutReq", Integer.valueOf(this.l.incrementAndGet()));
-              e.put(Integer.valueOf(paramToServiceMsg.getAppSeq()), paramToServiceMsg);
-              ??? = new ab.b(this, paramToServiceMsg);
-              if (("LongConn.OffPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())))
+              if ("login.auth".equalsIgnoreCase(paramToServiceMsg.getServiceCmd()))
               {
-                this.v.postDelayed((Runnable)???, paramToServiceMsg.getTimeout() + 20000L);
-                QLog.d("MSF.D.Proxy", 1, "PicUpMsg timer start, appSeq: " + paramToServiceMsg.getAppSeq() + ", delayMillis: " + String.valueOf(paramToServiceMsg.getTimeout() + 20000L));
+                this.v.postDelayed((Runnable)???, paramToServiceMsg.getTimeout() + NetConnInfoCenter.sAppTimeoutConfig);
+                ??? = new StringBuilder();
+                ((StringBuilder)???).append("login timer start, appSeq: ");
+                ((StringBuilder)???).append(paramToServiceMsg.getAppSeq());
+                ((StringBuilder)???).append(", delayMillis: ");
+                ((StringBuilder)???).append(String.valueOf(paramToServiceMsg.getTimeout() + NetConnInfoCenter.sAppTimeoutConfig));
+                QLog.d("MSF.D.Proxy", 1, ((StringBuilder)???).toString());
+              }
+              else
+              {
+                this.v.postDelayed((Runnable)???, paramToServiceMsg.getTimeout() + 2000L);
               }
             }
             else
             {
-              if (i == 0) {
-                break label568;
-              }
-              if (y > 0)
-              {
-                long l = System.currentTimeMillis();
-                if ((-1L != z) && (l < z + 120000L))
-                {
-                  QLog.d("MSF.D.Proxy", 1, "succ to pull msf service.");
-                  a(paramToServiceMsg.getUin(), true);
-                }
-                n();
-              }
-              i = a(paramToServiceMsg);
-              return i;
+              this.v.postDelayed((Runnable)???, paramToServiceMsg.getTimeout() + 20000L);
+              ??? = new StringBuilder();
+              ((StringBuilder)???).append("PicUpMsg timer start, appSeq: ");
+              ((StringBuilder)???).append(paramToServiceMsg.getAppSeq());
+              ((StringBuilder)???).append(", delayMillis: ");
+              ((StringBuilder)???).append(String.valueOf(paramToServiceMsg.getTimeout() + 20000L));
+              QLog.d("MSF.D.Proxy", 1, ((StringBuilder)???).toString());
             }
           }
-        }
-        catch (DeadObjectException localDeadObjectException)
-        {
-          for (;;)
+          if (i != 0)
           {
-            b(paramToServiceMsg);
-            QLog.i("MSF.D.Proxy", 1, "DeadObjectException", localDeadObjectException);
-            return -1;
-            if (!"login.auth".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())) {
-              break;
-            }
-            this.v.postDelayed(localDeadObjectException, paramToServiceMsg.getTimeout() + NetConnInfoCenter.sAppTimeoutConfig);
-            QLog.d("MSF.D.Proxy", 1, "login timer start, appSeq: " + paramToServiceMsg.getAppSeq() + ", delayMillis: " + String.valueOf(paramToServiceMsg.getTimeout() + NetConnInfoCenter.sAppTimeoutConfig));
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            for (;;)
+            if (y > 0)
             {
-              if (this.b == null)
+              long l = System.currentTimeMillis();
+              if ((-1L != z) && (l < z + 120000L))
               {
-                b(paramToServiceMsg);
-                return -1;
-                this.v.postDelayed(localException, paramToServiceMsg.getTimeout() + 2000L);
-                continue;
-                label568:
-                c.a().onReqServiceConn();
-                b(paramToServiceMsg);
-                synchronized (this.c)
-                {
-                  i();
-                  if ((y <= 10) || (System.currentTimeMillis() <= z + 60000L) || (A)) {
-                    break;
-                  }
-                  QLog.d("MSF.D.Proxy", 1, "cannot pull msf service.");
-                  A = true;
-                  a(paramToServiceMsg.getUin(), false);
-                  return -1;
-                }
+                QLog.d("MSF.D.Proxy", 1, "succ to pull msf service.");
+                a(paramToServiceMsg.getUin(), true);
               }
+              n();
+            }
+            return a(paramToServiceMsg);
+          }
+          c.a().onReqServiceConn();
+          b(paramToServiceMsg);
+          synchronized (this.c)
+          {
+            i();
+            if ((y > 10) && (System.currentTimeMillis() > z + 60000L) && (!A))
+            {
+              QLog.d("MSF.D.Proxy", 1, "cannot pull msf service.");
+              A = true;
+              a(paramToServiceMsg.getUin(), false);
+              return -1;
             }
           }
-          QLog.i("MSF.D.Proxy", 1, ???.getMessage(), ???);
-          ???.printStackTrace();
         }
+        return -1;
       }
+      catch (Exception localException)
+      {
+        if (this.b == null)
+        {
+          b(paramToServiceMsg);
+          return -1;
+        }
+        QLog.i("MSF.D.Proxy", 1, localException.getMessage(), localException);
+        localException.printStackTrace();
+        return -1;
+      }
+      catch (DeadObjectException localDeadObjectException)
+      {
+        b(paramToServiceMsg);
+        QLog.i("MSF.D.Proxy", 1, "DeadObjectException", localDeadObjectException);
+      }
+      label730:
+      int i = 0;
     }
-    return -1;
   }
   
   public boolean serviceConnected()
@@ -927,7 +1057,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.l
  * JD-Core Version:    0.7.0.1
  */

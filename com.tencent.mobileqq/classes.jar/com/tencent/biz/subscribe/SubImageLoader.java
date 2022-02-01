@@ -18,7 +18,7 @@ public class SubImageLoader
   public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846965);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846843);
     if (paramURLImageView.getLayoutParams() != null)
     {
       localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
@@ -50,29 +50,37 @@ public class SubImageLoader
     try
     {
       localURLDrawableOptions = a(paramURLImageView);
-      if (paramBoolean) {}
-      for (paramString = URLDrawable.getFileDrawable(paramString, localURLDrawableOptions); (paramString != null) && (localWeakReference.get() != null); paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions))
-      {
-        ((ImageView)localWeakReference.get()).setImageDrawable(paramString);
-        return;
+      if (paramBoolean) {
+        paramString = URLDrawable.getFileDrawable(paramString, localURLDrawableOptions);
+      } else {
+        paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
       }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+      if ((paramString == null) || (localWeakReference.get() == null)) {
+        break label81;
+      }
+      ((ImageView)localWeakReference.get()).setImageDrawable(paramString);
       return;
     }
     catch (Error paramString)
     {
-      paramString.printStackTrace();
+      break label72;
     }
+    catch (Exception paramString)
+    {
+      label72:
+      label77:
+      label81:
+      break label77;
+    }
+    paramString.printStackTrace();
+    return;
+    paramString.printStackTrace();
   }
   
   public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841812);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841698);
     if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
     {
       localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
@@ -83,7 +91,7 @@ public class SubImageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubImageLoader
  * JD-Core Version:    0.7.0.1
  */

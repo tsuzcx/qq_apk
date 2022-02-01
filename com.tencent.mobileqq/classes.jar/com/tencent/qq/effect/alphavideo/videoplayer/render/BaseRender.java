@@ -13,26 +13,48 @@ public abstract class BaseRender
   private static final String TAG = "VideoPlayer|BaseRender";
   protected static float squareSize = 1.0F;
   protected ShortBuffer drawListBuffer;
-  protected short[] drawOrder = { 0, 1, 2, 0, 2, 3 };
+  protected short[] drawOrder;
   protected float mLastCropValue = 0.0F;
-  protected int mRenderType = -1;
-  protected boolean mReverseHorizonal = false;
-  protected float[] squareCoords = { -squareSize, squareSize, -squareSize, -squareSize, squareSize, -squareSize, squareSize, squareSize };
-  protected float[] squareCoords_horizonal_reverse = { squareSize, squareSize, squareSize, -squareSize, -squareSize, -squareSize, -squareSize, squareSize };
-  protected float[] squareCoords_vertical_horizonal_reverse = { squareSize, -squareSize, squareSize, squareSize, -squareSize, squareSize, -squareSize, -squareSize };
-  protected float[] squareCoords_vertical_reverse = { -squareSize, -squareSize, -squareSize, squareSize, squareSize, squareSize, squareSize, -squareSize };
-  protected float[] textureCoords = { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F, 0.0F, 1.0F };
+  protected int mRenderType;
+  protected boolean mReverseHorizonal;
+  protected float[] squareCoords;
+  protected float[] squareCoords_horizonal_reverse;
+  protected float[] squareCoords_vertical_horizonal_reverse;
+  protected float[] squareCoords_vertical_reverse;
+  protected float[] textureCoords;
   protected FloatBuffer textureCoordsBuffer;
-  protected float[] textureTransform = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+  protected float[] textureTransform;
   protected FloatBuffer vertexBuffer;
   protected FloatBuffer vertexBuffer_horizonal_reverse;
   protected FloatBuffer vertexBuffer_horizonal_vertical_reverse;
   protected FloatBuffer vertexBuffer_vertical_reverse;
   
-  public BaseRender() {}
+  public BaseRender()
+  {
+    float f = squareSize;
+    this.squareCoords = new float[] { -f, f, -f, -f, f, -f, f, f };
+    this.squareCoords_horizonal_reverse = new float[] { f, f, f, -f, -f, -f, -f, f };
+    this.squareCoords_vertical_reverse = new float[] { -f, -f, -f, f, f, f, f, -f };
+    this.squareCoords_vertical_horizonal_reverse = new float[] { f, -f, f, f, -f, f, -f, -f };
+    this.drawOrder = new short[] { 0, 1, 2, 0, 2, 3 };
+    this.textureCoords = new float[] { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F, 0.0F, 1.0F };
+    this.textureTransform = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+    this.mRenderType = -1;
+    this.mReverseHorizonal = false;
+  }
   
   public BaseRender(int paramInt)
   {
+    float f = squareSize;
+    this.squareCoords = new float[] { -f, f, -f, -f, f, -f, f, f };
+    this.squareCoords_horizonal_reverse = new float[] { f, f, f, -f, -f, -f, -f, f };
+    this.squareCoords_vertical_reverse = new float[] { -f, -f, -f, f, f, f, f, -f };
+    this.squareCoords_vertical_horizonal_reverse = new float[] { f, -f, f, f, -f, f, -f, -f };
+    this.drawOrder = new short[] { 0, 1, 2, 0, 2, 3 };
+    this.textureCoords = new float[] { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F, 0.0F, 1.0F };
+    this.textureTransform = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+    this.mRenderType = -1;
+    this.mReverseHorizonal = false;
     this.mRenderType = paramInt;
   }
   
@@ -44,7 +66,11 @@ public abstract class BaseRender
       if (i == 0) {
         break;
       }
-      LogUtil.e("VideoPlayer|BaseRender", paramString + ": glError " + GLUtils.getEGLErrorString(i));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(GLUtils.getEGLErrorString(i));
+      LogUtil.e("VideoPlayer|BaseRender", localStringBuilder.toString());
     }
   }
   
@@ -64,29 +90,38 @@ public abstract class BaseRender
   
   public void setCropValue(float paramFloat)
   {
-    LogUtil.v("VideoPlayer|BaseRender", "setCropValue aCropValue=" + paramFloat);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setCropValue aCropValue=");
+    ((StringBuilder)localObject).append(paramFloat);
+    LogUtil.v("VideoPlayer|BaseRender", ((StringBuilder)localObject).toString());
     if (this.mLastCropValue != paramFloat)
     {
       this.mLastCropValue = paramFloat;
-      if (paramFloat <= 0.0F) {
-        break label181;
+      float f;
+      if (paramFloat > 0.0F)
+      {
+        f = 1.0F - paramFloat;
+        this.textureCoords = new float[] { 0.0F, f, 0.0F, 1.0F, 0.0F, paramFloat, 0.0F, 1.0F, 0.5F, paramFloat, 0.0F, 1.0F, 0.5F, f, 0.0F, 1.0F };
       }
-    }
-    label181:
-    for (this.textureCoords = new float[] { 0.0F, 1.0F - paramFloat, 0.0F, 1.0F, 0.0F, paramFloat, 0.0F, 1.0F, 0.5F, paramFloat, 0.0F, 1.0F, 0.5F, 1.0F - paramFloat, 0.0F, 1.0F };; this.textureCoords = new float[] { 0.0F - paramFloat / 2.0F, 1.0F, 0.0F, 1.0F, 0.0F - paramFloat / 2.0F, 0.0F, 0.0F, 1.0F, paramFloat / 2.0F + 0.5F, 0.0F, 0.0F, 1.0F, paramFloat / 2.0F + 0.5F, 1.0F, 0.0F, 1.0F })
-    {
-      ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(this.textureCoords.length * 4);
-      localByteBuffer.order(ByteOrder.nativeOrder());
-      this.textureCoordsBuffer = localByteBuffer.asFloatBuffer();
+      else
+      {
+        f = paramFloat / 2.0F;
+        paramFloat = 0.0F - f;
+        f += 0.5F;
+        this.textureCoords = new float[] { paramFloat, 1.0F, 0.0F, 1.0F, paramFloat, 0.0F, 0.0F, 1.0F, f, 0.0F, 0.0F, 1.0F, f, 1.0F, 0.0F, 1.0F };
+      }
+      localObject = ByteBuffer.allocateDirect(this.textureCoords.length * 4);
+      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+      this.textureCoordsBuffer = ((ByteBuffer)localObject).asFloatBuffer();
       this.textureCoordsBuffer.put(this.textureCoords);
       this.textureCoordsBuffer.position(0);
-      return;
     }
   }
   
   public void setRoteTexture()
   {
-    this.squareCoords = new float[] { squareSize, -squareSize, -squareSize, -squareSize, -squareSize, squareSize, squareSize, squareSize };
+    float f = squareSize;
+    this.squareCoords = new float[] { f, -f, -f, -f, -f, f, f, f };
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(this.squareCoords.length * 4);
     localByteBuffer.order(ByteOrder.nativeOrder());
     this.vertexBuffer = localByteBuffer.asFloatBuffer();
@@ -138,7 +173,7 @@ public abstract class BaseRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qq.effect.alphavideo.videoplayer.render.BaseRender
  * JD-Core Version:    0.7.0.1
  */

@@ -29,76 +29,127 @@ public class HttpInterface$JsHttpCallback
   
   public void a(Exception paramException)
   {
-    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
-      return;
-    }
-    LogUtility.c("HttpInterface", "onException >>> ");
-    paramException = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
-    WebViewJS localWebViewJS = new WebViewJS();
-    localWebViewJS.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-    paramException.obj = localWebViewJS;
-    paramException.arg1 = 0;
-    if (TextUtils.isEmpty(this.b)) {}
-    for (localWebViewJS.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");; localWebViewJS.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);"))
+    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight())
     {
+      if (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null) {
+        return;
+      }
+      LogUtility.c("HttpInterface", "onException >>> ");
+      paramException = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
+      WebViewJS localWebViewJS = new WebViewJS();
+      localWebViewJS.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+      paramException.obj = localWebViewJS;
+      paramException.arg1 = 0;
+      StringBuilder localStringBuilder;
+      if (TextUtils.isEmpty(this.b))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"");
+        localStringBuilder.append(this.c);
+        localStringBuilder.append("\"});}void(0);");
+        localWebViewJS.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      }
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("javascript:");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append("({\"guid\":\"");
+        localStringBuilder.append(this.c);
+        localStringBuilder.append("\",\"err\":\"\"});void(0);");
+        localWebViewJS.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      }
       this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(paramException);
-      return;
     }
   }
   
   public void a(JSONObject paramJSONObject)
   {
-    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
-      return;
-    }
-    JSONObject localJSONObject = paramJSONObject;
-    if (paramJSONObject == null) {
-      localJSONObject = new JSONObject();
-    }
-    Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
-    localWebViewJS = new WebViewJS();
-    localWebViewJS.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-    localMessage.obj = localWebViewJS;
-    localMessage.arg1 = 0;
-    for (;;)
+    Object localObject;
+    Message localMessage;
+    WebViewJS localWebViewJS;
+    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight())
     {
-      try
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        localJSONObject.put("guid", this.c);
-        paramJSONObject = localJSONObject.toString();
-        LogUtility.a("HttpInterface", "onResult >>> " + paramJSONObject);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          continue;
-        }
-        localWebViewJS.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject + ");}void(0);");
+      if (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null) {
+        return;
       }
-      catch (JSONException paramJSONObject)
-      {
-        if (!TextUtils.isEmpty(this.b)) {
-          continue;
-        }
-        localWebViewJS.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");
-        continue;
-        localWebViewJS.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);");
-        continue;
+      localObject = paramJSONObject;
+      if (paramJSONObject == null) {
+        localObject = new JSONObject();
       }
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(localMessage);
-      return;
-      paramJSONObject = new JSONObject();
-      paramJSONObject.put("guid", this.c);
-      paramJSONObject.put("content", localJSONObject.toString());
-      paramJSONObject = paramJSONObject.toString();
-      continue;
-      localWebViewJS.jdField_a_of_type_JavaLangString = ("javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject + ");void(0);");
+      localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
+      localWebViewJS = new WebViewJS();
+      localWebViewJS.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+      localMessage.obj = localWebViewJS;
+      localMessage.arg1 = 0;
     }
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      if (bool)
+      {
+        ((JSONObject)localObject).put("guid", this.c);
+        paramJSONObject = ((JSONObject)localObject).toString();
+      }
+      else
+      {
+        paramJSONObject = new JSONObject();
+        paramJSONObject.put("guid", this.c);
+        paramJSONObject.put("content", ((JSONObject)localObject).toString());
+        paramJSONObject = paramJSONObject.toString();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResult >>> ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      LogUtility.a("HttpInterface", ((StringBuilder)localObject).toString());
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess',");
+        ((StringBuilder)localObject).append(paramJSONObject);
+        ((StringBuilder)localObject).append(");}void(0);");
+        localWebViewJS.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("javascript:");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append("(");
+        ((StringBuilder)localObject).append(paramJSONObject);
+        ((StringBuilder)localObject).append(");void(0);");
+        localWebViewJS.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      label278:
+      break label278;
+    }
+    if (TextUtils.isEmpty(this.b))
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"");
+      paramJSONObject.append(this.c);
+      paramJSONObject.append("\"});}void(0);");
+      localWebViewJS.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+    }
+    else
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("javascript:");
+      paramJSONObject.append(this.b);
+      paramJSONObject.append("({\"guid\":\"");
+      paramJSONObject.append(this.c);
+      paramJSONObject.append("\",\"err\":\"json format error\"});void(0);");
+      localWebViewJS.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+    }
+    this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.js.HttpInterface.JsHttpCallback
  * JD-Core Version:    0.7.0.1
  */

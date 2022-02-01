@@ -19,7 +19,10 @@ public final class TdsReaderGrayConfigProcessor
   @NonNull
   public TdsReaderGrayConfigBean a(int paramInt)
   {
-    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent type:");
+    localStringBuilder.append(paramInt);
+    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, localStringBuilder.toString());
     return new TdsReaderGrayConfigBean();
   }
   
@@ -62,7 +65,10 @@ public final class TdsReaderGrayConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.e("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onReqFailed: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed: ");
+    localStringBuilder.append(paramInt);
+    QLog.e("TdsReaderView_TdsReaderGrayConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -72,7 +78,7 @@ public final class TdsReaderGrayConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.tds.TdsReaderGrayConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

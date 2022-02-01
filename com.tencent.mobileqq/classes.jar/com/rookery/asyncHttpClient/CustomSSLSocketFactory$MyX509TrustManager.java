@@ -14,56 +14,67 @@ public class CustomSSLSocketFactory$MyX509TrustManager
   
   CustomSSLSocketFactory$MyX509TrustManager()
   {
-    for (;;)
+    Object localObject4 = null;
+    try
     {
+      localObject1 = KeyStore.getInstance("JKS");
+    }
+    catch (Exception localException2)
+    {
+      Object localObject1;
+      label16:
+      int j;
+      Object localObject3;
+      Object localObject2;
       int i;
+      break label16;
+    }
+    localObject1 = null;
+    j = 0;
+    if (localObject1 != null)
+    {
       try
       {
-        localObject1 = KeyStore.getInstance("JKS");
-        if (localObject1 == null) {}
+        localObject3 = new FileInputStream("trustedCerts");
+        ((KeyStore)localObject1).load((InputStream)localObject3, "passphrase".toCharArray());
+        localObject4 = TrustManagerFactory.getInstance("SunX509", "SunJSSE");
+        ((TrustManagerFactory)localObject4).init((KeyStore)localObject1);
+        localObject4 = ((TrustManagerFactory)localObject4).getTrustManagers();
+        localObject1 = localObject3;
+        localObject3 = localObject4;
       }
       catch (Exception localException1)
       {
-        try
-        {
-          localObject5 = new FileInputStream("trustedCerts");
-          ((KeyStore)localObject1).load((InputStream)localObject5, "passphrase".toCharArray());
-          localObject4 = TrustManagerFactory.getInstance("SunX509", "SunJSSE");
-          ((TrustManagerFactory)localObject4).init((KeyStore)localObject1);
-          localObject4 = ((TrustManagerFactory)localObject4).getTrustManagers();
-          Object localObject1 = localObject5;
-          if (localObject1 != null) {
-            ((FileInputStream)localObject1).close();
-          }
-          i = 0;
-          if (i >= localObject4.length) {
-            break;
-          }
-          if (!(localObject4[i] instanceof X509TrustManager)) {
-            break label133;
-          }
-          this.a = ((X509TrustManager)localObject4[i]);
-          return;
-        }
-        catch (Exception localException2)
-        {
-          Object localObject2;
-          throw localException2;
-        }
-        localException1 = localException1;
-        localObject2 = null;
-        continue;
+        throw localException1;
       }
-      Object localObject3 = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-      ((TrustManagerFactory)localObject3).init((KeyStore)null);
-      Object localObject5 = ((TrustManagerFactory)localObject3).getTrustManagers();
-      localObject3 = localObject4;
-      localObject4 = localObject5;
-      continue;
-      label133:
+    }
+    else
+    {
+      localObject2 = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+      ((TrustManagerFactory)localObject2).init((KeyStore)null);
+      localObject3 = ((TrustManagerFactory)localObject2).getTrustManagers();
+      localObject2 = localObject4;
+    }
+    i = j;
+    if (localObject2 != null)
+    {
+      ((FileInputStream)localObject2).close();
+      i = j;
+    }
+    while (i < localObject3.length)
+    {
+      if ((localObject3[i] instanceof X509TrustManager))
+      {
+        this.a = ((X509TrustManager)localObject3[i]);
+        return;
+      }
       i += 1;
     }
-    throw new Exception("Couldn't initialize");
+    localObject2 = new Exception("Couldn't initialize");
+    for (;;)
+    {
+      throw ((Throwable)localObject2);
+    }
   }
   
   public void checkClientTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)

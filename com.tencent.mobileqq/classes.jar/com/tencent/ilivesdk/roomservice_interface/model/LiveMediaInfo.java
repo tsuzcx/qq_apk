@@ -9,12 +9,18 @@ public class LiveMediaInfo
   
   public String toString()
   {
-    return "LiveMediaInfo is [sig= " + HexUtil.bytesToHexString(this.sig) + ";timeOut=" + this.timeOut + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LiveMediaInfo is [sig= ");
+    localStringBuilder.append(HexUtil.bytesToHexString(this.sig));
+    localStringBuilder.append(";timeOut=");
+    localStringBuilder.append(this.timeOut);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice_interface.model.LiveMediaInfo
  * JD-Core Version:    0.7.0.1
  */

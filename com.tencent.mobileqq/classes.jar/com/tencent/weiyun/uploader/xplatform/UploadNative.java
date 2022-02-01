@@ -23,51 +23,49 @@ public final class UploadNative
   
   private static boolean loadLibrary(String paramString)
   {
-    bool2 = true;
-    bool3 = true;
-    bool1 = true;
     if (sIsLoaded) {
       return true;
     }
-    for (;;)
+    boolean bool2 = false;
+    boolean bool1 = false;
+    try
     {
-      try
-      {
-        if (TextUtils.isEmpty(paramString)) {
-          System.loadLibrary("wlc_upload_uni_v1.0.1");
-        }
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
-      {
-        bool1 = false;
-        XpLog.e("UploadNative", "System.loadLibrary failed..", localUnsatisfiedLinkError1);
-        continue;
-      }
-      catch (Exception localException1)
-      {
-        bool1 = false;
-        XpLog.e("UploadNative", "System.loadLibrary failed..", localException1);
-        continue;
+      if (TextUtils.isEmpty(paramString)) {
+        System.loadLibrary("wlc_upload_uni_v1.0.1");
+      } else {
+        System.load(paramString);
       }
       try
       {
         XpLog.v("UploadNative", "System.loadLibrary wlc_upload_uni_v1.0.1 finish.");
-        XpLog.i("UploadNative", "loadLibrary libwlc_upload_uni_v1.0.1.so result " + bool1 + ", path=" + paramString);
-        sIsLoaded = bool1;
-        return bool1;
+        bool1 = true;
       }
-      catch (Exception localException2)
+      catch (Exception localException1)
       {
-        bool1 = bool3;
-        continue;
+        bool1 = true;
       }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
       {
-        bool1 = bool2;
-        continue;
+        bool1 = true;
       }
-      System.load(paramString);
+      XpLog.e("UploadNative", "System.loadLibrary failed..", localUnsatisfiedLinkError2);
     }
+    catch (Exception localException2)
+    {
+      XpLog.e("UploadNative", "System.loadLibrary failed..", localException2);
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+    {
+      bool1 = bool2;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadLibrary libwlc_upload_uni_v1.0.1.so result ");
+    localStringBuilder.append(bool1);
+    localStringBuilder.append(", path=");
+    localStringBuilder.append(paramString);
+    XpLog.i("UploadNative", localStringBuilder.toString());
+    sIsLoaded = bool1;
+    return bool1;
   }
   
   private native Object[] nativeCalSliceSha1(String paramString, UploadNative.CanceledFlag paramCanceledFlag);
@@ -96,30 +94,34 @@ public final class UploadNative
   
   public String[] calSliceSha1(String paramString, UploadNative.CanceledFlag paramCanceledFlag)
   {
-    int j = 0;
-    if (TextUtils.isEmpty(paramString)) {
+    if (TextUtils.isEmpty(paramString))
+    {
       XpLog.w("UploadNative", "calSliceSha1: the param filePath should be valid.");
-    }
-    do
-    {
       return null;
-      if (!this.mIsInit) {
-        break;
-      }
-      paramString = nativeCalSliceSha1(paramString, paramCanceledFlag);
-    } while (paramString == null);
-    paramCanceledFlag = new String[paramString.length];
-    int k = paramString.length;
-    int i = 0;
-    while (j < k)
-    {
-      paramCanceledFlag[i] = ((String)paramString[j]);
-      j += 1;
-      i += 1;
     }
-    XpLog.e("UploadNative", "UploadSdk hasn't be init.");
+    if (this.mIsInit)
+    {
+      paramString = nativeCalSliceSha1(paramString, paramCanceledFlag);
+      if (paramString != null)
+      {
+        paramCanceledFlag = new String[paramString.length];
+        int k = paramString.length;
+        int j = 0;
+        int i = 0;
+        while (j < k)
+        {
+          paramCanceledFlag[i] = ((String)paramString[j]);
+          j += 1;
+          i += 1;
+        }
+        return paramCanceledFlag;
+      }
+    }
+    else
+    {
+      XpLog.e("UploadNative", "UploadSdk hasn't be init.");
+    }
     return null;
-    return paramCanceledFlag;
   }
   
   public String createUploadTask(long paramLong1, String paramString1, long paramLong2, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String[] paramArrayOfString, long[] paramArrayOfLong)
@@ -165,134 +167,109 @@ public final class UploadNative
   
   public boolean reportError(long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, boolean paramBoolean1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean2, int paramInt2)
   {
-    if (this.mIsInit) {
-      if (paramString1 == null)
-      {
-        paramString1 = "";
-        if (paramString2 != null) {
-          break label64;
-        }
-        paramString2 = "";
-        label23:
-        if (paramString3 != null) {
-          break label67;
-        }
-        paramString3 = "";
-        label32:
-        nativeReportError(paramLong1, paramString1, paramString2, paramString3, paramInt1, paramBoolean1, paramLong2, paramLong3, paramLong4, paramBoolean2, paramInt2);
-      }
-    }
-    for (;;)
+    if (this.mIsInit)
     {
-      return this.mIsInit;
-      break;
-      label64:
-      break label23;
-      label67:
-      break label32;
+      if (paramString1 == null) {
+        paramString1 = "";
+      }
+      if (paramString2 == null) {
+        paramString2 = "";
+      }
+      if (paramString3 == null) {
+        paramString3 = "";
+      }
+      nativeReportError(paramLong1, paramString1, paramString2, paramString3, paramInt1, paramBoolean1, paramLong2, paramLong3, paramLong4, paramBoolean2, paramInt2);
+    }
+    else
+    {
       XpLog.e("UploadNative", "UploadSdk hasn't be init.");
     }
+    return this.mIsInit;
   }
   
   public boolean setHttpProxy(String paramString1, int paramInt, String paramString2, String paramString3)
   {
     if (this.mIsInit) {
       nativeSetHttpProxy(paramString1, paramInt, paramString2, paramString3);
-    }
-    for (;;)
-    {
-      return this.mIsInit;
+    } else {
       XpLog.e("UploadNative", "UploadSdk hasn't be init.");
     }
+    return this.mIsInit;
   }
   
   public boolean setIpConfig(String paramString1, String paramString2)
   {
     if (this.mIsInit) {
       nativeSetIpConfig(paramString1, paramString2);
-    }
-    for (;;)
-    {
-      return this.mIsInit;
+    } else {
       XpLog.e("UploadNative", "UploadSdk hasn't be init.");
     }
+    return this.mIsInit;
   }
   
   public boolean setNetType(int paramInt)
   {
     if (this.mIsInit) {
       nativeSetNetType(paramInt);
-    }
-    for (;;)
-    {
-      return this.mIsInit;
+    } else {
       XpLog.e("UploadNative", "UploadSdk hasn't be init.");
     }
+    return this.mIsInit;
   }
   
   public boolean speedDown()
   {
     if (this.mIsInit) {
       nativeSpeedDown();
-    }
-    for (;;)
-    {
-      return this.mIsInit;
+    } else {
       XpLog.e("UploadNative", "UploadSdk hasn't be init.");
     }
+    return this.mIsInit;
   }
   
   public boolean startTask(String paramString)
   {
     if (this.mIsInit) {
       nativeStartTask(paramString);
-    }
-    for (;;)
-    {
-      return this.mIsInit;
+    } else {
       XpLog.e("UploadNative", "UploadSdk hasn't be init.");
     }
+    return this.mIsInit;
   }
   
   public boolean stopTask(String paramString)
   {
     if (this.mIsInit) {
       nativeStopTask(paramString);
-    }
-    for (;;)
-    {
-      return this.mIsInit;
+    } else {
       XpLog.e("UploadNative", "UploadSdk hasn't be init.");
     }
+    return this.mIsInit;
   }
   
   public boolean trialSpeedUp(int paramInt)
   {
     if (this.mIsInit) {
       nativeTrialSpeedUp(paramInt);
-    }
-    for (;;)
-    {
-      return this.mIsInit;
+    } else {
       XpLog.e("UploadNative", "UploadSdk hasn't be init.");
     }
+    return this.mIsInit;
   }
   
   public boolean vipSpeedUp()
   {
     if (this.mIsInit) {
       nativeVipSpeedUp();
-    }
-    for (;;)
-    {
-      return this.mIsInit;
+    } else {
       XpLog.e("UploadNative", "UploadSdk hasn't be init.");
     }
+    return this.mIsInit;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.uploader.xplatform.UploadNative
  * JD-Core Version:    0.7.0.1
  */

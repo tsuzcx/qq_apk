@@ -4,11 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicManager;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
@@ -20,22 +15,25 @@ import com.tencent.mobileqq.activity.qfileJumpActivity;
 import com.tencent.mobileqq.app.ForwardMiniAppThirdPartyHelper;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.forward.ForwardIMByThirdPartyHelper;
+import com.tencent.mobileqq.kandian.biz.ugc.api.IRIJDeliverUGCUtils;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicEngine;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicManager;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.mini.api.QQMiniManager;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.troopsetting.api.ITroopSettingApi;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.open.OpenProxy;
 import com.tencent.open.agent.BindGroupActivity;
 import com.tencent.open.agent.BindTroopPreVerificationFragment;
 import com.tencent.open.agent.JoinTroopPreVerificationFragment;
+import com.tencent.open.agent.util.AuthParamUtil;
 import com.tencent.open.data.SharedPrefs;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.QRBridgeActivity;
 import cooperation.qzone.QZoneHelper;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
@@ -67,21 +65,27 @@ public class JumpLoginResult
   private boolean a(Activity paramActivity)
   {
     Bundle localBundle = this.jdField_a_of_type_AndroidContentIntent.getBundleExtra("key_params");
-    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("fromThirdAppByOpenSDK", false))
+    Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+    boolean bool1 = false;
+    if (localIntent.getBooleanExtra("fromThirdAppByOpenSDK", false))
     {
-      Intent localIntent = new Intent();
+      localIntent = new Intent();
       localIntent.putExtra("key_params", localBundle);
       int i = localBundle.getInt("action");
-      if (i == 3) {
+      boolean bool2 = true;
+      if (i == 3)
+      {
         PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicTransFragmentActivity.class, JoinTroopPreVerificationFragment.class);
-      }
-      while (i != 1) {
         return true;
       }
-      PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicTransFragmentActivity.class, BindTroopPreVerificationFragment.class);
-      return true;
+      bool1 = bool2;
+      if (i == 1)
+      {
+        PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicTransFragmentActivity.class, BindTroopPreVerificationFragment.class);
+        bool1 = bool2;
+      }
     }
-    return false;
+    return bool1;
   }
   
   private boolean a(AppRuntime paramAppRuntime, Activity paramActivity)
@@ -91,26 +95,26 @@ public class JumpLoginResult
     if ((str2 != null) && ((str2.startsWith("mqqopensdkapi://bizAgent/")) || (str2.startsWith("http://qm.qq.com/cgi-bin/")) || (str2.startsWith("mqq://shop/")) || (str2.startsWith("mqqapi://wallet/open")) || (str2.startsWith("mqqmdpass://wallet/modify_pass")) || (str2.startsWith("mqqapi://qqdataline/openqqdataline")) || (str2.startsWith("mqqapi://dating/")) || (str2.startsWith("mqqapi://qlink/openqlink")) || (str2.startsWith("mqqapi://qqc2b/callc2bphone"))))
     {
       paramAppRuntime = a(paramAppRuntime);
-      if (paramAppRuntime != null) {
-        break label136;
+      if (paramAppRuntime == null)
+      {
+        QLog.e("JumpLoginResult", 1, "handleScheduleJumpAction, app is null");
+        return false;
       }
-      QLog.e("JumpLoginResult", 1, "handleScheduleJumpAction, app is null");
-    }
-    label136:
-    do
-    {
-      return false;
       paramAppRuntime = JumpParser.a(paramAppRuntime, paramActivity, str2);
-    } while (paramAppRuntime == null);
-    paramAppRuntime.c(str1);
-    paramAppRuntime.a();
-    return true;
+      if (paramAppRuntime != null)
+      {
+        paramAppRuntime.c(str1);
+        paramAppRuntime.a();
+        return true;
+      }
+    }
+    return false;
   }
   
   private boolean a(AppRuntime paramAppRuntime, Activity paramActivity, String paramString, boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("authority_start_qq_login", false))
+    if (AuthParamUtil.a(this.jdField_a_of_type_AndroidContentIntent))
     {
       Intent localIntent = new Intent("action_login_sucess");
       localIntent.putExtra("login_success_uin", paramString);
@@ -127,7 +131,7 @@ public class JumpLoginResult
   {
     Intent localIntent = new Intent(paramActivity, SplashActivity.class);
     Object localObject = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_action");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((BindGroupActivity.class.getSimpleName().equals(localObject)) || (ChatSettingForTroop.class.getSimpleName().equals(localObject)) || (AddFriendLogicActivity.class.getSimpleName().equals(localObject)) || (ForwardIMByThirdPartyHelper.class.getSimpleName().equals(localObject)) || (ForwardMiniAppThirdPartyHelper.class.getSimpleName().equals(localObject)))) {
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((BindGroupActivity.class.getSimpleName().equals(localObject)) || (((ITroopSettingApi)QRoute.api(ITroopSettingApi.class)).getSimpleNameForTroopSettingActivity().equals(localObject)) || ("key_sdk_add_friend".equals(localObject)) || (ForwardIMByThirdPartyHelper.class.getSimpleName().equals(localObject)) || (ForwardMiniAppThirdPartyHelper.class.getSimpleName().equals(localObject)))) {
       localIntent.putExtras(this.jdField_a_of_type_AndroidContentIntent.getExtras());
     }
     localIntent.addFlags(67108864);
@@ -149,7 +153,7 @@ public class JumpLoginResult
       }
     }
     paramActivity.startActivity(localIntent);
-    paramActivity.overridePendingTransition(2130772093, 0);
+    paramActivity.overridePendingTransition(2130772119, 0);
   }
   
   private boolean b(Activity paramActivity)
@@ -169,8 +173,14 @@ public class JumpLoginResult
   {
     String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("scheme_content");
     String str1 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("pkg_name");
-    if (QLog.isColorLevel()) {
-      QLog.d("ODProxy", 2, "handleODJumpAction: schemeStr:" + str2 + "pkgName :" + str1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleODJumpAction: schemeStr:");
+      localStringBuilder.append(str2);
+      localStringBuilder.append("pkgName :");
+      localStringBuilder.append(str1);
+      QLog.d("ODProxy", 2, localStringBuilder.toString());
     }
     if ((str2 != null) && (str2.startsWith("mqqapi://od")))
     {
@@ -199,45 +209,48 @@ public class JumpLoginResult
       paramActivity.setResult(-1, paramAppRuntime);
       return true;
     }
-    if ((JumpActivity.e) || (JumpActivity.f))
+    if ((!JumpActivity.sIsStartFromWpa) && (!JumpActivity.sIsStartFromThirdParty))
     {
-      paramActivity.setResult(-1);
-      return true;
-    }
-    paramString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("scheme_content");
-    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isActionSend", false))
-    {
-      paramActivity.setResult(-1);
-      return true;
-    }
-    String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("pkg_name");
-    if ((paramString != null) && (paramString.length() > 0))
-    {
-      paramAppRuntime = a(paramAppRuntime);
-      if (paramAppRuntime == null)
+      paramString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("scheme_content");
+      if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isActionSend", false))
       {
-        QLog.e("JumpLoginResult", 1, "handleScheduleJumpAction, app is null");
-        return false;
+        paramActivity.setResult(-1);
+        return true;
       }
-      paramAppRuntime = JumpParser.a(paramAppRuntime, paramActivity, paramString);
-      if ((!TextUtils.isEmpty(str)) || ("web".equals(paramAppRuntime.b("src_type"))) || (paramAppRuntime.m()) || (paramAppRuntime.n()))
+      String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("pkg_name");
+      if ((paramString != null) && (paramString.length() > 0))
       {
-        paramAppRuntime.c(str);
-        if ((paramAppRuntime.m()) || (((IMiniAppService)QRoute.api(IMiniAppService.class)).asyncShareMiniProgram(paramAppRuntime))) {
-          this.jdField_a_of_type_Boolean = false;
+        paramAppRuntime = a(paramAppRuntime);
+        if (paramAppRuntime == null)
+        {
+          QLog.e("JumpLoginResult", 1, "handleScheduleJumpAction, app is null");
+          return false;
         }
-        paramAppRuntime.a();
-        return true;
+        paramAppRuntime = JumpParser.a(paramAppRuntime, paramActivity, paramString);
+        if ((TextUtils.isEmpty(str)) && (!"web".equals(paramAppRuntime.b("src_type"))) && (!paramAppRuntime.g()) && (!paramAppRuntime.h()))
+        {
+          if (("h5".equalsIgnoreCase(paramAppRuntime.b("jump_from"))) && (paramAppRuntime.i()))
+          {
+            this.jdField_a_of_type_AndroidContentIntent.putExtra("package_from_h5", "pakage_from_h5");
+            this.jdField_a_of_type_AndroidContentIntent.putExtra("jump_action_from_h5", paramString);
+            b(paramActivity);
+            return true;
+          }
+        }
+        else
+        {
+          paramAppRuntime.c(str);
+          if ((paramAppRuntime.g()) || (((IMiniAppService)QRoute.api(IMiniAppService.class)).asyncShareMiniProgram(paramAppRuntime))) {
+            this.jdField_a_of_type_Boolean = false;
+          }
+          paramAppRuntime.a();
+          return true;
+        }
       }
-      if (("h5".equalsIgnoreCase(paramAppRuntime.b("jump_from"))) && (paramAppRuntime.l()))
-      {
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("package_from_h5", "pakage_from_h5");
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("jump_action_from_h5", paramString);
-        b(paramActivity);
-        return true;
-      }
+      return false;
     }
-    return false;
+    paramActivity.setResult(-1);
+    return true;
   }
   
   private boolean c(Activity paramActivity)
@@ -260,8 +273,14 @@ public class JumpLoginResult
   {
     String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("scheme_content");
     String str1 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("pkg_name");
-    if (QLog.isColorLevel()) {
-      QLog.d("schedule", 2, "handleScheduleJumpAction: schemeStr:" + str2 + "pkgName :" + str1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleScheduleJumpAction: schemeStr:");
+      localStringBuilder.append(str2);
+      localStringBuilder.append("pkgName :");
+      localStringBuilder.append(str1);
+      QLog.d("schedule", 2, localStringBuilder.toString());
     }
     if ((str2 != null) && (str2.startsWith("mqqapi://schedule/showDetail?")))
     {
@@ -281,60 +300,66 @@ public class JumpLoginResult
   
   private boolean d(AppRuntime paramAppRuntime, Activity paramActivity)
   {
+    Object localObject1 = this.jdField_a_of_type_AndroidContentIntent;
     boolean bool2 = false;
-    boolean bool3 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("is_from_king_moment", false);
-    String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("king_moment_cover_url");
+    boolean bool3 = ((Intent)localObject1).getBooleanExtra("is_from_king_moment", false);
+    localObject1 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("king_moment_cover_url");
     long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("arg_wang_zhe_app_id", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("KingShareReadInjoyModule", 2, "url is " + str);
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("url is ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("KingShareReadInjoyModule", 2, ((StringBuilder)localObject2).toString());
     }
     boolean bool1 = bool2;
     if (bool3)
     {
       bool1 = bool2;
-      if (!TextUtils.isEmpty(str))
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        Intent localIntent = new Intent(paramActivity, ReadInJoyDeliverVideoActivity.class);
-        localIntent.putExtra("arg_is_from_wang_zhe", true);
-        localIntent.putExtra("arg_wang_zhe_app_id", l);
-        paramActivity.startActivity(localIntent);
+        localObject2 = new Intent(paramActivity, ((IRIJDeliverUGCUtils)QRoute.api(IRIJDeliverUGCUtils.class)).getReadInJoyDeliverVideoActivityClazz());
+        bool2 = true;
+        ((Intent)localObject2).putExtra("arg_is_from_wang_zhe", true);
+        ((Intent)localObject2).putExtra("arg_wang_zhe_app_id", l);
+        paramActivity.startActivity((Intent)localObject2);
         paramAppRuntime = a(paramAppRuntime);
-        if (paramAppRuntime != null) {
-          break label156;
+        if (paramAppRuntime == null)
+        {
+          QLog.e("JumpLoginResult", 1, "handleScheduleJumpAction, app is null");
+          return true;
         }
-        QLog.e("JumpLoginResult", 1, "handleScheduleJumpAction, app is null");
-        bool1 = true;
+        paramActivity = ((IReadInJoyLogicManager)paramAppRuntime.getRuntimeService(IReadInJoyLogicManager.class)).getReadInJoyLogicEngine();
+        bool1 = bool2;
+        if (paramActivity != null)
+        {
+          paramActivity.a((String)localObject1, paramAppRuntime.getAccount());
+          bool1 = bool2;
+        }
       }
     }
     return bool1;
-    label156:
-    paramActivity = (ReadInJoyLogicManager)paramAppRuntime.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
-    if (paramActivity != null) {
-      paramActivity.a().a(str, paramAppRuntime.getAccount());
-    }
-    return true;
   }
   
   private boolean e(AppRuntime paramAppRuntime, Activity paramActivity)
   {
-    boolean bool = false;
     if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("UploadPhoto.key_from_album_shortcut", false))
     {
       Bundle localBundle = this.jdField_a_of_type_AndroidContentIntent.getExtras();
       QZoneHelper.goQZoneAlbumPhotoList(paramActivity, localBundle.getString("UploadPhoto.key_album_id"), localBundle.getLong("UploadPhoto.key_album_owner_uin", 0L), String.valueOf(paramAppRuntime.getLongAccountUin()));
       paramActivity.finish();
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public void a(Activity paramActivity, String paramString)
   {
     QLog.d("JumpLoginResult", 1, "onQrCodeLoginSuccess");
-    Intent localIntent = paramActivity.getIntent();
-    if ((localIntent != null) && (localIntent.getBooleanExtra("authority_start_qq_login", false)))
+    if (AuthParamUtil.a(paramActivity.getIntent()))
     {
-      localIntent = new Intent("action_login_sucess");
+      Intent localIntent = new Intent("action_login_sucess");
       localIntent.putExtra("param_qr_code_url", paramString);
       localIntent.putExtra("param_is_qr_code_login", true);
       paramActivity.sendBroadcast(localIntent);
@@ -344,13 +369,19 @@ public class JumpLoginResult
   public void a(QBaseActivity paramQBaseActivity, String paramString)
   {
     a(paramQBaseActivity);
-    if (this.jdField_a_of_type_AndroidContentIntent == null)
+    Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+    if (localIntent == null)
     {
       QLog.e("JumpLoginResult", 1, "handleIMBlockLogin intent is null");
       return;
     }
-    if ((this.jdField_a_of_type_AndroidContentIntent.getFlags() & 0x100000) != 0) {}
-    for (int i = 1; i != 0; i = 0)
+    int i;
+    if ((localIntent.getFlags() & 0x100000) != 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
       QLog.d("JumpLoginResult", 1, "launchedFromHistory is true, return");
       return;
@@ -362,7 +393,6 @@ public class JumpLoginResult
   
   public boolean a(AppRuntime paramAppRuntime, Activity paramActivity, String paramString)
   {
-    int i = 0;
     for (;;)
     {
       try
@@ -374,94 +404,82 @@ public class JumpLoginResult
           return this.jdField_a_of_type_Boolean;
         }
         this.jdField_a_of_type_AndroidContentIntent = localIntent;
-        bool1 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("IS_ADD_ACCOUNT", false);
+        boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("IS_ADD_ACCOUNT", false);
         OpenProxy.a().a(paramString);
-        if ((localIntent.getFlags() & 0x100000) != 0) {
-          i = 1;
+        if ((localIntent.getFlags() & 0x100000) == 0) {
+          break label554;
         }
-        boolean bool2 = a(paramAppRuntime, paramActivity);
-        if (!bool2) {
-          continue;
+        i = 1;
+        if ((!a(paramAppRuntime, paramActivity)) && ((i != 0) || (!a(paramAppRuntime, paramActivity, paramString, false))) && ((i != 0) || (!b(paramAppRuntime, paramActivity, paramString))) && (!c(paramActivity)) && (!b(paramActivity)) && (!b(paramAppRuntime, paramActivity)) && (!a(paramActivity))) {
+          if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("shortcut_jump_key") != null)
+          {
+            paramAppRuntime = (Intent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("shortcut_jump_key");
+            paramAppRuntime.setClass(paramActivity, ShortcutRouterActivity.class);
+            paramActivity.startActivity(paramAppRuntime);
+          }
+          else if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("jump_shortcut_dataline", false))
+          {
+            paramAppRuntime = new Intent();
+            paramAppRuntime.putExtras(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+            paramAppRuntime.setClass(paramActivity, qfileJumpActivity.class);
+            paramActivity.startActivity(paramAppRuntime);
+          }
+          else
+          {
+            paramString = this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("QLINK_SHORTCUT_JUMP_KEY");
+            if (paramString != null)
+            {
+              paramAppRuntime = new Intent(paramActivity, JumpActivity.class);
+              paramAppRuntime.putExtra("_goto_qlink_when_login_suc_", true);
+              paramAppRuntime.putExtra("IS_LOGIN_SUC_CALL", true);
+              paramActivity.startActivity(paramAppRuntime);
+            }
+            else if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("QFILE_SHORTCUT_JUMP_KEY") != null)
+            {
+              paramAppRuntime = new Intent(paramActivity, JumpActivity.class);
+              paramAppRuntime.putExtra("_goto_qfile_when_login_suc_", true);
+              paramAppRuntime.putExtra("IS_LOGIN_SUC_CALL", true);
+              paramActivity.startActivity(paramAppRuntime);
+            }
+            else if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("qlink_share_intent_data") != null)
+            {
+              paramAppRuntime = (Intent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("qlink_share_intent_data");
+              paramAppRuntime.putExtra("qlink_share_login_suc_flag", true);
+              paramActivity.startActivity(paramAppRuntime);
+            }
+            else if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("MINI_SHORTCUT_JUMP_KEY") != null)
+            {
+              paramAppRuntime = (Intent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("MINI_SHORTCUT_JUMP_KEY");
+              paramString = new Intent(paramActivity, QQMiniManager.getAppBrandUIClass());
+              paramString.putExtras(paramAppRuntime);
+              paramActivity.startActivity(paramString);
+            }
+            else if ((!c(paramAppRuntime, paramActivity)) && (!d(paramAppRuntime, paramActivity)) && (!e(paramAppRuntime, paramActivity)))
+            {
+              paramActivity.setResult(-1);
+              if (!bool) {
+                b(paramActivity);
+              }
+            }
+          }
         }
       }
       catch (Exception paramAppRuntime)
       {
-        boolean bool1;
-        QLog.e("JumpLoginResult", 1, "loginSuccess error: " + paramAppRuntime.getMessage());
-        continue;
-        if (!this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("jump_shortcut_dataline", false)) {
-          continue;
-        }
-        paramAppRuntime = new Intent();
-        paramAppRuntime.putExtras(this.jdField_a_of_type_AndroidContentIntent.getExtras());
-        paramAppRuntime.setClass(paramActivity, qfileJumpActivity.class);
-        paramActivity.startActivity(paramAppRuntime);
-        continue;
-        if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("QLINK_SHORTCUT_JUMP_KEY") == null) {
-          continue;
-        }
-        paramAppRuntime = new Intent(paramActivity, JumpActivity.class);
-        paramAppRuntime.putExtra("_goto_qlink_when_login_suc_", true);
-        paramAppRuntime.putExtra("IS_LOGIN_SUC_CALL", true);
-        paramActivity.startActivity(paramAppRuntime);
-        continue;
-        if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("QFILE_SHORTCUT_JUMP_KEY") == null) {
-          continue;
-        }
-        paramAppRuntime = new Intent(paramActivity, JumpActivity.class);
-        paramAppRuntime.putExtra("_goto_qfile_when_login_suc_", true);
-        paramAppRuntime.putExtra("IS_LOGIN_SUC_CALL", true);
-        paramActivity.startActivity(paramAppRuntime);
-        continue;
-        if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("qlink_share_intent_data") == null) {
-          continue;
-        }
-        paramAppRuntime = (Intent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("qlink_share_intent_data");
-        paramAppRuntime.putExtra("qlink_share_login_suc_flag", true);
-        paramActivity.startActivity(paramAppRuntime);
-        continue;
-        if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("QREADER_SHORTCUT_JUMP_KEY") == null) {
-          continue;
-        }
-        paramAppRuntime = (Intent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("QREADER_SHORTCUT_JUMP_KEY");
-        paramString = new Intent(paramActivity, QRBridgeActivity.class);
-        paramString.putExtras(paramAppRuntime);
-        paramActivity.startActivity(paramString);
-        continue;
-        if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("MINI_SHORTCUT_JUMP_KEY") == null) {
-          continue;
-        }
-        paramAppRuntime = (Intent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("MINI_SHORTCUT_JUMP_KEY");
-        paramString = new Intent(paramActivity, QQMiniManager.getAppBrandUIClass());
-        paramString.putExtras(paramAppRuntime);
-        paramActivity.startActivity(paramString);
-        continue;
-        if ((c(paramAppRuntime, paramActivity)) || (d(paramAppRuntime, paramActivity)) || (e(paramAppRuntime, paramActivity))) {
-          continue;
-        }
-        paramActivity.setResult(-1);
-        if (bool1) {
-          continue;
-        }
-        b(paramActivity);
-        continue;
+        paramActivity = new StringBuilder();
+        paramActivity.append("loginSuccess error: ");
+        paramActivity.append(paramAppRuntime.getMessage());
+        QLog.e("JumpLoginResult", 1, paramActivity.toString());
       }
       return this.jdField_a_of_type_Boolean;
-      if (((i != 0) || (!a(paramAppRuntime, paramActivity, paramString, false))) && ((i != 0) || (!b(paramAppRuntime, paramActivity, paramString))) && (!c(paramActivity)) && (!b(paramActivity)) && (!b(paramAppRuntime, paramActivity)) && (!a(paramActivity)))
-      {
-        if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("shortcut_jump_key") == null) {
-          continue;
-        }
-        paramAppRuntime = (Intent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("shortcut_jump_key");
-        paramAppRuntime.setClass(paramActivity, ShortcutRouterActivity.class);
-        paramActivity.startActivity(paramAppRuntime);
-      }
+      label554:
+      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.JumpLoginResult
  * JD-Core Version:    0.7.0.1
  */

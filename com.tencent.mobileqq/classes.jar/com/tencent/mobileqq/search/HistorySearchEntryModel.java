@@ -68,17 +68,20 @@ public class HistorySearchEntryModel
   
   private int a(List<IContactSearchable> paramList, long paramLong)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return -1;
-    }
-    int j = paramList.size();
-    int i = 0;
-    while (i < j)
+    if (paramList != null)
     {
-      if (((SearchHistory)((IContactSearchable)this.jdField_a_of_type_JavaUtilList.get(i)).a()).getId() == paramLong) {
-        return i;
+      if (paramList.size() <= 0) {
+        return -1;
       }
-      i += 1;
+      int j = paramList.size();
+      int i = 0;
+      while (i < j)
+      {
+        if (((SearchHistory)((IContactSearchable)this.jdField_a_of_type_JavaUtilList.get(i)).a()).getId() == paramLong) {
+          return i;
+        }
+        i += 1;
+      }
     }
     return -1;
   }
@@ -100,7 +103,12 @@ public class HistorySearchEntryModel
     if (QLog.isColorLevel())
     {
       long l2 = System.currentTimeMillis();
-      QLog.d("searchUtils", 2, "initSearchHistoryData() time cost = " + (l2 - l1) + " , size = " + localArrayList.size());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initSearchHistoryData() time cost = ");
+      ((StringBuilder)localObject).append(l2 - l1);
+      ((StringBuilder)localObject).append(" , size = ");
+      ((StringBuilder)localObject).append(localArrayList.size());
+      QLog.d("searchUtils", 2, ((StringBuilder)localObject).toString());
     }
     return localArrayList;
   }
@@ -108,10 +116,10 @@ public class HistorySearchEntryModel
   private boolean a(SearchHistory paramSearchHistory)
   {
     SearchHistoryManager localSearchHistoryManager = (SearchHistoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SEARCHHISTORY_MANAGER);
-    if ((localSearchHistoryManager == null) || (paramSearchHistory == null)) {
-      return false;
+    if ((localSearchHistoryManager != null) && (paramSearchHistory != null)) {
+      return localSearchHistoryManager.b(paramSearchHistory);
     }
-    return localSearchHistoryManager.b(paramSearchHistory);
+    return false;
   }
   
   private void e()
@@ -124,17 +132,17 @@ public class HistorySearchEntryModel
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131563183, null));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131563008, null));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     paramContext = new AbsListView.LayoutParams(-1, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 7.0F));
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramContext);
-    paramContext = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562959, null);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363848));
-    this.c = ((TextView)paramContext.findViewById(2131363849));
-    this.d = ((TextView)paramContext.findViewById(2131363850));
+    paramContext = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562778, null);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363776));
+    this.c = ((TextView)paramContext.findViewById(2131363777));
+    this.d = ((TextView)paramContext.findViewById(2131363778));
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130850655);
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130850581);
     this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter = new ContactsSearchResultAdapter(paramQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentWidgetXListView, null, new HistorySearchEntryModel.1(this), new HistorySearchEntryModel.2(this), false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new HistorySearchEntryModel.3(this));
     return this.jdField_a_of_type_ComTencentWidgetXListView;
@@ -150,8 +158,9 @@ public class HistorySearchEntryModel
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.c();
+    ContactsSearchResultAdapter localContactsSearchResultAdapter = this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter;
+    if (localContactsSearchResultAdapter != null) {
+      localContactsSearchResultAdapter.c();
     }
   }
   
@@ -162,37 +171,44 @@ public class HistorySearchEntryModel
   
   public void d()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetXListView == null) || (this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter == null)) {
-      return;
-    }
-    int k = View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_ComTencentWidgetXListView.getWidth(), 0);
-    Object localObject = null;
-    int i = 0;
-    int j = 0;
-    while (j < this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.getCount())
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView;
+    if (localObject != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.getView(j, (View)localObject, this.jdField_a_of_type_ComTencentWidgetXListView);
-      if (j == 0) {
-        ((View)localObject).setLayoutParams(new ViewGroup.LayoutParams(k, -2));
+      if (this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter == null) {
+        return;
       }
-      ((View)localObject).measure(k, 0);
-      i += ((View)localObject).getMeasuredHeight();
-      j += 1;
+      int k = View.MeasureSpec.makeMeasureSpec(((XListView)localObject).getWidth(), 0);
+      localObject = null;
+      int j = 0;
+      int i = 0;
+      while (j < this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.getCount())
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.getView(j, (View)localObject, this.jdField_a_of_type_ComTencentWidgetXListView);
+        if (j == 0) {
+          ((View)localObject).setLayoutParams(new ViewGroup.LayoutParams(k, -2));
+        }
+        ((View)localObject).measure(k, 0);
+        i += ((View)localObject).getMeasuredHeight();
+        j += 1;
+      }
+      j = i;
+      if (this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.getCount() > 0) {
+        j = i + UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 20.0F);
+      }
+      localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).height = (j + this.jdField_a_of_type_ComTencentWidgetXListView.getDividerHeight() * (this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.getCount() - 1));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    j = i;
-    if (this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.getCount() > 0) {
-      j = i + UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 20.0F);
-    }
-    localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).height = (this.jdField_a_of_type_ComTencentWidgetXListView.getDividerHeight() * (this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.getCount() - 1) + j);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
+    Object localObject;
+    int i;
     if (1 == paramMessage.what)
     {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+      paramMessage = this.jdField_a_of_type_JavaUtilList;
+      if ((paramMessage != null) && (paramMessage.size() > 0))
       {
         this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.a();
         this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.a(this.jdField_a_of_type_JavaUtilList);
@@ -201,89 +217,90 @@ public class HistorySearchEntryModel
           if (!this.jdField_b_of_type_Boolean)
           {
             this.jdField_b_of_type_Boolean = true;
-            SearchUtils.a("home_page", "exp_history", new String[] { "" + this.jdField_a_of_type_JavaUtilList.size() });
+            paramMessage = new StringBuilder();
+            paramMessage.append("");
+            paramMessage.append(this.jdField_a_of_type_JavaUtilList.size());
+            SearchUtils.a("home_page", "exp_history", new String[] { paramMessage.toString() });
             UniteSearchReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, SearchEntryFragment.a(this.jdField_a_of_type_Int), "0X8009D18", 0, 0, null, null);
           }
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchHistorySearchEntryModel$OnHistorySearchCountListener != null)
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqSearchHistorySearchEntryModel$OnHistorySearchCountListener;
+      if (paramMessage != null)
       {
-        paramMessage = this.jdField_a_of_type_ComTencentMobileqqSearchHistorySearchEntryModel$OnHistorySearchCountListener;
-        if (this.jdField_a_of_type_JavaUtilList == null)
-        {
+        localObject = this.jdField_a_of_type_JavaUtilList;
+        if (localObject == null) {
           i = 0;
-          paramMessage.a(i);
+        } else {
+          i = ((List)localObject).size();
         }
+        paramMessage.a(i);
       }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("searchUtils", 2, "load history data finish");
-        }
-        d();
-        this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-      }
-    }
-    while (paramMessage.what != 3) {
-      for (;;)
-      {
-        return true;
-        i = this.jdField_a_of_type_JavaUtilList.size();
-      }
-    }
-    long l = ((Long)paramMessage.obj).longValue();
-    int i = a(this.jdField_a_of_type_JavaUtilList, l);
-    if (i != -1)
-    {
-      paramMessage = (SearchHistory)((IContactSearchable)this.jdField_a_of_type_JavaUtilList.remove(i)).a();
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.c.setVisibility(8);
-        this.d.setVisibility(8);
-      }
-      if (paramMessage == null) {
-        break label516;
-      }
-      if (paramMessage.type == 0) {
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      label339:
-      ReportController.b(null, "CliOper", "", "", "0X8007620", "0X8007620", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.a();
-      this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.a(this.jdField_a_of_type_JavaUtilList);
-      UniteSearchReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, SearchEntryFragment.a(this.jdField_a_of_type_Int), "0X8009D1A", i, 0, null, null);
       if (QLog.isColorLevel()) {
-        QLog.d("searchUtils", 2, "delete history data finish : troopUin = " + paramMessage.troopUin + "displayname = " + paramMessage.displayName);
+        QLog.d("searchUtils", 2, "load history data finish");
       }
-      for (;;)
-      {
-        d();
-        this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-        break;
-        if ((paramMessage.type != 1) && (paramMessage.type != 3000)) {
-          break label516;
-        }
-        i = 2;
-        break label339;
-        if (QLog.isColorLevel()) {
-          QLog.d("searchUtils", 2, "delete history data error");
-        }
-      }
-      label516:
-      i = 0;
+      d();
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      return true;
     }
+    if (paramMessage.what == 3)
+    {
+      long l = ((Long)paramMessage.obj).longValue();
+      i = a(this.jdField_a_of_type_JavaUtilList, l);
+      if (i != -1)
+      {
+        paramMessage = (SearchHistory)((IContactSearchable)this.jdField_a_of_type_JavaUtilList.remove(i)).a();
+        if (this.jdField_a_of_type_JavaUtilList.size() <= 0)
+        {
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.c.setVisibility(8);
+          this.d.setVisibility(8);
+        }
+        if (paramMessage != null)
+        {
+          if (paramMessage.type == 0)
+          {
+            i = 1;
+            break label371;
+          }
+          if ((paramMessage.type == 1) || (paramMessage.type == 3000))
+          {
+            i = 2;
+            break label371;
+          }
+        }
+        i = 0;
+        label371:
+        ReportController.b(null, "CliOper", "", "", "0X8007620", "0X8007620", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.a();
+        this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.a(this.jdField_a_of_type_JavaUtilList);
+        UniteSearchReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, SearchEntryFragment.a(this.jdField_a_of_type_Int), "0X8009D1A", i, 0, null, null);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("delete history data finish : troopUin = ");
+          ((StringBuilder)localObject).append(paramMessage.troopUin);
+          ((StringBuilder)localObject).append("displayname = ");
+          ((StringBuilder)localObject).append(paramMessage.displayName);
+          QLog.d("searchUtils", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("searchUtils", 2, "delete history data error");
+      }
+      d();
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.HistorySearchEntryModel
  * JD-Core Version:    0.7.0.1
  */

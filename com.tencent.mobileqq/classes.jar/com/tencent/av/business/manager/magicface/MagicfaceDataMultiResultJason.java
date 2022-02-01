@@ -14,12 +14,34 @@ public class MagicfaceDataMultiResultJason
   
   public String toString()
   {
-    return "MagicfaceDataMultiResultJason{divers_ani_id1='" + this.divers_ani_hit + '\'' + ", divers_ani_id2='" + this.divers_ani_miss + '\'' + ", divers_ani_start=" + this.divers_ani_start + ", divers_ani_hit_frame=" + this.divers_ani_hit_frame + ", divers_ani_miss_frame=" + this.divers_ani_miss_frame + ", divers_x=" + this.divers_x + ", divers_y=" + this.divers_y + ", divers_wid=" + this.divers_wid + ", divers_hei=" + this.divers_hei + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MagicfaceDataMultiResultJason{divers_ani_id1='");
+    localStringBuilder.append(this.divers_ani_hit);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", divers_ani_id2='");
+    localStringBuilder.append(this.divers_ani_miss);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", divers_ani_start=");
+    localStringBuilder.append(this.divers_ani_start);
+    localStringBuilder.append(", divers_ani_hit_frame=");
+    localStringBuilder.append(this.divers_ani_hit_frame);
+    localStringBuilder.append(", divers_ani_miss_frame=");
+    localStringBuilder.append(this.divers_ani_miss_frame);
+    localStringBuilder.append(", divers_x=");
+    localStringBuilder.append(this.divers_x);
+    localStringBuilder.append(", divers_y=");
+    localStringBuilder.append(this.divers_y);
+    localStringBuilder.append(", divers_wid=");
+    localStringBuilder.append(this.divers_wid);
+    localStringBuilder.append(", divers_hei=");
+    localStringBuilder.append(this.divers_hei);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfaceDataMultiResultJason
  * JD-Core Version:    0.7.0.1
  */

@@ -30,26 +30,28 @@ class LiteTcpConnection$ConnWorker
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 1) {
-      LiteTcpConnection.a(this.a, LiteTcpConnection.a(this.a));
-    }
-    do
+    if (paramMessage.what == 1)
     {
+      paramMessage = this.a;
+      LiteTcpConnection.a(paramMessage, LiteTcpConnection.a(paramMessage));
       return;
-      if (paramMessage.what == 2)
-      {
-        LiteTcpConnection.a(this.a);
-        return;
-      }
-    } while (paramMessage.what != 3);
-    LiteTcpConnection.a(this.a).quit();
-    LiteTcpConnection.a(this.a, null);
-    LiteTcpConnection.a(this.a, null);
+    }
+    if (paramMessage.what == 2)
+    {
+      LiteTcpConnection.a(this.a);
+      return;
+    }
+    if (paramMessage.what == 3)
+    {
+      LiteTcpConnection.a(this.a).quit();
+      LiteTcpConnection.a(this.a, null);
+      LiteTcpConnection.a(this.a, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.LiteTcpConnection.ConnWorker
  * JD-Core Version:    0.7.0.1
  */

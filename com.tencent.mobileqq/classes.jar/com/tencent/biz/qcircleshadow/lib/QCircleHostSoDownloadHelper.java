@@ -1,34 +1,39 @@
 package com.tencent.biz.qcircleshadow.lib;
 
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
 import com.tencent.mobileqq.qcircle.tempapi.api.IQCirclrModuleDownloadListener;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.IQzoneModuleManageApi;
+import cooperation.qzone.networkedmodule.QzoneModuleRecord;
 
 public class QCircleHostSoDownloadHelper
 {
   public static boolean checkIfNeedUpdate(String paramString)
   {
-    return QCircleServiceImpl.getQZoneService().checkIfNeedUpdate(paramString);
+    return ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).checkIfNeedUpdate(paramString);
   }
   
   public static void downloadModule(String paramString, IQCirclrModuleDownloadListener paramIQCirclrModuleDownloadListener)
   {
-    QCircleServiceImpl.getQZoneService().downloadModule(paramString, paramIQCirclrModuleDownloadListener);
+    ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).downloadModule(paramString, new QCircleHostSoDownloadHelper.1(paramIQCirclrModuleDownloadListener));
   }
   
   public static String getModuleFilePath(String paramString)
   {
-    return QCircleServiceImpl.getQZoneService().getModuleFilePath(paramString);
+    return ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).getModuleFilePath(paramString);
   }
   
   public static String getRecordUrl(String paramString)
   {
-    return QCircleServiceImpl.getQZoneService().getRecordUrl(paramString);
+    paramString = ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).getModuleRecord(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    return paramString.mNewVersion.mUrl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostSoDownloadHelper
  * JD-Core Version:    0.7.0.1
  */

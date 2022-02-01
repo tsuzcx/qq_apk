@@ -20,14 +20,15 @@ public class PreloadServiceImpl$FlowControlDownloadStruct
   
   public void a(IPreloadService paramIPreloadService)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.handleFlowConfig(paramIPreloadService, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadModuleImpl, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+    PreloadResourceImpl localPreloadResourceImpl = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl;
+    if (localPreloadResourceImpl != null) {
+      localPreloadResourceImpl.handleFlowConfig(paramIPreloadService, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadModuleImpl, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceImpl.FlowControlDownloadStruct
  * JD-Core Version:    0.7.0.1
  */

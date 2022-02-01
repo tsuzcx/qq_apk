@@ -65,9 +65,11 @@ public class MemoriesFeedPlayPageLoader
   
   public IDataProvider.StartInfo a()
   {
-    MemoriesFeedPlayPageLoader.MemoriesFeedGroupId localMemoriesFeedGroupId = null;
+    MemoriesFeedPlayPageLoader.MemoriesFeedGroupId localMemoriesFeedGroupId;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mStartFeedId)) {
       localMemoriesFeedGroupId = new MemoriesFeedPlayPageLoader.MemoriesFeedGroupId(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mStartFeedId);
+    } else {
+      localMemoriesFeedGroupId = null;
     }
     return new IDataProvider.StartInfo(localMemoriesFeedGroupId, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mStartVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mStartFeedId);
   }
@@ -79,14 +81,14 @@ public class MemoriesFeedPlayPageLoader
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mDataType == 0) {}
-    for (this.jdField_a_of_type_ComTencentBizQqstoryNetworkINetPageLoader = new DateCollectionListPageLoader(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mUid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mContext);; this.jdField_a_of_type_ComTencentBizQqstoryNetworkINetPageLoader = new ShareGroupDateListPageLoader(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mUid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mDataType, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mContext))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMemoriesFeedPlayPageLoader$GetCollectListEventReceiver = new MemoriesFeedPlayPageLoader.GetCollectListEventReceiver(this);
-      StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMemoriesFeedPlayPageLoader$GetCollectListEventReceiver);
-      AssertUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo);
-      return;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mDataType == 0) {
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkINetPageLoader = new DateCollectionListPageLoader(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mUid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mContext);
+    } else {
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkINetPageLoader = new ShareGroupDateListPageLoader(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mUid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mDataType, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mContext);
     }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMemoriesFeedPlayPageLoader$GetCollectListEventReceiver = new MemoriesFeedPlayPageLoader.GetCollectListEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMemoriesFeedPlayPageLoader$GetCollectListEventReceiver);
+    AssertUtils.checkNotNull(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo);
   }
   
   public void a(int paramInt, IGroupPageLoader.CallBack paramCallBack)
@@ -120,12 +122,12 @@ public class MemoriesFeedPlayPageLoader
   
   public boolean isValidate()
   {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.MemoriesFeedPlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.utils.FileUtils;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.mobileqq.videocodec.ffmpeg.FFmpegExecuteResponseCallback;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tribe.async.dispatch.Dispatcher;
 import java.io.File;
@@ -60,7 +60,7 @@ public class PlayModeUtils$ExecuteDownloadResponseCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.ExecuteDownloadResponseCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -125,46 +125,39 @@ public final class BidiFormatter
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     if ((getStereoReset()) && (paramBoolean))
     {
-      if (bool)
-      {
+      if (bool) {
         paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.RTL;
-        localSpannableStringBuilder.append(markBefore(paramCharSequence, paramTextDirectionHeuristicCompat));
+      } else {
+        paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.LTR;
       }
+      localSpannableStringBuilder.append(markBefore(paramCharSequence, paramTextDirectionHeuristicCompat));
     }
-    else
+    if (bool != this.mIsRtlContext)
     {
-      if (bool == this.mIsRtlContext) {
-        break label149;
+      int i;
+      if (bool) {
+        i = 8235;
+      } else {
+        i = 8234;
       }
-      if (!bool) {
-        break label141;
-      }
-      int i = 8235;
-      label82:
       localSpannableStringBuilder.append(i);
       localSpannableStringBuilder.append(paramCharSequence);
       localSpannableStringBuilder.append('‬');
-      label106:
-      if (paramBoolean) {
-        if (!bool) {
-          break label159;
-        }
-      }
     }
-    label141:
-    label149:
-    label159:
-    for (paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.RTL;; paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.LTR)
+    else
     {
-      localSpannableStringBuilder.append(markAfter(paramCharSequence, paramTextDirectionHeuristicCompat));
-      return localSpannableStringBuilder;
-      paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.LTR;
-      break;
-      int j = 8234;
-      break label82;
       localSpannableStringBuilder.append(paramCharSequence);
-      break label106;
     }
+    if (paramBoolean)
+    {
+      if (bool) {
+        paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.RTL;
+      } else {
+        paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.LTR;
+      }
+      localSpannableStringBuilder.append(markAfter(paramCharSequence, paramTextDirectionHeuristicCompat));
+    }
+    return localSpannableStringBuilder;
   }
   
   public CharSequence unicodeWrap(CharSequence paramCharSequence, boolean paramBoolean)
@@ -197,7 +190,7 @@ public final class BidiFormatter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.text.BidiFormatter
  * JD-Core Version:    0.7.0.1
  */

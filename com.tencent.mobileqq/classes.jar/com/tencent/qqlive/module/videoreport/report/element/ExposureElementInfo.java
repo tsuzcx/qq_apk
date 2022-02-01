@@ -4,6 +4,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import com.tencent.qqlive.module.videoreport.data.DataRWProxy;
 import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
+import com.tencent.qqlive.module.videoreport.reportdata.PathData;
 import java.lang.ref.WeakReference;
 
 public class ExposureElementInfo
@@ -12,16 +13,18 @@ public class ExposureElementInfo
   private FinalData mFinalData;
   private String mIdentifier;
   private WeakReference<Object> mPage;
+  private PathData mPathData;
   private long mUniqueId;
   private WeakReference<View> mView;
   
   public ExposureElementInfo() {}
   
-  public ExposureElementInfo(View paramView, Object paramObject, FinalData paramFinalData)
+  public ExposureElementInfo(View paramView, Object paramObject, FinalData paramFinalData, PathData paramPathData)
   {
     setView(paramView);
     setPage(paramObject);
     setFinalData(paramFinalData);
+    setPathData(paramPathData);
   }
   
   public boolean canReport()
@@ -42,10 +45,16 @@ public class ExposureElementInfo
   @Nullable
   public Object getPage()
   {
-    if (this.mPage != null) {
-      return this.mPage.get();
+    WeakReference localWeakReference = this.mPage;
+    if (localWeakReference != null) {
+      return localWeakReference.get();
     }
     return null;
+  }
+  
+  public PathData getPathData()
+  {
+    return this.mPathData;
   }
   
   public long getUniqueId()
@@ -56,8 +65,9 @@ public class ExposureElementInfo
   @Nullable
   public View getView()
   {
-    if (this.mView != null) {
-      return (View)this.mView.get();
+    WeakReference localWeakReference = this.mView;
+    if (localWeakReference != null) {
+      return (View)localWeakReference.get();
     }
     return null;
   }
@@ -82,6 +92,11 @@ public class ExposureElementInfo
     this.mPage = new WeakReference(paramObject);
   }
   
+  public void setPathData(PathData paramPathData)
+  {
+    this.mPathData = paramPathData;
+  }
+  
   public void setUniqueId(long paramLong)
   {
     this.mUniqueId = paramLong;
@@ -94,16 +109,30 @@ public class ExposureElementInfo
   
   public String toString()
   {
-    if (this.mView == null) {}
-    for (View localView = null; localView == null; localView = (View)this.mView.get()) {
+    Object localObject = this.mView;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = (View)((WeakReference)localObject).get();
+    }
+    if (localObject == null) {
       return "_null_view_";
     }
-    return "uniqueId = " + this.mUniqueId + ", identifier = " + this.mIdentifier + ", eid = " + DataRWProxy.getElementId(localView) + ", " + localView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uniqueId = ");
+    localStringBuilder.append(this.mUniqueId);
+    localStringBuilder.append(", identifier = ");
+    localStringBuilder.append(this.mIdentifier);
+    localStringBuilder.append(", eid = ");
+    localStringBuilder.append(DataRWProxy.getElementId(localObject));
+    localStringBuilder.append(", ");
+    localStringBuilder.append(localObject);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ExposureElementInfo
  * JD-Core Version:    0.7.0.1
  */

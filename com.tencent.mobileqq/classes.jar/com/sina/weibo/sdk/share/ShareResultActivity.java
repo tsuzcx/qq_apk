@@ -37,31 +37,24 @@ public class ShareResultActivity
         finish();
         return;
       }
-      if (paramBundle.getIntExtra("start_flag", -1) != 0) {
-        break label44;
+      if (paramBundle.getIntExtra("start_flag", -1) == 0)
+      {
+        finish();
+        return;
       }
-      finish();
-      return;
+      String str = paramBundle.getAction();
+      if ("com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY".equals(str)) {
+        paramBundle.setClass(this, ShareTransActivity.class);
+      } else if ("com.sina.weibo.sdk.action.ACTION_SDK_REQ_STORY".equals(str)) {
+        paramBundle.setClass(this, ShareStoryActivity.class);
+      }
+      startActivity(paramBundle);
     }
     catch (Exception paramBundle)
     {
       paramBundle.printStackTrace();
     }
     finish();
-    return;
-    label44:
-    String str = paramBundle.getAction();
-    if ("com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY".equals(str)) {
-      paramBundle.setClass(this, ShareTransActivity.class);
-    }
-    for (;;)
-    {
-      startActivity(paramBundle);
-      break;
-      if ("com.sina.weibo.sdk.action.ACTION_SDK_REQ_STORY".equals(str)) {
-        paramBundle.setClass(this, ShareStoryActivity.class);
-      }
-    }
   }
 }
 

@@ -21,38 +21,51 @@ public class AppMarketUtils
   
   public static void a(Activity paramActivity)
   {
-    String str1 = WSGlobalConfig.a().b();
-    String str2 = WSGlobalConfig.a().a();
-    WSLog.d("AppMarketUtils", "goAppMarket :\npackageName = " + str2 + "\nurl = " + str1);
+    Object localObject = WSGlobalConfig.a().b();
+    String str = WSGlobalConfig.a().a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("goAppMarket :\npackageName = ");
+    localStringBuilder.append(str);
+    localStringBuilder.append("\nurl = ");
+    localStringBuilder.append((String)localObject);
+    WSLog.d("AppMarketUtils", localStringBuilder.toString());
     try
     {
-      paramActivity.startActivity(a(str1, str2));
+      paramActivity.startActivity(a((String)localObject, str));
       return;
     }
     catch (Exception paramActivity)
     {
-      WSLog.d("AppMarketUtils", "goAppMarket error messaage = " + paramActivity.getMessage());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("goAppMarket error messaage = ");
+      ((StringBuilder)localObject).append(paramActivity.getMessage());
+      WSLog.d("AppMarketUtils", ((StringBuilder)localObject).toString());
     }
   }
   
   public static boolean a(Activity paramActivity)
   {
-    if (paramActivity == null) {
-      WSLog.d("AppMarketUtils", "tryGoAppMarket:activity = null");
-    }
-    do
+    if (paramActivity == null)
     {
+      WSLog.d("AppMarketUtils", "tryGoAppMarket:activity = null");
       return false;
-      paramActivity = WSGlobalConfig.a().b();
-      String str = WSGlobalConfig.a().a();
-      WSLog.c("AppMarketUtils", "goAppMarket:\nappStorePackageName = " + str + "\nappStoreVendorId =" + WSGlobalConfig.a().b() + "\nappStoreScheme =" + paramActivity);
-    } while ((TextUtils.isEmpty(paramActivity)) || (paramActivity.startsWith("http")));
-    return true;
+    }
+    paramActivity = WSGlobalConfig.a().b();
+    String str = WSGlobalConfig.a().a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("goAppMarket:\nappStorePackageName = ");
+    localStringBuilder.append(str);
+    localStringBuilder.append("\nappStoreVendorId =");
+    localStringBuilder.append(WSGlobalConfig.a().b());
+    localStringBuilder.append("\nappStoreScheme =");
+    localStringBuilder.append(paramActivity);
+    WSLog.c("AppMarketUtils", localStringBuilder.toString());
+    return (!TextUtils.isEmpty(paramActivity)) && (!paramActivity.startsWith("http"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.AppMarketUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -35,16 +35,24 @@ public class AEStaticDetector
     int i = initFaceDetect(localGYAIFace);
     if (i != 0)
     {
-      LogUtils.e("AEStaticDetector", "init face error code: " + i);
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("init face error code: ");
+      paramBitmap.append(i);
+      LogUtils.e("AEStaticDetector", paramBitmap.toString());
       return null;
     }
     Object localObject2 = new FaceDetector();
     i = localGYAIFace.forwardDetect(paramBitmap, (FaceDetector)localObject2, 0);
-    LogUtils.d("AEStaticDetector", "detect face code: " + i);
-    Object localObject1;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("detect face code: ");
+    ((StringBuilder)localObject1).append(i);
+    LogUtils.d("AEStaticDetector", ((StringBuilder)localObject1).toString());
     if (((FaceDetector)localObject2).faces != null)
     {
-      LogUtils.d("AEStaticDetector", "face cnt " + ((FaceDetector)localObject2).faces.length);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("face cnt ");
+      ((StringBuilder)localObject1).append(((FaceDetector)localObject2).faces.length);
+      LogUtils.d("AEStaticDetector", ((StringBuilder)localObject1).toString());
       localObject1 = new int[2];
       localObject1[0] = paramBitmap.getWidth();
       localObject1[1] = paramBitmap.getHeight();
@@ -64,37 +72,37 @@ public class AEStaticDetector
         System.arraycopy(localByteArrayOutputStream.pointsVisibility, 0, arrayOfFloat2, 0, localByteArrayOutputStream.pointsVisibility.length);
         float[] arrayOfFloat3 = new float['´'];
         float[] arrayOfFloat4 = new float[90];
-        System.arraycopy(YoutuPointsUtil.transform83PointsTo90(localByteArrayOutputStream.f_features), 0, arrayOfFloat3, 0, 180);
+        System.arraycopy(YoutuPointsUtil.transform83PointsTo90(localByteArrayOutputStream.fFeatures), 0, arrayOfFloat3, 0, 180);
         System.arraycopy(arrayOfFloat2, 0, arrayOfFloat4, 0, 90);
-        float f1 = localByteArrayOutputStream.image_width;
-        float f2 = localByteArrayOutputStream.image_height;
-        float f3 = localByteArrayOutputStream.bounds_x;
-        float f4 = localByteArrayOutputStream.bounds_y;
-        float f5 = localByteArrayOutputStream.bounds_w;
-        float f6 = localByteArrayOutputStream.bounds_h;
-        float f7 = localByteArrayOutputStream.leBounds_x;
-        float f8 = localByteArrayOutputStream.leBounds_y;
-        float f9 = localByteArrayOutputStream.leBounds_w;
-        float f10 = localByteArrayOutputStream.leBounds_h;
-        float f11 = localByteArrayOutputStream.reBounds_x;
-        float f12 = localByteArrayOutputStream.reBounds_y;
-        float f13 = localByteArrayOutputStream.reBounds_w;
-        float f14 = localByteArrayOutputStream.reBounds_h;
-        float f15 = localByteArrayOutputStream.mouthBounds_x;
-        float f16 = localByteArrayOutputStream.mouthBounds_y;
-        float f17 = localByteArrayOutputStream.mouthBounds_w;
-        float f18 = localByteArrayOutputStream.mouthBounds_h;
+        float f1 = localByteArrayOutputStream.imageWidth;
+        float f2 = localByteArrayOutputStream.imageHeight;
+        float f3 = localByteArrayOutputStream.boundsX;
+        float f4 = localByteArrayOutputStream.boundsY;
+        float f5 = localByteArrayOutputStream.boundsW;
+        float f6 = localByteArrayOutputStream.boundsH;
+        float f7 = localByteArrayOutputStream.leBoundsX;
+        float f8 = localByteArrayOutputStream.leBoundsY;
+        float f9 = localByteArrayOutputStream.leBoundsW;
+        float f10 = localByteArrayOutputStream.leBoundsH;
+        float f11 = localByteArrayOutputStream.reBoundsX;
+        float f12 = localByteArrayOutputStream.reBoundsY;
+        float f13 = localByteArrayOutputStream.reBoundsW;
+        float f14 = localByteArrayOutputStream.reBoundsH;
+        float f15 = localByteArrayOutputStream.mouthBoundsX;
+        float f16 = localByteArrayOutputStream.mouthBoundsY;
+        float f17 = localByteArrayOutputStream.mouthBoundsW;
+        float f18 = localByteArrayOutputStream.mouthBoundsH;
         float f19 = localByteArrayOutputStream.pitch;
         float f20 = localByteArrayOutputStream.yaw;
         float f21 = localByteArrayOutputStream.roll;
         ((List)localObject1).add(new LightFaceFeature(new float[] { f1, f2 }, new float[] { f3, f4, f5, f6 }, new float[] { f7, f8, f9, f10 }, new float[] { f11, f12, f13, f14 }, new float[] { f15, f16, f17, f18 }, f19, f20, f21, true, arrayOfFloat1, arrayOfFloat2, null, null, arrayOfFloat3, arrayOfFloat4, null, null, null, null, null));
         i += 1;
       }
+      paramBitmap.mLightFaceFeatureList = ((List)localObject1);
+      localGYAIFace.cleanupModelData();
+      return TransformUtils.lightFaceToPTFaceAttr(paramBitmap);
     }
     return null;
-    paramBitmap.mLightFaceFeatureList = ((List)localObject1);
-    localGYAIFace.cleanupModelData();
-    return TransformUtils.lightFaceToPTFaceAttr(paramBitmap);
   }
   
   public static boolean hasFaceData(PTFaceAttr paramPTFaceAttr)
@@ -114,13 +122,29 @@ public class AEStaticDetector
     int i = paramGYAIFace.initInstance((SDKDeviceConfig)localObject);
     if (i != 0)
     {
-      LogUtils.e("AEStaticDetector", "init face detect error code: " + i);
+      paramGYAIFace = new StringBuilder();
+      paramGYAIFace.append("init face detect error code: ");
+      paramGYAIFace.append(i);
+      LogUtils.e("AEStaticDetector", paramGYAIFace.toString());
       return i;
     }
     localObject = new SDKModelConfig();
-    ((SDKModelConfig)localObject).model_paths = new HashMap();
-    ((SDKModelConfig)localObject).model_paths.put("face-detector", modelPath + "/face_model/face-detection-v535");
-    ((SDKModelConfig)localObject).model_paths.put("face-alignment", modelPath + "/face_model/face-alignment-v340");
+    ((SDKModelConfig)localObject).modelPaths = new HashMap();
+    Map localMap = ((SDKModelConfig)localObject).modelPaths;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(modelPath);
+    localStringBuilder.append("LightFaceModel.bundle");
+    localMap.put("face-dir", localStringBuilder.toString());
+    localMap = ((SDKModelConfig)localObject).modelPaths;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(modelPath);
+    localStringBuilder.append("LightFaceModel.bundle/face-detection-v535");
+    localMap.put("face-detector", localStringBuilder.toString());
+    localMap = ((SDKModelConfig)localObject).modelPaths;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(modelPath);
+    localStringBuilder.append("LightFaceModel.bundle/face-alignment-v350");
+    localMap.put("face-alignment", localStringBuilder.toString());
     return paramGYAIFace.setupWithModel((SDKModelConfig)localObject);
   }
   
@@ -134,7 +158,7 @@ public class AEStaticDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.AEStaticDetector
  * JD-Core Version:    0.7.0.1
  */

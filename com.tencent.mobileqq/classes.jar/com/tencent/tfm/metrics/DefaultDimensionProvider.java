@@ -33,70 +33,80 @@ public class DefaultDimensionProvider
   
   public String getDimensionValue(String paramString)
   {
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return "";
-        if (paramString.equals("app_version"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("process_name"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("os"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("platform"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("channel"))
-                {
-                  i = 4;
-                  continue;
-                  if (paramString.equals("model"))
-                  {
-                    i = 5;
-                    continue;
-                    if (paramString.equals("network_type"))
-                    {
-                      i = 6;
-                      continue;
-                      if (paramString.equals("sdk_version")) {
-                        i = 7;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 1993196123: 
+      if (paramString.equals("process_name")) {
+        i = 1;
       }
+      break;
+    case 1874684019: 
+      if (paramString.equals("platform")) {
+        i = 3;
+      }
+      break;
+    case 738950403: 
+      if (paramString.equals("channel")) {
+        i = 4;
+      }
+      break;
+    case 104069929: 
+      if (paramString.equals("model")) {
+        i = 5;
+      }
+      break;
+    case 3556: 
+      if (paramString.equals("os")) {
+        i = 2;
+      }
+      break;
+    case -19457365: 
+      if (paramString.equals("network_type")) {
+        i = 6;
+      }
+      break;
+    case -376724013: 
+      if (paramString.equals("sdk_version")) {
+        i = 7;
+      }
+      break;
+    case -901870406: 
+      if (paramString.equals("app_version")) {
+        i = 0;
+      }
+      break;
+    }
+    int i = -1;
+    switch (i)
+    {
+    default: 
+      return "";
+    case 7: 
+      return "1.0.1-alpha";
+    case 6: 
+      return AppInfo.getNetWorkType();
+    case 5: 
+      return Build.MODEL;
+    case 4: 
+      return AppInfo.getChannel();
+    case 3: 
+      return "Android";
+    case 2: 
+      paramString = new StringBuilder();
+      paramString.append(Build.VERSION.SDK_INT);
+      paramString.append("");
+      return paramString.toString();
+    case 1: 
+      return AppInfo.getCurrentProcess(this.context);
     }
     return AppInfo.getAppVersion(this.context);
-    return AppInfo.getCurrentProcess(this.context);
-    return Build.VERSION.SDK_INT + "";
-    return "Android";
-    return AppInfo.getChannel();
-    return Build.MODEL;
-    return AppInfo.getNetWorkType();
-    return "1.0.1-alpha";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.DefaultDimensionProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -21,8 +21,12 @@ public class QuickAuthorityConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
       QuickAuthorityConfBean localQuickAuthorityConfBean = QuickAuthorityConfBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QuickAuthorityConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("QuickAuthorityConfProcessor", 2, localStringBuilder.toString());
       }
       return localQuickAuthorityConfBean;
     }
@@ -34,8 +38,12 @@ public class QuickAuthorityConfProcessor
   
   public void a(QuickAuthorityConfBean paramQuickAuthorityConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "onUpdate " + paramQuickAuthorityConfBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramQuickAuthorityConfBean.toString());
+      QLog.d("QuickAuthorityConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -76,7 +84,7 @@ public class QuickAuthorityConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QuickAuthorityConfProcessor
  * JD-Core Version:    0.7.0.1
  */

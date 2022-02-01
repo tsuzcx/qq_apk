@@ -25,7 +25,11 @@ public class MonitorValueRequest
       localRspMonitorValue.mergeFrom(paramArrayOfByte);
       return new MonitorValueResponse(localRspMonitorValue);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      label23:
+      break label23;
+    }
     return null;
   }
   
@@ -40,31 +44,37 @@ public class MonitorValueRequest
     this.d = paramInt2;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqMonitorValue localReqMonitorValue = new qqstory_service.ReqMonitorValue();
     localReqMonitorValue.ID.set(this.c);
     if (this.d > 0) {
       localReqMonitorValue.Value.set(this.d);
-    }
-    for (;;)
-    {
-      if (this.a != null) {
-        localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
-      }
-      return localReqMonitorValue.toByteArray();
+    } else {
       localReqMonitorValue.Value.set(1);
     }
+    if (this.a != null) {
+      localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
+    }
+    return localReqMonitorValue.toByteArray();
   }
   
   public String toString()
   {
-    return "MonitorValueRequest{ID=" + this.c + ", value=" + this.d + ", msg=" + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MonitorValueRequest{ID=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", value=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", msg=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.support.report.MonitorValueRequest
  * JD-Core Version:    0.7.0.1
  */

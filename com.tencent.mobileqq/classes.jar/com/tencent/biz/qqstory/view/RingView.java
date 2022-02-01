@@ -30,24 +30,27 @@ public class RingView
   
   protected static void a()
   {
-    if (Looper.getMainLooper() != Looper.myLooper()) {
-      throw new IllegalStateException("not main thread !");
+    if (Looper.getMainLooper() == Looper.myLooper()) {
+      return;
     }
+    throw new IllegalStateException("not main thread !");
   }
   
   public void a(RingView.DrawInfo paramDrawInfo)
   {
     
-    if (paramDrawInfo == null) {
-      throw new NullPointerException("drawInfo should not be NULL");
+    if (paramDrawInfo != null)
+    {
+      if (!this.jdField_a_of_type_AndroidGraphicsRectF.isEmpty()) {
+        paramDrawInfo.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
+      }
+      this.jdField_a_of_type_JavaUtilList.add(paramDrawInfo);
+      return;
     }
-    if (!this.jdField_a_of_type_AndroidGraphicsRectF.isEmpty()) {
-      paramDrawInfo.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramDrawInfo);
+    throw new NullPointerException("drawInfo should not be NULL");
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
@@ -61,31 +64,34 @@ public class RingView
     paramCanvas.restore();
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     int i = super.getWidth();
-    paramInt2 = super.getHeight();
-    int j = super.getPaddingLeft();
-    int k = super.getPaddingRight();
-    paramInt3 = super.getPaddingTop();
+    paramInt3 = super.getHeight();
+    paramInt2 = super.getPaddingLeft();
+    int j = super.getPaddingRight();
+    paramInt1 = super.getPaddingTop();
     paramInt4 = super.getPaddingBottom();
-    paramInt1 = Math.min(i - j - k, paramInt2 - paramInt3 - paramInt4);
-    i = (i - j - k - paramInt1) / 2 + j;
-    paramInt2 = (paramInt2 - paramInt3 - paramInt4 - paramInt1) / 2 + paramInt3;
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = i;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (i + paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (paramInt2 + paramInt1);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((RingView.DrawInfo)localIterator.next()).a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
+    i = i - paramInt2 - j;
+    paramInt4 = paramInt3 - paramInt1 - paramInt4;
+    paramInt3 = Math.min(i, paramInt4);
+    paramInt2 += (i - paramInt3) / 2;
+    paramInt1 += (paramInt4 - paramInt3) / 2;
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    ((RectF)localObject).left = paramInt2;
+    ((RectF)localObject).right = (paramInt2 + paramInt3);
+    ((RectF)localObject).top = paramInt1;
+    ((RectF)localObject).bottom = (paramInt3 + paramInt1);
+    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((RingView.DrawInfo)((Iterator)localObject).next()).a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.RingView
  * JD-Core Version:    0.7.0.1
  */

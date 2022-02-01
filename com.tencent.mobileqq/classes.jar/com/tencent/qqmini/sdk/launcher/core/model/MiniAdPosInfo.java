@@ -17,12 +17,22 @@ public class MiniAdPosInfo
   
   public String toString()
   {
-    return "MiniAdPosInfo{left=" + this.left + ", top=" + this.top + ", width=" + this.width + ", height=" + this.height + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniAdPosInfo{left=");
+    localStringBuilder.append(this.left);
+    localStringBuilder.append(", top=");
+    localStringBuilder.append(this.top);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.model.MiniAdPosInfo
  * JD-Core Version:    0.7.0.1
  */

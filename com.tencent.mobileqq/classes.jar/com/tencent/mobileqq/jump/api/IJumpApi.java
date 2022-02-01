@@ -13,12 +13,10 @@ public abstract interface IJumpApi
   public abstract String getJumpActionQCircle();
   
   public abstract Class getJumpActivityClass();
-  
-  public abstract String getQCircleSchemeFromJumpUtil(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jump.api.IJumpApi
  * JD-Core Version:    0.7.0.1
  */

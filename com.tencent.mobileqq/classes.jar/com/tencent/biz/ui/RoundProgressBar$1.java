@@ -10,23 +10,27 @@ class RoundProgressBar$1
   
   public void run()
   {
+    RoundProgressBar localRoundProgressBar;
     if (RoundProgressBar.a(this.this$0) < RoundProgressBar.b(this.this$0))
     {
-      RoundProgressBar.a(this.this$0, RoundProgressBar.a(this.this$0) + 1);
+      localRoundProgressBar = this.this$0;
+      RoundProgressBar.a(localRoundProgressBar, RoundProgressBar.a(localRoundProgressBar) + 1);
+      this.this$0.invalidate();
+      ThreadManager.getUIHandler().postDelayed(this, 30L);
+      return;
+    }
+    if (RoundProgressBar.a(this.this$0) > RoundProgressBar.b(this.this$0))
+    {
+      localRoundProgressBar = this.this$0;
+      RoundProgressBar.a(localRoundProgressBar, RoundProgressBar.a(localRoundProgressBar) - 1);
       this.this$0.invalidate();
       ThreadManager.getUIHandler().postDelayed(this, 30L);
     }
-    while (RoundProgressBar.a(this.this$0) <= RoundProgressBar.b(this.this$0)) {
-      return;
-    }
-    RoundProgressBar.a(this.this$0, RoundProgressBar.a(this.this$0) - 1);
-    this.this$0.invalidate();
-    ThreadManager.getUIHandler().postDelayed(this, 30L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.RoundProgressBar.1
  * JD-Core Version:    0.7.0.1
  */

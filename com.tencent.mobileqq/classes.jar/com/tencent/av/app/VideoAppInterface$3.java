@@ -9,12 +9,12 @@ class VideoAppInterface$3
   
   public void run()
   {
-    VideoBeaconReporter.a(this.this$0.f, this.this$0.g);
+    VideoBeaconReporter.a(this.this$0.e, this.this$0.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.VideoAppInterface.3
  * JD-Core Version:    0.7.0.1
  */

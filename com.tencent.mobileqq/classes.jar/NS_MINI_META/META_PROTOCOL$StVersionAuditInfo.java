@@ -10,17 +10,23 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class META_PROTOCOL$StVersionAuditInfo
   extends MessageMicro<StVersionAuditInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50 }, new String[] { "versionId", "createTime", "updateTime", "updateInstruction", "testAccount", "rejectReason" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), "", null, "" }, StVersionAuditInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field createTime = PBField.initUInt32(0);
   public final PBStringField rejectReason = PBField.initString("");
   public final PBRepeatMessageField<META_PROTOCOL.StTestAccount> testAccount = PBField.initRepeatMessage(META_PROTOCOL.StTestAccount.class);
   public final PBStringField updateInstruction = PBField.initString("");
   public final PBUInt32Field updateTime = PBField.initUInt32(0);
   public final PBStringField versionId = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50 }, new String[] { "versionId", "createTime", "updateTime", "updateInstruction", "testAccount", "rejectReason" }, new Object[] { "", localInteger, localInteger, "", null, "" }, StVersionAuditInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_META.META_PROTOCOL.StVersionAuditInfo
  * JD-Core Version:    0.7.0.1
  */

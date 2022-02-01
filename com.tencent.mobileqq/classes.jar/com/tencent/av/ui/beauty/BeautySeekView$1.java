@@ -12,14 +12,15 @@ class BeautySeekView$1
   {
     if ((this.a.a) && (BeautySeekView.a(this.a) != null) && (BeautySeekView.a(this.a).getWidth() > 0))
     {
-      this.a.a = false;
-      BeautySeekView.a(this.a, BeautySeekView.a(this.a).getProgress());
+      BeautySeekView localBeautySeekView = this.a;
+      localBeautySeekView.a = false;
+      BeautySeekView.a(localBeautySeekView, BeautySeekView.a(localBeautySeekView).getProgress());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.beauty.BeautySeekView.1
  * JD-Core Version:    0.7.0.1
  */

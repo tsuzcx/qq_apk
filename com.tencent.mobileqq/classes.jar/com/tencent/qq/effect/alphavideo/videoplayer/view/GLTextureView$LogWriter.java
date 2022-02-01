@@ -13,7 +13,8 @@ class GLTextureView$LogWriter
     if (this.mBuilder.length() > 0)
     {
       Log.v("GLTextureView", this.mBuilder.toString());
-      this.mBuilder.delete(0, this.mBuilder.length());
+      StringBuilder localStringBuilder = this.mBuilder;
+      localStringBuilder.delete(0, localStringBuilder.length());
     }
   }
   
@@ -30,24 +31,21 @@ class GLTextureView$LogWriter
   public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
     int i = 0;
-    if (i < paramInt2)
+    while (i < paramInt2)
     {
       char c = paramArrayOfChar[(paramInt1 + i)];
       if (c == '\n') {
         flushBuilder();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         this.mBuilder.append(c);
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qq.effect.alphavideo.videoplayer.view.GLTextureView.LogWriter
  * JD-Core Version:    0.7.0.1
  */

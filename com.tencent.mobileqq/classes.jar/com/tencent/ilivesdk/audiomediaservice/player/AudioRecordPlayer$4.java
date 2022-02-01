@@ -13,32 +13,29 @@ class AudioRecordPlayer$4
   public void onEventProcess(int paramInt, Map<String, Object> paramMap)
   {
     LogInterface localLogInterface = AudioRecordPlayer.a(this.a);
-    if (paramMap == null)
-    {
+    if (paramMap == null) {
       paramMap = "";
-      localLogInterface.d("AudioRecordPlayer", "onEventProcess: eventType[%d] dictionary[%s]", new Object[] { Integer.valueOf(paramInt), paramMap });
-      if (paramInt == 0) {
-        break label98;
-      }
+    } else {
+      paramMap = paramMap.toString();
+    }
+    localLogInterface.d("AudioRecordPlayer", "onEventProcess: eventType[%d] dictionary[%s]", new Object[] { Integer.valueOf(paramInt), paramMap });
+    if (paramInt != 0)
+    {
       AudioRecordPlayer.a(this.a).i("AudioRecordPlayer", "onEventProcess: change roles fail.", new Object[0]);
       if (AudioRecordPlayer.a(this.a) != null) {
         AudioRecordPlayer.a(this.a).a(paramInt, "chang roles to link mic audio fail.");
       }
-    }
-    label98:
-    do
-    {
       return;
-      paramMap = paramMap.toString();
-      break;
-      AudioRecordPlayer.a(this.a).d = 3;
-    } while (!AudioRecordPlayer.a(this.a));
-    this.a.a(true);
+    }
+    AudioRecordPlayer.a(this.a).d = 3;
+    if (AudioRecordPlayer.a(this.a)) {
+      this.a.a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.AudioRecordPlayer.4
  * JD-Core Version:    0.7.0.1
  */

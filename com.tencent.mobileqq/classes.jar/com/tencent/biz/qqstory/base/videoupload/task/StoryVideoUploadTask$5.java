@@ -13,19 +13,20 @@ class StoryVideoUploadTask$5
   public void a(UploadObject paramUploadObject)
   {
     paramUploadObject = this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadMetaLinkRichObject.a == 0) {}
-    for (int i = 2;; i = 3)
-    {
-      paramUploadObject.jdField_b_of_type_Int = i;
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadMetaLinkRichObject.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.c = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadMetaLinkRichObject.c;
-      return;
+    int i;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadMetaLinkRichObject.a == 0) {
+      i = 2;
+    } else {
+      i = 3;
     }
+    paramUploadObject.jdField_b_of_type_Int = i;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadMetaLinkRichObject.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.c = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadMetaLinkRichObject.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask.5
  * JD-Core Version:    0.7.0.1
  */

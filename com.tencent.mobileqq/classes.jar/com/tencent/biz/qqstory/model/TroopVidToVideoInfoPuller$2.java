@@ -12,19 +12,22 @@ class TroopVidToVideoInfoPuller$2
   
   public void a(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Vid list to video info list finish !");
-    if (paramBoolean) {}
-    for (String str = "Every task success";; str = "Some task error")
-    {
-      SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", str);
-      this.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller.a(this.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Vid list to video info list finish !");
+    String str;
+    if (paramBoolean) {
+      str = "Every task success";
+    } else {
+      str = "Some task error";
     }
+    localStringBuilder.append(str);
+    SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", localStringBuilder.toString());
+    this.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller.a(this.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopVidToVideoInfoPuller.2
  * JD-Core Version:    0.7.0.1
  */

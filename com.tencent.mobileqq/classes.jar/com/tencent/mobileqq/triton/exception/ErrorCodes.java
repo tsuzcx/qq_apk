@@ -60,12 +60,19 @@ public enum ErrorCodes
   @NotNull
   public String toString()
   {
-    return name() + "(category = " + this.category + ", severity = " + this.severity + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(name());
+    localStringBuilder.append("(category = ");
+    localStringBuilder.append(this.category);
+    localStringBuilder.append(", severity = ");
+    localStringBuilder.append(this.severity);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.exception.ErrorCodes
  * JD-Core Version:    0.7.0.1
  */

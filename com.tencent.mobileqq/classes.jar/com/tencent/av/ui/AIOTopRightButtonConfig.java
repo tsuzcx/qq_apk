@@ -9,15 +9,10 @@ import org.json.JSONObject;
 
 public class AIOTopRightButtonConfig
 {
-  private static AIOTopRightButtonConfig jdField_a_of_type_ComTencentAvUiAIOTopRightButtonConfig = null;
-  public static String a;
+  private static AIOTopRightButtonConfig jdField_a_of_type_ComTencentAvUiAIOTopRightButtonConfig;
+  public static String a = "AIOTopRightButtonConfig";
   private int jdField_a_of_type_Int = -1;
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "AIOTopRightButtonConfig";
-  }
   
   public static AIOTopRightButtonConfig a()
   {
@@ -39,23 +34,18 @@ public class AIOTopRightButtonConfig
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("AVFromRightCornerEnable")) && (!paramString.getBoolean("AVFromRightCornerEnable"))) {
-        this.jdField_a_of_type_Int = 0;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if ((paramString.has("AVFromRightCornerEnable")) && (!paramString.getBoolean("AVFromRightCornerEnable"))) {
+          this.jdField_a_of_type_Int = 0;
+        }
       }
-      return;
-      paramString = finally;
-      throw paramString;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
+      catch (JSONException paramString)
       {
         QLog.w(jdField_a_of_type_JavaLangString, 1, "updateConfig, JSONException", paramString);
       }
+      return;
     }
   }
   
@@ -69,7 +59,7 @@ public class AIOTopRightButtonConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AIOTopRightButtonConfig
  * JD-Core Version:    0.7.0.1
  */

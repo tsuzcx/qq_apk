@@ -21,25 +21,39 @@ public class GetVideoUploadAddrResponse
     super(paramRspUploadStoryVideo.result);
     this.jdField_a_of_type_JavaLangString = paramRspUploadStoryVideo.server_ip.get().toStringUtf8();
     this.b = paramRspUploadStoryVideo.server_port.get();
-    if (paramRspUploadStoryVideo.exists.get() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.c = paramRspUploadStoryVideo.check_key.get().toStringUtf8();
-      this.d = paramRspUploadStoryVideo.vid.get().toStringUtf8();
-      return;
+    int i = paramRspUploadStoryVideo.exists.get();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    this.c = paramRspUploadStoryVideo.check_key.get().toStringUtf8();
+    this.d = paramRspUploadStoryVideo.vid.get().toStringUtf8();
   }
   
   public String toString()
   {
-    return "GetStoryVideoUploadAddressRespond{checkKey='" + this.c + '\'' + ", serverIp='" + this.jdField_a_of_type_JavaLangString + '\'' + ", serverPort=" + this.b + ", exist=" + this.jdField_a_of_type_Boolean + ", vid='" + this.d + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetStoryVideoUploadAddressRespond{checkKey='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", serverIp='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", serverPort=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", exist=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", vid='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetVideoUploadAddrResponse
  * JD-Core Version:    0.7.0.1
  */

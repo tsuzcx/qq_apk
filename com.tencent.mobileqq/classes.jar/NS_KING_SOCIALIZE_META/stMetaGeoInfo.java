@@ -50,33 +50,39 @@ public final class stMetaGeoInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.country != null) {
-      paramJceOutputStream.write(this.country, 0);
+    String str = this.country;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.province != null) {
-      paramJceOutputStream.write(this.province, 1);
+    str = this.province;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.city != null) {
-      paramJceOutputStream.write(this.city, 2);
+    str = this.city;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.latitude, 3);
     paramJceOutputStream.write(this.longitude, 4);
     paramJceOutputStream.write(this.altitude, 5);
-    if (this.district != null) {
-      paramJceOutputStream.write(this.district, 6);
+    str = this.district;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 7);
+    str = this.name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.distance, 8);
-    if (this.polyGeoID != null) {
-      paramJceOutputStream.write(this.polyGeoID, 9);
+    str = this.polyGeoID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stMetaGeoInfo
  * JD-Core Version:    0.7.0.1
  */

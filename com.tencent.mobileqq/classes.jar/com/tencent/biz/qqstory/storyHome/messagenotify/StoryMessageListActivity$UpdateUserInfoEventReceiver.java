@@ -18,10 +18,15 @@ class StoryMessageListActivity$UpdateUserInfoEventReceiver
   {
     if (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
+      if (QLog.isDevelopLevel())
+      {
+        String str = this.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get userinfo come back. >>>>>> ");
+        localStringBuilder.append(paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
+        QLog.i(str, 2, localStringBuilder.toString());
       }
-      paramStoryMessageListActivity.g();
+      paramStoryMessageListActivity.e();
     }
   }
   
@@ -32,7 +37,7 @@ class StoryMessageListActivity$UpdateUserInfoEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.UpdateUserInfoEventReceiver
  * JD-Core Version:    0.7.0.1
  */

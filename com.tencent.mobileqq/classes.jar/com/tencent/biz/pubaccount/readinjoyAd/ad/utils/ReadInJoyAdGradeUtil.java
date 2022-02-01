@@ -12,12 +12,11 @@ public class ReadInJoyAdGradeUtil
   
   public static String a(float paramFloat, int paramInt)
   {
-    float f1 = paramInt;
-    float f2 = paramInt;
-    if (paramFloat <= f1) {
+    float f = paramInt;
+    if (paramFloat <= f) {
       return c;
     }
-    if ((paramFloat > f1) && (paramFloat <= f2 + 0.5F)) {
+    if ((paramFloat > f) && (paramFloat <= 0.5F + f)) {
       return b;
     }
     return a;
@@ -60,35 +59,39 @@ public class ReadInJoyAdGradeUtil
   
   public static void a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    if ((paramJSONObject1 == null) || (paramJSONObject2 == null)) {}
-    do
+    if (paramJSONObject1 != null)
     {
-      do
-      {
+      if (paramJSONObject2 == null) {
         return;
-        a(paramJSONObject1);
-        if (!paramJSONObject1.has("app_score_num")) {
-          break;
+      }
+      a(paramJSONObject1);
+      if (paramJSONObject1.has("app_score_num"))
+      {
+        if (paramJSONObject1.has("video_guide")) {
+          return;
         }
-      } while (paramJSONObject1.has("video_guide"));
-      a((float)paramJSONObject1.optDouble("app_score_num"), paramJSONObject2);
-      return;
-    } while (!paramJSONObject1.has("ad_guide_text"));
-    paramJSONObject1 = paramJSONObject1.optString("ad_guide_text");
-    try
-    {
-      paramJSONObject2.put("ad_guide_text", paramJSONObject1);
-      return;
-    }
-    catch (JSONException paramJSONObject1)
-    {
-      paramJSONObject1.printStackTrace();
+        a((float)paramJSONObject1.optDouble("app_score_num"), paramJSONObject2);
+        return;
+      }
+      if (paramJSONObject1.has("ad_guide_text"))
+      {
+        paramJSONObject1 = paramJSONObject1.optString("ad_guide_text");
+        try
+        {
+          paramJSONObject2.put("ad_guide_text", paramJSONObject1);
+          return;
+        }
+        catch (JSONException paramJSONObject1)
+        {
+          paramJSONObject1.printStackTrace();
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdGradeUtil
  * JD-Core Version:    0.7.0.1
  */

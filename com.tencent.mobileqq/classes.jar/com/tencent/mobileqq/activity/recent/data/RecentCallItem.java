@@ -17,19 +17,22 @@ public class RecentCallItem
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
+    if (paramQQAppInterface != null)
+    {
+      if (paramContext == null) {
+        return;
+      }
+      this.mTitleName = "123123123";
+      this.mLastMsg = this.call.lastCallMsg;
+      this.mStatus = 0;
+      this.mOnlineStatus = 4;
+      this.mAuthenIconId = 1;
+      this.mShowTime = "0";
+      this.mUnreadNum = 0;
+      this.mMenuFlag = 12288;
+      this.mCallingText = HardCodeUtil.a(2131713081);
+      this.call.isVideo = 1;
     }
-    this.mTitleName = "123123123";
-    this.mLastMsg = this.call.lastCallMsg;
-    this.mStatus = 0;
-    this.mOnlineStatus = 4;
-    this.mAuthenIconId = 1;
-    this.mShowTime = "0";
-    this.mUnreadNum = 0;
-    this.mMenuFlag = 12288;
-    this.mCallingText = HardCodeUtil.a(2131713106);
-    this.call.isVideo = 1;
   }
   
   public boolean a()
@@ -66,7 +69,7 @@ public class RecentCallItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentCallItem
  * JD-Core Version:    0.7.0.1
  */

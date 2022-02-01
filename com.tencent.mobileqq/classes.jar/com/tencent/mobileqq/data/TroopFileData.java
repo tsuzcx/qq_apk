@@ -31,12 +31,40 @@ public class TroopFileData
   
   public String toString()
   {
-    return "TroopFileData{dspFileSize='" + this.dspFileSize + '\'' + ", dspFileName='" + this.dspFileName + '\'' + ", bisID=" + this.bisID + ", fileUrl='" + this.fileUrl + '\'' + ", fileName='" + this.fileName + '\'' + ", lfileSize=" + this.lfileSize + ", uuid='" + this.uuid + '\'' + ", FromUin='" + this.FromUin + '\'' + ", lastTime=" + this.lastTime + ", entitySessionId=" + this.entitySessionId + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TroopFileData{dspFileSize='");
+    localStringBuilder.append(this.dspFileSize);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", dspFileName='");
+    localStringBuilder.append(this.dspFileName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bisID=");
+    localStringBuilder.append(this.bisID);
+    localStringBuilder.append(", fileUrl='");
+    localStringBuilder.append(this.fileUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fileName='");
+    localStringBuilder.append(this.fileName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", lfileSize=");
+    localStringBuilder.append(this.lfileSize);
+    localStringBuilder.append(", uuid='");
+    localStringBuilder.append(this.uuid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", FromUin='");
+    localStringBuilder.append(this.FromUin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", lastTime=");
+    localStringBuilder.append(this.lastTime);
+    localStringBuilder.append(", entitySessionId=");
+    localStringBuilder.append(this.entitySessionId);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFileData
  * JD-Core Version:    0.7.0.1
  */

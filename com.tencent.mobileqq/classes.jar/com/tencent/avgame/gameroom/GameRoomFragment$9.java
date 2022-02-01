@@ -15,12 +15,12 @@ class GameRoomFragment$9
   {
     if (GameEngine.a().a())
     {
-      if ((GameEngine.a().e()) || (GameRoomFragment.b(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment)))
+      if ((!GameEngine.a().e()) && (!GameRoomFragment.b(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment)))
       {
-        GameRoomFragment.a(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment).setVisibility(8);
+        GameRoomFragment.b(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment, this.jdField_a_of_type_AndroidViewView);
         return;
       }
-      GameRoomFragment.b(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment, this.jdField_a_of_type_AndroidViewView);
+      GameRoomFragment.a(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment).setVisibility(8);
       return;
     }
     GameRoomFragment.a(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment).setVisibility(8);
@@ -28,7 +28,7 @@ class GameRoomFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomFragment.9
  * JD-Core Version:    0.7.0.1
  */

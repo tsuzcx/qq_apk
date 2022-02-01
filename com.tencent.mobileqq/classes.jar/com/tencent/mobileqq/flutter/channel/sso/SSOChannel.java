@@ -38,14 +38,9 @@ public class SSOChannel
   
   private void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
   {
-    if ((paramRequestPacket == null) || (paramResult == null)) {
-      QLog.d("QFlutter.SSOChannel", 1, "send request, packet == null or result == null");
-    }
-    int i;
-    do
+    if ((paramRequestPacket != null) && (paramResult != null))
     {
-      return;
-      i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+      int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
       ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", a().getAccount(), paramRequestPacket.cmd);
       localToServiceMsg.setTimeout(paramRequestPacket.timeout.intValue() * 1000L);
       localToServiceMsg.extraData.putLong("REQUEST_TIME", System.currentTimeMillis());
@@ -56,8 +51,12 @@ public class SSOChannel
       paramResult.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
       paramResult.setObserver(this);
       a().startServlet(paramResult);
-    } while (!QLog.isColorLevel());
-    QLog.d("QFlutter.SSOChannel", 2, String.format("send request cmd: %s, request seq: %s", new Object[] { paramRequestPacket.cmd, Integer.valueOf(i) }));
+      if (QLog.isColorLevel()) {
+        QLog.d("QFlutter.SSOChannel", 2, String.format("send request cmd: %s, request seq: %s", new Object[] { paramRequestPacket.cmd, Integer.valueOf(i) }));
+      }
+      return;
+    }
+    QLog.d("QFlutter.SSOChannel", 1, "send request, packet == null or result == null");
   }
   
   private void a(String paramString, ResponsePacket paramResponsePacket, MethodChannel.Result paramResult)
@@ -95,29 +94,29 @@ public class SSOChannel
     }
     ToServiceMsg localToServiceMsg = (ToServiceMsg)paramBundle.getParcelable(ToServiceMsg.class.getSimpleName());
     Object localObject = (FromServiceMsg)paramBundle.getParcelable(FromServiceMsg.class.getSimpleName());
-    if ((localToServiceMsg == null) || (localObject == null))
+    if ((localToServiceMsg != null) && (localObject != null))
     {
-      QLog.e("QFlutter.SSOChannel", 1, "request == null || response == null");
+      paramInt = localToServiceMsg.extraData.getInt("FLUTTER_REQUEST_SEQ");
+      long l1 = System.currentTimeMillis();
+      long l2 = localToServiceMsg.extraData.getLong("REQUEST_TIME");
+      if (QLog.isColorLevel()) {
+        QLog.d("QFlutter.SSOChannel", 2, String.format("[onReceive]cmd: %s, app seq: %s, cost: %s, errCode: %s, request seq: %s", new Object[] { localToServiceMsg.getServiceCmd(), Integer.valueOf(localToServiceMsg.getAppSeq()), Long.valueOf(l1 - l2), Integer.valueOf(((FromServiceMsg)localObject).getResultCode()), Integer.valueOf(paramInt) }));
+      }
+      byte[] arrayOfByte = ((FromServiceMsg)localObject).getWupBuffer();
+      paramBundle = new ResponsePacket();
+      paramBundle.isSuc = Boolean.valueOf(((FromServiceMsg)localObject).isSuccess());
+      paramBundle.errCode = Integer.valueOf(((FromServiceMsg)localObject).getResultCode());
+      paramBundle.body = arrayOfByte;
+      localObject = (MethodChannel.Result)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+      a(localToServiceMsg.getServiceCmd(), paramBundle, (MethodChannel.Result)localObject);
       return;
     }
-    paramInt = localToServiceMsg.extraData.getInt("FLUTTER_REQUEST_SEQ");
-    long l1 = System.currentTimeMillis();
-    long l2 = localToServiceMsg.extraData.getLong("REQUEST_TIME");
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.SSOChannel", 2, String.format("[onReceive]cmd: %s, app seq: %s, cost: %s, errCode: %s, request seq: %s", new Object[] { localToServiceMsg.getServiceCmd(), Integer.valueOf(localToServiceMsg.getAppSeq()), Long.valueOf(l1 - l2), Integer.valueOf(((FromServiceMsg)localObject).getResultCode()), Integer.valueOf(paramInt) }));
-    }
-    byte[] arrayOfByte = ((FromServiceMsg)localObject).getWupBuffer();
-    paramBundle = new ResponsePacket();
-    paramBundle.isSuc = Boolean.valueOf(((FromServiceMsg)localObject).isSuccess());
-    paramBundle.errCode = Integer.valueOf(((FromServiceMsg)localObject).getResultCode());
-    paramBundle.body = arrayOfByte;
-    localObject = (MethodChannel.Result)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-    a(localToServiceMsg.getServiceCmd(), paramBundle, (MethodChannel.Result)localObject);
+    QLog.e("QFlutter.SSOChannel", 1, "request == null || response == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.sso.SSOChannel
  * JD-Core Version:    0.7.0.1
  */

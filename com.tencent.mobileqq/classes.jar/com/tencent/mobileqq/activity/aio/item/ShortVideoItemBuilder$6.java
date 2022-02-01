@@ -10,12 +10,12 @@ class ShortVideoItemBuilder$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.a = 0L;
+    com.tencent.mobileqq.shortvideo.SVBusiUtil.a = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.6
  * JD-Core Version:    0.7.0.1
  */

@@ -47,8 +47,9 @@ public class FrameSprite
   
   private void a(int paramInt, Texture paramTexture)
   {
-    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture != null) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture.length > paramInt)) {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[paramInt] = paramTexture;
+    Texture[] arrayOfTexture = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture;
+    if ((arrayOfTexture != null) && (arrayOfTexture.length > paramInt)) {
+      arrayOfTexture[paramInt] = paramTexture;
     }
   }
   
@@ -69,6 +70,10 @@ public class FrameSprite
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void f(int paramInt)
@@ -90,11 +95,15 @@ public class FrameSprite
     if (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture != null)
     {
       int j = 0;
-      while (j < this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture.length)
+      for (;;)
       {
-        if (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[j] != null)
+        Texture[] arrayOfTexture = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture;
+        if (j >= arrayOfTexture.length) {
+          break;
+        }
+        if (arrayOfTexture[j] != null)
         {
-          this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[j].c();
+          arrayOfTexture[j].c();
           this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[j] = null;
         }
         j += 1;
@@ -113,77 +122,104 @@ public class FrameSprite
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
   {
-    int j;
     if ((this.c) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture != null))
     {
-      j = (int)((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / (1000.0F / this.h));
-      if (j <= this.i) {
-        break label370;
+      int j = (int)((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / (1000.0F / this.h));
+      int k = this.i;
+      if (j > k)
+      {
+        if (j > k + 1) {
+          this.i = (k + 1);
+        } else {
+          this.i = j;
+        }
+        j = this.i;
+        Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture;
+        if (j < localObject.length)
+        {
+          if ((localObject[j] != null) && (localObject[j].a))
+          {
+            if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null) {
+              this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.c();
+            }
+            this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = a(this.i);
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("FrameSprite: mTexture = ");
+              ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture);
+              QLog.d("FrameSprite", 2, ((StringBuilder)localObject).toString());
+            }
+            g();
+            super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+            if (QLog.isColorLevel())
+            {
+              paramArrayOfFloat = new StringBuilder();
+              paramArrayOfFloat.append("FrameSprite: draw1:");
+              paramArrayOfFloat.append(this.i);
+              QLog.d("FrameSprite", 2, paramArrayOfFloat.toString());
+            }
+          }
+          else
+          {
+            if (QLog.isColorLevel())
+            {
+              paramArrayOfFloat = new StringBuilder();
+              paramArrayOfFloat.append("FrameSprite: mTexture = null:");
+              paramArrayOfFloat.append(this.i);
+              QLog.d("FrameSprite", 2, paramArrayOfFloat.toString());
+            }
+            e();
+          }
+        }
+        else
+        {
+          if (this.d)
+          {
+            super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+            if (QLog.isColorLevel())
+            {
+              paramArrayOfFloat = new StringBuilder();
+              paramArrayOfFloat.append("FrameSprite: draw3:");
+              paramArrayOfFloat.append(this.i);
+              QLog.d("FrameSprite", 2, paramArrayOfFloat.toString());
+            }
+          }
+          else
+          {
+            this.c = false;
+            if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null) {
+              this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.c();
+            }
+          }
+          paramArrayOfFloat = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener;
+          if (paramArrayOfFloat != null)
+          {
+            paramArrayOfFloat.a();
+            this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener = null;
+          }
+        }
       }
-      if (j <= this.i + 1) {
-        break label220;
-      }
-      this.i += 1;
-      if (this.i >= this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture.length) {
-        break label268;
-      }
-      if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[this.i] == null) || (!this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[this.i].a)) {
-        break label229;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null) {
-        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.c();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = a(this.i);
-      if (QLog.isColorLevel()) {
-        QLog.d("FrameSprite", 2, "FrameSprite: mTexture = " + this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture);
-      }
-      g();
-      super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-      if (QLog.isColorLevel()) {
-        QLog.d("FrameSprite", 2, "FrameSprite: draw1:" + this.i);
+      else
+      {
+        super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+        if (QLog.isColorLevel())
+        {
+          paramArrayOfFloat = new StringBuilder();
+          paramArrayOfFloat.append("FrameSprite: draw2:");
+          paramArrayOfFloat.append(this.i);
+          QLog.d("FrameSprite", 2, paramArrayOfFloat.toString());
+        }
       }
     }
-    label220:
-    label229:
-    label370:
-    do
-    {
-      for (;;)
-      {
-        return;
-        this.i = j;
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("FrameSprite", 2, "FrameSprite: mTexture = null:" + this.i);
-        }
-        e();
-        return;
-        if (this.d)
-        {
-          super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-          if (QLog.isColorLevel()) {
-            QLog.d("FrameSprite", 2, "FrameSprite: draw3:" + this.i);
-          }
-        }
-        while (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
-          this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener = null;
-          return;
-          this.c = false;
-          if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null) {
-            this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.c();
-          }
-        }
-      }
-      super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-    } while (!QLog.isColorLevel());
-    label268:
-    QLog.d("FrameSprite", 2, "FrameSprite: draw2:" + this.i);
   }
   
   public void a(Context paramContext, SpriteGLView paramSpriteGLView)
@@ -196,7 +232,7 @@ public class FrameSprite
     this.d = paramBoolean;
   }
   
-  public void aB_()
+  public void aO_()
   {
     this.c = true;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -207,57 +243,57 @@ public class FrameSprite
     if (this.c)
     {
       int j = (int)((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / (1000.0F / this.h));
-      if (j >= this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture.length) {
-        break label67;
+      Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture;
+      if (j < localObject.length)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = localObject[j];
       }
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[j];
-    }
-    for (;;)
-    {
-      super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-      return;
-      label67:
-      if (this.b)
+      else if (this.b)
       {
         this.jdField_a_of_type_Long = System.currentTimeMillis();
         this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[0];
       }
       else if (this.d)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[(this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture.length - 1)];
+        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = localObject[(localObject.length - 1)];
       }
       else
       {
         this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = null;
-        if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null)
+        localObject = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener;
+        if (localObject != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+          ((FrameSprite.OnFrameEndListener)localObject).a();
           this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener = null;
         }
       }
+      super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
     }
   }
   
   public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    {
       a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-    }
-    while (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture == null) {
       return;
     }
-    b(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture != null) {
+      b(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+    }
   }
   
   public void e(int paramInt)
   {
     this.h = paramInt;
-    this.g = ((int)(this.h * 0.8D));
+    double d1 = this.h;
+    Double.isNaN(d1);
+    this.g = ((int)(d1 * 0.8D));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite
  * JD-Core Version:    0.7.0.1
  */

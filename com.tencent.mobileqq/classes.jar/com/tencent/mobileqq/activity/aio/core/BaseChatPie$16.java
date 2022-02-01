@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XPanelContainer;
 
 class BaseChatPie$16
   implements Runnable
@@ -11,14 +9,13 @@ class BaseChatPie$16
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = this.this$0.a.getPreferences().edit();
-    localEditor.putInt("LT_tip_show_times" + this.this$0.a.getCurrentAccountUin(), 1);
-    localEditor.commit();
+    this.this$0.h(0);
+    this.this$0.a.a(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.16
  * JD-Core Version:    0.7.0.1
  */

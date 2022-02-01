@@ -24,19 +24,19 @@ import javax.crypto.spec.SecretKeySpec;
 public class HttpServer
 {
   private static final String TAG = "HttpServer";
-  private static RequestProxyDefault mRequestProxy;
+  private static RequestProxyDefault mRequestProxy = new RequestProxyDefault();
   private static Random sRandom = new Random();
   private static boolean useHttpDirectly;
   
   static
   {
-    if ((QUAUtil.isAlienApp()) || (QUAUtil.isDemoApp())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      useHttpDirectly = bool;
-      mRequestProxy = new RequestProxyDefault();
-      return;
+    boolean bool;
+    if ((!QUAUtil.isAlienApp()) && (!QUAUtil.isDemoApp())) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    useHttpDirectly = bool;
   }
   
   private static String getPlatformKey()
@@ -46,56 +46,95 @@ public class HttpServer
   
   private static String getRequestUrl()
   {
-    String str1 = "Nonce=" + sRandom.nextInt();
-    String str2 = "PlatformID=" + ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId();
-    String str3 = "Timestamp=" + System.currentTimeMillis() / 1000L;
-    Object localObject = new StringBuilder().append("POST /mini/OpenChannel?").append("Action=input").append("&").append(str1).append("&").append(str2).append("&").append("SignatureMethod=HmacSHA256").append("&").append(str3);
-    localObject = "Signature=" + getSignature(((StringBuilder)localObject).toString());
-    return "https://q.qq.com/mini/OpenChannel?" + "Action=input" + "&" + str1 + "&" + str2 + "&" + "SignatureMethod=HmacSHA256" + "&" + str3 + "&" + (String)localObject;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Nonce=");
+    ((StringBuilder)localObject1).append(sRandom.nextInt());
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("PlatformID=");
+    ((StringBuilder)localObject2).append(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId());
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("Timestamp=");
+    ((StringBuilder)localObject3).append(System.currentTimeMillis() / 1000L);
+    localObject3 = ((StringBuilder)localObject3).toString();
+    Object localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append("POST /mini/OpenChannel?");
+    ((StringBuilder)localObject4).append("Action=input");
+    ((StringBuilder)localObject4).append("&");
+    ((StringBuilder)localObject4).append((String)localObject1);
+    ((StringBuilder)localObject4).append("&");
+    ((StringBuilder)localObject4).append((String)localObject2);
+    ((StringBuilder)localObject4).append("&");
+    ((StringBuilder)localObject4).append("SignatureMethod=HmacSHA256");
+    ((StringBuilder)localObject4).append("&");
+    ((StringBuilder)localObject4).append((String)localObject3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Signature=");
+    localStringBuilder.append(getSignature(((StringBuilder)localObject4).toString()));
+    localObject4 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://q.qq.com/mini/OpenChannel?");
+    localStringBuilder.append("Action=input");
+    localStringBuilder.append("&");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("&");
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append("&");
+    localStringBuilder.append("SignatureMethod=HmacSHA256");
+    localStringBuilder.append("&");
+    localStringBuilder.append((String)localObject3);
+    localStringBuilder.append("&");
+    localStringBuilder.append((String)localObject4);
+    return localStringBuilder.toString();
   }
   
   private static String getSignature(String paramString)
   {
     try
     {
-      QMLog.d("HttpServer", "getSignature(). original request = " + paramString);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getSignature(). original request = ");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.d("HttpServer", ((StringBuilder)localObject).toString());
       paramString = hmacSHA256(paramString, getPlatformKey());
       if (paramString == null) {
         return null;
       }
-      String str = Base64.encodeToString(paramString, 0);
-      int i = str.length() - 1;
-      paramString = str;
+      localObject = Base64.encodeToString(paramString, 0);
+      int i = ((String)localObject).length() - 1;
+      paramString = (String)localObject;
       if (i >= 0)
       {
-        paramString = str;
-        if (str.charAt(i) == '\n') {
-          paramString = str.substring(0, i);
+        paramString = (String)localObject;
+        if (((String)localObject).charAt(i) == '\n') {
+          paramString = ((String)localObject).substring(0, i);
         }
       }
       paramString = URLEncoder.encode(paramString, "UTF-8");
-      QMLog.d("HttpServer", "getSignature(). signature = " + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getSignature(). signature = ");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.d("HttpServer", ((StringBuilder)localObject).toString());
       return paramString;
+    }
+    catch (InvalidKeyException paramString) {}catch (UnsupportedEncodingException paramString)
+    {
+      break label140;
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      paramString.printStackTrace();
-      return "";
+      break label147;
     }
-    catch (UnsupportedEncodingException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    catch (InvalidKeyException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
+    paramString.printStackTrace();
+    break label151;
+    label140:
+    paramString.printStackTrace();
+    break label151;
+    label147:
+    paramString.printStackTrace();
+    label151:
+    return "";
   }
   
   private static byte[] hmacSHA256(String paramString1, String paramString2)
@@ -132,7 +171,7 @@ public class HttpServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.HttpServer
  * JD-Core Version:    0.7.0.1
  */

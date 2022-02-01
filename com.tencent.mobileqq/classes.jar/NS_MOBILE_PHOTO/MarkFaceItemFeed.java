@@ -9,7 +9,7 @@ public final class MarkFaceItemFeed
   extends JceStruct
 {
   static stFaceItem cache_faceinfo = new stFaceItem();
-  static int cache_op = 0;
+  static int cache_op;
   public String albumid = "";
   public stFaceItem faceinfo = null;
   public int op = 0;
@@ -36,20 +36,23 @@ public final class MarkFaceItemFeed
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.op, 0);
-    if (this.faceinfo != null) {
-      paramJceOutputStream.write(this.faceinfo, 1);
+    Object localObject = this.faceinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 2);
+    localObject = this.albumid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.photoid != null) {
-      paramJceOutputStream.write(this.photoid, 3);
+    localObject = this.photoid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.MarkFaceItemFeed
  * JD-Core Version:    0.7.0.1
  */

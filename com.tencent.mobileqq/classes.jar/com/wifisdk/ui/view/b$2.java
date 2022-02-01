@@ -24,20 +24,17 @@ class b$2
     }
     if (this.vc.tH == 1) {
       hk.az(398685);
-    }
-    for (;;)
-    {
-      hv.fD().aB(5);
-      hv.fD().a(b.a(this.vb), 6);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       hk.az(398688);
     }
+    hv.fD().aB(5);
+    hv.fD().a(b.a(this.vb), 6);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.wifisdk.ui.view.b.2
  * JD-Core Version:    0.7.0.1
  */

@@ -33,107 +33,110 @@ public class SosoInterfaceModule
     {
       if (sSosoInterfaceModule != null)
       {
-        SosoInterfaceModule localSosoInterfaceModule1 = sSosoInterfaceModule;
-        return localSosoInterfaceModule1;
+        localSosoInterfaceModule = sSosoInterfaceModule;
+        return localSosoInterfaceModule;
       }
+      sSosoInterfaceModule = new SosoInterfaceModule("soso_interface");
+      SosoInterfaceModule localSosoInterfaceModule = sSosoInterfaceModule;
+      return localSosoInterfaceModule;
     }
-    sSosoInterfaceModule = new SosoInterfaceModule("soso_interface");
-    SosoInterfaceModule localSosoInterfaceModule2 = sSosoInterfaceModule;
-    return localSosoInterfaceModule2;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("SOSO.LBS.SosoInterfaceModule", 2, "onCall s: " + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCall s: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("SOSO.LBS.SosoInterfaceModule", 2, ((StringBuilder)localObject).toString());
     }
-    long l;
-    boolean bool2;
+    boolean bool1;
     if ("get_lbs_info".equals(paramString))
     {
       bool1 = paramBundle.getBoolean("req_location");
-      l = paramBundle.getLong("max_cache_interval");
-      bool2 = paramBundle.getBoolean("goon");
+      long l = paramBundle.getLong("max_cache_interval");
+      boolean bool2 = paramBundle.getBoolean("goon");
       paramInt = paramBundle.getInt("level");
-    }
-    label253:
-    do
-    {
       try
       {
-        paramString = ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).getCanUsedLbsInfoCache(l, bool2, paramInt, bool1);
-        if (QLog.isColorLevel())
+        paramString = (ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class);
+        try
         {
-          paramBundle = new StringBuilder().append("onCall action on get lbs info : maxCacheInterval: ").append(l).append(" goonListener: ").append(bool2).append(" level: ").append(paramInt).append(" reqLocation:").append(bool1).append(" lbsInfo is null: ");
-          if (paramString == null)
-          {
-            bool1 = true;
-            QLog.i("SOSO.LBS.SosoInterfaceModule", 2, bool1);
-          }
+          paramString = paramString.getCanUsedLbsInfoCache(l, bool2, paramInt, bool1);
         }
-        else
-        {
-          paramBundle = new Bundle();
-          localObject1 = new EIPCResult();
-          ((EIPCResult)localObject1).data = paramBundle;
-          if (paramString == null) {
-            break label253;
-          }
-          ((EIPCResult)localObject1).code = 0;
-          paramBundle.putParcelable("soso_lbs_info", paramString);
-          return localObject1;
+        catch (Exception paramString) {}
+        if (!QLog.isColorLevel()) {
+          break label128;
         }
+      }
+      catch (Exception paramString) {}
+      QLog.i("SOSO.LBS.SosoInterfaceModule", 2, Log.getStackTraceString(paramString));
+      label128:
+      paramString = null;
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("onCall action on get lbs info : maxCacheInterval: ");
+        paramBundle.append(l);
+        paramBundle.append(" goonListener: ");
+        paramBundle.append(bool2);
+        paramBundle.append(" level: ");
+        paramBundle.append(paramInt);
+        paramBundle.append(" reqLocation:");
+        paramBundle.append(bool1);
+        paramBundle.append(" lbsInfo is null: ");
+        if (paramString == null) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        paramBundle.append(bool1);
+        QLog.i("SOSO.LBS.SosoInterfaceModule", 2, paramBundle.toString());
+      }
+      paramBundle = new Bundle();
+      localObject = new EIPCResult();
+      ((EIPCResult)localObject).data = paramBundle;
+      if (paramString != null)
+      {
+        ((EIPCResult)localObject).code = 0;
+        paramBundle.putParcelable("soso_lbs_info", paramString);
+        return localObject;
+      }
+      ((EIPCResult)localObject).code = -102;
+      return localObject;
+    }
+    if ("set_lbs_info".equals(paramString))
+    {
+      paramBundle.setClassLoader(((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).getSosoInterfaceClassLoader());
+      bool1 = paramBundle.getBoolean("req_location");
+      localObject = new Bundle();
+      paramString = new EIPCResult();
+      paramString.data = ((Bundle)localObject);
+      if (bool1) {}
+      try
+      {
+        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).updateMainProcessCachedLocation(paramBundle.getInt("level"), (SosoLbsInfo)paramBundle.getParcelable("soso_lbs_info"));
       }
       catch (Exception paramBundle)
       {
-        for (;;)
-        {
-          paramString = (String)localObject1;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("SOSO.LBS.SosoInterfaceModule", 2, Log.getStackTraceString(paramBundle));
-            paramString = (String)localObject1;
-            continue;
-            bool1 = false;
-            continue;
-            ((EIPCResult)localObject1).code = -102;
-          }
+        if (!QLog.isColorLevel()) {
+          break label427;
         }
+        QLog.i("SOSO.LBS.SosoInterfaceModule", 2, Log.getStackTraceString(paramBundle));
       }
-      localObject1 = localObject2;
-    } while (!"set_lbs_info".equals(paramString));
-    paramBundle.setClassLoader(((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).getSosoInterfaceClassLoader());
-    boolean bool1 = paramBundle.getBoolean("req_location");
-    localObject1 = new Bundle();
-    paramString = new EIPCResult();
-    paramString.data = ((Bundle)localObject1);
-    if (bool1) {}
-    try
-    {
-      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).updateMainProcessCachedLocation(paramBundle.getInt("level"), (SosoLbsInfo)paramBundle.getParcelable("soso_lbs_info"));
-      for (;;)
-      {
-        paramString.code = 0;
-        return paramString;
-        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).updateRawData(paramBundle.getString("prodiver"), paramBundle.getByteArray("raw_data"));
-      }
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).updateRawData(paramBundle.getString("prodiver"), paramBundle.getByteArray("raw_data"));
+      label427:
+      paramString.code = 0;
+      return paramString;
     }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("SOSO.LBS.SosoInterfaceModule", 2, Log.getStackTraceString(paramBundle));
-        }
-      }
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.SosoInterfaceModule
  * JD-Core Version:    0.7.0.1
  */

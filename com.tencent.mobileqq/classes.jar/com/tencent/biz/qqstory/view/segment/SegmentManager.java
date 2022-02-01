@@ -74,17 +74,15 @@ public class SegmentManager
   private void b(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
+    paramInt = this.jdField_a_of_type_Int;
   }
   
   private void g()
   {
-    AssertUtils.a();
+    AssertUtils.mainThreadCheck();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((SegmentView)localIterator.next()).R_();
+      ((SegmentView)localIterator.next()).P_();
     }
   }
   
@@ -123,7 +121,12 @@ public class SegmentManager
     while (((Iterator)localObject).hasNext())
     {
       SegmentView localSegmentView = (SegmentView)((Iterator)localObject).next();
-      localStringBuilder.append(localSegmentView.a()).append(":").append(localSegmentView.d()).append("(").append(localSegmentView.b()).append(")||");
+      localStringBuilder.append(localSegmentView.a());
+      localStringBuilder.append(":");
+      localStringBuilder.append(localSegmentView.d());
+      localStringBuilder.append("(");
+      localStringBuilder.append(localSegmentView.b());
+      localStringBuilder.append(")||");
     }
     localObject = localStringBuilder.toString();
     localStringBuilder.setLength(0);
@@ -142,7 +145,7 @@ public class SegmentManager
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((SegmentView)localIterator.next()).i_(paramInt);
+      ((SegmentView)localIterator.next()).f_(paramInt);
     }
   }
   
@@ -168,15 +171,22 @@ public class SegmentManager
   
   void a(@NonNull SegmentView paramSegmentView)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 99) {
-      throw new IllegalStateException("SegmentView did not support too many segment!");
+    if (this.jdField_a_of_type_JavaUtilList.size() < 99)
+    {
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramSegmentView.a()))
+      {
+        paramSegmentView.a(this, this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList);
+        this.jdField_a_of_type_JavaUtilMap.put(paramSegmentView.a(), paramSegmentView);
+        this.jdField_a_of_type_JavaUtilList.add(paramSegmentView);
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SegmentList is already have segment which key is :");
+      localStringBuilder.append(paramSegmentView.a());
+      localStringBuilder.append(".It is not allow add twice");
+      throw new IllegalStateException(localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramSegmentView.a())) {
-      throw new IllegalStateException("SegmentList is already have segment which key is :" + paramSegmentView.a() + ".It is not allow add twice");
-    }
-    paramSegmentView.a(this, this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList);
-    this.jdField_a_of_type_JavaUtilMap.put(paramSegmentView.a(), paramSegmentView);
-    this.jdField_a_of_type_JavaUtilList.add(paramSegmentView);
+    throw new IllegalStateException("SegmentView did not support too many segment!");
   }
   
   void a(String paramString)
@@ -210,103 +220,93 @@ public class SegmentManager
     }
     if (this.jdField_b_of_type_JavaUtilMap.isEmpty())
     {
-      if (!this.jdField_b_of_type_Boolean) {
-        break label61;
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager$RequestDataCompletedListener.a(this.jdField_a_of_type_Int, SegmentList.e);
+      } else {
+        this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager$RequestDataCompletedListener.a(this.jdField_a_of_type_Int);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager$RequestDataCompletedListener.a(this.jdField_a_of_type_Int, SegmentList.e);
-    }
-    for (;;)
-    {
       b(0);
-      return;
-      label61:
-      this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager$RequestDataCompletedListener.a(this.jdField_a_of_type_Int);
     }
   }
   
   public void a(boolean paramBoolean)
   {
     int i;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = 3;
-      b(i);
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      this.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList.getContext() != null) {
-        break label41;
+    } else {
+      i = 1;
+    }
+    b(i);
+    this.jdField_b_of_type_JavaUtilMap.clear();
+    this.jdField_b_of_type_Boolean = false;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList.getContext() == null) {
+      return;
+    }
+    if (!NetworkUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList.getContext()))
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager$RequestDataCompletedListener.a(this.jdField_a_of_type_Int, SegmentList.d);
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      SegmentView localSegmentView = (SegmentView)localIterator.next();
+      if (localSegmentView.a_(paramBoolean)) {
+        this.jdField_b_of_type_JavaUtilMap.put(localSegmentView.a(), localSegmentView);
       }
     }
-    label41:
-    do
+    if (this.jdField_b_of_type_JavaUtilMap.isEmpty())
     {
-      return;
-      i = 1;
-      break;
-      if (!NetworkUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList.getContext()))
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager$RequestDataCompletedListener.a(this.jdField_a_of_type_Int, SegmentList.d);
-        return;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        SegmentView localSegmentView = (SegmentView)localIterator.next();
-        if (localSegmentView.a_(paramBoolean)) {
-          this.jdField_b_of_type_JavaUtilMap.put(localSegmentView.a(), localSegmentView);
-        }
-      }
-    } while (!this.jdField_b_of_type_JavaUtilMap.isEmpty());
-    b(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager$RequestDataCompletedListener.a(this.jdField_a_of_type_Int);
+      b(0);
+      this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager$RequestDataCompletedListener.a(this.jdField_a_of_type_Int);
+    }
   }
   
   public void b()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((SegmentView)localIterator.next()).e();
+      ((SegmentView)localIterator.next()).M_();
     }
   }
   
   public void b(View paramView)
   {
-    if (paramView == null) {}
-    SegmentView localSegmentView;
-    do
+    if (paramView == null) {
+      return;
+    }
+    paramView = (BaseViewHolder)paramView.getTag();
+    if (paramView != null)
     {
-      do
-      {
-        return;
-        paramView = (BaseViewHolder)paramView.getTag();
-      } while (paramView == null);
-      localSegmentView = a(paramView.jdField_a_of_type_JavaLangString);
-    } while (localSegmentView == null);
-    localSegmentView.a_(paramView);
+      SegmentView localSegmentView = a(paramView.jdField_a_of_type_JavaLangString);
+      if (localSegmentView != null) {
+        localSegmentView.a_(paramView);
+      }
+    }
   }
   
   public void c()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((SegmentView)localIterator.next()).T_();
+      ((SegmentView)localIterator.next()).R_();
     }
   }
   
   public void c(View paramView)
   {
-    if (paramView == null) {}
-    SegmentView localSegmentView;
-    do
+    if (paramView == null) {
+      return;
+    }
+    paramView = (BaseViewHolder)paramView.getTag();
+    if (paramView != null)
     {
-      do
-      {
-        return;
-        paramView = (BaseViewHolder)paramView.getTag();
-      } while (paramView == null);
-      localSegmentView = a(paramView.jdField_a_of_type_JavaLangString);
-    } while (localSegmentView == null);
-    localSegmentView.b_(paramView);
+      SegmentView localSegmentView = a(paramView.jdField_a_of_type_JavaLangString);
+      if (localSegmentView != null) {
+        localSegmentView.b_(paramView);
+      }
+    }
   }
   
   public void d()
@@ -365,39 +365,44 @@ public class SegmentManager
   
   public int getItemViewType(int paramInt)
   {
-    int n = 0;
+    int j = 0;
     int k = 0;
     int i = 0;
-    int j = 0;
-    for (;;)
+    while (j < this.jdField_a_of_type_JavaUtilList.size())
     {
-      int m = n;
-      int i1;
-      if (k < this.jdField_a_of_type_JavaUtilList.size())
+      SegmentView localSegmentView = (SegmentView)this.jdField_a_of_type_JavaUtilList.get(j);
+      int m = localSegmentView.d();
+      int n = localSegmentView.d_();
+      StringBuilder localStringBuilder;
+      if (m >= 0)
       {
-        SegmentView localSegmentView = (SegmentView)this.jdField_a_of_type_JavaUtilList.get(k);
-        m = localSegmentView.d();
-        i1 = localSegmentView.d_();
-        if (m < 0) {
-          throw new IllegalStateException(localSegmentView.a() + " getCount=" + m);
-        }
-        if (paramInt < m + j)
+        m += k;
+        if (paramInt < m)
         {
-          paramInt = localSegmentView.a(paramInt - j);
-          if (paramInt < 0) {
-            throw new IllegalStateException(localSegmentView.a() + " getViewType=" + paramInt);
+          paramInt = localSegmentView.a(paramInt - k);
+          if (paramInt >= 0) {
+            return i + paramInt;
           }
-          m = i + paramInt;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localSegmentView.a());
+          localStringBuilder.append(" getViewType=");
+          localStringBuilder.append(paramInt);
+          throw new IllegalStateException(localStringBuilder.toString());
         }
+        i += n;
+        j += 1;
+        k = m;
       }
       else
       {
-        return m;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localSegmentView.a());
+        localStringBuilder.append(" getCount=");
+        localStringBuilder.append(m);
+        throw new IllegalStateException(localStringBuilder.toString());
       }
-      i += i1;
-      j += m;
-      k += 1;
     }
+    return 0;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -406,100 +411,119 @@ public class SegmentManager
     int i = getItemViewType(paramInt);
     int j = a(paramInt);
     int k = a(j, paramInt);
-    if (this.jdField_a_of_type_JavaUtilList.size() < j + 1) {
-      throw new IllegalStateException("getView error! segmentIndex=" + j);
-    }
-    SegmentView localSegmentView = (SegmentView)this.jdField_a_of_type_JavaUtilList.get(j);
-    if (localSegmentView == null) {
-      throw new IllegalStateException("getView error! segment is null! segmentIndex=" + j);
-    }
-    TraceUtils.traceBegin("Segment.newView");
-    if (paramView != null)
+    if (this.jdField_a_of_type_JavaUtilList.size() >= j + 1)
     {
-      BaseViewHolder localBaseViewHolder = (BaseViewHolder)paramView.getTag();
-      if (localBaseViewHolder != null)
+      SegmentView localSegmentView = (SegmentView)this.jdField_a_of_type_JavaUtilList.get(j);
+      if (localSegmentView != null)
       {
-        localObject = localBaseViewHolder;
-        if (localBaseViewHolder.jdField_a_of_type_Int == i) {
-          break label172;
+        TraceUtils.traceBegin("Segment.newView");
+        Object localObject;
+        if (paramView != null)
+        {
+          BaseViewHolder localBaseViewHolder = (BaseViewHolder)paramView.getTag();
+          if (localBaseViewHolder != null)
+          {
+            localObject = localBaseViewHolder;
+            if (localBaseViewHolder.jdField_a_of_type_Int == i) {}
+          }
+          else
+          {
+            localObject = localSegmentView.a(k, paramViewGroup);
+          }
         }
+        else
+        {
+          localObject = localSegmentView.a(k, paramViewGroup);
+        }
+        TraceUtils.traceEnd();
+        if (localObject != null)
+        {
+          ((BaseViewHolder)localObject).jdField_a_of_type_Int = i;
+          ((BaseViewHolder)localObject).b = k;
+          ((BaseViewHolder)localObject).c = paramInt;
+          ((BaseViewHolder)localObject).jdField_a_of_type_JavaLangString = localSegmentView.a();
+          localObject = localSegmentView.a(k, (BaseViewHolder)localObject, paramViewGroup);
+          TraceUtils.traceEnd();
+          EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+          return localObject;
+        }
+        paramView = new StringBuilder();
+        paramView.append(localSegmentView.a());
+        paramView.append(": newView return null !");
+        throw new QQStoryIllegalException(paramView.toString());
       }
+      paramView = new StringBuilder();
+      paramView.append("getView error! segment is null! segmentIndex=");
+      paramView.append(j);
+      throw new IllegalStateException(paramView.toString());
     }
-    for (Object localObject = localSegmentView.a(k, paramViewGroup);; localObject = localSegmentView.a(k, paramViewGroup))
-    {
-      label172:
-      TraceUtils.traceEnd();
-      if (localObject != null) {
-        break;
-      }
-      throw new QQStoryIllegalException(localSegmentView.a() + ": newView return null !");
-    }
-    ((BaseViewHolder)localObject).jdField_a_of_type_Int = i;
-    ((BaseViewHolder)localObject).b = k;
-    ((BaseViewHolder)localObject).c = paramInt;
-    ((BaseViewHolder)localObject).jdField_a_of_type_JavaLangString = localSegmentView.a();
-    localObject = localSegmentView.a(k, (BaseViewHolder)localObject, paramViewGroup);
-    TraceUtils.traceEnd();
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return localObject;
+    paramView = new StringBuilder();
+    paramView.append("getView error! segmentIndex=");
+    paramView.append(j);
+    throw new IllegalStateException(paramView.toString());
   }
   
   public int getViewTypeCount()
   {
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
-    {
-      j = 1;
-      return j;
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+      return 1;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
-    for (;;)
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      j = i;
-      if (!localIterator.hasNext()) {
-        break;
+      SegmentView localSegmentView = (SegmentView)((Iterator)localObject).next();
+      int j = localSegmentView.d_();
+      if (j > 0)
+      {
+        i += j;
       }
-      SegmentView localSegmentView = (SegmentView)localIterator.next();
-      j = localSegmentView.d_();
-      if (j <= 0) {
-        throw new IllegalStateException(localSegmentView.a() + " viewTypeCount=" + j);
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(localSegmentView.a());
+        ((StringBuilder)localObject).append(" viewTypeCount=");
+        ((StringBuilder)localObject).append(j);
+        throw new IllegalStateException(((StringBuilder)localObject).toString());
       }
-      i += j;
     }
+    return i;
   }
   
   public void notifyDataSetChanged()
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList == null) || (!this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList.b()))
-    {
-      SLog.e("Q.qqstory.SegmentManager", "notifyDataSetChanged but have not set adapter");
-      return;
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
+    if ((localObject != null) && (((SegmentList)localObject).b())) {
+      g();
     }
-    g();
     try
     {
       StackTraceElement[] arrayOfStackTraceElement = new RuntimeException("getStackTrace").getStackTrace();
-      String str2 = arrayOfStackTraceElement[1].toString();
-      String str1 = str2;
-      if (arrayOfStackTraceElement.length >= 3) {
-        str1 = str2 + arrayOfStackTraceElement[2].toString();
+      String str = arrayOfStackTraceElement[1].toString();
+      localObject = str;
+      if (arrayOfStackTraceElement.length >= 3)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(arrayOfStackTraceElement[2].toString());
+        localObject = ((StringBuilder)localObject).toString();
       }
-      InfoPrinter.c("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged##", str1 });
+      InfoPrinter.c("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged##", localObject });
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        InfoPrinter.c("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged##" });
-      }
+      label105:
+      break label105;
     }
+    InfoPrinter.c("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged##" });
     super.notifyDataSetChanged();
+    return;
+    SLog.e("Q.qqstory.SegmentManager", "notifyDataSetChanged but have not set adapter");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.segment.SegmentManager
  * JD-Core Version:    0.7.0.1
  */

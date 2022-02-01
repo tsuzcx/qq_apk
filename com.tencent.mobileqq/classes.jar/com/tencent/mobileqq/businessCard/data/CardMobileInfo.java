@@ -27,42 +27,45 @@ public class CardMobileInfo
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.c = paramParcel.readString();
-      this.d = paramParcel.readString();
-      return;
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
   }
   
   public static String a(List<CardMobileInfo> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return "";
-    }
-    localJSONArray1 = new JSONArray();
-    try
+    JSONArray localJSONArray1;
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      localJSONArray1 = new JSONArray();
+      try
       {
-        CardMobileInfo localCardMobileInfo = (CardMobileInfo)paramList.next();
-        JSONArray localJSONArray2 = new JSONArray();
-        localJSONArray2.put(0, localCardMobileInfo.jdField_a_of_type_JavaLangString);
-        localJSONArray2.put(1, localCardMobileInfo.d);
-        localJSONArray2.put(2, localCardMobileInfo.jdField_a_of_type_Boolean);
-        localJSONArray2.put(3, localCardMobileInfo.c);
-        localJSONArray2.put(4, localCardMobileInfo.b);
-        localJSONArray1.put(localJSONArray2);
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          CardMobileInfo localCardMobileInfo = (CardMobileInfo)paramList.next();
+          JSONArray localJSONArray2 = new JSONArray();
+          localJSONArray2.put(0, localCardMobileInfo.jdField_a_of_type_JavaLangString);
+          localJSONArray2.put(1, localCardMobileInfo.d);
+          localJSONArray2.put(2, localCardMobileInfo.jdField_a_of_type_Boolean);
+          localJSONArray2.put(3, localCardMobileInfo.c);
+          localJSONArray2.put(4, localCardMobileInfo.b);
+          localJSONArray1.put(localJSONArray2);
+        }
+        return localJSONArray1.toString();
       }
-      return localJSONArray1.toString();
+      catch (JSONException paramList)
+      {
+        paramList.printStackTrace();
+      }
     }
-    catch (JSONException paramList)
-    {
-      paramList.printStackTrace();
-    }
+    return "";
   }
   
   public static List<CardMobileInfo> a(String paramString)
@@ -106,26 +109,33 @@ public class CardMobileInfo
   
   public String toString()
   {
-    return "CardMobileInfo{, isFriend=" + this.jdField_a_of_type_Boolean + "bindqq='" + this.b + ",nickName=" + this.c + ", mobile='" + this.jdField_a_of_type_JavaLangString + ",format= " + this.d + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CardMobileInfo{, isFriend=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("bindqq='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",nickName=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", mobile='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",format= ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeString(this.b);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.c);
-      paramParcel.writeString(this.d);
-      return;
-    }
+    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.data.CardMobileInfo
  * JD-Core Version:    0.7.0.1
  */

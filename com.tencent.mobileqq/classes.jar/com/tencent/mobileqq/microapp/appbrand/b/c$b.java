@@ -16,24 +16,25 @@ final class c$b
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    do
-    {
-      do
-      {
+      if (i != 2) {
         return;
-      } while ((c.b() == null) || (c.c() == null));
+      }
+      if (!c.e().isEmpty()) {
+        ThreadManager.excute(new f(this), 64, null, false);
+      }
+    }
+    else if ((c.b() != null) && (c.c() != null))
+    {
       ThreadManager.excute(new e(this), 64, null, false);
-      return;
-    } while (c.e().isEmpty());
-    ThreadManager.excute(new f(this), 64, null, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.b.c.b
  * JD-Core Version:    0.7.0.1
  */

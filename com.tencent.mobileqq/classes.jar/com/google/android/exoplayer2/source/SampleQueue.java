@@ -42,8 +42,9 @@ public final class SampleQueue
     this.extrasHolder = new SampleMetadataQueue.SampleExtrasHolder();
     this.scratch = new ParsableByteArray(32);
     this.firstAllocationNode = new SampleQueue.AllocationNode(0L, this.allocationLength);
-    this.readAllocationNode = this.firstAllocationNode;
-    this.writeAllocationNode = this.firstAllocationNode;
+    paramAllocator = this.firstAllocationNode;
+    this.readAllocationNode = paramAllocator;
+    this.writeAllocationNode = paramAllocator;
   }
   
   private void advanceReadTo(long paramLong)
@@ -55,57 +56,38 @@ public final class SampleQueue
   
   private void clearAllocationNodes(SampleQueue.AllocationNode paramAllocationNode)
   {
-    int j = 0;
-    if (!paramAllocationNode.wasInitialized) {
-      return;
-    }
-    if (this.writeAllocationNode.wasInitialized) {}
-    Allocation[] arrayOfAllocation;
-    for (int i = 1;; i = 0)
-    {
-      arrayOfAllocation = new Allocation[i + (int)(this.writeAllocationNode.startPosition - paramAllocationNode.startPosition) / this.allocationLength];
-      i = j;
-      while (i < arrayOfAllocation.length)
-      {
-        arrayOfAllocation[i] = paramAllocationNode.allocation;
-        paramAllocationNode = paramAllocationNode.clear();
-        i += 1;
-      }
-    }
-    this.allocator.release(arrayOfAllocation);
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:629)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:539)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s2stmt(TypeTransformer.java:820)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:843)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void discardDownstreamTo(long paramLong)
   {
-    if (paramLong == -1L) {}
-    do
-    {
+    if (paramLong == -1L) {
       return;
-      while (paramLong >= this.firstAllocationNode.endPosition)
-      {
-        this.allocator.release(this.firstAllocationNode.allocation);
-        this.firstAllocationNode = this.firstAllocationNode.clear();
-      }
-    } while (this.readAllocationNode.startPosition >= this.firstAllocationNode.startPosition);
-    this.readAllocationNode = this.firstAllocationNode;
+    }
+    while (paramLong >= this.firstAllocationNode.endPosition)
+    {
+      this.allocator.release(this.firstAllocationNode.allocation);
+      this.firstAllocationNode = this.firstAllocationNode.clear();
+    }
+    if (this.readAllocationNode.startPosition < this.firstAllocationNode.startPosition) {
+      this.readAllocationNode = this.firstAllocationNode;
+    }
   }
   
   private static Format getAdjustedSampleFormat(Format paramFormat, long paramLong)
   {
-    Format localFormat;
     if (paramFormat == null) {
-      localFormat = null;
+      return null;
     }
-    do
+    Format localFormat = paramFormat;
+    if (paramLong != 0L)
     {
-      do
-      {
-        return localFormat;
-        localFormat = paramFormat;
-      } while (paramLong == 0L);
       localFormat = paramFormat;
-    } while (paramFormat.subsampleOffsetUs == 9223372036854775807L);
-    return paramFormat.copyWithSubsampleOffsetUs(paramFormat.subsampleOffsetUs + paramLong);
+      if (paramFormat.subsampleOffsetUs != 9223372036854775807L) {
+        localFormat = paramFormat.copyWithSubsampleOffsetUs(paramFormat.subsampleOffsetUs + paramLong);
+      }
+    }
+    return localFormat;
   }
   
   private void postAppend(int paramInt)
@@ -154,102 +136,94 @@ public final class SampleQueue
       System.arraycopy(this.readAllocationNode.allocation.data, this.readAllocationNode.translateOffset(paramLong), paramArrayOfByte, paramInt - i, k);
       int j = i - k;
       long l = paramLong + k;
-      i = j;
       paramLong = l;
+      i = j;
       if (l == this.readAllocationNode.endPosition)
       {
         this.readAllocationNode = this.readAllocationNode.next;
-        i = j;
         paramLong = l;
+        i = j;
       }
     }
   }
   
   private void readEncryptionData(DecoderInputBuffer paramDecoderInputBuffer, SampleMetadataQueue.SampleExtrasHolder paramSampleExtrasHolder)
   {
-    int j = 1;
-    int k = 0;
     long l1 = paramSampleExtrasHolder.offset;
     this.scratch.reset(1);
     readData(l1, this.scratch.data, 1);
     l1 += 1L;
-    int m = this.scratch.data[0];
-    int i;
-    if ((m & 0x80) != 0)
-    {
+    Object localObject1 = this.scratch.data;
+    int k = 0;
+    int j = localObject1[0];
+    if ((j & 0x80) != 0) {
       i = 1;
-      m &= 0x7F;
-      if (paramDecoderInputBuffer.cryptoInfo.iv == null) {
-        paramDecoderInputBuffer.cryptoInfo.iv = new byte[16];
-      }
-      readData(l1, paramDecoderInputBuffer.cryptoInfo.iv, m);
-      l1 += m;
-      if (i == 0) {
-        break label307;
-      }
+    } else {
+      i = 0;
+    }
+    j &= 0x7F;
+    if (paramDecoderInputBuffer.cryptoInfo.iv == null) {
+      paramDecoderInputBuffer.cryptoInfo.iv = new byte[16];
+    }
+    readData(l1, paramDecoderInputBuffer.cryptoInfo.iv, j);
+    l1 += j;
+    if (i != 0)
+    {
       this.scratch.reset(2);
       readData(l1, this.scratch.data, 2);
-      j = this.scratch.readUnsignedShort();
       l1 += 2L;
+      j = this.scratch.readUnsignedShort();
     }
-    Object localObject2;
-    Object localObject1;
-    Object localObject3;
-    long l2;
-    label307:
-    for (;;)
+    else
     {
-      localObject2 = paramDecoderInputBuffer.cryptoInfo.numBytesOfClearData;
-      if (localObject2 != null)
-      {
-        localObject1 = localObject2;
-        if (localObject2.length >= j) {}
-      }
-      else
-      {
-        localObject1 = new int[j];
-      }
-      localObject3 = paramDecoderInputBuffer.cryptoInfo.numBytesOfEncryptedData;
-      if (localObject3 != null)
-      {
-        localObject2 = localObject3;
-        if (localObject3.length >= j) {}
-      }
-      else
-      {
-        localObject2 = new int[j];
-      }
-      if (i == 0) {
-        break label394;
-      }
+      j = 1;
+    }
+    Object localObject2 = paramDecoderInputBuffer.cryptoInfo.numBytesOfClearData;
+    if (localObject2 != null)
+    {
+      localObject1 = localObject2;
+      if (localObject2.length >= j) {}
+    }
+    else
+    {
+      localObject1 = new int[j];
+    }
+    Object localObject3 = paramDecoderInputBuffer.cryptoInfo.numBytesOfEncryptedData;
+    if (localObject3 != null)
+    {
+      localObject2 = localObject3;
+      if (localObject3.length >= j) {}
+    }
+    else
+    {
+      localObject2 = new int[j];
+    }
+    if (i != 0)
+    {
       i = j * 6;
       this.scratch.reset(i);
       readData(l1, this.scratch.data, i);
-      l2 = i;
+      long l2 = l1 + i;
       this.scratch.setPosition(0);
       i = k;
-      while (i < j)
+      for (;;)
       {
+        l1 = l2;
+        if (i >= j) {
+          break;
+        }
         localObject1[i] = this.scratch.readUnsignedShort();
         localObject2[i] = this.scratch.readUnsignedIntToInt();
         i += 1;
       }
-      i = 0;
-      break;
     }
-    l1 += l2;
-    for (;;)
-    {
-      localObject3 = paramSampleExtrasHolder.cryptoData;
-      paramDecoderInputBuffer.cryptoInfo.set(j, (int[])localObject1, (int[])localObject2, ((TrackOutput.CryptoData)localObject3).encryptionKey, paramDecoderInputBuffer.cryptoInfo.iv, ((TrackOutput.CryptoData)localObject3).cryptoMode, ((TrackOutput.CryptoData)localObject3).encryptedBlocks, ((TrackOutput.CryptoData)localObject3).clearBlocks);
-      i = (int)(l1 - paramSampleExtrasHolder.offset);
-      paramSampleExtrasHolder.offset += i;
-      paramSampleExtrasHolder.size -= i;
-      return;
-      label394:
-      localObject1[0] = 0;
-      localObject2[0] = (paramSampleExtrasHolder.size - (int)(l1 - paramSampleExtrasHolder.offset));
-    }
+    localObject1[0] = 0;
+    localObject2[0] = (paramSampleExtrasHolder.size - (int)(l1 - paramSampleExtrasHolder.offset));
+    localObject3 = paramSampleExtrasHolder.cryptoData;
+    paramDecoderInputBuffer.cryptoInfo.set(j, (int[])localObject1, (int[])localObject2, ((TrackOutput.CryptoData)localObject3).encryptionKey, paramDecoderInputBuffer.cryptoInfo.iv, ((TrackOutput.CryptoData)localObject3).cryptoMode, ((TrackOutput.CryptoData)localObject3).encryptedBlocks, ((TrackOutput.CryptoData)localObject3).clearBlocks);
+    int i = (int)(l1 - paramSampleExtrasHolder.offset);
+    paramSampleExtrasHolder.offset += i;
+    paramSampleExtrasHolder.size -= i;
   }
   
   public int advanceTo(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
@@ -280,27 +254,32 @@ public final class SampleQueue
   public void discardUpstreamSamples(int paramInt)
   {
     this.totalBytesWritten = this.metadataQueue.discardUpstreamSamples(paramInt);
-    if ((this.totalBytesWritten == 0L) || (this.totalBytesWritten == this.firstAllocationNode.startPosition))
+    long l = this.totalBytesWritten;
+    SampleQueue.AllocationNode localAllocationNode1;
+    if ((l != 0L) && (l != this.firstAllocationNode.startPosition))
+    {
+      for (localAllocationNode1 = this.firstAllocationNode; this.totalBytesWritten > localAllocationNode1.endPosition; localAllocationNode1 = localAllocationNode1.next) {}
+      SampleQueue.AllocationNode localAllocationNode3 = localAllocationNode1.next;
+      clearAllocationNodes(localAllocationNode3);
+      localAllocationNode1.next = new SampleQueue.AllocationNode(localAllocationNode1.endPosition, this.allocationLength);
+      SampleQueue.AllocationNode localAllocationNode2;
+      if (this.totalBytesWritten == localAllocationNode1.endPosition) {
+        localAllocationNode2 = localAllocationNode1.next;
+      } else {
+        localAllocationNode2 = localAllocationNode1;
+      }
+      this.writeAllocationNode = localAllocationNode2;
+      if (this.readAllocationNode == localAllocationNode3) {
+        this.readAllocationNode = localAllocationNode1.next;
+      }
+    }
+    else
     {
       clearAllocationNodes(this.firstAllocationNode);
       this.firstAllocationNode = new SampleQueue.AllocationNode(this.totalBytesWritten, this.allocationLength);
-      this.readAllocationNode = this.firstAllocationNode;
-      this.writeAllocationNode = this.firstAllocationNode;
-      return;
-    }
-    for (SampleQueue.AllocationNode localAllocationNode1 = this.firstAllocationNode; this.totalBytesWritten > localAllocationNode1.endPosition; localAllocationNode1 = localAllocationNode1.next) {}
-    SampleQueue.AllocationNode localAllocationNode3 = localAllocationNode1.next;
-    clearAllocationNodes(localAllocationNode3);
-    localAllocationNode1.next = new SampleQueue.AllocationNode(localAllocationNode1.endPosition, this.allocationLength);
-    if (this.totalBytesWritten == localAllocationNode1.endPosition) {}
-    for (SampleQueue.AllocationNode localAllocationNode2 = localAllocationNode1.next;; localAllocationNode2 = localAllocationNode1)
-    {
-      this.writeAllocationNode = localAllocationNode2;
-      if (this.readAllocationNode != localAllocationNode3) {
-        break;
-      }
-      this.readAllocationNode = localAllocationNode1.next;
-      return;
+      localAllocationNode1 = this.firstAllocationNode;
+      this.readAllocationNode = localAllocationNode1;
+      this.writeAllocationNode = localAllocationNode1;
     }
   }
   
@@ -310,8 +289,9 @@ public final class SampleQueue
     boolean bool = this.metadataQueue.format(localFormat);
     this.lastUnadjustedFormat = paramFormat;
     this.pendingFormatAdjustment = false;
-    if ((this.upstreamFormatChangeListener != null) && (bool)) {
-      this.upstreamFormatChangeListener.onUpstreamFormatChanged(localFormat);
+    paramFormat = this.upstreamFormatChangeListener;
+    if ((paramFormat != null) && (bool)) {
+      paramFormat.onUpstreamFormatChanged(localFormat);
     }
   }
   
@@ -357,14 +337,16 @@ public final class SampleQueue
   
   public int read(FormatHolder paramFormatHolder, DecoderInputBuffer paramDecoderInputBuffer, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    switch (this.metadataQueue.read(paramFormatHolder, paramDecoderInputBuffer, paramBoolean1, paramBoolean2, this.downstreamFormat, this.extrasHolder))
+    int i = this.metadataQueue.read(paramFormatHolder, paramDecoderInputBuffer, paramBoolean1, paramBoolean2, this.downstreamFormat, this.extrasHolder);
+    if (i != -5)
     {
-    default: 
-      throw new IllegalStateException();
-    case -5: 
-      this.downstreamFormat = paramFormatHolder.format;
-      return -5;
-    case -4: 
+      if (i != -4)
+      {
+        if (i == -3) {
+          return -3;
+        }
+        throw new IllegalStateException();
+      }
       if (!paramDecoderInputBuffer.isEndOfStream())
       {
         if (paramDecoderInputBuffer.timeUs < paramLong) {
@@ -378,7 +360,8 @@ public final class SampleQueue
       }
       return -4;
     }
-    return -3;
+    this.downstreamFormat = paramFormatHolder.format;
+    return -5;
   }
   
   public void reset()
@@ -391,8 +374,9 @@ public final class SampleQueue
     this.metadataQueue.reset(paramBoolean);
     clearAllocationNodes(this.firstAllocationNode);
     this.firstAllocationNode = new SampleQueue.AllocationNode(0L, this.allocationLength);
-    this.readAllocationNode = this.firstAllocationNode;
-    this.writeAllocationNode = this.firstAllocationNode;
+    SampleQueue.AllocationNode localAllocationNode = this.firstAllocationNode;
+    this.readAllocationNode = localAllocationNode;
+    this.writeAllocationNode = localAllocationNode;
     this.totalBytesWritten = 0L;
     this.allocator.trim();
   }
@@ -434,12 +418,18 @@ public final class SampleQueue
     if (this.pendingFormatAdjustment) {
       format(this.lastUnadjustedFormat);
     }
-    if (this.pendingSplice)
-    {
-      if (((paramInt1 & 0x1) == 0) || (!this.metadataQueue.attemptSplice(paramLong))) {
+    if (this.pendingSplice) {
+      if ((paramInt1 & 0x1) != 0)
+      {
+        if (!this.metadataQueue.attemptSplice(paramLong)) {
+          return;
+        }
+        this.pendingSplice = false;
+      }
+      else
+      {
         return;
       }
-      this.pendingSplice = false;
     }
     long l1 = this.sampleOffsetUs;
     long l2 = this.totalBytesWritten;
@@ -479,7 +469,7 @@ public final class SampleQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.SampleQueue
  * JD-Core Version:    0.7.0.1
  */

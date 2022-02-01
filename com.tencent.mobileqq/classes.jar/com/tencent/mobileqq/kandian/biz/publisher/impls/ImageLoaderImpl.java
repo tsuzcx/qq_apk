@@ -5,16 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.drawable.Drawable;
-import android.media.MediaMetadataRetriever;
 import android.os.Environment;
 import android.widget.ImageView;
 import com.jakewharton.disklrucache.DiskLruCache;
 import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 import com.tencent.tkd.topicsdk.common.MD5;
 import com.tencent.tkd.topicsdk.interfaces.IImageLoader;
 import com.tencent.tkd.topicsdk.interfaces.IImageLoader.ImageLoaderOption;
@@ -55,44 +53,39 @@ public final class ImageLoaderImpl
     Intrinsics.checkExpressionValueIsNotNull(localBaseApplication, "BaseApplication.getContext()");
     this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache = DiskLruCache.open(a((Context)localBaseApplication, "bitmap"), 1, 1, this.jdField_b_of_type_Int);
     this.c = Runtime.getRuntime().availableProcessors();
-    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(this.c, this.c * 2, 60L, TimeUnit.SECONDS, (BlockingQueue)new LinkedBlockingDeque(50));
+    int i = this.c;
+    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(i, i * 2, 60L, TimeUnit.SECONDS, (BlockingQueue)new LinkedBlockingDeque(50));
   }
   
   private final int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    int i = 1;
     int j = 1;
-    int k = 1;
-    int i = k;
     if (paramInt3 > 0)
     {
-      if (paramInt2 > 0) {
-        break label25;
+      if (paramInt2 <= 0) {
+        return 1;
       }
-      i = k;
-    }
-    label25:
-    do
-    {
-      return i;
-      if (paramInt1 > paramInt4) {
-        break;
-      }
-      i = k;
-    } while (paramInt2 <= paramInt3);
-    paramInt2 /= 2;
-    k = paramInt1 / 2;
-    paramInt1 = j;
-    for (;;)
-    {
-      if (paramInt2 / paramInt1 < paramInt4)
+      int k;
+      if ((paramInt1 > paramInt4) || (paramInt2 > paramInt3))
       {
-        i = paramInt1;
-        if (k / paramInt1 < paramInt3) {
-          break;
-        }
+        paramInt2 /= 2;
+        k = paramInt1 / 2;
+        paramInt1 = j;
       }
-      paramInt1 *= 2;
+      for (;;)
+      {
+        if (paramInt2 / paramInt1 < paramInt4)
+        {
+          i = paramInt1;
+          if (k / paramInt1 < paramInt3) {
+            return i;
+          }
+        }
+        paramInt1 *= 2;
+      }
     }
+    return 1;
   }
   
   private final int a(String paramString, int paramInt1, int paramInt2)
@@ -106,24 +99,76 @@ public final class ImageLoaderImpl
     return a(localOptions.outWidth, localOptions.outHeight, paramInt1, paramInt2);
   }
   
+  /* Error */
   private final Bitmap a(String paramString)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    try
-    {
-      localMediaMetadataRetriever.setDataSource(paramString);
-      Bitmap localBitmap = localMediaMetadataRetriever.getFrameAtTime();
-      return localBitmap;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ImageLoaderImpl", 1, "MediaMetadataRetriever.setDataSource. path=" + paramString + ", e=" + localException);
-      return null;
-    }
-    finally
-    {
-      localMediaMetadataRetriever.release();
-    }
+    // Byte code:
+    //   0: new 193	android/media/MediaMetadataRetriever
+    //   3: dup
+    //   4: invokespecial 194	android/media/MediaMetadataRetriever:<init>	()V
+    //   7: astore_3
+    //   8: aload_3
+    //   9: aload_1
+    //   10: invokevirtual 198	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   13: aload_3
+    //   14: invokevirtual 202	android/media/MediaMetadataRetriever:getFrameAtTime	()Landroid/graphics/Bitmap;
+    //   17: astore_2
+    //   18: aload_2
+    //   19: astore_1
+    //   20: aload_3
+    //   21: invokevirtual 205	android/media/MediaMetadataRetriever:release	()V
+    //   24: aload_1
+    //   25: areturn
+    //   26: astore_1
+    //   27: goto +59 -> 86
+    //   30: astore_2
+    //   31: new 207	java/lang/StringBuilder
+    //   34: dup
+    //   35: invokespecial 208	java/lang/StringBuilder:<init>	()V
+    //   38: astore 4
+    //   40: aload 4
+    //   42: ldc 210
+    //   44: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: pop
+    //   48: aload 4
+    //   50: aload_1
+    //   51: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: pop
+    //   55: aload 4
+    //   57: ldc 216
+    //   59: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: pop
+    //   63: aload 4
+    //   65: aload_2
+    //   66: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   69: pop
+    //   70: ldc 221
+    //   72: iconst_1
+    //   73: aload 4
+    //   75: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokestatic 231	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   81: aconst_null
+    //   82: astore_1
+    //   83: goto -63 -> 20
+    //   86: aload_3
+    //   87: invokevirtual 205	android/media/MediaMetadataRetriever:release	()V
+    //   90: goto +5 -> 95
+    //   93: aload_1
+    //   94: athrow
+    //   95: goto -2 -> 93
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	98	0	this	ImageLoaderImpl
+    //   0	98	1	paramString	String
+    //   17	2	2	localBitmap	Bitmap
+    //   30	36	2	localException	Exception
+    //   7	80	3	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
+    //   38	36	4	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   8	18	26	finally
+    //   31	81	26	finally
+    //   8	18	30	java/lang/Exception
   }
   
   private final Bitmap a(String paramString, int paramInt1, int paramInt2)
@@ -135,35 +180,38 @@ public final class ImageLoaderImpl
     if (localOptions.inSampleSize == -1)
     {
       paramString = a(paramString);
-      if (paramString != null) {
+      if (paramString != null)
+      {
         localOptions.inSampleSize = a(paramString.getWidth(), paramString.getHeight(), paramInt1, paramInt2);
+        return Bitmap.createScaledBitmap(paramString, paramString.getWidth() / localOptions.inSampleSize, paramString.getHeight() / localOptions.inSampleSize, true);
       }
-    }
-    for (paramString = Bitmap.createScaledBitmap(paramString, paramString.getWidth() / localOptions.inSampleSize, paramString.getHeight() / localOptions.inSampleSize, true);; paramString = BitmapFactory.decodeFile(paramString, localOptions))
-    {
-      return paramString;
       return null;
-      localOptions.inJustDecodeBounds = false;
     }
+    localOptions.inJustDecodeBounds = false;
+    return BitmapFactory.decodeFile(paramString, localOptions);
   }
   
   private final File a(Context paramContext, String paramString)
   {
-    if ((Intrinsics.areEqual("mounted", Environment.getExternalStorageState())) || (!Environment.isExternalStorageRemovable()))
+    if ((!Intrinsics.areEqual("mounted", Environment.getExternalStorageState())) && (Environment.isExternalStorageRemovable()))
+    {
+      paramContext = paramContext.getCacheDir();
+      Intrinsics.checkExpressionValueIsNotNull(paramContext, "context.cacheDir");
+      paramContext = paramContext.getPath();
+      Intrinsics.checkExpressionValueIsNotNull(paramContext, "context.cacheDir.path");
+    }
+    else
     {
       paramContext = paramContext.getExternalCacheDir();
       Intrinsics.checkExpressionValueIsNotNull(paramContext, "context.externalCacheDir");
       paramContext = paramContext.getPath();
       Intrinsics.checkExpressionValueIsNotNull(paramContext, "context.externalCacheDir.path");
     }
-    for (;;)
-    {
-      return new File(paramContext + File.separator + paramString);
-      paramContext = paramContext.getCacheDir();
-      Intrinsics.checkExpressionValueIsNotNull(paramContext, "context.cacheDir");
-      paramContext = paramContext.getPath();
-      Intrinsics.checkExpressionValueIsNotNull(paramContext, "context.cacheDir.path");
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return new File(localStringBuilder.toString());
   }
   
   private final void a(String paramString, Bitmap paramBitmap)
@@ -171,17 +219,13 @@ public final class ImageLoaderImpl
     paramString = (Runnable)new ImageLoaderImpl.saveBitmapToDiskCache.runnable.1(this, paramString, paramBitmap);
     paramBitmap = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue();
     Intrinsics.checkExpressionValueIsNotNull(paramBitmap, "threadPool.queue");
-    if (!((Collection)paramBitmap).isEmpty()) {}
-    for (int i = 1;; i = 0)
+    if ((!(((Collection)paramBitmap).isEmpty() ^ true)) || (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().remainingCapacity() > 10)) {}
+    try
     {
-      if ((i == 0) || (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().remainingCapacity() > 10)) {}
-      try
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().add(paramString);
-        return;
-      }
-      catch (Exception paramString) {}
+      this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().add(paramString);
+      return;
     }
+    catch (Exception paramString) {}
     this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramString);
     return;
   }
@@ -193,8 +237,8 @@ public final class ImageLoaderImpl
     localURLDrawableOptions.mRequestHeight = paramImageLoaderOption.jdField_b_of_type_Int;
     localURLDrawableOptions.mGifRoundCorner = paramImageLoaderOption.c;
     localURLDrawableOptions.mUseMemoryCache = true;
-    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+    localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     paramImageView.setImageDrawable((Drawable)URLDrawable.getDrawable(paramString, localURLDrawableOptions));
   }
   
@@ -203,42 +247,35 @@ public final class ImageLoaderImpl
     paramString1 = (Runnable)new ImageLoaderImpl.loadImageFromFile.runnable.1(this, paramImageLoaderOption, paramImageView, paramString1, paramString2);
     paramString2 = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue();
     Intrinsics.checkExpressionValueIsNotNull(paramString2, "threadPool.queue");
-    int i;
-    if (!((Collection)paramString2).isEmpty()) {
-      i = 1;
-    }
-    while (i != 0)
+    if ((((Collection)paramString2).isEmpty() ^ true)) {}
+    try
     {
-      try
+      paramString2 = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue();
+      if (paramString2 != null)
       {
-        paramString2 = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue();
-        if (paramString2 != null) {
-          break label105;
-        }
-        throw new TypeCastException("null cannot be cast to non-null type java.util.concurrent.LinkedBlockingDeque<java.lang.Runnable!>");
-      }
-      catch (Exception paramString2)
-      {
-        paramString2 = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue();
-        if (paramString2 != null) {
-          break label114;
-        }
+        ((LinkedBlockingDeque)paramString2).addFirst(paramString1);
+        return;
       }
       throw new TypeCastException("null cannot be cast to non-null type java.util.concurrent.LinkedBlockingDeque<java.lang.Runnable!>");
-      i = 0;
-      continue;
-      label105:
-      ((LinkedBlockingDeque)paramString2).addFirst(paramString1);
-      return;
-      label114:
+    }
+    catch (Exception paramString2)
+    {
+      label78:
+      break label78;
+    }
+    paramString2 = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue();
+    if (paramString2 != null)
+    {
       ((LinkedBlockingDeque)paramString2).removeLast();
       paramString2 = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue();
-      if (paramString2 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.util.concurrent.LinkedBlockingDeque<java.lang.Runnable!>");
+      if (paramString2 != null)
+      {
+        ((LinkedBlockingDeque)paramString2).addFirst(paramString1);
+        return;
       }
-      ((LinkedBlockingDeque)paramString2).addFirst(paramString1);
-      return;
+      throw new TypeCastException("null cannot be cast to non-null type java.util.concurrent.LinkedBlockingDeque<java.lang.Runnable!>");
     }
+    throw new TypeCastException("null cannot be cast to non-null type java.util.concurrent.LinkedBlockingDeque<java.lang.Runnable!>");
     this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramString1);
   }
   
@@ -259,38 +296,43 @@ public final class ImageLoaderImpl
     if (paramImageView == null) {
       return;
     }
-    if (((CharSequence)paramString).length() == 0) {}
-    for (int i = 1; i != 0; i = 0)
+    int i;
+    if (((CharSequence)paramString).length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
       paramImageView.setImageDrawable(paramImageLoaderOption.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
       return;
     }
-    if ((StringsKt.startsWith$default(paramString, "https://", false, 2, null)) || (StringsKt.startsWith$default(paramString, "http://", false, 2, null)))
+    if ((!StringsKt.startsWith$default(paramString, "https://", false, 2, null)) && (!StringsKt.startsWith$default(paramString, "http://", false, 2, null)))
     {
-      a(paramString, paramImageView, paramImageLoaderOption);
+      if (!new File(paramString).exists())
+      {
+        paramImageView.setImageDrawable(paramImageLoaderOption.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+        return;
+      }
+      paramContext = MD5.a(paramString);
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsImageLoaderImpl$lruCache$1.get(paramContext);
+      if (localBitmap == null)
+      {
+        paramImageView.setTag(paramContext);
+        paramImageView.setImageDrawable(paramImageLoaderOption.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        Intrinsics.checkExpressionValueIsNotNull(paramContext, "key");
+        a(paramContext, paramString, paramImageView, paramImageLoaderOption);
+        return;
+      }
+      paramImageView.setImageBitmap(localBitmap);
       return;
     }
-    if (!new File(paramString).exists())
-    {
-      paramImageView.setImageDrawable(paramImageLoaderOption.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-      return;
-    }
-    paramContext = MD5.a(paramString);
-    Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsImageLoaderImpl$lruCache$1.get(paramContext);
-    if (localBitmap == null)
-    {
-      paramImageView.setTag(paramContext);
-      paramImageView.setImageDrawable(paramImageLoaderOption.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      Intrinsics.checkExpressionValueIsNotNull(paramContext, "key");
-      a(paramContext, paramString, paramImageView, paramImageLoaderOption);
-      return;
-    }
-    paramImageView.setImageBitmap(localBitmap);
+    a(paramString, paramImageView, paramImageLoaderOption);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.ImageLoaderImpl
  * JD-Core Version:    0.7.0.1
  */

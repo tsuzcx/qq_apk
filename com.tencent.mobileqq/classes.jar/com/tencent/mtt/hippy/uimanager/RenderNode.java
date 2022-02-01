@@ -21,6 +21,7 @@ public class RenderNode
   String mClassName;
   ControllerManager mComponentManager;
   SparseArray<Integer> mDeletedIdIndexMap;
+  public boolean mHasSetDteblId = false;
   boolean mHasUpdateLayout = false;
   int mHeight;
   int mId;
@@ -100,7 +101,8 @@ public class RenderNode
   
   public View createView()
   {
-    if ((this.mDeletedIdIndexMap != null) && (this.mDeletedIdIndexMap.size() > 0))
+    Object localObject = this.mDeletedIdIndexMap;
+    if ((localObject != null) && (((SparseArray)localObject).size() > 0))
     {
       int i = 0;
       while (i < this.mDeletedIdIndexMap.size())
@@ -117,11 +119,15 @@ public class RenderNode
       this.mIsRootHasDelete = true;
       this.mComponentManager.b(this.mId);
     }
-    if ((shouldCreateView()) && (!TextUtils.equals("RootNode", this.mClassName)) && (this.mParent != null))
+    if ((shouldCreateView()) && (!TextUtils.equals("RootNode", this.mClassName)))
     {
-      this.mPropsToUpdate = null;
-      this.mParent.addChildToPendingList(this);
-      return this.mComponentManager.b(this.mRootView, this.mId, this.mClassName, this.mProps);
+      localObject = this.mParent;
+      if (localObject != null)
+      {
+        this.mPropsToUpdate = null;
+        ((RenderNode)localObject).addChildToPendingList(this);
+        return this.mComponentManager.b(this.mRootView, this.mId, this.mClassName, this.mProps);
+      }
     }
     return null;
   }
@@ -201,8 +207,9 @@ public class RenderNode
   
   int indexFromParent()
   {
-    if (this.mParent != null) {
-      return this.mParent.mChildren.indexOf(this);
+    RenderNode localRenderNode = this.mParent;
+    if (localRenderNode != null) {
+      return localRenderNode.mChildren.indexOf(this);
     }
     return 0;
   }
@@ -240,7 +247,11 @@ public class RenderNode
   
   void printChild(RenderNode paramRenderNode, StringBuilder paramStringBuilder)
   {
-    paramStringBuilder.append(" [Id:" + paramRenderNode.getId() + paramRenderNode.mClassName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" [Id:");
+    localStringBuilder.append(paramRenderNode.getId());
+    localStringBuilder.append(paramRenderNode.mClassName);
+    paramStringBuilder.append(localStringBuilder.toString());
     paramRenderNode = paramRenderNode.mChildren.iterator();
     while (paramRenderNode.hasNext()) {
       printChild((RenderNode)paramRenderNode.next(), paramStringBuilder);
@@ -289,11 +300,14 @@ public class RenderNode
   
   public void update()
   {
-    LogUtils.d("UINode", "mId" + this.mId + " updateStyle");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mId");
+    ((StringBuilder)localObject).append(this.mId);
+    ((StringBuilder)localObject).append(" updateStyle");
+    LogUtils.d("UINode", ((StringBuilder)localObject).toString());
     if (shouldUpdateView())
     {
       int i;
-      Object localObject;
       if (this.mChildPendingList.size() > 0)
       {
         Collections.sort(this.mChildPendingList, new RenderNode.1(this));
@@ -307,14 +321,16 @@ public class RenderNode
         this.mChildPendingList.clear();
         this.mNotifyManageChildren = true;
       }
-      if (this.mPropsToUpdate != null)
+      localObject = this.mPropsToUpdate;
+      if (localObject != null)
       {
-        this.mComponentManager.a(this.mId, this.mClassName, this.mPropsToUpdate);
+        this.mComponentManager.a(this.mId, this.mClassName, (HippyMap)localObject);
         this.mPropsToUpdate = null;
       }
-      if (this.mMoveHolders != null)
+      localObject = this.mMoveHolders;
+      if (localObject != null)
       {
-        localObject = this.mMoveHolders.iterator();
+        localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           RenderNode.a locala = (RenderNode.a)((Iterator)localObject).next();
@@ -332,15 +348,21 @@ public class RenderNode
       if ((this.mHasUpdateLayout) && (!TextUtils.equals("RootNode", this.mClassName)))
       {
         this.mComponentManager.a(this.mClassName, this.mId, this.mX, this.mY, this.mWidth, this.mHeight);
-        LogUtils.d("UINode", "mId" + this.mId + " updateLayout");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("mId");
+        ((StringBuilder)localObject).append(this.mId);
+        ((StringBuilder)localObject).append(" updateLayout");
+        LogUtils.d("UINode", ((StringBuilder)localObject).toString());
         this.mHasUpdateLayout = false;
       }
-      if (this.mTextExtraUpdate != null)
+      localObject = this.mTextExtraUpdate;
+      if (localObject != null)
       {
-        this.mComponentManager.a(this.mId, this.mClassName, this.mTextExtraUpdate);
+        this.mComponentManager.a(this.mId, this.mClassName, localObject);
         this.mTextExtraUpdate = null;
       }
-      if ((this.mUIFunction != null) && (this.mUIFunction.size() > 0))
+      localObject = this.mUIFunction;
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
         i = 0;
         while (i < this.mUIFunction.size())
@@ -352,7 +374,8 @@ public class RenderNode
         this.mUIFunction.clear();
         this.mUIFunction = null;
       }
-      if ((this.mMeasureInWindows != null) && (this.mMeasureInWindows.size() > 0))
+      localObject = this.mMeasureInWindows;
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
         i = 0;
         while (i < this.mMeasureInWindows.size())
@@ -370,7 +393,11 @@ public class RenderNode
         this.mNotifyManageChildren = false;
       }
     }
-    LogUtils.d("UINode", "mId" + this.mId + " end updateStyle");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mId");
+    ((StringBuilder)localObject).append(this.mId);
+    ((StringBuilder)localObject).append(" end updateStyle");
+    LogUtils.d("UINode", ((StringBuilder)localObject).toString());
   }
   
   public void updateExtra(Object paramObject)
@@ -390,55 +417,54 @@ public class RenderNode
   
   public void updateNode(HippyMap paramHippyMap)
   {
-    HippyMap localHippyMap2;
-    String str1;
-    HippyMap localHippyMap3;
-    HippyMap localHippyMap1;
-    if (this.mPropsToUpdate != null)
+    Object localObject1 = this.mPropsToUpdate;
+    if (localObject1 != null)
     {
-      localHippyMap2 = DiffUtils.diffProps(this.mPropsToUpdate, paramHippyMap, 0);
-      if ((localHippyMap2 == null) || (localHippyMap2.size() <= 0)) {
-        break label201;
-      }
-      Iterator localIterator1 = localHippyMap2.keySet().iterator();
-      for (;;)
+      HippyMap localHippyMap2 = DiffUtils.diffProps((HippyMap)localObject1, paramHippyMap, 0);
+      if ((localHippyMap2 != null) && (localHippyMap2.size() > 0))
       {
-        if (localIterator1.hasNext())
+        Iterator localIterator = localHippyMap2.keySet().iterator();
+        String str1;
+        do
         {
-          str1 = (String)localIterator1.next();
-          if (TextUtils.equals("style", str1))
-          {
-            localHippyMap3 = localHippyMap2.getMap(str1);
-            if (localHippyMap3 == null) {
-              continue;
-            }
-            localHippyMap1 = this.mPropsToUpdate.getMap(str1);
-            if (localHippyMap1 != null) {
-              break label207;
-            }
-            localHippyMap1 = new HippyMap();
+          if (!localIterator.hasNext()) {
+            break label210;
           }
+          str1 = (String)localIterator.next();
+          if (!TextUtils.equals("style", str1)) {
+            break;
+          }
+          localHippyMap1 = localHippyMap2.getMap(str1);
+        } while (localHippyMap1 == null);
+        Object localObject2 = this.mPropsToUpdate.getMap(str1);
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = new HippyMap();
+        }
+        localObject2 = localHippyMap1.keySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          String str2 = (String)((Iterator)localObject2).next();
+          ((HippyMap)localObject1).pushObject(str2, localHippyMap1.get(str2));
+        }
+        HippyMap localHippyMap1 = this.mPropsToUpdate;
+        localObject2 = localObject1;
+        localObject1 = localHippyMap1;
+        for (;;)
+        {
+          ((HippyMap)localObject1).pushObject(str1, localObject2);
+          break;
+          localObject1 = this.mPropsToUpdate;
+          localObject2 = localHippyMap2.get(str1);
         }
       }
     }
-    label201:
-    label207:
-    for (;;)
+    else
     {
-      Iterator localIterator2 = localHippyMap3.keySet().iterator();
-      while (localIterator2.hasNext())
-      {
-        String str2 = (String)localIterator2.next();
-        localHippyMap1.pushObject(str2, localHippyMap3.get(str2));
-      }
-      this.mPropsToUpdate.pushObject(str1, localHippyMap1);
-      break;
-      this.mPropsToUpdate.pushObject(str1, localHippyMap2.get(str1));
-      break;
       this.mPropsToUpdate = DiffUtils.diffProps(this.mProps, paramHippyMap, 0);
-      this.mProps = paramHippyMap;
-      return;
     }
+    label210:
+    this.mProps = paramHippyMap;
   }
   
   public void updateViewRecursive()
@@ -452,7 +478,7 @@ public class RenderNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.RenderNode
  * JD-Core Version:    0.7.0.1
  */

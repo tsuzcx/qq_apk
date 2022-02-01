@@ -3,27 +3,29 @@ package cooperation.qzone.util;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.MobileQQ;
 
 public class WiFiDash
 {
   public static final String EMPTY = "";
   public static final String NOT_AVALIBLE = "N/A";
-  static volatile String currBSSID = null;
+  static volatile String currBSSID;
   
   public static String getBSSID()
   {
-    if (currBSSID == null) {}
-    try
-    {
-      if (currBSSID == null) {
-        updateBSSID();
+    if (currBSSID == null) {
+      try
+      {
+        if (currBSSID == null) {
+          updateBSSID();
+        }
       }
-      if (("N/A".equals(currBSSID)) || ("00:00:00:00:00:00".equals(currBSSID)) || ("FF:FF:FF:FF:FF:FF".equalsIgnoreCase(currBSSID))) {
-        return null;
-      }
+      finally {}
     }
-    finally {}
-    return currBSSID;
+    if ((!"N/A".equals(currBSSID)) && (!"00:00:00:00:00:00".equals(currBSSID)) && (!"FF:FF:FF:FF:FF:FF".equalsIgnoreCase(currBSSID))) {
+      return currBSSID;
+    }
+    return null;
   }
   
   public static int getSignalLevel()
@@ -37,83 +39,89 @@ public class WiFiDash
   
   public static String getWifiInfo()
   {
-    Object localObject = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
-    if (localObject == null) {
+    Object localObject1 = (WifiManager)MobileQQ.getContext().getSystemService("wifi");
+    if (localObject1 == null) {
       return "[-]";
     }
     try
     {
-      localObject = ((WifiManager)localObject).getConnectionInfo();
-      if (localObject == null) {
-        return "[-]";
-      }
+      localObject1 = ((WifiManager)localObject1).getConnectionInfo();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        str1 = null;
-      }
-      String str2 = str1.getSSID();
-      int i = WifiManager.calculateSignalLevel(str1.getRssi(), 5);
-      String str1 = String.valueOf(str1.getLinkSpeed()) + " " + "Mbps";
-      StringBuffer localStringBuffer = new StringBuffer();
-      localStringBuffer.append('[').append(String.valueOf(i)).append(", ").append(str2).append(", ").append(str1).append(']');
-      return localStringBuffer.toString();
+      label27:
+      String str;
+      int i;
+      Object localObject2;
+      break label27;
     }
+    localObject1 = null;
+    if (localObject1 == null) {
+      return "[-]";
+    }
+    str = ((WifiInfo)localObject1).getSSID();
+    i = WifiManager.calculateSignalLevel(((WifiInfo)localObject1).getRssi(), 5);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(String.valueOf(((WifiInfo)localObject1).getLinkSpeed()));
+    ((StringBuilder)localObject2).append(" ");
+    ((StringBuilder)localObject2).append("Mbps");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuffer();
+    ((StringBuffer)localObject2).append('[');
+    ((StringBuffer)localObject2).append(String.valueOf(i));
+    ((StringBuffer)localObject2).append(", ");
+    ((StringBuffer)localObject2).append(str);
+    ((StringBuffer)localObject2).append(", ");
+    ((StringBuffer)localObject2).append((String)localObject1);
+    ((StringBuffer)localObject2).append(']');
+    return ((StringBuffer)localObject2).toString();
   }
   
   private static Object queryWifiInfo(Object paramObject)
   {
-    Object localObject1 = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
-    if (localObject1 == null) {}
-    for (;;)
-    {
+    Object localObject = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
+    if (localObject == null) {
       return paramObject;
-      try
-      {
-        localObject1 = ((WifiManager)localObject1).getConnectionInfo();
-        if (localObject1 == null) {
-          continue;
-        }
-        return localObject1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Object localObject2 = null;
-        }
-      }
     }
+    try
+    {
+      localObject = ((WifiManager)localObject).getConnectionInfo();
+    }
+    catch (Exception localException)
+    {
+      label26:
+      break label26;
+    }
+    localObject = null;
+    if (localObject == null) {
+      return paramObject;
+    }
+    return localObject;
   }
   
   public static String updateBSSID()
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject3 = queryWifiInfo("N/A");
+      Object localObject1 = null;
+      if (localObject3 != "N/A")
       {
-        Object localObject1 = queryWifiInfo("N/A");
-        if (localObject1 != "N/A")
-        {
-          String str = ((WifiInfo)localObject1).getBSSID();
-          localObject1 = str;
-          if (str == null) {
-            localObject1 = "N/A";
-          }
-          currBSSID = (String)localObject1;
-          return localObject1;
+        localObject3 = ((WifiInfo)localObject3).getBSSID();
+        localObject1 = localObject3;
+        if (localObject3 == null) {
+          localObject1 = "N/A";
         }
       }
-      finally {}
-      Object localObject3 = null;
+      currBSSID = (String)localObject1;
+      return localObject1;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.WiFiDash
  * JD-Core Version:    0.7.0.1
  */

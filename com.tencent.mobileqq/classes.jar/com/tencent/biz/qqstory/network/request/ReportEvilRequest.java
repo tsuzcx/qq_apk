@@ -41,7 +41,7 @@ public class ReportEvilRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqReportEvil localReqReportEvil = new qqstory_service.ReqReportEvil();
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
@@ -59,12 +59,19 @@ public class ReportEvilRequest
   
   public String toString()
   {
-    return "ReportEvilRequest{impeachType=" + this.jdField_c_of_type_Int + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReportEvilRequest{impeachType=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", vid='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.ReportEvilRequest
  * JD-Core Version:    0.7.0.1
  */

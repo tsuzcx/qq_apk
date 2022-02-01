@@ -1,10 +1,6 @@
 package com.tencent.av.ui.funchat.zimu;
 
 import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ARZimuUtil;
 import com.tencent.av.business.manager.zimu.EffectZimuManager.DataReport;
 import com.tencent.av.ui.EffectSettingUi;
 import com.tencent.av.ui.QAVPtvTemplateAdapter.IEffectCallback;
@@ -18,30 +14,30 @@ class ZimuToolbar$MyItemEvent
   
   public void a(long paramLong)
   {
-    EffectSettingUi.a(ZimuToolbar.access$400(this.a), paramLong);
+    EffectSettingUi.a(ZimuToolbar.access$200(this.a), paramLong);
   }
   
   public void a(long paramLong, QavListItemBase.ItemInfo paramItemInfo)
   {
     EffectSettingUi.a(ZimuToolbar.access$000(this.a), paramLong);
-    QLog.w("ZimuToolbar", 1, "onEffectClick, 自己点击了字幕, id[" + paramItemInfo.a + "], seq[" + paramLong + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEffectClick, 自己点击了字幕, id[");
+    localStringBuilder.append(paramItemInfo.a);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w("ZimuToolbar", 1, localStringBuilder.toString());
     ZimuToolbar.access$100(this.a, paramLong, paramItemInfo.a);
-    if ((!TextUtils.isEmpty(paramItemInfo.a)) && (!"0".equalsIgnoreCase(paramItemInfo.a)))
-    {
+    if ((!TextUtils.isEmpty(paramItemInfo.a)) && (!"0".equalsIgnoreCase(paramItemInfo.a))) {
       EffectZimuManager.DataReport.a("0X80085CD", paramItemInfo.a);
-      if (ARZimuUtil.a(paramItemInfo.a))
-      {
-        paramItemInfo = ZimuToolbar.access$200(this.a).a().a().d;
-        String str = ZimuToolbar.access$300(this.a).getCurrentAccountUin();
-        EffectZimuManager.DataReport.a("0X8009191", str, paramItemInfo);
-        EffectZimuManager.DataReport.a("0X8009192", str, paramItemInfo);
-      }
     }
   }
+  
+  public void a(QavListItemBase.ItemInfo paramItemInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuToolbar.MyItemEvent
  * JD-Core Version:    0.7.0.1
  */

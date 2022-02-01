@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.NativeAd.util;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
-import com.tencent.biz.pubaccount.VideoInfo.ClassInfo;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
-import com.tencent.biz.pubaccount.VideoInfo.KdTagItem;
-import com.tencent.biz.pubaccount.readinjoy.protocol.RIJPBFieldUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.playfeeds.GameAdComData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.atlas.ReadInJoyAdAtlasUtil;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.kandian.base.utils.RIJPBFieldUtils;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.AdTagInfo;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.ClassInfo;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.KdTagItem;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -19,6 +19,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -65,7 +66,7 @@ public class VideoFeedsAdTagHelper
         }
         localAdTagInfo.rpt_kd_tag_list.set((List)localObject2);
       }
-      localObject1 = ((VideoInfo.AdTagInfo)localObject1).jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ClassInfo;
+      localObject1 = ((VideoInfo.AdTagInfo)localObject1).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ClassInfo;
       if (localObject1 != null)
       {
         localObject2 = new oidb_0x885.ClassInfo();
@@ -97,30 +98,29 @@ public class VideoFeedsAdTagHelper
           if (i < paramArrayList.size())
           {
             VideoInfo localVideoInfo = (VideoInfo)paramArrayList.get(i);
-            if ((localVideoInfo.a != null) && (localVideoInfo.a.jdField_a_of_type_Int == 0))
-            {
-              localVideoInfo.a.jdField_b_of_type_Int = i;
-              localArrayList.add(localVideoInfo.a);
+            if ((localVideoInfo.a == null) || (localVideoInfo.a.jdField_a_of_type_Int != 0)) {
+              break label134;
             }
+            localVideoInfo.a.jdField_b_of_type_Int = i;
+            localArrayList.add(localVideoInfo.a);
+            break label134;
           }
-          else
-          {
-            paramBundle.putParcelableArrayList("value_msg_kd_tag_info", localArrayList);
-          }
-        }
-        else
-        {
+          paramBundle.putParcelableArrayList("value_msg_kd_tag_info", localArrayList);
           return;
         }
       }
       catch (Exception paramBundle)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel())
+        {
+          paramArrayList = new StringBuilder();
+          paramArrayList.append("handleGetRecommendList: parse tag info error,e=");
+          paramArrayList.append(paramBundle.getMessage());
+          QLog.d("VideoFeedsAdTagHelper", 2, paramArrayList.toString());
         }
-        QLog.d("VideoFeedsAdTagHelper", 2, "handleGetRecommendList: parse tag info error,e=" + paramBundle.getMessage());
-        return;
       }
+      return;
+      label134:
       i += 1;
     }
   }
@@ -138,204 +138,190 @@ public class VideoFeedsAdTagHelper
       }
       if (paramVideoInfo.a.jdField_a_of_type_Int == 0)
       {
-        Object localObject2;
         Object localObject3;
+        Object localObject2;
         Object localObject1;
+        long l;
         if (paramArticleSummary.msg_kd_tag_info.msg_class_info.has())
         {
-          localObject2 = (oidb_0x885.ClassInfo)paramArticleSummary.msg_kd_tag_info.msg_class_info.get();
-          paramVideoInfo.a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ClassInfo = new VideoInfo.ClassInfo();
-          localObject3 = paramVideoInfo.a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ClassInfo;
-          if (((oidb_0x885.ClassInfo)localObject2).string_ch1.has())
-          {
-            localObject1 = ((oidb_0x885.ClassInfo)localObject2).string_ch1.get();
-            ((VideoInfo.ClassInfo)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
-            localObject3 = paramVideoInfo.a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ClassInfo;
-            if (!((oidb_0x885.ClassInfo)localObject2).string_ch2.has()) {
-              break label528;
-            }
-            localObject1 = ((oidb_0x885.ClassInfo)localObject2).string_ch2.get();
-            label203:
-            ((VideoInfo.ClassInfo)localObject3).jdField_b_of_type_JavaLangString = ((String)localObject1);
-            localObject3 = paramVideoInfo.a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ClassInfo;
-            if (!((oidb_0x885.ClassInfo)localObject2).string_ch3.has()) {
-              break label536;
-            }
-            localObject1 = ((oidb_0x885.ClassInfo)localObject2).string_ch3.get();
-            label240:
-            ((VideoInfo.ClassInfo)localObject3).jdField_c_of_type_JavaLangString = ((String)localObject1);
-            localObject1 = paramVideoInfo.a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ClassInfo;
-            if (!((oidb_0x885.ClassInfo)localObject2).uint64_ch1_id.has()) {
-              break label544;
-            }
-            l = ((oidb_0x885.ClassInfo)localObject2).uint64_ch1_id.get();
-            label276:
-            ((VideoInfo.ClassInfo)localObject1).jdField_a_of_type_Long = l;
-            localObject1 = paramVideoInfo.a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ClassInfo;
-            if (!((oidb_0x885.ClassInfo)localObject2).uint64_ch2_id.has()) {
-              break label549;
-            }
-            l = ((oidb_0x885.ClassInfo)localObject2).uint64_ch2_id.get();
-            label311:
-            ((VideoInfo.ClassInfo)localObject1).jdField_b_of_type_Long = l;
-            localObject1 = paramVideoInfo.a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ClassInfo;
-            if (!((oidb_0x885.ClassInfo)localObject2).uint64_ch3_id.has()) {
-              break label554;
-            }
-            l = ((oidb_0x885.ClassInfo)localObject2).uint64_ch3_id.get();
-            label346:
-            ((VideoInfo.ClassInfo)localObject1).jdField_c_of_type_Long = l;
+          localObject3 = (oidb_0x885.ClassInfo)paramArticleSummary.msg_kd_tag_info.msg_class_info.get();
+          paramVideoInfo.a.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ClassInfo = new VideoInfo.ClassInfo();
+          VideoInfo.ClassInfo localClassInfo = paramVideoInfo.a.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ClassInfo;
+          boolean bool = ((oidb_0x885.ClassInfo)localObject3).string_ch1.has();
+          localObject2 = "";
+          if (bool) {
+            localObject1 = ((oidb_0x885.ClassInfo)localObject3).string_ch1.get();
+          } else {
+            localObject1 = "";
           }
+          localClassInfo.jdField_a_of_type_JavaLangString = ((String)localObject1);
+          localClassInfo = paramVideoInfo.a.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ClassInfo;
+          if (((oidb_0x885.ClassInfo)localObject3).string_ch2.has()) {
+            localObject1 = ((oidb_0x885.ClassInfo)localObject3).string_ch2.get();
+          } else {
+            localObject1 = "";
+          }
+          localClassInfo.jdField_b_of_type_JavaLangString = ((String)localObject1);
+          localClassInfo = paramVideoInfo.a.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ClassInfo;
+          localObject1 = localObject2;
+          if (((oidb_0x885.ClassInfo)localObject3).string_ch3.has()) {
+            localObject1 = ((oidb_0x885.ClassInfo)localObject3).string_ch3.get();
+          }
+          localClassInfo.jdField_c_of_type_JavaLangString = ((String)localObject1);
+          localObject1 = paramVideoInfo.a.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ClassInfo;
+          if (((oidb_0x885.ClassInfo)localObject3).uint64_ch1_id.has()) {
+            l = ((oidb_0x885.ClassInfo)localObject3).uint64_ch1_id.get();
+          } else {
+            l = 0L;
+          }
+          ((VideoInfo.ClassInfo)localObject1).jdField_a_of_type_Long = l;
+          localObject1 = paramVideoInfo.a.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ClassInfo;
+          if (((oidb_0x885.ClassInfo)localObject3).uint64_ch2_id.has()) {
+            l = ((oidb_0x885.ClassInfo)localObject3).uint64_ch2_id.get();
+          } else {
+            l = 0L;
+          }
+          ((VideoInfo.ClassInfo)localObject1).jdField_b_of_type_Long = l;
+          localObject1 = paramVideoInfo.a.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ClassInfo;
+          if (((oidb_0x885.ClassInfo)localObject3).uint64_ch3_id.has()) {
+            l = ((oidb_0x885.ClassInfo)localObject3).uint64_ch3_id.get();
+          } else {
+            l = 0L;
+          }
+          ((VideoInfo.ClassInfo)localObject1).jdField_c_of_type_Long = l;
         }
-        else
+        if (paramArticleSummary.msg_kd_tag_info.string_ad_feature_info.has()) {
+          paramVideoInfo.a.jdField_b_of_type_JavaLangString = paramArticleSummary.msg_kd_tag_info.string_ad_feature_info.get();
+        }
+        if (paramArticleSummary.msg_kd_tag_info.rpt_kd_tag_list.has())
         {
-          if (paramArticleSummary.msg_kd_tag_info.string_ad_feature_info.has()) {
-            paramVideoInfo.a.jdField_b_of_type_JavaLangString = paramArticleSummary.msg_kd_tag_info.string_ad_feature_info.get();
-          }
-          if (!paramArticleSummary.msg_kd_tag_info.rpt_kd_tag_list.has()) {
-            return;
-          }
           localObject1 = new ArrayList(paramArticleSummary.msg_kd_tag_info.rpt_kd_tag_list.size());
           paramArticleSummary = paramArticleSummary.msg_kd_tag_info.rpt_kd_tag_list.get().iterator();
-          label430:
-          if (!paramArticleSummary.hasNext()) {
-            break label564;
+          while (paramArticleSummary.hasNext())
+          {
+            localObject2 = (oidb_0x885.KdTagItem)paramArticleSummary.next();
+            localObject3 = new VideoInfo.KdTagItem();
+            if (((oidb_0x885.KdTagItem)localObject2).bytes_name.has()) {
+              ((VideoInfo.KdTagItem)localObject3).jdField_a_of_type_JavaLangString = RIJPBFieldUtils.b(((oidb_0x885.KdTagItem)localObject2).bytes_name);
+            }
+            if (((oidb_0x885.KdTagItem)localObject2).uint64_tagid.has()) {
+              l = ((oidb_0x885.KdTagItem)localObject2).uint64_tagid.get();
+            } else {
+              l = 0L;
+            }
+            ((VideoInfo.KdTagItem)localObject3).jdField_a_of_type_Long = l;
+            ((ArrayList)localObject1).add(localObject3);
           }
-          localObject2 = (oidb_0x885.KdTagItem)paramArticleSummary.next();
-          localObject3 = new VideoInfo.KdTagItem();
-          if (((oidb_0x885.KdTagItem)localObject2).bytes_name.has()) {
-            ((VideoInfo.KdTagItem)localObject3).jdField_a_of_type_JavaLangString = RIJPBFieldUtils.b(((oidb_0x885.KdTagItem)localObject2).bytes_name);
-          }
-          if (!((oidb_0x885.KdTagItem)localObject2).uint64_tagid.has()) {
-            break label559;
-          }
+          paramVideoInfo.a.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
         }
-        label528:
-        label536:
-        label544:
-        label549:
-        label554:
-        label559:
-        for (long l = ((oidb_0x885.KdTagItem)localObject2).uint64_tagid.get();; l = 0L)
-        {
-          ((VideoInfo.KdTagItem)localObject3).jdField_a_of_type_Long = l;
-          ((ArrayList)localObject1).add(localObject3);
-          break label430;
-          localObject1 = "";
-          break;
-          localObject1 = "";
-          break label203;
-          localObject1 = "";
-          break label240;
-          l = 0L;
-          break label276;
-          l = 0L;
-          break label311;
-          l = 0L;
-          break label346;
-        }
-        label564:
-        paramVideoInfo.a.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
       }
     }
   }
   
   public static void a(oidb_0x6cf.RspBody paramRspBody, Bundle paramBundle, long paramLong)
   {
-    Object localObject1;
-    for (;;)
+    try
     {
-      Object localObject3;
-      try
+      if (paramRspBody.msg_ad_rsp.has())
       {
-        if (paramRspBody.msg_ad_rsp.has())
+        ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("AdVideoDataLink", "parseTagInfoResult:rspBody.msg_ad_rsp is not null");
+        paramRspBody = (oidb_0x885.RspBody)paramRspBody.msg_ad_rsp.get();
+        if ((paramRspBody.rpt_msg_pos_ad_info.has()) && (!paramRspBody.rpt_msg_pos_ad_info.get().isEmpty()))
         {
-          ReadInJoyAdLog.a("AdVideoDataLink", "parseTagInfoResult:rspBody.msg_ad_rsp is not null");
-          paramRspBody = (oidb_0x885.RspBody)paramRspBody.msg_ad_rsp.get();
-          if ((!paramRspBody.rpt_msg_pos_ad_info.has()) || (paramRspBody.rpt_msg_pos_ad_info.get().isEmpty())) {
-            break label550;
-          }
           localObject1 = paramRspBody.rpt_msg_pos_ad_info.get();
-          ReadInJoyAdLog.a("AdVideoDataLink", "parseTagInfoResult:rspBody.rpt_msg_pos_ad_info posAdInfos size >>" + ((List)localObject1).size());
+          paramRspBody = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("parseTagInfoResult:rspBody.rpt_msg_pos_ad_info posAdInfos size >>");
+          ((StringBuilder)localObject2).append(((List)localObject1).size());
+          paramRspBody.d("AdVideoDataLink", ((StringBuilder)localObject2).toString());
           if (((List)localObject1).size() > 0)
           {
             paramRspBody = new ArrayList(((List)localObject1).size());
             localObject1 = ((List)localObject1).iterator();
-            if (!((Iterator)localObject1).hasNext()) {
-              break;
-            }
-            Object localObject4 = (oidb_0x885.PosAdInfo)((Iterator)localObject1).next();
-            if ((!((oidb_0x885.PosAdInfo)localObject4).rpt_msg_ad_info.has()) || (((oidb_0x885.PosAdInfo)localObject4).rpt_msg_ad_info.isEmpty())) {
-              continue;
-            }
-            localObject3 = (oidb_0x885.AdInfo)((oidb_0x885.PosAdInfo)localObject4).rpt_msg_ad_info.get(0);
-            Object localObject2 = ((oidb_0x885.AdInfo)localObject3).bytes_rowkey.get().toStringUtf8();
-            localObject3 = ReadInJoyAdAtlasUtil.a((oidb_0x885.AdInfo)localObject3);
-            int i = ((oidb_0x885.PosAdInfo)localObject4).enum_pos_layout.get();
-            long l1 = ((oidb_0x885.PosAdInfo)localObject4).uint64_pos_id.get();
-            long l2 = ((oidb_0x885.PosAdInfo)localObject4).is_auto_play.get();
-            ((AdvertisementInfo)localObject3).mAdFetchTime = paramLong;
-            ((AdvertisementInfo)localObject3).mAdPosLayout = i;
-            ((AdvertisementInfo)localObject3).mAdPosID = l1;
-            ((AdvertisementInfo)localObject3).mADVideoAutoPlay = l2;
-            ((AdvertisementInfo)localObject3).mRowKey = ((String)localObject2);
-            ((AdvertisementInfo)localObject3).mChannelID = 3L;
-            if (((AdvertisementInfo)localObject3).mSoftAdType != 1) {
-              break label408;
-            }
-            localObject4 = ((AdvertisementInfo)localObject3).mAdExt;
-            try
+            while (((Iterator)localObject1).hasNext())
             {
-              localObject2 = new VideoInfo.GameAdComData((String)localObject2, new JSONObject((String)localObject4));
-              if ((TextUtils.isEmpty(((VideoInfo.GameAdComData)localObject2).s)) || (TextUtils.isEmpty(((VideoInfo.GameAdComData)localObject2).d))) {
-                continue;
+              Object localObject4 = (oidb_0x885.PosAdInfo)((Iterator)localObject1).next();
+              if ((((oidb_0x885.PosAdInfo)localObject4).rpt_msg_ad_info.has()) && (!((oidb_0x885.PosAdInfo)localObject4).rpt_msg_ad_info.isEmpty()))
+              {
+                Object localObject3 = (oidb_0x885.AdInfo)((oidb_0x885.PosAdInfo)localObject4).rpt_msg_ad_info.get(0);
+                localObject2 = ((oidb_0x885.AdInfo)localObject3).bytes_rowkey.get().toStringUtf8();
+                localObject3 = ReadInJoyAdAtlasUtil.a((oidb_0x885.AdInfo)localObject3);
+                int i = ((oidb_0x885.PosAdInfo)localObject4).enum_pos_layout.get();
+                long l1 = ((oidb_0x885.PosAdInfo)localObject4).uint64_pos_id.get();
+                long l2 = ((oidb_0x885.PosAdInfo)localObject4).is_auto_play.get();
+                ((AdvertisementInfo)localObject3).mAdFetchTime = paramLong;
+                ((AdvertisementInfo)localObject3).mAdPosLayout = i;
+                ((AdvertisementInfo)localObject3).mAdPosID = l1;
+                ((AdvertisementInfo)localObject3).mADVideoAutoPlay = l2;
+                ((AdvertisementInfo)localObject3).mRowKey = ((String)localObject2);
+                ((AdvertisementInfo)localObject3).mChannelID = 3L;
+                if (((AdvertisementInfo)localObject3).mSoftAdType == 1)
+                {
+                  localObject4 = ((AdvertisementInfo)localObject3).mAdExt;
+                  try
+                  {
+                    localObject2 = new GameAdComData((String)localObject2, new JSONObject((String)localObject4));
+                    if ((TextUtils.isEmpty(((GameAdComData)localObject2).s)) || (TextUtils.isEmpty(((GameAdComData)localObject2).d))) {
+                      continue;
+                    }
+                    ((AdvertisementInfo)localObject3).gameAdComData = ((GameAdComData)localObject2);
+                    paramRspBody.add(localObject3);
+                  }
+                  catch (Exception localException) {}
+                  if (QLog.isColorLevel()) {
+                    QLog.d("VideoFeedsAdTagHelper", 2, localException.getMessage());
+                  }
+                }
+                else
+                {
+                  if (((AdvertisementInfo)localObject3).mAdPosID <= 0L) {
+                    ((AdvertisementInfo)localObject3).mAdPosID = 1L;
+                  }
+                  paramRspBody.add(localObject3);
+                }
               }
-              ((AdvertisementInfo)localObject3).gameAdComData = ((VideoInfo.GameAdComData)localObject2);
-              paramRspBody.add(localObject3);
             }
-            catch (Exception localException) {}
-            if (!QLog.isColorLevel()) {
-              continue;
+            if (!paramRspBody.isEmpty())
+            {
+              paramBundle.putParcelableArrayList("value_msg_game_ad_info", paramRspBody);
+              paramBundle = new StringBuilder();
+              paramBundle.append("parseTagInfoResult:rsp for softAd or gameComponent:");
+              paramRspBody = paramRspBody.iterator();
+              while (paramRspBody.hasNext())
+              {
+                localObject1 = (AdvertisementInfo)paramRspBody.next();
+                paramBundle.append("rowKey = ");
+                paramBundle.append(((AdvertisementInfo)localObject1).mRowKey);
+                paramBundle.append(" adTitle = ");
+                paramBundle.append(((AdvertisementInfo)localObject1).mTitle);
+                paramBundle.append(" \n");
+              }
+              ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("AdVideoDataLink", paramBundle.toString());
+              return;
             }
-            QLog.d("VideoFeedsAdTagHelper", 2, localException.getMessage());
-            continue;
+            ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("AdVideoDataLink", "parseTagInfoResult:no softAd or gameComponent");
           }
         }
-        return;
+        else
+        {
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("AdVideoDataLink", "parseTagInfoResult:rspBody.rpt_msg_pos_ad_info null ");
+          return;
+        }
       }
-      catch (Exception paramRspBody)
-      {
-        ReadInJoyAdLog.a("AdVideoDataLink", "handleGetRecommendList: parse game ad info error, e= " + paramRspBody.getMessage());
-      }
-      label408:
-      if (((AdvertisementInfo)localObject3).mAdPosID <= 0L) {
-        ((AdvertisementInfo)localObject3).mAdPosID = 1L;
-      }
-      paramRspBody.add(localObject3);
     }
-    if (!paramRspBody.isEmpty())
+    catch (Exception paramRspBody)
     {
-      paramBundle.putParcelableArrayList("value_msg_game_ad_info", paramRspBody);
-      paramBundle = new StringBuilder();
-      paramBundle.append("parseTagInfoResult:rsp for softAd or gameComponent:");
-      paramRspBody = paramRspBody.iterator();
-      while (paramRspBody.hasNext())
-      {
-        localObject1 = (AdvertisementInfo)paramRspBody.next();
-        paramBundle.append("rowKey = ").append(((AdvertisementInfo)localObject1).mRowKey).append(" adTitle = ").append(((AdvertisementInfo)localObject1).mTitle).append(" \n");
-      }
-      ReadInJoyAdLog.a("AdVideoDataLink", paramBundle.toString());
-      return;
+      paramBundle = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleGetRecommendList: parse game ad info error, e= ");
+      ((StringBuilder)localObject1).append(paramRspBody.getMessage());
+      paramBundle.d("AdVideoDataLink", ((StringBuilder)localObject1).toString());
     }
-    ReadInJoyAdLog.a("AdVideoDataLink", "parseTagInfoResult:no softAd or gameComponent");
-    return;
-    label550:
-    ReadInJoyAdLog.a("AdVideoDataLink", "parseTagInfoResult:rspBody.rpt_msg_pos_ad_info null ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.VideoFeedsAdTagHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.utils.TroopReportor;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -35,7 +35,7 @@ public class HomeworkTroopTipsBar
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560790, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560671, null);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     }
     return this.jdField_a_of_type_AndroidViewView;
@@ -49,17 +49,17 @@ public class HomeworkTroopTipsBar
     if (QLog.isColorLevel()) {
       QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show() isShowing=", Boolean.valueOf(bool), ", show=", Boolean.valueOf(paramBoolean) });
     }
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       if (!bool)
       {
         paramTipsManager.a(this, new Object[0]);
         TroopReportor.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString });
       }
     }
-    while (!bool) {
-      return;
+    else if (bool) {
+      paramTipsManager.a();
     }
-    paramTipsManager.a();
   }
   
   public boolean a(@NonNull TipsManager paramTipsManager)
@@ -93,7 +93,7 @@ public class HomeworkTroopTipsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.HomeworkTroopTipsBar
  * JD-Core Version:    0.7.0.1
  */

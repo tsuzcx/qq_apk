@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.intimate;
 
 import android.graphics.Bitmap;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.multicard.MultiCardCustomViewDelegate;
 
@@ -10,9 +10,9 @@ public abstract interface BaseIntimateView
 {
   public abstract Bitmap a(String paramString);
   
-  public abstract FragmentActivity a();
-  
   public abstract View a();
+  
+  public abstract BaseActivity a();
   
   public abstract QQAppInterface a();
   
@@ -36,7 +36,7 @@ public abstract interface BaseIntimateView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.BaseIntimateView
  * JD-Core Version:    0.7.0.1
  */

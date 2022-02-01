@@ -28,13 +28,14 @@ public class VideoChatRoomListView
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    if (this.a != null) {
-      this.a.a(paramMotionEvent, bool);
+    VideoChatRoomListView.OnDispatchTouchEventResponseListener localOnDispatchTouchEventResponseListener = this.a;
+    if (localOnDispatchTouchEventResponseListener != null) {
+      localOnDispatchTouchEventResponseListener.a(paramMotionEvent, bool);
     }
     return bool;
   }
   
-  public float getBottomFadingEdgeStrength()
+  protected float getBottomFadingEdgeStrength()
   {
     return 0.0F;
   }
@@ -46,7 +47,7 @@ public class VideoChatRoomListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.VideoChatRoomListView
  * JD-Core Version:    0.7.0.1
  */

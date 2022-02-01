@@ -3,17 +3,16 @@ package cooperation.qzone.contentbox.model;
 import NS_MOBILE_FEEDS.single_feed;
 import NS_QZONE_MQMSG.NewMQMsg;
 import NS_QZONE_MQMSG.PostBar;
+import com.tencent.qzonehub.api.contentbox.IMQMsg;
 import cooperation.qzone.util.QZLog;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONObject;
 
 public class MQMsg
-  implements Serializable
+  implements IMQMsg
 {
   public static final String TAG = "QZoneMsgManager.MQMsg";
   public MQBottomCell bottomCell = null;
@@ -40,61 +39,10 @@ public class MQMsg
   
   private static JSONObject convertToJson(Map<String, String> paramMap)
   {
-    if ((paramMap == null) || (paramMap.size() == 0)) {
-      return null;
+    if ((paramMap != null) && (paramMap.size() != 0)) {
+      return new JSONObject(paramMap);
     }
-    return new JSONObject(paramMap);
-  }
-  
-  private static Map<String, String> parseExpand(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localHashMap.put(str, paramJSONObject.optString(str));
-    }
-    return localHashMap;
-  }
-  
-  public static MQMsg parseFromJson(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    MQMsg localMQMsg = new MQMsg();
-    try
-    {
-      localMQMsg.msgType = paramJSONObject.optInt("msgType");
-      localMQMsg.title = paramJSONObject.optString("title");
-      localMQMsg.pushTime = paramJSONObject.optLong("pushTime");
-      localMQMsg.user_avatar = paramJSONObject.optString("user_avatar");
-      localMQMsg.user_nick = paramJSONObject.optString("user_nick");
-      localMQMsg.promot = paramJSONObject.optString("promot");
-      localMQMsg.msgBody = MQMsgBody.parseFromJson(paramJSONObject.optJSONObject("msgBody"));
-      localMQMsg.msgInteractData = MQMsgInteractData.parseFromJson(paramJSONObject.optJSONObject("msgInteractData"));
-      localMQMsg.jumpUrlToDetail = paramJSONObject.optString("jumpUrlToDetail");
-      localMQMsg.bottomCell = MQBottomCell.parseFromJson(paramJSONObject.optJSONObject("bottomCell"));
-      localMQMsg.expand = parseExpand(paramJSONObject.optJSONObject("expand"));
-      localMQMsg.mqUserPersonalData = MQUserPersonalData.parseFromJson(paramJSONObject.optJSONObject("mqUserPersonalData"));
-      localMQMsg.uniKey = paramJSONObject.optString("uniKey");
-      localMQMsg.eventTitle = paramJSONObject.optString("eventTitle");
-      localMQMsg.capTime = paramJSONObject.optString("capTime");
-      localMQMsg.reportValue = paramJSONObject.optString("reportValue");
-      localMQMsg.content = paramJSONObject.optString("content");
-      localMQMsg.msgSize = paramJSONObject.optInt("msgSize");
-      localMQMsg.isNewStyle = paramJSONObject.optInt("isNewStyle");
-      return localMQMsg;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QZLog.e("QZoneMsgManager.MQMsg", "parseFromJson error", paramJSONObject);
-    }
-    return localMQMsg;
+    return null;
   }
   
   private static MQMsg readFrom(NewMQMsg paramNewMQMsg)
@@ -121,26 +69,27 @@ public class MQMsg
     return localMQMsg;
   }
   
-  public static ArrayList<MQMsg> readFromList(ArrayList<NewMQMsg> paramArrayList)
+  public static ArrayList<IMQMsg> readFromList(ArrayList<NewMQMsg> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      NewMQMsg localNewMQMsg = (NewMQMsg)paramArrayList.next();
-      if (localNewMQMsg != null) {
-        localArrayList.add(readFrom(localNewMQMsg));
+      ArrayList localArrayList = new ArrayList();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        NewMQMsg localNewMQMsg = (NewMQMsg)paramArrayList.next();
+        if (localNewMQMsg != null) {
+          localArrayList.add(readFrom(localNewMQMsg));
+        }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public JSONObject convertToJson()
   {
-    localJSONObject = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("msgType", this.msgType);
@@ -154,25 +103,37 @@ public class MQMsg
       localJSONObject.put("jumpUrlToDetail", this.jumpUrlToDetail);
       localJSONObject.put("bottomCell", this.bottomCell.convertToJson());
       localJSONObject.put("expand", convertToJson(this.expand));
-      if (this.mqUserPersonalData == null) {}
-      for (Object localObject = this.mqUserPersonalData;; localObject = this.mqUserPersonalData.convertToJson())
-      {
-        localJSONObject.put("mqUserPersonalData", localObject);
-        localJSONObject.put("uniKey", this.uniKey);
-        localJSONObject.put("eventTitle", this.eventTitle);
-        localJSONObject.put("capTime", this.capTime);
-        localJSONObject.put("reportValue", this.reportValue);
-        localJSONObject.put("content", this.content);
-        localJSONObject.put("msgSize", this.msgSize);
-        localJSONObject.put("isNewStyle", this.isNewStyle);
-        return localJSONObject;
+      Object localObject;
+      if (this.mqUserPersonalData == null) {
+        localObject = this.mqUserPersonalData;
+      } else {
+        localObject = this.mqUserPersonalData.convertToJson();
       }
+      localJSONObject.put("mqUserPersonalData", localObject);
+      localJSONObject.put("uniKey", this.uniKey);
+      localJSONObject.put("eventTitle", this.eventTitle);
+      localJSONObject.put("capTime", this.capTime);
+      localJSONObject.put("reportValue", this.reportValue);
+      localJSONObject.put("content", this.content);
+      localJSONObject.put("msgSize", this.msgSize);
+      localJSONObject.put("isNewStyle", this.isNewStyle);
       return localJSONObject;
     }
     catch (Exception localException)
     {
       QZLog.e("QZoneMsgManager.MQMsg", "convertToJson error", localException);
     }
+    return localJSONObject;
+  }
+  
+  public List getFeeds()
+  {
+    return this.feeds;
+  }
+  
+  public long getPushTime()
+  {
+    return this.pushTime;
   }
   
   public String getReportRev6()
@@ -191,6 +152,11 @@ public class MQMsg
     return (this.isNewStyle >= 2) && (this.msgSize == 0L);
   }
   
+  public int isNewStyle()
+  {
+    return this.isNewStyle;
+  }
+  
   public boolean isNewStyleCard()
   {
     return this.isNewStyle >= 2;
@@ -203,7 +169,7 @@ public class MQMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -11,35 +11,31 @@ class ItemManager$FingerTracker
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool3 = true;
-    boolean bool2 = false;
     int i = paramMotionEvent.getAction();
     Object localObject = this.a;
-    boolean bool1 = bool3;
+    boolean bool2 = true;
+    boolean bool1 = bool2;
     if (i != 1) {
-      if (i != 3) {
-        break label105;
+      if (i == 3) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
     }
-    label105:
-    for (bool1 = bool3;; bool1 = false)
-    {
-      ((ItemManager)localObject).c = bool1;
-      if ((this.a.c) && (this.a.b != 2)) {
-        this.a.b();
-      }
-      localObject = this.a.a.a();
-      bool1 = bool2;
-      if (localObject != null) {
-        bool1 = ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
-      }
-      return bool1;
+    ((ItemManager)localObject).c = bool1;
+    if ((this.a.c) && (this.a.b != 2)) {
+      this.a.b();
     }
+    localObject = this.a.a.a();
+    if (localObject != null) {
+      return ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemManager.FingerTracker
  * JD-Core Version:    0.7.0.1
  */

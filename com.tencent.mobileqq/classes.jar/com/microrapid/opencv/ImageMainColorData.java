@@ -43,12 +43,26 @@ public class ImageMainColorData
   
   public String toString()
   {
-    return "ImageMainColorData{r=" + this.r + ", g=" + this.g + ", b=" + this.b + ", l=" + this.l + ", h=" + this.h + ", area=" + this.area + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ImageMainColorData{r=");
+    localStringBuilder.append(this.r);
+    localStringBuilder.append(", g=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", b=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", l=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(", h=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", area=");
+    localStringBuilder.append(this.area);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.microrapid.opencv.ImageMainColorData
  * JD-Core Version:    0.7.0.1
  */

@@ -76,22 +76,16 @@ public class VideoMaterial
   
   public static int calSampleSize(long paramLong1, long paramLong2)
   {
-    int j;
-    if (paramLong1 <= 0L)
-    {
-      j = 128;
-      return j;
+    if (paramLong1 <= 0L) {
+      return 128;
     }
     int i = 1;
-    for (;;)
+    while (paramLong2 > paramLong1)
     {
-      j = i;
-      if (paramLong2 <= paramLong1) {
-        break;
-      }
       i <<= 1;
       paramLong2 >>= 2;
     }
+    return i;
   }
   
   public static List<PointF> copyList(List<PointF> paramList)
@@ -118,128 +112,140 @@ public class VideoMaterial
   
   public static int genFullScreenVertices(float[] paramArrayOfFloat, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    int i = 1;
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return -1;
-    }
-    paramFloat2 = (paramFloat2 - paramFloat1) / paramInt1;
-    paramFloat4 = (paramFloat4 - paramFloat3) / paramInt2;
-    paramArrayOfFloat[0] = getCoordinate(paramFloat1, paramFloat2, 0);
-    paramArrayOfFloat[1] = getCoordinate(paramFloat3, paramFloat4, 0);
-    int j = 0;
-    if (j < paramInt1)
+    if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      int k;
-      if (j % 2 == 0)
+      paramFloat2 = (paramFloat2 - paramFloat1) / paramInt1;
+      paramFloat4 = (paramFloat4 - paramFloat3) / paramInt2;
+      paramArrayOfFloat[0] = getCoordinate(paramFloat1, paramFloat2, 0);
+      paramArrayOfFloat[1] = getCoordinate(paramFloat3, paramFloat4, 0);
+      int j = 0;
+      int i = 1;
+      while (j < paramInt1)
       {
-        int m = 0;
-        k = i;
-        i = m;
-        while (i < paramInt2)
+        int k;
+        int m;
+        if (j % 2 == 0)
         {
-          paramArrayOfFloat[(k * 2)] = getCoordinate(paramFloat1, paramFloat2, j + 1);
-          paramArrayOfFloat[(k * 2 + 1)] = getCoordinate(paramFloat3, paramFloat4, i);
-          k += 1;
-          paramArrayOfFloat[(k * 2)] = getCoordinate(paramFloat1, paramFloat2, j);
-          paramArrayOfFloat[(k * 2 + 1)] = getCoordinate(paramFloat3, paramFloat4, i + 1);
-          k += 1;
-          i += 1;
+          k = 0;
+          while (k < paramInt2)
+          {
+            m = i * 2;
+            paramArrayOfFloat[m] = getCoordinate(paramFloat1, paramFloat2, j + 1);
+            paramArrayOfFloat[(m + 1)] = getCoordinate(paramFloat3, paramFloat4, k);
+            i += 1;
+            m = i * 2;
+            paramArrayOfFloat[m] = getCoordinate(paramFloat1, paramFloat2, j);
+            k += 1;
+            paramArrayOfFloat[(m + 1)] = getCoordinate(paramFloat3, paramFloat4, k);
+            i += 1;
+          }
+          k = i * 2;
+          paramArrayOfFloat[k] = getCoordinate(paramFloat1, paramFloat2, j + 1);
+          paramArrayOfFloat[(k + 1)] = getCoordinate(paramFloat3, paramFloat4, paramInt2);
         }
-        paramArrayOfFloat[(k * 2)] = getCoordinate(paramFloat1, paramFloat2, j + 1);
-        paramArrayOfFloat[(k * 2 + 1)] = getCoordinate(paramFloat3, paramFloat4, paramInt2);
-      }
-      for (i = k + 1;; i = k + 1)
-      {
+        else
+        {
+          k = paramInt2;
+          while (k > 0)
+          {
+            m = i * 2;
+            paramArrayOfFloat[m] = getCoordinate(paramFloat1, paramFloat2, j + 1);
+            paramArrayOfFloat[(m + 1)] = getCoordinate(paramFloat3, paramFloat4, k);
+            i += 1;
+            m = i * 2;
+            paramArrayOfFloat[m] = getCoordinate(paramFloat1, paramFloat2, j);
+            paramArrayOfFloat[(m + 1)] = getCoordinate(paramFloat3, paramFloat4, k - 1);
+            i += 1;
+            k -= 1;
+          }
+          k = i * 2;
+          paramArrayOfFloat[k] = getCoordinate(paramFloat1, paramFloat2, j + 1);
+          paramArrayOfFloat[(k + 1)] = getCoordinate(paramFloat3, paramFloat4, 0);
+        }
+        i += 1;
         j += 1;
-        break;
-        k = i;
-        i = paramInt2;
-        while (i > 0)
-        {
-          paramArrayOfFloat[(k * 2)] = getCoordinate(paramFloat1, paramFloat2, j + 1);
-          paramArrayOfFloat[(k * 2 + 1)] = getCoordinate(paramFloat3, paramFloat4, i);
-          k += 1;
-          paramArrayOfFloat[(k * 2)] = getCoordinate(paramFloat1, paramFloat2, j);
-          paramArrayOfFloat[(k * 2 + 1)] = getCoordinate(paramFloat3, paramFloat4, i - 1);
-          k += 1;
-          i -= 1;
-        }
-        paramArrayOfFloat[(k * 2)] = getCoordinate(paramFloat1, paramFloat2, j + 1);
-        paramArrayOfFloat[(k * 2 + 1)] = getCoordinate(paramFloat3, paramFloat4, 0);
       }
+      return 0;
     }
-    return 0;
+    return -1;
   }
   
   public static List<PointF> genFullScreenVertices(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return localArrayList;
-    }
-    paramFloat2 = (paramFloat2 - paramFloat1) / paramInt1;
-    paramFloat4 = (paramFloat4 - paramFloat3) / paramInt2;
-    localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, 0), getCoordinate(paramFloat3, paramFloat4, 0)));
-    int i = 0;
-    label69:
-    int j;
-    if (i < paramInt1)
+    if (paramInt1 > 0)
     {
-      if (i % 2 != 0) {
-        break label207;
+      if (paramInt2 <= 0) {
+        return localArrayList;
       }
-      j = 0;
-      while (j < paramInt2)
+      paramFloat2 = (paramFloat2 - paramFloat1) / paramInt1;
+      paramFloat4 = (paramFloat4 - paramFloat3) / paramInt2;
+      localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, 0), getCoordinate(paramFloat3, paramFloat4, 0)));
+      int i = 0;
+      while (i < paramInt1)
       {
-        localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, j)));
-        localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i), getCoordinate(paramFloat3, paramFloat4, j + 1)));
-        j += 1;
+        int j;
+        if (i % 2 == 0)
+        {
+          j = 0;
+          while (j < paramInt2)
+          {
+            localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, j)));
+            float f = getCoordinate(paramFloat1, paramFloat2, i);
+            j += 1;
+            localArrayList.add(new PointF(f, getCoordinate(paramFloat3, paramFloat4, j)));
+          }
+          localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, paramInt2)));
+        }
+        else
+        {
+          j = paramInt2;
+          while (j > 0)
+          {
+            localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, j)));
+            localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i), getCoordinate(paramFloat3, paramFloat4, j - 1)));
+            j -= 1;
+          }
+          localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, 0)));
+        }
+        i += 1;
       }
-      localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, paramInt2)));
     }
-    for (;;)
-    {
-      i += 1;
-      break label69;
-      break;
-      label207:
-      j = paramInt2;
-      while (j > 0)
-      {
-        localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, j)));
-        localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i), getCoordinate(paramFloat3, paramFloat4, j - 1)));
-        j -= 1;
-      }
-      localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, 0)));
-    }
+    return localArrayList;
   }
   
   public static int getAllImageSize(String paramString)
   {
-    int j = 0;
+    boolean bool = paramString.startsWith("assets://");
+    int i = 0;
     String[] arrayOfString;
-    int i;
-    if (paramString.startsWith("assets://"))
+    Context localContext;
+    StringBuilder localStringBuilder;
+    int j;
+    if (bool)
     {
       try
       {
         arrayOfString = AEModule.getContext().getAssets().list(FileUtils.getRealPath(paramString));
-        i = j;
-        if (arrayOfString == null) {
-          return i;
+        if (arrayOfString != null)
+        {
+          if (arrayOfString.length == 0) {
+            return 0;
+          }
+          localContext = AEModule.getContext();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append(arrayOfString[0]);
+          paramString = BitmapUtils.getBitmapSize(localContext, localStringBuilder.toString());
+          if (paramString == null) {
+            return 0;
+          }
+          i = paramString.x * paramString.y * 4;
+          j = arrayOfString.length;
+          break label228;
         }
-        if (arrayOfString.length == 0) {
-          return 0;
-        }
-        paramString = BitmapUtils.getBitmapSize(AEModule.getContext(), paramString + File.separator + arrayOfString[0]);
-        i = j;
-        if (paramString == null) {
-          return i;
-        }
-        i = paramString.x;
-        j = paramString.y;
-        int k = arrayOfString.length;
-        return 0 + k * (j * i * 4);
+        return 0;
       }
       catch (IOException paramString)
       {
@@ -250,47 +256,49 @@ public class VideoMaterial
     else
     {
       arrayOfString = new File(paramString).list(mPngFilter);
-      i = j;
-      if (arrayOfString != null)
-      {
-        i = j;
-        if (arrayOfString.length != 0)
-        {
-          paramString = BitmapUtils.getBitmapSize(AEModule.getContext(), paramString + File.separator + arrayOfString[0]);
-          i = j;
-          if (paramString != null)
-          {
-            i = paramString.x;
-            j = paramString.y;
-            i = 0 + arrayOfString.length * (j * i * 4);
-          }
-        }
+      if (arrayOfString == null) {
+        return i;
       }
+      if (arrayOfString.length == 0) {
+        return 0;
+      }
+      localContext = AEModule.getContext();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(arrayOfString[0]);
+      paramString = BitmapUtils.getBitmapSize(localContext, localStringBuilder.toString());
+      if (paramString == null) {
+        return 0;
+      }
+      i = paramString.x * paramString.y * 4;
+      j = arrayOfString.length;
     }
+    label228:
+    i = 0 + i * j;
     return i;
   }
   
   private static float getCoordinate(float paramFloat1, float paramFloat2, int paramInt)
   {
-    return paramInt * paramFloat2 + paramFloat1;
+    return paramFloat1 + paramInt * paramFloat2;
   }
   
   public static String getMaterialId(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return null;
-      paramString = paramString.split(File.separator);
-      int i = paramString.length - 1;
-      while (i >= 0)
-      {
-        if (!TextUtils.isEmpty(paramString[i])) {
-          return paramString[i];
-        }
-        i -= 1;
-      }
     }
+    paramString = paramString.split(File.separator);
+    int i = paramString.length - 1;
+    while (i >= 0)
+    {
+      if (!TextUtils.isEmpty(paramString[i])) {
+        return paramString[i];
+      }
+      i -= 1;
+    }
+    return null;
   }
   
   public static boolean isAllFreezeFrameTriggerType(int paramInt)
@@ -375,11 +383,19 @@ public class VideoMaterial
   
   public static boolean isHotAreaTriggerItem(StickerItem paramStickerItem)
   {
-    if (paramStickerItem == null) {}
-    while ((paramStickerItem.triggerArea == null) || (paramStickerItem.triggerArea.size() <= 0)) {
+    boolean bool2 = false;
+    if (paramStickerItem == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (paramStickerItem.triggerArea != null)
+    {
+      bool1 = bool2;
+      if (paramStickerItem.triggerArea.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public static boolean isStarItem(StickerItem paramStickerItem)
@@ -399,48 +415,34 @@ public class VideoMaterial
   
   public static float[][] listToFloatArray(List<PointF> paramList)
   {
-    Object localObject;
-    if (paramList == null)
-    {
-      localObject = new float[0][];
-      return localObject;
+    if (paramList == null) {
+      return new float[0][];
     }
-    int i = paramList.size();
-    float[][] arrayOfFloat = (float[][])Array.newInstance(Float.TYPE, new int[] { i, 2 });
-    i = 0;
-    for (;;)
+    float[][] arrayOfFloat = (float[][])Array.newInstance(Float.TYPE, new int[] { paramList.size(), 2 });
+    int i = 0;
+    while (i < paramList.size())
     {
-      localObject = arrayOfFloat;
-      if (i >= paramList.size()) {
-        break;
-      }
       arrayOfFloat[i][0] = ((PointF)paramList.get(i)).x;
       arrayOfFloat[i][1] = ((PointF)paramList.get(i)).y;
       i += 1;
     }
+    return arrayOfFloat;
   }
   
   public static int[][] listToIntArray(List<PointF> paramList)
   {
-    Object localObject;
-    if (paramList == null)
-    {
-      localObject = new int[0][];
-      return localObject;
+    if (paramList == null) {
+      return new int[0][];
     }
-    int i = paramList.size();
-    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { i, 2 });
-    i = 0;
-    for (;;)
+    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { paramList.size(), 2 });
+    int i = 0;
+    while (i < paramList.size())
     {
-      localObject = arrayOfInt;
-      if (i >= paramList.size()) {
-        break;
-      }
       arrayOfInt[i][0] = ((int)((PointF)paramList.get(i)).x);
       arrayOfInt[i][1] = ((int)((PointF)paramList.get(i)).y);
       i += 1;
     }
+    return arrayOfInt;
   }
   
   public static VideoMaterial loadLightAsset(String paramString)
@@ -454,34 +456,22 @@ public class VideoMaterial
   
   public static boolean needCopyTransform()
   {
-    boolean bool2 = false;
     String str1 = DeviceInstance.getInstance().getDeviceName().trim();
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
     if (!TextUtils.isEmpty(str1))
     {
-      arrayOfString = DEVICE_NEED_COPY_TRANSFORM;
-      j = arrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      String[] arrayOfString = DEVICE_NEED_COPY_TRANSFORM;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
         String str2 = arrayOfString[i];
         if (str1.toLowerCase().endsWith(str2.toLowerCase())) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   public static boolean needRenderStar(StarParam paramStarParam)
@@ -491,110 +481,115 @@ public class VideoMaterial
   
   public static float[] toFlatArray(List<PointF> paramList)
   {
+    int i = 0;
     if (paramList == null) {
       return new float[0];
     }
     float[] arrayOfFloat = new float[paramList.size() * 2];
-    int i = 0;
-    if (i < paramList.size())
+    while (i < paramList.size())
     {
       PointF localPointF = (PointF)paramList.get(i);
-      if (localPointF == null) {}
-      for (;;)
+      if (localPointF != null)
       {
-        i += 1;
-        break;
-        arrayOfFloat[(i * 2)] = localPointF.x;
-        arrayOfFloat[(i * 2 + 1)] = localPointF.y;
+        int j = i * 2;
+        arrayOfFloat[j] = localPointF.x;
+        arrayOfFloat[(j + 1)] = localPointF.y;
       }
+      i += 1;
     }
     return arrayOfFloat;
   }
   
   public static float[] toFlatArray(PointF[] paramArrayOfPointF)
   {
-    Object localObject;
-    if (paramArrayOfPointF == null)
-    {
-      localObject = new float[0];
-      return localObject;
+    if (paramArrayOfPointF == null) {
+      return new float[0];
     }
-    for (;;)
+    try
     {
-      int i;
-      try
+      float[] arrayOfFloat2 = new float[paramArrayOfPointF.length * 2];
+      int i = 0;
+      float[] arrayOfFloat1;
+      for (;;)
       {
-        float[] arrayOfFloat = new float[paramArrayOfPointF.length * 2];
-        i = 0;
-        localObject = arrayOfFloat;
+        arrayOfFloat1 = arrayOfFloat2;
         if (i >= paramArrayOfPointF.length) {
           break;
         }
         if (paramArrayOfPointF[i] != null)
         {
-          arrayOfFloat[(i * 2)] = paramArrayOfPointF[i].x;
-          arrayOfFloat[(i * 2 + 1)] = paramArrayOfPointF[i].y;
+          int j = i * 2;
+          arrayOfFloat2[j] = paramArrayOfPointF[i].x;
+          arrayOfFloat2[(j + 1)] = paramArrayOfPointF[i].y;
         }
+        i += 1;
       }
-      catch (OutOfMemoryError paramArrayOfPointF)
-      {
-        paramArrayOfPointF.printStackTrace();
-        return new float[0];
-      }
-      i += 1;
+      return arrayOfFloat1;
+    }
+    catch (OutOfMemoryError paramArrayOfPointF)
+    {
+      paramArrayOfPointF.printStackTrace();
+      arrayOfFloat1 = new float[0];
     }
   }
   
   public void createTipsDrawableInfo(Resources paramResources, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    int j = 0;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    do
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return;
-      localObject1 = new File(paramString1 + File.separator + paramString2);
-    } while (!((File)localObject1).isDirectory());
-    paramString1 = new ArrayList();
-    Object localObject1 = ((File)localObject1).listFiles();
-    int k = localObject1.length;
-    int i = 0;
-    while (i < k)
-    {
-      localObject2 = localObject1[i];
-      if (!((File)localObject2).getName().startsWith(".")) {
-        paramString1.add(localObject2);
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
       }
-      i += 1;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append(paramString2);
+      localObject1 = new File(((StringBuilder)localObject1).toString());
+      if (((File)localObject1).isDirectory())
+      {
+        paramString1 = new ArrayList();
+        localObject1 = ((File)localObject1).listFiles();
+        int k = localObject1.length;
+        int j = 0;
+        int i = 0;
+        while (i < k)
+        {
+          localObject2 = localObject1[i];
+          if (!((File)localObject2).getName().startsWith(".")) {
+            paramString1.add(localObject2);
+          }
+          i += 1;
+        }
+        localObject1 = new int[paramString1.size()];
+        i = 0;
+        while (i < paramString1.size())
+        {
+          localObject2 = ((File)paramString1.get(i)).getName();
+          localObject1[i] = Integer.parseInt(((String)localObject2).substring(paramString2.length() + 1, ((String)localObject2).lastIndexOf(46)));
+          i += 1;
+        }
+        paramString2 = new Integer[localObject1.length];
+        i = 0;
+        while (i < localObject1.length)
+        {
+          paramString2[i] = Integer.valueOf(i);
+          i += 1;
+        }
+        Arrays.sort(paramString2, new VideoMaterial.1(this, (int[])localObject1));
+        Object localObject2 = new int[localObject1.length];
+        for (i = j; i < paramString2.length - 1; i = j)
+        {
+          j = i + 1;
+          localObject2[i] = ((localObject1[paramString2[j].intValue()] - localObject1[paramString2[i].intValue()]) * paramInt1);
+        }
+        if (paramString2.length >= 1)
+        {
+          i = localObject1[paramString2[(paramString2.length - 1)].intValue()];
+          localObject2[(paramString2.length - 1)] = (paramInt1 * (paramInt2 - i));
+        }
+        this.tipsDrawableInfo = new LazyLoadAnimationDrawable.Info(paramResources, paramString1, (int[])localObject2, paramString2);
+      }
     }
-    localObject1 = new int[paramString1.size()];
-    i = 0;
-    while (i < paramString1.size())
-    {
-      localObject2 = ((File)paramString1.get(i)).getName();
-      localObject1[i] = Integer.parseInt(((String)localObject2).substring(paramString2.length() + 1, ((String)localObject2).lastIndexOf(46)));
-      i += 1;
-    }
-    paramString2 = new Integer[localObject1.length];
-    i = 0;
-    while (i < localObject1.length)
-    {
-      paramString2[i] = Integer.valueOf(i);
-      i += 1;
-    }
-    Arrays.sort(paramString2, new VideoMaterial.1(this, (int[])localObject1));
-    Object localObject2 = new int[localObject1.length];
-    i = j;
-    while (i < paramString2.length - 1)
-    {
-      localObject2[i] = ((localObject1[paramString2[(i + 1)].intValue()] - localObject1[paramString2[i].intValue()]) * paramInt1);
-      i += 1;
-    }
-    if (paramString2.length >= 1)
-    {
-      i = localObject1[paramString2[(paramString2.length - 1)].intValue()];
-      localObject2[(paramString2.length - 1)] = ((paramInt2 - i) * paramInt1);
-    }
-    this.tipsDrawableInfo = new LazyLoadAnimationDrawable.Info(paramResources, paramString1, (int[])localObject2, paramString2);
   }
   
   public float[] getArShaderPlanOffset()
@@ -649,8 +644,13 @@ public class VideoMaterial
   
   public String getId()
   {
-    if (((this.id == null) || (this.id.length() == 0)) && (this.dataPath != null) && (this.dataPath.length() > 0)) {
-      this.id = getMaterialId(this.dataPath);
+    String str = this.id;
+    if ((str == null) || (str.length() == 0))
+    {
+      str = this.dataPath;
+      if ((str != null) && (str.length() > 0)) {
+        this.id = getMaterialId(this.dataPath);
+      }
     }
     return this.id;
   }
@@ -682,10 +682,11 @@ public class VideoMaterial
   
   public LazyLoadAnimationDrawable getTipsDrawable()
   {
-    if (this.tipsDrawableInfo == null) {
+    LazyLoadAnimationDrawable.Info localInfo = this.tipsDrawableInfo;
+    if (localInfo == null) {
       return null;
     }
-    return new LazyLoadAnimationDrawable(this.tipsDrawableInfo);
+    return new LazyLoadAnimationDrawable(localInfo);
   }
   
   public String getTipsIcon()
@@ -705,12 +706,14 @@ public class VideoMaterial
   
   public boolean hasInnerBeauty()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("materialLUT.enable"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("materialLUT.enable"));
   }
   
   public boolean hasMultiViewer()
   {
-    return (this.multiViewerItemList != null) && (this.multiViewerItemList.size() > 0);
+    List localList = this.multiViewerItemList;
+    return (localList != null) && (localList.size() > 0);
   }
   
   public boolean isAR3DMaterial()
@@ -730,22 +733,26 @@ public class VideoMaterial
   
   public boolean isCyberpunkMaterial()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needCyberpunkStyleAbility());
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needCyberpunkStyleAbility());
   }
   
   public boolean isEditableWatermark()
   {
-    return (this.lightAsset != null) && (this.lightAsset.isEditableWatermarkMaterial());
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.isEditableWatermarkMaterial());
   }
   
   public boolean isFace3DMaterial()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.face3d"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.face3d"));
   }
   
   public boolean isFaceMarkingMaterial()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("todo"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("todo"));
   }
   
   public boolean isFreezeFrameRequired()
@@ -755,8 +762,9 @@ public class VideoMaterial
   
   public boolean isGestureDetectMaterial()
   {
-    if (this.lightAsset != null) {
-      return this.lightAsset.needRenderAbility("ai.hand");
+    LightAsset localLightAsset = this.lightAsset;
+    if (localLightAsset != null) {
+      return localLightAsset.needRenderAbility("ai.hand");
     }
     return false;
   }
@@ -768,17 +776,20 @@ public class VideoMaterial
   
   public boolean isParticleMaterial()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("material.particle"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.particle"));
   }
   
   public boolean isSticker3DMaterial()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("material.sticker3d"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.sticker3d"));
   }
   
   public boolean isTNNMaterial()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.gan"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.gan"));
   }
   
   public boolean isUse3DMMTransform()
@@ -788,12 +799,14 @@ public class VideoMaterial
   
   public boolean isUseMesh()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("material.mesh"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.mesh"));
   }
   
   public boolean isWatermarkMaterial()
   {
-    return (this.lightAsset != null) && (this.lightAsset.isWatermarkMaterial());
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.isWatermarkMaterial());
   }
   
   public boolean need3DMM()
@@ -808,67 +821,86 @@ public class VideoMaterial
   
   public boolean needBodyDetect()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.body"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.body"));
   }
   
   public boolean needBodySegment()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.segment"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.segment"));
   }
   
   public boolean needDetectCat()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.catFace"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.catFace"));
   }
   
   public boolean needDetectGender()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.gender"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.gender"));
   }
   
   public boolean needFaceInfo()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.face"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.face"));
   }
   
   public boolean needHairSegment()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.segmentHair"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.segmentHair"));
   }
   
   public boolean needHandDetect()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.hand"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.hand"));
   }
   
   public boolean needHeadSegment()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.headInset"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.headInset"));
   }
   
   public boolean needPag()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("material.pag"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.pag"));
   }
   
   public boolean needPout()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("material.pout"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.pout"));
   }
   
   public boolean needRGBDepth()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.rgbDepth"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.rgbDepth"));
   }
   
   public boolean needResetWhenRecord()
   {
-    return (this.lightAsset != null) && (this.lightAsset.nativeResetWhenStartRecord());
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.nativeResetWhenStartRecord());
   }
   
   public boolean needSkySegment()
   {
-    return (this.lightAsset != null) && (this.lightAsset.needRenderAbility("ai.segmentSky"));
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.segmentSky"));
+  }
+  
+  public boolean needVoiceChange()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.voiceChange"));
   }
   
   public LightAsset reloadLightAsset()
@@ -898,12 +930,34 @@ public class VideoMaterial
   
   public String toString()
   {
-    return "VideoMaterial{dataPath='" + this.dataPath + '\'' + ", faceOffItemList=" + this.faceOffItemList + ", distortionItemList=" + this.distortionItemList + ", multiViewerItemList=" + this.multiViewerItemList + ", id='" + this.id + '\'' + ", useMesh=" + isUseMesh() + ", segmentRequired=" + needBodySegment() + ", fabbyParts=" + this.fabbyParts + ", needFaceInfo=" + needFaceInfo() + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoMaterial{dataPath='");
+    localStringBuilder.append(this.dataPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", faceOffItemList=");
+    localStringBuilder.append(this.faceOffItemList);
+    localStringBuilder.append(", distortionItemList=");
+    localStringBuilder.append(this.distortionItemList);
+    localStringBuilder.append(", multiViewerItemList=");
+    localStringBuilder.append(this.multiViewerItemList);
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", useMesh=");
+    localStringBuilder.append(isUseMesh());
+    localStringBuilder.append(", segmentRequired=");
+    localStringBuilder.append(needBodySegment());
+    localStringBuilder.append(", fabbyParts=");
+    localStringBuilder.append(this.fabbyParts);
+    localStringBuilder.append(", needFaceInfo=");
+    localStringBuilder.append(needFaceInfo());
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.VideoMaterial
  * JD-Core Version:    0.7.0.1
  */

@@ -33,7 +33,7 @@
     <LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/ify" android:background="#fff2f2f2" android:paddingLeft="15.0dip" android:paddingTop="7.0dip" android:paddingRight="15.0dip" android:paddingBottom="7.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <Button android:textSize="18.0dip" android:id="@id/ifz" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/h1d" android:contentDescription="@string/h1d" style="@style/b9" />
         <Button android:textSize="18.0dip" android:id="@id/ifx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/rf9" style="@style/b9" />
-        <Button android:textSize="18.0dip" android:id="@id/o2d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/h1d" style="@style/b9" />
+        <Button android:textSize="18.0dip" android:id="@id/o5j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/h1d" style="@style/b9" />
     </LinearLayout>
     <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
         <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" />

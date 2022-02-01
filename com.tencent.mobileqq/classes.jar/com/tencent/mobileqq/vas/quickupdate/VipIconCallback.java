@@ -58,38 +58,31 @@ public class VipIconCallback
   @Nullable
   public VipIconCallback.VipIconClickConfig findConfig(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.configs == null) {}
-    VipIconCallback.VipIconClickConfig localVipIconClickConfig;
-    try
+    if (this.configs == null) {
+      try
+      {
+        if (this.configs == null) {
+          this.configs = buildConfigs();
+        }
+      }
+      finally {}
+    }
+    Object localObject2 = null;
+    Iterator localIterator = this.configs.iterator();
+    while (localIterator.hasNext())
     {
-      if (this.configs == null) {
-        this.configs = buildConfigs();
-      }
-      Object localObject1 = null;
-      Iterator localIterator = this.configs.iterator();
-      if (!localIterator.hasNext()) {
-        break label137;
-      }
-      localVipIconClickConfig = (VipIconCallback.VipIconClickConfig)localIterator.next();
-      if ((!localVipIconClickConfig.a.equals(String.valueOf(paramInt1))) || (!localVipIconClickConfig.c.equals(String.valueOf(paramInt3)))) {
-        break label140;
-      }
-      if (localVipIconClickConfig.b.equals(String.valueOf(paramInt2))) {
-        return localVipIconClickConfig;
+      VipIconCallback.VipIconClickConfig localVipIconClickConfig = (VipIconCallback.VipIconClickConfig)localIterator.next();
+      if ((localVipIconClickConfig.a.equals(String.valueOf(paramInt1))) && (localVipIconClickConfig.c.equals(String.valueOf(paramInt3))))
+      {
+        if (localVipIconClickConfig.b.equals(String.valueOf(paramInt2))) {
+          return localVipIconClickConfig;
+        }
+        if (localVipIconClickConfig.b.equals("1000000")) {
+          localObject2 = localVipIconClickConfig;
+        }
       }
     }
-    finally {}
-    Object localObject3;
-    if (localVipIconClickConfig.b.equals("1000000")) {
-      localObject3 = localVipIconClickConfig;
-    }
-    label137:
-    label140:
-    for (;;)
-    {
-      break;
-      return localObject3;
-    }
+    return localObject2;
   }
   
   public long getBID()
@@ -121,16 +114,20 @@ public class VipIconCallback
   {
     try
     {
-      String str = FileUtils.b(new File(getSavePath(MobileQQ.getContext(), "namePlate_UrlConfig")));
+      String str = FileUtils.readFileToString(new File(getSavePath(MobileQQ.getContext(), "namePlate_UrlConfig")));
       return str;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label22:
+      break label22;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.quickupdate.VipIconCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,20 @@ import trpc.qq_vgame.common.AvGameCommon.UinWrap;
 public final class AvGameNotify$NotifyPKPoolUserChange
   extends MessageMicro<NotifyPKPoolUserChange>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "opt", "total", "uins" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null }, NotifyPKPoolUserChange.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field opt = PBField.initUInt32(0);
   public final PBUInt32Field total = PBField.initUInt32(0);
   public final PBRepeatMessageField<AvGameCommon.UinWrap> uins = PBField.initRepeatMessage(AvGameCommon.UinWrap.class);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "opt", "total", "uins" }, new Object[] { localInteger, localInteger, null }, NotifyPKPoolUserChange.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trpc.qq_vgame.nofity.AvGameNotify.NotifyPKPoolUserChange
  * JD-Core Version:    0.7.0.1
  */

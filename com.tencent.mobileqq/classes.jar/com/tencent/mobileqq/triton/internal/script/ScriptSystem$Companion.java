@@ -9,35 +9,45 @@ public final class ScriptSystem$Companion
 {
   private final int toNative(@NotNull ScriptContextType paramScriptContextType)
   {
-    switch (ScriptSystem.Companion.WhenMappings.$EnumSwitchMapping$0[paramScriptContextType.ordinal()])
+    int j = ScriptSystem.Companion.WhenMappings.$EnumSwitchMapping$0[paramScriptContextType.ordinal()];
+    int i = 3;
+    if (j != 1)
     {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
+      if (j != 2)
+      {
+        if (j != 3) {
+          return 0;
+        }
+      }
+      else {
+        return 2;
+      }
     }
-    return 3;
+    else {
+      i = 1;
+    }
+    return i;
   }
   
   private final ScriptContextType toScriptContextType(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      throw ((Throwable)new IllegalArgumentException());
-    case 1: 
-      return ScriptContextType.MAIN;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt == 3) {
+          return ScriptContextType.WORKER;
+        }
+        throw ((Throwable)new IllegalArgumentException());
+      }
       return ScriptContextType.OPEN_DATA;
     }
-    return ScriptContextType.WORKER;
+    return ScriptContextType.MAIN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.ScriptSystem.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -14,45 +14,47 @@ class ConnectsExplorationFriendAdapter$5
     super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public View a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  public void getRightMenuItemInfo(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
   {
-    paramSwipRightMenuItem = super.a(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
-    if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
-      paramSwipRightMenuItem.setTag(paramObject);
-    }
-    return paramSwipRightMenuItem;
-  }
-  
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
-  {
-    int i = 0;
-    if ((paramArrayOfSwipRightMenuItem == null) || (paramArrayOfSwipRightMenuItem.length <= 0)) {}
-    for (;;)
+    if (paramArrayOfSwipRightMenuItem != null)
     {
-      return;
+      if (paramArrayOfSwipRightMenuItem.length <= 0) {
+        return;
+      }
+      int j = paramArrayOfSwipRightMenuItem.length;
+      int i = 0;
       paramInt = i;
-      if (paramArrayOfSwipRightMenuItem.length < 0)
+      if (j > 0)
       {
         paramInt = i;
         if (!(paramObject instanceof ConnectsExplorationBanner))
         {
-          paramArrayOfSwipRightMenuItem[0].b = 0;
-          paramArrayOfSwipRightMenuItem[0].a = 0;
+          paramArrayOfSwipRightMenuItem[0].menuId = 0;
+          paramArrayOfSwipRightMenuItem[0].menuType = 0;
           paramInt = 1;
         }
       }
       while (paramInt < paramArrayOfSwipRightMenuItem.length)
       {
-        paramArrayOfSwipRightMenuItem[paramInt].b = -1;
-        paramArrayOfSwipRightMenuItem[paramInt].a = -1;
+        paramArrayOfSwipRightMenuItem[paramInt].menuId = -1;
+        paramArrayOfSwipRightMenuItem[paramInt].menuType = -1;
         paramInt += 1;
       }
     }
   }
+  
+  public View updateRightMenuItem(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  {
+    paramSwipRightMenuItem = super.updateRightMenuItem(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
+    if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
+      paramSwipRightMenuItem.setTag(paramObject);
+    }
+    return paramSwipRightMenuItem;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationFriendAdapter.5
  * JD-Core Version:    0.7.0.1
  */

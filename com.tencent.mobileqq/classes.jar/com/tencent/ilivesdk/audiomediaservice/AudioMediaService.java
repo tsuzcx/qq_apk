@@ -56,14 +56,15 @@ public class AudioMediaService
   {
     this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("AudioMediaService", "onDestroy", new Object[0]);
     this.jdField_a_of_type_AndroidContentContext = null;
-    if (this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioRecordPlayer != null) {
-      this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioRecordPlayer.a();
+    IAudioRecordPlayer localIAudioRecordPlayer = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioRecordPlayer;
+    if (localIAudioRecordPlayer != null) {
+      localIAudioRecordPlayer.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.AudioMediaService
  * JD-Core Version:    0.7.0.1
  */

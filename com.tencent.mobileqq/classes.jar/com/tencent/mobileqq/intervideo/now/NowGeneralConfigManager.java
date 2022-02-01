@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.intervideo.now;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.intervideo.IBaseApplicationImplUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.Manager;
 import org.json.JSONException;
@@ -14,19 +15,20 @@ import org.json.JSONObject;
 public class NowGeneralConfigManager
   implements Manager
 {
-  private QQAppInterface a;
+  private AppInterface a;
   
-  public NowGeneralConfigManager(QQAppInterface paramQQAppInterface)
+  public NowGeneralConfigManager(AppInterface paramAppInterface)
   {
-    this.a = paramQQAppInterface;
+    this.a = paramAppInterface;
   }
   
   public void a(String paramString)
   {
+    boolean bool = StringUtil.a(paramString);
     int j = 0;
-    if (StringUtil.a(paramString))
+    if (bool)
     {
-      paramString = BaseApplicationImpl.getContext().getSharedPreferences("now_download_config", 4);
+      paramString = ((IBaseApplicationImplUtil)QRoute.api(IBaseApplicationImplUtil.class)).getContext().getSharedPreferences("now_download_config", 4);
       paramString.edit().putInt("key_now_download_engine", 0).commit();
       paramString.edit().putInt("key_now_channel", 0).commit();
       QLog.e("NowGeneralConfigManager", 4, "NowGeneralConfigManager----parseJson---downloadEngine = 0");
@@ -43,8 +45,13 @@ public class NowGeneralConfigManager
           if (paramString.has("now_channel")) {
             j = paramString.getInt("now_channel");
           }
-          QLog.e("NowGeneralConfigManager", 4, "NowGeneralConfigManager----parseJson---downloadEngine = " + i + ", nowChannel = " + j);
-          paramString = BaseApplicationImpl.getContext().getSharedPreferences("now_download_config", 4);
+          paramString = new StringBuilder();
+          paramString.append("NowGeneralConfigManager----parseJson---downloadEngine = ");
+          paramString.append(i);
+          paramString.append(", nowChannel = ");
+          paramString.append(j);
+          QLog.e("NowGeneralConfigManager", 4, paramString.toString());
+          paramString = ((IBaseApplicationImplUtil)QRoute.api(IBaseApplicationImplUtil.class)).getContext().getSharedPreferences("now_download_config", 4);
           paramString.edit().putInt("key_now_download_engine", i).commit();
           paramString.edit().putInt("key_now_channel", j).commit();
           return;
@@ -63,7 +70,7 @@ public class NowGeneralConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowGeneralConfigManager
  * JD-Core Version:    0.7.0.1
  */

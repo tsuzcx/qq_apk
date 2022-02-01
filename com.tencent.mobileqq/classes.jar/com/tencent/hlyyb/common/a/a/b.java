@@ -20,8 +20,12 @@ public final class b
   private Runnable a(long paramLong, TimeUnit paramTimeUnit)
   {
     paramTimeUnit = (Runnable)super.poll(paramLong, paramTimeUnit);
-    if ((paramTimeUnit == null) && (this.a != null)) {
-      this.a.a();
+    if (paramTimeUnit == null)
+    {
+      d locald = this.a;
+      if (locald != null) {
+        locald.a();
+      }
     }
     return paramTimeUnit;
   }
@@ -33,10 +37,10 @@ public final class b
   
   public final boolean a(Runnable paramRunnable, long paramLong, TimeUnit paramTimeUnit)
   {
-    if (this.a.isShutdown()) {
-      throw new RejectedExecutionException("Executor not running, can't force a command into the queue");
+    if (!this.a.isShutdown()) {
+      return super.offer(paramRunnable, paramLong, paramTimeUnit);
     }
-    return super.offer(paramRunnable, paramLong, paramTimeUnit);
+    throw new RejectedExecutionException("Executor not running, can't force a command into the queue");
   }
   
   public final int remainingCapacity()
@@ -46,7 +50,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.common.a.a.b
  * JD-Core Version:    0.7.0.1
  */

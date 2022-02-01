@@ -47,8 +47,14 @@ public class ImmersiveConfProcessor
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).optString("IsImageImmersiveEnable");
       localObject = ((JSONObject)localObject).optString("IsVideoImmersiveEnable");
-      if (QLog.isColorLevel()) {
-        QLog.e("ImmersiveConfProcessor", 2, "ImmersiveConfBean, isImgEnable:" + paramString + ", isVdoEnable:" + (String)localObject);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ImmersiveConfBean, isImgEnable:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(", isVdoEnable:");
+        localStringBuilder.append((String)localObject);
+        QLog.e("ImmersiveConfProcessor", 2, localStringBuilder.toString());
       }
       paramString = new ImmersiveConfProcessor.ImmersiveConfBean(paramString.trim(), ((String)localObject).trim());
       return paramString;
@@ -66,8 +72,12 @@ public class ImmersiveConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       ImmersiveConfProcessor.ImmersiveConfBean localImmersiveConfBean = a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ImmersiveConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("ImmersiveConfProcessor", 2, localStringBuilder.toString());
       }
       return localImmersiveConfBean;
     }
@@ -116,7 +126,7 @@ public class ImmersiveConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.comment.config.ImmersiveConfProcessor
  * JD-Core Version:    0.7.0.1
  */

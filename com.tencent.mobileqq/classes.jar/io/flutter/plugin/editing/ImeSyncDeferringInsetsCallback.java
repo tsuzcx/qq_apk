@@ -65,8 +65,13 @@ class ImeSyncDeferringInsetsCallback
     if ((this.animating) && ((paramWindowInsetsAnimation.getTypeMask() & this.deferredInsetTypes) != 0))
     {
       this.animating = false;
-      if ((this.lastWindowInsets != null) && (this.view != null)) {
-        this.view.dispatchApplyWindowInsets(this.lastWindowInsets);
+      paramWindowInsetsAnimation = this.lastWindowInsets;
+      if (paramWindowInsetsAnimation != null)
+      {
+        View localView = this.view;
+        if (localView != null) {
+          localView.dispatchApplyWindowInsets(paramWindowInsetsAnimation);
+        }
       }
     }
   }
@@ -82,23 +87,26 @@ class ImeSyncDeferringInsetsCallback
   
   public WindowInsets onProgress(WindowInsets paramWindowInsets, List<WindowInsetsAnimation> paramList)
   {
-    if ((!this.animating) || (this.needsSave)) {}
-    int i;
-    do
+    if (this.animating)
     {
-      return paramWindowInsets;
+      if (this.needsSave) {
+        return paramWindowInsets;
+      }
       paramList = paramList.iterator();
-      i = 0;
+      int i = 0;
       while (paramList.hasNext()) {
         if ((((WindowInsetsAnimation)paramList.next()).getTypeMask() & this.deferredInsetTypes) != 0) {
           i = 1;
         }
       }
-    } while (i == 0);
-    paramList = new WindowInsets.Builder(this.lastWindowInsets);
-    Insets localInsets = Insets.of(0, 0, 0, Math.max(paramWindowInsets.getInsets(this.deferredInsetTypes).bottom - paramWindowInsets.getInsets(this.overlayInsetTypes).bottom, 0));
-    paramList.setInsets(this.deferredInsetTypes, localInsets);
-    this.view.onApplyWindowInsets(paramList.build());
+      if (i == 0) {
+        return paramWindowInsets;
+      }
+      paramList = new WindowInsets.Builder(this.lastWindowInsets);
+      Insets localInsets = Insets.of(0, 0, 0, Math.max(paramWindowInsets.getInsets(this.deferredInsetTypes).bottom - paramWindowInsets.getInsets(this.overlayInsetTypes).bottom, 0));
+      paramList.setInsets(this.deferredInsetTypes, localInsets);
+      this.view.onApplyWindowInsets(paramList.build());
+    }
     return paramWindowInsets;
   }
   
@@ -110,7 +118,7 @@ class ImeSyncDeferringInsetsCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.editing.ImeSyncDeferringInsetsCallback
  * JD-Core Version:    0.7.0.1
  */

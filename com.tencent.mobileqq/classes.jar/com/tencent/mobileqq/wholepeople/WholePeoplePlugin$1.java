@@ -12,8 +12,12 @@ class WholePeoplePlugin$1
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WholePeoplePlugin", 2, "onClick " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onClick ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      QLog.i("WholePeoplePlugin", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqWholepeopleWholePeoplePlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
     EventCollector.getInstance().onViewClicked(paramView);
@@ -21,7 +25,7 @@ class WholePeoplePlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wholepeople.WholePeoplePlugin.1
  * JD-Core Version:    0.7.0.1
  */

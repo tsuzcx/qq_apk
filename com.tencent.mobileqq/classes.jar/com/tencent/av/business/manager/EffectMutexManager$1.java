@@ -13,8 +13,13 @@ class EffectMutexManager$1
     while (i < EffectMutexManager.a(this.this$0).size())
     {
       EffectMutexManager.IMutexItem localIMutexItem = (EffectMutexManager.IMutexItem)EffectMutexManager.a(this.this$0).valueAt(i);
-      if ((localIMutexItem != null) && (EffectMutexManager.a(this.this$0).keyAt(i) != this.jdField_a_of_type_Int)) {
-        localIMutexItem.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      if (localIMutexItem != null)
+      {
+        int j = EffectMutexManager.a(this.this$0).keyAt(i);
+        int k = this.jdField_a_of_type_Int;
+        if (j != k) {
+          localIMutexItem.a(k, this.jdField_a_of_type_JavaLangString);
+        }
       }
       i += 1;
     }
@@ -22,7 +27,7 @@ class EffectMutexManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.EffectMutexManager.1
  * JD-Core Version:    0.7.0.1
  */

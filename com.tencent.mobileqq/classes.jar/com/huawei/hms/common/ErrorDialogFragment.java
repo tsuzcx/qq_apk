@@ -12,8 +12,8 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.ReportDialogFragmen
 public class ErrorDialogFragment
   extends ReportDialogFragment
 {
-  private Dialog a = null;
-  private DialogInterface.OnCancelListener b = null;
+  private DialogInterface.OnCancelListener myCancelLister = null;
+  private Dialog myDialog = null;
   
   public static ErrorDialogFragment newInstance(Dialog paramDialog)
   {
@@ -24,28 +24,29 @@ public class ErrorDialogFragment
   {
     Preconditions.checkNotNull(paramDialog, "Dialog cannot be null!");
     ErrorDialogFragment localErrorDialogFragment = new ErrorDialogFragment();
-    localErrorDialogFragment.a = paramDialog;
-    localErrorDialogFragment.a.setOnCancelListener(null);
-    localErrorDialogFragment.a.setOnDismissListener(null);
+    localErrorDialogFragment.myDialog = paramDialog;
+    localErrorDialogFragment.myDialog.setOnCancelListener(null);
+    localErrorDialogFragment.myDialog.setOnDismissListener(null);
     if (paramOnCancelListener != null) {
-      localErrorDialogFragment.b = paramOnCancelListener;
+      localErrorDialogFragment.myCancelLister = paramOnCancelListener;
     }
     return localErrorDialogFragment;
   }
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.b != null) {
-      this.b.onCancel(paramDialogInterface);
+    DialogInterface.OnCancelListener localOnCancelListener = this.myCancelLister;
+    if (localOnCancelListener != null) {
+      localOnCancelListener.onCancel(paramDialogInterface);
     }
   }
   
   public Dialog onCreateDialog(Bundle paramBundle)
   {
-    if (this.a == null) {
+    if (this.myDialog == null) {
       setShowsDialog(false);
     }
-    return this.a;
+    return this.myDialog;
   }
   
   public void show(FragmentManager paramFragmentManager, String paramString)
@@ -56,7 +57,7 @@ public class ErrorDialogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.ErrorDialogFragment
  * JD-Core Version:    0.7.0.1
  */

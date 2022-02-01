@@ -22,18 +22,26 @@ public class ChatHistoryTroopDateFragment$ChatHistoryDatePickerController
   
   public CalendarDay a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay == null) {
-      return new CalendarDay(System.currentTimeMillis());
+    CalendarDay localCalendarDay2 = this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+    CalendarDay localCalendarDay1 = localCalendarDay2;
+    if (localCalendarDay2 == null) {
+      localCalendarDay1 = new CalendarDay(System.currentTimeMillis());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+    return localCalendarDay1;
   }
   
   public void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord)
   {
     String str = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_JavaLangString;
-    ChatHistoryBubbleListForTroopFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.getActivity(), str, paramMessageRecord, -1, 3);
+    ChatHistoryBubbleListForTroopFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.getBaseActivity(), str, paramMessageRecord, -1, 3);
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_date", "date_clk", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_JavaLangString, "", "", "");
-    QLog.i(ChatHistoryTroopDateFragment.b(), 1, "clickDay: CalendarDay" + paramCalendarDay + " | MessageRecord:" + paramMessageRecord);
+    str = ChatHistoryTroopDateFragment.b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("clickDay: CalendarDay");
+    localStringBuilder.append(paramCalendarDay);
+    localStringBuilder.append(" | MessageRecord:");
+    localStringBuilder.append(paramMessageRecord);
+    QLog.i(str, 1, localStringBuilder.toString());
   }
   
   public void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2)
@@ -45,17 +53,18 @@ public class ChatHistoryTroopDateFragment$ChatHistoryDatePickerController
   
   public CalendarDay b()
   {
-    if (this.b == null)
+    CalendarDay localCalendarDay = this.b;
+    if (localCalendarDay == null)
     {
-      CalendarDay localCalendarDay = new CalendarDay(System.currentTimeMillis());
+      localCalendarDay = new CalendarDay(System.currentTimeMillis());
       return new CalendarDay(localCalendarDay.year + 1, localCalendarDay.month, localCalendarDay.month);
     }
-    return this.b;
+    return localCalendarDay;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopDateFragment.ChatHistoryDatePickerController
  * JD-Core Version:    0.7.0.1
  */

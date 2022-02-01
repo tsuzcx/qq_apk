@@ -3,9 +3,9 @@ package com.tencent.biz.webviewplugin;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.biz.common.util.LoadedBack2;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.QQBrowserBaseActivityInterface;
 import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
 import com.tencent.smtt.sdk.WebView;
 
@@ -17,28 +17,25 @@ class OfflinePlugin$8
   public void a()
   {
     Object localObject = this.a.mRuntime.a();
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      WebUiBaseInterface localWebUiBaseInterface = this.a.mRuntime.a(this.a.mRuntime.a());
-      if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.QQBrowserBaseActivityInterface)) && (((WebUiUtils.QQBrowserBaseActivityInterface)localWebUiBaseInterface).getTopActivity() != localObject))
-      {
-        localObject = this.a.mRuntime.a();
-        if (localObject != null) {
-          try
+    }
+    WebUiBaseInterface localWebUiBaseInterface = this.a.mRuntime.a(this.a.mRuntime.a());
+    if (QBaseActivity.sTopActivity != localObject)
+    {
+      localObject = this.a.mRuntime.a();
+      if (localObject != null) {
+        try
+        {
+          if ((localWebUiBaseInterface instanceof WebUiUtils.WebUiMethodInterface))
           {
-            localWebUiBaseInterface = this.a.mRuntime.a(this.a.mRuntime.a());
-            if ((localWebUiBaseInterface instanceof WebUiUtils.WebUiMethodInterface))
-            {
-              ((WebView)localObject).loadUrl(((WebUiUtils.WebUiMethodInterface)localWebUiBaseInterface).getCurrentUrl());
-              return;
-            }
+            ((WebView)localObject).loadUrl(((WebUiUtils.WebUiMethodInterface)localWebUiBaseInterface).getCurrentUrl());
+            return;
           }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
         }
       }
     }
@@ -62,7 +59,7 @@ class OfflinePlugin$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.8
  * JD-Core Version:    0.7.0.1
  */

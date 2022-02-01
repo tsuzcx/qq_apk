@@ -12,15 +12,15 @@ class ForwardRecentActivity$24
   
   public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.getVisibility() == 0)) {
-      this.a.a.setVisibility(8);
+    if ((this.a.directShareTips != null) && (this.a.directShareTips.getVisibility() == 0)) {
+      this.a.directShareTips.setVisibility(8);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.24
  * JD-Core Version:    0.7.0.1
  */

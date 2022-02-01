@@ -22,6 +22,7 @@ import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.core.proxy.WnsConfigProxy;
 import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
+import com.tencent.qqmini.sdk.launcher.model.AppMode;
 import com.tencent.qqmini.sdk.launcher.model.EntryModel;
 import common.config.service.QzoneConfig;
 import org.json.JSONObject;
@@ -75,13 +76,13 @@ public class NavigationJsPlugin
   @JsEvent({"navigateBackMiniProgram"})
   public void navigateBackMiniProgram(RequestEvent paramRequestEvent)
   {
-    Object localObject1;
-    String str;
-    Object localObject2;
     try
     {
-      localObject1 = new JSONObject(paramRequestEvent.jsonParams);
-      if (jdField_a_of_type_Int == 0)
+      Object localObject1 = new JSONObject(paramRequestEvent.jsonParams);
+      int i = jdField_a_of_type_Int;
+      String str;
+      Object localObject2;
+      if (i == 0)
       {
         str = ((JSONObject)localObject1).optString("extraData");
         localObject1 = ((JSONObject)localObject1).optString("privateExtraData");
@@ -94,191 +95,177 @@ public class NavigationJsPlugin
         paramRequestEvent.fail();
         return;
       }
+      if (jdField_a_of_type_Int == 1)
+      {
+        str = ((JSONObject)localObject1).optString("extraData");
+        localObject1 = ((JSONObject)localObject1).optString("privateExtraData");
+        localObject2 = MiniSdkLauncher.convert(this.mMiniAppInfo.launchParam.fromMiniAppInfo);
+        if (localObject2 != null)
+        {
+          a((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2, str, (String)localObject1, new NavigationJsPlugin.2(this, paramRequestEvent));
+          return;
+        }
+      }
     }
     catch (Throwable paramRequestEvent)
     {
       QLog.e("NavigationJsPlugin", 1, "navigateBackMiniProgram error, ", paramRequestEvent);
-      return;
-    }
-    if (jdField_a_of_type_Int == 1)
-    {
-      str = ((JSONObject)localObject1).optString("extraData");
-      localObject1 = ((JSONObject)localObject1).optString("privateExtraData");
-      localObject2 = MiniSdkLauncher.convert(this.mMiniAppInfo.launchParam.fromMiniAppInfo);
-      if (localObject2 != null) {
-        a((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2, str, (String)localObject1, new NavigationJsPlugin.2(this, paramRequestEvent));
-      }
     }
   }
   
   @JsEvent({"navigateToMiniProgram"})
   public void navigateToMiniProgram(RequestEvent paramRequestEvent)
   {
-    int j = 2001;
+    Object localObject1;
     try
     {
-      localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      if (localJSONObject != null)
-      {
-        str1 = localJSONObject.optString("reportData");
-        localObject5 = com.tencent.mobileqq.mini.apkg.MiniAppInfo.createMiniAppInfo(localJSONObject);
-        localMiniAppInfo = this.mMiniAppContext.getMiniAppInfo();
-        localEntryModel = localMiniAppInfo.launchParam.entryModel;
-        if (localObject5 == null) {
-          break label380;
-        }
-      }
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
+      QLog.e("NavigationJsPlugin", 1, localThrowable.getMessage(), localThrowable);
+      localObject1 = null;
+    }
+    String str2;
+    Object localObject5;
+    com.tencent.qqmini.sdk.launcher.model.MiniAppInfo localMiniAppInfo1;
+    EntryModel localEntryModel;
+    String str1;
+    if (localObject1 != null)
+    {
+      str2 = ((JSONObject)localObject1).optString("reportData");
+      localObject5 = com.tencent.mobileqq.mini.apkg.MiniAppInfo.createMiniAppInfo((JSONObject)localObject1);
+      localMiniAppInfo1 = this.mMiniAppContext.getMiniAppInfo();
+      localEntryModel = localMiniAppInfo1.launchParam.entryModel;
+      str1 = "";
+      if ((localObject5 == null) || (!localMiniAppInfo1.appMode.useAppInfoWhenNavigate)) {}
+    }
+    for (;;)
+    {
+      try
       {
-        String str1;
-        Object localObject5;
-        com.tencent.qqmini.sdk.launcher.model.MiniAppInfo localMiniAppInfo;
-        EntryModel localEntryModel;
-        Object localObject4;
-        int i;
-        Object localObject1;
-        try
-        {
-          JSONObject localJSONObject;
-          localObject4 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWnsConfigProxy.getConfig("qqminiapp", "miniappsearchappid");
-          Object localObject2 = localObject4;
-          if (StringUtil.a((String)localObject4)) {
-            localObject2 = "1109875297";
-          }
-          if ((this.mMiniAppContext.getMiniAppInfo() != null) && (((String)localObject2).equals(this.mMiniAppContext.getMiniAppInfo().appId)))
-          {
-            i = 2077;
-            localObject2 = localJSONObject.optJSONObject("extraData");
-            if (localObject2 == null) {
-              break label723;
-            }
-            localObject2 = ((JSONObject)localObject2).toString();
-            localObject4 = localJSONObject.optJSONObject("privateExtraData");
-            if (localObject4 != null)
-            {
-              localObject4 = ((JSONObject)localObject4).toString();
-              localObject6 = new com.tencent.mobileqq.mini.sdk.LaunchParam();
-              ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6).scene = i;
-              ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6).fromMiniAppId = localMiniAppInfo.launchParam.miniAppId;
-              ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6).navigateExtData = ((String)localObject2);
-              ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6).privateExtraData = ((String)localObject4);
-              if (localEntryModel != null) {
-                ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6).entryModel = MiniSdkUtil.a(localEntryModel);
-              }
-              localObject2 = com.tencent.mobileqq.mini.apkg.MiniAppInfo.createMiniAppInfo(localJSONObject);
-              MiniAppController.launchMiniAppByAppInfo(this.mMiniAppContext.getAttachedActivity(), (com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2, (com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6);
-              paramRequestEvent.ok();
-              QLog.d("NavigationJsPlugin", 1, "navigateToMiniProgram, open miniApp from appInfo, appInfo: " + ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject5).toString());
-              if (((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject5).verType == 3) {
-                a((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2);
-              }
-              return;
-              localThrowable = localThrowable;
-              QLog.e("NavigationJsPlugin", 1, localThrowable.getMessage(), localThrowable);
-              localObject1 = null;
-            }
-          }
-          else
-          {
-            if (!localMiniAppInfo.isAppStoreMiniApp()) {
-              break label716;
-            }
-            i = 2001;
-            break label713;
-          }
-          localObject4 = "";
-          continue;
-          i = ((JSONObject)localObject1).optInt("openType");
+        localObject4 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWnsConfigProxy.getConfig("qqminiapp", "miniappsearchappid");
+        Object localObject2 = localObject4;
+        if (StringUtil.a((String)localObject4)) {
+          localObject2 = "1109875297";
         }
-        catch (Exception localException)
+        if ((this.mMiniAppContext.getMiniAppInfo() != null) && (((String)localObject2).equals(this.mMiniAppContext.getMiniAppInfo().appId)))
         {
-          QLog.e("NavigationJsPlugin", 1, "navigateToMiniProgram, " + Log.getStackTraceString(localException));
+          i = 2077;
         }
-        label380:
-        Object localObject6 = ((JSONObject)localObject1).optString("appId");
-        Object localObject3;
-        if (i == 0)
+        else
         {
-          String str2 = ((JSONObject)localObject1).optString("path");
-          localObject5 = ((JSONObject)localObject1).optString("envVersion");
-          localObject3 = ((JSONObject)localObject1).optJSONObject("extraData");
-          if (localObject3 != null)
-          {
-            localObject4 = ((JSONObject)localObject3).toString();
-            localObject3 = localObject5;
-            if (this.mMiniAppInfo != null)
-            {
-              localObject3 = localObject5;
-              if ("release".equals(this.mMiniAppInfo.getVerTypeStr())) {
-                localObject3 = "release";
-              }
-            }
-            localObject5 = new com.tencent.mobileqq.mini.sdk.LaunchParam();
-            if (!localMiniAppInfo.isAppStoreMiniApp()) {
-              break label662;
-            }
-            i = j;
-            label499:
-            ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).scene = i;
-            ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).entryPath = str2;
-            ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).navigateExtData = ((String)localObject4);
-            ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).fromMiniAppId = localMiniAppInfo.launchParam.miniAppId;
-            ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).entryModel = MiniSdkUtil.a(localEntryModel);
-            ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).envVersion = ((String)localObject3);
-            ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).reportData = str1;
-            localObject1 = ((JSONObject)localObject1).optJSONObject("privateExtraData");
-            if (localObject1 == null) {
-              break label669;
-            }
+          if (!localMiniAppInfo1.isAppStoreMiniApp()) {
+            break label726;
           }
-          label662:
-          label669:
-          for (localObject1 = ((JSONObject)localObject1).toString();; localObject1 = "")
-          {
-            ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).privateExtraData = ((String)localObject1);
-            if ((!localMiniAppInfo.isSpecialMiniApp()) && (jdField_a_of_type_Int == 1))
-            {
-              ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).fromEnvVersion = localMiniAppInfo.getVerTypeStr();
-              ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).fromMiniAppInfo = MiniSdkLauncher.convert(localMiniAppInfo);
-            }
-            MiniAppController.startAppByAppid(this.mMiniAppContext.getAttachedActivity(), (String)localObject6, str2, (String)localObject3, (com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5, new NavigationJsPlugin.3(this, paramRequestEvent));
-            paramRequestEvent.ok();
-            return;
-            localObject4 = "";
-            break;
-            i = 1037;
-            break label499;
-          }
+          i = 2001;
         }
-        if (i == 1)
-        {
-          if (GameProxy.startGameByMiniApp(this.mMiniAppContext.getAttachedActivity(), (String)localObject6, (JSONObject)localObject1))
-          {
-            paramRequestEvent.ok();
-            return;
-          }
-          paramRequestEvent.fail();
-          return;
-          for (;;)
-          {
-            label713:
-            break;
-            label716:
-            i = 1037;
-          }
-          label723:
+        localObject2 = ((JSONObject)localObject1).optJSONObject("extraData");
+        if (localObject2 == null) {
+          break label733;
+        }
+        localObject2 = ((JSONObject)localObject2).toString();
+        localObject4 = ((JSONObject)localObject1).optJSONObject("privateExtraData");
+        if (localObject4 == null) {
+          break label741;
+        }
+        localObject4 = ((JSONObject)localObject4).toString();
+        localObject6 = new com.tencent.mobileqq.mini.sdk.LaunchParam();
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6).scene = i;
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6).fromMiniAppId = localMiniAppInfo1.launchParam.miniAppId;
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6).navigateExtData = ((String)localObject2);
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6).privateExtraData = ((String)localObject4);
+        if (localEntryModel != null) {
+          ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6).entryModel = MiniSdkUtil.a(localEntryModel);
+        }
+        localObject2 = com.tencent.mobileqq.mini.apkg.MiniAppInfo.createMiniAppInfo((JSONObject)localObject1);
+        MiniAppController.launchMiniAppByAppInfo(this.mMiniAppContext.getAttachedActivity(), (com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2, (com.tencent.mobileqq.mini.sdk.LaunchParam)localObject6);
+        paramRequestEvent.ok();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("navigateToMiniProgram, open miniApp from appInfo, appInfo: ");
+        ((StringBuilder)localObject4).append(((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject5).toString());
+        QLog.d("NavigationJsPlugin", 1, ((StringBuilder)localObject4).toString());
+        if (((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject5).verType == 3) {
+          a((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2);
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("navigateToMiniProgram, ");
+        ((StringBuilder)localObject4).append(Log.getStackTraceString(localException));
+        QLog.e("NavigationJsPlugin", 1, ((StringBuilder)localObject4).toString());
+      }
+      int i = ((JSONObject)localObject1).optInt("openType");
+      Object localObject6 = ((JSONObject)localObject1).optString("appId");
+      if (i == 0)
+      {
+        String str3 = ((JSONObject)localObject1).optString("path");
+        localObject4 = ((JSONObject)localObject1).optString("envVersion");
+        localObject3 = ((JSONObject)localObject1).optJSONObject("extraData");
+        if (localObject3 != null) {
+          localObject3 = ((JSONObject)localObject3).toString();
+        } else {
           localObject3 = "";
         }
+        com.tencent.qqmini.sdk.launcher.model.MiniAppInfo localMiniAppInfo2 = this.mMiniAppInfo;
+        localObject5 = "release";
+        if ((localMiniAppInfo2 != null) && ("release".equals(this.mMiniAppInfo.getVerTypeStr()))) {
+          localObject4 = localObject5;
+        }
+        localObject5 = new com.tencent.mobileqq.mini.sdk.LaunchParam();
+        if (localMiniAppInfo1.isAppStoreMiniApp()) {
+          i = 2001;
+        } else {
+          i = 1037;
+        }
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).scene = i;
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).entryPath = str3;
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).navigateExtData = ((String)localObject3);
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).fromMiniAppId = localMiniAppInfo1.launchParam.miniAppId;
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).entryModel = MiniSdkUtil.a(localEntryModel);
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).envVersion = ((String)localObject4);
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).reportData = str2;
+        localObject3 = ((JSONObject)localObject1).optJSONObject("privateExtraData");
+        localObject1 = str1;
+        if (localObject3 != null) {
+          localObject1 = ((JSONObject)localObject3).toString();
+        }
+        ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).privateExtraData = ((String)localObject1);
+        if ((!localMiniAppInfo1.isSpecialMiniApp()) && (jdField_a_of_type_Int == 1))
+        {
+          ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).fromEnvVersion = localMiniAppInfo1.getVerTypeStr();
+          ((com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5).fromMiniAppInfo = MiniSdkLauncher.convert(localMiniAppInfo1);
+        }
+        MiniAppController.startAppByAppid(this.mMiniAppContext.getAttachedActivity(), (String)localObject6, str3, (String)localObject4, (com.tencent.mobileqq.mini.sdk.LaunchParam)localObject5, new NavigationJsPlugin.3(this, paramRequestEvent));
+        paramRequestEvent.ok();
+        return;
       }
+      if (i == 1)
+      {
+        if (GameProxy.startGameByMiniApp(this.mMiniAppContext.getAttachedActivity(), (String)localObject6, (JSONObject)localObject1))
+        {
+          paramRequestEvent.ok();
+          return;
+        }
+        paramRequestEvent.fail();
+      }
+      return;
+      label726:
+      i = 1037;
+      continue;
+      label733:
+      Object localObject3 = "";
+      continue;
+      label741:
+      Object localObject4 = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.NavigationJsPlugin
  * JD-Core Version:    0.7.0.1
  */

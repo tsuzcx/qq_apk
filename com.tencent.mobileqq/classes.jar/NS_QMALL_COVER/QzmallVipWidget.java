@@ -23,14 +23,15 @@ public final class QzmallVipWidget
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strRedpointTrace != null) {
-      paramJceOutputStream.write(this.strRedpointTrace, 0);
+    String str = this.strRedpointTrace;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallVipWidget
  * JD-Core Version:    0.7.0.1
  */

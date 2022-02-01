@@ -20,52 +20,49 @@ public class HttpResponsePackage
   
   private void a(String paramString)
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      try
+      paramString = paramString.substring(0, paramString.indexOf("\r\n\r\n") - 1).split("\r\n");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        paramString = paramString.substring(0, paramString.indexOf("\r\n\r\n") - 1).split("\r\n");
-        int j = paramString.length;
-        if (i < j) {
-          if (i == 0)
-          {
-            b(paramString[i]);
-          }
-          else
-          {
-            Object localObject = paramString[i];
-            int k = localObject.indexOf(":");
-            a(localObject.substring(0, k).trim(), localObject.substring(k + 1, localObject.length()));
-          }
+        if (i == 0)
+        {
+          b(paramString[i]);
         }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("HttpResponsePackage", 1, paramString.toString());
+        else
+        {
+          Object localObject = paramString[i];
+          int k = localObject.indexOf(":");
+          a(localObject.substring(0, k).trim(), localObject.substring(k + 1, localObject.length()));
+        }
+        i += 1;
       }
       return;
-      i += 1;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("HttpResponsePackage", 1, paramString.toString());
     }
   }
   
   private void a(String paramString1, String paramString2)
   {
-    if ((paramString2 == null) || (paramString2.length() == 0)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramString1 = HttpRequestPackage.class.getDeclaredField(paramString1);
-        if (paramString1 != null)
-        {
-          paramString1.set(this, paramString2);
-          return;
-        }
+    if (paramString2 != null) {
+      if (paramString2.length() == 0) {
+        return;
       }
-      catch (NoSuchFieldException paramString1) {}catch (IllegalArgumentException paramString1) {}catch (IllegalAccessException paramString1) {}
     }
+    try
+    {
+      paramString1 = HttpRequestPackage.class.getDeclaredField(paramString1);
+      if (paramString1 != null) {
+        paramString1.set(this, paramString2);
+      }
+      return;
+    }
+    catch (NoSuchFieldException|IllegalAccessException|IllegalArgumentException paramString1) {}
   }
   
   private void b(String paramString)
@@ -84,7 +81,7 @@ public class HttpResponsePackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HttpResponsePackage
  * JD-Core Version:    0.7.0.1
  */

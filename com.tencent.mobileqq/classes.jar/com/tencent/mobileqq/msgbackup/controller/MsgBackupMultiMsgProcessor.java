@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.msgbackup.tempapi.IMsgBackupTempApi;
 import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
-import com.tencent.mobileqq.multimsg.MultiMsgUtil;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -21,18 +20,13 @@ import org.json.JSONObject;
 public class MsgBackupMultiMsgProcessor
   implements IMsgBackupRichProcessor
 {
-  public static String a;
+  public static String a = "MsgBackup_MsgBackupMultiMsgProcessor";
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "MsgBackup_MsgBackupMultiMsgProcessor";
-  }
-  
-  public MsgBackupMultiMsgProcessor(QQAppInterface paramQQAppInterface) {}
+  public MsgBackupMultiMsgProcessor(BaseQQAppInterface paramBaseQQAppInterface) {}
   
   public static String a(String paramString, MessageRecord paramMessageRecord)
   {
-    String str = ((MessageForStructing)paramMessageRecord).structingMsg.mFileName;
+    String str = ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).handleMultiMsg(paramMessageRecord);
     paramMessageRecord = new JSONObject();
     try
     {
@@ -40,15 +34,12 @@ public class MsgBackupMultiMsgProcessor
       paramMessageRecord.put("uuid", str);
       paramMessageRecord.put("msgType", 4);
       paramMessageRecord.put("msgSubType", 10);
-      return paramMessageRecord.toString();
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
+    return paramMessageRecord.toString();
   }
   
   public static List<MessageRecord> a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
@@ -106,7 +97,7 @@ public class MsgBackupMultiMsgProcessor
   public boolean a(MessageRecord paramMessageRecord)
   {
     if ((paramMessageRecord instanceof ChatMessage)) {
-      return MultiMsgUtil.a((ChatMessage)paramMessageRecord);
+      return ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).isMultiMsg((ChatMessage)paramMessageRecord);
     }
     return false;
   }
@@ -120,7 +111,7 @@ public class MsgBackupMultiMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupMultiMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

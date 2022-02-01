@@ -6,7 +6,7 @@ import com.tencent.common.galleryactivity.AbstractGalleryScene;
 import com.tencent.common.galleryactivity.AbstractImageListModel;
 import com.tencent.common.galleryactivity.AbstractImageListScene;
 import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
+import com.tencent.mobileqq.picbrowser.PicBrowserModel;
 import com.tencent.mobileqq.profile.FriendProfileCardPicScene;
 
 class FriendProfilePicBrowserActivity$FriendProfileGalleryManager
@@ -27,7 +27,8 @@ class FriendProfilePicBrowserActivity$FriendProfileGalleryManager
   
   public AbstractImageListModel a(Activity paramActivity)
   {
-    paramActivity = new PicBrowserModel(this.a, FriendProfilePicBrowserActivity.a(this.a));
+    paramActivity = this.a;
+    paramActivity = new PicBrowserModel(paramActivity, FriendProfilePicBrowserActivity.a(paramActivity));
     paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
     return paramActivity;
   }
@@ -39,7 +40,7 @@ class FriendProfilePicBrowserActivity$FriendProfileGalleryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity.FriendProfileGalleryManager
  * JD-Core Version:    0.7.0.1
  */

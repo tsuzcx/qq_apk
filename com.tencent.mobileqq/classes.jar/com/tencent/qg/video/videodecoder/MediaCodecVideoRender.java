@@ -20,34 +20,38 @@ public class MediaCodecVideoRender
   
   protected void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
   {
-    boolean bool = true;
     int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 10000L);
-    switch (i)
+    if (i != -3)
     {
-    default: 
-      if ((paramBufferInfo.flags & 0x4) != 0)
+      if (i != -2)
       {
-        SLog.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "output EOS");
-        this.jdField_b_of_type_Boolean = true;
+        if (i != -1)
+        {
+          int j = paramBufferInfo.flags;
+          boolean bool = true;
+          if ((j & 0x4) != 0)
+          {
+            SLog.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "output EOS");
+            this.jdField_b_of_type_Boolean = true;
+          }
+          if (paramBufferInfo.size == 0) {
+            bool = false;
+          }
+          paramMediaCodec.releaseOutputBuffer(i, bool);
+          SLog.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer render");
+          return;
+        }
+        SLog.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer timed out!");
+        return;
       }
-      if (paramBufferInfo.size == 0) {
-        break;
-      }
+      paramMediaCodec = new StringBuilder();
+      paramMediaCodec.append("New format ");
+      paramMediaCodec.append(this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat());
+      SLog.b("Q.qqstory.mediadecoderMediaCodecVideoRender", paramMediaCodec.toString());
+      return;
     }
-    for (;;)
-    {
-      paramMediaCodec.releaseOutputBuffer(i, bool);
-      SLog.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer render");
-      return;
-      SLog.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "INFO_OUTPUT_BUFFERS_CHANGED");
-      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
-      return;
-      SLog.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "New format " + this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat());
-      return;
-      SLog.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer timed out!");
-      return;
-      bool = false;
-    }
+    SLog.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "INFO_OUTPUT_BUFFERS_CHANGED");
+    this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
   }
   
   protected void a(MediaCodecRender.MediaCodecInfo paramMediaCodecInfo, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
@@ -57,7 +61,7 @@ public class MediaCodecVideoRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.video.videodecoder.MediaCodecVideoRender
  * JD-Core Version:    0.7.0.1
  */

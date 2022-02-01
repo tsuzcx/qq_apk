@@ -19,8 +19,8 @@ import com.tencent.livesdk.roomengine.RoomEngine;
 
 public abstract class BaseController
 {
-  public AudQualityServiceInterface audQualityService;
-  public BootBizModules bootBizModules;
+  protected AudQualityServiceInterface audQualityService;
+  protected BootBizModules bootBizModules;
   protected boolean landscape;
   protected LogInterface logInterface;
   protected FragmentActivity mActivity;
@@ -59,7 +59,9 @@ public abstract class BaseController
   {
     this.mContext = paramContext;
     this.mActivity = ((FragmentActivity)paramContext);
-    this.bootBizModules = this.mAudienceRoomPager.getCurrentFragment().getBootBizModules();
+    if (this.mAudienceRoomPager.getCurrentFragment() != null) {
+      this.bootBizModules = this.mAudienceRoomPager.getCurrentFragment().getBootBizModules();
+    }
     this.moduleEvent = this.bootBizModules.getModuleEvent();
     init();
   }
@@ -85,9 +87,14 @@ public abstract class BaseController
   
   public void onSwitchFragment()
   {
-    this.bootBizModules = this.mAudienceRoomPager.getCurrentFragment().getBootBizModules();
-    if (this.bootBizModules != null) {
-      this.moduleEvent = this.bootBizModules.getModuleEvent();
+    if (this.mAudienceRoomPager.getCurrentFragment() != null) {
+      this.bootBizModules = this.mAudienceRoomPager.getCurrentFragment().getBootBizModules();
+    } else {
+      this.bootBizModules = null;
+    }
+    BootBizModules localBootBizModules = this.bootBizModules;
+    if (localBootBizModules != null) {
+      this.moduleEvent = localBootBizModules.getModuleEvent();
     }
   }
   
@@ -101,15 +108,16 @@ public abstract class BaseController
     this.mRoomEngine = paramRoomEngine;
   }
   
-  public void showErrExitDialog(String paramString, RoomPageActionInterface paramRoomPageActionInterface)
+  protected void showErrExitDialog(String paramString, RoomPageActionInterface paramRoomPageActionInterface)
   {
-    if (this.mContext == null) {
+    Object localObject = this.mContext;
+    if (localObject == null) {
       return;
     }
     try
     {
-      FragmentActivity localFragmentActivity = (FragmentActivity)this.mContext;
-      DialogUtil.createOneBtnDialog(localFragmentActivity, null, paramString, localFragmentActivity.getString(2131694616), new BaseController.1(this, paramRoomPageActionInterface)).setRightBtnColor(localFragmentActivity.getResources().getColor(2131165307)).show(localFragmentActivity.getSupportFragmentManager(), "");
+      localObject = (FragmentActivity)localObject;
+      DialogUtil.createOneBtnDialog((Context)localObject, null, paramString, ((FragmentActivity)localObject).getString(2131694584), new BaseController.1(this, paramRoomPageActionInterface)).setRightBtnColor(((FragmentActivity)localObject).getResources().getColor(2131165273)).show(((FragmentActivity)localObject).getSupportFragmentManager(), "");
       return;
     }
     catch (Exception paramString)
@@ -120,7 +128,7 @@ public abstract class BaseController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.pagelogic.base.BaseController
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public class SmoothSharpenFilter
   
   public void updateFactor(float paramFloat)
   {
-    addParam(new UniformParam.FloatParam("sharpFactor", 0.12F * paramFloat));
+    addParam(new UniformParam.FloatParam("sharpFactor", paramFloat * 0.12F));
   }
   
   public void updateTexture(int paramInt)
@@ -40,7 +40,7 @@ public class SmoothSharpenFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.SmoothSharpenFilter
  * JD-Core Version:    0.7.0.1
  */

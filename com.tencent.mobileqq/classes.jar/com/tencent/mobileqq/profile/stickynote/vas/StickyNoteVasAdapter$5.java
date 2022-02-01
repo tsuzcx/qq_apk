@@ -10,30 +10,27 @@ class StickyNoteVasAdapter$5
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    StickyNoteVasAdapter.AuthListener localAuthListener;
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter$AuthListener != null)
+    StickyNoteVasAdapter.AuthListener localAuthListener = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter$AuthListener;
+    if (localAuthListener != null)
     {
-      if (!(paramObject instanceof UniBusiGetOneItemWithCheckRsp)) {
-        break label50;
+      boolean bool = paramObject instanceof UniBusiGetOneItemWithCheckRsp;
+      paramBoolean = false;
+      if (bool)
+      {
+        paramObject = (UniBusiGetOneItemWithCheckRsp)paramObject;
+        if (paramObject.ret == 0) {
+          paramBoolean = true;
+        }
+        localAuthListener.a(paramBoolean, paramObject);
+        return;
       }
-      localAuthListener = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter$AuthListener;
-      if (((UniBusiGetOneItemWithCheckRsp)paramObject).ret != 0) {
-        break label45;
-      }
+      localAuthListener.a(false, null);
     }
-    label45:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localAuthListener.a(paramBoolean, (UniBusiGetOneItemWithCheckRsp)paramObject);
-      return;
-    }
-    label50:
-    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter$AuthListener.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteVasAdapter.5
  * JD-Core Version:    0.7.0.1
  */

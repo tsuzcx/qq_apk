@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.troop.shortcutbar;
 
 import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import java.util.List;
 import tencent.im.oidb.cmd0xea3.oidb_0xea3.BackMsg;
@@ -9,8 +8,6 @@ import tencent.im.oidb.cmd0xea3.oidb_0xea3.BackMsg;
 public class TroopShortcutBarObserver
   implements BusinessObserver
 {
-  public TroopShortcutBarObserver(QQAppInterface paramQQAppInterface) {}
-  
   protected void a(long paramLong) {}
   
   protected void a(long paramLong, boolean paramBoolean) {}
@@ -23,43 +20,47 @@ public class TroopShortcutBarObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object[] arrayOfObject;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return;
+            }
+            a((TroopInfo)((Object[])(Object[])paramObject)[0], paramBoolean);
+            return;
+          }
+          Object[] arrayOfObject = (Object[])paramObject;
+          paramObject = arrayOfObject[1];
+          List localList = null;
+          if (paramObject != null) {
+            paramObject = (List)arrayOfObject[1];
+          } else {
+            paramObject = null;
+          }
+          if (arrayOfObject[2] != null) {
+            localList = (List)arrayOfObject[2];
+          }
+          a(((Long)arrayOfObject[0]).longValue(), paramBoolean, paramObject, localList);
+          return;
+        }
+        a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
+        return;
+      }
       paramObject = (Object[])paramObject;
       a(((Long)paramObject[0]).longValue(), paramBoolean, ((Integer)paramObject[1]).intValue());
       return;
-    case 3: 
-      a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
-      return;
-    case 4: 
-      arrayOfObject = (Object[])paramObject;
-      if (arrayOfObject[1] == null) {
-        break;
-      }
     }
-    for (paramObject = (List)arrayOfObject[1];; paramObject = null)
-    {
-      if (arrayOfObject[2] != null) {}
-      for (List localList = (List)arrayOfObject[2];; localList = null)
-      {
-        a(((Long)arrayOfObject[0]).longValue(), paramBoolean, paramObject, localList);
-        return;
-        a((TroopInfo)((Object[])(Object[])paramObject)[0], paramBoolean);
-        return;
-      }
-    }
+    a(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.thumbplayer.core.decoder;
 
 import android.media.MediaCodec.BufferInfo;
-import android.media.MediaCrypto;
 import android.media.MediaFormat;
 import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.view.Surface;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import com.tencent.thumbplayer.core.common.TPCodecUtils;
 import com.tencent.thumbplayer.core.common.TPNativeLog;
 import com.tencent.thumbplayer.core.common.TPSystemInfo;
 import com.tencent.tmediacodec.TMediaCodec;
@@ -29,7 +29,6 @@ public class TPMediaCodecVideoDecoder
   private byte[] mCsd0Data = null;
   private byte[] mCsd1Data = null;
   private byte[] mCsd2Data = null;
-  private MediaCrypto mMediaCrypto = null;
   private String mMimeType = null;
   private int mRotation = 0;
   private int mVideoHeight = 0;
@@ -49,14 +48,22 @@ public class TPMediaCodecVideoDecoder
     if (TPSystemInfo.getDeviceName().equalsIgnoreCase("vivo X5L")) {
       localMediaFormat.setInteger("max-input-size", this.mVideoWidth * this.mVideoHeight);
     }
-    if (this.mCsd0Data != null) {
-      localMediaFormat.setByteBuffer("csd-0", ByteBuffer.wrap(this.mCsd0Data));
+    byte[] arrayOfByte = this.mCsd0Data;
+    if (arrayOfByte != null) {
+      localMediaFormat.setByteBuffer("csd-0", ByteBuffer.wrap(arrayOfByte));
     }
-    if (this.mCsd1Data != null) {
-      localMediaFormat.setByteBuffer("csd-1", ByteBuffer.wrap(this.mCsd1Data));
+    arrayOfByte = this.mCsd1Data;
+    if (arrayOfByte != null) {
+      localMediaFormat.setByteBuffer("csd-1", ByteBuffer.wrap(arrayOfByte));
     }
-    if (this.mCsd2Data != null) {
-      localMediaFormat.setByteBuffer("csd-2", ByteBuffer.wrap(this.mCsd2Data));
+    arrayOfByte = this.mCsd2Data;
+    if (arrayOfByte != null) {
+      localMediaFormat.setByteBuffer("csd-2", ByteBuffer.wrap(arrayOfByte));
+    }
+    if (this.mMimeType.equals("video/dolby-vision"))
+    {
+      localMediaFormat.setInteger("profile", TPCodecUtils.convertDolbyVisionToOmxProfile(this.mDolbyVisionProfile));
+      localMediaFormat.setInteger("level", TPCodecUtils.convertDolbyVisionToOmxLevel(this.mDolbyVisionLevel));
     }
     paramTMediaCodec.configure(localMediaFormat, this.mSurface, this.mMediaCrypto, 0);
     paramTMediaCodec.setVideoScalingMode(1);
@@ -110,21 +117,35 @@ public class TPMediaCodecVideoDecoder
   
   void processOutputFormatChanged(@NonNull MediaFormat paramMediaFormat)
   {
-    if ((paramMediaFormat.containsKey("crop-right")) && (paramMediaFormat.containsKey("crop-left")) && (paramMediaFormat.containsKey("crop-bottom")) && (paramMediaFormat.containsKey("crop-top"))) {}
-    for (int i = 1;; i = 0)
-    {
-      this.mVideoWidth = paramMediaFormat.getInteger("width");
-      this.mVideoHeight = paramMediaFormat.getInteger("height");
-      if (i != 0)
-      {
-        this.mCropLeft = paramMediaFormat.getInteger("crop-left");
-        this.mCropRight = paramMediaFormat.getInteger("crop-right");
-        this.mCropTop = paramMediaFormat.getInteger("crop-top");
-        this.mCropBottom = paramMediaFormat.getInteger("crop-bottom");
-      }
-      TPNativeLog.printLog(2, "TPMediaCodecVideoDecode", "processOutputFormatChanged: mVideoWidth: " + this.mVideoWidth + ", mVideoHeight: " + this.mVideoHeight + ", mCropLeft: " + this.mCropLeft + ", mCropRight: " + this.mCropRight + ", mCropTop: " + this.mCropTop + ", mCropBottom: " + this.mCropBottom);
-      return;
+    int i;
+    if ((paramMediaFormat.containsKey("crop-right")) && (paramMediaFormat.containsKey("crop-left")) && (paramMediaFormat.containsKey("crop-bottom")) && (paramMediaFormat.containsKey("crop-top"))) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    this.mVideoWidth = paramMediaFormat.getInteger("width");
+    this.mVideoHeight = paramMediaFormat.getInteger("height");
+    if (i != 0)
+    {
+      this.mCropLeft = paramMediaFormat.getInteger("crop-left");
+      this.mCropRight = paramMediaFormat.getInteger("crop-right");
+      this.mCropTop = paramMediaFormat.getInteger("crop-top");
+      this.mCropBottom = paramMediaFormat.getInteger("crop-bottom");
+    }
+    paramMediaFormat = new StringBuilder();
+    paramMediaFormat.append("processOutputFormatChanged: mVideoWidth: ");
+    paramMediaFormat.append(this.mVideoWidth);
+    paramMediaFormat.append(", mVideoHeight: ");
+    paramMediaFormat.append(this.mVideoHeight);
+    paramMediaFormat.append(", mCropLeft: ");
+    paramMediaFormat.append(this.mCropLeft);
+    paramMediaFormat.append(", mCropRight: ");
+    paramMediaFormat.append(this.mCropRight);
+    paramMediaFormat.append(", mCropTop: ");
+    paramMediaFormat.append(this.mCropTop);
+    paramMediaFormat.append(", mCropBottom: ");
+    paramMediaFormat.append(this.mCropBottom);
+    TPNativeLog.printLog(2, "TPMediaCodecVideoDecode", paramMediaFormat.toString());
   }
   
   public int setOperateRate(float paramFloat)
@@ -141,31 +162,22 @@ public class TPMediaCodecVideoDecoder
   {
     if (paramInt == 200) {
       this.mCsd0Data = paramArrayOfByte;
+    } else if (paramInt == 201) {
+      this.mCsd1Data = paramArrayOfByte;
+    } else if (paramInt == 202) {
+      this.mCsd2Data = paramArrayOfByte;
     }
-    for (;;)
-    {
-      return super.setParamBytes(paramInt, paramArrayOfByte);
-      if (paramInt == 201) {
-        this.mCsd1Data = paramArrayOfByte;
-      } else if (paramInt == 202) {
-        this.mCsd2Data = paramArrayOfByte;
-      }
-    }
+    return super.setParamBytes(paramInt, paramArrayOfByte);
   }
   
   public boolean setParamObject(int paramInt, Object paramObject)
   {
-    if (paramInt == 300)
-    {
-      this.mMediaCrypto = ((MediaCrypto)paramObject);
-      return true;
-    }
     return super.setParamObject(paramInt, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPMediaCodecVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

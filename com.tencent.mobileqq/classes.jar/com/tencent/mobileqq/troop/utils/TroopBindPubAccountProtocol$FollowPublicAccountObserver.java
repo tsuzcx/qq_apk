@@ -11,24 +11,26 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class TroopBindPubAccountProtocol$FollowPublicAccountObserver
   extends ProtoUtils.TroopProtocolObserver
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
+  
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     boolean bool2 = false;
-    mobileqq_mp.FollowResponse localFollowResponse;
-    if (paramInt == 0) {
-      localFollowResponse = new mobileqq_mp.FollowResponse();
-    }
-    for (;;)
+    boolean bool1;
+    if (paramInt == 0)
     {
+      mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
       try
       {
         localFollowResponse.mergeFrom(paramArrayOfByte);
+        bool1 = bool2;
         if (!((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.has()) {
-          break label146;
+          break label152;
         }
         paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        bool1 = bool2;
         if (paramInt != 0) {
-          break label146;
+          break label152;
         }
         bool1 = true;
       }
@@ -36,31 +38,31 @@ public abstract class TroopBindPubAccountProtocol$FollowPublicAccountObserver
       {
         bool1 = bool2;
         if (!QLog.isColorLevel()) {
-          continue;
+          break label152;
         }
-        QLog.i("TroopBindPubAccountProtocol", 2, paramArrayOfByte.toString());
-        bool1 = bool2;
-        continue;
       }
-      a(bool1, paramBundle);
-      return;
-      boolean bool1 = bool2;
+      QLog.i("TroopBindPubAccountProtocol", 2, paramArrayOfByte.toString());
+      bool1 = bool2;
+    }
+    else
+    {
+      bool1 = bool2;
       if (QLog.isColorLevel())
       {
-        QLog.i("TroopBindPubAccountProtocol", 2, "follow pubAccount failed, errorCode=" + paramInt);
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("follow pubAccount failed, errorCode=");
+        paramArrayOfByte.append(paramInt);
+        QLog.i("TroopBindPubAccountProtocol", 2, paramArrayOfByte.toString());
         bool1 = bool2;
-        continue;
-        label146:
-        bool1 = false;
       }
     }
+    label152:
+    a(bool1, paramBundle);
   }
-  
-  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.FollowPublicAccountObserver
  * JD-Core Version:    0.7.0.1
  */

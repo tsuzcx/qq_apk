@@ -9,29 +9,23 @@ public class AudioSampleUtil
   
   public static int bytesInSecond(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 2;
-    switch (paramInt2)
-    {
-    default: 
+    int i = 1;
+    if (paramInt2 != 12) {
       paramInt2 = 1;
-      switch (paramInt3)
-      {
-      }
-      break;
-    }
-    for (i = 1;; i = 1)
-    {
-      return i * paramInt1 * paramInt2;
-      paramInt2 = 1;
-      break;
+    } else {
       paramInt2 = 2;
-      break;
     }
+    if (paramInt3 != 2) {
+      paramInt3 = i;
+    } else {
+      paramInt3 = 2;
+    }
+    return paramInt1 * paramInt3 * paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.maxvideo.mediadevice.AudioSampleUtil
  * JD-Core Version:    0.7.0.1
  */

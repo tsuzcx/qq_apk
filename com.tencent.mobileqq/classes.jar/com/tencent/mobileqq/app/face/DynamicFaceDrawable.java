@@ -61,13 +61,13 @@ public class DynamicFaceDrawable
   {
     this.jdField_a_of_type_Boolean = true;
     a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, false);
-    if ((paramAppInterface instanceof QQAppInterface)) {}
-    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new FaceDrawableImpl(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean4);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new NearByFaceDrawable(paramAppInterface, paramInt1, paramInt2, paramString, (byte)1, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean4))
-    {
-      this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(this);
-      a(paramBoolean4, null);
-      return;
+    if ((paramAppInterface instanceof QQAppInterface)) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new FaceDrawableImpl(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean4);
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new NearByFaceDrawable(paramAppInterface, paramInt1, paramInt2, paramString, (byte)1, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean4);
     }
+    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(this);
+    a(paramBoolean4, null);
   }
   
   public DynamicFaceDrawable(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, int paramInt2, String paramString, int paramInt3, boolean paramBoolean1, DynamicAvatar paramDynamicAvatar, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt4)
@@ -96,22 +96,12 @@ public class DynamicFaceDrawable
   
   public static void b(AppInterface paramAppInterface)
   {
-    int i;
     if (jdField_a_of_type_Long <= 0L)
     {
-      i = DeviceInfoUtil.b();
-      if (i < 8) {
-        break label50;
-      }
-      jdField_a_of_type_Long = 100L;
-    }
-    for (;;)
-    {
-      paramAppInterface = (DynamicAvatarManager)paramAppInterface.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER);
-      ThreadManager.getSubThreadHandler().postDelayed(paramAppInterface.a, jdField_a_of_type_Long);
-      return;
-      label50:
-      if (i >= 4) {
+      int i = DeviceInfoUtil.b();
+      if (i >= 8) {
+        jdField_a_of_type_Long = 100L;
+      } else if (i >= 4) {
         jdField_a_of_type_Long = 200L;
       } else if (i >= 3) {
         jdField_a_of_type_Long = 400L;
@@ -121,27 +111,34 @@ public class DynamicFaceDrawable
         jdField_a_of_type_Long = 1000L;
       }
     }
+    paramAppInterface = (DynamicAvatarManager)paramAppInterface.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER);
+    ThreadManager.getSubThreadHandler().postDelayed(paramAppInterface.a, jdField_a_of_type_Long);
   }
   
   public Drawable a()
   {
+    Object localObject;
     if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable == null) {
-        return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      }
-      return this.jdField_a_of_type_ComTencentImageURLDrawable;
+      URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+      localObject = localURLDrawable;
+      if (localURLDrawable != null) {}
     }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    else
+    {
+      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    }
+    return localObject;
   }
   
   public void a()
   {
-    if (!b()) {}
-    while (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
+    if (!b()) {
       return;
     }
-    ((DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get()).a();
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
+      ((DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get()).a();
+    }
   }
   
   public void a(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, boolean paramBoolean1, int paramInt5, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, DynamicAvatar paramDynamicAvatar, boolean paramBoolean5)
@@ -153,60 +150,54 @@ public class DynamicFaceDrawable
     this.jdField_c_of_type_Boolean = paramBoolean4;
     this.g = paramBoolean2;
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (paramInt2 == 200)
-    {
+    if (paramInt2 == 200) {
       this.jdField_c_of_type_Int = 17;
-      if (paramInt1 != 32) {
-        break label144;
-      }
-    }
-    label144:
-    for (this.jdField_b_of_type_Int = 18;; this.jdField_b_of_type_Int = 17)
-    {
-      this.jdField_d_of_type_Int = paramInt3;
-      this.f = paramBoolean1;
-      this.jdField_b_of_type_JavaLangString = "";
-      this.jdField_c_of_type_JavaLangString = "";
-      this.jdField_e_of_type_Boolean = false;
-      this.jdField_d_of_type_JavaLangString = DynamicAvatarManager.b(paramInt1, paramInt2, paramString, paramInt3);
-      if (!paramBoolean5) {
-        this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager = ((DynamicAvatarManager)paramAppInterface.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER));
-      return;
+    } else {
       this.jdField_c_of_type_Int = 18;
-      break;
     }
+    if (paramInt1 == 32) {
+      this.jdField_b_of_type_Int = 18;
+    } else {
+      this.jdField_b_of_type_Int = 17;
+    }
+    this.jdField_d_of_type_Int = paramInt3;
+    this.f = paramBoolean1;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_d_of_type_JavaLangString = DynamicAvatarManager.b(paramInt1, paramInt2, paramString, paramInt3);
+    if (!paramBoolean5) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager = ((DynamicAvatarManager)paramAppInterface.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER));
   }
   
   public void a(boolean paramBoolean, DynamicAvatar paramDynamicAvatar)
   {
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a(this);
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a(this.jdField_e_of_type_Int)) && (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a()))
-    {
+    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a(this.jdField_e_of_type_Int)) && (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a())) {
       paramBoolean = true;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Boolean) {
-        break label56;
-      }
+    } else {
+      paramBoolean = false;
     }
-    label56:
-    do
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if ((!this.g) && (!NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext())) && (this.jdField_d_of_type_Boolean)) {
+      return;
+    }
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        paramBoolean = false;
-        break;
-      } while ((!this.g) && (!NetworkUtil.h(BaseApplicationImpl.getContext())) && (this.jdField_d_of_type_Boolean));
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.dynamicAvatar", 2, "getDynamicAvatar uin: " + this.jdField_a_of_type_JavaLangString + " source: " + this.jdField_e_of_type_Int);
-      }
-      if ((this.g) || (paramDynamicAvatar == null))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.b(this);
-        return;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDynamicAvatar uin: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(" source: ");
+      localStringBuilder.append(this.jdField_e_of_type_Int);
+      QLog.i("Q.dynamicAvatar", 2, localStringBuilder.toString());
+    }
+    if ((!this.g) && (paramDynamicAvatar != null))
+    {
       if (paramDynamicAvatar != null)
       {
         this.jdField_b_of_type_JavaLangString = DynamicAvatarManager.a(this.jdField_b_of_type_Int, this.jdField_d_of_type_Int, paramDynamicAvatar);
@@ -219,12 +210,22 @@ public class DynamicFaceDrawable
         if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
           this.jdField_e_of_type_Boolean = true;
         }
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.dynamicAvatar", 2, "initValue url: " + this.jdField_b_of_type_JavaLangString);
+        if (QLog.isColorLevel())
+        {
+          paramDynamicAvatar = new StringBuilder();
+          paramDynamicAvatar.append("initValue url: ");
+          paramDynamicAvatar.append(this.jdField_b_of_type_JavaLangString);
+          QLog.i("Q.dynamicAvatar", 2, paramDynamicAvatar.toString());
         }
       }
-    } while (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.b(this);
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.b(this);
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.b(this);
+    }
   }
   
   public boolean a()
@@ -259,21 +260,31 @@ public class DynamicFaceDrawable
   
   public boolean b()
   {
-    if ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {
-      return false;
-    }
-    DynamicAvatarView localDynamicAvatarView = (DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localDynamicAvatarView.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable != this)
+    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    if (localObject != null)
     {
-      QLog.e("Q.dynamicAvatar", 1, "mDynamicFaceDrawable is changed : " + this + " " + localDynamicAvatarView.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable);
-      return false;
+      if (((WeakReference)localObject).get() == null) {
+        return false;
+      }
+      localObject = (DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (((DynamicAvatarView)localObject).jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable != this)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mDynamicFaceDrawable is changed : ");
+        localStringBuilder.append(this);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(((DynamicAvatarView)localObject).jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable);
+        QLog.e("Q.dynamicAvatar", 1, localStringBuilder.toString());
+        return false;
+      }
+      return true;
     }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.DynamicFaceDrawable
  * JD-Core Version:    0.7.0.1
  */

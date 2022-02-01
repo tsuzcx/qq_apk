@@ -7,30 +7,30 @@ import java.util.Map;
 public final class for
   extends case
 {
-  public static byte[] k = null;
-  public static Map<String, String> l = null;
-  public short n = 0;
-  public byte o = 0;
-  public int p = 0;
-  public int q = 0;
-  public String r = null;
-  public String s = null;
+  public static byte[] p = null;
+  public static Map<String, String> q = null;
+  public String A = null;
+  public String B = null;
+  public byte[] C;
+  public int D = 0;
+  public Map<String, String> F;
+  public short s = 0;
   public Map<String, String> status;
-  public byte[] t;
+  public byte t = 0;
   public int u = 0;
-  public Map<String, String> v;
+  public int v = 0;
   
   public void a(byte parambyte)
   {
-    parambyte.a(this.n, 1);
-    parambyte.a(this.o, 2);
-    parambyte.a(this.p, 3);
-    parambyte.a(this.q, 4);
-    parambyte.b(this.r, 5);
-    parambyte.b(this.s, 6);
-    parambyte.a(this.t, 7);
-    parambyte.a(this.u, 8);
-    parambyte.a(this.v, 9);
+    parambyte.a(this.s, 1);
+    parambyte.a(this.t, 2);
+    parambyte.b(this.u, 3);
+    parambyte.b(this.v, 4);
+    parambyte.b(this.A, 5);
+    parambyte.b(this.B, 6);
+    parambyte.a(this.C, 7);
+    parambyte.b(this.D, 8);
+    parambyte.a(this.F, 9);
     parambyte.a(this.status, 10);
   }
   
@@ -38,67 +38,73 @@ public final class for
   {
     try
     {
-      this.n = paramtry.a(this.n, 1, true);
-      this.o = paramtry.a(this.o, 2, true);
-      this.p = paramtry.a(this.p, 3, true);
-      this.q = paramtry.a(this.q, 4, true);
-      this.r = paramtry.a(5, true);
-      this.s = paramtry.a(6, true);
-      Object localObject = k;
+      this.s = paramtry.a(this.s, 1, true);
+      this.t = paramtry.a(this.t, 2, true);
+      this.u = paramtry.a(this.u, 3, true);
+      this.v = paramtry.a(this.v, 4, true);
+      this.A = paramtry.a(5, true);
+      this.B = paramtry.a(6, true);
+      localObject = p;
       if (localObject == null) {
-        k = new byte[] { 0 };
+        p = new byte[] { 0 };
       }
-      this.t = paramtry.a(k, 7, true);
-      this.u = paramtry.a(this.u, 8, true);
-      if (l == null)
+      this.C = paramtry.a(p, 7, true);
+      this.D = paramtry.a(this.D, 8, true);
+      localObject = q;
+      if (localObject == null)
       {
-        l = new HashMap();
-        localObject = l;
-        ((Map)localObject).put("", "");
+        q = new HashMap();
+        q.put("", "");
       }
-      this.v = ((Map)paramtry.a(l, 9, true));
-      if (l == null)
+      this.F = ((Map)paramtry.a(q, 9, true));
+      if (q == null)
       {
-        l = new HashMap();
-        localObject = l;
-        ((Map)localObject).put("", "");
+        q = new HashMap();
+        q.put("", "");
       }
-      this.status = ((Map)paramtry.a(l, 10, true));
+      this.status = ((Map)paramtry.a(q, 10, true));
       return;
     }
     catch (Exception paramtry)
     {
       paramtry.printStackTrace();
-      System.out.println(if.a(this.t));
+      Object localObject = System.out;
+      StringBuilder localStringBuilder = do.b("RequestPacket decode error ");
+      localStringBuilder.append(if.a(this.C));
+      ((PrintStream)localObject).println(localStringBuilder.toString());
       throw new RuntimeException(paramtry);
     }
   }
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (m) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (r) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public boolean equals(Object paramObject)
   {
     paramObject = (for)paramObject;
-    return (char.equals(1, paramObject.n)) && (char.equals(1, paramObject.o)) && (char.equals(1, paramObject.p)) && (char.equals(1, paramObject.q)) && (char.equals(Integer.valueOf(1), paramObject.r)) && (char.equals(Integer.valueOf(1), paramObject.s)) && (char.equals(Integer.valueOf(1), paramObject.t)) && (char.equals(1, paramObject.u)) && (char.equals(Integer.valueOf(1), paramObject.v)) && (char.equals(Integer.valueOf(1), paramObject.status));
+    int i = paramObject.s;
+    Integer localInteger = Integer.valueOf(1);
+    return (char.equals(1, i)) && (char.equals(1, paramObject.t)) && (char.equals(1, paramObject.u)) && (char.equals(1, paramObject.v)) && (char.equals(localInteger, paramObject.A)) && (char.equals(localInteger, paramObject.B)) && (char.equals(localInteger, paramObject.C)) && (char.equals(1, paramObject.D)) && (char.equals(localInteger, paramObject.F)) && (char.equals(localInteger, paramObject.status));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.for
  * JD-Core Version:    0.7.0.1
  */

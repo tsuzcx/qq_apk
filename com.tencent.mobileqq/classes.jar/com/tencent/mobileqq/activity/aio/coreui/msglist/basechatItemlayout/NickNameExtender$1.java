@@ -7,7 +7,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.ColorNickManager;
 
 class NickNameExtender$1
-  extends NickNameExtenderViewBasicAbility
+  extends BaseChatItemLayoutViewBasicAbility
 {
   NickNameExtender$1(NickNameExtender paramNickNameExtender, View paramView)
   {
@@ -16,22 +16,22 @@ class NickNameExtender$1
   
   public void setData(Object... paramVarArgs)
   {
-    if (!checkViewNonNull()) {}
-    do
-    {
+    if (!checkViewNonNull()) {
       return;
-      if ((paramVarArgs != null) && (paramVarArgs.length == 2))
-      {
-        ColorNickManager.a((QQAppInterface)paramVarArgs[0], (TextView)this.mView, (Spannable)paramVarArgs[1]);
-        return;
-      }
-    } while ((paramVarArgs == null) || (paramVarArgs.length != 4));
-    ColorNickManager.a((QQAppInterface)paramVarArgs[0], (TextView)this.mView, (Spannable)paramVarArgs[1], ((Integer)paramVarArgs[2]).intValue(), ((Boolean)paramVarArgs[3]).booleanValue());
+    }
+    if ((paramVarArgs != null) && (paramVarArgs.length == 2))
+    {
+      ColorNickManager.a((QQAppInterface)paramVarArgs[0], (TextView)this.mView, (Spannable)paramVarArgs[1]);
+      return;
+    }
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      ColorNickManager.a((QQAppInterface)paramVarArgs[0], (TextView)this.mView, (Spannable)paramVarArgs[1], ((Integer)paramVarArgs[2]).intValue(), ((Boolean)paramVarArgs[3]).booleanValue());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameExtender.1
  * JD-Core Version:    0.7.0.1
  */

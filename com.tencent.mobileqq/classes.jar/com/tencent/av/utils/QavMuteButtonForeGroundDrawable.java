@@ -44,7 +44,11 @@ public final class QavMuteButtonForeGroundDrawable
   
   private boolean a()
   {
-    return (this.c == 1) || (this.c == 3);
+    int i = this.c;
+    if (i != 1) {
+      return i == 3;
+    }
+    return true;
   }
   
   public void a(int paramInt)
@@ -52,7 +56,6 @@ public final class QavMuteButtonForeGroundDrawable
     if (this.c == paramInt) {
       return;
     }
-    int i = this.c;
     this.c = paramInt;
     invalidateSelf();
   }
@@ -84,40 +87,47 @@ public final class QavMuteButtonForeGroundDrawable
   public void draw(Canvas paramCanvas)
   {
     a(paramCanvas);
-    Object localObject = a();
+    Object localObject2 = a();
+    Object localObject1;
     if (a())
     {
-      localBitmap = (Bitmap)((ArrayList)localObject).get(0);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      localObject1 = (Bitmap)((ArrayList)localObject2).get(0);
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
+      paramCanvas.drawBitmap((Bitmap)localObject1, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      return;
     }
-    do
+    int i = this.c;
+    if (i == 0)
     {
-      return;
-      if (this.c == 0)
+      localObject1 = (Bitmap)((ArrayList)localObject2).get(0);
+      localObject2 = (Bitmap)((ArrayList)localObject2).get(1);
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
+      paramCanvas.drawBitmap((Bitmap)localObject1, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.save();
+      i = (int)(this.jdField_b_of_type_Int * (10000 - this.d) / 10000.0F);
+      if (QLog.isColorLevel())
       {
-        localBitmap = (Bitmap)((ArrayList)localObject).get(0);
-        localObject = (Bitmap)((ArrayList)localObject).get(1);
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-        paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.save();
-        int i = (int)(this.jdField_b_of_type_Int * (10000 - this.d) / 10000.0F);
-        if (QLog.isColorLevel()) {
-          QLog.d("huanxxiao", 1, "doUpdateAudioVolumeChange nexValue:=" + this.d);
-        }
-        this.jdField_b_of_type_AndroidGraphicsRect.set(0, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        paramCanvas.clipRect(this.jdField_b_of_type_AndroidGraphicsRect);
-        paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.restore();
-        return;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("doUpdateAudioVolumeChange nexValue:=");
+        ((StringBuilder)localObject1).append(this.d);
+        QLog.d("huanxxiao", 1, ((StringBuilder)localObject1).toString());
       }
-    } while (this.c != 2);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (Bitmap localBitmap = (Bitmap)((ArrayList)localObject).get(1);; localBitmap = (Bitmap)((ArrayList)localObject).get(0))
-    {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_b_of_type_AndroidGraphicsRect.set(0, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      paramCanvas.clipRect(this.jdField_b_of_type_AndroidGraphicsRect);
+      paramCanvas.drawBitmap((Bitmap)localObject2, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.restore();
       return;
+    }
+    if (i == 2)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        localObject1 = ((ArrayList)localObject2).get(1);
+      } else {
+        localObject1 = ((ArrayList)localObject2).get(0);
+      }
+      localObject1 = (Bitmap)localObject1;
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
+      paramCanvas.drawBitmap((Bitmap)localObject1, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
@@ -157,7 +167,7 @@ public final class QavMuteButtonForeGroundDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.QavMuteButtonForeGroundDrawable
  * JD-Core Version:    0.7.0.1
  */

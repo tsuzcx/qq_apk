@@ -10,13 +10,14 @@ class GameRoomChatPie$11
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.U = true;
-    GameRoomChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie, this.jdField_a_of_type_Boolean);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie;
+    paramDialogInterface.H = true;
+    GameRoomChatPie.c(paramDialogInterface, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.11
  * JD-Core Version:    0.7.0.1
  */

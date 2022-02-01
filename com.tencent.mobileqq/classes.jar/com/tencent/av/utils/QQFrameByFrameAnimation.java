@@ -22,22 +22,26 @@ public class QQFrameByFrameAnimation
   void a()
   {
     this.c += 1;
-    int i;
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
     {
-      i = this.jdField_a_of_type_ArrayOfInt[(this.c % this.jdField_a_of_type_ArrayOfInt.length)];
-      if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
-        break label67;
+      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      if ((arrayOfInt != null) && (arrayOfInt.length > 0))
+      {
+        int i = arrayOfInt[(this.c % arrayOfInt.length)];
+        if ((localObject instanceof ImageButton))
+        {
+          ((View)localObject).setBackgroundResource(i);
+          return;
+        }
+        if ((localObject instanceof Button))
+        {
+          localObject = ((View)localObject).getResources().getDrawable(i);
+          ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
+          ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, (Drawable)localObject, null, null);
+        }
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i);
     }
-    label67:
-    while (!(this.jdField_a_of_type_AndroidViewView instanceof Button)) {
-      return;
-    }
-    Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(i);
-    localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
   }
   
   public void a(int paramInt)
@@ -62,21 +66,28 @@ public class QQFrameByFrameAnimation
   
   public void b()
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
     {
-      this.c = 0;
-      if ((this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_ArrayOfInt[0]);
-      }
-      if ((this.jdField_a_of_type_AndroidViewView instanceof Button))
+      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      if ((arrayOfInt != null) && (arrayOfInt.length > 0))
       {
-        Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[0]);
-        localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-        ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener != null) {
-        this.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener.d();
+        this.c = 0;
+        if ((localObject instanceof ImageButton)) {
+          ((View)localObject).setBackgroundResource(arrayOfInt[0]);
+        }
+        localObject = this.jdField_a_of_type_AndroidViewView;
+        if ((localObject instanceof Button))
+        {
+          localObject = ((View)localObject).getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[0]);
+          ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
+          ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, (Drawable)localObject, null, null);
+        }
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
+        localObject = this.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener;
+        if (localObject != null) {
+          ((QQAnimationListener)localObject).d();
+        }
       }
     }
   }
@@ -89,14 +100,15 @@ public class QQFrameByFrameAnimation
   public void c()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener != null) {
-      this.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener.a();
+    QQAnimationListener localQQAnimationListener = this.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener;
+    if (localQQAnimationListener != null) {
+      localQQAnimationListener.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.QQFrameByFrameAnimation
  * JD-Core Version:    0.7.0.1
  */

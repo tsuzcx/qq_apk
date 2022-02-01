@@ -65,7 +65,10 @@ public class WeishiLinkUtil
   
   private static String b()
   {
-    return "key_open_recommend_page_count_" + h();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_open_recommend_page_count_");
+    localStringBuilder.append(h());
+    return localStringBuilder.toString();
   }
   
   public static void b()
@@ -83,48 +86,63 @@ public class WeishiLinkUtil
   
   private static String c()
   {
-    return "key_open_recommend_page_time_" + h();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_open_recommend_page_time_");
+    localStringBuilder.append(h());
+    return localStringBuilder.toString();
   }
   
   private static String d()
   {
-    return "key_click_recommend_card_count_" + h();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_click_recommend_card_count_");
+    localStringBuilder.append(h());
+    return localStringBuilder.toString();
   }
   
   private static String e()
   {
-    return "key_click_recommend_card_time_" + h();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_click_recommend_card_time_");
+    localStringBuilder.append(h());
+    return localStringBuilder.toString();
   }
   
   private static String f()
   {
-    return "key_last_link_type_" + h();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_last_link_type_");
+    localStringBuilder.append(h());
+    return localStringBuilder.toString();
   }
   
   private static String g()
   {
-    return "key_last_link_time_" + h();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_last_link_time_");
+    localStringBuilder.append(h());
+    return localStringBuilder.toString();
   }
   
   private static String h()
   {
-    String str2 = "";
-    String str3 = WSDeviceUtils.a(BaseApplicationImpl.getContext());
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String str1 = str2;
-    if (localAppRuntime != null)
-    {
-      str1 = str2;
-      if (!TextUtils.isEmpty(localAppRuntime.getAccount())) {
-        str1 = MD5.a(localAppRuntime.getAccount());
-      }
+    String str = WSDeviceUtils.a(BaseApplicationImpl.getContext());
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject != null) && (!TextUtils.isEmpty(((AppRuntime)localObject).getAccount()))) {
+      localObject = MD5.a(((AppRuntime)localObject).getAccount());
+    } else {
+      localObject = "";
     }
-    return str1 + "_" + str3;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("_");
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil
  * JD-Core Version:    0.7.0.1
  */

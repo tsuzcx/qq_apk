@@ -25,7 +25,11 @@ public class GetCommentLikeCountRequest
       localRspGetCommentLikeCount.mergeFrom(paramArrayOfByte);
       return new GetCommentLikeCountRespone(localRspGetCommentLikeCount);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      label23:
+      break label23;
+    }
     return null;
   }
   
@@ -34,7 +38,7 @@ public class GetCommentLikeCountRequest
     return StoryApi.a("StoryGroupSvc.get_comment_like_count");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_group.ReqGetCommentLikeCount localReqGetCommentLikeCount = new qqstory_group.ReqGetCommentLikeCount();
     Iterator localIterator = this.a.iterator();
@@ -48,7 +52,7 @@ public class GetCommentLikeCountRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetCommentLikeCountRequest
  * JD-Core Version:    0.7.0.1
  */

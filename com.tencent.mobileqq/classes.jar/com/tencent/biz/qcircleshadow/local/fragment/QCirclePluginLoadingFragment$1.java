@@ -2,9 +2,11 @@ package com.tencent.biz.qcircleshadow.local.fragment;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
-import android.support.v4.app.QFragmentActivity;
 import android.view.KeyEvent;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.biz.qcircleshadow.lib.QCircleInitInject;
 import com.tencent.biz.qcircleshadow.local.widget.QCirclePluginLoadingDialog;
+import java.util.List;
 
 class QCirclePluginLoadingFragment$1
   implements DialogInterface.OnKeyListener
@@ -15,6 +17,7 @@ class QCirclePluginLoadingFragment$1
   {
     if ((paramInt == 4) && (paramKeyEvent.getAction() == 0))
     {
+      QCircleInitInject.g().getPluginCallbacks().clear();
       if ((QCirclePluginLoadingFragment.a(this.a) != null) && (QCirclePluginLoadingFragment.a(this.a).isShowing())) {
         QCirclePluginLoadingFragment.a(this.a).dismiss();
       }
@@ -27,7 +30,7 @@ class QCirclePluginLoadingFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.fragment.QCirclePluginLoadingFragment.1
  * JD-Core Version:    0.7.0.1
  */

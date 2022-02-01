@@ -17,15 +17,17 @@ public final class TrackGroupArray
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (TrackGroupArray)paramObject;
-    } while ((this.length == paramObject.length) && (Arrays.equals(this.trackGroups, paramObject.trackGroups)));
+      return (this.length == paramObject.length) && (Arrays.equals(this.trackGroups, paramObject.trackGroups));
+    }
     return false;
   }
   
@@ -62,7 +64,7 @@ public final class TrackGroupArray
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.TrackGroupArray
  * JD-Core Version:    0.7.0.1
  */

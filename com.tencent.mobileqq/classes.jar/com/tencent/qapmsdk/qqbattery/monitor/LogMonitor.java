@@ -60,126 +60,124 @@ public class LogMonitor
   
   public void onOtherProcReport(Bundle paramBundle)
   {
-    if (!this.isRunning) {}
-    while (paramBundle.getInt("key_action") != 6) {
+    if (!this.isRunning) {
       return;
     }
-    String str = paramBundle.getString("key_log");
-    int i = paramBundle.getInt("key_count");
-    synchronized (this.fg30MinMap)
+    if (paramBundle.getInt("key_action") == 6)
     {
-      HashSet localHashSet;
-      if (this.isBeforeRun30Min)
+      String str = paramBundle.getString("key_log");
+      int i = paramBundle.getInt("key_count");
+      synchronized (this.fg30MinMap)
       {
-        localHashSet = (HashSet)this.fg30MinMap.get(str);
-        paramBundle = localHashSet;
-        if (localHashSet == null)
+        HashSet localHashSet;
+        if (this.isBeforeRun30Min)
         {
-          paramBundle = new HashSet();
-          this.fg30MinMap.put(str, paramBundle);
+          localHashSet = (HashSet)this.fg30MinMap.get(str);
+          paramBundle = localHashSet;
+          if (localHashSet == null)
+          {
+            paramBundle = new HashSet();
+            this.fg30MinMap.put(str, paramBundle);
+          }
+          paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
         }
-        paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
-      }
-      if ((this.isAppBackground) && (this.isInFirstBg5min))
-      {
-        localHashSet = (HashSet)this.bg5MinMap.get(str);
-        paramBundle = localHashSet;
-        if (localHashSet == null)
+        if ((this.isAppBackground) && (this.isInFirstBg5min))
         {
-          paramBundle = new HashSet();
-          this.bg5MinMap.put(str, paramBundle);
+          localHashSet = (HashSet)this.bg5MinMap.get(str);
+          paramBundle = localHashSet;
+          if (localHashSet == null)
+          {
+            paramBundle = new HashSet();
+            this.bg5MinMap.put(str, paramBundle);
+          }
+          paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
         }
-        paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
+        return;
       }
-      return;
     }
   }
   
   public void onProcessBG5Min()
   {
     super.onProcessBG5Min();
-    if (this.isRunning) {}
-    label276:
-    for (;;)
-    {
+    if (this.isRunning) {
       synchronized (this.fg30MinMap)
       {
         Iterator localIterator1 = this.bg5MinMap.values().iterator();
         int i = 0;
-        if (localIterator1.hasNext())
-        {
-          i = ((HashSet)localIterator1.next()).size() + i;
-          continue;
+        while (localIterator1.hasNext()) {
+          i += ((HashSet)localIterator1.next()).size();
         }
         BatteryLog.writeReportLogByMonitor(new String[] { "bg5LogCount", "|", String.valueOf(i) });
         localIterator1 = this.bg5MinMap.keySet().iterator();
-        if (localIterator1.hasNext())
+        while (localIterator1.hasNext())
         {
           String str = (String)localIterator1.next();
           HashSet localHashSet = (HashSet)this.bg5MinMap.get(str);
           StringBuilder localStringBuilder = ThreadTool.getReuseStringBuilder();
           Iterator localIterator2 = localHashSet.iterator();
           i = 0;
-          if (localIterator2.hasNext())
+          while (localIterator2.hasNext())
           {
             Pair localPair = (Pair)localIterator2.next();
-            localStringBuilder.append(localPair.first).append(",").append(localPair.second);
-            i += 1;
-            if (i >= localHashSet.size()) {
-              break label276;
+            localStringBuilder.append(localPair.first);
+            localStringBuilder.append(",");
+            localStringBuilder.append(localPair.second);
+            int j = i + 1;
+            i = j;
+            if (j < localHashSet.size())
+            {
+              localStringBuilder.append("#");
+              i = j;
             }
-            localStringBuilder.append("#");
-            break label276;
           }
           BatteryLog.writeReportLogByMonitor(new String[] { "bg5LogAlarm", "|", str, "|", localStringBuilder.toString() });
         }
+        this.bg5MinMap.clear();
+        return;
       }
-      this.bg5MinMap.clear();
-      return;
     }
   }
   
   public void onProcessRun30Min()
   {
     super.onProcessRun30Min();
-    if (this.isRunning) {}
-    label276:
-    for (;;)
-    {
+    if (this.isRunning) {
       synchronized (this.fg30MinMap)
       {
         Iterator localIterator1 = this.fg30MinMap.values().iterator();
         int i = 0;
-        if (localIterator1.hasNext())
-        {
-          i = ((HashSet)localIterator1.next()).size() + i;
-          continue;
+        while (localIterator1.hasNext()) {
+          i += ((HashSet)localIterator1.next()).size();
         }
         BatteryLog.writeReportLogByMonitor(new String[] { "fg30LogCount", "|", String.valueOf(i) });
         localIterator1 = this.fg30MinMap.keySet().iterator();
-        if (localIterator1.hasNext())
+        while (localIterator1.hasNext())
         {
           String str = (String)localIterator1.next();
           StringBuilder localStringBuilder = ThreadTool.getReuseStringBuilder();
           HashSet localHashSet = (HashSet)this.fg30MinMap.get(str);
           Iterator localIterator2 = localHashSet.iterator();
           i = 0;
-          if (localIterator2.hasNext())
+          while (localIterator2.hasNext())
           {
             Pair localPair = (Pair)localIterator2.next();
-            localStringBuilder.append(localPair.first).append(",").append(localPair.second);
-            i += 1;
-            if (i >= localHashSet.size()) {
-              break label276;
+            localStringBuilder.append(localPair.first);
+            localStringBuilder.append(",");
+            localStringBuilder.append(localPair.second);
+            int j = i + 1;
+            i = j;
+            if (j < localHashSet.size())
+            {
+              localStringBuilder.append("#");
+              i = j;
             }
-            localStringBuilder.append("#");
-            break label276;
           }
           BatteryLog.writeReportLogByMonitor(new String[] { "fg30LogAlarm", "|", str, "|", localStringBuilder.toString() });
         }
+        this.fg30MinMap.clear();
+        return;
       }
-      this.fg30MinMap.clear();
-      return;
     }
   }
   
@@ -187,19 +185,22 @@ public class LogMonitor
   
   public void onWriteLog(String paramString1, String paramString2)
   {
-    if (!this.isRunning) {
-      this.detector.clear();
-    }
-    do
+    if (!this.isRunning)
     {
-      do
-      {
-        return;
-        if (this.startMonitorTimeStamp == 0L) {
-          this.startMonitorTimeStamp = SystemClock.uptimeMillis();
-        }
-        this.detector.putString(paramString1 + "|" + paramString2);
-      } while (SystemClock.uptimeMillis() - this.startMonitorTimeStamp <= this.monitorInterval);
+      this.detector.clear();
+      return;
+    }
+    if (this.startMonitorTimeStamp == 0L) {
+      this.startMonitorTimeStamp = SystemClock.uptimeMillis();
+    }
+    Object localObject1 = this.detector;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramString1);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(paramString2);
+    ((HighFrequencyStringDetector)localObject1).putString(((StringBuilder)localObject2).toString());
+    if (SystemClock.uptimeMillis() - this.startMonitorTimeStamp > this.monitorInterval)
+    {
       paramString1 = this.detector.getHighFrequencyString();
       this.startMonitorTimeStamp = 0L;
       this.detector.clear();
@@ -208,46 +209,46 @@ public class LogMonitor
         paramString2 = this.logWhiteMap.keySet().iterator();
         while (paramString2.hasNext())
         {
-          localObject = (String)paramString2.next();
-          if ((paramString1.containsKey(localObject)) && (((Integer)paramString1.get(localObject)).intValue() < ((Integer)this.logWhiteMap.get(localObject)).intValue())) {
-            paramString1.remove(localObject);
+          localObject1 = (String)paramString2.next();
+          if ((paramString1.containsKey(localObject1)) && (((Integer)paramString1.get(localObject1)).intValue() < ((Integer)this.logWhiteMap.get(localObject1)).intValue())) {
+            paramString1.remove(localObject1);
           }
         }
       }
-    } while ((paramString1 == null) || (paramString1.size() <= 0));
-    paramString2 = new StringBuilder(paramString1.size() * 20 + 10);
-    Object localObject = paramString1.keySet().iterator();
-    int i = 0;
-    String str;
-    if (((Iterator)localObject).hasNext())
-    {
-      str = (String)((Iterator)localObject).next();
-      if (paramString2.length() > 0) {
-        paramString2.append("#");
+      if ((paramString1 != null) && (paramString1.size() > 0))
+      {
+        paramString2 = new StringBuilder(paramString1.size() * 20 + 10);
+        localObject1 = paramString1.keySet().iterator();
+        int j;
+        for (int i = 0; ((Iterator)localObject1).hasNext(); i = j)
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          if (paramString2.length() > 0) {
+            paramString2.append("#");
+          }
+          paramString2.append("[");
+          paramString2.append((String)localObject2);
+          paramString2.append(",");
+          paramString2.append(paramString1.get(localObject2));
+          paramString2.append("]");
+          j = i;
+          if (((Integer)paramString1.get(localObject2)).intValue() > i) {
+            j = ((Integer)paramString1.get(localObject2)).intValue();
+          }
+          Bundle localBundle = new Bundle();
+          localBundle.putInt("key_action", 6);
+          localBundle.putString("key_log", (String)localObject2);
+          localBundle.putInt("key_count", ((Integer)paramString1.get(localObject2)).intValue());
+          onOtherProcReport(localBundle);
+        }
+        BatteryLog.writeCommonLogByMonitor(new String[] { "log|", paramString2.toString() });
       }
-      paramString2.append("[").append(str).append(",").append(paramString1.get(str)).append("]");
-      if (((Integer)paramString1.get(str)).intValue() <= i) {
-        break label423;
-      }
-      i = ((Integer)paramString1.get(str)).intValue();
-    }
-    label423:
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_action", 6);
-      localBundle.putString("key_log", str);
-      localBundle.putInt("key_count", ((Integer)paramString1.get(str)).intValue());
-      onOtherProcReport(localBundle);
-      break;
-      BatteryLog.writeCommonLogByMonitor(new String[] { "log|", paramString2.toString() });
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.monitor.LogMonitor
  * JD-Core Version:    0.7.0.1
  */

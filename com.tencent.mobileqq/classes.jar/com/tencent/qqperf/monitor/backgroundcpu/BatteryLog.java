@@ -50,13 +50,17 @@ public class BatteryLog
         return l;
       }
     }
-    catch (Exception paramFile) {}
+    catch (Exception paramFile)
+    {
+      label65:
+      break label65;
+    }
     return -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.backgroundcpu.BatteryLog
  * JD-Core Version:    0.7.0.1
  */

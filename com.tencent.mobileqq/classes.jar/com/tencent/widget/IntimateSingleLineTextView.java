@@ -34,29 +34,23 @@ public class IntimateSingleLineTextView
       localObject1 = localObject2;
       if (paramIconDrawableInfo != null)
       {
-        if (TextUtils.isEmpty(paramIconDrawableInfo.iconDynamicUrl)) {
-          break label91;
+        if (!TextUtils.isEmpty(paramIconDrawableInfo.iconDynamicUrl)) {
+          localMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(paramContext, paramIconDrawableInfo.iconDynamicUrl, this);
+        } else if (!TextUtils.isEmpty(paramIconDrawableInfo.icon_static_url)) {
+          localMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(paramContext, paramIconDrawableInfo.icon_static_url, this);
+        } else if (paramIconDrawableInfo.iconResId != 0) {
+          localMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(paramContext, paramIconDrawableInfo.iconResId);
         }
-        localMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(paramContext, paramIconDrawableInfo.iconDynamicUrl, this);
+        localObject1 = localMutualMarkIconProxyDrawable;
+        if (localMutualMarkIconProxyDrawable != null)
+        {
+          localObject1 = localMutualMarkIconProxyDrawable.mutate();
+          ((Drawable)localObject1).setAlpha((int)(paramIconDrawableInfo.icon_status_alpha * 255.0F));
+          ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+        }
       }
     }
-    for (;;)
-    {
-      localObject1 = localMutualMarkIconProxyDrawable;
-      if (localMutualMarkIconProxyDrawable != null)
-      {
-        localObject1 = localMutualMarkIconProxyDrawable.mutate();
-        ((Drawable)localObject1).setAlpha((int)(paramIconDrawableInfo.icon_status_alpha * 255.0F));
-        ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
-      }
-      return localObject1;
-      label91:
-      if (!TextUtils.isEmpty(paramIconDrawableInfo.icon_static_url)) {
-        localMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(paramContext, paramIconDrawableInfo.icon_static_url, this);
-      } else if (paramIconDrawableInfo.iconResId != 0) {
-        localMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(paramContext, paramIconDrawableInfo.iconResId);
-      }
-    }
+    return localObject1;
   }
   
   protected boolean isSameDrawable(Drawable paramDrawable, SingleLineTextView.IconDrawable paramIconDrawable)
@@ -66,7 +60,7 @@ public class IntimateSingleLineTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.IntimateSingleLineTextView
  * JD-Core Version:    0.7.0.1
  */

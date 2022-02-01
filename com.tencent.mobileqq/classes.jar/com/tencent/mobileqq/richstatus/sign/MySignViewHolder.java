@@ -36,43 +36,50 @@ public class MySignViewHolder
   protected CharSequence a(RichStatus paramRichStatus, ITopic.OnTopicClickListener paramOnTopicClickListener, int paramInt)
   {
     if (paramRichStatus == null) {
-      paramOnTopicClickListener = "";
+      return "";
     }
-    do
+    Object localObject2 = paramRichStatus.toSpannableStringWithoutAction(paramOnTopicClickListener);
+    if (!TextUtils.isEmpty(paramRichStatus.actionText))
     {
-      return paramOnTopicClickListener;
-      localObject1 = paramRichStatus.toSpannableStringWithoutAction(paramOnTopicClickListener);
+      Object localObject1 = paramRichStatus.actionText;
       paramOnTopicClickListener = (ITopic.OnTopicClickListener)localObject1;
-    } while (TextUtils.isEmpty(paramRichStatus.actionText));
-    Object localObject2 = paramRichStatus.actionText;
-    paramOnTopicClickListener = (ITopic.OnTopicClickListener)localObject2;
-    if (!TextUtils.isEmpty(paramRichStatus.dataText)) {
-      paramOnTopicClickListener = (String)localObject2 + paramRichStatus.dataText;
-    }
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849990);
-    localObject2 = new SpannableStringBuilder((CharSequence)localObject1);
-    ((SpannableStringBuilder)localObject2).insert(0, "[S] ");
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849983);
-    String str = SignatureManagerForTool.a().a(paramRichStatus.actionId);
-    paramRichStatus = (RichStatus)localObject1;
-    if (!TextUtils.isEmpty(str))
-    {
-      paramRichStatus = URLDrawable.URLDrawableOptions.obtain();
-      paramRichStatus.mLoadingDrawable = ((Drawable)localObject1);
-      paramRichStatus.mFailedDrawable = ((Drawable)localObject1);
-      paramRichStatus.mRequestWidth = paramInt;
-      paramRichStatus.mRequestHeight = paramInt;
-      paramRichStatus = URLDrawable.getDrawable(str, paramRichStatus);
-      paramRichStatus.setCallback(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView);
-    }
-    paramRichStatus.setBounds(0, 0, paramInt, paramInt);
-    int i = Color.parseColor("#ffa8a8a8");
-    if ((Build.VERSION.SDK_INT >= 4) && (Build.VERSION.SDK_INT != 20)) {}
-    for (paramRichStatus = new SignatureActionSpan(paramRichStatus, 1, paramOnTopicClickListener, i, localDrawable, paramInt);; paramRichStatus = new SignatureActionSpan(paramRichStatus, 0, paramOnTopicClickListener, i, localDrawable, paramInt))
-    {
-      ((SpannableStringBuilder)localObject2).setSpan(paramRichStatus, 0, "[S]".length(), 17);
+      if (!TextUtils.isEmpty(paramRichStatus.dataText))
+      {
+        paramOnTopicClickListener = new StringBuilder();
+        paramOnTopicClickListener.append((String)localObject1);
+        paramOnTopicClickListener.append(paramRichStatus.dataText);
+        paramOnTopicClickListener = paramOnTopicClickListener.toString();
+      }
+      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849888);
+      localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
+      ((SpannableStringBuilder)localObject2).insert(0, "[S] ");
+      localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849881);
+      paramRichStatus = SignatureManagerForTool.a().a(paramRichStatus.actionId);
+      if (!TextUtils.isEmpty(paramRichStatus))
+      {
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
+        localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
+        localURLDrawableOptions.mRequestWidth = paramInt;
+        localURLDrawableOptions.mRequestHeight = paramInt;
+        paramRichStatus = URLDrawable.getDrawable(paramRichStatus, localURLDrawableOptions);
+        paramRichStatus.setCallback(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView);
+      }
+      else
+      {
+        paramRichStatus = (RichStatus)localObject1;
+      }
+      paramRichStatus.setBounds(0, 0, paramInt, paramInt);
+      int i = Color.parseColor("#ffa8a8a8");
+      if ((Build.VERSION.SDK_INT >= 4) && (Build.VERSION.SDK_INT != 20)) {
+        paramRichStatus = new SignatureActionSpan(paramRichStatus, 1, paramOnTopicClickListener, i, localDrawable, paramInt);
+      } else {
+        paramRichStatus = new SignatureActionSpan(paramRichStatus, 0, paramOnTopicClickListener, i, localDrawable, paramInt);
+      }
+      ((SpannableStringBuilder)localObject2).setSpan(paramRichStatus, 0, 3, 17);
       return localObject2;
     }
+    return localObject2;
   }
   
   protected boolean b()
@@ -93,7 +100,7 @@ public class MySignViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.MySignViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,14 @@ class TianshuBigInsertPage$4
   
   public void onResult(int paramInt, IPreloadService.PathResult paramPathResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TianshuBigInsertPage", 2, "onResult: " + paramInt + ", path: " + paramPathResult.filePath);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResult: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", path: ");
+      localStringBuilder.append(paramPathResult.filePath);
+      QLog.d("TianshuBigInsertPage", 2, localStringBuilder.toString());
     }
     if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
       TianshuBigInsertPage.a(this.a).a().runOnUiThread(new TianshuBigInsertPage.4.1(this, paramPathResult));
@@ -24,7 +30,7 @@ class TianshuBigInsertPage$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.ad.TianshuBigInsertPage.4
  * JD-Core Version:    0.7.0.1
  */

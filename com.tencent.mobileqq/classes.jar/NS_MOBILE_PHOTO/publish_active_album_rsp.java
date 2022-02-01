@@ -48,29 +48,35 @@ public final class publish_active_album_rsp
   {
     paramJceOutputStream.write(this.ret, 0);
     paramJceOutputStream.write(this.msg, 1);
-    if (this.fake_feeds_client_key != null) {
-      paramJceOutputStream.write(this.fake_feeds_client_key, 2);
+    Object localObject = this.fake_feeds_client_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.share_url != null) {
-      paramJceOutputStream.write(this.share_url, 3);
+    localObject = this.share_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.mgz_id != null) {
-      paramJceOutputStream.write(this.mgz_id, 4);
+    localObject = this.mgz_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.ark_sharedata != null) {
-      paramJceOutputStream.write(this.ark_sharedata, 5);
+    localObject = this.ark_sharedata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.xcx_share_path != null) {
-      paramJceOutputStream.write(this.xcx_share_path, 6);
+    localObject = this.xcx_share_path;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.xcx_name != null) {
-      paramJceOutputStream.write(this.xcx_name, 7);
+    localObject = this.xcx_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.publish_active_album_rsp
  * JD-Core Version:    0.7.0.1
  */

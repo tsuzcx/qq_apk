@@ -4,7 +4,7 @@ import java.util.List;
 
 public class PeerInfo
 {
-  private static int e = 0;
+  private static int e;
   public int a;
   public long a;
   public String a;
@@ -36,12 +36,15 @@ public class PeerInfo
   
   public String a()
   {
-    return this.jdField_b_of_type_JavaLangString.replaceAll(":", "") + "0000";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString.replaceAll(":", ""));
+    localStringBuilder.append("0000");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.qfind.PeerInfo
  * JD-Core Version:    0.7.0.1
  */

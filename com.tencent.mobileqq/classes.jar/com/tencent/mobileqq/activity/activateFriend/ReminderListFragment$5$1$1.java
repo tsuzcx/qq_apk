@@ -10,12 +10,12 @@ class ReminderListFragment$5$1$1
   
   public void a()
   {
-    ReminderListFragment.a(this.a.a.a, HardCodeUtil.a(2131713340));
+    ReminderListFragment.a(this.a.a.a, HardCodeUtil.a(2131713308));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1.1
  * JD-Core Version:    0.7.0.1
  */

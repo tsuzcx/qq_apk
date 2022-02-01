@@ -29,7 +29,11 @@ class PickerJsPlugin$3$1
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("value", paramString1 + ":" + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramString2);
+      localJSONObject.put("value", localStringBuilder.toString());
       this.this$1.val$req.ok(localJSONObject);
       return;
     }
@@ -41,7 +45,7 @@ class PickerJsPlugin$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.PickerJsPlugin.3.1
  * JD-Core Version:    0.7.0.1
  */

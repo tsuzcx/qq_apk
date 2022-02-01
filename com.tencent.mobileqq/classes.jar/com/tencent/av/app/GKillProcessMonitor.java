@@ -43,71 +43,82 @@ public class GKillProcessMonitor
         }
       }
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label56:
+      break label56;
+    }
     return null;
   }
   
   private String a(ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    Time localTime = new Time();
-    localTime.setToNow();
+    Object localObject = new Time();
+    ((Time)localObject).setToNow();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("com.tencent.process.exit");
-    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
-    localStringBuilder.append(localTime.hour);
-    if (paramBoolean)
-    {
-      localStringBuilder.append(localTime.minute - 1);
-      if (paramArrayList != null) {
-        break label142;
-      }
+    localStringBuilder.append(((Time)localObject).year);
+    localStringBuilder.append(((Time)localObject).month + 1);
+    localStringBuilder.append(((Time)localObject).monthDay);
+    localStringBuilder.append(((Time)localObject).hour);
+    if (paramBoolean) {
+      localStringBuilder.append(((Time)localObject).minute - 1);
+    } else {
+      localStringBuilder.append(((Time)localObject).minute);
     }
-    label142:
-    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
-    {
-      localStringBuilder.append(paramArrayList);
-      paramArrayList = MD5.toMD5(localStringBuilder.toString());
-      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
-      localStringBuilder.append(localTime.minute);
-      break;
+    if (paramArrayList == null) {
+      paramArrayList = "null";
+    } else {
+      paramArrayList = paramArrayList.toString();
     }
+    localStringBuilder.append(paramArrayList);
+    paramArrayList = MD5.toMD5(localStringBuilder.toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramArrayList);
+    ((StringBuilder)localObject).append(localStringBuilder.toString());
+    return MD5.toMD5(((StringBuilder)localObject).toString());
   }
   
   private boolean a(String paramString, ArrayList<String> paramArrayList)
   {
-    if (Foreground.getActivityCount() > 0) {}
-    while ((paramString == null) || (paramString.length() == 0) || ((!paramString.equals(a(paramArrayList, false))) && (!paramString.equals(a(paramArrayList, true))))) {
+    if (Foreground.getActivityCount() > 0) {
       return false;
     }
-    return true;
+    if (paramString != null)
+    {
+      if (paramString.length() == 0) {
+        return false;
+      }
+      if (!paramString.equals(a(paramArrayList, false))) {
+        return paramString.equals(a(paramArrayList, true));
+      }
+      return true;
+    }
+    return false;
   }
   
   private boolean a(ArrayList<String> paramArrayList)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      bool1 = true;
-    }
-    String str;
-    do
+    if (paramArrayList != null)
     {
-      return bool1;
-      str = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication());
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(str));
-    int i = 0;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i >= paramArrayList.size()) {
-        break;
-      }
-      if (str.equals(paramArrayList.get(i))) {
+      if (paramArrayList.size() == 0) {
         return true;
       }
-      i += 1;
+      String str = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication());
+      if (TextUtils.isEmpty(str)) {
+        return false;
+      }
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        if (str.equals(paramArrayList.get(i))) {
+          return true;
+        }
+        i += 1;
+      }
+      return false;
     }
+    return true;
   }
   
   public void a()
@@ -133,7 +144,7 @@ public class GKillProcessMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.GKillProcessMonitor
  * JD-Core Version:    0.7.0.1
  */

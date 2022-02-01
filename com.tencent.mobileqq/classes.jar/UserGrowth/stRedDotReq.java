@@ -8,15 +8,14 @@ import java.util.ArrayList;
 public final class stRedDotReq
   extends JceStruct
 {
-  static ArrayList<Integer> cache_exposedType;
-  static int cache_reddotAction = 0;
+  static ArrayList<Integer> cache_exposedType = new ArrayList();
+  static int cache_reddotAction;
   public ArrayList<Integer> exposedType = null;
   public int reddotAction = 0;
   public int reddotType = 0;
   
   static
   {
-    cache_exposedType = new ArrayList();
     cache_exposedType.add(Integer.valueOf(0));
   }
   
@@ -40,14 +39,15 @@ public final class stRedDotReq
   {
     paramJceOutputStream.write(this.reddotType, 0);
     paramJceOutputStream.write(this.reddotAction, 1);
-    if (this.exposedType != null) {
-      paramJceOutputStream.write(this.exposedType, 2);
+    ArrayList localArrayList = this.exposedType;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stRedDotReq
  * JD-Core Version:    0.7.0.1
  */

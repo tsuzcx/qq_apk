@@ -7,7 +7,7 @@ import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/FastWebVideoModule;", "", "()V", "adData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/ProteusBannerVideoItemData;", "getAdData", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/ProteusBannerVideoItemData;", "setAdData", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/ProteusBannerVideoItemData;)V", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "getAdInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "setAdInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)V", "videoData", "Lcom/tencent/biz/pubaccount/NativeAd/module/AdModuleVideo;", "getVideoData", "()Lcom/tencent/biz/pubaccount/NativeAd/module/AdModuleVideo;", "setVideoData", "(Lcom/tencent/biz/pubaccount/NativeAd/module/AdModuleVideo;)V", "videoReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;", "getVideoReportData", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;", "setVideoReportData", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;)V", "initModule", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/FastWebVideoModule;", "", "()V", "adData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/ProteusBannerVideoItemData;", "getAdData", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/ProteusBannerVideoItemData;", "setAdData", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/ProteusBannerVideoItemData;)V", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "getAdInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "setAdInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)V", "videoData", "Lcom/tencent/biz/pubaccount/NativeAd/module/AdModuleVideo;", "getVideoData", "()Lcom/tencent/biz/pubaccount/NativeAd/module/AdModuleVideo;", "setVideoData", "(Lcom/tencent/biz/pubaccount/NativeAd/module/AdModuleVideo;)V", "videoReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;", "getVideoReportData", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;", "setVideoReportData", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;)V", "initModule", "", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class FastWebVideoModule
 {
   @Nullable
@@ -70,7 +70,7 @@ public final class FastWebVideoModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.FastWebVideoModule
  * JD-Core Version:    0.7.0.1
  */

@@ -57,12 +57,17 @@ public abstract class AbsOverScrollDecorator
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      return false;
-    case 2: 
-      return this.mCurrentState.handleMoveTouchEvent(paramMotionEvent);
+    int i = paramMotionEvent.getAction();
+    if (i != 1) {
+      if (i != 2)
+      {
+        if (i != 3) {
+          return false;
+        }
+      }
+      else {
+        return this.mCurrentState.handleMoveTouchEvent(paramMotionEvent);
+      }
     }
     return this.mCurrentState.handleUpOrCancelTouchEvent(paramMotionEvent);
   }
@@ -73,7 +78,7 @@ public abstract class AbsOverScrollDecorator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.overscroll.AbsOverScrollDecorator
  * JD-Core Version:    0.7.0.1
  */

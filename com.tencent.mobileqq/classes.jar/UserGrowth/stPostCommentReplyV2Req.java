@@ -30,20 +30,23 @@ public final class stPostCommentReplyV2Req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.feed_id != null) {
-      paramJceOutputStream.write(this.feed_id, 0);
+    Object localObject = this.feed_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.commentId != null) {
-      paramJceOutputStream.write(this.commentId, 1);
+    localObject = this.commentId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.reply != null) {
-      paramJceOutputStream.write(this.reply, 2);
+    localObject = this.reply;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stPostCommentReplyV2Req
  * JD-Core Version:    0.7.0.1
  */

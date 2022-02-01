@@ -39,8 +39,10 @@ public final class ByteStringMicro
     }
     catch (UnsupportedEncodingException paramString)
     {
-      throw new RuntimeException("UTF-8 not supported?");
+      label16:
+      break label16;
     }
+    throw new RuntimeException("UTF-8 not supported?");
   }
   
   public byte byteAt(int paramInt)
@@ -50,7 +52,8 @@ public final class ByteStringMicro
   
   public void copyTo(byte[] paramArrayOfByte, int paramInt)
   {
-    System.arraycopy(this.bytes, 0, paramArrayOfByte, paramInt, this.bytes.length);
+    byte[] arrayOfByte = this.bytes;
+    System.arraycopy(arrayOfByte, 0, paramArrayOfByte, paramInt, arrayOfByte.length);
   }
   
   public void copyTo(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
@@ -60,58 +63,56 @@ public final class ByteStringMicro
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
+    if (paramObject == this) {
+      return true;
+    }
+    if (!(paramObject instanceof ByteStringMicro)) {
+      return false;
+    }
+    Object localObject = (ByteStringMicro)paramObject;
+    paramObject = this.bytes;
+    int j = paramObject.length;
+    localObject = ((ByteStringMicro)localObject).bytes;
+    if (j != localObject.length) {
+      return false;
+    }
+    int i = 0;
     for (;;)
     {
-      return true;
-      if (!(paramObject instanceof ByteStringMicro)) {
+      if (i >= j) {
+        return true;
+      }
+      if (paramObject[i] != localObject[i]) {
         return false;
       }
-      Object localObject = (ByteStringMicro)paramObject;
-      int j = this.bytes.length;
-      if (j != ((ByteStringMicro)localObject).bytes.length) {
-        return false;
-      }
-      paramObject = this.bytes;
-      localObject = ((ByteStringMicro)localObject).bytes;
-      int i = 0;
-      while (i < j)
-      {
-        if (paramObject[i] != localObject[i]) {
-          return false;
-        }
-        i += 1;
-      }
+      i += 1;
     }
   }
   
   public int hashCode()
   {
     int i = this.hash;
-    int j = i;
-    byte[] arrayOfByte;
-    int k;
     if (i == 0)
     {
-      arrayOfByte = this.bytes;
-      k = this.bytes.length;
-      j = 0;
-    }
-    int m;
-    for (i = k;; i = m + i * 31)
-    {
-      if (j >= k)
+      byte[] arrayOfByte = this.bytes;
+      int k = arrayOfByte.length;
+      int j = 0;
+      i = k;
+      for (;;)
       {
-        j = i;
-        if (i == 0) {
-          j = 1;
+        if (j >= k)
+        {
+          if (i == 0) {
+            i = 1;
+          }
+          this.hash = i;
+          return i;
         }
-        this.hash = j;
-        return j;
+        i = i * 31 + arrayOfByte[j];
+        j += 1;
       }
-      m = arrayOfByte[j];
-      j += 1;
     }
+    return i;
   }
   
   public boolean isEmpty()
@@ -126,10 +127,11 @@ public final class ByteStringMicro
   
   public byte[] toByteArray()
   {
-    int i = this.bytes.length;
-    byte[] arrayOfByte = new byte[i];
-    System.arraycopy(this.bytes, 0, arrayOfByte, 0, i);
-    return arrayOfByte;
+    byte[] arrayOfByte1 = this.bytes;
+    int i = arrayOfByte1.length;
+    byte[] arrayOfByte2 = new byte[i];
+    System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, i);
+    return arrayOfByte2;
   }
   
   public String toString(String paramString)
@@ -146,13 +148,15 @@ public final class ByteStringMicro
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      throw new RuntimeException("UTF-8 not supported?");
+      label16:
+      break label16;
     }
+    throw new RuntimeException("UTF-8 not supported?");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pb.ByteStringMicro
  * JD-Core Version:    0.7.0.1
  */

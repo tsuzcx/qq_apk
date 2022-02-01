@@ -247,10 +247,13 @@ public class MarkerOptions
   
   public MarkerOptions level(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
-      return this;
+    if (paramInt >= OverlayLevel.OverlayLevelAboveRoads)
+    {
+      if (paramInt > OverlayLevel.OverlayLevelAboveLabels) {
+        return this;
+      }
+      this.A = paramInt;
     }
-    this.A = paramInt;
     return this;
   }
   
@@ -298,11 +301,13 @@ public class MarkerOptions
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (paramParcel == null) {}
-    while (this.c == null) {
+    if (paramParcel == null) {
       return;
     }
-    paramParcel.writeString(this.c.toString());
+    LatLng localLatLng = this.c;
+    if (localLatLng != null) {
+      paramParcel.writeString(localLatLng.toString());
+    }
   }
   
   public MarkerOptions zIndex(float paramFloat)
@@ -313,7 +318,7 @@ public class MarkerOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions
  * JD-Core Version:    0.7.0.1
  */

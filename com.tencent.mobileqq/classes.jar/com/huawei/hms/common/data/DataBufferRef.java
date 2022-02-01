@@ -7,9 +7,9 @@ import com.huawei.hms.common.internal.Preconditions;
 
 public class DataBufferRef
 {
-  private int a;
   protected final DataHolder mDataHolder;
   protected int mDataRow;
+  private int windowIndex;
   
   public DataBufferRef(DataHolder paramDataHolder, int paramInt)
   {
@@ -20,21 +20,22 @@ public class DataBufferRef
   
   protected void copyToBuffer(String paramString, CharArrayBuffer paramCharArrayBuffer)
   {
-    this.mDataHolder.copyToBuffer(paramString, this.mDataRow, this.a, paramCharArrayBuffer);
+    this.mDataHolder.copyToBuffer(paramString, this.mDataRow, this.windowIndex, paramCharArrayBuffer);
   }
   
   public boolean equals(Object paramObject)
   {
+    boolean bool3 = paramObject instanceof DataBufferRef;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramObject instanceof DataBufferRef))
+    if (bool3)
     {
       paramObject = (DataBufferRef)paramObject;
       bool1 = bool2;
       if (paramObject.mDataRow == this.mDataRow)
       {
         bool1 = bool2;
-        if (paramObject.a == this.a)
+        if (paramObject.windowIndex == this.windowIndex)
         {
           bool1 = bool2;
           if (paramObject.mDataHolder == this.mDataHolder) {
@@ -48,7 +49,7 @@ public class DataBufferRef
   
   protected boolean getBoolean(String paramString)
   {
-    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.a, "type_boolean");
+    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.windowIndex, "type_boolean");
     if (paramString != null) {
       return ((Boolean)paramString).booleanValue();
     }
@@ -57,7 +58,7 @@ public class DataBufferRef
   
   protected byte[] getByteArray(String paramString)
   {
-    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.a, "type_byte_array");
+    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.windowIndex, "type_byte_array");
     if (paramString != null) {
       return (byte[])paramString;
     }
@@ -71,7 +72,7 @@ public class DataBufferRef
   
   protected double getDouble(String paramString)
   {
-    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.a, "type_double");
+    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.windowIndex, "type_double");
     if (paramString != null) {
       return ((Double)paramString).doubleValue();
     }
@@ -80,7 +81,7 @@ public class DataBufferRef
   
   protected float getFloat(String paramString)
   {
-    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.a, "type_float");
+    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.windowIndex, "type_float");
     if (paramString != null) {
       return ((Float)paramString).floatValue();
     }
@@ -89,7 +90,7 @@ public class DataBufferRef
   
   protected int getInteger(String paramString)
   {
-    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.a, "type_int");
+    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.windowIndex, "type_int");
     if (paramString != null) {
       return ((Integer)paramString).intValue();
     }
@@ -98,7 +99,7 @@ public class DataBufferRef
   
   protected long getLong(String paramString)
   {
-    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.a, "type_long");
+    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.windowIndex, "type_long");
     if (paramString != null) {
       return ((Long)paramString).longValue();
     }
@@ -107,7 +108,7 @@ public class DataBufferRef
   
   protected String getString(String paramString)
   {
-    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.a, "type_string");
+    paramString = this.mDataHolder.getValue(paramString, this.mDataRow, this.windowIndex, "type_string");
     if (paramString != null) {
       return (String)paramString;
     }
@@ -116,14 +117,15 @@ public class DataBufferRef
   
   protected final void getWindowIndex(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.mDataHolder.getCount())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Preconditions.checkArgument(bool, "rowNum is out of index");
-      this.mDataRow = paramInt;
-      this.a = this.mDataHolder.getWindowIndex(this.mDataRow);
-      return;
+    boolean bool;
+    if ((paramInt >= 0) && (paramInt < this.mDataHolder.getCount())) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Preconditions.checkArgument(bool, "rowNum is out of index");
+    this.mDataRow = paramInt;
+    this.windowIndex = this.mDataHolder.getWindowIndex(this.mDataRow);
   }
   
   public boolean hasColumn(String paramString)
@@ -133,22 +135,22 @@ public class DataBufferRef
   
   protected boolean hasNull(String paramString)
   {
-    return this.mDataHolder.hasNull(paramString, this.mDataRow, this.a);
+    return this.mDataHolder.hasNull(paramString, this.mDataRow, this.windowIndex);
   }
   
   public int hashCode()
   {
-    return Objects.hashCode(new Object[] { Integer.valueOf(this.mDataRow), Integer.valueOf(this.a), this.mDataHolder });
+    return Objects.hashCode(new Object[] { Integer.valueOf(this.mDataRow), Integer.valueOf(this.windowIndex), this.mDataHolder });
   }
   
   public boolean isDataValid()
   {
-    return !this.mDataHolder.isClosed();
+    return this.mDataHolder.isClosed() ^ true;
   }
   
   protected Uri parseUri(String paramString)
   {
-    paramString = (String)this.mDataHolder.getValue(paramString, this.mDataRow, this.a, "type_string");
+    paramString = (String)this.mDataHolder.getValue(paramString, this.mDataRow, this.windowIndex, "type_string");
     if (paramString == null) {
       return null;
     }
@@ -157,7 +159,7 @@ public class DataBufferRef
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.data.DataBufferRef
  * JD-Core Version:    0.7.0.1
  */

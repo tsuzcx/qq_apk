@@ -24,7 +24,7 @@ public class DnsService
 {
   private static final int CACHE_TIME = 3600000;
   private static final byte[] DATA_LOCK = new byte[0];
-  private static final byte[] INSTANCE_LOCK;
+  private static final byte[] INSTANCE_LOCK = new byte[0];
   private static final int SLEEP_INTERVAL = 20;
   private static final String TAG = "DnsService";
   private static final byte[] TASKLIST_LOCK = new byte[0];
@@ -35,7 +35,7 @@ public class DnsService
   private static final int TIME_OUT = 20000;
   private static final int TRY_TIMES = 1;
   private static final Pattern ipReg = Pattern.compile("((\\d{1,3}\\.){3}\\d{1,3}|(\\w{1,4}:){5}\\w{1,4})", 2);
-  private static DnsService sIntance = null;
+  private static DnsService sIntance;
   private boolean enableHttpDns = false;
   private List<DnsService.ResolverDomainTask> mActiveTaskList = Collections.synchronizedList(new ArrayList());
   private ConcurrentHashMap<String, ArrayList<String>> mBackupIp = new ConcurrentHashMap();
@@ -48,11 +48,6 @@ public class DnsService
   private ConcurrentHashMap<String, ConcurrentHashMap<Long, Integer>> mTryTimes = new ConcurrentHashMap();
   private List<String> waitingList = Collections.synchronizedList(new ArrayList());
   
-  static
-  {
-    INSTANCE_LOCK = new byte[0];
-  }
-  
   private DnsService()
   {
     initFilter();
@@ -63,35 +58,41 @@ public class DnsService
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    for (;;)
+    synchronized (DATA_LOCK)
     {
-      synchronized (DATA_LOCK)
+      if (this.mTryTimes.get(paramString) != null)
       {
-        if (this.mTryTimes.get(paramString) != null)
+        ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.mTryTimes.get(paramString);
+        Iterator localIterator = localConcurrentHashMap.entrySet().iterator();
+        while (localIterator.hasNext())
         {
-          ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.mTryTimes.get(paramString);
-          Iterator localIterator = localConcurrentHashMap.entrySet().iterator();
-          if (localIterator.hasNext())
-          {
-            Object localObject = (Map.Entry)localIterator.next();
-            Long localLong = (Long)((Map.Entry)localObject).getKey();
-            localObject = (Integer)((Map.Entry)localObject).getValue();
-            if (localObject == null) {
-              break label183;
-            }
+          Object localObject = (Map.Entry)localIterator.next();
+          Long localLong = (Long)((Map.Entry)localObject).getKey();
+          localObject = (Integer)((Map.Entry)localObject).getValue();
+          int i = 0;
+          if (localObject != null) {
             i = ((Integer)localObject).intValue();
-            i += 1;
-            localConcurrentHashMap.put(localLong, Integer.valueOf(i));
-            if (!QDLog.isInfoEnable()) {
-              continue;
-            }
-            QDLog.i("DnsService", "DNSService domain:" + paramString + " key:" + localLong + " times:" + i);
+          }
+          i += 1;
+          localConcurrentHashMap.put(localLong, Integer.valueOf(i));
+          if (QDLog.isInfoEnable())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("DNSService domain:");
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append(" key:");
+            ((StringBuilder)localObject).append(localLong);
+            ((StringBuilder)localObject).append(" times:");
+            ((StringBuilder)localObject).append(i);
+            QDLog.i("DnsService", ((StringBuilder)localObject).toString());
           }
         }
       }
       return;
-      label183:
-      int i = 0;
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -121,50 +122,45 @@ public class DnsService
   
   private boolean ensureNotRepeat(String paramString)
   {
-    return !isQuerying(paramString);
+    return isQuerying(paramString) ^ true;
   }
   
   private int getCurrTryTimes(String paramString)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     int i = 0;
-    if (TextUtils.isEmpty(paramString)) {
+    Integer localInteger1 = Integer.valueOf(0);
+    if (bool) {
       return 0;
     }
-    for (;;)
+    synchronized (DATA_LOCK)
     {
-      synchronized (DATA_LOCK)
+      Object localObject;
+      if (this.mTryTimes.get(paramString) != null)
       {
-        if (this.mTryTimes.get(paramString) == null) {
-          break label122;
-        }
         paramString = (ConcurrentHashMap)this.mTryTimes.get(paramString);
         localObject = Long.valueOf(Thread.currentThread().getId());
-        if (paramString.get(localObject) == null) {
-          break label108;
-        }
-        Integer localInteger = (Integer)paramString.get(localObject);
-        if (localInteger != null)
+        if (paramString.get(localObject) != null)
         {
-          i = localInteger.intValue();
-          break;
-          return i;
+          Integer localInteger2 = (Integer)paramString.get(localObject);
+          if (localInteger2 != null) {
+            i = localInteger2.intValue();
+          } else {
+            paramString.put(localObject, localInteger1);
+          }
+        }
+        else
+        {
+          paramString.put(localObject, localInteger1);
         }
       }
-      paramString.put(localObject, Integer.valueOf(0));
-      break label167;
-      label108:
-      paramString.put(localObject, Integer.valueOf(0));
-      break label167;
-      label122:
-      Object localObject = new ConcurrentHashMap();
-      ((ConcurrentHashMap)localObject).put(Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(0));
-      this.mTryTimes.put(paramString, localObject);
-    }
-    for (;;)
-    {
-      break;
-      label167:
-      i = 0;
+      else
+      {
+        localObject = new ConcurrentHashMap();
+        ((ConcurrentHashMap)localObject).put(Long.valueOf(Thread.currentThread().getId()), localInteger1);
+        this.mTryTimes.put(paramString, localObject);
+      }
+      return i;
     }
   }
   
@@ -173,23 +169,21 @@ public class DnsService
     String str = getThreadPoolName(paramString);
     ThreadPool localThreadPool = (ThreadPool)this.mThreadPoolMap.get(str);
     paramString = localThreadPool;
-    int i;
     if (localThreadPool == null)
     {
-      i = 2;
+      int i = 2;
       if ("resolver_threadpool_name_internal".equals(str)) {
         i = 4;
       }
-      if (this.mExecutor == null) {
-        break label72;
+      paramString = this.mExecutor;
+      if (paramString != null) {
+        paramString = new ThreadPool(paramString);
+      } else {
+        paramString = new ThreadPool(str, i, i, new LinkedBlockingQueue());
       }
-    }
-    label72:
-    for (paramString = new ThreadPool(this.mExecutor);; paramString = new ThreadPool(str, i, i, new LinkedBlockingQueue()))
-    {
       this.mThreadPoolMap.put(str, paramString);
-      return paramString;
     }
+    return paramString;
   }
   
   private String getIPFromCache(String paramString)
@@ -208,66 +202,33 @@ public class DnsService
     return null;
   }
   
-  /* Error */
   public static DnsService getInstance()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 64	com/tencent/component/network/module/common/DnsService:sIntance	Lcom/tencent/component/network/module/common/DnsService;
-    //   6: ifnonnull +27 -> 33
-    //   9: getstatic 66	com/tencent/component/network/module/common/DnsService:INSTANCE_LOCK	[B
-    //   12: astore_0
-    //   13: aload_0
-    //   14: monitorenter
-    //   15: getstatic 64	com/tencent/component/network/module/common/DnsService:sIntance	Lcom/tencent/component/network/module/common/DnsService;
-    //   18: ifnonnull +13 -> 31
-    //   21: new 2	com/tencent/component/network/module/common/DnsService
-    //   24: dup
-    //   25: invokespecial 303	com/tencent/component/network/module/common/DnsService:<init>	()V
-    //   28: putstatic 64	com/tencent/component/network/module/common/DnsService:sIntance	Lcom/tencent/component/network/module/common/DnsService;
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: getstatic 64	com/tencent/component/network/module/common/DnsService:sIntance	Lcom/tencent/component/network/module/common/DnsService;
-    //   36: astore_0
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: aload_0
-    //   41: areturn
-    //   42: astore_1
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_1
-    //   46: athrow
-    //   47: astore_0
-    //   48: ldc 2
-    //   50: monitorexit
-    //   51: aload_0
-    //   52: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   47	5	0	localObject2	Object
-    //   42	4	1	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   15	31	42	finally
-    //   31	33	42	finally
-    //   43	45	42	finally
-    //   3	15	47	finally
-    //   33	37	47	finally
-    //   45	47	47	finally
+    try
+    {
+      if (sIntance == null) {
+        synchronized (INSTANCE_LOCK)
+        {
+          if (sIntance == null) {
+            sIntance = new DnsService();
+          }
+        }
+      }
+      ??? = sIntance;
+      return ???;
+    }
+    finally {}
   }
   
   private String getKey()
   {
-    String str = null;
     if (NetworkManager.isMobile()) {
-      str = NetworkManager.getApnValue();
+      return NetworkManager.getApnValue();
     }
-    while (!NetworkManager.isWifi()) {
-      return str;
+    if (NetworkManager.isWifi()) {
+      return NetworkManager.getBSSID();
     }
-    return NetworkManager.getBSSID();
+    return null;
   }
   
   private String getThreadPoolName(String paramString)
@@ -286,8 +247,8 @@ public class DnsService
   
   private void initFilter()
   {
-    int i = 0;
     String[] arrayOfString = new String[7];
+    int i = 0;
     arrayOfString[0] = "a[0-9].qpic.cn";
     arrayOfString[1] = "m.qpic.cn";
     arrayOfString[2] = "t[0-9].qpic.cn";
@@ -306,11 +267,13 @@ public class DnsService
   
   private boolean isIPValid(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((paramString.startsWith("192.168")) || (paramString.equals("127.0.0.1")) || (paramString.equals("0.0.0.0")) || (paramString.equals("255.255.255.255"))) {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    return true;
+    if ((!paramString.startsWith("192.168")) && (!paramString.equals("127.0.0.1")) && (!paramString.equals("0.0.0.0"))) {
+      return !paramString.equals("255.255.255.255");
+    }
+    return false;
   }
   
   private void setResolveResult(String paramString1, String paramString2)
@@ -327,52 +290,52 @@ public class DnsService
   
   public void addQuery(String paramString)
   {
-    ThreadPool localThreadPool;
-    String str1;
     if ((!TextUtils.isEmpty(paramString)) && (ensureNotRepeat(paramString)))
     {
       this.waitingList.add(paramString);
-      localThreadPool = getDomainResolverThreadPool(paramString);
-      if (QDLog.isInfoEnable()) {
-        QDLog.i("DnsService", "add query:" + paramString);
+      ThreadPool localThreadPool = getDomainResolverThreadPool(paramString);
+      if (QDLog.isInfoEnable())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("add query:");
+        ((StringBuilder)localObject).append(paramString);
+        QDLog.i("DnsService", ((StringBuilder)localObject).toString());
       }
-      String str2 = NetworkManager.getApnValue();
-      str1 = str2;
-      if ("wifi".equals(str2)) {
-        str1 = NetworkManager.getBSSID();
+      String str = NetworkManager.getApnValue();
+      Object localObject = str;
+      if ("wifi".equals(str)) {
+        localObject = NetworkManager.getBSSID();
       }
-    }
-    try
-    {
-      localThreadPool.submit(new DnsService.ResolverDomainTask(this, paramString, str1));
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QDLog.e("DnsService", "exception when add query to DNSService.", paramString);
+      try
+      {
+        localThreadPool.submit(new DnsService.ResolverDomainTask(this, paramString, (String)localObject));
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        QDLog.e("DnsService", "exception when add query to DNSService.", paramString);
+      }
     }
   }
   
   public String getDomainIP(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      localObject = null;
+      return null;
     }
-    do
-    {
-      return localObject;
-      localObject = paramString;
-    } while (ipReg.matcher(paramString).find());
+    if (ipReg.matcher(paramString).find()) {
+      return paramString;
+    }
     long l2 = System.currentTimeMillis();
-    String str = getIPFromCache(paramString);
-    Object localObject = str;
-    if (TextUtils.isEmpty(str))
+    Object localObject2 = getIPFromCache(paramString);
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2))
     {
       long l1 = 0L;
       for (;;)
       {
-        localObject = getIPFromCache(paramString);
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) || (l1 > 20000L) || (getCurrTryTimes(paramString) >= 1)) {
+        localObject1 = getIPFromCache(paramString);
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) || (l1 > 20000L) || (getCurrTryTimes(paramString) >= 1)) {
           break;
         }
         try
@@ -388,7 +351,16 @@ public class DnsService
       }
     }
     clearCurrTryTimes(paramString);
-    QDLog.w("DnsService", "DNSService domain:" + paramString + " ip:" + localInterruptedException + " time:" + (System.currentTimeMillis() - l2) + " threadId:" + Thread.currentThread().getId());
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("DNSService domain:");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(" ip:");
+    ((StringBuilder)localObject2).append(localInterruptedException);
+    ((StringBuilder)localObject2).append(" time:");
+    ((StringBuilder)localObject2).append(System.currentTimeMillis() - l2);
+    ((StringBuilder)localObject2).append(" threadId:");
+    ((StringBuilder)localObject2).append(Thread.currentThread().getId());
+    QDLog.w("DnsService", ((StringBuilder)localObject2).toString());
     return localInterruptedException;
   }
   
@@ -400,21 +372,31 @@ public class DnsService
   public void reset()
   {
     String str = getKey();
-    if (QDLog.isInfoEnable()) {
-      QDLog.i("DnsService", "DNSService reset. Key:" + this.mKey + " currKey:" + str);
+    if (QDLog.isInfoEnable())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("DNSService reset. Key:");
+      ((StringBuilder)???).append(this.mKey);
+      ((StringBuilder)???).append(" currKey:");
+      ((StringBuilder)???).append(str);
+      QDLog.i("DnsService", ((StringBuilder)???).toString());
     }
-    if ((str == null) || (!str.equalsIgnoreCase(this.mKey))) {
-      synchronized (TASKLIST_LOCK)
-      {
-        Iterator localIterator = this.mActiveTaskList.iterator();
-        if (localIterator.hasNext()) {
-          ((DnsService.ResolverDomainTask)localIterator.next()).setIsExpired(true);
-        }
+    if ((str == null) || (!str.equalsIgnoreCase(this.mKey))) {}
+    synchronized (TASKLIST_LOCK)
+    {
+      Iterator localIterator = this.mActiveTaskList.iterator();
+      while (localIterator.hasNext()) {
+        ((DnsService.ResolverDomainTask)localIterator.next()).setIsExpired(true);
       }
+      this.mKey = str;
+      this.mDomainMap.clear();
+      addQuery("m.qpic.cn");
+      return;
     }
-    this.mKey = localObject;
-    this.mDomainMap.clear();
-    addQuery("m.qpic.cn");
+    for (;;)
+    {
+      throw localObject1;
+    }
   }
   
   public void setThreadPoolExecutor(Executor paramExecutor)
@@ -426,7 +408,7 @@ public class DnsService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.common.DnsService
  * JD-Core Version:    0.7.0.1
  */

@@ -31,16 +31,17 @@ class TroopActivity$GetUnReadNumRunnable
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b();
+      int i = localQQAppInterface.getMessageFacade().b();
       ThreadManager.getUIHandler().post(new TroopActivity.GetUnReadNumRunnable.1(this, i));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopActivity.GetUnReadNumRunnable
  * JD-Core Version:    0.7.0.1
  */

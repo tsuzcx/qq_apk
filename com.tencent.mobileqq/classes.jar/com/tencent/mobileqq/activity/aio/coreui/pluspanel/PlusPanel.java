@@ -6,8 +6,6 @@ import android.content.res.Resources;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,17 +14,19 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PluginData;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewBinder;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
-import com.tencent.mobileqq.mvvm.ActivityExtKt;
-import com.tencent.mobileqq.mvvm.LifeCycleExtKt;
+import com.tencent.mobileqq.mvvm.LifeCycleAndViewModelStoreOwner;
 import com.tencent.mobileqq.mvvm.LifeCycleFragment;
+import com.tencent.mobileqq.mvvm.ViewModelProviderHelper;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.theme.SkinnableBitmapDrawable;
@@ -34,9 +34,9 @@ import java.util.List;
 
 public class PlusPanel
   extends RelativeLayout
-  implements ViewPager.OnPageChangeListener, View.OnClickListener, View.OnLongClickListener
+  implements View.OnClickListener, View.OnLongClickListener, ViewPager.OnPageChangeListener
 {
-  public static boolean a;
+  public static boolean a = false;
   public ViewPager.OnPageChangeListener a;
   protected SessionInfo a;
   protected BaseChatPie a;
@@ -45,11 +45,6 @@ public class PlusPanel
   protected QQAppInterface a;
   private EmoticonPagerRadioGroup jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup;
   private QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
   
   public PlusPanel(Context paramContext)
   {
@@ -63,35 +58,39 @@ public class PlusPanel
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131368651));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131368627));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131368386));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131368364));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter = new PanelAdapter(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter.a(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter.a(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter);
     a(this);
-    Drawable localDrawable = getResources().getDrawable(2130850689);
+    Drawable localDrawable = getResources().getDrawable(2130850615);
+    Object localObject;
     if ((localDrawable instanceof BitmapDrawable))
     {
-      ((BitmapDrawable)localDrawable).setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-      ((BitmapDrawable)localDrawable).setDither(true);
+      localObject = (BitmapDrawable)localDrawable;
+      ((BitmapDrawable)localObject).setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+      ((BitmapDrawable)localObject).setDither(true);
       setBackgroundDrawable(localDrawable);
-    }
-    while (!(localDrawable instanceof SkinnableBitmapDrawable)) {
       return;
     }
-    ((SkinnableBitmapDrawable)localDrawable).setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-    ((SkinnableBitmapDrawable)localDrawable).setDither(true);
-    setBackgroundDrawable(localDrawable);
+    if ((localDrawable instanceof SkinnableBitmapDrawable))
+    {
+      localObject = (SkinnableBitmapDrawable)localDrawable;
+      ((SkinnableBitmapDrawable)localObject).setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+      ((SkinnableBitmapDrawable)localObject).setDither(true);
+      setBackgroundDrawable(localDrawable);
+    }
   }
   
   private void c()
   {
-    LifeCycleFragment localLifeCycleFragment = ActivityExtKt.a((FragmentActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel = ((PlusPanelViewModel)LifeCycleExtKt.a(localLifeCycleFragment, PlusPanelViewModel.a).get(PlusPanelViewModel.class));
+    LifeCycleAndViewModelStoreOwner localLifeCycleAndViewModelStoreOwner = LifeCycleFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel = ((PlusPanelViewModel)ViewModelProviderHelper.a(localLifeCycleAndViewModelStoreOwner, PlusPanelViewModel.a).get(PlusPanelViewModel.class));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-    new PlusPanelViewBinder().a(localLifeCycleFragment, this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup);
+    new PlusPanelViewBinder().a(localLifeCycleAndViewModelStoreOwner, this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup);
     a();
   }
   
@@ -122,11 +121,15 @@ public class PlusPanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
     b();
     c();
+    setOneWayFriend(paramBaseChatPie.q());
+    if ((paramBaseChatPie instanceof TroopChatPie)) {
+      setPagerChangedListener(new PlusPanel.1(this, paramBaseChatPie));
+    }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter.a = paramBoolean;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
   }
   
@@ -148,14 +151,10 @@ public class PlusPanel
     int i = paramMotionEvent.getAction() & 0xFF;
     if (i == 0) {
       getParent().requestDisallowInterceptTouchEvent(true);
+    } else if ((i == 1) || (i == 3)) {
+      getParent().requestDisallowInterceptTouchEvent(false);
     }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      if ((i == 1) || (i == 3)) {
-        getParent().requestDisallowInterceptTouchEvent(false);
-      }
-    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public boolean onLongClick(View paramView)
@@ -165,15 +164,17 @@ public class PlusPanel
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrollStateChanged(paramInt);
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener;
+    if (localOnPageChangeListener != null) {
+      localOnPageChangeListener.onPageScrollStateChanged(paramInt);
     }
   }
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener;
+    if (localOnPageChangeListener != null) {
+      localOnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
     }
   }
   
@@ -184,8 +185,9 @@ public class PlusPanel
     }
     int i = this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter.a(i), i);
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageSelected(paramInt);
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener;
+    if (localOnPageChangeListener != null) {
+      localOnPageChangeListener.onPageSelected(paramInt);
     }
   }
   
@@ -196,32 +198,33 @@ public class PlusPanel
   
   public void setPagerChangedListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = paramOnPageChangeListener;
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener = paramOnPageChangeListener;
   }
   
   public void setVisibility(int paramInt)
   {
-    if (paramInt != super.getVisibility()) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (paramInt != super.getVisibility()) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    super.setVisibility(paramInt);
+    if (paramInt == 0)
     {
-      super.setVisibility(paramInt);
-      if (paramInt == 0)
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel.a();
+      if (i != 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel.a();
-        if (i != 0)
-        {
-          paramInt = this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem();
-          List localList = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter.a(paramInt);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, localList, paramInt);
-        }
+        paramInt = this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem();
+        List localList = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter.a(paramInt);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, localList, paramInt);
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.pluspanel.PlusPanel
  * JD-Core Version:    0.7.0.1
  */

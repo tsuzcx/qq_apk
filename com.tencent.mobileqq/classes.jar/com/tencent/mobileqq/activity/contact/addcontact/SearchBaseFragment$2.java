@@ -14,32 +14,41 @@ class SearchBaseFragment$2
     if (SearchBaseFragment.a(this.a) != null) {
       SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i != 5) {
+                return;
+              }
+              this.a.h();
+              return;
+            }
+            this.a.a((List)paramMessage.obj);
+            return;
+          }
+          this.a.c();
+          return;
+        }
+        this.a.g();
+        return;
+      }
       this.a.a((String)paramMessage.obj);
       return;
-    case 2: 
-      this.a.g();
-      return;
-    case 3: 
-      this.a.c();
-      return;
-    case 4: 
-      this.a.a((List)paramMessage.obj);
-      return;
     }
-    this.a.h();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

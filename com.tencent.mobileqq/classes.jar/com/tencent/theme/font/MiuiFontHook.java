@@ -13,44 +13,42 @@ public class MiuiFontHook
   {
     try
     {
-      localField1 = Class.forName("miui.util.TypefaceUtils$FontsWhiteListHolder").getDeclaredField("mFontsWhiteList");
-      if (localField1 != null) {
-        localField1.setAccessible(true);
-      }
+      localField = Class.forName("miui.util.TypefaceUtils$FontsWhiteListHolder").getDeclaredField("mFontsWhiteList");
     }
-    catch (Exception localException1)
+    catch (Exception localException2)
     {
+      Field localField;
+      label14:
+      label28:
+      break label14;
+    }
+    try
+    {
+      localField = Class.forName("miui.util.TypefaceUtils").getDeclaredField("mFontsWhiteList");
+    }
+    catch (Exception localException3)
+    {
+      break label28;
+    }
+    localField = null;
+    if (localField != null)
+    {
+      localField.setAccessible(true);
       try
       {
-        for (;;)
+        b = (HashSet)localField.get(null);
+        if (b == null)
         {
-          Field localField1;
-          b = (HashSet)localField1.get(null);
-          if (b == null)
-          {
-            b = new HashSet();
-            localField1.set(null, b);
-          }
-          return b;
-          localException1 = localException1;
-          try
-          {
-            Field localField2 = Class.forName("miui.util.TypefaceUtils").getDeclaredField("mFontsWhiteList");
-          }
-          catch (Exception localException2)
-          {
-            Object localObject = null;
-          }
+          b = new HashSet();
+          localField.set(null, b);
         }
       }
-      catch (Exception localException3)
+      catch (Exception localException1)
       {
-        for (;;)
-        {
-          localException3.printStackTrace();
-        }
+        localException1.printStackTrace();
       }
     }
+    return b;
   }
   
   public boolean hookFont()
@@ -61,7 +59,8 @@ public class MiuiFontHook
     if (b == null) {
       a();
     }
-    if ((b != null) && (b.contains("com.tencent.mobileqq"))) {
+    HashSet localHashSet = b;
+    if ((localHashSet != null) && (localHashSet.contains("com.tencent.mobileqq"))) {
       b.remove("com.tencent.mobileqq");
     }
     a = true;
@@ -70,31 +69,25 @@ public class MiuiFontHook
   
   public boolean restore()
   {
-    boolean bool = false;
-    if (a) {}
-    try
-    {
-      if (b != null) {
-        b.add("com.tencent.mobileqq");
+    if (a) {
+      try
+      {
+        if (b != null) {
+          b.add("com.tencent.mobileqq");
+        }
+        a = false;
       }
-      a = false;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
-    if (!a) {
-      bool = true;
-    }
-    return bool;
+    return a ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.theme.font.MiuiFontHook
  * JD-Core Version:    0.7.0.1
  */

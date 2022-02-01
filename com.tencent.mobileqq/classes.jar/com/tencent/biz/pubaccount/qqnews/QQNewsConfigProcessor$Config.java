@@ -19,19 +19,24 @@ public final class QQNewsConfigProcessor$Config
       QLog.d("QQNewsConfigProcessor", 2, paramString);
     }
     if (!TextUtils.isEmpty((CharSequence)paramString)) {}
-    try
+    for (;;)
     {
-      if (new JSONObject(paramString).optInt("enableQQNewsHippy", 1) == 1) {}
-      for (boolean bool = true;; bool = false)
+      try
       {
+        if (new JSONObject(paramString).optInt("enableQQNewsHippy", 1) != 1) {
+          break label71;
+        }
+        bool = true;
         this.a = bool;
         return;
       }
+      catch (Throwable paramString)
+      {
+        QLog.e("QQNewsConfigProcessor", 1, paramString, new Object[0]);
+      }
       return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("QQNewsConfigProcessor", 1, paramString, new Object[0]);
+      label71:
+      boolean bool = false;
     }
   }
   
@@ -42,7 +47,7 @@ public final class QQNewsConfigProcessor$Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.qqnews.QQNewsConfigProcessor.Config
  * JD-Core Version:    0.7.0.1
  */

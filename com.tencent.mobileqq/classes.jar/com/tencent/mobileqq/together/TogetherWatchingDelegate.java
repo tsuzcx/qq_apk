@@ -39,46 +39,48 @@ public class TogetherWatchingDelegate
   
   private void a(Context paramContext, int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
-    if (paramInt1 == 8) {}
-    for (String str = "exp_openframe";; str = "exp_joinbar")
-    {
-      a(paramString, str);
-      DialogUtil.a(paramContext, 230, null, paramContext.getResources().getString(2131699315), paramContext.getResources().getString(2131690800), paramContext.getResources().getString(2131691410), new TogetherWatchingDelegate.2(this, paramString, paramInt1, paramBundle, paramInt2, paramContext), new TogetherWatchingDelegate.3(this, paramString, paramInt1)).show();
-      return;
+    String str;
+    if (paramInt1 == 8) {
+      str = "exp_openframe";
+    } else {
+      str = "exp_joinbar";
     }
+    a(paramString, str);
+    DialogUtil.a(paramContext, 230, null, paramContext.getResources().getString(2131699420), paramContext.getResources().getString(2131690728), paramContext.getResources().getString(2131691332), new TogetherWatchingDelegate.2(this, paramString, paramInt1, paramBundle, paramInt2, paramContext), new TogetherWatchingDelegate.3(this, paramString, paramInt1)).show();
   }
   
   private void a(Context paramContext, int paramInt1, String paramString, int paramInt2)
   {
     TogetherConfigureBean localTogetherConfigureBean = (TogetherConfigureBean)QConfigManager.a().a(535);
-    if (localTogetherConfigureBean == null) {}
-    TroopInfo localTroopInfo;
-    for (int i = 0;; i = localTogetherConfigureBean.a.a())
+    int i;
+    if (localTogetherConfigureBean == null) {
+      i = 0;
+    } else {
+      i = localTogetherConfigureBean.a.a();
+    }
+    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
+    if ((i != 0) && (localTroopInfo != null))
     {
-      localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
-      if ((i != 0) && (localTroopInfo != null)) {
-        break;
-      }
-      QQToast.a(paramContext, 0, 2131693140, 0).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("WatchTogetherManager", 2, new Object[] { "reopenCategoryPage version=", Integer.valueOf(i), " troopInfo=", localTroopInfo });
-      }
+      paramString = TogetherUtils.a(false, localTroopInfo.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), localTroopInfo.isAdmin(), localTroopInfo.troopowneruin, paramString, paramInt2);
+      TogetherUtils.a(paramContext, localTogetherConfigureBean.a.b(), localTogetherConfigureBean.a.a(), localTogetherConfigureBean.a.b(), paramString, paramInt1);
       return;
     }
-    paramString = TogetherUtils.a(false, localTroopInfo.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), localTroopInfo.isAdmin(), localTroopInfo.troopowneruin, paramString, paramInt2);
-    TogetherUtils.a(paramContext, localTogetherConfigureBean.a.b(), localTogetherConfigureBean.a.a(), localTogetherConfigureBean.a.b(), paramString, paramInt1);
+    QQToast.a(paramContext, 0, 2131693100, 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchTogetherManager", 2, new Object[] { "reopenCategoryPage version=", Integer.valueOf(i), " troopInfo=", localTroopInfo });
+    }
   }
   
   private void a(Context paramContext, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3)
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing()))
+    if ((localBaseActivity != null) && (!localBaseActivity.isFinishing()))
     {
-      QLog.e("WatchTogetherManager", 1, "topActivity is null or finishing");
+      a(paramString2, "exp_unableframe");
+      DialogUtil.a(localBaseActivity, 230, null, paramString3, paramContext.getResources().getString(2131694222), paramContext.getResources().getString(2131694583), new TogetherWatchingDelegate.4(this, paramString2), new TogetherWatchingDelegate.5(this, paramString2, paramString1, paramInt1, paramInt2)).show();
       return;
     }
-    a(paramString2, "exp_unableframe");
-    DialogUtil.a(localBaseActivity, 230, null, paramString3, paramContext.getResources().getString(2131694257), paramContext.getResources().getString(2131694615), new TogetherWatchingDelegate.4(this, paramString2), new TogetherWatchingDelegate.5(this, paramString2, paramString1, paramInt1, paramInt2)).show();
+    QLog.e("WatchTogetherManager", 1, "topActivity is null or finishing");
   }
   
   private void a(Bundle paramBundle, String paramString, int paramInt1, int paramInt2)
@@ -95,7 +97,7 @@ public class TogetherWatchingDelegate
     TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString2);
     if (localTroopInfo == null)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 0, 2131693140, 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 0, 2131693100, 0).a();
       if (QLog.isColorLevel()) {
         QLog.d("WatchTogetherManager", 2, new Object[] { "reopenVideoRoom troopInfo=", localTroopInfo });
       }
@@ -140,12 +142,17 @@ public class TogetherWatchingDelegate
   
   public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, TogetherSession> paramMap, @Nullable Bundle paramBundle)
   {
-    QLog.i("WatchTogetherManager", 1, "notifySessionChange  serviceType = " + paramInt1 + " from = " + paramInt3);
+    paramContext = new StringBuilder();
+    paramContext.append("notifySessionChange  serviceType = ");
+    paramContext.append(paramInt1);
+    paramContext.append(" from = ");
+    paramContext.append(paramInt3);
+    QLog.i("WatchTogetherManager", 1, paramContext.toString());
   }
   
   public void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt)
   {
-    if (paramInt == 6) {
+    if (paramInt == 7) {
       a().a();
     }
   }
@@ -163,27 +170,34 @@ public class TogetherWatchingDelegate
   
   public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, TogetherSession> paramMap, @Nullable Bundle paramBundle)
   {
-    if (paramInt2 == 0) {}
-    for (paramContext = "2";; paramContext = "")
-    {
-      QLog.i("WatchTogetherManager", 1, "start  groupuin = " + paramString + " miniapp_from = " + paramContext);
-      WatchTogetherSession localWatchTogetherSession = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
-      paramMap = localWatchTogetherSession;
-      if (localWatchTogetherSession == null) {}
-      try
-      {
-        paramMap = (WatchTogetherSession)TogetherUtils.a(2, 1, paramString);
-        a().a(paramContext, paramMap, paramBundle);
-        return false;
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          paramMap = localWatchTogetherSession;
-        }
-      }
+    if (paramInt2 == 0) {
+      paramContext = "2";
+    } else {
+      paramContext = "";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start  groupuin = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" miniapp_from = ");
+    localStringBuilder.append(paramContext);
+    QLog.i("WatchTogetherManager", 1, localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("2_1_");
+    localStringBuilder.append(paramString);
+    paramMap = (WatchTogetherSession)paramMap.get(localStringBuilder.toString());
+    if (paramMap == null) {}
+    try
+    {
+      paramString = (WatchTogetherSession)TogetherUtils.a(2, 1, paramString);
+    }
+    catch (Throwable paramString)
+    {
+      label127:
+      break label127;
+    }
+    paramString = paramMap;
+    a().a(paramContext, paramString, paramBundle);
+    return false;
   }
   
   public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, TogetherSession> paramMap, @Nullable Bundle paramBundle)
@@ -193,24 +207,42 @@ public class TogetherWatchingDelegate
   
   public boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, TogetherSession> paramMap, @Nullable Bundle paramBundle)
   {
-    paramContext = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
-    QLog.i("WatchTogetherManager", 1, "join  groupuin = " + paramString + " from = " + paramInt2);
-    if (paramInt2 == 2) {
+    paramContext = new StringBuilder();
+    paramContext.append("2_1_");
+    paramContext.append(paramString);
+    paramContext = (WatchTogetherSession)paramMap.get(paramContext.toString());
+    paramMap = new StringBuilder();
+    paramMap.append("join  groupuin = ");
+    paramMap.append(paramString);
+    paramMap.append(" from = ");
+    paramMap.append(paramInt2);
+    QLog.i("WatchTogetherManager", 1, paramMap.toString());
+    if (paramInt2 == 2)
+    {
       a().a("4", paramContext, paramBundle);
-    }
-    while (((paramInt2 != 1) && (paramInt2 != 8)) || (paramContext == null)) {
       return false;
     }
-    if ((!TextUtils.isEmpty(paramContext.a)) && (!paramContext.a.contains("fromid"))) {
-      paramContext.a = (paramContext.a + "&fromid=" + "10011");
+    if ((paramInt2 == 1) || (paramInt2 == 8))
+    {
+      if (paramContext == null) {
+        return false;
+      }
+      if ((!TextUtils.isEmpty(paramContext.a)) && (!paramContext.a.contains("fromid")))
+      {
+        paramString = new StringBuilder();
+        paramString.append(paramContext.a);
+        paramString.append("&fromid=");
+        paramString.append("10011");
+        paramContext.a = paramString.toString();
+      }
+      a().a(paramContext, paramBundle);
     }
-    a().a(paramContext, paramBundle);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherWatchingDelegate
  * JD-Core Version:    0.7.0.1
  */

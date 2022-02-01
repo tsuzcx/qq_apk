@@ -74,39 +74,47 @@ public final class stTroopRemarkInfo
     paramJceOutputStream.write(this.MemberUin, 0);
     paramJceOutputStream.write(this.strNick, 1);
     paramJceOutputStream.write(this.strRemark, 2);
-    if (this.sName != null) {
-      paramJceOutputStream.write(this.sName, 3);
+    Object localObject = this.sName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.cGender, 4);
-    if (this.sPhone != null) {
-      paramJceOutputStream.write(this.sPhone, 5);
+    localObject = this.sPhone;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.sEmail != null) {
-      paramJceOutputStream.write(this.sEmail, 6);
+    localObject = this.sEmail;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.sMemo != null) {
-      paramJceOutputStream.write(this.sMemo, 7);
+    localObject = this.sMemo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.strAutoRemark != null) {
-      paramJceOutputStream.write(this.strAutoRemark, 8);
+    localObject = this.strAutoRemark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.strRank != null) {
-      paramJceOutputStream.write(this.strRank, 9);
+    localObject = this.strRank;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.bytes_job != null) {
-      paramJceOutputStream.write(this.bytes_job, 10);
+    localObject = this.bytes_job;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.GlamourLevel, 11);
     paramJceOutputStream.write(this.TorchbearerFlag, 12);
     paramJceOutputStream.write(this.cRichCardNameVer, 13);
-    if (this.vecGroupHonor != null) {
-      paramJceOutputStream.write(this.vecGroupHonor, 14);
+    localObject = this.vecGroupHonor;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.stTroopRemarkInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,7 @@ package com.tencent.mobileqq.mvvm;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
 import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,17 +21,10 @@ public final class ViewExtKt
     }
     paramView.setBackgroundDrawable(paramDrawable);
   }
-  
-  public static final void a(@NotNull View paramView, @NotNull Function0<Unit> paramFunction0)
-  {
-    Intrinsics.checkParameterIsNotNull(paramView, "$this$setOnClickListener");
-    Intrinsics.checkParameterIsNotNull(paramFunction0, "listener");
-    paramView.setOnClickListener((View.OnClickListener)new ViewExtKt.setOnClickListener.1(paramFunction0));
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mvvm.ViewExtKt
  * JD-Core Version:    0.7.0.1
  */

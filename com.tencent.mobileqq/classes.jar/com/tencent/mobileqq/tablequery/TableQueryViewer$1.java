@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 
@@ -21,15 +22,17 @@ class TableQueryViewer$1
     paramView = (ClipboardManager)paramView.getContext().getSystemService("clipboard");
     if ((paramView != null) && (!TextUtils.isEmpty(paramAdapterView)))
     {
-      paramView.setPrimaryClip(ClipData.newPlainText("bigT", paramAdapterView));
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.getContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131690709), 0).a();
+      paramAdapterView = ClipData.newPlainText("bigT", paramAdapterView);
+      ClipboardMonitor.setPrimaryClip(paramView, paramAdapterView);
+      paramView.setPrimaryClip(paramAdapterView);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.getContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131690637), 0).a();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tablequery.TableQueryViewer.1
  * JD-Core Version:    0.7.0.1
  */

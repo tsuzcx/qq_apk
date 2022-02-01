@@ -17,13 +17,14 @@ public final class articlesummary$UGCVoiceInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_voice_url", "uint32_duration", "uint32_file_size" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, UGCVoiceInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_voice_url", "uint32_duration", "uint32_file_size" }, new Object[] { localByteStringMicro, localInteger, localInteger }, UGCVoiceInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.UGCVoiceInfo
  * JD-Core Version:    0.7.0.1
  */

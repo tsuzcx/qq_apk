@@ -2,12 +2,15 @@ package com.tencent.mobileqq.richmediabrowser.model;
 
 import android.os.Bundle;
 import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import com.tencent.richmediabrowser.model.RichMediaBaseData;
 import java.util.ArrayList;
 
 public class AIOFileVideoData
   extends AIOBrowserBaseData
 {
+  public static final Parcelable.Creator<RichMediaBaseData> CREATOR = new AIOFileVideoData.1();
   public Bundle a;
   public String a;
   public ArrayList<String> a;
@@ -51,27 +54,35 @@ public class AIOFileVideoData
   
   public String a()
   {
-    switch (this.status)
+    int k = this.status;
+    if (k != 0)
     {
-    case 7: 
-    default: 
-      return "undefine";
-    case 0: 
-      return "Nomal";
-    case 3: 
-      return "Buffering";
-    case 1: 
+      if (k != 1)
+      {
+        if (k != 2)
+        {
+          if (k != 3)
+          {
+            if (k != 4)
+            {
+              if (k != 6)
+              {
+                if (k != 7) {
+                  return "undefine";
+                }
+                return "Saving";
+              }
+              return "Error";
+            }
+            return "Pause";
+          }
+          return "Playing";
+        }
+        return "Buffering";
+      }
       return "Downloading";
-    case 8: 
-      return "Error";
-    case 4: 
-      return "Get URL";
-    case 6: 
-      return "Pause";
-    case 5: 
-      return "Playing";
     }
-    return "Saving";
+    return "Nomal";
   }
   
   public int getType()
@@ -88,6 +99,12 @@ public class AIOFileVideoData
     this.jdField_e_of_type_Long = paramParcel.readLong();
     this.jdField_c_of_type_Int = paramParcel.readInt();
     this.jdField_d_of_type_Int = paramParcel.readInt();
+    int k = paramParcel.readInt();
+    boolean bool = true;
+    if (k != 1) {
+      bool = false;
+    }
+    this.jdField_f_of_type_Boolean = bool;
     this.jdField_g_of_type_JavaLangString = paramParcel.readString();
     this.jdField_e_of_type_Int = paramParcel.readInt();
     this.jdField_f_of_type_Int = paramParcel.readInt();
@@ -107,23 +124,12 @@ public class AIOFileVideoData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.b);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_e_of_type_Long);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeInt(this.jdField_f_of_type_Int);
-    paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_i_of_type_JavaLangString);
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData
  * JD-Core Version:    0.7.0.1
  */

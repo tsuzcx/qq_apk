@@ -100,39 +100,53 @@ public class PrinterStatusHandler
         localObject2 = ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).toByteArray();
         a(this.jdField_a_of_type_Int, (String)localObject1, 529, 9, 1021, (byte[])localObject2, 0L);
       }
-      return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    notifyUI(12, false, null);
+    else
+    {
+      this.jdField_a_of_type_Boolean = false;
+      notifyUI(12, false, null);
+    }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.Printer", 2, "received a cmd=" + paramFromServiceMsg.getServiceCmd());
-    }
-    if ((paramToServiceMsg.extraData.getInt("ROUNTING_TYPE") != 13) || (!paramToServiceMsg.extraData.getBoolean("ISFROM_DATALINE"))) {}
-    int i;
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
+      paramObject = new StringBuilder();
+      paramObject.append("received a cmd=");
+      paramObject.append(paramFromServiceMsg.getServiceCmd());
+      QLog.d("dataline.Printer", 2, paramObject.toString());
+    }
+    if (paramToServiceMsg.extraData.getInt("ROUNTING_TYPE") == 13)
+    {
+      if (!paramToServiceMsg.extraData.getBoolean("ISFROM_DATALINE")) {
         return;
-      } while (paramFromServiceMsg.getResultCode() == 1000);
-      i = paramToServiceMsg.extraData.getInt("DATALINE_TRYINDEX");
-      if (QLog.isColorLevel()) {
-        QLog.d("dataline.Printer", 2, "<PbSendMsg><R><---handle0x211C2CMessageError, retry = " + i);
       }
-    } while (i >= 3);
-    paramToServiceMsg.extraData.putInt("DATALINE_TRYINDEX", i + 1);
-    sendPbReq(paramToServiceMsg);
+      if (paramFromServiceMsg.getResultCode() != 1000)
+      {
+        int i = paramToServiceMsg.extraData.getInt("DATALINE_TRYINDEX");
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("<PbSendMsg><R><---handle0x211C2CMessageError, retry = ");
+          paramFromServiceMsg.append(i);
+          QLog.d("dataline.Printer", 2, paramFromServiceMsg.toString());
+        }
+        if (i < 3)
+        {
+          paramToServiceMsg.extraData.putInt("DATALINE_TRYINDEX", i + 1);
+          sendPbReq(paramToServiceMsg);
+        }
+      }
+    }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilTimer != null)
+    Timer localTimer = this.jdField_a_of_type_JavaUtilTimer;
+    if (localTimer != null)
     {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
+      localTimer.cancel();
       this.jdField_a_of_type_JavaUtilTimer = null;
     }
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -165,9 +179,10 @@ public class PrinterStatusHandler
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver != null)
+    MessageObserver localMessageObserver = this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver;
+    if (localMessageObserver != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localMessageObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
     }
   }
@@ -176,8 +191,12 @@ public class PrinterStatusHandler
   {
     if (!"MessageSvc.PbSendMsg".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("dataline.Printer", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("cmdfilter error=");
+        paramToServiceMsg.append(paramFromServiceMsg.getServiceCmd());
+        QLog.d("dataline.Printer", 2, paramToServiceMsg.toString());
       }
       return;
     }
@@ -192,7 +211,7 @@ public class PrinterStatusHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.PrinterStatusHandler
  * JD-Core Version:    0.7.0.1
  */

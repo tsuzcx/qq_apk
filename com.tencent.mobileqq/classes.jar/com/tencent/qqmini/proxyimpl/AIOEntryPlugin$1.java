@@ -15,11 +15,13 @@ class AIOEntryPlugin$1
   
   public void run()
   {
-    if ((AIOEntryPlugin.a(this.this$0).getAttachedActivity() instanceof GameActivity1)) {}
-    for (boolean bool = ((GameActivity1)AIOEntryPlugin.b(this.this$0).getAttachedActivity()).showMiniAIOEntrance(this.jdField_a_of_type_OrgJsonJSONObject); bool; bool = false)
+    boolean bool;
+    if ((AIOEntryPlugin.a(this.this$0).getAttachedActivity() instanceof GameActivity1))
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
-      return;
+      bool = ((GameActivity1)AIOEntryPlugin.b(this.this$0).getAttachedActivity()).showMiniAIOEntrance(this.jdField_a_of_type_OrgJsonJSONObject);
+    }
+    else
+    {
       if ((AIOEntryPlugin.c(this.this$0).getMiniAppInfo() != null) && (AIOEntryPlugin.d(this.this$0).getMiniAppInfo().isEngineTypeMiniApp()) && ((AIOEntryPlugin.e(this.this$0) instanceof BaseRuntime)))
       {
         IPage localIPage = ((BaseRuntime)AIOEntryPlugin.f(this.this$0)).getPage();
@@ -27,13 +29,19 @@ class AIOEntryPlugin$1
           localIPage.setMiniAIOEntranceVisible(true, this.jdField_a_of_type_OrgJsonJSONObject);
         }
       }
+      bool = false;
+    }
+    if (bool)
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
+      return;
     }
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AIOEntryPlugin.1
  * JD-Core Version:    0.7.0.1
  */

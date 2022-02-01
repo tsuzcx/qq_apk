@@ -49,8 +49,12 @@ final class FragmentManagerViewModel
   
   void clearNonConfigState(@NonNull Fragment paramFragment)
   {
-    if (FragmentManager.isLoggingEnabled(3)) {
-      Log.d("FragmentManager", "Clearing non-config state for " + paramFragment);
+    if (FragmentManager.isLoggingEnabled(3))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Clearing non-config state for ");
+      ((StringBuilder)localObject).append(paramFragment);
+      Log.d("FragmentManager", ((StringBuilder)localObject).toString());
     }
     Object localObject = (FragmentManagerViewModel)this.mChildNonConfigs.get(paramFragment.mWho);
     if (localObject != null)
@@ -68,15 +72,17 @@ final class FragmentManagerViewModel
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (FragmentManagerViewModel)paramObject;
-    } while ((this.mRetainedFragments.equals(paramObject.mRetainedFragments)) && (this.mChildNonConfigs.equals(paramObject.mChildNonConfigs)) && (this.mViewModelStores.equals(paramObject.mViewModelStores)));
+      return (this.mRetainedFragments.equals(paramObject.mRetainedFragments)) && (this.mChildNonConfigs.equals(paramObject.mChildNonConfigs)) && (this.mViewModelStores.equals(paramObject.mViewModelStores));
+    }
     return false;
   }
   
@@ -152,10 +158,14 @@ final class FragmentManagerViewModel
     return this.mHasBeenCleared;
   }
   
-  public void onCleared()
+  protected void onCleared()
   {
-    if (FragmentManager.isLoggingEnabled(3)) {
-      Log.d("FragmentManager", "onCleared called for " + this);
+    if (FragmentManager.isLoggingEnabled(3))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCleared called for ");
+      localStringBuilder.append(this);
+      Log.d("FragmentManager", localStringBuilder.toString());
     }
     this.mHasBeenCleared = true;
   }
@@ -208,15 +218,13 @@ final class FragmentManagerViewModel
   
   boolean shouldDestroy(@NonNull Fragment paramFragment)
   {
-    if (!this.mRetainedFragments.containsKey(paramFragment.mWho)) {}
-    do
-    {
+    if (!this.mRetainedFragments.containsKey(paramFragment.mWho)) {
       return true;
-      if (this.mStateAutomaticallySaved) {
-        return this.mHasBeenCleared;
-      }
-    } while (!this.mHasSavedSnapshot);
-    return false;
+    }
+    if (this.mStateAutomaticallySaved) {
+      return this.mHasBeenCleared;
+    }
+    return this.mHasSavedSnapshot ^ true;
   }
   
   @NonNull
@@ -257,7 +265,7 @@ final class FragmentManagerViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentManagerViewModel
  * JD-Core Version:    0.7.0.1
  */

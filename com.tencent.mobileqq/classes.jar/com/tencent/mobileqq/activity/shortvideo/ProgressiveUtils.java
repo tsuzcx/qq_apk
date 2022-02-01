@@ -21,33 +21,38 @@ public class ProgressiveUtils
   public static void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    try
     {
-      try
-      {
-        if (Integer.valueOf(paramString).intValue() == 0)
-        {
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideo.ProgressiveUtils", 2, "parseConfig(): config = " + paramString + ", sProgressiveEnable = " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-          }
-          return;
-        }
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        continue;
-      }
-      catch (Exception localException)
-      {
+      if (Integer.valueOf(paramString).intValue() == 0) {
         jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        continue;
+      } else {
+        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
       }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    }
+    catch (Exception localException)
+    {
+      label37:
+      StringBuilder localStringBuilder;
+      break label37;
+    }
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    break label54;
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    label54:
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseConfig(): config = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", sProgressiveEnable = ");
+      localStringBuilder.append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      QLog.d("ShortVideo.ProgressiveUtils", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ProgressiveUtils
  * JD-Core Version:    0.7.0.1
  */

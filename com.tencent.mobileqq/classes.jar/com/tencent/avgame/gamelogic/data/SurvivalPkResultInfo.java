@@ -2,6 +2,7 @@ package com.tencent.avgame.gamelogic.data;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class SurvivalPkResultInfo
@@ -41,11 +42,13 @@ public class SurvivalPkResultInfo
     this.delayAward = paramSurvivalPkResultInfo.delayAward;
     this.delayAwardTip = paramSurvivalPkResultInfo.delayAwardTip;
     this.isBothClose = paramSurvivalPkResultInfo.isBothClose;
-    if (paramSurvivalPkResultInfo.rankingUins != null) {
-      this.rankingUins = new ArrayList(paramSurvivalPkResultInfo.rankingUins);
+    Object localObject = paramSurvivalPkResultInfo.rankingUins;
+    if (localObject != null) {
+      this.rankingUins = new ArrayList((Collection)localObject);
     }
-    if (paramSurvivalPkResultInfo.pkDrawRes != null) {
-      this.pkDrawRes = new SurvivalPkResultInfo.PKDrawRes(paramSurvivalPkResultInfo.pkDrawRes.isDraw, paramSurvivalPkResultInfo.pkDrawRes.selfCost, paramSurvivalPkResultInfo.pkDrawRes.peerCost);
+    localObject = paramSurvivalPkResultInfo.pkDrawRes;
+    if (localObject != null) {
+      this.pkDrawRes = new SurvivalPkResultInfo.PKDrawRes(((SurvivalPkResultInfo.PKDrawRes)localObject).isDraw, paramSurvivalPkResultInfo.pkDrawRes.selfCost, paramSurvivalPkResultInfo.pkDrawRes.peerCost);
     }
     this.winTips = paramSurvivalPkResultInfo.winTips;
     this.score = paramSurvivalPkResultInfo.score;
@@ -54,26 +57,51 @@ public class SurvivalPkResultInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("gameSur:").append(this.gameSur).append("|");
-    localStringBuilder.append("winReason:").append(this.winReason).append("|");
-    localStringBuilder.append("winRound:").append(this.winRound).append("|");
-    localStringBuilder.append("rank:").append(this.rank).append("|");
-    localStringBuilder.append("total:").append(this.total).append("|");
-    localStringBuilder.append("awardText:").append(this.awardText).append("|");
-    localStringBuilder.append("awardUrl:").append(this.awardUrl).append("|");
-    localStringBuilder.append("delayAward:").append(this.delayAward).append("|");
-    localStringBuilder.append("delayAwardTip:").append(this.delayAwardTip).append("|");
-    localStringBuilder.append("awardUrlStr:").append(this.awardUrlStr).append("|");
-    localStringBuilder.append("rankingUins:").append(this.rankingUins).append("|");
-    localStringBuilder.append("pkDrawRes:").append(this.pkDrawRes);
-    localStringBuilder.append("isBothClose").append(this.isBothClose);
-    localStringBuilder.append("score").append(this.score);
+    localStringBuilder.append("gameSur:");
+    localStringBuilder.append(this.gameSur);
+    localStringBuilder.append("|");
+    localStringBuilder.append("winReason:");
+    localStringBuilder.append(this.winReason);
+    localStringBuilder.append("|");
+    localStringBuilder.append("winRound:");
+    localStringBuilder.append(this.winRound);
+    localStringBuilder.append("|");
+    localStringBuilder.append("rank:");
+    localStringBuilder.append(this.rank);
+    localStringBuilder.append("|");
+    localStringBuilder.append("total:");
+    localStringBuilder.append(this.total);
+    localStringBuilder.append("|");
+    localStringBuilder.append("awardText:");
+    localStringBuilder.append(this.awardText);
+    localStringBuilder.append("|");
+    localStringBuilder.append("awardUrl:");
+    localStringBuilder.append(this.awardUrl);
+    localStringBuilder.append("|");
+    localStringBuilder.append("delayAward:");
+    localStringBuilder.append(this.delayAward);
+    localStringBuilder.append("|");
+    localStringBuilder.append("delayAwardTip:");
+    localStringBuilder.append(this.delayAwardTip);
+    localStringBuilder.append("|");
+    localStringBuilder.append("awardUrlStr:");
+    localStringBuilder.append(this.awardUrlStr);
+    localStringBuilder.append("|");
+    localStringBuilder.append("rankingUins:");
+    localStringBuilder.append(this.rankingUins);
+    localStringBuilder.append("|");
+    localStringBuilder.append("pkDrawRes:");
+    localStringBuilder.append(this.pkDrawRes);
+    localStringBuilder.append("isBothClose");
+    localStringBuilder.append(this.isBothClose);
+    localStringBuilder.append("score");
+    localStringBuilder.append(this.score);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.SurvivalPkResultInfo
  * JD-Core Version:    0.7.0.1
  */

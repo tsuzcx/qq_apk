@@ -55,101 +55,117 @@ public class PropertyValuesHolder
   
   static String getMethodName(String paramString1, String paramString2)
   {
-    if ((paramString2 == null) || (paramString2.length() == 0)) {
-      return paramString1;
+    String str = paramString1;
+    if (paramString2 != null)
+    {
+      if (paramString2.length() == 0) {
+        return paramString1;
+      }
+      char c = Character.toUpperCase(paramString2.charAt(0));
+      paramString2 = paramString2.substring(1);
+      paramString1 = new StringBuilder(String.valueOf(paramString1));
+      paramString1.append(c);
+      paramString1.append(paramString2);
+      str = paramString1.toString();
     }
-    char c = Character.toUpperCase(paramString2.charAt(0));
-    paramString2 = paramString2.substring(1);
-    return paramString1 + c + paramString2;
+    return str;
   }
   
   private Method getPropertyFunction(Class paramClass1, String paramString, Class paramClass2)
   {
-    Method localMethod1 = null;
     String str = getMethodName(paramString, this.mPropertyName);
+    paramString = null;
     if (paramClass2 == null) {
       try
       {
-        paramString = paramClass1.getMethod(str, null);
-        return paramString;
+        paramClass2 = paramClass1.getMethod(str, null);
+        return paramClass2;
       }
-      catch (NoSuchMethodException paramString) {}
+      catch (NoSuchMethodException paramClass2) {}
     }
     try
     {
       paramClass1 = paramClass1.getDeclaredMethod(str, null);
-      try
-      {
-        paramClass1.setAccessible(true);
-        return paramClass1;
-      }
-      catch (NoSuchMethodException paramClass2) {}
+      paramString = paramClass1;
+      paramClass1.setAccessible(true);
+      return paramClass1;
     }
     catch (NoSuchMethodException paramClass1)
     {
-      for (;;)
-      {
-        Class[] arrayOfClass;
-        int j;
-        int i;
-        paramClass1 = null;
-      }
+      label44:
+      Class[] arrayOfClass;
+      int j;
+      int i;
+      break label44;
     }
-    Log.e("PropertyValuesHolder", "Couldn't find no-arg method for property " + this.mPropertyName + ": " + paramString);
-    return paramClass1;
+    paramClass1 = new StringBuilder("Couldn't find no-arg method for property ");
+    paramClass1.append(this.mPropertyName);
+    paramClass1.append(": ");
+    paramClass1.append(paramClass2);
+    Log.e("PropertyValuesHolder", paramClass1.toString());
+    return paramString;
     arrayOfClass = new Class[1];
     if (this.mValueType.equals(Float.class))
     {
       paramString = FLOAT_VARIANTS;
-      j = paramString.length;
-      i = 0;
-      paramClass2 = localMethod1;
     }
+    else if (this.mValueType.equals(Integer.class))
+    {
+      paramString = INTEGER_VARIANTS;
+    }
+    else if (this.mValueType.equals(Double.class))
+    {
+      paramString = DOUBLE_VARIANTS;
+    }
+    else
+    {
+      paramString = new Class[1];
+      paramString[0] = this.mValueType;
+    }
+    j = paramString.length;
+    paramClass2 = null;
+    i = 0;
     for (;;)
     {
       if (i >= j)
       {
-        Log.e("PropertyValuesHolder", "Couldn't find setter/getter for property " + this.mPropertyName + " with value type " + this.mValueType);
+        paramClass1 = new StringBuilder("Couldn't find setter/getter for property ");
+        paramClass1.append(this.mPropertyName);
+        paramClass1.append(" with value type ");
+        paramClass1.append(this.mValueType);
+        Log.e("PropertyValuesHolder", paramClass1.toString());
         return paramClass2;
-        if (this.mValueType.equals(Integer.class))
-        {
-          paramString = INTEGER_VARIANTS;
-          break;
-        }
-        if (this.mValueType.equals(Double.class))
-        {
-          paramString = DOUBLE_VARIANTS;
-          break;
-        }
-        paramString = new Class[1];
-        paramString[0] = this.mValueType;
-        break;
       }
       Object localObject = paramString[i];
       arrayOfClass[0] = localObject;
       try
       {
-        localMethod1 = paramClass1.getMethod(str, arrayOfClass);
-        paramClass2 = localMethod1;
+        localMethod = paramClass1.getMethod(str, arrayOfClass);
+        paramClass2 = localMethod;
         this.mValueType = localObject;
-        return localMethod1;
+        return localMethod;
       }
       catch (NoSuchMethodException localNoSuchMethodException1)
       {
-        try
-        {
-          Method localMethod2 = paramClass1.getDeclaredMethod(str, arrayOfClass);
-          paramClass2 = localMethod2;
-          localMethod2.setAccessible(true);
-          paramClass2 = localMethod2;
-          this.mValueType = localObject;
-          return localMethod2;
-        }
-        catch (NoSuchMethodException localNoSuchMethodException2)
-        {
-          i += 1;
-        }
+        Method localMethod;
+        label260:
+        label291:
+        break label260;
       }
+      try
+      {
+        localMethod = paramClass1.getDeclaredMethod(str, arrayOfClass);
+        paramClass2 = localMethod;
+        localMethod.setAccessible(true);
+        paramClass2 = localMethod;
+        this.mValueType = localObject;
+        return localMethod;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException2)
+      {
+        break label291;
+      }
+      i += 1;
     }
   }
   
@@ -226,42 +242,43 @@ public class PropertyValuesHolder
   
   private Method setupSetterOrGetter(Class paramClass1, HashMap<Class, HashMap<String, Method>> paramHashMap, String paramString, Class paramClass2)
   {
-    Method localMethod = null;
     for (;;)
     {
       try
       {
         this.mPropertyMapLock.writeLock().lock();
         HashMap localHashMap = (HashMap)paramHashMap.get(paramClass1);
-        if (localHashMap != null) {
-          localMethod = (Method)localHashMap.get(this.mPropertyName);
-        }
-        if (localMethod == null)
+        if (localHashMap != null)
         {
-          paramClass2 = getPropertyFunction(paramClass1, paramString, paramClass2);
-          paramString = localHashMap;
-          if (localHashMap == null)
+          localMethod1 = (Method)localHashMap.get(this.mPropertyName);
+          Method localMethod2 = localMethod1;
+          if (localMethod1 == null)
           {
-            paramString = new HashMap();
-            paramHashMap.put(paramClass1, paramString);
+            localMethod2 = getPropertyFunction(paramClass1, paramString, paramClass2);
+            paramString = localHashMap;
+            if (localHashMap == null)
+            {
+              paramString = new HashMap();
+              paramHashMap.put(paramClass1, paramString);
+            }
+            paramString.put(this.mPropertyName, localMethod2);
           }
-          paramString.put(this.mPropertyName, paramClass2);
-          paramClass1 = paramClass2;
-          return paramClass1;
+          return localMethod2;
         }
       }
       finally
       {
         this.mPropertyMapLock.writeLock().unlock();
       }
-      paramClass1 = localMethod;
+      Method localMethod1 = null;
     }
   }
   
   private void setupValue(Object paramObject, Keyframe paramKeyframe)
   {
-    if (this.mProperty != null) {
-      paramKeyframe.setValue(this.mProperty.get(paramObject));
+    Property localProperty = this.mProperty;
+    if (localProperty != null) {
+      paramKeyframe.setValue(localProperty.get(paramObject));
     }
     try
     {
@@ -271,12 +288,12 @@ public class PropertyValuesHolder
       paramKeyframe.setValue(this.mGetter.invoke(paramObject, new Object[0]));
       return;
     }
-    catch (InvocationTargetException paramObject)
+    catch (IllegalAccessException paramObject)
     {
       Log.e("PropertyValuesHolder", paramObject.toString());
       return;
     }
-    catch (IllegalAccessException paramObject)
+    catch (InvocationTargetException paramObject)
     {
       Log.e("PropertyValuesHolder", paramObject.toString());
     }
@@ -298,7 +315,11 @@ public class PropertyValuesHolder
       localPropertyValuesHolder.mEvaluator = this.mEvaluator;
       return localPropertyValuesHolder;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label45:
+      break label45;
+    }
     return null;
   }
   
@@ -314,50 +335,46 @@ public class PropertyValuesHolder
   
   void init()
   {
-    TypeEvaluator localTypeEvaluator;
     if (this.mEvaluator == null)
     {
-      if (this.mValueType != Integer.class) {
-        break label44;
-      }
-      localTypeEvaluator = sIntEvaluator;
-    }
-    for (;;)
-    {
-      this.mEvaluator = localTypeEvaluator;
-      if (this.mEvaluator != null) {
-        this.mKeyframeSet.setEvaluator(this.mEvaluator);
-      }
-      return;
-      label44:
-      if (this.mValueType == Float.class) {
-        localTypeEvaluator = sFloatEvaluator;
+      localObject = this.mValueType;
+      if (localObject == Integer.class) {
+        localObject = sIntEvaluator;
+      } else if (localObject == Float.class) {
+        localObject = sFloatEvaluator;
       } else {
-        localTypeEvaluator = null;
+        localObject = null;
       }
+      this.mEvaluator = ((TypeEvaluator)localObject);
+    }
+    Object localObject = this.mEvaluator;
+    if (localObject != null) {
+      this.mKeyframeSet.setEvaluator((TypeEvaluator)localObject);
     }
   }
   
   void setAnimatedValue(Object paramObject)
   {
-    if (this.mProperty != null) {
-      this.mProperty.set(paramObject, getAnimatedValue());
+    Property localProperty = this.mProperty;
+    if (localProperty != null) {
+      localProperty.set(paramObject, getAnimatedValue());
     }
-    if (this.mSetter != null) {}
-    try
-    {
-      this.mTmpValueArray[0] = getAnimatedValue();
-      this.mSetter.invoke(paramObject, this.mTmpValueArray);
-      return;
-    }
-    catch (InvocationTargetException paramObject)
-    {
-      Log.e("PropertyValuesHolder", paramObject.toString());
-      return;
-    }
-    catch (IllegalAccessException paramObject)
-    {
-      Log.e("PropertyValuesHolder", paramObject.toString());
+    if (this.mSetter != null) {
+      try
+      {
+        this.mTmpValueArray[0] = getAnimatedValue();
+        this.mSetter.invoke(paramObject, this.mTmpValueArray);
+        return;
+      }
+      catch (IllegalAccessException paramObject)
+      {
+        Log.e("PropertyValuesHolder", paramObject.toString());
+        return;
+      }
+      catch (InvocationTargetException paramObject)
+      {
+        Log.e("PropertyValuesHolder", paramObject.toString());
+      }
     }
   }
   
@@ -381,9 +398,9 @@ public class PropertyValuesHolder
   
   public void setKeyframes(Keyframe... paramVarArgs)
   {
-    int i = 0;
     int j = paramVarArgs.length;
     Keyframe[] arrayOfKeyframe = new Keyframe[Math.max(j, 2)];
+    int i = 0;
     this.mValueType = paramVarArgs[0].getType();
     for (;;)
     {
@@ -425,53 +442,63 @@ public class PropertyValuesHolder
   
   void setupSetterAndGetter(Object paramObject)
   {
-    if (this.mProperty != null) {
-      try
-      {
-        this.mProperty.get(paramObject);
-        Iterator localIterator = this.mKeyframeSet.mKeyframes.iterator();
-        for (;;)
-        {
-          if (!localIterator.hasNext()) {
-            return;
-          }
-          localObject = (Keyframe)localIterator.next();
-          if (!((Keyframe)localObject).hasValue()) {
-            ((Keyframe)localObject).setValue(this.mProperty.get(paramObject));
-          }
-        }
-        localClass = paramObject.getClass();
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        Log.e("PropertyValuesHolder", "No such property (" + this.mProperty.getName() + ") on target object " + paramObject + ". Trying reflection instead");
-        this.mProperty = null;
-      }
-    }
-    Class localClass;
-    if (this.mSetter == null) {
-      setupSetter(localClass);
-    }
-    Object localObject = this.mKeyframeSet.mKeyframes.iterator();
-    while (((Iterator)localObject).hasNext())
+    Object localObject1 = this.mProperty;
+    if (localObject1 != null) {}
+    try
     {
-      Keyframe localKeyframe = (Keyframe)((Iterator)localObject).next();
+      ((Property)localObject1).get(paramObject);
+      localObject1 = this.mKeyframeSet.mKeyframes.iterator();
+      for (;;)
+      {
+        if (!((Iterator)localObject1).hasNext()) {
+          return;
+        }
+        localObject2 = (Keyframe)((Iterator)localObject1).next();
+        if (!((Keyframe)localObject2).hasValue()) {
+          ((Keyframe)localObject2).setValue(this.mProperty.get(paramObject));
+        }
+      }
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      Object localObject2;
+      label68:
+      break label68;
+    }
+    localObject1 = new StringBuilder("No such property (");
+    ((StringBuilder)localObject1).append(this.mProperty.getName());
+    ((StringBuilder)localObject1).append(") on target object ");
+    ((StringBuilder)localObject1).append(paramObject);
+    ((StringBuilder)localObject1).append(". Trying reflection instead");
+    Log.e("PropertyValuesHolder", ((StringBuilder)localObject1).toString());
+    this.mProperty = null;
+    localObject1 = paramObject.getClass();
+    if (this.mSetter == null) {
+      setupSetter((Class)localObject1);
+    }
+    localObject2 = this.mKeyframeSet.mKeyframes.iterator();
+    for (;;)
+    {
+      if (!((Iterator)localObject2).hasNext()) {
+        return;
+      }
+      Keyframe localKeyframe = (Keyframe)((Iterator)localObject2).next();
       if (!localKeyframe.hasValue())
       {
         if (this.mGetter == null) {
-          setupGetter(localClass);
+          setupGetter((Class)localObject1);
         }
         try
         {
           localKeyframe.setValue(this.mGetter.invoke(paramObject, new Object[0]));
         }
-        catch (InvocationTargetException localInvocationTargetException)
-        {
-          Log.e("PropertyValuesHolder", localInvocationTargetException.toString());
-        }
         catch (IllegalAccessException localIllegalAccessException)
         {
           Log.e("PropertyValuesHolder", localIllegalAccessException.toString());
+        }
+        catch (InvocationTargetException localInvocationTargetException)
+        {
+          Log.e("PropertyValuesHolder", localInvocationTargetException.toString());
         }
       }
     }
@@ -484,12 +511,15 @@ public class PropertyValuesHolder
   
   public String toString()
   {
-    return this.mPropertyName + ": " + this.mKeyframeSet.toString();
+    StringBuilder localStringBuilder = new StringBuilder(String.valueOf(this.mPropertyName));
+    localStringBuilder.append(": ");
+    localStringBuilder.append(this.mKeyframeSet.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.animation.PropertyValuesHolder
  * JD-Core Version:    0.7.0.1
  */

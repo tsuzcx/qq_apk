@@ -1,6 +1,6 @@
 package androidx.core.app;
 
-final class ActivityRecreator$1
+class ActivityRecreator$1
   implements Runnable
 {
   ActivityRecreator$1(ActivityRecreator.LifecycleCheckCallbacks paramLifecycleCheckCallbacks, Object paramObject) {}
@@ -12,7 +12,7 @@ final class ActivityRecreator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.ActivityRecreator.1
  * JD-Core Version:    0.7.0.1
  */

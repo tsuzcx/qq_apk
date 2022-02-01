@@ -13,9 +13,7 @@ class MsgBackupQRFragment$1
   
   public void onItemSelect(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -28,7 +26,7 @@ class MsgBackupQRFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment.1
  * JD-Core Version:    0.7.0.1
  */

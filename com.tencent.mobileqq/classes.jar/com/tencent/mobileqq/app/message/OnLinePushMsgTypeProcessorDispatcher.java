@@ -23,14 +23,15 @@ public class OnLinePushMsgTypeProcessorDispatcher
   
   public static Map<Integer, Pair<String, Integer>> a()
   {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_JavaUtilMap == null) {
-        a();
+    if (jdField_a_of_type_JavaUtilMap == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_JavaUtilMap == null) {
+          a();
+        }
       }
-      return jdField_a_of_type_JavaUtilMap;
     }
+    return jdField_a_of_type_JavaUtilMap;
   }
   
   @SuppressLint({"UseSparseArrays"})
@@ -46,7 +47,7 @@ public class OnLinePushMsgTypeProcessorDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.OnLinePushMsgTypeProcessorDispatcher
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,12 @@ public class UniqueTitleServiceImpl
   
   public long getOldestUniqueTitleExpireTime(String paramString)
   {
-    return this.mApp.getApp().getSharedPreferences(this.mApp.getCurrentAccountUin() + "_" + paramString, 0).getLong("oldestUniqueTitleExpireTime", 0L);
+    BaseApplication localBaseApplication = this.mApp.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mApp.getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).getLong("oldestUniqueTitleExpireTime", 0L);
   }
   
   public void getTroopMemberUniqueTitle(String paramString, long paramLong1, long paramLong2, ProtoUtils.TroopProtocolObserver paramTroopProtocolObserver)
@@ -46,12 +51,21 @@ public class UniqueTitleServiceImpl
   
   public int getUniqueTitleNewFlag()
   {
-    return this.mApp.getApp().getSharedPreferences(this.mApp.getCurrentAccountUin() + "_troopManager", 0).getInt("uniqueTitleNewFlag", 0);
+    BaseApplication localBaseApplication = this.mApp.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mApp.getCurrentAccountUin());
+    localStringBuilder.append("_troopManager");
+    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).getInt("uniqueTitleNewFlag", 0);
   }
   
   public boolean hasUniqueTitleExpireNotified(String paramString1, String paramString2)
   {
-    return this.mApp.getApp().getSharedPreferences(this.mApp.getCurrentAccountUin() + "_" + paramString1, 0).getBoolean(paramString2, false);
+    BaseApplication localBaseApplication = this.mApp.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mApp.getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString1);
+    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean(paramString2, false);
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -101,63 +115,57 @@ public class UniqueTitleServiceImpl
       localITroopMemberInfoService.saveTroopMemberInfoInLruCache(paramString1, paramString2, localTroopMemberInfo1);
       paramString3.persistOrReplace(localTroopMemberInfo1);
     }
-    for (;;)
+    else
     {
-      paramString3.close();
-      setUniqueTitleExpireNotified(paramString1, paramString2, false);
-      return;
       paramString3.update(localTroopMemberInfo1);
     }
+    paramString3.close();
+    setUniqueTitleExpireNotified(paramString1, paramString2, false);
   }
   
   public void saveTroopMemberUniqueTitle(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    int k = 1;
     ITroopMemberInfoService localITroopMemberInfoService = (ITroopMemberInfoService)this.mApp.getRuntimeService(ITroopMemberInfoService.class, "");
-    TroopMemberInfo localTroopMemberInfo = localITroopMemberInfoService.getTroopMember(paramString1, paramString2);
-    if (localTroopMemberInfo == null)
+    TroopMemberInfo localTroopMemberInfo2 = localITroopMemberInfoService.getTroopMember(paramString1, paramString2);
+    TroopMemberInfo localTroopMemberInfo1 = localTroopMemberInfo2;
+    if (localTroopMemberInfo2 == null)
     {
-      localTroopMemberInfo = new TroopMemberInfo();
-      localTroopMemberInfo.memberuin = paramString2;
-      localTroopMemberInfo.troopuin = paramString1;
+      localTroopMemberInfo1 = new TroopMemberInfo();
+      localTroopMemberInfo1.memberuin = paramString2;
+      localTroopMemberInfo1.troopuin = paramString1;
     }
-    for (;;)
+    int j = 0;
+    int i = j;
+    if (paramString3 != null)
     {
-      int j = 0;
-      int i = j;
-      if (paramString3 != null)
+      i = j;
+      if (!TextUtils.equals(paramString3, localTroopMemberInfo1.mUniqueTitle))
       {
-        i = j;
-        if (!TextUtils.equals(paramString3, localTroopMemberInfo.mUniqueTitle))
-        {
-          localTroopMemberInfo.mUniqueTitle = paramString3;
-          i = 1;
-        }
+        localTroopMemberInfo1.mUniqueTitle = paramString3;
+        i = 1;
       }
+    }
+    j = i;
+    if (paramInt1 != 0)
+    {
       j = i;
-      if (paramInt1 != 0)
+      if (localTroopMemberInfo1.realLevel != paramInt1)
       {
-        j = i;
-        if (localTroopMemberInfo.realLevel != paramInt1)
-        {
-          localTroopMemberInfo.realLevel = paramInt1;
-          j = 1;
-        }
+        localTroopMemberInfo1.realLevel = paramInt1;
+        j = 1;
       }
-      if (localTroopMemberInfo.newRealLevel != paramInt2) {
-        localTroopMemberInfo.newRealLevel = paramInt2;
+    }
+    if (localTroopMemberInfo1.newRealLevel != paramInt2)
+    {
+      localTroopMemberInfo1.newRealLevel = paramInt2;
+      j = 1;
+    }
+    if (j != 0)
+    {
+      if (localTroopMemberInfo1.getStatus() == 1000) {
+        localITroopMemberInfoService.saveTroopMemberInfoInLruCache(paramString1, paramString2, localTroopMemberInfo1);
       }
-      for (paramInt1 = k;; paramInt1 = j)
-      {
-        if (paramInt1 != 0)
-        {
-          if (localTroopMemberInfo.getStatus() == 1000) {
-            localITroopMemberInfoService.saveTroopMemberInfoInLruCache(paramString1, paramString2, localTroopMemberInfo);
-          }
-          localITroopMemberInfoService.saveTroopMemberInfoToDB(paramString1, paramString2, localTroopMemberInfo);
-        }
-        return;
-      }
+      localITroopMemberInfoService.saveTroopMemberInfoToDB(paramString1, paramString2, localTroopMemberInfo1);
     }
   }
   
@@ -185,22 +193,36 @@ public class UniqueTitleServiceImpl
   
   public void setOldestUniqueTitleExpireTime(String paramString, long paramLong)
   {
-    this.mApp.getApp().getSharedPreferences(this.mApp.getCurrentAccountUin() + "_" + paramString, 0).edit().putLong("oldestUniqueTitleExpireTime", paramLong).commit();
+    BaseApplication localBaseApplication = this.mApp.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mApp.getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().putLong("oldestUniqueTitleExpireTime", paramLong).commit();
   }
   
   public void setUniqueTitleExpireNotified(String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.mApp.getApp().getSharedPreferences(this.mApp.getCurrentAccountUin() + "_" + paramString1, 0).edit().putBoolean(paramString2, paramBoolean).commit();
+    BaseApplication localBaseApplication = this.mApp.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mApp.getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString1);
+    localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean(paramString2, paramBoolean).commit();
   }
   
   public void setUniqueTitleNewFlag(int paramInt)
   {
-    this.mApp.getApp().getSharedPreferences(this.mApp.getCurrentAccountUin() + "_troopManager", 0).edit().putInt("uniqueTitleNewFlag", paramInt).commit();
+    BaseApplication localBaseApplication = this.mApp.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mApp.getCurrentAccountUin());
+    localStringBuilder.append("_troopManager");
+    localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().putInt("uniqueTitleNewFlag", paramInt).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.uniquetitle.api.impl.UniqueTitleServiceImpl
  * JD-Core Version:    0.7.0.1
  */

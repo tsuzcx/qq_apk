@@ -39,15 +39,16 @@ public final class Track
   
   public TrackEncryptionBox getSampleDescriptionEncryptionBox(int paramInt)
   {
-    if (this.sampleDescriptionEncryptionBoxes == null) {
+    TrackEncryptionBox[] arrayOfTrackEncryptionBox = this.sampleDescriptionEncryptionBoxes;
+    if (arrayOfTrackEncryptionBox == null) {
       return null;
     }
-    return this.sampleDescriptionEncryptionBoxes[paramInt];
+    return arrayOfTrackEncryptionBox[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.Track
  * JD-Core Version:    0.7.0.1
  */

@@ -16,31 +16,28 @@ public class GameLoadData
   
   public void a(Bundle paramBundle)
   {
-    long l1;
-    long l2;
-    long l3;
     if (paramBundle != null)
     {
       String str = paramBundle.getString("adid", "");
-      l1 = paramBundle.getLong("navigationStart", 0L);
-      l2 = paramBundle.getLong("htmlLoaded", 0L);
-      l3 = paramBundle.getLong("domComplete", 0L);
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (str.equals(this.jdField_a_of_type_JavaLangString))) {
-        break label71;
+      long l1 = paramBundle.getLong("navigationStart", 0L);
+      long l2 = paramBundle.getLong("htmlLoaded", 0L);
+      long l3 = paramBundle.getLong("domComplete", 0L);
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      {
+        if (!str.equals(this.jdField_a_of_type_JavaLangString)) {
+          return;
+        }
+        if (l1 > 0L) {
+          this.b = l1;
+        }
+        if (l2 > 0L) {
+          this.c = l2;
+        }
+        if (l3 > 0L) {
+          this.d = l3;
+        }
       }
     }
-    label71:
-    do
-    {
-      return;
-      if (l1 > 0L) {
-        this.b = l1;
-      }
-      if (l2 > 0L) {
-        this.c = l2;
-      }
-    } while (l3 <= 0L);
-    this.d = l3;
   }
   
   public boolean a()
@@ -50,7 +47,7 @@ public class GameLoadData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.data.GameLoadData
  * JD-Core Version:    0.7.0.1
  */

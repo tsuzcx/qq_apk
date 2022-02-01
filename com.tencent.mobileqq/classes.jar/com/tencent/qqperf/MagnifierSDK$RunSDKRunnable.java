@@ -43,16 +43,16 @@ class MagnifierSDK$RunSDKRunnable
       localArrayList.add(MagnifierSDK.a().a());
       localArrayList.add(MagnifierSDK.a().a());
     }
+    int i = MobileQQ.sProcessId;
     MagnifierSDK.a(MagnifierSDK.a(), localArrayList);
-    if (MobileQQ.sProcessId == 1) {
-      localArrayList.add(MagnifierSDK.a().c());
+    if (!MagnifierSDK.a().a().runIo) {
+      boolean bool = MagnifierSDK.a().a().runDb;
     }
-    if ((!MagnifierSDK.a().a().runIo) && (MagnifierSDK.a().a().runDb)) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.MagnifierSDK.RunSDKRunnable
  * JD-Core Version:    0.7.0.1
  */

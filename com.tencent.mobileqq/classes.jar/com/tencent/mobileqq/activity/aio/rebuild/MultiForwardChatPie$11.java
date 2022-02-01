@@ -13,44 +13,55 @@ class MultiForwardChatPie$11
 {
   MultiForwardChatPie$11(MultiForwardChatPie paramMultiForwardChatPie) {}
   
-  public void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     if (MultiForwardChatPie.a(this.a) != null) {
       MultiForwardChatPie.a(this.a).notifyDataSetChanged();
     }
   }
   
-  public void a(ThumbnailInfo paramThumbnailInfo)
+  protected void a(ThumbnailInfo paramThumbnailInfo)
   {
-    if (paramThumbnailInfo == null) {}
-    do
+    if (paramThumbnailInfo == null) {
+      return;
+    }
+    if ((paramThumbnailInfo.a instanceof FileManagerEntity))
     {
-      FileManagerEntity localFileManagerEntity;
-      do
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
+      if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0))
       {
-        do
-        {
-          return;
-        } while (!(paramThumbnailInfo.a instanceof FileManagerEntity));
-        localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
-      } while ((paramThumbnailInfo.b == null) || (paramThumbnailInfo.b.length() <= 0));
-      localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
-      this.a.a.getFileManagerDataCenter().c(localFileManagerEntity);
-    } while (MultiForwardChatPie.a(this.a) == null);
-    MultiForwardChatPie.a(this.a).notifyDataSetChanged();
+        localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
+        this.a.a.getFileManagerDataCenter().c(localFileManagerEntity);
+        if (MultiForwardChatPie.a(this.a) != null) {
+          MultiForwardChatPie.a(this.a).notifyDataSetChanged();
+        }
+      }
+    }
   }
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     if (MultiForwardChatPie.a(this.a) != null) {
       MultiForwardChatPie.a(this.a).notifyDataSetChanged();
     }
   }
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiForwardActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("OnFileTransferEnd : isSuccess[");
+      paramString2.append(paramBoolean);
+      paramString2.append("], uniseq[");
+      paramString2.append(paramLong1);
+      paramString2.append("], nSessionId[");
+      paramString2.append(paramLong2);
+      paramString2.append(paramString1);
+      paramString2.append("], peerType[");
+      paramString2.append(paramInt1);
+      paramString2.append("]");
+      QLog.d("MultiForwardActivity", 2, paramString2.toString());
     }
     if (MultiForwardChatPie.a(this.a) != null) {
       MultiForwardChatPie.a(this.a).notifyDataSetChanged();
@@ -59,7 +70,7 @@ class MultiForwardChatPie$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.11
  * JD-Core Version:    0.7.0.1
  */

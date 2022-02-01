@@ -37,26 +37,30 @@ public class TipsLinearLayout
   
   private int a(long paramLong)
   {
-    float f2 = getMeasuredHeight();
-    float f3 = f2 / 300.0F * (float)paramLong;
-    float f1 = f3;
-    if (f3 > f2) {
-      f1 = f2;
+    float f3 = getMeasuredHeight();
+    float f1 = f3 / 300.0F;
+    f1 = (float)paramLong * f1;
+    float f2 = f1;
+    if (f1 > f3) {
+      f2 = f3;
     }
-    switch (this.jdField_b_of_type_Int)
-    {
-    default: 
-      f1 = 0.0F;
+    int i = this.jdField_b_of_type_Int;
+    float f4 = 0.0F;
+    f1 = f4;
+    if (i != 0) {
+      if (i != 1)
+      {
+        if (i != 2) {
+          f1 = f4;
+        } else {
+          f1 = -f2;
+        }
+      }
+      else {
+        f1 = f2 - f3;
+      }
     }
-    for (;;)
-    {
-      return (int)f1;
-      f1 = 0.0F;
-      continue;
-      f1 -= f2;
-      continue;
-      f1 = -f1;
-    }
+    return (int)f1;
   }
   
   private void a(int paramInt)
@@ -121,26 +125,21 @@ public class TipsLinearLayout
     }
     if ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
       this.jdField_a_of_type_Int = a(l);
+    } else if (this.jdField_b_of_type_Int == 2) {
+      this.jdField_a_of_type_Int = (0 - getMeasuredHeight());
+    } else {
+      this.jdField_a_of_type_Int = 0;
     }
-    for (;;)
-    {
-      int i = paramCanvas.save();
-      paramCanvas.translate(0.0F, this.jdField_a_of_type_Int);
-      super.draw(paramCanvas);
-      paramCanvas.restoreToCount(i);
-      if (!this.jdField_b_of_type_Boolean) {
-        invalidate();
-      }
-      return;
-      if (this.jdField_b_of_type_Int == 2) {
-        this.jdField_a_of_type_Int = (0 - getMeasuredHeight());
-      } else {
-        this.jdField_a_of_type_Int = 0;
-      }
+    int i = paramCanvas.save();
+    paramCanvas.translate(0.0F, this.jdField_a_of_type_Int);
+    super.draw(paramCanvas);
+    paramCanvas.restoreToCount(i);
+    if (!this.jdField_b_of_type_Boolean) {
+      invalidate();
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
@@ -152,7 +151,7 @@ public class TipsLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.TipsLinearLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -18,24 +18,22 @@ public class IVLoggerFactory
   
   public Logger getLogger(String paramString)
   {
-    Logger localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.get(paramString);
-    if (localLogger != null) {
-      paramString = localLogger;
+    Object localObject = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.get(paramString);
+    if (localObject != null) {
+      return localObject;
     }
-    IVLoggerFactory.IVLogger localIVLogger;
-    do
-    {
-      return paramString;
-      localIVLogger = new IVLoggerFactory.IVLogger(this, paramString);
-      localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.putIfAbsent(paramString, localIVLogger);
-      paramString = localLogger;
-    } while (localLogger != null);
-    return localIVLogger;
+    localObject = new IVLoggerFactory.IVLogger(this, paramString);
+    Logger localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.putIfAbsent(paramString, localObject);
+    paramString = localLogger;
+    if (localLogger == null) {
+      paramString = (String)localObject;
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.IVLoggerFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,18 @@ public class MiniAppControlInfo
   
   public String toString()
   {
-    return "ctrlInfo:[cmd = " + this.cmd + ", data = " + this.data + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ctrlInfo:[cmd = ");
+    localStringBuilder.append(this.cmd);
+    localStringBuilder.append(", data = ");
+    localStringBuilder.append(this.data);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.push.MiniAppControlInfo
  * JD-Core Version:    0.7.0.1
  */

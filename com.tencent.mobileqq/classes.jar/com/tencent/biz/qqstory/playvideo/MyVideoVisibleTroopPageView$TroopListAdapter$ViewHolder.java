@@ -12,7 +12,7 @@ class MyVideoVisibleTroopPageView$TroopListAdapter$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView.TroopListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

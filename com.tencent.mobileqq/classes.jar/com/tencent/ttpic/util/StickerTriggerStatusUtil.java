@@ -9,8 +9,9 @@ public class StickerTriggerStatusUtil
   
   public static void clear()
   {
-    if (TRIGGER_STATUS_BOARD != null) {
-      TRIGGER_STATUS_BOARD.clear();
+    HashMap localHashMap = TRIGGER_STATUS_BOARD;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
@@ -31,7 +32,7 @@ public class StickerTriggerStatusUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.StickerTriggerStatusUtil
  * JD-Core Version:    0.7.0.1
  */

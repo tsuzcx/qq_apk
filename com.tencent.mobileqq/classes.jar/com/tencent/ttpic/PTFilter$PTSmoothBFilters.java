@@ -81,31 +81,36 @@ public class PTFilter$PTSmoothBFilters
     if (this.mProcessVarianceFilter.getBlurAlpha() > 0.01F)
     {
       paramInt1 = paramFrame.height * 360 / paramFrame.width;
-      this.mBoxFilter.updateParam(360, paramInt1);
+      BoxFilterWithRadius localBoxFilterWithRadius = this.mBoxFilter;
+      float f1 = 360;
+      float f2 = paramInt1;
+      localBoxFilterWithRadius.updateParam(f1, f2);
       this.mBoxFilter.RenderProcess(paramFrame.getTextureId(), 360, paramInt1, -1, 0.0D, this.mBoxFrame1);
       this.mVarianceFilter2.setTexture2(FrameUtil.getLastRenderFrame(this.mBoxFrame1).getTextureId());
       this.mVarianceFilter2.RenderProcess(paramFrame.getTextureId(), 360, paramInt1, -1, 0.0D, this.mVarianceFrame1);
-      this.mBoxFilter.updateParam(360, paramInt1);
+      this.mBoxFilter.updateParam(f1, f2);
       this.mBoxFilter.RenderProcess(this.mVarianceFrame1.getTextureId(), 360, paramInt1, -1, 0.0D, this.mBoxFrame2);
       this.mProcessVarianceFilter2.updateTextures(FrameUtil.getLastRenderFrame(this.mBoxFrame1).getTextureId(), FrameUtil.getLastRenderFrame(this.mBoxFrame2).getTextureId());
       this.mProcessVarianceFilter2.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.outputFrame);
     }
-    for (;;)
+    else
     {
-      return this.outputFrame;
       this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.outputFrame);
     }
+    return this.outputFrame;
   }
   
   public void updateBlurAlpha(float paramFloat)
   {
-    this.mProcessVarianceFilter.updateBlurAlpha(0.8F * paramFloat);
-    this.mProcessVarianceFilter2.updateBlurAlpha(0.8F * paramFloat);
+    SmoothBProcessFilter localSmoothBProcessFilter = this.mProcessVarianceFilter;
+    paramFloat *= 0.8F;
+    localSmoothBProcessFilter.updateBlurAlpha(paramFloat);
+    this.mProcessVarianceFilter2.updateBlurAlpha(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.PTFilter.PTSmoothBFilters
  * JD-Core Version:    0.7.0.1
  */

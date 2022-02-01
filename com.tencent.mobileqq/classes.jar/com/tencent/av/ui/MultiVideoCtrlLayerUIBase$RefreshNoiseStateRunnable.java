@@ -12,34 +12,29 @@ class MultiVideoCtrlLayerUIBase$RefreshNoiseStateRunnable
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.i())
+    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.j())
     {
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.onGAudioUserAudioSuspectNoisy(0L, false, 0L);
       if (QLog.isColorLevel()) {
         QLog.e(this.this$0.d, 2, "RefreshNoiseStateRunnable refreshUserNoiseState return true");
       }
     }
-    Handler localHandler;
-    Runnable localRunnable;
     if (this.this$0.e != null)
     {
-      localHandler = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      localRunnable = this.this$0.e;
-      if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.b >= 2000L) {
-        break label105;
+      Handler localHandler = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      Runnable localRunnable = this.this$0.e;
+      long l2 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.b;
+      long l1 = 2000L;
+      if (l2 >= 2000L) {
+        l1 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.b;
       }
-    }
-    label105:
-    for (long l = 2000L;; l = this.this$0.jdField_a_of_type_ComTencentAvVideoController.b)
-    {
-      localHandler.postDelayed(localRunnable, l);
-      return;
+      localHandler.postDelayed(localRunnable, l1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.RefreshNoiseStateRunnable
  * JD-Core Version:    0.7.0.1
  */

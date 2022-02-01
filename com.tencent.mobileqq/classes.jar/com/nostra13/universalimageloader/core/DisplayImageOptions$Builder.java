@@ -32,11 +32,12 @@ public class DisplayImageOptions$Builder
   
   public Builder bitmapConfig(Bitmap.Config paramConfig)
   {
-    if (paramConfig == null) {
-      throw new IllegalArgumentException("bitmapConfig can't be null");
+    if (paramConfig != null)
+    {
+      this.decodingOptions.inPreferredConfig = paramConfig;
+      return this;
     }
-    this.decodingOptions.inPreferredConfig = paramConfig;
-    return this;
+    throw new IllegalArgumentException("bitmapConfig can't be null");
   }
   
   public DisplayImageOptions build()
@@ -107,11 +108,12 @@ public class DisplayImageOptions$Builder
   
   public Builder decodingOptions(BitmapFactory.Options paramOptions)
   {
-    if (paramOptions == null) {
-      throw new IllegalArgumentException("decodingOptions can't be null");
+    if (paramOptions != null)
+    {
+      this.decodingOptions = paramOptions;
+      return this;
     }
-    this.decodingOptions = paramOptions;
-    return this;
+    throw new IllegalArgumentException("decodingOptions can't be null");
   }
   
   public Builder delayBeforeLoading(int paramInt)
@@ -122,11 +124,12 @@ public class DisplayImageOptions$Builder
   
   public Builder displayer(BitmapDisplayer paramBitmapDisplayer)
   {
-    if (paramBitmapDisplayer == null) {
-      throw new IllegalArgumentException("displayer can't be null");
+    if (paramBitmapDisplayer != null)
+    {
+      this.displayer = paramBitmapDisplayer;
+      return this;
     }
-    this.displayer = paramBitmapDisplayer;
-    return this;
+    throw new IllegalArgumentException("displayer can't be null");
   }
   
   public Builder extraForDownloader(Object paramObject)
@@ -222,7 +225,7 @@ public class DisplayImageOptions$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.DisplayImageOptions.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -34,12 +34,13 @@ public class g
   
   public boolean a()
   {
+    g.a locala = this.c;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.c != null)
+    if (locala != null)
     {
       bool1 = bool2;
-      if (this.c.getStatus() == AsyncTask.Status.RUNNING) {
+      if (locala.getStatus() == AsyncTask.Status.RUNNING) {
         bool1 = true;
       }
     }
@@ -48,33 +49,36 @@ public class g
   
   public void b()
   {
-    if (this.c != null)
+    g.a locala = this.c;
+    if (locala != null)
     {
-      if (this.c.getStatus() == AsyncTask.Status.PENDING)
+      if (locala.getStatus() == AsyncTask.Status.PENDING)
       {
         d();
         this.c.execute(new Void[0]);
-      }
-      do
-      {
         return;
-        if (this.c.getStatus() == AsyncTask.Status.RUNNING)
-        {
-          this.c.cancel(true);
-          d();
-          this.c = new g.a(this, null);
-          this.c.execute(new Void[0]);
-          return;
-        }
-      } while (this.c.getStatus() != AsyncTask.Status.FINISHED);
+      }
+      if (this.c.getStatus() == AsyncTask.Status.RUNNING)
+      {
+        this.c.cancel(true);
+        d();
+        this.c = new g.a(this, null);
+        this.c.execute(new Void[0]);
+        return;
+      }
+      if (this.c.getStatus() == AsyncTask.Status.FINISHED)
+      {
+        this.c = new g.a(this, null);
+        d();
+        this.c.execute(new Void[0]);
+      }
+    }
+    else
+    {
       this.c = new g.a(this, null);
       d();
       this.c.execute(new Void[0]);
-      return;
     }
-    this.c = new g.a(this, null);
-    d();
-    this.c.execute(new Void[0]);
   }
   
   public boolean b(String paramString)
@@ -89,12 +93,15 @@ public class g
   {
     new TypedValue();
     long l1 = SystemClock.uptimeMillis();
-    h.d("SkinEngine", 2, "[record]start,  pid:" + Process.myPid(), null);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[record]start,  pid:");
+    ((StringBuilder)localObject1).append(Process.myPid());
+    h.d("SkinEngine", 2, ((StringBuilder)localObject1).toString(), null);
     this.d = 0;
-    File localFile = this.b.getThemeDirFile();
-    if ((localFile != null) && (localFile.exists()))
+    localObject1 = this.b.getThemeDirFile();
+    if ((localObject1 != null) && (((File)localObject1).exists()))
     {
-      String[] arrayOfString = localFile.list();
+      String[] arrayOfString = ((File)localObject1).list();
       if ((arrayOfString != null) && (arrayOfString.length != 0))
       {
         int k = arrayOfString.length;
@@ -102,24 +109,27 @@ public class g
         while (i < k)
         {
           String str1 = arrayOfString[i];
-          Object localObject = new File(localFile, str1 + "/");
-          if (((File)localObject).exists())
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(str1);
+          ((StringBuilder)localObject2).append("/");
+          localObject2 = new File((File)localObject1, ((StringBuilder)localObject2).toString());
+          if (((File)localObject2).exists())
           {
-            localObject = ((File)localObject).list();
-            if (localObject != null)
+            localObject2 = ((File)localObject2).list();
+            if (localObject2 != null)
             {
-              int m = localObject.length;
+              int m = localObject2.length;
               int j = 0;
-              if (j < m)
+              while (j < m)
               {
-                String str2 = localObject[j];
+                String str2 = localObject2[j];
                 str2 = str2.substring(str2.lastIndexOf("/") + 1);
-                int n = this.b.getDrawableDpi(str1 + "/");
-                if (-1 == n) {}
-                for (;;)
-                {
-                  j += 1;
-                  break;
+                SkinEngine localSkinEngine = this.b;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(str1);
+                localStringBuilder.append("/");
+                int n = localSkinEngine.getDrawableDpi(localStringBuilder.toString());
+                if (-1 != n) {
                   if (-2 == n)
                   {
                     this.f.add(str2);
@@ -131,6 +141,7 @@ public class g
                     this.d += 1;
                   }
                 }
+                j += 1;
               }
             }
           }
@@ -139,7 +150,14 @@ public class g
       }
     }
     long l2 = SystemClock.uptimeMillis();
-    h.d("SkinEngine", 2, "[record]end, mCacheEntry:" + this.d + " pid:" + Process.myPid() + " touchCacheDuration:" + (l2 - l1), null);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[record]end, mCacheEntry:");
+    ((StringBuilder)localObject1).append(this.d);
+    ((StringBuilder)localObject1).append(" pid:");
+    ((StringBuilder)localObject1).append(Process.myPid());
+    ((StringBuilder)localObject1).append(" touchCacheDuration:");
+    ((StringBuilder)localObject1).append(l2 - l1);
+    h.d("SkinEngine", 2, ((StringBuilder)localObject1).toString(), null);
   }
   
   protected void d()
@@ -150,7 +168,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.theme.g
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,21 @@ public class ColorNoteRecentConfBean
     if (QLog.isColorLevel()) {
       QLog.d("ColorNoteRecentConfBean", 2, String.format("parse content=%s", new Object[] { paramString }));
     }
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      try
-      {
-        ColorNoteRecentConfBean localColorNoteRecentConfBean = new ColorNoteRecentConfBean();
-        localColorNoteRecentConfBean.a = new JSONObject(paramString).getInt("ifrecent");
-        return localColorNoteRecentConfBean;
+    }
+    try
+    {
+      ColorNoteRecentConfBean localColorNoteRecentConfBean = new ColorNoteRecentConfBean();
+      localColorNoteRecentConfBean.a = new JSONObject(paramString).getInt("ifrecent");
+      return localColorNoteRecentConfBean;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ColorNoteRecentConfBean", 2, "ColorNoteRecentConfBean parse err: ", paramString);
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ColorNoteRecentConfBean", 2, "ColorNoteRecentConfBean parse err: ", paramString);
+    }
     return null;
   }
   
@@ -36,7 +38,7 @@ public class ColorNoteRecentConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.data.ColorNoteRecentConfBean
  * JD-Core Version:    0.7.0.1
  */

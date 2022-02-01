@@ -19,29 +19,43 @@ public class TPDrmCapability
   private static void capRead(HashSet<String> paramHashSet)
   {
     if (paramHashSet != null) {}
-    for (;;)
+    try
     {
-      int i;
-      try
-      {
-        if (paramHashSet.size() > 0)
-        {
-          paramHashSet = paramHashSet.toArray();
-          capArray = new int[paramHashSet.length];
-          i = 0;
-          if (i < paramHashSet.length) {
-            if ((paramHashSet[i] instanceof String)) {
-              capArray[i] = Integer.parseInt((String)paramHashSet[i]);
-            } else {
-              capArray[i] = -1;
-            }
-          }
-        }
+      if (paramHashSet.size() <= 0) {
+        break label69;
       }
-      finally {}
-      TPLogUtil.i("TPDrmCapability", "TPDrmCapability, read sp ret:" + Arrays.toString(capArray));
+      paramHashSet = paramHashSet.toArray();
+      capArray = new int[paramHashSet.length];
+      i = 0;
+    }
+    finally
+    {
+      for (;;)
+      {
+        int i;
+        for (;;)
+        {
+          label69:
+          throw paramHashSet;
+        }
+        i += 1;
+      }
+    }
+    if (i < paramHashSet.length)
+    {
+      if ((paramHashSet[i] instanceof String)) {
+        capArray[i] = Integer.parseInt((String)paramHashSet[i]);
+      } else {
+        capArray[i] = -1;
+      }
+    }
+    else
+    {
+      paramHashSet = new StringBuilder();
+      paramHashSet.append("TPDrmCapability, read sp ret:");
+      paramHashSet.append(Arrays.toString(capArray));
+      TPLogUtil.i("TPDrmCapability", paramHashSet.toString());
       return;
-      i += 1;
     }
   }
   
@@ -71,67 +85,36 @@ public class TPDrmCapability
     TPThreadUtil.getScheduledExecutorServiceInstance().execute(new TPDrmCapability.1(paramContext));
   }
   
-  /* Error */
   public static boolean isDRMSupport(int paramInt)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 5
-    //   3: ldc 2
-    //   5: monitorenter
-    //   6: getstatic 20	com/tencent/thumbplayer/adapter/player/thumbplayer/TPDrmCapability:capArray	[I
-    //   9: astore 6
-    //   11: aload 6
-    //   13: arraylength
-    //   14: istore_2
-    //   15: iconst_0
-    //   16: istore_1
-    //   17: iload 5
-    //   19: istore 4
-    //   21: iload_1
-    //   22: iload_2
-    //   23: if_icmpge +16 -> 39
-    //   26: aload 6
-    //   28: iload_1
-    //   29: iaload
-    //   30: istore_3
-    //   31: iload_3
-    //   32: iload_0
-    //   33: if_icmpne +12 -> 45
-    //   36: iconst_1
-    //   37: istore 4
-    //   39: ldc 2
-    //   41: monitorexit
-    //   42: iload 4
-    //   44: ireturn
-    //   45: iload_1
-    //   46: iconst_1
-    //   47: iadd
-    //   48: istore_1
-    //   49: goto -32 -> 17
-    //   52: astore 6
-    //   54: ldc 2
-    //   56: monitorexit
-    //   57: aload 6
-    //   59: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	60	0	paramInt	int
-    //   16	33	1	i	int
-    //   14	10	2	j	int
-    //   30	4	3	k	int
-    //   19	24	4	bool1	boolean
-    //   1	17	5	bool2	boolean
-    //   9	18	6	arrayOfInt	int[]
-    //   52	6	6	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   6	15	52	finally
+    try
+    {
+      int[] arrayOfInt = capArray;
+      int j = arrayOfInt.length;
+      int i = 0;
+      while (i < j)
+      {
+        int k = arrayOfInt[i];
+        if (k == paramInt) {
+          return true;
+        }
+        i += 1;
+      }
+      return false;
+    }
+    finally
+    {
+      localObject = finally;
+    }
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.thumbplayer.TPDrmCapability
  * JD-Core Version:    0.7.0.1
  */

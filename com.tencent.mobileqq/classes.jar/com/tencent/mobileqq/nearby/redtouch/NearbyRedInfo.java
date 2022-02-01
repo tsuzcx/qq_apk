@@ -57,13 +57,32 @@ public class NearbyRedInfo
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        QLog.e("NearbyRedInfo", 1, localNumberFormatException, new Object[0]);
-        this.jdField_a_of_type_JavaLangString = paramString;
-      }
+      QLog.e("NearbyRedInfo", 1, localNumberFormatException, new Object[0]);
+      this.jdField_a_of_type_JavaLangString = paramString;
     }
-    this.jdField_b_of_type_Int = (i + this.jdField_b_of_type_Int);
+    this.jdField_b_of_type_Int += i;
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (paramString == null) {
+      return;
+    }
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+  }
+  
+  public void a(List<String> paramList, boolean paramBoolean)
+  {
+    if (paramList == null) {
+      return;
+    }
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
   public void b(int paramInt)
@@ -73,12 +92,24 @@ public class NearbyRedInfo
   
   public String toString()
   {
-    return "[redType=" + this.jdField_a_of_type_Int + ", redNum=" + this.jdField_b_of_type_Int + ", redTxt=" + this.jdField_a_of_type_JavaLangString + ", redAppIdType=" + this.d + ", url=" + this.jdField_a_of_type_JavaUtilList + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[redType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", redNum=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", redTxt=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", redAppIdType=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.NearbyRedInfo
  * JD-Core Version:    0.7.0.1
  */

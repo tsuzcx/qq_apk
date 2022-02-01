@@ -42,55 +42,145 @@ public class ReportController
     int i = DeviceInfoUtil.b();
     long l = DeviceInfoUtil.a() / 1024L / 1024L;
     long[] arrayOfLong = DeviceInfoUtil.a();
-    String str2 = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getNetworkOperator();
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
+    Object localObject2 = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getNetworkOperator();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "";
     }
-    str2 = String.format("%.2f", new Object[] { Double.valueOf(DeviceInfoUtil.a()) });
+    localObject2 = String.format("%.2f", new Object[] { Double.valueOf(DeviceInfoUtil.a()) });
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(i).append(";").append(l).append(";").append(arrayOfLong[0]).append(";").append(arrayOfLong[1]).append(";").append(str1.replaceAll(";", "")).append(";").append(str2).append(";").append(DeviceInfoUtil.i()).append(";").append(DeviceInfoUtil.j()).append(";");
-    str1 = localStringBuilder.toString();
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "getExtraDeviceInfo=" + str1);
+    localStringBuilder.append(i);
+    localStringBuilder.append(";");
+    localStringBuilder.append(l);
+    localStringBuilder.append(";");
+    localStringBuilder.append(arrayOfLong[0]);
+    localStringBuilder.append(";");
+    localStringBuilder.append(arrayOfLong[1]);
+    localStringBuilder.append(";");
+    localStringBuilder.append(((String)localObject1).replaceAll(";", ""));
+    localStringBuilder.append(";");
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append(";");
+    localStringBuilder.append(DeviceInfoUtil.i());
+    localStringBuilder.append(";");
+    localStringBuilder.append(DeviceInfoUtil.j());
+    localStringBuilder.append(";");
+    localObject1 = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getExtraDeviceInfo=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("ReportController", 2, ((StringBuilder)localObject2).toString());
     }
-    return str1;
+    return localObject1;
   }
   
   private static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, int paramInt2, int paramInt3, String paramString7, String paramString8, String paramString9, String paramString10)
   {
+    a(paramString1, paramString2, paramString5, paramString6);
+    a(paramString1, paramInt2, paramString7, paramString8);
     StringBuilder localStringBuilder = new StringBuilder(64);
-    if ((paramString2 != null) && (paramString2.length() > 0)) {
-      localStringBuilder.append(paramString2).append('|');
+    if ((paramString2 != null) && (paramString2.length() > 0))
+    {
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append('|');
     }
-    if (paramString1.equals("dc01440")) {
-      localStringBuilder.append("0").append('|');
+    if (paramString1.equals("dc01440"))
+    {
+      localStringBuilder.append("0");
+      localStringBuilder.append('|');
     }
-    localStringBuilder.append(paramString3).append('|');
-    localStringBuilder.append(paramString4).append('|');
-    localStringBuilder.append(paramString5).append('|');
-    localStringBuilder.append(paramString6).append('|');
-    localStringBuilder.append(paramInt1).append('|');
-    localStringBuilder.append("${count_unknown}").append('|');
-    localStringBuilder.append(paramInt3).append('|');
-    localStringBuilder.append(paramString7).append('|');
-    localStringBuilder.append(paramString8).append('|');
-    localStringBuilder.append(paramString9).append('|');
-    localStringBuilder.append(paramString10).append('|');
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append('|');
+    localStringBuilder.append(paramString4);
+    localStringBuilder.append('|');
+    localStringBuilder.append(paramString5);
+    localStringBuilder.append('|');
+    localStringBuilder.append(paramString6);
+    localStringBuilder.append('|');
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append('|');
+    localStringBuilder.append("${count_unknown}");
+    localStringBuilder.append('|');
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append('|');
+    localStringBuilder.append(paramString7);
+    localStringBuilder.append('|');
+    localStringBuilder.append(paramString8);
+    localStringBuilder.append('|');
+    localStringBuilder.append(paramString9);
+    localStringBuilder.append('|');
+    localStringBuilder.append(paramString10);
+    localStringBuilder.append('|');
     return localStringBuilder.toString();
   }
   
   private static String a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14)
   {
-    String str = "";
+    String str;
     if (paramBoolean) {
       str = NetConnInfoCenter.getSystemNetStateString();
+    } else {
+      str = "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(NetConnInfoCenter.getServerTime()).append("|").append(AppSetting.a()).append("|").append("android").append("|").append(paramString1).append("|").append(paramString2).append("|").append(paramString3).append("|").append(paramString4).append("|").append(paramString5).append("|").append(paramInt).append("|").append(paramString6).append("|").append(DeviceInfoUtil.a()).append("|").append("|").append(DeviceInfoUtil.h()).append("|").append(DeviceInfoUtil.i()).append("|").append(str).append("|").append(DeviceInfoUtil.e()).append("|").append(ROMUtil.getRomDetailInfo()).append("|").append(paramString7).append("|").append(paramString8).append("|").append(paramString9).append("|").append(paramString10).append("|").append(paramString11).append("|").append(paramString12).append("|").append(paramString13).append("|").append(paramString14).append("|");
+    localStringBuilder.append(NetConnInfoCenter.getServerTime());
+    localStringBuilder.append("|");
+    localStringBuilder.append(AppSetting.a());
+    localStringBuilder.append("|");
+    localStringBuilder.append("android");
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString4);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString5);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString6);
+    localStringBuilder.append("|");
+    localStringBuilder.append(DeviceInfoUtil.a());
+    localStringBuilder.append("|");
+    localStringBuilder.append("|");
+    localStringBuilder.append(DeviceInfoUtil.h());
+    localStringBuilder.append("|");
+    localStringBuilder.append(DeviceInfoUtil.i());
+    localStringBuilder.append("|");
+    localStringBuilder.append(str);
+    localStringBuilder.append("|");
+    localStringBuilder.append(DeviceInfoUtil.e());
+    localStringBuilder.append("|");
+    localStringBuilder.append(ROMUtil.getRomDetailInfo());
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString7);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString8);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString9);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString10);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString11);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString12);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString13);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString14);
+    localStringBuilder.append("|");
     paramString1 = localStringBuilder.toString();
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "getDC04272ReportDetail=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("getDC04272ReportDetail=");
+      paramString2.append(paramString1);
+      QLog.d("ReportController", 2, paramString2.toString());
     }
     return paramString1;
   }
@@ -107,6 +197,10 @@ public class ReportController
   {
     paramPluginRuntime.setClickEventReportor(new ReportController.1());
   }
+  
+  private static void a(String paramString1, int paramInt, String paramString2, String paramString3) {}
+  
+  private static void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public static void a(AppRuntime paramAppRuntime)
   {
@@ -141,22 +235,30 @@ public class ReportController
       localObject = paramString2.replace("${uin_unknown}", (CharSequence)localObject);
     }
     paramString2 = ((String)localObject).replace("${count_unknown}", Integer.toString(paramInt));
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "ReportRuntime: " + paramString1 + ", " + paramString2);
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      localObject = new NewIntent(paramAppRuntime.getApplication(), ReportServlet.class);
-      ((NewIntent)localObject).putExtra("sendType", 2);
-      ((NewIntent)localObject).putExtra("tag", paramString1);
-      ((NewIntent)localObject).putExtra("content", paramString2);
-      ((NewIntent)localObject).setWithouLogin(true);
-      paramAppRuntime.startServlet((NewIntent)localObject);
-      return;
-      if (!paramAppRuntime.isLogin()) {
-        QLog.d("ReportController", 1, "ReportRuntime: " + paramString1 + ", " + paramString2);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ReportRuntime: ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("ReportController", 2, ((StringBuilder)localObject).toString());
     }
+    else if (!paramAppRuntime.isLogin())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ReportRuntime: ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("ReportController", 1, ((StringBuilder)localObject).toString());
+    }
+    localObject = new NewIntent(paramAppRuntime.getApplication(), ReportServlet.class);
+    ((NewIntent)localObject).putExtra("sendType", 2);
+    ((NewIntent)localObject).putExtra("tag", paramString1);
+    ((NewIntent)localObject).putExtra("content", paramString2);
+    ((NewIntent)localObject).setWithouLogin(true);
+    paramAppRuntime.startServlet((NewIntent)localObject);
   }
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
@@ -172,11 +274,10 @@ public class ReportController
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
   {
     IReportService localIReportService = ReportControllerServiceHolder.a();
-    AppRuntime localAppRuntime = paramAppRuntime;
     if (localIReportService != null) {
-      localAppRuntime = localIReportService.a(paramAppRuntime);
+      paramAppRuntime = localIReportService.a(paramAppRuntime);
     }
-    if (localAppRuntime == null)
+    if (paramAppRuntime == null)
     {
       paramAppRuntime = a(true, "${uin_unknown}", paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
       paramString1 = new Intent();
@@ -188,17 +289,16 @@ public class ReportController
       BaseApplication.getContext().sendBroadcast(paramString1);
       return;
     }
-    a(localAppRuntime, "dc04272", a(true, localAppRuntime.getAccount(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
+    a(paramAppRuntime, "dc04272", a(true, paramAppRuntime.getAccount(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
   }
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, String paramString6, String paramString7, String paramString8, String paramString9)
   {
     IReportService localIReportService = ReportControllerServiceHolder.a();
-    AppRuntime localAppRuntime = paramAppRuntime;
     if (localIReportService != null) {
-      localAppRuntime = localIReportService.a(paramAppRuntime);
+      paramAppRuntime = localIReportService.a(paramAppRuntime);
     }
-    if (localAppRuntime == null)
+    if (paramAppRuntime == null)
     {
       paramAppRuntime = a(paramString1, paramString2, "${uin_unknown}", paramString3, paramString4, paramString5, paramInt1, paramInt3, paramInt2, paramString6, paramString7, paramString8, paramString9);
       paramString2 = new Intent();
@@ -211,31 +311,32 @@ public class ReportController
       if (localIReportService != null) {
         localIReportService.a(paramString1, paramString4, paramAppRuntime);
       }
-      return;
     }
-    Object localObject = new ArrayList();
-    paramAppRuntime = new ArrayList();
-    IReportDataProviderService localIReportDataProviderService = ReportControllerServiceHolder.a();
-    if (localIReportDataProviderService != null)
+    else
     {
-      localObject = localIReportDataProviderService.a();
-      paramAppRuntime = localIReportDataProviderService.b();
-    }
-    if ((((List)localObject).contains(paramString4)) || (paramAppRuntime.contains(paramString4))) {
-      paramAppRuntime = "";
-    }
-    for (;;)
-    {
-      paramAppRuntime = a(paramString1, paramString2, paramString3, paramAppRuntime, paramString4, paramString5, paramInt1, paramInt3, paramInt2, paramString6, paramString7, paramString8, paramString9);
-      a(localAppRuntime, paramString1, paramAppRuntime, paramInt3);
-      if (localIReportService == null) {
-        break;
+      Object localObject1 = new ArrayList();
+      Object localObject2 = new ArrayList();
+      IReportDataProviderService localIReportDataProviderService = ReportControllerServiceHolder.a();
+      if (localIReportDataProviderService != null)
+      {
+        localObject1 = localIReportDataProviderService.a();
+        localObject2 = localIReportDataProviderService.b();
       }
-      localIReportService.a(paramString1, paramString4, paramAppRuntime);
-      return;
-      localObject = localAppRuntime.getAccount();
-      paramAppRuntime = paramString3;
-      paramString3 = (String)localObject;
+      if ((!((List)localObject1).contains(paramString4)) && (!((List)localObject2).contains(paramString4)))
+      {
+        localObject1 = paramAppRuntime.getAccount();
+        localObject2 = paramString3;
+      }
+      else
+      {
+        localObject2 = "";
+        localObject1 = paramString3;
+      }
+      paramString2 = a(paramString1, paramString2, (String)localObject1, (String)localObject2, paramString4, paramString5, paramInt1, paramInt3, paramInt2, paramString6, paramString7, paramString8, paramString9);
+      a(paramAppRuntime, paramString1, paramString2, paramInt3);
+      if (localIReportService != null) {
+        localIReportService.a(paramString1, paramString4, paramString2);
+      }
     }
   }
   
@@ -247,11 +348,10 @@ public class ReportController
   public static void a(AppRuntime paramAppRuntime, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
   {
     IReportService localIReportService = ReportControllerServiceHolder.a();
-    AppRuntime localAppRuntime = paramAppRuntime;
     if (localIReportService != null) {
-      localAppRuntime = localIReportService.a(paramAppRuntime);
+      paramAppRuntime = localIReportService.a(paramAppRuntime);
     }
-    if (localAppRuntime == null)
+    if (paramAppRuntime == null)
     {
       paramAppRuntime = a(paramBoolean, "${uin_unknown}", paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
       paramString1 = new Intent();
@@ -263,16 +363,12 @@ public class ReportController
       BaseApplication.getContext().sendBroadcast(paramString1);
       return;
     }
-    a(localAppRuntime, "dc04272", a(paramBoolean, localAppRuntime.getAccount(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
+    a(paramAppRuntime, "dc04272", a(paramBoolean, paramAppRuntime.getAccount(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
   }
   
   public static boolean a(String paramString)
   {
-    boolean bool = false;
-    if (("P_CliOper".equals(paramString)) || ("CliOper".equals(paramString)) || ("on_off".equals(paramString)) || ("CliStatus".equals(paramString))) {
-      bool = true;
-    }
-    return bool;
+    return ("P_CliOper".equals(paramString)) || ("CliOper".equals(paramString)) || ("on_off".equals(paramString)) || ("CliStatus".equals(paramString));
   }
   
   public static boolean a(AppRuntime paramAppRuntime, boolean paramBoolean)
@@ -281,21 +377,14 @@ public class ReportController
       QLog.d("ReportController", 2, "startReportLooper");
     }
     IReportDataProviderService localIReportDataProviderService = ReportControllerServiceHolder.a();
-    if (localIReportDataProviderService != null) {}
-    for (paramAppRuntime = (ReportController)localIReportDataProviderService.a(paramAppRuntime);; paramAppRuntime = null)
-    {
-      if (paramAppRuntime != null) {
-        if (paramBoolean) {
-          break label51;
-        }
-      }
-      label51:
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramAppRuntime.a(paramBoolean);
-        return true;
-      }
+    ReportController localReportController = null;
+    if (localIReportDataProviderService != null) {
+      localReportController = (ReportController)localIReportDataProviderService.a(paramAppRuntime);
     }
+    if (localReportController != null) {
+      localReportController.a(paramBoolean ^ true);
+    }
+    return true;
   }
   
   public static void b(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt)
@@ -326,11 +415,10 @@ public class ReportController
   public static void b(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
   {
     IReportService localIReportService = ReportControllerServiceHolder.a();
-    AppRuntime localAppRuntime = paramAppRuntime;
     if (localIReportService != null) {
-      localAppRuntime = localIReportService.a(paramAppRuntime);
+      paramAppRuntime = localIReportService.a(paramAppRuntime);
     }
-    if (localAppRuntime == null)
+    if (paramAppRuntime == null)
     {
       paramAppRuntime = a(true, "${uin_unknown}", paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
       paramString1 = new Intent();
@@ -342,17 +430,16 @@ public class ReportController
       BaseApplication.getContext().sendBroadcast(paramString1);
       return;
     }
-    b(localAppRuntime, "dc04272", a(true, localAppRuntime.getAccount(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
+    b(paramAppRuntime, "dc04272", a(true, paramAppRuntime.getAccount(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
   }
   
   public static void b(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, String paramString6, String paramString7, String paramString8, String paramString9)
   {
     IReportService localIReportService = ReportControllerServiceHolder.a();
-    AppRuntime localAppRuntime = paramAppRuntime;
     if (localIReportService != null) {
-      localAppRuntime = localIReportService.a(paramAppRuntime);
+      paramAppRuntime = localIReportService.a(paramAppRuntime);
     }
-    if (localAppRuntime == null)
+    if (paramAppRuntime == null)
     {
       paramAppRuntime = a(paramString1, paramString2, "${uin_unknown}", paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8, paramString9);
       paramString2 = new Intent();
@@ -366,13 +453,14 @@ public class ReportController
         localIReportService.a(paramString1, paramString4, paramAppRuntime);
       }
     }
-    do
+    else
     {
-      return;
-      paramAppRuntime = a(paramString1, paramString2, localAppRuntime.getAccount(), paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8, paramString9);
-      b(localAppRuntime, paramString1, paramAppRuntime, paramInt2);
-    } while (localIReportService == null);
-    localIReportService.a(paramString1, paramString4, paramAppRuntime);
+      paramString2 = a(paramString1, paramString2, paramAppRuntime.getAccount(), paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8, paramString9);
+      b(paramAppRuntime, paramString1, paramString2, paramInt2);
+      if (localIReportService != null) {
+        localIReportService.a(paramString1, paramString4, paramString2);
+      }
+    }
   }
   
   public static void b(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
@@ -415,7 +503,7 @@ public class ReportController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ReportController
  * JD-Core Version:    0.7.0.1
  */

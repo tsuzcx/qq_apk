@@ -36,8 +36,11 @@ public class MultiMsgForwardRequest
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest == null) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+    MultiMsgRequest localMultiMsgRequest = this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest;
+    if (localMultiMsgRequest == null) {
+      return -1;
+    }
+    if (localMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
       return -1;
     }
     return this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
@@ -45,10 +48,11 @@ public class MultiMsgForwardRequest
   
   public String a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest == null) {
+    MultiMsgRequest localMultiMsgRequest = this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest;
+    if (localMultiMsgRequest == null) {
       return "";
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing == null) {
+    if (localMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing == null) {
       return "";
     }
     return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
@@ -60,39 +64,35 @@ public class MultiMsgForwardRequest
     {
       this.b = new HashMap();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         Object localObject = (String)localIterator.next();
         ArrayList localArrayList = new ArrayList();
         this.b.put(localObject, localArrayList);
         localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
         int i = 0;
-        label86:
-        MessageRecord localMessageRecord1;
-        if (i < ((ArrayList)localObject).size())
+        while (i < ((ArrayList)localObject).size())
         {
-          localMessageRecord1 = (MessageRecord)((ArrayList)localObject).get(i);
-          if (!(localMessageRecord1 instanceof MessageForReplyText)) {
-            break label175;
+          MessageRecord localMessageRecord1 = (MessageRecord)((ArrayList)localObject).get(i);
+          if ((localMessageRecord1 instanceof MessageForReplyText))
+          {
+            MessageForReplyText localMessageForReplyText = (MessageForReplyText)localMessageRecord1;
+            MessageRecord localMessageRecord2 = localMessageForReplyText.getSourceMessage();
+            if ((localMessageRecord2 != null) && (FileManagerUtil.a(localMessageRecord2)))
+            {
+              localMessageRecord2.isMultiMsg = localMessageForReplyText.isMultiMsg;
+              localArrayList.add(localMessageRecord2);
+            }
+            else
+            {
+              localArrayList.add(localMessageRecord1);
+            }
           }
-          MessageForReplyText localMessageForReplyText = (MessageForReplyText)localMessageRecord1;
-          MessageRecord localMessageRecord2 = localMessageForReplyText.getSourceMessage();
-          if ((localMessageRecord2 == null) || (!FileManagerUtil.a(localMessageRecord2))) {
-            break label165;
+          else
+          {
+            localArrayList.add(localMessageRecord1);
           }
-          localMessageRecord2.isMultiMsg = localMessageForReplyText.isMultiMsg;
-          localArrayList.add(localMessageRecord2);
-        }
-        for (;;)
-        {
           i += 1;
-          break label86;
-          break;
-          label165:
-          localArrayList.add(localMessageRecord1);
-          continue;
-          label175:
-          localArrayList.add(localMessageRecord1);
         }
       }
     }
@@ -118,33 +118,41 @@ public class MultiMsgForwardRequest
   
   public void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt)
   {
-    if ((paramList == null) || (paramMessageRecord == null)) {}
-    do
+    if (paramList != null)
     {
-      return;
+      if (paramMessageRecord == null) {
+        return;
+      }
       paramList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
       paramString = null;
       if (paramList != null) {
         paramString = (MessageRecord)paramList.get(paramInt);
       }
-    } while (paramString == null);
-    if ((paramString instanceof MessageForReplyText))
-    {
-      paramList = HardCodeUtil.a(2131707028) + paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-      paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(paramMessageRecord, paramList, true);
-      ((MessageForReplyText)paramString).setSourceMessageRecord(paramList);
-      return;
+      if (paramString != null)
+      {
+        if ((paramString instanceof MessageForReplyText))
+        {
+          paramList = new StringBuilder();
+          paramList.append(HardCodeUtil.a(2131707050));
+          paramList.append(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName"));
+          paramList = paramList.toString();
+          paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(paramMessageRecord, paramList, true);
+          ((MessageForReplyText)paramString).setSourceMessageRecord(paramList);
+          return;
+        }
+        paramString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFaildReason");
+        paramList.set(paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(paramMessageRecord, paramString, true));
+      }
     }
-    paramString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFaildReason");
-    paramList.set(paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(paramMessageRecord, paramString, true));
   }
   
   public String b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest == null) {
+    MultiMsgRequest localMultiMsgRequest = this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest;
+    if (localMultiMsgRequest == null) {
       return "";
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+    if (localMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
       return "";
     }
     return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
@@ -152,7 +160,7 @@ public class MultiMsgForwardRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.msgforward.MultiMsgForwardRequest
  * JD-Core Version:    0.7.0.1
  */

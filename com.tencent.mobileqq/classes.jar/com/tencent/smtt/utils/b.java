@@ -2,6 +2,7 @@ package com.tencent.smtt.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -9,6 +10,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -42,7 +44,11 @@ public class b
       String str = new String(Build.MODEL.getBytes("UTF-8"), "ISO8859-1");
       return str;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label20:
+      break label20;
+    }
     return Build.MODEL;
   }
   
@@ -53,7 +59,11 @@ public class b
       paramContext = paramContext.getPackageName();
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label7:
+      break label7;
+    }
     return null;
   }
   
@@ -62,61 +72,57 @@ public class b
     try
     {
       paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramFile.getAbsolutePath(), 65);
-      if (paramContext != null) {
-        if ((paramContext.signatures == null) || (paramContext.signatures.length <= 0)) {}
+      if (paramContext == null) {
+        break label107;
       }
-      for (paramContext = paramContext.signatures[0]; paramContext != null; paramContext = null)
-      {
-        return paramContext.toCharsString();
+      if ((paramContext.signatures != null) && (paramContext.signatures.length > 0)) {
+        paramContext = paramContext.signatures[0];
+      } else {
         TbsLog.w("AppUtil", "[getSignatureFromApk] pkgInfo is not null BUT signatures is null!");
       }
-      return null;
     }
     catch (Exception paramContext)
     {
-      TbsLog.i("AppUtil", "getSign " + paramFile + "failed");
+      for (;;)
+      {
+        continue;
+        label107:
+        paramContext = null;
+      }
     }
+    if (paramContext != null)
+    {
+      paramContext = paramContext.toCharsString();
+      return paramContext;
+      paramContext = new StringBuilder();
+      paramContext.append("getSign ");
+      paramContext.append(paramFile);
+      paramContext.append("failed");
+      TbsLog.i("AppUtil", paramContext.toString());
+    }
+    return null;
   }
   
-  /* Error */
   public static String a(Context paramContext, String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 53	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   4: astore_2
-    //   5: aload_0
-    //   6: invokevirtual 58	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   9: aload_2
-    //   10: sipush 128
-    //   13: invokevirtual 116	android/content/pm/PackageManager:getApplicationInfo	(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
-    //   16: getfield 122	android/content/pm/ApplicationInfo:metaData	Landroid/os/Bundle;
-    //   19: aload_1
-    //   20: invokevirtual 128	android/os/Bundle:get	(Ljava/lang/String;)Ljava/lang/Object;
-    //   23: invokestatic 132	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   26: astore_0
-    //   27: aload_0
-    //   28: invokestatic 138	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   31: invokestatic 142	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   34: invokestatic 132	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   37: astore_1
-    //   38: aload_1
-    //   39: areturn
-    //   40: astore_0
-    //   41: aconst_null
-    //   42: areturn
-    //   43: astore_1
-    //   44: aload_0
-    //   45: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	46	0	paramContext	Context
-    //   0	46	1	paramString	String
-    //   4	6	2	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   0	27	40	java/lang/Exception
-    //   27	38	43	java/lang/Exception
+    try
+    {
+      String str = paramContext.getPackageName();
+      paramContext = String.valueOf(paramContext.getPackageManager().getApplicationInfo(str, 128).metaData.get(paramString));
+    }
+    catch (Exception paramContext)
+    {
+      label40:
+      break label40;
+    }
+    try
+    {
+      paramString = String.valueOf(Integer.toHexString(Integer.parseInt(paramContext)));
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return null;
+    return paramContext;
   }
   
   /* Error */
@@ -124,179 +130,187 @@ public class b
   {
     // Byte code:
     //   0: aload_2
-    //   1: ifnull +10 -> 11
+    //   1: ifnull +279 -> 280
     //   4: aload_2
-    //   5: invokevirtual 151	java/io/File:exists	()Z
-    //   8: ifne +8 -> 16
-    //   11: ldc 14
-    //   13: astore_0
-    //   14: aload_0
-    //   15: areturn
-    //   16: iload_1
-    //   17: ifeq +72 -> 89
-    //   20: iconst_2
-    //   21: newarray byte
-    //   23: astore 5
-    //   25: new 153	java/io/RandomAccessFile
-    //   28: dup
-    //   29: aload_2
-    //   30: ldc 155
-    //   32: invokespecial 158	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   35: astore 4
-    //   37: aload 4
-    //   39: astore_3
-    //   40: aload 4
-    //   42: aload 5
-    //   44: invokevirtual 162	java/io/RandomAccessFile:read	([B)I
-    //   47: pop
-    //   48: aload 4
-    //   50: astore_3
-    //   51: new 30	java/lang/String
-    //   54: dup
-    //   55: aload 5
-    //   57: invokespecial 165	java/lang/String:<init>	([B)V
-    //   60: ldc 167
-    //   62: invokevirtual 171	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   5: invokevirtual 141	java/io/File:exists	()Z
+    //   8: ifne +6 -> 14
+    //   11: ldc 8
+    //   13: areturn
+    //   14: iload_1
+    //   15: ifeq +132 -> 147
+    //   18: iconst_2
+    //   19: newarray byte
+    //   21: astore 5
+    //   23: new 143	java/io/RandomAccessFile
+    //   26: dup
+    //   27: aload_2
+    //   28: ldc 145
+    //   30: invokespecial 148	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   33: astore 4
+    //   35: aload 4
+    //   37: astore_3
+    //   38: aload 4
+    //   40: aload 5
+    //   42: invokevirtual 152	java/io/RandomAccessFile:read	([B)I
+    //   45: pop
+    //   46: aload 4
+    //   48: astore_3
+    //   49: new 20	java/lang/String
+    //   52: dup
+    //   53: aload 5
+    //   55: invokespecial 155	java/lang/String:<init>	([B)V
+    //   58: ldc 157
+    //   60: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   63: istore_1
+    //   64: iload_1
     //   65: ifne +19 -> 84
     //   68: aload 4
-    //   70: invokevirtual 174	java/io/RandomAccessFile:close	()V
-    //   73: ldc 14
+    //   70: invokevirtual 164	java/io/RandomAccessFile:close	()V
+    //   73: ldc 8
     //   75: areturn
     //   76: astore_0
     //   77: aload_0
-    //   78: invokevirtual 177	java/io/IOException:printStackTrace	()V
-    //   81: ldc 14
+    //   78: invokevirtual 167	java/io/IOException:printStackTrace	()V
+    //   81: ldc 8
     //   83: areturn
     //   84: aload 4
-    //   86: invokevirtual 174	java/io/RandomAccessFile:close	()V
-    //   89: aload_0
-    //   90: invokevirtual 181	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   93: invokevirtual 53	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   96: ldc 183
-    //   98: invokevirtual 187	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   101: ifeq +36 -> 137
-    //   104: ldc 82
-    //   106: ldc 189
-    //   108: invokestatic 111	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   111: aload_2
-    //   112: invokestatic 192	com/tencent/smtt/utils/b:a	(Ljava/io/File;)Ljava/lang/String;
-    //   115: astore_3
-    //   116: aload_3
-    //   117: ifnull +20 -> 137
-    //   120: ldc 82
-    //   122: ldc 194
-    //   124: invokestatic 111	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   127: aload_3
-    //   128: areturn
-    //   129: astore_3
-    //   130: ldc 82
-    //   132: ldc 196
-    //   134: invokestatic 111	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   137: ldc 82
-    //   139: ldc 198
-    //   141: invokestatic 111	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   144: aload_0
-    //   145: aload_2
-    //   146: invokestatic 200	com/tencent/smtt/utils/b:a	(Landroid/content/Context;Ljava/io/File;)Ljava/lang/String;
-    //   149: astore_3
-    //   150: ldc 82
-    //   152: new 92	java/lang/StringBuilder
-    //   155: dup
-    //   156: invokespecial 94	java/lang/StringBuilder:<init>	()V
-    //   159: ldc 202
-    //   161: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: aload_3
-    //   165: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   171: invokestatic 111	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   86: invokevirtual 164	java/io/RandomAccessFile:close	()V
+    //   89: goto +58 -> 147
+    //   92: astore 5
+    //   94: goto +14 -> 108
+    //   97: astore_0
+    //   98: aconst_null
+    //   99: astore_3
+    //   100: goto +33 -> 133
+    //   103: astore 5
+    //   105: aconst_null
+    //   106: astore 4
+    //   108: aload 4
+    //   110: astore_3
+    //   111: aload 5
+    //   113: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   116: aload 4
+    //   118: invokevirtual 164	java/io/RandomAccessFile:close	()V
+    //   121: goto +26 -> 147
+    //   124: astore_3
+    //   125: aload_3
+    //   126: invokevirtual 167	java/io/IOException:printStackTrace	()V
+    //   129: goto +18 -> 147
+    //   132: astore_0
+    //   133: aload_3
+    //   134: invokevirtual 164	java/io/RandomAccessFile:close	()V
+    //   137: goto +8 -> 145
+    //   140: astore_2
+    //   141: aload_2
+    //   142: invokevirtual 167	java/io/IOException:printStackTrace	()V
+    //   145: aload_0
+    //   146: athrow
+    //   147: aload_0
+    //   148: invokevirtual 172	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   151: invokevirtual 43	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   154: ldc 174
+    //   156: invokevirtual 178	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   159: ifeq +35 -> 194
+    //   162: ldc 67
+    //   164: ldc 180
+    //   166: invokestatic 101	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   169: aload_2
+    //   170: invokestatic 183	com/tencent/smtt/utils/b:a	(Ljava/io/File;)Ljava/lang/String;
+    //   173: astore_3
     //   174: aload_3
-    //   175: astore_0
-    //   176: aload_3
-    //   177: ifnonnull -163 -> 14
-    //   180: aload_2
-    //   181: invokestatic 192	com/tencent/smtt/utils/b:a	(Ljava/io/File;)Ljava/lang/String;
-    //   184: astore_0
-    //   185: ldc 82
-    //   187: new 92	java/lang/StringBuilder
-    //   190: dup
-    //   191: invokespecial 94	java/lang/StringBuilder:<init>	()V
-    //   194: ldc 204
-    //   196: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: aload_0
-    //   200: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   203: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   206: invokestatic 111	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   209: aload_0
-    //   210: areturn
-    //   211: astore_3
-    //   212: aload_3
-    //   213: invokevirtual 177	java/io/IOException:printStackTrace	()V
-    //   216: goto -127 -> 89
-    //   219: astore 5
-    //   221: aconst_null
-    //   222: astore 4
-    //   224: aload 4
-    //   226: astore_3
-    //   227: aload 5
-    //   229: invokevirtual 205	java/lang/Exception:printStackTrace	()V
-    //   232: aload 4
-    //   234: invokevirtual 174	java/io/RandomAccessFile:close	()V
-    //   237: goto -148 -> 89
-    //   240: astore_3
-    //   241: aload_3
-    //   242: invokevirtual 177	java/io/IOException:printStackTrace	()V
-    //   245: goto -156 -> 89
-    //   248: astore_0
-    //   249: aconst_null
-    //   250: astore_3
-    //   251: aload_3
-    //   252: invokevirtual 174	java/io/RandomAccessFile:close	()V
-    //   255: aload_0
-    //   256: athrow
-    //   257: astore_2
-    //   258: aload_2
-    //   259: invokevirtual 177	java/io/IOException:printStackTrace	()V
-    //   262: goto -7 -> 255
-    //   265: astore_0
-    //   266: goto -15 -> 251
-    //   269: astore 5
-    //   271: goto -47 -> 224
+    //   175: ifnull +19 -> 194
+    //   178: ldc 67
+    //   180: ldc 185
+    //   182: invokestatic 101	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   185: aload_3
+    //   186: areturn
+    //   187: ldc 67
+    //   189: ldc 187
+    //   191: invokestatic 101	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   194: ldc 67
+    //   196: ldc 189
+    //   198: invokestatic 101	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   201: aload_0
+    //   202: aload_2
+    //   203: invokestatic 191	com/tencent/smtt/utils/b:a	(Landroid/content/Context;Ljava/io/File;)Ljava/lang/String;
+    //   206: astore_3
+    //   207: new 82	java/lang/StringBuilder
+    //   210: dup
+    //   211: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   214: astore_0
+    //   215: aload_0
+    //   216: ldc 193
+    //   218: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: pop
+    //   222: aload_0
+    //   223: aload_3
+    //   224: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   227: pop
+    //   228: ldc 67
+    //   230: aload_0
+    //   231: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   234: invokestatic 101	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   237: aload_3
+    //   238: astore_0
+    //   239: aload_3
+    //   240: ifnonnull +38 -> 278
+    //   243: aload_2
+    //   244: invokestatic 183	com/tencent/smtt/utils/b:a	(Ljava/io/File;)Ljava/lang/String;
+    //   247: astore_0
+    //   248: new 82	java/lang/StringBuilder
+    //   251: dup
+    //   252: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   255: astore_2
+    //   256: aload_2
+    //   257: ldc 195
+    //   259: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   262: pop
+    //   263: aload_2
+    //   264: aload_0
+    //   265: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: pop
+    //   269: ldc 67
+    //   271: aload_2
+    //   272: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   275: invokestatic 101	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   278: aload_0
+    //   279: areturn
+    //   280: ldc 8
+    //   282: areturn
+    //   283: astore_3
+    //   284: goto -97 -> 187
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	274	0	paramContext	Context
-    //   0	274	1	paramBoolean	boolean
-    //   0	274	2	paramFile	File
-    //   39	89	3	localObject1	Object
-    //   129	1	3	localThrowable	Throwable
-    //   149	28	3	str	String
-    //   211	2	3	localIOException1	java.io.IOException
-    //   226	1	3	localRandomAccessFile1	java.io.RandomAccessFile
-    //   240	2	3	localIOException2	java.io.IOException
-    //   250	2	3	localObject2	Object
-    //   35	198	4	localRandomAccessFile2	java.io.RandomAccessFile
-    //   23	33	5	arrayOfByte	byte[]
-    //   219	9	5	localException1	Exception
-    //   269	1	5	localException2	Exception
+    //   0	287	0	paramContext	Context
+    //   0	287	1	paramBoolean	boolean
+    //   0	287	2	paramFile	File
+    //   37	74	3	localRandomAccessFile1	java.io.RandomAccessFile
+    //   124	10	3	localIOException	java.io.IOException
+    //   173	67	3	str	String
+    //   283	1	3	localThrowable	Throwable
+    //   33	84	4	localRandomAccessFile2	java.io.RandomAccessFile
+    //   21	33	5	arrayOfByte	byte[]
+    //   92	1	5	localException1	Exception
+    //   103	9	5	localException2	Exception
     // Exception table:
     //   from	to	target	type
     //   68	73	76	java/io/IOException
-    //   89	116	129	java/lang/Throwable
-    //   120	127	129	java/lang/Throwable
-    //   84	89	211	java/io/IOException
-    //   20	37	219	java/lang/Exception
-    //   232	237	240	java/io/IOException
-    //   20	37	248	finally
-    //   251	255	257	java/io/IOException
-    //   40	48	265	finally
-    //   51	68	265	finally
-    //   227	232	265	finally
-    //   40	48	269	java/lang/Exception
-    //   51	68	269	java/lang/Exception
+    //   38	46	92	java/lang/Exception
+    //   49	64	92	java/lang/Exception
+    //   18	35	97	finally
+    //   18	35	103	java/lang/Exception
+    //   84	89	124	java/io/IOException
+    //   116	121	124	java/io/IOException
+    //   38	46	132	finally
+    //   49	64	132	finally
+    //   111	116	132	finally
+    //   133	137	140	java/io/IOException
+    //   147	174	283	java/lang/Throwable
+    //   178	185	283	java/lang/Throwable
   }
   
   private static String a(File paramFile)
   {
-    String str1;
     for (;;)
     {
       try
@@ -304,32 +318,36 @@ public class b
         JarFile localJarFile = new JarFile(paramFile);
         paramFile = localJarFile.getJarEntry("AndroidManifest.xml");
         byte[] arrayOfByte = new byte[8192];
-        str1 = a(a(localJarFile, paramFile, arrayOfByte)[0].getEncoded());
+        String str1 = a(a(localJarFile, paramFile, arrayOfByte)[0].getEncoded());
         Enumeration localEnumeration = localJarFile.entries();
-        if (!localEnumeration.hasMoreElements()) {
-          break;
-        }
-        paramFile = (JarEntry)localEnumeration.nextElement();
-        String str2 = paramFile.getName();
-        if (str2 == null) {
-          continue;
-        }
-        paramFile = a(localJarFile, paramFile, arrayOfByte);
-        if (paramFile != null)
+        if (localEnumeration.hasMoreElements())
         {
-          paramFile = a(paramFile[0].getEncoded());
-          if (paramFile == null)
+          paramFile = (JarEntry)localEnumeration.nextElement();
+          String str2 = paramFile.getName();
+          if (str2 == null) {
+            continue;
+          }
+          paramFile = a(localJarFile, paramFile, arrayOfByte);
+          if (paramFile != null)
           {
-            if (str2.startsWith("META-INF/")) {
+            paramFile = a(paramFile[0].getEncoded());
+            if (paramFile == null)
+            {
+              if (str2.startsWith("META-INF/")) {
+                continue;
+              }
+              return null;
+            }
+            boolean bool = paramFile.equals(str1);
+            if (bool) {
               continue;
             }
             return null;
           }
-          boolean bool = paramFile.equals(str1);
-          if (bool) {
-            continue;
-          }
-          return null;
+        }
+        else
+        {
+          return str1;
         }
       }
       catch (Exception paramFile)
@@ -339,7 +357,6 @@ public class b
       }
       paramFile = null;
     }
-    return str1;
   }
   
   private static String a(String paramString)
@@ -356,31 +373,25 @@ public class b
     int k = paramArrayOfByte.length;
     char[] arrayOfChar = new char[k * 2];
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
-      int m = paramArrayOfByte[i];
-      int j = m >> 4 & 0xF;
-      if (j >= 10)
-      {
+      int n = paramArrayOfByte[i];
+      int j = n >> 4 & 0xF;
+      int m = i * 2;
+      if (j >= 10) {
         j = j + 97 - 10;
-        label44:
-        arrayOfChar[(i * 2)] = ((char)j);
-        j = m & 0xF;
-        if (j < 10) {
-          break label97;
-        }
-        j = j + 97 - 10;
-      }
-      for (;;)
-      {
-        arrayOfChar[(i * 2 + 1)] = ((char)j);
-        i += 1;
-        break;
-        j += 48;
-        break label44;
-        label97:
+      } else {
         j += 48;
       }
+      arrayOfChar[m] = ((char)j);
+      j = n & 0xF;
+      if (j >= 10) {
+        j = j + 97 - 10;
+      } else {
+        j += 48;
+      }
+      arrayOfChar[(m + 1)] = ((char)j);
+      i += 1;
     }
     return new String(arrayOfChar);
   }
@@ -405,184 +416,173 @@ public class b
   public static String b()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aconst_null
-    //   3: astore_1
-    //   4: aconst_null
-    //   5: astore 4
-    //   7: getstatic 20	com/tencent/smtt/utils/b:c	Ljava/lang/String;
-    //   10: invokestatic 285	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   13: ifne +9 -> 22
-    //   16: getstatic 20	com/tencent/smtt/utils/b:c	Ljava/lang/String;
-    //   19: astore_2
-    //   20: aload_2
-    //   21: areturn
-    //   22: new 287	java/io/InputStreamReader
-    //   25: dup
-    //   26: invokestatic 293	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   29: ldc_w 295
-    //   32: invokevirtual 299	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   35: invokevirtual 304	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   38: invokespecial 307	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   41: astore_0
-    //   42: aload_1
-    //   43: astore_2
-    //   44: aload_0
-    //   45: astore_1
-    //   46: new 309	java/io/BufferedReader
-    //   49: dup
-    //   50: aload_0
-    //   51: invokespecial 312	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   54: astore_3
-    //   55: aload_3
-    //   56: invokevirtual 315	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   59: ldc_w 317
-    //   62: invokevirtual 187	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   65: ifeq +33 -> 98
-    //   68: ldc_w 319
-    //   71: invokestatic 321	com/tencent/smtt/utils/b:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   74: astore_1
-    //   75: aload_3
-    //   76: ifnull +7 -> 83
-    //   79: aload_3
-    //   80: invokevirtual 322	java/io/BufferedReader:close	()V
-    //   83: aload_1
-    //   84: astore_2
-    //   85: aload_0
-    //   86: ifnull -66 -> 20
-    //   89: aload_0
-    //   90: invokevirtual 323	java/io/InputStreamReader:close	()V
-    //   93: aload_1
-    //   94: areturn
-    //   95: astore_0
-    //   96: aload_1
-    //   97: areturn
-    //   98: ldc_w 325
-    //   101: invokestatic 330	java/lang/System:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   104: invokestatic 321	com/tencent/smtt/utils/b:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   107: astore_1
-    //   108: goto -33 -> 75
+    //   0: getstatic 272	com/tencent/smtt/utils/b:c	Ljava/lang/String;
+    //   3: invokestatic 277	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6: ifne +7 -> 13
+    //   9: getstatic 272	com/tencent/smtt/utils/b:c	Ljava/lang/String;
+    //   12: areturn
+    //   13: aconst_null
+    //   14: astore_1
+    //   15: aconst_null
+    //   16: astore_2
+    //   17: aconst_null
+    //   18: astore 5
+    //   20: new 279	java/io/InputStreamReader
+    //   23: dup
+    //   24: invokestatic 285	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   27: ldc_w 287
+    //   30: invokevirtual 291	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   33: invokevirtual 296	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   36: invokespecial 299	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   39: astore_0
+    //   40: aload_0
+    //   41: astore_2
+    //   42: new 301	java/io/BufferedReader
+    //   45: dup
+    //   46: aload_0
+    //   47: invokespecial 304	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   50: astore_3
+    //   51: aload_3
+    //   52: invokevirtual 307	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   55: ldc_w 309
+    //   58: invokevirtual 178	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   61: ifeq +15 -> 76
+    //   64: ldc_w 311
+    //   67: astore_1
+    //   68: aload_1
+    //   69: invokestatic 313	com/tencent/smtt/utils/b:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   72: astore_1
+    //   73: goto +13 -> 86
+    //   76: ldc_w 315
+    //   79: invokestatic 320	java/lang/System:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   82: astore_1
+    //   83: goto -15 -> 68
+    //   86: aload_3
+    //   87: invokevirtual 321	java/io/BufferedReader:close	()V
+    //   90: aload_0
+    //   91: invokevirtual 322	java/io/InputStreamReader:close	()V
+    //   94: aload_1
+    //   95: areturn
+    //   96: astore_1
+    //   97: aload_3
+    //   98: astore_2
+    //   99: goto +81 -> 180
+    //   102: astore 4
+    //   104: goto +24 -> 128
+    //   107: astore 4
+    //   109: aload 5
     //   111: astore_3
-    //   112: aconst_null
-    //   113: astore_0
-    //   114: aload 4
-    //   116: astore_2
-    //   117: aload_0
-    //   118: astore_1
-    //   119: ldc_w 325
-    //   122: invokestatic 330	java/lang/System:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   125: invokestatic 321	com/tencent/smtt/utils/b:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   128: astore 5
-    //   130: aload 4
-    //   132: astore_2
-    //   133: aload_0
-    //   134: astore_1
-    //   135: aload_3
-    //   136: invokevirtual 331	java/lang/Throwable:printStackTrace	()V
-    //   139: aload 4
-    //   141: ifnull +8 -> 149
-    //   144: aload 4
-    //   146: invokevirtual 322	java/io/BufferedReader:close	()V
-    //   149: aload 5
-    //   151: astore_2
-    //   152: aload_0
-    //   153: ifnull -133 -> 20
-    //   156: aload_0
-    //   157: invokevirtual 323	java/io/InputStreamReader:close	()V
-    //   160: aload 5
-    //   162: areturn
-    //   163: astore_0
+    //   112: goto +16 -> 128
+    //   115: astore_1
+    //   116: aconst_null
+    //   117: astore_0
+    //   118: goto +62 -> 180
+    //   121: astore 4
+    //   123: aconst_null
+    //   124: astore_0
+    //   125: aload 5
+    //   127: astore_3
+    //   128: aload_3
+    //   129: astore_1
+    //   130: aload_0
+    //   131: astore_2
+    //   132: ldc_w 315
+    //   135: invokestatic 320	java/lang/System:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   138: invokestatic 313	com/tencent/smtt/utils/b:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   141: astore 5
+    //   143: aload_3
+    //   144: astore_1
+    //   145: aload_0
+    //   146: astore_2
+    //   147: aload 4
+    //   149: invokevirtual 323	java/lang/Throwable:printStackTrace	()V
+    //   152: aload_3
+    //   153: ifnull +7 -> 160
+    //   156: aload_3
+    //   157: invokevirtual 321	java/io/BufferedReader:close	()V
+    //   160: aload_0
+    //   161: ifnull +9 -> 170
     //   164: aload 5
-    //   166: areturn
-    //   167: astore_3
-    //   168: aconst_null
-    //   169: astore_0
-    //   170: aload_2
-    //   171: ifnull +7 -> 178
+    //   166: astore_1
+    //   167: goto -77 -> 90
+    //   170: aload 5
+    //   172: areturn
+    //   173: astore_3
     //   174: aload_2
-    //   175: invokevirtual 322	java/io/BufferedReader:close	()V
-    //   178: aload_0
-    //   179: ifnull +7 -> 186
-    //   182: aload_0
-    //   183: invokevirtual 323	java/io/InputStreamReader:close	()V
-    //   186: aload_3
-    //   187: athrow
-    //   188: astore_2
-    //   189: goto -106 -> 83
-    //   192: astore_1
-    //   193: goto -44 -> 149
-    //   196: astore_1
-    //   197: goto -19 -> 178
-    //   200: astore_0
-    //   201: goto -15 -> 186
-    //   204: astore_3
-    //   205: aload_1
-    //   206: astore_0
-    //   207: goto -37 -> 170
-    //   210: astore_1
-    //   211: aload_3
-    //   212: astore_2
-    //   213: aload_1
-    //   214: astore_3
-    //   215: goto -45 -> 170
-    //   218: astore_3
-    //   219: goto -105 -> 114
-    //   222: astore_1
-    //   223: aload_3
-    //   224: astore 4
-    //   226: aload_1
-    //   227: astore_3
-    //   228: goto -114 -> 114
+    //   175: astore_0
+    //   176: aload_1
+    //   177: astore_2
+    //   178: aload_3
+    //   179: astore_1
+    //   180: aload_2
+    //   181: ifnull +7 -> 188
+    //   184: aload_2
+    //   185: invokevirtual 321	java/io/BufferedReader:close	()V
+    //   188: aload_0
+    //   189: ifnull +7 -> 196
+    //   192: aload_0
+    //   193: invokevirtual 322	java/io/InputStreamReader:close	()V
+    //   196: goto +5 -> 201
+    //   199: aload_1
+    //   200: athrow
+    //   201: goto -2 -> 199
+    //   204: astore_2
+    //   205: goto -115 -> 90
+    //   208: astore_0
+    //   209: aload_1
+    //   210: areturn
+    //   211: astore_1
+    //   212: goto -52 -> 160
+    //   215: astore_2
+    //   216: goto -28 -> 188
+    //   219: astore_0
+    //   220: goto -24 -> 196
     // Local variable table:
     //   start	length	slot	name	signature
-    //   41	49	0	localInputStreamReader	java.io.InputStreamReader
-    //   95	1	0	localIOException1	java.io.IOException
-    //   113	44	0	localObject1	Object
-    //   163	1	0	localIOException2	java.io.IOException
-    //   169	14	0	localObject2	Object
-    //   200	1	0	localIOException3	java.io.IOException
-    //   206	1	0	localIOException4	java.io.IOException
-    //   3	132	1	localObject3	Object
-    //   192	1	1	localIOException5	java.io.IOException
-    //   196	10	1	localIOException6	java.io.IOException
-    //   210	4	1	localObject4	Object
-    //   222	5	1	localThrowable1	Throwable
-    //   1	174	2	localObject5	Object
-    //   188	1	2	localIOException7	java.io.IOException
-    //   212	1	2	localObject6	Object
-    //   54	26	3	localBufferedReader	java.io.BufferedReader
-    //   111	25	3	localThrowable2	Throwable
-    //   167	20	3	localObject7	Object
-    //   204	8	3	localObject8	Object
-    //   214	1	3	localObject9	Object
-    //   218	6	3	localThrowable3	Throwable
-    //   227	1	3	localThrowable4	Throwable
-    //   5	220	4	localObject10	Object
-    //   128	37	5	str	String
+    //   39	154	0	localObject1	Object
+    //   208	1	0	localIOException1	java.io.IOException
+    //   219	1	0	localIOException2	java.io.IOException
+    //   14	81	1	str1	String
+    //   96	1	1	localObject2	Object
+    //   115	1	1	localObject3	Object
+    //   129	81	1	localObject4	Object
+    //   211	1	1	localIOException3	java.io.IOException
+    //   16	169	2	localObject5	Object
+    //   204	1	2	localIOException4	java.io.IOException
+    //   215	1	2	localIOException5	java.io.IOException
+    //   50	107	3	localObject6	Object
+    //   173	6	3	localObject7	Object
+    //   102	1	4	localThrowable1	Throwable
+    //   107	1	4	localThrowable2	Throwable
+    //   121	27	4	localThrowable3	Throwable
+    //   18	153	5	str2	String
     // Exception table:
     //   from	to	target	type
-    //   89	93	95	java/io/IOException
-    //   22	42	111	java/lang/Throwable
-    //   156	160	163	java/io/IOException
-    //   22	42	167	finally
-    //   79	83	188	java/io/IOException
-    //   144	149	192	java/io/IOException
-    //   174	178	196	java/io/IOException
-    //   182	186	200	java/io/IOException
-    //   46	55	204	finally
-    //   119	130	204	finally
-    //   135	139	204	finally
-    //   55	75	210	finally
-    //   98	108	210	finally
-    //   46	55	218	java/lang/Throwable
-    //   55	75	222	java/lang/Throwable
-    //   98	108	222	java/lang/Throwable
+    //   51	64	96	finally
+    //   68	73	96	finally
+    //   76	83	96	finally
+    //   51	64	102	java/lang/Throwable
+    //   68	73	102	java/lang/Throwable
+    //   76	83	102	java/lang/Throwable
+    //   42	51	107	java/lang/Throwable
+    //   20	40	115	finally
+    //   20	40	121	java/lang/Throwable
+    //   42	51	173	finally
+    //   132	143	173	finally
+    //   147	152	173	finally
+    //   86	90	204	java/io/IOException
+    //   90	94	208	java/io/IOException
+    //   156	160	211	java/io/IOException
+    //   184	188	215	java/io/IOException
+    //   192	196	219	java/io/IOException
   }
   
   public static void b(Context paramContext, String paramString)
   {
-    Log.d("0816", "saveGuid guid is " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("saveGuid guid is ");
+    localStringBuilder.append(paramString);
+    Log.d("0816", localStringBuilder.toString());
     try
     {
       paramContext = TbsDownloadConfig.getInstance(paramContext);
@@ -623,7 +623,11 @@ public class b
         }
       }
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label133:
+      break label133;
+    }
     return "02:00:00:00:00:00";
   }
   
@@ -635,7 +639,11 @@ public class b
       paramContext = paramContext.getPackageManager().getPackageInfo(str, 0).versionName;
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label20:
+      break label20;
+    }
     return null;
   }
   
@@ -690,18 +698,21 @@ public class b
   
   public static String e(Context paramContext)
   {
-    String str = "";
+    Object localObject = "";
     try
     {
       paramContext = TbsDownloadConfig.getInstance(paramContext).mPreferences.getString("tbs_guid", "");
-      Log.d("0816", "getGuid guid is " + paramContext);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getGuid guid is ");
+      ((StringBuilder)localObject).append(paramContext);
+      Log.d("0816", ((StringBuilder)localObject).toString());
       return paramContext;
     }
     catch (Exception paramContext)
     {
       for (;;)
       {
-        paramContext = str;
+        paramContext = (Context)localObject;
       }
     }
   }
@@ -742,33 +753,32 @@ public class b
   
   public static String h(Context paramContext)
   {
-    if ((!TextUtils.isEmpty(d)) || (Build.VERSION.SDK_INT < 23)) {}
-    for (;;)
-    {
-      try
-      {
-        paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
-        if (paramContext != null) {
-          continue;
+    if (TextUtils.isEmpty(d)) {
+      if (Build.VERSION.SDK_INT < 23) {
+        try
+        {
+          paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
+          if (paramContext == null) {
+            paramContext = null;
+          } else {
+            paramContext = paramContext.getConnectionInfo();
+          }
         }
-        paramContext = null;
+        catch (Exception paramContext)
+        {
+          TbsLog.i(paramContext);
+        }
       }
-      catch (Exception paramContext)
-      {
-        TbsLog.i(paramContext);
-        continue;
-      }
+    }
+    for (paramContext = paramContext.getMacAddress();; paramContext = "")
+    {
       d = paramContext;
-      return d;
-      paramContext = paramContext.getConnectionInfo();
-      break label81;
-      paramContext = paramContext.getMacAddress();
-      continue;
+      break label74;
       d = c();
-      continue;
-      label81:
-      if (paramContext == null) {
-        paramContext = "";
+      label74:
+      return d;
+      if (paramContext != null) {
+        break;
       }
     }
   }
@@ -781,20 +791,17 @@ public class b
     try
     {
       e = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
-      return e;
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
+      paramContext.printStackTrace();
     }
+    return e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.b
  * JD-Core Version:    0.7.0.1
  */

@@ -20,54 +20,50 @@ public class Barrage
   
   public static Barrage parseJson(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    String str;
-    long l;
-    do
-    {
-      do
-      {
-        return null;
-        str = paramJSONObject.optString("text");
-      } while (TextUtils.isEmpty(str));
-      l = paramJSONObject.optLong("time", -1L);
-    } while (l < 0L);
-    paramJSONObject = paramJSONObject.optString("color");
-    if (TextUtils.isEmpty(paramJSONObject)) {}
-    for (int i = -1;; i = ColorUtils.parseColor(paramJSONObject)) {
-      return new Barrage(str, i, l);
+    if (paramJSONObject == null) {
+      return null;
     }
+    String str = paramJSONObject.optString("text");
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    long l = paramJSONObject.optLong("time", -1L);
+    if (l < 0L) {
+      return null;
+    }
+    paramJSONObject = paramJSONObject.optString("color");
+    int i;
+    if (TextUtils.isEmpty(paramJSONObject)) {
+      i = -1;
+    } else {
+      i = ColorUtils.parseColor(paramJSONObject);
+    }
+    return new Barrage(str, i, l);
   }
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
+    boolean bool = true;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (Barrage)paramObject;
+      if ((this.color != paramObject.color) || (this.time != paramObject.time) || (this.text != null) || (paramObject.text != null))
       {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool2;
-          } while (paramObject == null);
-          bool1 = bool2;
-        } while (getClass() != paramObject.getClass());
-        paramObject = (Barrage)paramObject;
-        if ((this.color == paramObject.color) && (this.time == paramObject.time) && (this.text == null) && (paramObject.text == null)) {
-          break;
+        String str = this.text;
+        if ((str != null) && (str.equals(paramObject.text))) {
+          return true;
         }
-        bool1 = bool2;
-      } while (this.text == null);
-      bool1 = bool2;
-    } while (!this.text.equals(paramObject.text));
-    return true;
+        bool = false;
+      }
+      return bool;
+    }
+    return false;
   }
   
   public int hashCode()
@@ -77,7 +73,7 @@ public class Barrage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.danmu.Barrage
  * JD-Core Version:    0.7.0.1
  */

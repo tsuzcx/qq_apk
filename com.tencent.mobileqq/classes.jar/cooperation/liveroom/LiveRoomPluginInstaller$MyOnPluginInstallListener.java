@@ -34,8 +34,14 @@ class LiveRoomPluginInstaller$MyOnPluginInstallListener
   
   public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LiveRoomPluginInstaller", 2, "LiveRoom install progress:" + paramInt1 + " of " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("LiveRoom install progress:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" of ");
+      localStringBuilder.append(paramInt2);
+      QLog.i("LiveRoomPluginInstaller", 2, localStringBuilder.toString());
     }
     if (LiveRoomPluginInstaller.access$100(this.this$0)) {
       ((OnPluginInstallListener)LiveRoomPluginInstaller.access$200(this.this$0).get()).onInstallDownloadProgress(paramString, paramInt1, paramInt2);
@@ -45,10 +51,18 @@ class LiveRoomPluginInstaller$MyOnPluginInstallListener
   public void onInstallError(String paramString, int paramInt)
   {
     LiveRoomPluginInstaller.access$002(this.this$0, false);
-    if (QLog.isColorLevel()) {
-      QLog.e("LiveRoomPluginInstaller", 2, "LiveRoom install error:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("LiveRoom install error:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.e("LiveRoomPluginInstaller", 2, ((StringBuilder)localObject).toString());
     }
-    LiveRoomHelper.report(this.from, "install", "error" + paramInt, NetConnInfoCenter.getServerTimeMillis() - LiveRoomHelper.startTime);
+    Object localObject = this.from;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("error");
+    localStringBuilder.append(paramInt);
+    LiveRoomHelper.report((String)localObject, "install", localStringBuilder.toString(), NetConnInfoCenter.getServerTimeMillis() - LiveRoomHelper.startTime);
     LiveRoomHelper.doReport();
     if (LiveRoomPluginInstaller.access$100(this.this$0)) {
       ((OnPluginInstallListener)LiveRoomPluginInstaller.access$200(this.this$0).get()).onInstallError(paramString, paramInt);
@@ -70,7 +84,7 @@ class LiveRoomPluginInstaller$MyOnPluginInstallListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomPluginInstaller.MyOnPluginInstallListener
  * JD-Core Version:    0.7.0.1
  */

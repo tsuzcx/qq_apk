@@ -19,20 +19,20 @@ class ParallelJobSegment$ThreadOffJob
     super(paramString);
   }
   
-  public IN doInBackground(@NonNull JobContext paramJobContext, @Nullable IN... paramVarArgs)
+  protected IN doInBackground(@NonNull JobContext paramJobContext, @Nullable IN... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      this.this$0.runSegment(paramJobContext, null);
-      return null;
+      this.this$0.runSegment(paramJobContext, paramVarArgs[0]);
+      return paramVarArgs[0];
     }
-    this.this$0.runSegment(paramJobContext, paramVarArgs[0]);
-    return paramVarArgs[0];
+    this.this$0.runSegment(paramJobContext, null);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.parallel.ParallelJobSegment.ThreadOffJob
  * JD-Core Version:    0.7.0.1
  */

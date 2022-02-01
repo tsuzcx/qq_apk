@@ -7,7 +7,7 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.SafeModeUtil;
+import com.tencent.commonsdk.zip.QZipFile;
 import com.tencent.hotpatch.config.PatchConfig;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,13 +15,14 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.net.patch.PatchChecker;
 import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
 import com.tencent.mobileqq.msf.core.net.patch.PatchReporter;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
+import com.tencent.qqperf.monitor.crash.safemode.SafeModeUtil;
 import dalvik.system.DexClassLoader;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
@@ -40,328 +41,332 @@ public class PatchDownloadManager
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper(), this);
   }
   
+  static void a(QZipFile paramQZipFile, String paramString)
+  {
+    DexPatchInstaller.a(paramQZipFile.getInputStream(paramQZipFile.getEntry("classes.dex")), new File(paramString, "classes.dex"));
+  }
+  
   /* Error */
   private void a(PatchConfig paramPatchConfig)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 52	com/tencent/hotpatch/config/PatchConfig:b	()Z
+    //   1: invokevirtual 75	com/tencent/hotpatch/config/PatchConfig:b	()Z
     //   4: ifne +4 -> 8
     //   7: return
-    //   8: aload_1
-    //   9: invokevirtual 55	com/tencent/hotpatch/config/PatchConfig:b	()Ljava/lang/String;
-    //   12: invokestatic 61	com/tencent/mobileqq/msf/core/net/patch/PatchCommonUtil:getPatchPath	(Ljava/lang/String;)Ljava/lang/String;
-    //   15: astore_3
-    //   16: new 63	com/tencent/commonsdk/zip/QZipFile
-    //   19: dup
-    //   20: aload_3
-    //   21: invokespecial 66	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
-    //   24: astore_2
-    //   25: aload_2
-    //   26: astore_1
-    //   27: new 68	java/io/File
-    //   30: dup
-    //   31: aload_3
-    //   32: invokespecial 69	java/io/File:<init>	(Ljava/lang/String;)V
-    //   35: invokevirtual 72	java/io/File:getParent	()Ljava/lang/String;
-    //   38: astore_3
-    //   39: aload_2
-    //   40: astore_1
-    //   41: aload_2
-    //   42: ldc 74
-    //   44: invokevirtual 78	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   47: astore 4
-    //   49: aload_2
-    //   50: astore_1
-    //   51: aload_2
-    //   52: ldc 80
-    //   54: invokevirtual 78	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   57: astore 5
-    //   59: aload_2
-    //   60: astore_1
-    //   61: aload_2
-    //   62: ldc 82
-    //   64: invokevirtual 78	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   67: astore 6
-    //   69: aload 4
-    //   71: ifnull +86 -> 157
-    //   74: aload 5
-    //   76: ifnull +81 -> 157
-    //   79: aload 6
-    //   81: ifnull +76 -> 157
-    //   84: aload_2
-    //   85: astore_1
-    //   86: ldc 84
+    //   8: aconst_null
+    //   9: astore 4
+    //   11: aconst_null
+    //   12: astore_3
+    //   13: aload_3
+    //   14: astore_2
+    //   15: aload_1
+    //   16: invokevirtual 78	com/tencent/hotpatch/config/PatchConfig:b	()Ljava/lang/String;
+    //   19: invokestatic 84	com/tencent/mobileqq/msf/core/net/patch/PatchCommonUtil:getPatchPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   22: astore 5
+    //   24: aload_3
+    //   25: astore_2
+    //   26: new 46	com/tencent/commonsdk/zip/QZipFile
+    //   29: dup
+    //   30: aload 5
+    //   32: invokespecial 87	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
+    //   35: astore_1
+    //   36: new 56	java/io/File
+    //   39: dup
+    //   40: aload 5
+    //   42: invokespecial 88	java/io/File:<init>	(Ljava/lang/String;)V
+    //   45: invokevirtual 91	java/io/File:getParent	()Ljava/lang/String;
+    //   48: astore_2
+    //   49: aload_1
+    //   50: ldc 93
+    //   52: invokevirtual 50	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   55: astore_3
+    //   56: aload_1
+    //   57: ldc 95
+    //   59: invokevirtual 50	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   62: astore 4
+    //   64: aload_1
+    //   65: ldc 97
+    //   67: invokevirtual 50	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   70: astore 5
+    //   72: aload_3
+    //   73: ifnull +77 -> 150
+    //   76: aload 4
+    //   78: ifnull +72 -> 150
+    //   81: aload 5
+    //   83: ifnull +67 -> 150
+    //   86: ldc 99
     //   88: iconst_1
-    //   89: ldc 86
-    //   91: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   94: aload_2
-    //   95: astore_1
-    //   96: aload_2
-    //   97: aload 4
-    //   99: invokevirtual 96	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   102: new 68	java/io/File
-    //   105: dup
-    //   106: aload_3
-    //   107: ldc 74
-    //   109: invokespecial 99	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   112: invokestatic 104	com/tencent/hotpatch/DexPatchInstaller:a	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   115: aload_2
-    //   116: astore_1
-    //   117: aload_2
-    //   118: aload 5
-    //   120: invokevirtual 96	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   123: new 68	java/io/File
-    //   126: dup
-    //   127: aload_3
-    //   128: ldc 80
-    //   130: invokespecial 99	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   133: invokestatic 104	com/tencent/hotpatch/DexPatchInstaller:a	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   136: aload_2
-    //   137: astore_1
-    //   138: aload_2
-    //   139: aload 6
-    //   141: invokevirtual 96	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   144: new 68	java/io/File
-    //   147: dup
-    //   148: aload_3
-    //   149: ldc 82
-    //   151: invokespecial 99	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   154: invokestatic 104	com/tencent/hotpatch/DexPatchInstaller:a	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   157: aload_2
-    //   158: astore_1
-    //   159: aload_2
-    //   160: ldc 106
-    //   162: invokevirtual 78	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   165: astore 4
-    //   167: aload 4
-    //   169: ifnull +50 -> 219
-    //   172: aload_2
-    //   173: astore_1
-    //   174: ldc 84
-    //   176: iconst_1
-    //   177: ldc 108
-    //   179: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   182: aload_2
-    //   183: astore_1
-    //   184: new 68	java/io/File
-    //   187: dup
-    //   188: aload_3
-    //   189: ldc 106
-    //   191: invokespecial 99	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   194: astore 5
-    //   196: aload_2
-    //   197: astore_1
-    //   198: aload 5
-    //   200: invokevirtual 111	java/io/File:exists	()Z
-    //   203: ifne +31 -> 234
-    //   206: aload_2
-    //   207: astore_1
-    //   208: aload_2
-    //   209: aload 4
-    //   211: invokevirtual 96	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   214: aload 5
-    //   216: invokestatic 104	com/tencent/hotpatch/DexPatchInstaller:a	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   219: aload_2
-    //   220: ifnull -213 -> 7
-    //   223: aload_2
-    //   224: invokevirtual 114	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   227: return
-    //   228: astore_1
-    //   229: aload_1
-    //   230: invokevirtual 117	java/io/IOException:printStackTrace	()V
-    //   233: return
-    //   234: aload_2
-    //   235: astore_1
-    //   236: aload_2
-    //   237: aload 4
-    //   239: invokevirtual 96	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   242: new 68	java/io/File
-    //   245: dup
-    //   246: aload_3
-    //   247: ldc 119
-    //   249: invokespecial 99	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   252: invokestatic 104	com/tencent/hotpatch/DexPatchInstaller:a	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   255: goto -36 -> 219
-    //   258: astore_3
-    //   259: aload_2
-    //   260: astore_1
-    //   261: aload_3
-    //   262: invokevirtual 120	java/lang/Throwable:printStackTrace	()V
-    //   265: aload_2
-    //   266: ifnull -259 -> 7
-    //   269: aload_2
-    //   270: invokevirtual 114	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   273: return
-    //   274: astore_1
-    //   275: aload_1
-    //   276: invokevirtual 117	java/io/IOException:printStackTrace	()V
-    //   279: return
-    //   280: astore_2
-    //   281: aconst_null
-    //   282: astore_1
-    //   283: aload_1
-    //   284: ifnull +7 -> 291
-    //   287: aload_1
-    //   288: invokevirtual 114	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   291: aload_2
-    //   292: athrow
-    //   293: astore_1
-    //   294: aload_1
-    //   295: invokevirtual 117	java/io/IOException:printStackTrace	()V
-    //   298: goto -7 -> 291
-    //   301: astore_2
-    //   302: goto -19 -> 283
-    //   305: astore_3
-    //   306: aconst_null
-    //   307: astore_2
-    //   308: goto -49 -> 259
+    //   89: ldc 101
+    //   91: invokestatic 107	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   94: aload_1
+    //   95: aload_3
+    //   96: invokevirtual 54	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   99: new 56	java/io/File
+    //   102: dup
+    //   103: aload_2
+    //   104: ldc 93
+    //   106: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   109: invokestatic 64	com/tencent/hotpatch/DexPatchInstaller:a	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   112: aload_1
+    //   113: aload 4
+    //   115: invokevirtual 54	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   118: new 56	java/io/File
+    //   121: dup
+    //   122: aload_2
+    //   123: ldc 95
+    //   125: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   128: invokestatic 64	com/tencent/hotpatch/DexPatchInstaller:a	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   131: aload_1
+    //   132: aload 5
+    //   134: invokevirtual 54	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   137: new 56	java/io/File
+    //   140: dup
+    //   141: aload_2
+    //   142: ldc 97
+    //   144: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   147: invokestatic 64	com/tencent/hotpatch/DexPatchInstaller:a	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   150: aload_1
+    //   151: ldc 109
+    //   153: invokevirtual 50	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   156: astore_3
+    //   157: aload_3
+    //   158: ifnull +62 -> 220
+    //   161: ldc 99
+    //   163: iconst_1
+    //   164: ldc 111
+    //   166: invokestatic 107	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   169: new 56	java/io/File
+    //   172: dup
+    //   173: aload_2
+    //   174: ldc 109
+    //   176: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   179: astore 4
+    //   181: aload 4
+    //   183: invokevirtual 114	java/io/File:exists	()Z
+    //   186: ifne +16 -> 202
+    //   189: aload_1
+    //   190: aload_3
+    //   191: invokevirtual 54	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   194: aload 4
+    //   196: invokestatic 64	com/tencent/hotpatch/DexPatchInstaller:a	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   199: goto +21 -> 220
+    //   202: aload_1
+    //   203: aload_3
+    //   204: invokevirtual 54	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   207: new 56	java/io/File
+    //   210: dup
+    //   211: aload_2
+    //   212: ldc 116
+    //   214: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   217: invokestatic 64	com/tencent/hotpatch/DexPatchInstaller:a	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   220: invokestatic 118	com/tencent/hotpatch/DexPatchInstaller:a	()Z
+    //   223: ifeq +8 -> 231
+    //   226: aload_1
+    //   227: aload_2
+    //   228: invokestatic 120	com/tencent/hotpatch/PatchDownloadManager:a	(Lcom/tencent/commonsdk/zip/QZipFile;Ljava/lang/String;)V
+    //   231: aload_1
+    //   232: invokevirtual 123	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   235: return
+    //   236: astore_2
+    //   237: goto +40 -> 277
+    //   240: astore_3
+    //   241: goto +15 -> 256
+    //   244: astore_3
+    //   245: aload_2
+    //   246: astore_1
+    //   247: aload_3
+    //   248: astore_2
+    //   249: goto +28 -> 277
+    //   252: astore_3
+    //   253: aload 4
+    //   255: astore_1
+    //   256: aload_1
+    //   257: astore_2
+    //   258: aload_3
+    //   259: invokevirtual 126	java/lang/Throwable:printStackTrace	()V
+    //   262: aload_1
+    //   263: ifnull +13 -> 276
+    //   266: aload_1
+    //   267: invokevirtual 123	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   270: return
+    //   271: astore_1
+    //   272: aload_1
+    //   273: invokevirtual 127	java/io/IOException:printStackTrace	()V
+    //   276: return
+    //   277: aload_1
+    //   278: ifnull +15 -> 293
+    //   281: aload_1
+    //   282: invokevirtual 123	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   285: goto +8 -> 293
+    //   288: astore_1
+    //   289: aload_1
+    //   290: invokevirtual 127	java/io/IOException:printStackTrace	()V
+    //   293: aload_2
+    //   294: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	311	0	this	PatchDownloadManager
-    //   0	311	1	paramPatchConfig	PatchConfig
-    //   24	246	2	localQZipFile	com.tencent.commonsdk.zip.QZipFile
-    //   280	12	2	localObject1	Object
-    //   301	1	2	localObject2	Object
-    //   307	1	2	localObject3	Object
-    //   15	232	3	str	String
-    //   258	4	3	localThrowable1	Throwable
-    //   305	1	3	localThrowable2	Throwable
-    //   47	191	4	localZipEntry1	java.util.zip.ZipEntry
-    //   57	158	5	localObject4	Object
-    //   67	73	6	localZipEntry2	java.util.zip.ZipEntry
+    //   0	295	0	this	PatchDownloadManager
+    //   0	295	1	paramPatchConfig	PatchConfig
+    //   14	214	2	localObject1	Object
+    //   236	10	2	localObject2	Object
+    //   248	46	2	localObject3	Object
+    //   12	192	3	localZipEntry	java.util.zip.ZipEntry
+    //   240	1	3	localThrowable1	Throwable
+    //   244	4	3	localObject4	Object
+    //   252	7	3	localThrowable2	Throwable
+    //   9	245	4	localObject5	Object
+    //   22	111	5	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   223	227	228	java/io/IOException
-    //   27	39	258	java/lang/Throwable
-    //   41	49	258	java/lang/Throwable
-    //   51	59	258	java/lang/Throwable
-    //   61	69	258	java/lang/Throwable
-    //   86	94	258	java/lang/Throwable
-    //   96	115	258	java/lang/Throwable
-    //   117	136	258	java/lang/Throwable
-    //   138	157	258	java/lang/Throwable
-    //   159	167	258	java/lang/Throwable
-    //   174	182	258	java/lang/Throwable
-    //   184	196	258	java/lang/Throwable
-    //   198	206	258	java/lang/Throwable
-    //   208	219	258	java/lang/Throwable
-    //   236	255	258	java/lang/Throwable
-    //   269	273	274	java/io/IOException
-    //   8	25	280	finally
-    //   287	291	293	java/io/IOException
-    //   27	39	301	finally
-    //   41	49	301	finally
-    //   51	59	301	finally
-    //   61	69	301	finally
-    //   86	94	301	finally
-    //   96	115	301	finally
-    //   117	136	301	finally
-    //   138	157	301	finally
-    //   159	167	301	finally
-    //   174	182	301	finally
-    //   184	196	301	finally
-    //   198	206	301	finally
-    //   208	219	301	finally
-    //   236	255	301	finally
-    //   261	265	301	finally
-    //   8	25	305	java/lang/Throwable
+    //   36	72	236	finally
+    //   86	150	236	finally
+    //   150	157	236	finally
+    //   161	199	236	finally
+    //   202	220	236	finally
+    //   220	231	236	finally
+    //   36	72	240	java/lang/Throwable
+    //   86	150	240	java/lang/Throwable
+    //   150	157	240	java/lang/Throwable
+    //   161	199	240	java/lang/Throwable
+    //   202	220	240	java/lang/Throwable
+    //   220	231	240	java/lang/Throwable
+    //   15	24	244	finally
+    //   26	36	244	finally
+    //   258	262	244	finally
+    //   15	24	252	java/lang/Throwable
+    //   26	36	252	java/lang/Throwable
+    //   231	235	271	java/io/IOException
+    //   266	270	271	java/io/IOException
+    //   281	285	288	java/io/IOException
   }
   
   private void a(NetResp paramNetResp)
   {
-    PatchDownloadManager.PatchRequestData localPatchRequestData = (PatchDownloadManager.PatchRequestData)paramNetResp.mReq.getUserData();
-    if ((localPatchRequestData == null) || (localPatchRequestData.jdField_a_of_type_ComTencentHotpatchConfigPatchConfig == null))
+    Object localObject1 = (PatchDownloadManager.PatchRequestData)paramNetResp.mReq.getUserData();
+    long l1;
+    long l2;
+    Object localObject3;
+    String str;
+    int i;
+    Object localObject2;
+    Object localObject4;
+    if ((localObject1 != null) && (((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_ComTencentHotpatchConfigPatchConfig != null))
     {
-      QLog.d("PatchLogTag", 1, "PatchDownloadManager doOnResp requestData is null");
-      return;
+      if (paramNetResp.mResult == 3)
+      {
+        QLog.d("PatchLogTag", 1, "PatchDownloadManager doOnResp is downloading");
+        return;
+      }
+      l1 = SystemClock.elapsedRealtime();
+      l2 = ((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_Long;
+      localObject3 = ((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_ComTencentHotpatchConfigPatchConfig.b();
+      str = ((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_ComTencentHotpatchConfigPatchConfig.c();
+      i = ((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_ComTencentHotpatchConfigPatchConfig.c();
+      localObject2 = new StringBuilder("PatchDownloadManager doOnResp reslut=");
+      ((StringBuilder)localObject2).append(paramNetResp.mResult);
+      ((StringBuilder)localObject2).append(", mTotalFileLen=");
+      ((StringBuilder)localObject2).append(paramNetResp.mTotalFileLen);
+      ((StringBuilder)localObject2).append(", downloadPatchSize=");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(", cost time=");
+      ((StringBuilder)localObject2).append(l1 - l2);
+      QLog.d("PatchLogTag", 1, ((StringBuilder)localObject2).toString());
+      localObject2 = PatchCommonUtil.getPatchPath(str);
+      localObject4 = PatchCommonUtil.getPatchPath((String)localObject3);
     }
-    if (paramNetResp.mResult == 3)
-    {
-      QLog.d("PatchLogTag", 1, "PatchDownloadManager doOnResp is downloading");
-      return;
-    }
-    long l1 = SystemClock.elapsedRealtime();
-    long l2 = localPatchRequestData.jdField_a_of_type_Long;
-    String str3 = localPatchRequestData.jdField_a_of_type_ComTencentHotpatchConfigPatchConfig.b();
-    String str1 = localPatchRequestData.jdField_a_of_type_ComTencentHotpatchConfigPatchConfig.c();
-    int i = localPatchRequestData.jdField_a_of_type_ComTencentHotpatchConfigPatchConfig.c();
-    QLog.d("PatchLogTag", 1, "PatchDownloadManager doOnResp reslut=" + paramNetResp.mResult + ", mTotalFileLen=" + paramNetResp.mTotalFileLen + ", downloadPatchSize=" + i + ", cost time=" + (l1 - l2));
-    String str2 = PatchCommonUtil.getPatchPath(str1);
-    Object localObject = PatchCommonUtil.getPatchPath(str3);
+    label753:
+    label759:
     for (;;)
     {
       try
       {
-        if ((paramNetResp.mResult != 0) || (paramNetResp.mTotalFileLen != i)) {
-          break label398;
+        if (paramNetResp.mResult != 0) {
+          break label759;
         }
-        boolean bool2 = true;
-        boolean bool1 = bool2;
-        if (!localPatchRequestData.jdField_a_of_type_ComTencentHotpatchConfigPatchConfig.b())
+        if (paramNetResp.mTotalFileLen == i)
         {
-          bool1 = bool2;
-          if (PatchCommonUtil.isArtGeN()) {
-            bool1 = PatchFileManager.a(localPatchRequestData.jdField_a_of_type_ComTencentHotpatchConfigPatchConfig);
+          if ((((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_ComTencentHotpatchConfigPatchConfig.b()) || (!PatchCommonUtil.isArtGeN())) {
+            break label753;
           }
+          bool1 = PatchFileManager.a(((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_ComTencentHotpatchConfigPatchConfig);
+          boolean bool2 = bool1;
+          if (bool1) {
+            bool2 = PatchChecker.checkPatchValid(((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_JavaLangString, (String)localObject3);
+          }
+          if (bool2)
+          {
+            a(((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_ComTencentHotpatchConfigPatchConfig);
+            SafeModeUtil.c();
+            SafeModeUtil.a(HardCodeUtil.a(2131707909));
+            new DexClassLoader((String)localObject4, BaseApplicationImpl.sApplication.getDir("dex", 0).getAbsolutePath(), (String)localObject4, BaseApplicationImpl.sApplication.getClassLoader());
+          }
+          else
+          {
+            paramNetResp = new File((String)localObject4);
+            if (paramNetResp.exists()) {
+              paramNetResp.delete();
+            }
+          }
+          PatchReporter.reportPatchEvent(BaseApplicationImpl.sApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "actPatchDownload", 200, str);
         }
-        bool2 = bool1;
-        if (bool1) {
-          bool2 = PatchChecker.checkPatchValid(localPatchRequestData.jdField_a_of_type_JavaLangString, str3);
-        }
-        if (bool2)
+        else
         {
-          a(localPatchRequestData.jdField_a_of_type_ComTencentHotpatchConfigPatchConfig);
+          if (paramNetResp.mResult != 0)
+          {
+            localObject3 = new StringBuilder("PatchDownloadManager doOnResp NOT ResultOk mErrCode=");
+            ((StringBuilder)localObject3).append(paramNetResp.mErrCode);
+            ((StringBuilder)localObject3).append(", mErrDesc=");
+            ((StringBuilder)localObject3).append(paramNetResp.mErrDesc);
+            localObject3 = ((StringBuilder)localObject3).toString();
+            QLog.d("PatchLogTag", 1, (String)localObject3);
+            localObject4 = BaseApplicationImpl.sApplication.getSharedPreferences("hotpatch_preference", 4);
+            l1 = ((SharedPreferences)localObject4).getLong("patch_download_fail_report_time", 0L);
+            l2 = System.currentTimeMillis();
+            if (l2 - l1 > 21600000L)
+            {
+              CaughtExceptionReport.a(new RuntimeException(), (String)localObject3);
+              ((SharedPreferences)localObject4).edit().putLong("patch_download_fail_report_time", l2).commit();
+            }
+            if ((paramNetResp.mErrCode == 9039) || (paramNetResp.mErrCode == 9301))
+            {
+              paramNetResp = new File(paramNetResp.mReq.mTempPath);
+              localObject3 = new StringBuilder("write temp patch fail path=");
+              ((StringBuilder)localObject3).append(paramNetResp.getAbsolutePath());
+              ((StringBuilder)localObject3).append(", isExist=");
+              ((StringBuilder)localObject3).append(paramNetResp.exists());
+              ((StringBuilder)localObject3).append(", canWrite=");
+              ((StringBuilder)localObject3).append(paramNetResp.canWrite());
+              QLog.d("PatchLogTag", 1, ((StringBuilder)localObject3).toString());
+            }
+          }
+          if (((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_Int < 3)
+          {
+            a(((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_Int, ((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_JavaLangString, ((PatchDownloadManager.PatchRequestData)localObject1).jdField_a_of_type_ComTencentHotpatchConfigPatchConfig);
+            return;
+          }
           SafeModeUtil.c();
-          SafeModeUtil.a(HardCodeUtil.a(2131707886));
-          new DexClassLoader((String)localObject, BaseApplicationImpl.sApplication.getDir("dex", 0).getAbsolutePath(), (String)localObject, BaseApplicationImpl.sApplication.getClassLoader());
-          PatchReporter.reportPatchEvent(BaseApplicationImpl.sApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "actPatchDownload", 200, str1);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str1);
-          return;
+          paramNetResp = new File((String)localObject2);
+          if (paramNetResp.exists()) {
+            paramNetResp.delete();
+          }
+          PatchReporter.reportPatchEvent(BaseApplicationImpl.sApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "actPatchDownload", 201, str);
         }
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+        return;
       }
       catch (Throwable paramNetResp)
       {
-        QLog.d("PatchLogTag", 1, "PatchDownloadManager doOnResp throwable=" + paramNetResp);
-        PatchReporter.reportPatchEvent(BaseApplicationImpl.sApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "actPatchDownload", 202, str1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("PatchDownloadManager doOnResp throwable=");
+        ((StringBuilder)localObject1).append(paramNetResp);
+        QLog.d("PatchLogTag", 1, ((StringBuilder)localObject1).toString());
+        PatchReporter.reportPatchEvent(BaseApplicationImpl.sApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "actPatchDownload", 202, str);
         return;
       }
-      paramNetResp = new File((String)localObject);
-      if (paramNetResp.exists())
-      {
-        paramNetResp.delete();
-        continue;
-        label398:
-        if (paramNetResp.mResult != 0)
-        {
-          str3 = "PatchDownloadManager doOnResp NOT ResultOk mErrCode=" + paramNetResp.mErrCode + ", mErrDesc=" + paramNetResp.mErrDesc;
-          QLog.d("PatchLogTag", 1, str3);
-          localObject = BaseApplicationImpl.sApplication.getSharedPreferences("hotpatch_preference", 4);
-          l1 = ((SharedPreferences)localObject).getLong("patch_download_fail_report_time", 0L);
-          l2 = System.currentTimeMillis();
-          if (l2 - l1 > 21600000L)
-          {
-            CaughtExceptionReport.a(new RuntimeException(), str3);
-            ((SharedPreferences)localObject).edit().putLong("patch_download_fail_report_time", l2).commit();
-          }
-          if ((paramNetResp.mErrCode == 9039) || (paramNetResp.mErrCode == 9301))
-          {
-            paramNetResp = new File(paramNetResp.mReq.mTempPath);
-            QLog.d("PatchLogTag", 1, "write temp patch fail path=" + paramNetResp.getAbsolutePath() + ", isExist=" + paramNetResp.exists() + ", canWrite=" + paramNetResp.canWrite());
-          }
-        }
-        if (localPatchRequestData.jdField_a_of_type_Int < 3)
-        {
-          a(localPatchRequestData.jdField_a_of_type_Int, localPatchRequestData.jdField_a_of_type_JavaLangString, localPatchRequestData.jdField_a_of_type_ComTencentHotpatchConfigPatchConfig);
-          return;
-        }
-        SafeModeUtil.c();
-        paramNetResp = new File(str2);
-        if (paramNetResp.exists()) {
-          paramNetResp.delete();
-        }
-        PatchReporter.reportPatchEvent(BaseApplicationImpl.sApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "actPatchDownload", 201, str1);
-      }
+      QLog.d("PatchLogTag", 1, "PatchDownloadManager doOnResp requestData is null");
+      return;
+      boolean bool1 = true;
     }
   }
   
@@ -369,11 +374,17 @@ public class PatchDownloadManager
   {
     String str1 = paramPatchConfig.d();
     String str2 = paramPatchConfig.c();
-    QLog.d("PatchLogTag", 1, "PatchDownloadManager tryDownloadPatch retryCount=" + paramInt + ", downloadPatchName=" + str2 + ", downloadUrl=" + str1);
+    Object localObject = new StringBuilder("PatchDownloadManager tryDownloadPatch retryCount=");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(", downloadPatchName=");
+    ((StringBuilder)localObject).append(str2);
+    ((StringBuilder)localObject).append(", downloadUrl=");
+    ((StringBuilder)localObject).append(str1);
+    QLog.d("PatchLogTag", 1, ((StringBuilder)localObject).toString());
     if ((paramInt < 3) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(str2))) {
       return;
     }
-    IHttpEngineService localIHttpEngineService = (IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all");
+    localObject = (IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all");
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mCallback = this;
     localHttpNetReq.mSupportBreakResume = true;
@@ -382,36 +393,44 @@ public class PatchDownloadManager
     localHttpNetReq.mOutPath = PatchCommonUtil.getPatchPath(str2);
     localHttpNetReq.setUserData(new PatchDownloadManager.PatchRequestData(this, paramInt + 1, SystemClock.elapsedRealtime(), paramString, paramPatchConfig));
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str2, localHttpNetReq);
-    localIHttpEngineService.sendReq(localHttpNetReq);
+    ((IHttpEngineService)localObject).sendReq(localHttpNetReq);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
+      if (i == 2)
+      {
+        StringBuilder localStringBuilder = new StringBuilder("PatchDownloadManager patch download on progress curOffset=");
+        localStringBuilder.append(paramMessage.arg1);
+        localStringBuilder.append(", totalLen=");
+        localStringBuilder.append(paramMessage.arg2);
+        QLog.d("PatchLogTag", 1, localStringBuilder.toString());
+      }
     }
-    for (;;)
-    {
-      return false;
+    else {
       a((NetResp)paramMessage.obj);
-      continue;
-      QLog.d("PatchLogTag", 1, "PatchDownloadManager patch download on progress curOffset=" + paramMessage.arg1 + ", totalLen=" + paramMessage.arg2);
     }
+    return false;
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      localHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
   }
   
   public void onResp(NetResp paramNetResp)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramNetResp).sendToTarget();
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null) {
+      localHandler.obtainMessage(1, paramNetResp).sendToTarget();
     }
   }
   
@@ -422,7 +441,7 @@ public class PatchDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hotpatch.PatchDownloadManager
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,8 @@ class TroopDNANavBar$1
   
   public void run()
   {
-    TroopDNANavBar.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772073));
+    TroopDNANavBar localTroopDNANavBar = this.this$0;
+    TroopDNANavBar.a(localTroopDNANavBar, AnimationUtils.loadAnimation(localTroopDNANavBar.a, 2130772099));
     TroopDNANavBar.a(this.this$0).clearAnimation();
     TroopDNANavBar.a(this.this$0).startAnimation(TroopDNANavBar.a(this.this$0));
     TroopDNANavBar.a(this.this$0).setAnimationListener(this.this$0);
@@ -19,7 +20,7 @@ class TroopDNANavBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.navigate.TroopDNANavBar.1
  * JD-Core Version:    0.7.0.1
  */

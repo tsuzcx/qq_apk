@@ -17,8 +17,11 @@ class ReboundVLayout$ProgressAnimation
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    paramFloat = (this.endProgress - this.startProgress) * paramFloat + this.startProgress;
-    this.this$0.scrollBy(0, (int)((1000 - this.this$0.getScrollY()) * paramFloat));
+    float f1 = this.endProgress;
+    float f2 = this.startProgress;
+    paramFloat = (f1 - f2) * paramFloat + f2;
+    paramTransformation = this.this$0;
+    paramTransformation.scrollBy(0, (int)((1000 - paramTransformation.getScrollY()) * paramFloat));
     if (paramFloat == 1.0F) {
       ReboundVLayout.access$102(this.this$0, false);
     }
@@ -33,7 +36,7 @@ class ReboundVLayout$ProgressAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ReboundVLayout.ProgressAnimation
  * JD-Core Version:    0.7.0.1
  */

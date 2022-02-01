@@ -20,16 +20,20 @@ public final class ColorUtils
   
   public static double a(@ColorInt int paramInt1, @ColorInt int paramInt2)
   {
-    if (Color.alpha(paramInt2) != 255) {
-      throw new IllegalArgumentException("background can not be translucent: #" + Integer.toHexString(paramInt2));
+    if (Color.alpha(paramInt2) == 255)
+    {
+      int i = paramInt1;
+      if (Color.alpha(paramInt1) < 255) {
+        i = a(paramInt1, paramInt2);
+      }
+      double d1 = a(i) + 0.05D;
+      double d2 = a(paramInt2) + 0.05D;
+      return Math.max(d1, d2) / Math.min(d1, d2);
     }
-    int i = paramInt1;
-    if (Color.alpha(paramInt1) < 255) {
-      i = a(paramInt1, paramInt2);
-    }
-    double d1 = a(i) + 0.05D;
-    double d2 = a(paramInt2) + 0.05D;
-    return Math.max(d1, d2) / Math.min(d1, d2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("background can not be translucent: #");
+    localStringBuilder.append(Integer.toHexString(paramInt2));
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   private static float a(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -37,10 +41,11 @@ public final class ColorUtils
     if (paramFloat1 < paramFloat2) {
       return paramFloat2;
     }
+    paramFloat2 = paramFloat1;
     if (paramFloat1 > paramFloat3) {
-      return paramFloat3;
+      paramFloat2 = paramFloat3;
     }
-    return paramFloat1;
+    return paramFloat2;
   }
   
   public static int a(@ColorInt int paramInt1, @ColorInt int paramInt2)
@@ -53,34 +58,36 @@ public final class ColorUtils
   
   public static int a(@ColorInt int paramInt1, @ColorInt int paramInt2, float paramFloat)
   {
-    int j = 0;
-    int i = 255;
-    if (Color.alpha(paramInt2) != 255) {
-      throw new IllegalArgumentException("background can not be translucent: #" + Integer.toHexString(paramInt2));
-    }
-    if (a(b(paramInt1, 255), paramInt2) < paramFloat) {
-      m = -1;
-    }
-    int k;
-    do
+    int i = Color.alpha(paramInt2);
+    int j = 255;
+    if (i == 255)
     {
-      do
+      double d1 = a(b(paramInt1, 255), paramInt2);
+      double d2 = paramFloat;
+      if (d1 < d2) {
+        return -1;
+      }
+      i = 0;
+      int k = 0;
+      while ((i <= 10) && (j - k > 1))
       {
-        return m;
-        k = 0;
-        m = i;
-      } while (k > 10);
-      m = i;
-    } while (i - j <= 1);
-    int m = (j + i) / 2;
-    if (a(b(paramInt1, m), paramInt2) < paramFloat) {
-      j = m;
+        int m = (k + j) / 2;
+        if (a(b(paramInt1, m), paramInt2) < d2) {
+          k = m;
+        } else {
+          j = m;
+        }
+        i += 1;
+      }
+      return j;
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("background can not be translucent: #");
+    ((StringBuilder)localObject).append(Integer.toHexString(paramInt2));
+    localObject = new IllegalArgumentException(((StringBuilder)localObject).toString());
     for (;;)
     {
-      k += 1;
-      break;
-      i = m;
+      throw ((Throwable)localObject);
     }
   }
   
@@ -94,39 +101,38 @@ public final class ColorUtils
   
   public static void a(@IntRange(from=0L, to=255L) int paramInt1, @IntRange(from=0L, to=255L) int paramInt2, @IntRange(from=0L, to=255L) int paramInt3, @NonNull double[] paramArrayOfDouble)
   {
-    if (paramArrayOfDouble.length != 3) {
-      throw new IllegalArgumentException("outXyz must have a length of 3.");
-    }
-    double d1 = paramInt1 / 255.0D;
-    double d2;
-    label66:
-    double d3;
-    if (d1 < 0.04045D)
+    if (paramArrayOfDouble.length == 3)
     {
-      d1 /= 12.92D;
-      d2 = paramInt2 / 255.0D;
-      if (d2 >= 0.04045D) {
-        break label194;
+      double d1 = paramInt1;
+      Double.isNaN(d1);
+      d1 /= 255.0D;
+      if (d1 < 0.04045D) {
+        d1 /= 12.92D;
+      } else {
+        d1 = Math.pow((d1 + 0.055D) / 1.055D, 2.4D);
       }
-      d2 /= 12.92D;
-      d3 = paramInt3 / 255.0D;
-      if (d3 >= 0.04045D) {
-        break label215;
+      double d2 = paramInt2;
+      Double.isNaN(d2);
+      d2 /= 255.0D;
+      if (d2 < 0.04045D) {
+        d2 /= 12.92D;
+      } else {
+        d2 = Math.pow((d2 + 0.055D) / 1.055D, 2.4D);
       }
-    }
-    label194:
-    label215:
-    for (d3 /= 12.92D;; d3 = Math.pow((d3 + 0.055D) / 1.055D, 2.4D))
-    {
-      paramArrayOfDouble[0] = (100.0D * (0.4124D * d1 + 0.3576D * d2 + 0.1805D * d3));
-      paramArrayOfDouble[1] = (100.0D * (0.2126D * d1 + 0.7152D * d2 + 0.0722D * d3));
-      paramArrayOfDouble[2] = ((d3 * 0.9505D + (d2 * 0.1192D + d1 * 0.0193D)) * 100.0D);
+      double d3 = paramInt3;
+      Double.isNaN(d3);
+      d3 /= 255.0D;
+      if (d3 < 0.04045D) {
+        d3 /= 12.92D;
+      } else {
+        d3 = Math.pow((d3 + 0.055D) / 1.055D, 2.4D);
+      }
+      paramArrayOfDouble[0] = ((0.4124D * d1 + 0.3576D * d2 + 0.1805D * d3) * 100.0D);
+      paramArrayOfDouble[1] = ((0.2126D * d1 + 0.7152D * d2 + 0.0722D * d3) * 100.0D);
+      paramArrayOfDouble[2] = ((d1 * 0.0193D + d2 * 0.1192D + d3 * 0.9505D) * 100.0D);
       return;
-      d1 = Math.pow((d1 + 0.055D) / 1.055D, 2.4D);
-      break;
-      d2 = Math.pow((d2 + 0.055D) / 1.055D, 2.4D);
-      break label66;
     }
+    throw new IllegalArgumentException("outXyz must have a length of 3.");
   }
   
   public static void a(@IntRange(from=0L, to=255L) int paramInt1, @IntRange(from=0L, to=255L) int paramInt2, @IntRange(from=0L, to=255L) int paramInt3, @NonNull float[] paramArrayOfFloat)
@@ -142,31 +148,26 @@ public final class ColorUtils
     {
       f1 = 0.0F;
       f2 = 0.0F;
-      f3 = f2 * 60.0F % 360.0F;
-      f2 = f3;
-      if (f3 < 0.0F) {
-        f2 = f3 + 360.0F;
-      }
-      paramArrayOfFloat[0] = a(f2, 0.0F, 360.0F);
-      paramArrayOfFloat[1] = a(f1, 0.0F, 1.0F);
-      paramArrayOfFloat[2] = a(f4, 0.0F, 1.0F);
-      return;
     }
-    if (f6 == f1) {
-      f1 = (f3 - f5) / f2 % 6.0F;
-    }
-    for (;;)
+    else
     {
-      f3 = f2 / (1.0F - Math.abs(2.0F * f4 - 1.0F));
-      f2 = f1;
-      f1 = f3;
-      break;
-      if (f6 == f3) {
+      if (f6 == f1) {
+        f1 = (f3 - f5) / f2 % 6.0F;
+      } else if (f6 == f3) {
         f1 = (f5 - f1) / f2 + 2.0F;
       } else {
         f1 = (f1 - f3) / f2 + 4.0F;
       }
+      f2 /= (1.0F - Math.abs(2.0F * f4 - 1.0F));
     }
+    f3 = f1 * 60.0F % 360.0F;
+    f1 = f3;
+    if (f3 < 0.0F) {
+      f1 = f3 + 360.0F;
+    }
+    paramArrayOfFloat[0] = a(f1, 0.0F, 360.0F);
+    paramArrayOfFloat[1] = a(f2, 0.0F, 1.0F);
+    paramArrayOfFloat[2] = a(f4, 0.0F, 1.0F);
   }
   
   public static void a(@ColorInt int paramInt, @NonNull double[] paramArrayOfDouble)
@@ -194,10 +195,10 @@ public final class ColorUtils
   @ColorInt
   public static int b(@ColorInt int paramInt1, @IntRange(from=0L, to=255L) int paramInt2)
   {
-    if ((paramInt2 < 0) || (paramInt2 > 255)) {
-      throw new IllegalArgumentException("alpha must be between 0 and 255.");
+    if ((paramInt2 >= 0) && (paramInt2 <= 255)) {
+      return paramInt1 & 0xFFFFFF | paramInt2 << 24;
     }
-    return 0xFFFFFF & paramInt1 | paramInt2 << 24;
+    throw new IllegalArgumentException("alpha must be between 0 and 255.");
   }
   
   private static int c(int paramInt1, int paramInt2)
@@ -207,7 +208,7 @@ public final class ColorUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.ColorUtils
  * JD-Core Version:    0.7.0.1
  */

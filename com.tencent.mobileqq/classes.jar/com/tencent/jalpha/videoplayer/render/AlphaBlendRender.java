@@ -30,9 +30,10 @@ public class AlphaBlendRender
   
   private void releaseSurface()
   {
-    if (this.mVideoSurface != null)
+    Surface localSurface = this.mVideoSurface;
+    if (localSurface != null)
     {
-      this.mVideoSurface.release();
+      localSurface.release();
       this.mVideoSurface = null;
       Logger.v("VideoPlayer|SurfaceTextureBlendRender", " release  surface");
     }
@@ -40,9 +41,10 @@ public class AlphaBlendRender
   
   private void releaseSurfaceTexture()
   {
-    if (this.videoTexture != null)
+    SurfaceTexture localSurfaceTexture = this.videoTexture;
+    if (localSurfaceTexture != null)
     {
-      this.videoTexture.release();
+      localSurfaceTexture.release();
       this.videoTexture = null;
       Logger.v("VideoPlayer|SurfaceTextureBlendRender", " release  surface texture");
     }
@@ -142,14 +144,25 @@ public class AlphaBlendRender
   
   public void updateSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    Logger.v("VideoPlayer|SurfaceTextureBlendRender", "updateSize: viewWidth " + paramInt1 + " viewHeight " + paramInt2 + " textureWidth " + paramInt3 + "," + paramInt4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateSize: viewWidth ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" viewHeight ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" textureWidth ");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt4);
+    Logger.v("VideoPlayer|SurfaceTextureBlendRender", localStringBuilder.toString());
     this.mTextureWidth = paramInt3;
-    this.mOffsetX = ((float)(1.0D / this.mTextureWidth));
+    double d = this.mTextureWidth;
+    Double.isNaN(d);
+    this.mOffsetX = ((float)(1.0D / d));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jalpha.videoplayer.render.AlphaBlendRender
  * JD-Core Version:    0.7.0.1
  */

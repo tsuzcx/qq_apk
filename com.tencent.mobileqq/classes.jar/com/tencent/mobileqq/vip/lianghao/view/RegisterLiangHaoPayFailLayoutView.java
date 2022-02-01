@@ -42,9 +42,9 @@ public class RegisterLiangHaoPayFailLayoutView
     setOrientation(1);
     int i = Utils.a(27.5F, getResources());
     setPadding(i, 0, i, 0);
-    LayoutInflater.from(getContext()).inflate(2131562093, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131370333));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370332);
+    LayoutInflater.from(getContext()).inflate(2131561929, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131370000));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369999);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
   }
   
@@ -66,7 +66,7 @@ public class RegisterLiangHaoPayFailLayoutView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.view.RegisterLiangHaoPayFailLayoutView
  * JD-Core Version:    0.7.0.1
  */

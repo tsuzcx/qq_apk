@@ -9,7 +9,7 @@ import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicYuvToRGB;
 import android.renderscript.Type.Builder;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 
 public class YuvProxy$NV21ToBitmap
 {
@@ -24,7 +24,8 @@ public class YuvProxy$NV21ToBitmap
   public YuvProxy$NV21ToBitmap(Context paramContext)
   {
     this.rs = RenderScript.create(paramContext);
-    this.yuvToRgbIntrinsic = ScriptIntrinsicYuvToRGB.create(this.rs, Element.U8_4(this.rs));
+    paramContext = this.rs;
+    this.yuvToRgbIntrinsic = ScriptIntrinsicYuvToRGB.create(paramContext, Element.U8_4(paramContext));
   }
   
   public void destroy()
@@ -42,9 +43,11 @@ public class YuvProxy$NV21ToBitmap
   {
     if (this.yuvType == null)
     {
-      this.yuvType = new Type.Builder(this.rs, Element.U8(this.rs)).setX(paramArrayOfByte.length);
+      RenderScript localRenderScript = this.rs;
+      this.yuvType = new Type.Builder(localRenderScript, Element.U8(localRenderScript)).setX(paramArrayOfByte.length);
       this.in = Allocation.createTyped(this.rs, this.yuvType.create(), 1);
-      this.rgbaType = new Type.Builder(this.rs, Element.RGBA_8888(this.rs)).setX(paramInt1).setY(paramInt2);
+      localRenderScript = this.rs;
+      this.rgbaType = new Type.Builder(localRenderScript, Element.RGBA_8888(localRenderScript)).setX(paramInt1).setY(paramInt2);
       this.out = Allocation.createTyped(this.rs, this.rgbaType.create(), 1);
     }
     this.in.copyFrom(paramArrayOfByte);
@@ -57,7 +60,7 @@ public class YuvProxy$NV21ToBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.minicode.YuvProxy.NV21ToBitmap
  * JD-Core Version:    0.7.0.1
  */

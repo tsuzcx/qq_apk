@@ -36,16 +36,21 @@ public class GdtVideoCeilingTitleBar
   
   public void a()
   {
-    GdtLog.b("GdtVideoCeilingView", "updateBar Style " + this.jdField_a_of_type_Int);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateBar Style ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    GdtLog.b("GdtVideoCeilingView", ((StringBuilder)localObject).toString());
     if (this.jdField_a_of_type_Int != 1)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.b.setVisibility(0);
-      String str = HardCodeUtil.a(2131705246) + this.jdField_a_of_type_JavaLangString;
-      int i = "在APP中打开".length();
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (str.length() <= i))
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131705323));
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      localObject = ((StringBuilder)localObject).toString();
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (((String)localObject).length() <= 7))
       {
-        this.b.setText(str);
+        this.b.setText((CharSequence)localObject);
         return;
       }
       this.b.setText("在APP中打开");
@@ -57,11 +62,11 @@ public class GdtVideoCeilingTitleBar
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379432));
-    this.b = ((TextView)findViewById(2131372538));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378784));
+    this.b = ((TextView)findViewById(2131372123));
     this.b.setOnClickListener(new GdtVideoCeilingTitleBar.1(this));
-    View localView = findViewById(2131363402);
-    int i = AIOUtils.a(5.0F, getResources());
+    View localView = findViewById(2131363334);
+    int i = AIOUtils.b(5.0F, getResources());
     AIOUtils.a(localView, i, i, 0, i);
     localView.setOnClickListener(new GdtVideoCeilingTitleBar.2(this));
   }
@@ -90,7 +95,7 @@ public class GdtVideoCeilingTitleBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar
  * JD-Core Version:    0.7.0.1
  */

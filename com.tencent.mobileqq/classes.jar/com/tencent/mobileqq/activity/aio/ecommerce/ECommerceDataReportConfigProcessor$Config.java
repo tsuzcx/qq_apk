@@ -14,16 +14,21 @@ public final class ECommerceDataReportConfigProcessor$Config
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportConfigProcessor", 2, "configText : " + paramString);
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("configText : ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("ECommerceDataReportConfigProcessor", 2, ((StringBuilder)localObject).toString());
       }
       try
       {
         paramString = new JSONObject(paramString);
-        Iterator localIterator = paramString.keys();
-        while (localIterator.hasNext())
+        localObject = paramString.keys();
+        while (((Iterator)localObject).hasNext())
         {
-          String str1 = (String)localIterator.next();
+          String str1 = (String)((Iterator)localObject).next();
           if (!TextUtils.isEmpty(str1))
           {
             String str2 = paramString.optString(str1, "");
@@ -43,7 +48,7 @@ public final class ECommerceDataReportConfigProcessor$Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ecommerce.ECommerceDataReportConfigProcessor.Config
  * JD-Core Version:    0.7.0.1
  */

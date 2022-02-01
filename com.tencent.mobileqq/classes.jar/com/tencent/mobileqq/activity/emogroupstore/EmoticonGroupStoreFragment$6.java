@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import com.tencent.mobileqq.emosm.favroaming.IEmoticonFromGroupManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +24,7 @@ class EmoticonGroupStoreFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment.6
  * JD-Core Version:    0.7.0.1
  */

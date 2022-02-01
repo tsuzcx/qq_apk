@@ -27,7 +27,8 @@ public class RoundedBitmapDisplayer$RoundedDrawable
     this.cornerRadius = paramInt1;
     this.margin = paramInt2;
     this.bitmapShader = new BitmapShader(paramBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-    this.mBitmapRect = new RectF(paramInt2, paramInt2, paramBitmap.getWidth() - paramInt2, paramBitmap.getHeight() - paramInt2);
+    float f = paramInt2;
+    this.mBitmapRect = new RectF(f, f, paramBitmap.getWidth() - paramInt2, paramBitmap.getHeight() - paramInt2);
     this.paint = new Paint();
     this.paint.setAntiAlias(true);
     this.paint.setShader(this.bitmapShader);
@@ -37,7 +38,9 @@ public class RoundedBitmapDisplayer$RoundedDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    paramCanvas.drawRoundRect(this.mRect, this.cornerRadius, this.cornerRadius, this.paint);
+    RectF localRectF = this.mRect;
+    float f = this.cornerRadius;
+    paramCanvas.drawRoundRect(localRectF, f, f, this.paint);
   }
   
   public int getOpacity()
@@ -48,7 +51,9 @@ public class RoundedBitmapDisplayer$RoundedDrawable
   protected void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    this.mRect.set(this.margin, this.margin, paramRect.width() - this.margin, paramRect.height() - this.margin);
+    RectF localRectF = this.mRect;
+    int i = this.margin;
+    localRectF.set(i, i, paramRect.width() - this.margin, paramRect.height() - this.margin);
     paramRect = new Matrix();
     paramRect.setRectToRect(this.mBitmapRect, this.mRect, Matrix.ScaleToFit.FILL);
     this.bitmapShader.setLocalMatrix(paramRect);
@@ -66,7 +71,7 @@ public class RoundedBitmapDisplayer$RoundedDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer.RoundedDrawable
  * JD-Core Version:    0.7.0.1
  */

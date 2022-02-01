@@ -21,15 +21,16 @@ public class UserInfo
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_Int = paramParcel.readInt();
-      this.jdField_c_of_type_Int = paramParcel.readInt();
-      this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      return;
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.jdField_c_of_type_Int = paramParcel.readInt();
+    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
   }
   
   public UserInfo(String paramString)
@@ -50,7 +51,23 @@ public class UserInfo
   
   public String toString()
   {
-    return "{uin: " + this.jdField_a_of_type_JavaLangString + ", type: " + this.jdField_a_of_type_Int + ", name: " + this.jdField_b_of_type_JavaLangString + ", isFriend: " + this.jdField_a_of_type_Boolean + ", age: " + this.jdField_b_of_type_Int + ", gender: " + this.jdField_c_of_type_Int + ", head: " + this.jdField_c_of_type_JavaLangString + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{uin: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", type: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", name: ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", isFriend: ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", age: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", gender: ");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", head: ");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -58,20 +75,15 @@ public class UserInfo
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.jdField_b_of_type_Int);
-      paramParcel.writeInt(this.jdField_c_of_type_Int);
-      paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-      return;
-    }
+    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeInt(this.jdField_c_of_type_Int);
+    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ipc.UserInfo
  * JD-Core Version:    0.7.0.1
  */

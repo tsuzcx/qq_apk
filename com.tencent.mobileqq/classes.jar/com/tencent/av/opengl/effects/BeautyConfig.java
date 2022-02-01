@@ -91,26 +91,32 @@ public class BeautyConfig
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet());
-    Collections.sort(localArrayList);
-    localStringBuilder.append("VERSION").append(":").append(1);
+    Object localObject = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet());
+    Collections.sort((List)localObject);
+    localStringBuilder.append("VERSION");
+    localStringBuilder.append(":");
+    localStringBuilder.append(1);
     int i = 0;
-    if (i < localArrayList.size())
+    while (i < ((List)localObject).size())
     {
-      String str = (String)localArrayList.get(i);
+      String str = (String)((List)localObject).get(i);
       BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
-      if (localBeauty == null) {}
-      for (;;)
+      if ((localBeauty != null) && (localBeauty.d != localBeauty.b))
       {
-        i += 1;
-        break;
-        if (localBeauty.d != localBeauty.b) {
-          localStringBuilder.append(",").append(str).append(":").append(localBeauty.d);
-        }
+        localStringBuilder.append(",");
+        localStringBuilder.append(str);
+        localStringBuilder.append(":");
+        localStringBuilder.append(localBeauty.d);
       }
+      i += 1;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("BeautyConfig", 4, "getConfigStr, config[" + localStringBuilder.toString() + "]");
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getConfigStr, config[");
+      ((StringBuilder)localObject).append(localStringBuilder.toString());
+      ((StringBuilder)localObject).append("]");
+      QLog.i("BeautyConfig", 4, ((StringBuilder)localObject).toString());
     }
     return localStringBuilder.toString();
   }
@@ -122,126 +128,117 @@ public class BeautyConfig
   
   void a(int paramInt, List<BeautyConfig.Beauty> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)((Map.Entry)localIterator.next()).getValue();
-        if ((localBeauty != null) && ((paramInt == 0) || (localBeauty.jdField_a_of_type_Int == paramInt))) {
-          paramList.add(localBeauty);
-        }
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)((Map.Entry)localIterator.next()).getValue();
+      if ((localBeauty != null) && ((paramInt == 0) || (localBeauty.jdField_a_of_type_Int == paramInt))) {
+        paramList.add(localBeauty);
       }
     }
   }
   
   public void a(BeautyConfig paramBeautyConfig)
   {
-    if (paramBeautyConfig == null) {}
-    for (;;)
-    {
+    if (paramBeautyConfig == null) {
       return;
-      Iterator localIterator = paramBeautyConfig.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
-        if (localBeauty != null) {
-          localBeauty.d = paramBeautyConfig.a(str);
-        }
+    }
+    Iterator localIterator = paramBeautyConfig.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
+      if (localBeauty != null) {
+        localBeauty.d = paramBeautyConfig.a(str);
       }
     }
   }
   
   public void a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return;
-    }
-    int i = -1;
-    Object localObject1 = paramString.split(",");
-    int m = localObject1.length;
-    int j = 0;
-    label29:
-    Object localObject2;
-    int k;
-    if (j < m)
+    if (paramString != null)
     {
-      localObject2 = localObject1[j];
-      if (localObject2 == null) {
-        k = i;
+      if (paramString.length() == 0) {
+        return;
       }
-    }
-    for (;;)
-    {
-      j += 1;
-      i = k;
-      break label29;
-      localObject2 = ((String)localObject2).split(":");
-      k = i;
-      if (localObject2.length == 2)
+      Object localObject1 = paramString.split(",");
+      int n = localObject1.length;
+      int i = 0;
+      int k;
+      for (int j = -1; i < n; j = k)
       {
-        CharSequence localCharSequence = localObject2[0];
-        try
+        Object localObject2 = localObject1[i];
+        if (localObject2 == null)
         {
-          k = Integer.parseInt(localObject2[1]);
-          if (TextUtils.equals(localCharSequence, "VERSION"))
+          k = j;
+        }
+        else
+        {
+          localObject2 = ((String)localObject2).split(":");
+          k = j;
+          if (localObject2.length == 2)
           {
-            i = k;
-          }
-          else
-          {
-            localObject2 = (BeautyConfig.Beauty)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localCharSequence);
-            if (localObject2 != null) {
-              ((BeautyConfig.Beauty)localObject2).d = k;
+            CharSequence localCharSequence = localObject2[0];
+            try
+            {
+              int m = Integer.parseInt(localObject2[1]);
+              if (TextUtils.equals(localCharSequence, "VERSION"))
+              {
+                k = m;
+              }
+              else
+              {
+                localObject2 = (BeautyConfig.Beauty)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localCharSequence);
+                k = j;
+                if (localObject2 != null)
+                {
+                  ((BeautyConfig.Beauty)localObject2).d = m;
+                  k = j;
+                }
+              }
+            }
+            catch (NumberFormatException localNumberFormatException)
+            {
+              localNumberFormatException.printStackTrace();
+              k = j;
             }
           }
         }
-        catch (NumberFormatException localNumberFormatException)
+        i += 1;
+      }
+      if ((j < 1) && (this.b))
+      {
+        localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+        for (i = 1; ((Iterator)localObject1).hasNext(); i = 0)
         {
-          localNumberFormatException.printStackTrace();
-          k = i;
-        }
-        continue;
-        if ((i < 1) && (this.b))
-        {
-          localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-          for (i = 1; ((Iterator)localObject1).hasNext(); i = 0)
-          {
-            label179:
-            BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)((Map.Entry)((Iterator)localObject1).next()).getValue();
-            if ((localBeauty == null) || (localBeauty.jdField_a_of_type_Int == 1) || (localBeauty.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE == BeautyRealConfig.TYPE.BASIC4)) {
-              break label179;
-            }
-            if (localBeauty.d == localBeauty.b) {
-              break label321;
-            }
+          label186:
+          BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)((Map.Entry)((Iterator)localObject1).next()).getValue();
+          if ((localBeauty == null) || (localBeauty.jdField_a_of_type_Int == 1) || (localBeauty.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE == BeautyRealConfig.TYPE.BASIC4) || (localBeauty.d == localBeauty.b)) {
+            break label186;
           }
         }
-        label321:
-        for (;;)
+        j = i;
+        if (i != 0)
         {
-          break label179;
           j = i;
-          if (i != 0)
-          {
-            j = i;
-            if (a("FACE_SHAPE_4") != 40) {
-              j = 0;
-            }
+          if (a("FACE_SHAPE_4") != 40) {
+            j = 0;
           }
-          if (j != 0) {
-            a("FACE_SHAPE_4", 0);
-          }
-          if (!QLog.isDevelopLevel()) {
-            break;
-          }
-          QLog.i("BeautyConfig", 4, "parseConfig, config[" + paramString + "]");
-          return;
         }
-        k = i;
+        if (j != 0) {
+          a("FACE_SHAPE_4", 0);
+        }
+      }
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("parseConfig, config[");
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append("]");
+        QLog.i("BeautyConfig", 4, ((StringBuilder)localObject1).toString());
       }
     }
   }
@@ -313,7 +310,7 @@ public class BeautyConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.BeautyConfig
  * JD-Core Version:    0.7.0.1
  */

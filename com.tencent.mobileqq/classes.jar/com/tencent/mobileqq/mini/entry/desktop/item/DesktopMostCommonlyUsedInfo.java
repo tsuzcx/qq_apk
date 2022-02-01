@@ -13,17 +13,20 @@ public class DesktopMostCommonlyUsedInfo
   
   public DesktopMostCommonlyUsedInfo(int paramInt, INTERFACE.StModuleInfo paramStModuleInfo)
   {
-    if ((paramStModuleInfo == null) || (paramStModuleInfo.userAppList == null) || (paramStModuleInfo.userAppList.isEmpty())) {
-      return;
+    if ((paramStModuleInfo != null) && (paramStModuleInfo.userAppList != null))
+    {
+      if (paramStModuleInfo.userAppList.isEmpty()) {
+        return;
+      }
+      this.mModuleType = paramInt;
+      this.moduleInfo = paramStModuleInfo;
+      this.appInfo = MiniAppInfo.from((INTERFACE.StUserAppInfo)paramStModuleInfo.userAppList.get(0));
     }
-    this.mModuleType = paramInt;
-    this.moduleInfo = paramStModuleInfo;
-    this.appInfo = MiniAppInfo.from((INTERFACE.StUserAppInfo)paramStModuleInfo.userAppList.get(0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopMostCommonlyUsedInfo
  * JD-Core Version:    0.7.0.1
  */

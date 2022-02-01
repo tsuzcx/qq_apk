@@ -7,14 +7,14 @@ class SearchFriendListActivity$1
 {
   SearchFriendListActivity$1(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
       SearchFriendListActivity.a(this.a).notifyDataSetChanged();
     }
   }
   
-  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
   {
     if ((paramBoolean) && (paramString != null)) {
       SearchFriendListActivity.a(this.a).notifyDataSetChanged();
@@ -23,7 +23,7 @@ class SearchFriendListActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SearchFriendListActivity.1
  * JD-Core Version:    0.7.0.1
  */

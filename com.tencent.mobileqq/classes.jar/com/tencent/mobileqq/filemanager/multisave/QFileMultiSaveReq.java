@@ -23,55 +23,62 @@ public class QFileMultiSaveReq
   
   public long a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel.a();
+    QFileSaveModel localQFileSaveModel = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel;
+    if (localQFileSaveModel != null) {
+      return localQFileSaveModel.a();
     }
     return 0L;
   }
   
   public QFileControlReq a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel.a();
+    QFileSaveModel localQFileSaveModel = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel;
+    if (localQFileSaveModel != null) {
+      return localQFileSaveModel.a();
     }
     return null;
   }
   
   public String a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel.b();
+    QFileSaveModel localQFileSaveModel = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel;
+    if (localQFileSaveModel != null) {
+      return localQFileSaveModel.b();
     }
     return "";
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel != null) {}
-    for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel.a();; bool = false)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel;
+    boolean bool;
+    if (localObject != null) {
+      bool = ((QFileSaveModel)localObject).a();
+    } else {
+      bool = false;
+    }
+    if (!bool)
     {
-      if (!bool)
-      {
-        QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileDownload: start fail");
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveReqUiCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveReqUiCallback.a(false);
-        }
+      QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileDownload: start fail");
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveReqUiCallback;
+      if (localObject != null) {
+        ((QFileSaveReqUiCallback)localObject).a(false);
       }
-      return;
     }
   }
   
   public void a(QFileSaveReqUiCallback paramQFileSaveReqUiCallback)
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveReqUiCallback = paramQFileSaveReqUiCallback;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveReqUiCallback);
+    paramQFileSaveReqUiCallback = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel;
+    if (paramQFileSaveReqUiCallback != null) {
+      paramQFileSaveReqUiCallback.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveReqUiCallback);
     }
   }
   
   public void a(String paramString, QFileMultiSaveReq.ISaveFileCallBack paramISaveFileCallBack)
   {
-    if (!FileUtils.b(paramString))
+    if (!FileUtils.fileExistsAndNotEmpty(paramString))
     {
       if (paramISaveFileCallBack != null) {
         paramISaveFileCallBack.a(-1, "file is not exist");
@@ -83,45 +90,49 @@ public class QFileMultiSaveReq
   
   public boolean a()
   {
-    return FileUtils.b(b());
+    return FileUtils.fileExistsAndNotEmpty(b());
   }
   
   public String b()
   {
-    String str = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel != null) {
-      str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel.a();
+    QFileSaveModel localQFileSaveModel = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel;
+    if (localQFileSaveModel != null) {
+      return localQFileSaveModel.a();
     }
-    return str;
+    return "";
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel != null) {}
-    for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel.b();; bool = false)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel;
+    boolean bool;
+    if (localObject != null) {
+      bool = ((QFileSaveModel)localObject).b();
+    } else {
+      bool = false;
+    }
+    if (!bool)
     {
-      if (!bool)
-      {
-        QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileStopDownload: pause fail");
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveReqUiCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveReqUiCallback.b(false);
-        }
+      QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileStopDownload: pause fail");
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveReqUiCallback;
+      if (localObject != null) {
+        ((QFileSaveReqUiCallback)localObject).b(false);
       }
-      return;
     }
   }
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel.c();
+    QFileSaveModel localQFileSaveModel = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveModel;
+    if (localQFileSaveModel != null) {
+      localQFileSaveModel.c();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.QFileMultiSaveReq
  * JD-Core Version:    0.7.0.1
  */

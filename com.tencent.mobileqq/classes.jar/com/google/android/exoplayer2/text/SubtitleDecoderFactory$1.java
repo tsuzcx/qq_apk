@@ -18,82 +18,92 @@ final class SubtitleDecoderFactory$1
   public SubtitleDecoder createDecoder(Format paramFormat)
   {
     String str = paramFormat.sampleMimeType;
-    int i = -1;
     switch (str.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        throw new IllegalArgumentException("Attempted to create decoder for unsupported format");
-        if (str.equals("text/vtt"))
-        {
-          i = 0;
-          continue;
-          if (str.equals("text/x-ssa"))
-          {
-            i = 1;
-            continue;
-            if (str.equals("application/x-mp4-vtt"))
-            {
-              i = 2;
-              continue;
-              if (str.equals("application/ttml+xml"))
-              {
-                i = 3;
-                continue;
-                if (str.equals("application/x-subrip"))
-                {
-                  i = 4;
-                  continue;
-                  if (str.equals("application/x-quicktime-tx3g"))
-                  {
-                    i = 5;
-                    continue;
-                    if (str.equals("application/cea-608"))
-                    {
-                      i = 6;
-                      continue;
-                      if (str.equals("application/x-mp4-cea-608"))
-                      {
-                        i = 7;
-                        continue;
-                        if (str.equals("application/cea-708"))
-                        {
-                          i = 8;
-                          continue;
-                          if (str.equals("application/dvbsubs"))
-                          {
-                            i = 9;
-                            continue;
-                            if (str.equals("application/pgs")) {
-                              i = 10;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 1693976202: 
+      if (str.equals("application/ttml+xml")) {
+        i = 3;
       }
+      break;
+    case 1668750253: 
+      if (str.equals("application/x-subrip")) {
+        i = 4;
+      }
+      break;
+    case 1566016562: 
+      if (str.equals("application/cea-708")) {
+        i = 8;
+      }
+      break;
+    case 1566015601: 
+      if (str.equals("application/cea-608")) {
+        i = 6;
+      }
+      break;
+    case 930165504: 
+      if (str.equals("application/x-mp4-cea-608")) {
+        i = 7;
+      }
+      break;
+    case 822864842: 
+      if (str.equals("text/x-ssa")) {
+        i = 1;
+      }
+      break;
+    case 691401887: 
+      if (str.equals("application/x-quicktime-tx3g")) {
+        i = 5;
+      }
+      break;
+    case -1004728940: 
+      if (str.equals("text/vtt")) {
+        i = 0;
+      }
+      break;
+    case -1026075066: 
+      if (str.equals("application/x-mp4-vtt")) {
+        i = 2;
+      }
+      break;
+    case -1248334819: 
+      if (str.equals("application/pgs")) {
+        i = 10;
+      }
+      break;
+    case -1351681404: 
+      if (str.equals("application/dvbsubs")) {
+        i = 9;
+      }
+      break;
+    }
+    int i = -1;
+    switch (i)
+    {
+    default: 
+      throw new IllegalArgumentException("Attempted to create decoder for unsupported format");
+    case 10: 
+      return new PgsDecoder();
+    case 9: 
+      return new DvbDecoder(paramFormat.initializationData);
+    case 8: 
+      return new Cea708Decoder(paramFormat.accessibilityChannel);
+    case 6: 
+    case 7: 
+      return new Cea608Decoder(paramFormat.sampleMimeType, paramFormat.accessibilityChannel);
+    case 5: 
+      return new Tx3gDecoder(paramFormat.initializationData);
+    case 4: 
+      return new SubripDecoder();
+    case 3: 
+      return new TtmlDecoder();
+    case 2: 
+      return new Mp4WebvttDecoder();
+    case 1: 
+      return new SsaDecoder(paramFormat.initializationData);
     }
     return new WebvttDecoder();
-    return new SsaDecoder(paramFormat.initializationData);
-    return new Mp4WebvttDecoder();
-    return new TtmlDecoder();
-    return new SubripDecoder();
-    return new Tx3gDecoder(paramFormat.initializationData);
-    return new Cea608Decoder(paramFormat.sampleMimeType, paramFormat.accessibilityChannel);
-    return new Cea708Decoder(paramFormat.accessibilityChannel);
-    return new DvbDecoder(paramFormat.initializationData);
-    return new PgsDecoder();
   }
   
   public boolean supportsFormat(Format paramFormat)
@@ -104,7 +114,7 @@ final class SubtitleDecoderFactory$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.SubtitleDecoderFactory.1
  * JD-Core Version:    0.7.0.1
  */

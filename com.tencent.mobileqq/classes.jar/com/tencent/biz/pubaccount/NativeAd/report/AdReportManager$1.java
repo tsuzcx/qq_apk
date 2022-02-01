@@ -5,7 +5,7 @@ import com.tencent.biz.pubaccount.NativeAd.report.bean.CommonReportObj;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.ActionEntity;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportAction;
 import com.tencent.biz.pubaccount.NativeAd.report.util.AdReportUtil;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
+import com.tencent.biz.pubaccount.NativeAd.util.RIJAdReportManager;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -36,52 +36,73 @@ class AdReportManager$1
   
   public void run()
   {
-    String str;
-    Map localMap;
     try
     {
       ReportAction localReportAction = AdReportUtil.a(this.a);
-      str = AdReportUtil.a(this.a);
-      if (TextUtils.isEmpty(str))
+      Object localObject1 = AdReportUtil.a(this.a);
+      boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
+      if (bool)
       {
-        AdReportManager.a(this.this$0, "action:" + localReportAction.getValue() + ",report fail:", "reportUrl is empty");
+        localObject1 = this.this$0;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("action:");
+        ((StringBuilder)localObject2).append(localReportAction.getValue());
+        ((StringBuilder)localObject2).append(",report fail:");
+        AdReportManager.a((AdReportManager)localObject1, ((StringBuilder)localObject2).toString(), "reportUrl is empty");
         return;
       }
-      localMap = AdReportUtil.a(this.a);
-      if ((localMap == null) || (localMap.size() == 0))
+      Object localObject2 = AdReportUtil.a(this.a);
+      if ((localObject2 != null) && (((Map)localObject2).size() != 0))
       {
-        AdReportManager.a(this.this$0, "action:" + localReportAction.getValue() + ",report fail:", "reportObjs is empty");
+        ReportData localReportData = AdReportUtil.a((Map)localObject2);
+        if (localReportData.a())
+        {
+          localObject1 = this.this$0;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("action:");
+          ((StringBuilder)localObject2).append(localReportAction.getValue());
+          ((StringBuilder)localObject2).append(",report fail:");
+          AdReportManager.a((AdReportManager)localObject1, ((StringBuilder)localObject2).toString(), "reportData is empty");
+          return;
+        }
+        if (AdReportManager.b(this.a))
+        {
+          localObject1 = this.this$0;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("action:");
+          ((StringBuilder)localObject2).append(localReportAction.getValue());
+          ((StringBuilder)localObject2).append(",report fail:");
+          AdReportManager.a((AdReportManager)localObject1, ((StringBuilder)localObject2).toString(), "judgeAndRecordExpose");
+          return;
+        }
+        AdReportManager.a(this.this$0, (String)localObject1, localReportData, localReportAction);
+        if ((localReportAction == ReportAction.EXPOSE) && (this.a.a().intValue() == 2) && (AdReportUtil.a(this.a) == ActionEntity.OutSuperMask))
+        {
+          this.a.a(ActionEntity.Default);
+          a(localReportAction, (String)localObject1, (Map)localObject2);
+          RIJAdReportManager.b(this.a);
+        }
+      }
+      else
+      {
+        localObject1 = this.this$0;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("action:");
+        ((StringBuilder)localObject2).append(localReportAction.getValue());
+        ((StringBuilder)localObject2).append(",report fail:");
+        AdReportManager.a((AdReportManager)localObject1, ((StringBuilder)localObject2).toString(), "reportObjs is empty");
         return;
       }
     }
     catch (Throwable localThrowable)
     {
       QLog.d("AdReportManager", 4, localThrowable, new Object[0]);
-      return;
-    }
-    ReportData localReportData = AdReportUtil.a(localMap);
-    if (localReportData.a())
-    {
-      AdReportManager.a(this.this$0, "action:" + localThrowable.getValue() + ",report fail:", "reportData is empty");
-      return;
-    }
-    if (AdReportManager.b(this.a))
-    {
-      AdReportManager.a(this.this$0, "action:" + localThrowable.getValue() + ",report fail:", "judgeAndRecordExpose");
-      return;
-    }
-    AdReportManager.a(this.this$0, str, localReportData, localThrowable);
-    if ((localThrowable == ReportAction.EXPOSE) && (this.a.a().intValue() == 2) && (AdReportUtil.a(this.a) == ActionEntity.OutSuperMask))
-    {
-      this.a.a(ActionEntity.Default);
-      a(localThrowable, str, localMap);
-      NativeAdUtils.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.AdReportManager.1
  * JD-Core Version:    0.7.0.1
  */

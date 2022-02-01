@@ -21,15 +21,16 @@ public final class qqstory_service$RspTodayStoryVidList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48 }, new String[] { "result", "vid_list", "feed_id", "is_end", "cookie", "share_to_discover" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0) }, RspTodayStoryVidList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48 }, new String[] { "result", "vid_list", "feed_id", "is_end", "cookie", "share_to_discover" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localInteger }, RspTodayStoryVidList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspTodayStoryVidList
  * JD-Core Version:    0.7.0.1
  */

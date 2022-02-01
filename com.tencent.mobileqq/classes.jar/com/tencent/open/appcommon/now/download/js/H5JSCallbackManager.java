@@ -46,15 +46,11 @@ public class H5JSCallbackManager
   {
     int j = jdField_a_of_type_ComTencentOpenAppcommonNowDownloadJsH5JSCallbackManager.jdField_a_of_type_JavaUtilArrayList.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      if ((IJsCallBack)jdField_a_of_type_ComTencentOpenAppcommonNowDownloadJsH5JSCallbackManager.jdField_a_of_type_JavaUtilArrayList.get(i) == paramIJsCallBack)
       {
-        if ((IJsCallBack)jdField_a_of_type_ComTencentOpenAppcommonNowDownloadJsH5JSCallbackManager.jdField_a_of_type_JavaUtilArrayList.get(i) == paramIJsCallBack) {
-          jdField_a_of_type_ComTencentOpenAppcommonNowDownloadJsH5JSCallbackManager.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        }
-      }
-      else {
+        jdField_a_of_type_ComTencentOpenAppcommonNowDownloadJsH5JSCallbackManager.jdField_a_of_type_JavaUtilArrayList.remove(i);
         return;
       }
       i += 1;
@@ -63,7 +59,7 @@ public class H5JSCallbackManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.js.H5JSCallbackManager
  * JD-Core Version:    0.7.0.1
  */

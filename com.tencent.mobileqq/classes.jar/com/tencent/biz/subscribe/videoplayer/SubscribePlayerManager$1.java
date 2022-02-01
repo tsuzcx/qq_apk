@@ -15,13 +15,15 @@ class SubscribePlayerManager$1
   {
     SubscribePlayerManager.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager).removeCallbacks(SubscribePlayerManager.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager));
     SubscribePlayerManager.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager, true);
-    SubscribePlayerManager.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAutoVideoItemBuilder$AutoVideoMsgViewHolder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAutoVideoItemBuilder$AutoVideoMsgViewHolder.b);
+    SubscribePlayerManager localSubscribePlayerManager = this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager;
+    AutoVideoItemBuilder.AutoVideoMsgViewHolder localAutoVideoMsgViewHolder = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAutoVideoItemBuilder$AutoVideoMsgViewHolder;
+    SubscribePlayerManager.a(localSubscribePlayerManager, localAutoVideoMsgViewHolder, localAutoVideoMsgViewHolder.b);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.SubscribePlayerManager.1
  * JD-Core Version:    0.7.0.1
  */

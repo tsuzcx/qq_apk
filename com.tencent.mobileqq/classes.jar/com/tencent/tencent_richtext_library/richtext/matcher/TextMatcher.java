@@ -46,24 +46,34 @@ public abstract class TextMatcher
   
   public boolean a(int paramInt)
   {
-    if ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaUtilRegexMatcher == null)) {}
-    while ((this.jdField_b_of_type_Int > paramInt) || (!this.jdField_a_of_type_Boolean)) {
-      return false;
-    }
-    if (this.jdField_b_of_type_Int == paramInt)
+    if (this.jdField_b_of_type_JavaLangString != null)
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaUtilRegexMatcher.group();
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilRegexMatcher.end();
-      a();
-      return true;
+      Matcher localMatcher = this.jdField_a_of_type_JavaUtilRegexMatcher;
+      if (localMatcher == null) {
+        return false;
+      }
+      int i = this.jdField_b_of_type_Int;
+      if (i <= paramInt)
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          return false;
+        }
+        if (i == paramInt)
+        {
+          this.jdField_a_of_type_JavaLangString = localMatcher.group();
+          this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilRegexMatcher.end();
+          a();
+          return true;
+        }
+        a();
+      }
     }
-    a();
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencent_richtext_library.richtext.matcher.TextMatcher
  * JD-Core Version:    0.7.0.1
  */

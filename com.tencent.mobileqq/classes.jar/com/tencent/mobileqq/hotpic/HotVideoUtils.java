@@ -43,14 +43,18 @@ public class HotVideoUtils
   
   private static String a()
   {
-    String str = AppConstants.SDCARD_PATH + "HotPicVideo" + File.separator;
-    File localFile = new File(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
+    ((StringBuilder)localObject).append("HotPicVideo");
+    ((StringBuilder)localObject).append(File.separator);
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject);
     if (!localFile.exists())
     {
       localFile.mkdirs();
       QLog.d("TAG", 2, "mkdirs here");
     }
-    return str;
+    return localObject;
   }
   
   public static String a(long paramLong)
@@ -63,7 +67,10 @@ public class HotVideoUtils
     try
     {
       paramString = MD5Utils.toMD5(paramString);
-      paramString = a() + paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a());
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
       return paramString;
     }
     catch (Exception paramString)
@@ -104,11 +111,10 @@ public class HotVideoUtils
   public static boolean a(String paramString, long paramLong)
   {
     paramString = new File(a(paramString));
-    if (!paramString.exists()) {}
-    while (paramString.length() != paramLong) {
+    if (!paramString.exists()) {
       return false;
     }
-    return true;
+    return paramString.length() == paramLong;
   }
   
   public static boolean b()
@@ -118,7 +124,7 @@ public class HotVideoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoUtils
  * JD-Core Version:    0.7.0.1
  */

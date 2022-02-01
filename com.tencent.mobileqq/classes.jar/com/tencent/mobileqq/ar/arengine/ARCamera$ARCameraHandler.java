@@ -19,21 +19,21 @@ class ARCamera$ARCameraHandler
     {
     default: 
       return;
-    case 100: 
-      CameraProxy.a().a(new ARCamera.ARCameraHandler.1(this));
-      removeMessages(100);
-      sendEmptyMessageDelayed(100, 3000L);
+    case 102: 
+      CameraProxy.a().a(new ARCamera.ARCameraHandler.3(this));
       return;
     case 101: 
       CameraProxy.a().a(new ARCamera.ARCameraHandler.2(this));
       return;
     }
-    CameraProxy.a().a(new ARCamera.ARCameraHandler.3(this));
+    CameraProxy.a().a(new ARCamera.ARCameraHandler.1(this));
+    removeMessages(100);
+    sendEmptyMessageDelayed(100, 3000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,23 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.api.IArkAPIService;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class LimitChatPie$13
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   LimitChatPie$13(LimitChatPie paramLimitChatPie) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!this.a.I) {
-      LimitChatPie.d(this.a);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((IArkAPIService)QRoute.api(IArkAPIService.class)).registerAppNotification("com.tencent.mobileqq.expand.aiosafe", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.13
  * JD-Core Version:    0.7.0.1
  */

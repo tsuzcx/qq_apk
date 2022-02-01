@@ -23,59 +23,93 @@ public final class BaseInfo$Info
   @JvmStatic
   public final void initInfo()
   {
-    Object localObject2 = BaseInfo.app;
-    Object localObject1;
-    UserMeta localUserMeta;
-    if (localObject2 != null)
+    Application localApplication = BaseInfo.app;
+    if (localApplication != null)
     {
-      FileUtil.Companion.setApp((Application)localObject2);
+      FileUtil.Companion.setApp(localApplication);
       NameVerifierFactory.INSTANCE.setNameVerifier((HostnameVerifier)new QAPMNameVerifier());
-      BaseInfo.sharePreference = ((Application)localObject2).getSharedPreferences("QAPM_SP", 0);
-      localObject1 = BaseInfo.sharePreference;
-      if (localObject1 == null) {
-        break label153;
+      BaseInfo.sharePreference = localApplication.getSharedPreferences("QAPM_SP", 0);
+      Object localObject1 = BaseInfo.sharePreference;
+      if (localObject1 != null) {
+        localObject1 = ((SharedPreferences)localObject1).edit();
+      } else {
+        localObject1 = null;
       }
-      localObject1 = ((SharedPreferences)localObject1).edit();
       BaseInfo.editor = new AsyncSPEditor((SharedPreferences.Editor)localObject1);
-      if (Intrinsics.areEqual(BaseInfo.userMeta.uin, "10000"))
+      localObject1 = BaseInfo.userMeta.uin;
+      Object localObject2 = "10000";
+      if (Intrinsics.areEqual(localObject1, "10000"))
       {
-        localUserMeta = BaseInfo.userMeta;
-        localObject1 = BaseInfo.sharePreference;
-        if (localObject1 == null) {
-          break label158;
+        UserMeta localUserMeta = BaseInfo.userMeta;
+        Object localObject3 = BaseInfo.sharePreference;
+        localObject1 = localObject2;
+        if (localObject3 != null)
+        {
+          localObject3 = ((SharedPreferences)localObject3).getString("config_uin", "10000");
+          localObject1 = localObject2;
+          if (localObject3 != null) {
+            localObject1 = localObject3;
+          }
         }
-        localObject1 = ((SharedPreferences)localObject1).getString("config_uin", "10000");
-        if (localObject1 == null) {
-          break label158;
-        }
+        localUserMeta.uin = ((String)localObject1);
       }
-    }
-    for (;;)
-    {
-      localUserMeta.uin = ((String)localObject1);
       localObject1 = DBHelper.Companion;
-      localObject2 = ((Application)localObject2).getApplicationContext();
+      localObject2 = localApplication.getApplicationContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "it.applicationContext");
       BaseInfo.dbHelper = ((DBHelper.Companion)localObject1).getInstance((Context)localObject2);
       BaseInfo.pubJson = new JSONObject(BaseInfo.userMeta.toJSON());
-      return;
-      label153:
-      localObject1 = null;
-      break;
-      label158:
-      localObject1 = "10000";
     }
   }
   
   @JvmStatic
   public final void initUrl()
   {
-    BaseInfo.urlMeta.setConfigUrl(BaseInfo.urlMeta.qapmDomain + "/appconfig/v5/config/" + BaseInfo.userMeta.appId + '/');
-    BaseInfo.urlMeta.setAuthorizationUrl(BaseInfo.urlMeta.qapmDomain + "/entrance/" + BaseInfo.userMeta.appId + "/authorize/");
-    BaseInfo.urlMeta.setJsonUploadUrl(BaseInfo.urlMeta.qapmDomain + "/entrance/" + BaseInfo.userMeta.appId + "/uploadJson/");
-    BaseInfo.urlMeta.setFileUploadUrl(BaseInfo.urlMeta.qapmDomain + "/entrance/" + BaseInfo.userMeta.appId + "/uploadFile/");
-    BaseInfo.urlMeta.setAthenaJsonUploadUrl(BaseInfo.urlMeta.athenaDomain + "entrance/uploadJson/" + BaseInfo.userMeta.appId + '/' + BaseInfo.userMeta.version + '/');
-    BaseInfo.urlMeta.setAthenaFileUploadUrl(BaseInfo.urlMeta.athenaDomain + "entrance/uploadFile/" + BaseInfo.userMeta.appId + '/' + BaseInfo.userMeta.version + '/');
+    UrlMeta localUrlMeta = BaseInfo.urlMeta;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseInfo.urlMeta.qapmDomain);
+    localStringBuilder.append("/appconfig/v5/config/");
+    localStringBuilder.append(BaseInfo.userMeta.appId);
+    localStringBuilder.append('/');
+    localUrlMeta.setConfigUrl(localStringBuilder.toString());
+    localUrlMeta = BaseInfo.urlMeta;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseInfo.urlMeta.qapmDomain);
+    localStringBuilder.append("/entrance/");
+    localStringBuilder.append(BaseInfo.userMeta.appId);
+    localStringBuilder.append("/authorize/");
+    localUrlMeta.setAuthorizationUrl(localStringBuilder.toString());
+    localUrlMeta = BaseInfo.urlMeta;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseInfo.urlMeta.qapmDomain);
+    localStringBuilder.append("/entrance/");
+    localStringBuilder.append(BaseInfo.userMeta.appId);
+    localStringBuilder.append("/uploadJson/");
+    localUrlMeta.setJsonUploadUrl(localStringBuilder.toString());
+    localUrlMeta = BaseInfo.urlMeta;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseInfo.urlMeta.qapmDomain);
+    localStringBuilder.append("/entrance/");
+    localStringBuilder.append(BaseInfo.userMeta.appId);
+    localStringBuilder.append("/uploadFile/");
+    localUrlMeta.setFileUploadUrl(localStringBuilder.toString());
+    localUrlMeta = BaseInfo.urlMeta;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseInfo.urlMeta.athenaDomain);
+    localStringBuilder.append("entrance/uploadJson/");
+    localStringBuilder.append(BaseInfo.userMeta.appId);
+    localStringBuilder.append('/');
+    localStringBuilder.append(BaseInfo.userMeta.version);
+    localStringBuilder.append('/');
+    localUrlMeta.setAthenaJsonUploadUrl(localStringBuilder.toString());
+    localUrlMeta = BaseInfo.urlMeta;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseInfo.urlMeta.athenaDomain);
+    localStringBuilder.append("entrance/uploadFile/");
+    localStringBuilder.append(BaseInfo.userMeta.appId);
+    localStringBuilder.append('/');
+    localStringBuilder.append(BaseInfo.userMeta.version);
+    localStringBuilder.append('/');
+    localUrlMeta.setAthenaFileUploadUrl(localStringBuilder.toString());
   }
   
   @JvmStatic
@@ -87,7 +121,7 @@ public final class BaseInfo$Info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.meta.BaseInfo.Info
  * JD-Core Version:    0.7.0.1
  */

@@ -15,18 +15,32 @@ public abstract class BaseRender
   private static final String TAG = "VideoPlayer|BaseRender";
   private static float mSquareSize = 1.0F;
   protected ShortBuffer mDrawListBuffer;
-  protected short[] mDrawOrder = { 0, 1, 2, 2, 3, 0 };
-  protected int mRenderType = -1;
-  protected float[] mSquareCoords = { -mSquareSize, mSquareSize, -mSquareSize, -mSquareSize, mSquareSize, -mSquareSize, mSquareSize, mSquareSize };
-  protected float[] mTextureCoords = { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F };
+  protected short[] mDrawOrder;
+  protected int mRenderType;
+  protected float[] mSquareCoords;
+  protected float[] mTextureCoords;
   protected FloatBuffer mTextureCoordsBuffer;
-  protected float[] mTextureTransform = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+  protected float[] mTextureTransform;
   protected FloatBuffer mVertexBuffer;
   
-  public BaseRender() {}
+  public BaseRender()
+  {
+    float f = mSquareSize;
+    this.mSquareCoords = new float[] { -f, f, -f, -f, f, -f, f, f };
+    this.mDrawOrder = new short[] { 0, 1, 2, 2, 3, 0 };
+    this.mTextureCoords = new float[] { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F };
+    this.mTextureTransform = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+    this.mRenderType = -1;
+  }
   
   public BaseRender(int paramInt)
   {
+    float f = mSquareSize;
+    this.mSquareCoords = new float[] { -f, f, -f, -f, f, -f, f, f };
+    this.mDrawOrder = new short[] { 0, 1, 2, 2, 3, 0 };
+    this.mTextureCoords = new float[] { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F };
+    this.mTextureTransform = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+    this.mRenderType = -1;
     this.mRenderType = paramInt;
   }
   
@@ -38,7 +52,11 @@ public abstract class BaseRender
       if (i == 0) {
         break;
       }
-      Logger.e("VideoPlayer|BaseRender", paramString + ": glError " + GLUtils.getEGLErrorString(i));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(GLUtils.getEGLErrorString(i));
+      Logger.e("VideoPlayer|BaseRender", localStringBuilder.toString());
     }
   }
   
@@ -60,7 +78,8 @@ public abstract class BaseRender
   
   public void setRoteTexture()
   {
-    this.mSquareCoords = new float[] { mSquareSize, -mSquareSize, -mSquareSize, -mSquareSize, -mSquareSize, mSquareSize, mSquareSize, mSquareSize };
+    float f = mSquareSize;
+    this.mSquareCoords = new float[] { f, -f, -f, -f, -f, f, f, f };
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(this.mSquareCoords.length * 4);
     localByteBuffer.order(ByteOrder.nativeOrder());
     this.mVertexBuffer = localByteBuffer.asFloatBuffer();
@@ -99,7 +118,7 @@ public abstract class BaseRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jalpha.videoplayer.render.BaseRender
  * JD-Core Version:    0.7.0.1
  */

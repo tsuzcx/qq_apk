@@ -19,7 +19,6 @@ public final class ck
   
   public static int a(Context paramContext, String paramString)
   {
-    int j = -407;
     try
     {
       paramContext = paramContext.getPackageManager().getApplicationInfo(paramString, 128);
@@ -30,13 +29,13 @@ public final class ck
         return -408;
       }
       int i = paramContext.metaData.getInt("halley_appid", 0);
-      j = i;
       if (i <= 0) {
         return -408;
       }
+      return i;
     }
     catch (PackageManager.NameNotFoundException paramContext) {}
-    return j;
+    return -407;
   }
   
   public static ck.a a(int paramInt, Context paramContext, String paramString1, String paramString2)
@@ -52,6 +51,7 @@ public final class ck
         paramContext = new ck.a(paramInt, paramString1, paramContext.enabled, paramContext.exported, paramContext.processName, paramContext.metaData);
         return paramContext;
       }
+      return null;
     }
     catch (PackageManager.NameNotFoundException paramContext) {}
     return null;
@@ -69,21 +69,19 @@ public final class ck
   
   public static String a(int paramInt)
   {
-    String str = "";
     if (paramInt == 2) {
-      str = "2g";
+      return "2g";
     }
-    do
-    {
-      return str;
-      if (paramInt == 3) {
-        return "3g";
-      }
-      if (paramInt == 4) {
-        return "4g";
-      }
-    } while (paramInt != 1);
-    return "wifi";
+    if (paramInt == 3) {
+      return "3g";
+    }
+    if (paramInt == 4) {
+      return "4g";
+    }
+    if (paramInt == 1) {
+      return "wifi";
+    }
+    return "";
   }
   
   public static String a(Context paramContext)
@@ -109,12 +107,18 @@ public final class ck
   
   private static String a(boolean paramBoolean)
   {
-    Object localObject = new StringBuilder("HalleyServicePreferences_").append(m.c());
+    Object localObject = new StringBuilder("HalleyServicePreferences_");
+    ((StringBuilder)localObject).append(m.c());
     m.b();
     String str = ((StringBuilder)localObject).toString();
     localObject = str;
-    if (paramBoolean) {
-      localObject = str + "_" + m.i();
+    if (paramBoolean)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(m.i());
+      localObject = ((StringBuilder)localObject).toString();
     }
     return localObject;
   }
@@ -157,7 +161,7 @@ public final class ck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ck
  * JD-Core Version:    0.7.0.1
  */

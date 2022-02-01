@@ -13,12 +13,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.biz.videostory.support.VSReporter;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.utils.TroopInfoUIUtil;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -34,73 +34,70 @@ class RelativePersonalDetailHeadItemView$FansGroupHolder
   public RelativePersonalDetailHeadItemView$FansGroupHolder(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380475));
-    this.b = ((TextView)paramView.findViewById(2131380507));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364070));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379778));
+    this.b = ((TextView)paramView.findViewById(2131379806));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363991));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
   public void a(CertifiedAccountMeta.StQQGroup paramStQQGroup)
   {
-    String str;
     if (paramStQQGroup != null)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStQQGroup.name.get());
-      this.b.setText(paramStQQGroup.memberNum.get() + HardCodeUtil.a(2131713329));
+      Object localObject = this.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramStQQGroup.memberNum.get());
+      localStringBuilder.append(HardCodeUtil.a(2131713297));
+      ((TextView)localObject).setText(localStringBuilder.toString());
       this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup = paramStQQGroup;
-      Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
-      if (paramStQQGroup.joinState.get() != 1) {
-        break label143;
+      localObject = this.jdField_a_of_type_AndroidWidgetButton;
+      int i;
+      if (paramStQQGroup.joinState.get() == 1) {
+        i = 2131713293;
+      } else {
+        i = 2131713292;
       }
-      str = HardCodeUtil.a(2131713325);
-      localButton.setText(str);
+      ((Button)localObject).setText(HardCodeUtil.a(i));
       if (RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user != null)
       {
-        str = RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user.id.get();
-        if (paramStQQGroup.joinState.get() != 1) {
-          break label152;
+        localObject = RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user.id.get();
+        if (paramStQQGroup.joinState.get() == 1) {
+          paramStQQGroup = "open_butten";
+        } else {
+          paramStQQGroup = "enter_butten";
         }
+        VSReporter.a((String)localObject, "auth_fan", paramStQQGroup, 0, 0, new String[0]);
       }
-    }
-    label143:
-    label152:
-    for (paramStQQGroup = "open_butten";; paramStQQGroup = "enter_butten")
-    {
-      VSReporter.a(str, "auth_fan", paramStQQGroup, 0, 0, new String[0]);
-      return;
-      str = HardCodeUtil.a(2131713324);
-      break;
     }
   }
   
   public void onClick(View paramView)
   {
-    Object localObject;
     if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup != null) && (paramView != null) && (paramView.getContext() != null))
     {
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.joinState.get() != 1) {
-        break label117;
+      Object localObject;
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.joinState.get() == 1)
+      {
+        localObject = AIOUtils.a(new Intent(paramView.getContext(), SplashActivity.class), new int[] { 2 });
+        ((Intent)localObject).putExtra("uin", String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()));
+        ((Intent)localObject).putExtra("uintype", 1);
+        ((Intent)localObject).putExtra("uinname", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.name.get());
+        paramView.getContext().startActivity((Intent)localObject);
       }
-      localObject = AIOUtils.a(new Intent(paramView.getContext(), SplashActivity.class), new int[] { 2 });
-      ((Intent)localObject).putExtra("uin", String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()));
-      ((Intent)localObject).putExtra("uintype", 1);
-      ((Intent)localObject).putExtra("uinname", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.name.get());
-      paramView.getContext().startActivity((Intent)localObject);
+      else
+      {
+        localObject = TroopInfoUIUtil.a(String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()), 4);
+        ((Bundle)localObject).putInt("t_s_f", 1001);
+        TroopUtils.a(paramView.getContext(), (Bundle)localObject, 2);
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label117:
-      localObject = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()), 4);
-      ((Bundle)localObject).putInt("t_s_f", 1001);
-      TroopUtils.a(paramView.getContext(), (Bundle)localObject, 2);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView.FansGroupHolder
  * JD-Core Version:    0.7.0.1
  */

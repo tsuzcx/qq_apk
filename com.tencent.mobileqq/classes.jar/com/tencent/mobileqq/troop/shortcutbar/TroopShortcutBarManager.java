@@ -9,11 +9,13 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.troopapps.api.ITroopAppHandler;
+import com.tencent.mobileqq.troop.troopapps.api.TroopAppObserver;
+import com.tencent.mobileqq.troop.troopreddot.api.ITroopRedDotHandler;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troop.utils.api.ITroopUtilsApi;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class TroopShortcutBarManager
 {
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected TroopBusinessObserver a;
+  protected TroopAppObserver a;
   private ConcurrentHashMap<Long, TroopShortcutBarInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private boolean jdField_a_of_type_Boolean = false;
   private ConcurrentHashMap<String, Long> b = new ConcurrentHashMap();
@@ -41,13 +43,17 @@ public class TroopShortcutBarManager
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     this.b.clear();
     a();
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver = new TroopShortcutBarManager.1(this);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiTroopAppObserver = new TroopShortcutBarManager.1(this);
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiTroopAppObserver);
   }
   
   private static SharedPreferences a()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "troop_shortcut_bar", 0);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localStringBuilder.append("troop_shortcut_bar");
+    return localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
   private void a()
@@ -58,35 +64,54 @@ public class TroopShortcutBarManager
   
   private void a(TroopShortcutBarApp paramTroopShortcutBarApp, Object paramObject)
   {
-    if ((paramTroopShortcutBarApp == null) || (paramObject == null) || (!(paramObject instanceof Long))) {}
-    long l;
-    do
+    if ((paramTroopShortcutBarApp != null) && (paramObject != null))
     {
-      return;
-      l = ((Long)paramObject).longValue();
-    } while (paramTroopShortcutBarApp.b() != l);
-    paramTroopShortcutBarApp.c(true);
+      if (!(paramObject instanceof Long)) {
+        return;
+      }
+      long l = ((Long)paramObject).longValue();
+      if (paramTroopShortcutBarApp.b() == l) {
+        paramTroopShortcutBarApp.c(true);
+      }
+    }
   }
   
   private void a(boolean paramBoolean, long paramLong, Object paramObject, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopShortcutBarManager", 2, "handleGetAddTroopAppRemindInfo isSuccess:" + paramBoolean + " troopUin:" + paramLong + " errCode:" + paramInt);
-    }
-    if ((!paramBoolean) || (paramObject == null) || (!(paramObject instanceof oidb_0xece.RspBody))) {}
-    do
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        paramObject = (oidb_0xece.RspBody)paramObject;
-      } while (paramObject.busi_id.get() != 1053);
-      paramObject = TroopShortcutBarUtil.a(paramObject);
-    } while (paramObject == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopShortcutBarManager", 2, "addRemindGrayTip tipItem" + paramObject.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleGetAddTroopAppRemindInfo isSuccess:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" troopUin:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" errCode:");
+      localStringBuilder.append(paramInt);
+      QLog.d("TroopShortcutBarManager", 2, localStringBuilder.toString());
     }
-    TroopShortcutBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong), paramObject);
+    if ((paramBoolean) && (paramObject != null))
+    {
+      if (!(paramObject instanceof oidb_0xece.RspBody)) {
+        return;
+      }
+      paramObject = (oidb_0xece.RspBody)paramObject;
+      if (paramObject.busi_id.get() != 1053) {
+        return;
+      }
+      paramObject = TroopShortcutBarUtil.a(paramObject);
+      if (paramObject != null)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("addRemindGrayTip tipItem");
+          localStringBuilder.append(paramObject.toString());
+          QLog.d("TroopShortcutBarManager", 2, localStringBuilder.toString());
+        }
+        TroopShortcutBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong), paramObject);
+      }
+    }
   }
   
   private void b()
@@ -100,8 +125,10 @@ public class TroopShortcutBarManager
     }
     catch (Exception localException)
     {
-      QLog.e("TroopShortcutBarManager", 1, "registerMiniAppAdd exception.");
+      label31:
+      break label31;
     }
+    QLog.e("TroopShortcutBarManager", 1, "registerMiniAppAdd exception.");
   }
   
   private void c()
@@ -113,8 +140,10 @@ public class TroopShortcutBarManager
     }
     catch (Exception localException)
     {
-      QLog.e("TroopShortcutBarManager", 1, "unregisterMiniAppAdd exception.");
+      label15:
+      break label15;
     }
+    QLog.e("TroopShortcutBarManager", 1, "unregisterMiniAppAdd exception.");
   }
   
   public int a(long paramLong)
@@ -127,21 +156,27 @@ public class TroopShortcutBarManager
   
   public long a(long paramLong)
   {
-    long l = 0L;
     SharedPreferences localSharedPreferences = a();
     if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong(String.valueOf(paramLong), 0L);
+      return localSharedPreferences.getLong(String.valueOf(paramLong), 0L);
     }
-    return l;
+    return 0L;
   }
   
   public long a(String paramString)
   {
     SharedPreferences localSharedPreferences = a();
-    if ((TextUtils.isEmpty(paramString)) || (localSharedPreferences == null)) {
-      return 0L;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (localSharedPreferences == null) {
+        return 0L;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_last_remind_graytip_uniseq");
+      return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
     }
-    return localSharedPreferences.getLong(paramString + "_last_remind_graytip_uniseq", 0L);
+    return 0L;
   }
   
   public TroopShortcutBarInfo a(Long paramLong)
@@ -190,101 +225,126 @@ public class TroopShortcutBarManager
   public void a(long paramLong1, long paramLong2, int paramInt)
   {
     Object localObject = a(Long.valueOf(paramLong1));
-    if (localObject == null) {}
-    TroopShortcutBarApp localTroopShortcutBarApp;
-    do
-    {
+    if (localObject == null) {
       return;
-      while (!((Iterator)localObject).hasNext())
-      {
-        do
-        {
-          localObject = ((TroopShortcutBarInfo)localObject).a();
-        } while (localObject == null);
-        localObject = ((List)localObject).iterator();
+    }
+    localObject = ((TroopShortcutBarInfo)localObject).a();
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      TroopShortcutBarApp localTroopShortcutBarApp = (TroopShortcutBarApp)((Iterator)localObject).next();
+      if (localTroopShortcutBarApp.b() == paramLong2) {
+        localTroopShortcutBarApp.b(paramInt);
       }
-      localTroopShortcutBarApp = (TroopShortcutBarApp)((Iterator)localObject).next();
-    } while (localTroopShortcutBarApp.b() != paramLong2);
-    localTroopShortcutBarApp.b(paramInt);
+    }
   }
   
   public void a(Long paramLong, TroopShortcutBarInfo paramTroopShortcutBarInfo, boolean paramBoolean, Object paramObject)
   {
-    if ((paramTroopShortcutBarInfo == null) || (paramLong == null))
+    if ((paramTroopShortcutBarInfo != null) && (paramLong != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopShortcutBarManager", 2, "addTroopInfoToAIOCache. troopCode:" + String.valueOf(paramLong) + "is null");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("addTroopInfoToAIOCache. troopCode:");
+        ((StringBuilder)localObject).append(String.valueOf(paramLong));
+        QLog.e("TroopShortcutBarManager", 2, ((StringBuilder)localObject).toString());
       }
+      Object localObject = (TroopShortcutBarInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramLong);
+      Iterator localIterator1;
+      if ((localObject != null) && (!paramBoolean))
+      {
+        paramTroopShortcutBarInfo.a(((TroopShortcutBarInfo)localObject).b());
+        localObject = ((TroopShortcutBarInfo)localObject).a();
+        localIterator1 = paramTroopShortcutBarInfo.a().iterator();
+      }
+      while (localIterator1.hasNext())
+      {
+        TroopShortcutBarApp localTroopShortcutBarApp1 = (TroopShortcutBarApp)localIterator1.next();
+        Iterator localIterator2 = ((ArrayList)localObject).iterator();
+        while (localIterator2.hasNext())
+        {
+          TroopShortcutBarApp localTroopShortcutBarApp2 = (TroopShortcutBarApp)localIterator2.next();
+          if (localTroopShortcutBarApp1.b() == localTroopShortcutBarApp2.b()) {
+            localTroopShortcutBarApp1.b(localTroopShortcutBarApp2.c());
+          }
+        }
+        a(localTroopShortcutBarApp1, paramObject);
+        continue;
+        paramTroopShortcutBarInfo.a(System.currentTimeMillis() + paramTroopShortcutBarInfo.c());
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramLong, paramTroopShortcutBarInfo);
+      b(paramLong.longValue());
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopShortcutBarManager", 2, "addTroopInfoToAIOCache. troopCode:" + String.valueOf(paramLong));
-    }
-    Object localObject = (TroopShortcutBarInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramLong);
-    Iterator localIterator1;
-    if ((localObject != null) && (!paramBoolean))
+    if (QLog.isColorLevel())
     {
-      paramTroopShortcutBarInfo.a(((TroopShortcutBarInfo)localObject).b());
-      localObject = ((TroopShortcutBarInfo)localObject).a();
-      localIterator1 = paramTroopShortcutBarInfo.a().iterator();
+      paramTroopShortcutBarInfo = new StringBuilder();
+      paramTroopShortcutBarInfo.append("addTroopInfoToAIOCache. troopCode:");
+      paramTroopShortcutBarInfo.append(String.valueOf(paramLong));
+      paramTroopShortcutBarInfo.append("is null");
+      QLog.e("TroopShortcutBarManager", 2, paramTroopShortcutBarInfo.toString());
     }
-    while (localIterator1.hasNext())
-    {
-      TroopShortcutBarApp localTroopShortcutBarApp1 = (TroopShortcutBarApp)localIterator1.next();
-      Iterator localIterator2 = ((ArrayList)localObject).iterator();
-      while (localIterator2.hasNext())
-      {
-        TroopShortcutBarApp localTroopShortcutBarApp2 = (TroopShortcutBarApp)localIterator2.next();
-        if (localTroopShortcutBarApp1.b() == localTroopShortcutBarApp2.b()) {
-          localTroopShortcutBarApp1.b(localTroopShortcutBarApp2.c());
-        }
-      }
-      a(localTroopShortcutBarApp1, paramObject);
-      continue;
-      paramTroopShortcutBarInfo.a(System.currentTimeMillis() + paramTroopShortcutBarInfo.c());
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramLong, paramTroopShortcutBarInfo);
-    b(paramLong.longValue());
   }
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      long l = Long.parseLong(paramString);
+      if (a(l) != 0)
       {
-        long l = Long.parseLong(paramString);
-        if (a(l) != 0)
+        Object localObject1 = (ITroopAppHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_APP_HANDLER);
+        if (localObject1 != null)
         {
-          TroopHandler localTroopHandler = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-          if ((localTroopHandler != null) && ((TroopUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) || (TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()))))
+          Object localObject2 = (ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class);
+          QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+          if (!((ITroopUtilsApi)localObject2).isTroopAdmin(localQQAppInterface, paramString, localQQAppInterface.getCurrentUin()))
           {
-            localTroopHandler.i(l);
-            if (QLog.isColorLevel()) {
-              QLog.d("TroopShortcutBarManager", 2, "reqGetAddTroopAppRemindInfo troopUin：" + l);
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+            if (!TroopUtils.a((QQAppInterface)localObject2, paramString, ((QQAppInterface)localObject2).getCurrentUin())) {}
+          }
+          else
+          {
+            ((ITroopAppHandler)localObject1).a(l);
+            if (QLog.isColorLevel())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("reqGetAddTroopAppRemindInfo troopUin：");
+              ((StringBuilder)localObject1).append(l);
+              QLog.d("TroopShortcutBarManager", 2, ((StringBuilder)localObject1).toString());
             }
           }
-          TroopNotificationHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 101896870);
-          a(l, 0);
-          return;
         }
+        ((ITroopRedDotHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(paramString, 101896870);
+        a(l, 0);
       }
-      catch (Exception paramString)
-      {
-        QLog.e("TroopShortcutBarManager", 1, "getAddTroopAppRemindInfo parseLong troopUin exception");
-      }
+      return;
     }
+    catch (Exception paramString)
+    {
+      label175:
+      break label175;
+    }
+    QLog.e("TroopShortcutBarManager", 1, "getAddTroopAppRemindInfo parseLong troopUin exception");
   }
   
   public void a(String paramString, long paramLong)
   {
     SharedPreferences localSharedPreferences = a();
-    if ((paramString.isEmpty()) || (localSharedPreferences == null)) {
-      return;
+    if (!paramString.isEmpty())
+    {
+      if (localSharedPreferences == null) {
+        return;
+      }
+      localSharedPreferences.edit().putLong(paramString, paramLong).apply();
     }
-    localSharedPreferences.edit().putLong(paramString, paramLong).apply();
   }
   
   public void a(boolean paramBoolean)
@@ -312,38 +372,35 @@ public class TroopShortcutBarManager
   {
     Object localObject1 = (TroopShortcutBarInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
     if (localObject1 == null) {
-      break label21;
-    }
-    for (;;)
-    {
-      label21:
       return;
-      if ((((TroopShortcutBarInfo)localObject1).a() != 1) && (((TroopShortcutBarInfo)localObject1).b() != 1))
+    }
+    if (((TroopShortcutBarInfo)localObject1).a() != 1)
+    {
+      if (((TroopShortcutBarInfo)localObject1).b() == 1) {
+        return;
+      }
+      Object localObject2 = ((TroopShortcutBarInfo)localObject1).a();
+      if (localObject2 == null) {
+        return;
+      }
+      if (b(paramLong) == 0L)
       {
-        Object localObject2 = ((TroopShortcutBarInfo)localObject1).a();
-        if (localObject2 == null) {
-          break;
-        }
-        if (b(paramLong) == 0L)
-        {
-          long l = c(paramLong);
-          if (l <= b(paramLong)) {
-            break;
-          }
+        long l = c(paramLong);
+        if (l > b(paramLong)) {
           a(paramLong, l);
-          return;
         }
-        paramLong = Math.max(b(paramLong), ((TroopShortcutBarInfo)localObject1).c());
-        localObject1 = ((ArrayList)localObject2).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (TroopShortcutBarApp)((Iterator)localObject1).next();
-          if (localObject2 != null) {
-            if (((TroopShortcutBarApp)localObject2).c() > paramLong) {
-              ((TroopShortcutBarApp)localObject2).b(true);
-            } else {
-              ((TroopShortcutBarApp)localObject2).b(false);
-            }
+        return;
+      }
+      paramLong = Math.max(b(paramLong), ((TroopShortcutBarInfo)localObject1).c());
+      localObject1 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (TroopShortcutBarApp)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          if (((TroopShortcutBarApp)localObject2).c() > paramLong) {
+            ((TroopShortcutBarApp)localObject2).b(true);
+          } else {
+            ((TroopShortcutBarApp)localObject2).b(false);
           }
         }
       }
@@ -352,67 +409,66 @@ public class TroopShortcutBarManager
   
   public void b(String paramString, long paramLong)
   {
-    SharedPreferences localSharedPreferences = a();
-    if ((TextUtils.isEmpty(paramString)) || (localSharedPreferences == null)) {
-      return;
+    Object localObject = a();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (localObject == null) {
+        return;
+      }
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_last_remind_graytip_uniseq");
+      ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), paramLong).apply();
     }
-    localSharedPreferences.edit().putLong(paramString + "_last_remind_graytip_uniseq", paramLong).apply();
   }
   
   public long c(long paramLong)
   {
-    long l2 = 0L;
     Object localObject = (TroopShortcutBarInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
     if (localObject == null) {
-      l1 = l2;
+      return 0L;
     }
-    do
+    if (((TroopShortcutBarInfo)localObject).a() != 1)
     {
-      do
-      {
-        do
-        {
-          return l1;
-          l1 = l2;
-        } while (((TroopShortcutBarInfo)localObject).a() == 1);
-        l1 = l2;
-      } while (((TroopShortcutBarInfo)localObject).b() == 1);
-      localObject = ((TroopShortcutBarInfo)localObject).a();
-      l1 = l2;
-    } while (localObject == null);
-    paramLong = b(paramLong);
-    localObject = ((ArrayList)localObject).iterator();
-    TroopShortcutBarApp localTroopShortcutBarApp;
-    do
-    {
-      l1 = paramLong;
-      if (!((Iterator)localObject).hasNext()) {
-        break;
+      if (((TroopShortcutBarInfo)localObject).b() == 1) {
+        return 0L;
       }
-      localTroopShortcutBarApp = (TroopShortcutBarApp)((Iterator)localObject).next();
-    } while (localTroopShortcutBarApp == null);
-    long l1 = localTroopShortcutBarApp.c();
-    if (l1 > paramLong) {
-      paramLong = l1;
+      localObject = ((TroopShortcutBarInfo)localObject).a();
+      if (localObject == null) {
+        return 0L;
+      }
+      paramLong = b(paramLong);
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        TroopShortcutBarApp localTroopShortcutBarApp = (TroopShortcutBarApp)((Iterator)localObject).next();
+        if (localTroopShortcutBarApp != null)
+        {
+          long l = localTroopShortcutBarApp.c();
+          if (l > paramLong) {
+            paramLong = l;
+          }
+        }
+      }
+      return paramLong;
     }
-    for (;;)
-    {
-      break;
-    }
+    return 0L;
   }
   
   public void onDestroy()
   {
     c();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    TroopAppObserver localTroopAppObserver = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiTroopAppObserver;
+    if (localTroopAppObserver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localTroopAppObserver);
     }
     this.c.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarManager
  * JD-Core Version:    0.7.0.1
  */

@@ -21,12 +21,16 @@ public class ActivityClassHandler
   
   public String toString()
   {
-    return "ActivityClassHandler<" + this.activityClass.getSimpleName() + ">";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ActivityClassHandler<");
+    localStringBuilder.append(this.activityClass.getSimpleName());
+    localStringBuilder.append(">");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.route.ActivityClassHandler
  * JD-Core Version:    0.7.0.1
  */

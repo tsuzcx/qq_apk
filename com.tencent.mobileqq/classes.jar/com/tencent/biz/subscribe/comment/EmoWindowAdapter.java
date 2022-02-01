@@ -20,7 +20,7 @@ public class EmoWindowAdapter
   public static final int[] a;
   public static final int[] b;
   public static final int[] c = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-  private final int jdField_a_of_type_Int = 2130839171;
+  private final int jdField_a_of_type_Int = 2130839024;
   private Context jdField_a_of_type_AndroidContentContext;
   KeyClickListener jdField_a_of_type_ComTencentBizSubscribeCommentKeyClickListener;
   private Integer[] jdField_a_of_type_ArrayOfJavaLangInteger;
@@ -39,46 +39,67 @@ public class EmoWindowAdapter
     this.jdField_a_of_type_ComTencentBizSubscribeCommentKeyClickListener = paramKeyClickListener;
     this.jdField_b_of_type_Int = paramInt4;
     paramInt4 = 0;
-    if (paramInt4 < paramInt3)
+    paramKeyClickListener = Integer.valueOf(0);
+    while (paramInt4 < paramInt3)
     {
-      int i;
       if (paramInt4 < paramInt2)
       {
-        i = jdField_b_of_type_ArrayOfInt[((paramInt1 - 1) * (paramInt3 - 1) + paramInt4)];
-        int j = c[((paramInt1 - 1) * (paramInt3 - 1) + paramInt4)];
-        paramContext = "f_static_";
-        if (j == 1) {
+        paramContext = jdField_b_of_type_ArrayOfInt;
+        int i = (paramInt1 - 1) * (paramInt3 - 1) + paramInt4;
+        int j = paramContext[i];
+        if (c[i] == 1) {
           paramContext = "f";
+        } else {
+          paramContext = "f_static_";
         }
-        if (i < 10)
+        StringBuilder localStringBuilder;
+        if (j < 10)
         {
-          paramContext = paramContext + "00" + i;
-          label130:
-          if ((i < 0) || (i >= 107)) {
-            break label278;
-          }
-          this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = Integer.valueOf(Patterns.jdField_b_of_type_ArrayOfInt[i]);
-          QLog.d("CommentInputPopupWindow", 2, "step1 has current id :" + this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] + " " + paramContext + "  ");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramContext);
+          localStringBuilder.append("00");
+          localStringBuilder.append(j);
+          paramContext = localStringBuilder.toString();
+        }
+        else if (j < 100)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramContext);
+          localStringBuilder.append("0");
+          localStringBuilder.append(j);
+          paramContext = localStringBuilder.toString();
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramContext);
+          localStringBuilder.append("10");
+          localStringBuilder.append(j - 100);
+          paramContext = localStringBuilder.toString();
+        }
+        if ((j >= 0) && (j < 107))
+        {
+          this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = Integer.valueOf(Patterns.jdField_b_of_type_ArrayOfInt[j]);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("step1 has current id :");
+          localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4]);
+          localStringBuilder.append(" ");
+          localStringBuilder.append(paramContext);
+          localStringBuilder.append("  ");
+          QLog.d("CommentInputPopupWindow", 2, localStringBuilder.toString());
+        }
+        else
+        {
+          this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = paramKeyClickListener;
         }
       }
-      for (;;)
+      else
       {
-        paramInt4 += 1;
-        break;
-        if (i < 100)
-        {
-          paramContext = paramContext + "0" + i;
-          break label130;
-        }
-        paramContext = paramContext + "10" + (i - 100);
-        break label130;
-        label278:
-        this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = Integer.valueOf(0);
-        continue;
-        this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = Integer.valueOf(0);
+        this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = paramKeyClickListener;
       }
+      paramInt4 += 1;
     }
-    this.jdField_a_of_type_ArrayOfJavaLangInteger[(paramInt3 - 1)] = Integer.valueOf(2130839171);
+    this.jdField_a_of_type_ArrayOfJavaLangInteger[(paramInt3 - 1)] = Integer.valueOf(2130839024);
   }
   
   public int getCount()
@@ -98,14 +119,14 @@ public class EmoWindowAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    ImageView localImageView;
     LinearLayout localLinearLayout;
     if (paramView == null)
     {
       localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      int i = AIOUtils.a(35.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int i = AIOUtils.b(35.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       Object localObject = new LinearLayout.LayoutParams(i, i);
-      ((LinearLayout.LayoutParams)localObject).setMargins(i / 5, i / 5, i / 5, i / 5);
+      i /= 5;
+      ((LinearLayout.LayoutParams)localObject).setMargins(i, i, i, i);
       localImageView.setAdjustViewBounds(false);
       localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
@@ -116,38 +137,37 @@ public class EmoWindowAdapter
       ((EmoWindowAdapter.ViewHolder)localObject).a = localImageView;
       localLinearLayout.setTag(localObject);
     }
-    for (;;)
+    else
     {
-      localImageView = ((EmoWindowAdapter.ViewHolder)localLinearLayout.getTag()).a;
-      try
+      localLinearLayout = (LinearLayout)paramView;
+    }
+    ImageView localImageView = ((EmoWindowAdapter.ViewHolder)localLinearLayout.getTag()).a;
+    try
+    {
+      if (this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt].intValue() != 0)
       {
-        if (this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt].intValue() != 0)
-        {
-          localImageView.setImageResource(this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt].intValue());
-          localImageView.setVisibility(0);
-        }
-        for (;;)
-        {
-          label192:
-          localImageView.setOnClickListener(new EmoWindowAdapter.1(this, paramInt));
-          EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-          return localLinearLayout;
-          localLinearLayout = (LinearLayout)paramView;
-          break;
-          localImageView.setVisibility(8);
-          QLog.d("CommentInputPopupWindow", 2, "set gone because of 000:");
-        }
+        localImageView.setImageResource(this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt].intValue());
+        localImageView.setVisibility(0);
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      else
       {
-        break label192;
+        localImageView.setVisibility(8);
+        QLog.d("CommentInputPopupWindow", 2, "set gone because of 000:");
       }
     }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label217:
+      break label217;
+    }
+    localImageView.setOnClickListener(new EmoWindowAdapter.1(this, paramInt));
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localLinearLayout;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.EmoWindowAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/group_item_layout" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="@drawable/b4w" android:layout_width="fill_parent" android:layout_height="@dimen/j3" android:layout_marginTop="12.0dip">
-        <CheckBox android:id="@id/dv_" android:background="@drawable/kh" android:clickable="false" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="18.0dip" android:button="@null" android:scaleType="center" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:gravity="center|left" android:id="@id/group_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="52.0dip" android:layout_marginRight="17.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/skin_color_btn_blue_v2" android:ellipsize="end" android:gravity="center|left" android:id="@id/o3y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="17.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

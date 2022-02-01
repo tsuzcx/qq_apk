@@ -7,12 +7,13 @@ class KPLProfileCardActivity$3
   
   public void run()
   {
-    KPLProfileCardActivity.a(this.this$0, this.this$0.a);
+    KPLProfileCardActivity localKPLProfileCardActivity = this.this$0;
+    KPLProfileCardActivity.a(localKPLProfileCardActivity, localKPLProfileCardActivity.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.KPLProfileCardActivity.3
  * JD-Core Version:    0.7.0.1
  */

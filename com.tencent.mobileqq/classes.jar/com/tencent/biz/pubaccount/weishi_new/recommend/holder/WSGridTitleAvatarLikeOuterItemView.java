@@ -25,22 +25,22 @@ public class WSGridTitleAvatarLikeOuterItemView
     return false;
   }
   
+  public void b()
+  {
+    super.b();
+    a(2131369037, new WSGridFeedOuterTitleController(this.a));
+    a(2131369035, new WSGridFeedOuterAvatarController(this.a));
+    a(2131369036, new WSGridFeedOuterLikeCountController(this.a));
+  }
+  
   protected boolean b()
   {
     return true;
   }
-  
-  public void d()
-  {
-    super.d();
-    a(2131369306, new WSGridFeedOuterTitleController(this.a));
-    a(2131369304, new WSGridFeedOuterAvatarController(this.a));
-    a(2131369305, new WSGridFeedOuterLikeCountController(this.a));
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridTitleAvatarLikeOuterItemView
  * JD-Core Version:    0.7.0.1
  */

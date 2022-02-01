@@ -25,13 +25,18 @@ public class RecommendMiniAppEntity
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("appId: ").append(this.appId).append(", appName: ").append(this.appName).append(", recommendType: ").append(this.recommendType);
+    localStringBuilder.append("appId: ");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append(", appName: ");
+    localStringBuilder.append(this.appName);
+    localStringBuilder.append(", recommendType: ");
+    localStringBuilder.append(this.recommendType);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.RecommendMiniAppEntity
  * JD-Core Version:    0.7.0.1
  */

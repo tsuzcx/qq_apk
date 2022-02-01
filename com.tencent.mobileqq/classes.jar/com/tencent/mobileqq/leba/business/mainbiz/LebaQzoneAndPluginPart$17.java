@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.leba.business.mainbiz;
 
-import com.tencent.mobileqq.app.readinjoy.ReadInJoyObserver;
+import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class LebaQzoneAndPluginPart$17
@@ -10,7 +10,14 @@ class LebaQzoneAndPluginPart$17
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    QLog.i("LebaBusinessPartImpl", 1, "ReadInJoyObserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReadInJoyObserver onReadInJoyNotifyRedTouchUpdate, isSuccess=");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(",isUpdate=");
+    localStringBuilder.append(paramBoolean2);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(paramInt);
+    QLog.i("LebaBusinessPartImpl", 1, localStringBuilder.toString());
     if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
       this.a.a();
     }
@@ -18,7 +25,7 @@ class LebaQzoneAndPluginPart$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.17
  * JD-Core Version:    0.7.0.1
  */

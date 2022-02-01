@@ -53,65 +53,58 @@ public class MiniAppAbstractServlet
   
   private void reportSSOResult(Intent paramIntent, int paramInt1, String paramString, int paramInt2)
   {
-    MiniAppConfig localMiniAppConfig;
-    String str2;
-    String str1;
-    String str3;
     if (this.shouldPerformDCReport)
     {
-      localMiniAppConfig = this.miniAppConfig;
-      str2 = this.page;
-      if (paramIntent == null) {
-        break label87;
+      MiniAppConfig localMiniAppConfig = this.miniAppConfig;
+      String str2 = this.page;
+      String str1;
+      if (paramIntent != null) {
+        str1 = paramIntent.getStringExtra("traceid");
+      } else {
+        str1 = null;
       }
-      str1 = paramIntent.getStringExtra("traceid");
-      str3 = MiniReportManager.getAppType(this.miniAppConfig);
-      if ((paramIntent == null) || (!paramIntent.hasExtra("key_sso_cmd_start_time_millis"))) {
-        break label93;
+      String str3 = MiniReportManager.getAppType(this.miniAppConfig);
+      long l;
+      if ((paramIntent != null) && (paramIntent.hasExtra("key_sso_cmd_start_time_millis"))) {
+        l = System.currentTimeMillis() - paramIntent.getLongExtra("key_sso_cmd_start_time_millis", System.currentTimeMillis());
+      } else {
+        l = 0L;
       }
-    }
-    label87:
-    label93:
-    for (long l = System.currentTimeMillis() - paramIntent.getLongExtra("key_sso_cmd_start_time_millis", System.currentTimeMillis());; l = 0L)
-    {
       MiniReportManager.reportEventType(localMiniAppConfig, paramInt1, str2, str1, paramString, paramInt2, str3, l, null);
-      return;
-      str1 = null;
-      break;
     }
   }
   
   protected void doReport(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    String str;
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramFromServiceMsg != null) {
+      localObject1 = paramFromServiceMsg.getServiceCmd();
+    } else {
+      localObject1 = null;
+    }
     int i;
+    if (paramFromServiceMsg != null) {
+      i = paramFromServiceMsg.getResultCode();
+    } else {
+      i = 0;
+    }
+    reportSSOResult(paramIntent, 601, (String)localObject1, i);
     if (paramFromServiceMsg != null)
     {
-      str = paramFromServiceMsg.getServiceCmd();
-      if (paramFromServiceMsg == null) {
-        break label105;
+      String str = paramFromServiceMsg.getServiceCmd();
+      localObject1 = localObject2;
+      if (paramIntent != null) {
+        localObject1 = paramIntent.getStringExtra("traceid");
       }
-      i = paramFromServiceMsg.getResultCode();
-      label19:
-      reportSSOResult(paramIntent, 601, str, i);
-      if (paramFromServiceMsg != null)
-      {
-        str = paramFromServiceMsg.getServiceCmd();
-        if (paramIntent == null) {
-          break label110;
-        }
-      }
-    }
-    label105:
-    label110:
-    for (paramIntent = paramIntent.getStringExtra("traceid");; paramIntent = null)
-    {
-      QLog.i("miniapp-cmd", 1, "receive response cmd=" + str + " resultCode=" + paramFromServiceMsg.getResultCode() + " traceId=" + paramIntent);
-      return;
-      str = null;
-      break;
-      i = 0;
-      break label19;
+      paramIntent = new StringBuilder();
+      paramIntent.append("receive response cmd=");
+      paramIntent.append(str);
+      paramIntent.append(" resultCode=");
+      paramIntent.append(paramFromServiceMsg.getResultCode());
+      paramIntent.append(" traceId=");
+      paramIntent.append((String)localObject1);
+      QLog.i("miniapp-cmd", 1, paramIntent.toString());
     }
   }
   
@@ -122,7 +115,12 @@ public class MiniAppAbstractServlet
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
     Random localRandom = new Random();
     localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localSimpleDateFormat.format(new Date()));
+    localStringBuilder.append(System.currentTimeMillis() % 1000L);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localRandom.nextInt(90000) + 10000);
     return localStringBuilder.toString();
   }
   
@@ -130,102 +128,126 @@ public class MiniAppAbstractServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    localBundle = new Bundle();
-    for (;;)
+    Bundle localBundle = new Bundle();
+    try
     {
-      try
+      localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
+      if (paramFromServiceMsg != null)
       {
-        localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-        if (paramFromServiceMsg == null) {
-          continue;
+        boolean bool = paramFromServiceMsg.isSuccess();
+        Object localObject;
+        if (bool)
+        {
+          localObject = new PROTOCAL.StQWebRsp();
+          ((PROTOCAL.StQWebRsp)localObject).mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
+          localBundle.putInt("key_index", (int)((PROTOCAL.StQWebRsp)localObject).Seq.get());
+          localBundle.putLong("retCode", ((PROTOCAL.StQWebRsp)localObject).retCode.get());
+          localBundle.putString("errMsg", ((PROTOCAL.StQWebRsp)localObject).errMsg.get().toStringUtf8());
+          localBundle.putString("key_appid", String.valueOf(paramFromServiceMsg.getAppId()));
+          long l = ((PROTOCAL.StQWebRsp)localObject).retCode.get();
+          if (l == 0L)
+          {
+            onProcessData(paramIntent, localBundle, ((PROTOCAL.StQWebRsp)localObject).busiBuff.get().toByteArray());
+          }
+          else
+          {
+            notifyObserver(paramIntent, this.observerId, false, localBundle, MiniAppObserver.class);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("onReceive. ");
+            localStringBuilder.append(MiniAppObserver.getCmdByObserverId(this.observerId));
+            localStringBuilder.append(" failed : retCode: ");
+            localStringBuilder.append(((PROTOCAL.StQWebRsp)localObject).retCode.get());
+            localStringBuilder.append("  errMsg:");
+            localStringBuilder.append(((PROTOCAL.StQWebRsp)localObject).errMsg.get().toStringUtf8());
+            QLog.d("MiniAppAbstractServlet", 2, localStringBuilder.toString());
+          }
+          reportSSOResult(paramIntent, 599, paramFromServiceMsg.getServiceCmd(), (int)l);
         }
-        if (!paramFromServiceMsg.isSuccess()) {
-          continue;
+        else
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("onReceive. ");
+            ((StringBuilder)localObject).append(MiniAppObserver.getCmdByObserverId(this.observerId));
+            ((StringBuilder)localObject).append(" failed: ");
+            ((StringBuilder)localObject).append(paramFromServiceMsg.getBusinessFailCode());
+            ((StringBuilder)localObject).append("  errMsg:");
+            ((StringBuilder)localObject).append(paramFromServiceMsg.getBusinessFailMsg());
+            QLog.d("MiniAppAbstractServlet", 2, ((StringBuilder)localObject).toString());
+          }
+          localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
+          localBundle.putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
+          notifyObserver(paramIntent, this.observerId, false, localBundle, MiniAppObserver.class);
         }
-        localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
-        localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
-        localBundle.putLong("retCode", localStQWebRsp.retCode.get());
-        localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        localBundle.putString("key_appid", String.valueOf(paramFromServiceMsg.getAppId()));
-        long l = localStQWebRsp.retCode.get();
-        if (l != 0L) {
-          continue;
-        }
-        onProcessData(paramIntent, localBundle, localStQWebRsp.busiBuff.get().toByteArray());
-        reportSSOResult(paramIntent, 599, paramFromServiceMsg.getServiceCmd(), (int)l);
       }
-      catch (Throwable localThrowable)
+      else
       {
-        PROTOCAL.StQWebRsp localStQWebRsp;
-        QLog.e("MiniAppAbstractServlet", 1, localThrowable + "onReceive error");
-        notifyObserver(paramIntent, this.observerId, false, localBundle, MiniAppObserver.class);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniAppAbstractServlet", 2, "onReceive. inform  resultcode fail.");
         }
-        QLog.d("MiniAppAbstractServlet", 2, "onReceive. " + MiniAppObserver.getCmdByObserverId(this.observerId) + " failed: " + paramFromServiceMsg.getBusinessFailCode() + "  errMsg:" + paramFromServiceMsg.getBusinessFailMsg());
-        localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
-        localBundle.putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
         notifyObserver(paramIntent, this.observerId, false, localBundle, MiniAppObserver.class);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("MiniAppAbstractServlet", 2, "onReceive. inform  resultcode fail.");
-        notifyObserver(paramIntent, this.observerId, false, localBundle, MiniAppObserver.class);
-        continue;
       }
-      doReport(paramIntent, paramFromServiceMsg);
-      return;
-      notifyObserver(paramIntent, this.observerId, false, localBundle, MiniAppObserver.class);
-      QLog.d("MiniAppAbstractServlet", 2, "onReceive. " + MiniAppObserver.getCmdByObserverId(this.observerId) + " failed : retCode: " + localStQWebRsp.retCode.get() + "  errMsg:" + localStQWebRsp.errMsg.get().toStringUtf8());
     }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localThrowable);
+      localStringBuilder.append("onReceive error");
+      QLog.e("MiniAppAbstractServlet", 1, localStringBuilder.toString());
+      notifyObserver(paramIntent, this.observerId, false, localBundle, MiniAppObserver.class);
+    }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   @CallSuper
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    Object localObject = null;
     int i = MiniAppConfProcessor.a("MiniAppMsfTimeoutValue", 10000);
-    if (paramPacket != null) {
-      paramPacket.setTimeout(i);
-    }
-    for (paramPacket = paramPacket.toMsg();; paramPacket = null)
+    Object localObject = null;
+    if (paramPacket != null)
     {
-      String str1;
-      String str2;
-      if ((this.shouldPerformDCReport) && (paramPacket != null))
+      paramPacket.setTimeout(i);
+      paramPacket = paramPacket.toMsg();
+    }
+    else
+    {
+      paramPacket = null;
+    }
+    String str1;
+    if ((this.shouldPerformDCReport) && (paramPacket != null))
+    {
+      str1 = paramPacket.getServiceCmd();
+      String str2 = paramIntent.getStringExtra("key_appid");
+      this.page = paramIntent.getStringExtra("key_page");
+      paramIntent.putExtra("key_sso_cmd_start_time_millis", System.currentTimeMillis());
+      if ((!TextUtils.isEmpty(str2)) && (!"0000000000".equals(str2)))
       {
-        str1 = paramPacket.getServiceCmd();
-        str2 = paramIntent.getStringExtra("key_appid");
-        this.page = paramIntent.getStringExtra("key_page");
-        paramIntent.putExtra("key_sso_cmd_start_time_millis", System.currentTimeMillis());
-        if ((!TextUtils.isEmpty(str2)) && (!"0000000000".equals(str2))) {
-          break label178;
-        }
-        this.miniAppConfig = MiniProgramReportHelper.miniAppConfigForPreload();
-      }
-      for (;;)
-      {
-        MiniReportManager.reportEventType(this.miniAppConfig, 600, this.page, null, str1, 0);
-        if (paramPacket != null)
-        {
-          str1 = paramPacket.getServiceCmd();
-          paramPacket = localObject;
-          if (paramIntent != null) {
-            paramPacket = paramIntent.getStringExtra("traceid");
-          }
-          QLog.i("miniapp-cmd", 1, "send request cmd=" + str1 + " traceId=" + paramPacket);
-        }
-        return;
-        label178:
         MiniAppInfo localMiniAppInfo = new MiniAppInfo();
         localMiniAppInfo.appId = str2;
         this.miniAppConfig = new MiniAppConfig(localMiniAppInfo);
         this.miniAppConfig.launchParam = new LaunchParam();
         this.miniAppConfig.launchParam.miniAppId = str2;
       }
+      else
+      {
+        this.miniAppConfig = MiniProgramReportHelper.miniAppConfigForPreload();
+      }
+      MiniReportManager.reportEventType(this.miniAppConfig, 600, this.page, null, str1, 0);
+    }
+    if (paramPacket != null)
+    {
+      str1 = paramPacket.getServiceCmd();
+      paramPacket = localObject;
+      if (paramIntent != null) {
+        paramPacket = paramIntent.getStringExtra("traceid");
+      }
+      paramIntent = new StringBuilder();
+      paramIntent.append("send request cmd=");
+      paramIntent.append(str1);
+      paramIntent.append(" traceId=");
+      paramIntent.append(paramPacket);
+      QLog.i("miniapp-cmd", 1, paramIntent.toString());
     }
   }
   
@@ -236,7 +258,7 @@ public class MiniAppAbstractServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppAbstractServlet
  * JD-Core Version:    0.7.0.1
  */

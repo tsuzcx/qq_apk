@@ -11,25 +11,19 @@ class NewUpgradeDialog$6
   
   public void run()
   {
-    int i = 10;
     long l = 1500L / 10;
-    for (;;)
+    int i = 10;
+    while (i > 0)
     {
-      if (i > 0)
+      ThreadManager.getUIHandler().post(new NewUpgradeDialog.6.1(this, (10 - i) * 10));
+      i -= 1;
+      try
       {
-        ThreadManager.getUIHandler().post(new NewUpgradeDialog.6.1(this, (10 - i) * 10));
-        try
-        {
-          TimeUnit.MILLISECONDS.sleep(l);
-          i -= 1;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
+        TimeUnit.MILLISECONDS.sleep(l);
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
       }
     }
     if (!NewUpgradeDialog.a(this.this$0)) {
@@ -39,7 +33,7 @@ class NewUpgradeDialog$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog.6
  * JD-Core Version:    0.7.0.1
  */

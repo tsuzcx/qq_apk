@@ -55,41 +55,41 @@ class ARParticleFilter$BitmapDecodeTask
   
   protected Void doInBackground(Void... paramVarArgs)
   {
-    int i;
     if ((ARParticleFilter.access$100(this.this$0) != null) && (ARParticleFilter.access$200(this.this$0) != null))
     {
-      i = 0;
-      if ((i < ARParticleFilter.access$100(this.this$0).size()) && (i < ARParticleFilter.access$200(this.this$0).size()) && (!isCancelled())) {}
-    }
-    else
-    {
-      return null;
-    }
-    Sprite localSprite = (Sprite)ARParticleFilter.access$100(this.this$0).get(i);
-    paramVarArgs = ARParticleFilter.access$300(this.this$0) + File.separator + (String)ARParticleFilter.access$200(this.this$0).get(i) + File.separator + localSprite.path;
-    if (paramVarArgs.startsWith("assets://"))
-    {
-      paramVarArgs = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramVarArgs), 2147483647, 2147483647);
-      label163:
-      if (ARParticleFilter.access$400(this.this$0, paramVarArgs)) {
-        break label193;
+      int i = 0;
+      while ((i < ARParticleFilter.access$100(this.this$0).size()) && (i < ARParticleFilter.access$200(this.this$0).size()))
+      {
+        if (isCancelled()) {
+          return null;
+        }
+        Sprite localSprite = (Sprite)ARParticleFilter.access$100(this.this$0).get(i);
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(ARParticleFilter.access$300(this.this$0));
+        paramVarArgs.append(File.separator);
+        paramVarArgs.append((String)ARParticleFilter.access$200(this.this$0).get(i));
+        paramVarArgs.append(File.separator);
+        paramVarArgs.append(localSprite.path);
+        paramVarArgs = paramVarArgs.toString();
+        if (paramVarArgs.startsWith("assets://")) {
+          paramVarArgs = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramVarArgs), 2147483647, 2147483647);
+        } else {
+          paramVarArgs = BitmapUtils.decodeSampledBitmapFromFile(paramVarArgs, 2147483647, 2147483647);
+        }
+        if (ARParticleFilter.access$400(this.this$0, paramVarArgs))
+        {
+          preCalTexCoords(i, paramVarArgs.getWidth(), paramVarArgs.getHeight(), localSprite.width, localSprite.height);
+          ARParticleFilter.access$500(this.this$0)[i] = paramVarArgs;
+        }
+        i += 1;
       }
     }
-    for (;;)
-    {
-      i += 1;
-      break;
-      paramVarArgs = BitmapUtils.decodeSampledBitmapFromFile(paramVarArgs, 2147483647, 2147483647);
-      break label163;
-      label193:
-      preCalTexCoords(i, paramVarArgs.getWidth(), paramVarArgs.getHeight(), localSprite.width, localSprite.height);
-      ARParticleFilter.access$500(this.this$0)[i] = paramVarArgs;
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.ar.filter.ARParticleFilter.BitmapDecodeTask
  * JD-Core Version:    0.7.0.1
  */

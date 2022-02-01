@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="bottom" android:id="@id/o4l" android:background="@color/apn" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/neb" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView android:id="@id/n0a" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="320.0dip" ucropview:ucrop_frame_color="@color/al3" ucropview:ucrop_frame_stroke_size="1.0dip" ucropview:ucrop_show_frame="true" ucropview:ucrop_show_grid="false" xmlns:ucropview="http://schemas.android.com/apk/res-auto" />
-        <TextView android:textSize="16.0sp" android:textColor="#ff737373" android:id="@id/bwi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="未在相册找到图片内容" android:layout_centerInParent="true" />
-        <android.support.v7.widget.RecyclerView android:id="@id/n0b" android:background="@color/bp" android:padding="8.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </LinearLayout>
-    <com.tencent.biz.pubaccount.readinjoy.view.AlbumPermissionView android:id="@id/lji" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout android:orientation="vertical" android:id="@id/mvf" android:layout_width="fill_parent" android:layout_height="612.0dip">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/mb7" android:background="@drawable/e7l" android:paddingBottom="@dimen/n4" android:layout_width="fill_parent" android:layout_height="84.0dip">
+            <ImageView android:id="@id/nda" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ije" />
+            <TextView android:textSize="@dimen/ayn" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yqs" />
+        </LinearLayout>
+        <FrameLayout android:background="#ff2f2f2f" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.biz.pubaccount.weishi_new.view.WSXRecyclerView android:id="@id/o5e" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </FrameLayout>
+    </com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout>
+</RelativeLayout>

@@ -9,13 +9,16 @@ class AsyncTask$1
   
   public void run()
   {
-    QLog.i("TaskFlow", 1, "Task executeAsync : " + this.this$0.b());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Task executeAsync : ");
+    localStringBuilder.append(this.this$0.b());
+    QLog.i("[cmshow]TaskFlow", 1, localStringBuilder.toString());
     this.this$0.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.AsyncTask.1
  * JD-Core Version:    0.7.0.1
  */

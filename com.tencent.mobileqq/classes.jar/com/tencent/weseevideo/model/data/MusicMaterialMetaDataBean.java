@@ -609,10 +609,12 @@ public final class MusicMaterialMetaDataBean
   public final MusicMaterialMetaDataBean deepClone()
   {
     List localList = this.mVolumeAutomaticEffectList;
-    if (localList != null) {}
-    for (localList = CollectionsKt.toMutableList((Collection)localList);; localList = null) {
-      return copy$default(this, null, 0L, null, null, null, null, 0, 0, null, null, null, null, null, 0, null, 0, null, 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0L, 0, 0, (byte)0, 0, null, null, null, null, null, null, null, null, 0, 0, 0, 0, 0, null, false, 0, 0, null, null, false, null, false, 0L, 0L, 0L, 0L, false, 0L, 0.0F, 0L, localList, -1, 1073741823, null);
+    if (localList != null) {
+      localList = CollectionsKt.toMutableList((Collection)localList);
+    } else {
+      localList = null;
     }
+    return copy$default(this, null, 0L, null, null, null, null, 0, 0, null, null, null, null, null, 0, null, 0, null, 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0L, 0, 0, (byte)0, 0, null, null, null, null, null, null, null, null, 0, 0, 0, 0, 0, null, false, 0, 0, null, null, false, null, false, 0L, 0L, 0L, 0L, false, 0L, 0.0F, 0L, localList, -1, 1073741823, null);
   }
   
   public int describeContents()
@@ -622,18 +624,18 @@ public final class MusicMaterialMetaDataBean
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof MusicMaterialMetaDataBean))
       {
         paramObject = (MusicMaterialMetaDataBean)paramObject;
-        if ((!Intrinsics.areEqual(this.id, paramObject.id)) || (this.sid != paramObject.sid) || (!Intrinsics.areEqual(this.name, paramObject.name)) || (!Intrinsics.areEqual(this.desc, paramObject.desc)) || (!Intrinsics.areEqual(this.type, paramObject.type)) || (!Intrinsics.areEqual(this.thumbUrl, paramObject.thumbUrl)) || (this.version != paramObject.version) || (this.miniSptVersion != paramObject.miniSptVersion) || (!Intrinsics.areEqual(this.packageUrl, paramObject.packageUrl)) || (!Intrinsics.areEqual(this.path, paramObject.path)) || (!Intrinsics.areEqual(this.feedlist_time_id, paramObject.feedlist_time_id)) || (!Intrinsics.areEqual(this.feedlist_hot_id, paramObject.feedlist_hot_id)) || (!Intrinsics.areEqual(this.topic_ids, paramObject.topic_ids)) || (this.mask != paramObject.mask) || (!Intrinsics.areEqual(this.shortName, paramObject.shortName)) || (this.rich_flag != paramObject.rich_flag) || (!Intrinsics.areEqual(this.title, paramObject.title)) || (this.feedNum != paramObject.feedNum) || (this.startTime != paramObject.startTime) || (this.endTime != paramObject.endTime) || (this.orgStartTime != paramObject.orgStartTime) || (!Intrinsics.areEqual(this.followFeedId, paramObject.followFeedId)) || (!Intrinsics.areEqual(this.mTogetherFeed, paramObject.mTogetherFeed)) || (this.mTogetherType != paramObject.mTogetherType) || (this.mFeedUseType != paramObject.mFeedUseType) || (this.mDefaultFeedPosition != paramObject.mDefaultFeedPosition) || (this.mDefaultTogetherFeed != paramObject.mDefaultTogetherFeed) || (this.collectTime != paramObject.collectTime) || (this.audioDuration != paramObject.audioDuration) || (this.isCollected != paramObject.isCollected) || (this.autoPlay != paramObject.autoPlay) || (this.exclusive != paramObject.exclusive) || (!Intrinsics.areEqual(this.lyric, paramObject.lyric)) || (!Intrinsics.areEqual(this.secLyric, paramObject.secLyric)) || (!Intrinsics.areEqual(this.lyricFormat, paramObject.lyricFormat)) || (!Intrinsics.areEqual(this.secLyricFormat, paramObject.secLyricFormat)) || (!Intrinsics.areEqual(this.label, paramObject.label)) || (!Intrinsics.areEqual(this.songLabels, paramObject.songLabels)) || (!Intrinsics.areEqual(this.nameIndices, paramObject.nameIndices)) || (!Intrinsics.areEqual(this.descIndices, paramObject.descIndices)) || (this.indexInCategory != paramObject.indexInCategory) || (this.mFromDataType != paramObject.mFromDataType) || (this.mTotalTime != paramObject.mTotalTime) || (this.refer != paramObject.refer) || (this.state != paramObject.state) || (!Intrinsics.areEqual(this.categroyId, paramObject.categroyId)) || (this.isCloseLyric != paramObject.isCloseLyric) || (this.iSource != paramObject.iSource) || (this.segDuration != paramObject.segDuration) || (!Intrinsics.areEqual(this.recommendInfo, paramObject.recommendInfo)) || (!Intrinsics.areEqual(this.musicFrom, paramObject.musicFrom)) || (this.isStuckPoint != paramObject.isStuckPoint) || (!Intrinsics.areEqual(this.stuckPointJsonUrl, paramObject.stuckPointJsonUrl)) || (this.isImportType != paramObject.isImportType) || (this.importTime != paramObject.importTime) || (this.startInTime != paramObject.startInTime) || (this.endOutTime != paramObject.endOutTime) || (this.startPlayOffset != paramObject.startPlayOffset) || (this.isEdit != paramObject.isEdit) || (this.userStartTime != paramObject.userStartTime) || (Float.compare(this.volume, paramObject.volume) != 0) || (this.mTotalTimeMs != paramObject.mTotalTimeMs) || (!Intrinsics.areEqual(this.mVolumeAutomaticEffectList, paramObject.mVolumeAutomaticEffectList))) {}
+        if ((Intrinsics.areEqual(this.id, paramObject.id)) && (this.sid == paramObject.sid) && (Intrinsics.areEqual(this.name, paramObject.name)) && (Intrinsics.areEqual(this.desc, paramObject.desc)) && (Intrinsics.areEqual(this.type, paramObject.type)) && (Intrinsics.areEqual(this.thumbUrl, paramObject.thumbUrl)) && (this.version == paramObject.version) && (this.miniSptVersion == paramObject.miniSptVersion) && (Intrinsics.areEqual(this.packageUrl, paramObject.packageUrl)) && (Intrinsics.areEqual(this.path, paramObject.path)) && (Intrinsics.areEqual(this.feedlist_time_id, paramObject.feedlist_time_id)) && (Intrinsics.areEqual(this.feedlist_hot_id, paramObject.feedlist_hot_id)) && (Intrinsics.areEqual(this.topic_ids, paramObject.topic_ids)) && (this.mask == paramObject.mask) && (Intrinsics.areEqual(this.shortName, paramObject.shortName)) && (this.rich_flag == paramObject.rich_flag) && (Intrinsics.areEqual(this.title, paramObject.title)) && (this.feedNum == paramObject.feedNum) && (this.startTime == paramObject.startTime) && (this.endTime == paramObject.endTime) && (this.orgStartTime == paramObject.orgStartTime) && (Intrinsics.areEqual(this.followFeedId, paramObject.followFeedId)) && (Intrinsics.areEqual(this.mTogetherFeed, paramObject.mTogetherFeed)) && (this.mTogetherType == paramObject.mTogetherType) && (this.mFeedUseType == paramObject.mFeedUseType) && (this.mDefaultFeedPosition == paramObject.mDefaultFeedPosition) && (this.mDefaultTogetherFeed == paramObject.mDefaultTogetherFeed) && (this.collectTime == paramObject.collectTime) && (this.audioDuration == paramObject.audioDuration) && (this.isCollected == paramObject.isCollected) && (this.autoPlay == paramObject.autoPlay) && (this.exclusive == paramObject.exclusive) && (Intrinsics.areEqual(this.lyric, paramObject.lyric)) && (Intrinsics.areEqual(this.secLyric, paramObject.secLyric)) && (Intrinsics.areEqual(this.lyricFormat, paramObject.lyricFormat)) && (Intrinsics.areEqual(this.secLyricFormat, paramObject.secLyricFormat)) && (Intrinsics.areEqual(this.label, paramObject.label)) && (Intrinsics.areEqual(this.songLabels, paramObject.songLabels)) && (Intrinsics.areEqual(this.nameIndices, paramObject.nameIndices)) && (Intrinsics.areEqual(this.descIndices, paramObject.descIndices)) && (this.indexInCategory == paramObject.indexInCategory) && (this.mFromDataType == paramObject.mFromDataType) && (this.mTotalTime == paramObject.mTotalTime) && (this.refer == paramObject.refer) && (this.state == paramObject.state) && (Intrinsics.areEqual(this.categroyId, paramObject.categroyId)) && (this.isCloseLyric == paramObject.isCloseLyric) && (this.iSource == paramObject.iSource) && (this.segDuration == paramObject.segDuration) && (Intrinsics.areEqual(this.recommendInfo, paramObject.recommendInfo)) && (Intrinsics.areEqual(this.musicFrom, paramObject.musicFrom)) && (this.isStuckPoint == paramObject.isStuckPoint) && (Intrinsics.areEqual(this.stuckPointJsonUrl, paramObject.stuckPointJsonUrl)) && (this.isImportType == paramObject.isImportType) && (this.importTime == paramObject.importTime) && (this.startInTime == paramObject.startInTime) && (this.endOutTime == paramObject.endOutTime) && (this.startPlayOffset == paramObject.startPlayOffset) && (this.isEdit == paramObject.isEdit) && (this.userStartTime == paramObject.userStartTime) && (Float.compare(this.volume, paramObject.volume) == 0) && (this.mTotalTimeMs == paramObject.mTotalTimeMs) && (Intrinsics.areEqual(this.mVolumeAutomaticEffectList, paramObject.mVolumeAutomaticEffectList))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
@@ -644,7 +646,135 @@ public final class MusicMaterialMetaDataBean
   @NotNull
   public String toString()
   {
-    return "MusicMaterialMetaDataBean(id=" + this.id + ", sid=" + this.sid + ", name=" + this.name + ", desc=" + this.desc + ", type=" + this.type + ", thumbUrl=" + this.thumbUrl + ", version=" + this.version + ", miniSptVersion=" + this.miniSptVersion + ", packageUrl=" + this.packageUrl + ", path=" + this.path + ", feedlist_time_id=" + this.feedlist_time_id + ", feedlist_hot_id=" + this.feedlist_hot_id + ", topic_ids=" + this.topic_ids + ", mask=" + this.mask + ", shortName=" + this.shortName + ", rich_flag=" + this.rich_flag + ", title=" + this.title + ", feedNum=" + this.feedNum + ", startTime=" + this.startTime + ", endTime=" + this.endTime + ", orgStartTime=" + this.orgStartTime + ", followFeedId=" + this.followFeedId + ", mTogetherFeed=" + this.mTogetherFeed + ", mTogetherType=" + this.mTogetherType + ", mFeedUseType=" + this.mFeedUseType + ", mDefaultFeedPosition=" + this.mDefaultFeedPosition + ", mDefaultTogetherFeed=" + this.mDefaultTogetherFeed + ", collectTime=" + this.collectTime + ", audioDuration=" + this.audioDuration + ", isCollected=" + this.isCollected + ", autoPlay=" + this.autoPlay + ", exclusive=" + this.exclusive + ", lyric=" + this.lyric + ", secLyric=" + this.secLyric + ", lyricFormat=" + this.lyricFormat + ", secLyricFormat=" + this.secLyricFormat + ", label=" + this.label + ", songLabels=" + this.songLabels + ", nameIndices=" + this.nameIndices + ", descIndices=" + this.descIndices + ", indexInCategory=" + this.indexInCategory + ", mFromDataType=" + this.mFromDataType + ", mTotalTime=" + this.mTotalTime + ", refer=" + this.refer + ", state=" + this.state + ", categroyId=" + this.categroyId + ", isCloseLyric=" + this.isCloseLyric + ", iSource=" + this.iSource + ", segDuration=" + this.segDuration + ", recommendInfo=" + this.recommendInfo + ", musicFrom=" + this.musicFrom + ", isStuckPoint=" + this.isStuckPoint + ", stuckPointJsonUrl=" + this.stuckPointJsonUrl + ", isImportType=" + this.isImportType + ", importTime=" + this.importTime + ", startInTime=" + this.startInTime + ", endOutTime=" + this.endOutTime + ", startPlayOffset=" + this.startPlayOffset + ", isEdit=" + this.isEdit + ", userStartTime=" + this.userStartTime + ", volume=" + this.volume + ", mTotalTimeMs=" + this.mTotalTimeMs + ", mVolumeAutomaticEffectList=" + this.mVolumeAutomaticEffectList + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MusicMaterialMetaDataBean(id=");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(", sid=");
+    localStringBuilder.append(this.sid);
+    localStringBuilder.append(", name=");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(", desc=");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", thumbUrl=");
+    localStringBuilder.append(this.thumbUrl);
+    localStringBuilder.append(", version=");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append(", miniSptVersion=");
+    localStringBuilder.append(this.miniSptVersion);
+    localStringBuilder.append(", packageUrl=");
+    localStringBuilder.append(this.packageUrl);
+    localStringBuilder.append(", path=");
+    localStringBuilder.append(this.path);
+    localStringBuilder.append(", feedlist_time_id=");
+    localStringBuilder.append(this.feedlist_time_id);
+    localStringBuilder.append(", feedlist_hot_id=");
+    localStringBuilder.append(this.feedlist_hot_id);
+    localStringBuilder.append(", topic_ids=");
+    localStringBuilder.append(this.topic_ids);
+    localStringBuilder.append(", mask=");
+    localStringBuilder.append(this.mask);
+    localStringBuilder.append(", shortName=");
+    localStringBuilder.append(this.shortName);
+    localStringBuilder.append(", rich_flag=");
+    localStringBuilder.append(this.rich_flag);
+    localStringBuilder.append(", title=");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append(", feedNum=");
+    localStringBuilder.append(this.feedNum);
+    localStringBuilder.append(", startTime=");
+    localStringBuilder.append(this.startTime);
+    localStringBuilder.append(", endTime=");
+    localStringBuilder.append(this.endTime);
+    localStringBuilder.append(", orgStartTime=");
+    localStringBuilder.append(this.orgStartTime);
+    localStringBuilder.append(", followFeedId=");
+    localStringBuilder.append(this.followFeedId);
+    localStringBuilder.append(", mTogetherFeed=");
+    localStringBuilder.append(this.mTogetherFeed);
+    localStringBuilder.append(", mTogetherType=");
+    localStringBuilder.append(this.mTogetherType);
+    localStringBuilder.append(", mFeedUseType=");
+    localStringBuilder.append(this.mFeedUseType);
+    localStringBuilder.append(", mDefaultFeedPosition=");
+    localStringBuilder.append(this.mDefaultFeedPosition);
+    localStringBuilder.append(", mDefaultTogetherFeed=");
+    localStringBuilder.append(this.mDefaultTogetherFeed);
+    localStringBuilder.append(", collectTime=");
+    localStringBuilder.append(this.collectTime);
+    localStringBuilder.append(", audioDuration=");
+    localStringBuilder.append(this.audioDuration);
+    localStringBuilder.append(", isCollected=");
+    localStringBuilder.append(this.isCollected);
+    localStringBuilder.append(", autoPlay=");
+    localStringBuilder.append(this.autoPlay);
+    localStringBuilder.append(", exclusive=");
+    localStringBuilder.append(this.exclusive);
+    localStringBuilder.append(", lyric=");
+    localStringBuilder.append(this.lyric);
+    localStringBuilder.append(", secLyric=");
+    localStringBuilder.append(this.secLyric);
+    localStringBuilder.append(", lyricFormat=");
+    localStringBuilder.append(this.lyricFormat);
+    localStringBuilder.append(", secLyricFormat=");
+    localStringBuilder.append(this.secLyricFormat);
+    localStringBuilder.append(", label=");
+    localStringBuilder.append(this.label);
+    localStringBuilder.append(", songLabels=");
+    localStringBuilder.append(this.songLabels);
+    localStringBuilder.append(", nameIndices=");
+    localStringBuilder.append(this.nameIndices);
+    localStringBuilder.append(", descIndices=");
+    localStringBuilder.append(this.descIndices);
+    localStringBuilder.append(", indexInCategory=");
+    localStringBuilder.append(this.indexInCategory);
+    localStringBuilder.append(", mFromDataType=");
+    localStringBuilder.append(this.mFromDataType);
+    localStringBuilder.append(", mTotalTime=");
+    localStringBuilder.append(this.mTotalTime);
+    localStringBuilder.append(", refer=");
+    localStringBuilder.append(this.refer);
+    localStringBuilder.append(", state=");
+    localStringBuilder.append(this.state);
+    localStringBuilder.append(", categroyId=");
+    localStringBuilder.append(this.categroyId);
+    localStringBuilder.append(", isCloseLyric=");
+    localStringBuilder.append(this.isCloseLyric);
+    localStringBuilder.append(", iSource=");
+    localStringBuilder.append(this.iSource);
+    localStringBuilder.append(", segDuration=");
+    localStringBuilder.append(this.segDuration);
+    localStringBuilder.append(", recommendInfo=");
+    localStringBuilder.append(this.recommendInfo);
+    localStringBuilder.append(", musicFrom=");
+    localStringBuilder.append(this.musicFrom);
+    localStringBuilder.append(", isStuckPoint=");
+    localStringBuilder.append(this.isStuckPoint);
+    localStringBuilder.append(", stuckPointJsonUrl=");
+    localStringBuilder.append(this.stuckPointJsonUrl);
+    localStringBuilder.append(", isImportType=");
+    localStringBuilder.append(this.isImportType);
+    localStringBuilder.append(", importTime=");
+    localStringBuilder.append(this.importTime);
+    localStringBuilder.append(", startInTime=");
+    localStringBuilder.append(this.startInTime);
+    localStringBuilder.append(", endOutTime=");
+    localStringBuilder.append(this.endOutTime);
+    localStringBuilder.append(", startPlayOffset=");
+    localStringBuilder.append(this.startPlayOffset);
+    localStringBuilder.append(", isEdit=");
+    localStringBuilder.append(this.isEdit);
+    localStringBuilder.append(", userStartTime=");
+    localStringBuilder.append(this.userStartTime);
+    localStringBuilder.append(", volume=");
+    localStringBuilder.append(this.volume);
+    localStringBuilder.append(", mTotalTimeMs=");
+    localStringBuilder.append(this.mTotalTimeMs);
+    localStringBuilder.append(", mVolumeAutomaticEffectList=");
+    localStringBuilder.append(this.mVolumeAutomaticEffectList);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
@@ -654,7 +784,7 @@ public final class MusicMaterialMetaDataBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.data.MusicMaterialMetaDataBean
  * JD-Core Version:    0.7.0.1
  */

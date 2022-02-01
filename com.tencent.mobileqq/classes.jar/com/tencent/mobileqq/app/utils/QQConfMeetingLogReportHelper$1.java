@@ -11,7 +11,10 @@ class QQConfMeetingLogReportHelper$1
   
   public void a(int paramInt)
   {
-    QLog.e("QQConfMeetingLogReportHelper", 1, "doReportLocalLog OnGetLocalLogListener onError, code=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doReportLocalLog OnGetLocalLogListener onError, code=");
+    localStringBuilder.append(paramInt);
+    QLog.e("QQConfMeetingLogReportHelper", 1, localStringBuilder.toString());
   }
   
   public void a(String paramString)
@@ -26,7 +29,7 @@ class QQConfMeetingLogReportHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.QQConfMeetingLogReportHelper.1
  * JD-Core Version:    0.7.0.1
  */

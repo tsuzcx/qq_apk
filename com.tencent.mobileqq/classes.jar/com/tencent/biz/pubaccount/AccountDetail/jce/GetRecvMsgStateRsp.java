@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.jce;
+package com.tencent.biz.pubaccount.accountdetail.jce;
 
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
@@ -22,15 +22,16 @@ public final class GetRecvMsgStateRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.result, 0);
-    if (this.reason != null) {
-      paramJceOutputStream.write(this.reason, 1);
+    String str = this.reason;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.state, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.jce.GetRecvMsgStateRsp
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.jce.GetRecvMsgStateRsp
  * JD-Core Version:    0.7.0.1
  */

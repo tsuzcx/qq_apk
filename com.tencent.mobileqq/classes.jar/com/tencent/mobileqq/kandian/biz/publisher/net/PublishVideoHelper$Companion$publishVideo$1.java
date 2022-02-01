@@ -21,66 +21,72 @@ public final class PublishVideoHelper$Companion$publishVideo$1
 {
   PublishVideoHelper$Companion$publishVideo$1(PublishVideoHelper.IPublishVideoCallback paramIPublishVideoCallback) {}
   
-  public void a(int paramInt, @NotNull byte[] paramArrayOfByte, @NotNull Bundle paramBundle)
+  public void onResult(int paramInt, @NotNull byte[] paramArrayOfByte, @NotNull Bundle paramBundle)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "data");
     Intrinsics.checkParameterIsNotNull(paramBundle, "bundle");
     paramBundle = new ArrayList();
-    QLog.i("PublishHelper", 1, "publishVideo, errorCode=" + paramInt);
-    int i;
-    if (paramInt == 0)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("publishVideo, errorCode=");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.i("PublishHelper", 1, ((StringBuilder)localObject).toString());
+    if (paramInt == 0) {
+      localObject = new oidb_0xe2a.RspBody();
+    }
+    for (;;)
     {
-      Object localObject = new oidb_0xe2a.RspBody();
       try
       {
         ((oidb_0xe2a.RspBody)localObject).mergeFrom(paramArrayOfByte);
         if ((((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.has()) && (((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.rpt_rowkey_list.has()))
         {
           paramArrayOfByte = ((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.rpt_rowkey_list.get().iterator();
-          while (paramArrayOfByte.hasNext())
+          if (paramArrayOfByte.hasNext())
           {
             localObject = (ByteStringMicro)paramArrayOfByte.next();
             String str = ((ByteStringMicro)localObject).toStringUtf8();
             Intrinsics.checkExpressionValueIsNotNull(str, "rowKey.toStringUtf8()");
             if (((CharSequence)str).length() <= 0) {
-              break label228;
+              break label273;
             }
             i = 1;
-            label157:
-            if (i == 0) {
-              break label234;
+            if (i != 0)
+            {
+              paramBundle.add(((ByteStringMicro)localObject).toStringUtf8());
+              continue;
             }
-            paramBundle.add(((ByteStringMicro)localObject).toStringUtf8());
+            QLog.i("PublishHelper", 1, "publishVideo, rowKey isEmpty");
+            continue;
           }
-          paramArrayOfByte = this.a;
+        }
+        else
+        {
+          QLog.i("PublishHelper", 1, "publishVideo, not has rpt_rowkey_list");
         }
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PublishHelper", 2, "publishVideo" + paramArrayOfByte);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("publishVideo");
+          ((StringBuilder)localObject).append(paramArrayOfByte);
+          QLog.d("PublishHelper", 2, ((StringBuilder)localObject).toString());
         }
       }
-    }
-    for (;;)
-    {
+      paramArrayOfByte = this.a;
       if (paramArrayOfByte != null) {
         paramArrayOfByte.a(paramInt, (List)paramBundle);
       }
       return;
-      label228:
-      i = 0;
-      break label157;
-      label234:
-      QLog.i("PublishHelper", 1, "publishVideo, rowKey isEmpty");
-      break;
-      QLog.i("PublishHelper", 1, "publishVideo, not has rpt_rowkey_list");
+      label273:
+      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.net.PublishVideoHelper.Companion.publishVideo.1
  * JD-Core Version:    0.7.0.1
  */

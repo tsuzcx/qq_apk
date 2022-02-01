@@ -16,39 +16,38 @@ import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
 import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
 import com.tencent.biz.pubaccount.weishi_new.api.IWSManager;
 import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gamecenter.activities.GameCenterActivity;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.activity.recent.RecentUtil;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.filemanager.api.IQQFileSelectorUtil;
 import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
 import com.tencent.mobileqq.leba.ILebaHelperService;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
+import com.tencent.mobileqq.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.api.ILaunchTroopSysMsgUIUtilApi;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.open.applist.QZoneAppListActivity;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
-import cooperation.comic.VipComicJumpActivity;
 import cooperation.qlink.QQProxyForQlink;
-import cooperation.qqreader.QRBridgeActivity;
 import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Ljava.lang.Object;>;
 import org.json.JSONObject;
 
 public class Utils
@@ -115,32 +114,25 @@ public class Utils
     }
     localObject = new Utils.3(paramInt, (ILebaHelperService)localObject, paramQQAppInterface, paramLong, paramHandler);
     paramHandler = new Utils.4(paramHandler);
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramQQAppInterface = paramString2;
+    } else if (paramInt == 1) {
+      paramQQAppInterface = paramContext.getResources().getString(2131696035, new Object[] { paramString1 });
+    } else {
+      paramQQAppInterface = paramContext.getString(2131696031, new Object[] { paramString1 });
+    }
     int i;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      if (paramInt != 1) {
-        break label144;
-      }
-      i = 2131696012;
-      label70:
-      if (paramInt != 1) {
-        break label151;
-      }
+    if (paramInt == 1) {
+      i = 2131696027;
+    } else {
+      i = 2131696029;
     }
-    label144:
-    label151:
-    for (paramInt = 2131696017;; paramInt = 2131696015)
-    {
-      return DialogUtil.a((BaseActivity)paramContext, paramString2, i, paramInt, (DialogInterface.OnClickListener)localObject, paramHandler);
-      if (paramInt == 1) {}
-      for (paramQQAppInterface = paramContext.getResources().getString(2131696020, new Object[] { paramString1 });; paramQQAppInterface = paramContext.getString(2131696016, new Object[] { paramString1 }))
-      {
-        paramString2 = paramQQAppInterface;
-        break;
-      }
-      i = 2131696014;
-      break label70;
+    if (paramInt == 1) {
+      paramInt = 2131696032;
+    } else {
+      paramInt = 2131696030;
     }
+    return DialogUtil.a((BaseActivity)paramContext, paramQQAppInterface, i, paramInt, (DialogInterface.OnClickListener)localObject, paramHandler);
   }
   
   public static QQCustomDialog createPluginSetDialogForWeb(Context paramContext, TroopMemberApiClient paramTroopMemberApiClient, BusinessObserver paramBusinessObserver, int paramInt, long paramLong, String paramString1, String paramString2)
@@ -150,30 +142,32 @@ public class Utils
     paramTroopMemberApiClient = new TextView(paramContext);
     paramTroopMemberApiClient.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     paramTroopMemberApiClient.setTextSize(14.0F);
-    paramTroopMemberApiClient.setTextColor(paramContext.getResources().getColor(2131165497));
+    paramTroopMemberApiClient.setTextColor(paramContext.getResources().getColor(2131165473));
     paramTroopMemberApiClient.setGravity(1);
     paramTroopMemberApiClient.setPadding((int)DisplayUtils.a(paramContext, 15.0F), (int)DisplayUtils.a(paramContext, 30.0F), (int)DisplayUtils.a(paramContext, 15.0F), (int)DisplayUtils.a(paramContext, 15.0F));
     if (paramInt == 1)
     {
-      localQQCustomDialog.setPositiveButton(2131696012, paramBusinessObserver);
-      localQQCustomDialog.setNegativeButton(2131696017, paramBusinessObserver);
-      if (paramString2 != null) {}
-      for (;;)
-      {
-        paramTroopMemberApiClient.setText(paramString2);
-        localQQCustomDialog.addView(paramTroopMemberApiClient);
-        return localQQCustomDialog;
-        paramString2 = paramContext.getResources().getString(2131696020, new Object[] { paramString1 });
+      localQQCustomDialog.setPositiveButton(2131696027, paramBusinessObserver);
+      localQQCustomDialog.setNegativeButton(2131696032, paramBusinessObserver);
+      if (paramString2 != null) {
+        paramContext = paramString2;
+      } else {
+        paramContext = paramContext.getResources().getString(2131696035, new Object[] { paramString1 });
       }
     }
-    if (paramString2 != null) {}
-    for (;;)
+    else
     {
-      localQQCustomDialog.setNegativeButton(2131696015, paramBusinessObserver);
-      localQQCustomDialog.setPositiveButton(2131696014, paramBusinessObserver);
-      break;
-      paramString2 = paramContext.getString(2131696016, new Object[] { paramString1 });
+      if (paramString2 != null) {
+        paramContext = paramString2;
+      } else {
+        paramContext = paramContext.getString(2131696031, new Object[] { paramString1 });
+      }
+      localQQCustomDialog.setNegativeButton(2131696030, paramBusinessObserver);
+      localQQCustomDialog.setPositiveButton(2131696029, paramBusinessObserver);
     }
+    paramTroopMemberApiClient.setText(paramContext);
+    localQQCustomDialog.addView(paramTroopMemberApiClient);
+    return localQQCustomDialog;
   }
   
   public static boolean gotoF2fRedPacket(Context paramContext, HashMap<String, Object> paramHashMap)
@@ -185,12 +179,13 @@ public class Utils
     paramContext.setFlags(276824064);
     QRoute.startUri(paramContext, new Utils.5());
     paramContext = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramContext != null) && ((paramContext instanceof QQAppInterface))) {}
-    for (paramContext = (QQAppInterface)paramContext;; paramContext = null)
-    {
-      ReportController.b(paramContext, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.hongbao.click", 0, 0, "", "", "", "");
-      return true;
+    if ((paramContext != null) && ((paramContext instanceof QQAppInterface))) {
+      paramContext = (QQAppInterface)paramContext;
+    } else {
+      paramContext = null;
     }
+    ReportController.b(paramContext, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.hongbao.click", 0, 0, "", "", "", "");
+    return true;
   }
   
   public static boolean gotoFaceToFaceSend(Context paramContext, HashMap<String, Object> paramHashMap)
@@ -201,7 +196,6 @@ public class Utils
   
   public static boolean gotoFunctionActivity(Context paramContext, HashMap<String, Object> paramHashMap)
   {
-    Object localObject;
     int i;
     boolean bool;
     if (paramHashMap != null)
@@ -209,169 +203,181 @@ public class Utils
       if ((paramHashMap.get("className") instanceof String)) {
         localObject = (String)paramHashMap.get("className");
       }
-      if ((paramHashMap.get("fid") instanceof Integer))
-      {
+      if ((paramHashMap.get("fid") instanceof Integer)) {
         i = ((Integer)paramHashMap.get("fid")).intValue();
-        if ((paramHashMap.get("newtask") instanceof Boolean)) {
-          bool = ((Boolean)paramHashMap.get("newtask")).booleanValue();
+      } else {
+        i = 0;
+      }
+      if ((paramHashMap.get("newtask") instanceof Boolean)) {
+        bool = ((Boolean)paramHashMap.get("newtask")).booleanValue();
+      } else {
+        bool = true;
+      }
+    }
+    else
+    {
+      bool = true;
+      i = 0;
+    }
+    Object localObject = new Intent();
+    if (i != 2) {
+      if (i != 4) {
+        if (i != 5) {
+          if (i != 6) {
+            if (i != 14) {
+              if ((i != 15) && (i != 27)) {
+                if (i != 28) {
+                  paramHashMap = (HashMap<String, Object>)localObject;
+                }
+              }
+            }
+          }
         }
       }
     }
-    for (;;)
+    switch (i)
     {
-      paramHashMap = new Intent();
+    default: 
       switch (i)
       {
-      case 3: 
-      case 7: 
-      case 11: 
-      case 12: 
-      case 13: 
-      case 16: 
-      case 19: 
-      case 20: 
-      case 21: 
-      case 22: 
-      case 23: 
-      case 24: 
-      case 25: 
-      case 26: 
-      case 29: 
-      case 30: 
-      case 34: 
       default: 
-      case 2: 
-      case 4: 
-      case 5: 
-      case 6: 
-      case 8: 
-      case 9: 
-      case 10: 
-      case 14: 
-      case 15: 
-      case 27: 
-      case 17: 
-      case 18: 
-      case 28: 
-      case 35: 
-      case 36: 
-      case 37: 
-      case 38: 
-        for (;;)
+        switch (i)
         {
-          if (bool) {
-            paramHashMap.setFlags(276824064);
-          }
-          paramContext.startActivity(paramHashMap);
-          return true;
-          paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
-          paramHashMap.putExtra("key_business", 2);
-          continue;
-          paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
-          paramHashMap.putExtra("key_business", 4);
-          continue;
-          paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
-          paramHashMap.putExtra("key_business", 5);
-          continue;
-          paramHashMap.setClass(paramContext, FileAssistantActivity.class);
-          paramHashMap.putExtra("from", "FileAssistant");
-          continue;
-          paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
-          paramHashMap.putExtra("key_business", 7);
-          continue;
-          paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
-          paramHashMap.putExtra("key_business", 3);
-          continue;
-          paramHashMap.setClass(paramContext, NearbyActivity.class);
-          continue;
-          ((IWSManager)QRoute.api(IWSManager.class)).enterTrendsTabWs(paramContext, "from_search_trends_ws", false, null, null);
-          return true;
-          paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
-          if (i == 27) {
-            paramHashMap.putExtra("tab_tab_index", 0);
-          }
-          paramHashMap.putExtra("key_business", 6);
-          continue;
-          paramHashMap.setClass(paramContext, QRBridgeActivity.class);
-          continue;
-          localObject = new JSONObject();
-          try
+        default: 
+          paramHashMap = (HashMap<String, Object>)localObject;
+          break;
+        case 38: 
+          ((Intent)localObject).setClass(paramContext, QZoneAppListActivity.class);
+          paramHashMap = (HashMap<String, Object>)localObject;
+          break;
+        case 37: 
+          paramHashMap = new Intent(paramContext, QPublicFragmentActivity.class);
+          paramHashMap.putExtra("public_fragment_class", ((ILaunchTroopSysMsgUIUtilApi)QRoute.api(ILaunchTroopSysMsgUIUtilApi.class)).getFragmentNameForLaunch());
+          paramHashMap.putExtra("_key_mode", 1);
+          paramHashMap.putExtra("key_tab_mode", 2);
+          break;
+        case 36: 
+          ((Intent)localObject).setClass(paramContext, EcshopWebActivity.class);
+          ((Intent)localObject).putExtra("from_search", true);
+          ((Intent)localObject).setFlags(67108864);
+          paramHashMap = BaseApplicationImpl.getApplication().getRuntime();
+          if ((paramHashMap != null) && ((paramHashMap instanceof QQAppInterface)))
           {
-            ((JSONObject)localObject).put("newInstance", true);
-            paramHashMap.putExtra("options", ((JSONObject)localObject).toString());
-            paramHashMap.setClass(paramContext, VipComicJumpActivity.class);
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("lebasearch.Utils", 2, "BUSINESS_ID_ANIME put newInstance is error");
-              }
+            paramHashMap = (EcShopAssistantManager)((QQAppInterface)paramHashMap).getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+            if (paramHashMap != null) {
+              paramHashMap.a((Intent)localObject, paramContext, -1);
             }
           }
-          if (QFileAssistantUtils.a())
+          String str = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappecshopurl", "");
+          paramHashMap = (HashMap<String, Object>)localObject;
+          if (!TextUtils.isEmpty(str))
           {
-            QFileAssistantUtils.b(paramContext, null);
+            ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, str, 4003, null);
+            ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async("shopping_folder", "click", "search", "", "", "");
+            return true;
           }
-          else
-          {
-            paramHashMap.setClass(paramContext, LiteActivity.class);
-            paramHashMap.putExtra("targetUin", AppConstants.DATALINE_PC_UIN);
-            RecentUtil.a = true;
-            RecentUtil.a(paramHashMap);
-            continue;
-            paramHashMap.setClass(paramContext, TroopAssistantActivity.class);
-            continue;
-            paramHashMap.setClass(paramContext, EcshopWebActivity.class);
-            paramHashMap.putExtra("from_search", true);
-            paramHashMap.setFlags(67108864);
-            localObject = BaseApplicationImpl.getApplication().getRuntime();
-            if ((localObject != null) && ((localObject instanceof QQAppInterface)))
-            {
-              localObject = (EcShopAssistantManager)((QQAppInterface)localObject).getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
-              if (localObject != null) {
-                ((EcShopAssistantManager)localObject).a(paramHashMap, paramContext, -1);
-              }
-            }
-            localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappecshopurl", "");
-            if (!TextUtils.isEmpty((CharSequence)localObject))
-            {
-              ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, (String)localObject, 4003, null);
-              ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async("shopping_folder", "click", "search", "", "", "");
-              return true;
-              paramHashMap.setClass(paramContext, TroopActivity.class);
-              paramHashMap.putExtra("_key_mode", 1);
-              paramHashMap.putExtra("key_tab_mode", 2);
-              paramHashMap.putExtra("key_from", 1);
-              continue;
-              paramHashMap.setClass(paramContext, QZoneAppListActivity.class);
-            }
-          }
+          break;
+        case 35: 
+          ((Intent)localObject).setClass(paramContext, TroopAssistantActivity.class);
+          paramHashMap = (HashMap<String, Object>)localObject;
         }
-      case 31: 
-        gotoScan(paramContext, null);
+        break;
+      case 33: 
+        gotoF2fRedPacket(paramContext, null);
         return true;
       case 32: 
         gotoPay(paramContext, null);
         return true;
+      case 31: 
+        gotoScan(paramContext, null);
+        return true;
       }
-      gotoF2fRedPacket(paramContext, null);
-      return true;
-      bool = true;
-      continue;
-      i = 0;
       break;
-      bool = true;
-      i = 0;
+    case 9: 
+      paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
+      paramHashMap.putExtra("key_business", 3);
+      break;
+    case 8: 
+      paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
+      paramHashMap.putExtra("key_business", 7);
+      break;
+      if (QFileAssistantUtils.a())
+      {
+        QFileAssistantUtils.a(paramContext, null);
+        paramHashMap = (HashMap<String, Object>)localObject;
+      }
+      else
+      {
+        ((Intent)localObject).setClass(paramContext, LiteActivity.class);
+        ((Intent)localObject).putExtra("targetUin", AppConstants.DATALINE_PC_UIN);
+        RecentUtil.a = true;
+        RecentUtil.a((Intent)localObject);
+        paramHashMap = (HashMap<String, Object>)localObject;
+        break;
+        paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
+        if (i == 27) {
+          paramHashMap.putExtra("tab_tab_index", 0);
+        }
+        paramHashMap.putExtra("key_business", 6);
+        break;
+        ((IWSManager)QRoute.api(IWSManager.class)).enterTrendsTabWs(paramContext, "from_search_trends_ws", false, null, null);
+        return true;
+        ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).openFileAssistant(paramContext, bool);
+        paramHashMap = (HashMap<String, Object>)localObject;
+        break;
+        paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
+        paramHashMap.putExtra("key_business", 5);
+        break;
+        paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
+        paramHashMap.putExtra("key_business", 4);
+        break;
+        paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
+        paramHashMap.putExtra("key_business", 2);
+      }
+      break;
     }
+    if (i == 18) {
+      paramHashMap = new JSONObject();
+    }
+    try
+    {
+      paramHashMap.put("newInstance", true);
+    }
+    catch (Exception localException)
+    {
+      label793:
+      break label793;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("lebasearch.Utils", 2, "BUSINESS_ID_ANIME put newInstance is error");
+    }
+    paramContext = new ActivityURIRequest(paramContext, "/base/vipcomic");
+    paramContext.extra().putString("options", paramHashMap.toString());
+    if (bool) {
+      paramContext.setFlags(276824064);
+    }
+    QRoute.startUri(paramContext, null);
+    return true;
+    if (bool) {
+      paramHashMap.setFlags(276824064);
+    }
+    if (i == 10)
+    {
+      RouteUtils.a(paramContext, paramHashMap, "/nearby/activity");
+      return true;
+    }
+    paramContext.startActivity(paramHashMap);
+    return true;
   }
   
   public static boolean gotoPay(Context paramContext, HashMap<String, Object> paramHashMap)
   {
     long l = VACDReportUtil.a(null, "qqwallet", "payCode", "click", "2", 0, null);
     paramHashMap = new Intent(paramContext, JumpActivity.class);
-    paramHashMap.setData(Uri.parse("mqqapi://wallet/open?src_type=web&viewtype=0&version=1&view=8&entry=2&seq=" + l));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mqqapi://wallet/open?src_type=web&viewtype=0&version=1&view=8&entry=2&seq=");
+    localStringBuilder.append(l);
+    paramHashMap.setData(Uri.parse(localStringBuilder.toString()));
     paramHashMap.setFlags(276824064);
     paramContext.startActivity(paramHashMap);
     return true;
@@ -384,38 +390,36 @@ public class Utils
       QLog.e("lebasearch.Utils", 2, "gotoScan method. QavCameraUsage.checkAVCameraUsed false.");
       return false;
     }
-    paramHashMap = new Intent(paramContext, ScannerActivity.class);
+    paramHashMap = new Intent();
     paramHashMap.putExtra("from", "Conversation");
-    paramHashMap.putExtra("leftViewText", paramContext.getString(2131690778));
-    paramHashMap.putExtra("selfSet_leftViewText", paramContext.getString(2131690778));
+    paramHashMap.putExtra("leftViewText", paramContext.getString(2131690706));
+    paramHashMap.putExtra("selfSet_leftViewText", paramContext.getString(2131690706));
     paramHashMap.setFlags(67108864);
     paramHashMap.setFlags(276824064);
-    paramContext.startActivity(paramHashMap);
+    RouteUtils.a(paramContext, paramHashMap, "/qrscan/scanner");
     return true;
   }
   
   public static boolean gotoStoryBigVipPage(Context paramContext, HashMap<String, Object> paramHashMap)
   {
-    long l2 = 0L;
-    long l1 = l2;
-    if (paramHashMap != null)
-    {
-      l1 = l2;
-      if (!(paramHashMap.get("uin") instanceof Long)) {}
+    long l;
+    if ((paramHashMap != null) && ((paramHashMap.get("uin") instanceof Long))) {
+      try
+      {
+        l = Long.valueOf(((Long)paramHashMap.get("uin")).longValue()).longValue();
+      }
+      catch (NumberFormatException paramContext)
+      {
+        paramContext.printStackTrace();
+        return false;
+      }
+    } else {
+      l = 0L;
     }
-    try
-    {
-      l1 = Long.valueOf(((Long)paramHashMap.get("uin")).longValue()).longValue();
-      paramHashMap = QQStoryMemoriesActivity.a(paramContext, 24, l1);
-      paramHashMap.addFlags(268435456);
-      paramContext.startActivity(paramHashMap);
-      return true;
-    }
-    catch (NumberFormatException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
+    paramHashMap = QQStoryMemoriesActivity.a(paramContext, 24, l);
+    paramHashMap.addFlags(268435456);
+    paramContext.startActivity(paramHashMap);
+    return true;
   }
   
   public static boolean gotoWebView(Context paramContext, HashMap<String, Object> paramHashMap)
@@ -423,47 +427,52 @@ public class Utils
     Object localObject3 = null;
     Object localObject1;
     Object localObject2;
-    if (paramHashMap != null) {
-      if ((paramHashMap.get("url") instanceof String))
-      {
-        localObject1 = (String)paramHashMap.get("url");
-        if ((paramHashMap.get("url_model") instanceof String))
-        {
-          paramHashMap = (String)paramHashMap.get("url_model");
-          localObject2 = localObject1;
-        }
-      }
-    }
-    for (;;)
+    if (paramHashMap != null)
     {
-      if (TextUtils.isEmpty(localObject2)) {
-        return false;
+      if ((paramHashMap.get("url") instanceof String)) {
+        localObject1 = (String)paramHashMap.get("url");
+      } else {
+        localObject1 = null;
       }
-      if (TextUtils.isEmpty(paramHashMap)) {
-        localObject1 = new Intent(paramContext, QQBrowserActivity.class);
-      }
-      while (localObject1 == null)
+      if ((paramHashMap.get("url_model") instanceof String))
       {
-        return false;
-        localObject1 = localObject3;
-        if (paramHashMap.equals("gameCenter"))
-        {
-          localObject1 = new Intent(paramContext, GameCenterActivity.class);
-          ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_zf_games");
-        }
+        paramHashMap = (String)paramHashMap.get("url_model");
+        localObject2 = localObject1;
       }
-      ((Intent)localObject1).putExtra("url", localObject2);
-      ((Intent)localObject1).setFlags(276824064);
-      paramContext.startActivity((Intent)localObject1);
-      return true;
-      paramHashMap = null;
-      localObject2 = localObject1;
-      continue;
-      localObject1 = null;
-      break;
-      paramHashMap = null;
-      localObject2 = null;
+      else
+      {
+        paramHashMap = null;
+        localObject2 = localObject1;
+      }
     }
+    else
+    {
+      paramHashMap = null;
+      localObject2 = paramHashMap;
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      return false;
+    }
+    if (TextUtils.isEmpty(paramHashMap))
+    {
+      localObject1 = new Intent(paramContext, QQBrowserActivity.class);
+    }
+    else
+    {
+      localObject1 = localObject3;
+      if (paramHashMap.equals("gameCenter"))
+      {
+        localObject1 = new Intent(paramContext, GameCenterActivity.class);
+        ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_zf_games");
+      }
+    }
+    if (localObject1 == null) {
+      return false;
+    }
+    ((Intent)localObject1).putExtra("url", (String)localObject2);
+    ((Intent)localObject1).setFlags(276824064);
+    paramContext.startActivity((Intent)localObject1);
+    return true;
   }
   
   public static void sendPluginSetMessage(Context paramContext, TroopMemberApiClient paramTroopMemberApiClient, BusinessObserver paramBusinessObserver, long paramLong, boolean paramBoolean)
@@ -477,7 +486,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.lebasearch.Utils
  * JD-Core Version:    0.7.0.1
  */

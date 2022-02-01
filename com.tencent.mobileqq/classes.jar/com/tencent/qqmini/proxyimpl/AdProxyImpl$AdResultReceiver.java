@@ -19,9 +19,10 @@ public class AdProxyImpl$AdResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    if (this.a != null)
+    AdProxyImpl.SDKRewardedVideoAdView localSDKRewardedVideoAdView = this.a;
+    if (localSDKRewardedVideoAdView != null)
     {
-      this.a.a(paramInt, paramBundle);
+      localSDKRewardedVideoAdView.a(paramInt, paramBundle);
       return;
     }
     QLog.d("AdResultReceiver", 1, "adView is null");
@@ -29,7 +30,7 @@ public class AdProxyImpl$AdResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.AdResultReceiver
  * JD-Core Version:    0.7.0.1
  */

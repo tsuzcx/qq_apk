@@ -4,7 +4,7 @@ import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.mobileqq.activity.recent.config.recentlist.IRecentSortValueProcessor;
 import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 
@@ -18,35 +18,39 @@ public class RecentSortValueProcessor
   
   public int a(BaseQQAppInterface paramBaseQQAppInterface, RecentUserBaseData paramRecentUserBaseData, int paramInt)
   {
-    int j = 0;
-    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {}
-    int i;
-    do
-    {
+    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {
       return paramInt;
+    }
+    int k = paramRecentUserBaseData.mUnreadNum;
+    int j = 0;
+    int i = j;
+    if (k > 0)
+    {
       i = j;
-      if (paramRecentUserBaseData.mUnreadNum > 0)
+      if (paramRecentUserBaseData.mUser.getType() == 0)
       {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramBaseQQAppInterface.getCurrentAccountUin());
+        localStringBuilder.append(paramRecentUserBaseData.mUser.uin);
         i = j;
-        if (paramRecentUserBaseData.mUser.getType() == 0)
+        if (QvipSpecialCareUtil.a(localStringBuilder.toString()))
         {
           i = j;
-          if (QvipSpecialCareManager.a(paramBaseQQAppInterface.getCurrentAccountUin() + paramRecentUserBaseData.mUser.uin))
-          {
-            i = j;
-            if (!a((QQAppInterface)paramBaseQQAppInterface, paramRecentUserBaseData.mUser.uin, 0)) {
-              i = 1;
-            }
+          if (!a((QQAppInterface)paramBaseQQAppInterface, paramRecentUserBaseData.mUser.uin, 0)) {
+            i = 1;
           }
         }
       }
-    } while (i == 0);
-    return 4096;
+    }
+    if (i != 0) {
+      paramInt = 4096;
+    }
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.recentsort.RecentSortValueProcessor
  * JD-Core Version:    0.7.0.1
  */

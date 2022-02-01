@@ -15,9 +15,9 @@ class PushBannerProcessor$1$1
   
   public void run()
   {
-    int k = 0;
     EntityManager localEntityManager = PushBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorPushBannerProcessor$1.a).getAppRuntime().getEntityManagerFactory().createEntityManager();
     Object localObject = localEntityManager.query(ExpiredPushBanner.class, false, null, null, null, null, "endtime", null);
+    int k = 0;
     int j = k;
     if (localObject != null)
     {
@@ -63,7 +63,7 @@ class PushBannerProcessor$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.PushBannerProcessor.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,30 +13,24 @@ public class PoiListRequest
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool2;
-          } while (paramObject == null);
-          bool1 = bool2;
-        } while (getClass() != paramObject.getClass());
-        paramObject = (PoiListRequest)paramObject;
-        bool1 = bool2;
-      } while (!this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation.equals(paramObject.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation));
-      bool1 = bool2;
-    } while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
-    return this.b.equals(paramObject.b);
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (PoiListRequest)paramObject;
+      if (!this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation.equals(paramObject.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation)) {
+        return false;
+      }
+      if (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+        return false;
+      }
+      return this.b.equals(paramObject.b);
+    }
+    return false;
   }
   
   public int hashCode()
@@ -46,12 +40,26 @@ public class PoiListRequest
   
   public String toString()
   {
-    return "PoiListRequest{mBasicLocation=" + this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation + ", mCoordinate=" + 0 + ", mCount=" + 20 + ", mCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mKeyWord='" + this.b + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PoiListRequest{mBasicLocation=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation);
+    localStringBuilder.append(", mCoordinate=");
+    localStringBuilder.append(0);
+    localStringBuilder.append(", mCount=");
+    localStringBuilder.append(20);
+    localStringBuilder.append(", mCookie='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mKeyWord='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.lbs.PoiListRequest
  * JD-Core Version:    0.7.0.1
  */

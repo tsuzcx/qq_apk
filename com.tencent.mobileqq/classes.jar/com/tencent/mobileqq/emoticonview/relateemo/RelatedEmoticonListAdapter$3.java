@@ -16,13 +16,15 @@ class RelatedEmoticonListAdapter$3
     {
       int[] arrayOfInt = new int[2];
       this.val$view.getLocationInWindow(arrayOfInt);
-      RelatedEmoticonListAdapter.access$200(this.this$0).showAtLocation(this.val$view, 48, (int)(arrayOfInt[0] - this.val$view.getMeasuredWidth() * 1.5F), arrayOfInt[1] - this.val$linearLayout.getMeasuredHeight());
+      PopupWindow localPopupWindow = RelatedEmoticonListAdapter.access$200(this.this$0);
+      View localView = this.val$view;
+      localPopupWindow.showAtLocation(localView, 48, (int)(arrayOfInt[0] - localView.getMeasuredWidth() * 1.5F), arrayOfInt[1] - this.val$linearLayout.getMeasuredHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoticonListAdapter.3
  * JD-Core Version:    0.7.0.1
  */

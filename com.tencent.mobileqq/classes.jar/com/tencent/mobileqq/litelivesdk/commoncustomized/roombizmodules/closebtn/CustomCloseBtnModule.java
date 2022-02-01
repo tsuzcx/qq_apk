@@ -14,15 +14,15 @@ import com.tencent.mobileqq.litelivesdk.utils.ui.DeviceManager;
 public class CustomCloseBtnModule
   extends RoomBizModule
 {
-  private static final String jdField_a_of_type_JavaLangString = CustomCloseBtnModule.class.getName();
+  private static final String jdField_a_of_type_JavaLangString = "com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.closebtn.CustomCloseBtnModule";
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   
   private void a()
   {
-    ViewStub localViewStub = (ViewStub)getRootView().findViewById(2131364826);
+    ViewStub localViewStub = (ViewStub)getRootView().findViewById(2131364713);
     ((RelativeLayout.LayoutParams)localViewStub.getLayoutParams()).setMargins(DeviceManager.a(this.context, 5.0F), UIUtil.getStatusBarHeight(this.context) + DeviceManager.a(this.context, 9.0F), 0, 0);
     localViewStub.inflate();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)getRootView().findViewById(2131364122));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)getRootView().findViewById(2131364043));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new CustomCloseBtnModule.1(this));
   }
   
@@ -46,7 +46,7 @@ public class CustomCloseBtnModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.closebtn.CustomCloseBtnModule
  * JD-Core Version:    0.7.0.1
  */

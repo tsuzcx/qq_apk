@@ -13,10 +13,12 @@ import android.widget.TextView;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
 import com.tencent.biz.pubaccount.weishi_new.data.WSUserBusiness;
+import com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader;
 import com.tencent.biz.pubaccount.weishi_new.live.WSLiveAnimationManager;
 import com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUIUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.Presenter;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.WSVerticalBeaconReport;
@@ -25,7 +27,6 @@ import com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.open.base.ToastUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class WSVerticalItemBottomAvatarController
   extends AbsWsUIGroup<WSVerticalItemData>
@@ -35,6 +36,7 @@ public class WSVerticalItemBottomAvatarController
   private static final int e = ScreenUtil.dip2px(150.0F);
   private static final int f = ScreenUtil.dip2px(1.0F);
   private static final int g = Color.parseColor("#5CFFFFFF");
+  private static final int h = ScreenUtil.dip2px(60.0F);
   private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
@@ -48,6 +50,19 @@ public class WSVerticalItemBottomAvatarController
     if (paramWSVerticalVideoHolder != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalVideoHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
     }
+  }
+  
+  private int c()
+  {
+    if (this.b.getVisibility() == 0)
+    {
+      int i = this.b.getWidth();
+      if (i != 0) {
+        return i;
+      }
+      return h;
+    }
+    return 0;
   }
   
   private void c(stSimpleMetaPerson paramstSimpleMetaPerson)
@@ -71,7 +86,7 @@ public class WSVerticalItemBottomAvatarController
   {
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setVisibility(0);
-    WeishiUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, paramstSimpleMetaPerson.avatar);
+    WSPicLoader.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, paramstSimpleMetaPerson.avatar);
   }
   
   private void e(stSimpleMetaPerson paramstSimpleMetaPerson)
@@ -81,7 +96,7 @@ public class WSVerticalItemBottomAvatarController
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
     }
-    int i = this.b.getWidth();
+    int i = c();
     int j = WeishiUIUtil.c();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(j - i - e);
@@ -108,25 +123,35 @@ public class WSVerticalItemBottomAvatarController
   
   private void h()
   {
-    if (!NetworkUtil.a(a())) {
-      ToastUtil.a().a(2131720723);
-    }
-    while ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) || (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed == null) || (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster == null)) {
+    if (!NetworkUtil.a(a()))
+    {
+      ToastUtil.a().a(2131720447);
       return;
     }
-    this.b.setVisibility(8);
-    WSUserBusiness.a().a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.id, 1);
-    WSVerticalBeaconReport.e(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null)
+    {
+      stSimpleMetaFeed localstSimpleMetaFeed = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+      if (localstSimpleMetaFeed != null)
+      {
+        if (localstSimpleMetaFeed.poster == null) {
+          return;
+        }
+        this.b.setVisibility(8);
+        WSUserBusiness.a().a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.id, 1);
+        WSVerticalBeaconReport.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, ((WSVerticalPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b()).b());
+      }
+    }
   }
   
-  public void a()
+  protected void a()
   {
     WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
-    if (localWSVerticalItemData == null) {}
-    while (!(localWSVerticalItemData.a() instanceof stSimpleMetaFeed)) {
+    if (localWSVerticalItemData == null) {
       return;
     }
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = localWSVerticalItemData.a();
+    if ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed)) {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = localWSVerticalItemData.a();
+    }
   }
   
   public void a(stSimpleMetaPerson paramstSimpleMetaPerson)
@@ -143,32 +168,31 @@ public class WSVerticalItemBottomAvatarController
       return;
     }
     TextView localTextView = this.b;
-    if (WSFeedUtils.a(paramstSimpleMetaPerson.followStatus)) {}
-    for (;;)
-    {
-      localTextView.setVisibility(i);
-      return;
+    if (!WSFeedUtils.a(paramstSimpleMetaPerson.followStatus)) {
       i = 0;
     }
+    localTextView.setVisibility(i);
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560150;
+    return 2131560032;
   }
   
   @UiThread
-  public void b()
+  protected void b()
   {
     Object localObject = (WSVerticalItemData)a();
-    if (localObject == null) {}
-    while (!(((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed)) {
+    if (localObject == null) {
       return;
     }
-    localObject = ((WSVerticalItemData)localObject).a().poster;
-    a((stSimpleMetaPerson)localObject);
-    e((stSimpleMetaPerson)localObject);
-    c((stSimpleMetaPerson)localObject);
+    if ((((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed))
+    {
+      localObject = ((WSVerticalItemData)localObject).a().poster;
+      a((stSimpleMetaPerson)localObject);
+      e((stSimpleMetaPerson)localObject);
+      c((stSimpleMetaPerson)localObject);
+    }
   }
   
   public void b(stSimpleMetaPerson paramstSimpleMetaPerson)
@@ -181,19 +205,19 @@ public class WSVerticalItemBottomAvatarController
     WSLiveAnimationManager.a().a(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
   }
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)a(2131381192));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131381193));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)a(2131380445));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131380446));
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setStrokeWidth(d);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setStrokeColor(g);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131381197));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380451));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.b = ((TextView)a(2131381196));
+    this.b = ((TextView)a(2131380450));
     this.b.setOnClickListener(this);
   }
   
@@ -201,22 +225,24 @@ public class WSVerticalItemBottomAvatarController
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    case 2131380447: 
+    case 2131380448: 
+    case 2131380449: 
+    default: 
       return;
-      f();
-      continue;
+    case 2131380451: 
       g();
-      continue;
+      return;
+    case 2131380450: 
       h();
+      return;
     }
+    f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemBottomAvatarController
  * JD-Core Version:    0.7.0.1
  */

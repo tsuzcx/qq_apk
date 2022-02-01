@@ -14,31 +14,39 @@ public class DataProviderManager
   
   public <T extends DataProvider> T a(int paramInt)
   {
-    DataProvider localDataProvider = this.a[paramInt];
-    if (localDataProvider == null) {}
+    DataProvider[] arrayOfDataProvider = this.a;
+    Object localObject = arrayOfDataProvider[paramInt];
+    if (localObject == null)
+    {
+      label41:
+      try
+      {
+        localObject = this.a[paramInt];
+        if (localObject == null) {
+          break label74;
+        }
+        return localObject;
+      }
+      finally {}
+      localObject = new AddressDataProvider();
+      break label49;
+      localObject = new WeatherDataProvider();
+    }
     for (;;)
     {
-      synchronized (this.a)
-      {
-        localDataProvider = this.a[paramInt];
-        if (localDataProvider == null) {
-          break label80;
-        }
-        return localDataProvider;
-        a(localDataProvider, paramInt);
-        if (localDataProvider != null) {
-          localDataProvider.b();
-        }
-        return localDataProvider;
+      label49:
+      a((DataProvider)localObject, paramInt);
+      if (localObject != null) {
+        ((DataProvider)localObject).a();
       }
-      Object localObject2 = new WeatherDataProvider();
-      continue;
-      localObject2 = new AddressDataProvider();
-      continue;
-      return localObject2;
-      label80:
-      switch (paramInt)
-      {
+      return localObject;
+      return ?;
+      label74:
+      if (paramInt == 0) {
+        break label41;
+      }
+      if (paramInt == 1) {
+        break;
       }
     }
   }
@@ -58,7 +66,7 @@ public class DataProviderManager
     {
       DataProvider localDataProvider = arrayOfDataProvider[i];
       if (localDataProvider != null) {
-        localDataProvider.c();
+        localDataProvider.b();
       }
       i += 1;
     }
@@ -66,7 +74,7 @@ public class DataProviderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.DataProviderManager
  * JD-Core Version:    0.7.0.1
  */

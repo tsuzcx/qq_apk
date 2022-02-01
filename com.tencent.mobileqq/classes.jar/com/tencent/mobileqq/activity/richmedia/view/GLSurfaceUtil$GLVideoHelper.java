@@ -27,7 +27,10 @@ public class GLSurfaceUtil$GLVideoHelper
     {
       String str = GLES20.glGetProgramInfoLog(i);
       GLES20.glDeleteProgram(i);
-      GLSurfaceUtil.a("linkProgram:GL_COMPILE_STATUS errorinfo =" + str);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("linkProgram:GL_COMPILE_STATUS errorinfo =");
+      localStringBuilder.append(str);
+      GLSurfaceUtil.a(localStringBuilder.toString());
       return 0;
     }
     return i;
@@ -38,7 +41,10 @@ public class GLSurfaceUtil$GLVideoHelper
     int i = GLES20.glCreateShader(paramInt);
     if (i == 0)
     {
-      GLSurfaceUtil.a("glCreateShader:shader==0 type=" + a(paramInt));
+      paramString = new StringBuilder();
+      paramString.append("glCreateShader:shader==0 type=");
+      paramString.append(a(paramInt));
+      GLSurfaceUtil.a(paramString.toString());
       return 0;
     }
     GLES20.glShaderSource(i, paramString);
@@ -48,7 +54,10 @@ public class GLSurfaceUtil$GLVideoHelper
     {
       paramString = GLES20.glGetShaderInfoLog(i);
       GLES20.glDeleteShader(i);
-      GLSurfaceUtil.a("glGetShaderiv:GL_COMPILE_STATUS error  loginfo=" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("glGetShaderiv:GL_COMPILE_STATUS error  loginfo=");
+      localStringBuilder.append(paramString);
+      GLSurfaceUtil.a(localStringBuilder.toString());
       return 0;
     }
     return i;
@@ -58,19 +67,19 @@ public class GLSurfaceUtil$GLVideoHelper
   {
     int i = a(35633, paramString1);
     int j = a(35632, paramString2);
-    if ((i == 0) || (j == 0))
+    if ((i != 0) && (j != 0))
     {
-      GLSurfaceUtil.a("compileShader:vertext or fragment == 0");
-      return 0;
+      int k = a(i, j);
+      if (k == 0)
+      {
+        GLES20.glDeleteShader(i);
+        GLES20.glDeleteShader(j);
+        return 0;
+      }
+      return k;
     }
-    int k = a(i, j);
-    if (k == 0)
-    {
-      GLES20.glDeleteShader(i);
-      GLES20.glDeleteShader(j);
-      return 0;
-    }
-    return k;
+    GLSurfaceUtil.a("compileShader:vertext or fragment == 0");
+    return 0;
   }
   
   private static String a(int paramInt)
@@ -86,7 +95,7 @@ public class GLSurfaceUtil$GLVideoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.GLSurfaceUtil.GLVideoHelper
  * JD-Core Version:    0.7.0.1
  */

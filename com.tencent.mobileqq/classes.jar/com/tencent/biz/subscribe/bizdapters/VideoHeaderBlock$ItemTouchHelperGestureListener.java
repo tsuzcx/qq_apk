@@ -11,47 +11,45 @@ class VideoHeaderBlock$ItemTouchHelperGestureListener
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    float f1 = paramMotionEvent2.getY() - VideoHeaderBlock.a(this.a);
+    float f = paramMotionEvent2.getY() - VideoHeaderBlock.a(this.a);
     if (VideoHeaderBlock.b(this.a) < VideoHeaderBlock.c(this.a)) {
       return false;
     }
-    if ((f1 > 0.0F) && (VideoHeaderBlock.d(this.a) < VideoHeaderBlock.e(this.a)))
+    VideoHeaderBlock localVideoHeaderBlock;
+    int i;
+    if ((f > 0.0F) && (VideoHeaderBlock.d(this.a) < VideoHeaderBlock.e(this.a)))
     {
-      f2 = VideoHeaderBlock.d(this.a);
-      f1 = Math.abs(f1) + f2;
+      f = VideoHeaderBlock.d(this.a) + Math.abs(f);
       localVideoHeaderBlock = this.a;
-      if (f1 > VideoHeaderBlock.e(this.a))
-      {
+      if (f > VideoHeaderBlock.e(localVideoHeaderBlock)) {
         i = VideoHeaderBlock.e(this.a);
-        VideoHeaderBlock.b(localVideoHeaderBlock, i);
+      } else {
+        i = (int)f;
       }
-    }
-    while ((f1 >= 0.0F) || (VideoHeaderBlock.d(this.a) <= VideoHeaderBlock.f(this.a))) {
-      for (;;)
-      {
-        float f2;
-        if (VideoHeaderBlock.a(this.a) != null)
-        {
-          VideoHeaderBlock.a(this.a).getLayoutParams().height = VideoHeaderBlock.d(this.a);
-          VideoHeaderBlock.a(this.a).requestLayout();
-        }
-        return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-        i = (int)f1;
-      }
-    }
-    f1 = VideoHeaderBlock.d(this.a) - Math.abs(f1);
-    VideoHeaderBlock localVideoHeaderBlock = this.a;
-    if (f1 < VideoHeaderBlock.f(this.a)) {}
-    for (int i = VideoHeaderBlock.f(this.a);; i = (int)f1)
-    {
       VideoHeaderBlock.b(localVideoHeaderBlock, i);
-      break;
     }
+    else if ((f < 0.0F) && (VideoHeaderBlock.d(this.a) > VideoHeaderBlock.f(this.a)))
+    {
+      f = VideoHeaderBlock.d(this.a) - Math.abs(f);
+      localVideoHeaderBlock = this.a;
+      if (f < VideoHeaderBlock.f(localVideoHeaderBlock)) {
+        i = VideoHeaderBlock.f(this.a);
+      } else {
+        i = (int)f;
+      }
+      VideoHeaderBlock.b(localVideoHeaderBlock, i);
+    }
+    if (VideoHeaderBlock.a(this.a) != null)
+    {
+      VideoHeaderBlock.a(this.a).getLayoutParams().height = VideoHeaderBlock.d(this.a);
+      VideoHeaderBlock.a(this.a).requestLayout();
+    }
+    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.VideoHeaderBlock.ItemTouchHelperGestureListener
  * JD-Core Version:    0.7.0.1
  */

@@ -8,82 +8,96 @@ public class c
   
   private int b(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length - this.a == 0) {
-      throw new EOFException();
-    }
-    int m = paramArrayOfByte[this.a];
-    int j;
-    int i;
-    int k;
-    if ((m & 0x80) == 0)
+    int j = paramArrayOfByte.length;
+    int i = this.a;
+    if (j - i != 0)
     {
-      j = 0;
-      i = m & 0x7F;
-      k = 1;
-    }
-    while (paramArrayOfByte.length - this.a < k)
-    {
-      throw new EOFException("size < " + k + ": " + (paramArrayOfByte.length - this.a) + " (to read code point prefixed 0x" + Integer.toHexString(m) + ")");
-      if ((m & 0xE0) == 192)
+      int n = paramArrayOfByte[i];
+      int m = 1;
+      int k;
+      if ((n & 0x80) == 0)
       {
-        i = m & 0x1F;
-        k = 2;
-        j = 128;
+        i = n & 0x7F;
+        j = 1;
+        k = 0;
       }
-      else if ((m & 0xF0) == 224)
+      else if ((n & 0xE0) == 192)
       {
-        i = m & 0xF;
-        k = 3;
-        j = 2048;
+        i = n & 0x1F;
+        j = 2;
+        k = 128;
       }
-      else if ((m & 0xF8) == 240)
+      else if ((n & 0xF0) == 224)
       {
-        i = m & 0x7;
-        k = 4;
-        j = 65536;
+        i = n & 0xF;
+        j = 3;
+        k = 2048;
       }
       else
       {
-        this.a += 1;
-        return 65533;
+        if ((n & 0xF8) != 240) {
+          break label331;
+        }
+        i = n & 0x7;
+        j = 4;
+        k = 65536;
       }
+      if (paramArrayOfByte.length - this.a >= j)
+      {
+        while (m < j)
+        {
+          n = this.a;
+          int i1 = paramArrayOfByte[(n + m)];
+          if ((i1 & 0xC0) == 128)
+          {
+            i = i1 & 0x3F | i << 6;
+            m += 1;
+          }
+          else
+          {
+            this.a = (n + m);
+            return 65533;
+          }
+        }
+        this.a += j;
+        if (i > 1114111) {
+          return 65533;
+        }
+        if ((i >= 55296) && (i <= 57343)) {
+          return 65533;
+        }
+        if (i < k) {
+          return 65533;
+        }
+        return i;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("size < ");
+      localStringBuilder.append(j);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramArrayOfByte.length - this.a);
+      localStringBuilder.append(" (to read code point prefixed 0x");
+      localStringBuilder.append(Integer.toHexString(n));
+      localStringBuilder.append(")");
+      throw new EOFException(localStringBuilder.toString());
+      label331:
+      this.a = (i + 1);
+      return 65533;
     }
-    m = 1;
-    while (m < k)
+    paramArrayOfByte = new EOFException();
+    for (;;)
     {
-      int n = paramArrayOfByte[(this.a + m)];
-      if ((n & 0xC0) == 128)
-      {
-        m += 1;
-        i = n & 0x3F | i << 6;
-      }
-      else
-      {
-        this.a += m;
-        return 65533;
-      }
+      throw paramArrayOfByte;
     }
-    this.a += k;
-    if (i > 1114111) {
-      return 65533;
-    }
-    if ((i >= 55296) && (i <= 57343)) {
-      return 65533;
-    }
-    if (i < j) {
-      return 65533;
-    }
-    return i;
   }
   
   public boolean a(byte[] paramArrayOfByte)
   {
-    int i = 64;
-    boolean bool2 = false;
-    boolean bool1;
     try
     {
-      if (paramArrayOfByte.length < 64) {
+      int j = paramArrayOfByte.length;
+      int i = 64;
+      if (j < 64) {
         i = paramArrayOfByte.length;
       }
       byte[] arrayOfByte = new byte[i];
@@ -91,30 +105,25 @@ public class c
       i = 0;
       while ((i < 16) && (arrayOfByte.length - this.a != 0))
       {
-        int j = b(arrayOfByte);
+        j = b(arrayOfByte);
         if (Character.isISOControl(j))
         {
-          boolean bool3 = Character.isWhitespace(j);
-          bool1 = bool2;
-          if (!bool3) {
-            break label94;
+          boolean bool = Character.isWhitespace(j);
+          if (!bool) {
+            return false;
           }
         }
         i += 1;
       }
-      bool1 = true;
+      return true;
     }
-    catch (EOFException paramArrayOfByte)
-    {
-      return false;
-    }
-    label94:
-    return bool1;
+    catch (EOFException paramArrayOfByte) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.c.c
  * JD-Core Version:    0.7.0.1
  */

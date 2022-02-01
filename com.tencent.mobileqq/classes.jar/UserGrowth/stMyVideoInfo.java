@@ -26,15 +26,16 @@ public final class stMyVideoInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.jumpurl != null) {
-      paramJceOutputStream.write(this.jumpurl, 0);
+    String str = this.jumpurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.flag, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stMyVideoInfo
  * JD-Core Version:    0.7.0.1
  */

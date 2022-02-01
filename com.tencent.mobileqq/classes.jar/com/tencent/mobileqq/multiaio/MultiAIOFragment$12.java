@@ -15,27 +15,26 @@ class MultiAIOFragment$12
   {
     float f1 = paramValueAnimator.getAnimatedFraction();
     paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((this.b - this.jdField_a_of_type_Int) * f1));
-    paramValueAnimator.topMargin = (this.c + Math.round((this.d - this.c) * f1));
-    paramValueAnimator.width = (this.e + Math.round((this.f - this.e) * f1));
-    int i = this.g;
+    int i = this.jdField_a_of_type_Int;
+    paramValueAnimator.leftMargin = (i + Math.round((this.b - i) * f1));
+    i = this.c;
+    paramValueAnimator.topMargin = (i + Math.round((this.d - i) * f1));
+    i = this.e;
+    paramValueAnimator.width = (i + Math.round((this.f - i) * f1));
+    i = this.g;
     int j = MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getHeight() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingTop() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingBottom();
     if (j > 0) {
       i = j;
     }
-    for (;;)
-    {
-      j = this.h;
-      paramValueAnimator.height = (Math.round((i - this.h) * f1) + j);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
-      this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
-      return;
-    }
+    j = this.h;
+    paramValueAnimator.height = (j + Math.round((i - j) * f1));
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOFragment.12
  * JD-Core Version:    0.7.0.1
  */

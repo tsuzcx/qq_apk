@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.tkd.weibo.R.id;
+import com.tencent.tkd.weibo.component.R.id;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -21,13 +21,13 @@ public class AtPersonListAdapter$ViewHolder
   
   public AtPersonListAdapter$ViewHolder(@NotNull ViewGroup paramViewGroup)
   {
-    View localView = paramViewGroup.findViewById(R.id.d);
+    View localView = paramViewGroup.findViewById(R.id.e);
     Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.img_avatar)");
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView);
-    localView = paramViewGroup.findViewById(R.id.m);
+    localView = paramViewGroup.findViewById(R.id.o);
     Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.tv_name)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
-    paramViewGroup = paramViewGroup.findViewById(R.id.p);
+    paramViewGroup = paramViewGroup.findViewById(R.id.r);
     Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "layout.findViewById(R.id.view_divider)");
     this.jdField_a_of_type_AndroidViewView = paramViewGroup;
   }
@@ -52,7 +52,7 @@ public class AtPersonListAdapter$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.atContact.AtPersonListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

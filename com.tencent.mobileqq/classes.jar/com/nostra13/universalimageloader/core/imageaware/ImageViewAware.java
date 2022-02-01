@@ -43,12 +43,14 @@ public class ImageViewAware
   
   public int getHeight()
   {
-    int i = super.getHeight();
-    if (i <= 0)
+    int j = super.getHeight();
+    int i = j;
+    if (j <= 0)
     {
       ImageView localImageView = (ImageView)this.viewRef.get();
+      i = j;
       if (localImageView != null) {
-        return getImageViewFieldValue(localImageView, "mMaxHeight");
+        i = getImageViewFieldValue(localImageView, "mMaxHeight");
       }
     }
     return i;
@@ -65,12 +67,14 @@ public class ImageViewAware
   
   public int getWidth()
   {
-    int i = super.getWidth();
-    if (i <= 0)
+    int j = super.getWidth();
+    int i = j;
+    if (j <= 0)
     {
       ImageView localImageView = (ImageView)this.viewRef.get();
+      i = j;
       if (localImageView != null) {
-        return getImageViewFieldValue(localImageView, "mMaxWidth");
+        i = getImageViewFieldValue(localImageView, "mMaxWidth");
       }
     }
     return i;
@@ -96,7 +100,7 @@ public class ImageViewAware
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.imageaware.ImageViewAware
  * JD-Core Version:    0.7.0.1
  */

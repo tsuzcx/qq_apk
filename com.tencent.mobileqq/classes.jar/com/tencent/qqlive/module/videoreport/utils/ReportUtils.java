@@ -12,6 +12,7 @@ import android.view.View;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.data.DataRWProxy;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
+import java.lang.reflect.Method;
 import java.util.Random;
 
 public class ReportUtils
@@ -26,36 +27,40 @@ public class ReportUtils
   
   public static long calcElementUniqueId(View paramView)
   {
-    if (paramView == null) {}
-    Object localObject2;
-    do
-    {
+    if (paramView == null) {
       return 0L;
-      localObject2 = DataRWProxy.getElementId(paramView);
-    } while (TextUtils.isEmpty((CharSequence)localObject2));
-    Object localObject1 = DataRWProxy.getInnerParam(paramView, "element_identifier");
-    String str;
-    if ((localObject1 instanceof String))
-    {
-      str = (String)localObject1;
-      localObject2 = new StringBuilder().append((String)localObject2).append("_");
-      if (TextUtils.isEmpty(str)) {
-        break label84;
-      }
     }
-    label84:
-    for (paramView = localObject1;; paramView = Integer.valueOf(paramView.hashCode()))
-    {
-      return paramView.toString().hashCode();
-      str = null;
-      break;
+    String str2 = DataRWProxy.getElementId(paramView);
+    if (TextUtils.isEmpty(str2)) {
+      return 0L;
     }
+    Object localObject = DataRWProxy.getInnerParam(paramView, "element_identifier");
+    String str1;
+    if ((localObject instanceof String)) {
+      str1 = (String)localObject;
+    } else {
+      str1 = null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str2);
+    localStringBuilder.append("_");
+    if (!TextUtils.isEmpty(str1)) {
+      paramView = localObject;
+    } else {
+      paramView = Integer.valueOf(paramView.hashCode());
+    }
+    localStringBuilder.append(paramView.toString());
+    return localStringBuilder.toString().hashCode();
   }
   
   public static String generateSessionId()
   {
     int i = new Random().nextInt(900);
-    return System.currentTimeMillis() + "" + (i + 100);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("");
+    localStringBuilder.append(i + 100);
+    return localStringBuilder.toString();
   }
   
   @Nullable
@@ -67,62 +72,30 @@ public class ReportUtils
     return sContext;
   }
   
-  /* Error */
   private static Application getCurrentApplication()
   {
-    // Byte code:
-    //   0: getstatic 111	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
-    //   3: ifne +55 -> 58
-    //   6: ldc 2
-    //   8: monitorenter
-    //   9: getstatic 111	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
-    //   12: istore_0
-    //   13: iload_0
-    //   14: ifne +41 -> 55
-    //   17: ldc 113
-    //   19: invokestatic 119	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   22: ldc 121
-    //   24: iconst_0
-    //   25: anewarray 115	java/lang/Class
-    //   28: invokevirtual 125	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   31: aconst_null
-    //   32: iconst_0
-    //   33: anewarray 4	java/lang/Object
-    //   36: invokevirtual 131	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   39: checkcast 133	android/app/Application
-    //   42: putstatic 135	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sCurrentApplication	Landroid/app/Application;
-    //   45: getstatic 135	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sCurrentApplication	Landroid/app/Application;
-    //   48: ifnull +7 -> 55
-    //   51: iconst_1
-    //   52: putstatic 111	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
-    //   55: ldc 2
-    //   57: monitorexit
-    //   58: getstatic 135	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sCurrentApplication	Landroid/app/Application;
-    //   61: areturn
-    //   62: astore_1
-    //   63: iconst_1
-    //   64: putstatic 111	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
-    //   67: aload_1
-    //   68: invokevirtual 138	java/lang/Throwable:printStackTrace	()V
-    //   71: goto -16 -> 55
-    //   74: astore_1
-    //   75: ldc 2
-    //   77: monitorexit
-    //   78: aload_1
-    //   79: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   12	2	0	bool	boolean
-    //   62	6	1	localThrowable	java.lang.Throwable
-    //   74	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   17	55	62	java/lang/Throwable
-    //   9	13	74	finally
-    //   17	55	74	finally
-    //   55	58	74	finally
-    //   63	71	74	finally
-    //   75	78	74	finally
+    if (!sGetCurrentApplicationChecked) {
+      try
+      {
+        boolean bool = sGetCurrentApplicationChecked;
+        if (!bool) {
+          try
+          {
+            sCurrentApplication = (Application)Class.forName("android.app.ActivityThread").getMethod("currentApplication", new Class[0]).invoke(null, new Object[0]);
+            if (sCurrentApplication != null) {
+              sGetCurrentApplicationChecked = true;
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            sGetCurrentApplicationChecked = true;
+            localThrowable.printStackTrace();
+          }
+        }
+      }
+      finally {}
+    }
+    return sCurrentApplication;
   }
   
   public static int getPackageCode()
@@ -199,7 +172,7 @@ public class ReportUtils
   {
     paramContext = paramContext.getSharedPreferences("BuglySdkInfos", 0);
     String str1 = paramContext.getString("c7924ada07", "");
-    String str2 = String.valueOf(1808);
+    String str2 = String.valueOf(2200);
     if (TextUtils.equals(str1, str2)) {
       return;
     }
@@ -208,7 +181,7 @@ public class ReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.ReportUtils
  * JD-Core Version:    0.7.0.1
  */

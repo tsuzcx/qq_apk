@@ -24,22 +24,27 @@ public class MSFCodec
   
   public Object encode(Object paramObject)
   {
-    if ((paramObject == null) || (TextUtils.isEmpty(this.mCmd))) {
-      return null;
+    if (paramObject != null)
+    {
+      if (TextUtils.isEmpty(this.mCmd)) {
+        return null;
+      }
+      Object localObject = MobileQQ.getMobileQQ().waitAppRuntime(null);
+      if (localObject != null) {
+        localObject = ((AppRuntime)localObject).getAccount();
+      } else {
+        localObject = "";
+      }
+      localObject = new ToServiceMsg("mobileqq.service", (String)localObject, this.mCmd);
+      ((ToServiceMsg)localObject).putWupBuffer((byte[])paramObject);
+      return localObject;
     }
-    Object localObject = "";
-    AppRuntime localAppRuntime = MobileQQ.getMobileQQ().waitAppRuntime(null);
-    if (localAppRuntime != null) {
-      localObject = localAppRuntime.getAccount();
-    }
-    localObject = new ToServiceMsg("mobileqq.service", (String)localObject, this.mCmd);
-    ((ToServiceMsg)localObject).putWupBuffer((byte[])paramObject);
-    return localObject;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msfmqpsdkbridge.MSFCodec
  * JD-Core Version:    0.7.0.1
  */

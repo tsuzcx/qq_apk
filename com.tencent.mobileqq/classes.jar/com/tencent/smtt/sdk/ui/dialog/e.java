@@ -17,64 +17,70 @@ public class e
   
   static
   {
-    String[] arrayOfString1 = { ".3gp", "video/3gpp" };
-    String[] arrayOfString2 = { ".apk", "application/vnd.Android.package-archive" };
-    String[] arrayOfString3 = { ".asf", "video/x-ms-asf" };
-    String[] arrayOfString4 = { ".avi", "video/x-msvideo" };
-    String[] arrayOfString5 = { ".bin", "application/octet-stream" };
-    String[] arrayOfString6 = { ".bmp", "image/bmp" };
-    String[] arrayOfString7 = { ".c", "text/plain" };
-    String[] arrayOfString8 = { ".class", "application/octet-stream" };
-    String[] arrayOfString9 = { ".conf", "text/plain" };
-    String[] arrayOfString10 = { ".cpp", "text/plain" };
-    String[] arrayOfString11 = { ".doc", "application/msword" };
-    String[] arrayOfString12 = { ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" };
-    String[] arrayOfString13 = { ".xls", "application/vnd.ms-excel" };
-    String[] arrayOfString14 = { ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" };
-    String[] arrayOfString15 = { ".exe", "application/octet-stream" };
+    String[] arrayOfString1 = { ".apk", "application/vnd.Android.package-archive" };
+    String[] arrayOfString2 = { ".asf", "video/x-ms-asf" };
+    String[] arrayOfString3 = { ".avi", "video/x-msvideo" };
+    String[] arrayOfString4 = { ".bin", "application/octet-stream" };
+    String[] arrayOfString5 = { ".bmp", "image/bmp" };
+    String[] arrayOfString6 = { ".c", "text/plain" };
+    String[] arrayOfString7 = { ".class", "application/octet-stream" };
+    String[] arrayOfString8 = { ".conf", "text/plain" };
+    String[] arrayOfString9 = { ".cpp", "text/plain" };
+    String[] arrayOfString10 = { ".doc", "application/msword" };
+    String[] arrayOfString11 = { ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" };
+    String[] arrayOfString12 = { ".xls", "application/vnd.ms-excel" };
+    String[] arrayOfString13 = { ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" };
+    String[] arrayOfString14 = { ".exe", "application/octet-stream" };
+    String[] arrayOfString15 = { ".gif", "image/gif" };
     String[] arrayOfString16 = { ".gtar", "application/x-gtar" };
     String[] arrayOfString17 = { ".gz", "application/x-gzip" };
     String[] arrayOfString18 = { ".h", "text/plain" };
-    String[] arrayOfString19 = { ".html", "text/html" };
-    String[] arrayOfString20 = { ".jar", "application/java-archive" };
-    String[] arrayOfString21 = { ".java", "text/plain" };
-    String[] arrayOfString22 = { ".jpg", "image/jpeg" };
-    String[] arrayOfString23 = { ".js", "application/x-javascript" };
-    String[] arrayOfString24 = { ".m3u", "audio/x-mpegurl" };
-    String[] arrayOfString25 = { ".m4a", "audio/mp4a-latm" };
-    String[] arrayOfString26 = { ".m4b", "audio/mp4a-latm" };
-    String[] arrayOfString27 = { ".m4p", "audio/mp4a-latm" };
-    String[] arrayOfString28 = { ".m4u", "video/vnd.mpegurl" };
-    String[] arrayOfString29 = { ".mov", "video/quicktime" };
-    String[] arrayOfString30 = { ".mp2", "audio/x-mpeg" };
-    String[] arrayOfString31 = { ".mp3", "audio/x-mpeg" };
-    String[] arrayOfString32 = { ".mp4", "video/mp4" };
-    String[] arrayOfString33 = { ".mpe", "video/mpeg" };
-    String[] arrayOfString34 = { ".mpeg", "video/mpeg" };
-    String[] arrayOfString35 = { ".mpg", "video/mpeg" };
-    String[] arrayOfString36 = { ".mpg4", "video/mp4" };
-    String[] arrayOfString37 = { ".mpga", "audio/mpeg" };
-    String[] arrayOfString38 = { ".ogg", "audio/ogg" };
-    String[] arrayOfString39 = { ".pdf", "application/pdf" };
-    String[] arrayOfString40 = { ".png", "image/png" };
-    String[] arrayOfString41 = { ".ppt", "application/vnd.ms-powerpoint" };
-    String[] arrayOfString42 = { ".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation" };
-    String[] arrayOfString43 = { ".rc", "text/plain" };
-    String[] arrayOfString44 = { ".rmvb", "audio/x-pn-realaudio" };
-    String[] arrayOfString45 = { ".rtf", "application/rtf" };
-    String[] arrayOfString46 = { ".sh", "text/plain" };
-    String[] arrayOfString47 = { ".tar", "application/x-tar" };
-    String[] arrayOfString48 = { ".tgz", "application/x-compressed" };
-    String[] arrayOfString49 = { ".txt", "text/plain" };
-    String[] arrayOfString50 = { ".wav", "audio/x-wav" };
-    String[] arrayOfString51 = { ".wma", "audio/x-ms-wma" };
-    String[] arrayOfString52 = { ".wmv", "audio/x-ms-wmv" };
-    String[] arrayOfString53 = { ".xml", "text/plain" };
-    String[] arrayOfString54 = { ".z", "application/x-compress" };
-    String[] arrayOfString55 = { ".zip", "application/zip" };
-    String[] arrayOfString56 = { ".7z", "application/7z" };
-    String[] arrayOfString57 = { "", "*/*" };
-    a = new String[][] { arrayOfString1, arrayOfString2, arrayOfString3, arrayOfString4, arrayOfString5, arrayOfString6, arrayOfString7, arrayOfString8, arrayOfString9, arrayOfString10, arrayOfString11, arrayOfString12, arrayOfString13, arrayOfString14, arrayOfString15, { ".gif", "image/gif" }, arrayOfString16, arrayOfString17, arrayOfString18, { ".htm", "text/html" }, arrayOfString19, arrayOfString20, arrayOfString21, { ".jpeg", "image/jpeg" }, arrayOfString22, arrayOfString23, { ".log", "text/plain" }, arrayOfString24, arrayOfString25, arrayOfString26, arrayOfString27, arrayOfString28, { ".m4v", "video/x-m4v" }, arrayOfString29, arrayOfString30, arrayOfString31, arrayOfString32, { ".mpc", "application/vnd.mpohun.certificate" }, arrayOfString33, arrayOfString34, arrayOfString35, arrayOfString36, arrayOfString37, { ".msg", "application/vnd.ms-outlook" }, arrayOfString38, arrayOfString39, arrayOfString40, { ".pps", "application/vnd.ms-powerpoint" }, arrayOfString41, arrayOfString42, { ".prop", "text/plain" }, arrayOfString43, arrayOfString44, arrayOfString45, arrayOfString46, arrayOfString47, arrayOfString48, arrayOfString49, arrayOfString50, arrayOfString51, arrayOfString52, { ".wps", "application/vnd.ms-works" }, arrayOfString53, arrayOfString54, arrayOfString55, arrayOfString56, arrayOfString57 };
+    String[] arrayOfString19 = { ".htm", "text/html" };
+    String[] arrayOfString20 = { ".html", "text/html" };
+    String[] arrayOfString21 = { ".jar", "application/java-archive" };
+    String[] arrayOfString22 = { ".java", "text/plain" };
+    String[] arrayOfString23 = { ".jpeg", "image/jpeg" };
+    String[] arrayOfString24 = { ".jpg", "image/jpeg" };
+    String[] arrayOfString25 = { ".js", "application/x-javascript" };
+    String[] arrayOfString26 = { ".log", "text/plain" };
+    String[] arrayOfString27 = { ".m3u", "audio/x-mpegurl" };
+    String[] arrayOfString28 = { ".m4a", "audio/mp4a-latm" };
+    String[] arrayOfString29 = { ".m4b", "audio/mp4a-latm" };
+    String[] arrayOfString30 = { ".m4v", "video/x-m4v" };
+    String[] arrayOfString31 = { ".mov", "video/quicktime" };
+    String[] arrayOfString32 = { ".mp2", "audio/x-mpeg" };
+    String[] arrayOfString33 = { ".mp3", "audio/x-mpeg" };
+    String[] arrayOfString34 = { ".mp4", "video/mp4" };
+    String[] arrayOfString35 = { ".mpc", "application/vnd.mpohun.certificate" };
+    String[] arrayOfString36 = { ".mpe", "video/mpeg" };
+    String[] arrayOfString37 = { ".mpeg", "video/mpeg" };
+    String[] arrayOfString38 = { ".mpg", "video/mpeg" };
+    String[] arrayOfString39 = { ".mpg4", "video/mp4" };
+    String[] arrayOfString40 = { ".mpga", "audio/mpeg" };
+    String[] arrayOfString41 = { ".msg", "application/vnd.ms-outlook" };
+    String[] arrayOfString42 = { ".ogg", "audio/ogg" };
+    String[] arrayOfString43 = { ".pdf", "application/pdf" };
+    String[] arrayOfString44 = { ".png", "image/png" };
+    String[] arrayOfString45 = { ".pps", "application/vnd.ms-powerpoint" };
+    String[] arrayOfString46 = { ".ppt", "application/vnd.ms-powerpoint" };
+    String[] arrayOfString47 = { ".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation" };
+    String[] arrayOfString48 = { ".prop", "text/plain" };
+    String[] arrayOfString49 = { ".rc", "text/plain" };
+    String[] arrayOfString50 = { ".rmvb", "audio/x-pn-realaudio" };
+    String[] arrayOfString51 = { ".rtf", "application/rtf" };
+    String[] arrayOfString52 = { ".sh", "text/plain" };
+    String[] arrayOfString53 = { ".tar", "application/x-tar" };
+    String[] arrayOfString54 = { ".txt", "text/plain" };
+    String[] arrayOfString55 = { ".wav", "audio/x-wav" };
+    String[] arrayOfString56 = { ".wma", "audio/x-ms-wma" };
+    String[] arrayOfString57 = { ".wmv", "audio/x-ms-wmv" };
+    String[] arrayOfString58 = { ".wps", "application/vnd.ms-works" };
+    String[] arrayOfString59 = { ".xml", "text/plain" };
+    String[] arrayOfString60 = { ".z", "application/x-compress" };
+    String[] arrayOfString61 = { ".zip", "application/zip" };
+    String[] arrayOfString62 = { ".7z", "application/7z" };
+    String[] arrayOfString63 = { "", "*/*" };
+    a = new String[][] { { ".3gp", "video/3gpp" }, arrayOfString1, arrayOfString2, arrayOfString3, arrayOfString4, arrayOfString5, arrayOfString6, arrayOfString7, arrayOfString8, arrayOfString9, arrayOfString10, arrayOfString11, arrayOfString12, arrayOfString13, arrayOfString14, arrayOfString15, arrayOfString16, arrayOfString17, arrayOfString18, arrayOfString19, arrayOfString20, arrayOfString21, arrayOfString22, arrayOfString23, arrayOfString24, arrayOfString25, arrayOfString26, arrayOfString27, arrayOfString28, arrayOfString29, { ".m4p", "audio/mp4a-latm" }, { ".m4u", "video/vnd.mpegurl" }, arrayOfString30, arrayOfString31, arrayOfString32, arrayOfString33, arrayOfString34, arrayOfString35, arrayOfString36, arrayOfString37, arrayOfString38, arrayOfString39, arrayOfString40, arrayOfString41, arrayOfString42, arrayOfString43, arrayOfString44, arrayOfString45, arrayOfString46, arrayOfString47, arrayOfString48, arrayOfString49, arrayOfString50, arrayOfString51, arrayOfString52, arrayOfString53, { ".tgz", "application/x-compressed" }, arrayOfString54, arrayOfString55, arrayOfString56, arrayOfString57, arrayOfString58, arrayOfString59, arrayOfString60, arrayOfString61, arrayOfString62, arrayOfString63 };
   }
   
   public static Drawable a(String paramString)
@@ -128,39 +134,49 @@ public class e
   
   public static String d(String paramString)
   {
-    String str2 = paramString.substring(paramString.lastIndexOf(".") + 1, paramString.length());
-    if (TextUtils.isEmpty(str2)) {
+    String str = paramString.substring(paramString.lastIndexOf(".") + 1, paramString.length());
+    if (TextUtils.isEmpty(str)) {
       return "*/*";
     }
-    paramString = "." + str2;
+    paramString = new StringBuilder();
+    paramString.append(".");
+    paramString.append(str);
+    paramString = paramString.toString();
     int i = 0;
-    if (i < a.length) {
-      if (!paramString.equalsIgnoreCase(a[i][0])) {}
-    }
-    for (String str1 = a[i][1];; str1 = "*/*")
+    for (;;)
     {
-      paramString = str1;
-      if ("*/*".equalsIgnoreCase(str1)) {
-        paramString = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str2.toLowerCase());
+      localObject = a;
+      if (i >= localObject.length) {
+        break;
       }
-      str1 = paramString;
-      if (paramString == null)
+      if (paramString.equalsIgnoreCase(localObject[i][0]))
       {
-        paramString = new HashMap();
-        paramString.put("3gp", "video/3gpp");
-        paramString.put("chm", "text/plain");
-        paramString.put("ape", "audio/x-ape");
-        str1 = (String)paramString.get(str2.toLowerCase());
+        localObject = a[i][1];
+        break label100;
       }
-      return str1;
       i += 1;
-      break;
     }
+    Object localObject = "*/*";
+    label100:
+    paramString = (String)localObject;
+    if ("*/*".equalsIgnoreCase((String)localObject)) {
+      paramString = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str.toLowerCase());
+    }
+    localObject = paramString;
+    if (paramString == null)
+    {
+      paramString = new HashMap();
+      paramString.put("3gp", "video/3gpp");
+      paramString.put("chm", "text/plain");
+      paramString.put("ape", "audio/x-ape");
+      localObject = (String)paramString.get(str.toLowerCase());
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.e
  * JD-Core Version:    0.7.0.1
  */

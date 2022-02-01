@@ -13,21 +13,21 @@ class UDPJsPlugin$1
     try
     {
       UDPJsPlugin.access$000(this.this$0, this.val$req.jsService, this.val$json, this.val$task);
-      this.val$req.ok();
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        this.val$req.fail("performSend exception," + localException.getMessage());
-      }
+      RequestEvent localRequestEvent = this.val$req;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("performSend exception,");
+      localStringBuilder.append(localException.getMessage());
+      localRequestEvent.fail(localStringBuilder.toString());
     }
+    this.val$req.ok();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.UDPJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,8 @@ public class StoryPlayerObjectRecycler
   public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
   {
     paramClass = (LinkedList)this.a.get(paramClass.hashCode());
-    if (paramClass != null)
-    {
-      paramClass = paramClass.poll();
-      if (paramClass != null) {}
-      return paramClass;
+    if (paramClass != null) {
+      return paramClass.poll();
     }
     return null;
   }
@@ -35,7 +32,7 @@ public class StoryPlayerObjectRecycler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerObjectRecycler
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,16 @@ final class ApkgMainProcessManager$4
   
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
-    QMLog.d("ApkgMainProcessManager", "removeSubProcessLoadTask() called with: miniAppConfig = [" + this.val$miniAppConfig + "]");
+    paramBundle = new StringBuilder();
+    paramBundle.append("removeSubProcessLoadTask() called with: miniAppConfig = [");
+    paramBundle.append(this.val$miniAppConfig);
+    paramBundle.append("]");
+    QMLog.d("ApkgMainProcessManager", paramBundle.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.ApkgMainProcessManager.4
  * JD-Core Version:    0.7.0.1
  */

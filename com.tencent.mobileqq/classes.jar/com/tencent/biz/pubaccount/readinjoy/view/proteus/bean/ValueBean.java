@@ -160,12 +160,19 @@ public class ValueBean
   
   public String toString()
   {
-    return "normalValueMap : " + this.normalValue.toString() + "\ndynamicValueMap : " + this.dynamicValue.toString() + "\ndynamicValueBinder : " + this.dynamicValueBinder.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("normalValueMap : ");
+    localStringBuilder.append(this.normalValue.toString());
+    localStringBuilder.append("\ndynamicValueMap : ");
+    localStringBuilder.append(this.dynamicValue.toString());
+    localStringBuilder.append("\ndynamicValueBinder : ");
+    localStringBuilder.append(this.dynamicValueBinder.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean
  * JD-Core Version:    0.7.0.1
  */

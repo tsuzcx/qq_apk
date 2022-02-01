@@ -22,13 +22,21 @@ public class NativeLinearLayout
   
   public void addView(ViewBase paramViewBase)
   {
-    if (LogUtils.shouldLog()) {
-      LogUtils.d("NativeLinearLayout", "[addView] for " + this.mName);
+    if (LogUtils.shouldLog())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[addView] for ");
+      localStringBuilder.append(this.mName);
+      LogUtils.d("NativeLinearLayout", localStringBuilder.toString());
     }
     super.addView(paramViewBase);
     this.mNative.attachViews(paramViewBase);
-    if (LogUtils.shouldLog()) {
-      LogUtils.d("NativeLinearLayout", "[addView] native child count: " + this.mNative.getChildCount());
+    if (LogUtils.shouldLog())
+    {
+      paramViewBase = new StringBuilder();
+      paramViewBase.append("[addView] native child count: ");
+      paramViewBase.append(this.mNative.getChildCount());
+      LogUtils.d("NativeLinearLayout", paramViewBase.toString());
     }
   }
   
@@ -67,7 +75,7 @@ public class NativeLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.helper.nativelayout.NativeLinearLayout
  * JD-Core Version:    0.7.0.1
  */

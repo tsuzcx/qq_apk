@@ -32,36 +32,35 @@ public class BackgroundSelectorAdapter
   
   public BackgroundSelectorAdapter.BackgroundSelectorViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new BackgroundSelectorAdapter.BackgroundSelectorViewHolder(this, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561539, paramViewGroup, false));
+    return new BackgroundSelectorAdapter.BackgroundSelectorViewHolder(this, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561380, paramViewGroup, false));
   }
   
   public void a(BackgroundSelectorAdapter.BackgroundSelectorViewHolder paramBackgroundSelectorViewHolder, int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt) || (((BackgroundSelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {}
-    while ((paramBackgroundSelectorViewHolder == null) || (paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView == null))
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > paramInt) && (((BackgroundSelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (paramBackgroundSelectorViewHolder != null) && (paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView != null))
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramBackgroundSelectorViewHolder, paramInt, getItemId(paramInt));
-      return;
-    }
-    paramBackgroundSelectorViewHolder.jdField_a_of_type_Boolean = ((BackgroundSelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Boolean;
-    paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setBackground(((BackgroundSelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable());
-    if (paramBackgroundSelectorViewHolder.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setBorderWidth(AIOUtils.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setCornerRadius(AIOUtils.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishAdapterBackgroundSelectorAdapter$OnSelectListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishAdapterBackgroundSelectorAdapter$OnSelectListener.a((BackgroundSelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      paramBackgroundSelectorViewHolder.jdField_a_of_type_Boolean = ((BackgroundSelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Boolean;
+      paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setBackground(((BackgroundSelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable());
+      if (paramBackgroundSelectorViewHolder.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Int = paramInt;
+        paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setBorderWidth(AIOUtils.b(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setCornerRadius(AIOUtils.b(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        localObject = this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishAdapterBackgroundSelectorAdapter$OnSelectListener;
+        if (localObject != null) {
+          ((BackgroundSelectorAdapter.OnSelectListener)localObject).a((BackgroundSelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setBorderWidth(AIOUtils.b(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setCornerRadius(AIOUtils.b(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      }
       a(paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView, paramBackgroundSelectorViewHolder.jdField_a_of_type_Boolean);
       paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setOnClickListener(new BackgroundSelectorAdapter.1(this, paramInt));
-      break;
-      paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setBorderWidth(AIOUtils.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramBackgroundSelectorViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setCornerRadius(AIOUtils.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramBackgroundSelectorViewHolder, paramInt, getItemId(paramInt));
   }
   
   public void a(RoundedImageView paramRoundedImageView, boolean paramBoolean)
@@ -71,31 +70,29 @@ public class BackgroundSelectorAdapter
       paramRoundedImageView = (ViewGroup.MarginLayoutParams)paramRoundedImageView.getLayoutParams();
       if (paramBoolean)
       {
-        paramRoundedImageView.height = AIOUtils.a(28.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        paramRoundedImageView.width = AIOUtils.a(28.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        paramRoundedImageView.setMargins(AIOUtils.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        paramRoundedImageView.height = AIOUtils.b(28.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        paramRoundedImageView.width = AIOUtils.b(28.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        paramRoundedImageView.setMargins(AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        return;
       }
+      paramRoundedImageView.height = AIOUtils.b(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramRoundedImageView.width = AIOUtils.b(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramRoundedImageView.setMargins(AIOUtils.b(22.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     }
-    else
-    {
-      return;
-    }
-    paramRoundedImageView.height = AIOUtils.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    paramRoundedImageView.width = AIOUtils.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    paramRoundedImageView.setMargins(AIOUtils.a(22.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
   }
   
   public int getItemCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.adapter.BackgroundSelectorAdapter
  * JD-Core Version:    0.7.0.1
  */

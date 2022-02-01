@@ -19,14 +19,14 @@ public class MatchChatBarLoader
     super(paramChatPanelBarContext);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie) {}
+  protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie) {}
   
   public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
     return (paramSessionInfo.a == 1044) || (paramSessionInfo.a == 1045);
   }
   
-  public void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
     if (QLog.isColorLevel()) {
       QLog.d("MatchChatBarLoader", 2, "[loadDefaultAioIcons]");
@@ -35,32 +35,28 @@ public class MatchChatBarLoader
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.c);
     paramBaseChatPie = this.jdField_a_of_type_JavaUtilList;
-    if (bool)
-    {
+    if (bool) {
       paramSessionInfo = AIOPanelUtiles.r;
-      paramBaseChatPie.add(paramSessionInfo);
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.u);
-      if (HotPicManager.a(paramQQAppInterface).b()) {
-        this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.N);
-      }
-      paramSessionInfo = this.jdField_a_of_type_JavaUtilList;
-      if (!bool) {
-        break label138;
-      }
-    }
-    label138:
-    for (paramQQAppInterface = AIOPanelUtiles.k;; paramQQAppInterface = AIOPanelUtiles.g)
-    {
-      paramSessionInfo.add(paramQQAppInterface);
-      return;
+    } else {
       paramSessionInfo = AIOPanelUtiles.n;
-      break;
     }
+    paramBaseChatPie.add(paramSessionInfo);
+    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.u);
+    if (HotPicManager.a(paramQQAppInterface).b()) {
+      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.N);
+    }
+    paramSessionInfo = this.jdField_a_of_type_JavaUtilList;
+    if (bool) {
+      paramQQAppInterface = AIOPanelUtiles.k;
+    } else {
+      paramQQAppInterface = AIOPanelUtiles.g;
+    }
+    paramSessionInfo.add(paramQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.MatchChatBarLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -45,20 +45,22 @@ public final class CGetChiefReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stLogin != null) {
-      paramJceOutputStream.write(this.stLogin, 0);
+    Object localObject = this.stLogin;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.appid, 1);
     paramJceOutputStream.write(this.locationtype, 2);
     paramJceOutputStream.write(this.lUid, 3);
-    if (this.mParams != null) {
-      paramJceOutputStream.write(this.mParams, 4);
+    localObject = this.mParams;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.CGetChiefReq
  * JD-Core Version:    0.7.0.1
  */

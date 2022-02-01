@@ -13,18 +13,18 @@ class MineWSAdapter$1
   
   public void onClick(View paramView)
   {
-    if (FastClickUtils.a(MineWSAdapter.class.getName() + "clickFeed")) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MineWSAdapter.class.getName());
+    localStringBuilder.append("clickFeed");
+    if (!FastClickUtils.a(localStringBuilder.toString())) {
       MineWSAdapter.a(this.jdField_a_of_type_ComTencentBizVideostoryAdapterMineWSAdapter).a(this.jdField_a_of_type_ComTencentBizVideostoryAdapterMineWSAdapter$NewFeedItemData);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.adapter.MineWSAdapter.1
  * JD-Core Version:    0.7.0.1
  */

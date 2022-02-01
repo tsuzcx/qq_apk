@@ -12,15 +12,26 @@ final class SDKMiniProgramLpReportDC04239$3
   
   public void run()
   {
-    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-      QMLog.d("MiniProgramLpReportDC04239", "reportMiniAppEvent() called with: actionType = [" + this.val$actionType + "],subActionType = [" + this.val$subActionType + "], reserves = [" + this.val$reserves + "], appType = [" + this.val$appType + "]");
+    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportMiniAppEvent() called with: actionType = [");
+      localStringBuilder.append(this.val$actionType);
+      localStringBuilder.append("],subActionType = [");
+      localStringBuilder.append(this.val$subActionType);
+      localStringBuilder.append("], reserves = [");
+      localStringBuilder.append(this.val$reserves);
+      localStringBuilder.append("], appType = [");
+      localStringBuilder.append(this.val$appType);
+      localStringBuilder.append("]");
+      QMLog.d("MiniProgramLpReportDC04239", localStringBuilder.toString());
     }
     SDKMiniProgramLpReportDC04239.report(this.val$miniAppConfig, this.val$appType, this.val$path, this.val$actionType, this.val$subActionType, this.val$reserves, this.val$reserves2, this.val$reserves3, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.3
  * JD-Core Version:    0.7.0.1
  */

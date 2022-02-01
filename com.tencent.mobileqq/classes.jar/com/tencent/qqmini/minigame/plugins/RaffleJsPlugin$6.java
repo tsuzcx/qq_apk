@@ -12,7 +12,8 @@ class RaffleJsPlugin$6
   
   public void run()
   {
-    RaffleJsPlugin.access$002(this.this$0, new RaffleFailDialog(this.val$context, RaffleJsPlugin.access$1000(this.this$0), RaffleJsPlugin.access$1500(this.this$0)));
+    RaffleJsPlugin localRaffleJsPlugin = this.this$0;
+    RaffleJsPlugin.access$002(localRaffleJsPlugin, new RaffleFailDialog(this.val$context, RaffleJsPlugin.access$1000(localRaffleJsPlugin), RaffleJsPlugin.access$1500(this.this$0)));
     if (!RaffleJsPlugin.access$000(this.this$0).setDrawable(this.val$failDrawable, this.val$shareButtonDrawable, this.val$watchAdButtonDrawable))
     {
       RaffleJsPlugin.access$1400(this.this$0, this.val$context);
@@ -28,7 +29,7 @@ class RaffleJsPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.RaffleJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

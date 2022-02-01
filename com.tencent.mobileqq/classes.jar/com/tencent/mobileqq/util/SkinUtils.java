@@ -20,36 +20,38 @@ public class SkinUtils
   
   public static int a(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {}
-    do
-    {
+    if (paramDrawable == null) {
       return -1;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return a(((BitmapDrawable)paramDrawable).getBitmap());
-      }
-      if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
-        return a(((SkinnableBitmapDrawable)paramDrawable).getBitmap());
-      }
-    } while (!(paramDrawable instanceof SkinnableNinePatchDrawable));
-    return a(((SkinnableNinePatchDrawable)paramDrawable).getBitmap());
+    }
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return a(((BitmapDrawable)paramDrawable).getBitmap());
+    }
+    if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
+      return a(((SkinnableBitmapDrawable)paramDrawable).getBitmap());
+    }
+    if ((paramDrawable instanceof SkinnableNinePatchDrawable)) {
+      return a(((SkinnableNinePatchDrawable)paramDrawable).getBitmap());
+    }
+    return -1;
   }
   
   public static final Bitmap a(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {}
-    do
-    {
+    if (paramDrawable == null) {
       return null;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return ((BitmapDrawable)paramDrawable).getBitmap();
-      }
-    } while (!(paramDrawable instanceof SkinnableBitmapDrawable));
-    return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+    }
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
+    }
+    if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
+      return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.SkinUtils
  * JD-Core Version:    0.7.0.1
  */

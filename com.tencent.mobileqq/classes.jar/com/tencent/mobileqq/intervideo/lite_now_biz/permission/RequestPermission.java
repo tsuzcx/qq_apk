@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.intervideo.lite_now_biz.permission;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Build.VERSION;
@@ -19,15 +20,17 @@ public class RequestPermission
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionPermissionCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionPermissionCallback.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Int);
+    PermissionCallback localPermissionCallback = this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionPermissionCallback;
+    if (localPermissionCallback != null) {
+      localPermissionCallback.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Int);
     }
   }
   
   private void a(List<String> paramList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionPermissionCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionPermissionCallback.a(paramList, this.jdField_a_of_type_Int);
+    PermissionCallback localPermissionCallback = this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionPermissionCallback;
+    if (localPermissionCallback != null) {
+      localPermissionCallback.a(paramList, this.jdField_a_of_type_Int);
     }
   }
   
@@ -73,11 +76,12 @@ public class RequestPermission
       return;
     }
     this.b = a(this.jdField_a_of_type_ArrayOfJavaLangString);
-    if (this.b.length > 0)
+    Object localObject = this.b;
+    if (localObject.length > 0)
     {
-      MainProcessPermissionFragment localMainProcessPermissionFragment = MainProcessPermissionFragment.a(this.b);
-      localMainProcessPermissionFragment.a(this);
-      paramActivity.getFragmentManager().beginTransaction().add(localMainProcessPermissionFragment, "MainProcessPermissionFragment").commit();
+      localObject = MainProcessPermissionFragment.a((String[])localObject);
+      ((MainProcessPermissionFragment)localObject).a(this);
+      paramActivity.getFragmentManager().beginTransaction().add((Fragment)localObject, "MainProcessPermissionFragment").commit();
       return;
     }
     a();
@@ -104,7 +108,7 @@ public class RequestPermission
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.permission.RequestPermission
  * JD-Core Version:    0.7.0.1
  */

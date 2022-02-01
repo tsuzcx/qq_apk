@@ -48,11 +48,20 @@ public class LocalDataJsPlugin
   {
     paramString = SignatureTemplateConfig.a(paramString, "dynamic_aio");
     File localFile = new File(paramString);
-    if ((!localFile.exists()) || (!localFile.isDirectory())) {}
-    while (FileUtils.a(paramString).size() <= 0) {
-      return false;
+    boolean bool3 = localFile.exists();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      if (!localFile.isDirectory()) {
+        return false;
+      }
+      bool1 = bool2;
+      if (FileUtils.getChildFiles(paramString).size() > 0) {
+        bool1 = true;
+      }
     }
-    return true;
+    return bool1;
   }
   
   private void handleSignatureRequest(String paramString1, int paramInt, String paramString2, JSONObject paramJSONObject)
@@ -74,26 +83,34 @@ public class LocalDataJsPlugin
         }
         paramInt += 1;
       }
-      try
-      {
-        ((JSONObject)localObject2).put("filePath", localObject3);
-        if (paramJSONObject != null) {
-          ((JSONObject)localObject2).put("localRules", paramJSONObject);
-        }
-        paramString2.put("data", localObject2);
-        paramString2.put("result", 0);
-        super.callJs(paramString1, new String[] { paramString2.toString() });
-        if (QLog.isColorLevel()) {
-          QLog.d("LocalDataJsPlugin", 2, "handleSignatureRequest callbackId = " + paramString1 + " result = " + paramString2.toString());
-        }
-        return;
-      }
-      catch (JSONException paramString2)
-      {
-        super.callJs(paramString1, new String[] { "{\"result\": -1}" });
-        return;
-      }
     }
+    try
+    {
+      ((JSONObject)localObject2).put("filePath", localObject3);
+      if (paramJSONObject != null) {
+        ((JSONObject)localObject2).put("localRules", paramJSONObject);
+      }
+      paramString2.put("data", localObject2);
+      paramString2.put("result", 0);
+      super.callJs(paramString1, new String[] { paramString2.toString() });
+      if (!QLog.isColorLevel()) {
+        break label356;
+      }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("handleSignatureRequest callbackId = ");
+      paramJSONObject.append(paramString1);
+      paramJSONObject.append(" result = ");
+      paramJSONObject.append(paramString2.toString());
+      QLog.d("LocalDataJsPlugin", 2, paramJSONObject.toString());
+      return;
+    }
+    catch (JSONException paramString2)
+    {
+      label228:
+      break label228;
+    }
+    super.callJs(paramString1, new String[] { "{\"result\": -1}" });
+    return;
     if (QLog.isColorLevel()) {
       QLog.d("LocalDataJsPlugin", 2, "handleSignatureRequest file not exist, start download");
     }
@@ -105,7 +122,8 @@ public class LocalDataJsPlugin
     if (paramJSONObject != null) {
       ((Bundle)localObject3).putString("localRules", paramJSONObject.toString());
     }
-    ((DownloaderInterface)localObject2).a(paramString2, this.sigTplResDownloadListener, (Bundle)localObject3);
+    ((DownloaderInterface)localObject2).startDownload(paramString2, this.sigTplResDownloadListener, (Bundle)localObject3);
+    label356:
   }
   
   private boolean hasInterceptRight(String paramString)
@@ -117,67 +135,69 @@ public class LocalDataJsPlugin
       QLog.e("LocalDataJsPlugin", 1, "hasInterceptRight SwiftBrowserStatistics = null");
       return false;
     }
-    int j;
-    int i;
-    if (((SwiftBrowserStatistics)localObject).a.size() > 0)
-    {
+    if (((SwiftBrowserStatistics)localObject).a.size() > 0) {
       localObject = (String)((SwiftBrowserStatistics)localObject).a.get(((SwiftBrowserStatistics)localObject).a.size() - 1);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label174;
-      }
+    } else {
+      localObject = ((SwiftBrowserStatistics)localObject).c;
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
       if (localAuthorizeConfig.a((String)localObject, "localData.getFileInfo"))
       {
         localObject = FILE_PATH_WHITE_LIST;
-        j = localObject.length;
-        i = 0;
-      }
-    }
-    else
-    {
-      for (;;)
-      {
-        if (i >= j) {
-          break label137;
-        }
-        if (paramString.startsWith(localObject[i]))
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
         {
-          return true;
-          localObject = ((SwiftBrowserStatistics)localObject).d;
-          break;
+          if (paramString.startsWith(localObject[i])) {
+            return true;
+          }
+          i += 1;
         }
-        i += 1;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("hasInterceptRight file path invalid: ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.e("LocalDataJsPlugin", 1, ((StringBuilder)localObject).toString());
+        return false;
       }
-      label137:
-      QLog.e("LocalDataJsPlugin", 1, "hasInterceptRight file path invalid: " + paramString);
-    }
-    for (;;)
-    {
-      return false;
       QLog.e("LocalDataJsPlugin", 1, "hasInterceptRight url has no Right");
       return false;
-      label174:
-      QLog.e("LocalDataJsPlugin", 1, "hasInterceptRight url is empty");
     }
+    QLog.e("LocalDataJsPlugin", 1, "hasInterceptRight url is empty");
+    return false;
   }
   
   private WebResourceResponse shouldInterceptRequest(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocalDataJsPlugin", 2, "shouldInterceptRequest url = " + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("local"))) {}
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      do
-      {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shouldInterceptRequest url = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("LocalDataJsPlugin", 2, ((StringBuilder)localObject).toString());
+    }
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!paramString.startsWith("local")) {
         return null;
-        paramString = Uri.parse(paramString);
-        paramString = paramString.getAuthority() + paramString.getPath();
-      } while (!hasInterceptRight(paramString));
-      if (QLog.isColorLevel()) {
-        QLog.d("LocalDataJsPlugin", 2, "shouldInterceptRequest filePath = " + paramString);
       }
-      Object localObject = new File(paramString);
+      paramString = Uri.parse(paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString.getAuthority());
+      ((StringBuilder)localObject).append(paramString.getPath());
+      paramString = ((StringBuilder)localObject).toString();
+      if (!hasInterceptRight(paramString)) {
+        return null;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("shouldInterceptRequest filePath = ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("LocalDataJsPlugin", 2, ((StringBuilder)localObject).toString());
+      }
+      localObject = new File(paramString);
       if (((File)localObject).exists()) {
         try
         {
@@ -189,8 +209,15 @@ public class LocalDataJsPlugin
           QLog.e("LocalDataJsPlugin", 1, "shouldInterceptRequest error: ", localFileNotFoundException);
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("LocalDataJsPlugin", 2, "shouldInterceptRequest filePath = " + paramString + " file not exists");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("shouldInterceptRequest filePath = ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" file not exists");
+        QLog.d("LocalDataJsPlugin", 2, localStringBuilder.toString());
+      }
+    }
     return null;
   }
   
@@ -199,7 +226,7 @@ public class LocalDataJsPlugin
     return 8L;
   }
   
-  public Object handleEvent(String paramString, long paramLong)
+  protected Object handleEvent(String paramString, long paramLong)
   {
     if (paramLong == 8L) {
       return shouldInterceptRequest(paramString);
@@ -207,109 +234,138 @@ public class LocalDataJsPlugin
     return null;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (!"localData".equals(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocalDataJsPlugin", 2, "handleJsRequest signjs, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
-    }
-    paramVarArgs = null;
-    paramJsBridgeListener = paramVarArgs;
-    try
+    if ((!TextUtils.isEmpty(paramString1)) && ("localData".equals(paramString2)))
     {
-      localObject = WebViewPlugin.getJsonFromJSBridge(paramString1);
-      if (localObject == null) {
-        return true;
+      if (TextUtils.isEmpty(paramString3)) {
+        return false;
       }
-      paramJsBridgeListener = paramVarArgs;
       if (QLog.isColorLevel())
       {
-        paramJsBridgeListener = paramVarArgs;
-        QLog.d("LocalDataJsPlugin", 2, "handleJsRequest JSON = " + ((JSONObject)localObject).toString());
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append("handleJsRequest signjs, url=");
+        paramJsBridgeListener.append(paramString1);
+        paramJsBridgeListener.append(", pkgName=");
+        paramJsBridgeListener.append(paramString2);
+        paramJsBridgeListener.append(", methodName=");
+        paramJsBridgeListener.append(paramString3);
+        QLog.d("LocalDataJsPlugin", 2, paramJsBridgeListener.toString());
       }
+      paramVarArgs = null;
       paramJsBridgeListener = paramVarArgs;
-      paramVarArgs = ((JSONObject)localObject).optString("callback");
-      paramJsBridgeListener = paramVarArgs;
-      if (TextUtils.isEmpty(paramVarArgs))
-      {
-        paramJsBridgeListener = paramVarArgs;
-        QLog.e("LocalDataJsPlugin", 1, "callback id is null, so return");
-        return true;
-      }
-      paramJsBridgeListener = paramVarArgs;
-      if (!"getFileInfo".equals(paramString3)) {
-        break label475;
-      }
-      paramJsBridgeListener = paramVarArgs;
-      localJSONObject = ((JSONObject)localObject).optJSONObject("localRules");
-      j = -1;
-      i = -1;
-      if (localJSONObject != null)
-      {
-        paramJsBridgeListener = paramVarArgs;
-        j = localJSONObject.optInt("appId");
-        paramJsBridgeListener = paramVarArgs;
-        i = localJSONObject.optInt("itemId");
-      }
-      paramJsBridgeListener = paramVarArgs;
-      localObject = ((JSONObject)localObject).optString("fileUrl");
-      paramJsBridgeListener = paramVarArgs;
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label453;
-      }
-      paramJsBridgeListener = paramVarArgs;
-      QLog.e("LocalDataJsPlugin", 1, "handleJsRequest itemUrl is empty");
-      paramJsBridgeListener = paramVarArgs;
-      super.callJs(paramVarArgs, new String[] { "{\"result\": -1}" });
     }
-    catch (Exception paramVarArgs)
+    for (;;)
     {
-      for (;;)
+      try
       {
-        Object localObject;
-        JSONObject localJSONObject;
-        int j;
-        int i;
-        QLog.e("LocalDataJsPlugin", 2, "handleJsRequest exception url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3 + ", msg=" + paramVarArgs.getMessage());
-        if (TextUtils.isEmpty(paramJsBridgeListener)) {
-          break;
+        localObject1 = WebViewPlugin.getJsonFromJSBridge(paramString1);
+        if (localObject1 == null) {
+          return true;
         }
-        super.callJs(paramJsBridgeListener, new String[] { "{\"result\": -1}" });
-        break;
-        switch (j)
+        paramJsBridgeListener = paramVarArgs;
+        Object localObject2;
+        if (QLog.isColorLevel())
         {
+          paramJsBridgeListener = paramVarArgs;
+          localObject2 = new StringBuilder();
+          paramJsBridgeListener = paramVarArgs;
+          ((StringBuilder)localObject2).append("handleJsRequest JSON = ");
+          paramJsBridgeListener = paramVarArgs;
+          ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+          paramJsBridgeListener = paramVarArgs;
+          QLog.d("LocalDataJsPlugin", 2, ((StringBuilder)localObject2).toString());
+        }
+        paramJsBridgeListener = paramVarArgs;
+        paramVarArgs = ((JSONObject)localObject1).optString("callback");
+        paramJsBridgeListener = paramVarArgs;
+        if (TextUtils.isEmpty(paramVarArgs))
+        {
+          paramJsBridgeListener = paramVarArgs;
+          QLog.e("LocalDataJsPlugin", 1, "callback id is null, so return");
+          return true;
+        }
+        paramJsBridgeListener = paramVarArgs;
+        if ("getFileInfo".equals(paramString3))
+        {
+          paramJsBridgeListener = paramVarArgs;
+          localObject2 = ((JSONObject)localObject1).optJSONObject("localRules");
+          int i = -1;
+          if (localObject2 == null) {
+            break label536;
+          }
+          paramJsBridgeListener = paramVarArgs;
+          i = ((JSONObject)localObject2).optInt("appId");
+          paramJsBridgeListener = paramVarArgs;
+          j = ((JSONObject)localObject2).optInt("itemId");
+          paramJsBridgeListener = paramVarArgs;
+          localObject1 = ((JSONObject)localObject1).optString("fileUrl");
+          paramJsBridgeListener = paramVarArgs;
+          if (TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            paramJsBridgeListener = paramVarArgs;
+            QLog.e("LocalDataJsPlugin", 1, "handleJsRequest itemUrl is empty");
+            paramJsBridgeListener = paramVarArgs;
+            super.callJs(paramVarArgs, new String[] { "{\"result\": -1}" });
+          }
+          if (i != 9)
+          {
+            paramJsBridgeListener = paramVarArgs;
+            super.callJs(paramVarArgs, new String[] { "{\"result\": -1}" });
+            paramJsBridgeListener = paramVarArgs;
+            localObject1 = new StringBuilder();
+            paramJsBridgeListener = paramVarArgs;
+            ((StringBuilder)localObject1).append("handleJsRequest can not handle appid ");
+            paramJsBridgeListener = paramVarArgs;
+            ((StringBuilder)localObject1).append(i);
+            paramJsBridgeListener = paramVarArgs;
+            QLog.e("LocalDataJsPlugin", 1, ((StringBuilder)localObject1).toString());
+            return true;
+          }
+          paramJsBridgeListener = paramVarArgs;
+          handleSignatureRequest(paramVarArgs, j, (String)localObject1, (JSONObject)localObject2);
+          return true;
         }
       }
+      catch (Exception paramVarArgs)
+      {
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handleJsRequest exception url=");
+        ((StringBuilder)localObject1).append(paramString1);
+        ((StringBuilder)localObject1).append(", pkgName=");
+        ((StringBuilder)localObject1).append(paramString2);
+        ((StringBuilder)localObject1).append(", methodName=");
+        ((StringBuilder)localObject1).append(paramString3);
+        ((StringBuilder)localObject1).append(", msg=");
+        ((StringBuilder)localObject1).append(paramVarArgs.getMessage());
+        QLog.e("LocalDataJsPlugin", 2, ((StringBuilder)localObject1).toString());
+        if (!TextUtils.isEmpty(paramJsBridgeListener)) {
+          super.callJs(paramJsBridgeListener, new String[] { "{\"result\": -1}" });
+        }
+      }
+      return true;
+      return false;
+      label536:
+      int j = -1;
     }
-    paramJsBridgeListener = paramVarArgs;
-    super.callJs(paramVarArgs, new String[] { "{\"result\": -1}" });
-    paramJsBridgeListener = paramVarArgs;
-    QLog.e("LocalDataJsPlugin", 1, "handleJsRequest can not handle appid " + j);
-    break label475;
-    paramJsBridgeListener = paramVarArgs;
-    handleSignatureRequest(paramVarArgs, i, (String)localObject, localJSONObject);
-    label453:
-    label475:
-    return true;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     AppInterface localAppInterface = this.mRuntime.a();
-    if ((localAppInterface instanceof BrowserAppInterface)) {
+    if ((localAppInterface instanceof BrowserAppInterface))
+    {
       this.browserApp = ((BrowserAppInterface)localAppInterface);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.e("LocalDataJsPlugin", 2, "ERROR!!! LocalDataJsPlugin is not running in web process!");
+    if (QLog.isColorLevel()) {
+      QLog.e("LocalDataJsPlugin", 2, "ERROR!!! LocalDataJsPlugin is not running in web process!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.LocalDataJsPlugin
  * JD-Core Version:    0.7.0.1
  */

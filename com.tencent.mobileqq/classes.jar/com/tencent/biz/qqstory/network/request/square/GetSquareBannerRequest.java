@@ -18,15 +18,12 @@ public class GetSquareBannerRequest
     try
     {
       localRspGetSquareBannerItemList.mergeFrom(paramArrayOfByte);
-      return new GetSquareBannerRequest.GetSquareBannerResponse(localRspGetSquareBannerItemList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetSquareBannerRequest.GetSquareBannerResponse(localRspGetSquareBannerItemList);
   }
   
   public String a()
@@ -34,14 +31,14 @@ public class GetSquareBannerRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     return new qqstory_service.ReqGetSquareBannerItemList().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.square.GetSquareBannerRequest
  * JD-Core Version:    0.7.0.1
  */

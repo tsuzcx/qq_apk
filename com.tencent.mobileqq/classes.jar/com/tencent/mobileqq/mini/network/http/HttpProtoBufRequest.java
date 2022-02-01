@@ -29,16 +29,19 @@ public abstract class HttpProtoBufRequest
   
   public static byte[] decode(byte[] paramArrayOfByte)
   {
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    Object localObject = new PROTOCAL.StQWebRsp();
     try
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = localStQWebRsp.busiBuff.get().toByteArray();
+      ((PROTOCAL.StQWebRsp)localObject).mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = ((PROTOCAL.StQWebRsp)localObject).busiBuff.get().toByteArray();
       return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      QLog.d("HttpProtoBufRequest", 1, "decode exception: " + Log.getStackTraceString(paramArrayOfByte));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("decode exception: ");
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramArrayOfByte));
+      QLog.d("HttpProtoBufRequest", 1, ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -50,9 +53,19 @@ public abstract class HttpProtoBufRequest
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
     Random localRandom = new Random();
     localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localSimpleDateFormat.format(new Date()));
+    localStringBuilder.append(System.currentTimeMillis() % 1000L);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localRandom.nextInt(90000) + 10000);
     str = localStringBuilder.toString();
-    QLog.d("miniapp-cmd", 1, "[https]. send request cmd=" + getCmdName() + " traceId=" + str);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[https]. send request cmd=");
+    localStringBuilder.append(getCmdName());
+    localStringBuilder.append(" traceId=");
+    localStringBuilder.append(str);
+    QLog.d("miniapp-cmd", 1, localStringBuilder.toString());
     return str;
   }
   
@@ -83,7 +96,7 @@ public abstract class HttpProtoBufRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.network.http.HttpProtoBufRequest
  * JD-Core Version:    0.7.0.1
  */

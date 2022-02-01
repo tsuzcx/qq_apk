@@ -29,14 +29,15 @@ public class StoryPlayerTVKWrapper
   
   public StoryPlayerTVKWrapper(@NonNull Context paramContext)
   {
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.a(bool);
-      this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-      b();
-      return;
+    boolean bool;
+    if (paramContext != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AssertUtils.assertTrue(bool);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    b();
   }
   
   public static TVK_PlayerVideoInfo a(String paramString1, String paramString2)
@@ -83,16 +84,16 @@ public class StoryPlayerTVKWrapper
   
   public void a()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localObject != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
       ThreadManager.executeOnSubThread(new StoryPlayerTVKWrapper.1(this, (TVK_IMediaPlayer)localObject));
     }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase != null)
+    localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
+    if (localObject != null)
     {
-      localObject = (View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
+      localObject = (View)localObject;
       this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase = null;
       if (((View)localObject).getParent() != null)
       {
@@ -106,7 +107,7 @@ public class StoryPlayerTVKWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper
  * JD-Core Version:    0.7.0.1
  */

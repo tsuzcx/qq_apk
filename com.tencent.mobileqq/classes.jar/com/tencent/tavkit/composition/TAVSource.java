@@ -42,12 +42,20 @@ public class TAVSource
   
   public String toString()
   {
-    return "TAVSource{\nasset=" + this.asset + "\nvideoComposition=" + this.videoComposition + "\naudioMix=" + this.audioMix + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVSource{\nasset=");
+    localStringBuilder.append(this.asset);
+    localStringBuilder.append("\nvideoComposition=");
+    localStringBuilder.append(this.videoComposition);
+    localStringBuilder.append("\naudioMix=");
+    localStringBuilder.append(this.audioMix);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.composition.TAVSource
  * JD-Core Version:    0.7.0.1
  */

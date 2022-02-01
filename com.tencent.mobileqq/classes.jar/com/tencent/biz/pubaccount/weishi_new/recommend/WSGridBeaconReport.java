@@ -7,6 +7,7 @@ import UserGrowth.stReportItem;
 import UserGrowth.stSimpleMetaFeed;
 import UserGrowth.stVideoTag;
 import UserGrowth.stWaterFallItemStrategy;
+import android.support.annotation.Nullable;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.biz.pubaccount.weishi_new.report.WSRecommendReportManager;
 import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
@@ -19,7 +20,7 @@ public class WSGridBeaconReport
 {
   private static WSStatisticsReporter.Builder a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    return new WSStatisticsReporter.Builder().setSopName(paramString1).setTabId(paramString3).setTestId(WeishiUtils.a(paramInt)).setPushId(WSPublicAccReport.getInstance().getPushId()).setOperationId(paramString2).setFlush(true).setImmediatelyUpload(WeishiUtils.d());
+    return new WSStatisticsReporter.Builder().setSopName(paramString1).setTabId(paramString3).setTestId(WeishiUtils.a(paramInt)).setPushId(WSPublicAccReport.getInstance().getPushId()).setOperationId(paramString2).setFlush(true);
   }
   
   private static String a(stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -30,17 +31,27 @@ public class WSGridBeaconReport
     return "0";
   }
   
+  private static Map<String, String> a(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("history_drama_card");
+    localStringBuilder.append(paramInt + 1);
+    localHashMap.put("position", localStringBuilder.toString());
+    localHashMap.put("feed_id", "");
+    localHashMap.put("owner_id", "");
+    return localHashMap;
+  }
+  
   private static Map<String, String> a(stSimpleMetaFeed paramstSimpleMetaFeed, stReportItem paramstReportItem)
   {
     HashMap localHashMap = new HashMap();
     String str2 = "";
-    String str1 = str2;
-    if (paramstSimpleMetaFeed != null)
-    {
-      str1 = str2;
-      if (paramstSimpleMetaFeed.collection != null) {
-        str1 = paramstSimpleMetaFeed.collection.cid;
-      }
+    String str1;
+    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.collection != null)) {
+      str1 = paramstSimpleMetaFeed.collection.cid;
+    } else {
+      str1 = "";
     }
     localHashMap.put("collection_id", str1);
     localHashMap.put("cardtype", String.valueOf(paramstReportItem.card_type));
@@ -54,17 +65,47 @@ public class WSGridBeaconReport
     localHashMap.put("cover_type", WeishiUtils.a(paramstSimpleMetaFeed));
     localHashMap.put("isCallWeishi", a(paramstSimpleMetaFeed));
     localHashMap.put("isDownloadWeishi", b(paramstSimpleMetaFeed));
-    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.videoTag != null)) {}
-    for (paramstSimpleMetaFeed = String.valueOf(paramstSimpleMetaFeed.videoTag.tagId);; paramstSimpleMetaFeed = "")
-    {
-      localHashMap.put("tag_id", paramstSimpleMetaFeed);
-      return localHashMap;
+    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.videoTag != null)) {
+      paramstReportItem = String.valueOf(paramstSimpleMetaFeed.videoTag.tagId);
+    } else {
+      paramstReportItem = "";
     }
+    localHashMap.put("tag_id", paramstReportItem);
+    paramstReportItem = str2;
+    if (paramstSimpleMetaFeed != null)
+    {
+      paramstReportItem = str2;
+      if (paramstSimpleMetaFeed.bottomTag != null) {
+        paramstReportItem = String.valueOf(paramstSimpleMetaFeed.bottomTag.tagId);
+      }
+    }
+    localHashMap.put("label_type", paramstReportItem);
+    return localHashMap;
+  }
+  
+  private static Map<String, String> a(@Nullable String paramString, boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    localHashMap.put("micro_drama_id", str);
+    if (paramBoolean) {
+      paramString = "1";
+    } else {
+      paramString = "0";
+    }
+    localHashMap.put("is_update", paramString);
+    return localHashMap;
   }
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, stCollection paramstCollection, stSimpleMetaFeed paramstSimpleMetaFeed, String paramString)
   {
-    Object localObject = "feeds_item_card" + (paramInt1 + 1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("feeds_item_card");
+    ((StringBuilder)localObject).append(paramInt1 + 1);
+    localObject = ((StringBuilder)localObject).toString();
     paramstSimpleMetaFeed = WSPublicAccReport.getInstance().getFeedsBaseParams((String)localObject, paramInt3, paramstSimpleMetaFeed);
     localObject = new HashMap();
     ((HashMap)localObject).put("index", String.valueOf(paramInt2 + 1));
@@ -74,7 +115,10 @@ public class WSGridBeaconReport
   
   public static void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, String paramString1, String paramString2)
   {
-    Object localObject = "feeds_item_card" + (paramInt + 1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("feeds_item_card");
+    ((StringBuilder)localObject).append(paramInt + 1);
+    localObject = ((StringBuilder)localObject).toString();
     paramstSimpleMetaFeed = WSPublicAccReport.getInstance().getFeedsBaseParams((String)localObject, 0, paramstSimpleMetaFeed);
     localObject = new HashMap();
     ((HashMap)localObject).put("feeds_item_list", paramString1);
@@ -107,27 +151,41 @@ public class WSGridBeaconReport
   
   public static void a(String paramString1, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, String paramString2)
   {
-    Object localObject = null;
     Map localMap = WSPublicAccReport.getInstance().getFeedsBaseParams("opcard", paramInt, paramstSimpleMetaFeed);
-    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.h5_op_info != null)) {
-      localObject = paramstSimpleMetaFeed.h5_op_info;
-    }
-    for (paramstSimpleMetaFeed = ((stH5OpInfo)localObject).exp;; paramstSimpleMetaFeed = null)
+    Object localObject = null;
+    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.h5_op_info != null))
     {
-      if (localObject != null) {}
-      for (localObject = String.valueOf(((stH5OpInfo)localObject).id);; localObject = "")
-      {
-        a(a("feeds", (String)localObject, 1, paramString2).addParams(localMap).addExtParams(paramstSimpleMetaFeed), paramString1);
-        return;
-      }
+      localObject = paramstSimpleMetaFeed.h5_op_info;
+      paramstSimpleMetaFeed = ((stH5OpInfo)localObject).exp;
     }
+    else
+    {
+      paramstSimpleMetaFeed = null;
+    }
+    if (localObject != null) {
+      localObject = String.valueOf(((stH5OpInfo)localObject).id);
+    } else {
+      localObject = "";
+    }
+    a(a("feeds", (String)localObject, 1, paramString2).addParams(localMap).addExtParams(paramstSimpleMetaFeed), paramString1);
+  }
+  
+  public static void a(@Nullable String paramString1, int paramInt, @Nullable String paramString2, boolean paramBoolean)
+  {
+    Map localMap = a(paramInt);
+    paramString2 = a(paramString2, paramBoolean);
+    a(a("feeds", "", 1, paramString1).addParams(localMap).addExtParams(paramString2), "gzh_exposure");
   }
   
   public static void a(String paramString1, stSimpleMetaFeed paramstSimpleMetaFeed, stReportItem paramstReportItem, int paramInt, String paramString2)
   {
-    Map localMap = WSPublicAccReport.getInstance().getFeedsBaseParams("feeds_video" + paramstReportItem.upos, paramInt, paramstSimpleMetaFeed);
+    Object localObject = WSPublicAccReport.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("feeds_video");
+    localStringBuilder.append(paramstReportItem.upos);
+    localObject = ((WSPublicAccReport)localObject).getFeedsBaseParams(localStringBuilder.toString(), paramInt, paramstSimpleMetaFeed);
     paramstSimpleMetaFeed = a(paramstSimpleMetaFeed, paramstReportItem);
-    a(a("feeds", "", 1, paramString2).addParams(localMap).addExtParams(paramstSimpleMetaFeed), paramString1);
+    a(a("feeds", "", 1, paramString2).addParams((Map)localObject).addExtParams(paramstSimpleMetaFeed), paramString1);
   }
   
   public static void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2, String paramString3)
@@ -139,18 +197,16 @@ public class WSGridBeaconReport
     localHashMap2.put("failure_type", String.valueOf(paramInt));
     localHashMap2.put("feedid_list", paramString1);
     localHashMap2.put("traceid_list", paramString2);
-    if ((paramBoolean1) || (paramBoolean2)) {
-      if (!paramBoolean1) {
-        break label138;
-      }
-    }
-    label138:
-    for (paramString1 = "1";; paramString1 = "0")
+    if ((paramBoolean1) || (paramBoolean2))
     {
+      if (paramBoolean1) {
+        paramString1 = "1";
+      } else {
+        paramString1 = "0";
+      }
       localHashMap2.put("is_auto_refresh", paramString1);
-      a(a("feeds_refresh_request", "", 1, paramString3).addParams(localHashMap1).addExtParams(localHashMap2), "gzh_exposure");
-      return;
     }
+    a(a("feeds_refresh_request", "", 1, paramString3).addParams(localHashMap1).addExtParams(localHashMap2), "gzh_exposure");
   }
   
   private static String b(stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -161,17 +217,28 @@ public class WSGridBeaconReport
     return "0";
   }
   
+  public static void b(@Nullable String paramString1, int paramInt, String paramString2, boolean paramBoolean)
+  {
+    Map localMap = a(paramInt);
+    localMap.put("action_id", "1000001");
+    paramString2 = a(paramString2, paramBoolean);
+    a(a("feeds", "", 1, paramString1).addParams(localMap).addExtParams(paramString2), "gzh_click");
+  }
+  
   private static String c(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
+    int i;
     if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.opVideo != null)) {
-      return String.valueOf(paramstSimpleMetaFeed.opVideo.videoType);
+      i = paramstSimpleMetaFeed.opVideo.videoType;
+    } else {
+      i = 0;
     }
-    return String.valueOf(0);
+    return String.valueOf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridBeaconReport
  * JD-Core Version:    0.7.0.1
  */

@@ -1,98 +1,123 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.MessageHandler.MsgSendCostParams;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.BabyQAIOPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelProvider;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.aio.panel.PanelManager;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.app.BabyQHandler;
+import com.tencent.mobileqq.app.BabyQObserver;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.managers.PushNotificationManager;
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 class FriendChatPie$11
-  extends MessageObserver
+  extends BabyQObserver
 {
   FriendChatPie$11(FriendChatPie paramFriendChatPie) {}
   
-  public void onInsertIntoBlackList(boolean paramBoolean, String paramString)
+  protected void a()
   {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    if (this.a.g != null)
     {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.p();
+      Animation localAnimation = this.a.g.getAnimation();
+      if (localAnimation != null) {
+        localAnimation.cancel();
       }
-    }
-  }
-  
-  public void onMsgStartSendingUI(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
-    }
-    this.a.g(131072);
-  }
-  
-  public void onRemoveFromBlackList(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.jdField_a_of_type_MqqOsMqqHandler.post(new FriendChatPie.11.1(this));
-      }
-    }
-  }
-  
-  public void onSendResult(boolean paramBoolean, String paramString, long paramLong)
-  {
-    onSendResult(paramBoolean, paramString, paramLong, null);
-  }
-  
-  public void onSendResult(boolean paramBoolean, String paramString, long paramLong, MessageHandler.MsgSendCostParams paramMsgSendCostParams)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.q = true;
-    this.a.a(262144, paramMsgSendCostParams, paramLong);
-    ((PushNotificationManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PUSH_NOTIFICATION_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, PushNotificationManager.jdField_a_of_type_Int);
-  }
-  
-  public void onUpdateMsgContent(boolean paramBoolean, String paramString)
-  {
-    this.a.g(65536);
-  }
-  
-  public void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
-  {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
-    {
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.g);
+      this.a.g = null;
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+        QLog.d("Q.BabyQ", 2, "onStopGuide");
       }
-      paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString1, paramInt1, paramLong2);
-      if ((paramString1 != null) && (paramString1.msgtype == -2058) && ((paramString1.extraflag == 32768) || (paramString1.sendFailCode == 41)))
+    }
+  }
+  
+  protected void a(Object paramObject)
+  {
+    paramObject = (Integer)paramObject;
+    int j = paramObject.intValue();
+    int i = -1;
+    Object localObject;
+    if (j != 0)
+    {
+      if (j != 1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.b, 2, "onUpdateSendMsgError, sticker msg is failed!, now remove!");
+        if (j != 2)
+        {
+          if (j == 3) {
+            i = FriendChatPie.a(this.a, AIOPanelUtiles.v);
+          }
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString1, false);
+        else if (!((AudioPanelProvider)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager.a(2)).c()) {
+          i = FriendChatPie.a(this.a, AIOPanelUtiles.a);
+        }
       }
+      else
+      {
+        localObject = (PhotoListPanel)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager.b(4);
+        if ((localObject == null) || (((PhotoListPanel)localObject).getVisibility() != 0)) {
+          i = FriendChatPie.a(this.a, AIOPanelUtiles.l);
+        }
+      }
+    }
+    else if (ShortVideoUtils.needTwoEntrance()) {
+      i = FriendChatPie.a(this.a, AIOPanelUtiles.s);
+    } else {
+      i = FriendChatPie.a(this.a, AIOPanelUtiles.v);
+    }
+    if (i < 0)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onStartGuide ");
+        ((StringBuilder)localObject).append(paramObject);
+        ((StringBuilder)localObject).append(" but panel is opened");
+        QLog.d("Q.BabyQ", 2, ((StringBuilder)localObject).toString());
+      }
+      ((BabyQHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER)).a();
       return;
     }
-    FriendChatPie.a(this.a, paramString1, paramInt1, paramLong2);
-    this.a.g(196608);
+    if (this.a.g == null)
+    {
+      localObject = this.a;
+      ((FriendChatPie)localObject).g = new View(((FriendChatPie)localObject).jdField_a_of_type_AndroidContentContext);
+      this.a.g.setBackgroundResource(2130844923);
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.getChildAt(i);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(((View)localObject).getHeight(), ((View)localObject).getHeight());
+      localLayoutParams.addRule(12);
+      localLayoutParams.setMargins(((View)localObject).getLeft() + ((View)localObject).getWidth() / 2 - ((View)localObject).getHeight() / 2, 0, 0, (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.getHeight() - ((View)localObject).getHeight()) / 2);
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.a.g, localLayoutParams);
+      localObject = AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidContentContext, 2130772273);
+      ((Animation)localObject).setAnimationListener(new FriendChatPie.11.1(this));
+      this.a.g.startAnimation((Animation)localObject);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onStartGuide ");
+        ((StringBuilder)localObject).append(paramObject);
+        QLog.d("Q.BabyQ", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBabyQAIOPanel != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBabyQAIOPanel.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.11
  * JD-Core Version:    0.7.0.1
  */

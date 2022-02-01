@@ -28,31 +28,29 @@ public class b
   b(Context paramContext, int paramInt, String paramString1, String paramString2)
   {
     if (paramInt != -1) {}
-    for (;;)
+    try
     {
-      try
-      {
-        Drawable localDrawable1 = paramContext.getResources().getDrawable(paramInt);
-        Drawable localDrawable2 = localDrawable1;
-        if (localDrawable1 == null) {
-          localDrawable2 = e.a("application_icon");
-        }
-        this.a = paramContext.getApplicationContext();
-        this.b = null;
-        this.f = null;
-        this.c = localDrawable2;
-        this.d = paramString2;
-        this.g = true;
-        this.i = paramString1;
-        return;
-      }
-      catch (Exception localException)
-      {
-        localObject = null;
-        continue;
-      }
-      Object localObject = null;
+      localDrawable1 = paramContext.getResources().getDrawable(paramInt);
     }
+    catch (Exception localException)
+    {
+      Drawable localDrawable1;
+      label50:
+      Drawable localDrawable2;
+      break label50;
+    }
+    localDrawable1 = null;
+    localDrawable2 = localDrawable1;
+    if (localDrawable1 == null) {
+      localDrawable2 = e.a("application_icon");
+    }
+    this.a = paramContext.getApplicationContext();
+    this.b = null;
+    this.f = null;
+    this.c = localDrawable2;
+    this.d = paramString2;
+    this.g = true;
+    this.i = paramString1;
   }
   
   b(Context paramContext, ResolveInfo paramResolveInfo)
@@ -77,10 +75,7 @@ public class b
   
   public static Drawable a(Context paramContext, String paramString)
   {
-    TypedValue localTypedValue = null;
-    if ("com.tencent.mtt".equals(paramString)) {}
-    for (;;)
-    {
+    if ("com.tencent.mtt".equals(paramString)) {
       try
       {
         paramContext = e.a("application_icon");
@@ -88,55 +83,60 @@ public class b
       }
       catch (Throwable paramContext)
       {
-        Log.e("error", "getApkIcon Error:" + Log.getStackTraceString(paramContext));
+        paramString = new StringBuilder();
+        paramString.append("getApkIcon Error:");
+        paramString.append(Log.getStackTraceString(paramContext));
+        Log.e("error", paramString.toString());
         return null;
       }
-      PackageManager localPackageManager = paramContext.getApplicationContext().getPackageManager();
+    }
+    Object localObject = paramContext.getApplicationContext().getPackageManager();
+    try
+    {
+      paramContext = ((PackageManager)localObject).getApplicationInfo(paramString, 128);
+      if (paramContext == null) {
+        return null;
+      }
+      paramString = ((PackageManager)localObject).getResourcesForApplication(paramContext);
+      localObject = new TypedValue();
+      paramString.getValue(paramContext.icon, (TypedValue)localObject, true);
+      paramContext = ((TypedValue)localObject).string.toString();
+      return null;
+    }
+    catch (Exception paramContext)
+    {
       try
       {
-        paramString = localPackageManager.getApplicationInfo(paramString, 128);
-        paramContext = localTypedValue;
-        if (paramString == null) {
-          continue;
-        }
-        paramContext = localPackageManager.getResourcesForApplication(paramString);
-        localTypedValue = new TypedValue();
-        paramContext.getValue(paramString.icon, localTypedValue, true);
-        paramString = localTypedValue.string.toString();
-        return null;
+        paramContext = Drawable.createFromResourceStream(paramString, (TypedValue)localObject, new BufferedInputStream(paramString.getAssets().openNonAssetFd(((TypedValue)localObject).assetCookie, paramContext).createInputStream()), null);
+        return paramContext;
       }
-      catch (Exception paramContext)
-      {
-        try
-        {
-          paramContext = Drawable.createFromResourceStream(paramContext, localTypedValue, new BufferedInputStream(paramContext.getAssets().openNonAssetFd(localTypedValue.assetCookie, paramString).createInputStream()), null);
-          return paramContext;
-        }
-        catch (Exception paramContext) {}
-        paramContext = paramContext;
-        Log.e("sdk", "e = " + paramContext);
-        return null;
-      }
+      catch (Exception paramContext) {}
+      paramContext = paramContext;
+      paramString = new StringBuilder();
+      paramString.append("e = ");
+      paramString.append(paramContext);
+      Log.e("sdk", paramString.toString());
+      return null;
     }
   }
   
   public Drawable a()
   {
-    Object localObject;
-    if (this.c != null) {
+    Object localObject = this.c;
+    if (localObject != null) {
+      return localObject;
+    }
+    Drawable localDrawable = a(this.a, d());
+    localObject = localDrawable;
+    if (localDrawable == null)
+    {
+      localObject = this.b;
+      if (localObject != null) {
+        return ((ResolveInfo)localObject).loadIcon(this.a.getPackageManager());
+      }
       localObject = this.c;
     }
-    Drawable localDrawable;
-    do
-    {
-      return localObject;
-      localDrawable = a(this.a, d());
-      localObject = localDrawable;
-    } while (localDrawable != null);
-    if (this.b != null) {
-      return this.b.loadIcon(this.a.getPackageManager());
-    }
-    return this.c;
+    return localObject;
   }
   
   public void a(ResolveInfo paramResolveInfo)
@@ -161,8 +161,9 @@ public class b
   
   public String b()
   {
-    if (this.b != null) {
-      return this.b.loadLabel(this.a.getPackageManager()).toString();
+    ResolveInfo localResolveInfo = this.b;
+    if (localResolveInfo != null) {
+      return localResolveInfo.loadLabel(this.a.getPackageManager()).toString();
     }
     return this.d;
   }
@@ -174,13 +175,16 @@ public class b
   
   public String d()
   {
-    if (this.b != null) {
-      return this.b.activityInfo.packageName;
+    Object localObject = this.b;
+    if (localObject != null) {
+      return ((ResolveInfo)localObject).activityInfo.packageName;
     }
-    if (this.f == null) {
-      return "";
+    String str = this.f;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
     }
-    return this.f;
+    return localObject;
   }
   
   public boolean e()
@@ -205,7 +209,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.b
  * JD-Core Version:    0.7.0.1
  */

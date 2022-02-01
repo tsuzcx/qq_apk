@@ -27,8 +27,9 @@ public final class TNearbyGodInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iIsGodFlag, 0);
-    if (this.strJumpUrl != null) {
-      paramJceOutputStream.write(this.strJumpUrl, 1);
+    String str = this.strJumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }

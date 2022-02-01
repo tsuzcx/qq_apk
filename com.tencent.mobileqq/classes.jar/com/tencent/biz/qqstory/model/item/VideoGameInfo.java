@@ -28,23 +28,21 @@ public class VideoGameInfo
       paramString = (VideoGameInfo)JsonORM.a(new JSONObject(paramString), VideoGameInfo.class);
       return paramString;
     }
-    catch (JsonORM.JsonParseException paramString)
+    catch (JSONException paramString)
     {
       paramString.printStackTrace();
       return null;
     }
-    catch (JSONException paramString)
+    catch (JsonORM.JsonParseException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.VideoGameInfo
  * JD-Core Version:    0.7.0.1
  */

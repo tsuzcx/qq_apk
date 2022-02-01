@@ -28,12 +28,12 @@ final class CoroutineContext$plus$1
       return (CoroutineContext)paramElement;
     }
     paramCoroutineContext = (ContinuationInterceptor)localCoroutineContext.get((CoroutineContext.Key)ContinuationInterceptor.Key);
-    if (paramCoroutineContext == null) {
+    if (paramCoroutineContext == null)
+    {
       paramCoroutineContext = new CombinedContext(localCoroutineContext, paramElement);
     }
-    for (;;)
+    else
     {
-      return (CoroutineContext)paramCoroutineContext;
       localCoroutineContext = localCoroutineContext.minusKey((CoroutineContext.Key)ContinuationInterceptor.Key);
       if (localCoroutineContext == EmptyCoroutineContext.INSTANCE) {
         paramCoroutineContext = new CombinedContext((CoroutineContext)paramElement, (CoroutineContext.Element)paramCoroutineContext);
@@ -41,11 +41,12 @@ final class CoroutineContext$plus$1
         paramCoroutineContext = new CombinedContext((CoroutineContext)new CombinedContext(localCoroutineContext, paramElement), (CoroutineContext.Element)paramCoroutineContext);
       }
     }
+    return (CoroutineContext)paramCoroutineContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.experimental.CoroutineContext.plus.1
  * JD-Core Version:    0.7.0.1
  */

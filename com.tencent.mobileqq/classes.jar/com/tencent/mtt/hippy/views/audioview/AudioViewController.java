@@ -19,67 +19,76 @@ public class AudioViewController
   public static final String ACATION_SEEKTO = "seek";
   public static final String ACATION_STOP = "stop";
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new AudioView(paramContext);
   }
   
   public void dispatchFunction(AudioView paramAudioView, String paramString, HippyArray paramHippyArray, Promise paramPromise)
   {
-    int i = -1;
     switch (paramString.hashCode())
     {
     default: 
-      switch (i)
-      {
+      break;
+    case 1090594823: 
+      if (paramString.equals("release")) {
+        i = 2;
+      }
+      break;
+    case 106440182: 
+      if (paramString.equals("pause")) {
+        i = 1;
+      }
+      break;
+    case 3540994: 
+      if (paramString.equals("stop")) {
+        i = 4;
+      }
+      break;
+    case 3526264: 
+      if (paramString.equals("seek")) {
+        i = 3;
+      }
+      break;
+    case 3443508: 
+      if (paramString.equals("play")) {
+        i = 0;
       }
       break;
     }
-    for (;;)
+    int i = -1;
+    if (i != 0)
     {
-      super.dispatchFunction(paramAudioView, paramString, paramHippyArray);
-      return;
-      if (!paramString.equals("play")) {
-        break;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i == 4) {
+              paramAudioView.stopAudio();
+            }
+          }
+          else if ((paramHippyArray.getObject(0) != null) && (paramHippyArray.getInt(0) > 0)) {
+            paramAudioView.seekTo(paramHippyArray.getInt(0));
+          }
+        }
+        else {
+          paramAudioView.releaseAudio();
+        }
       }
-      i = 0;
-      break;
-      if (!paramString.equals("pause")) {
-        break;
+      else {
+        paramAudioView.pauseAudio();
       }
-      i = 1;
-      break;
-      if (!paramString.equals("release")) {
-        break;
-      }
-      i = 2;
-      break;
-      if (!paramString.equals("seek")) {
-        break;
-      }
-      i = 3;
-      break;
-      if (!paramString.equals("stop")) {
-        break;
-      }
-      i = 4;
-      break;
+    }
+    else
+    {
       if ((paramHippyArray.getObject(0) != null) && (!TextUtils.isEmpty(paramHippyArray.getString(0)))) {
         paramAudioView.setAudioPlayUrl(paramHippyArray.getString(0));
       }
       paramAudioView.playAudio();
-      continue;
-      paramAudioView.pauseAudio();
-      continue;
-      paramAudioView.releaseAudio();
-      continue;
-      if ((paramHippyArray.getObject(0) != null) && (paramHippyArray.getInt(0) > 0))
-      {
-        paramAudioView.seekTo(paramHippyArray.getInt(0));
-        continue;
-        paramAudioView.stopAudio();
-      }
     }
+    super.dispatchFunction(paramAudioView, paramString, paramHippyArray);
   }
   
   @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="autoPlay")
@@ -132,7 +141,7 @@ public class AudioViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.audioview.AudioViewController
  * JD-Core Version:    0.7.0.1
  */

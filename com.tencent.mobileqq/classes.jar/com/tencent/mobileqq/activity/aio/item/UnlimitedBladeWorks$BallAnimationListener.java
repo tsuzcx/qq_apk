@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.widget.ImageView;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class UnlimitedBladeWorks$BallAnimationListener
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   private UnlimitedBladeWorks$BallAnimationListener(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
@@ -15,22 +15,20 @@ class UnlimitedBladeWorks$BallAnimationListener
   {
     if (UnlimitedBladeWorks.a(this.a).a)
     {
-      if (UnlimitedBladeWorks.a(this.a) != 2.0D) {
-        break label55;
+      if (UnlimitedBladeWorks.a(this.a) == 2.0D)
+      {
+        UnlimitedBladeWorks.a(this.a);
+        UnlimitedBladeWorks.a(this.a, 5);
       }
-      UnlimitedBladeWorks.a(this.a);
-      UnlimitedBladeWorks.a(this.a, 5);
-    }
-    for (;;)
-    {
+      else
+      {
+        UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+        UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
+        UnlimitedBladeWorks.a(this.a).a(new UnlimitedBladeWorks.BallAnimationListener.1(this));
+        UnlimitedBladeWorks.a(this.a).c();
+        UnlimitedBladeWorks.a(this.a, 1);
+      }
       UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
-      return;
-      label55:
-      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(new UnlimitedBladeWorks.BallAnimationListener.1(this));
-      UnlimitedBladeWorks.a(this.a).c();
-      UnlimitedBladeWorks.a(this.a, 1);
     }
   }
   
@@ -48,7 +46,7 @@ class UnlimitedBladeWorks$BallAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.BallAnimationListener
  * JD-Core Version:    0.7.0.1
  */

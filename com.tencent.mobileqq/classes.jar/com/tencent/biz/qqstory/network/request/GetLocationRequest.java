@@ -46,7 +46,7 @@ public class GetLocationRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetLocation localReqGetLocation = new qqstory_service.ReqGetLocation();
     localReqGetLocation.coordinate.set(this.c);
@@ -58,12 +58,20 @@ public class GetLocationRequest
   
   public String toString()
   {
-    return "GetLocationRequest{mCoordinate=" + this.c + ", mLng=" + this.d + ", mLat=" + this.e + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetLocationRequest{mCoordinate=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", mLng=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", mLat=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetLocationRequest
  * JD-Core Version:    0.7.0.1
  */

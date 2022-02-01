@@ -19,33 +19,36 @@ class VideoSprite$PreparedListener
   public void onPrepared(MediaPlayer paramMediaPlayer)
   {
     paramMediaPlayer = (VideoSprite)this.a.get();
-    if (paramMediaPlayer == null) {}
-    do
+    if (paramMediaPlayer == null) {
+      return;
+    }
+    try
     {
-      for (;;)
+      paramMediaPlayer.n = paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
+      paramMediaPlayer.o = paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
+      paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+      paramMediaPlayer.g = true;
+      if (paramMediaPlayer.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite$OnProgressChangedListener != null)
       {
+        paramMediaPlayer.jdField_a_of_type_AndroidOsHandler.postDelayed(paramMediaPlayer, 33L);
         return;
-        try
-        {
-          paramMediaPlayer.n = paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
-          paramMediaPlayer.o = paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
-          paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-          paramMediaPlayer.g = true;
-          if (paramMediaPlayer.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite$OnProgressChangedListener != null)
-          {
-            paramMediaPlayer.jdField_a_of_type_AndroidOsHandler.postDelayed(paramMediaPlayer, 33L);
-            return;
-          }
-        }
-        catch (Exception paramMediaPlayer) {}
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("VideoSprite", 2, "playVideo Exception: " + QLog.getStackTraceString(paramMediaPlayer));
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("playVideo Exception: ");
+        localStringBuilder.append(QLog.getStackTraceString(paramMediaPlayer));
+        QLog.e("VideoSprite", 2, localStringBuilder.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.PreparedListener
  * JD-Core Version:    0.7.0.1
  */

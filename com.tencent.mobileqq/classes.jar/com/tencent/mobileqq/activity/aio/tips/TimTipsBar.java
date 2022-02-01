@@ -40,10 +40,10 @@ public class TimTipsBar
     paramVarArgs = ((AppGuideTipsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APP_GUIDE_TIPS_MANAGER)).a();
     this.jdField_a_of_type_JavaLangString = paramVarArgs.tipsUrl;
     paramVarArgs = paramVarArgs.tipsMsg;
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558693, null);
-    ((TextView)localView.findViewById(2131362582)).setText(paramVarArgs);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558591, null);
+    ((TextView)localView.findViewById(2131362538)).setText(paramVarArgs);
     localView.setOnClickListener(this);
-    localView.findViewById(2131362580).setOnClickListener(this);
+    localView.findViewById(2131362536).setOnClickListener(this);
     return localView;
   }
   
@@ -63,11 +63,9 @@ public class TimTipsBar
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    default: 
+      break;
+    case 2131362535: 
       if (QLog.isColorLevel()) {
         QLog.d("TimTipsBar", 2, "click tips, jump");
       }
@@ -76,13 +74,15 @@ public class TimTipsBar
       localIntent.putExtra("hide_operation_bar", true);
       this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
       ReportController.b(null, "dc00898", "", "", "0X8008948", "0X8008948", 0, 0, "", "", "", "");
+    case 2131362536: 
       this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.TimTipsBar
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,16 @@ final class IliveEnterGroupHost$1
   
   public void onReceive(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    QLog.i("IliveEnterGroupHost", 1, "IliveEnterGroupHost getAnchorGroupList isSuccess = " + paramBoolean);
+    paramBaseRequest = new StringBuilder();
+    paramBaseRequest.append("IliveEnterGroupHost getAnchorGroupList isSuccess = ");
+    paramBaseRequest.append(paramBoolean);
+    QLog.i("IliveEnterGroupHost", 1, paramBaseRequest.toString());
     IliveEnterGroupHost.access$000(paramBoolean, paramStGetMainPageRsp, this.val$callback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.host.IliveEnterGroupHost.1
  * JD-Core Version:    0.7.0.1
  */

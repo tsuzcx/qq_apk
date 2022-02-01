@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.uniformdownload.downloader;
 
 import android.os.Bundle;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
 import com.tencent.mobileqq.uniformdownload.core.UniformDownloadMgr;
-import com.tencent.mobileqq.uniformdownload.filemanager.FileManagerUtil;
-import com.tencent.mobileqq.uniformdownload.filemanager.FileUtil;
 import com.tencent.mobileqq.uniformdownload.util.IUniformDownloaderAppBabyListener;
 import com.tencent.mobileqq.uniformdownload.util.IUniformDownloaderListener;
 import com.tencent.mobileqq.uniformdownload.util.UDConstants;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mqq.app.AppRuntime;
 
 class UniformDownloaderAppBaby$1
   implements IUniformDownloaderAppBabyListener
@@ -22,43 +22,57 @@ class UniformDownloaderAppBaby$1
     this.a.b(paramInt);
     if (UniformDownloaderAppBaby.a(this.a) != null)
     {
-      if (paramInt <= 100) {
-        break label45;
+      if (paramInt > 100)
+      {
+        UniformDownloaderAppBaby.a(this.a).b(this.a.h(), paramBundle);
+        return;
       }
-      UniformDownloaderAppBaby.a(this.a).b(this.a.h(), paramBundle);
+      if (paramInt - this.a.g() > 0)
+      {
+        this.a.a(paramInt);
+        UniformDownloaderAppBaby.a(this.a).b(paramInt, paramBundle);
+      }
     }
-    label45:
-    while (paramInt - this.a.g() <= 0) {
-      return;
-    }
-    this.a.a(paramInt);
-    UniformDownloaderAppBaby.a(this.a).b(paramInt, paramBundle);
   }
   
   public void a(int paramInt, String paramString, Bundle paramBundle)
   {
     this.a.c(5);
-    AppRuntime localAppRuntime = UniformDownloadMgr.a().a();
-    if (localAppRuntime != null)
+    Object localObject1 = UniformDownloadMgr.a().a();
+    Object localObject2;
+    if (localObject1 != null)
     {
-      long l1 = -1L;
-      long l2 = -1L;
-      UniformDownloaderAppBabySdk.RParam localRParam = UniformDownloaderAppBabySdk.RParam.a(paramBundle);
-      if (localRParam != null)
+      localObject2 = UniformDownloaderAppBabySdk.RParam.a(paramBundle);
+      long l1;
+      long l2;
+      if (localObject2 != null)
       {
-        l1 = localRParam.a;
-        l2 = localRParam.jdField_b_of_type_Long;
+        l1 = ((UniformDownloaderAppBabySdk.RParam)localObject2).a;
+        l2 = ((UniformDownloaderAppBabySdk.RParam)localObject2).jdField_b_of_type_Long;
       }
-      FileManagerUtil.a(localAppRuntime, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.a.a, "", "", "", "", paramInt, paramString, l1, l2, this.a.jdField_b_of_type_Long, this.a.jdField_b_of_type_JavaLangString, "", 0, paramString, null);
-      FileManagerUtil.a(localAppRuntime, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.a.a, "", "", "", "", paramInt, paramString, l1, l2, this.a.jdField_b_of_type_Long, this.a.jdField_b_of_type_JavaLangString, "", 0, paramString, null);
+      else
+      {
+        l1 = -1L;
+        l2 = l1;
+      }
+      localObject1 = (BaseQQAppInterface)localObject1;
+      long l3 = this.a.jdField_c_of_type_Long;
+      long l4 = this.a.a;
+      long l5 = paramInt;
+      QQFileManagerUtil.a((BaseQQAppInterface)localObject1, l3, "actFileUfAppBabySdkDownload", l4, "", "", "", "", l5, paramString, l1, l2, this.a.jdField_b_of_type_Long, this.a.jdField_b_of_type_JavaLangString, "", 0, paramString, null);
+      QQFileManagerUtil.a((BaseQQAppInterface)localObject1, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.a.a, "", "", "", "", l5, paramString, l1, l2, this.a.jdField_b_of_type_Long, this.a.jdField_b_of_type_JavaLangString, "", 0, paramString, null);
     }
-    for (;;)
+    else
     {
-      if (UniformDownloaderAppBaby.a(this.a) != null) {
-        UniformDownloaderAppBaby.a(this.a).a(paramInt, paramString, paramBundle);
-      }
-      return;
-      QLog.w(UniformDownloaderAssinfo.a, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 6");
+      localObject1 = UniformDownloaderAssinfo.a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[UniformDL][");
+      ((StringBuilder)localObject2).append(this.a.jdField_c_of_type_Long);
+      ((StringBuilder)localObject2).append("].report failed - 6");
+      QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+    }
+    if (UniformDownloaderAppBaby.a(this.a) != null) {
+      UniformDownloaderAppBaby.a(this.a).a(paramInt, paramString, paramBundle);
     }
   }
   
@@ -71,77 +85,137 @@ class UniformDownloaderAppBaby$1
   
   public void a(String paramString, Bundle paramBundle)
   {
-    QLog.i(UniformDownloaderAssinfo.a, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "] >>>>>>Download SUCCESS. sdk download path=" + paramString);
+    Object localObject1 = UniformDownloaderAssinfo.a;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[UniformDL][");
+    ((StringBuilder)localObject2).append(this.a.jdField_c_of_type_Long);
+    ((StringBuilder)localObject2).append("] >>>>>>Download SUCCESS. sdk download path=");
+    ((StringBuilder)localObject2).append(paramString);
+    QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     this.a.c(4);
     if (paramString == null)
     {
-      QLog.e(UniformDownloaderAssinfo.a, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. download success, but filepath = null");
+      paramString = UniformDownloaderAssinfo.a;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[UniformDL][");
+      ((StringBuilder)localObject1).append(this.a.jdField_c_of_type_Long);
+      ((StringBuilder)localObject1).append("]. download success, but filepath = null");
+      QLog.e(paramString, 1, ((StringBuilder)localObject1).toString());
       a(40, UDConstants.a(40), paramBundle);
-    }
-    label805:
-    for (;;)
-    {
       return;
-      if (FileUtils.a(this.a.d)) {
-        this.a.d = FileManagerUtil.a(this.a.d);
-      }
-      QLog.i(UniformDownloaderAssinfo.a, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. try to rename file to path:" + this.a.d);
-      Object localObject;
-      if (!FileUtils.b(new File(paramString), new File(this.a.d)))
+    }
+    if (FileUtils.fileExists(this.a.d))
+    {
+      localObject1 = this.a;
+      ((UniformDownloaderAppBaby)localObject1).d = QQFileManagerUtil.f(((UniformDownloaderAppBaby)localObject1).d);
+    }
+    localObject1 = UniformDownloaderAssinfo.a;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[UniformDL][");
+    ((StringBuilder)localObject2).append(this.a.jdField_c_of_type_Long);
+    ((StringBuilder)localObject2).append("]. try to rename file to path:");
+    ((StringBuilder)localObject2).append(this.a.d);
+    QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+    if (!FileUtils.renameFile(new File(paramString), new File(this.a.d)))
+    {
+      localObject1 = UniformDownloaderAssinfo.a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[UniformDL][");
+      ((StringBuilder)localObject2).append(this.a.jdField_c_of_type_Long);
+      ((StringBuilder)localObject2).append("].rename failed. temppath=");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(" save path=");
+      ((StringBuilder)localObject2).append(this.a.d);
+      QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+      localObject1 = FileUtil.b(paramString);
+      if (!QQFileManagerUtil.b().equalsIgnoreCase((String)localObject1))
       {
-        QLog.e(UniformDownloaderAssinfo.a, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed. temppath=" + paramString + " save path=" + this.a.d);
-        localObject = FileUtil.b(paramString);
-        if (!FileManagerUtil.a().equalsIgnoreCase((String)localObject))
-        {
-          String str = (String)localObject + this.a.jdField_c_of_type_JavaLangString;
-          localObject = str;
-          if (FileUtils.a(str)) {
-            localObject = FileManagerUtil.a(str);
-          }
-          QLog.i(UniformDownloaderAssinfo.a, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try to save file to path: " + (String)localObject);
-          if (!FileUtils.b(new File(paramString), new File((String)localObject)))
-          {
-            QLog.e(UniformDownloaderAssinfo.a, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try failed save path: " + (String)localObject);
-            a(7, UDConstants.a(7), paramBundle);
-            return;
-          }
-          this.a.d = ((String)localObject);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(this.a.jdField_c_of_type_JavaLangString);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localObject1 = localObject2;
+        if (FileUtils.fileExists((String)localObject2)) {
+          localObject1 = QQFileManagerUtil.f((String)localObject2);
         }
+        localObject2 = UniformDownloaderAssinfo.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[UniformDL][");
+        localStringBuilder.append(this.a.jdField_c_of_type_Long);
+        localStringBuilder.append("]. rename failed, try to save file to path: ");
+        localStringBuilder.append((String)localObject1);
+        QLog.i((String)localObject2, 1, localStringBuilder.toString());
+        if (!FileUtils.renameFile(new File(paramString), new File((String)localObject1)))
+        {
+          paramString = UniformDownloaderAssinfo.a;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[UniformDL][");
+          ((StringBuilder)localObject2).append(this.a.jdField_c_of_type_Long);
+          ((StringBuilder)localObject2).append("]. rename failed, try failed save path: ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QLog.e(paramString, 1, ((StringBuilder)localObject2).toString());
+          a(7, UDConstants.a(7), paramBundle);
+          return;
+        }
+        this.a.d = ((String)localObject1);
       }
       else
       {
-        QLog.i(UniformDownloaderAssinfo.a, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename file success. path:" + this.a.d);
-        paramString = UniformDownloadMgr.a().a();
-        if (paramString == null) {
-          break label767;
-        }
-        long l1 = -1L;
-        long l2 = -1L;
-        localObject = UniformDownloaderAppBabySdk.RParam.a(paramBundle);
-        if (localObject == null) {
-          break label727;
-        }
-        l1 = ((UniformDownloaderAppBabySdk.RParam)localObject).a;
-        l2 = ((UniformDownloaderAppBabySdk.RParam)localObject).jdField_b_of_type_Long;
-        FileManagerUtil.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", System.currentTimeMillis() - this.a.a, "", "", "", "", l1, l2, this.a.jdField_b_of_type_Long, 0, null);
-        FileManagerUtil.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", System.currentTimeMillis() - this.a.a, "", "", "", "", l1, l2, this.a.jdField_b_of_type_Long, 0, null);
-      }
-      for (;;)
-      {
-        if (UniformDownloaderAppBaby.a(this.a) == null) {
-          break label805;
-        }
-        UniformDownloaderAppBaby.a(this.a).a(this.a.d, this.a.jdField_b_of_type_Long, paramBundle);
-        return;
-        QLog.e(UniformDownloaderAssinfo.a, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed 2, try failed save path: " + paramString);
+        localObject1 = UniformDownloaderAssinfo.a;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[UniformDL][");
+        ((StringBuilder)localObject2).append(this.a.jdField_c_of_type_Long);
+        ((StringBuilder)localObject2).append("]. rename failed 2, try failed save path: ");
+        ((StringBuilder)localObject2).append(paramString);
+        QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
         a(7, UDConstants.a(7), paramBundle);
         return;
-        label727:
-        QLog.w(UniformDownloaderAssinfo.a, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report may failed - 0");
-        break;
-        label767:
-        QLog.i(UniformDownloaderAssinfo.a, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 7");
       }
+    }
+    paramString = UniformDownloaderAssinfo.a;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[UniformDL][");
+    ((StringBuilder)localObject1).append(this.a.jdField_c_of_type_Long);
+    ((StringBuilder)localObject1).append("]. rename file success. path:");
+    ((StringBuilder)localObject1).append(this.a.d);
+    QLog.i(paramString, 1, ((StringBuilder)localObject1).toString());
+    paramString = UniformDownloadMgr.a().a();
+    if (paramString != null)
+    {
+      localObject1 = UniformDownloaderAppBabySdk.RParam.a(paramBundle);
+      long l1;
+      long l2;
+      if (localObject1 != null)
+      {
+        l1 = ((UniformDownloaderAppBabySdk.RParam)localObject1).a;
+        l2 = ((UniformDownloaderAppBabySdk.RParam)localObject1).jdField_b_of_type_Long;
+      }
+      else
+      {
+        localObject1 = UniformDownloaderAssinfo.a;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[UniformDL][");
+        ((StringBuilder)localObject2).append(this.a.jdField_c_of_type_Long);
+        ((StringBuilder)localObject2).append("].report may failed - 0");
+        QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+        l1 = -1L;
+        l2 = l1;
+      }
+      paramString = (BaseQQAppInterface)paramString;
+      QQFileManagerUtil.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", System.currentTimeMillis() - this.a.a, "", "", "", "", l1, l2, this.a.jdField_b_of_type_Long, 0, null);
+      QQFileManagerUtil.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", System.currentTimeMillis() - this.a.a, "", "", "", "", l1, l2, this.a.jdField_b_of_type_Long, 0, null);
+    }
+    else
+    {
+      paramString = UniformDownloaderAssinfo.a;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[UniformDL][");
+      ((StringBuilder)localObject1).append(this.a.jdField_c_of_type_Long);
+      ((StringBuilder)localObject1).append("].report failed - 7");
+      QLog.i(paramString, 1, ((StringBuilder)localObject1).toString());
+    }
+    if (UniformDownloaderAppBaby.a(this.a) != null) {
+      UniformDownloaderAppBaby.a(this.a).a(this.a.d, this.a.jdField_b_of_type_Long, paramBundle);
     }
   }
   
@@ -157,7 +231,7 @@ class UniformDownloaderAppBaby$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloaderAppBaby.1
  * JD-Core Version:    0.7.0.1
  */

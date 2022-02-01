@@ -45,47 +45,47 @@ public class TelephonyJsPlugin
         paramString1 = new Intent("android.intent.action.INSERT");
         paramString1.setType("vnd.android.cursor.dir/raw_contact");
       }
-      for (;;)
+      else
       {
-        parseName((String)localObject3, str1, str2, paramString1);
-        parsePhoneNumber((JSONObject)localObject2, paramString1);
-        paramString1.putExtra("notes", str3);
-        paramString1.putExtra("company", str4);
-        paramString1.putExtra("job_title", str5);
-        paramString1.putExtra("email", str6);
-        localObject3 = new ArrayList();
-        parseNumber((JSONObject)localObject2, (ArrayList)localObject3);
-        processAddress((JSONObject)localObject2, (ArrayList)localObject3);
-        processWorkAddress((JSONObject)localObject2, (ArrayList)localObject3);
-        processHomeAddress((JSONObject)localObject2, (ArrayList)localObject3);
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          localObject2 = new ContentValues();
-          ((ContentValues)localObject2).put("mimetype", "vnd.android.cursor.item/website");
-          ((ContentValues)localObject2).put("data2", Integer.valueOf(2));
-          ((ContentValues)localObject2).put("data3", "网址");
-          ((ContentValues)localObject2).put("data1", (String)localObject1);
-          ((ArrayList)localObject3).add(localObject2);
-        }
-        if (!TextUtils.isEmpty(paramString2))
-        {
-          localObject1 = new ContentValues();
-          ((ContentValues)localObject1).put("mimetype", "vnd.android.cursor.item/nickname");
-          ((ContentValues)localObject1).put("data2", Integer.valueOf(0));
-          ((ContentValues)localObject1).put("data3", "昵称");
-          ((ContentValues)localObject1).put("data1", paramString2);
-          ((ArrayList)localObject3).add(localObject1);
-        }
-        paramString1.putParcelableArrayListExtra("data", (ArrayList)localObject3);
-        if (this.mMiniAppContext.getAttachedActivity() == null) {
-          break;
-        }
-        this.mMiniAppContext.getAttachedActivity().startActivity(paramString1);
-        return;
         paramString1 = new Intent("android.intent.action.INSERT_OR_EDIT");
         paramString1.setType("vnd.android.cursor.item/contact");
       }
-      return;
+      parseName((String)localObject3, str1, str2, paramString1);
+      parsePhoneNumber((JSONObject)localObject2, paramString1);
+      paramString1.putExtra("notes", str3);
+      paramString1.putExtra("company", str4);
+      paramString1.putExtra("job_title", str5);
+      paramString1.putExtra("email", str6);
+      localObject3 = new ArrayList();
+      parseNumber((JSONObject)localObject2, (ArrayList)localObject3);
+      processAddress((JSONObject)localObject2, (ArrayList)localObject3);
+      processWorkAddress((JSONObject)localObject2, (ArrayList)localObject3);
+      processHomeAddress((JSONObject)localObject2, (ArrayList)localObject3);
+      paramBoolean = TextUtils.isEmpty((CharSequence)localObject1);
+      if (!paramBoolean)
+      {
+        localObject2 = new ContentValues();
+        ((ContentValues)localObject2).put("mimetype", "vnd.android.cursor.item/website");
+        ((ContentValues)localObject2).put("data2", Integer.valueOf(2));
+        ((ContentValues)localObject2).put("data3", "网址");
+        ((ContentValues)localObject2).put("data1", (String)localObject1);
+        ((ArrayList)localObject3).add(localObject2);
+      }
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        localObject1 = new ContentValues();
+        ((ContentValues)localObject1).put("mimetype", "vnd.android.cursor.item/nickname");
+        ((ContentValues)localObject1).put("data2", Integer.valueOf(0));
+        ((ContentValues)localObject1).put("data3", "昵称");
+        ((ContentValues)localObject1).put("data1", paramString2);
+        ((ArrayList)localObject3).add(localObject1);
+      }
+      paramString1.putParcelableArrayListExtra("data", (ArrayList)localObject3);
+      if (this.mMiniAppContext.getAttachedActivity() != null)
+      {
+        this.mMiniAppContext.getAttachedActivity().startActivity(paramString1);
+        return;
+      }
     }
     catch (Throwable paramString1)
     {
@@ -97,13 +97,23 @@ public class TelephonyJsPlugin
   {
     if ((!TextUtils.isEmpty(paramString1)) || (!TextUtils.isEmpty(paramString2)) || (!TextUtils.isEmpty(paramString3)))
     {
-      String str = paramString1;
-      if (!TextUtils.isEmpty(paramString2)) {
-        str = paramString1 + " " + paramString2;
+      Object localObject = paramString1;
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString1);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(paramString2);
+        localObject = ((StringBuilder)localObject).toString();
       }
-      paramString1 = str;
-      if (!TextUtils.isEmpty(paramString3)) {
-        paramString1 = str + " " + paramString3;
+      paramString1 = (String)localObject;
+      if (!TextUtils.isEmpty(paramString3))
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append((String)localObject);
+        paramString1.append(" ");
+        paramString1.append(paramString3);
+        paramString1 = paramString1.toString();
       }
       paramIntent.putExtra("name", paramString1.trim());
     }
@@ -112,12 +122,14 @@ public class TelephonyJsPlugin
   private void parseNumber(JSONObject paramJSONObject, ArrayList<ContentValues> paramArrayList)
   {
     Object localObject = paramJSONObject.optString("hostNumber");
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+    Integer localInteger = Integer.valueOf(0);
     ContentValues localContentValues;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if (!bool)
     {
       localContentValues = new ContentValues();
       localContentValues.put("mimetype", "vnd.android.cursor.item/phone_v2");
-      localContentValues.put("data2", Integer.valueOf(0));
+      localContentValues.put("data2", localInteger);
       localContentValues.put("data3", "手机");
       localContentValues.put("data1", (String)localObject);
       paramArrayList.add(localContentValues);
@@ -135,7 +147,7 @@ public class TelephonyJsPlugin
     {
       localContentValues = new ContentValues();
       localContentValues.put("mimetype", "vnd.android.cursor.item/phone_v2");
-      localContentValues.put("data2", Integer.valueOf(0));
+      localContentValues.put("data2", localInteger);
       localContentValues.put("data3", "住宅传真");
       localContentValues.put("data1", (String)localObject);
       paramArrayList.add(localContentValues);
@@ -145,7 +157,7 @@ public class TelephonyJsPlugin
     {
       localObject = new ContentValues();
       ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/phone_v2");
-      ((ContentValues)localObject).put("data2", Integer.valueOf(0));
+      ((ContentValues)localObject).put("data2", localInteger);
       ((ContentValues)localObject).put("data3", "单位传真");
       ((ContentValues)localObject).put("data1", paramJSONObject);
       paramArrayList.add(localObject);
@@ -188,7 +200,17 @@ public class TelephonyJsPlugin
       localContentValues.put("mimetype", "vnd.android.cursor.item/postal-address_v2");
       localContentValues.put("data2", Integer.valueOf(1));
       localContentValues.put("data3", "住宅");
-      localContentValues.put("data1", str1 + " " + str2 + " " + str3 + " " + str4 + " " + paramJSONObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str3);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str4);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramJSONObject);
+      localContentValues.put("data1", localStringBuilder.toString());
       paramArrayList.add(localContentValues);
     }
   }
@@ -206,7 +228,17 @@ public class TelephonyJsPlugin
       localContentValues.put("mimetype", "vnd.android.cursor.item/postal-address_v2");
       localContentValues.put("data2", Integer.valueOf(1));
       localContentValues.put("data3", "住宅");
-      localContentValues.put("data1", str1 + " " + str2 + " " + str3 + " " + str4 + " " + paramJSONObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str3);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str4);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramJSONObject);
+      localContentValues.put("data1", localStringBuilder.toString());
       paramArrayList.add(localContentValues);
     }
   }
@@ -224,7 +256,17 @@ public class TelephonyJsPlugin
       localContentValues.put("mimetype", "vnd.android.cursor.item/postal-address_v2");
       localContentValues.put("data2", Integer.valueOf(2));
       localContentValues.put("data3", "单位");
-      localContentValues.put("data1", str1 + " " + str2 + " " + str3 + " " + str4 + " " + paramJSONObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str3);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str4);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramJSONObject);
+      localContentValues.put("data1", localStringBuilder.toString());
       paramArrayList.add(localContentValues);
     }
   }
@@ -261,26 +303,29 @@ public class TelephonyJsPlugin
   @JsEvent({"makePhoneCall"})
   public void handleMakePhoneCall(RequestEvent paramRequestEvent)
   {
+    boolean bool = TextUtils.isEmpty(paramRequestEvent.jsonParams);
     j = 0;
     i = j;
-    if (!TextUtils.isEmpty(paramRequestEvent.jsonParams)) {}
+    if (!bool) {}
     try
     {
       Object localObject = new JSONObject(paramRequestEvent.jsonParams).optString("phoneNumber");
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label111;
+      i = j;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("tel:");
+        localStringBuilder.append((String)localObject);
+        localObject = new Intent("android.intent.action.DIAL", Uri.parse(localStringBuilder.toString()));
+        this.mContext.startActivity((Intent)localObject);
+        i = 1;
       }
-      i = 1;
-      localObject = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + (String)localObject));
-      this.mContext.startActivity((Intent)localObject);
     }
     catch (Exception localException)
     {
       for (;;)
       {
         i = j;
-        continue;
-        i = 0;
       }
     }
     if (i != 0)
@@ -293,7 +338,7 @@ public class TelephonyJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.TelephonyJsPlugin
  * JD-Core Version:    0.7.0.1
  */

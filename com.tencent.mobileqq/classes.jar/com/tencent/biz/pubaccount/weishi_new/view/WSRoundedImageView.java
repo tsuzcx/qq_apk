@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.weishi_new.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import com.tencent.mobileqq.kandian.base.view.widget.ResizeURLImageView;
 
 public class WSRoundedImageView
   extends ResizeURLImageView
@@ -41,13 +41,14 @@ public class WSRoundedImageView
   
   public void invalidate()
   {
-    if (this.a != null) {
-      this.a.a(this);
+    RoundCornerHelper localRoundCornerHelper = this.a;
+    if (localRoundCornerHelper != null) {
+      localRoundCornerHelper.a(this);
     }
     super.invalidate();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     paramCanvas.saveLayer(this.a.jdField_a_of_type_AndroidGraphicsRectF, null, 31);
     super.onDraw(paramCanvas);
@@ -55,7 +56,7 @@ public class WSRoundedImageView
     paramCanvas.restore();
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.a.a(this, paramInt1, paramInt2);
@@ -75,7 +76,7 @@ public class WSRoundedImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView
  * JD-Core Version:    0.7.0.1
  */

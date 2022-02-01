@@ -36,7 +36,7 @@ public final class FlashChatManager$FlashPackCfg
     //   45: iload_1
     //   46: aload_0
     //   47: invokevirtual 47	org/json/JSONArray:length	()I
-    //   50: if_icmpge +52 -> 102
+    //   50: if_icmpge +61 -> 111
     //   53: aload_0
     //   54: iload_1
     //   55: invokevirtual 50	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
@@ -67,37 +67,48 @@ public final class FlashChatManager$FlashPackCfg
     //   106: iadd
     //   107: istore_1
     //   108: goto -63 -> 45
-    //   111: astore_0
-    //   112: aload_0
-    //   113: athrow
-    //   114: astore_0
-    //   115: aconst_null
-    //   116: areturn
+    //   111: aload_3
+    //   112: areturn
+    //   113: astore_0
+    //   114: aload_0
+    //   115: athrow
+    //   116: aconst_null
+    //   117: areturn
+    //   118: astore_0
+    //   119: goto -3 -> 116
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	117	0	paramString	String
+    //   0	122	0	paramString	String
     //   44	64	1	i	int
     //   97	2	2	bool	boolean
-    //   7	96	3	localFlashPackCfg	FlashPackCfg
+    //   7	105	3	localFlashPackCfg	FlashPackCfg
     //   23	65	4	localJSONObject	org.json.JSONObject
     // Exception table:
     //   from	to	target	type
-    //   0	43	111	finally
-    //   45	80	111	finally
-    //   85	98	111	finally
-    //   0	43	114	java/lang/Exception
-    //   45	80	114	java/lang/Exception
-    //   85	98	114	java/lang/Exception
+    //   0	43	113	finally
+    //   45	80	113	finally
+    //   85	98	113	finally
+    //   0	43	118	java/lang/Exception
+    //   45	80	118	java/lang/Exception
+    //   85	98	118	java/lang/Exception
   }
   
   public String toString()
   {
-    return "FlashPackCfg{version='" + this.a + '\'' + ", zipScid='" + this.b + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FlashPackCfg{version='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", zipScid='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatManager.FlashPackCfg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +16,10 @@ public class AvatarWallPagerAdapter$InnerPagerAdapter
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramViewGroup.removeView((View)paramObject);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a(paramInt), (View)paramObject);
+    paramObject = (View)paramObject;
+    paramViewGroup.removeView(paramObject);
+    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter;
+    paramViewGroup.a(paramViewGroup.a(paramInt), paramObject);
   }
   
   public int getCount()
@@ -27,7 +29,7 @@ public class AvatarWallPagerAdapter$InnerPagerAdapter
   
   public int getItemPosition(Object paramObject)
   {
-    paramObject = (AvatarWallPagerAdapter.ViewHolder)((View)paramObject).getTag(2131378883);
+    paramObject = (AvatarWallPagerAdapter.ViewHolder)((View)paramObject).getTag(2131378272);
     int i = 0;
     while (i < this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.size())
     {
@@ -45,74 +47,73 @@ public class AvatarWallPagerAdapter$InnerPagerAdapter
   {
     int i = getCount();
     if (i > 1) {
-      if (paramInt == 1) {
+      if (paramInt == 1)
+      {
         if (paramViewGroup == null)
         {
-          if ((this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get() == null) || (((View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get()).getParent() != null)) {
-            break label327;
+          if ((this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get() != null) && (((View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get()).getParent() == null)) {
+            return this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get();
           }
-          paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get();
         }
-      }
-    }
-    View localView;
-    label327:
-    do
-    {
-      do
-      {
-        return paramViewGroup;
-        if ((this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get() == null) || (((View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get()).getParent() != null))
+        else
         {
-          localView = (View)instantiateItem(null, paramInt);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localView);
-        }
-        for (;;)
-        {
-          paramViewGroup.addView(localView);
-          return localView;
-          localView = (View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get();
-        }
-        if (paramInt == i - 2) {
-          if (paramViewGroup == null)
+          if ((this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get() != null) && (((View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get()).getParent() == null))
           {
-            if ((this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b.get() != null) && (((View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b.get()).getParent() == null)) {
-              return this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b;
-            }
+            localObject = (View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference.get();
           }
           else
           {
-            if ((this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b.get() == null) || (((View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b.get()).getParent() != null))
-            {
-              localView = (View)instantiateItem(null, paramInt);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b = new SoftReference(localView);
-            }
-            for (;;)
-            {
-              paramViewGroup.addView(localView);
-              return localView;
-              localView = (View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b.get();
-            }
+            localObject = (View)instantiateItem(null, paramInt);
+            this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject);
+          }
+          paramViewGroup.addView((View)localObject);
+          return localObject;
+        }
+      }
+      else if (paramInt == i - 2) {
+        if (paramViewGroup == null)
+        {
+          if ((this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b.get() != null) && (((View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b.get()).getParent() == null)) {
+            return this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b;
           }
         }
-        localView = this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a(paramInt), this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.get(paramInt));
-        localView.setTag(2131378883, new AvatarWallPagerAdapter.ViewHolder(this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter, this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.get(paramInt)));
-        if (paramViewGroup != null)
+        else
         {
-          paramViewGroup.addView(localView);
-          return localView;
+          if ((this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b.get() != null) && (((View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b.get()).getParent() == null))
+          {
+            localObject = (View)this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b.get();
+          }
+          else
+          {
+            localObject = (View)instantiateItem(null, paramInt);
+            this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b = new SoftReference(localObject);
+          }
+          paramViewGroup.addView((View)localObject);
+          return localObject;
         }
-        paramViewGroup = localView;
-      } while (i <= 1);
+      }
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter;
+    localObject = ((AvatarWallPagerAdapter)localObject).a(((AvatarWallPagerAdapter)localObject).a(paramInt), this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.get(paramInt));
+    AvatarWallPagerAdapter localAvatarWallPagerAdapter = this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter;
+    ((View)localObject).setTag(2131378272, new AvatarWallPagerAdapter.ViewHolder(localAvatarWallPagerAdapter, localAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.get(paramInt)));
+    if (paramViewGroup != null)
+    {
+      paramViewGroup.addView((View)localObject);
+      return localObject;
+    }
+    if (i > 1)
+    {
       if (paramInt == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localView);
-        return localView;
+        this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject);
+        return localObject;
       }
-      paramViewGroup = localView;
-    } while (paramInt != i - 2);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b = new SoftReference(localView);
-    return localView;
+      if (paramInt == i - 2) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.b = new SoftReference(localObject);
+      }
+    }
+    return localObject;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -128,7 +129,7 @@ public class AvatarWallPagerAdapter$InnerPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter.InnerPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

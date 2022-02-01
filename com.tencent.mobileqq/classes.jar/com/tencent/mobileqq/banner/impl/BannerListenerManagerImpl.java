@@ -14,11 +14,12 @@ public class BannerListenerManagerImpl
   
   public void addBannerListener(BannerListener paramBannerListener)
   {
-    if (paramBannerListener == null) {}
-    while (this.bannerListenerList.contains(paramBannerListener)) {
+    if (paramBannerListener == null) {
       return;
     }
-    this.bannerListenerList.add(paramBannerListener);
+    if (!this.bannerListenerList.contains(paramBannerListener)) {
+      this.bannerListenerList.add(paramBannerListener);
+    }
   }
   
   public void notifyBannerDismiss(int paramInt)
@@ -54,7 +55,7 @@ public class BannerListenerManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.banner.impl.BannerListenerManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -34,13 +34,15 @@ public class SpringChain
     StringBuilder localStringBuilder = new StringBuilder("main spring ");
     paramInt1 = id;
     id = paramInt1 + 1;
-    localSpringConfigRegistry.addSpringConfig(localSpringConfig, paramInt1);
+    localStringBuilder.append(paramInt1);
+    localSpringConfigRegistry.addSpringConfig(localSpringConfig, localStringBuilder.toString());
     localSpringConfigRegistry = registry;
     localSpringConfig = this.mAttachmentSpringConfig;
     localStringBuilder = new StringBuilder("attachment spring ");
     paramInt1 = id;
     id = paramInt1 + 1;
-    localSpringConfigRegistry.addSpringConfig(localSpringConfig, paramInt1);
+    localStringBuilder.append(paramInt1);
+    localSpringConfigRegistry.addSpringConfig(localSpringConfig, localStringBuilder.toString());
   }
   
   public static SpringChain create()
@@ -101,40 +103,35 @@ public class SpringChain
   
   public void onSpringUpdate(Spring paramSpring)
   {
-    int j = this.mSprings.indexOf(paramSpring);
-    SpringListener localSpringListener = (SpringListener)this.mListeners.get(j);
-    int i;
-    if (j == this.mControlSpringIndex)
+    int i = this.mSprings.indexOf(paramSpring);
+    SpringListener localSpringListener = (SpringListener)this.mListeners.get(i);
+    int j = this.mControlSpringIndex;
+    if (i == j)
     {
-      i = j + 1;
-      j -= 1;
+      j = i - 1;
+      i += 1;
     }
-    for (;;)
+    else if (i < j)
     {
-      if ((i > -1) && (i < this.mSprings.size())) {
-        ((Spring)this.mSprings.get(i)).setEndValue(paramSpring.getCurrentValue());
-      }
-      if ((j > -1) && (j < this.mSprings.size())) {
-        ((Spring)this.mSprings.get(j)).setEndValue(paramSpring.getCurrentValue());
-      }
-      localSpringListener.onSpringUpdate(paramSpring);
-      return;
-      if (j < this.mControlSpringIndex)
-      {
-        j -= 1;
+      j = i - 1;
+      i = -1;
+    }
+    else
+    {
+      if (i > j) {
+        i += 1;
+      } else {
         i = -1;
       }
-      else if (j > this.mControlSpringIndex)
-      {
-        i = j + 1;
-        j = -1;
-      }
-      else
-      {
-        j = -1;
-        i = -1;
-      }
+      j = -1;
     }
+    if ((i > -1) && (i < this.mSprings.size())) {
+      ((Spring)this.mSprings.get(i)).setEndValue(paramSpring.getCurrentValue());
+    }
+    if ((j > -1) && (j < this.mSprings.size())) {
+      ((Spring)this.mSprings.get(j)).setEndValue(paramSpring.getCurrentValue());
+    }
+    localSpringListener.onSpringUpdate(paramSpring);
   }
   
   public SpringChain setControlSpringIndex(int paramInt)
@@ -157,7 +154,7 @@ public class SpringChain
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.animation.rebound.SpringChain
  * JD-Core Version:    0.7.0.1
  */

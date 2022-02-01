@@ -30,55 +30,62 @@ public class LiteUIJs
   @NewJavascriptInterface
   public void openUrl(Map<String, String> paramMap)
   {
-    String str1 = (String)paramMap.get("url");
-    Uri.parse(str1);
-    String str2 = (String)paramMap.get("target");
+    Object localObject = (String)paramMap.get("url");
+    Uri.parse((String)localObject);
+    String str = (String)paramMap.get("target");
     paramMap = (String)paramMap.get("no_history");
+    label260:
     try
     {
-      i = Integer.valueOf(str2).intValue();
-      switch (i)
-      {
-      }
+      i = Integer.valueOf(str).intValue();
     }
     catch (Exception paramMap)
     {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            Log.e("LiteUIJs", "illegal target");
-            int i = 1;
-          }
-        } while (TextUtils.isEmpty(str1));
-        if ((str1.startsWith("http://")) || (str1.startsWith("https://")) || (str1.startsWith("file://")))
-        {
-          paramMap = new Intent(this.mContext, QQBrowserActivity.class);
-          paramMap.putExtra("url", str1);
-          paramMap.putExtra("fragmentClass", LiteLiveWebViewFragment.class);
-          paramMap.addFlags(268435456);
-          this.mContext.startActivity(paramMap);
-          return;
-        }
-        if (!str1.startsWith("mqq://")) {
-          break;
-        }
-        paramMap = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.mContext, str1);
-      } while (paramMap == null);
-      paramMap.a();
-      return;
-      try
-      {
-        paramMap = new Intent("android.intent.action.VIEW", Uri.parse(str1));
-        paramMap.setFlags(268435456);
-        this.mContext.startActivity(paramMap);
+      int i;
+      label54:
+      break label54;
+    }
+    Log.e("LiteUIJs", "illegal target");
+    i = 1;
+    if (i != 0)
+    {
+      if (i != 1) {
         return;
       }
-      catch (Exception paramMap)
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        QLog.e("LiteUIJs", 1, "start activity error, e =" + paramMap.toString());
+        if ((!((String)localObject).startsWith("http://")) && (!((String)localObject).startsWith("https://")) && (!((String)localObject).startsWith("file://")))
+        {
+          if (((String)localObject).startsWith("mqq://"))
+          {
+            paramMap = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.mContext, (String)localObject);
+            if (paramMap == null) {
+              break label260;
+            }
+            paramMap.a();
+            return;
+          }
+          try
+          {
+            paramMap = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject));
+            paramMap.setFlags(268435456);
+            this.mContext.startActivity(paramMap);
+            return;
+          }
+          catch (Exception paramMap)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("start activity error, e =");
+            ((StringBuilder)localObject).append(paramMap.toString());
+            QLog.e("LiteUIJs", 1, ((StringBuilder)localObject).toString());
+            return;
+          }
+        }
+        paramMap = new Intent(this.mContext, QQBrowserActivity.class);
+        paramMap.putExtra("url", (String)localObject);
+        paramMap.putExtra("fragmentClass", LiteLiveWebViewFragment.class);
+        paramMap.addFlags(268435456);
+        this.mContext.startActivity(paramMap);
       }
     }
   }
@@ -91,31 +98,34 @@ public class LiteUIJs
     try
     {
       i = Integer.parseInt(paramMap);
-      switch (i)
-      {
-      }
     }
     catch (Exception paramMap)
     {
-      do
+      int i;
+      label32:
+      break label32;
+    }
+    QLog.e("LiteUIJs", 1, "illegal target");
+    i = 1;
+    if (i != 0)
+    {
+      if (i != 1) {
+        return;
+      }
+      if ((!TextUtils.isEmpty(str)) && ((str.startsWith("http://")) || (str.startsWith("https://")) || (str.startsWith("file://"))))
       {
-        for (;;)
-        {
-          QLog.e("LiteUIJs", 1, "illegal target");
-          int i = 1;
-        }
-      } while ((TextUtils.isEmpty(str)) || ((!str.startsWith("http://")) && (!str.startsWith("https://")) && (!str.startsWith("file://"))));
-      paramMap = new Intent(this.mContext, QQBrowserActivity.class);
-      paramMap.putExtra("url", str);
-      paramMap.putExtra("fragmentClass", LiteLiveWebViewFragment.class);
-      paramMap.addFlags(268435456);
-      this.mContext.startActivity(paramMap);
+        paramMap = new Intent(this.mContext, QQBrowserActivity.class);
+        paramMap.putExtra("url", str);
+        paramMap.putExtra("fragmentClass", LiteLiveWebViewFragment.class);
+        paramMap.addFlags(268435456);
+        this.mContext.startActivity(paramMap);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.js.LiteUIJs
  * JD-Core Version:    0.7.0.1
  */

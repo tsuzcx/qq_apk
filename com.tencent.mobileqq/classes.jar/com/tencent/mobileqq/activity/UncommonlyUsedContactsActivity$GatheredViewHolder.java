@@ -2,10 +2,10 @@ package com.tencent.mobileqq.activity;
 
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.adapter.FacePreloadHolder.ViewHolder;
 
 class UncommonlyUsedContactsActivity$GatheredViewHolder
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends FacePreloadHolder.ViewHolder
 {
   int jdField_a_of_type_Int;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -19,7 +19,7 @@ class UncommonlyUsedContactsActivity$GatheredViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity.GatheredViewHolder
  * JD-Core Version:    0.7.0.1
  */

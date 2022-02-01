@@ -21,14 +21,15 @@ public final class Address
   
   public static Address[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new Address[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new Address[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static Address parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -50,16 +51,17 @@ public final class Address
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
     int i = j;
     if (!this.url.equals("")) {
       i = j + CodedOutputByteBufferNano.computeStringSize(1, this.url);
     }
+    int k = this.bitrate;
     j = i;
-    if (this.bitrate != 0) {
-      j = i + CodedOutputByteBufferNano.computeInt32Size(2, this.bitrate);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(2, k);
     }
     i = j;
     if (!this.format.equals("")) {
@@ -73,23 +75,32 @@ public final class Address
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 10: 
-        this.url = paramCodedInputByteBufferNano.readString();
-        break;
-      case 16: 
-        this.bitrate = paramCodedInputByteBufferNano.readInt32();
+      if (i == 0) {
         break;
       }
-      this.format = paramCodedInputByteBufferNano.readString();
+      if (i != 10)
+      {
+        if (i != 16)
+        {
+          if (i != 26)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.format = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.bitrate = paramCodedInputByteBufferNano.readInt32();
+        }
+      }
+      else {
+        this.url = paramCodedInputByteBufferNano.readString();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -97,8 +108,9 @@ public final class Address
     if (!this.url.equals("")) {
       paramCodedOutputByteBufferNano.writeString(1, this.url);
     }
-    if (this.bitrate != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(2, this.bitrate);
+    int i = this.bitrate;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(2, i);
     }
     if (!this.format.equals("")) {
       paramCodedOutputByteBufferNano.writeString(3, this.format);
@@ -108,7 +120,7 @@ public final class Address
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.roomAccess.roomAccess.nano.Address
  * JD-Core Version:    0.7.0.1
  */

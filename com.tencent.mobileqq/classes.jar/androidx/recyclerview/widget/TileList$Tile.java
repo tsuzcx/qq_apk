@@ -16,7 +16,8 @@ public class TileList$Tile<T>
   
   boolean containsPosition(int paramInt)
   {
-    return (this.mStartPosition <= paramInt) && (paramInt < this.mStartPosition + this.mItemCount);
+    int i = this.mStartPosition;
+    return (i <= paramInt) && (paramInt < i + this.mItemCount);
   }
   
   T getByPosition(int paramInt)
@@ -26,7 +27,7 @@ public class TileList$Tile<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.TileList.Tile
  * JD-Core Version:    0.7.0.1
  */

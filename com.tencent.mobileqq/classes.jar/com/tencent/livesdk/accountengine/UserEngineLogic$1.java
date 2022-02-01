@@ -34,7 +34,11 @@ class UserEngineLogic$1
     this.val$loginRequest.flushToSp(UserEngineLogic.access$000(this.this$0));
     ((LogSdkServiceInterface)UserEngineLogic.access$100(this.this$0).getService(LogSdkServiceInterface.class)).setUid(String.valueOf(paramLoginInfo.uid));
     ((LogSdkServiceInterface)UserEngineLogic.access$100(this.this$0).getService(LogSdkServiceInterface.class)).upload(String.valueOf(paramLoginInfo.uid));
-    UserEngineLogic.access$200(this.this$0).i("UserEngineLogic", "new ticket OK :) tinyid: " + paramLoginInfo.tinyid, new Object[0]);
+    LogInterface localLogInterface = UserEngineLogic.access$200(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("new ticket OK :) tinyid: ");
+    localStringBuilder.append(paramLoginInfo.tinyid);
+    localLogInterface.i("UserEngineLogic", localStringBuilder.toString(), new Object[0]);
     UserEngineLogic.access$200(this.this$0).i("UserEngineLogic", "now create channel...", new Object[0]);
     ((CrashInterface)UserEngineLogic.access$100(this.this$0).getService(CrashInterface.class)).setUid(paramLoginInfo.uid);
     ((ChannelInterface)UserEngineLogic.access$100(this.this$0).getService(ChannelInterface.class)).setLoginInfo(paramLoginInfo);
@@ -45,7 +49,7 @@ class UserEngineLogic$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.accountengine.UserEngineLogic.1
  * JD-Core Version:    0.7.0.1
  */

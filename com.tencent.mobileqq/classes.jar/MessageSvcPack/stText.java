@@ -38,17 +38,19 @@ public final class stText
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vMsg != null) {
-      paramJceOutputStream.write(this.vMsg, 0);
+    byte[] arrayOfByte = this.vMsg;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 1);
+    arrayOfByte = this.strUrl;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.stText
  * JD-Core Version:    0.7.0.1
  */

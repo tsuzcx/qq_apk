@@ -20,7 +20,10 @@ public abstract class TroopPlusPanelAppLoader
     localPluginData.e = paramPlusPanelAppInfo.actionType;
     localPluginData.d = paramPlusPanelAppInfo.action;
     localPluginData.jdField_a_of_type_JavaLangString = a(paramPlusPanelAppInfo);
-    localPluginData.jdField_b_of_type_JavaLangString = (localPluginData.jdField_a_of_type_JavaLangString + HardCodeUtil.a(2131708286));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localPluginData.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(HardCodeUtil.a(2131708295));
+    localPluginData.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     localPluginData.f = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString;
     int i = paramPlusPanelAppInfo.getAppID();
     if ((i == 1104864062) || (i == 101761547) || (i == 101793773) || (i == 101817424)) {
@@ -43,7 +46,7 @@ public abstract class TroopPlusPanelAppLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.troop.TroopPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

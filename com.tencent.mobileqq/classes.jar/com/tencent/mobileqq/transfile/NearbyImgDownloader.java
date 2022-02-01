@@ -7,10 +7,10 @@ import com.tencent.image.JobQueue;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.HeadDpcCfg;
 import com.tencent.mobileqq.config.PicIPManager;
+import com.tencent.mobileqq.emoticonview.LooperGifImage;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.transfile.dns.BaseInnerDns;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.mobileqq.vas.LooperGifImage;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.File;
@@ -42,117 +42,134 @@ public class NearbyImgDownloader
   
   public static List<String> getHostIps(String paramString)
   {
-    int i = 28;
     ArrayList localArrayList = new ArrayList();
-    int k;
-    Object localObject;
-    int j;
-    String str;
     if (paramString != null)
     {
       long l = SystemClock.elapsedRealtime();
       boolean bool = HeadDpcCfg.a().a();
-      k = NetConnInfoCenter.getActiveNetIpFamily(true);
-      if (k != 3) {
-        break label360;
+      int k = NetConnInfoCenter.getActiveNetIpFamily(true);
+      int i = 28;
+      Object localObject;
+      int j;
+      if (k == 3)
+      {
+        localObject = InnerDns.getInstance();
+        if (bool) {
+          j = 28;
+        } else {
+          j = 1;
+        }
+        localObject = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1001, true, j);
+        if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
+          localArrayList.add(((ArrayList)localObject).get(0));
+        }
+        localObject = InnerDns.getInstance();
+        if (bool) {
+          i = 1;
+        }
+        localObject = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1001, true, i);
+        if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
+          localArrayList.add(((ArrayList)localObject).get(0));
+        }
       }
-      localObject = InnerDns.getInstance();
-      if (!bool) {
-        break label355;
+      else
+      {
+        if (k == 2) {
+          j = 1;
+        } else {
+          j = 0;
+        }
+        localObject = InnerDns.getInstance();
+        if (j == 0) {
+          i = 1;
+        }
+        localObject = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1001, true, i);
+        if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
+          localArrayList.add(((ArrayList)localObject).get(0));
+        }
       }
-      j = 28;
-      localObject = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1001, true, j);
-      if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
-        localArrayList.add(((ArrayList)localObject).get(0));
-      }
-      localObject = InnerDns.getInstance();
-      if (bool) {
-        i = 1;
-      }
-      localObject = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1001, true, i);
-      if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
-        localArrayList.add(((ArrayList)localObject).get(0));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyImgDownloader", 2, "convertURL: " + paramString.toString() + " ip_zhitongche cost: " + (SystemClock.elapsedRealtime() - l) + " ipType=" + k + " bPrefIpv6=" + bool + " ips=" + Arrays.toString(localArrayList.toArray()));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("convertURL: ");
+        ((StringBuilder)localObject).append(paramString.toString());
+        ((StringBuilder)localObject).append(" ip_zhitongche cost: ");
+        ((StringBuilder)localObject).append(SystemClock.elapsedRealtime() - l);
+        ((StringBuilder)localObject).append(" ipType=");
+        ((StringBuilder)localObject).append(k);
+        ((StringBuilder)localObject).append(" bPrefIpv6=");
+        ((StringBuilder)localObject).append(bool);
+        ((StringBuilder)localObject).append(" ips=");
+        ((StringBuilder)localObject).append(Arrays.toString(localArrayList.toArray()));
+        QLog.i("NearbyImgDownloader", 2, ((StringBuilder)localObject).toString());
       }
       if ((localArrayList.size() == 0) && (k != 2))
       {
-        localObject = null;
-        str = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadDirectIP");
-        if (!"p.qpic.cn".equals(paramString)) {
-          break label429;
+        localObject = getTmp(paramString);
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          localArrayList.add(localObject);
         }
-        localObject = PicIPManager.a(2);
-      }
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localArrayList.add(localObject);
       }
       if (localArrayList.size() < 2) {
         localArrayList.add(paramString);
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyImgDownloader", 2, "convertURL urlStr end: ips=" + Arrays.toString(localArrayList.toArray()));
-      }
-      return localArrayList;
-      label355:
-      j = 1;
-      break;
-      label360:
-      if (k == 2)
+      if (QLog.isColorLevel())
       {
-        j = 1;
-        label367:
-        localObject = InnerDns.getInstance();
-        if (j == 0) {
-          break label424;
-        }
-      }
-      for (;;)
-      {
-        localObject = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1001, true, i);
-        if ((localObject == null) || (((ArrayList)localObject).size() <= 0)) {
-          break;
-        }
-        localArrayList.add(((ArrayList)localObject).get(0));
-        break;
-        j = 0;
-        break label367;
-        label424:
-        i = 1;
-      }
-      label429:
-      if ("p.qlogo.cn".equals(paramString)) {
-        localObject = PicIPManager.a(1);
-      } else if ("ugc.qpic.cn".equals(paramString)) {
-        localObject = PicIPManager.a(8, str);
-      } else if (isQQHeadHost(paramString)) {
-        localObject = PicIPManager.a(0);
-      } else if ("i.gtimg.cn".equals(paramString)) {
-        localObject = PicIPManager.b(FMTSrvAddrProvider.getInstance().getAllIpList(14));
-      } else if ("imgcache.qq.com".equals(paramString)) {
-        localObject = PicIPManager.a(FMTSrvAddrProvider.getInstance().getAllIpList(12));
-      } else if (isAQpicCn(paramString)) {
-        localObject = PicIPManager.a(9, str);
-      } else if (isQzsQqCom(paramString)) {
-        localObject = PicIPManager.a(11, str);
-      } else if (isQzoneStyleGtimgCn(paramString)) {
-        localObject = PicIPManager.a(10, str);
-      } else if ("pgdt.gtimg.cn".equals(paramString)) {
-        localObject = PicIPManager.a(3);
-      } else if ("sqimg.qq.com".equals(paramString)) {
-        localObject = PicIPManager.a(4);
-      } else if ("download.wegame.qq.com".equals(paramString)) {
-        localObject = PicIPManager.a(5);
-      } else if ("wfqqreader.3g.qq.com".equals(paramString)) {
-        localObject = PicIPManager.a(6);
-      } else if ("buluo.qq.com".equals(paramString)) {
-        localObject = PicIPManager.a(7);
+        paramString = new StringBuilder();
+        paramString.append("convertURL urlStr end: ips=");
+        paramString.append(Arrays.toString(localArrayList.toArray()));
+        QLog.i("NearbyImgDownloader", 2, paramString.toString());
       }
     }
+    return localArrayList;
+  }
+  
+  private static String getTmp(String paramString)
+  {
+    String str = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadDirectIP");
+    if ("p.qpic.cn".equals(paramString)) {
+      return PicIPManager.a(2);
+    }
+    if ("p.qlogo.cn".equals(paramString)) {
+      return PicIPManager.a(1);
+    }
+    if ("ugc.qpic.cn".equals(paramString)) {
+      return PicIPManager.a(8, str);
+    }
+    if (isQQHeadHost(paramString)) {
+      return PicIPManager.a(0);
+    }
+    if ("i.gtimg.cn".equals(paramString)) {
+      return PicIPManager.b(FMTSrvAddrProvider.getInstance().getAllIpList(14));
+    }
+    if ("imgcache.qq.com".equals(paramString)) {
+      return PicIPManager.a(FMTSrvAddrProvider.getInstance().getAllIpList(12));
+    }
+    if (isAQpicCn(paramString)) {
+      return PicIPManager.a(9, str);
+    }
+    if (isQzsQqCom(paramString)) {
+      return PicIPManager.a(11, str);
+    }
+    if (isQzoneStyleGtimgCn(paramString)) {
+      return PicIPManager.a(10, str);
+    }
+    if ("pgdt.gtimg.cn".equals(paramString)) {
+      return PicIPManager.a(3);
+    }
+    if ("sqimg.qq.com".equals(paramString)) {
+      return PicIPManager.a(4);
+    }
+    if ("download.wegame.qq.com".equals(paramString)) {
+      return PicIPManager.a(5);
+    }
+    if ("wfqqreader.3g.qq.com".equals(paramString)) {
+      return PicIPManager.a(6);
+    }
+    if ("buluo.qq.com".equals(paramString)) {
+      return PicIPManager.a(7);
+    }
+    return null;
   }
   
   public static boolean isAQpicCn(String paramString)
@@ -189,20 +206,44 @@ public class NearbyImgDownloader
   
   private void logDownloadEnd(String paramString, boolean paramBoolean, long paramLong)
   {
+    StringBuilder localStringBuilder;
     if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyImgDownloader", 2, "download img end url: " + paramString + " " + paramBoolean + " " + paramLong);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("download img end url: ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(paramBoolean);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(paramLong);
+        QLog.i("NearbyImgDownloader", 2, localStringBuilder.toString());
       }
-      return;
     }
-    QLog.w("NearbyImgDownloader", 1, "download img end url: " + paramString + " " + paramBoolean + " " + paramLong);
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download img end url: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramLong);
+      QLog.w("NearbyImgDownloader", 1, localStringBuilder.toString());
+    }
   }
   
   private void logDownloadStart(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyImgDownloader", 2, "download img start url: " + paramString + " time: " + SystemClock.elapsedRealtime());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download img start url: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" time: ");
+      localStringBuilder.append(SystemClock.elapsedRealtime());
+      QLog.i("NearbyImgDownloader", 2, localStringBuilder.toString());
     }
   }
   
@@ -210,200 +251,214 @@ public class NearbyImgDownloader
   private boolean writeToFile(java.io.InputStream paramInputStream, long paramLong, DiskCache.Editor paramEditor, URLDrawableHandler paramURLDrawableHandler)
   {
     // Byte code:
-    //   0: new 288	java/io/BufferedInputStream
+    //   0: new 292	java/io/BufferedInputStream
     //   3: dup
     //   4: aload_1
     //   5: ldc 7
-    //   7: invokespecial 291	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   10: astore 13
-    //   12: ldc 7
-    //   14: newarray byte
-    //   16: astore 14
-    //   18: new 293	java/io/FileOutputStream
-    //   21: dup
-    //   22: aload 4
-    //   24: getfield 299	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
-    //   27: iconst_0
-    //   28: invokespecial 302	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   31: astore 4
+    //   7: invokespecial 295	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   10: astore 16
+    //   12: iconst_0
+    //   13: istore 12
+    //   15: iconst_0
+    //   16: istore 13
+    //   18: aconst_null
+    //   19: astore 14
+    //   21: aconst_null
+    //   22: astore 15
+    //   24: aload 15
+    //   26: astore_1
+    //   27: ldc 7
+    //   29: newarray byte
+    //   31: astore 17
     //   33: lconst_0
     //   34: lstore 8
-    //   36: aload 4
+    //   36: aload 15
     //   38: astore_1
-    //   39: aload 13
-    //   41: aload 14
-    //   43: invokevirtual 308	java/io/InputStream:read	([B)I
-    //   46: istore 6
-    //   48: iload 6
-    //   50: iconst_m1
-    //   51: if_icmpeq +154 -> 205
-    //   54: aload 4
-    //   56: astore_1
-    //   57: aload 4
-    //   59: aload 14
-    //   61: iconst_0
-    //   62: iload 6
-    //   64: invokevirtual 312	java/io/FileOutputStream:write	([BII)V
-    //   67: lload 8
-    //   69: iload 6
-    //   71: i2l
-    //   72: ladd
-    //   73: lstore 10
-    //   75: aload 4
-    //   77: astore_1
-    //   78: lload 10
-    //   80: l2f
-    //   81: lload_2
-    //   82: l2f
-    //   83: fdiv
-    //   84: ldc_w 313
-    //   87: fmul
-    //   88: f2i
-    //   89: istore 7
-    //   91: aload 4
-    //   93: astore_1
-    //   94: aload 5
-    //   96: iload 7
-    //   98: invokeinterface 318 2 0
-    //   103: lload 10
-    //   105: lstore 8
-    //   107: aload 4
-    //   109: astore_1
-    //   110: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   113: ifeq -77 -> 36
-    //   116: aload 4
-    //   118: astore_1
-    //   119: ldc 19
-    //   121: iconst_2
-    //   122: new 119	java/lang/StringBuilder
-    //   125: dup
-    //   126: invokespecial 120	java/lang/StringBuilder:<init>	()V
-    //   129: ldc_w 320
-    //   132: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   135: iload 7
-    //   137: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   140: ldc_w 322
-    //   143: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: iload 6
-    //   148: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   151: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   154: invokestatic 162	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   157: lload 10
-    //   159: lstore 8
-    //   161: goto -125 -> 36
-    //   164: astore 5
-    //   166: aload 4
-    //   168: astore_1
-    //   169: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   172: ifeq +17 -> 189
-    //   175: aload 4
-    //   177: astore_1
-    //   178: ldc 19
-    //   180: iconst_2
-    //   181: aload 5
-    //   183: invokevirtual 323	java/io/IOException:toString	()Ljava/lang/String;
-    //   186: invokestatic 277	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   189: iconst_0
-    //   190: istore 12
-    //   192: aload 13
-    //   194: invokevirtual 326	java/io/InputStream:close	()V
-    //   197: aload 4
-    //   199: invokevirtual 327	java/io/FileOutputStream:close	()V
-    //   202: iload 12
-    //   204: ireturn
-    //   205: aload 4
-    //   207: astore_1
-    //   208: aload 4
-    //   210: invokevirtual 330	java/io/FileOutputStream:flush	()V
-    //   213: iconst_1
-    //   214: istore 12
-    //   216: aload 13
-    //   218: invokevirtual 326	java/io/InputStream:close	()V
-    //   221: aload 4
-    //   223: invokevirtual 327	java/io/FileOutputStream:close	()V
-    //   226: iconst_1
-    //   227: ireturn
-    //   228: astore_1
-    //   229: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   232: ifeq -30 -> 202
-    //   235: ldc 19
-    //   237: iconst_2
-    //   238: aload_1
-    //   239: invokevirtual 331	java/lang/Exception:toString	()Ljava/lang/String;
-    //   242: invokestatic 277	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   245: iconst_1
-    //   246: ireturn
-    //   247: astore_1
-    //   248: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   251: ifeq -49 -> 202
-    //   254: ldc 19
-    //   256: iconst_2
-    //   257: aload_1
-    //   258: invokevirtual 331	java/lang/Exception:toString	()Ljava/lang/String;
-    //   261: invokestatic 277	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   264: iconst_0
-    //   265: ireturn
-    //   266: astore 4
-    //   268: aconst_null
-    //   269: astore_1
-    //   270: aload 13
-    //   272: invokevirtual 326	java/io/InputStream:close	()V
-    //   275: aload_1
-    //   276: invokevirtual 327	java/io/FileOutputStream:close	()V
-    //   279: aload 4
-    //   281: athrow
+    //   39: new 297	java/io/FileOutputStream
+    //   42: dup
+    //   43: aload 4
+    //   45: getfield 303	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
+    //   48: iconst_0
+    //   49: invokespecial 306	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   52: astore 4
+    //   54: aload 16
+    //   56: aload 17
+    //   58: invokevirtual 312	java/io/InputStream:read	([B)I
+    //   61: istore 6
+    //   63: iload 6
+    //   65: iconst_m1
+    //   66: if_icmpeq +108 -> 174
+    //   69: aload 4
+    //   71: aload 17
+    //   73: iconst_0
+    //   74: iload 6
+    //   76: invokevirtual 316	java/io/FileOutputStream:write	([BII)V
+    //   79: lload 8
+    //   81: iload 6
+    //   83: i2l
+    //   84: ladd
+    //   85: lstore 10
+    //   87: lload 10
+    //   89: l2f
+    //   90: lload_2
+    //   91: l2f
+    //   92: fdiv
+    //   93: ldc_w 317
+    //   96: fmul
+    //   97: f2i
+    //   98: istore 7
+    //   100: aload 5
+    //   102: iload 7
+    //   104: invokeinterface 322 2 0
+    //   109: lload 10
+    //   111: lstore 8
+    //   113: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   116: ifeq -62 -> 54
+    //   119: new 119	java/lang/StringBuilder
+    //   122: dup
+    //   123: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   126: astore_1
+    //   127: aload_1
+    //   128: ldc_w 324
+    //   131: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: pop
+    //   135: aload_1
+    //   136: iload 7
+    //   138: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   141: pop
+    //   142: aload_1
+    //   143: ldc_w 326
+    //   146: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: pop
+    //   150: aload_1
+    //   151: iload 6
+    //   153: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   156: pop
+    //   157: ldc 19
+    //   159: iconst_2
+    //   160: aload_1
+    //   161: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   164: invokestatic 162	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   167: lload 10
+    //   169: lstore 8
+    //   171: goto -117 -> 54
+    //   174: aload 4
+    //   176: invokevirtual 329	java/io/FileOutputStream:flush	()V
+    //   179: iconst_1
+    //   180: istore 12
+    //   182: iconst_1
+    //   183: istore 13
+    //   185: aload 16
+    //   187: invokevirtual 332	java/io/InputStream:close	()V
+    //   190: aload 4
+    //   192: invokevirtual 333	java/io/FileOutputStream:close	()V
+    //   195: iconst_1
+    //   196: ireturn
+    //   197: astore_1
+    //   198: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   201: ifeq +95 -> 296
+    //   204: iload 13
+    //   206: istore 12
+    //   208: ldc 19
+    //   210: iconst_2
+    //   211: aload_1
+    //   212: invokevirtual 334	java/lang/Exception:toString	()Ljava/lang/String;
+    //   215: invokestatic 281	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   218: iload 12
+    //   220: ireturn
+    //   221: astore_1
+    //   222: goto +77 -> 299
+    //   225: astore 5
+    //   227: goto +20 -> 247
+    //   230: astore 5
+    //   232: aload_1
+    //   233: astore 4
+    //   235: aload 5
+    //   237: astore_1
+    //   238: goto +61 -> 299
+    //   241: astore 5
+    //   243: aload 14
+    //   245: astore 4
+    //   247: aload 4
+    //   249: astore_1
+    //   250: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   253: ifeq +17 -> 270
+    //   256: aload 4
+    //   258: astore_1
+    //   259: ldc 19
+    //   261: iconst_2
+    //   262: aload 5
+    //   264: invokevirtual 335	java/io/IOException:toString	()Ljava/lang/String;
+    //   267: invokestatic 281	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   270: aload 16
+    //   272: invokevirtual 332	java/io/InputStream:close	()V
+    //   275: aload 4
+    //   277: invokevirtual 333	java/io/FileOutputStream:close	()V
+    //   280: iconst_0
+    //   281: ireturn
     //   282: astore_1
     //   283: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   286: ifeq -7 -> 279
-    //   289: ldc 19
-    //   291: iconst_2
-    //   292: aload_1
-    //   293: invokevirtual 331	java/lang/Exception:toString	()Ljava/lang/String;
-    //   296: invokestatic 277	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   299: goto -20 -> 279
-    //   302: astore 4
-    //   304: goto -34 -> 270
-    //   307: astore 5
-    //   309: aconst_null
-    //   310: astore 4
-    //   312: goto -146 -> 166
+    //   286: ifeq +10 -> 296
+    //   289: iload 13
+    //   291: istore 12
+    //   293: goto -85 -> 208
+    //   296: iload 12
+    //   298: ireturn
+    //   299: aload 16
+    //   301: invokevirtual 332	java/io/InputStream:close	()V
+    //   304: aload 4
+    //   306: invokevirtual 333	java/io/FileOutputStream:close	()V
+    //   309: goto +22 -> 331
+    //   312: astore 4
+    //   314: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   317: ifeq +14 -> 331
+    //   320: ldc 19
+    //   322: iconst_2
+    //   323: aload 4
+    //   325: invokevirtual 334	java/lang/Exception:toString	()Ljava/lang/String;
+    //   328: invokestatic 281	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   331: goto +5 -> 336
+    //   334: aload_1
+    //   335: athrow
+    //   336: goto -2 -> 334
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	315	0	this	NearbyImgDownloader
-    //   0	315	1	paramInputStream	java.io.InputStream
-    //   0	315	2	paramLong	long
-    //   0	315	4	paramEditor	DiskCache.Editor
-    //   0	315	5	paramURLDrawableHandler	URLDrawableHandler
-    //   46	101	6	i	int
-    //   89	47	7	j	int
-    //   34	126	8	l1	long
-    //   73	85	10	l2	long
-    //   190	25	12	bool	boolean
-    //   10	261	13	localBufferedInputStream	java.io.BufferedInputStream
-    //   16	44	14	arrayOfByte	byte[]
+    //   0	339	0	this	NearbyImgDownloader
+    //   0	339	1	paramInputStream	java.io.InputStream
+    //   0	339	2	paramLong	long
+    //   0	339	4	paramEditor	DiskCache.Editor
+    //   0	339	5	paramURLDrawableHandler	URLDrawableHandler
+    //   61	91	6	i	int
+    //   98	39	7	j	int
+    //   34	136	8	l1	long
+    //   85	83	10	l2	long
+    //   13	284	12	bool1	boolean
+    //   16	274	13	bool2	boolean
+    //   19	225	14	localObject1	Object
+    //   22	15	15	localObject2	Object
+    //   10	290	16	localBufferedInputStream	java.io.BufferedInputStream
+    //   31	41	17	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   39	48	164	java/io/IOException
-    //   57	67	164	java/io/IOException
-    //   78	91	164	java/io/IOException
-    //   94	103	164	java/io/IOException
-    //   110	116	164	java/io/IOException
-    //   119	157	164	java/io/IOException
-    //   208	213	164	java/io/IOException
-    //   216	226	228	java/lang/Exception
-    //   192	202	247	java/lang/Exception
-    //   12	33	266	finally
-    //   270	279	282	java/lang/Exception
-    //   39	48	302	finally
-    //   57	67	302	finally
-    //   78	91	302	finally
-    //   94	103	302	finally
-    //   110	116	302	finally
-    //   119	157	302	finally
-    //   169	175	302	finally
-    //   178	189	302	finally
-    //   208	213	302	finally
-    //   12	33	307	java/io/IOException
+    //   185	195	197	java/lang/Exception
+    //   54	63	221	finally
+    //   69	79	221	finally
+    //   87	109	221	finally
+    //   113	167	221	finally
+    //   174	179	221	finally
+    //   54	63	225	java/io/IOException
+    //   69	79	225	java/io/IOException
+    //   87	109	225	java/io/IOException
+    //   113	167	225	java/io/IOException
+    //   174	179	225	java/io/IOException
+    //   27	33	230	finally
+    //   39	54	230	finally
+    //   250	256	230	finally
+    //   259	270	230	finally
+    //   27	33	241	java/io/IOException
+    //   39	54	241	java/io/IOException
+    //   270	280	282	java/lang/Exception
+    //   299	309	312	java/lang/Exception
   }
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -420,370 +475,9 @@ public class NearbyImgDownloader
     return null;
   }
   
-  /* Error */
   public File downloadImage(DiskCache.Editor paramEditor, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_2
-    //   2: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   5: invokespecial 366	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadStart	(Ljava/lang/String;)V
-    //   8: aload_3
-    //   9: invokeinterface 369 1 0
-    //   14: aload_2
-    //   15: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   18: ldc_w 371
-    //   21: invokevirtual 374	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   24: ifeq +223 -> 247
-    //   27: aload_2
-    //   28: aload_2
-    //   29: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   32: ldc_w 371
-    //   35: ldc_w 376
-    //   38: invokevirtual 379	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   41: putfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   44: new 381	java/io/File
-    //   47: dup
-    //   48: aload_2
-    //   49: getfield 385	com/tencent/image/DownloadParams:url	Ljava/net/URL;
-    //   52: invokevirtual 57	java/net/URL:getFile	()Ljava/lang/String;
-    //   55: invokespecial 386	java/io/File:<init>	(Ljava/lang/String;)V
-    //   58: astore 8
-    //   60: aload 8
-    //   62: invokevirtual 389	java/io/File:exists	()Z
-    //   65: ifeq +161 -> 226
-    //   68: aload 8
-    //   70: invokevirtual 392	java/io/File:isFile	()Z
-    //   73: ifeq +153 -> 226
-    //   76: new 288	java/io/BufferedInputStream
-    //   79: dup
-    //   80: new 394	java/io/FileInputStream
-    //   83: dup
-    //   84: aload 8
-    //   86: invokespecial 397	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   89: invokespecial 400	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   92: astore 9
-    //   94: iconst_0
-    //   95: istore 4
-    //   97: aload_0
-    //   98: aload 9
-    //   100: aload 8
-    //   102: invokevirtual 403	java/io/File:length	()J
-    //   105: aload_1
-    //   106: aload_3
-    //   107: invokespecial 41	com/tencent/mobileqq/transfile/NearbyImgDownloader:writeToFile	(Ljava/io/InputStream;JLcom/tencent/mobileqq/transfile/DiskCache$Editor;Lcom/tencent/image/URLDrawableHandler;)Z
-    //   110: ifeq +30 -> 140
-    //   113: aload_3
-    //   114: aload 8
-    //   116: invokevirtual 403	java/io/File:length	()J
-    //   119: invokeinterface 407 3 0
-    //   124: aload_0
-    //   125: aload_2
-    //   126: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   129: iconst_1
-    //   130: aload 8
-    //   132: invokevirtual 403	java/io/File:length	()J
-    //   135: invokespecial 409	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
-    //   138: aconst_null
-    //   139: areturn
-    //   140: iload 4
-    //   142: iconst_3
-    //   143: if_icmpne +24 -> 167
-    //   146: aload_3
-    //   147: iconst_4
-    //   148: invokeinterface 412 2 0
-    //   153: aload_0
-    //   154: aload_2
-    //   155: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   158: iconst_0
-    //   159: ldc2_w 413
-    //   162: invokespecial 409	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
-    //   165: aconst_null
-    //   166: areturn
-    //   167: ldc2_w 415
-    //   170: invokestatic 421	java/lang/Thread:sleep	(J)V
-    //   173: iload 4
-    //   175: iconst_1
-    //   176: iadd
-    //   177: istore 4
-    //   179: iload 4
-    //   181: iconst_3
-    //   182: if_icmple +538 -> 720
-    //   185: aload_3
-    //   186: iconst_4
-    //   187: invokeinterface 412 2 0
-    //   192: aload_0
-    //   193: aload_2
-    //   194: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   197: iconst_0
-    //   198: ldc2_w 413
-    //   201: invokespecial 409	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
-    //   204: aconst_null
-    //   205: areturn
-    //   206: astore_1
-    //   207: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   210: ifeq -25 -> 185
-    //   213: ldc 19
-    //   215: iconst_2
-    //   216: aload_1
-    //   217: invokevirtual 422	java/io/FileNotFoundException:toString	()Ljava/lang/String;
-    //   220: invokestatic 277	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   223: goto -38 -> 185
-    //   226: aload_3
-    //   227: iconst_4
-    //   228: invokeinterface 412 2 0
-    //   233: aload_0
-    //   234: aload_2
-    //   235: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   238: iconst_0
-    //   239: ldc2_w 413
-    //   242: invokespecial 409	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
-    //   245: aconst_null
-    //   246: areturn
-    //   247: new 64	java/util/ArrayList
-    //   250: dup
-    //   251: invokespecial 65	java/util/ArrayList:<init>	()V
-    //   254: astore 9
-    //   256: new 64	java/util/ArrayList
-    //   259: dup
-    //   260: invokespecial 65	java/util/ArrayList:<init>	()V
-    //   263: astore 10
-    //   265: new 45	java/net/URL
-    //   268: dup
-    //   269: aload_2
-    //   270: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   273: invokespecial 48	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   276: astore 11
-    //   278: aload 11
-    //   280: invokevirtual 425	java/net/URL:getHost	()Ljava/lang/String;
-    //   283: astore 12
-    //   285: aload 10
-    //   287: new 427	org/apache/http/message/BasicHeader
-    //   290: dup
-    //   291: ldc_w 429
-    //   294: aload 12
-    //   296: invokespecial 432	org/apache/http/message/BasicHeader:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   299: invokeinterface 112 2 0
-    //   304: pop
-    //   305: aload 9
-    //   307: aload 12
-    //   309: invokestatic 434	com/tencent/mobileqq/transfile/NearbyImgDownloader:getHostIps	(Ljava/lang/String;)Ljava/util/List;
-    //   312: invokeinterface 438 2 0
-    //   317: pop
-    //   318: iconst_0
-    //   319: istore 4
-    //   321: invokestatic 441	android/os/SystemClock:uptimeMillis	()J
-    //   324: lstore 6
-    //   326: iload 4
-    //   328: iconst_1
-    //   329: iadd
-    //   330: istore 5
-    //   332: aload 9
-    //   334: invokeinterface 163 1 0
-    //   339: iload 5
-    //   341: if_icmplt +121 -> 462
-    //   344: iload 5
-    //   346: iconst_1
-    //   347: isub
-    //   348: istore 4
-    //   350: new 45	java/net/URL
-    //   353: dup
-    //   354: ldc_w 443
-    //   357: aload 9
-    //   359: iload 4
-    //   361: invokeinterface 444 2 0
-    //   366: checkcast 128	java/lang/String
-    //   369: aload 11
-    //   371: invokevirtual 57	java/net/URL:getFile	()Ljava/lang/String;
-    //   374: invokespecial 60	java/net/URL:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   377: astore 8
-    //   379: aload 8
-    //   381: ifnonnull +116 -> 497
-    //   384: iload 5
-    //   386: iconst_2
-    //   387: if_icmple +326 -> 713
-    //   390: aload_0
-    //   391: aload_2
-    //   392: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   395: iconst_0
-    //   396: ldc2_w 445
-    //   399: invokespecial 409	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
-    //   402: aconst_null
-    //   403: areturn
-    //   404: astore_1
-    //   405: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   408: ifeq +32 -> 440
-    //   411: ldc 19
-    //   413: iconst_2
-    //   414: new 119	java/lang/StringBuilder
-    //   417: dup
-    //   418: invokespecial 120	java/lang/StringBuilder:<init>	()V
-    //   421: ldc_w 448
-    //   424: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   427: aload_1
-    //   428: invokevirtual 451	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
-    //   431: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   434: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   437: invokestatic 162	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   440: aload_3
-    //   441: bipush 13
-    //   443: invokeinterface 412 2 0
-    //   448: aload_0
-    //   449: aload_2
-    //   450: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   453: iconst_0
-    //   454: ldc2_w 452
-    //   457: invokespecial 409	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
-    //   460: aconst_null
-    //   461: areturn
-    //   462: aload 9
-    //   464: invokeinterface 163 1 0
-    //   469: iconst_1
-    //   470: isub
-    //   471: istore 4
-    //   473: goto -123 -> 350
-    //   476: astore 8
-    //   478: ldc 19
-    //   480: iconst_1
-    //   481: aload 8
-    //   483: invokevirtual 451	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
-    //   486: aload 8
-    //   488: invokestatic 457	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   491: aconst_null
-    //   492: astore 8
-    //   494: goto -115 -> 379
-    //   497: aload_2
-    //   498: aload 8
-    //   500: invokevirtual 458	java/net/URL:toString	()Ljava/lang/String;
-    //   503: putfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   506: new 460	com/tencent/mobileqq/transfile/NearbyImgDownloader$DownloadListener
-    //   509: dup
-    //   510: aload_0
-    //   511: aload_1
-    //   512: aload_3
-    //   513: aload_2
-    //   514: invokespecial 463	com/tencent/mobileqq/transfile/NearbyImgDownloader$DownloadListener:<init>	(Lcom/tencent/mobileqq/transfile/NearbyImgDownloader;Lcom/tencent/mobileqq/transfile/DiskCache$Editor;Lcom/tencent/image/URLDrawableHandler;Lcom/tencent/image/DownloadParams;)V
-    //   517: astore 8
-    //   519: aload_2
-    //   520: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   523: aload 8
-    //   525: aload 10
-    //   527: iconst_1
-    //   528: iconst_0
-    //   529: sipush 10000
-    //   532: sipush 20000
-    //   535: invokestatic 469	com/tencent/mobileqq/utils/HttpDownloadUtil:queryDownloadInfo	(Ljava/lang/String;Lcom/tencent/mobileqq/utils/HttpDownloadUtil$DownloadInfoListener;Ljava/util/List;IZII)Lcom/tencent/mobileqq/emoticon/DownloadInfo;
-    //   538: astore 8
-    //   540: aload 8
-    //   542: getfield 474	com/tencent/mobileqq/emoticon/DownloadInfo:resultCode	I
-    //   545: ifne +32 -> 577
-    //   548: aload_3
-    //   549: aload 8
-    //   551: getfield 477	com/tencent/mobileqq/emoticon/DownloadInfo:respContentLength	I
-    //   554: i2l
-    //   555: invokeinterface 407 3 0
-    //   560: aload_0
-    //   561: aload_2
-    //   562: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   565: iconst_1
-    //   566: aload 8
-    //   568: getfield 477	com/tencent/mobileqq/emoticon/DownloadInfo:respContentLength	I
-    //   571: i2l
-    //   572: invokespecial 409	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
-    //   575: aconst_null
-    //   576: areturn
-    //   577: invokestatic 441	android/os/SystemClock:uptimeMillis	()J
-    //   580: lload 6
-    //   582: lsub
-    //   583: ldc2_w 478
-    //   586: lcmp
-    //   587: iflt +62 -> 649
-    //   590: ldc 19
-    //   592: iconst_1
-    //   593: new 119	java/lang/StringBuilder
-    //   596: dup
-    //   597: invokespecial 120	java/lang/StringBuilder:<init>	()V
-    //   600: ldc_w 481
-    //   603: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   606: invokestatic 441	android/os/SystemClock:uptimeMillis	()J
-    //   609: lload 6
-    //   611: lsub
-    //   612: invokevirtual 136	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   615: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   618: invokestatic 162	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   621: aload_3
-    //   622: aload 8
-    //   624: getfield 474	com/tencent/mobileqq/emoticon/DownloadInfo:resultCode	I
-    //   627: invokeinterface 412 2 0
-    //   632: aload_0
-    //   633: aload_2
-    //   634: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   637: iconst_0
-    //   638: aload 8
-    //   640: getfield 474	com/tencent/mobileqq/emoticon/DownloadInfo:resultCode	I
-    //   643: i2l
-    //   644: invokespecial 409	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
-    //   647: aconst_null
-    //   648: areturn
-    //   649: iload 5
-    //   651: iconst_2
-    //   652: if_icmpne +31 -> 683
-    //   655: aload_3
-    //   656: aload 8
-    //   658: getfield 474	com/tencent/mobileqq/emoticon/DownloadInfo:resultCode	I
-    //   661: invokeinterface 412 2 0
-    //   666: aload_0
-    //   667: aload_2
-    //   668: getfield 364	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   671: iconst_0
-    //   672: aload 8
-    //   674: getfield 474	com/tencent/mobileqq/emoticon/DownloadInfo:resultCode	I
-    //   677: i2l
-    //   678: invokespecial 409	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
-    //   681: aconst_null
-    //   682: areturn
-    //   683: iload 5
-    //   685: iconst_1
-    //   686: if_icmpne -302 -> 384
-    //   689: invokestatic 92	com/tencent/mobileqq/transfile/dns/InnerDns:getInstance	()Lcom/tencent/mobileqq/transfile/dns/BaseInnerDns;
-    //   692: aload 12
-    //   694: aload 11
-    //   696: invokevirtual 425	java/net/URL:getHost	()Ljava/lang/String;
-    //   699: sipush 1001
-    //   702: invokevirtual 485	com/tencent/mobileqq/transfile/dns/BaseInnerDns:reportBadIp	(Ljava/lang/String;Ljava/lang/String;I)V
-    //   705: goto -321 -> 384
-    //   708: astore 10
-    //   710: goto -537 -> 173
-    //   713: iload 5
-    //   715: istore 4
-    //   717: goto -391 -> 326
-    //   720: goto -623 -> 97
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	723	0	this	NearbyImgDownloader
-    //   0	723	1	paramEditor	DiskCache.Editor
-    //   0	723	2	paramDownloadParams	DownloadParams
-    //   0	723	3	paramURLDrawableHandler	URLDrawableHandler
-    //   95	621	4	i	int
-    //   330	384	5	j	int
-    //   324	286	6	l	long
-    //   58	322	8	localObject1	Object
-    //   476	11	8	localMalformedURLException	java.net.MalformedURLException
-    //   492	181	8	localObject2	Object
-    //   92	371	9	localObject3	Object
-    //   263	263	10	localArrayList	ArrayList
-    //   708	1	10	localInterruptedException	java.lang.InterruptedException
-    //   276	419	11	localURL	URL
-    //   283	410	12	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   76	94	206	java/io/FileNotFoundException
-    //   97	138	206	java/io/FileNotFoundException
-    //   146	165	206	java/io/FileNotFoundException
-    //   167	173	206	java/io/FileNotFoundException
-    //   265	318	404	java/net/MalformedURLException
-    //   350	379	476	java/net/MalformedURLException
-    //   167	173	708	java/lang/InterruptedException
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -802,8 +496,12 @@ public class NearbyImgDownloader
     Object localObject = getFile(str);
     if (localObject != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyImgDownloader", 2, "loadImageFile file exist: " + ((File)localObject).getAbsolutePath());
+      if (QLog.isColorLevel())
+      {
+        paramDownloadParams = new StringBuilder();
+        paramDownloadParams.append("loadImageFile file exist: ");
+        paramDownloadParams.append(((File)localObject).getAbsolutePath());
+        QLog.i("NearbyImgDownloader", 2, paramDownloadParams.toString());
       }
       return localObject;
     }
@@ -815,12 +513,18 @@ public class NearbyImgDownloader
       paramDownloadParams = getFile(str);
       if (paramDownloadParams != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyImgDownloader", 2, "loadImageFile f exist:" + paramDownloadParams.getAbsolutePath());
+        if (QLog.isColorLevel())
+        {
+          paramURLDrawableHandler = new StringBuilder();
+          paramURLDrawableHandler.append("loadImageFile f exist:");
+          paramURLDrawableHandler.append(paramDownloadParams.getAbsolutePath());
+          QLog.i("NearbyImgDownloader", 2, paramURLDrawableHandler.toString());
         }
         ((DiskCache.Editor)localObject).dirtyFile.delete();
         return paramDownloadParams;
       }
+      paramDownloadParams = ((DiskCache.Editor)localObject).commit();
+      return paramDownloadParams;
     }
     catch (Exception paramDownloadParams)
     {
@@ -829,8 +533,6 @@ public class NearbyImgDownloader
       }
       throw paramDownloadParams;
     }
-    paramDownloadParams = ((DiskCache.Editor)localObject).commit();
-    return paramDownloadParams;
   }
   
   public boolean useDiskCache()
@@ -840,7 +542,7 @@ public class NearbyImgDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.NearbyImgDownloader
  * JD-Core Version:    0.7.0.1
  */

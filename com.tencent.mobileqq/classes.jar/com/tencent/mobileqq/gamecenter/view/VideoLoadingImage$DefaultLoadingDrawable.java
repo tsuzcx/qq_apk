@@ -26,13 +26,15 @@ class VideoLoadingImage$DefaultLoadingDrawable
   
   VideoLoadingImage$DefaultLoadingDrawable(@NonNull Resources paramResources)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramResources, 2130840351);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramResources, 2130840220);
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap != null) {
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
     }
-    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramResources, 2130840352);
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
+    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramResources, 2130840221);
+    paramResources = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    if (paramResources != null) {
+      this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, paramResources.getWidth(), this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
     }
   }
   
@@ -64,7 +66,10 @@ class VideoLoadingImage$DefaultLoadingDrawable
     this.jdField_b_of_type_Int = paramRect.width();
     this.jdField_a_of_type_Int = paramRect.height();
     this.c.set(0, 0, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
-    this.d.set(this.jdField_b_of_type_Int >> 2, this.jdField_a_of_type_Int >> 2, this.jdField_b_of_type_Int * 3 / 4, this.jdField_a_of_type_Int * 3 / 4);
+    paramRect = this.d;
+    int i = this.jdField_b_of_type_Int;
+    int j = this.jdField_a_of_type_Int;
+    paramRect.set(i >> 2, j >> 2, i * 3 / 4, j * 3 / 4);
   }
   
   public void setAlpha(int paramInt) {}
@@ -73,7 +78,7 @@ class VideoLoadingImage$DefaultLoadingDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.VideoLoadingImage.DefaultLoadingDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -47,52 +47,65 @@ final class WebvttExtractor
   
   private void processSample()
   {
-    ParsableByteArray localParsableByteArray = new ParsableByteArray(this.sampleData);
-    long l2;
-    for (;;)
+    Object localObject2 = new ParsableByteArray(this.sampleData);
+    label147:
+    label185:
+    ParserException localParserException;
+    try
     {
-      String str;
-      Matcher localMatcher1;
-      try
+      WebvttParserUtil.validateWebvttHeaderLine((ParsableByteArray)localObject2);
+      long l1 = 0L;
+      long l2 = l1;
+      for (;;)
       {
-        WebvttParserUtil.validateWebvttHeaderLine(localParsableByteArray);
-        l1 = 0L;
-        l2 = 0L;
-        str = localParsableByteArray.readLine();
-        if (TextUtils.isEmpty(str)) {
-          break;
+        localObject1 = ((ParsableByteArray)localObject2).readLine();
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label185;
         }
-        if (!str.startsWith("X-TIMESTAMP-MAP")) {
-          continue;
-        }
-        localMatcher1 = LOCAL_TIMESTAMP.matcher(str);
-        if (!localMatcher1.find()) {
-          throw new ParserException("X-TIMESTAMP-MAP doesn't contain local timestamp: " + str);
+        if (((String)localObject1).startsWith("X-TIMESTAMP-MAP"))
+        {
+          Matcher localMatcher1 = LOCAL_TIMESTAMP.matcher((CharSequence)localObject1);
+          if (!localMatcher1.find()) {
+            break label147;
+          }
+          Matcher localMatcher2 = MEDIA_TIMESTAMP.matcher((CharSequence)localObject1);
+          if (!localMatcher2.find()) {
+            break;
+          }
+          l2 = WebvttParserUtil.parseTimestampUs(localMatcher1.group(1));
+          l1 = TimestampAdjuster.ptsToUs(Long.parseLong(localMatcher2.group(1)));
         }
       }
-      catch (SubtitleDecoderException localSubtitleDecoderException)
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("X-TIMESTAMP-MAP doesn't contain media timestamp: ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      throw new ParserException(((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("X-TIMESTAMP-MAP doesn't contain local timestamp: ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      throw new ParserException(((StringBuilder)localObject2).toString());
+      Object localObject1 = WebvttParserUtil.findNextCueHeader((ParsableByteArray)localObject2);
+      if (localObject1 == null)
       {
-        throw new ParserException(localSubtitleDecoderException);
+        buildTrackOutput(0L);
+        return;
       }
-      Matcher localMatcher2 = MEDIA_TIMESTAMP.matcher(str);
-      if (!localMatcher2.find()) {
-        throw new ParserException("X-TIMESTAMP-MAP doesn't contain media timestamp: " + str);
-      }
-      l2 = WebvttParserUtil.parseTimestampUs(localMatcher1.group(1));
-      l1 = TimestampAdjuster.ptsToUs(Long.parseLong(localMatcher2.group(1)));
-    }
-    Object localObject = WebvttParserUtil.findNextCueHeader(localSubtitleDecoderException);
-    if (localObject == null)
-    {
-      buildTrackOutput(0L);
+      long l3 = WebvttParserUtil.parseTimestampUs(((Matcher)localObject1).group(1));
+      l1 = this.timestampAdjuster.adjustTsTimestamp(TimestampAdjuster.usToPts(l1 + l3 - l2));
+      localObject1 = buildTrackOutput(l1 - l3);
+      this.sampleDataWrapper.reset(this.sampleData, this.sampleSize);
+      ((TrackOutput)localObject1).sampleData(this.sampleDataWrapper, this.sampleSize);
+      ((TrackOutput)localObject1).sampleMetadata(l1, 1, this.sampleSize, 0, null);
       return;
     }
-    long l3 = WebvttParserUtil.parseTimestampUs(((Matcher)localObject).group(1));
-    long l1 = this.timestampAdjuster.adjustTsTimestamp(TimestampAdjuster.usToPts(l1 + l3 - l2));
-    localObject = buildTrackOutput(l1 - l3);
-    this.sampleDataWrapper.reset(this.sampleData, this.sampleSize);
-    ((TrackOutput)localObject).sampleData(this.sampleDataWrapper, this.sampleSize);
-    ((TrackOutput)localObject).sampleMetadata(l1, 1, this.sampleSize, 0, null);
+    catch (SubtitleDecoderException localSubtitleDecoderException)
+    {
+      localParserException = new ParserException(localSubtitleDecoderException);
+    }
+    for (;;)
+    {
+      throw localParserException;
+    }
   }
   
   public void init(ExtractorOutput paramExtractorOutput)
@@ -104,26 +117,26 @@ final class WebvttExtractor
   public int read(ExtractorInput paramExtractorInput, PositionHolder paramPositionHolder)
   {
     int j = (int)paramExtractorInput.getLength();
-    if (this.sampleSize == this.sampleData.length)
+    int i = this.sampleSize;
+    paramPositionHolder = this.sampleData;
+    if (i == paramPositionHolder.length)
     {
-      paramPositionHolder = this.sampleData;
-      if (j == -1) {
-        break label105;
+      if (j != -1) {
+        i = j;
+      } else {
+        i = paramPositionHolder.length;
       }
-    }
-    label105:
-    for (int i = j;; i = this.sampleData.length)
-    {
       this.sampleData = Arrays.copyOf(paramPositionHolder, i * 3 / 2);
-      i = paramExtractorInput.read(this.sampleData, this.sampleSize, this.sampleData.length - this.sampleSize);
-      if (i == -1) {
-        break;
+    }
+    paramPositionHolder = this.sampleData;
+    i = this.sampleSize;
+    i = paramExtractorInput.read(paramPositionHolder, i, paramPositionHolder.length - i);
+    if (i != -1)
+    {
+      this.sampleSize += i;
+      if ((j == -1) || (this.sampleSize != j)) {
+        return 0;
       }
-      this.sampleSize = (i + this.sampleSize);
-      if ((j != -1) && (this.sampleSize == j)) {
-        break;
-      }
-      return 0;
     }
     processSample();
     return -1;
@@ -143,7 +156,7 @@ final class WebvttExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.WebvttExtractor
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,10 @@ package com.tencent.gdtad.util;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.inject.GdtThirdProcessorProxy;
 import com.tencent.gdtad.log.GdtLog;
-import com.tencent.mobileqq.statistics.FightReporter;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.cpu.CPUReport;
 import com.tencent.mobileqq.util.TuringSdkInitHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -22,87 +21,110 @@ import org.xmlpull.v1.XmlPullParserException;
 
 class GdtAidHelper
 {
+  public GdtThirdProcessorProxy a;
   private volatile Set<String> jdField_a_of_type_JavaUtilSet;
   private boolean jdField_a_of_type_Boolean;
   
+  private GdtAidHelper()
+  {
+    this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy = new GdtThirdProcessorProxy();
+  }
+  
   private GdtAidHelper.TicketEntity a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!CPUReport.b())
+    if (!this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy.a())
     {
       GdtLog.a("GdtAidHelper", "only arm support taid");
       return new GdtAidHelper.TicketEntity("", "", -2147483647, 0L, null);
     }
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtAidHelper", 2, "getAidTicket start , businessId -> " + paramString + ", useCache -> " + paramBoolean1 + ", needVerifyBusinessId -> " + paramBoolean2 + "， TuringVersion : " + TuringFdService.getVersionInfo());
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getAidTicket start , businessId -> ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", useCache -> ");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append(", needVerifyBusinessId -> ");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      ((StringBuilder)localObject).append("， TuringVersion : ");
+      ((StringBuilder)localObject).append(TuringFdService.getVersionInfo());
+      QLog.d("GdtAidHelper", 2, ((StringBuilder)localObject).toString());
     }
+    int k = 0;
+    boolean bool;
     if (paramBoolean2) {
       bool = a(paramString);
+    } else {
+      bool = false;
     }
-    paramString = BaseApplicationImpl.getContext().getApplicationContext();
-    if (!this.jdField_a_of_type_Boolean) {
-      GdtLog.a("GdtAidHelper", "getAidTicket init TuringSDK");
-    }
-    int j;
-    long l;
-    for (;;)
+    paramString = BaseApplication.getContext().getApplicationContext();
+    if (!this.jdField_a_of_type_Boolean)
     {
+      GdtLog.a("GdtAidHelper", "getAidTicket init TuringSDK");
       try
       {
-        TuringSdkInitHelper.a();
+        TuringSdkInitHelper.a(PrivacyPolicyHelper.a());
         this.jdField_a_of_type_Boolean = true;
-        if (paramBoolean1) {}
-        String str1;
-        String str2;
-        paramString = TuringFdService.getTuringDID(paramString);
       }
       catch (Throwable paramString)
       {
-        try
-        {
-          paramString = TuringFdService.getTuringDIDCached(paramString);
-          j = paramString.getErrorCode();
-          l = paramString.getExpiredTimestamp();
-          if ((!paramBoolean2) || (j != 0)) {
-            break label374;
-          }
-          i = 1;
-          if (i == 0) {
-            break;
-          }
-          ReportController.b(null, "dc00898", "", "", "0X800A5B3", "0X800A5B3", 0, 0, "", "", "", "");
-          str1 = paramString.getAIDTicket();
-          str2 = paramString.getTAIDTicket();
-          GdtLog.a("GdtAidHelper", "getAidTicket aid ticket ->" + str1 + ", taidTicket -> " + str2);
-          return new GdtAidHelper.TicketEntity(paramString.getAIDTicket(), paramString.getTAIDTicket(), 0, l, null);
-        }
-        catch (Throwable paramString)
-        {
-          if (!QLog.isColorLevel()) {
-            break label357;
-          }
-          QLog.e("GdtAidHelper", 2, paramString, new Object[] { "Turing get aid crash" + TuringFdService.getVersionInfo() });
-          return new GdtAidHelper.TicketEntity("", "", -2147483645, 0L, paramString, null);
-        }
-        paramString = paramString;
         QLog.e("GdtAidHelper", 1, paramString, new Object[] { "Turing init crash fail" });
         return new GdtAidHelper.TicketEntity("", "", -2147483646, 0L, paramString, null);
       }
-      continue;
-      label357:
-      label374:
-      i = 0;
     }
-    int i = j;
-    if (paramBoolean2)
+    if (paramBoolean1) {}
+    try
     {
-      i = j;
-      if (!bool) {
+      paramString = TuringFdService.getTuringDIDCached(paramString);
+      break label230;
+      paramString = TuringFdService.getTuringDID(paramString);
+      label230:
+      int j = paramString.getErrorCode();
+      long l = paramString.getExpiredTimestamp();
+      int i = k;
+      if (paramBoolean2)
+      {
+        i = k;
+        if (j == 0) {
+          i = 1;
+        }
+      }
+      if (i != 0)
+      {
+        ReportController.b(null, "dc00898", "", "", "0X800A5B3", "0X800A5B3", 0, 0, "", "", "", "");
+        localObject = paramString.getAIDTicket();
+        String str = paramString.getTAIDTicket();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getAidTicket aid ticket ->");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(", taidTicket -> ");
+        localStringBuilder.append(str);
+        GdtLog.a("GdtAidHelper", localStringBuilder.toString());
+        return new GdtAidHelper.TicketEntity(paramString.getAIDTicket(), paramString.getTAIDTicket(), 0, l, null);
+      }
+      if ((paramBoolean2) && (!bool)) {
         i = -2147483648;
+      } else {
+        i = j;
+      }
+      paramString = new StringBuilder();
+      paramString.append("getAidTicket business id not verify, error code return only : error code-> ");
+      paramString.append(i);
+      GdtLog.a("GdtAidHelper", paramString.toString());
+      return new GdtAidHelper.TicketEntity("", "", i, l, null);
+    }
+    catch (Throwable paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Turing get aid crash");
+        ((StringBuilder)localObject).append(TuringFdService.getVersionInfo());
+        QLog.e("GdtAidHelper", 2, paramString, new Object[] { ((StringBuilder)localObject).toString() });
       }
     }
-    GdtLog.a("GdtAidHelper", "getAidTicket business id not verify, error code return only : error code-> " + i);
-    return new GdtAidHelper.TicketEntity("", "", i, l, null);
+    return new GdtAidHelper.TicketEntity("", "", -2147483645, 0L, paramString, null);
   }
   
   static GdtAidHelper a()
@@ -112,67 +134,67 @@ class GdtAidHelper
   
   private boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null) {}
+    Object localObject = this.jdField_a_of_type_JavaUtilSet;
+    boolean bool = true;
+    if (localObject == null) {}
     for (;;)
     {
       int i;
       try
       {
-        HashSet localHashSet;
-        if (this.jdField_a_of_type_JavaUtilSet == null) {
-          localHashSet = new HashSet();
-        }
-        try
+        if (this.jdField_a_of_type_JavaUtilSet == null)
         {
-          InputStream localInputStream = BaseApplicationImpl.getContext().getResources().getAssets().open("AidAuthorityFile.xml");
-          localXmlPullParser = Xml.newPullParser();
-          localXmlPullParser.setInput(localInputStream, "utf-8");
-          i = localXmlPullParser.getEventType();
-        }
-        catch (IOException localIOException)
-        {
-          XmlPullParser localXmlPullParser;
-          String str;
-          localIOException.printStackTrace();
-          this.jdField_a_of_type_JavaUtilSet = localHashSet;
-          if ((this.jdField_a_of_type_JavaUtilSet == null) || (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-            break label227;
+          localObject = new HashSet();
+          try
+          {
+            localInputStream = BaseApplication.getContext().getResources().getAssets().open("AidAuthorityFile.xml");
+            localXmlPullParser = Xml.newPullParser();
+            localXmlPullParser.setInput(localInputStream, "utf-8");
+            i = localXmlPullParser.getEventType();
           }
-          bool = true;
-          if (bool) {
+          catch (XmlPullParserException localXmlPullParserException)
+          {
+            InputStream localInputStream;
+            XmlPullParser localXmlPullParser;
+            String str;
+            StringBuilder localStringBuilder;
+            localXmlPullParserException.printStackTrace();
             continue;
           }
-          FightReporter.a("GdtAidHelper", "business id verify fail, please check the business id");
-          return bool;
-          localIOException.close();
-          continue;
+          catch (IOException localIOException)
+          {
+            localIOException.printStackTrace();
+          }
+          if (localXmlPullParser.getName().equalsIgnoreCase("business"))
+          {
+            str = localXmlPullParser.getAttributeValue(null, "id");
+            ((Set)localObject).add(str);
+            if (QLog.isDevelopLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("init sensitive au, busiId = ");
+              localStringBuilder.append(str);
+              QLog.d("GdtAidHelper", 4, localStringBuilder.toString());
+            }
+          }
+          i = localXmlPullParser.next();
+          break label250;
+          localInputStream.close();
+          this.jdField_a_of_type_JavaUtilSet = ((Set)localObject);
         }
-        catch (XmlPullParserException localXmlPullParserException)
-        {
-          localXmlPullParserException.printStackTrace();
-          continue;
-        }
-        i = localXmlPullParser.next();
-        break label232;
-        if (!localXmlPullParser.getName().equalsIgnoreCase("business")) {
-          continue;
-        }
-        str = localXmlPullParser.getAttributeValue(null, "id");
-        localHashSet.add(str);
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("GdtAidHelper", 4, "init sensitive au, busiId = " + str);
-        continue;
-        boolean bool = false;
       }
       finally {}
-      label227:
-      continue;
-      label232:
+      if ((this.jdField_a_of_type_JavaUtilSet == null) || (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
+        bool = false;
+      }
+      if (!bool) {
+        this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy.a("GdtAidHelper", "business id verify fail, please check the business id");
+      }
+      return bool;
+      label250:
       if (i != 1) {
-        switch (i)
-        {
+        if (i != 0) {
+          if (i == 2) {}
         }
       }
     }
@@ -190,7 +212,7 @@ class GdtAidHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtAidHelper
  * JD-Core Version:    0.7.0.1
  */

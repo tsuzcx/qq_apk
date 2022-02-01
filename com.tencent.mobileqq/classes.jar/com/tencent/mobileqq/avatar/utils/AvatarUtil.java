@@ -15,7 +15,7 @@ public class AvatarUtil
   public static byte a(byte paramByte)
   {
     byte b = paramByte;
-    if (ThemeUtil.b(null, false, null))
+    if (ThemeUtil.isNowThemeIsSimple(null, false, null))
     {
       b = paramByte;
       if (!a(paramByte)) {
@@ -30,22 +30,23 @@ public class AvatarUtil
     if (paramBitmap == null) {
       return paramBitmap;
     }
+    Bitmap localBitmap = paramBitmap;
     switch (paramByte)
     {
-    case 5: 
-    case 8: 
     case 2: 
     default: 
       return a(paramBitmap);
-    case 1: 
-      return ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).genSquareFaceBmpByShape(paramBitmap);
+    case 7: 
+      return ApolloUtil.b(paramBitmap, paramString, paramInt);
+    case 6: 
+      return ApolloUtil.a(paramBitmap, paramString, paramInt);
     case 3: 
     case 4: 
       return a(paramBitmap, 50, 50);
-    case 7: 
-      return ApolloUtil.b(paramBitmap, paramString, paramInt);
+    case 1: 
+      localBitmap = ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).genSquareFaceBmpByShape(paramBitmap);
     }
-    return ApolloUtil.a(paramBitmap, paramString, paramInt);
+    return localBitmap;
   }
   
   public static Bitmap a(Bitmap paramBitmap)
@@ -65,55 +66,100 @@ public class AvatarUtil
   
   public static String a(int paramInt1, String paramString, int paramInt2)
   {
-    String str;
-    if (paramInt1 == 4) {
-      str = "troop_" + paramString;
-    }
-    do
+    if (paramInt1 == 4)
     {
-      return str;
-      if (paramInt1 == 32) {
-        return "stranger_" + String.valueOf(paramInt2) + "_" + paramString;
-      }
-      if (paramInt1 == 16) {
-        return "qcall_" + String.valueOf(paramInt2) + "_" + paramString;
-      }
-      str = paramString;
-    } while (paramInt1 != 116);
-    return "apollo_" + String.valueOf(paramInt2) + "_" + paramString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("troop_");
+      ((StringBuilder)localObject).append(paramString);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (paramInt1 == 32)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("stranger_");
+      ((StringBuilder)localObject).append(String.valueOf(paramInt2));
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (paramInt1 == 16)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("qcall_");
+      ((StringBuilder)localObject).append(String.valueOf(paramInt2));
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString);
+      return ((StringBuilder)localObject).toString();
+    }
+    Object localObject = paramString;
+    if (paramInt1 == 116)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("apollo_");
+      ((StringBuilder)localObject).append(String.valueOf(paramInt2));
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   public static String a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    String str = paramInt1 + "_" + paramString;
-    if (paramInt1 == 32) {
-      str = "stranger_" + String.valueOf(paramInt2) + "_" + paramString;
-    }
-    do
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString);
+    localObject = ((StringBuilder)localObject).toString();
+    if (paramInt1 == 32)
     {
-      return str;
-      if (paramInt1 == 16) {
-        return "qcall_" + String.valueOf(paramInt2) + "_" + paramString;
-      }
-    } while (paramInt1 != 116);
-    return "apollo_" + String.valueOf(paramInt3) + "_" + paramString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("stranger_");
+      ((StringBuilder)localObject).append(String.valueOf(paramInt2));
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (paramInt1 == 16)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("qcall_");
+      ((StringBuilder)localObject).append(String.valueOf(paramInt2));
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (paramInt1 == 116)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("apollo_");
+      ((StringBuilder)localObject).append(String.valueOf(paramInt3));
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   public static String a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder(128);
+    StringBuilder localStringBuilder1 = new StringBuilder(128);
     if (SystemUtil.a()) {
-      localStringBuilder.append(AppConstants.PATH_HEAD_HD);
+      localStringBuilder1.append(AppConstants.PATH_HEAD_HD);
+    } else {
+      localStringBuilder1.append("/data/data/com.tencent.mobileqq/files/head/_hd/");
     }
-    for (;;)
-    {
-      String str = MD5.toMD5(paramString);
-      str = MD5.toMD5(str + paramString);
-      localStringBuilder.append(MD5.toMD5(str + paramString));
-      localStringBuilder.append(".png");
-      return localStringBuilder.toString();
-      localStringBuilder.append("/data/data/com.tencent.mobileqq/files/head/_hd/");
-    }
+    String str = MD5.toMD5(paramString);
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(str);
+    localStringBuilder2.append(paramString);
+    str = MD5.toMD5(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(str);
+    localStringBuilder2.append(paramString);
+    localStringBuilder1.append(MD5.toMD5(localStringBuilder2.toString()));
+    localStringBuilder1.append(".png");
+    return localStringBuilder1.toString();
   }
   
   private static boolean a(byte paramByte)
@@ -123,15 +169,10 @@ public class AvatarUtil
   
   public static boolean a(String paramString)
   {
-    boolean bool = true;
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      QLog.i("AvatarUtil", 1, "===isPstnDiscussionUin discussionUin is null ===");
-      bool = false;
+    if ((paramString != null) && (paramString.length() != 0)) {
+      return paramString.contains("_1001");
     }
-    while (paramString.contains("_1001")) {
-      return bool;
-    }
+    QLog.i("AvatarUtil", 1, "===isPstnDiscussionUin discussionUin is null ===");
     return false;
   }
   
@@ -143,27 +184,33 @@ public class AvatarUtil
       return null;
     }
     int i = paramString.indexOf("_");
-    if ((i < 0) || (i > paramString.length()))
-    {
-      QLog.i("AvatarUtil", 1, "===getDiscussionUinFromPstn pstnDiscussionUin is invalid, pstnDiscussionUin | " + paramString);
-      return null;
+    if ((i >= 0) && (i <= paramString.length())) {
+      return paramString.substring(0, i);
     }
-    return paramString.substring(0, i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("===getDiscussionUinFromPstn pstnDiscussionUin is invalid, pstnDiscussionUin | ");
+    localStringBuilder.append(paramString);
+    QLog.i("AvatarUtil", 1, localStringBuilder.toString());
+    return null;
   }
   
   public static String c(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0))
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      QLog.i("AvatarUtil", 1, "===getPstnDiscussionUin discussionUin is null ===");
-      return null;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_");
+      localStringBuilder.append(1001);
+      return localStringBuilder.toString();
     }
-    return paramString + "_" + 1001;
+    QLog.i("AvatarUtil", 1, "===getPstnDiscussionUin discussionUin is null ===");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.utils.AvatarUtil
  * JD-Core Version:    0.7.0.1
  */

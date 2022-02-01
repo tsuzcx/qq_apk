@@ -31,17 +31,19 @@ public final class oidb_cmd0xe89$RspGetDocContent
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 130, 136, 144, 242, 248, 274, 280, 288, 296, 306, 312 }, new String[] { "bytes_global_padid", "uint32_doc_type", "bytes_title", "msg_atext", "bytes_subid", "uint32_baseRev", "uint32_baseLen", "bytes_meta", "uint32_sheetPosLen", "bytes_owner_appid", "uint64_baseLen", "uint64_sheetPosLen", "uint64_owner_uin", "rpt_edit_uin_list", "uint32_max_len" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, null, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), null, Integer.valueOf(0) }, RspGetDocContent.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 130, 136, 144, 242, 248, 274, 280, 288, 296, 306, 312 }, new String[] { "bytes_global_padid", "uint32_doc_type", "bytes_title", "msg_atext", "bytes_subid", "uint32_baseRev", "uint32_baseLen", "bytes_meta", "uint32_sheetPosLen", "bytes_owner_appid", "uint64_baseLen", "uint64_sheetPosLen", "uint64_owner_uin", "rpt_edit_uin_list", "uint32_max_len" }, new Object[] { localByteStringMicro1, localInteger, localByteStringMicro2, null, localByteStringMicro3, localInteger, localInteger, localByteStringMicro4, localInteger, localByteStringMicro5, localLong, localLong, localLong, null, localInteger }, RspGetDocContent.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe89.oidb_cmd0xe89.RspGetDocContent
  * JD-Core Version:    0.7.0.1
  */

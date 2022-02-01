@@ -24,38 +24,29 @@ public class ShieldListInfoDao
       return paramEntity;
     }
     int i = paramCursor.getColumnIndex("uin");
-    if (i == -1)
-    {
+    if (i == -1) {
       paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
-      i = paramCursor.getColumnIndex("flags");
-      if (i != -1) {
-        break label240;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("flags", Integer.TYPE));
-      label153:
-      i = paramCursor.getColumnIndex("source_id");
-      if (i != -1) {
-        break label255;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("source_id", Integer.TYPE));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("source_sub_id");
-      if (i != -1) {
-        break label270;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("source_sub_id", Integer.TYPE));
-      return paramEntity;
+    } else {
       paramEntity.uin = paramCursor.getString(i);
-      break;
-      label240:
+    }
+    i = paramCursor.getColumnIndex("flags");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("flags", Integer.TYPE));
+    } else {
       paramEntity.flags = paramCursor.getInt(i);
-      break label153;
-      label255:
+    }
+    i = paramCursor.getColumnIndex("source_id");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("source_id", Integer.TYPE));
+    } else {
       paramEntity.source_id = paramCursor.getInt(i);
     }
-    label270:
+    i = paramCursor.getColumnIndex("source_sub_id");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("source_sub_id", Integer.TYPE));
+      return paramEntity;
+    }
     paramEntity.source_sub_id = paramCursor.getInt(i);
     return paramEntity;
   }
@@ -79,7 +70,7 @@ public class ShieldListInfoDao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.ShieldListInfoDao
  * JD-Core Version:    0.7.0.1
  */

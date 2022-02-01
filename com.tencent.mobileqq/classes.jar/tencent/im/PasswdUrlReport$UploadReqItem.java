@@ -25,13 +25,14 @@ public final class PasswdUrlReport$UploadReqItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 72 }, new String[] { "url", "origin_url", "text_features", "js_func_features", "screenshot", "title", "uin", "passwd_show", "passwd_input" }, new Object[] { "", "", "", "", "", "", localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, UploadReqItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 72 }, new String[] { "url", "origin_url", "text_features", "js_func_features", "screenshot", "title", "uin", "passwd_show", "passwd_input" }, new Object[] { "", "", "", "", "", "", localByteStringMicro, localInteger, localInteger }, UploadReqItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.PasswdUrlReport.UploadReqItem
  * JD-Core Version:    0.7.0.1
  */

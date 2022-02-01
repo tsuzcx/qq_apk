@@ -73,20 +73,23 @@ public final class HttpUploadResp
     paramJceOutputStream.write(this.iReplyCode, 4);
     paramJceOutputStream.write(this.strResult, 5);
     paramJceOutputStream.write(this.uFromPos, 6);
-    if (this.vFileKey != null) {
-      paramJceOutputStream.write(this.vFileKey, 7);
+    Object localObject = this.vFileKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 7);
     }
-    if (this.stVerifyCode != null) {
-      paramJceOutputStream.write(this.stVerifyCode, 8);
+    localObject = this.stVerifyCode;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.vSig != null) {
-      paramJceOutputStream.write(this.vSig, 9);
+    localObject = this.vSig;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQFS.HttpUploadResp
  * JD-Core Version:    0.7.0.1
  */

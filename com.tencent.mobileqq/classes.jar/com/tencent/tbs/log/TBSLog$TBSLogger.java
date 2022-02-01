@@ -18,48 +18,60 @@ class TBSLog$TBSLogger
   
   private String format(String paramString, Object... paramVarArgs)
   {
-    paramString = formatMessage(paramString, paramVarArgs);
+    String str = formatMessage(paramString, paramVarArgs);
     Throwable localThrowable = getThrowableToLog(paramVarArgs);
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return "";
+    paramString = "";
+    paramVarArgs = paramString;
+    if (str != null)
+    {
+      if (str.length() == 0) {
+        return "";
+      }
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append(str);
+      if (localThrowable != null)
+      {
+        paramString = new StringBuilder();
+        paramString.append("\n");
+        paramString.append(Formatter.formatThrowable(localThrowable));
+        paramString = paramString.toString();
+      }
+      paramVarArgs.append(paramString);
+      paramVarArgs = paramVarArgs.toString();
     }
-    paramVarArgs = new StringBuilder().append(paramString);
-    if (localThrowable == null) {}
-    for (paramString = "";; paramString = "\n" + Formatter.formatThrowable(localThrowable)) {
-      return paramString;
-    }
+    return paramVarArgs;
   }
   
   private String formatMessage(String paramString, Object... paramVarArgs)
   {
-    String str = paramString;
-    if (paramVarArgs != null)
-    {
-      str = paramString;
-      if (paramVarArgs.length == 0) {}
-    }
-    try
-    {
-      str = String.format(Locale.US, paramString, paramVarArgs);
-      return str;
-    }
-    catch (Exception paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
+    if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+      try
+      {
+        paramVarArgs = String.format(Locale.US, paramString, paramVarArgs);
+        return paramVarArgs;
+      }
+      catch (Exception paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+      }
     }
     return paramString;
   }
   
   private Throwable getThrowableToLog(Object[] paramArrayOfObject)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
-      return null;
+    if (paramArrayOfObject != null)
+    {
+      if (paramArrayOfObject.length == 0) {
+        return null;
+      }
+      paramArrayOfObject = paramArrayOfObject[(paramArrayOfObject.length - 1)];
+      if (!(paramArrayOfObject instanceof Throwable)) {
+        return null;
+      }
+      return (Throwable)paramArrayOfObject;
     }
-    paramArrayOfObject = paramArrayOfObject[(paramArrayOfObject.length - 1)];
-    if (!(paramArrayOfObject instanceof Throwable)) {
-      return null;
-    }
-    return (Throwable)paramArrayOfObject;
+    return null;
   }
   
   private void printlnInternal(LogLevel paramLogLevel, String paramString1, String paramString2)
@@ -69,15 +81,15 @@ class TBSLog$TBSLogger
       if (!TBSLog.access$300()) {
         return;
       }
-      if (paramLogLevel.getValue() >= TBSLog.access$400().getValue())
+      if (paramLogLevel.getValue() < TBSLog.access$400().getValue()) {
+        return;
+      }
+      paramLogLevel = new LogItem(System.currentTimeMillis(), paramLogLevel, paramString1, paramString2);
+      if (TBSLog.access$500())
       {
-        paramLogLevel = new LogItem(System.currentTimeMillis(), paramLogLevel, paramString1, paramString2);
-        if (TBSLog.access$500())
-        {
-          paramString1 = TBSLog.access$600().iterator();
-          while (paramString1.hasNext()) {
-            ((LogPrinter)paramString1.next()).println(paramLogLevel);
-          }
+        paramString1 = TBSLog.access$600().iterator();
+        while (paramString1.hasNext()) {
+          ((LogPrinter)paramString1.next()).println(paramLogLevel);
         }
       }
       return;
@@ -155,7 +167,7 @@ class TBSLog$TBSLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.log.TBSLog.TBSLogger
  * JD-Core Version:    0.7.0.1
  */

@@ -14,19 +14,15 @@ class TroopPicEffectGuidePicActivity$1
     int i = paramMotionEvent.getAction();
     if (i == 0) {
       paramView.setAlpha(0.5F);
+    } else if ((i == 1) || (i == 3)) {
+      paramView.setAlpha(1.0F);
     }
-    for (;;)
-    {
-      return false;
-      if ((i == 1) || (i == 3)) {
-        paramView.setAlpha(1.0F);
-      }
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity.1
  * JD-Core Version:    0.7.0.1
  */

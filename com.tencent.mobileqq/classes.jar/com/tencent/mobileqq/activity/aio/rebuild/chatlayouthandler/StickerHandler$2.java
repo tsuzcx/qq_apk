@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.pic.api.IPicPreDownload;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import java.io.File;
@@ -18,13 +18,13 @@ class StickerHandler$2
   {
     File localFile = AbsDownloader.getFile(URLDrawableHelper.getURL((MessageForPic)this.a, 1, null).toString());
     if ((localFile == null) || (!localFile.exists())) {
-      StickerHandler.d(this.this$0).getPicPreDownloader().a((MessageForPic)this.a, 2);
+      ((IPicPreDownload)StickerHandler.d(this.this$0).getRuntimeService(IPicPreDownload.class, "")).productFromAIO((MessageForPic)this.a, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.StickerHandler.2
  * JD-Core Version:    0.7.0.1
  */

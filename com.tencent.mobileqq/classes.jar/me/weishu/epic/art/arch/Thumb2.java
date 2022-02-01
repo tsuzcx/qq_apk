@@ -85,7 +85,7 @@ public class Thumb2
   
   public long toMem(long paramLong)
   {
-    return 0xFFFFFFFE & paramLong;
+    return paramLong & 0xFFFFFFFE;
   }
   
   public long toPC(long paramLong)
@@ -95,7 +95,7 @@ public class Thumb2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.weishu.epic.art.arch.Thumb2
  * JD-Core Version:    0.7.0.1
  */

@@ -18,49 +18,62 @@ public class ZoomOutPageTransformer
     paramView.getHeight();
     Object localObject1 = (MultiAIOBaseViewPager)paramView.getParent();
     int i = ((MultiAIOBaseViewPager)localObject1).getMeasuredWidth() - ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - ((MultiAIOBaseViewPager)localObject1).getPaddingRight();
-    float f1 = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() / i;
-    float f2 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - i - ((MultiAIOBaseViewPager)localObject1).b()) / i;
-    int j = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft();
-    float f3 = (((MultiAIOBaseViewPager)localObject1).b() + (j + i)) / i;
-    if (paramFloat < f2)
+    float f2 = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft();
+    float f1 = i;
+    f2 /= f1;
+    float f3 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - i - ((MultiAIOBaseViewPager)localObject1).b()) / f1;
+    f1 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() + i + ((MultiAIOBaseViewPager)localObject1).b()) / f1;
+    if (paramFloat < f3)
     {
-      paramFloat = this.d;
-      f1 = this.e;
+      f1 = this.d;
+      paramFloat = this.e;
     }
-    for (;;)
+    else if (paramFloat <= f1)
     {
-      paramView.setScaleX(paramFloat);
-      paramView.setScaleY(paramFloat);
-      Object localObject2 = paramView.getTag(2131372003);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = paramView.findViewById(2131372003);
-        paramView.setTag(2131372003, localObject1);
-      }
-      paramView = (View)localObject1;
-      paramView.setAlpha(1.0F - f1);
-      paramView.setBackgroundColor(-16777216);
-      return;
-      if (paramFloat <= f3)
-      {
-        f1 = Math.abs(paramFloat - f1);
-        paramFloat = (float)(a + Math.cos(f1 * 1.570796326794897D) * (b - a));
-        this.d = Math.min(paramFloat, this.d);
-        f1 = (float)(c + Math.cos(f1 * 1.570796326794897D) * (1.0F - c));
-        this.e = Math.min(f1, this.e);
-      }
-      else
-      {
-        paramFloat = this.d;
-        f1 = this.e;
-      }
+      paramFloat = Math.abs(paramFloat - f2);
+      double d1 = a;
+      double d2 = paramFloat;
+      Double.isNaN(d2);
+      d2 *= 1.570796326794897D;
+      double d3 = Math.cos(d2);
+      double d4 = b - a;
+      Double.isNaN(d4);
+      Double.isNaN(d1);
+      f1 = (float)(d1 + d3 * d4);
+      this.d = Math.min(f1, this.d);
+      d1 = c;
+      d2 = Math.cos(d2);
+      d3 = 1.0F - c;
+      Double.isNaN(d3);
+      Double.isNaN(d1);
+      paramFloat = (float)(d1 + d2 * d3);
+      this.e = Math.min(paramFloat, this.e);
     }
+    else
+    {
+      f1 = this.d;
+      paramFloat = this.e;
+    }
+    paramView.setScaleX(f1);
+    paramView.setScaleY(f1);
+    Object localObject2 = paramView.getTag(2131371609);
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = paramView.findViewById(2131371609);
+      if (localObject1 == null) {
+        return;
+      }
+      paramView.setTag(2131371609, localObject1);
+    }
+    paramView = (View)localObject1;
+    paramView.setAlpha(1.0F - paramFloat);
+    paramView.setBackgroundColor(-16777216);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.ZoomOutPageTransformer
  * JD-Core Version:    0.7.0.1
  */

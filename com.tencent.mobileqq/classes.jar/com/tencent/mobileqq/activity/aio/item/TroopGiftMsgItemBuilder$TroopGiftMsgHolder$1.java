@@ -15,18 +15,27 @@ class TroopGiftMsgItemBuilder$TroopGiftMsgHolder$1
   
   public void run()
   {
+    StringBuilder localStringBuilder;
     if (this.a.a)
     {
       this.this$0.a.isLoading = false;
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, "GONE uniseq = " + this.this$0.a.uniseq);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("GONE uniseq = ");
+        localStringBuilder.append(this.this$0.a.uniseq);
+        QLog.d("ChatItemBuilder", 2, localStringBuilder.toString());
       }
       ((AIOAnimationControlManager)TroopGiftMsgItemBuilder.TroopGiftMsgHolder.a(this.this$0).getManager(QQManagerFactory.AIO_ANIMATION_MANAGER)).b(this.this$0);
       this.this$0.d.setVisibility(8);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "VISIBLE uniseq = " + this.this$0.a.uniseq);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("VISIBLE uniseq = ");
+      localStringBuilder.append(this.this$0.a.uniseq);
+      QLog.d("ChatItemBuilder", 2, localStringBuilder.toString());
     }
     this.this$0.a.isLoading = true;
     this.this$0.d.setVisibility(0);
@@ -34,7 +43,7 @@ class TroopGiftMsgItemBuilder$TroopGiftMsgHolder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="38.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Space android:layout_gravity="start" android:layout_width="6.0dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="15.0dip" android:textColor="#ff737373" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/kbs" android:layout_width="fill_parent" android:layout_height="fill_parent" android:lines="1" android:maxLength="2" />
+    <RelativeLayout android:id="@id/o3c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <Space android:layout_gravity="end" android:layout_width="6.0dip" android:layout_height="fill_parent" />
+</FrameLayout>

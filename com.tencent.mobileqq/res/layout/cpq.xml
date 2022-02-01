@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingBottom="6.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/ojq" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:layout_marginBottom="13.0dip">
-        <ImageView android:id="@id/ojs" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/blk" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/ojr" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/igf" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:id="@id/ojt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/ojs" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/oig" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:drawableTop="@drawable/igc" />
-    <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/okf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:drawableTop="@drawable/igh" />
-</LinearLayout>
+    <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/n6q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_centerVertical="true" />
+    <ImageView android:background="@drawable/dmw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

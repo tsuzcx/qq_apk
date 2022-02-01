@@ -25,47 +25,48 @@ class MyVideoSharePlayingListSync$2
   public void a(@NonNull GetShareVideoListRequest paramGetShareVideoListRequest, @Nullable GetShareVideoListResponse paramGetShareVideoListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     this.a.jdField_c_of_type_Boolean = false;
-    if ((paramGetShareVideoListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramGetShareVideoListResponse != null) && (!paramErrorMessage.isFail()))
     {
+      paramGetShareVideoListResponse.jdField_a_of_type_JavaUtilList = ((StoryManager)SuperManager.a(5)).a(paramGetShareVideoListResponse.jdField_a_of_type_JavaUtilList);
+      paramErrorMessage = paramGetShareVideoListResponse.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramErrorMessage.hasNext())
+      {
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramErrorMessage.next();
+        if (TextUtils.isEmpty(localStoryVideoItem.mOwnerUid)) {
+          localStoryVideoItem.mOwnerUid = this.a.jdField_c_of_type_JavaLangString;
+        }
+      }
+      if (TextUtils.isEmpty(paramGetShareVideoListRequest.jdField_c_of_type_JavaLangString)) {
+        this.a.jdField_a_of_type_JavaUtilList.clear();
+      }
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramGetShareVideoListResponse.jdField_a_of_type_JavaUtilList);
+      paramGetShareVideoListRequest = this.a;
+      paramGetShareVideoListRequest.jdField_a_of_type_Int = paramGetShareVideoListRequest.jdField_a_of_type_JavaUtilList.size();
+      this.a.jdField_b_of_type_Boolean = paramGetShareVideoListResponse.jdField_a_of_type_Boolean;
+      this.a.jdField_a_of_type_JavaLangString = paramGetShareVideoListResponse.jdField_c_of_type_JavaLangString;
+      ((DownloadUrlManager)SuperManager.a(28)).a(paramGetShareVideoListResponse.b);
       paramGetShareVideoListRequest = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
       paramGetShareVideoListRequest.jdField_a_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
       paramGetShareVideoListRequest.jdField_b_of_type_JavaLangString = this.a.jdField_c_of_type_JavaLangString;
-      paramGetShareVideoListRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      paramGetShareVideoListRequest.jdField_a_of_type_Boolean = false;
+      paramGetShareVideoListRequest.jdField_b_of_type_Boolean = paramGetShareVideoListResponse.jdField_a_of_type_Boolean;
+      paramGetShareVideoListRequest.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
+      if (paramGetShareVideoListRequest.jdField_a_of_type_Int < paramGetShareVideoListRequest.jdField_a_of_type_JavaUtilList.size()) {
+        paramGetShareVideoListRequest.jdField_a_of_type_Int = paramGetShareVideoListRequest.jdField_a_of_type_JavaUtilList.size();
+      }
       StoryDispatcher.a().dispatch(paramGetShareVideoListRequest);
       return;
     }
-    paramGetShareVideoListResponse.jdField_a_of_type_JavaUtilList = ((StoryManager)SuperManager.a(5)).a(paramGetShareVideoListResponse.jdField_a_of_type_JavaUtilList);
-    paramErrorMessage = paramGetShareVideoListResponse.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramErrorMessage.hasNext())
-    {
-      StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramErrorMessage.next();
-      if (TextUtils.isEmpty(localStoryVideoItem.mOwnerUid)) {
-        localStoryVideoItem.mOwnerUid = this.a.jdField_c_of_type_JavaLangString;
-      }
-    }
-    if (TextUtils.isEmpty(paramGetShareVideoListRequest.jdField_c_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-    }
-    this.a.jdField_a_of_type_JavaUtilList.addAll(paramGetShareVideoListResponse.jdField_a_of_type_JavaUtilList);
-    this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_JavaUtilList.size();
-    this.a.jdField_b_of_type_Boolean = paramGetShareVideoListResponse.jdField_a_of_type_Boolean;
-    this.a.jdField_a_of_type_JavaLangString = paramGetShareVideoListResponse.jdField_c_of_type_JavaLangString;
-    ((DownloadUrlManager)SuperManager.a(28)).a(paramGetShareVideoListResponse.b);
     paramGetShareVideoListRequest = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
     paramGetShareVideoListRequest.jdField_a_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
     paramGetShareVideoListRequest.jdField_b_of_type_JavaLangString = this.a.jdField_c_of_type_JavaLangString;
-    paramGetShareVideoListRequest.jdField_a_of_type_Boolean = false;
-    paramGetShareVideoListRequest.jdField_b_of_type_Boolean = paramGetShareVideoListResponse.jdField_a_of_type_Boolean;
-    paramGetShareVideoListRequest.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
-    if (paramGetShareVideoListRequest.jdField_a_of_type_Int < paramGetShareVideoListRequest.jdField_a_of_type_JavaUtilList.size()) {
-      paramGetShareVideoListRequest.jdField_a_of_type_Int = paramGetShareVideoListRequest.jdField_a_of_type_JavaUtilList.size();
-    }
+    paramGetShareVideoListRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
     StoryDispatcher.a().dispatch(paramGetShareVideoListRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.MyVideoSharePlayingListSync.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,17 @@ class AudienceRoomController$2
   
   public void onChanged(@Nullable RoomCloseEvent paramRoomCloseEvent)
   {
-    this.this$0.exitRoomToServer(paramRoomCloseEvent.sceneId, true);
-    this.this$0.exitRoomToPage(true);
+    if (paramRoomCloseEvent.sceneId == 3)
+    {
+      this.this$0.onBackPressed();
+      return;
+    }
+    this.this$0.exitLiveBizRoomById(paramRoomCloseEvent.sceneId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.pagelogic.controller.AudienceRoomController.2
  * JD-Core Version:    0.7.0.1
  */

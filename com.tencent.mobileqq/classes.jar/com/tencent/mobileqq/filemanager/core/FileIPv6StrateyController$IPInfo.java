@@ -14,20 +14,28 @@ public class FileIPv6StrateyController$IPInfo
   
   public String a()
   {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.startsWith("[")) && (this.jdField_a_of_type_JavaLangString.endsWith("]"))) {
-      return this.jdField_a_of_type_JavaLangString.substring(1, this.jdField_a_of_type_JavaLangString.length() - 1);
+    String str = this.jdField_a_of_type_JavaLangString;
+    if ((str != null) && (str.startsWith("[")) && (this.jdField_a_of_type_JavaLangString.endsWith("]")))
+    {
+      str = this.jdField_a_of_type_JavaLangString;
+      return str.substring(1, str.length() - 1);
     }
     return this.jdField_a_of_type_JavaLangString;
   }
   
   public String toString()
   {
-    return "" + this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController.IPInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -34,14 +34,14 @@ public class SignatureAdapter
   
   public SignatureAdapter(VasResDrawable paramVasResDrawable, AppRuntime paramAppRuntime)
   {
-    this(paramVasResDrawable, paramAppRuntime, 2130846437);
+    this(paramVasResDrawable, paramAppRuntime, 2130846313);
   }
   
   public SignatureAdapter(VasResDrawable paramVasResDrawable, AppRuntime paramAppRuntime, int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable = paramVasResDrawable;
     this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController = paramVasResDrawable.a();
-    paramVasResDrawable.a().jdField_a_of_type_Int = 2130847798;
+    paramVasResDrawable.a().jdField_a_of_type_Int = 2130847665;
     paramVasResDrawable.a().b = paramInt;
     paramVasResDrawable.a().jdField_a_of_type_JavaLangString = "sig_cover";
     paramVasResDrawable.a().e = 103;
@@ -55,35 +55,60 @@ public class SignatureAdapter
     return this.jdField_a_of_type_JavaLangString;
   }
   
+  public void a()
+  {
+    int i = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a();
+    SignatureManagerForTool.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
+    SignatureTemplateInfo localSignatureTemplateInfo = SignatureManagerForTool.a().a(i);
+    if (!localSignatureTemplateInfo.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if ((localSignatureTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$ImageItem != null) && (!TextUtils.isEmpty(localSignatureTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$ImageItem.c))) {
+        this.jdField_a_of_type_JavaLangString = localSignatureTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$ImageItem.c;
+      } else if (!TextUtils.isEmpty(localSignatureTemplateInfo.s)) {
+        this.jdField_a_of_type_JavaLangString = localSignatureTemplateInfo.s;
+      } else {
+        this.jdField_a_of_type_JavaLangString = localSignatureTemplateInfo.k;
+      }
+      SignatureManagerForTool.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+      SignatureAdapter.TplListener localTplListener = this.jdField_a_of_type_ComTencentMobileqqVasAdapterSignatureAdapter$TplListener;
+      if (localTplListener != null) {
+        localTplListener.load(localSignatureTemplateInfo);
+      }
+    }
+    if (SignatureManager.a(localSignatureTemplateInfo))
+    {
+      ThreadManager.excute(new SignatureAdapter.2(this, i, localSignatureTemplateInfo), 128, null, true);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a().sendEmptyMessage(10001);
+  }
+  
   public void a(int paramInt, Bundle paramBundle)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 0;
-    boolean bool;
-    if (QLog.isColorLevel())
+    if (bool)
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("downloadDone isMainThread:");
-      if (Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId())
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadDone isMainThread:");
+      if (Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId()) {
         bool = true;
-        QLog.d("SignatureAdapter", 2, bool);
+      } else {
+        bool = false;
       }
+      localStringBuilder.append(bool);
+      QLog.d("SignatureAdapter", 2, localStringBuilder.toString());
     }
-    else
-    {
-      if (paramBundle != null) {
-        i = paramBundle.getInt("resType");
-      }
-      switch (i)
-      {
-      }
+    if (paramBundle != null) {
+      i = paramBundle.getInt("resType");
     }
-    do
-    {
+    if (i != 2) {
       return;
-      bool = false;
-      break;
-    } while ((3 != paramInt) && (paramInt != 0));
-    ThreadManager.excute(new SignatureAdapter.3(this, paramBundle), 128, null, true);
+    }
+    if ((3 == paramInt) || (paramInt == 0)) {
+      ThreadManager.excute(new SignatureAdapter.3(this, paramBundle), 128, null, true);
+    }
   }
   
   public void a(SignatureAdapter.TplListener paramTplListener)
@@ -103,46 +128,12 @@ public class SignatureAdapter
   
   public void b()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a();
-    SignatureManagerForTool.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
-    SignatureTemplateInfo localSignatureTemplateInfo = SignatureManagerForTool.a().a(i);
-    if (!localSignatureTemplateInfo.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      if ((localSignatureTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$ImageItem == null) || (TextUtils.isEmpty(localSignatureTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$ImageItem.c))) {
-        break label120;
-      }
-      this.jdField_a_of_type_JavaLangString = localSignatureTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$ImageItem.c;
-    }
-    for (;;)
-    {
-      SignatureManagerForTool.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
-      if (this.jdField_a_of_type_ComTencentMobileqqVasAdapterSignatureAdapter$TplListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqVasAdapterSignatureAdapter$TplListener.load(localSignatureTemplateInfo);
-      }
-      if (!SignatureManager.a(localSignatureTemplateInfo)) {
-        break;
-      }
-      ThreadManager.excute(new SignatureAdapter.2(this, i, localSignatureTemplateInfo), 128, null, true);
-      return;
-      label120:
-      if (!TextUtils.isEmpty(localSignatureTemplateInfo.s)) {
-        this.jdField_a_of_type_JavaLangString = localSignatureTemplateInfo.s;
-      } else {
-        this.jdField_a_of_type_JavaLangString = localSignatureTemplateInfo.k;
-      }
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a().sendEmptyMessage(10001);
-  }
-  
-  public void c()
-  {
     SignatureManagerForTool.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.SignatureAdapter
  * JD-Core Version:    0.7.0.1
  */

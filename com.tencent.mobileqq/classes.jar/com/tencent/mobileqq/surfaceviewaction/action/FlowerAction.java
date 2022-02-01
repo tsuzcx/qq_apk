@@ -21,19 +21,26 @@ public class FlowerAction
   
   protected void a(int paramInt, float paramFloat)
   {
-    this.jdField_c_of_type_Float = (paramInt * 0.8F / this.jdField_c_of_type_Int);
+    float f1 = paramInt;
+    this.jdField_c_of_type_Float = (f1 * 0.8F / this.jdField_c_of_type_Int);
     if (this.jdField_c_of_type_Float > 0.8F) {
       this.jdField_c_of_type_Float = 0.8F;
     }
-    this.jdField_b_of_type_Int = ((int)(360.0F * paramInt * paramInt / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int)));
-    this.a = (this.f + (this.h - this.f) * paramInt / this.jdField_c_of_type_Int);
-    this.jdField_b_of_type_Float = ((int)(this.g + this.i * Math.sin(this.d * this.a)));
+    this.jdField_b_of_type_Int = ((int)(360.0F * f1 * f1 / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int)));
+    int j = this.f;
+    this.a = (j + (this.h - j) * paramInt / this.jdField_c_of_type_Int);
+    double d1 = this.g;
+    double d2 = this.i;
+    double d3 = Math.sin(this.d * this.a);
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    this.jdField_b_of_type_Float = ((int)(d1 + d2 * d3));
     super.a(paramInt, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.FlowerAction
  * JD-Core Version:    0.7.0.1
  */

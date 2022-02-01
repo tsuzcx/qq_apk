@@ -59,7 +59,10 @@ public class ProcessUtil
         ActivityManager.AppTask localAppTask = (ActivityManager.AppTask)((Iterator)localObject).next();
         if ((localAppTask != null) && (localAppTask.getTaskInfo() != null) && (localAppTask.getTaskInfo().baseIntent != null) && (localAppTask.getTaskInfo().baseIntent.getComponent() != null))
         {
-          QMLog.e("miniapp", "will finish and remove task: id=" + localAppTask.getTaskInfo().id);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("will finish and remove task: id=");
+          localStringBuilder.append(localAppTask.getTaskInfo().id);
+          QMLog.e("miniapp", localStringBuilder.toString());
           if ((localAppTask.getTaskInfo().baseIntent.getComponent().getClassName().equals(paramActivity.getClass().getName())) || (localAppTask.getTaskInfo().baseIntent.getComponent().getClassName().equals(paramActivity.getClass().getName()))) {
             localAppTask.finishAndRemoveTask();
           }
@@ -69,8 +72,10 @@ public class ProcessUtil
     }
     catch (Throwable paramActivity)
     {
-      QMLog.e("miniapp", "finishAndRemoveAllTasks exception.");
+      label194:
+      break label194;
     }
+    QMLog.e("miniapp", "finishAndRemoveAllTasks exception.");
     return false;
   }
   
@@ -98,7 +103,7 @@ public class ProcessUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.ProcessUtil
  * JD-Core Version:    0.7.0.1
  */

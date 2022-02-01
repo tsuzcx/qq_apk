@@ -31,18 +31,19 @@ public class QFileListPullMoreLayout
   public QFileListPullMoreLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560764, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374306));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374307));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560652, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373862));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373863));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (localDrawable == null) {
       return;
     }
-    ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
+    ((Animatable)localDrawable).stop();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
   }
@@ -76,7 +77,8 @@ public class QFileListPullMoreLayout
   public void setTextLeftDrawable(int paramInt)
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight());
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight());
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
     ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
   }
@@ -89,7 +91,7 @@ public class QFileListPullMoreLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileListPullMoreLayout
  * JD-Core Version:    0.7.0.1
  */

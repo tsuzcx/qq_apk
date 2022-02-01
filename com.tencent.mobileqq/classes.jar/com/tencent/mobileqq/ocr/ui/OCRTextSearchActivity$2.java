@@ -13,18 +13,17 @@ class OCRTextSearchActivity$2
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      OCRTextSearchActivity.a(this.a);
-      this.a.a.setSelection(this.a.a.getText().length());
-      return true;
+    if ((paramInt != 3) && ((paramKeyEvent == null) || (paramKeyEvent.getKeyCode() != 66))) {
+      return false;
     }
-    return false;
+    OCRTextSearchActivity.a(this.a);
+    this.a.a.setSelection(this.a.a.getText().length());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -18,38 +18,44 @@ public class CardHandler$CardTransProcessorHandler
   
   public void handleMessage(Message paramMessage)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if (localFileMsg.fileType == 35) {
+    Object localObject = (FileMsg)paramMessage.obj;
+    if (((FileMsg)localObject).fileType == 35) {
       switch (paramMessage.what)
       {
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        paramMessage = localFileMsg.bdhExtendInfo;
-        if ((this.a != null) && (this.a.get() != null))
+      default: 
+      case 1004: 
+      case 1005: 
+        paramMessage = this.a;
+        if ((paramMessage != null) && (paramMessage.get() != null))
+        {
+          ((CardHandler.CoverTransCallback)this.a.get()).a(((FileMsg)localObject).errorCode);
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("CardHandler", 2, "CardTransProcessorHandler error no callback");
+          return;
+        }
+        break;
+      case 1003: 
+        paramMessage = ((FileMsg)localObject).bdhExtendInfo;
+        localObject = this.a;
+        if ((localObject != null) && (((WeakReference)localObject).get() != null))
         {
           ((CardHandler.CoverTransCallback)this.a.get()).b(paramMessage);
           return;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("CardHandler", 2, "CardTransProcessorHandler no callback");
-      return;
-      if ((this.a != null) && (this.a.get() != null))
-      {
-        ((CardHandler.CoverTransCallback)this.a.get()).a(localFileMsg.errorCode);
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("CardHandler", 2, "CardTransProcessorHandler no callback");
+        }
+        break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("CardHandler", 2, "CardTransProcessorHandler error no callback");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.CardHandler.CardTransProcessorHandler
  * JD-Core Version:    0.7.0.1
  */

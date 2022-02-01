@@ -1,5 +1,6 @@
 package com.huawei.hms.utils;
 
+import android.text.TextUtils;
 import com.huawei.hms.core.aidl.IMessageEntity;
 import com.huawei.hms.core.aidl.annotation.Packed;
 import com.huawei.hms.support.log.HMSLog;
@@ -20,6 +21,14 @@ import org.json.JSONObject;
 
 public class JsonUtil
 {
+  private static final String BYTE_BYTE = "_byte_";
+  private static final String LIST_FIELD_VALUE = "_value_";
+  private static final String LIST_ITEM_VALUE = "_list_item_";
+  private static final String LIST_SIZE = "_list_size_";
+  private static final String MAP_MAP = "_map_";
+  private static final String NEXT_ITEM = "_next_item_";
+  private static final String PRE_PKG = "com.huawei";
+  private static final String TAG = "JsonUtil";
   protected static final int VAL_BYTE = 2;
   protected static final int VAL_ENTITY = 0;
   protected static final int VAL_LIST = 1;
@@ -27,21 +36,7 @@ public class JsonUtil
   protected static final int VAL_NULL = -1;
   protected static final String VAL_TYPE = "_val_type_";
   
-  private static Object a(String paramString, JSONObject paramJSONObject)
-  {
-    if (paramJSONObject.has(paramString)) {
-      return paramJSONObject.get(paramString);
-    }
-    if ((paramJSONObject.has("header")) && (paramJSONObject.getJSONObject("header").has(paramString))) {
-      return paramJSONObject.getJSONObject("header").get(paramString);
-    }
-    if ((paramJSONObject.has("body")) && (paramJSONObject.getJSONObject("body").has(paramString))) {
-      return paramJSONObject.getJSONObject("body").get(paramString);
-    }
-    return null;
-  }
-  
-  private static String a(IMessageEntity paramIMessageEntity)
+  private static String createInnerJsonString(IMessageEntity paramIMessageEntity)
   {
     Class localClass = paramIMessageEntity.getClass();
     JSONObject localJSONObject = new JSONObject();
@@ -56,276 +51,17 @@ public class JsonUtil
         if (localField.isAnnotationPresent(Packed.class))
         {
           boolean bool = localField.isAccessible();
-          a(localField, true);
+          setAccessible(localField, true);
           String str = localField.getName();
           Object localObject = localField.get(paramIMessageEntity);
-          a(localField, bool);
-          a(str, localObject, localJSONObject);
+          setAccessible(localField, bool);
+          disposeType(str, localObject, localJSONObject);
         }
         i += 1;
       }
       localClass = localClass.getSuperclass();
     }
     return localJSONObject.toString();
-  }
-  
-  private static Map a(Type paramType, JSONObject paramJSONObject)
-  {
-    paramType = (Class)((java.lang.reflect.ParameterizedType)paramType).getActualTypeArguments()[1];
-    paramJSONObject = new JSONArray(paramJSONObject.getString("_map_"));
-    HashMap localHashMap = new HashMap();
-    int i = 0;
-    if (i < paramJSONObject.length())
-    {
-      if ((paramType.newInstance() instanceof IMessageEntity))
-      {
-        IMessageEntity localIMessageEntity = jsonToEntity(paramJSONObject.getString(i + 1), (IMessageEntity)paramType.newInstance());
-        localHashMap.put(paramJSONObject.get(i), localIMessageEntity);
-      }
-      for (;;)
-      {
-        i += 2;
-        break;
-        localHashMap.put(paramJSONObject.get(i), paramJSONObject.get(i + 1));
-      }
-    }
-    return localHashMap;
-  }
-  
-  private static void a(IMessageEntity paramIMessageEntity, Field paramField, JSONObject paramJSONObject)
-  {
-    paramJSONObject = b(paramIMessageEntity, paramField, paramJSONObject);
-    if (paramJSONObject != null)
-    {
-      boolean bool = paramField.isAccessible();
-      a(paramField, true);
-      paramField.set(paramIMessageEntity, paramJSONObject);
-      a(paramField, bool);
-    }
-  }
-  
-  private static void a(String paramString, List<?> paramList, JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("_val_type_", 1);
-    localJSONObject.put("_list_size_", paramList.size());
-    int i = 0;
-    while (i < paramList.size())
-    {
-      a("_list_item_" + i, paramList.get(i), localJSONObject);
-      if ((paramList.get(i) instanceof IMessageEntity)) {
-        localJSONObject.put("_val_type_", 0);
-      }
-      i += 1;
-    }
-    paramJSONObject.put(paramString, localJSONObject);
-  }
-  
-  private static void a(String paramString, Map paramMap, JSONObject paramJSONObject)
-  {
-    Object localObject1 = paramMap.entrySet().iterator();
-    paramMap = new JSONArray();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
-      Object localObject2 = ((Map.Entry)localObject3).getKey();
-      localObject3 = ((Map.Entry)localObject3).getValue();
-      if ((localObject2 instanceof IMessageEntity)) {
-        paramMap.put(a((IMessageEntity)localObject2));
-      }
-      for (;;)
-      {
-        if (!(localObject3 instanceof IMessageEntity)) {
-          break label113;
-        }
-        paramMap.put(a((IMessageEntity)localObject3));
-        break;
-        paramMap.put(localObject2);
-      }
-      label113:
-      paramMap.put(localObject3);
-    }
-    localObject1 = new JSONObject();
-    ((JSONObject)localObject1).put("_val_type_", 3);
-    ((JSONObject)localObject1).put("_map_", paramMap.toString());
-    paramJSONObject.put(paramString, localObject1);
-  }
-  
-  private static void a(String paramString, byte[] paramArrayOfByte, JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("_val_type_", 2);
-    try
-    {
-      localJSONObject.put("_byte_", Base64.encode(paramArrayOfByte));
-      paramJSONObject.put(paramString, localJSONObject);
-      return;
-    }
-    catch (IllegalArgumentException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        HMSLog.e("JsonUtil", "writeByte failed : " + paramArrayOfByte.getMessage());
-      }
-    }
-  }
-  
-  private static void a(Field paramField, boolean paramBoolean)
-  {
-    AccessController.doPrivileged(new JsonUtil.1(paramField, paramBoolean));
-  }
-  
-  private static boolean a(String paramString, Object paramObject, JSONObject paramJSONObject)
-  {
-    boolean bool = false;
-    if ((paramObject instanceof String)) {
-      paramJSONObject.put(paramString, (String)paramObject);
-    }
-    for (;;)
-    {
-      bool = true;
-      do
-      {
-        return bool;
-        if ((paramObject instanceof Integer))
-        {
-          paramJSONObject.put(paramString, ((Integer)paramObject).intValue());
-          break;
-        }
-        if ((paramObject instanceof Short))
-        {
-          paramJSONObject.put(paramString, (Short)paramObject);
-          break;
-        }
-        if ((paramObject instanceof Long))
-        {
-          paramJSONObject.put(paramString, (Long)paramObject);
-          break;
-        }
-        if ((paramObject instanceof Float))
-        {
-          paramJSONObject.put(paramString, (Float)paramObject);
-          break;
-        }
-        if ((paramObject instanceof Double))
-        {
-          paramJSONObject.put(paramString, (Double)paramObject);
-          break;
-        }
-        if ((paramObject instanceof Boolean))
-        {
-          paramJSONObject.put(paramString, (Boolean)paramObject);
-          break;
-        }
-        if ((paramObject instanceof JSONObject))
-        {
-          paramJSONObject.put(paramString, (JSONObject)paramObject);
-          break;
-        }
-        if ((paramObject instanceof byte[]))
-        {
-          a(paramString, (byte[])paramObject, paramJSONObject);
-          break;
-        }
-        if ((paramObject instanceof List))
-        {
-          a(paramString, (List)paramObject, paramJSONObject);
-          break;
-        }
-        if ((paramObject instanceof Map))
-        {
-          a(paramString, (Map)paramObject, paramJSONObject);
-          break;
-        }
-      } while (!(paramObject instanceof IMessageEntity));
-      try
-      {
-        paramJSONObject.put(paramString, a((IMessageEntity)paramObject));
-      }
-      catch (IllegalAccessException paramString)
-      {
-        HMSLog.e("JsonUtil", "IllegalAccessException , " + paramString);
-      }
-    }
-    return false;
-  }
-  
-  private static byte[] a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      paramJSONObject = Base64.decode(paramJSONObject.getString("_byte_"));
-      return paramJSONObject;
-    }
-    catch (IllegalArgumentException paramJSONObject)
-    {
-      HMSLog.e("JsonUtil", "readByte failed : " + paramJSONObject.getMessage());
-    }
-    return null;
-  }
-  
-  private static Object b(IMessageEntity paramIMessageEntity, Field paramField, JSONObject paramJSONObject)
-  {
-    paramJSONObject = a(paramField.getName(), paramJSONObject);
-    if (paramJSONObject != null) {}
-    try
-    {
-      if ((paramField.getType().getName().startsWith("com.huawei")) && ((paramField.getType().newInstance() instanceof IMessageEntity))) {
-        return jsonToEntity((String)paramJSONObject, (IMessageEntity)paramField.getType().newInstance());
-      }
-      paramIMessageEntity = paramJSONObject;
-      if ((paramJSONObject instanceof JSONObject))
-      {
-        paramIMessageEntity = paramJSONObject;
-        if (((JSONObject)paramJSONObject).has("_val_type_"))
-        {
-          int i = ((JSONObject)paramJSONObject).getInt("_val_type_");
-          if ((i == 1) || (i == 0)) {
-            return b(paramField.getGenericType(), (JSONObject)paramJSONObject);
-          }
-          if (i == 2) {
-            return a((JSONObject)paramJSONObject);
-          }
-          if (i == 3) {
-            return a(paramField.getGenericType(), (JSONObject)paramJSONObject);
-          }
-          HMSLog.e("JsonUtil", "cannot support type : " + i);
-          return null;
-        }
-      }
-    }
-    catch (InstantiationException paramIMessageEntity)
-    {
-      HMSLog.e("JsonUtil", "InstantiationException  ");
-      paramIMessageEntity = null;
-    }
-    return paramIMessageEntity;
-  }
-  
-  private static List<Object> b(Type paramType, JSONObject paramJSONObject)
-  {
-    int j = paramJSONObject.getInt("_list_size_");
-    int k = paramJSONObject.getInt("_val_type_");
-    ArrayList localArrayList = new ArrayList(j);
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject1 = paramJSONObject.get("_list_item_" + i);
-      if (k == 0)
-      {
-        Object localObject2 = ((Class)((java.lang.reflect.ParameterizedType)paramType).getActualTypeArguments()[0]).newInstance();
-        localArrayList.add(jsonToEntity((String)localObject1, (IMessageEntity)localObject2));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (k == 1) {
-          localArrayList.add(localObject1);
-        }
-      }
-    }
-    return localArrayList;
   }
   
   public static String createJsonString(IMessageEntity paramIMessageEntity)
@@ -337,124 +73,380 @@ public class JsonUtil
     }
     try
     {
-      paramIMessageEntity = a(paramIMessageEntity);
+      paramIMessageEntity = createInnerJsonString(paramIMessageEntity);
       return paramIMessageEntity;
-    }
-    catch (IllegalAccessException paramIMessageEntity)
-    {
-      HMSLog.e("JsonUtil", "catch IllegalAccessException " + paramIMessageEntity.getMessage());
-      return "";
     }
     catch (JSONException paramIMessageEntity)
     {
-      for (;;)
-      {
-        HMSLog.e("JsonUtil", "catch JSONException " + paramIMessageEntity.getMessage());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("catch JSONException ");
+      localStringBuilder.append(paramIMessageEntity.getMessage());
+      HMSLog.e("JsonUtil", localStringBuilder.toString());
+      return "";
+    }
+    catch (IllegalAccessException paramIMessageEntity)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("catch IllegalAccessException ");
+      localStringBuilder.append(paramIMessageEntity.getMessage());
+      HMSLog.e("JsonUtil", localStringBuilder.toString());
+    }
+    return "";
+  }
+  
+  private static boolean disposeType(String paramString, Object paramObject, JSONObject paramJSONObject)
+  {
+    if ((paramObject instanceof String)) {
+      paramJSONObject.put(paramString, (String)paramObject);
+    } else if ((paramObject instanceof Integer)) {
+      paramJSONObject.put(paramString, ((Integer)paramObject).intValue());
+    } else if ((paramObject instanceof Short)) {
+      paramJSONObject.put(paramString, (Short)paramObject);
+    } else if ((paramObject instanceof Long)) {
+      paramJSONObject.put(paramString, (Long)paramObject);
+    } else if ((paramObject instanceof Float)) {
+      paramJSONObject.put(paramString, (Float)paramObject);
+    } else if ((paramObject instanceof Double)) {
+      paramJSONObject.put(paramString, (Double)paramObject);
+    } else if ((paramObject instanceof Boolean)) {
+      paramJSONObject.put(paramString, (Boolean)paramObject);
+    } else if ((paramObject instanceof JSONObject)) {
+      paramJSONObject.put(paramString, (JSONObject)paramObject);
+    } else if ((paramObject instanceof byte[])) {
+      writeByte(paramString, (byte[])paramObject, paramJSONObject);
+    } else if ((paramObject instanceof List)) {
+      writeList(paramString, (List)paramObject, paramJSONObject);
+    } else if ((paramObject instanceof Map)) {
+      writeMap(paramString, (Map)paramObject, paramJSONObject);
+    } else {
+      if (!(paramObject instanceof IMessageEntity)) {
+        break label273;
       }
     }
+    try
+    {
+      paramJSONObject.put(paramString, createInnerJsonString((IMessageEntity)paramObject));
+      return true;
+    }
+    catch (IllegalAccessException paramString)
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("IllegalAccessException , ");
+      paramObject.append(paramString);
+      HMSLog.e("JsonUtil", paramObject.toString());
+    }
+    label273:
+    return false;
   }
   
   public static Object getInfoFromJsonobject(String paramString1, String paramString2)
   {
-    if ((paramString1.isEmpty()) || (paramString2.isEmpty())) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        paramString1 = new JSONObject(paramString1);
-        if (paramString1.has(paramString2))
-        {
-          paramString1 = paramString1.get(paramString2);
-          boolean bool = paramString1 instanceof String;
-          if (bool) {
-            return paramString1;
-          }
-        }
-      }
-      catch (JSONException paramString1)
-      {
-        HMSLog.e("JsonUtil", "getInfoFromJsonobject:parser json error :" + paramString2);
+    if (!TextUtils.isEmpty(paramString1)) {
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
       }
     }
+    try
+    {
+      paramString1 = new JSONObject(paramString1);
+      if (!paramString1.has(paramString2)) {
+        return null;
+      }
+      paramString1 = paramString1.get(paramString2);
+      boolean bool = paramString1 instanceof String;
+      if (!bool) {
+        break label82;
+      }
+      return paramString1;
+    }
+    catch (JSONException paramString1)
+    {
+      label52:
+      break label52;
+    }
+    paramString1 = new StringBuilder();
+    paramString1.append("getInfoFromJsonobject:parser json error :");
+    paramString1.append(paramString2);
+    HMSLog.e("JsonUtil", paramString1.toString());
+    label82:
     return null;
   }
   
   public static int getIntValue(JSONObject paramJSONObject, String paramString)
   {
-    int j = -1;
-    int i = j;
-    if (paramJSONObject != null)
-    {
-      i = j;
-      if (paramJSONObject.has(paramString)) {
-        i = paramJSONObject.getInt(paramString);
-      }
+    if ((paramJSONObject != null) && (paramJSONObject.has(paramString))) {
+      return paramJSONObject.getInt(paramString);
     }
-    return i;
+    return -1;
+  }
+  
+  private static Object getObjectValue(String paramString, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has(paramString)) {
+      return paramJSONObject.get(paramString);
+    }
+    if ((paramJSONObject.has("header")) && (paramJSONObject.getJSONObject("header").has(paramString))) {
+      return paramJSONObject.getJSONObject("header").get(paramString);
+    }
+    if ((paramJSONObject.has("body")) && (paramJSONObject.getJSONObject("body").has(paramString))) {
+      return paramJSONObject.getJSONObject("body").get(paramString);
+    }
+    return null;
   }
   
   public static String getStringValue(JSONObject paramJSONObject, String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramJSONObject != null)
-    {
-      localObject1 = localObject2;
-      if (paramJSONObject.has(paramString)) {
-        localObject1 = paramJSONObject.getString(paramString);
-      }
+    if ((paramJSONObject != null) && (paramJSONObject.has(paramString))) {
+      return paramJSONObject.getString(paramString);
     }
-    return localObject1;
+    return null;
   }
   
   public static IMessageEntity jsonToEntity(String paramString, IMessageEntity paramIMessageEntity)
   {
     for (;;)
     {
+      int i;
       try
       {
-        Object localObject = paramIMessageEntity.getClass();
-        JSONObject localJSONObject = new JSONObject(paramString);
+        localObject = paramIMessageEntity.getClass();
+        localJSONObject = new JSONObject(paramString);
         paramString = (String)localObject;
         if (paramString != null)
         {
           localObject = paramString.getDeclaredFields();
           int j = localObject.length;
-          int i = 0;
+          i = 0;
           if (i < j)
           {
-            Field localField = localObject[i];
+            localField = localObject[i];
             boolean bool = localField.isAnnotationPresent(Packed.class);
-            if (bool) {}
-            try
-            {
-              a(paramIMessageEntity, localField, localJSONObject);
-              i += 1;
-            }
-            catch (IllegalAccessException localIllegalAccessException)
-            {
-              HMSLog.e("JsonUtil", "jsonToEntity, set value of the field exception, field name:" + localField.getName());
-              continue;
+            if (!bool) {
+              break label165;
             }
           }
-        }
-        else
-        {
-          return paramIMessageEntity;
         }
       }
       catch (JSONException paramString)
       {
-        HMSLog.e("JsonUtil", "catch JSONException when parse jsonString" + paramString.getMessage());
+        JSONObject localJSONObject;
+        Field localField;
+        StringBuilder localStringBuilder;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("catch JSONException when parse jsonString");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        HMSLog.e("JsonUtil", ((StringBuilder)localObject).toString());
       }
+      try
+      {
+        readFiled(paramIMessageEntity, localField, localJSONObject);
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        continue;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("jsonToEntity, set value of the field exception, field name:");
+      localStringBuilder.append(localField.getName());
+      HMSLog.e("JsonUtil", localStringBuilder.toString());
+      break label165;
       paramString = paramString.getSuperclass();
+      continue;
+      return paramIMessageEntity;
+      label165:
+      i += 1;
     }
+  }
+  
+  private static byte[] readByte(JSONObject paramJSONObject)
+  {
+    try
+    {
+      paramJSONObject = Base64.decode(paramJSONObject.getString("_byte_"));
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("readByte failed : ");
+      localStringBuilder.append(paramJSONObject.getMessage());
+      HMSLog.e("JsonUtil", localStringBuilder.toString());
+    }
+    return null;
+  }
+  
+  private static void readFiled(IMessageEntity paramIMessageEntity, Field paramField, JSONObject paramJSONObject)
+  {
+    paramJSONObject = readJson(paramIMessageEntity, paramField, paramJSONObject);
+    if (paramJSONObject != null)
+    {
+      boolean bool = paramField.isAccessible();
+      setAccessible(paramField, true);
+      paramField.set(paramIMessageEntity, paramJSONObject);
+      setAccessible(paramField, bool);
+    }
+  }
+  
+  private static Object readJson(IMessageEntity paramIMessageEntity, Field paramField, JSONObject paramJSONObject)
+  {
+    paramIMessageEntity = getObjectValue(paramField.getName(), paramJSONObject);
+    if (paramIMessageEntity != null) {}
+    try
+    {
+      if ((paramField.getType().getName().startsWith("com.huawei")) && ((paramField.getType().newInstance() instanceof IMessageEntity))) {
+        return jsonToEntity((String)paramIMessageEntity, (IMessageEntity)paramField.getType().newInstance());
+      }
+      if (((paramIMessageEntity instanceof JSONObject)) && (((JSONObject)paramIMessageEntity).has("_val_type_")))
+      {
+        int i = ((JSONObject)paramIMessageEntity).getInt("_val_type_");
+        if ((i != 1) && (i != 0))
+        {
+          if (i == 2) {
+            return readByte((JSONObject)paramIMessageEntity);
+          }
+          if (i == 3) {
+            return readMap(paramField.getGenericType(), (JSONObject)paramIMessageEntity);
+          }
+          paramIMessageEntity = new StringBuilder();
+          paramIMessageEntity.append("cannot support type : ");
+          paramIMessageEntity.append(i);
+          HMSLog.e("JsonUtil", paramIMessageEntity.toString());
+          return null;
+        }
+        paramIMessageEntity = readList(paramField.getGenericType(), (JSONObject)paramIMessageEntity);
+        return paramIMessageEntity;
+      }
+      return paramIMessageEntity;
+    }
+    catch (InstantiationException paramIMessageEntity)
+    {
+      label179:
+      break label179;
+    }
+    HMSLog.e("JsonUtil", "InstantiationException  ");
+    return null;
+  }
+  
+  private static List<Object> readList(Type paramType, JSONObject paramJSONObject)
+  {
+    int j = paramJSONObject.getInt("_list_size_");
+    int k = paramJSONObject.getInt("_val_type_");
+    ArrayList localArrayList = new ArrayList(j);
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("_list_item_");
+      ((StringBuilder)localObject1).append(i);
+      localObject1 = paramJSONObject.get(((StringBuilder)localObject1).toString());
+      if (k == 0)
+      {
+        Object localObject2 = ((Class)((java.lang.reflect.ParameterizedType)paramType).getActualTypeArguments()[0]).newInstance();
+        localArrayList.add(jsonToEntity((String)localObject1, (IMessageEntity)localObject2));
+      }
+      else if (k == 1)
+      {
+        localArrayList.add(localObject1);
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  private static Map readMap(Type paramType, JSONObject paramJSONObject)
+  {
+    paramType = (Class)((java.lang.reflect.ParameterizedType)paramType).getActualTypeArguments()[1];
+    paramJSONObject = new JSONArray(paramJSONObject.getString("_map_"));
+    HashMap localHashMap = new HashMap();
+    int i = 0;
+    while (i < paramJSONObject.length())
+    {
+      if ((paramType.newInstance() instanceof IMessageEntity))
+      {
+        IMessageEntity localIMessageEntity = jsonToEntity(paramJSONObject.getString(i + 1), (IMessageEntity)paramType.newInstance());
+        localHashMap.put(paramJSONObject.get(i), localIMessageEntity);
+      }
+      else
+      {
+        localHashMap.put(paramJSONObject.get(i), paramJSONObject.get(i + 1));
+      }
+      i += 2;
+    }
+    return localHashMap;
+  }
+  
+  private static void setAccessible(Field paramField, boolean paramBoolean)
+  {
+    AccessController.doPrivileged(new JsonUtil.1(paramField, paramBoolean));
+  }
+  
+  private static void writeByte(String paramString, byte[] paramArrayOfByte, JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("_val_type_", 2);
+    try
+    {
+      localJSONObject.put("_byte_", Base64.encode(paramArrayOfByte));
+    }
+    catch (IllegalArgumentException paramArrayOfByte)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("writeByte failed : ");
+      localStringBuilder.append(paramArrayOfByte.getMessage());
+      HMSLog.e("JsonUtil", localStringBuilder.toString());
+    }
+    paramJSONObject.put(paramString, localJSONObject);
+  }
+  
+  private static void writeList(String paramString, List<?> paramList, JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("_val_type_", 1);
+    localJSONObject.put("_list_size_", paramList.size());
+    int i = 0;
+    while (i < paramList.size())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("_list_item_");
+      localStringBuilder.append(i);
+      disposeType(localStringBuilder.toString(), paramList.get(i), localJSONObject);
+      if ((paramList.get(i) instanceof IMessageEntity)) {
+        localJSONObject.put("_val_type_", 0);
+      }
+      i += 1;
+    }
+    paramJSONObject.put(paramString, localJSONObject);
+  }
+  
+  private static void writeMap(String paramString, Map paramMap, JSONObject paramJSONObject)
+  {
+    Object localObject1 = paramMap.entrySet().iterator();
+    paramMap = new JSONArray();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
+      Object localObject2 = ((Map.Entry)localObject3).getKey();
+      localObject3 = ((Map.Entry)localObject3).getValue();
+      if ((localObject2 instanceof IMessageEntity)) {
+        paramMap.put(createInnerJsonString((IMessageEntity)localObject2));
+      } else {
+        paramMap.put(localObject2);
+      }
+      if ((localObject3 instanceof IMessageEntity)) {
+        paramMap.put(createInnerJsonString((IMessageEntity)localObject3));
+      } else {
+        paramMap.put(localObject3);
+      }
+    }
+    localObject1 = new JSONObject();
+    ((JSONObject)localObject1).put("_val_type_", 3);
+    ((JSONObject)localObject1).put("_map_", paramMap.toString());
+    paramJSONObject.put(paramString, localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.utils.JsonUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,9 @@ class VideoBaseItem$3
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    this.a.c = 7;
-    if (VideoBaseItem.a(this.a) != null) {
+    VideoBaseItem localVideoBaseItem = this.a;
+    localVideoBaseItem.c = 7;
+    if (VideoBaseItem.a(localVideoBaseItem) != null) {
       VideoBaseItem.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
     }
     return false;
@@ -19,7 +20,7 @@ class VideoBaseItem$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem.3
  * JD-Core Version:    0.7.0.1
  */

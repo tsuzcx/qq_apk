@@ -4,9 +4,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.cooperation.ApkUtils;
+import com.tencent.mobileqq.intervideo.IAppSettingUtil;
+import com.tencent.mobileqq.intervideo.IBaseApplicationImplUtil;
 import com.tencent.mobileqq.intervideo.groupvideo.plugininterface.IVPluginReportInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
@@ -30,10 +32,10 @@ public class IVPluginDataReporter
   private int mOpResult;
   private String mOpType = "";
   private int mPlatform = 2;
-  private String mQQVersion = "8.5.5";
+  private String mQQVersion = ((IAppSettingUtil)QRoute.api(IAppSettingUtil.class)).getSubVersion();
   private String mRoomType;
   private String mRoomid;
-  private String mSdkversion = String.valueOf(ApkUtils.a(BaseApplicationImpl.getContext()));
+  private String mSdkversion = String.valueOf(ApkUtils.a(((IBaseApplicationImplUtil)QRoute.api(IBaseApplicationImplUtil.class)).getContext()));
   private String mSource;
   private String mSysVersion = Build.VERSION.RELEASE;
   private String mTimeLong;
@@ -96,17 +98,81 @@ public class IVPluginDataReporter
   
   public void report()
   {
-    String str = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
-    this.networktype = (HttpUtil.getNetWorkType() + "");
-    if (QLog.isColorLevel()) {
-      QLog.d("IVPluginDataReporter", 1, "IVPluginDataReporter: department = " + this.mDepartment + " op_type = " + this.mOpType + " op_name = " + this.mOpName + " op_in = " + this.mOpIn + " d1= " + this.d1 + " d2=" + this.d2 + " d3=" + this.d3 + " d4=" + this.d4 + " timelong=" + this.mTimeLong + " op_result = " + this.mOpResult + " qq_version = " + this.mQQVersion);
-    }
-    if ((TextUtils.isEmpty(this.mDepartment)) || (TextUtils.isEmpty(this.mOpName)) || (TextUtils.isEmpty(this.mOpType)))
+    String str1 = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(HttpUtil.getNetWorkType());
+    ((StringBuilder)localObject).append("");
+    this.networktype = ((StringBuilder)localObject).toString();
+    if (QLog.isColorLevel())
     {
-      QLog.e("IVPluginDataReporter", 1, "has null str ,stop report");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("IVPluginDataReporter: department = ");
+      ((StringBuilder)localObject).append(this.mDepartment);
+      ((StringBuilder)localObject).append(" op_type = ");
+      ((StringBuilder)localObject).append(this.mOpType);
+      ((StringBuilder)localObject).append(" op_name = ");
+      ((StringBuilder)localObject).append(this.mOpName);
+      ((StringBuilder)localObject).append(" op_in = ");
+      ((StringBuilder)localObject).append(this.mOpIn);
+      ((StringBuilder)localObject).append(" d1= ");
+      ((StringBuilder)localObject).append(this.d1);
+      ((StringBuilder)localObject).append(" d2=");
+      ((StringBuilder)localObject).append(this.d2);
+      ((StringBuilder)localObject).append(" d3=");
+      ((StringBuilder)localObject).append(this.d3);
+      ((StringBuilder)localObject).append(" d4=");
+      ((StringBuilder)localObject).append(this.d4);
+      ((StringBuilder)localObject).append(" timelong=");
+      ((StringBuilder)localObject).append(this.mTimeLong);
+      ((StringBuilder)localObject).append(" op_result = ");
+      ((StringBuilder)localObject).append(this.mOpResult);
+      ((StringBuilder)localObject).append(" qq_version = ");
+      ((StringBuilder)localObject).append(this.mQQVersion);
+      QLog.d("IVPluginDataReporter", 1, ((StringBuilder)localObject).toString());
+    }
+    if ((!TextUtils.isEmpty(this.mDepartment)) && (!TextUtils.isEmpty(this.mOpName)) && (!TextUtils.isEmpty(this.mOpType)))
+    {
+      localObject = this.mDepartment;
+      String str2 = this.mToUin;
+      String str3 = this.mOpType;
+      String str4 = this.mOpName;
+      int i = this.mOpIn;
+      int j = this.mOpResult;
+      String str5 = this.d1;
+      String str6 = this.d2;
+      String str7 = this.d3;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.d4);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mTimeLong);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mRoomid);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mRoomType);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mSource);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.networktype);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mPlatform);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mMacVersion);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mSysVersion);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mFrameVersion);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mSdkversion);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mQQVersion);
+      localStringBuilder.append("|");
+      localStringBuilder.append(str1);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mLastOpName);
+      ReportController.b(null, "dc03445", (String)localObject, str2, str3, str4, i, 1, j, str5, str6, str7, localStringBuilder.toString());
       return;
     }
-    ReportController.b(null, "dc03445", this.mDepartment, this.mToUin, this.mOpType, this.mOpName, this.mOpIn, 1, this.mOpResult, this.d1, this.d2, this.d3, this.d4 + "|" + this.mTimeLong + "|" + this.mRoomid + "|" + this.mRoomType + "|" + this.mSource + "|" + this.networktype + "|" + this.mPlatform + "|" + this.mMacVersion + "|" + this.mSysVersion + "|" + this.mFrameVersion + "|" + this.mSdkversion + "|" + this.mQQVersion + "|" + str + "|" + this.mLastOpName);
+    QLog.e("IVPluginDataReporter", 1, "has null str ,stop report");
   }
   
   public IVPluginDataReporter toUin(String paramString)
@@ -117,7 +183,7 @@ public class IVPluginDataReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter
  * JD-Core Version:    0.7.0.1
  */

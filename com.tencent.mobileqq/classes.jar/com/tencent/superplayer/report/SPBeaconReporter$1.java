@@ -11,7 +11,12 @@ final class SPBeaconReporter$1
     paramString = SPDownloadEvent.parseEvent(paramString);
     if (paramString.needReport())
     {
-      LogUtil.d(".SPBeaconReporter", "spDownloadEvent report, name:" + paramString.getEventName() + " map:" + paramString.getDataMap());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("spDownloadEvent report, name:");
+      localStringBuilder.append(paramString.getEventName());
+      localStringBuilder.append(" map:");
+      localStringBuilder.append(paramString.getDataMap());
+      LogUtil.d(".SPBeaconReporter", localStringBuilder.toString());
       SPBeaconReporter.report(paramString.getEventName(), paramString.getDataMap());
     }
   }
@@ -21,14 +26,19 @@ final class SPBeaconReporter$1
     paramString = SPQuicInfoEvent.parseEvent(paramString);
     if (paramString.needReport())
     {
-      LogUtil.d(".SPBeaconReporter", "quicQuality report, name:" + paramString.getEventName() + " map:" + paramString.getDataMap());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("quicQuality report, name:");
+      localStringBuilder.append(paramString.getEventName());
+      localStringBuilder.append(" map:");
+      localStringBuilder.append(paramString.getDataMap());
+      LogUtil.d(".SPBeaconReporter", localStringBuilder.toString());
       SPBeaconReporter.report(paramString.getEventName(), paramString.getDataMap());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.report.SPBeaconReporter.1
  * JD-Core Version:    0.7.0.1
  */

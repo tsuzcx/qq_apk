@@ -12,23 +12,20 @@ class DanmakuDrawableCacheManager$1
   
   protected int a(String paramString, T paramT)
   {
-    int i;
     if (paramT == null) {
-      i = 0;
+      return 0;
     }
-    int j;
-    do
-    {
-      return i;
-      j = DanmakuDrawableCacheManager.a(this.a, paramT);
-      i = j;
-    } while (j != 0);
-    return this.a.a(paramT);
+    int j = DanmakuDrawableCacheManager.a(this.a, paramT);
+    int i = j;
+    if (j == 0) {
+      i = this.a.a(paramT);
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.tool.DanmakuDrawableCacheManager.1
  * JD-Core Version:    0.7.0.1
  */

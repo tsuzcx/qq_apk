@@ -21,7 +21,7 @@ class NearbyProfileFragment$7
 {
   NearbyProfileFragment$7(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (paramInt == 0)
     {
@@ -29,73 +29,80 @@ class NearbyProfileFragment$7
       try
       {
         paramBundle.mergeFrom((byte[])paramArrayOfByte);
-        if (paramBundle.uint32_result.has())
-        {
-          paramInt = paramBundle.uint32_result.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso.OIDBSSOPkg.result " + paramInt);
-          }
-        }
-        localObject = new Oidb_0x66b.RspBody();
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        try
+        if (QLog.isColorLevel())
         {
-          do
-          {
-            Object localObject;
-            ((Oidb_0x66b.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
-            paramArrayOfByte = new NearbyMyTabCard();
-            if (!((Oidb_0x66b.RspBody)localObject).rpt_msg_vistor_info.has()) {
-              break label312;
-            }
-            paramArrayOfByte.visitors.clear();
-            paramBundle = ((Oidb_0x66b.RspBody)localObject).rpt_msg_vistor_info.get().iterator();
-            while (paramBundle.hasNext())
-            {
-              localObject = (appoint_define.PublisherInfo)paramBundle.next();
-              if (localObject != null)
-              {
-                localObject = StrangerInfo.convertFrom((appoint_define.PublisherInfo)localObject);
-                if (localObject != null) {
-                  paramArrayOfByte.visitors.add(localObject);
-                }
-              }
-            }
-            paramArrayOfByte = paramArrayOfByte;
-          } while (!QLog.isColorLevel());
-          QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handle_oidb_0x66b_0|oidb_sso parseFrom byte ");
+          ((StringBuilder)localObject).append(paramArrayOfByte.toString());
+          QLog.d("NearbyProfileFragment", 2, ((StringBuilder)localObject).toString());
         }
       }
-    }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTab visitor info is: " + paramArrayOfByte.visitors.toString());
-    }
-    for (;;)
-    {
-      NearbyProfileFragment.a(this.a, paramArrayOfByte.visitors);
-      return;
-      label312:
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTay has no visitor info.");
+      if (paramBundle.uint32_result.has())
+      {
+        paramInt = paramBundle.uint32_result.get();
+        if (QLog.isColorLevel())
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("handle_oidb_0x66b_0|oidb_sso.OIDBSSOPkg.result ");
+          paramArrayOfByte.append(paramInt);
+          QLog.d("NearbyProfileFragment", 2, paramArrayOfByte.toString());
+        }
+      }
+      Object localObject = new Oidb_0x66b.RspBody();
+      try
+      {
+        ((Oidb_0x66b.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
+        paramArrayOfByte = new NearbyMyTabCard();
+        if (((Oidb_0x66b.RspBody)localObject).rpt_msg_vistor_info.has())
+        {
+          paramArrayOfByte.visitors.clear();
+          paramBundle = ((Oidb_0x66b.RspBody)localObject).rpt_msg_vistor_info.get().iterator();
+          while (paramBundle.hasNext())
+          {
+            localObject = (appoint_define.PublisherInfo)paramBundle.next();
+            if (localObject != null)
+            {
+              localObject = StrangerInfo.convertFrom((appoint_define.PublisherInfo)localObject);
+              if (localObject != null) {
+                paramArrayOfByte.visitors.add(localObject);
+              }
+            }
+          }
+          if (QLog.isColorLevel())
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append("handleGetNearbyMyTab visitor info is: ");
+            paramBundle.append(paramArrayOfByte.visitors.toString());
+            QLog.i("NearbyProfileFragment", 2, paramBundle.toString());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTay has no visitor info.");
+        }
+        paramArrayOfByte = NearbyProfileFragment.a(this.a, paramArrayOfByte.visitors);
+        NearbyProfileFragment.a(this.a, paramArrayOfByte);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramBundle = new StringBuilder();
+          paramBundle.append("handle_oidb_0x66b_0|oidb_sso parseFrom byte ");
+          paramBundle.append(paramArrayOfByte.toString());
+          QLog.d("NearbyProfileFragment", 2, paramBundle.toString());
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.7
  * JD-Core Version:    0.7.0.1
  */

@@ -14,14 +14,19 @@ class VideoFilePresenter$1
   {
     paramView = this.a.a.b();
     VideoFilePresenter.a(this.a, paramView);
-    String str = this.a.a() + "(" + FileUtil.a(this.a.a.c()) + ")";
-    this.a.a(paramView, str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.a.a());
+    ((StringBuilder)localObject).append("(");
+    ((StringBuilder)localObject).append(FileUtil.a(this.a.a.c()));
+    ((StringBuilder)localObject).append(")");
+    localObject = ((StringBuilder)localObject).toString();
+    this.a.a(paramView, (String)localObject);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.1
  * JD-Core Version:    0.7.0.1
  */

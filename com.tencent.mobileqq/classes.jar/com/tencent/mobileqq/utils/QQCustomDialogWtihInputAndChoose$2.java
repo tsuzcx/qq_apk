@@ -12,24 +12,22 @@ class QQCustomDialogWtihInputAndChoose$2
   
   public void onClick(View paramView)
   {
-    if (paramView == this.a.a) {}
-    for (;;)
+    if (paramView != this.a.a)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       if (this.a.a != null) {
-        this.a.a.findViewById(2131370453).setVisibility(8);
+        this.a.a.findViewById(2131370111).setVisibility(8);
       }
-      TextView localTextView = (TextView)paramView.findViewById(2131370454);
+      TextView localTextView = (TextView)paramView.findViewById(2131370112);
       this.a.a(localTextView.getText().toString());
-      paramView.findViewById(2131370453).setVisibility(0);
+      paramView.findViewById(2131370111).setVisibility(0);
       this.a.a = paramView;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose.2
  * JD-Core Version:    0.7.0.1
  */

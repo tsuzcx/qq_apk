@@ -35,15 +35,16 @@ public final class CKV_LikeListInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mLikeList != null) {
-      paramJceOutputStream.write(this.mLikeList, 0);
+    Map localMap = this.mLikeList;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
     paramJceOutputStream.write(this.iLstCheckTime, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.CKV_LikeListInfo
  * JD-Core Version:    0.7.0.1
  */

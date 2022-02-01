@@ -34,104 +34,128 @@ public class MoloHandler
   
   private long a(String paramString)
   {
+    long l = 0L;
+    float f;
     try
     {
       paramString = paramString.toUpperCase();
       int i = paramString.indexOf('G');
-      if (i != -1) {
-        return (Float.parseFloat(paramString.substring(0, i)) * 1024.0F * 1024.0F * 1024.0F);
-      }
-      i = paramString.indexOf('M');
-      if (i != -1) {
-        return (Float.parseFloat(paramString.substring(0, i)) * 1024.0F * 1024.0F);
-      }
-      i = paramString.indexOf('K');
-      if (i != -1) {
-        return (Float.parseFloat(paramString.substring(0, i)) * 1024.0F);
-      }
-      i = paramString.indexOf('B');
       if (i != -1)
       {
-        float f = Float.parseFloat(paramString.substring(0, i));
-        return f;
+        f = Float.parseFloat(paramString.substring(0, i)) * 1024.0F;
+      }
+      else
+      {
+        i = paramString.indexOf('M');
+        if (i != -1)
+        {
+          f = Float.parseFloat(paramString.substring(0, i));
+        }
+        else
+        {
+          i = paramString.indexOf('K');
+          if (i != -1)
+          {
+            f = Float.parseFloat(paramString.substring(0, i));
+            break label123;
+          }
+          i = paramString.indexOf('B');
+          if (i != -1)
+          {
+            f = Float.parseFloat(paramString.substring(0, i));
+            l = f;
+          }
+          return l;
+        }
       }
     }
-    catch (Exception paramString) {}
-    return 0L;
+    catch (Exception paramString)
+    {
+      return 0L;
+    }
+    f *= 1024.0F;
+    label123:
+    return (f * 1024.0F);
   }
   
   public int a(String paramString)
   {
     DataLineReportUtil.j(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a);
     int i = PCPushProxy.a().a(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.MoloHandler", 2, "PCPushProxy open(" + paramString + "):" + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PCPushProxy open(");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("):");
+      localStringBuilder.append(i);
+      QLog.d("dataline.MoloHandler", 2, localStringBuilder.toString());
     }
     return i;
   }
   
   public DataLineMsgRecord a(byte[] paramArrayOfByte)
   {
-    boolean bool2 = true;
-    Object localObject = null;
     PCPushProxy.a().a(this.jdField_a_of_type_ComTencentOpenPcpushPCPushProxy$OnDownloadListener);
-    for (;;)
+    try
     {
-      try
+      paramArrayOfByte = PCPushProxy.a().a(paramArrayOfByte);
+      if (paramArrayOfByte != null)
       {
-        PCPushProxy.PkgEntry localPkgEntry = PCPushProxy.a().a(paramArrayOfByte);
-        paramArrayOfByte = localObject;
-        if (localPkgEntry != null)
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("dataline.MoloHandler", 2, "dealWith new pkgEntry:" + localPkgEntry.e);
-          }
-          long l = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(0).longValue();
-          paramArrayOfByte = new DataLineMsgRecord();
-          paramArrayOfByte.msg = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getApp().getString(2131693760);
-          paramArrayOfByte.msgtype = -2335;
-          paramArrayOfByte.sessionid = l;
-          paramArrayOfByte.isread = false;
-          paramArrayOfByte.path = null;
-          paramArrayOfByte.thumbPath = null;
-          paramArrayOfByte.filename = localPkgEntry.e;
-          paramArrayOfByte.filesize = a(localPkgEntry.h);
-          paramArrayOfByte.issuc = false;
-          paramArrayOfByte.vipBubbleID = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b();
-          paramArrayOfByte.time = MessageCache.a();
-          paramArrayOfByte.strMoloKey = localPkgEntry.a;
-          paramArrayOfByte.strMoloSource = localPkgEntry.i;
-          paramArrayOfByte.strMoloIconUrl = localPkgEntry.g;
-          paramArrayOfByte.strMoloSrcIconUrl = localPkgEntry.j;
-          if (localPkgEntry.b != 1) {
-            break label299;
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("dealWith new pkgEntry:");
+          ((StringBuilder)localObject).append(paramArrayOfByte.e);
+          QLog.d("dataline.MoloHandler", 2, ((StringBuilder)localObject).toString());
+        }
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler;
+        boolean bool2 = false;
+        long l = ((DataLineHandler)localObject).a(0).longValue();
+        localObject = new DataLineMsgRecord();
+        ((DataLineMsgRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getApp().getString(2131693713);
+        ((DataLineMsgRecord)localObject).msgtype = -2335;
+        ((DataLineMsgRecord)localObject).sessionid = l;
+        ((DataLineMsgRecord)localObject).isread = false;
+        ((DataLineMsgRecord)localObject).path = null;
+        ((DataLineMsgRecord)localObject).thumbPath = null;
+        ((DataLineMsgRecord)localObject).filename = paramArrayOfByte.e;
+        ((DataLineMsgRecord)localObject).filesize = a(paramArrayOfByte.h);
+        ((DataLineMsgRecord)localObject).issuc = false;
+        ((DataLineMsgRecord)localObject).vipBubbleID = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b();
+        ((DataLineMsgRecord)localObject).time = MessageCache.a();
+        ((DataLineMsgRecord)localObject).strMoloKey = paramArrayOfByte.a;
+        ((DataLineMsgRecord)localObject).strMoloSource = paramArrayOfByte.i;
+        ((DataLineMsgRecord)localObject).strMoloIconUrl = paramArrayOfByte.g;
+        ((DataLineMsgRecord)localObject).strMoloSrcIconUrl = paramArrayOfByte.j;
+        if (paramArrayOfByte.b == 1) {
           bool1 = true;
-          paramArrayOfByte.bIsApkFile = bool1;
-          if (FileManagerUtil.a(paramArrayOfByte.filename) != 0) {
-            break label304;
-          }
-          bool1 = bool2;
-          paramArrayOfByte.bIsMoloImage = bool1;
-          paramArrayOfByte.fileMsgStatus = 1L;
+        } else {
+          bool1 = false;
         }
-      }
-      catch (Exception localException)
-      {
-        paramArrayOfByte = localObject;
-        if (!QLog.isColorLevel()) {
-          continue;
+        ((DataLineMsgRecord)localObject).bIsApkFile = bool1;
+        boolean bool1 = bool2;
+        if (FileManagerUtil.a(((DataLineMsgRecord)localObject).filename) == 0) {
+          bool1 = true;
         }
-        QLog.d("dataline.MoloHandler", 2, "PCPushProxy.parse Exception:" + localException.toString());
-        return null;
+        ((DataLineMsgRecord)localObject).bIsMoloImage = bool1;
+        ((DataLineMsgRecord)localObject).fileMsgStatus = 1L;
+        return localObject;
       }
-      return paramArrayOfByte;
-      label299:
-      boolean bool1 = false;
-      continue;
-      label304:
-      bool1 = false;
+      return null;
     }
+    catch (Exception paramArrayOfByte)
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("PCPushProxy.parse Exception:");
+        ((StringBuilder)localObject).append(paramArrayOfByte.toString());
+        QLog.d("dataline.MoloHandler", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    return null;
   }
   
   public void a()
@@ -146,49 +170,57 @@ public class MoloHandler
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler == null) || (this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a() == null) || (this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager() == null))
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler;
+    if ((localObject1 != null) && (((DataLineHandler)localObject1).a() != null) && (this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager() != null))
     {
-      QLog.e("dataline.MoloHandler", 1, "cancelAll app about = null");
-      return false;
-    }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a(true);
-    localObject2 = ((DataLineMsgSetList)localObject2).iterator();
-    Object localObject3;
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = ((DataLineMsgSet)((Iterator)localObject2).next()).values().iterator();
-      while (((Iterator)localObject3).hasNext())
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a();
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a(true);
+      localObject2 = ((DataLineMsgSetList)localObject2).iterator();
+      Object localObject3;
+      while (((Iterator)localObject2).hasNext())
       {
-        DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject3).next();
-        if (localDataLineMsgRecord.strMoloKey != null) {
-          c(localDataLineMsgRecord.strMoloKey);
-        }
-      }
-    }
-    if (localObject1 != null)
-    {
-      localObject1 = ((DataLineMsgSetList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = ((DataLineMsgSet)((Iterator)localObject1).next()).values().iterator();
-        while (((Iterator)localObject2).hasNext())
+        localObject3 = ((DataLineMsgSet)((Iterator)localObject2).next()).values().iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          localObject3 = (DataLineMsgRecord)((Iterator)localObject2).next();
-          if (((DataLineMsgRecord)localObject3).strMoloKey != null) {
-            c(((DataLineMsgRecord)localObject3).strMoloKey);
+          DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject3).next();
+          if (localDataLineMsgRecord.strMoloKey != null) {
+            c(localDataLineMsgRecord.strMoloKey);
           }
         }
       }
+      if (localObject1 != null)
+      {
+        localObject1 = ((DataLineMsgSetList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = ((DataLineMsgSet)((Iterator)localObject1).next()).values().iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (DataLineMsgRecord)((Iterator)localObject2).next();
+            if (((DataLineMsgRecord)localObject3).strMoloKey != null) {
+              c(((DataLineMsgRecord)localObject3).strMoloKey);
+            }
+          }
+        }
+      }
+      return true;
     }
-    return true;
+    QLog.e("dataline.MoloHandler", 1, "cancelAll app about = null");
+    return false;
   }
   
   public boolean a(String paramString)
   {
     boolean bool = PCPushProxy.a().a(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.MoloHandler", 2, "PCPushProxy start(" + paramString + "):" + bool);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PCPushProxy start(");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("):");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("dataline.MoloHandler", 2, ((StringBuilder)localObject).toString());
     }
     if (bool)
     {
@@ -199,11 +231,11 @@ public class MoloHandler
       paramString = paramString.iterator();
       while (paramString.hasNext())
       {
-        DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)paramString.next();
-        localDataLineMsgRecord.issuc = true;
-        localDataLineMsgRecord.fileMsgStatus = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.getMessageFacade().a(0).d(localDataLineMsgRecord.msgId);
-        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(true), Long.valueOf(localDataLineMsgRecord.filesize) });
+        localObject = (DataLineMsgRecord)paramString.next();
+        ((DataLineMsgRecord)localObject).issuc = true;
+        ((DataLineMsgRecord)localObject).fileMsgStatus = 0L;
+        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.getMessageFacade().a(0).d(((DataLineMsgRecord)localObject).msgId);
+        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(true), Long.valueOf(((DataLineMsgRecord)localObject).filesize) });
       }
     }
     return bool;
@@ -216,50 +248,55 @@ public class MoloHandler
   
   public boolean b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler == null) || (this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a() == null) || (this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager() == null))
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler;
+    if ((localObject1 != null) && (((DataLineHandler)localObject1).a() != null) && (this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager() != null))
     {
-      QLog.e("dataline.MoloHandler", 1, "deleteAll app about = null");
-      return false;
-    }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a(true);
-    localObject2 = ((DataLineMsgSetList)localObject2).iterator();
-    Object localObject3;
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = ((DataLineMsgSet)((Iterator)localObject2).next()).values().iterator();
-      while (((Iterator)localObject3).hasNext())
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a();
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a(true);
+      localObject2 = ((DataLineMsgSetList)localObject2).iterator();
+      Object localObject3;
+      while (((Iterator)localObject2).hasNext())
       {
-        DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject3).next();
-        if (localDataLineMsgRecord.strMoloKey != null) {
-          d(localDataLineMsgRecord.strMoloKey);
-        }
-      }
-    }
-    if (localObject1 != null)
-    {
-      localObject1 = ((DataLineMsgSetList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = ((DataLineMsgSet)((Iterator)localObject1).next()).values().iterator();
-        while (((Iterator)localObject2).hasNext())
+        localObject3 = ((DataLineMsgSet)((Iterator)localObject2).next()).values().iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          localObject3 = (DataLineMsgRecord)((Iterator)localObject2).next();
-          if (((DataLineMsgRecord)localObject3).strMoloKey != null) {
-            d(((DataLineMsgRecord)localObject3).strMoloKey);
+          DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject3).next();
+          if (localDataLineMsgRecord.strMoloKey != null) {
+            d(localDataLineMsgRecord.strMoloKey);
           }
         }
       }
+      if (localObject1 != null)
+      {
+        localObject1 = ((DataLineMsgSetList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = ((DataLineMsgSet)((Iterator)localObject1).next()).values().iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (DataLineMsgRecord)((Iterator)localObject2).next();
+            if (((DataLineMsgRecord)localObject3).strMoloKey != null) {
+              d(((DataLineMsgRecord)localObject3).strMoloKey);
+            }
+          }
+        }
+      }
+      return true;
     }
-    return true;
+    QLog.e("dataline.MoloHandler", 1, "deleteAll app about = null");
+    return false;
   }
   
   public boolean b(String paramString)
   {
     DataLineReportUtil.h(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a);
     PCPushProxy.a().b(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.MoloHandler", 2, "PCPushProxy install : " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PCPushProxy install : ");
+      localStringBuilder.append(paramString);
+      QLog.d("dataline.MoloHandler", 2, localStringBuilder.toString());
     }
     return true;
   }
@@ -267,8 +304,13 @@ public class MoloHandler
   public boolean c(String paramString)
   {
     PCPushProxy.a().a(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.MoloHandler", 2, "PCPushProxy pause(" + paramString + ")");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PCPushProxy pause(");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(")");
+      QLog.d("dataline.MoloHandler", 2, localStringBuilder.toString());
     }
     return true;
   }
@@ -276,8 +318,13 @@ public class MoloHandler
   public boolean d(String paramString)
   {
     PCPushProxy.a().c(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.MoloHandler", 2, "PCPushProxy delete(" + paramString + ")");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PCPushProxy delete(");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(")");
+      QLog.d("dataline.MoloHandler", 2, localStringBuilder.toString());
     }
     return true;
   }
@@ -285,15 +332,21 @@ public class MoloHandler
   public boolean e(String paramString)
   {
     boolean bool = PCPushProxy.a().b(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.MoloHandler", 2, "PCPushProxy isInstalled(" + paramString + "):" + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PCPushProxy isInstalled(");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("):");
+      localStringBuilder.append(bool);
+      QLog.d("dataline.MoloHandler", 2, localStringBuilder.toString());
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.core.MoloHandler
  * JD-Core Version:    0.7.0.1
  */

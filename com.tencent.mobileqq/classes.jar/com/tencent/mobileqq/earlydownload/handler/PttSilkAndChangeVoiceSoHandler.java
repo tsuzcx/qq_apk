@@ -11,6 +11,7 @@ import com.tencent.mobileqq.transfile.PttInfoCollector;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import mqq.app.AppRuntime;
 
 public class PttSilkAndChangeVoiceSoHandler
   extends EarlyHandler
@@ -37,47 +38,55 @@ public class PttSilkAndChangeVoiceSoHandler
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "download success: " + paramString);
-    }
-    for (;;)
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      try
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("download success: ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, ((StringBuilder)localObject1).toString());
+    }
+    try
+    {
+      localObject1 = SilkSoLoader.a();
+      StringBuilder localStringBuilder;
+      if ((localObject1 != null) && (!((String)localObject1).equals("")))
       {
-        str = SilkSoLoader.a();
-        if ((str != null) && (!str.equals("")))
+        FileUtils.deleteDirectory((String)localObject1);
+        if (new File((String)localObject1).mkdir())
         {
-          FileUtils.a(str);
-          if (new File(str).mkdir())
+          FileUtils.uncompressZip(paramString, (String)localObject1, false);
+          if (QLog.isColorLevel())
           {
-            FileUtils.a(paramString, str, false);
-            if (QLog.isColorLevel()) {
-              QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip success: " + paramString);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("uncompressZip success: ");
+            localStringBuilder.append(paramString);
+            QLog.d("PttSilkAndChangeVoiceSoHandler", 2, localStringBuilder.toString());
+          }
+          try
+          {
+            if (!SilkSoLoader.a)
+            {
+              FileUtils.deleteDirectory(SilkSoLoader.b());
+              FileUtils.rename((String)localObject1, SilkSoLoader.b());
             }
           }
+          finally {}
         }
       }
-      catch (Exception localException)
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel())
       {
-        String str;
-        localException.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip failed: " + localException.getMessage());
-        continue;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("uncompressZip failed: ");
+        localStringBuilder.append(localException.getMessage());
+        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, localStringBuilder.toString());
       }
-      try
-      {
-        if (!SilkSoLoader.a)
-        {
-          FileUtils.a(SilkSoLoader.b());
-          FileUtils.c(str, SilkSoLoader.b());
-        }
-        super.a(paramString);
-        return;
-      }
-      finally {}
+      super.a(paramString);
     }
   }
   
@@ -94,12 +103,21 @@ public class PttSilkAndChangeVoiceSoHandler
   public boolean h()
   {
     Object localObject = (PttSilkAndChangeVoiceSoData)a();
+    boolean bool = false;
     if (localObject == null) {
       return false;
     }
     int i = VcSystemInfo.getCpuArchitecture();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload cpuArch = " + i + " isUserNeedDownload try match version=" + "8.5.5" + " data.version=" + ((PttSilkAndChangeVoiceSoData)localObject).version);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isUserNeedDownload cpuArch = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" isUserNeedDownload try match version=");
+      localStringBuilder.append("8.7.0");
+      localStringBuilder.append(" data.version=");
+      localStringBuilder.append(((PttSilkAndChangeVoiceSoData)localObject).version);
+      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, localStringBuilder.toString());
     }
     localObject = this.a.getPreferences();
     if (!((SharedPreferences)localObject).getBoolean("hasReportedCpuArch", false))
@@ -109,19 +127,22 @@ public class PttSilkAndChangeVoiceSoHandler
       ((SharedPreferences.Editor)localObject).putBoolean("hasReportedCpuArch", true);
       ((SharedPreferences.Editor)localObject).commit();
     }
-    if (i > 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload return " + bool);
-      }
-      return bool;
+    if (i > 2) {
+      bool = true;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isUserNeedDownload return ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, ((StringBuilder)localObject).toString());
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.PttSilkAndChangeVoiceSoHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -24,16 +24,7 @@ public abstract class AbstractSemCamera
   
   private static final boolean isSemAvailable(Context paramContext)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramContext != null)
-    {
-      bool1 = bool2;
-      if (paramContext.getPackageManager().hasSystemFeature("com.samsung.feature.samsung_experience_mobile")) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (paramContext != null) && (paramContext.getPackageManager().hasSystemFeature("com.samsung.feature.samsung_experience_mobile"));
   }
   
   public abstract int checkAvailability(Context paramContext);

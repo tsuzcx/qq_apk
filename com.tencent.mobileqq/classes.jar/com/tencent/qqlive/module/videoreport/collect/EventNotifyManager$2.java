@@ -11,8 +11,12 @@ class EventNotifyManager$2
   
   public void run()
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventNotifyManager", "mClearImmediateNotifierRunnable.run: mImmediateNotifySet = " + EventNotifyManager.access$100(this.this$0));
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("mClearImmediateNotifierRunnable.run: mImmediateNotifySet = ");
+      ((StringBuilder)???).append(EventNotifyManager.access$100(this.this$0));
+      Log.i("EventNotifyManager", ((StringBuilder)???).toString());
     }
     synchronized (EventNotifyManager.access$200(this.this$0))
     {
@@ -23,7 +27,7 @@ class EventNotifyManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.collect.EventNotifyManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,30 +10,31 @@ import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.component.network.utils.AssertUtil;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.mobileqq.qcircle.api.db.util.EncryptUtil;
 
 public class DbSafeCursorWrapper
   extends CursorWrapper
 {
-  private boolean mClosed;
-  private String mDbName;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
   public DbSafeCursorWrapper(Cursor paramCursor, String paramString)
   {
     super(paramCursor);
-    this.mDbName = paramString;
-    if (paramCursor != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtil.assertTrue(bool);
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    boolean bool;
+    if (paramCursor != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AssertUtils.assertTrue(bool);
   }
   
-  private void handleException(Throwable paramThrowable)
+  private void a(Throwable paramThrowable)
   {
-    DbCacheExceptionHandler.getInstance().handleException(paramThrowable, this.mDbName);
+    DbCacheExceptionHandler.a().a(paramThrowable, this.jdField_a_of_type_JavaLangString);
   }
   
   public void close()
@@ -41,12 +42,12 @@ public class DbSafeCursorWrapper
     try
     {
       super.close();
-      this.mClosed = true;
+      this.jdField_a_of_type_Boolean = true;
       return;
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
   }
   
@@ -59,7 +60,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable paramCharArrayBuffer)
     {
-      handleException(paramCharArrayBuffer);
+      a(paramCharArrayBuffer);
     }
   }
   
@@ -72,7 +73,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
   }
   
@@ -85,7 +86,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return null;
   }
@@ -99,7 +100,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return 0;
   }
@@ -113,7 +114,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable paramString)
     {
-      handleException(paramString);
+      a(paramString);
     }
     return -1;
   }
@@ -127,7 +128,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable paramString)
     {
-      handleException(paramString);
+      a(paramString);
     }
     return -1;
   }
@@ -141,7 +142,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return null;
   }
@@ -155,7 +156,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return null;
   }
@@ -169,7 +170,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return 0;
   }
@@ -178,12 +179,12 @@ public class DbSafeCursorWrapper
   {
     try
     {
-      double d = Double.parseDouble(EncryptUtil.decryptStr(super.getString(paramInt)));
+      double d = Double.parseDouble(EncryptUtil.b(super.getString(paramInt)));
       return d;
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return 0.0D;
   }
@@ -197,7 +198,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return null;
   }
@@ -206,12 +207,12 @@ public class DbSafeCursorWrapper
   {
     try
     {
-      float f = Float.parseFloat(EncryptUtil.decryptStr(super.getString(paramInt)));
+      float f = Float.parseFloat(EncryptUtil.b(super.getString(paramInt)));
       return f;
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return 0.0F;
   }
@@ -220,7 +221,7 @@ public class DbSafeCursorWrapper
   {
     try
     {
-      String str = EncryptUtil.decryptStr(super.getString(paramInt));
+      String str = EncryptUtil.b(super.getString(paramInt));
       if (TextUtils.isEmpty(str)) {
         return 0;
       }
@@ -229,7 +230,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return 0;
   }
@@ -238,12 +239,12 @@ public class DbSafeCursorWrapper
   {
     try
     {
-      long l = Long.parseLong(EncryptUtil.decryptStr(super.getString(paramInt)));
+      long l = Long.parseLong(EncryptUtil.b(super.getString(paramInt)));
       return l;
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return 0L;
   }
@@ -257,7 +258,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return -1;
   }
@@ -271,7 +272,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return 0;
   }
@@ -280,12 +281,12 @@ public class DbSafeCursorWrapper
   {
     try
     {
-      String str = EncryptUtil.decryptStr(super.getString(paramInt));
+      String str = EncryptUtil.b(super.getString(paramInt));
       return str;
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return null;
   }
@@ -300,7 +301,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return 0;
   }
@@ -314,7 +315,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -328,7 +329,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -342,7 +343,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -356,9 +357,9 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
-    return this.mClosed;
+    return this.jdField_a_of_type_Boolean;
   }
   
   public boolean isFirst()
@@ -370,7 +371,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -384,7 +385,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -398,7 +399,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return true;
   }
@@ -412,7 +413,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -426,7 +427,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -440,7 +441,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -454,7 +455,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -468,7 +469,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -482,7 +483,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -496,7 +497,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable paramContentObserver)
     {
-      handleException(paramContentObserver);
+      a(paramContentObserver);
     }
   }
   
@@ -509,7 +510,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable paramDataSetObserver)
     {
-      handleException(paramDataSetObserver);
+      a(paramDataSetObserver);
     }
   }
   
@@ -522,7 +523,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable localThrowable)
     {
-      handleException(localThrowable);
+      a(localThrowable);
     }
     return false;
   }
@@ -536,7 +537,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable paramBundle)
     {
-      handleException(paramBundle);
+      a(paramBundle);
     }
     return null;
   }
@@ -550,7 +551,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable paramContentResolver)
     {
-      handleException(paramContentResolver);
+      a(paramContentResolver);
     }
   }
   
@@ -563,7 +564,7 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable paramContentObserver)
     {
-      handleException(paramContentObserver);
+      a(paramContentObserver);
     }
   }
   
@@ -576,13 +577,13 @@ public class DbSafeCursorWrapper
     }
     catch (Throwable paramDataSetObserver)
     {
-      handleException(paramDataSetObserver);
+      a(paramDataSetObserver);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.DbSafeCursorWrapper
  * JD-Core Version:    0.7.0.1
  */

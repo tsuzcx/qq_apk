@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.common.config.AppSetting;
@@ -23,8 +22,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.message.AddMessageHelper;
 import com.tencent.mobileqq.cooperation.ApkUtils;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -32,6 +31,7 @@ import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBDoubleField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -43,6 +43,7 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.mobileqq.widget.QQToastNotifier;
 import com.tencent.qidian.QidianManager;
+import com.tencent.qidian.data.BmqqAccountType;
 import com.tencent.qidian.data.QidianCorpInfo;
 import com.tencent.qidian.data.QidianExternalInfo;
 import com.tencent.qidian.data.QidianInternalInfo;
@@ -56,16 +57,20 @@ import com.tencent.qidian.proto.mobileqq_qidian.ClickReplyCmdActionReqBody;
 import com.tencent.qidian.proto.mobileqq_qidian.ClickReplyCmdActionRspBody;
 import com.tencent.qidian.proto.mobileqq_qidian.CloseSessionReqBody;
 import com.tencent.qidian.proto.mobileqq_qidian.CloseSessionRspBody;
+import com.tencent.qidian.proto.mobileqq_qidian.CorpInfo;
 import com.tencent.qidian.proto.mobileqq_qidian.CorpReportInfo;
 import com.tencent.qidian.proto.mobileqq_qidian.ExtReportInfo;
+import com.tencent.qidian.proto.mobileqq_qidian.ExternalInfo;
 import com.tencent.qidian.proto.mobileqq_qidian.GetCorpUinDetailInfoReqBody;
+import com.tencent.qidian.proto.mobileqq_qidian.GetCorpUinDetailInfoRspBody;
 import com.tencent.qidian.proto.mobileqq_qidian.GetCustomerTransferInfoReqBody;
 import com.tencent.qidian.proto.mobileqq_qidian.GetCustomerTransferInfoRspBody;
-import com.tencent.qidian.proto.mobileqq_qidian.GetNavigationMenuConfigReqBody;
 import com.tencent.qidian.proto.mobileqq_qidian.GetNavigationMenuConfigRspBody;
 import com.tencent.qidian.proto.mobileqq_qidian.GetQiDianGroupInfoReq;
 import com.tencent.qidian.proto.mobileqq_qidian.GetQiDianGroupInfoRsp;
 import com.tencent.qidian.proto.mobileqq_qidian.GetUserDetailInfoReqBody;
+import com.tencent.qidian.proto.mobileqq_qidian.GetUserDetailInfoRspBody;
+import com.tencent.qidian.proto.mobileqq_qidian.InternalInfo;
 import com.tencent.qidian.proto.mobileqq_qidian.NotRecvQdGroupMsgReq;
 import com.tencent.qidian.proto.mobileqq_qidian.NotRecvQdGroupMsgRsp;
 import com.tencent.qidian.proto.mobileqq_qidian.QidianWpaAddFriendReqBody;
@@ -90,6 +95,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
 import org.json.JSONObject;
@@ -104,7 +110,7 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xe5.Submsgtype0xe5.MsgBody.S2CUser
 public class QidianHandler
   extends BusinessHandler
 {
-  private static final String jdField_a_of_type_JavaLangString = QidianHandler.class.getName();
+  private static final String jdField_a_of_type_JavaLangString = "com.tencent.qidian.controller.QidianHandler";
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public QidianHandler(QQAppInterface paramQQAppInterface)
@@ -132,7 +138,7 @@ public class QidianHandler
       localCRMMsgHead.uint64_ext_uin.setHasFlag(true);
     }
     localCRMMsgHead.uint32_terminal_type.set(2);
-    localCRMMsgHead.uint32_terminal_version.set(QidianUtils.a("8.5.5"));
+    localCRMMsgHead.uint32_terminal_version.set(QidianUtils.a("8.7.0"));
     return localCRMMsgHead;
   }
   
@@ -172,37 +178,60 @@ public class QidianHandler
     }
     localToServiceMsg.putWupBuffer(paramReqBody.toByteArray());
     super.sendPbReq(localToServiceMsg);
-    paramReqBody = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext())];
+    paramReqBody = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext())];
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Qidian", "", paramString, paramString, 0, 0, "", "", paramReqBody, "");
   }
   
   private boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, String paramString)
   {
-    String str = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext())];
+    String str = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext())];
     long l = paramToServiceMsg.extraData.getLong("startTime");
     l = System.currentTimeMillis() - l;
     boolean bool;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
       bool = true;
-      if (!bool) {
-        break label167;
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Qidian", "", paramString + "_success", paramString + "_success", 0, 0, String.valueOf((int)l), "", str, "");
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleAssignExt success, delta is " + l);
-      }
-    }
-    label167:
-    do
-    {
-      return bool;
+    } else {
       bool = false;
-      break;
-      paramToServiceMsg = paramFromServiceMsg.getBusinessFailMsg();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Qidian", "", paramString + "_fail", paramString + "_fail", 0, 0, String.valueOf((int)l), "", str, paramToServiceMsg);
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetAccountType failed, fail message: " + paramToServiceMsg);
+    }
+    if (bool)
+    {
+      paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append(paramString);
+      paramFromServiceMsg.append("_success");
+      paramFromServiceMsg = paramFromServiceMsg.toString();
+      paramObject = new StringBuilder();
+      paramObject.append(paramString);
+      paramObject.append("_success");
+      ReportController.b(paramToServiceMsg, "P_CliOper", "Qidian", "", paramFromServiceMsg, paramObject.toString(), 0, 0, String.valueOf((int)l), "", str, "");
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = jdField_a_of_type_JavaLangString;
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("handleAssignExt success, delta is ");
+        paramFromServiceMsg.append(l);
+        QLog.d(paramToServiceMsg, 2, paramFromServiceMsg.toString());
+      }
+      return bool;
+    }
+    paramToServiceMsg = paramFromServiceMsg.getBusinessFailMsg();
+    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramObject = new StringBuilder();
+    paramObject.append(paramString);
+    paramObject.append("_fail");
+    paramObject = paramObject.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_fail");
+    ReportController.b(paramFromServiceMsg, "P_CliOper", "Qidian", "", paramObject, localStringBuilder.toString(), 0, 0, String.valueOf((int)l), "", str, paramToServiceMsg);
+    if (QLog.isColorLevel())
+    {
+      paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+      paramObject = new StringBuilder();
+      paramObject.append("handleGetAccountType failed, fail message: ");
+      paramObject.append(paramToServiceMsg);
+      QLog.d(paramFromServiceMsg, 2, paramObject.toString());
+    }
     return bool;
   }
   
@@ -222,17 +251,17 @@ public class QidianHandler
   
   private void m(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int j = 1;
     int i;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
       i = 1;
-      paramFromServiceMsg = new HashMap();
-      paramFromServiceMsg.put("key_sigt", paramToServiceMsg.extraData.get("key_sigt"));
-      paramFromServiceMsg.put("uin", paramToServiceMsg.extraData.get("uin"));
-      paramFromServiceMsg.put("key_return_root", paramToServiceMsg.extraData.get("key_return_root"));
-      if (i == 0) {}
+    } else {
+      i = 0;
     }
+    paramFromServiceMsg = new HashMap();
+    paramFromServiceMsg.put("key_sigt", paramToServiceMsg.extraData.get("key_sigt"));
+    paramFromServiceMsg.put("uin", paramToServiceMsg.extraData.get("uin"));
+    paramFromServiceMsg.put("key_return_root", paramToServiceMsg.extraData.get("key_return_root"));
+    if (i != 0) {}
     for (;;)
     {
       try
@@ -242,9 +271,9 @@ public class QidianHandler
         if (localRspBody.msg_req_corpuin_wpa_rsp.has())
         {
           if (localRspBody.msg_req_corpuin_wpa_rsp.msg_ret.uint32_ret_code.get() != 0) {
-            break label300;
+            break label299;
           }
-          i = j;
+          i = 1;
           if (i != 0)
           {
             i = localRspBody.msg_req_corpuin_wpa_rsp.uint32_aio_type.get();
@@ -262,6 +291,8 @@ public class QidianHandler
           notifyUI(1007, false, paramFromServiceMsg);
           return;
         }
+        notifyUI(1007, false, paramFromServiceMsg);
+        return;
       }
       catch (Exception paramToServiceMsg)
       {
@@ -273,101 +304,108 @@ public class QidianHandler
       }
       notifyUI(1007, false, paramFromServiceMsg);
       return;
-      notifyUI(1007, false, paramFromServiceMsg);
-      return;
-      i = 0;
-      break;
-      label300:
+      label299:
       i = 0;
     }
   }
   
   private void n(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int j = 0;
-    int i = j;
-    try
+    for (;;)
     {
-      if (paramFromServiceMsg.isSuccess())
+      try
       {
-        i = j;
-        if (paramObject != null) {
-          i = 1;
+        if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {
+          break label164;
         }
-      }
-      if (i != 0)
-      {
-        paramFromServiceMsg = new mobileqq_qidian.RspBody();
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramFromServiceMsg.msg_not_recv_qd_group_msg_rsp.has())
+        i = 1;
+        if (i != 0)
         {
-          paramFromServiceMsg = (mobileqq_qidian.NotRecvQdGroupMsgRsp)paramFromServiceMsg.msg_not_recv_qd_group_msg_rsp.get();
-          i = paramFromServiceMsg.msg_ret.uint32_ret_code.get();
-          paramFromServiceMsg = paramFromServiceMsg.msg_ret.str_error_msg.get();
-          paramObject = new HashMap();
-          paramObject.put("ret_code", Integer.valueOf(i));
-          paramObject.put("ret_msg", paramFromServiceMsg);
-          if (i == 0)
+          paramFromServiceMsg = new mobileqq_qidian.RspBody();
+          paramFromServiceMsg.mergeFrom((byte[])paramObject);
+          if (paramFromServiceMsg.msg_not_recv_qd_group_msg_rsp.has())
           {
-            ThreadManager.executeOnSubThread(new QidianHandler.1(this, paramToServiceMsg, paramObject));
+            paramFromServiceMsg = (mobileqq_qidian.NotRecvQdGroupMsgRsp)paramFromServiceMsg.msg_not_recv_qd_group_msg_rsp.get();
+            i = paramFromServiceMsg.msg_ret.uint32_ret_code.get();
+            paramFromServiceMsg = paramFromServiceMsg.msg_ret.str_error_msg.get();
+            paramObject = new HashMap();
+            paramObject.put("ret_code", Integer.valueOf(i));
+            paramObject.put("ret_msg", paramFromServiceMsg);
+            if (i == 0)
+            {
+              ThreadManager.executeOnSubThread(new QidianHandler.1(this, paramToServiceMsg, paramObject));
+              return;
+            }
+            notifyUI(1005, false, paramObject);
             return;
           }
-          notifyUI(1005, false, paramObject);
-          return;
         }
       }
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "handleBlockBulkMsg ", paramToServiceMsg);
+      catch (Exception paramToServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(jdField_a_of_type_JavaLangString, 2, "handleBlockBulkMsg ", paramToServiceMsg);
+        }
       }
+      return;
+      label164:
+      int i = 0;
     }
   }
   
   private void o(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int j = 1;
     int i;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
       i = 1;
-      if (i == 0) {
-        break label294;
-      }
+    } else {
+      i = 0;
+    }
+    if (i != 0) {}
+    for (;;)
+    {
       try
       {
         paramFromServiceMsg = new mobileqq_qidian.RspBody();
         paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramFromServiceMsg.msg_wpa_sigt_to_sigmsg_rsp.has())
+        if (!paramFromServiceMsg.msg_wpa_sigt_to_sigmsg_rsp.has()) {
+          break label304;
+        }
+        if (paramFromServiceMsg.msg_wpa_sigt_to_sigmsg_rsp.int32_result.get() != 0) {
+          break label305;
+        }
+        i = 1;
+        if (i != 0)
         {
-          if (paramFromServiceMsg.msg_wpa_sigt_to_sigmsg_rsp.int32_result.get() == 0)
+          paramObject = paramFromServiceMsg.msg_wpa_sigt_to_sigmsg_rsp.bytes_sigmsg_ext.get().toByteArray();
+          long l = paramFromServiceMsg.msg_wpa_sigt_to_sigmsg_rsp.uint64_kfext_uin.get();
+          paramFromServiceMsg = new HashMap();
+          paramFromServiceMsg.put("uin", String.valueOf(l));
+          paramFromServiceMsg.put("sigmsg", paramObject);
+          paramToServiceMsg = paramToServiceMsg.extraData;
+          if ((paramToServiceMsg != null) && (!paramToServiceMsg.isEmpty()))
           {
-            i = j;
-            label69:
-            if (i == 0) {
-              break label242;
-            }
-            paramObject = paramFromServiceMsg.msg_wpa_sigt_to_sigmsg_rsp.bytes_sigmsg_ext.get().toByteArray();
-            long l = paramFromServiceMsg.msg_wpa_sigt_to_sigmsg_rsp.uint64_kfext_uin.get();
-            paramFromServiceMsg = new HashMap();
-            paramFromServiceMsg.put("uin", String.valueOf(l));
-            paramFromServiceMsg.put("sigmsg", paramObject);
-            paramToServiceMsg = paramToServiceMsg.extraData;
-            if ((paramToServiceMsg == null) || (paramToServiceMsg.isEmpty())) {
-              break label232;
-            }
             paramObject = paramToServiceMsg.keySet().iterator();
-            while (paramObject.hasNext())
+            if (paramObject.hasNext())
             {
               String str = (String)paramObject.next();
               paramFromServiceMsg.put(str, paramToServiceMsg.get(str));
+              continue;
             }
           }
-        }
-        else {
+          notifyUI(1010, true, paramFromServiceMsg);
           return;
         }
+        notifyUI(1010, false, null);
+        if (!QLog.isColorLevel()) {
+          break label304;
+        }
+        paramToServiceMsg = jdField_a_of_type_JavaLangString;
+        paramObject = new StringBuilder();
+        paramObject.append("handleGetSigmsgBySigt ");
+        paramObject.append(paramFromServiceMsg.msg_wpa_sigt_to_sigmsg_rsp.str_err_msg.get());
+        QLog.d(paramToServiceMsg, 2, paramObject.toString());
+        return;
       }
       catch (Exception paramToServiceMsg)
       {
@@ -375,70 +413,66 @@ public class QidianHandler
           QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetSigmsgBySigt ", paramToServiceMsg);
         }
         notifyUI(1010, false, null);
+        return;
       }
-    }
-    label232:
-    label242:
-    do
-    {
-      i = 0;
-      break;
-      i = 0;
-      break label69;
-      notifyUI(1010, true, paramFromServiceMsg);
-      return;
       notifyUI(1010, false, null);
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetSigmsgBySigt " + paramFromServiceMsg.msg_wpa_sigt_to_sigmsg_rsp.str_err_msg.get());
-    return;
-    label294:
-    notifyUI(1010, false, null);
+      label304:
+      return;
+      label305:
+      i = 0;
+    }
   }
   
   private void p(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
-      if (i != 0)
+      try
       {
-        try
-        {
-          paramToServiceMsg = new mobileqq_qidian.RspBody();
-          paramToServiceMsg.mergeFrom((byte[])paramObject);
-          if (!paramToServiceMsg.msg_qidian_wpa_addfriend_rsp.has()) {
-            break label180;
-          }
-          i = paramToServiceMsg.msg_close_session_rsp.msg_ret.uint32_ret_code.get();
-          if (i == 0)
-          {
-            if (!QLog.isColorLevel()) {
-              break label180;
-            }
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetWebImAddFriend errorCode = 0");
-            return;
-          }
-          paramToServiceMsg = paramToServiceMsg.msg_close_session_rsp.msg_ret.str_error_msg.get();
-          if (!QLog.isColorLevel()) {
-            break label180;
-          }
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetWebImAddFriend errorCode: " + i + " , errorMsg: " + paramToServiceMsg);
+        paramToServiceMsg = new mobileqq_qidian.RspBody();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if (!paramToServiceMsg.msg_qidian_wpa_addfriend_rsp.has()) {
           return;
         }
-        catch (Exception paramToServiceMsg)
+        i = paramToServiceMsg.msg_close_session_rsp.msg_ret.uint32_ret_code.get();
+        if (i == 0)
         {
           if (!QLog.isColorLevel()) {
-            break label180;
+            return;
           }
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetWebImAddFriend errorCode = 0");
+          return;
         }
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetWebImAddFriend ", paramToServiceMsg);
+        paramToServiceMsg = paramToServiceMsg.msg_close_session_rsp.msg_ret.str_error_msg.get();
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+        paramObject = new StringBuilder();
+        paramObject.append("handleGetWebImAddFriend errorCode: ");
+        paramObject.append(i);
+        paramObject.append(" , errorMsg: ");
+        paramObject.append(paramToServiceMsg);
+        QLog.d(paramFromServiceMsg, 2, paramObject.toString());
+        return;
       }
-      else if (QLog.isColorLevel())
+      catch (Exception paramToServiceMsg)
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetWebImAddFriend is Success = false");
+        if (!QLog.isColorLevel()) {
+          return;
+        }
       }
-      label180:
-      return;
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetWebImAddFriend ", paramToServiceMsg);
+    }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetWebImAddFriend is Success = false");
     }
   }
   
@@ -467,16 +501,26 @@ public class QidianHandler
             return;
           }
           paramToServiceMsg = paramObject.str_error_msg.get();
-          if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramToServiceMsg))) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianGroupInfo error is " + paramToServiceMsg);
+          if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramToServiceMsg)))
+          {
+            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramObject = new StringBuilder();
+            paramObject.append("handleQidianGroupInfo error is ");
+            paramObject.append(paramToServiceMsg);
+            QLog.d(paramFromServiceMsg, 2, paramObject.toString());
           }
           notifyUI(1018, false, null);
           return;
         }
         catch (Exception paramToServiceMsg)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianGroupInfo throw exception is " + paramToServiceMsg.toString());
+          if (QLog.isColorLevel())
+          {
+            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramObject = new StringBuilder();
+            paramObject.append("handleQidianGroupInfo throw exception is ");
+            paramObject.append(paramToServiceMsg.toString());
+            QLog.d(paramFromServiceMsg, 2, paramObject.toString());
           }
           notifyUI(1018, false, null);
           return;
@@ -501,19 +545,22 @@ public class QidianHandler
   
   public void a(long paramLong)
   {
-    new StringBuilder().append("QidianSsoProto.getUserDetailInfo").append(paramLong).toString();
-    mobileqq_qidian.ReqBody localReqBody = a("", 4, String.valueOf(paramLong));
-    localReqBody.msg_crm_common_head.uint32_ver_no.set(1);
-    Object localObject = new mobileqq_qidian.GetUserDetailInfoReqBody();
-    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject).uint32_req_type.set(2);
-    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject).uint32_mobile_client.set(1);
-    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject).uint64_uin.set(paramLong);
-    localReqBody.msg_get_user_detail_info_req.set((MessageMicro)localObject);
-    localReqBody.msg_get_user_detail_info_req.setHasFlag(true);
-    localObject = new HashMap(1);
-    ((Map)localObject).put("uin", String.valueOf(paramLong));
-    ((Map)localObject).put("req_type", String.valueOf(2));
-    a(localReqBody, "QidianSsoProto.getUserDetailInfo", (Map)localObject);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("QidianSsoProto.getUserDetailInfo");
+    ((StringBuilder)localObject1).append(paramLong);
+    ((StringBuilder)localObject1).toString();
+    localObject1 = a("", 4, String.valueOf(paramLong));
+    ((mobileqq_qidian.ReqBody)localObject1).msg_crm_common_head.uint32_ver_no.set(1);
+    Object localObject2 = new mobileqq_qidian.GetUserDetailInfoReqBody();
+    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject2).uint32_req_type.set(2);
+    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject2).uint32_mobile_client.set(1);
+    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject2).uint64_uin.set(paramLong);
+    ((mobileqq_qidian.ReqBody)localObject1).msg_get_user_detail_info_req.set((MessageMicro)localObject2);
+    ((mobileqq_qidian.ReqBody)localObject1).msg_get_user_detail_info_req.setHasFlag(true);
+    localObject2 = new HashMap(1);
+    ((Map)localObject2).put("uin", String.valueOf(paramLong));
+    ((Map)localObject2).put("req_type", String.valueOf(2));
+    a((mobileqq_qidian.ReqBody)localObject1, "QidianSsoProto.getUserDetailInfo", (Map)localObject2);
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -523,7 +570,7 @@ public class QidianHandler
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint64_qq_uin.set(paramLong1);
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint64_kfext_uin.set(paramLong2);
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_mobile_client.set(1);
-    ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_ver_no.set(CrmUtils.a("8.5.5"));
+    ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_ver_no.set(CrmUtils.a("8.7.0"));
     localReqBody.msg_get_customer_transfer_info_req.set((MessageMicro)localObject);
     localReqBody.msg_get_customer_transfer_info_req.setHasFlag(true);
     localObject = new HashMap(1);
@@ -533,31 +580,11 @@ public class QidianHandler
   
   public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "getNavigationConfig...version=" + paramInt1);
-    }
-    mobileqq_qidian.ReqBody localReqBody = a(String.valueOf(paramLong1), 1007, null);
-    mobileqq_qidian.GetNavigationMenuConfigReqBody localGetNavigationMenuConfigReqBody = new mobileqq_qidian.GetNavigationMenuConfigReqBody();
-    localGetNavigationMenuConfigReqBody.uint64_puin.set(paramLong1);
-    localGetNavigationMenuConfigReqBody.uint64_uin.set(paramLong2);
-    localGetNavigationMenuConfigReqBody.uint32_ver_no.set(paramInt1);
-    localGetNavigationMenuConfigReqBody.uint32_unread_msg_count.set(paramInt2);
-    PBUInt32Field localPBUInt32Field = localGetNavigationMenuConfigReqBody.uint32_is_click_graytip;
-    if (paramBoolean) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      localPBUInt32Field.set(paramInt1);
-      localGetNavigationMenuConfigReqBody.uint32_is_support_cc_nav.set(1);
-      localReqBody.msg_get_navigation_menu_config_req_body.setHasFlag(true);
-      localReqBody.msg_get_navigation_menu_config_req_body.set(localGetNavigationMenuConfigReqBody);
-      a(localReqBody, "QidianSsoProto.getNavigationConfig", null);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int j = 1;
     HashMap localHashMap = new HashMap();
     localHashMap.put("ranKey", paramToServiceMsg.extraData.get("ranKey"));
     for (;;)
@@ -565,34 +592,38 @@ public class QidianHandler
       try
       {
         a(paramToServiceMsg, paramFromServiceMsg, paramObject, "qidian_wpa_assign");
-        if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {
-          break label325;
-        }
-        i = 1;
-        if (i == 0) {
-          break label314;
-        }
-        paramFromServiceMsg = new mobileqq_qidian.RspBody();
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramFromServiceMsg.msg_wpa_assign_kfext_rsp.has())
+        if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
         {
-          if (paramFromServiceMsg.msg_wpa_assign_kfext_rsp.int32_result.get() != 0) {
-            break label331;
-          }
-          i = j;
+          i = 1;
           if (i != 0)
           {
-            paramObject = String.valueOf(paramFromServiceMsg.msg_wpa_assign_kfext_rsp.uint64_ext_uin.get());
-            String str = HexUtil.bytes2HexStr(paramFromServiceMsg.msg_wpa_assign_kfext_rsp.bytes_sigT_ext.get().toByteArray());
-            i = paramFromServiceMsg.msg_wpa_assign_kfext_rsp.uint32_aio_type.get();
-            if ((paramFromServiceMsg.msg_wpa_assign_kfext_rsp.bytes_sigmsg.has()) && (paramObject != null)) {
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().c(paramObject, paramFromServiceMsg.msg_wpa_assign_kfext_rsp.bytes_sigmsg.get().toByteArray());
+            paramFromServiceMsg = new mobileqq_qidian.RspBody();
+            paramFromServiceMsg.mergeFrom((byte[])paramObject);
+            if (paramFromServiceMsg.msg_wpa_assign_kfext_rsp.has())
+            {
+              if (paramFromServiceMsg.msg_wpa_assign_kfext_rsp.int32_result.get() != 0) {
+                break label333;
+              }
+              i = 1;
+              if (i != 0)
+              {
+                paramObject = String.valueOf(paramFromServiceMsg.msg_wpa_assign_kfext_rsp.uint64_ext_uin.get());
+                String str = HexUtil.bytes2HexStr(paramFromServiceMsg.msg_wpa_assign_kfext_rsp.bytes_sigT_ext.get().toByteArray());
+                i = paramFromServiceMsg.msg_wpa_assign_kfext_rsp.uint32_aio_type.get();
+                if ((paramFromServiceMsg.msg_wpa_assign_kfext_rsp.bytes_sigmsg.has()) && (paramObject != null)) {
+                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().c(paramObject, paramFromServiceMsg.msg_wpa_assign_kfext_rsp.bytes_sigmsg.get().toByteArray());
+                }
+                localHashMap.put("key_ext_uin", paramObject);
+                localHashMap.put("key_sigt", str);
+                localHashMap.put("key_aio_type", Integer.valueOf(i));
+                localHashMap.put("key_return_root", paramToServiceMsg.extraData.get("key_return_root"));
+                notifyUI(1004, true, localHashMap);
+                return;
+              }
+              notifyUI(1004, false, localHashMap);
+              return;
             }
-            localHashMap.put("key_ext_uin", paramObject);
-            localHashMap.put("key_sigt", str);
-            localHashMap.put("key_aio_type", Integer.valueOf(i));
-            localHashMap.put("key_return_root", paramToServiceMsg.extraData.get("key_return_root"));
-            notifyUI(1004, true, localHashMap);
+            notifyUI(1004, false, localHashMap);
             return;
           }
           notifyUI(1004, false, localHashMap);
@@ -607,15 +638,9 @@ public class QidianHandler
         notifyUI(1004, false, localHashMap);
         return;
       }
-      notifyUI(1004, false, localHashMap);
-      return;
-      label314:
-      notifyUI(1004, false, localHashMap);
-      return;
-      label325:
       int i = 0;
       continue;
-      label331:
+      label333:
       i = 0;
     }
   }
@@ -629,12 +654,12 @@ public class QidianHandler
     localStringBuilder.append(paramString);
     short s = (short)localStringBuilder.toString().getBytes().length;
     paramString = new byte[s + 14];
-    PkgTools.Word2Byte(paramString, 0, (short)2);
-    PkgTools.Word2Byte(paramString, 2, (short)1);
-    PkgTools.Word2Byte(paramString, 4, (short)4);
-    PkgTools.DWord2Byte(paramString, 6, 1);
-    PkgTools.Word2Byte(paramString, 10, (short)5);
-    PkgTools.Word2Byte(paramString, 12, s);
+    PkgTools.word2Byte(paramString, 0, (short)2);
+    PkgTools.word2Byte(paramString, 2, (short)1);
+    PkgTools.word2Byte(paramString, 4, (short)4);
+    PkgTools.dWord2Byte(paramString, 6, 1);
+    PkgTools.word2Byte(paramString, 10, (short)5);
+    PkgTools.word2Byte(paramString, 12, s);
     PkgTools.copyData(paramString, 14, localStringBuilder.toString().getBytes(), s);
     sendPbReq(makeOIDBPkg("OidbSvc.0x782", 1922, 0, paramString));
     if (QLog.isColorLevel()) {
@@ -649,73 +674,80 @@ public class QidianHandler
     ((Oidb_0x7e7.ReqBody)localObject).platform.set(2);
     ((Oidb_0x7e7.ReqBody)localObject).timestamp.set(System.currentTimeMillis() / 1000L);
     ((Oidb_0x7e7.ReqBody)localObject).env.set(paramInt2);
-    for (;;)
+    try
     {
-      try
-      {
-        if (!TextUtils.isEmpty(paramString)) {
-          continue;
-        }
+      if (TextUtils.isEmpty(paramString)) {
         paramString = new JSONObject();
-        paramString.put("qq_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ((Oidb_0x7e7.ReqBody)localObject).json_string.set(ByteStringMicro.copyFromUtf8(paramString.toString()));
-        long l;
-        if (paramString.has("kfuin"))
-        {
-          l = Long.valueOf(paramString.getString("kfuin")).longValue();
-          ((Oidb_0x7e7.ReqBody)localObject).corp_uin.set(l);
-        }
-        if (paramString.has("kfext"))
-        {
-          l = Long.valueOf(paramString.getString("kfext")).longValue();
-          ((Oidb_0x7e7.ReqBody)localObject).user_uin.set(l);
-        }
+      } else {
+        paramString = new JSONObject(paramString);
       }
-      catch (Exception paramString)
+      paramString.put("qq_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((Oidb_0x7e7.ReqBody)localObject).json_string.set(ByteStringMicro.copyFromUtf8(paramString.toString()));
+      long l;
+      if (paramString.has("kfuin"))
       {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "reportWPA json error  ", paramString);
-        continue;
+        l = Long.valueOf(paramString.getString("kfuin")).longValue();
+        ((Oidb_0x7e7.ReqBody)localObject).corp_uin.set(l);
       }
-      paramString = new oidb_sso.OIDBSSOPkg();
-      paramString.uint32_command.set(2023);
-      paramString.uint32_service_type.set(0);
-      paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((Oidb_0x7e7.ReqBody)localObject).toByteArray()));
-      localObject = createToServiceMsg("OidbSvc.0x7e7_0");
-      ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
-      sendPbReq((ToServiceMsg)localObject);
-      return;
-      paramString = new JSONObject(paramString);
+      if (paramString.has("kfext"))
+      {
+        l = Long.valueOf(paramString.getString("kfext")).longValue();
+        ((Oidb_0x7e7.ReqBody)localObject).user_uin.set(l);
+      }
     }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "reportWPA json error  ", paramString);
+      }
+    }
+    paramString = new oidb_sso.OIDBSSOPkg();
+    paramString.uint32_command.set(2023);
+    paramString.uint32_service_type.set(0);
+    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((Oidb_0x7e7.ReqBody)localObject).toByteArray()));
+    localObject = createToServiceMsg("OidbSvc.0x7e7_0");
+    ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
   }
   
   public void a(String paramString, int paramInt, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache();
-    byte[] arrayOfByte = ((MessageCache)localObject).d(paramString);
-    localObject = ((MessageCache)localObject).e(paramString);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache();
+    Object localObject1 = ((MessageCache)localObject2).d(paramString);
+    localObject2 = ((MessageCache)localObject2).e(paramString);
     int i;
-    if ((arrayOfByte != null) && (localObject != null)) {
+    if ((localObject1 != null) && (localObject2 != null)) {
       i = 3;
+    } else if (localObject1 != null) {
+      i = 2;
+    } else if (localObject2 != null) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    for (;;)
-    {
-      int j = 0;
-      if (((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramString)) {
-        j = 4;
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", paramString, "0X8006DEC", "SigCheck", j, 2, "" + paramInt, "" + i, "" + paramLong, "" + NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
-      return;
-      if (arrayOfByte != null) {
-        i = 2;
-      } else if (localObject != null) {
-        i = 1;
-      } else {
-        i = 0;
-      }
+    int j;
+    if (((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramString)) {
+      j = 4;
+    } else {
+      j = 0;
     }
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(paramInt);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(i);
+    localObject3 = ((StringBuilder)localObject3).toString();
+    Object localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append("");
+    ((StringBuilder)localObject4).append(paramLong);
+    localObject4 = ((StringBuilder)localObject4).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
+    ReportController.b((AppRuntime)localObject1, "dc00899", "Qidian", paramString, "0X8006DEC", "SigCheck", j, 2, (String)localObject2, (String)localObject3, (String)localObject4, localStringBuilder.toString());
   }
   
   public void a(String paramString1, int paramInt1, boolean paramBoolean, double paramDouble1, double paramDouble2, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5)
@@ -746,35 +778,38 @@ public class QidianHandler
   
   public void a(String paramString, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache();
-    byte[] arrayOfByte = ((MessageCache)localObject).d(paramString);
-    localObject = ((MessageCache)localObject).e(paramString);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache();
+    Object localObject1 = ((MessageCache)localObject2).d(paramString);
+    localObject2 = ((MessageCache)localObject2).e(paramString);
     int i;
-    if ((arrayOfByte != null) && (localObject != null))
-    {
+    if ((localObject1 != null) && (localObject2 != null)) {
       i = 3;
-      if (!((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramString)) {
-        break label181;
-      }
-    }
-    label181:
-    for (int j = 4;; j = 0)
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", paramString, "0X8006DEC", "SigCheck", j, 1, "", "" + i, "" + paramLong, "" + NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
-      return;
-      if (arrayOfByte != null)
-      {
-        i = 2;
-        break;
-      }
-      if (localObject != null)
-      {
-        i = 1;
-        break;
-      }
+    } else if (localObject1 != null) {
+      i = 2;
+    } else if (localObject2 != null) {
+      i = 1;
+    } else {
       i = 0;
-      break;
     }
+    int j;
+    if (((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramString)) {
+      j = 4;
+    } else {
+      j = 0;
+    }
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(i);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(paramLong);
+    localObject3 = ((StringBuilder)localObject3).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
+    ReportController.b((AppRuntime)localObject1, "dc00899", "Qidian", paramString, "0X8006DEC", "SigCheck", j, 1, "", (String)localObject2, (String)localObject3, localStringBuilder.toString());
   }
   
   public void a(String paramString1, String paramString2)
@@ -828,17 +863,24 @@ public class QidianHandler
     }
     catch (Exception paramString1)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "qidianUnifiedReport " + paramString1.getMessage());
+      if (QLog.isColorLevel())
+      {
+        paramString2 = jdField_a_of_type_JavaLangString;
+        paramString3 = new StringBuilder();
+        paramString3.append("qidianUnifiedReport ");
+        paramString3.append(paramString1.getMessage());
+        QLog.e(paramString2, 2, paramString3.toString());
+      }
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (!TextUtils.isDigitsOnly(paramString1)) || (!TextUtils.isDigitsOnly(paramString2)) || (!TextUtils.isDigitsOnly(paramString3))) {}
-    do
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (TextUtils.isDigitsOnly(paramString1)) && (TextUtils.isDigitsOnly(paramString2)))
     {
-      return;
+      if (!TextUtils.isDigitsOnly(paramString3)) {
+        return;
+      }
       try
       {
         mobileqq_qidian.ReqBody localReqBody = a(paramString2, 1004, paramString1);
@@ -857,9 +899,13 @@ public class QidianHandler
         super.sendPbReq(paramString2);
         return;
       }
-      catch (Exception paramString1) {}
-    } while (!QLog.isColorLevel());
-    QLog.e(jdField_a_of_type_JavaLangString, 2, "blockQdBulkMsg ", paramString1);
+      catch (Exception paramString1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(jdField_a_of_type_JavaLangString, 2, "blockQdBulkMsg ", paramString1);
+        }
+      }
+    }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -883,34 +929,36 @@ public class QidianHandler
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1))) {}
-    try
-    {
-      mobileqq_qidian.ReqBody localReqBody = new mobileqq_qidian.ReqBody();
-      paramString1 = a(paramString1, 1008, "");
-      localReqBody.msg_crm_common_head.set(paramString1);
-      localReqBody.uint32_sub_cmd.set(1008);
-      paramString1 = new mobileqq_qidian.ReqCorpUinWpaReq();
-      byte[] arrayOfByte = HexUtil.hexStr2Bytes(paramString2);
-      if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
-        paramString1.bytes_sigt.set(ByteStringMicro.copyFrom(arrayOfByte));
+    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1))) {
+      try
+      {
+        mobileqq_qidian.ReqBody localReqBody = new mobileqq_qidian.ReqBody();
+        paramString1 = a(paramString1, 1008, "");
+        localReqBody.msg_crm_common_head.set(paramString1);
+        localReqBody.uint32_sub_cmd.set(1008);
+        paramString1 = new mobileqq_qidian.ReqCorpUinWpaReq();
+        byte[] arrayOfByte = HexUtil.hexStr2Bytes(paramString2);
+        if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
+          paramString1.bytes_sigt.set(ByteStringMicro.copyFrom(arrayOfByte));
+        }
+        paramString1.uint64_qquin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+        paramString1.uint64_touin.set(Long.parseLong(paramString3));
+        paramString1.uint32_assign_type.set(Integer.parseInt(paramString4));
+        paramString1.uint64_assign_id.set(Long.parseLong(paramString5));
+        localReqBody.msg_req_corpuin_wpa_req.set(paramString1);
+        paramString1 = new HashMap();
+        paramString1.put("key_return_root", paramString6);
+        paramString1.put("key_sigt", paramString2);
+        paramString1.put("uin", paramString3);
+        a(localReqBody, "QidianSsoProto.corpUinWpaReport", paramString1);
+        return;
       }
-      paramString1.uint64_qquin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-      paramString1.uint64_touin.set(Long.parseLong(paramString3));
-      paramString1.uint32_assign_type.set(Integer.parseInt(paramString4));
-      paramString1.uint64_assign_id.set(Long.parseLong(paramString5));
-      localReqBody.msg_req_corpuin_wpa_req.set(paramString1);
-      paramString1 = new HashMap();
-      paramString1.put("key_return_root", paramString6);
-      paramString1.put("key_sigt", paramString2);
-      paramString1.put("uin", paramString3);
-      a(localReqBody, "QidianSsoProto.corpUinWpaReport", paramString1);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "corpUinWpaReport ", paramString1);
+      catch (Exception paramString1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "corpUinWpaReport ", paramString1);
+        }
+      }
     }
   }
   
@@ -943,7 +991,7 @@ public class QidianHandler
     paramString1.extraData.putInt("ranKey", paramInt);
     paramString1.putWupBuffer(localReqBody.toByteArray());
     super.sendPbReq(paramString1);
-    paramString1 = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext())];
+    paramString1 = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext())];
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Qidian", "", "qidian_wpa_assign", "qidian_wpa_assign", 0, 0, "", "", paramString1, "");
   }
   
@@ -1009,15 +1057,8 @@ public class QidianHandler
       }
       localCloseSessionReqBody.msg_corp_report_info.set(paramString2);
     }
-    for (;;)
+    else
     {
-      int i = (int)NetConnInfoCenter.getServerTime();
-      localCloseSessionReqBody.uint32_close_session_time.set(i);
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localCloseSessionReqBody.uint64_cqq_uin.set(Long.valueOf(paramString1).longValue());
-      localReqBody.msg_close_session_req.set(localCloseSessionReqBody);
-      a(localReqBody, "QidianSsoProto.closeAIOSessionReport", null);
-      return;
       paramString1 = new mobileqq_qidian.ExtReportInfo();
       if (!TextUtils.isEmpty(paramString2))
       {
@@ -1026,17 +1067,26 @@ public class QidianHandler
       }
       localCloseSessionReqBody.msg_ext_report_info.set(paramString1);
     }
+    int i = (int)NetConnInfoCenter.getServerTime();
+    localCloseSessionReqBody.uint32_close_session_time.set(i);
+    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localCloseSessionReqBody.uint64_cqq_uin.set(Long.valueOf(paramString1).longValue());
+    localReqBody.msg_close_session_req.set(localCloseSessionReqBody);
+    a(localReqBody, "QidianSsoProto.closeAIOSessionReport", null);
   }
   
   public void a(SubMsgType0x92.MsgBody paramMsgBody)
   {
     int i = paramMsgBody.uint32_sub_cmd.get();
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianSCPushMsg, subcmd =  " + i);
-    }
-    switch (i)
+    if (QLog.isColorLevel())
     {
-    default: 
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleQidianSCPushMsg, subcmd =  ");
+      localStringBuilder.append(i);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    if (i != 100) {
       return;
     }
     b(paramMsgBody);
@@ -1044,9 +1094,7 @@ public class QidianHandler
   
   public void a(Submsgtype0xe5.MsgBody paramMsgBody)
   {
-    switch (paramMsgBody.uint32_sub_cmd.get())
-    {
-    default: 
+    if (paramMsgBody.uint32_sub_cmd.get() != 10) {
       return;
     }
     long l = paramMsgBody.msg_s2c_user_get_coupon_for_c_event_push.uint64_kfext.get();
@@ -1056,18 +1104,21 @@ public class QidianHandler
   
   public void b(long paramLong)
   {
-    new StringBuilder().append("QidianSsoProto.getUserDetailInfo").append(paramLong).toString();
-    mobileqq_qidian.ReqBody localReqBody = a("", 4, String.valueOf(paramLong));
-    Object localObject = new mobileqq_qidian.GetUserDetailInfoReqBody();
-    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject).uint32_req_type.set(3);
-    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject).uint32_mobile_client.set(1);
-    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject).uint64_uin.set(paramLong);
-    localReqBody.msg_get_user_detail_info_req.set((MessageMicro)localObject);
-    localReqBody.msg_get_user_detail_info_req.setHasFlag(true);
-    localObject = new HashMap(1);
-    ((Map)localObject).put("uin", String.valueOf(paramLong));
-    ((Map)localObject).put("req_type", String.valueOf(3));
-    a(localReqBody, "QidianSsoProto.getUserDetailInfo", (Map)localObject);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("QidianSsoProto.getUserDetailInfo");
+    ((StringBuilder)localObject1).append(paramLong);
+    ((StringBuilder)localObject1).toString();
+    localObject1 = a("", 4, String.valueOf(paramLong));
+    Object localObject2 = new mobileqq_qidian.GetUserDetailInfoReqBody();
+    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject2).uint32_req_type.set(3);
+    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject2).uint32_mobile_client.set(1);
+    ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject2).uint64_uin.set(paramLong);
+    ((mobileqq_qidian.ReqBody)localObject1).msg_get_user_detail_info_req.set((MessageMicro)localObject2);
+    ((mobileqq_qidian.ReqBody)localObject1).msg_get_user_detail_info_req.setHasFlag(true);
+    localObject2 = new HashMap(1);
+    ((Map)localObject2).put("uin", String.valueOf(paramLong));
+    ((Map)localObject2).put("req_type", String.valueOf(3));
+    a((mobileqq_qidian.ReqBody)localObject1, "QidianSsoProto.getUserDetailInfo", (Map)localObject2);
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1081,17 +1132,34 @@ public class QidianHandler
         int i = paramToServiceMsg.msg_close_session_rsp.msg_ret.uint32_ret_code.get();
         if (i == 0)
         {
-          if (!QLog.isColorLevel()) {
-            return;
+          if (QLog.isColorLevel())
+          {
+            paramToServiceMsg = jdField_a_of_type_JavaLangString;
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("handleCloseAIOSessionReport errorCode: ");
+            paramFromServiceMsg.append(i);
+            QLog.d(paramToServiceMsg, 2, paramFromServiceMsg.toString());
           }
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleCloseAIOSessionReport errorCode: " + i);
-          return;
         }
-        paramToServiceMsg = paramToServiceMsg.msg_close_session_rsp.msg_ret.str_error_msg.get();
-        if (!QLog.isColorLevel()) {
-          return;
+        else
+        {
+          paramToServiceMsg = paramToServiceMsg.msg_close_session_rsp.msg_ret.str_error_msg.get();
+          if (QLog.isColorLevel())
+          {
+            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramObject = new StringBuilder();
+            paramObject.append("handleCloseAIOSessionReport errorCode: ");
+            paramObject.append(i);
+            paramObject.append(" , errorMsg: ");
+            paramObject.append(paramToServiceMsg);
+            QLog.d(paramFromServiceMsg, 2, paramObject.toString());
+          }
         }
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleCloseAIOSessionReport errorCode: " + i + " , errorMsg: " + paramToServiceMsg);
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleCloseAIOSessionReport no response");
+        return;
       }
     }
     catch (Exception paramToServiceMsg)
@@ -1099,11 +1167,11 @@ public class QidianHandler
       paramToServiceMsg.printStackTrace();
       if (QLog.isColorLevel())
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleCloseAIOSessionReport exception: " + paramToServiceMsg.getMessage());
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleCloseAIOSessionReport no response");
-        }
+        paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+        paramObject = new StringBuilder();
+        paramObject.append("handleCloseAIOSessionReport exception: ");
+        paramObject.append(paramToServiceMsg.getMessage());
+        QLog.d(paramFromServiceMsg, 2, paramObject.toString());
       }
     }
   }
@@ -1129,61 +1197,78 @@ public class QidianHandler
     if (!TextUtils.isEmpty(paramString5))
     {
       paramString4 = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-      if (paramString4 == null)
-      {
+      if (paramString4 == null) {
         paramString4 = null;
-        if ((paramString4 != null) && (paramString4.length() != 0)) {
-          break label349;
-        }
-        new QQToastNotifier(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(2131693379, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299166), 0, 1);
-        paramString4 = "";
+      } else {
+        paramString4 = paramString4.getStweb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
       }
+      if ((paramString4 != null) && (paramString4.length() != 0))
+      {
+        paramString4 = String.format(paramString5, new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString4 });
+        break label149;
+      }
+      new QQToastNotifier(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(2131693334, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299168), 0, 1);
     }
-    for (;;)
+    else
     {
-      paramString5 = new UniteGrayTipParam(paramString1, paramString1, paramString2 + paramString3, 0, -5020, 1245187, MessageCache.a());
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_action", 1);
-      localBundle.putString("key_action_DATA", paramString4);
-      localBundle.putString("key_a_action_DATA", paramString4);
-      int i = (paramString2 + paramString3).lastIndexOf(paramString3);
-      if (i >= 0) {
-        paramString5.a(i, paramString3.length() + i, localBundle);
-      }
-      paramString2 = new MessageForUniteGrayTip();
-      paramString2.hasRead = 0;
-      paramString2.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString5);
-      UniteGrayTipUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2);
-      paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getBaseContext().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_customer_transfer_sharepreference", 0).edit();
-      paramString2.putBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + paramString1, true);
-      paramString2.commit();
-      return;
-      paramString4 = paramString4.getStweb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      break;
-      label349:
-      paramString4 = String.format(paramString5, new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString4 });
-      continue;
-      if (TextUtils.isEmpty(paramString4)) {
-        paramString4 = "";
+      if (!TextUtils.isEmpty(paramString4)) {
+        break label149;
       }
     }
+    paramString4 = "";
+    label149:
+    paramString5 = new StringBuilder();
+    paramString5.append(paramString2);
+    paramString5.append(paramString3);
+    paramString5 = new UniteGrayTipParam(paramString1, paramString1, paramString5.toString(), 0, -5020, 1245187, MessageCache.a());
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_action", 1);
+    localBundle.putString("key_action_DATA", paramString4);
+    localBundle.putString("key_a_action_DATA", paramString4);
+    paramString4 = new StringBuilder();
+    paramString4.append(paramString2);
+    paramString4.append(paramString3);
+    int i = paramString4.toString().lastIndexOf(paramString3);
+    if (i >= 0) {
+      paramString5.a(i, paramString3.length() + i, localBundle);
+    }
+    paramString2 = new MessageForUniteGrayTip();
+    paramString2.hasRead = 0;
+    paramString2.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString5);
+    UniteGrayTipMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2);
+    paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getBaseContext();
+    paramString3 = new StringBuilder();
+    paramString3.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    paramString3.append("_customer_transfer_sharepreference");
+    paramString2 = paramString2.getSharedPreferences(paramString3.toString(), 0).edit();
+    paramString3 = new StringBuilder();
+    paramString3.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    paramString3.append("_");
+    paramString3.append(paramString1);
+    paramString2.putBoolean(paramString3.toString(), true);
+    paramString2.commit();
   }
   
   public void c(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getQidianMasterDetailReq uin: " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getQidianMasterDetailReq uin: ");
+      ((StringBuilder)localObject2).append(paramLong);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    mobileqq_qidian.ReqBody localReqBody = a(String.valueOf(paramLong), 1009, "");
-    Object localObject = new mobileqq_qidian.GetCorpUinDetailInfoReqBody();
-    ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject).uint64_uin.set(paramLong);
-    ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject).uint32_req_type.set(0);
-    localReqBody.msg_get_corpuin_detail_info_req_body.set((MessageMicro)localObject);
-    localReqBody.msg_get_corpuin_detail_info_req_body.setHasFlag(true);
-    localObject = new HashMap(1);
-    ((Map)localObject).put("uin", String.valueOf(paramLong));
-    ((Map)localObject).put("req_type", String.valueOf(0));
-    a(localReqBody, "QidianSsoProto.fetchCorpDetailInfo", (Map)localObject);
+    Object localObject1 = a(String.valueOf(paramLong), 1009, "");
+    Object localObject2 = new mobileqq_qidian.GetCorpUinDetailInfoReqBody();
+    ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject2).uint64_uin.set(paramLong);
+    ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject2).uint32_req_type.set(0);
+    ((mobileqq_qidian.ReqBody)localObject1).msg_get_corpuin_detail_info_req_body.set((MessageMicro)localObject2);
+    ((mobileqq_qidian.ReqBody)localObject1).msg_get_corpuin_detail_info_req_body.setHasFlag(true);
+    localObject2 = new HashMap(1);
+    ((Map)localObject2).put("uin", String.valueOf(paramLong));
+    ((Map)localObject2).put("req_type", String.valueOf(0));
+    a((mobileqq_qidian.ReqBody)localObject1, "QidianSsoProto.fetchCorpDetailInfo", (Map)localObject2);
   }
   
   public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1198,8 +1283,13 @@ public class QidianHandler
         if (paramFromServiceMsg.msg_click_reply_cmd_action_rsp.has())
         {
           int i = paramFromServiceMsg.msg_click_reply_cmd_action_rsp.msg_ret.uint32_ret_code.get();
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleClickReplyCmd errorCode: " + i);
+          if (QLog.isColorLevel())
+          {
+            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramObject = new StringBuilder();
+            paramObject.append("handleClickReplyCmd errorCode: ");
+            paramObject.append(i);
+            QLog.d(paramFromServiceMsg, 2, paramObject.toString());
           }
           paramFromServiceMsg = new HashMap();
           paramFromServiceMsg.put("result", Integer.valueOf(i));
@@ -1216,34 +1306,49 @@ public class QidianHandler
       catch (Exception paramToServiceMsg)
       {
         paramToServiceMsg.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleClickReplyCmd exception: " + paramToServiceMsg.getMessage());
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+          paramObject = new StringBuilder();
+          paramObject.append("handleClickReplyCmd exception: ");
+          paramObject.append(paramToServiceMsg.getMessage());
+          QLog.d(paramFromServiceMsg, 2, paramObject.toString());
         }
         super.notifyUI(1008, bool, null);
         return;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleClickReplyCmd isSuccess: " + bool);
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = jdField_a_of_type_JavaLangString;
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("handleClickReplyCmd isSuccess: ");
+      paramFromServiceMsg.append(bool);
+      QLog.d(paramToServiceMsg, 2, paramFromServiceMsg.toString());
     }
     super.notifyUI(1008, bool, null);
   }
   
   public void d(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getQidianMasterSimpleInfo uin: " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getQidianMasterSimpleInfo uin: ");
+      ((StringBuilder)localObject2).append(paramLong);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    mobileqq_qidian.ReqBody localReqBody = a(String.valueOf(paramLong), 1009, "");
-    Object localObject = new mobileqq_qidian.GetCorpUinDetailInfoReqBody();
-    ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject).uint64_uin.set(paramLong);
-    ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject).uint32_req_type.set(2);
-    localReqBody.msg_get_corpuin_detail_info_req_body.set((MessageMicro)localObject);
-    localReqBody.msg_get_corpuin_detail_info_req_body.setHasFlag(true);
-    localObject = new HashMap(1);
-    ((Map)localObject).put("uin", String.valueOf(paramLong));
-    ((Map)localObject).put("req_type", String.valueOf(2));
-    a(localReqBody, "QidianSsoProto.fetchCorpDetailInfo", (Map)localObject);
+    Object localObject1 = a(String.valueOf(paramLong), 1009, "");
+    Object localObject2 = new mobileqq_qidian.GetCorpUinDetailInfoReqBody();
+    ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject2).uint64_uin.set(paramLong);
+    ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject2).uint32_req_type.set(2);
+    ((mobileqq_qidian.ReqBody)localObject1).msg_get_corpuin_detail_info_req_body.set((MessageMicro)localObject2);
+    ((mobileqq_qidian.ReqBody)localObject1).msg_get_corpuin_detail_info_req_body.setHasFlag(true);
+    localObject2 = new HashMap(1);
+    ((Map)localObject2).put("uin", String.valueOf(paramLong));
+    ((Map)localObject2).put("req_type", String.valueOf(2));
+    a((mobileqq_qidian.ReqBody)localObject1, "QidianSsoProto.fetchCorpDetailInfo", (Map)localObject2);
   }
   
   public void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1254,39 +1359,50 @@ public class QidianHandler
       paramToServiceMsg.mergeFrom((byte[])paramObject);
       if ((paramToServiceMsg.msg_click_eman_rsp.has()) && (paramToServiceMsg.msg_click_eman_rsp.msg_ret.has()))
       {
-        i = paramToServiceMsg.msg_click_eman_rsp.msg_ret.uint32_ret_code.get();
+        int i = paramToServiceMsg.msg_click_eman_rsp.msg_ret.uint32_ret_code.get();
         if ((i == 0) && (paramToServiceMsg.msg_click_eman_rsp.str_msg.has()))
         {
           paramToServiceMsg = StructMsgFactory.a(paramToServiceMsg.msg_click_eman_rsp.str_msg.get().getBytes(), 0);
-          if ((paramToServiceMsg == null) || ((!(BaseActivity.sTopActivity instanceof SplashActivity)) && (!(BaseActivity.sTopActivity instanceof ChatActivity)))) {
-            return;
+          if ((paramToServiceMsg != null) && (((BaseActivity.sTopActivity instanceof SplashActivity)) || ((BaseActivity.sTopActivity instanceof ChatActivity))))
+          {
+            paramFromServiceMsg = BaseActivity.sTopActivity;
+            if (paramFromServiceMsg.getChatFragment() == null) {
+              return;
+            }
+            ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFromServiceMsg.getChatFragment().a.a, paramToServiceMsg);
           }
-          paramFromServiceMsg = (FragmentActivity)BaseActivity.sTopActivity;
-          if (paramFromServiceMsg.getChatFragment() == null) {
-            return;
-          }
-          ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFromServiceMsg.getChatFragment().a.a, paramToServiceMsg);
-          return;
         }
+        else
+        {
+          paramToServiceMsg = paramToServiceMsg.msg_click_eman_rsp.msg_ret.str_error_msg.get();
+          if (QLog.isColorLevel())
+          {
+            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramObject = new StringBuilder();
+            paramObject.append("handleEmanClickReport errorCode: ");
+            paramObject.append(i);
+            paramObject.append(" , errorMsg: ");
+            paramObject.append(paramToServiceMsg);
+            QLog.d(paramFromServiceMsg, 2, paramObject.toString());
+          }
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleEmanClickReport no response");
+        return;
       }
     }
     catch (Exception paramToServiceMsg)
     {
-      int i;
       paramToServiceMsg.printStackTrace();
       if (QLog.isColorLevel())
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleEmanClickReport exception: " + paramToServiceMsg.getMessage());
-        return;
-        paramToServiceMsg = paramToServiceMsg.msg_click_eman_rsp.msg_ret.str_error_msg.get();
-        if (QLog.isColorLevel())
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleEmanClickReport errorCode: " + i + " , errorMsg: " + paramToServiceMsg);
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleEmanClickReport no response");
-          }
-        }
+        paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+        paramObject = new StringBuilder();
+        paramObject.append("handleEmanClickReport exception: ");
+        paramObject.append(paramToServiceMsg.getMessage());
+        QLog.d(paramFromServiceMsg, 2, paramObject.toString());
       }
     }
   }
@@ -1306,7 +1422,7 @@ public class QidianHandler
         {
           paramToServiceMsg = (mobileqq_qidian.VerifyWpaUinAndKeyRsp)paramToServiceMsg.msg_verify_wpa_uin_and_key_rsp.get();
           if (paramToServiceMsg.int32_result.get() != 0) {
-            break label303;
+            break label330;
           }
           bool1 = true;
           if (bool1)
@@ -1319,41 +1435,56 @@ public class QidianHandler
             super.notifyUI(1002, bool2, paramFromServiceMsg);
             return;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleVerifyWpaAndKey uint32_ret_code: " + bool1);
+          if (QLog.isColorLevel())
+          {
+            paramToServiceMsg = jdField_a_of_type_JavaLangString;
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("handleVerifyWpaAndKey uint32_ret_code: ");
+            paramFromServiceMsg.append(bool1);
+            QLog.d(paramToServiceMsg, 2, paramFromServiceMsg.toString());
           }
           super.notifyUI(1002, bool2, null);
           return;
         }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleVerifyWpaAndKey exception: " + paramToServiceMsg.getMessage());
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleVerifyWpaAndKey no msg_verify_wpa_uin_and_key_rsp");
         }
         super.notifyUI(1002, bool2, null);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleVerifyWpaAndKey no msg_verify_wpa_uin_and_key_rsp");
+      catch (Exception paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+          paramObject = new StringBuilder();
+          paramObject.append("handleVerifyWpaAndKey exception: ");
+          paramObject.append(paramToServiceMsg.getMessage());
+          QLog.d(paramFromServiceMsg, 2, paramObject.toString());
+        }
+        super.notifyUI(1002, bool2, null);
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = jdField_a_of_type_JavaLangString;
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("handleVerifyWpaAndKey isSuccess: ");
+        paramFromServiceMsg.append(bool2);
+        QLog.d(paramToServiceMsg, 2, paramFromServiceMsg.toString());
       }
       super.notifyUI(1002, bool2, null);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleVerifyWpaAndKey isSuccess: " + bool2);
-      }
-      super.notifyUI(1002, bool2, null);
-      return;
-      label303:
+      label330:
       boolean bool1 = false;
     }
   }
   
   public void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool2 = a(paramToServiceMsg, paramFromServiceMsg, paramObject, "QidianSsoProto.getShieldStatus");
-    if (bool2) {
+    boolean bool3 = a(paramToServiceMsg, paramFromServiceMsg, paramObject, "QidianSsoProto.getShieldStatus");
+    if (bool3) {
       paramToServiceMsg = new mobileqq_qidian.RspBody();
     }
     for (;;)
@@ -1364,442 +1495,242 @@ public class QidianHandler
         if (paramToServiceMsg.msg_check_mpqq_refuse_flag_rsp.has())
         {
           paramToServiceMsg = (mobileqq_qidian.CheckMpqqRefuseFlagRsp)paramToServiceMsg.msg_check_mpqq_refuse_flag_rsp.get();
-          if (paramToServiceMsg.int32_result.get() != 0) {
-            break label290;
+          int i = paramToServiceMsg.int32_result.get();
+          boolean bool2 = false;
+          if (i != 0) {
+            break label328;
           }
           bool1 = true;
           if (bool1)
           {
             paramFromServiceMsg = new HashMap();
-            if (paramToServiceMsg.uint32_is_refuse.get() != 1) {
-              break label296;
+            bool1 = bool2;
+            if (paramToServiceMsg.uint32_is_refuse.get() == 1) {
+              bool1 = true;
             }
-            bool1 = true;
             paramFromServiceMsg.put("result", Boolean.valueOf(bool1));
             super.notifyUI(1003, true, paramFromServiceMsg);
             return;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetShieldStatus uint32_ret_code: " + bool1);
+          if (QLog.isColorLevel())
+          {
+            paramToServiceMsg = jdField_a_of_type_JavaLangString;
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("handleGetShieldStatus uint32_ret_code: ");
+            paramFromServiceMsg.append(bool1);
+            QLog.d(paramToServiceMsg, 2, paramFromServiceMsg.toString());
           }
-          super.notifyUI(1003, bool2, null);
+          super.notifyUI(1003, bool3, null);
           return;
         }
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetShieldStatus no msg_verify_wpa_uin_and_key_rsp");
+        }
+        super.notifyUI(1003, bool3, null);
+        return;
       }
       catch (Exception paramToServiceMsg)
       {
         paramToServiceMsg.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetShieldStatus exception: " + paramToServiceMsg.getMessage());
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+          paramObject = new StringBuilder();
+          paramObject.append("handleGetShieldStatus exception: ");
+          paramObject.append(paramToServiceMsg.getMessage());
+          QLog.d(paramFromServiceMsg, 2, paramObject.toString());
         }
-        super.notifyUI(1003, bool2, null);
+        super.notifyUI(1003, bool3, null);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetShieldStatus no msg_verify_wpa_uin_and_key_rsp");
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = jdField_a_of_type_JavaLangString;
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("handleGetShieldStatus isSuccess: ");
+        paramFromServiceMsg.append(bool3);
+        QLog.d(paramToServiceMsg, 2, paramFromServiceMsg.toString());
       }
-      super.notifyUI(1003, bool2, null);
+      super.notifyUI(1003, bool3, null);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetShieldStatus isSuccess: " + bool2);
-      }
-      super.notifyUI(1003, bool2, null);
-      return;
-      label290:
+      label328:
       boolean bool1 = false;
-      continue;
-      label296:
-      bool1 = false;
     }
   }
   
-  /* Error */
   public void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_1
-    //   2: aload_2
-    //   3: aload_3
-    //   4: ldc_w 523
-    //   7: invokespecial 609	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;Ljava/lang/String;)Z
-    //   10: istore 6
-    //   12: aload_1
-    //   13: getfield 135	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   16: ldc_w 322
-    //   19: invokevirtual 1370	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   22: astore_2
-    //   23: iload 6
-    //   25: ifeq +659 -> 684
-    //   28: new 326	com/tencent/qidian/proto/mobileqq_qidian$RspBody
-    //   31: dup
-    //   32: invokespecial 327	com/tencent/qidian/proto/mobileqq_qidian$RspBody:<init>	()V
-    //   35: astore 7
-    //   37: aload 7
-    //   39: aload_3
-    //   40: checkcast 329	[B
-    //   43: checkcast 329	[B
-    //   46: invokevirtual 333	com/tencent/qidian/proto/mobileqq_qidian$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   49: pop
-    //   50: new 310	java/util/HashMap
-    //   53: dup
-    //   54: invokespecial 311	java/util/HashMap:<init>	()V
-    //   57: astore 10
-    //   59: aload 7
-    //   61: getfield 1374	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_subcmd_get_user_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody;
-    //   64: invokevirtual 1377	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:has	()Z
-    //   67: ifeq +590 -> 657
-    //   70: aload 7
-    //   72: getfield 1374	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_subcmd_get_user_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody;
-    //   75: invokevirtual 1378	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   78: checkcast 1376	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody
-    //   81: astore 11
-    //   83: aload 11
-    //   85: getfield 1379	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_ret	Lcom/tencent/qidian/proto/mobileqq_qidian$RetInfo;
-    //   88: getfield 349	com/tencent/qidian/proto/mobileqq_qidian$RetInfo:uint32_ret_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   91: invokevirtual 352	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   94: ifne +655 -> 749
-    //   97: iconst_1
-    //   98: istore 5
-    //   100: iload 5
-    //   102: ifeq +510 -> 612
-    //   105: aload_1
-    //   106: getfield 135	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   109: ldc_w 548
-    //   112: invokevirtual 1370	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   115: astore_1
-    //   116: aload_1
-    //   117: invokestatic 950	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   120: istore 4
-    //   122: aload 11
-    //   124: getfield 1383	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
-    //   127: invokevirtual 1386	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:has	()Z
-    //   130: ifeq +610 -> 740
-    //   133: new 1388	com/tencent/qidian/data/QidianExternalInfo
-    //   136: dup
-    //   137: invokespecial 1389	com/tencent/qidian/data/QidianExternalInfo:<init>	()V
-    //   140: astore_1
-    //   141: aload_1
-    //   142: aload 11
-    //   144: getfield 1383	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
-    //   147: invokevirtual 1390	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   150: checkcast 1385	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo
-    //   153: invokevirtual 1394	com/tencent/qidian/data/QidianExternalInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;)V
-    //   156: aload 10
-    //   158: ldc_w 1396
-    //   161: aload_1
-    //   162: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   165: pop
-    //   166: aload_1
-    //   167: getfield 1398	com/tencent/qidian/data/QidianExternalInfo:uin	Ljava/lang/String;
-    //   170: astore_2
-    //   171: aload_2
-    //   172: invokestatic 51	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   175: ifne +570 -> 745
-    //   178: aload_0
-    //   179: getfield 25	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   182: getstatic 111	com/tencent/mobileqq/app/QQManagerFactory:QIDIAN_MANAGER	I
-    //   185: invokevirtual 117	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   188: checkcast 119	com/tencent/qidian/QidianManager
-    //   191: new 1400	com/tencent/qidian/data/BmqqAccountType
-    //   194: dup
-    //   195: aload_2
-    //   196: invokestatic 369	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   199: iconst_1
-    //   200: invokespecial 1402	com/tencent/qidian/data/BmqqAccountType:<init>	(Ljava/lang/String;I)V
-    //   203: invokevirtual 1405	com/tencent/qidian/QidianManager:a	(Lcom/tencent/qidian/data/BmqqAccountType;)V
-    //   206: goto +539 -> 745
-    //   209: aload 11
-    //   211: getfield 1409	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_internal_info	Lcom/tencent/qidian/proto/mobileqq_qidian$InternalInfo;
-    //   214: invokevirtual 1412	com/tencent/qidian/proto/mobileqq_qidian$InternalInfo:has	()Z
-    //   217: ifeq +518 -> 735
-    //   220: new 1414	com/tencent/qidian/data/QidianInternalInfo
-    //   223: dup
-    //   224: invokespecial 1415	com/tencent/qidian/data/QidianInternalInfo:<init>	()V
-    //   227: astore_3
-    //   228: aload_3
-    //   229: aload 11
-    //   231: getfield 1409	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_internal_info	Lcom/tencent/qidian/proto/mobileqq_qidian$InternalInfo;
-    //   234: invokevirtual 1416	com/tencent/qidian/proto/mobileqq_qidian$InternalInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   237: checkcast 1411	com/tencent/qidian/proto/mobileqq_qidian$InternalInfo
-    //   240: invokevirtual 1419	com/tencent/qidian/data/QidianInternalInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$InternalInfo;)V
-    //   243: aload 10
-    //   245: ldc_w 1421
-    //   248: aload_3
-    //   249: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   252: pop
-    //   253: aload 11
-    //   255: getfield 1425	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_corp_info	Lcom/tencent/qidian/proto/mobileqq_qidian$CorpInfo;
-    //   258: invokevirtual 1428	com/tencent/qidian/proto/mobileqq_qidian$CorpInfo:has	()Z
-    //   261: ifeq +468 -> 729
-    //   264: new 1430	com/tencent/qidian/data/QidianCorpInfo
-    //   267: dup
-    //   268: invokespecial 1431	com/tencent/qidian/data/QidianCorpInfo:<init>	()V
-    //   271: astore 7
-    //   273: aload 7
-    //   275: aload 11
-    //   277: getfield 1425	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_corp_info	Lcom/tencent/qidian/proto/mobileqq_qidian$CorpInfo;
-    //   280: invokevirtual 1432	com/tencent/qidian/proto/mobileqq_qidian$CorpInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   283: checkcast 1427	com/tencent/qidian/proto/mobileqq_qidian$CorpInfo
-    //   286: invokevirtual 1435	com/tencent/qidian/data/QidianCorpInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$CorpInfo;)V
-    //   289: aload 10
-    //   291: ldc_w 1437
-    //   294: aload 7
-    //   296: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   299: pop
-    //   300: aconst_null
-    //   301: astore 9
-    //   303: aload 9
-    //   305: astore 8
-    //   307: aload_2
-    //   308: invokestatic 51	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   311: ifne +46 -> 357
-    //   314: aload 9
-    //   316: astore 8
-    //   318: aload 11
-    //   320: getfield 1441	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:rpt_msg_config_group_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   323: invokevirtual 1444	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   326: ifeq +31 -> 357
-    //   329: new 1446	com/tencent/qidian/data/QidianProfileUiInfo
-    //   332: dup
-    //   333: invokespecial 1447	com/tencent/qidian/data/QidianProfileUiInfo:<init>	()V
-    //   336: astore 8
-    //   338: aload 8
-    //   340: aload_2
-    //   341: aload 11
-    //   343: invokevirtual 1450	com/tencent/qidian/data/QidianProfileUiInfo:from	(Ljava/lang/String;Lcom/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody;)V
-    //   346: aload 10
-    //   348: ldc_w 1452
-    //   351: aload 8
-    //   353: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   356: pop
-    //   357: iload 4
-    //   359: iconst_3
-    //   360: if_icmpne +179 -> 539
-    //   363: aload_0
-    //   364: getfield 25	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   367: getstatic 111	com/tencent/mobileqq/app/QQManagerFactory:QIDIAN_MANAGER	I
-    //   370: invokevirtual 117	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   373: checkcast 119	com/tencent/qidian/QidianManager
-    //   376: astore 13
-    //   378: aload 13
-    //   380: aload_2
-    //   381: invokevirtual 1455	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianExternalInfo;
-    //   384: astore 9
-    //   386: aload 9
-    //   388: ifnull +9 -> 397
-    //   391: aload 9
-    //   393: aload_1
-    //   394: invokevirtual 1459	com/tencent/qidian/data/QidianExternalInfo:update	(Lcom/tencent/qidian/data/QidianExternalInfo;)V
-    //   397: aload 13
-    //   399: aload_2
-    //   400: invokevirtual 1462	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianInternalInfo;
-    //   403: astore 11
-    //   405: aload 11
-    //   407: ifnull +9 -> 416
-    //   410: aload 11
-    //   412: aload_3
-    //   413: invokevirtual 1465	com/tencent/qidian/data/QidianInternalInfo:update	(Lcom/tencent/qidian/data/QidianInternalInfo;)V
-    //   416: aload 7
-    //   418: aload_1
-    //   419: getfield 1468	com/tencent/qidian/data/QidianExternalInfo:masterUin	Ljava/lang/String;
-    //   422: putfield 1471	com/tencent/qidian/data/QidianCorpInfo:corpUin	Ljava/lang/String;
-    //   425: aload 13
-    //   427: aload 7
-    //   429: getfield 1471	com/tencent/qidian/data/QidianCorpInfo:corpUin	Ljava/lang/String;
-    //   432: invokevirtual 1474	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianCorpInfo;
-    //   435: astore 12
-    //   437: aload 12
-    //   439: ifnull +10 -> 449
-    //   442: aload 12
-    //   444: aload 7
-    //   446: invokevirtual 1477	com/tencent/qidian/data/QidianCorpInfo:update	(Lcom/tencent/qidian/data/QidianCorpInfo;)V
-    //   449: aload 13
-    //   451: aload_2
-    //   452: invokevirtual 1480	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianProfileUiInfo;
-    //   455: astore_2
-    //   456: aload 9
-    //   458: ifnull +290 -> 748
-    //   461: aload 11
-    //   463: ifnull +285 -> 748
-    //   466: aload 12
-    //   468: ifnull +280 -> 748
-    //   471: aload_2
-    //   472: ifnull +276 -> 748
-    //   475: aload 10
-    //   477: ldc_w 1396
-    //   480: aload 9
-    //   482: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   485: pop
-    //   486: aload 10
-    //   488: ldc_w 1421
-    //   491: aload 11
-    //   493: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   496: pop
-    //   497: aload 10
-    //   499: ldc_w 1437
-    //   502: aload 12
-    //   504: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   507: pop
-    //   508: aload 10
-    //   510: ldc_w 1452
-    //   513: aload_2
-    //   514: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   517: pop
-    //   518: aload_0
-    //   519: aload_1
-    //   520: aload_3
-    //   521: aload 7
-    //   523: aload 8
-    //   525: invokespecial 1481	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianInternalInfo;Lcom/tencent/qidian/data/QidianCorpInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
-    //   528: aload_0
-    //   529: sipush 1001
-    //   532: iconst_1
-    //   533: aload 10
-    //   535: invokespecial 1253	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   538: return
-    //   539: aload_0
-    //   540: aload_1
-    //   541: aload_3
-    //   542: aload 7
-    //   544: aload 8
-    //   546: invokespecial 1481	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianInternalInfo;Lcom/tencent/qidian/data/QidianCorpInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
-    //   549: aload_0
-    //   550: sipush 1001
-    //   553: iconst_1
-    //   554: aload 10
-    //   556: invokespecial 1253	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   559: return
-    //   560: astore_1
-    //   561: aload_1
-    //   562: invokevirtual 1101	java/lang/Exception:printStackTrace	()V
-    //   565: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   568: ifeq +33 -> 601
-    //   571: getstatic 17	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   574: iconst_2
-    //   575: new 239	java/lang/StringBuilder
-    //   578: dup
-    //   579: invokespecial 240	java/lang/StringBuilder:<init>	()V
-    //   582: ldc_w 1483
-    //   585: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   588: aload_1
-    //   589: invokevirtual 868	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   592: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   595: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   598: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   601: aload_0
-    //   602: sipush 1001
-    //   605: iload 6
-    //   607: aconst_null
-    //   608: invokespecial 1253	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   611: return
-    //   612: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   615: ifeq +31 -> 646
-    //   618: getstatic 17	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   621: iconst_2
-    //   622: new 239	java/lang/StringBuilder
-    //   625: dup
-    //   626: invokespecial 240	java/lang/StringBuilder:<init>	()V
-    //   629: ldc_w 1485
-    //   632: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   635: iload 5
-    //   637: invokevirtual 1262	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   640: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   643: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   646: aload_0
-    //   647: sipush 1001
-    //   650: iload 6
-    //   652: aconst_null
-    //   653: invokespecial 1253	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   656: return
-    //   657: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   660: ifeq +13 -> 673
-    //   663: getstatic 17	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   666: iconst_2
-    //   667: ldc_w 1487
-    //   670: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   673: aload_0
-    //   674: sipush 1001
-    //   677: iload 6
-    //   679: aconst_null
-    //   680: invokespecial 1253	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   683: return
-    //   684: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   687: ifeq +31 -> 718
-    //   690: getstatic 17	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   693: iconst_2
-    //   694: new 239	java/lang/StringBuilder
-    //   697: dup
-    //   698: invokespecial 240	java/lang/StringBuilder:<init>	()V
-    //   701: ldc_w 1489
-    //   704: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   707: iload 6
-    //   709: invokevirtual 1262	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   712: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   715: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   718: aload_0
-    //   719: sipush 1001
-    //   722: iload 6
-    //   724: aconst_null
-    //   725: invokespecial 1253	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   728: return
-    //   729: aconst_null
-    //   730: astore 7
-    //   732: goto -432 -> 300
-    //   735: aconst_null
-    //   736: astore_3
-    //   737: goto -484 -> 253
-    //   740: aconst_null
-    //   741: astore_1
-    //   742: goto -533 -> 209
-    //   745: goto -536 -> 209
-    //   748: return
-    //   749: iconst_0
-    //   750: istore 5
-    //   752: goto -652 -> 100
-    //   755: astore_1
-    //   756: iconst_2
-    //   757: istore 4
-    //   759: goto -637 -> 122
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	762	0	this	QidianHandler
-    //   0	762	1	paramToServiceMsg	ToServiceMsg
-    //   0	762	2	paramFromServiceMsg	FromServiceMsg
-    //   0	762	3	paramObject	Object
-    //   120	638	4	i	int
-    //   98	653	5	bool1	boolean
-    //   10	713	6	bool2	boolean
-    //   35	696	7	localObject1	Object
-    //   305	240	8	localObject2	Object
-    //   301	180	9	localQidianExternalInfo	QidianExternalInfo
-    //   57	498	10	localHashMap	HashMap
-    //   81	411	11	localObject3	Object
-    //   435	68	12	localQidianCorpInfo	QidianCorpInfo
-    //   376	74	13	localQidianManager	QidianManager
-    // Exception table:
-    //   from	to	target	type
-    //   37	97	560	java/lang/Exception
-    //   105	116	560	java/lang/Exception
-    //   122	206	560	java/lang/Exception
-    //   209	253	560	java/lang/Exception
-    //   253	300	560	java/lang/Exception
-    //   307	314	560	java/lang/Exception
-    //   318	357	560	java/lang/Exception
-    //   363	386	560	java/lang/Exception
-    //   391	397	560	java/lang/Exception
-    //   397	405	560	java/lang/Exception
-    //   410	416	560	java/lang/Exception
-    //   416	437	560	java/lang/Exception
-    //   442	449	560	java/lang/Exception
-    //   449	456	560	java/lang/Exception
-    //   475	538	560	java/lang/Exception
-    //   539	559	560	java/lang/Exception
-    //   612	646	560	java/lang/Exception
-    //   646	656	560	java/lang/Exception
-    //   657	673	560	java/lang/Exception
-    //   673	683	560	java/lang/Exception
-    //   116	122	755	java/lang/Exception
+    boolean bool2 = a(paramToServiceMsg, paramFromServiceMsg, paramObject, "QidianSsoProto.getUserDetailInfo");
+    paramFromServiceMsg = paramToServiceMsg.extraData.getString("uin");
+    Object localObject1;
+    boolean bool1;
+    label128:
+    label222:
+    QidianProfileUiInfo localQidianProfileUiInfo;
+    if (bool2)
+    {
+      localObject1 = new mobileqq_qidian.RspBody();
+      try
+      {
+        ((mobileqq_qidian.RspBody)localObject1).mergeFrom((byte[])paramObject);
+        localHashMap = new HashMap();
+        if (((mobileqq_qidian.RspBody)localObject1).msg_subcmd_get_user_detail_info_rsp_body.has())
+        {
+          localObject2 = (mobileqq_qidian.GetUserDetailInfoRspBody)((mobileqq_qidian.RspBody)localObject1).msg_subcmd_get_user_detail_info_rsp_body.get();
+          if (((mobileqq_qidian.GetUserDetailInfoRspBody)localObject2).msg_ret.uint32_ret_code.get() != 0) {
+            break label780;
+          }
+          bool1 = true;
+          if (bool1) {
+            paramToServiceMsg = paramToServiceMsg.extraData.getString("req_type");
+          }
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        HashMap localHashMap;
+        Object localObject2;
+        int i;
+        label273:
+        label327:
+        paramToServiceMsg.printStackTrace();
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+          paramObject = new StringBuilder();
+          paramObject.append("handleGetUserDetailInfo exception: ");
+          paramObject.append(paramToServiceMsg.getMessage());
+          QLog.d(paramFromServiceMsg, 2, paramObject.toString());
+        }
+        super.notifyUI(1001, bool2, null);
+        return;
+      }
+    }
+    else
+    {
+      try
+      {
+        i = Integer.parseInt(paramToServiceMsg);
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        break label128;
+      }
+      i = 2;
+      bool1 = ((mobileqq_qidian.GetUserDetailInfoRspBody)localObject2).msg_external_info.has();
+      if (!bool1) {
+        break label789;
+      }
+      paramFromServiceMsg = new QidianExternalInfo();
+      paramFromServiceMsg.from((mobileqq_qidian.ExternalInfo)((mobileqq_qidian.GetUserDetailInfoRspBody)localObject2).msg_external_info.get());
+      localHashMap.put("external", paramFromServiceMsg);
+      paramToServiceMsg = paramFromServiceMsg.uin;
+      if (TextUtils.isEmpty(paramToServiceMsg)) {
+        break label786;
+      }
+      ((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(new BmqqAccountType(String.valueOf(paramToServiceMsg), 1));
+      break label786;
+      bool1 = ((mobileqq_qidian.GetUserDetailInfoRspBody)localObject2).msg_internal_info.has();
+      if (!bool1) {
+        break label798;
+      }
+      paramObject = new QidianInternalInfo();
+      paramObject.from((mobileqq_qidian.InternalInfo)((mobileqq_qidian.GetUserDetailInfoRspBody)localObject2).msg_internal_info.get());
+      localHashMap.put("internal", paramObject);
+      bool1 = ((mobileqq_qidian.GetUserDetailInfoRspBody)localObject2).msg_corp_info.has();
+      if (!bool1) {
+        break label803;
+      }
+      localObject1 = new QidianCorpInfo();
+      ((QidianCorpInfo)localObject1).from((mobileqq_qidian.CorpInfo)((mobileqq_qidian.GetUserDetailInfoRspBody)localObject2).msg_corp_info.get());
+      localHashMap.put("corp", localObject1);
+      bool1 = TextUtils.isEmpty(paramToServiceMsg);
+      if ((bool1) || (!((mobileqq_qidian.GetUserDetailInfoRspBody)localObject2).rpt_msg_config_group_info.has())) {
+        break label809;
+      }
+      localQidianProfileUiInfo = new QidianProfileUiInfo();
+      localQidianProfileUiInfo.from(paramToServiceMsg, (mobileqq_qidian.GetUserDetailInfoRspBody)localObject2);
+      localHashMap.put("ConfigGroupInfo", localQidianProfileUiInfo);
+    }
+    for (;;)
+    {
+      if (i == 3)
+      {
+        QidianManager localQidianManager = (QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
+        localObject2 = localQidianManager.a(paramToServiceMsg);
+        if (localObject2 != null) {
+          ((QidianExternalInfo)localObject2).update(paramFromServiceMsg);
+        }
+        QidianInternalInfo localQidianInternalInfo = localQidianManager.a(paramToServiceMsg);
+        if (localQidianInternalInfo != null) {
+          localQidianInternalInfo.update(paramObject);
+        }
+        ((QidianCorpInfo)localObject1).corpUin = paramFromServiceMsg.masterUin;
+        QidianCorpInfo localQidianCorpInfo = localQidianManager.a(((QidianCorpInfo)localObject1).corpUin);
+        if (localQidianCorpInfo != null) {
+          localQidianCorpInfo.update((QidianCorpInfo)localObject1);
+        }
+        paramToServiceMsg = localQidianManager.a(paramToServiceMsg);
+        if ((localObject2 != null) && (localQidianInternalInfo != null) && (localQidianCorpInfo != null) && (paramToServiceMsg != null))
+        {
+          localHashMap.put("external", localObject2);
+          localHashMap.put("internal", localQidianInternalInfo);
+          localHashMap.put("corp", localQidianCorpInfo);
+          localHashMap.put("ConfigGroupInfo", paramToServiceMsg);
+          a(paramFromServiceMsg, paramObject, (QidianCorpInfo)localObject1, localQidianProfileUiInfo);
+          super.notifyUI(1001, true, localHashMap);
+        }
+      }
+      else
+      {
+        a(paramFromServiceMsg, paramObject, (QidianCorpInfo)localObject1, localQidianProfileUiInfo);
+        super.notifyUI(1001, true, localHashMap);
+        return;
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = jdField_a_of_type_JavaLangString;
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("handleGetUserDetailInfo uint32_ret_code: ");
+          paramFromServiceMsg.append(bool1);
+          QLog.d(paramToServiceMsg, 2, paramFromServiceMsg.toString());
+        }
+        super.notifyUI(1001, bool2, null);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetUserDetailInfo no msg_subcmd_get_user_detail_info_rsp_body");
+        }
+        super.notifyUI(1001, bool2, null);
+        return;
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = jdField_a_of_type_JavaLangString;
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("handleGetUserDetailInfo isSuccess: ");
+          paramFromServiceMsg.append(bool2);
+          QLog.d(paramToServiceMsg, 2, paramFromServiceMsg.toString());
+        }
+        super.notifyUI(1001, bool2, null);
+      }
+      return;
+      label780:
+      bool1 = false;
+      break;
+      label786:
+      break label222;
+      label789:
+      paramObject = null;
+      paramToServiceMsg = paramFromServiceMsg;
+      paramFromServiceMsg = paramObject;
+      break label222;
+      label798:
+      paramObject = null;
+      break label273;
+      label803:
+      localObject1 = null;
+      break label327;
+      label809:
+      localQidianProfileUiInfo = null;
+    }
   }
   
   public void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1808,34 +1739,35 @@ public class QidianHandler
     {
       try
       {
-        if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+        if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {
+          break label124;
+        }
+        i = 1;
+        if (i != 0)
         {
-          i = 1;
-          if (i != 0)
-          {
-            paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-            paramToServiceMsg.mergeFrom((byte[])paramObject);
-            paramFromServiceMsg = new Oidb_0x7e7.RspBody();
-            paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-            if (paramFromServiceMsg.ret_code.has()) {
-              paramFromServiceMsg.ret_code.get();
-            }
-            if (paramFromServiceMsg.ret_msg.has()) {
-              paramFromServiceMsg.ret_msg.get().toString();
-            }
+          paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+          paramToServiceMsg.mergeFrom((byte[])paramObject);
+          paramFromServiceMsg = new Oidb_0x7e7.RspBody();
+          paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+          if (paramFromServiceMsg.ret_code.has()) {
+            paramFromServiceMsg.ret_code.get();
           }
-          return;
+          if (paramFromServiceMsg.ret_msg.has())
+          {
+            paramFromServiceMsg.ret_msg.get().toString();
+            return;
+          }
         }
       }
       catch (Exception paramToServiceMsg)
       {
-        int i;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleReportWPA ", paramToServiceMsg);
         }
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleReportWPA ", paramToServiceMsg);
       }
-      i = 0;
+      return;
+      label124:
+      int i = 0;
     }
   }
   
@@ -1843,25 +1775,28 @@ public class QidianHandler
   {
     boolean bool = a(paramToServiceMsg, paramFromServiceMsg, paramObject, "QidianSsoProto.getCustomerTransferInfo");
     paramToServiceMsg = paramToServiceMsg.extraData.getString("kfext");
-    if (bool) {
-      paramFromServiceMsg = new mobileqq_qidian.RspBody();
-    }
-    try
+    if (bool)
     {
-      paramFromServiceMsg.mergeFrom((byte[])paramObject);
-      if (paramFromServiceMsg.msg_get_customer_transfer_info_rsp.has())
+      paramFromServiceMsg = new mobileqq_qidian.RspBody();
+      try
       {
-        paramFromServiceMsg = (mobileqq_qidian.GetCustomerTransferInfoRspBody)paramFromServiceMsg.msg_get_customer_transfer_info_rsp.get();
-        if (paramFromServiceMsg.msg_ret.uint32_ret_code.get() == 0) {
-          b(paramToServiceMsg, paramFromServiceMsg.str_transfer_info.get(), paramFromServiceMsg.str_link_info.get(), paramFromServiceMsg.str_link_url.get(), paramFromServiceMsg.str_pt_url.get());
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        if (paramFromServiceMsg.msg_get_customer_transfer_info_rsp.has())
+        {
+          paramFromServiceMsg = (mobileqq_qidian.GetCustomerTransferInfoRspBody)paramFromServiceMsg.msg_get_customer_transfer_info_rsp.get();
+          if (paramFromServiceMsg.msg_ret.uint32_ret_code.get() == 0)
+          {
+            b(paramToServiceMsg, paramFromServiceMsg.str_transfer_info.get(), paramFromServiceMsg.str_link_info.get(), paramFromServiceMsg.str_link_url.get(), paramFromServiceMsg.str_pt_url.get());
+            return;
+          }
         }
       }
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetCustomerTransferInfo ", paramToServiceMsg);
+      catch (Exception paramToServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetCustomerTransferInfo ", paramToServiceMsg);
+        }
+      }
     }
   }
   
@@ -1876,26 +1811,32 @@ public class QidianHandler
       try
       {
         paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if (!paramToServiceMsg.msg_get_navigation_menu_config_rsp_body.has()) {
-          break label208;
-        }
-        paramToServiceMsg = (mobileqq_qidian.GetNavigationMenuConfigRspBody)paramToServiceMsg.msg_get_navigation_menu_config_rsp_body.get();
-        if (paramToServiceMsg.msg_ret.uint32_ret_code.get() == 0)
+        if (paramToServiceMsg.msg_get_navigation_menu_config_rsp_body.has())
         {
-          paramFromServiceMsg = new QidianHandler.NavigationMenuConfig();
-          paramFromServiceMsg.jdField_a_of_type_Int = paramToServiceMsg.int32_is_show.get();
-          paramFromServiceMsg.jdField_b_of_type_Int = paramToServiceMsg.uint32_ver_no.get();
-          paramFromServiceMsg.jdField_a_of_type_Long = paramToServiceMsg.uint64_puin.get();
-          paramFromServiceMsg.jdField_b_of_type_Long = paramToServiceMsg.uint64_kf_uin.get();
-          paramFromServiceMsg.c = paramToServiceMsg.uint32_is_show_graytip.get();
-          notifyUI(1006, true, paramFromServiceMsg);
+          paramToServiceMsg = (mobileqq_qidian.GetNavigationMenuConfigRspBody)paramToServiceMsg.msg_get_navigation_menu_config_rsp_body.get();
+          if (paramToServiceMsg.msg_ret.uint32_ret_code.get() == 0)
+          {
+            paramFromServiceMsg = new QidianHandler.NavigationMenuConfig();
+            paramFromServiceMsg.jdField_a_of_type_Int = paramToServiceMsg.int32_is_show.get();
+            paramFromServiceMsg.jdField_b_of_type_Int = paramToServiceMsg.uint32_ver_no.get();
+            paramFromServiceMsg.jdField_a_of_type_Long = paramToServiceMsg.uint64_puin.get();
+            paramFromServiceMsg.jdField_b_of_type_Long = paramToServiceMsg.uint64_kf_uin.get();
+            paramFromServiceMsg.c = paramToServiceMsg.uint32_is_show_graytip.get();
+            notifyUI(1006, true, paramFromServiceMsg);
+            return;
+          }
+          notifyUI(1006, false, null);
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetNavigationConfig error return");
           return;
         }
         notifyUI(1006, false, null);
         if (!QLog.isColorLevel()) {
           return;
         }
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetNavigationConfig error return");
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetNavigationConfig without body");
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -1906,12 +1847,6 @@ public class QidianHandler
         }
       }
       QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetNavigationConfig ", paramToServiceMsg);
-      return;
-      label208:
-      notifyUI(1006, false, null);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetNavigationConfig without body");
-      }
     }
     else
     {
@@ -1922,283 +1857,143 @@ public class QidianHandler
     }
   }
   
-  /* Error */
   public void k(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_1
-    //   2: aload_2
-    //   3: aload_3
-    //   4: ldc_w 1240
-    //   7: invokespecial 609	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;Ljava/lang/String;)Z
-    //   10: istore 5
-    //   12: aload_1
-    //   13: getfield 135	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   16: ldc_w 322
-    //   19: invokevirtual 1370	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   22: astore_2
-    //   23: iload 5
-    //   25: ifeq +413 -> 438
-    //   28: new 326	com/tencent/qidian/proto/mobileqq_qidian$RspBody
-    //   31: dup
-    //   32: invokespecial 327	com/tencent/qidian/proto/mobileqq_qidian$RspBody:<init>	()V
-    //   35: astore 6
-    //   37: aload 6
-    //   39: aload_3
-    //   40: checkcast 329	[B
-    //   43: checkcast 329	[B
-    //   46: invokevirtual 333	com/tencent/qidian/proto/mobileqq_qidian$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   49: pop
-    //   50: new 310	java/util/HashMap
-    //   53: dup
-    //   54: invokespecial 311	java/util/HashMap:<init>	()V
-    //   57: astore 7
-    //   59: aload 6
-    //   61: getfield 1576	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_get_corpuin_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody;
-    //   64: invokevirtual 1579	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:has	()Z
-    //   67: ifeq +361 -> 428
-    //   70: aload 6
-    //   72: getfield 1576	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_get_corpuin_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody;
-    //   75: invokevirtual 1580	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   78: checkcast 1578	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody
-    //   81: astore 8
-    //   83: aload 8
-    //   85: getfield 1583	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:int32_ret	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   88: invokevirtual 445	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   91: ifne +414 -> 505
-    //   94: iconst_1
-    //   95: istore 4
-    //   97: iload 4
-    //   99: ifeq +319 -> 418
-    //   102: aload_1
-    //   103: getfield 135	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   106: ldc_w 548
-    //   109: invokevirtual 1370	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   112: astore_1
-    //   113: aload_1
-    //   114: invokestatic 950	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   117: istore 4
-    //   119: aload 8
-    //   121: getfield 1584	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
-    //   124: invokevirtual 1386	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:has	()Z
-    //   127: ifeq +361 -> 488
-    //   130: new 1388	com/tencent/qidian/data/QidianExternalInfo
-    //   133: dup
-    //   134: invokespecial 1389	com/tencent/qidian/data/QidianExternalInfo:<init>	()V
-    //   137: astore_3
-    //   138: aload 8
-    //   140: getfield 1584	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
-    //   143: invokevirtual 1390	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   146: checkcast 1385	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo
-    //   149: astore 6
-    //   151: aload_3
-    //   152: aload 6
-    //   154: invokevirtual 1394	com/tencent/qidian/data/QidianExternalInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;)V
-    //   157: aload_0
-    //   158: getfield 25	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   161: getstatic 111	com/tencent/mobileqq/app/QQManagerFactory:QIDIAN_MANAGER	I
-    //   164: invokevirtual 117	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   167: checkcast 119	com/tencent/qidian/QidianManager
-    //   170: astore 9
-    //   172: aload 9
-    //   174: aload_2
-    //   175: invokevirtual 1455	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianExternalInfo;
-    //   178: astore_1
-    //   179: aload_1
-    //   180: ifnull +216 -> 396
-    //   183: iload 4
-    //   185: iconst_2
-    //   186: if_icmpne +127 -> 313
-    //   189: aload_1
-    //   190: aload_3
-    //   191: getfield 1587	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
-    //   194: putfield 1587	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
-    //   197: aload 7
-    //   199: ldc_w 1396
-    //   202: aload_1
-    //   203: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   206: pop
-    //   207: aload_3
-    //   208: getfield 1398	com/tencent/qidian/data/QidianExternalInfo:uin	Ljava/lang/String;
-    //   211: astore 6
-    //   213: aload 6
-    //   215: invokestatic 51	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   218: ifne +279 -> 497
-    //   221: aload 9
-    //   223: new 1400	com/tencent/qidian/data/BmqqAccountType
-    //   226: dup
-    //   227: aload 6
-    //   229: invokestatic 369	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   232: bipush 6
-    //   234: invokespecial 1402	com/tencent/qidian/data/BmqqAccountType:<init>	(Ljava/lang/String;I)V
-    //   237: invokevirtual 1405	com/tencent/qidian/QidianManager:a	(Lcom/tencent/qidian/data/BmqqAccountType;)V
-    //   240: goto +257 -> 497
-    //   243: aload_3
-    //   244: invokestatic 51	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   247: ifne +236 -> 483
-    //   250: aload 8
-    //   252: getfield 1588	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:rpt_msg_config_group_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   255: invokevirtual 1444	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   258: ifeq +225 -> 483
-    //   261: new 1446	com/tencent/qidian/data/QidianProfileUiInfo
-    //   264: dup
-    //   265: invokespecial 1447	com/tencent/qidian/data/QidianProfileUiInfo:<init>	()V
-    //   268: astore 6
-    //   270: aload 6
-    //   272: aload_3
-    //   273: aload 8
-    //   275: invokevirtual 1591	com/tencent/qidian/data/QidianProfileUiInfo:from	(Ljava/lang/String;Lcom/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody;)V
-    //   278: aload 7
-    //   280: ldc_w 1452
-    //   283: aload 6
-    //   285: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   288: pop
-    //   289: aload 6
-    //   291: astore_3
-    //   292: aload_1
-    //   293: ifnull +116 -> 409
-    //   296: aload_0
-    //   297: aload_1
-    //   298: aload_3
-    //   299: invokespecial 1592	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
-    //   302: aload_0
-    //   303: sipush 1009
-    //   306: iconst_1
-    //   307: aload 7
-    //   309: invokespecial 1253	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   312: return
-    //   313: iload 4
-    //   315: ifne -118 -> 197
-    //   318: aload 6
-    //   320: getfield 1595	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:uint32_videoshow	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   323: invokevirtual 1498	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   326: ifne +11 -> 337
-    //   329: aload_3
-    //   330: aload_1
-    //   331: getfield 1587	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
-    //   334: putfield 1587	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
-    //   337: aload_1
-    //   338: aload_3
-    //   339: invokevirtual 1459	com/tencent/qidian/data/QidianExternalInfo:update	(Lcom/tencent/qidian/data/QidianExternalInfo;)V
-    //   342: goto -145 -> 197
-    //   345: astore_1
-    //   346: aload_1
-    //   347: invokevirtual 1101	java/lang/Exception:printStackTrace	()V
-    //   350: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   353: ifeq +33 -> 386
-    //   356: getstatic 17	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   359: iconst_2
-    //   360: new 239	java/lang/StringBuilder
-    //   363: dup
-    //   364: invokespecial 240	java/lang/StringBuilder:<init>	()V
-    //   367: ldc_w 1597
-    //   370: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   373: aload_1
-    //   374: invokevirtual 868	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   377: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   380: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   383: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   386: aload_0
-    //   387: sipush 1009
-    //   390: iconst_0
-    //   391: aconst_null
-    //   392: invokespecial 1253	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   395: return
-    //   396: aload 7
-    //   398: ldc_w 1396
-    //   401: aload_3
-    //   402: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   405: pop
-    //   406: goto -199 -> 207
-    //   409: aload_0
-    //   410: aload_2
-    //   411: aload_3
-    //   412: invokespecial 1592	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
-    //   415: goto -113 -> 302
-    //   418: aload_0
-    //   419: sipush 1009
-    //   422: iconst_0
-    //   423: aconst_null
-    //   424: invokespecial 1253	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   427: return
-    //   428: aload_0
-    //   429: sipush 1009
-    //   432: iconst_0
-    //   433: aconst_null
-    //   434: invokespecial 1253	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   437: return
-    //   438: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   441: ifeq +31 -> 472
-    //   444: getstatic 17	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   447: iconst_2
-    //   448: new 239	java/lang/StringBuilder
-    //   451: dup
-    //   452: invokespecial 240	java/lang/StringBuilder:<init>	()V
-    //   455: ldc_w 1599
-    //   458: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   461: iload 5
-    //   463: invokevirtual 1262	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   466: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   469: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   472: aload_0
-    //   473: sipush 1009
-    //   476: iload 5
-    //   478: aconst_null
-    //   479: invokespecial 1253	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   482: return
-    //   483: aconst_null
-    //   484: astore_3
-    //   485: goto -193 -> 292
-    //   488: aload_2
-    //   489: astore_3
-    //   490: aconst_null
-    //   491: astore_2
-    //   492: aconst_null
-    //   493: astore_1
-    //   494: goto -251 -> 243
-    //   497: aload_3
-    //   498: astore_2
-    //   499: aload 6
-    //   501: astore_3
-    //   502: goto -259 -> 243
-    //   505: iconst_0
-    //   506: istore 4
-    //   508: goto -411 -> 97
-    //   511: astore_1
-    //   512: iconst_0
-    //   513: istore 4
-    //   515: goto -396 -> 119
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	518	0	this	QidianHandler
-    //   0	518	1	paramToServiceMsg	ToServiceMsg
-    //   0	518	2	paramFromServiceMsg	FromServiceMsg
-    //   0	518	3	paramObject	Object
-    //   95	419	4	i	int
-    //   10	467	5	bool	boolean
-    //   35	465	6	localObject	Object
-    //   57	340	7	localHashMap	HashMap
-    //   81	193	8	localGetCorpUinDetailInfoRspBody	com.tencent.qidian.proto.mobileqq_qidian.GetCorpUinDetailInfoRspBody
-    //   170	52	9	localQidianManager	QidianManager
-    // Exception table:
-    //   from	to	target	type
-    //   37	94	345	java/lang/Exception
-    //   102	113	345	java/lang/Exception
-    //   119	179	345	java/lang/Exception
-    //   189	197	345	java/lang/Exception
-    //   197	207	345	java/lang/Exception
-    //   207	240	345	java/lang/Exception
-    //   243	289	345	java/lang/Exception
-    //   296	302	345	java/lang/Exception
-    //   302	312	345	java/lang/Exception
-    //   318	337	345	java/lang/Exception
-    //   337	342	345	java/lang/Exception
-    //   396	406	345	java/lang/Exception
-    //   409	415	345	java/lang/Exception
-    //   418	427	345	java/lang/Exception
-    //   428	437	345	java/lang/Exception
-    //   113	119	511	java/lang/Exception
+    boolean bool = a(paramToServiceMsg, paramFromServiceMsg, paramObject, "QidianSsoProto.fetchCorpDetailInfo");
+    paramFromServiceMsg = paramToServiceMsg.extraData.getString("uin");
+    int i;
+    if (bool)
+    {
+      Object localObject = new mobileqq_qidian.RspBody();
+      try
+      {
+        ((mobileqq_qidian.RspBody)localObject).mergeFrom((byte[])paramObject);
+        localHashMap = new HashMap();
+        if (((mobileqq_qidian.RspBody)localObject).msg_get_corpuin_detail_info_rsp_body.has())
+        {
+          localGetCorpUinDetailInfoRspBody = (mobileqq_qidian.GetCorpUinDetailInfoRspBody)((mobileqq_qidian.RspBody)localObject).msg_get_corpuin_detail_info_rsp_body.get();
+          if (localGetCorpUinDetailInfoRspBody.int32_ret.get() != 0) {
+            break label543;
+          }
+          i = 1;
+          if (i != 0) {
+            paramToServiceMsg = paramToServiceMsg.extraData.getString("req_type");
+          }
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        HashMap localHashMap;
+        mobileqq_qidian.GetCorpUinDetailInfoRspBody localGetCorpUinDetailInfoRspBody;
+        label125:
+        QidianManager localQidianManager;
+        QidianExternalInfo localQidianExternalInfo;
+        String str;
+        label325:
+        paramToServiceMsg.printStackTrace();
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+          paramObject = new StringBuilder();
+          paramObject.append("handleGetQidianMasterDetailInfo exception: ");
+          paramObject.append(paramToServiceMsg.getMessage());
+          QLog.d(paramFromServiceMsg, 2, paramObject.toString());
+        }
+        super.notifyUI(1009, false, null);
+        return;
+      }
+    }
+    else
+    {
+      try
+      {
+        i = Integer.parseInt(paramToServiceMsg);
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        break label125;
+      }
+      i = 0;
+      if (!localGetCorpUinDetailInfoRspBody.msg_external_info.has()) {
+        break label549;
+      }
+      localObject = new QidianExternalInfo();
+      paramToServiceMsg = (mobileqq_qidian.ExternalInfo)localGetCorpUinDetailInfoRspBody.msg_external_info.get();
+      ((QidianExternalInfo)localObject).from(paramToServiceMsg);
+      localQidianManager = (QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
+      localQidianExternalInfo = localQidianManager.a(paramFromServiceMsg);
+      if (localQidianExternalInfo != null)
+      {
+        if (i == 2)
+        {
+          localQidianExternalInfo.isShowVideoCall = ((QidianExternalInfo)localObject).isShowVideoCall;
+        }
+        else if (i == 0)
+        {
+          if (!paramToServiceMsg.uint32_videoshow.has()) {
+            ((QidianExternalInfo)localObject).isShowVideoCall = localQidianExternalInfo.isShowVideoCall;
+          }
+          localQidianExternalInfo.update((QidianExternalInfo)localObject);
+        }
+        localHashMap.put("external", localQidianExternalInfo);
+      }
+      else
+      {
+        localHashMap.put("external", localObject);
+      }
+      str = ((QidianExternalInfo)localObject).uin;
+      paramToServiceMsg = localQidianExternalInfo;
+      paramFromServiceMsg = (FromServiceMsg)localObject;
+      paramObject = str;
+      if (!TextUtils.isEmpty(str))
+      {
+        localQidianManager.a(new BmqqAccountType(String.valueOf(str), 6));
+        paramToServiceMsg = localQidianExternalInfo;
+        paramFromServiceMsg = (FromServiceMsg)localObject;
+        paramObject = str;
+      }
+      if ((TextUtils.isEmpty(paramObject)) || (!localGetCorpUinDetailInfoRspBody.rpt_msg_config_group_info.has())) {
+        break label558;
+      }
+      localObject = new QidianProfileUiInfo();
+      ((QidianProfileUiInfo)localObject).from(paramObject, localGetCorpUinDetailInfoRspBody);
+      localHashMap.put("ConfigGroupInfo", localObject);
+      paramObject = localObject;
+    }
+    for (;;)
+    {
+      if (paramToServiceMsg != null) {
+        a(paramToServiceMsg, paramObject);
+      } else {
+        a(paramFromServiceMsg, paramObject);
+      }
+      super.notifyUI(1009, true, localHashMap);
+      return;
+      super.notifyUI(1009, false, null);
+      return;
+      super.notifyUI(1009, false, null);
+      return;
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = jdField_a_of_type_JavaLangString;
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("handleGetQidianMasterDetailInfo isSuccess: ");
+        paramFromServiceMsg.append(bool);
+        QLog.d(paramToServiceMsg, 2, paramFromServiceMsg.toString());
+      }
+      super.notifyUI(1009, bool, null);
+      return;
+      label543:
+      i = 0;
+      break;
+      label549:
+      paramObject = paramFromServiceMsg;
+      paramToServiceMsg = null;
+      paramFromServiceMsg = paramToServiceMsg;
+      break label325;
+      label558:
+      paramObject = null;
+    }
   }
   
   public void l(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -2225,7 +2020,7 @@ public class QidianHandler
               paramToServiceMsg = new byte[i];
               PkgTools.getBytesData(paramFromServiceMsg, 7, paramToServiceMsg, i);
               paramToServiceMsg = PkgTools.getUTFString(paramToServiceMsg, 0, i);
-              i += 7;
+              i = 7 + i;
               PkgTools.getShortData(paramFromServiceMsg, i);
               i += 2;
               int j = PkgTools.getShortData(paramFromServiceMsg, i);
@@ -2238,23 +2033,33 @@ public class QidianHandler
               notifyUI(1019, true, paramObject);
               return;
             }
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin result is " + i);
+            paramToServiceMsg = jdField_a_of_type_JavaLangString;
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("handleQidianPrivateTroopUin result is ");
+            paramFromServiceMsg.append(i);
+            QLog.d(paramToServiceMsg, 2, paramFromServiceMsg.toString());
             notifyUI(1019, false, null);
             return;
           }
-        }
-        catch (Exception paramToServiceMsg)
-        {
           if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin throw exception is " + paramToServiceMsg.toString());
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin pkg is null");
           }
           notifyUI(1019, false, null);
           return;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin pkg is null");
+        catch (Exception paramToServiceMsg)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramObject = new StringBuilder();
+            paramObject.append("handleQidianPrivateTroopUin throw exception is ");
+            paramObject.append(paramToServiceMsg.toString());
+            QLog.d(paramFromServiceMsg, 2, paramObject.toString());
+          }
+          notifyUI(1019, false, null);
+          return;
         }
-        notifyUI(1019, false, null);
       }
       else
       {
@@ -2273,105 +2078,110 @@ public class QidianHandler
     }
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
-    return QidianBusinessObserver.class;
+    return QidianBusinessObserverBase.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onReceive cmd: " + str);
-    }
-    if (str.equalsIgnoreCase("QidianSsoProto.WpaAssignKfext")) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    do
+    String str1 = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel())
     {
+      String str2 = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive cmd: ");
+      localStringBuilder.append(str1);
+      QLog.d(str2, 2, localStringBuilder.toString());
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.WpaAssignKfext"))
+    {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
-      if (str.equalsIgnoreCase("QidianSsoProto.clickReplyCmd"))
-      {
-        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.getUserDetailInfo"))
-      {
-        g(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.verifyWpaAndKey"))
-      {
-        e(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.getShieldStatus"))
-      {
-        f(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("OidbSvc.0x7e7_0"))
-      {
-        h(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.blockBulkMsg"))
-      {
-        n(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.getCustomerTransferInfo"))
-      {
-        i(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.getNavigationConfig"))
-      {
-        j(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.corpUinWpaReport"))
-      {
-        m(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.emanClickReport"))
-      {
-        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equals("QidianSsoProto.fetchCorpDetailInfo"))
-      {
-        k(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.closeAIOSessionReport"))
-      {
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.WpaGenSigMsg"))
-      {
-        o(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.webimAddFriend"))
-      {
-        p(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if (str.equalsIgnoreCase("QidianSsoProto.getQidianGroupInfo"))
-      {
-        q(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!str.equalsIgnoreCase("OidbSvc.0x782"));
-    l(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.clickReplyCmd"))
+    {
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.getUserDetailInfo"))
+    {
+      g(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.verifyWpaAndKey"))
+    {
+      e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.getShieldStatus"))
+    {
+      f(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("OidbSvc.0x7e7_0"))
+    {
+      h(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.blockBulkMsg"))
+    {
+      n(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.getCustomerTransferInfo"))
+    {
+      i(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.getNavigationConfig"))
+    {
+      j(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.corpUinWpaReport"))
+    {
+      m(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.emanClickReport"))
+    {
+      d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equals("QidianSsoProto.fetchCorpDetailInfo"))
+    {
+      k(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.closeAIOSessionReport"))
+    {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.WpaGenSigMsg"))
+    {
+      o(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.webimAddFriend"))
+    {
+      p(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("QidianSsoProto.getQidianGroupInfo"))
+    {
+      q(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str1.equalsIgnoreCase("OidbSvc.0x782")) {
+      l(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianHandler
  * JD-Core Version:    0.7.0.1
  */

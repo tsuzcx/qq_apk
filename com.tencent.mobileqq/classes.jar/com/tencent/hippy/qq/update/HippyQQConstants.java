@@ -47,13 +47,14 @@ public class HippyQQConstants
   public static final int UPDATE_JS_BUNDLE_EXISTS = 101;
   public static final int UPDATE_OK = 0;
   public static final int UPDATE_PENDING_CHECK_INFO = 1;
+  public static final int UPDATE_PRELOAD_NOT_ALLOWED = 2;
   public static final String URL_COMPONENT_NAME = "component";
   public static final String URL_QUERY_PARAMETER_JS_TYPE = "framework";
   public static final String VUE_CORE_BUNDLE_NAME = "vue.android.js";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyQQConstants
  * JD-Core Version:    0.7.0.1
  */

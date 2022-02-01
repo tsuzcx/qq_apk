@@ -27,12 +27,12 @@ public class Utils
   
   public static boolean isNotEmpty(CharSequence paramCharSequence)
   {
-    return !isEmpty(paramCharSequence);
+    return isEmpty(paramCharSequence) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.codegenmeta.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

@@ -33,14 +33,11 @@ public class PicCommonBean
     {
       int j = paramArrayOfQConfItem.length;
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         Object localObject = paramArrayOfQConfItem[i];
-        if (localObject == null) {}
-        for (;;)
+        if (localObject != null)
         {
-          i += 1;
-          break;
           localObject = ((QConfItem)localObject).a;
           try
           {
@@ -48,18 +45,22 @@ public class PicCommonBean
             a(localJSONObject, localPicCommonBean);
             b(localJSONObject, localPicCommonBean);
             c(localJSONObject, localPicCommonBean);
-            if (QLog.isColorLevel()) {
-              QLog.i("PicCommonBean", 2, "parse: " + (String)localObject + " bean:" + localPicCommonBean);
-            }
           }
           catch (JSONException localJSONException)
           {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
+            localJSONException.printStackTrace();
+          }
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("parse: ");
+            localStringBuilder.append((String)localObject);
+            localStringBuilder.append(" bean:");
+            localStringBuilder.append(localPicCommonBean);
+            QLog.i("PicCommonBean", 2, localStringBuilder.toString());
           }
         }
+        i += 1;
       }
     }
     if (localPicCommonBean.jdField_a_of_type_Int < 0) {
@@ -112,12 +113,28 @@ public class PicCommonBean
   
   public String toString()
   {
-    return "PicCommonBean{needRegionDecode=" + this.jdField_a_of_type_Boolean + ", ramThreshold=" + this.jdField_a_of_type_Int + ", pxThreshold=" + this.jdField_a_of_type_Long + ", threadCount=" + this.jdField_b_of_type_Int + ", C2C_FileSize_Limit=" + this.jdField_b_of_type_Long + ", GROUP_FileSize_Limit=" + this.jdField_c_of_type_Long + ", EXIF_SWITCH=" + this.jdField_c_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PicCommonBean{needRegionDecode=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", ramThreshold=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", pxThreshold=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", threadCount=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", C2C_FileSize_Limit=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", GROUP_FileSize_Limit=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", EXIF_SWITCH=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PicCommonBean
  * JD-Core Version:    0.7.0.1
  */

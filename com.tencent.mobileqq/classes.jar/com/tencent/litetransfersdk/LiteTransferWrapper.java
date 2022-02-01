@@ -5,6 +5,7 @@ import android.os.Looper;
 import com.dataline.util.HttpUtil;
 import com.dataline.util.HttpUtil.NetworkProxy;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.api.IFMSettings;
 import com.tencent.mobileqq.filemanager.settings.FMSettings;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.transfile.NetworkCenter;
@@ -31,43 +32,34 @@ public class LiteTransferWrapper
     {
       SoLoadUtil.a(BaseApplicationImpl.getContext(), "xplatform", 0, false);
     }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
+    {
+      localUnsatisfiedLinkError1.printStackTrace();
+    }
+    try
+    {
+      SoLoadUtil.a(BaseApplicationImpl.getContext(), "mbedtlsall", 0, false);
+    }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
     {
-      try
-      {
-        SoLoadUtil.a(BaseApplicationImpl.getContext(), "mbedtlsall", 0, false);
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
-      {
-        try
-        {
-          for (;;)
-          {
-            SoLoadUtil.a(BaseApplicationImpl.getContext(), "xphttpclientex", 0, false);
-            try
-            {
-              SoLoadUtil.a(BaseApplicationImpl.getContext(), "litetransfer", 0, false);
-              return;
-            }
-            catch (UnsatisfiedLinkError localUnsatisfiedLinkError4)
-            {
-              localUnsatisfiedLinkError4.printStackTrace();
-            }
-            localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
-            localUnsatisfiedLinkError1.printStackTrace();
-            continue;
-            localUnsatisfiedLinkError2 = localUnsatisfiedLinkError2;
-            localUnsatisfiedLinkError2.printStackTrace();
-          }
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError3)
-        {
-          for (;;)
-          {
-            localUnsatisfiedLinkError3.printStackTrace();
-          }
-        }
-      }
+      localUnsatisfiedLinkError2.printStackTrace();
+    }
+    try
+    {
+      SoLoadUtil.a(BaseApplicationImpl.getContext(), "xphttpclientex", 0, false);
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError3)
+    {
+      localUnsatisfiedLinkError3.printStackTrace();
+    }
+    try
+    {
+      SoLoadUtil.a(BaseApplicationImpl.getContext(), "litetransfer", 0, false);
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError4)
+    {
+      localUnsatisfiedLinkError4.printStackTrace();
     }
   }
   
@@ -80,29 +72,28 @@ public class LiteTransferWrapper
   
   public static void OnLog(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    do
+    try
     {
-      try
+      paramArrayOfByte1 = new String(paramArrayOfByte1, "UTF-8");
+      paramArrayOfByte2 = new String(paramArrayOfByte2, "UTF-8");
+      if ((paramInt != 0) && (paramInt != 1))
       {
-        paramArrayOfByte1 = new String(paramArrayOfByte1, "UTF-8");
-        paramArrayOfByte2 = new String(paramArrayOfByte2, "UTF-8");
-        if ((paramInt == 0) || (paramInt == 1))
-        {
-          QLog.d(paramArrayOfByte1, 1, paramArrayOfByte2);
-          return;
+        if (QLog.isDevelopLevel()) {
+          QLog.d(paramArrayOfByte1, 4, paramArrayOfByte2);
         }
       }
-      catch (UnsupportedEncodingException paramArrayOfByte1)
-      {
-        do
-        {
-          paramArrayOfByte1.printStackTrace();
-        } while (!QLog.isDevelopLevel());
-        QLog.e("dataline.LiteTTransferWrapper", 4, "native log encoding utf8 failed");
-        return;
+      else {
+        QLog.d(paramArrayOfByte1, 1, paramArrayOfByte2);
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d(paramArrayOfByte1, 4, paramArrayOfByte2);
+      return;
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte1)
+    {
+      paramArrayOfByte1.printStackTrace();
+      if (QLog.isDevelopLevel()) {
+        QLog.e("dataline.LiteTTransferWrapper", 4, "native log encoding utf8 failed");
+      }
+    }
   }
   
   public static long getCurrentMillisTime()
@@ -117,43 +108,54 @@ public class LiteTransferWrapper
   
   public void CancelAll(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.LiteTTransferWrapper", 2, "CancelAll " + this.mLiteTransferOperator);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("CancelAll ");
+      ((StringBuilder)localObject).append(this.mLiteTransferOperator);
+      QLog.d("dataline.LiteTTransferWrapper", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.mLiteTransferOperator == 0L) {
+    if (this.mLiteTransferOperator == 0L)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("dataline.LiteTTransferWrapper", 2, "CancelAll mLiteTransferOperator is 0, maybe not inited, so has nothing to cancel");
       }
-    }
-    do
-    {
       return;
-      Looper localLooper = Looper.getMainLooper();
-      if (Thread.currentThread() != localLooper.getThread())
-      {
-        new Handler(localLooper).post(new LiteTransferWrapper.3(this, paramInt, paramBoolean));
-        return;
-      }
-    } while (this.mLiteTransferOperator == 0L);
-    CancelAllToJNI(this.mLiteTransferOperator, paramInt, paramBoolean);
+    }
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
+    {
+      new Handler((Looper)localObject).post(new LiteTransferWrapper.3(this, paramInt, paramBoolean));
+      return;
+    }
+    long l = this.mLiteTransferOperator;
+    if (l != 0L) {
+      CancelAllToJNI(l, paramInt, paramBoolean);
+    }
   }
   
   public native void CancelAllToJNI(long paramLong, int paramInt, boolean paramBoolean);
   
   public void CancelGroup(int paramInt1, long paramLong, int paramInt2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.LiteTTransferWrapper", 2, "CancelGroup " + this.mLiteTransferOperator);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("CancelGroup ");
+      ((StringBuilder)localObject).append(this.mLiteTransferOperator);
+      QLog.d("dataline.LiteTTransferWrapper", 2, ((StringBuilder)localObject).toString());
     }
     checkTransferAlive();
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new LiteTransferWrapper.7(this, paramInt1, paramLong, paramInt2, paramBoolean));
-    }
-    while (this.mLiteTransferOperator == 0L) {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
+    {
+      new Handler((Looper)localObject).post(new LiteTransferWrapper.7(this, paramInt1, paramLong, paramInt2, paramBoolean));
       return;
     }
-    CancelGroupToJNI(this.mLiteTransferOperator, paramInt1, paramLong, paramInt2, paramBoolean);
+    long l = this.mLiteTransferOperator;
+    if (l != 0L) {
+      CancelGroupToJNI(l, paramInt1, paramLong, paramInt2, paramBoolean);
+    }
   }
   
   public native void CancelGroupToJNI(long paramLong1, int paramInt1, long paramLong2, int paramInt2, boolean paramBoolean);
@@ -166,61 +168,77 @@ public class LiteTransferWrapper
   {
     checkTransferAlive();
     Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
+    if (Thread.currentThread() != localLooper.getThread())
+    {
       new Handler(localLooper).post(new LiteTransferWrapper.8(this, paramInt, paramString));
-    }
-    while (this.mLiteTransferOperator == 0L) {
       return;
     }
-    DoGetThumbFilePathReplyToJNI(this.mLiteTransferOperator, paramInt, paramString);
+    long l = this.mLiteTransferOperator;
+    if (l != 0L) {
+      DoGetThumbFilePathReplyToJNI(l, paramInt, paramString);
+    }
   }
   
   public void OnPbMsgReceive(MsgCSBody paramMsgCSBody)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.LiteTTransferWrapper", 2, "_PbMsgRecive " + this.mLiteTransferOperator);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("_PbMsgRecive ");
+      ((StringBuilder)localObject).append(this.mLiteTransferOperator);
+      QLog.d("dataline.LiteTTransferWrapper", 2, ((StringBuilder)localObject).toString());
     }
     checkTransferAlive();
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new LiteTransferWrapper.10(this, paramMsgCSBody));
-    }
-    while (this.mLiteTransferOperator == 0L) {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
+    {
+      new Handler((Looper)localObject).post(new LiteTransferWrapper.10(this, paramMsgCSBody));
       return;
     }
-    PbMsgReciveToJNI(this.mLiteTransferOperator, paramMsgCSBody);
+    long l = this.mLiteTransferOperator;
+    if (l != 0L) {
+      PbMsgReciveToJNI(l, paramMsgCSBody);
+    }
   }
   
   public void OnPbMsgReply(int paramInt, MsgSCBody paramMsgSCBody)
   {
     checkTransferAlive();
     Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
+    if (Thread.currentThread() != localLooper.getThread())
+    {
       new Handler(localLooper).post(new LiteTransferWrapper.9(this, paramInt, paramMsgSCBody));
-    }
-    while (this.mLiteTransferOperator == 0L) {
       return;
     }
-    DoPbMsgReplyToJNI(this.mLiteTransferOperator, paramInt, paramMsgSCBody);
+    long l = this.mLiteTransferOperator;
+    if (l != 0L) {
+      DoPbMsgReplyToJNI(l, paramInt, paramMsgSCBody);
+    }
   }
   
   public native void PbMsgReciveToJNI(long paramLong, MsgCSBody paramMsgCSBody);
   
   public void RecvGroup(Session[] paramArrayOfSession, NFCInfo[] paramArrayOfNFCInfo, FTNInfo[] paramArrayOfFTNInfo, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.LiteTTransferWrapper", 2, "RecvGroup " + this.mLiteTransferOperator);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("RecvGroup ");
+      ((StringBuilder)localObject).append(this.mLiteTransferOperator);
+      QLog.d("dataline.LiteTTransferWrapper", 2, ((StringBuilder)localObject).toString());
     }
     checkTransferAlive();
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new LiteTransferWrapper.6(this, paramArrayOfSession, paramArrayOfNFCInfo, paramArrayOfFTNInfo, paramBoolean));
-    }
-    while (this.mLiteTransferOperator == 0L) {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
+    {
+      new Handler((Looper)localObject).post(new LiteTransferWrapper.6(this, paramArrayOfSession, paramArrayOfNFCInfo, paramArrayOfFTNInfo, paramBoolean));
       return;
     }
-    SetProxyToJni();
-    RecvGroupToJNI(this.mLiteTransferOperator, paramArrayOfSession, paramArrayOfNFCInfo, paramArrayOfFTNInfo, paramBoolean);
+    if (this.mLiteTransferOperator != 0L)
+    {
+      SetProxyToJni();
+      RecvGroupToJNI(this.mLiteTransferOperator, paramArrayOfSession, paramArrayOfNFCInfo, paramArrayOfFTNInfo, paramBoolean);
+    }
   }
   
   public native void RecvGroupToJNI(long paramLong, Session[] paramArrayOfSession, NFCInfo[] paramArrayOfNFCInfo, FTNInfo[] paramArrayOfFTNInfo, boolean paramBoolean);
@@ -229,14 +247,16 @@ public class LiteTransferWrapper
   {
     checkTransferAlive();
     Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
+    if (Thread.currentThread() != localLooper.getThread())
+    {
       new Handler(localLooper).post(new LiteTransferWrapper.5(this, paramArrayList, paramBoolean1, paramBoolean2));
-    }
-    while (this.mLiteTransferOperator == 0L) {
       return;
     }
-    SetProxyToJni();
-    SendGroupToJNI(this.mLiteTransferOperator, (Session[])paramArrayList.toArray(new Session[paramArrayList.size()]), paramBoolean1, paramBoolean2);
+    if (this.mLiteTransferOperator != 0L)
+    {
+      SetProxyToJni();
+      SendGroupToJNI(this.mLiteTransferOperator, (Session[])paramArrayList.toArray(new Session[paramArrayList.size()]), paramBoolean1, paramBoolean2);
+    }
   }
   
   public native void SendGroupToJNI(long paramLong, Session[] paramArrayOfSession, boolean paramBoolean1, boolean paramBoolean2);
@@ -245,18 +265,24 @@ public class LiteTransferWrapper
   
   public void SetDefaultPath(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.LiteTTransferWrapper", 2, "SetDefaultPath " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SetDefaultPath ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("dataline.LiteTTransferWrapper", 2, ((StringBuilder)localObject).toString());
     }
     checkTransferAlive();
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new LiteTransferWrapper.11(this, paramString));
-    }
-    while (this.mLiteTransferOperator == 0L) {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
+    {
+      new Handler((Looper)localObject).post(new LiteTransferWrapper.11(this, paramString));
       return;
     }
-    SetDefaultPathToJNI(this.mLiteTransferOperator, paramString);
+    long l = this.mLiteTransferOperator;
+    if (l != 0L) {
+      SetDefaultPathToJNI(l, paramString);
+    }
   }
   
   public native void SetDefaultPathToJNI(long paramLong, String paramString);
@@ -289,72 +315,96 @@ public class LiteTransferWrapper
   
   public void SetServicePath(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.LiteTTransferWrapper", 2, "SetServicePath " + paramString1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SetServicePath ");
+      ((StringBuilder)localObject).append(paramString1);
+      QLog.d("dataline.LiteTTransferWrapper", 2, ((StringBuilder)localObject).toString());
     }
     checkTransferAlive();
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new LiteTransferWrapper.13(this, paramString1, paramString2));
-    }
-    while (this.mLiteTransferOperator == 0L) {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
+    {
+      new Handler((Looper)localObject).post(new LiteTransferWrapper.13(this, paramString1, paramString2));
       return;
     }
-    SetServicePathToJNI(this.mLiteTransferOperator, paramString1, paramString2);
+    long l = this.mLiteTransferOperator;
+    if (l != 0L) {
+      SetServicePathToJNI(l, paramString1, paramString2);
+    }
   }
   
   public native void SetServicePathToJNI(long paramLong, String paramString1, String paramString2);
   
   public void SetTempPath(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.LiteTTransferWrapper", 2, "SetTempPath " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SetTempPath ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("dataline.LiteTTransferWrapper", 2, ((StringBuilder)localObject).toString());
     }
     checkTransferAlive();
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new LiteTransferWrapper.14(this, paramString));
-    }
-    while (this.mLiteTransferOperator == 0L) {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
+    {
+      new Handler((Looper)localObject).post(new LiteTransferWrapper.14(this, paramString));
       return;
     }
-    SetTempPathToJNI(this.mLiteTransferOperator, paramString);
+    long l = this.mLiteTransferOperator;
+    if (l != 0L) {
+      SetTempPathToJNI(l, paramString);
+    }
   }
   
   public native void SetTempPathToJNI(long paramLong, String paramString);
   
   public void SetThumbPath(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.LiteTTransferWrapper", 2, "SetThumbPath " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SetThumbPath ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("dataline.LiteTTransferWrapper", 2, ((StringBuilder)localObject).toString());
     }
     checkTransferAlive();
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new LiteTransferWrapper.12(this, paramString));
-    }
-    while (this.mLiteTransferOperator == 0L) {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
+    {
+      new Handler((Looper)localObject).post(new LiteTransferWrapper.12(this, paramString));
       return;
     }
-    SetThumbPathToJNI(this.mLiteTransferOperator, paramString);
+    long l = this.mLiteTransferOperator;
+    if (l != 0L) {
+      SetThumbPathToJNI(l, paramString);
+    }
   }
   
   public native void SetThumbPathToJNI(long paramLong, String paramString);
   
   public void SetThumbTempPath(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.LiteTTransferWrapper", 2, "SetThumbTempPath " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SetThumbTempPath ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("dataline.LiteTTransferWrapper", 2, ((StringBuilder)localObject).toString());
     }
     checkTransferAlive();
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new LiteTransferWrapper.15(this, paramString));
-    }
-    while (this.mLiteTransferOperator == 0L) {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
+    {
+      new Handler((Looper)localObject).post(new LiteTransferWrapper.15(this, paramString));
       return;
     }
-    SetThumbTempPathToJNI(this.mLiteTransferOperator, paramString);
+    long l = this.mLiteTransferOperator;
+    if (l != 0L) {
+      SetThumbTempPathToJNI(l, paramString);
+    }
   }
   
   public native void SetThumbTempPathToJNI(long paramLong, String paramString);
@@ -363,47 +413,58 @@ public class LiteTransferWrapper
   {
     checkTransferAlive();
     Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
+    if (Thread.currentThread() != localLooper.getThread())
+    {
       new Handler(localLooper).post(new LiteTransferWrapper.4(this, paramArrayOfSession));
-    }
-    while (this.mLiteTransferOperator == 0L) {
       return;
     }
-    SyncGroupToJNI(this.mLiteTransferOperator, paramArrayOfSession);
+    long l = this.mLiteTransferOperator;
+    if (l != 0L) {
+      SyncGroupToJNI(l, paramArrayOfSession);
+    }
   }
   
   public native void SyncGroupToJNI(long paramLong, Session[] paramArrayOfSession);
   
   public void beginLiteTransfer()
   {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new LiteTransferWrapper.1(this));
-    }
-    do
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
     {
-      do
+      new Handler((Looper)localObject).post(new LiteTransferWrapper.1(this));
+      return;
+    }
+    localObject = this.mOperator;
+    if (localObject != null)
+    {
+      LiteTransferListenerCallback localLiteTransferListenerCallback = this.mListener;
+      if (localLiteTransferListenerCallback != null)
       {
-        return;
-        if ((this.mOperator != null) && (this.mListener != null)) {
-          break;
+        if (this.mLiteTransferOperator == 0L) {
+          try
+          {
+            this.mLiteTransferOperator = createOperator((LiteTransferOperatorCallback)localObject, localLiteTransferListenerCallback);
+            SetBusinessID(38, 3, 106, 102);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("createOperator mLiteTransferOperator:");
+            ((StringBuilder)localObject).append(this.mLiteTransferOperator);
+            ((StringBuilder)localObject).append(" threadId:");
+            ((StringBuilder)localObject).append(Thread.currentThread().getId());
+            QLog.i("dataline.LiteTTransferWrapper", 1, ((StringBuilder)localObject).toString());
+            checkPathExist();
+            SetProxyToJni();
+            return;
+          }
+          catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+          {
+            localUnsatisfiedLinkError.printStackTrace();
+          }
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("dataline.LiteTTransferWrapper", 2, "litetransfer callback is null, do nothing");
-      return;
-    } while (this.mLiteTransferOperator != 0L);
-    try
-    {
-      this.mLiteTransferOperator = createOperator(this.mOperator, this.mListener);
-      SetBusinessID(38, 3, 106, 102);
-      QLog.i("dataline.LiteTTransferWrapper", 1, "createOperator mLiteTransferOperator:" + this.mLiteTransferOperator + " threadId:" + Thread.currentThread().getId());
-      checkPathExist();
-      SetProxyToJni();
-      return;
+        return;
+      }
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      localUnsatisfiedLinkError.printStackTrace();
+    if (QLog.isColorLevel()) {
+      QLog.d("dataline.LiteTTransferWrapper", 2, "litetransfer callback is null, do nothing");
     }
   }
   
@@ -411,26 +472,26 @@ public class LiteTransferWrapper
   {
     try
     {
-      File localFile = new File(FMSettings.a().b());
+      File localFile = new File(FMSettings.a().getDefaultRecvPath());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetDefaultPath(FMSettings.a().b());
-      localFile = new File(FMSettings.a().d());
+      SetDefaultPath(FMSettings.a().getDefaultRecvPath());
+      localFile = new File(FMSettings.a().getDefaultThumbPath());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbPath(FMSettings.a().d());
-      localFile = new File(FMSettings.a().c());
+      SetThumbPath(FMSettings.a().getDefaultThumbPath());
+      localFile = new File(FMSettings.a().getDefaultTmpPath());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetTempPath(FMSettings.a().c());
-      localFile = new File(FMSettings.a().c());
+      SetTempPath(FMSettings.a().getDefaultTmpPath());
+      localFile = new File(FMSettings.a().getDefaultTmpPath());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbTempPath(FMSettings.a().c());
+      SetThumbTempPath(FMSettings.a().getDefaultTmpPath());
       return;
     }
     catch (Exception localException) {}
@@ -456,34 +517,39 @@ public class LiteTransferWrapper
       }
       return;
     }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
     {
-      new Handler(localLooper).post(new LiteTransferWrapper.2(this, paramBoolean));
+      new Handler((Looper)localObject).post(new LiteTransferWrapper.2(this, paramBoolean));
       return;
     }
     try
     {
       if (this.mLiteTransferOperator != 0L)
       {
-        QLog.i("dataline.LiteTTransferWrapper", 1, "destryOperator mLiteTransferOperator:" + this.mLiteTransferOperator + " threadId:" + Thread.currentThread().getId());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("destryOperator mLiteTransferOperator:");
+        ((StringBuilder)localObject).append(this.mLiteTransferOperator);
+        ((StringBuilder)localObject).append(" threadId:");
+        ((StringBuilder)localObject).append(Thread.currentThread().getId());
+        QLog.i("dataline.LiteTTransferWrapper", 1, ((StringBuilder)localObject).toString());
         long l = this.mLiteTransferOperator;
         this.mLiteTransferOperator = 0L;
         destryOperator(l, paramBoolean);
       }
-      this.mOperator = null;
-      this.mListener = null;
-      return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("dataline.LiteTTransferWrapper", 2, "cannot endLiteTransfer, load litetranfer library error?" + QLog.getStackTraceString(localUnsatisfiedLinkError));
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("cannot endLiteTransfer, load litetranfer library error?");
+        localStringBuilder.append(QLog.getStackTraceString(localUnsatisfiedLinkError));
+        QLog.d("dataline.LiteTTransferWrapper", 2, localStringBuilder.toString());
       }
     }
+    this.mOperator = null;
+    this.mListener = null;
   }
   
   public native int generateGroupID();
@@ -502,7 +568,7 @@ public class LiteTransferWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.litetransfersdk.LiteTransferWrapper
  * JD-Core Version:    0.7.0.1
  */

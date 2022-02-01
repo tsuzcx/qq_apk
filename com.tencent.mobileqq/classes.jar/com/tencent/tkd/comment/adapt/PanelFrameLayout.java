@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 public class PanelFrameLayout
   extends FrameLayout
 {
+  private boolean isKeyboardShowing;
   private boolean isShowing;
   private int panelHeight;
   
@@ -33,14 +34,19 @@ public class PanelFrameLayout
     return super.addViewInLayout(paramView, paramInt, paramLayoutParams, paramBoolean);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.isShowing)
+    if ((this.isShowing) && (!this.isKeyboardShowing))
     {
       super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.panelHeight, 1073741824));
       return;
     }
     setMeasuredDimension(getWidth(), 0);
+  }
+  
+  public void setKeyboardShowing(boolean paramBoolean)
+  {
+    this.isKeyboardShowing = paramBoolean;
   }
   
   public void setPanelHeight(int paramInt)
@@ -55,7 +61,7 @@ public class PanelFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.adapt.PanelFrameLayout
  * JD-Core Version:    0.7.0.1
  */

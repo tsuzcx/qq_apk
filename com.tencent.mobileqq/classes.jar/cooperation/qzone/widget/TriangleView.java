@@ -7,25 +7,21 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class TriangleView
   extends View
 {
   private int direction;
-  private int drawColor;
+  private int drawColor = getResources().getColor(2131165528);
   
   public TriangleView(Context paramContext, int paramInt1, int paramInt2)
   {
     super(paramContext);
-    BaseApplicationImpl.getApplication();
-    this.drawColor = BaseApplicationImpl.getContext().getResources().getColor(2131165552);
     this.direction = paramInt1;
     this.drawColor = paramInt2;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawColor(0);
@@ -39,23 +35,24 @@ public class TriangleView
     if (this.direction == 1)
     {
       localPath.moveTo(i / 2, 0.0F);
-      localPath.lineTo(i, j);
-      localPath.lineTo(0.0F, j);
+      float f1 = i;
+      float f2 = j;
+      localPath.lineTo(f1, f2);
+      localPath.lineTo(0.0F, f2);
     }
-    for (;;)
+    else
     {
-      localPath.close();
-      paramCanvas.drawPath(localPath, localPaint);
-      return;
       localPath.moveTo(i / 2, j);
       localPath.lineTo(i, 0.0F);
       localPath.lineTo(0.0F, 0.0F);
     }
+    localPath.close();
+    paramCanvas.drawPath(localPath, localPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.widget.TriangleView
  * JD-Core Version:    0.7.0.1
  */

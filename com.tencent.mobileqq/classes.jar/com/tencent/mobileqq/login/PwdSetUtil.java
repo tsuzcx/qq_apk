@@ -12,7 +12,7 @@ import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
 import mqq.app.AppRuntime;
@@ -34,40 +34,63 @@ public class PwdSetUtil
       QLog.e("PwdSetUtil", 1, "gotoPwdSetWebsite: activity is null");
       return;
     }
-    if (paramString1.contains("?")) {}
-    for (paramString1 = paramString1 + "&";; paramString1 = paramString1 + "?")
+    if (paramString1.contains("?"))
     {
-      paramString1 = paramString1 + "uin=" + paramString2 + "&plat=1&app=1&version=" + "8.5.5.5105" + "&device=" + URLEncoder.encode(Build.DEVICE) + "&system=" + Build.VERSION.RELEASE + "&systemInt=" + Build.VERSION.SDK_INT;
-      Intent localIntent = new Intent();
-      localIntent.putExtra("url", paramString1);
-      localIntent.putExtra("portraitOnly", true);
-      localIntent.putExtra("uin", paramString2);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("hide_more_button", true);
-      VasWebviewUtil.openQQBrowserActivity(paramActivity, paramString1, 32768L, localIntent, false, -1);
-      ReportController.b(paramAppInterface, "CliOper", "", "", "Mobile_signup", "Setiing_pw_tips", 0, 0, "", "", "", "");
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("&");
+      paramString1 = ((StringBuilder)localObject).toString();
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("?");
+      paramString1 = ((StringBuilder)localObject).toString();
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("uin=");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("&plat=1&app=1&version=");
+    ((StringBuilder)localObject).append("8.7.0.5295");
+    ((StringBuilder)localObject).append("&device=");
+    ((StringBuilder)localObject).append(URLEncoder.encode(Build.DEVICE));
+    ((StringBuilder)localObject).append("&system=");
+    ((StringBuilder)localObject).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject).append("&systemInt=");
+    ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+    paramString1 = ((StringBuilder)localObject).toString();
+    localObject = new Intent();
+    ((Intent)localObject).putExtra("url", paramString1);
+    ((Intent)localObject).putExtra("portraitOnly", true);
+    ((Intent)localObject).putExtra("uin", paramString2);
+    ((Intent)localObject).putExtra("hide_operation_bar", true);
+    ((Intent)localObject).putExtra("hide_more_button", true);
+    VasWebviewUtil.a(paramActivity, paramString1, 32768L, (Intent)localObject, false, -1);
+    ReportController.b(paramAppInterface, "CliOper", "", "", "Mobile_signup", "Setiing_pw_tips", 0, 0, "", "", "", "");
   }
   
   public static void a(AppRuntime paramAppRuntime)
   {
-    if (paramAppRuntime == null) {}
-    Object localObject;
-    long l;
-    do
-    {
-      do
-      {
-        return;
-        localObject = paramAppRuntime.getApplication();
-      } while (localObject == null);
-      paramAppRuntime = paramAppRuntime.getCurrentAccountUin();
-      l = System.currentTimeMillis();
-      a.put(paramAppRuntime, Long.valueOf(l));
-      localObject = ((MobileQQ)localObject).getSharedPreferences("pwd_sharedpref", 0);
-    } while (localObject == null);
-    paramAppRuntime = "pwd_ts_key" + paramAppRuntime;
+    if (paramAppRuntime == null) {
+      return;
+    }
+    Object localObject = paramAppRuntime.getApplication();
+    if (localObject == null) {
+      return;
+    }
+    paramAppRuntime = paramAppRuntime.getCurrentAccountUin();
+    long l = System.currentTimeMillis();
+    a.put(paramAppRuntime, Long.valueOf(l));
+    localObject = ((MobileQQ)localObject).getSharedPreferences("pwd_sharedpref", 0);
+    if (localObject == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pwd_ts_key");
+    localStringBuilder.append(paramAppRuntime);
+    paramAppRuntime = localStringBuilder.toString();
     ((SharedPreferences)localObject).edit().putLong(paramAppRuntime, l).apply();
   }
   
@@ -84,12 +107,12 @@ public class PwdSetUtil
       return false;
     }
     QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
-    localQQCustomDialog.setTitle(2131716989);
-    localQQCustomDialog.setMessage(2131716988);
+    localQQCustomDialog.setTitle(2131716642);
+    localQQCustomDialog.setMessage(2131716641);
     paramAppInterface = new PwdSetUtil.1(str, paramActivity, paramAppInterface);
     paramActivity = new PwdSetUtil.2();
-    localQQCustomDialog.setPositiveButton(2131716987, paramAppInterface);
-    localQQCustomDialog.setNegativeButton(2131690800, paramActivity);
+    localQQCustomDialog.setPositiveButton(2131716640, paramAppInterface);
+    localQQCustomDialog.setNegativeButton(2131690728, paramActivity);
     localQQCustomDialog.show();
     return true;
   }
@@ -109,11 +132,11 @@ public class PwdSetUtil
       QLog.d("PwdSetUtil", 1, "shouldShowSetPwdBanner: current account hasSetPwd");
       return false;
     }
-    Long localLong = (Long)a.get(str);
-    if (localLong != null)
+    Object localObject = (Long)a.get(str);
+    if (localObject != null)
     {
-      paramAppRuntime = localLong;
-      if (localLong.longValue() != 0L) {}
+      paramAppRuntime = (AppRuntime)localObject;
+      if (((Long)localObject).longValue() != 0L) {}
     }
     else
     {
@@ -121,7 +144,10 @@ public class PwdSetUtil
       if (paramAppRuntime == null) {
         return false;
       }
-      paramAppRuntime = Long.valueOf(paramAppRuntime.getLong("pwd_ts_key" + str, 0L));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("pwd_ts_key");
+      ((StringBuilder)localObject).append(str);
+      paramAppRuntime = Long.valueOf(paramAppRuntime.getLong(((StringBuilder)localObject).toString(), 0L));
       a.put(str, paramAppRuntime);
     }
     if (System.currentTimeMillis() - paramAppRuntime.longValue() > 86400000L)
@@ -134,7 +160,7 @@ public class PwdSetUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.login.PwdSetUtil
  * JD-Core Version:    0.7.0.1
  */

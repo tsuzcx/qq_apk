@@ -3,20 +3,24 @@ package com.tencent.mobileqq.qroute.utils;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import com.tencent.mobileqq.qroute.annotation.QRouteFactory;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class QRouteUtil
 {
   private static final Object[] IMPL_CLASS_LOCK_ARRAY;
-  private static final HashMap<Class<?>, String> IMPL_CLASS_NAME_HASH_MAP = new HashMap(512);
+  private static final ConcurrentHashMap<Class<?>, String> IMPL_CLASS_NAME_HASH_MAP = new ConcurrentHashMap(2048);
   
   static
   {
     IMPL_CLASS_LOCK_ARRAY = new Object[10];
     int i = 0;
-    while (i < IMPL_CLASS_LOCK_ARRAY.length)
+    for (;;)
     {
-      IMPL_CLASS_LOCK_ARRAY[i] = new Object();
+      Object[] arrayOfObject = IMPL_CLASS_LOCK_ARRAY;
+      if (i >= arrayOfObject.length) {
+        break;
+      }
+      arrayOfObject[i] = new Object();
       i += 1;
     }
   }
@@ -42,12 +46,14 @@ public class QRouteUtil
   
   private static String getImplNameInner(Class<?> paramClass)
   {
-    paramClass = new StringBuilder(paramClass.getName()).append("Impl");
+    paramClass = new StringBuilder(paramClass.getName());
+    paramClass.append("Impl");
     int i = paramClass.lastIndexOf(".");
     if (i > 0)
     {
-      paramClass.deleteCharAt(i + 1);
-      paramClass.insert(i + 1, "impl.");
+      i += 1;
+      paramClass.deleteCharAt(i);
+      paramClass.insert(i, "impl.");
       return paramClass.toString();
     }
     return "";
@@ -55,9 +61,13 @@ public class QRouteUtil
   
   public static <T extends QRouteApi> void isAnnotationQAPI(Class<T> paramClass)
   {
-    if (!paramClass.isAnnotationPresent(QAPI.class)) {
-      throw new IllegalStateException("QRouteApi should have QAPI Annotation, class=" + paramClass.getName());
+    if (paramClass.isAnnotationPresent(QAPI.class)) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QRouteApi should have QAPI Annotation, class=");
+    localStringBuilder.append(paramClass.getName());
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public static <T extends QRouteApi> boolean isSingleton(Class<T> paramClass)
@@ -74,7 +84,7 @@ public class QRouteUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.utils.QRouteUtil
  * JD-Core Version:    0.7.0.1
  */

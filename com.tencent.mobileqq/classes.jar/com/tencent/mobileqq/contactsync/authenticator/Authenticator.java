@@ -7,7 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.phonecontact.api.IContactSyncService;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 
@@ -51,8 +51,14 @@ public class Authenticator
     if (QLog.isColorLevel()) {
       QLog.d("ContactSync.Authenticator", 2, "getAccountRemovalAllowed");
     }
-    if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
-      ContactSyncManager.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), paramAccount);
+    if ("Success".equals(BaseApplicationImpl.sInjectResult))
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (localQQAppInterface != null) {
+        ((IContactSyncService)localQQAppInterface.getRuntimeService(IContactSyncService.class)).markAccountDeleteByUser(localQQAppInterface, paramAccount);
+      } else {
+        QLog.d("ContactSync.Authenticator", 1, "getAccountRemovalAllowed| app == null");
+      }
     }
     return super.getAccountRemovalAllowed(paramAccountAuthenticatorResponse, paramAccount);
   }
@@ -91,7 +97,7 @@ public class Authenticator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.contactsync.authenticator.Authenticator
  * JD-Core Version:    0.7.0.1
  */

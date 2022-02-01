@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class oidb_0xd1e$SubCommentCreateRsp
   extends MessageMicro<SubCommentCreateRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 114 }, new String[] { "sub_comment_id", "link_comment_over_times", "link_comment_num", "dirty_word_show_toast", "actual_create_content", "share_url", "rpt_data" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", null }, SubCommentCreateRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField actual_create_content = PBField.initString("");
   public final PBUInt32Field dirty_word_show_toast = PBField.initUInt32(0);
   public final PBUInt32Field link_comment_num = PBField.initUInt32(0);
@@ -19,10 +19,16 @@ public final class oidb_0xd1e$SubCommentCreateRsp
   public final PBRepeatMessageField<oidb_0xd1e.RptData> rpt_data = PBField.initRepeatMessage(oidb_0xd1e.RptData.class);
   public final PBStringField share_url = PBField.initString("");
   public final PBInt32Field sub_comment_id = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 114 }, new String[] { "sub_comment_id", "link_comment_over_times", "link_comment_num", "dirty_word_show_toast", "actual_create_content", "share_url", "rpt_data" }, new Object[] { localInteger, localInteger, localInteger, localInteger, "", "", null }, SubCommentCreateRsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.SubCommentCreateRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,19 @@ class FaceToolbar$1
   
   protected void a(int paramInt, boolean paramBoolean)
   {
-    if (!PtuResChecker.b(paramInt)) {}
-    VideoAppInterface localVideoAppInterface;
-    do
-    {
+    if (!PtuResChecker.b(paramInt)) {
       return;
-      localVideoAppInterface = this.a.mApp;
-    } while (localVideoAppInterface == null);
+    }
+    VideoAppInterface localVideoAppInterface = this.a.mApp;
+    if (localVideoAppInterface == null) {
+      return;
+    }
     localVideoAppInterface.a().postDelayed(new FaceToolbar.1.1(this), 2000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.FaceToolbar.1
  * JD-Core Version:    0.7.0.1
  */

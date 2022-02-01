@@ -32,17 +32,17 @@ class TAVCutVideoSession$1
     this.this$0.renderChainManagers.put(0, paramVideoRenderChainManager);
     this.this$0.tavCompositions.put(0, paramVideoRenderChainManager.getComposition());
     paramMediaBuilderOutput = paramVideoRenderChainManager.getComposition();
-    if (this.this$0.sessionConfig != null) {}
-    for (paramVideoRenderChainManager = this.this$0.sessionConfig.getRenderLayoutMode();; paramVideoRenderChainManager = null)
-    {
-      paramMediaBuilderOutput.setRenderLayoutMode(paramVideoRenderChainManager);
-      return;
+    if (this.this$0.sessionConfig != null) {
+      paramVideoRenderChainManager = this.this$0.sessionConfig.getRenderLayoutMode();
+    } else {
+      paramVideoRenderChainManager = null;
     }
+    paramMediaBuilderOutput.setRenderLayoutMode(paramVideoRenderChainManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutVideoSession.1
  * JD-Core Version:    0.7.0.1
  */

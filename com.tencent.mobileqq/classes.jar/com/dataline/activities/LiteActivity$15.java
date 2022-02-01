@@ -12,21 +12,21 @@ final class LiteActivity$15
   
   public void run()
   {
-    if (ChatBackgroundManager.a(new File(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$GetBackgroundCB.a(null, true);
-    }
-    Bitmap localBitmap;
-    do
+    if (ChatBackgroundManager.a(new File(this.jdField_a_of_type_JavaLangString)))
     {
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$GetBackgroundCB.a(null, true);
       return;
-      localBitmap = BitmapManager.a(this.jdField_a_of_type_JavaLangString);
-    } while (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$GetBackgroundCB == null);
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$GetBackgroundCB.a(localBitmap, false);
+    }
+    Bitmap localBitmap = BitmapManager.a(this.jdField_a_of_type_JavaLangString);
+    LiteActivity.GetBackgroundCB localGetBackgroundCB = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$GetBackgroundCB;
+    if (localGetBackgroundCB != null) {
+      localGetBackgroundCB.a(localBitmap, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.15
  * JD-Core Version:    0.7.0.1
  */

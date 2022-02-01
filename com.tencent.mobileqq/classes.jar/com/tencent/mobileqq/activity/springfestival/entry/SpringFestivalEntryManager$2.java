@@ -24,13 +24,16 @@ class SpringFestivalEntryManager$2
     catch (Throwable localThrowable)
     {
       SpringHbMonitorReporter.a(202, localThrowable, new String[0]);
-      QLog.d("shua2021_SpringFestivalEntryManager", 1, "generateTasksAndLaunch ex. " + localThrowable.getMessage(), localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("generateTasksAndLaunch ex. ");
+      localStringBuilder.append(localThrowable.getMessage());
+      QLog.d("shua2021_SpringFestivalEntryManager", 1, localStringBuilder.toString(), localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager.2
  * JD-Core Version:    0.7.0.1
  */

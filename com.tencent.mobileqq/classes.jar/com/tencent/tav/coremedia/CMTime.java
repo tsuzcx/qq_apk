@@ -29,7 +29,7 @@ public class CMTime
   
   public CMTime(float paramFloat)
   {
-    this((600.0F * paramFloat), 600);
+    this((paramFloat * 600.0F), 600);
   }
   
   public CMTime(long paramLong)
@@ -42,7 +42,7 @@ public class CMTime
     this.value = paramLong;
     this.timeScale = paramInt;
     this.time = ((float)paramLong * 1.0F / paramInt);
-    this.timeUs = (1000000L * paramLong / paramInt);
+    this.timeUs = (paramLong * 1000000L / paramInt);
   }
   
   private CMTime(long paramLong1, int paramInt, float paramFloat, long paramLong2)
@@ -53,22 +53,45 @@ public class CMTime
     this.timeScale = paramInt;
   }
   
+  public static int GCD(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 0) {
+      return paramInt2;
+    }
+    return GCD(paramInt2 % paramInt1, paramInt1);
+  }
+  
+  public static int LCM(int paramInt1, int paramInt2)
+  {
+    return paramInt1 / GCD(paramInt1, paramInt2) * paramInt2;
+  }
+  
   public static CMTime add(CMTime paramCMTime1, CMTime paramCMTime2)
   {
-    if (paramCMTime1 == CMTimeInvalid) {
-      return paramCMTime2.clone();
+    if (paramCMTime1 != null)
+    {
+      CMTime localCMTime = CMTimeInvalid;
+      if (paramCMTime1 != localCMTime)
+      {
+        if ((paramCMTime2 != null) && (paramCMTime2 != localCMTime))
+        {
+          int i = LCM(paramCMTime1.timeScale, paramCMTime2.timeScale);
+          paramCMTime1 = convertTimeScale(paramCMTime1, i);
+          paramCMTime2 = convertTimeScale(paramCMTime2, i);
+          return new CMTime(paramCMTime1.getValue() + paramCMTime2.getValue(), paramCMTime1.timeScale);
+        }
+        return paramCMTime1.clone();
+      }
     }
-    if (paramCMTime2 == CMTimeInvalid) {
-      return paramCMTime1.clone();
-    }
-    paramCMTime2 = convertTimeScale(paramCMTime2, paramCMTime1.timeScale);
-    return new CMTime(paramCMTime1.getValue() + paramCMTime2.getValue(), paramCMTime1.timeScale);
+    return paramCMTime2.clone();
   }
   
   public static CMTime convertTimeScale(@NonNull CMTime paramCMTime, int paramInt)
   {
-    if (paramCMTime == CMTimeInvalid) {
-      return CMTimeInvalid;
+    Utils.a(paramCMTime);
+    CMTime localCMTime = CMTimeInvalid;
+    if (paramCMTime == localCMTime) {
+      return localCMTime;
     }
     if (paramCMTime == CMTimeZero) {
       return new CMTime(0L, paramInt);
@@ -109,14 +132,22 @@ public class CMTime
   
   public static CMTime sub(CMTime paramCMTime1, CMTime paramCMTime2)
   {
-    if (paramCMTime1 == CMTimeInvalid) {
-      return new CMTime(-paramCMTime2.getValue());
+    if (paramCMTime1 != null)
+    {
+      CMTime localCMTime = CMTimeInvalid;
+      if (paramCMTime1 != localCMTime)
+      {
+        if ((paramCMTime2 != null) && (paramCMTime2 != localCMTime))
+        {
+          int i = LCM(paramCMTime1.timeScale, paramCMTime2.timeScale);
+          paramCMTime1 = convertTimeScale(paramCMTime1, i);
+          paramCMTime2 = convertTimeScale(paramCMTime2, i);
+          return new CMTime(paramCMTime1.getValue() - paramCMTime2.getValue(), paramCMTime1.timeScale);
+        }
+        return paramCMTime1.clone();
+      }
     }
-    if (paramCMTime2 == CMTimeInvalid) {
-      return paramCMTime1.clone();
-    }
-    paramCMTime2 = convertTimeScale(paramCMTime2, paramCMTime1.timeScale);
-    return new CMTime(paramCMTime1.getValue() - paramCMTime2.getValue(), paramCMTime1.timeScale);
+    return new CMTime(-paramCMTime2.getValue());
   }
   
   public CMTime add(long paramLong)
@@ -124,44 +155,19 @@ public class CMTime
     if (this == CMTimeInvalid) {
       return clone();
     }
-    return new CMTime(getValue() + this.timeScale * paramLong / TimeUnit.SECONDS.toMicros(1L), this.timeScale);
+    return new CMTime(getValue() + paramLong * this.timeScale / TimeUnit.SECONDS.toMicros(1L), this.timeScale);
   }
   
   public CMTime add(CMTime paramCMTime)
   {
-    if (this == CMTimeInvalid) {
-      return paramCMTime.clone();
-    }
-    if (paramCMTime == CMTimeInvalid) {
-      return clone();
-    }
-    int j = this.timeScale;
-    int i;
-    CMTime localCMTime1;
-    CMTime localCMTime2;
-    if (this.timeScale < paramCMTime.timeScale)
-    {
-      i = paramCMTime.timeScale;
-      localCMTime1 = convertTimeScale(this, i);
-      localCMTime2 = paramCMTime;
-    }
-    for (;;)
-    {
-      return new CMTime(localCMTime1.getValue() + localCMTime2.getValue(), i);
-      i = j;
-      localCMTime1 = this;
-      localCMTime2 = paramCMTime;
-      if (this.timeScale > paramCMTime.timeScale)
-      {
-        localCMTime2 = convertTimeScale(paramCMTime, j);
-        i = j;
-        localCMTime1 = this;
-      }
-    }
+    return add(this, paramCMTime);
   }
   
   public boolean bigThan(CMTime paramCMTime)
   {
+    if (paramCMTime == null) {
+      return true;
+    }
     return getTimeUs() > paramCMTime.getTimeUs();
   }
   
@@ -172,6 +178,9 @@ public class CMTime
   
   public int compare(CMTime paramCMTime)
   {
+    if (paramCMTime == null) {
+      return 1;
+    }
     long l = getTimeUs() - paramCMTime.getTimeUs();
     if (l > 0L) {
       return 1;
@@ -184,53 +193,51 @@ public class CMTime
   
   public CMTime divide(float paramFloat)
   {
-    if (this == CMTimeInvalid) {
-      return CMTimeInvalid;
+    CMTime localCMTime = CMTimeInvalid;
+    if (this == localCMTime) {
+      return localCMTime;
     }
     return new CMTime(((float)getValue() / paramFloat), this.timeScale);
   }
   
   public CMTime divide(CMTime paramCMTime)
   {
-    int j = this.timeScale;
-    int i;
-    CMTime localCMTime1;
-    CMTime localCMTime2;
-    if (this.timeScale < paramCMTime.timeScale)
-    {
-      i = paramCMTime.timeScale;
-      localCMTime1 = convertTimeScale(this, i);
-      localCMTime2 = paramCMTime;
-    }
-    for (;;)
-    {
-      return new CMTime(localCMTime1.getValue() / localCMTime2.getValue(), i);
-      i = j;
-      localCMTime1 = this;
-      localCMTime2 = paramCMTime;
-      if (this.timeScale > paramCMTime.timeScale)
-      {
-        localCMTime2 = convertTimeScale(paramCMTime, j);
-        i = j;
-        localCMTime1 = this;
-      }
-    }
+    int i = LCM(this.timeScale, paramCMTime.timeScale);
+    CMTime localCMTime = convertTimeScale(this, i);
+    paramCMTime = convertTimeScale(paramCMTime, i);
+    return new CMTime(localCMTime.value / paramCMTime.value, i);
   }
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof CMTime)) {
+    boolean bool1 = paramObject instanceof CMTime;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
-    if ((this.value == ((CMTime)paramObject).value) && (this.timeScale == ((CMTime)paramObject).timeScale)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    long l = this.value;
+    paramObject = (CMTime)paramObject;
+    bool1 = bool2;
+    if (l == paramObject.value)
+    {
+      bool1 = bool2;
+      if (this.timeScale == paramObject.timeScale) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   public boolean equalsTo(CMTime paramCMTime)
   {
-    return getTimeUs() == paramCMTime.getTimeUs();
+    boolean bool = false;
+    if (paramCMTime == null) {
+      return false;
+    }
+    if (getTimeUs() == paramCMTime.getTimeUs()) {
+      bool = true;
+    }
+    return bool;
   }
   
   public int getTimeScale()
@@ -255,6 +262,7 @@ public class CMTime
   
   public CMTime limitMax(@NonNull CMTime paramCMTime)
   {
+    Utils.a(paramCMTime);
     if (bigThan(paramCMTime)) {
       return paramCMTime;
     }
@@ -263,6 +271,7 @@ public class CMTime
   
   public CMTime limitMin(@NonNull CMTime paramCMTime)
   {
+    Utils.a(paramCMTime);
     if (smallThan(paramCMTime)) {
       return paramCMTime;
     }
@@ -271,85 +280,59 @@ public class CMTime
   
   public CMTime multi(float paramFloat)
   {
-    if (this == CMTimeInvalid) {
-      return CMTimeInvalid;
+    CMTime localCMTime = CMTimeInvalid;
+    if (this == localCMTime) {
+      return localCMTime;
     }
     return new CMTime(((float)getValue() * paramFloat), this.timeScale);
   }
   
   public CMTime multi(CMTime paramCMTime)
   {
-    int j = this.timeScale;
-    int i;
-    CMTime localCMTime1;
-    CMTime localCMTime2;
-    if (this.timeScale < paramCMTime.timeScale)
+    CMTime localCMTime = CMTimeInvalid;
+    if ((this != localCMTime) && (paramCMTime != null) && (paramCMTime != localCMTime))
     {
-      i = paramCMTime.timeScale;
-      localCMTime1 = convertTimeScale(this, i);
-      localCMTime2 = paramCMTime;
+      int i = LCM(this.timeScale, paramCMTime.timeScale);
+      localCMTime = convertTimeScale(this, i);
+      paramCMTime = convertTimeScale(paramCMTime, i);
+      return new CMTime(localCMTime.value * paramCMTime.value, i);
     }
-    for (;;)
-    {
-      return new CMTime(localCMTime1.value * localCMTime2.value, i);
-      i = j;
-      localCMTime1 = this;
-      localCMTime2 = paramCMTime;
-      if (this.timeScale > paramCMTime.timeScale)
-      {
-        localCMTime2 = convertTimeScale(paramCMTime, j);
-        i = j;
-        localCMTime1 = this;
-      }
-    }
+    return CMTimeZero;
   }
   
   public boolean smallThan(CMTime paramCMTime)
   {
-    return getTimeUs() < paramCMTime.getTimeUs();
+    boolean bool = false;
+    if (paramCMTime == null) {
+      return false;
+    }
+    if (getTimeUs() < paramCMTime.getTimeUs()) {
+      bool = true;
+    }
+    return bool;
   }
   
   public CMTime sub(CMTime paramCMTime)
   {
-    if (this == CMTimeInvalid) {
-      return new CMTime(-paramCMTime.getValue());
-    }
-    if (paramCMTime == CMTimeInvalid) {
-      return clone();
-    }
-    int j = this.timeScale;
-    int i;
-    CMTime localCMTime1;
-    CMTime localCMTime2;
-    if (this.timeScale < paramCMTime.timeScale)
-    {
-      i = paramCMTime.timeScale;
-      localCMTime1 = convertTimeScale(this, i);
-      localCMTime2 = paramCMTime;
-    }
-    for (;;)
-    {
-      return new CMTime(localCMTime1.getValue() - localCMTime2.getValue(), i);
-      i = j;
-      localCMTime1 = this;
-      localCMTime2 = paramCMTime;
-      if (this.timeScale > paramCMTime.timeScale)
-      {
-        localCMTime2 = convertTimeScale(paramCMTime, j);
-        i = j;
-        localCMTime1 = this;
-      }
-    }
+    return sub(this, paramCMTime);
   }
   
   public String toString()
   {
-    return "[value = " + this.value + " timeScale = " + this.timeScale + " timeUs = " + this.timeUs + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[value = ");
+    localStringBuilder.append(this.value);
+    localStringBuilder.append(" timeScale = ");
+    localStringBuilder.append(this.timeScale);
+    localStringBuilder.append(" timeUs = ");
+    localStringBuilder.append(this.timeUs);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMTime
  * JD-Core Version:    0.7.0.1
  */

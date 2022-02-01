@@ -3,34 +3,35 @@ package com.huawei.hms.common.internal;
 import android.content.Context;
 import com.huawei.hms.api.Api;
 import com.huawei.hms.api.Api.ApiOptions;
+import java.lang.ref.WeakReference;
 
 public class ConnectionManagerKey<TOption extends Api.ApiOptions>
 {
-  private final Api<TOption> a;
-  private final TOption b;
-  private final boolean c;
-  private final int d;
-  private final String e;
-  private final Context f;
+  private final Api<TOption> mApi;
+  private final WeakReference<Context> mContextRef;
+  private final int mHashKey;
+  private final boolean mHaveOption;
+  private final TOption mOption;
+  private final String subAppId;
   
   private ConnectionManagerKey(Context paramContext, Api<TOption> paramApi, TOption paramTOption, String paramString)
   {
-    this.c = false;
-    this.f = paramContext;
-    this.a = paramApi;
-    this.b = paramTOption;
-    this.d = Objects.hashCode(new Object[] { this.f, this.a, this.b });
-    this.e = paramString;
+    this.mHaveOption = false;
+    this.mContextRef = new WeakReference(paramContext);
+    this.mApi = paramApi;
+    this.mOption = paramTOption;
+    this.mHashKey = Objects.hashCode(new Object[] { this.mContextRef.get(), this.mApi, this.mOption });
+    this.subAppId = paramString;
   }
   
   private ConnectionManagerKey(Api<TOption> paramApi, String paramString)
   {
-    this.c = true;
-    this.a = paramApi;
-    this.b = null;
-    this.d = System.identityHashCode(this);
-    this.e = paramString;
-    this.f = null;
+    this.mHaveOption = true;
+    this.mApi = paramApi;
+    this.mOption = null;
+    this.mHashKey = System.identityHashCode(this);
+    this.subAppId = paramString;
+    this.mContextRef = null;
   }
   
   public static <TOption extends Api.ApiOptions> ConnectionManagerKey<TOption> createConnectionManagerKey(Context paramContext, Api<TOption> paramApi, TOption paramTOption, String paramString)
@@ -45,26 +46,30 @@ public class ConnectionManagerKey<TOption extends Api.ApiOptions>
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
-    {
+    if (paramObject == this) {
       return true;
-      if (!(paramObject instanceof ConnectionManagerKey)) {
-        return false;
-      }
-      paramObject = (ConnectionManagerKey)paramObject;
-    } while ((this.c == paramObject.c) && (Objects.equal(this.a, paramObject.a)) && (Objects.equal(this.b, paramObject.b)) && (Objects.equal(this.e, paramObject.e)) && (Objects.equal(this.f, paramObject.f)));
+    }
+    if (!(paramObject instanceof ConnectionManagerKey)) {
+      return false;
+    }
+    paramObject = (ConnectionManagerKey)paramObject;
+    if ((this.mContextRef != null) && (paramObject.mContextRef != null)) {
+      return (this.mHaveOption == paramObject.mHaveOption) && (Objects.equal(this.mApi, paramObject.mApi)) && (Objects.equal(this.mOption, paramObject.mOption)) && (Objects.equal(this.subAppId, paramObject.subAppId)) && (Objects.equal(this.mContextRef.get(), paramObject.mContextRef.get()));
+    }
+    if ((this.mContextRef == null) && (paramObject.mContextRef == null)) {
+      return (this.mHaveOption == paramObject.mHaveOption) && (Objects.equal(this.mApi, paramObject.mApi)) && (Objects.equal(this.mOption, paramObject.mOption)) && (Objects.equal(this.subAppId, paramObject.subAppId));
+    }
     return false;
   }
   
   public final int hashCode()
   {
-    return this.d;
+    return this.mHashKey;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.ConnectionManagerKey
  * JD-Core Version:    0.7.0.1
  */

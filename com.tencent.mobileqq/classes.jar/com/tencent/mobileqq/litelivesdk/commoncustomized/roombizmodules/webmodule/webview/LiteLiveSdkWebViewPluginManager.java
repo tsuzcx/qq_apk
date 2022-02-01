@@ -10,29 +10,31 @@ public class LiteLiveSdkWebViewPluginManager
   
   public static LiteLiveSdkWebViewPluginManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewPluginManager == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewPluginManager == null) {
-        jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewPluginManager = new LiteLiveSdkWebViewPluginManager();
+    if (jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewPluginManager == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewPluginManager == null) {
+          jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewPluginManager = new LiteLiveSdkWebViewPluginManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewPluginManager;
     }
+    return jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewPluginManager;
   }
   
   public LiteLiveSdkWebViewRuntime a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewRuntime == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewRuntime == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewRuntime == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
       {
-        LiteLiveSdkWebViewRuntime localLiteLiveSdkWebViewRuntime = new LiteLiveSdkWebViewRuntime(BaseApplicationImpl.getApplication(), "LiteLiveSdk");
-        localLiteLiveSdkWebViewRuntime.onCreate(null);
-        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewRuntime = localLiteLiveSdkWebViewRuntime;
+        if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewRuntime == null)
+        {
+          LiteLiveSdkWebViewRuntime localLiteLiveSdkWebViewRuntime = new LiteLiveSdkWebViewRuntime(BaseApplicationImpl.getApplication(), "LiteLiveSdk");
+          localLiteLiveSdkWebViewRuntime.onCreate(null);
+          this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewRuntime = localLiteLiveSdkWebViewRuntime;
+        }
       }
-      return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewRuntime;
     }
+    return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewRuntime;
   }
   
   public void a(LiteLiveSdkWebViewRuntime paramLiteLiveSdkWebViewRuntime)
@@ -42,7 +44,7 @@ public class LiteLiveSdkWebViewPluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.webview.LiteLiveSdkWebViewPluginManager
  * JD-Core Version:    0.7.0.1
  */

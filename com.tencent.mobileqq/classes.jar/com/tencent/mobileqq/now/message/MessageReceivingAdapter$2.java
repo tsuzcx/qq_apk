@@ -16,13 +16,15 @@ class MessageReceivingAdapter$2
   
   public boolean onClick(View paramView)
   {
-    j = 0;
     NowQQLiveDataReport.b(this.jdField_a_of_type_Int + 1, ChatMessageHelper.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp), "1");
     paramView = ChatMessageHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-    if (TextUtils.isEmpty(paramView)) {
+    boolean bool = TextUtils.isEmpty(paramView);
+    int j = 0;
+    if (bool) {
       return false;
     }
     paramView = UrlUtil.a(UrlUtil.a(paramView, "fromid", String.valueOf(60013)), "startsrc", String.valueOf(60013));
+    int i;
     try
     {
       String str = UrlUtil.a(paramView, "roomid");
@@ -33,19 +35,19 @@ class MessageReceivingAdapter$2
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("MessageReceivingAdapter", 4, localException, new Object[0]);
-        int i = j;
-      }
+      QLog.e("MessageReceivingAdapter", 4, localException, new Object[0]);
+      i = j;
     }
-    Log.i("MessageReceivingAdapter", "jumpUrl = " + paramView);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("jumpUrl = ");
+    localStringBuilder.append(paramView);
+    Log.i("MessageReceivingAdapter", localStringBuilder.toString());
     return NowRoomUtil.a(MessageReceivingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter), paramView, i, 60012);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.MessageReceivingAdapter.2
  * JD-Core Version:    0.7.0.1
  */

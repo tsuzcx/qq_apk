@@ -15,23 +15,21 @@ class CalloutPopupWindow$InnerHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
+    if (paramMessage.what != 1) {
+      return;
     }
-    do
+    if (paramMessage.obj != null)
     {
-      do
-      {
-        return;
-      } while (paramMessage.obj == null);
       paramMessage = ((WeakReference)paramMessage.obj).get();
-    } while ((paramMessage == null) || (!(paramMessage instanceof CalloutPopupWindow)));
-    ((CalloutPopupWindow)paramMessage).dismiss();
+      if ((paramMessage != null) && ((paramMessage instanceof CalloutPopupWindow))) {
+        ((CalloutPopupWindow)paramMessage).dismiss();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.InnerHandler
  * JD-Core Version:    0.7.0.1
  */

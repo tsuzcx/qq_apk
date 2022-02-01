@@ -23,31 +23,33 @@ public class AudioInfo
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
     this.c = paramString3;
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
-    for (this.g = 0;; this.g = 3)
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      this.f = 0;
+    } else {
+      this.f = 3;
+    }
+    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-      try
+      this.jdField_a_of_type_OrgJsonJSONObject.put("type", "voice");
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("path", this.jdField_a_of_type_JavaLangString);
+      }
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
+      }
+      if (this.jdField_a_of_type_Int > 0) {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("time", this.jdField_a_of_type_Int);
+      }
+      if (this.jdField_b_of_type_Int > 0)
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("type", "voice");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("path", this.jdField_a_of_type_JavaLangString);
-        }
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
-        }
-        if (this.jdField_a_of_type_Int > 0) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("time", this.jdField_a_of_type_Int);
-        }
-        if (this.jdField_b_of_type_Int > 0) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("size", this.jdField_b_of_type_Int);
-        }
+        this.jdField_a_of_type_OrgJsonJSONObject.put("size", this.jdField_b_of_type_Int);
         return;
       }
-      catch (JSONException paramString1)
-      {
-        paramString1.printStackTrace();
-      }
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
     }
   }
   
@@ -62,6 +64,20 @@ public class AudioInfo
     return 0;
   }
   
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("path", paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
   public void a(JSONObject paramJSONObject)
   {
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
@@ -71,10 +87,10 @@ public class AudioInfo
     this.jdField_b_of_type_Int = paramJSONObject.optInt("size");
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      this.g = 0;
+      this.f = 0;
       return;
     }
-    this.g = 3;
+    this.f = 3;
   }
   
   public boolean a()
@@ -89,43 +105,26 @@ public class AudioInfo
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = paramString;
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("path", paramString);
-      return;
+      this.jdField_a_of_type_OrgJsonJSONObject.put("url", paramString);
     }
     catch (JSONException paramString)
     {
       paramString.printStackTrace();
     }
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    try
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("url", paramString);
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-      {
-        this.g = 0;
-        return;
-      }
+      this.f = 0;
+      return;
     }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-      this.g = 3;
-    }
+    this.f = 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo
  * JD-Core Version:    0.7.0.1
  */

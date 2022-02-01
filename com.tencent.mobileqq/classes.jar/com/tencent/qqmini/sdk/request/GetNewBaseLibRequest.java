@@ -52,47 +52,50 @@ public class GetNewBaseLibRequest
     try
     {
       localStGetNewBaseLibRsp.mergeFrom(paramArrayOfByte);
-      if (localStGetNewBaseLibRsp == null) {
-        break label325;
-      }
       int i = localStGetNewBaseLibRsp.interval.get();
-      QMLog.i("GetNewBaseLibRequest", "[MiniEng] GetNewBaseLib interval:" + i);
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("[MiniEng] GetNewBaseLib interval:");
+      paramArrayOfByte.append(i);
+      QMLog.i("GetNewBaseLibRequest", paramArrayOfByte.toString());
       long l1 = i * 1000;
       long l2 = System.currentTimeMillis();
       StorageUtil.getPreference().edit().putLong("baselib_min_update_time", l1 + l2).apply();
       paramArrayOfByte = localStGetNewBaseLibRsp.jsOrsoLibs.get().iterator();
       while (paramArrayOfByte.hasNext())
       {
-        INTERFACE.StBaseLibInfo localStBaseLibInfo = (INTERFACE.StBaseLibInfo)paramArrayOfByte.next();
+        Object localObject = (INTERFACE.StBaseLibInfo)paramArrayOfByte.next();
         BaseLibInfo localBaseLibInfo = new BaseLibInfo();
-        localBaseLibInfo.baseLibUrl = localStBaseLibInfo.downloadUrl.get();
-        localBaseLibInfo.baseLibVersion = localStBaseLibInfo.version.get();
+        localBaseLibInfo.baseLibUrl = ((INTERFACE.StBaseLibInfo)localObject).downloadUrl.get();
+        localBaseLibInfo.baseLibVersion = ((INTERFACE.StBaseLibInfo)localObject).version.get();
         localBaseLibInfo.baseLibKey = null;
-        localBaseLibInfo.baseLibDesc = localStBaseLibInfo.extInfo.get();
+        localBaseLibInfo.baseLibDesc = ((INTERFACE.StBaseLibInfo)localObject).extInfo.get();
         if (TextUtils.isEmpty(localBaseLibInfo.baseLibDesc)) {
           localBaseLibInfo.baseLibDesc = "{'file_length':-1}";
         }
-        localBaseLibInfo.baseLibType = localStBaseLibInfo.libType.get();
+        localBaseLibInfo.baseLibType = ((INTERFACE.StBaseLibInfo)localObject).libType.get();
         paramJSONObject.put(localBaseLibInfo.getKey(), localBaseLibInfo.toJSONObject());
-        QMLog.i("GetNewBaseLibRequest", "[MiniEng] GetNewBaseLib " + localBaseLibInfo);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[MiniEng] GetNewBaseLib ");
+        ((StringBuilder)localObject).append(localBaseLibInfo);
+        QMLog.i("GetNewBaseLibRequest", ((StringBuilder)localObject).toString());
       }
       paramJSONObject.put("version", localStGetNewBaseLibRsp.libInfo.version.get());
+      paramJSONObject.put("downloadUrl", localStGetNewBaseLibRsp.libInfo.downloadUrl.get());
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("GetNewBaseLibRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("GetNewBaseLibRequest", paramJSONObject.toString());
     }
-    paramJSONObject.put("downloadUrl", localStGetNewBaseLibRsp.libInfo.downloadUrl.get());
-    return paramJSONObject;
-    label325:
-    QMLog.d("GetNewBaseLibRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetNewBaseLibRequest
  * JD-Core Version:    0.7.0.1
  */

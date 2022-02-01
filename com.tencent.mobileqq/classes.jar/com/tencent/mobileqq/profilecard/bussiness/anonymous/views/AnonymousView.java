@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.profilecard.bussiness.anonymous.views;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,19 +12,18 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.avatar.api.IQQAvatarService;
 import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.profilecard.base.view.ProfileContentTitleView;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.bean.AnonymousQuestion;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.constant.AnonymousConstant;
-import com.tencent.mobileqq.profilecard.bussiness.anonymous.manager.AnonymousRedPointUtils;
+import com.tencent.mobileqq.profilecard.bussiness.anonymous.utils.AnonymousRedPointUtils;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.utils.AnonymousViewHelper;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.BaseImageUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class AnonymousView
   public static final String TAG = "AnonymousView";
   private AnonymousView.AnonymousAdapter anonymousAdapter;
   private List<AnonymousQuestion> anonymousInfoList = new ArrayList();
-  public QQAppInterface appInterface;
+  public AppInterface appInterface;
   private boolean isTheme;
   private IFaceDecoder mFaceDecoder;
   private int randomHeadBgIndex;
@@ -68,7 +68,7 @@ public class AnonymousView
     this.recyclerView = new RecyclerView(getContext());
     this.anonymousAdapter = new AnonymousView.AnonymousAdapter(this);
     this.recyclerView.setLayoutManager(localLinearLayoutManager);
-    int i = AIOUtils.a(12.0F, getContext().getResources());
+    int i = Utils.a(12.0F, getContext().getResources());
     this.recyclerView.addItemDecoration(new AnonymousView.SpacesItemDecoration(i, 0));
     this.recyclerView.setAdapter(this.anonymousAdapter);
     scrollEventListener();
@@ -105,88 +105,92 @@ public class AnonymousView
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    return ImageUtil.c();
+    return BaseImageUtil.f();
   }
   
-  public void init()
+  protected void init()
   {
     super.init();
     initViews();
   }
   
-  public void initData(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString)
+  public void initData(AppInterface paramAppInterface, boolean paramBoolean, String paramString)
   {
-    this.appInterface = paramQQAppInterface;
+    this.appInterface = paramAppInterface;
     this.isTheme = paramBoolean;
     this.uin = paramString;
-    this.mFaceDecoder = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
+    this.mFaceDecoder = ((IQQAvatarService)paramAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramAppInterface);
     this.mFaceDecoder.setDecodeTaskCompletionListener(this);
-    this.randomHeadBgIndex = ((int)(Math.random() * AnonymousConstant.headBgColor.length));
+    double d1 = Math.random();
+    double d2 = AnonymousConstant.HEAD_BG_COLOR.length;
+    Double.isNaN(d2);
+    this.randomHeadBgIndex = ((int)(d1 * d2));
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i == 2131378823)
     {
+      clearRedPoint();
+      AnonymousViewHelper.jumpToQuestionListAndAnswer((Activity)this.mContext, this.uin, 1);
+      ReportController.b(null, "dc00898", "", "", "0X800B46C", "0X800B46C", 0, 0, "", "", "", "");
     }
-    for (;;)
+    else if (i == 2131374143)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       clearRedPoint();
-      AnonymousViewHelper.jumpToQuestionListAndAnswer((BaseActivity)this.mContext, this.uin, 1);
+      AnonymousViewHelper.jumpToQuestionListAndAnswer((Activity)this.mContext, this.uin, 2);
       ReportController.b(null, "dc00898", "", "", "0X800B46C", "0X800B46C", 0, 0, "", "", "", "");
-      continue;
+    }
+    else if (i == 2131374145)
+    {
       clearRedPoint();
-      AnonymousViewHelper.jumpToQuestionListAndAnswer((BaseActivity)this.mContext, this.uin, 2);
-      ReportController.b(null, "dc00898", "", "", "0X800B46C", "0X800B46C", 0, 0, "", "", "", "");
-      continue;
-      clearRedPoint();
-      AnonymousViewHelper.jumpToReqFriendAskQuestion((BaseActivity)this.mContext);
+      AnonymousViewHelper.jumpToReqFriendAskQuestion((Activity)this.mContext);
       ReportController.b(null, "dc00898", "", "", "0X800B46D", "0X800B46D", 0, 0, "", "", "", "");
-      continue;
+    }
+    else if (i == 2131374144)
+    {
       clearRedPoint();
-      AnonymousViewHelper.jumpToQuestionListAndAnswer((BaseActivity)this.mContext, this.uin, 3);
+      AnonymousViewHelper.jumpToQuestionListAndAnswer((Activity)this.mContext, this.uin, 3);
       ReportController.b(null, "dc00898", "", this.uin, "0X800B473", "0X800B473", 0, 0, "", "", "", "");
-      continue;
+    }
+    else if ((i == 2131374169) || (i == 2131374168))
+    {
       clearRedPoint();
-      AnonymousViewHelper.jumpToAskQuestion((BaseActivity)this.mContext, this.uin, 6);
+      AnonymousViewHelper.jumpToAskQuestion((Activity)this.mContext, this.uin, 6);
       ReportController.b(null, "dc00898", "", "", "0X800B472", "0X800B472", 0, 0, "", "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
     paramInt2 = this.recyclerView.getChildCount();
     paramInt1 = 0;
-    for (;;)
+    while (paramInt1 < paramInt2)
     {
-      Object localObject;
-      int i;
-      if (paramInt1 < paramInt2)
+      Object localObject = this.recyclerView.getChildAt(paramInt1);
+      localObject = this.recyclerView.getChildViewHolder((View)localObject);
+      if ((localObject instanceof AnonymousView.ListViewHolder))
       {
-        localObject = this.recyclerView.getChildAt(paramInt1);
-        localObject = this.recyclerView.getChildViewHolder((View)localObject);
-        if (!(localObject instanceof AnonymousView.ListViewHolder)) {
-          break label123;
+        int i = ((RecyclerView.ViewHolder)localObject).getAdapterPosition();
+        if (i >= 0)
+        {
+          if (i >= this.anonymousInfoList.size()) {
+            return;
+          }
+          AnonymousQuestion localAnonymousQuestion = (AnonymousQuestion)this.anonymousInfoList.get(i);
+          if ((localAnonymousQuestion != null) && (localAnonymousQuestion.mOwnerUin == Long.parseLong(paramString)) && (paramBitmap != null)) {
+            ((AnonymousView.ListViewHolder)localObject).ivAnswer.setImageBitmap(paramBitmap);
+          }
         }
-        i = ((RecyclerView.ViewHolder)localObject).getAdapterPosition();
-        if ((i >= 0) && (i < this.anonymousInfoList.size())) {}
+        else
+        {
+          return;
+        }
       }
-      else
-      {
-        return;
-      }
-      AnonymousQuestion localAnonymousQuestion = (AnonymousQuestion)this.anonymousInfoList.get(i);
-      if ((localAnonymousQuestion != null) && (localAnonymousQuestion.mOwnerUin == Long.parseLong(paramString)) && (paramBitmap != null)) {
-        ((AnonymousView.ListViewHolder)localObject).ivAnswer.setImageBitmap(paramBitmap);
-      }
-      label123:
       paramInt1 += 1;
     }
   }
@@ -202,7 +206,7 @@ public class AnonymousView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView
  * JD-Core Version:    0.7.0.1
  */

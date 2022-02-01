@@ -14,28 +14,31 @@ public class JobExecutor$OnDataInitBeforePrepareCallBack
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.a(true);
+    ShareModeBase localShareModeBase = this.a;
+    if (localShareModeBase != null) {
+      localShareModeBase.a(true);
     }
   }
   
   public void b()
   {
-    if (this.a != null) {
-      this.a.a(false);
+    ShareModeBase localShareModeBase = this.a;
+    if (localShareModeBase != null) {
+      localShareModeBase.a(false);
     }
   }
   
   public void c()
   {
-    if (this.a != null) {
-      this.a.e(null);
+    ShareModeBase localShareModeBase = this.a;
+    if (localShareModeBase != null) {
+      localShareModeBase.e(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.JobExecutor.OnDataInitBeforePrepareCallBack
  * JD-Core Version:    0.7.0.1
  */

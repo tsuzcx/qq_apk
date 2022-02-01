@@ -84,20 +84,20 @@ public final class OperatorReplay<T>
       localReplaySubscriber1 = new OperatorReplay.ReplaySubscriber(this.current, (OperatorReplay.ReplayBuffer)this.bufferFactory.call());
       localReplaySubscriber1.init();
     } while (!this.current.compareAndSet(localReplaySubscriber2, localReplaySubscriber1));
-    if ((!localReplaySubscriber1.shouldConnect.get()) && (localReplaySubscriber1.shouldConnect.compareAndSet(false, true))) {}
-    for (int i = 1;; i = 0)
-    {
-      paramAction1.call(localReplaySubscriber1);
-      if (i != 0) {
-        this.source.unsafeSubscribe(localReplaySubscriber1);
-      }
-      return;
+    boolean bool = localReplaySubscriber1.shouldConnect.get();
+    int i = 1;
+    if ((bool) || (!localReplaySubscriber1.shouldConnect.compareAndSet(false, true))) {
+      i = 0;
+    }
+    paramAction1.call(localReplaySubscriber1);
+    if (i != 0) {
+      this.source.unsafeSubscribe(localReplaySubscriber1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorReplay
  * JD-Core Version:    0.7.0.1
  */

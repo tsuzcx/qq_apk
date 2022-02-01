@@ -11,28 +11,31 @@ class SimpleHttpInterfaceTransfer$6
   
   public void onFail(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback != null) {
-      this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback.onFail(paramInt);
+    SimpleCoreDownloadCallback localSimpleCoreDownloadCallback = this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback;
+    if (localSimpleCoreDownloadCallback != null) {
+      localSimpleCoreDownloadCallback.onFail(paramInt);
     }
   }
   
   public void onProgress(long paramLong1, long paramLong2, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback != null) {
-      this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback.onProgress(paramLong1, paramLong2, paramInt);
+    SimpleCoreDownloadCallback localSimpleCoreDownloadCallback = this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback;
+    if (localSimpleCoreDownloadCallback != null) {
+      localSimpleCoreDownloadCallback.onProgress(paramLong1, paramLong2, paramInt);
     }
   }
   
   public void onSuccess(File paramFile)
   {
-    if (this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback != null) {
-      this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback.onSuccess(paramFile);
+    SimpleCoreDownloadCallback localSimpleCoreDownloadCallback = this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback;
+    if (localSimpleCoreDownloadCallback != null) {
+      localSimpleCoreDownloadCallback.onSuccess(paramFile);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.SimpleHttpInterfaceTransfer.6
  * JD-Core Version:    0.7.0.1
  */

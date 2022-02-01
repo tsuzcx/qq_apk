@@ -18,34 +18,34 @@ final class MayKnowAdapter$MyFriendListObserver
     this.a = new WeakReference(paramMayKnowAdapter);
   }
   
-  public void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    MayKnowAdapter localMayKnowAdapter;
     if (paramBoolean)
     {
-      localMayKnowAdapter = (MayKnowAdapter)this.a.get();
-      if (localMayKnowAdapter == null) {
-        break label71;
+      MayKnowAdapter localMayKnowAdapter = (MayKnowAdapter)this.a.get();
+      if (localMayKnowAdapter != null)
+      {
+        paramString = MayKnowAdapter.a(localMayKnowAdapter, paramString);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onCancelMayKnowRecommend target：");
+          localStringBuilder.append(paramString);
+          QLog.d("MayKnowAdapter", 2, localStringBuilder.toString());
+        }
+        if (paramString != null)
+        {
+          MayKnowAdapter.a(localMayKnowAdapter, paramString);
+          return;
+        }
+        MayKnowAdapter.a(localMayKnowAdapter);
+        return;
       }
-      paramString = MayKnowAdapter.a(localMayKnowAdapter, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("MayKnowAdapter", 2, "onCancelMayKnowRecommend target：" + paramString);
-      }
-      if (paramString != null) {
-        MayKnowAdapter.a(localMayKnowAdapter, paramString);
-      }
+      QLog.d("MayKnowAdapter", 1, "onCancelMayKnowRecommend  adapter is null!");
     }
-    else
-    {
-      return;
-    }
-    MayKnowAdapter.a(localMayKnowAdapter);
-    return;
-    label71:
-    QLog.d("MayKnowAdapter", 1, "onCancelMayKnowRecommend  adapter is null!");
   }
   
-  public void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
   {
     if (paramBoolean)
     {
@@ -56,16 +56,13 @@ final class MayKnowAdapter$MyFriendListObserver
           QLog.d("MayKnowAdapter", 2, "onGetMayKnowRecommend ");
         }
         MayKnowAdapter.a(paramBundle);
+        return;
       }
+      QLog.d("MayKnowAdapter", 1, "onGetMayKnowRecommend adapter is null!");
     }
-    else
-    {
-      return;
-    }
-    QLog.d("MayKnowAdapter", 1, "onGetMayKnowRecommend adapter is null!");
   }
   
-  public void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
   {
     super.onMayKnowListPushAdd(paramBoolean, paramList);
     if (QLog.isColorLevel()) {
@@ -74,18 +71,16 @@ final class MayKnowAdapter$MyFriendListObserver
     if (paramBoolean)
     {
       paramList = (MayKnowAdapter)this.a.get();
-      if (paramList != null) {
+      if (paramList != null)
+      {
         MayKnowAdapter.a(paramList);
+        return;
       }
+      QLog.d("MayKnowAdapter", 1, "onMayKnowListPushAdd adapter is null!");
     }
-    else
-    {
-      return;
-    }
-    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushAdd adapter is null!");
   }
   
-  public void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
   {
     super.onMayKnowListPushDel(paramBoolean, paramList);
     if (QLog.isColorLevel()) {
@@ -94,42 +89,40 @@ final class MayKnowAdapter$MyFriendListObserver
     if (paramBoolean)
     {
       paramList = (MayKnowAdapter)this.a.get();
-      if (paramList != null) {
+      if (paramList != null)
+      {
         MayKnowAdapter.a(paramList);
+        return;
       }
+      QLog.d("MayKnowAdapter", 1, "onMayKnowListPushDel adapter is null!");
     }
-    else
-    {
-      return;
-    }
-    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushDel adapter is null!");
   }
   
-  public void onMayknowStateChanged(boolean paramBoolean)
+  protected void onMayknowStateChanged(boolean paramBoolean)
   {
     if (paramBoolean)
     {
       MayKnowAdapter localMayKnowAdapter = (MayKnowAdapter)this.a.get();
-      if (localMayKnowAdapter == null) {
-        break label60;
-      }
-      if (MayKnowAdapter.a(localMayKnowAdapter) != null)
+      if (localMayKnowAdapter != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MayKnowAdapter", 2, "onMayknowStateChanged");
+        if (MayKnowAdapter.a(localMayKnowAdapter) != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MayKnowAdapter", 2, "onMayknowStateChanged");
+          }
+          localMayKnowAdapter.notifyDataSetChanged();
+          MayKnowAdapter.a(localMayKnowAdapter).postDelayed(localMayKnowAdapter.a, 1600L);
         }
-        localMayKnowAdapter.notifyDataSetChanged();
-        MayKnowAdapter.a(localMayKnowAdapter).postDelayed(localMayKnowAdapter.a, 1600L);
+      }
+      else {
+        QLog.d("MayKnowAdapter", 1, "onMayknowStateChanged adapter is null!");
       }
     }
-    return;
-    label60:
-    QLog.d("MayKnowAdapter", 1, "onMayknowStateChanged adapter is null!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.MayKnowAdapter.MyFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

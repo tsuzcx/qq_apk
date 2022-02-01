@@ -31,19 +31,29 @@ public class QzoneGiftManager$GiftData
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      QLog.e("QzoneGiftManager", 1, "handleFlashChatConfig failed" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFlashChatConfig failed");
+      localStringBuilder.append(paramString);
+      QLog.e("QzoneGiftManager", 1, localStringBuilder.toString());
     }
     return localGiftData;
   }
   
   public String toString()
   {
-    return " mBoxZipUrl = " + this.jdField_a_of_type_JavaLangString + " mGiftZipUrl = " + this.b + " mGiftUrl = " + this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" mBoxZipUrl = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mGiftZipUrl = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" mGiftUrl = ");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.QzoneGiftManager.GiftData
  * JD-Core Version:    0.7.0.1
  */

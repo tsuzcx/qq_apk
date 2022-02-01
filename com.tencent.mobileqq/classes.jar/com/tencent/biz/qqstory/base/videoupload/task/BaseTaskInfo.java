@@ -24,27 +24,25 @@ public class BaseTaskInfo
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Int == 6) || (this.jdField_a_of_type_Int == 3);
-  }
-  
-  public boolean b()
-  {
     return this.jdField_a_of_type_Int == 5;
   }
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("BaseTaskInfo{");
-    localStringBuffer.append("status=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", retryTimes=").append(this.b);
-    localStringBuffer.append(", result=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    localStringBuffer.append("status=");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", retryTimes=");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append(", result=");
+    localStringBuffer.append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.task.BaseTaskInfo
  * JD-Core Version:    0.7.0.1
  */

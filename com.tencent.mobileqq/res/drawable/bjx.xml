@@ -1,29 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <shape>
-            <size android:height="1.0dip" />
-            <corners android:radius="0.0dip" />
-            <gradient android:startColor="@color/al9" android:endColor="@color/al9" android:angle="45.0" android:centerY="0.75" android:centerColor="@color/al9" />
-        </shape>
-    </item>
-    <item android:id="@android:id/secondaryProgress">
-        <clip>
-            <shape>
-                <size android:height="1.0dip" />
-                <corners android:radius="0.0dip" />
-                <gradient android:startColor="@color/ald" android:endColor="@color/ald" android:angle="45.0" android:centerY="0.75" android:centerColor="@color/ald" />
+    <item>
+        <rotate android:fromDegrees="45.0" android:pivotX="134.99756%" android:pivotY="14.999998%">
+            <shape android:shape="rectangle">
+                <size android:height="11.0dip" android:width="11.0dip" />
+                <solid android:color="#ffffffff" />
             </shape>
-        </clip>
-    </item>
-    <item android:id="@android:id/progress">
-        <clip>
-            <shape>
-                <size android:height="1.0dip" />
-                <corners android:radius="0.0dip" />
-                <gradient android:startColor="#ffffffff" android:endColor="#ffffffff" android:angle="45.0" android:centerY="0.75" android:centerColor="#ffffffff" />
-            </shape>
-        </clip>
+        </rotate>
     </item>
 </layer-list>

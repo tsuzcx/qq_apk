@@ -52,33 +52,27 @@ class SuperPlayerMgrInternal
   
   private void internalMessage(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    for (;;)
+    try
     {
-      Message localMessage;
-      try
-      {
-        boolean bool = this.mIsReleased;
-        if (bool) {
-          return;
-        }
-        localMessage = this.mEventHandler.obtainMessage();
-        localMessage.what = paramInt1;
-        localMessage.arg1 = paramInt2;
-        localMessage.arg2 = paramInt3;
-        localMessage.obj = paramObject;
-        if (isNeedBlockMessage(paramInt1))
-        {
-          this.mPendingMessages.offer(localMessage);
-          continue;
-        }
-        if (paramInt1 != 21) {
-          break label100;
-        }
+      boolean bool = this.mIsReleased;
+      if (bool) {
+        return;
       }
-      finally {}
-      this.mIsReleased = true;
-      this.mPendingMessages.clear();
-      label100:
+      Message localMessage = this.mEventHandler.obtainMessage();
+      localMessage.what = paramInt1;
+      localMessage.arg1 = paramInt2;
+      localMessage.arg2 = paramInt3;
+      localMessage.obj = paramObject;
+      if (isNeedBlockMessage(paramInt1))
+      {
+        this.mPendingMessages.offer(localMessage);
+        return;
+      }
+      if (paramInt1 == 21)
+      {
+        this.mIsReleased = true;
+        this.mPendingMessages.clear();
+      }
       this.mEventHandler.sendMessage(localMessage);
       while (!this.mPendingMessages.isEmpty())
       {
@@ -87,6 +81,12 @@ class SuperPlayerMgrInternal
           this.mEventHandler.sendMessage(paramObject);
         }
       }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramObject;
     }
   }
   
@@ -97,16 +97,10 @@ class SuperPlayerMgrInternal
   
   private boolean isNeedBlockMessage(int paramInt)
   {
-    if (this.mIsNeedBlockMessage) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      return this.mIsNeedBlockMessage;
+    if ((this.mIsNeedBlockMessage) && ((paramInt == 1) || (paramInt == 21))) {
       this.mIsNeedBlockMessage = false;
     }
+    return this.mIsNeedBlockMessage;
   }
   
   public void addSubtitleSource(String paramString1, String paramString2, String paramString3)
@@ -263,8 +257,13 @@ class SuperPlayerMgrInternal
           }
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   void setLoopback(boolean paramBoolean)
@@ -318,7 +317,7 @@ class SuperPlayerMgrInternal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerMgrInternal
  * JD-Core Version:    0.7.0.1
  */

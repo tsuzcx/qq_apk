@@ -3,10 +3,7 @@ package cooperation.qwallet;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.math.BigDecimal;
@@ -17,13 +14,14 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import oicq.wlogin_sdk.request.Ticket;
 import oicq.wlogin_sdk.request.WtTicketPromise;
 
 public class QwUtils
 {
-  private static long jdField_a_of_type_Long = 0L;
+  private static long jdField_a_of_type_Long;
   private static DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
   
   static
@@ -47,31 +45,22 @@ public class QwUtils
   
   public static int a(Object paramObject, int paramInt)
   {
-    paramObject = paramObject + "";
-    int i = paramInt;
-    if (!TextUtils.isEmpty(paramObject)) {}
-    try
-    {
-      i = Integer.valueOf(paramObject).intValue();
-      return i;
-    }
-    catch (Exception paramObject)
-    {
-      paramObject.printStackTrace();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramObject);
+    localStringBuilder.append("");
+    paramObject = localStringBuilder.toString();
+    if (!TextUtils.isEmpty(paramObject)) {
+      try
+      {
+        int i = Integer.valueOf(paramObject).intValue();
+        return i;
+      }
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+      }
     }
     return paramInt;
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString, WtTicketPromise paramWtTicketPromise)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramWtTicketPromise = (TicketManager)paramQQAppInterface.getManager(2);
-    if (paramWtTicketPromise != null) {}
-    for (paramQQAppInterface = paramWtTicketPromise.getPskey(paramQQAppInterface.getCurrentAccountUin(), paramString);; paramQQAppInterface = "") {
-      return paramQQAppInterface;
-    }
   }
   
   public static String a(String paramString)
@@ -132,7 +121,11 @@ public class QwUtils
       paramString1 = jdField_a_of_type_JavaTextDecimalFormat.format(paramString1.multiply(paramString2).doubleValue());
       return paramString1;
     }
-    catch (Exception paramString1) {}
+    catch (Exception paramString1)
+    {
+      label35:
+      break label35;
+    }
     return "0";
   }
   
@@ -153,33 +146,55 @@ public class QwUtils
   {
     StringBuffer localStringBuffer = new StringBuffer(paramString);
     Iterator localIterator = paramMap.keySet().iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
+      String str2 = (String)localIterator.next();
+      String str1 = (String)paramMap.get(str2);
+      if (QLog.isColorLevel())
       {
-        String str2 = (String)localIterator.next();
-        String str1 = (String)paramMap.get(str2);
-        if (QLog.isColorLevel()) {
-          QLog.i("QwUtils", 2, "appendKV2Schema key: " + str2 + " value: " + str1);
-        }
-        paramString = str1;
-        if (paramBoolean) {}
-        try
-        {
-          paramString = URLEncoder.encode(str1);
-          localStringBuffer.append("&").append(String.format("%s=%s", new Object[] { str2, paramString }));
-        }
-        catch (Exception paramString)
-        {
-          for (;;)
-          {
-            QLog.i("QwUtils", 2, "error encode key: " + str2 + " value: " + str1);
-            paramString = str1;
-          }
-        }
+        paramString = new StringBuilder();
+        paramString.append("appendKV2Schema key: ");
+        paramString.append(str2);
+        paramString.append(" value: ");
+        paramString.append(str1);
+        QLog.i("QwUtils", 2, paramString.toString());
       }
+      paramString = str1;
+      if (paramBoolean) {}
+      try
+      {
+        paramString = URLEncoder.encode(str1);
+      }
+      catch (Exception paramString)
+      {
+        label122:
+        break label122;
+      }
+      paramString = new StringBuilder();
+      paramString.append("error encode key: ");
+      paramString.append(str2);
+      paramString.append(" value: ");
+      paramString.append(str1);
+      QLog.i("QwUtils", 2, paramString.toString());
+      paramString = str1;
+      localStringBuffer.append("&");
+      localStringBuffer.append(String.format("%s=%s", new Object[] { str2, paramString }));
     }
     return localStringBuffer.toString();
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, String paramString, WtTicketPromise paramWtTicketPromise)
+  {
+    boolean bool = TextUtils.isEmpty(paramString);
+    paramWtTicketPromise = "";
+    if (bool) {
+      return "";
+    }
+    TicketManager localTicketManager = (TicketManager)paramAppRuntime.getManager(2);
+    if (localTicketManager != null) {
+      paramWtTicketPromise = localTicketManager.getPskey(paramAppRuntime.getCurrentAccountUin(), paramString);
+    }
+    return paramWtTicketPromise;
   }
   
   public static String a(Ticket paramTicket, String paramString)
@@ -195,44 +210,37 @@ public class QwUtils
   
   public static void a(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QwUtils", 2, "startQQBrowserActivity url=" + paramString);
-    }
-    Intent localIntent = new Intent();
-    localIntent.setClass(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(View paramView)
-  {
-    if ((paramView != null) && (paramView.getParent() != null))
+    if (QLog.isColorLevel())
     {
-      ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-      if (localViewGroup != null) {
-        localViewGroup.removeView(paramView);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startQQBrowserActivity url=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("QwUtils", 2, ((StringBuilder)localObject).toString());
     }
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("url", paramString);
+    ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+    ((Intent)localObject).putExtra("hide_operation_bar", true);
+    ((Intent)localObject).putExtra("hide_more_button", true);
+    RouteUtils.a(paramContext, (Intent)localObject, "/base/browser");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, QwUtils.AnsyListener paramAnsyListener)
+  public static void a(AppRuntime paramAppRuntime, String paramString, QwUtils.AnsyListener paramAnsyListener)
   {
-    paramQQAppInterface = a(paramQQAppInterface, paramString, new QwUtils.1(paramAnsyListener, paramString));
-    if (!StringUtil.a(paramQQAppInterface))
+    paramAppRuntime = a(paramAppRuntime, paramString, new QwUtils.1(paramAnsyListener, paramString));
+    if (!StringUtil.a(paramAppRuntime))
     {
       if (paramAnsyListener != null)
       {
         if (QLog.isColorLevel()) {
           QLog.i("QWalletUtils", 2, "get pskey syn success!");
         }
-        paramAnsyListener.a(0, new String[] { paramQQAppInterface });
+        paramAnsyListener.a(0, new String[] { paramAppRuntime });
       }
-      return;
     }
-    QLog.e("QWalletUtils", 1, "get pskey syn. PSk is empty!");
+    else {
+      QLog.e("QWalletUtils", 1, "get pskey syn. PSk is empty!");
+    }
   }
   
   public static boolean a()
@@ -247,45 +255,57 @@ public class QwUtils
   
   public static String b(String paramString)
   {
-    if ((paramString == null) || (!paramString.matches("\\-?[0-9]+"))) {
-      throw new Exception("金额格式有误");
-    }
-    int i;
-    if (paramString.charAt(0) == '-')
+    if ((paramString != null) && (paramString.matches("\\-?[0-9]+")))
     {
-      paramString = paramString.substring(1);
-      i = 1;
-    }
-    for (;;)
-    {
-      if ((paramString.startsWith("0")) && (paramString.length() > 1))
+      int i;
+      if (paramString.charAt(0) == '-')
       {
         paramString = paramString.substring(1);
+        i = 1;
       }
       else
       {
-        StringBuffer localStringBuffer = new StringBuffer();
-        if (paramString.length() == 1) {
-          localStringBuffer.append("0.0").append(paramString);
-        }
-        while (i == 1)
-        {
-          return "-" + localStringBuffer.toString();
-          if (paramString.length() == 2) {
-            localStringBuffer.append("0.").append(paramString);
-          } else {
-            localStringBuffer.append(paramString.substring(0, paramString.length() - 2)).append(".").append(paramString.substring(paramString.length() - 2));
-          }
-        }
-        return localStringBuffer.toString();
         i = 0;
       }
+      while ((paramString.startsWith("0")) && (paramString.length() > 1)) {
+        paramString = paramString.substring(1);
+      }
+      StringBuffer localStringBuffer = new StringBuffer();
+      if (paramString.length() == 1)
+      {
+        localStringBuffer.append("0.0");
+        localStringBuffer.append(paramString);
+      }
+      else if (paramString.length() == 2)
+      {
+        localStringBuffer.append("0.");
+        localStringBuffer.append(paramString);
+      }
+      else
+      {
+        localStringBuffer.append(paramString.substring(0, paramString.length() - 2));
+        localStringBuffer.append(".");
+        localStringBuffer.append(paramString.substring(paramString.length() - 2));
+      }
+      if (i == 1)
+      {
+        paramString = new StringBuilder();
+        paramString.append("-");
+        paramString.append(localStringBuffer.toString());
+        return paramString.toString();
+      }
+      return localStringBuffer.toString();
+    }
+    paramString = new Exception("金额格式有误");
+    for (;;)
+    {
+      throw paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     cooperation.qwallet.QwUtils
  * JD-Core Version:    0.7.0.1
  */

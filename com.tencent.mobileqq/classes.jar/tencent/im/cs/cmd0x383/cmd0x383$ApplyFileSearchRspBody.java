@@ -20,14 +20,15 @@ public final class cmd0x383$ApplyFileSearchRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 40 }, new String[] { "bytes_sync_cookie", "uint32_is_end", "bytes_key_word", "item_list", "uint32_total_match_count" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, null, Integer.valueOf(0) }, ApplyFileSearchRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 40 }, new String[] { "bytes_sync_cookie", "uint32_is_end", "bytes_key_word", "item_list", "uint32_total_match_count" }, new Object[] { localByteStringMicro1, localInteger, localByteStringMicro2, null, localInteger }, ApplyFileSearchRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody
  * JD-Core Version:    0.7.0.1
  */

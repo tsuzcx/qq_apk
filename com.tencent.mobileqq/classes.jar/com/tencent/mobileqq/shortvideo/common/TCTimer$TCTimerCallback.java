@@ -6,7 +6,7 @@ public abstract interface TCTimer$TCTimerCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.common.TCTimer.TCTimerCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -4,28 +4,41 @@ public final class dh
 {
   public static String a(String... paramVarArgs)
   {
-    Object localObject = "";
     if (paramVarArgs != null)
     {
-      String str = "category=";
       int i = 0;
-      localObject = str;
-      if (i < paramVarArgs.length)
+      String str = "category=";
+      for (;;)
       {
-        if (i == 0) {}
-        for (str = str + paramVarArgs[i];; str = str + "," + paramVarArgs[i])
-        {
-          i += 1;
+        localObject = str;
+        if (i >= paramVarArgs.length) {
           break;
         }
+        if (i == 0)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(paramVarArgs[i]);
+          str = ((StringBuilder)localObject).toString();
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(paramVarArgs[i]);
+          str = ((StringBuilder)localObject).toString();
+        }
+        i += 1;
       }
     }
+    Object localObject = "";
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.dh
  * JD-Core Version:    0.7.0.1
  */

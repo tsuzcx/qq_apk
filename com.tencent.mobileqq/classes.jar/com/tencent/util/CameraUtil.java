@@ -26,63 +26,83 @@ public class CameraUtil
     }
     int i = 0;
     Camera localCamera1 = null;
-    Camera localCamera3;
+    Object localObject3;
     for (;;)
     {
-      localCamera3 = localCamera1;
+      localObject3 = localCamera1;
       if (i < paramInt2)
       {
         Camera localCamera2 = localCamera1;
         try
         {
-          if ((Build.VERSION.SDK_INT >= 9) && (paramInt1 != -1)) {
-            localCamera2 = localCamera1;
-          }
-          for (localCamera1 = Camera.open(paramInt1);; localCamera1 = Camera.open())
+          if ((Build.VERSION.SDK_INT >= 9) && (paramInt1 != -1))
           {
             localCamera2 = localCamera1;
-            localCamera3 = localCamera1;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
+            localCamera1 = Camera.open(paramInt1);
+          }
+          else
+          {
             localCamera2 = localCamera1;
-            QLog.d("CameraUtil", 2, "openCameraWithRetry successfully.  retry times = " + i + ", max retry times = " + paramInt2);
+            localCamera1 = Camera.open();
+          }
+          localCamera2 = localCamera1;
+          localObject3 = localCamera1;
+          if (QLog.isColorLevel())
+          {
+            localCamera2 = localCamera1;
+            localObject3 = new StringBuilder();
+            localCamera2 = localCamera1;
+            ((StringBuilder)localObject3).append("openCameraWithRetry successfully.  retry times = ");
+            localCamera2 = localCamera1;
+            ((StringBuilder)localObject3).append(i);
+            localCamera2 = localCamera1;
+            ((StringBuilder)localObject3).append(", max retry times = ");
+            localCamera2 = localCamera1;
+            ((StringBuilder)localObject3).append(paramInt2);
+            localCamera2 = localCamera1;
+            QLog.d("CameraUtil", 2, ((StringBuilder)localObject3).toString());
             return localCamera1;
-            localCamera2 = localCamera1;
           }
         }
         catch (Exception localException)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("CameraUtil", 2, "openCameraWithRetry. Fail to open camera. error msg: " + localException.getMessage() + ", retry times = " + i + ", max retry times = " + paramInt2);
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("openCameraWithRetry. Fail to open camera. error msg: ");
+            ((StringBuilder)localObject3).append(localException.getMessage());
+            ((StringBuilder)localObject3).append(", retry times = ");
+            ((StringBuilder)localObject3).append(i);
+            ((StringBuilder)localObject3).append(", max retry times = ");
+            ((StringBuilder)localObject3).append(paramInt2);
+            QLog.d("CameraUtil", 2, ((StringBuilder)localObject3).toString());
           }
           i += 1;
+          Object localObject2;
           if (i < paramInt2) {
             try
             {
               Thread.currentThread();
               Thread.sleep(500);
-              Object localObject = localCamera2;
+              Object localObject1 = localCamera2;
             }
             catch (InterruptedException localInterruptedException)
             {
-              for (;;)
-              {
-                localInterruptedException.printStackTrace();
-              }
+              localInterruptedException.printStackTrace();
+              localObject2 = localCamera2;
             }
           } else {
-            throw new RuntimeException(localInterruptedException);
+            throw new RuntimeException(localObject2);
           }
         }
       }
     }
-    return localCamera3;
+    return localObject3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.CameraUtil
  * JD-Core Version:    0.7.0.1
  */

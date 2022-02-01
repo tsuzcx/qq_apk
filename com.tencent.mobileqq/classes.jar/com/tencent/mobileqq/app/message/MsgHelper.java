@@ -5,11 +5,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.util.HashMap;
 
 public class MsgHelper
@@ -65,7 +65,8 @@ public class MsgHelper
     int i = 0;
     while (i < j)
     {
-      localStringBuilder.append(arrayOfStackTraceElement[i].toString()).append("\n");
+      localStringBuilder.append(arrayOfStackTraceElement[i].toString());
+      localStringBuilder.append("\n");
       i += 1;
     }
     QLog.i(paramString, 1, localStringBuilder.toString());
@@ -73,7 +74,7 @@ public class MsgHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.MsgHelper
  * JD-Core Version:    0.7.0.1
  */

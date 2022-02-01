@@ -1,5 +1,6 @@
 package com.tencent.qqmini.proxyimpl.tavkitplugin;
 
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tavcut.TAVCut.Callback;
 
@@ -10,19 +11,39 @@ class WeishiPlugin$MyCallback
   
   public void onDone(int paramInt)
   {
-    Logger.d("WS_WeishiPlugin", "onDone() called with: retCode = [" + paramInt + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onDone() called with: retCode = [");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("]");
+    Logger.d("WS_WeishiPlugin", ((StringBuilder)localObject).toString());
     if (paramInt == 0)
     {
       WeishiPlugin.a(this.a, true);
+      if (WeishiPlugin.a(this.a) != null)
+      {
+        localObject = this.a;
+        ((WeishiPlugin)localObject).dispatchEvent(WeishiPlugin.a((WeishiPlugin)localObject));
+      }
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tavcut.init fail, retCode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDone: msg = ");
+      localStringBuilder.append((String)localObject);
+      Logger.e("WS_WeishiPlugin", localStringBuilder.toString());
       if (WeishiPlugin.a(this.a) != null) {
-        this.a.dispatchEvent(WeishiPlugin.a(this.a));
+        WeishiPlugin.a(this.a).fail((String)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.WeishiPlugin.MyCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,8 @@ package com.tencent.mobileqq.richmediabrowser.view;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richmediabrowser.api.IBrowserDepend;
 
 class AIOPictureView$6
   implements DialogInterface.OnCancelListener
@@ -12,13 +13,13 @@ class AIOPictureView$6
   public void onCancel(DialogInterface paramDialogInterface)
   {
     if (this.a.b) {
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
+      ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOPictureView.6
  * JD-Core Version:    0.7.0.1
  */

@@ -16,37 +16,34 @@ public final class DatongVerifyManager
   static
   {
     jdField_a_of_type_ComTencentMobileqqDebugDatongVerifyManager = new DatongVerifyManager();
+    Object localObject2;
     try
     {
       Object localObject1 = Result.Companion;
       localObject1 = Result.constructor-impl(Class.forName("com.tencent.qqlive.module.videoreport.validation.VideoReportVerify"));
-      localObject3 = localObject1;
-      if (Result.isFailure-impl(localObject1)) {
-        localObject3 = null;
-      }
-      jdField_a_of_type_JavaLangClass = (Class)localObject3;
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Object localObject3 = Result.Companion;
-        Object localObject2 = Result.constructor-impl(ResultKt.createFailure(localThrowable));
-      }
+      localObject3 = Result.Companion;
+      localObject2 = Result.constructor-impl(ResultKt.createFailure(localThrowable));
     }
+    Object localObject3 = localObject2;
+    if (Result.isFailure-impl(localObject2)) {
+      localObject3 = null;
+    }
+    jdField_a_of_type_JavaLangClass = (Class)localObject3;
   }
   
   private final void a(boolean paramBoolean)
   {
     Object localObject = jdField_a_of_type_JavaLangClass;
-    if (localObject != null) {}
-    for (localObject = ((Class)localObject).getDeclaredMethod("setVerifyOn", new Class[] { Boolean.TYPE });; localObject = null)
-    {
-      if (localObject != null) {
-        ((Method)localObject).invoke(null, new Object[] { Boolean.valueOf(paramBoolean) });
-      }
-      return;
+    if (localObject != null) {
+      localObject = ((Class)localObject).getDeclaredMethod("setVerifyOn", new Class[] { Boolean.TYPE });
+    } else {
+      localObject = null;
+    }
+    if (localObject != null) {
+      ((Method)localObject).invoke(null, new Object[] { Boolean.valueOf(paramBoolean) });
     }
   }
   
@@ -54,19 +51,19 @@ public final class DatongVerifyManager
   {
     Intrinsics.checkParameterIsNotNull(paramString, "appId");
     Object localObject = jdField_a_of_type_JavaLangClass;
-    if (localObject != null) {}
-    for (localObject = ((Class)localObject).getDeclaredMethod("setAppId", new Class[] { String.class });; localObject = null)
-    {
-      if (localObject != null) {
-        ((Method)localObject).invoke(null, new Object[] { paramString });
-      }
-      return;
+    if (localObject != null) {
+      localObject = ((Class)localObject).getDeclaredMethod("setAppId", new Class[] { String.class });
+    } else {
+      localObject = null;
+    }
+    if (localObject != null) {
+      ((Method)localObject).invoke(null, new Object[] { paramString });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.debug.DatongVerifyManager
  * JD-Core Version:    0.7.0.1
  */

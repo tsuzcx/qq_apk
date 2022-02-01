@@ -22,16 +22,17 @@ public final class aio_media$TypeKSing
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 58 }, new String[] { "uint32_type", "uint64_id", "bytes_jump", "bytes_cover", "bytes_name", "uint64_singer", "bytes_song" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4 }, TypeKSing.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 58 }, new String[] { "uint32_type", "uint64_id", "bytes_jump", "bytes_cover", "bytes_name", "uint64_singer", "bytes_song" }, new Object[] { Integer.valueOf(0), localLong, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localLong, localByteStringMicro4 }, TypeKSing.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.aio.media.aio_media.TypeKSing
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,24 @@ class VipProfileCardDiyActivity$1
   {
     if ((paramLong == 15L) && (paramString1.startsWith("card.")))
     {
-      if ((paramInt1 == 0) && (!TextUtils.isEmpty(this.a.g))) {
-        this.a.c(this.a.g);
+      if ((paramInt1 == 0) && (!TextUtils.isEmpty(this.a.g)))
+      {
+        paramString1 = this.a;
+        paramString1.c(paramString1.g);
+        return;
       }
+      paramString1 = new StringBuilder();
+      paramString1.append("download card background failed. errorCode=");
+      paramString1.append(paramInt1);
+      paramString1.append(", url=");
+      paramString1.append(this.a.b);
+      QLog.e("VipProfileCardDiyActivity", 1, paramString1.toString());
     }
-    else {
-      return;
-    }
-    QLog.e("VipProfileCardDiyActivity", 1, "download card background failed. errorCode=" + paramInt1 + ", url=" + this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.1
  * JD-Core Version:    0.7.0.1
  */

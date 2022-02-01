@@ -44,43 +44,38 @@ class GetMyStoryVideoListStep$1
     try
     {
       paramCommonRequest.mergeFrom(paramCommonResponse.a);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result = new GetMyStoryVideoListStep.Result(paramCommonRequest.result.error_code.get(), paramCommonRequest.user_vid_list);
-      paramCommonRequest = paramCommonRequest.user_vid_list;
-      int k = paramCommonRequest.size();
-      i = 0;
-      if (i < k)
-      {
-        paramCommonResponse = ((qqstory_struct.UserVidList)paramCommonRequest.get(i)).vid_list;
-        int m = paramCommonResponse.size();
-        int j = 0;
-        while (j < m)
-        {
-          this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.a.add(((ByteStringMicro)paramCommonResponse.get(j)).toStringUtf8());
-          j += 1;
-        }
-      }
     }
     catch (InvalidProtocolBufferMicroException paramCommonResponse)
     {
-      for (;;)
-      {
-        int i;
-        SLog.c("GetMyStoryVideoListStep", "协议返回错误, RspGetBatchUserVidList", paramCommonResponse);
-        continue;
-        i += 1;
-      }
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(this.a.a());
-        return;
-      }
-      SLog.d("GetMyStoryVideoListStep", "finish callBack is null");
+      SLog.c("GetMyStoryVideoListStep", "协议返回错误, RspGetBatchUserVidList", paramCommonResponse);
     }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result = new GetMyStoryVideoListStep.Result(paramCommonRequest.result.error_code.get(), paramCommonRequest.user_vid_list);
+    paramCommonRequest = paramCommonRequest.user_vid_list;
+    int k = paramCommonRequest.size();
+    int i = 0;
+    while (i < k)
+    {
+      paramCommonResponse = ((qqstory_struct.UserVidList)paramCommonRequest.get(i)).vid_list;
+      int m = paramCommonResponse.size();
+      int j = 0;
+      while (j < m)
+      {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.a.add(((ByteStringMicro)paramCommonResponse.get(j)).toStringUtf8());
+        j += 1;
+      }
+      i += 1;
+    }
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(this.a.a());
+      return;
+    }
+    SLog.d("GetMyStoryVideoListStep", "finish callBack is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.1
  * JD-Core Version:    0.7.0.1
  */

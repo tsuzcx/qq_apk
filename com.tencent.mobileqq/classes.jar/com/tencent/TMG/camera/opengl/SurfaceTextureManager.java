@@ -26,7 +26,9 @@ public class SurfaceTextureManager
   
   private int getGLVersion(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT < 9) {
+    int j = Build.VERSION.SDK_INT;
+    int i = 1;
+    if (j < 9) {
       return 1;
     }
     if (paramContext == null)
@@ -40,10 +42,10 @@ public class SurfaceTextureManager
       paramContext = paramContext.getDeviceConfigurationInfo();
       if (paramContext != null)
       {
-        if (paramContext.reqGlEsVersion >= 131072) {}
-        for (int i = 2;; i = 1) {
-          return i;
+        if (paramContext.reqGlEsVersion >= 131072) {
+          i = 2;
         }
+        return i;
       }
       QLog.e("SurfaceTextureManager", 0, "getDeviceConfigurationInfo Error");
     }
@@ -58,34 +60,41 @@ public class SurfaceTextureManager
   
   public void init()
   {
-    QLog.i("SurfaceTextureManager", 0, "SurfaceTextureManager init, isSupported = " + this.isSupported);
-    if (this.isSupported) {
-      if (Build.VERSION.SDK_INT < 17) {
-        break label99;
-      }
-    }
-    label99:
-    for (this.eglContext = new EGL14Context();; this.eglContext = new EGL10Context())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SurfaceTextureManager init, isSupported = ");
+    ((StringBuilder)localObject).append(this.isSupported);
+    QLog.i("SurfaceTextureManager", 0, ((StringBuilder)localObject).toString());
+    if (this.isSupported)
     {
+      if (Build.VERSION.SDK_INT >= 17) {
+        this.eglContext = new EGL14Context();
+      } else {
+        this.eglContext = new EGL10Context();
+      }
       this.eglContext.bind();
-      GLES20.glGenTextures(this.mTextureId.length, this.mTextureId, 0);
+      localObject = this.mTextureId;
+      GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
       this.mSurfaceTexture = new SurfaceTexture(this.mTextureId[0]);
       this.isInited = true;
-      return;
     }
   }
   
   public void uninit()
   {
-    QLog.i("SurfaceTextureManager", 0, "SurfaceTextureManager uninit, isInited = " + this.isInited);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SurfaceTextureManager uninit, isInited = ");
+    ((StringBuilder)localObject).append(this.isInited);
+    QLog.i("SurfaceTextureManager", 0, ((StringBuilder)localObject).toString());
     if (this.isInited)
     {
-      if (this.mSurfaceTexture != null)
+      localObject = this.mSurfaceTexture;
+      if (localObject != null)
       {
-        this.mSurfaceTexture.release();
+        ((SurfaceTexture)localObject).release();
         this.mSurfaceTexture = null;
       }
-      GLES20.glDeleteTextures(this.mTextureId.length, this.mTextureId, 0);
+      localObject = this.mTextureId;
+      GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
       this.eglContext.unbind();
     }
     this.isInited = false;

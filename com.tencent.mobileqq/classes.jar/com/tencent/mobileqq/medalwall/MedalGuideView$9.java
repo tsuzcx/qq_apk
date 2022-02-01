@@ -15,13 +15,14 @@ class MedalGuideView$9
     if (QLog.isColorLevel()) {
       QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
     }
-    this.a.d = true;
-    this.a.a.performClick();
+    MedalGuideView localMedalGuideView = this.a;
+    localMedalGuideView.d = true;
+    localMedalGuideView.a.performClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalGuideView.9
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ public class ShortcutManagerCompat
   public static final String EXTRA_SHORTCUT_ID = "android.intent.extra.shortcut.ID";
   @VisibleForTesting
   static final String INSTALL_SHORTCUT_PERMISSION = "com.android.launcher.permission.INSTALL_SHORTCUT";
-  private static volatile ShortcutInfoCompatSaver<?> sShortcutInfoCompatSaver = null;
+  private static volatile ShortcutInfoCompatSaver<?> sShortcutInfoCompatSaver;
   
   public static boolean addDynamicShortcuts(@NonNull Context paramContext, @NonNull List<ShortcutInfoCompat> paramList)
   {
@@ -48,15 +48,16 @@ public class ShortcutManagerCompat
   @NonNull
   public static Intent createShortcutResultIntent(@NonNull Context paramContext, @NonNull ShortcutInfoCompat paramShortcutInfoCompat)
   {
-    Intent localIntent = null;
     if (Build.VERSION.SDK_INT >= 26) {
-      localIntent = ((ShortcutManager)paramContext.getSystemService(ShortcutManager.class)).createShortcutResultIntent(paramShortcutInfoCompat.toShortcutInfo());
+      paramContext = ((ShortcutManager)paramContext.getSystemService(ShortcutManager.class)).createShortcutResultIntent(paramShortcutInfoCompat.toShortcutInfo());
+    } else {
+      paramContext = null;
     }
-    paramContext = localIntent;
-    if (localIntent == null) {
-      paramContext = new Intent();
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = new Intent();
     }
-    return paramShortcutInfoCompat.addToIntent(paramContext);
+    return paramShortcutInfoCompat.addToIntent((Intent)localObject);
   }
   
   @NonNull
@@ -77,7 +78,11 @@ public class ShortcutManagerCompat
       paramContext = getShortcutInfoSaverInstance(paramContext).getShortcuts();
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label93:
+      break label93;
+    }
     return new ArrayList();
   }
   
@@ -95,16 +100,16 @@ public class ShortcutManagerCompat
     try
     {
       sShortcutInfoCompatSaver = (ShortcutInfoCompatSaver)Class.forName("androidx.sharetarget.ShortcutInfoCompatSaverImpl", false, ShortcutManagerCompat.class.getClassLoader()).getMethod("getInstance", new Class[] { Context.class }).invoke(null, new Object[] { paramContext });
-      label57:
-      if (sShortcutInfoCompatSaver == null) {
-        sShortcutInfoCompatSaver = new ShortcutInfoCompatSaver.NoopImpl();
-      }
-      return sShortcutInfoCompatSaver;
     }
     catch (Exception paramContext)
     {
-      break label57;
+      label60:
+      break label60;
     }
+    if (sShortcutInfoCompatSaver == null) {
+      sShortcutInfoCompatSaver = new ShortcutInfoCompatSaver.NoopImpl();
+    }
+    return sShortcutInfoCompatSaver;
   }
   
   public static boolean isRequestPinShortcutSupported(@NonNull Context paramContext)
@@ -179,7 +184,7 @@ public class ShortcutManagerCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.content.pm.ShortcutManagerCompat
  * JD-Core Version:    0.7.0.1
  */

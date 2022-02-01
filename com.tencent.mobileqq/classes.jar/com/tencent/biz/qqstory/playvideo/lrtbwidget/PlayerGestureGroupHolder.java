@@ -33,7 +33,7 @@ public class PlayerGestureGroupHolder
   protected void b()
   {
     super.b();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381445));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380701));
     ((StoryPlayerGroupHolder)a()).a.setOnTouchListener(new PlayerGestureGroupHolder.ViewPagerTouchListener(this, null));
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetPlayerGestureGroupHolder$OnViewPagerGestureListener = new PlayerGestureGroupHolder.OnViewPagerGestureListener(this, null);
     this.jdField_a_of_type_ComTencentBizQqstoryUtilsBetterGestureDetector = new BetterGestureDetector(a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetPlayerGestureGroupHolder$OnViewPagerGestureListener);
@@ -42,7 +42,7 @@ public class PlayerGestureGroupHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.PlayerGestureGroupHolder
  * JD-Core Version:    0.7.0.1
  */

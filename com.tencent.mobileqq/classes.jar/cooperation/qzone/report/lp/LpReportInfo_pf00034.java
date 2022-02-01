@@ -47,7 +47,10 @@ public class LpReportInfo_pf00034
   
   public String getSimpleInfo()
   {
-    return "pf00034:login from = " + this.loginFrom;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pf00034:login from = ");
+    localStringBuilder.append(this.loginFrom);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
@@ -59,7 +62,7 @@ public class LpReportInfo_pf00034
       LpReportUtils.safePut(localHashMap, "uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
       LpReportUtils.safePut(localHashMap, "touin", this.toUin);
       LpReportUtils.safePut(localHashMap, "network_type", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getnetworkType());
-      LpReportUtils.safePut(localHashMap, "app_version", "8.5.5");
+      LpReportUtils.safePut(localHashMap, "app_version", "8.7.0");
       LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
       LpReportUtils.safePut(localHashMap, "platform", "android");
       LpReportUtils.safePut(localHashMap, "device_info", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getDeviceInfor());
@@ -78,7 +81,7 @@ public class LpReportInfo_pf00034
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_pf00034
  * JD-Core Version:    0.7.0.1
  */

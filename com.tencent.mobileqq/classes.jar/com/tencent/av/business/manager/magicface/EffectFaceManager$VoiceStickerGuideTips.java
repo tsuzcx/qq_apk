@@ -13,7 +13,7 @@ public class EffectFaceManager$VoiceStickerGuideTips
   public EffectFaceManager$VoiceStickerGuideTips()
   {
     this.jdField_a_of_type_Int = 5000;
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704002);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704091);
   }
   
   public String a(String paramString)
@@ -23,7 +23,7 @@ public class EffectFaceManager$VoiceStickerGuideTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.EffectFaceManager.VoiceStickerGuideTips
  * JD-Core Version:    0.7.0.1
  */

@@ -25,34 +25,34 @@ public class DoubleCommentSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (SlideTabViewPager)paramBaseViewHolder.a(2131374957);
+    paramViewGroup = (SlideTabViewPager)paramBaseViewHolder.a(2131374489);
     TextView localTextView1;
     TextView localTextView2;
     if (paramViewGroup.a() == 0)
     {
       localTextView1 = new TextView(this.a);
       localTextView2 = new TextView(this.a);
-      localTextView1.setText(HardCodeUtil.a(2131703460));
-      localTextView2.setText(HardCodeUtil.a(2131703459));
-      paramViewGroup.a(0, HardCodeUtil.a(2131703457), localTextView1);
-      paramViewGroup.a(1, HardCodeUtil.a(2131703462), localTextView2);
+      localTextView1.setText(HardCodeUtil.a(2131703591));
+      localTextView2.setText(HardCodeUtil.a(2131703590));
+      paramViewGroup.a(0, HardCodeUtil.a(2131703588), localTextView1);
+      paramViewGroup.a(1, HardCodeUtil.a(2131703593), localTextView2);
       paramViewGroup.a(0);
     }
-    for (;;)
+    else
     {
-      return paramBaseViewHolder.a();
       localTextView1 = new TextView(this.a);
       localTextView2 = new TextView(this.a);
-      localTextView1.setText(HardCodeUtil.a(2131703464));
-      localTextView2.setText(HardCodeUtil.a(2131703458));
-      paramViewGroup.a(0, HardCodeUtil.a(2131703461), localTextView1);
-      paramViewGroup.a(1, HardCodeUtil.a(2131703463), localTextView2);
+      localTextView1.setText(HardCodeUtil.a(2131703595));
+      localTextView2.setText(HardCodeUtil.a(2131703589));
+      paramViewGroup.a(0, HardCodeUtil.a(2131703592), localTextView1);
+      paramViewGroup.a(1, HardCodeUtil.a(2131703594), localTextView2);
     }
+    return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2131561777, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2131561639, paramViewGroup, false));
   }
   
   public String a()
@@ -62,7 +62,7 @@ public class DoubleCommentSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.segment.DoubleCommentSegment
  * JD-Core Version:    0.7.0.1
  */

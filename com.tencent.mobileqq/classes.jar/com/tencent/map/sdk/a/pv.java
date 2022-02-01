@@ -31,9 +31,10 @@ public class pv
   
   private void b()
   {
-    if (this.b != null) {
-      throw new IllegalStateException("setRenderer has already been called for this instance.");
+    if (this.b == null) {
+      return;
     }
+    throw new IllegalStateException("setRenderer has already been called for this instance.");
   }
   
   protected void finalize()
@@ -66,31 +67,32 @@ public class pv
     return this.b.b();
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.e) && (this.d != null)) {
-      if (this.b == null) {
-        break label74;
-      }
-    }
-    label74:
-    for (int m = this.b.b();; m = 1)
+    if ((this.e) && (this.d != null))
     {
+      pv.i locali = this.b;
+      int m;
+      if (locali != null) {
+        m = locali.b();
+      } else {
+        m = 1;
+      }
       this.b = new pv.i(this.c);
       if (m != 1) {
         this.b.a(m);
       }
       this.b.start();
-      this.e = false;
-      return;
     }
+    this.e = false;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
-    if (this.b != null) {
-      this.b.c();
+    pv.i locali = this.b;
+    if (locali != null) {
+      locali.c();
     }
     this.e = true;
     super.onDetachedFromWindow();
@@ -103,23 +105,24 @@ public class pv
     {
       locali.b = true;
       a.notifyAll();
-      for (;;)
+      while (!locali.a)
       {
-        if (!locali.a)
-        {
-          boolean bool = locali.c;
-          if (!bool) {
-            try
-            {
-              a.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
-          }
+        boolean bool = locali.c;
+        if (bool) {
+          break;
         }
+        try
+        {
+          a.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label47:
+          break label47;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
   
@@ -132,23 +135,24 @@ public class pv
       locali.l = true;
       locali.m = false;
       a.notifyAll();
-      for (;;)
+      while ((!locali.a) && (locali.c))
       {
-        if ((!locali.a) && (locali.c))
-        {
-          boolean bool = locali.m;
-          if (!bool) {
-            try
-            {
-              a.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
-          }
+        boolean bool = locali.m;
+        if (bool) {
+          break;
         }
+        try
+        {
+          a.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label64:
+          break label64;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
   
@@ -221,40 +225,42 @@ public class pv
   public void surfaceChanged(SurfaceHolder arg1, int paramInt1, int paramInt2, int paramInt3)
   {
     pv.i locali = this.b;
-    for (;;)
+    synchronized (a)
     {
-      synchronized (a)
+      locali.j = paramInt2;
+      locali.k = paramInt3;
+      locali.n = true;
+      locali.l = true;
+      locali.m = false;
+      a.notifyAll();
+      while ((!locali.a) && (!locali.c) && (!locali.m))
       {
-        locali.j = paramInt2;
-        locali.k = paramInt3;
-        locali.n = true;
-        locali.l = true;
-        locali.m = false;
-        a.notifyAll();
-        if ((locali.a) || (locali.c) || (locali.m)) {
-          break;
-        }
         if ((locali.f) && (locali.g))
         {
           boolean bool = locali.a();
           if (bool)
           {
             paramInt1 = 1;
-            if (paramInt1 == 0) {
-              break;
-            }
-            try
-            {
-              a.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
+            break label108;
           }
         }
+        paramInt1 = 0;
+        label108:
+        if (paramInt1 == 0) {
+          break;
+        }
+        try
+        {
+          a.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label121:
+          break label121;
+        }
+        Thread.currentThread().interrupt();
       }
-      paramInt1 = 0;
+      return;
     }
   }
   
@@ -266,23 +272,24 @@ public class pv
       locali.d = true;
       locali.h = false;
       a.notifyAll();
-      for (;;)
+      while ((locali.e) && (!locali.h))
       {
-        if ((locali.e) && (!locali.h))
-        {
-          boolean bool = locali.a;
-          if (!bool) {
-            try
-            {
-              a.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
-          }
+        boolean bool = locali.a;
+        if (bool) {
+          break;
         }
+        try
+        {
+          a.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label59:
+          break label59;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
   
@@ -293,29 +300,30 @@ public class pv
     {
       locali.d = false;
       a.notifyAll();
-      for (;;)
+      while (!locali.e)
       {
-        if (!locali.e)
-        {
-          boolean bool = locali.a;
-          if (!bool) {
-            try
-            {
-              a.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
-          }
+        boolean bool = locali.a;
+        if (bool) {
+          break;
         }
+        try
+        {
+          a.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label47:
+          break label47;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.pv
  * JD-Core Version:    0.7.0.1
  */

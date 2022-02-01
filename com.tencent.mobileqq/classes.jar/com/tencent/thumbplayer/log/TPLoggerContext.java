@@ -40,14 +40,30 @@ public class TPLoggerContext
   private void buildTag()
   {
     this.tag = this.prefix;
-    if (!TextUtils.isEmpty(this.classId)) {
-      this.tag = (this.tag + "_C" + this.classId);
+    StringBuilder localStringBuilder;
+    if (!TextUtils.isEmpty(this.classId))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.tag);
+      localStringBuilder.append("_C");
+      localStringBuilder.append(this.classId);
+      this.tag = localStringBuilder.toString();
     }
-    if (!TextUtils.isEmpty(this.taskId)) {
-      this.tag = (this.tag + "_T" + this.taskId);
+    if (!TextUtils.isEmpty(this.taskId))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.tag);
+      localStringBuilder.append("_T");
+      localStringBuilder.append(this.taskId);
+      this.tag = localStringBuilder.toString();
     }
-    if (!TextUtils.isEmpty(this.model)) {
-      this.tag = (this.tag + "_" + this.model);
+    if (!TextUtils.isEmpty(this.model))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.tag);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.model);
+      this.tag = localStringBuilder.toString();
     }
   }
   
@@ -84,7 +100,24 @@ public class TPLoggerContext
   
   public String toString()
   {
-    return "TPLoggerContext{prefix='" + this.prefix + '\'' + ", classId='" + this.classId + '\'' + ", taskId='" + this.taskId + '\'' + ", model='" + this.model + '\'' + ", tag='" + this.tag + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TPLoggerContext{prefix='");
+    localStringBuilder.append(this.prefix);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", classId='");
+    localStringBuilder.append(this.classId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", taskId='");
+    localStringBuilder.append(this.taskId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", model='");
+    localStringBuilder.append(this.model);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", tag='");
+    localStringBuilder.append(this.tag);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void update(TPLoggerContext paramTPLoggerContext, @NonNull String paramString)
@@ -93,20 +126,21 @@ public class TPLoggerContext
     {
       this.prefix = paramTPLoggerContext.prefix;
       this.classId = paramTPLoggerContext.classId;
+      this.taskId = paramTPLoggerContext.taskId;
     }
-    for (this.taskId = paramTPLoggerContext.taskId;; this.taskId = "")
+    else
     {
-      this.model = paramString;
-      buildTag();
-      return;
       this.prefix = "";
       this.classId = "";
+      this.taskId = "";
     }
+    this.model = paramString;
+    buildTag();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.log.TPLoggerContext
  * JD-Core Version:    0.7.0.1
  */

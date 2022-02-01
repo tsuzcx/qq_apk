@@ -25,7 +25,7 @@ import java.util.Set;
 public class MemoryPerfStat
   implements Handler.Callback
 {
-  private static MemoryPerfStat jdField_a_of_type_ComTencentAvPerfstatMemoryPerfStat = null;
+  private static MemoryPerfStat jdField_a_of_type_ComTencentAvPerfstatMemoryPerfStat;
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = 0L;
   private final WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
@@ -46,138 +46,153 @@ public class MemoryPerfStat
   
   public static void a(int paramInt1, int paramInt2)
   {
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    }
-    do
-    {
-      do
-      {
+      if ((paramInt2 != 1) && (paramInt2 != 2)) {
         return;
-      } while (paramInt1 != 0);
-      a().a();
-      return;
-    } while (paramInt1 == 0);
-    a().b();
+      }
+      if (paramInt1 == 0) {
+        a().a();
+      }
+    }
+    else if (paramInt1 != 0)
+    {
+      a().b();
+    }
   }
   
   @TargetApi(23)
   private void a(Context paramContext)
   {
     long l2 = SystemClock.elapsedRealtime();
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return;
-      paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      if (paramContext == null) {
-        continue;
+    }
+    paramContext = (ActivityManager)paramContext.getSystemService("activity");
+    if (paramContext == null) {
+      return;
+    }
+    this.jdField_a_of_type_Int += 1;
+    this.jdField_a_of_type_ArrayOfInt[0] = Process.myPid();
+    String str = null;
+    try
+    {
+      paramContext = paramContext.getProcessMemoryInfo(this.jdField_a_of_type_ArrayOfInt);
+    }
+    catch (Throwable paramContext)
+    {
+      label59:
+      Object localObject1;
+      Object localObject2;
+      break label59;
+    }
+    paramContext = null;
+    localObject1 = str;
+    if (paramContext != null)
+    {
+      localObject1 = str;
+      if (paramContext.length > 0) {
+        localObject1 = paramContext[0];
       }
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_ArrayOfInt[0] = Process.myPid();
+    }
+    if (localObject1 == null) {
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      paramContext = ((Debug.MemoryInfo)localObject1).getMemoryStats();
+      localObject1 = paramContext.keySet().iterator();
+      label116:
+      while (((Iterator)localObject1).hasNext())
+      {
+        str = (String)((Iterator)localObject1).next();
+        localObject2 = (String)paramContext.get(str);
+        if ((localObject2 == null) || (((String)localObject2).length() == 0)) {
+          break;
+        }
+      }
+    }
+    try
+    {
+      l1 = Long.parseLong((String)localObject2);
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      long l1;
+      label176:
+      break label176;
+    }
+    l1 = 0L;
+    if (l1 == 0L) {
+      break label116;
+    }
+    a(str, l1);
+    break label116;
+    a("summary.total-pss", ((Debug.MemoryInfo)localObject1).getTotalPss());
+    a("summary.java-heap", ((Debug.MemoryInfo)localObject1).dalvikPrivateDirty);
+    a("summary.native-heap", ((Debug.MemoryInfo)localObject1).nativePrivateDirty);
+    l1 = Math.abs(SystemClock.elapsedRealtime() - l2);
+    l2 = this.jdField_b_of_type_Long;
+    if (l2 == 0L) {
+      this.jdField_b_of_type_Long = l1;
+    } else {
+      this.jdField_b_of_type_Long = ((l2 + l1) / 2L);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder(200);
+      paramContext.append("getMemoryInfoFromAM, cost[");
+      paramContext.append(l1);
+      paramContext.append("], avgCost[");
+      paramContext.append(this.jdField_b_of_type_Long);
+      paramContext.append("], cnt[");
+      paramContext.append(this.jdField_a_of_type_Int);
+      paramContext.append("], flag[");
+      paramContext.append(this.c);
+      paramContext.append("], \n{");
       try
       {
-        paramContext = paramContext.getProcessMemoryInfo(this.jdField_a_of_type_ArrayOfInt);
-        if ((paramContext != null) && (paramContext.length > 0))
+        localObject1 = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          paramContext = paramContext[0];
-          if (paramContext == null) {
-            continue;
-          }
-          if (Build.VERSION.SDK_INT >= 23)
-          {
-            paramContext = paramContext.getMemoryStats();
-            localIterator = paramContext.keySet().iterator();
-            do
-            {
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              str1 = (String)localIterator.next();
-              str2 = (String)paramContext.get(str1);
-            } while ((str2 == null) || (str2.length() == 0));
+          str = (String)((Iterator)localObject1).next();
+          localObject2 = (MemoryPerfStat.MemoryItem)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+          if (localObject2 != null) {
+            paramContext.append(String.format("%s : [avg:%s, max: %s, min: %s]  KB \n", new Object[] { str, Long.valueOf(((MemoryPerfStat.MemoryItem)localObject2).c), Long.valueOf(((MemoryPerfStat.MemoryItem)localObject2).jdField_a_of_type_Long), Long.valueOf(((MemoryPerfStat.MemoryItem)localObject2).jdField_b_of_type_Long) }));
           }
         }
+        return;
       }
-      catch (Throwable paramContext)
+      catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          Iterator localIterator;
-          String str1;
-          try
-          {
-            String str2;
-            l1 = Long.parseLong(str2);
-            if (l1 == 0L) {
-              continue;
-            }
-            a(str1, l1);
-            continue;
-            paramContext = paramContext;
-            paramContext = null;
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            l1 = 0L;
-            continue;
-          }
-          a("summary.total-pss", paramContext.getTotalPss());
-          a("summary.java-heap", paramContext.dalvikPrivateDirty);
-          a("summary.native-heap", paramContext.nativePrivateDirty);
-          long l1 = Math.abs(SystemClock.elapsedRealtime() - l2);
-          if (this.jdField_b_of_type_Long == 0L) {
-            this.jdField_b_of_type_Long = l1;
-          }
-          while (QLog.isColorLevel())
-          {
-            paramContext = new StringBuilder(200);
-            paramContext.append("getMemoryInfoFromAM, cost[").append(l1).append("], avgCost[").append(this.jdField_b_of_type_Long).append("], cnt[").append(this.jdField_a_of_type_Int).append("], flag[").append(this.c).append("], \n{");
-            try
-            {
-              localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-              while (localIterator.hasNext())
-              {
-                str1 = (String)localIterator.next();
-                MemoryPerfStat.MemoryItem localMemoryItem = (MemoryPerfStat.MemoryItem)this.jdField_a_of_type_JavaUtilHashMap.get(str1);
-                if (localMemoryItem != null) {
-                  paramContext.append(String.format("%s : [avg:%s, max: %s, min: %s]  KB \n", new Object[] { str1, Long.valueOf(localMemoryItem.c), Long.valueOf(localMemoryItem.jdField_a_of_type_Long), Long.valueOf(localMemoryItem.jdField_b_of_type_Long) }));
-                }
-              }
-              this.jdField_b_of_type_Long = ((this.jdField_b_of_type_Long + l1) / 2L);
-            }
-            catch (Throwable localThrowable)
-            {
-              localThrowable.printStackTrace();
-              paramContext.append("}");
-              QLog.i("MemoryPerfStat", 2, paramContext.toString());
-              return;
-            }
-          }
-          paramContext = null;
-        }
+        localThrowable.printStackTrace();
+        paramContext.append("}");
+        QLog.i("MemoryPerfStat", 2, paramContext.toString());
       }
     }
   }
   
   private void a(String paramString, long paramLong)
   {
-    if ((paramLong == 0L) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    MemoryPerfStat.MemoryItem localMemoryItem = (MemoryPerfStat.MemoryItem)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (localMemoryItem == null)
+    if (paramLong != 0L)
     {
-      localMemoryItem = new MemoryPerfStat.MemoryItem(paramString, paramLong);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localMemoryItem);
-      return;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      MemoryPerfStat.MemoryItem localMemoryItem = (MemoryPerfStat.MemoryItem)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (localMemoryItem == null)
+      {
+        localMemoryItem = new MemoryPerfStat.MemoryItem(paramString, paramLong);
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localMemoryItem);
+        return;
+      }
+      localMemoryItem.a(paramLong);
     }
-    localMemoryItem.a(paramLong);
   }
   
   private void c()
   {
-    String str = SessionMgr.a().a().d;
+    String str = SessionMgr.a().a().c;
     this.jdField_a_of_type_JavaLangString = a();
     if (QLog.isColorLevel()) {
       QLog.i("MemoryPerfStat", 2, String.format("updatePerfInfo, peer[%s], key[%s], value[%s]", new Object[] { str, "PerfInfo", this.jdField_a_of_type_JavaLangString }));
@@ -191,12 +206,25 @@ public class MemoryPerfStat
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     localStringBuilder.append(this.jdField_a_of_type_Long);
-    MemoryPerfStat.MemoryItem localMemoryItem = (MemoryPerfStat.MemoryItem)this.jdField_a_of_type_JavaUtilHashMap.get("summary.total-pss");
-    if (localMemoryItem != null) {
-      localStringBuilder.append(';').append(localMemoryItem.c).append(';').append(localMemoryItem.jdField_a_of_type_Long).append(';').append(localMemoryItem.jdField_b_of_type_Long).append(';').append(this.c);
+    Object localObject = (MemoryPerfStat.MemoryItem)this.jdField_a_of_type_JavaUtilHashMap.get("summary.total-pss");
+    if (localObject != null)
+    {
+      localStringBuilder.append(';');
+      localStringBuilder.append(((MemoryPerfStat.MemoryItem)localObject).c);
+      localStringBuilder.append(';');
+      localStringBuilder.append(((MemoryPerfStat.MemoryItem)localObject).jdField_a_of_type_Long);
+      localStringBuilder.append(';');
+      localStringBuilder.append(((MemoryPerfStat.MemoryItem)localObject).jdField_b_of_type_Long);
+      localStringBuilder.append(';');
+      localStringBuilder.append(this.c);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("MemoryPerfStat", 2, "getStatsInfo, [" + localStringBuilder.toString() + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getStatsInfo, [");
+      ((StringBuilder)localObject).append(localStringBuilder.toString());
+      ((StringBuilder)localObject).append("]");
+      QLog.i("MemoryPerfStat", 2, ((StringBuilder)localObject).toString());
     }
     return localStringBuilder.toString();
   }
@@ -217,20 +245,37 @@ public class MemoryPerfStat
   
   public void a(int paramInt)
   {
-    if ((this.c & 0x1) == 0) {
-      this.c |= 0x1;
+    int i = this.c;
+    if ((i & 0x1) == 0) {
+      this.c = (i | 0x1);
     }
-    if (((paramInt & 0x8) == 8) && ((this.c & 0x4) == 0)) {
-      this.c |= 0x4;
+    if ((paramInt & 0x8) == 8)
+    {
+      i = this.c;
+      if ((i & 0x4) == 0) {
+        this.c = (i | 0x4);
+      }
     }
-    if (((paramInt & 0x10) == 16) && ((this.c & 0x8) == 0)) {
-      this.c |= 0x8;
+    if ((paramInt & 0x10) == 16)
+    {
+      i = this.c;
+      if ((i & 0x8) == 0) {
+        this.c = (i | 0x8);
+      }
     }
-    if (((paramInt & 0x20) == 32) && ((this.c & 0x10) == 0)) {
-      this.c |= 0x10;
+    if ((paramInt & 0x20) == 32)
+    {
+      i = this.c;
+      if ((i & 0x10) == 0) {
+        this.c = (i | 0x10);
+      }
     }
-    if (((paramInt & 0x100) == 256) && ((this.c & 0x20) == 0)) {
-      this.c |= 0x20;
+    if ((paramInt & 0x100) == 256)
+    {
+      paramInt = this.c;
+      if ((paramInt & 0x20) == 0) {
+        this.c = (paramInt | 0x20);
+      }
     }
   }
   
@@ -257,7 +302,7 @@ public class MemoryPerfStat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.perfstat.MemoryPerfStat
  * JD-Core Version:    0.7.0.1
  */

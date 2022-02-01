@@ -35,22 +35,34 @@ public class WXEmojiObject
   
   public boolean checkArgs()
   {
-    if (((this.emojiData == null) || (this.emojiData.length == 0)) && ((this.emojiPath == null) || (this.emojiPath.length() == 0)))
+    Object localObject = this.emojiData;
+    if ((localObject == null) || (localObject.length == 0))
     {
-      Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, both arguments is null");
-      return false;
+      localObject = this.emojiPath;
+      if ((localObject == null) || (((String)localObject).length() == 0)) {}
     }
-    if ((this.emojiData != null) && (this.emojiData.length > 10485760))
+    else
     {
-      Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiData is too large");
-      return false;
+      localObject = this.emojiData;
+      if ((localObject != null) && (localObject.length > 10485760)) {
+        localObject = "checkArgs fail, emojiData is too large";
+      }
     }
-    if ((this.emojiPath != null) && (getFileSize(this.emojiPath) > 10485760))
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiSize is too large");
+      Log.e("MicroMsg.SDK.WXEmojiObject", (String)localObject);
       return false;
+      localObject = this.emojiPath;
+      if ((localObject != null) && (getFileSize((String)localObject) > 10485760))
+      {
+        localObject = "checkArgs fail, emojiSize is too large";
+      }
+      else
+      {
+        return true;
+        localObject = "checkArgs fail, both arguments is null";
+      }
     }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)
@@ -82,7 +94,7 @@ public class WXEmojiObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXEmojiObject
  * JD-Core Version:    0.7.0.1
  */

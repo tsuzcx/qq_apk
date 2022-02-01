@@ -150,52 +150,26 @@ class SuperPlayerListenerCallBack
     }
   }
   
-  /* Error */
   private void internalMessage(int paramInt, Object paramObject)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 72	com/tencent/superplayer/player/SuperPlayerListenerCallBack:mCallBackEventHandler	Lcom/tencent/superplayer/player/SuperPlayerListenerCallBack$CallBackEventHandler;
-    //   6: iload_1
-    //   7: aload_2
-    //   8: invokestatic 191	android/os/Message:obtain	(Landroid/os/Handler;ILjava/lang/Object;)Landroid/os/Message;
-    //   11: astore_2
-    //   12: aload_0
-    //   13: getfield 56	com/tencent/superplayer/player/SuperPlayerListenerCallBack:mIsBlockCallback	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   16: invokevirtual 194	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   19: ifeq +17 -> 36
-    //   22: aload_0
-    //   23: getfield 49	com/tencent/superplayer/player/SuperPlayerListenerCallBack:mMessageQueue	Ljava/util/Queue;
-    //   26: aload_2
-    //   27: invokeinterface 200 2 0
-    //   32: pop
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: return
-    //   36: aload_2
-    //   37: invokevirtual 203	android/os/Message:sendToTarget	()V
-    //   40: goto -7 -> 33
-    //   43: astore_2
-    //   44: aload_0
-    //   45: monitorexit
-    //   46: aload_2
-    //   47: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	48	0	this	SuperPlayerListenerCallBack
-    //   0	48	1	paramInt	int
-    //   0	48	2	paramObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	33	43	finally
-    //   36	40	43	finally
+    try
+    {
+      paramObject = Message.obtain(this.mCallBackEventHandler, paramInt, paramObject);
+      if (this.mIsBlockCallback.get())
+      {
+        this.mMessageQueue.offer(paramObject);
+        return;
+      }
+      paramObject.sendToTarget();
+      return;
+    }
+    finally {}
   }
   
   public ISuperPlayer getPlayer()
   {
-    if ((this.mPlayerWeakReference != null) && (this.mPlayerWeakReference.get() != null)) {
+    WeakReference localWeakReference = this.mPlayerWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       return (ISuperPlayer)this.mPlayerWeakReference.get();
     }
     return null;
@@ -310,13 +284,18 @@ class SuperPlayerListenerCallBack
           }
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerListenerCallBack
  * JD-Core Version:    0.7.0.1
  */

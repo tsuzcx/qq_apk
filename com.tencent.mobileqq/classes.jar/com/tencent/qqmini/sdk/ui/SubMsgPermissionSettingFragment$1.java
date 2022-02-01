@@ -12,21 +12,21 @@ class SubMsgPermissionSettingFragment$1
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (SubMsgPermissionSettingFragment.access$000(this.this$0)) {
+    if (SubMsgPermissionSettingFragment.access$000(this.this$0))
+    {
       SubMsgPermissionSettingFragment.access$002(this.this$0, false);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
       String str = (String)paramCompoundButton.getTag();
       this.this$0.authState.setAuthState(str, paramBoolean, new SubMsgPermissionSettingFragment.1.1(this, str, paramCompoundButton, paramBoolean));
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubMsgPermissionSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

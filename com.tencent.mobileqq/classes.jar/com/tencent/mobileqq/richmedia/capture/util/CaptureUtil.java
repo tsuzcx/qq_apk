@@ -8,46 +8,37 @@ import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.aelight.camera.download.api.IAEResUtil;
+import com.tencent.aelight.camera.log.AEQLog;
+import com.tencent.aelight.camera.util.api.IMediaCodecDPC;
 import com.tencent.av.core.VcSystemInfo;
-import com.tencent.av.opengl.GraphicRenderMgr;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.util.MediaCodecDPC;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.download.AEResUtil;
-import dov.com.qq.im.ae.util.AEQLog;
 import java.util.HashMap;
 
 public class CaptureUtil
 {
-  public static int a;
-  public static boolean a;
-  public static int b;
-  public static boolean b;
+  public static int a = -1;
+  public static boolean a = false;
+  public static int b = -1;
+  public static boolean b = false;
   public static boolean c = false;
-  
-  static
-  {
-    jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Int = -1;
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-  }
   
   public static int a(int paramInt)
   {
+    int j = paramInt % 16;
     int i = paramInt;
-    if (paramInt % 16 != 0)
+    if (j != 0)
     {
-      if (paramInt % 16 < 8) {
-        i = paramInt - paramInt % 16;
+      if (j < 8) {
+        return paramInt - j;
       }
+      i = paramInt + (16 - j);
     }
-    else {
-      return i;
-    }
-    return paramInt + (16 - paramInt % 16);
+    return i;
   }
   
   public static DisplayMetrics a(Context paramContext)
@@ -58,153 +49,212 @@ public class CaptureUtil
       ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
       return localDisplayMetrics;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label28:
+      break label28;
+    }
     return null;
   }
   
   public static void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((!paramBoolean2) && (jdField_b_of_type_Boolean == paramBoolean1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("CaptureUtil", 2, "no need to update ,update recognition result : " + paramBoolean1 + " force : " + paramBoolean2);
-      }
-    }
-    do
+    StringBuilder localStringBuilder;
+    if ((!paramBoolean2) && (b == paramBoolean1))
     {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("no need to update ,update recognition result : ");
+        localStringBuilder.append(paramBoolean1);
+        localStringBuilder.append(" force : ");
+        localStringBuilder.append(paramBoolean2);
+        QLog.d("CaptureUtil", 2, localStringBuilder.toString());
+      }
       return;
-      jdField_b_of_type_Boolean = paramBoolean1;
-      SharedPreUtils.a(BaseApplicationImpl.getApplication().getSharedPreferences("CaptureUtil", 4).edit().putBoolean("capture_shared_gesture_recognize_result", paramBoolean1));
-    } while (!QLog.isColorLevel());
-    QLog.d("CaptureUtil", 2, "update sp ,update recognition result : " + paramBoolean1 + " force : " + paramBoolean2);
+    }
+    b = paramBoolean1;
+    SharedPreUtils.a(BaseApplicationImpl.getApplication().getSharedPreferences("CaptureUtil", 4).edit().putBoolean("capture_shared_gesture_recognize_result", paramBoolean1));
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("update sp ,update recognition result : ");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(" force : ");
+      localStringBuilder.append(paramBoolean2);
+      QLog.d("CaptureUtil", 2, localStringBuilder.toString());
+    }
   }
   
   public static boolean a()
   {
-    int i = 1;
-    boolean bool;
-    if (Build.VERSION.SDK_INT < 21) {
-      bool = false;
-    }
-    for (;;)
+    int i = Build.VERSION.SDK_INT;
+    boolean bool1 = true;
+    if (i < 21)
     {
-      if (!MediaCodecDPC.a())
-      {
-        i = 2;
-        bool = false;
-      }
-      if ((Build.MODEL.equals("GT-I9500")) && (Build.VERSION.SDK_INT == 18))
-      {
-        i = 6;
-        bool = false;
-      }
-      for (;;)
-      {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("param_FailCode", Integer.toString(i));
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, "actMediaCodecSupport", bool, 0L, 0L, localHashMap, "");
-        if (QLog.isColorLevel()) {
-          QLog.i("CaptureUtil", 2, "mediacodec isMediaCodecSupport:" + bool + ", code:" + i);
-        }
-        return bool;
-      }
-      bool = true;
+      i = 1;
+      bool1 = false;
+    }
+    else
+    {
       i = 0;
     }
+    if (!((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).isSwitchOpen())
+    {
+      i = 2;
+      bool1 = false;
+    }
+    int j = i;
+    boolean bool2 = bool1;
+    if (Build.MODEL.equals("GT-I9500"))
+    {
+      j = i;
+      bool2 = bool1;
+      if (Build.VERSION.SDK_INT == 18)
+      {
+        j = 6;
+        bool2 = false;
+      }
+    }
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("param_FailCode", Integer.toString(j));
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, "actMediaCodecSupport", bool2, 0L, 0L, (HashMap)localObject, "");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mediacodec isMediaCodecSupport:");
+      ((StringBuilder)localObject).append(bool2);
+      ((StringBuilder)localObject).append(", code:");
+      ((StringBuilder)localObject).append(j);
+      QLog.i("CaptureUtil", 2, ((StringBuilder)localObject).toString());
+    }
+    return bool2;
   }
   
   public static int[] a(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt3 > paramInt1) {
-      return new int[] { a((int)(paramInt2 * (1.0F * paramInt1 / paramInt3))), paramInt1 };
+      return new int[] { a((int)(paramInt2 * (paramInt1 * 1.0F / paramInt3))), paramInt1 };
     }
     return new int[] { paramInt2, paramInt3 };
   }
   
   public static int[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
   {
-    int j = a((int)(paramInt1 * paramFloat));
-    int i = a((int)(paramInt2 * paramFloat));
-    float f1 = paramInt2 * 1.0F / paramInt1;
-    float f2 = paramInt4 * 1.0F / paramInt3;
+    float f1 = paramInt1;
+    int i = a((int)(f1 * paramFloat));
+    float f2 = paramInt2;
+    int j = a((int)(f2 * paramFloat));
+    f1 = f2 * 1.0F / f1;
+    f2 = paramInt4 * 1.0F / paramInt3;
     if (f1 > f2) {
-      i = a((int)(j * f2));
+      j = a((int)(i * f2));
+    } else {
+      i = a((int)(j / f2));
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CaptureUtil", 2, "clipVideoSize(" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "," + paramInt4 + "," + paramFloat + ") = (" + j + "," + i + ")");
-      }
-      return new int[] { j, i };
-      j = a((int)(i / f2));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clipVideoSize(");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramInt4);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramFloat);
+      localStringBuilder.append(") = (");
+      localStringBuilder.append(i);
+      localStringBuilder.append(",");
+      localStringBuilder.append(j);
+      localStringBuilder.append(")");
+      QLog.d("CaptureUtil", 2, localStringBuilder.toString());
     }
+    return new int[] { i, j };
   }
   
   public static int b(int paramInt)
   {
-    switch (paramInt)
+    int i = 0;
+    if (paramInt != 0)
     {
-    case 90: 
-    default: 
-      return 0;
-    case 0: 
-      return 270;
-    case 180: 
-      return 90;
+      if (paramInt != 90)
+      {
+        if (paramInt != 180)
+        {
+          if (paramInt != 270) {
+            return 0;
+          }
+          return 180;
+        }
+        return 90;
+      }
     }
-    return 180;
+    else {
+      i = 270;
+    }
+    return i;
   }
   
   public static boolean b()
   {
-    boolean bool4 = true;
     for (;;)
     {
-      boolean bool5;
-      boolean bool3;
       boolean bool2;
+      boolean bool3;
+      boolean bool4;
       try
       {
         if (!jdField_a_of_type_Boolean)
         {
-          bool5 = GraphicRenderMgr.loadSo();
-          if (AEResUtil.c()) {
-            continue;
+          if (((IAEResUtil)QRoute.api(IAEResUtil.class)).isLightCameraBaseResNotAllExist()) {
+            break label248;
           }
           bool1 = true;
-          AEQLog.d("CaptureUtil", "PtvFilterSoLoad.getFilterSoState result = " + bool1);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("PtvFilterSoLoad.getFilterSoState result = ");
+          localStringBuilder.append(bool1);
+          AEQLog.d("CaptureUtil", localStringBuilder.toString());
           AEQLog.d("CaptureUtil", "[loadEffectSo] base so load start ");
-          if (!bool1) {
-            continue;
+          if (bool1)
+          {
+            bool2 = ((IAEResUtil)QRoute.api(IAEResUtil.class)).loadAEBaseSo();
+            bool3 = ((IAEResUtil)QRoute.api(IAEResUtil.class)).isFilterFaceSoVersionOK();
+            if ((!bool2) || (!bool3)) {
+              break label253;
+            }
+            i = 1;
+            jdField_a_of_type_Int = i;
+            break label258;
           }
-          bool3 = AEResUtil.e();
-          bool2 = AEResUtil.d();
-          if ((!bool3) || (!bool2)) {
-            continue;
-          }
-          i = 1;
-          jdField_a_of_type_Int = i;
-          break label241;
+          jdField_a_of_type_Int = 2;
+          bool2 = false;
+          bool3 = false;
+          break label258;
           jdField_a_of_type_Boolean = bool4;
           AEQLog.d("CaptureUtil", "[loadEffectSo] base so load end ");
           if (QLog.isColorLevel()) {
-            QLog.d("CaptureUtil", 2, new Object[] { "loadEffectSo, ", Boolean.valueOf(jdField_a_of_type_Boolean), "  avSo:", Boolean.valueOf(bool5), "  ptuSo:", Boolean.valueOf(bool3), "  ptuSoVersion:", Boolean.valueOf(bool2), " result:", Boolean.valueOf(bool1), "  PTV_FILTER_SO_LOADED:", Integer.valueOf(jdField_a_of_type_Int) });
+            QLog.d("CaptureUtil", 2, new Object[] { "loadEffectSo, ", Boolean.valueOf(jdField_a_of_type_Boolean), "  ptuSo:", Boolean.valueOf(bool2), "  ptuSoVersion:", Boolean.valueOf(bool3), " result:", Boolean.valueOf(bool1), "  PTV_FILTER_SO_LOADED:", Integer.valueOf(jdField_a_of_type_Int) });
           }
         }
-        boolean bool1 = jdField_a_of_type_Boolean;
+        bool1 = jdField_a_of_type_Boolean;
         return bool1;
-        bool1 = false;
-        continue;
-        int i = 0;
-        continue;
-        jdField_a_of_type_Int = 2;
-        bool2 = false;
-        bool3 = false;
       }
       finally {}
-      bool4 = false;
+      label248:
+      boolean bool1 = false;
       continue;
-      label241:
-      if ((!bool5) || (!bool3) || (!bool2)) {}
+      label253:
+      int i = 0;
+      continue;
+      label258:
+      if ((bool2) && (bool3)) {
+        bool4 = true;
+      } else {
+        bool4 = false;
+      }
     }
   }
   
@@ -217,25 +267,31 @@ public class CaptureUtil
   {
     String str1 = Build.CPU_ABI;
     String str2 = Build.CPU_ABI2;
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureUtil", 2, "isX86Platform: Build.CPU_ABI=" + str1 + " Build.CPU_ABI2=" + str2);
-    }
-    if ((str1 != null) && (!"".equals(str1)) && ("x86".equalsIgnoreCase(str1))) {}
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isX86Platform: Build.CPU_ABI=");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" Build.CPU_ABI2=");
+      localStringBuilder.append(str2);
+      QLog.d("CaptureUtil", 2, localStringBuilder.toString());
+    }
+    if ((str1 != null) && (!"".equals(str1)) && ("x86".equalsIgnoreCase(str1))) {
       return true;
-      if (VcSystemInfo.getCpuArchitecture() != 7) {
-        break;
+    }
+    if (VcSystemInfo.getCpuArchitecture() == 7)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CaptureUtil", 2, "isX86Platform: VcSystemInfo.getCpuArchitecture()=x86");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("CaptureUtil", 2, "isX86Platform: VcSystemInfo.getCpuArchitecture()=x86");
-    return true;
+      return true;
+    }
     return false;
   }
   
   public static boolean d()
   {
-    return !c();
+    return c() ^ true;
   }
   
   public static boolean e()
@@ -245,7 +301,7 @@ public class CaptureUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.util.CaptureUtil
  * JD-Core Version:    0.7.0.1
  */

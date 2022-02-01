@@ -43,51 +43,52 @@ class BlockAdView$SingleBlockAdView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131559527, this, true);
-    this.mIconView = ((ImageView)findViewById(2131371630));
-    this.mNameView = ((TextView)findViewById(2131371631));
-    this.mAdIconView = ((ImageView)findViewById(2131371629));
+    this.mLayoutInflater.inflate(2131559401, this, true);
+    this.mIconView = ((ImageView)findViewById(2131371250));
+    this.mNameView = ((TextView)findViewById(2131371251));
+    this.mAdIconView = ((ImageView)findViewById(2131371249));
   }
   
   public void setData(MiniAppInfo paramMiniAppInfo, GdtAd paramGdtAd, int paramInt)
   {
-    int i = 0;
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.iconUrl)) || (TextUtils.isEmpty(paramMiniAppInfo.name))) {
-      return;
-    }
-    boolean bool;
-    if (paramInt < 3)
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.iconUrl)))
     {
-      bool = true;
+      if (TextUtils.isEmpty(paramMiniAppInfo.name)) {
+        return;
+      }
+      int i = 0;
+      boolean bool;
+      if (paramInt < 3) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       this.mShowAdIcon = bool;
-      if (this.mIconView != null) {
-        this.mIconView.setImageDrawable(MiniAppUtils.getIcon(this.mContext, paramMiniAppInfo.iconUrl, true, 6));
+      Object localObject = this.mIconView;
+      if (localObject != null) {
+        ((ImageView)localObject).setImageDrawable(MiniAppUtils.getIcon(this.mContext, paramMiniAppInfo.iconUrl, true, 6));
       }
-      if (this.mNameView != null) {
-        this.mNameView.setText(paramMiniAppInfo.name);
+      localObject = this.mNameView;
+      if (localObject != null) {
+        ((TextView)localObject).setText(paramMiniAppInfo.name);
       }
-      if (this.mAdIconView != null)
+      paramMiniAppInfo = this.mAdIconView;
+      if (paramMiniAppInfo != null)
       {
-        paramMiniAppInfo = this.mAdIconView;
-        if (!this.mShowAdIcon) {
-          break label135;
+        if (this.mShowAdIcon) {
+          paramInt = i;
+        } else {
+          paramInt = 8;
         }
+        paramMiniAppInfo.setVisibility(paramInt);
       }
-    }
-    label135:
-    for (paramInt = i;; paramInt = 8)
-    {
-      paramMiniAppInfo.setVisibility(paramInt);
       setOnClickListener(new BlockAdView.SingleBlockAdView.1(this, paramGdtAd));
-      return;
-      bool = false;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.widget.BlockAdView.SingleBlockAdView
  * JD-Core Version:    0.7.0.1
  */

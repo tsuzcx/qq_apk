@@ -12,8 +12,12 @@ class MapActivity$1
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MapActivity", 2, "setOnItemClickListener" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramAdapterView = new StringBuilder();
+      paramAdapterView.append("setOnItemClickListener");
+      paramAdapterView.append(paramInt);
+      QLog.i("MapActivity", 2, paramAdapterView.toString());
     }
     if (this.this$0.poiAdapter.getItem(paramInt) != null) {
       this.this$0.poiAdapter.select(paramInt);
@@ -22,7 +26,7 @@ class MapActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.MapActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ import java.util.List;
 public class dn
   implements eu
 {
-  private static dn lg = null;
-  private static dn.a lo = null;
-  private static dn.a lp = null;
+  private static dn lg;
+  private static dn.a lo;
+  private static dn.a lp;
   private boolean lh = false;
   private dt li;
   private String lj = "mazu.3g.qq.com";
@@ -29,51 +29,60 @@ public class dn
     this.mContext = paramContext;
     this.lh = paramBoolean;
     this.li = paramdt;
-    if (this.lh) {
+    if (this.lh)
+    {
       if (!TextUtils.isEmpty(paramString)) {
         this.lj = paramString;
-      }
-    }
-    for (;;)
-    {
-      bM();
-      a(this);
-      return;
-      this.lj = "mazutest.3g.qq.com";
-      continue;
-      if (this.li.co() == 1) {
-        this.lj = "mazu-hk.3g.qq.com";
       } else {
-        this.lj = a(1, paramdt);
+        this.lj = "mazutest.3g.qq.com";
       }
     }
+    else if (this.li.co() == 1) {
+      this.lj = "mazu-hk.3g.qq.com";
+    } else {
+      this.lj = a(1, paramdt);
+    }
+    bM();
+    a(this);
   }
   
   private static String a(int paramInt, dt paramdt)
   {
-    Object localObject = null;
-    SparseArray localSparseArray = paramdt.cp();
-    paramdt = (dt)localObject;
-    if (localSparseArray != null) {
-      paramdt = (String)localSparseArray.get(paramInt);
+    paramdt = paramdt.cp();
+    if (paramdt != null) {
+      paramdt = (String)paramdt.get(paramInt);
+    } else {
+      paramdt = null;
     }
-    localObject = paramdt;
-    if (TextUtils.isEmpty(paramdt)) {}
-    switch (paramInt)
+    Object localObject = paramdt;
+    if (TextUtils.isEmpty(paramdt))
     {
-    default: 
-      localObject = "mazu.3g.qq.com";
-      return localObject;
-    case 1: 
-      return "mazu.3g.qq.com";
-    case 2: 
-      return "mazuburst.3g.qq.com";
-    case 3: 
-      return "183.232.125.162";
-    case 4: 
+      if (paramInt != 1)
+      {
+        if (paramInt == 2) {
+          break label69;
+        }
+        if (paramInt == 3) {
+          break label66;
+        }
+        if (paramInt == 4) {
+          break label63;
+        }
+        if (paramInt == 5) {}
+      }
+      else
+      {
+        return "mazu.3g.qq.com";
+      }
+      return "120.198.203.156";
+      label63:
       return "163.177.71.153";
+      label66:
+      return "183.232.125.162";
+      label69:
+      localObject = "mazuburst.3g.qq.com";
     }
-    return "120.198.203.156";
+    return localObject;
   }
   
   public static String a(boolean paramBoolean, dt paramdt)
@@ -121,19 +130,22 @@ public class dn
   
   private void a(String paramString, dn.a arg2, boolean paramBoolean)
   {
-    if ((paramString == null) || (??? == null) || (!???.isValid())) {
-      return;
-    }
-    dn.a locala = new dn.a(???.lq, ???.lr, ???.ls);
-    if (paramBoolean) {
-      dn.a.a(locala, k(true));
-    }
-    synchronized (this.lk)
+    if ((paramString != null) && (??? != null))
     {
-      this.lm = locala;
-      this.ln = dn.a.a(this.lm);
-      this.ll = paramString;
-      return;
+      if (!???.isValid()) {
+        return;
+      }
+      dn.a locala = new dn.a(???.lq, ???.lr, ???.ls);
+      if (paramBoolean) {
+        dn.a.a(locala, k(true));
+      }
+      synchronized (this.lk)
+      {
+        this.lm = locala;
+        this.ln = dn.a.a(this.lm);
+        this.ll = paramString;
+        return;
+      }
     }
   }
   
@@ -144,50 +156,62 @@ public class dn
   
   private String ae(int paramInt)
   {
-    Object localObject = new StringBuilder().append("");
-    String str;
-    if (this.lh)
-    {
-      str = "t_";
-      localObject = str;
-      if (paramInt != 1) {
-        break label98;
-      }
-      if (!fj.dJ()) {
-        break label92;
-      }
-      str = fj.getSSID();
-      str = "wifi_" + str;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    Object localObject1;
+    if (this.lh) {
+      localObject1 = "t_";
+    } else {
+      localObject1 = "r_";
     }
-    for (;;)
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if (paramInt == 1)
     {
-      return (String)localObject + str;
-      str = "r_";
-      break;
-      label92:
-      str = "wifi_nonessid";
-      continue;
-      label98:
-      str = "apn_" + paramInt;
+      if (fj.dJ())
+      {
+        localObject1 = fj.getSSID();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("wifi_");
+        localStringBuilder.append((String)localObject1);
+        localObject1 = localStringBuilder.toString();
+      }
+      else
+      {
+        localObject1 = "wifi_nonessid";
+      }
     }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("apn_");
+      ((StringBuilder)localObject1).append(paramInt);
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append((String)localObject1);
+    return localStringBuilder.toString();
   }
   
   private static boolean b(String paramString, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    int i = paramString.lastIndexOf(":");
+    if (i > 0)
     {
-      int i;
-      do
-      {
+      if (i == paramString.length() - 1) {
         return false;
-        i = paramString.lastIndexOf(":");
-      } while ((i <= 0) || (i == paramString.length() - 1));
-      str = paramString.substring(0, i);
+      }
+      String str = paramString.substring(0, i);
       paramString = paramString.substring(i + 1);
-    } while (((!paramBoolean) && (!s(str))) || (!TextUtils.isDigitsOnly(paramString)));
-    return true;
+      if (((paramBoolean) || (s(str))) && (TextUtils.isDigitsOnly(paramString))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public static dn bK()
@@ -209,8 +233,9 @@ public class dn
         a(str, (dn.a)???, true);
         return;
       }
+      bN();
+      return;
     }
-    bN();
   }
   
   private void bN()
@@ -227,46 +252,65 @@ public class dn
   
   private String bO()
   {
-    Object localObject = new StringBuilder().append("");
-    int i;
-    if (this.lh)
-    {
-      str = "t_";
-      localObject = str;
-      i = ee.i(this.mContext);
-      if (i != 1) {
-        break label94;
-      }
-      str = fj.getSSID();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    Object localObject1;
+    if (this.lh) {
+      localObject1 = "t_";
+    } else {
+      localObject1 = "r_";
     }
-    label94:
-    for (String str = "wifi_" + str;; str = "apn_" + i)
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    int i = ee.i(this.mContext);
+    if (i == 1)
     {
-      return (String)localObject + str;
-      str = "r_";
-      break;
+      localObject1 = fj.getSSID();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("wifi_");
+      localStringBuilder.append((String)localObject1);
+      localObject1 = localStringBuilder.toString();
     }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("apn_");
+      ((StringBuilder)localObject1).append(i);
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append((String)localObject1);
+    return localStringBuilder.toString();
   }
   
   private int bQ()
   {
-    if (4 == fh.pO) {}
-    int i;
-    do
-    {
+    if (4 == fh.pO) {
       return 2;
-      i = fg.l(this.mContext);
-    } while (-1 == i);
+    }
+    int i = fg.l(this.mContext);
+    if (-1 == i) {
+      return 2;
+    }
     return i;
   }
   
   private dn.a j(boolean paramBoolean)
   {
-    if ((paramBoolean) && (lo != null)) {
-      return lo;
+    if (paramBoolean)
+    {
+      localObject = lo;
+      if (localObject != null) {
+        return localObject;
+      }
     }
-    if ((!paramBoolean) && (lp != null)) {
-      return lp;
+    if (!paramBoolean)
+    {
+      localObject = lp;
+      if (localObject != null) {
+        return localObject;
+      }
     }
     Object localObject = k(paramBoolean);
     List localList = l(paramBoolean);
@@ -289,15 +333,13 @@ public class dn
     Object localObject = new ArrayList();
     if (paramBoolean) {
       ((List)localObject).add(Integer.valueOf(443));
-    }
-    for (;;)
-    {
-      String str = this.lj;
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localArrayList.add(String.format("%s:%d", new Object[] { str, Integer.valueOf(((Integer)((Iterator)localObject).next()).intValue()) }));
-      }
+    } else {
       ((List)localObject).add(Integer.valueOf(80));
+    }
+    String str = this.lj;
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(String.format("%s:%d", new Object[] { str, Integer.valueOf(((Integer)((Iterator)localObject).next()).intValue()) }));
     }
     return localArrayList;
   }
@@ -311,34 +353,36 @@ public class dn
     Object localObject2 = new ArrayList();
     if (paramBoolean) {
       ((List)localObject2).add(Integer.valueOf(443));
+    } else {
+      ((List)localObject2).add(Integer.valueOf(80));
     }
     Object localObject1;
-    while (this.li.co() == 1)
+    if (this.li.co() == 1)
     {
       localObject1 = ((List)localObject2).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        int i = ((Integer)((Iterator)localObject1).next()).intValue();
+        i = ((Integer)((Iterator)localObject1).next()).intValue();
         localArrayList.add(String.format("%s:%d", new Object[] { "203.205.143.147", Integer.valueOf(i) }));
         localArrayList.add(String.format("%s:%d", new Object[] { "203.205.146.46", Integer.valueOf(i) }));
         localArrayList.add(String.format("%s:%d", new Object[] { "203.205.146.45", Integer.valueOf(i) }));
       }
-      ((List)localObject2).add(Integer.valueOf(80));
     }
-    switch (bQ())
+    int i = bQ();
+    if (i != 0)
     {
-    default: 
-      localObject1 = a(5, this.li);
-    }
-    for (;;)
-    {
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        localArrayList.add(String.format("%s:%d", new Object[] { localObject1, Integer.valueOf(((Integer)((Iterator)localObject2).next()).intValue()) }));
+      if (i != 1) {
+        localObject1 = a(5, this.li);
+      } else {
+        localObject1 = a(4, this.li);
       }
-      localObject1 = a(4, this.li);
-      continue;
+    }
+    else {
       localObject1 = a(3, this.li);
+    }
+    localObject2 = ((List)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      localArrayList.add(String.format("%s:%d", new Object[] { localObject1, Integer.valueOf(((Integer)((Iterator)localObject2).next()).intValue()) }));
     }
     return localArrayList;
   }
@@ -347,81 +391,85 @@ public class dn
   {
     Object localObject2 = this.lk;
     if (paramBoolean) {}
-    do
+    try
     {
-      for (;;)
+      dn.a locala = this.lm;
+      break label24;
+      locala = this.ln;
+      label24:
+      if (locala == null)
       {
-        try
-        {
-          locala = this.lm;
-          if (locala != null) {
-            break;
-          }
-          bM();
-          return;
-        }
-        finally {}
-        dn.a locala = this.ln;
+        bM();
+        return;
       }
-    } while (localObject1.isValid());
-    bN();
+      if (!locala.isValid()) {
+        bN();
+      }
+      return;
+    }
+    finally {}
   }
   
   private static ev.a r(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    int i = paramString.lastIndexOf(":");
+    if (i > 0)
     {
-      int i;
-      do
-      {
+      if (i == paramString.length() - 1) {
         return null;
-        i = paramString.lastIndexOf(":");
-      } while ((i <= 0) || (i == paramString.length() - 1));
-      str = paramString.substring(0, i);
+      }
+      String str = paramString.substring(0, i);
       paramString = paramString.substring(i + 1);
-    } while (!TextUtils.isDigitsOnly(paramString));
-    return new ev.a(str, Integer.parseInt(paramString));
+      if (TextUtils.isDigitsOnly(paramString)) {
+        return new ev.a(str, Integer.parseInt(paramString));
+      }
+    }
+    return null;
   }
   
   private static boolean s(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      try
+    }
+    try
+    {
+      if (paramString.matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"))
       {
-        if (paramString.matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"))
+        paramString = paramString.split("\\.");
+        if (paramString.length < 4) {
+          return false;
+        }
+        if ((Integer.parseInt(paramString[0]) <= 255) && (Integer.parseInt(paramString[1]) <= 255) && (Integer.parseInt(paramString[2]) <= 255))
         {
-          paramString = paramString.split("\\.");
-          if ((paramString.length >= 4) && (Integer.parseInt(paramString[0]) <= 255) && (Integer.parseInt(paramString[1]) <= 255) && (Integer.parseInt(paramString[2]) <= 255))
-          {
-            int i = Integer.parseInt(paramString[3]);
-            if (i <= 255) {
-              return true;
-            }
+          int i = Integer.parseInt(paramString[3]);
+          if (i <= 255) {
+            return true;
           }
         }
       }
-      catch (Exception paramString) {}
+      return false;
     }
+    catch (Exception paramString) {}
     return false;
   }
   
   public void a(long paramLong, int paramInt, JceStruct paramJceStruct)
   {
-    if (paramJceStruct == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramJceStruct instanceof m));
-      localObject = (m)paramJceStruct;
-      paramJceStruct = new dn.a(System.currentTimeMillis() + 1000L * ((m)localObject).aQ, a(((m)localObject).aP, false), false);
-    } while (!paramJceStruct.isValid());
+    if (paramJceStruct == null) {
+      return;
+    }
+    if (!(paramJceStruct instanceof m)) {
+      return;
+    }
+    Object localObject = (m)paramJceStruct;
+    paramJceStruct = new dn.a(System.currentTimeMillis() + ((m)localObject).aQ * 1000L, a(((m)localObject).aP, false), false);
+    if (!paramJceStruct.isValid()) {
+      return;
+    }
     paramInt = ee.i(this.mContext);
     int i = ((m)localObject).aS;
     if (i == paramInt)
@@ -431,7 +479,7 @@ public class dn
       a((String)localObject, paramJceStruct, true);
       return;
     }
-    Object localObject = ae(i);
+    localObject = ae(i);
     this.li.a((String)localObject, paramJceStruct.lq, paramJceStruct.lr);
   }
   
@@ -442,29 +490,38 @@ public class dn
   
   public String bP()
   {
-    Object localObject1 = null;
-    Object localObject2 = n(false);
-    if (localObject2 != null)
+    Object localObject1 = n(false);
+    if (localObject1 != null)
     {
-      localObject2 = ((ev.a)localObject2).df();
+      localObject2 = ((ev.a)localObject1).df();
       localObject1 = localObject2;
       if (localObject2 != null) {
-        if (((String)localObject2).length() >= "http://".length())
+        if (((String)localObject2).length() >= 7)
         {
           localObject1 = localObject2;
-          if (((String)localObject2).substring(0, "http://".length()).equalsIgnoreCase("http://")) {}
+          if (((String)localObject2).substring(0, 7).equalsIgnoreCase("http://")) {}
         }
         else
         {
-          localObject1 = "http://" + (String)localObject2;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("http://");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          localObject1 = ((StringBuilder)localObject1).toString();
         }
       }
     }
-    localObject2 = localObject1;
+    else
+    {
+      localObject1 = null;
+    }
+    Object localObject2 = localObject1;
     if (localObject1 == null)
     {
       localObject1 = this.lj;
-      localObject2 = "http://" + (String)localObject1;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("http://");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject2 = ((StringBuilder)localObject2).toString();
     }
     return localObject2;
   }
@@ -476,7 +533,11 @@ public class dn
     if (paramBoolean) {}
     try
     {
-      for (Object localObject1 = this.lm; localObject1 != null; localObject1 = this.ln)
+      Object localObject1 = this.lm;
+      break label29;
+      localObject1 = this.ln;
+      label29:
+      if (localObject1 != null)
       {
         localObject1 = dn.a.b((dn.a)localObject1);
         return localObject1;
@@ -489,26 +550,25 @@ public class dn
   public void o(boolean paramBoolean)
   {
     m(true);
-    localObject2 = this.lk;
+    Object localObject2 = this.lk;
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        locala = this.lm;
-        if (locala != null) {
-          dn.a.c(locala);
-        }
-        return;
+      dn.a locala = this.lm;
+      break label29;
+      locala = this.ln;
+      label29:
+      if (locala != null) {
+        dn.a.c(locala);
       }
-      finally {}
-      dn.a locala = this.ln;
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.dn
  * JD-Core Version:    0.7.0.1
  */

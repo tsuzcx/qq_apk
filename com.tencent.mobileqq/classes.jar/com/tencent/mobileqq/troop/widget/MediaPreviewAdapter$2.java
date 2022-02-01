@@ -9,12 +9,13 @@ class MediaPreviewAdapter$2
   
   public void run()
   {
-    this.this$0.a(false, this.this$0.a.getSelectedItemPosition());
+    MediaPreviewAdapter localMediaPreviewAdapter = this.this$0;
+    localMediaPreviewAdapter.a(false, localMediaPreviewAdapter.a.getSelectedItemPosition());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.2
  * JD-Core Version:    0.7.0.1
  */

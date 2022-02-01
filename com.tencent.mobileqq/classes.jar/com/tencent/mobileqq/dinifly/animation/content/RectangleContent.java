@@ -58,19 +58,19 @@ public class RectangleContent
   
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
-    if (paramT == LottieProperty.RECTANGLE_SIZE) {
-      this.sizeAnimation.setValueCallback(paramLottieValueCallback);
-    }
-    do
+    if (paramT == LottieProperty.RECTANGLE_SIZE)
     {
+      this.sizeAnimation.setValueCallback(paramLottieValueCallback);
       return;
-      if (paramT == LottieProperty.POSITION)
-      {
-        this.positionAnimation.setValueCallback(paramLottieValueCallback);
-        return;
-      }
-    } while (paramT != LottieProperty.CORNER_RADIUS);
-    this.cornerRadiusAnimation.setValueCallback(paramLottieValueCallback);
+    }
+    if (paramT == LottieProperty.POSITION)
+    {
+      this.positionAnimation.setValueCallback(paramLottieValueCallback);
+      return;
+    }
+    if (paramT == LottieProperty.CORNER_RADIUS) {
+      this.cornerRadiusAnimation.setValueCallback(paramLottieValueCallback);
+    }
   }
   
   public String getName()
@@ -89,55 +89,68 @@ public class RectangleContent
       this.isPathValid = true;
       return this.path;
     }
-    PointF localPointF = (PointF)this.sizeAnimation.getValue();
-    float f3 = localPointF.x / 2.0F;
-    float f4 = localPointF.y / 2.0F;
+    Object localObject = (PointF)this.sizeAnimation.getValue();
+    float f4 = ((PointF)localObject).x / 2.0F;
+    float f5 = ((PointF)localObject).y / 2.0F;
+    localObject = this.cornerRadiusAnimation;
     float f1;
-    if (this.cornerRadiusAnimation == null)
-    {
+    if (localObject == null) {
       f1 = 0.0F;
-      float f2 = Math.min(f3, f4);
-      if (f1 <= f2) {
-        break label530;
-      }
-      f1 = f2;
+    } else {
+      f1 = ((FloatKeyframeAnimation)localObject).getFloatValue();
     }
-    label530:
-    for (;;)
+    float f3 = Math.min(f4, f5);
+    float f2 = f1;
+    if (f1 > f3) {
+      f2 = f3;
+    }
+    localObject = (PointF)this.positionAnimation.getValue();
+    this.path.moveTo(((PointF)localObject).x + f4, ((PointF)localObject).y - f5 + f2);
+    this.path.lineTo(((PointF)localObject).x + f4, ((PointF)localObject).y + f5 - f2);
+    RectF localRectF;
+    if (f2 > 0.0F)
     {
-      localPointF = (PointF)this.positionAnimation.getValue();
-      this.path.moveTo(localPointF.x + f3, localPointF.y - f4 + f1);
-      this.path.lineTo(localPointF.x + f3, localPointF.y + f4 - f1);
-      if (f1 > 0.0F)
-      {
-        this.rect.set(localPointF.x + f3 - 2.0F * f1, localPointF.y + f4 - 2.0F * f1, localPointF.x + f3, localPointF.y + f4);
-        this.path.arcTo(this.rect, 0.0F, 90.0F, false);
-      }
-      this.path.lineTo(localPointF.x - f3 + f1, localPointF.y + f4);
-      if (f1 > 0.0F)
-      {
-        this.rect.set(localPointF.x - f3, localPointF.y + f4 - 2.0F * f1, localPointF.x - f3 + 2.0F * f1, localPointF.y + f4);
-        this.path.arcTo(this.rect, 90.0F, 90.0F, false);
-      }
-      this.path.lineTo(localPointF.x - f3, localPointF.y - f4 + f1);
-      if (f1 > 0.0F)
-      {
-        this.rect.set(localPointF.x - f3, localPointF.y - f4, localPointF.x - f3 + 2.0F * f1, localPointF.y - f4 + 2.0F * f1);
-        this.path.arcTo(this.rect, 180.0F, 90.0F, false);
-      }
-      this.path.lineTo(localPointF.x + f3 - f1, localPointF.y - f4);
-      if (f1 > 0.0F)
-      {
-        this.rect.set(localPointF.x + f3 - 2.0F * f1, localPointF.y - f4, f3 + localPointF.x, localPointF.y - f4 + f1 * 2.0F);
-        this.path.arcTo(this.rect, 270.0F, 90.0F, false);
-      }
-      this.path.close();
-      this.trimPaths.apply(this.path);
-      this.isPathValid = true;
-      return this.path;
-      f1 = ((FloatKeyframeAnimation)this.cornerRadiusAnimation).getFloatValue();
-      break;
+      localRectF = this.rect;
+      f1 = ((PointF)localObject).x;
+      f3 = f2 * 2.0F;
+      localRectF.set(f1 + f4 - f3, ((PointF)localObject).y + f5 - f3, ((PointF)localObject).x + f4, ((PointF)localObject).y + f5);
+      this.path.arcTo(this.rect, 0.0F, 90.0F, false);
     }
+    this.path.lineTo(((PointF)localObject).x - f4 + f2, ((PointF)localObject).y + f5);
+    float f6;
+    if (f2 > 0.0F)
+    {
+      localRectF = this.rect;
+      f1 = ((PointF)localObject).x;
+      f3 = ((PointF)localObject).y;
+      f6 = f2 * 2.0F;
+      localRectF.set(f1 - f4, f3 + f5 - f6, ((PointF)localObject).x - f4 + f6, ((PointF)localObject).y + f5);
+      this.path.arcTo(this.rect, 90.0F, 90.0F, false);
+    }
+    this.path.lineTo(((PointF)localObject).x - f4, ((PointF)localObject).y - f5 + f2);
+    if (f2 > 0.0F)
+    {
+      localRectF = this.rect;
+      f1 = ((PointF)localObject).x;
+      f3 = ((PointF)localObject).y;
+      f6 = ((PointF)localObject).x;
+      float f7 = f2 * 2.0F;
+      localRectF.set(f1 - f4, f3 - f5, f6 - f4 + f7, ((PointF)localObject).y - f5 + f7);
+      this.path.arcTo(this.rect, 180.0F, 90.0F, false);
+    }
+    this.path.lineTo(((PointF)localObject).x + f4 - f2, ((PointF)localObject).y - f5);
+    if (f2 > 0.0F)
+    {
+      localRectF = this.rect;
+      f1 = ((PointF)localObject).x;
+      f2 *= 2.0F;
+      localRectF.set(f1 + f4 - f2, ((PointF)localObject).y - f5, ((PointF)localObject).x + f4, ((PointF)localObject).y - f5 + f2);
+      this.path.arcTo(this.rect, 270.0F, 90.0F, false);
+    }
+    this.path.close();
+    this.trimPaths.apply(this.path);
+    this.isPathValid = true;
+    return this.path;
   }
   
   public void onValueChanged()
@@ -156,11 +169,14 @@ public class RectangleContent
     while (i < paramList1.size())
     {
       paramList2 = (Content)paramList1.get(i);
-      if (((paramList2 instanceof TrimPathContent)) && (((TrimPathContent)paramList2).getType() == ShapeTrimPath.Type.SIMULTANEOUSLY))
+      if ((paramList2 instanceof TrimPathContent))
       {
         paramList2 = (TrimPathContent)paramList2;
-        this.trimPaths.addTrimPath(paramList2);
-        paramList2.addListener(this);
+        if (paramList2.getType() == ShapeTrimPath.Type.SIMULTANEOUSLY)
+        {
+          this.trimPaths.addTrimPath(paramList2);
+          paramList2.addListener(this);
+        }
       }
       i += 1;
     }
@@ -168,7 +184,7 @@ public class RectangleContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.RectangleContent
  * JD-Core Version:    0.7.0.1
  */

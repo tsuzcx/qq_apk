@@ -21,61 +21,67 @@ public class QZoneDNSAnalyzeJsPlugin
   
   private void callJS(String paramString1, int paramInt, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is null");
-    }
-    for (;;)
+    if (TextUtils.isEmpty(paramString1))
     {
+      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is null");
       return;
-      JSONObject localJSONObject = new JSONObject();
-      try
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("ret", paramInt);
+      localJSONObject.put("host_ip", paramString2);
+      paramString2 = localJSONObject.toString();
+      if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null))
       {
-        localJSONObject.put("ret", paramInt);
-        localJSONObject.put("host_ip", paramString2);
-        paramString2 = localJSONObject.toString();
-        if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null))
-        {
-          this.parentPlugin.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
-          return;
-        }
+        this.parentPlugin.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
+        return;
       }
-      catch (Exception paramString1)
-      {
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, paramString1.getMessage());
-      }
+    }
+    catch (Exception paramString1)
+    {
+      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, paramString1.getMessage());
     }
   }
   
   private void handleGetHostIpAddress(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
+    if (paramArrayOfString != null)
     {
-      return;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-      paramWebViewPlugin = paramArrayOfString.optString("host");
-      paramArrayOfString = paramArrayOfString.optString("callback");
-      if (TextUtils.isEmpty(paramArrayOfString))
-      {
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is empty.");
+      if (paramArrayOfString.length == 0) {
         return;
       }
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      if (paramWebViewPlugin != null)
+      {
+        if (paramWebViewPlugin.isFinishing()) {
+          return;
+        }
+        try
+        {
+          paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+          paramWebViewPlugin = paramArrayOfString.optString("host");
+          paramArrayOfString = paramArrayOfString.optString("callback");
+          boolean bool = TextUtils.isEmpty(paramArrayOfString);
+          if (bool)
+          {
+            QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is empty.");
+            return;
+          }
+          if (TextUtils.isEmpty(paramWebViewPlugin))
+          {
+            QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "host is empty.");
+            return;
+          }
+          QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.1(this, paramWebViewPlugin, paramArrayOfString));
+          return;
+        }
+        catch (JSONException paramWebViewPlugin)
+        {
+          paramWebViewPlugin.printStackTrace();
+        }
+      }
     }
-    catch (JSONException paramWebViewPlugin)
-    {
-      paramWebViewPlugin.printStackTrace();
-      return;
-    }
-    if (TextUtils.isEmpty(paramWebViewPlugin))
-    {
-      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "host is empty.");
-      return;
-    }
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.1(this, paramWebViewPlugin, paramArrayOfString));
   }
   
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -94,17 +100,23 @@ public class QZoneDNSAnalyzeJsPlugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!paramString2.equals("Qzone")) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {}
-    while (!paramString3.equalsIgnoreCase("getHostIpAddress")) {
-      return false;
+    if ((paramString2.equals("Qzone")) && (this.parentPlugin != null))
+    {
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if (paramString3.equalsIgnoreCase("getHostIpAddress"))
+      {
+        handleGetHostIpAddress(this.parentPlugin, paramVarArgs);
+        return true;
+      }
     }
-    handleGetHostIpAddress(this.parentPlugin, paramVarArgs);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin
  * JD-Core Version:    0.7.0.1
  */

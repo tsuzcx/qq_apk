@@ -7,10 +7,10 @@ import java.util.Set;
 
 public class SDKDeviceConfig
 {
-  private int cpu_level;
+  private int cpuLevel;
   private String device = "ARM";
   private Map<String, String> infos;
-  private boolean smooth_enable;
+  private boolean smoothEnable;
   
   public String getDevice()
   {
@@ -19,17 +19,22 @@ public class SDKDeviceConfig
   
   public String getInfos()
   {
-    if ((this.infos == null) || (this.infos.size() < 1)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.infos.entrySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.infos;
+    if ((localObject != null) && (((Map)localObject).size() >= 1))
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      localStringBuilder.append((String)localEntry.getKey()).append(" ").append((String)localEntry.getValue()).append(" ");
+      localObject = new StringBuilder();
+      Iterator localIterator = this.infos.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        ((StringBuilder)localObject).append((String)localEntry.getKey());
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append((String)localEntry.getValue());
+        ((StringBuilder)localObject).append(" ");
+      }
+      return ((StringBuilder)localObject).toString().trim();
     }
-    return localStringBuilder.toString().trim();
+    return "";
   }
   
   public void setDevice(String paramString)
@@ -44,7 +49,7 @@ public class SDKDeviceConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.gyailib.library.SDKDeviceConfig
  * JD-Core Version:    0.7.0.1
  */

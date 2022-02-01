@@ -20,7 +20,6 @@ final class en$a
   @SuppressLint({"NewApi", "MissingPermission"})
   public final void handleMessage(Message arg1)
   {
-    int i = 0;
     if (!this.b.a) {
       return;
     }
@@ -38,8 +37,11 @@ final class en$a
     }
     if (??? != null)
     {
+      int i;
       if (System.currentTimeMillis() - ???.i < 3000L) {
         i = 1;
+      } else {
+        i = 0;
       }
       if (i != 0) {}
     }
@@ -66,11 +68,15 @@ final class en$a
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.en.a
  * JD-Core Version:    0.7.0.1
  */

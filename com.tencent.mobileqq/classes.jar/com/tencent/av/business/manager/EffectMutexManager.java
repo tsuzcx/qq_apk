@@ -23,8 +23,13 @@ public class EffectMutexManager
     if (paramIMutexItem == null) {
       return;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.w("EffectMutexManager", 1, "registerMutexItem, key[" + paramInt + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("registerMutexItem, key[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.w("EffectMutexManager", 1, localStringBuilder.toString());
     }
     this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
     this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramIMutexItem);
@@ -32,8 +37,15 @@ public class EffectMutexManager
   
   public void a(int paramInt, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("EffectMutexManager", 1, "notifyMutex, fromMuteKey[" + paramInt + "], data[" + paramString + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyMutex, fromMuteKey[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], data[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.w("EffectMutexManager", 1, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new EffectMutexManager.1(this, paramInt, paramString));
   }
@@ -45,7 +57,7 @@ public class EffectMutexManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.EffectMutexManager
  * JD-Core Version:    0.7.0.1
  */

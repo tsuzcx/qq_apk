@@ -2,19 +2,19 @@ package com.tencent.biz.qrcode.activity;
 
 import android.text.TextUtils;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.api.observer.TroopModifyObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class QRDisplayActivity$2
-  extends BizTroopObserver
+  extends TroopModifyObserver
 {
   QRDisplayActivity$2(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onUpdateTroopSearchApproachPageTroopInfoUpdated(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, String paramString)
   {
     if ((TextUtils.equals(this.a.c, paramString)) && (paramBoolean))
     {
@@ -26,7 +26,7 @@ class QRDisplayActivity$2
       {
         paramString = paramString.b(this.a.c);
         if ((paramString != null) && (!paramString.isNewTroop)) {
-          ((TextView)this.a.findViewById(2131368116)).setVisibility(8);
+          ((TextView)this.a.findViewById(2131367869)).setVisibility(8);
         }
       }
     }
@@ -34,7 +34,7 @@ class QRDisplayActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.2
  * JD-Core Version:    0.7.0.1
  */

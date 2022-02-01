@@ -15,24 +15,23 @@ import java.util.Locale;
 
 public class SystemUtils
 {
-  private static String a()
-  {
-    return getSystemProperties("ro.product.locale.region", "");
-  }
-  
-  private static String b()
+  public static String a()
   {
     return getSystemProperties("ro.product.locale", "");
   }
   
+  public static String b()
+  {
+    return getSystemProperties("ro.product.locale.region", "");
+  }
+  
   public static String getLocalCountry()
   {
-    String str = "";
     Locale localLocale = Locale.getDefault();
     if (localLocale != null) {
-      str = localLocale.getCountry();
+      return localLocale.getCountry();
     }
-    return str;
+    return "";
   }
   
   public static String getNetType(Context paramContext)
@@ -55,45 +54,30 @@ public class SystemUtils
   {
     try
     {
-      Object localObject = Class.forName("android.os.SystemProperties");
+      localObject = Class.forName("android.os.SystemProperties");
       localObject = (String)((Class)localObject).getDeclaredMethod("get", new Class[] { String.class, String.class }).invoke(localObject, new Object[] { paramString1, paramString2 });
       return localObject;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    catch (ClassNotFoundException|NoSuchMethodException|IllegalAccessException|IllegalArgumentException|InvocationTargetException|ClassCastException localClassNotFoundException)
     {
-      HMSLog.e("SystemUtils", "An exception occurred while reading: getSystemProperties:" + paramString1);
-      return paramString2;
+      Object localObject;
+      label48:
+      break label48;
     }
-    catch (ClassCastException localClassCastException)
-    {
-      break label49;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      break label49;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      break label49;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      break label49;
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      label49:
-      break label49;
-    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("An exception occurred while reading: getSystemProperties:");
+    ((StringBuilder)localObject).append(paramString1);
+    HMSLog.e("SystemUtils", ((StringBuilder)localObject).toString());
+    return paramString2;
   }
   
   public static boolean isChinaROM()
   {
-    String str = a();
+    String str = b();
     if (!TextUtils.isEmpty(str)) {
       return "cn".equalsIgnoreCase(str);
     }
-    str = b();
+    str = a();
     if (!TextUtils.isEmpty(str)) {
       return str.toLowerCase(Locale.US).contains("cn");
     }
@@ -106,7 +90,10 @@ public class SystemUtils
   
   public static boolean isEMUI()
   {
-    HMSLog.i("SystemUtils", "is Emui :" + HwBuildEx.VERSION.EMUI_SDK_INT);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("is Emui :");
+    localStringBuilder.append(HwBuildEx.VERSION.EMUI_SDK_INT);
+    HMSLog.i("SystemUtils", localStringBuilder.toString());
     return HwBuildEx.VERSION.EMUI_SDK_INT > 0;
   }
   
@@ -115,19 +102,16 @@ public class SystemUtils
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 16384);
-      if ((paramContext != null) && ((paramContext.applicationInfo.flags & 0x1) > 0)) {
-        return true;
-      }
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      for (;;)
-      {
-        HMSLog.e("SystemUtils", "isSystemApp Exception: " + paramContext);
-        paramContext = null;
-      }
+      paramString = new StringBuilder();
+      paramString.append("isSystemApp Exception: ");
+      paramString.append(paramContext);
+      HMSLog.e("SystemUtils", paramString.toString());
+      paramContext = null;
     }
-    return false;
+    return (paramContext != null) && ((paramContext.applicationInfo.flags & 0x1) > 0);
   }
   
   public static boolean isTVDevice()
@@ -137,7 +121,7 @@ public class SystemUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.android.SystemUtils
  * JD-Core Version:    0.7.0.1
  */

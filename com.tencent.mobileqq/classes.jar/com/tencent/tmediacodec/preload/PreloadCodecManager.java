@@ -58,36 +58,55 @@ public final class PreloadCodecManager
     if (localSurface != null) {
       try
       {
-        TMediaCodec localTMediaCodec = TMediaCodec.createDecoderByType(paramString);
-        localTMediaCodec.configure(getPreloadMediaFormat(paramString), localSurface, (MediaCrypto)null, 0);
-        localTMediaCodec.start();
-        localTMediaCodec.stop();
-        localTMediaCodec.release();
-        LogUtils.d("PreloadCodecManager", "preloadCodecByMimeType sampleMimeType:" + paramString + " surface:" + localSurface + " success");
+        localObject = TMediaCodec.createDecoderByType(paramString);
+        ((TMediaCodec)localObject).configure(getPreloadMediaFormat(paramString), localSurface, (MediaCrypto)null, 0);
+        ((TMediaCodec)localObject).start();
+        ((TMediaCodec)localObject).stop();
+        ((TMediaCodec)localObject).release();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("preloadCodecByMimeType sampleMimeType:");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" surface:");
+        ((StringBuilder)localObject).append(localSurface);
+        ((StringBuilder)localObject).append(" success");
+        LogUtils.d("PreloadCodecManager", ((StringBuilder)localObject).toString());
         return;
       }
       catch (Throwable localThrowable)
       {
-        LogUtils.w("PreloadCodecManager", "preloadCodecByMimeType sampleMimeType:" + paramString + " exception...", localThrowable);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("preloadCodecByMimeType sampleMimeType:");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" exception...");
+        LogUtils.w("PreloadCodecManager", ((StringBuilder)localObject).toString(), localThrowable);
         return;
       }
     }
-    LogUtils.w("PreloadCodecManager", "preloadCodecByMimeType sampleMimeType:" + paramString + " failed...");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("preloadCodecByMimeType sampleMimeType:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" failed...");
+    LogUtils.w("PreloadCodecManager", localStringBuilder.toString());
   }
   
   public final void preload(@NonNull Set<String> paramSet)
   {
-    if ((this.isPreloaded) || (Build.VERSION.SDK_INT < 17))
+    if ((!this.isPreloaded) && (Build.VERSION.SDK_INT >= 17))
     {
-      LogUtils.w("PreloadCodecManager", "preload codec return, for isPreload:" + this.isPreloaded + " apiLevel:" + Build.VERSION.SDK_INT);
+      ThreadManager.execute(new PreloadCodecManager.1(this, paramSet));
       return;
     }
-    ThreadManager.execute(new PreloadCodecManager.1(this, paramSet));
+    paramSet = new StringBuilder();
+    paramSet.append("preload codec return, for isPreload:");
+    paramSet.append(this.isPreloaded);
+    paramSet.append(" apiLevel:");
+    paramSet.append(Build.VERSION.SDK_INT);
+    LogUtils.w("PreloadCodecManager", paramSet.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.preload.PreloadCodecManager
  * JD-Core Version:    0.7.0.1
  */

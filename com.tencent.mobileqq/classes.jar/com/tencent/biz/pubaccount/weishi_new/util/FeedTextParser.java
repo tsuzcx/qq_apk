@@ -28,26 +28,25 @@ public class FeedTextParser
   
   public static FeedTextParser.InnerSpannableBuilder a(CharSequence paramCharSequence, int paramInt, FeedRichTextView.OnElementClickListener paramOnElementClickListener, Drawable.Callback paramCallback)
   {
-    FeedTextParser.InnerSpannableBuilder localInnerSpannableBuilder = null;
     if (!TextUtils.isEmpty(paramCharSequence))
     {
-      localInnerSpannableBuilder = new FeedTextParser.InnerSpannableBuilder(paramCharSequence);
-      a(localInnerSpannableBuilder, paramOnElementClickListener);
-      b(localInnerSpannableBuilder, paramOnElementClickListener);
-      a(localInnerSpannableBuilder, paramInt, paramCallback);
+      paramCharSequence = new FeedTextParser.InnerSpannableBuilder(paramCharSequence);
+      a(paramCharSequence, paramOnElementClickListener);
+      b(paramCharSequence, paramOnElementClickListener);
+      a(paramCharSequence, paramInt, paramCallback);
+      return paramCharSequence;
     }
-    return localInnerSpannableBuilder;
+    return null;
   }
   
   private static FeedTextParser.WSTopic a(String paramString1, String paramString2)
   {
     int j = paramString1.indexOf("tid:");
-    int k = "tid:".length();
     int i = paramString1.indexOf(paramString2);
     if (i == -1) {
       return new FeedTextParser.WSTopic("", "");
     }
-    String str = paramString1.substring(j + k, i);
+    String str = paramString1.substring(j + 4, i);
     j = paramString1.length();
     paramString1 = paramString1.substring(i + paramString2.length(), j - 1);
     try
@@ -57,10 +56,7 @@ public class FeedTextParser
     }
     catch (Exception paramString2)
     {
-      for (;;)
-      {
-        paramString2.printStackTrace();
-      }
+      paramString2.printStackTrace();
     }
     return new FeedTextParser.WSTopic(str, paramString1);
   }
@@ -68,12 +64,11 @@ public class FeedTextParser
   private static FeedTextParser.WSUser a(String paramString1, String paramString2)
   {
     int j = paramString1.indexOf("uid:");
-    int k = "uid:".length();
     int i = paramString1.indexOf(paramString2);
     if (i == -1) {
       return new FeedTextParser.WSUser("", "");
     }
-    String str = paramString1.substring(j + k, i);
+    String str = paramString1.substring(j + 4, i);
     j = paramString1.length();
     paramString1 = paramString1.substring(i + paramString2.length(), j - 1);
     try
@@ -83,10 +78,7 @@ public class FeedTextParser
     }
     catch (Exception paramString2)
     {
-      for (;;)
-      {
-        paramString2.printStackTrace();
-      }
+      paramString2.printStackTrace();
     }
     return new FeedTextParser.WSUser(str, paramString1);
   }
@@ -108,10 +100,14 @@ public class FeedTextParser
         String str1 = localMatcher.group();
         FeedTextParser.WSUser localWSUser = a(str1, ",nick:");
         String str2 = localWSUser.a;
-        String str3 = " @" + localWSUser.b + " ";
-        paramInnerSpannableBuilder.replace(j, k - i, str3);
-        i += str1.length() - str3.length();
-        k = str3.length() + j;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" @");
+        ((StringBuilder)localObject).append(localWSUser.b);
+        ((StringBuilder)localObject).append(" ");
+        localObject = ((StringBuilder)localObject).toString();
+        paramInnerSpannableBuilder.replace(j, k - i, (CharSequence)localObject);
+        i += str1.length() - ((String)localObject).length();
+        k = ((String)localObject).length() + j;
         paramInnerSpannableBuilder.setSpan(new FeedTextParser.1(paramOnElementClickListener, str2), j, k, 33);
         paramInnerSpannableBuilder.setSpan(new StyleSpan(1), j, k, 33);
         localArrayList.add(localWSUser);
@@ -131,62 +127,59 @@ public class FeedTextParser
       return;
     }
     Matcher localMatcher = c.matcher(paramInnerSpannableBuilder);
-    label14:
-    int i;
-    int j;
-    String str;
-    if (localMatcher.find())
+    while (localMatcher.find())
     {
-      i = localMatcher.start();
-      j = localMatcher.end();
-      str = paramInnerSpannableBuilder.subSequence(i, j).toString();
-      if (!jdField_a_of_type_JavaUtilHashMap.containsKey(str)) {
-        break label288;
+      int i = localMatcher.start();
+      int j = localMatcher.end();
+      String str = paramInnerSpannableBuilder.subSequence(i, j).toString();
+      if (jdField_a_of_type_JavaUtilHashMap.containsKey(str)) {
+        paramCallback = (Drawable)jdField_a_of_type_JavaUtilHashMap.get(str);
+      } else {
+        paramCallback = null;
       }
-    }
-    label288:
-    for (Object localObject = (Drawable)jdField_a_of_type_JavaUtilHashMap.get(str);; localObject = null)
-    {
+      Object localObject = paramCallback;
+      if (paramCallback == null) {
+        localObject = QzoneEmotionUtils.getDrawable(str);
+      }
       paramCallback = (Drawable.Callback)localObject;
-      if (localObject == null) {
-        paramCallback = QzoneEmotionUtils.getDrawable(str);
-      }
-      localObject = paramCallback;
       int k;
-      if (paramCallback == null)
-      {
-        k = Patterns.a(str);
-        localObject = paramCallback;
-        if (k > -1)
-        {
-          localObject = paramCallback;
-          if (k < Patterns.b.length) {
-            localObject = EmoWindow.a(k, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density, BaseApplicationImpl.getContext(), null);
-          }
-        }
-      }
-      paramCallback = (Drawable.Callback)localObject;
       if (localObject == null)
       {
-        k = Patterns.b(str);
-        WSLog.b("emotion", "emotion code:" + str + ",index:" + k);
+        k = Patterns.a(str);
         paramCallback = (Drawable.Callback)localObject;
         if (k > -1)
         {
           paramCallback = (Drawable.Callback)localObject;
-          if (k < Patterns.c.length) {
-            paramCallback = EmoWindow.b(k, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density, BaseApplicationImpl.getContext(), null);
+          if (k < Patterns.b.length) {
+            paramCallback = EmoWindow.a(k, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density, BaseApplicationImpl.getContext(), null);
           }
         }
       }
-      if (paramCallback == null) {
-        break label14;
+      localObject = paramCallback;
+      if (paramCallback == null)
+      {
+        k = Patterns.b(str);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("emotion code:");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(",index:");
+        ((StringBuilder)localObject).append(k);
+        WSLog.b("emotion", ((StringBuilder)localObject).toString());
+        localObject = paramCallback;
+        if (k > -1)
+        {
+          localObject = paramCallback;
+          if (k < Patterns.c.length) {
+            localObject = EmoWindow.b(k, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density, BaseApplicationImpl.getContext(), null);
+          }
+        }
       }
-      jdField_a_of_type_JavaUtilHashMap.put(str, paramCallback);
-      paramCallback.setBounds(new Rect(0, 0, paramInt, paramInt));
-      paramInnerSpannableBuilder.setSpan(new VerticalCenterImageSpan(paramCallback, 0), i, j, 33);
-      break label14;
-      break;
+      if (localObject != null)
+      {
+        jdField_a_of_type_JavaUtilHashMap.put(str, localObject);
+        ((Drawable)localObject).setBounds(new Rect(0, 0, paramInt, paramInt));
+        paramInnerSpannableBuilder.setSpan(new VerticalCenterImageSpan((Drawable)localObject, 0), i, j, 33);
+      }
     }
   }
   
@@ -207,10 +200,14 @@ public class FeedTextParser
         String str1 = localMatcher.group();
         FeedTextParser.WSTopic localWSTopic = a(str1, ",name:");
         String str2 = localWSTopic.a;
-        String str3 = " #" + localWSTopic.b + " ";
-        paramInnerSpannableBuilder.replace(j, k - i, str3);
-        i += str1.length() - str3.length();
-        k = str3.length() + j;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" #");
+        ((StringBuilder)localObject).append(localWSTopic.b);
+        ((StringBuilder)localObject).append(" ");
+        localObject = ((StringBuilder)localObject).toString();
+        paramInnerSpannableBuilder.replace(j, k - i, (CharSequence)localObject);
+        i += str1.length() - ((String)localObject).length();
+        k = ((String)localObject).length() + j;
         paramInnerSpannableBuilder.setSpan(new FeedTextParser.2(paramOnElementClickListener, str2), j, k, 33);
         paramInnerSpannableBuilder.setSpan(new StyleSpan(1), j, k, 33);
         localArrayList.add(localWSTopic);
@@ -226,7 +223,7 @@ public class FeedTextParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.FeedTextParser
  * JD-Core Version:    0.7.0.1
  */

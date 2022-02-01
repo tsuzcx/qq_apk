@@ -54,15 +54,16 @@ public class ShakaEffectItem
   public Map<String, Float> getValueMap(int paramInt, float paramFloat)
   {
     HashMap localHashMap = new HashMap();
-    if (this.filterType == ShakaFilterFactory.FILTER_TYPE.CUSTOM.value) {}
-    for (Object localObject = this.customParams;; localObject = this.valueMap)
+    if (this.filterType == ShakaFilterFactory.FILTER_TYPE.CUSTOM.value) {
+      localObject = this.customParams;
+    } else {
+      localObject = this.valueMap;
+    }
+    Object localObject = ((Map)localObject).entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localObject = ((Map)localObject).entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        localHashMap.put(localEntry.getKey(), Float.valueOf((float)FabbyUtil.getRangeValue(paramInt, paramFloat, (List)localEntry.getValue(), 0.0D)));
-      }
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+      localHashMap.put(localEntry.getKey(), Float.valueOf((float)FabbyUtil.getRangeValue(paramInt, paramFloat, (List)localEntry.getValue(), 0.0D)));
     }
     return localHashMap;
   }
@@ -107,7 +108,7 @@ public class ShakaEffectItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.model.ShakaEffectItem
  * JD-Core Version:    0.7.0.1
  */

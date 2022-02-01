@@ -23,23 +23,32 @@ public final class ka
   {
     super(512, 512);
     this.a = paramTileOverlayOptions;
-    if (paramLanguage != null) {}
-    for (this.e = paramLanguage;; this.e = Language.zh)
-    {
-      this.b = jx.a();
-      this.c = jx.b();
-      this.d = jx.c();
-      if (this.a != null) {
-        this.a.versionInfo(b());
-      }
-      this.f = paramjg;
-      return;
+    if (paramLanguage != null) {
+      this.e = paramLanguage;
+    } else {
+      this.e = Language.zh;
     }
+    this.b = jx.a();
+    this.c = jx.b();
+    this.d = jx.c();
+    paramTileOverlayOptions = this.a;
+    if (paramTileOverlayOptions != null) {
+      paramTileOverlayOptions.versionInfo(b());
+    }
+    this.f = paramjg;
   }
   
   private String b()
   {
-    return this.c + File.separator + this.b + File.separator + this.d + File.separator + this.e.name();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.e.name());
+    return localStringBuilder.toString();
   }
   
   public final void a()
@@ -47,8 +56,9 @@ public final class ka
     this.b = jx.a();
     this.c = jx.b();
     this.d = jx.c();
-    if (this.a != null) {
-      this.a.versionInfo(b());
+    TileOverlayOptions localTileOverlayOptions = this.a;
+    if (localTileOverlayOptions != null) {
+      localTileOverlayOptions.versionInfo(b());
     }
   }
   
@@ -59,54 +69,59 @@ public final class ka
       return null;
     }
     int[] arrayOfInt = jx.h();
-    if (arrayOfInt.length == 0) {}
-    int i;
-    String str;
-    for (localObject = ((String)localObject).replaceFirst("\\{range\\}", "");; str = localMalformedURLException.replaceFirst("\\{range\\}", Integer.toString(i)))
+    if (arrayOfInt.length == 0)
     {
-      localObject = ((String)localObject).replaceFirst("\\{z\\}", Integer.toString(paramInt3)).replaceFirst("\\{x\\}", Integer.toString(paramInt1)).replaceFirst("\\{y\\}", Integer.toString(paramInt2)).replaceFirst("\\{style\\}", Integer.toString(this.b)).replaceFirst("\\{scene\\}", Integer.toString(this.c)).replaceFirst("\\{version\\}", Integer.toString(this.d)).replaceFirst("\\{ch\\}", this.e.name());
-      try
-      {
-        localObject = new URL((String)localObject);
-        return localObject;
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        or.b(Log.getStackTraceString(localMalformedURLException));
-        return null;
-      }
+      localObject = ((String)localObject).replaceFirst("\\{range\\}", "");
+    }
+    else
+    {
       int k = arrayOfInt.length;
       int j = (paramInt1 + paramInt2) % k;
-      i = j;
+      int i = j;
       if (j * k < 0) {
         i = j + k;
       }
+      localObject = ((String)localObject).replaceFirst("\\{range\\}", Integer.toString(i));
     }
+    localObject = ((String)localObject).replaceFirst("\\{z\\}", Integer.toString(paramInt3)).replaceFirst("\\{x\\}", Integer.toString(paramInt1)).replaceFirst("\\{y\\}", Integer.toString(paramInt2)).replaceFirst("\\{style\\}", Integer.toString(this.b)).replaceFirst("\\{scene\\}", Integer.toString(this.c)).replaceFirst("\\{version\\}", Integer.toString(this.d)).replaceFirst("\\{ch\\}", this.e.name());
+    try
+    {
+      localObject = new URL((String)localObject);
+      return localObject;
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      or.b(Log.getStackTraceString(localMalformedURLException));
+    }
+    return null;
   }
   
   public final NetResponse requestTileData(String paramString)
   {
-    Object localObject = null;
     NetResponse localNetResponse = super.requestTileData(paramString);
-    paramString = localObject;
     if (localNetResponse != null) {
       paramString = localNetResponse.data;
+    } else {
+      paramString = null;
     }
-    if ((paramString != null) && (paramString.length != 0) && (this.f != null))
+    if ((paramString != null) && (paramString.length != 0))
     {
       paramString = this.f;
-      if (paramString.d == null) {
-        paramString.d = new jg.f((byte)0);
+      if (paramString != null)
+      {
+        if (paramString.d == null) {
+          paramString.d = new jg.f((byte)0);
+        }
+        paramString = paramString.d;
+        paramString.a += 1;
       }
-      paramString = paramString.d;
-      paramString.a += 1;
     }
     return localNetResponse;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ka
  * JD-Core Version:    0.7.0.1
  */

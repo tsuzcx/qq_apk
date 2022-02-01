@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
+import com.tencent.mobileqq.subaccount.api.ISubAccountProtocService;
 import com.tencent.qphone.base.util.QLog;
 
 public class GetSubAccount
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    SubAccountProtocManager localSubAccountProtocManager = (SubAccountProtocManager)this.a.a.getManager(QQManagerFactory.MGR_SUB_ACNT);
-    if (localSubAccountProtocManager != null) {
-      localSubAccountProtocManager.a();
+    ISubAccountProtocService localISubAccountProtocService = (ISubAccountProtocService)this.mAutomator.a.getRuntimeService(ISubAccountProtocService.class, "");
+    if (localISubAccountProtocService != null) {
+      localISubAccountProtocService.getBindAccount();
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "subaccount onGetSubAccountBind start int QQInitHandler...");
@@ -24,7 +23,7 @@ public class GetSubAccount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetSubAccount
  * JD-Core Version:    0.7.0.1
  */

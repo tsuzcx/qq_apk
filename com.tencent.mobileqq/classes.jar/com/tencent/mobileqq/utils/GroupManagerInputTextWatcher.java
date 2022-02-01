@@ -8,18 +8,13 @@ public class GroupManagerInputTextWatcher
 {
   public void afterTextChanged(Editable paramEditable)
   {
-    int i;
-    if ((paramEditable != null) && (paramEditable.toString().getBytes().length > 24)) {
-      i = 1;
-    }
-    for (;;)
+    if ((paramEditable != null) && (paramEditable.toString().getBytes().length > 24))
     {
-      if ((i >= paramEditable.length()) || (paramEditable.toString().substring(0, i).getBytes().length > 24))
-      {
-        paramEditable.replace(0, paramEditable.length(), paramEditable.toString().substring(0, i - 1));
-        return;
+      int i = 1;
+      while ((i < paramEditable.length()) && (paramEditable.toString().substring(0, i).getBytes().length <= 24)) {
+        i += 1;
       }
-      i += 1;
+      paramEditable.replace(0, paramEditable.length(), paramEditable.toString().substring(0, i - 1));
     }
   }
   
@@ -29,7 +24,7 @@ public class GroupManagerInputTextWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.GroupManagerInputTextWatcher
  * JD-Core Version:    0.7.0.1
  */

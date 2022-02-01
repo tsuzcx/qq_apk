@@ -23,9 +23,10 @@ class EcShopAssistantManager$EcShopAssistantDownloadListener
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      Object localObject = (EcShopAssistantManager)this.a.get();
+      localObject = (EcShopAssistantManager)((WeakReference)localObject).get();
       if (localObject != null)
       {
         QQAppInterface localQQAppInterface = ((EcShopAssistantManager)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -41,7 +42,18 @@ class EcShopAssistantManager$EcShopAssistantDownloadListener
           if (((File)localObject).exists()) {
             l = ((File)localObject).lastModified();
           }
-          QLog.d("EcShopAssistantManager", 2, "download onDone status=" + paramDownloadTask.a() + ",errCode=" + paramDownloadTask.a + ",httpCode=" + paramDownloadTask.f + ",local lastModify=" + l + ",server lastModify=" + paramDownloadTask.i);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("download onDone status=");
+          ((StringBuilder)localObject).append(paramDownloadTask.a());
+          ((StringBuilder)localObject).append(",errCode=");
+          ((StringBuilder)localObject).append(paramDownloadTask.a);
+          ((StringBuilder)localObject).append(",httpCode=");
+          ((StringBuilder)localObject).append(paramDownloadTask.f);
+          ((StringBuilder)localObject).append(",local lastModify=");
+          ((StringBuilder)localObject).append(l);
+          ((StringBuilder)localObject).append(",server lastModify=");
+          ((StringBuilder)localObject).append(paramDownloadTask.i);
+          QLog.d("EcShopAssistantManager", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
@@ -49,7 +61,7 @@ class EcShopAssistantManager$EcShopAssistantDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager.EcShopAssistantDownloadListener
  * JD-Core Version:    0.7.0.1
  */

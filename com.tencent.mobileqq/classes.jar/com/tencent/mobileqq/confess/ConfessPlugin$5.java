@@ -22,115 +22,125 @@ class ConfessPlugin$5
   
   public void run()
   {
-    Object localObject3 = this.this$0.mRuntime.a();
+    Object localObject2 = this.this$0.mRuntime.a();
     Object localObject4 = this.this$0.mRuntime.a();
     Object localObject1;
     if (QLog.isColorLevel())
     {
-      localObject1 = new StringBuilder().append("activity=").append(localObject3).append("  app=").append(localObject4).append(" finishing?");
-      if ((localObject3 == null) || (!((Activity)localObject3).isFinishing())) {
-        break label126;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("activity=");
+      ((StringBuilder)localObject1).append(localObject2);
+      ((StringBuilder)localObject1).append("  app=");
+      ((StringBuilder)localObject1).append(localObject4);
+      ((StringBuilder)localObject1).append(" finishing?");
+      boolean bool;
+      if ((localObject2 != null) && (((Activity)localObject2).isFinishing())) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      ((StringBuilder)localObject1).append(bool);
+      QLog.d("ConfessPlugin", 2, ((StringBuilder)localObject1).toString());
     }
-    label126:
-    for (boolean bool = true;; bool = false)
+    if ((localObject2 != null) && (localObject4 != null) && (!((Activity)localObject2).isFinishing()))
     {
-      QLog.d("ConfessPlugin", 2, bool);
-      if ((localObject3 != null) && (localObject4 != null) && (!((Activity)localObject3).isFinishing())) {
-        break;
+      Bitmap localBitmap = ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject2, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
+      int i = this.jdField_b_of_type_Int;
+      if ((i == 0) && (localBitmap != null)) {
+        localObject1 = ConfessShareHelper.b((AppInterface)localObject4, (Context)localObject2, this.jdField_a_of_type_Int, i, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
+      } else {
+        localObject1 = null;
+      }
+      if ((localBitmap != null) && ((this.jdField_b_of_type_Int != 0) || (localObject1 != null)))
+      {
+        String str2 = ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject2, localBitmap);
+        String str1 = this.jdField_c_of_type_JavaLangString;
+        Object localObject3;
+        if (this.jdField_b_of_type_Int == 0)
+        {
+          localObject3 = ConfessShareHelper.a(str2, this.this$0.mRuntime.a());
+          localObject4 = ConfessShareHelper.a(ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject2, (Bitmap)localObject1), this.this$0.mRuntime.a());
+          localObject2 = localObject4;
+          localObject1 = localObject3;
+          if (!TextUtils.isEmpty((CharSequence)localObject4))
+          {
+            localObject1 = ((String)localObject4).replace("http://qqadapt.qpic.cn/qqshare/", "");
+            str1 = Uri.parse(this.jdField_c_of_type_JavaLangString).buildUpon().appendQueryParameter("ct", (String)localObject1).build().toString();
+            localObject2 = localObject4;
+            localObject1 = localObject3;
+          }
+        }
+        else
+        {
+          localObject2 = null;
+          localObject1 = null;
+        }
+        if ((!TextUtils.isEmpty(str2)) && ((this.jdField_b_of_type_Int != 0) || ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))))
+        {
+          localObject2 = this.jdField_d_of_type_JavaLangString;
+          localObject3 = this.e;
+          if (QLog.isColorLevel())
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("processShare share_url_tmp:");
+            ((StringBuilder)localObject4).append(str1);
+            ((StringBuilder)localObject4).append(" remoteUrl:");
+            ((StringBuilder)localObject4).append((String)localObject1);
+            ((StringBuilder)localObject4).append(" srcUrl:");
+            ((StringBuilder)localObject4).append(this.jdField_d_of_type_JavaLangString);
+            ((StringBuilder)localObject4).append(" srcIconUrl:");
+            ((StringBuilder)localObject4).append(this.e);
+            QLog.d("ConfessPlugin", 2, ((StringBuilder)localObject4).toString());
+          }
+          if (this.jdField_b_of_type_Int == 0)
+          {
+            localObject4 = new HashMap();
+            if ((localObject2 != null) && (((String)localObject2).length() > 30)) {
+              ((HashMap)localObject4).put("srcUrl", localObject2);
+            }
+            if ((localObject3 != null) && (((String)localObject3).length() > 30)) {
+              ((HashMap)localObject4).put("srcIconUrl", localObject3);
+            }
+            if ((localObject1 != null) && (((String)localObject1).length() > 30)) {
+              ((HashMap)localObject4).put("remoteUrl", localObject1);
+            }
+            if (!((HashMap)localObject4).isEmpty())
+            {
+              HashMap localHashMap = HttpUtil.shortenUrlBatch((HashMap)localObject4);
+              localObject4 = (String)localHashMap.get("remoteUrl");
+              if (localObject4 != null) {
+                localObject1 = localObject4;
+              }
+              localObject4 = (String)localHashMap.get("srcUrl");
+              if (localObject4 != null) {
+                localObject2 = localObject4;
+              }
+              localObject4 = (String)localHashMap.get("srcIconUrl");
+              if (localObject4 != null) {
+                localObject3 = localObject4;
+              }
+            }
+          }
+          ThreadManager.getUIHandler().post(new ConfessPlugin.5.1(this, str1, (String)localObject1, (String)localObject2, (String)localObject3, str2, localBitmap));
+          return;
+        }
+        ConfessPlugin.a(this.this$0);
+        ConfessPlugin.a(this.this$0, false);
+        ConfessPlugin.a(this.this$0, 1, 2131696479);
+        return;
       }
       ConfessPlugin.a(this.this$0);
       ConfessPlugin.a(this.this$0, false);
+      ConfessPlugin.a(this.this$0, 0, 2131719009);
       return;
     }
-    Bitmap localBitmap = ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
-    if ((this.jdField_b_of_type_Int == 0) && (localBitmap != null)) {}
-    for (Object localObject2 = ConfessShareHelper.b((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);; localObject2 = null)
-    {
-      if ((localBitmap == null) || ((this.jdField_b_of_type_Int == 0) && (localObject2 == null)))
-      {
-        ConfessPlugin.a(this.this$0);
-        ConfessPlugin.a(this.this$0, false);
-        ConfessPlugin.a(this.this$0, 0, 2131719291);
-        return;
-      }
-      String str3 = ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject3, localBitmap);
-      String str1 = this.jdField_c_of_type_JavaLangString;
-      if (this.jdField_b_of_type_Int == 0)
-      {
-        localObject1 = ConfessShareHelper.a(str3, this.this$0.mRuntime.a());
-        localObject2 = ConfessShareHelper.a(ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject3, (Bitmap)localObject2), this.this$0.mRuntime.a());
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          localObject3 = ((String)localObject2).replace("http://qqadapt.qpic.cn/qqshare/", "");
-          str1 = Uri.parse(this.jdField_c_of_type_JavaLangString).buildUpon().appendQueryParameter("ct", (String)localObject3).build().toString();
-        }
-      }
-      for (;;)
-      {
-        if ((TextUtils.isEmpty(str3)) || ((this.jdField_b_of_type_Int == 0) && ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)))))
-        {
-          ConfessPlugin.a(this.this$0);
-          ConfessPlugin.a(this.this$0, false);
-          ConfessPlugin.a(this.this$0, 1, 2131696460);
-          return;
-        }
-        localObject2 = this.jdField_d_of_type_JavaLangString;
-        String str2 = this.e;
-        if (QLog.isColorLevel()) {
-          QLog.d("ConfessPlugin", 2, "processShare share_url_tmp:" + str1 + " remoteUrl:" + (String)localObject1 + " srcUrl:" + this.jdField_d_of_type_JavaLangString + " srcIconUrl:" + this.e);
-        }
-        localObject3 = localObject1;
-        localObject4 = localObject2;
-        Object localObject5;
-        if (this.jdField_b_of_type_Int == 0)
-        {
-          localObject5 = new HashMap();
-          if ((localObject2 != null) && (((String)localObject2).length() > 30)) {
-            ((HashMap)localObject5).put("srcUrl", localObject2);
-          }
-          if ((str2 != null) && (str2.length() > 30)) {
-            ((HashMap)localObject5).put("srcIconUrl", str2);
-          }
-          if ((localObject1 != null) && (((String)localObject1).length() > 30)) {
-            ((HashMap)localObject5).put("remoteUrl", localObject1);
-          }
-          localObject3 = localObject1;
-          localObject4 = localObject2;
-          if (!((HashMap)localObject5).isEmpty())
-          {
-            localObject4 = HttpUtil.shortenUrlBatch((HashMap)localObject5);
-            localObject3 = (String)((HashMap)localObject4).get("remoteUrl");
-            if (localObject3 != null) {
-              localObject1 = localObject3;
-            }
-            localObject3 = (String)((HashMap)localObject4).get("srcUrl");
-            if (localObject3 != null) {
-              localObject2 = localObject3;
-            }
-            localObject5 = (String)((HashMap)localObject4).get("srcIconUrl");
-            localObject3 = localObject1;
-            localObject4 = localObject2;
-            if (localObject5 == null) {}
-          }
-        }
-        for (localObject3 = localObject5;; localObject3 = str2)
-        {
-          ThreadManager.getUIHandler().post(new ConfessPlugin.5.1(this, str1, (String)localObject1, (String)localObject2, (String)localObject3, str3, localBitmap));
-          return;
-          localObject2 = localObject4;
-          localObject1 = localObject3;
-        }
-        continue;
-        localObject2 = null;
-        localObject1 = null;
-      }
-    }
+    ConfessPlugin.a(this.this$0);
+    ConfessPlugin.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.5
  * JD-Core Version:    0.7.0.1
  */

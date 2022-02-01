@@ -9,9 +9,6 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForExposure;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import java.lang.ref.WeakReference;
 
@@ -21,7 +18,7 @@ public final class AdExposureChecker
   private static final double AD_REPORT_SATISFIED_VISIBLE_AREA = 0.5D;
   private static final String TAG = "AdExposureChecker";
   private Ad ad;
-  private long durationMillis = 1000L;
+  private long durationMillis = 200L;
   private AdExposureChecker.a internalTask = null;
   private boolean isViewDestroyed = false;
   private boolean isViewOnForeground = true;
@@ -42,21 +39,6 @@ public final class AdExposureChecker
     if (this.mainHandler == null) {
       this.mainHandler = new Handler(Looper.getMainLooper());
     }
-    getDuration();
-  }
-  
-  private long getDuration()
-  {
-    if ((this.mViewRef == null) || (this.mViewRef.get() == null) || (((View)this.mViewRef.get()).getContext() == null)) {}
-    Object localObject;
-    do
-    {
-      return -2147483648L;
-      localObject = ((View)this.mViewRef.get()).getContext();
-      localObject = AdSettingsUtil.INSTANCE.getSettingsCache((Context)localObject);
-    } while ((localObject == null) || (((gdt_settings.Settings)localObject).settingsForExposure == null) || (((gdt_settings.Settings)localObject).settingsForExposure.durationMillis == -2147483648L));
-    this.durationMillis = ((gdt_settings.Settings)localObject).settingsForExposure.durationMillis;
-    return this.durationMillis;
   }
   
   private boolean isVisible(View paramView)
@@ -69,20 +51,19 @@ public final class AdExposureChecker
   
   private static boolean isVisibleAreaSatisfied(View paramView)
   {
-    if (paramView == null) {}
-    while ((paramView.getVisibility() != 0) || (AdUIUtils.getPercentageOfGlobalVisibleRect(paramView) < 0.5D)) {
-      return false;
-    }
-    return true;
+    return (paramView != null) && (paramView.getVisibility() == 0) && (AdUIUtils.getPercentageOfGlobalVisibleRect(paramView) >= 0.5D);
   }
   
   private void listenViewStateChange(View paramView)
   {
-    if ((paramView == null) || (paramView.getViewTreeObserver() == null)) {
-      return;
+    if (paramView != null)
+    {
+      if (paramView.getViewTreeObserver() == null) {
+        return;
+      }
+      paramView.getViewTreeObserver().addOnScrollChangedListener(this.scrollChangedListener);
+      paramView.addOnAttachStateChangeListener(this.statusChangeListener);
     }
-    paramView.getViewTreeObserver().addOnScrollChangedListener(this.scrollChangedListener);
-    paramView.addOnAttachStateChangeListener(this.statusChangeListener);
   }
   
   public static void onClick(Context paramContext, Ad paramAd, WeakReference<AdExposureChecker.ExposureCallback> paramWeakReference)
@@ -92,7 +73,8 @@ public final class AdExposureChecker
   
   private void setViewDestroyed()
   {
-    if ((this.mViewRef != null) && (this.mViewRef.get() != null))
+    WeakReference localWeakReference = this.mViewRef;
+    if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
       stopCheck();
       this.mViewRef = null;
@@ -101,29 +83,34 @@ public final class AdExposureChecker
   
   private void setViewPause()
   {
-    if ((this.mViewRef != null) && (this.mViewRef.get() != null)) {
+    WeakReference localWeakReference = this.mViewRef;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       stopCheck();
     }
   }
   
   private void setViewResume()
   {
-    if ((this.mViewRef != null) && (this.mViewRef.get() != null)) {
+    WeakReference localWeakReference = this.mViewRef;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       startCheck();
     }
   }
   
   private void stopCheck()
   {
-    if (this.internalTask != null)
+    Object localObject = this.internalTask;
+    if (localObject != null)
     {
-      this.mainHandler.removeCallbacks(this.internalTask);
+      this.mainHandler.removeCallbacks((Runnable)localObject);
       this.internalTask = null;
     }
-    if ((this.mViewRef != null) && (this.mViewRef.get() != null)) {
+    localObject = this.mViewRef;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
       ((View)this.mViewRef.get()).removeOnAttachStateChangeListener(this.statusChangeListener);
     }
-    if ((this.mViewRef != null) && (this.mViewRef.get() != null)) {
+    localObject = this.mViewRef;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
       ((View)this.mViewRef.get()).getViewTreeObserver().removeOnScrollChangedListener(this.scrollChangedListener);
     }
     this.status = AdExposureChecker.c.END;

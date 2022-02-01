@@ -33,14 +33,20 @@ public class UserScore
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin").append("=").append(this.uin).append("|");
-    localStringBuilder.append("score").append("=").append(this.score).append("|");
+    localStringBuilder.append("uin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append("|");
+    localStringBuilder.append("score");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.score);
+    localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.UserScore
  * JD-Core Version:    0.7.0.1
  */

@@ -15,13 +15,10 @@ class MsgBackupSettingFragment$7
   {
     if (paramBoolean) {
       QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! is success");
-    }
-    for (;;)
-    {
-      super.a(paramBoolean);
-      return;
+    } else {
       QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! confirm token is failed!");
     }
+    super.a(paramBoolean);
   }
   
   public void a(boolean paramBoolean, MsgBackupQryStateRsp paramMsgBackupQryStateRsp)
@@ -29,14 +26,16 @@ class MsgBackupSettingFragment$7
     if (paramBoolean)
     {
       MsgBackupSettingFragment.a(this.a, paramMsgBackupQryStateRsp);
-      QLog.d("MsgBackup", 1, "onQueryStateResponse called! qrStateResponse = " + MsgBackupSettingFragment.a(this.a));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onQueryStateResponse called! qrStateResponse = ");
+      localStringBuilder.append(MsgBackupSettingFragment.a(this.a));
+      QLog.d("MsgBackup", 1, localStringBuilder.toString());
     }
-    for (;;)
+    else
     {
-      super.a(paramBoolean, paramMsgBackupQryStateRsp);
-      return;
       QLog.d("MsgBackup", 1, "onQueryStateResponse called! query qr state is failed!");
     }
+    super.a(paramBoolean, paramMsgBackupQryStateRsp);
   }
   
   public void a(boolean paramBoolean, Object paramObject)
@@ -44,27 +43,26 @@ class MsgBackupSettingFragment$7
     if ((paramBoolean) && ((paramObject instanceof MsgBackupGetQrRsp)))
     {
       MsgBackupSettingFragment.a = (MsgBackupGetQrRsp)paramObject;
-      QLog.d("MsgBackup", 1, "onGetQrResponse called! qrResponse = " + MsgBackupSettingFragment.a);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetQrResponse called! qrResponse = ");
+      localStringBuilder.append(MsgBackupSettingFragment.a);
+      QLog.d("MsgBackup", 1, localStringBuilder.toString());
     }
-    for (;;)
+    else
     {
-      super.a(paramBoolean, paramObject);
-      return;
       QLog.d("MsgBackup", 1, "onGetQrResponse called! request qrCode is failed!");
     }
+    super.a(paramBoolean, paramObject);
   }
   
   public void b(boolean paramBoolean)
   {
     if (paramBoolean) {
       QLog.d("MsgBackup", 1, "onRejectQRResponse called! is success");
-    }
-    for (;;)
-    {
-      super.b(paramBoolean);
-      return;
+    } else {
       QLog.d("MsgBackup", 1, "onRejectQRResponse called! reject qr is failed!");
     }
+    super.b(paramBoolean);
   }
   
   public void b(boolean paramBoolean, Object paramObject)
@@ -72,19 +70,21 @@ class MsgBackupSettingFragment$7
     if (paramBoolean)
     {
       MsgBackupSettingFragment.a(this.a, (MsgBackupConfirmQrRsp)paramObject);
-      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! qrConfirmReponse = " + MsgBackupSettingFragment.a(this.a));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onConfirmQrResponse called! qrConfirmReponse = ");
+      localStringBuilder.append(MsgBackupSettingFragment.a(this.a));
+      QLog.d("MsgBackup", 1, localStringBuilder.toString());
     }
-    for (;;)
+    else
     {
-      super.b(paramBoolean, paramObject);
-      return;
       QLog.d("MsgBackup", 1, "onConfirmQrResponse called! confirm qrCode is failed!");
     }
+    super.b(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.MsgBackupSettingFragment.7
  * JD-Core Version:    0.7.0.1
  */

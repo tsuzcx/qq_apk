@@ -26,8 +26,12 @@ public class ProtoReqManagerImpl$CheckConErroObserverImp
       if (localObject == null) {
         paramBundle = "";
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.richmedia.ProtoReqManager", 2, "CheckConErroObserverImp.onReceive -> msfConErro: " + paramBundle);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("CheckConErroObserverImp.onReceive -> msfConErro: ");
+        ((StringBuilder)localObject).append(paramBundle);
+        QLog.d("Q.richmedia.ProtoReqManager", 2, ((StringBuilder)localObject).toString());
       }
       localObject = this.mResp.resp;
       if (localObject != null) {
@@ -41,7 +45,7 @@ public class ProtoReqManagerImpl$CheckConErroObserverImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.CheckConErroObserverImp
  * JD-Core Version:    0.7.0.1
  */

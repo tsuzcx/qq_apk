@@ -21,11 +21,14 @@ final class H262Reader$CsdBuffer
       return;
     }
     paramInt2 -= paramInt1;
-    if (this.data.length < this.length + paramInt2) {
-      this.data = Arrays.copyOf(this.data, (this.length + paramInt2) * 2);
+    byte[] arrayOfByte = this.data;
+    int i = arrayOfByte.length;
+    int j = this.length;
+    if (i < j + paramInt2) {
+      this.data = Arrays.copyOf(arrayOfByte, (j + paramInt2) * 2);
     }
     System.arraycopy(paramArrayOfByte, paramInt1, this.data, this.length, paramInt2);
-    this.length = (paramInt2 + this.length);
+    this.length += paramInt2;
   }
   
   public boolean onStartCode(int paramInt1, int paramInt2)
@@ -33,20 +36,23 @@ final class H262Reader$CsdBuffer
     if (this.isFilling)
     {
       this.length -= paramInt2;
-      if ((this.sequenceExtensionPosition == 0) && (paramInt1 == 181)) {
+      if ((this.sequenceExtensionPosition == 0) && (paramInt1 == 181))
+      {
         this.sequenceExtensionPosition = this.length;
       }
-    }
-    for (;;)
-    {
-      onData(START_CODE, 0, START_CODE.length);
-      return false;
-      this.isFilling = false;
-      return true;
-      if (paramInt1 == 179) {
-        this.isFilling = true;
+      else
+      {
+        this.isFilling = false;
+        return true;
       }
     }
+    else if (paramInt1 == 179)
+    {
+      this.isFilling = true;
+    }
+    byte[] arrayOfByte = START_CODE;
+    onData(arrayOfByte, 0, arrayOfByte.length);
+    return false;
   }
   
   public void reset()
@@ -58,7 +64,7 @@ final class H262Reader$CsdBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.H262Reader.CsdBuffer
  * JD-Core Version:    0.7.0.1
  */

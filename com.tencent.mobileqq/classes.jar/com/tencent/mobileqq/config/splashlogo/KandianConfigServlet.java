@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.config.splashlogo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.common.app.AppInterface;
 import com.tencent.hotpatch.config.PatchConfigServlet;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ConfigSeq;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ReqGetConfig;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespGetConfig;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -26,12 +24,8 @@ import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import mqq.app.AppRuntime;
@@ -60,208 +54,139 @@ public class KandianConfigServlet
   {
     long l = System.currentTimeMillis();
     e = l - paramLong;
-    Object localObject;
-    if (jdField_a_of_type_JavaLangClass != null)
+    Object localObject = jdField_a_of_type_JavaLangClass;
+    if (localObject != null)
     {
-      localObject = paramQQAppInterface.getHandler(jdField_a_of_type_JavaLangClass);
-      if ((localObject == null) || (e > 800L)) {
-        break label204;
+      localObject = paramQQAppInterface.getHandler((Class)localObject);
+      if ((localObject != null) && (e <= 800L))
+      {
+        Message localMessage = Message.obtain();
+        localMessage.what = 2005;
+        ((MqqHandler)localObject).sendMessage(localMessage);
+        QLog.d("KandianConfigServlet", 1, "send msg notify login activity!");
       }
-      Message localMessage = Message.obtain();
-      localMessage.what = 20140326;
-      ((MqqHandler)localObject).sendMessage(localMessage);
-      QLog.d("KandianConfigServlet", 1, "send msg notify login activity!");
-    }
-    for (;;)
-    {
+      else
+      {
+        QLog.d("KandianConfigServlet", 1, "give up send login next msg!");
+      }
       jdField_a_of_type_JavaLangClass = null;
-      QLog.d("KandianConfigServlet", 1, paramQQAppInterface.getAccount() + " notifyLoginNext, all cost:" + e + "  nowTime:" + l + "  startTime:" + paramLong);
-      localObject = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject).put("totalCost", String.valueOf(e));
-        ReadInJoyHelper.a((JSONObject)localObject);
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, paramQQAppInterface.getAccount(), "0X800965D", "0X800965D", 0, 0, String.valueOf(b), String.valueOf(c), String.valueOf(d), ((JSONObject)localObject).toString(), false);
-        return;
-      }
-      catch (JSONException paramQQAppInterface)
-      {
-        label204:
-        QLog.d("KandianConfigServlet", 2, "only kandian tab switch, report error:" + paramQQAppInterface.toString());
-      }
-      QLog.d("KandianConfigServlet", 1, "give up send login next msg!");
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramQQAppInterface.getAccount());
+    ((StringBuilder)localObject).append(" notifyLoginNext, all cost:");
+    ((StringBuilder)localObject).append(e);
+    ((StringBuilder)localObject).append("  nowTime:");
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append("  startTime:");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.d("KandianConfigServlet", 1, ((StringBuilder)localObject).toString());
+    localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("totalCost", String.valueOf(e));
+      ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).addExtraInfoInJson((JSONObject)localObject);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, paramQQAppInterface.getAccount(), "0X800965D", "0X800965D", 0, 0, String.valueOf(b), String.valueOf(c), String.valueOf(d), ((JSONObject)localObject).toString(), false);
+      return;
+    }
+    catch (JSONException paramQQAppInterface)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("only kandian tab switch, report error:");
+      ((StringBuilder)localObject).append(paramQQAppInterface.toString());
+      QLog.d("KandianConfigServlet", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   private void a(QQAppInterface paramQQAppInterface, Intent paramIntent, int[] paramArrayOfInt, Packet paramPacket)
   {
-    ConfigurationService.ReqGetConfig localReqGetConfig = new ConfigurationService.ReqGetConfig();
-    int j = paramArrayOfInt.length;
-    ArrayList localArrayList = new ArrayList(j);
-    int i = 0;
-    if (i < j)
-    {
-      ConfigurationService.ConfigSeq localConfigSeq = new ConfigurationService.ConfigSeq();
-      int k = paramArrayOfInt[i];
-      localConfigSeq.type.set(k);
-      switch (k)
-      {
-      }
-      for (;;)
-      {
-        localArrayList.add(localConfigSeq);
-        i += 1;
-        break;
-        String str = paramQQAppInterface.getCurrentAccountUin();
-        k = SharedPreUtils.N(paramQQAppInterface.getApp(), str);
-        localConfigSeq.version.set(k);
-        if (paramIntent.getBooleanExtra("configkandiantab", false))
-        {
-          paramPacket.addAttribute("_attr_disable_merge", Boolean.valueOf(true));
-          QLog.e("KandianConfigServlet", 1, "addAllConfigs version : " + k + "  mCurrentUin : " + str);
-          a("1");
-        }
-      }
-    }
-    localReqGetConfig.setHasFlag(true);
-    localReqGetConfig.seq_list.addAll(localArrayList);
-    if (paramIntent != null)
-    {
-      boolean bool = paramIntent.getBooleanExtra("key_is_page_req", false);
-      paramQQAppInterface = localReqGetConfig.is_page_req;
-      if (!bool) {
-        break label294;
-      }
-    }
-    label294:
-    for (i = 1;; i = 0)
-    {
-      paramQQAppInterface.set(i);
-      paramQQAppInterface = paramIntent.getByteArrayExtra("key_cookies");
-      if (paramQQAppInterface != null) {
-        localReqGetConfig.cookies.set(ByteStringMicro.copyFrom(paramQQAppInterface));
-      }
-      paramQQAppInterface = a(localReqGetConfig);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
-        paramPacket.putSendData(paramQQAppInterface);
-      }
-      paramPacket.setSSOCommand("ConfigurationService.ReqGetConfig");
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
-    long l = System.currentTimeMillis();
-    paramQQAppInterface = (Boolean)ReadInJoyHelper.a("local_kd_tab_has_set");
-    boolean bool = TextUtils.equals("1", paramString);
-    int i;
-    if ((paramQQAppInterface != null) && (!paramQQAppInterface.booleanValue())) {
-      if (ReadInJoyHelper.a(bool))
-      {
-        if (System.currentTimeMillis() - paramLong > 800L) {
-          break label118;
-        }
-        if (!bool) {
-          break label112;
-        }
-        i = 1;
-        ReadInJoyHelper.d(i);
-      }
-    }
-    for (;;)
-    {
-      paramLong = System.currentTimeMillis();
-      QLog.d("KandianConfigServlet", 1, "updateKandianTabConfigSwitch, tabSwitch = " + bool + "write sp cost:" + (paramLong - l));
-      return;
-      label112:
-      i = 0;
-      break;
-      label118:
-      if ((!ReadInJoyUtils.a()) && (!ReadInJoyUtils.b()))
-      {
-        QLog.d("KandianConfigServlet", 1, "receive kandian tab config is delay, but not in kandian , update now !");
-        ReadInJoyHelper.c();
-        ReadInJoyLogicEngineEventDispatcher.a().a(0, null);
-        continue;
-        QLog.d("KandianConfigServlet", 1, "updateKandianTabConfigSwitch user has set switch, give up !");
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void a(ConfigurationService.RespGetConfig paramRespGetConfig, QQAppInterface paramQQAppInterface, Intent paramIntent, int[] paramArrayOfInt, boolean paramBoolean)
   {
-    int i = 0;
-    if ((!paramBoolean) || (paramRespGetConfig.result.get() != 0) || (paramRespGetConfig.config_list == null) || (paramRespGetConfig.config_list.size() == 0))
+    int i;
+    if ((paramBoolean) && (paramRespGetConfig.result.get() == 0) && (paramRespGetConfig.config_list != null) && (paramRespGetConfig.config_list.size() != 0))
     {
-      if (!paramBoolean) {
-        i = 1;
-      }
-      for (;;)
+      long l1 = System.currentTimeMillis();
+      int j = paramRespGetConfig.config_list.size();
+      i = 0;
+      while (i < j)
       {
-        QLog.d("KandianConfigServlet", 1, "receiveAllConfig fail, errorType : " + i);
-        if ((paramIntent.getBooleanExtra("configkandiantab", false)) && (paramIntent.getBooleanExtra("needNotifyNext", false))) {
-          a(paramIntent.getLongExtra("startTime", 0L), paramQQAppInterface);
-        }
-        a("0X8009680", "1", String.valueOf(i));
-        return;
-        if (paramRespGetConfig.result.get() != 0)
+        paramArrayOfInt = (ConfigurationService.Config)paramRespGetConfig.config_list.get(i);
+        if (paramArrayOfInt != null)
         {
-          i = 2;
-        }
-        else
-        {
-          if ((paramRespGetConfig.config_list != null) && (paramRespGetConfig.config_list.size() != 0)) {
-            break;
-          }
-          i = 3;
-        }
-      }
-    }
-    long l1 = System.currentTimeMillis();
-    int j = paramRespGetConfig.config_list.size();
-    label171:
-    if (i < j)
-    {
-      paramArrayOfInt = (ConfigurationService.Config)paramRespGetConfig.config_list.get(i);
-      if (paramArrayOfInt != null) {}
-    }
-    for (;;)
-    {
-      i += 1;
-      break label171;
-      if (paramArrayOfInt.type.has())
-      {
-        Integer localInteger = Integer.valueOf(paramArrayOfInt.type.get());
-        QLog.d("KandianConfigServlet", 1, "receiveAllConfigs|receive type: " + localInteger + ", length: " + j);
-        try
-        {
-          switch (localInteger.intValue())
+          Object localObject;
+          for (;;)
           {
-          case 92: 
-            l2 = paramIntent.getLongExtra("startTime", 0L);
-            if (!paramIntent.getBooleanExtra("configkandiantab", false)) {
-              continue;
+            if (paramArrayOfInt.type.has())
+            {
+              localObject = Integer.valueOf(paramArrayOfInt.type.get());
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("receiveAllConfigs|receive type: ");
+              localStringBuilder.append(localObject);
+              localStringBuilder.append(", length: ");
+              localStringBuilder.append(j);
+              QLog.d("KandianConfigServlet", 1, localStringBuilder.toString());
+              try
+              {
+                int k = ((Integer)localObject).intValue();
+                if (k == 92)
+                {
+                  try
+                  {
+                    l2 = paramIntent.getLongExtra("startTime", 0L);
+                    if (!paramIntent.getBooleanExtra("configkandiantab", false)) {
+                      break label270;
+                    }
+                    a(paramArrayOfInt, l2);
+                    if (!paramIntent.getBooleanExtra("needNotifyNext", false)) {
+                      break label270;
+                    }
+                    a(l2, paramQQAppInterface);
+                  }
+                  catch (Exception paramArrayOfInt) {}
+                  localObject = new StringBuilder();
+                }
+              }
+              catch (Exception paramArrayOfInt) {}
             }
-            a(paramArrayOfInt, l2);
-            if (!paramIntent.getBooleanExtra("needNotifyNext", false)) {
-              continue;
-            }
-            a(l2, paramQQAppInterface);
           }
+          ((StringBuilder)localObject).append("receiveAllConfig..parse error:");
+          ((StringBuilder)localObject).append(paramArrayOfInt.getMessage());
+          QLog.d("KandianConfigServlet", 1, ((StringBuilder)localObject).toString());
         }
-        catch (Exception paramArrayOfInt)
-        {
-          QLog.d("KandianConfigServlet", 1, "receiveAllConfig..parse error:" + paramArrayOfInt.getMessage());
-        }
-        continue;
-        long l2 = System.currentTimeMillis();
-        QLog.d("KandianConfigServlet", 1, "receiveAllConfigs|executeSpendTime: " + (l2 - l1));
-        return;
-        i = 0;
-        break;
+        label270:
+        i += 1;
       }
+      long l2 = System.currentTimeMillis();
+      paramRespGetConfig = new StringBuilder();
+      paramRespGetConfig.append("receiveAllConfigs|executeSpendTime: ");
+      paramRespGetConfig.append(l2 - l1);
+      QLog.d("KandianConfigServlet", 1, paramRespGetConfig.toString());
+      return;
     }
+    if (!paramBoolean) {
+      i = 1;
+    } else if (paramRespGetConfig.result.get() != 0) {
+      i = 2;
+    } else if ((paramRespGetConfig.config_list != null) && (paramRespGetConfig.config_list.size() != 0)) {
+      i = 0;
+    } else {
+      i = 3;
+    }
+    paramRespGetConfig = new StringBuilder();
+    paramRespGetConfig.append("receiveAllConfig fail, errorType : ");
+    paramRespGetConfig.append(i);
+    QLog.d("KandianConfigServlet", 1, paramRespGetConfig.toString());
+    if ((paramIntent.getBooleanExtra("configkandiantab", false)) && (paramIntent.getBooleanExtra("needNotifyNext", false))) {
+      a(paramIntent.getLongExtra("startTime", 0L), paramQQAppInterface);
+    }
+    a("0X8009680", "1", String.valueOf(i));
   }
   
   public static void a(String paramString)
@@ -276,25 +201,27 @@ public class KandianConfigServlet
   
   public static void a(String paramString, int[] paramArrayOfInt, int paramInt)
   {
-    int i;
-    if (paramArrayOfInt != null) {
-      i = 0;
-    }
-    for (;;)
+    if (paramArrayOfInt != null)
     {
-      if (i < paramArrayOfInt.length)
+      int i = 0;
+      while (i < paramArrayOfInt.length)
       {
-        if (paramArrayOfInt[i] == 92) {
+        if (paramArrayOfInt[i] == 92)
+        {
           a("0X8009680", paramString, String.valueOf(paramInt));
+          break;
         }
+        i += 1;
       }
-      else
-      {
-        QLog.d("KandianConfigServlet", 1, "reportKDConfigNetFailed isOnly92:" + paramString + "  cmds:" + paramArrayOfInt + "   resultCode:" + paramInt);
-        return;
-      }
-      i += 1;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reportKDConfigNetFailed isOnly92:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("  cmds:");
+    localStringBuilder.append(paramArrayOfInt);
+    localStringBuilder.append("   resultCode:");
+    localStringBuilder.append(paramInt);
+    QLog.d("KandianConfigServlet", 1, localStringBuilder.toString());
   }
   
   public static boolean a(AppRuntime paramAppRuntime, Class<?> paramClass, long paramLong)
@@ -307,57 +234,72 @@ public class KandianConfigServlet
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    int i;
     if (paramAppRuntime != null)
     {
       bool1 = bool2;
       if ((paramAppRuntime instanceof AppInterface))
       {
         paramAppRuntime = (AppInterface)paramAppRuntime;
-        BaseApplication localBaseApplication = paramAppRuntime.getApp();
+        Object localObject = paramAppRuntime.getApp();
         String str = paramAppRuntime.getAccount();
         bool1 = bool2;
-        if (localBaseApplication != null)
+        if (localObject != null)
         {
           bool1 = bool2;
           if (!TextUtils.isEmpty(str))
           {
-            i = SharedPreUtils.N(localBaseApplication, str);
-            if (i != 0) {
-              break label251;
+            int i = SharedPreUtils.K((Context)localObject, str);
+            if (i == 0)
+            {
+              jdField_a_of_type_JavaLangClass = paramClass;
+              paramClass = new NewIntent((Context)localObject, KandianConfigServlet.class);
+              paramClass.putExtra("k_cmd_type", new int[] { 92 });
+              paramClass.putExtra("configkandiantab", true);
+              paramClass.putExtra("startTime", paramLong);
+              paramClass.putExtra("needNotifyNext", paramBoolean);
+              if (!StringUtil.a(str)) {
+                paramClass.putExtra("key_uin", str);
+              }
+              b = System.currentTimeMillis() - paramLong;
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("getKandianTabConfig, currentUin : ");
+              ((StringBuilder)localObject).append(str);
+              ((StringBuilder)localObject).append("  cost time：");
+              ((StringBuilder)localObject).append(b);
+              QLog.d("KandianConfigServlet", 1, ((StringBuilder)localObject).toString());
+              paramAppRuntime.startServlet(paramClass);
+              bool1 = true;
             }
-            jdField_a_of_type_JavaLangClass = paramClass;
-            paramClass = new NewIntent(localBaseApplication, KandianConfigServlet.class);
-            paramClass.putExtra("k_cmd_type", new int[] { 92 });
-            paramClass.putExtra("configkandiantab", true);
-            paramClass.putExtra("startTime", paramLong);
-            paramClass.putExtra("needNotifyNext", paramBoolean);
-            if (!StringUtil.a(str)) {
-              paramClass.putExtra("key_uin", str);
+            else
+            {
+              paramAppRuntime = new StringBuilder();
+              paramAppRuntime.append("getKandianTabConfig local config exist, version : ");
+              paramAppRuntime.append(i);
+              QLog.d("KandianConfigServlet", 1, paramAppRuntime.toString());
+              bool1 = bool2;
             }
-            b = System.currentTimeMillis() - paramLong;
-            QLog.d("KandianConfigServlet", 1, "getKandianTabConfig, currentUin : " + str + "  cost time：" + b);
-            paramAppRuntime.startServlet(paramClass);
           }
         }
       }
     }
-    for (bool1 = true;; bool1 = bool2)
-    {
-      QLog.d("KandianConfigServlet", 1, ReadInJoyUtils.a() + " getKandianTabConfig executed:" + bool1 + "  startTime:" + paramLong);
-      return bool1;
-      label251:
-      QLog.d("KandianConfigServlet", 1, "getKandianTabConfig local config exist, version : " + i);
-    }
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount());
+    paramAppRuntime.append(" getKandianTabConfig executed:");
+    paramAppRuntime.append(bool1);
+    paramAppRuntime.append("  startTime:");
+    paramAppRuntime.append(paramLong);
+    QLog.d("KandianConfigServlet", 1, paramAppRuntime.toString());
+    return bool1;
   }
   
   private static byte[] a(ConfigurationService.ReqGetConfig paramReqGetConfig)
   {
     paramReqGetConfig = paramReqGetConfig.toByteArray();
     long l = paramReqGetConfig.length;
-    byte[] arrayOfByte = new byte[(int)l + 4];
-    PkgTools.DWord2Byte(arrayOfByte, 0, 4L + l);
-    PkgTools.copyData(arrayOfByte, 4, paramReqGetConfig, (int)l);
+    int i = (int)l;
+    byte[] arrayOfByte = new byte[i + 4];
+    PkgTools.dWord2Byte(arrayOfByte, 0, l + 4L);
+    PkgTools.copyData(arrayOfByte, 4, paramReqGetConfig, i);
     return arrayOfByte;
   }
   
@@ -372,85 +314,96 @@ public class KandianConfigServlet
   public void a(ConfigurationService.Config paramConfig, long paramLong)
   {
     long l = System.currentTimeMillis();
+    int j;
+    int i;
     try
     {
-      localQQAppInterface = (QQAppInterface)getAppRuntime();
-      if ((!paramConfig.content_list.has()) || (paramConfig.content_list.size() <= 0)) {
-        break label328;
-      }
-      k = 0;
-      i = 0;
-    }
-    catch (Exception paramConfig)
-    {
-      for (;;)
+      QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+      Object localObject2;
+      if ((paramConfig.content_list.has()) && (paramConfig.content_list.size() > 0))
       {
-        QQAppInterface localQQAppInterface;
-        int k;
-        int j;
-        QLog.e("KandianConfigServlet", 1, "handleReadTabConfig has exception : " + paramConfig);
-        continue;
-        int i = j;
-        continue;
-        k += 1;
-      }
-    }
-    j = paramConfig.content_list.size();
-    if (k < j) {}
-    for (;;)
-    {
-      String str2;
-      try
-      {
-        localObject = ((String)paramConfig.content_list.get(k)).trim();
-        j = i;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
+        j = 0;
+        i = 0;
+        int k = paramConfig.content_list.size();
+        if (j >= k) {
+          break label426;
         }
-        j = i;
-        if (!((String)localObject).contains("kandian_tab_switch")) {
-          break;
-        }
-        localObject = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(((String)localObject).getBytes("utf-8"))).getElementsByTagName("configs").item(0).getFirstChild();
-        j = i;
-        if (localObject == null) {
-          break;
-        }
-        if (((Node)localObject).getFirstChild() != null)
+        try
         {
-          String str1 = ((Node)localObject).getNodeName();
-          str2 = ((Node)localObject).getFirstChild().getNodeValue();
-          if (TextUtils.equals(str1, "kandian_tab_switch")) {
-            a(localQQAppInterface, str2, paramLong);
+          Object localObject1 = ((String)paramConfig.content_list.get(j)).trim();
+          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).contains("kandian_tab_switch")))
+          {
+            localObject1 = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(((String)localObject1).getBytes("utf-8"))).getElementsByTagName("configs").item(0).getFirstChild();
+            for (;;)
+            {
+              if (localObject1 != null)
+              {
+                if (((Node)localObject1).getFirstChild() != null)
+                {
+                  String str = ((Node)localObject1).getNodeName();
+                  localObject2 = ((Node)localObject1).getFirstChild().getNodeValue();
+                  boolean bool = TextUtils.equals(str, "kandian_tab_switch");
+                  if (!bool) {}
+                }
+                try
+                {
+                  a(localQQAppInterface, (String)localObject2, paramLong);
+                  try
+                  {
+                    localObject1 = new StringBuilder();
+                    ((StringBuilder)localObject1).append("handleReadTabConfig receive config, value : ");
+                    ((StringBuilder)localObject1).append((String)localObject2);
+                    QLog.d("KandianConfigServlet", 1, ((StringBuilder)localObject1).toString());
+                    i = 1;
+                  }
+                  catch (Exception localException1)
+                  {
+                    i = 1;
+                    break label272;
+                  }
+                  Node localNode = localException1.getNextSibling();
+                }
+                catch (Exception localException2) {}
+              }
+            }
           }
         }
+        catch (Exception localException3) {}
       }
-      catch (Exception localException1) {}
       try
       {
-        QLog.d("KandianConfigServlet", 1, "handleReadTabConfig receive config, value : " + str2);
-        i = 1;
-        if (i == 0) {
-          break label385;
-        }
-        d = System.currentTimeMillis() - l;
-        QLog.d("KandianConfigServlet", 1, "handleReadTabConfig parse cost : " + d);
-        return;
+        label272:
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("handleReadTabConfig parse has exception ");
+        ((StringBuilder)localObject2).append(localException3);
+        QLog.d("KandianConfigServlet", 1, ((StringBuilder)localObject2).toString());
       }
-      catch (Exception localException2)
+      catch (Exception paramConfig)
       {
-        for (;;)
-        {
-          i = 1;
-        }
+        break label329;
       }
-      Object localObject = ((Node)localObject).getNextSibling();
-      continue;
-      QLog.d("KandianConfigServlet", 1, "handleReadTabConfig parse has exception " + localException1);
-      j = i;
-      break;
-      label328:
       QLog.d("KandianConfigServlet", 1, "handleReadTabConfig receive config is empty!");
+    }
+    catch (Exception paramConfig) {}
+    label329:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleReadTabConfig has exception : ");
+    localStringBuilder.append(paramConfig);
+    QLog.e("KandianConfigServlet", 1, localStringBuilder.toString());
+    label426:
+    for (;;)
+    {
+      d = System.currentTimeMillis() - l;
+      paramConfig = new StringBuilder();
+      paramConfig.append("handleReadTabConfig parse cost : ");
+      paramConfig.append(d);
+      QLog.d("KandianConfigServlet", 1, paramConfig.toString());
+      return;
+      if (i == 0)
+      {
+        j += 1;
+        break;
+      }
     }
   }
   
@@ -458,43 +411,61 @@ public class KandianConfigServlet
   {
     long l = System.currentTimeMillis();
     c = l - this.jdField_a_of_type_Long;
-    QLog.i("KandianConfigServlet", 1, "onReceive  request cost:" + c);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onReceive  request cost:");
+    ((StringBuilder)localObject1).append(c);
+    QLog.i("KandianConfigServlet", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = (QQAppInterface)getAppRuntime();
     int[] arrayOfInt = paramIntent.getIntArrayExtra("k_cmd_type");
     boolean bool = paramFromServiceMsg.isSuccess();
-    QLog.d("KandianConfigServlet", 1, ReadInJoyUtils.a() + " onReceive   nowTime:" + l + "   requestCost:" + c + " success:" + bool + "  code" + paramFromServiceMsg.getResultCode());
-    if ((arrayOfInt == null) || (arrayOfInt.length == 0)) {
-      return;
-    }
-    Object localObject = paramFromServiceMsg.getWupBuffer();
-    if ((localObject == null) || (localObject.length < 4))
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount());
+    ((StringBuilder)localObject2).append(" onReceive   nowTime:");
+    ((StringBuilder)localObject2).append(l);
+    ((StringBuilder)localObject2).append("   requestCost:");
+    ((StringBuilder)localObject2).append(c);
+    ((StringBuilder)localObject2).append(" success:");
+    ((StringBuilder)localObject2).append(bool);
+    ((StringBuilder)localObject2).append("  code");
+    ((StringBuilder)localObject2).append(paramFromServiceMsg.getResultCode());
+    QLog.d("KandianConfigServlet", 1, ((StringBuilder)localObject2).toString());
+    if (arrayOfInt != null)
     {
-      QLog.d("KandianConfigServlet", 1, "wup buf is null!!!");
+      if (arrayOfInt.length == 0) {
+        return;
+      }
+      localObject2 = paramFromServiceMsg.getWupBuffer();
+      if ((localObject2 != null) && (localObject2.length >= 4))
+      {
+        paramFromServiceMsg.putWupBuffer(a((byte[])localObject2));
+        localObject2 = new ConfigurationService.RespGetConfig();
+        try
+        {
+          ((ConfigurationService.RespGetConfig)localObject2).mergeFrom(paramFromServiceMsg.getWupBuffer());
+          try
+          {
+            PatchConfigServlet.a(((ConfigurationService.RespGetConfig)localObject2).min_req_interval_for_reconnect.get());
+            a((ConfigurationService.RespGetConfig)localObject2, (QQAppInterface)localObject1, paramIntent, arrayOfInt, bool);
+            return;
+          }
+          catch (Exception paramIntent)
+          {
+            QLog.w("KandianConfigServlet", 1, paramIntent.toString());
+            return;
+          }
+          QLog.d("KandianConfigServlet", 1, "wup buf is null!!!");
+        }
+        catch (InvalidProtocolBufferMicroException paramIntent)
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("error: ");
+          paramFromServiceMsg.append(paramIntent.toString());
+          QLog.d("KandianConfigServlet", 1, paramFromServiceMsg.toString());
+          paramIntent.printStackTrace();
+          return;
+        }
+      }
       a("1", arrayOfInt, paramFromServiceMsg.getResultCode());
-      return;
-    }
-    paramFromServiceMsg.putWupBuffer(a((byte[])localObject));
-    localObject = new ConfigurationService.RespGetConfig();
-    try
-    {
-      ((ConfigurationService.RespGetConfig)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
-      try
-      {
-        PatchConfigServlet.a(((ConfigurationService.RespGetConfig)localObject).min_req_interval_for_reconnect.get());
-        a((ConfigurationService.RespGetConfig)localObject, localQQAppInterface, paramIntent, arrayOfInt, bool);
-        return;
-      }
-      catch (Exception paramIntent)
-      {
-        QLog.w("KandianConfigServlet", 1, paramIntent.toString());
-        return;
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramIntent)
-    {
-      QLog.d("KandianConfigServlet", 1, "error: " + paramIntent.toString());
-      paramIntent.printStackTrace();
     }
   }
   
@@ -502,32 +473,41 @@ public class KandianConfigServlet
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
     int[] arrayOfInt = paramIntent.getIntArrayExtra("k_cmd_type");
-    if ((arrayOfInt == null) || (arrayOfInt.length == 0)) {
-      return;
-    }
-    a(localQQAppInterface, paramIntent, arrayOfInt, paramPacket);
-    if (!jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Boolean = false;
-    }
-    try
+    if (arrayOfInt != null)
     {
-      ThreadManager.executeOnSubThread(new KandianConfigServlet.1(this));
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      QLog.d("KandianConfigServlet", 1, ReadInJoyUtils.a() + " onSend   mRequestStartTime:" + this.jdField_a_of_type_Long + "  cmds:" + arrayOfInt);
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      for (;;)
-      {
-        QLog.i("KandianConfigServlet", 1, "sSpHasRead error:" + paramIntent.toString());
+      if (arrayOfInt.length == 0) {
+        return;
       }
+      a(localQQAppInterface, paramIntent, arrayOfInt, paramPacket);
+      if (!jdField_a_of_type_Boolean)
+      {
+        jdField_a_of_type_Boolean = false;
+        try
+        {
+          ThreadManager.executeOnSubThread(new KandianConfigServlet.1(this));
+        }
+        catch (Exception paramIntent)
+        {
+          paramPacket = new StringBuilder();
+          paramPacket.append("sSpHasRead error:");
+          paramPacket.append(paramIntent.toString());
+          QLog.i("KandianConfigServlet", 1, paramPacket.toString());
+        }
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      paramIntent = new StringBuilder();
+      paramIntent.append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount());
+      paramIntent.append(" onSend   mRequestStartTime:");
+      paramIntent.append(this.jdField_a_of_type_Long);
+      paramIntent.append("  cmds:");
+      paramIntent.append(arrayOfInt);
+      QLog.d("KandianConfigServlet", 1, paramIntent.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.KandianConfigServlet
  * JD-Core Version:    0.7.0.1
  */

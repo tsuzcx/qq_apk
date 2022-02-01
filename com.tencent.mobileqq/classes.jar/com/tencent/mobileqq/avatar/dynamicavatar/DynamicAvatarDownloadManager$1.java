@@ -19,73 +19,74 @@ class DynamicAvatarDownloadManager$1
   
   public void onResp(NetResp arg1)
   {
-    Object localObject1;
     boolean bool;
     if (QLog.isColorLevel())
     {
-      localObject1 = new StringBuilder().append("onResp reqUrl: resp is null: ");
-      if (??? == null)
-      {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onResp reqUrl: resp is null: ");
+      if (??? == null) {
         bool = true;
-        QLog.i("Q.dynamicAvatar", 2, bool);
-      }
-    }
-    else
-    {
-      if (??? != null) {
-        break label51;
-      }
-    }
-    label51:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      localObject1 = ((HttpNetReq)???.mReq).mReqUrl;
-      int i = ???.mResult;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.dynamicAvatar", 2, "onResp reqUrl: " + (String)localObject1 + " mResult: " + i + ",httpCode:" + ???.mHttpCode + ",errDesc:" + ???.mErrDesc);
-      }
-      for (;;)
-      {
-        synchronized (DynamicAvatarDownloadManager.a(this.a))
-        {
-          if (DynamicAvatarDownloadManager.a(this.a).isEmpty()) {
-            break;
-          }
-          Iterator localIterator = DynamicAvatarDownloadManager.a(this.a).iterator();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          Object localObject3 = (WeakReference)localIterator.next();
-          if ((localObject3 == null) || (((WeakReference)localObject3).get() == null)) {
-            continue;
-          }
-          localObject3 = (DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback)((WeakReference)localObject3).get();
-          if (i == 0)
-          {
-            bool = true;
-            ((DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback)localObject3).a((String)localObject1, bool, false);
-          }
-        }
+      } else {
         bool = false;
       }
-      DynamicAvatarDownloadManager.a(this.a).remove(localObject2);
-    } while ((!NetworkUtil.g(BaseApplicationImpl.getContext())) || (NetworkUtil.h(BaseApplicationImpl.getContext())));
-    DynamicAvatarDownloadManager.a(this.a);
+      ((StringBuilder)localObject1).append(bool);
+      QLog.i("Q.dynamicAvatar", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (??? == null) {
+      return;
+    }
+    Object localObject1 = ((HttpNetReq)???.mReq).mReqUrl;
+    int i = ???.mResult;
+    Object localObject3;
+    if (QLog.isColorLevel())
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("onResp reqUrl: ");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append(" mResult: ");
+      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject3).append(",httpCode:");
+      ((StringBuilder)localObject3).append(???.mHttpCode);
+      ((StringBuilder)localObject3).append(",errDesc:");
+      ((StringBuilder)localObject3).append(???.mErrDesc);
+      QLog.i("Q.dynamicAvatar", 2, ((StringBuilder)localObject3).toString());
+    }
+    label324:
+    synchronized (DynamicAvatarDownloadManager.a(this.a))
+    {
+      if (!DynamicAvatarDownloadManager.a(this.a).isEmpty())
+      {
+        localObject3 = DynamicAvatarDownloadManager.a(this.a).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          Object localObject4 = (WeakReference)((Iterator)localObject3).next();
+          if ((localObject4 != null) && (((WeakReference)localObject4).get() != null))
+          {
+            localObject4 = (DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback)((WeakReference)localObject4).get();
+            if (i != 0) {
+              break label324;
+            }
+            bool = true;
+            ((DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback)localObject4).a((String)localObject1, bool, false);
+          }
+        }
+      }
+      DynamicAvatarDownloadManager.a(this.a).remove(localObject1);
+      if ((NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) && (!NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext()))) {
+        DynamicAvatarDownloadManager.a(this.a);
+      }
+      return;
+    }
   }
   
   public void onUpdateProgeress(NetReq arg1, long paramLong1, long paramLong2)
   {
-    if ((!DynamicAvatarDownloadManager.a(this.a).isEmpty()) && ((??? instanceof HttpNetReq))) {
-      if (paramLong2 <= 0L) {
-        break label148;
-      }
-    }
-    label148:
-    for (int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);; i = 0)
+    if ((!DynamicAvatarDownloadManager.a(this.a).isEmpty()) && ((??? instanceof HttpNetReq)))
     {
+      int i = 0;
+      if (paramLong2 > 0L) {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
       String str = ((HttpNetReq)???).mReqUrl;
       synchronized (DynamicAvatarDownloadManager.a(this.a))
       {
@@ -100,14 +101,14 @@ class DynamicAvatarDownloadManager$1
             }
           }
         }
+        return;
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

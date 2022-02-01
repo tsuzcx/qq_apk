@@ -41,110 +41,122 @@ public class AuthorizationDialog
   
   private void a()
   {
-    LinearLayout localLinearLayout1 = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131559158, null);
-    LinearLayout localLinearLayout2 = (LinearLayout)localLinearLayout1.findViewById(2131369280);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    LinearLayout localLinearLayout1 = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131559052, null);
+    LinearLayout localLinearLayout2 = (LinearLayout)localLinearLayout1.findViewById(2131369009);
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() > 0))
     {
       int k = this.jdField_a_of_type_JavaUtilList.size();
       int j = 0;
-      if (j < k)
+      while (j < k)
       {
-        int i;
         if ((AuthorizationItem.ItemType)this.jdField_a_of_type_JavaUtilList.get(j) != AuthorizationItem.d)
         {
-          if (k != 1) {
-            break label145;
-          }
-          i = 3;
-        }
-        for (;;)
-        {
-          localLinearLayout2.addView(a((AuthorizationItem.ItemType)this.jdField_a_of_type_JavaUtilList.get(j), i, this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity.a(((AuthorizationItem.ItemType)this.jdField_a_of_type_JavaUtilList.get(j)).b)));
-          j += 1;
-          break;
-          label145:
-          if (k == 2)
+          int i = 2;
+          if (k == 1)
           {
-            if (j == 0) {
-              i = 0;
+            i = 3;
+          }
+          else
+          {
+            if (k == 2) {
+              if (j != 0) {
+                break label129;
+              }
             } else {
-              i = 2;
+              if (j != 0) {
+                break label120;
+              }
+            }
+            i = 0;
+            break label129;
+            label120:
+            if (j < k - 1) {
+              i = 1;
             }
           }
-          else if (j == 0) {
-            i = 0;
-          } else if (j < k - 1) {
-            i = 1;
-          } else {
-            i = 2;
-          }
+          label129:
+          localLinearLayout2.addView(a((AuthorizationItem.ItemType)this.jdField_a_of_type_JavaUtilList.get(j), i, this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity.a(((AuthorizationItem.ItemType)this.jdField_a_of_type_JavaUtilList.get(j)).b)));
         }
+        j += 1;
       }
     }
     addView(localLinearLayout1);
-    localLinearLayout1.findViewById(2131363941).setOnClickListener(this);
-    localLinearLayout1.findViewById(2131363967).setOnClickListener(this);
-    localLinearLayout1.findViewById(2131369694).setOnClickListener(this);
+    localLinearLayout1.findViewById(2131363867).setOnClickListener(this);
+    localLinearLayout1.findViewById(2131363894).setOnClickListener(this);
+    localLinearLayout1.findViewById(2131369392).setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    Object localObject1;
+    Object localObject2;
+    if (i == 2131369392)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       if (QLog.isColorLevel()) {
         QLog.d("ActionSheet", 2, "onClick to show authorize description");
       }
-      Object localObject1 = new AuthorizationDescriptionDialog(getContext());
-      Object localObject2 = ((AuthorizationDescriptionDialog)localObject1).getWindow();
+      localObject1 = new AuthorizationDescriptionDialog(getContext());
+      localObject2 = ((AuthorizationDescriptionDialog)localObject1).getWindow();
       if (localObject2 != null) {
-        ((Window)localObject2).setWindowAnimations(2131755014);
+        ((Window)localObject2).setWindowAnimations(2131755012);
       }
       ((AuthorizationDescriptionDialog)localObject1).show();
-      continue;
+    }
+    else if (i == 2131363867)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("ActionSheet", 2, "onClick to cancel authorize dialog");
       }
-      if (this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback != null)
+      localObject1 = this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback;
+      if (localObject1 != null)
       {
-        this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity.a = 2;
-        this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback.a(this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity);
+        localObject2 = this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity;
+        ((GdtUserInfoAuthorizationHelper.UserInfoEntity)localObject2).a = 2;
+        ((GdtUserInfoAuthorizationHelper.UserInfoCallback)localObject1).a((GdtUserInfoAuthorizationHelper.UserInfoEntity)localObject2);
       }
       dismiss();
-      continue;
+    }
+    else if (i == 2131363894)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("ActionSheet", 2, "onClick to confirm authorize user info");
       }
       localObject1 = PreferenceManager.getDefaultSharedPreferences(getContext().getApplicationContext());
-      int i = 0;
+      i = 0;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         localObject2 = (AuthorizationItem.ItemType)this.jdField_a_of_type_JavaUtilList.get(i);
         if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity.a(((AuthorizationItem.ItemType)localObject2).b)))
         {
           ((SharedPreferences)localObject1).edit().putBoolean(((AuthorizationItem.ItemType)localObject2).b, true).apply();
-          if (QLog.isColorLevel()) {
-            QLog.d("ActionSheet", 2, "record " + ((AuthorizationItem.ItemType)localObject2).b + " authorize");
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("record ");
+            localStringBuilder.append(((AuthorizationItem.ItemType)localObject2).b);
+            localStringBuilder.append(" authorize");
+            QLog.d("ActionSheet", 2, localStringBuilder.toString());
           }
         }
         i += 1;
       }
-      if (this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback != null)
+      localObject1 = this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback;
+      if (localObject1 != null)
       {
-        this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity.a = 0;
-        this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback.a(this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity);
+        localObject2 = this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity;
+        ((GdtUserInfoAuthorizationHelper.UserInfoEntity)localObject2).a = 0;
+        ((GdtUserInfoAuthorizationHelper.UserInfoCallback)localObject1).a((GdtUserInfoAuthorizationHelper.UserInfoEntity)localObject2);
       }
       dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AuthorizationDialog
  * JD-Core Version:    0.7.0.1
  */

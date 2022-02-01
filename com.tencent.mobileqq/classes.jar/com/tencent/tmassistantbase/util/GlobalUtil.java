@@ -25,6 +25,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
 import com.tencent.tmassistant.common.jce.BoutiqueGameConfig;
 import java.io.File;
 import java.io.IOException;
@@ -46,34 +47,29 @@ public class GlobalUtil
   public static final int DEF_INT = 0;
   public static final String DEF_STRING = "empty";
   protected static final String SharedPreferencesName = "TMAssistantSDKSharedPreference";
-  protected static final String TAG = GlobalUtil.class.getSimpleName();
+  protected static final String TAG = "GlobalUtil";
   protected static final String UN_DEFINED = "NA";
-  protected static String mDevicedId;
-  protected static GlobalUtil mInstance = null;
+  protected static String mDevicedId = "";
+  protected static GlobalUtil mInstance;
   protected static int mMemUUID = 0;
-  private static String mQImei;
-  private static String mQadid;
+  private static String mQImei = "";
+  private static String mQadid = "";
   private static long sUin;
   public static ThreadLocal<SimpleDateFormat> yyyyMMddHHTimeFormat = new j();
-  public static ThreadLocal<SimpleDateFormat> yyyyMMddTimeFormat;
+  public static ThreadLocal<SimpleDateFormat> yyyyMMddTimeFormat = new i();
   protected Context mContext;
   private String mMACAdress = null;
   public String mQUA = "";
-  
-  static
-  {
-    mDevicedId = "";
-    sUin = 0L;
-    mQImei = "";
-    mQadid = "";
-    yyyyMMddTimeFormat = new i();
-  }
   
   protected GlobalUtil()
   {
     try
     {
-      ab.c(TAG, "isMIUI:" + isMIUI());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isMIUI:");
+      localStringBuilder.append(isMIUI());
+      ab.c(str, localStringBuilder.toString());
       return;
     }
     catch (Throwable localThrowable) {}
@@ -100,89 +96,118 @@ public class GlobalUtil
   
   public static int assistantErrorCode2SDKErrorCode(int paramInt)
   {
-    switch (paramInt)
+    int j = 604;
+    int i = j;
+    if (paramInt != -1000)
     {
-    case -1000: 
-    case -26: 
-    case -24: 
-    default: 
-      return 604;
-    case 0: 
-      return 0;
-    case -1: 
-      return 709;
-    case -11: 
-      return 708;
-    case -12: 
-      return 730;
-    case -13: 
-      return 703;
-    case -15: 
-      return 1;
-    case -16: 
-      return 731;
-    case -21: 
-      return 700;
-    case -22: 
-      return 732;
-    case -23: 
-      return 601;
-    case -25: 
-      return 602;
-    case -27: 
-      return 606;
+      if (paramInt != -16) {
+        if (paramInt != -15) {
+          if (paramInt != -1) {
+            if (paramInt != 0) {
+              i = j;
+            }
+          }
+        }
+      }
+      switch (paramInt)
+      {
+      default: 
+        switch (paramInt)
+        {
+        default: 
+          return 604;
+        case -11: 
+          return 708;
+        case -12: 
+          return 730;
+        }
+        return 703;
+      case -21: 
+        return 700;
+      case -22: 
+        return 732;
+      case -23: 
+        return 601;
+      case -25: 
+        return 602;
+      case -27: 
+        return 606;
+      case -28: 
+        return 701;
+        return 0;
+        return 709;
+        return 1;
+        i = 731;
+      }
     }
-    return 701;
+    return i;
   }
   
   public static int assistantState2SDKState(int paramInt)
   {
-    switch (paramInt)
+    int i = 6;
+    if (paramInt != 1)
     {
-    case 5: 
-    case 7: 
-    case 8: 
-    default: 
-      return 0;
-    case 1: 
-      return 2;
-    case 6: 
-      return 1;
-    case 2: 
-      return 3;
-    case 4: 
-      return 4;
-    case 3: 
-      return 5;
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 6)
+            {
+              if (paramInt != 9) {
+                return 0;
+              }
+            }
+            else {
+              return 1;
+            }
+          }
+          else {
+            return 4;
+          }
+        }
+        else {
+          return 5;
+        }
+      }
+      else {
+        return 3;
+      }
     }
-    return 6;
+    else {
+      i = 2;
+    }
+    return i;
   }
   
   public static String calcMD5AsString(String paramString)
   {
-    int i = 0;
-    Object localObject = "";
-    if (!TextUtils.isEmpty(paramString)) {
+    if (!TextUtils.isEmpty(paramString))
+    {
       paramString = paramString.getBytes();
-    }
-    try
-    {
-      localObject = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject).reset();
-      ((MessageDigest)localObject).update(paramString, 0, paramString.length);
-      paramString = ((MessageDigest)localObject).digest();
-      localObject = new StringBuffer();
-      while (i < paramString.length)
+      try
       {
-        ((StringBuffer)localObject).append(Integer.toHexString(paramString[i] & 0xFF));
-        i += 1;
+        Object localObject = MessageDigest.getInstance("MD5");
+        ((MessageDigest)localObject).reset();
+        int j = paramString.length;
+        int i = 0;
+        ((MessageDigest)localObject).update(paramString, 0, j);
+        paramString = ((MessageDigest)localObject).digest();
+        localObject = new StringBuffer();
+        while (i < paramString.length)
+        {
+          ((StringBuffer)localObject).append(Integer.toHexString(paramString[i] & 0xFF));
+          i += 1;
+        }
+        paramString = ((StringBuffer)localObject).toString();
+        return paramString;
       }
-      localObject = ((StringBuffer)localObject).toString();
-      return localObject;
-    }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      paramString.printStackTrace();
+      catch (NoSuchAlgorithmException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return "";
   }
@@ -202,8 +227,10 @@ public class GlobalUtil
     }
     catch (Exception paramString)
     {
-      ab.c("GlobalUtil", "deleteDB failed");
+      label41:
+      break label41;
     }
+    ab.c("GlobalUtil", "deleteDB failed");
   }
   
   private String filter(String paramString)
@@ -236,16 +263,16 @@ public class GlobalUtil
   
   public static int getAppVersionCode(Context paramContext)
   {
-    int i = 0;
-    if (paramContext != null) {}
-    try
-    {
-      i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      return i;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
+    if (paramContext != null) {
+      try
+      {
+        int i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
+        return i;
+      }
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
     return 0;
   }
@@ -368,109 +395,60 @@ public class GlobalUtil
     }
   }
   
-  /* Error */
   public static String getNetStatus()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 183	com/tencent/tmassistantbase/util/GlobalUtil:getInstance	()Lcom/tencent/tmassistantbase/util/GlobalUtil;
-    //   6: invokevirtual 187	com/tencent/tmassistantbase/util/GlobalUtil:getContext	()Landroid/content/Context;
-    //   9: astore_0
-    //   10: aload_0
-    //   11: ifnonnull +11 -> 22
-    //   14: ldc 53
-    //   16: astore_0
-    //   17: ldc 2
-    //   19: monitorexit
-    //   20: aload_0
-    //   21: areturn
-    //   22: aload_0
-    //   23: ldc_w 355
-    //   26: invokevirtual 359	android/content/Context:checkCallingOrSelfPermission	(Ljava/lang/String;)I
-    //   29: ifeq +16 -> 45
-    //   32: ldc 53
-    //   34: astore_0
-    //   35: goto -18 -> 17
-    //   38: astore_0
-    //   39: ldc 53
-    //   41: astore_0
-    //   42: goto -25 -> 17
-    //   45: aload_0
-    //   46: ldc_w 361
-    //   49: invokevirtual 333	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   52: checkcast 363	android/net/ConnectivityManager
-    //   55: astore_0
-    //   56: aload_0
-    //   57: invokevirtual 367	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
-    //   60: astore_0
-    //   61: aload_0
-    //   62: ifnonnull +25 -> 87
-    //   65: ldc 53
-    //   67: astore_0
-    //   68: goto -51 -> 17
-    //   71: astore_0
-    //   72: getstatic 47	com/tencent/tmassistantbase/util/GlobalUtil:TAG	Ljava/lang/String;
-    //   75: aload_0
-    //   76: invokevirtual 370	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   79: invokestatic 373	com/tencent/tmassistantbase/util/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   82: aconst_null
-    //   83: astore_0
-    //   84: goto -23 -> 61
-    //   87: aload_0
-    //   88: invokevirtual 378	android/net/NetworkInfo:getType	()I
-    //   91: iconst_1
-    //   92: if_icmpne +10 -> 102
-    //   95: ldc_w 329
-    //   98: astore_0
-    //   99: goto -82 -> 17
-    //   102: aload_0
-    //   103: invokevirtual 381	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   106: astore_0
-    //   107: aload_0
-    //   108: ifnonnull +9 -> 117
-    //   111: ldc 53
-    //   113: astore_0
-    //   114: goto -97 -> 17
-    //   117: aload_0
-    //   118: invokevirtual 384	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   121: astore_0
-    //   122: getstatic 47	com/tencent/tmassistantbase/util/GlobalUtil:TAG	Ljava/lang/String;
-    //   125: new 83	java/lang/StringBuilder
-    //   128: dup
-    //   129: invokespecial 84	java/lang/StringBuilder:<init>	()V
-    //   132: ldc_w 386
-    //   135: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: aload_0
-    //   139: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   145: invokestatic 389	com/tencent/tmassistantbase/util/ab:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   148: goto -131 -> 17
-    //   151: astore_0
-    //   152: ldc 2
-    //   154: monitorexit
-    //   155: aload_0
-    //   156: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   9	26	0	localObject1	Object
-    //   38	1	0	localException1	Exception
-    //   41	27	0	localObject2	Object
-    //   71	5	0	localException2	Exception
-    //   83	56	0	str	String
-    //   151	5	0	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   22	32	38	java/lang/Exception
-    //   56	61	71	java/lang/Exception
-    //   3	10	151	finally
-    //   22	32	151	finally
-    //   45	56	151	finally
-    //   56	61	151	finally
-    //   72	82	151	finally
-    //   87	95	151	finally
-    //   102	107	151	finally
-    //   117	148	151	finally
+    Object localObject1;
+    Object localObject3;
+    String str;
+    StringBuilder localStringBuilder;
+    label154:
+    try
+    {
+      localObject1 = getInstance().getContext();
+      if (localObject1 == null) {
+        return "";
+      }
+    }
+    finally {}
+    try
+    {
+      if (((Context)localObject1).checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+        return "";
+      }
+      localObject3 = (ConnectivityManager)((Context)localObject1).getSystemService("connectivity");
+      localObject1 = null;
+      try
+      {
+        localObject3 = ((ConnectivityManager)localObject3).getActiveNetworkInfo();
+        localObject1 = localObject3;
+      }
+      catch (Exception localException2)
+      {
+        ab.e(TAG, localException2.getMessage());
+      }
+      if (localObject1 == null) {
+        return "";
+      }
+      if (((NetworkInfo)localObject1).getType() == 1) {
+        return "wifi";
+      }
+      localObject1 = ((NetworkInfo)localObject1).getExtraInfo();
+      if (localObject1 == null) {
+        return "";
+      }
+      localObject1 = ((String)localObject1).toLowerCase();
+      str = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("netInfo  =  ");
+      localStringBuilder.append((String)localObject1);
+      ab.a(str, localStringBuilder.toString());
+      return localObject1;
+    }
+    catch (Exception localException1)
+    {
+      break label154;
+    }
+    return "";
   }
   
   public static String getString(String paramString)
@@ -485,18 +463,22 @@ public class GlobalUtil
   public static String getSystemVersion()
   {
     int i = Build.VERSION.SDK_INT;
-    return i + "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i);
+    localStringBuilder.append("");
+    return localStringBuilder.toString();
   }
   
   public static long getUin()
   {
-    if (sUin != 0L) {
-      return sUin;
+    long l = sUin;
+    if (l != 0L) {
+      return l;
     }
     try
     {
       sUin = Long.valueOf((String)w.a(w.a(w.a("com.tencent.common.app.BaseApplicationImpl").b("sApplication")).d("getRuntime").a()).d("getAccount").a()).longValue();
-      long l = sUin;
+      l = sUin;
       return l;
     }
     catch (Throwable localThrowable)
@@ -522,16 +504,16 @@ public class GlobalUtil
   
   public static boolean isMIUI()
   {
+    boolean bool = false;
     try
     {
       if (!TextUtils.isEmpty(SystemProperties.get("ro.miui.ui.version.name", null))) {
         return true;
       }
-      if (Build.MANUFACTURER != null)
-      {
-        boolean bool = replaceBlank(Build.MANUFACTURER).toLowerCase().contains("xiaomi");
-        return bool;
+      if (Build.MANUFACTURER != null) {
+        bool = replaceBlank(Build.MANUFACTURER).toLowerCase().contains("xiaomi");
       }
+      return bool;
     }
     catch (Throwable localThrowable) {}
     return false;
@@ -540,31 +522,27 @@ public class GlobalUtil
   public static boolean isNetworkConncted()
   {
     Object localObject1 = getInstance().getContext();
+    boolean bool = false;
     if (localObject1 == null)
     {
       ab.d(TAG, "GlobalUtil.getInstance().getContext() == null.");
       return false;
     }
-    localObject1 = (ConnectivityManager)((Context)localObject1).getSystemService("connectivity");
+    Object localObject2 = (ConnectivityManager)((Context)localObject1).getSystemService("connectivity");
+    localObject1 = null;
     try
     {
-      localObject1 = ((ConnectivityManager)localObject1).getActiveNetworkInfo();
-      if (localObject1 != null)
-      {
-        bool = ((NetworkInfo)localObject1).isAvailable();
-        return bool;
-      }
+      localObject2 = ((ConnectivityManager)localObject2).getActiveNetworkInfo();
+      localObject1 = localObject2;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ab.e(TAG, localException.getMessage());
-        Object localObject2 = null;
-        continue;
-        boolean bool = false;
-      }
+      ab.e(TAG, localException.getMessage());
     }
+    if (localObject1 != null) {
+      bool = ((NetworkInfo)localObject1).isAvailable();
+    }
+    return bool;
   }
   
   public static boolean isOppo()
@@ -572,38 +550,44 @@ public class GlobalUtil
     try
     {
       String str = Build.MANUFACTURER;
-      if ((!TextUtils.isEmpty(str)) && (str.toLowerCase().contains("oppo"))) {
+      boolean bool = TextUtils.isEmpty(str);
+      if ((!bool) && (str.toLowerCase().contains("oppo"))) {
         return true;
       }
       str = Build.FINGERPRINT;
       if (!TextUtils.isEmpty(str))
       {
-        boolean bool = str.toLowerCase().contains("oppo");
+        bool = str.toLowerCase().contains("oppo");
         if (bool) {
-          break label70;
+          return true;
         }
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Log.e("DeviceUtils", localException.getMessage(), localException);
-      }
+      Log.e("DeviceUtils", localException.getMessage(), localException);
     }
     return false;
-    label70:
-    return true;
   }
   
   public static boolean isRecommendGame(String paramString)
   {
-    BoutiqueGameConfig localBoutiqueGameConfig = (BoutiqueGameConfig)com.tencent.tmdownloader.internal.storage.b.a().a("key_recommend_games_config", BoutiqueGameConfig.class);
-    if ((localBoutiqueGameConfig != null) && (localBoutiqueGameConfig.pkgList != null) && (localBoutiqueGameConfig.pkgList.size() != 0))
+    Object localObject = (BoutiqueGameConfig)com.tencent.tmdownloader.internal.storage.b.a().a("key_recommend_games_config", BoutiqueGameConfig.class);
+    if ((localObject != null) && (((BoutiqueGameConfig)localObject).pkgList != null) && (((BoutiqueGameConfig)localObject).pkgList.size() != 0))
     {
-      ab.c("nemo_bgg", "<isRecommendGame> CONFIG_RECOMMEND_GAMES  size = " + localBoutiqueGameConfig.pkgList.size() + "\ncontent=" + localBoutiqueGameConfig.pkgList);
-      boolean bool = localBoutiqueGameConfig.pkgList.contains(paramString);
-      ab.c("nemo_bgg", "<isRecommendGame> " + paramString + " is bgg：" + bool);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<isRecommendGame> CONFIG_RECOMMEND_GAMES  size = ");
+      localStringBuilder.append(((BoutiqueGameConfig)localObject).pkgList.size());
+      localStringBuilder.append("\ncontent=");
+      localStringBuilder.append(((BoutiqueGameConfig)localObject).pkgList);
+      ab.c("nemo_bgg", localStringBuilder.toString());
+      boolean bool = ((BoutiqueGameConfig)localObject).pkgList.contains(paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("<isRecommendGame> ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" is bgg：");
+      ((StringBuilder)localObject).append(bool);
+      ab.c("nemo_bgg", ((StringBuilder)localObject).toString());
       return bool;
     }
     ab.e("nemo_bgg", "<isRecommendGame> CONFIG_RECOMMEND_GAMES error, boutiqueGameConfig is null!");
@@ -612,7 +596,11 @@ public class GlobalUtil
   
   public static boolean isVivo()
   {
-    return replaceBlank((Build.MANUFACTURER + "-" + Build.MODEL).toLowerCase()).contains("vivo");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append("-");
+    localStringBuilder.append(Build.MODEL);
+    return replaceBlank(localStringBuilder.toString().toLowerCase()).contains("vivo");
   }
   
   public static String replaceBlank(String paramString)
@@ -626,39 +614,54 @@ public class GlobalUtil
   
   public static void setClipboardCMD(Context paramContext, String paramString, long paramLong1, long paramLong2)
   {
-    com.tencent.tmassistantbase.util.b.b.a(TAG, "setClipboardCMD taskTmast:" + paramString + ", startTime=" + paramLong1 + ", endTime=" + paramLong2);
+    Object localObject1 = TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("setClipboardCMD taskTmast:");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(", startTime=");
+    ((StringBuilder)localObject2).append(paramLong1);
+    ((StringBuilder)localObject2).append(", endTime=");
+    ((StringBuilder)localObject2).append(paramLong2);
+    com.tencent.tmassistantbase.util.b.b.a((String)localObject1, ((StringBuilder)localObject2).toString());
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    Object localObject = Uri.parse(paramString);
-    paramString = ((Uri)localObject).buildUpon();
+    localObject1 = Uri.parse(paramString);
+    paramString = ((Uri)localObject1).buildUpon();
     paramLong2 -= paramLong1;
-    if (paramLong2 >= 300000L) {}
-    for (;;)
-    {
-      paramString.appendQueryParameter("clipboard_start_time", "" + paramLong1);
-      paramString.appendQueryParameter("clipboard_expiry_time", "" + paramLong2);
-      try
-      {
-        if (TextUtils.isEmpty(((Uri)localObject).getQueryParameter("hostpname")))
-        {
-          localObject = getAppPackageName(paramContext);
-          String str = "" + getAppVersionCode(paramContext);
-          paramString.appendQueryParameter("hostpname", (String)localObject);
-          paramString.appendQueryParameter("hostversioncode", str);
-        }
-        setPlainTextToClipboard(paramContext, "$" + paramString.build().toString() + "$");
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          com.tencent.tmassistantbase.util.b.b.a(TAG, "setClipboardCMD hostpname set failed.", localThrowable);
-        }
-      }
+    if (paramLong2 < 300000L) {
       paramLong2 = 1800000L;
     }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(paramLong1);
+    paramString.appendQueryParameter("clipboard_start_time", ((StringBuilder)localObject2).toString());
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(paramLong2);
+    paramString.appendQueryParameter("clipboard_expiry_time", ((StringBuilder)localObject2).toString());
+    try
+    {
+      if (TextUtils.isEmpty(((Uri)localObject1).getQueryParameter("hostpname")))
+      {
+        localObject1 = getAppPackageName(paramContext);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("");
+        ((StringBuilder)localObject2).append(getAppVersionCode(paramContext));
+        localObject2 = ((StringBuilder)localObject2).toString();
+        paramString.appendQueryParameter("hostpname", (String)localObject1);
+        paramString.appendQueryParameter("hostversioncode", (String)localObject2);
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      com.tencent.tmassistantbase.util.b.b.a(TAG, "setClipboardCMD hostpname set failed.", localThrowable);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("$");
+    localStringBuilder.append(paramString.build().toString());
+    localStringBuilder.append("$");
+    setPlainTextToClipboard(paramContext, localStringBuilder.toString());
   }
   
   public static void setPlainTextToClipboard(Context paramContext, String paramString)
@@ -669,25 +672,43 @@ public class GlobalUtil
       com.tencent.tmassistantbase.util.b.b.b(TAG, "cm is null!");
       return;
     }
-    paramContext.setPrimaryClip(ClipData.newPlainText("", paramString));
-    com.tencent.tmassistantbase.util.b.b.a(TAG, "setPlainTextToClipboard plainText:" + paramString);
+    Object localObject = ClipData.newPlainText("", paramString);
+    ClipboardMonitor.setPrimaryClip(paramContext, (ClipData)localObject);
+    paramContext.setPrimaryClip((ClipData)localObject);
+    paramContext = TAG;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setPlainTextToClipboard plainText:");
+    ((StringBuilder)localObject).append(paramString);
+    com.tencent.tmassistantbase.util.b.b.a(paramContext, ((StringBuilder)localObject).toString());
   }
   
   public static void updateFilePathAuthorized(String paramString)
   {
-    Object localObject = new File(paramString);
-    String str2 = ((File)localObject).getParent();
-    String str1 = new File(str2).getParent();
-    paramString = new File(str1).getParent();
+    Object localObject3 = new File(paramString);
+    Object localObject2 = ((File)localObject3).getParent();
+    Object localObject1 = new File((String)localObject2).getParent();
+    paramString = new File((String)localObject1).getParent();
     try
     {
-      localObject = "chmod 777 " + ((File)localObject).getAbsolutePath();
-      Runtime.getRuntime().exec((String)localObject);
-      str2 = "chmod 777 " + str2;
-      Runtime.getRuntime().exec(str2);
-      str1 = "chmod 777 " + str1;
-      Runtime.getRuntime().exec(str1);
-      paramString = "chmod 777" + paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("chmod 777 ");
+      localStringBuilder.append(((File)localObject3).getAbsolutePath());
+      localObject3 = localStringBuilder.toString();
+      Runtime.getRuntime().exec((String)localObject3);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("chmod 777 ");
+      ((StringBuilder)localObject3).append((String)localObject2);
+      localObject2 = ((StringBuilder)localObject3).toString();
+      Runtime.getRuntime().exec((String)localObject2);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("chmod 777 ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject2).toString();
+      Runtime.getRuntime().exec((String)localObject1);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("chmod 777");
+      ((StringBuilder)localObject1).append(paramString);
+      paramString = ((StringBuilder)localObject1).toString();
       Runtime.getRuntime().exec(paramString);
       return;
     }
@@ -727,13 +748,14 @@ public class GlobalUtil
   
   public int getAppVersionCode()
   {
-    if (this.mContext == null) {
+    Object localObject = this.mContext;
+    if (localObject == null) {
       return 0;
     }
-    String str = this.mContext.getPackageName();
+    localObject = ((Context)localObject).getPackageName();
     try
     {
-      int i = this.mContext.getPackageManager().getPackageInfo(str, 0).versionCode;
+      int i = this.mContext.getPackageManager().getPackageInfo((String)localObject, 0).versionCode;
       return i;
     }
     catch (Exception localException) {}
@@ -797,7 +819,11 @@ public class GlobalUtil
     {
       str1 = getMacAddressNew();
     }
-    ab.c(TAG, "address:" + str1);
+    str2 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("address:");
+    localStringBuilder.append(str1);
+    ab.c(str2, localStringBuilder.toString());
     return str1;
   }
   
@@ -847,12 +873,13 @@ public class GlobalUtil
   
   public String getPhoneGuid()
   {
-    if (this.mContext == null) {
+    Object localObject = this.mContext;
+    if (localObject == null) {
       return "";
     }
-    SharedPreferences localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 4);
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString("TMAssistantSDKPhoneGUID", "");
+    localObject = ((Context)localObject).getSharedPreferences("TMAssistantSDKSharedPreference", 4);
+    if (localObject != null) {
+      return ((SharedPreferences)localObject).getString("TMAssistantSDKPhoneGUID", "");
     }
     return "";
   }
@@ -864,140 +891,167 @@ public class GlobalUtil
   
   public int getQQDownloaderAPILevel()
   {
-    if (this.mContext == null) {
-      ab.c("SelfUpdateSDK", "context == null");
-    }
-    for (;;)
+    if (this.mContext == null)
     {
+      ab.c("SelfUpdateSDK", "context == null");
       return 0;
-      ab.c("SelfUpdateSDK", "getQQDownloaderAPILevel");
-      try
-      {
-        ApplicationInfo localApplicationInfo = this.mContext.getPackageManager().getApplicationInfo("com.tencent.android.qqdownloader", 128);
-        ab.c("SelfUpdateSDK", "appInfo:" + localApplicationInfo);
-        if ((localApplicationInfo != null) && (localApplicationInfo.metaData != null))
-        {
-          int i = localApplicationInfo.metaData.getInt("com.tencent.android.qqdownloader.sdk.apilevel");
-          ab.c("SelfUpdateSDK", "apiLevel:" + i);
-          return i;
-        }
-      }
-      catch (Exception localException) {}
     }
+    ab.c("SelfUpdateSDK", "getQQDownloaderAPILevel");
+    try
+    {
+      Object localObject = this.mContext.getPackageManager().getApplicationInfo("com.tencent.android.qqdownloader", 128);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("appInfo:");
+      localStringBuilder.append(localObject);
+      ab.c("SelfUpdateSDK", localStringBuilder.toString());
+      if ((localObject != null) && (((ApplicationInfo)localObject).metaData != null))
+      {
+        int i = ((ApplicationInfo)localObject).metaData.getInt("com.tencent.android.qqdownloader.sdk.apilevel");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("apiLevel:");
+        ((StringBuilder)localObject).append(i);
+        ab.c("SelfUpdateSDK", ((StringBuilder)localObject).toString());
+        return i;
+      }
+      return 0;
+    }
+    catch (Exception localException) {}
     return 0;
   }
   
   public int getQQDownloaderConnectLevel()
   {
-    if (this.mContext == null) {
-      ab.c("SelfUpdateSDK", "context == null");
-    }
-    for (;;)
+    if (this.mContext == null)
     {
+      ab.c("SelfUpdateSDK", "context == null");
       return 0;
-      ab.c("SelfUpdateSDK", "getQQDownloaderConnectLevel");
-      try
-      {
-        ApplicationInfo localApplicationInfo = this.mContext.getPackageManager().getApplicationInfo("com.tencent.android.qqdownloader", 128);
-        ab.c("SelfUpdateSDK", "appInfo:" + localApplicationInfo);
-        if ((localApplicationInfo != null) && (localApplicationInfo.metaData != null))
-        {
-          int i = localApplicationInfo.metaData.getInt("com.tencent.android.qqdownloader.sdk.connectlevel");
-          ab.c("SelfUpdateSDK", "apiLevel:" + i);
-          return i;
-        }
-      }
-      catch (Exception localException) {}
     }
+    ab.c("SelfUpdateSDK", "getQQDownloaderConnectLevel");
+    try
+    {
+      Object localObject = this.mContext.getPackageManager().getApplicationInfo("com.tencent.android.qqdownloader", 128);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("appInfo:");
+      localStringBuilder.append(localObject);
+      ab.c("SelfUpdateSDK", localStringBuilder.toString());
+      if ((localObject != null) && (((ApplicationInfo)localObject).metaData != null))
+      {
+        int i = ((ApplicationInfo)localObject).metaData.getInt("com.tencent.android.qqdownloader.sdk.connectlevel");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("apiLevel:");
+        ((StringBuilder)localObject).append(i);
+        ab.c("SelfUpdateSDK", ((StringBuilder)localObject).toString());
+        return i;
+      }
+      return 0;
+    }
+    catch (Exception localException) {}
     return 0;
   }
   
   public int getQQDownloaderVersionCode()
   {
-    int j = 0;
-    for (;;)
+    Object localObject1;
+    label57:
+    try
     {
-      try
-      {
-        localObject1 = this.mContext;
-        if (localObject1 != null) {
-          continue;
-        }
-        i = j;
+      localObject1 = this.mContext;
+      if (localObject1 == null) {
+        return 0;
       }
-      finally
-      {
-        try
-        {
-          Object localObject1 = this.mContext.getPackageManager();
-          i = j;
-          if (localObject1 == null) {
-            continue;
-          }
-          localObject1 = ((PackageManager)localObject1).getPackageInfo("com.tencent.android.qqdownloader", 0);
-          i = j;
-          if (localObject1 == null) {
-            continue;
-          }
-          i = ((PackageInfo)localObject1).versionCode;
-        }
-        catch (Exception localException)
-        {
-          int i = j;
-        }
-        localObject2 = finally;
-      }
-      return i;
     }
+    finally {}
+    try
+    {
+      localObject1 = this.mContext.getPackageManager();
+      if (localObject1 != null)
+      {
+        localObject1 = ((PackageManager)localObject1).getPackageInfo("com.tencent.android.qqdownloader", 0);
+        if (localObject1 == null) {
+          return 0;
+        }
+        int i = ((PackageInfo)localObject1).versionCode;
+        return i;
+      }
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      break label57;
+    }
+    return 0;
   }
   
   public String getQadid()
   {
-    if ((!TextUtils.isEmpty(mQadid)) || (this.mContext == null))
+    if (TextUtils.isEmpty(mQadid))
     {
-      ab.c(TAG, ">getQadid " + mQadid);
-      return mQadid;
+      localObject = this.mContext;
+      if (localObject != null)
+      {
+        mQadid = t.a(((Context)localObject).getApplicationContext());
+        localObject = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(">getQadid ");
+        localStringBuilder.append(mQadid);
+        ab.c((String)localObject, localStringBuilder.toString());
+        return mQadid;
+      }
     }
-    mQadid = t.a(this.mContext.getApplicationContext());
-    ab.c(TAG, ">getQadid " + mQadid);
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">getQadid ");
+    localStringBuilder.append(mQadid);
+    ab.c((String)localObject, localStringBuilder.toString());
     return mQadid;
   }
   
   public String getQimei()
   {
-    if ((!TextUtils.isEmpty(mQImei)) || (this.mContext == null))
+    if ((TextUtils.isEmpty(mQImei)) && (this.mContext != null))
     {
-      ab.c(TAG, ">getQimei" + mQImei);
-      return mQImei;
-    }
-    try
-    {
-      w.a("com.tencent.beacon.event.UserAction").a("initUserAction", new Object[] { this.mContext.getApplicationContext() });
-      mQImei = (String)w.a("com.tencent.beacon.event.UserAction").d("getQIMEI").a();
-      ab.c(TAG, ">getQimei" + mQImei);
-      return mQImei;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      try
       {
-        ab.e(TAG, ">getQimei" + localThrowable.getMessage());
+        w.a("com.tencent.beacon.event.UserAction").a("initUserAction", new Object[] { this.mContext.getApplicationContext() });
+        mQImei = (String)w.a("com.tencent.beacon.event.UserAction").d("getQIMEI").a();
       }
+      catch (Throwable localThrowable)
+      {
+        localObject = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(">getQimei");
+        localStringBuilder.append(localThrowable.getMessage());
+        ab.e((String)localObject, localStringBuilder.toString());
+      }
+      str = TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(">getQimei");
+      ((StringBuilder)localObject).append(mQImei);
+      ab.c(str, ((StringBuilder)localObject).toString());
+      return mQImei;
     }
+    String str = TAG;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(">getQimei");
+    ((StringBuilder)localObject).append(mQImei);
+    ab.c(str, ((StringBuilder)localObject).toString());
+    return mQImei;
   }
   
   public int getScreenHeight()
   {
-    if (this.mContext != null) {
-      return this.mContext.getResources().getDisplayMetrics().heightPixels;
+    Context localContext = this.mContext;
+    if (localContext != null) {
+      return localContext.getResources().getDisplayMetrics().heightPixels;
     }
     return 0;
   }
   
   public int getScreenWidth()
   {
-    if (this.mContext != null) {
-      return this.mContext.getResources().getDisplayMetrics().widthPixels;
+    Context localContext = this.mContext;
+    if (localContext != null) {
+      return localContext.getResources().getDisplayMetrics().widthPixels;
     }
     return 0;
   }
@@ -1027,22 +1081,21 @@ public class GlobalUtil
   
   public void setPhoneGuid(String paramString)
   {
-    if (this.mContext == null) {}
-    SharedPreferences localSharedPreferences;
-    do
+    if (this.mContext == null) {
+      return;
+    }
+    if (!TextUtils.isEmpty(paramString))
     {
-      do
-      {
-        return;
-      } while (TextUtils.isEmpty(paramString));
-      localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 4);
-    } while (localSharedPreferences == null);
-    localSharedPreferences.edit().putString("TMAssistantSDKPhoneGUID", paramString).commit();
+      SharedPreferences localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 4);
+      if (localSharedPreferences != null) {
+        localSharedPreferences.edit().putString("TMAssistantSDKPhoneGUID", paramString).commit();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.GlobalUtil
  * JD-Core Version:    0.7.0.1
  */

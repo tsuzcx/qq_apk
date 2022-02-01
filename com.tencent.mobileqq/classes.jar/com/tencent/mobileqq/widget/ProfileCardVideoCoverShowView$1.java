@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.widget;
 
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -37,48 +36,43 @@ class ProfileCardVideoCoverShowView$1
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject;
+    View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131561467, null, false);
-      paramView.setTag((ImageView)paramView.findViewById(2131368729));
-      localObject = new StateListDrawable();
-      ((StateListDrawable)localObject).addState(ProfileCardVideoCoverShowView.a(), new ColorDrawable(855638016));
-      ((StateListDrawable)localObject).addState(ProfileCardVideoCoverShowView.b(), new ColorDrawable(0));
-      paramView.findViewById(2131379736).setBackgroundDrawable((Drawable)localObject);
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131561311, null, false);
+      localView.setTag((ImageView)localView.findViewById(2131368461));
+      paramView = new StateListDrawable();
+      paramView.addState(ProfileCardVideoCoverShowView.a(), new ColorDrawable(855638016));
+      paramView.addState(ProfileCardVideoCoverShowView.b(), new ColorDrawable(0));
+      localView.findViewById(2131379074).setBackgroundDrawable(paramView);
     }
-    for (;;)
+    paramView = (ImageView)localView.getTag();
+    ProfileCardVideoCoverShowView.DataItem localDataItem = a(paramInt);
+    if (TextUtils.isEmpty(localDataItem.a))
     {
-      localObject = (ImageView)paramView.getTag();
-      ProfileCardVideoCoverShowView.DataItem localDataItem = a(paramInt);
-      if (TextUtils.isEmpty(localDataItem.a))
-      {
-        ((ImageView)localObject).setImageDrawable(null);
-        if (paramInt != 0) {
-          break label240;
-        }
-        paramView.setPadding(AIOUtils.a(12.0F, this.a.getResources()), 0, 0, 0);
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
-        localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-        localURLDrawableOptions.mRequestHeight = AIOUtils.a(178.0F, this.a.getResources());
-        localURLDrawableOptions.mRequestWidth = AIOUtils.a(100.0F, this.a.getResources());
-        ((ImageView)localObject).setImageDrawable(URLDrawable.getDrawable(localDataItem.a, localURLDrawableOptions));
-        break;
-        label240:
-        paramView.setPadding(0, 0, 0, 0);
-      }
+      paramView.setImageDrawable(null);
     }
+    else
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
+      localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+      localURLDrawableOptions.mRequestHeight = AIOUtils.b(178.0F, this.a.getResources());
+      localURLDrawableOptions.mRequestWidth = AIOUtils.b(100.0F, this.a.getResources());
+      paramView.setImageDrawable(URLDrawable.getDrawable(localDataItem.a, localURLDrawableOptions));
+    }
+    if (paramInt == 0) {
+      localView.setPadding(AIOUtils.b(12.0F, this.a.getResources()), 0, 0, 0);
+    } else {
+      localView.setPadding(0, 0, 0, 0);
+    }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView.1
  * JD-Core Version:    0.7.0.1
  */

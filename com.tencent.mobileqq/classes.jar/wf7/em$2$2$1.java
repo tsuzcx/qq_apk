@@ -20,67 +20,66 @@ class em$2$2$1
     synchronized (em.h(this.nq.np.nm))
     {
       em.b(this.nq.np.nm, false);
-      if (paramInt3 != 0) {
-        break label443;
-      }
-      em.c(this.nq.np.nm, System.currentTimeMillis());
-      em.a(this.nq.np.nm, false);
-    }
-    Object localObject6;
-    synchronized (em.h(this.nq.np.nm))
-    {
-      if (em.m(this.nq.np.nm)) {
-        em.c(this.nq.np.nm, false);
-      }
-      ??? = new ArrayList();
-      synchronized (em.a(this.nq.np.nm))
+      if (paramInt3 == 0)
       {
-        if (em.a(this.nq.np.nm).size() <= 0) {
-          break label314;
-        }
-        localObject6 = em.a(this.nq.np.nm).values().iterator();
-        em.d locald;
-        do
+        em.c(this.nq.np.nm, System.currentTimeMillis());
+        em.a(this.nq.np.nm, false);
+        synchronized (em.h(this.nq.np.nm))
         {
-          if (!((Iterator)localObject6).hasNext()) {
-            break;
+          if (em.m(this.nq.np.nm)) {
+            em.c(this.nq.np.nm, false);
           }
-          locald = (em.d)((Iterator)localObject6).next();
-        } while ((locald.nu) || (locald.nv));
-        ((List)???).add(locald);
+          ??? = new ArrayList();
+          synchronized (em.a(this.nq.np.nm))
+          {
+            Object localObject7;
+            if (em.a(this.nq.np.nm).size() > 0)
+            {
+              localObject7 = em.a(this.nq.np.nm).values().iterator();
+              while (((Iterator)localObject7).hasNext())
+              {
+                em.d locald = (em.d)((Iterator)localObject7).next();
+                if ((!locald.nu) && (!locald.nv)) {
+                  ((List)???).add(locald);
+                }
+              }
+              em.a(this.nq.np.nm).clear();
+            }
+            if (((List)???).size() > 0)
+            {
+              ??? = ((List)???).iterator();
+              while (((Iterator)???).hasNext())
+              {
+                localObject7 = (em.d)((Iterator)???).next();
+                em.a(this.nq.np.nm, (em.d)localObject7);
+              }
+              synchronized (em.o(this.nq.np.nm))
+              {
+                em.o(this.nq.np.nm).addAll((Collection)???);
+              }
+            }
+            em.d(this.nq.np.nm).sendEmptyMessage(1);
+            return;
+          }
+        }
       }
-      localObject3 = finally;
-      throw localObject3;
-    }
-    em.a(this.nq.np.nm).clear();
-    label314:
-    if (localCollection.size() > 0)
-    {
-      ??? = localCollection.iterator();
-      while (((Iterator)???).hasNext())
-      {
-        localObject6 = (em.d)((Iterator)???).next();
-        em.a(this.nq.np.nm, (em.d)localObject6);
+      if (paramInt3 > 0) {
+        paramInt1 = Math.abs(-900000000) + paramInt3;
+      } else {
+        paramInt1 = -900000000 + paramInt3;
       }
-    }
-    synchronized (em.o(this.nq.np.nm))
-    {
-      em.o(this.nq.np.nm).addAll(localCollection);
-      em.d(this.nq.np.nm).sendEmptyMessage(1);
-      return;
-    }
-    label443:
-    if (paramInt3 > 0) {}
-    for (paramInt1 = Math.abs(-900000000) + paramInt3;; paramInt1 = -900000000 + paramInt3)
-    {
       em.a(this.nq.np.nm, false, true, paramInt1);
       return;
+    }
+    for (;;)
+    {
+      throw localObject6;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.em.2.2.1
  * JD-Core Version:    0.7.0.1
  */

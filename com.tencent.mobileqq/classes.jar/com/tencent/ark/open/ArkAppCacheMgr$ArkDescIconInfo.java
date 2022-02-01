@@ -1,6 +1,6 @@
 package com.tencent.ark.open;
 
-import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,32 +11,29 @@ public final class ArkAppCacheMgr$ArkDescIconInfo
   
   public static ArkDescIconInfo fromJson(String paramString)
   {
+    ArkDescIconInfo localArkDescIconInfo;
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      if (localJSONObject != null) {
-        paramString = new ArkDescIconInfo();
-      }
-      label46:
-      return null;
-    }
-    catch (JSONException localJSONException1)
-    {
+      paramString = new JSONObject(paramString);
+      localArkDescIconInfo = new ArkDescIconInfo();
       try
       {
-        paramString.name = localJSONObject.optString("name");
-        paramString.iconPath = localJSONObject.optString("iconPath");
-        return paramString;
+        localArkDescIconInfo.name = paramString.optString("name");
+        localArkDescIconInfo.iconPath = paramString.optString("iconPath");
+        return localArkDescIconInfo;
       }
-      catch (JSONException localJSONException2)
-      {
-        break label46;
-      }
-      localJSONException1 = localJSONException1;
-      paramString = null;
-      ArkAppCacheMgr.access$000().logI("ArkApp.ArkAppCacheMgr", "fromJson exception." + localJSONException1.getMessage());
-      return paramString;
+      catch (JSONException paramString) {}
+      localStringBuilder = new StringBuilder();
     }
+    catch (JSONException paramString)
+    {
+      localArkDescIconInfo = null;
+    }
+    StringBuilder localStringBuilder;
+    localStringBuilder.append("fromJson exception.");
+    localStringBuilder.append(paramString.getMessage());
+    Logger.logI("ArkApp.ArkAppCacheMgr", localStringBuilder.toString());
+    return localArkDescIconInfo;
   }
   
   public String toString()
@@ -46,15 +43,15 @@ public final class ArkAppCacheMgr$ArkDescIconInfo
     {
       localJSONObject.put("name", this.name);
       localJSONObject.put("iconPath", this.iconPath);
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        ArkAppCacheMgr.access$000().logI("ArkApp.ArkAppCacheMgr", "exception." + localJSONException.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("exception.");
+      localStringBuilder.append(localJSONException.getMessage());
+      Logger.logI("ArkApp.ArkAppCacheMgr", localStringBuilder.toString());
     }
+    return localJSONObject.toString();
   }
 }
 

@@ -4,7 +4,7 @@
     <LinearLayout android:orientation="horizontal" android:id="@id/root" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="250.0dip"
       xmlns:android="http://schemas.android.com/apk/res/android">
         <RelativeLayout android:id="@id/e7p" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/cwz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ic_launcher" android:scaleType="centerCrop" />
+            <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/cwz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ic_launcher" android:scaleType="centerCrop" />
             <LinearLayout android:orientation="vertical" android:id="@id/e7a" android:background="@drawable/tb" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
                 <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/e7y" android:paddingLeft="3.0dip" android:paddingTop="0.0dip" android:paddingRight="3.0dip" android:paddingBottom="0.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" />
                 <com.tencent.biz.widgets.KandianTextView android:textSize="14.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/e7z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" />
@@ -16,7 +16,7 @@
         </RelativeLayout>
         <View android:layout_width="2.0dip" android:layout_height="fill_parent" />
         <RelativeLayout android:id="@id/ia6" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/cx1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ic_launcher" android:scaleType="centerCrop" />
+            <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/cx1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ic_launcher" android:scaleType="centerCrop" />
             <LinearLayout android:orientation="vertical" android:id="@id/i_p" android:background="@drawable/tb" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
                 <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/iae" android:paddingLeft="3.0dip" android:paddingTop="0.0dip" android:paddingRight="3.0dip" android:paddingBottom="0.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" />
                 <com.tencent.biz.widgets.KandianTextView android:textSize="14.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/iaf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" />

@@ -15,25 +15,22 @@ class GameRoomInviteActivity$16
   
   public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    GameRoomInviteActivity localGameRoomInviteActivity;
     if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      GameRoomInviteActivity localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      boolean bool;
       if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {
-        break label94;
+        bool = false;
+      } else {
+        bool = true;
       }
-    }
-    label94:
-    for (boolean bool = true;; bool = false)
-    {
-      localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), this.jdField_a_of_type_JavaLangString, this.b);
-      return;
+      localGameRoomInviteActivity.showMyInviteDialog(bool, paramRspBody.string_invite_id.get().toStringUtf8(), this.jdField_a_of_type_JavaLangString, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.16
  * JD-Core Version:    0.7.0.1
  */

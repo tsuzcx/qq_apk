@@ -12,54 +12,56 @@ class ConditionSearchManager$2$1
   public void run()
   {
     ConditionSearchManager.a(this.a.this$0, false);
-    if (this.a.this$0.c) {
-      for (;;)
+    if (this.a.this$0.c) {}
+    for (;;)
+    {
+      try
       {
-        try
+        if (this.a.this$0.jdField_a_of_type_JavaUtilLinkedList != null)
         {
-          if (this.a.this$0.jdField_a_of_type_JavaUtilLinkedList == null) {
-            continue;
-          }
           Object localObject = new LinkedList();
           ((LinkedList)localObject).addAll(this.a.this$0.jdField_a_of_type_JavaUtilLinkedList);
           localObject = ((LinkedList)localObject).iterator();
-          if (!((Iterator)localObject).hasNext()) {
+          if (((Iterator)localObject).hasNext())
+          {
+            ConditionSearchManager.IConfigListener localIConfigListener = (ConditionSearchManager.IConfigListener)((Iterator)localObject).next();
+            if (ConditionSearchManager.a(this.a.this$0) == null) {
+              break label241;
+            }
+            bool = true;
+            localIConfigListener.a(2, bool);
             continue;
           }
-          localIConfigListener = (ConditionSearchManager.IConfigListener)((Iterator)localObject).next();
-          if (ConditionSearchManager.a(this.a.this$0) == null) {
-            continue;
-          }
-          bool = true;
         }
-        catch (Exception localException)
+        if (!QLog.isColorLevel()) {
+          break label228;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ConditionSearch.Manager", 1, "updateLocal callback fail.", localException);
+        if ((this.a.this$0.d) && (ConditionSearchManager.a(this.a.this$0) != null))
         {
-          ConditionSearchManager.IConfigListener localIConfigListener;
-          QLog.e("ConditionSearch.Manager", 1, "updateLocal callback fail.", localException);
-          if ((!this.a.this$0.d) || (ConditionSearchManager.a(this.a.this$0) == null)) {
-            continue;
-          }
           this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard);
           return;
-          boolean bool = false;
-          continue;
-          this.a.this$0.d = false;
-          this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard = null;
-          this.a.this$0.b(this.a.this$0.jdField_a_of_type_JavaLangObject);
-          return;
         }
-        localIConfigListener.a(2, bool);
+        this.a.this$0.d = false;
+        this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard = null;
+        this.a.this$0.b(this.a.this$0.jdField_a_of_type_JavaLangObject);
+        return;
       }
-    }
-    if (QLog.isColorLevel()) {
       QLog.d("ConditionSearch.Manager", 2, "updateLocal | SearchActivity is not running");
+      label228:
+      ConditionSearchManager.a(this.a.this$0, null);
+      return;
+      label241:
+      boolean bool = false;
     }
-    ConditionSearchManager.a(this.a.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.2.1
  * JD-Core Version:    0.7.0.1
  */

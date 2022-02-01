@@ -16,18 +16,23 @@ class GameResultFragment$3
   
   public void a(boolean paramBoolean, String paramString)
   {
-    QLog.d("GameResultFragment", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getShareLinkCallback isSuccess: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" shareUrl: ");
+    localStringBuilder.append(paramString);
+    QLog.d("GameResultFragment", 1, localStringBuilder.toString());
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
       ThreadManager.getUIHandler().post(new GameResultFragment.3.1(this, paramString));
       return;
     }
-    QQToast.a(this.a.a(), 1, 2131690599, 0).a();
+    QQToast.a(this.a.a(), 1, 2131690527, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameresult.GameResultFragment.3
  * JD-Core Version:    0.7.0.1
  */

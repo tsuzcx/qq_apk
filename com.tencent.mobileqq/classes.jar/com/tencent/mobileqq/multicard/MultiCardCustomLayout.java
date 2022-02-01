@@ -37,19 +37,28 @@ public class MultiCardCustomLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView$OnLongClickListener != null) && (this.jdField_a_of_type_AndroidViewGestureDetector != null))
+    boolean bool2 = super.dispatchTouchEvent(paramMotionEvent);
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-      switch (paramMotionEvent.getActionMasked())
+      bool1 = bool2;
+      if (this.jdField_a_of_type_AndroidViewView$OnLongClickListener != null)
       {
-      default: 
-        return true;
+        GestureDetector localGestureDetector = this.jdField_a_of_type_AndroidViewGestureDetector;
+        bool1 = bool2;
+        if (localGestureDetector != null)
+        {
+          localGestureDetector.onTouchEvent(paramMotionEvent);
+          int i = paramMotionEvent.getActionMasked();
+          bool1 = true;
+          if (i != 0) {
+            return true;
+          }
+          getParent().requestDisallowInterceptTouchEvent(true);
+        }
       }
-      getParent().requestDisallowInterceptTouchEvent(true);
-      return true;
     }
-    return bool;
+    return bool1;
   }
   
   public void setDispatchTouchEventOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
@@ -59,7 +68,7 @@ public class MultiCardCustomLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardCustomLayout
  * JD-Core Version:    0.7.0.1
  */

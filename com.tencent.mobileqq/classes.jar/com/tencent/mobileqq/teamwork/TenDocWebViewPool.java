@@ -2,13 +2,13 @@ package com.tencent.mobileqq.teamwork;
 
 import android.content.Context;
 import android.content.MutableContextWrapper;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.IGetExternalInterface;
 import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,80 +36,42 @@ public class TenDocWebViewPool
   
   public static TenDocWebViewPool a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTeamworkTenDocWebViewPool == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqTeamworkTenDocWebViewPool == null) {
-        jdField_a_of_type_ComTencentMobileqqTeamworkTenDocWebViewPool = new TenDocWebViewPool();
+    if (jdField_a_of_type_ComTencentMobileqqTeamworkTenDocWebViewPool == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqTeamworkTenDocWebViewPool == null) {
+          jdField_a_of_type_ComTencentMobileqqTeamworkTenDocWebViewPool = new TenDocWebViewPool();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqTeamworkTenDocWebViewPool;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqTeamworkTenDocWebViewPool;
   }
   
-  /* Error */
   public static void a(String paramString, TouchWebView paramTouchWebView)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 29	com/tencent/mobileqq/teamwork/TenDocWebViewPool:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   6: ifnonnull +13 -> 19
-    //   9: new 36	java/util/HashMap
-    //   12: dup
-    //   13: invokespecial 37	java/util/HashMap:<init>	()V
-    //   16: putstatic 29	com/tencent/mobileqq/teamwork/TenDocWebViewPool:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   19: aload_0
-    //   20: ifnull +30 -> 50
-    //   23: getstatic 29	com/tencent/mobileqq/teamwork/TenDocWebViewPool:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   26: aload_0
-    //   27: invokevirtual 41	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: checkcast 43	java/lang/Integer
-    //   33: astore_3
-    //   34: aload_3
-    //   35: ifnonnull +24 -> 59
-    //   38: getstatic 29	com/tencent/mobileqq/teamwork/TenDocWebViewPool:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   41: aload_0
-    //   42: iconst_1
-    //   43: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   46: invokevirtual 51	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   49: pop
-    //   50: aload_0
-    //   51: aload_1
-    //   52: invokestatic 55	com/tencent/mobileqq/jsp/DocxApiPlugin:a	(Ljava/lang/String;Lcom/tencent/biz/ui/TouchWebView;)V
-    //   55: ldc 2
-    //   57: monitorexit
-    //   58: return
-    //   59: aload_3
-    //   60: invokevirtual 59	java/lang/Integer:intValue	()I
-    //   63: istore_2
-    //   64: getstatic 29	com/tencent/mobileqq/teamwork/TenDocWebViewPool:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   67: aload_0
-    //   68: iload_2
-    //   69: iconst_1
-    //   70: iadd
-    //   71: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   74: invokevirtual 51	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   77: pop
-    //   78: goto -28 -> 50
-    //   81: astore_0
-    //   82: ldc 2
-    //   84: monitorexit
-    //   85: aload_0
-    //   86: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	87	0	paramString	String
-    //   0	87	1	paramTouchWebView	TouchWebView
-    //   63	8	2	i	int
-    //   33	27	3	localInteger	Integer
-    // Exception table:
-    //   from	to	target	type
-    //   3	19	81	finally
-    //   23	34	81	finally
-    //   38	50	81	finally
-    //   50	55	81	finally
-    //   59	78	81	finally
+    try
+    {
+      if (jdField_a_of_type_JavaUtilHashMap == null) {
+        jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      }
+      if (paramString != null)
+      {
+        Integer localInteger = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (localInteger == null)
+        {
+          jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(1));
+        }
+        else
+        {
+          int i = localInteger.intValue();
+          jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i + 1));
+        }
+      }
+      ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).sendDocsDataBack(paramString, paramTouchWebView);
+      return;
+    }
+    finally {}
   }
   
   public TouchWebView a(Context paramContext)
@@ -118,14 +80,17 @@ public class TenDocWebViewPool
     TouchWebView localTouchWebView = null;
     try
     {
-      QLog.e("TenDocWebViewPool", 1, "tendocpreload getWebView =  " + jdField_a_of_type_JavaUtilList.size());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tendocpreload getWebView =  ");
+      ((StringBuilder)localObject).append(jdField_a_of_type_JavaUtilList.size());
+      QLog.e("TenDocWebViewPool", 1, ((StringBuilder)localObject).toString());
       if (jdField_a_of_type_JavaUtilList.size() > 0)
       {
         localTouchWebView = (TouchWebView)jdField_a_of_type_JavaUtilList.get(0);
         jdField_a_of_type_JavaUtilList.remove(0);
-        ViewGroup localViewGroup = (ViewGroup)localTouchWebView.getParent();
-        if (localViewGroup != null) {
-          localViewGroup.removeView(localTouchWebView);
+        localObject = (ViewGroup)localTouchWebView.getParent();
+        if (localObject != null) {
+          ((ViewGroup)localObject).removeView(localTouchWebView);
         }
         ((MutableContextWrapper)localTouchWebView.getContext()).setBaseContext(paramContext);
       }
@@ -154,40 +119,39 @@ public class TenDocWebViewPool
         {
           Context localContext = paramTouchWebView.getContext();
           if ((localContext instanceof MutableContextWrapper)) {
-            ((MutableContextWrapper)localContext).setBaseContext(BaseApplicationImpl.sApplication);
+            ((MutableContextWrapper)localContext).setBaseContext(BaseApplication.getContext());
           }
           if (jdField_a_of_type_JavaUtilList.size() < jdField_a_of_type_Int)
           {
             QLog.i("TenDocWebViewPool", 1, "tendocpreload recycleWebView  ");
             jdField_a_of_type_JavaUtilList.add(paramTouchWebView);
           }
+          else
+          {
+            paramTouchWebView.destroy();
+          }
         }
-        else
-        {
-          return;
-        }
-        paramTouchWebView.destroy();
+        return;
       }
     }
   }
   
   public void a(String paramString)
   {
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload init" + a());
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("tendocpreload init");
+    ((StringBuilder)???).append(a());
+    QLog.i("TenDocWebViewPool", 1, ((StringBuilder)???).toString());
     synchronized (jdField_a_of_type_ArrayOfByte)
     {
       if (!a())
       {
-        Object localObject = new Bundle();
-        ((Bundle)localObject).putInt("_accelerator_mode_", 3);
-        if (SwiftReuseTouchWebView.c == 0) {
-          SwiftWebAccelerator.a().a((Bundle)localObject);
-        }
+        ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).webAcceleratorSmartSchedule();
         QLog.i("TenDocWebViewPool", 1, "init");
-        localObject = SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication);
-        ((TouchWebView)localObject).setWebViewClient(new TenDocWebViewPool.WebViewClientImpl(this));
-        ((TouchWebView)localObject).setWebChromeClient(new TenDocWebViewPool.WebChromeClientImpl(this));
-        jdField_a_of_type_JavaUtilList.add(localObject);
+        SwiftReuseTouchWebView localSwiftReuseTouchWebView = SwiftReuseTouchWebView.a(BaseApplication.getContext());
+        localSwiftReuseTouchWebView.setWebViewClient(new TenDocWebViewPool.WebViewClientImpl(this));
+        localSwiftReuseTouchWebView.setWebChromeClient(new TenDocWebViewPool.WebChromeClientImpl(this));
+        jdField_a_of_type_JavaUtilList.add(localSwiftReuseTouchWebView);
       }
       TenDocWebPreLoadHelper.a = paramString;
       return;
@@ -201,26 +165,20 @@ public class TenDocWebViewPool
   
   public boolean a(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (a())
+    if ((a()) && (!TextUtils.isEmpty(paramString)))
     {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        TouchWebView localTouchWebView = (TouchWebView)a().get(0);
-        localTouchWebView.setWebViewClient(new TenDocWebViewPool.WebViewClientImpl(this));
-        localTouchWebView.setWebChromeClient(new TenDocWebViewPool.WebChromeClientImpl(this));
-        localTouchWebView.loadUrlOriginal(paramString);
-        bool1 = true;
-      }
+      TouchWebView localTouchWebView = (TouchWebView)a().get(0);
+      localTouchWebView.setWebViewClient(new TenDocWebViewPool.WebViewClientImpl(this));
+      localTouchWebView.setWebChromeClient(new TenDocWebViewPool.WebChromeClientImpl(this));
+      localTouchWebView.loadUrlOriginal(paramString);
+      return true;
     }
-    return bool1;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocWebViewPool
  * JD-Core Version:    0.7.0.1
  */

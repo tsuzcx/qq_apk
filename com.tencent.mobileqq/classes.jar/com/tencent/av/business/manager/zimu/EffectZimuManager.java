@@ -14,10 +14,9 @@ import com.tencent.av.business.manager.EffectMutexManager;
 import com.tencent.av.business.manager.EffectMutexManager.IMutexItem;
 import com.tencent.av.recog.AVVoiceRecog;
 import com.tencent.av.ui.ControlUIObserver.ZimuRequest;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,22 +49,30 @@ public class EffectZimuManager
   
   public static boolean a(VideoAppInterface paramVideoAppInterface)
   {
-    ((EffectZimuManager)paramVideoAppInterface.a(0)).b();
-    return a(paramVideoAppInterface.getApp()).getInt("qav_zimu_is_show", 0) == 1;
+    boolean bool = false;
+    ((EffectZimuManager)paramVideoAppInterface.a(0)).c();
+    if (a(paramVideoAppInterface.getApp()).getInt("qav_zimu_is_show", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   private boolean b(String paramString)
   {
-    boolean bool = true;
-    if (!TextUtils.isEmpty(paramString)) {
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = true;
+    if (!bool2) {
       try
       {
         paramString = new JSONObject(paramString);
         if (!paramString.has("switch")) {
-          return bool;
+          return bool1;
         }
         paramString = paramString.getString("switch");
-        AVLog.printColorLog("EffectZimuManager", "parse ZIMU:" + paramString);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parse ZIMU:");
+        localStringBuilder.append(paramString);
+        AVLog.printColorLog("EffectZimuManager", localStringBuilder.toString());
         if ((!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase("off")))
         {
           a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), 0);
@@ -79,9 +86,9 @@ public class EffectZimuManager
         paramString.printStackTrace();
       }
     } else {
-      bool = false;
+      bool1 = false;
     }
-    return bool;
+    return bool1;
   }
   
   public int a()
@@ -89,12 +96,12 @@ public class EffectZimuManager
     return 216;
   }
   
-  public Class<?> a()
+  protected Class<?> a()
   {
     return ZimuItem.class;
   }
   
-  public List<ZimuItem> a(int paramInt, String paramString)
+  protected List<ZimuItem> a(int paramInt, String paramString)
   {
     List localList = super.a(paramInt, paramString);
     b(paramString);
@@ -111,7 +118,7 @@ public class EffectZimuManager
     return localArrayList;
   }
   
-  public void a()
+  protected void a()
   {
     super.a();
     EffectMutexManager localEffectMutexManager = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
@@ -127,14 +134,18 @@ public class EffectZimuManager
     }
   }
   
-  public void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 2) && (paramInt != 3)) {
       return;
     }
-    QLog.w("EffectZimuManager", 1, "onSessionStatusChanged, event[" + paramInt + "], seq[" + paramLong + "]");
+    paramString1 = new StringBuilder();
+    paramString1.append("onSessionStatusChanged, event[");
+    paramString1.append(paramInt);
+    paramString1.append("], seq[");
+    paramString1.append(paramLong);
+    paramString1.append("]");
+    QLog.w("EffectZimuManager", 1, paramString1.toString());
     paramString1 = (AudioTransClientInfoHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.b);
     if (paramString1 != null) {
       paramString1.a();
@@ -168,89 +179,55 @@ public class EffectZimuManager
     this.b = true;
   }
   
-  public void a(boolean paramBoolean)
-  {
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      int i = 0;
-      j = i;
-      if (!localIterator.hasNext()) {
-        break label77;
-      }
-      ZimuItem localZimuItem = (ZimuItem)localIterator.next();
-      if ((!ARZimuUtil.a(localZimuItem.getId())) || (localZimuItem.isUsable() == paramBoolean)) {
-        break label82;
-      }
-      localZimuItem.setUsable(paramBoolean);
-      i = 1;
-    }
-    label77:
-    label82:
-    for (;;)
-    {
-      break;
-      j = 0;
-      if (j != 0) {}
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
   public boolean a(long paramLong, ZimuItem paramZimuItem)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("EffectZimuManager", 1, "setCurrentItem, seq[" + paramLong + "], item[" + paramZimuItem + "]", new Throwable("打印调用栈"));
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setCurrentItem, seq[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("], item[");
+      ((StringBuilder)localObject).append(paramZimuItem);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("EffectZimuManager", 1, ((StringBuilder)localObject).toString(), new Throwable("打印调用栈"));
     }
     boolean bool = super.a(paramLong, paramZimuItem);
-    Object localObject;
     if (bool)
     {
-      if (paramZimuItem == null)
-      {
+      if (paramZimuItem == null) {
         localObject = null;
-        EffectZimuManager.DataReport.a((String)localObject);
-        b("setCurrentItem_" + (String)localObject + "_" + paramLong, false);
+      } else {
+        localObject = paramZimuItem.getId();
       }
+      EffectZimuManager.DataReport.a((String)localObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setCurrentItem_");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramLong);
+      b(localStringBuilder.toString(), false);
     }
-    else
+    Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    int i;
+    if (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase == null) {
+      i = 4;
+    } else {
+      i = 5;
+    }
+    ((VideoAppInterface)localObject).a(new Object[] { Integer.valueOf(165), Integer.valueOf(i) });
+    if (paramZimuItem != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-      if (this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase != null) {
-        break label208;
+      localObject = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+      if (localObject != null) {
+        ((EffectMutexManager)localObject).a(3001, paramZimuItem.getId());
       }
     }
-    label208:
-    for (int i = 4;; i = 5)
-    {
-      ((VideoAppInterface)localObject).a(new Object[] { Integer.valueOf(165), Integer.valueOf(i) });
-      if (paramZimuItem != null)
-      {
-        localObject = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
-        if (localObject != null) {
-          ((EffectMutexManager)localObject).a(3001, paramZimuItem.getId());
-        }
-      }
-      return bool;
-      localObject = paramZimuItem.getId();
-      break;
-    }
+    return bool;
   }
   
-  public boolean a(String paramString)
+  protected boolean a(String paramString)
   {
     return b(a());
-  }
-  
-  public int b()
-  {
-    if ((ZimuItem)a() == null) {}
-    return 4;
   }
   
   public void b(String paramString, long paramLong)
@@ -268,24 +245,37 @@ public class EffectZimuManager
   {
     if (this.jdField_a_of_type_Boolean != paramBoolean)
     {
-      QLog.w("EffectZimuManager", 1, "setRecievedSentence, from[" + paramString + "], mIsRecieveSentence[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setRecievedSentence, from[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], mIsRecieveSentence[");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("]");
+      QLog.w("EffectZimuManager", 1, localStringBuilder.toString());
       this.jdField_a_of_type_Boolean = paramBoolean;
     }
   }
   
   public boolean b()
   {
-    return this.c;
+    return this.jdField_a_of_type_Boolean;
   }
   
   public boolean c()
+  {
+    return this.c;
+  }
+  
+  public boolean d()
   {
     return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.zimu.EffectZimuManager
  * JD-Core Version:    0.7.0.1
  */

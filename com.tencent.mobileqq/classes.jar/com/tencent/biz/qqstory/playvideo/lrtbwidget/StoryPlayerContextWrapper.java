@@ -79,10 +79,12 @@ public class StoryPlayerContextWrapper
   
   public void a(StoryPlayerContext paramStoryPlayerContext)
   {
-    if (this.a != null) {
-      throw new IllegalStateException("Base context already set");
+    if (this.a == null)
+    {
+      this.a = paramStoryPlayerContext;
+      return;
     }
-    this.a = paramStoryPlayerContext;
+    throw new IllegalStateException("Base context already set");
   }
   
   public void a(VideoHolderBase paramVideoHolderBase)
@@ -112,7 +114,7 @@ public class StoryPlayerContextWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerContextWrapper
  * JD-Core Version:    0.7.0.1
  */

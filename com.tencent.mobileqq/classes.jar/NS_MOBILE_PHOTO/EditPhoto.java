@@ -32,11 +32,13 @@ public final class EditPhoto
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 0);
+    String str = this.name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 1);
+    str = this.desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.uploadtime, 2);
     paramJceOutputStream.write(this.modifytime, 3);
@@ -44,7 +46,7 @@ public final class EditPhoto
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.EditPhoto
  * JD-Core Version:    0.7.0.1
  */

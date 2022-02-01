@@ -13,13 +13,13 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import androidx.annotation.Nullable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -85,38 +85,41 @@ public class ea
   
   public static ea a(Context paramContext)
   {
-    if (n == null) {}
-    try
-    {
-      if (n == null) {
-        n = new ea(paramContext.getApplicationContext());
+    if (n == null) {
+      try
+      {
+        if (n == null) {
+          n = new ea(paramContext.getApplicationContext());
+        }
       }
-      return n;
+      finally {}
     }
-    finally {}
+    return n;
   }
   
   static int b(Context paramContext)
   {
-    if (paramContext != null) {
-      try
-      {
-        paramContext = paramContext.getPackageManager();
-        if (paramContext != null)
-        {
-          paramContext = paramContext.getPackageInfo("com.txy.anywhere", 4);
-          if (paramContext != null)
-          {
-            int i1 = paramContext.versionCode;
-            return i1;
-          }
-        }
+    if (paramContext != null) {}
+    try
+    {
+      paramContext = paramContext.getPackageManager();
+      if (paramContext == null) {
+        break label34;
       }
-      catch (Throwable paramContext)
-      {
-        return -1;
+      paramContext = paramContext.getPackageInfo("com.txy.anywhere", 4);
+      if (paramContext == null) {
+        break label34;
       }
+      int i1 = paramContext.versionCode;
+      return i1;
     }
+    catch (Throwable paramContext)
+    {
+      label32:
+      label34:
+      break label32;
+    }
+    return -1;
     return -2;
   }
   
@@ -144,8 +147,8 @@ public class ea
           paramContext = paramContext.getString("TencentMapSDK");
           return paramContext;
         }
-        return "";
       }
+      return "";
     }
     catch (Exception paramContext) {}
     return "";
@@ -154,22 +157,26 @@ public class ea
   private String g()
   {
     Object localObject1 = this.b;
-    Object localObject2 = new HashMap();
-    ((HashMap)localObject2).put("version", ((du)localObject1).d());
-    ((HashMap)localObject2).put("app_name", b(((du)localObject1).h));
-    ((HashMap)localObject2).put("app_label", b(((du)localObject1).j));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("version", ((du)localObject1).d());
+    localHashMap.put("app_name", b(((du)localObject1).h));
+    localHashMap.put("app_label", b(((du)localObject1).j));
     if (!TextUtils.isEmpty(null)) {
-      ((HashMap)localObject2).put("l", null);
+      localHashMap.put("l", null);
     }
     try
     {
-      localObject1 = new JSONObject((Map)localObject2);
-      localObject2 = this.b;
-      HashMap localHashMap = new HashMap();
+      localObject1 = new JSONObject(localHashMap);
+      Object localObject2 = this.b;
+      localHashMap = new HashMap();
       localHashMap.put("imei", b(((du)localObject2).a()));
       localHashMap.put("imsi", b(((du)localObject2).b()));
       localHashMap.put("mac", b(((du)localObject2).c().toLowerCase(Locale.ENGLISH)));
-      localHashMap.put("model", b(Build.MANUFACTURER + "_" + Build.MODEL));
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(Build.MANUFACTURER);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(Build.MODEL);
+      localHashMap.put("model", b(((StringBuilder)localObject2).toString()));
       localObject1 = ((JSONObject)localObject1).put("attribute", new JSONObject(localHashMap)).toString();
       return localObject1;
     }
@@ -191,140 +198,151 @@ public class ea
     // Byte code:
     //   0: invokestatic 344	java/lang/System:currentTimeMillis	()J
     //   3: lstore_2
-    //   4: iload_1
-    //   5: ifeq +150 -> 155
-    //   8: invokestatic 349	c/t/m/g/da:a	()Lc/t/m/g/da;
-    //   11: ldc_w 351
-    //   14: invokevirtual 353	c/t/m/g/da:d	(Ljava/lang/String;)Z
-    //   17: ifne +6 -> 23
-    //   20: ldc 238
-    //   22: areturn
-    //   23: lload_2
-    //   24: aload_0
-    //   25: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
-    //   28: ldc_w 355
-    //   31: lconst_0
-    //   32: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   35: invokestatic 364	c/t/m/g/dy:b	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   38: checkcast 357	java/lang/Long
-    //   41: invokevirtual 367	java/lang/Long:longValue	()J
-    //   44: lsub
-    //   45: ldc2_w 368
-    //   48: lcmp
-    //   49: ifle +70 -> 119
-    //   52: aload_0
-    //   53: invokespecial 371	c/t/m/g/ea:g	()Ljava/lang/String;
-    //   56: astore 4
-    //   58: aload_0
-    //   59: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
-    //   62: ldc_w 355
-    //   65: lload_2
-    //   66: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   69: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
-    //   72: aload_0
-    //   73: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
-    //   76: ldc_w 376
-    //   79: lload_2
-    //   80: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   83: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
-    //   86: aload 4
-    //   88: areturn
-    //   89: astore 4
-    //   91: aload_0
-    //   92: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
-    //   95: ldc_w 355
-    //   98: lload_2
-    //   99: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   102: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
-    //   105: aload_0
-    //   106: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
-    //   109: ldc_w 376
-    //   112: lload_2
-    //   113: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   116: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
-    //   119: ldc 238
-    //   121: areturn
-    //   122: astore 4
-    //   124: aload_0
-    //   125: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
-    //   128: ldc_w 355
-    //   131: lload_2
-    //   132: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   135: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
-    //   138: aload_0
-    //   139: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
-    //   142: ldc_w 376
-    //   145: lload_2
-    //   146: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   149: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
-    //   152: aload 4
-    //   154: athrow
-    //   155: lload_2
-    //   156: new 200	java/lang/StringBuilder
-    //   159: dup
-    //   160: invokespecial 201	java/lang/StringBuilder:<init>	()V
-    //   163: invokestatic 380	c/t/m/g/dp:a	()Landroid/content/Context;
-    //   166: invokevirtual 92	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   169: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: ldc_w 382
-    //   175: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: invokevirtual 214	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   181: invokestatic 81	c/t/m/g/dy:a	(Ljava/lang/String;)Landroid/content/SharedPreferences;
-    //   184: ldc_w 376
-    //   187: lconst_0
-    //   188: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   191: invokestatic 364	c/t/m/g/dy:b	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   194: checkcast 357	java/lang/Long
-    //   197: invokevirtual 367	java/lang/Long:longValue	()J
-    //   200: lsub
-    //   201: ldc2_w 383
-    //   204: lcmp
-    //   205: ifle -86 -> 119
-    //   208: aload_0
-    //   209: invokespecial 371	c/t/m/g/ea:g	()Ljava/lang/String;
-    //   212: astore 4
-    //   214: aload_0
-    //   215: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
-    //   218: ldc_w 376
-    //   221: lload_2
-    //   222: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   225: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
-    //   228: aload 4
-    //   230: areturn
-    //   231: astore 4
-    //   233: aload_0
-    //   234: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
-    //   237: ldc_w 376
-    //   240: lload_2
-    //   241: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   244: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
-    //   247: goto -128 -> 119
-    //   250: astore 4
-    //   252: aload_0
-    //   253: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
-    //   256: ldc_w 376
-    //   259: lload_2
-    //   260: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   263: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
-    //   266: aload 4
-    //   268: athrow
+    //   4: lconst_0
+    //   5: invokestatic 350	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   8: astore 4
+    //   10: iload_1
+    //   11: ifeq +146 -> 157
+    //   14: invokestatic 355	c/t/m/g/da:a	()Lc/t/m/g/da;
+    //   17: ldc_w 357
+    //   20: invokevirtual 359	c/t/m/g/da:d	(Ljava/lang/String;)Z
+    //   23: ifne +6 -> 29
+    //   26: ldc 238
+    //   28: areturn
+    //   29: lload_2
+    //   30: aload_0
+    //   31: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
+    //   34: ldc_w 361
+    //   37: aload 4
+    //   39: invokestatic 364	c/t/m/g/dy:b	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   42: checkcast 346	java/lang/Long
+    //   45: invokevirtual 367	java/lang/Long:longValue	()J
+    //   48: lsub
+    //   49: ldc2_w 368
+    //   52: lcmp
+    //   53: ifle +221 -> 274
+    //   56: aload_0
+    //   57: invokespecial 371	c/t/m/g/ea:g	()Ljava/lang/String;
+    //   60: astore 4
+    //   62: aload_0
+    //   63: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
+    //   66: ldc_w 361
+    //   69: lload_2
+    //   70: invokestatic 350	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   73: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
+    //   76: aload_0
+    //   77: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
+    //   80: ldc_w 376
+    //   83: lload_2
+    //   84: invokestatic 350	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   87: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
+    //   90: aload 4
+    //   92: areturn
+    //   93: astore 4
+    //   95: aload_0
+    //   96: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
+    //   99: ldc_w 361
+    //   102: lload_2
+    //   103: invokestatic 350	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   106: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
+    //   109: aload_0
+    //   110: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
+    //   113: ldc_w 376
+    //   116: lload_2
+    //   117: invokestatic 350	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   120: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
+    //   123: aload 4
+    //   125: athrow
+    //   126: aload_0
+    //   127: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
+    //   130: ldc_w 361
+    //   133: lload_2
+    //   134: invokestatic 350	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   137: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
+    //   140: aload_0
+    //   141: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
+    //   144: ldc_w 376
+    //   147: lload_2
+    //   148: invokestatic 350	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   151: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
+    //   154: ldc 238
+    //   156: areturn
+    //   157: new 198	java/lang/StringBuilder
+    //   160: dup
+    //   161: invokespecial 199	java/lang/StringBuilder:<init>	()V
+    //   164: astore 5
+    //   166: aload 5
+    //   168: invokestatic 380	c/t/m/g/dp:a	()Landroid/content/Context;
+    //   171: invokevirtual 92	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   174: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: pop
+    //   178: aload 5
+    //   180: ldc_w 382
+    //   183: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: pop
+    //   187: lload_2
+    //   188: aload 5
+    //   190: invokevirtual 214	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   193: invokestatic 81	c/t/m/g/dy:a	(Ljava/lang/String;)Landroid/content/SharedPreferences;
+    //   196: ldc_w 376
+    //   199: aload 4
+    //   201: invokestatic 364	c/t/m/g/dy:b	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   204: checkcast 346	java/lang/Long
+    //   207: invokevirtual 367	java/lang/Long:longValue	()J
+    //   210: lsub
+    //   211: ldc2_w 383
+    //   214: lcmp
+    //   215: ifle +59 -> 274
+    //   218: aload_0
+    //   219: invokespecial 371	c/t/m/g/ea:g	()Ljava/lang/String;
+    //   222: astore 4
+    //   224: aload_0
+    //   225: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
+    //   228: ldc_w 376
+    //   231: lload_2
+    //   232: invokestatic 350	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   235: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
+    //   238: aload 4
+    //   240: areturn
+    //   241: astore 4
+    //   243: aload_0
+    //   244: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
+    //   247: ldc_w 376
+    //   250: lload_2
+    //   251: invokestatic 350	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   254: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
+    //   257: aload 4
+    //   259: athrow
+    //   260: aload_0
+    //   261: getfield 83	c/t/m/g/ea:c	Landroid/content/SharedPreferences;
+    //   264: ldc_w 376
+    //   267: lload_2
+    //   268: invokestatic 350	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   271: invokestatic 374	c/t/m/g/dy:a	(Landroid/content/SharedPreferences;Ljava/lang/String;Ljava/lang/Object;)V
+    //   274: ldc 238
+    //   276: areturn
+    //   277: astore 4
+    //   279: goto -153 -> 126
+    //   282: astore 4
+    //   284: goto -24 -> 260
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	269	0	this	ea
-    //   0	269	1	paramBoolean	boolean
-    //   3	257	2	l1	long
-    //   56	31	4	str1	String
-    //   89	1	4	localException	Exception
-    //   122	31	4	localObject1	Object
-    //   212	17	4	str2	String
-    //   231	1	4	localThrowable	Throwable
-    //   250	17	4	localObject2	Object
+    //   0	287	0	this	ea
+    //   0	287	1	paramBoolean	boolean
+    //   3	265	2	l1	long
+    //   8	83	4	localObject1	Object
+    //   93	107	4	localObject2	Object
+    //   222	17	4	str	String
+    //   241	17	4	localObject3	Object
+    //   277	1	4	localException	Exception
+    //   282	1	4	localThrowable	Throwable
+    //   164	25	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   52	58	89	java/lang/Exception
-    //   52	58	122	finally
-    //   208	214	231	java/lang/Throwable
-    //   208	214	250	finally
+    //   56	62	93	finally
+    //   218	224	241	finally
+    //   56	62	277	java/lang/Exception
+    //   218	224	282	java/lang/Throwable
   }
   
   public final void a()
@@ -335,122 +353,97 @@ public class ea
   
   public final void a(Object paramObject)
   {
-    for (;;)
+    try
     {
-      Object localObject3;
-      try
+      if (this.o == null) {
+        this.o = new ArrayList();
+      }
+      Object localObject1 = this.o.iterator();
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
       {
-        if (this.o == null) {
-          this.o = new ArrayList();
-        }
-        Object localObject1 = this.o.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label191;
-        }
         localObject2 = ((fr)((Iterator)localObject1).next()).c;
-        if (paramObject != localObject2) {
-          continue;
-        }
-        i1 = 1;
-        if (i1 != 0) {
-          return;
-        }
-        localObject1 = paramObject.getClass().getDeclaredMethods();
-        int i2 = localObject1.length;
-        i1 = 0;
-        if (i1 >= i2) {
-          continue;
-        }
-        localObject2 = localObject1[i1];
-        localObject3 = ((Method)localObject2).getName();
-        if ((!((String)localObject3).startsWith("on")) || (!((String)localObject3).endsWith("Event"))) {
-          break label184;
-        }
-        localObject3 = ((Method)localObject2).getParameterTypes();
-        if (localObject3.length != 1) {
-          throw new IllegalArgumentException("EventHandler methods must specify a single Object paramter.");
+        if (paramObject == localObject2)
+        {
+          i1 = 1;
+          break label69;
         }
       }
-      finally {}
-      Object localObject2 = new fr(localObject3[0], (Method)localObject2, paramObject);
-      this.o.add(localObject2);
-      label184:
-      i1 += 1;
-      continue;
-      label191:
       int i1 = 0;
+      label69:
+      if (i1 != 0) {
+        return;
+      }
+      localObject1 = paramObject.getClass().getDeclaredMethods();
+      int i2 = localObject1.length;
+      i1 = 0;
+      while (i1 < i2)
+      {
+        localObject2 = localObject1[i1];
+        Object localObject3 = ((Method)localObject2).getName();
+        if ((((String)localObject3).startsWith("on")) && (((String)localObject3).endsWith("Event")))
+        {
+          localObject3 = ((Method)localObject2).getParameterTypes();
+          if (localObject3.length == 1)
+          {
+            localObject2 = new fr(localObject3[0], (Method)localObject2, paramObject);
+            this.o.add(localObject2);
+          }
+          else
+          {
+            throw new IllegalArgumentException("EventHandler methods must specify a single Object paramter.");
+          }
+        }
+        i1 += 1;
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramObject;
     }
   }
   
-  /* Error */
-  public final void b(@androidx.annotation.Nullable Object paramObject)
+  public final void b(@Nullable Object paramObject)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnonnull +6 -> 9
-    //   6: aload_0
-    //   7: monitorexit
-    //   8: return
-    //   9: aload_0
-    //   10: getfield 405	c/t/m/g/ea:o	Ljava/util/List;
-    //   13: astore_3
-    //   14: aload_3
-    //   15: ifnull -9 -> 6
-    //   18: aload_3
-    //   19: invokeinterface 414 1 0
-    //   24: astore_3
-    //   25: aload_3
-    //   26: invokeinterface 420 1 0
-    //   31: ifeq -25 -> 6
-    //   34: aload_3
-    //   35: invokeinterface 424 1 0
-    //   40: checkcast 426	c/t/m/g/fr
-    //   43: astore 4
-    //   45: aload_1
-    //   46: invokevirtual 433	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   49: aload 4
-    //   51: getfield 474	c/t/m/g/fr:a	Ljava/lang/Class;
-    //   54: invokevirtual 477	java/lang/Object:equals	(Ljava/lang/Object;)Z
-    //   57: istore_2
-    //   58: iload_2
-    //   59: ifeq -34 -> 25
-    //   62: aload 4
-    //   64: getfield 480	c/t/m/g/fr:b	Ljava/lang/reflect/Method;
-    //   67: aload 4
-    //   69: getfield 429	c/t/m/g/fr:c	Ljava/lang/Object;
-    //   72: iconst_1
-    //   73: anewarray 4	java/lang/Object
-    //   76: dup
-    //   77: iconst_0
-    //   78: aload_1
-    //   79: aastore
-    //   80: invokevirtual 484	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   83: pop
-    //   84: goto -59 -> 25
-    //   87: astore 4
-    //   89: goto -64 -> 25
-    //   92: astore_1
-    //   93: aload_0
-    //   94: monitorexit
-    //   95: aload_1
-    //   96: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	97	0	this	ea
-    //   0	97	1	paramObject	Object
-    //   57	2	2	bool	boolean
-    //   13	22	3	localObject	Object
-    //   43	25	4	localfr	fr
-    //   87	1	4	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   62	84	87	java/lang/Exception
-    //   9	14	92	finally
-    //   18	25	92	finally
-    //   25	58	92	finally
-    //   62	84	92	finally
+    if (paramObject == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = this.o;
+        if (localObject == null) {
+          continue;
+        }
+        localObject = ((List)localObject).iterator();
+      }
+      finally
+      {
+        Object localObject;
+        fr localfr;
+        boolean bool;
+        continue;
+        throw paramObject;
+        continue;
+        continue;
+      }
+      if (((Iterator)localObject).hasNext())
+      {
+        localfr = (fr)((Iterator)localObject).next();
+        bool = paramObject.getClass().equals(localfr.a);
+        if (!bool) {
+          continue;
+        }
+      }
+      try
+      {
+        localfr.b.invoke(localfr.c, new Object[] { paramObject });
+      }
+      catch (Exception localException) {}
+    }
   }
   
   public final boolean b()
@@ -470,17 +463,16 @@ public class ea
   
   public final du e()
   {
-    if (-1L > 0L) {}
     try
     {
-      if (!this.m.await(-1L, TimeUnit.MILLISECONDS))
-      {
-        return null;
-        this.m.await();
-      }
+      this.m.await();
       return this.b;
     }
-    catch (InterruptedException localInterruptedException) {}
+    catch (InterruptedException localInterruptedException)
+    {
+      label12:
+      break label12;
+    }
     return null;
   }
   
@@ -491,13 +483,17 @@ public class ea
       PackageInfo localPackageInfo = this.e.getPackageInfo(this.a.getPackageName(), 0);
       return localPackageInfo;
     }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      label18:
+      break label18;
+    }
     return new PackageInfo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ea
  * JD-Core Version:    0.7.0.1
  */

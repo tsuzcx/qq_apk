@@ -2,7 +2,6 @@ package com.tencent.mobileqq.intervideo.now.dynamic.strategy;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.falco.base.libapi.hostproxy.HostProxyInterface;
 import com.tencent.ilivesdk.roomswitchservice_interface.RoomSwitchInterface;
@@ -16,11 +15,13 @@ import com.tencent.mobileqq.intervideo.litelive_kandian.customized.services.romm
 import com.tencent.mobileqq.litelivesdk.LiteLiveSDKFactory;
 import com.tencent.mobileqq.litelivesdk.api.ILiveSDK;
 import com.tencent.mobileqq.litelivesdk.api.business.BusinessConfig;
+import com.tencent.mobileqq.statistics.QQUserAction;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 import java.util.Map;
 
 public class KanDianStrategy
-  implements IEnterRoomStrategy
+  implements IEnterRoomStrategy, KanDianStrategyConstant
 {
   private QQAppInterface a;
   
@@ -42,6 +43,8 @@ public class KanDianStrategy
     localBusinessConfig.jdField_e_of_type_JavaLangString = this.a.getCurrentAccountUin();
     localBusinessConfig.jdField_d_of_type_JavaLangString = paramBundle.getString("fromid");
     localBusinessConfig.jdField_a_of_type_Boolean = true;
+    localBusinessConfig.jdField_a_of_type_JavaUtilList.clear();
+    localBusinessConfig.jdField_a_of_type_JavaUtilList.add("https://now.qq.com/");
     return localBusinessConfig;
   }
   
@@ -73,30 +76,29 @@ public class KanDianStrategy
     String str = paramString.toLowerCase();
     paramString = str;
     if (str.startsWith("share_msg_")) {
-      paramString = str.substring("share_msg_".length());
+      paramString = str.substring(10);
     }
-    if ((paramString.startsWith("kandian_")) || ((paramString.compareTo("3000") >= 0) && (paramString.compareTo("5999") <= 0)))
-    {
-      paramString = KandianLiveConfProcessor.a();
-      if ((paramString != null) && (paramString.a()))
-      {
-        QLog.i("KanDianStrategy", 1, "isUserLiteSDK-----will Use LiteSDK");
-        return true;
-      }
-      QLog.i("KanDianStrategy", 1, "isUserLiteSDK-----will Not Use LiteSDK");
+    if ((!paramString.startsWith("kandian_")) && ((paramString.compareTo("3000") < 0) || (paramString.compareTo("5999") > 0))) {
       return false;
     }
+    paramString = KandianLiveConfProcessor.a();
+    if ((paramString != null) && (paramString.a()))
+    {
+      QLog.i("KanDianStrategy", 1, "isUserLiteSDK-----will Use LiteSDK");
+      return true;
+    }
+    QLog.i("KanDianStrategy", 1, "isUserLiteSDK-----will Not Use LiteSDK");
     return false;
   }
   
   public boolean a(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, Map<String, String> paramMap, boolean paramBoolean2, boolean paramBoolean3)
   {
-    return UserAction.onUserActionToTunnel(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2, paramBoolean3);
+    return QQUserAction.a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2, paramBoolean3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.strategy.KanDianStrategy
  * JD-Core Version:    0.7.0.1
  */

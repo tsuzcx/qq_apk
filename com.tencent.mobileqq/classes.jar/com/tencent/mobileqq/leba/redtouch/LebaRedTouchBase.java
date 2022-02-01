@@ -75,17 +75,17 @@ public abstract class LebaRedTouchBase
     boolean bool = paramUpdateRedTouchParam.jdField_a_of_type_Boolean;
     paramUpdateRedTouchParam = a(localAppRuntime, String.valueOf(l));
     a(localAppRuntime, l, paramUpdateRedTouchParam);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (bool = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaRedTouchBizProxy.a(localAppRuntime, localContext, l, localRedTouch, str, this.jdField_a_of_type_JavaUtilMap, i, bool);; bool = false)
+    if (this.jdField_a_of_type_Boolean) {
+      bool = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaRedTouchBizProxy.a(localAppRuntime, localContext, l, localRedTouch, str, this.jdField_a_of_type_JavaUtilMap, i, bool);
+    } else {
+      bool = false;
+    }
+    QLog.d("Q.lebatab.LebaRedTouchBase", 1, new Object[] { "updateRedTouch,resID=", Long.valueOf(l), ",resPkgName=", str, ",isHandledRedTouch=", Boolean.valueOf(bool), ",leba_red_touch_spcific_enable->mSpecificEnable=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    if (!bool)
     {
-      QLog.d("Q.lebatab.LebaRedTouchBase", 1, new Object[] { "updateRedTouch,resID=", Long.valueOf(l), ",resPkgName=", str, ",isHandledRedTouch=", Boolean.valueOf(bool), ",leba_red_touch_spcific_enable->mSpecificEnable=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-      if (!bool)
-      {
-        a(localRedTouch, paramUpdateRedTouchParam);
-        a(l, localRedTouch);
-        this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaRedTouchBizProxy.a(localAppRuntime, str, paramUpdateRedTouchParam);
-      }
-      return;
+      a(localRedTouch, paramUpdateRedTouchParam);
+      a(l, localRedTouch);
+      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaRedTouchBizProxy.a(localAppRuntime, str, paramUpdateRedTouchParam);
     }
   }
   
@@ -93,23 +93,23 @@ public abstract class LebaRedTouchBase
   
   public void a(AppRuntime paramAppRuntime)
   {
-    if (!this.jdField_a_of_type_JavaUtilHashSet.isEmpty()) {}
-    try
-    {
-      LebaShowListManager.jdField_a_of_type_Int |= 0x2;
-      QLog.i("Q.lebatab.LebaRedTouchBase", 1, "onPause update" + LebaShowListManager.jdField_a_of_type_Int);
-      ((IRedTouchServer)paramAppRuntime.getRuntimeService(IRedTouchServer.class, "")).notifyUI(4, true, null);
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      return;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      for (;;)
+    if (!this.jdField_a_of_type_JavaUtilHashSet.isEmpty()) {
+      try
+      {
+        LebaShowListManager.jdField_a_of_type_Int |= 0x2;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onPause update");
+        localStringBuilder.append(LebaShowListManager.jdField_a_of_type_Int);
+        QLog.i("Q.lebatab.LebaRedTouchBase", 1, localStringBuilder.toString());
+        ((IRedTouchServer)paramAppRuntime.getRuntimeService(IRedTouchServer.class, "")).notifyUI(4, true, null);
+      }
+      catch (Exception paramAppRuntime)
       {
         QLog.i("Q.lebatab.LebaRedTouchBase", 1, "onPause", paramAppRuntime);
       }
     }
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    this.jdField_a_of_type_JavaUtilMap.clear();
   }
   
   public void b()
@@ -119,7 +119,7 @@ public abstract class LebaRedTouchBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.redtouch.LebaRedTouchBase
  * JD-Core Version:    0.7.0.1
  */

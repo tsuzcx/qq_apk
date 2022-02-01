@@ -21,25 +21,53 @@ public class StoryDetailPresenter$FeedInfoUpdateReceiver
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull FeedInfoChangeEvent paramFeedInfoChangeEvent)
   {
-    if ((paramFeedInfoChangeEvent.jdField_a_of_type_Int == 2) || (!paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) || (StoryDetailPresenter.a(paramStoryDetailPresenter) == null))
+    if ((paramFeedInfoChangeEvent.jdField_a_of_type_Int != 2) && (paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) && (StoryDetailPresenter.a(paramStoryDetailPresenter) != null))
     {
-      SLog.b(this.TAG, "ignore this feed info change event. %s.", paramFeedInfoChangeEvent.toString());
-      return;
-    }
-    SLog.a(this.TAG, "receive feed info change event. %s.", paramFeedInfoChangeEvent.toString());
-    switch (paramFeedInfoChangeEvent.b)
-    {
-    default: 
-      return;
-    case 1: 
+      SLog.a(this.TAG, "receive feed info change event. %s.", paramFeedInfoChangeEvent.toString());
+      int i = paramFeedInfoChangeEvent.b;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return;
+          }
+          if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
+          {
+            StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike;
+            StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount;
+            StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount;
+            StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount;
+          }
+          localObject = (LikeManager)SuperManager.a(15);
+          localList = ((LikeManager)localObject).a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, true);
+          StoryDetailPresenter.a(paramStoryDetailPresenter).b(localList, true, true);
+          if (StoryDetailPresenter.a(paramStoryDetailPresenter).a())
+          {
+            paramFeedInfoChangeEvent = ((LikeManager)localObject).a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, false);
+            StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramFeedInfoChangeEvent, true, false);
+          }
+          paramStoryDetailPresenter.a();
+          return;
+        }
+        if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
+        {
+          StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
+          StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
+          StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
+        }
+        StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramFeedInfoChangeEvent.c);
+        paramStoryDetailPresenter.a();
+        return;
+      }
       if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
       {
         StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
         StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
         StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
       }
-      localObject = (CommentManager)SuperManager.a(17);
-      localList = ((CommentManager)localObject).a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, true);
+      Object localObject = (CommentManager)SuperManager.a(17);
+      List localList = ((CommentManager)localObject).a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, true);
       StoryDetailPresenter.a(paramStoryDetailPresenter).a(localList, true, true);
       if (StoryDetailPresenter.a(paramStoryDetailPresenter).a())
       {
@@ -48,33 +76,8 @@ public class StoryDetailPresenter$FeedInfoUpdateReceiver
       }
       paramStoryDetailPresenter.a();
       return;
-    case 2: 
-      if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-      {
-        StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-        StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
-        StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
-      }
-      StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramFeedInfoChangeEvent.c);
-      paramStoryDetailPresenter.a();
-      return;
     }
-    if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-    {
-      StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike;
-      StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount;
-      StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount;
-      StoryDetailPresenter.a(paramStoryDetailPresenter).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount;
-    }
-    Object localObject = (LikeManager)SuperManager.a(15);
-    List localList = ((LikeManager)localObject).a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, true);
-    StoryDetailPresenter.a(paramStoryDetailPresenter).b(localList, true, true);
-    if (StoryDetailPresenter.a(paramStoryDetailPresenter).a())
-    {
-      paramFeedInfoChangeEvent = ((LikeManager)localObject).a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, false);
-      StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramFeedInfoChangeEvent, true, false);
-    }
-    paramStoryDetailPresenter.a();
+    SLog.b(this.TAG, "ignore this feed info change event. %s.", paramFeedInfoChangeEvent.toString());
   }
   
   public Class acceptEventClass()
@@ -86,7 +89,7 @@ public class StoryDetailPresenter$FeedInfoUpdateReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter.FeedInfoUpdateReceiver
  * JD-Core Version:    0.7.0.1
  */

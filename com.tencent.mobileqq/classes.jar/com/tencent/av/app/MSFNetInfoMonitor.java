@@ -16,57 +16,73 @@ public class MSFNetInfoMonitor
   
   public static int a()
   {
-    int j = 1;
-    int i;
-    if (AppNetConnInfo.isWifiConn()) {
+    boolean bool = AppNetConnInfo.isWifiConn();
+    int i = 3;
+    int j;
+    if (bool)
+    {
+      j = 1;
       i = 1;
     }
-    for (;;)
+    else if (AppNetConnInfo.isMobileConn())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSFNetInfoMonitor", 2, "getApn: " + i + " mobileType:" + j);
-      }
-      return i;
-      if (AppNetConnInfo.isMobileConn())
-      {
-        j = AppNetConnInfo.getMobileInfo();
-        switch (j)
+      int k = AppNetConnInfo.getMobileInfo();
+      j = k;
+      if (k != 1) {
+        if (k != 2)
         {
-        default: 
-          i = 100;
-          break;
-        case 1: 
-          i = 3;
-          break;
-        case 2: 
+          if (k != 3)
+          {
+            if (k != 4)
+            {
+              i = 100;
+              j = k;
+            }
+            else
+            {
+              i = 14;
+              j = k;
+            }
+          }
+          else
+          {
+            i = 11;
+            j = k;
+          }
+        }
+        else
+        {
           i = 9;
-          break;
-        case 3: 
-          i = 11;
-          break;
-        case 4: 
-          i = 14;
-          break;
+          j = k;
         }
       }
-      else
-      {
-        j = -1;
-        i = 0;
-      }
     }
+    else
+    {
+      i = 0;
+      j = -1;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getApn: ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" mobileType:");
+      localStringBuilder.append(j);
+      QLog.d("MSFNetInfoMonitor", 2, localStringBuilder.toString());
+    }
+    return i;
   }
   
   public static int b()
   {
-    int i = -1;
     if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
+      return 1;
     }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return i;
+    if (AppNetConnInfo.isMobileConn()) {
+      return AppNetConnInfo.getMobileInfo();
     }
-    return AppNetConnInfo.getMobileInfo();
+    return -1;
   }
   
   public void onNetMobile2None()
@@ -74,8 +90,9 @@ public class MSFNetInfoMonitor
     if (QLog.isColorLevel()) {
       QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2None");
     }
-    if (this.a != null) {
-      this.a.a(0);
+    MSFNetInfoMonitor.IApnChangeListener localIApnChangeListener = this.a;
+    if (localIApnChangeListener != null) {
+      localIApnChangeListener.a(0);
     }
   }
   
@@ -84,8 +101,9 @@ public class MSFNetInfoMonitor
     if (QLog.isColorLevel()) {
       QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2Wifi");
     }
-    if (this.a != null) {
-      this.a.a(1);
+    paramString = this.a;
+    if (paramString != null) {
+      paramString.a(1);
     }
   }
   
@@ -94,8 +112,9 @@ public class MSFNetInfoMonitor
     if (QLog.isColorLevel()) {
       QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Mobile");
     }
-    if (this.a != null) {
-      this.a.a(2);
+    paramString = this.a;
+    if (paramString != null) {
+      paramString.a(2);
     }
   }
   
@@ -104,8 +123,9 @@ public class MSFNetInfoMonitor
     if (QLog.isColorLevel()) {
       QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Wifi");
     }
-    if (this.a != null) {
-      this.a.a(1);
+    paramString = this.a;
+    if (paramString != null) {
+      paramString.a(1);
     }
   }
   
@@ -114,8 +134,9 @@ public class MSFNetInfoMonitor
     if (QLog.isColorLevel()) {
       QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2Mobile");
     }
-    if (this.a != null) {
-      this.a.a(2);
+    paramString = this.a;
+    if (paramString != null) {
+      paramString.a(2);
     }
   }
   
@@ -124,14 +145,15 @@ public class MSFNetInfoMonitor
     if (QLog.isColorLevel()) {
       QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2None");
     }
-    if (this.a != null) {
-      this.a.a(0);
+    MSFNetInfoMonitor.IApnChangeListener localIApnChangeListener = this.a;
+    if (localIApnChangeListener != null) {
+      localIApnChangeListener.a(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.MSFNetInfoMonitor
  * JD-Core Version:    0.7.0.1
  */

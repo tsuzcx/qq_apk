@@ -12,19 +12,26 @@ class LivePlayerEmbeddedWidgetClient$1
   
   public void onAudioVolumeEvaluationNotify(int paramInt)
   {
-    QMLog.d("miniapp-embedded-live-player", "onAudioVolumeEvaluationNotify code:" + paramInt);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onAudioVolumeEvaluationNotify code:");
+    ((StringBuilder)localObject1).append(paramInt);
+    QMLog.d("miniapp-embedded-live-player", ((StringBuilder)localObject1).toString());
     try
     {
-      JSONObject localJSONObject1 = new JSONObject();
-      localJSONObject1.put("viewId", LivePlayerEmbeddedWidgetClient.access$000(this.this$0));
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("volume", paramInt);
-      localJSONObject1.put("info", localJSONObject2);
-      LivePlayerEmbeddedWidgetClient.access$200(this.this$0, "onXWebLivePlayerAudioVolume", localJSONObject1.toString(), LivePlayerEmbeddedWidgetClient.access$100(this.this$0));
-      if (QMLog.isColorLevel()) {
-        QMLog.e("miniapp-embedded-live-player", "onXWebLivePlayerAudioVolume resultObj.toString() = " + localJSONObject1.toString());
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("viewId", LivePlayerEmbeddedWidgetClient.access$000(this.this$0));
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("volume", paramInt);
+      ((JSONObject)localObject1).put("info", localObject2);
+      LivePlayerEmbeddedWidgetClient.access$200(this.this$0, "onXWebLivePlayerAudioVolume", ((JSONObject)localObject1).toString(), LivePlayerEmbeddedWidgetClient.access$100(this.this$0));
+      if (QMLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("onXWebLivePlayerAudioVolume resultObj.toString() = ");
+        ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+        QMLog.e("miniapp-embedded-live-player", ((StringBuilder)localObject2).toString());
+        return;
       }
-      return;
     }
     catch (JSONException localJSONException)
     {
@@ -34,7 +41,7 @@ class LivePlayerEmbeddedWidgetClient$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePlayerEmbeddedWidgetClient.1
  * JD-Core Version:    0.7.0.1
  */

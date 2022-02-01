@@ -10,12 +10,12 @@ class ShortVideoPlayActivity$20
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.s();
+    this.a.userBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.20
  * JD-Core Version:    0.7.0.1
  */

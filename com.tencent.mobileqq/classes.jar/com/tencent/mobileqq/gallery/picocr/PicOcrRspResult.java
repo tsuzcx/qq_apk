@@ -28,13 +28,48 @@ public class PicOcrRspResult
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mMd5= ").append(this.jdField_a_of_type_JavaLangString).append("\n").append("baseWidth= ").append(this.jdField_a_of_type_Int).append("\n").append("baseHeight= ").append(this.jdField_b_of_type_Int).append("\n").append("mLanguage= ").append(this.jdField_b_of_type_JavaLangString).append("\n").append("url= ").append(this.jdField_c_of_type_JavaLangString).append("\n").append("languageList= ").append(this.jdField_b_of_type_JavaUtilArrayList.toString()).append("\n").append("mSrcLangMap= ").append(this.jdField_a_of_type_JavaUtilHashMap.toString()).append("\n").append("fileSize= ").append(this.jdField_c_of_type_Int).append("\n").append("reqHeight= ").append(this.e).append("\n").append("reqWidth= ").append(this.jdField_d_of_type_Int).append("\n").append("afMd5= ").append(this.jdField_d_of_type_JavaLangString).append("\n").append("rotateDe= ").append(this.f).append("\n");
+    localStringBuilder.append("mMd5= ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("baseWidth= ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("baseHeight= ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("mLanguage= ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("url= ");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("languageList= ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList.toString());
+    localStringBuilder.append("\n");
+    localStringBuilder.append("mSrcLangMap= ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilHashMap.toString());
+    localStringBuilder.append("\n");
+    localStringBuilder.append("fileSize= ");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("reqHeight= ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("reqWidth= ");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("afMd5= ");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("rotateDe= ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gallery.picocr.PicOcrRspResult
  * JD-Core Version:    0.7.0.1
  */

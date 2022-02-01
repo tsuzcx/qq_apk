@@ -4,12 +4,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
 import android.support.v4.util.SparseArrayCompat;
+import com.tencent.comic.api.IQQComicUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.utils.DiySecureFileHelper.CustomBackground;
 import com.tencent.mobileqq.app.utils.DiySecureFileHelper.QQFavoriteSecurityFileHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.utils.VipComicSecurityFileHelper;
 import cooperation.qqreader.QQReaderSecurityFileHelper;
 import java.io.File;
 import mqq.app.ISecurityFileHelper;
@@ -26,51 +27,51 @@ public class UpdateSecureFileStrategy
     a(0, new QQReaderSecurityFileHelper());
     a(1, new DiySecureFileHelper.QQFavoriteSecurityFileHelper());
     a(2, new DiySecureFileHelper.CustomBackground());
-    a(3, new VipComicSecurityFileHelper());
+    a(3, ((IQQComicUtil)QRoute.api(IQQComicUtil.class)).getComicSecurityFileHelper());
   }
   
   private int a()
   {
-    int k = 1;
-    Object localObject1 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Tencent/MobileQQ/";
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    ((StringBuilder)localObject1).append("/Tencent/MobileQQ/");
+    localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = BaseApplicationImpl.getApplication().getExternalCacheDir();
-    File localFile;
-    int i;
     if (localObject2 != null)
     {
-      localObject2 = ((File)localObject2).getParentFile().getAbsolutePath() + "/Tencent/MobileQQ/";
-      localFile = new File((String)localObject1);
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(((File)localObject2).getParentFile().getAbsolutePath());
+      ((StringBuilder)localObject3).append("/Tencent/MobileQQ/");
+      localObject2 = ((StringBuilder)localObject3).toString();
+      localObject3 = new File((String)localObject1);
       localObject1 = new File((String)localObject2);
-      if (!localFile.exists())
+      if (!((File)localObject3).exists()) {
+        return 3;
+      }
+      if (!((File)localObject1).exists()) {
+        ((File)localObject1).mkdirs();
+      }
+      localObject2 = ((File)localObject3).listFiles(new UpdateSecureFileStrategy.1(this));
+      if (localObject2 == null) {
+        return 4;
+      }
+      int j = localObject2.length;
+      int i = 0;
+      while (i < j)
       {
-        i = 3;
-        return i;
+        localObject3 = localObject2[i];
+        String str = ((File)localObject3).getAbsolutePath();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((File)localObject1).getAbsolutePath());
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append(((File)localObject3).getName());
+        FileUtils.quickMove(str, localStringBuilder.toString());
+        i += 1;
       }
+      return 1;
     }
-    else
-    {
-      QLog.d("UpdateSecureFileStrategy", 1, "externalCacheDir is null");
-      return 2;
-    }
-    if (!((File)localObject1).exists()) {
-      ((File)localObject1).mkdirs();
-    }
-    localObject2 = localFile.listFiles(new UpdateSecureFileStrategy.1(this));
-    if (localObject2 == null) {
-      return 4;
-    }
-    int m = localObject2.length;
-    int j = 0;
-    for (;;)
-    {
-      i = k;
-      if (j >= m) {
-        break;
-      }
-      localFile = localObject2[j];
-      FileUtils.a(localFile.getAbsolutePath(), ((File)localObject1).getAbsolutePath() + File.separator + localFile.getName());
-      j += 1;
-    }
+    QLog.d("UpdateSecureFileStrategy", 1, "externalCacheDir is null");
+    return 2;
   }
   
   private void a(int paramInt, ISecurityFileHelper paramISecurityFileHelper)
@@ -82,57 +83,51 @@ public class UpdateSecureFileStrategy
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("SecurityFileFrameworkManagerImpl", 4);
     boolean bool = localSharedPreferences.getBoolean("SP_KEY_MIGRATION_TO_PRIVATE_FILES", false);
-    StringBuilder localStringBuilder;
-    int i;
     if (!bool)
     {
-      if (BaseApplicationImpl.isHasStoragePermission(BaseApplicationImpl.getApplication()))
-      {
+      if (BaseApplicationImpl.isHasStoragePermission(BaseApplicationImpl.getApplication())) {
         QLog.d("UpdateSecureFileStrategy", 1, new Object[] { "doMigration, result=", Integer.valueOf(a()) });
-        localSharedPreferences.edit().putBoolean("SP_KEY_MIGRATION_TO_PRIVATE_FILES", true).apply();
+      } else if (QLog.isColorLevel()) {
+        QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "hasMigration=", Boolean.valueOf(bool), " StoragePermission=false" });
       }
+      localSharedPreferences.edit().putBoolean("SP_KEY_MIGRATION_TO_PRIVATE_FILES", true).apply();
     }
-    else
-    {
-      File localFile = SecurityFileFrameworkManagerImpl.getRootFile();
-      if (QLog.isColorLevel()) {
-        QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "rootFile Path=", localFile.getAbsolutePath() });
-      }
-      localStringBuilder = new StringBuilder();
-      i = 0;
-      label122:
-      if (i >= this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size()) {
-        break label467;
-      }
-      localStringBuilder.append(((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName()).append("#");
-      if (!((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).needMigration()) {
-        break label457;
-      }
-      String[] arrayOfString = ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).reportHistoryFileInfo();
-      if (QLog.isColorLevel()) {
-        QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "BusinessName= ", ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName(), " File Size=", arrayOfString[0], " File Amount=", arrayOfString[1] });
-      }
-      bool = ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).doMigrate(localFile);
-      localSharedPreferences.edit().putBoolean(((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName(), bool).apply();
-      if (QLog.isColorLevel()) {
-        QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "BusinessName= ", ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName(), " Success=", Boolean.valueOf(bool) });
-      }
-      localStringBuilder.append(true).append("#").append(arrayOfString[0]).append("#").append(arrayOfString[1]).append("#").append(bool);
+    File localFile = SecurityFileFrameworkManagerImpl.getRootFile();
+    if (QLog.isColorLevel()) {
+      QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "rootFile Path=", localFile.getAbsolutePath() });
     }
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
     {
+      localStringBuilder.append(((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName());
+      localStringBuilder.append("#");
+      if (((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).needMigration())
+      {
+        String[] arrayOfString = ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).reportHistoryFileInfo();
+        if (QLog.isColorLevel()) {
+          QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "BusinessName= ", ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName(), " File Size=", arrayOfString[0], " File Amount=", arrayOfString[1] });
+        }
+        bool = ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).doMigrate(localFile);
+        localSharedPreferences.edit().putBoolean(((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName(), bool).apply();
+        if (QLog.isColorLevel()) {
+          QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "BusinessName= ", ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName(), " Success=", Boolean.valueOf(bool) });
+        }
+        localStringBuilder.append(true);
+        localStringBuilder.append("#");
+        localStringBuilder.append(arrayOfString[0]);
+        localStringBuilder.append("#");
+        localStringBuilder.append(arrayOfString[1]);
+        localStringBuilder.append("#");
+        localStringBuilder.append(bool);
+      }
+      else
+      {
+        localStringBuilder.append(false);
+      }
       localStringBuilder.append("|");
       i += 1;
-      break label122;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "hasMigration=", Boolean.valueOf(bool), " StoragePermission=false" });
-      break;
-      label457:
-      localStringBuilder.append(false);
     }
-    label467:
     if (QLog.isColorLevel()) {
       QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "SP_KEY_UPDATE_SECURE_FILE_STRATEGY_REPORT", localStringBuilder.toString() });
     }
@@ -142,7 +137,7 @@ public class UpdateSecureFileStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.UpdateSecureFileStrategy
  * JD-Core Version:    0.7.0.1
  */

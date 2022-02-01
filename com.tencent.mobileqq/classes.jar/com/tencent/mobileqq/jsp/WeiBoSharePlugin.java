@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 public class WeiBoSharePlugin
   extends WebViewPlugin
+  implements IWeiBoSharePlugin
 {
   public WeiBoSharePlugin()
   {
@@ -33,48 +34,65 @@ public class WeiBoSharePlugin
       QLog.e("LoginPlugin_demo", 1, "doShare wbShareHelper==null !!!");
       return false;
     }
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return false;
-    case 1: 
-      localWBShareHelper.a(a(), paramString1);
-    }
-    for (;;)
-    {
-      return true;
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return false;
+            }
+            localWBShareHelper.a(a(), paramString1, paramString2);
+            return true;
+          }
+          localWBShareHelper.a(a(), paramString1, paramArrayOfString);
+          return true;
+        }
+        localWBShareHelper.a(a(), paramString3, paramString4, paramString5, paramString1, BitmapFactory.decodeFile(paramString2));
+        return true;
+      }
       localWBShareHelper.b(a(), paramString2);
-      continue;
-      localWBShareHelper.a(a(), paramString3, paramString4, paramString5, paramString1, BitmapFactory.decodeFile(paramString2));
-      continue;
-      localWBShareHelper.a(a(), paramString1, paramArrayOfString);
-      continue;
-      localWBShareHelper.a(a(), paramString1, paramString2);
+      return true;
     }
+    localWBShareHelper.a(a(), paramString1);
+    return true;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!"share".equals(paramString2)) || (!"weibo".equals(paramString3))) {
-      return false;
-    }
-    try
+    if ("share".equals(paramString2))
     {
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      int i = paramVarArgs.getInt("type");
-      paramJsBridgeListener = paramVarArgs.optString("text");
-      paramString1 = paramVarArgs.optString("sdcardpath");
-      paramString2 = paramVarArgs.optString("title");
-      paramString3 = paramVarArgs.optString("description");
-      paramVarArgs = paramVarArgs.optString("actionurl");
-      String[] arrayOfString = paramString1.split(",");
-      QLog.d("LoginPlugin_demo", 1, new Object[] { "handleJsRequest type=", Integer.valueOf(i), ", text=", paramJsBridgeListener, ", sdcardPath=", paramString1, ", title=", paramString2 + ", description=", paramString3 + ", actionUrl=", paramVarArgs });
-      boolean bool = a(i, paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs, arrayOfString);
-      return bool;
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      QLog.e("LoginPlugin_demo", 1, new Object[] { "handleJsRequest error : ", paramJsBridgeListener.getMessage() });
+      if (!"weibo".equals(paramString3)) {
+        return false;
+      }
+      try
+      {
+        paramVarArgs = new JSONObject(paramVarArgs[0]);
+        int i = paramVarArgs.getInt("type");
+        paramJsBridgeListener = paramVarArgs.optString("text");
+        paramString1 = paramVarArgs.optString("sdcardpath");
+        paramString2 = paramVarArgs.optString("title");
+        paramString3 = paramVarArgs.optString("description");
+        paramVarArgs = paramVarArgs.optString("actionurl");
+        String[] arrayOfString = paramString1.split(",");
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append(", description=");
+        localObject = ((StringBuilder)localObject).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString3);
+        localStringBuilder.append(", actionUrl=");
+        QLog.d("LoginPlugin_demo", 1, new Object[] { "handleJsRequest type=", Integer.valueOf(i), ", text=", paramJsBridgeListener, ", sdcardPath=", paramString1, ", title=", localObject, localStringBuilder.toString(), paramVarArgs });
+        boolean bool = a(i, paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs, arrayOfString);
+        return bool;
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        QLog.e("LoginPlugin_demo", 1, new Object[] { "handleJsRequest error : ", paramJsBridgeListener.getMessage() });
+      }
     }
     return false;
   }
@@ -87,7 +105,7 @@ public class WeiBoSharePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.WeiBoSharePlugin
  * JD-Core Version:    0.7.0.1
  */

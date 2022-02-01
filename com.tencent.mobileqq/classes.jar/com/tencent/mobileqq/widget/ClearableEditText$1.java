@@ -12,36 +12,31 @@ class ClearableEditText$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 1;
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    label107:
-    for (;;)
-    {
+    if (this.a.getCompoundDrawables()[2] == null) {
       return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break label107;
-          }
-          this.a.setText("");
-          this.a.setClearButtonVisible(false);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener == null) {
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener.k();
-          return false;
-          i = 0;
-        }
+    }
+    int j = paramMotionEvent.getAction();
+    int i = 1;
+    if (j != 1) {
+      return false;
+    }
+    if (paramMotionEvent.getX() <= this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      this.a.setText("");
+      this.a.setClearButtonVisible(false);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener.a();
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ClearableEditText.1
  * JD-Core Version:    0.7.0.1
  */

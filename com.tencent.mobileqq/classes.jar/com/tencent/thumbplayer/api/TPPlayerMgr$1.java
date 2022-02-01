@@ -8,29 +8,35 @@ final class TPPlayerMgr$1
 {
   public void onPrintLog(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      TPLogUtil.v(paramString1, paramString2);
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4) {
+              return;
+            }
+            TPLogUtil.e(paramString1, paramString2);
+            return;
+          }
+          TPLogUtil.w(paramString1, paramString2);
+          return;
+        }
+        TPLogUtil.i(paramString1, paramString2);
+        return;
+      }
       TPLogUtil.d(paramString1, paramString2);
       return;
-    case 2: 
-      TPLogUtil.i(paramString1, paramString2);
-      return;
-    case 3: 
-      TPLogUtil.w(paramString1, paramString2);
-      return;
     }
-    TPLogUtil.e(paramString1, paramString2);
+    TPLogUtil.v(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPlayerMgr.1
  * JD-Core Version:    0.7.0.1
  */

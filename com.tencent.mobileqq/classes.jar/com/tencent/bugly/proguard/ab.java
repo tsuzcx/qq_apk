@@ -23,47 +23,48 @@ public final class ab
     }
     String str = paramHandler.getLooper().getThread().getName();
     int i = 0;
-    for (;;)
+    try
     {
-      try
+      while (i < this.b.size())
       {
-        if (i < this.b.size())
+        if (((aa)this.b.get(i)).d().equals(paramHandler.getLooper().getThread().getName()))
         {
-          if (!((aa)this.b.get(i)).d().equals(paramHandler.getLooper().getThread().getName())) {
-            break label120;
-          }
           x.e("addThread fail ,this thread has been added in monitor queue", new Object[0]);
+          return;
         }
+        i += 1;
       }
-      catch (Exception localException)
-      {
-        x.b(localException);
-        this.b.add(new aa(paramHandler, str, 5000L));
-        return;
-      }
-      label120:
-      i += 1;
+      return;
+    }
+    catch (Exception localException)
+    {
+      x.b(localException);
+      this.b.add(new aa(paramHandler, str, 5000L));
     }
   }
   
   private int e()
   {
+    int j = 0;
     int i = 0;
-    j = 0;
-    try
+    int k;
+    for (;;)
     {
-      while (i < this.b.size())
+      k = i;
+      try
       {
-        int k = Math.max(j, ((aa)this.b.get(i)).c());
-        j = k;
-        i += 1;
+        if (j < this.b.size())
+        {
+          i = Math.max(k, ((aa)this.b.get(j)).c());
+          j += 1;
+        }
       }
-      return j;
+      catch (Exception localException)
+      {
+        x.b(localException);
+      }
     }
-    catch (Exception localException)
-    {
-      x.b(localException);
-    }
+    return k;
   }
   
   public final void a()
@@ -192,7 +193,7 @@ public final class ab
         if (k < this.c.size())
         {
           if (!((ac)this.c.get(k)).a(localaa)) {
-            break label285;
+            break label302;
           }
           i = 1;
           break label302;
@@ -205,18 +206,16 @@ public final class ab
         j += 1;
         continue;
       }
-      catch (Exception localException)
-      {
-        x.b(localException);
-      }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         x.b(localOutOfMemoryError);
       }
+      catch (Exception localException)
+      {
+        x.b(localException);
+      }
       break;
       return;
-      label285:
-      break label302;
       label288:
       i += 1;
       continue;
@@ -231,7 +230,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.ab
  * JD-Core Version:    0.7.0.1
  */

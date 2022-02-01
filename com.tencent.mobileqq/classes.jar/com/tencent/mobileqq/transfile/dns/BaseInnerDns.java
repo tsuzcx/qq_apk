@@ -33,7 +33,6 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashMap<Ljava.lang.String;Lcom.tencent.mobileqq.transfile.dns.DomainData;>;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -90,24 +89,23 @@ public class BaseInnerDns
   BaseInnerDns()
   {
     super("InnerDnsModule");
-    if (MobileQQ.sProcessId == 1) {}
-    for (;;)
-    {
-      this.mMainProcess = bool;
-      if (!this.mMainProcess) {
-        break label111;
-      }
-      localObject = unParse(getMobileQQ().getSharedPreferences("sp_inner_dns", 0).getString("sp_domain", null));
-      if (localObject == null) {
-        break;
-      }
-      this.mNetMap = new HashMap((Map)localObject);
-      return;
+    int i = MobileQQ.sProcessId;
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
-    this.mNetMap = new HashMap();
-    return;
-    label111:
+    this.mMainProcess = bool;
+    if (this.mMainProcess)
+    {
+      localObject = unParse(getMobileQQ().getSharedPreferences("sp_inner_dns", 0).getString("sp_domain", null));
+      if (localObject != null)
+      {
+        this.mNetMap = new HashMap((Map)localObject);
+        return;
+      }
+      this.mNetMap = new HashMap();
+      return;
+    }
     QIPCClientHelper.getInstance().getClient().connect(new BaseInnerDns.1(this));
     QIPCClientHelper.getInstance().getClient().addListener(new BaseInnerDns.2(this));
     Object localObject = new IntentFilter();
@@ -128,14 +126,24 @@ public class BaseInnerDns
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      DomainIp.ServerList localServerList = (DomainIp.ServerList)paramList.next();
+      Object localObject = (DomainIp.ServerList)paramList.next();
       IpData localIpData = new IpData();
-      localIpData.mIp = localServerList.string_IP.get();
-      localIpData.mPort = localServerList.uint32_Port.get();
+      localIpData.mIp = ((DomainIp.ServerList)localObject).string_IP.get();
+      localIpData.mPort = ((DomainIp.ServerList)localObject).uint32_Port.get();
       localIpData.mType = paramInt;
       paramDomainData.mIpList.add(localIpData);
-      if (QLog.isColorLevel()) {
-        QLog.d("InnerDns", 2, "onDomainServerListUpdate type=" + paramInt + " d:" + paramString + " " + localIpData.mIp + " " + localIpData.mPort);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onDomainServerListUpdate type=");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(" d:");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(localIpData.mIp);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(localIpData.mPort);
+        QLog.d("InnerDns", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -145,13 +153,19 @@ public class BaseInnerDns
   {
     if ((paramHashMap.containsKey(paramString)) && (paramHashMap.get(paramString) != null))
     {
-      paramHashMap = (DomainData)paramHashMap.get(paramString);
-      if (paramHashMap.mIpList == null) {
-        paramHashMap.mIpList = new ArrayList();
+      paramString = (DomainData)paramHashMap.get(paramString);
+      paramHashMap = paramString;
+      if (paramString.mIpList == null)
+      {
+        paramString.mIpList = new ArrayList();
+        return paramString;
       }
-      return paramHashMap;
     }
-    return new DomainData(paramString, new ArrayList());
+    else
+    {
+      paramHashMap = new DomainData(paramString, new ArrayList());
+    }
+    return paramHashMap;
   }
   
   public static String getHostFromUrl(String paramString)
@@ -166,29 +180,28 @@ public class BaseInnerDns
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
+      paramString.printStackTrace();
     }
+    return null;
   }
   
   public static BaseInnerDns getInstance()
   {
-    if (mInstance == null) {}
-    try
-    {
-      if (mInstance == null) {
-        mInstance = new BaseInnerDns();
+    if (mInstance == null) {
+      try
+      {
+        if (mInstance == null) {
+          mInstance = new BaseInnerDns();
+        }
       }
-      return mInstance;
+      finally {}
     }
-    finally {}
+    return mInstance;
   }
   
   private ArrayList<IpData> getIpDataListIPC(String paramString, int paramInt, boolean paramBoolean)
   {
+    int i;
     if ((this.mConnected) && (paramBoolean))
     {
       Object localObject = new Bundle();
@@ -198,12 +211,14 @@ public class BaseInnerDns
       if (((EIPCResult)localObject).isSuccess()) {
         return ((EIPCResult)localObject).data.getParcelableArrayList("ip");
       }
+      i = 20;
     }
-    for (int i = 20;; i = 10)
+    else
     {
-      reportInnerDns(paramString, paramInt, i, false);
-      return null;
+      i = 10;
     }
+    reportInnerDns(paramString, paramInt, i, false);
+    return null;
   }
   
   private ArrayList<IpData> getIpDataListLocal(String paramString, int paramInt)
@@ -216,31 +231,27 @@ public class BaseInnerDns
         if (this.mNetMap.containsKey(localObject))
         {
           localObject = (HashMap)this.mNetMap.get(localObject);
-          if (((HashMap)localObject).containsKey(paramString))
-          {
-            localObject = sortIp(((DomainData)((HashMap)localObject).get(paramString)).mIpList);
-            if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-            {
-              return localObject;
-              reportInnerDns(paramString, paramInt, i, false);
-              return null;
-            }
+          if (!((HashMap)localObject).containsKey(paramString)) {
+            break label113;
           }
-          else
-          {
-            i = 50;
-            continue;
+          localObject = sortIp(((DomainData)((HashMap)localObject).get(paramString)).mIpList);
+          if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
+            return localObject;
           }
         }
         else
         {
           getIPDomain();
           i = 60;
-          continue;
+          reportInnerDns(paramString, paramInt, i, false);
+          return null;
         }
-        int i = 30;
       }
       finally {}
+      int i = 30;
+      continue;
+      label113:
+      i = 50;
     }
   }
   
@@ -252,7 +263,7 @@ public class BaseInnerDns
   private String getNetIdentifier()
   {
     Context localContext = getRuntime().getApplicationContext();
-    String str2 = String.valueOf(NetworkUtil.a(localContext));
+    String str2 = String.valueOf(NetworkUtil.getSystemNetwork(localContext));
     String str1 = str2;
     if (!TextUtils.isEmpty(str2))
     {
@@ -306,6 +317,7 @@ public class BaseInnerDns
         localJSONArray.put(localJSONObject);
       }
       paramHashMap = localJSONArray.toString();
+      return paramHashMap;
     }
     catch (Throwable paramHashMap)
     {
@@ -313,9 +325,8 @@ public class BaseInnerDns
       if (QLog.isColorLevel()) {
         QLog.d("InnerDns", 2, "parse failed");
       }
-      return null;
     }
-    return paramHashMap;
+    return null;
   }
   
   public static BaseInnerDns queryInstance()
@@ -332,33 +343,40 @@ public class BaseInnerDns
   public static String replaceDomainWithIp(String paramString1, String paramString2)
   {
     Object localObject1 = paramString1;
-    Object localObject2;
     if (!TextUtils.isEmpty(paramString2))
     {
       localObject1 = paramString1;
       if (!TextUtils.isEmpty(paramString1))
       {
-        localObject2 = null;
+        Object localObject2 = null;
         localObject1 = paramString1;
         if (paramString1 != null)
         {
-          if (!paramString1.startsWith("http://")) {
-            break label71;
+          if (paramString1.startsWith("http://"))
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("http://");
+            ((StringBuilder)localObject1).append(paramString2);
+            ((StringBuilder)localObject1).append("/");
+            localObject1 = ((StringBuilder)localObject1).toString();
           }
-          localObject1 = "http://" + paramString2 + "/";
+          else
+          {
+            localObject1 = localObject2;
+            if (paramString1.startsWith("https://"))
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("https://");
+              ((StringBuilder)localObject1).append(paramString2);
+              ((StringBuilder)localObject1).append("/");
+              localObject1 = ((StringBuilder)localObject1).toString();
+            }
+          }
+          localObject1 = TransFileUtil.replaceIp(paramString1, (String)localObject1);
         }
       }
     }
-    for (;;)
-    {
-      localObject1 = TransFileUtil.replaceIp(paramString1, (String)localObject1);
-      return localObject1;
-      label71:
-      localObject1 = localObject2;
-      if (paramString1.startsWith("https://")) {
-        localObject1 = "https://" + paramString2 + "/";
-      }
-    }
+    return localObject1;
   }
   
   private void reportInnerDns(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
@@ -368,47 +386,39 @@ public class BaseInnerDns
     localHashMap.put("domain", paramString);
     localHashMap.put("businessType", String.valueOf(paramInt1));
     StatisticCollector.getInstance(getMobileQQ().getApplicationContext()).collectPerformance(null, "actDnsReq", paramBoolean, MobileQQ.sProcessId, 0L, localHashMap, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "reqDnsForIpList succeeded:" + paramBoolean + " error=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("reqDnsForIpList succeeded:");
+      paramString.append(paramBoolean);
+      paramString.append(" error=");
+      paramString.append(paramInt2);
+      QLog.d("InnerDns", 2, paramString.toString());
     }
   }
   
   private ArrayList<IpData> sortIp(ArrayList<IpData> paramArrayList)
   {
-    if (paramArrayList != null) {}
-    for (;;)
-    {
-      Object localObject;
+    if (paramArrayList != null) {
       try
       {
-        int i = paramArrayList.size();
-        if (i == 0)
+        if (paramArrayList.size() != 0)
         {
-          localObject = null;
-          return localObject;
-        }
-        localObject = paramArrayList.iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          if (((IpData)((Iterator)localObject).next()).mFailedCount <= 0) {
-            continue;
+          Iterator localIterator = paramArrayList.iterator();
+          while (localIterator.hasNext()) {
+            if (((IpData)localIterator.next()).mFailedCount > 0) {
+              localIterator.remove();
+            }
           }
-          ((Iterator)localObject).remove();
-          continue;
+          if ((paramArrayList.size() > 1) && (this.mRandom.nextInt() % 10 == 0)) {
+            Collections.shuffle(paramArrayList);
+          }
+          return paramArrayList;
         }
-        localObject = paramArrayList;
       }
       finally {}
-      if (paramArrayList.size() > 1)
-      {
-        localObject = paramArrayList;
-        if (this.mRandom.nextInt() % 10 == 0)
-        {
-          Collections.shuffle(paramArrayList);
-          localObject = paramArrayList;
-        }
-      }
     }
+    return null;
   }
   
   private void syncAddressData()
@@ -423,33 +433,33 @@ public class BaseInnerDns
   
   public static HashMap<String, HashMap<String, DomainData>> unParse(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return null;
-      try
+    }
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      paramString = new JSONArray(paramString);
+      int i = 0;
+      while (i < paramString.length())
       {
-        HashMap localHashMap = new HashMap();
-        paramString = new JSONArray(paramString);
-        int i = 0;
-        while (i < paramString.length())
-        {
-          Object localObject = paramString.getJSONObject(i);
-          String str = ((JSONObject)localObject).getString("net_identifier");
-          localObject = DomainData.unParse(((JSONObject)localObject).getString("domain_map"));
-          if (localObject != null) {
-            localHashMap.put(str, localObject);
-          }
-          i += 1;
+        Object localObject = paramString.getJSONObject(i);
+        String str = ((JSONObject)localObject).getString("net_identifier");
+        localObject = DomainData.unParse(((JSONObject)localObject).getString("domain_map"));
+        if (localObject != null) {
+          localHashMap.put(str, localObject);
         }
-        return localHashMap;
+        i += 1;
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
+      return localHashMap;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("InnerDns", 2, "unParse failed");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("InnerDns", 2, "unParse failed");
+    }
     return null;
   }
   
@@ -463,12 +473,8 @@ public class BaseInnerDns
       localObject1 = new HashMap();
     }
     paramList = paramList.iterator();
-    for (;;)
+    while (paramList.hasNext())
     {
-      paramHashMap = (HashMap<String, DomainData>)localObject1;
-      if (!paramList.hasNext()) {
-        break;
-      }
       Object localObject2 = (DomainIp.iplistInfo)paramList.next();
       paramHashMap = ((DomainIp.iplistInfo)localObject2).string_dname.get();
       if ((!TextUtils.isEmpty(paramHashMap)) && (((DomainIp.iplistInfo)localObject2).int32_result.get() == 0))
@@ -476,8 +482,12 @@ public class BaseInnerDns
         int i = ((DomainIp.iplistInfo)localObject2).uint32_type.get();
         if ((i != 1) && (i != 28))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("InnerDns", 2, "onDomainServerListUpdate unexpected type=" + i);
+          if (QLog.isColorLevel())
+          {
+            paramHashMap = new StringBuilder();
+            paramHashMap.append("onDomainServerListUpdate unexpected type=");
+            paramHashMap.append(i);
+            QLog.d("InnerDns", 2, paramHashMap.toString());
           }
         }
         else
@@ -494,71 +504,72 @@ public class BaseInnerDns
         }
       }
     }
+    return localObject1;
   }
   
   private boolean updateDomainServerList(byte[] paramArrayOfByte)
   {
-    List localList = null;
     HashMap localHashMap = new HashMap();
-    Object localObject = localHashMap;
+    Object localObject1 = localHashMap;
+    Object localObject2;
+    try
+    {
+      localObject2 = new DomainIp.NameRspBody();
+      if (paramArrayOfByte != null)
+      {
+        localObject1 = localHashMap;
+        ((DomainIp.NameRspBody)localObject2).mergeFrom(paramArrayOfByte);
+      }
+      localObject1 = localHashMap;
+      paramArrayOfByte = (DomainIp.SubCmd_name_Rsp)((DomainIp.NameRspBody)localObject2).SubCmd_name_Rsp.get();
+      localObject2 = null;
+      if (paramArrayOfByte == null) {
+        break label232;
+      }
+      localObject1 = localHashMap;
+      localObject2 = paramArrayOfByte.iplistInfo.get();
+      localObject1 = localHashMap;
+      paramArrayOfByte = paramArrayOfByte.iplistInfoV6.get();
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    localObject1 = localHashMap;
+    localHashMap = updateDomainMap((List)localObject2, localHashMap);
+    localObject1 = localHashMap;
+    paramArrayOfByte = updateDomainMap(paramArrayOfByte, localHashMap);
+    boolean bool = true;
+    localObject1 = paramArrayOfByte;
     for (;;)
     {
-      try
+      bool = false;
+      if (bool)
       {
-        DomainIp.NameRspBody localNameRspBody = new DomainIp.NameRspBody();
-        if (paramArrayOfByte != null)
+        paramArrayOfByte = getNetIdentifier();
+        try
         {
-          localObject = localHashMap;
-          localNameRspBody.mergeFrom(paramArrayOfByte);
-        }
-        localObject = localHashMap;
-        paramArrayOfByte = (DomainIp.SubCmd_name_Rsp)localNameRspBody.SubCmd_name_Rsp.get();
-        if (paramArrayOfByte == null) {
-          break label244;
-        }
-        localObject = localHashMap;
-        localList = paramArrayOfByte.iplistInfo.get();
-        localObject = localHashMap;
-        paramArrayOfByte = paramArrayOfByte.iplistInfoV6.get();
-        if ((localList != null) || (paramArrayOfByte != null)) {
-          continue;
-        }
-        paramArrayOfByte = localHashMap;
-        bool = false;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        paramArrayOfByte = (byte[])localObject;
-        boolean bool = false;
-        continue;
-      }
-      if (bool) {
-        localObject = getNetIdentifier();
-      }
-      try
-      {
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          if ((this.mNetMap.size() >= 3) && (!this.mNetMap.containsKey(localObject))) {
-            this.mNetMap.clear();
+          if (!TextUtils.isEmpty(paramArrayOfByte))
+          {
+            if ((this.mNetMap.size() >= 3) && (!this.mNetMap.containsKey(paramArrayOfByte))) {
+              this.mNetMap.clear();
+            }
+            this.mNetMap.put(paramArrayOfByte, localObject1);
           }
-          this.mNetMap.put(localObject, paramArrayOfByte);
+          if (this.mMainProcess) {
+            getMobileQQ().getSharedPreferences("sp_inner_dns", 0).edit().putString("sp_domain", parse(this.mNetMap)).commit();
+          }
+          return bool;
         }
-        if (this.mMainProcess) {
-          getMobileQQ().getSharedPreferences("sp_inner_dns", 0).edit().putString("sp_domain", parse(this.mNetMap)).commit();
-        }
-        return bool;
+        finally {}
       }
-      finally {}
-      localObject = localHashMap;
-      localHashMap = updateDomainMap(localList, localHashMap);
-      localObject = localHashMap;
-      paramArrayOfByte = updateDomainMap(paramArrayOfByte, localHashMap);
-      bool = true;
-      continue;
-      label244:
+      return bool;
+      label232:
       paramArrayOfByte = null;
+      if ((localObject2 != null) || (paramArrayOfByte != null)) {
+        break;
+      }
+      localObject1 = localHashMap;
     }
   }
   
@@ -572,208 +583,200 @@ public class BaseInnerDns
     }
   }
   
-  /* Error */
   public void onAppDestroy()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 112	com/tencent/mobileqq/transfile/dns/BaseInnerDns:mMainProcess	Z
-    //   4: ifeq +44 -> 48
-    //   7: ldc 2
-    //   9: monitorenter
-    //   10: aload_0
-    //   11: invokespecial 116	com/tencent/mobileqq/transfile/dns/BaseInnerDns:getMobileQQ	()Lmqq/app/MobileQQ;
-    //   14: ldc 66
-    //   16: iconst_0
-    //   17: invokevirtual 120	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   20: invokeinterface 617 1 0
-    //   25: ldc 63
-    //   27: aload_0
-    //   28: getfield 137	com/tencent/mobileqq/transfile/dns/BaseInnerDns:mNetMap	Ljava/util/HashMap;
-    //   31: invokestatic 618	com/tencent/mobileqq/transfile/dns/BaseInnerDns:parse	(Ljava/util/HashMap;)Ljava/lang/String;
-    //   34: invokeinterface 623 3 0
-    //   39: invokeinterface 626 1 0
-    //   44: pop
-    //   45: ldc 2
-    //   47: monitorexit
-    //   48: aload_0
-    //   49: invokespecial 116	com/tencent/mobileqq/transfile/dns/BaseInnerDns:getMobileQQ	()Lmqq/app/MobileQQ;
-    //   52: aload_0
-    //   53: getfield 105	com/tencent/mobileqq/transfile/dns/BaseInnerDns:mIPCBroadcastReceiver	Landroid/content/BroadcastReceiver;
-    //   56: invokevirtual 646	mqq/app/MobileQQ:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
-    //   59: return
-    //   60: astore_1
-    //   61: ldc 2
-    //   63: monitorexit
-    //   64: aload_1
-    //   65: athrow
-    //   66: astore_1
-    //   67: aload_1
-    //   68: invokevirtual 179	java/lang/Exception:printStackTrace	()V
-    //   71: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	72	0	this	BaseInnerDns
-    //   60	5	1	localObject	Object
-    //   66	2	1	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   10	48	60	finally
-    //   61	64	60	finally
-    //   48	59	66	java/lang/Exception
+    if (this.mMainProcess) {
+      try
+      {
+        getMobileQQ().getSharedPreferences("sp_inner_dns", 0).edit().putString("sp_domain", parse(this.mNetMap)).commit();
+      }
+      finally {}
+    }
+    try
+    {
+      getMobileQQ().unregisterReceiver(this.mIPCBroadcastReceiver);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    Bundle localBundle = new Bundle();
-    if ("reqDomain2IpList".equals(paramString)) {
-      localBundle.putParcelableArrayList("ip", getIpDataListLocal(paramBundle.getString("domain"), paramBundle.getInt("businessType")));
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      return EIPCResult.createSuccessResult(localBundle);
-      if ("reportBadIp".equals(paramString)) {
-        reportBadIp(paramBundle.getString("domain"), paramBundle.getString("ip"), paramBundle.getInt("businessType"));
-      } else if ("syncAddressData".equals(paramString)) {
-        localBundle.putString("addressData", parse(this.mNetMap));
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("action = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", params = ");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.d("InnerDns", 2, ((StringBuilder)localObject).toString());
     }
+    Object localObject = new Bundle();
+    if ("reqDomain2IpList".equals(paramString)) {
+      ((Bundle)localObject).putParcelableArrayList("ip", getIpDataListLocal(paramBundle.getString("domain"), paramBundle.getInt("businessType")));
+    } else if ("reportBadIp".equals(paramString)) {
+      reportBadIp(paramBundle.getString("domain"), paramBundle.getString("ip"), paramBundle.getInt("businessType"));
+    } else if ("syncAddressData".equals(paramString)) {
+      ((Bundle)localObject).putString("addressData", parse(this.mNetMap));
+    }
+    return EIPCResult.createSuccessResult((Bundle)localObject);
   }
   
   public void onReceivePush(FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "onReceivePush:" + MobileQQ.sProcessId);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceivePush:");
+      ((StringBuilder)localObject).append(MobileQQ.sProcessId);
+      QLog.d("InnerDns", 2, ((StringBuilder)localObject).toString());
     }
     this.mIsRequestingIPDomaining = false;
-    if (!this.mMainProcess) {}
-    Object localObject1;
-    do
-    {
+    if (!this.mMainProcess) {
       return;
-      Object localObject2 = null;
-      localObject1 = localObject2;
-      try
+    }
+    StringBuilder localStringBuilder = null;
+    Object localObject = localStringBuilder;
+    try
+    {
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+      localObject = localStringBuilder;
+      paramFromServiceMsg = new byte[localByteBuffer.getInt() - 4];
+      localObject = paramFromServiceMsg;
+      localByteBuffer.get(paramFromServiceMsg);
+    }
+    catch (Exception paramFromServiceMsg)
+    {
+      paramFromServiceMsg.printStackTrace();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("decode failed:");
+      localStringBuilder.append(paramFromServiceMsg.getMessage());
+      QLog.e("InnerDns", 1, localStringBuilder.toString());
+      paramFromServiceMsg = (FromServiceMsg)localObject;
+    }
+    try
+    {
+      if (updateDomainServerList(paramFromServiceMsg))
       {
-        ByteBuffer localByteBuffer = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        localObject1 = localObject2;
-        paramFromServiceMsg = new byte[localByteBuffer.getInt() - 4];
-        localObject1 = paramFromServiceMsg;
-        localByteBuffer.get(paramFromServiceMsg);
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        for (;;)
-        {
-          paramFromServiceMsg.printStackTrace();
-          QLog.e("InnerDns", 1, "decode failed:" + paramFromServiceMsg.getMessage());
-          paramFromServiceMsg = (FromServiceMsg)localObject1;
-        }
-      }
-      try
-      {
-        if (updateDomainServerList(paramFromServiceMsg))
-        {
-          paramFromServiceMsg = new Intent();
-          paramFromServiceMsg.setAction("com.tencent.innerdns.domainAddressDataUpdateAction");
-          getMobileQQ().sendBroadcast(paramFromServiceMsg, "com.tencent.msg.permission.pushnotify");
-          return;
-        }
-      }
-      catch (Throwable paramFromServiceMsg)
-      {
-        QLog.e("InnerDns", 1, "onReceivePush sendBroadcast fail:" + paramFromServiceMsg.getMessage());
+        paramFromServiceMsg = new Intent();
+        paramFromServiceMsg.setAction("com.tencent.innerdns.domainAddressDataUpdateAction");
+        getMobileQQ().sendBroadcast(paramFromServiceMsg, "com.tencent.msg.permission.pushnotify");
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("InnerDns", 2, "decode failed.");
+      if (QLog.isColorLevel())
+      {
+        QLog.d("InnerDns", 2, "decode failed.");
+        return;
+      }
+    }
+    catch (Throwable paramFromServiceMsg)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceivePush sendBroadcast fail:");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.getMessage());
+      QLog.e("InnerDns", 1, ((StringBuilder)localObject).toString());
+    }
   }
   
   public void reportBadIp(String paramString1, String paramString2, int paramInt)
   {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "reportBadIp domian: " + paramString1 + " ip:" + paramString2 + " busiType:" + paramInt + " ServerProcName:" + this.mServerProcName);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("reportBadIp domian: ");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(" ip:");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(" busiType:");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(" ServerProcName:");
+      ((StringBuilder)localObject1).append(this.mServerProcName);
+      QLog.d("InnerDns", 2, ((StringBuilder)localObject1).toString());
     }
     paramString2 = paramString2.replaceAll("\\[(.*)\\]", "$1");
+    boolean bool1 = TextUtils.isEmpty(paramString1);
+    boolean bool2 = false;
     int i;
-    boolean bool1;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramString1.equals(paramString2)))
+    if ((!bool1) && (!TextUtils.isEmpty(paramString2)) && (!paramString1.equals(paramString2)))
     {
-      i = 40;
-      bool1 = false;
-    }
-    label468:
-    label478:
-    label481:
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("InnerDns", 2, "reportBadIp succeeded:" + bool1 + " error=" + i);
-      }
-      Object localObject = new HashMap();
-      ((HashMap)localObject).put("domain", paramString1);
-      ((HashMap)localObject).put("ip", paramString2);
-      ((HashMap)localObject).put("businessType", String.valueOf(paramInt));
-      ((HashMap)localObject).put("param_FailCode", String.valueOf(i));
-      StatisticCollector.getInstance(getMobileQQ().getApplicationContext()).collectPerformance(null, "actDnsBadIp", bool1, MobileQQ.sProcessId, 0L, (HashMap)localObject, "");
-      return;
-      localObject = getNetIdentifier();
-      if ((this.mNetMap != null) && (this.mNetMap.containsKey(localObject)))
+      localObject1 = getNetIdentifier();
+      Object localObject2 = this.mNetMap;
+      bool1 = true;
+      if ((localObject2 != null) && (((HashMap)localObject2).containsKey(localObject1)))
       {
         try
         {
-          localObject = (HashMap)this.mNetMap.get(localObject);
-          if (((HashMap)localObject).containsKey(paramString1))
+          localObject1 = (HashMap)this.mNetMap.get(localObject1);
+          if (((HashMap)localObject1).containsKey(paramString1))
           {
-            localObject = (DomainData)((HashMap)localObject).get(paramString1);
-            if (((DomainData)localObject).mIpList != null)
+            localObject1 = (DomainData)((HashMap)localObject1).get(paramString1);
+            if (((DomainData)localObject1).mIpList != null)
             {
-              localObject = ((DomainData)localObject).mIpList.iterator();
-              while (((Iterator)localObject).hasNext())
+              localObject1 = ((DomainData)localObject1).mIpList.iterator();
+              while (((Iterator)localObject1).hasNext())
               {
-                IpData localIpData = (IpData)((Iterator)localObject).next();
-                if (paramString2.equals(localIpData.mIp)) {
-                  localIpData.mFailedCount += 1;
+                localObject2 = (IpData)((Iterator)localObject1).next();
+                if (paramString2.equals(((IpData)localObject2).mIp)) {
+                  ((IpData)localObject2).mFailedCount += 1;
                 }
               }
             }
           }
+          i = 0;
         }
         finally {}
-        bool1 = true;
-        i = 0;
-        label379:
-        if (this.mMainProcess) {
-          break label481;
-        }
-        if (!this.mConnected) {
-          break label468;
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("domain", paramString1);
-        ((Bundle)localObject).putString("ip", paramString2);
-        ((Bundle)localObject).putInt("businessType", paramInt);
-        if (QIPCClientHelper.getInstance().getClient().callServer("InnerDnsModule", "reportBadIp", (Bundle)localObject).isSuccess()) {
-          break label478;
-        }
-        i = 20;
-        bool1 = bool2;
       }
-      for (;;)
+      else
       {
-        break;
         i = 60;
         bool1 = false;
-        break label379;
+      }
+      if (!this.mMainProcess)
+      {
+        if (this.mConnected)
+        {
+          localObject1 = new Bundle();
+          ((Bundle)localObject1).putString("domain", paramString1);
+          ((Bundle)localObject1).putString("ip", paramString2);
+          ((Bundle)localObject1).putInt("businessType", paramInt);
+          if (!QIPCClientHelper.getInstance().getClient().callServer("InnerDnsModule", "reportBadIp", (Bundle)localObject1).isSuccess())
+          {
+            i = 20;
+            bool1 = bool2;
+          }
+          break label391;
+        }
         i = 10;
-        bool1 = false;
-        break;
+      }
+      else
+      {
+        break label391;
       }
     }
+    else
+    {
+      i = 40;
+    }
+    bool1 = false;
+    label391:
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("reportBadIp succeeded:");
+      ((StringBuilder)localObject1).append(bool1);
+      ((StringBuilder)localObject1).append(" error=");
+      ((StringBuilder)localObject1).append(i);
+      QLog.d("InnerDns", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = new HashMap();
+    ((HashMap)localObject1).put("domain", paramString1);
+    ((HashMap)localObject1).put("ip", paramString2);
+    ((HashMap)localObject1).put("businessType", String.valueOf(paramInt));
+    ((HashMap)localObject1).put("param_FailCode", String.valueOf(i));
+    StatisticCollector.getInstance(getMobileQQ().getApplicationContext()).collectPerformance(null, "actDnsBadIp", bool1, MobileQQ.sProcessId, 0L, (HashMap)localObject1, "");
   }
   
   public String reqDns(String paramString, int paramInt)
@@ -792,14 +795,19 @@ public class BaseInnerDns
   public String reqDns(String paramString, int paramInt1, boolean paramBoolean, int paramInt2)
   {
     paramString = reqDnsForIpList(paramString, paramInt1, paramBoolean, paramInt2, true);
-    if ((paramString != null) && (paramString.size() > 0)) {}
-    for (paramString = (String)paramString.get(0);; paramString = null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("InnerDns", 2, "reqDns after dns:" + paramString);
-      }
-      return paramString;
+    if ((paramString != null) && (paramString.size() > 0)) {
+      paramString = (String)paramString.get(0);
+    } else {
+      paramString = null;
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reqDns after dns:");
+      localStringBuilder.append(paramString);
+      QLog.d("InnerDns", 2, localStringBuilder.toString());
+    }
+    return paramString;
   }
   
   public ArrayList<String> reqDnsForIpList(String paramString, int paramInt)
@@ -817,64 +825,84 @@ public class BaseInnerDns
   public ArrayList<String> reqDnsForIpList(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
   {
     paramString = reqIpDataList(paramString, paramInt1, paramBoolean1);
-    ArrayList localArrayList;
-    IpData localIpData;
-    String str;
     if (paramString != null)
     {
-      localArrayList = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
       Iterator localIterator = paramString.iterator();
-      for (;;)
+      while (localIterator.hasNext())
       {
-        if (localIterator.hasNext())
+        IpData localIpData = (IpData)localIterator.next();
+        if (localIpData.mType == paramInt2)
         {
-          localIpData = (IpData)localIterator.next();
-          if (localIpData.mType == paramInt2)
+          String str = localIpData.mIp;
+          if ((localIpData.mType == 1) && (localIpData.mPort != 80) && (paramBoolean2))
           {
-            str = localIpData.mIp;
-            if ((localIpData.mType == 1) && (localIpData.mPort != 80) && (paramBoolean2)) {
-              paramString = str + ":" + localIpData.mPort;
+            paramString = new StringBuilder();
+            paramString.append(str);
+            paramString.append(":");
+            paramString.append(localIpData.mPort);
+            paramString = paramString.toString();
+          }
+          else
+          {
+            paramString = str;
+            if (localIpData.mType == 28)
+            {
+              paramString = new StringBuilder();
+              paramString.append("[");
+              paramString.append(str);
+              paramString.append("]");
+              str = paramString.toString();
+              paramString = str;
+              if (localIpData.mPort != 80)
+              {
+                paramString = str;
+                if (paramBoolean2)
+                {
+                  paramString = new StringBuilder();
+                  paramString.append(str);
+                  paramString.append(":");
+                  paramString.append(localIpData.mPort);
+                  paramString = paramString.toString();
+                }
+              }
             }
           }
+          localArrayList.add(paramString);
         }
       }
+      return localArrayList;
     }
-    for (;;)
-    {
-      localArrayList.add(paramString);
-      break;
-      paramString = str;
-      if (localIpData.mType == 28)
-      {
-        str = "[" + str + "]";
-        paramString = str;
-        if (localIpData.mPort != 80)
-        {
-          paramString = str;
-          if (paramBoolean2)
-          {
-            paramString = str + ":" + localIpData.mPort;
-            continue;
-            return localArrayList;
-            return null;
-          }
-        }
-      }
-    }
+    return null;
   }
   
   public ArrayList<IpData> reqIpDataList(String paramString, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "reqDns, p:" + MobileQQ.sProcessId + " d:" + paramString + " b:" + paramInt + "N:" + this.mServerProcName);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reqDns, p:");
+      ((StringBuilder)localObject).append(MobileQQ.sProcessId);
+      ((StringBuilder)localObject).append(" d:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" b:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("N:");
+      ((StringBuilder)localObject).append(this.mServerProcName);
+      QLog.d("InnerDns", 2, ((StringBuilder)localObject).toString());
     }
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    if ((this.mMainProcess) || ((this.mNetMap != null) && (!this.mNetMap.isEmpty()))) {
-      return getIpDataListLocal(paramString, paramInt);
+    if (!this.mMainProcess)
+    {
+      localObject = this.mNetMap;
+      if ((localObject == null) || (((HashMap)localObject).isEmpty())) {
+        return getIpDataListIPC(paramString, paramInt, paramBoolean);
+      }
     }
-    return getIpDataListIPC(paramString, paramInt, paramBoolean);
+    return getIpDataListLocal(paramString, paramInt);
   }
   
   public ArrayList<ServerAddr> reqSerAddrList(String paramString, int paramInt)
@@ -899,13 +927,14 @@ public class BaseInnerDns
           ServerAddr localServerAddr = new ServerAddr();
           localServerAddr.mIp = localIpData.mIp;
           localServerAddr.port = localIpData.mPort;
-          if (paramInt2 == 28) {}
-          for (boolean bool = true;; bool = false)
-          {
-            localServerAddr.isIpv6 = bool;
-            paramString.add(localServerAddr);
-            break;
+          boolean bool;
+          if (paramInt2 == 28) {
+            bool = true;
+          } else {
+            bool = false;
           }
+          localServerAddr.isIpv6 = bool;
+          paramString.add(localServerAddr);
         }
       }
       return paramString;
@@ -915,7 +944,7 @@ public class BaseInnerDns
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.dns.BaseInnerDns
  * JD-Core Version:    0.7.0.1
  */

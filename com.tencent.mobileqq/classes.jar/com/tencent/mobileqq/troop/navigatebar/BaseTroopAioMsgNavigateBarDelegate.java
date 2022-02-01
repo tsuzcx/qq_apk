@@ -5,7 +5,7 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.troop.data.TroopAioAgent.Message;
@@ -17,17 +17,20 @@ public abstract class BaseTroopAioMsgNavigateBarDelegate
 {
   protected int a;
   protected Context a;
-  protected SessionInfo a;
+  protected BaseSessionInfo a;
   protected QQAppInterface a;
   protected final String a;
   
-  public BaseTroopAioMsgNavigateBarDelegate(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public BaseTroopAioMsgNavigateBarDelegate(QQAppInterface paramQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
   {
-    this.jdField_a_of_type_JavaLangString = ("Navigate." + getClass().getSimpleName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Navigate.");
+    localStringBuilder.append(getClass().getSimpleName());
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
   }
   
   protected int a()
@@ -69,8 +72,17 @@ public abstract class BaseTroopAioMsgNavigateBarDelegate
   
   protected boolean a(@NonNull MessageRecord paramMessageRecord, long paramLong1, long paramLong2)
   {
-    if ((paramMessageRecord.shmsgseq <= paramLong2) && (QLog.isColorLevel())) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkShMsgSeqCanShow, shMsgSeq = " + paramMessageRecord.shmsgseq + ", firstMsgSeq = " + paramLong1 + ", lastReadSeq = " + paramLong2);
+    if ((paramMessageRecord.shmsgseq <= paramLong2) && (QLog.isColorLevel()))
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkShMsgSeqCanShow, shMsgSeq = ");
+      localStringBuilder.append(paramMessageRecord.shmsgseq);
+      localStringBuilder.append(", firstMsgSeq = ");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(", lastReadSeq = ");
+      localStringBuilder.append(paramLong2);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     return (paramMessageRecord.shmsgseq < paramLong1) && (paramMessageRecord.shmsgseq > paramLong2);
   }
@@ -79,7 +91,7 @@ public abstract class BaseTroopAioMsgNavigateBarDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.BaseTroopAioMsgNavigateBarDelegate
  * JD-Core Version:    0.7.0.1
  */

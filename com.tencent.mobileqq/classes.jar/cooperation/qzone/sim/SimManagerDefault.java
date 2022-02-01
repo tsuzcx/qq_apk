@@ -21,369 +21,259 @@ class SimManagerDefault
   
   public int initAllDataByAIDL(ISub paramISub)
   {
-    int j = 0;
-    int i;
-    if (paramISub == null)
-    {
-      i = -2;
-      return i;
+    if (paramISub == null) {
+      return -2;
     }
     for (;;)
     {
+      int i;
       try
       {
-        int k = paramISub.d();
-        if (k >= 0)
+        int j = paramISub.d();
+        if (j >= 0)
         {
           i = 0;
+          bool = true;
           if (i <= 10)
           {
             paramISub = getSimInfo(i);
             if (paramISub == null) {
-              break label156;
+              break label159;
             }
-            if (i != k) {
-              break label163;
+            if (i != j) {
+              break label153;
             }
-            bool = true;
             paramISub.setIsDataTrafficSim(bool);
-            break label156;
+            break label159;
           }
-          paramISub = getSimInfo(k);
-          i = j;
-          if (paramISub == null) {
-            break;
+          paramISub = getSimInfo(j);
+          if ((paramISub != null) && (!TextUtils.isEmpty(paramISub.getIMSI())))
+          {
+            localObject = getSimInfo(10);
+            if ((localObject != null) && (paramISub.getIMSI().equals(((SimInfo)localObject).getIMSI()))) {
+              ((SimInfo)localObject).setIsDataTrafficSim(true);
+            }
           }
-          i = j;
-          if (TextUtils.isEmpty(paramISub.getIMSI())) {
-            break;
-          }
-          SimInfo localSimInfo = getSimInfo(10);
-          i = j;
-          if (localSimInfo == null) {
-            break;
-          }
-          i = j;
-          if (!paramISub.getIMSI().equals(localSimInfo.getIMSI())) {
-            break;
-          }
-          localSimInfo.setIsDataTrafficSim(true);
           return 0;
         }
       }
       catch (Throwable paramISub)
       {
-        QZLog.e("UniKingCardHelper/SimManager", "initAllDataByAIDL 1 error:" + paramISub.getMessage());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initAllDataByAIDL 1 error:");
+        ((StringBuilder)localObject).append(paramISub.getMessage());
+        QZLog.e("UniKingCardHelper/SimManager", ((StringBuilder)localObject).toString());
       }
       return -3;
-      label156:
-      i += 1;
-      continue;
-      label163:
+      label153:
       boolean bool = false;
+      continue;
+      label159:
+      i += 1;
     }
   }
   
-  /* Error */
   protected int initAllDataByAPI(Context paramContext, int[] paramArrayOfInt)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: ldc 93
-    //   3: invokevirtual 99	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   6: checkcast 101	android/telephony/TelephonyManager
-    //   9: astore 7
-    //   11: aload 7
-    //   13: invokevirtual 107	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   16: astore 8
-    //   18: aconst_null
-    //   19: astore 5
-    //   21: aconst_null
-    //   22: astore_1
-    //   23: getstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   26: iconst_m1
-    //   27: if_icmpeq +10 -> 37
-    //   30: getstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   33: iconst_1
-    //   34: if_icmpne +35 -> 69
-    //   37: aload 5
-    //   39: astore_1
-    //   40: aload 8
-    //   42: ldc 108
-    //   44: iconst_1
-    //   45: anewarray 110	java/lang/Class
-    //   48: dup
-    //   49: iconst_0
-    //   50: getstatic 116	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   53: aastore
-    //   54: invokevirtual 120	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   57: astore 5
-    //   59: aload 5
-    //   61: astore_1
-    //   62: iconst_1
-    //   63: putstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   66: aload 5
-    //   68: astore_1
-    //   69: getstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   72: iconst_m1
-    //   73: if_icmpeq +10 -> 83
-    //   76: getstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   79: iconst_2
-    //   80: if_icmpne +330 -> 410
-    //   83: aload 8
-    //   85: ldc 108
-    //   87: iconst_1
-    //   88: anewarray 110	java/lang/Class
-    //   91: dup
-    //   92: iconst_0
-    //   93: getstatic 123	java/lang/Long:TYPE	Ljava/lang/Class;
-    //   96: aastore
-    //   97: invokevirtual 120	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   100: astore 5
-    //   102: iconst_2
-    //   103: putstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   106: aload 5
-    //   108: astore_1
-    //   109: iconst_0
-    //   110: istore_3
-    //   111: getstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   114: iconst_m1
-    //   115: if_icmpeq +16 -> 131
-    //   118: iload_3
-    //   119: istore 4
-    //   121: aload_1
-    //   122: astore 5
-    //   124: getstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   127: iconst_3
-    //   128: if_icmpne +29 -> 157
-    //   131: aload 8
-    //   133: ldc 125
-    //   135: iconst_1
-    //   136: anewarray 110	java/lang/Class
-    //   139: dup
-    //   140: iconst_0
-    //   141: getstatic 116	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   144: aastore
-    //   145: invokevirtual 120	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   148: astore 5
-    //   150: iconst_3
-    //   151: putstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   154: iconst_1
-    //   155: istore 4
-    //   157: getstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   160: iconst_m1
-    //   161: if_icmpeq +10 -> 171
-    //   164: getstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   167: iconst_4
-    //   168: if_icmpne +233 -> 401
-    //   171: aload 8
-    //   173: ldc 125
-    //   175: iconst_1
-    //   176: anewarray 110	java/lang/Class
-    //   179: dup
-    //   180: iconst_0
-    //   181: getstatic 123	java/lang/Long:TYPE	Ljava/lang/Class;
-    //   184: aastore
-    //   185: invokevirtual 120	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   188: astore_1
-    //   189: iconst_4
-    //   190: putstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   193: iconst_0
-    //   194: istore_3
-    //   195: getstatic 28	cooperation/qzone/sim/SimManagerDefault:mMethodDataIndex	I
-    //   198: iconst_m1
-    //   199: if_icmpeq +7 -> 206
-    //   202: aload_1
-    //   203: ifnonnull +156 -> 359
-    //   206: bipush 254
-    //   208: ireturn
-    //   209: astore 5
-    //   211: ldc 17
-    //   213: new 70	java/lang/StringBuilder
-    //   216: dup
-    //   217: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   220: ldc 127
-    //   222: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   225: aload 5
-    //   227: invokevirtual 80	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   230: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   236: invokestatic 89	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   239: goto -170 -> 69
-    //   242: astore 5
-    //   244: iconst_1
-    //   245: istore_3
-    //   246: ldc 17
-    //   248: new 70	java/lang/StringBuilder
-    //   251: dup
-    //   252: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   255: ldc 129
-    //   257: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   260: aload 5
-    //   262: invokevirtual 80	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   265: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   271: invokestatic 89	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   274: goto -163 -> 111
-    //   277: astore 6
-    //   279: ldc 17
-    //   281: new 70	java/lang/StringBuilder
-    //   284: dup
-    //   285: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   288: ldc 131
-    //   290: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   293: aload 6
-    //   295: invokevirtual 80	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   298: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   301: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   304: invokestatic 89	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   307: iload_3
-    //   308: istore 4
-    //   310: aload_1
-    //   311: astore 5
-    //   313: goto -156 -> 157
-    //   316: astore 6
-    //   318: aload 5
-    //   320: astore_1
-    //   321: iload 4
-    //   323: istore_3
-    //   324: aload 6
-    //   326: astore 5
-    //   328: ldc 17
-    //   330: new 70	java/lang/StringBuilder
-    //   333: dup
-    //   334: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   337: ldc 133
-    //   339: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   342: aload 5
-    //   344: invokevirtual 80	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   347: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   350: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   353: invokestatic 89	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   356: goto -161 -> 195
-    //   359: aload_0
-    //   360: iconst_3
-    //   361: aload 7
-    //   363: aload_2
-    //   364: aload_1
-    //   365: iload_3
-    //   366: invokevirtual 137	cooperation/qzone/sim/SimManagerDefault:invokeMethod	(ILandroid/telephony/TelephonyManager;[ILjava/lang/reflect/Method;Z)I
-    //   369: ireturn
-    //   370: astore 5
-    //   372: iconst_0
-    //   373: istore_3
-    //   374: goto -46 -> 328
-    //   377: astore 6
-    //   379: iconst_1
-    //   380: istore_3
-    //   381: aload 5
-    //   383: astore_1
-    //   384: goto -105 -> 279
-    //   387: astore 6
-    //   389: aload 5
-    //   391: astore_1
-    //   392: iconst_0
-    //   393: istore_3
-    //   394: aload 6
-    //   396: astore 5
-    //   398: goto -152 -> 246
-    //   401: aload 5
-    //   403: astore_1
-    //   404: iload 4
-    //   406: istore_3
-    //   407: goto -212 -> 195
-    //   410: iconst_1
-    //   411: istore_3
-    //   412: goto -301 -> 111
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	415	0	this	SimManagerDefault
-    //   0	415	1	paramContext	Context
-    //   0	415	2	paramArrayOfInt	int[]
-    //   110	302	3	bool1	boolean
-    //   119	286	4	bool2	boolean
-    //   19	130	5	localObject1	Object
-    //   209	17	5	localThrowable1	Throwable
-    //   242	19	5	localThrowable2	Throwable
-    //   311	32	5	localObject2	Object
-    //   370	20	5	localThrowable3	Throwable
-    //   396	6	5	localObject3	Object
-    //   277	17	6	localThrowable4	Throwable
-    //   316	9	6	localThrowable5	Throwable
-    //   377	1	6	localThrowable6	Throwable
-    //   387	8	6	localThrowable7	Throwable
-    //   9	353	7	localTelephonyManager	TelephonyManager
-    //   16	156	8	localClass	Class
-    // Exception table:
-    //   from	to	target	type
-    //   40	59	209	java/lang/Throwable
-    //   62	66	209	java/lang/Throwable
-    //   83	102	242	java/lang/Throwable
-    //   131	150	277	java/lang/Throwable
-    //   171	189	316	java/lang/Throwable
-    //   189	193	370	java/lang/Throwable
-    //   150	154	377	java/lang/Throwable
-    //   102	106	387	java/lang/Throwable
-  }
-  
-  public int initAllIMSI(Context paramContext, int[] paramArrayOfInt)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
     TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
     Class localClass = localTelephonyManager.getClass();
-    Method localMethod = null;
+    int i = mMethodDataIndex;
+    boolean bool3 = false;
     paramContext = null;
-    if ((mMethodIMSIIndex == -1) || (mMethodIMSIIndex == 1)) {
-      paramContext = localMethod;
-    }
-    try
+    Method localMethod = null;
+    if ((i == -1) || (i == 1))
     {
-      localMethod = localClass.getDeclaredMethod("getSubscriberId", new Class[] { Integer.TYPE });
       paramContext = localMethod;
-      mMethodIMSIIndex = 1;
-      paramContext = localMethod;
-    }
-    catch (Throwable localThrowable1)
-    {
-      for (;;)
+      try
       {
+        localMethod = localClass.getDeclaredMethod("initAllDataByAPI", new Class[] { Integer.TYPE });
+        paramContext = localMethod;
+        mMethodDataIndex = 1;
+        paramContext = localMethod;
+      }
+      catch (Throwable localThrowable1)
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("initAllDataByAPI 1 error:");
+        localStringBuilder1.append(localThrowable1.getMessage());
+        QZLog.e("UniKingCardHelper/SimManager", localStringBuilder1.toString());
+      }
+    }
+    i = mMethodDataIndex;
+    boolean bool2;
+    Object localObject1;
+    if ((i != -1) && (i != 2))
+    {
+      bool2 = true;
+      localObject1 = paramContext;
+    }
+    else
+    {
+      try
+      {
+        localObject1 = localClass.getDeclaredMethod("initAllDataByAPI", new Class[] { Long.TYPE });
         try
         {
-          localMethod = localClass.getDeclaredMethod("getSubscriberId", new Class[] { Long.TYPE });
-          paramContext = localMethod;
+          mMethodDataIndex = 2;
+          bool2 = false;
+        }
+        catch (Throwable localThrowable4)
+        {
+          bool2 = false;
+          paramContext = (Context)localObject1;
+        }
+        localObject1 = new StringBuilder();
+      }
+      catch (Throwable localThrowable5)
+      {
+        bool2 = true;
+      }
+      ((StringBuilder)localObject1).append("initAllDataByAPI 2 error:");
+      ((StringBuilder)localObject1).append(localThrowable5.getMessage());
+      QZLog.e("UniKingCardHelper/SimManager", ((StringBuilder)localObject1).toString());
+      localObject1 = paramContext;
+    }
+    i = mMethodDataIndex;
+    boolean bool1;
+    Object localObject2;
+    if (i != -1)
+    {
+      bool1 = bool2;
+      paramContext = (Context)localObject1;
+      if (i != 3) {}
+    }
+    else
+    {
+      try
+      {
+        paramContext = localClass.getDeclaredMethod("getDataEnabled", new Class[] { Integer.TYPE });
+        try
+        {
+          mMethodDataIndex = 3;
+          bool1 = true;
         }
         catch (Throwable localThrowable2)
         {
           bool1 = true;
         }
+        localStringBuilder2 = new StringBuilder();
+      }
+      catch (Throwable localThrowable6)
+      {
+        paramContext = localThrowable2;
+        bool1 = bool2;
+        localObject2 = localThrowable6;
+      }
+      StringBuilder localStringBuilder2;
+      localStringBuilder2.append("initAllDataByAPI 3 error:");
+      localStringBuilder2.append(((Throwable)localObject2).getMessage());
+      QZLog.e("UniKingCardHelper/SimManager", localStringBuilder2.toString());
+    }
+    i = mMethodDataIndex;
+    if (i != -1)
+    {
+      bool2 = bool1;
+      localObject2 = paramContext;
+      if (i == 4) {}
+    }
+    Context localContext;
+    for (;;)
+    {
+      break;
+      try
+      {
+        localObject2 = localClass.getDeclaredMethod("getDataEnabled", new Class[] { Long.TYPE });
+        try
+        {
+          mMethodDataIndex = 4;
+          bool2 = bool3;
+        }
+        catch (Throwable localThrowable7)
+        {
+          bool1 = false;
+          paramContext = (Context)localObject2;
+          localObject2 = localThrowable7;
+        }
+        localStringBuilder3 = new StringBuilder();
+      }
+      catch (Throwable localThrowable3) {}
+      StringBuilder localStringBuilder3;
+      localStringBuilder3.append("initAllDataByAPI 4 error:");
+      localStringBuilder3.append(localThrowable3.getMessage());
+      QZLog.e("UniKingCardHelper/SimManager", localStringBuilder3.toString());
+      bool2 = bool1;
+      localContext = paramContext;
+    }
+    if ((mMethodDataIndex != -1) && (localContext != null)) {
+      return invokeMethod(3, localTelephonyManager, paramArrayOfInt, localContext, bool2);
+    }
+    return -2;
+  }
+  
+  public int initAllIMSI(Context paramContext, int[] paramArrayOfInt)
+  {
+    TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
+    Class localClass = localTelephonyManager.getClass();
+    int i = mMethodIMSIIndex;
+    boolean bool1 = true;
+    boolean bool2 = true;
+    paramContext = null;
+    Method localMethod = null;
+    if ((i == -1) || (i == 1))
+    {
+      paramContext = localMethod;
+      try
+      {
+        localMethod = localClass.getDeclaredMethod("getSubscriberId", new Class[] { Integer.TYPE });
+        paramContext = localMethod;
+        mMethodIMSIIndex = 1;
+        paramContext = localMethod;
+      }
+      catch (Throwable localThrowable1)
+      {
+        localThrowable1.printStackTrace();
+      }
+    }
+    i = mMethodIMSIIndex;
+    Object localObject;
+    Context localContext;
+    if (i != -1)
+    {
+      localObject = paramContext;
+      if (i != 2) {}
+    }
+    else
+    {
+      try
+      {
+        localObject = localClass.getDeclaredMethod("getSubscriberId", new Class[] { Long.TYPE });
         try
         {
           mMethodIMSIIndex = 2;
-          if ((mMethodIMSIIndex != -1) && (paramContext != null)) {
-            break;
-          }
-          return -2;
+          bool1 = false;
         }
         catch (Throwable localThrowable3)
         {
-          for (;;)
-          {
-            bool1 = bool2;
-          }
+          bool1 = false;
+          paramContext = (Context)localObject;
+          localObject = localThrowable3;
         }
-        localThrowable1 = localThrowable1;
-        localThrowable1.printStackTrace();
-        continue;
-        QZLog.e("UniKingCardHelper/SimManager", "initAllIMSI error:" + localThrowable2.getMessage());
+        localStringBuilder = new StringBuilder();
       }
+      catch (Throwable localThrowable2)
+      {
+        bool1 = bool2;
+      }
+      StringBuilder localStringBuilder;
+      localStringBuilder.append("initAllIMSI error:");
+      localStringBuilder.append(localThrowable2.getMessage());
+      QZLog.e("UniKingCardHelper/SimManager", localStringBuilder.toString());
+      localContext = paramContext;
     }
-    if ((mMethodIMSIIndex == -1) || (mMethodIMSIIndex == 2)) {}
-    for (;;)
-    {
-      return invokeMethod(1, localTelephonyManager, paramArrayOfInt, paramContext, bool1);
-      bool1 = true;
+    if ((mMethodIMSIIndex != -1) && (localContext != null)) {
+      return invokeMethod(1, localTelephonyManager, paramArrayOfInt, localContext, bool1);
     }
+    return -2;
   }
   
   protected int initAllPhoneNum(Context paramContext, int[] paramArrayOfInt)
@@ -394,50 +284,59 @@ class SimManagerDefault
   int invokeMethod(int paramInt, TelephonyManager paramTelephonyManager, int[] paramArrayOfInt, Method paramMethod, boolean paramBoolean)
   {
     int i = 0;
-    if (i < 9) {
+    while (i < 9)
+    {
       if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
       {
         int k = paramArrayOfInt.length;
-        j = 0;
-        label26:
-        if (j >= k) {
-          break label195;
-        }
-        if (paramArrayOfInt[j] != i) {}
-      }
-    }
-    label195:
-    for (int j = 1;; j = 0)
-    {
-      if (j == 0) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        j += 1;
-        break label26;
-        if (paramBoolean) {}
-        for (Object localObject = paramMethod.invoke(paramTelephonyManager, new Object[] { Integer.valueOf(i) }); localObject != null; localObject = paramMethod.invoke(paramTelephonyManager, new Object[] { Long.valueOf(i) })) {
-          switch (paramInt)
+        int j = 0;
+        while (j < k)
+        {
+          if (paramArrayOfInt[j] == i)
           {
-          default: 
-            break;
-          case 1: 
+            j = 1;
+            break label60;
+          }
+          j += 1;
+        }
+        j = 0;
+        label60:
+        if (j == 0) {}
+      }
+      else
+      {
+        Object localObject;
+        if (paramBoolean) {
+          localObject = paramMethod.invoke(paramTelephonyManager, new Object[] { Integer.valueOf(i) });
+        } else {
+          localObject = paramMethod.invoke(paramTelephonyManager, new Object[] { Long.valueOf(i) });
+        }
+        if (localObject != null) {
+          if (paramInt != 1)
+          {
+            if (paramInt != 2)
+            {
+              if (paramInt == 3) {
+                updataSimDataEnable(i, (Boolean)localObject);
+              }
+            }
+            else {
+              updataSimPhoneNum(i, localObject.toString());
+            }
+          }
+          else {
             updataSimImsi(i, localObject.toString());
-            break;
           }
         }
-        updataSimDataEnable(i, (Boolean)localObject);
-        continue;
-        updataSimPhoneNum(i, localObject.toString());
       }
-      return 0;
+      i += 1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.sim.SimManagerDefault
  * JD-Core Version:    0.7.0.1
  */

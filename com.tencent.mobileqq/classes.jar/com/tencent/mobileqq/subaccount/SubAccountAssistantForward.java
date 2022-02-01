@@ -4,18 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 import com.tencent.mobileqq.activity.SubAccountBindActivity;
 import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.splashlogo.KandianConfigServlet;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareUtil;
 import com.tencent.mobileqq.loginregister.ILoginRegisterApi;
 import com.tencent.mobileqq.loginregister.LoginProgressClazz;
 import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.api.IQQPlayer;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
-import com.tencent.mobileqq.util.BusinessUtils;
+import com.tencent.mobileqq.subaccount.api.ISubAccountApi;
+import com.tencent.mobileqq.troop.api.ITroopHandlerNameApi;
+import com.tencent.mobileqq.troop.api.handler.ITroopInfoHandler;
 import com.tencent.open.OpenProxy;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.PatternLockUtils;
@@ -24,129 +25,140 @@ import mqq.os.MqqHandler;
 
 public class SubAccountAssistantForward
 {
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext)
+  public static void a(AppInterface paramAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (!paramQQAppInterface.isRunning()) || (paramContext.getApplicationContext() == null)) {
-      return;
+    if ((paramAppInterface != null) && (paramContext != null) && (paramAppInterface.isRunning()))
+    {
+      if (paramContext.getApplicationContext() == null) {
+        return;
+      }
+      paramContext = paramContext.getApplicationContext();
+      ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).loginSuccessInit(paramAppInterface, paramAppInterface.getCurrentAccountUin());
+      ((ITroopInfoHandler)paramAppInterface.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopInfoHandlerName())).a();
+      QvipSpecialCareUtil.a(true);
+      OpenProxy.a().a(paramAppInterface.getCurrentAccountUin());
+      PatternLockUtils.setFirstEnterAfterLoginState(paramContext, paramAppInterface.getCurrentAccountUin(), true);
+      ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getQCircleTabConfig(paramAppInterface, paramContext.getClass());
+      ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getKandianTabConfig(paramAppInterface, paramContext.getClass(), System.currentTimeMillis(), false);
+      paramAppInterface = paramContext.getSharedPreferences(((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getQRCodeKey(), 0).edit();
+      paramAppInterface.clear();
+      paramAppInterface.commit();
     }
-    paramContext = paramContext.getApplicationContext();
-    BusinessUtils.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin());
-    TroopNotificationHelper.a();
-    QvipSpecialCareManager.a(true);
-    OpenProxy.a().a(paramQQAppInterface.getCurrentAccountUin());
-    PatternLockUtils.setFirstEnterAfterLoginState(paramContext, paramQQAppInterface.getCurrentAccountUin(), true);
-    KandianConfigServlet.a(paramQQAppInterface, paramContext.getClass(), System.currentTimeMillis(), false);
-    paramQQAppInterface = paramContext.getSharedPreferences("qrcode", 0).edit();
-    paramQQAppInterface.clear();
-    paramQQAppInterface.commit();
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString)
   {
-    if (paramQQAppInterface == null) {
+    if (paramAppInterface == null) {
       return;
     }
-    paramQQAppInterface = new Intent(paramContext, AssociatedAccountActivity.class);
-    paramQQAppInterface.putExtra("subAccount", paramString);
-    paramContext.startActivity(paramQQAppInterface);
+    paramAppInterface = new Intent(paramContext, AssociatedAccountActivity.class);
+    paramAppInterface.putExtra("subAccount", paramString);
+    paramContext.startActivity(paramAppInterface);
   }
   
   public static void a(AppRuntime paramAppRuntime)
   {
-    if (!(paramAppRuntime instanceof QQAppInterface)) {
-      QLog.e("qqBaseActivity", 1, "closeSubAccountUgActivity, appruntime is not QQAppInterface");
-    }
-    do
+    if (!(paramAppRuntime instanceof AppInterface))
     {
+      QLog.e("qqBaseActivity", 1, "closeSubAccountUgActivity, appruntime is not QQAppInterface");
       return;
-      paramAppRuntime = ((QQAppInterface)paramAppRuntime).getHandler(SubAccountUgActivity.class);
-    } while (paramAppRuntime == null);
-    paramAppRuntime.sendEmptyMessage(1980);
+    }
+    paramAppRuntime = ((AppInterface)paramAppRuntime).getHandler(SubAccountUgActivity.class);
+    if (paramAppRuntime != null) {
+      paramAppRuntime.sendEmptyMessage(1980);
+    }
   }
   
   public static void a(AppRuntime paramAppRuntime, long paramLong)
   {
-    if (!(paramAppRuntime instanceof QQAppInterface)) {
-      QLog.e("qqBaseActivity", 1, "closeSubAccountBindDailog, appruntime is not QQAppInterface");
-    }
-    do
+    if (!(paramAppRuntime instanceof AppInterface))
     {
+      QLog.e("qqBaseActivity", 1, "closeSubAccountBindDailog, appruntime is not QQAppInterface");
       return;
-      paramAppRuntime = ((QQAppInterface)paramAppRuntime).getHandler(SubAccountBindActivity.class);
-    } while (paramAppRuntime == null);
-    paramAppRuntime.sendEmptyMessageDelayed(1990, paramLong);
+    }
+    paramAppRuntime = ((AppInterface)paramAppRuntime).getHandler(SubAccountBindActivity.class);
+    if (paramAppRuntime != null) {
+      paramAppRuntime.sendEmptyMessageDelayed(1990, paramLong);
+    }
   }
   
   public static void a(AppRuntime paramAppRuntime, Context paramContext)
   {
-    if ((paramAppRuntime == null) || (paramContext == null) || (!paramAppRuntime.isRunning()) || (paramContext.getApplicationContext() == null)) {
-      return;
-    }
-    paramContext = paramContext.getApplicationContext();
-    if (QQPlayerService.a())
+    if ((paramAppRuntime != null) && (paramContext != null) && (paramAppRuntime.isRunning()))
     {
-      Intent localIntent = new Intent();
-      localIntent.setAction("qqplayer_exit_action");
-      paramContext.sendBroadcast(localIntent);
+      if (paramContext.getApplicationContext() == null) {
+        return;
+      }
+      paramContext = paramContext.getApplicationContext();
+      if (QQPlayerService.a())
+      {
+        Intent localIntent = new Intent();
+        localIntent.setAction("qqplayer_exit_action");
+        paramContext.sendBroadcast(localIntent);
+      }
+      PatternLockUtils.setFirstEnterAfterLoginState(paramContext, paramAppRuntime.getAccount(), true);
     }
-    PatternLockUtils.setFirstEnterAfterLoginState(paramContext, paramAppRuntime.getAccount(), true);
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, Context paramContext)
+  public static void b(AppInterface paramAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (!paramQQAppInterface.isRunning()) || (paramContext.getApplicationContext() == null)) {}
-    do
+    if ((paramAppInterface != null) && (paramContext != null) && (paramAppInterface.isRunning()))
     {
-      return;
-      paramQQAppInterface = paramContext.getApplicationContext();
-    } while (!QQPlayerService.a());
-    paramContext = new Intent();
-    paramContext.setAction("qqplayer_exit_action");
-    paramQQAppInterface.sendBroadcast(paramContext);
+      if (paramContext.getApplicationContext() == null) {
+        return;
+      }
+      paramAppInterface = paramContext.getApplicationContext();
+      if (((IQQPlayer)QRoute.api(IQQPlayer.class)).isPlaying())
+      {
+        paramContext = new Intent();
+        paramContext.setAction("qqplayer_exit_action");
+        paramAppInterface.sendBroadcast(paramContext);
+      }
+    }
   }
   
   public static void b(AppRuntime paramAppRuntime)
   {
-    if (!(paramAppRuntime instanceof QQAppInterface)) {
-      QLog.e("qqBaseActivity", 1, "closeSubAccountBindActivity, appruntime is not QQAppInterface");
-    }
-    do
+    if (!(paramAppRuntime instanceof AppInterface))
     {
+      QLog.e("qqBaseActivity", 1, "closeSubAccountBindActivity, appruntime is not QQAppInterface");
       return;
-      paramAppRuntime = ((QQAppInterface)paramAppRuntime).getHandler(SubAccountBindActivity.class);
-    } while (paramAppRuntime == null);
-    paramAppRuntime.sendEmptyMessage(1981);
+    }
+    paramAppRuntime = ((AppInterface)paramAppRuntime).getHandler(SubAccountBindActivity.class);
+    if (paramAppRuntime != null) {
+      paramAppRuntime.sendEmptyMessage(1981);
+    }
   }
   
   public static void c(AppRuntime paramAppRuntime)
   {
-    if (!(paramAppRuntime instanceof QQAppInterface)) {
-      QLog.e("qqBaseActivity", 1, "closeSubLoginActivity, appruntime is not QQAppInterface");
-    }
-    do
+    if (!(paramAppRuntime instanceof AppInterface))
     {
+      QLog.e("qqBaseActivity", 1, "closeSubLoginActivity, appruntime is not QQAppInterface");
       return;
-      paramAppRuntime = ((QQAppInterface)paramAppRuntime).getHandler(LoginProgressClazz.class);
-    } while (paramAppRuntime == null);
-    paramAppRuntime.sendEmptyMessage(1982);
+    }
+    paramAppRuntime = ((AppInterface)paramAppRuntime).getHandler(LoginProgressClazz.class);
+    if (paramAppRuntime != null) {
+      paramAppRuntime.sendEmptyMessage(1982);
+    }
   }
   
   public static void d(AppRuntime paramAppRuntime)
   {
-    if (!(paramAppRuntime instanceof QQAppInterface)) {
-      QLog.e("qqBaseActivity", 1, "closePhoneNumActivity, appruntime is not QQAppInterface");
-    }
-    do
+    if (!(paramAppRuntime instanceof AppInterface))
     {
+      QLog.e("qqBaseActivity", 1, "closePhoneNumActivity, appruntime is not QQAppInterface");
       return;
-      paramAppRuntime = ((QQAppInterface)paramAppRuntime).getHandler(((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).getLoginPhoneNumActivityClass());
-    } while (paramAppRuntime == null);
-    paramAppRuntime.sendEmptyMessage(2014);
+    }
+    paramAppRuntime = ((AppInterface)paramAppRuntime).getHandler(((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).getLoginPhoneNumActivityClass());
+    if (paramAppRuntime != null) {
+      paramAppRuntime.sendEmptyMessage(2014);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.SubAccountAssistantForward
  * JD-Core Version:    0.7.0.1
  */

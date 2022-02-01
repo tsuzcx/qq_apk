@@ -5,8 +5,9 @@ import android.content.Context;
 import android.support.annotation.ColorInt;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
+import com.tencent.mobileqq.kandian.biz.video.api.IVideoFeedsHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public abstract class WSGridFeedPlayLikeController
   extends AbsWsUIGroup<stSimpleMetaFeed>
@@ -20,17 +21,17 @@ public abstract class WSGridFeedPlayLikeController
     super(paramContext);
   }
   
-  public void a()
+  protected void a()
   {
     this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560539;
+    return 2131560428;
   }
   
-  public void b()
+  protected void b()
   {
     int i = d();
     if (i > 0)
@@ -39,7 +40,7 @@ public abstract class WSGridFeedPlayLikeController
       this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(c());
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(e());
-      VideoFeedsHelper.a(this.jdField_a_of_type_AndroidWidgetTextView, i, "0");
+      ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).commonSetCountToTextView(this.jdField_a_of_type_AndroidWidgetTextView, i, "0");
       return;
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -48,22 +49,22 @@ public abstract class WSGridFeedPlayLikeController
   
   protected abstract int c();
   
-  public void c() {}
+  protected void c() {}
   
   protected abstract int d();
   
   @ColorInt
   protected abstract int e();
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369399));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369398));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369127));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369126));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedPlayLikeController
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ import android.graphics.Matrix;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.tencent.av.utils.TroopMemberUtil;
 import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.image.JpegExifReader;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -21,10 +21,11 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.helper.GiftPanelHelper;
+import com.tencent.mobileqq.activity.aio.helper.TroopEffectHelper;
+import com.tencent.mobileqq.activity.aio.helper.TroopGiftPanelHelper;
 import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
 import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketConfigManager;
-import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyRedPacketAnimMsg;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BrowserAppInterface;
@@ -39,9 +40,13 @@ import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
 import com.tencent.mobileqq.data.MessageForTroopEffectPic;
 import com.tencent.mobileqq.data.MessageForTroopGift;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.emosm.AIOEmoticonUIHelper;
 import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
 import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 import com.tencent.mobileqq.pic.PicDownloadInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.hb.IQWalletHbApi;
+import com.tencent.mobileqq.qwallet.hb.aio.specify.ISpecifyRedPacketAnimMsg;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
 import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
@@ -79,6 +84,7 @@ import java.util.Observable;
 import java.util.Observer;
 import mqq.app.AppRuntime;
 import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class AIOAnimationControlManager
   extends Observable
@@ -138,53 +144,81 @@ public class AIOAnimationControlManager
     ThreadManager.post(new AIOAnimationControlManager.1(this), 8, null, true);
   }
   
+  public static void a(BaseChatPie paramBaseChatPie, boolean paramBoolean)
+  {
+    if (((paramBaseChatPie.a() instanceof SplashActivity)) && (SplashActivity.currentFragment != 2)) {
+      return;
+    }
+    AIOAnimationControlManager localAIOAnimationControlManager = (AIOAnimationControlManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
+    localAIOAnimationControlManager.a(paramBaseChatPie);
+    if (paramBoolean) {
+      localAIOAnimationControlManager.b();
+    }
+    localAIOAnimationControlManager.a(paramBaseChatPie.a().getSharedPreferences("AIOAnimationControlManager_limit_key", 4));
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.send_gift", 2, "playTroopGiftAnimationPlayList");
+    }
+    paramBaseChatPie.a().post(new AIOAnimationControlManager.17(localAIOAnimationControlManager, paramBoolean));
+  }
+  
   private void a(AIOAnimationControlManager.IAnimationMessage paramIAnimationMessage)
   {
-    int i = 0;
-    Object localObject = (List)this.jdField_b_of_type_JavaUtilHashMap.get(paramIAnimationMessage.getFriendUin());
-    if (localObject == null)
+    List localList = (List)this.jdField_b_of_type_JavaUtilHashMap.get(paramIAnimationMessage.getFriendUin());
+    localObject = localList;
+    if (localList == null)
     {
       localObject = new ArrayList();
       this.jdField_b_of_type_JavaUtilHashMap.put(paramIAnimationMessage.getFriendUin(), localObject);
     }
-    for (;;)
+    try
     {
-      int j;
-      try
+      ((List)localObject).add(paramIAnimationMessage);
+      i1 = paramIAnimationMessage.getLimitType();
+      i = 0;
+      m = 0;
+      j = -1;
+    }
+    finally
+    {
+      for (;;)
       {
-        ((List)localObject).add(paramIAnimationMessage);
-        int m = paramIAnimationMessage.getLimitType();
-        int k = -1;
-        j = 0;
-        if (i < ((List)localObject).size())
+        int i1;
+        int i;
+        int k;
+        for (;;)
         {
-          paramIAnimationMessage = (AIOAnimationControlManager.IAnimationMessage)((List)localObject).get(i);
-          if ((paramIAnimationMessage == null) || (paramIAnimationMessage.getLimitType() != m)) {
-            break label158;
-          }
-          if (k == -1)
-          {
-            k = i;
-            break label164;
-          }
+          throw paramIAnimationMessage;
         }
-        else
-        {
-          if (j > a(m)) {
-            ((List)localObject).remove(k);
-          }
-          return;
-        }
+        int n = m + 1;
+        i += 1;
+        int m = n;
+        int j = k;
       }
-      finally {}
-      break label164;
-      label158:
-      break label168;
-      break;
-      label164:
-      j += 1;
-      label168:
-      i += 1;
+    }
+    if (i < ((List)localObject).size())
+    {
+      paramIAnimationMessage = (AIOAnimationControlManager.IAnimationMessage)((List)localObject).get(i);
+      n = m;
+      k = j;
+      if (paramIAnimationMessage == null) {
+        break label187;
+      }
+      n = m;
+      k = j;
+      if (paramIAnimationMessage.getLimitType() != i1) {
+        break label187;
+      }
+      k = j;
+      if (j == -1) {
+        k = i;
+      }
+    }
+    else
+    {
+      if (m > a(i1)) {
+        ((List)localObject).remove(j);
+      }
+      return;
     }
   }
   
@@ -192,20 +226,24 @@ public class AIOAnimationControlManager
   {
     if ((!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) || (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue() == 4))
     {
-      Object localObject = new File(TroopGiftUtil.a(paramString, paramMessageForDeliverGiftTips.animationType, paramMessageForDeliverGiftTips.isInteract()));
-      Bundle localBundle = new Bundle();
-      localBundle.putString("GiftAnimationId", paramString);
-      localBundle.putString("TroopUin", paramMessageForDeliverGiftTips.frienduin);
-      localBundle.putInt("GiftAnimationType", paramMessageForDeliverGiftTips.animationType);
-      localBundle.putBoolean("GiftIsInteract", paramMessageForDeliverGiftTips.isInteract());
-      localObject = new DownloadTask(TroopGiftUtil.c(paramMessageForDeliverGiftTips), (File)localObject);
-      ((DownloadTask)localObject).jdField_b_of_type_Int = 2;
+      Object localObject2 = new File(TroopGiftUtil.a(paramString, paramMessageForDeliverGiftTips.animationType, paramMessageForDeliverGiftTips.isInteract()));
+      Object localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("GiftAnimationId", paramString);
+      ((Bundle)localObject1).putString("TroopUin", paramMessageForDeliverGiftTips.frienduin);
+      ((Bundle)localObject1).putInt("GiftAnimationType", paramMessageForDeliverGiftTips.animationType);
+      ((Bundle)localObject1).putBoolean("GiftIsInteract", paramMessageForDeliverGiftTips.isInteract());
+      localObject2 = new DownloadTask(TroopGiftUtil.c(paramMessageForDeliverGiftTips), (File)localObject2);
+      ((DownloadTask)localObject2).jdField_b_of_type_Int = 2;
       if ((paramMessageForDeliverGiftTips instanceof MessageForTroopGift)) {
         ((MessageForTroopGift)paramMessageForDeliverGiftTips).isLoading = true;
       }
-      a().a((DownloadTask)localObject, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, localBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAnimationControlManager", 2, "start Download PackageId:" + TroopGiftUtil.b(paramMessageForDeliverGiftTips));
+      a().startDownload((DownloadTask)localObject2, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, (Bundle)localObject1);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("start Download PackageId:");
+        ((StringBuilder)localObject1).append(TroopGiftUtil.b(paramMessageForDeliverGiftTips));
+        QLog.d("AIOAnimationControlManager", 2, ((StringBuilder)localObject1).toString());
       }
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(2));
     }
@@ -214,71 +252,73 @@ public class AIOAnimationControlManager
   private void a(String paramString1, String paramString2)
   {
     List localList = (List)this.jdField_b_of_type_JavaUtilHashMap.get(paramString1);
-    if ((paramString2 == null) || (localList == null)) {
-      return;
-    }
-    int i = 0;
-    label25:
-    if (i < localList.size())
+    if (paramString2 != null)
     {
-      paramString1 = (AIOAnimationControlManager.IAnimationMessage)localList.get(i);
-      if (!(paramString1 instanceof MessageForDeliverGiftTips)) {
-        break label87;
+      if (localList == null) {
+        return;
       }
-      paramString1 = TroopGiftUtil.b((MessageForDeliverGiftTips)paramString1);
-    }
-    for (;;)
-    {
-      if (paramString2.equals(paramString1)) {
-        localList.remove(i);
-      }
-      i += 1;
-      break label25;
-      break;
-      label87:
-      if ((paramString1 instanceof MessageForTroopEffectPic)) {
-        paramString1 = ((MessageForTroopEffectPic)paramString1).effectId + "";
-      } else {
+      int i = 0;
+      while (i < localList.size())
+      {
+        AIOAnimationControlManager.IAnimationMessage localIAnimationMessage = (AIOAnimationControlManager.IAnimationMessage)localList.get(i);
+        boolean bool = localIAnimationMessage instanceof MessageForDeliverGiftTips;
         paramString1 = "";
+        if (bool)
+        {
+          paramString1 = TroopGiftUtil.b((MessageForDeliverGiftTips)localIAnimationMessage);
+        }
+        else if ((localIAnimationMessage instanceof MessageForTroopEffectPic))
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append(((MessageForTroopEffectPic)localIAnimationMessage).effectId);
+          paramString1.append("");
+          paramString1 = paramString1.toString();
+        }
+        if (paramString2.equals(paramString1)) {
+          localList.remove(i);
+        }
+        i += 1;
       }
     }
   }
   
   public static boolean a(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Object paramObject)
   {
-    if ((paramObject instanceof MessageForDeliverGiftTips)) {
-      if (!((MessageForDeliverGiftTips)paramObject).isInteract()) {
-        paramBaseChatPie.n(false);
-      }
-    }
-    for (;;)
+    if ((paramObject instanceof MessageForDeliverGiftTips))
     {
-      if (SpecifyRedPacketAnimMsg.a(paramObject, paramQQAppInterface)) {
-        paramBaseChatPie.n(false);
-      }
-      return false;
-      if (((paramBaseChatPie.a() instanceof SplashActivity)) && (SplashActivity.currentFragment != 2)) {
-        return true;
-      }
-      ((AIOAnimationControlManager)paramQQAppInterface.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER)).a(paramBaseChatPie);
-      continue;
-      if ((paramObject instanceof MessageForArkApp))
+      if (!((MessageForDeliverGiftTips)paramObject).isInteract())
       {
-        MessageForArkApp localMessageForArkApp = (MessageForArkApp)paramObject;
-        if ((localMessageForArkApp.ark_app_message != null) && (localMessageForArkApp.ark_app_message.appName.equals("com.tencent.qzone.qungift"))) {
-          paramBaseChatPie.n(false);
+        a(paramBaseChatPie, false);
+      }
+      else
+      {
+        if (((paramBaseChatPie.a() instanceof SplashActivity)) && (SplashActivity.currentFragment != 2)) {
+          return true;
         }
+        ((AIOAnimationControlManager)paramQQAppInterface.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER)).a(paramBaseChatPie);
       }
     }
+    else if ((paramObject instanceof MessageForArkApp))
+    {
+      MessageForArkApp localMessageForArkApp = (MessageForArkApp)paramObject;
+      if ((localMessageForArkApp.ark_app_message != null) && (localMessageForArkApp.ark_app_message.appName.equals("com.tencent.qzone.qungift"))) {
+        a(paramBaseChatPie, false);
+      }
+    }
+    if (((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).specifyRedPacketIsValidAnim(paramObject, paramQQAppInterface)) {
+      a(paramBaseChatPie, false);
+    }
+    return false;
   }
   
   private void b(String paramString1, String paramString2)
   {
     paramString1 = (List)this.jdField_c_of_type_JavaUtilHashMap.get(paramString1);
-    if ((paramString2 == null) || (paramString1 == null)) {}
-    for (;;)
+    if (paramString2 != null)
     {
-      return;
+      if (paramString1 == null) {
+        return;
+      }
       int i = 0;
       while (i < paramString1.size())
       {
@@ -297,60 +337,52 @@ public class AIOAnimationControlManager
       ((File)localObject).mkdirs();
     }
     File[] arrayOfFile = ((File)localObject).listFiles();
-    int j;
-    int i;
-    boolean bool;
     if (arrayOfFile != null)
     {
-      j = 0;
-      if (j < arrayOfFile.length) {
-        if ((arrayOfFile[j].exists()) && (arrayOfFile[j].isDirectory()))
+      int i = 0;
+      while (i < arrayOfFile.length)
+      {
+        if ((arrayOfFile[i].exists()) && (arrayOfFile[i].isDirectory()))
         {
-          localObject = arrayOfFile[j].getName();
-          if (!arrayOfFile[j].getName().endsWith("_HD")) {
-            break label180;
+          String str = arrayOfFile[i].getName();
+          boolean bool = arrayOfFile[i].getName().endsWith("_HD");
+          int j = 1;
+          if (bool) {
+            localObject = str.substring(0, str.length() - 3);
           }
-          localObject = ((String)localObject).substring(0, ((String)localObject).length() - 3);
-          i = 0;
-          bool = false;
+          do
+          {
+            bool = false;
+            j = 0;
+            break;
+            if (arrayOfFile[i].getName().endsWith("_V"))
+            {
+              localObject = str.substring(0, str.length() - 2);
+              bool = false;
+              break;
+            }
+            localObject = str;
+          } while (!arrayOfFile[i].getName().endsWith("_NEW"));
+          localObject = str.substring(0, str.length() - 4);
+          bool = true;
+          if (TroopGiftUtil.a((String)localObject, j, bool))
+          {
+            this.jdField_a_of_type_JavaUtilHashMap.put(localObject, Integer.valueOf(3));
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("Package Downloaded:");
+              ((StringBuilder)localObject).append(arrayOfFile[i].getName());
+              QLog.d("AIOAnimationControlManager", 2, ((StringBuilder)localObject).toString());
+            }
+          }
+          else
+          {
+            FileUtils.deleteDirectory(arrayOfFile[i].getAbsolutePath());
+          }
         }
+        i += 1;
       }
-    }
-    for (;;)
-    {
-      label111:
-      if (TroopGiftUtil.a((String)localObject, i, bool))
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.put(localObject, Integer.valueOf(3));
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOAnimationControlManager", 2, "Package Downloaded:" + arrayOfFile[j].getName());
-        }
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        label180:
-        if (arrayOfFile[j].getName().endsWith("_V"))
-        {
-          localObject = ((String)localObject).substring(0, ((String)localObject).length() - 2);
-          i = 1;
-          bool = false;
-          break label111;
-        }
-        if (!arrayOfFile[j].getName().endsWith("_NEW")) {
-          break label270;
-        }
-        localObject = ((String)localObject).substring(0, ((String)localObject).length() - 4);
-        i = 1;
-        bool = true;
-        break label111;
-        FileUtils.a(arrayOfFile[j].getAbsolutePath());
-      }
-      return;
-      label270:
-      i = 0;
-      bool = false;
     }
   }
   
@@ -359,8 +391,8 @@ public class AIOAnimationControlManager
     if (paramInt == 0) {
       return 1;
     }
-    if (1 == paramInt) {
-      return RedPacketConfigManager.a().a();
+    if ((1 == paramInt) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof BaseQQAppInterface))) {
+      return ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getSpecifyHbAniMaxSize((BaseQQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
     }
     return 0;
   }
@@ -377,58 +409,63 @@ public class AIOAnimationControlManager
   
   protected void a()
   {
-    int i = 0;
     Object localObject = new File(TroopGiftUtil.a(0)).getParentFile();
     if (((File)localObject).exists())
     {
       localObject = ((File)localObject).listFiles();
-      if (localObject == null) {}
-    }
-    for (;;)
-    {
-      if (i < localObject.length)
+      if (localObject != null)
       {
-        if (localObject[i].exists())
+        int i = 0;
+        while (i < localObject.length)
         {
-          String str = localObject[i].getName();
-          try
+          if (localObject[i].exists())
           {
-            str = str.substring(0, str.indexOf(".mp4"));
-            if (TroopGiftUtil.a(Integer.parseInt(str))) {
-              this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(3));
-            } else {
-              localObject[i].delete();
+            String str = localObject[i].getName();
+            try
+            {
+              str = str.substring(0, str.indexOf(".mp4"));
+              if (TroopGiftUtil.a(Integer.parseInt(str))) {
+                this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(3));
+              } else {
+                localObject[i].delete();
+              }
+            }
+            catch (Exception localException)
+            {
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("checkPicEffectPackageIdState: ");
+                localStringBuilder.append(QLog.getStackTraceString(localException));
+                QLog.e("AIOAnimationControlManager", 2, localStringBuilder.toString());
+              }
             }
           }
-          catch (Exception localException)
-          {
-            if (!QLog.isColorLevel()) {
-              break label144;
-            }
-          }
-          QLog.e("AIOAnimationControlManager", 2, "checkPicEffectPackageIdState: " + QLog.getStackTraceString(localException));
+          i += 1;
         }
       }
-      else {
-        return;
-      }
-      label144:
-      i += 1;
     }
   }
   
   public void a(int paramInt, String paramString, MessageForTroopEffectPic paramMessageForTroopEffectPic)
   {
-    paramMessageForTroopEffectPic = "" + paramInt;
-    if ((!this.jdField_a_of_type_JavaUtilHashMap.containsKey("" + paramInt)) || (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramMessageForTroopEffectPic)).intValue() == 4))
+    paramMessageForTroopEffectPic = new StringBuilder();
+    paramMessageForTroopEffectPic.append("");
+    paramMessageForTroopEffectPic.append(paramInt);
+    paramMessageForTroopEffectPic = paramMessageForTroopEffectPic.toString();
+    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(paramInt);
+    if ((!((HashMap)localObject1).containsKey(((StringBuilder)localObject2).toString())) || (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramMessageForTroopEffectPic)).intValue() == 4))
     {
-      File localFile = new File(TroopGiftUtil.a(paramInt));
-      Bundle localBundle = new Bundle();
-      localBundle.putString("GiftAnimationId", paramMessageForTroopEffectPic);
-      localBundle.putString("TroopUin", paramString);
-      paramString = new DownloadTask(TroopGiftUtil.b(paramInt), localFile);
+      localObject2 = new File(TroopGiftUtil.a(paramInt));
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("GiftAnimationId", paramMessageForTroopEffectPic);
+      ((Bundle)localObject1).putString("TroopUin", paramString);
+      paramString = new DownloadTask(TroopGiftUtil.b(paramInt), (File)localObject2);
       paramString.jdField_b_of_type_Int = 2;
-      a().a(paramString, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, localBundle);
+      a().startDownload(paramString, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, (Bundle)localObject1);
       this.jdField_a_of_type_JavaUtilHashMap.put(paramMessageForTroopEffectPic, Integer.valueOf(2));
     }
   }
@@ -452,37 +489,41 @@ public class AIOAnimationControlManager
   
   public void a(BaseChatPie paramBaseChatPie)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAnimationControlManager", 2, "set TroopChatPie ,troopUin:" + paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("set TroopChatPie ,troopUin:");
+      localStringBuilder.append(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      QLog.d("AIOAnimationControlManager", 2, localStringBuilder.toString());
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != paramBaseChatPie)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
       addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController = paramBaseChatPie.a();
-      if (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof TroopChatPie)) {
-        break label114;
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController = ((GiftPanelHelper)paramBaseChatPie.a(136)).a();
+      paramBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+      if ((paramBaseChatPie instanceof TroopChatPie))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(1);
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController = ((TroopGiftPanelHelper)((TroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).a(136)).a();
+        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController = ((TroopEffectHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(134)).a();
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(1);
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController = ((TroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).a();
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController = ((TroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).a();
-    }
-    label114:
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof HotChatPie))
+      if ((paramBaseChatPie instanceof HotChatPie))
       {
         this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(4);
         return;
       }
-    } while (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof NearbyChatPie));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(8);
-      return;
+      if ((paramBaseChatPie instanceof NearbyChatPie))
+      {
+        if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(8);
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(6);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(6);
   }
   
   public void a(TroopGiftData paramTroopGiftData, boolean paramBoolean)
@@ -490,25 +531,29 @@ public class AIOAnimationControlManager
     if (QLog.isColorLevel()) {
       QLog.d("AIOAnimationControlManager", 2, "downloadPAGAnimation");
     }
-    if (paramTroopGiftData.isResInvalid()) {
-      QLog.e("AIOAnimationControlManager", 1, "downloadPAGAnimation: gift pag url is invalid. gift id: " + paramTroopGiftData.giftData.dataForClient.giftId);
-    }
-    String[] arrayOfString;
-    do
+    if (paramTroopGiftData.isResInvalid())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("downloadPAGAnimation: gift pag url is invalid. gift id: ");
+      ((StringBuilder)localObject).append(paramTroopGiftData.giftData.dataForClient.giftId);
+      QLog.e("AIOAnimationControlManager", 1, ((StringBuilder)localObject).toString());
       return;
-      arrayOfString = new String[2];
-      arrayOfString[0] = paramTroopGiftData.giftData.dataForClient.continueAnimationAnd;
-      arrayOfString[1] = paramTroopGiftData.giftData.dataForClient.giftResourceAnd;
-      if (!TroopGiftResManager.a.a(arrayOfString)) {
-        break;
-      }
+    }
+    Object localObject = new String[2];
+    localObject[0] = paramTroopGiftData.giftData.dataForClient.continueAnimationAnd;
+    localObject[1] = paramTroopGiftData.giftData.dataForClient.giftResourceAnd;
+    if (TroopGiftResManager.a.a((String[])localObject))
+    {
       a(paramTroopGiftData);
-    } while (!paramBoolean);
-    f();
-    return;
-    this.jdField_a_of_type_Int = 3;
-    TroopGiftResManager.a.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext(), arrayOfString, new AIOAnimationControlManager.6(this, paramTroopGiftData, paramBoolean));
+      if (paramBoolean) {
+        f();
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Int = 3;
+      TroopGiftResManager.a.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext(), (String[])localObject, new AIOAnimationControlManager.6(this, paramTroopGiftData, paramBoolean));
+    }
   }
   
   public void a(String paramString)
@@ -538,294 +583,330 @@ public class AIOAnimationControlManager
   
   public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) && (this.jdField_a_of_type_AndroidAppActivity == null) && (!jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) {}
-    Object localObject3;
-    Object localObject5;
-    label398:
-    label794:
-    label932:
-    label1252:
-    label1258:
-    label1263:
-    String str;
-    label916:
-    label1340:
-    label1873:
-    do
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) && (this.jdField_a_of_type_AndroidAppActivity == null) && (!jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) {
+      return;
+    }
+    this.jdField_c_of_type_Boolean = paramBoolean;
+    Object localObject1;
+    if (jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))
     {
-      Object localObject4;
-      do
+      localObject1 = this.jdField_b_of_type_JavaLangString;
+    }
+    else
+    {
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+      if (localObject1 != null) {
+        localObject1 = ((BaseChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      } else {
+        localObject1 = this.jdField_b_of_type_JavaLangString;
+      }
+    }
+    Object localObject5 = (List)this.jdField_c_of_type_JavaUtilHashMap.get(localObject1);
+    Object localObject4 = (List)this.jdField_b_of_type_JavaUtilHashMap.get(localObject1);
+    if ((!b()) && (TroopGiftUtil.a((List)localObject5))) {
+      return;
+    }
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if (localObject3 != null) {
+      localObject3 = (AIOEmoticonUIHelper)((BaseChatPie)localObject3).a(105);
+    } else {
+      localObject3 = null;
+    }
+    Object localObject6;
+    Object localObject7;
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController != null) && (!TroopGiftUtil.a((List)localObject5)))
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.b()) && (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a())) {
+        return;
+      }
+      this.jdField_a_of_type_Int = 2;
+      localObject6 = (MessageForDeliverGiftTips)((List)localObject5).get(0);
+      localObject7 = TroopGiftUtil.b((MessageForDeliverGiftTips)localObject6);
+      if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject7)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject7)).intValue() == 3))
       {
-        do
+        if ((localObject3 != null) && (((AIOEmoticonUIHelper)localObject3).a() != null) && (((AIOEmoticonUIHelper)localObject3).a().a != null) && (((AIOEmoticonUIHelper)localObject3).a().a.a()))
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  this.jdField_c_of_type_Boolean = paramBoolean;
-                  if (!jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) {
-                    break;
-                  }
-                  localObject1 = this.jdField_b_of_type_JavaLangString;
-                  localObject3 = (List)this.jdField_c_of_type_JavaUtilHashMap.get(localObject1);
-                  localObject4 = (List)this.jdField_b_of_type_JavaUtilHashMap.get(localObject1);
-                } while ((!b()) && (TroopGiftUtil.a((List)localObject3)));
-                if ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController == null) || (TroopGiftUtil.a((List)localObject3))) {
-                  break label398;
-                }
-              } while ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.b()) && (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a()));
-              this.jdField_a_of_type_Int = 2;
-              localObject5 = (MessageForDeliverGiftTips)((List)localObject3).get(0);
-              localObject6 = TroopGiftUtil.b((MessageForDeliverGiftTips)localObject5);
-              if ((!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject6)) || (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject6)).intValue() != 3)) {
-                break;
-              }
-              if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a.a()))
-              {
-                this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AIOAnimationControlManager.7(this, paramBoolean), 500L);
-                return;
-                if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {}
-                for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;; localObject1 = this.jdField_b_of_type_JavaLangString) {
-                  break;
-                }
-              }
-            } while (((MessageForDeliverGiftTips)localObject5).interactState == 2);
-            ((TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a(((MessageForDeliverGiftTips)localObject5).frienduin, ((MessageForDeliverGiftTips)localObject5).interactId, ((MessageForDeliverGiftTips)localObject5).giftId, new AIOAnimationControlManager.8(this, (MessageForDeliverGiftTips)localObject5, (List)localObject3, paramBoolean, (List)localObject4, (String)localObject6));
-            return;
-            if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject6)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject6)).intValue() == 4))
-            {
-              b((String)localObject1, (String)localObject6);
-              this.jdField_a_of_type_Int = 1;
-              a(paramBoolean);
-              return;
-            }
-            this.jdField_a_of_type_Int = 3;
-            return;
-          } while ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController == null) || (TroopGiftUtil.a((List)localObject4)));
-          this.jdField_a_of_type_Int = 2;
-          localObject3 = (AIOAnimationControlManager.IAnimationMessage)((List)localObject4).get(0);
-          if ((localObject3 instanceof TroopGiftData))
-          {
-            QLog.d("AIOAnimationControlManager", 1, "animationMessage instanceof TroopGiftData");
-            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a((TroopGiftData)localObject3, new AIOAnimationControlManager.9(this, (AIOAnimationControlManager.IAnimationMessage)localObject3));
-          }
-          if (!(localObject3 instanceof MessageForDeliverGiftTips)) {
-            break label1340;
-          }
-          localObject5 = (MessageForDeliverGiftTips)localObject3;
-          if ((((MessageForDeliverGiftTips)localObject5).isToAll()) && (!((MessageForDeliverGiftTips)localObject5).hasFetchButFailed))
-          {
-            localObject3 = ((TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a((String)localObject1, ((MessageForDeliverGiftTips)localObject5).bagId, new AIOAnimationControlManager.10(this, (MessageForDeliverGiftTips)localObject5, (String)localObject1, paramBoolean));
-            if (localObject3 == null)
-            {
-              this.jdField_a_of_type_Int = 1;
-              return;
-            }
-            if ((!((TroopGiftBagInfo)localObject3).hasGrab()) || (((TroopGiftBagInfo)localObject3).myGrabResult == null)) {
-              break label794;
-            }
-            ((MessageForDeliverGiftTips)localObject5).showButton = false;
-            ((MessageForDeliverGiftTips)localObject5).resultText = ((TroopGiftBagInfo)localObject3).myGrabResult.jdField_a_of_type_JavaLangString;
-            ((MessageForDeliverGiftTips)localObject5).resultType = 0;
-          }
-          for (;;)
-          {
-            if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-              ((MessageForDeliverGiftTips)localObject5).senderName = ContactUtils.g((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject1, "" + ((MessageForDeliverGiftTips)localObject5).senderUin);
-            }
-            localObject6 = TroopGiftUtil.b((MessageForDeliverGiftTips)localObject5);
-            if ((!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject6)) || (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject6)).intValue() != 3)) {
-              break label1284;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener);
-            if (QLog.isColorLevel()) {
-              QLog.d("AIOAnimationControlManager", 2, "Playing! playMaigface id:" + TroopGiftUtil.b((MessageForDeliverGiftTips)localObject5));
-            }
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a() == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a.a())) {
-              break;
-            }
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AIOAnimationControlManager.11(this, paramBoolean), 500L);
-            return;
-            if (((TroopGiftBagInfo)localObject3).myGrabResult != null)
-            {
-              ((MessageForDeliverGiftTips)localObject5).showButton = false;
-              ((MessageForDeliverGiftTips)localObject5).resultText = ((TroopGiftBagInfo)localObject3).myGrabResult.jdField_a_of_type_JavaLangString;
-              ((MessageForDeliverGiftTips)localObject5).resultType = 1;
-            }
-            else
-            {
-              ((MessageForDeliverGiftTips)localObject5).showButton = true;
-            }
-          }
-          if (RobotResourcesManager.a().a()) {
-            RobotResourcesManager.a().b();
-          }
-          if (TextUtils.isEmpty(((MessageForDeliverGiftTips)localObject5).interactId)) {
-            break;
-          }
-          ((List)localObject4).remove(localObject5);
-        } while (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController == null);
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a((MessageForDeliverGiftTips)localObject5, (String)localObject6, false, new AIOAnimationControlManager.12(this, paramBoolean));
-        return;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
-        {
-          localObject3 = "0";
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {
-            break label1252;
-          }
-          localObject4 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          ReportController.b((AppRuntime)localObject4, "P_CliOper", "Grp_flower", "", "cartoon", "show", 0, 0, (String)localObject1, (String)localObject6, (String)localObject3, "" + TroopMemberUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), (String)localObject1));
-          if (QLog.isColorLevel())
-          {
-            localObject1 = new StringBuilder().append("Check isLimitGiftAnim: isEnterAIO:").append(paramBoolean).append(", isToMeGift:");
-            if (((MessageForDeliverGiftTips)localObject5).receiverUin == this.jdField_a_of_type_ComTencentCommonAppAppInterface.getLongAccountUin()) {
-              break label1258;
-            }
-          }
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AIOAnimationControlManager.7(this, paramBoolean), 500L);
+          return;
         }
-        for (boolean bool = true;; bool = false)
-        {
-          QLog.d("AIOAnimationControlManager", 2, bool + ", count:" + this.jdField_c_of_type_Int + ", time:" + this.jdField_a_of_type_Long);
-          if ((!paramBoolean) || (((MessageForDeliverGiftTips)localObject5).receiverUin == this.jdField_a_of_type_ComTencentCommonAppAppInterface.getLongAccountUin()) || (!a(true))) {
-            break label1263;
-          }
-          if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-            break;
-          }
-          localObject1 = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-          localObject3 = ((QQAppInterface)localObject1).getProxyManager().a().a(false).iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = (RecentUser)((Iterator)localObject3).next();
-            if (((RecentUser)localObject4).msgType == 7)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("AIOAnimationControlManager", 2, "limitGiftAnim setRead RecentUser:" + localObject4);
-              }
-              ((QQAppInterface)localObject1).getMessageFacade().a().a(((RecentUser)localObject4).uin, ((RecentUser)localObject4).getType(), true, false);
-            }
-          }
-          break;
-          localObject3 = "1";
-          break label916;
-          localObject4 = null;
-          break label932;
+        if (((MessageForDeliverGiftTips)localObject6).interactState != 2) {
+          ((TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a(((MessageForDeliverGiftTips)localObject6).frienduin, ((MessageForDeliverGiftTips)localObject6).interactId, ((MessageForDeliverGiftTips)localObject6).giftId, new AIOAnimationControlManager.8(this, (MessageForDeliverGiftTips)localObject6, (List)localObject5, paramBoolean, (List)localObject4, (String)localObject7));
         }
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a((MessageForDeliverGiftTips)localObject5);
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$OnCleanAnimationListener = this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$OnCleanAnimationListener;
-        return;
-        if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject6)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject6)).intValue() == 4))
+      }
+      else
+      {
+        if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject7)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject7)).intValue() == 4))
         {
-          a((String)localObject1, (String)localObject6);
+          b((String)localObject1, (String)localObject7);
           this.jdField_a_of_type_Int = 1;
           a(paramBoolean);
           return;
         }
         this.jdField_a_of_type_Int = 3;
-        return;
-        if ((localObject3 instanceof SpecifyRedPacketAnimMsg))
+      }
+    }
+    else if ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController != null) && (!TroopGiftUtil.a((List)localObject4)))
+    {
+      this.jdField_a_of_type_Int = 2;
+      localObject5 = (AIOAnimationControlManager.IAnimationMessage)((List)localObject4).get(0);
+      if ((localObject5 instanceof TroopGiftData))
+      {
+        QLog.d("AIOAnimationControlManager", 1, "animationMessage instanceof TroopGiftData");
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a((TroopGiftData)localObject5, new AIOAnimationControlManager.9(this, (AIOAnimationControlManager.IAnimationMessage)localObject5));
+      }
+      if ((localObject5 instanceof MessageForDeliverGiftTips))
+      {
+        localObject5 = (MessageForDeliverGiftTips)localObject5;
+        if ((((MessageForDeliverGiftTips)localObject5).isToAll()) && (!((MessageForDeliverGiftTips)localObject5).hasFetchButFailed))
         {
-          localObject1 = (SpecifyRedPacketAnimMsg)localObject3;
-          this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a((SpecifyRedPacketAnimMsg)localObject1);
-          ((SpecifyRedPacketAnimMsg)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, new AIOAnimationControlManager.13(this, paramBoolean));
-          ((List)localObject4).remove(localObject3);
+          localObject6 = ((TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a((String)localObject1, ((MessageForDeliverGiftTips)localObject5).bagId, new AIOAnimationControlManager.10(this, (MessageForDeliverGiftTips)localObject5, (String)localObject1, paramBoolean));
+          if (localObject6 == null)
+          {
+            this.jdField_a_of_type_Int = 1;
+            return;
+          }
+          if ((((TroopGiftBagInfo)localObject6).hasGrab()) && (((TroopGiftBagInfo)localObject6).myGrabResult != null))
+          {
+            ((MessageForDeliverGiftTips)localObject5).showButton = false;
+            ((MessageForDeliverGiftTips)localObject5).resultText = ((TroopGiftBagInfo)localObject6).myGrabResult.jdField_a_of_type_JavaLangString;
+            ((MessageForDeliverGiftTips)localObject5).resultType = 0;
+          }
+          else if (((TroopGiftBagInfo)localObject6).myGrabResult != null)
+          {
+            ((MessageForDeliverGiftTips)localObject5).showButton = false;
+            ((MessageForDeliverGiftTips)localObject5).resultText = ((TroopGiftBagInfo)localObject6).myGrabResult.jdField_a_of_type_JavaLangString;
+            ((MessageForDeliverGiftTips)localObject5).resultType = 1;
+          }
+          else
+          {
+            ((MessageForDeliverGiftTips)localObject5).showButton = true;
+          }
+          localObject6 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+          if ((localObject6 instanceof QQAppInterface))
+          {
+            localObject6 = (QQAppInterface)localObject6;
+            localObject7 = new StringBuilder();
+            ((StringBuilder)localObject7).append("");
+            ((StringBuilder)localObject7).append(((MessageForDeliverGiftTips)localObject5).senderUin);
+            ((MessageForDeliverGiftTips)localObject5).senderName = ContactUtils.b((AppInterface)localObject6, (String)localObject1, ((StringBuilder)localObject7).toString());
+          }
+        }
+        localObject6 = TroopGiftUtil.b((MessageForDeliverGiftTips)localObject5);
+        if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject6)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject6)).intValue() == 3))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener);
+          if (QLog.isColorLevel())
+          {
+            localObject7 = new StringBuilder();
+            ((StringBuilder)localObject7).append("Playing! playMaigface id:");
+            ((StringBuilder)localObject7).append(TroopGiftUtil.b((MessageForDeliverGiftTips)localObject5));
+            QLog.d("AIOAnimationControlManager", 2, ((StringBuilder)localObject7).toString());
+          }
+          if ((localObject3 != null) && (((AIOEmoticonUIHelper)localObject3).a() != null) && (((AIOEmoticonUIHelper)localObject3).a().a != null) && (((AIOEmoticonUIHelper)localObject3).a().a.a()))
+          {
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AIOAnimationControlManager.11(this, paramBoolean), 500L);
+            return;
+          }
+          if (RobotResourcesManager.a().a()) {
+            RobotResourcesManager.a().b();
+          }
+          if (!TextUtils.isEmpty(((MessageForDeliverGiftTips)localObject5).interactId))
+          {
+            ((List)localObject4).remove(localObject5);
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController;
+            if (localObject1 != null) {
+              ((TroopInteractGiftAnimationController)localObject1).a((MessageForDeliverGiftTips)localObject5, (String)localObject6, false, new AIOAnimationControlManager.12(this, paramBoolean));
+            }
+          }
+          else
+          {
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
+              localObject3 = "0";
+            } else {
+              localObject3 = "1";
+            }
+            localObject4 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+            if (localObject4 != null) {
+              localObject4 = ((BaseChatPie)localObject4).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+            } else {
+              localObject4 = null;
+            }
+            localObject7 = new StringBuilder();
+            ((StringBuilder)localObject7).append("");
+            AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+            ((StringBuilder)localObject7).append(TroopMemberUtil.a(localAppInterface, localAppInterface.getCurrentAccountUin(), (String)localObject1));
+            ReportController.b((AppRuntime)localObject4, "P_CliOper", "Grp_flower", "", "cartoon", "show", 0, 0, (String)localObject1, (String)localObject6, (String)localObject3, ((StringBuilder)localObject7).toString());
+            if (QLog.isColorLevel())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("Check isLimitGiftAnim: isEnterAIO:");
+              ((StringBuilder)localObject1).append(paramBoolean);
+              ((StringBuilder)localObject1).append(", isToMeGift:");
+              boolean bool;
+              if (((MessageForDeliverGiftTips)localObject5).receiverUin != this.jdField_a_of_type_ComTencentCommonAppAppInterface.getLongAccountUin()) {
+                bool = true;
+              } else {
+                bool = false;
+              }
+              ((StringBuilder)localObject1).append(bool);
+              ((StringBuilder)localObject1).append(", count:");
+              ((StringBuilder)localObject1).append(this.jdField_c_of_type_Int);
+              ((StringBuilder)localObject1).append(", time:");
+              ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+              QLog.d("AIOAnimationControlManager", 2, ((StringBuilder)localObject1).toString());
+            }
+            if ((paramBoolean) && (((MessageForDeliverGiftTips)localObject5).receiverUin != this.jdField_a_of_type_ComTencentCommonAppAppInterface.getLongAccountUin()) && (a(true)))
+            {
+              localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+              if ((localObject1 instanceof QQAppInterface))
+              {
+                localObject1 = (QQAppInterface)localObject1;
+                localObject3 = ((QQAppInterface)localObject1).getProxyManager().a().a(false).iterator();
+                while (((Iterator)localObject3).hasNext())
+                {
+                  localObject4 = (RecentUser)((Iterator)localObject3).next();
+                  if (((RecentUser)localObject4).msgType == 7)
+                  {
+                    if (QLog.isColorLevel())
+                    {
+                      localObject5 = new StringBuilder();
+                      ((StringBuilder)localObject5).append("limitGiftAnim setRead RecentUser:");
+                      ((StringBuilder)localObject5).append(localObject4);
+                      QLog.d("AIOAnimationControlManager", 2, ((StringBuilder)localObject5).toString());
+                    }
+                    ((QQAppInterface)localObject1).getMessageFacade().a().a(((RecentUser)localObject4).uin, ((RecentUser)localObject4).getType(), true, false);
+                  }
+                }
+              }
+              return;
+            }
+            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a((MessageForDeliverGiftTips)localObject5);
+            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$OnCleanAnimationListener = this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$OnCleanAnimationListener;
+          }
+        }
+        else
+        {
+          if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject6)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject6)).intValue() == 4))
+          {
+            a((String)localObject1, (String)localObject6);
+            this.jdField_a_of_type_Int = 1;
+            a(paramBoolean);
+            return;
+          }
+          this.jdField_a_of_type_Int = 3;
+        }
+      }
+      else
+      {
+        if ((localObject5 instanceof ISpecifyRedPacketAnimMsg))
+        {
+          localObject1 = (ISpecifyRedPacketAnimMsg)localObject5;
+          this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a((ISpecifyRedPacketAnimMsg)localObject1);
+          ((ISpecifyRedPacketAnimMsg)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, new AIOAnimationControlManager.13(this, paramBoolean));
+          ((List)localObject4).remove(localObject5);
           return;
         }
-      } while ((!(localObject3 instanceof MessageForTroopEffectPic)) || (this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController == null));
-      localObject5 = (MessageForTroopEffectPic)localObject3;
-      localObject3 = "" + ((MessageForTroopEffectPic)localObject5).effectId;
-      if ((((MessageForTroopEffectPic)localObject5).effectId < 40003) || (((MessageForTroopEffectPic)localObject5).effectId > 40005)) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(localObject3, Integer.valueOf(3));
-      }
-      if ((!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject3)) || (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject3)).intValue() != 3) || (!TroopGiftUtil.a(((MessageForTroopEffectPic)localObject5).effectId))) {
-        break;
-      }
-      Object localObject1 = ((MessageForTroopEffectPic)localObject5).getPicDownloadInfo();
-      ((PicDownloadInfo)localObject1).e = "chatimg";
-      Object localObject6 = ((PicDownloadInfo)localObject1).c();
-      File localFile = new File((String)localObject6);
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localObject3 = null;
-      int i;
-      switch (JpegExifReader.readOrientation((String)localObject6))
-      {
-      case 4: 
-      case 5: 
-      case 7: 
-      default: 
-        i = 0;
-      }
-      for (;;)
-      {
-        localObject1 = localObject3;
-        try
+        if (((localObject5 instanceof MessageForTroopEffectPic)) && (this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController != null))
         {
-          if (localFile.exists())
+          localObject3 = (MessageForTroopEffectPic)localObject5;
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("");
+          ((StringBuilder)localObject5).append(((MessageForTroopEffectPic)localObject3).effectId);
+          localObject5 = ((StringBuilder)localObject5).toString();
+          if ((((MessageForTroopEffectPic)localObject3).effectId < 40003) || (((MessageForTroopEffectPic)localObject3).effectId > 40005)) {
+            this.jdField_a_of_type_JavaUtilHashMap.put(localObject5, Integer.valueOf(3));
+          }
+          Object localObject2;
+          if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject5)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject5)).intValue() == 3) && (TroopGiftUtil.a(((MessageForTroopEffectPic)localObject3).effectId)))
           {
-            localObject1 = new BufferedInputStream(new FileInputStream(localFile), 2048);
-            localOptions.inSampleSize = ((int)ImageUtil.a((InputStream)localObject1, 720, 1080));
-            ((BufferedInputStream)localObject1).close();
-            localObject6 = ImageUtil.a((String)localObject6, localOptions);
-            localObject1 = localObject3;
-            if (localObject6 != null)
+            localObject1 = ((MessageForTroopEffectPic)localObject3).getPicDownloadInfo();
+            ((PicDownloadInfo)localObject1).e = "chatimg";
+            localObject1 = ((PicDownloadInfo)localObject1).c();
+            localObject6 = new File((String)localObject1);
+            localObject5 = new BitmapFactory.Options();
+            int i = JpegExifReader.readOrientation((String)localObject1);
+            if (i != 3)
             {
-              localObject1 = new Matrix();
-              ((Matrix)localObject1).reset();
-              ((Matrix)localObject1).setRotate(i);
-              localObject1 = Bitmap.createBitmap((Bitmap)localObject6, 0, 0, ((Bitmap)localObject6).getWidth(), ((Bitmap)localObject6).getHeight(), (Matrix)localObject1, true);
+              if (i != 6)
+              {
+                if (i != 8) {
+                  i = 0;
+                } else {
+                  i = 270;
+                }
+              }
+              else {
+                i = 90;
+              }
+            }
+            else {
+              i = 180;
+            }
+            try
+            {
+              if (((File)localObject6).exists())
+              {
+                localObject6 = new BufferedInputStream(new FileInputStream((File)localObject6), 2048);
+                ((BitmapFactory.Options)localObject5).inSampleSize = ((int)ImageUtil.a((InputStream)localObject6, 720, 1080));
+                ((BufferedInputStream)localObject6).close();
+                localObject1 = ImageUtil.a((String)localObject1, (BitmapFactory.Options)localObject5);
+                if (localObject1 != null)
+                {
+                  localObject5 = new Matrix();
+                  ((Matrix)localObject5).reset();
+                  ((Matrix)localObject5).setRotate(i);
+                  localObject1 = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), (Matrix)localObject5, true);
+                }
+              }
+            }
+            catch (OutOfMemoryError localOutOfMemoryError)
+            {
+              if (QLog.isColorLevel())
+              {
+                localObject5 = new StringBuilder();
+                ((StringBuilder)localObject5).append("OOM: ");
+                ((StringBuilder)localObject5).append(QLog.getStackTraceString(localOutOfMemoryError));
+                QLog.d("AIOAnimationControlManager", 2, ((StringBuilder)localObject5).toString());
+              }
+            }
+            catch (Exception localException)
+            {
+              localException.printStackTrace();
+            }
+            localObject2 = null;
+            if (localObject2 != null)
+            {
+              localObject5 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+              if ((localObject5 != null) && ((localObject5 instanceof TroopChatPie)))
+              {
+                localObject5 = (TroopChatPie)localObject5;
+                this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController.a(((MessageForTroopEffectPic)localObject3).effectId, (Bitmap)localObject2, ((TroopChatPie)localObject5).h, new AIOAnimationControlManager.14(this, paramBoolean));
+                ((List)localObject4).remove(localObject3);
+                return;
+              }
+            }
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+            if ((localObject2 != null) && ((localObject2 instanceof TroopChatPie)))
+            {
+              this.jdField_a_of_type_Int = 3;
+              this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController.a((TroopChatPie)localObject2, (MessageForTroopEffectPic)localObject3, false);
             }
           }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
+          else
           {
-            localException.printStackTrace();
-            Object localObject2 = null;
-          }
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("AIOAnimationControlManager", 2, "OOM: " + QLog.getStackTraceString(localOutOfMemoryError));
+            if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject5)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject5)).intValue() == 4))
+            {
+              a((String)localObject2, (String)localObject5);
+              this.jdField_a_of_type_Int = 1;
+              a(paramBoolean);
+              return;
             }
-            str = null;
+            a((MessageForTroopEffectPic)localObject3, false);
+            this.jdField_a_of_type_Int = 3;
           }
         }
-        if ((localObject1 == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof TroopChatPie))) {
-          break label1873;
-        }
-        localObject3 = (TroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController.a(((MessageForTroopEffectPic)localObject5).effectId, (Bitmap)localObject1, ((TroopChatPie)localObject3).m, new AIOAnimationControlManager.14(this, paramBoolean));
-        ((List)localObject4).remove(localObject5);
-        return;
-        i = 90;
-        continue;
-        i = 180;
-        continue;
-        i = 270;
       }
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof TroopChatPie)));
-    label1284:
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController.a((TroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, (MessageForTroopEffectPic)localObject5, false);
-    return;
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject3)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject3)).intValue() == 4))
-    {
-      a(str, (String)localObject3);
-      this.jdField_a_of_type_Int = 1;
-      a(paramBoolean);
-      return;
     }
-    a((MessageForTroopEffectPic)localObject5, false);
-    this.jdField_a_of_type_Int = 3;
   }
   
   protected boolean a()
@@ -835,69 +916,84 @@ public class AIOAnimationControlManager
   
   public boolean a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
   {
-    if (!a()) {}
-    do
-    {
+    if (!a()) {
       return false;
-      e();
-    } while (!b(paramMessageForDeliverGiftTips));
-    f();
-    return true;
+    }
+    e();
+    if (b(paramMessageForDeliverGiftTips))
+    {
+      f();
+      return true;
+    }
+    return false;
   }
   
   public boolean a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips, boolean paramBoolean)
   {
-    if (paramMessageForDeliverGiftTips == null) {}
-    while (!TroopGiftUtil.a(paramMessageForDeliverGiftTips)) {
+    if (paramMessageForDeliverGiftTips == null) {
+      return false;
+    }
+    if (!TroopGiftUtil.a(paramMessageForDeliverGiftTips)) {
       return false;
     }
     a(paramMessageForDeliverGiftTips);
     if (paramMessageForDeliverGiftTips.interactState == 2) {
       f();
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       ((TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a(paramMessageForDeliverGiftTips.frienduin, paramMessageForDeliverGiftTips.interactId, paramMessageForDeliverGiftTips.giftId, new AIOAnimationControlManager.2(this, paramMessageForDeliverGiftTips, paramBoolean));
     }
+    return true;
   }
   
   public boolean a(MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean)
   {
-    String str = "" + paramMessageForTroopEffectPic.effectId;
-    if ((paramMessageForTroopEffectPic.effectId < 40003) || (paramMessageForTroopEffectPic.effectId > 40005))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramMessageForTroopEffectPic.effectId);
+    localObject = ((StringBuilder)localObject).toString();
+    int j = paramMessageForTroopEffectPic.effectId;
+    int i = 3;
+    boolean bool = false;
+    if ((j >= 40003) && (paramMessageForTroopEffectPic.effectId <= 40005))
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(3));
+      if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue() == 3))
+      {
+        if (TroopGiftUtil.a(paramMessageForTroopEffectPic.effectId)) {
+          break label160;
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.remove(localObject);
+        FileUtils.deleteFile(TroopGiftUtil.a(paramMessageForTroopEffectPic.effectId));
+        a(paramMessageForTroopEffectPic.effectId, paramMessageForTroopEffectPic.frienduin, paramMessageForTroopEffectPic);
+      }
+      else
+      {
+        a(paramMessageForTroopEffectPic.effectId, paramMessageForTroopEffectPic.frienduin, paramMessageForTroopEffectPic);
+      }
+      i = 2;
+      label160:
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("MessageForTroopEffectPic id:");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(",state:");
+        localStringBuilder.append(i);
+        QLog.d("AIOAnimationControlManager", 2, localStringBuilder.toString());
+      }
       if (paramBoolean) {
         return a(paramMessageForTroopEffectPic, false);
       }
-      return false;
+      paramBoolean = bool;
+      if (i == 2) {
+        paramBoolean = true;
+      }
+      return paramBoolean;
     }
-    int i;
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(str)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(str)).intValue() == 3)) {
-      if (!TroopGiftUtil.a(paramMessageForTroopEffectPic.effectId))
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(str);
-        FileUtils.e(TroopGiftUtil.a(paramMessageForTroopEffectPic.effectId));
-        a(paramMessageForTroopEffectPic.effectId, paramMessageForTroopEffectPic.frienduin, paramMessageForTroopEffectPic);
-        i = 2;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAnimationControlManager", 2, "MessageForTroopEffectPic id:" + str + ",state:" + i);
-      }
-      if (!paramBoolean) {
-        break;
-      }
+    this.jdField_a_of_type_JavaUtilHashMap.put(localObject, Integer.valueOf(3));
+    if (paramBoolean) {
       return a(paramMessageForTroopEffectPic, false);
-      i = 3;
-      continue;
-      a(paramMessageForTroopEffectPic.effectId, paramMessageForTroopEffectPic.frienduin, paramMessageForTroopEffectPic);
-      i = 2;
     }
-    return i == 2;
+    return false;
   }
   
   public boolean a(AIOAnimationControlManager.IAnimationMessage paramIAnimationMessage, boolean paramBoolean)
@@ -929,9 +1025,10 @@ public class AIOAnimationControlManager
   
   public boolean a(boolean paramBoolean)
   {
+    long l = this.jdField_a_of_type_Long;
     boolean bool2 = false;
     boolean bool1;
-    if (this.jdField_a_of_type_Long == 0L)
+    if (l == 0L)
     {
       bool1 = bool2;
       if (paramBoolean)
@@ -941,43 +1038,42 @@ public class AIOAnimationControlManager
         bool1 = bool2;
       }
     }
-    for (;;)
+    else if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 3600000L)
     {
-      if ((this.jdField_a_of_type_AndroidContentSharedPreferences != null) && (paramBoolean))
+      jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("AIOAnimationControlManager_limit_gif_count_MAX", jdField_b_of_type_Int);
+      int i = this.jdField_c_of_type_Int;
+      if (i >= jdField_b_of_type_Int)
       {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("AIOAnimationControlManager_limit_gif_time", this.jdField_a_of_type_Long).apply();
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("AIOAnimationControlManager_limit_gif_count", this.jdField_c_of_type_Int).apply();
-      }
-      return bool1;
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 3600000L)
-      {
-        jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("AIOAnimationControlManager_limit_gif_count_MAX", jdField_b_of_type_Int);
-        if (this.jdField_c_of_type_Int >= jdField_b_of_type_Int)
-        {
-          this.jdField_a_of_type_Int = 4;
-          bool1 = true;
-        }
-        else
-        {
-          bool1 = bool2;
-          if (paramBoolean)
-          {
-            this.jdField_c_of_type_Int += 1;
-            bool1 = bool2;
-          }
-        }
+        this.jdField_a_of_type_Int = 4;
+        bool1 = true;
       }
       else
       {
         bool1 = bool2;
         if (paramBoolean)
         {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          this.jdField_c_of_type_Int = 1;
+          this.jdField_c_of_type_Int = (i + 1);
           bool1 = bool2;
         }
       }
     }
+    else
+    {
+      bool1 = bool2;
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.jdField_c_of_type_Int = 1;
+        bool1 = bool2;
+      }
+    }
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    if ((localSharedPreferences != null) && (paramBoolean))
+    {
+      localSharedPreferences.edit().putLong("AIOAnimationControlManager_limit_gif_time", this.jdField_a_of_type_Long).apply();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("AIOAnimationControlManager_limit_gif_count", this.jdField_c_of_type_Int).apply();
+    }
+    return bool1;
   }
   
   public long[] a(String paramString)
@@ -1007,13 +1103,15 @@ public class AIOAnimationControlManager
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {}
-    for (Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;; localObject = this.jdField_b_of_type_JavaLangString)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if (localObject != null) {
+      localObject = ((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    } else {
+      localObject = this.jdField_b_of_type_JavaLangString;
+    }
+    localObject = (List)this.jdField_b_of_type_JavaUtilHashMap.get(localObject);
+    if ((this.jdField_b_of_type_Boolean) && (!TroopGiftUtil.a((List)localObject)))
     {
-      localObject = (List)this.jdField_b_of_type_JavaUtilHashMap.get(localObject);
-      if ((!this.jdField_b_of_type_Boolean) || (TroopGiftUtil.a((List)localObject))) {
-        break label135;
-      }
       int j;
       for (int i = 0; i < ((List)localObject).size(); i = j + 1)
       {
@@ -1029,9 +1127,8 @@ public class AIOAnimationControlManager
           }
         }
       }
+      Collections.sort((List)localObject, this.jdField_a_of_type_JavaUtilComparator);
     }
-    Collections.sort((List)localObject, this.jdField_a_of_type_JavaUtilComparator);
-    label135:
     this.jdField_b_of_type_Boolean = true;
   }
   
@@ -1043,8 +1140,8 @@ public class AIOAnimationControlManager
     if (a() == null)
     {
       paramString = BaseActivity.sTopActivity;
-      if ((paramString instanceof FragmentActivity)) {
-        a(((FragmentActivity)paramString).getChatFragment().a());
+      if ((paramString instanceof BaseActivity)) {
+        a(paramString.getChatFragment().a());
       }
     }
     this.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(new AIOAnimationControlManager.5(this, localTroopGiftData));
@@ -1057,50 +1154,63 @@ public class AIOAnimationControlManager
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 4);
+    int i = this.jdField_a_of_type_Int;
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (i == 4) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public boolean b(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
   {
-    if (!TroopGiftUtil.a(paramMessageForDeliverGiftTips)) {
+    boolean bool2 = TroopGiftUtil.a(paramMessageForDeliverGiftTips);
+    boolean bool1 = false;
+    if (!bool2) {
       return false;
     }
-    String str = TroopGiftUtil.b(paramMessageForDeliverGiftTips);
+    Object localObject = TroopGiftUtil.b(paramMessageForDeliverGiftTips);
     int i;
-    boolean bool;
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(str)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(str)).intValue() == 3)) {
-      if (!TroopGiftUtil.a(str, paramMessageForDeliverGiftTips.animationType, paramMessageForDeliverGiftTips.isInteract()))
+    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue() == 3))
+    {
+      if (!TroopGiftUtil.a((String)localObject, paramMessageForDeliverGiftTips.animationType, paramMessageForDeliverGiftTips.isInteract()))
       {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(str);
-        FileUtils.a(TroopGiftUtil.a(paramMessageForDeliverGiftTips));
-        a(str, paramMessageForDeliverGiftTips);
+        this.jdField_a_of_type_JavaUtilHashMap.remove(localObject);
+        FileUtils.deleteDirectory(TroopGiftUtil.a(paramMessageForDeliverGiftTips));
+        a((String)localObject, paramMessageForDeliverGiftTips);
         i = 2;
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOAnimationControlManager", 2, "giftRealAnimationId:" + TroopGiftUtil.b(paramMessageForDeliverGiftTips) + ",state:" + i);
-        }
-        if ((a()) && (i != 3)) {
-          break label188;
-        }
-        if (!paramMessageForDeliverGiftTips.isInteract()) {
-          break label178;
-        }
-        bool = a(paramMessageForDeliverGiftTips, false);
+      }
+      else
+      {
+        i = 3;
       }
     }
-    for (;;)
+    else
     {
-      return bool;
-      i = 3;
-      break;
-      a(str, paramMessageForDeliverGiftTips);
+      a((String)localObject, paramMessageForDeliverGiftTips);
       i = 4;
-      break;
-      label178:
-      bool = a(paramMessageForDeliverGiftTips, false);
-      continue;
-      label188:
-      bool = false;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("giftRealAnimationId:");
+      ((StringBuilder)localObject).append(TroopGiftUtil.b(paramMessageForDeliverGiftTips));
+      ((StringBuilder)localObject).append(",state:");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("AIOAnimationControlManager", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((!a()) || (i == 3))
+    {
+      if (paramMessageForDeliverGiftTips.isInteract()) {
+        return a(paramMessageForDeliverGiftTips, false);
+      }
+      bool1 = a(paramMessageForDeliverGiftTips, false);
+    }
+    return bool1;
   }
   
   public boolean b(String paramString)
@@ -1111,8 +1221,12 @@ public class AIOAnimationControlManager
   public void c()
   {
     deleteObservers();
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAnimationControlManager", 2, "release TroopChatPie ,troopUin:" + this.jdField_b_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("release TroopChatPie ,troopUin:");
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      QLog.d("AIOAnimationControlManager", 2, localStringBuilder.toString());
     }
     AIOAnimationControlManager.DownloadGiftResStateObservable.a().deleteObservers();
     this.jdField_b_of_type_JavaUtilHashMap.remove(this.jdField_b_of_type_JavaLangString);
@@ -1138,17 +1252,19 @@ public class AIOAnimationControlManager
     if (QLog.isColorLevel()) {
       QLog.d("AIOAnimationControlManager", 2, "releaseAnimationList");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {}
-    for (String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if (localObject != null) {
+      localObject = ((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    } else {
+      localObject = this.jdField_b_of_type_JavaLangString;
+    }
+    this.jdField_b_of_type_JavaUtilHashMap.remove(localObject);
+    this.jdField_c_of_type_JavaUtilHashMap.remove(localObject);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController;
+    if (localObject != null)
     {
-      this.jdField_b_of_type_JavaUtilHashMap.remove(str);
-      this.jdField_c_of_type_JavaUtilHashMap.remove(str);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.c();
-        this.jdField_a_of_type_Int = 1;
-      }
-      return;
+      ((TroopGiftAnimationController)localObject).c();
+      this.jdField_a_of_type_Int = 1;
     }
   }
   
@@ -1162,14 +1278,17 @@ public class AIOAnimationControlManager
     if (RobotResourcesManager.a().a()) {
       RobotResourcesManager.a().b();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a())) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController;
+    if ((localObject != null) && (((TroopGiftAnimationController)localObject).a())) {
       this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.c();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController != null) && (!this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a())) {
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController;
+    if ((localObject != null) && (!((TroopInteractGiftAnimationController)localObject).a())) {
       this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController.a();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController;
+    if (localObject != null) {
+      ((TroopPicEffectsController)localObject).a();
     }
     this.jdField_a_of_type_Int = 1;
   }
@@ -1177,8 +1296,14 @@ public class AIOAnimationControlManager
   public void onDestroy()
   {
     AIOAnimationControlManager.DownloadGiftResStateObservable.a().deleteObservers();
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (QLog.isColorLevel())) {
-      QLog.d("AIOAnimationControlManager", 2, "clear History. uin:" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount() + " app=" + String.valueOf(this.jdField_a_of_type_ComTencentCommonAppAppInterface));
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clear History. uin:");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount());
+      localStringBuilder.append(" app=");
+      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ComTencentCommonAppAppInterface));
+      QLog.d("AIOAnimationControlManager", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = null;
     this.jdField_a_of_type_AndroidAppActivity = null;
@@ -1187,7 +1312,7 @@ public class AIOAnimationControlManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.AIOAnimationControlManager
  * JD-Core Version:    0.7.0.1
  */

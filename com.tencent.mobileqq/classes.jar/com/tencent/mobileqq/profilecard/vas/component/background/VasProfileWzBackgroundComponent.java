@@ -8,12 +8,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.GlobalImageCache;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.profile.ProfileCardManager;
 import com.tencent.mobileqq.profile.view.ShakeImageView;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.mobileqq.profilecard.vas.VasCardData;
 import com.tencent.mobileqq.profilecard.vas.VasProfileData;
 import com.tencent.mobileqq.util.BitmapManager;
@@ -25,7 +25,7 @@ import kotlin.jvm.internal.StringCompanionObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/component/background/VasProfileWzBackgroundComponent;", "Lcom/tencent/mobileqq/profilecard/vas/component/background/AbsVasProfileBackgroundComponent;", "componentCenter", "Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;", "cardInfo", "Lcom/tencent/mobileqq/profile/ProfileCardInfo;", "(Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;Lcom/tencent/mobileqq/profile/ProfileCardInfo;)V", "mCardData", "Lcom/tencent/mobileqq/profilecard/vas/VasCardData;", "mDefaultBackgroundView", "Landroid/widget/ImageView;", "mWzBg", "Landroid/graphics/Bitmap;", "mWzBgView", "Lcom/tencent/mobileqq/profile/view/ShakeImageView;", "mWzCharacter", "mWzCharacterView", "initWzryDynamicBgAndHero", "", "data", "onCreate", "", "activity", "Lcom/tencent/mobileqq/app/BaseActivity;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onVasDataUpdate", "Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "updateImage", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/component/background/VasProfileWzBackgroundComponent;", "Lcom/tencent/mobileqq/profilecard/vas/component/background/AbsVasProfileBackgroundComponent;", "componentCenter", "Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;", "cardInfo", "Lcom/tencent/mobileqq/profilecard/data/ProfileCardInfo;", "(Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;Lcom/tencent/mobileqq/profilecard/data/ProfileCardInfo;)V", "mCardData", "Lcom/tencent/mobileqq/profilecard/vas/VasCardData;", "mDefaultBackgroundView", "Landroid/widget/ImageView;", "mWzBg", "Landroid/graphics/Bitmap;", "mWzBgView", "Lcom/tencent/mobileqq/profile/view/ShakeImageView;", "mWzCharacter", "mWzCharacterView", "initWzryDynamicBgAndHero", "", "data", "onCreate", "", "activity", "Lcom/tencent/mobileqq/app/QBaseActivity;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onVasDataUpdate", "Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "updateImage", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class VasProfileWzBackgroundComponent
   extends AbsVasProfileBackgroundComponent
 {
@@ -61,8 +61,14 @@ public final class VasProfileWzBackgroundComponent
       try
       {
         paramVasCardData = ProfileCardManager.a((Context)this.mActivity, paramVasCardData.getLCurrentBgId());
-        String str = paramVasCardData + "wzBgImage.png";
-        localObject2 = paramVasCardData + "wzMainImage.png";
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramVasCardData);
+        ((StringBuilder)localObject1).append("wzBgImage.png");
+        String str = ((StringBuilder)localObject1).toString();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramVasCardData);
+        ((StringBuilder)localObject1).append("wzMainImage.png");
+        localObject2 = ((StringBuilder)localObject1).toString();
         localObject1 = GlobalImageCache.a.get(str);
         paramVasCardData = (VasCardData)localObject1;
         if (!(localObject1 instanceof Bitmap)) {
@@ -115,18 +121,35 @@ public final class VasProfileWzBackgroundComponent
   
   private final void updateImage()
   {
-    if (this.mWzBg != null)
+    Object localObject = this.mWzBg;
+    ShakeImageView localShakeImageView;
+    double d;
+    int i;
+    if (localObject != null)
     {
-      localObject = this.mWzBgView;
-      if (localObject != null) {
-        ((ShakeImageView)localObject).setImage(this.mWzBg, (int)(getContainerView().getWidth() * 1.1D), (int)(getContainerView().getHeight() * 1.1D), 1.0F);
+      localShakeImageView = this.mWzBgView;
+      if (localShakeImageView != null)
+      {
+        d = getContainerView().getWidth();
+        Double.isNaN(d);
+        i = (int)(d * 1.1D);
+        d = getContainerView().getHeight();
+        Double.isNaN(d);
+        localShakeImageView.setImage((Bitmap)localObject, i, (int)(d * 1.1D), 1.0F);
       }
     }
-    if (this.mWzCharacter != null)
+    localObject = this.mWzCharacter;
+    if (localObject != null)
     {
-      localObject = this.mWzCharacterView;
-      if (localObject != null) {
-        ((ShakeImageView)localObject).setImage(this.mWzCharacter, (int)(getContainerView().getWidth() * 1.1D), (int)(getContainerView().getHeight() * 1.1D), -1.0F);
+      localShakeImageView = this.mWzCharacterView;
+      if (localShakeImageView != null)
+      {
+        d = getContainerView().getWidth();
+        Double.isNaN(d);
+        i = (int)(d * 1.1D);
+        d = getContainerView().getHeight();
+        Double.isNaN(d);
+        localShakeImageView.setImage((Bitmap)localObject, i, (int)(d * 1.1D), -1.0F);
       }
     }
     if ((this.mWzBg == null) && (this.mWzCharacter == null))
@@ -139,29 +162,30 @@ public final class VasProfileWzBackgroundComponent
       return;
     }
     setAbFactor("card-wzry");
-    Object localObject = this.mDefaultBackgroundView;
+    localObject = this.mDefaultBackgroundView;
     if (localObject != null) {
       ((ImageView)localObject).setImageDrawable(null);
     }
     setBackgroundShow(true);
   }
   
-  public void onCreate(@NotNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
+  public void onCreate(@NotNull QBaseActivity paramQBaseActivity, @Nullable Bundle paramBundle)
   {
-    Intrinsics.checkParameterIsNotNull(paramBaseActivity, "activity");
-    super.onCreate(paramBaseActivity, paramBundle);
-    paramBundle = new ImageView((Context)paramBaseActivity);
+    Intrinsics.checkParameterIsNotNull(paramQBaseActivity, "activity");
+    super.onCreate(paramQBaseActivity, paramBundle);
+    paramQBaseActivity = (Context)paramQBaseActivity;
+    paramBundle = new ImageView(paramQBaseActivity);
     paramBundle.setContentDescription((CharSequence)"qqvip_bg");
     getContainerView().addView((View)paramBundle);
     this.mDefaultBackgroundView = paramBundle;
-    paramBundle = new ShakeImageView((Context)paramBaseActivity);
+    paramBundle = new ShakeImageView(paramQBaseActivity);
     paramBundle.setContentDescription((CharSequence)"qqvip_wzry_bg");
     getContainerView().addView((View)paramBundle);
     this.mWzBgView = paramBundle;
-    paramBaseActivity = new ShakeImageView((Context)paramBaseActivity);
-    paramBaseActivity.setContentDescription((CharSequence)"qqvip_wzry_character");
-    getContainerView().addView((View)paramBaseActivity);
-    this.mWzCharacterView = paramBaseActivity;
+    paramQBaseActivity = new ShakeImageView(paramQBaseActivity);
+    paramQBaseActivity.setContentDescription((CharSequence)"qqvip_wzry_character");
+    getContainerView().addView((View)paramQBaseActivity);
+    this.mWzCharacterView = paramQBaseActivity;
   }
   
   public void onDestroy()
@@ -171,8 +195,9 @@ public final class VasProfileWzBackgroundComponent
     getContainerView().removeView((View)this.mWzBgView);
     getContainerView().removeView((View)this.mWzCharacterView);
     this.mDefaultBackgroundView = ((ImageView)null);
-    this.mWzBgView = ((ShakeImageView)null);
-    this.mWzCharacterView = ((ShakeImageView)null);
+    ShakeImageView localShakeImageView = (ShakeImageView)null;
+    this.mWzBgView = localShakeImageView;
+    this.mWzCharacterView = localShakeImageView;
   }
   
   public boolean onVasDataUpdate(@NotNull VasProfileData paramVasProfileData)
@@ -184,8 +209,9 @@ public final class VasProfileWzBackgroundComponent
       if (paramVasProfileData != null) {
         paramVasProfileData.setBackgroundResource(getDefaultResourceID());
       }
+      return true;
     }
-    while ((paramVasProfileData.getCardData().equals(this.mCardData)) && (isBackgroundShow())) {
+    if ((paramVasProfileData.getCardData().equals(this.mCardData)) && (isBackgroundShow())) {
       return true;
     }
     this.mCardData = paramVasProfileData.getCardData();
@@ -196,7 +222,7 @@ public final class VasProfileWzBackgroundComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.background.VasProfileWzBackgroundComponent
  * JD-Core Version:    0.7.0.1
  */

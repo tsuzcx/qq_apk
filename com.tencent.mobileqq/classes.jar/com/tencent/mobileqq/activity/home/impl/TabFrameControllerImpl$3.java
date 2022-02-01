@@ -14,29 +14,35 @@ class TabFrameControllerImpl$3
   
   public void run()
   {
-    String str2 = this.this$0.getCurrentTabTag(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost);
-    if ((FrameControllerUtil.a.equals(str2)) || (FrameControllerUtil.b.equals(str2))) {
-      if (!FrameControllerUtil.a.equals(str2)) {
-        break label169;
-      }
-    }
-    label169:
-    for (String str1 = "Msg_tab";; str1 = "Contacts_tab")
+    String str = this.this$0.getCurrentTabTag(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost);
+    Object localObject;
+    if ((FrameControllerUtil.a.equals(str)) || (FrameControllerUtil.b.equals(str)))
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", str1, str1, 0, 0, "", "", "", "");
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_AndroidContentSharedPreferences != null) && (this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), true))) {
+      if (FrameControllerUtil.a.equals(str)) {
+        localObject = "Msg_tab";
+      } else {
+        localObject = "Contacts_tab";
+      }
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_AndroidContentSharedPreferences != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("theme_voice_setting_");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      if (((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), true)) {
         TabFrameControllerImpl.sFrameControllerInjectInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment, this.jdField_a_of_type_Int);
       }
-      if ((str2 != null) && (AppSetting.d)) {
-        this.this$0.dispatchTabContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment, str2);
-      }
-      return;
+    }
+    if ((str != null) && (AppSetting.d)) {
+      this.this$0.dispatchTabContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment, str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.impl.TabFrameControllerImpl.3
  * JD-Core Version:    0.7.0.1
  */

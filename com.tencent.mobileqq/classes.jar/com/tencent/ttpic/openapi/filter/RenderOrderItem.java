@@ -26,7 +26,8 @@ public class RenderOrderItem
   
   public Frame RenderProcess(Frame paramFrame)
   {
-    if ((this.mCurrentOrder != 0) && (this.mCurrentOrder != this.RENDER_OREDER)) {
+    int i = this.mCurrentOrder;
+    if ((i != 0) && (i != this.RENDER_OREDER)) {
       return paramFrame;
     }
     return super.RenderProcess(paramFrame);
@@ -39,7 +40,7 @@ public class RenderOrderItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.RenderOrderItem
  * JD-Core Version:    0.7.0.1
  */

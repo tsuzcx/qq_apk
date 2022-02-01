@@ -10,13 +10,17 @@ class SPlayerPreDownloaderImpl$2
   
   public void run()
   {
-    LogUtil.d(SPlayerPreDownloaderImpl.TAG, "stopAllPreDownload(), stop taskIdForTPProxy=" + this.val$taskIdForTPProxy);
+    String str = SPlayerPreDownloaderImpl.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stopAllPreDownload(), stop taskIdForTPProxy=");
+    localStringBuilder.append(this.val$taskIdForTPProxy);
+    LogUtil.d(str, localStringBuilder.toString());
     SPlayerPreDownloaderImpl.access$000(this.this$0).stopPreload(this.val$taskIdForTPProxy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.datatransport.SPlayerPreDownloaderImpl.2
  * JD-Core Version:    0.7.0.1
  */

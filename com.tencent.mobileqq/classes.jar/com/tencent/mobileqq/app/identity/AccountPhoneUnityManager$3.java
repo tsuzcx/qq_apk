@@ -1,28 +1,21 @@
 package com.tencent.mobileqq.app.identity;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.LoginVerifyObserver;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
+import android.app.Activity;
+import mqq.app.AppRuntime;
 
 class AccountPhoneUnityManager$3
-  extends LoginVerifyObserver
+  implements Runnable
 {
-  AccountPhoneUnityManager$3(AccountPhoneUnityManager paramAccountPhoneUnityManager, QQAppInterface paramQQAppInterface) {}
+  AccountPhoneUnityManager$3(AccountPhoneUnityManager paramAccountPhoneUnityManager, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, AppRuntime paramAppRuntime, Activity paramActivity) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void run()
   {
-    QLog.e("AccountPhoneUnityManager", 1, new Object[] { "onFailedResponse code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
-  }
-  
-  public void b(cmd0x9ae.RspBody paramRspBody)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountPhoneUnityManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRspBody);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountPhoneUnityManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,12 @@ public class MiniAppCamera
     super(paramIMiniAppContext.getContext());
     this.mMiniAppContext = new WeakReference(paramIMiniAppContext);
     this.mJsService = new WeakReference(paramIJsService);
-    Log.i("MiniAppCamera", "MiniAppCamera: " + Build.BRAND + " " + Build.MODEL);
+    paramIMiniAppContext = new StringBuilder();
+    paramIMiniAppContext.append("MiniAppCamera: ");
+    paramIMiniAppContext.append(Build.BRAND);
+    paramIMiniAppContext.append(" ");
+    paramIMiniAppContext.append(Build.MODEL);
+    Log.i("MiniAppCamera", paramIMiniAppContext.toString());
   }
   
   private void execCommand(String paramString1, String paramString2, String paramString3, RequestEvent paramRequestEvent)
@@ -70,20 +75,16 @@ public class MiniAppCamera
   
   private float getDegrees()
   {
-    float f = 90.0F;
     if (CameraCompatibleList.isFoundProduct(CameraCompatibleList.KEY_PREVIEW_ORIENTATION_270_OF_BACK_MODEL))
     {
-      if (this.isBackCameraNow) {
+      if (!this.isBackCameraNow) {}
+    }
+    else {
+      while (!this.isBackCameraNow) {
         return 270.0F;
       }
-      return 90.0F;
     }
-    if (this.isBackCameraNow) {}
-    for (;;)
-    {
-      return f;
-      f = 270.0F;
-    }
+    return 90.0F;
   }
   
   private static Bitmap getFirstKeyFrame(String paramString)
@@ -93,14 +94,13 @@ public class MiniAppCamera
   
   private float getQuScale(String paramString)
   {
-    float f = 1.0F;
     if ("normal".equals(paramString)) {
-      f = 0.8F;
+      return 0.8F;
     }
-    while (!"low".equals(paramString)) {
-      return f;
+    if ("low".equals(paramString)) {
+      return 0.6F;
     }
-    return 0.6F;
+    return 1.0F;
   }
   
   private void hideLoading()
@@ -115,86 +115,82 @@ public class MiniAppCamera
   
   private void nativeStartRecord()
   {
-    if (recorder == null) {}
-    do
-    {
+    if (recorder == null) {
       return;
-      videoPath = getTmpPath("mp4");
-    } while (videoPath == null);
-    Log.i("MiniAppCamera", "nativeStartRecord: " + videoPath);
+    }
+    videoPath = getTmpPath("mp4");
+    if (videoPath == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("nativeStartRecord: ");
+    localStringBuilder.append(videoPath);
+    Log.i("MiniAppCamera", localStringBuilder.toString());
     try
     {
       this.camera.unlock();
-      MediaRecorder localMediaRecorder = recorder;
-      if (this.isBackCameraNow)
-      {
-        i = 90;
-        localMediaRecorder.setOrientationHint(i);
-        recorder.reset();
-        recorder.setCamera(this.camera);
-        recorder.setAudioSource(0);
-        recorder.setVideoSource(1);
-        recorder.setOutputFormat(2);
-        recorder.setVideoEncoder(2);
-        recorder.setAudioEncoder(3);
-        if (this.cameraSize != null) {
-          recorder.setVideoSize(this.cameraSize.width, this.cameraSize.height);
-        }
-        recorder.setVideoEncodingBitRate(5242880);
-        recorder.setOutputFile(videoPath);
-        recorder.prepare();
-        recorder.start();
-        return;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Log.i("MiniAppCamera", "nativeStartRecord: ", localException);
-        continue;
-        int i = 270;
-      }
+      Log.i("MiniAppCamera", "nativeStartRecord: ", localException);
     }
+    MediaRecorder localMediaRecorder = recorder;
+    int i;
+    if (this.isBackCameraNow) {
+      i = 90;
+    } else {
+      i = 270;
+    }
+    localMediaRecorder.setOrientationHint(i);
+    recorder.reset();
+    recorder.setCamera(this.camera);
+    recorder.setAudioSource(0);
+    recorder.setVideoSource(1);
+    recorder.setOutputFormat(2);
+    recorder.setVideoEncoder(2);
+    recorder.setAudioEncoder(3);
+    if (this.cameraSize != null) {
+      recorder.setVideoSize(this.cameraSize.width, this.cameraSize.height);
+    }
+    recorder.setVideoEncodingBitRate(5242880);
+    recorder.setOutputFile(videoPath);
+    recorder.prepare();
+    recorder.start();
   }
   
   private void nativeStopRecord()
   {
-    if (recorder == null) {
+    MediaRecorder localMediaRecorder = recorder;
+    if (localMediaRecorder == null) {
       return;
     }
     try
     {
-      recorder.stop();
-      recorder.reset();
-      recorder.release();
-      recorder = null;
+      localMediaRecorder.stop();
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      try
-      {
-        this.camera.unlock();
-        try
-        {
-          this.camera.reconnect();
-          return;
-        }
-        catch (Exception localException1)
-        {
-          Log.w("MiniAppCamera", "stopRecord: ", localException1);
-          return;
-        }
-        localIllegalStateException = localIllegalStateException;
-        Log.w("MiniAppCamera", "nativeStopRecord: failed to stop", localIllegalStateException);
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          Log.w("MiniAppCamera", "stopRecord: ", localException2);
-        }
-      }
+      Log.w("MiniAppCamera", "nativeStopRecord: failed to stop", localIllegalStateException);
+    }
+    recorder.reset();
+    recorder.release();
+    recorder = null;
+    try
+    {
+      this.camera.unlock();
+    }
+    catch (Exception localException1)
+    {
+      Log.w("MiniAppCamera", "stopRecord: ", localException1);
+    }
+    try
+    {
+      this.camera.reconnect();
+      return;
+    }
+    catch (Exception localException2)
+    {
+      Log.w("MiniAppCamera", "stopRecord: ", localException2);
     }
   }
   
@@ -223,7 +219,10 @@ public class MiniAppCamera
   
   private void reportRecordAns(String paramString, RequestEvent paramRequestEvent)
   {
-    Log.i("MiniAppCamera", "reportRecordAns: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reportRecordAns: ");
+    localStringBuilder.append(paramString);
+    Log.i("MiniAppCamera", localStringBuilder.toString());
     ThreadManager.executeOnComputationThreadPool(new MiniAppCamera.6(this, paramString, paramRequestEvent));
   }
   
@@ -231,105 +230,109 @@ public class MiniAppCamera
   private static String saveJpeg(Bitmap paramBitmap, File paramFile, String paramString)
   {
     // Byte code:
-    //   0: bipush 100
-    //   2: istore_3
-    //   3: new 382	java/io/BufferedOutputStream
-    //   6: dup
-    //   7: new 384	java/io/FileOutputStream
-    //   10: dup
-    //   11: aload_1
-    //   12: invokespecial 387	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   15: invokespecial 390	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   18: astore 5
-    //   20: ldc 206
-    //   22: aload_2
-    //   23: invokevirtual 210	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   26: ifeq +58 -> 84
-    //   29: bipush 80
-    //   31: istore_3
-    //   32: aload_0
-    //   33: getstatic 396	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   36: bipush 100
-    //   38: iload_3
-    //   39: invokestatic 402	java/lang/Math:min	(II)I
-    //   42: aload 5
-    //   44: invokevirtual 408	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   47: pop
-    //   48: aload 5
-    //   50: invokevirtual 411	java/io/BufferedOutputStream:flush	()V
-    //   53: aload_1
-    //   54: invokevirtual 416	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   57: aload_1
-    //   58: invokevirtual 416	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   61: getstatic 52	com/tencent/qqmini/miniapp/widget/camera/MiniAppCamera:cameraWidth	I
-    //   64: getstatic 54	com/tencent/qqmini/miniapp/widget/camera/MiniAppCamera:cameraHeight	I
-    //   67: iload_3
-    //   68: invokestatic 422	com/tencent/qqmini/sdk/core/utils/ImageUtil:compressImageJpg	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
-    //   71: astore_0
-    //   72: aload 5
-    //   74: ifnull +8 -> 82
-    //   77: aload 5
-    //   79: invokevirtual 425	java/io/BufferedOutputStream:close	()V
-    //   82: aload_0
-    //   83: areturn
-    //   84: ldc 213
-    //   86: aload_2
-    //   87: invokevirtual 210	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   90: istore 4
-    //   92: iload 4
-    //   94: ifeq -62 -> 32
-    //   97: bipush 60
-    //   99: istore_3
-    //   100: goto -68 -> 32
-    //   103: astore_0
-    //   104: aconst_null
-    //   105: astore_1
-    //   106: aload_1
-    //   107: ifnull +7 -> 114
-    //   110: aload_1
-    //   111: invokevirtual 425	java/io/BufferedOutputStream:close	()V
-    //   114: aload_0
-    //   115: athrow
-    //   116: astore_1
-    //   117: aload_0
-    //   118: areturn
-    //   119: astore_1
-    //   120: goto -6 -> 114
-    //   123: astore_0
-    //   124: aload 5
-    //   126: astore_1
-    //   127: goto -21 -> 106
+    //   0: new 382	java/io/BufferedOutputStream
+    //   3: dup
+    //   4: new 384	java/io/FileOutputStream
+    //   7: dup
+    //   8: aload_1
+    //   9: invokespecial 387	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 390	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   15: astore 4
+    //   17: ldc 206
+    //   19: aload_2
+    //   20: invokevirtual 210	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   23: ifeq +9 -> 32
+    //   26: bipush 80
+    //   28: istore_3
+    //   29: goto +18 -> 47
+    //   32: ldc 213
+    //   34: aload_2
+    //   35: invokevirtual 210	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   38: ifeq +83 -> 121
+    //   41: bipush 60
+    //   43: istore_3
+    //   44: goto +3 -> 47
+    //   47: aload_0
+    //   48: getstatic 396	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   51: bipush 100
+    //   53: iload_3
+    //   54: invokestatic 402	java/lang/Math:min	(II)I
+    //   57: aload 4
+    //   59: invokevirtual 408	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   62: pop
+    //   63: aload 4
+    //   65: invokevirtual 411	java/io/BufferedOutputStream:flush	()V
+    //   68: aload_1
+    //   69: invokevirtual 416	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   72: aload_1
+    //   73: invokevirtual 416	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   76: getstatic 52	com/tencent/qqmini/miniapp/widget/camera/MiniAppCamera:cameraWidth	I
+    //   79: getstatic 54	com/tencent/qqmini/miniapp/widget/camera/MiniAppCamera:cameraHeight	I
+    //   82: iload_3
+    //   83: invokestatic 422	com/tencent/qqmini/sdk/core/utils/ImageUtil:compressImageJpg	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
+    //   86: astore_0
+    //   87: aload 4
+    //   89: invokevirtual 425	java/io/BufferedOutputStream:close	()V
+    //   92: aload_0
+    //   93: areturn
+    //   94: astore_0
+    //   95: aload 4
+    //   97: astore_1
+    //   98: goto +6 -> 104
+    //   101: astore_0
+    //   102: aconst_null
+    //   103: astore_1
+    //   104: aload_1
+    //   105: ifnull +7 -> 112
+    //   108: aload_1
+    //   109: invokevirtual 425	java/io/BufferedOutputStream:close	()V
+    //   112: aload_0
+    //   113: athrow
+    //   114: astore_1
+    //   115: aload_0
+    //   116: areturn
+    //   117: astore_1
+    //   118: goto -6 -> 112
+    //   121: bipush 100
+    //   123: istore_3
+    //   124: goto -77 -> 47
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	130	0	paramBitmap	Bitmap
-    //   0	130	1	paramFile	File
-    //   0	130	2	paramString	String
-    //   2	98	3	i	int
-    //   90	3	4	bool	boolean
-    //   18	107	5	localBufferedOutputStream	java.io.BufferedOutputStream
+    //   0	127	0	paramBitmap	Bitmap
+    //   0	127	1	paramFile	File
+    //   0	127	2	paramString	String
+    //   28	96	3	i	int
+    //   15	81	4	localBufferedOutputStream	java.io.BufferedOutputStream
     // Exception table:
     //   from	to	target	type
-    //   3	20	103	finally
-    //   77	82	116	java/lang/Exception
-    //   110	114	119	java/lang/Exception
-    //   20	29	123	finally
-    //   32	72	123	finally
-    //   84	92	123	finally
+    //   17	26	94	finally
+    //   32	41	94	finally
+    //   47	87	94	finally
+    //   0	17	101	finally
+    //   87	92	114	java/lang/Exception
+    //   108	112	117	java/lang/Exception
   }
   
   private String saveVideoThumbImg(String paramString)
   {
     Object localObject = new File(paramString);
-    if (((File)localObject).length() == 0L) {}
-    do
-    {
+    if (((File)localObject).length() == 0L) {
       return null;
-      Log.i("MiniAppCamera", "saveVideoThumbImg: " + ((File)localObject).length());
-      paramString = getTmpPath("jpg");
-      localObject = getFirstKeyFrame(((File)localObject).getAbsolutePath());
-    } while (localObject == null);
+    }
+    paramString = new StringBuilder();
+    paramString.append("saveVideoThumbImg: ");
+    paramString.append(((File)localObject).length());
+    Log.i("MiniAppCamera", paramString.toString());
+    paramString = getTmpPath("jpg");
+    localObject = getFirstKeyFrame(((File)localObject).getAbsolutePath());
+    if (localObject == null) {
+      return null;
+    }
     saveJpeg((Bitmap)localObject, new File(paramString), "");
-    Log.i("MiniAppCamera", "saveVideoThumbImg: " + paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("saveVideoThumbImg: ");
+    ((StringBuilder)localObject).append(paramString);
+    Log.i("MiniAppCamera", ((StringBuilder)localObject).toString());
     return paramString;
   }
   
@@ -345,12 +348,12 @@ public class MiniAppCamera
       setupCamera(this.backCameraId.intValue());
       return;
     }
-    if (this.backCameraId == null) {}
-    for (paramString = this.frontCameraId;; paramString = this.backCameraId)
-    {
-      setupCamera(paramString.intValue());
-      return;
+    if (this.backCameraId == null) {
+      paramString = this.frontCameraId;
+    } else {
+      paramString = this.backCameraId;
     }
+    setupCamera(paramString.intValue());
   }
   
   private void showLoading(String paramString)
@@ -360,50 +363,66 @@ public class MiniAppCamera
   
   private void startCrop(String paramString, RequestEvent paramRequestEvent)
   {
-    int m = 0;
     String str = getTmpPath("mp4");
-    int k = getWidth();
+    int m = getWidth();
     int n = getHeight();
-    int j = this.cameraSize.height;
+    int k = this.cameraSize.height;
     int i = this.cameraSize.width;
-    if (i * k > j * n)
+    int i1 = k * n;
+    int j = 0;
+    if (i * m > i1)
     {
-      n = n * j / k;
-      k = (i - n) / 2;
-      i = n;
+      j = i1 / m;
+      m = (i - j) / 2;
+      i = j;
+      j = m;
+      m = 0;
     }
-    for (;;)
+    else
     {
-      Log.i("MiniAppCamera", "startCrop: " + paramString);
-      execCommand("-y -i " + paramString + " -strict -2 -vcodec libx264 -preset ultrafast -vf crop=" + j + ":" + i + ":" + m + ":" + k + " " + str, str, paramString, paramRequestEvent);
-      return;
-      k *= i / n;
-      m = (j - k) / 2;
-      j = k;
-      k = 0;
+      n = m * (i / n);
+      m = (k - n) / 2;
+      k = n;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startCrop: ");
+    localStringBuilder.append(paramString);
+    Log.i("MiniAppCamera", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("-y -i ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" -strict -2 -vcodec libx264 -preset ultrafast -vf crop=");
+    localStringBuilder.append(k);
+    localStringBuilder.append(":");
+    localStringBuilder.append(i);
+    localStringBuilder.append(":");
+    localStringBuilder.append(m);
+    localStringBuilder.append(":");
+    localStringBuilder.append(j);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str);
+    execCommand(localStringBuilder.toString(), str, paramString, paramRequestEvent);
   }
   
   public void closeCamera()
   {
-    if (recorder != null) {}
-    try
+    MediaRecorder localMediaRecorder = recorder;
+    if (localMediaRecorder != null)
     {
-      recorder.stop();
-      recorder.reset();
-      recorder.release();
-      recorder = null;
-      stopPreview();
-      releaseCamera();
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      for (;;)
+      try
+      {
+        localMediaRecorder.stop();
+      }
+      catch (IllegalStateException localIllegalStateException)
       {
         Log.w("MiniAppCamera", "nativeStopRecord: failed to stop", localIllegalStateException);
       }
+      recorder.reset();
+      recorder.release();
+      recorder = null;
     }
+    stopPreview();
+    releaseCamera();
   }
   
   public String getTmpPath(String paramString)
@@ -427,13 +446,13 @@ public class MiniAppCamera
   protected void onCodeRead(String paramString)
   {
     super.onCodeRead(paramString);
-    if (!this.isScanMode) {}
-    IJsService localIJsService;
-    do
-    {
+    if (!this.isScanMode) {
       return;
-      localIJsService = (IJsService)this.mJsService.get();
-    } while (localIJsService == null);
+    }
+    IJsService localIJsService = (IJsService)this.mJsService.get();
+    if (localIJsService == null) {
+      return;
+    }
     try
     {
       JSONObject localJSONObject = new JSONObject();
@@ -441,7 +460,12 @@ public class MiniAppCamera
       localJSONObject.put("type", "barcode");
       localJSONObject.put("cameraId", this.cameraId);
       localIJsService.evaluateSubscribeJS("onCameraScanCode", localJSONObject.toString(), this.mWebviewId);
-      QMLog.i("MiniAppCamera", "onCodeRead, result = " + localJSONObject + ", webviewId = " + this.mWebviewId);
+      paramString = new StringBuilder();
+      paramString.append("onCodeRead, result = ");
+      paramString.append(localJSONObject);
+      paramString.append(", webviewId = ");
+      paramString.append(this.mWebviewId);
+      QMLog.i("MiniAppCamera", paramString.toString());
       return;
     }
     catch (JSONException paramString)
@@ -452,34 +476,33 @@ public class MiniAppCamera
   
   public void openCamera(String paramString)
   {
-    if ((this.frontCameraId == null) && (this.backCameraId == null)) {
-      if (this.mCallback != null) {
-        this.mCallback.onStartPreview(false);
+    if ((this.frontCameraId == null) && (this.backCameraId == null))
+    {
+      paramString = this.mCallback;
+      if (paramString != null) {
+        paramString.onStartPreview(false);
+      }
+      return;
+    }
+    try
+    {
+      setupCamera(paramString);
+      setCameraSize(this.cameraSize);
+      startPreview();
+      if (this.mCallback != null)
+      {
+        this.mCallback.onStartPreview(true);
+        return;
       }
     }
-    do
+    catch (Exception paramString)
     {
-      for (;;)
-      {
-        return;
-        try
-        {
-          setupCamera(paramString);
-          setCameraSize(this.cameraSize);
-          startPreview();
-          if (this.mCallback != null)
-          {
-            this.mCallback.onStartPreview(true);
-            return;
-          }
-        }
-        catch (Exception paramString)
-        {
-          Log.w("MiniAppCamera", "openCamera: ", paramString);
-        }
+      Log.w("MiniAppCamera", "openCamera: ", paramString);
+      paramString = this.mCallback;
+      if (paramString != null) {
+        paramString.onStartPreview(false);
       }
-    } while (this.mCallback == null);
-    this.mCallback.onStartPreview(false);
+    }
   }
   
   public void setCameraId(int paramInt)
@@ -528,51 +551,50 @@ public class MiniAppCamera
     {
       recorder.reset();
       recorder.release();
-      recorder = null;
-      return;
     }
     catch (Exception paramRequestEvent)
     {
-      for (;;)
-      {
-        Log.w("MiniAppCamera", "startRecord: ", localException);
-      }
+      label112:
+      break label112;
     }
+    Log.w("MiniAppCamera", "startRecord: ", localException);
+    recorder = null;
   }
   
   public void stopPreview(boolean paramBoolean)
   {
     Log.i("MiniAppCamera", "stopPreview: ");
-    IJsService localIJsService;
     if (isRecordStart)
     {
       isRecordStart = false;
-      localIJsService = (IJsService)sRecordJsService.get();
+      IJsService localIJsService = (IJsService)sRecordJsService.get();
       if (localIJsService != null)
       {
-        localObject = ApiUtil.wrapCallbackFail("operateCamera", null);
-        if (localObject == null) {
-          break label83;
+        Object localObject = ApiUtil.wrapCallbackFail("operateCamera", null);
+        if (localObject != null) {
+          localObject = ((JSONObject)localObject).toString();
+        } else {
+          localObject = "";
         }
+        localIJsService.evaluateCallbackJs(recordCallBackId, (String)localObject);
       }
-    }
-    label83:
-    for (Object localObject = ((JSONObject)localObject).toString();; localObject = "")
-    {
-      localIJsService.evaluateCallbackJs(recordCallBackId, (String)localObject);
       sRecordJsService.clear();
       nativeStopRecord();
-      stopPreview();
-      if (paramBoolean) {
-        releaseCamera();
-      }
-      return;
+    }
+    stopPreview();
+    if (paramBoolean) {
+      releaseCamera();
     }
   }
   
   public void stopRecord(RequestEvent paramRequestEvent)
   {
-    Log.i("MiniAppCamera", "stopRecord: " + isRecordStart + " " + isMainThread());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stopRecord: ");
+    localStringBuilder.append(isRecordStart);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(isMainThread());
+    Log.i("MiniAppCamera", localStringBuilder.toString());
     if (!isRecordStart) {
       return;
     }
@@ -590,12 +612,12 @@ public class MiniAppCamera
   {
     Log.i("MiniAppCamera", "switchCamera: ");
     setFlashMode(paramString);
-    if ((this.frontCameraId == null) || (this.backCameraId == null) || (paramBoolean == this.isBackCameraNow))
+    if ((this.frontCameraId != null) && (this.backCameraId != null) && (paramBoolean != this.isBackCameraNow))
     {
-      updateFlashMode();
+      ThreadManager.executeOnComputationThreadPool(new MiniAppCamera.10(this, paramBoolean));
       return;
     }
-    ThreadManager.executeOnComputationThreadPool(new MiniAppCamera.10(this, paramBoolean));
+    updateFlashMode();
   }
   
   public void takePhoto(RequestEvent paramRequestEvent, String paramString)
@@ -605,7 +627,7 @@ public class MiniAppCamera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.MiniAppCamera
  * JD-Core Version:    0.7.0.1
  */

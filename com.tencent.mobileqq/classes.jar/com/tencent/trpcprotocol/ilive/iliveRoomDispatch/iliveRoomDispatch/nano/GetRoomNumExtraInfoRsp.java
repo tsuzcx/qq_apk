@@ -29,50 +29,60 @@ public final class GetRoomNumExtraInfoRsp
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.a = paramCodedInputByteBufferNano.readUInt32();
+      if (i == 0) {
         break;
       }
-      this.b = paramCodedInputByteBufferNano.readUInt32();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+            return this;
+          }
+        }
+        else {
+          this.b = paramCodedInputByteBufferNano.readUInt32();
+        }
+      }
+      else {
+        this.a = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.a;
     int i = j;
-    if (this.a != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.a);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
+    k = this.b;
     j = i;
-    if (this.b != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, this.b);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, k);
     }
     return j;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.a != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.a);
+    int i = this.a;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
-    if (this.b != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(2, this.b);
+    i = this.b;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(2, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.GetRoomNumExtraInfoRsp
  * JD-Core Version:    0.7.0.1
  */

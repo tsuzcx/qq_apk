@@ -43,36 +43,37 @@ public class VideoSpeedReport$ReportType
   
   public static ReportType getVideoReportType(String paramString)
   {
-    if (paramString == null) {}
-    for (paramString = null;; paramString = (ReportType)sReportTypeMap.get(paramString)) {
-      for (;;)
-      {
-        return paramString;
-        try
-        {
-          if (sReportTypeMap.get(paramString) == null)
-          {
-            ReportType localReportType = new ReportType(paramString, new ArrayList());
-            sReportTypeMap.put(paramString, localReportType);
-            paramString = localReportType;
-          }
-        }
-        finally {}
-      }
+    if (paramString == null) {
+      return null;
     }
+    try
+    {
+      if (sReportTypeMap.get(paramString) == null)
+      {
+        ReportType localReportType = new ReportType(paramString, new ArrayList());
+        sReportTypeMap.put(paramString, localReportType);
+        return localReportType;
+      }
+      paramString = (ReportType)sReportTypeMap.get(paramString);
+      return paramString;
+    }
+    finally {}
   }
   
   public static void removeVideoReportType(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return;
-      try
-      {
-        sReportTypeMap.remove(paramString);
-      }
-      finally {}
+    }
+    try
+    {
+      sReportTypeMap.remove(paramString);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
     }
   }
   
@@ -80,46 +81,80 @@ public class VideoSpeedReport$ReportType
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < this.reportPoints.size())
+    while (i < this.reportPoints.size())
     {
       VideoSpeedReport.ReportPoint localReportPoint = (VideoSpeedReport.ReportPoint)this.reportPoints.get(i);
-      if ((localReportPoint.getEndTime() - localReportPoint.getStartTime() < 0L) && (PlayerConfig.g().isDebugVersion())) {
-        PlayerUtils.log(3, "VideoSpeedReport", localReportPoint.getName() + "(" + localReportPoint.hashCode() + ") 错误：结束时间小于开始时间 " + localReportPoint.getStartTime() + "," + localReportPoint.getEndTime());
-      }
-      if ((localReportPoint.getStartTime() > 10000000L) || (localReportPoint.getEndTime() > 10000000L)) {
-        if (PlayerConfig.g().isDebugVersion()) {
-          PlayerUtils.log(3, "VideoSpeedReport", localReportPoint.getName() + "(" + localReportPoint.hashCode() + ") 错误：开始或结束时间大于最大值" + localReportPoint.getStartTime() + "," + localReportPoint.getEndTime());
-        }
-      }
-      for (;;)
+      if ((localReportPoint.getEndTime() - localReportPoint.getStartTime() < 0L) && (PlayerConfig.g().isDebugVersion()))
       {
-        i += 1;
-        break;
-        if ((localReportPoint.getStartTime() != 0L) || (localReportPoint.getEndTime() != 0L)) {
-          break label324;
-        }
-        if (PlayerConfig.g().isDebugVersion()) {
-          PlayerUtils.log(3, "VideoSpeedReport", localReportPoint.getName() + "(" + localReportPoint.hashCode() + ") 丢弃：开始时间、结束时间都为0" + localReportPoint.getStartTime() + "," + localReportPoint.getEndTime());
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(localReportPoint.getName());
+        ((StringBuilder)localObject).append("(");
+        ((StringBuilder)localObject).append(localReportPoint.hashCode());
+        ((StringBuilder)localObject).append(") 错误：结束时间小于开始时间 ");
+        ((StringBuilder)localObject).append(localReportPoint.getStartTime());
+        ((StringBuilder)localObject).append(",");
+        ((StringBuilder)localObject).append(localReportPoint.getEndTime());
+        PlayerUtils.log(3, "VideoSpeedReport", ((StringBuilder)localObject).toString());
       }
-      label324:
-      if (localStringBuilder.length() != 0) {}
-      for (str = ";\n";; str = "\n")
+      if ((localReportPoint.getStartTime() <= 10000000L) && (localReportPoint.getEndTime() <= 10000000L))
       {
-        localStringBuilder.append(str);
-        localStringBuilder.append(localReportPoint.getName() + ":");
-        localStringBuilder.append(localReportPoint.getStartTime() + ",");
-        localStringBuilder.append(localReportPoint.getEndTime() + ",");
-        if (localReportPoint.getExtraInfo() == null) {
-          break;
+        if ((localReportPoint.getStartTime() == 0L) && (localReportPoint.getEndTime() == 0L))
+        {
+          if (PlayerConfig.g().isDebugVersion())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(localReportPoint.getName());
+            ((StringBuilder)localObject).append("(");
+            ((StringBuilder)localObject).append(localReportPoint.hashCode());
+            ((StringBuilder)localObject).append(") 丢弃：开始时间、结束时间都为0");
+            ((StringBuilder)localObject).append(localReportPoint.getStartTime());
+            ((StringBuilder)localObject).append(",");
+            ((StringBuilder)localObject).append(localReportPoint.getEndTime());
+            PlayerUtils.log(3, "VideoSpeedReport", ((StringBuilder)localObject).toString());
+          }
         }
-        localStringBuilder.append(localReportPoint.getExtraInfo());
-        break;
+        else
+        {
+          if (localStringBuilder.length() != 0) {
+            localObject = ";\n";
+          } else {
+            localObject = "\n";
+          }
+          localStringBuilder.append((String)localObject);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(localReportPoint.getName());
+          ((StringBuilder)localObject).append(":");
+          localStringBuilder.append(((StringBuilder)localObject).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(localReportPoint.getStartTime());
+          ((StringBuilder)localObject).append(",");
+          localStringBuilder.append(((StringBuilder)localObject).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(localReportPoint.getEndTime());
+          ((StringBuilder)localObject).append(",");
+          localStringBuilder.append(((StringBuilder)localObject).toString());
+          if (localReportPoint.getExtraInfo() != null) {
+            localStringBuilder.append(localReportPoint.getExtraInfo());
+          }
+        }
       }
+      else if (PlayerConfig.g().isDebugVersion())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(localReportPoint.getName());
+        ((StringBuilder)localObject).append("(");
+        ((StringBuilder)localObject).append(localReportPoint.hashCode());
+        ((StringBuilder)localObject).append(") 错误：开始或结束时间大于最大值");
+        ((StringBuilder)localObject).append(localReportPoint.getStartTime());
+        ((StringBuilder)localObject).append(",");
+        ((StringBuilder)localObject).append(localReportPoint.getEndTime());
+        PlayerUtils.log(3, "VideoSpeedReport", ((StringBuilder)localObject).toString());
+      }
+      i += 1;
     }
-    String str = localStringBuilder.toString();
+    Object localObject = localStringBuilder.toString();
     localStringBuilder.delete(0, localStringBuilder.length());
-    return str;
+    return localObject;
   }
   
   public String getTag()
@@ -134,7 +169,7 @@ public class VideoSpeedReport$ReportType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.util.VideoSpeedReport.ReportType
  * JD-Core Version:    0.7.0.1
  */

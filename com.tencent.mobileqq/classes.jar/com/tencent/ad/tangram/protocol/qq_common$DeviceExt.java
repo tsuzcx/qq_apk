@@ -9,6 +9,7 @@ public final class qq_common$DeviceExt
   public qq_common.DeviceExt.AttriDeviceInfo attri_info = new qq_common.DeviceExt.AttriDeviceInfo();
   public int mqq_config_status = 0;
   public qq_common.DeviceExt.IosQaidInfo qaid_info = new qq_common.DeviceExt.IosQaidInfo();
+  public qq_common.DeviceExt.ExternalExpInfo qqb_external_exp_info = new qq_common.DeviceExt.ExternalExpInfo();
   public qq_common.DeviceExt.WechatInstalledInfo wechat_installed_info = new qq_common.DeviceExt.WechatInstalledInfo();
 }
 

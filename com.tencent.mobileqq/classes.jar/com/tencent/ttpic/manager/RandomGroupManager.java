@@ -57,9 +57,11 @@ public enum RandomGroupManager
   
   private void clearHandRandomGroupStatus()
   {
-    MemRandomValue localMemRandomValue = (MemRandomValue)this.mRandomGroupHandValueMap.get(Integer.valueOf(0));
-    localMemRandomValue.curValue = -1;
-    this.mRandomGroupHandValueMap.put(Integer.valueOf(0), localMemRandomValue);
+    Object localObject = this.mRandomGroupHandValueMap;
+    Integer localInteger = Integer.valueOf(0);
+    localObject = (MemRandomValue)((Map)localObject).get(localInteger);
+    ((MemRandomValue)localObject).curValue = -1;
+    this.mRandomGroupHandValueMap.put(localInteger, localObject);
   }
   
   private boolean faceExist(List<Integer> paramList, int paramInt)
@@ -78,10 +80,12 @@ public enum RandomGroupManager
   
   private void fillEmptyRandomGroupValue(List<Integer> paramList, int paramInt)
   {
-    if (!this.mRandomGroupFaceValueMap.containsKey(Integer.valueOf(-1))) {
-      this.mRandomGroupFaceValueMap.put(Integer.valueOf(-1), new MemRandomValue());
+    Object localObject = this.mRandomGroupFaceValueMap;
+    Integer localInteger = Integer.valueOf(-1);
+    if (!((Map)localObject).containsKey(localInteger)) {
+      this.mRandomGroupFaceValueMap.put(localInteger, new MemRandomValue());
     }
-    Object localObject = (MemRandomValue)this.mRandomGroupFaceValueMap.get(Integer.valueOf(-1));
+    localObject = (MemRandomValue)this.mRandomGroupFaceValueMap.get(localInteger);
     if (((MemRandomValue)localObject).curValue < 0)
     {
       i = AlgoUtils.randValueDiff(((MemRandomValue)localObject).lastValue, paramInt);
@@ -148,43 +152,53 @@ public enum RandomGroupManager
     }
     clearFaceRandomGroupStatus(paramList);
     fillEmptyRandomGroupValue(paramList, paramInt);
+    int j = -1;
     MemRandomValue localMemRandomValue2 = (MemRandomValue)this.mRandomGroupHandValueMap.get(Integer.valueOf(0));
     MemRandomValue localMemRandomValue1;
-    int i;
-    if (!CollectionUtils.isEmpty(paramList))
-    {
+    if (!CollectionUtils.isEmpty(paramList)) {
       localMemRandomValue1 = (MemRandomValue)this.mRandomGroupFaceValueMap.get(paramList.get(0));
-      if ((localMemRandomValue2 == null) || (localMemRandomValue1 == null) || (((localMemRandomValue2.curValue >= 0) || (!paramBoolean)) && ((localMemRandomValue1.curValue >= 0) || (CollectionUtils.isEmpty(paramList))))) {
-        break label207;
-      }
-      if (localMemRandomValue2.curValue >= 0) {
-        break label136;
-      }
-      i = localMemRandomValue1.lastValue;
+    } else {
+      localMemRandomValue1 = localMemRandomValue2;
     }
-    label117:
-    for (paramInt = AlgoUtils.randValueDiff(i, paramInt);; paramInt = -1)
+    int i = j;
+    if (localMemRandomValue2 != null)
     {
-      if (paramInt < 0) {}
-      do
-      {
-        return;
-        localMemRandomValue1 = localMemRandomValue2;
-        break;
-        i = localMemRandomValue2.lastValue;
-        break label117;
-        if (!CollectionUtils.isEmpty(paramList)) {
-          this.mRandomGroupFaceValueMap.put(paramList.get(0), new MemRandomValue(paramInt, paramInt));
+      i = j;
+      if (localMemRandomValue1 != null) {
+        if ((localMemRandomValue2.curValue >= 0) || (!paramBoolean))
+        {
+          i = j;
+          if (localMemRandomValue1.curValue < 0)
+          {
+            i = j;
+            if (CollectionUtils.isEmpty(paramList)) {}
+          }
         }
-      } while (!paramBoolean);
-      this.mRandomGroupHandValueMap.put(Integer.valueOf(0), new MemRandomValue(paramInt, paramInt));
+        else
+        {
+          if (localMemRandomValue2.curValue < 0) {
+            i = localMemRandomValue1.lastValue;
+          } else {
+            i = localMemRandomValue2.lastValue;
+          }
+          i = AlgoUtils.randValueDiff(i, paramInt);
+        }
+      }
+    }
+    if (i < 0) {
       return;
+    }
+    if (!CollectionUtils.isEmpty(paramList)) {
+      this.mRandomGroupFaceValueMap.put(paramList.get(0), new MemRandomValue(i, i));
+    }
+    if (paramBoolean) {
+      this.mRandomGroupHandValueMap.put(Integer.valueOf(0), new MemRandomValue(i, i));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.manager.RandomGroupManager
  * JD-Core Version:    0.7.0.1
  */

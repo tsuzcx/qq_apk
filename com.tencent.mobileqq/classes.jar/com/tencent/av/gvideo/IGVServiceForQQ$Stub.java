@@ -31,55 +31,60 @@ public abstract class IGVServiceForQQ$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.gvideo.IGVServiceForQQ");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      a(IAVServiceCallback.Stub.a(paramParcel1.readStrongBinder()));
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      a(paramParcel1.createByteArray());
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      boolean bool;
-      if (paramParcel1.readInt() != 0)
+      if (paramInt1 != 2)
       {
-        bool = true;
-        if (paramParcel1.readInt() == 0) {
-          break label168;
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 4)
+          {
+            if (paramInt1 != 5)
+            {
+              if (paramInt1 != 1598968902) {
+                return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+              }
+              paramParcel2.writeString("com.tencent.av.gvideo.IGVServiceForQQ");
+              return true;
+            }
+            paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+            a();
+            return true;
+          }
+          paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+          paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+          paramParcel2.writeNoException();
+          paramParcel2.writeInt(paramInt1);
+          return true;
         }
-      }
-      for (paramParcel1 = (Notification)Notification.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
+        paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+        boolean bool;
+        if (paramParcel1.readInt() != 0) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        if (paramParcel1.readInt() != 0) {
+          paramParcel1 = (Notification)Notification.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel1 = null;
+        }
         a(bool, paramParcel1);
         paramParcel2.writeNoException();
         return true;
-        bool = false;
-        break;
       }
-    case 4: 
-      label168:
       paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
+      a(paramParcel1.createByteArray());
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-    a();
+    a(IAVServiceCallback.Stub.a(paramParcel1.readStrongBinder()));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gvideo.IGVServiceForQQ.Stub
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,19 +29,20 @@ public final class single_feed
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     Object localObject = (byte[])new byte[1];
     ((byte[])localObject)[0] = 0;
-    cache_singlefeed.put(Integer.valueOf(0), localObject);
+    cache_singlefeed.put(localInteger, localObject);
     cache_recomfeeds = new ArrayList();
     localObject = new HashMap();
     byte[] arrayOfByte = (byte[])new byte[1];
     ((byte[])arrayOfByte)[0] = 0;
-    ((Map)localObject).put(Integer.valueOf(0), arrayOfByte);
+    ((Map)localObject).put(localInteger, arrayOfByte);
     cache_recomfeeds.add(localObject);
     cache_patch_singlefeed = new HashMap();
     localObject = (byte[])new byte[1];
     ((byte[])localObject)[0] = 0;
-    cache_patch_singlefeed.put(Integer.valueOf(0), localObject);
+    cache_patch_singlefeed.put(localInteger, localObject);
   }
   
   public single_feed() {}
@@ -79,26 +81,32 @@ public final class single_feed
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.singlefeed != null) {
-      paramJceOutputStream.write(this.singlefeed, 0);
+    Object localObject = this.singlefeed;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
     paramJceOutputStream.write(this.status, 1);
-    if (this.feed_info != null) {
-      paramJceOutputStream.write(this.feed_info, 2);
+    localObject = this.feed_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.feed_attach_info != null) {
-      paramJceOutputStream.write(this.feed_attach_info, 3);
+    localObject = this.feed_attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.feedskey != null) {
-      paramJceOutputStream.write(this.feedskey, 4);
+    localObject = this.feedskey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.time, 5);
-    if (this.recomfeeds != null) {
-      paramJceOutputStream.write(this.recomfeeds, 6);
+    localObject = this.recomfeeds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
     paramJceOutputStream.write(this.uContainerSubType, 7);
-    if (this.patch_singlefeed != null) {
-      paramJceOutputStream.write(this.patch_singlefeed, 8);
+    localObject = this.patch_singlefeed;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
     paramJceOutputStream.write(this.feeds_update_time, 9);
     paramJceOutputStream.write(this.pullAll, 10);
@@ -107,7 +115,7 @@ public final class single_feed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.single_feed
  * JD-Core Version:    0.7.0.1
  */

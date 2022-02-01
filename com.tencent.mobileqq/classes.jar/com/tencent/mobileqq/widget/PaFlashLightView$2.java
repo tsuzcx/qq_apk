@@ -8,8 +8,9 @@ class PaFlashLightView$2
 {
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPaFlashLightView$RefreshHandler.sendEmptyMessage(1);
+    paramAnimation = this.a;
+    paramAnimation.jdField_a_of_type_Boolean = false;
+    paramAnimation.jdField_a_of_type_ComTencentMobileqqWidgetPaFlashLightView$RefreshHandler.sendEmptyMessage(1);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -18,7 +19,7 @@ class PaFlashLightView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PaFlashLightView.2
  * JD-Core Version:    0.7.0.1
  */

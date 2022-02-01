@@ -22,54 +22,61 @@ class AdapterHelper$UpdateOp
   
   String cmdToString()
   {
-    switch (this.cmd)
+    int i = this.cmd;
+    if (i != 1)
     {
-    case 3: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return "??";
-    case 1: 
-      return "add";
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 4)
+        {
+          if (i != 8) {
+            return "??";
+          }
+          return "mv";
+        }
+        return "up";
+      }
       return "rm";
-    case 4: 
-      return "up";
     }
-    return "mv";
+    return "add";
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject != null)
     {
-      do
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (UpdateOp)paramObject;
+      int i = this.cmd;
+      if (i != paramObject.cmd) {
+        return false;
+      }
+      if ((i == 8) && (Math.abs(this.itemCount - this.positionStart) == 1) && (this.itemCount == paramObject.positionStart) && (this.positionStart == paramObject.itemCount)) {
+        return true;
+      }
+      if (this.itemCount != paramObject.itemCount) {
+        return false;
+      }
+      if (this.positionStart != paramObject.positionStart) {
+        return false;
+      }
+      Object localObject = this.payload;
+      if (localObject != null)
       {
-        do
-        {
-          return true;
-          if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-            return false;
-          }
-          paramObject = (UpdateOp)paramObject;
-          if (this.cmd != paramObject.cmd) {
-            return false;
-          }
-        } while ((this.cmd == 8) && (Math.abs(this.itemCount - this.positionStart) == 1) && (this.itemCount == paramObject.positionStart) && (this.positionStart == paramObject.itemCount));
-        if (this.itemCount != paramObject.itemCount) {
+        if (!localObject.equals(paramObject.payload)) {
           return false;
         }
-        if (this.positionStart != paramObject.positionStart) {
-          return false;
-        }
-        if (this.payload == null) {
-          break;
-        }
-      } while (this.payload.equals(paramObject.payload));
-      return false;
-    } while (paramObject.payload == null);
+      }
+      else if (paramObject.payload != null) {
+        return false;
+      }
+      return true;
+    }
     return false;
   }
   
@@ -80,7 +87,18 @@ class AdapterHelper$UpdateOp
   
   public String toString()
   {
-    return Integer.toHexString(System.identityHashCode(this)) + "[" + cmdToString() + ",s:" + this.positionStart + "c:" + this.itemCount + ",p:" + this.payload + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    localStringBuilder.append("[");
+    localStringBuilder.append(cmdToString());
+    localStringBuilder.append(",s:");
+    localStringBuilder.append(this.positionStart);
+    localStringBuilder.append("c:");
+    localStringBuilder.append(this.itemCount);
+    localStringBuilder.append(",p:");
+    localStringBuilder.append(this.payload);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

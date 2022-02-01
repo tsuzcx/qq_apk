@@ -14,16 +14,26 @@ public class QCirclePluginConstant$LoadAction
   
   static
   {
-    sAction.put(Integer.valueOf(1000), Integer.valueOf(1000));
-    sAction.put(Integer.valueOf(1002), Integer.valueOf(1002));
-    sAction.put(Integer.valueOf(1003), Integer.valueOf(1003));
-    sAction.put(Integer.valueOf(1004), Integer.valueOf(1004));
-    sAction.put(Integer.valueOf(1005), Integer.valueOf(1005));
+    Map localMap = sAction;
+    Integer localInteger = Integer.valueOf(1000);
+    localMap.put(localInteger, localInteger);
+    localMap = sAction;
+    localInteger = Integer.valueOf(1002);
+    localMap.put(localInteger, localInteger);
+    localMap = sAction;
+    localInteger = Integer.valueOf(1003);
+    localMap.put(localInteger, localInteger);
+    localMap = sAction;
+    localInteger = Integer.valueOf(1004);
+    localMap.put(localInteger, localInteger);
+    localMap = sAction;
+    localInteger = Integer.valueOf(1005);
+    localMap.put(localInteger, localInteger);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCirclePluginConstant.LoadAction
  * JD-Core Version:    0.7.0.1
  */

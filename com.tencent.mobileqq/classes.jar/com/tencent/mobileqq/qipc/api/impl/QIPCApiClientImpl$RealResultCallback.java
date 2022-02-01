@@ -18,27 +18,23 @@ class QIPCApiClientImpl$RealResultCallback
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    QIPCApiResult localQIPCApiResult;
-    if ((this.mCallback != null) && (this.mCallback.get() != null))
+    Object localObject = this.mCallback;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-      if (paramEIPCResult == null) {
-        break label64;
+      localObject = null;
+      if (paramEIPCResult != null)
+      {
+        localObject = new QIPCApiResult();
+        ((QIPCApiResult)localObject).code = paramEIPCResult.code;
+        ((QIPCApiResult)localObject).data = paramEIPCResult.data;
       }
-      localQIPCApiResult = new QIPCApiResult();
-      localQIPCApiResult.code = paramEIPCResult.code;
-      localQIPCApiResult.data = paramEIPCResult.data;
-    }
-    label64:
-    for (paramEIPCResult = localQIPCApiResult;; paramEIPCResult = null)
-    {
-      ((QIPCApiCallback)this.mCallback.get()).onCallback(paramEIPCResult);
-      return;
+      ((QIPCApiCallback)this.mCallback.get()).onCallback((QIPCApiResult)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qipc.api.impl.QIPCApiClientImpl.RealResultCallback
  * JD-Core Version:    0.7.0.1
  */

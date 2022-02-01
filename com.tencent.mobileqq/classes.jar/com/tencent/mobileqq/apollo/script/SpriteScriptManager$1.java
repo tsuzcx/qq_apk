@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.script;
 
-import com.tencent.mobileqq.apollo.api.impl.listener.IApolloStatusOrDressChangeListener;
+import com.tencent.mobileqq.apollo.listener.IApolloStatusOrDressChangeListener;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,7 +16,7 @@ class SpriteScriptManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteScriptManager.1
  * JD-Core Version:    0.7.0.1
  */

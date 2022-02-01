@@ -41,11 +41,14 @@ public class VideoPlayer
         this.mPlayer = paramContext;
       }
     }
-    if (this.mPlayer == null) {
-      throw new IllegalStateException("on create error , not found media player!");
+    paramContext = this.mPlayer;
+    if (paramContext != null)
+    {
+      paramContext.create(paramLong);
+      GLog.d("QGVideoPlayer", "on create , play handle = %d", new Object[] { Long.valueOf(paramLong) });
+      return;
     }
-    this.mPlayer.create(paramLong);
-    GLog.d("QGVideoPlayer", "on create , play handle = %d", new Object[] { Long.valueOf(paramLong) });
+    throw new IllegalStateException("on create error , not found media player!");
   }
   
   public static void activeMediaPlayer(IMediaPlayer paramIMediaPlayer)
@@ -65,12 +68,13 @@ public class VideoPlayer
   
   private void handlePause()
   {
-    if (this.mPlayer == null)
+    IMediaPlayer localIMediaPlayer = this.mPlayer;
+    if (localIMediaPlayer == null)
     {
       GLog.e("QGVideoPlayer", "pause failed : player is null? why??");
       return;
     }
-    this.mCurrentPos = this.mPlayer.getCurrentPosition();
+    this.mCurrentPos = localIMediaPlayer.getCurrentPosition();
     this.mPlayer.pause();
     nativeEvent(this.mPlayerHandle, "pause");
   }
@@ -84,9 +88,12 @@ public class VideoPlayer
     }
     this.mPlayer.setSrc(this.mSrc);
     this.mPlayer.setLooping(this.mIsLoop);
-    this.mPlayer.setVolume(this.mVolume, this.mVolume);
-    if (this.mCurrentPos > 0) {
-      this.mPlayer.seekTo(this.mCurrentPos);
+    IMediaPlayer localIMediaPlayer = this.mPlayer;
+    float f = this.mVolume;
+    localIMediaPlayer.setVolume(f, f);
+    int i = this.mCurrentPos;
+    if (i > 0) {
+      this.mPlayer.seekTo(i);
     }
     this.mPlayer.play(this.mTextureId, this.mWidth, this.mHeight);
     nativeEvent(this.mPlayerHandle, "play");
@@ -94,23 +101,25 @@ public class VideoPlayer
   
   private void handleSeekTo(int paramInt)
   {
-    if (this.mPlayer == null)
+    IMediaPlayer localIMediaPlayer = this.mPlayer;
+    if (localIMediaPlayer == null)
     {
       GLog.e("QGVideoPlayer", "seek failed : player is null");
       return;
     }
-    this.mPlayer.seekTo(paramInt);
+    localIMediaPlayer.seekTo(paramInt);
   }
   
   private void handleStop()
   {
-    if (this.mPlayer == null)
+    IMediaPlayer localIMediaPlayer = this.mPlayer;
+    if (localIMediaPlayer == null)
     {
       GLog.e("QGVideoPlayer", "stop failed : player is null? why??");
       return;
     }
     this.mCurrentPos = -1;
-    this.mPlayer.stop();
+    localIMediaPlayer.stop();
     nativeEvent(this.mPlayerHandle, "ended");
   }
   
@@ -118,61 +127,64 @@ public class VideoPlayer
   
   public static void unActiveMediaPlayer(IMediaPlayer paramIMediaPlayer)
   {
-    if (sMediaPlayerWeakRefStack.isEmpty()) {
-      GLog.d("QGVideoPlayer", "unactive error ! no data in cache ,class = %s", new Object[] { paramIMediaPlayer.getClass() });
-    }
-    IMediaPlayer localIMediaPlayer;
-    for (;;)
+    if (sMediaPlayerWeakRefStack.isEmpty())
     {
+      GLog.d("QGVideoPlayer", "unactive error ! no data in cache ,class = %s", new Object[] { paramIMediaPlayer.getClass() });
       return;
-      while (!sMediaPlayerWeakRefStack.isEmpty())
+    }
+    while (!sMediaPlayerWeakRefStack.isEmpty())
+    {
+      IMediaPlayer localIMediaPlayer = (IMediaPlayer)((WeakReference)sMediaPlayerWeakRefStack.peek()).get();
+      if (localIMediaPlayer == null)
       {
-        localIMediaPlayer = (IMediaPlayer)((WeakReference)sMediaPlayerWeakRefStack.peek()).get();
-        if (localIMediaPlayer != null) {
-          break label74;
-        }
         sMediaPlayerWeakRefStack.pop();
         GLog.d("QGVideoPlayer", "unactive found useless player , remove it");
       }
+      else
+      {
+        if (localIMediaPlayer == paramIMediaPlayer)
+        {
+          sMediaPlayerWeakRefStack.pop();
+          GLog.d("QGVideoPlayer", "unactive success , class :%s , remove it", new Object[] { localIMediaPlayer.getClass() });
+          return;
+        }
+        GLog.d("QGVideoPlayer", "unactive error , class not match ,need class :%s , rear class :%s", new Object[] { paramIMediaPlayer.getClass(), localIMediaPlayer.getClass() });
+      }
     }
-    label74:
-    if (localIMediaPlayer == paramIMediaPlayer)
-    {
-      sMediaPlayerWeakRefStack.pop();
-      GLog.d("QGVideoPlayer", "unactive success , class :%s , remove it", new Object[] { localIMediaPlayer.getClass() });
-      return;
-    }
-    GLog.d("QGVideoPlayer", "unactive error , class not match ,need class :%s , rear class :%s", new Object[] { paramIMediaPlayer.getClass(), localIMediaPlayer.getClass() });
   }
   
   public int getCurrentTime()
   {
-    if (this.mPlayer != null) {
-      return this.mPlayer.getCurrentPosition();
+    IMediaPlayer localIMediaPlayer = this.mPlayer;
+    if (localIMediaPlayer != null) {
+      return localIMediaPlayer.getCurrentPosition();
     }
     return 0;
   }
   
   public int getDuration()
   {
-    if (this.mPlayer != null) {
-      return this.mPlayer.getDuration();
+    IMediaPlayer localIMediaPlayer = this.mPlayer;
+    if (localIMediaPlayer != null) {
+      return localIMediaPlayer.getDuration();
     }
     return 0;
   }
   
   public boolean isEnd()
   {
-    if (this.mPlayer != null) {
-      return this.mPlayer.isEnd();
+    IMediaPlayer localIMediaPlayer = this.mPlayer;
+    if (localIMediaPlayer != null) {
+      return localIMediaPlayer.isEnd();
     }
     return false;
   }
   
   public boolean isMuted()
   {
-    if (this.mPlayer != null) {
-      this.mPlayer.isMuted();
+    IMediaPlayer localIMediaPlayer = this.mPlayer;
+    if (localIMediaPlayer != null) {
+      localIMediaPlayer.isMuted();
     }
     return false;
   }
@@ -201,8 +213,9 @@ public class VideoPlayer
   public void release()
   {
     GLog.w("QGVideoPlayer", "onRelease!");
-    if (this.mPlayer != null) {
-      this.mPlayer.destroy();
+    IMediaPlayer localIMediaPlayer = this.mPlayer;
+    if (localIMediaPlayer != null) {
+      localIMediaPlayer.destroy();
     }
     this.mPlayer = null;
     this.mPlayThread.getLooper().quit();
@@ -223,26 +236,36 @@ public class VideoPlayer
   
   public void setLoop(boolean paramBoolean)
   {
-    GLog.d("QGVideoPlayer", "setLoop:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setLoop:");
+    localStringBuilder.append(paramBoolean);
+    GLog.d("QGVideoPlayer", localStringBuilder.toString());
     this.mIsLoop = paramBoolean;
   }
   
   public void setMuted(boolean paramBoolean)
   {
-    if (this.mPlayer != null) {
-      this.mPlayer.setMuted(paramBoolean);
+    IMediaPlayer localIMediaPlayer = this.mPlayer;
+    if (localIMediaPlayer != null) {
+      localIMediaPlayer.setMuted(paramBoolean);
     }
   }
   
   public void setSrc(String paramString)
   {
     this.mSrc = paramString;
-    GLog.d("QGVideoPlayer", " setSrc:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" setSrc:");
+    localStringBuilder.append(paramString);
+    GLog.d("QGVideoPlayer", localStringBuilder.toString());
   }
   
   public void setVolume(float paramFloat)
   {
-    GLog.d("QGVideoPlayer", "setVolume:" + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setVolume:");
+    localStringBuilder.append(paramFloat);
+    GLog.d("QGVideoPlayer", localStringBuilder.toString());
     this.mVolume = paramFloat;
   }
   
@@ -258,7 +281,7 @@ public class VideoPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.sdk.video.VideoPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,8 @@ public class QCallCardManager
   
   private EntityManager a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {}
+    ??? = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    if ((??? == null) || (!((EntityManager)???).isOpen())) {}
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
@@ -38,7 +39,8 @@ public class QCallCardManager
   
   private void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    if ((localEntityManager != null) && (localEntityManager.isOpen())) {
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
     }
   }
@@ -73,21 +75,19 @@ public class QCallCardManager
   
   public void b(QCallCardInfo paramQCallCardInfo)
   {
-    if (paramQCallCardInfo == null) {}
-    for (;;)
-    {
+    if (paramQCallCardInfo == null) {
       return;
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramQCallCardInfo.uin))
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.replace(paramQCallCardInfo.uin, paramQCallCardInfo);
-          continue;
-        }
-      }
-      finally {}
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramQCallCardInfo.uin, paramQCallCardInfo);
     }
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramQCallCardInfo.uin)) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.replace(paramQCallCardInfo.uin, paramQCallCardInfo);
+      } else {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramQCallCardInfo.uin, paramQCallCardInfo);
+      }
+      return;
+    }
+    finally {}
   }
   
   public void onDestroy()
@@ -98,7 +98,7 @@ public class QCallCardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallCardManager
  * JD-Core Version:    0.7.0.1
  */

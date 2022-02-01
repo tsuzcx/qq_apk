@@ -24,12 +24,15 @@ public class Configuration$Builder
   @Deprecated
   private ReportPolicy mElementReportPolicy = ReportPolicy.REPORT_POLICY_ALL;
   private boolean mEnablePageLink = false;
+  private boolean mEnableToast;
   private IFormatter mFormatter;
   private boolean mIndependentPageOut = false;
   private int mLazyInitType = 0;
-  private ILogger mLogger = Configuration.access$2100();
+  private ILogger mLogger = Configuration.access$2400();
   private double mPageExposureMinRate = 0.4D;
   private long mPageExposureMinTime = 200L;
+  private int mVideoHeartBeatInterval = 300;
+  private int mVideoPageSwitch = 0;
   private long mVisitBackgroundTime = 900000L;
   
   private Builder defaultReportEnable(boolean paramBoolean)
@@ -65,8 +68,12 @@ public class Configuration$Builder
   public Configuration build()
   {
     Configuration localConfiguration = new Configuration(this, null);
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("Configuration", "build: " + localConfiguration);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("build: ");
+      localStringBuilder.append(localConfiguration);
+      Log.i("Configuration", localStringBuilder.toString());
     }
     return localConfiguration;
   }
@@ -131,37 +138,38 @@ public class Configuration$Builder
   @Deprecated
   public Builder elementReportPolicy(ReportPolicy paramReportPolicy)
   {
-    if (paramReportPolicy.reportClick)
-    {
+    Object localObject;
+    if (paramReportPolicy.reportClick) {
       localObject = ClickPolicy.REPORT_ALL;
-      elementClickPolicy((ClickPolicy)localObject);
-      if (!paramReportPolicy.reportExposure) {
-        break label65;
-      }
-      localObject = ExposurePolicy.REPORT_ALL;
-      label28:
-      elementExposePolicy((ExposurePolicy)localObject);
-      if (!paramReportPolicy.reportExposure) {
-        break label72;
-      }
-    }
-    label65:
-    label72:
-    for (Object localObject = EndExposurePolicy.REPORT_ALL;; localObject = EndExposurePolicy.REPORT_NONE)
-    {
-      elementEndExposePolicy((EndExposurePolicy)localObject);
-      this.mElementReportPolicy = paramReportPolicy;
-      return this;
+    } else {
       localObject = ClickPolicy.REPORT_NONE;
-      break;
-      localObject = ExposurePolicy.REPORT_NONE;
-      break label28;
     }
+    elementClickPolicy((ClickPolicy)localObject);
+    if (paramReportPolicy.reportExposure) {
+      localObject = ExposurePolicy.REPORT_ALL;
+    } else {
+      localObject = ExposurePolicy.REPORT_NONE;
+    }
+    elementExposePolicy((ExposurePolicy)localObject);
+    if (paramReportPolicy.reportExposure) {
+      localObject = EndExposurePolicy.REPORT_ALL;
+    } else {
+      localObject = EndExposurePolicy.REPORT_NONE;
+    }
+    elementEndExposePolicy((EndExposurePolicy)localObject);
+    this.mElementReportPolicy = paramReportPolicy;
+    return this;
   }
   
   public Builder enablePageLink(boolean paramBoolean)
   {
     this.mEnablePageLink = paramBoolean;
+    return this;
+  }
+  
+  public Builder enableToast(boolean paramBoolean)
+  {
+    this.mEnableToast = paramBoolean;
     return this;
   }
   
@@ -216,6 +224,18 @@ public class Configuration$Builder
     return this;
   }
   
+  public Builder setVideoPageSwitch(int paramInt)
+  {
+    this.mVideoPageSwitch = paramInt;
+    return this;
+  }
+  
+  public Builder videoHeartBeatInterval(int paramInt)
+  {
+    this.mVideoHeartBeatInterval = paramInt;
+    return this;
+  }
+  
   public Builder visitBackgroundTime(long paramLong)
   {
     if (paramLong < 0L)
@@ -229,7 +249,7 @@ public class Configuration$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.Configuration.Builder
  * JD-Core Version:    0.7.0.1
  */

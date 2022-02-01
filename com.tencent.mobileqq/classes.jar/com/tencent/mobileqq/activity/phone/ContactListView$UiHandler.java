@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.phone;
 
 import android.os.Message;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.adapter.ContactBindedAdapter;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqpim.QQPimGetTipsInfoIPC;
@@ -26,60 +26,81 @@ class ContactListView$UiHandler
   
   public void handleMessage(Message paramMessage)
   {
-    ContactListView localContactListView = (ContactListView)this.a.get();
-    if (localContactListView == null) {
+    Object localObject1 = (ContactListView)this.a.get();
+    if (localObject1 == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("ContactListView", 2, "UiHandler() handleMessage a == null");
       }
+      return;
     }
-    do
+    int i = paramMessage.what;
+    if (i != 1)
     {
-      do
+      if (i != 2)
       {
-        return;
-        switch (paramMessage.what)
+        if (i != 4)
         {
-        case 3: 
-        case 7: 
-        default: 
-          throw new RuntimeException("Unknown message: " + paramMessage.what);
-        case 1: 
-          if ((ContactListView.a(localContactListView)) && (!localContactListView.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.f()))
+          if (i != 5)
           {
-            localContactListView.g();
-            ContactListView.a(localContactListView, false);
+            if (i != 6)
+            {
+              if (i == 8)
+              {
+                ((ContactListView)localObject1).i();
+                ((ContactListView)localObject1).l();
+                return;
+              }
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("Unknown message: ");
+              ((StringBuilder)localObject1).append(paramMessage.what);
+              throw new RuntimeException(((StringBuilder)localObject1).toString());
+            }
+            ContactListView.a((ContactListView)localObject1, (QQPimTipsInfo)paramMessage.obj);
+            return;
           }
-          localContactListView.j();
+          paramMessage = ContactListView.a((ContactListView)localObject1).getAccount();
+          Object localObject2 = (TicketManagerImpl)ContactListView.a((ContactListView)localObject1).getManager(2);
+          if (localObject2 == null) {
+            return;
+          }
+          localObject2 = ((TicketManagerImpl)localObject2).getA2(paramMessage);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("a2 = ");
+            localStringBuilder.append((String)localObject2);
+            QLog.i("ContactListView", 2, localStringBuilder.toString());
+          }
+          QQPimGetTipsInfoIPC.a().a(ContactListView.a((ContactListView)localObject1), ContactListView.a((ContactListView)localObject1), paramMessage, (String)localObject2);
           return;
-        case 2: 
-          localContactListView.j();
         }
-      } while (NetworkUtil.d(localContactListView.getContext()));
-      localContactListView.i();
-      localContactListView.b(HardCodeUtil.a(2131702536));
-      return;
-      localContactListView.b = ((List)paramMessage.obj);
-      localContactListView.jdField_a_of_type_ComTencentMobileqqAdapterContactBindedAdapter.a(localContactListView.b);
-      localContactListView.jdField_a_of_type_ComTencentMobileqqAdapterContactBindedAdapter.notifyDataSetChanged();
-      return;
-      paramMessage = ContactListView.a(localContactListView).getAccount();
-      localObject = (TicketManagerImpl)ContactListView.a(localContactListView).getManager(2);
-    } while (localObject == null);
-    Object localObject = ((TicketManagerImpl)localObject).getA2(paramMessage);
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactListView", 2, "a2 = " + (String)localObject);
+        ((ContactListView)localObject1).b = ((List)paramMessage.obj);
+        ((ContactListView)localObject1).jdField_a_of_type_ComTencentMobileqqAdapterContactBindedAdapter.a(((ContactListView)localObject1).b);
+        ((ContactListView)localObject1).jdField_a_of_type_ComTencentMobileqqAdapterContactBindedAdapter.notifyDataSetChanged();
+        return;
+      }
+      ((ContactListView)localObject1).j();
+      if (!NetworkUtil.isNetSupport(((ContactListView)localObject1).getContext()))
+      {
+        ((ContactListView)localObject1).i();
+        ((ContactListView)localObject1).a(HardCodeUtil.a(2131702668));
+      }
     }
-    QQPimGetTipsInfoIPC.a().a(ContactListView.a(localContactListView), ContactListView.a(localContactListView), paramMessage, (String)localObject);
-    return;
-    ContactListView.a(localContactListView, (QQPimTipsInfo)paramMessage.obj);
-    return;
-    localContactListView.i();
-    localContactListView.l();
+    else
+    {
+      if ((ContactListView.a((ContactListView)localObject1)) && (!((ContactListView)localObject1).jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService.isAutoUploadContacts()))
+      {
+        ((ContactListView)localObject1).g();
+        ContactListView.a((ContactListView)localObject1, false);
+      }
+      ((ContactListView)localObject1).j();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.ContactListView.UiHandler
  * JD-Core Version:    0.7.0.1
  */

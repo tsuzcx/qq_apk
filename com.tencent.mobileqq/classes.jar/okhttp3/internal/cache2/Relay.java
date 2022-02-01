@@ -31,15 +31,16 @@ final class Relay
   {
     this.file = paramRandomAccessFile;
     this.upstream = paramSource;
-    if (paramSource == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.complete = bool;
-      this.upstreamPos = paramLong1;
-      this.metadata = paramByteString;
-      this.bufferMaxSize = paramLong2;
-      return;
+    boolean bool;
+    if (paramSource == null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.complete = bool;
+    this.upstreamPos = paramLong1;
+    this.metadata = paramByteString;
+    this.bufferMaxSize = paramLong2;
   }
   
   public static Relay edit(File paramFile, Source paramSource, ByteString paramByteString, long paramLong)
@@ -57,14 +58,15 @@ final class Relay
     FileOperator localFileOperator = new FileOperator(paramFile.getChannel());
     Buffer localBuffer = new Buffer();
     localFileOperator.read(0L, localBuffer, 32L);
-    if (!localBuffer.readByteString(PREFIX_CLEAN.size()).equals(PREFIX_CLEAN)) {
-      throw new IOException("unreadable cache file");
+    if (localBuffer.readByteString(PREFIX_CLEAN.size()).equals(PREFIX_CLEAN))
+    {
+      long l1 = localBuffer.readLong();
+      long l2 = localBuffer.readLong();
+      localBuffer = new Buffer();
+      localFileOperator.read(l1 + 32L, localBuffer, l2);
+      return new Relay(paramFile, null, l1, localBuffer.readByteString(), 0L);
     }
-    long l1 = localBuffer.readLong();
-    long l2 = localBuffer.readLong();
-    localBuffer = new Buffer();
-    localFileOperator.read(32L + l1, localBuffer, l2);
-    return new Relay(paramFile, null, l1, localBuffer.readByteString(), 0L);
+    throw new IOException("unreadable cache file");
   }
   
   private void writeHeader(ByteString paramByteString, long paramLong1, long paramLong2)
@@ -73,10 +75,12 @@ final class Relay
     localBuffer.write(paramByteString);
     localBuffer.writeLong(paramLong1);
     localBuffer.writeLong(paramLong2);
-    if (localBuffer.size() != 32L) {
-      throw new IllegalArgumentException();
+    if (localBuffer.size() == 32L)
+    {
+      new FileOperator(this.file.getChannel()).write(0L, localBuffer, 32L);
+      return;
     }
-    new FileOperator(this.file.getChannel()).write(0L, localBuffer, 32L);
+    throw new IllegalArgumentException();
   }
   
   private void writeMetadata(long paramLong)
@@ -127,7 +131,7 @@ final class Relay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.cache2.Relay
  * JD-Core Version:    0.7.0.1
  */

@@ -18,26 +18,29 @@ class ReaderEngine$1
   {
     Log.d("ReaderEngine", "TBSOneCallback:onCompleted");
     boolean bool = ReaderEngine.access$000(this.this$0, this.val$manager, paramTBSOneComponent);
-    if (this.val$callBackListener != null) {
-      if (!bool) {
-        break label44;
-      }
-    }
-    label44:
-    for (int i = 0;; i = -1)
+    if (this.val$callBackListener != null)
     {
+      int i;
+      if (bool) {
+        i = 0;
+      } else {
+        i = -1;
+      }
       postMainUI(this.val$callBackListener, i);
-      return;
     }
   }
   
   public void onError(int paramInt, String paramString)
   {
-    Log.e("ReaderEngine", "TBSOneCallback:onError:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TBSOneCallback:onError:");
+    localStringBuilder.append(paramInt);
+    Log.e("ReaderEngine", localStringBuilder.toString());
     paramString = String.format("tbs:onError,code=%d, des=%s", new Object[] { Integer.valueOf(paramInt), paramString });
     this.this$0.report(1000, paramString, null);
-    if (this.val$callBackListener != null) {
-      postMainUI(this.val$callBackListener, paramInt);
+    paramString = this.val$callBackListener;
+    if (paramString != null) {
+      postMainUI(paramString, paramInt);
     }
   }
   
@@ -50,7 +53,7 @@ class ReaderEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.reader.ReaderEngine.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,8 @@ class TroopAppShortcutHasNewAppNavBar$1
   
   public void run()
   {
-    TroopAppShortcutHasNewAppNavBar.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772073));
+    TroopAppShortcutHasNewAppNavBar localTroopAppShortcutHasNewAppNavBar = this.this$0;
+    TroopAppShortcutHasNewAppNavBar.a(localTroopAppShortcutHasNewAppNavBar, AnimationUtils.loadAnimation(localTroopAppShortcutHasNewAppNavBar.a, 2130772099));
     TroopAppShortcutHasNewAppNavBar.a(this.this$0).clearAnimation();
     TroopAppShortcutHasNewAppNavBar.a(this.this$0).startAnimation(TroopAppShortcutHasNewAppNavBar.a(this.this$0));
     TroopAppShortcutHasNewAppNavBar.a(this.this$0).setAnimationListener(this.this$0);
@@ -19,7 +20,7 @@ class TroopAppShortcutHasNewAppNavBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.navigate.TroopAppShortcutHasNewAppNavBar.1
  * JD-Core Version:    0.7.0.1
  */

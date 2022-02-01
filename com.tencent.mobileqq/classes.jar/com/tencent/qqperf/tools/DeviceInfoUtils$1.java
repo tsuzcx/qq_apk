@@ -25,38 +25,27 @@ final class DeviceInfoUtils$1
   
   public void run()
   {
-    Object localObject1 = null;
     DeviceInfoUtils.a(System.currentTimeMillis());
     this.a.edit().putLong("device_perf_level_timestamps", DeviceInfoUtils.a()).apply();
-    for (;;)
+    try
     {
-      try
+      Object localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("pid", "1");
+      ((JSONObject)localObject1).put("device", URLEncoder.encode(Build.MODEL, "UTF-8"));
+      ((JSONObject)localObject1).put("version", "1.0.0");
+      ((JSONObject)localObject1).put("uin", QQDeviceInfo.getIMEI("a4bd32"));
+      ((JSONObject)localObject1).put("userSwitch", "0");
+      ((JSONObject)localObject1).put("lastSwitch", "0");
+      if (QLog.isColorLevel())
       {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("pid", "1");
-        ((JSONObject)localObject2).put("device", URLEncoder.encode(Build.MODEL, "UTF-8"));
-        ((JSONObject)localObject2).put("version", "1.0.0");
-        ((JSONObject)localObject2).put("uin", QQDeviceInfo.getIMEI("a4bd32"));
-        ((JSONObject)localObject2).put("userSwitch", "0");
-        ((JSONObject)localObject2).put("lastSwitch", "0");
-        if (QLog.isColorLevel())
-        {
-          QLog.e("DeviceInfoUtils", 1, "perf level sendRequest");
-          QLog.e("DeviceInfoUtils", 1, ((JSONObject)localObject2).toString());
-        }
-        localObject2 = new Request.Builder().url("https://ten.sngapm.qq.com/appconfig/v4/config/14199/").post(RequestBody.create(null, ((JSONObject)localObject2).toString())).build();
-        localObject4 = new OkHttpClient().newBuilder().connectTimeout(5L, TimeUnit.SECONDS).readTimeout(5L, TimeUnit.SECONDS).build();
+        QLog.e("DeviceInfoUtils", 1, "perf level sendRequest");
+        QLog.e("DeviceInfoUtils", 1, ((JSONObject)localObject1).toString());
       }
-      catch (Throwable localThrowable)
-      {
-        Object localObject2;
-        Object localObject4;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("DeviceInfoUtils", 2, localThrowable.toString());
-        continue;
-      }
+      Object localObject2 = new Request.Builder().url("https://ten.sngapm.qq.com/appconfig/v4/config/14199/");
+      Object localObject4 = ((JSONObject)localObject1).toString();
+      localObject1 = null;
+      localObject2 = ((Request.Builder)localObject2).post(RequestBody.create(null, (String)localObject4)).build();
+      localObject4 = new OkHttpClient().newBuilder().connectTimeout(5L, TimeUnit.SECONDS).readTimeout(5L, TimeUnit.SECONDS).build();
       try
       {
         localObject2 = ((OkHttpClient)localObject4).newCall((Request)localObject2).execute();
@@ -81,24 +70,27 @@ final class DeviceInfoUtils$1
             DeviceInfoUtils.a(i);
           }
         }
-        if (localObject2 != null) {
-          ((Response)localObject2).close();
-        }
-        DeviceInfoUtils.a().set(false);
-        return;
       }
       finally
       {
         if (localObject1 != null) {
-          localObject1.close();
+          ((Response)localObject1).close();
         }
       }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("DeviceInfoUtils", 2, localThrowable.toString());
+      }
+      DeviceInfoUtils.a().set(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.tools.DeviceInfoUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,11 @@ import android.view.View;
 
 public abstract interface PublicFragmentActivity$IViewCreator
 {
-  public abstract View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet);
+  public abstract View a(String paramString, Context paramContext, AttributeSet paramAttributeSet);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivity.IViewCreator
  * JD-Core Version:    0.7.0.1
  */

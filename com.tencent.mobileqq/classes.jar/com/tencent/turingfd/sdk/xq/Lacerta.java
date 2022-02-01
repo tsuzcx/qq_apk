@@ -1,120 +1,131 @@
 package com.tencent.turingfd.sdk.xq;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class Lacerta
+public final class Lacerta
   extends case
+  implements Cloneable
 {
-  public static List<Draco> Aa = new ArrayList();
-  public static Map<Integer, Sagittarius> Eb;
-  public static Map<Integer, LeoMinor> Fb;
-  public static Map<Integer, Lyra> Gb;
-  public static Lynx Hb;
-  public static Map<Integer, Norma> Ib;
-  public static Pyxis Jb = new Pyxis();
-  public List<Draco> Ea = null;
-  public Map<Integer, Sagittarius> Kb = null;
-  public Map<Integer, LeoMinor> Lb = null;
-  public int Mb = 0;
-  public Map<Integer, Lyra> Nb = null;
-  public int Ob = 0;
-  public Lynx Pb = null;
-  public Map<Integer, Norma> Qb = null;
-  public int R = 0;
-  public Pyxis Rb = null;
+  public static Map<String, String> I;
+  public static Map<Integer, Integer> J;
+  public static Map<String, String> K;
+  public long Q = 0L;
+  public boolean R = true;
+  public Map<Integer, Integer> S = null;
+  public long U = 0L;
+  public Map<String, String> W = null;
+  public Map<String, String> path = null;
+  public long version = 0L;
   
   static
   {
-    Object localObject = new Draco();
-    Aa.add(localObject);
-    Eb = new HashMap();
-    localObject = new Sagittarius();
-    Eb.put(Integer.valueOf(0), localObject);
-    Fb = new HashMap();
-    localObject = new LeoMinor();
-    Fb.put(Integer.valueOf(0), localObject);
-    Gb = new HashMap();
-    localObject = new Lyra();
-    Gb.put(Integer.valueOf(0), localObject);
-    Hb = new Lynx();
-    Ib = new HashMap();
-    localObject = new Norma();
-    Ib.put(Integer.valueOf(0), localObject);
+    I = new HashMap();
+    I.put("", "");
+    J = new HashMap();
+    Integer localInteger = Integer.valueOf(0);
+    J.put(localInteger, localInteger);
+    K = new HashMap();
+    K.put("", "");
   }
   
   public void a(byte parambyte)
   {
-    parambyte.a(this.R, 0);
-    Object localObject = this.Ea;
-    if (localObject != null) {
-      parambyte.a((Collection)localObject, 1);
-    }
-    localObject = this.Kb;
-    if (localObject != null) {
-      parambyte.a((Map)localObject, 2);
-    }
-    localObject = this.Lb;
-    if (localObject != null) {
-      parambyte.a((Map)localObject, 3);
-    }
-    parambyte.a(this.Mb, 4);
-    localObject = this.Nb;
-    if (localObject != null) {
-      parambyte.a((Map)localObject, 5);
-    }
-    parambyte.a(this.Ob, 6);
-    localObject = this.Pb;
-    if (localObject != null) {
-      parambyte.a((case)localObject, 7);
-    }
-    localObject = this.Qb;
-    if (localObject != null) {
-      parambyte.a((Map)localObject, 8);
-    }
-    localObject = this.Rb;
-    if (localObject != null) {
-      parambyte.a((case)localObject, 9);
+    parambyte.a(this.Q, 0);
+    parambyte.a(this.R, 1);
+    parambyte.a(this.version, 2);
+    parambyte.a(this.path, 3);
+    parambyte.a(this.S, 4);
+    parambyte.a(this.U, 5);
+    Map localMap = this.W;
+    if (localMap != null) {
+      parambyte.a(localMap, 6);
     }
   }
   
   public void a(try paramtry)
   {
-    this.R = paramtry.a(this.R, 0, true);
-    this.Ea = ((List)paramtry.a(Aa, 1, false));
-    this.Kb = ((Map)paramtry.a(Eb, 2, false));
-    this.Lb = ((Map)paramtry.a(Fb, 3, false));
-    this.Mb = paramtry.a(this.Mb, 4, false);
-    this.Nb = ((Map)paramtry.a(Gb, 5, false));
-    this.Ob = paramtry.a(this.Ob, 6, false);
-    this.Pb = ((Lynx)paramtry.a(Hb, 7, false));
-    this.Qb = ((Map)paramtry.a(Ib, 8, false));
-    this.Rb = ((Pyxis)paramtry.a(Jb, 9, false));
+    this.Q = paramtry.a(this.Q, 0, true);
+    this.R = paramtry.a(this.R, 1, true);
+    this.version = paramtry.a(this.version, 2, true);
+    this.path = ((Map)paramtry.a(I, 3, true));
+    this.S = ((Map)paramtry.a(J, 4, true));
+    this.U = paramtry.a(this.U, 5, true);
+    this.W = ((Map)paramtry.a(K, 6, false));
+  }
+  
+  public Object clone()
+  {
+    try
+    {
+      Object localObject = super.clone();
+      return localObject;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label7:
+      break label7;
+    }
+    if (r) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    boolean bool2 = false;
+    if (paramObject == null) {
+      return false;
+    }
+    paramObject = (Lacerta)paramObject;
+    boolean bool1 = bool2;
+    if (char.a(this.Q, paramObject.Q))
     {
-      return true;
-      if (paramObject == null) {
-        return false;
+      bool1 = bool2;
+      if (char.a(this.R, paramObject.R))
+      {
+        bool1 = bool2;
+        if (char.a(this.version, paramObject.version))
+        {
+          bool1 = bool2;
+          if (char.equals(this.path, paramObject.path))
+          {
+            bool1 = bool2;
+            if (char.equals(this.S, paramObject.S))
+            {
+              bool1 = bool2;
+              if (char.a(this.U, paramObject.U))
+              {
+                bool1 = bool2;
+                if (char.equals(this.W, paramObject.W)) {
+                  bool1 = true;
+                }
+              }
+            }
+          }
+        }
       }
-      if (!(paramObject instanceof Lacerta)) {
-        return false;
-      }
-      paramObject = (Lacerta)paramObject;
-    } while ((char.equals(this.R, paramObject.R)) && (char.equals(this.Ea, paramObject.Ea)) && (char.equals(this.Kb, paramObject.Kb)) && (char.equals(this.Lb, paramObject.Lb)) && (char.equals(this.Mb, paramObject.Mb)) && (char.equals(this.Nb, paramObject.Nb)) && (char.equals(this.Ob, paramObject.Ob)) && (char.equals(this.Pb, paramObject.Pb)) && (char.equals(this.Qb, paramObject.Qb)) && (char.equals(this.Rb, paramObject.Rb)));
-    return false;
+    }
+    return bool1;
+  }
+  
+  public int hashCode()
+  {
+    try
+    {
+      throw new Exception("");
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Lacerta
  * JD-Core Version:    0.7.0.1
  */

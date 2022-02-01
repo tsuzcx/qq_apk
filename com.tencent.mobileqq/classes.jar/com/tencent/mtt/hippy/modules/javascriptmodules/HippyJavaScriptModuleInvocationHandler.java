@@ -20,24 +20,24 @@ public class HippyJavaScriptModuleInvocationHandler
   
   public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    if ((paramObject instanceof HippyJavaScriptModule)) {
-      if ((paramArrayOfObject == null) || (paramArrayOfObject.length != 1)) {
-        break label65;
-      }
-    }
-    label65:
-    for (paramObject = paramArrayOfObject[0];; paramObject = ArgumentUtils.fromJavaArgs(paramArrayOfObject))
+    if ((paramObject instanceof HippyJavaScriptModule))
     {
-      if ((this.mHippyContext != null) && (this.mHippyContext.getBridgeManager() != null)) {
+      if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 1)) {
+        paramObject = paramArrayOfObject[0];
+      } else {
+        paramObject = ArgumentUtils.fromJavaArgs(paramArrayOfObject);
+      }
+      paramArrayOfObject = this.mHippyContext;
+      if ((paramArrayOfObject != null) && (paramArrayOfObject.getBridgeManager() != null)) {
         this.mHippyContext.getBridgeManager().a(this.mName, paramMethod.getName(), paramObject);
       }
-      return null;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.javascriptmodules.HippyJavaScriptModuleInvocationHandler
  * JD-Core Version:    0.7.0.1
  */

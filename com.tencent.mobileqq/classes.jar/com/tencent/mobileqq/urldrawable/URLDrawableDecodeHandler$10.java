@@ -12,42 +12,41 @@ final class URLDrawableDecodeHandler$10
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
     if (paramBitmap == null) {
-      paramDownloadParams = null;
+      return null;
     }
-    do
+    Object localObject = paramDownloadParams.tag;
+    paramDownloadParams = paramBitmap;
+    if ((localObject instanceof int[]))
     {
-      do
-      {
-        Object localObject;
-        do
-        {
-          do
-          {
-            return paramDownloadParams;
-            localObject = paramDownloadParams.tag;
-            paramDownloadParams = paramBitmap;
-          } while (!(localObject instanceof int[]));
-          paramDownloadParams = paramBitmap;
-        } while (((int[])localObject).length != 3);
-        paramDownloadParams = (int[])localObject;
-        if (paramDownloadParams[0] == 0) {
-          paramDownloadParams[0] = paramBitmap.getWidth();
-        }
-        if (paramDownloadParams[1] == 0) {
-          paramDownloadParams[1] = paramBitmap.getHeight();
-        }
-        paramBitmap = ImageUtil.c(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
-        paramDownloadParams = paramBitmap;
-      } while (paramBitmap != null);
+      localObject = (int[])localObject;
       paramDownloadParams = paramBitmap;
-    } while (!QLog.isDevelopLevel());
-    QLog.w(URLDrawableDecodeHandler.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
-    return paramBitmap;
+      if (localObject.length == 4)
+      {
+        if (localObject[0] == 0) {
+          localObject[0] = paramBitmap.getWidth();
+        }
+        if (localObject[1] == 0) {
+          localObject[1] = paramBitmap.getHeight();
+        }
+        paramBitmap = ImageUtil.a(paramBitmap, localObject[0], localObject[1], localObject[2], localObject[3]);
+        paramDownloadParams = paramBitmap;
+        if (paramBitmap == null)
+        {
+          paramDownloadParams = paramBitmap;
+          if (QLog.isDevelopLevel())
+          {
+            QLog.w(URLDrawableDecodeHandler.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
+            paramDownloadParams = paramBitmap;
+          }
+        }
+      }
+    }
+    return paramDownloadParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler.10
  * JD-Core Version:    0.7.0.1
  */

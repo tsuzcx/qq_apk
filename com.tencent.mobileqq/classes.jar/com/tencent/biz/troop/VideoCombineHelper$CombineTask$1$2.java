@@ -12,11 +12,19 @@ class VideoCombineHelper$CombineTask$1$2
   {
     if (QLog.isColorLevel())
     {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("combineWording end! isSuccess:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" path = ");
+      ((StringBuilder)localObject).append(paramString1);
+      QLog.d(".troop.VideoCombineHelper", 2, ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("combineWordingTime:");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      QLog.d(".troop.trace_video_combine", 2, ((StringBuilder)localObject).toString());
     }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
+    Object localObject = new File(paramString1);
+    if ((paramBoolean) && (((File)localObject).exists()))
     {
       this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.e = paramString1;
       this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.a.b(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask);
@@ -29,7 +37,7 @@ class VideoCombineHelper$CombineTask$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.CombineTask.1.2
  * JD-Core Version:    0.7.0.1
  */

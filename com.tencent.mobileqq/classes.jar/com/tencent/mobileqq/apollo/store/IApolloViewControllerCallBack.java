@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView;
 
 public abstract interface IApolloViewControllerCallBack
 {
@@ -10,7 +10,7 @@ public abstract interface IApolloViewControllerCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.IApolloViewControllerCallBack
  * JD-Core Version:    0.7.0.1
  */

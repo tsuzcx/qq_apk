@@ -44,7 +44,7 @@ public class HighLightMaskView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawColor(-1728053248);
@@ -70,7 +70,7 @@ public class HighLightMaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.HighLightMaskView
  * JD-Core Version:    0.7.0.1
  */

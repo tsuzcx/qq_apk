@@ -17,13 +17,10 @@ public final class MiniDownloader$download$1
   public void onDownloadFailed(int paramInt, @Nullable String paramString)
   {
     Downloader.Listener localListener = this.$listener;
-    if (paramString != null) {}
-    for (;;)
-    {
-      localListener.onFail(paramString);
-      return;
+    if (paramString == null) {
       paramString = "unknown failure";
     }
+    localListener.onFail(paramString);
   }
   
   public void onDownloadHeadersReceived(int paramInt, @Nullable Map<String, List<String>> paramMap) {}
@@ -40,7 +37,7 @@ public final class MiniDownloader$download$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.api.MiniDownloader.download.1
  * JD-Core Version:    0.7.0.1
  */

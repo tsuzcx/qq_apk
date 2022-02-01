@@ -65,8 +65,12 @@ public class MessageForDeliverGiftTips
   
   public void buildDeliverGiftTips(QQAppInterface paramQQAppInterface, Context paramContext, TextView paramTextView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.send_gift", 2, "MessageForDeliverGiftTips.buildDeliverGiftTips seq:" + this.shmsgseq);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MessageForDeliverGiftTips.buildDeliverGiftTips seq:");
+      localStringBuilder.append(this.shmsgseq);
+      QLog.d(".troop.send_gift", 2, localStringBuilder.toString());
     }
     paramTextView.setText(getHightlightMsgText(paramQQAppInterface, paramContext, false, paramTextView));
     paramTextView.setClickable(true);
@@ -96,7 +100,7 @@ public class MessageForDeliverGiftTips
   
   public boolean isInteract()
   {
-    return !TextUtils.isEmpty(this.interactId);
+    return TextUtils.isEmpty(this.interactId) ^ true;
   }
   
   public boolean isReaded()
@@ -116,12 +120,19 @@ public class MessageForDeliverGiftTips
   
   public boolean isToAll()
   {
-    return (this.animationPackageId == 0) && (this.exflag > 1000) && (this.exflag <= 2000);
+    if (this.animationPackageId == 0)
+    {
+      int i = this.exflag;
+      if ((i > 1000) && (i <= 2000)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForDeliverGiftTips
  * JD-Core Version:    0.7.0.1
  */

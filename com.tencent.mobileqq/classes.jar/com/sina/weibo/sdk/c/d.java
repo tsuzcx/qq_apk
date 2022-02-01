@@ -8,13 +8,13 @@ public final class d
   
   public static String a(byte[] paramArrayOfByte)
   {
-    int i = 0;
     try
     {
       Object localObject = MessageDigest.getInstance("MD5");
       ((MessageDigest)localObject).update(paramArrayOfByte);
       paramArrayOfByte = ((MessageDigest)localObject).digest();
       localObject = new char[32];
+      int i = 0;
       int j = 0;
       while (i < 16)
       {

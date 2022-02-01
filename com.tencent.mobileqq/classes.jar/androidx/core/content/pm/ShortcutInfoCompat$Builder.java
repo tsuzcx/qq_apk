@@ -22,8 +22,9 @@ public class ShortcutInfoCompat$Builder
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   public ShortcutInfoCompat$Builder(@NonNull Context paramContext, @NonNull ShortcutInfo paramShortcutInfo)
   {
-    this.mInfo.mContext = paramContext;
-    this.mInfo.mId = paramShortcutInfo.getId();
+    ShortcutInfoCompat localShortcutInfoCompat = this.mInfo;
+    localShortcutInfoCompat.mContext = paramContext;
+    localShortcutInfoCompat.mId = paramShortcutInfo.getId();
     paramContext = paramShortcutInfo.getIntents();
     this.mInfo.mIntents = ((Intent[])Arrays.copyOf(paramContext, paramContext.length));
     this.mInfo.mActivity = paramShortcutInfo.getActivity();
@@ -37,8 +38,9 @@ public class ShortcutInfoCompat$Builder
   
   public ShortcutInfoCompat$Builder(@NonNull Context paramContext, @NonNull String paramString)
   {
-    this.mInfo.mContext = paramContext;
-    this.mInfo.mId = paramString;
+    ShortcutInfoCompat localShortcutInfoCompat = this.mInfo;
+    localShortcutInfoCompat.mContext = paramContext;
+    localShortcutInfoCompat.mId = paramString;
   }
   
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
@@ -66,13 +68,14 @@ public class ShortcutInfoCompat$Builder
   @NonNull
   public ShortcutInfoCompat build()
   {
-    if (TextUtils.isEmpty(this.mInfo.mLabel)) {
-      throw new IllegalArgumentException("Shortcut must have a non-empty label");
-    }
-    if ((this.mInfo.mIntents == null) || (this.mInfo.mIntents.length == 0)) {
+    if (!TextUtils.isEmpty(this.mInfo.mLabel))
+    {
+      if ((this.mInfo.mIntents != null) && (this.mInfo.mIntents.length != 0)) {
+        return this.mInfo;
+      }
       throw new IllegalArgumentException("Shortcut must have an intent");
     }
-    return this.mInfo;
+    throw new IllegalArgumentException("Shortcut must have a non-empty label");
   }
   
   @NonNull
@@ -174,7 +177,7 @@ public class ShortcutInfoCompat$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.content.pm.ShortcutInfoCompat.Builder
  * JD-Core Version:    0.7.0.1
  */

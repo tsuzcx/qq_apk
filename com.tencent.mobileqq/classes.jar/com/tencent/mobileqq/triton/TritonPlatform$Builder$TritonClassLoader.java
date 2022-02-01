@@ -33,15 +33,17 @@ final class TritonPlatform$Builder$TritonClassLoader
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      paramString = this.originClassLoader.loadClass(paramString);
-      Intrinsics.checkExpressionValueIsNotNull(paramString, "originClassLoader.loadClass(name)");
+      label20:
+      break label20;
     }
+    paramString = this.originClassLoader.loadClass(paramString);
+    Intrinsics.checkExpressionValueIsNotNull(paramString, "originClassLoader.loadClass(name)");
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.TritonPlatform.Builder.TritonClassLoader
  * JD-Core Version:    0.7.0.1
  */

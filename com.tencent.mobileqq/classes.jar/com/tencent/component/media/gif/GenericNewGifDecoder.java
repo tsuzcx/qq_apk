@@ -42,27 +42,35 @@ public class GenericNewGifDecoder
   {
     int i = this.mNativeInfoHandle.getPreferConfig();
     Bitmap.Config localConfig = Bitmap.Config.ARGB_8888;
-    switch (i)
+    if (i != 1)
     {
-    case 2: 
-    case 3: 
-    case 5: 
-    case 6: 
-    default: 
+      if (i != 4)
+      {
+        if (i != 7)
+        {
+          if (i != 8) {
+            localConfig = Bitmap.Config.ARGB_8888;
+          } else {
+            localConfig = Bitmap.Config.ALPHA_8;
+          }
+        }
+        else {
+          localConfig = Bitmap.Config.ARGB_4444;
+        }
+      }
+      else {
+        localConfig = Bitmap.Config.RGB_565;
+      }
+    }
+    else {
       localConfig = Bitmap.Config.ARGB_8888;
     }
-    for (;;)
-    {
-      ImageManagerEnv.getLogger().d("GenericNewGifDecoder", new Object[] { "index GifInfoHandle: preferBmpFormat--" + i });
-      return localConfig;
-      localConfig = Bitmap.Config.ARGB_8888;
-      continue;
-      localConfig = Bitmap.Config.RGB_565;
-      continue;
-      localConfig = Bitmap.Config.ARGB_4444;
-      continue;
-      localConfig = Bitmap.Config.ALPHA_8;
-    }
+    ILog localILog = ImageManagerEnv.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("index GifInfoHandle: preferBmpFormat--");
+    localStringBuilder.append(i);
+    localILog.d("GenericNewGifDecoder", new Object[] { localStringBuilder.toString() });
+    return localConfig;
   }
   
   public long getAllocationByteCount()
@@ -142,8 +150,9 @@ public class GenericNewGifDecoder
   
   public boolean isRecycled()
   {
-    if (this.mNativeInfoHandle != null) {
-      return this.mNativeInfoHandle.isRecycled();
+    GifInfoHandle localGifInfoHandle = this.mNativeInfoHandle;
+    if (localGifInfoHandle != null) {
+      return localGifInfoHandle.isRecycled();
     }
     return true;
   }
@@ -242,7 +251,7 @@ public class GenericNewGifDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.gif.GenericNewGifDecoder
  * JD-Core Version:    0.7.0.1
  */

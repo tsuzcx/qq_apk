@@ -112,49 +112,44 @@ public class DomObject
   
   private static boolean diffUpdates(Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
-    if (paramMap1 == null) {}
-    while (paramMap1.size() <= 0) {
+    boolean bool = false;
+    if (paramMap1 == null) {
       return false;
     }
-    return true;
+    if (paramMap1.size() > 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   private void fireOnLayoutEvent()
   {
-    float f1;
-    float f2;
     if (this.mEvents.contains("layout"))
     {
-      f1 = FlexConvertUtils.px2dip(getOnLayoutWidth());
-      f2 = FlexConvertUtils.px2dip(getOnLayoutHeight());
-      if ((this.mLastLayoutWidth != f1) || (this.mLastLayoutHeight != f2)) {}
-    }
-    else
-    {
-      return;
-    }
-    float f3 = FlexConvertUtils.px2dip(getLayoutX());
-    float f4 = FlexConvertUtils.px2dip(getLayoutY());
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    try
-    {
-      localJSONObject2.put("width", f1);
-      localJSONObject2.put("height", f2);
-      localJSONObject2.put("x", f3);
-      localJSONObject2.put("y", f4);
-      localJSONObject1.put("layout", localJSONObject2);
-      fireEvent("layout", localJSONObject1);
-      this.mLastLayoutWidth = f1;
-      this.mLastLayoutHeight = f2;
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      float f1 = FlexConvertUtils.px2dip(getOnLayoutWidth());
+      float f2 = FlexConvertUtils.px2dip(getOnLayoutHeight());
+      if ((this.mLastLayoutWidth == f1) && (this.mLastLayoutHeight == f2)) {
+        return;
+      }
+      float f3 = FlexConvertUtils.px2dip(getLayoutX());
+      float f4 = FlexConvertUtils.px2dip(getLayoutY());
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      try
+      {
+        localJSONObject2.put("width", f1);
+        localJSONObject2.put("height", f2);
+        localJSONObject2.put("x", f3);
+        localJSONObject2.put("y", f4);
+        localJSONObject1.put("layout", localJSONObject2);
+      }
+      catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
+      fireEvent("layout", localJSONObject1);
+      this.mLastLayoutWidth = f1;
+      this.mLastLayoutHeight = f2;
     }
   }
   
@@ -203,7 +198,10 @@ public class DomObject
     }
     catch (JSONException paramJSONObject)
     {
-      ViolaLogUtils.e("DomObject", "JSONException e:" + paramJSONObject.getMessage());
+      paramViolaInstance = new StringBuilder();
+      paramViolaInstance.append("JSONException e:");
+      paramViolaInstance.append(paramJSONObject.getMessage());
+      ViolaLogUtils.e("DomObject", paramViolaInstance.toString());
     }
     return null;
   }
@@ -219,12 +217,13 @@ public class DomObject
   private void parseFromTransform(Object paramObject)
   {
     paramObject = ViolaUtils.getString(paramObject, null);
-    if (TextUtils.isEmpty(paramObject)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramObject)) {
       return;
-      paramObject = AnimationBean.Style.parseTransForm(paramObject, (int)getLayoutWidth(), (int)getLayoutHeight(), 750);
-    } while (paramObject == null);
+    }
+    paramObject = AnimationBean.Style.parseTransForm(paramObject, (int)getLayoutWidth(), (int)getLayoutHeight(), 750);
+    if (paramObject == null) {
+      return;
+    }
     AnimationBean.Style.resetToDefaultIfAbsent(paramObject);
     this.mStyles.put("fromTransformParse", paramObject);
   }
@@ -257,14 +256,18 @@ public class DomObject
   
   private void removeFromDom(DomObject paramDomObject)
   {
-    if ((paramDomObject == null) || (this.mDomChildren == null)) {}
-    int i;
-    do
+    if (paramDomObject != null)
     {
-      return;
-      i = this.mDomChildren.indexOf(paramDomObject);
-    } while (i == -1);
-    ((DomObject)this.mDomChildren.remove(i)).mParent = null;
+      List localList = this.mDomChildren;
+      if (localList == null) {
+        return;
+      }
+      int i = localList.indexOf(paramDomObject);
+      if (i == -1) {
+        return;
+      }
+      ((DomObject)this.mDomChildren.remove(i)).mParent = null;
+    }
   }
   
   public static boolean shouldDirty(Map<String, Object> paramMap)
@@ -285,34 +288,37 @@ public class DomObject
   
   public void add(DomObject paramDomObject, int paramInt)
   {
-    if ((paramDomObject == null) || (paramInt < -1)) {
-      return;
-    }
-    if (this.mDomChildren == null) {
-      this.mDomChildren = new ArrayList();
-    }
-    int i = paramInt;
-    if (paramInt >= this.mDomChildren.size()) {
-      i = -1;
-    }
-    if (i == -1)
+    if (paramDomObject != null)
     {
-      this.mDomChildren.add(paramDomObject);
-      super.addChildAt(paramDomObject, super.getChildCount());
-    }
-    for (;;)
-    {
+      if (paramInt < -1) {
+        return;
+      }
+      if (this.mDomChildren == null) {
+        this.mDomChildren = new ArrayList();
+      }
+      int i = paramInt;
+      if (paramInt >= this.mDomChildren.size()) {
+        i = -1;
+      }
+      if (i == -1)
+      {
+        this.mDomChildren.add(paramDomObject);
+        super.addChildAt(paramDomObject, super.getChildCount());
+      }
+      else
+      {
+        this.mDomChildren.add(i, paramDomObject);
+        super.addChildAt(paramDomObject, i);
+      }
       paramDomObject.mParent = this;
-      return;
-      this.mDomChildren.add(i, paramDomObject);
-      super.addChildAt(paramDomObject, i);
     }
   }
   
   public void applyDrawLayoutStyle()
   {
-    if (this.mStyles != null) {
-      this.mLayoutStyle = new DrawLayoutStyle(this.mStyles);
+    Style localStyle = this.mStyles;
+    if (localStyle != null) {
+      this.mLayoutStyle = new DrawLayoutStyle(localStyle);
     }
   }
   
@@ -328,69 +334,68 @@ public class DomObject
   
   public DomObject clone()
   {
-    DomObject localDomObject2 = null;
-    if (this.sDestroy.get()) {
-      localDomObject1 = null;
+    boolean bool = this.sDestroy.get();
+    Object localObject = null;
+    if (bool) {
+      return null;
     }
-    do
-    {
-      return localDomObject1;
-      localDomObject1 = this;
-    } while (isCloneThis());
-    DomObject localDomObject1 = localDomObject2;
+    if (isCloneThis()) {
+      return this;
+    }
     try
     {
-      localDomObject2 = DomObjectFactory.newInstance(this.mType);
-      localDomObject1 = localDomObject2;
-      copyFields(localDomObject2);
-      localDomObject1 = localDomObject2;
+      DomObject localDomObject = DomObjectFactory.newInstance(this.mType);
+      localObject = localDomObject;
+      copyFields(localDomObject);
+      return localDomObject;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e("DomObject", "clone error: " + localException.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clone error: ");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e("DomObject", localStringBuilder.toString());
     }
-    return localDomObject1;
+    return localObject;
   }
   
   protected final void copyFields(DomObject paramDomObject)
   {
-    Object localObject2 = null;
     paramDomObject.flexStyle.copy(this.flexStyle);
     paramDomObject.mRef = this.mRef;
     paramDomObject.mType = this.mType;
-    if (this.mStyles == null)
-    {
+    Object localObject1 = this.mStyles;
+    Object localObject2 = null;
+    if (localObject1 == null) {
       localObject1 = null;
-      paramDomObject.mStyles = ((Style)localObject1);
-      if (this.mAttributes != null) {
-        break label80;
-      }
+    } else {
+      localObject1 = ((Style)localObject1).clone();
     }
-    label80:
-    for (Object localObject1 = localObject2;; localObject1 = this.mAttributes.clone())
-    {
-      paramDomObject.mAttributes = ((Attr)localObject1);
-      paramDomObject.flexLayout.copy(this.flexLayout);
-      return;
-      localObject1 = this.mStyles.clone();
-      break;
+    paramDomObject.mStyles = ((Style)localObject1);
+    localObject1 = this.mAttributes;
+    if (localObject1 == null) {
+      localObject1 = localObject2;
+    } else {
+      localObject1 = ((Attr)localObject1).clone();
     }
+    paramDomObject.mAttributes = ((Attr)localObject1);
+    paramDomObject.flexLayout.copy(this.flexLayout);
   }
   
   public void destroy()
   {
     this.sDestroy.set(true);
-    if (this.mStyles != null) {
-      this.mStyles.clear();
+    ??? = this.mStyles;
+    if (??? != null) {
+      ((Style)???).clear();
     }
-    if (this.mAttributes != null) {
-      this.mAttributes.clear();
+    ??? = this.mAttributes;
+    if (??? != null) {
+      ((Attr)???).clear();
     }
-    if (this.mEvents != null) {
-      this.mEvents.clear();
+    ??? = this.mEvents;
+    if (??? != null) {
+      ((ArrayList)???).clear();
     }
     synchronized (this.DOMOBJECT_LOCK)
     {
@@ -407,6 +412,10 @@ public class DomObject
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public void fireEvent(String paramString, JSONObject paramJSONObject)
@@ -417,12 +426,11 @@ public class DomObject
     JSONArray localJSONArray = new JSONArray();
     localJSONArray.put(this.mRef);
     localJSONArray.put(paramString);
-    if (paramJSONObject == null) {}
-    for (paramString = new JSONObject();; paramString = paramJSONObject)
-    {
-      ViolaBridgeManager.getInstance().callbackJavascript(this.mInstanceId, "dom", "fireEvent", localJSONArray, paramString, true);
-      return;
+    paramString = paramJSONObject;
+    if (paramJSONObject == null) {
+      paramString = new JSONObject();
     }
+    ViolaBridgeManager.getInstance().callbackJavascript(this.mInstanceId, "dom", "fireEvent", localJSONArray, paramString, true);
   }
   
   public Attr getAttributes()
@@ -437,20 +445,22 @@ public class DomObject
   {
     synchronized (this.DOMOBJECT_LOCK)
     {
-      if ((this.mDomChildren == null) || (this.mDomChildren.size() <= paramInt)) {
-        return null;
+      if ((this.mDomChildren != null) && (this.mDomChildren.size() > paramInt))
+      {
+        DomObject localDomObject = (DomObject)this.mDomChildren.get(paramInt);
+        return localDomObject;
       }
-      DomObject localDomObject = (DomObject)this.mDomChildren.get(paramInt);
-      return localDomObject;
+      return null;
     }
   }
   
   public int getChildPosition(DomObject paramDomObject)
   {
-    if (this.mDomChildren == null) {
+    List localList = this.mDomChildren;
+    if (localList == null) {
       return -1;
     }
-    return this.mDomChildren.indexOf(paramDomObject);
+    return localList.indexOf(paramDomObject);
   }
   
   public int getChildPositionFromList(DomObject paramDomObject)
@@ -463,8 +473,9 @@ public class DomObject
   
   public int getDomChildCount()
   {
-    if (this.mDomChildren != null) {
-      return this.mDomChildren.size();
+    List localList = this.mDomChildren;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
@@ -535,19 +546,27 @@ public class DomObject
   public void initRoot(String paramString, float paramFloat1, float paramFloat2)
   {
     this.mRef = paramString;
-    HashMap localHashMap = new HashMap(5);
-    if ((this.mStyles != null) && (!this.mStyles.containsKey("flexDirection"))) {
-      localHashMap.put("flexDirection", "column");
+    Object localObject = new HashMap(5);
+    Style localStyle = this.mStyles;
+    if ((localStyle != null) && (!localStyle.containsKey("flexDirection"))) {
+      ((Map)localObject).put("flexDirection", "column");
     }
-    if ((this.mStyles != null) && (!this.mStyles.containsKey("backgroundColor"))) {
-      localHashMap.put("backgroundColor", Integer.valueOf(0));
+    localStyle = this.mStyles;
+    if ((localStyle != null) && (!localStyle.containsKey("backgroundColor"))) {
+      ((Map)localObject).put("backgroundColor", Integer.valueOf(0));
     }
-    localHashMap.put("defaultWidth", Float.valueOf(paramFloat2));
-    if ((this.mStyles != null) && (!this.mStyles.containsKey("height"))) {
-      localHashMap.put("defaultHeight", Float.valueOf(paramFloat1));
+    ((Map)localObject).put("defaultWidth", Float.valueOf(paramFloat2));
+    localStyle = this.mStyles;
+    if ((localStyle != null) && (!localStyle.containsKey("height"))) {
+      ((Map)localObject).put("defaultHeight", Float.valueOf(paramFloat1));
     }
-    updateStyle(localHashMap);
-    ViolaLogUtils.d("DomObject", "initRoot: ref = " + paramString + ";defaultHeight:" + paramFloat1);
+    updateStyle((Map)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initRoot: ref = ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(";defaultHeight:");
+    ((StringBuilder)localObject).append(paramFloat1);
+    ViolaLogUtils.d("DomObject", ((StringBuilder)localObject).toString());
   }
   
   public boolean isCloneThis()
@@ -562,7 +581,8 @@ public class DomObject
   
   public boolean isFixed()
   {
-    return (this.mStyles != null) && (this.mStyles.isFixed());
+    Style localStyle = this.mStyles;
+    return (localStyle != null) && (localStyle.isFixed());
   }
   
   public boolean isLazy()
@@ -613,46 +633,41 @@ public class DomObject
   
   public void parseFromJson(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return;
-      try
+    }
+    try
+    {
+      if (paramJSONObject.has("type")) {
+        this.mType = String.valueOf(paramJSONObject.get("type"));
+      }
+      if (paramJSONObject.has("ref")) {
+        this.mRef = String.valueOf(paramJSONObject.get("ref"));
+      }
+      Object localObject;
+      if (paramJSONObject.has("style"))
       {
-        if (paramJSONObject.has("type")) {
-          this.mType = String.valueOf(paramJSONObject.get("type"));
-        }
-        if (paramJSONObject.has("ref")) {
-          this.mRef = String.valueOf(paramJSONObject.get("ref"));
-        }
-        Object localObject;
-        if (paramJSONObject.has("style"))
-        {
-          localObject = paramJSONObject.get("style");
-          if ((localObject != null) && ((localObject instanceof JSONObject)))
-          {
-            if (this.mStyles == null) {
-              break label222;
-            }
+        localObject = paramJSONObject.get("style");
+        if ((localObject != null) && ((localObject instanceof JSONObject))) {
+          if (this.mStyles != null) {
             this.mStyles.putAll(new Style((JSONObject)localObject));
+          } else {
+            this.mStyles = new Style((JSONObject)localObject);
           }
         }
-        for (;;)
+      }
+      if (paramJSONObject.has("attr"))
+      {
+        localObject = paramJSONObject.get("attr");
+        if ((localObject != null) && ((localObject instanceof JSONObject))) {
+          this.mAttributes = new Attr((JSONObject)localObject);
+        }
+      }
+      if (paramJSONObject.has("events"))
+      {
+        paramJSONObject = paramJSONObject.get("events");
+        if ((paramJSONObject != null) && ((paramJSONObject instanceof JSONArray)))
         {
-          if (paramJSONObject.has("attr"))
-          {
-            localObject = paramJSONObject.get("attr");
-            if ((localObject != null) && ((localObject instanceof JSONObject))) {
-              this.mAttributes = new Attr((JSONObject)localObject);
-            }
-          }
-          if (!paramJSONObject.has("events")) {
-            break;
-          }
-          paramJSONObject = paramJSONObject.get("events");
-          if ((paramJSONObject == null) || (!(paramJSONObject instanceof JSONArray))) {
-            break;
-          }
           paramJSONObject = (JSONArray)paramJSONObject;
           int j = paramJSONObject.length();
           int i = 0;
@@ -662,16 +677,14 @@ public class DomObject
             this.mEvents.add(localObject.toString());
             i += 1;
           }
-          label222:
-          this.mStyles = new Style((JSONObject)localObject);
         }
-        return;
       }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        Log.e("DomObject", paramJSONObject.getMessage());
-      }
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      Log.e("DomObject", paramJSONObject.getMessage());
     }
   }
   
@@ -681,15 +694,16 @@ public class DomObject
     if (paramDomObject != null) {}
     try
     {
-      if (this.mDomChildren == null) {
-        return -1;
+      if (this.mDomChildren != null)
+      {
+        int i = this.mDomChildren.indexOf(paramDomObject);
+        removeFromDom(paramDomObject);
+        if (i != -1) {
+          super.removeChildAt(i);
+        }
+        return i;
       }
-      int i = this.mDomChildren.indexOf(paramDomObject);
-      removeFromDom(paramDomObject);
-      if (i != -1) {
-        super.removeChildAt(i);
-      }
-      return i;
+      return -1;
     }
     finally {}
   }
@@ -716,64 +730,60 @@ public class DomObject
   
   public String toString()
   {
-    return this.mType + ", " + this.mDomChildren.size();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mType);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.mDomChildren.size());
+    return localStringBuilder.toString();
   }
   
   public int traverseTree(DomObject.Consumer... paramVarArgs)
   {
-    int k = 0;
-    int i = 0;
     System.nanoTime();
+    int k = 0;
     if (paramVarArgs == null) {
-      k = i;
+      return 0;
     }
-    int j;
-    DomObject localDomObject;
-    do
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
     {
-      return k;
-      j = paramVarArgs.length;
-      i = 0;
-      while (i < j)
-      {
-        paramVarArgs[i].accept(this);
-        i += 1;
-      }
-      int m = getChildCount();
-      j = 0;
-      i = k;
-      if (j >= m) {
-        break;
-      }
-      localDomObject = getChild(j);
-      k = i;
-    } while (localDomObject == null);
-    k = localDomObject.traverseTree(paramVarArgs);
-    if (i > k) {}
-    for (;;)
-    {
-      j += 1;
-      break;
-      i = k;
+      paramVarArgs[i].accept(this);
+      i += 1;
     }
-    return i + 1;
+    int m = getChildCount();
+    j = 0;
+    i = k;
+    while (i < m)
+    {
+      DomObject localDomObject = getChild(i);
+      if (localDomObject == null) {
+        return j;
+      }
+      k = localDomObject.traverseTree(paramVarArgs);
+      if (j <= k) {
+        j = k;
+      }
+      i += 1;
+    }
+    return j + 1;
   }
   
   public void updateAttr(Map<String, Object> paramMap)
   {
-    if (!diffUpdates(paramMap, getAttributes())) {}
-    do
-    {
+    if (!diffUpdates(paramMap, getAttributes())) {
       return;
-      if (this.mAttributes == null) {
-        this.mAttributes = new Attr();
-      }
-      this.mAttributes.putAll(paramMap);
-      if (hasNewLayout()) {
-        markUpdateSeen();
-      }
-    } while (!shouldDirty(paramMap));
-    super.dirty();
+    }
+    if (this.mAttributes == null) {
+      this.mAttributes = new Attr();
+    }
+    this.mAttributes.putAll(paramMap);
+    if (hasNewLayout()) {
+      markUpdateSeen();
+    }
+    if (shouldDirty(paramMap)) {
+      super.dirty();
+    }
   }
   
   public void updateStyle(Map<String, Object> paramMap)
@@ -792,10 +802,6 @@ public class DomObject
   {
     for (;;)
     {
-      Style localStyle;
-      int j;
-      Map.Entry localEntry;
-      String str;
       try
       {
         i = paramMap.size();
@@ -808,292 +814,340 @@ public class DomObject
           continue;
         }
         paramMap = paramMap.entrySet().iterator();
-        if (!paramMap.hasNext()) {
-          continue;
-        }
-        localEntry = (Map.Entry)paramMap.next();
-        str = (String)localEntry.getKey();
-        switch (str.hashCode())
-        {
-        case -1063257157: 
-          setAlignItems(localStyle.getAlignItems());
-          continue;
-          if (!str.equals("alignItems")) {
-            break label1565;
-          }
-        }
       }
-      finally {}
-      int i = 0;
-      break label1567;
-      if (str.equals("alignSelf"))
+      finally
       {
-        i = 1;
-        break label1567;
-        if (str.equals("flex"))
+        int i;
+        Style localStyle;
+        int j;
+        Map.Entry localEntry;
+        String str;
+        continue;
+        throw paramMap;
+        continue;
+        switch (i)
         {
-          i = 2;
-          break label1567;
-          if (str.equals("flexDirection"))
-          {
-            i = 3;
-            break label1567;
-            if (str.equals("justifyContent"))
-            {
-              i = 4;
-              break label1567;
-              if (str.equals("flexWrap"))
-              {
-                i = 5;
-                break label1567;
-                if (str.equals("minWidth"))
-                {
-                  i = 6;
-                  break label1567;
-                  if (str.equals("minHeight"))
-                  {
-                    i = 7;
-                    break label1567;
-                    if (str.equals("maxWidth"))
-                    {
-                      i = 8;
-                      break label1567;
-                      if (str.equals("maxHeight"))
-                      {
-                        i = 9;
-                        break label1567;
-                        if (str.equals("defaultHeight"))
-                        {
-                          i = 10;
-                          break label1567;
-                          if (str.equals("height"))
-                          {
-                            i = 11;
-                            break label1567;
-                            if (str.equals("width"))
-                            {
-                              i = 12;
-                              break label1567;
-                              if (str.equals("defaultWidth"))
-                              {
-                                i = 13;
-                                break label1567;
-                                if (str.equals("position"))
-                                {
-                                  i = 14;
-                                  break label1567;
-                                  if (str.equals("left"))
-                                  {
-                                    i = 15;
-                                    break label1567;
-                                    if (str.equals("top"))
-                                    {
-                                      i = 16;
-                                      break label1567;
-                                      if (str.equals("right"))
-                                      {
-                                        i = 17;
-                                        break label1567;
-                                        if (str.equals("bottom"))
-                                        {
-                                          i = 18;
-                                          break label1567;
-                                          if (str.equals("margin"))
-                                          {
-                                            i = 19;
-                                            break label1567;
-                                            if (str.equals("marginLeft"))
-                                            {
-                                              i = 20;
-                                              break label1567;
-                                              if (str.equals("marginTop"))
-                                              {
-                                                i = 21;
-                                                break label1567;
-                                                if (str.equals("marginRight"))
-                                                {
-                                                  i = 22;
-                                                  break label1567;
-                                                  if (str.equals("marginBottom"))
-                                                  {
-                                                    i = 23;
-                                                    break label1567;
-                                                    if (str.equals("borderWidth"))
-                                                    {
-                                                      i = 24;
-                                                      break label1567;
-                                                      if (str.equals("borderTopWidth"))
-                                                      {
-                                                        i = 25;
-                                                        break label1567;
-                                                        if (str.equals("borderRightWidth"))
-                                                        {
-                                                          i = 26;
-                                                          break label1567;
-                                                          if (str.equals("borderBottomWidth"))
-                                                          {
-                                                            i = 27;
-                                                            break label1567;
-                                                            if (str.equals("borderLeftWidth"))
-                                                            {
-                                                              i = 28;
-                                                              break label1567;
-                                                              if (str.equals("padding"))
-                                                              {
-                                                                i = 29;
-                                                                break label1567;
-                                                                if (str.equals("paddingLeft"))
-                                                                {
-                                                                  i = 30;
-                                                                  break label1567;
-                                                                  if (str.equals("paddingTop"))
-                                                                  {
-                                                                    i = 31;
-                                                                    break label1567;
-                                                                    if (str.equals("paddingRight"))
-                                                                    {
-                                                                      i = 32;
-                                                                      break label1567;
-                                                                      if (str.equals("paddingBottom"))
-                                                                      {
-                                                                        i = 33;
-                                                                        break label1567;
-                                                                        if (str.equals("transform"))
-                                                                        {
-                                                                          i = 34;
-                                                                          break label1567;
-                                                                          if (str.equals("transformOrigin"))
-                                                                          {
-                                                                            i = 35;
-                                                                            break label1567;
-                                                                            if (str.equals("backgroundImage"))
-                                                                            {
-                                                                              i = 36;
-                                                                              break label1567;
-                                                                              if (str.equals("fromTransform"))
-                                                                              {
-                                                                                i = 37;
-                                                                                break label1567;
-                                                                                setAlignSelf(localStyle.getAlignSelf());
-                                                                                continue;
-                                                                                setFlex(localStyle.getFlex());
-                                                                                continue;
-                                                                                setFlexDirection(localStyle.getFlexDirection());
-                                                                                continue;
-                                                                                setJustifyContent(localStyle.getJustifyContent());
-                                                                                continue;
-                                                                                setWrap(localStyle.getCSSWrap());
-                                                                                continue;
-                                                                                setMinWidth(localStyle.getMinWidth(j));
-                                                                                continue;
-                                                                                setMinHeight(localStyle.getMinHeight(j));
-                                                                                continue;
-                                                                                setMaxWidth(localStyle.getMaxWidth(j));
-                                                                                continue;
-                                                                                setMaxHeight(localStyle.getMaxHeight(j));
-                                                                                continue;
-                                                                                if (localStyle.containsKey("height")) {}
-                                                                                for (float f = localStyle.getHeight(j);; f = localStyle.getDefaultHeight(j))
-                                                                                {
-                                                                                  setStyleHeight(f);
-                                                                                  break;
-                                                                                }
-                                                                                if (localStyle.containsKey("width")) {}
-                                                                                for (f = localStyle.getWidth(j);; f = localStyle.getDefaultWidth(j))
-                                                                                {
-                                                                                  setStyleWidth(f);
-                                                                                  break;
-                                                                                }
-                                                                                setPositionType(localStyle.getPosition());
-                                                                                continue;
-                                                                                setPositionLeft(localStyle.getLeft(j));
-                                                                                continue;
-                                                                                setPositionTop(localStyle.getTop(j));
-                                                                                continue;
-                                                                                setPositionRight(localStyle.getRight(j));
-                                                                                continue;
-                                                                                setPositionBottom(localStyle.getBottom(j));
-                                                                                continue;
-                                                                                setMargin(8, localStyle.getMargin(j));
-                                                                                continue;
-                                                                                setMargin(0, localStyle.getMarginLeft(j));
-                                                                                continue;
-                                                                                setMargin(1, localStyle.getMarginTop(j));
-                                                                                continue;
-                                                                                setMargin(2, localStyle.getMarginRight(j));
-                                                                                continue;
-                                                                                setMargin(3, localStyle.getMarginBottom(j));
-                                                                                continue;
-                                                                                setBorder(8, localStyle.getBorderWidth(j));
-                                                                                continue;
-                                                                                setBorder(1, localStyle.getBorderTopWidth(j));
-                                                                                continue;
-                                                                                setBorder(2, localStyle.getBorderRightWidth(j));
-                                                                                continue;
-                                                                                setBorder(3, localStyle.getBorderBottomWidth(j));
-                                                                                continue;
-                                                                                setBorder(0, localStyle.getBorderLeftWidth(j));
-                                                                                continue;
-                                                                                setPadding(8, localStyle.getPadding(j));
-                                                                                continue;
-                                                                                setPadding(0, localStyle.getPaddingLeft(j));
-                                                                                continue;
-                                                                                setPadding(1, localStyle.getPaddingTop(j));
-                                                                                continue;
-                                                                                setPadding(2, localStyle.getPaddingRight(j));
-                                                                                continue;
-                                                                                setPadding(3, localStyle.getPaddingBottom(j));
-                                                                                continue;
-                                                                                parseTransform(localEntry.getValue());
-                                                                                continue;
-                                                                                parseTransformOrigin(localEntry.getValue());
-                                                                                continue;
-                                                                                parseBackgroundImage(localEntry.getValue());
-                                                                                continue;
-                                                                                parseFromTransform(localEntry.getValue());
-                                                                                continue;
-                                                                              }
-                                                                            }
-                                                                          }
-                                                                        }
-                                                                      }
-                                                                    }
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
         }
+        continue;
       }
-      label1565:
+      if (!paramMap.hasNext()) {
+        continue;
+      }
+      localEntry = (Map.Entry)paramMap.next();
+      str = (String)localEntry.getKey();
       i = -1;
-      label1567:
-      switch (i)
+      switch (str.hashCode())
       {
+      case 1970934485: 
+        if (!str.equals("marginLeft")) {
+          continue;
+        }
+        i = 20;
+        break;
+      case 1860657097: 
+        if (!str.equals("justifyContent")) {
+          continue;
+        }
+        i = 4;
+        break;
+      case 1767100401: 
+        if (!str.equals("alignSelf")) {
+          continue;
+        }
+        i = 1;
+        break;
+      case 1744216035: 
+        if (!str.equals("flexWrap")) {
+          continue;
+        }
+        i = 5;
+        break;
+      case 1292595405: 
+        if (!str.equals("backgroundImage")) {
+          continue;
+        }
+        i = 36;
+        break;
+      case 1052666732: 
+        if (!str.equals("transform")) {
+          continue;
+        }
+        i = 34;
+        break;
+      case 975087886: 
+        if (!str.equals("marginRight")) {
+          continue;
+        }
+        i = 22;
+        break;
+      case 747804969: 
+        if (!str.equals("position")) {
+          continue;
+        }
+        i = 14;
+        break;
+      case 741115130: 
+        if (!str.equals("borderWidth")) {
+          continue;
+        }
+        i = 24;
+        break;
+      case 713848971: 
+        if (!str.equals("paddingRight")) {
+          continue;
+        }
+        i = 32;
+        break;
+      case 644734664: 
+        if (!str.equals("defaultHeight")) {
+          continue;
+        }
+        i = 10;
+        break;
+      case 400381634: 
+        if (!str.equals("maxWidth")) {
+          continue;
+        }
+        i = 8;
+        break;
+      case 202355100: 
+        if (!str.equals("paddingBottom")) {
+          continue;
+        }
+        i = 33;
+        break;
+      case 113126854: 
+        if (!str.equals("width")) {
+          continue;
+        }
+        i = 12;
+        break;
+      case 108511772: 
+        if (!str.equals("right")) {
+          continue;
+        }
+        i = 17;
+        break;
+      case 90130308: 
+        if (!str.equals("paddingTop")) {
+          continue;
+        }
+        i = 31;
+        break;
+      case 3317767: 
+        if (!str.equals("left")) {
+          continue;
+        }
+        i = 15;
+        break;
+      case 3145721: 
+        if (!str.equals("flex")) {
+          continue;
+        }
+        i = 2;
+        break;
+      case 115029: 
+        if (!str.equals("top")) {
+          continue;
+        }
+        i = 16;
+        break;
+      case -133587431: 
+        if (!str.equals("minHeight")) {
+          continue;
+        }
+        i = 7;
+        break;
+      case -223992013: 
+        if (!str.equals("borderLeftWidth")) {
+          continue;
+        }
+        i = 28;
+        break;
+      case -289173127: 
+        if (!str.equals("marginBottom")) {
+          continue;
+        }
+        i = 23;
+        break;
+      case -657971195: 
+        if (!str.equals("defaultWidth")) {
+          continue;
+        }
+        i = 13;
+        break;
+      case -781597262: 
+        if (!str.equals("transformOrigin")) {
+          continue;
+        }
+        i = 35;
+        break;
+      case -806339567: 
+        if (!str.equals("padding")) {
+          continue;
+        }
+        i = 29;
+        break;
+      case -906066005: 
+        if (!str.equals("maxHeight")) {
+          continue;
+        }
+        i = 9;
+        break;
+      case -975171706: 
+        if (!str.equals("flexDirection")) {
+          continue;
+        }
+        i = 3;
+        break;
+      case -1044792121: 
+        if (!str.equals("marginTop")) {
+          continue;
+        }
+        i = 21;
+        break;
+      case -1063257157: 
+        if (!str.equals("alignItems")) {
+          continue;
+        }
+        i = 0;
+        break;
+      case -1081309778: 
+        if (!str.equals("margin")) {
+          continue;
+        }
+        i = 19;
+        break;
+      case -1108380958: 
+        if (!str.equals("fromTransform")) {
+          continue;
+        }
+        i = 37;
+        break;
+      case -1221029593: 
+        if (!str.equals("height")) {
+          continue;
+        }
+        i = 11;
+        break;
+      case -1290574193: 
+        if (!str.equals("borderBottomWidth")) {
+          continue;
+        }
+        i = 27;
+        break;
+      case -1375815020: 
+        if (!str.equals("minWidth")) {
+          continue;
+        }
+        i = 6;
+        break;
+      case -1383228885: 
+        if (!str.equals("bottom")) {
+          continue;
+        }
+        i = 18;
+        break;
+      case -1452542531: 
+        if (!str.equals("borderTopWidth")) {
+          continue;
+        }
+        i = 25;
+        break;
+      case -1501175880: 
+        if (!str.equals("paddingLeft")) {
+          continue;
+        }
+        i = 30;
+        break;
+      case -1971292586: 
+        if (!str.equals("borderRightWidth")) {
+          continue;
+        }
+        i = 26;
+        continue;
+        parseFromTransform(localEntry.getValue());
+        continue;
+        parseBackgroundImage(localEntry.getValue());
+        continue;
+        parseTransformOrigin(localEntry.getValue());
+        continue;
+        parseTransform(localEntry.getValue());
+        continue;
+        setPadding(3, localStyle.getPaddingBottom(j));
+        continue;
+        setPadding(2, localStyle.getPaddingRight(j));
+        continue;
+        setPadding(1, localStyle.getPaddingTop(j));
+        continue;
+        setPadding(0, localStyle.getPaddingLeft(j));
+        continue;
+        setPadding(8, localStyle.getPadding(j));
+        continue;
+        setBorder(0, localStyle.getBorderLeftWidth(j));
+        continue;
+        setBorder(3, localStyle.getBorderBottomWidth(j));
+        continue;
+        setBorder(2, localStyle.getBorderRightWidth(j));
+        continue;
+        setBorder(1, localStyle.getBorderTopWidth(j));
+        continue;
+        setBorder(8, localStyle.getBorderWidth(j));
+        continue;
+        setMargin(3, localStyle.getMarginBottom(j));
+        continue;
+        setMargin(2, localStyle.getMarginRight(j));
+        continue;
+        setMargin(1, localStyle.getMarginTop(j));
+        continue;
+        setMargin(0, localStyle.getMarginLeft(j));
+        continue;
+        setMargin(8, localStyle.getMargin(j));
+        continue;
+        setPositionBottom(localStyle.getBottom(j));
+        continue;
+        setPositionRight(localStyle.getRight(j));
+        continue;
+        setPositionTop(localStyle.getTop(j));
+        continue;
+        setPositionLeft(localStyle.getLeft(j));
+        continue;
+        setPositionType(localStyle.getPosition());
+        continue;
+        float f;
+        if (localStyle.containsKey("width")) {
+          f = localStyle.getWidth(j);
+        } else {
+          f = localStyle.getDefaultWidth(j);
+        }
+        setStyleWidth(f);
+        continue;
+        if (localStyle.containsKey("height")) {
+          f = localStyle.getHeight(j);
+        } else {
+          f = localStyle.getDefaultHeight(j);
+        }
+        setStyleHeight(f);
+        continue;
+        setMaxHeight(localStyle.getMaxHeight(j));
+        continue;
+        setMaxWidth(localStyle.getMaxWidth(j));
+        continue;
+        setMinHeight(localStyle.getMinHeight(j));
+        continue;
+        setMinWidth(localStyle.getMinWidth(j));
+        continue;
+        setWrap(localStyle.getCSSWrap());
+        continue;
+        setJustifyContent(localStyle.getJustifyContent());
+        continue;
+        setFlexDirection(localStyle.getFlexDirection());
+        continue;
+        setFlex(localStyle.getFlex());
+        continue;
+        setAlignSelf(localStyle.getAlignSelf());
+        continue;
+        setAlignItems(localStyle.getAlignItems());
       }
     }
   }
@@ -1105,7 +1159,7 @@ public class DomObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObject
  * JD-Core Version:    0.7.0.1
  */

@@ -19,35 +19,35 @@ public final class a
   {
     try
     {
-      byte[] arrayOfByte = com.tencent.dlsdk.yybutil.apkchannel.v2.a.a(paramString);
-      paramString = arrayOfByte;
+      localObject = com.tencent.dlsdk.yybutil.apkchannel.v2.a.a(paramString);
+      paramString = (String)localObject;
     }
     catch (ApkSignatureSchemeV2Verifier.SignatureNotFoundException localSignatureNotFoundException)
     {
-      for (;;)
-      {
-        paramString = com.tencent.dlsdk.yybutil.apkchannel.a.a.a(paramString);
-      }
-      b localb = new b(null);
-      try
-      {
-        localb.a(paramString);
-        return localb;
-      }
-      catch (ProtocolException paramString)
-      {
-        paramString.printStackTrace();
-      }
+      Object localObject;
+      label10:
+      break label10;
     }
+    paramString = com.tencent.dlsdk.yybutil.apkchannel.a.a.a(paramString);
     if (paramString == null) {
       return null;
     }
-    return null;
+    localObject = new b(null);
+    try
+    {
+      ((b)localObject).a(paramString);
+      return localObject;
+    }
+    catch (ProtocolException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.dlsdk.yybutil.apkchannel.a
  * JD-Core Version:    0.7.0.1
  */

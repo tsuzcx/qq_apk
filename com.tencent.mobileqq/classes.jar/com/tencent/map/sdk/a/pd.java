@@ -72,9 +72,10 @@ public final class pd
   
   private static float f(float paramFloat)
   {
-    paramFloat = (paramFloat % 360.0F + 360.0F) % 360.0F;
-    if (paramFloat > 45.0F) {
-      return 45.0F;
+    float f1 = (paramFloat % 360.0F + 360.0F) % 360.0F;
+    paramFloat = f1;
+    if (f1 > 45.0F) {
+      paramFloat = 45.0F;
     }
     return paramFloat;
   }
@@ -83,8 +84,12 @@ public final class pd
   {
     super.a();
     this.X = true;
-    if ((this.d != null) && (this.a != null)) {
-      this.a.a(this.U);
+    if (this.d != null)
+    {
+      pd.a locala = this.a;
+      if (locala != null) {
+        locala.a(this.U);
+      }
     }
   }
   
@@ -128,11 +133,9 @@ public final class pd
   public final boolean b()
   {
     int i;
+    Object localObject;
     int j;
-    label202:
-    GeoPoint localGeoPoint;
-    label235:
-    float f2;
+    float f1;
     if (!this.V)
     {
       this.V = true;
@@ -144,150 +147,166 @@ public final class pd
       if ((this.t) || (this.u) || (this.v)) {
         this.ae = (1.0D / Math.pow(2.0D, 20.0F - this.a.e()));
       }
-      if (!this.t) {
-        break label799;
-      }
-      if (this.a.g())
+      if (this.t)
       {
-        i = 22;
+        if (this.a.g()) {
+          i = 22;
+        } else {
+          i = 20;
+        }
+        localObject = this.a;
         j = i;
-        if (this.a != null) {
-          j = Math.min(this.a.a(), i);
+        if (localObject != null) {
+          j = Math.min(((pd.a)localObject).a(), i);
         }
-        if (this.ab >= j) {
-          this.ab = j;
+        f1 = this.ab;
+        f2 = j;
+        if (f1 >= f2) {
+          this.ab = f2;
         }
-        if (this.a != null)
+        localObject = this.a;
+        if (localObject != null)
         {
-          f1 = this.a.e();
+          f1 = ((pd.a)localObject).e();
           if (Math.abs(this.ab - f1) < 0.001D) {
             this.aa = true;
           }
         }
         this.ad = (1.0D / Math.pow(2.0D, 20.0F - this.ab));
-        if ((this.A) && (this.a != null))
-        {
-          if (this.e != true) {
-            break label859;
-          }
-          localGeoPoint = this.a.f();
-          if (localGeoPoint != null)
-          {
-            this.D = localGeoPoint.getLatitudeE6();
-            this.E = localGeoPoint.getLongitudeE6();
-            this.F = (this.B - this.D);
-            this.G = (this.C - this.E);
-          }
-        }
-        if (this.J)
-        {
-          if (this.a != null) {
-            this.L = this.a.c();
-          }
-          this.M = (this.K - this.L);
-          if (this.M <= 180.0F) {
-            break label873;
-          }
-          this.M -= 360.0F;
-        }
-        label345:
-        if ((this.O) && (this.a != null))
-        {
-          this.Q = this.a.d();
-          this.R = (this.P - this.Q);
-        }
-        this.c = SystemClock.uptimeMillis();
       }
-    }
-    else
-    {
-      if (this.X) {
-        break label899;
-      }
-      f2 = (float)(SystemClock.uptimeMillis() - this.c) / (float)this.b;
-      f1 = f2;
-      if (f2 <= 1.0F) {}
-    }
-    label899:
-    for (float f1 = 1.0F;; f1 = 1.0F)
-    {
-      f2 = this.W.getInterpolation(f1);
-      this.X = true;
-      if (this.f)
+      else if (this.u)
       {
-        this.r = ((int)(this.g * f2));
-        this.s = ((int)(this.h * f2));
-        i = this.r;
-        j = this.Y;
-        int k = this.s;
-        int m = this.Z;
-        this.Y = this.r;
-        this.Z = this.s;
-        this.r = (i - j);
-        this.s = (k - m);
-        if ((Math.abs(this.g) > 0) || (Math.abs(this.h) > 0)) {
-          this.X = false;
-        }
-      }
-      if ((this.t) || (this.u) || (this.v))
-      {
-        this.w = (this.ae + (this.ad - this.ae) * f2);
-        if (!this.aa) {
-          this.X = false;
-        }
-      }
-      if (this.A)
-      {
-        this.H = (this.D + (int)(this.F * f2));
-        this.I = (this.E + (int)(this.G * f2));
-        if ((Math.abs(this.F) > 1) || (Math.abs(this.G) > 1)) {
-          this.X = false;
-        }
-      }
-      if (this.J)
-      {
-        this.N = (this.L + this.M * f2);
-        if (Math.abs(this.M) > 1.0F) {
-          this.X = false;
-        }
-      }
-      if (this.O)
-      {
-        float f3 = this.Q;
-        this.S = (f2 * this.R + f3);
-        if (Math.abs(this.R) > 1.0F) {
-          this.X = false;
-        }
-      }
-      if (f1 >= 1.0F)
-      {
-        if ((this.d != null) && (this.a != null)) {
-          this.a.a(this.T);
-        }
-        return true;
-        i = 20;
-        break;
-        label799:
-        if (!this.u) {
-          break label202;
-        }
         if (Math.abs(this.ac) < 0.001D) {
           this.aa = true;
         }
         this.ad = (1.0D / Math.pow(2.0D, 20.0F - (this.a.e() + this.ac)));
-        break label202;
-        label859:
-        localGeoPoint = this.a.b();
-        break label235;
-        label873:
-        if (this.M >= -180.0F) {
-          break label345;
-        }
-        this.M += 360.0F;
-        break label345;
       }
-      return false;
+      if (this.A)
+      {
+        localObject = this.a;
+        if (localObject != null)
+        {
+          if (this.e == true) {
+            localObject = ((pd.a)localObject).f();
+          } else {
+            localObject = ((pd.a)localObject).b();
+          }
+          if (localObject != null)
+          {
+            this.D = ((GeoPoint)localObject).getLatitudeE6();
+            this.E = ((GeoPoint)localObject).getLongitudeE6();
+            this.F = (this.B - this.D);
+            this.G = (this.C - this.E);
+          }
+        }
+      }
+      if (this.J)
+      {
+        localObject = this.a;
+        if (localObject != null) {
+          this.L = ((pd.a)localObject).c();
+        }
+        this.M = (this.K - this.L);
+        f1 = this.M;
+        if (f1 > 180.0F) {
+          this.M = (f1 - 360.0F);
+        } else if (f1 < -180.0F) {
+          this.M = (f1 + 360.0F);
+        }
+      }
+      if (this.O)
+      {
+        localObject = this.a;
+        if (localObject != null)
+        {
+          this.Q = ((pd.a)localObject).d();
+          this.R = (this.P - this.Q);
+        }
+      }
+      this.c = SystemClock.uptimeMillis();
     }
+    if (!this.X)
+    {
+      f2 = (float)(SystemClock.uptimeMillis() - this.c) / (float)this.b;
+      f1 = f2;
+      if (f2 <= 1.0F) {}
+    }
+    else
+    {
+      f1 = 1.0F;
+    }
+    float f2 = this.W.getInterpolation(f1);
+    this.X = true;
+    if (this.f)
+    {
+      i = this.g;
+      this.r = ((int)(i * f2));
+      this.s = ((int)(this.h * f2));
+      j = this.r;
+      int k = this.Y;
+      int m = this.s;
+      int n = this.Z;
+      this.Y = j;
+      this.Z = m;
+      this.r = (j - k);
+      this.s = (m - n);
+      if ((Math.abs(i) > 0) || (Math.abs(this.h) > 0)) {
+        this.X = false;
+      }
+    }
+    if ((this.t) || (this.u) || (this.v))
+    {
+      double d1 = this.ae;
+      double d2 = this.ad;
+      double d3 = f2;
+      Double.isNaN(d3);
+      this.w = (d1 + (d2 - d1) * d3);
+      if (!this.aa) {
+        this.X = false;
+      }
+    }
+    if (this.A)
+    {
+      i = this.D;
+      j = this.F;
+      this.H = (i + (int)(j * f2));
+      this.I = (this.E + (int)(this.G * f2));
+      if ((Math.abs(j) > 1) || (Math.abs(this.G) > 1)) {
+        this.X = false;
+      }
+    }
+    float f3;
+    float f4;
+    if (this.J)
+    {
+      f3 = this.L;
+      f4 = this.M;
+      this.N = (f3 + f4 * f2);
+      if (Math.abs(f4) > 1.0F) {
+        this.X = false;
+      }
+    }
+    if (this.O)
+    {
+      f3 = this.Q;
+      f4 = this.R;
+      this.S = (f3 + f2 * f4);
+      if (Math.abs(f4) > 1.0F) {
+        this.X = false;
+      }
+    }
+    if (f1 >= 1.0F)
+    {
+      if (this.d != null)
+      {
+        localObject = this.a;
+        if (localObject != null) {
+          ((pd.a)localObject).a(this.T);
+        }
+      }
+      return true;
+    }
+    return false;
   }
   
   public final void c(float paramFloat)
@@ -304,7 +323,7 @@ public final class pd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.pd
  * JD-Core Version:    0.7.0.1
  */

@@ -14,71 +14,72 @@ class AssociatedAccountActivity$12
 {
   AssociatedAccountActivity$12(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    int k = 0;
-    int i = 0;
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    Iterator localIterator;
-    label54:
-    boolean bool;
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if (paramBoolean)
     {
-      localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      paramBoolean = false;
-      bool = paramBoolean;
-      if (!localIterator.hasNext()) {
-        break label95;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
       }
-      if (!TextUtils.equals(paramString, ((SubAccountInfo)localIterator.next()).subuin)) {
-        break label248;
+      Object localObject = this.a.mSubAccountList;
+      int k = 0;
+      int i = 0;
+      if ((localObject != null) && (this.a.mSubAccountList.size() > 0))
+      {
+        localObject = this.a.mSubAccountList.iterator();
+        paramBoolean = false;
+        for (;;)
+        {
+          bool = paramBoolean;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          if (TextUtils.equals(paramString, ((SubAccountInfo)((Iterator)localObject).next()).subuin)) {
+            paramBoolean = true;
+          }
+        }
       }
-      paramBoolean = true;
-    }
-    label95:
-    label248:
-    for (;;)
-    {
-      break label54;
-      bool = false;
+      boolean bool = false;
       int j = k;
-      if (this.a.jdField_b_of_type_JavaUtilArrayList != null)
+      if (this.a.mThirdAccountList != null)
       {
         j = k;
-        if (this.a.jdField_b_of_type_JavaUtilArrayList.size() > 0)
+        if (this.a.mThirdAccountList.size() > 0)
         {
-          localIterator = this.a.jdField_b_of_type_JavaUtilArrayList.iterator();
+          localObject = this.a.mThirdAccountList.iterator();
           for (;;)
           {
             j = i;
-            if (!localIterator.hasNext()) {
+            if (!((Iterator)localObject).hasNext()) {
               break;
             }
-            if (TextUtils.equals(paramString, ((SimpleAccount)localIterator.next()).getUin())) {
+            if (TextUtils.equals(paramString, ((SimpleAccount)((Iterator)localObject).next()).getUin())) {
               i = 1;
             }
           }
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onUpdateCustomHead uin = " + paramString + " needUpdate=" + bool);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onUpdateCustomHead uin = ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" needUpdate=");
+        ((StringBuilder)localObject).append(bool);
+        QLog.d("AssociatedAccountActivity", 2, ((StringBuilder)localObject).toString());
       }
       if (bool) {
-        this.a.jdField_b_of_type_ComTencentMobileqqAdapterAssociatedAccountListAdapter.notifyDataSetInvalidated();
+        this.a.mAdapter.notifyDataSetInvalidated();
       }
-      if (j == 0) {
-        break;
+      if (j != 0) {
+        this.a.thirdAccountsAdapter.notifyDataSetInvalidated();
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterAssociatedAccountListAdapter.notifyDataSetInvalidated();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.12
  * JD-Core Version:    0.7.0.1
  */

@@ -170,12 +170,15 @@ public class FlutterEngine
     }
     catch (Exception localException)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Tried to automatically register plugins with FlutterEngine (");
-      localStringBuilder.append(this);
-      localStringBuilder.append(") but could not find and invoke the GeneratedPluginRegistrant.");
-      Log.w("FlutterEngine", localStringBuilder.toString());
+      label35:
+      StringBuilder localStringBuilder;
+      break label35;
     }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Tried to automatically register plugins with FlutterEngine (");
+    localStringBuilder.append(this);
+    localStringBuilder.append(") but could not find and invoke the GeneratedPluginRegistrant.");
+    Log.w("FlutterEngine", localStringBuilder.toString());
   }
   
   public void addEngineLifecycleListener(@NonNull FlutterEngine.EngineLifecycleListener paramEngineLifecycleListener)
@@ -320,7 +323,7 @@ public class FlutterEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -251,30 +251,37 @@ class FragmentLifecycleCallbacksDispatcher
   
   public void unregisterFragmentLifecycleCallbacks(@NonNull FragmentManager.FragmentLifecycleCallbacks paramFragmentLifecycleCallbacks)
   {
-    for (;;)
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.mLifecycleCallbacks;
+    int i = 0;
+    try
     {
-      int i;
-      synchronized (this.mLifecycleCallbacks)
+      int j = this.mLifecycleCallbacks.size();
+      if (i < j)
       {
-        int j = this.mLifecycleCallbacks.size();
-        i = 0;
-        if (i < j)
-        {
-          if (((FragmentLifecycleCallbacksDispatcher.FragmentLifecycleCallbacksHolder)this.mLifecycleCallbacks.get(i)).mCallback == paramFragmentLifecycleCallbacks) {
-            this.mLifecycleCallbacks.remove(i);
-          }
+        if (((FragmentLifecycleCallbacksDispatcher.FragmentLifecycleCallbacksHolder)this.mLifecycleCallbacks.get(i)).mCallback != paramFragmentLifecycleCallbacks) {
+          break label70;
         }
-        else {
-          return;
-        }
+        this.mLifecycleCallbacks.remove(i);
       }
-      i += 1;
+      return;
+    }
+    finally
+    {
+      for (;;)
+      {
+        for (;;)
+        {
+          throw paramFragmentLifecycleCallbacks;
+        }
+        label70:
+        i += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentLifecycleCallbacksDispatcher
  * JD-Core Version:    0.7.0.1
  */

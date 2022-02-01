@@ -51,7 +51,7 @@ public class EditShareGroupRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqEditShareGroup localReqEditShareGroup = new qqstory_service.ReqEditShareGroup();
     qqstory_struct.ShareGroupInfo localShareGroupInfo = new qqstory_struct.ShareGroupInfo();
@@ -92,7 +92,7 @@ public class EditShareGroupRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.EditShareGroupRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -15,15 +15,19 @@ class ReadInJoyAdBrandOptimizationView$2
   {
     float f = paramValueAnimator.getAnimatedFraction();
     ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams, f, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.jdField_a_of_type_Float);
-    ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView, this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams, f, ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView));
-    ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView, ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView), f, 0.2F, 1.7F, AIOUtils.a(34.0F, ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView).getResources()));
-    ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView, ReadInJoyAdBrandOptimizationView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView), f, 0.2F, 2.0F, AIOUtils.a(34.0F, ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView).getResources()));
-    ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView, ReadInJoyAdBrandOptimizationView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView), f, 0.2F, 2.0F, AIOUtils.a(34.0F, ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView).getResources()));
+    paramValueAnimator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView;
+    ReadInJoyAdBrandOptimizationView.a(paramValueAnimator, this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams, f, ReadInJoyAdBrandOptimizationView.a(paramValueAnimator));
+    paramValueAnimator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView;
+    ReadInJoyAdBrandOptimizationView.a(paramValueAnimator, ReadInJoyAdBrandOptimizationView.a(paramValueAnimator), f, 0.2F, 1.7F, AIOUtils.b(34.0F, ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView).getResources()));
+    paramValueAnimator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView;
+    ReadInJoyAdBrandOptimizationView.a(paramValueAnimator, ReadInJoyAdBrandOptimizationView.b(paramValueAnimator), f, 0.2F, 2.0F, AIOUtils.b(34.0F, ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView).getResources()));
+    paramValueAnimator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView;
+    ReadInJoyAdBrandOptimizationView.a(paramValueAnimator, ReadInJoyAdBrandOptimizationView.c(paramValueAnimator), f, 0.2F, 2.0F, AIOUtils.b(34.0F, ReadInJoyAdBrandOptimizationView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBrandOptimizationView).getResources()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdBrandOptimizationView.2
  * JD-Core Version:    0.7.0.1
  */

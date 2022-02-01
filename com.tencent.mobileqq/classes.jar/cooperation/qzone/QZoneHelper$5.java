@@ -2,13 +2,13 @@ package cooperation.qzone;
 
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 final class QZoneHelper$5
   implements Runnable
 {
-  QZoneHelper$5(QQAppInterface paramQQAppInterface, String paramString1, long paramLong, String paramString2, Bitmap paramBitmap) {}
+  QZoneHelper$5(AppRuntime paramAppRuntime, String paramString1, long paramLong, String paramString2, Bitmap paramBitmap) {}
   
   public void run()
   {
@@ -25,13 +25,16 @@ final class QZoneHelper$5
     catch (Exception localException)
     {
       localException.printStackTrace();
-      QLog.e("QZoneHelper", 2, "updateAlbumShortCut error! exception e = " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateAlbumShortCut error! exception e = ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("QZoneHelper", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.5
  * JD-Core Version:    0.7.0.1
  */

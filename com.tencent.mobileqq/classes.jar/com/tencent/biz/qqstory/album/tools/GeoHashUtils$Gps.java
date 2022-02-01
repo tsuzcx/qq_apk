@@ -41,7 +41,8 @@ public class GeoHashUtils$Gps
     if (!(paramObject instanceof Gps)) {
       return false;
     }
-    return (((Gps)paramObject).a == this.a) && (((Gps)paramObject).b == this.b);
+    paramObject = (Gps)paramObject;
+    return (paramObject.a == this.a) && (paramObject.b == this.b);
   }
   
   public int hashCode()
@@ -51,12 +52,18 @@ public class GeoHashUtils$Gps
   
   public String toString()
   {
-    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Gps{lat=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", lng=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.GeoHashUtils.Gps
  * JD-Core Version:    0.7.0.1
  */

@@ -59,174 +59,107 @@ public class PhotoParam
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("PhotoParam{");
-    localStringBuffer.append("loginUin=").append(this.loginUin);
-    localStringBuffer.append(", feedUin=").append(this.feedUin);
-    localStringBuffer.append(", ownerUin=").append(this.ownerUin);
-    localStringBuffer.append(", realOwnerUin=").append(this.realOwnerUin);
-    localStringBuffer.append(", albumanswer='").append(this.albumanswer).append('\'');
-    localStringBuffer.append(", albumid='").append(this.albumid).append('\'');
-    localStringBuffer.append(", sortType=").append(this.sortType);
-    localStringBuffer.append(", albumPriv=").append(this.albumPriv);
-    localStringBuffer.append(", albumnum=").append(this.albumnum);
-    localStringBuffer.append(", uploadnum=").append(this.uploadnum);
-    localStringBuffer.append(", albumType=").append(this.albumType);
-    localStringBuffer.append(", businessPhotoFeedIndex=").append(this.businessPhotoFeedIndex);
-    localStringBuffer.append(", qunid='").append(this.qunid).append('\'');
-    localStringBuffer.append(", isLike=").append(this.isLike);
-    localStringBuffer.append(", likeNum=").append(this.likeNum);
-    localStringBuffer.append(", commentNum=").append(this.commentNum);
-    localStringBuffer.append(", curKey='").append(this.curKey).append('\'');
-    localStringBuffer.append(", orgKey='").append(this.orgKey).append('\'');
-    localStringBuffer.append(", feedId='").append(this.feedId).append('\'');
-    localStringBuffer.append(", cell_id='").append(this.cell_id).append('\'');
-    localStringBuffer.append(", cell_subId='").append(this.cell_subId).append('\'');
-    localStringBuffer.append(", appid=").append(this.appid);
-    localStringBuffer.append(", ugcKey='").append(this.ugcKey).append('\'');
-    localStringBuffer.append(", canAddFavor=").append(this.canAddFavor);
-    localStringBuffer.append(", subid=").append(this.subid);
-    localStringBuffer.append(", isOnePictureFeed=").append(this.isOnePictureFeed);
-    localStringBuffer.append(", oneFeedPictruePath='").append(this.oneFeedPictruePath).append('\'');
-    localStringBuffer.append(", mFromRecent=").append(this.mFromRecent);
-    localStringBuffer.append(", busi_param=").append(this.busi_param);
-    localStringBuffer.append(", isTihFeed=").append(this.isTihFeed);
-    localStringBuffer.append(", isOnlyPreView=").append(this.isOnlyPreView);
-    localStringBuffer.append(", isFriendPhotoBizFeed=").append(this.isFriendPhotoBizFeed);
-    localStringBuffer.append(", isShareAlbum=").append(this.isShareAlbum);
-    localStringBuffer.append(", isVideoPicMix=").append(this.isVideoPicMix);
-    localStringBuffer.append(", getPhotoExType=").append(this.getPhotoExType);
-    localStringBuffer.append(", sharer=").append(this.sharer);
-    localStringBuffer.append(", loginNickName='").append(this.loginNickName).append('\'');
-    localStringBuffer.append(", qzoneUserType=").append(this.qzoneUserType);
-    localStringBuffer.append(", isSharedFeeds=").append(this.isSharedFeeds);
+    localStringBuffer.append("loginUin=");
+    localStringBuffer.append(this.loginUin);
+    localStringBuffer.append(", feedUin=");
+    localStringBuffer.append(this.feedUin);
+    localStringBuffer.append(", ownerUin=");
+    localStringBuffer.append(this.ownerUin);
+    localStringBuffer.append(", realOwnerUin=");
+    localStringBuffer.append(this.realOwnerUin);
+    localStringBuffer.append(", albumanswer='");
+    localStringBuffer.append(this.albumanswer);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", albumid='");
+    localStringBuffer.append(this.albumid);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", sortType=");
+    localStringBuffer.append(this.sortType);
+    localStringBuffer.append(", albumPriv=");
+    localStringBuffer.append(this.albumPriv);
+    localStringBuffer.append(", albumnum=");
+    localStringBuffer.append(this.albumnum);
+    localStringBuffer.append(", uploadnum=");
+    localStringBuffer.append(this.uploadnum);
+    localStringBuffer.append(", albumType=");
+    localStringBuffer.append(this.albumType);
+    localStringBuffer.append(", businessPhotoFeedIndex=");
+    localStringBuffer.append(this.businessPhotoFeedIndex);
+    localStringBuffer.append(", qunid='");
+    localStringBuffer.append(this.qunid);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", isLike=");
+    localStringBuffer.append(this.isLike);
+    localStringBuffer.append(", likeNum=");
+    localStringBuffer.append(this.likeNum);
+    localStringBuffer.append(", commentNum=");
+    localStringBuffer.append(this.commentNum);
+    localStringBuffer.append(", curKey='");
+    localStringBuffer.append(this.curKey);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", orgKey='");
+    localStringBuffer.append(this.orgKey);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", feedId='");
+    localStringBuffer.append(this.feedId);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", cell_id='");
+    localStringBuffer.append(this.cell_id);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", cell_subId='");
+    localStringBuffer.append(this.cell_subId);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", appid=");
+    localStringBuffer.append(this.appid);
+    localStringBuffer.append(", ugcKey='");
+    localStringBuffer.append(this.ugcKey);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", canAddFavor=");
+    localStringBuffer.append(this.canAddFavor);
+    localStringBuffer.append(", subid=");
+    localStringBuffer.append(this.subid);
+    localStringBuffer.append(", isOnePictureFeed=");
+    localStringBuffer.append(this.isOnePictureFeed);
+    localStringBuffer.append(", oneFeedPictruePath='");
+    localStringBuffer.append(this.oneFeedPictruePath);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", mFromRecent=");
+    localStringBuffer.append(this.mFromRecent);
+    localStringBuffer.append(", busi_param=");
+    localStringBuffer.append(this.busi_param);
+    localStringBuffer.append(", isTihFeed=");
+    localStringBuffer.append(this.isTihFeed);
+    localStringBuffer.append(", isOnlyPreView=");
+    localStringBuffer.append(this.isOnlyPreView);
+    localStringBuffer.append(", isFriendPhotoBizFeed=");
+    localStringBuffer.append(this.isFriendPhotoBizFeed);
+    localStringBuffer.append(", isShareAlbum=");
+    localStringBuffer.append(this.isShareAlbum);
+    localStringBuffer.append(", isVideoPicMix=");
+    localStringBuffer.append(this.isVideoPicMix);
+    localStringBuffer.append(", getPhotoExType=");
+    localStringBuffer.append(this.getPhotoExType);
+    localStringBuffer.append(", sharer=");
+    localStringBuffer.append(this.sharer);
+    localStringBuffer.append(", loginNickName='");
+    localStringBuffer.append(this.loginNickName);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", qzoneUserType=");
+    localStringBuffer.append(this.qzoneUserType);
+    localStringBuffer.append(", isSharedFeeds=");
+    localStringBuffer.append(this.isSharedFeeds);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
-    paramParcel.writeLong(this.loginUin);
-    paramParcel.writeLong(this.feedUin);
-    paramParcel.writeLong(this.ownerUin);
-    paramParcel.writeLong(this.realOwnerUin);
-    paramParcel.writeString(this.albumanswer);
-    paramParcel.writeString(this.albumid);
-    paramParcel.writeInt(this.sortType);
-    paramParcel.writeInt(this.albumPriv);
-    paramParcel.writeInt(this.albumnum);
-    paramParcel.writeInt(this.uploadnum);
-    paramParcel.writeInt(this.albumType);
-    paramParcel.writeInt(this.businessPhotoFeedIndex);
-    paramParcel.writeString(this.qunid);
-    if (this.isLike)
-    {
-      paramInt = 1;
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.likeNum);
-      paramParcel.writeInt(this.commentNum);
-      paramParcel.writeString(this.curKey);
-      paramParcel.writeString(this.orgKey);
-      paramParcel.writeString(this.feedId);
-      paramParcel.writeString(this.cell_id);
-      paramParcel.writeString(this.cell_subId);
-      paramParcel.writeInt(this.appid);
-      paramParcel.writeMap(this.busi_param);
-      paramParcel.writeString(this.ugcKey);
-      if (!this.canAddFavor) {
-        break label380;
-      }
-      paramInt = 1;
-      label209:
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.subid);
-      if (!this.isOnePictureFeed) {
-        break label385;
-      }
-      paramInt = 1;
-      label231:
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.oneFeedPictruePath);
-      if (!this.mFromRecent) {
-        break label390;
-      }
-      paramInt = 1;
-      label253:
-      paramParcel.writeInt(paramInt);
-      if (!this.isTihFeed) {
-        break label395;
-      }
-      paramInt = 1;
-      label267:
-      paramParcel.writeInt(paramInt);
-      if (!this.isOnlyPreView) {
-        break label400;
-      }
-      paramInt = 1;
-      label281:
-      paramParcel.writeInt(paramInt);
-      if (!this.isFriendPhotoBizFeed) {
-        break label405;
-      }
-      paramInt = 1;
-      label295:
-      paramParcel.writeInt(paramInt);
-      if (!this.isShareAlbum) {
-        break label410;
-      }
-      paramInt = 1;
-      label309:
-      paramParcel.writeInt(paramInt);
-      if (!this.isVideoPicMix) {
-        break label415;
-      }
-      paramInt = 1;
-      label323:
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.getPhotoExType);
-      paramParcel.writeLong(this.sharer);
-      paramParcel.writeString(this.loginNickName);
-      paramParcel.writeLong(this.qzoneUserType);
-      if (!this.isSharedFeeds) {
-        break label420;
-      }
-    }
-    label385:
-    label390:
-    label395:
-    label400:
-    label405:
-    label410:
-    label415:
-    label420:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      return;
-      paramInt = 0;
-      break;
-      label380:
-      paramInt = 0;
-      break label209;
-      paramInt = 0;
-      break label231;
-      paramInt = 0;
-      break label253;
-      paramInt = 0;
-      break label267;
-      paramInt = 0;
-      break label281;
-      paramInt = 0;
-      break label295;
-      paramInt = 0;
-      break label309;
-      paramInt = 0;
-      break label323;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.PhotoParam
  * JD-Core Version:    0.7.0.1
  */

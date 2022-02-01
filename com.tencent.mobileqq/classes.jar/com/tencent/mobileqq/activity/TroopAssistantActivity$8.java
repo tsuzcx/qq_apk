@@ -7,21 +7,21 @@ class TroopAssistantActivity$8
 {
   TroopAssistantActivity$8(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onPushReadedNotify(boolean paramBoolean, Object paramObject) {}
+  protected void onPushReadedNotify(boolean paramBoolean, Object paramObject) {}
   
-  public void onSendResult(boolean paramBoolean, String paramString, long paramLong)
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
   {
     this.a.c();
   }
   
-  public void onUpdateRecentList()
+  protected void onUpdateRecentList()
   {
     this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.8
  * JD-Core Version:    0.7.0.1
  */

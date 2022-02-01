@@ -12,8 +12,14 @@ final class TroopSignItemBuilder$TroopSignVideoItemBuilder$5
 {
   public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkUpByBusinessId:2833|param:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("|code:");
+      localStringBuilder.append(paramInt);
+      QLog.d("TroopSignItemBuilder", 2, localStringBuilder.toString());
     }
     if ((paramInt == 0) && (paramString == null))
     {
@@ -29,7 +35,7 @@ final class TroopSignItemBuilder$TroopSignVideoItemBuilder$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

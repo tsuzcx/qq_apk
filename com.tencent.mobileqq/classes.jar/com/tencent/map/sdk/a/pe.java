@@ -21,121 +21,106 @@ public final class pe
   public final void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if (this.a == null) {}
-    label304:
-    label562:
-    for (;;)
-    {
+    Object localObject1 = this.a;
+    if (localObject1 == null) {
       return;
-      Object localObject1 = this.a.f();
-      if (localObject1 != null)
+    }
+    localObject1 = ((pn)localObject1).f();
+    if (localObject1 == null) {
+      return;
+    }
+    if (this.a.w)
+    {
+      if (paramMessage.what == 0)
       {
-        if (this.a.w) {
-          if (paramMessage.what == 0)
-          {
-            this.a.ag = false;
-            this.a.ah = true;
-            this.a.onCameraChange((CameraPosition)localObject1);
-            if (this.a.k != null)
-            {
-              paramMessage = this.a.k;
-              if ((paramMessage.a != null) && (paramMessage.a.az != null)) {
-                break label304;
-              }
-            }
-          }
-        }
-        for (;;)
+        paramMessage = this.a;
+        paramMessage.ag = false;
+        paramMessage.ah = true;
+        paramMessage.onCameraChange((CameraPosition)localObject1);
+      }
+      else if (paramMessage.what == 1)
+      {
+        paramMessage = this.a;
+        paramMessage.ag = true;
+        if ((paramMessage.ag) && (this.a.ai == 0))
         {
-          if (this.a.m == null) {
-            break label562;
-          }
-          this.a.m.a(this.a.p(), this.a.az.a());
-          return;
-          if (paramMessage.what != 1) {
-            break;
-          }
-          this.a.ag = true;
-          if ((this.a.ag) && (this.a.ai == 0))
-          {
-            this.a.ah = false;
-            this.a.onCameraChangeFinished((CameraPosition)localObject1);
-          }
-          if ((this.a.p != null) && (this.a.aa)) {
-            this.a.p.onMapStable();
-          }
-          paramMessage = this.a.az.b;
-          if ((paramMessage.v == null) || (!paramMessage.v.a())) {
-            break;
-          }
+          paramMessage = this.a;
+          paramMessage.ah = false;
+          paramMessage.onCameraChangeFinished((CameraPosition)localObject1);
+        }
+        if ((this.a.p != null) && (this.a.aa)) {
+          this.a.p.onMapStable();
+        }
+        paramMessage = this.a.az.b;
+        if ((paramMessage.v != null) && (paramMessage.v.a())) {
           paramMessage.v.b();
-          break;
-          if (paramMessage.what != 2) {
-            break;
-          }
-          if (this.a.x != null) {
-            this.a.x.onMapLoaded();
-          }
-          this.a.w = true;
-          break;
-          if (paramMessage.a.az.c() < 7)
-          {
+        }
+      }
+    }
+    else if (paramMessage.what == 2)
+    {
+      if (this.a.x != null) {
+        this.a.x.onMapLoaded();
+      }
+      this.a.w = true;
+    }
+    if (this.a.k != null)
+    {
+      paramMessage = this.a.k;
+      if ((paramMessage.a != null) && (paramMessage.a.az != null)) {
+        if (paramMessage.a.az.c() < 7)
+        {
+          paramMessage.b();
+        }
+        else if (!jx.d())
+        {
+          if (paramMessage.b != null) {
             paramMessage.b();
           }
-          else if (!jx.d())
+        }
+        else
+        {
+          jv.a();
+          localObject1 = jv.d("china");
+          if (paramMessage.a == null) {}
+          Object localObject2;
+          do
+          {
+            bool = true;
+            break;
+            localObject2 = paramMessage.a.q();
+          } while ((localObject2 == null) || (localObject1 == null));
+          boolean bool = jv.a((fw[])localObject2, (fw[])localObject1);
+          if (bool)
           {
             if (paramMessage.b != null) {
               paramMessage.b();
             }
           }
-          else
+          else if ((paramMessage.b == null) && (paramMessage.b == null) && (paramMessage.a != null) && (paramMessage.a.az != null) && (paramMessage.a.az.b != null))
           {
-            jv.a();
-            localObject1 = jv.d("china");
-            boolean bool;
-            if (paramMessage.a == null) {
-              bool = true;
-            }
-            Object localObject2;
-            for (;;)
+            localObject1 = paramMessage.a.az.b;
+            ((lw)localObject1).d(false);
+            ((lw)localObject1).e(false);
+            if (paramMessage.c == null)
             {
-              if (!bool) {
-                break label416;
-              }
-              if (paramMessage.b == null) {
-                break;
-              }
-              paramMessage.b();
-              break;
-              localObject2 = paramMessage.a.q();
-              if ((localObject2 == null) || (localObject1 == null)) {
-                bool = true;
-              } else {
-                bool = jv.a((fw[])localObject2, (fw[])localObject1);
-              }
+              paramMessage.c = new TileOverlayOptions();
+              localObject2 = new ka(paramMessage.c, paramMessage.d, paramMessage.a.aF);
+              paramMessage.c.tileProvider((TileProvider)localObject2).betterQuality(false).zIndex(1).diskCacheDir("rastermap/world");
             }
-            if ((paramMessage.b == null) && (paramMessage.b == null) && (paramMessage.a != null) && (paramMessage.a.az != null) && (paramMessage.a.az.b != null))
-            {
-              localObject1 = paramMessage.a.az.b;
-              ((lw)localObject1).d(false);
-              ((lw)localObject1).e(false);
-              if (paramMessage.c == null)
-              {
-                paramMessage.c = new TileOverlayOptions();
-                localObject2 = new ka(paramMessage.c, paramMessage.d, paramMessage.a.aF);
-                paramMessage.c.tileProvider((TileProvider)localObject2).betterQuality(false).zIndex(1).diskCacheDir("rastermap/world");
-              }
-              paramMessage.b = ((lw)localObject1).D.a(paramMessage.c);
-            }
+            paramMessage.b = ((lw)localObject1).D.a(paramMessage.c);
           }
         }
       }
+    }
+    if (this.a.m != null) {
+      this.a.m.a(this.a.p(), this.a.az.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.pe
  * JD-Core Version:    0.7.0.1
  */

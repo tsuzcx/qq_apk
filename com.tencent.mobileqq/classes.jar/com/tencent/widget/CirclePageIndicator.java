@@ -8,16 +8,16 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.drawable.Drawable;
 import android.os.Parcelable;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewConfigurationCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
+import androidx.core.view.MotionEventCompat;
+import androidx.core.view.ViewConfigurationCompat;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.mobileqq.R.styleable;
 
 public class CirclePageIndicator
@@ -27,8 +27,8 @@ public class CirclePageIndicator
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener;
-  private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener;
+  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -60,11 +60,11 @@ public class CirclePageIndicator
       return;
     }
     Object localObject = getResources();
-    int i = ((Resources)localObject).getColor(2131165612);
-    int j = ((Resources)localObject).getColor(2131165611);
-    int k = ((Resources)localObject).getColor(2131165613);
-    float f1 = ((Resources)localObject).getDimension(2131296888);
-    float f2 = ((Resources)localObject).getDimension(2131296887);
+    int i = ((Resources)localObject).getColor(2131165589);
+    int j = ((Resources)localObject).getColor(2131165588);
+    int k = ((Resources)localObject).getColor(2131165590);
+    float f1 = ((Resources)localObject).getDimension(2131296868);
+    float f2 = ((Resources)localObject).getDimension(2131296867);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CirclePageIndicator, paramInt, 0);
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(2, true);
     this.d = paramAttributeSet.getInt(0, 0);
@@ -87,23 +87,25 @@ public class CirclePageIndicator
   
   private int a(int paramInt)
   {
-    int k = View.MeasureSpec.getMode(paramInt);
+    int j = View.MeasureSpec.getMode(paramInt);
     int i = View.MeasureSpec.getSize(paramInt);
-    if ((k == 1073741824) || (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null)) {
-      paramInt = i;
-    }
-    int j;
-    do
+    paramInt = i;
+    if (j != 1073741824)
     {
-      return paramInt;
-      paramInt = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter().getCount();
+      ViewPager localViewPager = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+      if (localViewPager == null) {
+        return i;
+      }
+      paramInt = localViewPager.getAdapter().getCount();
       float f1 = getPaddingLeft() + getPaddingRight();
       float f2 = paramInt * 2;
       float f3 = this.jdField_a_of_type_Float;
-      j = (int)((paramInt - 1) * this.jdField_a_of_type_Float + (f1 + f2 * f3) + 1.0F);
-      paramInt = j;
-    } while (k != -2147483648);
-    return Math.min(j, i);
+      paramInt = (int)(f1 + f2 * f3 + (paramInt - 1) * f3 + 1.0F);
+      if (j == -2147483648) {
+        return Math.min(paramInt, i);
+      }
+    }
+    return paramInt;
   }
   
   private int b(int paramInt)
@@ -113,124 +115,114 @@ public class CirclePageIndicator
     if (i == 1073741824) {
       return paramInt;
     }
-    int j = (int)(2.0F * this.jdField_a_of_type_Float + getPaddingTop() + getPaddingBottom() + 1.0F);
+    int j = (int)(this.jdField_a_of_type_Float * 2.0F + getPaddingTop() + getPaddingBottom() + 1.0F);
     if (i == -2147483648) {
       return Math.min(j, paramInt);
     }
     return j;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null) {}
-    int n;
-    do
-    {
+    ViewPager localViewPager = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    if (localViewPager == null) {
       return;
-      n = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter().getCount();
-    } while (n == 0);
+    }
+    int n = localViewPager.getAdapter().getCount();
+    if (n == 0) {
+      return;
+    }
     if (this.jdField_a_of_type_Int >= n)
     {
       setCurrentItem(n - 1);
       return;
     }
-    int m;
-    int k;
     int j;
-    int i;
-    float f2;
-    float f1;
-    label96:
-    float f6;
-    float f3;
-    float f4;
-    label197:
-    float f5;
+    int k;
+    int m;
     if (this.d == 0)
     {
-      m = getWidth();
-      k = getPaddingLeft();
-      j = getPaddingRight();
-      i = getPaddingTop();
-      f2 = this.jdField_a_of_type_Float;
-      if (this.e != 0) {
-        break label314;
-      }
-      f1 = this.jdField_a_of_type_Float;
-      f6 = f2 * 2.0F + f1;
-      f1 = i;
-      f1 = this.jdField_a_of_type_Float + f1;
-      f3 = k + this.jdField_a_of_type_Float;
-      f2 = f3;
-      if (this.jdField_a_of_type_Boolean) {
-        f2 = f3 + ((m - k - j) / 2.0F - n * f6 / 2.0F);
-      }
-      f4 = this.jdField_a_of_type_Float;
-      f3 = f4;
-      if (this.jdField_b_of_type_AndroidGraphicsPaint.getStrokeWidth() > 0.0F) {
-        f3 = f4 - this.jdField_b_of_type_AndroidGraphicsPaint.getStrokeWidth() / 2.0F;
-      }
-      i = 0;
-      if (i >= n) {
-        break label329;
-      }
-      f4 = i * f6 + f2;
-      if (this.d != 0) {
-        break label323;
-      }
-      f5 = f4;
-      f4 = f1;
+      i = getWidth();
+      j = getPaddingLeft();
+      k = getPaddingRight();
+      m = getPaddingTop();
     }
-    for (;;)
+    else
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() > 0) {
-        paramCanvas.drawCircle(f5, f4, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
+      i = getHeight();
+      j = getPaddingTop();
+      k = getPaddingBottom();
+      m = getPaddingLeft();
+    }
+    float f2 = this.jdField_a_of_type_Float;
+    int i1 = this.e;
+    if (i1 == 0) {
+      f1 = f2;
+    } else {
+      f1 = i1;
+    }
+    float f6 = f2 * 2.0F + f1;
+    float f1 = m;
+    f2 = this.jdField_a_of_type_Float;
+    f1 += f2;
+    float f3 = j + f2;
+    f2 = f3;
+    if (this.jdField_a_of_type_Boolean) {
+      f2 = f3 + ((i - j - k) / 2.0F - n * f6 / 2.0F);
+    }
+    float f4 = this.jdField_a_of_type_Float;
+    f3 = f4;
+    if (this.jdField_b_of_type_AndroidGraphicsPaint.getStrokeWidth() > 0.0F) {
+      f3 = f4 - this.jdField_b_of_type_AndroidGraphicsPaint.getStrokeWidth() / 2.0F;
+    }
+    int i = 0;
+    while (i < n)
+    {
+      f4 = i * f6 + f2;
+      float f5;
+      if (this.d == 0)
+      {
+        f5 = f1;
       }
-      if (f3 != this.jdField_a_of_type_Float) {
-        paramCanvas.drawCircle(f5, f4, this.jdField_a_of_type_Float, this.jdField_b_of_type_AndroidGraphicsPaint);
+      else
+      {
+        f5 = f4;
+        f4 = f1;
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() > 0) {
+        paramCanvas.drawCircle(f4, f5, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+      float f7 = this.jdField_a_of_type_Float;
+      if (f3 != f7) {
+        paramCanvas.drawCircle(f4, f5, f7, this.jdField_b_of_type_AndroidGraphicsPaint);
       }
       i += 1;
-      break label197;
-      m = getHeight();
-      k = getPaddingTop();
-      j = getPaddingBottom();
-      i = getPaddingLeft();
-      break;
-      label314:
-      f1 = this.e;
-      break label96;
-      label323:
-      f5 = f1;
     }
-    label329:
-    if (this.jdField_b_of_type_Boolean)
-    {
+    if (this.jdField_b_of_type_Boolean) {
       i = this.jdField_b_of_type_Int;
-      f4 = i * f6;
-      f3 = f4;
-      if (!this.jdField_b_of_type_Boolean) {
-        f3 = f4 + this.jdField_b_of_type_Float * f6;
-      }
-      if (this.d != 0) {
-        break label415;
-      }
-      f3 = f2 + f3;
-      f2 = f1;
-      f1 = f3;
-    }
-    for (;;)
-    {
-      paramCanvas.drawCircle(f1, f2, this.jdField_a_of_type_Float, this.jdField_c_of_type_AndroidGraphicsPaint);
-      return;
+    } else {
       i = this.jdField_a_of_type_Int;
-      break;
-      label415:
-      f2 += f3;
     }
+    f4 = i * f6;
+    f3 = f4;
+    if (!this.jdField_b_of_type_Boolean) {
+      f3 = f4 + this.jdField_b_of_type_Float * f6;
+    }
+    if (this.d == 0)
+    {
+      f2 = f3 + f2;
+      f3 = f1;
+    }
+    else
+    {
+      f3 += f2;
+      f2 = f1;
+    }
+    paramCanvas.drawCircle(f2, f3, this.jdField_a_of_type_Float, this.jdField_c_of_type_AndroidGraphicsPaint);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.d == 0)
     {
@@ -243,8 +235,9 @@ public class CirclePageIndicator
   public void onPageScrollStateChanged(int paramInt)
   {
     this.jdField_c_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrollStateChanged(paramInt);
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener;
+    if (localOnPageChangeListener != null) {
+      localOnPageChangeListener.onPageScrollStateChanged(paramInt);
     }
   }
   
@@ -253,8 +246,9 @@ public class CirclePageIndicator
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Float = paramFloat;
     invalidate();
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener;
+    if (localOnPageChangeListener != null) {
+      localOnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
     }
   }
   
@@ -266,8 +260,9 @@ public class CirclePageIndicator
       this.jdField_b_of_type_Int = paramInt;
       invalidate();
     }
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageSelected(paramInt);
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener;
+    if (localOnPageChangeListener != null) {
+      localOnPageChangeListener.onPageSelected(paramInt);
     }
   }
   
@@ -289,86 +284,104 @@ public class CirclePageIndicator
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    if (super.onTouchEvent(paramMotionEvent)) {
+      return true;
+    }
+    ViewPager localViewPager = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
     int i = 0;
-    if (super.onTouchEvent(paramMotionEvent)) {}
-    label317:
-    do
+    if (localViewPager != null)
     {
-      do
+      if (localViewPager.getAdapter().getCount() == 0) {
+        return false;
+      }
+      int j = paramMotionEvent.getAction() & 0xFF;
+      if (j != 0)
       {
         float f1;
         float f2;
-        do
-        {
-          do
+        if (j != 1) {
+          if (j != 2)
           {
-            do
+            if (j != 3)
             {
-              return true;
-              if ((this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null) || (this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter().getCount() == 0)) {
-                return false;
-              }
-              j = paramMotionEvent.getAction() & 0xFF;
-              switch (j)
+              if (j != 5)
               {
-              case 4: 
-              default: 
-                return true;
-              case 0: 
-                this.g = MotionEventCompat.getPointerId(paramMotionEvent, 0);
-                this.jdField_c_of_type_Float = paramMotionEvent.getX();
-                return true;
-              case 2: 
-                f1 = MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.g));
-                f2 = f1 - this.jdField_c_of_type_Float;
-                if ((!this.jdField_c_of_type_Boolean) && (Math.abs(f2) > this.f)) {
-                  this.jdField_c_of_type_Boolean = true;
+                if (j != 6) {
+                  return true;
                 }
-                break;
+                j = MotionEventCompat.getActionIndex(paramMotionEvent);
+                if (MotionEventCompat.getPointerId(paramMotionEvent, j) == this.g)
+                {
+                  if (j == 0) {
+                    i = 1;
+                  }
+                  this.g = MotionEventCompat.getPointerId(paramMotionEvent, i);
+                }
+                this.jdField_c_of_type_Float = MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.g));
+                return true;
               }
-            } while (!this.jdField_c_of_type_Boolean);
+              i = MotionEventCompat.getActionIndex(paramMotionEvent);
+              this.jdField_c_of_type_Float = MotionEventCompat.getX(paramMotionEvent, i);
+              this.g = MotionEventCompat.getPointerId(paramMotionEvent, i);
+              return true;
+            }
+          }
+          else
+          {
+            f1 = MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.g));
+            f2 = f1 - this.jdField_c_of_type_Float;
+            if ((!this.jdField_c_of_type_Boolean) && (Math.abs(f2) > this.f)) {
+              this.jdField_c_of_type_Boolean = true;
+            }
+            if (!this.jdField_c_of_type_Boolean) {
+              break label418;
+            }
             this.jdField_c_of_type_Float = f1;
-          } while ((!this.jdField_a_of_type_AndroidSupportV4ViewViewPager.isFakeDragging()) && (!this.jdField_a_of_type_AndroidSupportV4ViewViewPager.beginFakeDrag()));
-          this.jdField_a_of_type_AndroidSupportV4ViewViewPager.fakeDragBy(f2);
-          return true;
-          if (this.jdField_c_of_type_Boolean) {
-            break label317;
+            if ((!this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.isFakeDragging()) && (!this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.beginFakeDrag())) {
+              break label418;
+            }
+            this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.fakeDragBy(f2);
+            return true;
           }
-          i = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter().getCount();
-          int k = getWidth();
-          f1 = k / 2.0F;
-          f2 = k / 6.0F;
-          if ((this.jdField_a_of_type_Int <= 0) || (paramMotionEvent.getX() >= f1 - f2)) {
-            break;
-          }
-        } while (j == 3);
-        this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(this.jdField_a_of_type_Int - 1);
-        return true;
-        if ((this.jdField_a_of_type_Int >= i - 1) || (paramMotionEvent.getX() <= f2 + f1)) {
-          break;
         }
-      } while (j == 3);
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(this.jdField_a_of_type_Int + 1);
-      return true;
-      this.jdField_c_of_type_Boolean = false;
-      this.g = -1;
-    } while (!this.jdField_a_of_type_AndroidSupportV4ViewViewPager.isFakeDragging());
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.endFakeDrag();
-    return true;
-    i = MotionEventCompat.getActionIndex(paramMotionEvent);
-    this.jdField_c_of_type_Float = MotionEventCompat.getX(paramMotionEvent, i);
-    this.g = MotionEventCompat.getPointerId(paramMotionEvent, i);
-    return true;
-    int j = MotionEventCompat.getActionIndex(paramMotionEvent);
-    if (MotionEventCompat.getPointerId(paramMotionEvent, j) == this.g)
-    {
-      if (j == 0) {
-        i = 1;
+        if (!this.jdField_c_of_type_Boolean)
+        {
+          i = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.getAdapter().getCount();
+          f2 = getWidth();
+          f1 = f2 / 2.0F;
+          f2 /= 6.0F;
+          if ((this.jdField_a_of_type_Int > 0) && (paramMotionEvent.getX() < f1 - f2))
+          {
+            if (j != 3) {
+              this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setCurrentItem(this.jdField_a_of_type_Int - 1);
+            }
+            return true;
+          }
+          if ((this.jdField_a_of_type_Int < i - 1) && (paramMotionEvent.getX() > f1 + f2))
+          {
+            if (j != 3) {
+              this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setCurrentItem(this.jdField_a_of_type_Int + 1);
+            }
+            return true;
+          }
+        }
+        this.jdField_c_of_type_Boolean = false;
+        this.g = -1;
+        if (this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.isFakeDragging())
+        {
+          this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.endFakeDrag();
+          return true;
+        }
       }
-      this.g = MotionEventCompat.getPointerId(paramMotionEvent, i);
+      else
+      {
+        this.g = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+        this.jdField_c_of_type_Float = paramMotionEvent.getX();
+      }
+      label418:
+      return true;
     }
-    this.jdField_c_of_type_Float = MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.g));
-    return true;
+    return false;
   }
   
   public void setCentered(boolean paramBoolean)
@@ -384,12 +397,15 @@ public class CirclePageIndicator
   
   public void setCurrentItem(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null) {
-      throw new IllegalStateException("ViewPager has not been bound.");
+    ViewPager localViewPager = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    if (localViewPager != null)
+    {
+      localViewPager.setCurrentItem(paramInt);
+      this.jdField_a_of_type_Int = paramInt;
+      invalidate();
+      return;
     }
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-    invalidate();
+    throw new IllegalStateException("ViewPager has not been bound.");
   }
   
   public void setFillColor(int paramInt)
@@ -400,14 +416,12 @@ public class CirclePageIndicator
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = paramOnPageChangeListener;
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener = paramOnPageChangeListener;
   }
   
   public void setOrientation(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 0) && (paramInt != 1)) {
       throw new IllegalArgumentException("Orientation must be either HORIZONTAL or VERTICAL.");
     }
     this.d = paramInt;
@@ -446,18 +460,21 @@ public class CirclePageIndicator
   
   public void setViewPager(ViewPager paramViewPager)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == paramViewPager) {
+    ViewPager localViewPager = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    if (localViewPager == paramViewPager) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(null);
+    if (localViewPager != null) {
+      localViewPager.setOnPageChangeListener(null);
     }
-    if (paramViewPager.getAdapter() == null) {
-      throw new IllegalStateException("ViewPager does not have adapter instance.");
+    if (paramViewPager.getAdapter() != null)
+    {
+      this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = paramViewPager;
+      this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setOnPageChangeListener(this);
+      invalidate();
+      return;
     }
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(this);
-    invalidate();
+    throw new IllegalStateException("ViewPager does not have adapter instance.");
   }
   
   public void setViewPager(ViewPager paramViewPager, int paramInt)
@@ -468,7 +485,7 @@ public class CirclePageIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.CirclePageIndicator
  * JD-Core Version:    0.7.0.1
  */

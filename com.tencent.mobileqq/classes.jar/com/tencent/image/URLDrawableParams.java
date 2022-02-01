@@ -53,36 +53,31 @@ public abstract class URLDrawableParams
     {
       localObject = doGetDownloader(paramString, paramObject);
       paramObject = localObject;
-      if (localObject == null)
-      {
-        if (!"file".equalsIgnoreCase(paramString)) {
-          break label71;
+      if (localObject == null) {
+        if ("file".equalsIgnoreCase(paramString))
+        {
+          paramObject = new LocaleFileDownloader();
         }
-        paramObject = new LocaleFileDownloader();
+        else if ("qqlive".equalsIgnoreCase(paramString))
+        {
+          paramObject = new QQLiveDownloader();
+        }
+        else
+        {
+          paramObject = localObject;
+          if ("illegalurl".equals(paramString)) {
+            paramObject = new IllegalURLDownloader();
+          }
+        }
       }
-    }
-    for (;;)
-    {
       localObject = paramObject;
       if (paramObject != null)
       {
         this.mDownLoaderMap.put(paramString, paramObject);
         localObject = paramObject;
       }
-      return localObject;
-      label71:
-      if ("qqlive".equalsIgnoreCase(paramString))
-      {
-        paramObject = new QQLiveDownloader();
-      }
-      else
-      {
-        paramObject = localObject;
-        if ("illegalurl".equals(paramString)) {
-          paramObject = new IllegalURLDownloader();
-        }
-      }
     }
+    return localObject;
   }
   
   String getLocalFilePath(String paramString)
@@ -104,7 +99,7 @@ public abstract class URLDrawableParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.URLDrawableParams
  * JD-Core Version:    0.7.0.1
  */

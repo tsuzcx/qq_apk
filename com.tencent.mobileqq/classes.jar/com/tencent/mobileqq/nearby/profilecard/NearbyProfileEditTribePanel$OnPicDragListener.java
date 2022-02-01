@@ -19,19 +19,16 @@ class NearbyProfileEditTribePanel$OnPicDragListener
   
   public boolean onDrag(View paramView, DragEvent paramDragEvent)
   {
-    switch (paramDragEvent.getAction())
-    {
-    }
-    for (;;)
-    {
+    if (paramDragEvent.getAction() != 1) {
       return true;
-      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
     }
+    QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.OnPicDragListener
  * JD-Core Version:    0.7.0.1
  */

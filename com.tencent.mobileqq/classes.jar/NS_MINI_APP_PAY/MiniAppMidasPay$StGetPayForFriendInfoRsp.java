@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class MiniAppMidasPay$StGetPayForFriendInfoRsp
   extends MessageMicro<StGetPayForFriendInfoRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64, 72, 80, 90, 98, 106 }, new String[] { "extInfo", "hostUin", "hostNick", "hostAvatar", "starCurrency", "goodsDesc", "goodsPicUrl", "tradeStatus", "expireAfter", "sandboxEnv", "friendUin", "friendNick", "friendAvatar" }, new Object[] { null, "", "", "", Long.valueOf(0L), "", "", Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), "", "", "" }, StGetPayForFriendInfoRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field expireAfter = PBField.initInt32(0);
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBStringField friendAvatar = PBField.initString("");
@@ -26,10 +26,16 @@ public final class MiniAppMidasPay$StGetPayForFriendInfoRsp
   public final PBInt32Field sandboxEnv = PBField.initInt32(0);
   public final PBInt64Field starCurrency = PBField.initInt64(0L);
   public final PBEnumField tradeStatus = PBField.initEnum(1);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64, 72, 80, 90, 98, 106 }, new String[] { "extInfo", "hostUin", "hostNick", "hostAvatar", "starCurrency", "goodsDesc", "goodsPicUrl", "tradeStatus", "expireAfter", "sandboxEnv", "friendUin", "friendNick", "friendAvatar" }, new Object[] { null, "", "", "", Long.valueOf(0L), "", "", Integer.valueOf(1), localInteger, localInteger, "", "", "" }, StGetPayForFriendInfoRsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_APP_PAY.MiniAppMidasPay.StGetPayForFriendInfoRsp
  * JD-Core Version:    0.7.0.1
  */

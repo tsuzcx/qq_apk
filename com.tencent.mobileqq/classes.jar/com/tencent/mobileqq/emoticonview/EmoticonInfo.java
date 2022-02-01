@@ -6,7 +6,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.widget.EditText;
-import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.qqemoticon.api.ITextUtilsApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.io.Serializable;
 import mqq.app.AppRuntime;
 
@@ -34,20 +35,27 @@ public class EmoticonInfo
   public int emoId;
   public boolean isChecked;
   public String longClickAction;
-  public int operateType = 0;
-  public int src_type = 0;
+  public int operateType;
+  public int srcType;
   public Serializable stickerInfo;
   public int type = -1;
   
-  public EmoticonInfo() {}
+  public EmoticonInfo()
+  {
+    this.srcType = 0;
+    this.operateType = 0;
+  }
   
   protected EmoticonInfo(Parcel paramParcel)
   {
     super(paramParcel);
+    boolean bool = false;
+    this.srcType = 0;
+    this.operateType = 0;
     this.type = paramParcel.readInt();
     this.action = paramParcel.readString();
     this.longClickAction = paramParcel.readString();
-    this.src_type = paramParcel.readInt();
+    this.srcType = paramParcel.readInt();
     this.drawableId = paramParcel.readInt();
     this.operateType = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {
@@ -69,12 +77,12 @@ public class EmoticonInfo
   
   public Drawable getDrawable(Context paramContext, float paramFloat)
   {
-    return TextUtils.getResourceDrawableThroughImageCache(paramContext.getResources(), this.drawableId);
+    return ((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).getResourceDrawableThroughImageCache(paramContext.getResources(), this.drawableId);
   }
   
   public Drawable getZoomDrawable(Context paramContext, float paramFloat, int paramInt1, int paramInt2)
   {
-    return TextUtils.getResourceDrawableThroughImageCache(paramContext.getResources(), this.drawableId);
+    return ((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).getResourceDrawableThroughImageCache(paramContext.getResources(), this.drawableId);
   }
   
   public void send(AppRuntime paramAppRuntime, Context paramContext, EditText paramEditText, Parcelable paramParcelable) {}
@@ -86,7 +94,13 @@ public class EmoticonInfo
   
   public String toString()
   {
-    return "EmoticonInfo[type: " + this.type + "  action: " + this.action + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EmoticonInfo[type: ");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append("  action: ");
+    localStringBuilder.append(this.action);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -95,21 +109,16 @@ public class EmoticonInfo
     paramParcel.writeInt(this.type);
     paramParcel.writeString(this.action);
     paramParcel.writeString(this.longClickAction);
-    paramParcel.writeInt(this.src_type);
+    paramParcel.writeInt(this.srcType);
     paramParcel.writeInt(this.drawableId);
     paramParcel.writeInt(this.operateType);
-    if (this.isChecked) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.emoId);
-      return;
-    }
+    paramParcel.writeByte((byte)this.isChecked);
+    paramParcel.writeInt(this.emoId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

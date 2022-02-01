@@ -90,15 +90,18 @@ public final class RespCommonCard
     paramJceOutputStream.write(this.stHeader, 0);
     paramJceOutputStream.write(this.stCommonCard, 1);
     paramJceOutputStream.write(this.vQQFaceID, 2);
-    if (this.vFaceInfo != null) {
-      paramJceOutputStream.write(this.vFaceInfo, 3);
+    ArrayList localArrayList = this.vFaceInfo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
     paramJceOutputStream.write(this.iVoteIncrement, 4);
-    if (this.vVisitors != null) {
-      paramJceOutputStream.write(this.vVisitors, 5);
+    localArrayList = this.vVisitors;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 5);
     }
-    if (this.vVoter != null) {
-      paramJceOutputStream.write(this.vVoter, 6);
+    localArrayList = this.vVoter;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 6);
     }
     paramJceOutputStream.write(this.lListVoterTime, 7);
     paramJceOutputStream.write(this.bShareLBS, 8);
@@ -107,7 +110,7 @@ public final class RespCommonCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespCommonCard
  * JD-Core Version:    0.7.0.1
  */

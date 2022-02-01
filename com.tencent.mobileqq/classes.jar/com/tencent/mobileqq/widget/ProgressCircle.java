@@ -40,65 +40,73 @@ public class ProgressCircle
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.e = 2;
     this.f = 18;
-    this.jdField_a_of_type_Int = getResources().getColor(2131167074);
-    this.jdField_b_of_type_Int = getResources().getColor(2131167074);
+    this.jdField_a_of_type_Int = getResources().getColor(2131167097);
+    this.jdField_b_of_type_Int = getResources().getColor(2131167097);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int i = getWidth();
-    int j = getHeight();
-    if (i != j) {
-      if (i < j) {
-        j = i;
-      }
-    }
-    for (;;)
+    int k = getWidth();
+    int m = getHeight();
+    int i = k;
+    int j = m;
+    if (k != m)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      paramCanvas.drawColor(0);
-      this.jdField_a_of_type_AndroidGraphicsRectF.left = (this.e / 2);
-      this.jdField_a_of_type_AndroidGraphicsRectF.top = (this.e / 2);
-      this.jdField_a_of_type_AndroidGraphicsRectF.right = (i - this.e / 2);
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (j - this.e / 2);
+      if (k < m) {
+        i = k;
+      } else {
+        i = m;
+      }
+      j = i;
+    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+    paramCanvas.drawColor(0);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    k = this.e;
+    ((RectF)localObject).left = (k / 2);
+    ((RectF)localObject).top = (k / 2);
+    ((RectF)localObject).right = (i - k / 2);
+    ((RectF)localObject).bottom = (j - k / 2);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(k);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(this.jdField_a_of_type_AndroidGraphicsPaint$Style);
+    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e * this.c);
+    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    k = this.e;
+    ((RectF)localObject).left = k;
+    ((RectF)localObject).top = k;
+    ((RectF)localObject).right = (i - k);
+    ((RectF)localObject).bottom = (j - k);
+    paramCanvas.drawArc((RectF)localObject, -90.0F, this.d / 100.0F * 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i /= 2;
+      j /= 2;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(this.jdField_a_of_type_AndroidGraphicsPaint$Style);
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e * this.c);
-      this.jdField_a_of_type_AndroidGraphicsRectF.left = this.e;
-      this.jdField_a_of_type_AndroidGraphicsRectF.top = this.e;
-      this.jdField_a_of_type_AndroidGraphicsRectF.right = (i - this.e);
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (j - this.e);
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F * (this.d / 100.0F), false, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i /= 2;
-        j /= 2;
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
-        paramCanvas.drawRect(new RectF(i - this.f / 2, j - this.f / 2, i + this.f / 2, j + this.f / 2), this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      if (this.jdField_b_of_type_Boolean)
-      {
-        String str = this.d + "%";
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(40.0F);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        float f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(str);
-        Paint.FontMetricsInt localFontMetricsInt = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
-        i = (int)((getWidth() - f1) / 2.0F);
-        j = (getHeight() - (localFontMetricsInt.descent - localFontMetricsInt.ascent)) / 2;
-        int k = -localFontMetricsInt.ascent;
-        paramCanvas.drawText(str, i, k + j, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      return;
-      i = j;
-      break;
+      k = this.f;
+      paramCanvas.drawRect(new RectF(i - k / 2, j - k / 2, i + k / 2, j + k / 2), this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append("%");
+      localObject = ((StringBuilder)localObject).toString();
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(40.0F);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+      float f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText((String)localObject);
+      Paint.FontMetricsInt localFontMetricsInt = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
+      i = (int)((getWidth() - f1) / 2.0F);
+      j = (getHeight() - (localFontMetricsInt.descent - localFontMetricsInt.ascent)) / 2;
+      k = -localFontMetricsInt.ascent;
+      paramCanvas.drawText((String)localObject, i, j + k, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
@@ -110,7 +118,7 @@ public class ProgressCircle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProgressCircle
  * JD-Core Version:    0.7.0.1
  */

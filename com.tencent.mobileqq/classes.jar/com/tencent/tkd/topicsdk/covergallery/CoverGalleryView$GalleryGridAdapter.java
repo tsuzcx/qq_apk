@@ -67,42 +67,48 @@ public final class CoverGalleryView$GalleryGridAdapter
   {
     if (paramView == null)
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView.getContext()).inflate(R.layout.v, paramViewGroup, false);
-      Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "LayoutInflater.from(cont…ver_album, parent, false)");
-      paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView;
-      if (paramViewGroup == null) {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView.getContext()).inflate(R.layout.u, paramViewGroup, false);
+      Intrinsics.checkExpressionValueIsNotNull(paramView, "LayoutInflater.from(cont…ver_album, parent, false)");
+      paramViewGroup = this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView;
+      if (paramView != null)
+      {
+        ViewGroup localViewGroup = (ViewGroup)paramView;
+        paramViewGroup = new CoverGalleryView.GalleryGridHolder(paramViewGroup, localViewGroup);
+        localViewGroup.setTag(paramViewGroup);
+      }
+      else
+      {
         throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
       }
-      paramView = new CoverGalleryView.GalleryGridHolder(paramView, (ViewGroup)paramViewGroup);
-      ((ViewGroup)paramViewGroup).setTag(paramView);
-      paramView.a(a(paramInt).getFilePath());
-      if (paramInt != this.jdField_a_of_type_Int) {
-        break label160;
-      }
-      paramView.a().setVisibility(0);
-      paramView.b().setVisibility(8);
     }
-    for (;;)
+    else
     {
-      paramView.a().setOnClickListener((View.OnClickListener)new CoverGalleryView.GalleryGridAdapter.getView.1(this, paramInt));
-      return paramViewGroup;
       paramViewGroup = paramView.getTag();
       if (paramViewGroup == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.GalleryGridHolder");
+        break label166;
       }
-      CoverGalleryView.GalleryGridHolder localGalleryGridHolder = (CoverGalleryView.GalleryGridHolder)paramViewGroup;
-      paramViewGroup = paramView;
-      paramView = localGalleryGridHolder;
-      break;
-      label160:
-      paramView.a().setVisibility(8);
-      paramView.b().setVisibility(0);
+      paramViewGroup = (CoverGalleryView.GalleryGridHolder)paramViewGroup;
     }
+    paramViewGroup.a(a(paramInt).getFilePath());
+    if (paramInt == this.jdField_a_of_type_Int)
+    {
+      paramViewGroup.a().setVisibility(0);
+      paramViewGroup.b().setVisibility(8);
+    }
+    else
+    {
+      paramViewGroup.a().setVisibility(8);
+      paramViewGroup.b().setVisibility(0);
+    }
+    paramViewGroup.a().setOnClickListener((View.OnClickListener)new CoverGalleryView.GalleryGridAdapter.getView.1(this, paramInt));
+    return paramView;
+    label166:
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.GalleryGridHolder");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.GalleryGridAdapter
  * JD-Core Version:    0.7.0.1
  */

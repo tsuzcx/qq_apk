@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RespGetRecommender
   extends JceStruct
@@ -56,22 +57,25 @@ public final class RespGetRecommender
     paramJceOutputStream.write(this.iOuterInterval, 0);
     paramJceOutputStream.write(this.iInnerInterval, 1);
     paramJceOutputStream.write(this.iExpiretime, 2);
-    if (this.vEncounterInfos != null) {
-      paramJceOutputStream.write(this.vEncounterInfos, 3);
+    Object localObject = this.vEncounterInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.eReasonType, 4);
-    if (this.strBrief != null) {
-      paramJceOutputStream.write(this.strBrief, 5);
+    localObject = this.strBrief;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.strTitle != null) {
-      paramJceOutputStream.write(this.strTitle, 6);
+    localObject = this.strTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.uRecommendTime, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.RespGetRecommender
  * JD-Core Version:    0.7.0.1
  */

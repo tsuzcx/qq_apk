@@ -11,7 +11,6 @@ import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ViewUtils
@@ -19,7 +18,7 @@ public class ViewUtils
   private static double a;
   public static float a;
   public static int a;
-  private static float jdField_b_of_type_Float = 0.0F;
+  private static float jdField_b_of_type_Float;
   private static int jdField_b_of_type_Int;
   private static float jdField_c_of_type_Float;
   private static int jdField_c_of_type_Int;
@@ -45,8 +44,10 @@ public class ViewUtils
     if (jdField_a_of_type_Double <= 0.0D)
     {
       DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
-      double d1 = Math.pow(localDisplayMetrics.widthPixels, 2.0D);
-      jdField_a_of_type_Double = Math.sqrt(Math.pow(localDisplayMetrics.heightPixels, 2.0D) + d1) / c();
+      double d1 = Math.sqrt(Math.pow(localDisplayMetrics.widthPixels, 2.0D) + Math.pow(localDisplayMetrics.heightPixels, 2.0D));
+      double d2 = c();
+      Double.isNaN(d2);
+      jdField_a_of_type_Double = d1 / d2;
     }
     return jdField_a_of_type_Double;
   }
@@ -64,64 +65,56 @@ public class ViewUtils
     if (jdField_b_of_type_Float == 0.0F) {
       jdField_b_of_type_Float = jdField_a_of_type_Int;
     }
-    return jdField_b_of_type_Float * paramFloat / 160.0F;
+    return paramFloat * jdField_b_of_type_Float / 160.0F;
   }
   
   public static int a()
   {
     if (jdField_c_of_type_Int < 0) {
-      if (BaseApplication.getContext().getResources().getConfiguration().orientation != 2) {
-        break label41;
+      if (BaseApplication.getContext().getResources().getConfiguration().orientation == 2) {
+        jdField_c_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
+      } else {
+        jdField_c_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
       }
     }
-    label41:
-    for (jdField_c_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;; jdField_c_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels) {
-      return jdField_c_of_type_Int;
-    }
+    return jdField_c_of_type_Int;
   }
   
   public static int a(float paramFloat)
   {
-    return (int)(jdField_a_of_type_Float * paramFloat + 0.5F);
+    return (int)(paramFloat * jdField_a_of_type_Float + 0.5F);
   }
   
   public static int a(Context paramContext)
   {
-    int i = 0;
     paramContext = paramContext.getResources();
-    int j = paramContext.getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getDimensionPixelSize(j);
+    int i = paramContext.getIdentifier("status_bar_height", "dimen", "android");
+    if (i > 0) {
+      return paramContext.getDimensionPixelSize(i);
     }
-    return i;
+    return 0;
   }
   
   public static int a(Paint paramPaint, CharSequence paramCharSequence)
   {
     int j = 0;
-    int i = 0;
-    int k = j;
-    if (paramCharSequence != null)
+    if ((paramCharSequence != null) && (paramCharSequence.length() > 0))
     {
-      k = j;
-      if (paramCharSequence.length() > 0)
+      int m = paramCharSequence.length();
+      float[] arrayOfFloat = new float[m];
+      paramPaint.getTextWidths(paramCharSequence.toString(), arrayOfFloat);
+      int i = 0;
+      for (;;)
       {
-        int m = paramCharSequence.length();
-        float[] arrayOfFloat = new float[m];
-        paramPaint.getTextWidths(paramCharSequence.toString(), arrayOfFloat);
-        j = 0;
-        for (;;)
-        {
-          k = i;
-          if (j >= m) {
-            break;
-          }
-          k = (int)Math.ceil(arrayOfFloat[j]);
-          j += 1;
-          i = k + i;
+        k = i;
+        if (j >= m) {
+          break;
         }
+        i += (int)Math.ceil(arrayOfFloat[j]);
+        j += 1;
       }
     }
+    int k = 0;
     return k;
   }
   
@@ -140,16 +133,28 @@ public class ViewUtils
     jdField_d_of_type_Int = -1;
   }
   
+  public static void a(View paramView)
+  {
+    if ((paramView != null) && (paramView.getParent() != null))
+    {
+      ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
+      if (localViewGroup != null) {
+        localViewGroup.removeView(paramView);
+      }
+    }
+  }
+  
   @TargetApi(11)
   public static void a(View paramView, float paramFloat)
   {
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       paramView.setAlpha(paramFloat);
-    }
-    while (paramView.getBackground() == null) {
       return;
     }
-    paramView.getBackground().setAlpha((int)(255.0F * paramFloat));
+    if (paramView.getBackground() != null) {
+      paramView.getBackground().setAlpha((int)(paramFloat * 255.0F));
+    }
   }
   
   @TargetApi(11)
@@ -187,70 +192,70 @@ public class ViewUtils
   
   public static void a(View paramView1, View paramView2, int[] paramArrayOfInt)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length < 2)) {}
-    label156:
+    int j;
+    int i;
+    if (paramArrayOfInt != null)
+    {
+      if (paramArrayOfInt.length < 2) {
+        return;
+      }
+      j = 0;
+      i = 0;
+    }
     for (;;)
     {
-      return;
-      int i = 0;
-      int j = 0;
+      int n = j;
+      int i1 = i;
       int k;
       int m;
       if (paramView1.getParent() != null)
       {
-        j = paramView1.getLeft() + j;
-        k = paramView1.getTop() + i;
+        k = j + paramView1.getLeft();
+        m = i + paramView1.getTop();
         if (paramView1.getParent() == paramView2)
         {
-          paramArrayOfInt[0] = j;
-          paramArrayOfInt[1] = k;
-          i = k;
-          m = j;
-          if (paramArrayOfInt.length >= 4)
-          {
-            paramArrayOfInt[2] = paramView1.getMeasuredWidth();
-            paramArrayOfInt[3] = paramView1.getMeasuredHeight();
-            m = j;
-            i = k;
+          paramArrayOfInt[0] = k;
+          paramArrayOfInt[1] = m;
+          n = k;
+          i1 = m;
+          if (paramArrayOfInt.length < 4) {
+            break label158;
           }
+          paramArrayOfInt[2] = paramView1.getMeasuredWidth();
+          paramArrayOfInt[3] = paramView1.getMeasuredHeight();
+          n = k;
+          i1 = m;
         }
       }
-      for (;;)
+      try
+      {
+        View localView = (View)paramView1.getParent();
+        j = k;
+        i = m;
+        paramView1 = localView;
+        if (paramArrayOfInt.length >= 4)
+        {
+          paramArrayOfInt[2] = localView.getMeasuredWidth();
+          paramArrayOfInt[3] = localView.getMeasuredHeight();
+          j = k;
+          i = m;
+          paramView1 = localView;
+        }
+      }
+      catch (ClassCastException paramView1)
       {
         for (;;)
         {
-          if (paramView2 != null) {
-            break label156;
-          }
-          paramArrayOfInt[0] = m;
-          paramArrayOfInt[1] = i;
-          return;
-          try
-          {
-            paramView1 = (View)paramView1.getParent();
-            if (paramArrayOfInt.length >= 4)
-            {
-              paramArrayOfInt[2] = paramView1.getMeasuredWidth();
-              paramArrayOfInt[3] = paramView1.getMeasuredHeight();
-            }
-            i = k;
-          }
-          catch (ClassCastException paramView1)
-          {
-            i = k;
-            m = j;
-          }
+          label158:
+          n = k;
+          i1 = m;
         }
-        continue;
-        m = j;
       }
     }
-  }
-  
-  public static void a(CheckBox paramCheckBox, int paramInt)
-  {
-    if (Build.VERSION.SDK_INT < 17) {
-      paramCheckBox.setPadding(paramCheckBox.getPaddingTop() + paramInt, paramCheckBox.getPaddingTop(), paramCheckBox.getPaddingRight(), paramCheckBox.getPaddingBottom());
+    if (paramView2 == null)
+    {
+      paramArrayOfInt[0] = n;
+      paramArrayOfInt[1] = i1;
     }
   }
   
@@ -271,11 +276,12 @@ public class ViewUtils
     }
     if ((paramView2 instanceof ViewGroup))
     {
-      int j = ((ViewGroup)paramView2).getChildCount();
+      paramView2 = (ViewGroup)paramView2;
+      int j = paramView2.getChildCount();
       int i = 0;
       while (i < j)
       {
-        if (a(paramView1, ((ViewGroup)paramView2).getChildAt(i))) {
+        if (a(paramView1, paramView2.getChildAt(i))) {
           return true;
         }
         i += 1;
@@ -295,29 +301,29 @@ public class ViewUtils
   public static int b()
   {
     if (jdField_d_of_type_Int < 0) {
-      if (BaseApplication.getContext().getResources().getConfiguration().orientation != 2) {
-        break label41;
+      if (BaseApplication.getContext().getResources().getConfiguration().orientation == 2) {
+        jdField_d_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
+      } else {
+        jdField_d_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
       }
     }
-    label41:
-    for (jdField_d_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;; jdField_d_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels) {
-      return jdField_d_of_type_Int;
-    }
+    return jdField_d_of_type_Int;
   }
   
   public static int b(float paramFloat)
   {
-    return Math.round(a() * paramFloat);
+    return Math.round(paramFloat * a());
   }
   
   @TargetApi(11)
   public static void b(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setScaleX(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setScaleX(paramFloat);
+    }
   }
   
   public static void b(View paramView, int paramInt)
@@ -337,8 +343,11 @@ public class ViewUtils
   
   public static int c()
   {
-    if (e <= 0) {
-      e = (int)(BaseApplication.getContext().getResources().getDisplayMetrics().xdpi / 2.54D);
+    if (e <= 0)
+    {
+      double d1 = BaseApplication.getContext().getResources().getDisplayMetrics().xdpi;
+      Double.isNaN(d1);
+      e = (int)(d1 / 2.54D);
     }
     return e;
   }
@@ -351,26 +360,28 @@ public class ViewUtils
   @TargetApi(11)
   public static void c(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setScaleY(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setScaleY(paramFloat);
+    }
   }
   
   public static int d(float paramFloat)
   {
-    return (int)(BaseApplication.getContext().getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+    return (int)(paramFloat * BaseApplication.getContext().getResources().getDisplayMetrics().scaledDensity + 0.5F);
   }
   
   @TargetApi(11)
   public static void d(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setPivotX(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setPivotX(paramFloat);
+    }
   }
   
   public static int e(float paramFloat)
@@ -381,46 +392,50 @@ public class ViewUtils
   @TargetApi(11)
   public static void e(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setPivotY(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setPivotY(paramFloat);
+    }
   }
   
   @TargetApi(11)
   public static void f(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setTranslationX(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setTranslationX(paramFloat);
+    }
   }
   
   @TargetApi(11)
   public static void g(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setTranslationY(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setTranslationY(paramFloat);
+    }
   }
   
   @TargetApi(11)
   public static void h(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setRotation(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setRotation(paramFloat);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ViewUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,20 @@ class AuthorizeCenter$1
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("AuthorizeCenter", 2, "setAuthorize() onCmdListener isSuccess: " + paramBoolean + "   ; ret: " + paramJSONObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setAuthorize() onCmdListener isSuccess: ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("   ; ret: ");
+      localStringBuilder.append(paramJSONObject);
+      QLog.e("AuthorizeCenter", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.AuthorizeCenter.1
  * JD-Core Version:    0.7.0.1
  */

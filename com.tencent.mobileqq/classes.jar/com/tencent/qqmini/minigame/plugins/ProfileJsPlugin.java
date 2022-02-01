@@ -36,7 +36,11 @@ public final class ProfileJsPlugin
   
   private final String covertProfileToIdeData(String paramString)
   {
-    return "{\"debug_message\":[{\"seq\":1,\"category\":\"performance\",\"data\":" + paramString + "}]}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{\"debug_message\":[{\"seq\":1,\"category\":\"performance\",\"data\":");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("}]}");
+    return localStringBuilder.toString();
   }
   
   private final void notifyProfileCmd(String paramString, int paramInt)
@@ -46,7 +50,13 @@ public final class ProfileJsPlugin
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("cmd", paramString);
       localJSONObject.put("id", paramInt);
-      GameLog.getInstance().w("ProfileJsPlugin", "notifyProfileCmd cmd:" + paramString + ", id:" + paramInt);
+      GameLog localGameLog = GameLog.getInstance();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyProfileCmd cmd:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", id:");
+      localStringBuilder.append(paramInt);
+      localGameLog.w("ProfileJsPlugin", localStringBuilder.toString());
       paramString = this.jsService;
       if (paramString == null) {
         Intrinsics.throwNpe();
@@ -71,8 +81,9 @@ public final class ProfileJsPlugin
   {
     super.onDestroy();
     BaseRuntimeLoader localBaseRuntimeLoader = AppRuntimeLoaderManager.g().queryAppRunTimeLoader(this.mMiniAppInfo);
-    if ((this.observer != null) && (localBaseRuntimeLoader != null)) {
-      localBaseRuntimeLoader.removeRuntimeStateObserver(this.observer);
+    AppRuntimeEventCenter.RuntimeStateObserver localRuntimeStateObserver = this.observer;
+    if ((localRuntimeStateObserver != null) && (localBaseRuntimeLoader != null)) {
+      localBaseRuntimeLoader.removeRuntimeStateObserver(localRuntimeStateObserver);
     }
   }
   
@@ -102,8 +113,8 @@ public final class ProfileJsPlugin
         Intrinsics.checkExpressionValueIsNotNull(paramRequestEvent, "ret.toString()");
         paramRequestEvent = covertProfileToIdeData(paramRequestEvent);
         DebugSocketAction.obtain(this.mMiniAppContext).sendQQDebugMethodMsg("DebugMessageClient", paramRequestEvent);
+        return;
       }
-      return;
     }
     catch (JSONException paramRequestEvent)
     {
@@ -113,7 +124,7 @@ public final class ProfileJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.ProfileJsPlugin
  * JD-Core Version:    0.7.0.1
  */

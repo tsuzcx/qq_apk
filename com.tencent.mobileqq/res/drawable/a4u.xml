@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/al3" />
-</shape>
+    <item android:state_focused="true" android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/ftn" />
+    <item android:state_focused="true" android:state_enabled="false" android:drawable="@drawable/ftn" />
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/abt" />
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/abt" />
+    <item android:state_focused="true" android:drawable="@drawable/frz" />
+    <item android:drawable="@android:color/transparent" />
+</selector>

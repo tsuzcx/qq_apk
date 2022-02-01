@@ -10,12 +10,12 @@ class AVActivity$18
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.i();
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.18
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ import com.tencent.mobileqq.activity.aio.voicetextpanel.model.VoiceTextStateMode
 import com.tencent.mobileqq.activity.aio.voicetextpanel.model.VoiceTextUIState;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.utils.ReportUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
+import mqq.app.AppRuntime;
 
 public class VoiceTextSendViewHelper
   extends VoiceTextBaseViewHelpr
@@ -25,9 +25,9 @@ public class VoiceTextSendViewHelper
   private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new VoiceTextSendViewHelper.1(this);
   private Button b;
   
-  public VoiceTextSendViewHelper(VoiceTextStateModel paramVoiceTextStateModel, QQAppInterface paramQQAppInterface, SharedPreferences paramSharedPreferences)
+  public VoiceTextSendViewHelper(VoiceTextStateModel paramVoiceTextStateModel, AppRuntime paramAppRuntime, SharedPreferences paramSharedPreferences)
   {
-    super(paramQQAppInterface, paramVoiceTextStateModel);
+    super(paramAppRuntime, paramVoiceTextStateModel);
     this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
   }
   
@@ -39,17 +39,27 @@ public class VoiceTextSendViewHelper
   
   private boolean b()
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("businessinfo_ptt_vt_send_type_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    if (localSharedPreferences != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("businessinfo_ptt_vt_send_type_");
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
     }
-    return bool;
+    return false;
   }
   
   private void c(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("businessinfo_ptt_vt_send_type_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramBoolean).commit();
+    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("businessinfo_ptt_vt_send_type_");
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), paramBoolean).commit();
     }
   }
   
@@ -75,8 +85,8 @@ public class VoiceTextSendViewHelper
   
   private void g()
   {
-    if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-      this.b.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167066));
+    if (QQTheme.a()) {
+      this.b.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167089));
     }
   }
   
@@ -89,17 +99,17 @@ public class VoiceTextSendViewHelper
   public void a()
   {
     b(false);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131719046);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131718762);
   }
   
   public void a(VoiceTextPanel paramVoiceTextPanel)
   {
     super.a(paramVoiceTextPanel);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramVoiceTextPanel.findViewById(2131377759));
-    this.b = ((Button)paramVoiceTextPanel.findViewById(2131364357));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramVoiceTextPanel.findViewById(2131377187));
+    this.b = ((Button)paramVoiceTextPanel.findViewById(2131364259));
     this.b.setOnClickListener(new VoiceTextSendViewHelper.2(this));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new VoiceTextSendViewHelper.3(this));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramVoiceTextPanel.findViewById(2131364726));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramVoiceTextPanel.findViewById(2131364613));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     h();
     g();
@@ -123,13 +133,13 @@ public class VoiceTextSendViewHelper
     {
       this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
       a().c(true);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131719048);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131718764);
       a(true);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
     a().c(false);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131719046);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131718762);
     a(false);
   }
   
@@ -142,7 +152,7 @@ public class VoiceTextSendViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextSendViewHelper
  * JD-Core Version:    0.7.0.1
  */

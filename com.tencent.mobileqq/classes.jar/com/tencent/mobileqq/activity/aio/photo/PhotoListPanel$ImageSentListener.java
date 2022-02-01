@@ -6,7 +6,7 @@ public abstract interface PhotoListPanel$ImageSentListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.ImageSentListener
  * JD-Core Version:    0.7.0.1
  */

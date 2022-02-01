@@ -16,48 +16,36 @@ final class f
   
   public final void run()
   {
-    if (this.a.f()) {
-      this.a.b("canceled-at-delivery");
-    }
-    label50:
-    label91:
-    label108:
-    label118:
-    for (;;)
+    if (this.a.f())
     {
+      this.a.b("canceled-at-delivery");
       return;
-      int i;
-      if (this.b.c == null)
-      {
-        i = 1;
-        if (i == 0) {
-          break label91;
-        }
-        this.a.a(this.b.a);
-        if (!this.b.d) {
-          break label108;
-        }
-        this.a.a("intermediate-response");
-      }
-      for (;;)
-      {
-        if (this.c == null) {
-          break label118;
-        }
-        this.c.run();
-        return;
-        i = 0;
-        break;
-        this.a.b(this.b.c);
-        break label50;
-        this.a.b("done");
-      }
+    }
+    int i;
+    if (this.b.c == null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      this.a.a(this.b.a);
+    } else {
+      this.a.b(this.b.c);
+    }
+    if (this.b.d) {
+      this.a.a("intermediate-response");
+    } else {
+      this.a.b("done");
+    }
+    Runnable localRunnable = this.c;
+    if (localRunnable != null) {
+      localRunnable.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.f
  * JD-Core Version:    0.7.0.1
  */

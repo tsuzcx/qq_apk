@@ -53,55 +53,72 @@ public class MiniAppGlobal
   
   private static String getExternalPath()
   {
-    Object localObject3 = null;
+    StringBuilder localStringBuilder = null;
     try
     {
-      Object localObject1 = BaseApplicationImpl.getContext().getExternalCacheDir();
-      if (localObject1 != null)
-      {
-        QLog.e("MiniAppGlobal", 1, "getExternalPath : " + ((File)localObject1).getParent());
-        localObject1 = ((File)localObject1).getParent();
-        return localObject1;
-      }
+      localObject = BaseApplicationImpl.getContext().getExternalCacheDir();
     }
     catch (Throwable localThrowable)
     {
-      do
+      Object localObject;
+      label12:
+      break label12;
+    }
+    localObject = null;
+    if (localObject != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getExternalPath : ");
+      localStringBuilder.append(((File)localObject).getParent());
+      QLog.e("MiniAppGlobal", 1, localStringBuilder.toString());
+      return ((File)localObject).getParent();
+    }
+    localObject = localStringBuilder;
+    if ("mounted".equals(Environment.getExternalStorageState()))
+    {
+      localObject = Environment.getExternalStorageDirectory();
+      if (localObject != null)
       {
-        for (;;)
-        {
-          localObject2 = null;
-        }
-        localObject2 = localObject3;
-      } while (!"mounted".equals(Environment.getExternalStorageState()));
-      Object localObject2 = Environment.getExternalStorageDirectory();
-      if (localObject2 != null)
-      {
-        QLog.e("MiniAppGlobal", 1, "getExternalPath1 : " + ((File)localObject2).getPath() + "/Android/data/com.tencent.mobileqq/");
-        return ((File)localObject2).getPath() + "/Android/data/com.tencent.mobileqq/";
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getExternalPath1 : ");
+        localStringBuilder.append(((File)localObject).getPath());
+        localStringBuilder.append("/Android/data/com.tencent.mobileqq/");
+        QLog.e("MiniAppGlobal", 1, localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((File)localObject).getPath());
+        localStringBuilder.append("/Android/data/com.tencent.mobileqq/");
+        return localStringBuilder.toString();
       }
-      localObject2 = BaseApplicationImpl.getApplication().getFilesDir();
-      if (localObject2 != null)
+      localObject = BaseApplicationImpl.getApplication().getFilesDir();
+      if (localObject != null)
       {
-        QLog.e("MiniAppGlobal", 1, "getExternalPath2 : " + ((File)localObject2).getParent());
-        return ((File)localObject2).getParent();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getExternalPath2 : ");
+        localStringBuilder.append(((File)localObject).getParent());
+        QLog.e("MiniAppGlobal", 1, localStringBuilder.toString());
+        return ((File)localObject).getParent();
       }
       QLog.e("MiniAppGlobal", 1, "getExternalPath3 : /data/data/com.tencent.mobileqq/");
+      localObject = "/data/data/com.tencent.mobileqq/";
     }
-    return "/data/data/com.tencent.mobileqq/";
+    return localObject;
   }
   
   public static String getMiniCacheFilePath()
   {
-    if (TextUtils.isEmpty(gMiniCacheFilePath)) {
-      gMiniCacheFilePath = getExternalPath() + "/Tencent/mini/files/";
+    if (TextUtils.isEmpty(gMiniCacheFilePath))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getExternalPath());
+      localStringBuilder.append("/Tencent/mini/files/");
+      gMiniCacheFilePath = localStringBuilder.toString();
     }
     return gMiniCacheFilePath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.MiniAppGlobal
  * JD-Core Version:    0.7.0.1
  */

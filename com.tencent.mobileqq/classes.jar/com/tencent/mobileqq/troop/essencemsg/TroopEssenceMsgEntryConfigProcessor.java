@@ -12,7 +12,10 @@ public class TroopEssenceMsgEntryConfigProcessor
   @NonNull
   public TroopEssenceMsgEntryConfig a(int paramInt)
   {
-    QLog.d("TroopEssenceMsgEntryConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopEssenceMsgEntryConfigProcessor", 2, localStringBuilder.toString());
     return new TroopEssenceMsgEntryConfig();
   }
   
@@ -49,7 +52,10 @@ public class TroopEssenceMsgEntryConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TroopEssenceMsgEntryConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopEssenceMsgEntryConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -59,7 +65,7 @@ public class TroopEssenceMsgEntryConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgEntryConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

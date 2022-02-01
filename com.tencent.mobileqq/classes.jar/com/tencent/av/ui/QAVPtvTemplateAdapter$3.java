@@ -11,21 +11,18 @@ class QAVPtvTemplateAdapter$3
   
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    boolean bool = true;
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    boolean bool = true;
     paramAccessibilityNodeInfoCompat.setCheckable(true);
-    if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.d) {}
-    for (;;)
-    {
-      paramAccessibilityNodeInfoCompat.setChecked(bool);
-      return;
+    if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.d) {
       bool = false;
     }
+    paramAccessibilityNodeInfoCompat.setChecked(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QAVPtvTemplateAdapter.3
  * JD-Core Version:    0.7.0.1
  */

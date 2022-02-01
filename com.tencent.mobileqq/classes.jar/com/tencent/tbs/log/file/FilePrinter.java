@@ -68,76 +68,78 @@ public class FilePrinter
   
   private boolean openFileIfNecessary(LogItem paramLogItem)
   {
-    Object localObject2;
-    Object localObject1;
-    try
-    {
-      localObject2 = this.mWriter.getFileName();
-      if (localObject2 != null)
-      {
-        localObject1 = localObject2;
-        if (!this.mLogNameGenerator.isFileNameChangeable()) {
-          break label175;
-        }
-      }
-      localObject1 = this.mLogNameGenerator.generateFileName(paramLogItem);
-      if ((localObject1 == null) || (((String)localObject1).trim().length() == 0)) {
-        throw new IllegalArgumentException("File name should not be empty.");
-      }
-    }
-    catch (Exception paramLogItem)
-    {
-      paramLogItem.printStackTrace();
-    }
-    int i;
     for (;;)
     {
-      return false;
-      if (!((String)localObject1).equals(localObject2))
+      Object localObject2;
+      int i;
+      try
       {
-        if (this.mWriter.isOpened()) {
-          this.mWriter.close();
-        }
-        paramLogItem = new File(getLogPath()).listFiles();
-        if (paramLogItem != null)
-        {
-          int j = paramLogItem.length;
-          i = 0;
-          if (i < j)
-          {
-            localObject2 = paramLogItem[i];
-            if (!this.mLogCleanStrategy.shouldClean((File)localObject2)) {
-              break;
-            }
-            ((File)localObject2).delete();
-            break;
+        localObject2 = this.mWriter.getFileName();
+        if (localObject2 != null) {
+          if (!this.mLogNameGenerator.isFileNameChangeable()) {
+            break label305;
           }
         }
-        if (this.mWriter.open((String)localObject1)) {
-          break label295;
+        Object localObject1 = this.mLogNameGenerator.generateFileName(paramLogItem);
+        if ((localObject1 != null) && (((String)localObject1).trim().length() != 0))
+        {
+          paramLogItem = (LogItem)localObject1;
+          if (!((String)localObject1).equals(localObject2))
+          {
+            if (this.mWriter.isOpened()) {
+              this.mWriter.close();
+            }
+            paramLogItem = new File(getLogPath()).listFiles();
+            if (paramLogItem != null)
+            {
+              int j = paramLogItem.length;
+              i = 0;
+              if (i < j)
+              {
+                localObject2 = paramLogItem[i];
+                if (!this.mLogCleanStrategy.shouldClean((File)localObject2)) {
+                  break label311;
+                }
+                ((File)localObject2).delete();
+                break label311;
+              }
+            }
+            paramLogItem = (LogItem)localObject1;
+            if (!this.mWriter.open((String)localObject1)) {
+              return false;
+            }
+          }
+          localObject1 = this.mWriter.getFile();
+          if ((localObject1 == null) || (!this.mLogBackupStrategy.shouldBackup((File)localObject1))) {
+            break;
+          }
+          this.mWriter.close();
+          localObject2 = getLogPath();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramLogItem);
+          localStringBuilder.append("-");
+          localStringBuilder.append(System.currentTimeMillis() % 86400000L);
+          localObject2 = new File((String)localObject2, localStringBuilder.toString());
+          if (((File)localObject2).exists()) {
+            ((File)localObject2).delete();
+          }
+          ((File)localObject1).renameTo((File)localObject2);
+          return this.mWriter.open(paramLogItem);
         }
+        throw new IllegalArgumentException("File name should not be empty.");
       }
-    }
-    label295:
-    for (;;)
-    {
-      label175:
-      paramLogItem = this.mWriter.getFile();
-      if ((paramLogItem != null) && (this.mLogBackupStrategy.shouldBackup(paramLogItem)))
+      catch (Exception paramLogItem)
       {
-        this.mWriter.close();
-        localObject2 = new File(getLogPath(), (String)localObject1 + "-" + System.currentTimeMillis() % 86400000L);
-        if (((File)localObject2).exists()) {
-          ((File)localObject2).delete();
-        }
-        paramLogItem.renameTo((File)localObject2);
-        boolean bool = this.mWriter.open((String)localObject1);
-        return bool;
+        paramLogItem.printStackTrace();
+        return false;
       }
-      return true;
+      label305:
+      paramLogItem = (LogItem)localObject2;
+      continue;
+      label311:
       i += 1;
-      break;
     }
+    return true;
   }
   
   public void close()
@@ -161,7 +163,7 @@ public class FilePrinter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.log.file.FilePrinter
  * JD-Core Version:    0.7.0.1
  */

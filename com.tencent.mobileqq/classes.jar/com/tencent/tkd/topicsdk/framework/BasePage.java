@@ -21,7 +21,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/framework/BasePage;", "Lcom/tencent/tkd/topicsdk/interfaces/PageProxy;", "()V", "isImmersiveStatusBar", "", "()Z", "isNightMode", "isSupportTranslateStatusBar", "isTranslateStatusBar", "view", "Landroid/view/View;", "finish", "", "finishAndKillPreviewPages", "killCount", "", "getArguments", "Landroid/os/Bundle;", "getImmersiveStatusBarStatus", "Lkotlin/Pair;", "onCreateView", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "onResume", "setArguments", "bundle", "Companion", "topicsdk-framework_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/framework/BasePage;", "Lcom/tencent/tkd/topicsdk/interfaces/PageProxy;", "()V", "isImmersiveStatusBar", "", "()Z", "isNightMode", "isSupportTranslateStatusBar", "isTranslateStatusBar", "view", "Landroid/view/View;", "addViewOnDecorView", "", "checkAndKillCurPage", "finish", "finishAndKillPreviewPages", "killCount", "", "getArguments", "Landroid/os/Bundle;", "getImmersiveStatusBarStatus", "Lkotlin/Pair;", "onCreateView", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "onResume", "setArguments", "bundle", "Companion", "topicsdk-framework_release"}, k=1, mv={1, 1, 16})
 public abstract class BasePage
   extends PageProxy
 {
@@ -34,6 +34,67 @@ public abstract class BasePage
     jdField_a_of_type_ComTencentTkdTopicsdkFrameworkBasePage$Companion = new BasePage.Companion(null);
   }
   
+  private final boolean a()
+  {
+    if (jdField_a_of_type_Int > 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getClass().getName());
+      localStringBuilder.append(" is killed cos' killCount == ");
+      localStringBuilder.append(jdField_a_of_type_Int);
+      TLog.d("BasePage", localStringBuilder.toString());
+      c();
+      jdField_a_of_type_Int -= 1;
+      return true;
+    }
+    return false;
+  }
+  
+  private final void f()
+  {
+    Object localObject = a();
+    if (localObject != null)
+    {
+      localObject = ((Activity)localObject).getWindow();
+      if (localObject != null)
+      {
+        localObject = ((Window)localObject).getDecorView();
+        break label28;
+      }
+    }
+    localObject = null;
+    label28:
+    if ((localObject instanceof FrameLayout))
+    {
+      View localView;
+      if (g())
+      {
+        if (this.jdField_a_of_type_AndroidViewView == null)
+        {
+          localObject = (FrameLayout)localObject;
+          this.jdField_a_of_type_AndroidViewView = ((View)new LinearLayout(((FrameLayout)localObject).getContext()));
+          localView = this.jdField_a_of_type_AndroidViewView;
+          if (localView != null)
+          {
+            Context localContext = ((FrameLayout)localObject).getContext();
+            Intrinsics.checkExpressionValueIsNotNull(localContext, "decorView.context");
+            localView.setBackgroundColor(localContext.getResources().getColor(R.color.jdField_a_of_type_Int));
+          }
+          ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+        }
+      }
+      else
+      {
+        localView = this.jdField_a_of_type_AndroidViewView;
+        if (localView != null)
+        {
+          ((FrameLayout)localObject).removeView(localView);
+          this.jdField_a_of_type_AndroidViewView = ((View)null);
+        }
+      }
+    }
+  }
+  
   @Nullable
   public Bundle a()
   {
@@ -41,14 +102,15 @@ public abstract class BasePage
     if (localBundle != null) {
       localBundle.setClassLoader(BasePage.class.getClassLoader());
     }
-    if (localBundle != null) {}
-    for (localBundle = localBundle.getBundle("key_base_bundle");; localBundle = null)
-    {
-      if (localBundle != null) {
-        localBundle.setClassLoader(BasePage.class.getClassLoader());
-      }
-      return localBundle;
+    if (localBundle != null) {
+      localBundle = localBundle.getBundle("key_base_bundle");
+    } else {
+      localBundle = null;
     }
+    if (localBundle != null) {
+      localBundle.setClassLoader(BasePage.class.getClassLoader());
+    }
+    return localBundle;
   }
   
   @Nullable
@@ -58,134 +120,78 @@ public abstract class BasePage
   public View a(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      if (!a()) {
-        break label52;
-      }
-      paramBundle = a();
-      if (paramBundle != null)
+    if (Build.VERSION.SDK_INT >= 19) {
+      if (p_())
       {
-        paramBundle = paramBundle.getWindow();
-        if (paramBundle != null) {
-          paramBundle.addFlags(67108864);
+        paramBundle = a();
+        if (paramBundle != null)
+        {
+          paramBundle = paramBundle.getWindow();
+          if (paramBundle != null) {
+            paramBundle.addFlags(67108864);
+          }
         }
       }
-    }
-    for (;;)
-    {
-      return a(paramLayoutInflater, paramViewGroup);
-      label52:
-      if (Build.VERSION.SDK_INT >= 23)
+      else if (Build.VERSION.SDK_INT >= 23)
       {
         paramBundle = a();
         if (paramBundle != null)
         {
           Object localObject = paramBundle.getWindow();
-          if (localObject != null) {
-            if (c())
-            {
-              ((Window)localObject).addFlags(-2147483648);
-              ((Window)localObject).clearFlags(67108864);
-              paramBundle = a();
-              ((Window)localObject).setStatusBarColor(((Number)paramBundle.getFirst()).intValue());
-              localObject = ((Window)localObject).getDecorView();
-              Intrinsics.checkExpressionValueIsNotNull(localObject, "decorView");
-              ((View)localObject).setSystemUiVisibility(((Number)paramBundle.getSecond()).intValue());
-            }
+          if ((localObject != null) && (f()))
+          {
+            ((Window)localObject).addFlags(-2147483648);
+            ((Window)localObject).clearFlags(67108864);
+            paramBundle = a();
+            ((Window)localObject).setStatusBarColor(((Number)paramBundle.getFirst()).intValue());
+            localObject = ((Window)localObject).getDecorView();
+            Intrinsics.checkExpressionValueIsNotNull(localObject, "decorView");
+            ((View)localObject).setSystemUiVisibility(((Number)paramBundle.getSecond()).intValue());
           }
         }
       }
     }
+    return a(paramLayoutInflater, paramViewGroup);
   }
   
   @RequiresApi(23)
   @NotNull
   public Pair<Integer, Integer> a()
   {
-    Object localObject;
-    if (d())
+    label41:
+    int i;
+    if (g())
     {
-      localObject = a();
+      Object localObject = a();
       if (localObject != null)
       {
         localObject = ((Activity)localObject).getResources();
         if (localObject != null)
         {
           localObject = Integer.valueOf(((Resources)localObject).getColor(R.color.jdField_a_of_type_Int));
-          if (localObject == null) {
-            Intrinsics.throwNpe();
-          }
+          break label41;
         }
       }
-    }
-    for (int i = ((Integer)localObject).intValue();; i = -1)
-    {
-      return new Pair(Integer.valueOf(i), Integer.valueOf(8192));
       localObject = null;
-      break;
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
+      i = ((Integer)localObject).intValue();
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
+    else
+    {
+      i = -1;
+    }
+    return new Pair(Integer.valueOf(i), Integer.valueOf(8192));
   }
   
   public void b()
   {
-    if (jdField_a_of_type_Int > 0)
-    {
-      TLog.d("BasePage", getClass().getName() + " is killed cos' killCount == " + jdField_a_of_type_Int);
-      c();
-      jdField_a_of_type_Int -= 1;
+    if (a()) {
+      return;
     }
-    Object localObject;
-    label188:
-    label190:
-    do
-    {
-      for (;;)
-      {
-        return;
-        super.b();
-        localObject = a();
-        if (localObject != null)
-        {
-          localObject = ((Activity)localObject).getWindow();
-          if (localObject == null) {}
-        }
-        for (localObject = ((Window)localObject).getDecorView();; localObject = null)
-        {
-          if (!(localObject instanceof FrameLayout)) {
-            break label188;
-          }
-          if (!d()) {
-            break label190;
-          }
-          if (this.jdField_a_of_type_AndroidViewView != null) {
-            break;
-          }
-          this.jdField_a_of_type_AndroidViewView = ((View)new LinearLayout(((FrameLayout)localObject).getContext()));
-          View localView = this.jdField_a_of_type_AndroidViewView;
-          if (localView != null)
-          {
-            Context localContext = ((FrameLayout)localObject).getContext();
-            Intrinsics.checkExpressionValueIsNotNull(localContext, "decorView.context");
-            localView.setBackgroundColor(localContext.getResources().getColor(R.color.jdField_a_of_type_Int));
-          }
-          ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-          return;
-        }
-      }
-    } while (this.jdField_a_of_type_AndroidViewView == null);
-    ((FrameLayout)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidViewView = ((View)null);
-  }
-  
-  public boolean b()
-  {
-    return Build.VERSION.SDK_INT >= 19;
+    super.b();
+    f();
   }
   
   public final void c()
@@ -196,19 +202,29 @@ public abstract class BasePage
     }
   }
   
-  public boolean c()
+  public boolean e()
+  {
+    return Build.VERSION.SDK_INT >= 19;
+  }
+  
+  public boolean f()
   {
     return true;
   }
   
-  public boolean d()
+  public boolean g()
+  {
+    return false;
+  }
+  
+  public boolean p_()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.BasePage
  * JD-Core Version:    0.7.0.1
  */

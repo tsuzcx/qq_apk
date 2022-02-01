@@ -20,7 +20,7 @@ public class FlakeView
   Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   ArrayList<Flake> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = { 2130845562, 2130845563, 2130845560, 2130845561 };
+  int[] jdField_a_of_type_ArrayOfInt = { 2130845435, 2130845436, 2130845433, 2130845434 };
   Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = { null, null, null, null };
   int jdField_b_of_type_Int = 0;
   long jdField_b_of_type_Long;
@@ -92,49 +92,47 @@ public class FlakeView
   
   public void b()
   {
-    this.jdField_a_of_type_Long = (System.currentTimeMillis() - (1000.0F * this.jdField_a_of_type_Float));
+    this.jdField_a_of_type_Long = (System.currentTimeMillis() - (this.jdField_a_of_type_Float * 1000.0F));
   }
   
   public void b(int paramInt)
   {
     int i = 0;
-    for (;;)
+    while (i < paramInt)
     {
-      if (i < paramInt)
-      {
-        int j = (int)(4.0D * Math.random()) % this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length;
-        if (this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j] == null) {}
+      int j = (int)(Math.random() * 4.0D);
+      Bitmap[] arrayOfBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+      j %= arrayOfBitmap.length;
+      if (arrayOfBitmap[j] == null) {
         try
         {
-          this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j] = BitmapFactory.decodeResource(getResources(), this.jdField_a_of_type_ArrayOfInt[j]);
-          if (this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j] != null)
-          {
-            this.jdField_a_of_type_JavaUtilArrayList.add(Flake.a(getWidth(), this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j], 1, getResources()));
-            this.jdField_b_of_type_Int += 1;
-          }
-          i += 1;
+          arrayOfBitmap[j] = BitmapFactory.decodeResource(getResources(), this.jdField_a_of_type_ArrayOfInt[j]);
         }
         catch (OutOfMemoryError localOutOfMemoryError)
         {
-          for (;;)
-          {
-            this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j] = null;
-            localOutOfMemoryError.printStackTrace();
-          }
+          this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j] = null;
+          localOutOfMemoryError.printStackTrace();
         }
       }
+      if (this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j] != null)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(Flake.a(getWidth(), this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j], 1, getResources()));
+        this.jdField_b_of_type_Int += 1;
+      }
+      i += 1;
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    int k = 0;
     if (this.jdField_c_of_type_Boolean) {
       return;
     }
     super.onDraw(paramCanvas);
     long l = System.currentTimeMillis();
-    if ((this.jdField_e_of_type_Boolean) && (l - this.jdField_d_of_type_Long > this.jdField_c_of_type_Long)) {
+    boolean bool = this.jdField_e_of_type_Boolean;
+    int k = 0;
+    if ((bool) && (l - this.jdField_d_of_type_Long > this.jdField_c_of_type_Long)) {
       this.jdField_e_of_type_Boolean = false;
     }
     if (l - this.jdField_b_of_type_Long > this.jdField_e_of_type_Long)
@@ -152,43 +150,51 @@ public class FlakeView
     this.jdField_a_of_type_Float = ((float)(l - this.jdField_a_of_type_Long) / 1000.0F);
     this.jdField_a_of_type_Long = l;
     int i = 0;
-    int j = k;
+    int j;
     Flake localFlake;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    float f1;
+    float f2;
+    for (;;)
     {
+      j = k;
+      if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break;
+      }
       localFlake = (Flake)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       if (localFlake.jdField_c_of_type_Int == 3)
       {
         localFlake.jdField_a_of_type_Float += localFlake.e * this.jdField_a_of_type_Float;
-        if ((localFlake.jdField_a_of_type_Float < -localFlake.jdField_a_of_type_Int) || (localFlake.jdField_a_of_type_Float > localFlake.jdField_a_of_type_Int + n))
+        if ((localFlake.jdField_a_of_type_Float >= -localFlake.jdField_a_of_type_Int) && (localFlake.jdField_a_of_type_Float <= localFlake.jdField_a_of_type_Int + n))
+        {
+          f1 = localFlake.jdField_b_of_type_Float;
+          f2 = localFlake.f;
+          float f3 = this.jdField_a_of_type_Float;
+          float f4 = localFlake.g;
+          float f5 = this.jdField_a_of_type_Float;
+          localFlake.jdField_b_of_type_Float = (f1 + (f2 * f3 + f4 * f5 * f5 / 2.0F));
+          localFlake.f += localFlake.g * this.jdField_a_of_type_Float;
+        }
+        else
         {
           this.jdField_e_of_type_Int -= 1;
           this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+          break label572;
         }
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        localFlake.jdField_b_of_type_Float += localFlake.f * this.jdField_a_of_type_Float + localFlake.g * this.jdField_a_of_type_Float * this.jdField_a_of_type_Float / 2.0F;
-        localFlake.f += localFlake.g * this.jdField_a_of_type_Float;
-        for (;;)
+        localFlake.jdField_b_of_type_Float += localFlake.f * this.jdField_a_of_type_Float;
+      }
+      localFlake.jdField_c_of_type_Float += localFlake.d * this.jdField_a_of_type_Float;
+      if (localFlake.jdField_b_of_type_Float > localFlake.jdField_b_of_type_Int + m)
+      {
+        localFlake.jdField_a_of_type_Float = ((float)Math.random() * (n - localFlake.jdField_a_of_type_Int));
+        if (localFlake.jdField_c_of_type_Int == 1)
         {
-          localFlake.jdField_c_of_type_Float += localFlake.d * this.jdField_a_of_type_Float;
-          if (localFlake.jdField_b_of_type_Float <= localFlake.jdField_b_of_type_Int + m) {
-            break;
-          }
-          localFlake.jdField_a_of_type_Float = ((float)Math.random() * (n - localFlake.jdField_a_of_type_Int));
-          if (localFlake.jdField_c_of_type_Int != 1) {
-            break label465;
-          }
           localFlake.jdField_b_of_type_Float = (0 - localFlake.jdField_b_of_type_Int);
           localFlake.jdField_a_of_type_Float = ((float)Math.random() * (getWidth() - localFlake.jdField_a_of_type_Int));
-          break;
-          localFlake.jdField_b_of_type_Float += localFlake.f * this.jdField_a_of_type_Float;
         }
-        label465:
-        if (localFlake.jdField_c_of_type_Int == 2)
+        else if (localFlake.jdField_c_of_type_Int == 2)
         {
           this.jdField_d_of_type_Int -= 1;
           this.jdField_a_of_type_JavaUtilArrayList.remove(i);
@@ -204,12 +210,14 @@ public class FlakeView
           this.jdField_c_of_type_Int -= 1;
         }
       }
+      label572:
+      i += 1;
     }
     while (j < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
       localFlake = (Flake)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      float f1 = localFlake.jdField_a_of_type_Int * 1.0F / localFlake.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      float f2 = localFlake.jdField_b_of_type_Int * 1.0F / localFlake.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      f1 = localFlake.jdField_a_of_type_Int * 1.0F / localFlake.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      f2 = localFlake.jdField_b_of_type_Int * 1.0F / localFlake.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
       this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localFlake.jdField_a_of_type_Int / 2 / f1, -localFlake.jdField_b_of_type_Int / 2 / f2);
       this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localFlake.jdField_c_of_type_Float);
       this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((localFlake.jdField_a_of_type_Int / 2 + localFlake.jdField_a_of_type_Float) / f1, (localFlake.jdField_b_of_type_Int / 2 + localFlake.jdField_b_of_type_Float) / f2);
@@ -223,7 +231,7 @@ public class FlakeView
     invalidate();
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_JavaUtilArrayList.clear();
@@ -238,47 +246,50 @@ public class FlakeView
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
       Flake localFlake = (Flake)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localFlake == null)
+      if (localFlake != null)
       {
-        i += 1;
-      }
-      else
-      {
-        if ((localFlake.jdField_c_of_type_Int == 0) || (localFlake.jdField_c_of_type_Int == 2)) {
-          switch (paramInt)
-          {
-          default: 
-            localFlake.f = (AIOUtils.a(240.0F, getResources()) + (float)Math.random() * AIOUtils.a(100.0F, getResources()));
-          }
-        }
-        for (;;)
+        if ((localFlake.jdField_c_of_type_Int != 0) && (localFlake.jdField_c_of_type_Int != 2))
         {
-          this.jdField_e_of_type_Long = (1200 - (paramInt - 1) * 200);
-          break;
-          localFlake.f = (AIOUtils.a(240.0F, getResources()) + (float)Math.random() * AIOUtils.a(100.0F, getResources()));
-          continue;
-          localFlake.f = (AIOUtils.a(290.0F, getResources()) + (float)Math.random() * AIOUtils.a(100.0F, getResources()));
-          continue;
-          localFlake.f = (AIOUtils.a(340.0F, getResources()) + (float)Math.random() * AIOUtils.a(100.0F, getResources()));
-          continue;
           if (localFlake.jdField_c_of_type_Int == 1) {
-            switch (paramInt)
+            if (paramInt != 1)
             {
-            default: 
-              localFlake.f = (AIOUtils.a(230.0F, getResources()) + (float)Math.random() * AIOUtils.a(130.0F, getResources()));
-              break;
-            case 1: 
-              localFlake.f = (AIOUtils.a(230.0F, getResources()) + (float)Math.random() * AIOUtils.a(130.0F, getResources()));
-              break;
-            case 2: 
-              localFlake.f = (AIOUtils.a(280.0F, getResources()) + (float)Math.random() * AIOUtils.a(130.0F, getResources()));
-              break;
-            case 3: 
-              localFlake.f = (AIOUtils.a(295.0F, getResources()) + (float)Math.random() * AIOUtils.a(130.0F, getResources()));
+              if (paramInt != 2)
+              {
+                if (paramInt != 3) {
+                  localFlake.f = (AIOUtils.b(230.0F, getResources()) + (float)Math.random() * AIOUtils.b(130.0F, getResources()));
+                } else {
+                  localFlake.f = (AIOUtils.b(295.0F, getResources()) + (float)Math.random() * AIOUtils.b(130.0F, getResources()));
+                }
+              }
+              else {
+                localFlake.f = (AIOUtils.b(280.0F, getResources()) + (float)Math.random() * AIOUtils.b(130.0F, getResources()));
+              }
+            }
+            else {
+              localFlake.f = (AIOUtils.b(230.0F, getResources()) + (float)Math.random() * AIOUtils.b(130.0F, getResources()));
             }
           }
         }
+        else if (paramInt != 1)
+        {
+          if (paramInt != 2)
+          {
+            if (paramInt != 3) {
+              localFlake.f = (AIOUtils.b(240.0F, getResources()) + (float)Math.random() * AIOUtils.b(100.0F, getResources()));
+            } else {
+              localFlake.f = (AIOUtils.b(340.0F, getResources()) + (float)Math.random() * AIOUtils.b(100.0F, getResources()));
+            }
+          }
+          else {
+            localFlake.f = (AIOUtils.b(290.0F, getResources()) + (float)Math.random() * AIOUtils.b(100.0F, getResources()));
+          }
+        }
+        else {
+          localFlake.f = (AIOUtils.b(240.0F, getResources()) + (float)Math.random() * AIOUtils.b(100.0F, getResources()));
+        }
+        this.jdField_e_of_type_Long = (1200 - (paramInt - 1) * 200);
       }
+      i += 1;
     }
   }
   
@@ -313,7 +324,7 @@ public class FlakeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.FlakeView
  * JD-Core Version:    0.7.0.1
  */

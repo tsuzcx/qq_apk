@@ -20,17 +20,14 @@ class MapViewJsPlugin$7
       MapContext localMapContext = MapViewJsPlugin.access$200(this.this$0, i);
       if (localMapContext != null)
       {
-        if ((localJSONObject1.has("longitude")) || (localJSONObject1.has("latitude"))) {
+        if ((!localJSONObject1.has("longitude")) && (!localJSONObject1.has("latitude"))) {
+          localMapContext.moveToCurrentLocation();
+        } else {
           localMapContext.moveToLocation(localJSONObject1);
         }
-        for (;;)
-        {
-          this.val$req.ok(localJSONObject2);
-          return;
-          localMapContext.moveToCurrentLocation();
-        }
+        this.val$req.ok(localJSONObject2);
+        return;
       }
-      return;
     }
     catch (JSONException localJSONException)
     {
@@ -43,7 +40,7 @@ class MapViewJsPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.map.MapViewJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

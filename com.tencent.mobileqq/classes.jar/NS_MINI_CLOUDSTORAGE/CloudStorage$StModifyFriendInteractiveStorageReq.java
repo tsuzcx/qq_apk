@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class CloudStorage$StModifyFriendInteractiveStorageReq
   extends MessageMicro<StModifyFriendInteractiveStorageReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64, 72, 82 }, new String[] { "ext", "appid", "toUser", "shareId", "opNum", "operation", "KVDataList", "version", "quiet", "desc" }, new Object[] { null, "", "", "", Integer.valueOf(0), "", null, Integer.valueOf(0), Integer.valueOf(0), null }, StModifyFriendInteractiveStorageReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatMessageField<CloudStorage.StKVData> KVDataList = PBField.initRepeatMessage(CloudStorage.StKVData.class);
   public final PBStringField appid = PBField.initString("");
   public CloudStorage.StInteractiveTemplate desc = new CloudStorage.StInteractiveTemplate();
@@ -22,10 +22,16 @@ public final class CloudStorage$StModifyFriendInteractiveStorageReq
   public final PBStringField shareId = PBField.initString("");
   public final PBStringField toUser = PBField.initString("");
   public final PBInt32Field version = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64, 72, 82 }, new String[] { "ext", "appid", "toUser", "shareId", "opNum", "operation", "KVDataList", "version", "quiet", "desc" }, new Object[] { null, "", "", "", localInteger, "", null, localInteger, localInteger, null }, StModifyFriendInteractiveStorageReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_CLOUDSTORAGE.CloudStorage.StModifyFriendInteractiveStorageReq
  * JD-Core Version:    0.7.0.1
  */

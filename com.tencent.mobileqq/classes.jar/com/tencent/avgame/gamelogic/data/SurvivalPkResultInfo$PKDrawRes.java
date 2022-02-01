@@ -21,13 +21,18 @@ public class SurvivalPkResultInfo$PKDrawRes
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isDraw:").append(this.isDraw).append("|selfCost:").append(this.selfCost).append("|peerCost:").append(this.peerCost);
+    localStringBuilder.append("isDraw:");
+    localStringBuilder.append(this.isDraw);
+    localStringBuilder.append("|selfCost:");
+    localStringBuilder.append(this.selfCost);
+    localStringBuilder.append("|peerCost:");
+    localStringBuilder.append(this.peerCost);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.SurvivalPkResultInfo.PKDrawRes
  * JD-Core Version:    0.7.0.1
  */

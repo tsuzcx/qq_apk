@@ -2,11 +2,11 @@ package com.tencent.widget;
 
 public abstract interface PopupMenuDialog$OnDismissListener
 {
-  public abstract void a();
+  public abstract void onDismiss();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PopupMenuDialog.OnDismissListener
  * JD-Core Version:    0.7.0.1
  */

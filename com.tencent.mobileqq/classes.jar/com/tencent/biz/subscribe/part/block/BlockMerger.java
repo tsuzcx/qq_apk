@@ -82,39 +82,60 @@ public class BlockMerger
   {
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
     {
-      QLog.i("CMADebugTAG", 1, "isNeedTryToLoadMore mDataList.size() == 0" + hashCode());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isNeedTryToLoadMore mDataList.size() == 0");
+      ((StringBuilder)localObject).append(hashCode());
+      QLog.i("CMADebugTAG", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    MultiViewBlock localMultiViewBlock = (MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    if (localMultiViewBlock == null)
+    Object localObject = (MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    if (localObject == null)
     {
-      QLog.i("CMADebugTAG", 2, "isNeedTryToLoadMore adapter == null" + hashCode());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isNeedTryToLoadMore adapter == null");
+      ((StringBuilder)localObject).append(hashCode());
+      QLog.i("CMADebugTAG", 2, ((StringBuilder)localObject).toString());
       return;
     }
-    if (localMultiViewBlock.a().b())
+    if (((MultiViewBlock)localObject).a().b())
     {
-      QLog.i("CMADebugTAG", 2, "isNeedTryToLoadMore is loading:" + hashCode());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isNeedTryToLoadMore is loading:");
+      ((StringBuilder)localObject).append(hashCode());
+      QLog.i("CMADebugTAG", 2, ((StringBuilder)localObject).toString());
       return;
     }
     if (this.jdField_b_of_type_Int == 0)
     {
-      QLog.i("CMADebugTAG", 2, "isNeedTryToLoadMore maxCount 0 hashCode:" + hashCode());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isNeedTryToLoadMore maxCount 0 hashCode:");
+      ((StringBuilder)localObject).append(hashCode());
+      QLog.i("CMADebugTAG", 2, ((StringBuilder)localObject).toString());
       return;
     }
     int i = LayoutManagerUtils.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
     if (i == -1)
     {
-      QLog.i("CMADebugTAG", 2, "isNeedTryToLoadMore not renderReady hashCode:" + hashCode());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isNeedTryToLoadMore not renderReady hashCode:");
+      ((StringBuilder)localObject).append(hashCode());
+      QLog.i("CMADebugTAG", 2, ((StringBuilder)localObject).toString());
       return;
     }
-    if (i < localMultiViewBlock.getItemCount() - 1)
+    if (i < ((MultiViewBlock)localObject).getItemCount() - 1)
     {
-      QLog.i("CMADebugTAG", 2, "isNeedTryToLoadMore enough to scroll hashCode:" + hashCode());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isNeedTryToLoadMore enough to scroll hashCode:");
+      ((StringBuilder)localObject).append(hashCode());
+      QLog.i("CMADebugTAG", 2, ((StringBuilder)localObject).toString());
       return;
     }
     if (f())
     {
-      QLog.e("CMADebugTAG", 2, "isNeedTryToLoadMore invalid hashCode:" + hashCode());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isNeedTryToLoadMore invalid hashCode:");
+      ((StringBuilder)localObject).append(hashCode());
+      QLog.e("CMADebugTAG", 2, ((StringBuilder)localObject).toString());
       return;
     }
     if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) && (!paramBoolean))
@@ -130,7 +151,8 @@ public class BlockMerger
   
   private boolean f()
   {
-    return (this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int);
+    int i = this.jdField_a_of_type_Int;
+    return (i != 0) && (i >= this.jdField_b_of_type_Int);
   }
   
   public int a()
@@ -140,45 +162,56 @@ public class BlockMerger
   
   public int a(ArrayList<MultiViewBlock> paramArrayList)
   {
-    try
+    for (;;)
     {
-      int m = paramArrayList.size();
-      int k = 0;
-      int i = 0;
-      int j = i;
-      if (k < m)
+      try
       {
-        if (ArrayUtils.a(k, paramArrayList)) {
-          return i;
-        }
-        MultiViewBlock localMultiViewBlock = (MultiViewBlock)paramArrayList.get(k);
-        j = i;
-        if (localMultiViewBlock != null) {
-          if (!b()) {
-            break label148;
-          }
-        }
-        label148:
-        for (j = 1;; j = 0)
+        int m = paramArrayList.size();
+        int i = 0;
+        int j = 0;
+        if (i < m)
         {
-          localMultiViewBlock.c(j + i);
-          i += localMultiViewBlock.getItemCount();
-          j = i;
-          if (jdField_a_of_type_Boolean)
-          {
-            Log.d("CMADebugTAG|" + localMultiViewBlock.getClass().getSimpleName(), "size:" + localMultiViewBlock.getItemCount());
-            j = i;
+          if (ArrayUtils.a(i, paramArrayList)) {
+            return j;
           }
-          k += 1;
-          i = j;
-          break;
+          MultiViewBlock localMultiViewBlock = (MultiViewBlock)paramArrayList.get(i);
+          k = j;
+          if (localMultiViewBlock != null)
+          {
+            if (!b()) {
+              break label178;
+            }
+            k = 1;
+            localMultiViewBlock.c(k + j);
+            j += localMultiViewBlock.getItemCount();
+            k = j;
+            if (jdField_a_of_type_Boolean)
+            {
+              Object localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("CMADebugTAG|");
+              ((StringBuilder)localObject).append(localMultiViewBlock.getClass().getSimpleName());
+              localObject = ((StringBuilder)localObject).toString();
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("size:");
+              localStringBuilder.append(localMultiViewBlock.getItemCount());
+              Log.d((String)localObject, localStringBuilder.toString());
+              k = j;
+            }
+          }
+          i += 1;
+          j = k;
+        }
+        else
+        {
+          return j;
         }
       }
-      return j;
-    }
-    catch (Exception paramArrayList)
-    {
-      j = 0;
+      catch (Exception paramArrayList)
+      {
+        return 0;
+      }
+      label178:
+      int k = 0;
     }
   }
   
@@ -187,7 +220,7 @@ public class BlockMerger
     return new BlockMerger.2(this);
   }
   
-  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
+  protected RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
     {
@@ -212,8 +245,16 @@ public class BlockMerger
       }
       i = paramInt - j;
     }
-    if (jdField_a_of_type_Boolean) {
-      Log.d("CMADebugTAG|" + ((MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(k)).getClass().getSimpleName(), "createItemViewHolder ViewType:" + i);
+    if (jdField_a_of_type_Boolean)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("CMADebugTAG|");
+      ((StringBuilder)localObject).append(((MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(k)).getClass().getSimpleName());
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createItemViewHolder ViewType:");
+      localStringBuilder.append(i);
+      Log.d((String)localObject, localStringBuilder.toString());
     }
     return ((MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(k)).onCreateViewHolder(paramViewGroup, i);
   }
@@ -232,18 +273,17 @@ public class BlockMerger
   {
     if (paramInt < a())
     {
-      int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-      int j = 0;
+      int j = this.jdField_a_of_type_JavaUtilArrayList.size();
       int i = paramInt;
-      paramInt = j;
-      while (paramInt < k)
+      paramInt = 0;
+      while (paramInt < j)
       {
         MultiViewBlock localMultiViewBlock = (MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        j = localMultiViewBlock.getItemCount();
-        if (i < j) {
+        int k = localMultiViewBlock.getItemCount();
+        if (i < k) {
           return localMultiViewBlock;
         }
-        i = Math.max(i - j, 0);
+        i = Math.max(i - k, 0);
         paramInt += 1;
       }
     }
@@ -273,27 +313,21 @@ public class BlockMerger
     }
   }
   
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int j = 0;
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
     int i = paramInt;
-    paramInt = j;
-    for (;;)
+    paramInt = 0;
+    while (paramInt < j)
     {
-      if (paramInt < k)
+      MultiViewBlock localMultiViewBlock = (MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      int k = localMultiViewBlock.getItemCount();
+      if (i < k)
       {
-        MultiViewBlock localMultiViewBlock = (MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        j = localMultiViewBlock.getItemCount();
-        if (i < j) {
-          localMultiViewBlock.onBindViewHolder(paramViewHolder, i);
-        }
-      }
-      else
-      {
+        localMultiViewBlock.onBindViewHolder(paramViewHolder, i);
         return;
       }
-      i = Math.max(i - j, 0);
+      i = Math.max(i - k, 0);
       paramInt += 1;
     }
   }
@@ -386,22 +420,23 @@ public class BlockMerger
   public void c()
   {
     MultiViewBlock localMultiViewBlock = (MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    if (!a().b()) {}
-    do
+    if (!a().b()) {
+      return;
+    }
+    if (localMultiViewBlock.a().b()) {
+      return;
+    }
+    if (localMultiViewBlock.a().a())
     {
-      do
-      {
-        return;
-      } while (localMultiViewBlock.a().b());
-      if (localMultiViewBlock.a().a())
-      {
-        localMultiViewBlock.a().a(4);
-        return;
-      }
-    } while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
-    f();
-    localMultiViewBlock.a().a(3);
-    localMultiViewBlock.b(localMultiViewBlock.a());
+      localMultiViewBlock.a().a(4);
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      f();
+      localMultiViewBlock.a().a(3);
+      localMultiViewBlock.b(localMultiViewBlock.a());
+    }
   }
   
   public void d()
@@ -436,49 +471,52 @@ public class BlockMerger
   
   public int getItemViewType(int paramInt)
   {
-    int k;
-    if ((b()) && (paramInt == 0))
-    {
-      k = -10000;
-      return k;
+    if ((b()) && (paramInt == 0)) {
+      return -10000;
     }
     int j = a(paramInt);
     if (j < a())
     {
-      int m = -1;
-      int n = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int k = this.jdField_a_of_type_JavaUtilArrayList.size();
       paramInt = 0;
       int i = 0;
-      for (;;)
+      while (paramInt < k)
       {
-        k = m;
-        if (paramInt >= n) {
-          break;
-        }
         MultiViewBlock localMultiViewBlock = (MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        k = localMultiViewBlock.getItemCount();
-        if (j < k)
+        int m = localMultiViewBlock.getItemCount();
+        if (j < m)
         {
           j = localMultiViewBlock.getItemViewType(j);
-          if (jdField_a_of_type_Boolean) {
-            Log.d("CMADebugTAG|" + localMultiViewBlock.getClass().getSimpleName(), "getItemViewType ViewType:" + j);
-          }
-          if (j < 0) {}
-          for (;;)
+          if (jdField_a_of_type_Boolean)
           {
-            localMultiViewBlock.d(i);
-            this.jdField_a_of_type_AndroidUtilSparseIntArray.put(j, paramInt);
-            return j;
+            Object localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("CMADebugTAG|");
+            ((StringBuilder)localObject).append(localMultiViewBlock.getClass().getSimpleName());
+            localObject = ((StringBuilder)localObject).toString();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getItemViewType ViewType:");
+            localStringBuilder.append(j);
+            Log.d((String)localObject, localStringBuilder.toString());
+          }
+          if (j >= 0) {
             j += i;
           }
+          localMultiViewBlock.d(i);
+          this.jdField_a_of_type_AndroidUtilSparseIntArray.put(j, paramInt);
+          return j;
         }
-        j = Math.max(j - k, 0);
-        if (localMultiViewBlock.a() == 0) {
+        j = Math.max(j - m, 0);
+        if (localMultiViewBlock.a() != 0)
+        {
+          i += localMultiViewBlock.a();
+          paramInt += 1;
+        }
+        else
+        {
           throw new IllegalArgumentException("HorizontalRVBlock getViewTypeCount() has to be greater than 0");
         }
-        i += localMultiViewBlock.a();
-        paramInt += 1;
       }
+      return -1;
     }
     return -99999;
   }
@@ -560,33 +598,31 @@ public class BlockMerger
     super.onViewAttachedToWindow(paramViewHolder);
     ViewGroup.LayoutParams localLayoutParams = paramViewHolder.itemView.getLayoutParams();
     boolean bool = localLayoutParams instanceof StaggeredGridLayoutManager.LayoutParams;
-    if ((bool) && (((paramViewHolder instanceof PullLoadMoreAdapter.LoadMoreViewHolder)) || ((paramViewHolder instanceof PullLoadMoreAdapter.RefreshViewHolder)))) {
-      ((StaggeredGridLayoutManager.LayoutParams)localLayoutParams).setFullSpan(true);
-    }
-    for (;;)
+    if ((bool) && (((paramViewHolder instanceof PullLoadMoreAdapter.LoadMoreViewHolder)) || ((paramViewHolder instanceof PullLoadMoreAdapter.RefreshViewHolder))))
     {
+      ((StaggeredGridLayoutManager.LayoutParams)localLayoutParams).setFullSpan(true);
       return;
-      int j = a(paramViewHolder.getAdapterPosition());
-      if (j >= 0)
+    }
+    int j = a(paramViewHolder.getAdapterPosition());
+    if (j < 0) {
+      return;
+    }
+    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < k)
+    {
+      MultiViewBlock localMultiViewBlock = (MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      int m = localMultiViewBlock.getItemCount();
+      if (j < m)
       {
-        int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-        int i = 0;
-        while (i < k)
-        {
-          MultiViewBlock localMultiViewBlock = (MultiViewBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          int m = localMultiViewBlock.getItemCount();
-          if (j < m)
-          {
-            if (bool) {
-              a(paramViewHolder, localMultiViewBlock, localLayoutParams);
-            }
-            localMultiViewBlock.onViewAttachedToWindow(paramViewHolder);
-            return;
-          }
-          j = Math.max(j - m, 0);
-          i += 1;
+        if (bool) {
+          a(paramViewHolder, localMultiViewBlock, localLayoutParams);
         }
+        localMultiViewBlock.onViewAttachedToWindow(paramViewHolder);
+        return;
       }
+      j = Math.max(j - m, 0);
+      i += 1;
     }
   }
   
@@ -594,30 +630,28 @@ public class BlockMerger
   {
     super.onViewDetachedFromWindow(paramViewHolder);
     int j = a(paramViewHolder.getAdapterPosition());
-    if (j < 0) {}
-    for (;;)
-    {
+    if (j < 0) {
       return;
-      int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-      int i = 0;
-      while (i < k)
+    }
+    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < k)
+    {
+      BaseListViewAdapter localBaseListViewAdapter = (BaseListViewAdapter)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      int m = localBaseListViewAdapter.getItemCount();
+      if (j < m)
       {
-        BaseListViewAdapter localBaseListViewAdapter = (BaseListViewAdapter)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        int m = localBaseListViewAdapter.getItemCount();
-        if (j < m)
-        {
-          localBaseListViewAdapter.onViewDetachedFromWindow(paramViewHolder);
-          return;
-        }
-        j = Math.max(j - m, 0);
-        i += 1;
+        localBaseListViewAdapter.onViewDetachedFromWindow(paramViewHolder);
+        return;
       }
+      j = Math.max(j - m, 0);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.block.BlockMerger
  * JD-Core Version:    0.7.0.1
  */

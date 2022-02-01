@@ -19,23 +19,26 @@ class RedTouchTempApiImpl$1
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       paramAnimation = this.jdField_a_of_type_ComTencentMobileqqTianshuApiImplRedTouchTempApiImpl.getApngDrawable(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramAnimation);
-      if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_Boolean))
+      paramAnimation = this.jdField_a_of_type_AndroidWidgetTextView;
+      if ((paramAnimation != null) && (this.jdField_a_of_type_Boolean))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramAnimation.setVisibility(8);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       }
     }
-    while (paramAnimation != this.jdField_b_of_type_AndroidViewAnimationAnimation) {
-      return;
+    else if (paramAnimation == this.jdField_b_of_type_AndroidViewAnimationAnimation)
+    {
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+      paramAnimation = this.c;
+      if ((paramAnimation != null) && (this.jdField_a_of_type_Boolean)) {
+        paramAnimation.setVisibility(8);
+      }
+      paramAnimation = this.d;
+      if ((paramAnimation != null) && (this.jdField_a_of_type_Boolean)) {
+        paramAnimation.setVisibility(8);
+      }
+      ApngImage.playByTag(39);
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-    if ((this.c != null) && (this.jdField_a_of_type_Boolean)) {
-      this.c.setVisibility(8);
-    }
-    if ((this.d != null) && (this.jdField_a_of_type_Boolean)) {
-      this.d.setVisibility(8);
-    }
-    ApngImage.playByTag(39);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -44,7 +47,7 @@ class RedTouchTempApiImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.api.impl.RedTouchTempApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

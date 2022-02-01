@@ -13,7 +13,7 @@ import java.io.File;
 public class ParticleEmitter
   extends BasePaticleEmitter
 {
-  private static final String TAG = ParticleEmitter.class.getSimpleName();
+  private static final String TAG = "ParticleEmitter";
   
   public void initParticle(Particle paramParticle)
   {
@@ -24,11 +24,11 @@ public class ParticleEmitter
     if (useFaceAnglesRotate()) {
       this.angle = ParticleUtil.getRotateAngle(this.rotateX, this.rotateY);
     }
-    float f1 = (float)Math.toRadians(this.angle + this.angleVariance * ParticleUtil.randomMinus1to1()) + this.rotateZ;
-    Object localObject = ParticleUtil.vectorMultiplyScalar(new Vector2((float)Math.cos(f1), (float)Math.sin(f1)), this.speed + this.speedVariance * ParticleUtil.randomMinus1to1());
+    double d = (float)Math.toRadians(this.angle + this.angleVariance * ParticleUtil.randomMinus1to1()) + this.rotateZ;
+    Object localObject = ParticleUtil.vectorMultiplyScalar(new Vector2((float)Math.cos(d), (float)Math.sin(d)), this.speed + this.speedVariance * ParticleUtil.randomMinus1to1());
     paramParticle.direction = new Vector3(((Vector2)localObject).x, ((Vector2)localObject).y, ParticleUtil.randomMinus1to1());
     paramParticle.timeToLive = Math.max(0.0F, this.particleLifespan + this.particleLifespanVariance * ParticleUtil.randomMinus1to1());
-    f1 = this.maxRadius + this.maxRadiusVariance * ParticleUtil.randomMinus1to1();
+    float f1 = this.maxRadius + this.maxRadiusVariance * ParticleUtil.randomMinus1to1();
     float f2 = this.minRadius;
     float f3 = this.minRadiusVariance;
     float f4 = ParticleUtil.randomMinus1to1();
@@ -66,207 +66,233 @@ public class ParticleEmitter
   
   public void loadTexture(String paramString, ParticleConfig paramParticleConfig)
   {
-    Object localObject = null;
-    paramParticleConfig = paramParticleConfig.getParticleEmitterConfig();
-    if (paramParticleConfig == null) {
+    Object localObject2 = paramParticleConfig.getParticleEmitterConfig();
+    if (localObject2 == null) {
       return;
     }
-    String str1;
-    if (paramParticleConfig.texture != null)
-    {
-      str1 = paramParticleConfig.texture.name;
-      label28:
-      if (paramParticleConfig.texture == null) {
-        break label149;
-      }
+    Object localObject1 = ((ParticleConfig.ParticleEmitterConfigBean)localObject2).texture;
+    paramParticleConfig = null;
+    if (localObject1 != null) {
+      localObject1 = ((ParticleConfig.ParticleEmitterConfigBean)localObject2).texture.name;
+    } else {
+      localObject1 = null;
     }
-    label149:
-    for (String str2 = paramParticleConfig.texture.data;; str2 = null)
+    if (((ParticleConfig.ParticleEmitterConfigBean)localObject2).texture != null) {
+      localObject2 = ((ParticleConfig.ParticleEmitterConfigBean)localObject2).texture.data;
+    } else {
+      localObject2 = null;
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      paramParticleConfig = localObject;
-      if (!TextUtils.isEmpty(str1)) {
-        paramParticleConfig = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), paramString + File.separator + str1, 1);
-      }
-      paramString = paramParticleConfig;
-      if (!BitmapUtils.isLegal(paramParticleConfig)) {
-        paramString = base64ToBitmap(str2);
-      }
-      if ((paramString == null) || (paramString.isRecycled())) {
-        break;
-      }
+      paramParticleConfig = AEModule.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append((String)localObject1);
+      paramParticleConfig = BitmapUtils.decodeSampleBitmap(paramParticleConfig, localStringBuilder.toString(), 1);
+    }
+    paramString = paramParticleConfig;
+    if (!BitmapUtils.isLegal(paramParticleConfig)) {
+      paramString = base64ToBitmap((String)localObject2);
+    }
+    if ((paramString != null) && (!paramString.isRecycled()))
+    {
       paramParticleConfig = new int[1];
       GLES20.glGenTextures(paramParticleConfig.length, paramParticleConfig, 0);
       this.texture = paramParticleConfig[0];
       GlUtil.loadTexture(this.texture, paramString);
       paramString.recycle();
-      return;
-      str1 = null;
-      break label28;
     }
   }
   
   public void updateWithDelta(float paramFloat, boolean paramBoolean)
   {
     this.particleIndex = 0;
-    LogUtils.e(TAG, "updateWithDelta() - particleCount = " + this.particleCount);
-    label339:
+    Object localObject1 = TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("updateWithDelta() - particleCount = ");
+    ((StringBuilder)localObject2).append(this.particleCount);
+    LogUtils.e((String)localObject1, ((StringBuilder)localObject2).toString());
     float f1;
     while (this.particleIndex < this.particleCount)
     {
-      Particle localParticle = this.particles[this.particleIndex];
-      localParticle.timeToLive -= paramFloat;
+      localObject2 = this.particles[this.particleIndex];
+      ((Particle)localObject2).timeToLive -= paramFloat;
       int i = this.particleIndex * 18;
-      if (localParticle.timeToLive > 0.0F)
+      if (((Particle)localObject2).timeToLive > 0.0F)
       {
-        Object localObject;
+        double d1;
         if (this.emitterType == BasePaticleEmitter.kParticleTypes.kParticleTypeRadial.value)
         {
-          localParticle.angle += localParticle.degreesPerSecond * paramFloat;
-          localParticle.radius += localParticle.radiusDelta * paramFloat;
-          localObject = new Vector3();
-          ((Vector3)localObject).x = ((float)(this.sourcePosition.x - Math.cos(localParticle.angle) * localParticle.radius));
-          ((Vector3)localObject).y = ((float)(this.sourcePosition.y - Math.sin(localParticle.angle) * localParticle.radius));
-          localParticle.position = ((Vector3)localObject);
-          if (this.audioColorDelta <= 0.0F) {
-            break label1788;
-          }
-          localParticle.color.r = (this.startColor.r + localParticle.deltaColor.r * this.audioColorDelta);
-          localParticle.color.g = (this.startColor.g + localParticle.deltaColor.g * this.audioColorDelta);
-          localParticle.color.b = (this.startColor.b + localParticle.deltaColor.b * this.audioColorDelta);
-          localParticle.color.a = (this.startColor.a + localParticle.deltaColor.a * this.audioColorDelta);
-          localParticle.particleSize += localParticle.particleSizeDelta * paramFloat;
-          localParticle.particleSize = Math.max(0.0F, localParticle.particleSize);
-          localParticle.rotation += localParticle.rotationDelta * paramFloat;
-          f1 = localParticle.particleSize * 0.5F * this.scaleParticle;
-          localObject = localParticle.position;
-          ((Vector3)localObject).x *= this.canvasScaleForTakeLargePicture;
-          localObject = localParticle.position;
-          ((Vector3)localObject).y *= this.canvasScaleForTakeLargePicture;
-          float f6 = localParticle.rotation + this.baseRotation;
-          if (f6 == 0.0F) {
-            break label1903;
-          }
-          float f2 = -f1;
-          float f3 = -f1;
-          float f4 = localParticle.position.x;
-          float f5 = localParticle.position.y;
-          float f7 = (float)Math.toRadians(f6);
-          f6 = (float)Math.cos(f7);
-          f7 = (float)Math.sin(f7);
-          this.quads[this.particleIndex].bl.vertex.x = (f2 * f6 - f3 * f7 + f4);
-          this.quads[this.particleIndex].bl.vertex.y = (f2 * f7 + f3 * f6 + f5);
-          this.quads[this.particleIndex].bl.color = localParticle.color;
-          this.quads[this.particleIndex].br.vertex.x = (f1 * f6 - f3 * f7 + f4);
-          this.quads[this.particleIndex].br.vertex.y = (f3 * f6 + f1 * f7 + f5);
-          this.quads[this.particleIndex].br.color = localParticle.color;
-          this.quads[this.particleIndex].tl.vertex.x = (f4 + (f2 * f6 - f1 * f7));
-          this.quads[this.particleIndex].tl.vertex.y = (f1 * f6 + f7 * f2 + f5);
-          this.quads[this.particleIndex].tl.color = localParticle.color;
-          this.quads[this.particleIndex].tr.vertex.x = (f1 * f6 - f1 * f7 + f4);
-          this.quads[this.particleIndex].tr.vertex.y = (f1 * f7 + f1 * f6 + f5);
-          this.quads[this.particleIndex].tr.color = localParticle.color;
-          this.particleVertices[i] = this.quads[this.particleIndex].bl.vertex.x;
-          this.particleVertices[(i + 1)] = this.quads[this.particleIndex].bl.vertex.y;
-          this.particleVertices[(i + 2)] = localParticle.position.z;
-          this.particleVertices[(i + 3)] = this.quads[this.particleIndex].br.vertex.x;
-          this.particleVertices[(i + 4)] = this.quads[this.particleIndex].br.vertex.y;
-          this.particleVertices[(i + 5)] = localParticle.position.z;
-          this.particleVertices[(i + 6)] = this.quads[this.particleIndex].tl.vertex.x;
-          this.particleVertices[(i + 7)] = this.quads[this.particleIndex].tl.vertex.y;
-          this.particleVertices[(i + 8)] = localParticle.position.z;
-          this.particleVertices[(i + 9)] = this.quads[this.particleIndex].br.vertex.x;
-          this.particleVertices[(i + 10)] = this.quads[this.particleIndex].br.vertex.y;
-          this.particleVertices[(i + 11)] = localParticle.position.z;
-          this.particleVertices[(i + 12)] = this.quads[this.particleIndex].tl.vertex.x;
-          this.particleVertices[(i + 13)] = this.quads[this.particleIndex].tl.vertex.y;
-          this.particleVertices[(i + 14)] = localParticle.position.z;
-          this.particleVertices[(i + 15)] = this.quads[this.particleIndex].tr.vertex.x;
-          this.particleVertices[(i + 16)] = this.quads[this.particleIndex].tr.vertex.y;
-          this.particleVertices[(i + 17)] = localParticle.position.z;
+          ((Particle)localObject2).angle += ((Particle)localObject2).degreesPerSecond * paramFloat;
+          ((Particle)localObject2).radius += ((Particle)localObject2).radiusDelta * paramFloat;
+          localObject1 = new Vector3();
+          d1 = this.sourcePosition.x;
+          double d2 = Math.cos(((Particle)localObject2).angle);
+          double d3 = ((Particle)localObject2).radius;
+          Double.isNaN(d3);
+          Double.isNaN(d1);
+          ((Vector3)localObject1).x = ((float)(d1 - d2 * d3));
+          d1 = this.sourcePosition.y;
+          d2 = Math.sin(((Particle)localObject2).angle);
+          d3 = ((Particle)localObject2).radius;
+          Double.isNaN(d3);
+          Double.isNaN(d1);
+          ((Vector3)localObject1).y = ((float)(d1 - d2 * d3));
+          ((Particle)localObject2).position = ((Vector3)localObject1);
         }
-        for (;;)
+        else
         {
-          i = this.particleIndex * 12;
-          this.particleTextureCoordinates[i] = 0.0F;
-          this.particleTextureCoordinates[(i + 1)] = 0.0F;
-          this.particleTextureCoordinates[(i + 2)] = 1.0F;
-          this.particleTextureCoordinates[(i + 3)] = 0.0F;
-          this.particleTextureCoordinates[(i + 4)] = 0.0F;
-          this.particleTextureCoordinates[(i + 5)] = 1.0F;
-          this.particleTextureCoordinates[(i + 6)] = this.particleTextureCoordinates[(i + 2)];
-          this.particleTextureCoordinates[(i + 7)] = this.particleTextureCoordinates[(i + 3)];
-          this.particleTextureCoordinates[(i + 8)] = this.particleTextureCoordinates[(i + 4)];
-          this.particleTextureCoordinates[(i + 9)] = this.particleTextureCoordinates[(i + 5)];
-          this.particleTextureCoordinates[(i + 10)] = 1.0F;
-          this.particleTextureCoordinates[(i + 11)] = 1.0F;
-          i = 0;
-          while (i < 6)
-          {
-            int j = this.particleIndex * 24 + i * 4;
-            this.particleColors[j] = localParticle.color.r;
-            this.particleColors[(j + 1)] = localParticle.color.g;
-            this.particleColors[(j + 2)] = localParticle.color.b;
-            this.particleColors[(j + 3)] = localParticle.color.a;
-            i += 1;
+          localObject1 = new Vector2(0.0F, 0.0F);
+          Vector3 localVector3 = ParticleUtil.vectorSubtract(((Particle)localObject2).startPos, new Vector3(0.0F, 0.0F, 0.0F));
+          ((Particle)localObject2).position = ParticleUtil.vectorSubtract(((Particle)localObject2).position, localVector3);
+          if ((((Particle)localObject2).position.x != 0.0F) || (((Particle)localObject2).position.y != 0.0F)) {
+            localObject1 = ParticleUtil.vectorNormalize(((Particle)localObject2).position.xy());
           }
-          localObject = new Vector2(0.0F, 0.0F);
-          Vector3 localVector3 = ParticleUtil.vectorSubtract(localParticle.startPos, new Vector3(0.0F, 0.0F, 0.0F));
-          localParticle.position = ParticleUtil.vectorSubtract(localParticle.position, localVector3);
-          if ((localParticle.position.x != 0.0F) || (localParticle.position.y != 0.0F)) {
-            localObject = ParticleUtil.vectorNormalize(localParticle.position.xy());
-          }
-          Vector2 localVector2 = ParticleUtil.vectorMultiplyScalar((Vector2)localObject, localParticle.radialAcceleration);
-          f1 = ((Vector2)localObject).x;
-          ((Vector2)localObject).x = (-((Vector2)localObject).y);
-          ((Vector2)localObject).y = f1;
-          localObject = ParticleUtil.vectorMultiplyScalar(ParticleUtil.vectorAdd(ParticleUtil.vectorAdd(localVector2, ParticleUtil.vectorMultiplyScalar((Vector2)localObject, localParticle.tangentialAcceleration)), this.gravity.xy()), paramFloat);
-          localParticle.direction = ParticleUtil.vectorAdd(localParticle.direction, new Vector3(((Vector2)localObject).x, ((Vector2)localObject).y, 0.0F));
-          localObject = ParticleUtil.vectorMultiplyScalar(localParticle.direction, paramFloat);
-          localParticle.position = ParticleUtil.vectorAdd(localParticle.position, (Vector3)localObject);
-          localParticle.position = ParticleUtil.vectorAdd(localParticle.position, localVector3);
-          ParticleUtil.saturateZ(localParticle.position, -1.0F, 1.0F);
-          break;
-          label1788:
-          localObject = localParticle.color;
-          ((Vector4)localObject).r += localParticle.deltaColor.r * paramFloat;
-          localObject = localParticle.color;
-          ((Vector4)localObject).g += localParticle.deltaColor.g * paramFloat;
-          localObject = localParticle.color;
-          ((Vector4)localObject).b += localParticle.deltaColor.b * paramFloat;
-          localObject = localParticle.color;
-          ((Vector4)localObject).a += localParticle.deltaColor.a * paramFloat;
-          break label339;
-          label1903:
-          this.quads[this.particleIndex].bl.vertex.x = (localParticle.position.x - f1);
-          this.quads[this.particleIndex].bl.vertex.y = (localParticle.position.y - f1);
-          this.quads[this.particleIndex].bl.color = localParticle.color;
-          this.quads[this.particleIndex].br.vertex.x = (localParticle.position.x + f1);
-          this.quads[this.particleIndex].br.vertex.y = (localParticle.position.y - f1);
-          this.quads[this.particleIndex].br.color = localParticle.color;
-          this.quads[this.particleIndex].tl.vertex.x = (localParticle.position.x - f1);
-          this.quads[this.particleIndex].tl.vertex.y = (localParticle.position.y + f1);
-          this.quads[this.particleIndex].tl.color = localParticle.color;
-          this.quads[this.particleIndex].tr.vertex.x = (localParticle.position.x + f1);
-          this.quads[this.particleIndex].tr.vertex.y = (f1 + localParticle.position.y);
-          this.quads[this.particleIndex].tr.color = localParticle.color;
+          Vector2 localVector2 = ParticleUtil.vectorMultiplyScalar((Vector2)localObject1, ((Particle)localObject2).radialAcceleration);
+          f1 = ((Vector2)localObject1).x;
+          ((Vector2)localObject1).x = (-((Vector2)localObject1).y);
+          ((Vector2)localObject1).y = f1;
+          localObject1 = ParticleUtil.vectorMultiplyScalar(ParticleUtil.vectorAdd(ParticleUtil.vectorAdd(localVector2, ParticleUtil.vectorMultiplyScalar((Vector2)localObject1, ((Particle)localObject2).tangentialAcceleration)), this.gravity.xy()), paramFloat);
+          ((Particle)localObject2).direction = ParticleUtil.vectorAdd(((Particle)localObject2).direction, new Vector3(((Vector2)localObject1).x, ((Vector2)localObject1).y, 0.0F));
+          localObject1 = ParticleUtil.vectorMultiplyScalar(((Particle)localObject2).direction, paramFloat);
+          ((Particle)localObject2).position = ParticleUtil.vectorAdd(((Particle)localObject2).position, (Vector3)localObject1);
+          ((Particle)localObject2).position = ParticleUtil.vectorAdd(((Particle)localObject2).position, localVector3);
+          ParticleUtil.saturateZ(((Particle)localObject2).position, -1.0F, 1.0F);
+        }
+        if (this.audioColorDelta > 0.0F)
+        {
+          ((Particle)localObject2).color.r = (this.startColor.r + ((Particle)localObject2).deltaColor.r * this.audioColorDelta);
+          ((Particle)localObject2).color.g = (this.startColor.g + ((Particle)localObject2).deltaColor.g * this.audioColorDelta);
+          ((Particle)localObject2).color.b = (this.startColor.b + ((Particle)localObject2).deltaColor.b * this.audioColorDelta);
+          ((Particle)localObject2).color.a = (this.startColor.a + ((Particle)localObject2).deltaColor.a * this.audioColorDelta);
+        }
+        else
+        {
+          localObject1 = ((Particle)localObject2).color;
+          ((Vector4)localObject1).r += ((Particle)localObject2).deltaColor.r * paramFloat;
+          localObject1 = ((Particle)localObject2).color;
+          ((Vector4)localObject1).g += ((Particle)localObject2).deltaColor.g * paramFloat;
+          localObject1 = ((Particle)localObject2).color;
+          ((Vector4)localObject1).b += ((Particle)localObject2).deltaColor.b * paramFloat;
+          localObject1 = ((Particle)localObject2).color;
+          ((Vector4)localObject1).a += ((Particle)localObject2).deltaColor.a * paramFloat;
+        }
+        ((Particle)localObject2).particleSize += ((Particle)localObject2).particleSizeDelta * paramFloat;
+        ((Particle)localObject2).particleSize = Math.max(0.0F, ((Particle)localObject2).particleSize);
+        ((Particle)localObject2).rotation += ((Particle)localObject2).rotationDelta * paramFloat;
+        float f3 = ((Particle)localObject2).particleSize * 0.5F * this.scaleParticle;
+        localObject1 = ((Particle)localObject2).position;
+        ((Vector3)localObject1).x *= this.canvasScaleForTakeLargePicture;
+        localObject1 = ((Particle)localObject2).position;
+        ((Vector3)localObject1).y *= this.canvasScaleForTakeLargePicture;
+        float f4 = ((Particle)localObject2).rotation + this.baseRotation;
+        if (f4 != 0.0F)
+        {
+          float f6 = -f3;
+          f1 = ((Particle)localObject2).position.x;
+          float f2 = ((Particle)localObject2).position.y;
+          d1 = (float)Math.toRadians(f4);
+          float f7 = (float)Math.cos(d1);
+          float f5 = (float)Math.sin(d1);
+          f4 = f6 * f7;
+          f6 *= f5;
+          f7 *= f3;
+          f3 *= f5;
+          this.quads[this.particleIndex].bl.vertex.x = (f4 - f6 + f1);
+          this.quads[this.particleIndex].bl.vertex.y = (f6 + f4 + f2);
+          this.quads[this.particleIndex].bl.color = ((Particle)localObject2).color;
+          this.quads[this.particleIndex].br.vertex.x = (f7 - f6 + f1);
+          this.quads[this.particleIndex].br.vertex.y = (f3 + f4 + f2);
+          this.quads[this.particleIndex].br.color = ((Particle)localObject2).color;
+          this.quads[this.particleIndex].tl.vertex.x = (f4 - f3 + f1);
+          this.quads[this.particleIndex].tl.vertex.y = (f6 + f7 + f2);
+          this.quads[this.particleIndex].tl.color = ((Particle)localObject2).color;
+          this.quads[this.particleIndex].tr.vertex.x = (f7 - f3 + f1);
+          this.quads[this.particleIndex].tr.vertex.y = (f3 + f7 + f2);
+          this.quads[this.particleIndex].tr.color = ((Particle)localObject2).color;
           this.particleVertices[i] = this.quads[this.particleIndex].bl.vertex.x;
           this.particleVertices[(i + 1)] = this.quads[this.particleIndex].bl.vertex.y;
-          this.particleVertices[(i + 2)] = localParticle.position.z;
+          this.particleVertices[(i + 2)] = ((Particle)localObject2).position.z;
           this.particleVertices[(i + 3)] = this.quads[this.particleIndex].br.vertex.x;
           this.particleVertices[(i + 4)] = this.quads[this.particleIndex].br.vertex.y;
-          this.particleVertices[(i + 5)] = localParticle.position.z;
+          this.particleVertices[(i + 5)] = ((Particle)localObject2).position.z;
           this.particleVertices[(i + 6)] = this.quads[this.particleIndex].tl.vertex.x;
           this.particleVertices[(i + 7)] = this.quads[this.particleIndex].tl.vertex.y;
-          this.particleVertices[(i + 8)] = localParticle.position.z;
+          this.particleVertices[(i + 8)] = ((Particle)localObject2).position.z;
           this.particleVertices[(i + 9)] = this.quads[this.particleIndex].br.vertex.x;
           this.particleVertices[(i + 10)] = this.quads[this.particleIndex].br.vertex.y;
-          this.particleVertices[(i + 11)] = localParticle.position.z;
+          this.particleVertices[(i + 11)] = ((Particle)localObject2).position.z;
           this.particleVertices[(i + 12)] = this.quads[this.particleIndex].tl.vertex.x;
           this.particleVertices[(i + 13)] = this.quads[this.particleIndex].tl.vertex.y;
-          this.particleVertices[(i + 14)] = localParticle.position.z;
+          this.particleVertices[(i + 14)] = ((Particle)localObject2).position.z;
           this.particleVertices[(i + 15)] = this.quads[this.particleIndex].tr.vertex.x;
           this.particleVertices[(i + 16)] = this.quads[this.particleIndex].tr.vertex.y;
-          this.particleVertices[(i + 17)] = localParticle.position.z;
+          this.particleVertices[(i + 17)] = ((Particle)localObject2).position.z;
+        }
+        else
+        {
+          this.quads[this.particleIndex].bl.vertex.x = (((Particle)localObject2).position.x - f3);
+          this.quads[this.particleIndex].bl.vertex.y = (((Particle)localObject2).position.y - f3);
+          this.quads[this.particleIndex].bl.color = ((Particle)localObject2).color;
+          this.quads[this.particleIndex].br.vertex.x = (((Particle)localObject2).position.x + f3);
+          this.quads[this.particleIndex].br.vertex.y = (((Particle)localObject2).position.y - f3);
+          this.quads[this.particleIndex].br.color = ((Particle)localObject2).color;
+          this.quads[this.particleIndex].tl.vertex.x = (((Particle)localObject2).position.x - f3);
+          this.quads[this.particleIndex].tl.vertex.y = (((Particle)localObject2).position.y + f3);
+          this.quads[this.particleIndex].tl.color = ((Particle)localObject2).color;
+          this.quads[this.particleIndex].tr.vertex.x = (((Particle)localObject2).position.x + f3);
+          this.quads[this.particleIndex].tr.vertex.y = (((Particle)localObject2).position.y + f3);
+          this.quads[this.particleIndex].tr.color = ((Particle)localObject2).color;
+          this.particleVertices[i] = this.quads[this.particleIndex].bl.vertex.x;
+          this.particleVertices[(i + 1)] = this.quads[this.particleIndex].bl.vertex.y;
+          this.particleVertices[(i + 2)] = ((Particle)localObject2).position.z;
+          this.particleVertices[(i + 3)] = this.quads[this.particleIndex].br.vertex.x;
+          this.particleVertices[(i + 4)] = this.quads[this.particleIndex].br.vertex.y;
+          this.particleVertices[(i + 5)] = ((Particle)localObject2).position.z;
+          this.particleVertices[(i + 6)] = this.quads[this.particleIndex].tl.vertex.x;
+          this.particleVertices[(i + 7)] = this.quads[this.particleIndex].tl.vertex.y;
+          this.particleVertices[(i + 8)] = ((Particle)localObject2).position.z;
+          this.particleVertices[(i + 9)] = this.quads[this.particleIndex].br.vertex.x;
+          this.particleVertices[(i + 10)] = this.quads[this.particleIndex].br.vertex.y;
+          this.particleVertices[(i + 11)] = ((Particle)localObject2).position.z;
+          this.particleVertices[(i + 12)] = this.quads[this.particleIndex].tl.vertex.x;
+          this.particleVertices[(i + 13)] = this.quads[this.particleIndex].tl.vertex.y;
+          this.particleVertices[(i + 14)] = ((Particle)localObject2).position.z;
+          this.particleVertices[(i + 15)] = this.quads[this.particleIndex].tr.vertex.x;
+          this.particleVertices[(i + 16)] = this.quads[this.particleIndex].tr.vertex.y;
+          this.particleVertices[(i + 17)] = ((Particle)localObject2).position.z;
+        }
+        i = this.particleIndex * 12;
+        this.particleTextureCoordinates[i] = 0.0F;
+        this.particleTextureCoordinates[(i + 1)] = 0.0F;
+        localObject1 = this.particleTextureCoordinates;
+        int j = i + 2;
+        localObject1[j] = 1.0F;
+        localObject1 = this.particleTextureCoordinates;
+        int k = i + 3;
+        localObject1[k] = 0.0F;
+        localObject1 = this.particleTextureCoordinates;
+        int m = i + 4;
+        localObject1[m] = 0.0F;
+        localObject1 = this.particleTextureCoordinates;
+        int n = i + 5;
+        localObject1[n] = 1.0F;
+        this.particleTextureCoordinates[(i + 6)] = this.particleTextureCoordinates[j];
+        this.particleTextureCoordinates[(i + 7)] = this.particleTextureCoordinates[k];
+        this.particleTextureCoordinates[(i + 8)] = this.particleTextureCoordinates[m];
+        this.particleTextureCoordinates[(i + 9)] = this.particleTextureCoordinates[n];
+        this.particleTextureCoordinates[(i + 10)] = 1.0F;
+        this.particleTextureCoordinates[(i + 11)] = 1.0F;
+        i = 0;
+        while (i < 6)
+        {
+          j = this.particleIndex * 24 + i * 4;
+          this.particleColors[j] = ((Particle)localObject2).color.r;
+          this.particleColors[(j + 1)] = ((Particle)localObject2).color.g;
+          this.particleColors[(j + 2)] = ((Particle)localObject2).color.b;
+          this.particleColors[(j + 3)] = ((Particle)localObject2).color.a;
+          i += 1;
         }
         this.particleIndex += 1;
       }
@@ -278,7 +304,10 @@ public class ParticleEmitter
         this.particleCount -= 1;
       }
     }
-    Log.e("ParticleCount", "ParticleCount] " + this.particleIndex);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("ParticleCount] ");
+    ((StringBuilder)localObject1).append(this.particleIndex);
+    Log.e("ParticleCount", ((StringBuilder)localObject1).toString());
     if ((paramBoolean) && (this.active) && (this.emissionRate > 0.0F))
     {
       f1 = 1.0F / this.emissionRate;
@@ -298,7 +327,7 @@ public class ParticleEmitter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.particle.ParticleEmitter
  * JD-Core Version:    0.7.0.1
  */

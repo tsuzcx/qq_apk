@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio.tips;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -22,7 +22,7 @@ class DiscActiveTipsBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.DiscActiveTipsBar.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,9 +18,10 @@ class HiBoomTextView$EmoticonHolder
   
   static EmoticonHolder a(HiBoomTextView paramHiBoomTextView)
   {
+    EmoticonHolder localEmoticonHolder = null;
     if (paramHiBoomTextView != null)
     {
-      EmoticonHolder localEmoticonHolder = new EmoticonHolder();
+      localEmoticonHolder = new EmoticonHolder();
       localEmoticonHolder.jdField_a_of_type_Long = HiBoomTextView.a(paramHiBoomTextView);
       localEmoticonHolder.jdField_a_of_type_JavaLangString = HiBoomTextView.a(paramHiBoomTextView);
       localEmoticonHolder.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(0, null, 0.0F);
@@ -30,14 +31,13 @@ class HiBoomTextView$EmoticonHolder
       localEmoticonHolder.jdField_b_of_type_Int = HiBoomTextView.a(paramHiBoomTextView).currentFrameIndex();
       localEmoticonHolder.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHiBoomTextView);
       localEmoticonHolder.jdField_b_of_type_Long = System.currentTimeMillis();
-      return localEmoticonHolder;
     }
-    return null;
+    return localEmoticonHolder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomTextView.EmoticonHolder
  * JD-Core Version:    0.7.0.1
  */

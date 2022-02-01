@@ -37,21 +37,30 @@ class DCShortVideo$ProgressivePlayData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("supportProgressive ").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("playReadyTime ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("exitPlayProgress ").append(this.b);
-    localStringBuilder.append("exitCacheProgress ").append(this.c);
-    localStringBuilder.append("durationTime ").append(this.d);
-    localStringBuilder.append("fileSize ").append(this.e);
-    localStringBuilder.append("seekTimes ").append(this.f);
-    localStringBuilder.append("playResult ").append(this.g);
-    localStringBuilder.append("playTimeCost").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("supportProgressive ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("playReadyTime ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("exitPlayProgress ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("exitCacheProgress ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("durationTime ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("fileSize ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("seekTimes ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("playResult ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("playTimeCost");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DCShortVideo.ProgressivePlayData
  * JD-Core Version:    0.7.0.1
  */

@@ -28,14 +28,23 @@ public class GPUComputeShaderFilter
       if (i == 0) {
         break;
       }
-      SLog.e("GPUComputeShaderFilter", new RuntimeException(paramString + ": glError " + i));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(i);
+      SLog.e("GPUComputeShaderFilter", new RuntimeException(localStringBuilder.toString()));
     }
   }
   
   public void checkLocation(int paramInt, String paramString)
   {
-    if (paramInt < 0) {
-      SLog.e("GPUComputeShaderFilter", new RuntimeException("Unable to locate '" + paramString + "' in program"));
+    if (paramInt < 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to locate '");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("' in program");
+      SLog.e("GPUComputeShaderFilter", new RuntimeException(localStringBuilder.toString()));
     }
   }
   
@@ -61,8 +70,12 @@ public class GPUComputeShaderFilter
       return;
     }
     this.mProgram = GlUtil.createComputeProgram(this.mComputeShader);
-    if (this.mProgram == 0) {
-      SLog.e("GPUComputeShaderFilter", new RuntimeException("failed creating ComputeProgram " + getClass().getSimpleName()));
+    if (this.mProgram == 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed creating ComputeProgram ");
+      localStringBuilder.append(getClass().getSimpleName());
+      SLog.e("GPUComputeShaderFilter", new RuntimeException(localStringBuilder.toString()));
     }
     this.mIsInitialized = true;
   }
@@ -77,7 +90,7 @@ public class GPUComputeShaderFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.computeShader.GPUComputeShaderFilter
  * JD-Core Version:    0.7.0.1
  */

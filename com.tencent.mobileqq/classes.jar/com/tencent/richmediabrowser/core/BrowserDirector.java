@@ -24,7 +24,7 @@ public class BrowserDirector
       paramIBrowserBuilder.buildParams(paramIntent);
       l2 = System.currentTimeMillis();
       this.buildPresenterTime = (l2 - l1);
-      paramIBrowserBuilder.buildView(null);
+      paramIBrowserBuilder.buildView();
       l1 = System.currentTimeMillis();
       this.buildViewTime = (l1 - l2);
       paramIBrowserBuilder.buildModel();
@@ -34,12 +34,25 @@ public class BrowserDirector
       this.buildCompleteTime = (System.currentTimeMillis() - l2);
       if (BrowserLogHelper.getInstance().getGalleryLog().isColorLevel())
       {
-        paramIBrowserBuilder = "buildParamsTime : " + this.buildParamsTime + ", buildPresenterTime " + this.buildPresenterTime + ", buildViewTime " + this.buildViewTime + ", buildModelTime " + this.buildModelTime + ", buildCompleteTime " + this.buildCompleteTime;
+        paramIBrowserBuilder = new StringBuilder();
+        paramIBrowserBuilder.append("buildParamsTime : ");
+        paramIBrowserBuilder.append(this.buildParamsTime);
+        paramIBrowserBuilder.append(", buildPresenterTime ");
+        paramIBrowserBuilder.append(this.buildPresenterTime);
+        paramIBrowserBuilder.append(", buildViewTime ");
+        paramIBrowserBuilder.append(this.buildViewTime);
+        paramIBrowserBuilder.append(", buildModelTime ");
+        paramIBrowserBuilder.append(this.buildModelTime);
+        paramIBrowserBuilder.append(", buildCompleteTime ");
+        paramIBrowserBuilder.append(this.buildCompleteTime);
+        paramIBrowserBuilder = paramIBrowserBuilder.toString();
         BrowserLogHelper.getInstance().getGalleryLog().d("BrowserDirector", 4, paramIBrowserBuilder);
       }
-      return;
     }
-    BrowserLogHelper.getInstance().getGalleryLog().d("BrowserDirector", 4, "Browser builder is null!");
+    else
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("BrowserDirector", 4, "Browser builder is null!");
+    }
   }
   
   public void constructItemView(IViewBuilder paramIViewBuilder, Intent paramIntent)
@@ -52,24 +65,35 @@ public class BrowserDirector
       paramIViewBuilder.buildParams(paramIntent);
       long l3 = System.currentTimeMillis();
       this.buildParamsTime = (l3 - l2);
-      paramIViewBuilder.buildView(null);
+      paramIViewBuilder.buildView();
       long l4 = System.currentTimeMillis();
       this.buildViewTime = (l4 - l3);
       paramIViewBuilder.buildComplete();
       this.buildCompleteTime = (System.currentTimeMillis() - l4);
       if (BrowserLogHelper.getInstance().getGalleryLog().isColorLevel())
       {
-        paramIViewBuilder = "buildInitTime : " + (l2 - l1) + ", buildParamsTime " + this.buildParamsTime + ", buildViewTime " + this.buildViewTime + ", buildCompleteTime " + this.buildCompleteTime;
+        paramIViewBuilder = new StringBuilder();
+        paramIViewBuilder.append("buildInitTime : ");
+        paramIViewBuilder.append(l2 - l1);
+        paramIViewBuilder.append(", buildParamsTime ");
+        paramIViewBuilder.append(this.buildParamsTime);
+        paramIViewBuilder.append(", buildViewTime ");
+        paramIViewBuilder.append(this.buildViewTime);
+        paramIViewBuilder.append(", buildCompleteTime ");
+        paramIViewBuilder.append(this.buildCompleteTime);
+        paramIViewBuilder = paramIViewBuilder.toString();
         BrowserLogHelper.getInstance().getGalleryLog().d("BrowserDirector", 4, paramIViewBuilder);
       }
-      return;
     }
-    BrowserLogHelper.getInstance().getGalleryLog().d("BrowserDirector", 4, "viewBuilder is null!");
+    else
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("BrowserDirector", 4, "viewBuilder is null!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.core.BrowserDirector
  * JD-Core Version:    0.7.0.1
  */

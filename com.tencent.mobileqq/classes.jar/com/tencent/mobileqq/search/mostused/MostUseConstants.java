@@ -8,16 +8,13 @@ public class MostUseConstants
   
   public static int a(int paramInt)
   {
-    int k = 0;
     int[] arrayOfInt = a;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
     {
-      if (arrayOfInt[i] == paramInt)
-      {
-        i = 1;
-        return i;
+      if (arrayOfInt[i] == paramInt) {
+        return 1;
       }
       i += 1;
     }
@@ -32,24 +29,21 @@ public class MostUseConstants
       i += 1;
     }
     arrayOfInt = c;
-    int m = arrayOfInt.length;
-    j = 0;
-    for (;;)
+    j = arrayOfInt.length;
+    i = 0;
+    while (i < j)
     {
-      i = k;
-      if (j >= m) {
-        break;
-      }
-      if (arrayOfInt[j] == paramInt) {
+      if (arrayOfInt[i] == paramInt) {
         return 3;
       }
-      j += 1;
+      i += 1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.mostused.MostUseConstants
  * JD-Core Version:    0.7.0.1
  */

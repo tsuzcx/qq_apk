@@ -32,16 +32,13 @@ public class BatchGetSquareFeedInfoRequest
     try
     {
       localRspDiscoveryShareGroupInfoList.mergeFrom(paramArrayOfByte);
-      return new BatchGetSquareFeedInfoRequest.GetSquareFeedInfoResp(localRspDiscoveryShareGroupInfoList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        SLog.b("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "decode fail", paramArrayOfByte);
-      }
+      paramArrayOfByte.printStackTrace();
+      SLog.b("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "decode fail", paramArrayOfByte);
     }
+    return new BatchGetSquareFeedInfoRequest.GetSquareFeedInfoResp(localRspDiscoveryShareGroupInfoList);
   }
   
   public String a()
@@ -49,9 +46,9 @@ public class BatchGetSquareFeedInfoRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
-    qqstory_service.ReqDiscoveryShareGroupInfoList localReqDiscoveryShareGroupInfoList = new qqstory_service.ReqDiscoveryShareGroupInfoList();
+    Object localObject = new qqstory_service.ReqDiscoveryShareGroupInfoList();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
@@ -61,16 +58,21 @@ public class BatchGetSquareFeedInfoRequest
         localArrayList.add(ByteStringMicro.copyFromUtf8(localFeedIdListSeqInfo.jdField_a_of_type_JavaLangString));
       }
     }
-    if (localArrayList.size() == 0) {
-      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
+    if (localArrayList.size() != 0)
+    {
+      ((qqstory_service.ReqDiscoveryShareGroupInfoList)localObject).share_group_unionid_list.set(localArrayList);
+      return ((qqstory_service.ReqDiscoveryShareGroupInfoList)localObject).toByteArray();
     }
-    localReqDiscoveryShareGroupInfoList.share_group_unionid_list.set(localArrayList);
-    return localReqDiscoveryShareGroupInfoList.toByteArray();
+    localObject = new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.square.BatchGetSquareFeedInfoRequest
  * JD-Core Version:    0.7.0.1
  */

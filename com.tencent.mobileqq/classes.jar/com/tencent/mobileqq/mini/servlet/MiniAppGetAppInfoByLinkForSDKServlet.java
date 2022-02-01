@@ -40,7 +40,12 @@ public class MiniAppGetAppInfoByLinkForSDKServlet
       localObject = ((INTERFACE.StGetAppInfoByLinkRsp)localObject).shareTicket.get();
       paramBundle.putParcelable("mini_app_info_data", paramArrayOfByte);
       paramBundle.putString("shareTicket", (String)localObject);
-      QLog.i("[mini] MiniAppGetAppInfoByLinkForSDKServlet", 1, "[MiniEng]" + paramArrayOfByte.downloadUrl + "," + paramArrayOfByte.fileSize);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[MiniEng]");
+      ((StringBuilder)localObject).append(paramArrayOfByte.downloadUrl);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(paramArrayOfByte.fileSize);
+      QLog.i("[mini] MiniAppGetAppInfoByLinkForSDKServlet", 1, ((StringBuilder)localObject).toString());
       notifyObserver(paramIntent, this.observerId, true, paramBundle, MiniAppObserver.class);
       return;
     }
@@ -67,7 +72,7 @@ public class MiniAppGetAppInfoByLinkForSDKServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetAppInfoByLinkForSDKServlet
  * JD-Core Version:    0.7.0.1
  */

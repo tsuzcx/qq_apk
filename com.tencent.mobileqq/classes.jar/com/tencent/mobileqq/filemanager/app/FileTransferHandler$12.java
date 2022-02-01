@@ -11,21 +11,31 @@ class FileTransferHandler$12
   
   public void run()
   {
+    StringBuilder localStringBuilder;
     if (this.a.nFileType == 0)
     {
-      QLog.i("FileTransferHandler<FileAssistant>", 1, "Id[" + this.a.nSessionId + "]Send CCMsg, but not size and thumb, try download Pic Thumb");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Id[");
+      localStringBuilder.append(this.a.nSessionId);
+      localStringBuilder.append("]Send CCMsg, but not size and thumb, try download Pic Thumb");
+      QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
       this.this$0.a.getFileManagerEngine().b(this.a, 7);
-    }
-    while (this.a.nFileType != 2) {
       return;
     }
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "Id[" + this.a.nSessionId + "]Send CCMsg, but not size and thumb, try download Video Thumb");
-    this.this$0.a.getFileManagerEngine().b(this.a);
+    if (this.a.nFileType == 2)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Id[");
+      localStringBuilder.append(this.a.nSessionId);
+      localStringBuilder.append("]Send CCMsg, but not size and thumb, try download Video Thumb");
+      QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
+      this.this$0.a.getFileManagerEngine().b(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.12
  * JD-Core Version:    0.7.0.1
  */

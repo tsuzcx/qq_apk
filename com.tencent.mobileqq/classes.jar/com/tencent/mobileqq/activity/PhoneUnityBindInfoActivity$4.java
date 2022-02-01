@@ -21,12 +21,12 @@ class PhoneUnityBindInfoActivity$4
       QLog.i("PhoneUnityBindInfoActivity", 1, "fetchSecurePhoneNum, activity destroyed");
       return;
     }
-    PhoneUnityBindInfoActivity.a(paramWUserSigInfo, paramDevlockInfo);
+    PhoneUnityBindInfoActivity.access$1400(paramWUserSigInfo, paramDevlockInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity.4
  * JD-Core Version:    0.7.0.1
  */

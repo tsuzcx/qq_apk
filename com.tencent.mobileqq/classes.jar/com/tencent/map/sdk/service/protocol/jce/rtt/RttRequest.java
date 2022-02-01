@@ -18,14 +18,8 @@ public final class RttRequest
   
   static
   {
-    if (!RttRequest.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      b = bool;
-      a = new ArrayList();
-      a.add(Integer.valueOf(0));
-      return;
-    }
+    a = new ArrayList();
+    a.add(Integer.valueOf(0));
   }
   
   public RttRequest() {}
@@ -44,18 +38,20 @@ public final class RttRequest
   
   public final Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (b) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (b) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
@@ -76,13 +72,11 @@ public final class RttRequest
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      paramObject = (RttRequest)paramObject;
-    } while ((!o.a(this.bounds, paramObject.bounds)) || (!o.a(this.zoom, paramObject.zoom)) || (!o.a(this.zip, paramObject.zip)));
-    return true;
+    }
+    paramObject = (RttRequest)paramObject;
+    return (o.a(this.bounds, paramObject.bounds)) && (o.a(this.zoom, paramObject.zoom)) && (o.a(this.zip, paramObject.zip));
   }
   
   public final ArrayList<Integer> getBounds()
@@ -144,7 +138,7 @@ public final class RttRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.jce.rtt.RttRequest
  * JD-Core Version:    0.7.0.1
  */

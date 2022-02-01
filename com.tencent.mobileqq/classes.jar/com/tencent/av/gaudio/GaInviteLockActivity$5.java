@@ -11,23 +11,23 @@ class GaInviteLockActivity$5
   
   public void a(boolean paramBoolean)
   {
-    if ((!paramBoolean) || (GaInviteLockActivity.b(this.a))) {
-      return;
-    }
-    if ((this.a.a.d) || (this.a.a.l())) {
-      this.a.e();
-    }
-    for (;;)
+    if (paramBoolean)
     {
+      if (GaInviteLockActivity.b(this.a)) {
+        return;
+      }
+      if (this.a.a.d) {
+        this.a.e();
+      } else {
+        this.a.d();
+      }
       ReportController.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
-      return;
-      this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteLockActivity.5
  * JD-Core Version:    0.7.0.1
  */

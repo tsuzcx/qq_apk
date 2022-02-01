@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.video.videofeeds.VideoItemHolder;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.viewholder.VideoItemHolder;
 
 class VideoFeedsSoftAdBarDelegateForNormal$1
   implements ValueAnimator.AnimatorUpdateListener
@@ -28,7 +28,7 @@ class VideoFeedsSoftAdBarDelegateForNormal$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsSoftAdBarDelegateForNormal.1
  * JD-Core Version:    0.7.0.1
  */

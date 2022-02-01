@@ -76,17 +76,20 @@ public class SPBandwidthPredictor
   
   private long getCurrentBandwidth()
   {
-    Iterator localIterator = this.bandwidthObtainers.iterator();
+    Object localObject = this.bandwidthObtainers.iterator();
     long l1 = 0L;
-    while (localIterator.hasNext())
+    while (((Iterator)localObject).hasNext())
     {
-      long l2 = ((IBandwidthObtainer)localIterator.next()).getCurrentBandwidth();
+      long l2 = ((IBandwidthObtainer)((Iterator)localObject).next()).getCurrentBandwidth();
       l1 = l2;
       if (l2 > 0L) {
         l1 = l2;
       }
     }
-    LogUtil.d("BandwidthPredictor", "getCurrentBandwidth: bandwidth=" + l1);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getCurrentBandwidth: bandwidth=");
+    ((StringBuilder)localObject).append(l1);
+    LogUtil.d("BandwidthPredictor", ((StringBuilder)localObject).toString());
     return l1;
   }
   
@@ -98,7 +101,14 @@ public class SPBandwidthPredictor
     {
       AbstractPredictor localAbstractPredictor = (AbstractPredictor)localIterator.next();
       l = Math.max(localAbstractPredictor.prediction, l);
-      LogUtil.d("BandwidthPredictor", "predict: predictor=" + localAbstractPredictor + ", currentPrediction=" + localAbstractPredictor.currentPredition + ", prediction=" + localAbstractPredictor.prediction);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("predict: predictor=");
+      localStringBuilder.append(localAbstractPredictor);
+      localStringBuilder.append(", currentPrediction=");
+      localStringBuilder.append(localAbstractPredictor.currentPredition);
+      localStringBuilder.append(", prediction=");
+      localStringBuilder.append(localAbstractPredictor.prediction);
+      LogUtil.d("BandwidthPredictor", localStringBuilder.toString());
     }
     this.sampleThreshold = (((float)l / 10.0F));
     this.currentPrediction = l;
@@ -138,45 +148,44 @@ public class SPBandwidthPredictor
   
   private void sample()
   {
-    long l = getCurrentBandwidth();
-    Iterator localIterator;
-    if (l > this.sampleThreshold)
+    long l1 = getCurrentBandwidth();
+    long l2 = this.sampleThreshold;
+    if (l1 > l2)
     {
       this.idleTimes = 0;
-      if (this.lastBandwidth > this.sampleThreshold)
+      if (this.lastBandwidth > l2)
       {
         localIterator = this.bandwidthPredictors.iterator();
         while (localIterator.hasNext()) {
           ((AbstractPredictor)localIterator.next()).sample(this.lastBandwidth);
         }
       }
-      this.lastBandwidth = l;
-    }
-    for (;;)
-    {
+      this.lastBandwidth = l1;
       return;
-      localIterator = this.bandwidthPredictors.iterator();
-      while (localIterator.hasNext())
-      {
-        AbstractPredictor localAbstractPredictor = (AbstractPredictor)localIterator.next();
-        if (this.lastBandwidth > localAbstractPredictor.prediction) {
-          localAbstractPredictor.sample(this.lastBandwidth);
-        }
+    }
+    Iterator localIterator = this.bandwidthPredictors.iterator();
+    while (localIterator.hasNext())
+    {
+      AbstractPredictor localAbstractPredictor = (AbstractPredictor)localIterator.next();
+      if (this.lastBandwidth > localAbstractPredictor.prediction) {
+        localAbstractPredictor.sample(this.lastBandwidth);
       }
-      this.lastBandwidth = 0L;
-      this.idleTimes += 1;
-      if (this.idleTimes >= 5)
-      {
-        localIterator = this.bandwidthPredictors.iterator();
-        while (localIterator.hasNext()) {
-          ((AbstractPredictor)localIterator.next()).onIdle();
-        }
-        if (SystemClock.elapsedRealtime() - this.lastRestTimeStamp > this.resetTimeThreshold) {}
-        for (int i = 1; i != 0; i = 0)
-        {
-          reset();
-          return;
-        }
+    }
+    this.lastBandwidth = 0L;
+    int j = this.idleTimes;
+    int i = 1;
+    this.idleTimes = (j + 1);
+    if (this.idleTimes >= 5)
+    {
+      localIterator = this.bandwidthPredictors.iterator();
+      while (localIterator.hasNext()) {
+        ((AbstractPredictor)localIterator.next()).onIdle();
+      }
+      if (SystemClock.elapsedRealtime() - this.lastRestTimeStamp <= this.resetTimeThreshold) {
+        i = 0;
+      }
+      if (i != 0) {
+        reset();
       }
     }
   }
@@ -193,21 +202,15 @@ public class SPBandwidthPredictor
   
   public boolean handleMessage(@Nullable Message paramMessage)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMessage != null)
+    if ((paramMessage != null) && (paramMessage.what == 0))
     {
-      bool1 = bool2;
-      if (paramMessage.what == 0)
-      {
-        sample();
-        predict();
-        this.handler.removeMessages(0);
-        this.handler.sendEmptyMessageDelayed(0, 1000L);
-        bool1 = true;
-      }
+      sample();
+      predict();
+      this.handler.removeMessages(0);
+      this.handler.sendEmptyMessageDelayed(0, 1000L);
+      return true;
     }
-    return bool1;
+    return false;
   }
   
   public void start(Context paramContext)
@@ -231,7 +234,7 @@ public class SPBandwidthPredictor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.SPBandwidthPredictor
  * JD-Core Version:    0.7.0.1
  */

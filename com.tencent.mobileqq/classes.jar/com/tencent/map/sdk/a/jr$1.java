@@ -18,38 +18,37 @@ final class jr$1
     if (localContext != null)
     {
       long l = SystemClock.uptimeMillis();
-      if ((or.b != 0L) && (l - or.b >= 300L)) {
-        break label134;
-      }
-      or.b = l;
-      int i = or.c + 1;
-      or.c = i;
-      if ((i < 5) || (or.c >= 10)) {
-        break label108;
-      }
-      Toast.makeText(localContext, "开发者调试在" + (10 - or.c) + "次后开启", 0).show();
-    }
-    label134:
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label108:
-      if (or.c == 10)
+      if ((or.b != 0L) && (l - or.b >= 300L))
       {
-        or.a = true;
-        Toast.makeText(localContext, "开发者调试已开启", 0).show();
-        continue;
         or.c = 0;
         or.b = 0L;
         or.a = false;
       }
+      else
+      {
+        or.b = l;
+        int i = or.c + 1;
+        or.c = i;
+        if ((i >= 5) && (or.c < 10))
+        {
+          StringBuilder localStringBuilder = new StringBuilder("开发者调试在");
+          localStringBuilder.append(10 - or.c);
+          localStringBuilder.append("次后开启");
+          Toast.makeText(localContext, localStringBuilder.toString(), 0).show();
+        }
+        else if (or.c == 10)
+        {
+          or.a = true;
+          Toast.makeText(localContext, "开发者调试已开启", 0).show();
+        }
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.jr.1
  * JD-Core Version:    0.7.0.1
  */

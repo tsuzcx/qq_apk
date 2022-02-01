@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.IPicEmoticonInfo;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
 
@@ -37,8 +37,14 @@ public class ChatHistory$PlayingPttHistoryInfo
   
   public void a(int paramInt, View paramView, Object paramObject, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatHistory", 2, "playPtt() type = " + paramInt + ", isFinish = " + this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("playPtt() type = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", isFinish = ");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      QLog.i("ChatHistory", 2, localStringBuilder.toString());
     }
     if ((!this.jdField_a_of_type_Boolean) && (Utils.a(paramObject, this.jdField_a_of_type_JavaLangObject)))
     {
@@ -80,63 +86,59 @@ public class ChatHistory$PlayingPttHistoryInfo
   
   protected void b()
   {
-    Object localObject1 = null;
-    if (this.jdField_a_of_type_Int == 0) {
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        break label307;
-      }
-    }
-    label300:
-    label302:
-    label307:
-    for (localObject1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373606);; localObject1 = null)
+    int i = this.jdField_a_of_type_Int;
+    ImageView localImageView = null;
+    Object localObject1;
+    if (i == 0)
     {
+      localObject1 = this.jdField_a_of_type_AndroidViewView;
       if (localObject1 != null) {
-        if ((this.jdField_a_of_type_AndroidViewView.getTag() == null) || (!(this.jdField_a_of_type_AndroidViewView.getTag() instanceof ChatHistory.Holder))) {
-          break label302;
-        }
+        localObject1 = (Button)((View)localObject1).findViewById(2131373181);
+      } else {
+        localObject1 = null;
       }
-      for (boolean bool = ((ChatHistory.Holder)this.jdField_a_of_type_AndroidViewView.getTag()).jdField_a_of_type_Boolean;; bool = false)
+      if (localObject1 != null)
       {
+        boolean bool;
+        if ((this.jdField_a_of_type_AndroidViewView.getTag() != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof ChatHistory.Holder))) {
+          bool = ((ChatHistory.Holder)this.jdField_a_of_type_AndroidViewView.getTag()).jdField_a_of_type_Boolean;
+        } else {
+          bool = false;
+        }
         if (bool)
         {
           this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b.setBounds(0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b.getMinimumWidth(), this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b.getMinimumHeight());
           ((Button)localObject1).setCompoundDrawables(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b, null, null, null);
           this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b.stop();
           this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b.start();
+          return;
         }
-        for (;;)
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.setBounds(0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.getMinimumWidth(), this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.getMinimumHeight());
+        ((Button)localObject1).setCompoundDrawables(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a, null, null, null);
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.stop();
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.start();
+      }
+    }
+    else if (i == 1)
+    {
+      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      if (localObject1 != null)
+      {
+        localImageView = (ImageView)((View)localObject1).findViewById(2131377578);
+        localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368603);
+      }
+      else
+      {
+        localObject1 = null;
+      }
+      if ((localImageView != null) && (localObject1 != null))
+      {
+        Object localObject2 = localImageView.getTag();
+        if ((localObject2 instanceof IPicEmoticonInfo))
         {
-          return;
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.setBounds(0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.getMinimumWidth(), this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.getMinimumHeight());
-          ((Button)localObject1).setCompoundDrawables(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a, null, null, null);
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.stop();
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.start();
-          return;
-          if (this.jdField_a_of_type_Int == 1)
-          {
-            ImageView localImageView;
-            if (this.jdField_a_of_type_AndroidViewView != null)
-            {
-              localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378152);
-              localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368877);
-            }
-            for (;;)
-            {
-              if ((localImageView == null) || (localObject1 == null)) {
-                break label300;
-              }
-              Object localObject2 = localImageView.getTag();
-              if (!(localObject2 instanceof PicEmoticonInfo)) {
-                break;
-              }
-              localObject2 = (PicEmoticonInfo)localObject2;
-              this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(localImageView);
-              this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b((ImageView)localObject1, (PicEmoticonInfo)localObject2);
-              return;
-              localImageView = null;
-            }
-          }
+          localObject2 = (IPicEmoticonInfo)localObject2;
+          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(localImageView);
+          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b((ImageView)localObject1, (IPicEmoticonInfo)localObject2);
         }
       }
     }
@@ -144,63 +146,61 @@ public class ChatHistory$PlayingPttHistoryInfo
   
   protected void c()
   {
-    Object localObject1 = null;
-    if (this.jdField_a_of_type_Int == 0) {
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        break label282;
-      }
-    }
-    label275:
-    label277:
-    label282:
-    for (localObject1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373606);; localObject1 = null)
+    int i = this.jdField_a_of_type_Int;
+    Object localObject2 = null;
+    Object localObject1;
+    if (i == 0)
     {
-      if ((localObject1 != null) && (((Button)localObject1).getTag().equals(this.jdField_a_of_type_JavaLangObject))) {
-        if ((this.jdField_a_of_type_AndroidViewView.getTag() == null) || (!(this.jdField_a_of_type_AndroidViewView.getTag() instanceof ChatHistory.Holder))) {
-          break label277;
-        }
+      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      if (localObject1 != null) {
+        localObject1 = (Button)((View)localObject1).findViewById(2131373181);
+      } else {
+        localObject1 = null;
       }
-      for (boolean bool = ((ChatHistory.Holder)this.jdField_a_of_type_AndroidViewView.getTag()).jdField_a_of_type_Boolean;; bool = false)
+      if ((localObject1 != null) && (((Button)localObject1).getTag().equals(this.jdField_a_of_type_JavaLangObject)))
       {
-        Object localObject2;
+        boolean bool;
+        if ((this.jdField_a_of_type_AndroidViewView.getTag() != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof ChatHistory.Holder))) {
+          bool = ((ChatHistory.Holder)this.jdField_a_of_type_AndroidViewView.getTag()).jdField_a_of_type_Boolean;
+        } else {
+          bool = false;
+        }
         if (bool)
         {
           this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b.stop();
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getResources().getDrawable(2130850383);
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getResources().getDrawable(2130850310);
           ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getMinimumWidth(), ((Drawable)localObject2).getMinimumHeight());
-          ((Button)localObject1).setCompoundDrawables((Drawable)localObject2, null, null, null);
         }
-        for (;;)
+        else
         {
-          return;
           this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.stop();
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getResources().getDrawable(2130850382);
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getResources().getDrawable(2130850309);
           ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getMinimumWidth(), ((Drawable)localObject2).getMinimumHeight());
-          break;
-          if (this.jdField_a_of_type_Int == 1)
-          {
-            if (this.jdField_a_of_type_AndroidViewView != null)
-            {
-              localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378152);
-              localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368877);
-            }
-            for (;;)
-            {
-              if ((localObject2 == null) || (localObject1 == null)) {
-                break label275;
-              }
-              Object localObject3 = ((ImageView)localObject2).getTag();
-              if (!(localObject3 instanceof PicEmoticonInfo)) {
-                break;
-              }
-              localObject3 = (PicEmoticonInfo)localObject3;
-              ((PicEmoticonInfo)localObject3).getLoadingDrawable("fromAIO", true);
-              this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b((ImageView)localObject2);
-              this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a((ImageView)localObject1, (PicEmoticonInfo)localObject3);
-              return;
-              localObject2 = null;
-            }
-          }
+        }
+        ((Button)localObject1).setCompoundDrawables((Drawable)localObject2, null, null, null);
+      }
+    }
+    else if (i == 1)
+    {
+      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      if (localObject1 != null)
+      {
+        localObject2 = (ImageView)((View)localObject1).findViewById(2131377578);
+        localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368603);
+      }
+      else
+      {
+        localObject1 = null;
+      }
+      if ((localObject2 != null) && (localObject1 != null))
+      {
+        Object localObject3 = ((ImageView)localObject2).getTag();
+        if ((localObject3 instanceof IPicEmoticonInfo))
+        {
+          localObject3 = (IPicEmoticonInfo)localObject3;
+          ((IPicEmoticonInfo)localObject3).getLoadingDrawable("fromAIO", true);
+          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b((ImageView)localObject2);
+          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a((ImageView)localObject1, (IPicEmoticonInfo)localObject3);
         }
       }
     }
@@ -220,13 +220,19 @@ public class ChatHistory$PlayingPttHistoryInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[type = ").append(this.jdField_a_of_type_Int).append(", curTag = ").append(this.jdField_a_of_type_JavaLangObject).append(", isFinish = ").append(this.jdField_a_of_type_Boolean).append("]");
+    localStringBuilder.append("[type = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", curTag = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
+    localStringBuilder.append(", isFinish = ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,40 +13,76 @@ class PublicAccountJavascriptInterfaceImpl$12
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      String str2 = localJSONObject.optString("callid");
-      String str1 = str2;
-      if (!TextUtils.isEmpty(str2)) {
-        str1 = str2.replace("\\", "\\\\").replace("'", "\\'");
+      localObject3 = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      localObject2 = ((JSONObject)localObject3).optString("callid");
+      boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+      localObject1 = localObject2;
+      if (!bool) {
+        localObject1 = ((String)localObject2).replace("\\", "\\\\").replace("'", "\\'");
       }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("callid", str1);
-      str1 = localJSONObject.optString("url");
-      if (!TextUtils.isEmpty(str1))
+      this.jdField_a_of_type_OrgJsonJSONObject.put("callid", localObject1);
+      localObject1 = ((JSONObject)localObject3).optString("url");
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        this.this$0.callJs(this.b, new String[] { "{ret:1, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
-        str1 = PublicAccountJavascriptInterfaceImpl.access$500(str1);
-        if (str1 != null)
+        localObject2 = this.this$0;
+        localObject3 = this.b;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("{ret:1, response:");
+        localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+        localStringBuilder.append("}");
+        ((PublicAccountJavascriptInterfaceImpl)localObject2).callJs((String)localObject3, new String[] { localStringBuilder.toString() });
+        localObject1 = PublicAccountJavascriptInterfaceImpl.access$500((String)localObject1);
+        if (localObject1 != null)
         {
-          str1 = str1.replace("\\", "\\\\").replace("'", "\\'");
-          this.jdField_a_of_type_OrgJsonJSONObject.put("data", str1);
-          this.this$0.callJs(this.b, new String[] { "{ret:0, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+          localObject1 = ((String)localObject1).replace("\\", "\\\\").replace("'", "\\'");
+          this.jdField_a_of_type_OrgJsonJSONObject.put("data", localObject1);
+          localObject1 = this.this$0;
+          localObject2 = this.b;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("{ret:0, response:");
+          ((StringBuilder)localObject3).append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+          ((StringBuilder)localObject3).append("}");
+          ((PublicAccountJavascriptInterfaceImpl)localObject1).callJs((String)localObject2, new String[] { ((StringBuilder)localObject3).toString() });
           return;
         }
-        this.this$0.callJs(this.b, new String[] { "{ret:-10, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+        localObject1 = this.this$0;
+        localObject2 = this.b;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("{ret:-10, response:");
+        ((StringBuilder)localObject3).append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+        ((StringBuilder)localObject3).append("}");
+        ((PublicAccountJavascriptInterfaceImpl)localObject1).callJs((String)localObject2, new String[] { ((StringBuilder)localObject3).toString() });
         return;
       }
+      localObject1 = this.this$0;
+      localObject2 = this.b;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("{ret:-4, response:");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+      ((StringBuilder)localObject3).append("}");
+      ((PublicAccountJavascriptInterfaceImpl)localObject1).callJs((String)localObject2, new String[] { ((StringBuilder)localObject3).toString() });
+      return;
     }
     catch (JSONException localJSONException)
     {
-      this.this$0.callJs(this.b, new String[] { "{ret:-2, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
-      return;
+      Object localObject3;
+      Object localObject2;
+      Object localObject1;
+      label375:
+      break label375;
     }
-    this.this$0.callJs(this.b, new String[] { "{ret:-4, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+    localObject1 = this.this$0;
+    localObject2 = this.b;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("{ret:-2, response:");
+    ((StringBuilder)localObject3).append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+    ((StringBuilder)localObject3).append("}");
+    ((PublicAccountJavascriptInterfaceImpl)localObject1).callJs((String)localObject2, new String[] { ((StringBuilder)localObject3).toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountJavascriptInterfaceImpl.12
  * JD-Core Version:    0.7.0.1
  */

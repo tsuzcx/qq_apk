@@ -27,8 +27,12 @@ class ConversationHongBaoV2$18
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("2021_UI_ConversationHongBaoV2", 2, "showNormalActivityPendant onPendentClick jumpUrl = " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("showNormalActivityPendant onPendentClick jumpUrl = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("2021_UI_ConversationHongBaoV2", 2, ((StringBuilder)localObject1).toString());
     }
     if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.a())
     {
@@ -36,50 +40,55 @@ class ConversationHongBaoV2$18
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryITaskManager.a();
       ((UserData)localObject1).hasClickedHolder = true;
       this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryITaskManager.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("2021_UI_ConversationHongBaoV2", 2, "  点击后 [showNormalActivityPendant] userData.hasClickedHolder =  " + ((UserData)localObject1).hasClickedHolder);
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.f(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.e());
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.pendantData;
-    Object localObject2;
-    if ((localObject1 != null) && (((PendantData)localObject1).clickType == 2) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      if ((!this.jdField_a_of_type_JavaLangString.startsWith("http")) && (!this.jdField_a_of_type_JavaLangString.startsWith("https"))) {
-        break label257;
-      }
-      localObject2 = new Intent(ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", this.jdField_a_of_type_JavaLangString);
-      ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2).startActivity((Intent)localObject2);
-    }
-    for (;;)
-    {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a.a();
-      if ((localObject1 != null) && (((PendantData)localObject1).clickType == 1) && (localObject2 != null)) {
-        ((MiniAppPullInterface)localObject2).showMicroAppEntry();
-      }
-      return;
-      label257:
-      if ((ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2) instanceof BaseActivity))
+      if (QLog.isColorLevel())
       {
-        localObject2 = JumpParser.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a.a, ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), this.jdField_a_of_type_JavaLangString);
-        if (localObject2 != null) {
-          ((JumpAction)localObject2).a();
-        } else {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("  点击后 [showNormalActivityPendant] userData.hasClickedHolder =  ");
+        ((StringBuilder)localObject2).append(((UserData)localObject1).hasClickedHolder);
+        QLog.d("2021_UI_ConversationHongBaoV2", 2, ((StringBuilder)localObject2).toString());
+      }
+    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2;
+    ((ConversationHongBaoV2)localObject1).f(((ConversationHongBaoV2)localObject1).e());
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.pendantData;
+    if ((localObject1 != null) && (((PendantData)localObject1).clickType == 2) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      if ((!this.jdField_a_of_type_JavaLangString.startsWith("http")) && (!this.jdField_a_of_type_JavaLangString.startsWith("https")))
+      {
+        if ((ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2) instanceof BaseActivity))
+        {
+          localObject2 = JumpParser.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a.a, ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), this.jdField_a_of_type_JavaLangString);
+          if (localObject2 != null) {
+            ((JumpAction)localObject2).a();
+          } else {
+            ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2).startActivity(new Intent(ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), JumpActivity.class).setData(Uri.parse(this.jdField_a_of_type_JavaLangString)));
+          }
+        }
+        else
+        {
           ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2).startActivity(new Intent(ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), JumpActivity.class).setData(Uri.parse(this.jdField_a_of_type_JavaLangString)));
         }
       }
       else
       {
-        ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2).startActivity(new Intent(ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), JumpActivity.class).setData(Uri.parse(this.jdField_a_of_type_JavaLangString)));
+        localObject2 = new Intent(ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), QQBrowserActivity.class);
+        ((Intent)localObject2).putExtra("url", this.jdField_a_of_type_JavaLangString);
+        ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2).startActivity((Intent)localObject2);
       }
+    }
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a.a();
+    if ((localObject1 != null) && (((PendantData)localObject1).clickType == 1) && (localObject2 != null)) {
+      ((MiniAppPullInterface)localObject2).showMicroAppEntry();
     }
   }
   
   public void b(float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("2021_UI_ConversationHongBaoV2", 2, "showNormalActivityPendant onPendentCloseBtnClick fCloseType = " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showNormalActivityPendant onPendentCloseBtnClick fCloseType = ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d("2021_UI_ConversationHongBaoV2", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.g(false);
     if (this.jdField_a_of_type_Int == 1)
@@ -92,7 +101,7 @@ class ConversationHongBaoV2$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.18
  * JD-Core Version:    0.7.0.1
  */

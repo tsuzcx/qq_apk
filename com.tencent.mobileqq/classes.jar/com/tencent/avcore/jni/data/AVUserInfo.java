@@ -13,12 +13,25 @@ public class AVUserInfo
   
   public String toString()
   {
-    return "AVUserInfo{account=" + this.account + ", openId=[" + this.openId + ']' + ", accountType=" + this.accountType + ", pstnStatus=" + this.pstnStatus + ", micAuthByAdmin=" + this.micAuthByAdmin + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AVUserInfo{account=");
+    localStringBuilder.append(this.account);
+    localStringBuilder.append(", openId=[");
+    localStringBuilder.append(this.openId);
+    localStringBuilder.append(']');
+    localStringBuilder.append(", accountType=");
+    localStringBuilder.append(this.accountType);
+    localStringBuilder.append(", pstnStatus=");
+    localStringBuilder.append(this.pstnStatus);
+    localStringBuilder.append(", micAuthByAdmin=");
+    localStringBuilder.append(this.micAuthByAdmin);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.jni.data.AVUserInfo
  * JD-Core Version:    0.7.0.1
  */

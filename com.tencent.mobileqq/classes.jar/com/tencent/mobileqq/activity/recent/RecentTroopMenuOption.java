@@ -26,12 +26,12 @@ public class RecentTroopMenuOption
     TroopAssistantManager.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
     String str = paramRecentBaseData.getRecentUserUin();
-    if (paramBoolean) {}
-    for (paramRecentBaseData = "1";; paramRecentBaseData = "0")
-    {
-      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_top_right", 0, 0, str, "4", paramRecentBaseData, "");
-      return;
+    if (paramBoolean) {
+      paramRecentBaseData = "1";
+    } else {
+      paramRecentBaseData = "0";
     }
+    ReportController.b(localQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_top_right", 0, 0, str, "4", paramRecentBaseData, "");
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -41,7 +41,7 @@ public class RecentTroopMenuOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentTroopMenuOption
  * JD-Core Version:    0.7.0.1
  */

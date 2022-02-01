@@ -8,20 +8,23 @@ final class QQText$1
 {
   public Spannable newSpannable(CharSequence paramCharSequence)
   {
-    if ((paramCharSequence instanceof QQText)) {
-      try
-      {
-        QQText localQQText = (QQText)((QQText)paramCharSequence).clone();
-        return localQQText;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    if ((paramCharSequence instanceof QQText)) {}
+    try
+    {
+      QQText localQQText = (QQText)((QQText)paramCharSequence).clone();
+      return localQQText;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label20:
+      break label20;
     }
     return super.newSpannable(paramCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQText.1
  * JD-Core Version:    0.7.0.1
  */

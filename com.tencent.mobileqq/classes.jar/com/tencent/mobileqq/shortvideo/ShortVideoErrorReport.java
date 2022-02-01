@@ -12,8 +12,14 @@ public class ShortVideoErrorReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
     localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("waite", "" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    localHashMap.put("SDK_INT", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt);
+    localHashMap.put("waite", localStringBuilder.toString());
     StatisticCollector.getInstance(VideoEnvironment.getContext()).collectPerformance(null, "sv_waite_record_count", true, 0L, 0L, localHashMap, "");
   }
   
@@ -27,9 +33,18 @@ public class ShortVideoErrorReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
     localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("type", "" + paramInt1);
-    localHashMap.put("error", "" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    localHashMap.put("SDK_INT", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt1);
+    localHashMap.put("type", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt2);
+    localHashMap.put("error", localStringBuilder.toString());
     StatisticCollector.getInstance(VideoEnvironment.getContext()).collectPerformance(null, paramString, true, 0L, 0L, localHashMap, "");
   }
   
@@ -40,7 +55,7 @@ public class ShortVideoErrorReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoErrorReport
  * JD-Core Version:    0.7.0.1
  */

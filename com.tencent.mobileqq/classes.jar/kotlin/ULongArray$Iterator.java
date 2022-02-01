@@ -23,19 +23,19 @@ final class ULongArray$Iterator
   
   public long nextULong()
   {
-    if (this.index < this.array.length)
+    int i = this.index;
+    long[] arrayOfLong = this.array;
+    if (i < arrayOfLong.length)
     {
-      long[] arrayOfLong = this.array;
-      int i = this.index;
       this.index = (i + 1);
       return ULong.constructor-impl(arrayOfLong[i]);
     }
-    throw ((Throwable)new NoSuchElementException(String.valueOf(this.index)));
+    throw ((Throwable)new NoSuchElementException(String.valueOf(i)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ULongArray.Iterator
  * JD-Core Version:    0.7.0.1
  */

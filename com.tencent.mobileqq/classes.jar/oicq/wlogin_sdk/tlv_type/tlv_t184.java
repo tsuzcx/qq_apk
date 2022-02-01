@@ -24,8 +24,7 @@ public class tlv_t184
     int i = paramString.length;
     byte[] arrayOfByte = new byte[i + 8];
     System.arraycopy(paramString, 0, arrayOfByte, 0, i);
-    i = 0 + i;
-    util.int64_to_buf(arrayOfByte, i, paramLong);
+    util.int64_to_buf(arrayOfByte, i + 0, paramLong);
     paramString = MD5.toMD5Byte(arrayOfByte);
     fill_head(this._cmd);
     fill_body(paramString, paramString.length);
@@ -45,7 +44,7 @@ public class tlv_t184
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t184
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,14 @@ public class OpenSdkFakeMsgProcessor
   public static boolean a()
   {
     OpenSdkFakeMsgBean localOpenSdkFakeMsgBean = (OpenSdkFakeMsgBean)QConfigManager.a().a(632);
-    if (localOpenSdkFakeMsgBean != null) {}
-    for (boolean bool = localOpenSdkFakeMsgBean.a();; bool = false)
-    {
-      QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "isEnableFakeMsg = ", Boolean.valueOf(bool) });
-      return bool;
+    boolean bool;
+    if (localOpenSdkFakeMsgBean != null) {
+      bool = localOpenSdkFakeMsgBean.a();
+    } else {
+      bool = false;
     }
+    QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "isEnableFakeMsg = ", Boolean.valueOf(bool) });
+    return bool;
   }
   
   @NonNull
@@ -31,24 +33,26 @@ public class OpenSdkFakeMsgProcessor
   public OpenSdkFakeMsgBean a(QConfItem[] paramArrayOfQConfItem)
   {
     int i = 0;
-    if (paramArrayOfQConfItem == null) {}
-    for (;;)
+    if (paramArrayOfQConfItem != null) {
+      i = paramArrayOfQConfItem.length;
+    }
+    QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
-      if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-        break;
-      }
       new OpenSdkFakeMsgBean();
       return OpenSdkFakeMsgBean.a(paramArrayOfQConfItem);
-      i = paramArrayOfQConfItem.length;
     }
     return null;
   }
   
   public void a(OpenSdkFakeMsgBean paramOpenSdkFakeMsgBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 2, "onUpdate " + paramOpenSdkFakeMsgBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramOpenSdkFakeMsgBean.toString());
+      QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -86,7 +90,7 @@ public class OpenSdkFakeMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkFakeMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

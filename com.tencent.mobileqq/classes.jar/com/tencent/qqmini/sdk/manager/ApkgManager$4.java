@@ -14,7 +14,6 @@ class ApkgManager$4
   
   public void run()
   {
-    int i = 0;
     try
     {
       if ((this.val$miniAppInfo != null) && (!TextUtils.isEmpty(this.val$curPath)))
@@ -26,13 +25,20 @@ class ApkgManager$4
         {
           localObject = ((File)localObject).list();
           int j = localObject.length;
+          int i = 0;
           while (i < j)
           {
             CharSequence localCharSequence = localObject[i];
             if ((!TextUtils.isEmpty(localCharSequence)) && (localCharSequence.startsWith(str2)) && (!this.val$curPath.contains(localCharSequence)))
             {
-              QMLog.d("ApkgManager", "delete pkg : " + localCharSequence);
-              FileUtils.delete(str1 + localCharSequence, false);
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("delete pkg : ");
+              localStringBuilder.append(localCharSequence);
+              QMLog.d("ApkgManager", localStringBuilder.toString());
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(str1);
+              localStringBuilder.append(localCharSequence);
+              FileUtils.delete(localStringBuilder.toString(), false);
             }
             i += 1;
           }
@@ -48,7 +54,7 @@ class ApkgManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.ApkgManager.4
  * JD-Core Version:    0.7.0.1
  */

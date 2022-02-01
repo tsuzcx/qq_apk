@@ -26,25 +26,26 @@ public abstract class BaseSttPushReceiver
       localSttPushPacket.jdField_a_of_type_JavaNioByteBuffer.position(0);
       localSttPushPacket.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte);
       localSttPushPacket.b = paramInt2;
+      return localSttPushPacket;
     }
-    do
+    long l1 = localSttPushPacket.jdField_a_of_type_Long;
+    long l2 = paramInt4;
+    if (0L == (l1 & l2))
     {
-      do
-      {
-        return localSttPushPacket;
-      } while (0L != (localSttPushPacket.jdField_a_of_type_Long & paramInt4));
       localSttPushPacket.jdField_a_of_type_JavaNioByteBuffer.position(paramInt1);
       localSttPushPacket.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte);
       localSttPushPacket.b += paramInt2;
-      localSttPushPacket.jdField_a_of_type_Long |= paramInt4;
-    } while (localSttPushPacket.b < paramInt3);
-    localSttPushPacket.jdField_a_of_type_Boolean = true;
+      localSttPushPacket.jdField_a_of_type_Long |= l2;
+      if (localSttPushPacket.b >= paramInt3) {
+        localSttPushPacket.jdField_a_of_type_Boolean = true;
+      }
+    }
     return localSttPushPacket;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.stt.shard.BaseSttPushReceiver
  * JD-Core Version:    0.7.0.1
  */

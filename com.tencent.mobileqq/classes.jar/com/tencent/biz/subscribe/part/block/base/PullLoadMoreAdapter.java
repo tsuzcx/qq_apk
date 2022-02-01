@@ -31,7 +31,7 @@ public abstract class PullLoadMoreAdapter<E>
 {
   private static String jdField_g_of_type_JavaLangString = "PullLoadMoreAdapter";
   protected final Handler a;
-  public RecyclerView.LayoutManager a;
+  protected RecyclerView.LayoutManager a;
   private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
   protected RecyclerView a;
   private View jdField_a_of_type_AndroidViewView;
@@ -53,16 +53,16 @@ public abstract class PullLoadMoreAdapter<E>
   public PullLoadMoreAdapter()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702322);
-    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702396);
-    this.jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131702395);
-    this.jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131697952);
-    this.jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131708844);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702454);
+    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702528);
+    this.jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131702527);
+    this.jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131697959);
+    this.jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131708850);
     this.jdField_f_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
     this.jdField_c_of_type_Boolean = true;
   }
   
-  public int a(int paramInt)
+  protected int a(int paramInt)
   {
     int i = paramInt;
     if (this.jdField_b_of_type_Boolean) {
@@ -92,61 +92,47 @@ public abstract class PullLoadMoreAdapter<E>
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool;
-    label62:
-    int i;
     if (d())
     {
       this.jdField_e_of_type_Boolean = false;
       this.jdField_a_of_type_Boolean = paramBoolean2;
       this.jdField_d_of_type_Boolean = paramBoolean1;
-      if (!paramBoolean2) {
-        break label173;
+      String str;
+      if (paramBoolean2) {
+        str = this.jdField_d_of_type_JavaLangString;
+      } else {
+        str = "";
       }
-      str = this.jdField_d_of_type_JavaLangString;
       this.jdField_f_of_type_JavaLangString = str;
+      boolean bool;
       if ((StringUtil.a(this.jdField_f_of_type_JavaLangString)) && ((!paramBoolean2) || (this.jdField_a_of_type_AndroidViewView == null))) {
-        break label180;
+        bool = false;
+      } else {
+        bool = true;
       }
-      bool = true;
       this.jdField_f_of_type_Boolean = bool;
       if (!paramBoolean1)
       {
-        if (NetworkUtils.isNetworkAvailable(BaseApplication.getContext())) {
-          break label186;
+        if ((NetworkUtils.isNetworkAvailable(BaseApplication.getContext()) ^ true)) {
+          str = this.jdField_c_of_type_JavaLangString;
+        } else {
+          str = this.jdField_b_of_type_JavaLangString;
         }
-        i = 1;
-        label83:
-        if (i == 0) {
-          break label191;
-        }
+        this.jdField_f_of_type_JavaLangString = str;
+        this.jdField_f_of_type_Boolean = this.jdField_g_of_type_Boolean;
       }
-    }
-    label173:
-    label180:
-    label186:
-    label191:
-    for (String str = this.jdField_c_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
-    {
-      this.jdField_f_of_type_JavaLangString = str;
-      this.jdField_f_of_type_Boolean = this.jdField_g_of_type_Boolean;
       ThreadManager.getUIHandler().post(new PullLoadMoreAdapter.1(this));
       QLog.i(jdField_g_of_type_JavaLangString, 1, String.format("onLoadMoreCompleted: hashCode:%d ,isSuccess:%b, isFinish:%b, isShow:%b", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.jdField_f_of_type_Boolean) }));
-      return;
-      str = "";
-      break;
-      bool = false;
-      break label62;
-      i = 0;
-      break label83;
     }
   }
   
   public int b()
   {
-    int i = 0;
+    int i;
     if (this.jdField_b_of_type_Boolean) {
       i = 1;
+    } else {
+      i = 0;
     }
     int j = i;
     if (this.jdField_c_of_type_Boolean) {
@@ -180,44 +166,40 @@ public abstract class PullLoadMoreAdapter<E>
           PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(8);
         }
         QLog.i(jdField_g_of_type_JavaLangString, 1, "onBindProgressViewHolder hideLoadingFooter");
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    boolean bool;
-    ProgressBar localProgressBar;
-    if ((this.jdField_e_of_type_Boolean) && (getItemCount() > c()))
-    {
-      bool = true;
+      boolean bool;
+      if ((this.jdField_e_of_type_Boolean) && (getItemCount() > c())) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setIndeterminate(bool);
-      localProgressBar = PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder);
-      if (!bool) {
-        break label146;
+      Object localObject = PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder);
+      if (bool) {
+        paramInt = 0;
+      } else {
+        paramInt = 8;
       }
-    }
-    label146:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      localProgressBar.setVisibility(paramInt);
-      if ((this.jdField_a_of_type_AndroidViewView == null) || (!this.jdField_a_of_type_Boolean)) {
-        break label152;
+      ((ProgressBar)localObject).setVisibility(paramInt);
+      if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
+      {
+        PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(8);
+        PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(0);
+        QLog.i(jdField_g_of_type_JavaLangString, 1, "onBindProgressViewHolder show CustomNoMoreDataView");
+        return;
       }
-      PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(8);
       PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(0);
-      QLog.i(jdField_g_of_type_JavaLangString, 1, "onBindProgressViewHolder show CustomNoMoreDataView");
-      return;
-      bool = false;
-      break;
+      PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setText(this.jdField_f_of_type_JavaLangString);
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(8);
+      }
+      paramViewHolder = jdField_g_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onBindProgressViewHolder show progress text:");
+      ((StringBuilder)localObject).append(this.jdField_f_of_type_JavaLangString);
+      QLog.i(paramViewHolder, 1, ((StringBuilder)localObject).toString());
     }
-    label152:
-    PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(0);
-    PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setText(this.jdField_f_of_type_JavaLangString);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(8);
-    }
-    QLog.i(jdField_g_of_type_JavaLangString, 1, "onBindProgressViewHolder show progress text:" + this.jdField_f_of_type_JavaLangString);
   }
   
   public void b(boolean paramBoolean)
@@ -241,7 +223,7 @@ public abstract class PullLoadMoreAdapter<E>
   
   protected RecyclerView.ViewHolder c(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = new PullLoadMoreAdapter.LoadMoreViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560843, paramViewGroup, false));
+    paramViewGroup = new PullLoadMoreAdapter.LoadMoreViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560717, paramViewGroup, false));
     if (this.jdField_a_of_type_AndroidViewView != null) {
       PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewGroup).addView(this.jdField_a_of_type_AndroidViewView);
     }
@@ -257,8 +239,9 @@ public abstract class PullLoadMoreAdapter<E>
   
   public boolean c()
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView != null) {
-      return this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView.b();
+    RefreshHeaderView localRefreshHeaderView = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView;
+    if (localRefreshHeaderView != null) {
+      return localRefreshHeaderView.b();
     }
     return false;
   }
@@ -283,54 +266,61 @@ public abstract class PullLoadMoreAdapter<E>
   
   protected void g()
   {
-    int j;
-    try
+    label188:
+    label193:
+    for (;;)
     {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager == null) {
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
-      }
-      if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof LinearLayoutManager))
+      int[] arrayOfInt;
+      try
       {
-        if (((LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).findLastVisibleItemPosition() < this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager.getItemCount() - 3) {
-          return;
+        if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager == null) {
+          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
         }
-        c();
-        return;
+        if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof LinearLayoutManager))
+        {
+          if (((LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).findLastVisibleItemPosition() >= this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager.getItemCount() - 3) {
+            c();
+          }
+        }
+        else if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof StaggeredGridLayoutManager))
+        {
+          StaggeredGridLayoutManager localStaggeredGridLayoutManager = (StaggeredGridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager;
+          int j = localStaggeredGridLayoutManager.getColumnCountForAccessibility(null, null);
+          if (j == 1)
+          {
+            arrayOfInt = new int[1];
+            localStaggeredGridLayoutManager.findLastVisibleItemPositions(arrayOfInt);
+            if (arrayOfInt[0] >= localStaggeredGridLayoutManager.getItemCount() - 3) {
+              c();
+            }
+          }
+          else
+          {
+            arrayOfInt = new int[j];
+            localStaggeredGridLayoutManager.findLastVisibleItemPositions(arrayOfInt);
+            i = arrayOfInt[(j - 1)];
+            if (arrayOfInt.length == 2)
+            {
+              if (arrayOfInt[1] < arrayOfInt[0]) {
+                break label188;
+              }
+              i = arrayOfInt[1];
+              break label193;
+            }
+            if (i >= localStaggeredGridLayoutManager.getItemCount() - b() - j * 3)
+            {
+              c();
+              return;
+            }
+          }
+        }
       }
-      if (!(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof StaggeredGridLayoutManager)) {
-        return;
-      }
-      StaggeredGridLayoutManager localStaggeredGridLayoutManager = (StaggeredGridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager;
-      j = localStaggeredGridLayoutManager.getColumnCountForAccessibility(null, null);
-      if (j == 1)
+      catch (Exception localException)
       {
-        arrayOfInt = new int[1];
-        localStaggeredGridLayoutManager.findLastVisibleItemPositions(arrayOfInt);
-        if (arrayOfInt[0] < localStaggeredGridLayoutManager.getItemCount() - 3) {
-          return;
-        }
-        c();
-        return;
+        localException.printStackTrace();
       }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
       return;
-    }
-    int[] arrayOfInt = new int[j];
-    localException.findLastVisibleItemPositions(arrayOfInt);
-    int i = arrayOfInt[(j - 1)];
-    if (arrayOfInt.length == 2) {
-      if (arrayOfInt[1] < arrayOfInt[0]) {
-        break label185;
-      }
-    }
-    label185:
-    for (i = arrayOfInt[1]; i >= localException.getItemCount() - b() - 3 * j; i = arrayOfInt[0])
-    {
-      c();
-      return;
+      int i = arrayOfInt[0];
     }
   }
   
@@ -360,17 +350,14 @@ public abstract class PullLoadMoreAdapter<E>
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if ((paramViewHolder == null) || (paramInt >= getItemCount()) || ((this.jdField_b_of_type_Boolean) && (paramInt == 0))) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
+    if ((paramViewHolder != null) && (paramInt < getItemCount()) && ((!this.jdField_b_of_type_Boolean) || (paramInt != 0))) {
       if (-99999 == getItemViewType(paramInt)) {
         b(paramViewHolder, paramInt);
       } else {
         a(paramViewHolder, a(paramInt));
       }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -389,15 +376,16 @@ public abstract class PullLoadMoreAdapter<E>
   public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onDetachedFromRecyclerView(paramRecyclerView);
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView.d();
+    paramRecyclerView = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView;
+    if (paramRecyclerView != null) {
+      paramRecyclerView.d();
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.block.base.PullLoadMoreAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -31,26 +31,27 @@ public class StructMsgItemLayout7
   private StateListDrawable a(Resources paramResources, int paramInt, float[] paramArrayOfFloat)
   {
     GradientDrawable[] arrayOfGradientDrawable = new GradientDrawable[2];
-    int k = Color.red(paramInt);
+    int m = Color.red(paramInt);
     int i = Color.green(paramInt);
     int j = Color.blue(paramInt);
-    paramInt = k;
-    k = 0;
-    if (k < arrayOfGradientDrawable.length)
+    int k = 0;
+    paramInt = m;
+    while (k < arrayOfGradientDrawable.length)
     {
       arrayOfGradientDrawable[k] = new GradientDrawable();
       arrayOfGradientDrawable[k].setShape(0);
-      int m = paramInt - (k << 5);
+      int n = k << 5;
+      m = paramInt - n;
       paramInt = m;
       if (m < 0) {
         paramInt = 0;
       }
-      m = i - (k << 5);
+      m = i - n;
       i = m;
       if (m < 0) {
         i = 0;
       }
-      m = j - (k << 5);
+      m = j - n;
       j = m;
       if (m < 0) {
         j = 0;
@@ -58,13 +59,10 @@ public class StructMsgItemLayout7
       arrayOfGradientDrawable[k].setColor(Color.rgb(paramInt, i, j));
       if (paramArrayOfFloat != null) {
         arrayOfGradientDrawable[k].setCornerRadii(paramArrayOfFloat);
+      } else {
+        arrayOfGradientDrawable[k].setCornerRadius(AIOUtils.b(14.0F, paramResources));
       }
-      for (;;)
-      {
-        k += 1;
-        break;
-        arrayOfGradientDrawable[k].setCornerRadius(AIOUtils.a(14.0F, paramResources));
-      }
+      k += 1;
     }
     paramResources = new StateListDrawable();
     paramArrayOfFloat = arrayOfGradientDrawable[1];
@@ -86,53 +84,59 @@ public class StructMsgItemLayout7
   @TargetApi(16)
   public void a(View paramView)
   {
-    int i;
-    Object localObject1;
     if (paramView != null)
     {
-      i = AIOUtils.a(14.0F, paramView.getResources());
-      Object localObject2 = null;
-      localObject1 = localObject2;
-      switch (a())
+      int i = AIOUtils.b(14.0F, paramView.getResources());
+      Object localObject = null;
+      int j = a();
+      if (j != 0)
       {
-      default: 
-        localObject1 = localObject2;
+        float f;
+        if (j != 1)
+        {
+          if (j == 2)
+          {
+            localObject = new float[8];
+            localObject[0] = 0.0F;
+            localObject[1] = 0.0F;
+            localObject[2] = 0.0F;
+            localObject[3] = 0.0F;
+            f = i;
+            localObject[4] = f;
+            localObject[5] = f;
+            localObject[6] = f;
+            localObject[7] = f;
+          }
+        }
+        else
+        {
+          localObject = new float[8];
+          f = i;
+          localObject[0] = f;
+          localObject[1] = f;
+          localObject[2] = f;
+          localObject[3] = f;
+          localObject[4] = 0.0F;
+          localObject[5] = 0.0F;
+          localObject[6] = 0.0F;
+          localObject[7] = 0.0F;
+        }
       }
-    }
-    for (;;)
-    {
-      localObject1 = a(paramView.getResources(), s, (float[])localObject1);
-      if (Build.VERSION.SDK_INT >= 16) {
-        break;
+      else
+      {
+        localObject = new float[8];
       }
-      paramView.setBackgroundDrawable((Drawable)localObject1);
-      return;
-      localObject1 = new float[8];
-      continue;
-      localObject1 = new float[8];
-      localObject1[0] = i;
-      localObject1[1] = i;
-      localObject1[2] = i;
-      localObject1[3] = i;
-      localObject1[4] = 0.0F;
-      localObject1[5] = 0.0F;
-      localObject1[6] = 0.0F;
-      localObject1[7] = 0.0F;
-      continue;
-      localObject1 = new float[8];
-      localObject1[0] = 0.0F;
-      localObject1[1] = 0.0F;
-      localObject1[2] = 0.0F;
-      localObject1[3] = 0.0F;
-      localObject1[4] = i;
-      localObject1[5] = i;
-      localObject1[6] = i;
-      localObject1[7] = i;
+      localObject = a(paramView.getResources(), s, (float[])localObject);
+      if (Build.VERSION.SDK_INT < 16)
+      {
+        paramView.setBackgroundDrawable((Drawable)localObject);
+        return;
+      }
+      paramView.setBackground((Drawable)localObject);
     }
-    paramView.setBackground((Drawable)localObject1);
   }
   
-  public int b()
+  protected int b()
   {
     return 7;
   }
@@ -140,136 +144,133 @@ public class StructMsgItemLayout7
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
     Resources localResources = paramContext.getResources();
-    LinearLayout localLinearLayout;
-    StructMsgItemLayout7.ViewHolder localViewHolder;
-    label148:
-    Object localObject1;
-    Object localObject2;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)) && (((LinearLayout)paramView).getChildCount() == 2) && ((((LinearLayout)paramView).getChildAt(0).getTag() instanceof StructMsgItemLayout7.ViewHolder)))
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-      localLinearLayout = (LinearLayout)paramView;
-      localViewHolder = (StructMsgItemLayout7.ViewHolder)localLinearLayout.getChildAt(0).getTag();
-      if (localViewHolder.jdField_a_of_type_AndroidViewView != null) {
-        localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-      if (localViewHolder.jdField_b_of_type_AndroidViewView != null) {
-        localViewHolder.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      }
-      if (localViewHolder.c != null) {
-        localViewHolder.c.setVisibility(8);
-      }
-      if (localViewHolder.d != null) {
-        localViewHolder.d.setVisibility(8);
-      }
-      paramView = null;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (!localIterator.hasNext()) {
-        break label707;
-      }
-      localObject1 = (AbsStructMsgElement)localIterator.next();
-      ((AbsStructMsgElement)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-      localObject2 = ((AbsStructMsgElement)localObject1).jdField_a_of_type_JavaLangString;
-      if (!"title".equals(localObject2)) {
-        break label447;
-      }
-      if ((localObject1 instanceof StructMsgItemTitle))
+      localObject2 = (LinearLayout)paramView;
+      if ((((LinearLayout)localObject2).getChildCount() == 2) && ((((LinearLayout)localObject2).getChildAt(0).getTag() instanceof StructMsgItemLayout7.ViewHolder)))
       {
-        ((StructMsgItemTitle)localObject1).a(a(), 0);
-        ((StructMsgItemTitle)localObject1).a(true);
-      }
-      localObject1 = ((AbsStructMsgElement)localObject1).a(paramContext, localViewHolder.jdField_a_of_type_AndroidViewView, paramBundle);
-      localObject2 = (TextView)((View)localObject1).findViewById(2131380651);
-      if (localObject2 != null) {
-        ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-      }
-      if (localViewHolder.jdField_a_of_type_AndroidViewView != null) {
-        break label435;
-      }
-      localViewHolder.jdField_a_of_type_AndroidViewView = ((View)localObject1);
-      localViewHolder.jdField_b_of_type_AndroidViewViewGroup.addView((View)localObject1);
-    }
-    for (;;)
-    {
-      break label148;
-      localViewHolder = new StructMsgItemLayout7.ViewHolder();
-      localViewHolder.jdField_b_of_type_AndroidViewViewGroup = new LinearLayout(paramContext);
-      ((LinearLayout)localViewHolder.jdField_b_of_type_AndroidViewViewGroup).setOrientation(1);
-      paramView = new LinearLayout.LayoutParams(0, -2);
-      paramView.weight = 1.0F;
-      paramView.gravity = 16;
-      paramView.setMargins(AIOUtils.a(15.0F, localResources), 0, 0, 0);
-      localViewHolder.jdField_a_of_type_AndroidViewViewGroup = new LinearLayout(paramContext);
-      localViewHolder.jdField_a_of_type_AndroidViewViewGroup.setTag(localViewHolder);
-      localViewHolder.jdField_a_of_type_AndroidViewViewGroup.addView(localViewHolder.jdField_b_of_type_AndroidViewViewGroup, paramView);
-      localLinearLayout = a(paramContext);
-      localLinearLayout.addView(localViewHolder.jdField_a_of_type_AndroidViewViewGroup, new LinearLayout.LayoutParams(-1, AIOUtils.a(75.0F, localResources)));
-      break;
-      label435:
-      localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      continue;
-      label447:
-      if ("summary".equals(localObject2))
-      {
-        localObject1 = ((AbsStructMsgElement)localObject1).a(paramContext, localViewHolder.jdField_b_of_type_AndroidViewView, paramBundle);
-        if (localViewHolder.jdField_b_of_type_AndroidViewView == null)
-        {
-          localViewHolder.jdField_b_of_type_AndroidViewView = ((View)localObject1);
-          localObject2 = new LinearLayout.LayoutParams(-2, -2);
-          ((LinearLayout.LayoutParams)localObject2).setMargins(0, AIOUtils.a(4.0F, localResources), 0, 0);
-          localViewHolder.jdField_b_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        localObject3 = (StructMsgItemLayout7.ViewHolder)((LinearLayout)localObject2).getChildAt(0).getTag();
+        if (((StructMsgItemLayout7.ViewHolder)localObject3).jdField_a_of_type_AndroidViewView != null) {
+          ((StructMsgItemLayout7.ViewHolder)localObject3).jdField_a_of_type_AndroidViewView.setVisibility(8);
         }
-        for (;;)
-        {
-          break;
-          localViewHolder.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        if (((StructMsgItemLayout7.ViewHolder)localObject3).jdField_b_of_type_AndroidViewView != null) {
+          ((StructMsgItemLayout7.ViewHolder)localObject3).jdField_b_of_type_AndroidViewView.setVisibility(8);
         }
-      }
-      if (("picture".equals(localObject2)) || ("video".equals(localObject2)))
-      {
-        int i = AIOUtils.a(50.0F, localResources);
-        localObject1 = ((AbsStructMsgElement)localObject1).a(paramContext, localViewHolder.c, paramBundle);
-        if (localViewHolder.c == null)
-        {
-          localViewHolder.c = ((View)localObject1);
-          localObject2 = new LinearLayout.LayoutParams(i, i);
-          i = AIOUtils.a(12.0F, localResources);
-          int j = AIOUtils.a(10.0F, localResources);
-          ((LinearLayout.LayoutParams)localObject2).setMargins(j, i, j, i);
-          ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-          localViewHolder.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        if (((StructMsgItemLayout7.ViewHolder)localObject3).c != null) {
+          ((StructMsgItemLayout7.ViewHolder)localObject3).c.setVisibility(8);
         }
-        for (;;)
-        {
-          break;
-          localViewHolder.c.setVisibility(0);
+        localObject1 = localObject2;
+        paramView = (View)localObject3;
+        if (((StructMsgItemLayout7.ViewHolder)localObject3).d == null) {
+          break label285;
         }
-      }
-      if ("remark".equals(localObject2))
-      {
-        paramView = ((AbsStructMsgElement)localObject1).a(paramContext, localViewHolder.d, paramBundle);
-        continue;
-        label707:
-        if (localViewHolder.jdField_b_of_type_AndroidViewView != null) {
-          localViewHolder.jdField_b_of_type_AndroidViewView.bringToFront();
-        }
-        if (paramView != null)
-        {
-          if (localViewHolder.d == null)
-          {
-            localViewHolder.d = paramView;
-            localLinearLayout.addView(paramView, new LinearLayout.LayoutParams(-1, AIOUtils.a(25.0F, localResources)));
-            float f = AIOUtils.a(14.0F, localResources);
-            paramView.setBackgroundDrawable(a(localResources, -1, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, f, f }));
-            paramView.setPadding(AIOUtils.a(12.0F, localResources), AIOUtils.a(5.0F, localResources), 0, 0);
-          }
-        }
-        else {
-          return localLinearLayout;
-        }
-        localViewHolder.d.setVisibility(0);
-        return localLinearLayout;
+        ((StructMsgItemLayout7.ViewHolder)localObject3).d.setVisibility(8);
+        localObject1 = localObject2;
+        paramView = (View)localObject3;
+        break label285;
       }
     }
+    paramView = new StructMsgItemLayout7.ViewHolder();
+    paramView.jdField_b_of_type_AndroidViewViewGroup = new LinearLayout(paramContext);
+    ((LinearLayout)paramView.jdField_b_of_type_AndroidViewViewGroup).setOrientation(1);
+    Object localObject1 = new LinearLayout.LayoutParams(0, -2);
+    ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
+    ((LinearLayout.LayoutParams)localObject1).gravity = 16;
+    ((LinearLayout.LayoutParams)localObject1).setMargins(AIOUtils.b(15.0F, localResources), 0, 0, 0);
+    paramView.jdField_a_of_type_AndroidViewViewGroup = new LinearLayout(paramContext);
+    paramView.jdField_a_of_type_AndroidViewViewGroup.setTag(paramView);
+    paramView.jdField_a_of_type_AndroidViewViewGroup.addView(paramView.jdField_b_of_type_AndroidViewViewGroup, (ViewGroup.LayoutParams)localObject1);
+    localObject1 = a(paramContext);
+    ((LinearLayout)localObject1).addView(paramView.jdField_a_of_type_AndroidViewViewGroup, new LinearLayout.LayoutParams(-1, AIOUtils.b(75.0F, localResources)));
+    label285:
+    Object localObject2 = null;
+    Object localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (((Iterator)localObject3).hasNext())
+    {
+      Object localObject4 = (AbsStructMsgElement)((Iterator)localObject3).next();
+      ((AbsStructMsgElement)localObject4).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject5 = ((AbsStructMsgElement)localObject4).jdField_a_of_type_JavaLangString;
+      if ("title".equals(localObject5))
+      {
+        if ((localObject4 instanceof StructMsgItemTitle))
+        {
+          localObject5 = (StructMsgItemTitle)localObject4;
+          ((StructMsgItemTitle)localObject5).a(a(), 0);
+          ((StructMsgItemTitle)localObject5).a(true);
+        }
+        localObject4 = ((AbsStructMsgElement)localObject4).a(paramContext, paramView.jdField_a_of_type_AndroidViewView, paramBundle);
+        localObject5 = (TextView)((View)localObject4).findViewById(2131379930);
+        if (localObject5 != null) {
+          ((TextView)localObject5).setEllipsize(TextUtils.TruncateAt.END);
+        }
+        if (paramView.jdField_a_of_type_AndroidViewView == null)
+        {
+          paramView.jdField_a_of_type_AndroidViewView = ((View)localObject4);
+          paramView.jdField_b_of_type_AndroidViewViewGroup.addView((View)localObject4);
+        }
+        else
+        {
+          paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        }
+      }
+      else if ("summary".equals(localObject5))
+      {
+        localObject4 = ((AbsStructMsgElement)localObject4).a(paramContext, paramView.jdField_b_of_type_AndroidViewView, paramBundle);
+        if (paramView.jdField_b_of_type_AndroidViewView == null)
+        {
+          paramView.jdField_b_of_type_AndroidViewView = ((View)localObject4);
+          localObject5 = new LinearLayout.LayoutParams(-2, -2);
+          ((LinearLayout.LayoutParams)localObject5).setMargins(0, AIOUtils.b(4.0F, localResources), 0, 0);
+          paramView.jdField_b_of_type_AndroidViewViewGroup.addView((View)localObject4, (ViewGroup.LayoutParams)localObject5);
+        }
+        else
+        {
+          paramView.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        }
+      }
+      else if ((!"picture".equals(localObject5)) && (!"video".equals(localObject5)))
+      {
+        if ("remark".equals(localObject5)) {
+          localObject2 = ((AbsStructMsgElement)localObject4).a(paramContext, paramView.d, paramBundle);
+        }
+      }
+      else
+      {
+        int i = AIOUtils.b(50.0F, localResources);
+        localObject4 = ((AbsStructMsgElement)localObject4).a(paramContext, paramView.c, paramBundle);
+        if (paramView.c == null)
+        {
+          paramView.c = ((View)localObject4);
+          localObject5 = new LinearLayout.LayoutParams(i, i);
+          i = AIOUtils.b(12.0F, localResources);
+          int j = AIOUtils.b(10.0F, localResources);
+          ((LinearLayout.LayoutParams)localObject5).setMargins(j, i, j, i);
+          ((LinearLayout.LayoutParams)localObject5).gravity = 16;
+          paramView.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject4, (ViewGroup.LayoutParams)localObject5);
+        }
+        else
+        {
+          paramView.c.setVisibility(0);
+        }
+      }
+    }
+    if (paramView.jdField_b_of_type_AndroidViewView != null) {
+      paramView.jdField_b_of_type_AndroidViewView.bringToFront();
+    }
+    if (localObject2 != null)
+    {
+      if (paramView.d == null)
+      {
+        paramView.d = ((View)localObject2);
+        ((LinearLayout)localObject1).addView((View)localObject2, new LinearLayout.LayoutParams(-1, AIOUtils.b(25.0F, localResources)));
+        float f = AIOUtils.b(14.0F, localResources);
+        ((View)localObject2).setBackgroundDrawable(a(localResources, -1, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, f, f }));
+        ((View)localObject2).setPadding(AIOUtils.b(12.0F, localResources), AIOUtils.b(5.0F, localResources), 0, 0);
+        return localObject1;
+      }
+      paramView.d.setVisibility(0);
+    }
+    return localObject1;
   }
   
   public String b()
@@ -279,7 +280,7 @@ public class StructMsgItemLayout7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout7
  * JD-Core Version:    0.7.0.1
  */

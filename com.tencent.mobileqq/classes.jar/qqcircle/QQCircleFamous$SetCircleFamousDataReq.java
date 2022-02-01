@@ -10,14 +10,20 @@ import feedcloud.FeedCloudCommon.StCommonExt;
 public final class QQCircleFamous$SetCircleFamousDataReq
   extends MessageMicro<SetCircleFamousDataReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "extInfo", "totalFuel", "uin" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0) }, SetCircleFamousDataReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
   public final PBInt32Field totalFuel = PBField.initInt32(0);
   public final PBUInt32Field uin = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "extInfo", "totalFuel", "uin" }, new Object[] { null, localInteger, localInteger }, SetCircleFamousDataReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleFamous.SetCircleFamousDataReq
  * JD-Core Version:    0.7.0.1
  */

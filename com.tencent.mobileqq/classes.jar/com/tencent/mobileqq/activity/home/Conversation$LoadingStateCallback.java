@@ -17,13 +17,13 @@ class Conversation$LoadingStateCallback
       this.a.a(1134013, 0L, false);
       return true;
     }
-    this.a.d(true);
+    this.a.e(true);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.LoadingStateCallback
  * JD-Core Version:    0.7.0.1
  */

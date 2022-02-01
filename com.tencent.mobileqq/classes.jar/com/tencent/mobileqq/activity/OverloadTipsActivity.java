@@ -23,35 +23,38 @@ public class OverloadTipsActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559628);
-    if ((getIntent() != null) && (getIntent().getExtras() != null)) {}
-    for (paramBundle = getIntent().getExtras().getString("msg");; paramBundle = null)
+    super.setContentView(2131559505);
+    if ((getIntent() != null) && (getIntent().getExtras() != null)) {
+      paramBundle = getIntent().getExtras().getString("msg");
+    } else {
+      paramBundle = null;
+    }
+    if (paramBundle == null)
     {
-      if (paramBundle == null)
-      {
-        finish();
-        return false;
-      }
-      if ((this.a != null) && (this.a.isShowing())) {
-        this.a.dismiss();
-      }
-      this.a = null;
-      this.a = DialogUtil.a(this, 230);
-      this.a.setContentView(2131559060);
-      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131694699, new OverloadTipsActivity.1(this));
-      this.a.setTextContentDescription(paramBundle);
-      this.a.setOnKeyListener(new OverloadTipsActivity.2(this));
-      this.a.show();
+      finish();
       return false;
     }
+    QQCustomDialog localQQCustomDialog = this.a;
+    if ((localQQCustomDialog != null) && (localQQCustomDialog.isShowing())) {
+      this.a.dismiss();
+    }
+    this.a = null;
+    this.a = DialogUtil.a(this, 230);
+    this.a.setContentView(2131558954);
+    this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131694674, new OverloadTipsActivity.1(this));
+    this.a.setTextContentDescription(paramBundle);
+    this.a.setOnKeyListener(new OverloadTipsActivity.2(this));
+    this.a.show();
+    return false;
   }
   
   public void finish()
   {
-    if ((this.a != null) && (this.a.isShowing())) {
+    QQCustomDialog localQQCustomDialog = this.a;
+    if ((localQQCustomDialog != null) && (localQQCustomDialog.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
@@ -69,7 +72,7 @@ public class OverloadTipsActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.OverloadTipsActivity
  * JD-Core Version:    0.7.0.1
  */

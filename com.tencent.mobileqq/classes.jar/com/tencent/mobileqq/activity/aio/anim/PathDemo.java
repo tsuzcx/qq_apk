@@ -14,16 +14,27 @@ public class PathDemo
   
   public int a(long paramLong, AnimationPath.Values paramValues)
   {
-    paramValues.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int + this.jdField_a_of_type_Float * (float)paramLong));
-    paramValues.jdField_b_of_type_Int = ((int)(this.jdField_b_of_type_Int + 0.8D * paramLong));
-    paramValues.f = ((float)((Math.sin((float)paramLong / 500.0F) + 1.0D) / 2.0D));
-    float f1 = (float)paramLong / 2.0F;
-    paramValues.jdField_b_of_type_Float = ((float)(f1 * Math.sin(this.jdField_a_of_type_Double)));
-    paramValues.c = ((float)(f1 * Math.cos(this.jdField_a_of_type_Double)));
-    if ((paramValues.jdField_a_of_type_Int < -this.c) || (paramValues.jdField_b_of_type_Int < -this.d) || (paramValues.jdField_a_of_type_Int > this.e + this.c) || (paramValues.jdField_b_of_type_Int > this.f + this.d)) {
-      return -1;
+    float f1 = this.jdField_a_of_type_Int;
+    float f2 = this.jdField_a_of_type_Float;
+    float f3 = (float)paramLong;
+    paramValues.jdField_a_of_type_Int = ((int)(f1 + f2 * f3));
+    double d1 = this.jdField_b_of_type_Int;
+    double d2 = paramLong;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    paramValues.jdField_b_of_type_Int = ((int)(d1 + d2 * 0.8D));
+    paramValues.f = ((float)((Math.sin(f3 / 500.0F) + 1.0D) / 2.0D));
+    d1 = f3 / 2.0F;
+    d2 = Math.sin(this.jdField_a_of_type_Double);
+    Double.isNaN(d1);
+    paramValues.jdField_b_of_type_Float = ((float)(d2 * d1));
+    d2 = Math.cos(this.jdField_a_of_type_Double);
+    Double.isNaN(d1);
+    paramValues.c = ((float)(d1 * d2));
+    if ((paramValues.jdField_a_of_type_Int >= -this.c) && (paramValues.jdField_b_of_type_Int >= -this.d) && (paramValues.jdField_a_of_type_Int <= this.e + this.c) && (paramValues.jdField_b_of_type_Int <= this.f + this.d)) {
+      return 16;
     }
-    return 16;
+    return -1;
   }
   
   public int a(AnimationPath.Values paramValues, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -48,7 +59,7 @@ public class PathDemo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.PathDemo
  * JD-Core Version:    0.7.0.1
  */

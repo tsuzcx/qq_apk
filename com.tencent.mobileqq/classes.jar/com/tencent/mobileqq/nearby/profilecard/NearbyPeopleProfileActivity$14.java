@@ -1,30 +1,51 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.app.HotChatObserver;
-import com.tencent.mobileqq.data.HotChatInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.qphone.base.util.QLog;
 
 class NearbyPeopleProfileActivity$14
-  extends HotChatObserver
+  extends FriendListObserver
 {
   NearbyPeopleProfileActivity$14(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDismissHotChat.isSuccess=" + paramBoolean + ",groupcode=" + paramString1 + ",result=" + paramInt + ",strError=" + paramString2);
-    }
-    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.a(this.a) != null) && (NearbyPeopleProfileActivity.a(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.a(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.a(this.a) != null))
+    if (paramBoolean)
     {
-      NearbyPeopleProfileActivity.a(this.a).strHotChatInfo = "";
-      NearbyPeopleProfileActivity.a(this.a).hotInfo = null;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      if ((this.a.mMode == 3) && (!this.a.isFriend) && (NearbyPeopleProfileActivity.access$300(this.a) != null))
+      {
+        if (!paramString.equals(NearbyPeopleProfileActivity.access$300(this.a).uin)) {
+          return;
+        }
+        this.a.checkIsFriend();
+      }
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (!paramBoolean2) {
+        return;
+      }
+      if ((this.a.mMode == 3) && (NearbyPeopleProfileActivity.access$300(this.a) != null))
+      {
+        if (TextUtils.isEmpty(NearbyPeopleProfileActivity.access$300(this.a).uin)) {
+          return;
+        }
+        this.a.checkIsFriend();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.14
  * JD-Core Version:    0.7.0.1
  */

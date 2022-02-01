@@ -21,10 +21,11 @@ class FrameFragment$2
   
   private void a(View paramView, ArrayList<View> paramArrayList)
   {
-    if ((paramView == null) || (!(paramView instanceof ViewGroup))) {}
-    for (;;)
+    if (paramView != null)
     {
-      return;
+      if (!(paramView instanceof ViewGroup)) {
+        return;
+      }
       paramView = (ViewGroup)paramView;
       if ((((paramView instanceof FPSXListView)) || ((paramView instanceof FPSSwipListView))) && (!paramArrayList.contains(paramView))) {
         paramArrayList.add(paramView);
@@ -73,7 +74,7 @@ class FrameFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameFragment.2
  * JD-Core Version:    0.7.0.1
  */

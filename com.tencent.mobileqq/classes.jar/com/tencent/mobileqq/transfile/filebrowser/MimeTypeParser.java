@@ -39,23 +39,17 @@ public class MimeTypeParser
   public MimeTypes parse()
   {
     this.mMimeTypes = new MimeTypes();
-    int i = this.mXpp.getEventType();
-    if (i != 1)
+    for (int i = this.mXpp.getEventType(); i != 1; i = this.mXpp.next())
     {
       String str = this.mXpp.getName();
-      if (i == 2) {
-        if (!str.equals("MimeTypes")) {}
-      }
-      for (;;)
+      if (i == 2)
       {
-        i = this.mXpp.next();
-        break;
-        if (str.equals("type"))
-        {
+        if ((!str.equals("MimeTypes")) && (str.equals("type"))) {
           addMimeTypeStart();
-          continue;
-          if ((i != 3) || (!str.equals("MimeTypes"))) {}
         }
+      }
+      else if (i == 3) {
+        str.equals("MimeTypes");
       }
     }
     return this.mMimeTypes;
@@ -63,7 +57,7 @@ public class MimeTypeParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.filebrowser.MimeTypeParser
  * JD-Core Version:    0.7.0.1
  */

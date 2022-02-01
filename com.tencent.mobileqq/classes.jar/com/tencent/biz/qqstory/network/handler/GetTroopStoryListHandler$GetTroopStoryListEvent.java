@@ -26,12 +26,18 @@ public class GetTroopStoryListHandler$GetTroopStoryListEvent
   
   public String toString()
   {
-    return "GetTroopStoryListEvent{isUpdated=" + this.e + ", troopStoryItemInfoList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetTroopStoryListEvent{isUpdated=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", troopStoryItemInfoList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetTroopStoryListHandler.GetTroopStoryListEvent
  * JD-Core Version:    0.7.0.1
  */

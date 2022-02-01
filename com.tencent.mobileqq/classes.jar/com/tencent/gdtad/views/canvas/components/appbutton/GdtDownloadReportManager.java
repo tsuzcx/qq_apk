@@ -6,9 +6,9 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.ad.tangram.statistics.canvas.AdRefreshCallback;
 import com.tencent.ad.tangram.util.AdHexUtil;
+import com.tencent.ad.tangram.views.canvas.components.appbutton.AdAppBtnData;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.log.GdtLog;
@@ -23,7 +23,7 @@ public class GdtDownloadReportManager
   implements AdRefreshCallback
 {
   private static volatile GdtDownloadReportManager jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager;
-  private AdAppBtnData jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasComponentsAppbuttonAdAppBtnData;
+  private AdAppBtnData jdField_a_of_type_ComTencentAdTangramViewsCanvasComponentsAppbuttonAdAppBtnData;
   private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
   private DownloadListener jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new GdtDownloadReportManager.1(this);
   private final String jdField_a_of_type_JavaLangString = "GdtDownloadReportManager";
@@ -37,15 +37,16 @@ public class GdtDownloadReportManager
   
   public static GdtDownloadReportManager a()
   {
-    if (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager == null) {
-        jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager = new GdtDownloadReportManager();
+    if (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager == null) {
+          jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager = new GdtDownloadReportManager();
+        }
       }
-      return jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager;
   }
   
   private String a(String paramString)
@@ -81,28 +82,51 @@ public class GdtDownloadReportManager
   
   private boolean a(DownloadInfo paramDownloadInfo, GdtAd paramGdtAd)
   {
-    if ((paramDownloadInfo == null) || (paramGdtAd == null) || (TextUtils.isEmpty(paramDownloadInfo.e)) || (TextUtils.isEmpty(paramGdtAd.getAppPackageName())) || (TextUtils.isEmpty(paramDownloadInfo.c)) || (TextUtils.isEmpty(paramGdtAd.getAppId()))) {}
-    while ((!paramDownloadInfo.e.equals(paramGdtAd.getAppPackageName())) || (!paramDownloadInfo.c.equals(paramGdtAd.getAppId()))) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramDownloadInfo != null)
+    {
+      bool1 = bool2;
+      if (paramGdtAd != null)
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramDownloadInfo.e))
+        {
+          bool1 = bool2;
+          if (!TextUtils.isEmpty(paramGdtAd.getAppPackageName()))
+          {
+            bool1 = bool2;
+            if (!TextUtils.isEmpty(paramDownloadInfo.c))
+            {
+              if (TextUtils.isEmpty(paramGdtAd.getAppId())) {
+                return false;
+              }
+              bool1 = bool2;
+              if (paramDownloadInfo.e.equals(paramGdtAd.getAppPackageName()))
+              {
+                bool1 = bool2;
+                if (paramDownloadInfo.c.equals(paramGdtAd.getAppId())) {
+                  bool1 = true;
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    return true;
+    return bool1;
   }
   
   public void a(GdtAd paramGdtAd, int paramInt, boolean paramBoolean)
   {
     if (paramInt == 0)
     {
-      if (!paramBoolean) {
-        break label23;
+      if (paramBoolean) {
+        GdtTraceReporter.a(paramGdtAd, 269);
+      } else {
+        GdtTraceReporter.a(paramGdtAd, 268);
       }
-      GdtTraceReporter.a(paramGdtAd, 269);
-    }
-    for (;;)
-    {
       GdtTraceReporter.a(paramGdtAd, 272);
-      return;
-      label23:
-      GdtTraceReporter.a(paramGdtAd, 268);
     }
   }
   
@@ -116,7 +140,7 @@ public class GdtDownloadReportManager
     if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramGdtAd);
     }
-    this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasComponentsAppbuttonAdAppBtnData = paramAdAppBtnData;
+    this.jdField_a_of_type_ComTencentAdTangramViewsCanvasComponentsAppbuttonAdAppBtnData = paramAdAppBtnData;
   }
   
   public void onAdRefresh(Ad paramAd)
@@ -128,7 +152,7 @@ public class GdtDownloadReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.appbutton.GdtDownloadReportManager
  * JD-Core Version:    0.7.0.1
  */

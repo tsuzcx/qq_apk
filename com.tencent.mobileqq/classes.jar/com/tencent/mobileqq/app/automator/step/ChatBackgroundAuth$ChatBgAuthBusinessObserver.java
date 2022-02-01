@@ -26,17 +26,16 @@ class ChatBackgroundAuth$ChatBgAuthBusinessObserver
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null) {}
-    for (;;)
-    {
+    if (localQQAppInterface == null) {
       return;
-      if ((paramObject instanceof UniLoginCheckRsp))
+    }
+    if ((paramObject instanceof UniLoginCheckRsp))
+    {
+      Object localObject = TroopKeywordManager.a(localQQAppInterface);
+      paramObject = (UniLoginCheckRsp)paramObject;
+      ((TroopKeywordManager)localObject).a(paramObject.stKeyWord);
+      if (paramObject.ret == 0)
       {
-        TroopKeywordManager.a(localQQAppInterface).a(((UniLoginCheckRsp)paramObject).stKeyWord);
-        paramObject = (UniLoginCheckRsp)paramObject;
-        if (paramObject.ret != 0) {
-          break;
-        }
         ChatBackgroundManager localChatBackgroundManager = (ChatBackgroundManager)localQQAppInterface.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
         localChatBackgroundManager.a();
         localChatBackgroundManager.b();
@@ -49,10 +48,9 @@ class ChatBackgroundAuth$ChatBgAuthBusinessObserver
           HamletCheck localHamletCheck = (HamletCheck)localIterator.next();
           if ((localHamletCheck.itemlist != null) && (localHamletCheck.itemlist.size() > 0))
           {
+            paramObject = localHamletCheck.itemlist.iterator();
             int i = -1;
             paramInt = -1;
-            paramObject = localHamletCheck.itemlist.iterator();
-            Object localObject;
             while (paramObject.hasNext())
             {
               localObject = (UniBusinessCheckItem)paramObject.next();
@@ -64,8 +62,14 @@ class ChatBackgroundAuth$ChatBgAuthBusinessObserver
             }
             if (i >= 0)
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("QQInitHandler", 2, "bgId:" + i + " effectId:" + paramInt);
+              if (QLog.isColorLevel())
+              {
+                paramObject = new StringBuilder();
+                paramObject.append("bgId:");
+                paramObject.append(i);
+                paramObject.append(" effectId:");
+                paramObject.append(paramInt);
+                QLog.d("QQInitHandler", 2, paramObject.toString());
               }
               localObject = String.valueOf(localHamletCheck.uid);
               paramObject = localObject;
@@ -83,13 +87,18 @@ class ChatBackgroundAuth$ChatBgAuthBusinessObserver
           }
         }
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse: ret:");
+      ((StringBuilder)localObject).append(paramObject.ret);
+      ((StringBuilder)localObject).append(" errmsg:");
+      ((StringBuilder)localObject).append(paramObject.errmsg);
+      QLog.e("QQInitHandler", 1, ((StringBuilder)localObject).toString());
     }
-    QLog.e("QQInitHandler", 1, "onResponse: ret:" + paramObject.ret + " errmsg:" + paramObject.errmsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.ChatBackgroundAuth.ChatBgAuthBusinessObserver
  * JD-Core Version:    0.7.0.1
  */

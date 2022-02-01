@@ -7,11 +7,11 @@ public class da
 {
   public static int p(String paramString)
   {
-    int i = 0;
     paramString = paramString.split(",");
     if ((paramString != null) && (paramString.length > 0))
     {
       boolean[] arrayOfBoolean = new boolean[11];
+      int i = 0;
       Arrays.fill(arrayOfBoolean, false);
       int j = paramString.length;
       while (i < j)
@@ -62,7 +62,7 @@ public class da
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.da
  * JD-Core Version:    0.7.0.1
  */

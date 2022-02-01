@@ -33,13 +33,16 @@ class AppBrandLaunchManager$StartMiniAppReceiver$2
     }
     else
     {
-      QLog.e("miniapp-process_AppBrandLaunchManager", 2, "StartMiniAppReceiver onReceive, onCmdListener, isSuc = " + paramBoolean);
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("StartMiniAppReceiver onReceive, onCmdListener, isSuc = ");
+      paramJSONObject.append(paramBoolean);
+      QLog.e("miniapp-process_AppBrandLaunchManager", 2, paramJSONObject.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.StartMiniAppReceiver.2
  * JD-Core Version:    0.7.0.1
  */

@@ -56,10 +56,11 @@ public class ChatHistoryFileAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
   
   public Object getItem(int paramInt)
@@ -76,21 +77,51 @@ public class ChatHistoryFileAdapter
   {
     Object localObject2 = getItem(paramInt);
     Object localObject1;
-    if ((localObject2 instanceof FileManagerEntity))
-    {
+    if ((localObject2 instanceof FileManagerEntity)) {
       localObject1 = paramView;
+    }
+    for (;;)
+    {
       try
       {
-        localFileManagerEntity = (FileManagerEntity)localObject2;
-        if (paramView == null) {
-          break label465;
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localObject2;
+        boolean bool1 = false;
+        if (paramView != null)
+        {
+          localObject1 = paramView;
+          if ((paramView.getTag() instanceof ChatHistoryFileAdapter.HistoryFileItemHolder))
+          {
+            localObject1 = paramView;
+            localObject2 = (ChatHistoryFileAdapter.HistoryFileItemHolder)paramView.getTag();
+            continue;
+          }
         }
         localObject1 = paramView;
-        if (!(paramView.getTag() instanceof ChatHistoryFileAdapter.HistoryFileItemHolder)) {
-          break label465;
-        }
+        localObject2 = new ChatHistoryFileAdapter.HistoryFileItemHolder(this);
         localObject1 = paramView;
-        localObject2 = (ChatHistoryFileAdapter.HistoryFileItemHolder)paramView.getTag();
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560778, paramViewGroup, false);
+        localObject1 = paramView;
+        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376167));
+        localObject1 = paramView;
+        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        localObject1 = paramView;
+        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject2);
+        localObject1 = paramView;
+        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramView.findViewById(2131361949));
+        localObject1 = paramView;
+        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131366794));
+        localObject1 = paramView;
+        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366781));
+        localObject1 = paramView;
+        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366792));
+        localObject1 = paramView;
+        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
+        localObject1 = paramView;
+        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).b = ((TextView)paramView.findViewById(2131366779));
+        localObject1 = paramView;
+        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(AIOUtils.b(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        localObject1 = paramView;
+        paramView.setTag(localObject2);
         localObject1 = paramView;
         FileManagerUtil.a(((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
         localObject1 = paramView;
@@ -106,229 +137,210 @@ public class ChatHistoryFileAdapter
         localObject1 = paramView;
         ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setProgressRingWidth(3.0F);
         localObject1 = paramView;
-        if (FileManagerUtil.a(localFileManagerEntity.fileName) != 0) {
-          break label763;
-        }
-        localObject1 = paramView;
-        if (!FileUtils.b(localFileManagerEntity.getFilePath())) {
-          break label693;
-        }
-        localObject1 = paramView;
-        FileManagerUtil.a(((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity.getFilePath(), localFileManagerEntity.nFileType);
-      }
-      catch (Exception paramView)
-      {
-        for (;;)
+        if (FileManagerUtil.a(localFileManagerEntity.fileName) == 0)
         {
-          FileManagerEntity localFileManagerEntity;
-          paramView.printStackTrace();
-          paramView = (View)localObject1;
-          continue;
           localObject1 = paramView;
-          if (FileUtils.b(localFileManagerEntity.strThumbPath))
+          if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.getFilePath()))
           {
             localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130844458);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncImage(localFileManagerEntity.strThumbPath);
+            FileManagerUtil.a(((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity.getFilePath(), localFileManagerEntity.nFileType);
           }
           else
           {
             localObject1 = paramView;
-            FileManagerUtil.a(((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity.fileName, localFileManagerEntity.nFileType);
-            continue;
-            localObject1 = paramView;
-            FileManagerUtil.a(((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
-            continue;
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(1);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 2;
-            continue;
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 3;
-            continue;
-            localObject1 = paramView;
-            bool = FileUtil.a(localFileManagerEntity.getFilePath());
-            localObject1 = paramView;
-            if (localFileManagerEntity.getCloudType() != 3)
+            if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.strThumbPath))
             {
               localObject1 = paramView;
-              if ((localFileManagerEntity.getCloudType() != 5) && (!bool)) {}
+              ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130844363);
+              localObject1 = paramView;
+              ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncImage(localFileManagerEntity.strThumbPath);
             }
             else
             {
               localObject1 = paramView;
-              ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+              FileManagerUtil.a(((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity.fileName, localFileManagerEntity.nFileType);
+            }
+          }
+        }
+        else
+        {
+          localObject1 = paramView;
+          FileManagerUtil.a(((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
+        }
+        localObject1 = paramView;
+        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(localFileManagerEntity.fileName);
+        localObject1 = paramView;
+        if (5 != localFileManagerEntity.cloudType)
+        {
+          localObject1 = paramView;
+          FileManagerUtil.b(localFileManagerEntity);
+        }
+        localObject1 = paramView;
+        int i = localFileManagerEntity.status;
+        if (i != 18) {}
+        switch (i)
+        {
+        case 14: 
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+          break;
+        case 15: 
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 2;
+          break;
+        case 13: 
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 1;
+          break;
+        case 10: 
+        case 11: 
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 0;
+          break;
+        case 9: 
+        case 12: 
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 0;
+          break;
+        case 5: 
+        case 6: 
+        case 7: 
+        case 8: 
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 0;
+          break;
+        case 4: 
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 1;
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+          break;
+        case 3: 
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 3;
+          break;
+        case 1: 
+          localObject1 = paramView;
+          boolean bool2 = FileUtil.b(localFileManagerEntity.getFilePath());
+          localObject1 = paramView;
+          if (localFileManagerEntity.getCloudType() != 3)
+          {
+            localObject1 = paramView;
+            if ((localFileManagerEntity.getCloudType() != 5) && (!bool2))
+            {
               localObject1 = paramView;
-              ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 0;
+              ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+              localObject1 = paramView;
+              ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+              localObject1 = paramView;
+              ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 1;
               continue;
             }
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 1;
-            continue;
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 3;
-            continue;
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 0;
-            continue;
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 1;
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-            continue;
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 0;
-            continue;
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 0;
-            continue;
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 1;
-            continue;
-            localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+          }
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 0;
+          break;
+        case 0: 
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 3;
+          break;
+        case -1: 
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 1;
+          break;
+        case 2: 
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(1);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+          localObject1 = paramView;
+          ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 2;
+          localObject1 = paramView;
+          if (this.jdField_a_of_type_Boolean)
+          {
             localObject1 = paramView;
             ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
             localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 2;
-            continue;
+            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
             localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
             localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+            if (this.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryFileAdapter$OnSelectedListener != null)
+            {
+              localObject1 = paramView;
+              bool1 = this.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryFileAdapter$OnSelectedListener.a(localFileManagerEntity);
+            }
             localObject1 = paramView;
-            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_Int = 1;
-            continue;
+            ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool1);
+          }
+          else
+          {
             localObject1 = paramView;
             ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
           }
+          localObject1 = paramView;
+          FileManagerUtil.a(((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).b, localFileManagerEntity);
+          localObject1 = paramView;
         }
       }
-      localObject1 = paramView;
-      ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(localFileManagerEntity.fileName);
-      localObject1 = paramView;
-      if (5 != localFileManagerEntity.cloudType)
+      catch (Exception paramView)
       {
-        localObject1 = paramView;
-        FileManagerUtil.b(localFileManagerEntity);
+        paramView.printStackTrace();
       }
       localObject1 = paramView;
-      switch (localFileManagerEntity.status)
+      if ((localObject2 instanceof String))
       {
-      }
-    }
-    for (;;)
-    {
-      localObject1 = paramView;
-      ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-      localObject1 = paramView;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-        localObject1 = paramView;
-        if (this.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryFileAdapter$OnSelectedListener == null) {
-          break label1312;
-        }
-        localObject1 = paramView;
-      }
-      label1312:
-      for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryFileAdapter$OnSelectedListener.a(localFileManagerEntity);; bool = false)
-      {
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        localObject1 = paramView;
-        FileManagerUtil.a(((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).b, localFileManagerEntity);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        label465:
-        localObject1 = paramView;
-        localObject2 = new ChatHistoryFileAdapter.HistoryFileItemHolder(this);
-        localObject1 = paramView;
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560904, paramViewGroup, false);
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376663));
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject2);
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramView.findViewById(2131361943));
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131366932));
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366919));
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366930));
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).b = ((TextView)paramView.findViewById(2131366917));
-        localObject1 = paramView;
-        ((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(AIOUtils.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-        localObject1 = paramView;
-        paramView.setTag(localObject2);
-        break;
-        label693:
-        label763:
-        localObject1 = paramView;
-        if ((localObject2 instanceof String))
+        if ((paramView != null) && ((paramView.getTag() instanceof TextView)))
         {
-          if ((paramView == null) || (!(paramView.getTag() instanceof TextView))) {
-            break label1279;
-          }
           localObject1 = (TextView)paramView.getTag();
         }
-        for (;;)
+        else
         {
-          ((TextView)localObject1).setText((String)localObject2);
-          localObject1 = paramView;
-          paramView = (View)localObject1;
-          break;
-          label1279:
-          paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560928, null);
-          localObject1 = (TextView)paramView.findViewById(2131379105);
+          paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560802, null);
+          localObject1 = (TextView)paramView.findViewById(2131378475);
           paramView.setTag(localObject1);
         }
+        ((TextView)localObject1).setText((String)localObject2);
+        localObject1 = paramView;
       }
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ChatHistoryFileAdapter
  * JD-Core Version:    0.7.0.1
  */

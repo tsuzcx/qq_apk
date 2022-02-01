@@ -12,19 +12,28 @@ class AudioPlayerManager$1
   
   public void run()
   {
-    AudioPlayerManager.AudioManagerListener localAudioManagerListener = (AudioPlayerManager.AudioManagerListener)AudioPlayerManager.access$100(this.this$0).get(AudioPlayerManager.access$000(this.this$0));
+    Object localObject = (AudioPlayerManager.AudioManagerListener)AudioPlayerManager.access$100(this.this$0).get(AudioPlayerManager.access$000(this.this$0));
     int i = ((Integer)AudioPlayerManager.access$200(this.this$0).get(AudioPlayerManager.access$000(this.this$0), Integer.valueOf(1000))).intValue();
-    if ((localAudioManagerListener != null) && (AudioPlayerManager.access$300(this.this$0).isPlaying()))
+    if ((localObject != null) && (AudioPlayerManager.access$300(this.this$0).isPlaying()))
     {
-      localAudioManagerListener.playTimeChange(AudioPlayerManager.access$300(this.this$0).getCurrentPosition(), AudioPlayerManager.access$300(this.this$0).getDuration());
+      ((AudioPlayerManager.AudioManagerListener)localObject).playTimeChange(AudioPlayerManager.access$300(this.this$0).getCurrentPosition(), AudioPlayerManager.access$300(this.this$0).getDuration());
       AudioPlayerManager.access$400(this.this$0).postDelayed(this, i);
     }
-    ViolaLogUtils.d("AudioPlayerManager", "timerChange,data:" + AudioPlayerManager.access$500(this.this$0) + ",currentDuration:" + AudioPlayerManager.access$300(this.this$0).getCurrentPosition() + ",totalDuration:" + AudioPlayerManager.access$300(this.this$0).getDuration() + ",isPlaying:" + AudioPlayerManager.access$300(this.this$0).isPlaying());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("timerChange,data:");
+    ((StringBuilder)localObject).append(AudioPlayerManager.access$500(this.this$0));
+    ((StringBuilder)localObject).append(",currentDuration:");
+    ((StringBuilder)localObject).append(AudioPlayerManager.access$300(this.this$0).getCurrentPosition());
+    ((StringBuilder)localObject).append(",totalDuration:");
+    ((StringBuilder)localObject).append(AudioPlayerManager.access$300(this.this$0).getDuration());
+    ((StringBuilder)localObject).append(",isPlaying:");
+    ((StringBuilder)localObject).append(AudioPlayerManager.access$300(this.this$0).isPlaying());
+    ViolaLogUtils.d("AudioPlayerManager", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.AudioPlayerManager.1
  * JD-Core Version:    0.7.0.1
  */

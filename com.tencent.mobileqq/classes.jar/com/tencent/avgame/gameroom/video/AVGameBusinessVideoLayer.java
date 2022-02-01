@@ -31,21 +31,15 @@ public class AVGameBusinessVideoLayer
   private boolean a(long paramLong)
   {
     Iterator localIterator = this.b.iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
+    for (boolean bool = false; localIterator.hasNext(); bool = true)
     {
+      label13:
       MemberVideoDisplayInfo localMemberVideoDisplayInfo = (MemberVideoDisplayInfo)localIterator.next();
       if ((localMemberVideoDisplayInfo.jdField_a_of_type_Long != paramLong) || (localMemberVideoDisplayInfo.jdField_a_of_type_Boolean)) {
-        break label60;
+        break label13;
       }
-      bool = true;
     }
-    label60:
-    for (;;)
-    {
-      break;
-      return bool;
-    }
+    return bool;
   }
   
   public IStageRecordPresenter a()
@@ -70,16 +64,22 @@ public class AVGameBusinessVideoLayer
   
   public void a(List<MemberVideoDisplayInfo> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    synchronized (this.b)
+    if (paramList != null)
     {
-      this.b.clear();
-      this.b.addAll(paramList);
-      AVLog.d("AVGameBusinessVideoLayer", "onMemberVideoDisplayInfoUpdate infoList:=" + Arrays.toString(paramList.toArray()));
-      AVGameHandler.a().b().post(new AVGameBusinessVideoLayer.1(this));
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
+      synchronized (this.b)
+      {
+        this.b.clear();
+        this.b.addAll(paramList);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onMemberVideoDisplayInfoUpdate infoList:=");
+        localStringBuilder.append(Arrays.toString(paramList.toArray()));
+        AVLog.d("AVGameBusinessVideoLayer", localStringBuilder.toString());
+        AVGameHandler.a().b().post(new AVGameBusinessVideoLayer.1(this));
+        return;
+      }
     }
   }
   
@@ -135,7 +135,7 @@ public class AVGameBusinessVideoLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameBusinessVideoLayer
  * JD-Core Version:    0.7.0.1
  */

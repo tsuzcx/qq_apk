@@ -29,53 +29,50 @@ public class IpContainer
   
   private boolean findNRemove(ArrayList<EndPoint> paramArrayList, String paramString)
   {
-    boolean bool2;
-    if (paramArrayList == null)
-    {
-      bool2 = false;
-      return bool2;
+    boolean bool2 = false;
+    if (paramArrayList == null) {
+      return false;
     }
     EndPoint localEndPoint = null;
     int i = 0;
+    boolean bool1;
+    label115:
+    label121:
     for (;;)
     {
+      bool1 = bool2;
       try
       {
-        if (i >= paramArrayList.size()) {
-          break label120;
+        if (i < paramArrayList.size())
+        {
+          localEndPoint = (EndPoint)paramArrayList.get(i);
+          if (!localEndPoint.host.equalsIgnoreCase(paramString)) {
+            break label121;
+          }
+          if (paramArrayList.size() <= i) {
+            break label115;
+          }
+          paramArrayList.remove(i);
         }
-        localEndPoint = (EndPoint)paramArrayList.get(i);
-        if (!localEndPoint.host.equalsIgnoreCase(paramString)) {
-          break label113;
+      }
+      finally
+      {
+        for (;;)
+        {
+          for (;;)
+          {
+            throw paramArrayList;
+          }
+          bool1 = true;
         }
-        if (paramArrayList.size() <= i) {
-          break label129;
-        }
-        paramArrayList.remove(i);
+        i += 1;
       }
-      finally {}
-      bool2 = bool1;
-      if (!bool1) {
-        break;
+      if ((bool1) && (localEndPoint.protoType == 1))
+      {
+        localEndPoint.protoType = 2;
+        paramArrayList.add(paramArrayList.size(), localEndPoint);
       }
-      bool2 = bool1;
-      if (paramString.protoType != 1) {
-        break;
-      }
-      paramString.protoType = 2;
-      paramArrayList.add(paramArrayList.size(), paramString);
-      bool2 = bool1;
-      break;
-      label113:
-      i += 1;
-      continue;
-      label120:
-      boolean bool1 = false;
-      paramString = localEndPoint;
-      continue;
-      label129:
-      paramString = localEndPoint;
-      bool1 = true;
+      return bool1;
     }
   }
   
@@ -100,29 +97,34 @@ public class IpContainer
     {
       String str = (String)paramContext.next();
       ArrayList localArrayList = new ArrayList();
-      Object localObject;
+      int i = 0;
+      Object localObject1;
       if (paramArrayList != null)
       {
-        localObject = paramArrayList.iterator();
-        int i = 0;
-        while (((Iterator)localObject).hasNext())
+        localObject1 = paramArrayList.iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          EndPoint localEndPoint1 = (EndPoint)((Iterator)localObject).next();
-          EndPoint localEndPoint2 = new EndPoint(localEndPoint1.host, localEndPoint1.port, localEndPoint1.type);
-          localEndPoint2.ipIndex = i;
-          localEndPoint2.keyOfAPN = str;
-          localEndPoint2.isSameIsp = localEndPoint1.isSameIsp;
-          localEndPoint2.timestamp = localEndPoint1.timestamp;
-          localArrayList.add(localEndPoint2);
-          BdhLogUtil.LogEvent("C", "IpContainer, insert() key= " + str + "   value= " + localEndPoint2.toString());
+          Object localObject2 = (EndPoint)((Iterator)localObject1).next();
+          EndPoint localEndPoint = new EndPoint(((EndPoint)localObject2).host, ((EndPoint)localObject2).port, ((EndPoint)localObject2).type);
+          localEndPoint.ipIndex = i;
+          localEndPoint.keyOfAPN = str;
+          localEndPoint.isSameIsp = ((EndPoint)localObject2).isSameIsp;
+          localEndPoint.timestamp = ((EndPoint)localObject2).timestamp;
+          localArrayList.add(localEndPoint);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("IpContainer, insert() key= ");
+          ((StringBuilder)localObject2).append(str);
+          ((StringBuilder)localObject2).append("   value= ");
+          ((StringBuilder)localObject2).append(localEndPoint.toString());
+          BdhLogUtil.LogEvent("C", ((StringBuilder)localObject2).toString());
           i += 1;
         }
       }
       if (paramBoolean)
       {
-        localObject = getOrCreateIpLearnerByKey(str);
-        if (localObject != null) {
-          paramConcurrentHashMap.put(str, ((IpLearning)localObject).adjustNewIpList(localArrayList));
+        localObject1 = getOrCreateIpLearnerByKey(str);
+        if (localObject1 != null) {
+          paramConcurrentHashMap.put(str, ((IpLearning)localObject1).adjustNewIpList(localArrayList));
         }
       }
       else
@@ -144,786 +146,529 @@ public class IpContainer
     //   11: aload_2
     //   12: invokespecial 185	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   15: invokevirtual 188	java/io/File:exists	()Z
-    //   18: ifne +33 -> 51
-    //   21: ldc 135
-    //   23: new 137	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 138	java/lang/StringBuilder:<init>	()V
-    //   30: ldc 190
-    //   32: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: aload_2
-    //   36: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 157	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   45: aconst_null
-    //   46: astore 5
-    //   48: aload 5
-    //   50: areturn
-    //   51: new 192	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB
-    //   54: dup
-    //   55: invokespecial 193	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:<init>	()V
-    //   58: astore 5
-    //   60: aload_1
-    //   61: aload_2
-    //   62: invokevirtual 197	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
-    //   65: astore_1
-    //   66: new 199	java/io/ByteArrayOutputStream
-    //   69: dup
-    //   70: invokespecial 200	java/io/ByteArrayOutputStream:<init>	()V
-    //   73: astore 4
-    //   75: aload 4
-    //   77: astore 6
-    //   79: aload_1
-    //   80: astore 7
-    //   82: sipush 1024
-    //   85: newarray byte
-    //   87: astore_2
-    //   88: aload 4
-    //   90: astore 6
-    //   92: aload_1
-    //   93: astore 7
-    //   95: aload_1
-    //   96: aload_2
+    //   18: istore 4
+    //   20: aconst_null
+    //   21: astore 6
+    //   23: aconst_null
+    //   24: astore 7
+    //   26: iload 4
+    //   28: ifne +35 -> 63
+    //   31: new 135	java/lang/StringBuilder
+    //   34: dup
+    //   35: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   38: astore_1
+    //   39: aload_1
+    //   40: ldc 190
+    //   42: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: aload_1
+    //   47: aload_2
+    //   48: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: pop
+    //   52: ldc 150
+    //   54: aload_1
+    //   55: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   58: invokestatic 157	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   61: aconst_null
+    //   62: areturn
+    //   63: new 192	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB
+    //   66: dup
+    //   67: invokespecial 193	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:<init>	()V
+    //   70: astore 8
+    //   72: aload_1
+    //   73: aload_2
+    //   74: invokevirtual 197	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   77: astore 5
+    //   79: new 199	java/io/ByteArrayOutputStream
+    //   82: dup
+    //   83: invokespecial 200	java/io/ByteArrayOutputStream:<init>	()V
+    //   86: astore 6
+    //   88: sipush 1024
+    //   91: newarray byte
+    //   93: astore_1
+    //   94: aload 5
+    //   96: aload_1
     //   97: iconst_0
-    //   98: aload_2
+    //   98: aload_1
     //   99: arraylength
     //   100: invokevirtual 206	java/io/FileInputStream:read	([BII)I
     //   103: istore_3
     //   104: iload_3
     //   105: iconst_m1
-    //   106: if_icmpeq +74 -> 180
-    //   109: aload 4
-    //   111: astore 6
-    //   113: aload_1
-    //   114: astore 7
-    //   116: aload 4
-    //   118: aload_2
-    //   119: iconst_0
-    //   120: iload_3
-    //   121: invokevirtual 210	java/io/ByteArrayOutputStream:write	([BII)V
-    //   124: goto -36 -> 88
-    //   127: astore 5
-    //   129: aload 4
-    //   131: astore_2
-    //   132: aconst_null
-    //   133: astore 6
-    //   135: aload_1
-    //   136: astore 4
-    //   138: aload 6
-    //   140: astore_1
-    //   141: ldc 135
-    //   143: ldc 212
-    //   145: aload 5
-    //   147: invokestatic 216	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   150: aload 4
-    //   152: ifnull +8 -> 160
-    //   155: aload 4
-    //   157: invokevirtual 219	java/io/FileInputStream:close	()V
-    //   160: aload_1
-    //   161: astore 5
-    //   163: aload_2
-    //   164: ifnull -116 -> 48
-    //   167: aload_2
-    //   168: invokevirtual 220	java/io/ByteArrayOutputStream:close	()V
-    //   171: aload_1
-    //   172: areturn
-    //   173: astore_2
-    //   174: aload_2
-    //   175: invokevirtual 223	java/io/IOException:printStackTrace	()V
-    //   178: aload_1
-    //   179: areturn
-    //   180: aload 4
-    //   182: astore 6
-    //   184: aload_1
-    //   185: astore 7
-    //   187: aload 4
-    //   189: invokevirtual 226	java/io/ByteArrayOutputStream:flush	()V
-    //   192: aload 4
-    //   194: astore 6
-    //   196: aload_1
-    //   197: astore 7
-    //   199: aload 5
-    //   201: aload 4
-    //   203: invokevirtual 230	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   206: invokevirtual 234	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   209: pop
-    //   210: aload 4
-    //   212: astore 6
-    //   214: aload_1
-    //   215: astore 7
-    //   217: new 236	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig
-    //   220: dup
-    //   221: aload_0
-    //   222: aconst_null
-    //   223: invokespecial 239	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:<init>	(Lcom/tencent/mobileqq/highway/config/IpContainer;Lcom/tencent/mobileqq/highway/config/IpContainer$1;)V
-    //   226: astore_2
-    //   227: aload 4
-    //   229: astore 6
-    //   231: aload_1
+    //   106: if_icmpeq +14 -> 120
+    //   109: aload 6
+    //   111: aload_1
+    //   112: iconst_0
+    //   113: iload_3
+    //   114: invokevirtual 210	java/io/ByteArrayOutputStream:write	([BII)V
+    //   117: goto -23 -> 94
+    //   120: aload 6
+    //   122: invokevirtual 213	java/io/ByteArrayOutputStream:flush	()V
+    //   125: aload 8
+    //   127: aload 6
+    //   129: invokevirtual 217	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   132: invokevirtual 221	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   135: pop
+    //   136: new 223	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig
+    //   139: dup
+    //   140: aload_0
+    //   141: aconst_null
+    //   142: invokespecial 226	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:<init>	(Lcom/tencent/mobileqq/highway/config/IpContainer;Lcom/tencent/mobileqq/highway/config/IpContainer$1;)V
+    //   145: astore_1
+    //   146: aload_1
+    //   147: new 18	java/util/concurrent/ConcurrentHashMap
+    //   150: dup
+    //   151: invokespecial 21	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   154: putfield 229	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
+    //   157: aload_1
+    //   158: new 18	java/util/concurrent/ConcurrentHashMap
+    //   161: dup
+    //   162: invokespecial 21	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   165: putfield 232	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
+    //   168: aload_1
+    //   169: new 38	java/util/ArrayList
+    //   172: dup
+    //   173: invokespecial 107	java/util/ArrayList:<init>	()V
+    //   176: putfield 236	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mSegConf	Ljava/util/ArrayList;
+    //   179: aload_1
+    //   180: new 38	java/util/ArrayList
+    //   183: dup
+    //   184: invokespecial 107	java/util/ArrayList:<init>	()V
+    //   187: putfield 239	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mShortVideoSegConf	Ljava/util/ArrayList;
+    //   190: aload 8
+    //   192: getfield 243	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_config_item_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   195: invokevirtual 248	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   198: invokeinterface 251 1 0
+    //   203: astore_2
+    //   204: aload_2
+    //   205: invokeinterface 102 1 0
+    //   210: ifeq +130 -> 340
+    //   213: aload_2
+    //   214: invokeinterface 106 1 0
+    //   219: checkcast 253	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB
+    //   222: astore 9
+    //   224: aload 9
+    //   226: getfield 257	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:string_key	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   229: invokevirtual 261	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   232: astore 7
-    //   234: aload_2
-    //   235: new 18	java/util/concurrent/ConcurrentHashMap
-    //   238: dup
-    //   239: invokespecial 21	java/util/concurrent/ConcurrentHashMap:<init>	()V
-    //   242: putfield 242	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
-    //   245: aload 4
-    //   247: astore 6
-    //   249: aload_1
-    //   250: astore 7
-    //   252: aload_2
-    //   253: new 18	java/util/concurrent/ConcurrentHashMap
-    //   256: dup
-    //   257: invokespecial 21	java/util/concurrent/ConcurrentHashMap:<init>	()V
-    //   260: putfield 245	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
-    //   263: aload 4
-    //   265: astore 6
-    //   267: aload_1
-    //   268: astore 7
-    //   270: aload_2
-    //   271: new 38	java/util/ArrayList
-    //   274: dup
-    //   275: invokespecial 107	java/util/ArrayList:<init>	()V
-    //   278: putfield 249	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mSegConf	Ljava/util/ArrayList;
-    //   281: aload 4
-    //   283: astore 6
-    //   285: aload_1
-    //   286: astore 7
-    //   288: aload_2
-    //   289: new 38	java/util/ArrayList
-    //   292: dup
-    //   293: invokespecial 107	java/util/ArrayList:<init>	()V
-    //   296: putfield 252	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mShortVideoSegConf	Ljava/util/ArrayList;
-    //   299: aload 4
-    //   301: astore 6
-    //   303: aload_1
-    //   304: astore 7
-    //   306: aload 5
-    //   308: getfield 256	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_config_item_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   311: invokevirtual 261	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   314: invokeinterface 264 1 0
-    //   319: astore 8
-    //   321: aload 4
-    //   323: astore 6
+    //   234: aload 9
+    //   236: getfield 264	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:rpt_end_point_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   239: invokevirtual 248	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   242: checkcast 38	java/util/ArrayList
+    //   245: astore 10
+    //   247: new 38	java/util/ArrayList
+    //   250: dup
+    //   251: invokespecial 107	java/util/ArrayList:<init>	()V
+    //   254: astore 9
+    //   256: aload 10
+    //   258: invokevirtual 96	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   261: astore 10
+    //   263: aload 10
+    //   265: invokeinterface 102 1 0
+    //   270: ifeq +55 -> 325
+    //   273: aload 10
+    //   275: invokeinterface 106 1 0
+    //   280: checkcast 266	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB
+    //   283: astore 11
+    //   285: aload 9
+    //   287: new 48	com/tencent/mobileqq/highway/utils/EndPoint
+    //   290: dup
+    //   291: aload 11
+    //   293: getfield 269	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:string_host	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   296: invokevirtual 261	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   299: aload 11
+    //   301: getfield 273	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int32_port	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   304: invokevirtual 277	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   307: aload 11
+    //   309: getfield 281	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int64_timestampe	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   312: invokevirtual 286	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   315: invokespecial 289	com/tencent/mobileqq/highway/utils/EndPoint:<init>	(Ljava/lang/String;IJ)V
+    //   318: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   321: pop
+    //   322: goto -59 -> 263
     //   325: aload_1
-    //   326: astore 7
-    //   328: aload 8
-    //   330: invokeinterface 102 1 0
-    //   335: ifeq +243 -> 578
-    //   338: aload 4
-    //   340: astore 6
-    //   342: aload_1
-    //   343: astore 7
-    //   345: aload 8
-    //   347: invokeinterface 106 1 0
-    //   352: checkcast 266	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB
-    //   355: astore 10
-    //   357: aload 4
-    //   359: astore 6
-    //   361: aload_1
-    //   362: astore 7
-    //   364: aload 10
-    //   366: getfield 270	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:string_key	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   369: invokevirtual 274	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   326: getfield 229	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
+    //   329: aload 7
+    //   331: aload 9
+    //   333: invokevirtual 166	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   336: pop
+    //   337: goto -133 -> 204
+    //   340: aload 8
+    //   342: getfield 292	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_config_item_list_ip6	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   345: invokevirtual 248	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   348: invokeinterface 251 1 0
+    //   353: astore_2
+    //   354: aload_2
+    //   355: invokeinterface 102 1 0
+    //   360: ifeq +130 -> 490
+    //   363: aload_2
+    //   364: invokeinterface 106 1 0
+    //   369: checkcast 253	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB
     //   372: astore 9
-    //   374: aload 4
-    //   376: astore 6
-    //   378: aload_1
-    //   379: astore 7
-    //   381: aload 10
-    //   383: getfield 277	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:rpt_end_point_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   386: invokevirtual 261	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   389: checkcast 38	java/util/ArrayList
-    //   392: astore 11
-    //   394: aload 4
-    //   396: astore 6
-    //   398: aload_1
-    //   399: astore 7
-    //   401: new 38	java/util/ArrayList
-    //   404: dup
-    //   405: invokespecial 107	java/util/ArrayList:<init>	()V
-    //   408: astore 10
-    //   410: aload 4
-    //   412: astore 6
-    //   414: aload_1
-    //   415: astore 7
-    //   417: aload 11
-    //   419: invokevirtual 96	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   422: astore 11
-    //   424: aload 4
-    //   426: astore 6
-    //   428: aload_1
-    //   429: astore 7
-    //   431: aload 11
-    //   433: invokeinterface 102 1 0
-    //   438: ifeq +69 -> 507
-    //   441: aload 4
-    //   443: astore 6
-    //   445: aload_1
-    //   446: astore 7
-    //   448: aload 11
-    //   450: invokeinterface 106 1 0
-    //   455: checkcast 279	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB
-    //   458: astore 12
-    //   460: aload 4
-    //   462: astore 6
-    //   464: aload_1
-    //   465: astore 7
-    //   467: aload 10
-    //   469: new 48	com/tencent/mobileqq/highway/utils/EndPoint
-    //   472: dup
-    //   473: aload 12
-    //   475: getfield 282	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:string_host	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   478: invokevirtual 274	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   481: aload 12
-    //   483: getfield 286	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int32_port	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   486: invokevirtual 290	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   489: aload 12
-    //   491: getfield 294	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int64_timestampe	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   494: invokevirtual 299	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   497: invokespecial 302	com/tencent/mobileqq/highway/utils/EndPoint:<init>	(Ljava/lang/String;IJ)V
-    //   500: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   503: pop
-    //   504: goto -80 -> 424
-    //   507: aload 4
-    //   509: astore 6
-    //   511: aload_1
-    //   512: astore 7
-    //   514: aload_2
-    //   515: getfield 242	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
-    //   518: aload 9
-    //   520: aload 10
-    //   522: invokevirtual 166	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   525: pop
-    //   526: goto -205 -> 321
-    //   529: astore 5
-    //   531: aload 4
-    //   533: astore 6
-    //   535: aload_1
-    //   536: astore 7
-    //   538: ldc 135
-    //   540: ldc_w 304
-    //   543: aload 5
-    //   545: invokestatic 216	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   548: aload_1
-    //   549: ifnull +7 -> 556
-    //   552: aload_1
-    //   553: invokevirtual 219	java/io/FileInputStream:close	()V
-    //   556: aload_2
-    //   557: astore 5
-    //   559: aload 4
-    //   561: ifnull -513 -> 48
-    //   564: aload 4
-    //   566: invokevirtual 220	java/io/ByteArrayOutputStream:close	()V
-    //   569: aload_2
-    //   570: areturn
-    //   571: astore_1
-    //   572: aload_1
-    //   573: invokevirtual 223	java/io/IOException:printStackTrace	()V
-    //   576: aload_2
-    //   577: areturn
-    //   578: aload 4
-    //   580: astore 6
-    //   582: aload_1
-    //   583: astore 7
-    //   585: aload 5
-    //   587: getfield 307	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_config_item_list_ip6	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   590: invokevirtual 261	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   593: invokeinterface 264 1 0
-    //   598: astore 8
-    //   600: aload 4
-    //   602: astore 6
-    //   604: aload_1
-    //   605: astore 7
-    //   607: aload 8
-    //   609: invokeinterface 102 1 0
-    //   614: ifeq +222 -> 836
-    //   617: aload 4
-    //   619: astore 6
-    //   621: aload_1
-    //   622: astore 7
-    //   624: aload 8
-    //   626: invokeinterface 106 1 0
-    //   631: checkcast 266	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB
-    //   634: astore 10
-    //   636: aload 4
-    //   638: astore 6
-    //   640: aload_1
-    //   641: astore 7
-    //   643: aload 10
-    //   645: getfield 270	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:string_key	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   648: invokevirtual 274	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   651: astore 9
-    //   653: aload 4
-    //   655: astore 6
-    //   657: aload_1
-    //   658: astore 7
-    //   660: aload 10
-    //   662: getfield 277	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:rpt_end_point_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   665: invokevirtual 261	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   668: checkcast 38	java/util/ArrayList
-    //   671: astore 11
-    //   673: aload 4
-    //   675: astore 6
-    //   677: aload_1
-    //   678: astore 7
-    //   680: new 38	java/util/ArrayList
-    //   683: dup
-    //   684: invokespecial 107	java/util/ArrayList:<init>	()V
-    //   687: astore 10
-    //   689: aload 4
-    //   691: astore 6
-    //   693: aload_1
-    //   694: astore 7
-    //   696: aload 11
-    //   698: invokevirtual 96	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   701: astore 11
-    //   703: aload 4
-    //   705: astore 6
-    //   707: aload_1
-    //   708: astore 7
-    //   710: aload 11
-    //   712: invokeinterface 102 1 0
-    //   717: ifeq +97 -> 814
-    //   720: aload 4
-    //   722: astore 6
-    //   724: aload_1
-    //   725: astore 7
-    //   727: aload 11
-    //   729: invokeinterface 106 1 0
-    //   734: checkcast 279	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB
-    //   737: astore 12
-    //   739: aload 4
-    //   741: astore 6
-    //   743: aload_1
-    //   744: astore 7
-    //   746: aload 10
-    //   748: new 48	com/tencent/mobileqq/highway/utils/EndPoint
-    //   751: dup
-    //   752: aload 12
-    //   754: getfield 282	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:string_host	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   757: invokevirtual 274	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   760: aload 12
-    //   762: getfield 286	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int32_port	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   765: invokevirtual 290	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   768: aload 12
-    //   770: getfield 294	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int64_timestampe	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   773: invokevirtual 299	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   776: invokespecial 302	com/tencent/mobileqq/highway/utils/EndPoint:<init>	(Ljava/lang/String;IJ)V
-    //   779: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   782: pop
-    //   783: goto -80 -> 703
-    //   786: astore_2
-    //   787: aload 7
-    //   789: astore_1
-    //   790: aload 6
-    //   792: astore 4
-    //   794: aload_1
-    //   795: ifnull +7 -> 802
-    //   798: aload_1
-    //   799: invokevirtual 219	java/io/FileInputStream:close	()V
-    //   802: aload 4
-    //   804: ifnull +8 -> 812
-    //   807: aload 4
-    //   809: invokevirtual 220	java/io/ByteArrayOutputStream:close	()V
-    //   812: aload_2
-    //   813: athrow
-    //   814: aload 4
-    //   816: astore 6
-    //   818: aload_1
-    //   819: astore 7
-    //   821: aload_2
-    //   822: getfield 245	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
-    //   825: aload 9
-    //   827: aload 10
-    //   829: invokevirtual 166	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   832: pop
-    //   833: goto -233 -> 600
-    //   836: aload 4
-    //   838: astore 6
+    //   374: aload 9
+    //   376: getfield 257	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:string_key	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   379: invokevirtual 261	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   382: astore 7
+    //   384: aload 9
+    //   386: getfield 264	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:rpt_end_point_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   389: invokevirtual 248	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   392: checkcast 38	java/util/ArrayList
+    //   395: astore 10
+    //   397: new 38	java/util/ArrayList
+    //   400: dup
+    //   401: invokespecial 107	java/util/ArrayList:<init>	()V
+    //   404: astore 9
+    //   406: aload 10
+    //   408: invokevirtual 96	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   411: astore 10
+    //   413: aload 10
+    //   415: invokeinterface 102 1 0
+    //   420: ifeq +55 -> 475
+    //   423: aload 10
+    //   425: invokeinterface 106 1 0
+    //   430: checkcast 266	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB
+    //   433: astore 11
+    //   435: aload 9
+    //   437: new 48	com/tencent/mobileqq/highway/utils/EndPoint
+    //   440: dup
+    //   441: aload 11
+    //   443: getfield 269	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:string_host	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   446: invokevirtual 261	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   449: aload 11
+    //   451: getfield 273	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int32_port	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   454: invokevirtual 277	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   457: aload 11
+    //   459: getfield 281	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int64_timestampe	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   462: invokevirtual 286	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   465: invokespecial 289	com/tencent/mobileqq/highway/utils/EndPoint:<init>	(Ljava/lang/String;IJ)V
+    //   468: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   471: pop
+    //   472: goto -59 -> 413
+    //   475: aload_1
+    //   476: getfield 232	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
+    //   479: aload 7
+    //   481: aload 9
+    //   483: invokevirtual 166	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   486: pop
+    //   487: goto -133 -> 354
+    //   490: aload 8
+    //   492: getfield 295	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_net_seg_conf_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   495: invokevirtual 248	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   498: invokeinterface 251 1 0
+    //   503: astore_2
+    //   504: aload_2
+    //   505: invokeinterface 102 1 0
+    //   510: ifeq +68 -> 578
+    //   513: aload_2
+    //   514: invokeinterface 106 1 0
+    //   519: checkcast 297	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB
+    //   522: astore 7
+    //   524: new 299	com/tencent/mobileqq/highway/config/HwNetSegConf
+    //   527: dup
+    //   528: aload 7
+    //   530: getfield 302	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_net_type	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   533: invokevirtual 286	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   536: aload 7
+    //   538: getfield 305	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_size	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   541: invokevirtual 286	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   544: aload 7
+    //   546: getfield 308	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   549: invokevirtual 286	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   552: aload 7
+    //   554: getfield 311	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_cur_conn_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   557: invokevirtual 286	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   560: invokespecial 314	com/tencent/mobileqq/highway/config/HwNetSegConf:<init>	(JJJJ)V
+    //   563: astore 7
+    //   565: aload_1
+    //   566: getfield 236	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mSegConf	Ljava/util/ArrayList;
+    //   569: aload 7
+    //   571: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   574: pop
+    //   575: goto -71 -> 504
+    //   578: aload 8
+    //   580: getfield 317	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_short_video_net_conf	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   583: invokevirtual 248	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   586: invokeinterface 251 1 0
+    //   591: astore_2
+    //   592: aload_2
+    //   593: invokeinterface 102 1 0
+    //   598: ifeq +68 -> 666
+    //   601: aload_2
+    //   602: invokeinterface 106 1 0
+    //   607: checkcast 297	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB
+    //   610: astore 7
+    //   612: new 299	com/tencent/mobileqq/highway/config/HwNetSegConf
+    //   615: dup
+    //   616: aload 7
+    //   618: getfield 302	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_net_type	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   621: invokevirtual 286	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   624: aload 7
+    //   626: getfield 305	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_size	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   629: invokevirtual 286	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   632: aload 7
+    //   634: getfield 308	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   637: invokevirtual 286	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   640: aload 7
+    //   642: getfield 311	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_cur_conn_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   645: invokevirtual 286	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   648: invokespecial 314	com/tencent/mobileqq/highway/config/HwNetSegConf:<init>	(JJJJ)V
+    //   651: astore 7
+    //   653: aload_1
+    //   654: getfield 239	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mShortVideoSegConf	Ljava/util/ArrayList;
+    //   657: aload 7
+    //   659: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   662: pop
+    //   663: goto -71 -> 592
+    //   666: aload 5
+    //   668: ifnull +16 -> 684
+    //   671: aload 5
+    //   673: invokevirtual 320	java/io/FileInputStream:close	()V
+    //   676: goto +8 -> 684
+    //   679: astore_2
+    //   680: aload_2
+    //   681: invokevirtual 323	java/io/IOException:printStackTrace	()V
+    //   684: aload_1
+    //   685: astore_2
+    //   686: aload 6
+    //   688: invokevirtual 324	java/io/ByteArrayOutputStream:close	()V
+    //   691: aload_1
+    //   692: areturn
+    //   693: astore_1
+    //   694: aload_1
+    //   695: invokevirtual 323	java/io/IOException:printStackTrace	()V
+    //   698: aload_2
+    //   699: areturn
+    //   700: astore_2
+    //   701: goto +51 -> 752
+    //   704: astore_2
+    //   705: goto +68 -> 773
+    //   708: astore_1
+    //   709: goto +12 -> 721
+    //   712: astore_2
+    //   713: goto +15 -> 728
+    //   716: astore_2
+    //   717: goto +17 -> 734
+    //   720: astore_1
+    //   721: aload 6
+    //   723: astore_2
+    //   724: goto +202 -> 926
+    //   727: astore_2
+    //   728: aconst_null
+    //   729: astore_1
+    //   730: goto +22 -> 752
+    //   733: astore_2
+    //   734: aconst_null
+    //   735: astore_1
+    //   736: goto +37 -> 773
+    //   739: astore_1
+    //   740: aconst_null
+    //   741: astore_2
+    //   742: goto +184 -> 926
+    //   745: astore_2
+    //   746: aconst_null
+    //   747: astore 6
+    //   749: aload 6
+    //   751: astore_1
+    //   752: aload_2
+    //   753: astore 8
+    //   755: aload 5
+    //   757: astore 7
+    //   759: aload 6
+    //   761: astore 5
+    //   763: goto +42 -> 805
+    //   766: astore_2
+    //   767: aconst_null
+    //   768: astore 6
+    //   770: aload 6
+    //   772: astore_1
+    //   773: aload_2
+    //   774: astore 8
+    //   776: aload 5
+    //   778: astore 7
+    //   780: aload 6
+    //   782: astore 5
+    //   784: goto +84 -> 868
+    //   787: astore_1
+    //   788: aconst_null
+    //   789: astore 5
+    //   791: aload 5
+    //   793: astore_2
+    //   794: goto +132 -> 926
+    //   797: astore 8
+    //   799: aconst_null
+    //   800: astore 5
+    //   802: aload 5
+    //   804: astore_1
+    //   805: aload 7
+    //   807: astore 6
+    //   809: aload 5
+    //   811: astore_2
+    //   812: ldc 150
+    //   814: ldc_w 326
+    //   817: aload 8
+    //   819: invokestatic 330	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   822: aload 7
+    //   824: ifnull +16 -> 840
+    //   827: aload 7
+    //   829: invokevirtual 320	java/io/FileInputStream:close	()V
+    //   832: goto +8 -> 840
+    //   835: astore_2
+    //   836: aload_2
+    //   837: invokevirtual 323	java/io/IOException:printStackTrace	()V
     //   840: aload_1
-    //   841: astore 7
-    //   843: aload 5
-    //   845: getfield 310	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_net_seg_conf_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   848: invokevirtual 261	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   851: invokeinterface 264 1 0
+    //   841: astore_2
+    //   842: aload 5
+    //   844: ifnull +75 -> 919
+    //   847: aload_1
+    //   848: astore_2
+    //   849: aload 5
+    //   851: invokevirtual 324	java/io/ByteArrayOutputStream:close	()V
+    //   854: aload_1
+    //   855: areturn
     //   856: astore 8
-    //   858: aload 4
-    //   860: astore 6
-    //   862: aload_1
-    //   863: astore 7
-    //   865: aload 8
-    //   867: invokeinterface 102 1 0
-    //   872: ifeq +90 -> 962
-    //   875: aload 4
-    //   877: astore 6
-    //   879: aload_1
-    //   880: astore 7
-    //   882: aload 8
-    //   884: invokeinterface 106 1 0
-    //   889: checkcast 312	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB
-    //   892: astore 9
-    //   894: aload 4
-    //   896: astore 6
-    //   898: aload_1
-    //   899: astore 7
-    //   901: new 314	com/tencent/mobileqq/highway/config/HwNetSegConf
-    //   904: dup
-    //   905: aload 9
-    //   907: getfield 317	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_net_type	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   910: invokevirtual 299	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   913: aload 9
-    //   915: getfield 320	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_size	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   918: invokevirtual 299	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   921: aload 9
-    //   923: getfield 323	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   926: invokevirtual 299	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   929: aload 9
-    //   931: getfield 326	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_cur_conn_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   934: invokevirtual 299	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   937: invokespecial 329	com/tencent/mobileqq/highway/config/HwNetSegConf:<init>	(JJJJ)V
-    //   940: astore 9
-    //   942: aload 4
-    //   944: astore 6
-    //   946: aload_1
-    //   947: astore 7
-    //   949: aload_2
-    //   950: getfield 249	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mSegConf	Ljava/util/ArrayList;
-    //   953: aload 9
-    //   955: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   958: pop
-    //   959: goto -101 -> 858
-    //   962: aload 4
-    //   964: astore 6
-    //   966: aload_1
-    //   967: astore 7
-    //   969: aload 5
-    //   971: getfield 332	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_short_video_net_conf	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   974: invokevirtual 261	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   977: invokeinterface 264 1 0
-    //   982: astore 5
-    //   984: aload 4
-    //   986: astore 6
-    //   988: aload_1
-    //   989: astore 7
-    //   991: aload 5
-    //   993: invokeinterface 102 1 0
-    //   998: ifeq +90 -> 1088
-    //   1001: aload 4
-    //   1003: astore 6
-    //   1005: aload_1
-    //   1006: astore 7
-    //   1008: aload 5
-    //   1010: invokeinterface 106 1 0
-    //   1015: checkcast 312	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB
-    //   1018: astore 8
-    //   1020: aload 4
-    //   1022: astore 6
-    //   1024: aload_1
-    //   1025: astore 7
-    //   1027: new 314	com/tencent/mobileqq/highway/config/HwNetSegConf
-    //   1030: dup
-    //   1031: aload 8
-    //   1033: getfield 317	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_net_type	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   1036: invokevirtual 299	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   1039: aload 8
-    //   1041: getfield 320	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_size	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   1044: invokevirtual 299	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   1047: aload 8
-    //   1049: getfield 323	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   1052: invokevirtual 299	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   1055: aload 8
-    //   1057: getfield 326	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_cur_conn_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   1060: invokevirtual 299	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   1063: invokespecial 329	com/tencent/mobileqq/highway/config/HwNetSegConf:<init>	(JJJJ)V
-    //   1066: astore 8
-    //   1068: aload 4
-    //   1070: astore 6
-    //   1072: aload_1
-    //   1073: astore 7
-    //   1075: aload_2
-    //   1076: getfield 252	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mShortVideoSegConf	Ljava/util/ArrayList;
-    //   1079: aload 8
-    //   1081: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   1084: pop
-    //   1085: goto -101 -> 984
-    //   1088: aload_1
-    //   1089: ifnull +7 -> 1096
-    //   1092: aload_1
-    //   1093: invokevirtual 219	java/io/FileInputStream:close	()V
-    //   1096: aload 4
-    //   1098: ifnull +152 -> 1250
-    //   1101: aload 4
-    //   1103: invokevirtual 220	java/io/ByteArrayOutputStream:close	()V
-    //   1106: aload_2
-    //   1107: areturn
-    //   1108: astore_1
-    //   1109: aload_1
-    //   1110: invokevirtual 223	java/io/IOException:printStackTrace	()V
-    //   1113: goto -17 -> 1096
-    //   1116: astore_1
-    //   1117: aload_1
-    //   1118: invokevirtual 223	java/io/IOException:printStackTrace	()V
-    //   1121: aload_2
-    //   1122: areturn
-    //   1123: astore 4
-    //   1125: aload 4
-    //   1127: invokevirtual 223	java/io/IOException:printStackTrace	()V
-    //   1130: goto -970 -> 160
-    //   1133: astore_1
-    //   1134: aload_1
-    //   1135: invokevirtual 223	java/io/IOException:printStackTrace	()V
-    //   1138: goto -582 -> 556
-    //   1141: astore_1
-    //   1142: aload_1
-    //   1143: invokevirtual 223	java/io/IOException:printStackTrace	()V
-    //   1146: goto -344 -> 802
-    //   1149: astore_1
-    //   1150: aload_1
-    //   1151: invokevirtual 223	java/io/IOException:printStackTrace	()V
-    //   1154: goto -342 -> 812
-    //   1157: astore_2
-    //   1158: aconst_null
-    //   1159: astore 4
-    //   1161: aconst_null
-    //   1162: astore_1
-    //   1163: goto -369 -> 794
-    //   1166: astore_2
-    //   1167: aconst_null
-    //   1168: astore 4
-    //   1170: goto -376 -> 794
-    //   1173: astore 6
-    //   1175: aload_2
-    //   1176: astore_1
-    //   1177: aload 4
-    //   1179: astore 5
-    //   1181: aload 6
-    //   1183: astore_2
-    //   1184: aload_1
-    //   1185: astore 4
-    //   1187: aload 5
-    //   1189: astore_1
-    //   1190: goto -396 -> 794
-    //   1193: astore 5
-    //   1195: aconst_null
-    //   1196: astore 4
-    //   1198: aconst_null
-    //   1199: astore_1
-    //   1200: aconst_null
-    //   1201: astore_2
-    //   1202: goto -671 -> 531
-    //   1205: astore 5
-    //   1207: aconst_null
-    //   1208: astore 4
-    //   1210: aconst_null
-    //   1211: astore_2
-    //   1212: goto -681 -> 531
-    //   1215: astore 5
-    //   1217: aconst_null
-    //   1218: astore_2
-    //   1219: goto -688 -> 531
-    //   1222: astore 5
-    //   1224: aconst_null
-    //   1225: astore_1
-    //   1226: aconst_null
-    //   1227: astore 4
-    //   1229: aconst_null
-    //   1230: astore_2
-    //   1231: goto -1090 -> 141
-    //   1234: astore 5
-    //   1236: aconst_null
-    //   1237: astore_2
-    //   1238: aconst_null
-    //   1239: astore 6
-    //   1241: aload_1
-    //   1242: astore 4
-    //   1244: aload 6
-    //   1246: astore_1
-    //   1247: goto -1106 -> 141
-    //   1250: aload_2
-    //   1251: areturn
-    //   1252: astore 5
-    //   1254: aload_1
-    //   1255: astore 6
-    //   1257: aload_2
-    //   1258: astore_1
-    //   1259: aload 4
-    //   1261: astore_2
-    //   1262: aload 6
-    //   1264: astore 4
-    //   1266: goto -1125 -> 141
+    //   858: aconst_null
+    //   859: astore 5
+    //   861: aload 5
+    //   863: astore_1
+    //   864: aload 6
+    //   866: astore 7
+    //   868: aload 7
+    //   870: astore 6
+    //   872: aload 5
+    //   874: astore_2
+    //   875: ldc 150
+    //   877: ldc_w 332
+    //   880: aload 8
+    //   882: invokestatic 330	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   885: aload 7
+    //   887: ifnull +16 -> 903
+    //   890: aload 7
+    //   892: invokevirtual 320	java/io/FileInputStream:close	()V
+    //   895: goto +8 -> 903
+    //   898: astore_2
+    //   899: aload_2
+    //   900: invokevirtual 323	java/io/IOException:printStackTrace	()V
+    //   903: aload_1
+    //   904: astore_2
+    //   905: aload 5
+    //   907: ifnull +12 -> 919
+    //   910: aload_1
+    //   911: astore_2
+    //   912: aload 5
+    //   914: invokevirtual 324	java/io/ByteArrayOutputStream:close	()V
+    //   917: aload_1
+    //   918: astore_2
+    //   919: aload_2
+    //   920: areturn
+    //   921: astore_1
+    //   922: aload 6
+    //   924: astore 5
+    //   926: aload 5
+    //   928: ifnull +18 -> 946
+    //   931: aload 5
+    //   933: invokevirtual 320	java/io/FileInputStream:close	()V
+    //   936: goto +10 -> 946
+    //   939: astore 5
+    //   941: aload 5
+    //   943: invokevirtual 323	java/io/IOException:printStackTrace	()V
+    //   946: aload_2
+    //   947: ifnull +15 -> 962
+    //   950: aload_2
+    //   951: invokevirtual 324	java/io/ByteArrayOutputStream:close	()V
+    //   954: goto +8 -> 962
+    //   957: astore_2
+    //   958: aload_2
+    //   959: invokevirtual 323	java/io/IOException:printStackTrace	()V
+    //   962: goto +5 -> 967
+    //   965: aload_1
+    //   966: athrow
+    //   967: goto -2 -> 965
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1269	0	this	IpContainer
-    //   0	1269	1	paramContext	Context
-    //   0	1269	2	paramString	String
-    //   103	18	3	i	int
-    //   73	1029	4	localObject1	Object
-    //   1123	3	4	localIOException1	java.io.IOException
-    //   1159	106	4	localObject2	Object
-    //   46	13	5	localObject3	Object
-    //   127	19	5	localInvalidProtocolBufferMicroException1	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   161	146	5	localContext1	Context
-    //   529	15	5	localIOException2	java.io.IOException
-    //   557	631	5	localObject4	Object
-    //   1193	1	5	localIOException3	java.io.IOException
-    //   1205	1	5	localIOException4	java.io.IOException
-    //   1215	1	5	localIOException5	java.io.IOException
-    //   1222	1	5	localInvalidProtocolBufferMicroException2	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   1234	1	5	localInvalidProtocolBufferMicroException3	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   1252	1	5	localInvalidProtocolBufferMicroException4	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   77	994	6	localObject5	Object
-    //   1173	9	6	localObject6	Object
-    //   1239	24	6	localContext2	Context
-    //   80	994	7	localContext3	Context
-    //   319	761	8	localObject7	Object
-    //   372	582	9	localObject8	Object
-    //   355	473	10	localObject9	Object
-    //   392	336	11	localObject10	Object
-    //   458	311	12	localHwEndPointPB	com.tencent.mobileqq.highway.protocol.HwConfigPersistentPB.HwEndPointPB
+    //   0	970	0	this	IpContainer
+    //   0	970	1	paramContext	Context
+    //   0	970	2	paramString	String
+    //   103	11	3	i	int
+    //   18	9	4	bool	boolean
+    //   77	855	5	localObject1	Object
+    //   939	3	5	localIOException1	java.io.IOException
+    //   21	902	6	localObject2	Object
+    //   24	867	7	localObject3	Object
+    //   70	705	8	localObject4	Object
+    //   797	21	8	localIOException2	java.io.IOException
+    //   856	25	8	localInvalidProtocolBufferMicroException	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   222	260	9	localObject5	Object
+    //   245	179	10	localObject6	Object
+    //   283	175	11	localHwEndPointPB	com.tencent.mobileqq.highway.protocol.HwConfigPersistentPB.HwEndPointPB
     // Exception table:
     //   from	to	target	type
-    //   82	88	127	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   95	104	127	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   116	124	127	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   187	192	127	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   199	210	127	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   217	227	127	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   167	171	173	java/io/IOException
-    //   234	245	529	java/io/IOException
-    //   252	263	529	java/io/IOException
-    //   270	281	529	java/io/IOException
-    //   288	299	529	java/io/IOException
-    //   306	321	529	java/io/IOException
-    //   328	338	529	java/io/IOException
-    //   345	357	529	java/io/IOException
-    //   364	374	529	java/io/IOException
-    //   381	394	529	java/io/IOException
-    //   401	410	529	java/io/IOException
-    //   417	424	529	java/io/IOException
-    //   431	441	529	java/io/IOException
-    //   448	460	529	java/io/IOException
-    //   467	504	529	java/io/IOException
-    //   514	526	529	java/io/IOException
-    //   585	600	529	java/io/IOException
-    //   607	617	529	java/io/IOException
-    //   624	636	529	java/io/IOException
-    //   643	653	529	java/io/IOException
-    //   660	673	529	java/io/IOException
-    //   680	689	529	java/io/IOException
-    //   696	703	529	java/io/IOException
-    //   710	720	529	java/io/IOException
-    //   727	739	529	java/io/IOException
-    //   746	783	529	java/io/IOException
-    //   821	833	529	java/io/IOException
-    //   843	858	529	java/io/IOException
-    //   865	875	529	java/io/IOException
-    //   882	894	529	java/io/IOException
-    //   901	942	529	java/io/IOException
-    //   949	959	529	java/io/IOException
-    //   969	984	529	java/io/IOException
-    //   991	1001	529	java/io/IOException
-    //   1008	1020	529	java/io/IOException
-    //   1027	1068	529	java/io/IOException
-    //   1075	1085	529	java/io/IOException
-    //   564	569	571	java/io/IOException
-    //   82	88	786	finally
-    //   95	104	786	finally
-    //   116	124	786	finally
-    //   187	192	786	finally
-    //   199	210	786	finally
-    //   217	227	786	finally
-    //   234	245	786	finally
-    //   252	263	786	finally
-    //   270	281	786	finally
-    //   288	299	786	finally
-    //   306	321	786	finally
-    //   328	338	786	finally
-    //   345	357	786	finally
-    //   364	374	786	finally
-    //   381	394	786	finally
-    //   401	410	786	finally
-    //   417	424	786	finally
-    //   431	441	786	finally
-    //   448	460	786	finally
-    //   467	504	786	finally
-    //   514	526	786	finally
-    //   538	548	786	finally
-    //   585	600	786	finally
-    //   607	617	786	finally
-    //   624	636	786	finally
-    //   643	653	786	finally
-    //   660	673	786	finally
-    //   680	689	786	finally
-    //   696	703	786	finally
-    //   710	720	786	finally
-    //   727	739	786	finally
-    //   746	783	786	finally
-    //   821	833	786	finally
-    //   843	858	786	finally
-    //   865	875	786	finally
-    //   882	894	786	finally
-    //   901	942	786	finally
-    //   949	959	786	finally
-    //   969	984	786	finally
-    //   991	1001	786	finally
-    //   1008	1020	786	finally
-    //   1027	1068	786	finally
-    //   1075	1085	786	finally
-    //   1092	1096	1108	java/io/IOException
-    //   1101	1106	1116	java/io/IOException
-    //   155	160	1123	java/io/IOException
-    //   552	556	1133	java/io/IOException
-    //   798	802	1141	java/io/IOException
-    //   807	812	1149	java/io/IOException
-    //   60	66	1157	finally
-    //   66	75	1166	finally
-    //   141	150	1173	finally
-    //   60	66	1193	java/io/IOException
-    //   66	75	1205	java/io/IOException
-    //   82	88	1215	java/io/IOException
-    //   95	104	1215	java/io/IOException
-    //   116	124	1215	java/io/IOException
-    //   187	192	1215	java/io/IOException
-    //   199	210	1215	java/io/IOException
-    //   217	227	1215	java/io/IOException
-    //   60	66	1222	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   66	75	1234	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   234	245	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   252	263	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   270	281	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   288	299	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   306	321	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   328	338	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   345	357	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   364	374	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   381	394	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   401	410	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   417	424	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   431	441	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   448	460	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   467	504	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   514	526	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   585	600	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   607	617	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   624	636	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   643	653	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   660	673	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   680	689	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   696	703	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   710	720	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   727	739	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   746	783	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   821	833	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   843	858	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   865	875	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   882	894	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   901	942	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   949	959	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   969	984	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   991	1001	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   1008	1020	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   1027	1068	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   1075	1085	1252	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   671	676	679	java/io/IOException
+    //   686	691	693	java/io/IOException
+    //   849	854	693	java/io/IOException
+    //   912	917	693	java/io/IOException
+    //   146	204	700	java/io/IOException
+    //   204	263	700	java/io/IOException
+    //   263	322	700	java/io/IOException
+    //   325	337	700	java/io/IOException
+    //   340	354	700	java/io/IOException
+    //   354	413	700	java/io/IOException
+    //   413	472	700	java/io/IOException
+    //   475	487	700	java/io/IOException
+    //   490	504	700	java/io/IOException
+    //   504	575	700	java/io/IOException
+    //   578	592	700	java/io/IOException
+    //   592	663	700	java/io/IOException
+    //   146	204	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   204	263	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   263	322	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   325	337	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   340	354	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   354	413	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   413	472	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   475	487	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   490	504	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   504	575	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   578	592	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   592	663	704	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   136	146	708	finally
+    //   146	204	708	finally
+    //   204	263	708	finally
+    //   263	322	708	finally
+    //   325	337	708	finally
+    //   340	354	708	finally
+    //   354	413	708	finally
+    //   413	472	708	finally
+    //   475	487	708	finally
+    //   490	504	708	finally
+    //   504	575	708	finally
+    //   578	592	708	finally
+    //   592	663	708	finally
+    //   136	146	712	java/io/IOException
+    //   136	146	716	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   88	94	720	finally
+    //   94	104	720	finally
+    //   109	117	720	finally
+    //   120	136	720	finally
+    //   88	94	727	java/io/IOException
+    //   94	104	727	java/io/IOException
+    //   109	117	727	java/io/IOException
+    //   120	136	727	java/io/IOException
+    //   88	94	733	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   94	104	733	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   109	117	733	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   120	136	733	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   79	88	739	finally
+    //   79	88	745	java/io/IOException
+    //   79	88	766	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   72	79	787	finally
+    //   72	79	797	java/io/IOException
+    //   827	832	835	java/io/IOException
+    //   72	79	856	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   890	895	898	java/io/IOException
+    //   812	822	921	finally
+    //   875	885	921	finally
+    //   931	936	939	java/io/IOException
+    //   950	954	957	java/io/IOException
   }
   
   private IpContainer.PersistentConfig readDiskOrCreateNew(Context paramContext, String paramString)
@@ -936,17 +681,26 @@ public class IpContainer
       paramContext.mIpv6List = new ConcurrentHashMap();
       paramContext.mSegConf = new ArrayList();
       paramContext.mShortVideoSegConf = new ArrayList();
-      BdhLogUtil.LogEvent("C", "IpContainer, " + paramString + " does NOT exists.");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("IpContainer, ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" does NOT exists.");
+      BdhLogUtil.LogEvent("C", localStringBuilder.toString());
       return paramContext;
     }
-    BdhLogUtil.LogEvent("C", "IpContainer, " + paramString + " does exists.");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("IpContainer, ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" does exists.");
+    BdhLogUtil.LogEvent("C", localStringBuilder.toString());
     return paramContext;
   }
   
   public static void refreshIpLearning()
   {
-    if (mIpLearners != null) {
-      mIpLearners.clear();
+    ConcurrentHashMap localConcurrentHashMap = mIpLearners;
+    if (localConcurrentHashMap != null) {
+      localConcurrentHashMap.clear();
     }
   }
   
@@ -959,7 +713,7 @@ public class IpContainer
     //   4: invokespecial 193	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:<init>	()V
     //   7: astore 4
     //   9: aload_3
-    //   10: getfield 242	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
+    //   10: getfield 229	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
     //   13: invokevirtual 352	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
     //   16: invokeinterface 355 1 0
     //   21: astore 5
@@ -992,22 +746,22 @@ public class IpContainer
     //   97: invokeinterface 106 1 0
     //   102: checkcast 48	com/tencent/mobileqq/highway/utils/EndPoint
     //   105: astore 9
-    //   107: new 279	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB
+    //   107: new 266	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB
     //   110: dup
     //   111: invokespecial 364	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:<init>	()V
     //   114: astore 10
     //   116: aload 10
-    //   118: getfield 282	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:string_host	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   118: getfield 269	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:string_host	Lcom/tencent/mobileqq/pb/PBStringField;
     //   121: aload 9
     //   123: getfield 51	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
     //   126: invokevirtual 368	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   129: aload 10
-    //   131: getfield 286	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int32_port	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   131: getfield 273	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int32_port	Lcom/tencent/mobileqq/pb/PBInt32Field;
     //   134: aload 9
     //   136: getfield 110	com/tencent/mobileqq/highway/utils/EndPoint:port	I
     //   139: invokevirtual 371	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
     //   142: aload 10
-    //   144: getfield 294	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int64_timestampe	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   144: getfield 281	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int64_timestampe	Lcom/tencent/mobileqq/pb/PBInt64Field;
     //   147: aload 9
     //   149: getfield 130	com/tencent/mobileqq/highway/utils/EndPoint:timestamp	J
     //   152: invokevirtual 374	com/tencent/mobileqq/pb/PBInt64Field:set	(J)V
@@ -1016,25 +770,25 @@ public class IpContainer
     //   159: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   162: pop
     //   163: goto -78 -> 85
-    //   166: new 266	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB
+    //   166: new 253	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB
     //   169: dup
     //   170: invokespecial 375	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:<init>	()V
     //   173: astore 8
     //   175: aload 8
-    //   177: getfield 270	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:string_key	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   177: getfield 257	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:string_key	Lcom/tencent/mobileqq/pb/PBStringField;
     //   180: aload 6
     //   182: invokevirtual 368	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   185: aload 8
-    //   187: getfield 277	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:rpt_end_point_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   187: getfield 264	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:rpt_end_point_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   190: aload 7
     //   192: invokevirtual 378	com/tencent/mobileqq/pb/PBRepeatMessageField:set	(Ljava/util/List;)V
     //   195: aload 4
-    //   197: getfield 256	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_config_item_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   197: getfield 243	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_config_item_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   200: aload 8
     //   202: invokevirtual 381	com/tencent/mobileqq/pb/PBRepeatMessageField:add	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   205: goto -182 -> 23
     //   208: aload_3
-    //   209: getfield 245	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
+    //   209: getfield 232	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
     //   212: invokevirtual 352	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
     //   215: invokeinterface 355 1 0
     //   220: astore 5
@@ -1067,22 +821,22 @@ public class IpContainer
     //   296: invokeinterface 106 1 0
     //   301: checkcast 48	com/tencent/mobileqq/highway/utils/EndPoint
     //   304: astore 9
-    //   306: new 279	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB
+    //   306: new 266	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB
     //   309: dup
     //   310: invokespecial 364	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:<init>	()V
     //   313: astore 10
     //   315: aload 10
-    //   317: getfield 282	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:string_host	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   317: getfield 269	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:string_host	Lcom/tencent/mobileqq/pb/PBStringField;
     //   320: aload 9
     //   322: getfield 51	com/tencent/mobileqq/highway/utils/EndPoint:host	Ljava/lang/String;
     //   325: invokevirtual 368	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   328: aload 10
-    //   330: getfield 286	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int32_port	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   330: getfield 273	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int32_port	Lcom/tencent/mobileqq/pb/PBInt32Field;
     //   333: aload 9
     //   335: getfield 110	com/tencent/mobileqq/highway/utils/EndPoint:port	I
     //   338: invokevirtual 371	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
     //   341: aload 10
-    //   343: getfield 294	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int64_timestampe	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   343: getfield 281	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwEndPointPB:int64_timestampe	Lcom/tencent/mobileqq/pb/PBInt64Field;
     //   346: aload 9
     //   348: getfield 130	com/tencent/mobileqq/highway/utils/EndPoint:timestamp	J
     //   351: invokevirtual 374	com/tencent/mobileqq/pb/PBInt64Field:set	(J)V
@@ -1091,20 +845,20 @@ public class IpContainer
     //   358: invokevirtual 133	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   361: pop
     //   362: goto -78 -> 284
-    //   365: new 266	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB
+    //   365: new 253	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB
     //   368: dup
     //   369: invokespecial 375	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:<init>	()V
     //   372: astore 8
     //   374: aload 8
-    //   376: getfield 270	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:string_key	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   376: getfield 257	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:string_key	Lcom/tencent/mobileqq/pb/PBStringField;
     //   379: aload 6
     //   381: invokevirtual 368	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   384: aload 8
-    //   386: getfield 277	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:rpt_end_point_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   386: getfield 264	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigItemPB:rpt_end_point_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   389: aload 7
     //   391: invokevirtual 378	com/tencent/mobileqq/pb/PBRepeatMessageField:set	(Ljava/util/List;)V
     //   394: aload 4
-    //   396: getfield 307	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_config_item_list_ip6	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   396: getfield 292	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_config_item_list_ip6	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   399: aload 8
     //   401: invokevirtual 381	com/tencent/mobileqq/pb/PBRepeatMessageField:add	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   404: goto -182 -> 222
@@ -1113,7 +867,7 @@ public class IpContainer
     //   411: invokespecial 107	java/util/ArrayList:<init>	()V
     //   414: astore 5
     //   416: aload_3
-    //   417: getfield 249	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mSegConf	Ljava/util/ArrayList;
+    //   417: getfield 236	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mSegConf	Ljava/util/ArrayList;
     //   420: invokevirtual 96	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   423: astore 6
     //   425: aload 6
@@ -1121,29 +875,29 @@ public class IpContainer
     //   432: ifeq +87 -> 519
     //   435: aload 6
     //   437: invokeinterface 106 1 0
-    //   442: checkcast 314	com/tencent/mobileqq/highway/config/HwNetSegConf
+    //   442: checkcast 299	com/tencent/mobileqq/highway/config/HwNetSegConf
     //   445: astore 7
-    //   447: new 312	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB
+    //   447: new 297	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB
     //   450: dup
     //   451: invokespecial 382	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:<init>	()V
     //   454: astore 8
     //   456: aload 8
-    //   458: getfield 317	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_net_type	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   458: getfield 302	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_net_type	Lcom/tencent/mobileqq/pb/PBInt64Field;
     //   461: aload 7
     //   463: getfield 385	com/tencent/mobileqq/highway/config/HwNetSegConf:netType	J
     //   466: invokevirtual 374	com/tencent/mobileqq/pb/PBInt64Field:set	(J)V
     //   469: aload 8
-    //   471: getfield 320	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_size	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   471: getfield 305	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_size	Lcom/tencent/mobileqq/pb/PBInt64Field;
     //   474: aload 7
     //   476: getfield 388	com/tencent/mobileqq/highway/config/HwNetSegConf:segSize	J
     //   479: invokevirtual 374	com/tencent/mobileqq/pb/PBInt64Field:set	(J)V
     //   482: aload 8
-    //   484: getfield 323	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   484: getfield 308	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
     //   487: aload 7
     //   489: getfield 391	com/tencent/mobileqq/highway/config/HwNetSegConf:segNum	J
     //   492: invokevirtual 374	com/tencent/mobileqq/pb/PBInt64Field:set	(J)V
     //   495: aload 8
-    //   497: getfield 326	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_cur_conn_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   497: getfield 311	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_cur_conn_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
     //   500: aload 7
     //   502: getfield 394	com/tencent/mobileqq/highway/config/HwNetSegConf:curConnNum	J
     //   505: invokevirtual 374	com/tencent/mobileqq/pb/PBInt64Field:set	(J)V
@@ -1153,7 +907,7 @@ public class IpContainer
     //   515: pop
     //   516: goto -91 -> 425
     //   519: aload 4
-    //   521: getfield 310	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_net_seg_conf_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   521: getfield 295	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_net_seg_conf_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   524: aload 5
     //   526: invokevirtual 378	com/tencent/mobileqq/pb/PBRepeatMessageField:set	(Ljava/util/List;)V
     //   529: new 38	java/util/ArrayList
@@ -1161,7 +915,7 @@ public class IpContainer
     //   533: invokespecial 107	java/util/ArrayList:<init>	()V
     //   536: astore 5
     //   538: aload_3
-    //   539: getfield 249	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mSegConf	Ljava/util/ArrayList;
+    //   539: getfield 236	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mSegConf	Ljava/util/ArrayList;
     //   542: invokevirtual 96	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   545: astore_3
     //   546: aload_3
@@ -1169,29 +923,29 @@ public class IpContainer
     //   552: ifeq +86 -> 638
     //   555: aload_3
     //   556: invokeinterface 106 1 0
-    //   561: checkcast 314	com/tencent/mobileqq/highway/config/HwNetSegConf
+    //   561: checkcast 299	com/tencent/mobileqq/highway/config/HwNetSegConf
     //   564: astore 6
-    //   566: new 312	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB
+    //   566: new 297	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB
     //   569: dup
     //   570: invokespecial 382	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:<init>	()V
     //   573: astore 7
     //   575: aload 7
-    //   577: getfield 317	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_net_type	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   577: getfield 302	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_net_type	Lcom/tencent/mobileqq/pb/PBInt64Field;
     //   580: aload 6
     //   582: getfield 385	com/tencent/mobileqq/highway/config/HwNetSegConf:netType	J
     //   585: invokevirtual 374	com/tencent/mobileqq/pb/PBInt64Field:set	(J)V
     //   588: aload 7
-    //   590: getfield 320	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_size	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   590: getfield 305	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_size	Lcom/tencent/mobileqq/pb/PBInt64Field;
     //   593: aload 6
     //   595: getfield 388	com/tencent/mobileqq/highway/config/HwNetSegConf:segSize	J
     //   598: invokevirtual 374	com/tencent/mobileqq/pb/PBInt64Field:set	(J)V
     //   601: aload 7
-    //   603: getfield 323	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   603: getfield 308	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_seg_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
     //   606: aload 6
     //   608: getfield 391	com/tencent/mobileqq/highway/config/HwNetSegConf:segNum	J
     //   611: invokevirtual 374	com/tencent/mobileqq/pb/PBInt64Field:set	(J)V
     //   614: aload 7
-    //   616: getfield 326	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_cur_conn_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   616: getfield 311	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwNetSegConfPB:int64_cur_conn_num	Lcom/tencent/mobileqq/pb/PBInt64Field;
     //   619: aload 6
     //   621: getfield 394	com/tencent/mobileqq/highway/config/HwNetSegConf:curConnNum	J
     //   624: invokevirtual 374	com/tencent/mobileqq/pb/PBInt64Field:set	(J)V
@@ -1201,7 +955,7 @@ public class IpContainer
     //   634: pop
     //   635: goto -89 -> 546
     //   638: aload 4
-    //   640: getfield 332	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_short_video_net_conf	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   640: getfield 317	com/tencent/mobileqq/highway/protocol/HwConfigPersistentPB$HwConfigPB:rpt_short_video_net_conf	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   643: aload 5
     //   645: invokevirtual 378	com/tencent/mobileqq/pb/PBRepeatMessageField:set	(Ljava/util/List;)V
     //   648: new 174	java/io/File
@@ -1225,195 +979,231 @@ public class IpContainer
     //   681: invokevirtual 403	java/io/FileOutputStream:write	([B)V
     //   684: aload_3
     //   685: astore_1
-    //   686: ldc 135
-    //   688: new 137	java/lang/StringBuilder
-    //   691: dup
-    //   692: invokespecial 138	java/lang/StringBuilder:<init>	()V
-    //   695: ldc_w 405
-    //   698: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   701: aload_2
-    //   702: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   705: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   708: invokestatic 157	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   711: aload_3
-    //   712: ifnull +7 -> 719
+    //   686: new 135	java/lang/StringBuilder
+    //   689: dup
+    //   690: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   693: astore 4
+    //   695: aload_3
+    //   696: astore_1
+    //   697: aload 4
+    //   699: ldc_w 405
+    //   702: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   705: pop
+    //   706: aload_3
+    //   707: astore_1
+    //   708: aload 4
+    //   710: aload_2
+    //   711: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   714: pop
     //   715: aload_3
-    //   716: invokevirtual 406	java/io/FileOutputStream:close	()V
-    //   719: return
-    //   720: astore_1
-    //   721: aload_1
-    //   722: invokevirtual 223	java/io/IOException:printStackTrace	()V
-    //   725: return
-    //   726: astore 4
-    //   728: aconst_null
-    //   729: astore_3
-    //   730: aload_3
-    //   731: astore_1
-    //   732: ldc 135
-    //   734: new 137	java/lang/StringBuilder
-    //   737: dup
-    //   738: invokespecial 138	java/lang/StringBuilder:<init>	()V
-    //   741: ldc_w 408
-    //   744: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   747: aload_2
-    //   748: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   751: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   754: aload 4
-    //   756: invokestatic 216	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   759: aload_3
-    //   760: ifnull -41 -> 719
-    //   763: aload_3
-    //   764: invokevirtual 406	java/io/FileOutputStream:close	()V
-    //   767: return
-    //   768: astore_1
-    //   769: aload_1
-    //   770: invokevirtual 223	java/io/IOException:printStackTrace	()V
+    //   716: astore_1
+    //   717: ldc 150
+    //   719: aload 4
+    //   721: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   724: invokestatic 157	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   727: aload_3
+    //   728: invokevirtual 406	java/io/FileOutputStream:close	()V
+    //   731: return
+    //   732: astore_2
+    //   733: goto +105 -> 838
+    //   736: astore_2
+    //   737: goto +17 -> 754
+    //   740: astore 4
+    //   742: goto +42 -> 784
+    //   745: astore_2
+    //   746: aconst_null
+    //   747: astore_1
+    //   748: goto +90 -> 838
+    //   751: astore_2
+    //   752: aconst_null
+    //   753: astore_3
+    //   754: aload_3
+    //   755: astore_1
+    //   756: ldc 150
+    //   758: ldc_w 408
+    //   761: aload_2
+    //   762: invokestatic 330	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   765: aload_3
+    //   766: ifnull +71 -> 837
+    //   769: aload_3
+    //   770: invokevirtual 406	java/io/FileOutputStream:close	()V
     //   773: return
-    //   774: astore_2
-    //   775: aconst_null
-    //   776: astore_3
-    //   777: aload_3
-    //   778: astore_1
-    //   779: ldc 135
-    //   781: ldc_w 410
-    //   784: aload_2
-    //   785: invokestatic 216	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   788: aload_3
-    //   789: ifnull -70 -> 719
-    //   792: aload_3
-    //   793: invokevirtual 406	java/io/FileOutputStream:close	()V
-    //   796: return
-    //   797: astore_1
-    //   798: aload_1
-    //   799: invokevirtual 223	java/io/IOException:printStackTrace	()V
-    //   802: return
-    //   803: astore_2
-    //   804: aconst_null
-    //   805: astore_1
-    //   806: aload_1
-    //   807: ifnull +7 -> 814
-    //   810: aload_1
-    //   811: invokevirtual 406	java/io/FileOutputStream:close	()V
-    //   814: aload_2
-    //   815: athrow
+    //   774: astore_1
+    //   775: aload_1
+    //   776: invokevirtual 323	java/io/IOException:printStackTrace	()V
+    //   779: return
+    //   780: astore 4
+    //   782: aconst_null
+    //   783: astore_3
+    //   784: aload_3
+    //   785: astore_1
+    //   786: new 135	java/lang/StringBuilder
+    //   789: dup
+    //   790: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   793: astore 5
+    //   795: aload_3
+    //   796: astore_1
+    //   797: aload 5
+    //   799: ldc_w 410
+    //   802: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   805: pop
+    //   806: aload_3
+    //   807: astore_1
+    //   808: aload 5
+    //   810: aload_2
+    //   811: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   814: pop
+    //   815: aload_3
     //   816: astore_1
-    //   817: aload_1
-    //   818: invokevirtual 223	java/io/IOException:printStackTrace	()V
-    //   821: goto -7 -> 814
-    //   824: astore_2
-    //   825: goto -19 -> 806
-    //   828: astore_2
-    //   829: goto -52 -> 777
-    //   832: astore 4
-    //   834: goto -104 -> 730
+    //   817: ldc 150
+    //   819: aload 5
+    //   821: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   824: aload 4
+    //   826: invokestatic 330	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   829: aload_3
+    //   830: ifnull +7 -> 837
+    //   833: aload_3
+    //   834: invokevirtual 406	java/io/FileOutputStream:close	()V
+    //   837: return
+    //   838: aload_1
+    //   839: ifnull +15 -> 854
+    //   842: aload_1
+    //   843: invokevirtual 406	java/io/FileOutputStream:close	()V
+    //   846: goto +8 -> 854
+    //   849: astore_1
+    //   850: aload_1
+    //   851: invokevirtual 323	java/io/IOException:printStackTrace	()V
+    //   854: goto +5 -> 859
+    //   857: aload_2
+    //   858: athrow
+    //   859: goto -2 -> 857
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	837	0	this	IpContainer
-    //   0	837	1	paramContext	Context
-    //   0	837	2	paramString	String
-    //   0	837	3	paramPersistentConfig	IpContainer.PersistentConfig
-    //   7	670	4	localHwConfigPB	com.tencent.mobileqq.highway.protocol.HwConfigPersistentPB.HwConfigPB
-    //   726	29	4	localFileNotFoundException1	java.io.FileNotFoundException
-    //   832	1	4	localFileNotFoundException2	java.io.FileNotFoundException
-    //   21	623	5	localObject1	Object
-    //   55	565	6	localObject2	Object
-    //   43	587	7	localObject3	Object
-    //   67	444	8	localObject4	Object
+    //   0	862	0	this	IpContainer
+    //   0	862	1	paramContext	Context
+    //   0	862	2	paramString	String
+    //   0	862	3	paramPersistentConfig	IpContainer.PersistentConfig
+    //   7	713	4	localObject1	Object
+    //   740	1	4	localFileNotFoundException1	java.io.FileNotFoundException
+    //   780	45	4	localFileNotFoundException2	java.io.FileNotFoundException
+    //   21	799	5	localObject2	Object
+    //   55	565	6	localObject3	Object
+    //   43	587	7	localObject4	Object
+    //   67	444	8	localObject5	Object
     //   105	242	9	localEndPoint	EndPoint
     //   114	243	10	localHwEndPointPB	com.tencent.mobileqq.highway.protocol.HwConfigPersistentPB.HwEndPointPB
     // Exception table:
     //   from	to	target	type
-    //   715	719	720	java/io/IOException
-    //   664	673	726	java/io/FileNotFoundException
-    //   763	767	768	java/io/IOException
-    //   664	673	774	java/io/IOException
-    //   792	796	797	java/io/IOException
-    //   664	673	803	finally
-    //   810	814	816	java/io/IOException
-    //   675	684	824	finally
-    //   686	711	824	finally
-    //   732	759	824	finally
-    //   779	788	824	finally
-    //   675	684	828	java/io/IOException
-    //   686	711	828	java/io/IOException
-    //   675	684	832	java/io/FileNotFoundException
-    //   686	711	832	java/io/FileNotFoundException
+    //   675	684	732	finally
+    //   686	695	732	finally
+    //   697	706	732	finally
+    //   708	715	732	finally
+    //   717	727	732	finally
+    //   756	765	732	finally
+    //   786	795	732	finally
+    //   797	806	732	finally
+    //   808	815	732	finally
+    //   817	829	732	finally
+    //   675	684	736	java/io/IOException
+    //   686	695	736	java/io/IOException
+    //   697	706	736	java/io/IOException
+    //   708	715	736	java/io/IOException
+    //   717	727	736	java/io/IOException
+    //   675	684	740	java/io/FileNotFoundException
+    //   686	695	740	java/io/FileNotFoundException
+    //   697	706	740	java/io/FileNotFoundException
+    //   708	715	740	java/io/FileNotFoundException
+    //   717	727	740	java/io/FileNotFoundException
+    //   664	673	745	finally
+    //   664	673	751	java/io/IOException
+    //   727	731	774	java/io/IOException
+    //   769	773	774	java/io/IOException
+    //   833	837	774	java/io/IOException
+    //   664	673	780	java/io/FileNotFoundException
+    //   842	846	849	java/io/IOException
   }
   
   public boolean addNew(Context paramContext, HwConfig paramHwConfig, AppRuntime paramAppRuntime, ConfigManager paramConfigManager)
   {
     try
     {
-      BdhLogUtil.LogEvent("C", "IpContainer, addNew() " + paramHwConfig.ipList2String());
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("IpContainer, addNew() ");
+      paramAppRuntime.append(paramHwConfig.ipList2String());
+      BdhLogUtil.LogEvent("C", paramAppRuntime.toString());
       long l = SystemClock.uptimeMillis();
       paramAppRuntime = paramHwConfig.ipList.iterator();
       while (paramAppRuntime.hasNext()) {
         ((EndPoint)paramAppRuntime.next()).timestamp = l;
       }
       paramAppRuntime = readDiskOrCreateNew(paramContext, this.mFileName);
-    }
-    finally {}
-    if ((paramHwConfig != null) && (paramHwConfig.ipList != null) && (!paramHwConfig.ipList.isEmpty()))
-    {
+      bool3 = true;
+      if ((paramHwConfig == null) || (paramHwConfig.ipList == null) || (paramHwConfig.ipList.isEmpty())) {
+        break label398;
+      }
       insertOrReplace(paramContext, paramAppRuntime.mIpList, paramHwConfig.ipList, false);
       insertOrReplace(paramContext, this.mCfg.mIpList, paramHwConfig.ipList, true);
+      bool2 = true;
     }
-    for (boolean bool2 = true;; bool2 = false)
+    finally
     {
-      boolean bool1 = bool2;
-      if (paramHwConfig != null)
+      for (;;)
+      {
+        boolean bool3;
+        for (;;)
+        {
+          throw paramContext;
+        }
+        label398:
+        boolean bool2 = false;
+        continue;
+        boolean bool1 = bool2;
+      }
+    }
+    bool1 = bool2;
+    if (paramHwConfig != null)
+    {
+      bool1 = bool2;
+      if (paramHwConfig.ipv6List != null)
       {
         bool1 = bool2;
-        if (paramHwConfig.ipv6List != null)
+        if (!paramHwConfig.ipv6List.isEmpty())
         {
-          bool1 = bool2;
-          if (!paramHwConfig.ipv6List.isEmpty())
+          insertOrReplace(paramContext, paramAppRuntime.mIpv6List, paramHwConfig.ipv6List, false);
+          insertOrReplace(paramContext, this.mCfg.mIpv6List, paramHwConfig.ipv6List, true);
+          bool1 = true;
+        }
+      }
+    }
+    bool2 = bool1;
+    if (paramHwConfig != null)
+    {
+      bool2 = bool1;
+      if (paramHwConfig.ipList != null)
+      {
+        bool2 = bool1;
+        if (!paramHwConfig.ipList.isEmpty()) {
+          if (paramHwConfig.ipv6List != null)
+          {
+            bool2 = bool1;
+            if (!paramHwConfig.ipv6List.isEmpty()) {}
+          }
+          else
           {
             insertOrReplace(paramContext, paramAppRuntime.mIpv6List, paramHwConfig.ipv6List, false);
             insertOrReplace(paramContext, this.mCfg.mIpv6List, paramHwConfig.ipv6List, true);
-            bool1 = true;
+            bool2 = true;
           }
         }
       }
-      bool2 = bool1;
-      if (paramHwConfig != null)
-      {
-        bool2 = bool1;
-        if (paramHwConfig.ipList != null)
-        {
-          bool2 = bool1;
-          if (!paramHwConfig.ipList.isEmpty()) {
-            if (paramHwConfig.ipv6List != null)
-            {
-              bool2 = bool1;
-              if (!paramHwConfig.ipv6List.isEmpty()) {}
-            }
-            else
-            {
-              insertOrReplace(paramContext, paramAppRuntime.mIpv6List, paramHwConfig.ipv6List, false);
-              insertOrReplace(paramContext, this.mCfg.mIpv6List, paramHwConfig.ipv6List, true);
-              bool2 = true;
-            }
-          }
-        }
-      }
-      bool1 = bool2;
-      if (paramHwConfig != null)
-      {
-        bool1 = bool2;
-        if (paramHwConfig.netSegConfList != null)
-        {
-          bool1 = bool2;
-          if (!paramHwConfig.netSegConfList.isEmpty())
-          {
-            paramAppRuntime.mSegConf = paramHwConfig.netSegConfList;
-            paramAppRuntime.mShortVideoSegConf = paramHwConfig.shortVideoSegConfList;
-            this.mCfg.mSegConf = paramHwConfig.netSegConfList;
-            this.mCfg.mShortVideoSegConf = paramHwConfig.shortVideoSegConfList;
-            bool1 = true;
-          }
-        }
-      }
+    }
+    if ((paramHwConfig != null) && (paramHwConfig.netSegConfList != null) && (!paramHwConfig.netSegConfList.isEmpty()))
+    {
+      paramAppRuntime.mSegConf = paramHwConfig.netSegConfList;
+      paramAppRuntime.mShortVideoSegConf = paramHwConfig.shortVideoSegConfList;
+      this.mCfg.mSegConf = paramHwConfig.netSegConfList;
+      this.mCfg.mShortVideoSegConf = paramHwConfig.shortVideoSegConfList;
+      bool1 = bool3;
       if (bool1) {
         write2disk(paramContext, this.mFileName, paramAppRuntime);
       }
@@ -1429,276 +1219,189 @@ public class IpContainer
   
   public boolean fail(String paramString, boolean paramBoolean)
   {
-    boolean bool1 = false;
-    for (;;)
+    try
     {
-      try
+      Object localObject1 = this.mCfg;
+      boolean bool1 = false;
+      if (localObject1 == null)
       {
-        if (this.mCfg == null)
-        {
-          BdhLogUtil.LogEvent("C", "IpContainer, fail() found due to mCfg == null");
-          paramBoolean = bool1;
-          return paramBoolean;
-        }
-        if ((paramBoolean) && ((this.mCfg.mIpv6List == null) || (this.mCfg.mIpv6List.isEmpty())))
-        {
-          BdhLogUtil.LogEvent("C", "IpContainer, fail() found due to mCfg.mIpv6List == null || mCfg.mIpv6List.isEmpty()");
-          paramBoolean = bool1;
-          continue;
-        }
-        if (paramBoolean) {
-          break label110;
-        }
+        BdhLogUtil.LogEvent("C", "IpContainer, fail() found due to mCfg == null");
+        return false;
       }
-      finally {}
-      if ((this.mCfg.mIpList == null) || (this.mCfg.mIpList.isEmpty()))
+      if ((paramBoolean) && ((this.mCfg.mIpv6List == null) || (this.mCfg.mIpv6List.isEmpty())))
+      {
+        BdhLogUtil.LogEvent("C", "IpContainer, fail() found due to mCfg.mIpv6List == null || mCfg.mIpv6List.isEmpty()");
+        return false;
+      }
+      if ((!paramBoolean) && ((this.mCfg.mIpList == null) || (this.mCfg.mIpList.isEmpty())))
       {
         BdhLogUtil.LogEvent("C", "IpContainer, fail() found due to mCfg.mIpList == null || mCfg.mIpList.isEmpty()");
-        paramBoolean = bool1;
+        return false;
       }
-      else
+      ArrayList localArrayList = new ArrayList();
+      if (paramBoolean) {
+        localObject1 = this.mCfg.mIpv6List.keySet().iterator();
+      } else {
+        localObject1 = this.mCfg.mIpList.keySet().iterator();
+      }
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
       {
-        label110:
-        ArrayList localArrayList2 = new ArrayList();
-        Object localObject;
-        String str;
-        if (paramBoolean)
-        {
-          localObject = this.mCfg.mIpv6List.keySet().iterator();
-          bool1 = false;
-          if (!((Iterator)localObject).hasNext()) {
-            break label326;
-          }
-          str = (String)((Iterator)localObject).next();
-          if (!paramBoolean) {
-            break label306;
-          }
+        String str = (String)((Iterator)localObject1).next();
+        if (paramBoolean) {
+          localObject2 = (ArrayList)this.mCfg.mIpv6List.get(str);
+        } else {
+          localObject2 = (ArrayList)this.mCfg.mIpList.get(str);
         }
-        label306:
-        for (ArrayList localArrayList1 = (ArrayList)this.mCfg.mIpv6List.get(str);; localArrayList1 = (ArrayList)this.mCfg.mIpList.get(str))
+        boolean bool2 = bool1;
+        if (findNRemove((ArrayList)localObject2, paramString))
         {
-          boolean bool2 = bool1;
-          if (findNRemove(localArrayList1, paramString))
-          {
-            bool2 = true;
-            BdhLogUtil.LogEvent("C", "IpContainer, fail() remove ip " + paramString + " in " + str + " which has " + (localArrayList1.size() + 1) + " IPs");
-          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("IpContainer, fail() remove ip ");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" in ");
+          localStringBuilder.append(str);
+          localStringBuilder.append(" which has ");
+          localStringBuilder.append(((ArrayList)localObject2).size() + 1);
+          localStringBuilder.append(" IPs");
+          BdhLogUtil.LogEvent("C", localStringBuilder.toString());
+          bool2 = true;
+        }
+        bool1 = bool2;
+        if (((ArrayList)localObject2).isEmpty())
+        {
+          localArrayList.add(str);
           bool1 = bool2;
-          if (!localArrayList1.isEmpty()) {
-            break;
-          }
-          localArrayList2.add(str);
-          bool1 = bool2;
-          break;
-          localObject = this.mCfg.mIpList.keySet().iterator();
-          bool1 = false;
-          break;
         }
-        label326:
-        paramString = localArrayList2.iterator();
-        while (paramString.hasNext())
-        {
-          localObject = (String)paramString.next();
-          BdhLogUtil.LogEvent("C", "IpContainer, fail() " + (String)localObject + " is empty, remove it");
-          if (paramBoolean) {
-            this.mCfg.mIpv6List.remove(localObject);
-          } else {
-            this.mCfg.mIpList.remove(localObject);
-          }
-        }
-        if (!bool1) {
-          BdhLogUtil.LogEvent("C", "IpContainer, fail() found NONE");
-        }
-        paramBoolean = bool1;
       }
+      paramString = localArrayList.iterator();
+      while (paramString.hasNext())
+      {
+        localObject1 = (String)paramString.next();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("IpContainer, fail() ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" is empty, remove it");
+        BdhLogUtil.LogEvent("C", ((StringBuilder)localObject2).toString());
+        if (paramBoolean) {
+          this.mCfg.mIpv6List.remove(localObject1);
+        } else {
+          this.mCfg.mIpList.remove(localObject1);
+        }
+      }
+      if (!bool1) {
+        BdhLogUtil.LogEvent("C", "IpContainer, fail() found NONE");
+      }
+      return bool1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
-  /* Error */
   public EndPoint findIpCurNet(Context paramContext, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 92	com/tencent/mobileqq/highway/utils/BdhUtils:getCurNetKey	(Landroid/content/Context;)Ljava/util/ArrayList;
-    //   6: invokevirtual 96	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   9: astore_3
-    //   10: aload_3
-    //   11: invokeinterface 102 1 0
-    //   16: ifeq +74 -> 90
-    //   19: aload_3
-    //   20: invokeinterface 106 1 0
-    //   25: checkcast 53	java/lang/String
-    //   28: astore_1
-    //   29: iload_2
-    //   30: ifeq +42 -> 72
-    //   33: aload_0
-    //   34: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
-    //   37: getfield 245	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
-    //   40: aload_1
-    //   41: invokevirtual 460	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   44: checkcast 38	java/util/ArrayList
-    //   47: astore_1
-    //   48: aload_1
-    //   49: ifnull -39 -> 10
-    //   52: aload_1
-    //   53: invokevirtual 430	java/util/ArrayList:isEmpty	()Z
-    //   56: ifne -46 -> 10
-    //   59: aload_1
-    //   60: iconst_0
-    //   61: invokevirtual 46	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   64: checkcast 48	com/tencent/mobileqq/highway/utils/EndPoint
-    //   67: astore_1
-    //   68: aload_0
-    //   69: monitorexit
-    //   70: aload_1
-    //   71: areturn
-    //   72: aload_0
-    //   73: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
-    //   76: getfield 242	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
-    //   79: aload_1
-    //   80: invokevirtual 460	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   83: checkcast 38	java/util/ArrayList
-    //   86: astore_1
-    //   87: goto -39 -> 48
-    //   90: aconst_null
-    //   91: astore_1
-    //   92: goto -24 -> 68
-    //   95: astore_1
-    //   96: aload_0
-    //   97: monitorexit
-    //   98: aload_1
-    //   99: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	100	0	this	IpContainer
-    //   0	100	1	paramContext	Context
-    //   0	100	2	paramBoolean	boolean
-    //   9	11	3	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	95	finally
-    //   10	29	95	finally
-    //   33	48	95	finally
-    //   52	68	95	finally
-    //   72	87	95	finally
+    try
+    {
+      Iterator localIterator = BdhUtils.getCurNetKey(paramContext).iterator();
+      while (localIterator.hasNext())
+      {
+        paramContext = (String)localIterator.next();
+        if (paramBoolean) {
+          paramContext = (ArrayList)this.mCfg.mIpv6List.get(paramContext);
+        } else {
+          paramContext = (ArrayList)this.mCfg.mIpList.get(paramContext);
+        }
+        if ((paramContext != null) && (!paramContext.isEmpty()))
+        {
+          paramContext = (EndPoint)paramContext.get(0);
+          return paramContext;
+        }
+      }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramContext;
+    }
   }
   
-  /* Error */
   public ArrayList<EndPoint> findIpCurNetList(Context paramContext, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 92	com/tencent/mobileqq/highway/utils/BdhUtils:getCurNetKey	(Landroid/content/Context;)Ljava/util/ArrayList;
-    //   6: invokevirtual 96	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   9: astore 4
-    //   11: aload 4
-    //   13: invokeinterface 102 1 0
-    //   18: ifeq +68 -> 86
-    //   21: aload 4
-    //   23: invokeinterface 106 1 0
-    //   28: checkcast 53	java/lang/String
-    //   31: astore_1
-    //   32: iload_2
-    //   33: ifeq +35 -> 68
-    //   36: aload_0
-    //   37: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
-    //   40: getfield 245	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
-    //   43: aload_1
-    //   44: invokevirtual 460	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   47: checkcast 38	java/util/ArrayList
-    //   50: astore_1
-    //   51: aload_1
-    //   52: ifnull -41 -> 11
-    //   55: aload_1
-    //   56: invokevirtual 430	java/util/ArrayList:isEmpty	()Z
-    //   59: istore_3
-    //   60: iload_3
-    //   61: ifne -50 -> 11
-    //   64: aload_0
-    //   65: monitorexit
-    //   66: aload_1
-    //   67: areturn
-    //   68: aload_0
-    //   69: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
-    //   72: getfield 242	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
-    //   75: aload_1
-    //   76: invokevirtual 460	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   79: checkcast 38	java/util/ArrayList
-    //   82: astore_1
-    //   83: goto -32 -> 51
-    //   86: aconst_null
-    //   87: astore_1
-    //   88: goto -24 -> 64
-    //   91: astore_1
-    //   92: aload_0
-    //   93: monitorexit
-    //   94: aload_1
-    //   95: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	96	0	this	IpContainer
-    //   0	96	1	paramContext	Context
-    //   0	96	2	paramBoolean	boolean
-    //   59	2	3	bool	boolean
-    //   9	13	4	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	91	finally
-    //   11	32	91	finally
-    //   36	51	91	finally
-    //   55	60	91	finally
-    //   68	83	91	finally
+    try
+    {
+      Iterator localIterator = BdhUtils.getCurNetKey(paramContext).iterator();
+      while (localIterator.hasNext())
+      {
+        paramContext = (String)localIterator.next();
+        if (paramBoolean) {
+          paramContext = (ArrayList)this.mCfg.mIpv6List.get(paramContext);
+        } else {
+          paramContext = (ArrayList)this.mCfg.mIpList.get(paramContext);
+        }
+        if (paramContext != null)
+        {
+          boolean bool = paramContext.isEmpty();
+          if (!bool) {
+            return paramContext;
+          }
+        }
+      }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramContext;
+    }
   }
   
   public EndPoint findIpRecent(Context paramContext, boolean paramBoolean)
   {
     long l = -1L;
-    paramContext = null;
+    Object localObject1 = null;
     if (paramBoolean) {}
-    label139:
-    for (;;)
+    try
     {
-      try
+      paramContext = this.mCfg.mIpv6List.entrySet().iterator();
+      break label48;
+      paramContext = this.mCfg.mIpList.entrySet().iterator();
+      label48:
+      while (paramContext.hasNext())
       {
-        Iterator localIterator = this.mCfg.mIpv6List.entrySet().iterator();
-        if (localIterator.hasNext())
+        Object localObject2 = (ArrayList)((Map.Entry)paramContext.next()).getValue();
+        if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
         {
-          Object localObject = (ArrayList)((Map.Entry)localIterator.next()).getValue();
-          if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+          localObject2 = (EndPoint)((ArrayList)localObject2).get(0);
+          if ((localObject2 != null) && (((EndPoint)localObject2).timestamp > l))
           {
-            localObject = (EndPoint)((ArrayList)localObject).get(0);
-            if ((localObject != null) && (((EndPoint)localObject).timestamp > l))
-            {
-              l = ((EndPoint)localObject).timestamp;
-              paramContext = (Context)localObject;
-              break label139;
-              localIterator = this.mCfg.mIpList.entrySet().iterator();
-            }
+            l = ((EndPoint)localObject2).timestamp;
+            localObject1 = localObject2;
           }
         }
-        else
-        {
-          return paramContext;
-        }
       }
-      finally {}
+      return localObject1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramContext;
     }
   }
   
   public ArrayList<HwNetSegConf> getNetSegConf(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return this.mCfg.mSegConf;
-    case 0: 
-      return this.mCfg.mSegConf;
+      if (paramInt != 1) {
+        return this.mCfg.mSegConf;
+      }
+      return this.mCfg.mShortVideoSegConf;
     }
-    return this.mCfg.mShortVideoSegConf;
+    return this.mCfg.mSegConf;
   }
   
   public ArrayList<HwNetSegConf> getNetSegConf(Context paramContext)
@@ -1708,60 +1411,81 @@ public class IpContainer
   
   public boolean isEmpty()
   {
-    if (this.mCfg == null) {}
-    while (((this.mCfg.mIpv6List == null) || (this.mCfg.mIpv6List.isEmpty())) && ((this.mCfg.mIpList == null) || (this.mCfg.mIpList.isEmpty()))) {
+    IpContainer.PersistentConfig localPersistentConfig = this.mCfg;
+    if (localPersistentConfig == null) {
       return true;
     }
+    if ((localPersistentConfig.mIpv6List == null) || (this.mCfg.mIpv6List.isEmpty()))
+    {
+      if (this.mCfg.mIpList == null) {
+        break label58;
+      }
+      if (this.mCfg.mIpList.isEmpty()) {
+        return true;
+      }
+    }
     return false;
+    label58:
+    return true;
   }
   
   public boolean isEmpty(boolean paramBoolean)
   {
-    if (this.mCfg == null) {}
-    do
-    {
+    IpContainer.PersistentConfig localPersistentConfig = this.mCfg;
+    if (localPersistentConfig == null) {
       return true;
-      if (!paramBoolean) {
-        break;
-      }
-    } while ((this.mCfg.mIpv6List == null) || (this.mCfg.mIpv6List.isEmpty()));
-    do
+    }
+    if (paramBoolean)
     {
-      return false;
-      if (this.mCfg.mIpList == null) {
-        break;
+      if ((localPersistentConfig.mIpv6List == null) || (this.mCfg.mIpv6List.isEmpty())) {
+        return true;
       }
-    } while (!this.mCfg.mIpList.isEmpty());
+    }
+    else
+    {
+      if (localPersistentConfig.mIpList == null) {
+        break label61;
+      }
+      if (this.mCfg.mIpList.isEmpty()) {
+        return true;
+      }
+    }
+    return false;
+    label61:
     return true;
   }
   
   public void onConnFailed(EndPoint paramEndPoint)
   {
-    if ((paramEndPoint == null) || ("".equalsIgnoreCase(paramEndPoint.keyOfAPN))) {}
-    IpLearning localIpLearning;
-    do
+    if (paramEndPoint != null)
     {
-      return;
-      localIpLearning = getOrCreateIpLearnerByKey(paramEndPoint.keyOfAPN);
-    } while (localIpLearning == null);
-    localIpLearning.onIpConnFail(paramEndPoint.host, paramEndPoint.port);
+      if ("".equalsIgnoreCase(paramEndPoint.keyOfAPN)) {
+        return;
+      }
+      IpLearning localIpLearning = getOrCreateIpLearnerByKey(paramEndPoint.keyOfAPN);
+      if (localIpLearning != null) {
+        localIpLearning.onIpConnFail(paramEndPoint.host, paramEndPoint.port);
+      }
+    }
   }
   
   public void onConnSuccess(EndPoint paramEndPoint)
   {
-    if ((paramEndPoint == null) || ("".equalsIgnoreCase(paramEndPoint.keyOfAPN))) {}
-    IpLearning localIpLearning;
-    do
+    if (paramEndPoint != null)
     {
-      return;
-      localIpLearning = getOrCreateIpLearnerByKey(paramEndPoint.keyOfAPN);
-    } while (localIpLearning == null);
-    localIpLearning.onIpConnSucc(paramEndPoint.host, paramEndPoint.port, paramEndPoint.isSameIsp);
+      if ("".equalsIgnoreCase(paramEndPoint.keyOfAPN)) {
+        return;
+      }
+      IpLearning localIpLearning = getOrCreateIpLearnerByKey(paramEndPoint.keyOfAPN);
+      if (localIpLearning != null) {
+        localIpLearning.onIpConnSucc(paramEndPoint.host, paramEndPoint.port, paramEndPoint.isSameIsp);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.config.IpContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -26,14 +26,15 @@ public final class UserInfo
   
   public static UserInfo[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new UserInfo[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new UserInfo[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static UserInfo parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -60,42 +61,47 @@ public final class UserInfo
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    long l = this.uid;
     int i = j;
-    if (this.uid != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, this.uid);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
+    int k = this.sex;
     j = i;
-    if (this.sex != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, this.sex);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, k);
     }
     i = j;
     if (!this.nick.equals("")) {
       i = j + CodedOutputByteBufferNano.computeStringSize(3, this.nick);
     }
+    l = this.explicitId;
     j = i;
-    if (this.explicitId != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(5, this.explicitId);
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeUInt64Size(5, l);
     }
-    i = j;
+    k = j;
     if (!this.headUrl.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(6, this.headUrl);
+      k = j + CodedOutputByteBufferNano.computeStringSize(6, this.headUrl);
     }
+    l = this.imsdkTinyid;
+    i = k;
+    if (l != 0L) {
+      i = k + CodedOutputByteBufferNano.computeUInt64Size(7, l);
+    }
+    k = this.initialClientType;
     j = i;
-    if (this.imsdkTinyid != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(7, this.imsdkTinyid);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(8, k);
     }
     i = j;
-    if (this.initialClientType != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(8, this.initialClientType);
-    }
-    j = i;
     if (!this.businessUid.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(9, this.businessUid);
+      i = j + CodedOutputByteBufferNano.computeStringSize(9, this.businessUid);
     }
-    return j;
+    return i;
   }
   
   public UserInfo mergeFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -103,62 +109,91 @@ public final class UserInfo
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.uid = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 16: 
-        this.sex = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 26: 
-        this.nick = paramCodedInputByteBufferNano.readString();
-        break;
-      case 40: 
-        this.explicitId = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 50: 
-        this.headUrl = paramCodedInputByteBufferNano.readString();
-        break;
-      case 56: 
-        this.imsdkTinyid = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 64: 
-        this.initialClientType = paramCodedInputByteBufferNano.readUInt32();
+      if (i == 0) {
         break;
       }
-      this.businessUid = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (i != 26)
+          {
+            if (i != 40)
+            {
+              if (i != 50)
+              {
+                if (i != 56)
+                {
+                  if (i != 64)
+                  {
+                    if (i != 74)
+                    {
+                      if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                        return this;
+                      }
+                    }
+                    else {
+                      this.businessUid = paramCodedInputByteBufferNano.readString();
+                    }
+                  }
+                  else {
+                    this.initialClientType = paramCodedInputByteBufferNano.readUInt32();
+                  }
+                }
+                else {
+                  this.imsdkTinyid = paramCodedInputByteBufferNano.readUInt64();
+                }
+              }
+              else {
+                this.headUrl = paramCodedInputByteBufferNano.readString();
+              }
+            }
+            else {
+              this.explicitId = paramCodedInputByteBufferNano.readUInt64();
+            }
+          }
+          else {
+            this.nick = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.sex = paramCodedInputByteBufferNano.readUInt32();
+        }
+      }
+      else {
+        this.uid = paramCodedInputByteBufferNano.readUInt64();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.uid != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, this.uid);
+    long l = this.uid;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    if (this.sex != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(2, this.sex);
+    int i = this.sex;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(2, i);
     }
     if (!this.nick.equals("")) {
       paramCodedOutputByteBufferNano.writeString(3, this.nick);
     }
-    if (this.explicitId != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(5, this.explicitId);
+    l = this.explicitId;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(5, l);
     }
     if (!this.headUrl.equals("")) {
       paramCodedOutputByteBufferNano.writeString(6, this.headUrl);
     }
-    if (this.imsdkTinyid != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(7, this.imsdkTinyid);
+    l = this.imsdkTinyid;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(7, l);
     }
-    if (this.initialClientType != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(8, this.initialClientType);
+    i = this.initialClientType;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(8, i);
     }
     if (!this.businessUid.equals("")) {
       paramCodedOutputByteBufferNano.writeString(9, this.businessUid);
@@ -168,7 +203,7 @@ public final class UserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.roomAccess.roomAccess.nano.UserInfo
  * JD-Core Version:    0.7.0.1
  */

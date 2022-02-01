@@ -7,17 +7,17 @@ class MsgBoxListActivity$1$3
   
   public void run()
   {
-    if (MsgBoxListActivity.a(this.a.a) != null)
+    if (MsgBoxListActivity.access$000(this.a.a) != null)
     {
-      MsgBoxListActivity.a(this.a.a).a(2, null);
-      MsgBoxListActivity.a(this.a.a);
-      MsgBoxListActivity.b(this.a.a);
+      MsgBoxListActivity.access$000(this.a.a).a(2, null);
+      MsgBoxListActivity.access$100(this.a.a);
+      MsgBoxListActivity.access$200(this.a.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.MsgBoxListActivity.1.3
  * JD-Core Version:    0.7.0.1
  */

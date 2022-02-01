@@ -12,7 +12,12 @@ class AddPhoneNumberFragment$3$1
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("AddPhoneNumberFragment", "sendSmsCodeRequest isSuccess=" + paramBoolean + "; result=" + paramJSONObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sendSmsCodeRequest isSuccess=");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("; result=");
+    localStringBuilder.append(paramJSONObject);
+    QMLog.d("AddPhoneNumberFragment", localStringBuilder.toString());
     if (paramBoolean)
     {
       int i = paramJSONObject.optInt("intervalTime", 60);
@@ -24,7 +29,7 @@ class AddPhoneNumberFragment$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.AddPhoneNumberFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

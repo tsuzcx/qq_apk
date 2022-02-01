@@ -8,24 +8,25 @@ public class df
 {
   public static <T extends JceStruct> T a(byte[] paramArrayOfByte, T paramT, boolean paramBoolean)
   {
-    if ((paramArrayOfByte == null) || (paramT == null)) {
-      return null;
-    }
-    if (paramBoolean) {}
-    for (;;)
+    Object localObject;
+    if (paramArrayOfByte != null)
     {
-      try
-      {
-        paramT = paramT.newInit();
-        paramT.recyle();
-        paramT.readFrom(e(paramArrayOfByte));
-        return paramT;
-      }
-      catch (Exception paramArrayOfByte)
-      {
+      if (paramT == null) {
         return null;
       }
+      localObject = paramT;
+      if (!paramBoolean) {}
     }
+    try
+    {
+      localObject = paramT.newInit();
+      ((JceStruct)localObject).recyle();
+      ((JceStruct)localObject).readFrom(e(paramArrayOfByte));
+      return localObject;
+    }
+    catch (Exception paramArrayOfByte) {}
+    return null;
+    return null;
   }
   
   public static byte[] a(JceStruct paramJceStruct)
@@ -38,25 +39,35 @@ public class df
       paramJceStruct = localJceOutputStream.toByteArray();
       return paramJceStruct;
     }
-    catch (Exception paramJceStruct) {}
+    catch (Exception paramJceStruct)
+    {
+      label27:
+      break label27;
+    }
     return null;
   }
   
   public static <T extends JceStruct> T b(byte[] paramArrayOfByte, T paramT, boolean paramBoolean)
   {
-    if ((paramArrayOfByte == null) || (paramT == null)) {
-      return null;
+    Object localObject;
+    if (paramArrayOfByte != null)
+    {
+      if (paramT == null) {
+        return null;
+      }
+      localObject = paramT;
+      if (!paramBoolean) {}
     }
-    if (paramBoolean) {}
+    label49:
     for (;;)
     {
       try
       {
-        JceStruct localJceStruct = paramT.newInit();
-        localObject = localJceStruct;
-        if (localJceStruct == null) {
-          localObject = paramT;
+        localObject = paramT.newInit();
+        if (localObject != null) {
+          break label49;
         }
+        localObject = paramT;
         ((JceStruct)localObject).recyle();
         ((JceStruct)localObject).readFrom(e(paramArrayOfByte));
         return localObject;
@@ -65,7 +76,7 @@ public class df
       {
         return null;
       }
-      Object localObject = paramT;
+      return null;
     }
   }
   
@@ -78,7 +89,7 @@ public class df
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.df
  * JD-Core Version:    0.7.0.1
  */

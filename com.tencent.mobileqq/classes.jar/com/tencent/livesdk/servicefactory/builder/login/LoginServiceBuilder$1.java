@@ -3,6 +3,7 @@ package com.tencent.livesdk.servicefactory.builder.login;
 import com.tencent.falco.base.libapi.channel.ChannelInterface;
 import com.tencent.falco.base.libapi.datareport.DataReportInterface;
 import com.tencent.falco.base.libapi.generalinfo.AppGeneralInfoService;
+import com.tencent.falco.base.libapi.hostproxy.HostProxyInterface;
 import com.tencent.falco.base.libapi.http.HttpInterface;
 import com.tencent.falco.base.libapi.log.LogInterface;
 import com.tencent.falco.base.libapi.login.LoginServiceAdapter;
@@ -34,6 +35,11 @@ class LoginServiceBuilder$1
     return ((AppGeneralInfoService)this.val$serviceAccessor.getService(AppGeneralInfoService.class)).getDeviceID();
   }
   
+  public HostProxyInterface getHostProxyInterface()
+  {
+    return (HostProxyInterface)this.val$serviceAccessor.getService(HostProxyInterface.class);
+  }
+  
   public HttpInterface getHttp()
   {
     return (HttpInterface)this.val$serviceAccessor.getService(HttpInterface.class);
@@ -61,12 +67,12 @@ class LoginServiceBuilder$1
   
   public boolean loginByWns()
   {
-    return !((AppGeneralInfoService)this.val$serviceAccessor.getService(AppGeneralInfoService.class)).isLiteSdk();
+    return ((AppGeneralInfoService)this.val$serviceAccessor.getService(AppGeneralInfoService.class)).isLiteSdk() ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.login.LoginServiceBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,11 @@ package com.tencent.biz.qcircleshadow.local.activity;
 
 import android.content.res.Configuration;
 import android.view.MotionEvent;
+import com.tencent.qcircle.shadow.core.runtime.qcircle.container.PluginContainerActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QCircleDefaultProxyActivity
-  extends QCircleBaseBackActivity
+  extends PluginContainerActivity
 {
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -25,7 +26,7 @@ public class QCircleDefaultProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.activity.QCircleDefaultProxyActivity
  * JD-Core Version:    0.7.0.1
  */

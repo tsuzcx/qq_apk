@@ -21,20 +21,17 @@ public class MedalWallMng$DownloadResTask
   public void run()
   {
     long l3 = SystemClock.elapsedRealtime();
+    boolean bool = TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString);
     long l2 = 0L;
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
+    Object localObject;
+    if (bool)
     {
-      this.a.jdField_a_of_type_Int = 2;
-      this.a.jdField_b_of_type_Int = 1000;
+      localObject = this.a;
+      ((MedalWallMng.NeedGuideMedal)localObject).jdField_a_of_type_Int = 2;
+      ((MedalWallMng.NeedGuideMedal)localObject).jdField_b_of_type_Int = 1000;
     }
-    for (;;)
+    else
     {
-      Object localObject = Message.obtain();
-      ((Message)localObject).what = 2;
-      ((Message)localObject).arg1 = ((int)l2);
-      ((Message)localObject).obj = this.a;
-      this.this$0.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage((Message)localObject);
-      return;
       long l1 = l2;
       try
       {
@@ -44,34 +41,41 @@ public class MedalWallMng$DownloadResTask
         l1 = l2;
         l2 = SystemClock.elapsedRealtime() - l3;
         l1 = l2;
-        if (this.a.jdField_b_of_type_Int != 0) {
-          break label208;
+        if (this.a.jdField_b_of_type_Int == 0)
+        {
+          l1 = l2;
+          this.a.jdField_a_of_type_Int = 1;
         }
-        l1 = l2;
-        this.a.jdField_a_of_type_Int = 1;
+        else
+        {
+          l1 = l2;
+          this.a.jdField_a_of_type_Int = 2;
+        }
       }
       catch (Throwable localThrowable)
       {
-        this.a.jdField_a_of_type_Int = 2;
-        this.a.jdField_b_of_type_Int = 2000;
+        MedalWallMng.NeedGuideMedal localNeedGuideMedal = this.a;
+        localNeedGuideMedal.jdField_a_of_type_Int = 2;
+        localNeedGuideMedal.jdField_b_of_type_Int = 2000;
         localThrowable.printStackTrace();
         l2 = l1;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("MedalWallMng", 2, "DownloadResTask", localThrowable);
-        l2 = l1;
-        continue;
-        label208:
-        l1 = l2;
-        this.a.jdField_a_of_type_Int = 2;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("MedalWallMng", 2, "DownloadResTask", localThrowable);
+          l2 = l1;
+        }
       }
     }
+    Message localMessage = Message.obtain();
+    localMessage.what = 2;
+    localMessage.arg1 = ((int)l2);
+    localMessage.obj = this.a;
+    this.this$0.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalWallMng.DownloadResTask
  * JD-Core Version:    0.7.0.1
  */

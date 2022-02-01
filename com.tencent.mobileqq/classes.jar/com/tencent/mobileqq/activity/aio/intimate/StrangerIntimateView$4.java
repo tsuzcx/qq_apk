@@ -14,27 +14,31 @@ class StrangerIntimateView$4
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
+      if (paramBitmap == null) {
+        return;
+      }
       if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
         StrangerIntimateView.b(this.a).setImageBitmap(paramBitmap);
+      } else if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+        StrangerIntimateView.a(this.a).setImageBitmap(paramBitmap);
       }
-      while (QLog.isColorLevel())
+      if (QLog.isColorLevel())
       {
-        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
-        return;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          StrangerIntimateView.a(this.a).setImageBitmap(paramBitmap);
-        }
+        paramBitmap = new StringBuilder();
+        paramBitmap.append("onDecodeTaskCompleted, uin: ");
+        paramBitmap.append(paramString);
+        paramBitmap.append(", type: ");
+        paramBitmap.append(paramInt2);
+        QLog.d("intimate_relationship", 2, paramBitmap.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.StrangerIntimateView.4
  * JD-Core Version:    0.7.0.1
  */

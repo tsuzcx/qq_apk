@@ -26,26 +26,19 @@ class TimelineView$4
     ViewGroup.LayoutParams localLayoutParams = paramViewHolder.itemView.getLayoutParams();
     if (localLayoutParams != null)
     {
-      if (paramInt != 0) {
-        break label64;
-      }
-      localLayoutParams.width = TimelineView.access$1800(this.this$0);
-    }
-    for (;;)
-    {
-      paramViewHolder.itemView.setBackgroundColor(0);
-      paramViewHolder.itemView.setLayoutParams(localLayoutParams);
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      label64:
-      if (paramInt == TimelineView.access$1900(this.this$0) + 1) {
+      if (paramInt == 0) {
+        localLayoutParams.width = TimelineView.access$1800(this.this$0);
+      } else if (paramInt == TimelineView.access$1900(this.this$0) + 1) {
         localLayoutParams.width = TimelineView.access$2000(this.this$0);
       } else if (paramInt == TimelineView.access$1900(this.this$0)) {
         localLayoutParams.width = TimelineView.access$2100(this.this$0);
       } else {
         localLayoutParams.width = TimelineView.access$1600(this.this$0);
       }
+      paramViewHolder.itemView.setBackgroundColor(0);
+      paramViewHolder.itemView.setLayoutParams(localLayoutParams);
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   @NonNull
@@ -59,7 +52,7 @@ class TimelineView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.timeline.TimelineView.4
  * JD-Core Version:    0.7.0.1
  */

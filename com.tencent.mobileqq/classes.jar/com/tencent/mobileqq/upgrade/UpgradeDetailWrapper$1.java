@@ -11,10 +11,11 @@ final class UpgradeDetailWrapper$1
 {
   public UpgradeDetailWrapper a(Parcel paramParcel)
   {
+    int i = paramParcel.readInt();
     ApkUpdateDetail localApkUpdateDetail = null;
-    String str = "";
     UpgradeInfo localUpgradeInfo;
-    if (paramParcel.readInt() == 1)
+    String str;
+    if (i == 1)
     {
       localUpgradeInfo = new UpgradeInfo();
       localUpgradeInfo.iAppid = paramParcel.readInt();
@@ -39,27 +40,28 @@ final class UpgradeDetailWrapper$1
       localUpgradeInfo.strNewSoftwareURL = paramParcel.readString();
       str = paramParcel.readString();
     }
-    for (;;)
+    else
     {
-      if (paramParcel.readInt() == 1)
-      {
-        localApkUpdateDetail = new ApkUpdateDetail();
-        localApkUpdateDetail.fileMd5 = paramParcel.readString();
-        localApkUpdateDetail.newapksize = paramParcel.readInt();
-        localApkUpdateDetail.packageName = paramParcel.readString();
-        localApkUpdateDetail.patchsize = paramParcel.readInt();
-        localApkUpdateDetail.sigMd5 = paramParcel.readString();
-        localApkUpdateDetail.updatemethod = paramParcel.readInt();
-        localApkUpdateDetail.url = paramParcel.readString();
-        localApkUpdateDetail.versioncode = paramParcel.readInt();
-        localApkUpdateDetail.versionname = paramParcel.readString();
-      }
-      paramParcel = new UpgradeDetailWrapper(localUpgradeInfo, localApkUpdateDetail);
-      paramParcel.b = str;
-      paramParcel.a = ConfigHandler.a(localUpgradeInfo);
-      return paramParcel;
+      str = "";
       localUpgradeInfo = null;
     }
+    if (paramParcel.readInt() == 1)
+    {
+      localApkUpdateDetail = new ApkUpdateDetail();
+      localApkUpdateDetail.fileMd5 = paramParcel.readString();
+      localApkUpdateDetail.newapksize = paramParcel.readInt();
+      localApkUpdateDetail.packageName = paramParcel.readString();
+      localApkUpdateDetail.patchsize = paramParcel.readInt();
+      localApkUpdateDetail.sigMd5 = paramParcel.readString();
+      localApkUpdateDetail.updatemethod = paramParcel.readInt();
+      localApkUpdateDetail.url = paramParcel.readString();
+      localApkUpdateDetail.versioncode = paramParcel.readInt();
+      localApkUpdateDetail.versionname = paramParcel.readString();
+    }
+    paramParcel = new UpgradeDetailWrapper(localUpgradeInfo, localApkUpdateDetail);
+    paramParcel.b = str;
+    paramParcel.a = ConfigHandler.a(localUpgradeInfo);
+    return paramParcel;
   }
   
   public UpgradeDetailWrapper[] a(int paramInt)
@@ -69,7 +71,7 @@ final class UpgradeDetailWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeDetailWrapper.1
  * JD-Core Version:    0.7.0.1
  */

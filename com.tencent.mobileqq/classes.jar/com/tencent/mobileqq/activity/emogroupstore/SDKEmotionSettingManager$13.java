@@ -16,7 +16,7 @@ class SDKEmotionSettingManager$13
     SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager, true);
     SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).a(1);
     SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
-    if (NetworkUtil.d(BaseApplicationImpl.getContext()))
+    if (NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
     {
       paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
       SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).b(paramInt);
@@ -26,7 +26,7 @@ class SDKEmotionSettingManager$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.13
  * JD-Core Version:    0.7.0.1
  */

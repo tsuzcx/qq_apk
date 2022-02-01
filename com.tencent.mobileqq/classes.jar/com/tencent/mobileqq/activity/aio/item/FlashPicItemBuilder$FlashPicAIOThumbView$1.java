@@ -13,19 +13,24 @@ class FlashPicItemBuilder$FlashPicAIOThumbView$1
     try
     {
       synchronized (GlobalImageCache.a) {}
+      StringBuilder localStringBuilder;
       return;
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.hotchat", 2, "cache flashpic abumb exception:" + localException);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("cache flashpic abumb exception:");
+        localStringBuilder.append(localException);
+        QLog.d("Q.hotchat", 2, localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView.1
  * JD-Core Version:    0.7.0.1
  */

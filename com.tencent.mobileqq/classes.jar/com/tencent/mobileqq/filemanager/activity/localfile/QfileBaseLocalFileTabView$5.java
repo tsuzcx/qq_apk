@@ -18,56 +18,50 @@ class QfileBaseLocalFileTabView$5
   public void onClick(View paramView)
   {
     Object localObject1 = paramView.getTag();
-    FileInfo localFileInfo;
-    if ((localObject1 instanceof QfileLocalFileBaseExpandableListAdapter.LocalItemHolder))
+    boolean bool2 = localObject1 instanceof QfileLocalFileBaseExpandableListAdapter.LocalItemHolder;
+    boolean bool1 = true;
+    FileInfo localFileInfo = null;
+    Object localObject2;
+    if (bool2)
     {
       localObject1 = (QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)paramView.getTag();
       localFileInfo = (FileInfo)((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)localObject1).jdField_a_of_type_JavaLangObject;
       localObject1 = ((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
     }
-    for (;;)
+    else if ((localObject1 instanceof ImageHolder))
     {
-      if ((paramView.getId() == 2131366919) && (QfileBaseLocalFileTabView.b(this.a))) {
-        ReportController.b(QfileBaseLocalFileTabView.b(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-      }
-      Object localObject2;
-      if (localFileInfo != null)
+      localObject2 = (ImageHolder)paramView.getTag();
+      localFileInfo = (FileInfo)((ImageHolder)localObject2).jdField_a_of_type_JavaLangObject;
+      localObject1 = ((ImageHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+      if ((this.a.a.g()) || (this.a.a.h()))
       {
-        localObject2 = this.a;
-        if (paramView.getId() != 2131366919) {
-          break label245;
-        }
+        SharedPreferences.Editor localEditor = this.a.a.getSharedPreferences("LAST_CHOOSE_", 0).edit();
+        localEditor.putInt("GROUP", ((ImageHolder)localObject2).b);
+        localEditor.putInt("CHILD", (((ImageHolder)localObject2).jdField_a_of_type_Int + 1) / 4);
+        localEditor.commit();
       }
-      label245:
-      for (boolean bool = true;; bool = false)
-      {
-        ((QfileBaseLocalFileTabView)localObject2).a(localFileInfo, (View)localObject1, bool);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (!(localObject1 instanceof ImageHolder)) {
-          break label250;
-        }
-        localObject2 = (ImageHolder)paramView.getTag();
-        localFileInfo = (FileInfo)((ImageHolder)localObject2).jdField_a_of_type_JavaLangObject;
-        localObject1 = ((ImageHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-        if ((this.a.a.g()) || (this.a.a.h()))
-        {
-          SharedPreferences.Editor localEditor = this.a.a.getSharedPreferences("LAST_CHOOSE_", 0).edit();
-          localEditor.putInt("GROUP", ((ImageHolder)localObject2).b);
-          localEditor.putInt("CHILD", (((ImageHolder)localObject2).jdField_a_of_type_Int + 1) / 4);
-          localEditor.commit();
-        }
-        break;
-      }
-      label250:
-      localObject1 = null;
-      localFileInfo = null;
     }
+    else
+    {
+      localObject1 = null;
+    }
+    if ((paramView.getId() == 2131366781) && (QfileBaseLocalFileTabView.b(this.a))) {
+      ReportController.b(QfileBaseLocalFileTabView.a(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+    }
+    if (localFileInfo != null)
+    {
+      localObject2 = this.a;
+      if (paramView.getId() != 2131366781) {
+        bool1 = false;
+      }
+      ((QfileBaseLocalFileTabView)localObject2).a(localFileInfo, (View)localObject1, bool1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.5
  * JD-Core Version:    0.7.0.1
  */

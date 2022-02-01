@@ -6,11 +6,9 @@ import android.view.View;
 import com.tencent.biz.pubaccount.CustomWebChromeClient;
 import com.tencent.mobileqq.webview.swift.WebViewCallback;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
@@ -25,51 +23,46 @@ class WebViewWrapperForDoc$1
   @SuppressLint({"InflateParams"})
   public View getVideoLoadingProgressView()
   {
-    if (this.a.a != null) {
-      return this.a.a.getVideoLoadingProgressView();
+    if (WebViewWrapperForDoc.i(this.a) != null) {
+      return WebViewWrapperForDoc.j(this.a).getVideoLoadingProgressView();
     }
     return null;
   }
   
   public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    if (this.a.a != null) {
-      this.a.a.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    if (WebViewWrapperForDoc.k(this.a) != null) {
+      WebViewWrapperForDoc.l(this.a).onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
     }
   }
   
   public void onHideCustomView()
   {
-    if (this.a.a != null) {
-      this.a.a.onHideCustomView();
+    if (WebViewWrapperForDoc.g(this.a) != null) {
+      WebViewWrapperForDoc.h(this.a).onHideCustomView();
     }
   }
   
   public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    if (this.a.a != null) {
-      this.a.a.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+    if (WebViewWrapperForDoc.s(this.a) != null) {
+      WebViewWrapperForDoc.t(this.a).onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
     }
     return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
-  }
-  
-  @Override
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
-  {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
-      return true;
-    }
-    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
   }
   
   public void onProgressChanged(WebView paramWebView, int paramInt)
   {
     JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onProgressChanged:");
+      localStringBuilder.append(paramInt);
+      QLog.d("WebLog_WebViewWrapper", 2, localStringBuilder.toString());
     }
-    if (this.a.a != null) {
-      this.a.a.onProgressChanged(paramWebView, paramInt);
+    if (WebViewWrapperForDoc.a(this.a) != null) {
+      WebViewWrapperForDoc.b(this.a).onProgressChanged(paramWebView, paramInt);
     }
     if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
       paramWebView.getSettings().setLoadsImagesAutomatically(true);
@@ -78,43 +71,43 @@ class WebViewWrapperForDoc$1
   
   public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    if (this.a.a != null) {
-      this.a.a.onReceivedTitle(paramWebView, paramString);
+    if (WebViewWrapperForDoc.m(this.a) != null) {
+      WebViewWrapperForDoc.n(this.a).onReceivedTitle(paramWebView, paramString);
     }
   }
   
   public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    if (this.a.a != null) {
-      this.a.a.showCustomView(paramView, paramInt, paramCustomViewCallback);
+    if (WebViewWrapperForDoc.e(this.a) != null) {
+      WebViewWrapperForDoc.f(this.a).showCustomView(paramView, paramInt, paramCustomViewCallback);
     }
   }
   
   public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    if (this.a.a != null) {
-      this.a.a.showCustomView(paramView, 10, paramCustomViewCallback);
+    if (WebViewWrapperForDoc.c(this.a) != null) {
+      WebViewWrapperForDoc.d(this.a).showCustomView(paramView, 10, paramCustomViewCallback);
     }
   }
   
   public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    if ((paramValueCallback != null) && (this.a.a != null)) {
-      return this.a.a.onShowFileChooser(paramValueCallback, paramFileChooserParams);
+    if ((paramValueCallback != null) && (WebViewWrapperForDoc.q(this.a) != null)) {
+      return WebViewWrapperForDoc.r(this.a).onShowFileChooser(paramValueCallback, paramFileChooserParams);
     }
     return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
   }
   
   public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
-    if (this.a.a != null) {
-      this.a.a.openFileChooser(paramValueCallback, paramString1, paramString2);
+    if (WebViewWrapperForDoc.o(this.a) != null) {
+      WebViewWrapperForDoc.p(this.a).openFileChooser(paramValueCallback, paramString1, paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.WebViewWrapperForDoc.1
  * JD-Core Version:    0.7.0.1
  */

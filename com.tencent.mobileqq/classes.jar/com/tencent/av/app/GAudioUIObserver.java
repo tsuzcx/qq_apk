@@ -76,158 +76,265 @@ public class GAudioUIObserver
   {
     paramObject = (Object[])paramObject;
     int i = ((Integer)paramObject[0]).intValue();
-    switch (i)
+    if (i != 209)
     {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("qav.GAudioUIObserver", 2, "OnUpdate-->Wrong notify type.Type = " + i);
+      if (i != 210)
+      {
+        if (i != 409)
+        {
+          if (i != 410)
+          {
+            switch (i)
+            {
+            default: 
+              switch (i)
+              {
+              default: 
+                long l1;
+                long l2;
+                switch (i)
+                {
+                default: 
+                  int j;
+                  switch (i)
+                  {
+                  default: 
+                    switch (i)
+                    {
+                    default: 
+                      switch (i)
+                      {
+                      default: 
+                        switch (i)
+                        {
+                        default: 
+                          break;
+                        case 516: 
+                          a(((Long)paramObject[1]).longValue(), (String)paramObject[2]);
+                          return;
+                        case 515: 
+                          e(((Long)paramObject[1]).longValue());
+                          return;
+                        case 514: 
+                          d(((Long)paramObject[1]).longValue());
+                          return;
+                        case 513: 
+                          b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (String)paramObject[3]);
+                          return;
+                        }
+                        break;
+                      case 303: 
+                        c(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue());
+                        return;
+                      case 302: 
+                        b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue());
+                        return;
+                      case 301: 
+                        b(((Long)paramObject[1]).longValue());
+                        return;
+                      }
+                      break;
+                    case 142: 
+                      a((ArrayList)paramObject[1], ((Integer)paramObject[2]).intValue());
+                      return;
+                    case 141: 
+                      a((ArrayList)paramObject[1]);
+                      return;
+                    case 140: 
+                      d(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
+                      return;
+                    case 139: 
+                      a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue(), ((Boolean)paramObject[3]).booleanValue());
+                      return;
+                    case 138: 
+                      a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Boolean)paramObject[4]).booleanValue());
+                      return;
+                    }
+                    break;
+                  case 99: 
+                    a();
+                    return;
+                  case 96: 
+                  case 97: 
+                  case 98: 
+                    l1 = ((Long)paramObject[1]).longValue();
+                    l2 = ((Long)paramObject[2]).longValue();
+                    j = ((Integer)paramObject[3]).intValue();
+                    a(SeqUtil.a(paramObject, 4), i, 0L, l1, l2, j);
+                    return;
+                  case 90: 
+                  case 91: 
+                  case 92: 
+                  case 93: 
+                  case 94: 
+                  case 95: 
+                    l1 = ((Long)paramObject[1]).longValue();
+                    l2 = ((Long)paramObject[2]).longValue();
+                    long l3 = ((Long)paramObject[3]).longValue();
+                    j = ((Integer)paramObject[4]).intValue();
+                    a(SeqUtil.a(paramObject, 5), i, l1, l2, l3, j);
+                    return;
+                  case 89: 
+                    a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (String)paramObject[3]);
+                    return;
+                  case 88: 
+                    b(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+                    return;
+                  case 87: 
+                    a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
+                    return;
+                  case 86: 
+                    b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Integer)paramObject[3]).intValue());
+                    return;
+                  case 85: 
+                    a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Integer)paramObject[3]).intValue());
+                    return;
+                  case 84: 
+                    c();
+                    return;
+                  case 83: 
+                    l1 = ((Long)paramObject[1]).longValue();
+                    a(SeqUtil.a(paramObject, 2), l1);
+                    return;
+                  case 82: 
+                    a((String)paramObject[1], (String[])paramObject[2]);
+                    return;
+                  case 81: 
+                    c(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
+                    return;
+                  case 80: 
+                    l1 = ((Long)paramObject[1]).longValue();
+                    b(SeqUtil.a(paramObject, 2), l1);
+                    return;
+                  case 79: 
+                    a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue(), ((Integer)paramObject[3]).intValue());
+                    return;
+                  case 78: 
+                    b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), false, ((Boolean)paramObject[3]).booleanValue());
+                    return;
+                  case 77: 
+                    b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), true, ((Boolean)paramObject[3]).booleanValue());
+                    return;
+                  }
+                  break;
+                case 74: 
+                  l1 = ((Long)paramObject[1]).longValue();
+                  l2 = ((Long)paramObject[2]).longValue();
+                  i = ((Integer)paramObject[3]).intValue();
+                  a(SeqUtil.a(paramObject, 4), l1, l2, i, false);
+                  return;
+                case 73: 
+                  l1 = ((Long)paramObject[1]).longValue();
+                  l2 = ((Long)paramObject[2]).longValue();
+                  i = ((Integer)paramObject[3]).intValue();
+                  a(SeqUtil.a(paramObject, 4), l1, l2, i, true);
+                  return;
+                case 72: 
+                  l1 = ((Long)paramObject[1]).longValue();
+                  i = ((Integer)paramObject[2]).intValue();
+                  a(l1, ((Long)paramObject[3]).longValue(), i, false);
+                  return;
+                case 71: 
+                  l1 = ((Long)paramObject[1]).longValue();
+                  i = ((Integer)paramObject[2]).intValue();
+                  a(l1, ((Long)paramObject[3]).longValue(), i, true);
+                  return;
+                case 70: 
+                  l1 = ((Long)paramObject[1]).longValue();
+                  l2 = ((Long)paramObject[2]).longValue();
+                  i = ((Integer)paramObject[3]).intValue();
+                  a(SeqUtil.a(paramObject, 4), l1, l2, i);
+                  return;
+                case 69: 
+                  c(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
+                  return;
+                case 68: 
+                  b(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
+                  return;
+                case 67: 
+                  a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
+                  return;
+                case 66: 
+                  a(((Long)paramObject[1]).longValue());
+                  return;
+                }
+                break;
+              case 64: 
+                a(((Long)paramObject[1]).longValue(), (ArrayList)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
+                return;
+              case 63: 
+                a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue(), ((Boolean)paramObject[3]).booleanValue(), ((Integer)paramObject[4]).intValue());
+                return;
+              case 62: 
+                a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue());
+                return;
+              case 61: 
+                a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue(), ((Boolean)paramObject[4]).booleanValue());
+                return;
+              }
+            case 707: 
+              f();
+              return;
+            case 521: 
+              a(((Integer)paramObject[1]).intValue(), (byte[])paramObject[2]);
+              if (!QLog.isColorLevel()) {
+                return;
+              }
+              paramObject = new StringBuilder();
+              paramObject.append("OnUpdate-->Wrong notify type.Type = ");
+              paramObject.append(i);
+              QLog.e("qav.GAudioUIObserver", 2, paramObject.toString());
+              return;
+            case 502: 
+              a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), SeqUtil.a(paramObject, 6), ((Long)paramObject[7]).longValue());
+              return;
+            case 500: 
+              a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue(), SeqUtil.a(paramObject, 5), ((Long)paramObject[6]).longValue());
+              return;
+            case 406: 
+              e();
+              return;
+            case 404: 
+              d(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
+              return;
+            case 309: 
+              a((String)paramObject[1], (String)paramObject[2]);
+              return;
+            case 307: 
+              d();
+              return;
+            case 202: 
+              a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
+              return;
+            case 200: 
+              a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+              return;
+            case 157: 
+              b(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
+              return;
+            case 21: 
+              a(((Integer)paramObject[1]).intValue());
+              return;
+            case 12: 
+              a((RecvMsg)paramObject[1]);
+              return;
+            }
+            b();
+            return;
+          }
+          c(((Long)paramObject[1]).longValue());
+          return;
+        }
+        a(((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+        return;
       }
-      return;
-      b();
-      return;
-      a((RecvMsg)paramObject[1]);
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue(), ((Boolean)paramObject[4]).booleanValue());
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue());
-      return;
-      c(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
-      return;
-      long l1 = ((Long)paramObject[1]).longValue();
-      long l2 = ((Long)paramObject[2]).longValue();
-      i = ((Integer)paramObject[3]).intValue();
-      a(SeqUtil.a(paramObject, 4), l1, l2, i);
-      return;
-      b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), true, ((Boolean)paramObject[3]).booleanValue());
-      return;
-      b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), false, ((Boolean)paramObject[3]).booleanValue());
-      return;
-      l1 = ((Long)paramObject[1]).longValue();
-      l2 = ((Long)paramObject[2]).longValue();
-      long l3 = ((Long)paramObject[3]).longValue();
-      int j = ((Integer)paramObject[4]).intValue();
-      a(SeqUtil.a(paramObject, 5), i, l1, l2, l3, j);
-      return;
-      l1 = ((Long)paramObject[1]).longValue();
-      l2 = ((Long)paramObject[2]).longValue();
-      j = ((Integer)paramObject[3]).intValue();
-      a(SeqUtil.a(paramObject, 4), i, 0L, l1, l2, j);
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue(), ((Boolean)paramObject[3]).booleanValue(), ((Integer)paramObject[4]).intValue());
-      return;
-      a(((Long)paramObject[1]).longValue(), (ArrayList)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
-      return;
-      a(((Long)paramObject[1]).longValue());
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
-      return;
-      b(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
-      return;
-      a(((Integer)paramObject[1]).intValue());
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue(), ((Integer)paramObject[3]).intValue());
-      return;
-      l1 = ((Long)paramObject[1]).longValue();
-      b(SeqUtil.a(paramObject, 2), l1);
-      return;
-      l1 = ((Long)paramObject[1]).longValue();
-      a(SeqUtil.a(paramObject, 2), l1);
-      return;
-      a();
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
-      return;
-      c(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
-      return;
-      a((String)paramObject[1], (String[])paramObject[2]);
-      return;
-      c();
-      return;
-      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Integer)paramObject[3]).intValue());
-      return;
-      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Integer)paramObject[3]).intValue());
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
-      return;
-      l1 = ((Long)paramObject[1]).longValue();
-      i = ((Integer)paramObject[2]).intValue();
-      a(l1, ((Long)paramObject[3]).longValue(), i, true);
-      return;
-      l1 = ((Long)paramObject[1]).longValue();
-      i = ((Integer)paramObject[2]).intValue();
-      a(l1, ((Long)paramObject[3]).longValue(), i, false);
-      return;
-      l1 = ((Long)paramObject[1]).longValue();
-      l2 = ((Long)paramObject[2]).longValue();
-      i = ((Integer)paramObject[3]).intValue();
-      a(SeqUtil.a(paramObject, 4), l1, l2, i, true);
-      return;
-      l1 = ((Long)paramObject[1]).longValue();
-      l2 = ((Long)paramObject[2]).longValue();
-      i = ((Integer)paramObject[3]).intValue();
-      a(SeqUtil.a(paramObject, 4), l1, l2, i, false);
-      return;
-      b(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (String)paramObject[3]);
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Boolean)paramObject[4]).booleanValue());
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue(), ((Boolean)paramObject[3]).booleanValue());
-      return;
-      d(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
-      return;
-      a((ArrayList)paramObject[1]);
-      return;
-      a((ArrayList)paramObject[1], ((Integer)paramObject[2]).intValue());
-      return;
-      b(((Long)paramObject[1]).longValue());
-      return;
-      b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue());
-      return;
-      c(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue());
-      return;
-      d();
-      return;
-      e();
-      return;
-      d(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
-      return;
-      a(((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-      return;
-      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue(), SeqUtil.a(paramObject, 5), ((Long)paramObject[6]).longValue());
-      return;
-      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), SeqUtil.a(paramObject, 6), ((Long)paramObject[7]).longValue());
-      return;
-      a((String)paramObject[1], (String)paramObject[2]);
-      return;
-      c(((Long)paramObject[1]).longValue());
-      return;
-      f();
-      return;
-      b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (String)paramObject[3]);
-      return;
-      d(((Long)paramObject[1]).longValue());
-      return;
-      e(((Long)paramObject[1]).longValue());
-      return;
-      a(((Long)paramObject[1]).longValue(), (String)paramObject[2]);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("qav.GAudioUIObserver", 2, "TYPE_NOTIFY_RANDOM_MULTI_OWNER_PUSH [random room owner]");
-      }
-      a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
-      return;
       b(((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
       return;
-      b(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
-      return;
-      a(((Integer)paramObject[1]).intValue(), (byte[])paramObject[2]);
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("qav.GAudioUIObserver", 2, "TYPE_NOTIFY_RANDOM_MULTI_OWNER_PUSH [random room owner]");
+    }
+    a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
   }
   
   protected void a(String paramString1, String paramString2) {}
@@ -300,7 +407,7 @@ public class GAudioUIObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.GAudioUIObserver
  * JD-Core Version:    0.7.0.1
  */

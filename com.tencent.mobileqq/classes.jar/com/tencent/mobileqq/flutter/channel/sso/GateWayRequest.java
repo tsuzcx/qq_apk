@@ -20,7 +20,7 @@ public class GateWayRequest
     return "QQExpand.Test.Debug";
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     gateway.SSOUpStream localSSOUpStream = new gateway.SSOUpStream();
     localSSOUpStream.head = new gateway.SSOUpStreamHead();
@@ -30,7 +30,7 @@ public class GateWayRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.sso.GateWayRequest
  * JD-Core Version:    0.7.0.1
  */

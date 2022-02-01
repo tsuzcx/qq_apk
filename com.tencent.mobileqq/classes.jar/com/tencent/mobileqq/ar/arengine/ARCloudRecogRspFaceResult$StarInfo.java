@@ -13,12 +13,36 @@ public class ARCloudRecogRspFaceResult$StarInfo
   
   public String toString()
   {
-    return "StarInfo{faceID=" + this.jdField_a_of_type_Int + ", uin=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pinyin_name='" + this.b + '\'' + ", wiki='" + this.c + '\'' + ", wikiTitle='" + this.d + '\'' + ", wikiURL='" + this.e + '\'' + ", confidence='" + this.jdField_a_of_type_Float + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StarInfo{faceID=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", uin=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pinyin_name='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", wiki='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", wikiTitle='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", wikiURL='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", confidence='");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudRecogRspFaceResult.StarInfo
  * JD-Core Version:    0.7.0.1
  */

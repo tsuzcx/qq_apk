@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.troop.handler.TroopListHandler;
+import com.tencent.mobileqq.troop.api.handler.ITroopListHandler;
+import com.tencent.mobileqq.troop.api.handler.ITroopMemberListHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -16,28 +16,29 @@ class TroopDisbandActivity$1
   {
     try
     {
-      Object localObject = (TroopHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-      TroopListHandler localTroopListHandler = (TroopListHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER);
-      if ((localObject != null) && (localTroopListHandler != null))
+      Object localObject = (ITroopMemberListHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER);
+      ITroopListHandler localITroopListHandler = (ITroopListHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER);
+      if ((localObject != null) && (localITroopListHandler != null))
       {
         long l = Long.parseLong(this.this$0.a);
-        ((TroopHandler)localObject).a(l, 0L, 5, 6, 1);
+        ((ITroopMemberListHandler)localObject).a(l, 0L, 5, 6, 1);
         localObject = new ArrayList();
         ((ArrayList)localObject).add(Long.valueOf(l));
-        localTroopListHandler.b((ArrayList)localObject);
+        localITroopListHandler.a((ArrayList)localObject);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.troopdisband.disband", 2, localException.toString());
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.troopdisband.disband", 2, localException.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopDisbandActivity.1
  * JD-Core Version:    0.7.0.1
  */

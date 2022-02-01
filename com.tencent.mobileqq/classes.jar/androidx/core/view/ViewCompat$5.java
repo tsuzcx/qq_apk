@@ -3,7 +3,7 @@ package androidx.core.view;
 import android.view.View;
 import androidx.annotation.RequiresApi;
 
-final class ViewCompat$5
+class ViewCompat$5
   extends ViewCompat.AccessibilityViewProperty<Boolean>
 {
   ViewCompat$5(int paramInt1, Class paramClass, int paramInt2)
@@ -25,12 +25,12 @@ final class ViewCompat$5
   
   boolean shouldUpdate(Boolean paramBoolean1, Boolean paramBoolean2)
   {
-    return !booleanNullToFalseEquals(paramBoolean1, paramBoolean2);
+    return booleanNullToFalseEquals(paramBoolean1, paramBoolean2) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.ViewCompat.5
  * JD-Core Version:    0.7.0.1
  */

@@ -15,56 +15,49 @@ class HippyTextInput$1
   {
     int i = HippyTextInput.access$000(this.this$0);
     int j = HippyTextInput.access$100(this.this$0);
-    if ((i == -1) || (j == -1))
+    if ((i != -1) && (j != -1))
     {
-      HippyTextInput.access$202(this.this$0, i);
-      HippyTextInput.access$302(this.this$0, HippyTextInput.access$400(this.this$0));
-      return;
-    }
-    if (HippyTextInput.access$200(this.this$0) == -1) {
-      if (i > j * 0.8F) {
+      if (HippyTextInput.access$200(this.this$0) == -1) {
+        if (i <= j * 0.8F) {}
+      }
+      for (;;)
+      {
         HippyTextInput.access$502(this.this$0, false);
-      }
-    }
-    for (;;)
-    {
-      HippyTextInput.access$202(this.this$0, i);
-      HippyTextInput.access$302(this.this$0, HippyTextInput.access$400(this.this$0));
-      return;
-      HippyMap localHippyMap;
-      if (!HippyTextInput.access$500(this.this$0))
-      {
-        localHippyMap = new HippyMap();
-        localHippyMap.pushInt("keyboardHeight", Math.abs(j - i));
-        ((EventDispatcher)this.this$0.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(this.this$0.getId(), "onKeyboardWillShow", localHippyMap);
-      }
-      HippyTextInput.access$502(this.this$0, true);
-      continue;
-      if (i > j * 0.8F)
-      {
+        break label285;
+        if (HippyTextInput.access$500(this.this$0)) {
+          break label276;
+        }
+        localObject = new HippyMap();
+        ((HippyMap)localObject).pushInt("keyboardHeight", Math.abs(j - i));
+        ((EventDispatcher)this.this$0.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(this.this$0.getId(), "onKeyboardWillShow", localObject);
+        break label276;
+        if (i <= j * 0.8F) {
+          break;
+        }
         if (HippyTextInput.access$500(this.this$0) == true)
         {
-          localHippyMap = new HippyMap();
-          ((EventDispatcher)this.this$0.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(this.this$0.getId(), "onKeyboardWillHide", localHippyMap);
+          localObject = new HippyMap();
+          ((EventDispatcher)this.this$0.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(this.this$0.getId(), "onKeyboardWillHide", localObject);
         }
-        HippyTextInput.access$502(this.this$0, false);
       }
-      else
+      if (!HippyTextInput.access$500(this.this$0))
       {
-        if (!HippyTextInput.access$500(this.this$0))
-        {
-          localHippyMap = new HippyMap();
-          localHippyMap.pushInt("keyboardHeight", Math.abs(HippyTextInput.access$200(this.this$0) - i));
-          ((EventDispatcher)this.this$0.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(this.this$0.getId(), "onKeyboardWillShow", localHippyMap);
-        }
-        HippyTextInput.access$502(this.this$0, true);
+        localObject = new HippyMap();
+        ((HippyMap)localObject).pushInt("keyboardHeight", Math.abs(HippyTextInput.access$200(this.this$0) - i));
+        ((EventDispatcher)this.this$0.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(this.this$0.getId(), "onKeyboardWillShow", localObject);
       }
+      label276:
+      HippyTextInput.access$502(this.this$0, true);
     }
+    label285:
+    HippyTextInput.access$202(this.this$0, i);
+    Object localObject = this.this$0;
+    HippyTextInput.access$302((HippyTextInput)localObject, HippyTextInput.access$400((HippyTextInput)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.textinput.HippyTextInput.1
  * JD-Core Version:    0.7.0.1
  */

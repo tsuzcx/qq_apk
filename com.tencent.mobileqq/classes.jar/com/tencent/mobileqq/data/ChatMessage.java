@@ -62,10 +62,11 @@ public abstract class ChatMessage
   
   public boolean isSend()
   {
-    if (this.fakeSenderType == 1) {
+    int i = this.fakeSenderType;
+    if (i == 1) {
       return true;
     }
-    if (this.fakeSenderType == 2) {
+    if (i == 2) {
       return false;
     }
     if (this.isMultiMsg) {
@@ -126,7 +127,7 @@ public abstract class ChatMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.ChatMessage
  * JD-Core Version:    0.7.0.1
  */

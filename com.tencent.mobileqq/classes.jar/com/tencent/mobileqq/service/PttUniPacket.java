@@ -11,7 +11,7 @@ import java.util.Set;
 public class PttUniPacket
   extends UniPacket
 {
-  public static String TAG = PttUniPacket.class.getSimpleName();
+  public static String TAG = "PttUniPacket";
   JceOutputStream josAttribute;
   JceOutputStream josData;
   JceOutputStream josPackage;
@@ -25,11 +25,14 @@ public class PttUniPacket
   {
     if (this._package.iVersion == 2)
     {
-      if ((this._package.sServantName == null) || (this._package.sServantName.equals(""))) {
-        throw new IllegalArgumentException("servantName can not is null");
+      if ((this._package.sServantName != null) && (!this._package.sServantName.equals("")))
+      {
+        if ((this._package.sFuncName == null) || (this._package.sFuncName.equals(""))) {
+          throw new IllegalArgumentException("funcName can not is null");
+        }
       }
-      if ((this._package.sFuncName == null) || (this._package.sFuncName.equals(""))) {
-        throw new IllegalArgumentException("funcName can not is null");
+      else {
+        throw new IllegalArgumentException("servantName can not is null");
       }
     }
     else
@@ -41,73 +44,70 @@ public class PttUniPacket
         this._package.sFuncName = "";
       }
     }
-    if (this.josData == null)
-    {
+    Object localObject = this.josData;
+    if (localObject == null) {
       this.josData = new JceOutputStream(0);
-      this.josData.setServerEncoding(this.encodeName);
-      if ((this._package.iVersion != 2) && (this._package.iVersion != 1)) {
-        break label304;
-      }
-      this.josData.write(this._data, 0);
-      label184:
-      this._package.sBuffer = JceUtil.getJceBufArray(this.josData.getByteBuffer());
-      if (this.josPackage != null) {
-        break label319;
-      }
-      this.josPackage = new JceOutputStream(0);
+    } else {
+      ((JceOutputStream)localObject).getByteBuffer().clear();
     }
-    for (;;)
-    {
-      this.josPackage.setServerEncoding(this.encodeName);
-      writeTo(this.josPackage);
-      int i = this.josPackage.getByteBuffer().position();
-      Object localObject = ByteBuffer.allocate(i + 4);
-      ((ByteBuffer)localObject).putInt(i + 4);
-      localObject = ((ByteBuffer)localObject).array();
-      System.arraycopy(this.josPackage.getByteBuffer().array(), 0, localObject, 4, i);
-      return localObject;
-      this.josData.getByteBuffer().clear();
-      break;
-      label304:
+    this.josData.setServerEncoding(this.encodeName);
+    if ((this._package.iVersion != 2) && (this._package.iVersion != 1)) {
       this.josData.write(this._newData, 0);
-      break label184;
-      label319:
-      this.josPackage.getByteBuffer().clear();
+    } else {
+      this.josData.write(this._data, 0);
     }
+    this._package.sBuffer = JceUtil.getJceBufArray(this.josData.getByteBuffer());
+    localObject = this.josPackage;
+    if (localObject == null) {
+      this.josPackage = new JceOutputStream(0);
+    } else {
+      ((JceOutputStream)localObject).getByteBuffer().clear();
+    }
+    this.josPackage.setServerEncoding(this.encodeName);
+    writeTo(this.josPackage);
+    int i = this.josPackage.getByteBuffer().position();
+    int j = i + 4;
+    localObject = ByteBuffer.allocate(j);
+    ((ByteBuffer)localObject).putInt(j);
+    localObject = ((ByteBuffer)localObject).array();
+    System.arraycopy(this.josPackage.getByteBuffer().array(), 0, localObject, 4, i);
+    return localObject;
   }
   
   public <T> void put(String paramString, T paramT)
   {
     if (this._newData != null)
     {
-      if (paramString == null) {
-        throw new IllegalArgumentException("put key can not is null");
-      }
-      if (paramT == null) {
+      if (paramString != null)
+      {
+        if (paramT != null)
+        {
+          if (!(paramT instanceof Set))
+          {
+            JceOutputStream localJceOutputStream = this.josAttribute;
+            if (localJceOutputStream == null) {
+              this.josAttribute = new JceOutputStream();
+            } else {
+              localJceOutputStream.getByteBuffer().clear();
+            }
+            this.josAttribute.setServerEncoding(this.encodeName);
+            this.josAttribute.write(paramT, 0);
+            paramT = JceUtil.getJceBufArray(this.josAttribute.getByteBuffer());
+            this._newData.put(paramString, paramT);
+            return;
+          }
+          throw new IllegalArgumentException("can not support Set");
+        }
         throw new IllegalArgumentException("put value can not is null");
       }
-      if ((paramT instanceof Set)) {
-        throw new IllegalArgumentException("can not support Set");
-      }
-      if (this.josAttribute == null) {
-        this.josAttribute = new JceOutputStream();
-      }
-      for (;;)
-      {
-        this.josAttribute.setServerEncoding(this.encodeName);
-        this.josAttribute.write(paramT, 0);
-        paramT = JceUtil.getJceBufArray(this.josAttribute.getByteBuffer());
-        this._newData.put(paramString, paramT);
-        return;
-        this.josAttribute.getByteBuffer().clear();
-      }
+      throw new IllegalArgumentException("put key can not is null");
     }
     super.put(paramString, paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.PttUniPacket
  * JD-Core Version:    0.7.0.1
  */

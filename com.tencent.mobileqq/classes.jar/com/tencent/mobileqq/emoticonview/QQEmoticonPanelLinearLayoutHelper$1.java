@@ -9,12 +9,12 @@ class QQEmoticonPanelLinearLayoutHelper$1
   
   public void run()
   {
-    QQEmoticonPanelLinearLayoutHelper.access$100(this.this$0).removeView(QQEmoticonPanelLinearLayoutHelper.access$000(this.this$0));
+    QQEmoticonPanelLinearLayoutHelper.access$000(this.this$0).removeView(this.this$0.mPopupEmo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.QQEmoticonPanelLinearLayoutHelper.1
  * JD-Core Version:    0.7.0.1
  */

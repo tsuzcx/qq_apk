@@ -37,33 +37,42 @@ public class NodeItemJava
   
   public boolean getHide()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.triggerCtrlItem.isTriggered())
-    {
-      bool1 = bool2;
-      if (!this.needShow) {
-        bool1 = true;
-      }
+    if (this.triggerCtrlItem.isTriggered()) {
+      return this.needShow ^ true;
     }
-    return bool1;
+    return false;
   }
   
   public String getTexture(String paramString)
   {
     if (!this.triggerCtrlItem.isTriggered()) {
-      paramString = null;
+      return null;
     }
-    String str2;
-    String str1;
-    do
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.modelId);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.content);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.content);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(this.triggerCtrlItem.getFrameIndex());
+    ((StringBuilder)localObject).append(".");
+    String str = ((StringBuilder)localObject).toString();
+    paramString = new StringBuilder();
+    paramString.append(str);
+    paramString.append("png");
+    localObject = paramString.toString();
+    paramString = (String)localObject;
+    if (!new File((String)localObject).exists())
     {
-      return paramString;
-      str2 = paramString + File.separator + this.modelId + File.separator + this.content + File.separator + this.content + "_" + this.triggerCtrlItem.getFrameIndex() + ".";
-      str1 = str2 + "png";
-      paramString = str1;
-    } while (new File(str1).exists());
-    return str2 + "jpg";
+      paramString = new StringBuilder();
+      paramString.append(str);
+      paramString.append("jpg");
+      paramString = paramString.toString();
+    }
+    return paramString;
   }
   
   public int getTriggerTypeInt()
@@ -73,13 +82,17 @@ public class NodeItemJava
       int i = Integer.parseInt(this.triggerType);
       return i;
     }
-    catch (NumberFormatException localNumberFormatException) {}
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label10:
+      break label10;
+    }
     return PTFaceAttr.PTExpression.FACE_DETECT.value;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.NodeItemJava
  * JD-Core Version:    0.7.0.1
  */

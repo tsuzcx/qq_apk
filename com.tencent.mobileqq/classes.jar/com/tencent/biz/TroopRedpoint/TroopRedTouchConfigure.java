@@ -45,7 +45,6 @@ public class TroopRedTouchConfigure
   
   public static boolean a(oidb_0x791.RedDotInfo paramRedDotInfo)
   {
-    boolean bool = true;
     int i = paramRedDotInfo.uint32_appid.get();
     if (i == 35)
     {
@@ -54,18 +53,20 @@ public class TroopRedTouchConfigure
         try
         {
           long l = new JSONObject(paramRedDotInfo).optLong("image_red_display_780", 1L);
-          if (l == 0L) {
-            bool = false;
+          if (l != 0L) {
+            break label73;
           }
-          return bool;
+          return false;
         }
         catch (JSONException paramRedDotInfo)
         {
           SLog.c("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: Error parse json: ", paramRedDotInfo);
           return true;
         }
+      } else {
+        SLog.b("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: str_custom_buffer is null");
       }
-      SLog.b("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: str_custom_buffer is null");
+      label73:
       return true;
     }
     return b(i);
@@ -108,7 +109,7 @@ public class TroopRedTouchConfigure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchConfigure
  * JD-Core Version:    0.7.0.1
  */

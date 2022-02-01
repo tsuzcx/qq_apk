@@ -10,7 +10,7 @@ class DeviceMsgHandle$4
 {
   DeviceMsgHandle$4(DeviceMsgHandle paramDeviceMsgHandle) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  protected void a(boolean paramBoolean, int paramInt, String paramString)
   {
     if (paramBoolean)
     {
@@ -27,7 +27,7 @@ class DeviceMsgHandle$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceMsgHandle.4
  * JD-Core Version:    0.7.0.1
  */

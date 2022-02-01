@@ -51,7 +51,8 @@ class LightVideoRenderNote$LightVideoRenderFilter
   
   private boolean a(RenderInfo paramRenderInfo)
   {
-    return (this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo == null) || (this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.width != paramRenderInfo.getRenderWidth()) || (this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.height != paramRenderInfo.getRenderHeight());
+    TextureInfo localTextureInfo = this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo;
+    return (localTextureInfo == null) || (localTextureInfo.width != paramRenderInfo.getRenderWidth()) || (this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.height != paramRenderInfo.getRenderHeight());
   }
   
   public void a(LightEngine paramLightEngine)
@@ -79,34 +80,42 @@ class LightVideoRenderNote$LightVideoRenderFilter
     }
     long l = System.currentTimeMillis();
     this.jdField_a_of_type_OrgLightVideoOutput.readSample(paramRenderInfo.getTime().getTimeUs());
-    Logger.i("lightsdkcost", "[light sdk]每帧渲染耗时：" + (System.currentTimeMillis() - l));
-    if (this.jdField_a_of_type_ComTencentWeseevideoCompositionInterfacesOnNodeRenderListener != null) {
-      this.jdField_a_of_type_ComTencentWeseevideoCompositionInterfacesOnNodeRenderListener.a();
+    paramTAVVideoEffect = new StringBuilder();
+    paramTAVVideoEffect.append("[light sdk]每帧渲染耗时：");
+    paramTAVVideoEffect.append(System.currentTimeMillis() - l);
+    Logger.i("lightsdkcost", paramTAVVideoEffect.toString());
+    paramTAVVideoEffect = this.jdField_a_of_type_ComTencentWeseevideoCompositionInterfacesOnNodeRenderListener;
+    if (paramTAVVideoEffect != null) {
+      paramTAVVideoEffect.a();
     }
     return new CIImage(this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo);
   }
   
   public void release()
   {
-    if (this.jdField_a_of_type_OrgLightVideoOutput != null) {
-      this.jdField_a_of_type_OrgLightVideoOutput.release();
+    Object localObject = this.jdField_a_of_type_OrgLightVideoOutput;
+    if (localObject != null) {
+      ((VideoOutput)localObject).release();
     }
-    if (this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo != null) {
-      this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.release();
+    localObject = this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo;
+    if (localObject != null) {
+      ((TextureInfo)localObject).release();
     }
-    if (this.jdField_a_of_type_OrgLightLightEngine != null) {
-      this.jdField_a_of_type_OrgLightLightEngine.release();
+    localObject = this.jdField_a_of_type_OrgLightLightEngine;
+    if (localObject != null) {
+      ((LightEngine)localObject).release();
     }
-    if (this.jdField_a_of_type_OrgLightLightSurface != null)
+    localObject = this.jdField_a_of_type_OrgLightLightSurface;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_OrgLightLightSurface.freeCache();
+      ((LightSurface)localObject).freeCache();
       this.jdField_a_of_type_OrgLightLightSurface.release();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.LightVideoRenderNote.LightVideoRenderFilter
  * JD-Core Version:    0.7.0.1
  */

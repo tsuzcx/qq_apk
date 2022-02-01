@@ -15,20 +15,23 @@ class MyAppApi$YYBDownloadListener$2
     long l = System.currentTimeMillis();
     if (ControlPolicyUtil.a(l))
     {
-      if ((AppUtil.a()) && (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.l))) {
-        AppUtil.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.l);
+      if (AppUtil.a())
+      {
+        DownloadInfo localDownloadInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo;
+        if ((localDownloadInfo != null) && (!TextUtils.isEmpty(localDownloadInfo.l)))
+        {
+          AppUtil.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.l);
+          return;
+        }
       }
+      LogUtility.c("MyAppApi", "root confused and remember user operation time!");
+      ControlPolicyUtil.a(l);
     }
-    else {
-      return;
-    }
-    LogUtility.c("MyAppApi", "root confused and remember user operation time!");
-    ControlPolicyUtil.a(l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener.2
  * JD-Core Version:    0.7.0.1
  */

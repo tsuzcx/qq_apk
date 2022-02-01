@@ -1,6 +1,6 @@
 package com.tencent.tkd.weibo.atContact;
 
-import com.tencent.tkd.weibo.bean.AtPersonItem;
+import com.tencent.tkd.topicsdk.bean.AtPersonItem;
 import com.tencent.tkd.weibo.data.DataTransferManager;
 import com.tencent.tkd.weibo.framework.mvp.ListModel;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/atContact/MyFollowListModel;", "Lcom/tencent/tkd/weibo/framework/mvp/ListModel;", "Lcom/tencent/tkd/weibo/bean/AtPersonItem;", "", "()V", "loadDataFromDB", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "list", "loadDataFromNetwork", "cookie", "Lkotlin/Function7;", "", "isSuccess", "isEnd", "", "totalSize", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "errorCode", "", "errorMsg", "Lcom/tencent/tkd/weibo/framework/mvp/LoadDataFromNetworkCallback;", "saveDataToDB", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/atContact/MyFollowListModel;", "Lcom/tencent/tkd/weibo/framework/mvp/ListModel;", "Lcom/tencent/tkd/topicsdk/bean/AtPersonItem;", "", "()V", "loadDataFromDB", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "list", "loadDataFromNetwork", "cookie", "Lkotlin/Function7;", "", "isSuccess", "isEnd", "", "totalSize", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "errorCode", "", "errorMsg", "Lcom/tencent/tkd/weibo/framework/mvp/LoadDataFromNetworkCallback;", "saveDataToDB", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
 public final class MyFollowListModel
   extends ListModel<AtPersonItem, byte[]>
 {
@@ -36,7 +36,7 @@ public final class MyFollowListModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.atContact.MyFollowListModel
  * JD-Core Version:    0.7.0.1
  */

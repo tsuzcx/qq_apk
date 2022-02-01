@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 
 class VerifyPhoneNumActivity$4
   implements Runnable
@@ -11,12 +10,12 @@ class VerifyPhoneNumActivity$4
   
   public void run()
   {
-    ((PhoneContactManager)this.this$0.app.getManager(QQManagerFactory.CONTACT_MANAGER)).c();
+    ((IPhoneContactService)this.this$0.app.getRuntimeService(IPhoneContactService.class, "")).uploadPhoneContact();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyPhoneNumActivity.4
  * JD-Core Version:    0.7.0.1
  */

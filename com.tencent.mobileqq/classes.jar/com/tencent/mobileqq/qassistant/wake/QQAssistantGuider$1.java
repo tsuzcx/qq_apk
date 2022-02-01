@@ -9,13 +9,14 @@ class QQAssistantGuider$1
   
   public void b()
   {
-    this.a.a = 4;
-    this.a.dismiss();
+    QQAssistantGuider localQQAssistantGuider = this.a;
+    localQQAssistantGuider.a = 4;
+    localQQAssistantGuider.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.QQAssistantGuider.1
  * JD-Core Version:    0.7.0.1
  */

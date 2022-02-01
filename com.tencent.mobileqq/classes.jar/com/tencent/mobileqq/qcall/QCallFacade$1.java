@@ -7,14 +7,14 @@ class QCallFacade$1
 {
   QCallFacade$1(QCallFacade paramQCallFacade) {}
   
-  public void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
     this.a.a(String.valueOf(paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallFacade.1
  * JD-Core Version:    0.7.0.1
  */

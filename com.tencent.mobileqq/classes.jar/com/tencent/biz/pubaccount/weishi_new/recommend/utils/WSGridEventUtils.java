@@ -29,52 +29,55 @@ public class WSGridEventUtils
   {
     int j = 0;
     int i = 0;
-    stSimpleMetaFeed localstSimpleMetaFeed;
-    for (;;)
+    while (i < paramList.size())
     {
-      if (i < paramList.size())
+      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.get(i);
+      if (!TextUtils.equals(localstSimpleMetaFeed.id, paramLikeRspEvent.getFeedId()))
       {
-        localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.get(i);
-        if (!TextUtils.equals(localstSimpleMetaFeed.id, paramLikeRspEvent.getFeedId()))
-        {
-          i += 1;
-        }
-        else if (paramLikeRspEvent.getRspIsDing() != localstSimpleMetaFeed.is_ding)
+        i += 1;
+      }
+      else
+      {
+        if (paramLikeRspEvent.getRspIsDing() != localstSimpleMetaFeed.is_ding)
         {
           if (localstSimpleMetaFeed.is_ding == 1) {
             j = 1;
           }
-          if (j == 0) {
-            break label105;
+          if (j != 0) {
+            localstSimpleMetaFeed.ding_count -= 1;
+          } else {
+            localstSimpleMetaFeed.ding_count += 1;
           }
         }
+        localstSimpleMetaFeed.is_ding = paramLikeRspEvent.getRspIsDing();
+        paramWSRecommendAdapter.notifyItemChanged(i);
       }
-    }
-    label105:
-    for (localstSimpleMetaFeed.ding_count -= 1;; localstSimpleMetaFeed.ding_count += 1)
-    {
-      localstSimpleMetaFeed.is_ding = paramLikeRspEvent.getRspIsDing();
-      paramWSRecommendAdapter.notifyItemChanged(i);
-      return;
     }
   }
   
   public static void a(WSAddCommentEvent paramWSAddCommentEvent, List<stSimpleMetaFeed> paramList)
   {
-    WSLog.b("WSGridEventUtils", "WSAddCommentEvent feedId = " + paramWSAddCommentEvent.getFeedId() + "; position = " + paramWSAddCommentEvent.getPosition() + "; num = " + paramWSAddCommentEvent.getCommentNum());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("WSAddCommentEvent feedId = ");
+    ((StringBuilder)localObject).append(paramWSAddCommentEvent.getFeedId());
+    ((StringBuilder)localObject).append("; position = ");
+    ((StringBuilder)localObject).append(paramWSAddCommentEvent.getPosition());
+    ((StringBuilder)localObject).append("; num = ");
+    ((StringBuilder)localObject).append(paramWSAddCommentEvent.getCommentNum());
+    WSLog.b("WSGridEventUtils", ((StringBuilder)localObject).toString());
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.next();
-      if (TextUtils.equals(localstSimpleMetaFeed.id, paramWSAddCommentEvent.getFeedId())) {
-        localstSimpleMetaFeed.total_comment_num = ((int)paramWSAddCommentEvent.getCommentNum());
+      localObject = (stSimpleMetaFeed)paramList.next();
+      if (TextUtils.equals(((stSimpleMetaFeed)localObject).id, paramWSAddCommentEvent.getFeedId())) {
+        ((stSimpleMetaFeed)localObject).total_comment_num = ((int)paramWSAddCommentEvent.getCommentNum());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.utils.WSGridEventUtils
  * JD-Core Version:    0.7.0.1
  */

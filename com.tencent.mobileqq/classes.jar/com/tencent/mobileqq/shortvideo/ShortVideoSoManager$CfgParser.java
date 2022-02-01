@@ -12,32 +12,42 @@ class ShortVideoSoManager$CfgParser
   
   int a()
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    if ((localObject != null) && (!"".equals(localObject)))
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\_");
+      localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+      if (localObject == null) {
+        return -1;
+      }
+      if (localObject.length < 2) {
+        return -2;
+      }
+      return 0;
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\_");
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
+    return -3;
   }
   
   int a(char paramChar)
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    if ((localObject != null) && (!"".equals(localObject)))
+    {
+      localObject = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("\\");
+      localStringBuilder.append(paramChar);
+      this.jdField_a_of_type_ArrayOfJavaLangString = ((String)localObject).split(localStringBuilder.toString());
+      localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+      if (localObject == null) {
+        return -1;
+      }
+      if (localObject.length < 2) {
+        return -2;
+      }
+      return 0;
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\" + paramChar);
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
+    return -3;
   }
   
   String a()
@@ -62,7 +72,7 @@ class ShortVideoSoManager$CfgParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoSoManager.CfgParser
  * JD-Core Version:    0.7.0.1
  */

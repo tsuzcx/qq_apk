@@ -32,77 +32,67 @@ class ExpandableListConnector
   
   private void refreshExpGroupMetadataList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i1 = 0;
     ArrayList localArrayList = this.mExpGroupMetadataList;
-    int i = localArrayList.size();
+    int j = localArrayList.size();
+    int i2 = 0;
     this.mTotalExpChildrenCount = 0;
-    int j = i;
-    int n;
-    int k;
+    int i = j;
     ExpandableListConnector.GroupMetadata localGroupMetadata;
-    int m;
+    int n;
     if (paramBoolean2)
     {
-      n = i - 1;
-      k = 0;
-      if (n >= 0)
+      k = j - 1;
+      i = j;
+      m = 0;
+      while (k >= 0)
       {
-        localGroupMetadata = (ExpandableListConnector.GroupMetadata)localArrayList.get(n);
-        int i2 = findGroupPosition(localGroupMetadata.gId, localGroupMetadata.gPos);
-        m = i;
-        if (i2 == localGroupMetadata.gPos) {
-          break label289;
-        }
-        j = i;
-        if (i2 == -1)
+        localGroupMetadata = (ExpandableListConnector.GroupMetadata)localArrayList.get(k);
+        int i3 = findGroupPosition(localGroupMetadata.gId, localGroupMetadata.gPos);
+        int i1 = m;
+        n = i;
+        if (i3 != localGroupMetadata.gPos)
         {
-          localArrayList.remove(n);
-          j = i - 1;
+          j = i;
+          if (i3 == -1)
+          {
+            localArrayList.remove(k);
+            j = i - 1;
+          }
+          localGroupMetadata.gPos = i3;
+          i1 = m;
+          n = j;
+          if (m == 0)
+          {
+            i1 = 1;
+            n = j;
+          }
         }
-        localGroupMetadata.gPos = i2;
-        m = j;
-        if (k != 0) {
-          break label289;
-        }
-        k = 1;
-        i = j;
-        j = k;
+        k -= 1;
+        m = i1;
+        i = n;
+      }
+      if (m != 0) {
+        Collections.sort(localArrayList);
       }
     }
-    for (;;)
+    int m = 0;
+    int k = 0;
+    j = i2;
+    while (j < i)
     {
-      n -= 1;
-      k = j;
-      break;
-      j = i;
-      if (k != 0)
-      {
-        Collections.sort(localArrayList);
-        j = i;
+      localGroupMetadata = (ExpandableListConnector.GroupMetadata)localArrayList.get(j);
+      if ((localGroupMetadata.lastChildFlPos != -1) && (!paramBoolean1)) {
+        n = localGroupMetadata.lastChildFlPos - localGroupMetadata.flPos;
+      } else {
+        n = this.mExpandableListAdapter.getChildrenCount(localGroupMetadata.gPos);
       }
-      k = 0;
-      m = 0;
-      i = i1;
-      if (i < j)
-      {
-        localGroupMetadata = (ExpandableListConnector.GroupMetadata)localArrayList.get(i);
-        if ((localGroupMetadata.lastChildFlPos == -1) || (paramBoolean1)) {}
-        for (n = this.mExpandableListAdapter.getChildrenCount(localGroupMetadata.gPos);; n = localGroupMetadata.lastChildFlPos - localGroupMetadata.flPos)
-        {
-          this.mTotalExpChildrenCount += n;
-          m += localGroupMetadata.gPos - k;
-          k = localGroupMetadata.gPos;
-          localGroupMetadata.flPos = m;
-          m = n + m;
-          localGroupMetadata.lastChildFlPos = m;
-          i += 1;
-          break;
-        }
-      }
-      return;
-      label289:
-      j = k;
-      i = m;
+      this.mTotalExpChildrenCount += n;
+      k += localGroupMetadata.gPos - m;
+      m = localGroupMetadata.gPos;
+      localGroupMetadata.flPos = k;
+      k += n;
+      localGroupMetadata.lastChildFlPos = k;
+      j += 1;
     }
   }
   
@@ -144,103 +134,91 @@ class ExpandableListConnector
   
   boolean expandGroup(ExpandableListConnector.PositionMetadata paramPositionMetadata)
   {
-    if (paramPositionMetadata.position.groupPos < 0) {
-      throw new RuntimeException("Need group");
-    }
-    if (this.mMaxExpGroupCount == 0) {
-      return false;
-    }
-    if (paramPositionMetadata.groupMetadata != null) {
-      return false;
-    }
-    if (this.mExpGroupMetadataList.size() >= this.mMaxExpGroupCount)
+    if (paramPositionMetadata.position.groupPos >= 0)
     {
-      localGroupMetadata = (ExpandableListConnector.GroupMetadata)this.mExpGroupMetadataList.get(0);
-      int i = this.mExpGroupMetadataList.indexOf(localGroupMetadata);
-      collapseGroup(localGroupMetadata.gPos);
-      if (paramPositionMetadata.groupInsertIndex > i) {
-        paramPositionMetadata.groupInsertIndex -= 1;
+      if (this.mMaxExpGroupCount == 0) {
+        return false;
       }
+      if (paramPositionMetadata.groupMetadata != null) {
+        return false;
+      }
+      if (this.mExpGroupMetadataList.size() >= this.mMaxExpGroupCount)
+      {
+        localGroupMetadata = (ExpandableListConnector.GroupMetadata)this.mExpGroupMetadataList.get(0);
+        int i = this.mExpGroupMetadataList.indexOf(localGroupMetadata);
+        collapseGroup(localGroupMetadata.gPos);
+        if (paramPositionMetadata.groupInsertIndex > i) {
+          paramPositionMetadata.groupInsertIndex -= 1;
+        }
+      }
+      ExpandableListConnector.GroupMetadata localGroupMetadata = ExpandableListConnector.GroupMetadata.obtain(-1, -1, paramPositionMetadata.position.groupPos, this.mExpandableListAdapter.getGroupId(paramPositionMetadata.position.groupPos));
+      this.mExpGroupMetadataList.add(paramPositionMetadata.groupInsertIndex, localGroupMetadata);
+      refreshExpGroupMetadataList(false, false);
+      notifyDataSetChanged();
+      this.mExpandableListAdapter.onGroupExpanded(localGroupMetadata.gPos);
+      return true;
     }
-    ExpandableListConnector.GroupMetadata localGroupMetadata = ExpandableListConnector.GroupMetadata.obtain(-1, -1, paramPositionMetadata.position.groupPos, this.mExpandableListAdapter.getGroupId(paramPositionMetadata.position.groupPos));
-    this.mExpGroupMetadataList.add(paramPositionMetadata.groupInsertIndex, localGroupMetadata);
-    refreshExpGroupMetadataList(false, false);
-    notifyDataSetChanged();
-    this.mExpandableListAdapter.onGroupExpanded(localGroupMetadata.gPos);
-    return true;
+    throw new RuntimeException("Need group");
   }
   
   int findGroupPosition(long paramLong, int paramInt)
   {
-    int i1 = this.mExpandableListAdapter.getGroupCount();
-    int m;
-    if (i1 == 0)
-    {
-      m = -1;
-      return m;
+    int i = this.mExpandableListAdapter.getGroupCount();
+    if (i == 0) {
+      return -1;
     }
     if (paramLong == -9223372036854775808L) {
       return -1;
     }
-    paramInt = Math.min(i1 - 1, Math.max(0, paramInt));
+    paramInt = Math.max(0, paramInt);
+    int i1 = i - 1;
+    int k = Math.min(i1, paramInt);
     long l = SystemClock.uptimeMillis();
-    int i = 0;
     ExpandableListAdapter localExpandableListAdapter = getAdapter();
-    label66:
-    int n;
-    int j;
-    if (localExpandableListAdapter == null)
-    {
+    if (localExpandableListAdapter == null) {
       return -1;
-      if ((n != 0) || ((i != 0) && (m == 0)))
+    }
+    paramInt = k;
+    int j = paramInt;
+    i = paramInt;
+    for (paramInt = k;; paramInt = i)
+    {
+      for (k = 0;; k = 1)
       {
-        j += 1;
-        i = 0;
+        int m;
+        int n;
+        do
+        {
+          if (SystemClock.uptimeMillis() > l + 100L) {
+            break label211;
+          }
+          if (localExpandableListAdapter.getGroupId(paramInt) == paramLong) {
+            return paramInt;
+          }
+          if (i == i1) {
+            m = 1;
+          } else {
+            m = 0;
+          }
+          if (j == 0) {
+            n = 1;
+          } else {
+            n = 0;
+          }
+          if ((m != 0) && (n != 0)) {
+            return -1;
+          }
+          if ((n != 0) || ((k != 0) && (m == 0))) {
+            break;
+          }
+        } while ((m == 0) && ((k != 0) || (n != 0)));
+        j -= 1;
         paramInt = j;
       }
+      i += 1;
     }
-    for (;;)
-    {
-      int k;
-      if (SystemClock.uptimeMillis() <= l + 100L)
-      {
-        m = paramInt;
-        if (localExpandableListAdapter.getGroupId(paramInt) == paramLong) {
-          break;
-        }
-        if (j != i1 - 1) {
-          break label154;
-        }
-        m = 1;
-        if (k != 0) {
-          break label160;
-        }
-      }
-      label154:
-      label160:
-      for (n = 1;; n = 0)
-      {
-        if ((m == 0) || (n == 0)) {
-          break label164;
-        }
-        return -1;
-        m = 0;
-        break;
-      }
-      label164:
-      break label66;
-      if ((m != 0) || ((i == 0) && (n == 0)))
-      {
-        k -= 1;
-        i = 1;
-        paramInt = k;
-        continue;
-        k = paramInt;
-        m = paramInt;
-        j = paramInt;
-        paramInt = m;
-      }
-    }
+    label211:
+    return -1;
   }
   
   ExpandableListAdapter getAdapter()
@@ -269,81 +247,78 @@ class ExpandableListConnector
   
   ExpandableListConnector.PositionMetadata getFlattenedPos(ExpandableListPosition paramExpandableListPosition)
   {
+    Object localObject = this.mExpGroupMetadataList;
+    int i = ((ArrayList)localObject).size();
+    int k = i - 1;
+    if (i == 0) {
+      return ExpandableListConnector.PositionMetadata.obtain(paramExpandableListPosition.groupPos, paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, null, 0);
+    }
     int j = 0;
-    Object localObject2 = null;
-    ArrayList localArrayList = this.mExpGroupMetadataList;
-    int i = localArrayList.size();
-    Object localObject1;
-    if (i == 0)
+    i = 0;
+    while (i <= k)
     {
-      localObject1 = ExpandableListConnector.PositionMetadata.obtain(paramExpandableListPosition.groupPos, paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, null, 0);
-      return localObject1;
-    }
-    for (;;)
-    {
-      if (k <= i)
+      int m = (k - i) / 2 + i;
+      ExpandableListConnector.GroupMetadata localGroupMetadata = (ExpandableListConnector.GroupMetadata)((ArrayList)localObject).get(m);
+      if (paramExpandableListPosition.groupPos > localGroupMetadata.gPos)
       {
-        int m = (i - k) / 2 + k;
-        ExpandableListConnector.GroupMetadata localGroupMetadata = (ExpandableListConnector.GroupMetadata)localArrayList.get(m);
-        if (paramExpandableListPosition.groupPos > localGroupMetadata.gPos)
-        {
-          k = m + 1;
-          j = m;
-          continue;
-        }
-        if (paramExpandableListPosition.groupPos < localGroupMetadata.gPos)
-        {
-          i = m - 1;
-          j = m;
-          continue;
-        }
+        i = m + 1;
         j = m;
-        if (paramExpandableListPosition.groupPos != localGroupMetadata.gPos) {
-          continue;
-        }
-        if (paramExpandableListPosition.type == 2) {
-          return ExpandableListConnector.PositionMetadata.obtain(localGroupMetadata.flPos, paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, localGroupMetadata, m);
-        }
-        localObject1 = localObject2;
-        if (paramExpandableListPosition.type != 1) {
-          break;
-        }
-        return ExpandableListConnector.PositionMetadata.obtain(localGroupMetadata.flPos + paramExpandableListPosition.childPos + 1, paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, localGroupMetadata, m);
       }
-      localObject1 = localObject2;
-      if (paramExpandableListPosition.type != 2) {
-        break;
-      }
-      if (k > j)
+      else if (paramExpandableListPosition.groupPos < localGroupMetadata.gPos)
       {
-        localObject1 = (ExpandableListConnector.GroupMetadata)localArrayList.get(k - 1);
-        i = ((ExpandableListConnector.GroupMetadata)localObject1).lastChildFlPos;
-        return ExpandableListConnector.PositionMetadata.obtain(paramExpandableListPosition.groupPos - ((ExpandableListConnector.GroupMetadata)localObject1).gPos + i, paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, null, k);
+        k = m - 1;
+        j = m;
       }
-      localObject1 = localObject2;
-      if (i >= j) {
-        break;
+      else
+      {
+        j = m;
+        if (paramExpandableListPosition.groupPos == localGroupMetadata.gPos)
+        {
+          if (paramExpandableListPosition.type == 2) {
+            return ExpandableListConnector.PositionMetadata.obtain(localGroupMetadata.flPos, paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, localGroupMetadata, m);
+          }
+          if (paramExpandableListPosition.type == 1) {
+            return ExpandableListConnector.PositionMetadata.obtain(localGroupMetadata.flPos + paramExpandableListPosition.childPos + 1, paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, localGroupMetadata, m);
+          }
+          return null;
+        }
       }
-      i += 1;
-      localObject1 = (ExpandableListConnector.GroupMetadata)localArrayList.get(i);
-      return ExpandableListConnector.PositionMetadata.obtain(((ExpandableListConnector.GroupMetadata)localObject1).flPos - (((ExpandableListConnector.GroupMetadata)localObject1).gPos - paramExpandableListPosition.groupPos), paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, null, i);
-      i -= 1;
-      int k = 0;
     }
+    if (paramExpandableListPosition.type != 2) {
+      return null;
+    }
+    if (i > j)
+    {
+      localObject = (ExpandableListConnector.GroupMetadata)((ArrayList)localObject).get(i - 1);
+      return ExpandableListConnector.PositionMetadata.obtain(((ExpandableListConnector.GroupMetadata)localObject).lastChildFlPos + (paramExpandableListPosition.groupPos - ((ExpandableListConnector.GroupMetadata)localObject).gPos), paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, null, i);
+    }
+    if (k < j)
+    {
+      i = 1 + k;
+      localObject = (ExpandableListConnector.GroupMetadata)((ArrayList)localObject).get(i);
+      return ExpandableListConnector.PositionMetadata.obtain(((ExpandableListConnector.GroupMetadata)localObject).flPos - (((ExpandableListConnector.GroupMetadata)localObject).gPos - paramExpandableListPosition.groupPos), paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, null, i);
+    }
+    return null;
   }
   
   public Object getItem(int paramInt)
   {
     ExpandableListConnector.PositionMetadata localPositionMetadata = getUnflattenedPos(paramInt);
-    if (localPositionMetadata.position.type == 2) {}
-    for (Object localObject = this.mExpandableListAdapter.getGroup(localPositionMetadata.position.groupPos);; localObject = this.mExpandableListAdapter.getChild(localPositionMetadata.position.groupPos, localPositionMetadata.position.childPos))
+    Object localObject;
+    if (localPositionMetadata.position.type == 2)
     {
-      localPositionMetadata.recycle();
-      return localObject;
-      if (localPositionMetadata.position.type != 1) {
-        break;
-      }
+      localObject = this.mExpandableListAdapter.getGroup(localPositionMetadata.position.groupPos);
     }
+    else
+    {
+      if (localPositionMetadata.position.type != 1) {
+        break label78;
+      }
+      localObject = this.mExpandableListAdapter.getChild(localPositionMetadata.position.groupPos, localPositionMetadata.position.childPos);
+    }
+    localPositionMetadata.recycle();
+    return localObject;
+    label78:
     throw new RuntimeException("Flat list position is of unknown type");
   }
   
@@ -351,17 +326,21 @@ class ExpandableListConnector
   {
     ExpandableListConnector.PositionMetadata localPositionMetadata = getUnflattenedPos(paramInt);
     long l1 = this.mExpandableListAdapter.getGroupId(localPositionMetadata.position.groupPos);
-    if (localPositionMetadata.position.type == 2) {}
-    long l2;
-    for (l1 = this.mExpandableListAdapter.getCombinedGroupId(l1);; l1 = this.mExpandableListAdapter.getCombinedChildId(l1, l2))
+    if (localPositionMetadata.position.type == 2)
     {
-      localPositionMetadata.recycle();
-      return l1;
-      if (localPositionMetadata.position.type != 1) {
-        break;
-      }
-      l2 = this.mExpandableListAdapter.getChildId(localPositionMetadata.position.groupPos, localPositionMetadata.position.childPos);
+      l1 = this.mExpandableListAdapter.getCombinedGroupId(l1);
     }
+    else
+    {
+      if (localPositionMetadata.position.type != 1) {
+        break label110;
+      }
+      long l2 = this.mExpandableListAdapter.getChildId(localPositionMetadata.position.groupPos, localPositionMetadata.position.childPos);
+      l1 = this.mExpandableListAdapter.getCombinedChildId(l1, l2);
+    }
+    localPositionMetadata.recycle();
+    return l1;
+    label110:
     throw new RuntimeException("Flat list position is of unknown type");
   }
   
@@ -369,124 +348,127 @@ class ExpandableListConnector
   public int getItemViewType(int paramInt)
   {
     ExpandableListPosition localExpandableListPosition = getUnflattenedPos(paramInt).position;
-    HeterogeneousExpandableList localHeterogeneousExpandableList;
-    if ((VersionUtils.b()) && ((this.mExpandableListAdapter instanceof HeterogeneousExpandableList)))
+    if (VersionUtils.b())
     {
-      localHeterogeneousExpandableList = (HeterogeneousExpandableList)this.mExpandableListAdapter;
-      if (localExpandableListPosition.type == 2) {
-        paramInt = localHeterogeneousExpandableList.getGroupType(localExpandableListPosition.groupPos);
+      Object localObject = this.mExpandableListAdapter;
+      if ((localObject instanceof HeterogeneousExpandableList))
+      {
+        localObject = (HeterogeneousExpandableList)localObject;
+        if (localExpandableListPosition.type == 2)
+        {
+          paramInt = ((HeterogeneousExpandableList)localObject).getGroupType(localExpandableListPosition.groupPos);
+          break label96;
+        }
+        paramInt = ((HeterogeneousExpandableList)localObject).getChildType(localExpandableListPosition.groupPos, localExpandableListPosition.childPos);
+        paramInt = ((HeterogeneousExpandableList)localObject).getGroupTypeCount() + paramInt;
+        break label96;
       }
     }
-    for (;;)
-    {
-      localExpandableListPosition.recycle();
-      return paramInt;
-      paramInt = localHeterogeneousExpandableList.getChildType(localExpandableListPosition.groupPos, localExpandableListPosition.childPos);
-      paramInt = localHeterogeneousExpandableList.getGroupTypeCount() + paramInt;
-      continue;
-      if (localExpandableListPosition.type == 2) {
-        paramInt = 0;
-      } else {
-        paramInt = 1;
-      }
+    if (localExpandableListPosition.type == 2) {
+      paramInt = 0;
+    } else {
+      paramInt = 1;
     }
+    label96:
+    localExpandableListPosition.recycle();
+    return paramInt;
   }
   
   ExpandableListConnector.PositionMetadata getUnflattenedPos(int paramInt)
   {
-    int k = 0;
     Object localObject = this.mExpGroupMetadataList;
     int i = ((ArrayList)localObject).size();
+    int j = i - 1;
     if (i == 0) {
       return ExpandableListConnector.PositionMetadata.obtain(paramInt, 2, paramInt, -1, null, 0);
     }
+    i = 0;
+    int k = 0;
+    if (i <= j)
+    {
+      k = (j - i) / 2 + i;
+      ExpandableListConnector.GroupMetadata localGroupMetadata = (ExpandableListConnector.GroupMetadata)((ArrayList)localObject).get(k);
+      if (paramInt > localGroupMetadata.lastChildFlPos) {
+        i = k + 1;
+      }
+      label95:
+      do
+      {
+        for (;;)
+        {
+          break;
+          if (paramInt >= localGroupMetadata.flPos) {
+            break label95;
+          }
+          j = k - 1;
+        }
+        if (paramInt == localGroupMetadata.flPos) {
+          return ExpandableListConnector.PositionMetadata.obtain(paramInt, 2, localGroupMetadata.gPos, -1, localGroupMetadata, k);
+        }
+      } while (paramInt > localGroupMetadata.lastChildFlPos);
+      i = localGroupMetadata.flPos;
+      return ExpandableListConnector.PositionMetadata.obtain(paramInt, 1, localGroupMetadata.gPos, paramInt - (i + 1), localGroupMetadata, k);
+    }
+    if (i > k) {
+      localObject = (ExpandableListConnector.GroupMetadata)((ArrayList)localObject).get(i - 1);
+    }
+    for (j = paramInt - ((ExpandableListConnector.GroupMetadata)localObject).lastChildFlPos + ((ExpandableListConnector.GroupMetadata)localObject).gPos;; j = ((ExpandableListConnector.GroupMetadata)localObject).gPos - (((ExpandableListConnector.GroupMetadata)localObject).flPos - paramInt))
+    {
+      break;
+      if (j >= k) {
+        break label239;
+      }
+      i = j + 1;
+      localObject = (ExpandableListConnector.GroupMetadata)((ArrayList)localObject).get(i);
+    }
+    return ExpandableListConnector.PositionMetadata.obtain(paramInt, 2, j, -1, null, i);
+    label239:
+    localObject = new RuntimeException("Unknown state");
     for (;;)
     {
-      int j;
-      if (i <= j)
-      {
-        int m = (j - i) / 2 + i;
-        ExpandableListConnector.GroupMetadata localGroupMetadata = (ExpandableListConnector.GroupMetadata)((ArrayList)localObject).get(m);
-        if (paramInt > localGroupMetadata.lastChildFlPos)
-        {
-          i = m + 1;
-          k = m;
-        }
-        else if (paramInt < localGroupMetadata.flPos)
-        {
-          j = m - 1;
-          k = m;
-        }
-        else
-        {
-          if (paramInt == localGroupMetadata.flPos) {
-            return ExpandableListConnector.PositionMetadata.obtain(paramInt, 2, localGroupMetadata.gPos, -1, localGroupMetadata, m);
-          }
-          k = m;
-          if (paramInt <= localGroupMetadata.lastChildFlPos)
-          {
-            i = localGroupMetadata.flPos;
-            return ExpandableListConnector.PositionMetadata.obtain(paramInt, 1, localGroupMetadata.gPos, paramInt - (i + 1), localGroupMetadata, m);
-          }
-        }
-      }
-      else
-      {
-        if (i > k)
-        {
-          localObject = (ExpandableListConnector.GroupMetadata)((ArrayList)localObject).get(i - 1);
-          k = paramInt - ((ExpandableListConnector.GroupMetadata)localObject).lastChildFlPos + ((ExpandableListConnector.GroupMetadata)localObject).gPos;
-          j = i;
-        }
-        for (i = k;; i = ((ExpandableListConnector.GroupMetadata)localObject).gPos - (((ExpandableListConnector.GroupMetadata)localObject).flPos - paramInt))
-        {
-          return ExpandableListConnector.PositionMetadata.obtain(paramInt, 2, i, -1, null, j);
-          if (j >= k) {
-            break;
-          }
-          j += 1;
-          localObject = (ExpandableListConnector.GroupMetadata)((ArrayList)localObject).get(j);
-        }
-        throw new RuntimeException("Unknown state");
-        j = i - 1;
-        i = 0;
-      }
+      throw ((Throwable)localObject);
     }
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    boolean bool = true;
     ExpandableListConnector.PositionMetadata localPositionMetadata = getUnflattenedPos(paramInt);
     View localView;
     if (localPositionMetadata.position.type == 2)
     {
       localView = this.mExpandableListAdapter.getGroupView(localPositionMetadata.position.groupPos, localPositionMetadata.isExpanded(), paramView, paramViewGroup);
-      localPositionMetadata.recycle();
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
     }
-    if (localPositionMetadata.position.type == 1)
+    else
     {
-      if (localPositionMetadata.groupMetadata.lastChildFlPos == paramInt) {}
-      for (;;)
-      {
-        localView = this.mExpandableListAdapter.getChildView(localPositionMetadata.position.groupPos, localPositionMetadata.position.childPos, bool, paramView, paramViewGroup);
-        break;
+      if (localPositionMetadata.position.type != 1) {
+        break label134;
+      }
+      boolean bool;
+      if (localPositionMetadata.groupMetadata.lastChildFlPos == paramInt) {
+        bool = true;
+      } else {
         bool = false;
       }
+      localView = this.mExpandableListAdapter.getChildView(localPositionMetadata.position.groupPos, localPositionMetadata.position.childPos, bool, paramView, paramViewGroup);
     }
+    localPositionMetadata.recycle();
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
+    label134:
     throw new RuntimeException("Flat list position is of unknown type");
   }
   
   @TargetApi(8)
   public int getViewTypeCount()
   {
-    if ((VersionUtils.b()) && ((this.mExpandableListAdapter instanceof HeterogeneousExpandableList)))
+    if (VersionUtils.b())
     {
-      HeterogeneousExpandableList localHeterogeneousExpandableList = (HeterogeneousExpandableList)this.mExpandableListAdapter;
-      int i = localHeterogeneousExpandableList.getGroupTypeCount();
-      return localHeterogeneousExpandableList.getChildTypeCount() + i;
+      Object localObject = this.mExpandableListAdapter;
+      if ((localObject instanceof HeterogeneousExpandableList))
+      {
+        localObject = (HeterogeneousExpandableList)localObject;
+        return ((HeterogeneousExpandableList)localObject).getGroupTypeCount() + ((HeterogeneousExpandableList)localObject).getChildTypeCount();
+      }
     }
     return 2;
   }
@@ -507,9 +489,10 @@ class ExpandableListConnector
   
   public boolean isEnabled(int paramInt)
   {
-    boolean bool = true;
     ExpandableListPosition localExpandableListPosition = getUnflattenedPos(paramInt).position;
-    if (localExpandableListPosition.type == 1) {
+    paramInt = localExpandableListPosition.type;
+    boolean bool = true;
+    if (paramInt == 1) {
       bool = this.mExpandableListAdapter.isChildSelectable(localExpandableListPosition.groupPos, localExpandableListPosition.childPos);
     }
     localExpandableListPosition.recycle();
@@ -531,8 +514,9 @@ class ExpandableListConnector
   
   public void setExpandableListAdapter(ExpandableListAdapter paramExpandableListAdapter)
   {
-    if (this.mExpandableListAdapter != null) {
-      this.mExpandableListAdapter.unregisterDataSetObserver(this.mDataSetObserver);
+    ExpandableListAdapter localExpandableListAdapter = this.mExpandableListAdapter;
+    if (localExpandableListAdapter != null) {
+      localExpandableListAdapter.unregisterDataSetObserver(this.mDataSetObserver);
     }
     this.mExpandableListAdapter = paramExpandableListAdapter;
     paramExpandableListAdapter.registerDataSetObserver(this.mDataSetObserver);
@@ -540,24 +524,24 @@ class ExpandableListConnector
   
   void setExpandedGroupMetadataList(ArrayList<ExpandableListConnector.GroupMetadata> paramArrayList)
   {
-    if ((paramArrayList == null) || (this.mExpandableListAdapter == null)) {
-      return;
-    }
-    int j = this.mExpandableListAdapter.getGroupCount();
-    int i = paramArrayList.size() - 1;
-    for (;;)
+    if (paramArrayList != null)
     {
-      if (i < 0) {
-        break label55;
+      ExpandableListAdapter localExpandableListAdapter = this.mExpandableListAdapter;
+      if (localExpandableListAdapter == null) {
+        return;
       }
-      if (((ExpandableListConnector.GroupMetadata)paramArrayList.get(i)).gPos >= j) {
-        break;
+      int j = localExpandableListAdapter.getGroupCount();
+      int i = paramArrayList.size() - 1;
+      while (i >= 0)
+      {
+        if (((ExpandableListConnector.GroupMetadata)paramArrayList.get(i)).gPos >= j) {
+          return;
+        }
+        i -= 1;
       }
-      i -= 1;
+      this.mExpGroupMetadataList = paramArrayList;
+      refreshExpGroupMetadataList(true, false);
     }
-    label55:
-    this.mExpGroupMetadataList = paramArrayList;
-    refreshExpGroupMetadataList(true, false);
   }
   
   public void setMaxExpGroupCount(int paramInt)
@@ -567,7 +551,7 @@ class ExpandableListConnector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ExpandableListConnector
  * JD-Core Version:    0.7.0.1
  */

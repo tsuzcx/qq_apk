@@ -17,8 +17,14 @@ class QFlutterNetworkImageImpl$1
   public void onStateChang(int paramInt, Option paramOption)
   {
     Bitmap localBitmap = paramOption.getResultBitMap();
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutterNetworkImageImpl", 2, "[loadBitmap] state=" + paramInt + ", bitmap=" + localBitmap);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[loadBitmap] state=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", bitmap=");
+      localStringBuilder.append(localBitmap);
+      QLog.d("QFlutterNetworkImageImpl", 2, localStringBuilder.toString());
     }
     if ((6 == paramInt) && (localBitmap != null) && (this.jdField_a_of_type_ComQflutterQflutter_network_imageLoadBitmapCallback != null))
     {
@@ -29,7 +35,7 @@ class QFlutterNetworkImageImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.plugin.QFlutterNetworkImageImpl.1
  * JD-Core Version:    0.7.0.1
  */

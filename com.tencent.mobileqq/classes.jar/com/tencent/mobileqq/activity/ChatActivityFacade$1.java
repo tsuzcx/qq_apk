@@ -3,10 +3,6 @@ package com.tencent.mobileqq.activity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.pic.DownCallBack;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.transfile.TransferRequest.PttDownExtraInfo;
-import com.tencent.mobileqq.transfile.api.ITransFileController;
-import com.tencent.qphone.base.util.QLog;
 
 final class ChatActivityFacade$1
   implements Runnable
@@ -15,50 +11,12 @@ final class ChatActivityFacade$1
   
   public void run()
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTrans", 2, "downloadPtt istroop" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop + " itemType " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.itemType + " uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq);
-    }
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.mSelfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    localTransferRequest.mPeerUin = this.jdField_a_of_type_JavaLangString;
-    localTransferRequest.mUinType = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop;
-    localTransferRequest.mFileType = 2;
-    localTransferRequest.mUniseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq;
-    localTransferRequest.mIsUp = false;
-    localTransferRequest.mServerPath = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.urlAtServer;
-    localTransferRequest.mOutFilePath = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath();
-    boolean bool;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.isSendFromOtherTerminal()) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.isSend()))
-    {
-      bool = true;
-      localTransferRequest.mIsSelfSend = bool;
-      localTransferRequest.mMd5 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.md5;
-      localTransferRequest.mGroupFileID = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.groupFileID;
-      localTransferRequest.mGroupFileKeyStr = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.groupFileKeyStr;
-      localTransferRequest.mDbRecVersion = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.subVersion;
-      localTransferRequest.mRec = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label293;
-      }
-    }
-    for (;;)
-    {
-      localTransferRequest.mDownMode = i;
-      localTransferRequest.mDownCallBack = this.jdField_a_of_type_ComTencentMobileqqPicDownCallBack;
-      localTransferRequest.mExtraObj = new TransferRequest.PttDownExtraInfo(this.jdField_a_of_type_Int, this.b);
-      ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
-      return;
-      bool = false;
-      break;
-      label293:
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.1
  * JD-Core Version:    0.7.0.1
  */

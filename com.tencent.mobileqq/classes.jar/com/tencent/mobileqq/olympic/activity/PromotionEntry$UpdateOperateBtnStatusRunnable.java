@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.olympic.activity;
 
 import android.animation.ObjectAnimator;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo.PromotionItem;
 import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionPath;
@@ -29,40 +30,46 @@ class PromotionEntry$UpdateOperateBtnStatusRunnable
   
   public void a()
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localImageView != null) {
-      localImageView.setImageDrawable(null);
+    Object localObject = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject != null) {
+      ((ImageView)localObject).setImageDrawable(null);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
+      ((LottieDrawable)localObject).cancelAnimation();
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
     }
   }
   
   public void a(ImageView paramImageView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem == null)
-      {
-        QLog.w(PromotionEntry.a, 1, "createShowOperateBtnAnim, promotionItem为空");
-        return;
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null);
-    Object localObject = PromotionPath.a(this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem);
-    a((String)localObject);
-    try
-    {
-      localObject = new FileInputStream((String)localObject + "entry.json");
-      LottieComposition.Factory.fromInputStream(paramImageView.getContext(), (InputStream)localObject, this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener);
+    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
       return;
     }
-    catch (Exception paramImageView)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem;
+    if (localObject == null)
     {
-      QLog.i(PromotionEntry.a, 1, "createShowOperateBtnAnim, 读取json失败", paramImageView);
+      QLog.w(PromotionEntry.a, 1, "createShowOperateBtnAnim, promotionItem为空");
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null)
+    {
+      localObject = PromotionPath.a((PromotionConfigInfo.PromotionItem)localObject);
+      a((String)localObject);
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("entry.json");
+        localObject = new FileInputStream(localStringBuilder.toString());
+        LottieComposition.Factory.fromInputStream(paramImageView.getContext(), (InputStream)localObject, this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener);
+        return;
+      }
+      catch (Exception paramImageView)
+      {
+        QLog.i(PromotionEntry.a, 1, "createShowOperateBtnAnim, 读取json失败", paramImageView);
+      }
     }
   }
   
@@ -74,40 +81,48 @@ class PromotionEntry$UpdateOperateBtnStatusRunnable
   public void run()
   {
     ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localImageView == null) {}
-    do
+    if (localImageView == null) {
+      return;
+    }
+    Object localObject;
+    if (this.jdField_a_of_type_Boolean)
     {
-      do
+      if (localImageView.getVisibility() != 0)
       {
-        do
-        {
-          return;
-          if (!this.jdField_a_of_type_Boolean) {
-            break;
-          }
-        } while (localImageView.getVisibility() == 0);
         localImageView.setVisibility(0);
         a(localImageView, 0);
-        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+        localObject = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+        if (localObject != null) {
+          ((ObjectAnimator)localObject).start();
         }
-      } while (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null);
-      localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setRepeatCount(5);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
-      return;
-      localImageView.setVisibility(8);
-      if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.end();
+        localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+        if (localObject != null)
+        {
+          localImageView.setImageDrawable((Drawable)localObject);
+          this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setRepeatCount(5);
+          this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
+        }
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null);
-    localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.endAnimation();
+    }
+    else
+    {
+      localImageView.setVisibility(8);
+      localObject = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+      if (localObject != null) {
+        ((ObjectAnimator)localObject).end();
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+      if (localObject != null)
+      {
+        localImageView.setImageDrawable((Drawable)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.endAnimation();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,10 @@ final class WeishiDownloadUtil$1
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    WSLog.c("WeishiDownloadUtil", "qq onDownloadCancel info = " + paramDownloadInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qq onDownloadCancel info = ");
+    localStringBuilder.append(paramDownloadInfo);
+    WSLog.c("WeishiDownloadUtil", localStringBuilder.toString());
     if (WeishiDownloadUtil.a(paramDownloadInfo))
     {
       WeishiDownloadUtil.a();
@@ -31,13 +34,21 @@ final class WeishiDownloadUtil$1
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    WSLog.d("WeishiDownloadUtil", "qq onDownloadError info = " + paramDownloadInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qq onDownloadError info = ");
+    localStringBuilder.append(paramDownloadInfo);
+    WSLog.d("WeishiDownloadUtil", localStringBuilder.toString());
     if (WeishiDownloadUtil.a(paramDownloadInfo))
     {
       WeishiDownloadUtil.a();
       paramInt2 = WeishiDownloadUtil.b();
       WSPublicAccReport.getInstance().reportDownload(WeishiDownloadUtil.a(), paramInt2, 3, 2, 0, WeishiDownloadUtil.c());
-      WSLog.d("WeishiDownloadUtil", " errorCode:" + paramInt1 + ", errorMsg: " + paramString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" errorCode:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", errorMsg: ");
+      localStringBuilder.append(paramString);
+      WSLog.d("WeishiDownloadUtil", localStringBuilder.toString());
       WeishiDownloadUtil.a(paramDownloadInfo, paramInt1);
     }
   }
@@ -47,24 +58,32 @@ final class WeishiDownloadUtil$1
     WeishiDownloadUtil.a();
     int i = WeishiDownloadUtil.a();
     int j = WeishiDownloadUtil.b();
-    if (WeishiDownloadUtil.b())
-    {
-      if (WeishiDownloadUtil.d()) {
+    if (WeishiDownloadUtil.b()) {
+      if (WeishiDownloadUtil.d())
+      {
         WSLog.d("WeishiDownloadUtil", "这是预下载中点击操作，qq监听器响应");
       }
+      else
+      {
+        paramDownloadInfo = new StringBuilder();
+        paramDownloadInfo.append("这是qq的监听器，不响应qzone. onDownloadFinish eventId:");
+        paramDownloadInfo.append(i);
+        paramDownloadInfo.append(",eventType:");
+        paramDownloadInfo.append(j);
+        WSLog.d("WeishiDownloadUtil", paramDownloadInfo.toString());
+        return;
+      }
     }
-    else
-    {
-      WeishiDownloadUtil.a(paramDownloadInfo, i, j, "QQ");
-      return;
-    }
-    WSLog.d("WeishiDownloadUtil", "这是qq的监听器，不响应qzone. onDownloadFinish eventId:" + i + ",eventType:" + j);
+    WeishiDownloadUtil.a(paramDownloadInfo, i, j, "QQ");
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
     super.onDownloadPause(paramDownloadInfo);
-    WSLog.d("WeishiDownloadUtil", "qq onDownloadPause info = " + paramDownloadInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qq onDownloadPause info = ");
+    localStringBuilder.append(paramDownloadInfo);
+    WSLog.d("WeishiDownloadUtil", localStringBuilder.toString());
     if (WeishiDownloadUtil.a(paramDownloadInfo)) {
       WeishiDownloadUtil.a();
     }
@@ -79,7 +98,12 @@ final class WeishiDownloadUtil$1
       while (paramList.hasNext())
       {
         DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        WSLog.c("WeishiDownloadUtil", "qq onDownloadUpdate progress = " + localDownloadInfo.f + ", url = " + localDownloadInfo.d);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("qq onDownloadUpdate progress = ");
+        localStringBuilder.append(localDownloadInfo.f);
+        localStringBuilder.append(", url = ");
+        localStringBuilder.append(localDownloadInfo.d);
+        WSLog.c("WeishiDownloadUtil", localStringBuilder.toString());
       }
     }
   }
@@ -87,18 +111,26 @@ final class WeishiDownloadUtil$1
   public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
     super.onDownloadWait(paramDownloadInfo);
-    WSLog.d("WeishiDownloadUtil", "qq onDownloadWait info = " + paramDownloadInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qq onDownloadWait info = ");
+    localStringBuilder.append(paramDownloadInfo);
+    WSLog.d("WeishiDownloadUtil", localStringBuilder.toString());
   }
   
   public void packageReplaced(String paramString1, String paramString2)
   {
     super.packageReplaced(paramString1, paramString2);
-    WSLog.d("WeishiDownloadUtil", "qq packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qq packageReplaced appid = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", packageName = ");
+    localStringBuilder.append(paramString2);
+    WSLog.d("WeishiDownloadUtil", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.download.WeishiDownloadUtil.1
  * JD-Core Version:    0.7.0.1
  */

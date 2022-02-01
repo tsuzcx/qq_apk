@@ -20,10 +20,10 @@ class ArraysKt__ArraysJVMKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "reference");
     paramArrayOfT = Array.newInstance(paramArrayOfT.getClass().getComponentType(), paramInt);
-    if (paramArrayOfT == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
+    if (paramArrayOfT != null) {
+      return (Object[])paramArrayOfT;
     }
-    return (Object[])paramArrayOfT;
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
   }
   
   @PublishedApi
@@ -38,9 +38,16 @@ class ArraysKt__ArraysJVMKt
   @SinceKotlin(version="1.3")
   public static final void copyOfRangeToIndexCheck(int paramInt1, int paramInt2)
   {
-    if (paramInt1 > paramInt2) {
-      throw ((Throwable)new IndexOutOfBoundsException("toIndex (" + paramInt1 + ") is greater than size (" + paramInt2 + ")."));
+    if (paramInt1 <= paramInt2) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex (");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(") is greater than size (");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(").");
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @InlineOnly
@@ -51,7 +58,7 @@ class ArraysKt__ArraysJVMKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.ArraysKt__ArraysJVMKt
  * JD-Core Version:    0.7.0.1
  */

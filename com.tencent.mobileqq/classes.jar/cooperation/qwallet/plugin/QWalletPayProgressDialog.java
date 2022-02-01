@@ -16,7 +16,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class QWalletPayProgressDialog
   extends ReportDialog
 {
-  private String mMessage = HardCodeUtil.a(2131711417);
+  private String mMessage = HardCodeUtil.a(2131706792);
   private TextView mTextView = null;
   
   public QWalletPayProgressDialog(Context paramContext)
@@ -33,58 +33,57 @@ public class QWalletPayProgressDialog
   {
     try
     {
-      super.setContentView(2131559492);
+      super.setContentView(2131559366);
       paramBundle = getWindow();
       paramBundle.setLayout(-1, -1);
       paramBundle.setBackgroundDrawable(new ColorDrawable(0));
       if (ImmersiveUtils.isSupporImmersive() == 1) {
         paramBundle.addFlags(67108864);
       }
-      this.mTextView = ((TextView)super.findViewById(2131371301));
+      this.mTextView = ((TextView)super.findViewById(2131370925));
       this.mTextView.setVisibility(0);
       this.mTextView.setText(this.mMessage);
       super.setCancelable(false);
       return;
     }
-    catch (OutOfMemoryError paramBundle) {}catch (Exception paramBundle) {}
+    catch (OutOfMemoryError|Exception paramBundle) {}
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt == 4) {
+    if (paramInt == 4)
+    {
       try
       {
         super.cancel();
-        return false;
       }
       catch (Exception paramKeyEvent)
       {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            paramKeyEvent.printStackTrace();
-          }
+        if (QLog.isDevelopLevel()) {
+          paramKeyEvent.printStackTrace();
         }
       }
+      return false;
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
   public void setMessage(CharSequence paramCharSequence)
   {
-    if (TextUtils.isEmpty(paramCharSequence)) {}
-    for (this.mMessage = "";; this.mMessage = paramCharSequence.toString())
-    {
-      if (this.mTextView != null) {
-        this.mTextView.setText(this.mMessage);
-      }
-      return;
+    if (TextUtils.isEmpty(paramCharSequence)) {
+      this.mMessage = "";
+    } else {
+      this.mMessage = paramCharSequence.toString();
+    }
+    paramCharSequence = this.mTextView;
+    if (paramCharSequence != null) {
+      paramCharSequence.setText(this.mMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPayProgressDialog
  * JD-Core Version:    0.7.0.1
  */

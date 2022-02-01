@@ -12,9 +12,11 @@ class ChatHistory$8
   
   public void run()
   {
-    StringBuilder localStringBuilder = null;
+    StringBuilder localStringBuilder;
     if (this.jdField_a_of_type_Boolean) {
       localStringBuilder = new StringBuilder();
+    } else {
+      localStringBuilder = null;
     }
     int i = 0;
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
@@ -32,7 +34,7 @@ class ChatHistory$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.8
  * JD-Core Version:    0.7.0.1
  */

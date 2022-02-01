@@ -19,19 +19,19 @@ public class StringAppendTool
         }
         i += 1;
       }
+      paramVarArgs = localStringBuilder.toString();
+      if (localStringBuilder.length() > 512) {
+        a.set(new StringBuilder(512));
+      }
+      localStringBuilder.setLength(0);
+      return paramVarArgs;
     }
     return "";
-    paramVarArgs = localStringBuilder.toString();
-    if (localStringBuilder.length() > 512) {
-      a.set(new StringBuilder(512));
-    }
-    localStringBuilder.setLength(0);
-    return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.common.StringAppendTool
  * JD-Core Version:    0.7.0.1
  */

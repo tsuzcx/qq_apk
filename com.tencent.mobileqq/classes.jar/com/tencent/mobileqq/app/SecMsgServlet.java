@@ -12,26 +12,37 @@ public class SecMsgServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SecMsgServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd"));
+    if (QLog.isColorLevel())
+    {
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("onReceive cmd=");
+      paramFromServiceMsg.append(paramIntent.getStringExtra("cmd"));
+      QLog.d("SecMsgServlet", 2, paramFromServiceMsg.toString());
     }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SecMsgServlet", 2, "onSend cmd=" + paramIntent.getStringExtra("cmd"));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onSend cmd=");
+      ((StringBuilder)localObject).append(paramIntent.getStringExtra("cmd"));
+      QLog.d("SecMsgServlet", 2, ((StringBuilder)localObject).toString());
     }
     String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    Object localObject = paramIntent.getByteArrayExtra("data");
     long l = paramIntent.getLongExtra("timeout", 30000L);
-    paramPacket.setSSOCommand("secmsg." + str);
+    paramIntent = new StringBuilder();
+    paramIntent.append("secmsg.");
+    paramIntent.append(str);
+    paramPacket.setSSOCommand(paramIntent.toString());
     paramPacket.setTimeout(l);
-    if (arrayOfByte != null)
+    if (localObject != null)
     {
-      paramIntent = new byte[arrayOfByte.length + 4];
-      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
-      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramIntent = new byte[localObject.length + 4];
+      PkgTools.dWord2Byte(paramIntent, 0, localObject.length + 4);
+      PkgTools.copyData(paramIntent, 4, (byte[])localObject, localObject.length);
       paramPacket.putSendData(paramIntent);
     }
     if (QLog.isColorLevel()) {
@@ -41,7 +52,7 @@ public class SecMsgServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SecMsgServlet
  * JD-Core Version:    0.7.0.1
  */

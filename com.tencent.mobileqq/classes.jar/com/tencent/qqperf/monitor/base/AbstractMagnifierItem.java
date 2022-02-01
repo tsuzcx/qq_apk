@@ -45,27 +45,30 @@ public abstract class AbstractMagnifierItem
   {
     if (this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig == null)
     {
-      APMConfig localAPMConfig = MagnifierSDK.a().a();
-      this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig = localAPMConfig.getSampleConfig(a());
+      Object localObject = MagnifierSDK.a().a();
+      this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig = ((APMConfig)localObject).getSampleConfig(a());
       if (this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig == null) {
         this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig = a();
       }
-      if ((localAPMConfig.runVip) && (UnifiedMonitor.c()) && ((!QLog.isColorLevel()) || ((!"dropframe".equals(a())) && (!"leak".equals(a()))))) {
-        break label137;
+      if ((((APMConfig)localObject).runVip) && (UnifiedMonitor.c()) && ((!QLog.isColorLevel()) || ((!"dropframe".equals(a())) && (!"leak".equals(a())))))
+      {
+        localObject = this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig;
+        ((APMModuleConfig)localObject).evenRatio = 1.0F;
+        ((APMModuleConfig)localObject).threshold = a().threshold;
+        localObject = this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig;
+        ((APMModuleConfig)localObject).userRatio = 1.0F;
+        ((APMModuleConfig)localObject).maxReport = 2147483647;
+        ((APMModuleConfig)localObject).stackDepth = 6;
       }
-    }
-    for (;;)
-    {
       a(this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig);
-      QLog.i("MagnifierSDK.QAPM", 1, "getMyConfig " + a() + " " + this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig);
-      return this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig;
-      label137:
-      this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig.evenRatio = 1.0F;
-      this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig.threshold = a().threshold;
-      this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig.userRatio = 1.0F;
-      this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig.maxReport = 2147483647;
-      this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig.stackDepth = 6;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getMyConfig ");
+      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig);
+      QLog.i("MagnifierSDK.QAPM", 1, ((StringBuilder)localObject).toString());
     }
+    return this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig;
   }
   
   public final boolean c()
@@ -82,14 +85,14 @@ public abstract class AbstractMagnifierItem
     return this.jdField_a_of_type_JavaLangBoolean.booleanValue();
   }
   
-  public boolean n_()
+  public boolean o_()
   {
     return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.base.AbstractMagnifierItem
  * JD-Core Version:    0.7.0.1
  */

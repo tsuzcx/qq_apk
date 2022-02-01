@@ -45,25 +45,30 @@ public class ReportPlugin
   
   private void doReportBy898(String paramString, JSONArray paramJSONArray)
   {
+    StringBuilder localStringBuilder1 = new StringBuilder();
     int i = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
     for (;;)
     {
       try
       {
         if (i < paramJSONArray.length())
         {
-          localStringBuilder.append(paramJSONArray.getString(i).replace("|", ""));
+          localStringBuilder1.append(paramJSONArray.getString(i).replace("|", ""));
           if (i != paramJSONArray.length() - 1) {
-            localStringBuilder.append('|');
+            localStringBuilder1.append('|');
           }
         }
         else
         {
           paramJSONArray = new Bundle();
           paramJSONArray.putString("log_key", paramString);
-          paramJSONArray.putStringArray("data", new String[] { localStringBuilder.toString() });
-          QMLog.e("ReportPlugin", "doReportBy898 key:  " + paramString + "  data: " + localStringBuilder.toString());
+          paramJSONArray.putStringArray("data", new String[] { localStringBuilder1.toString() });
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("doReportBy898 key:  ");
+          localStringBuilder2.append(paramString);
+          localStringBuilder2.append("  data: ");
+          localStringBuilder2.append(localStringBuilder1.toString());
+          QMLog.e("ReportPlugin", localStringBuilder2.toString());
           AppBrandCmdProxy.g().sendCmd("cmd_dc_report_log_key_data", paramJSONArray, null);
           return;
         }
@@ -79,44 +84,53 @@ public class ReportPlugin
   
   public static String getAppType(MiniAppInfo paramMiniAppInfo)
   {
+    String str2 = "0";
+    String str1 = str2;
     if (paramMiniAppInfo != null)
     {
+      str1 = str2;
       if (paramMiniAppInfo.isReportTypeMiniGame()) {
-        return "1";
+        str1 = "1";
       }
-      return "0";
     }
-    return "0";
+    return str1;
   }
   
   @JsEvent({"api_report"})
   public void apiReport(RequestEvent paramRequestEvent)
   {
-    String str2 = "";
-    String str4 = "";
-    String str1 = "";
-    try
+    for (;;)
     {
-      MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
-      if (localMiniAppInfo != null)
+      try
       {
-        str2 = localMiniAppInfo.version;
-        str1 = localMiniAppInfo.appId;
-      }
-      String str3 = str4;
-      if (localMiniAppInfo != null)
-      {
-        str3 = str4;
-        if (localMiniAppInfo.baseLibInfo != null) {
-          str3 = localMiniAppInfo.baseLibInfo.baseLibVersion;
+        MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+        String str4 = "";
+        if (localMiniAppInfo != null)
+        {
+          String str1 = localMiniAppInfo.version;
+          localObject = localMiniAppInfo.appId;
+          String str3 = str4;
+          if (localMiniAppInfo != null)
+          {
+            str3 = str4;
+            if (localMiniAppInfo.baseLibInfo != null) {
+              str3 = localMiniAppInfo.baseLibInfo.baseLibVersion;
+            }
+          }
+          MiniProgramLpReportDC04884.reportApiReport((String)localObject, paramRequestEvent.jsonParams, str1, str3);
+          return;
         }
       }
-      MiniProgramLpReportDC04884.reportApiReport(str1, paramRequestEvent.jsonParams, str2, str3);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QMLog.e("ReportPlugin", paramRequestEvent.event + " error.", localException);
+      catch (Exception localException)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramRequestEvent.event);
+        ((StringBuilder)localObject).append(" error.");
+        QMLog.e("ReportPlugin", ((StringBuilder)localObject).toString(), localException);
+        return;
+      }
+      String str2 = "";
+      Object localObject = str2;
     }
   }
   
@@ -126,16 +140,16 @@ public class ReportPlugin
     try
     {
       ((MiniAppRealTimeLogReporter)this.mMiniAppContext.getManager(MiniAppRealTimeLogReporter.class)).report(paramRequestEvent.jsonParams);
-      QMLog.d("ReportPlugin", "EVENT_NAME_REAL_TIME_LOG " + paramRequestEvent.jsonParams);
-      return "";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("EVENT_NAME_REAL_TIME_LOG ");
+      localStringBuilder.append(paramRequestEvent.jsonParams);
+      QMLog.d("ReportPlugin", localStringBuilder.toString());
     }
     catch (Exception paramRequestEvent)
     {
-      for (;;)
-      {
-        QMLog.e("ReportPlugin", "realtimeLog exception", paramRequestEvent);
-      }
+      QMLog.e("ReportPlugin", "realtimeLog exception", paramRequestEvent);
     }
+    return "";
   }
   
   @JsEvent({"reportDC"})
@@ -147,38 +161,52 @@ public class ReportPlugin
   @JsEvent({"reportDataToDC"})
   public void reportDataToDC(RequestEvent paramRequestEvent)
   {
-    String str;
     try
     {
       Object localObject2 = new JSONObject(paramRequestEvent.jsonParams);
-      str = ((JSONObject)localObject2).optString("tableName");
-      Object localObject1 = ((JSONObject)localObject2).optJSONObject("args");
-      if (localObject1 != null)
+      localObject1 = ((JSONObject)localObject2).optString("tableName");
+      localObject2 = ((JSONObject)localObject2).optJSONObject("args");
+      if (localObject2 != null)
       {
-        if ("dc04239".equals(str))
+        if ("dc04239".equals(localObject1))
         {
-          if (localObject2 == null) {
-            return;
-          }
-          localObject2 = ((JSONObject)localObject1).optString("actiontype");
-          str = ((JSONObject)localObject1).optString("sub_actiontype");
-          localObject1 = ((JSONObject)localObject1).optString("reserves_action");
-          SDKMiniProgramLpReportDC04239.reportForSDK(this.mMiniAppInfo, "1", null, (String)localObject2, str, (String)localObject1, "");
+          localObject1 = ((JSONObject)localObject2).optString("actiontype");
+          String str = ((JSONObject)localObject2).optString("sub_actiontype");
+          localObject2 = ((JSONObject)localObject2).optString("reserves_action");
+          SDKMiniProgramLpReportDC04239.reportForSDK(this.mMiniAppInfo, "1", null, (String)localObject1, str, (String)localObject2, "");
           return;
         }
-        if (!"dc04682".equals(str)) {
-          return;
+        if (!"dc04682".equals(localObject1)) {
+          break label229;
         }
-        MiniProgramLpReportDC04682.report(this.mMiniAppInfo, (JSONObject)localObject1);
+        MiniProgramLpReportDC04682.report(this.mMiniAppInfo, (JSONObject)localObject2);
         return;
       }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("ReportPlugin report to table[");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("] fail, no args, [eventName=");
+      ((StringBuilder)localObject2).append(paramRequestEvent.event);
+      ((StringBuilder)localObject2).append("][jsonParams=");
+      ((StringBuilder)localObject2).append(paramRequestEvent.jsonParams);
+      ((StringBuilder)localObject2).append("]");
+      QMLog.e("ReportPlugin", ((StringBuilder)localObject2).toString());
+      return;
     }
     catch (Exception localException)
     {
-      QMLog.e("ReportPlugin", "ReportPlugin handleNativeRequest exception, [eventName=" + paramRequestEvent.event + "][jsonParams=" + paramRequestEvent.jsonParams + "]");
-      return;
+      Object localObject1;
+      label170:
+      label229:
+      break label170;
     }
-    QMLog.e("ReportPlugin", "ReportPlugin report to table[" + str + "] fail, no args, [eventName=" + paramRequestEvent.event + "][jsonParams=" + paramRequestEvent.jsonParams + "]");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("ReportPlugin handleNativeRequest exception, [eventName=");
+    ((StringBuilder)localObject1).append(paramRequestEvent.event);
+    ((StringBuilder)localObject1).append("][jsonParams=");
+    ((StringBuilder)localObject1).append(paramRequestEvent.jsonParams);
+    ((StringBuilder)localObject1).append("]");
+    QMLog.e("ReportPlugin", ((StringBuilder)localObject1).toString());
   }
   
   @JsEvent({"reportKeyValue"})
@@ -190,19 +218,18 @@ public class ReportPlugin
   @JsEvent({"reportRealtimeAction"})
   public String reportRealtimeAction(RequestEvent paramRequestEvent)
   {
-    if (this.mIsMiniGame) {}
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject(paramRequestEvent.jsonParams);
-      MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
-      JSONObject localJSONObject2 = new JSONObject(localJSONObject1.optString("actionData", ""));
-      if (localJSONObject2 != null)
+    if (this.mIsMiniGame) {
+      try
       {
+        JSONObject localJSONObject1 = new JSONObject(paramRequestEvent.jsonParams);
+        MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+        JSONObject localJSONObject2 = new JSONObject(localJSONObject1.optString("actionData", ""));
         Object localObject = localJSONObject2.optString("eventID", "");
-        if (JSONUtil.isJson((String)localObject))
+        boolean bool = JSONUtil.isJson((String)localObject);
+        if (bool)
         {
           localObject = new JSONObject((String)localObject);
-          if ((localObject != null) && (((JSONObject)localObject).has("finishShow")))
+          if (((JSONObject)localObject).has("finishShow"))
           {
             SDKMiniProgramLpReportDC04239.reportForSDK(localMiniAppInfo, getAppType(localMiniAppInfo), null, "page_view", "finishShow", "", "");
             if (((JSONObject)localObject).length() == 1)
@@ -220,16 +247,14 @@ public class ReportPlugin
         }
         localJSONObject2.put("version", this.mMiniAppContext.getBaseLibVersion());
         localJSONObject1.put("actionData", localJSONObject2);
+        if (localMiniAppInfo != null)
+        {
+          MiniProgramLpReportDC04363.handleReportRealTimeAction(localMiniAppInfo.appId, localJSONObject1.toString());
+          paramRequestEvent.ok();
+          return "";
+        }
       }
-      if (localMiniAppInfo != null)
-      {
-        MiniProgramLpReportDC04363.handleReportRealTimeAction(localMiniAppInfo.appId, localJSONObject1.toString());
-        paramRequestEvent.ok();
-      }
-    }
-    catch (Throwable paramRequestEvent)
-    {
-      for (;;)
+      catch (Throwable paramRequestEvent)
       {
         QMLog.e("ReportPlugin", "", paramRequestEvent);
       }
@@ -239,7 +264,7 @@ public class ReportPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ReportPlugin
  * JD-Core Version:    0.7.0.1
  */

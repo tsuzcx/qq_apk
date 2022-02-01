@@ -31,42 +31,57 @@ public class RDMEtraMsgCollector
   public void addActionSheetClick(String paramString, View paramView, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[Actvity] ").append(paramString);
-    if (paramView != null) {
-      localStringBuilder.append("  actionSheet click view  id:0x").append(Integer.toHexString(paramView.getId()));
+    localStringBuilder.append("[Actvity] ");
+    localStringBuilder.append(paramString);
+    if (paramView != null)
+    {
+      localStringBuilder.append("  actionSheet click view  id:0x");
+      localStringBuilder.append(Integer.toHexString(paramView.getId()));
     }
-    localStringBuilder.append(" which:").append(paramInt);
+    localStringBuilder.append(" which:");
+    localStringBuilder.append(paramInt);
     getInstance().addUserAction(localStringBuilder.toString());
   }
   
   public void addActivityEvent(String paramString)
   {
-    if ((paramString != null) && (this.activityEventQueue != null))
+    if (paramString != null)
     {
-      if (this.activityEventQueue.isFull()) {
-        this.activityEventQueue.remove();
+      LoopQueue localLoopQueue = this.activityEventQueue;
+      if (localLoopQueue != null)
+      {
+        if (localLoopQueue.isFull()) {
+          this.activityEventQueue.remove();
+        }
+        this.activityEventQueue.add(paramString);
       }
-      this.activityEventQueue.add(paramString);
     }
   }
   
   public void addActivityName(String paramString)
   {
-    if ((paramString != null) && (this.activityNameQueue != null))
+    if (paramString != null)
     {
-      if (this.activityNameQueue.isFull()) {
-        this.activityNameQueue.remove();
+      LoopQueue localLoopQueue = this.activityNameQueue;
+      if (localLoopQueue != null)
+      {
+        if (localLoopQueue.isFull()) {
+          this.activityNameQueue.remove();
+        }
+        this.activityNameQueue.add(paramString);
       }
-      this.activityNameQueue.add(paramString);
     }
   }
   
   public void addNoramlClickAction(String paramString, View paramView)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[Actvity] ").append(paramString);
-    if (paramView != null) {
-      localStringBuilder.append("  click view  id:0x").append(Integer.toHexString(paramView.getId()));
+    localStringBuilder.append("[Actvity] ");
+    localStringBuilder.append(paramString);
+    if (paramView != null)
+    {
+      localStringBuilder.append("  click view  id:0x");
+      localStringBuilder.append(Integer.toHexString(paramView.getId()));
     }
     addUserAction(localStringBuilder.toString());
   }
@@ -74,54 +89,66 @@ public class RDMEtraMsgCollector
   public void addNormalItemClickAction(String paramString, ViewGroup paramViewGroup, View paramView, int paramInt, long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[Actvity] ").append(paramString);
-    if (paramViewGroup != null) {
-      localStringBuilder.append("parent id: ").append(paramViewGroup.getId());
+    localStringBuilder.append("[Actvity] ");
+    localStringBuilder.append(paramString);
+    if (paramViewGroup != null)
+    {
+      localStringBuilder.append("parent id: ");
+      localStringBuilder.append(paramViewGroup.getId());
     }
-    if (paramView != null) {
-      localStringBuilder.append("view id: ").append(paramView.getId());
+    if (paramView != null)
+    {
+      localStringBuilder.append("view id: ");
+      localStringBuilder.append(paramView.getId());
     }
-    localStringBuilder.append(" onItemclick view  position:0x").append(Integer.toHexString(paramInt));
-    localStringBuilder.append(" id").append(paramLong);
+    localStringBuilder.append(" onItemclick view  position:0x");
+    localStringBuilder.append(Integer.toHexString(paramInt));
+    localStringBuilder.append(" id");
+    localStringBuilder.append(paramLong);
     getInstance().addUserAction(localStringBuilder.toString());
   }
   
   public void addUserAction(String paramString)
   {
-    if (paramString != null) {}
-    try
-    {
-      if (this.userActionQueue != null)
+    if (paramString != null) {
+      try
       {
-        if (this.userActionQueue.isFull()) {
-          this.userActionQueue.remove();
+        if (this.userActionQueue != null)
+        {
+          if (this.userActionQueue.isFull()) {
+            this.userActionQueue.remove();
+          }
+          this.userActionQueue.add(paramString);
+          return;
         }
-        this.userActionQueue.add(paramString);
       }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("RDMEtraMsgCollector", 2, "", paramString);
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("RDMEtraMsgCollector", 2, "", paramString);
+        }
+      }
     }
   }
   
   public void destroy()
   {
-    if (this.activityNameQueue != null)
+    LoopQueue localLoopQueue = this.activityNameQueue;
+    if (localLoopQueue != null)
     {
-      this.activityNameQueue.clear();
+      localLoopQueue.clear();
       this.activityNameQueue = null;
     }
-    if (this.activityEventQueue != null)
+    localLoopQueue = this.activityEventQueue;
+    if (localLoopQueue != null)
     {
-      this.activityEventQueue.clear();
+      localLoopQueue.clear();
       this.activityEventQueue = null;
     }
-    if (this.userActionQueue != null)
+    localLoopQueue = this.userActionQueue;
+    if (localLoopQueue != null)
     {
-      this.userActionQueue.clear();
+      localLoopQueue.clear();
       this.userActionQueue = null;
     }
     instance = null;
@@ -131,23 +158,28 @@ public class RDMEtraMsgCollector
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("activityNameQueue:\n");
-    if (this.activityNameQueue != null) {
-      localStringBuilder.append(this.activityNameQueue).append("\n");
+    LoopQueue localLoopQueue = this.activityNameQueue;
+    if (localLoopQueue != null)
+    {
+      localStringBuilder.append(localLoopQueue);
+      localStringBuilder.append("\n");
     }
     localStringBuilder.append(" \n activityEventQueue:\n");
-    if (this.activityEventQueue != null) {
-      localStringBuilder.append(this.activityEventQueue);
+    localLoopQueue = this.activityEventQueue;
+    if (localLoopQueue != null) {
+      localStringBuilder.append(localLoopQueue);
     }
     localStringBuilder.append(" \n userActionQueue:\n");
-    if (this.userActionQueue != null) {
-      localStringBuilder.append(this.userActionQueue);
+    localLoopQueue = this.userActionQueue;
+    if (localLoopQueue != null) {
+      localStringBuilder.append(localLoopQueue);
     }
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.RDMEtraMsgCollector
  * JD-Core Version:    0.7.0.1
  */

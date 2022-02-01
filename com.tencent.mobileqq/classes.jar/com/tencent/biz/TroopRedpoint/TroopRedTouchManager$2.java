@@ -12,15 +12,19 @@ class TroopRedTouchManager$2
   
   public void run()
   {
-    this.this$0.a = MsgBoxListActivity.a(this.a, AppConstants.NEARBY_LBS_HELLO_UIN, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.redpoint", 2, "asyn nearbyMsgBoxUnReadNum=" + this.this$0.a);
+    this.this$0.a = MsgBoxListActivity.getNearbyMsgBoxUnReadNum(this.a, AppConstants.NEARBY_LBS_HELLO_UIN, true);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("asyn nearbyMsgBoxUnReadNum=");
+      localStringBuilder.append(this.this$0.a);
+      QLog.d("nearby.redpoint", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchManager.2
  * JD-Core Version:    0.7.0.1
  */

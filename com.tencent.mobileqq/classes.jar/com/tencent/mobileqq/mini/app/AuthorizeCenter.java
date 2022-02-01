@@ -102,9 +102,15 @@ public class AuthorizeCenter
   
   public AuthorizeCenter(String paramString1, String paramString2)
   {
-    this.sp = BaseApplicationImpl.getApplication().getSharedPreferences(paramString1 + "_" + paramString2, 4);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    this.sp = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 4);
     this.appid = paramString1;
-    if ((scopeMap == null) || (scopeMap.size() == 0)) {
+    paramString1 = scopeMap;
+    if ((paramString1 == null) || (paramString1.size() == 0)) {
       staticInit();
     }
   }
@@ -112,13 +118,18 @@ public class AuthorizeCenter
   public static void clearAuth(String paramString1, String paramString2)
   {
     QLog.i("AuthorizeCenter", 1, "clear all auth ");
-    paramString1 = BaseApplicationImpl.getApplication().getSharedPreferences(paramString1 + "_" + paramString2, 4);
+    Object localObject = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    paramString1 = ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 4);
     paramString2 = scopeMap.values().iterator();
     while (paramString2.hasNext())
     {
-      String str = (String)paramString2.next();
-      if (paramString1.getInt(str, 1) != 1) {
-        paramString1.edit().putInt(str, 1).commit();
+      localObject = (String)paramString2.next();
+      if (paramString1.getInt((String)localObject, 1) != 1) {
+        paramString1.edit().putInt((String)localObject, 1).commit();
       }
     }
     paramString1.edit().putBoolean("authority_synchronized", true).commit();
@@ -139,76 +150,82 @@ public class AuthorizeCenter
   
   public static String getScopeName(String paramString1, String paramString2)
   {
-    Object localObject;
     if ("authorize".equals(paramString1))
     {
-      localObject = getScopeNameByParams(paramString2);
-      if (!isScopeNameValid((String)localObject)) {}
+      localObject1 = getScopeNameByParams(paramString2);
+      if (isScopeNameValid((String)localObject1)) {
+        return localObject1;
+      }
     }
-    for (;;)
+    Object localObject1 = null;
+    try
     {
-      return localObject;
-      try
-      {
-        String str1 = new JSONObject(paramString2).optString("api_name");
-        if (TextUtils.isEmpty(str1))
-        {
-          localObject = paramString1;
-          String str3 = (String)scopeMap.get(localObject);
-          localObject = str3;
-          if (!"operateWXData".equals(paramString1)) {
-            continue;
-          }
-          localObject = str3;
-          if (!TextUtils.isEmpty(str1)) {
-            continue;
-          }
-          return handleOperateWXDataScopeName(paramString2, str3);
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          String str2 = null;
-          continue;
-          localObject = paramString1 + "." + str2;
-        }
+      localObject2 = new JSONObject(paramString2).optString("api_name");
+      localObject1 = localObject2;
+    }
+    catch (Throwable localThrowable)
+    {
+      Object localObject2;
+      label42:
+      String str;
+      break label42;
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = paramString1;
+    }
+    else
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append(".");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject2 = ((StringBuilder)localObject2).toString();
+    }
+    str = (String)scopeMap.get(localObject2);
+    localObject2 = str;
+    if ("operateWXData".equals(paramString1))
+    {
+      localObject2 = str;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = handleOperateWXDataScopeName(paramString2, str);
       }
     }
+    return localObject2;
   }
   
   private static String getScopeNameByParams(String paramString)
   {
+    String str1 = "";
+    String str2;
     try
     {
       paramString = new JSONObject(paramString).optJSONArray("scope").getString(0);
-      String str = paramString;
-      localThrowable1.printStackTrace();
+      str1 = paramString;
+      str2 = paramString;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        str1 = paramString;
+        paramString = paramString.trim();
+        return paramString;
+      }
     }
-    catch (Throwable localThrowable1)
+    catch (Throwable paramString)
     {
-      try
-      {
-        if (!TextUtils.isEmpty(paramString)) {
-          str = paramString.trim();
-        }
-        return str;
-      }
-      catch (Throwable localThrowable2)
-      {
-        break label40;
-      }
-      localThrowable1 = localThrowable1;
-      paramString = "";
+      paramString.printStackTrace();
+      str2 = str1;
     }
-    label40:
-    return paramString;
+    return str2;
   }
   
   public static String getScopePluginSetauthName(String paramString1, String paramString2)
   {
-    return "scope.plugin.setauth." + paramString1 + "." + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("scope.plugin.setauth.");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   public static String getSystemPermission(String paramString1, String paramString2)
@@ -225,39 +242,33 @@ public class AuthorizeCenter
   {
     try
     {
-      Object localObject = new JSONObject(paramString1).optJSONObject("data");
-      String str = ((JSONObject)localObject).optString("api_name");
-      if (!"webapi_plugin_login".equals(str))
+      paramString1 = new JSONObject(paramString1).optJSONObject("data");
+      localObject = paramString1.optString("api_name");
+      if (("webapi_plugin_login".equals(localObject)) || ("webapi_plugin_getuserinfo".equals(localObject)))
       {
-        paramString1 = paramString2;
-        if (!"webapi_plugin_getuserinfo".equals(str)) {}
-      }
-      else
-      {
-        str = ((JSONObject)localObject).optJSONObject("data").optString("miniprogram_appid");
-        localObject = ((JSONObject)localObject).optString("plugin_appid");
-        paramString1 = paramString2;
-        if (!TextUtils.isEmpty(str))
+        localObject = paramString1.optJSONObject("data").optString("miniprogram_appid");
+        paramString1 = paramString1.optString("plugin_appid");
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramString1)))
         {
-          paramString1 = paramString2;
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            paramString1 = getScopePluginSetauthName(str, (String)localObject);
-          }
+          paramString1 = getScopePluginSetauthName((String)localObject, paramString1);
+          return paramString1;
         }
       }
-      return paramString1;
     }
     catch (Throwable paramString1)
     {
       paramString1.printStackTrace();
-      QLog.e("AuthorizeCenter", 2, "handleOperateWXDataScopeName " + paramString1.getMessage(), paramString1);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleOperateWXDataScopeName ");
+      ((StringBuilder)localObject).append(paramString1.getMessage());
+      QLog.e("AuthorizeCenter", 2, ((StringBuilder)localObject).toString(), paramString1);
     }
     return paramString2;
   }
   
   public static boolean isInScopeList(String paramString1, String paramString2)
   {
-    return !TextUtils.isEmpty(getScopeName(paramString1, paramString2));
+    return TextUtils.isEmpty(getScopeName(paramString1, paramString2)) ^ true;
   }
   
   public static boolean isScopeNameValid(String paramString)
@@ -273,46 +284,39 @@ public class AuthorizeCenter
   
   private static void mergeExtConfigInfo()
   {
-    if (extConfigInfo != null) {}
-    for (;;)
-    {
+    if (extConfigInfo != null) {
       return;
-      String str = BaseApplicationImpl.getApplication().getSharedPreferences("MiniAppExtConfigDetail", 4).getString("MiniAppExtConfigDetail", null);
-      if (!TextUtils.isEmpty(str))
+    }
+    Object localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("MiniAppExtConfigDetail", 4).getString("MiniAppExtConfigDetail", null);
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      try
       {
-        Object localObject2;
-        for (;;)
+        extConfigInfo = ExtConfigInfo.fromJson(new JSONObject((String)localObject1));
+        Object localObject2 = extConfigInfo.apiScopeEntries.iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          try
+          ApiScopeEntry localApiScopeEntry = (ApiScopeEntry)((Iterator)localObject2).next();
+          if ((localApiScopeEntry != null) && (!TextUtils.isEmpty(localApiScopeEntry.eventName)) && (!TextUtils.isEmpty(localApiScopeEntry.scope)))
           {
-            extConfigInfo = ExtConfigInfo.fromJson(new JSONObject(str));
-            localObject2 = extConfigInfo.apiScopeEntries.iterator();
-            if (!((Iterator)localObject2).hasNext()) {
-              break;
+            if (TextUtils.isEmpty(localApiScopeEntry.apiName))
+            {
+              localObject1 = localApiScopeEntry.eventName;
             }
-            ApiScopeEntry localApiScopeEntry = (ApiScopeEntry)((Iterator)localObject2).next();
-            if ((localApiScopeEntry != null) && (!TextUtils.isEmpty(localApiScopeEntry.eventName)) && (!TextUtils.isEmpty(localApiScopeEntry.scope))) {
-              if (TextUtils.isEmpty(localApiScopeEntry.apiName))
-              {
-                str = localApiScopeEntry.eventName;
-                scopeMap.put(str, localApiScopeEntry.scope);
-                if (!scopeList.contains(localApiScopeEntry.scope)) {
-                  scopeList.add(localApiScopeEntry.scope);
-                }
-              }
-              else
-              {
-                localObject1 = localApiScopeEntry.eventName + "." + localApiScopeEntry.apiName;
-              }
+            else
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(localApiScopeEntry.eventName);
+              ((StringBuilder)localObject1).append(".");
+              ((StringBuilder)localObject1).append(localApiScopeEntry.apiName);
+              localObject1 = ((StringBuilder)localObject1).toString();
             }
-          }
-          catch (Exception localException)
-          {
-            QLog.e("AuthorizeCenter", 1, "mergeExtConfigInfo error:", localException);
-            return;
+            scopeMap.put(localObject1, localApiScopeEntry.scope);
+            if (!scopeList.contains(localApiScopeEntry.scope)) {
+              scopeList.add(localApiScopeEntry.scope);
+            }
           }
         }
-        Object localObject1 = extConfigInfo.userAuthScopes.iterator();
+        localObject1 = extConfigInfo.userAuthScopes.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (UserAuthScope)((Iterator)localObject1).next();
@@ -332,6 +336,11 @@ public class AuthorizeCenter
             }
           }
         }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("AuthorizeCenter", 1, "mergeExtConfigInfo error:", localException);
       }
     }
   }
@@ -356,7 +365,12 @@ public class AuthorizeCenter
             String str1 = (String)localIterator.next();
             String str2 = localJSONObject.optString(str1);
             systemPermissionMap.put(str1, str2);
-            QLog.i("AuthorizeCenter", 1, "event : " + str1 + "; permissionname : " + str2);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("event : ");
+            localStringBuilder.append(str1);
+            localStringBuilder.append("; permissionname : ");
+            localStringBuilder.append(str2);
+            QLog.i("AuthorizeCenter", 1, localStringBuilder.toString());
           }
         }
       }
@@ -416,24 +430,24 @@ public class AuthorizeCenter
       scopeList.add("scope.insertBookShelf");
       scopeList.add("scope.cmshowInfo");
       scopeList.add("scope.recentColorSign");
-      scopeTitleMap.put("scope.userLocation", HardCodeUtil.a(2131700890));
-      scopeTitleMap.put("scope.userInfo", HardCodeUtil.a(2131700889));
-      scopeTitleMap.put("scope.address", HardCodeUtil.a(2131700896));
-      scopeTitleMap.put("scope.invoiceTitle", HardCodeUtil.a(2131700901));
+      scopeTitleMap.put("scope.userLocation", HardCodeUtil.a(2131701033));
+      scopeTitleMap.put("scope.userInfo", HardCodeUtil.a(2131701032));
+      scopeTitleMap.put("scope.address", HardCodeUtil.a(2131701039));
+      scopeTitleMap.put("scope.invoiceTitle", HardCodeUtil.a(2131701044));
       scopeTitleMap.put("scope.invoice", "获取你的发票信息");
-      scopeTitleMap.put("scope.qqrun", HardCodeUtil.a(2131694191));
-      scopeTitleMap.put("scope.record", HardCodeUtil.a(2131700902));
-      scopeTitleMap.put("scope.writePhotosAlbum", HardCodeUtil.a(2131700904));
-      scopeTitleMap.put("scope.camera", HardCodeUtil.a(2131700910));
-      scopeTitleMap.put("scope.personalize", HardCodeUtil.a(2131700898));
-      scopeTitleMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131700914));
-      scopeTitleMap.put("setting.addFriend", HardCodeUtil.a(2131700912));
-      scopeTitleMap.put("scope.getPhoneNumber", HardCodeUtil.a(2131694190));
-      scopeTitleMap.put("scope.insertBookShelf", HardCodeUtil.a(2131694179));
-      scopeTitleMap.put("scope.cmshowInfo", HardCodeUtil.a(2131694181));
-      scopeTitleMap.put("scope.recentColorSign", HardCodeUtil.a(2131694185));
+      scopeTitleMap.put("scope.qqrun", HardCodeUtil.a(2131694155));
+      scopeTitleMap.put("scope.record", HardCodeUtil.a(2131701045));
+      scopeTitleMap.put("scope.writePhotosAlbum", HardCodeUtil.a(2131701047));
+      scopeTitleMap.put("scope.camera", HardCodeUtil.a(2131701053));
+      scopeTitleMap.put("scope.personalize", HardCodeUtil.a(2131701041));
+      scopeTitleMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131701057));
+      scopeTitleMap.put("setting.addFriend", HardCodeUtil.a(2131701055));
+      scopeTitleMap.put("scope.getPhoneNumber", HardCodeUtil.a(2131694154));
+      scopeTitleMap.put("scope.insertBookShelf", HardCodeUtil.a(2131694138));
+      scopeTitleMap.put("scope.cmshowInfo", HardCodeUtil.a(2131694140));
+      scopeTitleMap.put("scope.recentColorSign", HardCodeUtil.a(2131694149));
       scopeDescMap.put("scope.userLocation", "");
-      scopeDescMap.put("scope.userInfo", HardCodeUtil.a(2131694183));
+      scopeDescMap.put("scope.userInfo", HardCodeUtil.a(2131694147));
       scopeDescMap.put("scope.address", "");
       scopeDescMap.put("scope.invoiceTitle", "");
       scopeDescMap.put("scope.invoice", "");
@@ -442,12 +456,12 @@ public class AuthorizeCenter
       scopeDescMap.put("scope.writePhotosAlbum", "");
       scopeDescMap.put("scope.camera", "");
       scopeDescMap.put("scope.personalize", "");
-      scopeDescMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131700897));
+      scopeDescMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131701040));
       scopeDescMap.put("setting.addFriend", "");
       scopeDescMap.put("scope.getPhoneNumber", "");
-      scopeDescMap.put("scope.insertBookShelf", HardCodeUtil.a(2131694180));
-      scopeDescMap.put("scope.cmshowInfo", HardCodeUtil.a(2131694182));
-      scopeDescMap.put("scope.recentColorSign", HardCodeUtil.a(2131694186));
+      scopeDescMap.put("scope.insertBookShelf", HardCodeUtil.a(2131694139));
+      scopeDescMap.put("scope.cmshowInfo", HardCodeUtil.a(2131694146));
+      scopeDescMap.put("scope.recentColorSign", HardCodeUtil.a(2131694150));
       scopeReportMap.put("scope.userLocation", "userLocation");
       scopeReportMap.put("scope.userInfo", "userinfo");
       scopeReportMap.put("scope.address", "chooseAddress");
@@ -465,22 +479,22 @@ public class AuthorizeCenter
       scopeReportMap.put("scope.insertBookShelf", "insertBookShelf");
       scopeReportMap.put("scope.cmshowInfo", "cmshowInfo");
       scopeReportMap.put("scope.recentColorSign", "addRecentColorSign");
-      settingScopeTitleMap.put("scope.userLocation", HardCodeUtil.a(2131700891));
-      settingScopeTitleMap.put("scope.userInfo", HardCodeUtil.a(2131700892));
-      settingScopeTitleMap.put("scope.address", HardCodeUtil.a(2131700887));
-      settingScopeTitleMap.put("scope.invoiceTitle", HardCodeUtil.a(2131700908));
+      settingScopeTitleMap.put("scope.userLocation", HardCodeUtil.a(2131701034));
+      settingScopeTitleMap.put("scope.userInfo", HardCodeUtil.a(2131701035));
+      settingScopeTitleMap.put("scope.address", HardCodeUtil.a(2131701030));
+      settingScopeTitleMap.put("scope.invoiceTitle", HardCodeUtil.a(2131701051));
       settingScopeTitleMap.put("scope.invoice", "发票信息");
-      settingScopeTitleMap.put("scope.qqrun", HardCodeUtil.a(2131700888));
-      settingScopeTitleMap.put("scope.record", HardCodeUtil.a(2131700909));
-      settingScopeTitleMap.put("scope.writePhotosAlbum", HardCodeUtil.a(2131700915));
-      settingScopeTitleMap.put("scope.camera", HardCodeUtil.a(2131700900));
-      settingScopeTitleMap.put("scope.personalize", HardCodeUtil.a(2131700893));
-      settingScopeTitleMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131694184));
-      settingScopeTitleMap.put("setting.addFriend", HardCodeUtil.a(2131700913));
-      settingScopeTitleMap.put("scope.cmshowInfo", HardCodeUtil.a(2131694182));
-      settingScopeTitleMap.put("scope.insertBookShelf", HardCodeUtil.a(2131694196));
-      settingScopeTitleMap.put("scope.recentColorSign", HardCodeUtil.a(2131694197));
-      negativeButtonDesMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131700903));
+      settingScopeTitleMap.put("scope.qqrun", HardCodeUtil.a(2131701031));
+      settingScopeTitleMap.put("scope.record", HardCodeUtil.a(2131701052));
+      settingScopeTitleMap.put("scope.writePhotosAlbum", HardCodeUtil.a(2131701058));
+      settingScopeTitleMap.put("scope.camera", HardCodeUtil.a(2131701043));
+      settingScopeTitleMap.put("scope.personalize", HardCodeUtil.a(2131701036));
+      settingScopeTitleMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131694148));
+      settingScopeTitleMap.put("setting.addFriend", HardCodeUtil.a(2131701056));
+      settingScopeTitleMap.put("scope.cmshowInfo", HardCodeUtil.a(2131694146));
+      settingScopeTitleMap.put("scope.insertBookShelf", HardCodeUtil.a(2131694160));
+      settingScopeTitleMap.put("scope.recentColorSign", HardCodeUtil.a(2131694161));
+      negativeButtonDesMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131701046));
       scopeAuthTypeMap.put("scope.getPhoneNumber", Integer.valueOf(1));
       mergeExtConfigInfo();
     }
@@ -488,14 +502,12 @@ public class AuthorizeCenter
   
   public static void updateScopeDescription(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return;
-      Iterator localIterator = scopeDescMap.entrySet().iterator();
-      while (localIterator.hasNext()) {
-        updateScopeDescriptionMap((String)((Map.Entry)localIterator.next()).getKey(), paramJSONObject);
-      }
+    }
+    Iterator localIterator = scopeDescMap.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      updateScopeDescriptionMap((String)((Map.Entry)localIterator.next()).getKey(), paramJSONObject);
     }
   }
   
@@ -513,35 +525,39 @@ public class AuthorizeCenter
   public int getAuthFlag(String paramString1, String paramString2)
   {
     String str = getScopeName(paramString1, paramString2);
-    if (TextUtils.isEmpty(str)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(str)) {
       return 2;
-      if ("operateWXData".equals(paramString1)) {}
-      try
+    }
+    if ("operateWXData".equals(paramString1)) {}
+    try
+    {
+      paramString1 = new JSONObject(paramString2).optJSONObject("data");
+      paramString2 = paramString1.optString("api_name");
+      if ((!"webapi_getuserinfo_opendata".equals(paramString2)) && (!"webapi_getadvert".equals(paramString2)) && (!"webapi_getwerunstep_history".equals(paramString2)) && (!"advert_tap".equals(paramString2)) && (!"getBlockAd".equals(paramString2)) && (!"webapi_getnavigatewxaappinfo".equals(paramString2)))
       {
-        paramString1 = new JSONObject(paramString2).optJSONObject("data");
-        paramString2 = paramString1.optString("api_name");
-        if ((!"webapi_getuserinfo_opendata".equals(paramString2)) && (!"webapi_getadvert".equals(paramString2)) && (!"webapi_getwerunstep_history".equals(paramString2)) && (!"advert_tap".equals(paramString2)) && (!"getBlockAd".equals(paramString2)) && (!"webapi_getnavigatewxaappinfo".equals(paramString2)) && (!"webapi_plugin_setauth".equals(paramString2))) {
-          if (("webapi_plugin_login".equals(paramString2)) || ("webapi_plugin_getuserinfo".equals(paramString2)))
+        if ("webapi_plugin_setauth".equals(paramString2)) {
+          return 2;
+        }
+        if (("webapi_plugin_login".equals(paramString2)) || ("webapi_plugin_getuserinfo".equals(paramString2)))
+        {
+          paramString2 = paramString1.optJSONObject("data").optString("miniprogram_appid");
+          paramString1 = paramString1.optString("plugin_appid");
+          if (sTempAllowPluginScopeName != null)
           {
-            paramString2 = paramString1.optJSONObject("data").optString("miniprogram_appid");
-            paramString1 = paramString1.optString("plugin_appid");
-            if (sTempAllowPluginScopeName != null)
-            {
-              boolean bool = sTempAllowPluginScopeName.equals(getScopePluginSetauthName(paramString2, paramString1));
-              if (bool) {
-                continue;
-              }
-            }
+            boolean bool = sTempAllowPluginScopeName.equals(getScopePluginSetauthName(paramString2, paramString1));
+            if (!bool) {}
           }
         }
       }
-      catch (Throwable paramString1)
+      else
       {
-        label174:
-        break label174;
+        return 2;
       }
+    }
+    catch (Throwable paramString1)
+    {
+      label178:
+      break label178;
     }
     return this.sp.getInt(str, 1);
   }
@@ -607,48 +623,44 @@ public class AuthorizeCenter
   
   public void setAuthorize(String paramString, boolean paramBoolean, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    int j = 1;
-    int k = 2;
-    if (!TextUtils.isEmpty(paramString)) {
-      if (!paramBoolean) {
-        break label144;
-      }
-    }
-    label144:
-    for (int i = 2;; i = 4)
+    if (!TextUtils.isEmpty(paramString))
     {
-      this.sp.edit().putInt(paramString, i).commit();
-      if (!paramString.startsWith("setting")) {
-        break;
+      int i = 2;
+      int j;
+      if (paramBoolean) {
+        j = 2;
+      } else {
+        j = 4;
       }
-      localObject = new INTERFACE.StUserSettingInfo();
-      ((INTERFACE.StUserSettingInfo)localObject).settingItem.set(paramString);
+      this.sp.edit().putInt(paramString, j).commit();
+      if (paramString.startsWith("setting"))
+      {
+        localObject = new INTERFACE.StUserSettingInfo();
+        ((INTERFACE.StUserSettingInfo)localObject).settingItem.set(paramString);
+        paramString = (String)scopeTitleMap.get(paramString);
+        if (!TextUtils.isEmpty(paramString)) {
+          ((INTERFACE.StUserSettingInfo)localObject).desc.set(paramString);
+        }
+        paramString = ((INTERFACE.StUserSettingInfo)localObject).authState;
+        if (paramBoolean) {
+          i = 1;
+        }
+        paramString.set(i);
+        MiniAppCmdUtil.getInstance().updateUserSetting(null, this.appid, (INTERFACE.StUserSettingInfo)localObject, new AuthorizeCenter.3(this, paramMiniAppCmdInterface));
+        return;
+      }
+      Object localObject = new INTERFACE.StUserAuthInfo();
+      ((INTERFACE.StUserAuthInfo)localObject).scope.set(paramString);
       paramString = (String)scopeTitleMap.get(paramString);
       if (!TextUtils.isEmpty(paramString)) {
-        ((INTERFACE.StUserSettingInfo)localObject).desc.set(paramString);
+        ((INTERFACE.StUserAuthInfo)localObject).desc.set(paramString);
       }
-      paramString = ((INTERFACE.StUserSettingInfo)localObject).authState;
-      i = k;
+      paramString = ((INTERFACE.StUserAuthInfo)localObject).authState;
       if (paramBoolean) {
         i = 1;
       }
       paramString.set(i);
-      MiniAppCmdUtil.getInstance().updateUserSetting(null, this.appid, (INTERFACE.StUserSettingInfo)localObject, new AuthorizeCenter.3(this, paramMiniAppCmdInterface));
-      return;
-    }
-    Object localObject = new INTERFACE.StUserAuthInfo();
-    ((INTERFACE.StUserAuthInfo)localObject).scope.set(paramString);
-    paramString = (String)scopeTitleMap.get(paramString);
-    if (!TextUtils.isEmpty(paramString)) {
-      ((INTERFACE.StUserAuthInfo)localObject).desc.set(paramString);
-    }
-    paramString = ((INTERFACE.StUserAuthInfo)localObject).authState;
-    if (paramBoolean) {}
-    for (i = j;; i = 2)
-    {
-      paramString.set(i);
       MiniAppCmdUtil.getInstance().setAuth(null, this.appid, (INTERFACE.StUserAuthInfo)localObject, paramMiniAppCmdInterface);
-      return;
     }
   }
   
@@ -664,23 +676,21 @@ public class AuthorizeCenter
       return false;
     }
     paramString1 = (Integer)scopeAuthTypeMap.get(paramString1);
-    if ((paramString1 != null) && (paramString1.intValue() == 1)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return (paramString1 != null) && (paramString1.intValue() == 1);
   }
   
   public void updateAuth(String paramString, boolean paramBoolean)
   {
-    if (this.sp == null) {
+    SharedPreferences localSharedPreferences = this.sp;
+    if (localSharedPreferences == null) {
       return;
     }
     if (paramBoolean)
     {
-      this.sp.edit().putInt(paramString, 2).commit();
+      localSharedPreferences.edit().putInt(paramString, 2).commit();
       return;
     }
-    this.sp.edit().putInt(paramString, 4).commit();
+    localSharedPreferences.edit().putInt(paramString, 4).commit();
   }
   
   public void updateAuthList(List<INTERFACE.StUserAuthInfo> paramList, List<INTERFACE.StUserSettingInfo> paramList1)
@@ -691,43 +701,33 @@ public class AuthorizeCenter
     if (paramList != null)
     {
       i = 0;
-      if (i < paramList.size())
+      while (i < paramList.size())
       {
         localObject = (INTERFACE.StUserAuthInfo)paramList.get(i);
         String str = ((INTERFACE.StUserAuthInfo)localObject).scope.get();
         int k = ((INTERFACE.StUserAuthInfo)localObject).authState.get();
         if (k == 1) {
           this.sp.edit().putInt(str, 2).commit();
+        } else if (k == 2) {
+          this.sp.edit().putInt(str, 4).commit();
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (k == 2) {
-            this.sp.edit().putInt(str, 4).commit();
-          }
-        }
+        i += 1;
       }
     }
     if (paramList1 != null)
     {
       i = j;
-      if (i < paramList1.size())
+      while (i < paramList1.size())
       {
         paramList = (INTERFACE.StUserSettingInfo)paramList1.get(i);
         localObject = paramList.settingItem.get();
         j = paramList.authState.get();
         if (j == 1) {
           this.sp.edit().putInt((String)localObject, 2).commit();
+        } else if (j == 2) {
+          this.sp.edit().putInt((String)localObject, 4).commit();
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (j == 2) {
-            this.sp.edit().putInt((String)localObject, 4).commit();
-          }
-        }
+        i += 1;
       }
     }
   }
@@ -751,19 +751,20 @@ public class AuthorizeCenter
       localStUserSettingInfo.desc.set(paramString);
     }
     paramString = localStUserSettingInfo.authState;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      paramString.set(i);
-      localStUserSettingInfo.subItems.set(paramList);
-      MiniAppCmdUtil.getInstance().updateUserSetting(null, this.appid, localStUserSettingInfo, new AuthorizeCenter.2(this, paramMiniAppCmdInterface));
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    paramString.set(i);
+    localStUserSettingInfo.subItems.set(paramList);
+    MiniAppCmdUtil.getInstance().updateUserSetting(null, this.appid, localStUserSettingInfo, new AuthorizeCenter.2(this, paramMiniAppCmdInterface));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.AuthorizeCenter
  * JD-Core Version:    0.7.0.1
  */

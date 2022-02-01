@@ -6,7 +6,7 @@ public abstract interface DropFrameCollector$DropFrameCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.DropFrameCollector.DropFrameCallback
  * JD-Core Version:    0.7.0.1
  */

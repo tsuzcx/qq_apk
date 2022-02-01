@@ -10,7 +10,6 @@ public class PTSLiteJniHandler
   
   public static void create(PTSAppInstance paramPTSAppInstance, String paramString)
   {
-    boolean bool = true;
     if (paramPTSAppInstance == null) {
       return;
     }
@@ -19,13 +18,12 @@ public class PTSLiteJniHandler
     float f1 = paramPTSAppInstance.getRootViewWidth();
     float f2 = PTSDeviceUtil.getScreenScale();
     float f3 = PTSDeviceUtil.getRPXScaling();
-    if (paramPTSAppInstance.getRootNodeType() == 1) {}
-    for (;;)
-    {
-      createPTSLitePage(i, f1, f2, f3, bool, paramString);
-      return;
+    int j = paramPTSAppInstance.getRootNodeType();
+    boolean bool = true;
+    if (j != 1) {
       bool = false;
     }
+    createPTSLitePage(i, f1, f2, f3, bool, paramString);
   }
   
   private static native void createPTSLitePage(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean, String paramString);
@@ -63,7 +61,7 @@ public class PTSLiteJniHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.jni.PTSLiteJniHandler
  * JD-Core Version:    0.7.0.1
  */

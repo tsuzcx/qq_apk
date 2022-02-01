@@ -37,38 +37,38 @@ public class StatableSpanTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void drawableStateChanged()
+  protected void drawableStateChanged()
   {
-    int j = 0;
     super.drawableStateChanged();
-    int[] arrayOfInt;
-    Object localObject;
+    Object localObject1 = this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
+    int j = 0;
+    Object localObject2;
     int k;
     int i;
-    if (this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan != null)
+    if (localObject1 != null)
     {
-      arrayOfInt = getDrawableState();
-      localObject = this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
-      k = localObject.length;
+      localObject1 = getDrawableState();
+      localObject2 = this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
+      k = localObject2.length;
       i = 0;
       while (i < k)
       {
-        Drawable localDrawable = localObject[i].getDrawable();
+        Drawable localDrawable = localObject2[i].getDrawable();
         if (localDrawable.isStateful()) {
-          localDrawable.setState(arrayOfInt);
+          localDrawable.setState((int[])localObject1);
         }
         i += 1;
       }
     }
     if (this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan != null)
     {
-      arrayOfInt = getDrawableState();
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
-      k = localObject.length;
+      localObject1 = getDrawableState();
+      localObject2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
+      k = localObject2.length;
       i = j;
       while (i < k)
       {
-        localObject[i].a(arrayOfInt);
+        localObject2[i].a((int[])localObject1);
         i += 1;
       }
     }
@@ -77,13 +77,12 @@ public class StatableSpanTextView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     MovementMethod localMovementMethod = getMovementMethod();
-    int i;
     if (((localMovementMethod != null) || (onCheckIsTextEditor())) && (isEnabled()) && ((getText() instanceof Spannable)) && (getLayout() != null))
     {
-      Spannable localSpannable = (Spannable)getText();
+      Object localObject = (Spannable)getText();
       if (localMovementMethod != null)
       {
-        i = paramMotionEvent.getAction();
+        int i = paramMotionEvent.getAction();
         if ((i == 1) || (i == 0) || (i == 3))
         {
           int j = (int)paramMotionEvent.getX();
@@ -94,7 +93,7 @@ public class StatableSpanTextView
           int i2 = getScrollY();
           paramMotionEvent = getLayout();
           j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-          paramMotionEvent = (ITopic[])localSpannable.getSpans(j, j, ITopic.class);
+          paramMotionEvent = (ITopic[])((Spannable)localObject).getSpans(j, j, ITopic.class);
           if (paramMotionEvent.length != 0)
           {
             this.jdField_a_of_type_Boolean = false;
@@ -103,54 +102,49 @@ public class StatableSpanTextView
             {
               paramMotionEvent.setPressed(this, true);
               this.jdField_a_of_type_ComTencentMobileqqTextITopic = paramMotionEvent;
-            }
-            for (;;)
-            {
               return true;
-              if (this.jdField_a_of_type_ComTencentMobileqqTextITopic != null)
-              {
-                this.jdField_a_of_type_ComTencentMobileqqTextITopic.setPressed(this, false);
-                this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
-              }
-              if (i == 1) {
-                paramMotionEvent.onClick(this);
-              }
+            }
+            localObject = this.jdField_a_of_type_ComTencentMobileqqTextITopic;
+            if (localObject != null)
+            {
+              ((ITopic)localObject).setPressed(this, false);
+              this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
+            }
+            if (i == 1) {
+              paramMotionEvent.onClick(this);
+            }
+            return true;
+          }
+          if (i == 1)
+          {
+            if (this.jdField_a_of_type_Boolean)
+            {
+              this.jdField_a_of_type_Boolean = false;
+              performClick();
             }
           }
-          if (i != 1) {
-            break label275;
-          }
-          if (this.jdField_a_of_type_Boolean)
-          {
+          else if (i == 0) {
+            this.jdField_a_of_type_Boolean = true;
+          } else if (i == 3) {
             this.jdField_a_of_type_Boolean = false;
-            performClick();
+          }
+          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqTextITopic;
+          if (paramMotionEvent != null)
+          {
+            paramMotionEvent.setPressed(this, false);
+            this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
           }
         }
       }
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqTextITopic != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTextITopic.setPressed(this, false);
-        this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
-      }
-      return false;
-      label275:
-      if (i == 0) {
-        this.jdField_a_of_type_Boolean = true;
-      } else if (i == 3) {
-        this.jdField_a_of_type_Boolean = false;
-      }
-    }
+    return false;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    Spannable localSpannable;
     if ((paramCharSequence != null) && ((paramCharSequence instanceof Spannable)))
     {
-      localSpannable = (Spannable)paramCharSequence;
+      Spannable localSpannable = (Spannable)paramCharSequence;
       this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = ((ImageSpan[])localSpannable.getSpans(0, localSpannable.length(), ImageSpan.class));
       if (this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan != null)
       {
@@ -166,27 +160,29 @@ public class StatableSpanTextView
           }
           i += 1;
         }
-        if (localArrayList.size() <= 0) {
-          break label172;
+        if (localArrayList.size() > 0)
+        {
+          this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = new ImageSpan[localArrayList.size()];
+          this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = ((ImageSpan[])localArrayList.toArray(this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan));
         }
-        this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = new ImageSpan[localArrayList.size()];
-        this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = ((ImageSpan[])localArrayList.toArray(this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan));
+        else
+        {
+          this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = null;
+        }
       }
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = ((StatableSpanTextView.StatableForegroundColorSpan[])localSpannable.getSpans(0, localSpannable.length(), StatableSpanTextView.StatableForegroundColorSpan.class));
     }
-    for (this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = ((StatableSpanTextView.StatableForegroundColorSpan[])localSpannable.getSpans(0, localSpannable.length(), StatableSpanTextView.StatableForegroundColorSpan.class));; this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = null)
+    else
     {
-      super.setText(paramCharSequence, paramBufferType);
-      return;
-      label172:
       this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = null;
-      break;
-      this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = null;
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = null;
     }
+    super.setText(paramCharSequence, paramBufferType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.StatableSpanTextView
  * JD-Core Version:    0.7.0.1
  */

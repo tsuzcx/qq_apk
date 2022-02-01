@@ -49,32 +49,32 @@ public class StoryVideoFileObject
   {
     if ((TextUtils.isEmpty(this.b)) || (!FileUtils.c(this.b)))
     {
-      Object localObject = ((VideoCompositeManager)SuperManager.a(14)).a(this.jdField_a_of_type_JavaLangString);
-      if (((VideoCompositeManager.CompositeResult)localObject).a.isSuccess())
-      {
-        this.b = ((VideoCompositeManager.CompositeResult)localObject).b;
-        if ((TextUtils.isEmpty(this.b)) || (!FileUtils.c(this.b)))
-        {
-          SLog.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "end composite success but file not exist:%s", new Object[] { this.b });
-          localObject = new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.b }));
-          ((ErrorMessage)localObject).extraMsg = "composite";
-          super.notifyResult(localObject);
-        }
+      localObject = ((VideoCompositeManager)SuperManager.a(14)).a(this.jdField_a_of_type_JavaLangString);
+      if (!((VideoCompositeManager.CompositeResult)localObject).a.isSuccess()) {
+        break label148;
       }
-      else
-      {
-        ((VideoCompositeManager.CompositeResult)localObject).a.extraMsg = "composite";
-        super.notifyResult(((VideoCompositeManager.CompositeResult)localObject).a);
-        return;
-      }
+      this.b = ((VideoCompositeManager.CompositeResult)localObject).b;
+      if ((TextUtils.isEmpty(this.b)) || (!FileUtils.c(this.b))) {}
     }
-    StoryVideoUploadProgressManager.a().b(this.jdField_a_of_type_JavaLangString);
-    c();
+    else
+    {
+      StoryVideoUploadProgressManager.a().b(this.jdField_a_of_type_JavaLangString);
+      c();
+      return;
+    }
+    SLog.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "end composite success but file not exist:%s", new Object[] { this.b });
+    Object localObject = new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.b }));
+    ((ErrorMessage)localObject).extraMsg = "composite";
+    super.notifyResult(localObject);
+    return;
+    label148:
+    ((VideoCompositeManager.CompositeResult)localObject).a.extraMsg = "composite";
+    super.notifyResult(((VideoCompositeManager.CompositeResult)localObject).a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.meta.StoryVideoFileObject
  * JD-Core Version:    0.7.0.1
  */

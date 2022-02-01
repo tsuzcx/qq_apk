@@ -38,44 +38,69 @@ class GroupIconHelper$GroupIconInfo
       this.c = false;
       this.d = false;
       this.e = false;
-    }
-    while (paramByte != 2) {
       return;
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.e = true;
+    if (paramByte == 2)
+    {
+      this.jdField_b_of_type_Boolean = false;
+      this.e = true;
+    }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nGroupIconInfo");
-    localStringBuilder.append("\n |-").append("isChanged:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("\n |-").append("state:").append(this.jdField_a_of_type_Byte);
-    localStringBuilder.append("\n |-").append("isSyncFace:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("\n |-").append("startTime:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("faceUinSet:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("faceCount:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("crateIconCount:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("\n |-").append("lastCreatedFaceUinSet:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("isPstnIcon:").append(this.c);
-    localStringBuilder.append("\n |-").append("hasRealPstnUser:").append(this.d);
-    localStringBuilder.append("\n |-").append("isFromCreate:").append(this.e);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("isChanged:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("state:");
+    localStringBuilder.append(this.jdField_a_of_type_Byte);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("isSyncFace:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("startTime:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("faceUinSet:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("faceCount:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("crateIconCount:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("lastCreatedFaceUinSet:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("isPstnIcon:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("hasRealPstnUser:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("isFromCreate:");
+    localStringBuilder.append(this.e);
     try
     {
-      localStringBuilder.append("\n |-").append("memberFaceList:").append(this.jdField_a_of_type_JavaUtilArrayList);
-      label243:
+      localStringBuilder.append("\n |-");
+      localStringBuilder.append("memberFaceList:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+      label291:
       return localStringBuilder.toString();
     }
     catch (Exception localException)
     {
-      break label243;
+      break label291;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.GroupIconHelper.GroupIconInfo
  * JD-Core Version:    0.7.0.1
  */

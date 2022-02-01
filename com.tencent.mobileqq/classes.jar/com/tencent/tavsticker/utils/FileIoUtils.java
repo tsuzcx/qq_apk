@@ -12,35 +12,33 @@ public final class FileIoUtils
   
   private static boolean createOrExistsFile(File paramFile)
   {
-    if (paramFile == null) {}
-    for (;;)
-    {
+    boolean bool2 = false;
+    if (paramFile == null) {
       return false;
-      if (paramFile.exists()) {
-        return paramFile.isFile();
-      }
-      boolean bool2 = true;
-      try
+    }
+    if (paramFile.exists()) {
+      return paramFile.isFile();
+    }
+    boolean bool3 = true;
+    try
+    {
+      File localFile = paramFile.getParentFile();
+      boolean bool1 = bool3;
+      if (localFile != null)
       {
-        File localFile = paramFile.getParentFile();
-        boolean bool1 = bool2;
-        if (localFile != null)
-        {
-          bool1 = bool2;
-          if (!localFile.exists()) {
-            bool1 = localFile.mkdirs();
-          }
-        }
-        if (bool1)
-        {
-          bool1 = paramFile.createNewFile();
-          return bool1;
+        bool1 = bool3;
+        if (!localFile.exists()) {
+          bool1 = localFile.mkdirs();
         }
       }
-      catch (IOException paramFile)
-      {
-        paramFile.printStackTrace();
+      if (bool1) {
+        bool2 = paramFile.createNewFile();
       }
+      return bool2;
+    }
+    catch (IOException paramFile)
+    {
+      paramFile.printStackTrace();
     }
     return false;
   }
@@ -55,133 +53,114 @@ public final class FileIoUtils
   
   private static boolean isSpace(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return true;
-      int j = paramString.length();
-      int i = 0;
-      while (i < j)
-      {
-        if (!Character.isWhitespace(paramString.charAt(i))) {
-          return false;
-        }
-        i += 1;
-      }
     }
+    int j = paramString.length();
+    int i = 0;
+    while (i < j)
+    {
+      if (!Character.isWhitespace(paramString.charAt(i))) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
   }
   
   /* Error */
   public static boolean writeFileFromBytesByStream(File paramFile, byte[] paramArrayOfByte, boolean paramBoolean)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: iload 4
-    //   5: istore_3
-    //   6: aload_1
-    //   7: ifnull +13 -> 20
-    //   10: aload_0
-    //   11: invokestatic 69	com/tencent/tavsticker/utils/FileIoUtils:createOrExistsFile	(Ljava/io/File;)Z
-    //   14: ifne +8 -> 22
-    //   17: iload 4
-    //   19: istore_3
-    //   20: iload_3
-    //   21: ireturn
-    //   22: aconst_null
-    //   23: astore 6
-    //   25: new 71	java/io/BufferedOutputStream
-    //   28: dup
-    //   29: new 73	java/io/FileOutputStream
-    //   32: dup
-    //   33: aload_0
-    //   34: iload_2
-    //   35: invokespecial 76	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   38: invokespecial 79	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   41: astore 5
-    //   43: aload 5
-    //   45: astore_0
-    //   46: aload 5
-    //   48: aload_1
-    //   49: invokevirtual 83	java/io/BufferedOutputStream:write	([B)V
-    //   52: iconst_1
-    //   53: istore_3
-    //   54: aload 5
-    //   56: ifnull -36 -> 20
-    //   59: aload 5
-    //   61: invokevirtual 86	java/io/BufferedOutputStream:close	()V
-    //   64: iconst_1
-    //   65: ireturn
-    //   66: astore_0
-    //   67: aload_0
-    //   68: invokevirtual 42	java/io/IOException:printStackTrace	()V
-    //   71: iconst_1
-    //   72: ireturn
-    //   73: astore 6
-    //   75: aconst_null
-    //   76: astore_1
-    //   77: aload_1
-    //   78: astore_0
-    //   79: aload 6
-    //   81: invokevirtual 42	java/io/IOException:printStackTrace	()V
-    //   84: iload 4
-    //   86: istore_3
-    //   87: aload_1
-    //   88: ifnull -68 -> 20
-    //   91: aload_1
-    //   92: invokevirtual 86	java/io/BufferedOutputStream:close	()V
-    //   95: iconst_0
-    //   96: ireturn
-    //   97: astore_0
-    //   98: aload_0
-    //   99: invokevirtual 42	java/io/IOException:printStackTrace	()V
-    //   102: iconst_0
-    //   103: ireturn
-    //   104: astore_0
-    //   105: aload 6
+    //   0: aload_1
+    //   1: ifnull +113 -> 114
+    //   4: aload_0
+    //   5: invokestatic 69	com/tencent/tavsticker/utils/FileIoUtils:createOrExistsFile	(Ljava/io/File;)Z
+    //   8: ifne +5 -> 13
+    //   11: iconst_0
+    //   12: ireturn
+    //   13: aconst_null
+    //   14: astore 4
+    //   16: aconst_null
+    //   17: astore_3
+    //   18: new 71	java/io/BufferedOutputStream
+    //   21: dup
+    //   22: new 73	java/io/FileOutputStream
+    //   25: dup
+    //   26: aload_0
+    //   27: iload_2
+    //   28: invokespecial 76	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   31: invokespecial 79	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   34: astore_0
+    //   35: aload_0
+    //   36: aload_1
+    //   37: invokevirtual 83	java/io/BufferedOutputStream:write	([B)V
+    //   40: aload_0
+    //   41: invokevirtual 86	java/io/BufferedOutputStream:close	()V
+    //   44: iconst_1
+    //   45: ireturn
+    //   46: astore_0
+    //   47: aload_0
+    //   48: invokevirtual 42	java/io/IOException:printStackTrace	()V
+    //   51: iconst_1
+    //   52: ireturn
+    //   53: astore_1
+    //   54: aload_0
+    //   55: astore_3
+    //   56: aload_1
+    //   57: astore_0
+    //   58: goto +38 -> 96
+    //   61: astore_1
+    //   62: goto +11 -> 73
+    //   65: astore_0
+    //   66: goto +30 -> 96
+    //   69: astore_1
+    //   70: aload 4
+    //   72: astore_0
+    //   73: aload_0
+    //   74: astore_3
+    //   75: aload_1
+    //   76: invokevirtual 42	java/io/IOException:printStackTrace	()V
+    //   79: aload_0
+    //   80: ifnull +14 -> 94
+    //   83: aload_0
+    //   84: invokevirtual 86	java/io/BufferedOutputStream:close	()V
+    //   87: iconst_0
+    //   88: ireturn
+    //   89: astore_0
+    //   90: aload_0
+    //   91: invokevirtual 42	java/io/IOException:printStackTrace	()V
+    //   94: iconst_0
+    //   95: ireturn
+    //   96: aload_3
+    //   97: ifnull +15 -> 112
+    //   100: aload_3
+    //   101: invokevirtual 86	java/io/BufferedOutputStream:close	()V
+    //   104: goto +8 -> 112
     //   107: astore_1
     //   108: aload_1
-    //   109: ifnull +7 -> 116
-    //   112: aload_1
-    //   113: invokevirtual 86	java/io/BufferedOutputStream:close	()V
-    //   116: aload_0
-    //   117: athrow
-    //   118: astore_1
-    //   119: aload_1
-    //   120: invokevirtual 42	java/io/IOException:printStackTrace	()V
-    //   123: goto -7 -> 116
-    //   126: astore 5
-    //   128: aload_0
-    //   129: astore_1
-    //   130: aload 5
-    //   132: astore_0
-    //   133: goto -25 -> 108
-    //   136: astore 6
-    //   138: aload 5
-    //   140: astore_1
-    //   141: goto -64 -> 77
+    //   109: invokevirtual 42	java/io/IOException:printStackTrace	()V
+    //   112: aload_0
+    //   113: athrow
+    //   114: iconst_0
+    //   115: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	144	0	paramFile	File
-    //   0	144	1	paramArrayOfByte	byte[]
-    //   0	144	2	paramBoolean	boolean
-    //   5	82	3	bool1	boolean
-    //   1	84	4	bool2	boolean
-    //   41	19	5	localBufferedOutputStream	java.io.BufferedOutputStream
-    //   126	13	5	localObject1	Object
-    //   23	1	6	localObject2	Object
-    //   73	33	6	localIOException1	IOException
-    //   136	1	6	localIOException2	IOException
+    //   0	116	0	paramFile	File
+    //   0	116	1	paramArrayOfByte	byte[]
+    //   0	116	2	paramBoolean	boolean
+    //   17	84	3	localFile	File
+    //   14	57	4	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   59	64	66	java/io/IOException
-    //   25	43	73	java/io/IOException
-    //   91	95	97	java/io/IOException
-    //   25	43	104	finally
-    //   112	116	118	java/io/IOException
-    //   46	52	126	finally
-    //   79	84	126	finally
-    //   46	52	136	java/io/IOException
+    //   40	44	46	java/io/IOException
+    //   35	40	53	finally
+    //   35	40	61	java/io/IOException
+    //   18	35	65	finally
+    //   75	79	65	finally
+    //   18	35	69	java/io/IOException
+    //   83	87	89	java/io/IOException
+    //   100	104	107	java/io/IOException
   }
   
   public static boolean writeFileFromBytesByStream(String paramString, byte[] paramArrayOfByte, boolean paramBoolean)
@@ -191,7 +170,7 @@ public final class FileIoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.utils.FileIoUtils
  * JD-Core Version:    0.7.0.1
  */

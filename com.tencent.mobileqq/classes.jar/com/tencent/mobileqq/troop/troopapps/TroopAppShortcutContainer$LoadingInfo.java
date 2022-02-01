@@ -54,7 +54,7 @@ class TroopAppShortcutContainer$LoadingInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer.LoadingInfo
  * JD-Core Version:    0.7.0.1
  */

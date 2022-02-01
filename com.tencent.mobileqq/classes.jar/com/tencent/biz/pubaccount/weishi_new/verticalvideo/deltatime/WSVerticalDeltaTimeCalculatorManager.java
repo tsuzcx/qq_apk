@@ -33,27 +33,47 @@ public class WSVerticalDeltaTimeCalculatorManager
   
   public void a(int paramInt, WSPlayerParam paramWSPlayerParam)
   {
-    WSLog.e("WSVerticalDeltaTimeCalculatorManager", "[onPlayVideo] position:" + paramInt + ", mHasPlayFirstVideo:" + this.b + ", mHasFirstVideoStarted:" + this.c + ", title:" + a(paramWSPlayerParam));
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator != null) && (paramInt == 0) && (!this.b))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onPlayVideo] position:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(", mHasPlayFirstVideo:");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(", mHasFirstVideoStarted:");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(", title:");
+    ((StringBuilder)localObject).append(a(paramWSPlayerParam));
+    WSLog.e("WSVerticalDeltaTimeCalculatorManager", ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator;
+    if ((localObject != null) && (paramInt == 0) && (!this.b))
     {
       this.b = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator.b(SystemClock.uptimeMillis());
-    }
-    while ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator == null) || (paramInt != 1) || (this.c)) {
+      ((IWSVerticalDeltaTimeCalculator)localObject).b(SystemClock.uptimeMillis());
       return;
     }
-    this.c = true;
-    WSLog.d("WSVerticalDeltaTimeCalculatorManager", "[onPlayVideo] firstVideoNotStarted! secondVideoTitle:" + a(paramWSPlayerParam));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator.c(SystemClock.uptimeMillis());
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator != null) && (paramInt == 1) && (!this.c))
+    {
+      this.c = true;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[onPlayVideo] firstVideoNotStarted! secondVideoTitle:");
+      ((StringBuilder)localObject).append(a(paramWSPlayerParam));
+      WSLog.d("WSVerticalDeltaTimeCalculatorManager", ((StringBuilder)localObject).toString());
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator.c(SystemClock.uptimeMillis());
+    }
   }
   
   public void a(WSPlayerParam paramWSPlayerParam)
   {
-    WSLog.e("WSVerticalDeltaTimeCalculatorManager", "[onVideoStarted] mHasFirstVideoStarted:" + this.c + ", title:" + a(paramWSPlayerParam));
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator != null) && (!this.c))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onVideoStarted] mHasFirstVideoStarted:");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(", title:");
+    ((StringBuilder)localObject).append(a(paramWSPlayerParam));
+    WSLog.e("WSVerticalDeltaTimeCalculatorManager", ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator;
+    if ((localObject != null) && (!this.c))
     {
       this.c = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator.a(SystemClock.uptimeMillis(), paramWSPlayerParam);
+      ((IWSVerticalDeltaTimeCalculator)localObject).a(SystemClock.uptimeMillis(), paramWSPlayerParam);
     }
   }
   
@@ -61,8 +81,21 @@ public class WSVerticalDeltaTimeCalculatorManager
   {
     if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator != null) && (!this.c))
     {
-      WSLog.d("WSVerticalDeltaTimeCalculatorManager", "[onVideoError] firstVideoNotStarted! model:" + paramInt1 + ", what:" + paramInt2 + ", errorMsg:" + paramString + ", title:" + a(paramWSPlayerParam));
-      paramWSPlayerParam = paramInt1 + ":" + paramInt2;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onVideoError] firstVideoNotStarted! model:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", what:");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", errorMsg:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", title:");
+      localStringBuilder.append(a(paramWSPlayerParam));
+      WSLog.d("WSVerticalDeltaTimeCalculatorManager", localStringBuilder.toString());
+      paramWSPlayerParam = new StringBuilder();
+      paramWSPlayerParam.append(paramInt1);
+      paramWSPlayerParam.append(":");
+      paramWSPlayerParam.append(paramInt2);
+      paramWSPlayerParam = paramWSPlayerParam.toString();
       this.c = true;
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator.a(SystemClock.uptimeMillis(), paramWSPlayerParam, paramString);
     }
@@ -71,38 +104,60 @@ public class WSVerticalDeltaTimeCalculatorManager
   public void a(WSVerticalItemData paramWSVerticalItemData)
   {
     WSLog.e("WSVerticalDeltaTimeCalculatorManager", "[onViewCreated]");
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator.a(SystemClock.uptimeMillis(), paramWSVerticalItemData);
+    IWSVerticalDeltaTimeCalculator localIWSVerticalDeltaTimeCalculator = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator;
+    if (localIWSVerticalDeltaTimeCalculator != null) {
+      localIWSVerticalDeltaTimeCalculator.a(SystemClock.uptimeMillis(), paramWSVerticalItemData);
     }
   }
   
   public void a(WSVerticalItemData paramWSVerticalItemData, int paramInt, String paramString1, String paramString2)
   {
-    WSLog.e("WSVerticalDeltaTimeCalculatorManager", "[onBindFeedHolder] position:" + paramInt + ", mHasBindFirstHolder:" + this.jdField_a_of_type_Boolean + ", title:" + a(paramWSVerticalItemData));
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator != null) && (paramInt == 0) && (!this.jdField_a_of_type_Boolean))
+    paramString1 = new StringBuilder();
+    paramString1.append("[onBindFeedHolder] position:");
+    paramString1.append(paramInt);
+    paramString1.append(", mHasBindFirstHolder:");
+    paramString1.append(this.jdField_a_of_type_Boolean);
+    paramString1.append(", title:");
+    paramString1.append(a(paramWSVerticalItemData));
+    WSLog.e("WSVerticalDeltaTimeCalculatorManager", paramString1.toString());
+    paramWSVerticalItemData = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator;
+    if ((paramWSVerticalItemData != null) && (paramInt == 0) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator.a(SystemClock.uptimeMillis());
+      paramWSVerticalItemData.a(SystemClock.uptimeMillis());
     }
   }
   
   public void a(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
   {
-    WSLog.e("WSVerticalDeltaTimeCalculatorManager", "[onCreate] from:" + paramString1 + ", isNeedCalcDeltaTime:" + paramBoolean + ", startPageUptime:" + paramLong + ", mDeltaTimeCalculator:" + this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator);
-    if (!paramBoolean) {}
-    do
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onCreate] from:");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", isNeedCalcDeltaTime:");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(", startPageUptime:");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(", mDeltaTimeCalculator:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator);
+    WSLog.e("WSVerticalDeltaTimeCalculatorManager", ((StringBuilder)localObject).toString());
+    if (!paramBoolean) {
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator = WSVerticalDeltaTimeFactory.a(paramString1);
-    } while (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator == null);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator.a(paramString1, paramString2, paramLong, SystemClock.uptimeMillis());
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator = WSVerticalDeltaTimeFactory.a(paramString1);
+    localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator;
+    if (localObject != null) {
+      ((IWSVerticalDeltaTimeCalculator)localObject).a(paramString1, paramString2, paramLong, SystemClock.uptimeMillis());
+    }
   }
   
   public void b(WSPlayerParam paramWSPlayerParam)
   {
     if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator != null) && (!this.c))
     {
-      WSLog.d("WSVerticalDeltaTimeCalculatorManager", "[onPause] firstVideoNotStarted! title:" + a(paramWSPlayerParam));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onPause] firstVideoNotStarted! title:");
+      localStringBuilder.append(a(paramWSPlayerParam));
+      WSLog.d("WSVerticalDeltaTimeCalculatorManager", localStringBuilder.toString());
       this.c = true;
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator.d(SystemClock.uptimeMillis());
     }
@@ -112,7 +167,10 @@ public class WSVerticalDeltaTimeCalculatorManager
   {
     if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator != null) && (!this.c))
     {
-      WSLog.d("WSVerticalDeltaTimeCalculatorManager", "[onExitVerticalPage] firstVideoNotStarted! title:" + a(paramWSPlayerParam));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onExitVerticalPage] firstVideoNotStarted! title:");
+      localStringBuilder.append(a(paramWSPlayerParam));
+      WSLog.d("WSVerticalDeltaTimeCalculatorManager", localStringBuilder.toString());
       this.c = true;
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDeltatimeIWSVerticalDeltaTimeCalculator.e(SystemClock.uptimeMillis());
     }
@@ -120,7 +178,7 @@ public class WSVerticalDeltaTimeCalculatorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.deltatime.WSVerticalDeltaTimeCalculatorManager
  * JD-Core Version:    0.7.0.1
  */

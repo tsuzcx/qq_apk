@@ -1,4 +1,4 @@
-package com.tencent.mobileqq.troop.troopMemberLevel;
+package com.tencent.mobileqq.troop.troopmemberlevel;
 
 public class TroopMemberRankItem
 {
@@ -26,12 +26,23 @@ public class TroopMemberRankItem
   
   public String toString()
   {
-    return "rankId = " + this.jdField_a_of_type_Int + ",realLevel = " + this.jdField_b_of_type_Int + ",rankTitle = " + this.jdField_a_of_type_JavaLangString + ",isShowLevel" + this.jdField_a_of_type_Boolean + ",isShowRank = " + this.jdField_b_of_type_Boolean;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("rankId = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",realLevel = ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",rankTitle = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",isShowLevel");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",isShowRank = ");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
- * Qualified Name:     com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberRankItem
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.troop.troopmemberlevel.TroopMemberRankItem
  * JD-Core Version:    0.7.0.1
  */

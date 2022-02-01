@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.filemanageraux.util;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.business.tendoc.TencentDocEditConvertConfigBean;
 import com.tencent.mobileqq.config.business.tendoc.TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem;
 import com.tencent.mobileqq.config.business.tendoc.TencentDocEditConvertConfigProcessor;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.teamwork.api.ITencentDocConvertABTestUtil.DocClickTypeRunnable;
+import com.tencent.mobileqq.teamwork.bean.TeamWorkFileImportInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -32,17 +32,45 @@ import java.util.Map;
 
 public class TencentDocConvertABTestUtil
 {
-  public static int a(QQAppInterface paramQQAppInterface)
+  private static int a(Context paramContext, float paramFloat)
   {
-    if (paramQQAppInterface == null) {
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
+  }
+  
+  public static int a(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface == null) {
       return 106;
     }
-    return ViewUtils.a(53.0F);
+    return a(paramAppInterface.getApp(), 53.0F);
   }
   
   private static int a(String paramString)
   {
     return Integer.decode(paramString).intValue() | 0xFF000000;
+  }
+  
+  private static String a(String paramString)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    if (paramString.endsWith(".rename") == true)
+    {
+      String str = paramString.replace(".rename", "");
+      i = str.lastIndexOf(".");
+      if (i == -1) {
+        return "";
+      }
+      if (str.substring(i).replaceAll("[0-9]*", "").replace("(", "").replace(")", "").equalsIgnoreCase(".apk") == true) {
+        return ".apk.rename";
+      }
+    }
+    int i = paramString.lastIndexOf(".");
+    if (i >= 0) {
+      return paramString.substring(i);
+    }
+    return "";
   }
   
   public static List<TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem> a()
@@ -55,171 +83,174 @@ public class TencentDocConvertABTestUtil
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    paramString = FileUtil.a(paramString).toLowerCase().replace(".", "");
+    paramString = a(paramString).toLowerCase().replace(".", "");
     return (List)TencentDocEditConvertConfigProcessor.a().a().get(paramString);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, View paramView, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, TencentDocConvertABTestUtil.DocClickTypeRunnable paramDocClickTypeRunnable)
+  public static void a(AppInterface paramAppInterface, Activity paramActivity, View paramView, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, ITencentDocConvertABTestUtil.DocClickTypeRunnable paramDocClickTypeRunnable)
   {
-    if ((paramTeamWorkFileImportInfo == null) || (paramActivity == null)) {}
-    do
+    if (paramTeamWorkFileImportInfo != null)
     {
-      return;
+      if (paramActivity == null) {
+        return;
+      }
       paramActivity = paramActivity.getResources();
-    } while (paramActivity == null);
-    Object localObject = a(paramTeamWorkFileImportInfo.b);
-    ArrayList localArrayList = new ArrayList();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      if (paramTeamWorkFileImportInfo.a != 1)
+      if (paramActivity == null) {
+        return;
+      }
+      Object localObject = a(paramTeamWorkFileImportInfo.b);
+      ArrayList localArrayList = new ArrayList();
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        paramTeamWorkFileImportInfo = ((List)localObject).iterator();
-        while (paramTeamWorkFileImportInfo.hasNext())
+        if (paramTeamWorkFileImportInfo.a != 1)
         {
-          localObject = (TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)paramTeamWorkFileImportInfo.next();
-          if (((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject).b() != 2) {
-            localArrayList.add(localObject);
+          paramTeamWorkFileImportInfo = ((List)localObject).iterator();
+          while (paramTeamWorkFileImportInfo.hasNext())
+          {
+            localObject = (TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)paramTeamWorkFileImportInfo.next();
+            if (((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject).b() != 2) {
+              localArrayList.add(localObject);
+            }
           }
         }
+        localArrayList.addAll((Collection)localObject);
       }
-      localArrayList.addAll((Collection)localObject);
+      a(paramAppInterface, paramActivity, paramView, localArrayList, paramDocClickTypeRunnable);
     }
-    a(paramQQAppInterface, paramActivity, paramView, localArrayList, paramDocClickTypeRunnable);
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, Resources paramResources, View paramView, List<TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem> paramList, TencentDocConvertABTestUtil.DocClickTypeRunnable paramDocClickTypeRunnable)
+  private static void a(AppInterface paramAppInterface, Resources paramResources, View paramView, List<TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem> paramList, ITencentDocConvertABTestUtil.DocClickTypeRunnable paramDocClickTypeRunnable)
   {
-    if ((paramView == null) || (paramDocClickTypeRunnable == null) || (paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    if ((paramView != null) && (paramDocClickTypeRunnable != null) && (paramList != null))
     {
-      return;
-      paramResources = (ViewGroup)paramView.findViewById(2131367140);
-      ViewGroup localViewGroup = (ViewGroup)paramView.findViewById(2131363797);
-      if ((paramResources != null) && (localViewGroup != null))
+      if (paramList.size() == 0) {
+        return;
+      }
+      paramResources = (ViewGroup)paramView.findViewById(2131366977);
+      ViewGroup localViewGroup = (ViewGroup)paramView.findViewById(2131363727);
+      if (paramResources != null)
       {
+        if (localViewGroup == null) {
+          return;
+        }
         paramView.setVisibility(8);
         paramResources.setVisibility(8);
         localViewGroup.setVisibility(8);
-        LayoutInflater localLayoutInflater = (LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater");
+        LayoutInflater localLayoutInflater = (LayoutInflater)BaseApplication.getContext().getSystemService("layout_inflater");
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
           TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem localTencentDocEditConvertConfigItem = (TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)paramList.next();
-          switch (localTencentDocEditConvertConfigItem.a())
+          int i = localTencentDocEditConvertConfigItem.a();
+          if (i != 1)
           {
-          default: 
-            QLog.w("TencentDocConvertABTestUtil", 2, "can not show edit entrance");
-            break;
-          case 1: 
-            a(paramQQAppInterface, paramView, paramDocClickTypeRunnable, paramResources, localLayoutInflater, localTencentDocEditConvertConfigItem);
-            break;
-          case 2: 
-            a(paramQQAppInterface, paramView, paramDocClickTypeRunnable, paramResources, localViewGroup, localLayoutInflater, localTencentDocEditConvertConfigItem);
+            if (i != 2) {
+              QLog.w("TencentDocConvertABTestUtil", 2, "can not show edit entrance");
+            } else {
+              a(paramAppInterface, paramView, paramDocClickTypeRunnable, paramResources, localViewGroup, localLayoutInflater, localTencentDocEditConvertConfigItem);
+            }
+          }
+          else {
+            a(paramAppInterface, paramView, paramDocClickTypeRunnable, paramResources, localLayoutInflater, localTencentDocEditConvertConfigItem);
           }
         }
       }
     }
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, View paramView, TencentDocConvertABTestUtil.DocClickTypeRunnable paramDocClickTypeRunnable, ViewGroup paramViewGroup, LayoutInflater paramLayoutInflater, TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem paramTencentDocEditConvertConfigItem)
+  private static void a(AppInterface paramAppInterface, View paramView, ITencentDocConvertABTestUtil.DocClickTypeRunnable paramDocClickTypeRunnable, ViewGroup paramViewGroup, LayoutInflater paramLayoutInflater, TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem paramTencentDocEditConvertConfigItem)
   {
     paramView.setVisibility(0);
     paramViewGroup.setVisibility(0);
-    paramView = paramLayoutInflater.inflate(2131560952, paramViewGroup, false);
+    paramView = paramLayoutInflater.inflate(2131560827, paramViewGroup, false);
     paramLayoutInflater = (GradientDrawable)paramViewGroup.getBackground();
     if (paramLayoutInflater != null)
     {
       paramLayoutInflater.setAlpha(Math.round(paramTencentDocEditConvertConfigItem.a() * 255.0F));
-      if (TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.a())) {}
+      if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.a())) {
+        try
+        {
+          paramLayoutInflater.setColor(a(paramTencentDocEditConvertConfigItem.a()));
+        }
+        catch (NumberFormatException paramLayoutInflater)
+        {
+          QLog.e("TencentDocConvertABTestUtil", 1, "parse bg color fail", paramLayoutInflater);
+        }
+      }
     }
-    try
-    {
-      paramLayoutInflater.setColor(a(paramTencentDocEditConvertConfigItem.a()));
-      if (TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.c())) {}
-    }
-    catch (NumberFormatException paramLayoutInflater)
-    {
+    if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.c())) {
       try
       {
-        ((TextView)paramView.findViewById(2131380228)).setTextColor(a(paramTencentDocEditConvertConfigItem.c()));
-        if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.b())) {
-          ((TextView)paramView.findViewById(2131380228)).setText(paramTencentDocEditConvertConfigItem.b());
-        }
-        if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.d()))
-        {
-          paramLayoutInflater = (URLImageView)paramView.findViewById(2131369586);
-          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          paramLayoutInflater.setImageDrawable(URLDrawable.getDrawable(paramTencentDocEditConvertConfigItem.d(), localURLDrawableOptions));
-        }
-        paramView.setOnClickListener(new TencentDocConvertABTestUtil.2(paramQQAppInterface, paramTencentDocEditConvertConfigItem.e(), paramDocClickTypeRunnable, paramTencentDocEditConvertConfigItem));
-        if (paramTencentDocEditConvertConfigItem.b() == 2) {
-          paramDocClickTypeRunnable.a((ImageView)paramView.findViewById(2131380895));
-        }
-        ReportController.b(paramQQAppInterface, "dc00898", "", "", paramTencentDocEditConvertConfigItem.f(), paramTencentDocEditConvertConfigItem.f(), 0, 0, "", "", "", "");
-        paramViewGroup.addView(paramView);
-        return;
-        paramLayoutInflater = paramLayoutInflater;
-        QLog.e("TencentDocConvertABTestUtil", 1, "parse bg color fail", paramLayoutInflater);
+        ((TextView)paramView.findViewById(2131379543)).setTextColor(a(paramTencentDocEditConvertConfigItem.c()));
       }
       catch (NumberFormatException paramLayoutInflater)
       {
-        for (;;)
-        {
-          QLog.e("TencentDocConvertABTestUtil", 1, "parse text color fail", paramLayoutInflater);
-        }
+        QLog.e("TencentDocConvertABTestUtil", 1, "parse text color fail", paramLayoutInflater);
       }
     }
+    if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.b())) {
+      ((TextView)paramView.findViewById(2131379543)).setText(paramTencentDocEditConvertConfigItem.b());
+    }
+    if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.d()))
+    {
+      paramLayoutInflater = (URLImageView)paramView.findViewById(2131369296);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      paramLayoutInflater.setImageDrawable(URLDrawable.getDrawable(paramTencentDocEditConvertConfigItem.d(), localURLDrawableOptions));
+    }
+    paramView.setOnClickListener(new TencentDocConvertABTestUtil.2(paramAppInterface, paramTencentDocEditConvertConfigItem.e(), paramDocClickTypeRunnable, paramTencentDocEditConvertConfigItem));
+    if (paramTencentDocEditConvertConfigItem.b() == 2) {
+      paramDocClickTypeRunnable.a((ImageView)paramView.findViewById(2131380160));
+    }
+    ReportController.b(paramAppInterface, "dc00898", "", "", paramTencentDocEditConvertConfigItem.f(), paramTencentDocEditConvertConfigItem.f(), 0, 0, "", "", "", "");
+    paramViewGroup.addView(paramView);
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, View paramView, TencentDocConvertABTestUtil.DocClickTypeRunnable paramDocClickTypeRunnable, ViewGroup paramViewGroup1, ViewGroup paramViewGroup2, LayoutInflater paramLayoutInflater, TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem paramTencentDocEditConvertConfigItem)
+  private static void a(AppInterface paramAppInterface, View paramView, ITencentDocConvertABTestUtil.DocClickTypeRunnable paramDocClickTypeRunnable, ViewGroup paramViewGroup1, ViewGroup paramViewGroup2, LayoutInflater paramLayoutInflater, TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem paramTencentDocEditConvertConfigItem)
   {
     paramView.setVisibility(0);
     paramViewGroup2.setVisibility(0);
-    paramView = paramLayoutInflater.inflate(2131560952, paramViewGroup1, false);
+    paramView = paramLayoutInflater.inflate(2131560827, paramViewGroup1, false);
     paramViewGroup1 = (LayerDrawable)paramViewGroup2.getBackground();
     if (paramViewGroup1 != null)
     {
-      paramViewGroup1 = (GradientDrawable)paramViewGroup1.findDrawableByLayerId(2131363419);
+      paramViewGroup1 = (GradientDrawable)paramViewGroup1.findDrawableByLayerId(2131363349);
       paramViewGroup1.setAlpha(Math.round(paramTencentDocEditConvertConfigItem.a() * 255.0F));
-      if (TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.a())) {}
+      if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.a())) {
+        try
+        {
+          paramViewGroup1.setColor(a(paramTencentDocEditConvertConfigItem.a()));
+        }
+        catch (NumberFormatException paramViewGroup1)
+        {
+          QLog.e("TencentDocConvertABTestUtil", 1, "parse bg color fail", paramViewGroup1);
+        }
+      }
     }
-    try
-    {
-      paramViewGroup1.setColor(a(paramTencentDocEditConvertConfigItem.a()));
-      if (TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.c())) {}
-    }
-    catch (NumberFormatException paramViewGroup1)
-    {
+    if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.c())) {
       try
       {
-        ((TextView)paramView.findViewById(2131380228)).setTextColor(a(paramTencentDocEditConvertConfigItem.c()));
-        if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.b())) {
-          ((TextView)paramView.findViewById(2131380228)).setText(paramTencentDocEditConvertConfigItem.b());
-        }
-        if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.d()))
-        {
-          paramViewGroup1 = (URLImageView)paramView.findViewById(2131369586);
-          paramLayoutInflater = URLDrawable.URLDrawableOptions.obtain();
-          paramViewGroup1.setImageDrawable(URLDrawable.getDrawable(paramTencentDocEditConvertConfigItem.d(), paramLayoutInflater));
-        }
-        paramView.setOnClickListener(new TencentDocConvertABTestUtil.1(paramQQAppInterface, paramTencentDocEditConvertConfigItem.e(), paramDocClickTypeRunnable, paramTencentDocEditConvertConfigItem));
-        if (paramTencentDocEditConvertConfigItem.b() == 2) {
-          paramDocClickTypeRunnable.a((ImageView)paramView.findViewById(2131380895));
-        }
-        ReportController.b(paramQQAppInterface, "dc00898", "", "", paramTencentDocEditConvertConfigItem.f(), paramTencentDocEditConvertConfigItem.f(), 0, 0, "", "", "", "");
-        paramViewGroup2.addView(paramView);
-        return;
-        paramViewGroup1 = paramViewGroup1;
-        QLog.e("TencentDocConvertABTestUtil", 1, "parse bg color fail", paramViewGroup1);
+        ((TextView)paramView.findViewById(2131379543)).setTextColor(a(paramTencentDocEditConvertConfigItem.c()));
       }
       catch (NumberFormatException paramViewGroup1)
       {
-        for (;;)
-        {
-          QLog.e("TencentDocConvertABTestUtil", 1, "parse text color fail", paramViewGroup1);
-        }
+        QLog.e("TencentDocConvertABTestUtil", 1, "parse text color fail", paramViewGroup1);
       }
     }
+    if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.b())) {
+      ((TextView)paramView.findViewById(2131379543)).setText(paramTencentDocEditConvertConfigItem.b());
+    }
+    if (!TextUtils.isEmpty(paramTencentDocEditConvertConfigItem.d()))
+    {
+      paramViewGroup1 = (URLImageView)paramView.findViewById(2131369296);
+      paramLayoutInflater = URLDrawable.URLDrawableOptions.obtain();
+      paramViewGroup1.setImageDrawable(URLDrawable.getDrawable(paramTencentDocEditConvertConfigItem.d(), paramLayoutInflater));
+    }
+    paramView.setOnClickListener(new TencentDocConvertABTestUtil.1(paramAppInterface, paramTencentDocEditConvertConfigItem.e(), paramDocClickTypeRunnable, paramTencentDocEditConvertConfigItem));
+    if (paramTencentDocEditConvertConfigItem.b() == 2) {
+      paramDocClickTypeRunnable.a((ImageView)paramView.findViewById(2131380160));
+    }
+    ReportController.b(paramAppInterface, "dc00898", "", "", paramTencentDocEditConvertConfigItem.f(), paramTencentDocEditConvertConfigItem.f(), 0, 0, "", "", "", "");
+    paramViewGroup2.addView(paramView);
   }
   
   public static boolean a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
@@ -230,12 +261,25 @@ public class TencentDocConvertABTestUtil
   public static boolean a(String paramString)
   {
     paramString = a(paramString);
-    return (paramString != null) && (paramString.size() > 0) && (((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)paramString.get(0)).a() != 0);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString != null)
+    {
+      bool1 = bool2;
+      if (paramString.size() > 0)
+      {
+        bool1 = bool2;
+        if (((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)paramString.get(0)).a() != 0) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.util.TencentDocConvertABTestUtil
  * JD-Core Version:    0.7.0.1
  */

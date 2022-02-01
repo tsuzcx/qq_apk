@@ -1,80 +1,61 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.HashMap;
 
 class LottieAnimation$2
-  implements ImageAssetDelegate
+  implements OnCompositionLoadedListener
 {
-  LottieAnimation$2(LottieAnimation paramLottieAnimation, String paramString) {}
+  LottieAnimation$2(LottieAnimation paramLottieAnimation, FileInputStream paramFileInputStream) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    Object localObject1;
-    if (LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation) == null) {
-      localObject1 = null;
-    }
-    for (;;)
+    if (LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation) == null)
     {
-      return localObject1;
-      Object localObject2 = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject2).inScaled = true;
-      ((BitmapFactory.Options)localObject2).inDensity = LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).getContext().getResources().getDisplayMetrics().densityDpi;
-      try
-      {
-        String str = this.jdField_a_of_type_JavaLangString + File.separator + paramLottieImageAsset.getFileName();
-        if (LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation) != null)
-        {
-          paramLottieImageAsset = (Bitmap)LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).get(str);
-          localObject1 = paramLottieImageAsset;
-          if (paramLottieImageAsset != null) {
-            continue;
-          }
-          try
-          {
-            localObject2 = BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject2);
-            localObject1 = localObject2;
-            paramLottieImageAsset = (LottieImageAsset)localObject2;
-            if (LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation) == null) {
-              continue;
-            }
-            paramLottieImageAsset = (LottieImageAsset)localObject2;
-            LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).put(str, localObject2);
-            return localObject2;
-          }
-          catch (Exception localException1) {}
-          if (QLog.isColorLevel()) {
-            QLog.d("LottieAnimation", 2, "playNextAnim setImageAssetDelegate Exception");
-          }
-          localException1.printStackTrace();
-          return paramLottieImageAsset;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("LottieAnimation", 2, "LottieComposition.Factory.fromInputStream mLottieView is null!");
       }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          paramLottieImageAsset = null;
-          continue;
-          paramLottieImageAsset = null;
-        }
+      return;
+    }
+    try
+    {
+      if (this.jdField_a_of_type_JavaIoFileInputStream != null) {
+        this.jdField_a_of_type_JavaIoFileInputStream.close();
       }
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+    if (paramLottieComposition != null)
+    {
+      LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).setComposition(paramLottieComposition);
+      LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).loop(false);
+      LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).setVisibility(0);
+      LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).playAnimation();
+      if (QLog.isColorLevel()) {
+        QLog.d("LottieAnimation", 2, "playNextAnim fromInputStream succ");
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LottieAnimation", 2, "playNextAnim fromInputStream composition null");
+      }
+      LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).clear();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.LottieAnimation.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.qzonehub.api.panorama.OnAnimateListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -31,7 +32,7 @@ public class PanoramaGuideAnimate
   private float currentTranslation = 0.0F;
   private Handler handler = new PanoramaGuideAnimate.1(this);
   private ImageView imgPhone;
-  private PanoramaGuideAnimate.OnAnimateListener onAnimateListener;
+  private OnAnimateListener onAnimateListener;
   private Timer timer;
   private TimerTask timerTask;
   private TextView tvToast;
@@ -55,11 +56,13 @@ public class PanoramaGuideAnimate
   
   private void startTimer()
   {
-    if (this.timer != null) {
-      this.timer.cancel();
+    Object localObject = this.timer;
+    if (localObject != null) {
+      ((Timer)localObject).cancel();
     }
-    if (this.timerTask != null) {
-      this.timerTask.cancel();
+    localObject = this.timerTask;
+    if (localObject != null) {
+      ((TimerTask)localObject).cancel();
     }
     this.timer = new Timer();
     this.timerTask = new PanoramaGuideAnimate.2(this);
@@ -72,46 +75,45 @@ public class PanoramaGuideAnimate
     setOrientation(1);
     setGravity(1);
     this.imgPhone = new ImageView(this.context);
-    this.imgPhone.setImageResource(2130847983);
+    this.imgPhone.setImageResource(2130847850);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(100, 100);
     localLayoutParams.bottomMargin = 20;
     addView(this.imgPhone, localLayoutParams);
     this.tvToast = new TextView(this.context);
     if (paramInt == 1) {
-      this.tvToast.setText(this.context.getResources().getString(2131717760));
+      this.tvToast.setText(this.context.getResources().getString(2131717419));
+    } else {
+      this.tvToast.setText(this.context.getResources().getString(2131717420));
     }
-    for (;;)
-    {
-      this.tvToast.setTextColor(-1);
-      this.tvToast.setTextSize(14.0F);
-      localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      addView(this.tvToast, localLayoutParams);
-      this.imgPhone.setRotationY(0.0F);
-      this.imgPhone.setTranslationX(0.0F);
-      startTimer();
-      return;
-      this.tvToast.setText(this.context.getResources().getString(2131717761));
-    }
+    this.tvToast.setTextColor(-1);
+    this.tvToast.setTextSize(14.0F);
+    localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    addView(this.tvToast, localLayoutParams);
+    this.imgPhone.setRotationY(0.0F);
+    this.imgPhone.setTranslationX(0.0F);
+    startTimer();
   }
   
   public void onPause()
   {
-    if (this.timer != null) {
-      this.timer.cancel();
+    Object localObject = this.timer;
+    if (localObject != null) {
+      ((Timer)localObject).cancel();
     }
-    if (this.timerTask != null) {
-      this.timerTask.cancel();
+    localObject = this.timerTask;
+    if (localObject != null) {
+      ((TimerTask)localObject).cancel();
     }
   }
   
-  public void setOnAnimateListener(PanoramaGuideAnimate.OnAnimateListener paramOnAnimateListener)
+  public void setOnAnimateListener(OnAnimateListener paramOnAnimateListener)
   {
     this.onAnimateListener = paramOnAnimateListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaGuideAnimate
  * JD-Core Version:    0.7.0.1
  */

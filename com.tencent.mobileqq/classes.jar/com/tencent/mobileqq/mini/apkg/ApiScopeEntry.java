@@ -75,7 +75,18 @@ public class ApiScopeEntry
   
   public String toString()
   {
-    return "ApiScopeEntry{eventName='" + this.eventName + '\'' + ", apiName='" + this.apiName + '\'' + ", scope='" + this.scope + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ApiScopeEntry{eventName='");
+    localStringBuilder.append(this.eventName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", apiName='");
+    localStringBuilder.append(this.apiName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", scope='");
+    localStringBuilder.append(this.scope);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -87,7 +98,7 @@ public class ApiScopeEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApiScopeEntry
  * JD-Core Version:    0.7.0.1
  */

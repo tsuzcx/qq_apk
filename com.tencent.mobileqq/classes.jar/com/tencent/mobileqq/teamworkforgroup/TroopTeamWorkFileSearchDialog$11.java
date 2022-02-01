@@ -10,28 +10,28 @@ class TroopTeamWorkFileSearchDialog$11
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setDrawingCacheEnabled(this.jdField_a_of_type_Boolean);
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null) {
+      ((View)localObject).setDrawingCacheEnabled(this.jdField_a_of_type_Boolean);
     }
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("mBlurBackground == null :");
-      if (TroopTeamWorkFileSearchDialog.a(this.this$0) != null) {
-        break label64;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mBlurBackground == null :");
+      boolean bool;
+      if (TroopTeamWorkFileSearchDialog.a(this.this$0) == null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label64:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("TroopTeamWorkFileSearchDialog", 2, bool);
-      return;
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("TroopTeamWorkFileSearchDialog", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.11
  * JD-Core Version:    0.7.0.1
  */

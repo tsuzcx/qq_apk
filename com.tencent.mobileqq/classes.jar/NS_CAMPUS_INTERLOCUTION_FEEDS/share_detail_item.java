@@ -70,35 +70,42 @@ public final class share_detail_item
     paramJceOutputStream.write(this.type, 2);
     paramJceOutputStream.write(this.pic_url, 3);
     paramJceOutputStream.write(this.uin, 10);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 11);
+    String str = this.nick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.optype != null) {
-      paramJceOutputStream.write(this.optype, 12);
+    str = this.optype;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 13);
+    str = this.content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
     paramJceOutputStream.write(this.visit_num, 14);
     paramJceOutputStream.write(this.answer_num, 15);
-    if (this.portrait != null) {
-      paramJceOutputStream.write(this.portrait, 16);
+    str = this.portrait;
+    if (str != null) {
+      paramJceOutputStream.write(str, 16);
     }
     paramJceOutputStream.write(this.user_type, 17);
-    if (this.school_name != null) {
-      paramJceOutputStream.write(this.school_name, 20);
+    str = this.school_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 20);
     }
-    if (this.module_name != null) {
-      paramJceOutputStream.write(this.module_name, 21);
+    str = this.module_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 21);
     }
-    if (this.share_content != null) {
-      paramJceOutputStream.write(this.share_content, 30);
+    str = this.share_content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 30);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_CAMPUS_INTERLOCUTION_FEEDS.share_detail_item
  * JD-Core Version:    0.7.0.1
  */

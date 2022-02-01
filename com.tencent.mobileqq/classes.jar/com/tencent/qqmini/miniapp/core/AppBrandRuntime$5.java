@@ -23,34 +23,35 @@ class AppBrandRuntime$5
   
   public void onCaptureImageSucceed(Bitmap paramBitmap)
   {
-    Bitmap localBitmap;
     if (paramBitmap != null)
     {
-      localBitmap = SaveCaptureImageUitl.buildBitmapFromView(this.val$contentLayout);
-      if ((localBitmap == null) || (localBitmap.isRecycled()))
+      Bitmap localBitmap = SaveCaptureImageUitl.buildBitmapFromView(this.val$contentLayout);
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
-        if (this.val$callback != null) {
-          this.val$callback.onResult(null);
-        }
-        this.this$0.isGettingScreenShot = false;
+        Canvas localCanvas = new Canvas(localBitmap);
+        ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.val$nativeVideoView.getLayoutParams();
+        localCanvas.drawBitmap(paramBitmap, localMarginLayoutParams.leftMargin, localMarginLayoutParams.topMargin, null);
+        ThreadManager.executeOnDiskIOThreadPool(new AppBrandRuntime.5.1(this, localBitmap));
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        paramBitmap = this.val$callback;
+        if (paramBitmap != null) {
+          paramBitmap.onResult(null);
+        }
+      }
       this.this$0.isGettingScreenShot = false;
-      return;
-      Canvas localCanvas = new Canvas(localBitmap);
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.val$nativeVideoView.getLayoutParams();
-      localCanvas.drawBitmap(paramBitmap, localMarginLayoutParams.leftMargin, localMarginLayoutParams.topMargin, null);
-      ThreadManager.executeOnDiskIOThreadPool(new AppBrandRuntime.5.1(this, localBitmap));
-      break;
+    }
+    else
+    {
       AppBrandRuntime.access$100(this.this$0, this.val$callback, this.val$contentLayout);
     }
+    this.this$0.isGettingScreenShot = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.AppBrandRuntime.5
  * JD-Core Version:    0.7.0.1
  */

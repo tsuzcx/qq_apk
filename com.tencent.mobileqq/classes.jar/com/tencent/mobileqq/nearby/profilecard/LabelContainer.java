@@ -26,80 +26,72 @@ public class LabelContainer
     this(paramContext, paramAttributeSet);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
     paramInt1 = 0;
     paramInt2 = 0;
-    if (paramInt2 < j)
+    while (paramInt1 < j)
     {
-      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-      if (localArrayList == null) {}
-      for (;;)
+      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+      if (localArrayList != null)
       {
-        paramInt2 += 1;
-        break;
         int k = localArrayList.size();
-        paramInt4 = 0;
         paramInt3 = 0;
         int i = 0;
+        paramInt4 = 0;
         while (paramInt3 < k)
         {
           View localView = (View)localArrayList.get(paramInt3);
           i = localView.getMeasuredHeight();
           int m = localView.getMeasuredWidth();
-          localView.layout(paramInt4, paramInt1, paramInt4 + m, paramInt1 + i);
-          paramInt4 += this.jdField_a_of_type_Int + m;
+          localView.layout(paramInt4, paramInt2, paramInt4 + m, paramInt2 + i);
+          paramInt4 += m + this.jdField_a_of_type_Int;
           paramInt3 += 1;
         }
-        paramInt1 = this.b + i + paramInt1;
+        paramInt2 += i + this.b;
       }
+      paramInt1 += 1;
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_AndroidUtilSparseArray.clear();
     int m = getMeasuredWidth();
     int n = getChildCount();
-    int j = 0;
     int i = 0;
-    paramInt2 = 0;
     paramInt1 = 0;
-    if (j < n)
+    paramInt2 = 0;
+    int j = 0;
+    while (i < n)
     {
-      View localView = getChildAt(j);
+      View localView = getChildAt(i);
       int k = localView.getMeasuredWidth() + this.jdField_a_of_type_Int;
-      if (i + k <= m)
+      paramInt2 += k;
+      if (paramInt2 > m)
       {
-        k += i;
-        i = paramInt2;
-      }
-      for (paramInt2 = k;; paramInt2 = k)
-      {
-        ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        ArrayList localArrayList1 = localArrayList2;
-        k = paramInt1;
-        if (localArrayList2 == null)
-        {
-          localArrayList1 = new ArrayList();
-          this.jdField_a_of_type_AndroidUtilSparseArray.append(i, localArrayList1);
-          k = paramInt1 + (localView.getMeasuredHeight() + this.b);
-        }
-        localArrayList1.add(localView);
         j += 1;
-        paramInt1 = paramInt2;
-        paramInt2 = i;
-        i = paramInt1;
-        paramInt1 = k;
-        break;
-        i = paramInt2 + 1;
+        paramInt2 = k;
       }
+      ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(j);
+      k = paramInt1;
+      ArrayList localArrayList1 = localArrayList2;
+      if (localArrayList2 == null)
+      {
+        localArrayList1 = new ArrayList();
+        this.jdField_a_of_type_AndroidUtilSparseArray.append(j, localArrayList1);
+        k = paramInt1 + (localView.getMeasuredHeight() + this.b);
+      }
+      localArrayList1.add(localView);
+      i += 1;
+      paramInt1 = k;
     }
+    i = this.b;
     paramInt2 = paramInt1;
-    if (paramInt1 > this.b) {
-      paramInt2 = paramInt1 - this.b;
+    if (paramInt1 > i) {
+      paramInt2 = paramInt1 - i;
     }
     setMeasuredDimension(m, paramInt2);
   }
@@ -112,7 +104,7 @@ public class LabelContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.LabelContainer
  * JD-Core Version:    0.7.0.1
  */

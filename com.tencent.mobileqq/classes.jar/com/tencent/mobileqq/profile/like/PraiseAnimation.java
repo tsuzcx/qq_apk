@@ -69,83 +69,85 @@ public class PraiseAnimation
         QLog.i("PraiseManager", 2, "doZanAnim, SimpleUIMode is open now");
       }
       paramHeartLayout.a(paramBitmap, paramFloat1, paramFloat2);
-    }
-    do
-    {
       return;
-      PraiseManager localPraiseManager = (PraiseManager)paramQQAppInterface.getManager(QQManagerFactory.PERSONAL_PRAISE_MANAGER);
-      if ((paramBoolean) && (localPraiseManager.a.get(Integer.valueOf(paramInt1)) == null))
+    }
+    PraiseManager localPraiseManager = (PraiseManager)paramQQAppInterface.getManager(QQManagerFactory.PERSONAL_PRAISE_MANAGER);
+    if ((paramBoolean) && (localPraiseManager.a.get(Integer.valueOf(paramInt1)) == null))
+    {
+      localPraiseManager.a(paramOnPraiseLoadListener);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt1, new Pair(new Point((int)paramFloat1, (int)paramFloat2), Integer.valueOf(paramInt2)));
+    }
+    paramOnPraiseLoadListener = localPraiseManager.a(paramInt1, paramBoolean, "from_nearby_people");
+    if (paramOnPraiseLoadListener != null)
+    {
+      if ((paramInt2 == 2) && (paramOnPraiseLoadListener.c != null))
       {
-        localPraiseManager.a(paramOnPraiseLoadListener);
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt1, new Pair(new Point((int)paramFloat1, (int)paramFloat2), Integer.valueOf(paramInt2)));
-      }
-      paramOnPraiseLoadListener = localPraiseManager.a(paramInt1, paramBoolean, "from_nearby_people");
-      if (paramOnPraiseLoadListener != null)
-      {
-        if ((paramInt2 == 2) && (paramOnPraiseLoadListener.c != null))
+        if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilderFactory != null)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilderFactory != null)
-          {
-            paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.c, paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilderFactory.a(paramInt2, paramHeartLayout.a), paramFloat1 - DisplayUtil.a(paramHeartLayout.getContext(), 20.0F), paramFloat2 - DisplayUtil.a(paramHeartLayout.getContext(), 120.0F), DisplayUtil.a(paramHeartLayout.getContext(), 75.0F), DisplayUtil.a(paramHeartLayout.getContext(), 65.0F));
-            return;
-          }
-          paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.c, paramFloat1, paramFloat2);
+          paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.c, paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilderFactory.a(paramInt2, paramHeartLayout.a), paramFloat1 - DisplayUtil.a(paramHeartLayout.getContext(), 20.0F), paramFloat2 - DisplayUtil.a(paramHeartLayout.getContext(), 120.0F), DisplayUtil.a(paramHeartLayout.getContext(), 75.0F), DisplayUtil.a(paramHeartLayout.getContext(), 65.0F));
           return;
         }
-        paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.b, paramFloat1, paramFloat2);
+        paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.c, paramFloat1, paramFloat2);
         return;
       }
-    } while (paramBoolean);
-    paramHeartLayout.a(paramBitmap, paramFloat1, paramFloat2);
+      paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.b, paramFloat1, paramFloat2);
+      return;
+    }
+    if (!paramBoolean) {
+      paramHeartLayout.a(paramBitmap, paramFloat1, paramFloat2);
+    }
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, Drawable paramDrawable, Resources paramResources)
   {
     Drawable localDrawable2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     Drawable localDrawable1;
-    if (paramBoolean2) {
-      localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131165729));
+    if (paramBoolean2)
+    {
+      localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131165720));
     }
-    while (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable == null)
+    else
+    {
+      localDrawable1 = localDrawable2;
+      if (paramBoolean1) {
+        localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131165723));
+      }
+    }
+    paramResources = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+    if (paramResources == null)
     {
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = new Drawable[] { paramDrawable, localDrawable1 };
       return;
-      localDrawable1 = localDrawable2;
-      if (paramBoolean1) {
-        localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131165732));
-      }
     }
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = paramDrawable;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1] = localDrawable1;
+    paramResources[0] = paramDrawable;
+    paramResources[1] = localDrawable1;
   }
   
   public void onAnimationRepeat(Animation paramAnimation)
   {
     if (this.jdField_a_of_type_Int % 2 == 0)
     {
-      this.b = ((this.b + 1) % this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable.length);
-      if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {
-        break label89;
+      int i = this.b;
+      paramAnimation = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      this.b = ((i + 1) % paramAnimation.length);
+      View localView = this.jdField_a_of_type_AndroidViewView;
+      if ((localView instanceof ImageView)) {
+        ((ImageView)localView).setImageDrawable(paramAnimation[this.b]);
+      } else {
+        localView.setBackgroundDrawable(paramAnimation[this.b]);
       }
-      ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[this.b]);
     }
-    for (;;)
+    this.jdField_a_of_type_Int += 1;
+    if (this.jdField_a_of_type_Int / 2 >= PraiseConfigHelper.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_a_of_type_Int / 2 >= PraiseConfigHelper.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_AndroidViewView.clearAnimation();
-        this.jdField_a_of_type_Boolean = false;
-      }
-      return;
-      label89:
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[this.b]);
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Boolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseAnimation
  * JD-Core Version:    0.7.0.1
  */

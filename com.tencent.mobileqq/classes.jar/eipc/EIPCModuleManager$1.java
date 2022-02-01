@@ -15,38 +15,52 @@ class EIPCModuleManager$1
   
   public EIPCResult async(String paramString1, String paramString2, Bundle paramBundle, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EIPCConst", 2, "callModuleAsync ," + paramString1 + "," + paramString2 + "," + paramInt1 + ", " + paramInt2);
-    }
-    for (;;)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      synchronized (this.this$0.mModuleMap)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("callModuleAsync ,");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("EIPCConst", 2, ((StringBuilder)localObject).toString());
+    }
+    synchronized (this.this$0.mModuleMap)
+    {
+      EIPCModule localEIPCModule = (EIPCModule)this.this$0.mModuleMap.get(paramString1);
+      localObject = localEIPCModule;
+      if (localEIPCModule == null)
       {
-        EIPCModule localEIPCModule2 = (EIPCModule)this.this$0.mModuleMap.get(paramString1);
-        EIPCModule localEIPCModule1 = localEIPCModule2;
-        if (localEIPCModule2 == null)
+        localObject = localEIPCModule;
+        if (this.this$0.ipcModuleFactory != null)
         {
-          localEIPCModule1 = localEIPCModule2;
-          if (this.this$0.ipcModuleFactory != null)
+          localEIPCModule = this.this$0.ipcModuleFactory.onCreateModule(paramString1);
+          localObject = localEIPCModule;
+          if (localEIPCModule != null)
           {
-            localEIPCModule2 = this.this$0.ipcModuleFactory.onCreateModule(paramString1);
-            localEIPCModule1 = localEIPCModule2;
-            if (localEIPCModule2 != null)
-            {
-              this.this$0.registerModule(localEIPCModule2);
-              localEIPCModule1 = localEIPCModule2;
-            }
+            this.this$0.registerModule(localEIPCModule);
+            localObject = localEIPCModule;
           }
         }
-        if (localEIPCModule1 != null)
-        {
-          EIPCModuleManager.excuteOnAsyncThread(new EIPCModuleManager.1.1(this, localEIPCModule1, paramString2, paramBundle, 1000000 * paramInt2 + paramInt1));
-          return null;
-        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.w("EIPCConst", 2, "callModuleAsync no found," + paramString1 + "," + paramString2);
+      if (localObject != null)
+      {
+        EIPCModuleManager.excuteOnAsyncThread(new EIPCModuleManager.1.1(this, (EIPCModule)localObject, paramString2, paramBundle, paramInt2 * 1000000 + paramInt1));
       }
+      else if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("callModuleAsync no found,");
+        paramBundle.append(paramString1);
+        paramBundle.append(",");
+        paramBundle.append(paramString2);
+        QLog.w("EIPCConst", 2, paramBundle.toString());
+      }
+      return null;
     }
   }
   
@@ -55,8 +69,17 @@ class EIPCModuleManager$1
     synchronized (this.this$0.mCallbackMap)
     {
       EIPCResultCallback localEIPCResultCallback = (EIPCResultCallback)this.this$0.mCallbackMap.get(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("EIPCConst", 2, "callback callbackId," + paramInt + "," + localEIPCResultCallback + ", " + this + MobileQQ.processName);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("callback callbackId,");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(",");
+        localStringBuilder.append(localEIPCResultCallback);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(this);
+        localStringBuilder.append(MobileQQ.processName);
+        QLog.d("EIPCConst", 2, localStringBuilder.toString());
       }
       if (localEIPCResultCallback != null) {
         localEIPCResultCallback.onCallback(paramEIPCResult);
@@ -83,44 +106,52 @@ class EIPCModuleManager$1
   
   public EIPCResult sync(String paramString1, String paramString2, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EIPCConst", 2, "callModule ," + paramString1 + "," + paramString2);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("callModule ,");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(",");
+      ((StringBuilder)localObject1).append(paramString2);
+      QLog.d("EIPCConst", 2, ((StringBuilder)localObject1).toString());
     }
     if (TextUtils.equals("__event_module", paramString1))
     {
       this.this$0.dispatchMsgToModule(paramInt, paramBundle);
       return null;
     }
-    for (;;)
+    synchronized (this.this$0.mModuleMap)
     {
-      synchronized (this.this$0.mModuleMap)
+      localObject1 = (EIPCModule)this.this$0.mModuleMap.get(paramString1);
+      Object localObject2 = localObject1;
+      if (localObject1 == null)
       {
-        EIPCModule localEIPCModule1 = (EIPCModule)this.this$0.mModuleMap.get(paramString1);
-        EIPCModule localEIPCModule2 = localEIPCModule1;
-        if (localEIPCModule1 == null)
-        {
-          if (this.this$0.ipcModuleFactory != null) {
-            localEIPCModule1 = this.this$0.ipcModuleFactory.onCreateModule(paramString1);
-          }
-          this.this$0.registerModule(localEIPCModule1);
-          localEIPCModule2 = localEIPCModule1;
+        if (this.this$0.ipcModuleFactory != null) {
+          localObject1 = this.this$0.ipcModuleFactory.onCreateModule(paramString1);
         }
-        if (localEIPCModule2 != null)
-        {
-          paramString1 = localEIPCModule2.onCall(paramString2, paramBundle, -1);
-          return paramString1;
-        }
+        this.this$0.registerModule((EIPCModule)localObject1);
+        localObject2 = localObject1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.w("EIPCConst", 2, "callModule no found," + paramString1 + "," + paramString2);
+      if (localObject2 != null) {
+        return localObject2.onCall(paramString2, paramBundle, -1);
       }
-      paramString1 = null;
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("callModule no found,");
+        paramBundle.append(paramString1);
+        paramBundle.append(",");
+        paramBundle.append(paramString2);
+        QLog.w("EIPCConst", 2, paramBundle.toString());
+      }
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     eipc.EIPCModuleManager.1
  * JD-Core Version:    0.7.0.1
  */

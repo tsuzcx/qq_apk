@@ -66,8 +66,9 @@ public class LBSInfo
     }
     catch (RuntimeException paramParcel)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "readFromParcel RuntimeException", paramParcel);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "readFromParcel RuntimeException", paramParcel);
+      }
     }
   }
   
@@ -83,15 +84,17 @@ public class LBSInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (!(paramObject instanceof LBSInfo))) {
+    }
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof LBSInfo)) {
         return false;
       }
       paramObject = (LBSInfo)paramObject;
-    } while ((this.h.equals(paramObject.h)) && (this.f.equals(paramObject.f)) && (this.i.equals(paramObject.i)) && (this.g.equals(paramObject.g)) && (this.jdField_c_of_type_JavaLangString.equals(paramObject.jdField_c_of_type_JavaLangString)) && (this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) && (this.e.equals(paramObject.e)) && (this.d.equals(paramObject.d)) && (this.jdField_a_of_type_Double == paramObject.jdField_a_of_type_Double) && (this.jdField_b_of_type_Double == paramObject.jdField_b_of_type_Double) && (this.jdField_c_of_type_Double == paramObject.jdField_c_of_type_Double));
+      return (this.h.equals(paramObject.h)) && (this.f.equals(paramObject.f)) && (this.i.equals(paramObject.i)) && (this.g.equals(paramObject.g)) && (this.jdField_c_of_type_JavaLangString.equals(paramObject.jdField_c_of_type_JavaLangString)) && (this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) && (this.e.equals(paramObject.e)) && (this.d.equals(paramObject.d)) && (this.jdField_a_of_type_Double == paramObject.jdField_a_of_type_Double) && (this.jdField_b_of_type_Double == paramObject.jdField_b_of_type_Double) && (this.jdField_c_of_type_Double == paramObject.jdField_c_of_type_Double);
+    }
     return false;
   }
   
@@ -115,14 +118,15 @@ public class LBSInfo
     }
     catch (RuntimeException paramParcel)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "writeToParcel RuntimeException", paramParcel);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "writeToParcel RuntimeException", paramParcel);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.LBSInfo
  * JD-Core Version:    0.7.0.1
  */

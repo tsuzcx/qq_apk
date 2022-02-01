@@ -30,12 +30,17 @@ public class RecentRouteRecord
   
   public String toString()
   {
-    return "mRecentRoute = " + this.mRecentRoute + ",mTimeStamp = " + this.mTimeStamp;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mRecentRoute = ");
+    localStringBuilder.append(this.mRecentRoute);
+    localStringBuilder.append(",mTimeStamp = ");
+    localStringBuilder.append(this.mTimeStamp);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.network.route.RecentRouteRecord
  * JD-Core Version:    0.7.0.1
  */

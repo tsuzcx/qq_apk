@@ -10,7 +10,7 @@ class DynamicGridView$2
   
   public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+    return (int)(paramInt1 + paramFloat * (paramInt2 - paramInt1));
   }
   
   public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
@@ -20,7 +20,7 @@ class DynamicGridView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.DynamicGridView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -31,8 +31,13 @@ public enum HandlerThreadManager
         ((HandlerThread)localIterator.next()).quit();
       }
       this.map.clear();
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void destroyHandlerThread(HandlerThreadTag paramHandlerThreadTag)
@@ -51,27 +56,24 @@ public enum HandlerThreadManager
   
   public void destroyHandlerThread(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return;
-      HandlerThread localHandlerThread;
-      try
-      {
-        localHandlerThread = (HandlerThread)this.map.get(paramString);
-        if (localHandlerThread == null) {
-          continue;
-        }
-        this.map.remove(paramString);
-        if (ApiHelper.hasJellyBeanMR2())
-        {
-          localHandlerThread.quitSafely();
-          continue;
-        }
-      }
-      finally {}
-      localHandlerThread.quit();
     }
+    try
+    {
+      HandlerThread localHandlerThread = (HandlerThread)this.map.get(paramString);
+      if (localHandlerThread == null) {
+        return;
+      }
+      this.map.remove(paramString);
+      if (ApiHelper.hasJellyBeanMR2()) {
+        localHandlerThread.quitSafely();
+      } else {
+        localHandlerThread.quit();
+      }
+      return;
+    }
+    finally {}
   }
   
   public HandlerThread getHandlerThread(HandlerThreadTag paramHandlerThreadTag)
@@ -92,27 +94,30 @@ public enum HandlerThreadManager
   {
     try
     {
-      HandlerThread localHandlerThread2 = (HandlerThread)this.map.get(paramString);
-      HandlerThread localHandlerThread1;
-      if (localHandlerThread2 != null)
+      HandlerThread localHandlerThread = (HandlerThread)this.map.get(paramString);
+      Object localObject;
+      if (localHandlerThread != null)
       {
-        localHandlerThread1 = localHandlerThread2;
-        if (localHandlerThread2.isAlive()) {}
+        localObject = localHandlerThread;
+        if (localHandlerThread.isAlive()) {}
       }
       else
       {
-        localHandlerThread1 = new HandlerThread("HTM_" + paramString, 10);
-        localHandlerThread1.start();
-        this.map.put(paramString, localHandlerThread1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("HTM_");
+        ((StringBuilder)localObject).append(paramString);
+        localObject = new HandlerThread(((StringBuilder)localObject).toString(), 10);
+        ((HandlerThread)localObject).start();
+        this.map.put(paramString, localObject);
       }
-      return localHandlerThread1;
+      return localObject;
     }
     finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.thread.HandlerThreadManager
  * JD-Core Version:    0.7.0.1
  */

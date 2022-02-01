@@ -24,15 +24,30 @@ public class TAVSize
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof TAVSize))) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof TAVSize)) {
+        return false;
+      }
+      int i = this.width;
+      paramObject = (TAVSize)paramObject;
+      bool1 = bool2;
+      if (i == paramObject.width)
+      {
+        bool1 = bool2;
+        if (this.height == paramObject.height) {
+          bool1 = true;
+        }
+      }
     }
-    return (this.width == ((TAVSize)paramObject).width) && (this.height == ((TAVSize)paramObject).height);
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.taveffect.core.TAVSize
  * JD-Core Version:    0.7.0.1
  */

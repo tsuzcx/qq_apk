@@ -31,14 +31,15 @@ public final class operation_click_button_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 0);
+    Map localMap = this.busi_param;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.operation_click_button_req
  * JD-Core Version:    0.7.0.1
  */

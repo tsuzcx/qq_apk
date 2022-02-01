@@ -23,25 +23,28 @@ public class FullScreenImageView
     super(paramContext, paramAttributeSet);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     Drawable localDrawable = getDrawable();
     if (((localDrawable instanceof BitmapDrawable)) && (((BitmapDrawable)localDrawable).getBitmap().isRecycled()))
     {
-      SLog.e("", "can not draw a bitmap which is recycled " + this);
+      paramCanvas = new StringBuilder();
+      paramCanvas.append("can not draw a bitmap which is recycled ");
+      paramCanvas.append(this);
+      SLog.e("", paramCanvas.toString());
       return;
     }
     super.onDraw(paramCanvas);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(UIUtils.a(super.getContext()), UIUtils.d(super.getContext()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.FullScreenImageView
  * JD-Core Version:    0.7.0.1
  */

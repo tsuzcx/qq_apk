@@ -9,19 +9,13 @@ class SubscribePermissionSettingFragment$7$1
   
   public void run()
   {
-    boolean bool = false;
     MiniToast.makeText(this.this$1.this$0.getActivity(), "请求失败，请稍后重试", 0).show();
-    SubscribePermissionSettingFragment localSubscribePermissionSettingFragment = this.this$1.this$0;
-    int i = this.this$1.val$position;
-    if (!this.this$1.val$isChecked) {
-      bool = true;
-    }
-    SubscribePermissionSettingFragment.access$100(localSubscribePermissionSettingFragment, i, bool, this.this$1.val$clickItem);
+    SubscribePermissionSettingFragment.access$100(this.this$1.this$0, this.this$1.val$position, this.this$1.val$isChecked ^ true, this.this$1.val$clickItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubscribePermissionSettingFragment.7.1
  * JD-Core Version:    0.7.0.1
  */

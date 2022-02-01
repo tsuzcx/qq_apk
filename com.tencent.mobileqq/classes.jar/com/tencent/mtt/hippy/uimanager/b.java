@@ -62,7 +62,10 @@ public class b
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.e("Hippy", "error className=" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("error className=");
+      localStringBuilder.append(paramString);
+      LogUtils.e("Hippy", localStringBuilder.toString());
       localThrowable.printStackTrace();
     }
     return null;
@@ -85,7 +88,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.b
  * JD-Core Version:    0.7.0.1
  */

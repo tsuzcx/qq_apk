@@ -19,20 +19,21 @@ class StoryNickNameView$UserInfoReceiver
   
   public void a(@NonNull StoryNickNameView paramStoryNickNameView, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {}
-    do
-    {
+    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
       return;
-      if ((paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList == null) || (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.size() == 0))
-      {
-        SLog.e("Q.qqstoryStoryNickNameView", "we receiver the error info form GetUserInfoHandler!!");
-        return;
-      }
+    }
+    if ((paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.size() != 0))
+    {
       if (TextUtils.equals(paramUpdateUserInfoEvent.b, "Q.qqstoryStoryNickNameView")) {
         StoryNickNameView.a(paramStoryNickNameView, (QQUserUIItem)paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.get(0));
       }
-    } while (!TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_JavaLangString, paramStoryNickNameView.a()));
-    paramStoryNickNameView.a((QQUserUIItem)paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.get(0));
+      if (!TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_JavaLangString, paramStoryNickNameView.a())) {
+        return;
+      }
+      paramStoryNickNameView.a((QQUserUIItem)paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.get(0));
+      return;
+    }
+    SLog.e("Q.qqstoryStoryNickNameView", "we receiver the error info form GetUserInfoHandler!!");
   }
   
   public Class acceptEventClass()
@@ -42,7 +43,7 @@ class StoryNickNameView$UserInfoReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.StoryNickNameView.UserInfoReceiver
  * JD-Core Version:    0.7.0.1
  */

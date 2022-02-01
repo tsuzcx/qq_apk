@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 final class RegisterPhoneNumActivity$8
   implements Runnable
 {
-  RegisterPhoneNumActivity$8(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  RegisterPhoneNumActivity$8(View paramView, int paramInt) {}
   
   public void run()
   {
@@ -16,11 +16,17 @@ final class RegisterPhoneNumActivity$8
     this.jdField_a_of_type_AndroidViewView.setEnabled(true);
     this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
     ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    if (QLog.isColorLevel()) {
-      QLog.d("TouchDelegate", 2, " bounds.top=" + ((Rect)localObject).top + "bounds.bottom=" + ((Rect)localObject).bottom);
+    ((Rect)localObject).bottom += this.jdField_a_of_type_Int;
+    ((Rect)localObject).left -= this.jdField_a_of_type_Int;
+    ((Rect)localObject).right += this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" bounds.top=");
+      localStringBuilder.append(((Rect)localObject).top);
+      localStringBuilder.append("bounds.bottom=");
+      localStringBuilder.append(((Rect)localObject).bottom);
+      QLog.d("TouchDelegate", 2, localStringBuilder.toString());
     }
     localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
     if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
@@ -30,7 +36,7 @@ final class RegisterPhoneNumActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterPhoneNumActivity.8
  * JD-Core Version:    0.7.0.1
  */

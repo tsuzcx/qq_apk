@@ -16,29 +16,24 @@ class VideoItemBuilder$1
   
   public void onClick(View paramView)
   {
-    if (!VideoItemBuilder.a(this.a)) {}
-    for (;;)
+    if ((VideoItemBuilder.a(this.a)) && (VcSystemInfo.isSupportSharpAudio()))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (VcSystemInfo.isSupportSharpAudio())
+      Object localObject = (ChatItemBuilder.BaseHolder)AIOUtils.a(paramView);
+      if (localObject != null)
       {
-        Object localObject = (ChatItemBuilder.BaseHolder)AIOUtils.a(paramView);
-        if (localObject != null)
-        {
-          localObject = (MessageForVideo)((ChatItemBuilder.BaseHolder)localObject).a;
-          VideoItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, (MessageForVideo)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-          if (((MessageForVideo)localObject).istroop == 1044) {
-            ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD93", "0X800AD93", 0, 0, "", "", "", "");
-          }
+        localObject = (MessageForVideo)((ChatItemBuilder.BaseHolder)localObject).a;
+        VideoItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, (MessageForVideo)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+        if (((MessageForVideo)localObject).istroop == 1044) {
+          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD93", "0X800AD93", 0, 0, "", "", "", "");
         }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.VideoItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

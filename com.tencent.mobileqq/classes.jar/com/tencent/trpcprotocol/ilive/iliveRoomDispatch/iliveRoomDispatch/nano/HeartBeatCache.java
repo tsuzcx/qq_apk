@@ -46,110 +46,150 @@ public final class HeartBeatCache
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      if (i == 0) {
+        break;
+      }
+      if (i != 8)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {}
-        break;
-      case 0: 
-        return this;
-      case 8: 
+        if (i != 16)
+        {
+          if (i != 24)
+          {
+            if (i != 34)
+            {
+              if (i != 40)
+              {
+                if (i != 48)
+                {
+                  if (i != 56)
+                  {
+                    if (i != 64)
+                    {
+                      if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                        return this;
+                      }
+                    }
+                    else {
+                      this.f = paramCodedInputByteBufferNano.readInt64();
+                    }
+                  }
+                  else {
+                    this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+                  }
+                }
+                else {
+                  this.e = paramCodedInputByteBufferNano.readUInt64();
+                }
+              }
+              else {
+                this.d = paramCodedInputByteBufferNano.readInt64();
+              }
+            }
+            else {
+              this.jdField_a_of_type_JavaUtilMap = InternalNano.mergeMapEntry(paramCodedInputByteBufferNano, this.jdField_a_of_type_JavaUtilMap, localMapFactory, 4, 11, new MsgString(), 8, 18);
+            }
+          }
+          else {
+            this.c = paramCodedInputByteBufferNano.readUInt64();
+          }
+        }
+        else {
+          this.b = paramCodedInputByteBufferNano.readUInt64();
+        }
+      }
+      else {
         this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readInt64();
-        break;
-      case 16: 
-        this.b = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 24: 
-        this.c = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 34: 
-        this.jdField_a_of_type_JavaUtilMap = InternalNano.mergeMapEntry(paramCodedInputByteBufferNano, this.jdField_a_of_type_JavaUtilMap, localMapFactory, 4, 11, new MsgString(), 8, 18);
-        break;
-      case 40: 
-        this.d = paramCodedInputByteBufferNano.readInt64();
-        break;
-      case 48: 
-        this.e = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 56: 
-        this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 64: 
-        this.f = paramCodedInputByteBufferNano.readInt64();
       }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    long l = this.jdField_a_of_type_Long;
     int i = j;
-    if (this.jdField_a_of_type_Long != 0L) {
-      i = j + CodedOutputByteBufferNano.computeInt64Size(1, this.jdField_a_of_type_Long);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeInt64Size(1, l);
     }
+    l = this.b;
     j = i;
-    if (this.b != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(2, this.b);
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeUInt64Size(2, l);
     }
+    l = this.c;
     i = j;
-    if (this.c != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(3, this.c);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(3, l);
     }
+    Map localMap = this.jdField_a_of_type_JavaUtilMap;
     j = i;
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      j = i + InternalNano.computeMapFieldSize(this.jdField_a_of_type_JavaUtilMap, 4, 4, 11);
+    if (localMap != null) {
+      j = i + InternalNano.computeMapFieldSize(localMap, 4, 4, 11);
     }
+    l = this.d;
+    int k = j;
+    if (l != 0L) {
+      k = j + CodedOutputByteBufferNano.computeInt64Size(5, l);
+    }
+    l = this.e;
+    i = k;
+    if (l != 0L) {
+      i = k + CodedOutputByteBufferNano.computeUInt64Size(6, l);
+    }
+    k = this.jdField_a_of_type_Int;
+    j = i;
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(7, k);
+    }
+    l = this.f;
     i = j;
-    if (this.d != 0L) {
-      i = j + CodedOutputByteBufferNano.computeInt64Size(5, this.d);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeInt64Size(8, l);
     }
-    j = i;
-    if (this.e != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(6, this.e);
-    }
-    i = j;
-    if (this.jdField_a_of_type_Int != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(7, this.jdField_a_of_type_Int);
-    }
-    j = i;
-    if (this.f != 0L) {
-      j = i + CodedOutputByteBufferNano.computeInt64Size(8, this.f);
-    }
-    return j;
+    return i;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.jdField_a_of_type_Long != 0L) {
-      paramCodedOutputByteBufferNano.writeInt64(1, this.jdField_a_of_type_Long);
+    long l = this.jdField_a_of_type_Long;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeInt64(1, l);
     }
-    if (this.b != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(2, this.b);
+    l = this.b;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(2, l);
     }
-    if (this.c != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(3, this.c);
+    l = this.c;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(3, l);
     }
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      InternalNano.serializeMapField(paramCodedOutputByteBufferNano, this.jdField_a_of_type_JavaUtilMap, 4, 4, 11);
+    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    if (localMap != null) {
+      InternalNano.serializeMapField(paramCodedOutputByteBufferNano, localMap, 4, 4, 11);
     }
-    if (this.d != 0L) {
-      paramCodedOutputByteBufferNano.writeInt64(5, this.d);
+    l = this.d;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeInt64(5, l);
     }
-    if (this.e != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(6, this.e);
+    l = this.e;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(6, l);
     }
-    if (this.jdField_a_of_type_Int != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(7, this.jdField_a_of_type_Int);
+    int i = this.jdField_a_of_type_Int;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(7, i);
     }
-    if (this.f != 0L) {
-      paramCodedOutputByteBufferNano.writeInt64(8, this.f);
+    l = this.f;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeInt64(8, l);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.HeartBeatCache
  * JD-Core Version:    0.7.0.1
  */

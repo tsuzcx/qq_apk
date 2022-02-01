@@ -8,6 +8,10 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -19,7 +23,6 @@ import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.loginregister.LoginUtils;
 import com.tencent.mobileqq.logintempapi.ILoginApi;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToastNotifier;
 import com.tencent.qphone.base.util.QLog;
@@ -52,7 +55,24 @@ public class RegisterNewBaseActivity
   public boolean mIsPhoneNumRegistered = false;
   public ILoginApi mLoginApi;
   protected View.OnClickListener onBackListeger = new RegisterNewBaseActivity.5(this);
-  public String phoneNum;
+  public String phoneNum = "";
+  
+  protected boolean checkPhoneNumLength(Editable paramEditable)
+  {
+    boolean bool2 = TextUtils.isEmpty(paramEditable);
+    boolean bool1 = false;
+    if (bool2) {
+      return false;
+    }
+    String str = this.countryCode;
+    if ((str != null) && (!str.equals("86"))) {
+      return true;
+    }
+    if (paramEditable.length() == 11) {
+      bool1 = true;
+    }
+    return bool1;
+  }
   
   public void closeAllActs(boolean paramBoolean)
   {
@@ -99,15 +119,6 @@ public class RegisterNewBaseActivity
     }
   }
   
-  public void dimissDialog()
-  {
-    if ((this.mDialog != null) && (this.mDialog.isShowing()))
-    {
-      this.mDialog.dismiss();
-      this.mDialog = null;
-    }
-  }
-  
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
@@ -117,7 +128,7 @@ public class RegisterNewBaseActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
@@ -133,6 +144,27 @@ public class RegisterNewBaseActivity
     return this.phoneNum;
   }
   
+  protected String getMaskedPhoneNum()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.phoneNum.substring(0, 3));
+    localStringBuilder.append("******");
+    String str = this.phoneNum;
+    localStringBuilder.append(str.substring(str.length() - 2));
+    return localStringBuilder.toString();
+  }
+  
+  protected String getMaskedPhoneNumWithCountryCode()
+  {
+    String str = getMaskedPhoneNum();
+    StringBuilder localStringBuilder = new StringBuilder(" +");
+    localStringBuilder.append(this.countryCode);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" ");
+    return localStringBuilder.toString();
+  }
+  
   public void notifyToast(int paramInt1, int paramInt2)
   {
     new QQToastNotifier(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
@@ -140,17 +172,20 @@ public class RegisterNewBaseActivity
   
   public void notifyToast(String paramString, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return;
+    if (paramString != null)
+    {
+      if (paramString.length() == 0) {
+        return;
+      }
+      String str = paramString;
+      if (paramString.endsWith("\n")) {
+        str = paramString.substring(0, paramString.length() - 1);
+      }
+      new QQToastNotifier(this).a(str, getTitleBarHeight(), 0, paramInt);
     }
-    String str = paramString;
-    if (paramString.endsWith("\n")) {
-      str = paramString.substring(0, paramString.length() - 1);
-    }
-    new QQToastNotifier(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     finish();
     return false;
@@ -158,11 +193,11 @@ public class RegisterNewBaseActivity
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 1: 
+      if (paramInt != 1) {
+        return;
+      }
       paramDialogInterface.dismiss();
       return;
     }
@@ -178,32 +213,48 @@ public class RegisterNewBaseActivity
   
   protected void setBackListener()
   {
-    TextView localTextView = (TextView)findViewById(2131364268);
+    TextView localTextView = (TextView)findViewById(2131364182);
     localTextView.setOnClickListener(this.onBackListeger);
     if (AppSetting.d) {
-      localTextView.setContentDescription(getResources().getString(2131690778));
+      localTextView.setContentDescription(getResources().getString(2131690706));
     }
   }
   
   protected void setBarProgress(int paramInt)
   {
-    ((ProgressBar)findViewById(2131376888)).setProgress(paramInt);
+    ((ProgressBar)findViewById(2131376378)).setProgress(paramInt);
   }
   
   protected void setProgressBarVisible(boolean paramBoolean)
   {
-    ProgressBar localProgressBar = (ProgressBar)findViewById(2131376888);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
+    ProgressBar localProgressBar = (ProgressBar)findViewById(2131376378);
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 4;
+    }
+    localProgressBar.setVisibility(i);
+  }
+  
+  protected void setTitleHint()
+  {
+    if (TextUtils.isEmpty(this.phoneNum))
     {
-      localProgressBar.setVisibility(i);
+      QLog.e("RegisterNewBaseActivity", 1, "setTitleHint error: phoneNum is empty, set phone number before calling this method!");
       return;
     }
+    TextView localTextView = (TextView)findViewById(2131380055);
+    String str1 = getMaskedPhoneNumWithCountryCode();
+    String str2 = getString(2131716653, new Object[] { str1 });
+    SpannableString localSpannableString = new SpannableString(str2);
+    localSpannableString.setSpan(new ForegroundColorSpan(-31933), str2.indexOf(str1), str2.indexOf(str1) + str1.length(), 33);
+    localTextView.setText(localSpannableString);
   }
   
   protected void setTitleText(int paramInt)
   {
-    TextView localTextView = (TextView)findViewById(2131380773);
+    TextView localTextView = (TextView)findViewById(2131380038);
     String str = getResources().getString(paramInt);
     localTextView.setText(str);
     if (AppSetting.d) {
@@ -213,7 +264,7 @@ public class RegisterNewBaseActivity
   
   protected void setTitleText(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131380773);
+    TextView localTextView = (TextView)findViewById(2131380038);
     localTextView.setText(paramString);
     if (AppSetting.d) {
       localTextView.setContentDescription(paramString);
@@ -232,36 +283,10 @@ public class RegisterNewBaseActivity
       paramString1.printStackTrace();
     }
   }
-  
-  public void showQQCustomDialog(String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    Object localObject = paramOnClickListener;
-    if (paramOnClickListener == null) {
-      localObject = this;
-    }
-    dimissDialog();
-    this.mDialog = DialogUtil.a(getActivity(), 230).setTitle(paramString1).setMessage(paramString2);
-    this.mDialog.setPositiveButton(2131718523, (DialogInterface.OnClickListener)localObject);
-    this.mDialog.setCancelable(false);
-    this.mDialog.show();
-  }
-  
-  public void showQQCustomDialogOneBtn(String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    Object localObject = paramOnClickListener;
-    if (paramOnClickListener == null) {
-      localObject = this;
-    }
-    dimissDialog();
-    this.mDialog = DialogUtil.a(getActivity(), 230).setTitle(paramString1).setMessage(paramString2);
-    this.mDialog.setPositiveButton(paramString3, (DialogInterface.OnClickListener)localObject);
-    this.mDialog.setCancelable(false);
-    this.mDialog.show();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterNewBaseActivity
  * JD-Core Version:    0.7.0.1
  */

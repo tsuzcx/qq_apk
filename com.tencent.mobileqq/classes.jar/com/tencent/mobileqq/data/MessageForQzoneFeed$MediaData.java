@@ -41,7 +41,8 @@ public class MessageForQzoneFeed$MediaData
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("strImgUrl", this.strImgUrl);
     localJSONObject.put("uType", this.uType);
-    if ((this.extendInfo != null) && (!this.extendInfo.isEmpty())) {
+    Map localMap = this.extendInfo;
+    if ((localMap != null) && (!localMap.isEmpty())) {
       localJSONObject.put("extendInfo", new JSONObject(this.extendInfo).toString());
     }
     return localJSONObject.toString();
@@ -49,7 +50,7 @@ public class MessageForQzoneFeed$MediaData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQzoneFeed.MediaData
  * JD-Core Version:    0.7.0.1
  */

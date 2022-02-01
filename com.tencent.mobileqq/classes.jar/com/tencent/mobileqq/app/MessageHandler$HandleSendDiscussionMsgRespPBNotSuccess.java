@@ -37,30 +37,37 @@ class MessageHandler$HandleSendDiscussionMsgRespPBNotSuccess
   
   public HandleSendDiscussionMsgRespPBNotSuccess a()
   {
-    if ((this.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_Int == 34))
+    int i = this.jdField_a_of_type_Int;
+    if ((i == 10) || (i == 34))
     {
       this.jdField_b_of_type_Boolean = true;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long);
-      if (MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, (MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg)))
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long);
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
+      if (((MessageHandler)localObject2).a((MessageRecord)localObject1, ((MessageHandler)localObject2).a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg)))
       {
         this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_b_of_type_Long);
         this.jdField_a_of_type_Boolean = true;
         return this;
       }
     }
-    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp);
-    Object localObject = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData;
-    Object[] arrayOfObject = new Object[6];
-    arrayOfObject[0] = ((Bundle)localObject).getString("uToUin");
-    arrayOfObject[1] = Integer.valueOf(3000);
-    arrayOfObject[2] = Integer.valueOf(this.jdField_a_of_type_Int);
-    arrayOfObject[3] = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("sendmsgHandler");
-    arrayOfObject[4] = Long.valueOf(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getLong("timeOut"));
-    arrayOfObject[5] = Long.valueOf(this.jdField_a_of_type_Long);
-    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, arrayOfObject, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getUin(), this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(3008, false, arrayOfObject);
-    if ((this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp != null) && (this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp.errmsg.has()) && (this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp.errmsg.get() != null) && (QLog.isColorLevel())) {
-      QLog.d("Q.msg.MessageHandler", 2, "send dicussion msg failed: " + this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp.errmsg.get());
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp);
+    Object localObject1 = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData;
+    Object localObject2 = new Object[6];
+    localObject2[0] = ((Bundle)localObject1).getString("uToUin");
+    localObject2[1] = Integer.valueOf(3000);
+    localObject2[2] = Integer.valueOf(this.jdField_a_of_type_Int);
+    localObject2[3] = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("sendmsgHandler");
+    localObject2[4] = Long.valueOf(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getLong("timeOut"));
+    localObject2[5] = Long.valueOf(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a((Object[])localObject2, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getUin(), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(3008, false, localObject2);
+    localObject1 = this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp;
+    if ((localObject1 != null) && (((msg_svc.PbSendMsgResp)localObject1).errmsg.has()) && (this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp.errmsg.get() != null) && (QLog.isColorLevel()))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("send dicussion msg failed: ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp.errmsg.get());
+      QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject1).toString());
     }
     this.jdField_a_of_type_Boolean = false;
     return this;
@@ -78,7 +85,7 @@ class MessageHandler$HandleSendDiscussionMsgRespPBNotSuccess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.HandleSendDiscussionMsgRespPBNotSuccess
  * JD-Core Version:    0.7.0.1
  */

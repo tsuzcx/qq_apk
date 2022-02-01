@@ -2,12 +2,12 @@ package com.tencent.mobileqq.activity.recent.msgbox;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxManager;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class TempMsgBoxConfigProcessor
   extends IQConfigProcessor<TempMsgBoxConfigData>
@@ -23,8 +23,12 @@ public class TempMsgBoxConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TempMsgBoxConfigProcessor", 2, "onParsed : " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed : ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("TempMsgBoxConfigProcessor", 2, localStringBuilder.toString());
       }
       return TempMsgBoxConfigData.a(paramArrayOfQConfItem[0].a);
     }
@@ -33,10 +37,14 @@ public class TempMsgBoxConfigProcessor
   
   public void a(TempMsgBoxConfigData paramTempMsgBoxConfigData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TempMsgBoxConfigProcessor", 2, "onUpdate : " + paramTempMsgBoxConfigData);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate : ");
+      localStringBuilder.append(paramTempMsgBoxConfigData);
+      QLog.d("TempMsgBoxConfigProcessor", 2, localStringBuilder.toString());
     }
-    ((TempMsgBoxManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.TEMP_MSG_BOX)).a(paramTempMsgBoxConfigData);
+    ((ITempMsgBoxManager)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getRuntimeService(ITempMsgBoxManager.class, "")).setTempMsgBoxConfigData(paramTempMsgBoxConfigData);
   }
   
   public Class<TempMsgBoxConfigData> clazz()
@@ -61,8 +69,12 @@ public class TempMsgBoxConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TempMsgBoxConfigProcessor", 2, "onReqFailed : " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed : ");
+      localStringBuilder.append(paramInt);
+      QLog.d("TempMsgBoxConfigProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -73,7 +85,7 @@ public class TempMsgBoxConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

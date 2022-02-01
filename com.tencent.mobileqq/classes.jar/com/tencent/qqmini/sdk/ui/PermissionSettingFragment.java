@@ -21,7 +21,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.qqmini.sdk.R.id;
 import com.tencent.qqmini.sdk.R.layout;
 import com.tencent.qqmini.sdk.R.style;
@@ -50,7 +49,7 @@ public class PermissionSettingFragment
   extends MiniBaseFragment
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
-  private static final String TAG = PermissionSettingFragment.class.getName();
+  private static final String TAG = "com.tencent.qqmini.sdk.ui.PermissionSettingFragment";
   public static boolean hasCancel = false;
   private PermissionListAdapter adapter;
   String appId;
@@ -72,83 +71,84 @@ public class PermissionSettingFragment
   
   private void initSettingUI(String paramString)
   {
-    Object localObject;
-    AuthStateItem localAuthStateItem;
-    if (this.authState != null)
-    {
-      localObject = this.authState.getAuthStateList(6);
-      this.adapter = new PermissionListAdapter(getActivity(), this);
-      if (localObject != null)
-      {
-        Iterator localIterator = ((List)localObject).iterator();
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localAuthStateItem = (AuthStateItem)localIterator.next();
-        } while (!"scope.getPhoneNumber".equals(localAuthStateItem.scopeName));
-      }
+    Object localObject1 = this.authState;
+    StringBuilder localStringBuilder = null;
+    if (localObject1 != null) {
+      localObject1 = ((AuthState)localObject1).getAuthStateList(6);
+    } else {
+      localObject1 = null;
     }
-    for (;;)
+    this.adapter = new PermissionListAdapter(getActivity(), this);
+    if (localObject1 != null)
     {
-      if (localAuthStateItem != null) {
-        ((List)localObject).remove(localAuthStateItem);
+      Iterator localIterator = ((List)localObject1).iterator();
+      Object localObject2;
+      do
+      {
+        localObject2 = localStringBuilder;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject2 = (AuthStateItem)localIterator.next();
+      } while (!"scope.getPhoneNumber".equals(((AuthStateItem)localObject2).scopeName));
+      if (localObject2 != null) {
+        ((List)localObject1).remove(localObject2);
       }
-      localObject = new ArrayList((Collection)localObject);
-      if (((List)localObject).size() > 0)
+      localObject1 = new ArrayList((Collection)localObject1);
+      if (((List)localObject1).size() > 0)
       {
         this.mPermissionListView.setVisibility(0);
         if (!TextUtils.isEmpty(paramString))
         {
           this.miniAppNameDesc.setVisibility(0);
-          this.miniAppNameDesc.setText("允许\"" + paramString + "\"使用我的");
+          localObject2 = this.miniAppNameDesc;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("允许\"");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("\"使用我的");
+          ((TextView)localObject2).setText(localStringBuilder.toString());
         }
-        this.adapter.setScopeList((List)localObject);
+        this.adapter.setScopeList((List)localObject1);
       }
-      for (;;)
+      else
       {
-        this.mPermissionListView.setAdapter(this.adapter);
-        if ((!this.authState.isOnceSubMaintain()) && (!this.authState.isSystemSubscribeMaintain())) {
-          break label267;
-        }
-        this.subMsgPermissionItem.setVisibility(0);
-        this.subMsgPermissionItem.setOnClickListener(new PermissionSettingFragment.2(this));
-        return;
-        localObject = null;
-        break;
-        this.mPermissionNoneTextView.setText(paramString + "未使用你任何信息");
+        localObject1 = this.mPermissionNoneTextView;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append("未使用你任何信息");
+        ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
         this.mPermissionNoneTextView.setVisibility(0);
       }
-      label267:
-      this.subMsgPermissionItem.setVisibility(8);
-      return;
-      localAuthStateItem = null;
+      this.mPermissionListView.setAdapter(this.adapter);
+      if ((!this.authState.isOnceSubMaintain()) && (!this.authState.isSystemSubscribeMaintain()))
+      {
+        this.subMsgPermissionItem.setVisibility(8);
+        return;
+      }
+      this.subMsgPermissionItem.setVisibility(0);
+      this.subMsgPermissionItem.setOnClickListener(new PermissionSettingFragment.2(this));
     }
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     String str = (String)paramCompoundButton.getTag();
-    if (!TextUtils.isEmpty(str))
-    {
-      if ((paramBoolean) || (hasCancel)) {
-        break label121;
+    if (!TextUtils.isEmpty(str)) {
+      if ((!paramBoolean) && (!hasCancel))
+      {
+        hasCancel = true;
+        MiniCustomDialog localMiniCustomDialog = new MiniCustomDialog(getActivity(), R.style.mini_sdk_MiniAppInputDialog);
+        localMiniCustomDialog.setContentView(R.layout.mini_sdk_custom_dialog_temp);
+        localMiniCustomDialog.setTitle("权限设置").setMessage("关闭授权后可能会影响使用小程序的部分功能，请确认").setPositiveButton("关闭授权", Color.parseColor("#5B6B92"), new PermissionSettingFragment.4(this, str, paramBoolean)).setNegativeButton("取消", Color.parseColor("#000000"), new PermissionSettingFragment.3(this, paramCompoundButton));
+        localMiniCustomDialog.show();
       }
-      hasCancel = true;
-      MiniCustomDialog localMiniCustomDialog = new MiniCustomDialog(getActivity(), R.style.mini_sdk_MiniAppInputDialog);
-      localMiniCustomDialog.setContentView(R.layout.mini_sdk_custom_dialog_temp);
-      localMiniCustomDialog.setTitle("权限设置").setMessage("关闭授权后可能会影响使用小程序的部分功能，请确认").setPositiveButton("关闭授权", Color.parseColor("#5B6B92"), new PermissionSettingFragment.4(this, str, paramBoolean)).setNegativeButton("取消", Color.parseColor("#000000"), new PermissionSettingFragment.3(this, paramCompoundButton));
-      localMiniCustomDialog.show();
+      else
+      {
+        this.adapter.changeChecked(str, paramBoolean);
+        this.authState.setAuthState(str, paramBoolean);
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      label121:
-      this.adapter.changeChecked(str, paramBoolean);
-      this.authState.setAuthState(str, paramBoolean);
-    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
   
   public void onClick(View paramView)
@@ -179,7 +179,6 @@ public class PermissionSettingFragment
       getActivity().getWindow().setStatusBarColor(Color.parseColor("#EFEFF4"));
       ImmersiveUtils.setStatusTextColor(true, getActivity().getWindow());
     }
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -204,12 +203,13 @@ public class PermissionSettingFragment
     this.subMsgPermissionItem = ((RelativeLayout)paramView.findViewById(R.id.sub_msg_permission_item));
     paramView = LoginManager.getInstance().getAccount();
     this.authState = new AuthState(getContext(), this.appId, paramView);
-    if (this.authState == null)
+    paramView = this.authState;
+    if (paramView == null)
     {
       QMLog.e(TAG, "getAuthorizeCenter(appId), authState is null?!");
       return;
     }
-    if (this.authState.isSynchronized())
+    if (paramView.isSynchronized())
     {
       initSettingUI(paramBundle);
       return;
@@ -224,7 +224,7 @@ public class PermissionSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.PermissionSettingFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -4,33 +4,29 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager;
 import com.tencent.mobileqq.startup.step.InstallPlugins;
-import cooperation.qzone.plugin.QZonePluginManager;
+import com.tencent.qzonehub.api.IQzonePatchApi;
 
 public class GetQZoneFeeds
   extends AsyncStep
 {
-  public static boolean a;
+  public static boolean a = false;
   
-  static
+  protected int doStep()
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public int a()
-  {
-    jdField_a_of_type_Boolean = true;
-    ((QzoneContactsFeedManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getManager(QQManagerFactory.QZONE_CONTACTS_FEED_MANAGER)).a();
-    ((QZonePluginManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getManager(QQManagerFactory.QZONE_PLUGIN_MANAGER)).setReadyToNetworking();
+    a = true;
+    ((QzoneContactsFeedManager)this.mAutomator.a.getManager(QQManagerFactory.QZONE_CONTACTS_FEED_MANAGER)).a();
+    ((IQzonePatchApi)QRoute.api(IQzonePatchApi.class)).getPatchList();
     InstallPlugins.a(1);
     InstallPlugins.a();
-    return super.a();
+    return super.doStep();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetQZoneFeeds
  * JD-Core Version:    0.7.0.1
  */

@@ -40,28 +40,34 @@ public class RegisterLiangHaoHelper
   
   private boolean a()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof RegisterByNicknameAndPwdActivity)) {
-      return ((RegisterByNicknameAndPwdActivity)this.jdField_a_of_type_AndroidContentContext).checkNickAndPwd();
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    if ((localContext instanceof RegisterByNicknameAndPwdActivity)) {
+      return ((RegisterByNicknameAndPwdActivity)localContext).checkNickAndPwd();
     }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof RegisterPersonalInfoActivity)) {
-      return ((RegisterPersonalInfoActivity)this.jdField_a_of_type_AndroidContentContext).a();
+    if ((localContext instanceof RegisterPersonalInfoActivity)) {
+      return ((RegisterPersonalInfoActivity)localContext).a();
     }
     return false;
   }
   
   private void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp == null) || (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a == null)) {
-      return;
-    }
-    a().a(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp);
-    int i = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a.size();
-    if (i > 4)
+    LiangHaoRsp localLiangHaoRsp = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp;
+    if (localLiangHaoRsp != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a.subList(4, i);
-      return;
+      if (localLiangHaoRsp.a == null) {
+        return;
+      }
+      a().a(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp);
+      int i = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a.size();
+      if (i > 4)
+      {
+        localLiangHaoRsp = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp;
+        localLiangHaoRsp.a = localLiangHaoRsp.a.subList(4, i);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a.clear();
     }
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a.clear();
   }
   
   public RegisterLiangHaoChoiceLayoutView a()
@@ -90,7 +96,8 @@ public class RegisterLiangHaoHelper
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp != null) && (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a != null) && (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a.size() >= 4))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp;
+    if ((localObject != null) && (((LiangHaoRsp)localObject).a != null) && (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a.size() >= 4))
     {
       c();
       return;
@@ -98,19 +105,22 @@ public class RegisterLiangHaoHelper
     if (this.b == null) {
       this.b = new RegisterLiangHaoHelper.2(this);
     }
-    String str = this.jdField_a_of_type_JavaLangString;
+    localObject = this.jdField_a_of_type_JavaLangString;
     int i = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_Int = (i + 1);
-    new GetRegisterLiangHaoList(str, i, this.b).a();
+    new GetRegisterLiangHaoList((String)localObject, i, this.b).a();
   }
   
   public void a(LiangHaoUinData paramLiangHaoUinData)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant == null) || (!a())) {
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant != null)
+    {
+      if (!a()) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.c();
+      LiangHaoBuyFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.a(), paramLiangHaoUinData);
     }
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.c();
-    LiangHaoBuyFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.a(), paramLiangHaoUinData);
   }
   
   public void a(String paramString, RegisterLiangHaoHelper.CheckCallBack paramCheckCallBack)
@@ -133,42 +143,54 @@ public class RegisterLiangHaoHelper
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant == null) || (!a())) {
-      return;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.b)))
+    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant != null)
     {
-      str = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.b;
-      if (str.indexOf("?") >= 0) {
-        break label142;
+      if (!a()) {
+        return;
       }
-    }
-    label142:
-    for (String str = str + "?phone=" + this.jdField_a_of_type_JavaLangString;; str = str + "&phone=" + this.jdField_a_of_type_JavaLangString)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("url", str);
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      localIntent.putExtras(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.a());
-      localIntent.putExtra("lh_reg_from", 1);
-      LoginUtils.a(this.jdField_a_of_type_AndroidContentContext, localIntent, "/base/browser");
-      return;
-      str = "https://haoma.qq.com/m/clientReg/index.html";
-      break;
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp;
+      if ((localObject1 != null) && (!TextUtils.isEmpty(((LiangHaoRsp)localObject1).b))) {
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.b;
+      } else {
+        localObject1 = "https://haoma.qq.com/m/clientReg/index.html";
+      }
+      if (((String)localObject1).indexOf("?") < 0)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("?phone=");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        localObject1 = ((StringBuilder)localObject2).toString();
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("&phone=");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        localObject1 = ((StringBuilder)localObject2).toString();
+      }
+      Object localObject2 = new Intent();
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
+      ((Intent)localObject2).putExtras(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.a());
+      ((Intent)localObject2).putExtra("lh_reg_from", 1);
+      LoginUtils.a(this.jdField_a_of_type_AndroidContentContext, (Intent)localObject2, "/base/browser");
     }
   }
   
   public void b(LiangHaoUinData paramLiangHaoUinData)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant == null) {
+    RegisterLHAssistant localRegisterLHAssistant = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant;
+    if (localRegisterLHAssistant == null) {
       return;
     }
-    LiangHaoBuyFragment.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.a(), paramLiangHaoUinData);
+    LiangHaoBuyFragment.b(this.jdField_a_of_type_AndroidContentContext, localRegisterLHAssistant.a(), paramLiangHaoUinData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.RegisterLiangHaoHelper
  * JD-Core Version:    0.7.0.1
  */

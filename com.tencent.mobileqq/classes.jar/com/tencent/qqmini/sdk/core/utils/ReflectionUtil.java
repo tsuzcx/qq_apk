@@ -13,124 +13,155 @@ public class ReflectionUtil
   
   public static Object callSpecifiedMethod(Object paramObject, String paramString, boolean paramBoolean, Class[] paramArrayOfClass, Object... paramVarArgs)
   {
-    if ((paramObject == null) || (TextUtils.isEmpty(paramString))) {
-      return null;
-    }
-    Class localClass = paramObject.getClass();
-    if ((paramBoolean) || (paramArrayOfClass != null)) {}
-    for (;;)
+    if (paramObject != null)
     {
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
+      }
+      Class localClass = paramObject.getClass();
+      if ((paramBoolean) || (paramArrayOfClass != null)) {}
       try
       {
-        if (paramArrayOfClass.length == 0)
+        if (paramArrayOfClass.length != 0)
+        {
+          paramString = localClass.getMethod(paramString, paramArrayOfClass);
+        }
+        else
         {
           paramString = localClass.getMethod(paramString, new Class[0]);
-          if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
-            continue;
+          break label99;
+          if ((paramArrayOfClass != null) && (paramArrayOfClass.length != 0)) {
+            paramString = localClass.getDeclaredMethod(paramString, paramArrayOfClass);
+          } else {
+            paramString = localClass.getDeclaredMethod(paramString, new Class[0]);
           }
-          return paramString.invoke(paramObject, new Object[0]);
+          paramString.setAccessible(true);
         }
-        paramString = localClass.getMethod(paramString, paramArrayOfClass);
-        continue;
-        if ((paramArrayOfClass != null) && (paramArrayOfClass.length != 0)) {
-          continue;
+        label99:
+        if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+          paramObject = paramString.invoke(paramObject, paramVarArgs);
+        } else {
+          paramObject = paramString.invoke(paramObject, new Object[0]);
         }
-        paramString = localClass.getDeclaredMethod(paramString, new Class[0]);
-      }
-      catch (NoSuchMethodException paramObject)
-      {
-        Log.e("ReflectionUtil", "NoSuchMethodException: " + paramObject.getMessage());
-        paramObject.printStackTrace();
-        return null;
-        paramString = localClass.getDeclaredMethod(paramString, paramArrayOfClass);
-        continue;
-        paramObject = paramString.invoke(paramObject, paramVarArgs);
         return paramObject;
       }
-      catch (InvocationTargetException paramObject)
+      catch (NullPointerException paramObject)
       {
-        Log.e("ReflectionUtil", "InvocationTargetException: " + paramObject.getMessage());
         paramObject.printStackTrace();
+        paramString = new StringBuilder();
+        paramString.append("NullPointerException: ");
+        paramString.append(paramObject.getMessage());
+        Log.e("ReflectionUtil", paramString.toString());
         return null;
       }
       catch (IllegalAccessException paramObject)
       {
         paramObject.printStackTrace();
-        Log.e("ReflectionUtil", "IllegalAccessException: " + paramObject.getMessage());
+        paramString = new StringBuilder();
+        paramString.append("IllegalAccessException: ");
+        paramString.append(paramObject.getMessage());
+        Log.e("ReflectionUtil", paramString.toString());
         return null;
       }
-      catch (NullPointerException paramObject)
+      catch (InvocationTargetException paramObject)
       {
+        paramString = new StringBuilder();
+        paramString.append("InvocationTargetException: ");
+        paramString.append(paramObject.getMessage());
+        Log.e("ReflectionUtil", paramString.toString());
         paramObject.printStackTrace();
-        Log.e("ReflectionUtil", "NullPointerException: " + paramObject.getMessage());
+        return null;
       }
-      paramString.setAccessible(true);
+      catch (NoSuchMethodException paramObject)
+      {
+        paramString = new StringBuilder();
+        paramString.append("NoSuchMethodException: ");
+        paramString.append(paramObject.getMessage());
+        Log.e("ReflectionUtil", paramString.toString());
+        paramObject.printStackTrace();
+      }
     }
     return null;
   }
   
   public static Object callSpecifiedStaticMethod(String paramString1, String paramString2, boolean paramBoolean, Class[] paramArrayOfClass, Object... paramVarArgs)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString1))
     {
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
+      }
       try
       {
         paramString1 = Class.forName(paramString1);
         if (!paramBoolean)
         {
-          if ((paramArrayOfClass == null) || (paramArrayOfClass.length == 0))
-          {
+          if ((paramArrayOfClass != null) && (paramArrayOfClass.length != 0)) {
+            paramString1 = paramString1.getMethod(paramString2, paramArrayOfClass);
+          } else {
             paramString1 = paramString1.getMethod(paramString2, new Class[0]);
-            if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
-              continue;
-            }
-            return paramString1.invoke(null, new Object[0]);
           }
-          paramString1 = paramString1.getMethod(paramString2, paramArrayOfClass);
-          continue;
         }
-        if ((paramArrayOfClass != null) && (paramArrayOfClass.length != 0)) {
-          continue;
+        else
+        {
+          if ((paramArrayOfClass != null) && (paramArrayOfClass.length != 0)) {
+            paramString1 = paramString1.getDeclaredMethod(paramString2, paramArrayOfClass);
+          } else {
+            paramString1 = paramString1.getDeclaredMethod(paramString2, new Class[0]);
+          }
+          paramString1.setAccessible(true);
         }
-        paramString1 = paramString1.getDeclaredMethod(paramString2, new Class[0]);
-      }
-      catch (NoSuchMethodException paramString1)
-      {
-        paramString1.printStackTrace();
-        Log.e("ReflectionUtil", "NoSuchMethodException: " + paramString1.getMessage());
-        return null;
-        paramString1 = paramString1.getDeclaredMethod(paramString2, paramArrayOfClass);
-        continue;
-        paramString1 = paramString1.invoke(null, paramVarArgs);
+        if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+          paramString1 = paramString1.invoke(null, paramVarArgs);
+        } else {
+          paramString1 = paramString1.invoke(null, new Object[0]);
+        }
         return paramString1;
       }
-      catch (InvocationTargetException paramString1)
+      catch (NullPointerException paramString1)
       {
         paramString1.printStackTrace();
-        Log.e("ReflectionUtil", "InvocationTargetException: " + paramString1.getMessage());
-        return null;
-      }
-      catch (IllegalAccessException paramString1)
-      {
-        paramString1.printStackTrace();
-        Log.e("ReflectionUtil", "IllegalAccessException: " + paramString1.getMessage());
+        paramString2 = new StringBuilder();
+        paramString2.append("NullPointerException: ");
+        paramString2.append(paramString1.getMessage());
+        Log.e("ReflectionUtil", paramString2.toString());
         return null;
       }
       catch (ClassNotFoundException paramString1)
       {
         paramString1.printStackTrace();
-        Log.e("ReflectionUtil", "ClassNotFoundException: " + paramString1.getMessage());
+        paramString2 = new StringBuilder();
+        paramString2.append("ClassNotFoundException: ");
+        paramString2.append(paramString1.getMessage());
+        Log.e("ReflectionUtil", paramString2.toString());
         return null;
       }
-      catch (NullPointerException paramString1)
+      catch (IllegalAccessException paramString1)
       {
         paramString1.printStackTrace();
-        Log.e("ReflectionUtil", "NullPointerException: " + paramString1.getMessage());
+        paramString2 = new StringBuilder();
+        paramString2.append("IllegalAccessException: ");
+        paramString2.append(paramString1.getMessage());
+        Log.e("ReflectionUtil", paramString2.toString());
+        return null;
       }
-      paramString1.setAccessible(true);
+      catch (InvocationTargetException paramString1)
+      {
+        paramString1.printStackTrace();
+        paramString2 = new StringBuilder();
+        paramString2.append("InvocationTargetException: ");
+        paramString2.append(paramString1.getMessage());
+        Log.e("ReflectionUtil", paramString2.toString());
+        return null;
+      }
+      catch (NoSuchMethodException paramString1)
+      {
+        paramString1.printStackTrace();
+        paramString2 = new StringBuilder();
+        paramString2.append("NoSuchMethodException: ");
+        paramString2.append(paramString1.getMessage());
+        Log.e("ReflectionUtil", paramString2.toString());
+      }
     }
     return null;
   }
@@ -145,9 +176,9 @@ public class ReflectionUtil
       paramString = Class.forName(paramString).newInstance();
       return paramString;
     }
-    catch (ClassNotFoundException paramString)
+    catch (InstantiationException paramString)
     {
-      Log.e("ReflectionUtil", "ClassNotFoundException: ");
+      Log.e("ReflectionUtil", "InstantiationException: ");
       paramString.printStackTrace();
       return null;
     }
@@ -157,9 +188,9 @@ public class ReflectionUtil
       paramString.printStackTrace();
       return null;
     }
-    catch (InstantiationException paramString)
+    catch (ClassNotFoundException paramString)
     {
-      Log.e("ReflectionUtil", "InstantiationException: ");
+      Log.e("ReflectionUtil", "ClassNotFoundException: ");
       paramString.printStackTrace();
     }
     return null;
@@ -173,39 +204,55 @@ public class ReflectionUtil
     try
     {
       paramString = Class.forName(paramString);
-      if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-        return paramString.newInstance();
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+        paramString = paramString.getConstructor(paramArrayOfClass).newInstance(paramVarArgs);
+      } else {
+        paramString = paramString.newInstance();
       }
-      paramString = paramString.getConstructor(paramArrayOfClass).newInstance(paramVarArgs);
       return paramString;
     }
-    catch (ClassNotFoundException paramString)
+    catch (InvocationTargetException paramString)
     {
-      Log.e("ReflectionUtil", "ClassNotFoundException: " + paramString.getMessage());
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (InstantiationException paramString)
-    {
-      Log.e("ReflectionUtil", "InstantiationException: " + paramString.getMessage());
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramString)
-    {
-      Log.e("ReflectionUtil", "IllegalAccessException: " + paramString.getMessage());
+      paramArrayOfClass = new StringBuilder();
+      paramArrayOfClass.append("InvocationTargetException: ");
+      paramArrayOfClass.append(paramString.getMessage());
+      Log.e("ReflectionUtil", paramArrayOfClass.toString());
       paramString.printStackTrace();
       return null;
     }
     catch (NoSuchMethodException paramString)
     {
-      Log.e("ReflectionUtil", "NoSuchMethodException: " + paramString.getMessage());
+      paramArrayOfClass = new StringBuilder();
+      paramArrayOfClass.append("NoSuchMethodException: ");
+      paramArrayOfClass.append(paramString.getMessage());
+      Log.e("ReflectionUtil", paramArrayOfClass.toString());
       paramString.printStackTrace();
       return null;
     }
-    catch (InvocationTargetException paramString)
+    catch (IllegalAccessException paramString)
     {
-      Log.e("ReflectionUtil", "InvocationTargetException: " + paramString.getMessage());
+      paramArrayOfClass = new StringBuilder();
+      paramArrayOfClass.append("IllegalAccessException: ");
+      paramArrayOfClass.append(paramString.getMessage());
+      Log.e("ReflectionUtil", paramArrayOfClass.toString());
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (InstantiationException paramString)
+    {
+      paramArrayOfClass = new StringBuilder();
+      paramArrayOfClass.append("InstantiationException: ");
+      paramArrayOfClass.append(paramString.getMessage());
+      Log.e("ReflectionUtil", paramArrayOfClass.toString());
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (ClassNotFoundException paramString)
+    {
+      paramArrayOfClass = new StringBuilder();
+      paramArrayOfClass.append("ClassNotFoundException: ");
+      paramArrayOfClass.append(paramString.getMessage());
+      Log.e("ReflectionUtil", paramArrayOfClass.toString());
       paramString.printStackTrace();
     }
     return null;
@@ -245,64 +292,88 @@ public class ReflectionUtil
   
   public static Object getSpecifiedField(Object paramObject, String paramString, boolean paramBoolean)
   {
-    if ((paramObject == null) || (TextUtils.isEmpty(paramString))) {
+    if (paramObject != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
+      }
+      Class localClass = paramObject.getClass();
+      if (!paramBoolean) {}
+      try
+      {
+        paramObject = localClass.getField(paramString).get(paramObject);
+      }
+      catch (IllegalAccessException paramObject)
+      {
+        paramString = new StringBuilder();
+        paramString.append("IllegalAccessException: ");
+        paramString.append(paramObject.getMessage());
+        Log.e("ReflectionUtil", paramString.toString());
+        paramObject.printStackTrace();
+        return null;
+      }
+      catch (NoSuchFieldException paramObject)
+      {
+        paramString = new StringBuilder();
+        paramString.append("NoSuchFieldException: ");
+        paramString.append(paramObject.getMessage());
+        Log.e("ReflectionUtil", paramString.toString());
+        paramObject.printStackTrace();
+      }
+      paramString = localClass.getDeclaredField(paramString);
+      paramString.setAccessible(true);
+      paramObject = paramString.get(paramObject);
+    }
+    else
+    {
       return null;
     }
-    Class localClass = paramObject.getClass();
-    if (!paramBoolean) {}
-    try
-    {
-      return localClass.getField(paramString).get(paramObject);
-    }
-    catch (NoSuchFieldException paramObject)
-    {
-      Log.e("ReflectionUtil", "NoSuchFieldException: " + paramObject.getMessage());
-      paramObject.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramObject)
-    {
-      Log.e("ReflectionUtil", "IllegalAccessException: " + paramObject.getMessage());
-      paramObject.printStackTrace();
-    }
-    paramString = localClass.getDeclaredField(paramString);
-    paramString.setAccessible(true);
-    paramObject = paramString.get(paramObject);
     return paramObject;
-    return null;
   }
   
   public static Object getStaticField(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    try
+    if (!TextUtils.isEmpty(paramString1))
     {
-      paramString1 = Class.forName(paramString1);
-      paramString1 = paramString1.getField(paramString2).get(paramString1);
-      return paramString1;
-    }
-    catch (NoSuchFieldException paramString1)
-    {
-      Log.w("ReflectionUtil", "NoSuchFieldException: " + paramString1.getMessage());
-      return null;
-    }
-    catch (IllegalAccessException paramString1)
-    {
-      Log.w("ReflectionUtil", "IllegalAccessException: " + paramString1.getMessage());
-      return null;
-    }
-    catch (ClassNotFoundException paramString1)
-    {
-      Log.w("ReflectionUtil", "ClassNotFoundException: " + paramString1.getMessage());
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
+      }
+      try
+      {
+        paramString1 = Class.forName(paramString1);
+        paramString1 = paramString1.getField(paramString2).get(paramString1);
+        return paramString1;
+      }
+      catch (ClassNotFoundException paramString1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("ClassNotFoundException: ");
+        paramString2.append(paramString1.getMessage());
+        Log.w("ReflectionUtil", paramString2.toString());
+        return null;
+      }
+      catch (IllegalAccessException paramString1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("IllegalAccessException: ");
+        paramString2.append(paramString1.getMessage());
+        Log.w("ReflectionUtil", paramString2.toString());
+        return null;
+      }
+      catch (NoSuchFieldException paramString1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("NoSuchFieldException: ");
+        paramString2.append(paramString1.getMessage());
+        Log.w("ReflectionUtil", paramString2.toString());
+      }
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.ReflectionUtil
  * JD-Core Version:    0.7.0.1
  */

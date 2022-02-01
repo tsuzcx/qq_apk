@@ -3,14 +3,22 @@ package com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller;
 import UserGrowth.stSimpleMetaFeed;
 import UserGrowth.stWaterFallCardStyle;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.weishi_new.WSItemDecoration;
+import android.view.ViewStub;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.weishi_new.WSRecommendAdapter;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
+import com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader;
 import com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUIUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
@@ -24,6 +32,7 @@ public class WSGridFeedCoverController
   private WSRecommendAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
   private RoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView;
   private final View b;
+  private View c;
   private final int e;
   
   public WSGridFeedCoverController(Context paramContext, View paramView, int paramInt, WSRecommendAdapter paramWSRecommendAdapter)
@@ -34,99 +43,131 @@ public class WSGridFeedCoverController
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter = paramWSRecommendAdapter;
   }
   
+  private Drawable a()
+  {
+    String str = WeishiUtils.b(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, true);
+    if (!TextUtils.isEmpty(str))
+    {
+      ColorDrawable localColorDrawable = new ColorDrawable();
+      if (!WeishiUIUtil.a(str)) {
+        str = "#D9D9D9";
+      }
+      localColorDrawable.setColor(Color.parseColor(str));
+      return localColorDrawable;
+    }
+    return WSFeedUtils.a(2131165740);
+  }
+  
+  private void a(Pair<Integer, Integer> paramPair)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id)) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.b, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id)) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_Boolean))
+    {
+      if (this.c == null) {
+        this.c = ((ViewStub)this.b.findViewById(2131369038)).inflate();
+      }
+      Object localObject = this.c;
+      if (localObject != null)
+      {
+        localObject = (FrameLayout.LayoutParams)((View)localObject).getLayoutParams();
+        ((FrameLayout.LayoutParams)localObject).width = ((Integer)paramPair.first).intValue();
+        ((FrameLayout.LayoutParams)localObject).height = ((Integer)paramPair.second).intValue();
+        this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.c.setVisibility(0);
+      }
+      return;
+    }
+    paramPair = this.c;
+    if (paramPair != null) {
+      paramPair.setVisibility(8);
+    }
+  }
+  
   private void f()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView.setCorner(d, this.e);
+    g();
   }
   
   private void g()
   {
-    float f2 = 1.333333F;
-    Object localObject = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.waterFallCardStyle;
-    boolean bool;
-    float f1;
-    label57:
-    label65:
-    label73:
-    int i;
-    if ((localObject != null) && (((stWaterFallCardStyle)localObject).isFullSpan))
-    {
-      bool = true;
-      if ((localObject == null) || (((stWaterFallCardStyle)localObject).ratioW == 0)) {
-        break label225;
-      }
-      f1 = ((stWaterFallCardStyle)localObject).ratioH * 1.0F / ((stWaterFallCardStyle)localObject).ratioW;
-      if (f1 <= 2.0F) {
-        break label231;
-      }
-      f1 = f2;
-      if (!bool) {
-        break label234;
-      }
-      f1 = 0.5625F;
-      ((StaggeredGridLayoutManager.LayoutParams)this.b.getLayoutParams()).setFullSpan(bool);
-      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView.getLayoutParams();
-      i = WeishiUIUtil.c();
-      if (!bool) {
-        break label237;
-      }
-      i -= WSItemDecoration.a * 2;
-    }
-    for (;;)
-    {
-      ((RelativeLayout.LayoutParams)localObject).height = ((int)(f1 * i));
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      String str = "feeds";
-      localObject = str;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter != null)
-      {
-        localObject = str;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.a)) {
-          localObject = "feeds_" + this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.a;
-        }
-      }
-      WeishiUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, WSFeedUtils.a(2131165749), (String)localObject, true, a());
+    Object localObject = this.c;
+    if (localObject == null) {
       return;
-      bool = false;
-      break;
-      label225:
-      f1 = 1.333333F;
-      break label57;
-      label231:
-      break label65;
-      label234:
-      break label73;
-      label237:
-      i = (i - WSItemDecoration.a * 3) / 2;
     }
+    localObject = (TextView)((View)localObject).findViewById(2131379673);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    int i;
+    if (this.e == 1)
+    {
+      i = d;
+      localGradientDrawable.setCornerRadii(new float[] { i, i, i, i, 0.0F, 0.0F, 0.0F, 0.0F });
+    }
+    else
+    {
+      i = d;
+      localGradientDrawable.setCornerRadii(new float[] { i, i, i, i, i, i, i, i });
+    }
+    localGradientDrawable.setColor(a().getColor(2131165329));
+    ((TextView)localObject).setBackgroundDrawable(localGradientDrawable);
   }
   
-  public void a()
+  private void h()
+  {
+    Object localObject = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.waterFallCardStyle;
+    boolean bool;
+    if ((localObject != null) && (((stWaterFallCardStyle)localObject).isFullSpan)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((StaggeredGridLayoutManager.LayoutParams)this.b.getLayoutParams()).setFullSpan(bool);
+    localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView.getLayoutParams();
+    Pair localPair = WeishiUIUtil.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    ((FrameLayout.LayoutParams)localObject).width = ((Integer)localPair.first).intValue();
+    ((FrameLayout.LayoutParams)localObject).height = ((Integer)localPair.second).intValue();
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
+    if ((localObject != null) && (!TextUtils.isEmpty(((WSRecommendAdapter)localObject).jdField_a_of_type_JavaLangString)))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("feeds_");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    else
+    {
+      localObject = "feeds";
+    }
+    WSPicLoader.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, a(), (String)localObject, true, a());
+    a(localPair);
+  }
+  
+  protected void a()
   {
     this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560536;
+    return 2131560424;
   }
   
-  public void b()
+  protected void b()
   {
-    g();
+    h();
     f();
   }
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView = ((RoundCornerImageView)a(2131369392));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView = ((RoundCornerImageView)a(2131369120));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedCoverController
  * JD-Core Version:    0.7.0.1
  */

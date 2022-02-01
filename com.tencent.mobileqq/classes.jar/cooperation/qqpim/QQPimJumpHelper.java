@@ -31,7 +31,8 @@ public class QQPimJumpHelper
     PackageManager localPackageManager = paramContext.getPackageManager();
     try
     {
-      if (localPackageManager.getPackageInfo("com.tencent.qqpim", 1).versionCode < 1171)
+      int i = localPackageManager.getPackageInfo("com.tencent.qqpim", 1).versionCode;
+      if (i < 1171)
       {
         paramContext = a(paramContext);
         paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
@@ -59,24 +60,17 @@ public class QQPimJumpHelper
   
   public static boolean a(Context paramContext)
   {
-    boolean bool = true;
     paramContext = paramContext.getPackageManager();
     try
     {
       paramContext = paramContext.getPackageInfo("com.tencent.qqpim", 1);
-      if (paramContext == null) {
-        bool = false;
-      }
-      return bool;
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        paramContext = null;
-      }
+      paramContext.printStackTrace();
+      paramContext = null;
     }
+    return paramContext != null;
   }
   
   public void a(Activity paramActivity, Bundle paramBundle)
@@ -104,7 +98,7 @@ public class QQPimJumpHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimJumpHelper
  * JD-Core Version:    0.7.0.1
  */

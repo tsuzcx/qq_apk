@@ -3,10 +3,11 @@ package com.tencent.widget;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtX5WebView;
 import com.tencent.smtt.sdk.WebView;
 
 public class ProtectedWebView
-  extends WebView
+  extends DtX5WebView
 {
   private boolean a;
   
@@ -130,7 +131,7 @@ public class ProtectedWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ProtectedWebView
  * JD-Core Version:    0.7.0.1
  */

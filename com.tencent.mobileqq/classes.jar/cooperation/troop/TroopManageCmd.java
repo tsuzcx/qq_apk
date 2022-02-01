@@ -49,16 +49,12 @@ public class TroopManageCmd
     }
     Bundle localBundle = new Bundle();
     if (paramInt == 5) {
-      str = ContactUtils.g(this.a, paramBundle.getString("req_troop_uin"), paramBundle.getString("memUin"));
+      str = ContactUtils.b(this.a, paramBundle.getString("req_troop_uin"), paramBundle.getString("memUin"));
+    } else if (paramInt == 6) {
+      str = ContactUtils.e(this.a, paramBundle.getString("memUin"));
     }
-    for (;;)
-    {
-      localBundle.putString("param_rsp_nick", str);
-      return localBundle;
-      if (paramInt == 6) {
-        str = ContactUtils.h(this.a, paramBundle.getString("memUin"));
-      }
-    }
+    localBundle.putString("param_rsp_nick", str);
+    return localBundle;
   }
   
   protected Bundle b(Bundle paramBundle)
@@ -84,44 +80,52 @@ public class TroopManageCmd
   
   public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    if ((paramBundle == null) || (this.a == null)) {
-      return null;
-    }
-    try
+    if (paramBundle != null)
     {
-      paramOnInvokeFinishLinstener = new Bundle();
-      i = paramBundle.getInt("req_sub_cmd", 0);
-      switch (i)
+      if (this.a == null) {
+        return null;
+      }
+      try
       {
-      case 1: 
-        paramBundle = b(paramBundle);
+        paramOnInvokeFinishLinstener = new Bundle();
+        i = paramBundle.getInt("req_sub_cmd", 0);
+        switch (i)
+        {
+        case 7: 
+          return a();
+        }
       }
-    }
-    catch (Exception paramBundle)
-    {
-      int i;
-      if (!QLog.isColorLevel()) {
-        break label199;
+      catch (Exception paramBundle)
+      {
+        int i;
+        if (!QLog.isColorLevel()) {
+          break label193;
+        }
+        paramOnInvokeFinishLinstener = new StringBuilder();
+        paramOnInvokeFinishLinstener.append("invoke Exception hanppend! ExceptionClass = + ");
+        paramOnInvokeFinishLinstener.append(paramBundle.getClass().getName());
+        paramOnInvokeFinishLinstener.append("msg = ");
+        paramOnInvokeFinishLinstener.append(paramBundle.getMessage());
+        QLog.d("TroopManageCmd", 2, paramOnInvokeFinishLinstener.toString());
+        ReportController.b(this.a, "P_CliOper", "BizTechReport", "", "troop_manage_plugin", "plugin_cmd_exp", 0, 0, paramBundle.getClass().getName(), null, null, null);
       }
-      QLog.d("TroopManageCmd", 2, "invoke Exception hanppend! ExceptionClass = + " + paramBundle.getClass().getName() + "msg = " + paramBundle.getMessage());
-      ReportController.b(this.a, "P_CliOper", "BizTechReport", "", "troop_manage_plugin", "plugin_cmd_exp", 0, 0, paramBundle.getClass().getName(), null, null, null);
-      return null;
+      return a(paramBundle, i);
+      paramBundle = (TroopInfo)paramBundle.getSerializable("troopInfo");
+      ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramBundle);
+      return paramOnInvokeFinishLinstener;
+      return a(paramBundle);
+      return c(paramBundle);
+      paramBundle = b(paramBundle);
+      return paramBundle;
     }
-    return a(paramBundle, i);
-    return c(paramBundle);
-    return a(paramBundle);
-    paramBundle = (TroopInfo)paramBundle.getSerializable("troopInfo");
-    ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramBundle);
+    label193:
+    return null;
     return paramOnInvokeFinishLinstener;
-    return a();
-    label199:
-    paramBundle = paramOnInvokeFinishLinstener;
-    return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop.TroopManageCmd
  * JD-Core Version:    0.7.0.1
  */

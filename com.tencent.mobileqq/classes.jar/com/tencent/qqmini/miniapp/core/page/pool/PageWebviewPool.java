@@ -51,19 +51,27 @@ public class PageWebviewPool
     if (localBrandPageWebview == null)
     {
       QMLog.i("PageWebviewPool", "get page form new BrandPageWebview.");
-      paramAppBrandPageContainer = new BrandPageWebview(this.mContext, paramAppBrandPageContainer);
-      if (this.mBaselibContent != null) {
-        paramAppBrandPageContainer.initBaseJs(this.mBaselibContent);
+      localBrandPageWebview = new BrandPageWebview(this.mContext, paramAppBrandPageContainer);
+      BaselibLoader.BaselibContent localBaselibContent = this.mBaselibContent;
+      paramAppBrandPageContainer = localBrandPageWebview;
+      if (localBaselibContent != null)
+      {
+        localBrandPageWebview.initBaseJs(localBaselibContent);
+        return localBrandPageWebview;
       }
-      return paramAppBrandPageContainer;
     }
-    QMLog.i("PageWebviewPool", "get page from cache.");
-    return localBrandPageWebview;
+    else
+    {
+      QMLog.i("PageWebviewPool", "get page from cache.");
+      paramAppBrandPageContainer = localBrandPageWebview;
+    }
+    return paramAppBrandPageContainer;
   }
   
   public EmbeddedState getEmbeddedState(AppBrandPageContainer paramAppBrandPageContainer)
   {
-    if ((this.mAppBrandPageMap != null) && (this.mAppBrandPageMap.size() > 0))
+    ConcurrentHashMap localConcurrentHashMap = this.mAppBrandPageMap;
+    if ((localConcurrentHashMap != null) && (localConcurrentHashMap.size() > 0))
     {
       paramAppBrandPageContainer = (BrandPageWebview)this.mAppBrandPageMap.get(paramAppBrandPageContainer);
       if (paramAppBrandPageContainer != null) {
@@ -89,15 +97,16 @@ public class PageWebviewPool
     }
     QMLog.i("PageWebviewPool", "preLoad page");
     BrandPageWebview localBrandPageWebview = new BrandPageWebview(this.mContext, paramAppBrandPageContainer);
-    if (this.mBaselibContent != null) {
-      localBrandPageWebview.initBaseJs(this.mBaselibContent);
+    BaselibLoader.BaselibContent localBaselibContent = this.mBaselibContent;
+    if (localBaselibContent != null) {
+      localBrandPageWebview.initBaseJs(localBaselibContent);
     }
     this.mAppBrandPageMap.put(paramAppBrandPageContainer, localBrandPageWebview);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.pool.PageWebviewPool
  * JD-Core Version:    0.7.0.1
  */

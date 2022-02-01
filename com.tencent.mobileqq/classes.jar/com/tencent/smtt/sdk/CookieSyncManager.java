@@ -39,13 +39,14 @@ public class CookieSyncManager
   {
     try
     {
-      if (b == null) {
-        throw new IllegalStateException("CookieSyncManager::createInstance() needs to be called before CookieSyncManager::getInstance()");
+      if (b != null)
+      {
+        CookieSyncManager localCookieSyncManager = b;
+        return localCookieSyncManager;
       }
+      throw new IllegalStateException("CookieSyncManager::createInstance() needs to be called before CookieSyncManager::getInstance()");
     }
     finally {}
-    CookieSyncManager localCookieSyncManager = b;
-    return localCookieSyncManager;
   }
   
   public void startSync()
@@ -91,7 +92,7 @@ public class CookieSyncManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.CookieSyncManager
  * JD-Core Version:    0.7.0.1
  */

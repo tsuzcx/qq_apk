@@ -21,8 +21,12 @@ public class RelationVipGrayProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       RelationVipGrayBean localRelationVipGrayBean = RelationVipGrayBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("RelationVipGrayProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("RelationVipGrayProcessor", 2, localStringBuilder.toString());
       }
       return localRelationVipGrayBean;
     }
@@ -65,7 +69,7 @@ public class RelationVipGrayProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.RelationVipGrayProcessor
  * JD-Core Version:    0.7.0.1
  */

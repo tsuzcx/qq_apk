@@ -9,26 +9,21 @@ public final class e
   
   public static boolean checkPermission(Context paramContext, String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (paramContext != null) {
-      bool1 = bool2;
-    }
-    try
-    {
-      if (paramContext.getApplicationContext() != null)
+      try
       {
-        int i = paramContext.getApplicationContext().checkCallingOrSelfPermission(paramString);
-        bool1 = bool2;
-        if (i == 0) {
-          bool1 = true;
+        if (paramContext.getApplicationContext() != null)
+        {
+          int i = paramContext.getApplicationContext().checkCallingOrSelfPermission(paramString);
+          if (i == 0) {
+            return true;
+          }
         }
       }
-      return bool1;
-    }
-    catch (Throwable paramContext)
-    {
-      AdLog.i("AdPermissionUtil", "checkPermission", paramContext);
+      catch (Throwable paramContext)
+      {
+        AdLog.i("AdPermissionUtil", "checkPermission", paramContext);
+      }
     }
     return false;
   }

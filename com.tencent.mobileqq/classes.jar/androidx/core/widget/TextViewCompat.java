@@ -101,7 +101,7 @@ public final class TextViewCompat
   public static ColorStateList getCompoundDrawableTintList(@NonNull TextView paramTextView)
   {
     Preconditions.checkNotNull(paramTextView);
-    if (Build.VERSION.SDK_INT >= 23) {
+    if (Build.VERSION.SDK_INT >= 24) {
       return paramTextView.getCompoundDrawableTintList();
     }
     if ((paramTextView instanceof TintableCompoundDrawablesView)) {
@@ -114,7 +114,7 @@ public final class TextViewCompat
   public static PorterDuff.Mode getCompoundDrawableTintMode(@NonNull TextView paramTextView)
   {
     Preconditions.checkNotNull(paramTextView);
-    if (Build.VERSION.SDK_INT >= 23) {
+    if (Build.VERSION.SDK_INT >= 24) {
       return paramTextView.getCompoundDrawableTintMode();
     }
     if ((paramTextView instanceof TintableCompoundDrawablesView)) {
@@ -126,26 +126,25 @@ public final class TextViewCompat
   @NonNull
   public static Drawable[] getCompoundDrawablesRelative(@NonNull TextView paramTextView)
   {
-    int i = 1;
     if (Build.VERSION.SDK_INT >= 18) {
       return paramTextView.getCompoundDrawablesRelative();
     }
     if (Build.VERSION.SDK_INT >= 17)
     {
-      if (paramTextView.getLayoutDirection() == 1) {}
-      for (;;)
-      {
-        paramTextView = paramTextView.getCompoundDrawables();
-        if (i != 0)
-        {
-          Object localObject1 = paramTextView[2];
-          Object localObject2 = paramTextView[0];
-          paramTextView[0] = localObject1;
-          paramTextView[2] = localObject2;
-        }
-        return paramTextView;
+      int j = paramTextView.getLayoutDirection();
+      int i = 1;
+      if (j != 1) {
         i = 0;
       }
+      paramTextView = paramTextView.getCompoundDrawables();
+      if (i != 0)
+      {
+        Object localObject1 = paramTextView[2];
+        Object localObject2 = paramTextView[0];
+        paramTextView[0] = localObject1;
+        paramTextView[2] = localObject2;
+      }
+      return paramTextView;
     }
     return paramTextView.getCompoundDrawables();
   }
@@ -170,15 +169,17 @@ public final class TextViewCompat
       sMaxModeField = retrieveField("mMaxMode");
       sMaxModeFieldFetched = true;
     }
-    if ((sMaxModeField != null) && (retrieveIntFromField(sMaxModeField, paramTextView) == 1))
+    Field localField = sMaxModeField;
+    if ((localField != null) && (retrieveIntFromField(localField, paramTextView) == 1))
     {
       if (!sMaximumFieldFetched)
       {
         sMaximumField = retrieveField("mMaximum");
         sMaximumFieldFetched = true;
       }
-      if (sMaximumField != null) {
-        return retrieveIntFromField(sMaximumField, paramTextView);
+      localField = sMaximumField;
+      if (localField != null) {
+        return retrieveIntFromField(localField, paramTextView);
       }
     }
     return -1;
@@ -194,15 +195,17 @@ public final class TextViewCompat
       sMinModeField = retrieveField("mMinMode");
       sMinModeFieldFetched = true;
     }
-    if ((sMinModeField != null) && (retrieveIntFromField(sMinModeField, paramTextView) == 1))
+    Field localField = sMinModeField;
+    if ((localField != null) && (retrieveIntFromField(localField, paramTextView) == 1))
     {
       if (!sMinimumFieldFetched)
       {
         sMinimumField = retrieveField("mMinimum");
         sMinimumFieldFetched = true;
       }
-      if (sMinimumField != null) {
-        return retrieveIntFromField(sMinimumField, paramTextView);
+      localField = sMinimumField;
+      if (localField != null) {
+        return retrieveIntFromField(localField, paramTextView);
       }
     }
     return -1;
@@ -211,68 +214,73 @@ public final class TextViewCompat
   @RequiresApi(18)
   private static int getTextDirection(@NonNull TextDirectionHeuristic paramTextDirectionHeuristic)
   {
-    if (paramTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_RTL) {}
-    do
-    {
-      do
-      {
-        return 1;
-      } while (paramTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_LTR);
-      if (paramTextDirectionHeuristic == TextDirectionHeuristics.ANYRTL_LTR) {
-        return 2;
-      }
-      if (paramTextDirectionHeuristic == TextDirectionHeuristics.LTR) {
-        return 3;
-      }
-      if (paramTextDirectionHeuristic == TextDirectionHeuristics.RTL) {
-        return 4;
-      }
-      if (paramTextDirectionHeuristic == TextDirectionHeuristics.LOCALE) {
-        return 5;
-      }
-      if (paramTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_LTR) {
-        return 6;
-      }
-    } while (paramTextDirectionHeuristic != TextDirectionHeuristics.FIRSTSTRONG_RTL);
-    return 7;
+    if (paramTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_RTL) {
+      return 1;
+    }
+    if (paramTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_LTR) {
+      return 1;
+    }
+    if (paramTextDirectionHeuristic == TextDirectionHeuristics.ANYRTL_LTR) {
+      return 2;
+    }
+    if (paramTextDirectionHeuristic == TextDirectionHeuristics.LTR) {
+      return 3;
+    }
+    if (paramTextDirectionHeuristic == TextDirectionHeuristics.RTL) {
+      return 4;
+    }
+    if (paramTextDirectionHeuristic == TextDirectionHeuristics.LOCALE) {
+      return 5;
+    }
+    if (paramTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_LTR) {
+      return 6;
+    }
+    if (paramTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_RTL) {
+      return 7;
+    }
+    return 1;
   }
   
   @RequiresApi(18)
   private static TextDirectionHeuristic getTextDirectionHeuristic(@NonNull TextView paramTextView)
   {
-    int i = 1;
     if ((paramTextView.getTransformationMethod() instanceof PasswordTransformationMethod)) {
       return TextDirectionHeuristics.LTR;
     }
-    if ((Build.VERSION.SDK_INT >= 28) && ((paramTextView.getInputType() & 0xF) == 3))
+    int j = Build.VERSION.SDK_INT;
+    int i = 0;
+    if ((j >= 28) && ((paramTextView.getInputType() & 0xF) == 3))
     {
       i = Character.getDirectionality(android.icu.text.DecimalFormatSymbols.getInstance(paramTextView.getTextLocale()).getDigitStrings()[0].codePointAt(0));
-      if ((i == 1) || (i == 2)) {
-        return TextDirectionHeuristics.RTL;
+      if ((i != 1) && (i != 2)) {
+        return TextDirectionHeuristics.LTR;
       }
-      return TextDirectionHeuristics.LTR;
+      return TextDirectionHeuristics.RTL;
     }
-    if (paramTextView.getLayoutDirection() == 1) {}
-    for (;;)
+    if (paramTextView.getLayoutDirection() == 1) {
+      i = 1;
+    }
+    switch (paramTextView.getTextDirection())
     {
-      switch (paramTextView.getTextDirection())
-      {
-      default: 
-        if (i == 0) {
-          break label137;
-        }
+    default: 
+      if (i != 0) {
         return TextDirectionHeuristics.FIRSTSTRONG_RTL;
-        i = 0;
       }
+      break;
+    case 7: 
+      return TextDirectionHeuristics.FIRSTSTRONG_RTL;
+    case 6: 
+      return TextDirectionHeuristics.FIRSTSTRONG_LTR;
+    case 5: 
+      return TextDirectionHeuristics.LOCALE;
+    case 4: 
+      return TextDirectionHeuristics.RTL;
+    case 3: 
+      return TextDirectionHeuristics.LTR;
+    case 2: 
+      return TextDirectionHeuristics.ANYRTL_LTR;
     }
-    label137:
     return TextDirectionHeuristics.FIRSTSTRONG_LTR;
-    return TextDirectionHeuristics.ANYRTL_LTR;
-    return TextDirectionHeuristics.LTR;
-    return TextDirectionHeuristics.RTL;
-    return TextDirectionHeuristics.LOCALE;
-    return TextDirectionHeuristics.FIRSTSTRONG_LTR;
-    return TextDirectionHeuristics.FIRSTSTRONG_RTL;
   }
   
   @NonNull
@@ -295,19 +303,26 @@ public final class TextViewCompat
   
   private static Field retrieveField(String paramString)
   {
-    Object localObject = null;
+    Object localObject1 = null;
     try
     {
-      Field localField = TextView.class.getDeclaredField(paramString);
-      localObject = localField;
-      localField.setAccessible(true);
-      return localField;
+      localObject2 = TextView.class.getDeclaredField(paramString);
+      localObject1 = localObject2;
+      ((Field)localObject2).setAccessible(true);
+      return localObject2;
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      Log.e("TextViewCompat", "Could not retrieve " + paramString + " field.");
+      Object localObject2;
+      label18:
+      break label18;
     }
-    return localObject;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("Could not retrieve ");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(" field.");
+    Log.e("TextViewCompat", ((StringBuilder)localObject2).toString());
+    return localObject1;
   }
   
   private static int retrieveIntFromField(Field paramField, TextView paramTextView)
@@ -319,66 +334,77 @@ public final class TextViewCompat
     }
     catch (IllegalAccessException paramTextView)
     {
-      Log.d("TextViewCompat", "Could not retrieve value of " + paramField.getName() + " field.");
+      label8:
+      break label8;
     }
+    paramTextView = new StringBuilder();
+    paramTextView.append("Could not retrieve value of ");
+    paramTextView.append(paramField.getName());
+    paramTextView.append(" field.");
+    Log.d("TextViewCompat", paramTextView.toString());
     return -1;
   }
   
   public static void setAutoSizeTextTypeUniformWithConfiguration(@NonNull TextView paramTextView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (Build.VERSION.SDK_INT >= 27) {
+    if (Build.VERSION.SDK_INT >= 27)
+    {
       paramTextView.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-    while (!(paramTextView instanceof AutoSizeableTextView)) {
       return;
     }
-    ((AutoSizeableTextView)paramTextView).setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
+    if ((paramTextView instanceof AutoSizeableTextView)) {
+      ((AutoSizeableTextView)paramTextView).setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
   }
   
   public static void setAutoSizeTextTypeUniformWithPresetSizes(@NonNull TextView paramTextView, @NonNull int[] paramArrayOfInt, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 27) {
+    if (Build.VERSION.SDK_INT >= 27)
+    {
       paramTextView.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
-    }
-    while (!(paramTextView instanceof AutoSizeableTextView)) {
       return;
     }
-    ((AutoSizeableTextView)paramTextView).setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
+    if ((paramTextView instanceof AutoSizeableTextView)) {
+      ((AutoSizeableTextView)paramTextView).setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
+    }
   }
   
   public static void setAutoSizeTextTypeWithDefaults(@NonNull TextView paramTextView, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 27) {
+    if (Build.VERSION.SDK_INT >= 27)
+    {
       paramTextView.setAutoSizeTextTypeWithDefaults(paramInt);
-    }
-    while (!(paramTextView instanceof AutoSizeableTextView)) {
       return;
     }
-    ((AutoSizeableTextView)paramTextView).setAutoSizeTextTypeWithDefaults(paramInt);
+    if ((paramTextView instanceof AutoSizeableTextView)) {
+      ((AutoSizeableTextView)paramTextView).setAutoSizeTextTypeWithDefaults(paramInt);
+    }
   }
   
   public static void setCompoundDrawableTintList(@NonNull TextView paramTextView, @Nullable ColorStateList paramColorStateList)
   {
     Preconditions.checkNotNull(paramTextView);
-    if (Build.VERSION.SDK_INT >= 23) {
+    if (Build.VERSION.SDK_INT >= 24)
+    {
       paramTextView.setCompoundDrawableTintList(paramColorStateList);
-    }
-    while (!(paramTextView instanceof TintableCompoundDrawablesView)) {
       return;
     }
-    ((TintableCompoundDrawablesView)paramTextView).setSupportCompoundDrawablesTintList(paramColorStateList);
+    if ((paramTextView instanceof TintableCompoundDrawablesView)) {
+      ((TintableCompoundDrawablesView)paramTextView).setSupportCompoundDrawablesTintList(paramColorStateList);
+    }
   }
   
   public static void setCompoundDrawableTintMode(@NonNull TextView paramTextView, @Nullable PorterDuff.Mode paramMode)
   {
     Preconditions.checkNotNull(paramTextView);
-    if (Build.VERSION.SDK_INT >= 23) {
+    if (Build.VERSION.SDK_INT >= 24)
+    {
       paramTextView.setCompoundDrawableTintMode(paramMode);
-    }
-    while (!(paramTextView instanceof TintableCompoundDrawablesView)) {
       return;
     }
-    ((TintableCompoundDrawablesView)paramTextView).setSupportCompoundDrawablesTintMode(paramMode);
+    if ((paramTextView instanceof TintableCompoundDrawablesView)) {
+      ((TintableCompoundDrawablesView)paramTextView).setSupportCompoundDrawablesTintMode(paramMode);
+    }
   }
   
   public static void setCompoundDrawablesRelative(@NonNull TextView paramTextView, @Nullable Drawable paramDrawable1, @Nullable Drawable paramDrawable2, @Nullable Drawable paramDrawable3, @Nullable Drawable paramDrawable4)
@@ -390,32 +416,22 @@ public final class TextViewCompat
     }
     if (Build.VERSION.SDK_INT >= 17)
     {
-      int i;
-      Drawable localDrawable;
-      if (paramTextView.getLayoutDirection() == 1)
-      {
-        i = 1;
-        if (i == 0) {
-          break label67;
-        }
-        localDrawable = paramDrawable3;
-        label45:
-        if (i == 0) {
-          break label73;
-        }
-      }
-      for (;;)
-      {
-        paramTextView.setCompoundDrawables(localDrawable, paramDrawable2, paramDrawable1, paramDrawable4);
-        return;
+      int j = paramTextView.getLayoutDirection();
+      int i = 1;
+      if (j != 1) {
         i = 0;
-        break;
-        label67:
+      }
+      Drawable localDrawable;
+      if (i != 0) {
+        localDrawable = paramDrawable3;
+      } else {
         localDrawable = paramDrawable1;
-        break label45;
-        label73:
+      }
+      if (i == 0) {
         paramDrawable1 = paramDrawable3;
       }
+      paramTextView.setCompoundDrawables(localDrawable, paramDrawable2, paramDrawable1, paramDrawable4);
+      return;
     }
     paramTextView.setCompoundDrawables(paramDrawable1, paramDrawable2, paramDrawable3, paramDrawable4);
   }
@@ -429,32 +445,21 @@ public final class TextViewCompat
     }
     if (Build.VERSION.SDK_INT >= 17)
     {
-      int i;
-      int j;
-      if (paramTextView.getLayoutDirection() == 1)
-      {
-        i = 1;
-        if (i == 0) {
-          break label67;
-        }
-        j = paramInt3;
-        label45:
-        if (i == 0) {
-          break label73;
-        }
-      }
-      for (;;)
-      {
-        paramTextView.setCompoundDrawablesWithIntrinsicBounds(j, paramInt2, paramInt1, paramInt4);
-        return;
+      int j = paramTextView.getLayoutDirection();
+      int i = 1;
+      if (j != 1) {
         i = 0;
-        break;
-        label67:
+      }
+      if (i != 0) {
+        j = paramInt3;
+      } else {
         j = paramInt1;
-        break label45;
-        label73:
+      }
+      if (i == 0) {
         paramInt1 = paramInt3;
       }
+      paramTextView.setCompoundDrawablesWithIntrinsicBounds(j, paramInt2, paramInt1, paramInt4);
+      return;
     }
     paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -468,32 +473,22 @@ public final class TextViewCompat
     }
     if (Build.VERSION.SDK_INT >= 17)
     {
-      int i;
-      Drawable localDrawable;
-      if (paramTextView.getLayoutDirection() == 1)
-      {
-        i = 1;
-        if (i == 0) {
-          break label67;
-        }
-        localDrawable = paramDrawable3;
-        label45:
-        if (i == 0) {
-          break label73;
-        }
-      }
-      for (;;)
-      {
-        paramTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, paramDrawable2, paramDrawable1, paramDrawable4);
-        return;
+      int j = paramTextView.getLayoutDirection();
+      int i = 1;
+      if (j != 1) {
         i = 0;
-        break;
-        label67:
+      }
+      Drawable localDrawable;
+      if (i != 0) {
+        localDrawable = paramDrawable3;
+      } else {
         localDrawable = paramDrawable1;
-        break label45;
-        label73:
+      }
+      if (i == 0) {
         paramDrawable1 = paramDrawable3;
       }
+      paramTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, paramDrawable2, paramDrawable1, paramDrawable4);
+      return;
     }
     paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramDrawable1, paramDrawable2, paramDrawable3, paramDrawable4);
   }
@@ -506,19 +501,20 @@ public final class TextViewCompat
   public static void setFirstBaselineToTopHeight(@NonNull TextView paramTextView, @IntRange(from=0L) @Px int paramInt)
   {
     Preconditions.checkArgumentNonnegative(paramInt);
-    if (Build.VERSION.SDK_INT >= 28) {
-      paramTextView.setFirstBaselineToTopHeight(paramInt);
-    }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 28)
     {
+      paramTextView.setFirstBaselineToTopHeight(paramInt);
       return;
-      Paint.FontMetricsInt localFontMetricsInt = paramTextView.getPaint().getFontMetricsInt();
-      if ((Build.VERSION.SDK_INT < 16) || (paramTextView.getIncludeFontPadding())) {}
-      for (int i = localFontMetricsInt.top; paramInt > Math.abs(i); i = localFontMetricsInt.ascent)
-      {
-        paramTextView.setPadding(paramTextView.getPaddingLeft(), i + paramInt, paramTextView.getPaddingRight(), paramTextView.getPaddingBottom());
-        return;
-      }
+    }
+    Paint.FontMetricsInt localFontMetricsInt = paramTextView.getPaint().getFontMetricsInt();
+    int i;
+    if ((Build.VERSION.SDK_INT >= 16) && (!paramTextView.getIncludeFontPadding())) {
+      i = localFontMetricsInt.ascent;
+    } else {
+      i = localFontMetricsInt.top;
+    }
+    if (paramInt > Math.abs(i)) {
+      paramTextView.setPadding(paramTextView.getPaddingLeft(), paramInt + i, paramTextView.getPaddingRight(), paramTextView.getPaddingBottom());
     }
   }
   
@@ -526,13 +522,14 @@ public final class TextViewCompat
   {
     Preconditions.checkArgumentNonnegative(paramInt);
     Paint.FontMetricsInt localFontMetricsInt = paramTextView.getPaint().getFontMetricsInt();
-    if ((Build.VERSION.SDK_INT < 16) || (paramTextView.getIncludeFontPadding())) {}
-    for (int i = localFontMetricsInt.bottom;; i = localFontMetricsInt.descent)
-    {
-      if (paramInt > Math.abs(i)) {
-        paramTextView.setPadding(paramTextView.getPaddingLeft(), paramTextView.getPaddingTop(), paramTextView.getPaddingRight(), paramInt - i);
-      }
-      return;
+    int i;
+    if ((Build.VERSION.SDK_INT >= 16) && (!paramTextView.getIncludeFontPadding())) {
+      i = localFontMetricsInt.descent;
+    } else {
+      i = localFontMetricsInt.bottom;
+    }
+    if (paramInt > Math.abs(i)) {
+      paramTextView.setPadding(paramTextView.getPaddingLeft(), paramTextView.getPaddingTop(), paramTextView.getPaddingRight(), paramInt - i);
     }
   }
   
@@ -552,10 +549,12 @@ public final class TextViewCompat
       paramTextView.setText(paramPrecomputedTextCompat.getPrecomputedText());
       return;
     }
-    if (!getTextMetricsParams(paramTextView).equalsWithoutTextDirection(paramPrecomputedTextCompat.getParams())) {
-      throw new IllegalArgumentException("Given text can not be applied to TextView.");
+    if (getTextMetricsParams(paramTextView).equalsWithoutTextDirection(paramPrecomputedTextCompat.getParams()))
+    {
+      paramTextView.setText(paramPrecomputedTextCompat);
+      return;
     }
-    paramTextView.setText(paramPrecomputedTextCompat);
+    throw new IllegalArgumentException("Given text can not be applied to TextView.");
   }
   
   public static void setTextAppearance(@NonNull TextView paramTextView, @StyleRes int paramInt)
@@ -592,15 +591,19 @@ public final class TextViewCompat
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   public static ActionMode.Callback wrapCustomSelectionActionModeCallback(@NonNull TextView paramTextView, @NonNull ActionMode.Callback paramCallback)
   {
-    if ((Build.VERSION.SDK_INT < 26) || (Build.VERSION.SDK_INT > 27) || ((paramCallback instanceof TextViewCompat.OreoCallback))) {
-      return paramCallback;
+    if ((Build.VERSION.SDK_INT >= 26) && (Build.VERSION.SDK_INT <= 27))
+    {
+      if ((paramCallback instanceof TextViewCompat.OreoCallback)) {
+        return paramCallback;
+      }
+      return new TextViewCompat.OreoCallback(paramCallback, paramTextView);
     }
-    return new TextViewCompat.OreoCallback(paramCallback, paramTextView);
+    return paramCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.widget.TextViewCompat
  * JD-Core Version:    0.7.0.1
  */

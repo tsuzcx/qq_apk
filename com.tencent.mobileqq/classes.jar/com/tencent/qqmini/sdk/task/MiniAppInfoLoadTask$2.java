@@ -16,13 +16,14 @@ class MiniAppInfoLoadTask$2
     {
       JSONObject localJSONObject = paramJSONObject.optJSONObject("mini_app_info_data_json");
       paramJSONObject = (byte[])paramJSONObject.opt("mini_app_info_data_pb");
-      MiniAppInfoLoadTask.access$200(this.this$0, localJSONObject, paramJSONObject, this.val$envVersion, this.val$cacheProxy, MiniAppInfoLoadTask.access$100(this.this$0).appId, this.val$finalEntryPath);
+      MiniAppInfoLoadTask localMiniAppInfoLoadTask = this.this$0;
+      MiniAppInfoLoadTask.access$200(localMiniAppInfoLoadTask, localJSONObject, paramJSONObject, this.val$envVersion, this.val$cacheProxy, MiniAppInfoLoadTask.access$100(localMiniAppInfoLoadTask).appId, this.val$finalEntryPath);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.MiniAppInfoLoadTask.2
  * JD-Core Version:    0.7.0.1
  */

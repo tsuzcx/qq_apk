@@ -9,12 +9,16 @@ final class PublicAccountEventReport$12
   
   public void run()
   {
-    ReportController.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A306", "0X800A306", 0, 0, "", "", this.jdField_a_of_type_Long + "", "");
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("");
+    ReportController.b(null, "dc00898", "", str, "0X800A306", "0X800A306", 0, 0, "", "", localStringBuilder.toString(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport.12
  * JD-Core Version:    0.7.0.1
  */

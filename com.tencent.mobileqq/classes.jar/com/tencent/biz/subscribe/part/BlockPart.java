@@ -71,8 +71,9 @@ public class BlockPart
   protected void a(View paramView)
   {
     super.a(paramView);
-    if (this.jdField_a_of_type_Int != 0) {
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer = ((BlockContainer)paramView.findViewById(this.jdField_a_of_type_Int));
+    int i = this.jdField_a_of_type_Int;
+    if (i != 0) {
+      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer = ((BlockContainer)paramView.findViewById(i));
     }
     if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer == null) {
       this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer = a(paramView.getContext());
@@ -86,7 +87,8 @@ public class BlockPart
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer != null) && (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.a())) {
+    BlockContainer localBlockContainer = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer;
+    if ((localBlockContainer != null) && (localBlockContainer.a())) {
       return true;
     }
     return super.a();
@@ -136,7 +138,7 @@ public class BlockPart
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.BlockPart
  * JD-Core Version:    0.7.0.1
  */

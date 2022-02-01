@@ -22,14 +22,15 @@ public final class ex
     {
     default: 
       throw new IllegalStateException();
-    case 1: 
-      localObject = new ArrayList();
-      paramfe.a();
-      while (paramfe.e()) {
-        ((List)localObject).add(a(paramfe));
-      }
-      paramfe.b();
-      return localObject;
+    case 6: 
+      paramfe.k();
+      return null;
+    case 5: 
+      return Boolean.valueOf(paramfe.j());
+    case 4: 
+      return Double.valueOf(paramfe.l());
+    case 3: 
+      return paramfe.i();
     case 2: 
       localObject = new em();
       paramfe.c();
@@ -38,15 +39,14 @@ public final class ex
       }
       paramfe.d();
       return localObject;
-    case 3: 
-      return paramfe.i();
-    case 4: 
-      return Double.valueOf(paramfe.l());
-    case 5: 
-      return Boolean.valueOf(paramfe.j());
     }
-    paramfe.k();
-    return null;
+    localObject = new ArrayList();
+    paramfe.a();
+    while (paramfe.e()) {
+      ((List)localObject).add(a(paramfe));
+    }
+    paramfe.b();
+    return localObject;
   }
   
   public final void a(fg paramfg, Object paramObject)
@@ -68,7 +68,7 @@ public final class ex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ex
  * JD-Core Version:    0.7.0.1
  */

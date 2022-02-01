@@ -10,7 +10,14 @@ public class WriteTogetherOidbObserver
 {
   public void a(int paramInt, boolean paramBoolean, CreateDocParam paramCreateDocParam)
   {
-    QLog.d("WriteTogetherOidbObserver", 4, "type:" + paramInt + ", isSuccess: " + paramBoolean + ", data: " + paramCreateDocParam.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("type:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", isSuccess: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", data: ");
+    localStringBuilder.append(paramCreateDocParam.a);
+    QLog.d("WriteTogetherOidbObserver", 4, localStringBuilder.toString());
     WTConstants.d = paramCreateDocParam.a;
   }
   
@@ -33,41 +40,69 @@ public class WriteTogetherOidbObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QLog.d("WriteTogetherOidbObserver", 4, "type: " + paramInt + ", isSuccess: " + paramBoolean + ", data: " + paramObject);
-    switch (paramInt)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("type: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", isSuccess: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", data: ");
+    localStringBuilder.append(paramObject);
+    QLog.d("WriteTogetherOidbObserver", 4, localStringBuilder.toString());
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4) {
+              return;
+            }
+            a(paramInt, paramBoolean, (Object[])paramObject);
+            return;
+          }
+          a(paramBoolean, paramObject);
+          return;
+        }
+        if ((paramObject instanceof OpenDocParam))
+        {
+          a(paramInt, paramBoolean, (OpenDocParam)paramObject);
+          return;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("data is not OpenDocParam: ");
+        localStringBuilder.append(paramObject);
+        QLog.d("WriteTogetherOidbObserver", 4, localStringBuilder.toString());
+        return;
+      }
       if ((paramObject instanceof CreateDocParam))
       {
-        QLog.d("WriteTogetherOidbObserver", 4, "receive pad id: " + ((CreateDocParam)paramObject).a);
-        a(paramInt, paramBoolean, (CreateDocParam)paramObject);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("receive pad id: ");
+        paramObject = (CreateDocParam)paramObject;
+        localStringBuilder.append(paramObject.a);
+        QLog.d("WriteTogetherOidbObserver", 4, localStringBuilder.toString());
+        a(paramInt, paramBoolean, paramObject);
         return;
       }
-      QLog.d("WriteTogetherOidbObserver", 4, "data is not String: " + paramObject);
-      return;
-    case 2: 
-      if ((paramObject instanceof OpenDocParam))
-      {
-        a(paramInt, paramBoolean, (OpenDocParam)paramObject);
-        return;
-      }
-      QLog.d("WriteTogetherOidbObserver", 4, "data is not OpenDocParam: " + paramObject);
-      return;
-    case 3: 
-      a(paramBoolean, paramObject);
-      return;
-    case 4: 
-      a(paramInt, paramBoolean, (Object[])paramObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("data is not String: ");
+      localStringBuilder.append(paramObject);
+      QLog.d("WriteTogetherOidbObserver", 4, localStringBuilder.toString());
       return;
     }
-    QLog.d("WriteTogetherOidbObserver", 4, "error. isSuccess: " + paramBoolean + ", data: " + paramObject);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("error. isSuccess: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", data: ");
+    localStringBuilder.append(paramObject);
+    QLog.d("WriteTogetherOidbObserver", 4, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.WriteTogetherOidbObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -21,6 +21,7 @@ public class PkCJOperationData
   public boolean mavClose = false;
   public int scene = 0;
   public int sponsorId;
+  public String waitingBgUrl;
   
   public static PkCJOperationData convertFromPB(AvGamePkManager.PKOperationRsp paramPKOperationRsp)
   {
@@ -35,12 +36,13 @@ public class PkCJOperationData
     localPkCJOperationData.sponsorId = paramPKOperationRsp.sponsor_id.get();
     localPkCJOperationData.curRound = paramPKOperationRsp.curRound.get();
     localPkCJOperationData.closeRealtimeReport = paramPKOperationRsp.close_realtime_report.get();
+    localPkCJOperationData.waitingBgUrl = paramPKOperationRsp.waiting_background_url.get();
     return localPkCJOperationData;
   }
   
   public boolean hasAVRoom()
   {
-    return !this.mavClose;
+    return this.mavClose ^ true;
   }
   
   public boolean isCJ()
@@ -52,15 +54,31 @@ public class PkCJOperationData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{ scene=").append(this.scene).append(" mavClose=").append(this.mavClose).append(" bizTitlePicIdx=").append(this.bizTitlePicIdx).append(" bizTitelPicUrl=").append(this.bizTitelPicUrl);
-    localStringBuilder.append(" biaAdWording=").append(this.biaAdWording).append(" biaAdTip=").append(this.biaAdTip).append(" answerTip=").append(this.answerTip).append(" curRound=").append(this.curRound);
-    localStringBuilder.append(" closeRealtimeReport=").append(this.closeRealtimeReport).append("}");
+    localStringBuilder.append("{ scene=");
+    localStringBuilder.append(this.scene);
+    localStringBuilder.append(" mavClose=");
+    localStringBuilder.append(this.mavClose);
+    localStringBuilder.append(" bizTitlePicIdx=");
+    localStringBuilder.append(this.bizTitlePicIdx);
+    localStringBuilder.append(" bizTitelPicUrl=");
+    localStringBuilder.append(this.bizTitelPicUrl);
+    localStringBuilder.append(" biaAdWording=");
+    localStringBuilder.append(this.biaAdWording);
+    localStringBuilder.append(" biaAdTip=");
+    localStringBuilder.append(this.biaAdTip);
+    localStringBuilder.append(" answerTip=");
+    localStringBuilder.append(this.answerTip);
+    localStringBuilder.append(" curRound=");
+    localStringBuilder.append(this.curRound);
+    localStringBuilder.append(" closeRealtimeReport=");
+    localStringBuilder.append(this.closeRealtimeReport);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.PkCJOperationData
  * JD-Core Version:    0.7.0.1
  */

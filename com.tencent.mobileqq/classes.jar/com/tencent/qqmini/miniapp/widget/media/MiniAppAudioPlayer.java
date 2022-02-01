@@ -8,6 +8,7 @@ import android.media.MediaPlayer.OnErrorListener;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.media.MediaPlayer.OnSeekCompleteListener;
 import android.os.Handler;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.ScreenOffOnListener;
@@ -48,29 +49,30 @@ public class MiniAppAudioPlayer
   public MiniAppAudioPlayer(Handler paramHandler)
   {
     this.mUiHandler = paramHandler;
-    if (this.mPlayer != null) {
-      if (this.mPlayer.isPlaying()) {
+    paramHandler = this.mPlayer;
+    if (paramHandler != null)
+    {
+      if (paramHandler.isPlaying()) {
         stop();
       }
     }
-    for (;;)
-    {
-      ScreenOffOnListener.getInstance().registListener(new MiniAppAudioPlayer.3(this));
-      return;
+    else {
       initMediaPlayer();
     }
+    ScreenOffOnListener.getInstance().registListener(new MiniAppAudioPlayer.3(this));
   }
   
   private void handleCompletion()
   {
-    if (this.mPlayer != null) {
-      this.mDuration = this.mPlayer.getDuration();
+    MediaPlayer localMediaPlayer = this.mPlayer;
+    if (localMediaPlayer != null) {
+      this.mDuration = localMediaPlayer.getDuration();
     }
   }
   
   private void initMediaPlayer()
   {
-    this.mPlayer = new MediaPlayer();
+    this.mPlayer = new ReportMediaPlayer();
     this.mPlayer.setOnPreparedListener(this);
     this.mPlayer.setOnCompletionListener(this);
     this.mPlayer.setOnErrorListener(this);
@@ -87,24 +89,34 @@ public class MiniAppAudioPlayer
     }
     catch (Exception localException)
     {
-      QMLog.e("MiniAppAudioPlayer", "muteAudioFocus....." + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("muteAudioFocus.....");
+      localStringBuilder.append(localException);
+      QMLog.e("MiniAppAudioPlayer", localStringBuilder.toString());
     }
   }
   
   private void notifyPlayerError(int paramInt1, int paramInt2)
   {
-    QMLog.d("MiniAppAudioPlayer", "notifyPlayerError.....what..." + paramInt1 + " extra..." + paramInt2);
-    if (this.mPlayerListener != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("notifyPlayerError.....what...");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" extra...");
+    ((StringBuilder)localObject).append(paramInt2);
+    QMLog.d("MiniAppAudioPlayer", ((StringBuilder)localObject).toString());
+    localObject = this.mPlayerListener;
+    if (localObject != null)
     {
-      this.mPlayerListener.onError(paramInt1, paramInt2);
+      ((MiniAppAudioPlayer.AudioPlayerListener)localObject).onError(paramInt1, paramInt2);
       notifyPlayerStateChange(6);
     }
   }
   
   private void notifyPlayerProgress(int paramInt)
   {
-    if (this.mPlayerListener != null) {
-      this.mPlayerListener.onPlayerProgress(this.mSrc, this.mDuration, paramInt);
+    MiniAppAudioPlayer.AudioPlayerListener localAudioPlayerListener = this.mPlayerListener;
+    if (localAudioPlayerListener != null) {
+      localAudioPlayerListener.onPlayerProgress(this.mSrc, this.mDuration, paramInt);
     }
   }
   
@@ -127,36 +139,40 @@ public class MiniAppAudioPlayer
   
   private void resetMediaPlayer()
   {
-    if (this.mPlayer != null) {}
-    try
-    {
-      this.mPlayer.reset();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QMLog.e("MiniAppAudioPlayer", "resetMediaPlayer....." + localException);
+    MediaPlayer localMediaPlayer = this.mPlayer;
+    if (localMediaPlayer != null) {
+      try
+      {
+        localMediaPlayer.reset();
+        return;
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("resetMediaPlayer.....");
+        localStringBuilder.append(localException);
+        QMLog.e("MiniAppAudioPlayer", localStringBuilder.toString());
+      }
     }
   }
   
   public int getCurrentPosition()
   {
+    MediaPlayer localMediaPlayer = this.mPlayer;
     int j = 0;
     int i = j;
-    if (this.mPlayer != null) {}
-    try
-    {
-      i = Math.max(this.mPlayer.getCurrentPosition(), 0);
-      return Math.min(i, this.mDuration);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (localMediaPlayer != null) {
+      try
+      {
+        i = Math.max(localMediaPlayer.getCurrentPosition(), 0);
+      }
+      catch (Exception localException)
       {
         QMLog.w("MiniAppAudioPlayer", "getCurrentPosition: failed", localException);
         i = j;
       }
     }
+    return Math.min(i, this.mDuration);
   }
   
   public int getDuration()
@@ -192,7 +208,10 @@ public class MiniAppAudioPlayer
     }
     catch (Exception localException)
     {
-      QMLog.e("MiniAppAudioPlayer", "mPlayer.isPlaying exception. " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mPlayer.isPlaying exception. ");
+      localStringBuilder.append(localException);
+      QMLog.e("MiniAppAudioPlayer", localStringBuilder.toString());
     }
     return false;
   }
@@ -204,9 +223,13 @@ public class MiniAppAudioPlayer
   
   public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    QMLog.d("MiniAppAudioPlayer", "onBufferingUpdate....." + paramInt);
-    if (this.mPlayerListener != null) {
-      this.mPlayerListener.onPlayerBufferingUpdate(paramInt);
+    paramMediaPlayer = new StringBuilder();
+    paramMediaPlayer.append("onBufferingUpdate.....");
+    paramMediaPlayer.append(paramInt);
+    QMLog.d("MiniAppAudioPlayer", paramMediaPlayer.toString());
+    paramMediaPlayer = this.mPlayerListener;
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.onPlayerBufferingUpdate(paramInt);
     }
   }
   
@@ -220,11 +243,17 @@ public class MiniAppAudioPlayer
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    QMLog.d("MiniAppAudioPlayer", "onError.....what..." + paramInt1 + " extra..." + paramInt2);
+    paramMediaPlayer = new StringBuilder();
+    paramMediaPlayer.append("onError.....what...");
+    paramMediaPlayer.append(paramInt1);
+    paramMediaPlayer.append(" extra...");
+    paramMediaPlayer.append(paramInt2);
+    QMLog.d("MiniAppAudioPlayer", paramMediaPlayer.toString());
     if (paramInt1 == 100)
     {
-      if (this.mPlayer != null) {
-        this.mPlayer.release();
+      paramMediaPlayer = this.mPlayer;
+      if (paramMediaPlayer != null) {
+        paramMediaPlayer.release();
       }
       initMediaPlayer();
     }
@@ -237,31 +266,36 @@ public class MiniAppAudioPlayer
   {
     QMLog.d("MiniAppAudioPlayer", "onPrepared.....");
     notifyPlayerStateChange(1);
-    if (this.preparedListener != null) {
-      this.preparedListener.onPrepared();
+    paramMediaPlayer = this.preparedListener;
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.onPrepared();
     }
-    if (this.mPlayer != null) {}
-    for (int i = this.mPlayer.getDuration();; i = 0)
-    {
-      this.mDuration = Math.max(i, 0);
-      return;
+    paramMediaPlayer = this.mPlayer;
+    int i;
+    if (paramMediaPlayer != null) {
+      i = paramMediaPlayer.getDuration();
+    } else {
+      i = 0;
     }
+    this.mDuration = Math.max(i, 0);
   }
   
   public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
     QMLog.d("MiniAppAudioPlayer", "onSeekComplete.....");
-    if (this.mPlayerListener != null) {
-      this.mPlayerListener.onPlayerSeek(true, getCurrentPosition());
+    paramMediaPlayer = this.mPlayerListener;
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.onPlayerSeek(true, getCurrentPosition());
     }
   }
   
   public void pause()
   {
     muteAudioFocus(false);
-    if (this.mPlayer != null)
+    MediaPlayer localMediaPlayer = this.mPlayer;
+    if (localMediaPlayer != null)
     {
-      this.mPlayer.pause();
+      localMediaPlayer.pause();
       notifyPlayerStateChange(3);
     }
   }
@@ -269,14 +303,16 @@ public class MiniAppAudioPlayer
   public void release()
   {
     muteAudioFocus(false);
-    if (this.mPlayer != null)
+    Object localObject = this.mPlayer;
+    if (localObject != null)
     {
-      this.mPlayer.release();
+      ((MediaPlayer)localObject).release();
       this.mPlayer = null;
       notifyPlayerProgress(0);
     }
-    if (this.mUiHandler != null) {
-      this.mUiHandler.removeCallbacks(this.mLoopingRunnable);
+    localObject = this.mUiHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacks(this.mLoopingRunnable);
     }
   }
   
@@ -294,7 +330,10 @@ public class MiniAppAudioPlayer
       }
       catch (Exception localException)
       {
-        QMLog.e("MiniAppAudioPlayer", "seekTo....." + localException);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("seekTo.....");
+        localStringBuilder.append(localException);
+        QMLog.e("MiniAppAudioPlayer", localStringBuilder.toString());
         return;
       }
     }
@@ -334,14 +373,18 @@ public class MiniAppAudioPlayer
     {
       resetMediaPlayer();
       notifyPlayerError(1, 0);
-      QMLog.e("MiniAppAudioPlayer", "setDataSource....." + paramString);
+      paramOnPreparedListener = new StringBuilder();
+      paramOnPreparedListener.append("setDataSource.....");
+      paramOnPreparedListener.append(paramString);
+      QMLog.e("MiniAppAudioPlayer", paramOnPreparedListener.toString());
     }
   }
   
   public void setLooping(boolean paramBoolean)
   {
-    if (this.mPlayer != null) {
-      this.mPlayer.setLooping(paramBoolean);
+    MediaPlayer localMediaPlayer = this.mPlayer;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.setLooping(paramBoolean);
     }
   }
   
@@ -354,34 +397,44 @@ public class MiniAppAudioPlayer
   {
     if ((this.mPlayer != null) && (paramFloat >= 0.0F) && (paramFloat <= 1.0F))
     {
-      QMLog.i("MiniAppAudioPlayer", "setVolume:" + paramFloat);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setVolume:");
+      localStringBuilder.append(paramFloat);
+      QMLog.i("MiniAppAudioPlayer", localStringBuilder.toString());
       this.mPlayer.setVolume(paramFloat, paramFloat);
     }
   }
   
   public void start()
   {
-    if ((this.mState == 1) || (this.mState == 3)) {}
-    try
-    {
-      ThreadManager.executeOnComputationThreadPool(this.mStartRunnable);
-      muteAudioFocus(this.audioFocus);
-      if (this.mUiHandler != null) {
-        this.mUiHandler.post(this.mLoopingRunnable);
+    int i = this.mState;
+    if ((i == 1) || (i == 3)) {
+      try
+      {
+        ThreadManager.executeOnComputationThreadPool(this.mStartRunnable);
+        muteAudioFocus(this.audioFocus);
+        if (this.mUiHandler != null)
+        {
+          this.mUiHandler.post(this.mLoopingRunnable);
+          return;
+        }
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QMLog.e("MiniAppAudioPlayer", "resetMediaPlayer....." + localThrowable);
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("resetMediaPlayer.....");
+        localStringBuilder.append(localThrowable);
+        QMLog.e("MiniAppAudioPlayer", localStringBuilder.toString());
+      }
     }
   }
   
   public void stop()
   {
-    if (this.mPlayer != null)
+    MediaPlayer localMediaPlayer = this.mPlayer;
+    if (localMediaPlayer != null)
     {
-      this.mPlayer.stop();
+      localMediaPlayer.stop();
       muteAudioFocus(false);
       notifyPlayerProgress(0);
       notifyPlayerStateChange(4);
@@ -390,7 +443,7 @@ public class MiniAppAudioPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.MiniAppAudioPlayer
  * JD-Core Version:    0.7.0.1
  */

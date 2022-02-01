@@ -16,18 +16,15 @@ public class WSNoticeJumpUtils
     if (paramstNotificationRsp == null) {
       return 102;
     }
-    switch (paramstNotificationRsp.type)
+    int i = paramstNotificationRsp.type;
+    if ((i != 1) && (i != 2) && (i != 3))
     {
-    case 4: 
-    case 5: 
-    default: 
-      return 102;
-    case 1: 
-    case 2: 
-    case 3: 
-      return 101;
+      if (i != 6) {
+        return 102;
+      }
+      return 103;
     }
-    return 103;
+    return 101;
   }
   
   private static stSchema a(stNotificationRsp paramstNotificationRsp)
@@ -60,9 +57,8 @@ public class WSNoticeJumpUtils
     if (!TextUtils.isEmpty(paramstNotificationRsp.scheme_url)) {
       return paramstNotificationRsp.scheme_url;
     }
-    switch (paramstNotificationRsp.type)
-    {
-    default: 
+    int i = paramstNotificationRsp.type;
+    if ((i != 1) && (i != 2) && (i != 3)) {
       return "weishi://main";
     }
     return "weishi://message";
@@ -70,16 +66,19 @@ public class WSNoticeJumpUtils
   
   public static void a(Context paramContext, stNotificationRsp paramstNotificationRsp, String paramString)
   {
-    if ((paramContext == null) || (paramstNotificationRsp == null)) {
-      return;
+    if (paramContext != null)
+    {
+      if (paramstNotificationRsp == null) {
+        return;
+      }
+      stSchema localstSchema = a(paramstNotificationRsp);
+      new WSStSchemaJumpManager(paramContext).a(localstSchema).a(true).a(a(paramstNotificationRsp)).a(new WSNoticeJumpUtils.1(paramstNotificationRsp, paramString)).c();
     }
-    stSchema localstSchema = a(paramstNotificationRsp);
-    new WSStSchemaJumpManager(paramContext).a(localstSchema).a(true).a(a(paramstNotificationRsp)).a(new WSNoticeJumpUtils.1(paramstNotificationRsp, paramString)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSNoticeJumpUtils
  * JD-Core Version:    0.7.0.1
  */

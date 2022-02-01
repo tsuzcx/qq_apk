@@ -12,17 +12,17 @@ class FloatWindowModule$6
   
   public void onChanged(@Nullable PlayOverEvent paramPlayOverEvent)
   {
-    if ((FloatWindowModule.access$000(this.this$0) != null) && (FloatWindowModule.access$000(this.this$0).isReallyShow()))
+    if ((this.this$0.floatWindowComponent != null) && (this.this$0.floatWindowComponent.isReallyShow()))
     {
-      FloatWindowModule.access$1002(this.this$0, true);
-      FloatWindowModule.access$000(this.this$0).dismiss(6);
-      FloatWindowModule.access$1100(this.this$0, true);
+      FloatWindowModule.access$902(this.this$0, true);
+      this.this$0.floatWindowComponent.dismiss(6);
+      FloatWindowModule.access$1000(this.this$0, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.FloatWindowModule.6
  * JD-Core Version:    0.7.0.1
  */

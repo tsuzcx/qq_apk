@@ -38,49 +38,48 @@ class ForwardPreviewTroopMemberController$TroopMemberRecyclerViewAdapter
     if (paramInt == ForwardPreviewTroopMemberController.b)
     {
       paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297134)));
+      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297116)));
       return new ForwardPreviewTroopMemberController.ViewHolder(paramViewGroup);
     }
-    return new ForwardPreviewTroopMemberController.TroopMemberViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559249, paramViewGroup, false));
+    return new ForwardPreviewTroopMemberController.TroopMemberViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559125, paramViewGroup, false));
   }
   
   public void a(ForwardPreviewTroopMemberController.ViewHolder paramViewHolder, int paramInt)
   {
-    if (paramViewHolder.a == ForwardPreviewTroopMemberController.b) {}
-    for (;;)
+    if ((paramViewHolder.a != ForwardPreviewTroopMemberController.b) && (paramViewHolder.a == ForwardPreviewTroopMemberController.a))
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      if (paramViewHolder.a == ForwardPreviewTroopMemberController.a)
-      {
-        int i = paramInt - 1;
-        if (i < 0) {
-          QLog.e("Forward.Preview.Dialog", 2, "type normal in wrong index");
-        }
-        Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((paramViewHolder instanceof ForwardPreviewTroopMemberController.TroopMemberViewHolder)) {
-          ((ForwardPreviewTroopMemberController.TroopMemberViewHolder)paramViewHolder).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder);
-        }
+      int i = paramInt - 1;
+      if (i < 0) {
+        QLog.e("Forward.Preview.Dialog", 2, "type normal in wrong index");
+      }
+      Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
+      if ((paramViewHolder instanceof ForwardPreviewTroopMemberController.TroopMemberViewHolder)) {
+        ((ForwardPreviewTroopMemberController.TroopMemberViewHolder)paramViewHolder).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder);
       }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public void a(List<Pair<String, String>> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() != 0)) {
+      return this.jdField_a_of_type_JavaUtilList.size() + 1;
     }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    return 0;
   }
   
   public int getItemViewType(int paramInt)
@@ -102,7 +101,7 @@ class ForwardPreviewTroopMemberController$TroopMemberRecyclerViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.TroopMemberRecyclerViewAdapter
  * JD-Core Version:    0.7.0.1
  */

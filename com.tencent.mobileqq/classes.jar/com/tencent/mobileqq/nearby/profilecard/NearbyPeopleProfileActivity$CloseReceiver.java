@@ -16,10 +16,14 @@ public class NearbyPeopleProfileActivity$CloseReceiver
     {
       paramContext = (NearbyPeopleProfileActivity)paramContext;
       paramIntent = paramIntent.getStringExtra("uin");
-      if ((!TextUtils.isEmpty(paramIntent)) && (Utils.a(paramIntent, paramContext.a)))
+      if ((!TextUtils.isEmpty(paramIntent)) && (Utils.a(paramIntent, paramContext.mUin)))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.", 2, "onReceive,close on uin:" + paramIntent);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onReceive,close on uin:");
+          localStringBuilder.append(paramIntent);
+          QLog.i("NearbyPeopleProfileActivity", 2, localStringBuilder.toString());
         }
         paramContext.finish();
       }
@@ -28,7 +32,7 @@ public class NearbyPeopleProfileActivity$CloseReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.CloseReceiver
  * JD-Core Version:    0.7.0.1
  */

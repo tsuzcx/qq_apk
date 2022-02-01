@@ -68,7 +68,7 @@ public class IliveMiniAIOEntryView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371624));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371244));
     b();
   }
   
@@ -88,9 +88,10 @@ public class IliveMiniAIOEntryView
     if (QLog.isColorLevel()) {
       QLog.d("MiniAIOEntryView", 2, "initMiniMsgUse");
     }
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    if (localActivity != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = new MiniMsgUser(this.jdField_a_of_type_AndroidAppActivity, localMiniMsgUserParam);
+      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = new MiniMsgUser(localActivity, localMiniMsgUserParam);
       this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.showEntry();
     }
   }
@@ -102,12 +103,13 @@ public class IliveMiniAIOEntryView
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.onForeground();
-      MiniMsgBusinessInfo localMiniMsgBusinessInfo = MiniMsgIPCClient.getInstance().getBusinessInfo(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.getParam().businessName);
-      if ((localMiniMsgBusinessInfo != null) && (localMiniMsgBusinessInfo.a)) {
-        show(localMiniMsgBusinessInfo.b);
+      ((MiniMsgUser)localObject).onForeground();
+      localObject = MiniMsgIPCClient.getInstance().getBusinessInfo(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.getParam().businessName);
+      if ((localObject != null) && (((MiniMsgBusinessInfo)localObject).a)) {
+        show(((MiniMsgBusinessInfo)localObject).b);
       }
     }
   }
@@ -120,16 +122,18 @@ public class IliveMiniAIOEntryView
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.onBackground();
+    MiniMsgUser localMiniMsgUser = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+    if (localMiniMsgUser != null) {
+      localMiniMsgUser.onBackground();
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null)
+    MiniMsgUser localMiniMsgUser = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+    if (localMiniMsgUser != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.destroy();
+      localMiniMsgUser.destroy();
       this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = null;
     }
     this.jdField_a_of_type_AndroidWidgetTextView = null;
@@ -138,15 +142,17 @@ public class IliveMiniAIOEntryView
   
   public void hide()
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    if (localRelativeLayout != null) {
+      localRelativeLayout.setVisibility(8);
     }
   }
   
   public void hideUnread()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setVisibility(8);
     }
   }
   
@@ -158,7 +164,7 @@ public class IliveMiniAIOEntryView
     if (this.jdField_a_of_type_ComTencentIliveBaseEventModuleEvent != null)
     {
       IliveLiteHelper.b();
-      this.jdField_a_of_type_ComTencentIliveBaseEventModuleEvent.post(new RoomCloseEvent((short)5));
+      this.jdField_a_of_type_ComTencentIliveBaseEventModuleEvent.post(new RoomCloseEvent((short)1005));
     }
   }
   
@@ -169,9 +175,10 @@ public class IliveMiniAIOEntryView
   
   public boolean show(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    if (localRelativeLayout != null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      localRelativeLayout.setVisibility(0);
       updateUnreadCount(paramInt, false);
     }
     return true;
@@ -182,27 +189,28 @@ public class IliveMiniAIOEntryView
   public void updateUnreadCount(int paramInt, boolean paramBoolean)
   {
     TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localTextView == null) {}
-    do
-    {
-      return;
-      String str = String.valueOf(paramInt);
-      if (paramInt > 99) {
-        str = "99+";
-      }
-      localTextView.setText(str);
-    } while (paramBoolean);
-    if (paramInt <= 0)
-    {
-      localTextView.setVisibility(8);
+    if (localTextView == null) {
       return;
     }
-    localTextView.setVisibility(0);
+    String str = String.valueOf(paramInt);
+    if (paramInt > 99) {
+      str = "99+";
+    }
+    localTextView.setText(str);
+    if (!paramBoolean)
+    {
+      if (paramInt <= 0)
+      {
+        localTextView.setVisibility(8);
+        return;
+      }
+      localTextView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.lite.mini.IliveMiniAIOEntryView
  * JD-Core Version:    0.7.0.1
  */

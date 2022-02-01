@@ -29,101 +29,141 @@ public class OfflineFileBubblePauseHandler
   
   protected ImageView a(BaseBubbleBuilder.ViewHolder paramViewHolder)
   {
-    if (paramViewHolder == null) {}
-    while (!(paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+    if (paramViewHolder == null) {
       return null;
     }
-    return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+    if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+    }
+    return null;
   }
   
   protected void a(View paramView, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage, int paramInt)
   {
-    if ((paramChatMessage == null) || (paramChatMessage.isMultiMsg)) {}
-    int i;
-    do
+    if (paramChatMessage != null)
     {
-      do
-      {
-        do
-        {
-          return;
-          QLog.i("OfflineFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-        } while ((paramInt == -1) || (!(paramChatMessage instanceof MessageForFile)));
-        paramView = (MessageForFile)paramChatMessage;
-        paramViewHolder = FileManagerUtil.a(this.a, paramView);
-      } while (paramViewHolder == null);
-      if (paramView.istroop == 3000) {}
-      for (i = 3; paramInt == 0; i = 1)
-      {
-        ReportController.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", i, 0, "", "", "", "");
-        this.a.getFileManagerEngine().a(paramViewHolder.nSessionId);
+      if (paramChatMessage.isMultiMsg) {
         return;
       }
-    } while (paramInt != 1);
-    ReportController.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", i, 0, "", "", "", "");
-    a(new OfflineFileBubblePauseHandler.1(this, i, paramViewHolder));
+      paramView = new StringBuilder();
+      paramView.append("handlePauseClick: type[");
+      paramView.append(paramInt);
+      paramView.append("]");
+      QLog.i("OfflineFileBubblePauseHandler", 1, paramView.toString());
+      if (paramInt == -1) {
+        return;
+      }
+      if ((paramChatMessage instanceof MessageForFile))
+      {
+        paramView = (MessageForFile)paramChatMessage;
+        paramViewHolder = FileManagerUtil.a(this.a, paramView);
+        if (paramViewHolder == null) {
+          return;
+        }
+        int i;
+        if (paramView.istroop == 3000) {
+          i = 3;
+        } else {
+          i = 1;
+        }
+        if (paramInt == 0)
+        {
+          ReportController.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", i, 0, "", "", "", "");
+          this.a.getFileManagerEngine().a(paramViewHolder.nSessionId);
+          return;
+        }
+        if (paramInt == 1)
+        {
+          ReportController.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", i, 0, "", "", "", "");
+          a(new OfflineFileBubblePauseHandler.1(this, i, paramViewHolder));
+        }
+      }
+    }
   }
   
   protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, ImageView paramImageView)
   {
-    if (paramViewHolder == null) {}
-    while (!(paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+    if (paramViewHolder == null) {
       return;
     }
-    ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramImageView;
+    if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramImageView;
+    }
   }
   
   protected boolean a(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
-    do
+    if (paramChatMessage == null) {
+      return false;
+    }
+    if (paramChatMessage.isMultiMsg) {
+      return false;
+    }
+    if ((paramChatMessage instanceof MessageForFile))
     {
-      do
+      paramChatMessage = (MessageForFile)paramChatMessage;
+      paramChatMessage = FileManagerUtil.a(this.a, paramChatMessage);
+      if (paramChatMessage == null) {
+        return false;
+      }
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          return false;
-        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
-        paramChatMessage = (MessageForFile)paramChatMessage;
-        paramChatMessage = FileManagerUtil.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("needShowPauseIcon: current file nOpType[");
+        localStringBuilder.append(paramChatMessage.nOpType);
+        localStringBuilder.append("] status[");
+        localStringBuilder.append(paramChatMessage.status);
+        localStringBuilder.append("]");
+        QLog.i("OfflineFileBubblePauseHandler", 1, localStringBuilder.toString());
       }
       if (((paramChatMessage.nOpType == 0) || (paramChatMessage.nOpType == 51)) && (paramChatMessage.status == 2)) {
         return true;
       }
-    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 2));
-    return true;
+      if ((paramChatMessage.nOpType == 3) && (paramChatMessage.status == 2)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   protected boolean b(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
-    do
+    if (paramChatMessage == null) {
+      return false;
+    }
+    if (paramChatMessage.isMultiMsg) {
+      return false;
+    }
+    if ((paramChatMessage instanceof MessageForFile))
     {
-      do
+      paramChatMessage = (MessageForFile)paramChatMessage;
+      paramChatMessage = FileManagerUtil.a(this.a, paramChatMessage);
+      if (paramChatMessage == null) {
+        return false;
+      }
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          return false;
-        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
-        paramChatMessage = (MessageForFile)paramChatMessage;
-        paramChatMessage = FileManagerUtil.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("needShowPauseIcon: current file nOpType[");
+        localStringBuilder.append(paramChatMessage.nOpType);
+        localStringBuilder.append("] status[");
+        localStringBuilder.append(paramChatMessage.status);
+        localStringBuilder.append("]");
+        QLog.i("OfflineFileBubblePauseHandler", 1, localStringBuilder.toString());
       }
       if (a(paramChatMessage)) {
         return true;
       }
-    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 3));
-    return true;
+      if ((paramChatMessage.nOpType == 3) && (paramChatMessage.status == 3)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.OfflineFileBubblePauseHandler
  * JD-Core Version:    0.7.0.1
  */

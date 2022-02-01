@@ -7,13 +7,14 @@ class PreviewPerformanceInfo$2
   
   public void run()
   {
-    this.this$0.sticker_id = this.val$id;
-    this.this$0.report();
+    PreviewPerformanceInfo localPreviewPerformanceInfo = this.this$0;
+    localPreviewPerformanceInfo.sticker_id = this.val$id;
+    localPreviewPerformanceInfo.report();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.PreviewPerformanceInfo.2
  * JD-Core Version:    0.7.0.1
  */

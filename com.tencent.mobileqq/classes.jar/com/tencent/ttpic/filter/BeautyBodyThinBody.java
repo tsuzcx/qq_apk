@@ -6,8 +6,8 @@ public class BeautyBodyThinBody
 {
   private static final int[] leftIndexs = { 13, 14, 15, 16, 17 };
   private static final int[] rightIndexs = { 45, 44, 43, 42, 41 };
-  private int currentIdx = 0;
-  private boolean hasSeenValid = false;
+  private int currentIdx;
+  private boolean hasSeenValid;
   private long lastValidTime;
   private BeautyBodyThinBody.ThinBodyParameters params;
   private BeautyBodyThinBody.ThinBodyParameters[] previousParams;
@@ -15,10 +15,14 @@ public class BeautyBodyThinBody
   private BeautyBodyThinBody.ThinBodyParameters previousValidParams;
   private BeautyBodyThinBody.ThinBodyParameters smoothedParams;
   private int smoothedWithinFrames = 2;
-  private long validDuration = 2000L;
+  private long validDuration;
   
   public BeautyBodyThinBody()
   {
+    int k = 0;
+    this.currentIdx = 0;
+    this.validDuration = 2000L;
+    this.hasSeenValid = false;
     if (this.previousValidFrames == null)
     {
       this.previousValidFrames = new boolean[this.smoothedWithinFrames];
@@ -46,10 +50,10 @@ public class BeautyBodyThinBody
       this.smoothedParams = new BeautyBodyThinBody.ThinBodyParameters(this);
     }
     this.smoothedParams.reset();
-    int k = 0;
-    int i = j;
+    int j = 0;
+    int i = k;
     BeautyBodyThinBody.ThinBodyParameters localThinBodyParameters1;
-    for (j = k; i < this.smoothedWithinFrames; j = k)
+    while (i < this.smoothedWithinFrames)
     {
       k = j;
       if (this.previousValidFrames[i] == 1)
@@ -65,23 +69,25 @@ public class BeautyBodyThinBody
         localThinBodyParameters2 = this.smoothedParams;
         localThinBodyParameters2.middleLine += localThinBodyParameters1.middleLine;
         localThinBodyParameters2 = this.smoothedParams;
-        float f = localThinBodyParameters2.waistWidth;
-        localThinBodyParameters1.waistWidth += f;
+        localThinBodyParameters2.waistWidth += localThinBodyParameters1.waistWidth;
       }
       i += 1;
+      j = k;
     }
     if (j > 0)
     {
       localThinBodyParameters1 = this.smoothedParams;
-      localThinBodyParameters1.y0 /= j;
+      float f1 = localThinBodyParameters1.y0;
+      float f2 = j;
+      localThinBodyParameters1.y0 = (f1 / f2);
       localThinBodyParameters1 = this.smoothedParams;
-      localThinBodyParameters1.y1 /= j;
+      localThinBodyParameters1.y1 /= f2;
       localThinBodyParameters1 = this.smoothedParams;
-      localThinBodyParameters1.y2 /= j;
+      localThinBodyParameters1.y2 /= f2;
       localThinBodyParameters1 = this.smoothedParams;
-      localThinBodyParameters1.middleLine /= j;
+      localThinBodyParameters1.middleLine /= f2;
       localThinBodyParameters1 = this.smoothedParams;
-      localThinBodyParameters1.waistWidth /= j;
+      localThinBodyParameters1.waistWidth /= f2;
     }
   }
   
@@ -89,9 +95,9 @@ public class BeautyBodyThinBody
   {
     int j = leftIndexs.length;
     int i = 0;
-    float f1 = 0.0F;
-    float f2 = 0.0F;
     float f3 = 0.0F;
+    float f2 = 0.0F;
+    float f1 = 0.0F;
     while (i < j)
     {
       PointF localPointF1 = paramArrayOfPointF[leftIndexs[i]];
@@ -102,13 +108,14 @@ public class BeautyBodyThinBody
       i += 1;
     }
     float f4 = (paramArrayOfPointF[0].y + paramArrayOfPointF[58].y) / 2.0F;
-    f3 /= j;
-    f2 /= j;
-    f1 /= j;
+    float f5 = j;
+    f3 /= f5;
+    f2 /= f5;
+    f1 /= f5;
     setMiddleLine(f3);
     setY0(f4);
     setY1(f2 - 0.0F * f1);
-    setY2(0.4F * f1 + f2);
+    setY2(f2 + 0.4F * f1);
     setWaistWidth(f1);
   }
   
@@ -156,7 +163,8 @@ public class BeautyBodyThinBody
     }
     if (paramFloat > this.params.y1)
     {
-      this.params.y0 = this.params.y1;
+      BeautyBodyThinBody.ThinBodyParameters localThinBodyParameters = this.params;
+      localThinBodyParameters.y0 = localThinBodyParameters.y1;
       return;
     }
     this.params.y0 = paramFloat;
@@ -164,14 +172,17 @@ public class BeautyBodyThinBody
   
   public void setY1(float paramFloat)
   {
+    BeautyBodyThinBody.ThinBodyParameters localThinBodyParameters;
     if (paramFloat > this.params.y2)
     {
-      this.params.y1 = this.params.y2;
+      localThinBodyParameters = this.params;
+      localThinBodyParameters.y1 = localThinBodyParameters.y2;
       return;
     }
     if (paramFloat < this.params.y0)
     {
-      this.params.y1 = this.params.y0;
+      localThinBodyParameters = this.params;
+      localThinBodyParameters.y1 = localThinBodyParameters.y0;
       return;
     }
     this.params.y1 = paramFloat;
@@ -186,7 +197,8 @@ public class BeautyBodyThinBody
     }
     if (paramFloat < this.params.y1)
     {
-      this.params.y2 = this.params.y1;
+      BeautyBodyThinBody.ThinBodyParameters localThinBodyParameters = this.params;
+      localThinBodyParameters.y2 = localThinBodyParameters.y1;
       return;
     }
     this.params.y2 = paramFloat;
@@ -202,8 +214,10 @@ public class BeautyBodyThinBody
     {
       this.hasSeenValid = true;
       calculateMiddleLineWithNormalizedPoints(paramArrayOfPointF);
-      this.previousValidFrames[this.currentIdx] = true;
-      this.previousParams[this.currentIdx] = this.params.copy();
+      paramArrayOfPointF = this.previousValidFrames;
+      int i = this.currentIdx;
+      paramArrayOfPointF[i] = 1;
+      this.previousParams[i] = this.params.copy();
       paramArrayOfPointF = this.smoothedParams;
       this.params = paramArrayOfPointF;
       this.previousValidParams = paramArrayOfPointF;
@@ -221,7 +235,7 @@ public class BeautyBodyThinBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.BeautyBodyThinBody
  * JD-Core Version:    0.7.0.1
  */

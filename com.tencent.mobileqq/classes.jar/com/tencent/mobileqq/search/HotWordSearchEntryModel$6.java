@@ -22,26 +22,27 @@ final class HotWordSearchEntryModel$6
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {}
-    do
+    if (this.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {
+      return;
+    }
+    paramURLDrawable = (URLImageView)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof GifDrawable))
     {
-      do
-      {
-        return;
-        paramURLDrawable = (URLImageView)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-      } while (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof GifDrawable));
       AbstractGifImage localAbstractGifImage = ((GifDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getImage();
       localAbstractGifImage.reset();
       localAbstractGifImage.setStrongGIFPlayOnceListener(new HotWordSearchEntryModel.6.1(this, localAbstractGifImage));
       paramURLDrawable.setVisibility(0);
       paramURLDrawable.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    } while (this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel$OnGifPlayListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel$OnGifPlayListener.a();
+      paramURLDrawable = this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel$OnGifPlayListener;
+      if (paramURLDrawable != null) {
+        paramURLDrawable.a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.HotWordSearchEntryModel.6
  * JD-Core Version:    0.7.0.1
  */

@@ -28,21 +28,29 @@ final class c$3
     }
     catch (InterruptedException localInterruptedException)
     {
-      throw new RuntimeException("An error occur while execute doInBackground().");
+      break label86;
     }
     catch (ExecutionException localExecutionException)
     {
-      throw new RuntimeException("An error occur while execute doInBackground().");
+      break label76;
     }
     catch (CancellationException localCancellationException)
     {
-      this.W.y.obtainMessage(3, new c.a(this.W, null)).sendToTarget();
-      return;
+      break label49;
     }
     catch (Throwable localThrowable)
     {
-      throw new RuntimeException("An error occur while execute doInBackground().");
+      label39:
+      label49:
+      label76:
+      label86:
+      break label39;
     }
+    throw new RuntimeException("An error occur while execute doInBackground().");
+    this.W.y.obtainMessage(3, new c.a(this.W, null)).sendToTarget();
+    return;
+    throw new RuntimeException("An error occur while execute doInBackground().");
+    throw new RuntimeException("An error occur while execute doInBackground().");
   }
 }
 

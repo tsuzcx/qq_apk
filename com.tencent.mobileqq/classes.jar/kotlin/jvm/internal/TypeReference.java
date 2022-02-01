@@ -35,86 +35,91 @@ public final class TypeReference
   
   private final String asString()
   {
-    Object localObject2 = getClassifier();
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof KClass)) {
+    Object localObject1 = getClassifier();
+    boolean bool = localObject1 instanceof KClass;
+    String str = null;
+    if (!bool) {
       localObject1 = null;
     }
-    localObject1 = (KClass)localObject1;
-    if (localObject1 != null)
-    {
-      localObject1 = JvmClassMappingKt.getJavaClass((KClass)localObject1);
-      if (localObject1 != null) {
-        break label95;
-      }
+    Object localObject2 = (KClass)localObject1;
+    localObject1 = str;
+    if (localObject2 != null) {
+      localObject1 = JvmClassMappingKt.getJavaClass((KClass)localObject2);
+    }
+    if (localObject1 == null) {
       localObject1 = getClassifier().toString();
-      label42:
-      if (!getArguments().isEmpty()) {
-        break label119;
-      }
-      localObject2 = "";
-      label57:
-      if (!isMarkedNullable()) {
-        break label164;
-      }
-    }
-    label164:
-    for (String str = "?";; str = "")
-    {
-      return (String)localObject1 + (String)localObject2 + str;
-      localObject1 = null;
-      break;
-      label95:
-      if (((Class)localObject1).isArray())
-      {
-        localObject1 = getArrayClassName((Class)localObject1);
-        break label42;
-      }
+    } else if (((Class)localObject1).isArray()) {
+      localObject1 = getArrayClassName((Class)localObject1);
+    } else {
       localObject1 = ((Class)localObject1).getName();
-      break label42;
-      label119:
-      localObject2 = CollectionsKt.joinToString$default((Iterable)getArguments(), (CharSequence)", ", (CharSequence)"<", (CharSequence)">", 0, null, (Function1)new TypeReference.asString.args.1(this), 24, null);
-      break label57;
     }
+    bool = getArguments().isEmpty();
+    localObject2 = "";
+    if (bool) {
+      str = "";
+    } else {
+      str = CollectionsKt.joinToString$default((Iterable)getArguments(), (CharSequence)", ", (CharSequence)"<", (CharSequence)">", 0, null, (Function1)new TypeReference.asString.args.1(this), 24, null);
+    }
+    if (isMarkedNullable()) {
+      localObject2 = "?";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(str);
+    localStringBuilder.append((String)localObject2);
+    return localStringBuilder.toString();
   }
   
   private final String asString(@NotNull KTypeProjection paramKTypeProjection)
   {
-    if (paramKTypeProjection.getVariance() == null)
-    {
-      paramKTypeProjection = "*";
-      return paramKTypeProjection;
+    if (paramKTypeProjection.getVariance() == null) {
+      return "*";
     }
-    Object localObject2 = paramKTypeProjection.getType();
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof TypeReference)) {
-      localObject1 = null;
+    KType localKType = paramKTypeProjection.getType();
+    Object localObject = localKType;
+    if (!(localKType instanceof TypeReference)) {
+      localObject = null;
     }
-    localObject1 = (TypeReference)localObject1;
-    if (localObject1 != null)
+    localObject = (TypeReference)localObject;
+    if (localObject != null)
     {
-      localObject1 = ((TypeReference)localObject1).asString();
-      if (localObject1 != null)
+      localObject = ((TypeReference)localObject).asString();
+      if (localObject != null) {}
+    }
+    else
+    {
+      localObject = String.valueOf(paramKTypeProjection.getType());
+    }
+    paramKTypeProjection = paramKTypeProjection.getVariance();
+    if (paramKTypeProjection != null)
+    {
+      int i = TypeReference.WhenMappings.$EnumSwitchMapping$0[paramKTypeProjection.ordinal()];
+      paramKTypeProjection = (KTypeProjection)localObject;
+      if (i != 1)
       {
-        localObject2 = paramKTypeProjection.getVariance();
-        if (localObject2 != null) {
-          break label74;
+        if (i != 2)
+        {
+          if (i == 3)
+          {
+            paramKTypeProjection = new StringBuilder();
+            paramKTypeProjection.append("out ");
+            paramKTypeProjection.append((String)localObject);
+            return paramKTypeProjection.toString();
+          }
+        }
+        else
+        {
+          paramKTypeProjection = new StringBuilder();
+          paramKTypeProjection.append("in ");
+          paramKTypeProjection.append((String)localObject);
+          paramKTypeProjection = paramKTypeProjection.toString();
         }
       }
-    }
-    for (;;)
-    {
-      throw new NoWhenBranchMatchedException();
-      localObject1 = String.valueOf(paramKTypeProjection.getType());
-      break;
-      label74:
-      paramKTypeProjection = (KTypeProjection)localObject1;
-      switch (TypeReference.WhenMappings.$EnumSwitchMapping$0[localObject2.ordinal()])
-      {
+      else {
+        return paramKTypeProjection;
       }
     }
-    return "in " + (String)localObject1;
-    return "out " + (String)localObject1;
+    throw new NoWhenBranchMatchedException();
   }
   
   private final String getArrayClassName(@NotNull Class<?> paramClass)
@@ -148,7 +153,15 @@ public final class TypeReference
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof TypeReference)) && (Intrinsics.areEqual(getClassifier(), ((TypeReference)paramObject).getClassifier())) && (Intrinsics.areEqual(getArguments(), ((TypeReference)paramObject).getArguments())) && (isMarkedNullable() == ((TypeReference)paramObject).isMarkedNullable());
+    if ((paramObject instanceof TypeReference))
+    {
+      KClassifier localKClassifier = getClassifier();
+      paramObject = (TypeReference)paramObject;
+      if ((Intrinsics.areEqual(localKClassifier, paramObject.getClassifier())) && (Intrinsics.areEqual(getArguments(), paramObject.getArguments())) && (isMarkedNullable() == paramObject.isMarkedNullable())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   @NotNull
@@ -182,12 +195,15 @@ public final class TypeReference
   @NotNull
   public String toString()
   {
-    return asString() + " (Kotlin reflection is not available)";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(asString());
+    localStringBuilder.append(" (Kotlin reflection is not available)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.jvm.internal.TypeReference
  * JD-Core Version:    0.7.0.1
  */

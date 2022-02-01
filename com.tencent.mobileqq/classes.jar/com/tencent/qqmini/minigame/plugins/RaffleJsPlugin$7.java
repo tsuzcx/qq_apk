@@ -12,7 +12,13 @@ final class RaffleJsPlugin$7
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d(RaffleJsPlugin.access$200(), "getGameRaffleMaterialStatic isSuc: " + paramBoolean + ";jsonObject: " + paramJSONObject.toString());
+    String str = RaffleJsPlugin.access$200();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getGameRaffleMaterialStatic isSuc: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(";jsonObject: ");
+    localStringBuilder.append(paramJSONObject.toString());
+    QMLog.d(str, localStringBuilder.toString());
     if (paramBoolean) {
       RaffleJsPlugin.access$1700(this.val$context, paramJSONObject);
     }
@@ -20,7 +26,7 @@ final class RaffleJsPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.RaffleJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

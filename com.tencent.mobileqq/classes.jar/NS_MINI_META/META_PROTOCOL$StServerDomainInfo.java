@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class META_PROTOCOL$StServerDomainInfo
   extends MessageMicro<StServerDomainInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56 }, new String[] { "appid", "requestDomain", "socketDomain", "uploadFileDomain", "downloadFileDomain", "createTimestamp", "updateTimestamp" }, new Object[] { "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0) }, StServerDomainInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField appid = PBField.initString("");
   public final PBUInt32Field createTimestamp = PBField.initUInt32(0);
   public final PBRepeatField<String> downloadFileDomain = PBField.initRepeat(PBStringField.__repeatHelper__);
@@ -18,10 +18,16 @@ public final class META_PROTOCOL$StServerDomainInfo
   public final PBRepeatField<String> socketDomain = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBUInt32Field updateTimestamp = PBField.initUInt32(0);
   public final PBRepeatField<String> uploadFileDomain = PBField.initRepeat(PBStringField.__repeatHelper__);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56 }, new String[] { "appid", "requestDomain", "socketDomain", "uploadFileDomain", "downloadFileDomain", "createTimestamp", "updateTimestamp" }, new Object[] { "", "", "", "", "", localInteger, localInteger }, StServerDomainInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_META.META_PROTOCOL.StServerDomainInfo
  * JD-Core Version:    0.7.0.1
  */

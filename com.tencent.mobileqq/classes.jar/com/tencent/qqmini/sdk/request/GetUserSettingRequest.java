@@ -45,26 +45,29 @@ public class GetUserSettingRequest
     try
     {
       localStGetUserSettingRsp.mergeFrom(paramArrayOfByte);
-      if ((localStGetUserSettingRsp != null) && (localStGetUserSettingRsp.setting != null))
+      if (localStGetUserSettingRsp.setting != null)
       {
         paramJSONObject.put("settingItem", localStGetUserSettingRsp.setting.settingItem.get());
         paramJSONObject.put("desc", localStGetUserSettingRsp.setting.desc.get());
         paramJSONObject.put("authState", localStGetUserSettingRsp.setting.authState.get());
         return paramJSONObject;
       }
+      QMLog.d("VerifyPluginRequest", "onResponse fail.rsp = null");
+      return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("VerifyPluginRequest", paramJSONObject.toString());
     }
-    QMLog.d("VerifyPluginRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetUserSettingRequest
  * JD-Core Version:    0.7.0.1
  */

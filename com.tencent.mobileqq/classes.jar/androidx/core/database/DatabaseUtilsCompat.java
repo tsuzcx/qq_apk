@@ -8,13 +8,17 @@ public final class DatabaseUtilsCompat
   @Deprecated
   public static String[] appendSelectionArgs(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    if ((paramArrayOfString1 == null) || (paramArrayOfString1.length == 0)) {
-      return paramArrayOfString2;
+    if (paramArrayOfString1 != null)
+    {
+      if (paramArrayOfString1.length == 0) {
+        return paramArrayOfString2;
+      }
+      String[] arrayOfString = new String[paramArrayOfString1.length + paramArrayOfString2.length];
+      System.arraycopy(paramArrayOfString1, 0, arrayOfString, 0, paramArrayOfString1.length);
+      System.arraycopy(paramArrayOfString2, 0, arrayOfString, paramArrayOfString1.length, paramArrayOfString2.length);
+      return arrayOfString;
     }
-    String[] arrayOfString = new String[paramArrayOfString1.length + paramArrayOfString2.length];
-    System.arraycopy(paramArrayOfString1, 0, arrayOfString, 0, paramArrayOfString1.length);
-    System.arraycopy(paramArrayOfString2, 0, arrayOfString, paramArrayOfString1.length, paramArrayOfString2.length);
-    return arrayOfString;
+    return paramArrayOfString2;
   }
   
   @Deprecated
@@ -26,12 +30,18 @@ public final class DatabaseUtilsCompat
     if (TextUtils.isEmpty(paramString2)) {
       return paramString1;
     }
-    return "(" + paramString1 + ") AND (" + paramString2 + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(") AND (");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.database.DatabaseUtilsCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import com.tencent.qqlive.module.videoreport.utils.BaseUtils;
+import com.tencent.qqlive.module.videoreport.utils.DynamicEventUtils;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +24,28 @@ public class DataEntityOperator
     return paramDataEntity.pageContentId;
   }
   
+  @Nullable
+  public static Map<String, Object> getDynamicElementParams(String paramString, @Nullable DataEntity paramDataEntity)
+  {
+    Object localObject = null;
+    if (paramDataEntity == null) {
+      return null;
+    }
+    if (!DynamicEventUtils.filterDynamicEvent(paramString)) {
+      return null;
+    }
+    HashMap localHashMap = new HashMap();
+    if (paramDataEntity.getEventDynamicParams() == null) {
+      paramString = localObject;
+    } else {
+      paramString = paramDataEntity.getEventDynamicParams().getDynamicParams(paramString);
+    }
+    if (!BaseUtils.isEmpty(paramString)) {
+      localHashMap.putAll(paramString);
+    }
+    return localHashMap;
+  }
+  
   public static String getElementId(@Nullable DataEntity paramDataEntity)
   {
     if (paramDataEntity == null) {
@@ -34,34 +57,32 @@ public class DataEntityOperator
   @Nullable
   public static Map<String, ?> getElementParams(@Nullable DataEntity paramDataEntity)
   {
-    Map localMap = null;
     Object localObject = null;
     if (paramDataEntity == null) {
-      return localObject;
+      return null;
     }
-    if (paramDataEntity.dynamicParams == null) {}
-    for (;;)
-    {
-      localObject = localMap;
-      if (BaseUtils.isEmpty(paramDataEntity.elementParams)) {
-        break;
-      }
-      paramDataEntity = new HashMap(paramDataEntity.elementParams);
-      if (!BaseUtils.isEmpty(localMap)) {
-        paramDataEntity.putAll(localMap);
-      }
-      return paramDataEntity;
-      localMap = paramDataEntity.dynamicParams.getElementDynamicParams();
+    HashMap localHashMap = new HashMap();
+    if (!BaseUtils.isEmpty(paramDataEntity.elementParams)) {
+      localHashMap.putAll(paramDataEntity.elementParams);
     }
+    if (paramDataEntity.elementDynamicParams == null) {
+      paramDataEntity = localObject;
+    } else {
+      paramDataEntity = paramDataEntity.elementDynamicParams.getElementDynamicParams();
+    }
+    if (!BaseUtils.isEmpty(paramDataEntity)) {
+      localHashMap.putAll(paramDataEntity);
+    }
+    return localHashMap;
   }
   
   @Nullable
   public static Object getInnerParam(DataEntity paramDataEntity, String paramString)
   {
-    if ((paramDataEntity == null) || (paramDataEntity.innerParams == null)) {
-      return null;
+    if ((paramDataEntity != null) && (paramDataEntity.innerParams != null)) {
+      return paramDataEntity.innerParams.get(paramString);
     }
-    return paramDataEntity.innerParams.get(paramString);
+    return null;
   }
   
   public static String getPageId(@Nullable DataEntity paramDataEntity)
@@ -99,13 +120,16 @@ public class DataEntityOperator
   
   public static void putInnerParam(DataEntity paramDataEntity, String paramString, Object paramObject)
   {
-    if ((paramDataEntity == null) || (TextUtils.isEmpty(paramString))) {
-      return;
+    if (paramDataEntity != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      if (paramDataEntity.innerParams == null) {
+        paramDataEntity.innerParams = new HashMap(1);
+      }
+      paramDataEntity.innerParams.put(paramString, paramObject);
     }
-    if (paramDataEntity.innerParams == null) {
-      paramDataEntity.innerParams = new HashMap(1);
-    }
-    paramDataEntity.innerParams.put(paramString, paramObject);
   }
   
   static void removeAllElementParams(DataEntity paramDataEntity)
@@ -116,7 +140,7 @@ public class DataEntityOperator
     if (paramDataEntity.elementParams != null) {
       paramDataEntity.elementParams.clear();
     }
-    paramDataEntity.dynamicParams = null;
+    paramDataEntity.elementDynamicParams = null;
     if (paramDataEntity.elementVirtualParentParams != null) {
       paramDataEntity.elementVirtualParentParams.clear();
     }
@@ -137,7 +161,7 @@ public class DataEntityOperator
     }
   }
   
-  static void removeInnerParam(DataEntity paramDataEntity, String paramString)
+  public static void removeInnerParam(DataEntity paramDataEntity, String paramString)
   {
     if ((paramDataEntity != null) && (paramDataEntity.innerParams != null)) {
       paramDataEntity.innerParams.remove(paramString);
@@ -160,47 +184,66 @@ public class DataEntityOperator
   
   public static void setElementParams(DataEntity paramDataEntity, IElementDynamicParams paramIElementDynamicParams)
   {
-    if ((paramDataEntity == null) || (paramIElementDynamicParams == null)) {
+    if (paramDataEntity == null) {
       return;
     }
-    paramDataEntity.dynamicParams = paramIElementDynamicParams;
+    paramDataEntity.elementDynamicParams = paramIElementDynamicParams;
   }
   
   public static void setElementParams(DataEntity paramDataEntity, String paramString, Object paramObject)
   {
-    if ((paramDataEntity == null) || (TextUtils.isEmpty(paramString))) {
-      return;
+    if (paramDataEntity != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      if (paramDataEntity.elementParams == null) {
+        paramDataEntity.elementParams = new HashMap(1);
+      }
+      paramDataEntity.elementParams.put(paramString, paramObject);
     }
-    if (paramDataEntity.elementParams == null) {
-      paramDataEntity.elementParams = new HashMap(1);
-    }
-    paramDataEntity.elementParams.put(paramString, paramObject);
   }
   
   public static void setElementParams(DataEntity paramDataEntity, Map<String, ?> paramMap)
   {
-    if ((paramDataEntity == null) || (paramMap == null)) {
-      return;
+    if (paramDataEntity != null)
+    {
+      if (paramMap == null) {
+        return;
+      }
+      if (paramDataEntity.elementParams == null) {
+        paramDataEntity.elementParams = new HashMap(1);
+      }
+      paramDataEntity.elementParams.putAll(paramMap);
     }
-    if (paramDataEntity.elementParams == null) {
-      paramDataEntity.elementParams = new HashMap(1);
-    }
-    paramDataEntity.elementParams.putAll(paramMap);
   }
   
   public static void setElementVirtualParentParams(DataEntity paramDataEntity, int paramInt, String paramString, @Nullable Map<String, Object> paramMap)
   {
-    if ((paramDataEntity == null) || (paramInt <= 0)) {}
-    while (TextUtils.isEmpty(paramString)) {
+    if (paramDataEntity != null)
+    {
+      if (paramInt <= 0) {
+        return;
+      }
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      if (paramDataEntity.elementVirtualParentParams == null) {
+        paramDataEntity.elementVirtualParentParams = new SparseArray();
+      }
+      ElementDataEntity localElementDataEntity = new ElementDataEntity();
+      localElementDataEntity.elementId = paramString;
+      localElementDataEntity.elementParams = paramMap;
+      paramDataEntity.elementVirtualParentParams.put(paramInt, localElementDataEntity);
+    }
+  }
+  
+  public static void setEventDynamicParams(DataEntity paramDataEntity, @Nullable IDynamicParams paramIDynamicParams)
+  {
+    if (paramDataEntity == null) {
       return;
     }
-    if (paramDataEntity.elementVirtualParentParams == null) {
-      paramDataEntity.elementVirtualParentParams = new SparseArray();
-    }
-    ElementDataEntity localElementDataEntity = new ElementDataEntity();
-    localElementDataEntity.elementId = paramString;
-    localElementDataEntity.elementParams = paramMap;
-    paramDataEntity.elementVirtualParentParams.put(paramInt, localElementDataEntity);
+    paramDataEntity.eventDynamicParams = paramIDynamicParams;
   }
   
   public static void setPageContentId(DataEntity paramDataEntity, String paramString)
@@ -217,26 +260,32 @@ public class DataEntityOperator
     }
   }
   
-  static void setPageParams(DataEntity paramDataEntity, String paramString, Object paramObject)
+  public static void setPageParams(DataEntity paramDataEntity, String paramString, Object paramObject)
   {
-    if ((paramDataEntity == null) || (TextUtils.isEmpty(paramString))) {
-      return;
+    if (paramDataEntity != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      if (paramDataEntity.pageParams == null) {
+        paramDataEntity.pageParams = new HashMap(1);
+      }
+      paramDataEntity.pageParams.put(paramString, paramObject);
     }
-    if (paramDataEntity.pageParams == null) {
-      paramDataEntity.pageParams = new HashMap(1);
-    }
-    paramDataEntity.pageParams.put(paramString, paramObject);
   }
   
   static void setPageParams(DataEntity paramDataEntity, Map<String, ?> paramMap)
   {
-    if ((paramDataEntity == null) || (paramMap == null)) {
-      return;
+    if (paramDataEntity != null)
+    {
+      if (paramMap == null) {
+        return;
+      }
+      if (paramDataEntity.pageParams == null) {
+        paramDataEntity.pageParams = new HashMap(1);
+      }
+      paramDataEntity.pageParams.putAll(paramMap);
     }
-    if (paramDataEntity.pageParams == null) {
-      paramDataEntity.pageParams = new HashMap(1);
-    }
-    paramDataEntity.pageParams.putAll(paramMap);
   }
   
   public static void setParentEntity(DataEntity paramDataEntity1, DataEntity paramDataEntity2)
@@ -248,7 +297,7 @@ public class DataEntityOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.data.DataEntityOperator
  * JD-Core Version:    0.7.0.1
  */

@@ -18,16 +18,29 @@ public class ARLocalFaceRecogResult
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("ARLocalFaceRecogResult{recogType = ").append(this.b).append(",isTimeOut = ").append(this.jdField_a_of_type_Boolean).append(",frameIdx = ").append(this.jdField_a_of_type_Long).append(", faceDatas.size = ");
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
-    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = 0) {
-      return i + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARLocalFaceRecogResult{recogType = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",isTimeOut = ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",frameIdx = ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", faceDatas.size = ");
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    int i;
+    if (localArrayList != null) {
+      i = localArrayList.size();
+    } else {
+      i = 0;
     }
+    localStringBuilder.append(i);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalFaceRecogResult
  * JD-Core Version:    0.7.0.1
  */

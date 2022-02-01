@@ -11,7 +11,7 @@ class RewardNoticeActivity$2
 {
   RewardNoticeActivity$2(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
     if (paramBoolean)
     {
@@ -24,12 +24,12 @@ class RewardNoticeActivity$2
       this.a.finish();
       return;
     }
-    QQToast.a(this.a.app.getApp(), 1, HardCodeUtil.a(2131713400), 0).a();
+    QQToast.a(this.a.app.getApp(), 1, HardCodeUtil.a(2131713368), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RewardNoticeActivity.2
  * JD-Core Version:    0.7.0.1
  */

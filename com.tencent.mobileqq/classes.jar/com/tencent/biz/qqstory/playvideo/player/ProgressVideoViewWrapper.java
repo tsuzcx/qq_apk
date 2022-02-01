@@ -63,20 +63,23 @@ public class ProgressVideoViewWrapper
   
   public void a(IVideoView.OnErrorListener paramOnErrorListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$OnErrorListenerWrapper.a = paramOnErrorListener;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$OnErrorListenerWrapper);
+    ProgressVideoViewWrapper.OnErrorListenerWrapper localOnErrorListenerWrapper = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$OnErrorListenerWrapper;
+    localOnErrorListenerWrapper.a = paramOnErrorListener;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(localOnErrorListenerWrapper);
   }
   
   public void a(IVideoView.OnInfoListener paramOnInfoListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$OnInfoListenerWrapper.a = paramOnInfoListener;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$OnInfoListenerWrapper);
+    ProgressVideoViewWrapper.OnInfoListenerWrapper localOnInfoListenerWrapper = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$OnInfoListenerWrapper;
+    localOnInfoListenerWrapper.a = paramOnInfoListener;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(localOnInfoListenerWrapper);
   }
   
   public void a(IVideoView.OnPreparedListener paramOnPreparedListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$OnPreparedListenerWrapper.a = paramOnPreparedListener;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$OnPreparedListenerWrapper);
+    ProgressVideoViewWrapper.OnPreparedListenerWrapper localOnPreparedListenerWrapper = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$OnPreparedListenerWrapper;
+    localOnPreparedListenerWrapper.a = paramOnPreparedListener;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(localOnPreparedListenerWrapper);
   }
   
   public void a(ProgressVideoViewWrapper.ProgressListener paramProgressListener)
@@ -106,25 +109,28 @@ public class ProgressVideoViewWrapper
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$ProgressListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$ProgressListener.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView);
+    ProgressVideoViewWrapper.ProgressListener localProgressListener = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$ProgressListener;
+    if (localProgressListener != null) {
+      localProgressListener.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView);
     }
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.b();
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$ProgressListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$ProgressListener.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView);
+    ProgressVideoViewWrapper.ProgressListener localProgressListener = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$ProgressListener;
+    if (localProgressListener != null) {
+      localProgressListener.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView);
     }
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.c();
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$ProgressListener != null)
+    ProgressVideoViewWrapper.ProgressListener localProgressListener = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$ProgressListener;
+    if (localProgressListener != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$ProgressListener.a(0L, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.b(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView);
+      localProgressListener.a(0L, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.b(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView);
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper$ProgressListener.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView);
     }
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.d();
@@ -137,7 +143,7 @@ public class ProgressVideoViewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.ProgressVideoViewWrapper
  * JD-Core Version:    0.7.0.1
  */

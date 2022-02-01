@@ -17,39 +17,33 @@ class AssociatedAccountManageActivity$7$1
     }
     try
     {
-      View localView = AssociatedAccountManageActivity.a(this.a.this$0, this.a.a, 1);
+      View localView = AssociatedAccountManageActivity.access$1500(this.a.this$0, this.a.a, 1);
       if (localView != null) {
-        this.a.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(localView);
+        this.a.this$0.mAccountListView.removeView(localView);
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        if (QLog.isColorLevel())
-        {
-          QLog.d("AssociatedAccountManage", 2, "deleteAccount runOnUiThread removeView error");
-          continue;
-          this.a.this$0.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        }
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountManage", 2, "deleteAccount runOnUiThread removeView error");
       }
     }
-    this.a.this$0.b();
-    if ((this.a.this$0.jdField_a_of_type_JavaUtilList == null) || (this.a.this$0.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      this.a.this$0.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      AssociatedAccountManageActivity.a(this.a.this$0);
-      if (((this.a.this$0.b == null) || (this.a.this$0.b.size() == 0)) && ((this.a.this$0.jdField_a_of_type_JavaUtilList == null) || (this.a.this$0.jdField_a_of_type_JavaUtilList.size() == 0))) {
-        this.a.this$0.onBackEvent();
-      }
-      return;
+    this.a.this$0.hideDelAccountDialog();
+    if ((this.a.this$0.mAccountList != null) && (this.a.this$0.mAccountList.size() != 0)) {
+      this.a.this$0.mAccountTitle.setVisibility(4);
+    } else {
+      this.a.this$0.mAccountTitle.setVisibility(8);
+    }
+    AssociatedAccountManageActivity.access$400(this.a.this$0);
+    if (((this.a.this$0.mSubAccountList == null) || (this.a.this$0.mSubAccountList.size() == 0)) && ((this.a.this$0.mAccountList == null) || (this.a.this$0.mAccountList.size() == 0))) {
+      this.a.this$0.onBackEvent();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

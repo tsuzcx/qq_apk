@@ -15,13 +15,14 @@ public class ScaleTransformer$Builder
   
   public ScaleTransformer a()
   {
-    ScaleTransformer.b(this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsScaleTransformer, this.jdField_a_of_type_Float - ScaleTransformer.a(this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsScaleTransformer));
+    ScaleTransformer localScaleTransformer = this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsScaleTransformer;
+    ScaleTransformer.b(localScaleTransformer, this.jdField_a_of_type_Float - ScaleTransformer.a(localScaleTransformer));
     return this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsScaleTransformer;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.capture.widgets.ScaleTransformer.Builder
  * JD-Core Version:    0.7.0.1
  */

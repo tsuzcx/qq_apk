@@ -64,10 +64,10 @@ public abstract class CommonListAdapter<BEAN, HOLDER extends CommonListAdapter.B
   public Object getItem(int paramInt)
   {
     Object localObject = this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Any");
+    if (localObject != null) {
+      return localObject;
     }
-    return localObject;
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Any");
   }
   
   public long getItemId(int paramInt)
@@ -87,19 +87,26 @@ public abstract class CommonListAdapter<BEAN, HOLDER extends CommonListAdapter.B
     }
     for (;;)
     {
-      a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), (CommonListAdapter.BaseListViewHolder)localObject, paramView, paramViewGroup);
-      return paramView;
+      break;
       localObject = paramView.getTag();
       if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type HOLDER");
+        break label77;
       }
       localObject = (CommonListAdapter.BaseListViewHolder)localObject;
+    }
+    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), (CommonListAdapter.BaseListViewHolder)localObject, paramView, paramViewGroup);
+    return paramView;
+    label77:
+    paramView = new TypeCastException("null cannot be cast to non-null type HOLDER");
+    for (;;)
+    {
+      throw paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.list.CommonListAdapter
  * JD-Core Version:    0.7.0.1
  */

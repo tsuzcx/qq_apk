@@ -12,426 +12,459 @@ class DBFixConfigActivity$7
     //   0: aload_0
     //   1: getfield 12	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7:this$0	Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity;
     //   4: invokevirtual 25	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   7: astore 4
-    //   9: aload 4
+    //   7: astore 7
+    //   9: aload 7
     //   11: instanceof 27
-    //   14: ifeq +721 -> 735
-    //   17: aload 4
-    //   19: checkcast 27	com/tencent/mobileqq/app/QQAppInterface
-    //   22: astore 4
-    //   24: aload 4
-    //   26: invokevirtual 31	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   29: astore 7
-    //   31: aload 4
-    //   33: ifnull +8 -> 41
-    //   36: aload 7
-    //   38: ifnonnull +23 -> 61
-    //   41: aload_0
-    //   42: getfield 12	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7:this$0	Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity;
-    //   45: getfield 35	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
-    //   48: new 37	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$1
-    //   51: dup
-    //   52: aload_0
-    //   53: invokespecial 40	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$1:<init>	(Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7;)V
-    //   56: invokevirtual 46	android/widget/Button:post	(Ljava/lang/Runnable;)Z
-    //   59: pop
-    //   60: return
-    //   61: aload_0
-    //   62: getfield 12	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7:this$0	Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity;
-    //   65: new 48	java/lang/StringBuilder
-    //   68: dup
-    //   69: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   72: aload 7
-    //   74: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: ldc 55
-    //   79: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   85: invokevirtual 62	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:getDatabasePath	(Ljava/lang/String;)Ljava/io/File;
-    //   88: astore 8
-    //   90: aload_0
-    //   91: getfield 12	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7:this$0	Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity;
-    //   94: ldc 64
-    //   96: invokevirtual 62	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:getDatabasePath	(Ljava/lang/String;)Ljava/io/File;
-    //   99: astore 9
-    //   101: aload 8
-    //   103: invokevirtual 70	java/io/File:exists	()Z
-    //   106: ifne +23 -> 129
-    //   109: aload_0
-    //   110: getfield 12	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7:this$0	Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity;
-    //   113: getfield 35	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
-    //   116: new 72	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$2
-    //   119: dup
-    //   120: aload_0
-    //   121: invokespecial 73	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$2:<init>	(Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7;)V
-    //   124: invokevirtual 46	android/widget/Button:post	(Ljava/lang/Runnable;)Z
-    //   127: pop
-    //   128: return
-    //   129: new 75	java/io/BufferedOutputStream
-    //   132: dup
-    //   133: new 77	java/io/FileOutputStream
+    //   14: istore 6
+    //   16: aconst_null
+    //   17: astore 9
+    //   19: aconst_null
+    //   20: astore 13
+    //   22: iload 6
+    //   24: ifeq +20 -> 44
+    //   27: aload 7
+    //   29: checkcast 27	com/tencent/mobileqq/app/QQAppInterface
+    //   32: astore 11
+    //   34: aload 11
+    //   36: invokevirtual 31	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   39: astore 12
+    //   41: goto +10 -> 51
+    //   44: aconst_null
+    //   45: astore 11
+    //   47: aload 11
+    //   49: astore 12
+    //   51: aload 11
+    //   53: ifnull +724 -> 777
+    //   56: aload 12
+    //   58: ifnonnull +6 -> 64
+    //   61: goto +716 -> 777
+    //   64: aload_0
+    //   65: getfield 12	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7:this$0	Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity;
+    //   68: astore 7
+    //   70: new 33	java/lang/StringBuilder
+    //   73: dup
+    //   74: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   77: astore 8
+    //   79: aload 8
+    //   81: aload 12
+    //   83: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: pop
+    //   87: aload 8
+    //   89: ldc 40
+    //   91: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: pop
+    //   95: aload 7
+    //   97: aload 8
+    //   99: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   102: invokevirtual 47	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:getDatabasePath	(Ljava/lang/String;)Ljava/io/File;
+    //   105: astore 14
+    //   107: aload_0
+    //   108: getfield 12	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7:this$0	Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity;
+    //   111: ldc 49
+    //   113: invokevirtual 47	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:getDatabasePath	(Ljava/lang/String;)Ljava/io/File;
+    //   116: astore 15
+    //   118: aload 14
+    //   120: invokevirtual 55	java/io/File:exists	()Z
+    //   123: ifne +23 -> 146
+    //   126: aload_0
+    //   127: getfield 12	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7:this$0	Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity;
+    //   130: getfield 59	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
+    //   133: new 61	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$2
     //   136: dup
-    //   137: aload 9
-    //   139: invokespecial 80	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   142: invokespecial 83	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   145: astore 6
-    //   147: new 85	java/io/BufferedInputStream
-    //   150: dup
-    //   151: new 87	java/io/FileInputStream
-    //   154: dup
-    //   155: aload 8
-    //   157: invokespecial 88	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   160: invokespecial 91	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   163: astore 5
-    //   165: sipush 8192
-    //   168: newarray byte
-    //   170: astore 10
-    //   172: iconst_0
-    //   173: istore_1
-    //   174: aload 5
-    //   176: aload 10
-    //   178: iconst_0
-    //   179: sipush 8192
-    //   182: invokevirtual 95	java/io/BufferedInputStream:read	([BII)I
-    //   185: istore_2
-    //   186: iload_2
-    //   187: iconst_m1
-    //   188: if_icmpeq +159 -> 347
-    //   191: iload_1
-    //   192: ifne +139 -> 331
+    //   137: aload_0
+    //   138: invokespecial 64	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$2:<init>	(Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7;)V
+    //   141: invokevirtual 70	android/widget/Button:post	(Ljava/lang/Runnable;)Z
+    //   144: pop
+    //   145: return
+    //   146: new 72	java/io/BufferedOutputStream
+    //   149: dup
+    //   150: new 74	java/io/FileOutputStream
+    //   153: dup
+    //   154: aload 15
+    //   156: invokespecial 77	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   159: invokespecial 80	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   162: astore 7
+    //   164: aload 7
+    //   166: astore 8
+    //   168: new 82	java/io/BufferedInputStream
+    //   171: dup
+    //   172: new 84	java/io/FileInputStream
+    //   175: dup
+    //   176: aload 14
+    //   178: invokespecial 85	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   181: invokespecial 88	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   184: astore 10
+    //   186: sipush 8192
+    //   189: newarray byte
+    //   191: astore 8
+    //   193: iconst_0
+    //   194: istore_1
     //   195: aload 10
-    //   197: bipush 28
-    //   199: baload
-    //   200: bipush 24
-    //   202: ishl
-    //   203: aload 10
-    //   205: bipush 29
-    //   207: baload
-    //   208: bipush 16
-    //   210: ishl
-    //   211: ldc 96
-    //   213: iand
-    //   214: ior
-    //   215: aload 10
-    //   217: bipush 30
-    //   219: baload
-    //   220: bipush 8
-    //   222: ishl
-    //   223: ldc 97
-    //   225: iand
-    //   226: ior
-    //   227: aload 10
-    //   229: bipush 31
-    //   231: baload
-    //   232: sipush 255
-    //   235: iand
-    //   236: ior
-    //   237: istore_3
-    //   238: getstatic 100	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   241: iconst_1
-    //   242: iconst_2
-    //   243: anewarray 4	java/lang/Object
-    //   246: dup
-    //   247: iconst_0
-    //   248: ldc 102
-    //   250: aastore
-    //   251: dup
-    //   252: iconst_1
-    //   253: iload_3
-    //   254: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   257: aastore
-    //   258: invokestatic 114	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   261: iload_3
-    //   262: bipush 10
-    //   264: iadd
-    //   265: istore_3
-    //   266: aload 10
-    //   268: bipush 28
-    //   270: iload_3
-    //   271: bipush 24
-    //   273: ishr
-    //   274: i2b
-    //   275: bastore
-    //   276: aload 10
-    //   278: bipush 29
-    //   280: iload_3
-    //   281: bipush 16
-    //   283: ishr
-    //   284: sipush 255
-    //   287: iand
-    //   288: i2b
-    //   289: bastore
-    //   290: aload 10
-    //   292: bipush 30
-    //   294: iload_3
-    //   295: bipush 8
-    //   297: ishr
-    //   298: sipush 255
-    //   301: iand
-    //   302: i2b
-    //   303: bastore
-    //   304: aload 10
-    //   306: bipush 31
-    //   308: iload_3
-    //   309: sipush 255
-    //   312: iand
-    //   313: i2b
-    //   314: bastore
-    //   315: aload 6
-    //   317: aload 10
-    //   319: iconst_0
-    //   320: iload_2
-    //   321: invokevirtual 118	java/io/BufferedOutputStream:write	([BII)V
-    //   324: iload_1
-    //   325: iload_2
-    //   326: iadd
-    //   327: istore_1
-    //   328: goto -154 -> 174
-    //   331: aload 6
-    //   333: aload 10
-    //   335: iconst_0
-    //   336: iload_2
-    //   337: invokevirtual 118	java/io/BufferedOutputStream:write	([BII)V
-    //   340: iload_1
-    //   341: iload_2
-    //   342: iadd
-    //   343: istore_1
-    //   344: goto -170 -> 174
-    //   347: aload 4
-    //   349: invokevirtual 122	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   352: getstatic 127	com/tencent/mobileqq/database/corrupt/DBFixManager:b	Ljava/lang/String;
-    //   355: iconst_0
-    //   356: invokevirtual 133	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   359: astore 10
-    //   361: aload 7
-    //   363: invokestatic 139	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   366: ifne +110 -> 476
-    //   369: aload 10
-    //   371: new 48	java/lang/StringBuilder
-    //   374: dup
-    //   375: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   378: aload 7
-    //   380: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   383: getstatic 141	com/tencent/mobileqq/database/corrupt/DBFixManager:d	Ljava/lang/String;
-    //   386: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   389: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: iconst_0
-    //   393: invokeinterface 147 3 0
-    //   398: ifeq +78 -> 476
-    //   401: aload 10
-    //   403: invokeinterface 151 1 0
-    //   408: astore 10
-    //   410: aload 10
-    //   412: new 48	java/lang/StringBuilder
-    //   415: dup
-    //   416: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   419: aload 7
-    //   421: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   424: getstatic 141	com/tencent/mobileqq/database/corrupt/DBFixManager:d	Ljava/lang/String;
-    //   427: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   430: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   433: invokeinterface 157 2 0
-    //   438: pop
-    //   439: aload 10
-    //   441: new 48	java/lang/StringBuilder
-    //   444: dup
-    //   445: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   448: aload 7
-    //   450: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   453: getstatic 160	com/tencent/mobileqq/database/corrupt/DBFixManager:e	Ljava/lang/String;
-    //   456: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   459: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   462: invokeinterface 157 2 0
-    //   467: pop
-    //   468: aload 10
-    //   470: invokeinterface 163 1 0
-    //   475: pop
-    //   476: aload 4
-    //   478: getstatic 169	com/tencent/mobileqq/app/QQManagerFactory:DB_FIX_MANAGER	I
-    //   481: invokevirtual 173	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   484: checkcast 124	com/tencent/mobileqq/database/corrupt/DBFixManager
-    //   487: astore 4
-    //   489: aload 4
-    //   491: iconst_1
-    //   492: invokevirtual 176	com/tencent/mobileqq/database/corrupt/DBFixManager:b	(Z)V
-    //   495: aload 9
-    //   497: aload 8
-    //   499: invokevirtual 180	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   502: pop
-    //   503: aload_0
-    //   504: getfield 12	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7:this$0	Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity;
-    //   507: getfield 35	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
-    //   510: new 182	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$3
-    //   513: dup
-    //   514: aload_0
-    //   515: invokespecial 183	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$3:<init>	(Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7;)V
-    //   518: invokevirtual 46	android/widget/Button:post	(Ljava/lang/Runnable;)Z
-    //   521: pop
-    //   522: aload 4
-    //   524: invokevirtual 185	com/tencent/mobileqq/database/corrupt/DBFixManager:d	()V
-    //   527: aload 5
-    //   529: ifnull +8 -> 537
-    //   532: aload 5
-    //   534: invokevirtual 188	java/io/BufferedInputStream:close	()V
-    //   537: aload 6
-    //   539: ifnull -479 -> 60
-    //   542: aload 6
-    //   544: invokevirtual 189	java/io/BufferedOutputStream:close	()V
-    //   547: return
-    //   548: astore 4
-    //   550: aload 4
-    //   552: invokevirtual 192	java/io/IOException:printStackTrace	()V
-    //   555: return
-    //   556: astore 4
-    //   558: aload 4
-    //   560: invokevirtual 192	java/io/IOException:printStackTrace	()V
-    //   563: goto -26 -> 537
-    //   566: astore 6
-    //   568: aconst_null
-    //   569: astore 4
-    //   571: aconst_null
-    //   572: astore 5
-    //   574: getstatic 100	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   577: iconst_1
-    //   578: ldc 194
-    //   580: aload 6
-    //   582: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   585: aload 6
-    //   587: invokevirtual 192	java/io/IOException:printStackTrace	()V
-    //   590: aload 5
-    //   592: ifnull +8 -> 600
-    //   595: aload 5
-    //   597: invokevirtual 188	java/io/BufferedInputStream:close	()V
-    //   600: aload 4
-    //   602: ifnull -542 -> 60
-    //   605: aload 4
-    //   607: invokevirtual 189	java/io/BufferedOutputStream:close	()V
-    //   610: return
-    //   611: astore 4
-    //   613: aload 4
-    //   615: invokevirtual 192	java/io/IOException:printStackTrace	()V
-    //   618: return
-    //   619: astore 5
-    //   621: aload 5
-    //   623: invokevirtual 192	java/io/IOException:printStackTrace	()V
-    //   626: goto -26 -> 600
-    //   629: astore 4
-    //   631: aconst_null
-    //   632: astore 6
+    //   197: aload 8
+    //   199: iconst_0
+    //   200: sipush 8192
+    //   203: invokevirtual 92	java/io/BufferedInputStream:read	([BII)I
+    //   206: istore_2
+    //   207: iload_2
+    //   208: iconst_m1
+    //   209: if_icmpeq +161 -> 370
+    //   212: iload_1
+    //   213: ifne +145 -> 358
+    //   216: aload 8
+    //   218: bipush 28
+    //   220: baload
+    //   221: istore_3
+    //   222: aload 8
+    //   224: bipush 29
+    //   226: baload
+    //   227: istore 4
+    //   229: aload 8
+    //   231: bipush 30
+    //   233: baload
+    //   234: istore 5
+    //   236: aload 8
+    //   238: bipush 31
+    //   240: baload
+    //   241: sipush 255
+    //   244: iand
+    //   245: iload_3
+    //   246: bipush 24
+    //   248: ishl
+    //   249: iload 4
+    //   251: bipush 16
+    //   253: ishl
+    //   254: ldc 93
+    //   256: iand
+    //   257: ior
+    //   258: iload 5
+    //   260: bipush 8
+    //   262: ishl
+    //   263: ldc 94
+    //   265: iand
+    //   266: ior
+    //   267: ior
+    //   268: istore_3
+    //   269: getstatic 97	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   272: iconst_1
+    //   273: iconst_2
+    //   274: anewarray 4	java/lang/Object
+    //   277: dup
+    //   278: iconst_0
+    //   279: ldc 99
+    //   281: aastore
+    //   282: dup
+    //   283: iconst_1
+    //   284: iload_3
+    //   285: invokestatic 105	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   288: aastore
+    //   289: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   292: iload_3
+    //   293: bipush 10
+    //   295: iadd
+    //   296: istore_3
+    //   297: aload 8
+    //   299: bipush 28
+    //   301: iload_3
+    //   302: bipush 24
+    //   304: ishr
+    //   305: i2b
+    //   306: bastore
+    //   307: aload 8
+    //   309: bipush 29
+    //   311: iload_3
+    //   312: bipush 16
+    //   314: ishr
+    //   315: sipush 255
+    //   318: iand
+    //   319: i2b
+    //   320: bastore
+    //   321: aload 8
+    //   323: bipush 30
+    //   325: iload_3
+    //   326: bipush 8
+    //   328: ishr
+    //   329: sipush 255
+    //   332: iand
+    //   333: i2b
+    //   334: bastore
+    //   335: aload 8
+    //   337: bipush 31
+    //   339: iload_3
+    //   340: sipush 255
+    //   343: iand
+    //   344: i2b
+    //   345: bastore
+    //   346: aload 7
+    //   348: aload 8
+    //   350: iconst_0
+    //   351: iload_2
+    //   352: invokevirtual 115	java/io/BufferedOutputStream:write	([BII)V
+    //   355: goto +442 -> 797
+    //   358: aload 7
+    //   360: aload 8
+    //   362: iconst_0
+    //   363: iload_2
+    //   364: invokevirtual 115	java/io/BufferedOutputStream:write	([BII)V
+    //   367: goto +430 -> 797
+    //   370: aload 11
+    //   372: invokevirtual 119	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   375: getstatic 124	com/tencent/mobileqq/database/corrupt/DBFixManager:b	Ljava/lang/String;
+    //   378: iconst_0
+    //   379: invokevirtual 130	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   382: astore 8
+    //   384: aload 12
+    //   386: invokestatic 136	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   389: ifne +140 -> 529
+    //   392: new 33	java/lang/StringBuilder
+    //   395: dup
+    //   396: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   399: astore 9
+    //   401: aload 9
+    //   403: aload 12
+    //   405: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   408: pop
+    //   409: aload 9
+    //   411: getstatic 138	com/tencent/mobileqq/database/corrupt/DBFixManager:d	Ljava/lang/String;
+    //   414: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   417: pop
+    //   418: aload 8
+    //   420: aload 9
+    //   422: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   425: iconst_0
+    //   426: invokeinterface 144 3 0
+    //   431: ifeq +98 -> 529
+    //   434: aload 8
+    //   436: invokeinterface 148 1 0
+    //   441: astore 8
+    //   443: new 33	java/lang/StringBuilder
+    //   446: dup
+    //   447: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   450: astore 9
+    //   452: aload 9
+    //   454: aload 12
+    //   456: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   459: pop
+    //   460: aload 9
+    //   462: getstatic 138	com/tencent/mobileqq/database/corrupt/DBFixManager:d	Ljava/lang/String;
+    //   465: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   468: pop
+    //   469: aload 8
+    //   471: aload 9
+    //   473: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   476: invokeinterface 154 2 0
+    //   481: pop
+    //   482: new 33	java/lang/StringBuilder
+    //   485: dup
+    //   486: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   489: astore 9
+    //   491: aload 9
+    //   493: aload 12
+    //   495: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   498: pop
+    //   499: aload 9
+    //   501: getstatic 157	com/tencent/mobileqq/database/corrupt/DBFixManager:e	Ljava/lang/String;
+    //   504: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   507: pop
+    //   508: aload 8
+    //   510: aload 9
+    //   512: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   515: invokeinterface 154 2 0
+    //   520: pop
+    //   521: aload 8
+    //   523: invokeinterface 160 1 0
+    //   528: pop
+    //   529: aload 11
+    //   531: getstatic 166	com/tencent/mobileqq/app/QQManagerFactory:DB_FIX_MANAGER	I
+    //   534: invokevirtual 170	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   537: checkcast 121	com/tencent/mobileqq/database/corrupt/DBFixManager
+    //   540: astore 8
+    //   542: aload 8
+    //   544: iconst_1
+    //   545: invokevirtual 173	com/tencent/mobileqq/database/corrupt/DBFixManager:b	(Z)V
+    //   548: aload 15
+    //   550: aload 14
+    //   552: invokevirtual 177	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   555: pop
+    //   556: aload_0
+    //   557: getfield 12	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7:this$0	Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity;
+    //   560: getfield 59	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
+    //   563: new 179	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$3
+    //   566: dup
+    //   567: aload_0
+    //   568: invokespecial 180	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$3:<init>	(Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7;)V
+    //   571: invokevirtual 70	android/widget/Button:post	(Ljava/lang/Runnable;)Z
+    //   574: pop
+    //   575: aload 8
+    //   577: invokevirtual 182	com/tencent/mobileqq/database/corrupt/DBFixManager:d	()V
+    //   580: aload 10
+    //   582: invokevirtual 185	java/io/BufferedInputStream:close	()V
+    //   585: goto +10 -> 595
+    //   588: astore 8
+    //   590: aload 8
+    //   592: invokevirtual 188	java/io/IOException:printStackTrace	()V
+    //   595: aload 7
+    //   597: invokevirtual 189	java/io/BufferedOutputStream:close	()V
+    //   600: return
+    //   601: astore 8
+    //   603: aload 10
+    //   605: astore 9
+    //   607: goto +127 -> 734
+    //   610: astore 8
+    //   612: aload 10
+    //   614: astore 11
+    //   616: aload 8
+    //   618: astore 10
+    //   620: goto +33 -> 653
+    //   623: astore 10
+    //   625: aload 13
+    //   627: astore 11
+    //   629: goto +24 -> 653
+    //   632: astore 8
     //   634: aconst_null
-    //   635: astore 5
-    //   637: aload 5
-    //   639: ifnull +8 -> 647
-    //   642: aload 5
-    //   644: invokevirtual 188	java/io/BufferedInputStream:close	()V
-    //   647: aload 6
-    //   649: ifnull +8 -> 657
-    //   652: aload 6
-    //   654: invokevirtual 189	java/io/BufferedOutputStream:close	()V
-    //   657: aload 4
-    //   659: athrow
-    //   660: astore 5
-    //   662: aload 5
-    //   664: invokevirtual 192	java/io/IOException:printStackTrace	()V
-    //   667: goto -20 -> 647
-    //   670: astore 5
-    //   672: aload 5
-    //   674: invokevirtual 192	java/io/IOException:printStackTrace	()V
-    //   677: goto -20 -> 657
-    //   680: astore 4
-    //   682: aconst_null
-    //   683: astore 5
-    //   685: goto -48 -> 637
-    //   688: astore 4
-    //   690: goto -53 -> 637
-    //   693: astore 7
-    //   695: aload 4
-    //   697: astore 6
-    //   699: aload 7
-    //   701: astore 4
-    //   703: goto -66 -> 637
-    //   706: astore 7
-    //   708: aconst_null
-    //   709: astore 5
-    //   711: aload 6
-    //   713: astore 4
-    //   715: aload 7
-    //   717: astore 6
-    //   719: goto -145 -> 574
-    //   722: astore 7
-    //   724: aload 6
-    //   726: astore 4
-    //   728: aload 7
-    //   730: astore 6
-    //   732: goto -158 -> 574
-    //   735: aconst_null
-    //   736: astore 4
-    //   738: aconst_null
-    //   739: astore 7
-    //   741: goto -710 -> 31
+    //   635: astore 7
+    //   637: aload 7
+    //   639: astore 9
+    //   641: goto +93 -> 734
+    //   644: astore 10
+    //   646: aconst_null
+    //   647: astore 7
+    //   649: aload 13
+    //   651: astore 11
+    //   653: aload 11
+    //   655: astore 9
+    //   657: aload 7
+    //   659: astore 8
+    //   661: getstatic 97	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   664: iconst_1
+    //   665: ldc 191
+    //   667: aload 10
+    //   669: invokestatic 194	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   672: aload 11
+    //   674: astore 9
+    //   676: aload 7
+    //   678: astore 8
+    //   680: aload 10
+    //   682: invokevirtual 188	java/io/IOException:printStackTrace	()V
+    //   685: aload 11
+    //   687: ifnull +18 -> 705
+    //   690: aload 11
+    //   692: invokevirtual 185	java/io/BufferedInputStream:close	()V
+    //   695: goto +10 -> 705
+    //   698: astore 8
+    //   700: aload 8
+    //   702: invokevirtual 188	java/io/IOException:printStackTrace	()V
+    //   705: aload 7
+    //   707: ifnull +16 -> 723
+    //   710: aload 7
+    //   712: invokevirtual 189	java/io/BufferedOutputStream:close	()V
+    //   715: return
+    //   716: astore 7
+    //   718: aload 7
+    //   720: invokevirtual 188	java/io/IOException:printStackTrace	()V
+    //   723: return
+    //   724: astore 10
+    //   726: aload 8
+    //   728: astore 7
+    //   730: aload 10
+    //   732: astore 8
+    //   734: aload 9
+    //   736: ifnull +18 -> 754
+    //   739: aload 9
+    //   741: invokevirtual 185	java/io/BufferedInputStream:close	()V
+    //   744: goto +10 -> 754
+    //   747: astore 9
+    //   749: aload 9
+    //   751: invokevirtual 188	java/io/IOException:printStackTrace	()V
+    //   754: aload 7
+    //   756: ifnull +18 -> 774
+    //   759: aload 7
+    //   761: invokevirtual 189	java/io/BufferedOutputStream:close	()V
+    //   764: goto +10 -> 774
+    //   767: astore 7
+    //   769: aload 7
+    //   771: invokevirtual 188	java/io/IOException:printStackTrace	()V
+    //   774: aload 8
+    //   776: athrow
+    //   777: aload_0
+    //   778: getfield 12	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7:this$0	Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity;
+    //   781: getfield 59	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
+    //   784: new 196	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$1
+    //   787: dup
+    //   788: aload_0
+    //   789: invokespecial 197	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7$1:<init>	(Lcom/tencent/mobileqq/database/corrupt/DBFixConfigActivity$7;)V
+    //   792: invokevirtual 70	android/widget/Button:post	(Ljava/lang/Runnable;)Z
+    //   795: pop
+    //   796: return
+    //   797: iload_1
+    //   798: iload_2
+    //   799: iadd
+    //   800: istore_1
+    //   801: goto -606 -> 195
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	744	0	this	7
-    //   173	171	1	i	int
-    //   185	158	2	j	int
-    //   237	76	3	k	int
-    //   7	516	4	localObject1	Object
-    //   548	3	4	localIOException1	java.io.IOException
-    //   556	3	4	localIOException2	java.io.IOException
-    //   569	37	4	localObject2	Object
-    //   611	3	4	localIOException3	java.io.IOException
-    //   629	29	4	localObject3	Object
-    //   680	1	4	localObject4	Object
-    //   688	8	4	localObject5	Object
-    //   701	36	4	localObject6	Object
-    //   163	433	5	localBufferedInputStream	java.io.BufferedInputStream
-    //   619	3	5	localIOException4	java.io.IOException
-    //   635	8	5	localObject7	Object
-    //   660	3	5	localIOException5	java.io.IOException
-    //   670	3	5	localIOException6	java.io.IOException
-    //   683	27	5	localObject8	Object
-    //   145	398	6	localBufferedOutputStream	java.io.BufferedOutputStream
-    //   566	20	6	localIOException7	java.io.IOException
-    //   632	99	6	localObject9	Object
-    //   29	420	7	str	java.lang.String
-    //   693	7	7	localObject10	Object
-    //   706	10	7	localIOException8	java.io.IOException
-    //   722	7	7	localIOException9	java.io.IOException
-    //   739	1	7	localObject11	Object
-    //   88	410	8	localFile1	java.io.File
-    //   99	397	9	localFile2	java.io.File
-    //   170	299	10	localObject12	Object
+    //   0	804	0	this	7
+    //   194	607	1	i	int
+    //   206	594	2	j	int
+    //   221	123	3	k	int
+    //   227	27	4	m	int
+    //   234	29	5	n	int
+    //   14	9	6	bool	boolean
+    //   7	704	7	localObject1	Object
+    //   716	3	7	localIOException1	java.io.IOException
+    //   728	32	7	localObject2	Object
+    //   767	3	7	localIOException2	java.io.IOException
+    //   77	499	8	localObject3	Object
+    //   588	3	8	localIOException3	java.io.IOException
+    //   601	1	8	localObject4	Object
+    //   610	7	8	localIOException4	java.io.IOException
+    //   632	1	8	localObject5	Object
+    //   659	20	8	localObject6	Object
+    //   698	29	8	localIOException5	java.io.IOException
+    //   732	43	8	localObject7	Object
+    //   17	723	9	localObject8	Object
+    //   747	3	9	localIOException6	java.io.IOException
+    //   184	435	10	localObject9	Object
+    //   623	1	10	localIOException7	java.io.IOException
+    //   644	37	10	localIOException8	java.io.IOException
+    //   724	7	10	localObject10	Object
+    //   32	659	11	localObject11	Object
+    //   39	455	12	localObject12	Object
+    //   20	630	13	localObject13	Object
+    //   105	446	14	localFile1	java.io.File
+    //   116	433	15	localFile2	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   542	547	548	java/io/IOException
-    //   532	537	556	java/io/IOException
-    //   129	147	566	java/io/IOException
-    //   605	610	611	java/io/IOException
-    //   595	600	619	java/io/IOException
-    //   129	147	629	finally
-    //   642	647	660	java/io/IOException
-    //   652	657	670	java/io/IOException
-    //   147	165	680	finally
-    //   165	172	688	finally
-    //   174	186	688	finally
-    //   238	261	688	finally
-    //   315	324	688	finally
-    //   331	340	688	finally
-    //   347	476	688	finally
-    //   476	527	688	finally
-    //   574	590	693	finally
-    //   147	165	706	java/io/IOException
-    //   165	172	722	java/io/IOException
-    //   174	186	722	java/io/IOException
-    //   238	261	722	java/io/IOException
-    //   315	324	722	java/io/IOException
-    //   331	340	722	java/io/IOException
-    //   347	476	722	java/io/IOException
-    //   476	527	722	java/io/IOException
+    //   580	585	588	java/io/IOException
+    //   186	193	601	finally
+    //   195	207	601	finally
+    //   269	292	601	finally
+    //   346	355	601	finally
+    //   358	367	601	finally
+    //   370	529	601	finally
+    //   529	580	601	finally
+    //   186	193	610	java/io/IOException
+    //   195	207	610	java/io/IOException
+    //   269	292	610	java/io/IOException
+    //   346	355	610	java/io/IOException
+    //   358	367	610	java/io/IOException
+    //   370	529	610	java/io/IOException
+    //   529	580	610	java/io/IOException
+    //   168	186	623	java/io/IOException
+    //   146	164	632	finally
+    //   146	164	644	java/io/IOException
+    //   690	695	698	java/io/IOException
+    //   595	600	716	java/io/IOException
+    //   710	715	716	java/io/IOException
+    //   168	186	724	finally
+    //   661	672	724	finally
+    //   680	685	724	finally
+    //   739	744	747	java/io/IOException
+    //   759	764	767	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixConfigActivity.7
  * JD-Core Version:    0.7.0.1
  */

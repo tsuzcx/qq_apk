@@ -21,8 +21,12 @@ class StructMsgItemPAVideo$2
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadFailed ,cause = " + paramThrowable);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onLoadFailed ,cause = ");
+      paramView.append(paramThrowable);
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, paramView.toString());
     }
   }
   
@@ -44,7 +48,7 @@ class StructMsgItemPAVideo$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemPAVideo.2
  * JD-Core Version:    0.7.0.1
  */

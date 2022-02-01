@@ -25,10 +25,9 @@ public class RelationVipGrayBean
     if (paramString == null) {
       return null;
     }
-    RelationVipGrayBean localRelationVipGrayBean;
     try
     {
-      localRelationVipGrayBean = new RelationVipGrayBean();
+      RelationVipGrayBean localRelationVipGrayBean = new RelationVipGrayBean();
       localRelationVipGrayBean.jdField_a_of_type_JavaLangString = paramString;
       paramString = new JSONObject(paramString);
       localRelationVipGrayBean.jdField_a_of_type_Int = paramString.optInt("isShowEntry");
@@ -43,28 +42,32 @@ public class RelationVipGrayBean
         String str = (String)localIterator.next();
         localRelationVipGrayBean.jdField_a_of_type_JavaUtilHashMap.put(str, paramString.optString(str));
       }
-      QLog.d("ConfBean", 0, "confBean = " + localRelationVipGrayBean.toString());
+      paramString = new StringBuilder();
+      paramString.append("confBean = ");
+      paramString.append(localRelationVipGrayBean.toString());
+      QLog.d("ConfBean", 0, paramString.toString());
+      return localRelationVipGrayBean;
     }
     catch (Exception paramString)
     {
       if (QLog.isColorLevel()) {
         QLog.e("ConfBean", 1, "parse e:", paramString);
       }
-      return null;
     }
-    return localRelationVipGrayBean;
+    return null;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("configContent:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("configContent:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.RelationVipGrayBean
  * JD-Core Version:    0.7.0.1
  */

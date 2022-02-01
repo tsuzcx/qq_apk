@@ -1,8 +1,9 @@
 package cooperation.qzone;
 
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQzoneModuleManageApi;
 import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
 import cooperation.qzone.util.FileUtils;
 import java.io.File;
 
@@ -30,13 +31,16 @@ class UploadSoDownloader$2
     }
     UploadSoDownloader.access$402(false);
     String str = UploadSoDownloader.access$000().getAbsolutePath();
-    QLog.d("[upload2]UploadEnv", 1, "upload so download success : " + str);
-    paramString = QzoneModuleManager.getInstance().getModuleFilePath(paramString);
-    File localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("upload so download success : ");
+    ((StringBuilder)localObject).append(str);
+    QLog.d("[upload2]UploadEnv", 1, ((StringBuilder)localObject).toString());
+    paramString = ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).getModuleFilePath(paramString);
+    localObject = new File(str);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    if (!FileUtils.unzip(new File(paramString), localFile))
+    if (!FileUtils.unzip(new File(paramString), (File)localObject))
     {
       QLog.d("[upload2]UploadEnv", 1, "upload so unzip fail");
       UploadSoDownloader.access$402(false);
@@ -48,28 +52,24 @@ class UploadSoDownloader$2
       UploadSoDownloader.access$300(this.this$0, true);
       UploadSoDownloader.access$202(true);
     }
-    for (;;)
+    else
     {
-      UploadSoDownloader.access$402(false);
-      return;
       try
       {
-        localFile.delete();
-        UploadSoDownloader.access$300(this.this$0, false);
+        ((File)localObject).delete();
       }
       catch (Throwable paramString)
       {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
+        paramString.printStackTrace();
       }
+      UploadSoDownloader.access$300(this.this$0, false);
     }
+    UploadSoDownloader.access$402(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.UploadSoDownloader.2
  * JD-Core Version:    0.7.0.1
  */

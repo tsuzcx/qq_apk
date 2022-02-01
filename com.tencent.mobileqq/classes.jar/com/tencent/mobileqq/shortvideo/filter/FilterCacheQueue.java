@@ -19,26 +19,33 @@ final class FilterCacheQueue
   
   QQBaseFilter getFilterByType(int paramInt)
   {
-    QQBaseFilter localQQBaseFilter = (QQBaseFilter)this.mFilterList.get(Integer.valueOf(paramInt));
-    if (localQQBaseFilter == null) {
-      throw new RuntimeException("getFilterByType failed type=" + paramInt);
+    Object localObject = (QQBaseFilter)this.mFilterList.get(Integer.valueOf(paramInt));
+    if (localObject != null) {
+      return localObject;
     }
-    return localQQBaseFilter;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getFilterByType failed type=");
+    ((StringBuilder)localObject).append(paramInt);
+    throw new RuntimeException(((StringBuilder)localObject).toString());
   }
   
   QQBaseFilter getFilterByTypeWithCreate(int paramInt, QQFilterRenderManager paramQQFilterRenderManager)
   {
-    QQBaseFilter localQQBaseFilter2 = (QQBaseFilter)this.mFilterList.get(Integer.valueOf(paramInt));
-    QQBaseFilter localQQBaseFilter1 = localQQBaseFilter2;
-    if (localQQBaseFilter2 == null)
+    QQBaseFilter localQQBaseFilter = (QQBaseFilter)this.mFilterList.get(Integer.valueOf(paramInt));
+    if (localQQBaseFilter == null)
     {
-      localQQBaseFilter1 = FilterCreateFactory.createFilter(paramInt, paramQQFilterRenderManager);
-      if (localQQBaseFilter1 == null) {
-        throw new RuntimeException("createFilter failed type=" + paramInt);
+      paramQQFilterRenderManager = FilterCreateFactory.createFilter(paramInt, paramQQFilterRenderManager);
+      if (paramQQFilterRenderManager != null)
+      {
+        this.mFilterList.put(Integer.valueOf(paramInt), paramQQFilterRenderManager);
+        return paramQQFilterRenderManager;
       }
-      this.mFilterList.put(Integer.valueOf(paramInt), localQQBaseFilter1);
+      paramQQFilterRenderManager = new StringBuilder();
+      paramQQFilterRenderManager.append("createFilter failed type=");
+      paramQQFilterRenderManager.append(paramInt);
+      throw new RuntimeException(paramQQFilterRenderManager.toString());
     }
-    return localQQBaseFilter1;
+    return localQQBaseFilter;
   }
   
   Collection<QQBaseFilter> getFilterList()
@@ -58,7 +65,7 @@ final class FilterCacheQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.FilterCacheQueue
  * JD-Core Version:    0.7.0.1
  */

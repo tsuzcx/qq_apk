@@ -12,7 +12,7 @@ public final class E_SDK_TYPE
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.E_SDK_TYPE
  * JD-Core Version:    0.7.0.1
  */

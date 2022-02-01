@@ -21,15 +21,17 @@ public class PreLoader
   
   public static void log(String paramString)
   {
-    if (sLogger != null) {
-      sLogger.d("PreLoader", paramString);
+    ILogger localILogger = sLogger;
+    if (localILogger != null) {
+      localILogger.d("PreLoader", paramString);
     }
   }
   
   public static void log(Throwable paramThrowable)
   {
-    if (sLogger != null) {
-      sLogger.d("PreLoader", "", paramThrowable);
+    ILogger localILogger = sLogger;
+    if (localILogger != null) {
+      localILogger.d("PreLoader", "", paramThrowable);
     }
   }
   
@@ -60,7 +62,7 @@ public class PreLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.engineering.preload.PreLoader
  * JD-Core Version:    0.7.0.1
  */

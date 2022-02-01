@@ -31,23 +31,17 @@ public final class WeiyunCallbackCenter
   {
     int i = 0;
     if (paramWeiyunCallback != null) {
-      for (;;)
+      synchronized (this.mLock)
       {
-        synchronized (this.mLock)
-        {
-          Iterator localIterator = this.mCallbackMap.entrySet().iterator();
-          if (localIterator.hasNext())
+        Iterator localIterator = this.mCallbackMap.entrySet().iterator();
+        while (localIterator.hasNext()) {
+          if (paramWeiyunCallback.equals(((Map.Entry)localIterator.next()).getValue()))
           {
-            if (paramWeiyunCallback.equals(((Map.Entry)localIterator.next()).getValue()))
-            {
-              localIterator.remove();
-              i += 1;
-            }
-          }
-          else {
-            return i;
+            localIterator.remove();
+            i += 1;
           }
         }
+        return i;
       }
     }
     return 0;
@@ -80,18 +74,18 @@ public final class WeiyunCallbackCenter
   public void onCallback(long paramLong1, long paramLong2, int paramInt1, boolean paramBoolean1, int paramInt2, String paramString, boolean paramBoolean2)
   {
     WeiyunCallback localWeiyunCallback = getCallback(paramLong1);
-    if (localWeiyunCallback == null) {}
-    do
-    {
+    if (localWeiyunCallback == null) {
       return;
-      localWeiyunCallback.onNativeCallback(paramLong2, paramInt1, paramInt2, paramString, paramBoolean1);
-    } while (!paramBoolean2);
-    deleteCallback(paramLong1);
+    }
+    localWeiyunCallback.onNativeCallback(paramLong2, paramInt1, paramInt2, paramString, paramBoolean1);
+    if (paramBoolean2) {
+      deleteCallback(paramLong1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.callback.WeiyunCallbackCenter
  * JD-Core Version:    0.7.0.1
  */

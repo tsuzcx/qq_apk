@@ -6,45 +6,50 @@ import android.os.Message;
 class ProgressPieView$AnimationHandler
   extends Handler
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
+  int mAnimateTo;
+  boolean mHide;
   
   ProgressPieView$AnimationHandler(ProgressPieView paramProgressPieView) {}
   
   public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b > this.jdField_a_of_type_Int)
+    if (this.this$0.mProgress > this.mAnimateTo)
     {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
-    }
-    do
-    {
+      paramMessage = this.this$0;
+      paramMessage.setProgress(paramMessage.mProgress - 1);
+      sendEmptyMessageDelayed(0, this.this$0.mAnimationSpeed);
       return;
-      if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b < this.jdField_a_of_type_Int)
-      {
-        int i = this.jdField_a_of_type_ComTencentWidgetProgressPieView.b + this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Int;
-        if (i <= this.jdField_a_of_type_Int) {
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
-        }
-        for (;;)
-        {
-          sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
-          return;
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_Int);
-        }
+    }
+    if (this.this$0.mProgress < this.mAnimateTo)
+    {
+      int i = this.this$0.mProgress + this.this$0.mAnimationSpeedLevel;
+      int j = this.mAnimateTo;
+      if (i <= j) {
+        this.this$0.setProgress(i);
+      } else {
+        this.this$0.setProgress(j);
       }
-      removeMessages(0);
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setShowImage(false);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
+      sendEmptyMessageDelayed(0, this.this$0.mAnimationSpeed);
+      return;
+    }
+    removeMessages(0);
+    if (this.mHide)
+    {
+      this.this$0.setVisibility(4);
+      this.this$0.setShowImage(false);
+      this.this$0.mShowArc = true;
+      this.mHide = false;
+    }
+  }
+  
+  public void setAnimateTo(int paramInt)
+  {
+    this.mAnimateTo = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ProgressPieView.AnimationHandler
  * JD-Core Version:    0.7.0.1
  */

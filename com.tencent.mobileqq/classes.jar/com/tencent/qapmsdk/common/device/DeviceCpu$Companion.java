@@ -23,75 +23,68 @@ public final class DeviceCpu$Companion
   @NotNull
   public final String getCpuModelName()
   {
-    Object localObject3 = (String)null;
-    Object localObject1 = (String)null;
+    Object localObject2 = (String)null;
     Iterator localIterator = ((Iterable)StringsKt.split$default((CharSequence)FileUtil.Companion.readOutputFromFile("/proc/cpuinfo"), new String[] { "\n" }, false, 0, 6, null)).iterator();
+    Object localObject1 = localObject2;
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      Object localObject2 = localObject3;
-      if (localObject3 == null)
+      Object localObject3 = localObject2;
+      if (localObject2 == null)
       {
-        localObject2 = localObject3;
+        localObject3 = localObject2;
         if (StringsKt.startsWith$default(str, "model name", false, 2, null)) {
-          localObject2 = str;
+          localObject3 = str;
         }
       }
-      Object localObject4 = localObject1;
+      localObject2 = localObject3;
       if (localObject1 == null)
       {
-        localObject4 = localObject1;
-        if (StringsKt.startsWith$default(str, "Hardware", false, 2, null)) {
-          localObject4 = str;
+        localObject2 = localObject3;
+        if (StringsKt.startsWith$default(str, "Hardware", false, 2, null))
+        {
+          localObject1 = str;
+          localObject2 = localObject3;
         }
       }
-      localObject3 = localObject2;
-      localObject1 = localObject4;
     }
-    localObject1 = (String)CollectionsKt.firstOrNull(CollectionsKt.listOfNotNull(new String[] { localObject3, localObject1 }));
+    localObject1 = (String)CollectionsKt.firstOrNull(CollectionsKt.listOfNotNull(new String[] { localObject2, localObject1 }));
     if (localObject1 != null)
     {
       localObject1 = (CharSequence)StringsKt.substringAfter((String)localObject1, ":", "");
-      int j = ((CharSequence)localObject1).length() - 1;
-      int i = 0;
+      int i = ((CharSequence)localObject1).length() - 1;
+      int j = 0;
       int k = 0;
-      int m;
-      if (k <= j) {
-        if (i == 0)
-        {
-          m = k;
-          label213:
-          if (((CharSequence)localObject1).charAt(m) > ' ') {
-            break label250;
-          }
-          m = 1;
-          label230:
-          if (i != 0) {
-            break label263;
-          }
-          if (m != 0) {
-            break label256;
-          }
-          i = 1;
-        }
-      }
-      for (;;)
+      while (j <= i)
       {
-        break;
-        m = j;
-        break label213;
-        label250:
-        m = 0;
-        break label230;
-        label256:
-        k += 1;
-        continue;
-        label263:
-        if (m == 0) {
-          return ((CharSequence)localObject1).subSequence(k, j + 1).toString();
+        int m;
+        if (k == 0) {
+          m = j;
+        } else {
+          m = i;
         }
-        j -= 1;
+        if (((CharSequence)localObject1).charAt(m) <= ' ') {
+          m = 1;
+        } else {
+          m = 0;
+        }
+        if (k == 0)
+        {
+          if (m == 0) {
+            k = 1;
+          } else {
+            j += 1;
+          }
+        }
+        else
+        {
+          if (m == 0) {
+            break;
+          }
+          i -= 1;
+        }
       }
+      return ((CharSequence)localObject1).subSequence(j, i + 1).toString();
     }
     return "";
   }
@@ -100,8 +93,13 @@ public final class DeviceCpu$Companion
   public final String getMaxCpuFreq()
   {
     String str = FileUtil.Companion.readOutputFromFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq");
-    if (((CharSequence)str).length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (((CharSequence)str).length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return "";
     }
     try
@@ -111,7 +109,11 @@ public final class DeviceCpu$Companion
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      Logger.INSTANCE.d(new String[] { "QAPM_common_DeviceCpu", localNumberFormatException + ": get cpu failed." });
+      Logger localLogger = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localNumberFormatException);
+      localStringBuilder.append(": get cpu failed.");
+      localLogger.d(new String[] { "QAPM_common_DeviceCpu", localStringBuilder.toString() });
     }
     return "";
   }
@@ -120,8 +122,13 @@ public final class DeviceCpu$Companion
   public final String getMinCpuFreq()
   {
     String str = FileUtil.Companion.readOutputFromFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq");
-    if (((CharSequence)str).length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (((CharSequence)str).length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return "";
     }
     return String.valueOf(Integer.valueOf(str).intValue() / 1000);
@@ -132,82 +139,95 @@ public final class DeviceCpu$Companion
     if (DeviceCpu.access$getCores$cp() > 0) {
       return DeviceCpu.access$getCores$cp();
     }
-    try
+    for (;;)
     {
-      DeviceCpu.access$setCores$cp((int)((Companion)this).getScNProcessorsConf(-1L));
-      Object localObject;
-      if (DeviceCpu.access$getCores$cp() < 0)
+      try
       {
-        localObject = new File("/sys/devices/system/cpu/");
-        if ((!((File)localObject).exists()) || (!((File)localObject).isDirectory())) {
-          break label105;
+        DeviceCpu.access$setCores$cp((int)((Companion)this).getScNProcessorsConf(-1L));
+        if (DeviceCpu.access$getCores$cp() < 0)
+        {
+          Object localObject = new File("/sys/devices/system/cpu/");
+          if (!((File)localObject).exists()) {
+            break;
+          }
+          if (!((File)localObject).isDirectory()) {
+            return 0;
+          }
+          localObject = ((File)localObject).listFiles((FilenameFilter)DeviceCpu.Companion.getNumCores.1.INSTANCE);
+          if (localObject == null) {
+            break label105;
+          }
+          i = localObject.length;
+          DeviceCpu.access$setCores$cp(i);
         }
-        localObject = ((File)localObject).listFiles((FilenameFilter)DeviceCpu.Companion.getNumCores.1.INSTANCE);
-        if (localObject == null) {
-          break label85;
-        }
-      }
-      label85:
-      for (int i = localObject.length;; i = 0)
-      {
-        DeviceCpu.access$setCores$cp(i);
         i = DeviceCpu.access$getCores$cp();
         return i;
       }
-      return 0;
+      catch (Exception localException)
+      {
+        Logger.INSTANCE.exception("QAPM_common_DeviceCpu", (Throwable)localException);
+        return 0;
+      }
+      label105:
+      int i = 0;
     }
-    catch (Exception localException)
-    {
-      Logger.INSTANCE.exception("QAPM_common_DeviceCpu", (Throwable)localException);
-      return 0;
-    }
+    return 0;
   }
   
   @JvmStatic
   @SuppressLint({"ObsoleteSdkInt"})
   public final long getScClkTck(long paramLong)
   {
-    if (AndroidVersion.Companion.isL()) {}
-    for (;;)
-    {
+    long l;
+    if (AndroidVersion.Companion.isL()) {
       try
       {
         l = Os.sysconf(OsConstants._SC_CLK_TCK);
-        if (l > 0L) {
-          paramLong = l;
-        }
-        return paramLong;
       }
       catch (Exception localException)
       {
-        Logger.INSTANCE.d(new String[] { "QAPM_common_DeviceCpu", localException + ": get system cpu click failed." });
+        Logger localLogger = Logger.INSTANCE;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localException);
+        localStringBuilder.append(": get system cpu click failed.");
+        localLogger.d(new String[] { "QAPM_common_DeviceCpu", localStringBuilder.toString() });
         l = 0L;
-        continue;
       }
-      long l = paramLong;
+    } else {
+      l = paramLong;
     }
+    if (l > 0L) {
+      paramLong = l;
+    }
+    return paramLong;
   }
   
   @JvmStatic
   @SuppressLint({"ObsoleteSdkInt"})
   public final long getScNProcessorsConf(long paramLong)
   {
-    if (AndroidVersion.Companion.isL()) {}
-    try
-    {
-      paramLong = Os.sysconf(OsConstants._SC_NPROCESSORS_CONF);
-      return paramLong;
+    if (AndroidVersion.Companion.isL()) {
+      try
+      {
+        paramLong = Os.sysconf(OsConstants._SC_NPROCESSORS_CONF);
+        return paramLong;
+      }
+      catch (Exception localException)
+      {
+        Logger localLogger = Logger.INSTANCE;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localException);
+        localStringBuilder.append(": get system cpu core failed.");
+        localLogger.d(new String[] { "QAPM_common_DeviceCpu", localStringBuilder.toString() });
+        paramLong = 0L;
+      }
     }
-    catch (Exception localException)
-    {
-      Logger.INSTANCE.d(new String[] { "QAPM_common_DeviceCpu", localException + ": get system cpu core failed." });
-    }
-    return 0L;
+    return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.device.DeviceCpu.Companion
  * JD-Core Version:    0.7.0.1
  */

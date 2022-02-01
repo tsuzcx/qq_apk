@@ -11,12 +11,22 @@ public class VideoUrlEntry
   
   public String toString()
   {
-    return "VideoUrlEntry{vid='" + this.vid + '\'' + ", videoUrlLevel=" + this.videoUrlLevel + ", videoUrl='" + this.videoUrl + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoUrlEntry{vid='");
+    localStringBuilder.append(this.vid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoUrlLevel=");
+    localStringBuilder.append(this.videoUrlLevel);
+    localStringBuilder.append(", videoUrl='");
+    localStringBuilder.append(this.videoUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.VideoUrlEntry
  * JD-Core Version:    0.7.0.1
  */

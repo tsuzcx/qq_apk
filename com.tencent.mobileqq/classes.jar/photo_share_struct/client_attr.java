@@ -38,11 +38,13 @@ public final class client_attr
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.attr != null) {
-      paramJceOutputStream.write(this.attr, 1);
+    Object localObject = this.attr;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.qq_nick != null) {
-      paramJceOutputStream.write(this.qq_nick, 2);
+    localObject = this.qq_nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.action, 3);
     paramJceOutputStream.write(this.gender, 4);
@@ -50,7 +52,7 @@ public final class client_attr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     photo_share_struct.client_attr
  * JD-Core Version:    0.7.0.1
  */

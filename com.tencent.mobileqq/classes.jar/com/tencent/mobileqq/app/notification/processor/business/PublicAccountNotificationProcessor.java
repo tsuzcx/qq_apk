@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
@@ -15,6 +14,9 @@ import com.tencent.mobileqq.app.notification.struct.AbstractBusinessFoldedNotifi
 import com.tencent.mobileqq.app.notification.struct.NotificationElement;
 import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
+import com.tencent.mobileqq.kandian.base.utils.ReadInJoyUtilsConstants;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.util.SkinUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.theme.SkinnableBitmapDrawable;
@@ -36,38 +38,39 @@ public class PublicAccountNotificationProcessor
   
   public NotificationElement a(Message paramMessage)
   {
-    Object localObject3 = SkinUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130840555));
+    Object localObject3 = SkinUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130840424));
     this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((Bitmap)localObject3);
-    Object localObject2 = c();
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject2);
-    Object localObject4 = XMLMessageUtils.a(paramMessage);
-    Object localObject1 = localObject2;
-    if (localObject4 != null)
+    String str1 = c();
+    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d(str1);
+    Object localObject2 = XMLMessageUtils.a(paramMessage);
+    Object localObject1 = str1;
+    if (localObject2 != null)
     {
-      localObject1 = localObject2;
-      if (!((PAMessage)localObject4).items.isEmpty())
+      localObject1 = str1;
+      if (!((PAMessage)localObject2).items.isEmpty())
       {
-        localObject1 = ((PAMessage.Item)((PAMessage)localObject4).items.get(0)).title;
-        if ((((PAMessage.Item)((PAMessage)localObject4).items.get(0)).cover != null) || (((PAMessage.Item)((PAMessage)localObject4).items.get(0)).digestList == null)) {
-          break label214;
+        localObject1 = ((PAMessage.Item)((PAMessage)localObject2).items.get(0)).title;
+        if ((((PAMessage.Item)((PAMessage)localObject2).items.get(0)).cover == null) && (((PAMessage.Item)((PAMessage)localObject2).items.get(0)).digestList != null))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.c((String)localObject1);
+          localObject1 = (String)((PAMessage.Item)((PAMessage)localObject2).items.get(0)).digestList.get(0);
+          this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject1);
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.c((String)localObject1);
-        localObject1 = (String)((PAMessage.Item)((PAMessage)localObject4).items.get(0)).digestList.get(0);
-        this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject1);
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject1);
+        }
       }
     }
-    for (;;)
-    {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b();
-      localObject2 = (String)localObject2 + (String)localObject1;
-      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b((String)localObject2);
-      a(paramMessage, this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement);
-      if (paramMessage.extStr != null) {
-        break;
-      }
+    str1 = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(str1);
+    ((StringBuilder)localObject2).append((String)localObject1);
+    str1 = ((StringBuilder)localObject2).toString();
+    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b(str1);
+    a(paramMessage, this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement);
+    if (paramMessage.extStr == null) {
       return null;
-      label214:
-      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject1);
     }
     if (((paramMessage.extLong & 0x1) == 0) && (!paramMessage.extStr.contains("lockDisplay"))) {
       return null;
@@ -76,57 +79,71 @@ public class PublicAccountNotificationProcessor
       return null;
     }
     Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a();
-    localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.c();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a();
+    str1 = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.c();
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a();
     localIntent.putExtra("need_report", true);
     localIntent.putExtra("incoming_msguid", paramMessage.msgUid);
     localIntent.putExtra("incoming_shmsgseq", paramMessage.shmsgseq);
-    String str2 = localIntent.getStringExtra("uin");
-    if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty(str2))) {}
-    for (localObject2 = ((String)localObject4).replace(str2, "");; localObject2 = localObject4)
+    Object localObject4 = localIntent.getStringExtra("uin");
+    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject4))) {
+      localObject2 = str1.replace((CharSequence)localObject4, "");
+    } else {
+      localObject2 = str1;
+    }
+    Object localObject5;
+    if (TextUtils.isEmpty((CharSequence)localObject2))
     {
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {}
-      while (AppConstants.REMINDER_UIN.equals(str2))
+      localObject2 = localObject1;
+    }
+    else
+    {
+      localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append((String)localObject2);
+      ((StringBuilder)localObject5).append(" : ");
+      ((StringBuilder)localObject5).append((String)localObject1);
+      localObject2 = ((StringBuilder)localObject5).toString();
+    }
+    if (AppConstants.REMINDER_UIN.equals(localObject4)) {}
+    for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramMessage.frienduin, true);; localObject1 = localObject3)
+    {
+      localObject4 = localObject2;
+      localObject3 = str1;
+      break;
+      if (AppConstants.KANDIAN_DAILY_UIN.equals(localObject4))
       {
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramMessage.frienduin, true);
-        localObject2 = localObject1;
-        ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade(), paramMessage, localIntent);
-        this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a(localIntent);
-        this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.c((String)localObject4);
-        this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b((String)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((Bitmap)localObject3);
-        return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
-        localObject1 = (String)localObject2 + " : " + (String)localObject1;
-      }
-      if (AppConstants.KANDIAN_DAILY_UIN.equals(str2))
-      {
-        localObject2 = BaseApplicationImpl.getContext().getResources().getDrawable(2130842888);
-        if ((localObject2 instanceof BitmapDrawable)) {
-          localObject2 = ((BitmapDrawable)localObject2).getBitmap();
-        }
-      }
-      for (;;)
-      {
-        localObject3 = localObject2;
-        localObject2 = str1;
-        break;
-        if ((localObject2 instanceof SkinnableBitmapDrawable))
+        localObject5 = BaseApplicationImpl.getContext().getResources().getDrawable(ReadInJoyUtilsConstants.b);
+        if ((localObject5 instanceof BitmapDrawable))
         {
-          localObject2 = ((SkinnableBitmapDrawable)localObject2).getBitmap();
-          continue;
-          localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131689663);
-          localObject2 = localObject1;
+          localObject1 = ((BitmapDrawable)localObject5).getBitmap();
+          localObject3 = str1;
+          localObject4 = str2;
           break;
         }
-        localObject2 = localObject3;
+        localObject1 = localObject3;
+        localObject3 = str1;
+        localObject4 = str2;
+        if (!(localObject5 instanceof SkinnableBitmapDrawable)) {
+          break;
+        }
+        localObject1 = ((SkinnableBitmapDrawable)localObject5).getBitmap();
+        localObject3 = str1;
+        localObject4 = str2;
+        break;
       }
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131689695);
     }
+    ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportForLockScreenExposure(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade(), paramMessage, localIntent);
+    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a(localIntent);
+    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.c((String)localObject3);
+    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject4);
+    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b((String)localObject2);
+    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((Bitmap)localObject1);
+    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.processor.business.PublicAccountNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -16,35 +16,38 @@ public class DeepCleanConfigProcessor$DeepCleanConfigBean
   public static DeepCleanConfigBean a(String paramString)
   {
     DeepCleanConfigBean localDeepCleanConfigBean = new DeepCleanConfigBean();
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
+    if (!TextUtils.isEmpty(paramString))
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      if (localJSONObject.has("deep_clean_switch")) {
-        localDeepCleanConfigBean.jdField_a_of_type_Int = localJSONObject.optInt("deep_clean_switch");
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        if (localJSONObject.has("deep_clean_switch")) {
+          localDeepCleanConfigBean.jdField_a_of_type_Int = localJSONObject.optInt("deep_clean_switch");
+        }
+        if (localJSONObject.has("already_installed_tip")) {
+          localDeepCleanConfigBean.jdField_a_of_type_JavaLangString = localJSONObject.optString("already_installed_tip");
+        }
+        if (localJSONObject.has("first_not_installed_tip")) {
+          localDeepCleanConfigBean.b = localJSONObject.optString("first_not_installed_tip");
+        }
+        if (localJSONObject.has("second_not_installed_tip")) {
+          localDeepCleanConfigBean.c = localJSONObject.optString("second_not_installed_tip");
+        }
+        if (localJSONObject.has("third_not_installed_tip")) {
+          localDeepCleanConfigBean.d = localJSONObject.optString("third_not_installed_tip");
+        }
       }
-      if (localJSONObject.has("already_installed_tip")) {
-        localDeepCleanConfigBean.jdField_a_of_type_JavaLangString = localJSONObject.optString("already_installed_tip");
-      }
-      if (localJSONObject.has("first_not_installed_tip")) {
-        localDeepCleanConfigBean.b = localJSONObject.optString("first_not_installed_tip");
-      }
-      if (localJSONObject.has("second_not_installed_tip")) {
-        localDeepCleanConfigBean.c = localJSONObject.optString("second_not_installed_tip");
-      }
-      if (localJSONObject.has("third_not_installed_tip")) {
-        localDeepCleanConfigBean.d = localJSONObject.optString("third_not_installed_tip");
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DeepCleanConfigProcessor", 2, "parse DeepCleanConfigBean: " + paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parse DeepCleanConfigBean: ");
+        localStringBuilder.append(paramString);
+        QLog.i("DeepCleanConfigProcessor", 2, localStringBuilder.toString());
+      }
     }
     return localDeepCleanConfigBean;
   }
@@ -56,7 +59,7 @@ public class DeepCleanConfigProcessor$DeepCleanConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.DeepCleanConfigProcessor.DeepCleanConfigBean
  * JD-Core Version:    0.7.0.1
  */

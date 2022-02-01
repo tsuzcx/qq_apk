@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.AudioRecord;
 import android.media.AudioTrack;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportAudioTrack;
 
 public class PcmPlayer
 {
@@ -27,28 +28,26 @@ public class PcmPlayer
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread != null) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread != null) {
       return;
-      try
+    }
+    try
+    {
+      int i = AudioRecord.getMinBufferSize(this.jdField_a_of_type_Int, this.c, this.d);
+      this.b = (this.jdField_a_of_type_Int / 1000 * 20 * this.d);
+      this.jdField_a_of_type_AndroidMediaAudioTrack = new ReportAudioTrack(3, this.jdField_a_of_type_Int, this.c, this.d, i, 1);
+      this.jdField_a_of_type_AndroidMediaAudioTrack.play();
+      this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread = new PcmPlayer.PlayThread(this, null);
+      this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread.start();
+      if (this.jdField_a_of_type_ComTencentChirpPcmPlayer$QQPlayerListener != null)
       {
-        int i = AudioRecord.getMinBufferSize(this.jdField_a_of_type_Int, this.c, this.d);
-        this.b = (this.jdField_a_of_type_Int / 1000 * 20 * this.d);
-        this.jdField_a_of_type_AndroidMediaAudioTrack = new AudioTrack(3, this.jdField_a_of_type_Int, this.c, this.d, i, 1);
-        this.jdField_a_of_type_AndroidMediaAudioTrack.play();
-        this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread = new PcmPlayer.PlayThread(this, null);
-        this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread.start();
-        if (this.jdField_a_of_type_ComTencentChirpPcmPlayer$QQPlayerListener != null)
-        {
-          this.jdField_a_of_type_ComTencentChirpPcmPlayer$QQPlayerListener.l();
-          return;
-        }
+        this.jdField_a_of_type_ComTencentChirpPcmPlayer$QQPlayerListener.l();
+        return;
       }
-      catch (Exception localException)
-      {
-        QLog.e("PcmPlayer", 1, "startPlay fail.", localException);
-      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("PcmPlayer", 1, "startPlay fail.", localException);
     }
   }
   
@@ -62,7 +61,7 @@ public class PcmPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.chirp.PcmPlayer
  * JD-Core Version:    0.7.0.1
  */

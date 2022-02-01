@@ -17,38 +17,34 @@ class TroopNickAdapter$3
     int i = this.a.getInt("dynamicType");
     String str1 = this.a.getString("tplId");
     String str2 = this.a.getString("fileName");
-    ??? = null;
-    switch (i)
-    {
-    }
-    boolean bool;
-    for (;;)
-    {
-      if (??? != null)
-      {
-        ??? = new File((String)???);
-        bool = DownloaderFactory.a(new File(SignatureTemplateConfig.a(str1, str2)), (File)???, true);
-        if (TroopNickAdapter.a(this.this$0) != null) {
-          break;
-        }
-      }
-      return;
+    if (i != 16) {
+      ??? = null;
+    } else {
       ??? = SignatureTemplateConfig.a(str1, "dynamic_aio");
     }
-    synchronized (TroopNickAdapter.a(this.this$0))
+    if (??? != null)
     {
+      ??? = new File((String)???);
+      boolean bool = DownloaderFactory.a(new File(SignatureTemplateConfig.a(str1, str2)), (File)???, true);
       if (TroopNickAdapter.a(this.this$0) == null) {
         return;
       }
-    }
-    if (bool) {
-      TroopNickAdapter.a(this.this$0).a().sendEmptyMessage(10003);
+      synchronized (TroopNickAdapter.a(this.this$0))
+      {
+        if (TroopNickAdapter.a(this.this$0) == null) {
+          return;
+        }
+        if (bool) {
+          TroopNickAdapter.a(this.this$0).a().sendEmptyMessage(10003);
+        }
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickAdapter.3
  * JD-Core Version:    0.7.0.1
  */

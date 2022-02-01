@@ -24,12 +24,11 @@ class StoryPickerFragment$GetCollectListEventReceiver
   
   public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
   {
-    boolean bool1 = false;
     if (!TextUtils.equals(paramStoryPickerFragment.jdField_a_of_type_JavaLangString, paramGetCollectionListEvent.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    boolean bool2 = paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess();
-    Object localObject = new ArrayList(paramGetCollectionListEvent.jdField_a_of_type_JavaUtilList.size());
+    boolean bool = paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess();
+    ArrayList localArrayList = new ArrayList(paramGetCollectionListEvent.jdField_a_of_type_JavaUtilList.size());
     List localList = paramGetCollectionListEvent.jdField_a_of_type_JavaUtilList;
     int i = 0;
     while (i < localList.size())
@@ -38,7 +37,7 @@ class StoryPickerFragment$GetCollectListEventReceiver
       if (localVideoCollectionItem.collectionType == 1)
       {
         int j = 0;
-        if (j < localVideoCollectionItem.collectionVideoUIItemList.size())
+        while (j < localVideoCollectionItem.collectionVideoUIItemList.size())
         {
           VideoCollectionItem.FakeVideoUIItem localFakeVideoUIItem = (VideoCollectionItem.FakeVideoUIItem)localVideoCollectionItem.collectionVideoUIItemList.get(j);
           if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localFakeVideoUIItem.jdField_a_of_type_JavaLangString))
@@ -48,10 +47,8 @@ class StoryPickerFragment$GetCollectListEventReceiver
               localFakeVideoUIItem.b = true;
             }
           }
-          for (;;)
+          else
           {
-            j += 1;
-            break;
             localFakeVideoUIItem.jdField_a_of_type_Boolean = false;
             if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) {
               localFakeVideoUIItem.b = false;
@@ -59,42 +56,35 @@ class StoryPickerFragment$GetCollectListEventReceiver
               localFakeVideoUIItem.b = true;
             }
           }
+          j += 1;
         }
-        ((List)localObject).add(localVideoCollectionItem);
+        localArrayList.add(localVideoCollectionItem);
       }
       i += 1;
     }
-    if ((bool2) && (paramGetCollectionListEvent.e))
+    if ((bool) && (paramGetCollectionListEvent.e))
     {
-      if (!((List)localObject).isEmpty()) {
-        break label327;
+      if (localArrayList.isEmpty())
+      {
+        paramStoryPickerFragment.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(8);
       }
-      paramStoryPickerFragment.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(8);
-      if (!paramGetCollectionListEvent.c) {
-        break label347;
+      else
+      {
+        paramStoryPickerFragment.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(0);
       }
-      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a((List)localObject);
-    }
-    for (;;)
-    {
       if (paramGetCollectionListEvent.c) {
-        paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a(bool2);
+        paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(localArrayList);
+      } else {
+        paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.b(localArrayList);
       }
-      localObject = paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a;
-      if (!paramGetCollectionListEvent.jdField_a_of_type_Boolean) {
-        bool1 = true;
-      }
-      ((LoadingMoreHelper)localObject).a(bool2, bool1);
-      paramStoryPickerFragment.stopTitleProgress();
-      return;
-      label327:
-      paramStoryPickerFragment.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(0);
-      break;
-      label347:
-      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.b((List)localObject);
     }
+    if (paramGetCollectionListEvent.c) {
+      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a(bool);
+    }
+    paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(bool, paramGetCollectionListEvent.jdField_a_of_type_Boolean ^ true);
+    paramStoryPickerFragment.stopTitleProgress();
   }
   
   public Class acceptEventClass()
@@ -104,7 +94,7 @@ class StoryPickerFragment$GetCollectListEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment.GetCollectListEventReceiver
  * JD-Core Version:    0.7.0.1
  */

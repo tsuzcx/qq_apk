@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.text.TextUtils;
@@ -53,75 +54,73 @@ public class QQPtColorFilter
   {
     try
     {
-      paramString = CommonUtils.getInputStreamFromPath(SdkContext.getInstance().getApplication(), paramString + File.separator + "params.json");
-      if (paramString == null) {
-        break label241;
+      localObject = SdkContext.getInstance().getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("params.json");
+      paramString = CommonUtils.getInputStreamFromPath((Context)localObject, localStringBuilder.toString());
+      if (paramString != null)
+      {
+        paramString = CommonUtils.convertStreamToString(paramString);
+        if (paramString != null) {
+          localObject = new JSONObject(paramString);
+        }
       }
-      paramString = CommonUtils.convertStreamToString(paramString);
-      if (paramString == null) {
-        break label241;
-      }
-      paramString = new JSONObject(paramString);
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        SLog.e("QQPtColorFilterInfo", "getColorFilterInfo:" + paramString);
-        Object localObject = null;
-        continue;
-        for (;;)
-        {
-          try
-          {
-            if (!((JSONObject)localObject).has("filterId")) {
-              break label236;
-            }
-            i = Integer.valueOf(((JSONObject)localObject).getString("filterId")).intValue();
-            if (!((JSONObject)localObject).has("name")) {
-              break label231;
-            }
-            paramString = ((JSONObject)localObject).getString("name");
-            if (!((JSONObject)localObject).has("subId")) {
-              break label226;
-            }
-            j = Integer.valueOf(((JSONObject)localObject).getString("subId")).intValue();
-            if (((JSONObject)localObject).has("resourceList"))
-            {
-              localObject = ((JSONObject)localObject).getJSONArray("resourceList");
-              if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-              {
-                localObject = ((JSONArray)localObject).get(0).toString();
-                paramString = new QQPtColorFilterInfo(i, paramString, j, (String)localObject);
-                return paramString;
-              }
-            }
-          }
-          catch (Exception paramString)
-          {
-            return null;
-          }
-          localObject = null;
-          continue;
-          label226:
-          int j = -1;
-          continue;
-          label231:
-          paramString = null;
-          continue;
-          label236:
-          int i = -1;
-        }
-        label241:
-        paramString = null;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getColorFilterInfo:");
+      ((StringBuilder)localObject).append(paramString);
+      SLog.e("QQPtColorFilterInfo", ((StringBuilder)localObject).toString());
+      localObject = null;
     }
-    localObject = paramString;
     if (localObject == null)
     {
       if (SLog.isEnable()) {
         SLog.e("QQPtColorFilterInfo", "filterConfig == null!");
       }
+      return null;
+    }
+    try
+    {
+      boolean bool = ((JSONObject)localObject).has("filterId");
+      j = -1;
+      if (!bool) {
+        break label279;
+      }
+      i = Integer.valueOf(((JSONObject)localObject).getString("filterId")).intValue();
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int j;
+        continue;
+        int i = -1;
+        continue;
+        paramString = null;
+        continue;
+        localObject = null;
+      }
+    }
+    if (((JSONObject)localObject).has("name"))
+    {
+      paramString = ((JSONObject)localObject).getString("name");
+      if (((JSONObject)localObject).has("subId")) {
+        j = Integer.valueOf(((JSONObject)localObject).getString("subId")).intValue();
+      }
+      if (!((JSONObject)localObject).has("resourceList")) {
+        break label289;
+      }
+      localObject = ((JSONObject)localObject).getJSONArray("resourceList");
+      if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
+        break label289;
+      }
+      localObject = ((JSONArray)localObject).get(0).toString();
+      paramString = new QQPtColorFilterInfo(i, paramString, j, (String)localObject);
+      return paramString;
       return null;
     }
   }
@@ -130,7 +129,8 @@ public class QQPtColorFilter
   {
     release();
     this.internalFilter.applyFilterChain(true, paramInt1, paramInt2);
-    GLES20.glGenTextures(this.mPtColorTextureId.length, this.mPtColorTextureId, 0);
+    int[] arrayOfInt = this.mPtColorTextureId;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     this.hasinit = true;
   }
   
@@ -139,11 +139,13 @@ public class QQPtColorFilter
     if (!this.isLoadSoSuccess) {
       return;
     }
-    if (this.internalFilter != null) {
-      this.internalFilter.clearGLSL();
+    Object localObject = this.internalFilter;
+    if (localObject != null) {
+      ((GPUImageLookupFilter)localObject).clearGLSL();
     }
     this.mCacheFrame.clear();
-    GLES20.glDeleteTextures(this.mPtColorTextureId.length, this.mPtColorTextureId, 0);
+    localObject = this.mPtColorTextureId;
+    GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
     if (SLog.isEnable()) {
       SLog.d("QQPtColorFilter", "reslease internalFilter");
     }
@@ -193,12 +195,13 @@ public class QQPtColorFilter
       this.mOutputTextureID = this.mInputTextureID;
       return;
     }
-    if ((this.effectFilter != null) && (this.effectFilter.isValid()))
+    Object localObject = this.effectFilter;
+    if ((localObject != null) && (((VideoFilterBase)localObject).isValid()))
     {
       this.mOutputTextureID = this.effectFilter.RenderProcess(this.mInputTextureID, this.lastWidth, this.lastHeight).getTextureId();
       return;
     }
-    Object localObject = this.newFilterPath;
+    localObject = this.newFilterPath;
     if (this.needChange)
     {
       setNeedChangeFilter(null, false);
@@ -214,7 +217,10 @@ public class QQPtColorFilter
     if (blackList.contains(DeviceInstance.getInstance().getDeviceName()))
     {
       localObject = RendererUtils.saveTexture(this.mCacheFrame);
-      Log.e("QQPtColorFilter", "Save bitmap to avoid black lines " + ((Bitmap)localObject).getWidth());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Save bitmap to avoid black lines ");
+      localStringBuilder.append(((Bitmap)localObject).getWidth());
+      Log.e("QQPtColorFilter", localStringBuilder.toString());
       ((Bitmap)localObject).recycle();
     }
     this.mOutputTextureID = this.mPtColorTextureId[0];
@@ -222,11 +228,13 @@ public class QQPtColorFilter
   
   public void onSurfaceChange(int paramInt1, int paramInt2)
   {
-    if (!this.isLoadSoSuccess) {}
-    while ((this.lastHeight == paramInt1) && (this.lastHeight == paramInt2)) {
+    if (!this.isLoadSoSuccess) {
       return;
     }
-    init(paramInt1, paramInt2);
+    int i = this.lastHeight;
+    if ((i != paramInt1) || (i != paramInt2)) {
+      init(paramInt1, paramInt2);
+    }
   }
   
   public void onSurfaceDestroy()
@@ -234,17 +242,19 @@ public class QQPtColorFilter
     if (this.hasinit)
     {
       release();
-      if (this.effectFilter != null) {
-        this.effectFilter.clearGLSLSelf();
+      VideoFilterBase localVideoFilterBase = this.effectFilter;
+      if (localVideoFilterBase != null) {
+        localVideoFilterBase.clearGLSLSelf();
       }
     }
   }
   
   public void setEffectFilter(VideoFilterBase paramVideoFilterBase)
   {
-    if (this.effectFilter != null)
+    VideoFilterBase localVideoFilterBase = this.effectFilter;
+    if (localVideoFilterBase != null)
     {
-      this.effectFilter.clearGLSLSelf();
+      localVideoFilterBase.clearGLSLSelf();
       this.effectFilter = null;
     }
     this.effectFilter = paramVideoFilterBase;
@@ -258,33 +268,36 @@ public class QQPtColorFilter
       this.bwork = false;
       return;
     }
-    String str2 = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
-    String str1 = "";
-    if (paramFilterDesc != null) {
-      if (TextUtils.isEmpty(paramFilterDesc.resRootPath)) {
-        break label117;
+    Object localObject = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
+    if (paramFilterDesc != null)
+    {
+      if (!TextUtils.isEmpty(paramFilterDesc.resRootPath)) {
+        paramFilterDesc = paramFilterDesc.getResFold(paramFilterDesc.resRootPath);
+      } else {
+        paramFilterDesc = paramFilterDesc.getResFold((String)localObject);
       }
     }
-    label117:
-    for (str1 = paramFilterDesc.getResFold(paramFilterDesc.resRootPath);; str1 = paramFilterDesc.getResFold(str2))
+    else {
+      paramFilterDesc = "";
+    }
+    localObject = getColorFilterInfo(paramFilterDesc);
+    if (localObject != null)
     {
-      paramFilterDesc = getColorFilterInfo(str1);
-      if (paramFilterDesc == null) {
-        break;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramFilterDesc);
+      localStringBuilder.append(((QQPtColorFilterInfo)localObject).getColorPng());
+      paramFilterDesc = localStringBuilder.toString();
+      if (new File(paramFilterDesc).exists())
+      {
+        setNeedChangeFilter(paramFilterDesc, true);
+        this.bwork = true;
       }
-      paramFilterDesc = str1 + paramFilterDesc.getColorPng();
-      if (!new File(paramFilterDesc).exists()) {
-        break;
-      }
-      setNeedChangeFilter(paramFilterDesc, true);
-      this.bwork = true;
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQPtColorFilter
  * JD-Core Version:    0.7.0.1
  */

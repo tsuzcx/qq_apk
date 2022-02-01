@@ -28,6 +28,7 @@ public class HotPicPanelBizReporter
       ShortVideoUtils.setHotPicRedDotStatus(paramIChatPanelBarData.a().getCurrentUin(), false);
       ReportController.b(paramIChatPanelBarData.a(), "dc00898", "", "", "0X8009367", "0X8009367", 2, 0, "", "", "", "");
       paramIChatPanelBarData.a().b(false);
+      return;
     }
   }
   
@@ -35,7 +36,7 @@ public class HotPicPanelBizReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.reporter.HotPicPanelBizReporter
  * JD-Core Version:    0.7.0.1
  */

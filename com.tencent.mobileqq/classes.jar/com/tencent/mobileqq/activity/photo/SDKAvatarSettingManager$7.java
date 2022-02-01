@@ -15,14 +15,15 @@ class SDKAvatarSettingManager$7
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       this.a.a.dismiss();
-      SDKAvatarSettingManager.a(this.a, SDKAvatarSettingManager.a(this.a), true, Long.valueOf(SDKAvatarSettingManager.b(this.a)).longValue(), true);
+      paramDialogInterface = this.a;
+      SDKAvatarSettingManager.a(paramDialogInterface, SDKAvatarSettingManager.a(paramDialogInterface), true, Long.valueOf(SDKAvatarSettingManager.b(this.a)).longValue(), true);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.7
  * JD-Core Version:    0.7.0.1
  */

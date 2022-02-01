@@ -24,7 +24,7 @@ public class DBNetworkUtil
       int j = paramString[2];
       int k = paramString[1];
       int m = paramString[0];
-      return (m & 0xFF) + (((i & 0xFF) << 24) + ((j & 0xFF) << 16) + ((k & 0xFF) << 8)) & 0xFFFFFFFF;
+      return ((i & 0xFF) << 24) + ((j & 0xFF) << 16) + ((k & 0xFF) << 8) + (m & 0xFF) & 0xFFFFFFFF;
     }
     catch (Exception paramString) {}
     return 0;
@@ -75,7 +75,15 @@ public class DBNetworkUtil
   
   public static String a(long paramLong)
   {
-    return (paramLong & 0xFF) + "." + (paramLong >> 8 & 0xFF) + "." + (paramLong >> 16 & 0xFF) + "." + (paramLong >> 24 & 0xFF);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong >> 8 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong >> 16 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong >> 24 & 0xFF);
+    return localStringBuilder.toString();
   }
   
   public static String a(boolean paramBoolean)
@@ -90,7 +98,7 @@ public class DBNetworkUtil
   {
     try
     {
-      label59:
+      label62:
       InetAddress localInetAddress;
       do
       {
@@ -99,7 +107,7 @@ public class DBNetworkUtil
           do
           {
             localObject1 = NetworkInterface.getNetworkInterfaces();
-            break label59;
+            break label62;
             Object localObject2;
             while (!((Enumeration)localObject2).hasMoreElements())
             {
@@ -123,7 +131,11 @@ public class DBNetworkUtil
       Object localObject1 = localInetAddress.getHostAddress();
       return localObject1;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label145:
+      break label145;
+    }
     return "";
   }
   
@@ -134,12 +146,20 @@ public class DBNetworkUtil
   
   public static String b(long paramLong)
   {
-    return (paramLong & 0xFF) + "." + (paramLong >> 8 & 0xFF) + "." + (paramLong >> 16 & 0xFF) + "." + (paramLong >> 24 & 0xFF);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong >> 8 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong >> 16 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong >> 24 & 0xFF);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.DBNetworkUtil
  * JD-Core Version:    0.7.0.1
  */

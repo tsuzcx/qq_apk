@@ -9,27 +9,17 @@ class TCProgressBar$TimerRefresh
   
   public void run()
   {
-    TCProgressBar.BlinkBlock localBlinkBlock;
     if (this.this$0.jdField_a_of_type_Int == 3)
     {
       this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(new TimerRefresh(this.this$0), this.this$0.d);
-      localBlinkBlock = this.this$0.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock;
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.e) {
-        break label77;
-      }
-    }
-    label77:
-    for (boolean bool = true;; bool = false)
-    {
-      localBlinkBlock.e = bool;
+      this.this$0.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.e ^= true;
       this.this$0.invalidate();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.TCProgressBar.TimerRefresh
  * JD-Core Version:    0.7.0.1
  */

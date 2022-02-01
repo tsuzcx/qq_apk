@@ -24,134 +24,152 @@ public class NullableObjectFactoryImplement
   {
     if (paramClass.isInterface())
     {
-      ClassLoader localClassLoader = NullableObjectFactoryImplement.class.getClassLoader();
+      localObject = NullableObjectFactoryImplement.class.getClassLoader();
       NullableObjectFactoryImplement.1 local1 = new NullableObjectFactoryImplement.1();
-      return Proxy.newProxyInstance(localClassLoader, new Class[] { paramClass }, local1);
+      return Proxy.newProxyInstance((ClassLoader)localObject, new Class[] { paramClass }, local1);
     }
-    throw new IllegalArgumentException(paramClass.getName() + " should be an interface!", new Throwable());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramClass.getName());
+    ((StringBuilder)localObject).append(" should be an interface!");
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString(), new Throwable());
   }
   
   public static <T> T a(Class<T> paramClass, Object[] paramArrayOfObject)
   {
     Class[] arrayOfClass1 = a(paramArrayOfObject);
-    if (arrayOfClass1 == null) {}
-    Constructor localConstructor;
-    for (int j = 0;; j = arrayOfClass1.length)
+    int i;
+    if (arrayOfClass1 == null) {
+      i = 0;
+    } else {
+      i = arrayOfClass1.length;
+    }
+    Object localObject;
+    try
     {
-      Constructor[] arrayOfConstructor;
-      try
-      {
-        localConstructor = paramClass.getConstructor(arrayOfClass1);
-      }
-      catch (NoSuchMethodException localNoSuchMethodException)
-      {
-        arrayOfConstructor = paramClass.getConstructors();
-        if (arrayOfConstructor != null) {
-          break;
-        }
-      }
-      try
-      {
-        paramArrayOfObject = paramClass.cast(localConstructor.newInstance(paramArrayOfObject));
-        return paramArrayOfObject;
-      }
-      catch (InstantiationException paramArrayOfObject)
-      {
-        int k;
-        Class[] arrayOfClass2;
-        throw new IllegalStateException(paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + HardCodeUtil.a(2131707656), paramArrayOfObject);
-      }
-      catch (IllegalAccessException paramArrayOfObject)
-      {
-        throw new IllegalStateException(paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + HardCodeUtil.a(2131707657), paramArrayOfObject);
-      }
-      catch (InvocationTargetException paramArrayOfObject)
-      {
-        throw new IllegalArgumentException(paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + ") InvocationTargetException", paramArrayOfObject);
-      }
+      localObject = paramClass.getConstructor(arrayOfClass1);
     }
-    for (k = 0;; k = arrayOfConstructor.length)
+    catch (NoSuchMethodException localNoSuchMethodException)
     {
-      int m = 0;
-      for (;;)
+      Constructor[] arrayOfConstructor = paramClass.getConstructors();
+      int j;
+      if (arrayOfConstructor == null) {
+        j = 0;
+      } else {
+        j = arrayOfConstructor.length;
+      }
+      int k = 0;
+      while (k < j)
       {
-        if (m >= k) {
-          break label494;
+        localObject = arrayOfConstructor[k];
+        Class[] arrayOfClass2 = ((Constructor)localObject).getParameterTypes();
+        if (i == arrayOfClass2.length)
+        {
+          int m = 0;
+          while (m < i)
+          {
+            if (arrayOfClass1[m] == null)
+            {
+              if (!arrayOfClass2[m].isPrimitive()) {}
+            }
+            else {
+              do
+              {
+                for (;;)
+                {
+                  m = 0;
+                  break label229;
+                  if (arrayOfClass2[m].isPrimitive())
+                  {
+                    if (arrayOfClass1[m] == null) {
+                      continue;
+                    }
+                    try
+                    {
+                      Class localClass = (Class)arrayOfClass1[m].getField("TYPE").get(null);
+                      boolean bool = arrayOfClass2[m].equals(localClass);
+                      if (bool) {
+                        break label217;
+                      }
+                    }
+                    catch (NoSuchFieldException localNoSuchFieldException)
+                    {
+                      localNoSuchFieldException.printStackTrace();
+                    }
+                    catch (IllegalAccessException localIllegalAccessException)
+                    {
+                      localIllegalAccessException.printStackTrace();
+                    }
+                  }
+                }
+              } while (!arrayOfClass2[m].isAssignableFrom(arrayOfClass1[m]));
+            }
+            label217:
+            m += 1;
+          }
+          m = 1;
+          label229:
+          if (m != 0) {
+            break label249;
+          }
         }
-        localConstructor = arrayOfConstructor[m];
-        arrayOfClass2 = localConstructor.getParameterTypes();
-        if (j == arrayOfClass2.length) {
-          break;
-        }
-        label88:
-        m += 1;
+        k += 1;
+      }
+      localObject = null;
+      label249:
+      if (localObject == null) {
+        break label520;
       }
     }
-    int i = 0;
-    label107:
-    if (i < j) {
-      if (arrayOfClass1[i] == null)
-      {
-        if (!arrayOfClass2[i].isPrimitive()) {
-          break label293;
-        }
-        i = 0;
-        if (i == 0) {
-          break label492;
-        }
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("虽然不是直接匹配, 但是还是找到了");
+    localStringBuilder.append(paramClass.getName());
+    localStringBuilder.append("(");
+    localStringBuilder.append(Arrays.toString(arrayOfClass1));
+    localStringBuilder.append(")的构造函数");
+    SLog.e("NullableObjectFactoryImplement", localStringBuilder.toString());
+    try
+    {
+      paramArrayOfObject = paramClass.cast(((Constructor)localObject).newInstance(paramArrayOfObject));
+      return paramArrayOfObject;
     }
+    catch (InvocationTargetException paramArrayOfObject)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramClass.getName());
+      ((StringBuilder)localObject).append("(");
+      ((StringBuilder)localObject).append(Arrays.toString(arrayOfClass1));
+      ((StringBuilder)localObject).append(") InvocationTargetException");
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString(), paramArrayOfObject);
+    }
+    catch (IllegalAccessException paramArrayOfObject)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramClass.getName());
+      ((StringBuilder)localObject).append("(");
+      ((StringBuilder)localObject).append(Arrays.toString(arrayOfClass1));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131707682));
+      throw new IllegalStateException(((StringBuilder)localObject).toString(), paramArrayOfObject);
+    }
+    catch (InstantiationException paramArrayOfObject)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramClass.getName());
+      ((StringBuilder)localObject).append("(");
+      ((StringBuilder)localObject).append(Arrays.toString(arrayOfClass1));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131707681));
+      throw new IllegalStateException(((StringBuilder)localObject).toString(), paramArrayOfObject);
+    }
+    label520:
+    paramArrayOfObject = new StringBuilder();
+    paramArrayOfObject.append(HardCodeUtil.a(2131707680));
+    paramArrayOfObject.append(paramClass.getName());
+    paramArrayOfObject.append("(");
+    paramArrayOfObject.append(Arrays.toString(arrayOfClass1));
+    paramArrayOfObject.append(HardCodeUtil.a(2131707683));
+    paramClass = new IllegalStateException(paramArrayOfObject.toString(), localStringBuilder);
     for (;;)
     {
-      for (;;)
-      {
-        label131:
-        if (localConstructor != null) {
-          break label300;
-        }
-        throw new IllegalStateException(HardCodeUtil.a(2131707655) + paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + HardCodeUtil.a(2131707658), localNoSuchMethodException);
-        if (arrayOfClass2[i].isPrimitive()) {
-          if (arrayOfClass1[i] == null)
-          {
-            i = 0;
-            break;
-          }
-        }
-        try
-        {
-          Class localClass = (Class)arrayOfClass1[i].getField("TYPE").get(null);
-          boolean bool = arrayOfClass2[i].equals(localClass);
-          if (!bool) {
-            i = 0;
-          }
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          localIllegalAccessException.printStackTrace();
-          if (!arrayOfClass2[i].isAssignableFrom(arrayOfClass1[i])) {
-            i = 0;
-          }
-        }
-        catch (NoSuchFieldException localNoSuchFieldException)
-        {
-          for (;;)
-          {
-            localNoSuchFieldException.printStackTrace();
-          }
-        }
-      }
-      label293:
-      i += 1;
-      break label107;
-      label300:
-      SLog.e("NullableObjectFactoryImplement", "虽然不是直接匹配, 但是还是找到了" + paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + ")的构造函数");
-      break;
-      i = 1;
-      break label131;
-      label492:
-      break label88;
-      label494:
-      localConstructor = null;
+      throw paramClass;
     }
   }
   
@@ -162,22 +180,23 @@ public class NullableObjectFactoryImplement
     }
     Class[] arrayOfClass = new Class[paramArrayOfObject.length];
     int i = 0;
-    if (i < paramArrayOfObject.length)
+    while (i < paramArrayOfObject.length)
     {
-      if (paramArrayOfObject[i] == null) {}
-      for (Class localClass = null;; localClass = paramArrayOfObject[i].getClass())
-      {
-        arrayOfClass[i] = localClass;
-        i += 1;
-        break;
+      Class localClass;
+      if (paramArrayOfObject[i] == null) {
+        localClass = null;
+      } else {
+        localClass = paramArrayOfObject[i].getClass();
       }
+      arrayOfClass[i] = localClass;
+      i += 1;
     }
     return arrayOfClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.implement.NullableObjectFactoryImplement
  * JD-Core Version:    0.7.0.1
  */

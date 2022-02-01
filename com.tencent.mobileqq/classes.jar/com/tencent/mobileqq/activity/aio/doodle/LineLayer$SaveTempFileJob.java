@@ -19,15 +19,22 @@ import java.lang.ref.WeakReference;
 class LineLayer$SaveTempFileJob
   implements Runnable
 {
-  private int jdField_a_of_type_Int = -1;
+  private int jdField_a_of_type_Int;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public final String a;
-  private WeakReference<SaveTempFileJobListener> jdField_a_of_type_JavaLangRefWeakReference = null;
-  private int b = -1;
+  private WeakReference<SaveTempFileJobListener> jdField_a_of_type_JavaLangRefWeakReference;
+  private int b;
   
   public LineLayer$SaveTempFileJob(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, SaveTempFileJobListener paramSaveTempFileJobListener)
   {
-    this.jdField_a_of_type_JavaLangString = (AppConstants.SCRIBBLE_FILE_DIR + "temp" + File.separator);
+    paramLineLayer = new StringBuilder();
+    paramLineLayer.append(AppConstants.SCRIBBLE_FILE_DIR);
+    paramLineLayer.append("temp");
+    paramLineLayer.append(File.separator);
+    this.jdField_a_of_type_JavaLangString = paramLineLayer.toString();
+    this.jdField_a_of_type_Int = -1;
+    this.b = -1;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
     QLog.d("SaveTempFileJob", 2, "SaveTempFileJob begin:");
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSaveTempFileJobListener);
     if (paramBitmap == null) {
@@ -35,68 +42,77 @@ class LineLayer$SaveTempFileJob
     }
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    for (;;)
+    try
     {
-      try
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
       {
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-          continue;
-        }
         this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        paramLineLayer = new Paint();
-        paramLineLayer.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-        new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawBitmap(paramBitmap, 0.0F, 0.0F, paramLineLayer);
       }
-      catch (Exception paramLineLayer)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("SaveTempFileJob", 2, "SaveTempFileJob exception:" + paramLineLayer);
-        continue;
-      }
-      catch (OutOfMemoryError paramLineLayer)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("SaveTempFileJob", 2, "SaveTempFileJob OOM:" + paramLineLayer.toString());
-        continue;
-      }
-      QLog.d("SaveTempFileJob", 2, "SaveTempFileJob end:");
-      return;
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() != paramBitmap.getHeight()) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() != paramBitmap.getWidth()))
+      else if ((this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() != paramBitmap.getHeight()) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() != paramBitmap.getWidth()))
       {
         this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
         this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
       }
+      paramLineLayer = new Paint();
+      paramLineLayer.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+      new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawBitmap(paramBitmap, 0.0F, 0.0F, paramLineLayer);
     }
+    catch (OutOfMemoryError paramLineLayer)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBitmap = new StringBuilder();
+        paramBitmap.append("SaveTempFileJob OOM:");
+        paramBitmap.append(paramLineLayer.toString());
+        QLog.d("SaveTempFileJob", 2, paramBitmap.toString());
+      }
+    }
+    catch (Exception paramLineLayer)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBitmap = new StringBuilder();
+        paramBitmap.append("SaveTempFileJob exception:");
+        paramBitmap.append(paramLineLayer);
+        QLog.d("SaveTempFileJob", 2, paramBitmap.toString());
+      }
+    }
+    QLog.d("SaveTempFileJob", 2, "SaveTempFileJob end:");
   }
   
   private String a(int paramInt, Bitmap paramBitmap)
   {
-    if (paramBitmap == null) {}
-    do
-    {
+    if (paramBitmap == null) {
       return null;
-      try
-      {
-        String str = this.jdField_a_of_type_JavaLangString + paramInt + ".tmp";
-        if (FileUtils.a(str)) {
-          FileUtils.e(str);
-        }
-        FileOutputStream localFileOutputStream = new FileOutputStream(str);
-        paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localFileOutputStream);
-        localFileOutputStream.flush();
-        localFileOutputStream.close();
-        return str;
+    }
+    try
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(".tmp");
+      localObject = ((StringBuilder)localObject).toString();
+      if (FileUtils.fileExists((String)localObject)) {
+        FileUtils.deleteFile((String)localObject);
       }
-      catch (Exception paramBitmap)
+      FileOutputStream localFileOutputStream = new FileOutputStream((String)localObject);
+      paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localFileOutputStream);
+      localFileOutputStream.flush();
+      localFileOutputStream.close();
+      return localObject;
+    }
+    catch (Exception paramBitmap)
+    {
+      Object localObject;
+      paramBitmap.printStackTrace();
+      if (QLog.isColorLevel())
       {
-        paramBitmap.printStackTrace();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("saveFileCache exception:");
+        ((StringBuilder)localObject).append(paramBitmap);
+        QLog.e("SaveTempFileJob", 2, ((StringBuilder)localObject).toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("SaveTempFileJob", 2, "saveFileCache exception:" + paramBitmap);
+    }
     return null;
   }
   
@@ -105,14 +121,18 @@ class LineLayer$SaveTempFileJob
     try
     {
       File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (!localFile.exists()) {
+      if (!localFile.exists())
+      {
         localFile.mkdirs();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.d("SaveTempFileJobdownloading", 2, "makedir execption: " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("makedir execption: ");
+      localStringBuilder.append(localException);
+      QLog.d("SaveTempFileJobdownloading", 2, localStringBuilder.toString());
     }
   }
   
@@ -123,25 +143,27 @@ class LineLayer$SaveTempFileJob
   
   public void run()
   {
-    if (LineLayer.a(this.this$0) == null) {}
-    do
-    {
+    if (LineLayer.a(this.this$0) == null) {
       return;
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-      {
-        a(null);
-        return;
-      }
-      a();
-      a(a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap));
-    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      a(null);
+      return;
+    }
+    a();
+    a(a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap));
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap != null)
+    {
+      localBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LineLayer.SaveTempFileJob
  * JD-Core Version:    0.7.0.1
  */

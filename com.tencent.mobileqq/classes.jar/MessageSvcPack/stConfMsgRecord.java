@@ -30,16 +30,6 @@ public final class stConfMsgRecord
   public int wSeqNum = 0;
   public int wType = 0;
   
-  static
-  {
-    if (!stConfMsgRecord.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public stConfMsgRecord() {}
   
   public stConfMsgRecord(int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3, byte paramByte, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, int paramInt3, byte[] paramArrayOfByte1, long paramLong9, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
@@ -64,18 +54,17 @@ public final class stConfMsgRecord
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -101,13 +90,76 @@ public final class stConfMsgRecord
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stConfMsgRecord)paramObject;
-    } while ((!JceUtil.equals(this.wType, paramObject.wType)) || (!JceUtil.equals(this.wSeqNum, paramObject.wSeqNum)) || (!JceUtil.equals(this.lFromUin, paramObject.lFromUin)) || (!JceUtil.equals(this.lToUin, paramObject.lToUin)) || (!JceUtil.equals(this.lGroupUin, paramObject.lGroupUin)) || (!JceUtil.equals(this.cConfType, paramObject.cConfType)) || (!JceUtil.equals(this.lConfUin, paramObject.lConfUin)) || (!JceUtil.equals(this.lSendUin, paramObject.lSendUin)) || (!JceUtil.equals(this.uMsgSeq, paramObject.uMsgSeq)) || (!JceUtil.equals(this.uMsgTime, paramObject.uMsgTime)) || (!JceUtil.equals(this.uInfoSeq, paramObject.uInfoSeq)) || (!JceUtil.equals(this.uMsgLen, paramObject.uMsgLen)) || (!JceUtil.equals(this.vMsg, paramObject.vMsg)) || (!JceUtil.equals(this.uAppShareID, paramObject.uAppShareID)) || (!JceUtil.equals(this.vAppShareCookie, paramObject.vAppShareCookie)) || (!JceUtil.equals(this.vRemarkOfSender, paramObject.vRemarkOfSender)));
-    return true;
+    }
+    paramObject = (stConfMsgRecord)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.wType, paramObject.wType))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.wSeqNum, paramObject.wSeqNum))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.lFromUin, paramObject.lFromUin))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.lToUin, paramObject.lToUin))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.lGroupUin, paramObject.lGroupUin))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.cConfType, paramObject.cConfType))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.lConfUin, paramObject.lConfUin))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.lSendUin, paramObject.lSendUin))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.uMsgSeq, paramObject.uMsgSeq))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.uMsgTime, paramObject.uMsgTime))
+                      {
+                        bool1 = bool2;
+                        if (JceUtil.equals(this.uInfoSeq, paramObject.uInfoSeq))
+                        {
+                          bool1 = bool2;
+                          if (JceUtil.equals(this.uMsgLen, paramObject.uMsgLen))
+                          {
+                            bool1 = bool2;
+                            if (JceUtil.equals(this.vMsg, paramObject.vMsg))
+                            {
+                              bool1 = bool2;
+                              if (JceUtil.equals(this.uAppShareID, paramObject.uAppShareID))
+                              {
+                                bool1 = bool2;
+                                if (JceUtil.equals(this.vAppShareCookie, paramObject.vAppShareCookie))
+                                {
+                                  bool1 = bool2;
+                                  if (JceUtil.equals(this.vRemarkOfSender, paramObject.vRemarkOfSender)) {
+                                    bool1 = true;
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public byte getCConfType()
@@ -334,17 +386,19 @@ public final class stConfMsgRecord
     paramJceOutputStream.write(this.uMsgLen, 11);
     paramJceOutputStream.write(this.vMsg, 12);
     paramJceOutputStream.write(this.uAppShareID, 13);
-    if (this.vAppShareCookie != null) {
-      paramJceOutputStream.write(this.vAppShareCookie, 14);
+    byte[] arrayOfByte = this.vAppShareCookie;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 14);
     }
-    if (this.vRemarkOfSender != null) {
-      paramJceOutputStream.write(this.vRemarkOfSender, 15);
+    arrayOfByte = this.vRemarkOfSender;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 15);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.stConfMsgRecord
  * JD-Core Version:    0.7.0.1
  */

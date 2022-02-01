@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.pic;
 
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.PicBusUtil;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.peak.PeakUtils;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -37,8 +37,6 @@ public class GIFPreDownloadLimit
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    int i = -1;
-    int j;
     if (paramBoolean1)
     {
       if (!this.jdField_c_of_type_Boolean)
@@ -46,89 +44,83 @@ public class GIFPreDownloadLimit
         this.jdField_c_of_type_Boolean = true;
         i = 4;
       }
-      j = i;
-      if (!paramBoolean2) {
-        break label277;
-      }
-      j = i;
-      if (this.jdField_a_of_type_Boolean) {
-        break label277;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      j = 2;
-    }
-    for (;;)
-    {
-      label62:
-      label106:
-      HashMap localHashMap;
-      if (i > 0)
+      else
       {
-        if (paramBoolean1)
+        i = -1;
+      }
+      j = i;
+      if (paramBoolean2)
+      {
+        j = i;
+        if (!this.jdField_a_of_type_Boolean)
         {
-          str = "gifWifiFirstFlag";
-          PicPreDownloadUtils.a(str, 1L);
-          ReportController.b(null, "dc00898", "", "", "0X800B3BA", "0X800B3BA", i, 0, "", "", "", "");
+          this.jdField_a_of_type_Boolean = true;
+          j = 2;
+          break label113;
         }
+      }
+    }
+    else
+    {
+      if (!this.jdField_d_of_type_Boolean)
+      {
+        this.jdField_d_of_type_Boolean = true;
+        i = 3;
       }
       else
       {
-        if (j > 0)
-        {
-          if (!paramBoolean1) {
-            break label256;
-          }
-          str = "gifWifiOverFlag";
-          PicPreDownloadUtils.a(str, 1L);
-          ReportController.b(null, "dc00898", "", "", "0X800B3BA", "0X800B3BA", j, 0, "", "", "", "");
-        }
-        localHashMap = new HashMap();
-        if (!paramBoolean1) {
-          break label263;
-        }
-        str = "Wifi";
-        label154:
-        localHashMap.put("NetworkType", str);
-        if (!paramBoolean2) {
-          break label270;
-        }
+        i = -1;
       }
-      label256:
-      label263:
-      label270:
-      for (String str = "1";; str = "0")
+      j = i;
+      if (paramBoolean2)
       {
-        localHashMap.put("OverLimit", str);
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "AioGifPreDownload", true, -1L, paramLong, localHashMap, null);
-        return;
-        if (!this.jdField_d_of_type_Boolean)
+        j = i;
+        if (!this.jdField_b_of_type_Boolean)
         {
-          this.jdField_d_of_type_Boolean = true;
-          i = 3;
+          this.jdField_b_of_type_Boolean = true;
+          j = 1;
+          break label113;
         }
-        j = i;
-        if (!paramBoolean2) {
-          break label277;
-        }
-        j = i;
-        if (this.jdField_b_of_type_Boolean) {
-          break label277;
-        }
-        this.jdField_b_of_type_Boolean = true;
-        j = 1;
-        break;
-        str = "gifXgFirstFlag";
-        break label62;
-        str = "gifXgOverFlag";
-        break label106;
-        str = "XG";
-        break label154;
       }
-      label277:
-      int k = -1;
-      i = j;
-      j = k;
     }
+    int i = j;
+    int j = -1;
+    label113:
+    String str;
+    if (i > 0)
+    {
+      if (paramBoolean1) {
+        str = "gifWifiFirstFlag";
+      } else {
+        str = "gifXgFirstFlag";
+      }
+      PicPreDownloadUtils.a(str, 1L);
+      ReportController.b(null, "dc00898", "", "", "0X800B3BA", "0X800B3BA", i, 0, "", "", "", "");
+    }
+    if (j > 0)
+    {
+      if (paramBoolean1) {
+        str = "gifWifiOverFlag";
+      } else {
+        str = "gifXgOverFlag";
+      }
+      PicPreDownloadUtils.a(str, 1L);
+      ReportController.b(null, "dc00898", "", "", "0X800B3BA", "0X800B3BA", j, 0, "", "", "", "");
+    }
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean1) {
+      str = "Wifi";
+    } else {
+      str = "XG";
+    }
+    localHashMap.put("NetworkType", str);
+    if (paramBoolean2) {
+      str = "1";
+    } else {
+      str = "0";
+    }
+    localHashMap.put("OverLimit", str);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AioGifPreDownload", true, -1L, paramLong, localHashMap, null);
   }
   
   public static boolean a(long paramLong1, long paramLong2)
@@ -142,46 +134,41 @@ public class GIFPreDownloadLimit
   
   public static boolean a(MessageForPic paramMessageForPic)
   {
-    if (paramMessageForPic == null) {}
-    while ((paramMessageForPic.mNotPredownloadReason != -11) && (paramMessageForPic.mNotPredownloadReason != 2)) {
+    boolean bool = false;
+    if (paramMessageForPic == null) {
       return false;
     }
-    return true;
+    if ((paramMessageForPic.mNotPredownloadReason == -11) || (paramMessageForPic.mNotPredownloadReason == 2)) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean a(MessageForPic paramMessageForPic, boolean paramBoolean, int paramInt)
   {
     if (paramMessageForPic == null) {
-      if ((!paramBoolean) || (paramInt != 5)) {}
+      return (paramBoolean) && (paramInt == 5);
     }
-    while ((PeakUtils.a(paramMessageForPic.imageType)) && (paramInt == 5))
-    {
-      return true;
-      return false;
-    }
-    return false;
+    return (PicBusUtil.a(paramMessageForPic.imageType)) && (paramInt == 5);
   }
   
   public void a(boolean paramBoolean, long paramLong)
   {
     if (paramBoolean) {
       this.jdField_c_of_type_Long += paramLong;
-    }
-    for (;;)
-    {
-      PicPreDownloadUtils.a("gifWifiPreDownloadFlow", this.jdField_c_of_type_Long);
-      PicPreDownloadUtils.a("gifXgPreDownloadFlow", this.jdField_d_of_type_Long);
-      PicPreDownloadUtils.a("gifPreDownloadTimestamp", this.e);
-      return;
+    } else {
       this.jdField_d_of_type_Long += paramLong;
     }
+    PicPreDownloadUtils.a("gifWifiPreDownloadFlow", this.jdField_c_of_type_Long);
+    PicPreDownloadUtils.a("gifXgPreDownloadFlow", this.jdField_d_of_type_Long);
+    PicPreDownloadUtils.a("gifPreDownloadTimestamp", this.e);
   }
   
   public boolean a(boolean paramBoolean, long paramLong)
   {
+    long l = this.jdField_c_of_type_Long;
     boolean bool2 = true;
-    boolean bool1;
-    if ((this.jdField_c_of_type_Long < 0L) || (this.jdField_d_of_type_Long < 0L) || (this.e < 0L))
+    if ((l < 0L) || (this.jdField_d_of_type_Long < 0L) || (this.e < 0L))
     {
       this.jdField_c_of_type_Long = PicPreDownloadUtils.a("gifWifiPreDownloadFlow", 0L);
       this.jdField_d_of_type_Long = PicPreDownloadUtils.a("gifXgPreDownloadFlow", 0L);
@@ -189,82 +176,66 @@ public class GIFPreDownloadLimit
       if (this.e == 0L) {
         this.e = System.currentTimeMillis();
       }
-      if (PicPreDownloadUtils.a("gifWifiOverFlag", 0L) == 1L)
-      {
+      if (PicPreDownloadUtils.a("gifWifiOverFlag", 0L) == 1L) {
         bool1 = true;
-        this.jdField_a_of_type_Boolean = bool1;
-        if (PicPreDownloadUtils.a("gifXgOverFlag", 0L) != 1L) {
-          break label254;
-        }
-        bool1 = true;
-        label110:
-        this.jdField_b_of_type_Boolean = bool1;
-        if (PicPreDownloadUtils.a("gifWifiFirstFlag", 0L) != 1L) {
-          break label260;
-        }
-        bool1 = true;
-        label130:
-        this.jdField_c_of_type_Boolean = bool1;
-        if (PicPreDownloadUtils.a("gifXgFirstFlag", 0L) != 1L) {
-          break label266;
-        }
-        bool1 = true;
-        label150:
-        this.jdField_d_of_type_Boolean = bool1;
-      }
-    }
-    else
-    {
-      if (!a(this.e, System.currentTimeMillis()))
-      {
-        this.jdField_c_of_type_Long = 0L;
-        this.jdField_d_of_type_Long = 0L;
-        this.e = System.currentTimeMillis();
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = false;
-      }
-      if (!paramBoolean) {
-        break label278;
-      }
-      if (this.jdField_c_of_type_Long <= this.jdField_a_of_type_Long) {
-        break label272;
-      }
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (!bool1) {
-        a(paramBoolean, paramLong);
-      }
-      a(paramBoolean, bool1, paramLong);
-      return bool1;
-      bool1 = false;
-      break;
-      label254:
-      bool1 = false;
-      break label110;
-      label260:
-      bool1 = false;
-      break label130;
-      label266:
-      bool1 = false;
-      break label150;
-      label272:
-      bool1 = false;
-      continue;
-      label278:
-      bool1 = bool2;
-      if (this.jdField_d_of_type_Long <= this.jdField_b_of_type_Long) {
+      } else {
         bool1 = false;
       }
+      this.jdField_a_of_type_Boolean = bool1;
+      if (PicPreDownloadUtils.a("gifXgOverFlag", 0L) == 1L) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.jdField_b_of_type_Boolean = bool1;
+      if (PicPreDownloadUtils.a("gifWifiFirstFlag", 0L) == 1L) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.jdField_c_of_type_Boolean = bool1;
+      if (PicPreDownloadUtils.a("gifXgFirstFlag", 0L) == 1L) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.jdField_d_of_type_Boolean = bool1;
     }
+    if (!a(this.e, System.currentTimeMillis()))
+    {
+      this.jdField_c_of_type_Long = 0L;
+      this.jdField_d_of_type_Long = 0L;
+      this.e = System.currentTimeMillis();
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_c_of_type_Boolean = false;
+      this.jdField_d_of_type_Boolean = false;
+    }
+    if (paramBoolean)
+    {
+      if (this.jdField_c_of_type_Long > this.jdField_a_of_type_Long)
+      {
+        bool1 = bool2;
+        break label279;
+      }
+    }
+    else if (this.jdField_d_of_type_Long > this.jdField_b_of_type_Long)
+    {
+      bool1 = bool2;
+      break label279;
+    }
+    boolean bool1 = false;
+    label279:
+    if (!bool1) {
+      a(paramBoolean, paramLong);
+    }
+    a(paramBoolean, bool1, paramLong);
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.GIFPreDownloadLimit
  * JD-Core Version:    0.7.0.1
  */

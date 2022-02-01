@@ -9,28 +9,37 @@ class SecurityPolicyChecker$CheckCameraTask
 {
   public void run()
   {
-    AVGameBusinessCtrl localAVGameBusinessCtrl = AVGameBusinessCtrl.b();
-    if (localAVGameBusinessCtrl == null) {}
-    AVGameSession localAVGameSession;
-    SecurityPolicyChecker localSecurityPolicyChecker;
-    do
+    IAVGameBusinessCtrl localIAVGameBusinessCtrl = IAVGameBusinessCtrl.a();
+    if (localIAVGameBusinessCtrl == null) {
+      return;
+    }
+    AVGameSession localAVGameSession = localIAVGameBusinessCtrl.a();
+    if (localAVGameSession == null) {
+      return;
+    }
+    SecurityPolicyChecker localSecurityPolicyChecker = SecurityPolicyChecker.a();
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        localAVGameSession = localAVGameBusinessCtrl.a();
-      } while (localAVGameSession == null);
-      localSecurityPolicyChecker = SecurityPolicyChecker.a();
-      if (QLog.isColorLevel()) {
-        QLog.i("SecurityPolicyChecker", 2, "CheckCameraTask, player[" + SecurityPolicyChecker.a(localSecurityPolicyChecker) + "], self[" + localAVGameSession.b + "], auto[" + localAVGameSession.g + "], hasLocalVideo[" + localAVGameSession.a(1) + "]");
-      }
-    } while ((!localAVGameSession.g) || (!localAVGameSession.a(1)) || (TextUtils.equals(SecurityPolicyChecker.a(localSecurityPolicyChecker), String.valueOf(localAVGameSession.b))));
-    localAVGameBusinessCtrl.c();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("CheckCameraTask, player[");
+      localStringBuilder.append(SecurityPolicyChecker.a(localSecurityPolicyChecker));
+      localStringBuilder.append("], self[");
+      localStringBuilder.append(localAVGameSession.b);
+      localStringBuilder.append("], auto[");
+      localStringBuilder.append(localAVGameSession.g);
+      localStringBuilder.append("], hasLocalVideo[");
+      localStringBuilder.append(localAVGameSession.a(1));
+      localStringBuilder.append("]");
+      QLog.i("SecurityPolicyChecker", 2, localStringBuilder.toString());
+    }
+    if ((localAVGameSession.g) && (localAVGameSession.a(1)) && (!TextUtils.equals(SecurityPolicyChecker.a(localSecurityPolicyChecker), String.valueOf(localAVGameSession.b)))) {
+      localIAVGameBusinessCtrl.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.SecurityPolicyChecker.CheckCameraTask
  * JD-Core Version:    0.7.0.1
  */

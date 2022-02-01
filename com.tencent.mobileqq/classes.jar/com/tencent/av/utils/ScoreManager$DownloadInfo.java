@@ -18,16 +18,22 @@ public class ScoreManager$DownloadInfo
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", md5='").append(this.b).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append(", url='");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", md5='");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", fileName='");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.ScoreManager.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

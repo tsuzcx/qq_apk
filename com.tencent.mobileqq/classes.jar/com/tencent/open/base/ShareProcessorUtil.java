@@ -17,145 +17,169 @@ public class ShareProcessorUtil
 {
   public static void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ShareProcessorUtil", 2, "reuseImageForAIO|oldCache=" + paramString1 + ",oldUrl=" + paramString2 + ",newUrl=" + paramString3);
-    }
-    if (paramString1 != null) {}
-    for (;;)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      boolean bool;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reuseImageForAIO|oldCache=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(",oldUrl=");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(",newUrl=");
+      ((StringBuilder)localObject).append(paramString3);
+      QLog.d("Q.share.ShareProcessorUtil", 2, ((StringBuilder)localObject).toString());
+    }
+    boolean bool;
+    if (paramString1 != null)
+    {
       try
       {
         if ((paramString1.equals(paramString3)) || (GlobalImageCache.a == null)) {
-          break label193;
+          break label223;
         }
         paramString1 = GlobalImageCache.a.get(paramString1);
         if (paramString1 == null) {
-          break label193;
+          break label223;
         }
-        GlobalImageCache.a.put(paramString3, paramString1);
         bool = true;
+        GlobalImageCache.a.put(paramString3, paramString1);
       }
       catch (Exception paramString1)
       {
-        String str;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
+        label121:
+        break label201;
       }
-      str = AbsDownloader.getFilePath(paramString3);
-      if ((paramString2 != null) && (!paramString2.equals(paramString3)))
+      paramString1 = AbsDownloader.getFilePath(paramString2);
+      localObject = AbsDownloader.getFilePath(paramString3);
+      if ((paramString2 == null) || (paramString2.equals(paramString3))) {
+        break label235;
+      }
+      paramBoolean = FileUtils.copyFile(paramString1, (String)localObject);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
       {
-        paramBoolean = FileUtils.d(paramString1, str);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Q.share.ShareProcessorUtil", 2, "reuseImageForAIO|cache=" + bool + ",file=" + paramBoolean);
+        paramString1 = new StringBuilder();
+        paramString1.append("reuseImageForAIO|cache=");
+        paramString1.append(bool);
+        paramString1.append(",file=");
+        paramString1.append(paramBoolean);
+        QLog.d("Q.share.ShareProcessorUtil", 2, paramString1.toString());
         return;
-        paramString1 = AbsDownloader.getFilePath(paramString2);
-        continue;
-        QLog.d("Q.share.ShareProcessorUtil", 2, paramString1, new Object[0]);
-      }
-      else
-      {
-        paramBoolean = false;
-        continue;
-        label193:
-        bool = false;
-        if (paramBoolean) {
-          paramString1 = paramString2;
+        label201:
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.share.ShareProcessorUtil", 2, paramString1, new Object[0]);
         }
       }
+      return;
+      label223:
+      bool = false;
+      if (!paramBoolean) {
+        break;
+      }
+      paramString1 = paramString2;
+      break label121;
+      label235:
+      paramBoolean = false;
     }
   }
   
   public static Object[] a(Context paramContext, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ShareProcessorUtil", 2, "getRichInfo|targetUrl=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getRichInfo|targetUrl=");
+      localStringBuilder.append(paramString1);
+      QLog.d("Q.share.ShareProcessorUtil", 2, localStringBuilder.toString());
     }
-    Object[] arrayOfObject1 = new Object[4];
-    arrayOfObject1[0] = Integer.valueOf(-1);
-    arrayOfObject1[1] = null;
-    arrayOfObject1[2] = null;
-    arrayOfObject1[3] = null;
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
-      return arrayOfObject1;
+    Object[] arrayOfObject = new Object[4];
+    int i = -1;
+    arrayOfObject[0] = Integer.valueOf(-1);
+    StringBuilder localStringBuilder = null;
+    arrayOfObject[1] = null;
+    arrayOfObject[2] = null;
+    arrayOfObject[3] = null;
+    if (paramContext != null) {
+      if (TextUtils.isEmpty(paramString1)) {
+        return arrayOfObject;
+      }
     }
     for (;;)
     {
       try
       {
         paramContext = HttpUtil.openRequest(paramContext, String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { paramString2, URLEncoder.encode(paramString1) }), null, "GET", null, null, 5000, 5000);
-        if (paramContext == null) {
-          break;
-        }
-        i = paramContext.getStatusLine().getStatusCode();
-        if (i == 200)
+        if (paramContext != null)
         {
-          paramContext = HttpUtil.readHttpResponse(paramContext);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.share.ShareProcessorUtil", 2, "getRichInfo|result=" + paramContext);
+          int j = paramContext.getStatusLine().getStatusCode();
+          if (j == 200)
+          {
+            paramContext = HttpUtil.readHttpResponse(paramContext);
+            if (QLog.isColorLevel())
+            {
+              paramString1 = new StringBuilder();
+              paramString1.append("getRichInfo|result=");
+              paramString1.append(paramContext);
+              QLog.d("Q.share.ShareProcessorUtil", 2, paramString1.toString());
+            }
+            if (!TextUtils.isEmpty(paramContext))
+            {
+              JSONObject localJSONObject = new JSONObject(paramContext);
+              if (localJSONObject.has("ret")) {
+                i = localJSONObject.getInt("ret");
+              }
+              if (!localJSONObject.has("title")) {
+                break label412;
+              }
+              paramContext = localJSONObject.getString("title");
+              if (!localJSONObject.has("abstract")) {
+                break label417;
+              }
+              paramString1 = localJSONObject.getString("abstract");
+              paramString2 = localStringBuilder;
+              if (localJSONObject.has("thumbUrl")) {
+                paramString2 = localJSONObject.getString("thumbUrl");
+              }
+              if (i != 0)
+              {
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("getRichInfo|ret=");
+                localStringBuilder.append(i);
+                QLog.w("Q.share.ShareProcessorUtil", 1, localStringBuilder.toString());
+              }
+              return new Object[] { Integer.valueOf(i), paramContext, paramString1, paramString2 };
+            }
           }
-          if (TextUtils.isEmpty(paramContext)) {
-            break label382;
+          else
+          {
+            paramContext = new StringBuilder();
+            paramContext.append("getRichInfo|httpCode=");
+            paramContext.append(j);
+            QLog.w("Q.share.ShareProcessorUtil", 1, paramContext.toString());
+            return arrayOfObject;
           }
-          paramString2 = new JSONObject(paramContext);
-          if (!paramString2.has("ret")) {
-            break label377;
-          }
-          i = paramString2.getInt("ret");
-          if (!paramString2.has("title")) {
-            break label372;
-          }
-          paramContext = paramString2.getString("title");
-          if (!paramString2.has("abstract")) {
-            break label367;
-          }
-          paramString1 = paramString2.getString("abstract");
-          if (!paramString2.has("thumbUrl")) {
-            break label362;
-          }
-          paramString2 = paramString2.getString("thumbUrl");
-          if (i != 0) {
-            QLog.w("Q.share.ShareProcessorUtil", 1, "getRichInfo|ret=" + i);
-          }
-          Object[] arrayOfObject2 = new Object[4];
-          arrayOfObject2[0] = Integer.valueOf(i);
-          arrayOfObject2[1] = paramContext;
-          arrayOfObject2[2] = paramString1;
-          arrayOfObject2[3] = paramString2;
-          return arrayOfObject2;
         }
-        QLog.w("Q.share.ShareProcessorUtil", 1, "getRichInfo|httpCode=" + i);
-        return arrayOfObject1;
       }
-      catch (Exception paramContext) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (Exception paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.share.ShareProcessorUtil", 2, paramContext, new Object[0]);
+        }
       }
-      QLog.d("Q.share.ShareProcessorUtil", 2, paramContext, new Object[0]);
-      return arrayOfObject1;
-      label362:
-      paramString2 = null;
-      continue;
-      label367:
-      paramString1 = null;
-      continue;
-      label372:
+      return arrayOfObject;
+      label412:
       paramContext = null;
       continue;
-      label377:
-      int i = -1;
+      label417:
+      paramString1 = null;
     }
-    label382:
-    paramContext = arrayOfObject1;
-    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.ShareProcessorUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.callback.FeedBackClickListener;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyBottomAdVideoUtil;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdEntityConvertService;
+import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public abstract class IUIDelegate
   implements View.OnClickListener
@@ -18,8 +19,8 @@ public abstract class IUIDelegate
   protected Context a;
   protected ViewGroup a;
   public AdvertisementInfo a;
-  public AdData a;
   protected FeedBackClickListener a;
+  public AdData a;
   public boolean a;
   public boolean b = false;
   
@@ -43,15 +44,6 @@ public abstract class IUIDelegate
   
   public abstract void a();
   
-  public void a(AdData paramAdData)
-  {
-    if (paramAdData == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData = paramAdData;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ReadInJoyBottomAdVideoUtil.a(paramAdData);
-  }
-  
   public void a(FeedBackClickListener paramFeedBackClickListener)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_barCallbackFeedBackClickListener = paramFeedBackClickListener;
@@ -73,6 +65,15 @@ public abstract class IUIDelegate
   
   public abstract void b();
   
+  public void b(AdData paramAdData)
+  {
+    if (paramAdData == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData = paramAdData;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData);
+  }
+  
   public abstract void c();
   
   public void d()
@@ -86,7 +87,7 @@ public abstract class IUIDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.IUIDelegate
  * JD-Core Version:    0.7.0.1
  */

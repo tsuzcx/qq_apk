@@ -10,12 +10,25 @@ public class TPPlayerMsg$TPDownLoadProgressInfo
   
   public String toString()
   {
-    return "TPDownLoadProgressInfo{playableDurationMS=" + this.playableDurationMS + ", downloadSpeedKBps=" + this.downloadSpeedKBps + ", currentDownloadSize=" + this.currentDownloadSize + ", totalFileSize=" + this.totalFileSize + ", extraInfo='" + this.extraInfo + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TPDownLoadProgressInfo{playableDurationMS=");
+    localStringBuilder.append(this.playableDurationMS);
+    localStringBuilder.append(", downloadSpeedKBps=");
+    localStringBuilder.append(this.downloadSpeedKBps);
+    localStringBuilder.append(", currentDownloadSize=");
+    localStringBuilder.append(this.currentDownloadSize);
+    localStringBuilder.append(", totalFileSize=");
+    localStringBuilder.append(this.totalFileSize);
+    localStringBuilder.append(", extraInfo='");
+    localStringBuilder.append(this.extraInfo);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -17,24 +17,25 @@ final class DeviceCapabilityExamination$2
     paramString2.g = this.jdField_a_of_type_ComTencentAvManageConfigAVTestforEncDecConfig$Sample.b;
     paramString2.h = this.jdField_a_of_type_ComTencentAvManageConfigAVTestforEncDecConfig$Sample.c;
     paramString2.i = this.jdField_a_of_type_ComTencentAvManageConfigAVTestforEncDecConfig$Sample.d;
-    if ((paramInt1 == 1) && (this.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback$CodecTestInfo.a()) && (this.jdField_a_of_type_ComTencentAvManageConfigAVTestforEncDecConfig$Sample.jdField_a_of_type_Boolean)) {
+    if ((paramInt1 == 1) && (this.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback$CodecTestInfo.a()) && (this.jdField_a_of_type_ComTencentAvManageConfigAVTestforEncDecConfig$Sample.jdField_a_of_type_Boolean))
+    {
       new EncFileUpload(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.b).a(this.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback$CodecTestInfo.d, new DeviceCapabilityExamination.2.1(this, paramString2, paramInt1, paramString1, paramInt2, paramInt3));
     }
-    for (;;)
+    else
     {
-      com.tencent.avcore.jni.codec.NativeCodec.printLog = false;
-      return;
       paramString2.j = -10000;
       DeviceCapabilityExamination.a(paramString2, this.jdField_a_of_type_Int, paramInt1);
-      if (this.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback != null) {
-        this.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback.a(paramInt1, paramString1, paramInt2, paramInt3, null);
+      paramString2 = this.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback;
+      if (paramString2 != null) {
+        paramString2.a(paramInt1, paramString1, paramInt2, paramInt3, null);
       }
     }
+    com.tencent.avcore.jni.codec.NativeCodec.printLog = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.DeviceCapabilityExamination.2
  * JD-Core Version:    0.7.0.1
  */

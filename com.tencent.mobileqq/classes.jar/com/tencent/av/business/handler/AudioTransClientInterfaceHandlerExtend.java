@@ -21,48 +21,48 @@ public class AudioTransClientInterfaceHandlerExtend
     super(paramAppInterface);
   }
   
-  protected int a()
-  {
-    Object localObject = (VideoAppInterface)this.appRuntime;
-    if (((VideoAppInterface)localObject).a(0))
-    {
-      localObject = (EffectZimuManager)((VideoAppInterface)localObject).a(0);
-      if (localObject != null) {
-        return ((EffectZimuManager)localObject).b();
-      }
-    }
-    return 4;
-  }
-  
   protected void a(long paramLong1, boolean paramBoolean, List<NetAddr> paramList, long paramLong2)
   {
     VideoController localVideoController = ((VideoAppInterface)this.appRuntime).a();
     SessionInfo localSessionInfo = localVideoController.a();
-    StringBuilder localStringBuilder = new StringBuilder().append("requestRecordingAudio, isStart[").append(paramBoolean).append("], sessionid[").append(paramLong2).append("], seq[").append(paramLong1).append("], iplist[");
-    if (paramList == null)
-    {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestRecordingAudio, isStart[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("], sessionid[");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append("], iplist[");
+    String str = "null";
+    Object localObject;
+    if (paramList == null) {
       localObject = "null";
-      localStringBuilder = localStringBuilder.append(localObject).append("], peerUin[");
-      if (localSessionInfo != null) {
-        break label159;
-      }
-    }
-    label159:
-    for (Object localObject = "null";; localObject = localSessionInfo.d)
-    {
-      QLog.w("AudioTransClientInterfaceHandlerExtend.runhw", 1, (String)localObject + "]");
-      if ((localVideoController != null) && (localSessionInfo != null)) {
-        localVideoController.a(VideoPackageUtils.a(localSessionInfo.d), paramBoolean, paramList, paramLong2);
-      }
-      return;
+    } else {
       localObject = Integer.valueOf(paramList.size());
-      break;
+    }
+    localStringBuilder.append(localObject);
+    localStringBuilder.append("], peerUin[");
+    if (localSessionInfo == null) {
+      localObject = str;
+    } else {
+      localObject = localSessionInfo.c;
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("]");
+    QLog.w("AudioTransClientInterfaceHandlerExtend.runhw", 1, localStringBuilder.toString());
+    if ((localVideoController != null) && (localSessionInfo != null)) {
+      localVideoController.a(VideoPackageUtils.a(localSessionInfo.c), paramBoolean, paramList, paramLong2);
     }
   }
   
   protected void a(Integer paramInteger, Object paramObject)
   {
-    AVLog.printColorLog("AudioTransClientInterfaceHandlerExtend.runhw", "notifyEvent :" + paramInteger + "|" + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyEvent :");
+    localStringBuilder.append(paramInteger);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramObject);
+    AVLog.printColorLog("AudioTransClientInterfaceHandlerExtend.runhw", localStringBuilder.toString());
     ((VideoAppInterface)this.appRuntime).a(new Object[] { paramInteger, paramObject });
   }
   
@@ -73,8 +73,8 @@ public class AudioTransClientInterfaceHandlerExtend
   
   protected boolean a()
   {
-    boolean bool2 = false;
     Object localObject = (VideoAppInterface)this.appRuntime;
+    boolean bool2 = false;
     boolean bool1 = bool2;
     if (((VideoAppInterface)localObject).a(0))
     {
@@ -87,21 +87,23 @@ public class AudioTransClientInterfaceHandlerExtend
         if (localObject != null)
         {
           localObject = ((ZimuItem)localObject).getId();
-          if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equalsIgnoreCase("film"))) {
-            break label74;
+          bool1 = bool2;
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            bool1 = bool2;
+            if (((String)localObject).equalsIgnoreCase("film")) {
+              bool1 = true;
+            }
           }
         }
       }
     }
-    label74:
-    for (bool1 = true;; bool1 = false) {
-      return bool1;
-    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.handler.AudioTransClientInterfaceHandlerExtend
  * JD-Core Version:    0.7.0.1
  */

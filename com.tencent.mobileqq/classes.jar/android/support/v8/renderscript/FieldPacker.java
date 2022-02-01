@@ -25,12 +25,7 @@ public class FieldPacker
       this.mN.addBoolean(paramBoolean);
       return;
     }
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      addI8((byte)i);
-      return;
-    }
+    addI8((byte)paramBoolean);
   }
   
   public void addF32(float paramFloat)
@@ -173,7 +168,6 @@ public class FieldPacker
     int i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(paramShort & 0xFF));
-    arrayOfByte = this.mData;
     i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(paramShort >> 8));
@@ -191,15 +185,12 @@ public class FieldPacker
     int i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(paramInt & 0xFF));
-    arrayOfByte = this.mData;
     i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(paramInt >> 8 & 0xFF));
-    arrayOfByte = this.mData;
     i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(paramInt >> 16 & 0xFF));
-    arrayOfByte = this.mData;
     i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(paramInt >> 24 & 0xFF));
@@ -253,31 +244,24 @@ public class FieldPacker
     int i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(int)(paramLong & 0xFF));
-    arrayOfByte = this.mData;
     i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(int)(paramLong >> 8 & 0xFF));
-    arrayOfByte = this.mData;
     i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(int)(paramLong >> 16 & 0xFF));
-    arrayOfByte = this.mData;
     i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(int)(paramLong >> 24 & 0xFF));
-    arrayOfByte = this.mData;
     i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(int)(paramLong >> 32 & 0xFF));
-    arrayOfByte = this.mData;
     i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(int)(paramLong >> 40 & 0xFF));
-    arrayOfByte = this.mData;
     i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(int)(paramLong >> 48 & 0xFF));
-    arrayOfByte = this.mData;
     i = this.mPos;
     this.mPos = (i + 1);
     arrayOfByte[i] = ((byte)(int)(paramLong >> 56 & 0xFF));
@@ -370,52 +354,46 @@ public class FieldPacker
   
   public void addMatrix(Matrix2f paramMatrix2f)
   {
-    if (RenderScript.shouldThunk()) {
-      this.mN.addMatrix(new android.renderscript.Matrix2f(paramMatrix2f.getArray()));
-    }
-    for (;;)
+    if (RenderScript.shouldThunk())
     {
+      this.mN.addMatrix(new android.renderscript.Matrix2f(paramMatrix2f.getArray()));
       return;
-      int i = 0;
-      while (i < paramMatrix2f.mMat.length)
-      {
-        addF32(paramMatrix2f.mMat[i]);
-        i += 1;
-      }
+    }
+    int i = 0;
+    while (i < paramMatrix2f.mMat.length)
+    {
+      addF32(paramMatrix2f.mMat[i]);
+      i += 1;
     }
   }
   
   public void addMatrix(Matrix3f paramMatrix3f)
   {
-    if (RenderScript.shouldThunk()) {
-      this.mN.addMatrix(new android.renderscript.Matrix3f(paramMatrix3f.getArray()));
-    }
-    for (;;)
+    if (RenderScript.shouldThunk())
     {
+      this.mN.addMatrix(new android.renderscript.Matrix3f(paramMatrix3f.getArray()));
       return;
-      int i = 0;
-      while (i < paramMatrix3f.mMat.length)
-      {
-        addF32(paramMatrix3f.mMat[i]);
-        i += 1;
-      }
+    }
+    int i = 0;
+    while (i < paramMatrix3f.mMat.length)
+    {
+      addF32(paramMatrix3f.mMat[i]);
+      i += 1;
     }
   }
   
   public void addMatrix(Matrix4f paramMatrix4f)
   {
-    if (RenderScript.shouldThunk()) {
-      this.mN.addMatrix(new android.renderscript.Matrix4f(paramMatrix4f.getArray()));
-    }
-    for (;;)
+    if (RenderScript.shouldThunk())
     {
+      this.mN.addMatrix(new android.renderscript.Matrix4f(paramMatrix4f.getArray()));
       return;
-      int i = 0;
-      while (i < paramMatrix4f.mMat.length)
-      {
-        addF32(paramMatrix4f.mMat[i]);
-        i += 1;
-      }
+    }
+    int i = 0;
+    while (i < paramMatrix4f.mMat.length)
+    {
+      addF32(paramMatrix4f.mMat[i]);
+      i += 1;
     }
   }
   
@@ -446,20 +424,24 @@ public class FieldPacker
       this.mN.addU16(paramInt);
       return;
     }
-    if ((paramInt < 0) || (paramInt > 65535))
+    if ((paramInt >= 0) && (paramInt <= 65535))
     {
-      Log.e("rs", "FieldPacker.addU16( " + paramInt + " )");
-      throw new IllegalArgumentException("Saving value out of range for type");
+      align(2);
+      localObject = this.mData;
+      int i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(paramInt & 0xFF));
+      i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(paramInt >> 8));
+      return;
     }
-    align(2);
-    byte[] arrayOfByte = this.mData;
-    int i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(paramInt & 0xFF));
-    arrayOfByte = this.mData;
-    i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(paramInt >> 8));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("FieldPacker.addU16( ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" )");
+    Log.e("rs", ((StringBuilder)localObject).toString());
+    throw new IllegalArgumentException("Saving value out of range for type");
   }
   
   public void addU16(Int2 paramInt2)
@@ -505,28 +487,30 @@ public class FieldPacker
       this.mN.addU32(paramLong);
       return;
     }
-    if ((paramLong < 0L) || (paramLong > 4294967295L))
+    if ((paramLong >= 0L) && (paramLong <= 4294967295L))
     {
-      Log.e("rs", "FieldPacker.addU32( " + paramLong + " )");
-      throw new IllegalArgumentException("Saving value out of range for type");
+      align(4);
+      localObject = this.mData;
+      int i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong & 0xFF));
+      i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong >> 8 & 0xFF));
+      i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong >> 16 & 0xFF));
+      i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong >> 24 & 0xFF));
+      return;
     }
-    align(4);
-    byte[] arrayOfByte = this.mData;
-    int i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong & 0xFF));
-    arrayOfByte = this.mData;
-    i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong >> 8 & 0xFF));
-    arrayOfByte = this.mData;
-    i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong >> 16 & 0xFF));
-    arrayOfByte = this.mData;
-    i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong >> 24 & 0xFF));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("FieldPacker.addU32( ");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" )");
+    Log.e("rs", ((StringBuilder)localObject).toString());
+    throw new IllegalArgumentException("Saving value out of range for type");
   }
   
   public void addU32(Long2 paramLong2)
@@ -572,44 +556,42 @@ public class FieldPacker
       this.mN.addU64(paramLong);
       return;
     }
-    if (paramLong < 0L)
+    if (paramLong >= 0L)
     {
-      Log.e("rs", "FieldPacker.addU64( " + paramLong + " )");
-      throw new IllegalArgumentException("Saving value out of range for type");
+      align(8);
+      localObject = this.mData;
+      int i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong & 0xFF));
+      i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong >> 8 & 0xFF));
+      i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong >> 16 & 0xFF));
+      i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong >> 24 & 0xFF));
+      i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong >> 32 & 0xFF));
+      i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong >> 40 & 0xFF));
+      i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong >> 48 & 0xFF));
+      i = this.mPos;
+      this.mPos = (i + 1);
+      localObject[i] = ((byte)(int)(paramLong >> 56 & 0xFF));
+      return;
     }
-    align(8);
-    byte[] arrayOfByte = this.mData;
-    int i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong & 0xFF));
-    arrayOfByte = this.mData;
-    i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong >> 8 & 0xFF));
-    arrayOfByte = this.mData;
-    i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong >> 16 & 0xFF));
-    arrayOfByte = this.mData;
-    i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong >> 24 & 0xFF));
-    arrayOfByte = this.mData;
-    i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong >> 32 & 0xFF));
-    arrayOfByte = this.mData;
-    i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong >> 40 & 0xFF));
-    arrayOfByte = this.mData;
-    i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong >> 48 & 0xFF));
-    arrayOfByte = this.mData;
-    i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)(int)(paramLong >> 56 & 0xFF));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("FieldPacker.addU64( ");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" )");
+    Log.e("rs", ((StringBuilder)localObject).toString());
+    throw new IllegalArgumentException("Saving value out of range for type");
   }
   
   public void addU64(Long2 paramLong2)
@@ -691,33 +673,49 @@ public class FieldPacker
       this.mN.addU8(paramShort);
       return;
     }
-    if ((paramShort < 0) || (paramShort > 255)) {
-      throw new IllegalArgumentException("Saving value out of range for type");
+    if ((paramShort >= 0) && (paramShort <= 255))
+    {
+      byte[] arrayOfByte = this.mData;
+      int i = this.mPos;
+      this.mPos = (i + 1);
+      arrayOfByte[i] = ((byte)paramShort);
+      return;
     }
-    byte[] arrayOfByte = this.mData;
-    int i = this.mPos;
-    this.mPos = (i + 1);
-    arrayOfByte[i] = ((byte)paramShort);
+    throw new IllegalArgumentException("Saving value out of range for type");
   }
   
   public void align(int paramInt)
   {
-    if (RenderScript.shouldThunk()) {
+    if (RenderScript.shouldThunk())
+    {
       this.mN.align(paramInt);
+      return;
     }
+    if (paramInt > 0)
+    {
+      int i = paramInt - 1;
+      if ((paramInt & i) == 0)
+      {
+        for (;;)
+        {
+          paramInt = this.mPos;
+          if ((paramInt & i) == 0) {
+            break;
+          }
+          localObject = this.mData;
+          this.mPos = (paramInt + 1);
+          localObject[paramInt] = 0;
+        }
+        return;
+      }
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("argument must be a non-negative non-zero power of 2: ");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = new RSIllegalArgumentException(((StringBuilder)localObject).toString());
     for (;;)
     {
-      return;
-      if ((paramInt <= 0) || ((paramInt - 1 & paramInt) != 0)) {
-        throw new RSIllegalArgumentException("argument must be a non-negative non-zero power of 2: " + paramInt);
-      }
-      while ((this.mPos & paramInt - 1) != 0)
-      {
-        byte[] arrayOfByte = this.mData;
-        int i = this.mPos;
-        this.mPos = (i + 1);
-        arrayOfByte[i] = 0;
-      }
+      throw ((Throwable)localObject);
     }
   }
   
@@ -746,10 +744,15 @@ public class FieldPacker
       this.mN.reset(paramInt);
       return;
     }
-    if ((paramInt < 0) || (paramInt >= this.mLen)) {
-      throw new RSIllegalArgumentException("out of range argument: " + paramInt);
+    if ((paramInt >= 0) && (paramInt < this.mLen))
+    {
+      this.mPos = paramInt;
+      return;
     }
-    this.mPos = paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("out of range argument: ");
+    localStringBuilder.append(paramInt);
+    throw new RSIllegalArgumentException(localStringBuilder.toString());
   }
   
   public void skip(int paramInt)
@@ -760,15 +763,20 @@ public class FieldPacker
       return;
     }
     int i = this.mPos + paramInt;
-    if ((i < 0) || (i > this.mLen)) {
-      throw new RSIllegalArgumentException("out of range argument: " + paramInt);
+    if ((i >= 0) && (i <= this.mLen))
+    {
+      this.mPos = i;
+      return;
     }
-    this.mPos = i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("out of range argument: ");
+    localStringBuilder.append(paramInt);
+    throw new RSIllegalArgumentException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.FieldPacker
  * JD-Core Version:    0.7.0.1
  */

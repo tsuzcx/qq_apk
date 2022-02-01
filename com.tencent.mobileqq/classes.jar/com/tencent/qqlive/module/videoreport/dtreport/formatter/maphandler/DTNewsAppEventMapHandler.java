@@ -34,10 +34,11 @@ public class DTNewsAppEventMapHandler
   public void formatCustomParams(String paramString, Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
     super.formatCustomParams(paramString, paramMap1, paramMap2);
-    if ((!isValidMap(paramMap1)) || (!isValidMap(paramMap2))) {}
-    do
+    if (isValidMap(paramMap1))
     {
-      return;
+      if (!isValidMap(paramMap2)) {
+        return;
+      }
       if ("appout".equals(paramString))
       {
         this.mFlattenHelper.flattenPageParams(paramMap1, paramMap2);
@@ -49,8 +50,10 @@ public class DTNewsAppEventMapHandler
         formatAppinParams(paramMap1, paramMap2);
         return;
       }
-    } while (!"dt_app_heartbeat".equals(paramString));
-    formatAppHeartParams(paramMap1, paramMap2);
+      if ("dt_app_heartbeat".equals(paramString)) {
+        formatAppHeartParams(paramMap1, paramMap2);
+      }
+    }
   }
   
   Object getOrRemove(@NonNull Map<?, ?> paramMap, String paramString)
@@ -60,7 +63,7 @@ public class DTNewsAppEventMapHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.formatter.maphandler.DTNewsAppEventMapHandler
  * JD-Core Version:    0.7.0.1
  */

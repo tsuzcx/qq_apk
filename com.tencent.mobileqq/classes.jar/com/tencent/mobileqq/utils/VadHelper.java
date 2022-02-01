@@ -86,7 +86,7 @@ public class VadHelper
     //   0: aload_0
     //   1: getfield 27	com/tencent/mobileqq/utils/VadHelper:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   4: invokevirtual 144	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   7: ifne +10 -> 17
+    //   7: ifne +252 -> 259
     //   10: aload_0
     //   11: getfield 29	com/tencent/mobileqq/utils/VadHelper:jdField_a_of_type_Boolean	Z
     //   14: ifeq +5 -> 19
@@ -99,219 +99,229 @@ public class VadHelper
     //   27: new 150	java/util/ArrayList
     //   30: dup
     //   31: invokespecial 151	java/util/ArrayList:<init>	()V
-    //   34: astore 6
+    //   34: astore 8
     //   36: new 153	java/io/File
     //   39: dup
     //   40: aload_1
     //   41: invokespecial 155	java/io/File:<init>	(Ljava/lang/String;)V
-    //   44: astore 5
+    //   44: astore 7
     //   46: new 157	java/io/FileInputStream
     //   49: dup
-    //   50: aload 5
+    //   50: aload 7
     //   52: invokespecial 160	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   55: astore 4
-    //   57: aload 4
+    //   55: astore 6
+    //   57: aload 6
     //   59: astore_1
-    //   60: aload 5
+    //   60: aload 7
     //   62: invokevirtual 164	java/io/File:length	()J
     //   65: lstore_2
-    //   66: aload 4
-    //   68: astore_1
-    //   69: aload 4
-    //   71: iconst_0
-    //   72: i2l
-    //   73: invokevirtual 168	java/io/FileInputStream:skip	(J)J
-    //   76: pop2
-    //   77: aload 4
-    //   79: astore_1
-    //   80: lload_2
-    //   81: iconst_0
-    //   82: i2l
-    //   83: lsub
-    //   84: l2i
-    //   85: newarray byte
-    //   87: astore 5
-    //   89: aload 4
-    //   91: astore_1
-    //   92: aload 4
-    //   94: aload 5
-    //   96: invokevirtual 172	java/io/FileInputStream:read	([B)I
-    //   99: pop
-    //   100: aload 4
-    //   102: astore_1
-    //   103: aload 5
-    //   105: invokestatic 130	com/wx/voice/vad/Utils:toShortArray	([B)[S
-    //   108: astore 5
-    //   110: aload 4
-    //   112: astore_1
-    //   113: aload_0
-    //   114: getfield 132	com/tencent/mobileqq/utils/VadHelper:jdField_a_of_type_ComWxVoiceVadWXVad	Lcom/wx/voice/vad/WXVad;
-    //   117: aload 5
-    //   119: aload 5
-    //   121: arraylength
-    //   122: i2l
-    //   123: invokevirtual 176	com/wx/voice/vad/WXVad:OfflineProcess	([SJ)Lcom/wx/voice/vad/WXVadData;
-    //   126: astore 5
-    //   128: aload 4
-    //   130: astore_1
-    //   131: aload 5
-    //   133: getfield 181	com/wx/voice/vad/WXVadData:RET_STATE	I
-    //   136: iconst_1
-    //   137: if_icmpeq +19 -> 156
-    //   140: aload 4
-    //   142: astore_1
-    //   143: aload 6
-    //   145: aload 5
-    //   147: getfield 185	com/wx/voice/vad/WXVadData:offline_odata	Ljava/util/ArrayList;
-    //   150: invokeinterface 191 2 0
-    //   155: pop
-    //   156: aload 4
-    //   158: astore_1
-    //   159: aload_0
-    //   160: getfield 132	com/tencent/mobileqq/utils/VadHelper:jdField_a_of_type_ComWxVoiceVadWXVad	Lcom/wx/voice/vad/WXVad;
-    //   163: invokevirtual 195	com/wx/voice/vad/WXVad:Reset	()I
-    //   166: pop
-    //   167: aload 4
-    //   169: astore_1
-    //   170: aload_0
-    //   171: getfield 27	com/tencent/mobileqq/utils/VadHelper:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   174: iconst_0
-    //   175: invokevirtual 148	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   178: aload 4
-    //   180: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   183: aload 6
-    //   185: areturn
-    //   186: astore_1
-    //   187: aload_1
-    //   188: invokevirtual 201	java/lang/Exception:printStackTrace	()V
-    //   191: aload 6
-    //   193: areturn
-    //   194: astore 5
-    //   196: aconst_null
-    //   197: astore 4
-    //   199: aload 4
-    //   201: astore_1
-    //   202: aload 5
-    //   204: invokevirtual 201	java/lang/Exception:printStackTrace	()V
-    //   207: aload 4
+    //   66: iconst_0
+    //   67: i2l
+    //   68: lstore 4
+    //   70: aload 6
+    //   72: astore_1
+    //   73: aload 6
+    //   75: lload 4
+    //   77: invokevirtual 168	java/io/FileInputStream:skip	(J)J
+    //   80: pop2
+    //   81: aload 6
+    //   83: astore_1
+    //   84: lload_2
+    //   85: lload 4
+    //   87: lsub
+    //   88: l2i
+    //   89: newarray byte
+    //   91: astore 7
+    //   93: aload 6
+    //   95: astore_1
+    //   96: aload 6
+    //   98: aload 7
+    //   100: invokevirtual 172	java/io/FileInputStream:read	([B)I
+    //   103: pop
+    //   104: aload 6
+    //   106: astore_1
+    //   107: aload 7
+    //   109: invokestatic 130	com/wx/voice/vad/Utils:toShortArray	([B)[S
+    //   112: astore 7
+    //   114: aload 6
+    //   116: astore_1
+    //   117: aload_0
+    //   118: getfield 132	com/tencent/mobileqq/utils/VadHelper:jdField_a_of_type_ComWxVoiceVadWXVad	Lcom/wx/voice/vad/WXVad;
+    //   121: aload 7
+    //   123: aload 7
+    //   125: arraylength
+    //   126: i2l
+    //   127: invokevirtual 176	com/wx/voice/vad/WXVad:OfflineProcess	([SJ)Lcom/wx/voice/vad/WXVadData;
+    //   130: astore 7
+    //   132: aload 6
+    //   134: astore_1
+    //   135: aload 7
+    //   137: getfield 181	com/wx/voice/vad/WXVadData:RET_STATE	I
+    //   140: iconst_1
+    //   141: if_icmpeq +19 -> 160
+    //   144: aload 6
+    //   146: astore_1
+    //   147: aload 8
+    //   149: aload 7
+    //   151: getfield 185	com/wx/voice/vad/WXVadData:offline_odata	Ljava/util/ArrayList;
+    //   154: invokeinterface 191 2 0
+    //   159: pop
+    //   160: aload 6
+    //   162: astore_1
+    //   163: aload_0
+    //   164: getfield 132	com/tencent/mobileqq/utils/VadHelper:jdField_a_of_type_ComWxVoiceVadWXVad	Lcom/wx/voice/vad/WXVad;
+    //   167: invokevirtual 195	com/wx/voice/vad/WXVad:Reset	()I
+    //   170: pop
+    //   171: aload 6
+    //   173: astore_1
+    //   174: aload_0
+    //   175: getfield 27	com/tencent/mobileqq/utils/VadHelper:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   178: iconst_0
+    //   179: invokevirtual 148	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   182: aload 6
+    //   184: invokevirtual 198	java/io/FileInputStream:close	()V
+    //   187: aload 8
+    //   189: areturn
+    //   190: astore 7
+    //   192: goto +15 -> 207
+    //   195: astore 6
+    //   197: aconst_null
+    //   198: astore_1
+    //   199: goto +45 -> 244
+    //   202: astore 7
+    //   204: aconst_null
+    //   205: astore 6
+    //   207: aload 6
     //   209: astore_1
-    //   210: aload_0
-    //   211: getfield 27	com/tencent/mobileqq/utils/VadHelper:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   214: iconst_0
-    //   215: invokevirtual 148	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   218: aload 4
-    //   220: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   223: aload 6
-    //   225: areturn
-    //   226: astore_1
-    //   227: aload_1
-    //   228: invokevirtual 201	java/lang/Exception:printStackTrace	()V
-    //   231: aload 6
+    //   210: aload 7
+    //   212: invokevirtual 201	java/lang/Exception:printStackTrace	()V
+    //   215: aload 6
+    //   217: astore_1
+    //   218: aload_0
+    //   219: getfield 27	com/tencent/mobileqq/utils/VadHelper:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   222: iconst_0
+    //   223: invokevirtual 148	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   226: aload 6
+    //   228: invokevirtual 198	java/io/FileInputStream:close	()V
+    //   231: aload 8
     //   233: areturn
-    //   234: astore 4
-    //   236: aconst_null
-    //   237: astore_1
-    //   238: aload_1
-    //   239: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   242: aload 4
-    //   244: athrow
-    //   245: astore_1
-    //   246: aload_1
-    //   247: invokevirtual 201	java/lang/Exception:printStackTrace	()V
-    //   250: goto -8 -> 242
-    //   253: astore 4
-    //   255: goto -17 -> 238
-    //   258: astore 5
-    //   260: goto -61 -> 199
+    //   234: astore_1
+    //   235: aload_1
+    //   236: invokevirtual 201	java/lang/Exception:printStackTrace	()V
+    //   239: aload 8
+    //   241: areturn
+    //   242: astore 6
+    //   244: aload_1
+    //   245: invokevirtual 198	java/io/FileInputStream:close	()V
+    //   248: goto +8 -> 256
+    //   251: astore_1
+    //   252: aload_1
+    //   253: invokevirtual 201	java/lang/Exception:printStackTrace	()V
+    //   256: aload 6
+    //   258: athrow
+    //   259: aconst_null
+    //   260: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	263	0	this	VadHelper
-    //   0	263	1	paramString	String
-    //   65	16	2	l	long
-    //   55	164	4	localFileInputStream	java.io.FileInputStream
-    //   234	9	4	localObject1	Object
-    //   253	1	4	localObject2	Object
-    //   44	102	5	localObject3	Object
-    //   194	9	5	localException1	java.lang.Exception
-    //   258	1	5	localException2	java.lang.Exception
-    //   34	198	6	localArrayList	ArrayList
+    //   0	261	0	this	VadHelper
+    //   0	261	1	paramString	String
+    //   65	20	2	l1	long
+    //   68	18	4	l2	long
+    //   55	128	6	localFileInputStream	java.io.FileInputStream
+    //   195	1	6	localObject1	Object
+    //   205	22	6	localObject2	Object
+    //   242	15	6	localObject3	Object
+    //   44	106	7	localObject4	Object
+    //   190	1	7	localException1	java.lang.Exception
+    //   202	9	7	localException2	java.lang.Exception
+    //   34	206	8	localArrayList	ArrayList
     // Exception table:
     //   from	to	target	type
-    //   178	183	186	java/lang/Exception
-    //   46	57	194	java/lang/Exception
-    //   218	223	226	java/lang/Exception
-    //   46	57	234	finally
-    //   238	242	245	java/lang/Exception
-    //   60	66	253	finally
-    //   69	77	253	finally
-    //   80	89	253	finally
-    //   92	100	253	finally
-    //   103	110	253	finally
-    //   113	128	253	finally
-    //   131	140	253	finally
-    //   143	156	253	finally
-    //   159	167	253	finally
-    //   170	178	253	finally
-    //   202	207	253	finally
-    //   210	218	253	finally
-    //   60	66	258	java/lang/Exception
-    //   69	77	258	java/lang/Exception
-    //   80	89	258	java/lang/Exception
-    //   92	100	258	java/lang/Exception
-    //   103	110	258	java/lang/Exception
-    //   113	128	258	java/lang/Exception
-    //   131	140	258	java/lang/Exception
-    //   143	156	258	java/lang/Exception
-    //   159	167	258	java/lang/Exception
-    //   170	178	258	java/lang/Exception
+    //   60	66	190	java/lang/Exception
+    //   73	81	190	java/lang/Exception
+    //   84	93	190	java/lang/Exception
+    //   96	104	190	java/lang/Exception
+    //   107	114	190	java/lang/Exception
+    //   117	132	190	java/lang/Exception
+    //   135	144	190	java/lang/Exception
+    //   147	160	190	java/lang/Exception
+    //   163	171	190	java/lang/Exception
+    //   174	182	190	java/lang/Exception
+    //   46	57	195	finally
+    //   46	57	202	java/lang/Exception
+    //   182	187	234	java/lang/Exception
+    //   226	231	234	java/lang/Exception
+    //   60	66	242	finally
+    //   73	81	242	finally
+    //   84	93	242	finally
+    //   96	104	242	finally
+    //   107	114	242	finally
+    //   117	132	242	finally
+    //   135	144	242	finally
+    //   147	160	242	finally
+    //   163	171	242	finally
+    //   174	182	242	finally
+    //   210	215	242	finally
+    //   218	226	242	finally
+    //   244	248	251	java/lang/Exception
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComWxVoiceVadWXVad != null) {
-      this.jdField_a_of_type_ComWxVoiceVadWXVad.Reset();
+    WXVad localWXVad = this.jdField_a_of_type_ComWxVoiceVadWXVad;
+    if (localWXVad != null) {
+      localWXVad.Reset();
     }
   }
   
   public boolean a(byte[] paramArrayOfByte, boolean paramBoolean)
   {
+    boolean bool3 = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
     boolean bool2 = true;
     boolean bool1 = true;
-    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (paramArrayOfByte == null) || (paramArrayOfByte.length < 1))
+    if ((!bool3) && (paramArrayOfByte != null) && (paramArrayOfByte.length >= 1))
     {
-      a("VadHelper", "vadSession, input empty, skipped");
-      return true;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    paramArrayOfByte = Utils.toShortArray(paramArrayOfByte);
-    if (paramBoolean)
-    {
-      paramArrayOfByte = this.jdField_a_of_type_ComWxVoiceVadWXVad.OnlineProcess(paramArrayOfByte, paramArrayOfByte.length, 0);
-      a("VadHelper", "vadSession online RET_STATE:" + paramArrayOfByte.RET_STATE);
-      if (paramArrayOfByte.RET_STATE != 2) {
-        paramBoolean = bool1;
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      paramArrayOfByte = Utils.toShortArray(paramArrayOfByte);
+      StringBuilder localStringBuilder;
+      if (paramBoolean)
+      {
+        paramArrayOfByte = this.jdField_a_of_type_ComWxVoiceVadWXVad.OnlineProcess(paramArrayOfByte, paramArrayOfByte.length, 0);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("vadSession online RET_STATE:");
+        localStringBuilder.append(paramArrayOfByte.RET_STATE);
+        a("VadHelper", localStringBuilder.toString());
+        if (paramArrayOfByte.RET_STATE != 2) {
+          paramBoolean = bool2;
+        } else {
+          paramBoolean = false;
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        paramArrayOfByte = this.jdField_a_of_type_ComWxVoiceVadWXVad.OfflineProcess(paramArrayOfByte, paramArrayOfByte.length);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("vadSession offline RET_STATE:");
+        localStringBuilder.append(paramArrayOfByte.RET_STATE);
+        a("VadHelper", localStringBuilder.toString());
+        paramBoolean = bool1;
+        if (paramArrayOfByte.RET_STATE != 1) {
+          paramBoolean = paramArrayOfByte.offline_odata.isEmpty();
+        }
+        a();
+      }
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       return paramBoolean;
-      paramBoolean = false;
-      continue;
-      paramArrayOfByte = this.jdField_a_of_type_ComWxVoiceVadWXVad.OfflineProcess(paramArrayOfByte, paramArrayOfByte.length);
-      a("VadHelper", "vadSession offline RET_STATE:" + paramArrayOfByte.RET_STATE);
-      paramBoolean = bool2;
-      if (paramArrayOfByte.RET_STATE != 1) {
-        paramBoolean = paramArrayOfByte.offline_odata.isEmpty();
-      }
-      a();
     }
+    a("VadHelper", "vadSession, input empty, skipped");
+    return true;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComWxVoiceVadWXVad != null) {
-      this.jdField_a_of_type_ComWxVoiceVadWXVad.Release();
+    WXVad localWXVad = this.jdField_a_of_type_ComWxVoiceVadWXVad;
+    if (localWXVad != null) {
+      localWXVad.Release();
     }
   }
   
@@ -324,19 +334,21 @@ public class VadHelper
       this.jdField_a_of_type_Boolean = true;
       a("VadHelper", "WXVad Error reading configure");
     }
-    WXVadData localWXVadData;
-    for (;;)
+    else
     {
-      localWXVadData = this.jdField_a_of_type_ComWxVoiceVadWXVad.GetOnlineProcessDataSize();
-      if (1 != localWXVadData.RET_STATE) {
-        break;
-      }
+      a("VadHelper", "WXVad Success init");
+    }
+    WXVadData localWXVadData = this.jdField_a_of_type_ComWxVoiceVadWXVad.GetOnlineProcessDataSize();
+    if (1 == localWXVadData.RET_STATE)
+    {
       this.jdField_a_of_type_Boolean = true;
       a("VadHelper", "WXVad Error reading blocksize");
       return;
-      a("VadHelper", "WXVad Success init");
     }
-    a("VadHelper", "WXVad success get blocksize ：" + localWXVadData.blocksize);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WXVad success get blocksize ：");
+    localStringBuilder.append(localWXVadData.blocksize);
+    a("VadHelper", localStringBuilder.toString());
   }
   
   public void d()
@@ -354,7 +366,7 @@ public class VadHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VadHelper
  * JD-Core Version:    0.7.0.1
  */

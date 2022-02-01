@@ -41,30 +41,45 @@ public class ServiceManager
     }
     if (this.mEnginServiceConfig.getScopeServices().contains(paramClass))
     {
-      Log.i("ServiceManager", "getService:" + paramClass.getSimpleName() + " in " + this.mEnginServiceConfig.getOwnerEngine() + " is own service, self create");
-      ServiceBaseInterface localServiceBaseInterface = ServiceFactory.createService(this.context, paramClass, this);
-      if (localServiceBaseInterface != null)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getService:");
+      ((StringBuilder)localObject).append(paramClass.getSimpleName());
+      ((StringBuilder)localObject).append(" in ");
+      ((StringBuilder)localObject).append(this.mEnginServiceConfig.getOwnerEngine());
+      ((StringBuilder)localObject).append(" is own service, self create");
+      Log.i("ServiceManager", ((StringBuilder)localObject).toString());
+      localObject = ServiceFactory.createService(this.context, paramClass, this);
+      if (localObject != null)
       {
-        this.allAccessableServices.put(paramClass, localServiceBaseInterface);
-        return localServiceBaseInterface;
+        this.allAccessableServices.put(paramClass, localObject);
+        return localObject;
       }
+      return null;
     }
-    else
+    if (this.mParentServiceAccessor != null)
     {
-      if (this.mParentServiceAccessor != null)
-      {
-        Log.i("ServiceManager", "getService:" + paramClass.getSimpleName() + " in " + this.mEnginServiceConfig.getOwnerEngine() + " not own service, parent get or create");
-        return this.mParentServiceAccessor.getService(paramClass);
-      }
-      Log.e("ServiceManager", "getService:" + paramClass.getSimpleName() + " in " + this.mEnginServiceConfig.getOwnerEngine() + " ERROR: service not belong to any engine");
-      throw new RuntimeException("Error Service Creator");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getService:");
+      ((StringBuilder)localObject).append(paramClass.getSimpleName());
+      ((StringBuilder)localObject).append(" in ");
+      ((StringBuilder)localObject).append(this.mEnginServiceConfig.getOwnerEngine());
+      ((StringBuilder)localObject).append(" not own service, parent get or create");
+      Log.i("ServiceManager", ((StringBuilder)localObject).toString());
+      return this.mParentServiceAccessor.getService(paramClass);
     }
-    return null;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getService:");
+    ((StringBuilder)localObject).append(paramClass.getSimpleName());
+    ((StringBuilder)localObject).append(" in ");
+    ((StringBuilder)localObject).append(this.mEnginServiceConfig.getOwnerEngine());
+    ((StringBuilder)localObject).append(" ERROR: service not belong to any engine");
+    Log.e("ServiceManager", ((StringBuilder)localObject).toString());
+    throw new RuntimeException("Error Service Creator");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.ServiceManager
  * JD-Core Version:    0.7.0.1
  */

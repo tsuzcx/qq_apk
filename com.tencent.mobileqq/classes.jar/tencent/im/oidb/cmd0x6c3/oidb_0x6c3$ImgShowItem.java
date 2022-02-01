@@ -18,14 +18,15 @@ public final class oidb_0x6c3$ImgShowItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "uint32_productid", "uint32_price", "bytes_wording", "bytes_cut_wording" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, ImgShowItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "uint32_productid", "uint32_price", "bytes_wording", "bytes_cut_wording" }, new Object[] { localInteger, localInteger, localByteStringMicro1, localByteStringMicro2 }, ImgShowItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6c3.oidb_0x6c3.ImgShowItem
  * JD-Core Version:    0.7.0.1
  */

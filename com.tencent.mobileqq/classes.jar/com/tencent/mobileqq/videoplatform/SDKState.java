@@ -8,21 +8,23 @@ public class SDKState
   
   public static String getStateStr(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "STATE_UNKNOW";
-    case 0: 
-      return "STATE_NEVER_INITED";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return "STATE_UNKNOW";
+        }
+        return "STATE_INITED_DONE";
+      }
       return "STATE_INITING";
     }
-    return "STATE_INITED_DONE";
+    return "STATE_NEVER_INITED";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.SDKState
  * JD-Core Version:    0.7.0.1
  */

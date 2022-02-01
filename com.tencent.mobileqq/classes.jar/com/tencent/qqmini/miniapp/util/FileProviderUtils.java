@@ -10,30 +10,34 @@ import java.io.File;
 
 public class FileProviderUtils
 {
-  public static String sAuthority = null;
-  public static Boolean sIsTargetThanN = null;
+  public static String sAuthority;
+  public static Boolean sIsTargetThanN;
   
   private static Uri getUriForFile24(Context paramContext, File paramFile)
   {
-    if (sAuthority == null) {
-      sAuthority = paramContext.getApplicationContext().getPackageName() + ".fileprovider";
+    if (sAuthority == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getApplicationContext().getPackageName());
+      localStringBuilder.append(".fileprovider");
+      sAuthority = localStringBuilder.toString();
     }
     return FileProvider.getUriForFile(paramContext, sAuthority, paramFile);
   }
   
   public static boolean isTargetBeyondN(Context paramContext)
   {
-    if (sIsTargetThanN == null) {
-      if ((Build.VERSION.SDK_INT < 24) || (paramContext.getApplicationContext().getApplicationInfo().targetSdkVersion < 24)) {
-        break label45;
-      }
-    }
-    label45:
-    for (boolean bool = true;; bool = false)
+    if (sIsTargetThanN == null)
     {
+      boolean bool;
+      if ((Build.VERSION.SDK_INT >= 24) && (paramContext.getApplicationContext().getApplicationInfo().targetSdkVersion >= 24)) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       sIsTargetThanN = Boolean.valueOf(bool);
-      return sIsTargetThanN.booleanValue();
     }
+    return sIsTargetThanN.booleanValue();
   }
   
   public static Uri setSystemCapture(Context paramContext, File paramFile, Intent paramIntent)
@@ -44,18 +48,18 @@ public class FileProviderUtils
       paramContext = getUriForFile24(paramContext, paramFile);
       paramIntent.addFlags(3);
     }
-    for (;;)
+    else
     {
-      paramIntent.putExtra("output", paramContext);
-      paramIntent.putExtra("android.intent.extra.videoQuality", 100);
-      return paramContext;
       paramContext = Uri.fromFile(paramFile);
     }
+    paramIntent.putExtra("output", paramContext);
+    paramIntent.putExtra("android.intent.extra.videoQuality", 100);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.FileProviderUtils
  * JD-Core Version:    0.7.0.1
  */

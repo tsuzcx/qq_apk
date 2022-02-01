@@ -44,47 +44,48 @@ class LebaQzoneAndPluginPart$11
         ((HashMap)localObject).put("unread_type", "5");
         StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "actQZUnreadDataReport", true, 0L, 0L, (HashMap)localObject, null);
       }
+      else if (((QZoneManagerImp)localObject).a(2) > 0)
+      {
+        localObject = new QZoneClickReport.ReportInfo();
+        ((QZoneClickReport.ReportInfo)localObject).actionType = "1";
+        ((QZoneClickReport.ReportInfo)localObject).subactionType = "6";
+        QZoneClickReport.report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (QZoneClickReport.ReportInfo)localObject, false);
+        localObject = new HashMap();
+        ((HashMap)localObject).put("unread_type", "6");
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "actQZUnreadDataReport", true, 0L, 0L, (HashMap)localObject, null);
+      }
     }
-    else if (System.currentTimeMillis() - LocalMultiProcConfig.getLong(BaseApplicationImpl.getContext().getString(2131718679) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0L) > 86400000L)
+    long l = System.currentTimeMillis();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().getString(2131718397));
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    if (l - LocalMultiProcConfig.getLong(((StringBuilder)localObject).toString(), 0L) > 86400000L)
     {
       localObject = new HashMap();
-      if (!LocalMultiProcConfig.getBool(BaseApplicationImpl.getContext().getString(2131718678) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), true)) {
-        break label440;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131718396));
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      if (LocalMultiProcConfig.getBool(localStringBuilder.toString(), true)) {
+        ((HashMap)localObject).put("myfeednotifypush", "0");
+      } else {
+        ((HashMap)localObject).put("myfeednotifypush", "1");
       }
-      ((HashMap)localObject).put("myfeednotifypush", "0");
-      label276:
-      if (!CliNotifyPush.a(BaseApplicationImpl.getContext(), "com.qzone")) {
-        break label452;
+      if (CliNotifyPush.a(BaseApplicationImpl.getContext(), "com.qzone")) {
+        ((HashMap)localObject).put("qzoneinstalled", "0");
+      } else {
+        ((HashMap)localObject).put("qzoneinstalled", "1");
       }
-      ((HashMap)localObject).put("qzoneinstalled", "0");
-    }
-    for (;;)
-    {
       StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "qzonepushstate", true, 0L, 0L, (HashMap)localObject, null);
-      LocalMultiProcConfig.putLong(BaseApplicationImpl.getContext().getString(2131718679) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), System.currentTimeMillis());
-      return;
-      if (((QZoneManagerImp)localObject).a(2) <= 0) {
-        break;
-      }
-      localObject = new QZoneClickReport.ReportInfo();
-      ((QZoneClickReport.ReportInfo)localObject).actionType = "1";
-      ((QZoneClickReport.ReportInfo)localObject).subactionType = "6";
-      QZoneClickReport.report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (QZoneClickReport.ReportInfo)localObject, false);
-      localObject = new HashMap();
-      ((HashMap)localObject).put("unread_type", "6");
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "actQZUnreadDataReport", true, 0L, 0L, (HashMap)localObject, null);
-      break;
-      label440:
-      ((HashMap)localObject).put("myfeednotifypush", "1");
-      break label276;
-      label452:
-      ((HashMap)localObject).put("qzoneinstalled", "1");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().getString(2131718397));
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      LocalMultiProcConfig.putLong(((StringBuilder)localObject).toString(), System.currentTimeMillis());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.11
  * JD-Core Version:    0.7.0.1
  */

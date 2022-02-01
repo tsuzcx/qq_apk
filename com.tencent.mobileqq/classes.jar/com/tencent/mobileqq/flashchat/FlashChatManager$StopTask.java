@@ -12,24 +12,24 @@ public final class FlashChatManager$StopTask
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) {}
-    for (;;)
-    {
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    if (localObject == null) {
       return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)localIterator.next();
-        if ((this.jdField_a_of_type_JavaLangLong == null) || (this.jdField_a_of_type_JavaLangLong.longValue() != localMessageForArkFlashChat.uniseq)) {
-          localMessageForArkFlashChat.stopAnim();
-        }
+    }
+    localObject = ((CopyOnWriteArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)((Iterator)localObject).next();
+      Long localLong = this.jdField_a_of_type_JavaLangLong;
+      if ((localLong == null) || (localLong.longValue() != localMessageForArkFlashChat.uniseq)) {
+        localMessageForArkFlashChat.stopAnim();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatManager.StopTask
  * JD-Core Version:    0.7.0.1
  */

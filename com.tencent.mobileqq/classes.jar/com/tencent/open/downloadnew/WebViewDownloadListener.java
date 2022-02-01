@@ -47,15 +47,12 @@ public class WebViewDownloadListener
       localJSONObject.put("errorMsg", paramString3);
       localJSONObject.put("errorCode", paramInt4);
       localJSONObject.put("writecodestate", paramInt5);
-      return localJSONObject.toString();
     }
     catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        LogUtility.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
-      }
+      LogUtility.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
     }
+    return localJSONObject.toString();
   }
   
   protected String a(String paramString1, int paramInt, String paramString2)
@@ -67,55 +64,58 @@ public class WebViewDownloadListener
       localJSONObject.put("appid", paramString1);
       localJSONObject.put("state", paramInt);
       localJSONObject.put("pro", 0);
-      return localJSONObject.toString();
     }
     catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        LogUtility.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
-      }
+      LogUtility.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
     }
+    return localJSONObject.toString();
   }
   
   protected void a(String paramString)
   {
     JsCallbackManager localJsCallbackManager = JsCallbackManager.a();
-    for (;;)
+    try
     {
-      int i;
-      try
+      int j = localJsCallbackManager.a().size();
+      int i = 0;
+      while (i < j)
       {
-        int j = localJsCallbackManager.a().size();
-        i = 0;
-        if (i < j)
+        Object localObject = (IJsCallBack)localJsCallbackManager.a().get(i);
+        WebView localWebView = ((IJsCallBack)localObject).getWebview();
+        if (localWebView != null)
         {
-          Object localObject = (IJsCallBack)localJsCallbackManager.a().get(i);
-          WebView localWebView = ((IJsCallBack)localObject).getWebview();
-          if (localWebView != null) {
-            if (TextUtils.isEmpty(((IJsCallBack)localObject).getJsCallbackMethod()))
-            {
-              localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
-              LogUtility.a("WebViewDownloadListener", " commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new WebViewDownloadListener.1(this, localWebView, (String)localObject));
-            }
-            else
-            {
-              localObject = "javascript:" + ((IJsCallBack)localObject).getJsCallbackMethod() + "(" + paramString + ")";
-              continue;
-            }
+          if (TextUtils.isEmpty(((IJsCallBack)localObject).getJsCallbackMethod()))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess',");
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append(");}void(0);");
+            localObject = ((StringBuilder)localObject).toString();
           }
+          else
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("javascript:");
+            localStringBuilder.append(((IJsCallBack)localObject).getJsCallbackMethod());
+            localStringBuilder.append("(");
+            localStringBuilder.append(paramString);
+            localStringBuilder.append(")");
+            localObject = localStringBuilder.toString();
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" commonJsCallBack >>> ");
+          localStringBuilder.append((String)localObject);
+          LogUtility.a("WebViewDownloadListener", localStringBuilder.toString());
+          this.jdField_a_of_type_AndroidOsHandler.post(new WebViewDownloadListener.1(this, localWebView, (String)localObject));
         }
-        else
-        {
-          return;
-        }
+        i += 1;
       }
-      catch (Exception paramString)
-      {
-        LogUtility.c("WebViewDownloadListener", "doJsCallback >>> ", paramString);
-      }
-      i += 1;
+      return;
+    }
+    catch (Exception paramString)
+    {
+      LogUtility.c("WebViewDownloadListener", "doJsCallback >>> ", paramString);
     }
   }
   
@@ -184,7 +184,7 @@ public class WebViewDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.WebViewDownloadListener
  * JD-Core Version:    0.7.0.1
  */

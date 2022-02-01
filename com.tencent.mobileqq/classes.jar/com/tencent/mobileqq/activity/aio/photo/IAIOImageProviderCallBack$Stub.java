@@ -35,72 +35,83 @@ public abstract class IAIOImageProviderCallBack$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
+    int i = 0;
     boolean bool;
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
-      l1 = paramParcel1.readLong();
-      paramInt1 = paramParcel1.readInt();
-      paramInt2 = paramParcel1.readInt();
-      i = paramParcel1.readInt();
-      paramParcel2 = paramParcel1.readString();
-      if (paramParcel1.readByte() != 0) {}
-      for (bool = true;; bool = false)
+      if (paramInt1 != 2)
       {
-        a(l1, paramInt1, paramInt2, i, paramParcel2, bool);
-        return true;
-      }
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
-      a((AIORichMediaData[])paramParcel1.createTypedArray(AIORichMediaData.CREATOR), paramParcel1.readInt());
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
-      l1 = paramParcel1.readLong();
-      paramInt1 = paramParcel1.readInt();
-      paramInt2 = paramParcel1.readInt();
-      i = paramParcel1.readInt();
-      long l2 = paramParcel1.readLong();
-      if (paramParcel1.readByte() == 1) {}
-      for (bool = true;; bool = false)
-      {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 4)
+          {
+            if (paramInt1 != 5)
+            {
+              if (paramInt1 != 1598968902) {
+                return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+              }
+              paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+              return true;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("IAIOImageProviderCallBack", 2, "carverW onTransact -> case TRANSACTION_notifyVideoURL");
+            }
+            paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+            l1 = paramParcel1.readLong();
+            paramInt2 = paramParcel1.readInt();
+            int j = paramParcel1.readInt();
+            paramParcel2 = paramParcel1.readString();
+            int k = paramParcel1.readInt();
+            String[] arrayOfString = new String[k];
+            paramInt1 = i;
+            while (paramInt1 < k)
+            {
+              arrayOfString[paramInt1] = paramParcel1.readString();
+              paramInt1 += 1;
+            }
+            a(l1, paramInt2, j, paramParcel2, arrayOfString, paramParcel1.readString(), (MessageForShortVideo)paramParcel1.readParcelable(MessageForShortVideo.class.getClassLoader()), paramParcel1.readInt(), paramParcel1.readBundle());
+            return true;
+          }
+          paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+          a();
+          return true;
+        }
+        paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+        l1 = paramParcel1.readLong();
+        paramInt1 = paramParcel1.readInt();
+        paramInt2 = paramParcel1.readInt();
+        i = paramParcel1.readInt();
+        long l2 = paramParcel1.readLong();
+        if (paramParcel1.readByte() == 1) {
+          bool = true;
+        } else {
+          bool = false;
+        }
         a(l1, paramInt1, paramInt2, i, l2, bool);
         return true;
       }
-    case 4: 
       paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
-      a();
+      a((AIORichMediaData[])paramParcel1.createTypedArray(AIORichMediaData.CREATOR), paramParcel1.readInt());
       return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("IAIOImageProviderCallBack", 2, "carverW onTransact -> case TRANSACTION_notifyVideoURL");
     }
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
     long l1 = paramParcel1.readLong();
+    paramInt1 = paramParcel1.readInt();
     paramInt2 = paramParcel1.readInt();
-    int i = paramParcel1.readInt();
+    i = paramParcel1.readInt();
     paramParcel2 = paramParcel1.readString();
-    int j = paramParcel1.readInt();
-    String[] arrayOfString = new String[j];
-    paramInt1 = 0;
-    while (paramInt1 < j)
-    {
-      arrayOfString[paramInt1] = paramParcel1.readString();
-      paramInt1 += 1;
+    if (paramParcel1.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    a(l1, paramInt2, i, paramParcel2, arrayOfString, paramParcel1.readString(), (MessageForShortVideo)paramParcel1.readParcelable(MessageForShortVideo.class.getClassLoader()), paramParcel1.readInt(), paramParcel1.readBundle());
+    a(l1, paramInt1, paramInt2, i, paramParcel2, bool);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack.Stub
  * JD-Core Version:    0.7.0.1
  */

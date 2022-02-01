@@ -18,14 +18,23 @@ public class WSSimpleEventBus
   
   private void a(String paramString, WSSimpleEventReceiver paramWSSimpleEventReceiver)
   {
-    ConcurrentHashMap localConcurrentHashMap2 = (ConcurrentHashMap)this.a.get(paramString);
-    ConcurrentHashMap localConcurrentHashMap1 = localConcurrentHashMap2;
-    if (localConcurrentHashMap2 == null) {
-      localConcurrentHashMap1 = new ConcurrentHashMap();
+    Object localObject2 = (ConcurrentHashMap)this.a.get(paramString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new ConcurrentHashMap();
     }
-    localConcurrentHashMap1.put(Integer.valueOf(paramWSSimpleEventReceiver.hashCode()), new WeakReference(paramWSSimpleEventReceiver));
-    this.a.put(paramString, localConcurrentHashMap1);
-    WSLog.b("WSSimpleEventBus", 2, "registerReceiver event Name:" + paramString + ",key：[" + paramWSSimpleEventReceiver.getClass().getSimpleName() + ":" + paramWSSimpleEventReceiver.hashCode() + "], subscribers size:" + localConcurrentHashMap1.size());
+    ((ConcurrentHashMap)localObject1).put(Integer.valueOf(paramWSSimpleEventReceiver.hashCode()), new WeakReference(paramWSSimpleEventReceiver));
+    this.a.put(paramString, localObject1);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("registerReceiver event Name:");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(",key：[");
+    ((StringBuilder)localObject2).append(paramWSSimpleEventReceiver.getClass().getSimpleName());
+    ((StringBuilder)localObject2).append(":");
+    ((StringBuilder)localObject2).append(paramWSSimpleEventReceiver.hashCode());
+    ((StringBuilder)localObject2).append("], subscribers size:");
+    ((StringBuilder)localObject2).append(((ConcurrentHashMap)localObject1).size());
+    WSLog.b("WSSimpleEventBus", 2, ((StringBuilder)localObject2).toString());
   }
   
   private void b(String paramString, WSSimpleEventReceiver paramWSSimpleEventReceiver)
@@ -38,56 +47,59 @@ public class WSSimpleEventBus
     if (localConcurrentHashMap.size() == 0) {
       this.a.remove(paramString);
     }
-    WSLog.b("WSSimpleEventBus", 2, "unRegisterReceiver event Name:" + paramString + ",key：[" + paramWSSimpleEventReceiver.getClass().getSimpleName() + ":" + paramWSSimpleEventReceiver.hashCode() + "], subscribers size:" + localConcurrentHashMap.size());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unRegisterReceiver event Name:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(",key：[");
+    localStringBuilder.append(paramWSSimpleEventReceiver.getClass().getSimpleName());
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramWSSimpleEventReceiver.hashCode());
+    localStringBuilder.append("], subscribers size:");
+    localStringBuilder.append(localConcurrentHashMap.size());
+    WSLog.b("WSSimpleEventBus", 2, localStringBuilder.toString());
   }
   
   public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
     Object localObject = (ConcurrentHashMap)this.a.get(paramWSSimpleBaseEvent.getClass().getName());
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((ConcurrentHashMap)localObject).values().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((WSSimpleEventReceiver)localWeakReference.get()).a(paramWSSimpleBaseEvent);
-        }
+    }
+    localObject = ((ConcurrentHashMap)localObject).values().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((WSSimpleEventReceiver)localWeakReference.get()).a(paramWSSimpleBaseEvent);
       }
     }
   }
   
   public void a(WSSimpleEventReceiver paramWSSimpleEventReceiver)
   {
-    if (paramWSSimpleEventReceiver == null) {}
-    for (;;)
-    {
+    if (paramWSSimpleEventReceiver == null) {
       return;
-      Iterator localIterator = paramWSSimpleEventReceiver.a().iterator();
-      while (localIterator.hasNext()) {
-        a(((Class)localIterator.next()).getName(), paramWSSimpleEventReceiver);
-      }
+    }
+    Iterator localIterator = paramWSSimpleEventReceiver.a().iterator();
+    while (localIterator.hasNext()) {
+      a(((Class)localIterator.next()).getName(), paramWSSimpleEventReceiver);
     }
   }
   
   public void b(WSSimpleEventReceiver paramWSSimpleEventReceiver)
   {
-    if (paramWSSimpleEventReceiver == null) {}
-    for (;;)
-    {
+    if (paramWSSimpleEventReceiver == null) {
       return;
-      Iterator localIterator = paramWSSimpleEventReceiver.a().iterator();
-      while (localIterator.hasNext()) {
-        b(((Class)localIterator.next()).getName(), paramWSSimpleEventReceiver);
-      }
+    }
+    Iterator localIterator = paramWSSimpleEventReceiver.a().iterator();
+    while (localIterator.hasNext()) {
+      b(((Class)localIterator.next()).getName(), paramWSSimpleEventReceiver);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.event.WSSimpleEventBus
  * JD-Core Version:    0.7.0.1
  */

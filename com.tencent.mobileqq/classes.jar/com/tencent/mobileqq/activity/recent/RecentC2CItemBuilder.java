@@ -14,20 +14,24 @@ public class RecentC2CItemBuilder
 {
   public RecentC2CItemBuilder()
   {
-    this.jdField_a_of_type_Int = 2131562914;
+    this.jdField_a_of_type_Int = 2131562729;
     this.jdField_a_of_type_Boolean = true;
   }
   
   private void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext)
   {
-    RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder localRecentEfficientItemBuilderHolder = null;
     if ((paramView.getTag() instanceof RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder)) {
-      localRecentEfficientItemBuilderHolder = (RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder)paramView.getTag();
+      paramView = (RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder)paramView.getTag();
+    } else {
+      paramView = null;
     }
-    if ((localRecentEfficientItemBuilderHolder == null) || (localRecentEfficientItemBuilderHolder.a == null) || (paramRecentBaseData == null)) {
-      return;
+    if ((paramView != null) && (paramView.a != null))
+    {
+      if (paramRecentBaseData == null) {
+        return;
+      }
+      RobotChatUtil.a(paramContext, paramView.a, paramRecentBaseData.getRecentUserUin());
     }
-    RobotChatUtil.a(paramContext, localRecentEfficientItemBuilderHolder.a, paramRecentBaseData.getRecentUserUin());
   }
   
   public View a(int paramInt, Object paramObject, RecentFaceDecoder paramRecentFaceDecoder, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener)
@@ -43,7 +47,7 @@ public class RecentC2CItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentC2CItemBuilder
  * JD-Core Version:    0.7.0.1
  */

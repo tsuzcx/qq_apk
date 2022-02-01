@@ -43,27 +43,32 @@ public final class an
   {
     paramj.a(this.a, 0);
     paramj.a(this.b, 1);
-    if (this.c != null) {
-      paramj.a(this.c, 2);
+    Object localObject = this.c;
+    if (localObject != null) {
+      paramj.a((byte[])localObject, 2);
     }
-    if (this.d != null) {
-      paramj.a(this.d, 3);
+    localObject = this.d;
+    if (localObject != null) {
+      paramj.a((String)localObject, 3);
     }
     paramj.a(this.e, 4);
-    if (this.g != null) {
-      paramj.a(this.g, 5);
+    localObject = this.g;
+    if (localObject != null) {
+      paramj.a((String)localObject, 5);
     }
-    if (this.f != null) {
-      paramj.a(this.f, 6);
+    localObject = this.f;
+    if (localObject != null) {
+      paramj.a((String)localObject, 6);
     }
-    if (this.h != null) {
-      paramj.a(this.h, 7);
+    localObject = this.h;
+    if (localObject != null) {
+      paramj.a((Map)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.an
  * JD-Core Version:    0.7.0.1
  */

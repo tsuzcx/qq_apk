@@ -22,7 +22,14 @@ final class c
       localJSONObject.put("cursor", paramEditable.toString().length());
       localJSONObject.put("value", paramEditable.toString());
       localJSONObject.put("data", new JSONObject(this.a).optString("data"));
-      this.b.a.i.evaluteJs("WeixinJSBridge.subscribeHandler(\"onKeyboardValueChange\", " + localJSONObject + "," + this.c.pageWebviewId + ")");
+      paramEditable = this.b.a.i;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onKeyboardValueChange\", ");
+      localStringBuilder.append(localJSONObject);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.c.pageWebviewId);
+      localStringBuilder.append(")");
+      paramEditable.evaluteJs(localStringBuilder.toString());
       return;
     }
     catch (JSONException paramEditable)
@@ -37,7 +44,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.input.c
  * JD-Core Version:    0.7.0.1
  */

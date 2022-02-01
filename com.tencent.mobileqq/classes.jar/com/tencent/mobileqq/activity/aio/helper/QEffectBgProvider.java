@@ -5,20 +5,21 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import com.tencent.android.gldrawable.api.IGLDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.ChatBackground;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.drawable.ChatBackgroundDrawable;
-import com.tencent.mobileqq.floatscr.ColorScreenManager;
+import com.tencent.mobileqq.floatscr.IColorScreenManager;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.theme.diy.ThemeBackground;
-import com.tencent.mobileqq.theme.diy.ThemeBackground.BusinessFlag;
-import com.tencent.mobileqq.theme.effect.QEffectApngImageView;
-import com.tencent.mobileqq.vas.VasExtensionManager;
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper;
+import com.tencent.mobileqq.vas.api.IVasSingedApi;
+import com.tencent.mobileqq.vas.theme.chatbg.ChatBackgroundDrawable;
+import com.tencent.mobileqq.vas.theme.diy.ThemeBackground;
+import com.tencent.mobileqq.vas.theme.diy.ThemeBackground.BusinessFlag;
+import com.tencent.mobileqq.vas.theme.effect.QEffectApngImageView;
+import com.tencent.mobileqq.vas.util.ChatBackgroundUtil;
+import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.qapmsdk.base.reporter.ab.AbProxy;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qq.effect.QEffectView;
@@ -39,7 +40,7 @@ public class QEffectBgProvider
   
   public static String a(Context paramContext, String paramString1, String paramString2)
   {
-    paramContext = ChatBackground.a(paramContext, paramString1, paramString2);
+    paramContext = ChatBackgroundUtil.a(paramContext, paramString1, paramString2);
     if (paramContext.contains("aioImage")) {
       return paramContext.replace("aioImage", "aio_bg.mp4");
     }
@@ -57,8 +58,9 @@ public class QEffectBgProvider
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentQqEffectQEffectView != null) {
-      this.jdField_a_of_type_ComTencentQqEffectQEffectView.pause();
+    QEffectView localQEffectView = this.jdField_a_of_type_ComTencentQqEffectQEffectView;
+    if (localQEffectView != null) {
+      localQEffectView.pause();
     }
   }
   
@@ -66,85 +68,97 @@ public class QEffectBgProvider
   {
     if ((paramSessionInfo != null) && (paramSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground != null))
     {
-      str1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      String str1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
       if (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null)
       {
         this.jdField_a_of_type_ComTencentQqEffectQEffectView = new QEffectView(paramContext);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d.addView(this.jdField_a_of_type_ComTencentQqEffectQEffectView, 0, new ViewGroup.LayoutParams(-1, -1));
       }
-      if (paramSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground.a != null) {
+      if (paramSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground.a != null)
+      {
         if ((paramSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground.a instanceof ChatBackgroundDrawable))
         {
-          ThemeBackground.sAIOBusinessFlag.setUseStatic();
+          ThemeBackground.a.a();
           paramSessionInfo = "aio-bg-static";
-          this.jdField_a_of_type_ComTencentQqEffectQEffectView.setExtOptions(2, QEffectApngImageView.a(new int[] { 0 }, "-chatBg-"));
-          str2 = paramQQAppInterface.getCurrentUin();
-          i = ChatBackgroundManager.a(paramContext, str2, str1);
-          if ((i <= 0) || (!ChatBackgroundManager.a())) {
-            break label239;
-          }
-          ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(i, new QEffectBgProvider.1(this, i));
-          paramContext = paramSessionInfo + "-effect";
-          ThemeBackground.sAIOBusinessFlag.setUseEffect();
-          AbProxy.setAbFactor("AIO背景", paramContext, AbFactorAIODynamicBg.class);
+          break label129;
         }
-      }
-    }
-    label239:
-    while (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null) {
-      for (;;)
-      {
-        String str1;
-        String str2;
-        int i;
-        return;
         if ((paramSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground.a instanceof URLDrawable))
         {
-          ThemeBackground.sAIOBusinessFlag.setUseApng();
+          ThemeBackground.a.c();
           paramSessionInfo = "aio-bg-dynamic";
-          continue;
-          ThemeBackground.sAIOBusinessFlag.setUseStatic();
-        }
-        else
-        {
-          paramSessionInfo = "aio-bg-default";
-          continue;
-          if ((ChatBackgroundManager.a(paramContext, str2, str1)) && (ChatBackgroundManager.a()))
-          {
-            paramContext = ChatBackground.a(paramContext, str2, str1);
-            this.jdField_a_of_type_Long = System.currentTimeMillis();
-            this.jdField_a_of_type_ComTencentQqEffectQEffectView.setSrc(paramContext.replace("aioImage", ""), "zip");
-            QLog.i("QEffectBgProvider", 1, "set qeffect for custom background aioImageID:" + ChatBackgroundManager.d(paramContext));
-            paramContext = paramSessionInfo + "-3d";
-            ThemeBackground.sAIOBusinessFlag.setUse3D();
-          }
-          else if (a(paramContext, str2, str1))
-          {
-            paramQQAppInterface = ThemeBackground.getDynamicDrawable(a(paramContext, str2, str1), 2130839222);
-            GLDrawableWraper.a().a(paramQQAppInterface, true);
-            paramContext = paramSessionInfo;
-            if (paramQQAppInterface != null)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d.setBackgroundDrawable(paramQQAppInterface);
-              paramContext = paramSessionInfo + "-video";
-              ThemeBackground.sAIOBusinessFlag.setUseVideo();
-            }
-          }
-          else
-          {
-            this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
-            paramContext = paramSessionInfo;
-          }
+          break label129;
         }
       }
+      else
+      {
+        ThemeBackground.a.a();
+      }
+      paramSessionInfo = "aio-bg-default";
+      label129:
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.setExtOptions(2, QEffectApngImageView.a(new int[] { 0 }, "-chatBg-"));
+      String str2 = paramQQAppInterface.getCurrentUin();
+      int i = ChatBackgroundManager.a(paramContext, str2, str1);
+      if ((i > 0) && (ChatBackgroundManager.a()))
+      {
+        paramContext = new QEffectBgProvider.1(this, i);
+        VasUtil.a(paramQQAppInterface).getColorScreen().a(i, paramContext);
+        paramContext = new StringBuilder();
+        paramContext.append(paramSessionInfo);
+        paramContext.append("-effect");
+        paramContext = paramContext.toString();
+        ThemeBackground.a.b();
+      }
+      else if ((ChatBackgroundManager.a(paramContext, str2, str1)) && (ChatBackgroundManager.a()))
+      {
+        paramContext = ChatBackgroundUtil.a(paramContext, str2, str1);
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView.setSrc(paramContext.replace("aioImage", ""), "zip");
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("set qeffect for custom background aioImageID:");
+        paramQQAppInterface.append(ChatBackgroundUtil.b(paramContext));
+        QLog.i("QEffectBgProvider", 1, paramQQAppInterface.toString());
+        paramContext = new StringBuilder();
+        paramContext.append(paramSessionInfo);
+        paramContext.append("-3d");
+        paramContext = paramContext.toString();
+        ThemeBackground.a.e();
+      }
+      else if (a(paramContext, str2, str1))
+      {
+        paramQQAppInterface = ThemeBackground.a(a(paramContext, str2, str1), 2130839075);
+        if ((paramQQAppInterface instanceof IGLDrawable)) {
+          ((IGLDrawable)paramQQAppInterface).setLockWH(true);
+        }
+        paramContext = paramSessionInfo;
+        if (paramQQAppInterface != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d.setBackgroundDrawable(paramQQAppInterface);
+          paramContext = new StringBuilder();
+          paramContext.append(paramSessionInfo);
+          paramContext.append("-video");
+          paramContext = paramContext.toString();
+          ThemeBackground.a.d();
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+        paramContext = paramSessionInfo;
+      }
+      AbProxy.setAbFactor("AIO背景", paramContext, AbFactorAIODynamicBg.class);
+      return;
     }
-    this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+    paramContext = this.jdField_a_of_type_ComTencentQqEffectQEffectView;
+    if (paramContext != null) {
+      paramContext.clear();
+    }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentQqEffectQEffectView != null) {
-      this.jdField_a_of_type_ComTencentQqEffectQEffectView.resume();
+    QEffectView localQEffectView = this.jdField_a_of_type_ComTencentQqEffectQEffectView;
+    if (localQEffectView != null) {
+      localQEffectView.resume();
     }
   }
   
@@ -155,41 +169,48 @@ public class QEffectBgProvider
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 14, 15, 16, 17 };
+    return new int[] { 4, 15, 16, 17, 18 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 4: 
-    default: 
-    case 14: 
-      do
+    if (paramInt != 4) {
+      if (paramInt != 18)
       {
-        return;
-      } while (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null);
-      StringBuilder localStringBuilder = new StringBuilder().append("destroy qeffect, duration:");
-      if (this.jdField_a_of_type_Long == 0L) {}
-      for (long l = this.jdField_a_of_type_Long;; l = System.currentTimeMillis() - this.jdField_a_of_type_Long)
-      {
-        QLog.i("QEffectBgProvider", 1, l);
-        if (this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl() != null) {
-          ((View)this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl()).destroyDrawingCache();
+        if (paramInt != 15)
+        {
+          if (paramInt != 16) {
+            return;
+          }
+          a();
+          return;
         }
-        this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
-        return;
+        if (this.jdField_a_of_type_ComTencentQqEffectQEffectView != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("destroy qeffect, duration:");
+          long l = this.jdField_a_of_type_Long;
+          if (l != 0L) {
+            l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+          }
+          localStringBuilder.append(l);
+          QLog.i("QEffectBgProvider", 1, localStringBuilder.toString());
+          if (this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl() != null) {
+            ((View)this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl()).destroyDrawingCache();
+          }
+          this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+        }
       }
-    case 15: 
-      a();
-      return;
+      else
+      {
+        b();
+      }
     }
-    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QEffectBgProvider
  * JD-Core Version:    0.7.0.1
  */

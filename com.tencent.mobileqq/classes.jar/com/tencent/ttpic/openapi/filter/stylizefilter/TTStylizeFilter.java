@@ -61,12 +61,13 @@ public class TTStylizeFilter
   
   protected void updateBitmapTexture(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString1)) {
       return;
-      paramString1 = getBitmap(paramString1);
-    } while (!BitmapUtils.isLegal(paramString1));
+    }
+    paramString1 = getBitmap(paramString1);
+    if (!BitmapUtils.isLegal(paramString1)) {
+      return;
+    }
     addParam(new UniformParam.TextureBitmapParam(paramString2, paramString1, paramInt, paramBoolean));
   }
   
@@ -84,7 +85,7 @@ public class TTStylizeFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.stylizefilter.TTStylizeFilter
  * JD-Core Version:    0.7.0.1
  */

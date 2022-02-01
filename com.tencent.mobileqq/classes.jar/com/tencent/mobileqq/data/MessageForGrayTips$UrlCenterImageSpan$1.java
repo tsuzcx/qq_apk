@@ -18,20 +18,26 @@ class MessageForGrayTips$UrlCenterImageSpan$1
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForGrayTips", 2, "onLoadSuccessed() called with: urlDrawable = [" + paramURLDrawable + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLoadSuccessed() called with: urlDrawable = [");
+      localStringBuilder.append(paramURLDrawable);
+      localStringBuilder.append("]");
+      QLog.d("MessageForGrayTips", 2, localStringBuilder.toString());
     }
     paramURLDrawable = paramURLDrawable.getCallback();
     if ((paramURLDrawable instanceof View))
     {
-      ((View)paramURLDrawable).invalidate();
-      ((View)paramURLDrawable).requestLayout();
+      paramURLDrawable = (View)paramURLDrawable;
+      paramURLDrawable.invalidate();
+      paramURLDrawable.requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips.UrlCenterImageSpan.1
  * JD-Core Version:    0.7.0.1
  */

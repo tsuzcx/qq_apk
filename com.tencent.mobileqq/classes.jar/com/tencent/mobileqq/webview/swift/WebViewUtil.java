@@ -2,7 +2,10 @@ package com.tencent.mobileqq.webview.swift;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -10,47 +13,48 @@ public class WebViewUtil
 {
   public static int a(WebViewPlugin paramWebViewPlugin)
   {
-    if (paramWebViewPlugin == null) {}
-    label67:
-    label90:
-    do
+    if (paramWebViewPlugin == null) {
+      return -1;
+    }
+    if (WebViewPluginFactory.b.containsKey(paramWebViewPlugin.getClass())) {
+      return ((Integer)WebViewPluginFactory.b.get(paramWebViewPlugin.getClass())).intValue();
+    }
+    if ((paramWebViewPlugin instanceof MultiNameSpacePluginCompact))
     {
-      do
+      paramWebViewPlugin = ((MultiNameSpacePluginCompact)paramWebViewPlugin).getMultiNameSpace();
+      if ((paramWebViewPlugin != null) && (paramWebViewPlugin.length > 0))
       {
-        return -1;
-        if (WebViewPluginFactory.b.containsKey(paramWebViewPlugin.getClass())) {
-          return ((Integer)WebViewPluginFactory.b.get(paramWebViewPlugin.getClass())).intValue();
-        }
-        if (!(paramWebViewPlugin instanceof MultiNameSpacePluginCompact)) {
-          break;
-        }
-        paramWebViewPlugin = ((MultiNameSpacePluginCompact)paramWebViewPlugin).getMultiNameSpace();
-      } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.length <= 0));
-      int j = paramWebViewPlugin.length;
-      int i = 0;
-      CharSequence localCharSequence;
-      if (i < j)
-      {
-        localCharSequence = paramWebViewPlugin[i];
-        if (!TextUtils.isEmpty(localCharSequence)) {
-          break label90;
+        int j = paramWebViewPlugin.length;
+        int i = 0;
+        while (i < j)
+        {
+          localObject = paramWebViewPlugin[i];
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (WebViewPluginFactory.a.containsKey(localObject)))
+          {
+            paramWebViewPlugin = (Class)WebViewPluginFactory.a.get(localObject);
+            return ((Integer)WebViewPluginFactory.b.get(paramWebViewPlugin)).intValue();
+          }
+          i += 1;
         }
       }
-      while (!WebViewPluginFactory.a.containsKey(localCharSequence))
-      {
-        i += 1;
-        break label67;
-        break;
-      }
-      paramWebViewPlugin = (Class)WebViewPluginFactory.a.get(localCharSequence);
-      return ((Integer)WebViewPluginFactory.b.get(paramWebViewPlugin)).intValue();
+    }
+    else
+    {
       if (TextUtils.isEmpty(paramWebViewPlugin.mPluginNameSpace)) {
-        break;
+        break label181;
       }
-    } while (!WebViewPluginFactory.a.containsKey(paramWebViewPlugin.mPluginNameSpace));
-    paramWebViewPlugin = (Class)WebViewPluginFactory.a.get(paramWebViewPlugin.mPluginNameSpace);
-    return ((Integer)WebViewPluginFactory.b.get(paramWebViewPlugin)).intValue();
-    a(paramWebViewPlugin.toString() + " have no namespace!!!!");
+      if (WebViewPluginFactory.a.containsKey(paramWebViewPlugin.mPluginNameSpace))
+      {
+        paramWebViewPlugin = (Class)WebViewPluginFactory.a.get(paramWebViewPlugin.mPluginNameSpace);
+        return ((Integer)WebViewPluginFactory.b.get(paramWebViewPlugin)).intValue();
+      }
+    }
+    return -1;
+    label181:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramWebViewPlugin.toString());
+    ((StringBuilder)localObject).append(" have no namespace!!!!");
+    a(((StringBuilder)localObject).toString());
     return -1;
   }
   
@@ -78,6 +82,14 @@ public class WebViewUtil
     paramWebViewProvider.getHostActivity().startActivity(paramIntent);
   }
   
+  public static void a(WebViewPlugin paramWebViewPlugin, ActivityURIRequest paramActivityURIRequest, byte paramByte, WebViewProvider paramWebViewProvider)
+  {
+    int i = paramWebViewProvider.switchRequestCode(paramWebViewPlugin, paramByte);
+    paramActivityURIRequest.extra().putString("keyAction", "actionSelectPicture");
+    paramActivityURIRequest.extra().putInt("requestCode", i);
+    QRoute.startUri(paramActivityURIRequest);
+  }
+  
   private static void a(String paramString)
   {
     QLog.e("WebViewUtil", 1, paramString);
@@ -85,7 +97,7 @@ public class WebViewUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewUtil
  * JD-Core Version:    0.7.0.1
  */

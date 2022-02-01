@@ -15,36 +15,42 @@ class HwEngine$1
   
   public void onResultOverflow(HashMap<String, String> paramHashMap)
   {
-    if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
-      return;
-    }
-    BdhLogUtil.LogEvent("P", "probe result upload to dengta, count " + paramHashMap.size());
-    RdmReq localRdmReq = new RdmReq();
-    localRdmReq.isMerge = false;
-    localRdmReq.isRealTime = true;
-    localRdmReq.isSucceed = true;
-    localRdmReq.eventName = "actWeaknetProbe";
-    localRdmReq.elapse = 0L;
-    localRdmReq.size = 0L;
-    localRdmReq.params = paramHashMap;
-    try
+    if (paramHashMap != null)
     {
-      paramHashMap = MsfMsgUtil.getRdmReportMsg(MsfServiceSdk.get().getMsfServiceName(), localRdmReq);
-      paramHashMap.setAppId(HwEngine.appId);
-      paramHashMap.setTimeout(30000L);
-      MsfServiceSdk.get().sendMsg(paramHashMap);
-      return;
-    }
-    catch (Exception paramHashMap)
-    {
-      paramHashMap.printStackTrace();
-      BdhLogUtil.LogException("P", "upload report has exception ", paramHashMap);
+      if (paramHashMap.isEmpty()) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("probe result upload to dengta, count ");
+      ((StringBuilder)localObject).append(paramHashMap.size());
+      BdhLogUtil.LogEvent("P", ((StringBuilder)localObject).toString());
+      localObject = new RdmReq();
+      ((RdmReq)localObject).isMerge = false;
+      ((RdmReq)localObject).isRealTime = true;
+      ((RdmReq)localObject).isSucceed = true;
+      ((RdmReq)localObject).eventName = "actWeaknetProbe";
+      ((RdmReq)localObject).elapse = 0L;
+      ((RdmReq)localObject).size = 0L;
+      ((RdmReq)localObject).params = paramHashMap;
+      try
+      {
+        paramHashMap = MsfMsgUtil.getRdmReportMsg(MsfServiceSdk.get().getMsfServiceName(), (RdmReq)localObject);
+        paramHashMap.setAppId(HwEngine.appId);
+        paramHashMap.setTimeout(30000L);
+        MsfServiceSdk.get().sendMsg(paramHashMap);
+        return;
+      }
+      catch (Exception paramHashMap)
+      {
+        paramHashMap.printStackTrace();
+        BdhLogUtil.LogException("P", "upload report has exception ", paramHashMap);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.HwEngine.1
  * JD-Core Version:    0.7.0.1
  */

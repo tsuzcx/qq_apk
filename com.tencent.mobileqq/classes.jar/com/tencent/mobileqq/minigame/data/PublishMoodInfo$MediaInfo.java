@@ -17,12 +17,17 @@ public class PublishMoodInfo$MediaInfo
   
   public String toString()
   {
-    return "mType = " + this.mType + ", mPath = " + this.mPath;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mType = ");
+    localStringBuilder.append(this.mType);
+    localStringBuilder.append(", mPath = ");
+    localStringBuilder.append(this.mPath);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.data.PublishMoodInfo.MediaInfo
  * JD-Core Version:    0.7.0.1
  */

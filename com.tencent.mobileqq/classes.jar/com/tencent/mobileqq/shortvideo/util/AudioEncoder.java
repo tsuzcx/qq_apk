@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import com.tencent.mobileqq.editor.composite.CodecParam;
 import java.io.File;
 
 public class AudioEncoder
@@ -12,23 +12,28 @@ public class AudioEncoder
       int i = encode(paramAudioData.jdField_a_of_type_JavaLangString, paramAudioData.jdField_b_of_type_JavaLangString, paramAudioData.jdField_a_of_type_Int, paramAudioData.jdField_b_of_type_Int, paramAudioData.c, paramAudioData.d, paramAudioData.e);
       return i;
     }
-    catch (UnsatisfiedLinkError paramAudioData) {}
+    catch (UnsatisfiedLinkError paramAudioData)
+    {
+      label34:
+      break label34;
+    }
     return -200;
   }
   
   public static int a(String paramString)
   {
-    if ((paramString == null) || ("".equals(paramString))) {
-      return -201;
+    if ((paramString != null) && (!"".equals(paramString)))
+    {
+      paramString = new File(paramString);
+      if (!paramString.exists()) {
+        return -202;
+      }
+      if (paramString.length() <= 0L) {
+        return -203;
+      }
+      return 0;
     }
-    paramString = new File(paramString);
-    if (!paramString.exists()) {
-      return -202;
-    }
-    if (paramString.length() <= 0L) {
-      return -203;
-    }
-    return 0;
+    return -201;
   }
   
   public static AudioEncoder.AudioData a(String paramString1, String paramString2, int paramInt)
@@ -39,8 +44,12 @@ public class AudioEncoder
     localAudioData.jdField_a_of_type_Int = paramInt;
     localAudioData.d = CodecParam.mAudioSampleRate;
     localAudioData.c = CodecParam.mDstAudioEncBitrate;
-    if (CodecParam.mAudioFormat == 2) {}
-    for (localAudioData.jdField_b_of_type_Int = 16; CodecParam.mAudioChannel == 16; localAudioData.jdField_b_of_type_Int = 8)
+    if (CodecParam.mAudioFormat == 2) {
+      localAudioData.jdField_b_of_type_Int = 16;
+    } else {
+      localAudioData.jdField_b_of_type_Int = 8;
+    }
+    if (CodecParam.mAudioChannel == 16)
     {
       localAudioData.e = 1;
       return localAudioData;
@@ -53,7 +62,7 @@ public class AudioEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.AudioEncoder
  * JD-Core Version:    0.7.0.1
  */

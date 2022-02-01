@@ -12,28 +12,32 @@ public class RecentCheckFilterDispatcher
 {
   public Pair<String, Boolean> a(BaseQQAppInterface paramBaseQQAppInterface, RecentUser paramRecentUser, int paramInt)
   {
+    Object localObject3 = jdField_a_of_type_JavaLangObject;
+    Object localObject2 = null;
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      do
+      {
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (IRecentCheckFilterProcessor)localIterator.next();
+      } while ((localObject1 == null) || (!((IRecentCheckFilterProcessor)localObject1).a(paramBaseQQAppInterface, paramRecentUser)));
+      Object localObject1 = new Pair(((IRecentCheckFilterProcessor)localObject1).a(paramRecentUser, paramInt), Boolean.valueOf(true));
+      return localObject1;
+    }
+    finally {}
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (localIterator.hasNext())
-        {
-          IRecentCheckFilterProcessor localIRecentCheckFilterProcessor = (IRecentCheckFilterProcessor)localIterator.next();
-          if ((localIRecentCheckFilterProcessor == null) || (!localIRecentCheckFilterProcessor.a(paramBaseQQAppInterface, paramRecentUser))) {
-            continue;
-          }
-          paramBaseQQAppInterface = new Pair(localIRecentCheckFilterProcessor.a(paramRecentUser, paramInt), Boolean.valueOf(true));
-          return paramBaseQQAppInterface;
-        }
-      }
-      paramBaseQQAppInterface = null;
+      throw paramBaseQQAppInterface;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.RecentCheckFilterDispatcher
  * JD-Core Version:    0.7.0.1
  */

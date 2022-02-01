@@ -5,19 +5,13 @@ import com.tencent.biz.common.util.IUtil;
 public class TraceUtil
   implements IUtil
 {
-  public void a(String paramString)
-  {
-    if (paramString != null) {}
-  }
+  public void a(String paramString) {}
   
-  public void b(String paramString)
-  {
-    if (paramString != null) {}
-  }
+  public void b(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.TraceUtil
  * JD-Core Version:    0.7.0.1
  */

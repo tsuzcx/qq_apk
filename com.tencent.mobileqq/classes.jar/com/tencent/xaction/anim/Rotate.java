@@ -7,7 +7,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Rotate;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "rx", "", "getRx", "()F", "setRx", "(F)V", "ry", "getRy", "setRy", "rz", "getRz", "setRz", "startX", "getStartX", "setStartX", "startY", "getStartY", "setStartY", "startZ", "getStartZ", "setStartZ", "doFrameUpdate", "", "animTime", "end", "preStart", "view", "Landroid/view/View;", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Rotate;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "rx", "", "getRx", "()F", "setRx", "(F)V", "ry", "getRy", "setRy", "rz", "getRz", "setRz", "startX", "getStartX", "setStartX", "startY", "getStartY", "setStartY", "startZ", "getStartZ", "setStartZ", "doFrameUpdate", "", "animTime", "end", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class Rotate
   extends BaseAnim
@@ -22,16 +22,23 @@ public final class Rotate
   public void doFrameUpdate(float paramFloat)
   {
     View localView = getView();
-    if (localView != null) {
-      localView.setRotationX(this.startX + (this.rx - this.startX) * paramFloat);
+    float f;
+    if (localView != null)
+    {
+      f = this.startX;
+      localView.setRotationX(f + (this.rx - f) * paramFloat);
     }
     localView = getView();
-    if (localView != null) {
-      localView.setRotationY(this.startY + (this.ry - this.startY) * paramFloat);
+    if (localView != null)
+    {
+      f = this.startY;
+      localView.setRotationY(f + (this.ry - f) * paramFloat);
     }
     localView = getView();
-    if (localView != null) {
-      localView.setRotation(this.startZ + (this.rz - this.startZ) * paramFloat);
+    if (localView != null)
+    {
+      f = this.startZ;
+      localView.setRotation(f + (this.rz - f) * paramFloat);
     }
   }
   
@@ -108,7 +115,7 @@ public final class Rotate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.anim.Rotate
  * JD-Core Version:    0.7.0.1
  */

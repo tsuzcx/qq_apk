@@ -25,7 +25,7 @@ public class YtVideoEncoder
   private static final int FRAME_RATE = 30;
   private static final int I_FRAME_INTERVAL = 1;
   private static final String MIME_TYPE = "video/avc";
-  private static final String TAG = YtVideoEncoder.class.getSimpleName();
+  private static final String TAG = "YtVideoEncoder";
   private static int mHeight;
   private static int mWidth;
   private int addedTrackCount = 0;
@@ -71,20 +71,22 @@ public class YtVideoEncoder
       this.yuvnv12 = new byte[paramInt1 * paramInt2 * 3 / 2];
     }
     paramYuvImage = paramYuvImage.getYuvData();
-    paramInt1 *= paramInt2;
-    if (paramInt1 >= 0) {
-      System.arraycopy(paramYuvImage, 0, this.yuvnv12, 0, paramInt1);
+    int j = paramInt1 * paramInt2;
+    if (j >= 0) {
+      System.arraycopy(paramYuvImage, 0, this.yuvnv12, 0, j);
     }
-    int j = paramInt1 / 4 + paramInt1;
+    paramInt2 = j / 4;
+    paramInt1 = j;
+    int i = paramInt2 + j;
     paramInt2 = paramInt1;
-    int i = paramInt1;
-    while (i < paramInt1 * 3 / 2)
+    while (paramInt2 < j * 3 / 2)
     {
-      this.yuvnv12[j] = paramYuvImage[i];
-      this.yuvnv12[paramInt2] = paramYuvImage[(i + 1)];
-      j += 1;
-      paramInt2 += 1;
-      i += 2;
+      byte[] arrayOfByte = this.yuvnv12;
+      arrayOfByte[i] = paramYuvImage[paramInt2];
+      arrayOfByte[paramInt1] = paramYuvImage[(paramInt2 + 1)];
+      i += 1;
+      paramInt1 += 1;
+      paramInt2 += 2;
     }
     return this.yuvnv12;
   }
@@ -99,22 +101,24 @@ public class YtVideoEncoder
     if (paramInt2 >= 0) {
       System.arraycopy(paramYuvImage, 0, this.yuvnv12, 0, paramInt2);
     }
-    paramInt1 = paramInt2;
-    while (paramInt1 < paramInt2 * 3 / 2)
+    int i;
+    for (paramInt1 = paramInt2; paramInt1 < paramInt2 * 3 / 2; paramInt1 = i)
     {
-      if ((paramInt1 + 1) % 2 == 0)
+      i = paramInt1 + 1;
+      if (i % 2 == 0)
       {
-        this.yuvnv12[paramInt1] = paramYuvImage[(paramInt1 - 1)];
-        this.yuvnv12[(paramInt1 - 1)] = paramYuvImage[paramInt1];
+        byte[] arrayOfByte = this.yuvnv12;
+        int j = paramInt1 - 1;
+        arrayOfByte[paramInt1] = paramYuvImage[j];
+        arrayOfByte[j] = paramYuvImage[paramInt1];
       }
-      paramInt1 += 1;
     }
     return this.yuvnv12;
   }
   
   private long computePresentationTime(long paramLong, int paramInt)
   {
-    return 132L + 1000000L * paramLong / paramInt;
+    return paramLong * 1000000L / paramInt + 132L;
   }
   
   private byte[] convertYUV(int paramInt1, int paramInt2, YuvImage paramYuvImage)
@@ -127,85 +131,72 @@ public class YtVideoEncoder
   
   private void encodeYUV420SP(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    int k = paramInt1 * paramInt2;
+    int j = paramInt1 * paramInt2;
+    int m = 0;
     int i = 0;
-    int j = 0;
     int n = 0;
-    int i1;
-    label25:
-    int m;
-    int i2;
-    int i4;
-    int i3;
-    if (n < paramInt2)
+    while (m < paramInt2)
     {
-      i1 = 0;
-      if (i1 < paramInt1)
+      int i1 = 0;
+      while (i1 < paramInt1)
       {
-        m = paramArrayOfInt[j];
-        m = (paramArrayOfInt[j] & 0xFF0000) >> 16;
-        i2 = (paramArrayOfInt[j] & 0xFF00) >> 8;
-        int i5 = paramArrayOfInt[j] & 0xFF;
-        i4 = (m * 66 + i2 * 129 + i5 * 25 + 128 >> 8) + 16;
-        i3 = (m * -38 - i2 * 74 + i5 * 112 + 128 >> 8) + 128;
-        i2 = (m * 112 - i2 * 94 - i5 * 18 + 128 >> 8) + 128;
-        if (i4 < 0)
+        int k = paramArrayOfInt[n];
+        k = (paramArrayOfInt[n] & 0xFF0000) >> 16;
+        int i4 = (paramArrayOfInt[n] & 0xFF00) >> 8;
+        int i3 = paramArrayOfInt[n];
+        int i2 = 255;
+        int i6 = i3 & 0xFF;
+        int i5 = (k * 66 + i4 * 129 + i6 * 25 + 128 >> 8) + 16;
+        i3 = (k * -38 - i4 * 74 + i6 * 112 + 128 >> 8) + 128;
+        i4 = (k * 112 - i4 * 94 - i6 * 18 + 128 >> 8) + 128;
+        if (i5 < 0)
         {
-          m = 0;
-          label169:
-          paramArrayOfByte[i] = ((byte)m);
-          if ((n % 2 != 0) || (j % 2 != 0)) {
-            break label329;
-          }
-          i4 = k + 1;
-          if (i3 >= 0) {
-            break label273;
-          }
-          m = 0;
-          label204:
-          paramArrayOfByte[k] = ((byte)m);
-          if (i2 >= 0) {
-            break label296;
-          }
           k = 0;
-          label219:
-          paramArrayOfByte[i4] = ((byte)k);
-          k = i4 + 1;
         }
+        else
+        {
+          k = i5;
+          if (i5 > 255) {
+            k = 255;
+          }
+        }
+        paramArrayOfByte[i] = ((byte)k);
+        k = j;
+        if (m % 2 == 0)
+        {
+          k = j;
+          if (n % 2 == 0)
+          {
+            i5 = j + 1;
+            if (i3 < 0)
+            {
+              k = 0;
+            }
+            else
+            {
+              k = i3;
+              if (i3 > 255) {
+                k = 255;
+              }
+            }
+            paramArrayOfByte[j] = ((byte)k);
+            k = i5 + 1;
+            if (i4 < 0) {
+              j = 0;
+            } else if (i4 > 255) {
+              j = i2;
+            } else {
+              j = i4;
+            }
+            paramArrayOfByte[i5] = ((byte)j);
+          }
+        }
+        n += 1;
+        i1 += 1;
+        i += 1;
+        j = k;
       }
-    }
-    label273:
-    label296:
-    label329:
-    for (;;)
-    {
-      i1 += 1;
-      j += 1;
-      i += 1;
-      break label25;
-      m = i4;
-      if (i4 <= 255) {
-        break label169;
-      }
-      m = 255;
-      break label169;
-      if (i3 > 255)
-      {
-        m = 255;
-        break label204;
-      }
-      m = i3;
-      break label204;
-      if (i2 > 255)
-      {
-        k = 255;
-        break label219;
-      }
-      k = i2;
-      break label219;
-      n += 1;
-      break;
-      return;
+      m += 1;
     }
   }
   
@@ -226,9 +217,10 @@ public class YtVideoEncoder
   
   private byte[] getNV21(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    int[] arrayOfInt = new int[paramInt1 * paramInt2];
+    int i = paramInt1 * paramInt2;
+    int[] arrayOfInt = new int[i];
     paramBitmap.getPixels(arrayOfInt, 0, paramInt1, 0, 0, paramInt1, paramInt2);
-    byte[] arrayOfByte = new byte[paramInt1 * paramInt2 * 3 / 2];
+    byte[] arrayOfByte = new byte[i * 3 / 2];
     encodeYUV420SP(arrayOfByte, arrayOfInt, paramInt1, paramInt2);
     paramBitmap.recycle();
     return arrayOfByte;
@@ -251,10 +243,12 @@ public class YtVideoEncoder
   
   private static boolean isRecognizedFormat(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    if ((paramInt != 39) && (paramInt != 2130706688)) {
+      switch (paramInt)
+      {
+      default: 
+        return false;
+      }
     }
     return true;
   }
@@ -263,223 +257,162 @@ public class YtVideoEncoder
   {
     this.audioEncoder.start();
     MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
-    long l4 = 0L;
-    long l3 = 0L;
     this.audioEncodeFinished = false;
-    long l1 = l4;
-    long l2 = l3;
-    label34:
-    int i;
-    ByteBuffer localByteBuffer;
-    for (;;)
+    long l3 = 0L;
+    long l1 = 0L;
+    while (!this.audioEncodeFinished)
     {
-      if (!this.audioEncodeFinished)
+      byte[] arrayOfByte = (byte[])this.audioEncodeQueue.poll();
+      if (arrayOfByte == null)
       {
-        byte[] arrayOfByte = (byte[])this.audioEncodeQueue.poll();
-        if (arrayOfByte == null)
+        try
         {
-          try
+          Thread.sleep(1L);
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          YtLogger.e(TAG, localInterruptedException.getLocalizedMessage());
+        }
+      }
+      else
+      {
+        int i = this.audioEncoder.dequeueInputBuffer(10000L);
+        long l4 = l3;
+        long l2 = l1;
+        if (i >= 0)
+        {
+          ??? = getInputBuffer(YtVideoEncoder.MediaType.AudioType, i);
+          ((ByteBuffer)???).clear();
+          ((ByteBuffer)???).limit(localInterruptedException.length);
+          ((ByteBuffer)???).put(localInterruptedException);
+          l4 = l3 + localInterruptedException.length;
+          if (this.isEncodingStarted)
           {
-            Thread.sleep(1L);
+            this.audioEncoder.queueInputBuffer(i, 0, localInterruptedException.length, l1, 0);
           }
-          catch (InterruptedException localInterruptedException)
+          else
           {
-            YtLogger.e(TAG, localInterruptedException.getLocalizedMessage());
+            YtLogger.d(TAG, "End of audio stream");
+            this.audioEncodeFinished = true;
+            this.audioEncoder.queueInputBuffer(i, 0, localInterruptedException.length, l1, 4);
           }
+          l2 = l4 / 1L * 1000000L / this.audioSampleRate / 2L;
+          this.audioGenerateIndex += 1;
+        }
+        i = this.audioEncoder.dequeueOutputBuffer(localBufferInfo, 10000L);
+        Object localObject2;
+        if (i == -2)
+        {
+          localObject2 = this.audioEncoder.getOutputFormat();
+          startMediaMuxer(YtVideoEncoder.MediaType.AudioType, (MediaFormat)localObject2);
+          l3 = l4;
+          l1 = l2;
+        }
+        else if (i == -1)
+        {
+          l3 = l4;
+          l1 = l2;
+        }
+        else if (i < 0)
+        {
+          l3 = l4;
+          l1 = l2;
         }
         else
         {
-          i = this.audioEncoder.dequeueInputBuffer(10000L);
-          if (i < 0) {
-            break label439;
-          }
-          localByteBuffer = getInputBuffer(YtVideoEncoder.MediaType.AudioType, i);
-          localByteBuffer.clear();
-          localByteBuffer.limit(localInterruptedException.length);
-          localByteBuffer.put(localInterruptedException);
-          l1 = localInterruptedException.length + l1;
-          if (this.isEncodingStarted)
+          l3 = l4;
+          l1 = l2;
+          if (localBufferInfo.size != 0)
           {
-            this.audioEncoder.queueInputBuffer(i, 0, localInterruptedException.length, l2, 0);
-            label158:
-            l2 = 1000000L * (l1 / 1L) / this.audioSampleRate / 2L;
-            this.audioGenerateIndex += 1;
+            localObject2 = getOutputBuffer(YtVideoEncoder.MediaType.AudioType, i);
+            l3 = l4;
+            l1 = l2;
+            if (localObject2 != null)
+            {
+              ((ByteBuffer)localObject2).position(localBufferInfo.offset);
+              ((ByteBuffer)localObject2).limit(localBufferInfo.offset + localBufferInfo.size);
+              ??? = TAG;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("media muxer write audio data outputindex ");
+              localStringBuilder.append(this.audioGenerateIndex);
+              localStringBuilder.append(" buff size:");
+              localStringBuilder.append(localBufferInfo.size);
+              YtLogger.d((String)???, localStringBuilder.toString());
+              synchronized (this.mediaMuxer)
+              {
+                this.mediaMuxer.writeSampleData(this.audioTrackIndex, (ByteBuffer)localObject2, localBufferInfo);
+                this.audioEncoder.releaseOutputBuffer(i, false);
+                l3 = l4;
+                l1 = l2;
+              }
+            }
           }
         }
       }
     }
-    label439:
-    for (;;)
-    {
-      for (;;)
-      {
-        i = this.audioEncoder.dequeueOutputBuffer(localBufferInfo, 10000L);
-        if (i == -2)
-        {
-          ??? = this.audioEncoder.getOutputFormat();
-          startMediaMuxer(YtVideoEncoder.MediaType.AudioType, (MediaFormat)???);
-          break label34;
-          YtLogger.d(TAG, "End of audio stream");
-          this.audioEncodeFinished = true;
-          this.audioEncoder.queueInputBuffer(i, 0, ???.length, l2, 4);
-          break label158;
-        }
-        if ((i == -1) || (i < 0)) {
-          break label34;
-        }
-        l4 = l1;
-        l3 = l2;
-        if (localBufferInfo.size == 0) {
-          break;
-        }
-        localByteBuffer = getOutputBuffer(YtVideoEncoder.MediaType.AudioType, i);
-        l4 = l1;
-        l3 = l2;
-        if (localByteBuffer == null) {
-          break;
-        }
-        localByteBuffer.position(localBufferInfo.offset);
-        localByteBuffer.limit(localBufferInfo.offset + localBufferInfo.size);
-        YtLogger.d(TAG, "media muxer write audio data outputindex " + this.audioGenerateIndex + " buff size:" + localBufferInfo.size);
-        synchronized (this.mediaMuxer)
-        {
-          this.mediaMuxer.writeSampleData(this.audioTrackIndex, localByteBuffer, localBufferInfo);
-          this.audioEncoder.releaseOutputBuffer(i, false);
-        }
-      }
-      YtLogger.d(TAG, "Audio encoder stop");
-      return;
-    }
+    YtLogger.d(TAG, "Audio encoder stop");
   }
   
-  /* Error */
   private void release()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 97	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxerSync	Ljava/lang/Object;
-    //   4: astore_1
-    //   5: aload_1
-    //   6: monitorenter
-    //   7: aload_0
-    //   8: getfield 187	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:videoEncoder	Landroid/media/MediaCodec;
-    //   11: ifnull +31 -> 42
-    //   14: aload_0
-    //   15: getfield 187	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:videoEncoder	Landroid/media/MediaCodec;
-    //   18: invokevirtual 346	android/media/MediaCodec:stop	()V
-    //   21: aload_0
-    //   22: getfield 187	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:videoEncoder	Landroid/media/MediaCodec;
-    //   25: invokevirtual 348	android/media/MediaCodec:release	()V
-    //   28: aload_0
-    //   29: aconst_null
-    //   30: putfield 187	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:videoEncoder	Landroid/media/MediaCodec;
-    //   33: getstatic 73	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   36: ldc_w 350
-    //   39: invokestatic 296	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   42: aload_0
-    //   43: getfield 194	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncoder	Landroid/media/MediaCodec;
-    //   46: astore_2
-    //   47: aload_2
-    //   48: ifnull +38 -> 86
-    //   51: aload_0
-    //   52: getfield 352	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncodeThread	Ljava/lang/Thread;
-    //   55: invokevirtual 355	java/lang/Thread:join	()V
-    //   58: aload_0
-    //   59: getfield 194	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncoder	Landroid/media/MediaCodec;
-    //   62: invokevirtual 346	android/media/MediaCodec:stop	()V
-    //   65: aload_0
-    //   66: getfield 194	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncoder	Landroid/media/MediaCodec;
-    //   69: invokevirtual 348	android/media/MediaCodec:release	()V
-    //   72: aload_0
-    //   73: aconst_null
-    //   74: putfield 194	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncoder	Landroid/media/MediaCodec;
-    //   77: getstatic 73	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   80: ldc_w 357
-    //   83: invokestatic 296	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   86: aload_0
-    //   87: getfield 326	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
-    //   90: astore_2
-    //   91: aload_2
-    //   92: ifnull +36 -> 128
-    //   95: aload_0
-    //   96: getfield 326	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
-    //   99: invokevirtual 358	android/media/MediaMuxer:stop	()V
-    //   102: aload_0
-    //   103: getfield 326	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
-    //   106: invokevirtual 359	android/media/MediaMuxer:release	()V
-    //   109: aload_0
-    //   110: aconst_null
-    //   111: putfield 326	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
-    //   114: aload_0
-    //   115: iconst_0
-    //   116: putfield 89	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:isMediaMuxerStarted	Z
-    //   119: getstatic 73	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   122: ldc_w 361
-    //   125: invokestatic 296	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   128: aload_1
-    //   129: monitorexit
-    //   130: return
-    //   131: astore_2
-    //   132: getstatic 73	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   135: aload_2
-    //   136: invokevirtual 241	java/lang/InterruptedException:getLocalizedMessage	()Ljava/lang/String;
-    //   139: invokestatic 247	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   142: goto -84 -> 58
-    //   145: astore_2
-    //   146: aload_1
-    //   147: monitorexit
-    //   148: aload_2
-    //   149: athrow
-    //   150: astore_2
-    //   151: getstatic 73	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   154: new 309	java/lang/StringBuilder
-    //   157: dup
-    //   158: invokespecial 310	java/lang/StringBuilder:<init>	()V
-    //   161: ldc_w 363
-    //   164: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: aload_2
-    //   168: invokevirtual 364	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
-    //   171: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: invokevirtual 324	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   177: invokestatic 247	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   180: goto -78 -> 102
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	183	0	this	YtVideoEncoder
-    //   4	143	1	localObject1	Object
-    //   46	46	2	localObject2	Object
-    //   131	5	2	localInterruptedException	InterruptedException
-    //   145	4	2	localObject3	Object
-    //   150	18	2	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   51	58	131	java/lang/InterruptedException
-    //   7	42	145	finally
-    //   42	47	145	finally
-    //   51	58	145	finally
-    //   58	86	145	finally
-    //   86	91	145	finally
-    //   95	102	145	finally
-    //   102	128	145	finally
-    //   128	130	145	finally
-    //   132	142	145	finally
-    //   146	148	145	finally
-    //   151	180	145	finally
-    //   95	102	150	java/lang/Exception
+    synchronized (this.mediaMuxerSync)
+    {
+      if (this.videoEncoder != null)
+      {
+        this.videoEncoder.stop();
+        this.videoEncoder.release();
+        this.videoEncoder = null;
+        YtLogger.d(TAG, "RELEASE Video CODEC");
+      }
+      MediaCodec localMediaCodec = this.audioEncoder;
+      if (localMediaCodec != null)
+      {
+        try
+        {
+          this.audioEncodeThread.join();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          YtLogger.e(TAG, localInterruptedException.getLocalizedMessage());
+        }
+        this.audioEncoder.stop();
+        this.audioEncoder.release();
+        this.audioEncoder = null;
+        YtLogger.d(TAG, "RELEASE Audio CODEC");
+      }
+      MediaMuxer localMediaMuxer = this.mediaMuxer;
+      if (localMediaMuxer != null)
+      {
+        try
+        {
+          this.mediaMuxer.stop();
+        }
+        catch (Exception localException)
+        {
+          String str = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("media muxer stop failed:");
+          localStringBuilder.append(localException.getLocalizedMessage());
+          YtLogger.e(str, localStringBuilder.toString());
+        }
+        this.mediaMuxer.release();
+        this.mediaMuxer = null;
+        this.isMediaMuxerStarted = false;
+        YtLogger.d(TAG, "RELEASE MUXER");
+      }
+      return;
+    }
   }
   
   private static MediaCodecInfo selectCodec(String paramString)
   {
     int k = MediaCodecList.getCodecCount();
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (!localMediaCodecInfo.isEncoder()) {}
-      for (;;)
+      if (localMediaCodecInfo.isEncoder())
       {
-        i += 1;
-        break;
         String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
         int j = 0;
         while (j < arrayOfString.length)
@@ -490,30 +423,29 @@ public class YtVideoEncoder
           j += 1;
         }
       }
+      i += 1;
     }
     return null;
   }
   
   private static int selectColorFormat(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
-    int k = 0;
     paramMediaCodecInfo = paramMediaCodecInfo.getCapabilitiesForType(paramString);
     int i = 0;
-    for (;;)
+    while (i < paramMediaCodecInfo.colorFormats.length)
     {
-      int j = k;
-      if (i < paramMediaCodecInfo.colorFormats.length)
-      {
-        j = paramMediaCodecInfo.colorFormats[i];
-        YtLogger.d(TAG, "found colorformat: " + j);
-        if (!isRecognizedFormat(j)) {}
-      }
-      else
-      {
+      int j = paramMediaCodecInfo.colorFormats[i];
+      paramString = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("found colorformat: ");
+      localStringBuilder.append(j);
+      YtLogger.d(paramString, localStringBuilder.toString());
+      if (isRecognizedFormat(j)) {
         return j;
       }
       i += 1;
     }
+    return 0;
   }
   
   private void startAudioEncoding(int paramInt1, int paramInt2)
@@ -550,40 +482,45 @@ public class YtVideoEncoder
   
   private void startMediaMuxer(YtVideoEncoder.MediaType paramMediaType, MediaFormat paramMediaFormat)
   {
-    for (;;)
+    synchronized (this.mediaMuxerSync)
     {
-      synchronized (this.mediaMuxerSync)
+      if (this.isMediaMuxerStarted) {
+        return;
+      }
+      if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
       {
-        if (this.isMediaMuxerStarted) {
-          return;
-        }
-        if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
-        {
-          this.videoTrackIndex = this.mediaMuxer.addTrack(paramMediaFormat);
-          this.addedTrackCount += 1;
-        }
-        if (paramMediaType == YtVideoEncoder.MediaType.AudioType)
-        {
-          this.audioTrackIndex = this.mediaMuxer.addTrack(paramMediaFormat);
-          this.addedTrackCount += 1;
-        }
-        if (((this.needAudio) && (this.addedTrackCount >= 2)) || ((!this.needAudio) && (this.addedTrackCount >= 1)))
-        {
-          YtLogger.d(TAG, "Media muxer is starting...");
-          this.mediaMuxer.start();
-          this.isMediaMuxerStarted = true;
-          this.mediaMuxerSync.notifyAll();
-          return;
-        }
+        this.videoTrackIndex = this.mediaMuxer.addTrack(paramMediaFormat);
+        this.addedTrackCount += 1;
       }
-      boolean bool = this.needAudio;
-      if (bool) {
-        try
-        {
-          this.mediaMuxerSync.wait();
-        }
-        catch (InterruptedException paramMediaType) {}
+      if (paramMediaType == YtVideoEncoder.MediaType.AudioType)
+      {
+        this.audioTrackIndex = this.mediaMuxer.addTrack(paramMediaFormat);
+        this.addedTrackCount += 1;
       }
+      if (((this.needAudio) && (this.addedTrackCount >= 2)) || ((!this.needAudio) && (this.addedTrackCount >= 1)))
+      {
+        YtLogger.d(TAG, "Media muxer is starting...");
+        this.mediaMuxer.start();
+        this.isMediaMuxerStarted = true;
+        this.mediaMuxerSync.notifyAll();
+      }
+      else
+      {
+        boolean bool = this.needAudio;
+        if (!bool) {}
+      }
+    }
+    try
+    {
+      this.mediaMuxerSync.wait();
+      label155:
+      return;
+      paramMediaType = finally;
+      throw paramMediaType;
+    }
+    catch (InterruptedException paramMediaType)
+    {
+      break label155;
     }
   }
   
@@ -599,112 +536,123 @@ public class YtVideoEncoder
     if (!this.mNeedWork) {
       return;
     }
-    if ((this.videoEncoder == null) || (this.mediaMuxer == null))
+    if ((this.videoEncoder != null) && (this.mediaMuxer != null))
     {
-      YtLogger.i(TAG, "Failed to abort encoding since it never started");
-      return;
-    }
-    YtLogger.i(TAG, "Aborting encoding");
-    release();
-    this.mNoMoreFrames = true;
-    this.mAbort = true;
-    this.vidoeEncodeQueue = new ConcurrentLinkedQueue();
-    this.audioEncodeQueue = new ConcurrentLinkedQueue();
-    synchronized (this.mFrameSync)
-    {
-      if ((this.mNewFrameLatch != null) && (this.mNewFrameLatch.getCount() > 0L)) {
-        this.mNewFrameLatch.countDown();
+      YtLogger.i(TAG, "Aborting encoding");
+      release();
+      this.mNoMoreFrames = true;
+      this.mAbort = true;
+      this.vidoeEncodeQueue = new ConcurrentLinkedQueue();
+      this.audioEncodeQueue = new ConcurrentLinkedQueue();
+      synchronized (this.mFrameSync)
+      {
+        if ((this.mNewFrameLatch != null) && (this.mNewFrameLatch.getCount() > 0L)) {
+          this.mNewFrameLatch.countDown();
+        }
+        return;
       }
-      return;
     }
+    YtLogger.i(TAG, "Failed to abort encoding since it never started");
   }
   
   public void encode()
   {
     if (!this.mNeedWork) {
-      break label7;
-    }
-    for (;;)
-    {
-      label7:
       return;
-      if (!this.isEncodingStarted) {
-        continue;
-      }
-      YtLogger.d(TAG, "Encoder started");
-      if ((this.mNoMoreFrames) && (this.vidoeEncodeQueue.size() == 0)) {
-        break;
-      }
-      Object localObject2 = (YuvImage)this.vidoeEncodeQueue.poll();
-      ??? = localObject2;
-      if (localObject2 == null) {
-        synchronized (this.mFrameSync)
-        {
-          this.mNewFrameLatch = new CountDownLatch(1);
-        }
-      }
-      try
+    }
+    if (!this.isEncodingStarted) {
+      return;
+    }
+    YtLogger.d(TAG, "Encoder started");
+    if ((this.mNoMoreFrames) && (this.vidoeEncodeQueue.size() == 0)) {
+      return;
+    }
+    YuvImage localYuvImage = (YuvImage)this.vidoeEncodeQueue.poll();
+    ??? = localYuvImage;
+    if (localYuvImage == null) {
+      synchronized (this.mFrameSync)
       {
-        this.mNewFrameLatch.await();
-        label93:
-        ??? = (YuvImage)this.vidoeEncodeQueue.poll();
-        if (??? == null) {
-          continue;
-        }
-        ??? = convertYUV(mWidth, mHeight, (YuvImage)???);
-        int i = this.videoEncoder.dequeueInputBuffer(200000L);
-        long l = computePresentationTime(this.videoGenerateIndex, 30);
-        if (i >= 0)
+        this.mNewFrameLatch = new CountDownLatch(1);
+      }
+    }
+    try
+    {
+      this.mNewFrameLatch.await();
+      label95:
+      ??? = (YuvImage)this.vidoeEncodeQueue.poll();
+      break label118;
+      localObject3 = finally;
+      throw localObject3;
+      label118:
+      if (??? == null) {
+        return;
+      }
+      ??? = convertYUV(mWidth, mHeight, (YuvImage)???);
+      int i = this.videoEncoder.dequeueInputBuffer(200000L);
+      long l = computePresentationTime(this.videoGenerateIndex, 30);
+      Object localObject4;
+      if (i >= 0)
+      {
+        localObject4 = getInputBuffer(YtVideoEncoder.MediaType.VideoType, i);
+        ((ByteBuffer)localObject4).clear();
+        ((ByteBuffer)localObject4).put((byte[])???);
+        this.videoEncoder.queueInputBuffer(i, 0, ???.length, l, 0);
+        this.videoGenerateIndex += 1;
+      }
+      ??? = new MediaCodec.BufferInfo();
+      i = this.videoEncoder.dequeueOutputBuffer((MediaCodec.BufferInfo)???, 200000L);
+      if (i == -1)
+      {
+        YtLogger.e(TAG, "No output from encoder available");
+        return;
+      }
+      if (i == -2)
+      {
+        ??? = this.videoEncoder.getOutputFormat();
+        startMediaMuxer(YtVideoEncoder.MediaType.VideoType, (MediaFormat)???);
+        return;
+      }
+      if (i < 0)
+      {
+        ??? = TAG;
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("unexpected result from encoder.dequeueOutputBuffer: ");
+        ((StringBuilder)localObject4).append(i);
+        YtLogger.e((String)???, ((StringBuilder)localObject4).toString());
+        return;
+      }
+      if (((MediaCodec.BufferInfo)???).size != 0)
+      {
+        localObject4 = getOutputBuffer(YtVideoEncoder.MediaType.VideoType, i);
+        if (localObject4 == null)
         {
-          localObject2 = getInputBuffer(YtVideoEncoder.MediaType.VideoType, i);
-          ((ByteBuffer)localObject2).clear();
-          ((ByteBuffer)localObject2).put((byte[])???);
-          this.videoEncoder.queueInputBuffer(i, 0, ???.length, l, 0);
-          this.videoGenerateIndex += 1;
-        }
-        localObject2 = new MediaCodec.BufferInfo();
-        i = this.videoEncoder.dequeueOutputBuffer((MediaCodec.BufferInfo)localObject2, 200000L);
-        if (i == -1)
-        {
-          YtLogger.e(TAG, "No output from encoder available");
+          ??? = TAG;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("encoderOutputBuffer ");
+          ((StringBuilder)localObject4).append(i);
+          ((StringBuilder)localObject4).append(" was null");
+          YtLogger.e((String)???, ((StringBuilder)localObject4).toString());
           return;
-          localBufferInfo = finally;
-          throw localBufferInfo;
         }
-        if (i == -2)
-        {
-          ??? = this.videoEncoder.getOutputFormat();
-          startMediaMuxer(YtVideoEncoder.MediaType.VideoType, (MediaFormat)???);
-          return;
-        }
-        if (i < 0)
-        {
-          YtLogger.e(TAG, "unexpected result from encoder.dequeueOutputBuffer: " + i);
-          return;
-        }
-        if (localBufferInfo.size == 0) {
-          continue;
-        }
-        ByteBuffer localByteBuffer = getOutputBuffer(YtVideoEncoder.MediaType.VideoType, i);
-        if (localByteBuffer == null)
-        {
-          YtLogger.e(TAG, "encoderOutputBuffer " + i + " was null");
-          return;
-        }
-        localByteBuffer.position(localBufferInfo.offset);
-        localByteBuffer.limit(localBufferInfo.offset + localBufferInfo.size);
-        YtLogger.d(TAG, "media muxer write video data outputindex " + this.videoGenerateIndex);
+        ((ByteBuffer)localObject4).position(((MediaCodec.BufferInfo)???).offset);
+        ((ByteBuffer)localObject4).limit(((MediaCodec.BufferInfo)???).offset + ((MediaCodec.BufferInfo)???).size);
+        ??? = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("media muxer write video data outputindex ");
+        localStringBuilder.append(this.videoGenerateIndex);
+        YtLogger.d((String)???, localStringBuilder.toString());
         synchronized (this.mediaMuxer)
         {
-          this.mediaMuxer.writeSampleData(this.videoTrackIndex, localByteBuffer, localBufferInfo);
+          this.mediaMuxer.writeSampleData(this.videoTrackIndex, (ByteBuffer)localObject4, (MediaCodec.BufferInfo)???);
           this.videoEncoder.releaseOutputBuffer(i, false);
           return;
         }
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        break label93;
-      }
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      break label95;
     }
   }
   
@@ -733,20 +681,19 @@ public class YtVideoEncoder
     if (!this.mNeedWork) {
       return;
     }
-    if ((this.videoEncoder == null) || (this.mediaMuxer == null))
+    if ((this.videoEncoder != null) && (this.mediaMuxer != null))
     {
-      Log.d(TAG, "Failed to queue frame. Encoding not started");
-      return;
-    }
-    YtLogger.d(TAG, "Queueing frame");
-    this.vidoeEncodeQueue.add(???);
-    synchronized (this.mFrameSync)
-    {
-      if ((this.mNewFrameLatch != null) && (this.mNewFrameLatch.getCount() > 0L)) {
-        this.mNewFrameLatch.countDown();
+      YtLogger.d(TAG, "Queueing frame");
+      this.vidoeEncodeQueue.add(???);
+      synchronized (this.mFrameSync)
+      {
+        if ((this.mNewFrameLatch != null) && (this.mNewFrameLatch.getCount() > 0L)) {
+          this.mNewFrameLatch.countDown();
+        }
+        return;
       }
-      return;
     }
+    Log.d(TAG, "Failed to queue frame. Encoding not started");
   }
   
   public void startAudioVideoEncoding(int paramInt1, int paramInt2, File paramFile, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
@@ -754,17 +701,13 @@ public class YtVideoEncoder
     try
     {
       paramFile.delete();
-      String str = paramFile.getCanonicalPath();
+      str = paramFile.getCanonicalPath();
       if (this.mediaMuxer == null) {
         this.mediaMuxer = new MediaMuxer(str, 0);
       }
       startAudioEncoding(paramInt7, paramInt6);
       startEncoding(paramInt1, paramInt2, paramFile, paramInt3, paramInt4, paramInt5);
       long l = paramInt8;
-      return;
-    }
-    catch (IOException localIOException)
-    {
       try
       {
         Thread.sleep(l);
@@ -773,11 +716,21 @@ public class YtVideoEncoder
       catch (InterruptedException paramFile)
       {
         paramFile.printStackTrace();
+        return;
       }
-      localIOException = localIOException;
-      YtLogger.e(TAG, "Unable to get path for " + paramFile);
-      return;
     }
+    catch (IOException localIOException)
+    {
+      String str;
+      label70:
+      StringBuilder localStringBuilder;
+      break label70;
+    }
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unable to get path for ");
+    localStringBuilder.append(paramFile);
+    YtLogger.e(str, localStringBuilder.toString());
   }
   
   public void startEncoding(int paramInt1, int paramInt2, File paramFile, int paramInt3, int paramInt4, int paramInt5)
@@ -790,7 +743,7 @@ public class YtVideoEncoder
     this.mOutputFile = paramFile;
     try
     {
-      String str = paramFile.getCanonicalPath();
+      str = paramFile.getCanonicalPath();
       if (this.mediaMuxer == null) {
         this.mediaMuxer = new MediaMuxer(str, 0);
       }
@@ -800,14 +753,20 @@ public class YtVideoEncoder
         YtLogger.e(TAG, "Unable to find an appropriate codec for video/avc");
         return;
       }
+      str = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("found codec: ");
+      localStringBuilder.append(paramFile.getName());
+      YtLogger.i(str, localStringBuilder.toString());
+      this.colorFormat = 21;
     }
     catch (IOException localIOException)
     {
-      YtLogger.e(TAG, "Unable to get path for " + paramFile);
-      return;
+      String str;
+      StringBuilder localStringBuilder;
+      label137:
+      break label300;
     }
-    YtLogger.i(TAG, "found codec: " + paramFile.getName());
-    this.colorFormat = 21;
     try
     {
       paramInt1 = selectColorFormat(paramFile, "video/avc");
@@ -816,32 +775,40 @@ public class YtVideoEncoder
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        try
-        {
-          this.videoEncoder = MediaCodec.createByCodecName(paramFile.getName());
-          YtLogger.d(TAG, "Create videoEncoder createByCodecName");
-          paramFile = MediaFormat.createVideoFormat("video/avc", mWidth, mHeight);
-          paramFile.setInteger("bitrate", paramInt3);
-          paramFile.setInteger("frame-rate", paramInt4);
-          paramFile.setInteger("color-format", this.colorFormat);
-          paramFile.setInteger("i-frame-interval", paramInt5);
-          this.videoEncoder.configure(paramFile, null, null, 1);
-          this.videoEncoder.start();
-          YtLogger.i(TAG, "Initialization complete. Starting encoder...");
-          this.isEncodingStarted = true;
-          return;
-        }
-        catch (Exception paramFile)
-        {
-          YtLogger.e(TAG, "Unable to create MediaCodec " + paramFile.getMessage());
-        }
-        localException = localException;
-        YtLogger.e(TAG, "Unable to find color format use default");
-        this.colorFormat = 21;
-      }
+      break label137;
     }
+    YtLogger.e(TAG, "Unable to find color format use default");
+    this.colorFormat = 21;
+    try
+    {
+      this.videoEncoder = MediaCodec.createByCodecName(paramFile.getName());
+      YtLogger.d(TAG, "Create videoEncoder createByCodecName");
+      paramFile = MediaFormat.createVideoFormat("video/avc", mWidth, mHeight);
+      paramFile.setInteger("bitrate", paramInt3);
+      paramFile.setInteger("frame-rate", paramInt4);
+      paramFile.setInteger("color-format", this.colorFormat);
+      paramFile.setInteger("i-frame-interval", paramInt5);
+      this.videoEncoder.configure(paramFile, null, null, 1);
+      this.videoEncoder.start();
+      YtLogger.i(TAG, "Initialization complete. Starting encoder...");
+      this.isEncodingStarted = true;
+      return;
+    }
+    catch (Exception paramFile)
+    {
+      str = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to create MediaCodec ");
+      localStringBuilder.append(paramFile.getMessage());
+      YtLogger.e(str, localStringBuilder.toString());
+      return;
+    }
+    label300:
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unable to get path for ");
+    localStringBuilder.append(paramFile);
+    YtLogger.e(str, localStringBuilder.toString());
   }
   
   public void stopEncoding()
@@ -850,26 +817,25 @@ public class YtVideoEncoder
     if (!this.mNeedWork) {
       return;
     }
-    if ((this.videoEncoder == null) || (this.mediaMuxer == null))
+    if ((this.videoEncoder != null) && (this.mediaMuxer != null))
     {
-      Log.i(TAG, "Failed to stop encoding since it never started");
-      return;
-    }
-    YtLogger.i(TAG, "Stopping encoding");
-    this.mNoMoreFrames = true;
-    synchronized (this.mFrameSync)
-    {
-      if ((this.mNewFrameLatch != null) && (this.mNewFrameLatch.getCount() > 0L)) {
-        this.mNewFrameLatch.countDown();
+      YtLogger.i(TAG, "Stopping encoding");
+      this.mNoMoreFrames = true;
+      synchronized (this.mFrameSync)
+      {
+        if ((this.mNewFrameLatch != null) && (this.mNewFrameLatch.getCount() > 0L)) {
+          this.mNewFrameLatch.countDown();
+        }
+        release();
+        return;
       }
-      release();
-      return;
     }
+    Log.i(TAG, "Failed to stop encoding since it never started");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

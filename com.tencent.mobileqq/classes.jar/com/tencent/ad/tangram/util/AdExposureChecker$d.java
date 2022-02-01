@@ -11,26 +11,32 @@ class AdExposureChecker$d
   
   public void onViewAttachedToWindow(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onViewAttachedToWindow ");
-    if (paramView != null) {}
-    for (int i = paramView.hashCode();; i = -1)
-    {
-      AdLog.i("AdExposureChecker", i);
-      AdExposureChecker.access$900(this.this$0);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onViewAttachedToWindow ");
+    int i;
+    if (paramView != null) {
+      i = paramView.hashCode();
+    } else {
+      i = -1;
     }
+    localStringBuilder.append(i);
+    AdLog.i("AdExposureChecker", localStringBuilder.toString());
+    AdExposureChecker.access$900(this.this$0);
   }
   
   public void onViewDetachedFromWindow(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onViewDetachedFromWindow ");
-    if (paramView != null) {}
-    for (int i = paramView.hashCode();; i = -1)
-    {
-      AdLog.e("AdExposureChecker", i);
-      AdExposureChecker.access$1000(this.this$0);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onViewDetachedFromWindow ");
+    int i;
+    if (paramView != null) {
+      i = paramView.hashCode();
+    } else {
+      i = -1;
     }
+    localStringBuilder.append(i);
+    AdLog.e("AdExposureChecker", localStringBuilder.toString());
+    AdExposureChecker.access$1000(this.this$0);
   }
 }
 

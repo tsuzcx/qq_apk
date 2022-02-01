@@ -35,111 +35,124 @@ public class EarlyXmlParser
   
   public void endElement(String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.e("EarlyDown", 2, "endElement() return. data is null.");
       }
-    }
-    label21:
-    label278:
-    do
-    {
-      do
-      {
-        break label21;
-        for (;;)
-        {
-          return;
-          if (!this.jdField_a_of_type_JavaLangClass.getSimpleName().equals(paramString2))
-          {
-            paramString1 = EarlyDataFactory.a(this.jdField_a_of_type_JavaLangClass, paramString2);
-            if (paramString1 == null)
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.e("EarlyDown", 2, "endElement() return.can't find 'Field:" + paramString2);
-              return;
-            }
-            if (!paramString1.isAccessible()) {
-              paramString1.setAccessible(true);
-            }
-            paramString2 = this.jdField_a_of_type_JavaLangStringBuilder.toString();
-            try
-            {
-              paramString3 = paramString1.getType();
-              if (paramString3 == String.class)
-              {
-                paramString1.set(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, paramString2);
-                return;
-              }
-            }
-            catch (NumberFormatException paramString1)
-            {
-              if (QLog.isColorLevel())
-              {
-                QLog.e("EarlyDown", 2, "endElement() throws exception:" + paramString1.getMessage());
-                return;
-                if (paramString3 == Long.TYPE)
-                {
-                  long l = Long.parseLong(paramString2);
-                  paramString1.setLong(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, l);
-                  return;
-                }
-              }
-            }
-            catch (IllegalArgumentException paramString1)
-            {
-              if (QLog.isColorLevel())
-              {
-                QLog.e("EarlyDown", 2, "endElement() throws exception:" + paramString1.getMessage());
-                return;
-                if (paramString3 != Double.TYPE) {
-                  break label278;
-                }
-                double d = Double.parseDouble(paramString2);
-                paramString1.setDouble(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, d);
-                return;
-              }
-            }
-            catch (IllegalAccessException paramString1) {}
-          }
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("EarlyDown", 2, "endElement() throws exception:" + paramString1.getMessage());
       return;
-      if (paramString3 == Integer.TYPE)
+    }
+    if (this.jdField_a_of_type_JavaLangClass.getSimpleName().equals(paramString2)) {
+      return;
+    }
+    paramString1 = EarlyDataFactory.a(this.jdField_a_of_type_JavaLangClass, paramString2);
+    if (paramString1 == null)
+    {
+      if (QLog.isColorLevel())
       {
-        int i = Integer.parseInt(paramString2);
+        paramString1 = new StringBuilder();
+        paramString1.append("endElement() return.can't find 'Field:");
+        paramString1.append(paramString2);
+        QLog.e("EarlyDown", 2, paramString1.toString());
+      }
+      return;
+    }
+    if (!paramString1.isAccessible()) {
+      paramString1.setAccessible(true);
+    }
+    paramString3 = this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    try
+    {
+      paramString2 = paramString1.getType();
+      if (paramString2 == String.class)
+      {
+        paramString1.set(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, paramString3);
+        return;
+      }
+      if (paramString2 == Long.TYPE)
+      {
+        long l = Long.parseLong(paramString3);
+        paramString1.setLong(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, l);
+        return;
+      }
+      if (paramString2 == Double.TYPE)
+      {
+        double d = Double.parseDouble(paramString3);
+        paramString1.setDouble(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, d);
+        return;
+      }
+      if (paramString2 == Integer.TYPE)
+      {
+        int i = Integer.parseInt(paramString3);
         paramString1.setInt(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, i);
         return;
       }
-      if (paramString3 == Float.TYPE)
+      if (paramString2 == Float.TYPE)
       {
-        float f = Float.parseFloat(paramString2);
+        float f = Float.parseFloat(paramString3);
         paramString1.setFloat(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, f);
         return;
       }
-      if (paramString3 == Short.TYPE)
+      if (paramString2 == Short.TYPE)
       {
-        short s = Short.parseShort(paramString2);
+        short s = Short.parseShort(paramString3);
         paramString1.setShort(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, s);
         return;
       }
-      if (paramString3 == Byte.TYPE)
+      if (paramString2 == Byte.TYPE)
       {
-        byte b = Byte.parseByte(paramString2);
+        byte b = Byte.parseByte(paramString3);
         paramString1.setByte(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, b);
         return;
       }
-      if (paramString3 == Boolean.TYPE)
+      if (paramString2 == Boolean.TYPE)
       {
-        boolean bool = Boolean.parseBoolean(paramString2);
+        boolean bool = Boolean.parseBoolean(paramString3);
         paramString1.setBoolean(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, bool);
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("EarlyDown", 2, "endElement() return. Type:" + paramString3.toString() + " is NOT SUPPORT!");
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("endElement() return. Type:");
+        paramString1.append(paramString2.toString());
+        paramString1.append(" is NOT SUPPORT!");
+        QLog.e("EarlyDown", 2, paramString1.toString());
+      }
+      return;
+    }
+    catch (IllegalAccessException paramString1)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("endElement() throws exception:");
+        paramString2.append(paramString1.getMessage());
+        QLog.e("EarlyDown", 2, paramString2.toString());
+        return;
+      }
+    }
+    catch (IllegalArgumentException paramString1)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("endElement() throws exception:");
+        paramString2.append(paramString1.getMessage());
+        QLog.e("EarlyDown", 2, paramString2.toString());
+        return;
+      }
+    }
+    catch (NumberFormatException paramString1)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("endElement() throws exception:");
+        paramString2.append(paramString1.getMessage());
+        QLog.e("EarlyDown", 2, paramString2.toString());
+      }
+    }
   }
   
   public void startDocument()
@@ -150,28 +163,39 @@ public class EarlyXmlParser
   public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
     this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-    if (this.jdField_a_of_type_JavaLangClass.getSimpleName().equals(paramString2)) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData = ((XmlData)this.jdField_a_of_type_JavaLangClass.newInstance());
-      return;
-    }
-    catch (InstantiationException paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("EarlyDown", 2, "startElement() throw exceptin:" + paramString1.getMessage());
-      return;
-    }
-    catch (IllegalAccessException paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("EarlyDown", 2, "startElement() throw exceptin:" + paramString1.getMessage());
+    if (this.jdField_a_of_type_JavaLangClass.getSimpleName().equals(paramString2)) {
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData = ((XmlData)this.jdField_a_of_type_JavaLangClass.newInstance());
+        return;
+      }
+      catch (IllegalAccessException paramString1)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString2 = new StringBuilder();
+          paramString2.append("startElement() throw exceptin:");
+          paramString2.append(paramString1.getMessage());
+          QLog.e("EarlyDown", 2, paramString2.toString());
+          return;
+        }
+      }
+      catch (InstantiationException paramString1)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString2 = new StringBuilder();
+          paramString2.append("startElement() throw exceptin:");
+          paramString2.append(paramString1.getMessage());
+          QLog.e("EarlyDown", 2, paramString2.toString());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.EarlyXmlParser
  * JD-Core Version:    0.7.0.1
  */

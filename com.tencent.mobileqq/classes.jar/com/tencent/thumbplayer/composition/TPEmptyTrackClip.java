@@ -32,14 +32,24 @@ public class TPEmptyTrackClip
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    while (!(paramObject instanceof TPEmptyTrackClip)) {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
     }
-    if ((this.mClipId == ((TPEmptyTrackClip)paramObject).getClipId()) && (this.mClipType == ((TPEmptyTrackClip)paramObject).getMediaType())) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if (!(paramObject instanceof TPEmptyTrackClip)) {
+      return false;
     }
+    int i = this.mClipId;
+    paramObject = (TPEmptyTrackClip)paramObject;
+    boolean bool1 = bool2;
+    if (i == paramObject.getClipId())
+    {
+      bool1 = bool2;
+      if (this.mClipType == paramObject.getMediaType()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public int getClipId()
@@ -88,11 +98,13 @@ public class TPEmptyTrackClip
     if (paramLong1 < 0L) {
       l = 0L;
     }
-    if (l >= paramLong2) {
-      throw new IllegalArgumentException("setCutTimeRange: Start time is greater than end time");
+    if (l < paramLong2)
+    {
+      this.mStartTime = l;
+      this.mEndTime = paramLong2;
+      return;
     }
-    this.mStartTime = l;
-    this.mEndTime = paramLong2;
+    throw new IllegalArgumentException("setCutTimeRange: Start time is greater than end time");
   }
   
   public void setOriginalDurationMs(long paramLong) {}
@@ -104,7 +116,7 @@ public class TPEmptyTrackClip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.composition.TPEmptyTrackClip
  * JD-Core Version:    0.7.0.1
  */

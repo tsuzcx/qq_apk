@@ -26,12 +26,26 @@ class AudioTrackWrapper$AudioTrackConfig
   
   public String toString()
   {
-    return "AudioTrackConfig{streamType=" + this.streamType + ", sampleRateInHz=" + this.sampleRateInHz + ", channelConfig=" + this.channelConfig + ", audioFormat=" + this.audioFormat + ", bufferSizeInBytes=" + this.bufferSizeInBytes + ", mode=" + this.mode + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioTrackConfig{streamType=");
+    localStringBuilder.append(this.streamType);
+    localStringBuilder.append(", sampleRateInHz=");
+    localStringBuilder.append(this.sampleRateInHz);
+    localStringBuilder.append(", channelConfig=");
+    localStringBuilder.append(this.channelConfig);
+    localStringBuilder.append(", audioFormat=");
+    localStringBuilder.append(this.audioFormat);
+    localStringBuilder.append(", bufferSizeInBytes=");
+    localStringBuilder.append(this.bufferSizeInBytes);
+    localStringBuilder.append(", mode=");
+    localStringBuilder.append(this.mode);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.player.AudioTrackWrapper.AudioTrackConfig
  * JD-Core Version:    0.7.0.1
  */

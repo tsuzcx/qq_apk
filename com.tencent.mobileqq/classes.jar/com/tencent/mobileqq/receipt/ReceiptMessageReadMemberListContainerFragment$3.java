@@ -14,7 +14,7 @@ class ReceiptMessageReadMemberListContainerFragment$3
 {
   ReceiptMessageReadMemberListContainerFragment$3(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
     if (paramBoolean)
     {
@@ -25,18 +25,26 @@ class ReceiptMessageReadMemberListContainerFragment$3
         }
         return;
       }
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp().getSharedPreferences("last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a), paramLong).apply();
+      paramString = ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp();
+      paramList = new StringBuilder();
+      paramList.append("last_update_time");
+      paramList.append(ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin());
+      paramString = paramString.getSharedPreferences(paramList.toString(), 4).edit();
+      paramList = new StringBuilder();
+      paramList.append("key_last_update_time");
+      paramList.append(ReceiptMessageReadMemberListContainerFragment.a(this.a));
+      paramString.putLong(paramList.toString(), paramLong).apply();
       ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(4);
       ReceiptMessageReadMemberListContainerFragment.a(this.a).removeObserver(this);
       return;
     }
     ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(-1);
-    QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mTroopBusinessObserver onUpdateTroopGetMemberList fail");
+    QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mTroopModifyObserver onUpdateTroopGetMemberList fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.3
  * JD-Core Version:    0.7.0.1
  */

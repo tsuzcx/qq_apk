@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.avgame.gamelogic.data.GameItem;
-import com.tencent.avgame.util.AVGameUtils;
+import com.tencent.avgame.util.AVGameUtil;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -52,57 +52,61 @@ public class GameGridItemView
     if (paramGameItem.a >= 100000000L)
     {
       f = new BigDecimal((float)paramGameItem.a / 1.0E+008F).setScale(1, 1).floatValue();
-      paramGameItem = f + getContext().getResources().getString(2131690507);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131690370), new Object[] { paramGameItem }));
-      if (paramURLDrawable1 == null) {
-        break label291;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramURLDrawable1);
-      label125:
-      if (paramURLDrawable2 == null) {
-        break label302;
-      }
-      setBackgroundDrawable(paramURLDrawable2);
+      paramGameItem = new StringBuilder();
+      paramGameItem.append(f);
+      paramGameItem.append(getContext().getResources().getString(2131690432));
+      paramGameItem = paramGameItem.toString();
     }
-    for (;;)
+    else if (paramGameItem.a >= 100000L)
     {
-      setTag(Integer.valueOf(paramInt2));
-      this.jdField_a_of_type_AndroidViewView.setTag(Integer.valueOf(paramInt2));
-      if (paramInt2 != paramInt1) {
-        break label310;
-      }
+      f = new BigDecimal((float)paramGameItem.a / 10000.0F).setScale(1, 1).floatValue();
+      paramGameItem = new StringBuilder();
+      paramGameItem.append(f);
+      paramGameItem.append(getContext().getResources().getString(2131690431));
+      paramGameItem = paramGameItem.toString();
+    }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramGameItem.a);
+      localStringBuilder.append("");
+      paramGameItem = localStringBuilder.toString();
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131690293), new Object[] { paramGameItem }));
+    if (paramURLDrawable1 != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramURLDrawable1);
+    } else {
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+    }
+    if (paramURLDrawable2 != null) {
+      setBackgroundDrawable(paramURLDrawable2);
+    } else {
+      setBackgroundDrawable(null);
+    }
+    setTag(Integer.valueOf(paramInt2));
+    this.jdField_a_of_type_AndroidViewView.setTag(Integer.valueOf(paramInt2));
+    if (paramInt2 == paramInt1)
+    {
       setAlpha(1.0F);
-      paramGameItem = AVGameUtils.a("avgame_game_select@2x.png");
+      paramGameItem = AVGameUtil.a("avgame_game_select@2x.png");
       if (paramGameItem != null) {
         this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(new BitmapDrawable(paramGameItem));
       }
-      return;
-      if (paramGameItem.a >= 100000L)
-      {
-        f = new BigDecimal((float)paramGameItem.a / 10000.0F).setScale(1, 1).floatValue();
-        paramGameItem = f + getContext().getResources().getString(2131690506);
-        break;
-      }
-      paramGameItem = paramGameItem.a + "";
-      break;
-      label291:
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
-      break label125;
-      label302:
-      setBackgroundDrawable(null);
     }
-    label310:
-    setAlpha(0.6F);
-    this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(null);
+    else
+    {
+      setAlpha(0.6F);
+      this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(null);
+    }
   }
   
   public void a(GameGridItemView.GameGridClickListener paramGameGridClickListener)
   {
     this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener = paramGameGridClickListener;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372115));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373265));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367688);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131377704);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371697));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372844));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367441);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131377133);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     setOnClickListener(this);
   }
@@ -110,36 +114,31 @@ public class GameGridItemView
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    int i;
     if (((localObject instanceof Integer)) && (this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener != null))
     {
-      i = ((Integer)localObject).intValue();
-      if (!(paramView instanceof GameGridItemView)) {
-        break label83;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("GameGridItemView", 2, "itemGridClick " + i);
-      }
-      this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener.b(i);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label83:
-      switch (paramView.getId())
+      int i = ((Integer)localObject).intValue();
+      if ((paramView instanceof GameGridItemView))
       {
-      default: 
-        break;
-      case 2131367688: 
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("itemGridClick ");
+          ((StringBuilder)localObject).append(i);
+          QLog.i("GameGridItemView", 2, ((StringBuilder)localObject).toString());
+        }
+        this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener.b(i);
+      }
+      else if (paramView.getId() == 2131367441)
+      {
         this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener.a(i);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.gamelist.GameGridItemView
  * JD-Core Version:    0.7.0.1
  */

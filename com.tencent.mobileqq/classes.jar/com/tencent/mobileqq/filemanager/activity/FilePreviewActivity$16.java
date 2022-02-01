@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.api.IFMDataCacheApi;
 import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
@@ -16,6 +17,7 @@ import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter.FileAssistantReportData;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.widget.FileWebView.JSInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.uniformdownload.api.IUniformDownloadMgr;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -33,56 +35,38 @@ class FilePreviewActivity$16
   public void loadFinish(int paramInt1, int paramInt2, String paramString)
   {
     boolean bool;
-    if (paramInt2 == 0)
-    {
+    if (paramInt2 == 0) {
       bool = true;
-      if (paramInt1 != 0) {
-        break label56;
-      }
-      this.a.a(bool, paramInt2, paramString);
-    }
-    for (;;)
-    {
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "js call loadFinish process Over");
-      this.a.jdField_g_of_type_Boolean = true;
-      this.a.a(1000);
-      return;
+    } else {
       bool = false;
-      break;
-      label56:
-      if (paramInt1 == 1) {
-        this.a.b(bool, paramInt2, paramString);
-      }
     }
+    if (paramInt1 == 0) {
+      this.a.a(bool, paramInt2, paramString);
+    } else if (paramInt1 == 1) {
+      this.a.b(bool, paramInt2, paramString);
+    }
+    QLog.i("<FileAssistant>FilePreviewActivity", 1, "js call loadFinish process Over");
+    paramString = this.a;
+    paramString.jdField_g_of_type_Boolean = true;
+    paramString.a(1000);
   }
   
   public void loadFinish(int paramInt1, boolean paramBoolean, int paramInt2, String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (paramInt2 == 0)
-    {
-      bool1 = true;
-      this.a.runOnUiThread(new FilePreviewActivity.16.2(this, paramInt1, bool1, paramInt2, paramString));
-      paramString = this.a;
-      if (paramBoolean) {
-        break label67;
-      }
+    boolean bool;
+    if (paramInt2 == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    label67:
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      paramString.jdField_g_of_type_Boolean = paramBoolean;
-      this.a.a(1000);
-      return;
-      bool1 = false;
-      break;
-    }
+    this.a.runOnUiThread(new FilePreviewActivity.16.2(this, paramInt1, bool, paramInt2, paramString));
+    paramString = this.a;
+    paramString.jdField_g_of_type_Boolean = (paramBoolean ^ true);
+    paramString.a(1000);
   }
   
   public void openFile(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
   {
-    Object localObject1;
     if (paramBoolean)
     {
       localObject1 = new Intent(this.a, FilePreviewActivity.class);
@@ -104,73 +88,88 @@ class FilePreviewActivity$16
       this.a.startActivityForResult((Intent)localObject1, 0);
       return;
     }
-    if (TextUtils.isEmpty(this.a.j)) {
-      localObject1 = null;
-    }
-    for (;;)
+    Object localObject1 = null;
+    if (!TextUtils.isEmpty(this.a.j))
     {
-      Object localObject2 = (IUniformDownloadMgr)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IUniformDownloadMgr.class, "");
-      Bundle localBundle1 = new Bundle();
-      localBundle1.putString("_filename_from_dlg", paramString1);
-      localBundle1.putLong("_filesize_from_dlg", paramLong);
-      localBundle1.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_file_preview");
-      localBundle1.putString("big_brother_source_key", "biz_src_file_preview");
-      Bundle localBundle2 = new Bundle();
-      localBundle2.putString("FILE_TMP_SERVER_PATH", (String)localObject1);
-      localBundle2.putInt("FILE_FROM", 190);
-      if (!TextUtils.isEmpty(this.a.f)) {
-        localBundle2.putString("COOKIE", this.a.f);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("<FileAssistant>FilePreviewActivity", 1, "set cookies:" + this.a.f);
-      }
-      localBundle1.putBundle("_user_data", localBundle2);
-      DialogUtil.a(this.a, 233, this.a.getString(2131718687), "是否下载文件:\n" + paramString1 + "(" + FileUtil.a(paramLong) + ")", new FilePreviewActivity.16.3(this, paramString2, (IUniformDownloadMgr)localObject2, localBundle1), new FilePreviewActivity.16.4(this)).show();
-      return;
-      localObject1 = MD5.toMD5(this.a.j + paramString2 + paramString1);
-      localObject2 = this.a.app.getFileManagerDataCenter().b((String)localObject1);
-      if (localObject2 != null) {
-        if (FileUtil.b(((FileManagerEntity)localObject2).getFilePath()))
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.a.j);
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(paramString1);
+      localObject3 = MD5.toMD5(((StringBuilder)localObject1).toString());
+      localObject4 = this.a.app.getFileManagerDataCenter().b((String)localObject3);
+      localObject1 = localObject3;
+      if (localObject4 != null) {
+        if (!FileUtil.a(((FileManagerEntity)localObject4).getFilePath()))
+        {
+          localObject1 = localObject3;
+        }
+        else
         {
           paramString1 = new FileManagerReporter.FileAssistantReportData();
           paramString1.jdField_b_of_type_JavaLangString = "file_viewer_in";
           paramString1.jdField_a_of_type_Int = 73;
-          paramString1.c = FileUtil.a(((FileManagerEntity)localObject2).fileName);
-          paramString1.jdField_a_of_type_Long = ((FileManagerEntity)localObject2).fileSize;
+          paramString1.c = FileUtil.a(((FileManagerEntity)localObject4).fileName);
+          paramString1.jdField_a_of_type_Long = ((FileManagerEntity)localObject4).fileSize;
           FileManagerReporter.a(this.a.app.getCurrentAccountUin(), paramString1);
           FileManagerReporter.a("0X8004AE4");
           paramString1 = new ForwardFileInfo();
-          paramString1.d(((FileManagerEntity)localObject2).getCloudType());
+          paramString1.d(((FileManagerEntity)localObject4).getCloudType());
           paramString1.b(10000);
-          paramString1.b(((FileManagerEntity)localObject2).nSessionId);
-          paramString1.c(((FileManagerEntity)localObject2).uniseq);
-          paramString1.d(((FileManagerEntity)localObject2).fileName);
-          paramString1.d(((FileManagerEntity)localObject2).fileSize);
-          paramString1.b(((FileManagerEntity)localObject2).Uuid);
-          paramString1.a(((FileManagerEntity)localObject2).getFilePath());
+          paramString1.b(((FileManagerEntity)localObject4).nSessionId);
+          paramString1.c(((FileManagerEntity)localObject4).uniseq);
+          paramString1.d(((FileManagerEntity)localObject4).fileName);
+          paramString1.d(((FileManagerEntity)localObject4).fileSize);
+          paramString1.b(((FileManagerEntity)localObject4).Uuid);
+          paramString1.a(((FileManagerEntity)localObject4).getFilePath());
           paramString2 = new ArrayList();
           try
           {
-            paramString2.add(new FileInfo(((FileManagerEntity)localObject2).getFilePath()));
-            if ((((FileManagerEntity)localObject2).nFileType == 0) || (((FileManagerEntity)localObject2).nFileType == 1)) {
-              FMDataCache.a(paramString2);
-            }
-            paramString2 = new Intent(this.a.getActivity(), FileBrowserActivity.class);
-            paramString2.putExtra("fileinfo", paramString1);
-            this.a.getActivity().startActivityForResult(paramString2, 102);
-            FileManagerReporter.a("0X80052CD");
-            return;
+            paramString2.add(new FileInfo(((FileManagerEntity)localObject4).getFilePath()));
           }
           catch (FileNotFoundException localFileNotFoundException)
           {
-            for (;;)
-            {
-              localFileNotFoundException.printStackTrace();
-            }
+            localFileNotFoundException.printStackTrace();
           }
+          if ((((FileManagerEntity)localObject4).nFileType == 0) || (((FileManagerEntity)localObject4).nFileType == 1)) {
+            ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).addFileViewerLocalFiles(paramString2);
+          }
+          paramString2 = new Intent(this.a.getActivity(), FileBrowserActivity.class);
+          paramString2.putExtra("fileinfo", paramString1);
+          this.a.getActivity().startActivityForResult(paramString2, 102);
+          FileManagerReporter.a("0X80052CD");
+          return;
         }
       }
     }
+    Object localObject3 = (IUniformDownloadMgr)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IUniformDownloadMgr.class, "");
+    Object localObject4 = new Bundle();
+    ((Bundle)localObject4).putString("_filename_from_dlg", paramString1);
+    ((Bundle)localObject4).putLong("_filesize_from_dlg", paramLong);
+    ((Bundle)localObject4).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_file_preview");
+    ((Bundle)localObject4).putString("big_brother_source_key", "biz_src_file_preview");
+    Object localObject5 = new Bundle();
+    ((Bundle)localObject5).putString("FILE_TMP_SERVER_PATH", localFileNotFoundException);
+    ((Bundle)localObject5).putInt("FILE_FROM", 190);
+    if (!TextUtils.isEmpty(this.a.f)) {
+      ((Bundle)localObject5).putString("COOKIE", this.a.f);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("set cookies:");
+      ((StringBuilder)localObject2).append(this.a.f);
+      QLog.i("<FileAssistant>FilePreviewActivity", 1, ((StringBuilder)localObject2).toString());
+    }
+    ((Bundle)localObject4).putBundle("_user_data", (Bundle)localObject5);
+    Object localObject2 = this.a;
+    localObject5 = ((FilePreviewActivity)localObject2).getString(2131718405);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("是否下载文件:\n");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("(");
+    localStringBuilder.append(FileUtil.a(paramLong));
+    localStringBuilder.append(")");
+    DialogUtil.a((Context)localObject2, 233, (String)localObject5, localStringBuilder.toString(), new FilePreviewActivity.16.3(this, paramString2, (IUniformDownloadMgr)localObject3, (Bundle)localObject4), new FilePreviewActivity.16.4(this)).show();
   }
   
   public void updatePage(int paramInt1, int paramInt2)
@@ -187,7 +186,7 @@ class FilePreviewActivity$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.16
  * JD-Core Version:    0.7.0.1
  */

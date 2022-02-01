@@ -49,11 +49,14 @@ public abstract class ApkgBaseInfo
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof ApkgBaseInfo))) {}
-    while ((this != paramObject) && (!equalObj(this.appId, ((ApkgBaseInfo)paramObject).appId))) {
-      return false;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof ApkgBaseInfo)) {
+        return false;
+      }
+      return (this == paramObject) || (equalObj(this.appId, ((ApkgBaseInfo)paramObject).appId));
     }
-    return true;
+    return false;
   }
   
   public String getApkgFolderPath()
@@ -85,13 +88,16 @@ public abstract class ApkgBaseInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("appId:").append(this.appId).append(", name:").append(this.apkgName);
+    localStringBuilder.append("appId:");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append(", name:");
+    localStringBuilder.append(this.apkgName);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.ApkgBaseInfo
  * JD-Core Version:    0.7.0.1
  */

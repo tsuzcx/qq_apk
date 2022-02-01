@@ -34,14 +34,14 @@ public class ReplyActionView
   
   private void a()
   {
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131558836, this, true);
-    this.a = ((TextView)((View)localObject).findViewById(2131371889));
-    this.b = ((TextView)((View)localObject).findViewById(2131370321));
-    int i = AIOUtils.a(12.0F, getContext().getResources());
-    localObject = getResources().getDrawable(2130851382);
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131558734, this, true);
+    this.a = ((TextView)((View)localObject).findViewById(2131371510));
+    this.b = ((TextView)((View)localObject).findViewById(2131369989));
+    int i = AIOUtils.b(12.0F, getContext().getResources());
+    localObject = getResources().getDrawable(2130851303);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.a.setCompoundDrawables(null, null, (Drawable)localObject, null);
-    localObject = getResources().getDrawable(2130851383);
+    localObject = getResources().getDrawable(2130851304);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.b.setCompoundDrawables(null, null, (Drawable)localObject, null);
   }
@@ -58,7 +58,7 @@ public class ReplyActionView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.ReplyActionView
  * JD-Core Version:    0.7.0.1
  */

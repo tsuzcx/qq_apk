@@ -1,8 +1,7 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AccountDetailGroupListContainer$11
   implements View.OnClickListener
@@ -11,13 +10,13 @@ class AccountDetailGroupListContainer$11
   
   public void onClick(View paramView)
   {
-    this.a.a(this.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramView = this.a;
+    paramView.a(paramView.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer.11
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.11
  * JD-Core Version:    0.7.0.1
  */

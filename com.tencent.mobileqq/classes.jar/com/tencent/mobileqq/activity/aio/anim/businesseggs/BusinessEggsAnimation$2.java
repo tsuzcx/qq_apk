@@ -14,7 +14,9 @@ class BusinessEggsAnimation$2
   public Point a(Point paramPoint)
   {
     Point localPoint = new Point();
-    localPoint.x = ((int)(RandomUtils.a(-1.0F, 1.0F) * ViewUtils.a(50.0F) + paramPoint.x / 2));
+    float f1 = RandomUtils.a(-1.0F, 1.0F);
+    float f2 = ViewUtils.a(50.0F);
+    localPoint.x = ((int)(paramPoint.x / 2 + f1 * f2));
     localPoint.y = 0;
     return localPoint;
   }
@@ -22,13 +24,27 @@ class BusinessEggsAnimation$2
   public Point a(Point paramPoint1, Point paramPoint2, float paramFloat)
   {
     Point localPoint = new Point();
-    if (paramPoint1.x % 2 == 0) {}
-    for (int i = (int)(Math.sin(paramFloat * 6.283185307179586D) * ViewUtils.a(60.0F));; i = (int)(Math.cos(paramFloat * 6.283185307179586D) * ViewUtils.a(60.0F)))
+    double d1;
+    double d2;
+    if (paramPoint1.x % 2 == 0)
     {
-      localPoint.x = ((int)(i * 1.5F + paramPoint1.x));
-      localPoint.y = ((int)(1.3F * paramPoint2.y * paramFloat));
-      return localPoint;
+      d1 = paramFloat;
+      Double.isNaN(d1);
+      d2 = Math.sin(d1 * 6.283185307179586D);
+      d1 = ViewUtils.a(60.0F);
+      Double.isNaN(d1);
     }
+    else
+    {
+      d1 = paramFloat;
+      Double.isNaN(d1);
+      d2 = Math.cos(d1 * 6.283185307179586D);
+      d1 = ViewUtils.a(60.0F);
+      Double.isNaN(d1);
+    }
+    localPoint.x = ((int)((int)(d2 * d1) * 1.5F + paramPoint1.x));
+    localPoint.y = ((int)(paramPoint2.y * 1.3F * paramFloat));
+    return localPoint;
   }
   
   public void a(ValueAnimator paramValueAnimator)
@@ -40,7 +56,7 @@ class BusinessEggsAnimation$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation.2
  * JD-Core Version:    0.7.0.1
  */

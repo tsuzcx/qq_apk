@@ -12,21 +12,17 @@ class QuickLoginAuthorityActivity$9
     try
     {
       Thread.sleep(1000L);
-      Process.killProcess(Process.myPid());
-      return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+      localInterruptedException.printStackTrace();
     }
+    Process.killProcess(Process.myPid());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.QuickLoginAuthorityActivity.9
  * JD-Core Version:    0.7.0.1
  */

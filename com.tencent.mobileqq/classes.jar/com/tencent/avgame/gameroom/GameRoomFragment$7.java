@@ -12,8 +12,8 @@ class GameRoomFragment$7
   
   public void onClick(View paramView)
   {
-    View localView1 = GameRoomFragment.a(this.a).findViewById(2131363258);
-    View localView2 = GameRoomFragment.a(this.a).findViewById(2131363259);
+    View localView1 = GameRoomFragment.a(this.a).findViewById(2131363190);
+    View localView2 = GameRoomFragment.a(this.a).findViewById(2131363191);
     localView1.setVisibility(8);
     localView2.setVisibility(8);
     GameRoomFragment.a(this.a).setBackgroundColor(-1308622848);
@@ -23,7 +23,7 @@ class GameRoomFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomFragment.7
  * JD-Core Version:    0.7.0.1
  */

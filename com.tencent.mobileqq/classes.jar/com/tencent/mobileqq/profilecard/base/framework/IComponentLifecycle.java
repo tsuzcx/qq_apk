@@ -2,7 +2,7 @@ package com.tencent.mobileqq.profilecard.base.framework;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 
 public abstract interface IComponentLifecycle
 {
@@ -10,7 +10,7 @@ public abstract interface IComponentLifecycle
   
   public abstract boolean onBackPressed();
   
-  public abstract void onCreate(BaseActivity paramBaseActivity, Bundle paramBundle);
+  public abstract void onCreate(QBaseActivity paramQBaseActivity, Bundle paramBundle);
   
   public abstract void onDestroy();
   
@@ -23,10 +23,12 @@ public abstract interface IComponentLifecycle
   public abstract void onStart();
   
   public abstract void onStop();
+  
+  public abstract void onWindowFocusChanged(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.framework.IComponentLifecycle
  * JD-Core Version:    0.7.0.1
  */

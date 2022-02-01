@@ -6,6 +6,10 @@ import com.tencent.falco.base.libapi.ServiceBaseInterface;
 public abstract interface HostProxyInterface
   extends ServiceBaseInterface
 {
+  public abstract AnchorTagInterface getAnchorTagInterface();
+  
+  public abstract AuthInterface getAuthInterface();
+  
   public abstract SparseArray<String> getBizCommitData(HostProxyInterface.BizCommitScene paramBizCommitScene);
   
   public abstract ClickEventInterface getClickEventInterface();
@@ -24,7 +28,7 @@ public abstract interface HostProxyInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.libapi.hostproxy.HostProxyInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,7 @@ public class PTSJsJniHandler
 {
   private static String TAG = "PTSJsJniHandler";
   
-  static
-  {
-    init();
-  }
+  static {}
   
   public static void callJSEventFunction(PTSAppInstance paramPTSAppInstance, String paramString1, int paramInt1, String paramString2, String paramString3, String[] paramArrayOfString1, String[] paramArrayOfString2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt2)
   {
@@ -36,7 +33,6 @@ public class PTSJsJniHandler
   
   public static void create(PTSAppInstance paramPTSAppInstance, String paramString1, String paramString2, int paramInt)
   {
-    boolean bool = true;
     if (paramPTSAppInstance == null) {
       return;
     }
@@ -45,13 +41,12 @@ public class PTSJsJniHandler
     float f1 = paramPTSAppInstance.getRootViewWidth();
     float f2 = PTSDeviceUtil.getScreenScale();
     float f3 = PTSDeviceUtil.getRPXScaling();
-    if (paramPTSAppInstance.getRootNodeType() == 1) {}
-    for (;;)
-    {
-      createPTSPage(i, f1, f2, f3, bool, paramString1, paramString2, paramInt);
-      return;
+    int j = paramPTSAppInstance.getRootNodeType();
+    boolean bool = true;
+    if (j != 1) {
       bool = false;
     }
+    createPTSPage(i, f1, f2, f3, bool, paramString1, paramString2, paramInt);
   }
   
   public static native void createJSEnvironment(int paramInt);
@@ -91,7 +86,7 @@ public class PTSJsJniHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.jni.PTSJsJniHandler
  * JD-Core Version:    0.7.0.1
  */

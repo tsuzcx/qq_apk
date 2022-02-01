@@ -17,16 +17,8 @@ public abstract class TroopFileReqCopyToObserver
     super(false);
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
-  
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    int i = 102;
     if (paramInt != 0)
     {
       a(false, paramInt, 102, null, null, null, paramBundle);
@@ -41,32 +33,42 @@ public abstract class TroopFileReqCopyToObserver
         a(false, paramInt, 102, null, null, null, paramBundle);
         return;
       }
+      paramArrayOfByte = (oidb_0x6d9.CopyToRspBody)((oidb_0x6d9.RspBody)localObject).copy_to_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has())
+      {
+        a(false, paramInt, 102, null, null, null, paramBundle);
+        return;
+      }
+      int i = paramArrayOfByte.int32_ret_code.get();
+      localObject = paramArrayOfByte.str_client_wording.get();
+      String str1 = paramArrayOfByte.str_ret_msg.get();
+      String str2 = paramArrayOfByte.str_save_file_path.get();
+      if (paramArrayOfByte.uint32_bus_id.has()) {
+        paramInt = paramArrayOfByte.uint32_bus_id.get();
+      } else {
+        paramInt = 102;
+      }
+      a(true, i, paramInt, str2, str1, (String)localObject, paramBundle);
+      return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      a(false, paramInt, 102, null, null, null, paramBundle);
-      return;
+      label168:
+      break label168;
     }
-    paramArrayOfByte = (oidb_0x6d9.CopyToRspBody)((oidb_0x6d9.RspBody)localObject).copy_to_rsp.get();
-    if (!paramArrayOfByte.int32_ret_code.has())
-    {
-      a(false, paramInt, 102, null, null, null, paramBundle);
-      return;
-    }
-    int j = paramArrayOfByte.int32_ret_code.get();
-    localObject = paramArrayOfByte.str_client_wording.get();
-    String str1 = paramArrayOfByte.str_ret_msg.get();
-    String str2 = paramArrayOfByte.str_save_file_path.get();
-    paramInt = i;
-    if (paramArrayOfByte.uint32_bus_id.has()) {
-      paramInt = paramArrayOfByte.uint32_bus_id.get();
-    }
-    a(true, j, paramInt, str2, str1, (String)localObject, paramBundle);
+    a(false, paramInt, 102, null, null, null, paramBundle);
+  }
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle);
+  
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    a(paramInt, paramArrayOfByte, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.protocol.TroopFileReqCopyToObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,11 @@ package com.tencent.smtt.sdk;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.ApplicationInfo;
+import java.io.File;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 
 public class TbsDownloadConfig
 {
@@ -74,67 +75,146 @@ public class TbsDownloadConfig
     catch (Exception localException) {}
   }
   
+  /* Error */
   public void commit()
   {
-    for (;;)
-    {
-      String str;
-      Object localObject2;
-      try
-      {
-        SharedPreferences.Editor localEditor = this.mPreferences.edit();
-        Iterator localIterator = this.mSyncMap.keySet().iterator();
-        if (!localIterator.hasNext()) {
-          break label203;
-        }
-        str = (String)localIterator.next();
-        localObject2 = this.mSyncMap.get(str);
-        if ((localObject2 instanceof String))
-        {
-          localEditor.putString(str, (String)localObject2);
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-        if ((localObject2 instanceof Boolean))
-        {
-          localException.putBoolean(str, ((Boolean)localObject2).booleanValue());
-          continue;
-        }
-      }
-      finally {}
-      if ((localObject2 instanceof Long))
-      {
-        localObject1.putLong(str, ((Long)localObject2).longValue());
-      }
-      else if ((localObject2 instanceof Integer))
-      {
-        localObject1.putInt(str, ((Integer)localObject2).intValue());
-      }
-      else if ((localObject2 instanceof Float))
-      {
-        localObject1.putFloat(str, ((Float)localObject2).floatValue());
-        continue;
-        label203:
-        localObject1.commit();
-        this.mSyncMap.clear();
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   6: invokeinterface 83 1 0
+    //   11: astore_1
+    //   12: aload_0
+    //   13: getfield 46	com/tencent/smtt/sdk/TbsDownloadConfig:mSyncMap	Ljava/util/Map;
+    //   16: invokeinterface 95 1 0
+    //   21: invokeinterface 101 1 0
+    //   26: astore_2
+    //   27: aload_2
+    //   28: invokeinterface 106 1 0
+    //   33: ifeq +157 -> 190
+    //   36: aload_2
+    //   37: invokeinterface 110 1 0
+    //   42: checkcast 112	java/lang/String
+    //   45: astore_3
+    //   46: aload_0
+    //   47: getfield 46	com/tencent/smtt/sdk/TbsDownloadConfig:mSyncMap	Ljava/util/Map;
+    //   50: aload_3
+    //   51: invokeinterface 116 2 0
+    //   56: astore 4
+    //   58: aload 4
+    //   60: instanceof 112
+    //   63: ifeq +19 -> 82
+    //   66: aload_1
+    //   67: aload_3
+    //   68: aload 4
+    //   70: checkcast 112	java/lang/String
+    //   73: invokeinterface 120 3 0
+    //   78: pop
+    //   79: goto -52 -> 27
+    //   82: aload 4
+    //   84: instanceof 122
+    //   87: ifeq +22 -> 109
+    //   90: aload_1
+    //   91: aload_3
+    //   92: aload 4
+    //   94: checkcast 122	java/lang/Boolean
+    //   97: invokevirtual 125	java/lang/Boolean:booleanValue	()Z
+    //   100: invokeinterface 129 3 0
+    //   105: pop
+    //   106: goto -79 -> 27
+    //   109: aload 4
+    //   111: instanceof 131
+    //   114: ifeq +22 -> 136
+    //   117: aload_1
+    //   118: aload_3
+    //   119: aload 4
+    //   121: checkcast 131	java/lang/Long
+    //   124: invokevirtual 135	java/lang/Long:longValue	()J
+    //   127: invokeinterface 139 4 0
+    //   132: pop
+    //   133: goto -106 -> 27
+    //   136: aload 4
+    //   138: instanceof 141
+    //   141: ifeq +22 -> 163
+    //   144: aload_1
+    //   145: aload_3
+    //   146: aload 4
+    //   148: checkcast 141	java/lang/Integer
+    //   151: invokevirtual 145	java/lang/Integer:intValue	()I
+    //   154: invokeinterface 149 3 0
+    //   159: pop
+    //   160: goto -133 -> 27
+    //   163: aload 4
+    //   165: instanceof 151
+    //   168: ifeq -141 -> 27
+    //   171: aload_1
+    //   172: aload_3
+    //   173: aload 4
+    //   175: checkcast 151	java/lang/Float
+    //   178: invokevirtual 155	java/lang/Float:floatValue	()F
+    //   181: invokeinterface 159 3 0
+    //   186: pop
+    //   187: goto -160 -> 27
+    //   190: aload_1
+    //   191: invokeinterface 91 1 0
+    //   196: pop
+    //   197: aload_0
+    //   198: getfield 46	com/tencent/smtt/sdk/TbsDownloadConfig:mSyncMap	Ljava/util/Map;
+    //   201: invokeinterface 77 1 0
+    //   206: goto +12 -> 218
+    //   209: astore_1
+    //   210: goto +11 -> 221
+    //   213: astore_1
+    //   214: aload_1
+    //   215: invokevirtual 162	java/lang/Exception:printStackTrace	()V
+    //   218: aload_0
+    //   219: monitorexit
+    //   220: return
+    //   221: aload_0
+    //   222: monitorexit
+    //   223: goto +5 -> 228
+    //   226: aload_1
+    //   227: athrow
+    //   228: goto -2 -> 226
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	231	0	this	TbsDownloadConfig
+    //   11	180	1	localEditor	SharedPreferences.Editor
+    //   209	1	1	localObject1	Object
+    //   213	14	1	localException	Exception
+    //   26	11	2	localIterator	java.util.Iterator
+    //   45	128	3	str	String
+    //   56	118	4	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	27	209	finally
+    //   27	79	209	finally
+    //   82	106	209	finally
+    //   109	133	209	finally
+    //   136	160	209	finally
+    //   163	187	209	finally
+    //   190	206	209	finally
+    //   214	218	209	finally
+    //   2	27	213	java/lang/Exception
+    //   27	79	213	java/lang/Exception
+    //   82	106	213	java/lang/Exception
+    //   109	133	213	java/lang/Exception
+    //   136	160	213	java/lang/Exception
+    //   163	187	213	java/lang/Exception
+    //   190	206	213	java/lang/Exception
   }
   
   public int getDownloadFailedMaxRetrytimes()
   {
     try
     {
-      int i = this.mPreferences.getInt("tbs_download_failed_max_retrytimes", 0);
-      int j = i;
-      if (i == 0) {
-        j = 100;
+      int j = this.mPreferences.getInt("tbs_download_failed_max_retrytimes", 0);
+      int i = j;
+      if (j == 0) {
+        i = 100;
       }
-      return j;
+      return i;
     }
     finally
     {
@@ -143,163 +223,83 @@ public class TbsDownloadConfig
     }
   }
   
-  /* Error */
   public int getDownloadInterruptCode()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   6: ldc 174
-    //   8: invokeinterface 178 2 0
-    //   13: istore_3
-    //   14: iload_3
-    //   15: ifne +124 -> 139
-    //   18: new 180	java/io/File
-    //   21: dup
-    //   22: new 180	java/io/File
-    //   25: dup
-    //   26: aload_0
-    //   27: getfield 62	com/tencent/smtt/sdk/TbsDownloadConfig:b	Landroid/content/Context;
-    //   30: invokevirtual 184	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   33: ldc 186
-    //   35: invokespecial 189	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   38: ldc 48
-    //   40: invokespecial 189	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   43: invokevirtual 192	java/io/File:exists	()Z
-    //   46: istore_3
-    //   47: iload_3
-    //   48: ifne +55 -> 103
-    //   51: bipush 159
-    //   53: istore_1
-    //   54: aload_0
-    //   55: getfield 62	com/tencent/smtt/sdk/TbsDownloadConfig:b	Landroid/content/Context;
-    //   58: ifnull +156 -> 214
-    //   61: ldc 194
-    //   63: aload_0
-    //   64: getfield 62	com/tencent/smtt/sdk/TbsDownloadConfig:b	Landroid/content/Context;
-    //   67: invokevirtual 198	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   70: getfield 204	android/content/pm/ApplicationInfo:packageName	Ljava/lang/String;
-    //   73: invokevirtual 208	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   76: ifeq +138 -> 214
-    //   79: ldc 210
-    //   81: invokestatic 216	java/util/Locale:getDefault	()Ljava/util/Locale;
-    //   84: invokevirtual 220	java/util/Locale:getCountry	()Ljava/lang/String;
-    //   87: invokevirtual 208	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   90: istore_3
-    //   91: iload_3
-    //   92: ifne +122 -> 214
-    //   95: sipush -320
-    //   98: istore_1
-    //   99: aload_0
-    //   100: monitorexit
-    //   101: iload_1
-    //   102: ireturn
-    //   103: aload_0
-    //   104: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   107: ldc 222
-    //   109: invokeinterface 178 2 0
-    //   114: istore_3
-    //   115: iload_3
-    //   116: ifne +9 -> 125
-    //   119: bipush 160
-    //   121: istore_1
-    //   122: goto -68 -> 54
-    //   125: bipush 155
-    //   127: istore_1
-    //   128: goto -74 -> 54
-    //   131: astore 4
-    //   133: bipush 161
-    //   135: istore_1
-    //   136: goto -82 -> 54
-    //   139: aload_0
-    //   140: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   143: ldc 174
-    //   145: bipush 157
-    //   147: invokeinterface 169 3 0
-    //   152: istore_1
-    //   153: iload_1
-    //   154: bipush 137
-    //   156: if_icmpeq +11 -> 167
-    //   159: iload_1
-    //   160: istore_2
-    //   161: iload_1
-    //   162: bipush 135
-    //   164: if_icmpne +17 -> 181
-    //   167: aload_0
-    //   168: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   171: ldc 224
-    //   173: bipush 137
-    //   175: invokeinterface 169 3 0
-    //   180: istore_2
-    //   181: iload_2
-    //   182: istore_1
-    //   183: invokestatic 229	java/lang/System:currentTimeMillis	()J
-    //   186: aload_0
-    //   187: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   190: ldc 231
-    //   192: lconst_0
-    //   193: invokeinterface 235 4 0
-    //   198: lsub
-    //   199: ldc2_w 236
-    //   202: lcmp
-    //   203: ifle -149 -> 54
-    //   206: iload_2
-    //   207: ldc 238
-    //   209: isub
-    //   210: istore_1
-    //   211: goto -157 -> 54
-    //   214: aload_0
-    //   215: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   218: ldc 240
-    //   220: iconst_m1
-    //   221: invokeinterface 169 3 0
-    //   226: istore_2
-    //   227: iload_1
-    //   228: sipush 1000
-    //   231: imul
-    //   232: iload_2
-    //   233: iadd
-    //   234: istore_1
-    //   235: goto -136 -> 99
-    //   238: astore 4
-    //   240: aload_0
-    //   241: monitorexit
-    //   242: aload 4
-    //   244: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	245	0	this	TbsDownloadConfig
-    //   53	182	1	i	int
-    //   160	74	2	j	int
-    //   13	103	3	bool	boolean
-    //   131	1	4	localThrowable	java.lang.Throwable
-    //   238	5	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   18	47	131	java/lang/Throwable
-    //   103	115	131	java/lang/Throwable
-    //   2	14	238	finally
-    //   18	47	238	finally
-    //   54	91	238	finally
-    //   103	115	238	finally
-    //   139	153	238	finally
-    //   167	181	238	finally
-    //   183	206	238	finally
-    //   214	227	238	finally
+    try
+    {
+      bool = this.mPreferences.contains("tbs_download_interrupt_code");
+      if (bool) {}
+    }
+    finally
+    {
+      boolean bool;
+      int i;
+      label83:
+      int j;
+      for (;;)
+      {
+        label161:
+        throw localObject;
+      }
+    }
+    try
+    {
+      if (!new File(new File(this.b.getFilesDir(), "shared_prefs"), "tbs_download_config").exists())
+      {
+        i = -97;
+      }
+      else
+      {
+        bool = this.mPreferences.contains("tbs_needdownload");
+        if (!bool) {
+          i = -96;
+        } else {
+          i = -101;
+        }
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      break label83;
+    }
+    i = -95;
+    break label161;
+    i = this.mPreferences.getInt("tbs_download_interrupt_code", -99);
+    if (i != -119)
+    {
+      j = i;
+      if (i != -121) {}
+    }
+    else
+    {
+      j = this.mPreferences.getInt("tbs_download_interrupt_code_reason", -119);
+    }
+    i = j;
+    if (System.currentTimeMillis() - this.mPreferences.getLong("tbs_download_interrupt_time", 0L) > 86400000L) {
+      i = j - 98000;
+    }
+    if ((this.b != null) && ("com.tencent.mobileqq".equals(this.b.getApplicationInfo().packageName)))
+    {
+      bool = "CN".equals(Locale.getDefault().getCountry());
+      if (bool) {}
+    }
+    for (i = -320;; i = i * 1000 + j)
+    {
+      return i;
+      j = this.mPreferences.getInt("tbs_install_interrupt_code", -1);
+    }
   }
   
   public long getDownloadMaxflow()
   {
     try
     {
-      int i = this.mPreferences.getInt("tbs_download_maxflow", 0);
-      int j = i;
-      if (i == 0) {
-        j = 20;
+      int j = this.mPreferences.getInt("tbs_download_maxflow", 0);
+      int i = j;
+      if (j == 0) {
+        i = 20;
       }
-      long l = j * 1024;
+      long l = i * 1024;
       return l * 1024L;
     }
     finally
@@ -309,63 +309,35 @@ public class TbsDownloadConfig
     }
   }
   
-  /* Error */
   public long getDownloadMinFreeSpace()
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   8: ldc 248
-    //   10: iconst_0
-    //   11: invokeinterface 169 3 0
-    //   16: istore_2
-    //   17: iload_2
-    //   18: ifne +18 -> 36
-    //   21: iload_1
-    //   22: sipush 1024
-    //   25: imul
-    //   26: i2l
-    //   27: lstore_3
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: lload_3
-    //   31: ldc2_w 244
-    //   34: lmul
-    //   35: lreturn
-    //   36: iload_2
-    //   37: istore_1
-    //   38: goto -17 -> 21
-    //   41: astore 5
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload 5
-    //   47: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	48	0	this	TbsDownloadConfig
-    //   1	37	1	i	int
-    //   16	21	2	j	int
-    //   27	4	3	l	long
-    //   41	5	5	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	17	41	finally
+    try
+    {
+      int j = this.mPreferences.getInt("tbs_download_min_free_space", 0);
+      int i = j;
+      if (j == 0) {
+        i = 0;
+      }
+      long l = i * 1024;
+      return l * 1024L;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public long getDownloadSingleTimeout()
   {
     try
     {
-      long l1 = this.mPreferences.getLong("tbs_single_timeout", 0L);
-      long l2 = l1;
-      if (l1 == 0L) {
-        l2 = 1200000L;
+      long l2 = this.mPreferences.getLong("tbs_single_timeout", 0L);
+      long l1 = l2;
+      if (l2 == 0L) {
+        l1 = 1200000L;
       }
-      return l2;
+      return l1;
     }
     finally
     {
@@ -378,12 +350,12 @@ public class TbsDownloadConfig
   {
     try
     {
-      int i = this.mPreferences.getInt("tbs_download_success_max_retrytimes", 0);
-      int j = i;
-      if (i == 0) {
-        j = 3;
+      int j = this.mPreferences.getInt("tbs_download_success_max_retrytimes", 0);
+      int i = j;
+      if (j == 0) {
+        i = 3;
       }
-      return j;
+      return i;
     }
     finally
     {
@@ -392,53 +364,29 @@ public class TbsDownloadConfig
     }
   }
   
-  /* Error */
   public long getRetryInterval()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 262	com/tencent/smtt/sdk/TbsDownloader:getRetryIntervalInSeconds	()J
-    //   5: lconst_0
-    //   6: lcmp
-    //   7: iflt +11 -> 18
-    //   10: invokestatic 262	com/tencent/smtt/sdk/TbsDownloader:getRetryIntervalInSeconds	()J
-    //   13: lstore_1
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: lload_1
-    //   17: lreturn
-    //   18: aload_0
-    //   19: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   22: ldc_w 264
-    //   25: ldc2_w 12
-    //   28: invokeinterface 235 4 0
-    //   33: lstore_1
-    //   34: goto -20 -> 14
-    //   37: astore_3
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: aload_3
-    //   41: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	42	0	this	TbsDownloadConfig
-    //   13	21	1	l	long
-    //   37	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	37	finally
-    //   18	34	37	finally
+    try
+    {
+      if (TbsDownloader.getRetryIntervalInSeconds() >= 0L)
+      {
+        l = TbsDownloader.getRetryIntervalInSeconds();
+        return l;
+      }
+      long l = this.mPreferences.getLong("retry_interval", 86400L);
+      return l;
+    }
+    finally {}
   }
   
   /* Error */
   public boolean getTbsCoreLoadRenameFileLockEnable()
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: aload_0
-    //   3: monitorenter
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: iconst_1
+    //   3: istore_1
     //   4: aload_0
     //   5: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
     //   8: ldc_w 267
@@ -447,38 +395,39 @@ public class TbsDownloadConfig
     //   17: istore_2
     //   18: iload_2
     //   19: istore_1
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: iload_1
-    //   23: ireturn
-    //   24: astore_3
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: aload_3
-    //   28: athrow
-    //   29: astore_3
-    //   30: goto -10 -> 20
+    //   20: goto +8 -> 28
+    //   23: astore_3
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: aload_3
+    //   27: athrow
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: iload_1
+    //   31: ireturn
+    //   32: astore_3
+    //   33: goto -5 -> 28
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	33	0	this	TbsDownloadConfig
-    //   1	22	1	bool1	boolean
+    //   0	36	0	this	TbsDownloadConfig
+    //   3	28	1	bool1	boolean
     //   17	2	2	bool2	boolean
-    //   24	4	3	localObject	Object
-    //   29	1	3	localException	Exception
+    //   23	4	3	localObject	Object
+    //   32	1	3	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   4	18	24	finally
-    //   4	18	29	java/lang/Exception
+    //   4	18	23	finally
+    //   4	18	32	java/lang/Exception
   }
   
   /* Error */
   public boolean getTbsCoreLoadRenameFileLockWaitEnable()
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: aload_0
-    //   3: monitorenter
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: iconst_1
+    //   3: istore_1
     //   4: aload_0
     //   5: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
     //   8: ldc_w 274
@@ -487,28 +436,29 @@ public class TbsDownloadConfig
     //   17: istore_2
     //   18: iload_2
     //   19: istore_1
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: iload_1
-    //   23: ireturn
-    //   24: astore_3
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: aload_3
-    //   28: athrow
-    //   29: astore_3
-    //   30: goto -10 -> 20
+    //   20: goto +8 -> 28
+    //   23: astore_3
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: aload_3
+    //   27: athrow
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: iload_1
+    //   31: ireturn
+    //   32: astore_3
+    //   33: goto -5 -> 28
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	33	0	this	TbsDownloadConfig
-    //   1	22	1	bool1	boolean
+    //   0	36	0	this	TbsDownloadConfig
+    //   3	28	1	bool1	boolean
     //   17	2	2	bool2	boolean
-    //   24	4	3	localObject	Object
-    //   29	1	3	localException	Exception
+    //   23	4	3	localObject	Object
+    //   32	1	3	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   4	18	24	finally
-    //   4	18	29	java/lang/Exception
+    //   4	18	23	finally
+    //   4	18	32	java/lang/Exception
   }
   
   public boolean isOverSea()
@@ -538,37 +488,38 @@ public class TbsDownloadConfig
     //   12: aload_2
     //   13: ldc 174
     //   15: iload_1
-    //   16: invokeinterface 152 3 0
+    //   16: invokeinterface 149 3 0
     //   21: pop
     //   22: aload_2
-    //   23: ldc 231
-    //   25: invokestatic 229	java/lang/System:currentTimeMillis	()J
-    //   28: invokeinterface 142 4 0
+    //   23: ldc 203
+    //   25: invokestatic 201	java/lang/System:currentTimeMillis	()J
+    //   28: invokeinterface 139 4 0
     //   33: pop
     //   34: aload_2
     //   35: invokeinterface 91 1 0
     //   40: pop
-    //   41: aload_0
-    //   42: monitorexit
-    //   43: return
+    //   41: goto +8 -> 49
     //   44: astore_2
     //   45: aload_0
     //   46: monitorexit
     //   47: aload_2
     //   48: athrow
-    //   49: astore_2
-    //   50: goto -9 -> 41
+    //   49: aload_0
+    //   50: monitorexit
+    //   51: return
+    //   52: astore_2
+    //   53: goto -4 -> 49
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	53	0	this	TbsDownloadConfig
-    //   0	53	1	paramInt	int
+    //   0	56	0	this	TbsDownloadConfig
+    //   0	56	1	paramInt	int
     //   11	24	2	localEditor	SharedPreferences.Editor
     //   44	4	2	localObject	Object
-    //   49	1	2	localException	Exception
+    //   52	1	2	localException	Exception
     // Exception table:
     //   from	to	target	type
     //   2	41	44	finally
-    //   2	41	49	java/lang/Exception
+    //   2	41	52	java/lang/Exception
   }
   
   public void setInstallInterruptCode(int paramInt)
@@ -600,32 +551,33 @@ public class TbsDownloadConfig
     //   12: aload_2
     //   13: ldc_w 267
     //   16: iload_1
-    //   17: invokeinterface 132 3 0
+    //   17: invokeinterface 129 3 0
     //   22: pop
     //   23: aload_2
     //   24: invokeinterface 91 1 0
     //   29: pop
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: return
+    //   30: goto +8 -> 38
     //   33: astore_2
     //   34: aload_0
     //   35: monitorexit
     //   36: aload_2
     //   37: athrow
-    //   38: astore_2
-    //   39: goto -9 -> 30
+    //   38: aload_0
+    //   39: monitorexit
+    //   40: return
+    //   41: astore_2
+    //   42: goto -4 -> 38
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	42	0	this	TbsDownloadConfig
-    //   0	42	1	paramBoolean	boolean
+    //   0	45	0	this	TbsDownloadConfig
+    //   0	45	1	paramBoolean	boolean
     //   11	13	2	localEditor	SharedPreferences.Editor
     //   33	4	2	localObject	Object
-    //   38	1	2	localException	Exception
+    //   41	1	2	localException	Exception
     // Exception table:
     //   from	to	target	type
     //   2	30	33	finally
-    //   2	30	38	java/lang/Exception
+    //   2	30	41	java/lang/Exception
   }
   
   /* Error */
@@ -641,211 +593,108 @@ public class TbsDownloadConfig
     //   12: aload_2
     //   13: ldc_w 274
     //   16: iload_1
-    //   17: invokeinterface 132 3 0
+    //   17: invokeinterface 129 3 0
     //   22: pop
     //   23: aload_2
     //   24: invokeinterface 91 1 0
     //   29: pop
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: return
+    //   30: goto +8 -> 38
     //   33: astore_2
     //   34: aload_0
     //   35: monitorexit
     //   36: aload_2
     //   37: athrow
-    //   38: astore_2
-    //   39: goto -9 -> 30
+    //   38: aload_0
+    //   39: monitorexit
+    //   40: return
+    //   41: astore_2
+    //   42: goto -4 -> 38
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	42	0	this	TbsDownloadConfig
-    //   0	42	1	paramBoolean	boolean
+    //   0	45	0	this	TbsDownloadConfig
+    //   0	45	1	paramBoolean	boolean
     //   11	13	2	localEditor	SharedPreferences.Editor
     //   33	4	2	localObject	Object
-    //   38	1	2	localException	Exception
+    //   41	1	2	localException	Exception
     // Exception table:
     //   from	to	target	type
     //   2	30	33	finally
-    //   2	30	38	java/lang/Exception
+    //   2	30	41	java/lang/Exception
   }
   
-  /* Error */
   public void uploadDownloadInterruptCodeIfNeeded(Context paramContext)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +144 -> 147
-    //   6: ldc_w 286
-    //   9: aload_1
-    //   10: invokevirtual 60	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   13: invokevirtual 198	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   16: getfield 204	android/content/pm/ApplicationInfo:packageName	Ljava/lang/String;
-    //   19: invokevirtual 208	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   22: ifeq +125 -> 147
-    //   25: aload_0
-    //   26: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   29: ldc 174
-    //   31: invokeinterface 178 2 0
-    //   36: istore 5
-    //   38: iload 5
-    //   40: ifne +150 -> 190
-    //   43: new 180	java/io/File
-    //   46: dup
-    //   47: new 180	java/io/File
-    //   50: dup
-    //   51: aload_0
-    //   52: getfield 62	com/tencent/smtt/sdk/TbsDownloadConfig:b	Landroid/content/Context;
-    //   55: invokevirtual 184	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   58: ldc 186
-    //   60: invokespecial 189	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   63: ldc 48
-    //   65: invokespecial 189	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   68: invokevirtual 192	java/io/File:exists	()Z
-    //   71: istore 5
-    //   73: iload 5
-    //   75: ifne +75 -> 150
-    //   78: bipush 159
-    //   80: istore_2
-    //   81: iconst_1
-    //   82: istore 4
-    //   84: iload_2
-    //   85: istore_3
-    //   86: iload 4
-    //   88: istore_2
-    //   89: iload_2
-    //   90: ifeq +57 -> 147
-    //   93: aload_1
-    //   94: invokestatic 291	com/tencent/smtt/sdk/TbsLogReport:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsLogReport;
-    //   97: invokevirtual 295	com/tencent/smtt/sdk/TbsLogReport:tbsLogInfo	()Lcom/tencent/smtt/sdk/TbsLogReport$TbsLogInfo;
-    //   100: astore 6
-    //   102: aload 6
-    //   104: sipush 128
-    //   107: invokevirtual 300	com/tencent/smtt/sdk/TbsLogReport$TbsLogInfo:setErrorCode	(I)V
-    //   110: aload 6
-    //   112: new 302	java/lang/StringBuilder
-    //   115: dup
-    //   116: invokespecial 303	java/lang/StringBuilder:<init>	()V
-    //   119: ldc_w 305
-    //   122: invokevirtual 309	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: iload_3
-    //   126: invokevirtual 312	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   129: invokevirtual 315	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokevirtual 319	com/tencent/smtt/sdk/TbsLogReport$TbsLogInfo:setFailDetail	(Ljava/lang/String;)V
-    //   135: aload_1
-    //   136: invokestatic 291	com/tencent/smtt/sdk/TbsLogReport:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsLogReport;
-    //   139: getstatic 325	com/tencent/smtt/sdk/TbsLogReport$EventType:TYPE_DOWNLOAD	Lcom/tencent/smtt/sdk/TbsLogReport$EventType;
-    //   142: aload 6
-    //   144: invokevirtual 329	com/tencent/smtt/sdk/TbsLogReport:eventReport	(Lcom/tencent/smtt/sdk/TbsLogReport$EventType;Lcom/tencent/smtt/sdk/TbsLogReport$TbsLogInfo;)V
-    //   147: aload_0
-    //   148: monitorexit
-    //   149: return
-    //   150: aload_0
-    //   151: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   154: ldc 222
-    //   156: invokeinterface 178 2 0
-    //   161: istore 5
-    //   163: iload 5
-    //   165: ifne +9 -> 174
-    //   168: bipush 160
-    //   170: istore_2
-    //   171: goto -90 -> 81
-    //   174: bipush 155
-    //   176: istore_2
-    //   177: goto -96 -> 81
-    //   180: astore 6
-    //   182: bipush 161
-    //   184: istore_3
-    //   185: iconst_1
-    //   186: istore_2
-    //   187: goto -98 -> 89
-    //   190: aload_0
-    //   191: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   194: ldc 174
-    //   196: bipush 157
-    //   198: invokeinterface 169 3 0
-    //   203: istore_2
-    //   204: iload_2
-    //   205: sipush -206
-    //   208: if_icmpgt +21 -> 229
-    //   211: iload_2
-    //   212: sipush -219
-    //   215: if_icmplt +14 -> 229
-    //   218: iconst_1
-    //   219: istore 4
-    //   221: iload_2
-    //   222: istore_3
-    //   223: iload 4
-    //   225: istore_2
-    //   226: goto -137 -> 89
-    //   229: iload_2
-    //   230: sipush -302
-    //   233: if_icmpgt +21 -> 254
-    //   236: iload_2
-    //   237: sipush -316
-    //   240: if_icmplt +14 -> 254
-    //   243: iconst_1
-    //   244: istore 4
-    //   246: iload_2
-    //   247: istore_3
-    //   248: iload 4
-    //   250: istore_2
-    //   251: goto -162 -> 89
-    //   254: iload_2
-    //   255: sipush -318
-    //   258: if_icmpgt +21 -> 279
-    //   261: iload_2
-    //   262: sipush -322
-    //   265: if_icmplt +14 -> 279
-    //   268: iconst_1
-    //   269: istore 4
-    //   271: iload_2
-    //   272: istore_3
-    //   273: iload 4
-    //   275: istore_2
-    //   276: goto -187 -> 89
-    //   279: iconst_0
-    //   280: istore 4
-    //   282: iload_2
-    //   283: istore_3
-    //   284: iload 4
-    //   286: istore_2
-    //   287: goto -198 -> 89
-    //   290: astore_1
-    //   291: aload_0
-    //   292: monitorexit
-    //   293: aload_1
-    //   294: athrow
-    //   295: astore_1
-    //   296: goto -149 -> 147
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	299	0	this	TbsDownloadConfig
-    //   0	299	1	paramContext	Context
-    //   80	207	2	i	int
-    //   85	199	3	j	int
-    //   82	203	4	k	int
-    //   36	128	5	bool	boolean
-    //   100	43	6	localTbsLogInfo	TbsLogReport.TbsLogInfo
-    //   180	1	6	localThrowable	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   43	73	180	java/lang/Throwable
-    //   150	163	180	java/lang/Throwable
-    //   6	38	290	finally
-    //   43	73	290	finally
-    //   93	147	290	finally
-    //   150	163	290	finally
-    //   190	204	290	finally
-    //   6	38	295	java/lang/Throwable
-    //   93	147	295	java/lang/Throwable
-    //   190	204	295	java/lang/Throwable
+    if (paramContext != null) {}
+    try
+    {
+      boolean bool;
+      label112:
+      TbsLogReport.TbsLogInfo localTbsLogInfo;
+      StringBuilder localStringBuilder;
+      try
+      {
+        if ("com.tencent.mm".equals(paramContext.getApplicationContext().getApplicationInfo().packageName))
+        {
+          j = 1;
+          bool = this.mPreferences.contains("tbs_download_interrupt_code");
+          if (bool) {}
+        }
+      }
+      finally {}
+    }
+    catch (Throwable paramContext)
+    {
+      break label225;
+    }
+    try
+    {
+      if (!new File(new File(this.b.getFilesDir(), "shared_prefs"), "tbs_download_config").exists())
+      {
+        i = -97;
+      }
+      else
+      {
+        bool = this.mPreferences.contains("tbs_needdownload");
+        if (!bool) {
+          i = -96;
+        } else {
+          i = -101;
+        }
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      break label112;
+      if (((i <= -302) && (i >= -316)) || ((i <= -318) && (i >= -322))) {
+        break label149;
+      }
+      j = 0;
+      break label149;
+    }
+    i = -95;
+    break label149;
+    i = this.mPreferences.getInt("tbs_download_interrupt_code", -99);
+    if ((i <= -206) && (i >= -219))
+    {
+      label149:
+      if (j != 0)
+      {
+        localTbsLogInfo = TbsLogReport.getInstance(paramContext).tbsLogInfo();
+        localTbsLogInfo.setErrorCode(128);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" ");
+        localStringBuilder.append(i);
+        localTbsLogInfo.setFailDetail(localStringBuilder.toString());
+        TbsLogReport.getInstance(paramContext).eventReport(TbsLogReport.EventType.TYPE_DOWNLOAD, localTbsLogInfo);
+      }
+      label225:
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloadConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -16,17 +16,33 @@ public class IMFunc
   
   public static String appSignature(int paramInt, String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
   {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null) || (paramString4 == null)) {
-      return "-1";
+    if ((paramString1 != null) && (paramString2 != null) && (paramString3 != null) && (paramString4 != null))
+    {
+      long l = System.currentTimeMillis() / 1000L;
+      int i = Math.abs(new Random().nextInt());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("a=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("&k=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("&e=");
+      localStringBuilder.append(paramLong + l);
+      localStringBuilder.append("&t=");
+      localStringBuilder.append(l);
+      localStringBuilder.append("&r=");
+      localStringBuilder.append(i);
+      localStringBuilder.append("&f=");
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append("&b=");
+      localStringBuilder.append(paramString4);
+      paramString1 = localStringBuilder.toString();
+      paramString2 = getHmacSHA1(paramString1.getBytes(), paramString2);
+      paramString3 = new byte[paramString2.length + paramString1.getBytes().length];
+      System.arraycopy(paramString2, 0, paramString3, 0, paramString2.length);
+      System.arraycopy(paramString1.getBytes(), 0, paramString3, paramString2.length, paramString1.getBytes().length);
+      return base64Encode(paramString3);
     }
-    long l = System.currentTimeMillis() / 1000L;
-    int i = Math.abs(new Random().nextInt());
-    paramString1 = "a=" + paramInt + "&k=" + paramString1 + "&e=" + (l + paramLong) + "&t=" + l + "&r=" + i + "&f=" + paramString3 + "&b=" + paramString4;
-    paramString2 = getHmacSHA1(paramString1.getBytes(), paramString2);
-    paramString3 = new byte[paramString2.length + paramString1.getBytes().length];
-    System.arraycopy(paramString2, 0, paramString3, 0, paramString2.length);
-    System.arraycopy(paramString1.getBytes(), 0, paramString3, paramString2.length, paramString1.getBytes().length);
-    return base64Encode(paramString3);
+    return "-1";
   }
   
   public static String base64Encode(byte[] paramArrayOfByte)
@@ -37,29 +53,32 @@ public class IMFunc
   public static String getExceptionInfo(Throwable paramThrowable)
   {
     if (paramThrowable == null) {
-      paramThrowable = "";
+      return "";
     }
-    String str;
-    StackTraceElement[] arrayOfStackTraceElement;
-    do
+    String str = paramThrowable.toString();
+    StackTraceElement[] arrayOfStackTraceElement = paramThrowable.getStackTrace();
+    Object localObject = str;
+    if (arrayOfStackTraceElement != null)
     {
-      return paramThrowable;
-      str = paramThrowable.toString();
-      arrayOfStackTraceElement = paramThrowable.getStackTrace();
+      int j = arrayOfStackTraceElement.length;
+      int i = 0;
       paramThrowable = str;
-    } while (arrayOfStackTraceElement == null);
-    int j = arrayOfStackTraceElement.length;
-    int i = 0;
-    for (;;)
-    {
-      paramThrowable = str;
-      if (i >= j) {
-        break;
+      for (;;)
+      {
+        localObject = paramThrowable;
+        if (i >= j) {
+          break;
+        }
+        str = arrayOfStackTraceElement[i];
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramThrowable);
+        ((StringBuilder)localObject).append("\n\tat ");
+        ((StringBuilder)localObject).append(str.toString());
+        paramThrowable = ((StringBuilder)localObject).toString();
+        i += 1;
       }
-      paramThrowable = arrayOfStackTraceElement[i];
-      str = str + "\n\tat " + paramThrowable.toString();
-      i += 1;
     }
+    return localObject;
   }
   
   public static byte[] getHmacSHA1(byte[] paramArrayOfByte, String paramString)
@@ -71,18 +90,40 @@ public class IMFunc
       paramArrayOfByte = localMac.doFinal(paramArrayOfByte);
       return paramArrayOfByte;
     }
-    catch (IllegalStateException paramArrayOfByte) {}
+    catch (IllegalStateException paramArrayOfByte)
+    {
+      label31:
+      break label31;
+    }
     return null;
   }
   
   public static byte[] getParamBytes(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    return ("--" + paramString1 + "\r\nContent-Disposition: form-data; name=\"" + paramString2 + "\"; filename=\"" + paramString3 + "\"\r\n\r\n" + paramString4 + "\r\n").getBytes();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("--");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("\r\nContent-Disposition: form-data; name=\"");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("\"; filename=\"");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append("\"\r\n\r\n");
+    localStringBuilder.append(paramString4);
+    localStringBuilder.append("\r\n");
+    return localStringBuilder.toString().getBytes();
   }
   
   public static byte[] getParamBytes(String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte)
   {
-    paramString1 = ("--" + paramString1 + "\r\nContent-Disposition: form-data; name=\"" + paramString2 + "\"; filename=\"" + paramString3 + "\"\r\n\r\n").getBytes();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("--");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("\r\nContent-Disposition: form-data; name=\"");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("\"; filename=\"");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append("\"\r\n\r\n");
+    paramString1 = localStringBuilder.toString().getBytes();
     paramString2 = new byte[paramString1.length + paramArrayOfByte.length + 2];
     System.arraycopy(paramString1, 0, paramString2, 0, paramString1.length);
     System.arraycopy(paramArrayOfByte, 0, paramString2, paramString1.length, paramArrayOfByte.length);
@@ -92,14 +133,15 @@ public class IMFunc
   
   public static byte[] gzCompress(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
+    if ((paramString != null) && (paramString.length() != 0))
+    {
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
+      localGZIPOutputStream.write(paramString.getBytes());
+      localGZIPOutputStream.close();
+      return localByteArrayOutputStream.toByteArray();
     }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
-    localGZIPOutputStream.write(paramString.getBytes());
-    localGZIPOutputStream.close();
-    return localByteArrayOutputStream.toByteArray();
+    return null;
   }
   
   public static boolean httpPostReq(String paramString, byte[] paramArrayOfByte, Map<String, String> paramMap, IMFunc.RequestListener paramRequestListener)

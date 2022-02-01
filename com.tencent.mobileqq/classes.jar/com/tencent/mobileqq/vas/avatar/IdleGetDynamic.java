@@ -21,14 +21,19 @@ public class IdleGetDynamic
       if (localArrayList == null) {
         return;
       }
+      int i = 0;
+      int j = localArrayList.size();
+      while (i < j)
+      {
+        ((VasAvatarLoader)localArrayList.get(i)).a(true);
+        i += 1;
+      }
+      return;
     }
     finally {}
-    int j = localObject.size();
-    int i = 0;
-    while (i < j)
+    for (;;)
     {
-      ((VasAvatarLoader)localObject.get(i)).a(true);
-      i += 1;
+      throw localObject;
     }
   }
   
@@ -50,7 +55,7 @@ public class IdleGetDynamic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.IdleGetDynamic
  * JD-Core Version:    0.7.0.1
  */

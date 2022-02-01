@@ -38,7 +38,7 @@ public class ImageSwitchAnim
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130845423, 2130845424, 2130845425, 2130845426, 2130845427, 2130845428, 2130845429, 2130845430, 2130845431, 2130845432, 2130845433, 2130845434, 2130845435, 2130845436, 2130845437, 2130845438, 2130845439, 2130845440, 2130845441, 2130845442, 2130845443, 2130845444 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130845296, 2130845297, 2130845298, 2130845299, 2130845300, 2130845301, 2130845302, 2130845303, 2130845304, 2130845305, 2130845306, 2130845307, 2130845308, 2130845309, 2130845310, 2130845311, 2130845312, 2130845313, 2130845314, 2130845315, 2130845316, 2130845317 };
     jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = null;
   }
   
@@ -93,20 +93,18 @@ public class ImageSwitchAnim
         for (;;)
         {
           int i1 = jdField_a_of_type_ArrayOfInt.length;
-          if (n < i1) {
-            try
-            {
-              jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[n] = BitmapFactory.decodeResource(paramContext.getResources(), jdField_a_of_type_ArrayOfInt[n]);
-              n += 1;
-            }
-            catch (OutOfMemoryError localOutOfMemoryError)
-            {
-              for (;;)
-              {
-                localOutOfMemoryError.printStackTrace();
-              }
-            }
+          if (n >= i1) {
+            break;
           }
+          try
+          {
+            jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[n] = BitmapFactory.decodeResource(paramContext.getResources(), jdField_a_of_type_ArrayOfInt[n]);
+          }
+          catch (OutOfMemoryError localOutOfMemoryError)
+          {
+            localOutOfMemoryError.printStackTrace();
+          }
+          n += 1;
         }
         return;
       }
@@ -131,54 +129,72 @@ public class ImageSwitchAnim
   
   public boolean a(Canvas paramCanvas)
   {
-    long l1 = 880L;
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
       return false;
     }
     paramCanvas.save();
     paramCanvas.translate(this.jdField_c_of_type_Int, this.d);
     paramCanvas.scale(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.e, this.f, this.e + this.g, this.f + this.h);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    int n = this.e;
+    float f1 = n;
+    int i1 = this.f;
+    ((RectF)localObject).set(f1, i1, n + this.g, i1 + this.h);
     this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
     paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+    int i2;
+    int i3;
+    int i4;
     if (this.jdField_c_of_type_AndroidGraphicsBitmap != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_Int - this.k - this.i, this.jdField_b_of_type_Int - this.l - this.j, this.jdField_a_of_type_Int - this.k, this.jdField_b_of_type_Int - this.l);
+      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+      n = this.jdField_a_of_type_Int;
+      i1 = this.k;
+      i2 = this.i;
+      i3 = this.jdField_b_of_type_Int;
+      i4 = this.l;
+      ((Rect)localObject).set(n - i1 - i2, i3 - i4 - this.j, n - i1, i3 - i4);
       paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
     }
-    long l2;
     if (this.jdField_a_of_type_Boolean)
     {
-      l2 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+      long l2 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
       if (l2 >= 440L) {
         this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
       }
-      if (l2 < 880L) {
-        break label436;
-      }
-      b();
-    }
-    for (;;)
-    {
-      this.m = ((int)(l1 / 40L));
-      if (this.m >= jdField_a_of_type_ArrayOfInt.length) {
-        this.m %= jdField_a_of_type_ArrayOfInt.length;
-      }
-      int n = (int)(this.g * 0.35F / 2.0F);
-      int i1 = (int)(this.h * 0.35F / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.e - n, this.f - i1, n + this.e + this.g, i1 + (this.f + this.h));
-      if (jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.m] != null)
+      long l1 = l2;
+      if (l2 >= 880L)
       {
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.m].getWidth(), jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.m].getHeight());
+        b();
+        l1 = 880L;
+      }
+      this.m = ((int)(l1 / 40L));
+      n = this.m;
+      localObject = jdField_a_of_type_ArrayOfInt;
+      if (n >= localObject.length) {
+        this.m = (n % localObject.length);
+      }
+      n = this.g;
+      i1 = (int)(n * 0.35F / 2.0F);
+      i2 = this.h;
+      i3 = (int)(i2 * 0.35F / 2.0F);
+      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+      i4 = this.e;
+      f1 = i4 - i1;
+      int i5 = this.f;
+      ((RectF)localObject).set(f1, i5 - i3, i4 + i1 + n, i5 + i2 + i3);
+      localObject = jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+      n = this.m;
+      if (localObject[n] != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localObject[n].getWidth(), jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.m].getHeight());
         paramCanvas.drawBitmap(jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.m], this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, null);
       }
       paramCanvas.restore();
       return true;
-      paramCanvas.restore();
-      return false;
-      label436:
-      l1 = l2;
     }
+    paramCanvas.restore();
+    return false;
   }
   
   public void b()
@@ -199,7 +215,7 @@ public class ImageSwitchAnim
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ImageSwitchAnim
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public final class subcmd0x51b$DelSingleClusterMsgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x51b.DelSingleClusterMsgReq
  * JD-Core Version:    0.7.0.1
  */

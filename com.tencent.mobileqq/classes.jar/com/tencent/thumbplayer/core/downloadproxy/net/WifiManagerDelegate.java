@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Build.VERSION;
 
 public class WifiManagerDelegate
 {
@@ -15,19 +14,8 @@ public class WifiManagerDelegate
   private final Object mLock = new Object();
   private WifiManager mWifiManager;
   
-  static
-  {
-    if (!WifiManagerDelegate.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   WifiManagerDelegate(Context paramContext)
   {
-    assert (Build.VERSION.SDK_INT < 23);
     this.mContext = paramContext;
   }
   
@@ -35,17 +23,24 @@ public class WifiManagerDelegate
   {
     try
     {
-      WifiInfo localWifiInfo1 = this.mWifiManager.getConnectionInfo();
-      return localWifiInfo1;
+      localWifiInfo = this.mWifiManager.getConnectionInfo();
+      return localWifiInfo;
     }
     catch (NullPointerException localNullPointerException1)
     {
-      try
-      {
-        WifiInfo localWifiInfo2 = this.mWifiManager.getConnectionInfo();
-        return localWifiInfo2;
-      }
-      catch (NullPointerException localNullPointerException2) {}
+      WifiInfo localWifiInfo;
+      label10:
+      label20:
+      break label10;
+    }
+    try
+    {
+      localWifiInfo = this.mWifiManager.getConnectionInfo();
+      return localWifiInfo;
+    }
+    catch (NullPointerException localNullPointerException2)
+    {
+      break label20;
     }
     return null;
   }
@@ -53,7 +48,6 @@ public class WifiManagerDelegate
   @SuppressLint({"WifiManagerPotentialLeak"})
   private boolean hasPermissionLocked()
   {
-    boolean bool = true;
     for (;;)
     {
       synchronized (this.mLock)
@@ -65,9 +59,10 @@ public class WifiManagerDelegate
         }
         if (this.mContext.getPackageManager().checkPermission("android.permission.ACCESS_WIFI_STATE", this.mContext.getPackageName()) == 0)
         {
+          bool = true;
           this.mHasWifiPermission = bool;
           if (!this.mHasWifiPermission) {
-            break label101;
+            break label107;
           }
           WifiManager localWifiManager = (WifiManager)this.mContext.getSystemService("wifi");
           this.mWifiManager = localWifiManager;
@@ -76,9 +71,9 @@ public class WifiManagerDelegate
           return bool;
         }
       }
-      bool = false;
+      boolean bool = false;
       continue;
-      label101:
+      label107:
       Object localObject2 = null;
     }
   }
@@ -97,13 +92,13 @@ public class WifiManagerDelegate
         }
         return "";
       }
+      return NetworkChangeNotifier.getWifiSSID();
     }
-    return NetworkChangeNotifier.getWifiSSID();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.net.WifiManagerDelegate
  * JD-Core Version:    0.7.0.1
  */

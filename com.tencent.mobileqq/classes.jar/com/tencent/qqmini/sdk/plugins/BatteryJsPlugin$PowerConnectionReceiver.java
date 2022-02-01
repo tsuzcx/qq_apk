@@ -13,21 +13,22 @@ public class BatteryJsPlugin$PowerConnectionReceiver
   {
     paramIntent.getIntExtra("status", -1);
     paramContext = this.this$0;
-    if (paramIntent.getIntExtra("plugged", -1) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      BatteryJsPlugin.access$002(paramContext, bool);
-      int i = paramIntent.getIntExtra("level", 0);
-      int j = paramIntent.getIntExtra("scale", 0);
-      BatteryJsPlugin.access$102(this.this$0, i / j);
-      BatteryJsPlugin.access$202(this.this$0, paramIntent.getIntExtra("plugged", -1));
-      return;
+    boolean bool;
+    if (paramIntent.getIntExtra("plugged", -1) != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    BatteryJsPlugin.access$002(paramContext, bool);
+    int i = paramIntent.getIntExtra("level", 0);
+    int j = paramIntent.getIntExtra("scale", 0);
+    BatteryJsPlugin.access$102(this.this$0, i / j);
+    BatteryJsPlugin.access$202(this.this$0, paramIntent.getIntExtra("plugged", -1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.BatteryJsPlugin.PowerConnectionReceiver
  * JD-Core Version:    0.7.0.1
  */

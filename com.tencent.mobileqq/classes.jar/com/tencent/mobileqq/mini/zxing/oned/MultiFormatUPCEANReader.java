@@ -19,42 +19,33 @@ public final class MultiFormatUPCEANReader
   
   public MultiFormatUPCEANReader(Map<DecodeHintType, ?> paramMap)
   {
-    ArrayList localArrayList;
-    if (paramMap == null)
-    {
+    if (paramMap == null) {
       paramMap = null;
-      localArrayList = new ArrayList();
-      if (paramMap != null)
-      {
-        if (!paramMap.contains(BarcodeFormat.EAN_13)) {
-          break label184;
-        }
-        localArrayList.add(new EAN13Reader());
-      }
+    } else {
+      paramMap = (Collection)paramMap.get(DecodeHintType.POSSIBLE_FORMATS);
     }
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    if (paramMap != null)
     {
+      if (paramMap.contains(BarcodeFormat.EAN_13)) {
+        localArrayList.add(new EAN13Reader());
+      } else if (paramMap.contains(BarcodeFormat.UPC_A)) {
+        localArrayList.add(new UPCAReader());
+      }
       if (paramMap.contains(BarcodeFormat.EAN_8)) {
         localArrayList.add(new EAN8Reader());
       }
       if (paramMap.contains(BarcodeFormat.UPC_E)) {
         localArrayList.add(new UPCEReader());
       }
-      if (localArrayList.isEmpty())
-      {
-        localArrayList.add(new EAN13Reader());
-        localArrayList.add(new EAN8Reader());
-        localArrayList.add(new UPCEReader());
-      }
-      this.readers = ((UPCEANReader[])localArrayList.toArray(EMPTY_READER_ARRAY));
-      return;
-      paramMap = (Collection)paramMap.get(DecodeHintType.POSSIBLE_FORMATS);
-      break;
-      label184:
-      if (paramMap.contains(BarcodeFormat.UPC_A)) {
-        localArrayList.add(new UPCAReader());
-      }
     }
+    if (localArrayList.isEmpty())
+    {
+      localArrayList.add(new EAN13Reader());
+      localArrayList.add(new EAN8Reader());
+      localArrayList.add(new UPCEReader());
+    }
+    this.readers = ((UPCEANReader[])localArrayList.toArray(EMPTY_READER_ARRAY));
   }
   
   public Result decodeRow(int paramInt, BitArray paramBitArray, Map<DecodeHintType, ?> paramMap)
@@ -63,65 +54,56 @@ public final class MultiFormatUPCEANReader
     UPCEANReader[] arrayOfUPCEANReader = this.readers;
     int m = arrayOfUPCEANReader.length;
     int i = 0;
-    Object localObject1;
-    int j;
-    label77:
-    label98:
-    int k;
-    if (i < m)
+    while (i < m)
     {
-      localObject1 = arrayOfUPCEANReader[i];
+      Object localObject1 = arrayOfUPCEANReader[i];
       try
       {
         localResult = ((UPCEANReader)localObject1).decodeRow(paramInt, paramBitArray, arrayOfInt, paramMap);
         if ((localResult.getBarcodeFormat() != BarcodeFormat.EAN_13) || (localResult.getText().charAt(0) != '0')) {
-          break label209;
+          break label195;
         }
         j = 1;
       }
       catch (ReaderException localReaderException)
       {
-        Result localResult;
-        i += 1;
-      }
-      if (localObject1 == null) {
-        break label203;
-      }
-      if (((Collection)localObject1).contains(BarcodeFormat.UPC_A))
-      {
-        break label203;
-        if ((j == 0) || (k == 0)) {
-          break label175;
+        for (;;)
+        {
+          Result localResult;
+          int k;
+          continue;
+          int j = 0;
+          if (paramMap == null)
+          {
+            Object localObject2 = null;
+            continue;
+            k = 0;
+            continue;
+            k = 1;
+          }
         }
+      }
+      localObject1 = (Collection)paramMap.get(DecodeHintType.POSSIBLE_FORMATS);
+      if (localObject1 == null) {
+        break label214;
+      }
+      if (!((Collection)localObject1).contains(BarcodeFormat.UPC_A)) {
+        break label208;
+      }
+      break label214;
+      if ((j != 0) && (k != 0))
+      {
         localObject1 = new Result(localResult.getText().substring(1), localResult.getRawBytes(), localResult.getResultPoints(), BarcodeFormat.UPC_A);
         ((Result)localObject1).putAllMetadata(localResult.getResultMetadata());
         return localObject1;
       }
+      return localResult;
+      i += 1;
     }
-    label175:
-    label203:
-    label209:
-    label213:
+    paramBitArray = NotFoundException.getNotFoundInstance();
     for (;;)
     {
-      localObject1 = (Collection)paramMap.get(DecodeHintType.POSSIBLE_FORMATS);
-      break label77;
-      k = 0;
-      break label98;
-      return localResult;
-      break;
-      throw NotFoundException.getNotFoundInstance();
-      for (;;)
-      {
-        if (paramMap != null) {
-          break label213;
-        }
-        Object localObject2 = null;
-        break;
-        k = 1;
-        break label98;
-        j = 0;
-      }
+      throw paramBitArray;
     }
   }
   
@@ -139,7 +121,7 @@ public final class MultiFormatUPCEANReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.MultiFormatUPCEANReader
  * JD-Core Version:    0.7.0.1
  */

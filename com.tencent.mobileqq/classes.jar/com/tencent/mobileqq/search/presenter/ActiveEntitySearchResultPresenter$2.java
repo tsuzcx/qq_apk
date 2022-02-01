@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.presenter;
 
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyHelper.OnTroopSafeDialogClickConfirm;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
+import com.tencent.mobileqq.troop.utils.TroopNotifyHelper.OnTroopSafeDialogClickConfirm;
 
 class ActiveEntitySearchResultPresenter$2
   implements TroopNotifyHelper.OnTroopSafeDialogClickConfirm
@@ -22,7 +22,7 @@ class ActiveEntitySearchResultPresenter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter.2
  * JD-Core Version:    0.7.0.1
  */

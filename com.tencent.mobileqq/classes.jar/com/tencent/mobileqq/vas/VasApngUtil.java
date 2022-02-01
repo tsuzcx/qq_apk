@@ -10,7 +10,7 @@ import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory;
+import com.tencent.mobileqq.vas.apng.api.ApngOptions;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -43,6 +43,7 @@ public class VasApngUtil
   public static final int CAN_PLAY_TAG_PENDANT = 10;
   public static final int CAN_PLAY_TAG_QCIRCLE = 33;
   public static final int CAN_PLAY_TAG_QCIRCLE_PERSONAL_TIP = 34;
+  public static final int CAN_PLAY_TAG_QQ_SHOP = 40;
   public static final int CAN_PLAY_TAG_QR = 35;
   public static final int CAN_PLAY_TAG_QZONE_BIRTH_GIFT = 20000;
   public static final int CAN_PLAY_TAG_QZONE_MOOD_SHORTCUT_LIST = 24;
@@ -57,6 +58,7 @@ public class VasApngUtil
   public static final int CAN_PLAY_TAG_SEARCH_FRIEND_LIST = 36;
   public static final int CAN_PLAY_TAG_SEARCH_FRIEND_MIXT = 37;
   public static final int CAN_PLAY_TAG_SEARCH_NET = 38;
+  public static final int CAN_PLAY_TAG_SEARCH_RESULT = 41;
   public static final int CAN_PLAY_TAG_SEE = 8;
   public static final int CAN_PLAY_TAG_SETTING = 1;
   public static final int CAN_PLAY_TAG_SHORTVIDEO_TRANSITION = 16;
@@ -70,11 +72,6 @@ public class VasApngUtil
   private static final String TAG = "VasApngUtil";
   public static final int[] VIP_APNG_TAGS = { 1, 0, 2, 3, 9, 27 };
   public static int[] converstionTag = { 2, 3, 4, 5, 6, 8 };
-  
-  public static VasApngFactory factory()
-  {
-    return VasApngFactory.jdField_a_of_type_ComTencentMobileqqVasApngApiVasApngFactory;
-  }
   
   @Deprecated
   public static URLDrawable getApngDrawable(String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
@@ -99,7 +96,11 @@ public class VasApngUtil
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mUseApngImage = bool;
       localURLDrawableOptions.mUseMemoryCache = paramAppRuntime.getBoolean("key_use_cache", true);
-      localURLDrawableOptions.mMemoryCacheKeySuffix = (bool + "," + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(bool);
+      localStringBuilder.append(",");
+      localStringBuilder.append(i);
+      localURLDrawableOptions.mMemoryCacheKeySuffix = localStringBuilder.toString();
       i = paramAppRuntime.getInt("key_width", 0);
       int j = paramAppRuntime.getInt("key_height", 0);
       if ((i > 0) && (j > 0))
@@ -120,14 +121,27 @@ public class VasApngUtil
         localURLDrawableOptions.mUseAutoScaleParams = false;
       }
       paramAppRuntime = URLDrawable.getDrawable(paramBundle, localURLDrawableOptions);
-      if (QLog.isColorLevel()) {
-        QLog.d("VasApngUtil", 2, "getApngDrawable ApngImage ok path:" + paramString1 + ", name=" + paramString3);
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("getApngDrawable ApngImage ok path:");
+        paramString2.append(paramString1);
+        paramString2.append(", name=");
+        paramString2.append(paramString3);
+        QLog.d("VasApngUtil", 2, paramString2.toString());
       }
       return paramAppRuntime;
     }
     catch (Exception paramAppRuntime)
     {
-      QLog.e("VasApngUtil", 1, "getApngDrawable ApngImage err:" + paramAppRuntime.toString() + ", path:" + paramString1 + ", name=" + paramString3);
+      paramString2 = new StringBuilder();
+      paramString2.append("getApngDrawable ApngImage err:");
+      paramString2.append(paramAppRuntime.toString());
+      paramString2.append(", path:");
+      paramString2.append(paramString1);
+      paramString2.append(", name=");
+      paramString2.append(paramString3);
+      QLog.e("VasApngUtil", 1, paramString2.toString());
     }
     return null;
   }
@@ -153,7 +167,11 @@ public class VasApngUtil
       paramBundle = URLDrawable.URLDrawableOptions.obtain();
       paramBundle.mUseApngImage = bool;
       paramBundle.mUseMemoryCache = localBundle.getBoolean("key_use_cache", true);
-      paramBundle.mMemoryCacheKeySuffix = (bool + "," + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(bool);
+      localStringBuilder.append(",");
+      localStringBuilder.append(i);
+      paramBundle.mMemoryCacheKeySuffix = localStringBuilder.toString();
       paramBundle.mUseUnFinishCache = paramBoolean;
       i = localBundle.getInt("key_width", 0);
       int j = localBundle.getInt("key_height", 0);
@@ -170,14 +188,27 @@ public class VasApngUtil
       paramBundle.mExtraInfo = localBundle;
       paramBundle.mUseAutoScaleParams = false;
       paramString2 = URLDrawable.getDrawable(paramString2, paramBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("VasApngUtil", 2, "getApngDrawable ApngImage ok path:" + paramString1 + ", name=" + paramString3);
+      if (QLog.isColorLevel())
+      {
+        paramDrawable = new StringBuilder();
+        paramDrawable.append("getApngDrawable ApngImage ok path:");
+        paramDrawable.append(paramString1);
+        paramDrawable.append(", name=");
+        paramDrawable.append(paramString3);
+        QLog.d("VasApngUtil", 2, paramDrawable.toString());
       }
       return paramString2;
     }
     catch (Exception paramString2)
     {
-      QLog.e("VasApngUtil", 1, "getApngDrawable ApngImage err:" + paramString2.toString() + ", path:" + paramString1 + ", name=" + paramString3);
+      paramDrawable = new StringBuilder();
+      paramDrawable.append("getApngDrawable ApngImage err:");
+      paramDrawable.append(paramString2.toString());
+      paramDrawable.append(", path:");
+      paramDrawable.append(paramString1);
+      paramDrawable.append(", name=");
+      paramDrawable.append(paramString3);
+      QLog.e("VasApngUtil", 1, paramDrawable.toString());
     }
     return null;
   }
@@ -197,8 +228,12 @@ public class VasApngUtil
       int i = paramString.getStatus();
       if (i != 1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("ddddd", 2, "urlDrawable is not  SUCCESSED :" + i);
+        if (QLog.isColorLevel())
+        {
+          paramArrayOfInt = new StringBuilder();
+          paramArrayOfInt.append("urlDrawable is not  SUCCESSED :");
+          paramArrayOfInt.append(i);
+          QLog.e("ddddd", 2, paramArrayOfInt.toString());
         }
         paramString.setURLDrawableListener(paramURLDrawableListener);
         if (i == 2)
@@ -217,7 +252,14 @@ public class VasApngUtil
   
   public static String getCacheFilePath(String paramString)
   {
-    return VFSAssistantUtils.getSDKPrivatePath(new StringBuilder().append(AppConstants.SDCARD_PATH).append(".vipicon/").toString()) + paramString.hashCode() + ".png";
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(AppConstants.SDCARD_PATH);
+    localStringBuilder2.append(".vipicon/");
+    localStringBuilder1.append(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder2.toString()));
+    localStringBuilder1.append(paramString.hashCode());
+    localStringBuilder1.append(".png");
+    return localStringBuilder1.toString();
   }
   
   @Deprecated
@@ -234,8 +276,8 @@ public class VasApngUtil
   public static URLDrawable getRegionUrlDrawable(String paramString, int paramInt)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = VasApngFactory.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-    localURLDrawableOptions.mFailedDrawable = VasApngFactory.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+    localURLDrawableOptions.mLoadingDrawable = ApngOptions.a;
+    localURLDrawableOptions.mFailedDrawable = ApngOptions.a;
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
     paramString.setURLDrawableListener(new VasApngUtil.1(paramInt));
     return paramString;
@@ -251,7 +293,7 @@ public class VasApngUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasApngUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/dyr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/dyr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
     <View android:background="@color/bx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <LinearLayout android:orientation="horizontal" android:id="@id/cq5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="11.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
         <ImageView android:layout_gravity="center_vertical" android:id="@id/cq2" android:background="@drawable/dry" android:layout_width="wrap_content" android:layout_height="wrap_content" />

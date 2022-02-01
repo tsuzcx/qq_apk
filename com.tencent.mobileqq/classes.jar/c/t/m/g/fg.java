@@ -47,7 +47,8 @@ final class fg
   {
     try
     {
-      if (paramJSONObject.has("admin_level_1"))
+      boolean bool = paramJSONObject.has("admin_level_1");
+      if (bool)
       {
         str1 = paramJSONObject.getString("nation");
         String str2 = paramJSONObject.getString("admin_level_1");
@@ -80,11 +81,10 @@ final class fg
       if (!TextUtils.isEmpty(str1)) {
         this.c = str1;
       }
-      if (!TextUtils.isEmpty(paramJSONObject))
-      {
+      if (!TextUtils.isEmpty(paramJSONObject)) {
         this.l = paramJSONObject;
-        return;
       }
+      return;
     }
     catch (JSONException paramJSONObject)
     {
@@ -103,25 +103,49 @@ final class fg
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("SubnationData{");
-    localStringBuilder.append("name=").append(this.c).append(",");
-    localStringBuilder.append("address=").append(this.l).append(",");
-    localStringBuilder.append("code=").append(this.d).append(",");
-    localStringBuilder.append("nation=").append(this.b).append(",");
-    localStringBuilder.append("province=").append(this.e).append(",");
-    localStringBuilder.append("city=").append(this.f).append(",");
-    localStringBuilder.append("district=").append(this.g).append(",");
-    localStringBuilder.append("town=").append(this.h).append(",");
-    localStringBuilder.append("village=").append(this.i).append(",");
-    localStringBuilder.append("street=").append(this.j).append(",");
-    localStringBuilder.append("street_no=").append(this.k).append(",");
-    localStringBuilder.append("bundle").append(this.m).append(",");
+    localStringBuilder.append("name=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append("address=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(",");
+    localStringBuilder.append("code=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",");
+    localStringBuilder.append("nation=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append("province=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",");
+    localStringBuilder.append("city=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",");
+    localStringBuilder.append("district=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(",");
+    localStringBuilder.append("town=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(",");
+    localStringBuilder.append("village=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(",");
+    localStringBuilder.append("street=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(",");
+    localStringBuilder.append("street_no=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bundle");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(",");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.fg
  * JD-Core Version:    0.7.0.1
  */

@@ -76,9 +76,10 @@ public class VideoBaseItem
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null)
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
+      localTVK_IMediaPlayer.stop();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = null;
@@ -94,15 +95,17 @@ public class VideoBaseItem
   
   public long a()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.getCurrentPostion();
     }
     return -1L;
   }
   
   public VideoBaseItem.VideoStatusRecord a()
   {
-    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if ((localTVK_IMediaPlayer != null) && (localTVK_IMediaPlayer.isPlaying()))
     {
       this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
       this.jdField_c_of_type_Int = 3;
@@ -121,8 +124,10 @@ public class VideoBaseItem
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_Int == 4) {
-      a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0L, paramLong, paramBoolean);
+    if (this.jdField_c_of_type_Int == 4)
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      a(str, str, 0L, paramLong, paramBoolean);
     }
   }
   
@@ -140,18 +145,21 @@ public class VideoBaseItem
   
   public void a(VideoBaseItem.VideoStatusRecord paramVideoStatusRecord)
   {
-    if (this.jdField_c_of_type_Int != 3) {
+    if (this.jdField_c_of_type_Int != 3)
+    {
       QLog.d("VideoBaseItem", 2, "you should check thi status.Have you stopped Mediaplayer");
-    }
-    while ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
       return;
     }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo((int)this.jdField_a_of_type_Long);
+    paramVideoStatusRecord = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if ((paramVideoStatusRecord != null) && (!paramVideoStatusRecord.isPlaying()))
+    {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo((int)this.jdField_a_of_type_Long);
+      }
+      this.jdField_c_of_type_Int = 2;
+      QLog.d("VideoBaseItem", 2, "you restart mediaplayer");
     }
-    this.jdField_c_of_type_Int = 2;
-    QLog.d("VideoBaseItem", 2, "you restart mediaplayer");
   }
   
   public void a(String paramString1, String paramString2, long paramLong1, long paramLong2, boolean paramBoolean)
@@ -210,43 +218,48 @@ public class VideoBaseItem
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(paramBoolean);
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.setOutputMute(paramBoolean);
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.getOutputMute();
     }
     return true;
   }
   
   public int b()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer == null) {
       return -1;
     }
-    return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getBufferPercent();
+    return localTVK_IMediaPlayer.getBufferPercent();
   }
   
   public long b()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer == null) {
       return -1L;
     }
-    return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
+    return localTVK_IMediaPlayer.getDuration();
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying());
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    return (localTVK_IMediaPlayer != null) && (localTVK_IMediaPlayer.isPlaying());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem
  * JD-Core Version:    0.7.0.1
  */

@@ -29,15 +29,11 @@ public class RecentItemFileAssistantData
     {
       bool3 = localDataLineHandler.a();
       bool4 = localDataLineHandler.b();
-      if ((bool3) || (bool4)) {
-        break label90;
+      if ((!bool3) && (!bool4))
+      {
+        super.a(paramQQAppInterface, paramContext);
+        return;
       }
-      super.a(paramQQAppInterface, paramContext);
-    }
-    label90:
-    do
-    {
-      return;
       if ((bool1) && (bool2))
       {
         this.mMsgExtroInfo = "";
@@ -52,15 +48,18 @@ public class RecentItemFileAssistantData
         this.mDisplayTime = a().lastmsgtime;
         return;
       }
-    } while (!bool2);
-    this.mMsgExtroInfo = "";
-    this.mLastMsg = "你已在PAD登录，大文件将局域网高速发送。";
-    this.mDisplayTime = a().lastmsgtime;
+      if (bool2)
+      {
+        this.mMsgExtroInfo = "";
+        this.mLastMsg = "你已在PAD登录，大文件将局域网高速发送。";
+        this.mDisplayTime = a().lastmsgtime;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemFileAssistantData
  * JD-Core Version:    0.7.0.1
  */

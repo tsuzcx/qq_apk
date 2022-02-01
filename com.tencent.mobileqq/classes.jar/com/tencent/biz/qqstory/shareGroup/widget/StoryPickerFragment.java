@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +24,7 @@ import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
 import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -73,67 +73,54 @@ public class StoryPickerFragment
   
   void a()
   {
-    int i = 0;
-    this.leftView.setText(getString(2131690778));
-    super.setTitle(HardCodeUtil.a(2131714414) + QQStoryConstant.jdField_a_of_type_JavaLangString);
-    super.a(String.format(HardCodeUtil.a(2131714416), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
-    if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 1) {}
-    for (;;)
-    {
-      super.setRightViewTextDisable(i);
-      this.jdField_a_of_type_AndroidViewView = super.a(2131366350);
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter = new StoryPickerListAdapter(getActivity());
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(new StoryPickerFragment.1(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(this);
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(this);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)super.a(2131370493));
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new StoryPickerFragment.2(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(new StoryPickerFragment.3(this));
-      return;
-      i = 1;
+    this.leftView.setText(getString(2131690706));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131714335));
+    ((StringBuilder)localObject).append(QQStoryConstant.jdField_a_of_type_JavaLangString);
+    super.setTitle(((StringBuilder)localObject).toString());
+    localObject = HardCodeUtil.a(2131714337);
+    int i = 1;
+    super.a(String.format((String)localObject, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
+    if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 1) {
+      i = 0;
     }
+    super.setRightViewTextDisable(i);
+    this.jdField_a_of_type_AndroidViewView = super.a(2131366238);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter = new StoryPickerListAdapter(getBaseActivity());
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(new StoryPickerFragment.1(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)super.a(2131370153));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new StoryPickerFragment.2(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(new StoryPickerFragment.3(this));
   }
   
   public void a(View paramView, VideoCollectionItem.FakeVideoUIItem paramFakeVideoUIItem)
   {
-    boolean bool = true;
     if ((this.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) && (!paramFakeVideoUIItem.b))
     {
-      paramView = DialogUtil.a(getActivity(), 230);
-      paramView.setMessage(String.format(HardCodeUtil.a(2131714418), new Object[] { Integer.valueOf(20), QQStoryConstant.jdField_a_of_type_JavaLangString }));
-      paramView.setPositiveButton(HardCodeUtil.a(2131714417), new StoryPickerFragment.4(this));
+      paramView = DialogUtil.a(getBaseActivity(), 230);
+      paramView.setMessage(String.format(HardCodeUtil.a(2131714339), new Object[] { Integer.valueOf(20), QQStoryConstant.jdField_a_of_type_JavaLangString }));
+      paramView.setPositiveButton(HardCodeUtil.a(2131714338), new StoryPickerFragment.4(this));
       paramView.show();
       return;
     }
+    paramFakeVideoUIItem.jdField_a_of_type_Boolean ^= true;
+    paramView = (ImageView)paramView;
     int i;
-    if (!paramFakeVideoUIItem.jdField_a_of_type_Boolean)
-    {
-      paramFakeVideoUIItem.jdField_a_of_type_Boolean = bool;
-      paramView = (ImageView)paramView;
-      if (!paramFakeVideoUIItem.jdField_a_of_type_Boolean) {
-        break label150;
-      }
-      i = 2130840700;
-      label115:
-      paramView.setImageResource(i);
-      if (!paramFakeVideoUIItem.jdField_a_of_type_Boolean) {
-        break label156;
-      }
-      this.jdField_a_of_type_JavaUtilLinkedHashSet.add(paramFakeVideoUIItem.jdField_a_of_type_JavaLangString);
+    if (paramFakeVideoUIItem.jdField_a_of_type_Boolean) {
+      i = 2130840575;
+    } else {
+      i = 2130840571;
     }
-    for (;;)
-    {
-      c();
-      return;
-      bool = false;
-      break;
-      label150:
-      i = 2130840696;
-      break label115;
-      label156:
+    paramView.setImageResource(i);
+    if (paramFakeVideoUIItem.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_JavaUtilLinkedHashSet.add(paramFakeVideoUIItem.jdField_a_of_type_JavaLangString);
+    } else {
       this.jdField_a_of_type_JavaUtilLinkedHashSet.remove(paramFakeVideoUIItem.jdField_a_of_type_JavaLangString);
     }
+    c();
   }
   
   public void a(String paramString, int paramInt, View paramView, VideoCollectionItem.FakeVideoUIItem paramFakeVideoUIItem)
@@ -143,7 +130,7 @@ public class StoryPickerFragment
     }
   }
   
-  public void a(@NonNull Map<Subscriber, String> paramMap)
+  protected void a(@NonNull Map<Subscriber, String> paramMap)
   {
     super.a(paramMap);
     paramMap.put(new StoryPickerFragment.GetCollectListEventReceiver(this), "");
@@ -162,50 +149,36 @@ public class StoryPickerFragment
   
   void c()
   {
-    super.a(String.format(HardCodeUtil.a(2131714415), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
+    super.a(String.format(HardCodeUtil.a(2131714336), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
     int i;
-    List localList;
-    if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 1)
-    {
+    if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 1) {
       i = 0;
-      setRightViewTextDisable(i);
-      if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20)
-      {
-        localList = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a();
-        i = 0;
-      }
+    } else {
+      i = 1;
     }
-    else
+    setRightViewTextDisable(i);
+    if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20)
     {
-      for (;;)
+      List localList = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a();
+      i = 0;
+      while (i < localList.size())
       {
-        if (i >= localList.size()) {
-          break label174;
-        }
         Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
-        for (;;)
+        while (localIterator.hasNext())
         {
-          if (!localIterator.hasNext()) {
-            break label151;
-          }
           VideoCollectionItem.FakeVideoUIItem localFakeVideoUIItem = (VideoCollectionItem.FakeVideoUIItem)localIterator.next();
-          if (localFakeVideoUIItem.jdField_a_of_type_Boolean)
-          {
+          if (localFakeVideoUIItem.jdField_a_of_type_Boolean) {
             localFakeVideoUIItem.b = true;
-            continue;
-            i = 1;
-            break;
+          } else {
+            localFakeVideoUIItem.b = false;
           }
-          localFakeVideoUIItem.b = false;
         }
-        label151:
         i += 1;
       }
     }
     if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 20) {
       d();
     }
-    label174:
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.notifyDataSetChanged();
   }
   
@@ -227,19 +200,19 @@ public class StoryPickerFragment
     }
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     a();
     b();
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131561929;
+    return 2131561776;
   }
   
-  public void init(Bundle paramBundle)
+  protected void init(Bundle paramBundle)
   {
     super.init(paramBundle);
     this.jdField_a_of_type_Boolean = paramBundle.getBoolean("extra_alert_for_result", false);
@@ -258,36 +231,35 @@ public class StoryPickerFragment
   
   public void onClick(View paramView)
   {
-    Object localObject;
     if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() > 0)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label106;
+      Object localObject;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localObject = new StoryPickerFragment.5(this);
+        QQCustomDialog localQQCustomDialog = DialogUtil.a(getBaseActivity(), 230);
+        localQQCustomDialog.setMessage(getString(2131699925, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()), this.b }));
+        localQQCustomDialog.setNegativeButton(2131690728, (DialogInterface.OnClickListener)localObject);
+        localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131689589), (DialogInterface.OnClickListener)localObject);
+        localQQCustomDialog.show();
       }
-      localObject = new StoryPickerFragment.5(this);
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(getActivity(), 230);
-      localQQCustomDialog.setMessage(getString(2131699784, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()), this.b }));
-      localQQCustomDialog.setNegativeButton(2131690800, (DialogInterface.OnClickListener)localObject);
-      localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131689557), (DialogInterface.OnClickListener)localObject);
-      localQQCustomDialog.show();
+      else
+      {
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("extra_checked_vidset", this.jdField_a_of_type_JavaUtilLinkedHashSet);
+        getBaseActivity().setResult(-1, (Intent)localObject);
+        getBaseActivity().finish();
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label106:
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("extra_checked_vidset", this.jdField_a_of_type_JavaUtilLinkedHashSet);
-      getActivity().setResult(-1, (Intent)localObject);
-      getActivity().finish();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.b();
+    MemoryDataPuller localMemoryDataPuller = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller;
+    if (localMemoryDataPuller != null) {
+      localMemoryDataPuller.b();
     }
   }
   
@@ -306,7 +278,7 @@ public class StoryPickerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment
  * JD-Core Version:    0.7.0.1
  */

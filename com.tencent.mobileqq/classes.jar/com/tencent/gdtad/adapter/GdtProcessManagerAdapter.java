@@ -26,8 +26,7 @@ public class GdtProcessManagerAdapter
   
   public Boolean isOnMainProcess()
   {
-    if (BaseApplicationImpl.getApplication() == null) {}
-    while (BaseApplicationImpl.getApplication().getRuntime() == null) {
+    if ((BaseApplicationImpl.getApplication() == null) || (BaseApplicationImpl.getApplication().getRuntime() == null)) {
       return null;
     }
     return Boolean.valueOf(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface);
@@ -36,12 +35,15 @@ public class GdtProcessManagerAdapter
   public Boolean isOnWebProcess()
   {
     Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
-    do
+    if (localObject != null)
+    {
+      localObject = AdProcessManager.INSTANCE.getCurrentProcessName((Context)localObject);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
+    else
     {
       return null;
-      localObject = AdProcessManager.INSTANCE.getCurrentProcessName((Context)localObject);
-    } while (TextUtils.isEmpty((CharSequence)localObject));
+    }
     return Boolean.valueOf(TextUtils.equals((CharSequence)localObject, AdProcessManager.INSTANCE.getWebProcessName()));
   }
   
@@ -52,10 +54,8 @@ public class GdtProcessManagerAdapter
       return Boolean.valueOf(true);
     }
     localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
-    for (;;)
+    if (localObject != null)
     {
-      return null;
       localObject = ((BaseApplicationImpl)localObject).getRuntime();
       if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
         try
@@ -69,23 +69,27 @@ public class GdtProcessManagerAdapter
         }
       }
     }
+    return null;
   }
   
   public Boolean isWebProcessRunningForPreloading()
   {
     Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
-    do
+    if (localObject != null)
+    {
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if ((localObject != null) && ((localObject instanceof ToolAppRuntime))) {}
+    }
+    else
     {
       return null;
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    } while ((localObject == null) || (!(localObject instanceof ToolAppRuntime)));
-    return Boolean.valueOf(SwiftBrowserStatistics.s);
+    }
+    return Boolean.valueOf(SwiftBrowserStatistics.p);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtProcessManagerAdapter
  * JD-Core Version:    0.7.0.1
  */

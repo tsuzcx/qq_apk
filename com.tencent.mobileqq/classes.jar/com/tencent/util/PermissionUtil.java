@@ -49,14 +49,14 @@ public class PermissionUtil
   {
     try
     {
-      String str1 = HardCodeUtil.a(2131716870);
-      String str2 = HardCodeUtil.a(2131716867);
+      String str1 = HardCodeUtil.a(2131716523);
+      String str2 = HardCodeUtil.a(2131716520);
       QQCustomDialog localQQCustomDialog = DialogUtil.a(paramAppActivity, 230);
       localQQCustomDialog.setTitle(str2);
       localQQCustomDialog.setMessage(str1);
       paramAppActivity = new PermissionUtil.1(paramAppActivity, paramSDCardPermissionCallback);
-      localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131716869), paramAppActivity);
-      localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131716868), paramAppActivity);
+      localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131716522), paramAppActivity);
+      localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131716521), paramAppActivity);
       localQQCustomDialog.setOnDismissListener(null);
       localQQCustomDialog.show();
       return;
@@ -68,26 +68,27 @@ public class PermissionUtil
   {
     boolean bool2 = jdField_a_of_type_Boolean;
     boolean bool1 = bool2;
-    if (!bool2)
-    {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label48;
-      }
-      bool1 = bool2;
-      if (paramContext != null)
+    if (!bool2) {
+      if (Build.VERSION.SDK_INT >= 23)
       {
         bool1 = bool2;
-        if (paramContext.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[0]) == 0)
+        if (paramContext != null)
         {
-          jdField_a_of_type_Boolean = true;
-          bool1 = jdField_a_of_type_Boolean;
+          bool1 = bool2;
+          if (paramContext.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[0]) == 0)
+          {
+            jdField_a_of_type_Boolean = true;
+            return jdField_a_of_type_Boolean;
+          }
         }
+      }
+      else
+      {
+        jdField_a_of_type_Boolean = true;
+        bool1 = jdField_a_of_type_Boolean;
       }
     }
     return bool1;
-    label48:
-    jdField_a_of_type_Boolean = true;
-    return jdField_a_of_type_Boolean;
   }
   
   public static void b(Activity paramActivity, PermissionUtil.SDCardPermissionCallback paramSDCardPermissionCallback)
@@ -106,30 +107,31 @@ public class PermissionUtil
   {
     boolean bool2 = jdField_b_of_type_Boolean;
     boolean bool1 = bool2;
-    if (!bool2)
-    {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label62;
-      }
-      bool1 = bool2;
-      if (paramContext != null)
+    if (!bool2) {
+      if (Build.VERSION.SDK_INT >= 23)
       {
         bool1 = bool2;
-        if (paramContext.checkSelfPermission(jdField_b_of_type_ArrayOfJavaLangString[0]) == 0)
+        if (paramContext != null)
         {
           bool1 = bool2;
-          if (paramContext.checkSelfPermission(jdField_b_of_type_ArrayOfJavaLangString[1]) == 0)
+          if (paramContext.checkSelfPermission(jdField_b_of_type_ArrayOfJavaLangString[0]) == 0)
           {
-            jdField_b_of_type_Boolean = true;
-            bool1 = jdField_b_of_type_Boolean;
+            bool1 = bool2;
+            if (paramContext.checkSelfPermission(jdField_b_of_type_ArrayOfJavaLangString[1]) == 0)
+            {
+              jdField_b_of_type_Boolean = true;
+              return jdField_b_of_type_Boolean;
+            }
           }
         }
       }
+      else
+      {
+        jdField_b_of_type_Boolean = true;
+        bool1 = jdField_b_of_type_Boolean;
+      }
     }
     return bool1;
-    label62:
-    jdField_b_of_type_Boolean = true;
-    return jdField_b_of_type_Boolean;
   }
   
   @TargetApi(23)
@@ -137,8 +139,8 @@ public class PermissionUtil
   {
     if ((paramActivity instanceof AppActivity))
     {
-      AppActivity localAppActivity = (AppActivity)paramActivity;
-      ((AppActivity)paramActivity).requestPermissions(new PermissionUtil.5(paramSDCardPermissionCallback, localAppActivity), 1, jdField_b_of_type_ArrayOfJavaLangString);
+      paramActivity = (AppActivity)paramActivity;
+      paramActivity.requestPermissions(new PermissionUtil.5(paramSDCardPermissionCallback, paramActivity), 1, jdField_b_of_type_ArrayOfJavaLangString);
       return;
     }
     if ((paramActivity instanceof BaseActivity))
@@ -151,7 +153,7 @@ public class PermissionUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.PermissionUtil
  * JD-Core Version:    0.7.0.1
  */

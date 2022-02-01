@@ -16,10 +16,12 @@ public class QQAVImageLowLightFilter
   
   public void onDestroy()
   {
-    if (this.mFrameBuffers != null)
+    int[] arrayOfInt = this.mFrameBuffers;
+    if (arrayOfInt != null)
     {
-      GLES20.glDeleteFramebuffers(this.mFrameBuffers.length, this.mFrameBuffers, 0);
-      GLES20.glDeleteTextures(this.mFrameBufferTextures.length, this.mFrameBufferTextures, 0);
+      GLES20.glDeleteFramebuffers(arrayOfInt.length, arrayOfInt, 0);
+      arrayOfInt = this.mFrameBufferTextures;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     }
     this.mLowLightCoreFilter.destroy();
     this.mSaturationFilter.destroy();
@@ -29,11 +31,18 @@ public class QQAVImageLowLightFilter
   public void onDraw2(int paramInt1, int paramInt2)
   {
     runPendingOnDrawTasks();
-    if ((!isInitialized()) || (this.mFrameBuffers == null) || (this.mFrameBufferTextures == null)) {
-      return;
+    if (isInitialized())
+    {
+      int[] arrayOfInt = this.mFrameBuffers;
+      if (arrayOfInt != null)
+      {
+        if (this.mFrameBufferTextures == null) {
+          return;
+        }
+        this.mLowLightCoreFilter.onDraw2(paramInt1, arrayOfInt[0]);
+        this.mSaturationFilter.onDraw2(this.mFrameBufferTextures[0], paramInt2);
+      }
     }
-    this.mLowLightCoreFilter.onDraw2(paramInt1, this.mFrameBuffers[0]);
-    this.mSaturationFilter.onDraw2(this.mFrameBufferTextures[0], paramInt2);
   }
   
   public void onInit()
@@ -53,17 +62,21 @@ public class QQAVImageLowLightFilter
   
   public void onOutputSizeChanged(int paramInt1, int paramInt2)
   {
-    if ((this.mOutputWidth != paramInt1) || (this.mOutputHeight != paramInt2)) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if ((this.mOutputWidth == paramInt1) && (this.mOutputHeight == paramInt2)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    super.onOutputSizeChanged(paramInt1, paramInt2);
+    if (i != 0)
     {
-      super.onOutputSizeChanged(paramInt1, paramInt2);
-      if (i == 0) {
-        break;
-      }
-      if (this.mFrameBuffers != null)
+      int[] arrayOfInt = this.mFrameBuffers;
+      if (arrayOfInt != null)
       {
-        GLES20.glDeleteFramebuffers(this.mFrameBuffers.length, this.mFrameBuffers, 0);
-        GLES20.glDeleteTextures(this.mFrameBufferTextures.length, this.mFrameBufferTextures, 0);
+        GLES20.glDeleteFramebuffers(arrayOfInt.length, arrayOfInt, 0);
+        arrayOfInt = this.mFrameBufferTextures;
+        GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
       }
       this.mLowLightCoreFilter.onOutputSizeChanged(paramInt1, paramInt2);
       this.mSaturationFilter.onOutputSizeChanged(paramInt1, paramInt2);
@@ -90,21 +103,23 @@ public class QQAVImageLowLightFilter
   
   public void setLowLightImage(Bitmap paramBitmap)
   {
-    if ((this.mLowLightCoreFilter != null) && (paramBitmap != null)) {
-      this.mLowLightCoreFilter.setLowLightImage(paramBitmap);
+    QQAVImageLowLightCoreFilter localQQAVImageLowLightCoreFilter = this.mLowLightCoreFilter;
+    if ((localQQAVImageLowLightCoreFilter != null) && (paramBitmap != null)) {
+      localQQAVImageLowLightCoreFilter.setLowLightImage(paramBitmap);
     }
   }
   
   public void setSaturation(float paramFloat)
   {
-    if (this.mSaturationFilter != null) {
-      this.mSaturationFilter.setSaturation(paramFloat);
+    QQAVImageSaturationFilter localQQAVImageSaturationFilter = this.mSaturationFilter;
+    if (localQQAVImageSaturationFilter != null) {
+      localQQAVImageSaturationFilter.setSaturation(paramFloat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.lowlight.QQAVImageLowLightFilter
  * JD-Core Version:    0.7.0.1
  */

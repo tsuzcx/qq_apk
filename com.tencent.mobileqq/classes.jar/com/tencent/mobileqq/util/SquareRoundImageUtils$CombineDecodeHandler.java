@@ -12,31 +12,34 @@ public class SquareRoundImageUtils$CombineDecodeHandler
   
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    Bitmap localBitmap = this.a.run(paramDownloadParams, paramBitmap);
-    DownloadParams localDownloadParams = null;
-    if (localBitmap != null)
+    Bitmap localBitmap2 = this.a.run(paramDownloadParams, paramBitmap);
+    if (localBitmap2 != null)
     {
-      paramDownloadParams = this.b.run(paramDownloadParams, localBitmap);
-      localDownloadParams = paramDownloadParams;
-      if (localBitmap != paramDownloadParams)
+      Bitmap localBitmap1 = this.b.run(paramDownloadParams, localBitmap2);
+      paramDownloadParams = localBitmap1;
+      if (localBitmap2 != localBitmap1)
       {
-        localDownloadParams = paramDownloadParams;
-        if (localBitmap != paramBitmap)
+        paramDownloadParams = localBitmap1;
+        if (localBitmap2 != paramBitmap)
         {
-          localBitmap.recycle();
-          localDownloadParams = paramDownloadParams;
+          localBitmap2.recycle();
+          paramDownloadParams = localBitmap1;
         }
       }
     }
-    if (localDownloadParams != null) {
-      paramBitmap = localDownloadParams;
+    else
+    {
+      paramDownloadParams = null;
+    }
+    if (paramDownloadParams != null) {
+      return paramDownloadParams;
     }
     return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.SquareRoundImageUtils.CombineDecodeHandler
  * JD-Core Version:    0.7.0.1
  */

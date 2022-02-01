@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.gesture;
 
-import android.support.v4.view.ViewPager;
 import android.view.MotionEvent;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.ttpic.openapi.filter.GLGestureListener;
 import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
@@ -29,39 +29,45 @@ public class CameraViewPagerGesture
   {
     int i = paramMotionEvent.getPointerCount();
     paramMotionEvent.getAction();
-    if ((i == 1) && (!paramBoolean) && (this.a != null) && (this.a.isShown())) {}
-    try
+    if ((i == 1) && (!paramBoolean))
     {
-      this.a.onTouchEvent(paramMotionEvent);
-      if ((i != 2) || (!paramBoolean) || (this.a == null) || (!this.a.isShown())) {}
-    }
-    catch (Exception localException)
-    {
-      try
-      {
-        if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
+      ViewPager localViewPager1 = this.a;
+      if ((localViewPager1 != null) && (localViewPager1.isShown())) {
+        try
         {
-          paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
           this.a.onTouchEvent(paramMotionEvent);
-          paramMotionEvent.recycle();
         }
-        return false;
-        localException = localException;
-        localException.printStackTrace();
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
       }
-      catch (Exception paramMotionEvent)
-      {
-        for (;;)
+    }
+    if ((i == 2) && (paramBoolean))
+    {
+      ViewPager localViewPager2 = this.a;
+      if ((localViewPager2 != null) && (localViewPager2.isShown())) {
+        try
+        {
+          if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
+          {
+            paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
+            this.a.onTouchEvent(paramMotionEvent);
+            paramMotionEvent.recycle();
+          }
+        }
+        catch (Exception paramMotionEvent)
         {
           paramMotionEvent.printStackTrace();
         }
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.gesture.CameraViewPagerGesture
  * JD-Core Version:    0.7.0.1
  */

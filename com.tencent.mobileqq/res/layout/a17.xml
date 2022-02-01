@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.aio.audiopanel.CommonListenPanel android:id="@id/ebv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mobileqq.activity.aio.audiopanel.view.CommonListenPanel android:id="@id/ebv" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:id="@id/djl" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_centerHorizontal="true">
         <com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateView android:id="@id/djn" android:background="@drawable/skin_aio_audio_panel_volume_bg_left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_aio_audio_panel_volume_mask_left" />
@@ -11,4 +11,4 @@
         <TextView android:textSize="17.0sp" android:textColor="#ff00a5e0" android:gravity="center" android:id="@id/ebw" android:background="@drawable/aa8" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/ps0" android:layout_weight="1.0" />
         <TextView android:textSize="17.0sp" android:textColor="#ff00a5e0" android:gravity="center" android:id="@id/listen_panel_send_tv" android:background="@drawable/aa8" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/prz" android:layout_weight="1.0" />
     </LinearLayout>
-</com.tencent.mobileqq.activity.aio.audiopanel.CommonListenPanel>
+</com.tencent.mobileqq.activity.aio.audiopanel.view.CommonListenPanel>

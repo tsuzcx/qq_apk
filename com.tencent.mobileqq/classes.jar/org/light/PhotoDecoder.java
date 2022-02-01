@@ -56,7 +56,10 @@ public class PhotoDecoder
   
   private static PhotoDecoder Create(String paramString)
   {
-    Log.d("PhotoDecoder", "Create:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Create:");
+    localStringBuilder.append(paramString);
+    Log.d("PhotoDecoder", localStringBuilder.toString());
     paramString = new PhotoDecoder(paramString);
     paramString.isNoConstrictFlag = false;
     return paramString;
@@ -74,80 +77,82 @@ public class PhotoDecoder
   
   private PhotoDecoder.OutputBitmap decode()
   {
-    Object localObject4 = null;
-    Log.d("PhotoDecoder", "decode :" + this.photoPath);
-    Object localObject3;
-    if (this.successBitmap != null) {
-      localObject3 = this.successBitmap;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("decode :");
+    ((StringBuilder)localObject1).append(this.photoPath);
+    Log.d("PhotoDecoder", ((StringBuilder)localObject1).toString());
+    localObject1 = this.successBitmap;
+    if (localObject1 != null) {
+      return localObject1;
     }
-    do
-    {
-      return localObject3;
-      localObject3 = localObject4;
-    } while (TextUtils.isEmpty(this.photoPath));
+    if (TextUtils.isEmpty(this.photoPath)) {
+      return null;
+    }
     if (this.photoPath.startsWith("asset://")) {}
-    for (;;)
+    try
     {
-      try
-      {
-        Object localObject1 = LibraryLoadUtils.getAppContext().getAssets().open(this.photoPath.substring("asset://".length()));
-        localObject1 = BitmapFactory.decodeStream((InputStream)localObject1);
-        localObject3 = localObject4;
-        if (localObject1 == null) {
-          break;
-        }
-        if ((!this.isNoConstrictFlag) && (Build.VERSION.SDK_INT >= 26))
-        {
-          localObject3 = localObject4;
-          if (((Bitmap)localObject1).getConfig() == Bitmap.Config.HARDWARE) {
-            break;
-          }
-        }
-        Log.d("PhotoDecoder", "decode done:" + this.photoPath);
-        if (!this.isNoConstrictFlag)
-        {
-          localObject2 = ByteBuffer.allocate(((Bitmap)localObject1).getHeight() * ((Bitmap)localObject1).getRowBytes());
-          ((Bitmap)localObject1).copyPixelsToBuffer((Buffer)localObject2);
-          Bitmap.Config localConfig = ((Bitmap)localObject1).getConfig();
-          localObject3 = localConfig;
-          if (localConfig == null) {
-            localObject3 = Bitmap.Config.ARGB_8888;
-          }
-          if (localObject3 != Bitmap.Config.ARGB_8888)
-          {
-            Log.d("PhotoDecoder", this.photoPath + " need to convert");
-            localObject1 = convert((Bitmap)localObject1);
-            localObject3 = localObject4;
-            if (localObject1 == null) {
-              break;
-            }
-            this.successBitmap = new PhotoDecoder.OutputBitmap(null);
-            if (!this.isNoConstrictFlag)
-            {
-              if (localObject2 != null) {
-                this.successBitmap.pixels = ((ByteBuffer)localObject2).array();
-              }
-              this.successBitmap.width = ((Bitmap)localObject1).getWidth();
-              this.successBitmap.height = ((Bitmap)localObject1).getHeight();
-              this.successBitmap.rowBytes = ((Bitmap)localObject1).getRowBytes();
-              return this.successBitmap;
-              localObject1 = BitmapFactory.decodeFile(this.photoPath);
-              continue;
-            }
-            localObject2 = new int[((Bitmap)localObject1).getWidth() * ((Bitmap)localObject1).getHeight()];
-            ((Bitmap)localObject1).getPixels((int[])localObject2, 0, ((Bitmap)localObject1).getWidth(), 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
-            this.successBitmap.colors = ((int[])localObject2);
-            continue;
-          }
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
+      localObject1 = LibraryLoadUtils.getAppContext().getAssets().open(this.photoPath.substring(8));
+      localObject1 = BitmapFactory.decodeStream((InputStream)localObject1);
+      break label104;
+      localObject1 = BitmapFactory.decodeFile(this.photoPath);
+      label104:
+      if (localObject1 == null) {
         return null;
       }
-      Object localObject2 = null;
+      if ((!this.isNoConstrictFlag) && (Build.VERSION.SDK_INT >= 26) && (((Bitmap)localObject1).getConfig() == Bitmap.Config.HARDWARE)) {
+        return null;
+      }
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("decode done:");
+      ((StringBuilder)localObject2).append(this.photoPath);
+      Log.d("PhotoDecoder", ((StringBuilder)localObject2).toString());
+      if (!this.isNoConstrictFlag)
+      {
+        localObject2 = ByteBuffer.allocate(((Bitmap)localObject1).getHeight() * ((Bitmap)localObject1).getRowBytes());
+        ((Bitmap)localObject1).copyPixelsToBuffer((Buffer)localObject2);
+      }
+      else
+      {
+        localObject2 = null;
+      }
+      Object localObject3 = ((Bitmap)localObject1).getConfig();
+      Object localObject4 = localObject3;
+      if (localObject3 == null) {
+        localObject4 = Bitmap.Config.ARGB_8888;
+      }
+      localObject3 = localObject1;
+      if (localObject4 != Bitmap.Config.ARGB_8888)
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(this.photoPath);
+        ((StringBuilder)localObject3).append(" need to convert");
+        Log.d("PhotoDecoder", ((StringBuilder)localObject3).toString());
+        localObject1 = convert((Bitmap)localObject1);
+        localObject3 = localObject1;
+        if (localObject1 == null) {
+          return null;
+        }
+      }
+      this.successBitmap = new PhotoDecoder.OutputBitmap(null);
+      if (!this.isNoConstrictFlag)
+      {
+        if (localObject2 != null) {
+          this.successBitmap.pixels = ((ByteBuffer)localObject2).array();
+        }
+      }
+      else
+      {
+        localObject1 = new int[((Bitmap)localObject3).getWidth() * ((Bitmap)localObject3).getHeight()];
+        ((Bitmap)localObject3).getPixels((int[])localObject1, 0, ((Bitmap)localObject3).getWidth(), 0, 0, ((Bitmap)localObject3).getWidth(), ((Bitmap)localObject3).getHeight());
+        this.successBitmap.colors = ((int[])localObject1);
+      }
+      this.successBitmap.width = ((Bitmap)localObject3).getWidth();
+      this.successBitmap.height = ((Bitmap)localObject3).getHeight();
+      this.successBitmap.rowBytes = ((Bitmap)localObject3).getRowBytes();
+      return this.successBitmap;
     }
+    catch (Exception localException) {}
+    return null;
   }
   
   private int height()
@@ -167,13 +172,16 @@ public class PhotoDecoder
   
   public void setNoConstrictFlag(boolean paramBoolean)
   {
-    Log.d("PhotoDecoder", "setNoConstrictFlag:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setNoConstrictFlag:");
+    localStringBuilder.append(paramBoolean);
+    Log.d("PhotoDecoder", localStringBuilder.toString());
     this.isNoConstrictFlag = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.PhotoDecoder
  * JD-Core Version:    0.7.0.1
  */

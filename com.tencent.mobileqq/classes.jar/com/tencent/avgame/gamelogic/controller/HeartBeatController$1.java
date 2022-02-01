@@ -10,21 +10,23 @@ class HeartBeatController$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      HeartBeatController.a(this.a, HeartBeatController.a(this.a), HeartBeatController.a(this.a));
-      HeartBeatController.a(this.a);
+      if (i != 2) {
+        return;
+      }
+      HeartBeatController.b(this.a);
       return;
     }
-    HeartBeatController.b(this.a);
+    paramMessage = this.a;
+    HeartBeatController.a(paramMessage, HeartBeatController.a(paramMessage), HeartBeatController.a(this.a));
+    HeartBeatController.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.controller.HeartBeatController.1
  * JD-Core Version:    0.7.0.1
  */

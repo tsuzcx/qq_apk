@@ -32,21 +32,24 @@ public final class RomInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sysId != null) {
-      paramJceOutputStream.write(this.sysId, 0);
+    String str = this.sysId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.sysVersionName != null) {
-      paramJceOutputStream.write(this.sysVersionName, 1);
+    str = this.sysVersionName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.sysVersionCode != null) {
-      paramJceOutputStream.write(this.sysVersionCode, 2);
+    str = this.sysVersionCode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.rootFlag, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.RomInfo
  * JD-Core Version:    0.7.0.1
  */

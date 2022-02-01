@@ -43,10 +43,14 @@ public final class CombinedContext
       }
       paramCombinedContext = (CombinedContext)paramCombinedContext;
     }
-    if (paramCombinedContext == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.coroutines.CoroutineContext.Element");
+    if (paramCombinedContext != null) {
+      return contains((CoroutineContext.Element)paramCombinedContext);
     }
-    return contains((CoroutineContext.Element)paramCombinedContext);
+    paramCombinedContext = new TypeCastException("null cannot be cast to non-null type kotlin.coroutines.CoroutineContext.Element");
+    for (;;)
+    {
+      throw paramCombinedContext;
+    }
   }
   
   private final int size()
@@ -71,21 +75,35 @@ public final class CombinedContext
   
   private final Object writeReplace()
   {
-    int i = size();
-    CoroutineContext[] arrayOfCoroutineContext = new CoroutineContext[i];
+    int j = size();
+    CoroutineContext[] arrayOfCoroutineContext = new CoroutineContext[j];
     Ref.IntRef localIntRef = new Ref.IntRef();
+    int i = 0;
     localIntRef.element = 0;
     fold(Unit.INSTANCE, (Function2)new CombinedContext.writeReplace.1(arrayOfCoroutineContext, localIntRef));
-    if (localIntRef.element == i) {}
-    for (i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalStateException("Check failed.".toString()));
+    if (localIntRef.element == j) {
+      i = 1;
     }
-    return new CombinedContext.Serialized(arrayOfCoroutineContext);
+    if (i != 0) {
+      return new CombinedContext.Serialized(arrayOfCoroutineContext);
+    }
+    throw ((Throwable)new IllegalStateException("Check failed.".toString()));
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((CombinedContext)this == paramObject) || (((paramObject instanceof CombinedContext)) && (((CombinedContext)paramObject).size() == size()) && (((CombinedContext)paramObject).containsAll(this)));
+    if ((CombinedContext)this != paramObject) {
+      if ((paramObject instanceof CombinedContext))
+      {
+        paramObject = (CombinedContext)paramObject;
+        if ((paramObject.size() == size()) && (paramObject.containsAll(this))) {}
+      }
+      else
+      {
+        return false;
+      }
+    }
+    return true;
   }
   
   public <R> R fold(R paramR, @NotNull Function2<? super R, ? super CoroutineContext.Element, ? extends R> paramFunction2)
@@ -144,12 +162,16 @@ public final class CombinedContext
   @NotNull
   public String toString()
   {
-    return "[" + (String)fold("", (Function2)CombinedContext.toString.1.INSTANCE) + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append((String)fold("", (Function2)CombinedContext.toString.1.INSTANCE));
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.CombinedContext
  * JD-Core Version:    0.7.0.1
  */

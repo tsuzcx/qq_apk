@@ -13,14 +13,15 @@ class UniformDownloadMgr$1
   {
     try
     {
-      if (UniformDownloadMgr.a(this.this$0) != null)
+      Object localObject = UniformDownloadMgr.a(this.this$0);
+      if (localObject != null)
       {
         QLog.w("UniformDownloadMgr_Impl", 1, "[UniformDL-onAppInit] mRecv is already setted");
         return;
       }
       UniformDownloadMgr.a(this.this$0, new UniformDownloadMgr.1.1(this));
-      IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.qfile_unifromdownload");
-      BaseApplication.getContext().registerReceiver(UniformDownloadMgr.a(this.this$0), localIntentFilter);
+      localObject = new IntentFilter("com.tencent.mobileqq.qfile_unifromdownload");
+      BaseApplication.getContext().registerReceiver(UniformDownloadMgr.a(this.this$0), (IntentFilter)localObject);
       QLog.i("UniformDownloadMgr_Impl", 1, "[UniformDL-onAppInit] UniformDownloadMgr Register UNIDOWNLOAD_BORDCAST");
       return;
     }
@@ -32,7 +33,7 @@ class UniformDownloadMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.core.UniformDownloadMgr.1
  * JD-Core Version:    0.7.0.1
  */

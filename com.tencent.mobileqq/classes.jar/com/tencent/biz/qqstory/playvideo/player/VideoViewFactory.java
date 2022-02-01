@@ -5,7 +5,7 @@ import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class VideoViewFactory
 {
-  static volatile VideoViewFactory jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewFactory = null;
+  static volatile VideoViewFactory jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewFactory;
   Context jdField_a_of_type_AndroidContentContext;
   VideoViewFactory.TVKSDKOnLogListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewFactory$TVKSDKOnLogListener;
   
@@ -16,15 +16,16 @@ public class VideoViewFactory
   
   public static VideoViewFactory a(Context paramContext)
   {
-    if (jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewFactory == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewFactory == null) {
-        jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewFactory = new VideoViewFactory(paramContext);
+    if (jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewFactory == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewFactory == null) {
+          jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewFactory = new VideoViewFactory(paramContext);
+        }
       }
-      return jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewFactory;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewFactory;
   }
   
   public VideoViewFactory.TVKSDKOnLogListener a()
@@ -52,7 +53,7 @@ public class VideoViewFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewFactory
  * JD-Core Version:    0.7.0.1
  */

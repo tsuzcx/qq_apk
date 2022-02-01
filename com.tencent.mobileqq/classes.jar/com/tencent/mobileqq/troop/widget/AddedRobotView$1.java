@@ -15,38 +15,39 @@ class AddedRobotView$1
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    QLog.i("AddedRobotView", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (AddedRobotView.a(this.a) == null) {}
-    for (;;)
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onDecodeTaskCompleted uin: ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("AddedRobotView", 1, ((StringBuilder)localObject).toString());
+    if (AddedRobotView.a(this.a) == null) {
       return;
-      if (!AddedRobotView.a(this.a).isPausing())
+    }
+    if (AddedRobotView.a(this.a).isPausing()) {
+      return;
+    }
+    paramInt1 = 0;
+    paramInt2 = AddedRobotView.a(this.a).getChildCount();
+    while (paramInt1 < paramInt2)
+    {
+      localObject = AddedRobotView.a(this.a).getChildViewHolder(AddedRobotView.a(this.a).getChildAt(paramInt1));
+      if ((localObject instanceof AddedRobotView.RobotListAdapter.RobotViewHolder))
       {
-        paramInt2 = AddedRobotView.a(this.a).getChildCount();
-        paramInt1 = 0;
-        while (paramInt1 < paramInt2)
-        {
-          Object localObject = AddedRobotView.a(this.a).getChildViewHolder(AddedRobotView.a(this.a).getChildAt(paramInt1));
-          if ((localObject instanceof AddedRobotView.RobotListAdapter.RobotViewHolder))
-          {
-            localObject = (AddedRobotView.RobotListAdapter.RobotViewHolder)localObject;
-            if ((!TextUtils.isEmpty(((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).jdField_a_of_type_JavaLangString)) && (((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).jdField_a_of_type_JavaLangString.equals(paramString))) {
-              ((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-            }
-          }
-          else
-          {
-            QLog.i("AddedRobotView", 2, "onDecodeTaskCompleted viewHolder correct uin not found ! ");
-          }
-          paramInt1 += 1;
+        localObject = (AddedRobotView.RobotListAdapter.RobotViewHolder)localObject;
+        if ((!TextUtils.isEmpty(((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).jdField_a_of_type_JavaLangString)) && (((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).jdField_a_of_type_JavaLangString.equals(paramString))) {
+          ((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
         }
       }
+      else
+      {
+        QLog.i("AddedRobotView", 2, "onDecodeTaskCompleted viewHolder correct uin not found ! ");
+      }
+      paramInt1 += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AddedRobotView.1
  * JD-Core Version:    0.7.0.1
  */

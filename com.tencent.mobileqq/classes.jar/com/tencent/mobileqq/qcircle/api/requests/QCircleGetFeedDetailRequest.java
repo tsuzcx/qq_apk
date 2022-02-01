@@ -62,14 +62,14 @@ public class QCircleGetFeedDetailRequest
     return "FeedCloudSvr.trpc.feedcloud.commreader.ComReader.GetFeedDetail";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mRequest.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.requests.QCircleGetFeedDetailRequest
  * JD-Core Version:    0.7.0.1
  */

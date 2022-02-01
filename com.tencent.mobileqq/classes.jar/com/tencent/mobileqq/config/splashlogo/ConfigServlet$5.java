@@ -11,1134 +11,936 @@ class ConfigServlet$5
   public void run()
   {
     // Byte code:
-    //   0: new 57	java/lang/StringBuilder
+    //   0: new 59	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 58	java/lang/StringBuilder:<init>	()V
-    //   7: aload_0
-    //   8: getfield 24	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   11: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14: ldc 64
-    //   16: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   22: astore 18
-    //   24: aload_0
-    //   25: getfield 26	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   28: aload_0
-    //   29: getfield 28	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   32: new 70	java/io/File
-    //   35: dup
-    //   36: aload 18
-    //   38: invokespecial 73	java/io/File:<init>	(Ljava/lang/String;)V
-    //   41: invokestatic 79	com/tencent/mobileqq/utils/HttpDownloadUtil:download	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/io/File;)Z
-    //   44: ifeq +978 -> 1022
-    //   47: invokestatic 85	com/tencent/mobileqq/utils/DeviceInfoUtil:g	()J
-    //   50: l2i
-    //   51: istore 7
-    //   53: invokestatic 88	com/tencent/mobileqq/utils/DeviceInfoUtil:h	()J
-    //   56: l2i
-    //   57: istore 8
-    //   59: aload_0
-    //   60: getfield 22	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Lcom/tencent/mobileqq/config/splashlogo/ConfigServlet;
-    //   63: aload_0
-    //   64: getfield 30	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Float	F
-    //   67: iload 7
-    //   69: i2f
-    //   70: invokestatic 93	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	(Lcom/tencent/mobileqq/config/splashlogo/ConfigServlet;FF)F
-    //   73: fstore_3
-    //   74: aload_0
-    //   75: getfield 22	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Lcom/tencent/mobileqq/config/splashlogo/ConfigServlet;
-    //   78: aload_0
-    //   79: getfield 32	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_b_of_type_Float	F
-    //   82: iload 8
-    //   84: i2f
-    //   85: iload 7
-    //   87: i2f
-    //   88: invokestatic 96	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	(Lcom/tencent/mobileqq/config/splashlogo/ConfigServlet;FFF)F
+    //   4: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   7: astore 12
+    //   9: aload 12
+    //   11: aload_0
+    //   12: getfield 24	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   15: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: pop
+    //   19: aload 12
+    //   21: ldc 66
+    //   23: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: pop
+    //   27: aload 12
+    //   29: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: astore 15
+    //   34: aload_0
+    //   35: getfield 26	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   38: aload_0
+    //   39: getfield 28	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   42: new 72	java/io/File
+    //   45: dup
+    //   46: aload 15
+    //   48: invokespecial 75	java/io/File:<init>	(Ljava/lang/String;)V
+    //   51: invokestatic 81	com/tencent/mobileqq/utils/HttpDownloadUtil:download	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/io/File;)Z
+    //   54: ifeq +1501 -> 1555
+    //   57: invokestatic 87	com/tencent/mobileqq/utils/DeviceInfoUtil:g	()J
+    //   60: l2i
+    //   61: istore 8
+    //   63: invokestatic 90	com/tencent/mobileqq/utils/DeviceInfoUtil:h	()J
+    //   66: l2i
+    //   67: istore 9
+    //   69: aload_0
+    //   70: getfield 22	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Lcom/tencent/mobileqq/config/splashlogo/ConfigServlet;
+    //   73: astore 12
+    //   75: aload_0
+    //   76: getfield 30	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Float	F
+    //   79: fstore_2
+    //   80: iload 8
+    //   82: i2f
+    //   83: fstore_1
+    //   84: aload 12
+    //   86: fload_2
+    //   87: fload_1
+    //   88: invokestatic 95	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	(Lcom/tencent/mobileqq/config/splashlogo/ConfigServlet;FF)F
     //   91: fstore 4
     //   93: aload_0
     //   94: getfield 22	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Lcom/tencent/mobileqq/config/splashlogo/ConfigServlet;
     //   97: aload_0
-    //   98: getfield 34	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_c_of_type_Float	F
-    //   101: invokestatic 99	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	(Lcom/tencent/mobileqq/config/splashlogo/ConfigServlet;F)F
-    //   104: fstore 5
-    //   106: aconst_null
-    //   107: astore 10
-    //   109: aconst_null
-    //   110: astore 11
-    //   112: aload 18
-    //   114: invokestatic 105	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   117: astore 12
-    //   119: aload 12
-    //   121: astore 10
-    //   123: aload 10
-    //   125: ifnull +1732 -> 1857
-    //   128: aload 10
-    //   130: invokevirtual 111	android/graphics/Bitmap:isRecycled	()Z
-    //   133: ifne +1724 -> 1857
-    //   136: iload 7
-    //   138: iload 8
-    //   140: getstatic 117	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   143: invokestatic 121	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   146: astore 12
-    //   148: aload 12
-    //   150: astore 11
-    //   152: aload 11
-    //   154: astore 15
-    //   156: aload 10
-    //   158: astore 16
-    //   160: aload 11
-    //   162: ifnull +824 -> 986
-    //   165: aload 11
-    //   167: astore 15
-    //   169: aload 10
-    //   171: astore 16
-    //   173: aload 10
-    //   175: astore 14
-    //   177: aload 11
-    //   179: astore 13
-    //   181: aload 10
-    //   183: astore 12
-    //   185: aload 11
-    //   187: invokevirtual 111	android/graphics/Bitmap:isRecycled	()Z
-    //   190: ifne +796 -> 986
-    //   193: aload 10
-    //   195: astore 14
-    //   197: aload 11
-    //   199: astore 13
-    //   201: aload 10
-    //   203: astore 12
-    //   205: new 123	android/graphics/Canvas
-    //   208: dup
-    //   209: aload 11
-    //   211: invokespecial 126	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   214: astore 19
-    //   216: aload 10
-    //   218: astore 14
-    //   220: aload 11
-    //   222: astore 13
-    //   224: aload 10
-    //   226: astore 12
-    //   228: new 128	android/graphics/Paint
-    //   231: dup
-    //   232: invokespecial 129	android/graphics/Paint:<init>	()V
-    //   235: astore 15
-    //   237: aload 10
-    //   239: astore 14
-    //   241: aload 11
-    //   243: astore 13
-    //   245: aload 10
-    //   247: astore 12
-    //   249: aload 19
-    //   251: aload 10
-    //   253: new 131	android/graphics/Rect
-    //   256: dup
-    //   257: iconst_0
-    //   258: iconst_0
-    //   259: aload 10
-    //   261: invokevirtual 135	android/graphics/Bitmap:getWidth	()I
-    //   264: aload 10
-    //   266: invokevirtual 138	android/graphics/Bitmap:getHeight	()I
-    //   269: invokespecial 141	android/graphics/Rect:<init>	(IIII)V
-    //   272: new 131	android/graphics/Rect
-    //   275: dup
-    //   276: iconst_0
-    //   277: iconst_0
-    //   278: iload 7
-    //   280: iload 8
-    //   282: invokespecial 141	android/graphics/Rect:<init>	(IIII)V
-    //   285: aload 15
-    //   287: invokevirtual 145	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
-    //   290: aload 10
-    //   292: astore 14
-    //   294: aload 11
-    //   296: astore 13
-    //   298: aload 10
-    //   300: astore 12
-    //   302: aload 10
-    //   304: invokevirtual 148	android/graphics/Bitmap:recycle	()V
-    //   307: aconst_null
-    //   308: astore 15
-    //   310: aconst_null
-    //   311: astore 17
-    //   313: aconst_null
-    //   314: astore 16
-    //   316: aload 15
-    //   318: astore 14
-    //   320: aload 11
-    //   322: astore 13
-    //   324: aload 17
-    //   326: astore 12
-    //   328: new 150	android/text/TextPaint
-    //   331: dup
-    //   332: invokespecial 151	android/text/TextPaint:<init>	()V
-    //   335: astore 20
-    //   337: aload 15
-    //   339: astore 14
-    //   341: aload 11
-    //   343: astore 13
-    //   345: aload 17
-    //   347: astore 12
-    //   349: aload 20
-    //   351: iconst_1
-    //   352: invokevirtual 155	android/text/TextPaint:setAntiAlias	(Z)V
-    //   355: aload 15
-    //   357: astore 14
-    //   359: aload 11
+    //   98: getfield 32	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_b_of_type_Float	F
+    //   101: iload 9
+    //   103: i2f
+    //   104: fload_1
+    //   105: invokestatic 98	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	(Lcom/tencent/mobileqq/config/splashlogo/ConfigServlet;FFF)F
+    //   108: fstore 5
+    //   110: aload_0
+    //   111: getfield 22	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Lcom/tencent/mobileqq/config/splashlogo/ConfigServlet;
+    //   114: aload_0
+    //   115: getfield 34	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_c_of_type_Float	F
+    //   118: invokestatic 101	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	(Lcom/tencent/mobileqq/config/splashlogo/ConfigServlet;F)F
+    //   121: fstore 6
+    //   123: aload 15
+    //   125: invokestatic 107	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   128: astore 13
+    //   130: aload 13
+    //   132: ifnull +976 -> 1108
+    //   135: aload 13
+    //   137: invokevirtual 113	android/graphics/Bitmap:isRecycled	()Z
+    //   140: ifne +968 -> 1108
+    //   143: iload 8
+    //   145: iload 9
+    //   147: getstatic 119	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   150: invokestatic 123	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   153: astore 12
+    //   155: aload 12
+    //   157: astore 14
+    //   159: aload 12
+    //   161: ifnull +950 -> 1111
+    //   164: aload 12
+    //   166: astore 14
+    //   168: aload 12
+    //   170: invokevirtual 113	android/graphics/Bitmap:isRecycled	()Z
+    //   173: ifne +938 -> 1111
+    //   176: new 125	android/graphics/Canvas
+    //   179: dup
+    //   180: aload 12
+    //   182: invokespecial 128	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   185: astore 14
+    //   187: new 130	android/graphics/Paint
+    //   190: dup
+    //   191: invokespecial 131	android/graphics/Paint:<init>	()V
+    //   194: astore 16
+    //   196: aload 14
+    //   198: aload 13
+    //   200: new 133	android/graphics/Rect
+    //   203: dup
+    //   204: iconst_0
+    //   205: iconst_0
+    //   206: aload 13
+    //   208: invokevirtual 137	android/graphics/Bitmap:getWidth	()I
+    //   211: aload 13
+    //   213: invokevirtual 140	android/graphics/Bitmap:getHeight	()I
+    //   216: invokespecial 143	android/graphics/Rect:<init>	(IIII)V
+    //   219: new 133	android/graphics/Rect
+    //   222: dup
+    //   223: iconst_0
+    //   224: iconst_0
+    //   225: iload 8
+    //   227: iload 9
+    //   229: invokespecial 143	android/graphics/Rect:<init>	(IIII)V
+    //   232: aload 16
+    //   234: invokevirtual 147	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    //   237: aload 13
+    //   239: invokevirtual 150	android/graphics/Bitmap:recycle	()V
+    //   242: new 152	android/text/TextPaint
+    //   245: dup
+    //   246: invokespecial 153	android/text/TextPaint:<init>	()V
+    //   249: astore 16
+    //   251: iconst_1
+    //   252: istore 9
+    //   254: aload 16
+    //   256: iconst_1
+    //   257: invokevirtual 157	android/text/TextPaint:setAntiAlias	(Z)V
+    //   260: aload 16
+    //   262: aload_0
+    //   263: getfield 36	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   266: invokestatic 163	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   269: invokevirtual 167	android/text/TextPaint:setColor	(I)V
+    //   272: invokestatic 172	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   275: ifeq +73 -> 348
+    //   278: new 59	java/lang/StringBuilder
+    //   281: dup
+    //   282: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   285: astore 13
+    //   287: aload 13
+    //   289: ldc 174
+    //   291: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: pop
+    //   295: aload 13
+    //   297: fload 4
+    //   299: invokevirtual 177	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   302: pop
+    //   303: aload 13
+    //   305: ldc 179
+    //   307: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: pop
+    //   311: aload 13
+    //   313: fload 5
+    //   315: invokevirtual 177	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   318: pop
+    //   319: aload 13
+    //   321: ldc 181
+    //   323: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   326: pop
+    //   327: aload 13
+    //   329: aload_0
+    //   330: getfield 36	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   333: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   336: pop
+    //   337: ldc 183
+    //   339: iconst_2
+    //   340: aload 13
+    //   342: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   345: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   348: ldc 189
+    //   350: aload_0
+    //   351: getfield 38	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   354: invokevirtual 195	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   357: istore 11
+    //   359: ldc 197
     //   361: astore 13
-    //   363: aload 17
-    //   365: astore 12
-    //   367: aload 20
-    //   369: aload_0
-    //   370: getfield 36	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   373: invokestatic 161	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   376: invokevirtual 165	android/text/TextPaint:setColor	(I)V
-    //   379: aload 15
-    //   381: astore 14
-    //   383: aload 11
-    //   385: astore 13
-    //   387: aload 17
-    //   389: astore 12
-    //   391: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   394: ifeq +62 -> 456
-    //   397: aload 15
-    //   399: astore 14
-    //   401: aload 11
-    //   403: astore 13
-    //   405: aload 17
-    //   407: astore 12
-    //   409: ldc 172
-    //   411: iconst_2
-    //   412: new 57	java/lang/StringBuilder
-    //   415: dup
-    //   416: invokespecial 58	java/lang/StringBuilder:<init>	()V
-    //   419: ldc 174
-    //   421: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   424: fload_3
-    //   425: invokevirtual 177	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   428: ldc 179
-    //   430: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   433: fload 4
-    //   435: invokevirtual 177	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   438: ldc 181
-    //   440: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   443: aload_0
-    //   444: getfield 36	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   447: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   450: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   453: invokestatic 185	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   456: aload 15
-    //   458: astore 14
-    //   460: aload 11
-    //   462: astore 13
-    //   464: aload 17
-    //   466: astore 12
-    //   468: ldc 187
-    //   470: aload_0
-    //   471: getfield 38	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   474: invokevirtual 193	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   477: ifeq +651 -> 1128
-    //   480: aload 15
-    //   482: astore 14
-    //   484: aload 11
-    //   486: astore 13
-    //   488: aload 17
-    //   490: astore 12
-    //   492: aload 20
-    //   494: aload_0
-    //   495: getfield 26	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   498: invokevirtual 199	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   501: aload_0
-    //   502: getfield 40	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_Float	F
-    //   505: invokestatic 204	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
-    //   508: i2f
-    //   509: invokevirtual 208	android/text/TextPaint:setTextSize	(F)V
-    //   512: aload 15
-    //   514: astore 14
-    //   516: aload 11
-    //   518: astore 13
-    //   520: aload 17
-    //   522: astore 12
-    //   524: aload 20
-    //   526: invokevirtual 212	android/text/TextPaint:getFontMetrics	()Landroid/graphics/Paint$FontMetrics;
-    //   529: astore 10
-    //   531: aload 15
-    //   533: astore 14
-    //   535: aload 11
-    //   537: astore 13
-    //   539: aload 17
-    //   541: astore 12
-    //   543: aload_0
-    //   544: getfield 42	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Boolean	Z
-    //   547: ifeq +1323 -> 1870
-    //   550: aload 15
-    //   552: astore 14
-    //   554: aload 11
-    //   556: astore 13
-    //   558: aload 17
-    //   560: astore 12
-    //   562: aload 10
-    //   564: getfield 217	android/graphics/Paint$FontMetrics:ascent	F
+    //   363: fconst_0
+    //   364: fstore_2
+    //   365: fconst_0
+    //   366: fstore_1
+    //   367: iload 11
+    //   369: ifeq +169 -> 538
+    //   372: aload 16
+    //   374: aload_0
+    //   375: getfield 26	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   378: invokevirtual 203	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   381: aload_0
+    //   382: getfield 40	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_Float	F
+    //   385: invokestatic 208	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
+    //   388: i2f
+    //   389: invokevirtual 212	android/text/TextPaint:setTextSize	(F)V
+    //   392: aload 16
+    //   394: invokevirtual 216	android/text/TextPaint:getFontMetrics	()Landroid/graphics/Paint$FontMetrics;
+    //   397: astore 17
+    //   399: aload_0
+    //   400: getfield 42	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Boolean	Z
+    //   403: ifeq +9 -> 412
+    //   406: aload 17
+    //   408: getfield 221	android/graphics/Paint$FontMetrics:ascent	F
+    //   411: fstore_1
+    //   412: fload 5
+    //   414: fload_1
+    //   415: fsub
+    //   416: fstore_1
+    //   417: aload 16
+    //   419: invokestatic 223	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
+    //   422: invokevirtual 227	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   425: fload 6
+    //   427: fcmpl
+    //   428: ifle +94 -> 522
+    //   431: iconst_1
+    //   432: istore 8
+    //   434: iload 9
+    //   436: ifeq +71 -> 507
+    //   439: new 59	java/lang/StringBuilder
+    //   442: dup
+    //   443: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   446: astore 13
+    //   448: aload 13
+    //   450: invokestatic 223	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
+    //   453: iconst_0
+    //   454: invokestatic 223	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
+    //   457: invokevirtual 230	java/lang/String:length	()I
+    //   460: iload 8
+    //   462: isub
+    //   463: invokevirtual 234	java/lang/String:substring	(II)Ljava/lang/String;
+    //   466: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   469: pop
+    //   470: aload 13
+    //   472: ldc 236
+    //   474: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   477: pop
+    //   478: aload 13
+    //   480: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   483: astore 13
+    //   485: aload 16
+    //   487: aload 13
+    //   489: invokevirtual 227	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   492: fload 6
+    //   494: fcmpl
+    //   495: ifle +1086 -> 1581
+    //   498: iload 8
+    //   500: iconst_1
+    //   501: iadd
+    //   502: istore 8
+    //   504: goto -70 -> 434
+    //   507: aload 14
+    //   509: aload 13
+    //   511: fload 4
+    //   513: fload_1
+    //   514: aload 16
+    //   516: invokevirtual 240	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    //   519: goto +329 -> 848
+    //   522: aload 14
+    //   524: invokestatic 223	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
+    //   527: fload 4
+    //   529: fload_1
+    //   530: aload 16
+    //   532: invokevirtual 240	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    //   535: goto +313 -> 848
+    //   538: ldc 242
+    //   540: aload_0
+    //   541: getfield 38	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   544: invokevirtual 195	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   547: ifeq +263 -> 810
+    //   550: aload_0
+    //   551: getfield 40	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_Float	F
+    //   554: ldc 243
+    //   556: fcmpg
+    //   557: ifge +6 -> 563
+    //   560: goto +1030 -> 1590
+    //   563: aload_0
+    //   564: getfield 40	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_Float	F
     //   567: fstore_1
-    //   568: fload 4
-    //   570: fload_1
-    //   571: fsub
-    //   572: fstore_1
-    //   573: aload 15
-    //   575: astore 14
-    //   577: aload 11
-    //   579: astore 13
-    //   581: aload 17
-    //   583: astore 12
-    //   585: aload 20
-    //   587: invokestatic 219	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
-    //   590: invokevirtual 223	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   593: fload 5
-    //   595: fcmpl
-    //   596: ifle +427 -> 1023
-    //   599: ldc 225
-    //   601: astore 10
-    //   603: iconst_1
-    //   604: istore 7
-    //   606: iconst_1
-    //   607: istore 8
-    //   609: iload 8
-    //   611: ifeq +85 -> 696
-    //   614: aload 15
-    //   616: astore 14
-    //   618: aload 11
-    //   620: astore 13
-    //   622: aload 17
-    //   624: astore 12
-    //   626: new 57	java/lang/StringBuilder
-    //   629: dup
-    //   630: invokespecial 58	java/lang/StringBuilder:<init>	()V
-    //   633: invokestatic 219	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
-    //   636: iconst_0
-    //   637: invokestatic 219	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
-    //   640: invokevirtual 228	java/lang/String:length	()I
-    //   643: iload 7
-    //   645: isub
-    //   646: invokevirtual 232	java/lang/String:substring	(II)Ljava/lang/String;
-    //   649: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   652: ldc 234
-    //   654: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   657: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   660: astore 10
-    //   662: aload 15
-    //   664: astore 14
-    //   666: aload 11
-    //   668: astore 13
-    //   670: aload 17
-    //   672: astore 12
-    //   674: aload 20
-    //   676: aload 10
-    //   678: invokevirtual 223	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   681: fload 5
-    //   683: fcmpl
-    //   684: ifle +1191 -> 1875
-    //   687: iload 7
-    //   689: iconst_1
-    //   690: iadd
-    //   691: istore 7
-    //   693: goto +1174 -> 1867
-    //   696: aload 15
-    //   698: astore 14
-    //   700: aload 11
-    //   702: astore 13
-    //   704: aload 17
-    //   706: astore 12
-    //   708: aload 19
-    //   710: aload 10
-    //   712: fload_3
-    //   713: fload_1
-    //   714: aload 20
-    //   716: invokevirtual 238	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-    //   719: aload 15
-    //   721: astore 14
-    //   723: aload 11
-    //   725: astore 13
-    //   727: aload 17
-    //   729: astore 12
-    //   731: aload 19
-    //   733: invokevirtual 241	android/graphics/Canvas:save	()I
-    //   736: pop
-    //   737: aload 15
-    //   739: astore 14
-    //   741: aload 11
-    //   743: astore 13
-    //   745: aload 17
-    //   747: astore 12
-    //   749: aload 19
-    //   751: invokevirtual 244	android/graphics/Canvas:restore	()V
-    //   754: aload 15
-    //   756: astore 14
-    //   758: aload 11
-    //   760: astore 13
-    //   762: aload 17
-    //   764: astore 12
-    //   766: new 70	java/io/File
-    //   769: dup
-    //   770: aload_0
-    //   771: getfield 24	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   774: invokespecial 73	java/io/File:<init>	(Ljava/lang/String;)V
-    //   777: astore 10
-    //   779: aload 15
-    //   781: astore 14
-    //   783: aload 11
-    //   785: astore 13
-    //   787: aload 17
-    //   789: astore 12
-    //   791: new 70	java/io/File
-    //   794: dup
-    //   795: aload 18
-    //   797: invokespecial 73	java/io/File:<init>	(Ljava/lang/String;)V
-    //   800: astore 18
-    //   802: aload 15
-    //   804: astore 14
-    //   806: aload 11
-    //   808: astore 13
-    //   810: aload 17
-    //   812: astore 12
-    //   814: new 246	java/io/BufferedOutputStream
-    //   817: dup
-    //   818: new 248	java/io/FileOutputStream
-    //   821: dup
-    //   822: aload 18
-    //   824: invokespecial 251	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   827: invokespecial 254	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   830: astore 19
-    //   832: aload 15
-    //   834: astore 14
-    //   836: aload 11
-    //   838: astore 13
-    //   840: aload 17
-    //   842: astore 12
-    //   844: aload 11
-    //   846: getstatic 260	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   849: bipush 100
-    //   851: aload 19
-    //   853: invokevirtual 264	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   856: pop
-    //   857: aload 15
-    //   859: astore 14
-    //   861: aload 11
-    //   863: astore 13
-    //   865: aload 17
-    //   867: astore 12
-    //   869: aload 19
-    //   871: invokevirtual 267	java/io/BufferedOutputStream:flush	()V
-    //   874: aload 15
-    //   876: astore 14
-    //   878: aload 11
-    //   880: astore 13
-    //   882: aload 17
-    //   884: astore 12
-    //   886: aload 19
-    //   888: invokevirtual 270	java/io/BufferedOutputStream:close	()V
+    //   568: aload 16
+    //   570: aload_0
+    //   571: getfield 26	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   574: invokevirtual 203	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   577: fload_1
+    //   578: invokestatic 208	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
+    //   581: i2f
+    //   582: invokevirtual 212	android/text/TextPaint:setTextSize	(F)V
+    //   585: aload 16
+    //   587: invokestatic 223	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
+    //   590: invokevirtual 227	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   593: fstore_3
+    //   594: fload_3
+    //   595: fload 6
+    //   597: fcmpg
+    //   598: ifgt +998 -> 1596
+    //   601: iconst_1
+    //   602: istore 8
+    //   604: goto +3 -> 607
+    //   607: iload 8
+    //   609: ifeq +50 -> 659
+    //   612: aload 16
+    //   614: invokevirtual 216	android/text/TextPaint:getFontMetrics	()Landroid/graphics/Paint$FontMetrics;
+    //   617: astore 13
+    //   619: fload_2
+    //   620: fstore_1
+    //   621: aload_0
+    //   622: getfield 42	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Boolean	Z
+    //   625: ifeq +9 -> 634
+    //   628: aload 13
+    //   630: getfield 221	android/graphics/Paint$FontMetrics:ascent	F
+    //   633: fstore_1
+    //   634: fload_3
+    //   635: fconst_2
+    //   636: fdiv
+    //   637: fstore_2
+    //   638: aload 14
+    //   640: invokestatic 223	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
+    //   643: fload 4
+    //   645: fload_2
+    //   646: fsub
+    //   647: fload 5
+    //   649: fload_1
+    //   650: fsub
+    //   651: aload 16
+    //   653: invokevirtual 240	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    //   656: goto +192 -> 848
+    //   659: invokestatic 223	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
+    //   662: invokevirtual 230	java/lang/String:length	()I
+    //   665: istore 10
+    //   667: fload_3
+    //   668: fstore_1
+    //   669: iconst_1
+    //   670: istore 9
+    //   672: iload 9
+    //   674: iload 10
+    //   676: if_icmpgt +962 -> 1638
+    //   679: new 59	java/lang/StringBuilder
+    //   682: dup
+    //   683: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   686: astore 13
+    //   688: aload 13
+    //   690: invokestatic 223	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
+    //   693: iconst_0
+    //   694: invokestatic 223	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
+    //   697: invokevirtual 230	java/lang/String:length	()I
+    //   700: iload 9
+    //   702: isub
+    //   703: invokevirtual 234	java/lang/String:substring	(II)Ljava/lang/String;
+    //   706: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   709: pop
+    //   710: aload 13
+    //   712: ldc 236
+    //   714: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   717: pop
+    //   718: aload 13
+    //   720: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   723: astore 13
+    //   725: aload 16
+    //   727: aload 13
+    //   729: invokevirtual 227	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   732: fstore_1
+    //   733: fload_1
+    //   734: fload 6
+    //   736: fcmpl
+    //   737: ifle +895 -> 1632
+    //   740: iload 9
+    //   742: iconst_1
+    //   743: iadd
+    //   744: istore 9
+    //   746: goto -74 -> 672
+    //   749: iload 8
+    //   751: ifeq +48 -> 799
+    //   754: aload 16
+    //   756: invokevirtual 216	android/text/TextPaint:getFontMetrics	()Landroid/graphics/Paint$FontMetrics;
+    //   759: astore 17
+    //   761: aload_0
+    //   762: getfield 42	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Boolean	Z
+    //   765: ifeq +876 -> 1641
+    //   768: aload 17
+    //   770: getfield 221	android/graphics/Paint$FontMetrics:ascent	F
+    //   773: fstore_2
+    //   774: goto +3 -> 777
+    //   777: aload 14
+    //   779: aload 13
+    //   781: fload 4
+    //   783: fload_1
+    //   784: fconst_2
+    //   785: fdiv
+    //   786: fsub
+    //   787: fload 5
+    //   789: fload_2
+    //   790: fsub
+    //   791: aload 16
+    //   793: invokevirtual 240	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    //   796: goto +52 -> 848
+    //   799: ldc 183
+    //   801: iconst_1
+    //   802: ldc 245
+    //   804: invokestatic 247	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   807: goto +41 -> 848
+    //   810: new 59	java/lang/StringBuilder
+    //   813: dup
+    //   814: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   817: astore 13
+    //   819: aload 13
+    //   821: ldc 249
+    //   823: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   826: pop
+    //   827: aload 13
+    //   829: aload_0
+    //   830: getfield 38	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   833: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   836: pop
+    //   837: ldc 183
+    //   839: iconst_1
+    //   840: aload 13
+    //   842: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   845: invokestatic 247	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   848: aload 14
+    //   850: invokevirtual 252	android/graphics/Canvas:save	()I
+    //   853: pop
+    //   854: aload 14
+    //   856: invokevirtual 255	android/graphics/Canvas:restore	()V
+    //   859: new 72	java/io/File
+    //   862: dup
+    //   863: aload_0
+    //   864: getfield 24	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   867: invokespecial 75	java/io/File:<init>	(Ljava/lang/String;)V
+    //   870: astore 14
+    //   872: new 72	java/io/File
+    //   875: dup
+    //   876: aload 15
+    //   878: invokespecial 75	java/io/File:<init>	(Ljava/lang/String;)V
+    //   881: astore 15
+    //   883: new 257	java/io/BufferedOutputStream
+    //   886: dup
+    //   887: new 259	java/io/FileOutputStream
+    //   890: dup
     //   891: aload 15
-    //   893: astore 14
-    //   895: aload 11
-    //   897: astore 13
-    //   899: aload 17
-    //   901: astore 12
-    //   903: aload 10
-    //   905: invokevirtual 273	java/io/File:exists	()Z
-    //   908: ifeq +21 -> 929
-    //   911: aload 15
-    //   913: astore 14
-    //   915: aload 11
-    //   917: astore 13
-    //   919: aload 17
-    //   921: astore 12
-    //   923: aload 10
-    //   925: invokevirtual 276	java/io/File:delete	()Z
-    //   928: pop
-    //   929: aload 15
-    //   931: astore 14
-    //   933: aload 11
-    //   935: astore 13
-    //   937: aload 17
-    //   939: astore 12
-    //   941: aload 18
-    //   943: aload 10
-    //   945: invokevirtual 280	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   948: pop
-    //   949: aload 15
-    //   951: astore 14
-    //   953: aload 11
-    //   955: astore 13
-    //   957: aload 17
-    //   959: astore 12
-    //   961: aload_0
-    //   962: getfield 26	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   965: invokevirtual 199	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   968: aload_0
-    //   969: getfield 44	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Int	I
-    //   972: aload_0
-    //   973: getfield 46	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:e	Ljava/lang/String;
-    //   976: getstatic 281	com/tencent/mobileqq/config/splashlogo/ConfigServlet:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   979: invokestatic 286	com/tencent/mobileqq/utils/SharedPreUtils:b	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;)V
-    //   982: aload 11
-    //   984: astore 15
-    //   986: aload 16
-    //   988: ifnull +16 -> 1004
-    //   991: aload 16
-    //   993: invokevirtual 111	android/graphics/Bitmap:isRecycled	()Z
-    //   996: ifne +8 -> 1004
-    //   999: aload 16
-    //   1001: invokevirtual 148	android/graphics/Bitmap:recycle	()V
-    //   1004: aload 15
-    //   1006: ifnull +16 -> 1022
-    //   1009: aload 15
-    //   1011: invokevirtual 111	android/graphics/Bitmap:isRecycled	()Z
-    //   1014: ifne +8 -> 1022
-    //   1017: aload 15
-    //   1019: invokevirtual 148	android/graphics/Bitmap:recycle	()V
-    //   1022: return
-    //   1023: aload 15
-    //   1025: astore 14
-    //   1027: aload 11
-    //   1029: astore 13
-    //   1031: aload 17
-    //   1033: astore 12
-    //   1035: aload 19
-    //   1037: invokestatic 219	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
-    //   1040: fload_3
-    //   1041: fload_1
-    //   1042: aload 20
-    //   1044: invokevirtual 238	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-    //   1047: goto -328 -> 719
-    //   1050: astore 12
-    //   1052: aconst_null
-    //   1053: astore 10
-    //   1055: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1058: ifeq +33 -> 1091
-    //   1061: ldc 172
-    //   1063: iconst_2
-    //   1064: new 57	java/lang/StringBuilder
-    //   1067: dup
-    //   1068: invokespecial 58	java/lang/StringBuilder:<init>	()V
-    //   1071: ldc_w 288
-    //   1074: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1077: aload 12
-    //   1079: invokevirtual 291	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1082: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1085: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1088: invokestatic 185	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1091: aload 10
-    //   1093: ifnull +16 -> 1109
-    //   1096: aload 10
-    //   1098: invokevirtual 111	android/graphics/Bitmap:isRecycled	()Z
-    //   1101: ifne +8 -> 1109
-    //   1104: aload 10
-    //   1106: invokevirtual 148	android/graphics/Bitmap:recycle	()V
-    //   1109: aload 11
-    //   1111: ifnull -89 -> 1022
-    //   1114: aload 11
-    //   1116: invokevirtual 111	android/graphics/Bitmap:isRecycled	()Z
-    //   1119: ifne -97 -> 1022
-    //   1122: aload 11
-    //   1124: invokevirtual 148	android/graphics/Bitmap:recycle	()V
-    //   1127: return
-    //   1128: aload 15
-    //   1130: astore 14
-    //   1132: aload 11
-    //   1134: astore 13
-    //   1136: aload 17
-    //   1138: astore 12
-    //   1140: ldc_w 293
-    //   1143: aload_0
-    //   1144: getfield 38	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   1147: invokevirtual 193	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   1150: ifeq +588 -> 1738
-    //   1153: aload 15
-    //   1155: astore 14
-    //   1157: aload 11
-    //   1159: astore 13
-    //   1161: aload 17
-    //   1163: astore 12
-    //   1165: aload_0
-    //   1166: getfield 40	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_Float	F
-    //   1169: ldc_w 294
-    //   1172: fcmpg
-    //   1173: ifge +253 -> 1426
-    //   1176: ldc_w 294
-    //   1179: fstore_1
-    //   1180: goto +704 -> 1884
-    //   1183: aload 15
-    //   1185: astore 14
-    //   1187: aload 11
-    //   1189: astore 13
-    //   1191: aload 17
-    //   1193: astore 12
-    //   1195: aload 20
-    //   1197: aload_0
-    //   1198: getfield 26	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1201: invokevirtual 199	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   1204: fload_1
-    //   1205: invokestatic 204	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
-    //   1208: i2f
-    //   1209: invokevirtual 208	android/text/TextPaint:setTextSize	(F)V
-    //   1212: aload 15
-    //   1214: astore 14
-    //   1216: aload 11
-    //   1218: astore 13
-    //   1220: aload 17
-    //   1222: astore 12
-    //   1224: aload 20
-    //   1226: invokestatic 219	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
-    //   1229: invokevirtual 223	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   1232: fstore_2
-    //   1233: fload_2
-    //   1234: fload 5
-    //   1236: fcmpg
-    //   1237: ifgt +650 -> 1887
-    //   1240: iconst_1
-    //   1241: istore 7
-    //   1243: iload 7
-    //   1245: ifeq +201 -> 1446
-    //   1248: aload 15
-    //   1250: astore 14
-    //   1252: aload 11
-    //   1254: astore 13
-    //   1256: aload 17
-    //   1258: astore 12
-    //   1260: aload 20
-    //   1262: invokevirtual 212	android/text/TextPaint:getFontMetrics	()Landroid/graphics/Paint$FontMetrics;
-    //   1265: astore 10
-    //   1267: aload 15
-    //   1269: astore 14
-    //   1271: aload 11
-    //   1273: astore 13
-    //   1275: aload 17
-    //   1277: astore 12
-    //   1279: aload_0
-    //   1280: getfield 42	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Boolean	Z
-    //   1283: ifeq +639 -> 1922
-    //   1286: aload 15
-    //   1288: astore 14
-    //   1290: aload 11
-    //   1292: astore 13
-    //   1294: aload 17
-    //   1296: astore 12
-    //   1298: aload 10
-    //   1300: getfield 217	android/graphics/Paint$FontMetrics:ascent	F
-    //   1303: fstore_1
-    //   1304: aload 15
-    //   1306: astore 14
-    //   1308: aload 11
-    //   1310: astore 13
-    //   1312: aload 17
-    //   1314: astore 12
-    //   1316: fload_2
-    //   1317: fconst_2
-    //   1318: fdiv
-    //   1319: fstore_2
-    //   1320: aload 15
-    //   1322: astore 14
-    //   1324: aload 11
-    //   1326: astore 13
-    //   1328: aload 17
-    //   1330: astore 12
-    //   1332: aload 19
-    //   1334: invokestatic 219	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
-    //   1337: fload_3
-    //   1338: fload_2
-    //   1339: fsub
-    //   1340: fload 4
-    //   1342: fload_1
-    //   1343: fsub
-    //   1344: aload 20
-    //   1346: invokevirtual 238	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-    //   1349: goto -630 -> 719
-    //   1352: astore 10
-    //   1354: aload 14
-    //   1356: astore 10
-    //   1358: aload 11
-    //   1360: astore 13
-    //   1362: aload 10
-    //   1364: astore 12
-    //   1366: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1369: ifeq +20 -> 1389
-    //   1372: aload 11
-    //   1374: astore 13
-    //   1376: aload 10
-    //   1378: astore 12
-    //   1380: ldc 172
-    //   1382: iconst_2
-    //   1383: ldc_w 296
-    //   1386: invokestatic 185	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1389: aload 10
-    //   1391: ifnull +16 -> 1407
-    //   1394: aload 10
-    //   1396: invokevirtual 111	android/graphics/Bitmap:isRecycled	()Z
-    //   1399: ifne +8 -> 1407
-    //   1402: aload 10
-    //   1404: invokevirtual 148	android/graphics/Bitmap:recycle	()V
-    //   1407: aload 11
-    //   1409: ifnull -387 -> 1022
-    //   1412: aload 11
-    //   1414: invokevirtual 111	android/graphics/Bitmap:isRecycled	()Z
-    //   1417: ifne -395 -> 1022
-    //   1420: aload 11
-    //   1422: invokevirtual 148	android/graphics/Bitmap:recycle	()V
-    //   1425: return
-    //   1426: aload 15
-    //   1428: astore 14
-    //   1430: aload 11
-    //   1432: astore 13
-    //   1434: aload 17
-    //   1436: astore 12
-    //   1438: aload_0
-    //   1439: getfield 40	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_Float	F
-    //   1442: fstore_1
-    //   1443: goto +441 -> 1884
-    //   1446: aload 15
-    //   1448: astore 14
-    //   1450: aload 11
-    //   1452: astore 13
-    //   1454: aload 17
-    //   1456: astore 12
-    //   1458: invokestatic 219	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
-    //   1461: invokevirtual 228	java/lang/String:length	()I
-    //   1464: istore 9
-    //   1466: ldc 225
-    //   1468: astore 10
-    //   1470: fload_2
-    //   1471: fstore_1
-    //   1472: iconst_1
-    //   1473: istore 8
-    //   1475: iload 8
-    //   1477: iload 9
-    //   1479: if_icmpgt +369 -> 1848
-    //   1482: aload 15
-    //   1484: astore 14
-    //   1486: aload 11
-    //   1488: astore 13
-    //   1490: aload 17
-    //   1492: astore 12
-    //   1494: new 57	java/lang/StringBuilder
-    //   1497: dup
-    //   1498: invokespecial 58	java/lang/StringBuilder:<init>	()V
-    //   1501: invokestatic 219	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
-    //   1504: iconst_0
-    //   1505: invokestatic 219	com/tencent/mobileqq/config/splashlogo/ConfigServlet:a	()Ljava/lang/String;
-    //   1508: invokevirtual 228	java/lang/String:length	()I
-    //   1511: iload 8
-    //   1513: isub
-    //   1514: invokevirtual 232	java/lang/String:substring	(II)Ljava/lang/String;
-    //   1517: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1520: ldc 234
-    //   1522: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1525: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1528: astore 10
-    //   1530: aload 15
-    //   1532: astore 14
-    //   1534: aload 11
-    //   1536: astore 13
-    //   1538: aload 17
-    //   1540: astore 12
-    //   1542: aload 20
-    //   1544: aload 10
-    //   1546: invokevirtual 223	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   1549: fstore_1
-    //   1550: fload_1
-    //   1551: fload 5
-    //   1553: fcmpl
-    //   1554: ifle +373 -> 1927
-    //   1557: iload 8
-    //   1559: iconst_1
-    //   1560: iadd
-    //   1561: istore 8
-    //   1563: goto -88 -> 1475
-    //   1566: iload 7
-    //   1568: ifeq +146 -> 1714
-    //   1571: aload 15
-    //   1573: astore 14
-    //   1575: aload 11
-    //   1577: astore 13
-    //   1579: aload 17
-    //   1581: astore 12
-    //   1583: aload 20
-    //   1585: invokevirtual 212	android/text/TextPaint:getFontMetrics	()Landroid/graphics/Paint$FontMetrics;
-    //   1588: astore 21
-    //   1590: aload 15
-    //   1592: astore 14
-    //   1594: aload 11
-    //   1596: astore 13
-    //   1598: aload 17
-    //   1600: astore 12
-    //   1602: aload_0
-    //   1603: getfield 42	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Boolean	Z
-    //   1606: ifeq +103 -> 1709
-    //   1609: aload 15
-    //   1611: astore 14
-    //   1613: aload 11
-    //   1615: astore 13
-    //   1617: aload 17
-    //   1619: astore 12
-    //   1621: aload 21
-    //   1623: getfield 217	android/graphics/Paint$FontMetrics:ascent	F
-    //   1626: fstore_2
-    //   1627: aload 15
-    //   1629: astore 14
-    //   1631: aload 11
-    //   1633: astore 13
-    //   1635: aload 17
-    //   1637: astore 12
-    //   1639: aload 19
-    //   1641: aload 10
-    //   1643: fload_3
-    //   1644: fload_1
-    //   1645: fconst_2
-    //   1646: fdiv
-    //   1647: fsub
-    //   1648: fload 4
-    //   1650: fload_2
-    //   1651: fsub
-    //   1652: aload 20
-    //   1654: invokevirtual 238	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-    //   1657: goto -938 -> 719
-    //   1660: astore 11
-    //   1662: aload 12
-    //   1664: astore 10
-    //   1666: aload 13
-    //   1668: astore 12
-    //   1670: aload 10
-    //   1672: ifnull +16 -> 1688
-    //   1675: aload 10
-    //   1677: invokevirtual 111	android/graphics/Bitmap:isRecycled	()Z
-    //   1680: ifne +8 -> 1688
-    //   1683: aload 10
-    //   1685: invokevirtual 148	android/graphics/Bitmap:recycle	()V
-    //   1688: aload 12
-    //   1690: ifnull +16 -> 1706
-    //   1693: aload 12
-    //   1695: invokevirtual 111	android/graphics/Bitmap:isRecycled	()Z
-    //   1698: ifne +8 -> 1706
-    //   1701: aload 12
-    //   1703: invokevirtual 148	android/graphics/Bitmap:recycle	()V
-    //   1706: aload 11
-    //   1708: athrow
-    //   1709: fconst_0
-    //   1710: fstore_2
-    //   1711: goto -84 -> 1627
-    //   1714: aload 15
-    //   1716: astore 14
-    //   1718: aload 11
-    //   1720: astore 13
-    //   1722: aload 17
-    //   1724: astore 12
-    //   1726: ldc 172
-    //   1728: iconst_1
-    //   1729: ldc_w 298
-    //   1732: invokestatic 300	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1735: goto -1016 -> 719
-    //   1738: aload 15
-    //   1740: astore 14
-    //   1742: aload 11
-    //   1744: astore 13
-    //   1746: aload 17
-    //   1748: astore 12
-    //   1750: ldc 172
-    //   1752: iconst_1
-    //   1753: new 57	java/lang/StringBuilder
-    //   1756: dup
-    //   1757: invokespecial 58	java/lang/StringBuilder:<init>	()V
-    //   1760: ldc_w 302
-    //   1763: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1766: aload_0
-    //   1767: getfield 38	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   1770: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1773: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1776: invokestatic 300	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1779: goto -1060 -> 719
-    //   1782: astore 11
-    //   1784: aconst_null
-    //   1785: astore 10
-    //   1787: aconst_null
-    //   1788: astore 12
-    //   1790: goto -120 -> 1670
-    //   1793: astore 11
-    //   1795: aconst_null
-    //   1796: astore 12
-    //   1798: goto -128 -> 1670
-    //   1801: astore 13
-    //   1803: aload 11
-    //   1805: astore 12
-    //   1807: aload 13
-    //   1809: astore 11
-    //   1811: goto -141 -> 1670
-    //   1814: astore 10
-    //   1816: aconst_null
-    //   1817: astore 10
-    //   1819: aconst_null
-    //   1820: astore 11
-    //   1822: goto -464 -> 1358
-    //   1825: astore 11
-    //   1827: aconst_null
-    //   1828: astore 11
-    //   1830: goto -472 -> 1358
-    //   1833: astore 12
-    //   1835: goto -780 -> 1055
-    //   1838: astore 12
-    //   1840: goto -785 -> 1055
-    //   1843: astore 12
-    //   1845: goto -790 -> 1055
-    //   1848: goto -282 -> 1566
-    //   1851: iconst_0
-    //   1852: istore 7
-    //   1854: goto -611 -> 1243
-    //   1857: aconst_null
-    //   1858: astore 15
-    //   1860: aload 10
-    //   1862: astore 16
-    //   1864: goto -878 -> 986
-    //   1867: goto -1258 -> 609
-    //   1870: fconst_0
-    //   1871: fstore_1
-    //   1872: goto -1304 -> 568
-    //   1875: iconst_0
-    //   1876: istore 8
-    //   1878: iconst_0
-    //   1879: istore 7
-    //   1881: goto -14 -> 1867
-    //   1884: goto -701 -> 1183
-    //   1887: fload_1
-    //   1888: ldc_w 294
-    //   1891: fsub
-    //   1892: fstore 6
-    //   1894: fload 6
-    //   1896: fconst_1
-    //   1897: fcmpl
-    //   1898: ifle +10 -> 1908
-    //   1901: fload_1
-    //   1902: fconst_1
-    //   1903: fsub
-    //   1904: fstore_1
-    //   1905: goto -722 -> 1183
-    //   1908: fload 6
-    //   1910: fconst_0
-    //   1911: fcmpl
-    //   1912: ifle -61 -> 1851
-    //   1915: ldc_w 294
-    //   1918: fstore_1
-    //   1919: goto -736 -> 1183
-    //   1922: fconst_0
-    //   1923: fstore_1
-    //   1924: goto -620 -> 1304
-    //   1927: iconst_1
-    //   1928: istore 7
-    //   1930: goto -364 -> 1566
+    //   893: invokespecial 262	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   896: invokespecial 265	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   899: astore 13
+    //   901: aload 12
+    //   903: getstatic 271	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   906: bipush 100
+    //   908: aload 13
+    //   910: invokevirtual 275	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   913: pop
+    //   914: aload 13
+    //   916: invokevirtual 278	java/io/BufferedOutputStream:flush	()V
+    //   919: aload 14
+    //   921: invokevirtual 281	java/io/File:exists	()Z
+    //   924: ifeq +9 -> 933
+    //   927: aload 14
+    //   929: invokevirtual 284	java/io/File:delete	()Z
+    //   932: pop
+    //   933: aload 15
+    //   935: aload 14
+    //   937: invokevirtual 288	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   940: pop
+    //   941: aload_0
+    //   942: getfield 26	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   945: invokevirtual 203	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   948: aload_0
+    //   949: getfield 44	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Int	I
+    //   952: aload_0
+    //   953: getfield 46	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:e	Ljava/lang/String;
+    //   956: getstatic 289	com/tencent/mobileqq/config/splashlogo/ConfigServlet:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   959: invokestatic 294	com/tencent/mobileqq/utils/SharedPreUtils:b	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;)V
+    //   962: aconst_null
+    //   963: astore 14
+    //   965: aload 13
+    //   967: astore 15
+    //   969: goto +153 -> 1122
+    //   972: astore 14
+    //   974: aload 13
+    //   976: astore 15
+    //   978: goto +207 -> 1185
+    //   981: aconst_null
+    //   982: astore 15
+    //   984: aload 12
+    //   986: astore 16
+    //   988: aload 13
+    //   990: astore 17
+    //   992: goto +228 -> 1220
+    //   995: astore 18
+    //   997: aconst_null
+    //   998: astore 15
+    //   1000: aload 12
+    //   1002: astore 16
+    //   1004: aload 13
+    //   1006: astore 17
+    //   1008: goto +321 -> 1329
+    //   1011: astore 14
+    //   1013: aconst_null
+    //   1014: astore 15
+    //   1016: goto +169 -> 1185
+    //   1019: aconst_null
+    //   1020: astore 13
+    //   1022: goto +187 -> 1209
+    //   1025: astore 13
+    //   1027: aconst_null
+    //   1028: astore 14
+    //   1030: goto +284 -> 1314
+    //   1033: astore 14
+    //   1035: aload 13
+    //   1037: astore 15
+    //   1039: aconst_null
+    //   1040: astore 16
+    //   1042: aload 14
+    //   1044: astore 13
+    //   1046: aload 16
+    //   1048: astore 14
+    //   1050: goto +446 -> 1496
+    //   1053: goto +156 -> 1209
+    //   1056: astore 15
+    //   1058: aload 13
+    //   1060: astore 14
+    //   1062: aload 15
+    //   1064: astore 13
+    //   1066: goto +248 -> 1314
+    //   1069: astore 12
+    //   1071: aload 13
+    //   1073: astore 15
+    //   1075: aconst_null
+    //   1076: astore 14
+    //   1078: aconst_null
+    //   1079: astore 16
+    //   1081: aload 12
+    //   1083: astore 13
+    //   1085: aload 16
+    //   1087: astore 12
+    //   1089: goto +407 -> 1496
+    //   1092: goto +114 -> 1206
+    //   1095: astore 12
+    //   1097: aload 13
+    //   1099: astore 14
+    //   1101: aload 12
+    //   1103: astore 13
+    //   1105: goto +206 -> 1311
+    //   1108: aconst_null
+    //   1109: astore 14
+    //   1111: aconst_null
+    //   1112: astore 15
+    //   1114: aload 14
+    //   1116: astore 12
+    //   1118: aload 13
+    //   1120: astore 14
+    //   1122: aload 14
+    //   1124: ifnull +16 -> 1140
+    //   1127: aload 14
+    //   1129: invokevirtual 113	android/graphics/Bitmap:isRecycled	()Z
+    //   1132: ifne +8 -> 1140
+    //   1135: aload 14
+    //   1137: invokevirtual 150	android/graphics/Bitmap:recycle	()V
+    //   1140: aload 12
+    //   1142: ifnull +16 -> 1158
+    //   1145: aload 12
+    //   1147: invokevirtual 113	android/graphics/Bitmap:isRecycled	()Z
+    //   1150: ifne +8 -> 1158
+    //   1153: aload 12
+    //   1155: invokevirtual 150	android/graphics/Bitmap:recycle	()V
+    //   1158: aload 15
+    //   1160: ifnull +395 -> 1555
+    //   1163: aload 15
+    //   1165: invokevirtual 297	java/io/BufferedOutputStream:close	()V
+    //   1168: return
+    //   1169: astore 12
+    //   1171: aload 12
+    //   1173: invokevirtual 300	java/io/IOException:printStackTrace	()V
+    //   1176: return
+    //   1177: astore 14
+    //   1179: aconst_null
+    //   1180: astore 15
+    //   1182: aconst_null
+    //   1183: astore 12
+    //   1185: aconst_null
+    //   1186: astore 16
+    //   1188: aload 14
+    //   1190: astore 13
+    //   1192: aload 15
+    //   1194: astore 14
+    //   1196: aload 16
+    //   1198: astore 15
+    //   1200: goto +296 -> 1496
+    //   1203: aconst_null
+    //   1204: astore 13
+    //   1206: aconst_null
+    //   1207: astore 12
+    //   1209: aconst_null
+    //   1210: astore 17
+    //   1212: aload 12
+    //   1214: astore 16
+    //   1216: aload 13
+    //   1218: astore 15
+    //   1220: aload 15
+    //   1222: astore 14
+    //   1224: aload 16
+    //   1226: astore 12
+    //   1228: aload 17
+    //   1230: astore 13
+    //   1232: invokestatic 172	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1235: ifeq +24 -> 1259
+    //   1238: aload 15
+    //   1240: astore 14
+    //   1242: aload 16
+    //   1244: astore 12
+    //   1246: aload 17
+    //   1248: astore 13
+    //   1250: ldc 183
+    //   1252: iconst_2
+    //   1253: ldc_w 302
+    //   1256: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1259: aload 15
+    //   1261: ifnull +16 -> 1277
+    //   1264: aload 15
+    //   1266: invokevirtual 113	android/graphics/Bitmap:isRecycled	()Z
+    //   1269: ifne +8 -> 1277
+    //   1272: aload 15
+    //   1274: invokevirtual 150	android/graphics/Bitmap:recycle	()V
+    //   1277: aload 16
+    //   1279: ifnull +16 -> 1295
+    //   1282: aload 16
+    //   1284: invokevirtual 113	android/graphics/Bitmap:isRecycled	()Z
+    //   1287: ifne +8 -> 1295
+    //   1290: aload 16
+    //   1292: invokevirtual 150	android/graphics/Bitmap:recycle	()V
+    //   1295: aload 17
+    //   1297: ifnull +258 -> 1555
+    //   1300: aload 17
+    //   1302: invokevirtual 297	java/io/BufferedOutputStream:close	()V
+    //   1305: return
+    //   1306: astore 13
+    //   1308: aconst_null
+    //   1309: astore 14
+    //   1311: aconst_null
+    //   1312: astore 12
+    //   1314: aconst_null
+    //   1315: astore 17
+    //   1317: aload 12
+    //   1319: astore 16
+    //   1321: aload 14
+    //   1323: astore 15
+    //   1325: aload 13
+    //   1327: astore 18
+    //   1329: aload 15
+    //   1331: astore 14
+    //   1333: aload 16
+    //   1335: astore 12
+    //   1337: aload 17
+    //   1339: astore 13
+    //   1341: invokestatic 172	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1344: ifeq +91 -> 1435
+    //   1347: aload 15
+    //   1349: astore 14
+    //   1351: aload 16
+    //   1353: astore 12
+    //   1355: aload 17
+    //   1357: astore 13
+    //   1359: new 59	java/lang/StringBuilder
+    //   1362: dup
+    //   1363: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   1366: astore 19
+    //   1368: aload 15
+    //   1370: astore 14
+    //   1372: aload 16
+    //   1374: astore 12
+    //   1376: aload 17
+    //   1378: astore 13
+    //   1380: aload 19
+    //   1382: ldc_w 304
+    //   1385: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1388: pop
+    //   1389: aload 15
+    //   1391: astore 14
+    //   1393: aload 16
+    //   1395: astore 12
+    //   1397: aload 17
+    //   1399: astore 13
+    //   1401: aload 19
+    //   1403: aload 18
+    //   1405: invokevirtual 307	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1408: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1411: pop
+    //   1412: aload 15
+    //   1414: astore 14
+    //   1416: aload 16
+    //   1418: astore 12
+    //   1420: aload 17
+    //   1422: astore 13
+    //   1424: ldc 183
+    //   1426: iconst_2
+    //   1427: aload 19
+    //   1429: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1432: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1435: aload 15
+    //   1437: ifnull +16 -> 1453
+    //   1440: aload 15
+    //   1442: invokevirtual 113	android/graphics/Bitmap:isRecycled	()Z
+    //   1445: ifne +8 -> 1453
+    //   1448: aload 15
+    //   1450: invokevirtual 150	android/graphics/Bitmap:recycle	()V
+    //   1453: aload 16
+    //   1455: ifnull +16 -> 1471
+    //   1458: aload 16
+    //   1460: invokevirtual 113	android/graphics/Bitmap:isRecycled	()Z
+    //   1463: ifne +8 -> 1471
+    //   1466: aload 16
+    //   1468: invokevirtual 150	android/graphics/Bitmap:recycle	()V
+    //   1471: aload 17
+    //   1473: ifnull +82 -> 1555
+    //   1476: aload 17
+    //   1478: invokevirtual 297	java/io/BufferedOutputStream:close	()V
+    //   1481: return
+    //   1482: astore 16
+    //   1484: aload 14
+    //   1486: astore 15
+    //   1488: aload 13
+    //   1490: astore 14
+    //   1492: aload 16
+    //   1494: astore 13
+    //   1496: aload 15
+    //   1498: ifnull +16 -> 1514
+    //   1501: aload 15
+    //   1503: invokevirtual 113	android/graphics/Bitmap:isRecycled	()Z
+    //   1506: ifne +8 -> 1514
+    //   1509: aload 15
+    //   1511: invokevirtual 150	android/graphics/Bitmap:recycle	()V
+    //   1514: aload 12
+    //   1516: ifnull +16 -> 1532
+    //   1519: aload 12
+    //   1521: invokevirtual 113	android/graphics/Bitmap:isRecycled	()Z
+    //   1524: ifne +8 -> 1532
+    //   1527: aload 12
+    //   1529: invokevirtual 150	android/graphics/Bitmap:recycle	()V
+    //   1532: aload 14
+    //   1534: ifnull +18 -> 1552
+    //   1537: aload 14
+    //   1539: invokevirtual 297	java/io/BufferedOutputStream:close	()V
+    //   1542: goto +10 -> 1552
+    //   1545: astore 12
+    //   1547: aload 12
+    //   1549: invokevirtual 300	java/io/IOException:printStackTrace	()V
+    //   1552: aload 13
+    //   1554: athrow
+    //   1555: return
+    //   1556: astore 12
+    //   1558: goto -355 -> 1203
+    //   1561: astore 12
+    //   1563: goto -471 -> 1092
+    //   1566: astore 14
+    //   1568: goto -515 -> 1053
+    //   1571: astore 13
+    //   1573: goto -554 -> 1019
+    //   1576: astore 14
+    //   1578: goto -597 -> 981
+    //   1581: iconst_0
+    //   1582: istore 9
+    //   1584: iconst_0
+    //   1585: istore 8
+    //   1587: goto -1153 -> 434
+    //   1590: ldc 243
+    //   1592: fstore_1
+    //   1593: goto -1025 -> 568
+    //   1596: fload_1
+    //   1597: ldc 243
+    //   1599: fsub
+    //   1600: fstore 7
+    //   1602: fload 7
+    //   1604: fconst_1
+    //   1605: fcmpl
+    //   1606: ifle +10 -> 1616
+    //   1609: fload_1
+    //   1610: fconst_1
+    //   1611: fsub
+    //   1612: fstore_1
+    //   1613: goto -1045 -> 568
+    //   1616: fload 7
+    //   1618: fconst_0
+    //   1619: fcmpl
+    //   1620: ifle +6 -> 1626
+    //   1623: goto -33 -> 1590
+    //   1626: iconst_0
+    //   1627: istore 8
+    //   1629: goto -1022 -> 607
+    //   1632: iconst_1
+    //   1633: istore 8
+    //   1635: goto -886 -> 749
+    //   1638: goto -889 -> 749
+    //   1641: fconst_0
+    //   1642: fstore_2
+    //   1643: goto -866 -> 777
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1933	0	this	5
-    //   567	1357	1	f1	float
-    //   1232	479	2	f2	float
-    //   73	1571	3	f3	float
-    //   91	1558	4	f4	float
-    //   104	1448	5	f5	float
-    //   1892	17	6	f6	float
-    //   51	1878	7	i	int
-    //   57	1820	8	j	int
-    //   1464	16	9	k	int
-    //   107	1192	10	localObject1	Object
-    //   1352	1	10	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   1356	430	10	localObject2	Object
-    //   1814	1	10	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   1817	44	10	localObject3	Object
-    //   110	1522	11	localObject4	Object
-    //   1660	83	11	localObject5	Object
-    //   1782	1	11	localObject6	Object
-    //   1793	11	11	localObject7	Object
-    //   1809	12	11	localObject8	Object
-    //   1825	1	11	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   1828	1	11	localObject9	Object
-    //   117	917	12	localObject10	Object
-    //   1050	28	12	localException1	java.lang.Exception
-    //   1138	668	12	localObject11	Object
-    //   1833	1	12	localException2	java.lang.Exception
-    //   1838	1	12	localException3	java.lang.Exception
-    //   1843	1	12	localException4	java.lang.Exception
-    //   179	1566	13	localObject12	Object
-    //   1801	7	13	localObject13	Object
-    //   175	1566	14	localObject14	Object
-    //   154	1705	15	localObject15	Object
-    //   158	1705	16	localObject16	Object
-    //   311	1436	17	localObject17	Object
-    //   22	920	18	localObject18	Object
-    //   214	1426	19	localObject19	Object
-    //   335	1318	20	localTextPaint	android.text.TextPaint
-    //   1588	34	21	localFontMetrics	android.graphics.Paint.FontMetrics
+    //   0	1646	0	this	5
+    //   83	1530	1	f1	float
+    //   79	1564	2	f2	float
+    //   593	75	3	f3	float
+    //   91	691	4	f4	float
+    //   108	680	5	f5	float
+    //   121	614	6	f6	float
+    //   1600	17	7	f7	float
+    //   61	1573	8	i	int
+    //   67	1516	9	j	int
+    //   665	12	10	k	int
+    //   357	11	11	bool	boolean
+    //   7	994	12	localObject1	Object
+    //   1069	13	12	localObject2	Object
+    //   1087	1	12	localObject3	Object
+    //   1095	7	12	localException1	java.lang.Exception
+    //   1116	38	12	localObject4	Object
+    //   1169	3	12	localIOException1	java.io.IOException
+    //   1183	345	12	localObject5	Object
+    //   1545	3	12	localIOException2	java.io.IOException
+    //   1556	1	12	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   1561	1	12	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   128	893	13	localObject6	Object
+    //   1025	11	13	localException2	java.lang.Exception
+    //   1044	205	13	localObject7	Object
+    //   1306	20	13	localException3	java.lang.Exception
+    //   1339	214	13	localObject8	Object
+    //   1571	1	13	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   157	807	14	localObject9	Object
+    //   972	1	14	localObject10	Object
+    //   1011	1	14	localObject11	Object
+    //   1028	1	14	localObject12	Object
+    //   1033	10	14	localObject13	Object
+    //   1048	88	14	localObject14	Object
+    //   1177	12	14	localObject15	Object
+    //   1194	344	14	localObject16	Object
+    //   1566	1	14	localOutOfMemoryError4	java.lang.OutOfMemoryError
+    //   1576	1	14	localOutOfMemoryError5	java.lang.OutOfMemoryError
+    //   32	1006	15	localObject17	Object
+    //   1056	7	15	localException4	java.lang.Exception
+    //   1073	437	15	localObject18	Object
+    //   194	1273	16	localObject19	Object
+    //   1482	11	16	localObject20	Object
+    //   397	1080	17	localObject21	Object
+    //   995	1	18	localException5	java.lang.Exception
+    //   1327	77	18	localException6	java.lang.Exception
+    //   1366	62	19	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   328	337	1050	java/lang/Exception
-    //   349	355	1050	java/lang/Exception
-    //   367	379	1050	java/lang/Exception
-    //   391	397	1050	java/lang/Exception
-    //   409	456	1050	java/lang/Exception
-    //   468	480	1050	java/lang/Exception
-    //   492	512	1050	java/lang/Exception
-    //   524	531	1050	java/lang/Exception
-    //   543	550	1050	java/lang/Exception
-    //   562	568	1050	java/lang/Exception
-    //   585	599	1050	java/lang/Exception
-    //   626	662	1050	java/lang/Exception
-    //   674	687	1050	java/lang/Exception
-    //   708	719	1050	java/lang/Exception
-    //   731	737	1050	java/lang/Exception
-    //   749	754	1050	java/lang/Exception
-    //   766	779	1050	java/lang/Exception
-    //   791	802	1050	java/lang/Exception
-    //   814	832	1050	java/lang/Exception
-    //   844	857	1050	java/lang/Exception
-    //   869	874	1050	java/lang/Exception
-    //   886	891	1050	java/lang/Exception
-    //   903	911	1050	java/lang/Exception
-    //   923	929	1050	java/lang/Exception
-    //   941	949	1050	java/lang/Exception
-    //   961	982	1050	java/lang/Exception
-    //   1035	1047	1050	java/lang/Exception
-    //   1140	1153	1050	java/lang/Exception
-    //   1165	1176	1050	java/lang/Exception
-    //   1195	1212	1050	java/lang/Exception
-    //   1224	1233	1050	java/lang/Exception
-    //   1260	1267	1050	java/lang/Exception
-    //   1279	1286	1050	java/lang/Exception
-    //   1298	1304	1050	java/lang/Exception
-    //   1316	1320	1050	java/lang/Exception
-    //   1332	1349	1050	java/lang/Exception
-    //   1438	1443	1050	java/lang/Exception
-    //   1458	1466	1050	java/lang/Exception
-    //   1494	1530	1050	java/lang/Exception
-    //   1542	1550	1050	java/lang/Exception
-    //   1583	1590	1050	java/lang/Exception
-    //   1602	1609	1050	java/lang/Exception
-    //   1621	1627	1050	java/lang/Exception
-    //   1639	1657	1050	java/lang/Exception
-    //   1726	1735	1050	java/lang/Exception
-    //   1750	1779	1050	java/lang/Exception
-    //   185	193	1352	java/lang/OutOfMemoryError
-    //   205	216	1352	java/lang/OutOfMemoryError
-    //   228	237	1352	java/lang/OutOfMemoryError
-    //   249	290	1352	java/lang/OutOfMemoryError
-    //   302	307	1352	java/lang/OutOfMemoryError
-    //   328	337	1352	java/lang/OutOfMemoryError
-    //   349	355	1352	java/lang/OutOfMemoryError
-    //   367	379	1352	java/lang/OutOfMemoryError
-    //   391	397	1352	java/lang/OutOfMemoryError
-    //   409	456	1352	java/lang/OutOfMemoryError
-    //   468	480	1352	java/lang/OutOfMemoryError
-    //   492	512	1352	java/lang/OutOfMemoryError
-    //   524	531	1352	java/lang/OutOfMemoryError
-    //   543	550	1352	java/lang/OutOfMemoryError
-    //   562	568	1352	java/lang/OutOfMemoryError
-    //   585	599	1352	java/lang/OutOfMemoryError
-    //   626	662	1352	java/lang/OutOfMemoryError
-    //   674	687	1352	java/lang/OutOfMemoryError
-    //   708	719	1352	java/lang/OutOfMemoryError
-    //   731	737	1352	java/lang/OutOfMemoryError
-    //   749	754	1352	java/lang/OutOfMemoryError
-    //   766	779	1352	java/lang/OutOfMemoryError
-    //   791	802	1352	java/lang/OutOfMemoryError
-    //   814	832	1352	java/lang/OutOfMemoryError
-    //   844	857	1352	java/lang/OutOfMemoryError
-    //   869	874	1352	java/lang/OutOfMemoryError
-    //   886	891	1352	java/lang/OutOfMemoryError
-    //   903	911	1352	java/lang/OutOfMemoryError
-    //   923	929	1352	java/lang/OutOfMemoryError
-    //   941	949	1352	java/lang/OutOfMemoryError
-    //   961	982	1352	java/lang/OutOfMemoryError
-    //   1035	1047	1352	java/lang/OutOfMemoryError
-    //   1140	1153	1352	java/lang/OutOfMemoryError
-    //   1165	1176	1352	java/lang/OutOfMemoryError
-    //   1195	1212	1352	java/lang/OutOfMemoryError
-    //   1224	1233	1352	java/lang/OutOfMemoryError
-    //   1260	1267	1352	java/lang/OutOfMemoryError
-    //   1279	1286	1352	java/lang/OutOfMemoryError
-    //   1298	1304	1352	java/lang/OutOfMemoryError
-    //   1316	1320	1352	java/lang/OutOfMemoryError
-    //   1332	1349	1352	java/lang/OutOfMemoryError
-    //   1438	1443	1352	java/lang/OutOfMemoryError
-    //   1458	1466	1352	java/lang/OutOfMemoryError
-    //   1494	1530	1352	java/lang/OutOfMemoryError
-    //   1542	1550	1352	java/lang/OutOfMemoryError
-    //   1583	1590	1352	java/lang/OutOfMemoryError
-    //   1602	1609	1352	java/lang/OutOfMemoryError
-    //   1621	1627	1352	java/lang/OutOfMemoryError
-    //   1639	1657	1352	java/lang/OutOfMemoryError
-    //   1726	1735	1352	java/lang/OutOfMemoryError
-    //   1750	1779	1352	java/lang/OutOfMemoryError
-    //   185	193	1660	finally
-    //   205	216	1660	finally
-    //   228	237	1660	finally
-    //   249	290	1660	finally
-    //   302	307	1660	finally
-    //   328	337	1660	finally
-    //   349	355	1660	finally
-    //   367	379	1660	finally
-    //   391	397	1660	finally
-    //   409	456	1660	finally
-    //   468	480	1660	finally
-    //   492	512	1660	finally
-    //   524	531	1660	finally
-    //   543	550	1660	finally
-    //   562	568	1660	finally
-    //   585	599	1660	finally
-    //   626	662	1660	finally
-    //   674	687	1660	finally
-    //   708	719	1660	finally
-    //   731	737	1660	finally
-    //   749	754	1660	finally
-    //   766	779	1660	finally
-    //   791	802	1660	finally
-    //   814	832	1660	finally
-    //   844	857	1660	finally
-    //   869	874	1660	finally
-    //   886	891	1660	finally
-    //   903	911	1660	finally
-    //   923	929	1660	finally
-    //   941	949	1660	finally
-    //   961	982	1660	finally
-    //   1035	1047	1660	finally
-    //   1140	1153	1660	finally
-    //   1165	1176	1660	finally
-    //   1195	1212	1660	finally
-    //   1224	1233	1660	finally
-    //   1260	1267	1660	finally
-    //   1279	1286	1660	finally
-    //   1298	1304	1660	finally
-    //   1316	1320	1660	finally
-    //   1332	1349	1660	finally
-    //   1366	1372	1660	finally
-    //   1380	1389	1660	finally
-    //   1438	1443	1660	finally
-    //   1458	1466	1660	finally
-    //   1494	1530	1660	finally
-    //   1542	1550	1660	finally
-    //   1583	1590	1660	finally
-    //   1602	1609	1660	finally
-    //   1621	1627	1660	finally
-    //   1639	1657	1660	finally
-    //   1726	1735	1660	finally
-    //   1750	1779	1660	finally
-    //   112	119	1782	finally
-    //   128	148	1793	finally
-    //   1055	1091	1801	finally
-    //   112	119	1814	java/lang/OutOfMemoryError
-    //   128	148	1825	java/lang/OutOfMemoryError
-    //   112	119	1833	java/lang/Exception
-    //   128	148	1838	java/lang/Exception
-    //   185	193	1843	java/lang/Exception
-    //   205	216	1843	java/lang/Exception
-    //   228	237	1843	java/lang/Exception
-    //   249	290	1843	java/lang/Exception
-    //   302	307	1843	java/lang/Exception
+    //   901	933	972	finally
+    //   933	962	972	finally
+    //   901	933	995	java/lang/Exception
+    //   933	962	995	java/lang/Exception
+    //   242	251	1011	finally
+    //   254	348	1011	finally
+    //   348	359	1011	finally
+    //   372	399	1011	finally
+    //   399	412	1011	finally
+    //   417	431	1011	finally
+    //   439	498	1011	finally
+    //   507	519	1011	finally
+    //   522	535	1011	finally
+    //   538	560	1011	finally
+    //   563	568	1011	finally
+    //   568	594	1011	finally
+    //   612	619	1011	finally
+    //   621	634	1011	finally
+    //   634	656	1011	finally
+    //   659	667	1011	finally
+    //   679	733	1011	finally
+    //   754	774	1011	finally
+    //   777	796	1011	finally
+    //   799	807	1011	finally
+    //   810	848	1011	finally
+    //   848	901	1011	finally
+    //   242	251	1025	java/lang/Exception
+    //   254	348	1025	java/lang/Exception
+    //   348	359	1025	java/lang/Exception
+    //   372	399	1025	java/lang/Exception
+    //   399	412	1025	java/lang/Exception
+    //   417	431	1025	java/lang/Exception
+    //   439	498	1025	java/lang/Exception
+    //   507	519	1025	java/lang/Exception
+    //   522	535	1025	java/lang/Exception
+    //   538	560	1025	java/lang/Exception
+    //   563	568	1025	java/lang/Exception
+    //   568	594	1025	java/lang/Exception
+    //   612	619	1025	java/lang/Exception
+    //   621	634	1025	java/lang/Exception
+    //   634	656	1025	java/lang/Exception
+    //   659	667	1025	java/lang/Exception
+    //   679	733	1025	java/lang/Exception
+    //   754	774	1025	java/lang/Exception
+    //   777	796	1025	java/lang/Exception
+    //   799	807	1025	java/lang/Exception
+    //   810	848	1025	java/lang/Exception
+    //   848	901	1025	java/lang/Exception
+    //   168	242	1033	finally
+    //   168	242	1056	java/lang/Exception
+    //   135	155	1069	finally
+    //   135	155	1095	java/lang/Exception
+    //   1163	1168	1169	java/io/IOException
+    //   1300	1305	1169	java/io/IOException
+    //   1476	1481	1169	java/io/IOException
+    //   123	130	1177	finally
+    //   123	130	1306	java/lang/Exception
+    //   1232	1238	1482	finally
+    //   1250	1259	1482	finally
+    //   1341	1347	1482	finally
+    //   1359	1368	1482	finally
+    //   1380	1389	1482	finally
+    //   1401	1412	1482	finally
+    //   1424	1435	1482	finally
+    //   1537	1542	1545	java/io/IOException
+    //   123	130	1556	java/lang/OutOfMemoryError
+    //   135	155	1561	java/lang/OutOfMemoryError
+    //   168	242	1566	java/lang/OutOfMemoryError
+    //   242	251	1571	java/lang/OutOfMemoryError
+    //   254	348	1571	java/lang/OutOfMemoryError
+    //   348	359	1571	java/lang/OutOfMemoryError
+    //   372	399	1571	java/lang/OutOfMemoryError
+    //   399	412	1571	java/lang/OutOfMemoryError
+    //   417	431	1571	java/lang/OutOfMemoryError
+    //   439	498	1571	java/lang/OutOfMemoryError
+    //   507	519	1571	java/lang/OutOfMemoryError
+    //   522	535	1571	java/lang/OutOfMemoryError
+    //   538	560	1571	java/lang/OutOfMemoryError
+    //   563	568	1571	java/lang/OutOfMemoryError
+    //   568	594	1571	java/lang/OutOfMemoryError
+    //   612	619	1571	java/lang/OutOfMemoryError
+    //   621	634	1571	java/lang/OutOfMemoryError
+    //   634	656	1571	java/lang/OutOfMemoryError
+    //   659	667	1571	java/lang/OutOfMemoryError
+    //   679	733	1571	java/lang/OutOfMemoryError
+    //   754	774	1571	java/lang/OutOfMemoryError
+    //   777	796	1571	java/lang/OutOfMemoryError
+    //   799	807	1571	java/lang/OutOfMemoryError
+    //   810	848	1571	java/lang/OutOfMemoryError
+    //   848	901	1571	java/lang/OutOfMemoryError
+    //   901	933	1576	java/lang/OutOfMemoryError
+    //   933	962	1576	java/lang/OutOfMemoryError
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.ConfigServlet.5
  * JD-Core Version:    0.7.0.1
  */

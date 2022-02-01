@@ -15,24 +15,22 @@ final class MiniAppController$9
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    if (this.val$listener != null)
+    paramBundle = this.val$listener;
+    if (paramBundle != null)
     {
-      paramBundle = this.val$listener;
-      if (paramInt != 0) {
-        break label39;
+      boolean bool;
+      if (paramInt == 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label39:
-    for (boolean bool = true;; bool = false)
-    {
       paramBundle.onLaunchResult(bool, new Bundle());
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppController.9
  * JD-Core Version:    0.7.0.1
  */

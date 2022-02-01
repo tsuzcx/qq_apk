@@ -51,12 +51,17 @@ public class GPUImagePixelationFilter
   public void a(int paramInt1, int paramInt2)
   {
     super.a(paramInt1, paramInt2);
-    TLog.b("GPUImagePixelationFilter", "onOutputSizeChanged width=" + paramInt1 + ", height=%s" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onOutputSizeChanged width=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", height=%s");
+    localStringBuilder.append(paramInt2);
+    TLog.b("GPUImagePixelationFilter", localStringBuilder.toString());
     this.jdField_b_of_type_Float = 0.0009259259F;
     this.jdField_c_of_type_Float = 0.0005208334F;
   }
   
-  public void b()
+  protected void b()
   {
     super.b();
     GLES20.glUniform1f(this.jdField_c_of_type_Int, this.jdField_b_of_type_Float);
@@ -75,8 +80,9 @@ public class GPUImagePixelationFilter
         TLog.d("GPUImagePixelationFilter", "mosaic bitmap is recycled");
         return;
       }
-      if (this.f != -1) {
-        GlUtil.a(this.f);
+      int i = this.f;
+      if (i != -1) {
+        GlUtil.a(i);
       }
       this.f = GlUtil.a(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
       this.jdField_a_of_type_Boolean = false;
@@ -88,22 +94,27 @@ public class GPUImagePixelationFilter
     GLES20.glUniform1i(this.g, 1);
   }
   
-  public void c()
+  protected void c()
   {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      TLog.b("GPUImagePixelationFilter", "mosaic bitmap recycle");
+      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        TLog.b("GPUImagePixelationFilter", "mosaic bitmap recycle");
+      }
     }
-    if (this.f != -1) {
-      GlUtil.a(this.f);
+    int i = this.f;
+    if (i != -1) {
+      GlUtil.a(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.renderer.GPUImagePixelationFilter
  * JD-Core Version:    0.7.0.1
  */

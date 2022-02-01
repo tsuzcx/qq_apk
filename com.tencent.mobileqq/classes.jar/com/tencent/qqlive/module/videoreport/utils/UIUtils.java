@@ -70,25 +70,31 @@ public class UIUtils
   
   public static AreaInfo getExposureAreaInfo(View paramView)
   {
-    double d = 0.0D;
     if (paramView == null) {
       return null;
     }
     long l2 = paramView.getWidth() * paramView.getHeight();
+    boolean bool = paramView.isShown();
+    double d1 = 0.0D;
     long l1;
-    if ((paramView.isShown()) && (paramView.getGlobalVisibleRect(TEMP_RECT)))
+    if ((bool) && (paramView.getGlobalVisibleRect(TEMP_RECT)))
     {
       l1 = TEMP_RECT.width() * TEMP_RECT.height();
-      if (l2 != 0L) {}
+      if (l2 != 0L)
+      {
+        d1 = l1;
+        Double.isNaN(d1);
+        double d2 = l2;
+        Double.isNaN(d2);
+        d1 = d1 * 1.0D / d2;
+      }
     }
-    for (;;)
+    else
     {
-      return new AreaInfo(l2, l1, d);
-      d = l1 * 1.0D / l2;
-      continue;
       l1 = 0L;
-      d = 0.0D;
+      d1 = 0.0D;
     }
+    return new AreaInfo(l2, l1, d1);
   }
   
   public static Object getListScrollListener(AbsListView paramAbsListView)
@@ -116,20 +122,27 @@ public class UIUtils
   
   public static double getViewExposureRate(View paramView)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
+    if (paramView == null) {
       return 0.0D;
-      if ((paramView.isShown()) && (paramView.getGlobalVisibleRect(TEMP_RECT))) {}
-      for (int i = 1; i != 0; i = 0)
-      {
-        long l1 = TEMP_RECT.width();
-        long l2 = TEMP_RECT.height();
-        long l3 = paramView.getWidth();
-        long l4 = paramView.getHeight();
-        return l1 * l2 * 1.0D / (l3 * l4);
-      }
     }
+    int i;
+    if ((paramView.isShown()) && (paramView.getGlobalVisibleRect(TEMP_RECT))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0) {
+      return 0.0D;
+    }
+    long l1 = TEMP_RECT.width();
+    long l2 = TEMP_RECT.height();
+    long l3 = paramView.getWidth();
+    long l4 = paramView.getHeight();
+    double d1 = l1 * l2;
+    Double.isNaN(d1);
+    double d2 = l3 * l4;
+    Double.isNaN(d2);
+    return d1 * 1.0D / d2;
   }
   
   public static String getViewInfo(View paramView)
@@ -137,31 +150,35 @@ public class UIUtils
     if (paramView == null) {
       return "null";
     }
-    str3 = "0";
+    localObject3 = "0";
     int i = paramView.getId();
-    String str1 = str3;
+    Object localObject1 = localObject3;
     if (i != -1) {}
     try
     {
       Context localContext = ReportUtils.getContext();
-      str1 = str3;
+      localObject1 = localObject3;
       if (localContext != null) {
-        str1 = localContext.getResources().getResourceName(i);
+        localObject1 = localContext.getResources().getResourceName(i);
       }
     }
     catch (Resources.NotFoundException localNotFoundException)
     {
       for (;;)
       {
-        String str2 = str3;
+        Object localObject2 = localObject3;
       }
     }
-    return paramView.getClass().getSimpleName() + ":" + str1;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(paramView.getClass().getSimpleName());
+    ((StringBuilder)localObject3).append(":");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    return ((StringBuilder)localObject3).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.UIUtils
  * JD-Core Version:    0.7.0.1
  */

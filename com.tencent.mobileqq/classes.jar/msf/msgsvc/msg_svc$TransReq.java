@@ -18,13 +18,14 @@ public final class msg_svc$TransReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "command", "req_tag", "req_buff" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, TransReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "command", "req_tag", "req_buff" }, new Object[] { localInteger, localInteger, localByteStringMicro }, TransReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msf.msgsvc.msg_svc.TransReq
  * JD-Core Version:    0.7.0.1
  */

@@ -70,22 +70,22 @@ public class RealTimeLogReportRequest
     try
     {
       paramJSONObject.mergeFrom(decode(paramArrayOfByte));
-      if (paramJSONObject != null) {
-        return new JSONObject();
-      }
-      QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
-      return null;
+      paramArrayOfByte = new JSONObject();
+      return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("ProtoBufRequest", paramJSONObject.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.RealTimeLogReportRequest
  * JD-Core Version:    0.7.0.1
  */

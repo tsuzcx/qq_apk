@@ -50,10 +50,10 @@ public class MsgMoreViewV2
   private void init(Context paramContext)
   {
     this.mContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131562561, this);
-    this.mAvatarListLayout = ((FrameLayout)findViewById(2131363223));
-    this.mText = ((TextView)findViewById(2131371891));
-    this.mArrow = ((ImageView)findViewById(2131363027));
+    LayoutInflater.from(paramContext).inflate(2080636937, this);
+    this.mAvatarListLayout = ((FrameLayout)findViewById(2080571403));
+    this.mText = ((TextView)findViewById(2080571467));
+    this.mArrow = ((ImageView)findViewById(2080571396));
   }
   
   public void setData(MQMsg paramMQMsg, boolean paramBoolean)
@@ -63,24 +63,24 @@ public class MsgMoreViewV2
     {
       this.mAvatarListLayout.setVisibility(0);
       this.mAvatarListLayout.removeAllViews();
-      if (5 < paramMQMsg.userAvatar.size()) {}
-      for (int i = 5;; i = paramMQMsg.userAvatar.size())
+      int i = 5;
+      if (5 >= paramMQMsg.userAvatar.size()) {
+        i = paramMQMsg.userAvatar.size();
+      }
+      int j = 0;
+      while (j < i)
       {
-        int j = 0;
-        while (j < i)
-        {
-          UserListItemView localUserListItemView = new UserListItemView(this.mContext, 2, paramBoolean, false);
-          localUserListItemView.setUin((String)paramMQMsg.userAvatar.get(j));
-          localUserListItemView.setTranslationX(AVATAR_GAP * j);
-          this.mAvatarListLayout.addView(localUserListItemView, j);
-          j += 1;
-        }
+        UserListItemView localUserListItemView = new UserListItemView(this.mContext, 2, paramBoolean, false);
+        localUserListItemView.setUin((String)paramMQMsg.userAvatar.get(j));
+        localUserListItemView.setTranslationX(AVATAR_GAP * j);
+        this.mAvatarListLayout.addView(localUserListItemView, j);
+        j += 1;
       }
     }
     if (paramBoolean)
     {
       this.mText.setTextColor(-1);
-      this.mArrow.setImageDrawable(getResources().getDrawable(2130844202));
+      this.mArrow.setImageDrawable(getResources().getDrawable(2130844104));
     }
     if (!TextUtils.isEmpty(paramMQMsg.content)) {
       this.mText.setText(paramMQMsg.content);
@@ -97,7 +97,7 @@ public class MsgMoreViewV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgMoreViewV2
  * JD-Core Version:    0.7.0.1
  */

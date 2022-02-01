@@ -5,7 +5,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.av.ui.redbag.RedBagUtil;
+import com.tencent.av.VideoUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -36,14 +36,26 @@ public class PromotionEntry
   private void a(String paramString, PromotionConfigInfo.PromotionItem paramPromotionItem, boolean paramBoolean)
   {
     String str = jdField_a_of_type_JavaLangString;
-    paramString = new StringBuilder().append("updateOperateBtnStatus[").append(paramString).append("], visible[").append(paramBoolean).append("], mIsWorldCupMode[").append(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$OnARPromotionEntryListenr.d()).append("], mEnterTransferDoorModeByClickEntry[").append(this.jdField_a_of_type_Boolean).append("], operateBtn[");
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.w(str, 1, bool + "]");
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        break;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateOperateBtnStatus[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], visible[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("], mIsWorldCupMode[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$OnARPromotionEntryListenr.d());
+    localStringBuilder.append("], mEnterTransferDoorModeByClickEntry[");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("], operateBtn[");
+    boolean bool;
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
+    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable == null) {
@@ -52,24 +64,24 @@ public class PromotionEntry
     if (paramPromotionItem != null) {
       this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem = paramPromotionItem;
     }
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_Boolean = paramBoolean;
-    PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable, new WeakReference(this.jdField_a_of_type_AndroidWidgetImageView));
+    paramString = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable;
+    paramString.jdField_a_of_type_Boolean = paramBoolean;
+    PromotionEntry.UpdateOperateBtnStatusRunnable.a(paramString, new WeakReference(this.jdField_a_of_type_AndroidWidgetImageView));
     ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable);
     if (paramBoolean)
     {
-      if (this.b) {
-        if (paramPromotionItem == null) {
-          break label240;
-        }
-      }
-      label240:
-      for (paramString = paramPromotionItem.jdField_a_of_type_JavaLangString;; paramString = "0")
+      if (this.b)
       {
+        if (paramPromotionItem != null) {
+          paramString = paramPromotionItem.jdField_a_of_type_JavaLangString;
+        } else {
+          paramString = "0";
+        }
         ReportController.b(null, "CliOper", "", "", "0X8009C6A", "0X8009C6A", 0, 0, paramString, "0", "0", "");
         this.b = false;
-        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable, 500L);
-        return;
       }
+      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable, 500L);
+      return;
     }
     ThreadManager.getUIHandler().post(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable);
   }
@@ -78,14 +90,16 @@ public class PromotionEntry
   {
     this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$OnARPromotionEntryListenr = null;
     this.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable != null)
+    paramAppInterface = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable;
+    if (paramAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.a();
+      paramAppInterface.a();
       this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable = null;
     }
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    paramAppInterface = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (paramAppInterface != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
+      paramAppInterface.setOnClickListener(null);
       this.jdField_a_of_type_AndroidWidgetImageView = null;
     }
   }
@@ -97,12 +111,15 @@ public class PromotionEntry
     }
     paramAppInterface = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$OnARPromotionEntryListenr.a();
     ImageView localImageView = new ImageView(paramAppInterface.getContext());
-    Object localObject = PromotionPath.a(paramPromotionItem) + "entry.png";
-    localObject = RedBagUtil.a(localImageView.getResources(), (String)localObject);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(PromotionPath.a(paramPromotionItem));
+    ((StringBuilder)localObject).append("entry.png");
+    localObject = ((StringBuilder)localObject).toString();
+    localObject = VideoUtils.a(localImageView.getResources(), (String)localObject);
     if (localObject != null) {
       localImageView.setImageBitmap((Bitmap)localObject);
     }
-    localObject = new RelativeLayout.LayoutParams(AIOUtils.a(217.0F, localImageView.getResources()), AIOUtils.a(47.0F, localImageView.getResources()));
+    localObject = new RelativeLayout.LayoutParams(AIOUtils.b(217.0F, localImageView.getResources()), AIOUtils.b(47.0F, localImageView.getResources()));
     ((RelativeLayout.LayoutParams)localObject).addRule(10, -1);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     int j = ImmersiveUtils.getScreenHeight();
@@ -138,7 +155,7 @@ public class PromotionEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionEntry
  * JD-Core Version:    0.7.0.1
  */

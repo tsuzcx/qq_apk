@@ -30,21 +30,26 @@ class NativeFileSystem$FileEntryIterator
   
   protected Iterator<? extends FileSystem.FileEntry> traversal(File paramFile, FileSystem.FileEntry paramFileEntry)
   {
-    if (!this.mRecursive) {}
-    do
+    if (!this.mRecursive) {
+      return null;
+    }
+    if ((paramFileEntry != null) && (!paramFileEntry.isDirectory)) {
+      return null;
+    }
+    paramFile = paramFile.listFiles();
+    if (paramFile != null)
     {
-      do
-      {
+      if (paramFile.length == 0) {
         return null;
-      } while ((paramFileEntry != null) && (!paramFileEntry.isDirectory));
-      paramFile = paramFile.listFiles();
-    } while ((paramFile == null) || (paramFile.length == 0));
-    return new FileEntryIterator(this.this$0, Arrays.asList(paramFile), this.mChildrenFirst, true);
+      }
+      return new FileEntryIterator(this.this$0, Arrays.asList(paramFile), this.mChildrenFirst, true);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.NativeFileSystem.FileEntryIterator
  * JD-Core Version:    0.7.0.1
  */

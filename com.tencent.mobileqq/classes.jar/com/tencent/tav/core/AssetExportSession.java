@@ -21,8 +21,10 @@ public class AssetExportSession
   AssetExtension assetExtension;
   @Nullable
   private AudioMix audioMix;
+  @Nullable
+  private AssetExportSession.ErrorInterceptor errorInterceptor;
   @NonNull
-  private final ExportConfig exportConfig;
+  private ExportConfig exportConfig;
   @Nullable
   ExportErrorStatus exportErrorStatus;
   private AssetExportThread exportThread;
@@ -32,6 +34,7 @@ public class AssetExportSession
   private String presetName;
   float progress;
   private RenderContextParams renderContextParams;
+  int retryIndex = 0;
   private boolean revertMode = false;
   AssetExportSession.AssetExportSessionStatus status;
   private List<String> supportedFileTypes;
@@ -68,16 +71,41 @@ public class AssetExportSession
     this(paramAsset, new ExportConfig(paramOutputConfig), new AssetExtension("export"));
   }
   
+  private void interceptHandlerCallback(AssetExportSession paramAssetExportSession, AssetExportSession.ExportCallbackHandler paramExportCallbackHandler)
+  {
+    if (paramAssetExportSession.getStatus() == AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusFailed)
+    {
+      AssetExportSession.ErrorInterceptor localErrorInterceptor = this.errorInterceptor;
+      if ((localErrorInterceptor != null) && (localErrorInterceptor.a(paramAssetExportSession, this.retryIndex)))
+      {
+        this.retryIndex += 1;
+        exportAsynchronouslyWithCompletionHandler(paramExportCallbackHandler);
+        return;
+      }
+    }
+    paramExportCallbackHandler.handlerCallback(paramAssetExportSession);
+  }
+  
   public void cancelExport()
   {
-    if (this.exportThread != null) {
-      this.exportThread.cancel();
+    AssetExportThread localAssetExportThread = this.exportThread;
+    if (localAssetExportThread != null) {
+      localAssetExportThread.cancel();
     }
+    this.errorInterceptor = null;
   }
   
   public void exportAsynchronouslyWithCompletionHandler(AssetExportSession.ExportCallbackHandler paramExportCallbackHandler)
   {
-    this.exportThread = new AssetExportThread(this, paramExportCallbackHandler, this.audioMix, this.exportConfig);
+    Object localObject = this.videoComposition;
+    if (localObject != null) {
+      this.videoCompositing = ((VideoComposition)localObject).getCustomVideoCompositor();
+    }
+    localObject = this.exportThread;
+    if (localObject != null) {
+      ((AssetExportThread)localObject).removeCallback();
+    }
+    this.exportThread = new AssetExportThread(this, new AssetExportSession.1(this, paramExportCallbackHandler), this.audioMix, this.exportConfig);
     this.exportThread.setRenderContextParams(this.renderContextParams);
     this.exportThread.startExport();
   }
@@ -95,8 +123,9 @@ public class AssetExportSession
   
   public int getErrCode()
   {
-    if (this.exportErrorStatus != null) {
-      return this.exportErrorStatus.code;
+    ExportErrorStatus localExportErrorStatus = this.exportErrorStatus;
+    if (localExportErrorStatus != null) {
+      return localExportErrorStatus.code;
     }
     return 0;
   }
@@ -143,6 +172,11 @@ public class AssetExportSession
     return this.renderContextParams;
   }
   
+  public int getRetryIndex()
+  {
+    return this.retryIndex;
+  }
+  
   public AssetExportSession.AssetExportSessionStatus getStatus()
   {
     return this.status;
@@ -155,8 +189,9 @@ public class AssetExportSession
   
   public Throwable getThrowable()
   {
-    if (this.exportErrorStatus != null) {
-      return this.exportErrorStatus.throwable;
+    ExportErrorStatus localExportErrorStatus = this.exportErrorStatus;
+    if (localExportErrorStatus != null) {
+      return localExportErrorStatus.throwable;
     }
     return null;
   }
@@ -178,9 +213,10 @@ public class AssetExportSession
   
   void release()
   {
-    if (this.audioMix != null)
+    AudioMix localAudioMix = this.audioMix;
+    if (localAudioMix != null)
     {
-      this.audioMix.release();
+      localAudioMix.release();
       this.audioMix = null;
     }
   }
@@ -193,6 +229,16 @@ public class AssetExportSession
   public void setAudioMix(AudioMix paramAudioMix)
   {
     this.audioMix = paramAudioMix;
+  }
+  
+  public void setErrorInterceptor(@Nullable AssetExportSession.ErrorInterceptor paramErrorInterceptor)
+  {
+    this.errorInterceptor = paramErrorInterceptor;
+  }
+  
+  public void setExportConfig(@NonNull ExportConfig paramExportConfig)
+  {
+    this.exportConfig = paramExportConfig;
   }
   
   public void setMetadata(List<MetadataItem> paramList)
@@ -213,8 +259,9 @@ public class AssetExportSession
   public void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
     this.renderContextParams = paramRenderContextParams;
-    if (this.exportThread != null) {
-      this.exportThread.setRenderContextParams(paramRenderContextParams);
+    AssetExportThread localAssetExportThread = this.exportThread;
+    if (localAssetExportThread != null) {
+      localAssetExportThread.setRenderContextParams(paramRenderContextParams);
     }
   }
   
@@ -231,14 +278,11 @@ public class AssetExportSession
   public void setVideoComposition(@Nullable VideoComposition paramVideoComposition)
   {
     this.videoComposition = paramVideoComposition;
-    if (paramVideoComposition != null) {
-      this.videoCompositing = paramVideoComposition.getCustomVideoCompositor();
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.AssetExportSession
  * JD-Core Version:    0.7.0.1
  */

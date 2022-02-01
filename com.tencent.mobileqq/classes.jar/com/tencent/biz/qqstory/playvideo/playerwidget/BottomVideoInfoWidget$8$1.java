@@ -14,18 +14,15 @@ class BottomVideoInfoWidget$8$1
     Activity localActivity = this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget.b();
     if (StoryPublishLauncher.a().a(localActivity, new Bundle(), 467)) {
       BottomVideoInfoWidget.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget, localActivity, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.d, this.a.e, this.a.f, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget.l();
-      return;
+    } else {
       BottomVideoInfoWidget.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget, new BottomVideoInfoWidget.8.1.1(this, localActivity));
     }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.8.1
  * JD-Core Version:    0.7.0.1
  */

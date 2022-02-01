@@ -17,10 +17,11 @@ public abstract class FlingHandler
   protected int a()
   {
     Activity localActivity = (Activity)this.a.get();
+    int i = 0;
     if (localActivity != null) {
-      return localActivity.getIntent().getIntExtra("fling_code_key", 0);
+      i = localActivity.getIntent().getIntExtra("fling_code_key", 0);
     }
-    return 0;
+    return i;
   }
   
   protected abstract void a();
@@ -48,7 +49,7 @@ public abstract class FlingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.FlingHandler
  * JD-Core Version:    0.7.0.1
  */

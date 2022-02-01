@@ -22,17 +22,15 @@ public class GPUTextureMergeFilter
   {
     checkGlError("onDrawFrame start");
     int i2 = getProgram();
-    float[] arrayOfFloat = paramArrayOfFloat1;
     if (paramArrayOfFloat1 == null)
-    {
-      arrayOfFloat = new float[16];
-      Matrix.setIdentityM(arrayOfFloat, 0);
-    }
-    paramArrayOfFloat1 = paramArrayOfFloat2;
-    if (paramArrayOfFloat2 == null)
     {
       paramArrayOfFloat1 = new float[16];
       Matrix.setIdentityM(paramArrayOfFloat1, 0);
+    }
+    if (paramArrayOfFloat2 == null)
+    {
+      paramArrayOfFloat2 = new float[16];
+      Matrix.setIdentityM(paramArrayOfFloat2, 0);
     }
     GLES20.glUseProgram(i2);
     checkGlError("glUseProgram");
@@ -56,8 +54,8 @@ public class GPUTextureMergeFilter
     checkGlError("glVertexAttribPointer mTextureHandle");
     GLES20.glEnableVertexAttribArray(j);
     checkGlError("glEnableVertexAttribArray mTextureHandle");
-    GLES20.glUniformMatrix4fv(k, 1, false, paramArrayOfFloat1, 0);
-    GLES20.glUniformMatrix4fv(m, 1, false, arrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(k, 1, false, paramArrayOfFloat2, 0);
+    GLES20.glUniformMatrix4fv(m, 1, false, paramArrayOfFloat1, 0);
     GLES20.glUniform1i(n, 0);
     GLES20.glUniform1i(i1, 1);
     GLES20.glUniform1i(i2, 2);
@@ -80,7 +78,7 @@ public class GPUTextureMergeFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUTextureMergeFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,21 @@
 package dov.com.qq.im.video;
 
 import android.graphics.Bitmap;
+import com.tencent.aelight.camera.download.api.IAEKitForQQ;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
-import dov.com.qq.im.ae.AEKitForQQ;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Locale;
 
 public class GifEncoder
 {
-  private static int jdField_a_of_type_Int;
-  private static int b;
-  private static int c;
-  private static int d;
-  private static final int e;
+  private static int jdField_a_of_type_Int = 0;
+  private static int b = 1;
+  private static int c = 2;
+  private static int d = 3;
+  private static final int e = Runtime.getRuntime().availableProcessors();
   private long jdField_a_of_type_Long = 0L;
   private int f = Math.max(2, Math.min(e - 1, 4));
   private int g;
@@ -24,21 +25,15 @@ public class GifEncoder
   {
     try
     {
-      AEKitForQQ.a();
+      ((IAEKitForQQ)QRoute.api(IAEKitForQQ.class)).init();
       System.load(new File(FeatureManager.getSoDir(), "libgiftools.so").getPath());
-      jdField_a_of_type_Int = 0;
-      b = 1;
-      c = 2;
-      d = 3;
-      e = Runtime.getRuntime().availableProcessors();
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("GifEncoder", 4, "load libgiftools.so fail, msg = " + localException.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("load libgiftools.so fail, msg = ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("GifEncoder", 4, localStringBuilder.toString());
     }
   }
   
@@ -72,17 +67,19 @@ public class GifEncoder
     this.h = paramInt2;
     QLog.d("GifEncoder", 4, new Object[] { "GifEncoder init, with = ", Integer.valueOf(paramInt1), ", height = ", Integer.valueOf(paramInt2), ", path = ", paramString, ", encodingType = ", Integer.valueOf(paramInt3), ", threadCount = ", Integer.valueOf(this.f) });
     this.jdField_a_of_type_Long = nativeInit(paramInt1, paramInt2, paramString, paramInt3, this.f);
-    if (0L == this.jdField_a_of_type_Long) {
-      throw new FileNotFoundException();
+    if (0L != this.jdField_a_of_type_Long) {
+      return;
     }
+    throw new FileNotFoundException();
   }
   
   public void a(boolean paramBoolean)
   {
-    if (0L == this.jdField_a_of_type_Long) {
+    long l = this.jdField_a_of_type_Long;
+    if (0L == l) {
       return;
     }
-    nativeSetDither(this.jdField_a_of_type_Long, paramBoolean);
+    nativeSetDither(l, paramBoolean);
   }
   
   public boolean a(Bitmap paramBitmap, int paramInt)
@@ -90,16 +87,17 @@ public class GifEncoder
     if (0L == this.jdField_a_of_type_Long) {
       return false;
     }
-    if ((paramBitmap.getWidth() != this.g) || (paramBitmap.getHeight() != this.h)) {
-      throw new RuntimeException(String.format(Locale.ENGLISH, "The size specified at initialization differs from the size of the image.\n expected:(%d, %d) actual:(%d,%d)", new Object[] { Integer.valueOf(this.g), Integer.valueOf(this.h), Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) }));
+    if ((paramBitmap.getWidth() == this.g) && (paramBitmap.getHeight() == this.h))
+    {
+      nativeEncodeFrame(this.jdField_a_of_type_Long, paramBitmap, paramInt);
+      return true;
     }
-    nativeEncodeFrame(this.jdField_a_of_type_Long, paramBitmap, paramInt);
-    return true;
+    throw new RuntimeException(String.format(Locale.ENGLISH, "The size specified at initialization differs from the size of the image.\n expected:(%d, %d) actual:(%d,%d)", new Object[] { Integer.valueOf(this.g), Integer.valueOf(this.h), Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.video.GifEncoder
  * JD-Core Version:    0.7.0.1
  */

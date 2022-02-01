@@ -13,18 +13,22 @@ public final class Route
   
   public Route(Address paramAddress, Proxy paramProxy, InetSocketAddress paramInetSocketAddress)
   {
-    if (paramAddress == null) {
-      throw new NullPointerException("address == null");
-    }
-    if (paramProxy == null) {
+    if (paramAddress != null)
+    {
+      if (paramProxy != null)
+      {
+        if (paramInetSocketAddress != null)
+        {
+          this.address = paramAddress;
+          this.proxy = paramProxy;
+          this.inetSocketAddress = paramInetSocketAddress;
+          return;
+        }
+        throw new NullPointerException("inetSocketAddress == null");
+      }
       throw new NullPointerException("proxy == null");
     }
-    if (paramInetSocketAddress == null) {
-      throw new NullPointerException("inetSocketAddress == null");
-    }
-    this.address = paramAddress;
-    this.proxy = paramProxy;
-    this.inetSocketAddress = paramInetSocketAddress;
+    throw new NullPointerException("address == null");
   }
   
   public Address address()
@@ -34,12 +38,19 @@ public final class Route
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof Route)) && (((Route)paramObject).address.equals(this.address)) && (((Route)paramObject).proxy.equals(this.proxy)) && (((Route)paramObject).inetSocketAddress.equals(this.inetSocketAddress));
+    if ((paramObject instanceof Route))
+    {
+      paramObject = (Route)paramObject;
+      if ((paramObject.address.equals(this.address)) && (paramObject.proxy.equals(this.proxy)) && (paramObject.inetSocketAddress.equals(this.inetSocketAddress))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public int hashCode()
   {
-    return ((this.address.hashCode() + 527) * 31 + this.proxy.hashCode()) * 31 + this.inetSocketAddress.hashCode();
+    return ((527 + this.address.hashCode()) * 31 + this.proxy.hashCode()) * 31 + this.inetSocketAddress.hashCode();
   }
   
   public Proxy proxy()
@@ -59,12 +70,16 @@ public final class Route
   
   public String toString()
   {
-    return "Route{" + this.inetSocketAddress + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Route{");
+    localStringBuilder.append(this.inetSocketAddress);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.Route
  * JD-Core Version:    0.7.0.1
  */

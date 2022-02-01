@@ -45,15 +45,17 @@ public final class ScalarSynchronousObservable<T>
   
   public Observable<T> scalarScheduleOn(Scheduler paramScheduler)
   {
-    if ((paramScheduler instanceof EventLoopsScheduler)) {}
-    for (paramScheduler = new ScalarSynchronousObservable.2(this, (EventLoopsScheduler)paramScheduler);; paramScheduler = new ScalarSynchronousObservable.3(this, paramScheduler)) {
-      return create(new ScalarSynchronousObservable.ScalarAsyncOnSubscribe(this.t, paramScheduler));
+    if ((paramScheduler instanceof EventLoopsScheduler)) {
+      paramScheduler = new ScalarSynchronousObservable.2(this, (EventLoopsScheduler)paramScheduler);
+    } else {
+      paramScheduler = new ScalarSynchronousObservable.3(this, paramScheduler);
     }
+    return create(new ScalarSynchronousObservable.ScalarAsyncOnSubscribe(this.t, paramScheduler));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.ScalarSynchronousObservable
  * JD-Core Version:    0.7.0.1
  */

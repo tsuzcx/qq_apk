@@ -41,13 +41,28 @@ public class DetailTagListSegment
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter = new TagAdapter(paramContext);
   }
   
-  public void O_()
+  public void L_()
   {
-    StoryTagUtil.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.qim");
-    StoryReportor.a("home_page", "clk_tag", 0, 0, new String[] { "2", "3", "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedSourceTagType == 1)
+    {
+      String str;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.type == 1) {
+        str = ((GeneralFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a).wsSchemaForMemories;
+      } else {
+        str = ((GeneralRecommendFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a).wsSchemaForMemories;
+      }
+      WeShiGuideDialog.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().getUnionId(), "2", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId, 1, str);
+      int i;
+      if (WeishiGuideUtils.a(this.jdField_a_of_type_AndroidContentContext)) {
+        i = 2;
+      } else {
+        i = 1;
+      }
+      StoryReportor.a("weishi_share", "tag_clk", 0, i, new String[] { "2", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().getUnionId(), "weishi", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
+    }
   }
   
-  public void R_()
+  public void P_()
   {
     if (((StoryDetailListView)a()).a())
     {
@@ -59,53 +74,63 @@ public class DetailTagListSegment
   
   public int a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.d())) {
-      return 1;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+      if ((localDetailFeedItem != null) && (localDetailFeedItem.d())) {
+        return 1;
+      }
     }
     return 0;
   }
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    TagFlowLayout localTagFlowLayout = (TagFlowLayout)paramBaseViewHolder.a(2131378904);
-    String str = null;
+    TagFlowLayout localTagFlowLayout = (TagFlowLayout)paramBaseViewHolder.a(2131378293);
+    String str1;
     if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a instanceof VideoListFeedItem)) {
-      str = ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a).mQimSyncWording;
+      str1 = ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a).mQimSyncWording;
+    } else {
+      str1 = null;
     }
     paramViewGroup = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a();
-    if (paramViewGroup != null) {}
-    for (boolean bool2 = paramViewGroup.getOwner().isVipButNoFriend();; bool2 = false)
+    boolean bool1;
+    if (paramViewGroup != null) {
+      bool1 = paramViewGroup.getOwner().isVipButNoFriend();
+    } else {
+      bool1 = false;
+    }
+    boolean bool2;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedSourceTagType == 1)
+    {
+      String str2 = VideoSourceTagInfoHelper.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedSourceTagType);
+      paramViewGroup = str2;
+      if (TextUtils.isEmpty(str2))
+      {
+        paramViewGroup = str2;
+        if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedSourceTagType == 1) {
+          paramViewGroup = "来自微视APP";
+        }
+      }
+      bool2 = true;
+    }
+    else
     {
       paramViewGroup = "";
-      boolean bool1;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedSourceTagType == 1)
-      {
-        paramViewGroup = VideoSourceTagInfoHelper.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedSourceTagType);
-        if ((TextUtils.isEmpty(paramViewGroup)) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedSourceTagType == 1))
-        {
-          paramViewGroup = "来自微视APP";
-          bool1 = true;
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(), str, this.b, bool1, paramViewGroup);
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter.a(this);
-        if (bool2) {
-          StoryReportor.a("weishi_share", "tag_exp", 0, 0, new String[] { "2", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().getUnionId(), "weishi", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
-        }
-        localTagFlowLayout.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter);
-        return paramBaseViewHolder.a();
-        bool1 = true;
-        continue;
-        bool1 = false;
-      }
+      bool2 = false;
     }
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(), str1, this.b, bool2, paramViewGroup);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter.a(this);
+    if (bool1) {
+      StoryReportor.a("weishi_share", "tag_exp", 0, 0, new String[] { "2", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().getUnionId(), "weishi", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
+    }
+    localTagFlowLayout.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter);
+    return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561785, paramViewGroup, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561647, paramViewGroup, false));
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
   }
   
@@ -122,53 +147,28 @@ public class DetailTagListSegment
   public void a(TagItem.TagInfoBase paramTagInfoBase)
   {
     StoryTagUtil.a(this.jdField_a_of_type_AndroidContentContext, paramTagInfoBase);
-    if (paramTagInfoBase.jdField_a_of_type_Int == 0) {}
-    for (String str = "1";; str = "2")
-    {
-      StoryReportor.a("home_page", "clk_tag", 0, 0, new String[] { "2", str, String.valueOf(paramTagInfoBase.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
-      return;
+    String str = "2";
+    if (paramTagInfoBase.jdField_a_of_type_Int == 0) {
+      str = "1";
     }
+    StoryReportor.a("home_page", "clk_tag", 0, 0, new String[] { "2", str, String.valueOf(paramTagInfoBase.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
+  }
+  
+  public void e()
+  {
+    this.b ^= true;
+    StoryReportor.a("home_page", "clk_tag_more", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
   }
   
   public void f()
   {
-    if (!this.b) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.b = bool;
-      StoryReportor.a("home_page", "clk_tag_more", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
-      return;
-    }
-  }
-  
-  public void h()
-  {
-    String str;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedSourceTagType == 1)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.type != 1) {
-        break label149;
-      }
-      str = ((GeneralFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a).wsSchemaForMemories;
-      WeShiGuideDialog.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().getUnionId(), "2", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId, 1, str);
-      if (!WeishiGuideUtils.a(this.jdField_a_of_type_AndroidContentContext)) {
-        break label169;
-      }
-    }
-    label149:
-    label169:
-    for (int i = 2;; i = 1)
-    {
-      StoryReportor.a("weishi_share", "tag_clk", 0, i, new String[] { "2", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().getUnionId(), "weishi", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
-      return;
-      str = ((GeneralRecommendFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a).wsSchemaForMemories;
-      break;
-    }
+    StoryTagUtil.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.qim");
+    StoryReportor.a("home_page", "clk_tag", 0, 0, new String[] { "2", "3", "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailTagListSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
 
 public abstract class IArConfigManager$Stub
   extends Binder
@@ -34,183 +33,12 @@ public abstract class IArConfigManager$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int i = 0;
-    boolean bool;
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(IArRemoteCallback.Stub.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(IArRemoteCallback.Stub.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
-      }
-      paramParcel2.writeInt(0);
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
-      }
-      paramParcel2.writeInt(0);
-      return true;
-    case 5: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
-      }
-      paramParcel2.writeInt(0);
-      return true;
-    case 6: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 7: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b();
-      paramParcel2.writeNoException();
-      return true;
-    case 8: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(IArFaceCallback.Stub.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 9: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(IArFaceCallback.Stub.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 10: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 11: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = a();
-      paramParcel2.writeNoException();
-      paramInt1 = i;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 12: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(IArMiniCallback.Stub.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 13: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(IArMiniCallback.Stub.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 14: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 15: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = b();
-      paramParcel2.writeNoException();
-      paramInt1 = j;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 16: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (ArConfigInfo)ArConfigInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        a(paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-      }
-    case 17: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = c();
-      paramParcel2.writeNoException();
-      paramInt1 = k;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 18: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      c();
-      paramParcel2.writeNoException();
-      return true;
-    case 19: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(IArSoCallback.Stub.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 20: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(IArSoCallback.Stub.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 21: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = d();
-      paramParcel2.writeNoException();
-      paramInt1 = m;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 22: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      d();
-      paramParcel2.writeNoException();
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-    c(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.IArConfigManager.Stub
  * JD-Core Version:    0.7.0.1
  */

@@ -22,13 +22,16 @@ class AppBrandPageContainer$8
     catch (Exception localException)
     {
       this.val$req.fail();
-      QMLog.e("minisdk-start-AppBrandPageContainer", this.val$req.event + " error.", localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.val$req.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("minisdk-start-AppBrandPageContainer", localStringBuilder.toString(), localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.8
  * JD-Core Version:    0.7.0.1
  */

@@ -55,34 +55,41 @@ public final class AppDetailSdkInfo
   {
     paramJceOutputStream.write(this.appId, 0);
     paramJceOutputStream.write(this.apkId, 1);
-    if (this.appName != null) {
-      paramJceOutputStream.write(this.appName, 2);
+    String str = this.appName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.iconUrl != null) {
-      paramJceOutputStream.write(this.iconUrl, 3);
+    str = this.iconUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.packageName != null) {
-      paramJceOutputStream.write(this.packageName, 4);
+    str = this.packageName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.versionCode, 5);
-    if (this.signatureMd5 != null) {
-      paramJceOutputStream.write(this.signatureMd5, 6);
+    str = this.signatureMd5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.apkMd5 != null) {
-      paramJceOutputStream.write(this.apkMd5, 7);
+    str = this.apkMd5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.fileSize, 8);
-    if (this.apkDownUrl != null) {
-      paramJceOutputStream.write(this.apkDownUrl, 9);
+    str = this.apkDownUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.channelId != null) {
-      paramJceOutputStream.write(this.channelId, 10);
+    str = this.channelId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.AppDetailSdkInfo
  * JD-Core Version:    0.7.0.1
  */

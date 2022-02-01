@@ -18,6 +18,7 @@ import com.tencent.falco.base.libapi.location.LocationInterface;
 import com.tencent.falco.base.libapi.log.LogInterface;
 import com.tencent.falco.base.libapi.log.LogSdkServiceInterface;
 import com.tencent.falco.base.libapi.login.LoginServiceInterface;
+import com.tencent.falco.base.libapi.lottie.LottieServiceInterface;
 import com.tencent.falco.base.libapi.network.NetworkStateInterface;
 import com.tencent.falco.base.libapi.notification.NotificationInterface;
 import com.tencent.falco.base.libapi.qqsdk.QQSdkInterface;
@@ -26,6 +27,9 @@ import com.tencent.falco.base.libapi.web.WebInterface;
 import com.tencent.falco.base.libapi.weibosdk.WeiboSdkInterface;
 import com.tencent.falco.base.libapi.wns.WnsInterface;
 import com.tencent.falco.base.libapi.wxsdk.WxSdkInterface;
+import com.tencent.ilivesdk.anchorchangerateservice.AnchorChangeRateInterface;
+import com.tencent.ilivesdk.anchorfinishpageserviceinterface.AnchorFinishPageServiceInterface;
+import com.tencent.ilivesdk.anchortagserviceinterface.AnchorTagServiceInterface;
 import com.tencent.ilivesdk.avmediaservice_interface.AVMediaServiceInterface;
 import com.tencent.ilivesdk.avplayerbuilderservice_interface.AVPlayerBuilderServiceInterface;
 import com.tencent.ilivesdk.avpreloadservice_interface.AVPreloadServiceInterface;
@@ -33,8 +37,8 @@ import com.tencent.ilivesdk.balanceservice_interface.BalanceServiceInterface;
 import com.tencent.ilivesdk.beautyfilterservice_interface.BeautyFilterServiceInterface;
 import com.tencent.ilivesdk.changevideorateservice_interface.ChangeVideoRateServiceInterface;
 import com.tencent.ilivesdk.charmservice_interface.CharmServiceInterface;
+import com.tencent.ilivesdk.coredataserviceinterface.CoreDataServiceInterface;
 import com.tencent.ilivesdk.coverservice_interface.CoverServiceInterface;
-import com.tencent.ilivesdk.cscservice_interface.CscServiceInterface;
 import com.tencent.ilivesdk.ecommerceservice_interface.ECommerceServiceInterface;
 import com.tencent.ilivesdk.faceverifyservice_interface.FaceVerifyServiceInterface;
 import com.tencent.ilivesdk.floatheartservice_interface.FloatHeartServiceInterface;
@@ -45,6 +49,7 @@ import com.tencent.ilivesdk.linkmicbizserviceinterface.LinkMicBizServiceInterfac
 import com.tencent.ilivesdk.liveconfigservice_interface.LiveConfigServiceInterface;
 import com.tencent.ilivesdk.liveoverservice_interface.LiveOverServiceInterface;
 import com.tencent.ilivesdk.livestartcustomerconfigservice_interface.LiveStartCusConfServiceInterface;
+import com.tencent.ilivesdk.messagefilterserviceinterface.MessageFilterServiceInterface;
 import com.tencent.ilivesdk.messageservice_interface.MessageServiceInterface;
 import com.tencent.ilivesdk.minicardservice_interface.MiniCardServiceInterface;
 import com.tencent.ilivesdk.musicmanagerservice_interface.MusicManagerServiceInterface;
@@ -62,9 +67,13 @@ import com.tencent.ilivesdk.supervisionservice_interface.SupervisionServiceInter
 import com.tencent.ilivesdk.uicustomservice_interface.UICustomServiceInterface;
 import com.tencent.ilivesdk.userinfoservice_interface.UserInfoServiceInterface;
 import com.tencent.ilivesdk.violationstrikeservice_interface.ViolationStrikeServiceInterface;
+import com.tencent.ilivesdk.webcommonserviceinterface.WebCommonServiceInterface;
 import com.tencent.livesdk.servicefactory.builder.BaseServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.RoomlikeServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.activitylife.ActivityLifeBuilder;
+import com.tencent.livesdk.servicefactory.builder.anchorfinish.AnchorFinishPageServiceBuilder;
+import com.tencent.livesdk.servicefactory.builder.anchorrate.AnchorRateChangeServiceBuilder;
+import com.tencent.livesdk.servicefactory.builder.anchortag.AnchorTagServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.apm.APMServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.appinfo.AppInfoBuilder;
 import com.tencent.livesdk.servicefactory.builder.avmedia.AVMediaServiceBuilder;
@@ -75,9 +84,9 @@ import com.tencent.livesdk.servicefactory.builder.beautyfilter.BeautyFilterServi
 import com.tencent.livesdk.servicefactory.builder.changevideorate.ChangeVideoRateServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.channel.ChannelServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.chatmessage.ChatMessageServiceBuilder;
+import com.tencent.livesdk.servicefactory.builder.coredata.CoreDataBuilder;
 import com.tencent.livesdk.servicefactory.builder.cover.CoverServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.crash.CrashServiceBuilder;
-import com.tencent.livesdk.servicefactory.builder.csc.CscServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.customuiconfig.UICustomServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.datareport.DataReportServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.downloader.DownloadServiceBuilder;
@@ -99,6 +108,8 @@ import com.tencent.livesdk.servicefactory.builder.location.LocationServiceBuilde
 import com.tencent.livesdk.servicefactory.builder.log.LogSdkServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.log.LogServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.login.LoginServiceBuilder;
+import com.tencent.livesdk.servicefactory.builder.lottie.LottieServiceBuilder;
+import com.tencent.livesdk.servicefactory.builder.messagefilter.MessageFilterServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.minicard.MiniCardServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.music.MusicDubServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.musicmanager.MusicManagerBuilder;
@@ -118,6 +129,7 @@ import com.tencent.livesdk.servicefactory.builder.supervision.SupervisionService
 import com.tencent.livesdk.servicefactory.builder.toast.ToastServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.userinfo.UserInfoServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.violationstrike.ViolationStrikeBuilder;
+import com.tencent.livesdk.servicefactory.builder.web.WebCommonUseBuilder;
 import com.tencent.livesdk.servicefactory.builder.web.WebServiceBuilder;
 import com.tencent.livesdk.servicefactory.builder.weibosdk.WeiboSdkBuilder;
 import com.tencent.livesdk.servicefactory.builder.wns.WnsBuilder;
@@ -132,73 +144,8 @@ import java.util.Set;
 
 public class ServiceFactory
 {
-  private static Map<ServiceEnginScope, List<Class<? extends ServiceBaseInterface>>> scopeServiceListMap;
+  private static Map<ServiceEnginScope, List<Class<? extends ServiceBaseInterface>>> scopeServiceListMap = new HashMap();
   private static ServiceConfig serviceConfig = new ServiceConfig();
-  
-  static
-  {
-    scopeServiceListMap = new HashMap();
-    serviceConfig.add(LoginServiceInterface.class, new LoginServiceBuilder());
-    serviceConfig.add(LiveOverServiceInterface.class, new LiveOverServiceBuilder());
-    serviceConfig.add(StartLiveServiceInterface.class, new StartLiveServiceBuilder());
-    serviceConfig.add(RoomServiceInterface.class, new RoomServiceBuilder());
-    serviceConfig.add(AVMediaServiceInterface.class, new AVMediaServiceBuilder());
-    serviceConfig.add(LogSdkServiceInterface.class, new LogSdkServiceBuilder());
-    serviceConfig.add(LogInterface.class, new LogServiceBuilder());
-    serviceConfig.add(ImageLoaderInterface.class, new ImageLoaderServiceBuilder());
-    serviceConfig.add(ChannelInterface.class, new ChannelServiceBuilder());
-    serviceConfig.add(HttpInterface.class, new HttpServiceBuilder());
-    serviceConfig.add(LiveConfigServiceInterface.class, new LiveConfigServiceBuilder());
-    serviceConfig.add(CscServiceInterface.class, new CscServiceBuilder());
-    serviceConfig.add(DownLoaderInterface.class, new DownloadServiceBuilder());
-    serviceConfig.add(LocationInterface.class, new LocationServiceBuilder());
-    serviceConfig.add(AppGeneralInfoService.class, new AppInfoBuilder());
-    serviceConfig.add(ActivityLifeService.class, new ActivityLifeBuilder());
-    serviceConfig.add(DataReportInterface.class, new DataReportServiceBuilder());
-    serviceConfig.add(QualityReportServiceInterface.class, new QualityReportServiceBuilder());
-    serviceConfig.add(ToastInterface.class, new ToastServiceBuilder());
-    serviceConfig.add(HostProxyInterface.class, new HostProxyBuilder());
-    serviceConfig.add(NetworkStateInterface.class, new NetworkServiceBuilder());
-    serviceConfig.add(RoomPushServiceInterface.class, new RoomPushServiceBuilder());
-    serviceConfig.add(MessageServiceInterface.class, new ChatMessageServiceBuilder());
-    serviceConfig.add(ChangeVideoRateServiceInterface.class, new ChangeVideoRateServiceBuilder());
-    serviceConfig.add(GiftServiceInterface.class, new LiveGiftServiceBuilder());
-    serviceConfig.add(BalanceServiceInterface.class, new BalanceServiceBuilder());
-    serviceConfig.add(FloatHeartServiceInterface.class, new FloatHeartServiceBuilder());
-    serviceConfig.add(FloatWindowConfigServiceInterface.class, new FloatWindowConfigServiceBuilder());
-    serviceConfig.add(FloatWindowPermissionInterface.class, new FloatWindowPermissionBuilder());
-    serviceConfig.add(APMInterface.class, new APMServiceBuilder());
-    serviceConfig.add(CrashInterface.class, new CrashServiceBuilder());
-    serviceConfig.add(CharmServiceInterface.class, new CharmServiceBuilder());
-    serviceConfig.add(MiniCardServiceInterface.class, new MiniCardServiceBuilder());
-    serviceConfig.add(PendantServiceInterface.class, new PendantServiceBuilder());
-    serviceConfig.add(CoverServiceInterface.class, new CoverServiceBuilder());
-    serviceConfig.add(RoomAudienceServiceInterface.class, new RoomAudienceServiceBuilder());
-    serviceConfig.add(WebInterface.class, new WebServiceBuilder());
-    serviceConfig.add(UserInfoServiceInterface.class, new UserInfoServiceBuilder());
-    serviceConfig.add(ECommerceServiceInterface.class, new ECommerceServiceBuilder());
-    serviceConfig.add(QQSdkInterface.class, new QQSdkBuilder());
-    serviceConfig.add(WxSdkInterface.class, new WxSdkBuilder());
-    serviceConfig.add(WeiboSdkInterface.class, new WeiboSdkBuilder());
-    serviceConfig.add(WnsInterface.class, new WnsBuilder());
-    serviceConfig.add(SupervisionServiceInterface.class, new SupervisionServiceBuilder());
-    serviceConfig.add(BeautyFilterServiceInterface.class, new BeautyFilterServiceBuilder());
-    serviceConfig.add(MusicServiceInterface.class, new MusicDubServiceBuilder());
-    serviceConfig.add(MusicManagerServiceInterface.class, new MusicManagerBuilder());
-    serviceConfig.add(ViolationStrikeServiceInterface.class, new ViolationStrikeBuilder());
-    serviceConfig.add(HarvestServiceInterface.class, new HarvestServiceBuilder());
-    serviceConfig.add(RoomlikeServiceInterface.class, new RoomlikeServiceBuilder());
-    serviceConfig.add(RecordServiceInterface.class, new RecordScreenServiceBuilder());
-    serviceConfig.add(AVPlayerBuilderServiceInterface.class, new AVPlayerServiceBuilder());
-    serviceConfig.add(AVPreloadServiceInterface.class, new AVPreloadServiceBuilder());
-    serviceConfig.add(LiveStartCusConfServiceInterface.class, new LiveStartCusConfServiceBuilder());
-    serviceConfig.add(LinkMicBizServiceInterface.class, new LinkMicBizServiceBuilder());
-    serviceConfig.add(LinkMicAvServiceInterface.class, new LinkMicAvServiceBuilder());
-    serviceConfig.add(UICustomServiceInterface.class, new UICustomServiceBuilder());
-    serviceConfig.add(NotificationInterface.class, new NotificationServiceBuilder());
-    serviceConfig.add(FaceVerifyServiceInterface.class, new FaceVerifyServiceBuilder());
-    serviceConfig.add(RoomComponentHiderServiceInterface.class, new RoomComponentHideBuilder());
-  }
   
   public static void config(ServiceConfig paramServiceConfig)
   {
@@ -224,18 +171,21 @@ public class ServiceFactory
       {
         Class localClass = (Class)localIterator.next();
         ServiceEnginScope localServiceEnginScope = (ServiceEnginScope)localMap.get(localClass);
-        switch (ServiceFactory.1.$SwitchMap$com$tencent$livesdk$servicefactory$ServiceEnginScope[localServiceEnginScope.ordinal()])
+        int i = ServiceFactory.1.$SwitchMap$com$tencent$livesdk$servicefactory$ServiceEnginScope[localServiceEnginScope.ordinal()];
+        if (i != 1)
         {
-        default: 
-          break;
-        case 1: 
+          if (i != 2)
+          {
+            if (i == 3) {
+              localArrayList3.add(localClass);
+            }
+          }
+          else {
+            localArrayList2.add(localClass);
+          }
+        }
+        else {
           localArrayList1.add(localClass);
-          break;
-        case 2: 
-          localArrayList2.add(localClass);
-          break;
-        case 3: 
-          localArrayList3.add(localClass);
         }
       }
       scopeServiceListMap.put(ServiceEnginScope.Live, localArrayList1);
@@ -275,11 +225,84 @@ public class ServiceFactory
     return scopeServiceListMap;
   }
   
-  public static void unInit() {}
+  public static void init()
+  {
+    serviceConfig.add(LoginServiceInterface.class, new LoginServiceBuilder());
+    serviceConfig.add(LiveOverServiceInterface.class, new LiveOverServiceBuilder());
+    serviceConfig.add(StartLiveServiceInterface.class, new StartLiveServiceBuilder());
+    serviceConfig.add(RoomServiceInterface.class, new RoomServiceBuilder());
+    serviceConfig.add(AVMediaServiceInterface.class, new AVMediaServiceBuilder());
+    serviceConfig.add(LogSdkServiceInterface.class, new LogSdkServiceBuilder());
+    serviceConfig.add(LogInterface.class, new LogServiceBuilder());
+    serviceConfig.add(ImageLoaderInterface.class, new ImageLoaderServiceBuilder());
+    serviceConfig.add(ChannelInterface.class, new ChannelServiceBuilder());
+    serviceConfig.add(HttpInterface.class, new HttpServiceBuilder());
+    serviceConfig.add(LiveConfigServiceInterface.class, new LiveConfigServiceBuilder());
+    serviceConfig.add(DownLoaderInterface.class, new DownloadServiceBuilder());
+    serviceConfig.add(LocationInterface.class, new LocationServiceBuilder());
+    serviceConfig.add(AppGeneralInfoService.class, new AppInfoBuilder());
+    serviceConfig.add(ActivityLifeService.class, new ActivityLifeBuilder());
+    serviceConfig.add(DataReportInterface.class, new DataReportServiceBuilder());
+    serviceConfig.add(QualityReportServiceInterface.class, new QualityReportServiceBuilder());
+    serviceConfig.add(ToastInterface.class, new ToastServiceBuilder());
+    serviceConfig.add(HostProxyInterface.class, new HostProxyBuilder());
+    serviceConfig.add(NetworkStateInterface.class, new NetworkServiceBuilder());
+    serviceConfig.add(RoomPushServiceInterface.class, new RoomPushServiceBuilder());
+    serviceConfig.add(MessageServiceInterface.class, new ChatMessageServiceBuilder());
+    serviceConfig.add(ChangeVideoRateServiceInterface.class, new ChangeVideoRateServiceBuilder());
+    serviceConfig.add(GiftServiceInterface.class, new LiveGiftServiceBuilder());
+    serviceConfig.add(BalanceServiceInterface.class, new BalanceServiceBuilder());
+    serviceConfig.add(FloatHeartServiceInterface.class, new FloatHeartServiceBuilder());
+    serviceConfig.add(FloatWindowConfigServiceInterface.class, new FloatWindowConfigServiceBuilder());
+    serviceConfig.add(FloatWindowPermissionInterface.class, new FloatWindowPermissionBuilder());
+    serviceConfig.add(APMInterface.class, new APMServiceBuilder());
+    serviceConfig.add(CrashInterface.class, new CrashServiceBuilder());
+    serviceConfig.add(CharmServiceInterface.class, new CharmServiceBuilder());
+    serviceConfig.add(MiniCardServiceInterface.class, new MiniCardServiceBuilder());
+    serviceConfig.add(PendantServiceInterface.class, new PendantServiceBuilder());
+    serviceConfig.add(CoverServiceInterface.class, new CoverServiceBuilder());
+    serviceConfig.add(RoomAudienceServiceInterface.class, new RoomAudienceServiceBuilder());
+    serviceConfig.add(WebInterface.class, new WebServiceBuilder());
+    serviceConfig.add(WebCommonServiceInterface.class, new WebCommonUseBuilder());
+    serviceConfig.add(UserInfoServiceInterface.class, new UserInfoServiceBuilder());
+    serviceConfig.add(ECommerceServiceInterface.class, new ECommerceServiceBuilder());
+    serviceConfig.add(QQSdkInterface.class, new QQSdkBuilder());
+    serviceConfig.add(WxSdkInterface.class, new WxSdkBuilder());
+    serviceConfig.add(WeiboSdkInterface.class, new WeiboSdkBuilder());
+    serviceConfig.add(WnsInterface.class, new WnsBuilder());
+    serviceConfig.add(SupervisionServiceInterface.class, new SupervisionServiceBuilder());
+    serviceConfig.add(BeautyFilterServiceInterface.class, new BeautyFilterServiceBuilder());
+    serviceConfig.add(MusicServiceInterface.class, new MusicDubServiceBuilder());
+    serviceConfig.add(MusicManagerServiceInterface.class, new MusicManagerBuilder());
+    serviceConfig.add(ViolationStrikeServiceInterface.class, new ViolationStrikeBuilder());
+    serviceConfig.add(HarvestServiceInterface.class, new HarvestServiceBuilder());
+    serviceConfig.add(RoomlikeServiceInterface.class, new RoomlikeServiceBuilder());
+    serviceConfig.add(RecordServiceInterface.class, new RecordScreenServiceBuilder());
+    serviceConfig.add(AVPlayerBuilderServiceInterface.class, new AVPlayerServiceBuilder());
+    serviceConfig.add(AVPreloadServiceInterface.class, new AVPreloadServiceBuilder());
+    serviceConfig.add(LiveStartCusConfServiceInterface.class, new LiveStartCusConfServiceBuilder());
+    serviceConfig.add(LinkMicBizServiceInterface.class, new LinkMicBizServiceBuilder());
+    serviceConfig.add(LinkMicAvServiceInterface.class, new LinkMicAvServiceBuilder());
+    serviceConfig.add(UICustomServiceInterface.class, new UICustomServiceBuilder());
+    serviceConfig.add(NotificationInterface.class, new NotificationServiceBuilder());
+    serviceConfig.add(FaceVerifyServiceInterface.class, new FaceVerifyServiceBuilder());
+    serviceConfig.add(RoomComponentHiderServiceInterface.class, new RoomComponentHideBuilder());
+    serviceConfig.add(CoreDataServiceInterface.class, new CoreDataBuilder());
+    serviceConfig.add(AnchorChangeRateInterface.class, new AnchorRateChangeServiceBuilder());
+    serviceConfig.add(AnchorFinishPageServiceInterface.class, new AnchorFinishPageServiceBuilder());
+    serviceConfig.add(AnchorTagServiceInterface.class, new AnchorTagServiceBuilder());
+    serviceConfig.add(MessageFilterServiceInterface.class, new MessageFilterServiceBuilder());
+    serviceConfig.add(LottieServiceInterface.class, new LottieServiceBuilder());
+  }
+  
+  public static void unInit()
+  {
+    serviceConfig.unInit();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.ServiceFactory
  * JD-Core Version:    0.7.0.1
  */

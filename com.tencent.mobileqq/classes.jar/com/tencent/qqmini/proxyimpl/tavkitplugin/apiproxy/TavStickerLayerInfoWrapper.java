@@ -33,25 +33,19 @@ public class TavStickerLayerInfoWrapper
   {
     Object localObject = CMTime.CMTimeZero;
     Iterator localIterator = getTimeEffects().iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       CMTime localCMTime = ((TAVStickerLayerInfo.TAVStickerTimeEffect)localIterator.next()).getTimeRange().getEnd();
-      if (!((CMTime)localObject).smallThan(localCMTime)) {
-        break label54;
+      if (((CMTime)localObject).smallThan(localCMTime)) {
+        localObject = localCMTime;
       }
-      localObject = localCMTime;
     }
-    label54:
-    for (;;)
-    {
-      break;
-      return localObject;
-    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavStickerLayerInfoWrapper
  * JD-Core Version:    0.7.0.1
  */

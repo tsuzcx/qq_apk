@@ -7,14 +7,15 @@ class MagazinePlayerView$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.b();
-    this.this$0.jdField_a_of_type_Boolean = true;
-    this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.c();
+    ((IVideoPlayerView.VideoInfoListener)this.this$0.mVideoInfoListener).onStartPrepareVideo();
+    MagazinePlayerView localMagazinePlayerView = this.this$0;
+    localMagazinePlayerView.isPlaying = true;
+    ((IVideoPlayerView.VideoInfoListener)localMagazinePlayerView.mVideoInfoListener).onStartPlaying();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.MagazinePlayerView.1
  * JD-Core Version:    0.7.0.1
  */

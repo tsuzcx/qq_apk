@@ -8,14 +8,12 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.avgame.gameroom.GameRoomViewLayoutParamsDef;
-import com.tencent.mobileqq.widget.AutoBgImageView;
 import com.tencent.qphone.base.util.QLog;
 
 public class AddMemberItemView
   extends RelativeLayout
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private AutoBgImageView jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView;
+  private View a;
   
   public AddMemberItemView(Context paramContext)
   {
@@ -34,33 +32,36 @@ public class AddMemberItemView
   
   public RectF a()
   {
-    int[] arrayOfInt = new int[2];
-    GameRoomViewLayoutParamsDef.a(this, arrayOfInt);
+    Object localObject = new int[2];
+    GameRoomViewLayoutParamsDef.a(this, (int[])localObject);
     RectF localRectF = new RectF();
-    localRectF.left = arrayOfInt[0];
-    localRectF.top = arrayOfInt[1];
+    localRectF.left = localObject[0];
+    localRectF.top = localObject[1];
     localRectF.right = (localRectF.left + getMeasuredWidth());
     localRectF.bottom = (localRectF.top + getMeasuredHeight());
-    if (QLog.isColorLevel()) {
-      QLog.i("AddMemberItemView", 2, "getViewRect rectF:" + localRectF);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getViewRect rectF:");
+      ((StringBuilder)localObject).append(localRectF);
+      QLog.i("AddMemberItemView", 2, ((StringBuilder)localObject).toString());
     }
     return localRectF;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView = ((AutoBgImageView)findViewById(2131362156));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362223);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.width = GameRoomViewLayoutParamsDef.u;
-    localLayoutParams.height = GameRoomViewLayoutParamsDef.u;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getContext().getResources().getColor(2131165345));
+    this.a = findViewById(2131362246);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+    localLayoutParams.width = GameRoomViewLayoutParamsDef.F;
+    localLayoutParams.height = GameRoomViewLayoutParamsDef.F;
+    this.a.setLayoutParams(localLayoutParams);
+    this.a.setBackgroundColor(getContext().getResources().getColor(2131165311));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.AddMemberItemView
  * JD-Core Version:    0.7.0.1
  */

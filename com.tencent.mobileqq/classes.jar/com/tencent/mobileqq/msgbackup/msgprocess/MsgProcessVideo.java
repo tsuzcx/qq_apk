@@ -2,7 +2,7 @@ package com.tencent.mobileqq.msgbackup.msgprocess;
 
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.SVUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,29 +41,36 @@ public class MsgProcessVideo
   public List<MsgBackupResEntity> a()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject2 = ShortVideoUtils.getShortVideoSavePath((MessageForShortVideo)this.a, "mp4");
-    Object localObject1 = ShortVideoUtils.getShortVideoThumbPicPath(((MessageForShortVideo)this.a).thumbMD5, "jpg");
+    Object localObject2 = SVUtils.a((MessageForShortVideo)this.a, "mp4");
+    Object localObject1 = SVUtils.a(((MessageForShortVideo)this.a).thumbMD5, "jpg");
+    int i;
     int j;
-    if ((((MessageForShortVideo)this.a).busiType == 0) || (((MessageForShortVideo)this.a).busiType == 1)) {
-      j = 4;
-    }
-    for (int i = 7;; i = 8)
+    if ((((MessageForShortVideo)this.a).busiType != 0) && (((MessageForShortVideo)this.a).busiType != 1))
     {
-      localObject2 = a((String)localObject2, j);
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
+      if (((MessageForShortVideo)this.a).subBusiType == 2)
+      {
+        i = 5;
+        j = 8;
       }
-      localObject1 = a((String)localObject1, i);
-      if (localObject1 != null) {
-        localArrayList.add(localObject1);
+      else
+      {
+        return null;
       }
-      return localArrayList;
-      if (((MessageForShortVideo)this.a).subBusiType != 2) {
-        break;
-      }
-      j = 5;
     }
-    return null;
+    else
+    {
+      i = 4;
+      j = 7;
+    }
+    localObject2 = a((String)localObject2, i);
+    if (localObject2 != null) {
+      localArrayList.add(localObject2);
+    }
+    localObject1 = a((String)localObject1, j);
+    if (localObject1 != null) {
+      localArrayList.add(localObject1);
+    }
+    return localArrayList;
   }
   
   public void a()
@@ -82,7 +89,7 @@ public class MsgProcessVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessVideo
  * JD-Core Version:    0.7.0.1
  */

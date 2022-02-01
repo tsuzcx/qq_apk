@@ -26,8 +26,12 @@ public final class RoundedBitmapDrawableFactory
   public static RoundedBitmapDrawable create(@NonNull Resources paramResources, @NonNull InputStream paramInputStream)
   {
     paramResources = create(paramResources, BitmapFactory.decodeStream(paramInputStream));
-    if (paramResources.getBitmap() == null) {
-      Log.w("RoundedBitmapDrawableFa", "RoundedBitmapDrawable cannot decode " + paramInputStream);
+    if (paramResources.getBitmap() == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RoundedBitmapDrawable cannot decode ");
+      localStringBuilder.append(paramInputStream);
+      Log.w("RoundedBitmapDrawableFa", localStringBuilder.toString());
     }
     return paramResources;
   }
@@ -36,15 +40,19 @@ public final class RoundedBitmapDrawableFactory
   public static RoundedBitmapDrawable create(@NonNull Resources paramResources, @NonNull String paramString)
   {
     paramResources = create(paramResources, BitmapFactory.decodeFile(paramString));
-    if (paramResources.getBitmap() == null) {
-      Log.w("RoundedBitmapDrawableFa", "RoundedBitmapDrawable cannot decode " + paramString);
+    if (paramResources.getBitmap() == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RoundedBitmapDrawable cannot decode ");
+      localStringBuilder.append(paramString);
+      Log.w("RoundedBitmapDrawableFa", localStringBuilder.toString());
     }
     return paramResources;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -54,9 +54,16 @@ public class VSEntranceWidgetDownLoadHelper
     if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
     {
       paramContext = Environment.getExternalStorageDirectory().getAbsolutePath();
-      jdField_a_of_type_JavaLangString = paramContext + "/Tencent/MobileQQ/" + "video_story";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("/Tencent/MobileQQ/");
+      localStringBuilder.append("video_story");
+      jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     }
-    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "intDownLoadRoot" + jdField_a_of_type_JavaLangString);
+    paramContext = new StringBuilder();
+    paramContext.append("intDownLoadRoot");
+    paramContext.append(jdField_a_of_type_JavaLangString);
+    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, paramContext.toString());
     return null;
   }
   
@@ -92,56 +99,61 @@ public class VSEntranceWidgetDownLoadHelper
   
   public void a(String paramString, Downloader.DownloadListener paramDownloadListener)
   {
-    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:" + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:url is empty" });
-    }
-    String str1;
-    String str2;
-    VSEntranceWidgetDownLoadHelper.DownLoadStatus localDownLoadStatus;
-    DownloaderInterface localDownloaderInterface;
-    DownloadTask localDownloadTask;
-    Bundle localBundle;
-    do
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("downLoadByUrl:");
+    ((StringBuilder)localObject1).append(paramString);
+    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, ((StringBuilder)localObject1).toString());
+    if (TextUtils.isEmpty(paramString))
     {
-      do
+      QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:url is empty" });
+      return;
+    }
+    localObject1 = a(paramString);
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:prefixId is empty" });
+      return;
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("downLoadByUrl:prefixId:");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, ((StringBuilder)localObject2).toString());
+    if (b((String)localObject1))
+    {
+      QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource has download");
+      return;
+    }
+    if (c((String)localObject1))
+    {
+      QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource on download");
+      return;
+    }
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    {
+      QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:mDownLoadRoot is empty" });
+      return;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append("/");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(".zip");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      VSEntranceWidgetDownLoadHelper.DownLoadStatus localDownLoadStatus = new VSEntranceWidgetDownLoadHelper.DownLoadStatus(this, null);
+      this.jdField_a_of_type_JavaUtilMap.put(localObject1, localDownLoadStatus);
+      DownloaderInterface localDownloaderInterface = ((DownloaderFactory)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+      if (localDownloaderInterface != null)
       {
-        do
-        {
-          return;
-          str1 = a(paramString);
-          if (TextUtils.isEmpty(str1))
-          {
-            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:prefixId is empty" });
-            return;
-          }
-          QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:prefixId:" + str1);
-          if (b(str1))
-          {
-            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource has download");
-            return;
-          }
-          if (c(str1))
-          {
-            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource on download");
-            return;
-          }
-          if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-          {
-            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:mDownLoadRoot is empty" });
-            return;
-          }
-          str2 = jdField_a_of_type_JavaLangString + "/" + str1 + ".zip";
-        } while (TextUtils.isEmpty(paramString));
-        localDownLoadStatus = new VSEntranceWidgetDownLoadHelper.DownLoadStatus(this, null);
-        this.jdField_a_of_type_JavaUtilMap.put(str1, localDownLoadStatus);
-        localDownloaderInterface = ((DownloaderFactory)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
-      } while (localDownloaderInterface == null);
-      localDownloadTask = new DownloadTask(paramString, new File(str2));
-      localDownloadTask.b = 1;
-      localBundle = new Bundle();
-    } while (localDownloaderInterface == null);
-    localDownloaderInterface.a(localDownloadTask, new VSEntranceWidgetDownLoadHelper.1(this, paramDownloadListener, str2, localDownLoadStatus, str1, paramString), localBundle);
+        DownloadTask localDownloadTask = new DownloadTask(paramString, new File((String)localObject2));
+        localDownloadTask.b = 1;
+        Bundle localBundle = new Bundle();
+        if (localDownloaderInterface != null) {
+          localDownloaderInterface.startDownload(localDownloadTask, new VSEntranceWidgetDownLoadHelper.1(this, paramDownloadListener, (String)localObject2, localDownLoadStatus, (String)localObject1, paramString), localBundle);
+        }
+      }
+    }
   }
   
   public boolean a(String paramString)
@@ -155,46 +167,73 @@ public class VSEntranceWidgetDownLoadHelper
   
   public String b(String paramString)
   {
-    return jdField_a_of_type_JavaLangString + "/" + a(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("/");
+    localStringBuilder.append(a(paramString));
+    return localStringBuilder.toString();
   }
   
   public boolean b(String paramString)
   {
-    Object localObject = jdField_a_of_type_JavaLangString + "/" + paramString;
-    if (new File((String)localObject + ".zip").exists())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramString);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(".zip");
+    if (new File(localStringBuilder.toString()).exists())
     {
-      QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "upZip failed:" + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("upZip failed:");
+      ((StringBuilder)localObject).append(paramString);
+      QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, ((StringBuilder)localObject).toString());
       return false;
     }
-    boolean bool2;
+    boolean bool1;
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      bool2 = new File((String)localObject).exists();
+      boolean bool2 = new File((String)localObject).exists();
       bool1 = bool2;
       if (bool2)
       {
         localObject = new VSEntranceWidgetDownLoadHelper.DownLoadStatus(this, null);
         VSEntranceWidgetDownLoadHelper.DownLoadStatus.a((VSEntranceWidgetDownLoadHelper.DownLoadStatus)localObject, 0);
         this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+        return bool2;
       }
     }
-    for (boolean bool1 = bool2;; bool1 = false) {
-      return bool1;
+    else
+    {
+      bool1 = false;
     }
+    return bool1;
   }
   
   public boolean c(String paramString)
   {
     paramString = (VSEntranceWidgetDownLoadHelper.DownLoadStatus)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     if (paramString != null) {
-      return (VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(paramString) == -1) || (VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(paramString) == 1);
+      if (VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(paramString) != -1)
+      {
+        bool1 = bool2;
+        if (VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(paramString) != 1) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidgetDownLoadHelper
  * JD-Core Version:    0.7.0.1
  */

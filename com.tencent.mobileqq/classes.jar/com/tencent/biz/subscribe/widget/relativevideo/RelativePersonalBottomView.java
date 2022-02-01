@@ -3,11 +3,11 @@ package com.tencent.biz.subscribe.widget.relativevideo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
@@ -37,9 +37,9 @@ public class RelativePersonalBottomView
   extends BaseWidgetView<BlockMerger.ShareData>
   implements SimpleEventReceiver
 {
-  private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
+  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
   private SubscribePersonalBottomDraftsFragment jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment;
   private SubscribePersonalBottomOpusFragment jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment;
   private BlockMerger.ShareData jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData;
@@ -75,7 +75,7 @@ public class RelativePersonalBottomView
   private void c()
   {
     this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new RelativePersonalBottomView.1(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new RelativePersonalBottomView.2(this));
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setOnPageChangeListener(new RelativePersonalBottomView.2(this));
   }
   
   private void d()
@@ -85,10 +85,11 @@ public class RelativePersonalBottomView
       if (this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment == null)
       {
         this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment = new SubscribePersonalBottomDraftsFragment();
-        if ((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData != null) && ((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData.a instanceof SubscribeBaseBottomPersonalFragment.BottomData)))
+        Object localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData;
+        if ((localObject != null) && ((((BlockMerger.ShareData)localObject).a instanceof SubscribeBaseBottomPersonalFragment.BottomData)))
         {
-          SubscribeBaseBottomPersonalFragment.BottomData localBottomData = (SubscribeBaseBottomPersonalFragment.BottomData)this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData.a;
-          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localBottomData.jdField_a_of_type_JavaLangString, localBottomData);
+          localObject = (SubscribeBaseBottomPersonalFragment.BottomData)this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData.a;
+          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(((SubscribeBaseBottomPersonalFragment.BottomData)localObject).jdField_a_of_type_JavaLangString, (SubscribeBaseBottomPersonalFragment.BottomData)localObject);
         }
       }
       if (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment))
@@ -98,13 +99,11 @@ public class RelativePersonalBottomView
         this.b.setVisibility(0);
         this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView$RelativePersonalBottomAdapter.notifyDataSetChanged();
       }
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130839088));
+      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838941));
     }
-    for (;;)
+    else
     {
-      e();
-      return;
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);
+      this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setCurrentItem(0);
       if (this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment))
       {
         this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
@@ -113,41 +112,50 @@ public class RelativePersonalBottomView
         this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(null);
       }
     }
+    e();
   }
   
   private void e()
   {
-    if ((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData != null) && ((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData.a instanceof SubscribeBaseBottomPersonalFragment.BottomData)))
+    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData;
+    if ((localObject != null) && ((((BlockMerger.ShareData)localObject).a instanceof SubscribeBaseBottomPersonalFragment.BottomData)))
     {
-      Object localObject = (SubscribeBaseBottomPersonalFragment.BottomData)this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData.a;
-      if (((((SubscribeBaseBottomPersonalFragment.BottomData)localObject).jdField_a_of_type_JavaUtilList == null) || (((SubscribeBaseBottomPersonalFragment.BottomData)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock != null))
+      localObject = (SubscribeBaseBottomPersonalFragment.BottomData)this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData.a;
+      if ((((SubscribeBaseBottomPersonalFragment.BottomData)localObject).jdField_a_of_type_JavaUtilList == null) || (((SubscribeBaseBottomPersonalFragment.BottomData)localObject).jdField_a_of_type_JavaUtilList.size() == 0))
       {
-        localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock.a().a().a().getChildAt(0);
-        ThreadManager.getUIHandler().post(new RelativePersonalBottomView.4(this, (View)localObject));
+        localObject = this.jdField_a_of_type_JavaUtilList;
+        if ((localObject != null) && (!((List)localObject).contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)))
+        {
+          localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock;
+          if (localObject != null)
+          {
+            localObject = ((MultiViewBlock)localObject).a().a().a().getChildAt(0);
+            ThreadManager.getUIHandler().post(new RelativePersonalBottomView.4(this, (View)localObject));
+            return;
+          }
+        }
       }
     }
-    while ((getLayoutParams() == null) || (getLayoutParams().height == -1)) {
-      return;
+    if ((getLayoutParams() != null) && (getLayoutParams().height != -1)) {
+      ThreadManager.getUIHandler().post(new RelativePersonalBottomView.5(this));
     }
-    ThreadManager.getUIHandler().post(new RelativePersonalBottomView.5(this));
   }
   
-  public int a()
+  protected int a()
   {
-    return 2131558852;
+    return 2131558750;
   }
   
-  public void a(Context paramContext, View paramView)
+  protected void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131377038));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131372614));
-    this.b = ((RadioButton)paramView.findViewById(2131366042));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131376518));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131372198));
+    this.b = ((RadioButton)paramView.findViewById(2131365871));
     this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131372890));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(1);
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = ((ViewPager)paramView.findViewById(2131372477));
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setOffscreenPageLimit(1);
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView$RelativePersonalBottomAdapter = new RelativePersonalBottomView.RelativePersonalBottomAdapter(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
     a();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView$RelativePersonalBottomAdapter);
     c();
   }
   
@@ -170,8 +178,9 @@ public class RelativePersonalBottomView
   
   public int c()
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) {
-      return this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem();
+    ViewPager localViewPager = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    if (localViewPager != null) {
+      return localViewPager.getCurrentItem();
     }
     return 0;
   }
@@ -184,13 +193,13 @@ public class RelativePersonalBottomView
     return localArrayList;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     SimpleEventBus.getInstance().registerReceiver(this);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     SimpleEventBus.getInstance().unRegisterReceiver(this);
@@ -203,7 +212,7 @@ public class RelativePersonalBottomView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView
  * JD-Core Version:    0.7.0.1
  */

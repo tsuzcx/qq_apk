@@ -52,7 +52,7 @@ public class TVKCGIVkeyRequest
   {
     if ((this.mUseBkurl) && (this.mCurrentHostUrlRetryCount == CURRENT_HOST_URL_RETRY_MAX_COUNT))
     {
-      paramInt = 1402000 + paramInt;
+      paramInt += 1402000;
       invokeVkeyFailureCallback(this.mRequestID, String.format("%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(paramInt) }), paramInt);
       return;
     }
@@ -73,43 +73,48 @@ public class TVKCGIVkeyRequest
     }
     Map localMap = paramTVKCGIVKeyRequestParams.getCkeyExtraParamsMap();
     int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = 0;
-    arrayOfInt[1] = 0;
-    arrayOfInt[2] = 0;
-    if (paramTVKCGIVKeyRequestParams.getRequestType() == 0)
-    {
-      arrayOfInt[0] = 0;
-      if (localMap != null)
+    int[] tmp90_88 = arrayOfInt;
+    tmp90_88[0] = 0;
+    int[] tmp94_90 = tmp90_88;
+    tmp94_90[1] = 0;
+    int[] tmp98_94 = tmp94_90;
+    tmp98_94[2] = 0;
+    tmp98_94;
+    if (paramTVKCGIVKeyRequestParams.getRequestType() == 0) {
+      tmp90_88[0] = 0;
+    } else {
+      tmp90_88[0] = 4;
+    }
+    if (localMap != null) {
+      if ((localMap.containsKey("toushe")) && (localMap.containsKey("from_platform")))
       {
-        if ((!localMap.containsKey("toushe")) || (!localMap.containsKey("from_platform"))) {
-          break label202;
-        }
-        arrayOfInt[0] = 16;
-        arrayOfInt[1] = TVKUtils.optInt((String)localMap.get("from_platform"), j);
+        tmp90_88[0] = 16;
+        tmp90_88[1] = TVKUtils.optInt((String)localMap.get("from_platform"), j);
+      }
+      else if (localMap.containsKey("sptest"))
+      {
+        tmp90_88[0] = 64;
+      }
+      else if (localMap.containsKey("ottflag"))
+      {
+        tmp90_88[2] = TVKUtils.optInt((String)localMap.get("ottflag"), 0);
       }
     }
-    for (;;)
-    {
-      return CKeyFacade.getCKey(str4, l, str2, str3, String.valueOf(j), str1, arrayOfInt, arrayOfInt.length, "");
-      arrayOfInt[0] = 4;
-      break;
-      label202:
-      if (localMap.containsKey("sptest")) {
-        arrayOfInt[0] = 64;
-      } else if (localMap.containsKey("ottflag")) {
-        arrayOfInt[2] = TVKUtils.optInt((String)localMap.get("ottflag"), 0);
-      }
-    }
+    return CKeyFacade.getCKey(str4, l, str2, str3, String.valueOf(j), str1, tmp90_88, tmp90_88.length, "");
   }
   
   private Map<String, String> getHeaders()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("User-Agent", "qqlive");
-    if ((this.mParams != null) && (!TextUtils.isEmpty(this.mParams.getLoginCookie())))
+    Object localObject = this.mParams;
+    if ((localObject != null) && (!TextUtils.isEmpty(((TVKCGIVKeyRequestParams)localObject).getLoginCookie())))
     {
       localHashMap.put("Cookie", this.mParams.getLoginCookie());
-      TVKLogUtil.i("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getvkey]cookie:" + this.mParams.getLoginCookie());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[vinfo][getvkey]cookie:");
+      ((StringBuilder)localObject).append(this.mParams.getLoginCookie());
+      TVKLogUtil.i("MediaPlayer[TVKCGIVkeyRequest.java]", ((StringBuilder)localObject).toString());
     }
     return localHashMap;
   }
@@ -120,14 +125,11 @@ public class TVKCGIVkeyRequest
     localHashMap.put("vid", this.mParams.getVid());
     localHashMap.put("vt", this.mParams.getVt());
     int i;
-    Object localObject1;
-    label247:
-    label252:
-    Object localObject2;
+    int j;
     if (this.mParams.getVkeyType() == 0)
     {
       i = this.mParams.getStartClipNo();
-      int j = this.mParams.getEndClipNo();
+      j = this.mParams.getEndClipNo();
       localObject1 = new StringBuilder(Integer.toString(i));
       i += 1;
       while (i <= j)
@@ -137,76 +139,67 @@ public class TVKCGIVkeyRequest
         i += 1;
       }
       localHashMap.put("idx", ((StringBuilder)localObject1).toString());
-      localHashMap.put("platform", String.valueOf(this.mParams.getPlatForm()));
-      localHashMap.put("appVer", this.mParams.getAppVer());
-      localHashMap.put("sdtfrom", this.mParams.getSdtFrom());
-      localHashMap.put("format", this.mParams.getFormat());
-      if (TextUtils.isEmpty(this.mParams.getUpc())) {
-        break label415;
+    }
+    else
+    {
+      localHashMap.put("filename", this.mParams.getFileName());
+    }
+    localHashMap.put("platform", String.valueOf(this.mParams.getPlatForm()));
+    localHashMap.put("appVer", this.mParams.getAppVer());
+    localHashMap.put("sdtfrom", this.mParams.getSdtFrom());
+    localHashMap.put("format", this.mParams.getFormat());
+    Object localObject2;
+    if (!TextUtils.isEmpty(this.mParams.getUpc()))
+    {
+      if (this.mParams.getUpc().contains("&"))
+      {
+        localObject1 = this.mParams.getUpc().split("&");
       }
-      if (!this.mParams.getUpc().contains("&")) {
-        break label319;
+      else
+      {
+        localObject1 = new String[1];
+        localObject1[0] = this.mParams.getUpc();
       }
-      localObject1 = this.mParams.getUpc().split("&");
       j = localObject1.length;
       i = 0;
-      if (i >= j) {
-        break label361;
+      while (i < j)
+      {
+        localObject2 = localObject1[i].split("=");
+        if (localObject2.length == 2) {
+          localHashMap.put(localObject2[0], localObject2[1]);
+        } else if (localObject2.length == 1) {
+          localHashMap.put(localObject2[0], "");
+        }
+        i += 1;
       }
-      localObject2 = localObject1[i].split("=");
-      if (localObject2.length != 2) {
-        break label337;
-      }
-      localHashMap.put(localObject2[0], localObject2[1]);
+      localHashMap.put("path", this.mParams.getUpcPaths());
+      localHashMap.put("spip", this.mParams.getUpcSPIPs());
+      localHashMap.put("spport", this.mParams.getUpcSPPORTs());
     }
-    for (;;)
-    {
-      i += 1;
-      break label252;
-      localHashMap.put("filename", this.mParams.getFileName());
-      break;
-      label319:
-      localObject1 = new String[1];
-      localObject1[0] = this.mParams.getUpc();
-      break label247;
-      label337:
-      if (localObject2.length == 1) {
-        localHashMap.put(localObject2[0], "");
-      }
-    }
-    label361:
-    localHashMap.put("path", this.mParams.getUpcPaths());
-    localHashMap.put("spip", this.mParams.getUpcSPIPs());
-    localHashMap.put("spport", this.mParams.getUpcSPPORTs());
-    label415:
     localHashMap.put("newnettype", String.valueOf(this.mParams.getNetworkType()));
     localHashMap.put("qqlog", this.mParams.getLoginQQ());
     if (65 == this.mParams.getEncryptVer()) {
       localObject1 = "4.1";
+    } else if (66 == this.mParams.getEncryptVer()) {
+      localObject1 = "4.2";
+    } else {
+      localObject1 = "5.1";
     }
-    for (;;)
+    localHashMap.put("encryptVer", localObject1);
+    localHashMap.put("cKey", genCkey(this.mParams));
+    localHashMap.put("lnk", this.mParams.getLnk());
+    localHashMap.put("linkver", String.valueOf(2));
+    if (!TextUtils.isEmpty(this.mParams.getWxOpenId())) {
+      localHashMap.put("openid", this.mParams.getWxOpenId());
+    }
+    Object localObject1 = this.mParams.getExtraParamsMap();
+    if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
     {
-      localHashMap.put("encryptVer", localObject1);
-      localHashMap.put("cKey", genCkey(this.mParams));
-      localHashMap.put("lnk", this.mParams.getLnk());
-      localHashMap.put("linkver", String.valueOf(2));
-      if (!TextUtils.isEmpty(this.mParams.getWxOpenId())) {
-        localHashMap.put("openid", this.mParams.getWxOpenId());
-      }
-      localObject1 = this.mParams.getExtraParamsMap();
-      if ((localObject1 == null) || (((Map)localObject1).isEmpty())) {
-        break;
-      }
       localObject1 = ((Map)localObject1).entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Map.Entry)((Iterator)localObject1).next();
         localHashMap.put(((Map.Entry)localObject2).getKey(), ((Map.Entry)localObject2).getValue());
-      }
-      if (66 == this.mParams.getEncryptVer()) {
-        localObject1 = "4.2";
-      } else {
-        localObject1 = "5.1";
       }
     }
     return localHashMap;
@@ -217,49 +210,55 @@ public class TVKCGIVkeyRequest
     String str1;
     if (this.mParams.isUseIpV6Dns()) {
       str1 = TVKVideoInfoEnum.VBKEY_V6_SERVER_NEW;
+    } else if (this.mUseBkurl) {
+      str1 = TVKVideoInfoEnum.VBKEY_BK_SERVER_NEW;
+    } else {
+      str1 = TVKVideoInfoEnum.VBKEY_SERVER_NEW;
     }
-    for (;;)
-    {
-      String str2 = str1;
-      if (!this.mRetryWithoutHttps) {
-        if (!TVKVideoInfoConfig.getInstance().isEnableHttps())
-        {
-          str2 = str1;
-          if (!TVKVideoInfoConfig.getInstance().isVkeyEnableHttps()) {}
-        }
-        else
-        {
-          str2 = str1.replaceFirst("http", "https");
-        }
+    String str2 = str1;
+    if (!this.mRetryWithoutHttps) {
+      if (!TVKVideoInfoConfig.getInstance().isEnableHttps())
+      {
+        str2 = str1;
+        if (!TVKVideoInfoConfig.getInstance().isVkeyEnableHttps()) {}
       }
-      return str2;
-      if (this.mUseBkurl) {
-        str1 = TVKVideoInfoEnum.VBKEY_BK_SERVER_NEW;
-      } else {
-        str1 = TVKVideoInfoEnum.VBKEY_SERVER_NEW;
+      else
+      {
+        str2 = str1.replaceFirst("http", "https");
       }
     }
+    return str2;
   }
   
   private void handleGetVkeyFailure(IOException paramIOException)
   {
     long l1 = SystemClock.elapsedRealtime();
     long l2 = this.mStartRequestMS;
-    if ((paramIOException instanceof ITVKHttpProcessor.InvalidResponseCodeException)) {}
-    for (int i = ((ITVKHttpProcessor.InvalidResponseCodeException)paramIOException).responseCode;; i = TVKVideoInfoErrorCodeUtil.getErrCodeByThrowable(paramIOException.getCause()))
+    int i;
+    if ((paramIOException instanceof ITVKHttpProcessor.InvalidResponseCodeException)) {
+      i = ((ITVKHttpProcessor.InvalidResponseCodeException)paramIOException).responseCode;
+    } else {
+      i = TVKVideoInfoErrorCodeUtil.getErrCodeByThrowable(paramIOException.getCause());
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[vinfo][getvkey] failed, time cost:");
+    localStringBuilder.append(l1 - l2);
+    localStringBuilder.append("ms error:");
+    localStringBuilder.append(paramIOException.toString());
+    TVKLogUtil.e("MediaPlayer[TVKCGIVkeyRequest.java]", localStringBuilder.toString());
+    if ((this.mUseBkurl) && (this.mCurrentHostUrlRetryCount == CURRENT_HOST_URL_RETRY_MAX_COUNT))
     {
-      TVKLogUtil.e("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getvkey] failed, time cost:" + (l1 - l2) + "ms error:" + paramIOException.toString());
-      if ((this.mUseBkurl) && (this.mCurrentHostUrlRetryCount == CURRENT_HOST_URL_RETRY_MAX_COUNT) && (this.mCallback != null))
+      paramIOException = this.mCallback;
+      if (paramIOException != null)
       {
         int j = 1402000 + i;
-        this.mCallback.onVkeyFailure(this.mRequestID, String.format("%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(j) }), j);
+        paramIOException.onVkeyFailure(this.mRequestID, String.format("%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(j) }), j);
       }
-      if ((i >= 16) && (i <= 20)) {
-        this.mRetryWithoutHttps = true;
-      }
-      executeRequest();
-      return;
     }
+    if ((i >= 16) && (i <= 20)) {
+      this.mRetryWithoutHttps = true;
+    }
+    executeRequest();
   }
   
   private void handleGetVkeySuccess(ITVKHttpProcessor.HttpResponse paramHttpResponse)
@@ -267,7 +266,12 @@ public class TVKCGIVkeyRequest
     paramHttpResponse = new String(paramHttpResponse.mData);
     long l1 = SystemClock.elapsedRealtime();
     long l2 = this.mStartRequestMS;
-    TVKLogUtil.i("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getvkey] success timecost:" + (l1 - l2) + " xml:" + paramHttpResponse);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[vinfo][getvkey] success timecost:");
+    localStringBuilder.append(l1 - l2);
+    localStringBuilder.append(" xml:");
+    localStringBuilder.append(paramHttpResponse);
+    TVKLogUtil.i("MediaPlayer[TVKCGIVkeyRequest.java]", localStringBuilder.toString());
     if (!paramHttpResponse.contains("<?xml"))
     {
       this.mRetryWithoutHttps = false;
@@ -282,22 +286,19 @@ public class TVKCGIVkeyRequest
         if ((this.mCgiRetryCount <= 2) && ((paramHttpResponse.isXML85ErrorCode()) || (paramHttpResponse.isXMLHaveRetryNode())))
         {
           this.mCgiRetryCount += 1;
-          TVKLogUtil.e("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getvkey] 85 error code, retry time" + this.mCgiRetryCount);
+          paramHttpResponse = new StringBuilder();
+          paramHttpResponse.append("[vinfo][getvkey] 85 error code, retry time");
+          paramHttpResponse.append(this.mCgiRetryCount);
+          TVKLogUtil.e("MediaPlayer[TVKCGIVkeyRequest.java]", paramHttpResponse.toString());
           this.mGetUrlCount -= 1;
           this.mCurrentHostUrlRetryCount -= 1;
-          if (this.mCgiRetryCount == 2) {
-            if (this.mUseBkurl) {
-              break label217;
-            }
-          }
-          label217:
-          for (boolean bool = true;; bool = false)
+          if (this.mCgiRetryCount == 2)
           {
-            this.mUseBkurl = bool;
+            this.mUseBkurl ^= true;
             this.mCurrentHostUrlRetryCount = 0;
-            executeRequest();
-            return;
           }
+          executeRequest();
+          return;
         }
         invokeVkeySucessCallback(this.mRequestID, paramHttpResponse.getXml(), paramHttpResponse.getDocument());
         return;
@@ -312,15 +313,17 @@ public class TVKCGIVkeyRequest
   
   private void invokeVkeyFailureCallback(String paramString1, String paramString2, int paramInt)
   {
-    if (this.mCallback != null) {
-      this.mCallback.onVkeyFailure(paramString1, paramString2, paramInt);
+    ITVKCGIVkeyResponse localITVKCGIVkeyResponse = this.mCallback;
+    if (localITVKCGIVkeyResponse != null) {
+      localITVKCGIVkeyResponse.onVkeyFailure(paramString1, paramString2, paramInt);
     }
   }
   
   private void invokeVkeySucessCallback(String paramString1, String paramString2, Document paramDocument)
   {
-    if (this.mCallback != null) {
-      this.mCallback.onVkeySuccess(paramString1, paramString2, paramDocument);
+    ITVKCGIVkeyResponse localITVKCGIVkeyResponse = this.mCallback;
+    if (localITVKCGIVkeyResponse != null) {
+      localITVKCGIVkeyResponse.onVkeySuccess(paramString1, paramString2, paramDocument);
     }
   }
   
@@ -334,26 +337,24 @@ public class TVKCGIVkeyRequest
     if (this.mIsCanceled) {
       return;
     }
-    if ((!this.mUseBkurl) && (this.mCurrentHostUrlRetryCount == CURRENT_HOST_URL_RETRY_MAX_COUNT)) {
-      if (this.mUseBkurl) {
-        break label138;
-      }
-    }
-    label138:
-    for (boolean bool = true;; bool = false)
+    boolean bool = this.mUseBkurl;
+    if ((!bool) && (this.mCurrentHostUrlRetryCount == CURRENT_HOST_URL_RETRY_MAX_COUNT))
     {
-      this.mUseBkurl = bool;
+      this.mUseBkurl = (bool ^ true);
       this.mCurrentHostUrlRetryCount = 0;
-      if (this.mCurrentHostUrlRetryCount >= CURRENT_HOST_URL_RETRY_MAX_COUNT) {
-        break;
-      }
+    }
+    int i = this.mCurrentHostUrlRetryCount;
+    if (i < CURRENT_HOST_URL_RETRY_MAX_COUNT)
+    {
       this.mGetUrlCount += 1;
-      this.mCurrentHostUrlRetryCount += 1;
+      this.mCurrentHostUrlRetryCount = (i + 1);
       Map localMap = getQueryParams();
-      TVKLogUtil.i("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getvkey] start to request, request time = " + this.mCurrentHostUrlRetryCount);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[vinfo][getvkey] start to request, request time = ");
+      localStringBuilder.append(this.mCurrentHostUrlRetryCount);
+      TVKLogUtil.i("MediaPlayer[TVKCGIVkeyRequest.java]", localStringBuilder.toString());
       this.mStartRequestMS = SystemClock.elapsedRealtime();
       TVKVideoInfoHttpProcessor.getInstance().addToRequestQueue(this.mCurrentHostUrlRetryCount, getRequestUrl(), localMap, getHeaders(), this.mGetVkeyCb);
-      return;
     }
   }
   
@@ -364,7 +365,7 @@ public class TVKCGIVkeyRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVkeyRequest
  * JD-Core Version:    0.7.0.1
  */

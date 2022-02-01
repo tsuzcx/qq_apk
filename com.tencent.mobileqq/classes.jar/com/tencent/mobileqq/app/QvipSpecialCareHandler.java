@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareUtil;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -42,20 +42,28 @@ public class QvipSpecialCareHandler
         {
           String str = String.valueOf((Long)((Iterator)localObject).next());
           paramRspBody.add(str);
-          QvipSpecialCareManager.c(str, this.a);
+          QvipSpecialCareUtil.c(str, this.a);
         }
-        QvipSpecialCareManager.b(paramRspBody, this.a);
+        QvipSpecialCareUtil.b(paramRspBody, this.a);
       }
     }
   }
   
   private void a(FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QVipSpeicalCareHandler", 2, "-->report MM:cmd=" + paramFromServiceMsg.getServiceCmd() + ",error code=" + paramFromServiceMsg.getBusinessFailCode() + ",uin=" + this.a.getCurrentAccountUin());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->report MM:cmd=");
+      localStringBuilder.append(paramFromServiceMsg.getServiceCmd());
+      localStringBuilder.append(",error code=");
+      localStringBuilder.append(paramFromServiceMsg.getBusinessFailCode());
+      localStringBuilder.append(",uin=");
+      localStringBuilder.append(this.a.getCurrentAccountUin());
+      QLog.e("QVipSpeicalCareHandler", 2, localStringBuilder.toString());
     }
     if (!paramFromServiceMsg.isSuccess()) {
-      ReportCenter.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131711366), true);
+      ReportCenter.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131711341), true);
     }
   }
   
@@ -82,28 +90,26 @@ public class QvipSpecialCareHandler
     }
     catch (Exception localException)
     {
-      int i;
-      for (;;)
-      {
-        QLog.i("SpecialRemind.Service", 1, "handle send special sound exception:" + localException.getMessage());
-        paramArrayOfByte = null;
-        localException.printStackTrace();
-      }
-      a(paramFromServiceMsg, paramArrayOfByte, i);
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("handle send special sound exception:");
+      paramArrayOfByte.append(localException.getMessage());
+      QLog.i("SpecialRemind.Service", 1, paramArrayOfByte.toString());
+      paramArrayOfByte = null;
+      localException.printStackTrace();
     }
     if ((paramArrayOfByte != null) && (paramArrayOfByte.uint32_method.has()))
     {
-      i = paramArrayOfByte.uint32_method.get();
+      int i = paramArrayOfByte.uint32_method.get();
       if (paramArrayOfByte.int32_ret.has())
       {
-        if (paramArrayOfByte.int32_ret.get() != 0) {
-          break label110;
+        if (paramArrayOfByte.int32_ret.get() == 0)
+        {
+          b(paramFromServiceMsg, paramArrayOfByte, i);
+          return;
         }
-        b(paramFromServiceMsg, paramArrayOfByte, i);
+        a(paramFromServiceMsg, paramArrayOfByte, i);
       }
     }
-    return;
-    label110:
   }
   
   private boolean a(List<String> paramList)
@@ -127,29 +133,32 @@ public class QvipSpecialCareHandler
           {
             String str = String.valueOf(localRemindItem.uint64_uin.get());
             paramRspBody.add(str);
-            QvipSpecialCareManager.a(str, localRemindItem.uint32_id.get(), this.a);
+            QvipSpecialCareUtil.a(str, localRemindItem.uint32_id.get(), this.a);
           }
         }
-        QvipSpecialCareManager.a(paramRspBody, this.a);
+        QvipSpecialCareUtil.a(paramRspBody, this.a);
       }
     }
   }
   
   private void b(FromServiceMsg paramFromServiceMsg, RemindPB.RspBody paramRspBody, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
+      if ((paramInt != 2) && (paramInt != 3))
+      {
+        if (paramInt == 4) {
+          a(paramRspBody);
+        }
+      }
+      else {
+        b(paramRspBody);
+      }
     }
-    for (;;)
-    {
-      notifyUI(1000, paramFromServiceMsg.isSuccess(), Integer.valueOf(paramInt));
-      return;
+    else {
       c(paramRspBody);
-      continue;
-      b(paramRspBody);
-      continue;
-      a(paramRspBody);
     }
+    notifyUI(1000, paramFromServiceMsg.isSuccess(), Integer.valueOf(paramInt));
   }
   
   private void c(RemindPB.RspBody paramRspBody)
@@ -158,12 +167,12 @@ public class QvipSpecialCareHandler
     {
       paramRspBody = (RemindPB.RemindQuota)paramRspBody.msg_quota.get();
       if (paramRspBody.uint32_comm_quota.has()) {
-        QvipSpecialCareManager.a(paramRspBody.uint32_comm_quota.get(), this.a);
+        QvipSpecialCareUtil.a(paramRspBody.uint32_comm_quota.get(), this.a);
       }
       if (paramRspBody.uint32_svip_quota.has()) {
-        QvipSpecialCareManager.b(paramRspBody.uint32_svip_quota.get(), this.a);
+        QvipSpecialCareUtil.b(paramRspBody.uint32_svip_quota.get(), this.a);
       }
-      QvipSpecialCareManager.b(this.a);
+      QvipSpecialCareUtil.b(this.a);
     }
   }
   
@@ -180,51 +189,46 @@ public class QvipSpecialCareHandler
   public void a(List<String> paramList1, int paramInt, List<String> paramList2)
   {
     RemindPB.ReqBody localReqBody = new RemindPB.ReqBody();
-    switch (paramInt)
+    if ((paramInt == 1) || ((paramInt == 2) || (paramInt == 3) || (paramInt == 4))) {}
+    try
     {
-    }
-    for (;;)
-    {
-      try
+      if (a(paramList1))
       {
-        paramList1 = createToServiceMsg("SpecialRemind.Service");
-        paramList1.putWupBuffer(localReqBody.toByteArray());
-        sendPbReq(paramList1);
-        return;
-      }
-      catch (Exception paramList1)
-      {
-        paramList1.printStackTrace();
-        return;
-      }
-      localReqBody.uint32_method.set(1);
-      continue;
-      if ((a(paramList1)) && (a(paramList2)) && (paramList1.size() == paramList2.size()))
-      {
-        int j = paramList2.size();
-        int i = 0;
-        while (i < j)
+        paramList1 = paramList1.iterator();
+        while (paramList1.hasNext())
         {
-          RemindPB.RemindItem localRemindItem = new RemindPB.RemindItem();
-          localRemindItem.uint64_uin.set(Long.parseLong((String)paramList1.get(i)));
-          localRemindItem.uint32_id.set(Integer.parseInt((String)paramList2.get(i)));
-          localReqBody.rep_set_info.add(localRemindItem);
-          localReqBody.setHasFlag(true);
-          i += 1;
+          paramList2 = (String)paramList1.next();
+          localReqBody.rep_clear_uin.add(Long.valueOf(Long.parseLong(paramList2)));
         }
-        localReqBody.uint32_method.set(paramInt);
-        continue;
-        if (a(paramList1))
+        localReqBody.uint32_method.set(4);
+        break label244;
+        if ((a(paramList1)) && (a(paramList2)) && (paramList1.size() == paramList2.size()))
         {
-          paramList1 = paramList1.iterator();
-          while (paramList1.hasNext())
+          int j = paramList2.size();
+          int i = 0;
+          while (i < j)
           {
-            paramList2 = (String)paramList1.next();
-            localReqBody.rep_clear_uin.add(Long.valueOf(Long.parseLong(paramList2)));
+            RemindPB.RemindItem localRemindItem = new RemindPB.RemindItem();
+            localRemindItem.uint64_uin.set(Long.parseLong((String)paramList1.get(i)));
+            localRemindItem.uint32_id.set(Integer.parseInt((String)paramList2.get(i)));
+            localReqBody.rep_set_info.add(localRemindItem);
+            localReqBody.setHasFlag(true);
+            i += 1;
           }
-          localReqBody.uint32_method.set(4);
+          localReqBody.uint32_method.set(paramInt);
+          break label244;
+          localReqBody.uint32_method.set(1);
         }
       }
+      label244:
+      paramList1 = createToServiceMsg("SpecialRemind.Service");
+      paramList1.putWupBuffer(localReqBody.toByteArray());
+      sendPbReq(paramList1);
+      return;
+    }
+    catch (Exception paramList1)
+    {
+      paramList1.printStackTrace();
     }
   }
   
@@ -236,16 +240,20 @@ public class QvipSpecialCareHandler
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
-    if ((paramToServiceMsg == null) || (paramToServiceMsg.length() == 0)) {}
-    while (!"SpecialRemind.Service".equals(paramFromServiceMsg.getServiceCmd())) {
-      return;
+    if (paramToServiceMsg != null)
+    {
+      if (paramToServiceMsg.length() == 0) {
+        return;
+      }
+      if ("SpecialRemind.Service".equals(paramFromServiceMsg.getServiceCmd())) {
+        a(paramFromServiceMsg, paramObject);
+      }
     }
-    a(paramFromServiceMsg, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QvipSpecialCareHandler
  * JD-Core Version:    0.7.0.1
  */

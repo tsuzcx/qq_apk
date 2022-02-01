@@ -10,12 +10,13 @@ class AppGuideTipsManager$2
   
   public void run()
   {
-    AppGuideTipsManager.b(this.this$0, PackageUtil.a(AppGuideTipsManager.a(this.this$0).getApp(), "com.tencent.tim"));
+    AppGuideTipsManager localAppGuideTipsManager = this.this$0;
+    AppGuideTipsManager.b(localAppGuideTipsManager, PackageUtil.a(AppGuideTipsManager.a(localAppGuideTipsManager).getApp(), "com.tencent.tim"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AppGuideTipsManager.2
  * JD-Core Version:    0.7.0.1
  */

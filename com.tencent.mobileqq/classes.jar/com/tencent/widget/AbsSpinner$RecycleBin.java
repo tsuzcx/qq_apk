@@ -5,69 +5,65 @@ import android.view.View;
 
 class AbsSpinner$RecycleBin
 {
-  private final SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private final SparseArray<View> mScrapHeap = new SparseArray();
   
   AbsSpinner$RecycleBin(AbsSpinner paramAbsSpinner) {}
   
-  View a(int paramInt)
+  void clear()
   {
-    View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localView != null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
-    }
-    return localView;
-  }
-  
-  void a()
-  {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    SparseArray localSparseArray = this.mScrapHeap;
     int j = localSparseArray.size();
     int i = 0;
     while (i < j)
     {
       View localView = (View)localSparseArray.valueAt(i);
       if (localView != null) {
-        AbsSpinner.a(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
+        AbsSpinner.access$100(this.this$0, localView, true);
       }
       i += 1;
     }
     localSparseArray.clear();
   }
   
-  public void a(int paramInt, View paramView)
+  void clearByTag()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
-  }
-  
-  void b()
-  {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    SparseArray localSparseArray = this.mScrapHeap;
     int j = localSparseArray.size();
     int i = 0;
-    View localView;
-    if (i < j)
+    while (i < j)
     {
-      localView = (View)localSparseArray.valueAt(i);
-      if ((localView == null) || (!(localView.getTag(2131367678) instanceof Boolean))) {
-        break label94;
+      View localView = (View)localSparseArray.valueAt(i);
+      boolean bool;
+      if ((localView != null) && ((localView.getTag(2131367432) instanceof Boolean))) {
+        bool = ((Boolean)localView.getTag(2131367432)).booleanValue();
+      } else {
+        bool = true;
       }
-    }
-    label94:
-    for (boolean bool = ((Boolean)localView.getTag(2131367678)).booleanValue();; bool = true)
-    {
       if ((localView != null) && (bool)) {
-        AbsSpinner.b(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
+        AbsSpinner.access$200(this.this$0, localView, true);
       }
       i += 1;
-      break;
-      localSparseArray.clear();
-      return;
     }
+    localSparseArray.clear();
+  }
+  
+  View get(int paramInt)
+  {
+    View localView = (View)this.mScrapHeap.get(paramInt);
+    if (localView != null) {
+      this.mScrapHeap.delete(paramInt);
+    }
+    return localView;
+  }
+  
+  public void put(int paramInt, View paramView)
+  {
+    this.mScrapHeap.put(paramInt, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AbsSpinner.RecycleBin
  * JD-Core Version:    0.7.0.1
  */

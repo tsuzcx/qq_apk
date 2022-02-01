@@ -35,7 +35,9 @@ public class TCWDatePickerDialog
     if (this.jdField_a_of_type_ComTencentWidgetTCWDatePickerDialog$OnDateSetListener != null)
     {
       this.jdField_a_of_type_ComTencentWidgetTCWDatePicker.clearFocus();
-      this.jdField_a_of_type_ComTencentWidgetTCWDatePickerDialog$OnDateSetListener.a(this.jdField_a_of_type_ComTencentWidgetTCWDatePicker, this.jdField_a_of_type_ComTencentWidgetTCWDatePicker.a(), this.jdField_a_of_type_ComTencentWidgetTCWDatePicker.b(), this.jdField_a_of_type_ComTencentWidgetTCWDatePicker.c());
+      paramDialogInterface = this.jdField_a_of_type_ComTencentWidgetTCWDatePickerDialog$OnDateSetListener;
+      TCWDatePicker localTCWDatePicker = this.jdField_a_of_type_ComTencentWidgetTCWDatePicker;
+      paramDialogInterface.a(localTCWDatePicker, localTCWDatePicker.a(), this.jdField_a_of_type_ComTencentWidgetTCWDatePicker.b(), this.jdField_a_of_type_ComTencentWidgetTCWDatePicker.c());
     }
   }
   
@@ -60,7 +62,7 @@ public class TCWDatePickerDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.TCWDatePickerDialog
  * JD-Core Version:    0.7.0.1
  */

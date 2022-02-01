@@ -80,14 +80,15 @@ public abstract class ParentRunner<T>
   
   private Collection<T> getFilteredChildren()
   {
-    if (this.filteredChildren == null) {}
-    synchronized (this.childrenLock)
-    {
-      if (this.filteredChildren == null) {
-        this.filteredChildren = Collections.unmodifiableCollection(getChildren());
+    if (this.filteredChildren == null) {
+      synchronized (this.childrenLock)
+      {
+        if (this.filteredChildren == null) {
+          this.filteredChildren = Collections.unmodifiableCollection(getChildren());
+        }
       }
-      return this.filteredChildren;
     }
+    return this.filteredChildren;
   }
   
   private void runChildren(RunNotifier paramRunNotifier)
@@ -99,10 +100,16 @@ public abstract class ParentRunner<T>
       while (localIterator.hasNext()) {
         localRunnerScheduler.schedule(new ParentRunner.3(this, localIterator.next(), paramRunNotifier));
       }
+      localRunnerScheduler.finished();
+      return;
     }
     finally
     {
       localRunnerScheduler.finished();
+    }
+    for (;;)
+    {
+      throw paramRunNotifier;
     }
   }
   
@@ -115,9 +122,10 @@ public abstract class ParentRunner<T>
   {
     ArrayList localArrayList = new ArrayList();
     collectInitializationErrors(localArrayList);
-    if (!localArrayList.isEmpty()) {
-      throw new InitializationError(localArrayList);
+    if (localArrayList.isEmpty()) {
+      return;
     }
+    throw new InitializationError(localArrayList);
   }
   
   private void validateClassRules(List<Throwable> paramList)
@@ -174,34 +182,32 @@ public abstract class ParentRunner<T>
   
   public void filter(Filter paramFilter)
   {
-    ArrayList localArrayList;
-    for (;;)
+    synchronized (this.childrenLock)
     {
-      Iterator localIterator;
-      synchronized (this.childrenLock)
+      ArrayList localArrayList = new ArrayList(getFilteredChildren());
+      Iterator localIterator = localArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        localArrayList = new ArrayList(getFilteredChildren());
-        localIterator = localArrayList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
         Object localObject2 = localIterator.next();
         boolean bool = shouldRun(paramFilter, localObject2);
-        if (bool) {
-          try
-          {
-            paramFilter.apply(localObject2);
-          }
-          catch (NoTestsRemainException localNoTestsRemainException)
-          {
-            localIterator.remove();
-          }
+        if (bool) {}
+        try
+        {
+          paramFilter.apply(localObject2);
         }
+        catch (NoTestsRemainException localNoTestsRemainException)
+        {
+          label69:
+          break label69;
+        }
+        localIterator.remove();
+        continue;
+        localIterator.remove();
       }
-      localIterator.remove();
-    }
-    this.filteredChildren = Collections.unmodifiableCollection(localArrayList);
-    if (this.filteredChildren.isEmpty()) {
+      this.filteredChildren = Collections.unmodifiableCollection(localArrayList);
+      if (!this.filteredChildren.isEmpty()) {
+        return;
+      }
       throw new NoTestsRemainException();
     }
   }
@@ -246,46 +252,71 @@ public abstract class ParentRunner<T>
       classBlock(paramRunNotifier).evaluate();
       return;
     }
-    catch (AssumptionViolatedException paramRunNotifier)
+    catch (Throwable paramRunNotifier)
     {
-      localEachTestNotifier.addFailedAssumption(paramRunNotifier);
+      localEachTestNotifier.addFailure(paramRunNotifier);
       return;
     }
     catch (StoppedByUserException paramRunNotifier)
     {
       throw paramRunNotifier;
     }
-    catch (Throwable paramRunNotifier)
+    catch (AssumptionViolatedException paramRunNotifier)
     {
-      localEachTestNotifier.addFailure(paramRunNotifier);
+      localEachTestNotifier.addFailedAssumption(paramRunNotifier);
     }
   }
   
   protected abstract void runChild(T paramT, RunNotifier paramRunNotifier);
   
+  /* Error */
   protected final void runLeaf(Statement paramStatement, Description paramDescription, RunNotifier paramRunNotifier)
   {
-    paramDescription = new EachTestNotifier(paramRunNotifier, paramDescription);
-    paramDescription.fireTestStarted();
-    try
-    {
-      paramStatement.evaluate();
-      return;
-    }
-    catch (AssumptionViolatedException paramStatement)
-    {
-      paramDescription.addFailedAssumption(paramStatement);
-      return;
-    }
-    catch (Throwable paramStatement)
-    {
-      paramDescription.addFailure(paramStatement);
-      return;
-    }
-    finally
-    {
-      paramDescription.fireTestFinished();
-    }
+    // Byte code:
+    //   0: new 305	org/junit/internal/runners/model/EachTestNotifier
+    //   3: dup
+    //   4: aload_3
+    //   5: aload_2
+    //   6: invokespecial 308	org/junit/internal/runners/model/EachTestNotifier:<init>	(Lorg/junit/runner/notification/RunNotifier;Lorg/junit/runner/Description;)V
+    //   9: astore_2
+    //   10: aload_2
+    //   11: invokevirtual 330	org/junit/internal/runners/model/EachTestNotifier:fireTestStarted	()V
+    //   14: aload_1
+    //   15: invokevirtual 315	org/junit/runners/model/Statement:evaluate	()V
+    //   18: aload_2
+    //   19: invokevirtual 333	org/junit/internal/runners/model/EachTestNotifier:fireTestFinished	()V
+    //   22: return
+    //   23: astore_1
+    //   24: goto +21 -> 45
+    //   27: astore_1
+    //   28: aload_2
+    //   29: aload_1
+    //   30: invokevirtual 319	org/junit/internal/runners/model/EachTestNotifier:addFailure	(Ljava/lang/Throwable;)V
+    //   33: goto -15 -> 18
+    //   36: astore_1
+    //   37: aload_2
+    //   38: aload_1
+    //   39: invokevirtual 323	org/junit/internal/runners/model/EachTestNotifier:addFailedAssumption	(Lorg/junit/internal/AssumptionViolatedException;)V
+    //   42: goto -24 -> 18
+    //   45: aload_2
+    //   46: invokevirtual 333	org/junit/internal/runners/model/EachTestNotifier:fireTestFinished	()V
+    //   49: goto +5 -> 54
+    //   52: aload_1
+    //   53: athrow
+    //   54: goto -2 -> 52
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	57	0	this	ParentRunner
+    //   0	57	1	paramStatement	Statement
+    //   0	57	2	paramDescription	Description
+    //   0	57	3	paramRunNotifier	RunNotifier
+    // Exception table:
+    //   from	to	target	type
+    //   14	18	23	finally
+    //   28	33	23	finally
+    //   37	42	23	finally
+    //   14	18	27	java/lang/Throwable
+    //   14	18	36	org/junit/internal/AssumptionViolatedException
   }
   
   public void setScheduler(RunnerScheduler paramRunnerScheduler)
@@ -297,14 +328,19 @@ public abstract class ParentRunner<T>
   {
     synchronized (this.childrenLock)
     {
-      localObject2 = getFilteredChildren().iterator();
-      if (((Iterator)localObject2).hasNext()) {
+      Object localObject2 = getFilteredChildren().iterator();
+      while (((Iterator)localObject2).hasNext()) {
         paramSorter.apply(((Iterator)localObject2).next());
       }
+      localObject2 = new ArrayList(getFilteredChildren());
+      Collections.sort((List)localObject2, comparator(paramSorter));
+      this.filteredChildren = Collections.unmodifiableCollection((Collection)localObject2);
+      return;
     }
-    Object localObject2 = new ArrayList(getFilteredChildren());
-    Collections.sort((List)localObject2, comparator(paramSorter));
-    this.filteredChildren = Collections.unmodifiableCollection((Collection)localObject2);
+    for (;;)
+    {
+      throw paramSorter;
+    }
   }
   
   protected void validatePublicVoidNoArgMethods(Class<? extends Annotation> paramClass, boolean paramBoolean, List<Throwable> paramList)
@@ -335,7 +371,7 @@ public abstract class ParentRunner<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.runners.ParentRunner
  * JD-Core Version:    0.7.0.1
  */

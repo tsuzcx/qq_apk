@@ -4,7 +4,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.mobileqq.pic.PicUploadInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.pic.api.ICompressOperator;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.mobileqq.transfile.TransferRequest.PicUpExtraInfo;
 import com.tencent.mobileqq.transfile.api.ITransFileController;
@@ -19,7 +20,7 @@ class TroopPicEffectsEditActivity$3
     this.this$0.app.getHwEngine().preConnect();
     Object localObject = new CompressInfo(this.a.g, 0);
     ((CompressInfo)localObject).f = 0;
-    CompressOperator.a((CompressInfo)localObject);
+    ((ICompressOperator)QRoute.api(ICompressOperator.class)).start((CompressInfo)localObject);
     TransferRequest localTransferRequest = new TransferRequest();
     localTransferRequest.mSelfUin = this.this$0.app.getAccount();
     localTransferRequest.mPeerUin = this.this$0.b;
@@ -43,7 +44,7 @@ class TroopPicEffectsEditActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.3
  * JD-Core Version:    0.7.0.1
  */

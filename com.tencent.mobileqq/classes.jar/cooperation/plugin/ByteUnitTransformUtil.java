@@ -16,17 +16,22 @@ public class ByteUnitTransformUtil
     }
     if (f1 == 0.0F)
     {
-      f1 = (float)paramLong;
-      return String.valueOf(paramLong) + a[i];
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(paramLong));
+      localStringBuilder.append(a[i]);
+      return localStringBuilder.toString();
     }
     f1 /= 1024.0F;
     float f2 = (float)paramLong;
-    return String.format("%.2f", new Object[] { Float.valueOf(f1 + f2) }) + a[i];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.format("%.2f", new Object[] { Float.valueOf(f1 + f2) }));
+    localStringBuilder.append(a[i]);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.ByteUnitTransformUtil
  * JD-Core Version:    0.7.0.1
  */

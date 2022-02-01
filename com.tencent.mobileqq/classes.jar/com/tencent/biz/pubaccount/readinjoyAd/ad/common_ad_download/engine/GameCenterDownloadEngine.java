@@ -5,14 +5,14 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDo
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData;
 import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceUtil;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceWrap;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import cooperation.wadl.ipc.WadlProxyServiceUtil;
-import cooperation.wadl.ipc.WadlProxyServiceWrap;
 import java.io.File;
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/engine/GameCenterDownloadEngine;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/engine/IDownloadEngine;", "()V", "buildDownloadParams", "Lcom/tencent/gamecenter/wadl/biz/entity/WadlParams;", "data", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "cancelDownload", "", "viewRIJ", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "installApp", "", "isAppPkgExist", "isGameDownloadData", "pauseDownload", "queryDownloadState", "startDownload", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/engine/GameCenterDownloadEngine;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/engine/IDownloadEngine;", "()V", "buildDownloadParams", "Lcom/tencent/gamecenter/wadl/biz/entity/WadlParams;", "data", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "cancelDownload", "", "viewRIJ", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "installApp", "", "isAppPkgExist", "isGameDownloadData", "pauseDownload", "queryDownloadState", "startDownload", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class GameCenterDownloadEngine
   extends IDownloadEngine
 {
@@ -38,20 +38,25 @@ public final class GameCenterDownloadEngine
   
   public boolean a(@Nullable ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    if (paramADVideoAppDownloadData != null) {}
-    for (String str = paramADVideoAppDownloadData.i; TextUtils.isEmpty((CharSequence)str); str = null) {
+    String str;
+    if (paramADVideoAppDownloadData != null) {
+      str = paramADVideoAppDownloadData.i;
+    } else {
+      str = null;
+    }
+    if (TextUtils.isEmpty((CharSequence)str)) {
       return false;
     }
     if (paramADVideoAppDownloadData != null)
     {
       paramADVideoAppDownloadData = paramADVideoAppDownloadData.i;
-      if (paramADVideoAppDownloadData == null) {}
+      if (paramADVideoAppDownloadData != null) {}
     }
-    for (;;)
+    else
     {
-      return new File(paramADVideoAppDownloadData).exists();
       paramADVideoAppDownloadData = "";
     }
+    return new File(paramADVideoAppDownloadData).exists();
   }
   
   public void b(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable ADVideoAppDownloadData paramADVideoAppDownloadData)
@@ -65,17 +70,18 @@ public final class GameCenterDownloadEngine
       a.a(paramADVideoAppDownloadData);
     }
     WadlProxyServiceWrap localWadlProxyServiceWrap = WadlProxyServiceUtil.a();
-    if (paramADVideoAppDownloadData != null) {}
-    for (paramADVideoAppDownloadData = paramADVideoAppDownloadData.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams;; paramADVideoAppDownloadData = null)
-    {
-      localWadlProxyServiceWrap.c(paramADVideoAppDownloadData);
-      return true;
+    if (paramADVideoAppDownloadData != null) {
+      paramADVideoAppDownloadData = paramADVideoAppDownloadData.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams;
+    } else {
+      paramADVideoAppDownloadData = null;
     }
+    localWadlProxyServiceWrap.c(paramADVideoAppDownloadData);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.GameCenterDownloadEngine
  * JD-Core Version:    0.7.0.1
  */

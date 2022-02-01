@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cluster_identify_face_req
   extends JceStruct
@@ -44,19 +45,21 @@ public final class cluster_identify_face_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.op_uin, 0);
-    if (this.feature != null) {
-      paramJceOutputStream.write(this.feature, 1);
+    Object localObject = this.feature;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.mode, 2);
-    if (this.img != null) {
-      paramJceOutputStream.write(this.img, 3);
+    localObject = this.img;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.is_demo, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.cluster_identify_face_req
  * JD-Core Version:    0.7.0.1
  */

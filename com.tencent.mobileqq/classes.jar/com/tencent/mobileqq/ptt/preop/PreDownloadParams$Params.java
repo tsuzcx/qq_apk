@@ -18,7 +18,10 @@ public class PreDownloadParams$Params
     int i = 0;
     while (i < this.jdField_a_of_type_ArrayOfInt.length)
     {
-      localStringBuilder.append('#').append(i).append('_').append(this.jdField_a_of_type_ArrayOfInt[i]);
+      localStringBuilder.append('#');
+      localStringBuilder.append(i);
+      localStringBuilder.append('_');
+      localStringBuilder.append(this.jdField_a_of_type_ArrayOfInt[i]);
       i += 1;
     }
     return localStringBuilder.toString();
@@ -26,7 +29,7 @@ public class PreDownloadParams$Params
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.preop.PreDownloadParams.Params
  * JD-Core Version:    0.7.0.1
  */

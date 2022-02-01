@@ -19,7 +19,7 @@ class VPageSliderView$VerticalPageTransformer
     {
       paramView.setAlpha(1.0F);
       paramView.setTranslationX(paramView.getWidth() * -paramFloat);
-      paramView.setTranslationY(paramView.getHeight() * paramFloat);
+      paramView.setTranslationY(paramFloat * paramView.getHeight());
       return;
     }
     paramView.setAlpha(0.0F);
@@ -27,7 +27,7 @@ class VPageSliderView$VerticalPageTransformer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.VPageSliderView.VerticalPageTransformer
  * JD-Core Version:    0.7.0.1
  */

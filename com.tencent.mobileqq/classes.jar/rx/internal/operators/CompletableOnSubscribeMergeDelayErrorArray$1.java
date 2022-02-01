@@ -31,19 +31,18 @@ class CompletableOnSubscribeMergeDelayErrorArray$1
   {
     if (this.val$wip.decrementAndGet() == 0)
     {
-      if (this.val$q.isEmpty()) {
+      if (this.val$q.isEmpty())
+      {
         this.val$s.onCompleted();
+        return;
       }
+      this.val$s.onError(CompletableOnSubscribeMerge.collectErrors(this.val$q));
     }
-    else {
-      return;
-    }
-    this.val$s.onError(CompletableOnSubscribeMerge.collectErrors(this.val$q));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.CompletableOnSubscribeMergeDelayErrorArray.1
  * JD-Core Version:    0.7.0.1
  */

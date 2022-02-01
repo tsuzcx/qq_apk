@@ -24,7 +24,14 @@ final class c
       localJSONObject.put("cursor", paramEditable.toString().length());
       localJSONObject.put("value", paramEditable.toString());
       localJSONObject.put("data", this.e.optString("data"));
-      this.d.appBrandRuntime.i.evaluteJs("WeixinJSBridge.subscribeHandler(\"onKeyboardValueChange\", " + localJSONObject + "," + this.d.getPageWebview().pageWebviewId + ")");
+      paramEditable = this.d.appBrandRuntime.i;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onKeyboardValueChange\", ");
+      localStringBuilder.append(localJSONObject);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.d.getPageWebview().pageWebviewId);
+      localStringBuilder.append(")");
+      paramEditable.evaluteJs(localStringBuilder.toString());
       return;
     }
     catch (JSONException paramEditable)
@@ -42,29 +49,36 @@ final class c
       this.f.setTextSize(2, this.a.optInt("fontSize"));
       this.f.setTextColor(Color.parseColor(this.a.optString("color")));
     }
-    for (;;)
+    else
     {
-      try
-      {
-        paramCharSequence = new JSONObject();
-        paramCharSequence.put("height", this.f.getMeasuredHeight());
-        paramCharSequence.put("lineCount", this.f.getLineCount());
-        paramCharSequence.put("inputId", this.c);
-        this.d.getPageWebview().evaluteJs("WeixinJSBridge.subscribeHandler(\"onTextAreaHeightChange\", " + paramCharSequence + "," + this.d.getPageWebview().pageWebviewId + ")");
-        return;
-      }
-      catch (JSONException paramCharSequence)
-      {
-        paramCharSequence.printStackTrace();
-      }
       this.f.setTextSize(2, this.b.optInt("fontSize"));
       this.f.setTextColor(Color.parseColor(this.b.optString("color")));
+    }
+    try
+    {
+      paramCharSequence = new JSONObject();
+      paramCharSequence.put("height", this.f.getMeasuredHeight());
+      paramCharSequence.put("lineCount", this.f.getLineCount());
+      paramCharSequence.put("inputId", this.c);
+      PageWebview localPageWebview = this.d.getPageWebview();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onTextAreaHeightChange\", ");
+      localStringBuilder.append(paramCharSequence);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.d.getPageWebview().pageWebviewId);
+      localStringBuilder.append(")");
+      localPageWebview.evaluteJs(localStringBuilder.toString());
+      return;
+    }
+    catch (JSONException paramCharSequence)
+    {
+      paramCharSequence.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.c
  * JD-Core Version:    0.7.0.1
  */

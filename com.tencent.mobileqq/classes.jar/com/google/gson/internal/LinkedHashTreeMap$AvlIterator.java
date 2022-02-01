@@ -10,16 +10,19 @@ class LinkedHashTreeMap$AvlIterator<K, V>
     if (localNode2 == null) {
       return null;
     }
-    Object localObject2 = localNode2.parent;
+    Object localObject1 = localNode2.parent;
     localNode2.parent = null;
-    LinkedHashTreeMap.Node localNode1;
-    for (Object localObject1 = localNode2.right; localObject1 != null; localObject1 = localNode1)
+    Object localObject2;
+    for (LinkedHashTreeMap.Node localNode1 = localNode2.right;; localNode1 = ((LinkedHashTreeMap.Node)localObject1).left)
     {
-      ((LinkedHashTreeMap.Node)localObject1).parent = ((LinkedHashTreeMap.Node)localObject2);
-      localNode1 = ((LinkedHashTreeMap.Node)localObject1).left;
       localObject2 = localObject1;
+      localObject1 = localNode1;
+      if (localObject1 == null) {
+        break;
+      }
+      ((LinkedHashTreeMap.Node)localObject1).parent = localObject2;
     }
-    this.stackTop = ((LinkedHashTreeMap.Node)localObject2);
+    this.stackTop = localObject2;
     return localNode2;
   }
   
@@ -38,7 +41,7 @@ class LinkedHashTreeMap$AvlIterator<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.LinkedHashTreeMap.AvlIterator
  * JD-Core Version:    0.7.0.1
  */

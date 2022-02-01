@@ -1,10 +1,9 @@
 package com.tencent.imcore.message.ext.codec.decoder.pbelement;
 
-import com.etrump.mixlayout.FontManager;
 import com.tencent.mobileqq.data.MessageForReplyText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.emoticon.StickerInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -17,6 +16,7 @@ import com.tencent.mobileqq.service.message.MessageConstants;
 import com.tencent.mobileqq.service.message.MessageProtoCodec;
 import com.tencent.mobileqq.service.message.TempSessionInfo;
 import com.tencent.mobileqq.troop.data.MessageInfo;
+import com.tencent.mobileqq.vas.font.api.FontManagerConstants;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -39,8 +39,16 @@ public class GeneralFlagsElemDecoder
         if (!paramList.isEmpty()) {
           ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("vip_font_id", String.valueOf(l));
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("GeneralFlagsElemDecoder", 2, "old vip_font_id = " + l + " fontId = " + FontManager.a(l) + " type = " + FontManager.b(l));
+        if (QLog.isColorLevel())
+        {
+          paramList = new StringBuilder();
+          paramList.append("old vip_font_id = ");
+          paramList.append(l);
+          paramList.append(" fontId = ");
+          paramList.append(FontManagerConstants.parseFontId(l));
+          paramList.append(" type = ");
+          paramList.append(FontManagerConstants.parseFontType(l));
+          QLog.d("GeneralFlagsElemDecoder", 2, paramList.toString());
         }
       }
     }
@@ -48,45 +56,33 @@ public class GeneralFlagsElemDecoder
   
   private void a(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
-    boolean bool;
-    if ((paramResvAttr.uint32_comment_flag.has()) && (paramResvAttr.uint64_comment_location.has()) && (!paramList.isEmpty()))
+    Object localObject;
+    if (paramResvAttr.bytes_tag_name.has())
     {
-      if (paramResvAttr.uint32_comment_flag.get() != 1) {
-        break label184;
+      localObject = paramResvAttr.bytes_tag_name.get().toStringUtf8();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("decodeOpenExtraInfo, bytes_tag_name= ");
+        localStringBuilder.append((String)localObject);
+        QLog.d("GeneralFlagsElemDecoder", 2, localStringBuilder.toString());
       }
-      bool = true;
+      if (!paramList.isEmpty()) {
+        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("key_open_game_tag_name", (String)localObject);
+      }
     }
-    for (;;)
+    if (paramResvAttr.bytes_message_ext.has())
     {
-      long l = paramResvAttr.uint64_comment_location.get();
-      paramList = (MessageRecord)paramList.get(0);
-      if ((paramList instanceof MessageForReplyText))
+      paramResvAttr = paramResvAttr.bytes_message_ext.get().toStringUtf8();
+      if (QLog.isColorLevel())
       {
-        paramList = (MessageForReplyText)paramList;
-        paramList.isBarrageMsg = bool;
-        paramList.barrageTimeLocation = l;
-        if (paramList.isBarrageMsg) {
-          paramList.saveExtInfoToExtStr("barrage_time_location", String.valueOf(paramList.barrageTimeLocation));
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("decodeOpenExtraInfo, bytes_message_ext= ");
+        ((StringBuilder)localObject).append(paramResvAttr);
+        QLog.d("GeneralFlagsElemDecoder", 2, ((StringBuilder)localObject).toString());
       }
-      try
-      {
-        oidb_0xdea.PassThrough localPassThrough = new oidb_0xdea.PassThrough();
-        localPassThrough.mergeFrom(paramResvAttr.bytes_pass_through.get().toByteArray());
-        paramList.barrageSourceMsgType = localPassThrough.entrance.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("GeneralFlagsElemDecoder", 2, new Object[] { "receive replay msg, isBarrageMsg: ", Boolean.valueOf(bool), " timeLocation:", Long.valueOf(l) });
-        }
-        return;
-        label184:
-        bool = false;
-      }
-      catch (Exception paramList)
-      {
-        for (;;)
-        {
-          QLog.i("GeneralFlagsElemDecoder", 1, "handleGeneralSettingFlags fail, " + paramList);
-        }
+      if (!paramList.isEmpty()) {
+        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("key_open_game_message_ext", paramResvAttr);
       }
     }
   }
@@ -99,7 +95,9 @@ public class GeneralFlagsElemDecoder
       if (!paramList.isEmpty()) {
         ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr(MessageConstants.B, paramResvAttr);
       }
-      paramStringBuilder.append("---bytes_service_msg_name = ").append(paramResvAttr).append("---");
+      paramStringBuilder.append("---bytes_service_msg_name = ");
+      paramStringBuilder.append(paramResvAttr);
+      paramStringBuilder.append("---");
     }
   }
   
@@ -116,44 +114,70 @@ public class GeneralFlagsElemDecoder
   
   private boolean a(List<MessageRecord> paramList, boolean paramBoolean, generalflags.ResvAttr paramResvAttr)
   {
-    boolean bool;
     if (paramResvAttr.uint32_mobile_custom_font.has())
     {
-      long l = 0xFFFFFFFF & paramResvAttr.uint32_mobile_custom_font.get();
+      long l = paramResvAttr.uint32_mobile_custom_font.get() & 0xFFFFFFFF;
       if (!paramList.isEmpty()) {
         ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("vip_font_id", String.valueOf(l));
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("GeneralFlagsElemDecoder", 2, "vip_font_id = " + l + " fontId = " + FontManager.a(l) + " type = " + FontManager.b(l));
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("vip_font_id = ");
+        paramList.append(l);
+        paramList.append(" fontId = ");
+        paramList.append(FontManagerConstants.parseFontId(l));
+        paramList.append(" type = ");
+        paramList.append(FontManagerConstants.parseFontType(l));
+        QLog.d("GeneralFlagsElemDecoder", 2, paramList.toString());
       }
-      bool = true;
+      return true;
     }
-    do
-    {
-      return bool;
-      bool = paramBoolean;
-    } while (!QLog.isColorLevel());
-    QLog.d("GeneralFlagsElemDecoder", 2, "handleGeneralSettingFlags vip_font not has");
+    if (QLog.isColorLevel()) {
+      QLog.d("GeneralFlagsElemDecoder", 2, "handleGeneralSettingFlags vip_font not has");
+    }
     return paramBoolean;
   }
   
   private void b(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
-    try
+    if ((paramResvAttr.uint32_comment_flag.has()) && (paramResvAttr.uint64_comment_location.has()) && (!paramList.isEmpty()))
     {
-      if (paramResvAttr.uint32_msg_info_flag.has())
+      boolean bool;
+      if (paramResvAttr.uint32_comment_flag.get() == 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      long l = paramResvAttr.uint64_comment_location.get();
+      paramList = (MessageRecord)paramList.get(0);
+      if ((paramList instanceof MessageForReplyText))
       {
-        int i = paramResvAttr.uint32_msg_info_flag.get();
-        if (!paramList.isEmpty()) {
-          ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("key_message_extra_info_flag", String.valueOf(i));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("GeneralFlagsElemDecoder", 2, "handleGeneralSettingFlags: invoked.  flag: " + i + ", mr: " + paramList.get(0));
+        paramList = (MessageForReplyText)paramList;
+        paramList.isBarrageMsg = bool;
+        paramList.barrageTimeLocation = l;
+        if (paramList.isBarrageMsg)
+        {
+          paramList.saveExtInfoToExtStr("barrage_time_location", String.valueOf(paramList.barrageTimeLocation));
+          try
+          {
+            oidb_0xdea.PassThrough localPassThrough = new oidb_0xdea.PassThrough();
+            localPassThrough.mergeFrom(paramResvAttr.bytes_pass_through.get().toByteArray());
+            paramList.barrageSourceMsgType = localPassThrough.entrance.get();
+          }
+          catch (Exception paramList)
+          {
+            paramResvAttr = new StringBuilder();
+            paramResvAttr.append("handleGeneralSettingFlags fail, ");
+            paramResvAttr.append(paramList);
+            QLog.i("GeneralFlagsElemDecoder", 1, paramResvAttr.toString());
+          }
         }
       }
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GeneralFlagsElemDecoder", 2, new Object[] { "receive replay msg, isBarrageMsg: ", Boolean.valueOf(bool), " timeLocation:", Long.valueOf(l) });
+      }
     }
-    catch (Throwable paramList) {}
   }
   
   private void b(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr, StringBuilder paramStringBuilder)
@@ -164,22 +188,35 @@ public class GeneralFlagsElemDecoder
       if (!paramList.isEmpty()) {
         ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr(MessageConstants.A, String.valueOf(i));
       }
-      paramStringBuilder.append("---uint32_service_msg_remind_type = ").append(i).append("---");
+      paramStringBuilder.append("---uint32_service_msg_remind_type = ");
+      paramStringBuilder.append(i);
+      paramStringBuilder.append("---");
     }
   }
   
   private void c(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
-    if (paramResvAttr.uint32_holiday_flag.has())
+    try
     {
-      int i = paramResvAttr.uint32_holiday_flag.get();
-      if ((i == 1) && (!paramList.isEmpty())) {
-        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr(MessageConstants.c, String.valueOf(i));
+      if (paramResvAttr.uint32_msg_info_flag.has())
+      {
+        int i = paramResvAttr.uint32_msg_info_flag.get();
+        if (!paramList.isEmpty()) {
+          ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("key_message_extra_info_flag", String.valueOf(i));
+        }
+        if (QLog.isColorLevel())
+        {
+          paramResvAttr = new StringBuilder();
+          paramResvAttr.append("handleGeneralSettingFlags: invoked.  flag: ");
+          paramResvAttr.append(i);
+          paramResvAttr.append(", mr: ");
+          paramResvAttr.append(paramList.get(0));
+          QLog.i("GeneralFlagsElemDecoder", 2, paramResvAttr.toString());
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("GeneralFlagsElemDecoder", 2, "handleGeneralSettingFlags uint32_holiday_flag = " + i);
-      }
+      return;
     }
+    catch (Throwable paramList) {}
   }
   
   private void c(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr, StringBuilder paramStringBuilder)
@@ -190,11 +227,31 @@ public class GeneralFlagsElemDecoder
       if (!paramList.isEmpty()) {
         ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr(MessageConstants.z, String.valueOf(i));
       }
-      paramStringBuilder.append("---uint32_service_msg_type = ").append(i).append("---");
+      paramStringBuilder.append("---uint32_service_msg_type = ");
+      paramStringBuilder.append(i);
+      paramStringBuilder.append("---");
     }
   }
   
   private void d(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  {
+    if (paramResvAttr.uint32_holiday_flag.has())
+    {
+      int i = paramResvAttr.uint32_holiday_flag.get();
+      if ((i == 1) && (!paramList.isEmpty())) {
+        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr(MessageConstants.c, String.valueOf(i));
+      }
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("handleGeneralSettingFlags uint32_holiday_flag = ");
+        paramList.append(i);
+        QLog.d("GeneralFlagsElemDecoder", 2, paramList.toString());
+      }
+    }
+  }
+  
+  private void e(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     if (paramResvAttr.uint32_bot_message_class_id.has())
     {
@@ -202,33 +259,39 @@ public class GeneralFlagsElemDecoder
       if (!paramList.isEmpty()) {
         ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("robot_news_class_id", String.valueOf(i));
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("GeneralFlagsElemDecoder", 2, "handleGeneralSettingFlags uint32_bot_message_class_id = " + i);
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("handleGeneralSettingFlags uint32_bot_message_class_id = ");
+        paramList.append(i);
+        QLog.d("GeneralFlagsElemDecoder", 2, paramList.toString());
       }
     }
-  }
-  
-  private void e(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
-  {
-    if (paramResvAttr.uint32_diy_font_timestamp.has())
-    {
-      l = paramResvAttr.uint32_diy_font_timestamp.get();
-      if (!paramList.isEmpty()) {
-        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("diy_timestamp", String.valueOf(l));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VasFont", 2, "diy_font_timestamp = " + l);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      long l;
-      return;
-    }
-    QLog.d("VasFont", 2, "diy_font_timestamp not in message");
   }
   
   private void f(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  {
+    if (paramResvAttr.uint32_diy_font_timestamp.has())
+    {
+      long l = paramResvAttr.uint32_diy_font_timestamp.get();
+      if (!paramList.isEmpty()) {
+        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("diy_timestamp", String.valueOf(l));
+      }
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("diy_font_timestamp = ");
+        paramList.append(l);
+        QLog.d("FontManagerConstants", 2, paramList.toString());
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("FontManagerConstants", 2, "diy_font_timestamp not in message");
+    }
+  }
+  
+  private void g(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     if (paramResvAttr.uint64_subfont_id.has())
     {
@@ -236,70 +299,73 @@ public class GeneralFlagsElemDecoder
       if (!paramList.isEmpty()) {
         ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("vip_sub_font_id", String.valueOf(l));
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("GeneralFlagsElemDecoder", 2, "handleGeneralSettingFlags: subFontId=" + l);
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("handleGeneralSettingFlags: subFontId=");
+        paramList.append(l);
+        QLog.d("GeneralFlagsElemDecoder", 2, paramList.toString());
       }
     }
   }
   
-  private void g(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  private void h(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
-    long l2 = 0L;
-    float f2 = 0.0F;
-    EmojiStickerManager.StickerInfo localStickerInfo;
-    float f1;
-    label79:
-    int i;
     if (paramResvAttr.float_sticker_x.has())
     {
-      localStickerInfo = new EmojiStickerManager.StickerInfo();
+      StickerInfo localStickerInfo = new StickerInfo();
       localStickerInfo.x = paramResvAttr.float_sticker_x.get();
-      if (!paramResvAttr.float_sticker_y.has()) {
-        break label309;
+      boolean bool = paramResvAttr.float_sticker_y.has();
+      float f2 = 0.0F;
+      if (bool) {
+        f1 = paramResvAttr.float_sticker_y.get();
+      } else {
+        f1 = 0.0F;
       }
-      f1 = paramResvAttr.float_sticker_y.get();
       localStickerInfo.y = f1;
-      if (!paramResvAttr.float_sticker_width.has()) {
-        break label314;
+      if (paramResvAttr.float_sticker_width.has()) {
+        f1 = paramResvAttr.float_sticker_width.get();
+      } else {
+        f1 = 0.0F;
       }
-      f1 = paramResvAttr.float_sticker_width.get();
       localStickerInfo.width = f1;
-      f1 = f2;
+      float f1 = f2;
       if (paramResvAttr.float_sticker_height.has()) {
         f1 = paramResvAttr.float_sticker_height.get();
       }
       localStickerInfo.height = f1;
-      if (!paramResvAttr.uint32_sticker_rotate.has()) {
-        break label319;
+      int i;
+      if (paramResvAttr.uint32_sticker_rotate.has()) {
+        i = paramResvAttr.uint32_sticker_rotate.get();
+      } else {
+        i = 0;
       }
-      i = paramResvAttr.uint32_sticker_rotate.get();
-      label131:
       localStickerInfo.rotate = i;
-      if (!paramResvAttr.uint64_sticker_host_msgseq.has()) {
-        break label325;
+      bool = paramResvAttr.uint64_sticker_host_msgseq.has();
+      long l2 = 0L;
+      if (bool) {
+        l1 = paramResvAttr.uint64_sticker_host_msgseq.get();
+      } else {
+        l1 = 0L;
       }
-      l1 = paramResvAttr.uint64_sticker_host_msgseq.get();
-      label157:
       localStickerInfo.hostMsgSeq = l1;
-      if (!paramResvAttr.uint64_sticker_host_msguid.has()) {
-        break label331;
+      if (paramResvAttr.uint64_sticker_host_msguid.has()) {
+        l1 = paramResvAttr.uint64_sticker_host_msguid.get();
+      } else {
+        l1 = 0L;
       }
-    }
-    label309:
-    label314:
-    label319:
-    label325:
-    label331:
-    for (long l1 = paramResvAttr.uint64_sticker_host_msguid.get();; l1 = 0L)
-    {
       localStickerInfo.hostMsgUid = l1;
-      l1 = l2;
+      long l1 = l2;
       if (paramResvAttr.uint64_sticker_host_time.has()) {
         l1 = paramResvAttr.uint64_sticker_host_time.get();
       }
       localStickerInfo.hostMsgTime = l1;
-      if (QLog.isColorLevel()) {
-        QLog.d("GeneralFlagsElemDecoder", 2, "decodeC2CMsgPkg_EmojSticker->" + localStickerInfo.toString());
+      if (QLog.isColorLevel())
+      {
+        paramResvAttr = new StringBuilder();
+        paramResvAttr.append("decodeC2CMsgPkg_EmojSticker->");
+        paramResvAttr.append(localStickerInfo.toString());
+        QLog.d("GeneralFlagsElemDecoder", 2, paramResvAttr.toString());
       }
       if (!paramList.isEmpty())
       {
@@ -311,19 +377,10 @@ public class GeneralFlagsElemDecoder
           paramList.saveExtInfoToExtStr("message_is_sticker", "true");
         }
       }
-      return;
-      f1 = 0.0F;
-      break;
-      f1 = 0.0F;
-      break label79;
-      i = 0;
-      break label131;
-      l1 = 0L;
-      break label157;
     }
   }
   
-  private void h(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  private void i(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     if (paramResvAttr.uint32_tail_key.has())
     {
@@ -331,13 +388,17 @@ public class GeneralFlagsElemDecoder
       if (!paramList.isEmpty()) {
         ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("app_tail_id", String.valueOf(i));
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("GeneralFlagsElemDecoder", 2, "handleGeneralSettingFlags uint32_tail_key = " + i);
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("handleGeneralSettingFlags uint32_tail_key = ");
+        paramList.append(i);
+        QLog.d("GeneralFlagsElemDecoder", 2, paramList.toString());
       }
     }
   }
   
-  private void i(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  private void j(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     try
     {
@@ -347,15 +408,24 @@ public class GeneralFlagsElemDecoder
         if (!paramList.isEmpty()) {
           ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("key_qcircle_extra_info", paramResvAttr);
         }
-        if (QLog.isColorLevel()) {
-          QLog.i("GeneralFlagsElemDecoder", 2, "handleGeneralSettingFlags: decodeQCircleExtraInfo invoked.  extra: " + paramResvAttr + ", mr: " + paramList.get(0));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleGeneralSettingFlags: decodeQCircleExtraInfo invoked.  extra: ");
+          localStringBuilder.append(paramResvAttr);
+          localStringBuilder.append(", mr: ");
+          localStringBuilder.append(paramList.get(0));
+          QLog.i("GeneralFlagsElemDecoder", 2, localStringBuilder.toString());
+          return;
         }
       }
-      return;
     }
     catch (Throwable paramList)
     {
-      QLog.e("GeneralFlagsElemDecoder", 1, "handleGeneralSettingFlags: decodeQCircleExtraInfo failed!exception:" + paramList.toString());
+      paramResvAttr = new StringBuilder();
+      paramResvAttr.append("handleGeneralSettingFlags: decodeQCircleExtraInfo failed!exception:");
+      paramResvAttr.append(paramList.toString());
+      QLog.e("GeneralFlagsElemDecoder", 1, paramResvAttr.toString());
     }
   }
   
@@ -369,78 +439,82 @@ public class GeneralFlagsElemDecoder
     if ((paramElem.general_flags.has()) && (((im_msg_body.GeneralFlags)paramElem.general_flags.get()).uint32_olympic_torch.has()))
     {
       int i = paramElem.general_flags.uint32_olympic_torch.get();
-      if (QLog.isColorLevel()) {
-        paramStringBuilder.append("has olympicTorch:").append(i).append(";");
+      if (QLog.isColorLevel())
+      {
+        paramStringBuilder.append("has olympicTorch:");
+        paramStringBuilder.append(i);
+        paramStringBuilder.append(";");
       }
-      if ((i > 0) && (!paramList.isEmpty())) {
-        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("olympic_torch_flg", i + "");
+      if ((i > 0) && (!paramList.isEmpty()))
+      {
+        paramList = (MessageRecord)paramList.get(0);
+        paramStringBuilder = new StringBuilder();
+        paramStringBuilder.append(i);
+        paramStringBuilder.append("");
+        paramList.saveExtInfoToExtStr("olympic_torch_flg", paramStringBuilder.toString());
       }
     }
   }
   
   protected void a(List<MessageRecord> paramList, msg_comm.Msg paramMsg, im_msg_body.Elem paramElem)
   {
-    generalflags.ResvAttr localResvAttr;
     if (paramElem.general_flags.has())
     {
-      if (paramElem.general_flags.uint64_pendant_id.has())
+      boolean bool3 = paramElem.general_flags.uint64_pendant_id.has();
+      boolean bool1 = false;
+      boolean bool2 = false;
+      Object localObject;
+      if (bool3)
       {
         long l = paramElem.general_flags.uint64_pendant_id.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("GeneralFlagsElemDecoder", 2, "vip_pendant_id = " + l);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("vip_pendant_id = ");
+          ((StringBuilder)localObject).append(l);
+          QLog.d("GeneralFlagsElemDecoder", 2, ((StringBuilder)localObject).toString());
         }
         if ((l >= 0L) && (!paramList.isEmpty())) {
           ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("vip_pendant_id", String.valueOf(l));
         }
       }
-      if (!paramElem.general_flags.bytes_pb_reserve.has()) {
-        break label304;
-      }
-      localResvAttr = new generalflags.ResvAttr();
-    }
-    for (;;)
-    {
-      try
+      if (paramElem.general_flags.bytes_pb_reserve.has())
       {
-        localResvAttr.mergeFrom(paramElem.general_flags.bytes_pb_reserve.get().toByteArray());
-        g(paramList, localResvAttr);
-        bool = a(paramList, false, localResvAttr);
-        paramElem.printStackTrace();
-      }
-      catch (InvalidProtocolBufferMicroException paramElem)
-      {
+        localObject = new generalflags.ResvAttr();
         try
         {
-          f(paramList, localResvAttr);
-          e(paramList, localResvAttr);
-          a(localResvAttr);
-          h(paramList, localResvAttr);
-          d(paramList, localResvAttr);
-          c(paramList, localResvAttr);
-          paramElem = new StringBuilder("<---decodeMiniProgramPBMsgElems:");
-          c(paramList, localResvAttr, paramElem);
-          b(paramList, localResvAttr, paramElem);
-          a(paramList, localResvAttr, paramElem);
-          if (QLog.isColorLevel()) {
-            QLog.d("GeneralFlagsElemDecoder", 2, new Object[] { paramElem });
+          ((generalflags.ResvAttr)localObject).mergeFrom(paramElem.general_flags.bytes_pb_reserve.get().toByteArray());
+          h(paramList, (generalflags.ResvAttr)localObject);
+          bool1 = a(paramList, false, (generalflags.ResvAttr)localObject);
+          try
+          {
+            g(paramList, (generalflags.ResvAttr)localObject);
+            f(paramList, (generalflags.ResvAttr)localObject);
+            a((generalflags.ResvAttr)localObject);
+            i(paramList, (generalflags.ResvAttr)localObject);
+            e(paramList, (generalflags.ResvAttr)localObject);
+            d(paramList, (generalflags.ResvAttr)localObject);
+            paramElem = new StringBuilder("<---decodeMiniProgramPBMsgElems:");
+            c(paramList, (generalflags.ResvAttr)localObject, paramElem);
+            b(paramList, (generalflags.ResvAttr)localObject, paramElem);
+            a(paramList, (generalflags.ResvAttr)localObject, paramElem);
+            if (QLog.isColorLevel()) {
+              QLog.d("GeneralFlagsElemDecoder", 2, new Object[] { paramElem });
+            }
+            c(paramList, (generalflags.ResvAttr)localObject);
+            b(paramList, (generalflags.ResvAttr)localObject);
+            j(paramList, (generalflags.ResvAttr)localObject);
+            a(paramList, (generalflags.ResvAttr)localObject);
           }
-          b(paramList, localResvAttr);
-          a(paramList, localResvAttr);
-          i(paramList, localResvAttr);
-          a(paramList, paramMsg, bool);
-          return;
+          catch (InvalidProtocolBufferMicroException paramElem) {}
+          paramElem.printStackTrace();
         }
         catch (InvalidProtocolBufferMicroException paramElem)
         {
-          break label293;
+          bool1 = bool2;
         }
-        paramElem = paramElem;
-        bool = false;
       }
-      label293:
-      continue;
-      label304:
-      boolean bool = false;
+      a(paramList, paramMsg, bool1);
     }
   }
   
@@ -463,7 +537,7 @@ public class GeneralFlagsElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.GeneralFlagsElemDecoder
  * JD-Core Version:    0.7.0.1
  */

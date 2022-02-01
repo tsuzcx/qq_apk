@@ -13,21 +13,21 @@ public class LinearLayout$Params
     if (bool) {
       return bool;
     }
-    switch (paramInt)
+    if (paramInt != 33)
     {
+      if (paramInt == 34) {
+        this.mLayoutGravity = 4;
+      }
     }
-    for (;;)
-    {
-      return false;
-      this.mLayoutGravity = 4;
-      continue;
+    else {
       this.mLayoutGravity = 32;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.LinearLayout.Params
  * JD-Core Version:    0.7.0.1
  */

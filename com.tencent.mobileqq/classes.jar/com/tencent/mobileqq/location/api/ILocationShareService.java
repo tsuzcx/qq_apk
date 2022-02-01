@@ -35,15 +35,15 @@ public abstract interface ILocationShareService
   
   public abstract void removeLocationUpdateListener(OnUpdateUserLocationListener paramOnUpdateUserLocationListener);
   
-  public abstract void requestOperateShareState(int paramInt1, int paramInt2, String paramString);
+  public abstract void requestOperateRoom(int paramInt1, int paramInt2, String paramString);
   
-  public abstract void requestUpdateShareState(int paramInt, String paramString);
+  public abstract void requestQueryRoom(int paramInt, String paramString);
   
   public abstract void stopLocationSharing(int paramInt, String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.api.ILocationShareService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.writetogetherui;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class SavingAnimView$4
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   SavingAnimView$4(SavingAnimView paramSavingAnimView) {}
   
@@ -21,8 +21,10 @@ class SavingAnimView$4
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    SavingAnimView.c(this.a, SavingAnimView.a(this.a));
-    SavingAnimView.d(this.a, SavingAnimView.d(this.a));
+    paramAnimator = this.a;
+    SavingAnimView.c(paramAnimator, SavingAnimView.a(paramAnimator));
+    paramAnimator = this.a;
+    SavingAnimView.d(paramAnimator, SavingAnimView.d(paramAnimator));
     if (SavingAnimView.a(this.a) != null) {
       SavingAnimView.a(this.a).c();
     }
@@ -30,7 +32,7 @@ class SavingAnimView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.SavingAnimView.4
  * JD-Core Version:    0.7.0.1
  */

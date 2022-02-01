@@ -18,109 +18,123 @@ public abstract class EmoticonPanelViewBinder
   public EmoticonPanelViewBinder(Context paramContext, int paramInt1, int paramInt2)
   {
     super(paramInt1);
-    if (paramContext == null) {
-      throw new IllegalArgumentException("Context MUST NOT be null!!!");
+    if (paramContext != null)
+    {
+      this.context = paramContext;
+      this.initPage = paramInt2;
+      this.usingViews = new SparseArray();
+      return;
     }
-    this.context = paramContext;
-    this.initPage = paramInt2;
-    this.usingViews = new SparseArray();
+    throw new IllegalArgumentException("Context MUST NOT be null!!!");
   }
   
   public static void destroyViewPool()
   {
-    if (sViewPool != null)
+    EmoticonPanelViewPool localEmoticonPanelViewPool = sViewPool;
+    if (localEmoticonPanelViewPool != null)
     {
-      sViewPool.destroy();
+      localEmoticonPanelViewPool.destroy();
       sViewPool = null;
     }
   }
   
   private boolean isPanelViewReuseable(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    return paramInt == 2007;
   }
   
   protected View createEmoticonPanelView(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelViewBinder", 2, " createEmoticonPanelView, type=" + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" createEmoticonPanelView, type=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("EmoticonPanelViewBinder", 2, ((StringBuilder)localObject).toString());
     }
     long l = System.currentTimeMillis();
-    Object localObject;
-    switch (paramInt)
+    if (paramInt != 2007)
     {
-    default: 
       localObject = null;
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelViewBinder", 2, "[Performance] createEmoticonPanelView, type=" + paramInt + ",duration=" + (System.currentTimeMillis() - l));
-      }
-      return localObject;
       localObject = new EmoticonLinearLayout(this.context, null);
       ((EmoticonLinearLayout)localObject).setPanelViewType(paramInt);
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[Performance] createEmoticonPanelView, type=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(",duration=");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      QLog.d("EmoticonPanelViewBinder", 2, localStringBuilder.toString());
+    }
+    return localObject;
   }
   
   public void destroy()
   {
     this.context = null;
-    if (this.usingViews != null) {
-      this.usingViews.clear();
+    SparseArray localSparseArray = this.usingViews;
+    if (localSparseArray != null) {
+      localSparseArray.clear();
     }
   }
   
   public void destroyEmoticonPanelView(int paramInt)
   {
-    if (this.usingViews == null) {}
-    View localView;
-    do
+    Object localObject = this.usingViews;
+    if (localObject == null) {
+      return;
+    }
+    localObject = (View)((SparseArray)localObject).get(paramInt);
+    if (localObject != null)
     {
-      do
-      {
-        do
-        {
-          return;
-          localView = (View)this.usingViews.get(paramInt);
-        } while (localView == null);
-        this.usingViews.remove(paramInt);
-        paramInt = getEmoticonPanelViewType(paramInt);
-      } while (!isPanelViewReuseable(paramInt));
+      this.usingViews.remove(paramInt);
+      paramInt = getEmoticonPanelViewType(paramInt);
+      if (!isPanelViewReuseable(paramInt)) {
+        return;
+      }
       if (sViewPool == null) {
         sViewPool = new EmoticonPanelViewPool();
       }
-    } while (sViewPool.addRecyleView(paramInt, localView));
+      sViewPool.addRecyleView(paramInt, (View)localObject);
+    }
   }
   
   protected View getEmoticonPanelView(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelViewBinder", 2, "getEmoticonPanelView, pageIndex=" + paramInt + ",viewBinder=" + this);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getEmoticonPanelView, pageIndex=");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(",viewBinder=");
+      ((StringBuilder)localObject1).append(this);
+      QLog.d("EmoticonPanelViewBinder", 2, ((StringBuilder)localObject1).toString());
     }
     int i = getEmoticonPanelViewType(paramInt);
-    View localView1 = null;
-    if (sViewPool != null) {
-      localView1 = sViewPool.getRecyleView(i);
+    Object localObject1 = null;
+    Object localObject2 = sViewPool;
+    if (localObject2 != null) {
+      localObject1 = ((EmoticonPanelViewPool)localObject2).getRecyleView(i);
     }
-    View localView2 = localView1;
-    if (localView1 == null) {
-      localView2 = createEmoticonPanelView(i);
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = createEmoticonPanelView(i);
     }
-    if (localView2 != null)
+    if (localObject2 != null)
     {
       if (this.usingViews == null) {
         this.usingViews = new SparseArray();
       }
-      this.usingViews.put(paramInt, localView2);
-      updatePanelView(localView2, paramInt);
+      this.usingViews.put(paramInt, localObject2);
+      updatePanelView((View)localObject2, paramInt);
     }
-    return localView2;
+    return localObject2;
   }
   
   protected abstract int getEmoticonPanelViewType(int paramInt);
@@ -132,17 +146,18 @@ public abstract class EmoticonPanelViewBinder
   
   protected View getUsingEmoticonPanelView(int paramInt)
   {
-    if (this.usingViews == null) {
+    SparseArray localSparseArray = this.usingViews;
+    if (localSparseArray == null) {
       return null;
     }
-    return (View)this.usingViews.get(paramInt);
+    return (View)localSparseArray.get(paramInt);
   }
   
   protected abstract void updatePanelView(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelViewBinder
  * JD-Core Version:    0.7.0.1
  */

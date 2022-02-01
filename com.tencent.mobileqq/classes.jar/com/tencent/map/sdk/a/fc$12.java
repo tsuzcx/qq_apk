@@ -16,46 +16,42 @@ final class fc$12
     paramfe.a();
     Object localObject = paramfe.f();
     int i = 0;
-    if (localObject != ff.b)
+    while (localObject != ff.b)
     {
-      boolean bool;
-      switch (fc.26.a[localObject.ordinal()])
-      {
-      default: 
-        throw new eb("Invalid bitset value type: ".concat(String.valueOf(localObject)));
-      case 1: 
-        if (paramfe.n() != 0) {
-          bool = true;
+      int j = fc.26.a[localObject.ordinal()];
+      boolean bool = true;
+      if (j != 1) {
+        if (j != 2) {
+          if (j == 3) {
+            localObject = paramfe.i();
+          }
         }
-        break;
       }
-      for (;;)
+      label96:
+      while (paramfe.n() == 0)
       {
-        if (bool) {
-          localBitSet.set(i);
-        }
-        i += 1;
-        localObject = paramfe.f();
-        break;
-        bool = false;
-        continue;
-        bool = paramfe.j();
-        continue;
-        localObject = paramfe.i();
         try
         {
-          int j = Integer.parseInt((String)localObject);
+          j = Integer.parseInt((String)localObject);
           if (j != 0) {
-            bool = true;
-          } else {
-            bool = false;
+            break;
           }
+          bool = false;
         }
         catch (NumberFormatException paramfe)
         {
-          throw new eb("Error: Expecting: bitset number value (1, 0), Found: ".concat(String.valueOf(localObject)));
+          break label96;
         }
+        throw new eb("Error: Expecting: bitset number value (1, 0), Found: ".concat(String.valueOf(localObject)));
+        throw new eb("Invalid bitset value type: ".concat(String.valueOf(localObject)));
+        bool = paramfe.j();
+        break;
       }
+      if (bool) {
+        localBitSet.set(i);
+      }
+      i += 1;
+      localObject = paramfe.f();
     }
     paramfe.b();
     return localBitSet;
@@ -63,7 +59,7 @@ final class fc$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.fc.12
  * JD-Core Version:    0.7.0.1
  */

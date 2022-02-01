@@ -2,15 +2,15 @@ package com.tencent.mobileqq.troop.troopapps;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 
@@ -21,14 +21,14 @@ public class TroopAppShortcutFragment
   
   public void a()
   {
-    SystemBarCompact localSystemBarCompact = ((PublicFragmentActivity)getActivity()).mSystemBarComp;
+    SystemBarCompact localSystemBarCompact = ((PublicFragmentActivity)getBaseActivity()).mSystemBarComp;
     if (localSystemBarCompact != null)
     {
       localSystemBarCompact.setStatusDrawable(null);
       localSystemBarCompact.setStatusBarColor(0);
       localSystemBarCompact.setStatusColor(0);
-      if (!ThemeUtil.isNowThemeIsNight(getActivity().app, true, null)) {
-        ImmersiveUtils.setStatusTextColor(true, getActivity().getWindow());
+      if (!ThemeUtil.isNowThemeIsNight(getBaseActivity().app, true, null)) {
+        ImmersiveUtils.setStatusTextColor(true, getBaseActivity().getWindow());
       }
     }
   }
@@ -47,9 +47,10 @@ public class TroopAppShortcutFragment
   {
     super.onActivityCreated(paramBundle);
     a();
-    if (this.a != null)
+    paramBundle = this.a;
+    if (paramBundle != null)
     {
-      this.a.a();
+      paramBundle.a();
       this.a.b();
     }
   }
@@ -57,32 +58,39 @@ public class TroopAppShortcutFragment
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2, paramIntent);
+    TroopAppShortcutContainer localTroopAppShortcutContainer = this.a;
+    if (localTroopAppShortcutContainer != null) {
+      localTroopAppShortcutContainer.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = getActivity().getIntent().getStringExtra("troop_uin");
-    paramViewGroup = (SessionInfo)getActivity().getIntent().getParcelableExtra("session_info");
-    int i = getActivity().getIntent().getIntExtra("reportfrom", 2);
-    this.a = new TroopAppShortcutFragment.1(this, getActivity().app, getActivity(), getActivity(), paramViewGroup, paramLayoutInflater, 2);
-    if ((this.a == null) || (this.a.a() == null)) {}
-    for (paramLayoutInflater = null;; paramLayoutInflater = this.a.a())
+    paramLayoutInflater = getBaseActivity().getIntent().getStringExtra("troop_uin");
+    paramViewGroup = (SessionInfo)getBaseActivity().getIntent().getParcelableExtra("session_info");
+    int i = getBaseActivity().getIntent().getIntExtra("reportfrom", 2);
+    this.a = new TroopAppShortcutFragment.1(this, getBaseActivity().app, getBaseActivity(), getBaseActivity(), paramViewGroup, paramLayoutInflater, 2);
+    paramLayoutInflater = this.a;
+    if ((paramLayoutInflater != null) && (paramLayoutInflater.a() != null))
     {
-      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
       this.a.a(i);
+      paramLayoutInflater = this.a.a();
     }
+    else
+    {
+      paramLayoutInflater = null;
+    }
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.a != null)
+    TroopAppShortcutContainer localTroopAppShortcutContainer = this.a;
+    if (localTroopAppShortcutContainer != null)
     {
-      this.a.c();
+      localTroopAppShortcutContainer.c();
       this.a.g();
     }
   }
@@ -104,7 +112,7 @@ public class TroopAppShortcutFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.TroopAppShortcutFragment
  * JD-Core Version:    0.7.0.1
  */

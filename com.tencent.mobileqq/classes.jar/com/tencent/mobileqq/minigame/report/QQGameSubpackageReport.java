@@ -24,20 +24,27 @@ public final class QQGameSubpackageReport
     Intrinsics.checkParameterIsNotNull(paramString, "name");
     Intrinsics.checkParameterIsNotNull(paramScriptLoadStatistic, "statistic");
     MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1009, null, null, null, 0, "1", 0L, System.currentTimeMillis() - (paramScriptLoadStatistic.getReadTimeMs() + paramScriptLoadStatistic.getReadCodeCacheTimeMs() + paramScriptLoadStatistic.getCompileTimeMs() + paramScriptLoadStatistic.getExecuteTimeMs()), null, null, null, null, null);
-    if (paramScriptLoadStatistic.getLoadResult().isSuccess()) {
+    if (paramScriptLoadStatistic.getLoadResult().isSuccess())
+    {
       MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1010, null, "1");
     }
-    for (;;)
+    else
     {
-      if (paramScriptLoadStatistic.getLoadResult() == ScriptLoadResult.FAIL_COMPILE) {}
-      return;
-      GameLog.getInstance().e("GameSubpackageReport", "load subpackage failed " + paramString + ' ' + paramScriptLoadStatistic);
+      GameLog localGameLog = GameLog.getInstance();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("load subpackage failed ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(' ');
+      localStringBuilder.append(paramScriptLoadStatistic);
+      localGameLog.e("GameSubpackageReport", localStringBuilder.toString());
     }
+    paramScriptLoadStatistic.getLoadResult();
+    paramString = ScriptLoadResult.FAIL_COMPILE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.report.QQGameSubpackageReport
  * JD-Core Version:    0.7.0.1
  */

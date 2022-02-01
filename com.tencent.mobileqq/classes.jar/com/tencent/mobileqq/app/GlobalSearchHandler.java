@@ -42,12 +42,37 @@ public class GlobalSearchHandler
         paramToServiceMsg = (MQKanDianSvc0x001.RspBody)paramToServiceMsg.mergeFrom(paramFromServiceMsg.getWupBuffer());
         if (paramToServiceMsg.int32_error_num.get() != 0)
         {
-          if (QLog.isColorLevel()) {
-            QLog.w("Q.groupsearch", 2, "handleSvcSeg error, errorNum: " + paramToServiceMsg.int32_error_num.get());
+          if (QLog.isColorLevel())
+          {
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("handleSvcSeg error, errorNum: ");
+            paramFromServiceMsg.append(paramToServiceMsg.int32_error_num.get());
+            QLog.w("Q.groupsearch", 2, paramFromServiceMsg.toString());
           }
           notifyUI(1, false, paramObject);
           return;
         }
+        paramFromServiceMsg = paramToServiceMsg.rpt_msg_words.get();
+        if ((paramFromServiceMsg != null) && (!paramFromServiceMsg.isEmpty()))
+        {
+          paramToServiceMsg = new ArrayList();
+          paramFromServiceMsg = paramFromServiceMsg.iterator();
+          while (paramFromServiceMsg.hasNext())
+          {
+            localObject = ((MQKanDianSvc0x001.RspBody.WordsOfCut)((MQKanDianSvc0x001.RspBody.WordsOfCut)paramFromServiceMsg.next()).get()).rpt_str_words.get();
+            ArrayList localArrayList = new ArrayList();
+            localArrayList.addAll((Collection)localObject);
+            paramToServiceMsg.add(localArrayList);
+          }
+          paramObject.put("mq_kandian_svc_results", paramToServiceMsg);
+          notifyUI(1, true, paramObject);
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.groupsearch", 2, "handleSvcSeg error, msgWords is empty...");
+        }
+        notifyUI(1, false, paramObject);
+        return;
       }
       catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
@@ -58,71 +83,53 @@ public class GlobalSearchHandler
         notifyUI(1, false, paramObject);
         return;
       }
-      paramFromServiceMsg = paramToServiceMsg.rpt_msg_words.get();
-      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.isEmpty()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.groupsearch", 2, "handleSvcSeg error, msgWords is empty...");
-        }
-        notifyUI(1, false, paramObject);
-        return;
-      }
-      paramToServiceMsg = new ArrayList();
-      paramFromServiceMsg = paramFromServiceMsg.iterator();
-      while (paramFromServiceMsg.hasNext())
-      {
-        localObject = ((MQKanDianSvc0x001.RspBody.WordsOfCut)((MQKanDianSvc0x001.RspBody.WordsOfCut)paramFromServiceMsg.next()).get()).rpt_str_words.get();
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.addAll((Collection)localObject);
-        paramToServiceMsg.add(localArrayList);
-      }
-      paramObject.put("mq_kandian_svc_results", paramToServiceMsg);
-      notifyUI(1, true, paramObject);
-      return;
     }
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("handleSvcSeg error, resultCode: ");
-      if (paramFromServiceMsg == null) {
-        break label359;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleSvcSeg error, resultCode: ");
+      if (paramFromServiceMsg != null) {
+        paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode());
+      } else {
+        paramToServiceMsg = "null";
       }
+      ((StringBuilder)localObject).append(paramToServiceMsg);
+      QLog.w("Q.groupsearch", 2, ((StringBuilder)localObject).toString());
     }
-    label359:
-    for (paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode());; paramToServiceMsg = "null")
-    {
-      QLog.w("Q.groupsearch", 2, paramToServiceMsg);
-      if ((QLog.isColorLevel()) && (paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1002)) {
-        QLog.w("Q.groupsearch", 2, "handleSvcSeg error, server segmentation timeout...");
-      }
-      notifyUI(1, false, paramObject);
-      return;
+    if ((QLog.isColorLevel()) && (paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1002)) {
+      QLog.w("Q.groupsearch", 2, "handleSvcSeg error, server segmentation timeout...");
     }
+    notifyUI(1, false, paramObject);
   }
   
   public void a(ArrayList<String> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.groupsearch", 2, "getSvcSeg sentences is empty...");
-      }
-    }
-    do
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      return;
-      MQKanDianSvc0x001.ReqBody localReqBody = new MQKanDianSvc0x001.ReqBody();
-      localReqBody.enum_cut_mode.set(0);
-      localReqBody.enum_request_mode.set(0);
-      localReqBody.bool_use_hmm.set(true);
-      localReqBody.uint32_request_article_num.set(0);
-      localReqBody.rpt_str_sentences.set(paramArrayList);
+      Object localObject = new MQKanDianSvc0x001.ReqBody();
+      ((MQKanDianSvc0x001.ReqBody)localObject).enum_cut_mode.set(0);
+      ((MQKanDianSvc0x001.ReqBody)localObject).enum_request_mode.set(0);
+      ((MQKanDianSvc0x001.ReqBody)localObject).bool_use_hmm.set(true);
+      ((MQKanDianSvc0x001.ReqBody)localObject).uint32_request_article_num.set(0);
+      ((MQKanDianSvc0x001.ReqBody)localObject).rpt_str_sentences.set(paramArrayList);
       ToServiceMsg localToServiceMsg = createToServiceMsg("MQKanDianSvc.0x001");
       localToServiceMsg.setTimeout(4500L);
-      localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
+      localToServiceMsg.putWupBuffer(((MQKanDianSvc0x001.ReqBody)localObject).toByteArray());
       localToServiceMsg.extraData.putInt("mq_kandian_svc_mode", 1);
       localToServiceMsg.extraData.putStringArrayList("mq_kandian_svc_sentences", paramArrayList);
       sendPbReq(localToServiceMsg);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.groupsearch", 2, "getSvcSeg sentences : " + paramArrayList);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getSvcSeg sentences : ");
+        ((StringBuilder)localObject).append(paramArrayList);
+        QLog.i("Q.groupsearch", 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.groupsearch", 2, "getSvcSeg sentences is empty...");
+    }
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -136,7 +143,12 @@ public class GlobalSearchHandler
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder(128);
-      localStringBuilder.append("onReceive success ssoSeq: ").append(paramToServiceMsg.getRequestSsoSeq()).append(", serviceCmd: ").append(str).append(", resultCode: ").append(paramFromServiceMsg.getResultCode());
+      localStringBuilder.append("onReceive success ssoSeq: ");
+      localStringBuilder.append(paramToServiceMsg.getRequestSsoSeq());
+      localStringBuilder.append(", serviceCmd: ");
+      localStringBuilder.append(str);
+      localStringBuilder.append(", resultCode: ");
+      localStringBuilder.append(paramFromServiceMsg.getResultCode());
       QLog.d("Q.groupsearch", 2, localStringBuilder.toString());
     }
     if (("MQKanDianSvc.0x001".equals(str)) && (paramToServiceMsg.extraData.getInt("mq_kandian_svc_mode") == 1)) {
@@ -146,7 +158,7 @@ public class GlobalSearchHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.GlobalSearchHandler
  * JD-Core Version:    0.7.0.1
  */

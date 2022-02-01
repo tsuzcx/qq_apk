@@ -1,44 +1,40 @@
 package com.tencent.mobileqq.listentogether;
 
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.troop.api.observer.TroopMngObserver;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
 class ListenTogetherManager$7
-  extends FriendListObserver
+  extends TroopMngObserver
 {
   ListenTogetherManager$7(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.i("ListenTogether.Manager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if (paramBoolean)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onTroopManagerSuccess result: ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(" troopUin: ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("ListenTogether.Manager", 1, ((StringBuilder)localObject).toString());
+    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2)))
     {
-      String str = ListenTogetherUtils.a(2, String.valueOf(paramObject));
-      if (ListenTogetherManager.a(this.a).equals(str))
+      localObject = ListenTogetherUtils.a(1, paramString);
+      if (ListenTogetherManager.a(this.a).equals(localObject))
       {
         ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
         ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).i = 3;
-        ListenTogetherAIOStatusHelper.b(ListenTogetherManager.a(this.a), String.valueOf(paramObject), false);
-        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
-        this.a.a(2, String.valueOf(paramObject), false);
+        ListenTogetherAIOStatusHelper.a(ListenTogetherManager.a(this.a), paramString, false);
+        localObject = this.a;
+        ((ListenTogetherManager)localObject).a(true, (ListenTogetherSession)ListenTogetherManager.a((ListenTogetherManager)localObject).get(ListenTogetherManager.a(this.a)), 1007);
+        this.a.a(1, paramString, false);
       }
-    }
-  }
-  
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    ListenTogetherSession localListenTogetherSession = this.a.a(2, paramString);
-    if ((paramBoolean) && (localListenTogetherSession != null) && (localListenTogetherSession.e.equals(paramString)) && (ListenTogetherManager.a(this.a, localListenTogetherSession)))
-    {
-      QLog.d("ListenTogether.Manager", 1, String.format("onUpdateFriendInfo uin=%s mutual level changed", new Object[] { localListenTogetherSession.e }));
-      ListenTogetherManager.a(this.a, localListenTogetherSession);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.7
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,13 @@ class CheckInUploadTask$1
   
   public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onFailed errn:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte = this.a.jdField_a_of_type_JavaLangString;
+      paramHashMap = new StringBuilder();
+      paramHashMap.append("upload onFailed errn:");
+      paramHashMap.append(paramInt);
+      QLog.d(paramArrayOfByte, 2, paramHashMap.toString());
     }
     this.a.e();
   }
@@ -31,17 +36,14 @@ class CheckInUploadTask$1
     {
       paramHashMap.mergeFrom(paramArrayOfByte);
       this.a.b = paramHashMap.bytes_download_url.get().toStringUtf8();
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.b();
-      return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    paramArrayOfByte = this.a;
+    paramArrayOfByte.jdField_a_of_type_Boolean = true;
+    paramArrayOfByte.b();
   }
   
   public void onSwitch2BackupChannel() {}
@@ -52,7 +54,7 @@ class CheckInUploadTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopcheckin.CheckInUploadTask.1
  * JD-Core Version:    0.7.0.1
  */

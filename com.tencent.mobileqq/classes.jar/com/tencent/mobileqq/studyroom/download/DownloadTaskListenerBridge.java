@@ -17,8 +17,9 @@ public class DownloadTaskListenerBridge
   
   public void onTaskCompletedMainloop(DownloaderTask paramDownloaderTask)
   {
-    if (this.a != null) {
-      this.a.a(paramDownloaderTask);
+    IHellyEventListener localIHellyEventListener = this.a;
+    if (localIHellyEventListener != null) {
+      localIHellyEventListener.a(paramDownloaderTask);
     }
   }
   
@@ -26,8 +27,9 @@ public class DownloadTaskListenerBridge
   
   public void onTaskDetectedMainloop(DownloaderTask paramDownloaderTask)
   {
-    if (this.a != null) {
-      this.a.b(paramDownloaderTask);
+    IHellyEventListener localIHellyEventListener = this.a;
+    if (localIHellyEventListener != null) {
+      localIHellyEventListener.b(paramDownloaderTask);
     }
   }
   
@@ -46,15 +48,17 @@ public class DownloadTaskListenerBridge
   
   public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
   {
-    if (this.a != null) {
-      this.a.d(paramDownloaderTask);
+    IHellyEventListener localIHellyEventListener = this.a;
+    if (localIHellyEventListener != null) {
+      localIHellyEventListener.d(paramDownloaderTask);
     }
   }
   
   public void onTaskReceivedMainloop(DownloaderTask paramDownloaderTask)
   {
-    if (this.a != null) {
-      this.a.f(paramDownloaderTask);
+    IHellyEventListener localIHellyEventListener = this.a;
+    if (localIHellyEventListener != null) {
+      localIHellyEventListener.f(paramDownloaderTask);
     }
   }
   
@@ -62,8 +66,9 @@ public class DownloadTaskListenerBridge
   
   public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
   {
-    if (this.a != null) {
-      this.a.e(paramDownloaderTask);
+    IHellyEventListener localIHellyEventListener = this.a;
+    if (localIHellyEventListener != null) {
+      localIHellyEventListener.e(paramDownloaderTask);
     }
   }
   
@@ -71,7 +76,7 @@ public class DownloadTaskListenerBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.download.DownloadTaskListenerBridge
  * JD-Core Version:    0.7.0.1
  */

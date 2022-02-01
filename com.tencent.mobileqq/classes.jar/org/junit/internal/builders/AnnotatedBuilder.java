@@ -35,17 +35,21 @@ public class AnnotatedBuilder
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      try
-      {
-        paramClass1 = (Runner)paramClass.getConstructor(new Class[] { Class.class, RunnerBuilder.class }).newInstance(new Object[] { paramClass1, this.suiteBuilder });
-        return paramClass1;
-      }
-      catch (NoSuchMethodException paramClass1)
-      {
-        paramClass = paramClass.getSimpleName();
-        throw new InitializationError(String.format("Custom runner class %s should have a public constructor with signature %s(Class testClass)", new Object[] { paramClass, paramClass }));
-      }
+      label30:
+      label72:
+      break label30;
     }
+    try
+    {
+      paramClass1 = (Runner)paramClass.getConstructor(new Class[] { Class.class, RunnerBuilder.class }).newInstance(new Object[] { paramClass1, this.suiteBuilder });
+      return paramClass1;
+    }
+    catch (NoSuchMethodException paramClass1)
+    {
+      break label72;
+    }
+    paramClass = paramClass.getSimpleName();
+    throw new InitializationError(String.format("Custom runner class %s should have a public constructor with signature %s(Class testClass)", new Object[] { paramClass, paramClass }));
   }
   
   public Runner runnerForClass(Class<?> paramClass)
@@ -62,7 +66,7 @@ public class AnnotatedBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.internal.builders.AnnotatedBuilder
  * JD-Core Version:    0.7.0.1
  */

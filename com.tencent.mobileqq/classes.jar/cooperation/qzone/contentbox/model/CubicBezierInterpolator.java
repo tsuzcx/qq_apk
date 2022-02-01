@@ -24,14 +24,17 @@ public class CubicBezierInterpolator
   
   public CubicBezierInterpolator(PointF paramPointF1, PointF paramPointF2)
   {
-    if ((paramPointF1.x < 0.0F) || (paramPointF1.x > 1.0F)) {
-      throw new IllegalArgumentException("startX value must be in the range [0, 1]");
-    }
-    if ((paramPointF2.x < 0.0F) || (paramPointF2.x > 1.0F)) {
+    if ((paramPointF1.x >= 0.0F) && (paramPointF1.x <= 1.0F))
+    {
+      if ((paramPointF2.x >= 0.0F) && (paramPointF2.x <= 1.0F))
+      {
+        this.start = paramPointF1;
+        this.end = paramPointF2;
+        return;
+      }
       throw new IllegalArgumentException("endX value must be in the range [0, 1]");
     }
-    this.start = paramPointF1;
-    this.end = paramPointF2;
+    throw new IllegalArgumentException("startX value must be in the range [0, 1]");
   }
   
   private float getBezierCoordinateX(float paramFloat)
@@ -39,12 +42,12 @@ public class CubicBezierInterpolator
     this.c.x = (this.start.x * 3.0F);
     this.b.x = ((this.end.x - this.start.x) * 3.0F - this.c.x);
     this.a.x = (1.0F - this.c.x - this.b.x);
-    return (this.c.x + (this.b.x + this.a.x * paramFloat) * paramFloat) * paramFloat;
+    return paramFloat * (this.c.x + (this.b.x + this.a.x * paramFloat) * paramFloat);
   }
   
   private float getXDerivate(float paramFloat)
   {
-    return this.c.x + (2.0F * this.b.x + 3.0F * this.a.x * paramFloat) * paramFloat;
+    return this.c.x + paramFloat * (this.b.x * 2.0F + this.a.x * 3.0F * paramFloat);
   }
   
   protected float getBezierCoordinateY(float paramFloat)
@@ -52,7 +55,7 @@ public class CubicBezierInterpolator
     this.c.y = (this.start.y * 3.0F);
     this.b.y = ((this.end.y - this.start.y) * 3.0F - this.c.y);
     this.a.y = (1.0F - this.c.y - this.b.y);
-    return (this.c.y + (this.b.y + this.a.y * paramFloat) * paramFloat) * paramFloat;
+    return paramFloat * (this.c.y + (this.b.y + this.a.y * paramFloat) * paramFloat);
   }
   
   public float getInterpolation(float paramFloat)
@@ -64,26 +67,21 @@ public class CubicBezierInterpolator
   {
     int i = 1;
     float f1 = paramFloat;
-    for (;;)
+    while (i < 14)
     {
-      float f2;
-      if (i < 14)
-      {
-        f2 = getBezierCoordinateX(f1) - paramFloat;
-        if (Math.abs(f2) >= 0.001D) {}
-      }
-      else
-      {
+      float f2 = getBezierCoordinateX(f1) - paramFloat;
+      if (Math.abs(f2) < 0.001D) {
         return f1;
       }
       f1 -= f2 / getXDerivate(f1);
       i += 1;
     }
+    return f1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.CubicBezierInterpolator
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,13 @@ class RiskHintDlgFragment$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(this.a.c);
+    paramDialogInterface = this.a;
+    paramDialogInterface.a(paramDialogInterface.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskHintDlgFragment.6
  * JD-Core Version:    0.7.0.1
  */

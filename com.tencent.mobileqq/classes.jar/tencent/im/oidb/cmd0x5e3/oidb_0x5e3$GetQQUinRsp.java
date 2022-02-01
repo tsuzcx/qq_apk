@@ -25,16 +25,18 @@ public final class oidb_0x5e3$GetQQUinRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 160018, 160072, 160248, 560002, 560008, 560016, 560024, 560034, 800162 }, new String[] { "uint64_uin", "bytes_nick", "uint32_gender", "uint32_birthday", "bytes_remark", "uint32_netstatus", "uint64_qcall_id", "uint32_is_call_free", "bytes_auto_remark", "bytes_qcall_nick" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4 }, GetQQUinRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 160018, 160072, 160248, 560002, 560008, 560016, 560024, 560034, 800162 }, new String[] { "uint64_uin", "bytes_nick", "uint32_gender", "uint32_birthday", "bytes_remark", "uint32_netstatus", "uint64_qcall_id", "uint32_is_call_free", "bytes_auto_remark", "bytes_qcall_nick" }, new Object[] { localLong, localByteStringMicro1, localInteger, localInteger, localByteStringMicro2, localInteger, localLong, localInteger, localByteStringMicro3, localByteStringMicro4 }, GetQQUinRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5e3.oidb_0x5e3.GetQQUinRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -4,25 +4,40 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.config.business.qvip.QVipFeatureSwitchConfig;
-import com.tencent.mobileqq.config.business.qvip.QVipFeatureSwitchProcessor;
 import com.tencent.mobileqq.vas.VasResEngine.VasRes;
 import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable.VasResDrawableAdapter;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipFeatureSwitchConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipFeatureSwitchProcessor;
 import com.tencent.mobileqq.widget.ColorClearableEditText;
 import com.tencent.mobileqq.widget.ColorNickTextView;
+import com.tencent.mobileqq.widget.QColorNickTextView;
 import mqq.app.AppRuntime;
 
 public class TroopNickNameHelper
 {
   private static void a(TextView paramTextView)
   {
-    if ((paramTextView instanceof ColorNickTextView)) {
+    if ((paramTextView instanceof ColorNickTextView))
+    {
       ((ColorNickTextView)paramTextView).b();
-    }
-    while (!(paramTextView instanceof ColorClearableEditText)) {
       return;
     }
-    ((ColorClearableEditText)paramTextView).b();
+    if ((paramTextView instanceof ColorClearableEditText))
+    {
+      ((ColorClearableEditText)paramTextView).b();
+      return;
+    }
+    if ((paramTextView instanceof QColorNickTextView))
+    {
+      QColorNickTextView localQColorNickTextView = (QColorNickTextView)paramTextView;
+      localQColorNickTextView.updateDrawablePadding();
+      paramTextView = paramTextView.getBackground();
+      if ((paramTextView instanceof TroopNickResDrawable))
+      {
+        localQColorNickTextView.splitParagraph();
+        ((TroopNickResDrawable)paramTextView).a(localQColorNickTextView.getContentSize());
+      }
+    }
   }
   
   private static void a(TextView paramTextView, int paramInt1, int paramInt2)
@@ -48,15 +63,15 @@ public class TroopNickNameHelper
       b(paramTextView);
       return;
     }
-    if ((paramInt <= 0) || (paramContext == null))
+    if ((paramInt > 0) && (paramContext != null))
     {
-      b(paramTextView);
-      return;
-    }
-    Object localObject = paramTextView.getBackground();
-    if (((localObject instanceof TroopNickResDrawable)) && (((TroopNickResDrawable)localObject).a() == paramInt)) {}
-    for (int i = 1;; i = 0)
-    {
+      Object localObject = paramTextView.getBackground();
+      int i;
+      if (((localObject instanceof TroopNickResDrawable)) && (((TroopNickResDrawable)localObject).a() == paramInt)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       if (i == 0)
       {
         paramContext = new TroopNickResDrawable(paramContext, paramInt);
@@ -72,6 +87,7 @@ public class TroopNickNameHelper
       a(paramTextView);
       return;
     }
+    b(paramTextView);
   }
   
   private static void b(TextView paramTextView)
@@ -83,7 +99,7 @@ public class TroopNickNameHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickNameHelper
  * JD-Core Version:    0.7.0.1
  */

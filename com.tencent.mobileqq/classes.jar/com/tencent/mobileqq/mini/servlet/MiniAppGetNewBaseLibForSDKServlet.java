@@ -34,7 +34,10 @@ public class MiniAppGetNewBaseLibForSDKServlet
     INTERFACE.StGetNewBaseLibRsp localStGetNewBaseLibRsp = new INTERFACE.StGetNewBaseLibRsp();
     localStGetNewBaseLibRsp.mergeFrom(paramArrayOfByte);
     int i = localStGetNewBaseLibRsp.interval.get();
-    QLog.i("MiniAppGetNewBaseLibForSDKServlet", 2, "[MiniEng] GetNewBaseLib interval:" + i);
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("[MiniEng] GetNewBaseLib interval:");
+    paramArrayOfByte.append(i);
+    QLog.i("MiniAppGetNewBaseLibForSDKServlet", 2, paramArrayOfByte.toString());
     long l1 = i * 1000;
     long l2 = System.currentTimeMillis();
     StorageUtil.getPreference().edit().putLong("baselib_min_update_time", l1 + l2).apply();
@@ -42,18 +45,21 @@ public class MiniAppGetNewBaseLibForSDKServlet
     paramArrayOfByte = localStGetNewBaseLibRsp.jsOrsoLibs.get().iterator();
     while (paramArrayOfByte.hasNext())
     {
-      INTERFACE.StBaseLibInfo localStBaseLibInfo = (INTERFACE.StBaseLibInfo)paramArrayOfByte.next();
+      Object localObject = (INTERFACE.StBaseLibInfo)paramArrayOfByte.next();
       BaseLibInfo localBaseLibInfo = new BaseLibInfo();
-      localBaseLibInfo.baseLibUrl = localStBaseLibInfo.downloadUrl.get();
-      localBaseLibInfo.baseLibVersion = localStBaseLibInfo.version.get();
+      localBaseLibInfo.baseLibUrl = ((INTERFACE.StBaseLibInfo)localObject).downloadUrl.get();
+      localBaseLibInfo.baseLibVersion = ((INTERFACE.StBaseLibInfo)localObject).version.get();
       localBaseLibInfo.baseLibKey = null;
-      localBaseLibInfo.baseLibDesc = localStBaseLibInfo.extInfo.get();
+      localBaseLibInfo.baseLibDesc = ((INTERFACE.StBaseLibInfo)localObject).extInfo.get();
       if (TextUtils.isEmpty(localBaseLibInfo.baseLibDesc)) {
         localBaseLibInfo.baseLibDesc = "{'file_length':-1}";
       }
-      localBaseLibInfo.baseLibType = localStBaseLibInfo.libType.get();
+      localBaseLibInfo.baseLibType = ((INTERFACE.StBaseLibInfo)localObject).libType.get();
       paramBundle.putParcelable(localBaseLibInfo.getKey(), localBaseLibInfo);
-      QLog.i("MiniAppGetNewBaseLibForSDKServlet", 1, "[MiniEng] GetNewBaseLib " + localBaseLibInfo);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[MiniEng] GetNewBaseLib ");
+      ((StringBuilder)localObject).append(localBaseLibInfo);
+      QLog.i("MiniAppGetNewBaseLibForSDKServlet", 1, ((StringBuilder)localObject).toString());
     }
     paramBundle.putString("version", localStGetNewBaseLibRsp.libInfo.version.get());
     paramBundle.putString("downloadUrl", localStGetNewBaseLibRsp.libInfo.downloadUrl.get());
@@ -80,7 +86,7 @@ public class MiniAppGetNewBaseLibForSDKServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetNewBaseLibForSDKServlet
  * JD-Core Version:    0.7.0.1
  */

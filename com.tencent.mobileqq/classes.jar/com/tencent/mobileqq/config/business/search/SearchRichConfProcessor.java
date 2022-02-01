@@ -27,8 +27,12 @@ public class SearchRichConfProcessor
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchRichConfProcessor", 2, "onParsed " + paramArrayOfQConfItem.length);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem.length);
+        QLog.d("SearchRichConfProcessor", 2, localStringBuilder.toString());
       }
       return SearchRichConfBean.a(paramArrayOfQConfItem[0]);
     }
@@ -37,21 +41,19 @@ public class SearchRichConfProcessor
   
   public void a(SearchRichConfBean paramSearchRichConfBean)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramSearchRichConfBean == null) {
-        break label49;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      if (paramSearchRichConfBean != null) {
+        paramSearchRichConfBean = paramSearchRichConfBean.toString();
+      } else {
+        paramSearchRichConfBean = " empty";
       }
+      localStringBuilder.append(paramSearchRichConfBean);
+      QLog.d("SearchRichConfProcessor", 2, localStringBuilder.toString());
     }
-    label49:
-    for (paramSearchRichConfBean = paramSearchRichConfBean.toString();; paramSearchRichConfBean = " empty")
-    {
-      QLog.d("SearchRichConfProcessor", 2, paramSearchRichConfBean);
-      RichNodeFactory.a().a();
-      return;
-    }
+    RichNodeFactory.a().a();
   }
   
   public Class<SearchRichConfBean> clazz()
@@ -76,8 +78,12 @@ public class SearchRichConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchRichConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.e("SearchRichConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -88,7 +94,7 @@ public class SearchRichConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.search.SearchRichConfProcessor
  * JD-Core Version:    0.7.0.1
  */

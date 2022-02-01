@@ -24,7 +24,10 @@ public class QuickHeartbeatConfigProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
       QuickHeartbeatConfigBean localQuickHeartbeatConfigBean = QuickHeartbeatConfigBean.a(paramArrayOfQConfItem[0].a);
-      QLog.d("QuickHeartbeatConfigProcessor", 1, "onParsed " + paramArrayOfQConfItem[0].a);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onParsed ");
+      localStringBuilder.append(paramArrayOfQConfItem[0].a);
+      QLog.d("QuickHeartbeatConfigProcessor", 1, localStringBuilder.toString());
       return localQuickHeartbeatConfigBean;
     }
     QLog.d("QuickHeartbeatConfigProcessor", 1, "onParsed is null");
@@ -36,7 +39,10 @@ public class QuickHeartbeatConfigProcessor
     if (paramQuickHeartbeatConfigBean != null)
     {
       SharedPreUtils.a(BaseApplicationImpl.getContext(), "common_sp_for_msf", "", true, "isSendQuickHBBackToForeground", Boolean.valueOf(paramQuickHeartbeatConfigBean.a), 4);
-      QLog.d("QuickHeartbeatConfigProcessor", 1, "onUpdate, newConf: " + paramQuickHeartbeatConfigBean.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate, newConf: ");
+      localStringBuilder.append(paramQuickHeartbeatConfigBean.toString());
+      QLog.d("QuickHeartbeatConfigProcessor", 1, localStringBuilder.toString());
     }
   }
   
@@ -67,7 +73,10 @@ public class QuickHeartbeatConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("QuickHeartbeatConfigProcessor", 1, "[onReqFailed] failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onReqFailed] failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.i("QuickHeartbeatConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -77,7 +86,7 @@ public class QuickHeartbeatConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QuickHeartbeatConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

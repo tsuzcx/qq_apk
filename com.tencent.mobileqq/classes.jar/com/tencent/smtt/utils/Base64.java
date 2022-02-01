@@ -4,16 +4,6 @@ import java.io.UnsupportedEncodingException;
 
 public class Base64
 {
-  static
-  {
-    if (!Base64.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      return;
-    }
-  }
-  
   public static byte[] a(byte[] paramArrayOfByte, int paramInt)
   {
     return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
@@ -23,52 +13,54 @@ public class Base64
   {
     Base64.b localb = new Base64.b(paramInt3, null);
     int i = paramInt2 / 3 * 4;
-    int j;
-    if (localb.d)
+    boolean bool = localb.d;
+    int j = 2;
+    int k;
+    if (bool)
     {
       paramInt3 = i;
       if (paramInt2 % 3 > 0) {
         paramInt3 = i + 4;
       }
-      i = paramInt3;
-      if (localb.e)
-      {
-        i = paramInt3;
-        if (paramInt2 > 0)
+    }
+    else
+    {
+      k = paramInt2 % 3;
+      paramInt3 = i;
+      if (k != 0) {
+        if (k != 1)
         {
-          j = (paramInt2 - 1) / 57;
-          if (!localb.f) {
-            break label186;
+          if (k != 2) {
+            paramInt3 = i;
+          } else {
+            paramInt3 = i + 3;
           }
+        }
+        else {
+          paramInt3 = i + 2;
         }
       }
     }
-    label186:
-    for (i = 2;; i = 1)
+    i = paramInt3;
+    if (localb.e)
     {
-      i = paramInt3 + i * (j + 1);
-      localb.a = new byte[i];
-      localb.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((a) || (localb.b == i)) {
-        break label192;
-      }
-      throw new AssertionError();
-      paramInt3 = i;
-      switch (paramInt2 % 3)
+      i = paramInt3;
+      if (paramInt2 > 0)
       {
-      case 0: 
-      default: 
-        paramInt3 = i;
-        break;
-      case 1: 
-        paramInt3 = i + 2;
-        break;
-      case 2: 
-        paramInt3 = i + 3;
-        break;
+        k = (paramInt2 - 1) / 57;
+        if (localb.f) {
+          i = j;
+        } else {
+          i = 1;
+        }
+        i = paramInt3 + (k + 1) * i;
       }
     }
-    label192:
+    localb.a = new byte[i];
+    localb.a(paramArrayOfByte, paramInt1, paramInt2, true);
+    if ((!a) && (localb.b != i)) {
+      throw new AssertionError();
+    }
     return localb.a;
   }
   
@@ -87,7 +79,7 @@ public class Base64
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.Base64
  * JD-Core Version:    0.7.0.1
  */

@@ -67,7 +67,10 @@ public abstract class BaseTask
   
   private void doReset()
   {
-    QMLog.i("minisdk-start_BaseTask", "Task Reset: " + getDescStr());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Task Reset: ");
+    localStringBuilder.append(getDescStr());
+    QMLog.i("minisdk-start_BaseTask", localStringBuilder.toString());
     this.mSatus = 4;
     this.mIsSucc = false;
   }
@@ -77,8 +80,16 @@ public abstract class BaseTask
     if (TextUtils.isEmpty(this.mDescStr))
     {
       this.mDescStr = this.mClassTag;
-      if (this.runtimeLoader != null) {
-        this.mDescStr = (this.mDescStr + "{" + this.runtimeLoader.getClass().getSimpleName() + "@" + this.runtimeLoader.hashCode() + "}");
+      if (this.runtimeLoader != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mDescStr);
+        localStringBuilder.append("{");
+        localStringBuilder.append(this.runtimeLoader.getClass().getSimpleName());
+        localStringBuilder.append("@");
+        localStringBuilder.append(this.runtimeLoader.hashCode());
+        localStringBuilder.append("}");
+        this.mDescStr = localStringBuilder.toString();
       }
     }
     return this.mDescStr;
@@ -128,61 +139,55 @@ public abstract class BaseTask
   {
     List localList = getSubTaskExecutionStatics();
     Object localObject2 = TaskExecutionStatics.Status.SUCCESS;
+    int i = this.mSatus;
     Object localObject1;
-    String str;
-    long l1;
-    long l2;
-    if (this.mSatus == 1)
-    {
+    if (i == 1) {
       localObject1 = TaskExecutionStatics.Status.WAIT;
-      str = getName();
-      l1 = getRunDurationMs();
-      l2 = getTotalRunDurationMs();
-      if (this.msg == null) {
-        break label137;
-      }
-      localObject2 = this.msg;
-      label53:
-      if (localList == null) {
-        break label144;
-      }
     }
     for (;;)
     {
-      return new TaskExecutionStatics(str, l1, l2, (TaskExecutionStatics.Status)localObject1, (String)localObject2, localList);
-      if (this.mSatus == 2)
+      break;
+      if (i == 2)
       {
         localObject1 = TaskExecutionStatics.Status.RUNNING;
-        break;
       }
-      localObject1 = localObject2;
-      if (!isDone()) {
-        break;
-      }
-      if (!isSucceed())
+      else
       {
-        localObject1 = TaskExecutionStatics.Status.FAIL;
-        break;
+        localObject1 = localObject2;
+        if (isDone()) {
+          if (!isSucceed())
+          {
+            localObject1 = TaskExecutionStatics.Status.FAIL;
+          }
+          else
+          {
+            localObject1 = localObject2;
+            if (this.mIsCached) {
+              localObject1 = TaskExecutionStatics.Status.CACHED;
+            }
+          }
+        }
       }
-      localObject1 = localObject2;
-      if (!this.mIsCached) {
-        break;
-      }
-      localObject1 = TaskExecutionStatics.Status.CACHED;
-      break;
-      label137:
+    }
+    String str = getName();
+    long l1 = getRunDurationMs();
+    long l2 = getTotalRunDurationMs();
+    localObject2 = this.msg;
+    if (localObject2 == null) {
       localObject2 = "";
-      break label53;
-      label144:
+    }
+    if (localList == null) {
       localList = Collections.emptyList();
     }
+    return new TaskExecutionStatics(str, l1, l2, (TaskExecutionStatics.Status)localObject1, (String)localObject2, localList);
   }
   
   @NonNull
   public String getName()
   {
-    if (this.mClassTag != null) {
-      return this.mClassTag;
+    String str = this.mClassTag;
+    if (str != null) {
+      return str;
     }
     return getClass().getSimpleName();
   }
@@ -244,18 +249,25 @@ public abstract class BaseTask
   
   public boolean isDependTo(BaseTask paramBaseTask)
   {
-    if ((paramBaseTask == null) || (this.mDependTask == null) || (this.mDependTask.size() <= 0)) {
-      return false;
-    }
-    if (this.mDependTask.contains(paramBaseTask)) {
-      return true;
-    }
-    Iterator localIterator = this.mDependTask.iterator();
-    while (localIterator.hasNext())
+    if (paramBaseTask != null)
     {
-      boolean bool = ((BaseTask)localIterator.next()).isDependTo(paramBaseTask);
-      if (bool) {
-        return bool;
+      Object localObject = this.mDependTask;
+      if (localObject != null)
+      {
+        if (((List)localObject).size() <= 0) {
+          return false;
+        }
+        if (this.mDependTask.contains(paramBaseTask)) {
+          return true;
+        }
+        localObject = this.mDependTask.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          boolean bool = ((BaseTask)((Iterator)localObject).next()).isDependTo(paramBaseTask);
+          if (bool) {
+            return bool;
+          }
+        }
       }
     }
     return false;
@@ -280,28 +292,32 @@ public abstract class BaseTask
   public void onTaskFailed(int paramInt, String paramString)
   {
     this.mRunDurationMs = (SystemClock.uptimeMillis() - this.mTaskStartTime);
-    StringBuilder localStringBuilder = new StringBuilder().append("Task end: ").append(getDescStr()).append(" retCode=").append(paramInt).append(" msg=").append(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Task end: ");
+    localStringBuilder.append(getDescStr());
+    localStringBuilder.append(" retCode=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" msg=");
+    localStringBuilder.append(paramString);
     String str;
-    if (getStatus() == 4)
-    {
+    if (getStatus() == 4) {
       str = " Reseted";
-      QMLog.i("minisdk-start_BaseTask", str);
-      if (getStatus() != 4) {
-        break label95;
-      }
-    }
-    label95:
-    do
-    {
-      return;
+    } else {
       str = "";
-      break;
-      setStatus(3);
-      this.mIsSucc = false;
-      this.retCode = paramInt;
-      this.msg = paramString;
-    } while (this.mCallback == null);
-    this.mCallback.onTaskEnd(this);
+    }
+    localStringBuilder.append(str);
+    QMLog.i("minisdk-start_BaseTask", localStringBuilder.toString());
+    if (getStatus() == 4) {
+      return;
+    }
+    setStatus(3);
+    this.mIsSucc = false;
+    this.retCode = paramInt;
+    this.msg = paramString;
+    paramString = this.mCallback;
+    if (paramString != null) {
+      paramString.onTaskEnd(this);
+    }
   }
   
   protected final void onTaskStart()
@@ -312,26 +328,27 @@ public abstract class BaseTask
   public void onTaskSucceed()
   {
     this.mRunDurationMs = (SystemClock.uptimeMillis() - this.mTaskStartTime);
-    StringBuilder localStringBuilder = new StringBuilder().append("Task end: ").append(getDescStr()).append(" succ=").append(true);
-    String str;
-    if (getStatus() == 4)
-    {
-      str = " Reseted";
-      QMLog.i("minisdk-start_BaseTask", str);
-      if (getStatus() != 4) {
-        break label83;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Task end: ");
+    localStringBuilder.append(getDescStr());
+    localStringBuilder.append(" succ=");
+    localStringBuilder.append(true);
+    if (getStatus() == 4) {
+      localObject = " Reseted";
+    } else {
+      localObject = "";
     }
-    label83:
-    do
-    {
+    localStringBuilder.append((String)localObject);
+    QMLog.i("minisdk-start_BaseTask", localStringBuilder.toString());
+    if (getStatus() == 4) {
       return;
-      str = "";
-      break;
-      setStatus(3);
-      this.mIsSucc = true;
-    } while (this.mCallback == null);
-    this.mCallback.onTaskEnd(this);
+    }
+    setStatus(3);
+    this.mIsSucc = true;
+    Object localObject = this.mCallback;
+    if (localObject != null) {
+      ((BaseTask.Callback)localObject).onTaskEnd(this);
+    }
   }
   
   public void onTaskSucceedWithCache()
@@ -350,22 +367,28 @@ public abstract class BaseTask
   
   public void run()
   {
-    if (this.mSatus == 2) {}
-    do
-    {
+    int i = this.mSatus;
+    if (i == 2) {
       return;
-      if (this.mSatus != 3) {
-        break;
-      }
-      this.mIsCached = true;
-    } while (this.mCallback == null);
-    this.mCallback.onTaskEnd(this);
-    return;
-    setStatus(2);
-    if (this.mCallback != null) {
-      this.mCallback.onTaskBegin(this);
     }
-    QMLog.i("minisdk-start_BaseTask", "Task begin: " + getDescStr());
+    if (i == 3)
+    {
+      this.mIsCached = true;
+      localObject = this.mCallback;
+      if (localObject != null) {
+        ((BaseTask.Callback)localObject).onTaskEnd(this);
+      }
+      return;
+    }
+    setStatus(2);
+    Object localObject = this.mCallback;
+    if (localObject != null) {
+      ((BaseTask.Callback)localObject).onTaskBegin(this);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Task begin: ");
+    ((StringBuilder)localObject).append(getDescStr());
+    QMLog.i("minisdk-start_BaseTask", ((StringBuilder)localObject).toString());
     try
     {
       onTaskStart();
@@ -406,7 +429,7 @@ public abstract class BaseTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.BaseTask
  * JD-Core Version:    0.7.0.1
  */

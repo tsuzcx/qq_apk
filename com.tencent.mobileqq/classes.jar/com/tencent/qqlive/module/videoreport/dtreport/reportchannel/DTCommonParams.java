@@ -31,7 +31,7 @@ class DTCommonParams
     put(localHashMap, "dt_tid", paramIDTParamProvider.getTid());
     put(localHashMap, "dt_oaid", paramIDTParamProvider.getOaid());
     put(localHashMap, "dt_guid", paramIDTParamProvider.getGuid());
-    put(localHashMap, "dt_sdkversion", String.valueOf(1808));
+    put(localHashMap, "dt_sdkversion", String.valueOf(2200));
     return localHashMap;
   }
   
@@ -42,7 +42,7 @@ class DTCommonParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.reportchannel.DTCommonParams
  * JD-Core Version:    0.7.0.1
  */

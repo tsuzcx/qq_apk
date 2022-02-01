@@ -10,26 +10,31 @@ class CustomWebView$1
   
   public void a(String paramString, Bundle paramBundle, long paramLong)
   {
-    switch (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.a)
+    int i = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.a;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return;
+          }
+          this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.b, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.c, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.d, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.e);
+          return;
+        }
+        this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.c, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.d);
+        return;
+      }
       this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(paramString);
       return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.c, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.d);
-      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.b, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.c, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.d, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$LoadUrlInfo.e);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.CustomWebView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -34,13 +34,17 @@ class WifiCommonView$1
       WifiCommonView.b(this.vz).setVisibility(0);
       WifiCommonView.c(this.vz).setVisibility(0);
     }
-    WifiCommonView.c(this.vz).setText(String.valueOf(paramInt) + "%");
+    TextView localTextView = WifiCommonView.c(this.vz);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(paramInt));
+    localStringBuilder.append("%");
+    localTextView.setText(localStringBuilder.toString());
     WifiCommonView.b(this.vz).setProgress(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.wifisdk.ui.view.WifiCommonView.1
  * JD-Core Version:    0.7.0.1
  */

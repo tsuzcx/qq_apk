@@ -18,7 +18,8 @@ public class MagicfaceXBigDecoder
       QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder init=");
     }
     this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = new DecoderUtil();
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder() == 0) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder() != 0)) {}
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder();
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder();
   }
   
   public void a()
@@ -30,22 +31,30 @@ public class MagicfaceXBigDecoder
         return;
       }
       this.d = this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData.jdField_a_of_type_ArrayOfByte;
-      if (this.d != null)
+      if (this.d == null) {
+        return;
+      }
+      b();
+      if (this.c != null)
       {
-        b();
-        if ((this.c != null) && (this.f != null))
-        {
-          new Thread(this.jdField_b_of_type_JavaLangRunnable).start();
-          this.jdField_a_of_type_JavaLangRunnable.run();
+        if (this.f == null) {
           return;
         }
+        new Thread(this.jdField_b_of_type_JavaLangRunnable).start();
+        this.jdField_a_of_type_JavaLangRunnable.run();
+        return;
       }
+      return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.i("MagicfaceXBigDecoder", 2, "Exception=" + localException.toString());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Exception=");
+        localStringBuilder.append(localException.toString());
+        QLog.i("MagicfaceXBigDecoder", 2, localStringBuilder.toString());
       }
     }
   }
@@ -87,7 +96,7 @@ public class MagicfaceXBigDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder
  * JD-Core Version:    0.7.0.1
  */

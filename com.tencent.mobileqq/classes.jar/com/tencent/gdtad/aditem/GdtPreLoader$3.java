@@ -15,24 +15,28 @@ class GdtPreLoader$3
   public void run()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    GdtLog.a("GdtPreLoader", "preloadVideoAfterAdLoaded() called with: app = [" + localAppRuntime + "]");
-    if (localAppRuntime == null) {}
-    ImaxAdVideoPreloadManager localImaxAdVideoPreloadManager;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localAppRuntime instanceof QQAppInterface));
-      localImaxAdVideoPreloadManager = (ImaxAdVideoPreloadManager)localAppRuntime.getManager(QQManagerFactory.IMAX_AD_VIDEO_PRELOAD_MANAGER);
-    } while (localImaxAdVideoPreloadManager == null);
-    localImaxAdVideoPreloadManager.a(this.a.getTencent_video_id());
-    localImaxAdVideoPreloadManager.a((QQAppInterface)localAppRuntime);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("preloadVideoAfterAdLoaded() called with: app = [");
+    ((StringBuilder)localObject).append(localAppRuntime);
+    ((StringBuilder)localObject).append("]");
+    GdtLog.a("GdtPreLoader", ((StringBuilder)localObject).toString());
+    if (localAppRuntime == null) {
+      return;
+    }
+    if (!(localAppRuntime instanceof QQAppInterface)) {
+      return;
+    }
+    localObject = (ImaxAdVideoPreloadManager)localAppRuntime.getManager(QQManagerFactory.IMAX_AD_VIDEO_PRELOAD_MANAGER);
+    if (localObject == null) {
+      return;
+    }
+    ((ImaxAdVideoPreloadManager)localObject).a(this.a.getTencent_video_id());
+    ((ImaxAdVideoPreloadManager)localObject).a((QQAppInterface)localAppRuntime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtPreLoader.3
  * JD-Core Version:    0.7.0.1
  */

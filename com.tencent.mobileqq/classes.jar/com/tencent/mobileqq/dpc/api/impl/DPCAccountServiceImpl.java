@@ -27,7 +27,11 @@ public class DPCAccountServiceImpl
     if (paramAppRuntime == null) {
       return "";
     }
-    return UinMD5Cache.a(paramAppRuntime.getAccount()) + "_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(UinMD5Cache.a(paramAppRuntime.getAccount()));
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   private void doOnCreate(AppRuntime paramAppRuntime)
@@ -36,22 +40,18 @@ public class DPCAccountServiceImpl
     try
     {
       this.currentUinMD5 = UinMD5Cache.a(this.mApp.getAccount());
-      if (MobileQQ.sProcessId != 9)
-      {
-        bool = true;
-        init(bool);
-        return;
-      }
     }
     catch (NoClassDefFoundError paramAppRuntime)
     {
-      for (;;)
-      {
-        paramAppRuntime.printStackTrace();
-        continue;
-        boolean bool = false;
-      }
+      paramAppRuntime.printStackTrace();
     }
+    boolean bool;
+    if (MobileQQ.sProcessId != 9) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    init(bool);
   }
   
   private void init(boolean paramBoolean)
@@ -64,31 +64,31 @@ public class DPCAccountServiceImpl
     DPCAccountNames[] arrayOfDPCAccountNames = DPCAccountNames.values();
     int j = arrayOfDPCAccountNames.length;
     int i = 0;
-    label34:
-    String str1;
-    String str2;
-    DeviceProfileManager.DPCConfigInfo localDPCConfigInfo;
-    if (i < j)
+    while (i < j)
     {
-      str1 = buildAccountDpcName(arrayOfDPCAccountNames[i].name());
-      str2 = localSharedPreferences.getString(str1, "");
-      if (!"".equals(str2)) {
-        break label159;
+      String str = buildAccountDpcName(arrayOfDPCAccountNames[i].name());
+      Object localObject = localSharedPreferences.getString(str, "");
+      DeviceProfileManager.DPCConfigInfo localDPCConfigInfo;
+      if ("".equals(localObject))
+      {
+        localDPCConfigInfo = (DeviceProfileManager.DPCConfigInfo)((DeviceProfileManager.DPCConfigInfo)this.mFeatureDefaultAccountMap.get(str)).clone();
       }
-      localDPCConfigInfo = (DeviceProfileManager.DPCConfigInfo)((DeviceProfileManager.DPCConfigInfo)this.mFeatureDefaultAccountMap.get(str1)).clone();
-    }
-    for (;;)
-    {
-      this.mFeatureAccountMapLV2.put(str1, localDPCConfigInfo);
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceProfileManager", 2, "init loop mFeatureMapLV2_account MAP: " + str1 + "=" + localDPCConfigInfo.toString());
+      else
+      {
+        localDPCConfigInfo = new DeviceProfileManager.DPCConfigInfo();
+        DeviceProfileManager.buildDPCConfigValue(localDPCConfigInfo, (String)localObject);
+      }
+      this.mFeatureAccountMapLV2.put(str, localDPCConfigInfo);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("init loop mFeatureMapLV2_account MAP: ");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("=");
+        ((StringBuilder)localObject).append(localDPCConfigInfo.toString());
+        QLog.i("DeviceProfileManager", 2, ((StringBuilder)localObject).toString());
       }
       i += 1;
-      break label34;
-      break;
-      label159:
-      localDPCConfigInfo = new DeviceProfileManager.DPCConfigInfo();
-      DeviceProfileManager.buildDPCConfigValue(localDPCConfigInfo, str2);
     }
   }
   
@@ -108,7 +108,11 @@ public class DPCAccountServiceImpl
   
   public String buildAccountDpcName(String paramString)
   {
-    return this.currentUinMD5 + "_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.currentUinMD5);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -132,7 +136,7 @@ public class DPCAccountServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dpc.api.impl.DPCAccountServiceImpl
  * JD-Core Version:    0.7.0.1
  */

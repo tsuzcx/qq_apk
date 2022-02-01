@@ -11,23 +11,27 @@ class DiscussionInfoCardActivity$13
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    if (this.a.a != null)
     {
-    case -2: 
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131719291);
-      return;
+      if (!this.a.a.equals(paramBaseResp.transaction)) {
+        return;
+      }
+      int i = paramBaseResp.errCode;
+      if (i != -2)
+      {
+        if (i != 0)
+        {
+          QRUtils.a(1, 2131719009);
+          return;
+        }
+        QRUtils.a(2, 2131719027);
+      }
     }
-    QRUtils.a(2, 2131719309);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.13
  * JD-Core Version:    0.7.0.1
  */

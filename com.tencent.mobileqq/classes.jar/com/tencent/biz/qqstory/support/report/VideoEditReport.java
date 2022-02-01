@@ -1,30 +1,13 @@
 package com.tencent.biz.qqstory.support.report;
 
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class VideoEditReport
 {
-  public static int a;
-  public static long a;
-  public static String a;
-  public static int b;
-  public static long b;
-  public static String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-  }
+  public static int a = 0;
+  public static String a = "";
+  public static int b = 0;
+  public static String b = "";
   
   private static int a()
   {
@@ -42,38 +25,24 @@ public class VideoEditReport
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    String str = "grp_qq_pic_base";
+    if (paramInt != 2)
     {
-    default: 
-      return "grp_qq_pic_base";
-    case 2: 
-      return "grp_qq_pic_base";
-    case 3: 
-      return "grp_qq_pic_qzone";
+      if (paramInt != 3)
+      {
+        if (paramInt != 4) {
+          return "grp_qq_pic_base";
+        }
+        return "grp_qq_pic_kandian";
+      }
+      str = "grp_qq_pic_qzone";
     }
-    return "grp_qq_pic_kandian";
+    return str;
   }
   
   public static void a(int paramInt)
   {
     jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static void a(long paramLong, String paramString)
-  {
-    if ((paramLong > 0L) && (jdField_a_of_type_Long > 0L) && (jdField_b_of_type_Long > 0L) && (!TextUtils.isEmpty(paramString)) && (a()))
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("create_duration", String.valueOf((jdField_b_of_type_Long - jdField_a_of_type_Long) / 1000.0D));
-      localHashMap.put("frame_duration", String.valueOf((paramLong - jdField_a_of_type_Long) / 1000.0D));
-      paramLong -= jdField_a_of_type_Long;
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString, "actShortVideoEdit", true, paramLong, 0L, localHashMap, "");
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoEditReport", 2, "create_duration:" + (String)localHashMap.get("create_duration") + ", frame_duration:" + (String)localHashMap.get("frame_duration") + ", frameDuration:" + paramLong);
-      }
-      jdField_a_of_type_Long = 0L;
-      jdField_b_of_type_Long = 0L;
-    }
   }
   
   public static void a(String paramString)
@@ -94,23 +63,8 @@ public class VideoEditReport
   
   public static void a(String paramString1, String paramString2)
   {
-    int i;
-    if (b())
-    {
-      i = 1;
-      if (!jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_qzone")) {
-        break label43;
-      }
-      i = 2;
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", paramString1, paramString1, i, 0, "", "", paramString2, "");
-      return;
-      label43:
-      if (jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_kandian")) {
-        i = 3;
-      }
+    if (b()) {
+      ReportController.b(null, "dc00898", "", "", paramString1, paramString1, b(), 0, "", "", paramString2, "");
     }
   }
   
@@ -122,14 +76,25 @@ public class VideoEditReport
     ReportController.b(null, "dc00898", "", "", paramString1, paramString1, a(), 0, paramString2, paramString3, paramString4, paramString5);
   }
   
-  public static boolean a()
+  private static boolean a()
   {
-    return ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_JavaLangString.equals("grp_qq"))) || (jdField_a_of_type_JavaLangString.equals("grp_qzone")) || (jdField_a_of_type_JavaLangString.equals("grp_tribe")) || (jdField_a_of_type_JavaLangString.equals("grp_readinjoy"));
+    return (jdField_a_of_type_JavaLangString.equals("grp_qq")) || (jdField_a_of_type_JavaLangString.equals("grp_qzone")) || (jdField_a_of_type_JavaLangString.equals("grp_tribe")) || (jdField_a_of_type_JavaLangString.equals("grp_readinjoy"));
+  }
+  
+  private static int b()
+  {
+    if (jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_qzone")) {
+      return 2;
+    }
+    if (jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_kandian")) {
+      return 3;
+    }
+    return 1;
   }
   
   public static void b(int paramInt)
   {
-    jdField_b_of_type_Int = paramInt;
+    b = paramInt;
   }
   
   public static void b(String paramString)
@@ -139,34 +104,19 @@ public class VideoEditReport
   
   public static void b(String paramString, int paramInt)
   {
-    int i;
-    if (b())
-    {
-      i = 1;
-      if (!jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_qzone")) {
-        break label46;
-      }
-      i = 2;
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", paramString, paramString, i, 0, String.valueOf(paramInt), "", "", "");
-      return;
-      label46:
-      if (jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_kandian")) {
-        i = 3;
-      }
+    if (b()) {
+      ReportController.b(null, "dc00898", "", "", paramString, paramString, b(), 0, String.valueOf(paramInt), "", "", "");
     }
   }
   
   private static boolean b()
   {
-    return (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && ((jdField_a_of_type_JavaLangString.equals("grp_qq_pic_base")) || (jdField_a_of_type_JavaLangString.equals("grp_qq_pic_qzone")) || (jdField_a_of_type_JavaLangString.equals("grp_qq_pic_kandian")));
+    return (jdField_a_of_type_JavaLangString.equals("grp_qq_pic_base")) || (jdField_a_of_type_JavaLangString.equals("grp_qq_pic_qzone")) || (jdField_a_of_type_JavaLangString.equals("grp_qq_pic_kandian"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.support.report.VideoEditReport
  * JD-Core Version:    0.7.0.1
  */

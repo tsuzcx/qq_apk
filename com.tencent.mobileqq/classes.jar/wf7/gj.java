@@ -11,33 +11,27 @@ import java.io.InputStream;
 
 public class gj
 {
-  private static Integer sm = null;
+  private static Integer sm;
   
   public static String eS()
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
-    InputStream localInputStream;
+    StringBuilder localStringBuilder2;
     try
     {
-      localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq" }).start().getInputStream();
+      InputStream localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq" }).start().getInputStream();
       byte[] arrayOfByte = new byte[24];
-      while (localInputStream.read(arrayOfByte) != -1)
-      {
+      while (localInputStream.read(arrayOfByte) != -1) {
         localStringBuilder1.append(new String(arrayOfByte));
-        continue;
-        StringBuilder localStringBuilder2;
-        return localStringBuilder2.toString().trim();
       }
+      localInputStream.close();
     }
     catch (IOException localIOException)
     {
       localIOException.printStackTrace();
       localStringBuilder2 = new StringBuilder("N/A");
     }
-    for (;;)
-    {
-      localInputStream.close();
-    }
+    return localStringBuilder2.toString().trim();
   }
   
   public static int eT()
@@ -77,31 +71,36 @@ public class gj
       gr.a((File)localObject1, (gr.a)localObject2);
       long l1 = locala.sx;
       long l2 = ((gr.a)localObject2).sx;
-      return l2 + l1;
+      return l1 + l2;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label104:
+      break label104;
+    }
     return 0L;
   }
   
   public static String[] s(Context paramContext)
   {
-    String str1 = Build.MODEL;
-    String str2 = Build.VERSION.RELEASE;
-    Object localObject1 = "";
-    Object localObject2 = new File("/proc/cpuinfo");
+    String str2 = Build.MODEL;
+    String str3 = Build.VERSION.RELEASE;
+    Object localObject = new File("/proc/cpuinfo");
+    String str1;
     try
     {
-      localObject2 = new String(gk.a((File)localObject2)).split("\\n")[0];
-      localObject1 = localObject2;
+      localObject = new String(gk.a((File)localObject)).split("\\n")[0];
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
+      str1 = "";
     }
-    return new String[] { str1, str2, localObject1, Integer.toString(gr.D(paramContext)) + "*" + Integer.toString(gr.E(paramContext)) };
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Integer.toString(gr.D(paramContext)));
+    localStringBuilder.append("*");
+    localStringBuilder.append(Integer.toString(gr.E(paramContext)));
+    return new String[] { str2, str3, str1, localStringBuilder.toString() };
   }
   
   public static boolean t(Context paramContext)
@@ -111,7 +110,7 @@ public class gj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.gj
  * JD-Core Version:    0.7.0.1
  */

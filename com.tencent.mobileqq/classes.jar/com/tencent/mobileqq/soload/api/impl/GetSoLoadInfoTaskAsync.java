@@ -53,56 +53,63 @@ public class GetSoLoadInfoTaskAsync
         {
           localObject3 = (OnGetSoLoadInfoListener)((Iterator)???).next();
           if (localObject3 != null) {
-            ((OnGetSoLoadInfoListener)localObject3).a(localSoLoadInfo);
+            ((OnGetSoLoadInfoListener)localObject3).onGetLoadInfo(localSoLoadInfo);
           }
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject1;
     }
   }
   
   private void a(OnSoGetPathListener paramOnSoGetPathListener)
   {
-    String str1;
-    String str2;
     if ((this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.relatedFileInfo != null))
     {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.relatedFileInfo.url;
-      str2 = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.relatedFileInfo.md5;
-      if (this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam.mCallType != LoadParam.CALL_TYPE_ASYNC_BY_SYNC) {
-        break label64;
+      String str1 = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.relatedFileInfo.url;
+      String str2 = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.relatedFileInfo.md5;
+      boolean bool;
+      if (this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam.mCallType == LoadParam.CALL_TYPE_ASYNC_BY_SYNC) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label64:
-    for (boolean bool = true;; bool = false)
-    {
       SoLoadUtils.a(str1, str2, bool, paramOnSoGetPathListener);
-      return;
     }
   }
   
   private void a(LoadParam.LoadItem paramLoadItem)
   {
-    boolean bool2 = false;
     paramLoadItem = SoLoadUtils.a(paramLoadItem, this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo);
-    boolean bool3 = a(paramLoadItem);
-    boolean bool4 = a(paramLoadItem, this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo);
-    if (((this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam$LoadItem.lops.flag & 0x4) != 0) && (this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam.mCallType != LoadParam.CALL_TYPE_ASYNC_BY_SYNC)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool2 = a(paramLoadItem);
+    boolean bool3 = a(paramLoadItem, this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo);
+    boolean bool1;
+    if (((this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam$LoadItem.lops.flag & 0x4) != 0) && (this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam.mCallType != LoadParam.CALL_TYPE_ASYNC_BY_SYNC)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[handleConfig] soExist=" + bool3 + ",rfolderOk=" + bool4 + ",isWeak:" + bool1);
-      }
-      if (!bool3) {
-        bool2 = true;
-      }
-      this.jdField_b_of_type_Boolean = bool2;
-      if (bool3) {
-        break;
-      }
-      b(new GetSoLoadInfoTaskAsync.3(this, bool4, bool1, paramLoadItem));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[handleConfig] soExist=");
+      localStringBuilder.append(bool2);
+      localStringBuilder.append(",rfolderOk=");
+      localStringBuilder.append(bool3);
+      localStringBuilder.append(",isWeak:");
+      localStringBuilder.append(bool1);
+      QLog.i("SoLoadWidget.GetSoTaskAsync", 2, localStringBuilder.toString());
+    }
+    this.jdField_b_of_type_Boolean = (bool2 ^ true);
+    if (!bool2)
+    {
+      b(new GetSoLoadInfoTaskAsync.3(this, bool3, bool1, paramLoadItem));
       return;
     }
-    a(bool4, bool1, paramLoadItem, paramLoadItem.c, paramLoadItem.a, 1);
+    a(bool3, bool1, paramLoadItem, paramLoadItem.mSoPath, paramLoadItem.mSoCRC, 1);
   }
   
   private void a(LoadParam.LoadItem paramLoadItem, SoInfo paramSoInfo)
@@ -115,8 +122,12 @@ public class GetSoLoadInfoTaskAsync
     paramSoInfo = SoLoadUtils.a(this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam$LoadItem.name, this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.ver);
     if ((paramSoInfo != null) && (paramSoInfo.c()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[handleConfig] InLoadCrashProtectMode, crashInfo=" + paramSoInfo);
+      if (QLog.isColorLevel())
+      {
+        paramLoadItem = new StringBuilder();
+        paramLoadItem.append("[handleConfig] InLoadCrashProtectMode, crashInfo=");
+        paramLoadItem.append(paramSoInfo);
+        QLog.i("SoLoadWidget.GetSoTaskAsync", 2, paramLoadItem.toString());
       }
       this.c = "loadcrash";
       a(8);
@@ -124,11 +135,15 @@ public class GetSoLoadInfoTaskAsync
     }
     if ((paramSoInfo != null) && (paramSoInfo.f()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[handleConfig] isNeedReqForCrash, crashInfo=" + paramSoInfo);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[handleConfig] isNeedReqForCrash, crashInfo=");
+        ((StringBuilder)localObject).append(paramSoInfo);
+        QLog.i("SoLoadWidget.GetSoTaskAsync", 2, ((StringBuilder)localObject).toString());
       }
-      String str = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.ver;
-      SoConfigManager.a().a(paramLoadItem.name, paramSoInfo, new GetSoLoadInfoTaskAsync.2(this, str, paramSoInfo, paramLoadItem));
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.ver;
+      SoConfigManager.a().a(paramLoadItem.name, paramSoInfo, new GetSoLoadInfoTaskAsync.2(this, (String)localObject, paramSoInfo, paramLoadItem));
       return;
     }
     a(paramLoadItem);
@@ -150,7 +165,7 @@ public class GetSoLoadInfoTaskAsync
   {
     if (paramBoolean1)
     {
-      a(paramSoLocalInfo.f, paramString, paramLong, paramInt);
+      a(paramSoLocalInfo.mRFileFolder, paramString, paramLong, paramInt);
       return;
     }
     if (paramBoolean2)
@@ -182,28 +197,29 @@ public class GetSoLoadInfoTaskAsync
       jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam$LoadItem.name, localObject);
       return false;
     }
+    for (;;)
+    {
+      throw paramOnGetSoLoadInfoListener;
+    }
   }
   
   private void b(OnSoGetPathListener paramOnSoGetPathListener)
   {
-    String str1;
-    String str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam != null)
+    {
       if (this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo != null)
       {
-        str1 = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.url;
-        str2 = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.md5;
-        if (this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam.mCallType != LoadParam.CALL_TYPE_ASYNC_BY_SYNC) {
-          break label76;
+        String str1 = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.url;
+        String str2 = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo.md5;
+        boolean bool;
+        if (this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam.mCallType == LoadParam.CALL_TYPE_ASYNC_BY_SYNC) {
+          bool = true;
+        } else {
+          bool = false;
         }
+        SoLoadUtils.a(str1, str2, bool, paramOnSoGetPathListener);
       }
-    }
-    label76:
-    for (boolean bool = true;; bool = false)
-    {
-      SoLoadUtils.a(str1, str2, bool, paramOnSoGetPathListener);
       SoReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam.mReportSeq, null, "load.item.download.start", null, 0, null);
-      return;
     }
   }
   
@@ -215,23 +231,22 @@ public class GetSoLoadInfoTaskAsync
         QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "not main process get loadInfo by IPC");
       }
       SoLoadUtils.a(this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam$LoadItem, paramOnGetSoLoadInfoListener);
-    }
-    do
-    {
       return;
-      if (!a(paramOnGetSoLoadInfoListener)) {
-        break;
+    }
+    if (a(paramOnGetSoLoadInfoListener))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "insert into same req list");
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "insert into same req list");
-    return;
+      return;
+    }
     SoReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam.mReportSeq, null, "load.item.getconfig.start", this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam$LoadItem.name, 0, null);
     SoConfigManager.a().a(this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam$LoadItem.name, new GetSoLoadInfoTaskAsync.1(this), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.GetSoLoadInfoTaskAsync
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,8 @@ package com.tencent.av.share;
 
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import com.tencent.av.utils.DataReport.ShareChat;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troop.data.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
 
 class ShareChat$1
@@ -32,7 +31,7 @@ class ShareChat$1
   
   public TroopInfoData a()
   {
-    return this.jdField_a_of_type_ComTencentAvShareShareChat.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData;
+    return this.jdField_a_of_type_ComTencentAvShareShareChat.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData;
   }
   
   public String a()
@@ -47,27 +46,34 @@ class ShareChat$1
   
   public String a(long paramLong, int paramInt)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentAvShareShareChat.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
-      localObject = null;
+    if (this.jdField_a_of_type_ComTencentAvShareShareChat.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity == null) {
+      return null;
     }
-    String str;
-    do
+    String str = ShareChat.a(this.jdField_a_of_type_ComTencentAvShareShareChat, paramInt);
+    if (TextUtils.isEmpty(str))
     {
-      return localObject;
-      str = ShareChat.a(this.jdField_a_of_type_ComTencentAvShareShareChat, paramInt);
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    this.jdField_a_of_type_ComTencentAvShareShareChat.a(paramLong, this.jdField_a_of_type_ComTencentAvShareShareChat.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvShareShareChat.jdField_a_of_type_Int);
+      ShareChat localShareChat = this.jdField_a_of_type_ComTencentAvShareShareChat;
+      localShareChat.a(paramLong, localShareChat.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvShareShareChat.jdField_a_of_type_Int);
+    }
     return str;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    QLog.w("ShareChat", 1, "onFinish, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
-    DataReport.ShareChat.a(paramInt1, paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onFinish, choosedChannel[");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("], choosedLinkType[");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("], result[");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    QLog.w("ShareChat", 1, localStringBuilder.toString());
+    ShareChatReport.a(paramInt1, paramInt2);
     if (paramInt3 == 2) {
-      DataReport.ShareChat.a(paramInt1, paramInt2, 99, null);
+      ShareChatReport.a(paramInt1, paramInt2, 99, null);
     }
   }
   
@@ -83,15 +89,25 @@ class ShareChat$1
   
   public void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    QLog.w("ShareChat", 1, "onQRForward, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onQRForward, choosedChannel[");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("], choosedLinkType[");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("], result[");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    QLog.w("ShareChat", 1, localStringBuilder.toString());
     if (paramInt3 == 2) {
-      DataReport.ShareChat.a(paramInt1, paramInt2, 99, null);
+      ShareChatReport.a(paramInt1, paramInt2, 99, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.1
  * JD-Core Version:    0.7.0.1
  */

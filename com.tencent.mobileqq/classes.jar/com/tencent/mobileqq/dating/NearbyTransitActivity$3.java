@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.dating;
 
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.HotChatHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotchat.api.IHotChatApi;
+import com.tencent.mobileqq.hotchat.api.IHotChatHandler;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 class NearbyTransitActivity$3
@@ -13,21 +14,19 @@ class NearbyTransitActivity$3
   
   public void run()
   {
-    boolean bool = true;
-    HotChatHandler localHotChatHandler = (HotChatHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER);
+    IHotChatHandler localIHotChatHandler = (IHotChatHandler)this.this$0.app.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName());
     Common.WifiPOIInfo localWifiPOIInfo = this.a;
-    if (this.a.uint32_wifi_poi_type.get() == 1) {}
-    for (;;)
-    {
-      localHotChatHandler.a(localWifiPOIInfo, bool, 4, NearbyTransitActivity.c(this.this$0));
-      return;
+    int i = localWifiPOIInfo.uint32_wifi_poi_type.get();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    localIHotChatHandler.joinHotChat(localWifiPOIInfo, bool, 4, NearbyTransitActivity.c(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.NearbyTransitActivity.3
  * JD-Core Version:    0.7.0.1
  */

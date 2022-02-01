@@ -11,21 +11,11 @@ import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 public abstract class TroopFileGetFileSpaceObserver
   extends ProtoUtils.TroopProtocolObserver
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
-  
-  public abstract void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      a(false, 0L, 0L, 0);
-      return;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0x6d8.RspBody();
     }
-    paramBundle = new oidb_0x6d8.RspBody();
     try
     {
       paramBundle.mergeFrom(paramArrayOfByte);
@@ -37,19 +27,30 @@ public abstract class TroopFileGetFileSpaceObserver
         a(false, 0L, 0L, 0);
         return;
       }
+      paramArrayOfByte = (oidb_0x6d8.GetSpaceRspBody)paramBundle.group_space_rsp.get();
+      a(true, paramArrayOfByte.uint64_total_space.get(), paramArrayOfByte.uint64_used_space.get(), paramInt);
+      return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      a(false, 0L, 0L, 0);
-      return;
+      label90:
+      break label90;
     }
-    paramArrayOfByte = (oidb_0x6d8.GetSpaceRspBody)paramBundle.group_space_rsp.get();
-    a(true, paramArrayOfByte.uint64_total_space.get(), paramArrayOfByte.uint64_used_space.get(), paramInt);
+    a(false, 0L, 0L, 0);
+    return;
+    a(false, 0L, 0L, 0);
+  }
+  
+  public abstract void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt);
+  
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    a(paramInt, paramArrayOfByte, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.protocol.TroopFileGetFileSpaceObserver
  * JD-Core Version:    0.7.0.1
  */

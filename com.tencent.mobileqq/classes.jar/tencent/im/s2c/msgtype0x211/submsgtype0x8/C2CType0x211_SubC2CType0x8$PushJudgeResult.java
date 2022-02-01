@@ -27,13 +27,14 @@ public final class C2CType0x211_SubC2CType0x8$PushJudgeResult
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50 }, new String[] { "msg_head", "uint64_to_uin", "msg_result", "int32_peer_ip", "int32_peer_port", "bytes_peer_extra" }, new Object[] { null, Long.valueOf(0L), null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, PushJudgeResult.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50 }, new String[] { "msg_head", "uint64_to_uin", "msg_result", "int32_peer_ip", "int32_peer_port", "bytes_peer_extra" }, new Object[] { null, Long.valueOf(0L), null, localInteger, localInteger, localByteStringMicro }, PushJudgeResult.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x8.C2CType0x211_SubC2CType0x8.PushJudgeResult
  * JD-Core Version:    0.7.0.1
  */

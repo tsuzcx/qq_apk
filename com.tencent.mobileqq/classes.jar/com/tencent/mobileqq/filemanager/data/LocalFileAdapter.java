@@ -9,17 +9,18 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
 import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 import com.tencent.mobileqq.widget.CircleFileStateView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class LocalFileAdapter
-  extends BaseFileAdapter
+  extends BaseLocalFileAdapter
 {
   private final int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -30,7 +31,7 @@ public class LocalFileAdapter
   
   public LocalFileAdapter(Context paramContext, List<FileInfo> paramList, LocalFileBrowserActivity paramLocalFileBrowserActivity)
   {
-    super(paramContext, paramLocalFileBrowserActivity.jdField_a_of_type_AndroidViewView$OnClickListener);
+    super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
@@ -40,36 +41,36 @@ public class LocalFileAdapter
   private View a(FileInfo paramFileInfo, ViewGroup paramViewGroup)
   {
     LocalFileAdapter.LocalFileItemHolder localLocalFileItemHolder = new LocalFileAdapter.LocalFileItemHolder(this);
-    if (!paramFileInfo.c())
+    if (!paramFileInfo.d())
     {
-      paramFileInfo = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560904, paramViewGroup, false);
+      paramFileInfo = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560778, paramViewGroup, false);
       localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramFileInfo);
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_AndroidViewView$OnClickListener);
       localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_AndroidViewView$OnLongClickListener);
       localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localLocalFileItemHolder);
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramFileInfo.findViewById(2131366932));
-      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131366919));
-      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramFileInfo.findViewById(2131366794));
+      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131366781));
+      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_AndroidViewView$OnClickListener);
       localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setTag(localLocalFileItemHolder);
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131377060));
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramFileInfo.findViewById(2131366930));
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131376538));
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramFileInfo.findViewById(2131366792));
       localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-      localLocalFileItemHolder.b = ((TextView)paramFileInfo.findViewById(2131366933));
-      localLocalFileItemHolder.c = ((TextView)paramFileInfo.findViewById(2131366917));
-      localLocalFileItemHolder.d = ((TextView)paramFileInfo.findViewById(2131370043));
-      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramFileInfo.findViewById(2131361943));
-      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
+      localLocalFileItemHolder.b = ((TextView)paramFileInfo.findViewById(2131366795));
+      localLocalFileItemHolder.c = ((TextView)paramFileInfo.findViewById(2131366779));
+      localLocalFileItemHolder.d = ((TextView)paramFileInfo.findViewById(2131369727));
+      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramFileInfo.findViewById(2131361949));
+      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_AndroidViewView$OnClickListener);
     }
-    for (;;)
+    else
     {
-      paramFileInfo.setTag(localLocalFileItemHolder);
-      return paramFileInfo;
-      paramFileInfo = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560912, paramViewGroup, false);
-      paramFileInfo.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
-      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131366945));
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131377070));
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((EllipsizingTextView)paramFileInfo.findViewById(2131366949));
+      paramFileInfo = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560786, paramViewGroup, false);
+      paramFileInfo.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131366807));
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131376548));
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((EllipsizingTextView)paramFileInfo.findViewById(2131366811));
     }
+    paramFileInfo.setTag(localLocalFileItemHolder);
+    return paramFileInfo;
   }
   
   public int getCount()
@@ -89,7 +90,7 @@ public class LocalFileAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (((FileInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).c()) {
+    if (((FileInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).d()) {
       return -1;
     }
     return 1;
@@ -98,58 +99,85 @@ public class LocalFileAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (localFileInfo == null) {}
-    View localView;
-    for (Object localObject = null;; localView = paramView)
+    View localView1;
+    View localView2;
+    if (localFileInfo == null)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
+      localView1 = null;
+    }
+    else
+    {
+      localView1 = paramView;
       if (paramView == null) {}
-      for (;;)
+      try
       {
-        try
+        localView1 = a(localFileInfo, paramViewGroup);
+        paramView = localView1;
+        LocalFileAdapter.LocalFileItemHolder localLocalFileItemHolder = (LocalFileAdapter.LocalFileItemHolder)localView1.getTag();
+        paramView = localView1;
+        localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo = localFileInfo;
+        paramView = localView1;
+        if (localFileInfo.d())
         {
-          localObject = a(localFileInfo, paramViewGroup);
-          paramView = (View)localObject;
+          paramView = localView1;
+          localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130844339);
+          paramView = localView1;
+          localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          paramView = localView1;
+          localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localFileInfo.d());
+          paramView = localView1;
+          localLocalFileItemHolder.jdField_a_of_type_Int = paramInt;
         }
-        catch (Exception localException2)
+        else
         {
-          continue;
-        }
-        try
-        {
-          localObject = (LocalFileAdapter.LocalFileItemHolder)paramView.getTag();
-          ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo = localFileInfo;
-          if (localFileInfo.c())
+          paramView = localView1;
+          localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          paramView = localView1;
+          QQFileManagerUtil.a(localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileInfo.c(), QQFileManagerUtil.b(localFileInfo.c()));
+          paramView = localView1;
+          localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localFileInfo.d());
+          paramView = localView1;
+          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.f())
           {
-            ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130844434);
-            ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localFileInfo.d());
-            ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_Int = paramInt;
+            paramView = localView1;
+            localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+            paramView = localView1;
+            localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(FMDataCache.a(localFileInfo));
           }
           else
           {
-            ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-            FileManagerUtil.a(((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileInfo.c(), FileManagerUtil.a(localFileInfo.c()));
-            ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localFileInfo.d());
-            if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.f())
-            {
-              ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-              ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(FMDataCache.a(localFileInfo));
-              String str1 = QfileTimeUtils.b(localFileInfo.b());
-              String str2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.getString(2131692414);
-              ((LocalFileAdapter.LocalFileItemHolder)localObject).c.setText(str1 + str2 + FileUtil.a(localFileInfo.a()));
-              ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_Int = paramInt;
-            }
+            paramView = localView1;
+            localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
           }
+          paramView = localView1;
+          String str1 = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).formatNewRefreshTime(localFileInfo.b());
+          paramView = localView1;
+          String str2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.getString(2131692346);
+          paramView = localView1;
+          TextView localTextView = localLocalFileItemHolder.c;
+          paramView = localView1;
+          StringBuilder localStringBuilder = new StringBuilder();
+          paramView = localView1;
+          localStringBuilder.append(str1);
+          paramView = localView1;
+          localStringBuilder.append(str2);
+          paramView = localView1;
+          localStringBuilder.append(FileUtil.a(localFileInfo.a()));
+          paramView = localView1;
+          localTextView.setText(localStringBuilder.toString());
+          paramView = localView1;
+          localLocalFileItemHolder.jdField_a_of_type_Int = paramInt;
         }
-        catch (Exception localException1)
-        {
-          localException1.printStackTrace();
-        }
-        localException1.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        localView2 = paramView;
+      }
+      paramView = localView2;
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView2;
   }
   
   public int getViewTypeCount()
@@ -159,7 +187,7 @@ public class LocalFileAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.LocalFileAdapter
  * JD-Core Version:    0.7.0.1
  */

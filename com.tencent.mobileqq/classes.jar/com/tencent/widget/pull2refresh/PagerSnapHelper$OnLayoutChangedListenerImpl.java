@@ -20,7 +20,8 @@ class PagerSnapHelper$OnLayoutChangedListenerImpl
       if (QLog.isColorLevel()) {
         QLog.d("PagerSnapHelper", 2, "onLayoutChange: ");
       }
-      paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper.a(PagerSnapHelper.a(this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper));
+      paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper;
+      paramView = paramView.a(PagerSnapHelper.a(paramView));
       if ((!this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper.a(paramView)) || (this.jdField_a_of_type_Boolean)) {
         PagerSnapHelper.a(this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper, paramView, this.jdField_a_of_type_Boolean);
       }
@@ -30,7 +31,7 @@ class PagerSnapHelper$OnLayoutChangedListenerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.PagerSnapHelper.OnLayoutChangedListenerImpl
  * JD-Core Version:    0.7.0.1
  */

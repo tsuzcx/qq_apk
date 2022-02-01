@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<inset android:insetLeft="16.0dip" android:insetRight="16.0dip" android:insetTop="16.0dip" android:insetBottom="16.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="#ffdedfe0" />
-            <corners android:radius="2.0dip" android:topLeftRadius="8.0dip" android:topRightRadius="8.0dip" android:bottomLeftRadius="0.0dip" android:bottomRightRadius="0.0dip" />
-        </shape>
-    </item>
-</layer-list>
+    <shape android:shape="rectangle">
+        <corners android:radius="@dimen/b_r" />
+        <solid android:color="@android:color/white" />
+    </shape>
+</inset>

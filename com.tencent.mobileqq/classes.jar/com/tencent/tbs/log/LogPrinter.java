@@ -8,7 +8,7 @@ public abstract interface LogPrinter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.log.LogPrinter
  * JD-Core Version:    0.7.0.1
  */

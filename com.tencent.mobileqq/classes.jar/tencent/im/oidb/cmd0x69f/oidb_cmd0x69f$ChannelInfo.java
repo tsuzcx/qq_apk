@@ -41,6 +41,7 @@ public final class oidb_cmd0x69f$ChannelInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -49,12 +50,12 @@ public final class oidb_cmd0x69f$ChannelInfo
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 66, 72, 80, 90, 96, 106, 114, 120, 130, 136, 144, 154, 162, 168, 176, 186, 192 }, new String[] { "uint32_channel_id", "bytes_channel_name", "uint32_channel_type", "uint32_is_first_req", "rpt_child_channel_list", "uint32_frame_color", "uint32_fonts_color", "bytes_channel_jump_url", "uint32_bold_font", "uint32_show_icon", "bytes_ark_config", "enum_channel_cover_style", "bytes_channel_cover_wording", "bytes_channel_cover_picurl", "uint64_channel_cover_article_id", "bytes_channel_cover_spec", "uint32_is_followed", "enum_column_type", "msg_rich_tips", "bytes_icon_url", "uint32_is_topic", "uint32_is_external_expose", "bytes_is_external_bg_url", "uint32_has_recommend" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro7, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro8, Integer.valueOf(0) }, ChannelInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 66, 72, 80, 90, 96, 106, 114, 120, 130, 136, 144, 154, 162, 168, 176, 186, 192 }, new String[] { "uint32_channel_id", "bytes_channel_name", "uint32_channel_type", "uint32_is_first_req", "rpt_child_channel_list", "uint32_frame_color", "uint32_fonts_color", "bytes_channel_jump_url", "uint32_bold_font", "uint32_show_icon", "bytes_ark_config", "enum_channel_cover_style", "bytes_channel_cover_wording", "bytes_channel_cover_picurl", "uint64_channel_cover_article_id", "bytes_channel_cover_spec", "uint32_is_followed", "enum_column_type", "msg_rich_tips", "bytes_icon_url", "uint32_is_topic", "uint32_is_external_expose", "bytes_is_external_bg_url", "uint32_has_recommend" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localInteger, null, localInteger, localInteger, localByteStringMicro2, localInteger, localInteger, localByteStringMicro3, localInteger, localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, localInteger, localInteger, null, localByteStringMicro7, localInteger, localInteger, localByteStringMicro8, localInteger }, ChannelInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x69f.oidb_cmd0x69f.ChannelInfo
  * JD-Core Version:    0.7.0.1
  */

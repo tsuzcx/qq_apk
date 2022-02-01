@@ -1,14 +1,14 @@
 package com.tencent.imcore.message.ext.codec.routingtype;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.core.codec.RoutingType;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import msf.msgsvc.msg_svc.PubGroupTmp;
 import msf.msgsvc.msg_svc.RoutingHead;
 
 public class OpenGrpTmpRoutingType
-  implements RoutingType
+  implements RoutingType<AppInterface>
 {
   public int a()
   {
@@ -20,12 +20,12 @@ public class OpenGrpTmpRoutingType
     return false;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
-    paramQQAppInterface = new msg_svc.PubGroupTmp();
-    paramQQAppInterface.group_uin.set(Long.valueOf(paramMessageRecord.senderuin).longValue());
-    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.pub_group_tmp.set(paramQQAppInterface);
+    paramAppInterface = new msg_svc.PubGroupTmp();
+    paramAppInterface.group_uin.set(Long.valueOf(paramMessageRecord.senderuin).longValue());
+    paramAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.pub_group_tmp.set(paramAppInterface);
     return true;
   }
   
@@ -36,7 +36,7 @@ public class OpenGrpTmpRoutingType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.OpenGrpTmpRoutingType
  * JD-Core Version:    0.7.0.1
  */

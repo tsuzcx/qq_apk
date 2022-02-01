@@ -53,65 +53,59 @@ public class GetGroupCloudStorageRequest
       return null;
     }
     Object localObject1 = new CloudStorage.StGetGroupCloudStorageRsp();
-    for (;;)
+    try
     {
-      JSONObject localJSONObject1;
-      try
+      ((CloudStorage.StGetGroupCloudStorageRsp)localObject1).mergeFrom(paramArrayOfByte);
+      localObject1 = ((CloudStorage.StGetGroupCloudStorageRsp)localObject1).data.get();
+      if (localObject1 != null)
       {
-        ((CloudStorage.StGetGroupCloudStorageRsp)localObject1).mergeFrom(paramArrayOfByte);
-        if (localObject1 == null) {
-          break label318;
-        }
-        localObject1 = ((CloudStorage.StGetGroupCloudStorageRsp)localObject1).data.get();
-        if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-          break label327;
+        if (((List)localObject1).isEmpty()) {
+          return null;
         }
         paramArrayOfByte = new JSONArray();
         localObject1 = ((List)localObject1).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        Object localObject2 = (CloudStorage.StUserGameData)((Iterator)localObject1).next();
-        localJSONObject1 = new JSONObject();
-        localJSONObject1.put("avatarUrl", ((CloudStorage.StUserGameData)localObject2).avatarUrl.get());
-        localJSONObject1.put("nickname", ((CloudStorage.StUserGameData)localObject2).nickname.get());
-        localJSONObject1.put("openid", ((CloudStorage.StUserGameData)localObject2).openid.get());
-        if ((((CloudStorage.StUserGameData)localObject2).KVDataList != null) && (((CloudStorage.StUserGameData)localObject2).KVDataList.size() > 0))
+        while (((Iterator)localObject1).hasNext())
         {
-          Object localObject3 = ((CloudStorage.StUserGameData)localObject2).KVDataList.get();
-          localObject2 = new JSONArray();
-          localObject3 = ((List)localObject3).iterator();
-          if (((Iterator)localObject3).hasNext())
+          Object localObject2 = (CloudStorage.StUserGameData)((Iterator)localObject1).next();
+          JSONObject localJSONObject1 = new JSONObject();
+          localJSONObject1.put("avatarUrl", ((CloudStorage.StUserGameData)localObject2).avatarUrl.get());
+          localJSONObject1.put("nickname", ((CloudStorage.StUserGameData)localObject2).nickname.get());
+          localJSONObject1.put("openid", ((CloudStorage.StUserGameData)localObject2).openid.get());
+          if ((((CloudStorage.StUserGameData)localObject2).KVDataList != null) && (((CloudStorage.StUserGameData)localObject2).KVDataList.size() > 0))
           {
-            CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject3).next();
-            JSONObject localJSONObject2 = new JSONObject();
-            localJSONObject2.put("key", localStKVData.key.get());
-            localJSONObject2.put("value", localStKVData.value.get());
-            ((JSONArray)localObject2).put(localJSONObject2);
-            continue;
+            Object localObject3 = ((CloudStorage.StUserGameData)localObject2).KVDataList.get();
+            localObject2 = new JSONArray();
+            localObject3 = ((List)localObject3).iterator();
+            while (((Iterator)localObject3).hasNext())
+            {
+              CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject3).next();
+              JSONObject localJSONObject2 = new JSONObject();
+              localJSONObject2.put("key", localStKVData.key.get());
+              localJSONObject2.put("value", localStKVData.value.get());
+              ((JSONArray)localObject2).put(localJSONObject2);
+            }
+            localJSONObject1.put("KVDataList", localObject2);
           }
-          localJSONObject1.put("KVDataList", localObject2);
+          paramArrayOfByte.put(localJSONObject1);
         }
+        paramJSONObject.put("data", paramArrayOfByte);
+        return paramJSONObject;
       }
-      catch (Exception paramArrayOfByte)
-      {
-        QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-        return null;
-      }
-      paramArrayOfByte.put(localJSONObject1);
+      return null;
     }
-    paramJSONObject.put("data", paramArrayOfByte);
-    return paramJSONObject;
-    label318:
-    QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
-    return null;
-    label327:
+    catch (Exception paramArrayOfByte)
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("ProtoBufRequest", paramJSONObject.toString());
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetGroupCloudStorageRequest
  * JD-Core Version:    0.7.0.1
  */

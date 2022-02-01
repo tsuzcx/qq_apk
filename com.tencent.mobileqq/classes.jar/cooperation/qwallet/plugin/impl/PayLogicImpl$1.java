@@ -10,9 +10,7 @@ class PayLogicImpl$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 0) {
       return;
     }
     paramDialogInterface.dismiss();
@@ -21,7 +19,7 @@ class PayLogicImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qwallet.plugin.impl.PayLogicImpl.1
  * JD-Core Version:    0.7.0.1
  */

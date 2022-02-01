@@ -12,12 +12,12 @@ import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.app.VideoObserver;
 import com.tencent.av.utils.AVUtil;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.CharacterUtil;
 import com.tencent.av.utils.PhoneStatusTools;
 import com.tencent.av.utils.VideoWifiLock;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
@@ -37,7 +37,7 @@ public class VideoInviteFloatBarUICtr
   int d;
   public boolean d;
   String e = "";
-  String f = "DEVICE_EARPHONE;DEVICE_SPEAKERPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;";
+  String f = "DEVICE_EARPHONE;DEVICE_SPEAKERPHONE;DEVICE_BLUETOOTH_HEADSET;DEVICE_WIRED_HEADSET;";
   
   public VideoInviteFloatBarUICtr(VideoController paramVideoController, VideoAppInterface paramVideoAppInterface, Intent paramIntent)
   {
@@ -53,43 +53,46 @@ public class VideoInviteFloatBarUICtr
   
   private boolean a(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_c_of_type_Int == 1)
+    if ((this.jdField_c_of_type_Int == 1) && (!TextUtils.isEmpty(this.e)))
     {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(this.e))
-      {
-        localObject = new Intent("tencent.video.v2q.ACTION_DEAL_INVITE_TO_ENTER_GROUP_VEDIO");
-        ((Intent)localObject).putExtra("relationId", this.jdField_a_of_type_Long + "");
-        ((Intent)localObject).putExtra("dealResult", paramInt);
-        ((Intent)localObject).putExtra("inviteId", this.e);
-        ((Intent)localObject).putExtra("friendUin", this.jdField_b_of_type_Long);
-        ((Intent)localObject).setPackage(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName());
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast((Intent)localObject);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("VideoInviteFloatBarUICtr", 2, "sendBroadcast, qav_gaudio_join");
-        }
-        if (paramInt != 1) {
-          break label208;
-        }
+      Object localObject = new Intent("tencent.video.v2q.ACTION_DEAL_INVITE_TO_ENTER_GROUP_VEDIO");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("");
+      ((Intent)localObject).putExtra("relationId", localStringBuilder.toString());
+      ((Intent)localObject).putExtra("dealResult", paramInt);
+      ((Intent)localObject).putExtra("inviteId", this.e);
+      ((Intent)localObject).putExtra("friendUin", this.jdField_b_of_type_Long);
+      ((Intent)localObject).setPackage(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName());
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast((Intent)localObject);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("VideoInviteFloatBarUICtr", 2, "sendBroadcast, qav_gaudio_join");
       }
+      if (paramInt == 1) {
+        localObject = "tip_in";
+      } else {
+        localObject = "tip_no";
+      }
+      long l = this.jdField_a_of_type_ComTencentAvVideoController.a().f;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_d_of_type_Int);
+      localStringBuilder.append("");
+      ReportController.b(null, "dc00899", "Grp_video", "", "invite", (String)localObject, 0, 0, String.valueOf(l), localStringBuilder.toString(), "", "");
+      return true;
     }
-    label208:
-    for (Object localObject = "tip_in";; localObject = "tip_no")
-    {
-      ReportController.b(null, "dc00899", "Grp_video", "", "invite", (String)localObject, 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().g), this.jdField_d_of_type_Int + "", "", "");
-      bool1 = true;
-      return bool1;
-    }
+    return false;
   }
   
   public int a(long paramLong, Intent paramIntent)
   {
-    boolean bool = false;
+    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      QLog.w("VideoInviteFloatBarUICtr", 1, "onStartCommand, seq[" + paramLong + "]");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onStartCommand, seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.w("VideoInviteFloatBarUICtr", 1, localStringBuilder.toString());
       AudioHelper.a("VideoInviteFloatBarUICtr.onStartCommand", paramIntent.getExtras());
     }
     this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
@@ -117,8 +120,14 @@ public class VideoInviteFloatBarUICtr
     this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isAudioMode", false);
     this.jdField_b_of_type_Boolean = paramIntent.getBooleanExtra("shutCamera", false);
     this.jdField_c_of_type_Boolean = paramIntent.getBooleanExtra("isDoubleVideoMeeting", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onStartCommand  mIsAudioMode = " + this.jdField_a_of_type_Boolean + ", isDoubleVideoMeeting = " + this.jdField_c_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onStartCommand  mIsAudioMode = ");
+      paramIntent.append(this.jdField_a_of_type_Boolean);
+      paramIntent.append(", isDoubleVideoMeeting = ");
+      paramIntent.append(this.jdField_c_of_type_Boolean);
+      QLog.d("VideoInviteFloatBarUICtr", 2, paramIntent.toString());
     }
     if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
     {
@@ -127,74 +136,81 @@ public class VideoInviteFloatBarUICtr
       }
       a();
     }
-    while (this.jdField_c_of_type_Boolean)
+    else if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("mPeerUin : ");
+      paramIntent.append(this.jdField_c_of_type_JavaLangString);
+      QLog.d("VideoInviteFloatBarUICtr", 2, paramIntent.toString());
+    }
+    if (this.jdField_c_of_type_Boolean)
     {
       paramIntent = SessionMgr.a(100, this.jdField_c_of_type_JavaLangString, new int[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoInviteFloatBarUICtr", 2, "sessionId : " + paramIntent);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sessionId : ");
+        localStringBuilder.append(paramIntent);
+        QLog.d("VideoInviteFloatBarUICtr", 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_ComTencentAvAppSessionInfo = SessionMgr.a().c(paramIntent);
       this.jdField_a_of_type_ComTencentAvAppSessionInfo.a(paramLong, "onStartCommand.1", 4);
-      this.jdField_a_of_type_ComTencentAvAppSessionInfo.e("onStartCommand", true);
-      this.jdField_a_of_type_ComTencentAvAppSessionInfo.ar = true;
+      this.jdField_a_of_type_ComTencentAvAppSessionInfo.f("onStartCommand", true);
+      this.jdField_a_of_type_ComTencentAvAppSessionInfo.af = true;
       this.jdField_a_of_type_ComTencentAvAppSessionInfo.e = true;
-      this.jdField_a_of_type_ComTencentAvAppSessionInfo.N = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_c_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentAvAppSessionInfo.C = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_c_of_type_JavaLangString);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvAppGAudioUIObserver);
       return 2;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoInviteFloatBarUICtr", 2, "mPeerUin : " + this.jdField_c_of_type_JavaLangString);
-      }
     }
     paramIntent = SessionMgr.a(3, this.jdField_c_of_type_JavaLangString, new int[0]);
     this.jdField_a_of_type_ComTencentAvAppSessionInfo = SessionMgr.a().c(paramIntent);
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentAvAppSessionInfo.a(paramLong, "onStartCommand.2", 1);
-      this.jdField_a_of_type_ComTencentAvAppSessionInfo.a(paramLong, false);
+      this.jdField_a_of_type_ComTencentAvAppSessionInfo.b(paramLong, false);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentAvAppSessionInfo.e = true;
-      this.jdField_a_of_type_ComTencentAvAppSessionInfo.N = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_c_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvAppVideoObserver);
-      return 2;
       this.jdField_a_of_type_ComTencentAvAppSessionInfo.a(paramLong, "onStartCommand.3", 2);
-      paramIntent = this.jdField_a_of_type_ComTencentAvAppSessionInfo;
-      if (!this.jdField_b_of_type_Boolean) {
-        bool = true;
-      }
-      paramIntent.a(paramLong, bool);
+      this.jdField_a_of_type_ComTencentAvAppSessionInfo.b(paramLong, this.jdField_b_of_type_Boolean ^ true);
     }
+    this.jdField_a_of_type_ComTencentAvAppSessionInfo.e = true;
+    this.jdField_a_of_type_ComTencentAvAppSessionInfo.C = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_c_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvAppVideoObserver);
+    return 2;
   }
   
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    try
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_ComTencentAvAppGAudioUIObserver);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_ComTencentAvAppVideoObserver);
+      try
+      {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_ComTencentAvAppGAudioUIObserver);
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_ComTencentAvAppVideoObserver);
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDestroy error : ");
+        localStringBuilder.append(localException);
+        QLog.d("VideoInviteFloatBarUICtr", 1, localStringBuilder.toString());
+      }
       if (this.jdField_b_of_type_JavaLangRunnable != null)
       {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
         this.jdField_b_of_type_JavaLangRunnable = null;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("VideoInviteFloatBarUICtr", 1, "onDestroy error : " + localException);
       }
     }
   }
   
   public void a(long paramLong)
   {
-    if (!a())
+    boolean bool = a();
+    int i = 1;
+    if (!bool)
     {
       QLog.d("VideoInviteFloatBarUICtr", 1, "acceptVideoRequest return 1");
       return;
@@ -204,44 +220,40 @@ public class VideoInviteFloatBarUICtr
       QLog.d("VideoInviteFloatBarUICtr", 1, "acceptVideoRequest return 2");
       return;
     }
-    QLog.w("VideoInviteFloatBarUICtr", 1, "acceptVideoRequest, seq[" + paramLong + "], mIsDoubleVideoMeeting[" + this.jdField_c_of_type_Boolean + "]");
-    int j = 1;
-    if (this.jdField_a_of_type_ComTencentAvAppSessionInfo.S) {
-      j = 0;
-    }
-    int i = 1;
-    if (!this.jdField_a_of_type_ComTencentAvAppSessionInfo.N) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("acceptVideoRequest, seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("], mIsDoubleVideoMeeting[");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append("]");
+    QLog.w("VideoInviteFloatBarUICtr", 1, localStringBuilder.toString());
+    bool = this.jdField_a_of_type_ComTencentAvAppSessionInfo.H;
+    if (!this.jdField_a_of_type_ComTencentAvAppSessionInfo.C) {
       i = 4;
     }
-    if (1008 == this.jdField_a_of_type_ComTencentAvAppSessionInfo.j) {
+    if (1008 == this.jdField_a_of_type_ComTencentAvAppSessionInfo.k) {
       i = 4;
     }
-    for (;;)
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, 3, Long.valueOf(this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_c_of_type_JavaLangString).longValue(), null, false);
+    } else {
+      this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_c_of_type_JavaLangString, bool ^ true, i);
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c(HardCodeUtil.a(2131716035));
+    }
+    if (this.jdField_a_of_type_ComTencentAvAppSessionInfo.H)
     {
-      if (this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, 3, Long.valueOf(this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_d_of_type_JavaLangString).longValue(), null, false);
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
-          this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c(HardCodeUtil.a(2131716112));
-        }
-        if (!this.jdField_a_of_type_ComTencentAvAppSessionInfo.S) {
-          break;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X8008B24", "0X8008B24", 0, 0, "", "", "", "");
-        return;
-        this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_d_of_type_JavaLangString, j, i);
-      }
-      ReportController.b(null, "CliOper", "", "", "0X8008B27", "0X8008B27", 0, 0, "", "", "", "");
+      ReportController.b(null, "CliOper", "", "", "0X8008B24", "0X8008B24", 0, 0, "", "", "", "");
       return;
     }
+    ReportController.b(null, "CliOper", "", "", "0X8008B27", "0X8008B27", 0, 0, "", "", "", "");
   }
   
   void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
-    this.jdField_a_of_type_ComTencentAvVideoController.b();
+    this.jdField_a_of_type_ComTencentAvVideoController.d();
   }
   
   protected boolean a()
@@ -249,19 +261,29 @@ public class VideoInviteFloatBarUICtr
     if (this.jdField_a_of_type_ComTencentAvUtilsVideoWifiLock == null) {
       this.jdField_a_of_type_ComTencentAvUtilsVideoWifiLock = new VideoWifiLock(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext(), 1, "video wifi lock");
     }
-    if ((PhoneStatusTools.f(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext())) && (this.jdField_a_of_type_ComTencentAvUtilsVideoWifiLock != null)) {
-      this.jdField_a_of_type_ComTencentAvUtilsVideoWifiLock.a();
+    if (PhoneStatusTools.f(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext()))
+    {
+      VideoWifiLock localVideoWifiLock = this.jdField_a_of_type_ComTencentAvUtilsVideoWifiLock;
+      if (localVideoWifiLock != null) {
+        localVideoWifiLock.a();
+      }
     }
     return true;
   }
   
   public void b(long paramLong)
   {
-    QLog.w("VideoInviteFloatBarUICtr", 1, "refuseVideoRequest, seq[" + paramLong + "]");
-    if (this.jdField_a_of_type_ComTencentAvAppSessionInfo.S) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("refuseVideoRequest, seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w("VideoInviteFloatBarUICtr", 1, localStringBuilder.toString());
+    if (this.jdField_a_of_type_ComTencentAvAppSessionInfo.H) {
       ReportController.b(null, "CliOper", "", "", "0X8008B25", "0X8008B25", 0, 0, "", "", "", "");
+    } else {
+      ReportController.b(null, "CliOper", "", "", "0X8008B28", "0X8008B28", 0, 0, "", "", "", "");
     }
-    while (this.jdField_c_of_type_Boolean)
+    if (this.jdField_c_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_c_of_type_JavaLangString, 1, true);
       long l = CharacterUtil.a(this.jdField_c_of_type_JavaLangString);
@@ -269,7 +291,6 @@ public class VideoInviteFloatBarUICtr
       this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, l, 1);
       a();
       return;
-      ReportController.b(null, "CliOper", "", "", "0X8008B28", "0X8008B28", 0, 0, "", "", "", "");
     }
     this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_c_of_type_JavaLangString, 1, false);
     this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_c_of_type_JavaLangString, 252);
@@ -299,7 +320,11 @@ public class VideoInviteFloatBarUICtr
   
   public void c(long paramLong)
   {
-    QLog.w("VideoInviteFloatBarUICtr", 1, "ignoreGAInvite, seq[" + paramLong + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ignoreGAInvite, seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w("VideoInviteFloatBarUICtr", 1, localStringBuilder.toString());
     ReportController.b(null, "CliOper", "", "", "0X8008B2C", "0X8008B2C", 0, 0, "", "", "", "");
     if (!a(0)) {
       this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_c_of_type_Int, this.jdField_a_of_type_Long);
@@ -322,18 +347,22 @@ public class VideoInviteFloatBarUICtr
   
   public void d(long paramLong)
   {
-    QLog.w("VideoInviteFloatBarUICtr", 1, "acceptGAudioChat, seq[" + paramLong + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("acceptGAudioChat, seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w("VideoInviteFloatBarUICtr", 1, localStringBuilder.toString());
     if (this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c(HardCodeUtil.a(2131716113));
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c(HardCodeUtil.a(2131716036));
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentAvAppSessionInfo.g, this.jdField_a_of_type_ArrayOfLong, false);
+    this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentAvAppSessionInfo.f, this.jdField_a_of_type_ArrayOfLong, false);
     ReportController.b(null, "CliOper", "", "", "0X8008B2B", "0X8008B2B", 0, 0, "", "", "", "");
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteFloatBarUICtr
  * JD-Core Version:    0.7.0.1
  */

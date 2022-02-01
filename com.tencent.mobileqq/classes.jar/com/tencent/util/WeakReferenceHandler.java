@@ -26,28 +26,37 @@ public class WeakReferenceHandler
   public void handleMessage(Message paramMessage)
   {
     Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
+    if (localCallback != null)
+    {
       localCallback.handleMessage(paramMessage);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("WeakReferenceHandler", 2, "handleMessage cb is null! handler = " + this);
+    if (QLog.isColorLevel())
+    {
+      paramMessage = new StringBuilder();
+      paramMessage.append("handleMessage cb is null! handler = ");
+      paramMessage.append(this);
+      QLog.d("WeakReferenceHandler", 2, paramMessage.toString());
+    }
   }
   
   public String toString()
   {
     Object localObject = (Handler.Callback)this.a.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("WH");
-    if (localObject != null) {}
-    for (localObject = localObject.toString();; localObject = "None callback") {
-      return (String)localObject;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WH");
+    if (localObject != null) {
+      localObject = localObject.toString();
+    } else {
+      localObject = "None callback";
     }
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.WeakReferenceHandler
  * JD-Core Version:    0.7.0.1
  */

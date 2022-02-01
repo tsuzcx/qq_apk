@@ -17,23 +17,33 @@ public class AccessibilityUtil
   @TargetApi(14)
   public static void a(Context paramContext)
   {
-    try
+    for (;;)
     {
-      paramContext = (AccessibilityManager)paramContext.getSystemService("accessibility");
-      boolean bool1 = paramContext.isEnabled();
-      boolean bool2 = paramContext.isTouchExplorationEnabled();
-      if ((bool1) && (bool2)) {}
-      for (bool1 = true;; bool1 = false)
+      try
       {
-        AppSetting.d = bool1;
-        if (QLog.isColorLevel()) {
-          QLog.d("AccessibilityUtil", 2, "setTalkbackSwitch: " + AppSetting.d);
+        paramContext = (AccessibilityManager)paramContext.getSystemService("accessibility");
+        bool1 = paramContext.isEnabled();
+        boolean bool2 = paramContext.isTouchExplorationEnabled();
+        if ((bool1) && (bool2))
+        {
+          bool1 = true;
+          AppSetting.d = bool1;
+          if (QLog.isColorLevel())
+          {
+            paramContext = new StringBuilder();
+            paramContext.append("setTalkbackSwitch: ");
+            paramContext.append(AppSetting.d);
+            QLog.d("AccessibilityUtil", 2, paramContext.toString());
+          }
+          return;
         }
+      }
+      catch (Throwable paramContext)
+      {
         return;
       }
-      return;
+      boolean bool1 = false;
     }
-    catch (Throwable paramContext) {}
   }
   
   @TargetApi(14)
@@ -73,14 +83,13 @@ public class AccessibilityUtil
   {
     if ((AppSetting.d) && (Build.VERSION.SDK_INT >= 16))
     {
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         ViewCompat.setImportantForAccessibility(paramView, 1);
+        return;
       }
+      ViewCompat.setImportantForAccessibility(paramView, 2);
     }
-    else {
-      return;
-    }
-    ViewCompat.setImportantForAccessibility(paramView, 2);
   }
   
   @TargetApi(14)
@@ -138,49 +147,48 @@ public class AccessibilityUtil
   @TargetApi(16)
   public static void c(View paramView)
   {
-    int i = 0;
-    if (paramView == null) {
+    if (paramView == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.w("AccessibilityUtil", 2, "clearFocus view can't be null");
       }
-    }
-    label122:
-    for (;;)
-    {
       return;
-      if ((AppSetting.d) && (Build.VERSION.SDK_INT > 15))
+    }
+    if ((AppSetting.d) && (Build.VERSION.SDK_INT > 15))
+    {
+      Object localObject1 = paramView.getClass().getMethods();
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
       {
-        Method[] arrayOfMethod = paramView.getClass().getMethods();
-        int j = arrayOfMethod.length;
-        for (;;)
+        Object localObject2 = localObject1[i];
+        if (localObject2.getName().equals("clearAccessibilityFocus"))
         {
-          if (i >= j) {
-            break label122;
-          }
-          Method localMethod = arrayOfMethod[i];
-          if (localMethod.getName().equals("clearAccessibilityFocus"))
+          try
           {
-            try
-            {
-              localMethod.invoke(paramView, new Object[0]);
-              return;
-            }
-            catch (Exception paramView) {}
+            localObject2.invoke(paramView, new Object[0]);
+            return;
+          }
+          catch (Exception paramView)
+          {
             if (!QLog.isColorLevel()) {
               break;
             }
-            QLog.w("AccessibilityUtil", 2, "clearFocus: " + paramView.toString());
-            return;
           }
-          i += 1;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("clearFocus: ");
+          ((StringBuilder)localObject1).append(paramView.toString());
+          QLog.w("AccessibilityUtil", 2, ((StringBuilder)localObject1).toString());
+          return;
         }
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.AccessibilityUtil
  * JD-Core Version:    0.7.0.1
  */

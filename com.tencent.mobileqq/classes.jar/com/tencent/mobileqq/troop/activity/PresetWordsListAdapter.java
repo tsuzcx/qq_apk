@@ -35,7 +35,7 @@ public class PresetWordsListAdapter
   {
     if (paramInt == 0)
     {
-      if (paramString.equals(paramViewGroup.getContext().getString(2131720271)))
+      if (paramString.equals(paramViewGroup.getContext().getString(2131720009)))
       {
         paramViewHolder.b.setVisibility(8);
         paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorUtils.a("#4D94FF"));
@@ -48,23 +48,21 @@ public class PresetWordsListAdapter
         }
         paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setClickable(true);
         paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramViewHolder);
+        return;
       }
+      paramViewHolder.b.setVisibility(0);
+      paramViewHolder.b.setOnClickListener(paramViewHolder);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewGroup.getContext().getResources().getColorStateList(2131167061));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTag(TroopNickRuleFragment.g);
+      paramString = (LinearLayout.LayoutParams)paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+      if (paramString != null)
+      {
+        paramString.rightMargin = ViewUtils.b(7.0F);
+        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramString);
+      }
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(null);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
     }
-    else {
-      return;
-    }
-    paramViewHolder.b.setVisibility(0);
-    paramViewHolder.b.setOnClickListener(paramViewHolder);
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewGroup.getContext().getResources().getColorStateList(2131167038));
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTag(TroopNickRuleFragment.g);
-    paramString = (LinearLayout.LayoutParams)paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    if (paramString != null)
-    {
-      paramString.rightMargin = ViewUtils.b(7.0F);
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramString);
-    }
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(null);
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
   }
   
   public String a(int paramInt)
@@ -113,59 +111,56 @@ public class PresetWordsListAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     String str = a(paramInt);
-    View localView;
-    Object localObject;
-    if (TextUtils.isEmpty(str))
+    if (!TextUtils.isEmpty(str))
     {
-      localView = paramView;
-      localObject = paramView;
-      paramView = localView;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-    }
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560817, null, false);
-      if (this.b) {
-        localView.setBackgroundDrawable(paramViewGroup.getContext().getResources().getDrawable(2130846543));
-      }
-      localObject = new PresetWordsListAdapter.ViewHolder(this);
-      ((PresetWordsListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131373439));
-      ((PresetWordsListAdapter.ViewHolder)localObject).b = ((TextView)localView.findViewById(2131373440));
-      ((PresetWordsListAdapter.ViewHolder)localObject).b.setTag(TroopNickRuleFragment.e);
-      localView.setTag(localObject);
-      if (this.c)
+      View localView;
+      Object localObject;
+      if (paramView == null)
       {
-        ((LinearLayout.LayoutParams)((PresetWordsListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.getLayoutParams()).setMargins(30, 15, 30, 15);
-        ((PresetWordsListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)localObject);
-        ((PresetWordsListAdapter.ViewHolder)localObject).b.setVisibility(8);
+        localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560690, null, false);
+        if (this.b) {
+          localView.setBackgroundDrawable(paramViewGroup.getContext().getResources().getDrawable(2130846418));
+        }
+        localObject = new PresetWordsListAdapter.ViewHolder(this);
+        ((PresetWordsListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131373018));
+        ((PresetWordsListAdapter.ViewHolder)localObject).b = ((TextView)localView.findViewById(2131373019));
+        ((PresetWordsListAdapter.ViewHolder)localObject).b.setTag(TroopNickRuleFragment.e);
+        localView.setTag(localObject);
+        if (this.c)
+        {
+          ((LinearLayout.LayoutParams)((PresetWordsListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.getLayoutParams()).setMargins(30, 15, 30, 15);
+          ((PresetWordsListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)localObject);
+          ((PresetWordsListAdapter.ViewHolder)localObject).b.setVisibility(8);
+        }
+        else
+        {
+          ((PresetWordsListAdapter.ViewHolder)localObject).b.setOnClickListener((View.OnClickListener)localObject);
+          a(paramInt, (PresetWordsListAdapter.ViewHolder)localObject, str, paramViewGroup);
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        PresetWordsListAdapter.ViewHolder localViewHolder = (PresetWordsListAdapter.ViewHolder)paramView.getTag();
+        localObject = localViewHolder;
+        localView = paramView;
+        if (!this.c)
+        {
+          a(paramInt, localViewHolder, str, paramViewGroup);
+          localView = paramView;
+          localObject = localViewHolder;
+        }
+      }
       ((PresetWordsListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(str);
       ((PresetWordsListAdapter.ViewHolder)localObject).jdField_a_of_type_Int = paramInt;
       paramView = localView;
-      localObject = localView;
-      break;
-      ((PresetWordsListAdapter.ViewHolder)localObject).b.setOnClickListener((View.OnClickListener)localObject);
-      a(paramInt, (PresetWordsListAdapter.ViewHolder)localObject, str, paramViewGroup);
-      continue;
-      PresetWordsListAdapter.ViewHolder localViewHolder = (PresetWordsListAdapter.ViewHolder)paramView.getTag();
-      localObject = localViewHolder;
-      localView = paramView;
-      if (!this.c)
-      {
-        a(paramInt, localViewHolder, str, paramViewGroup);
-        localObject = localViewHolder;
-        localView = paramView;
-      }
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.PresetWordsListAdapter
  * JD-Core Version:    0.7.0.1
  */

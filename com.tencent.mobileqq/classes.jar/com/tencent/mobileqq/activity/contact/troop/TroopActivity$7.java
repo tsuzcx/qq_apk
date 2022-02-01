@@ -1,80 +1,56 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.RedDotTextView;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
-import com.tencent.util.MqqWeakReferenceHandler;
+import com.tencent.mobileqq.troop.troopcreate.api.ITroopCreateService;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
+import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
 
 class TroopActivity$7
-  implements TabBarView.OnTabChangeListener
+  implements PopupMenuDialog.OnClickActionListener
 {
   TroopActivity$7(TroopActivity paramTroopActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClickAction(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b();
-    }
-    if (this.a.b != 2)
+    int i = paramMenuItem.id;
+    if (i != 0)
     {
-      switch (paramInt2)
+      if (i != 1)
       {
-      default: 
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-      }
-      for (;;)
-      {
-        this.a.a(this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1234);
-        TroopActivity.a(this.a, paramInt2);
+        if (i != 2)
+        {
+          if (i != 3) {
+            return;
+          }
+          TroopActivity.a(this.a);
+          return;
+        }
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_msgset", 0, 0, "", "", "", "");
+        ReportController.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_setting", 0, 0, "", "", "", "");
+        paramMenuItem = new Intent(this.a, TroopAssisSettingActivity.class);
+        this.a.startActivity(paramMenuItem);
         return;
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-        continue;
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8006621", "0X8006621", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 1;
       }
+      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_join", 0, 0, "", "", "", "");
+      ReportController.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_join", 47, 0, "", "", "", "");
+      AddContactsActivity.a(this.a, 1);
+      return;
     }
-    switch (paramInt2)
-    {
-    default: 
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {
-        break;
-      }
-    }
-    for (String str = "0";; str = "1")
-    {
-      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
-      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
-      this.a.jdField_a_of_type_Int = 1;
-      break;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {}
-      for (str = "0";; str = "1")
-      {
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 1;
-        break;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {}
-      for (str = "0";; str = "1")
-      {
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-        break;
-      }
+    ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_create", 0, 0, "", "", "", "");
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8006622", "0X8006622", 0, 0, "", "", "", "");
+    paramMenuItem = (ITroopCreateService)this.a.app.getRuntimeService(ITroopCreateService.class, "");
+    if (paramMenuItem != null) {
+      paramMenuItem.startCreateTroopSession(this.a, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopActivity.7
  * JD-Core Version:    0.7.0.1
  */

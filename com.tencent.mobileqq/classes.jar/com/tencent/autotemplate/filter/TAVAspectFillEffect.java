@@ -41,7 +41,10 @@ public class TAVAspectFillEffect
   @NonNull
   public String effectId()
   {
-    return "TAVAspectFillEffect" + hashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVAspectFillEffect");
+    localStringBuilder.append(hashCode());
+    return localStringBuilder.toString();
   }
   
   public String getBgCIColor()

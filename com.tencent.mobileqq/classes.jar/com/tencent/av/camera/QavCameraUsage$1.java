@@ -10,12 +10,13 @@ final class QavCameraUsage$1
   
   public void run()
   {
-    QQToast.a(this.a, this.a.getString(2131695403), 0).a();
+    Context localContext = this.a;
+    QQToast.a(localContext, localContext.getString(2131690261), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.camera.QavCameraUsage.1
  * JD-Core Version:    0.7.0.1
  */

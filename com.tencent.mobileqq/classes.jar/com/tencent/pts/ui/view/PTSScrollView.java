@@ -51,12 +51,13 @@ public class PTSScrollView
   
   public void addChild(View paramView)
   {
-    if ((this.container == null) || (paramView == null))
+    FrameLayout localFrameLayout = this.container;
+    if ((localFrameLayout != null) && (paramView != null))
     {
-      PTSLog.e("PTSScrollView", "[addChild] failed, container or view is null.");
+      localFrameLayout.addView(paramView);
       return;
     }
-    this.container.addView(paramView);
+    PTSLog.e("PTSScrollView", "[addChild] failed, container or view is null.");
   }
   
   public void draw(Canvas paramCanvas)
@@ -76,13 +77,13 @@ public class PTSScrollView
     clearLastVisibleChildIndexList();
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     clearLastVisibleChildIndexList();
   }
   
-  public void onVisibilityChanged(@NonNull View paramView, int paramInt)
+  protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
     if (paramInt != 0) {
@@ -103,17 +104,18 @@ public class PTSScrollView
   
   public void removeChild(View paramView)
   {
-    if ((this.container == null) || (paramView == null))
+    FrameLayout localFrameLayout = this.container;
+    if ((localFrameLayout != null) && (paramView != null))
     {
-      PTSLog.e("PTSScrollView", "[removeChild] failed, container or view is null.");
+      localFrameLayout.removeView(paramView);
       return;
     }
-    this.container.removeView(paramView);
+    PTSLog.e("PTSScrollView", "[removeChild] failed, container or view is null.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSScrollView
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,16 @@ import com.tencent.qqmini.sdk.core.proxy.service.NavigationProxyDefault;
 import com.tencent.qqmini.sdk.core.proxy.service.RequestProxyDefault;
 import com.tencent.qqmini.sdk.core.proxy.service.RequestStrategyProxyDefault;
 import com.tencent.qqmini.sdk.core.proxy.service.ShareProxyDefault;
+import com.tencent.qqmini.sdk.core.proxy.service.WXLivePlayerDefaultProxy;
+import com.tencent.qqmini.sdk.core.proxy.service.WXLivePusherDefaultProxy;
 import com.tencent.qqmini.sdk.core.proxy.service.WnsConfigProxyDefault;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ExternalElementProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.FavoritesProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.IMiniAppNotifyProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IWXLivePlayerProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IWXLivePusherProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.KingCardProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.LogProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppCacheProxy;
@@ -45,11 +49,13 @@ public final class SdkProxyServiceScope
     PROXY_SERVICES.put(DownloaderProxy.class, DownloaderProxyDefault.class);
     PROXY_SERVICES.put(WnsConfigProxy.class, WnsConfigProxyDefault.class);
     PROXY_SERVICES.put(KingCardProxy.class, KingCardProxyDefault.class);
-    PROXY_SERVICES.put(ChannelProxy.class, ChannelProxyDefault.class);
     PROXY_SERVICES.put(IMiniAppNotifyProxy.class, MiniAppNotifyProxyDefault.class);
+    PROXY_SERVICES.put(ChannelProxy.class, ChannelProxyDefault.class);
     PROXY_SERVICES.put(ShareProxy.class, ShareProxyDefault.class);
+    PROXY_SERVICES.put(IWXLivePusherProxy.class, WXLivePusherDefaultProxy.class);
     PROXY_SERVICES.put(MiniAppCacheProxy.class, MiniAppCacheProxyDefault.class);
     PROXY_SERVICES.put(MiniAppProxy.class, MiniAppProxyDefault.class);
+    PROXY_SERVICES.put(IWXLivePlayerProxy.class, WXLivePlayerDefaultProxy.class);
     PROXY_SERVICES.put(ExternalElementProxy.class, ExternalElementProxyDefault.class);
     PROXY_SERVICES.put(LogProxy.class, LogProxyDefault.class);
     PROXY_SERVICES.put(RequestStrategyProxy.class, RequestStrategyProxyDefault.class);
@@ -58,7 +64,7 @@ public final class SdkProxyServiceScope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.SdkProxyServiceScope
  * JD-Core Version:    0.7.0.1
  */

@@ -37,46 +37,35 @@ public final class WSLyricSticker$Companion
     localSubtitleModel.setMinScale(paramTAVSticker.getMinScale());
     localSubtitleModel.setMaxScale(paramTAVSticker.getMaxScale());
     String str = paramTAVSticker.getExtraBundle().getString("extra_lyric_effect_id");
-    if (str != null)
-    {
-      localSubtitleModel.setEffectId(str);
-      str = paramTAVSticker.getExtraBundle().getString("extra_lyric_effect_path");
-      if (str == null) {
-        break label282;
-      }
-      label143:
-      localSubtitleModel.setEffectPath(str);
-      str = paramTAVSticker.getExtraBundle().getString("extra_lyric");
-      if (str == null) {
-        break label288;
-      }
-    }
-    for (;;)
-    {
-      localSubtitleModel.setLyric(str);
-      localSubtitleModel.setLyricFormatIsQRC(paramTAVSticker.getExtraBundle().getBoolean("extra_lyric_format_is_qrc"));
-      localSubtitleModel.setMusicStartTime(paramTAVSticker.getExtraBundle().getInt("extra_music_start"));
-      localSubtitleModel.setLoopStart(paramTAVSticker.getExtraBundle().getLong("extra_loop_start"));
-      localSubtitleModel.setLoopEnd(paramTAVSticker.getExtraBundle().getLong("extra_loop_end"));
-      localSubtitleModel.setLoopType(paramTAVSticker.getExtraBundle().getInt("extra_loop_type"));
-      paramTAVSticker = paramTAVSticker.getStickerTextItems();
-      Intrinsics.checkExpressionValueIsNotNull(paramTAVSticker, "sticker.stickerTextItems");
-      paramTAVSticker = (TAVStickerTextItem)CollectionsKt.firstOrNull((List)paramTAVSticker);
-      if (paramTAVSticker != null)
-      {
-        paramTAVSticker = paramTAVSticker.getFontPath();
-        Intrinsics.checkExpressionValueIsNotNull(paramTAVSticker, "it.fontPath");
-        localSubtitleModel.setFontPath(paramTAVSticker);
-      }
-      return localSubtitleModel;
-      str = "";
-      break;
-      label282:
-      str = "";
-      break label143;
-      label288:
+    if (str == null) {
       str = "";
     }
+    localSubtitleModel.setEffectId(str);
+    str = paramTAVSticker.getExtraBundle().getString("extra_lyric_effect_path");
+    if (str == null) {
+      str = "";
+    }
+    localSubtitleModel.setEffectPath(str);
+    str = paramTAVSticker.getExtraBundle().getString("extra_lyric");
+    if (str == null) {
+      str = "";
+    }
+    localSubtitleModel.setLyric(str);
+    localSubtitleModel.setLyricFormatIsQRC(paramTAVSticker.getExtraBundle().getBoolean("extra_lyric_format_is_qrc"));
+    localSubtitleModel.setMusicStartTime(paramTAVSticker.getExtraBundle().getInt("extra_music_start"));
+    localSubtitleModel.setLoopStart(paramTAVSticker.getExtraBundle().getLong("extra_loop_start"));
+    localSubtitleModel.setLoopEnd(paramTAVSticker.getExtraBundle().getLong("extra_loop_end"));
+    localSubtitleModel.setLoopType(paramTAVSticker.getExtraBundle().getInt("extra_loop_type"));
+    paramTAVSticker = paramTAVSticker.getStickerTextItems();
+    Intrinsics.checkExpressionValueIsNotNull(paramTAVSticker, "sticker.stickerTextItems");
+    paramTAVSticker = (TAVStickerTextItem)CollectionsKt.firstOrNull((List)paramTAVSticker);
+    if (paramTAVSticker != null)
+    {
+      paramTAVSticker = paramTAVSticker.getFontPath();
+      Intrinsics.checkExpressionValueIsNotNull(paramTAVSticker, "it.fontPath");
+      localSubtitleModel.setFontPath(paramTAVSticker);
+    }
+    return localSubtitleModel;
   }
   
   @Nullable
@@ -84,18 +73,16 @@ public final class WSLyricSticker$Companion
   {
     Intrinsics.checkParameterIsNotNull(paramMusicMaterialMetaDataBean, "data");
     String str = paramMusicMaterialMetaDataBean.lyricFormat;
-    if (str != null) {}
-    for (;;)
-    {
-      boolean bool = StringsKt.equals(str, "QRC", true);
-      return LyricParseHelper.parseTextToLyric(paramMusicMaterialMetaDataBean.lyric, bool);
+    if (str == null) {
       str = "";
     }
+    boolean bool = StringsKt.equals(str, "QRC", true);
+    return LyricParseHelper.parseTextToLyric(paramMusicMaterialMetaDataBean.lyric, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.music.WSLyricSticker.Companion
  * JD-Core Version:    0.7.0.1
  */

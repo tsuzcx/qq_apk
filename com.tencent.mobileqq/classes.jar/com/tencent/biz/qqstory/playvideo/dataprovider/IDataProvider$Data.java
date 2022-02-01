@@ -20,12 +20,26 @@ public class IDataProvider$Data
   
   public String toString()
   {
-    return "Data{upErrorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", isUpEnd=" + this.jdField_a_of_type_Boolean + ", mGroupInfoList=" + this.jdField_a_of_type_JavaUtilList + ", isDownEnd=" + this.jdField_b_of_type_Boolean + ", isFastData=" + this.c + ", downErrorMessage=" + this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Data{upErrorMessage=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    localStringBuilder.append(", isUpEnd=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mGroupInfoList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(", isDownEnd=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", isFastData=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", downErrorMessage=");
+    localStringBuilder.append(this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.Data
  * JD-Core Version:    0.7.0.1
  */

@@ -32,12 +32,13 @@ public final class SosoCell
     this.mLac = paramParcel.readInt();
     this.mCellId = paramParcel.readInt();
     this.mRss = paramParcel.readInt();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mIsMainCell = bool;
-      return;
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mIsMainCell = bool;
   }
   
   public int compareTo(SosoCell paramSosoCell)
@@ -57,17 +58,12 @@ public final class SosoCell
     paramParcel.writeInt(this.mLac);
     paramParcel.writeInt(this.mCellId);
     paramParcel.writeInt(this.mRss);
-    if (this.mIsMainCell) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      return;
-    }
+    paramParcel.writeByte((byte)this.mIsMainCell);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.data.SosoCell
  * JD-Core Version:    0.7.0.1
  */

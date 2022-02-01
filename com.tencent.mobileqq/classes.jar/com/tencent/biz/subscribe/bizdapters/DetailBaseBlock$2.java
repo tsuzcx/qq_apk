@@ -37,14 +37,19 @@ class DetailBaseBlock$2
     this.a.d();
     boolean bool = DetailBaseBlock.a(this.a, paramLong, localStFeed);
     String str = DetailBaseBlock.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append("isInterceptRspByFeedStatus ").append(bool).append(",status ");
-    if (localStFeed == null) {}
-    for (Object localObject = "none";; localObject = Integer.valueOf(localStFeed.status.get()))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isInterceptRspByFeedStatus ");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(",status ");
+    if (localStFeed == null) {
+      localObject = "none";
+    } else {
+      localObject = Integer.valueOf(localStFeed.status.get());
+    }
+    localStringBuilder.append(localObject);
+    QLog.i(str, 2, localStringBuilder.toString());
+    if (bool)
     {
-      QLog.i(str, 2, localObject);
-      if (!bool) {
-        break;
-      }
       this.a.a(paramLong, paramString);
       return;
     }
@@ -53,17 +58,28 @@ class DetailBaseBlock$2
     DetailBaseBlock.a(this.a, paramStGetFeedDetailRsp.detailUrl.get());
     DetailBaseBlock.b(this.a, paramStGetFeedDetailRsp.share);
     this.a.a(localStFeed);
-    QLog.i(DetailBaseBlock.jdField_a_of_type_JavaLangString, 1, "isFinish:" + paramStGetFeedDetailRsp.isFinish.get() + " | recommend feeds size:" + paramStGetFeedDetailRsp.vecRcmdFeed.get().size());
+    paramString = DetailBaseBlock.jdField_a_of_type_JavaLangString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("isFinish:");
+    ((StringBuilder)localObject).append(paramStGetFeedDetailRsp.isFinish.get());
+    ((StringBuilder)localObject).append(" | recommend feeds size:");
+    ((StringBuilder)localObject).append(paramStGetFeedDetailRsp.vecRcmdFeed.get().size());
+    QLog.i(paramString, 1, ((StringBuilder)localObject).toString());
     this.a.a(paramStGetFeedDetailRsp, paramBoolean);
-    if (!paramBoolean) {
-      VSReporter.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + SubscribeShareHelper.a(this.a.a()), "exp", 0, 0, new String[] { "", "", localStFeed.id.get(), localStFeed.title.get() });
+    if (!paramBoolean)
+    {
+      paramStGetFeedDetailRsp = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+      paramString = new StringBuilder();
+      paramString.append("auth_");
+      paramString.append(SubscribeShareHelper.a(this.a.a()));
+      VSReporter.a(paramStGetFeedDetailRsp, paramString.toString(), "exp", 0, 0, new String[] { "", "", localStFeed.id.get(), localStFeed.title.get() });
     }
     this.a.d(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.2
  * JD-Core Version:    0.7.0.1
  */

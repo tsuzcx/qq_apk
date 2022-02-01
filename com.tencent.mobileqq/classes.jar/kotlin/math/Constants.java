@@ -16,13 +16,24 @@ final class Constants
   @JvmField
   public static final double taylor_n_bound = Math.sqrt(taylor_2_bound);
   @JvmField
-  public static final double upper_taylor_2_bound = 1 / taylor_2_bound;
+  public static final double upper_taylor_2_bound;
   @JvmField
-  public static final double upper_taylor_n_bound = 1 / taylor_n_bound;
+  public static final double upper_taylor_n_bound;
+  
+  static
+  {
+    double d1 = 1;
+    double d2 = taylor_2_bound;
+    Double.isNaN(d1);
+    upper_taylor_2_bound = d1 / d2;
+    d2 = taylor_n_bound;
+    Double.isNaN(d1);
+    upper_taylor_n_bound = d1 / d2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.math.Constants
  * JD-Core Version:    0.7.0.1
  */

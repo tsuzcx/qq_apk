@@ -14,10 +14,11 @@ class OperatorTimeoutWithSelector$1
   
   public Subscription call(OperatorTimeoutBase.TimeoutSubscriber<T> paramTimeoutSubscriber, Long paramLong, Scheduler.Worker paramWorker)
   {
-    if (this.val$firstTimeoutSelector != null) {
+    paramWorker = this.val$firstTimeoutSelector;
+    if (paramWorker != null) {
       try
       {
-        paramWorker = (Observable)this.val$firstTimeoutSelector.call();
+        paramWorker = (Observable)paramWorker.call();
         return paramWorker.unsafeSubscribe(new OperatorTimeoutWithSelector.1.1(this, paramTimeoutSubscriber, paramLong));
       }
       catch (Throwable paramLong)
@@ -31,7 +32,7 @@ class OperatorTimeoutWithSelector$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorTimeoutWithSelector.1
  * JD-Core Version:    0.7.0.1
  */

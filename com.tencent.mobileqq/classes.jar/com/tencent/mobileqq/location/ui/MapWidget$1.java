@@ -27,26 +27,24 @@ class MapWidget$1
         QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. success moveMapToSelfCenter selfItem: ", localLocationItem.a() });
       }
     }
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      if (MapWidget.a(this.a) != null)
-      {
-        if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition() != null) {
-          break;
-        }
-        this.a.getViewTreeObserver().addOnGlobalLayoutListener(new MapWidget.1.1(this));
-      }
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. failed moveMapToSelfCenter selfItem: ", localLocationItem.a() });
-      }
+      QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. failed moveMapToSelfCenter selfItem: ", localLocationItem.a() });
     }
-    MapWidget.a(this.a).a(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition().target);
+    if (MapWidget.a(this.a) != null)
+    {
+      if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition() == null)
+      {
+        this.a.getViewTreeObserver().addOnGlobalLayoutListener(new MapWidget.1.1(this));
+        return;
+      }
+      MapWidget.a(this.a).a(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition().target);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.MapWidget.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ public abstract class BaseJsPlugin
   implements IJsPlugin
 {
   public static final String EMPTY_RESULT = "{}";
-  public ApkgInfo mApkgInfo;
-  public Context mContext;
+  protected ApkgInfo mApkgInfo;
+  protected Context mContext;
   protected boolean mIsDestroyed;
-  public boolean mIsMiniGame;
-  public IMiniAppContext mMiniAppContext;
-  public MiniAppInfo mMiniAppInfo;
+  protected boolean mIsMiniGame;
+  protected IMiniAppContext mMiniAppContext;
+  protected MiniAppInfo mMiniAppInfo;
   
   protected MiniAppInfo getMiniAppInfo()
   {
@@ -54,19 +54,19 @@ public abstract class BaseJsPlugin
     this.mMiniAppContext.performAction(NativeViewRequestEvent.obtain(paramRequestEvent, paramInt));
   }
   
-  public void sendSubscribeEvent(String paramString1, String paramString2)
+  protected void sendSubscribeEvent(String paramString1, String paramString2)
   {
     this.mMiniAppContext.performAction(ServiceSubscribeEvent.obtain(paramString1, paramString2, 0));
   }
   
-  public void sendSubscribeEvent(String paramString1, String paramString2, int paramInt, IJsService paramIJsService)
+  protected void sendSubscribeEvent(String paramString1, String paramString2, int paramInt, IJsService paramIJsService)
   {
     this.mMiniAppContext.performAction(ServiceSubscribeEvent.obtain(paramString1, paramString2, paramInt, paramIJsService));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin
  * JD-Core Version:    0.7.0.1
  */

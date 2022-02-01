@@ -29,8 +29,9 @@ public class QFileMultiControlManager
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+    BizTroopObserver localBizTroopObserver = this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver;
+    if (localBizTroopObserver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(localBizTroopObserver);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver != null) {
       ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
@@ -42,8 +43,9 @@ public class QFileMultiControlManager
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+    BizTroopObserver localBizTroopObserver = this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver;
+    if (localBizTroopObserver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localBizTroopObserver);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver != null) {
       ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
@@ -69,8 +71,9 @@ public class QFileMultiControlManager
     QLog.i("QFileMultiControlManager<QFile>", 1, "initFileControlManager");
     this.jdField_a_of_type_Boolean = true;
     c();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localConcurrentHashMap != null) {
+      localConcurrentHashMap.clear();
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
@@ -94,7 +97,11 @@ public class QFileMultiControlManager
       return;
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramQFileControlReq.a(), paramQFileControlReq);
-    QLog.e("QFileMultiControlManager<QFile>", 1, "addFileControlReq: controlKey[" + str + "]");
+    paramQFileControlReq = new StringBuilder();
+    paramQFileControlReq.append("addFileControlReq: controlKey[");
+    paramQFileControlReq.append(str);
+    paramQFileControlReq.append("]");
+    QLog.e("QFileMultiControlManager<QFile>", 1, paramQFileControlReq.toString());
   }
   
   public void b()
@@ -102,8 +109,9 @@ public class QFileMultiControlManager
     QLog.i("QFileMultiControlManager<QFile>", 1, "clearFileControlManager");
     this.jdField_a_of_type_Boolean = false;
     d();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localConcurrentHashMap != null) {
+      localConcurrentHashMap.clear();
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
   }
@@ -117,12 +125,16 @@ public class QFileMultiControlManager
     }
     paramQFileControlReq = paramQFileControlReq.a();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramQFileControlReq);
-    QLog.e("QFileMultiControlManager<QFile>", 1, "removeFileContolReq: controlKey[" + paramQFileControlReq + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("removeFileContolReq: controlKey[");
+    localStringBuilder.append(paramQFileControlReq);
+    localStringBuilder.append("]");
+    QLog.e("QFileMultiControlManager<QFile>", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMultiControlManager
  * JD-Core Version:    0.7.0.1
  */

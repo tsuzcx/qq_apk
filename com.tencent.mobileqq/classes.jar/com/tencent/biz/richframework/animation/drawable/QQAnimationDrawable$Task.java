@@ -21,14 +21,20 @@ class QQAnimationDrawable$Task<T>
   
   public T a()
   {
+    AbstractCollection localAbstractCollection;
     if (Build.VERSION.SDK_INT >= 9)
     {
-      if ((this.a instanceof ArrayDeque)) {
-        return ((ArrayDeque)this.a).poll();
+      localAbstractCollection = this.a;
+      if ((localAbstractCollection instanceof ArrayDeque)) {
+        return ((ArrayDeque)localAbstractCollection).poll();
       }
     }
-    else if ((this.a instanceof ArrayBlockingQueue)) {
-      return ((ArrayBlockingQueue)this.a).poll();
+    else
+    {
+      localAbstractCollection = this.a;
+      if ((localAbstractCollection instanceof ArrayBlockingQueue)) {
+        return ((ArrayBlockingQueue)localAbstractCollection).poll();
+      }
     }
     return null;
   }
@@ -40,20 +46,26 @@ class QQAnimationDrawable$Task<T>
   
   public void a(T paramT)
   {
-    if (Build.VERSION.SDK_INT >= 9) {
-      if ((this.a instanceof ArrayDeque)) {
-        ((ArrayDeque)this.a).offer(paramT);
+    AbstractCollection localAbstractCollection;
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      localAbstractCollection = this.a;
+      if ((localAbstractCollection instanceof ArrayDeque)) {
+        ((ArrayDeque)localAbstractCollection).offer(paramT);
       }
     }
-    while (!(this.a instanceof ArrayBlockingQueue)) {
-      return;
+    else
+    {
+      localAbstractCollection = this.a;
+      if ((localAbstractCollection instanceof ArrayBlockingQueue)) {
+        ((ArrayBlockingQueue)localAbstractCollection).offer(paramT);
+      }
     }
-    ((ArrayBlockingQueue)this.a).offer(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.animation.drawable.QQAnimationDrawable.Task
  * JD-Core Version:    0.7.0.1
  */

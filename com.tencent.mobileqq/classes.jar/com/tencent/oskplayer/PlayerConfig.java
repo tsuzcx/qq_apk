@@ -27,15 +27,15 @@ public class PlayerConfig
   public static final boolean ASSERTIONS_ENABLED = true;
   public static final int CACHE_PROVIDER_LOCAL = 1;
   public static final int CACHE_PROVIDER_TC = 2;
-  public static String CONTENT_TYPE_AUDIO_MP4;
+  public static String CONTENT_TYPE_AUDIO_MP4 = "audio/mp4";
   public static String CONTENT_TYPE_HLS_PLAYLIST = "application/vnd.apple.mpegurl";
   public static String CONTENT_TYPE_HLS_PLAYLIST_COMPAT = "application/x-mpeg";
   public static String CONTENT_TYPE_HLS_PLAYLIST_COMPAT2 = "application/x-mpegURL";
   public static String CONTENT_TYPE_MPEG_TS = "video/MP2T";
-  public static String CONTENT_TYPE_OCT_STREAM;
-  public static String CONTENT_TYPE_VIDEO_3GP;
+  public static String CONTENT_TYPE_OCT_STREAM = "application/octet-stream";
+  public static String CONTENT_TYPE_VIDEO_3GP = "video/3gp";
   public static String CONTENT_TYPE_VIDEO_MP4 = "video/mp4";
-  public static String CONTENT_TYPE_VIDEO_MPEG;
+  public static String CONTENT_TYPE_VIDEO_MPEG = "video/mpeg";
   private static final long DEFUALT_CACHE_MAX_BYTES = 536870912L;
   private static final long DEFUALT_CACHE_SINGLE_FILE_BYTES = 1048576L;
   private static final int DEFUALT_CORE_CLIENT_COUNT = 10;
@@ -97,14 +97,6 @@ public class PlayerConfig
   private String tmpDir;
   private VideoKeyGenerator videoKeyGenerator;
   
-  static
-  {
-    CONTENT_TYPE_VIDEO_3GP = "video/3gp";
-    CONTENT_TYPE_AUDIO_MP4 = "audio/mp4";
-    CONTENT_TYPE_VIDEO_MPEG = "video/mpeg";
-    CONTENT_TYPE_OCT_STREAM = "application/octet-stream";
-  }
-  
   private PlayerConfig(Context paramContext)
   {
     this.appContext = paramContext;
@@ -112,33 +104,47 @@ public class PlayerConfig
   
   public static PlayerConfig g()
   {
-    if (instance == null) {
-      throw new RuntimeException("PlayerConfig not initialized!");
+    if (instance != null) {
+      return instance;
     }
-    return instance;
+    throw new RuntimeException("PlayerConfig not initialized!");
   }
   
   private String getCacheProvideFileDir(String paramString)
   {
-    Object localObject = new StringBuilder().append(paramString).append(File.separator);
-    if (isCacheProviderLocal()) {}
-    for (paramString = "local";; paramString = "tc")
-    {
-      paramString = paramString;
-      localObject = new File(paramString);
-      boolean bool;
-      if (((File)localObject).isFile())
-      {
-        bool = ((File)localObject).delete();
-        PlayerUtils.log(4, "PlayerConfig", "fileDir:" + paramString + " is file, delete result:" + bool);
-      }
-      if (!((File)localObject).exists())
-      {
-        bool = ((File)localObject).mkdirs();
-        PlayerUtils.log(4, "PlayerConfig", "fileDir:" + paramString + " is not exist, make dir result:" + bool);
-      }
-      return paramString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(File.separator);
+    if (isCacheProviderLocal()) {
+      paramString = "local";
+    } else {
+      paramString = "tc";
     }
+    ((StringBuilder)localObject).append(paramString);
+    paramString = ((StringBuilder)localObject).toString();
+    localObject = new File(paramString);
+    boolean bool;
+    if (((File)localObject).isFile())
+    {
+      bool = ((File)localObject).delete();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fileDir:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" is file, delete result:");
+      localStringBuilder.append(bool);
+      PlayerUtils.log(4, "PlayerConfig", localStringBuilder.toString());
+    }
+    if (!((File)localObject).exists())
+    {
+      bool = ((File)localObject).mkdirs();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("fileDir:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" is not exist, make dir result:");
+      ((StringBuilder)localObject).append(bool);
+      PlayerUtils.log(4, "PlayerConfig", ((StringBuilder)localObject).toString());
+    }
+    return paramString;
   }
   
   public static boolean hasInit()
@@ -167,24 +173,27 @@ public class PlayerConfig
   
   public String getCacheDir()
   {
-    if (TextUtils.isEmpty(this.cacheDir)) {
-      try
-      {
-        File localFile = this.appContext.getExternalCacheDir();
-        if (localFile == null) {
-          return null;
-        }
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        for (;;)
-        {
-          localObject = null;
-        }
-        return getCacheProvideFileDir(localObject + File.separator + "video_cache");
-      }
+    if (TextUtils.isEmpty(this.cacheDir)) {}
+    try
+    {
+      localFile = this.appContext.getExternalCacheDir();
     }
+    catch (Exception localException)
+    {
+      File localFile;
+      label21:
+      StringBuilder localStringBuilder;
+      break label21;
+    }
+    localFile = null;
+    if (localFile == null) {
+      return null;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localFile);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("video_cache");
+    return getCacheProvideFileDir(localStringBuilder.toString());
     return this.cacheDir;
   }
   
@@ -214,8 +223,9 @@ public class PlayerConfig
   
   public List<String> getContentTypeList()
   {
-    if (this.mContentTypeList != null) {
-      return this.mContentTypeList;
+    List localList = this.mContentTypeList;
+    if (localList != null) {
+      return localList;
     }
     return new ArrayList(Arrays.asList(new String[] { CONTENT_TYPE_VIDEO_MP4, CONTENT_TYPE_VIDEO_3GP, CONTENT_TYPE_AUDIO_MP4, CONTENT_TYPE_OCT_STREAM, CONTENT_TYPE_VIDEO_MPEG, CONTENT_TYPE_HLS_PLAYLIST, CONTENT_TYPE_HLS_PLAYLIST_COMPAT, CONTENT_TYPE_HLS_PLAYLIST_COMPAT2, CONTENT_TYPE_MPEG_TS }));
   }
@@ -277,10 +287,12 @@ public class PlayerConfig
   
   public QLog getLogger()
   {
-    if (this.logger == null) {
-      return defaultLogger;
+    QLog localQLog2 = this.logger;
+    QLog localQLog1 = localQLog2;
+    if (localQLog2 == null) {
+      localQLog1 = defaultLogger;
     }
-    return this.logger;
+    return localQLog1;
   }
   
   public int getMaxClientCount()
@@ -329,7 +341,11 @@ public class PlayerConfig
       if (localFile == null) {
         return null;
       }
-      return localFile + File.separator + "video_tmp_files";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localFile);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("video_tmp_files");
+      return localStringBuilder.toString();
     }
     return this.tmpDir;
   }
@@ -437,16 +453,16 @@ public class PlayerConfig
   
   public void registerCallback(PlayerCallBack paramPlayerCallBack)
   {
-    if (paramPlayerCallBack != null) {}
-    try
-    {
-      if (this.playerCallBacks == null) {
-        this.playerCallBacks = Collections.newSetFromMap(new ConcurrentHashMap(4, 0.75F));
+    if (paramPlayerCallBack != null) {
+      try
+      {
+        if (this.playerCallBacks == null) {
+          this.playerCallBacks = Collections.newSetFromMap(new ConcurrentHashMap(4, 0.75F));
+        }
+        this.playerCallBacks.add(paramPlayerCallBack);
       }
-      this.playerCallBacks.add(paramPlayerCallBack);
-      return;
+      finally {}
     }
-    finally {}
   }
   
   public void setCacheDir(String paramString)
@@ -561,7 +577,10 @@ public class PlayerConfig
   
   public void setIPStackType(int paramInt)
   {
-    PlayerUtils.log(4, "PlayerConfig", "setIPStackType " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setIPStackType ");
+    localStringBuilder.append(paramInt);
+    PlayerUtils.log(4, "PlayerConfig", localStringBuilder.toString());
     this.mIPStackType = paramInt;
   }
   
@@ -602,7 +621,10 @@ public class PlayerConfig
       this.mQLoadControlConfig = paramString;
       return;
     }
-    PlayerUtils.log(6, "PlayerConfig", "setQLoadControlConfig ineffective " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setQLoadControlConfig ineffective ");
+    localStringBuilder.append(paramString);
+    PlayerUtils.log(6, "PlayerConfig", localStringBuilder.toString());
   }
   
   public void setSafeUrlTimeOut(int paramInt)
@@ -663,18 +685,13 @@ public class PlayerConfig
       if (this.playerCallBacks != null) {
         this.playerCallBacks.remove(paramPlayerCallBack);
       }
-      return;
     }
-    finally
-    {
-      paramPlayerCallBack = finally;
-      throw paramPlayerCallBack;
-    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.PlayerConfig
  * JD-Core Version:    0.7.0.1
  */

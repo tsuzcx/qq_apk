@@ -66,10 +66,9 @@ public class QmcfReporter
   
   public void reportMtaFrameCost(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    HashMap localHashMap;
     if ((QmcfManager.getInstance().isQmcfWork()) && (this.avgFrameConsume != -1.0F))
     {
-      localHashMap = new HashMap();
+      HashMap localHashMap = new HashMap();
       localHashMap.put("svaf_frameCost", String.valueOf(this.avgFrameConsume));
       localHashMap.put("qmcf_processCost", String.valueOf(this.avgProcessConsume));
       localHashMap.put("svaf_cameraType", String.valueOf(paramInt1));
@@ -77,30 +76,27 @@ public class QmcfReporter
       localHashMap.put("svaf_which_component", "qmcf");
       localHashMap.put("svaf_qmcf_mode", String.valueOf(paramInt3));
       localHashMap.put("qmcf_frameType", String.valueOf(paramInt4));
-      if (TextUtils.isEmpty(paramString)) {
-        break label231;
+      if (!TextUtils.isEmpty(paramString)) {
+        localHashMap.put("svaf_templateID", String.valueOf(paramInt2));
+      } else {
+        paramString = "non";
       }
-      localHashMap.put("svaf_templateID", String.valueOf(paramInt2));
-    }
-    for (;;)
-    {
       reportTime("svaf_record_info", localHashMap, (int)this.avgFrameConsume, true);
       if (SLog.isEnable()) {
         SLog.d("GMCF_REPORTER", String.format("reportMtaQmcf, frameCost[%s], proCost[%s], cameraType[%s], busiType[%s], templateId[%s], qmcfmode[%s], frameTpye[%s]", new Object[] { Float.valueOf(this.avgFrameConsume), Float.valueOf(this.avgProcessConsume), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) }));
       }
-      clearReporter();
-      return;
-      label231:
-      paramString = "non";
     }
+    clearReporter();
   }
   
   public void updateFrameConsume(long paramLong)
   {
     if (paramLong > 0L)
     {
-      this.avgFrameConsume = ((this.avgFrameConsume * this.updateCount + (float)paramLong) / (this.updateCount + 1));
-      this.updateCount += 1;
+      float f = this.avgFrameConsume;
+      int i = this.updateCount;
+      this.avgFrameConsume = ((f * i + (float)paramLong) / (i + 1));
+      this.updateCount = (i + 1);
     }
   }
   
@@ -108,14 +104,16 @@ public class QmcfReporter
   {
     if (paramLong > 0L)
     {
-      this.avgProcessConsume = ((this.avgProcessConsume * this.processCount + (float)paramLong) / (this.processCount + 1));
-      this.processCount += 1;
+      float f = this.avgProcessConsume;
+      int i = this.processCount;
+      this.avgProcessConsume = ((f * i + (float)paramLong) / (i + 1));
+      this.processCount = (i + 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qmcf.QmcfReporter
  * JD-Core Version:    0.7.0.1
  */

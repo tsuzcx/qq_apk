@@ -53,9 +53,10 @@ public class VideoBlendFilter2
     super.clearGLSLSelf();
     this.mCopyFilter.clearGLSLSelf();
     this.mCopyFrame.clear();
-    if (this.watermarkBitmap != null)
+    Bitmap localBitmap = this.watermarkBitmap;
+    if (localBitmap != null)
     {
-      this.watermarkBitmap.recycle();
+      localBitmap.recycle();
       this.watermarkBitmap = null;
     }
   }
@@ -105,13 +106,15 @@ public class VideoBlendFilter2
   
   public void setGridWatermarkPosition(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (paramInt3 <= paramInt4) {}
-    for (float f = 750.0F;; f = 1334.0F)
-    {
-      int i = (int)(this.watermarkWidth / f * paramInt3);
-      setWatermarkPosition(paramInt1, paramInt2, i, this.watermarkHeight * i / this.watermarkWidth, paramInt3, paramInt4);
-      return;
+    float f;
+    if (paramInt3 <= paramInt4) {
+      f = 750.0F;
+    } else {
+      f = 1334.0F;
     }
+    int i = this.watermarkWidth;
+    int j = (int)(i / f * paramInt3);
+    setWatermarkPosition(paramInt1, paramInt2, j, this.watermarkHeight * j / i, paramInt3, paramInt4);
   }
   
   public void setWatermarkBitmap(Bitmap paramBitmap)
@@ -121,15 +124,16 @@ public class VideoBlendFilter2
       getParam("inputImageTexture2").clear();
       this.watermarkWidth = paramBitmap.getWidth();
       this.watermarkHeight = paramBitmap.getHeight();
-      if (this.watermarkBitmap != null)
+      Object localObject = this.watermarkBitmap;
+      if (localObject != null)
       {
-        this.watermarkBitmap.recycle();
+        ((Bitmap)localObject).recycle();
         this.watermarkBitmap = null;
       }
       this.watermarkBitmap = Bitmap.createBitmap(this.watermarkWidth, this.watermarkHeight, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(this.watermarkBitmap);
+      localObject = new Canvas(this.watermarkBitmap);
       Paint localPaint = new Paint();
-      localCanvas.drawBitmap(paramBitmap, new Matrix(), localPaint);
+      ((Canvas)localObject).drawBitmap(paramBitmap, new Matrix(), localPaint);
       paramBitmap = new UniformParam.TextureBitmapParam("inputImageTexture2", this.watermarkBitmap, 33986, false);
       addParam(paramBitmap);
       paramBitmap.initialParams(getProgramIds());
@@ -149,7 +153,7 @@ public class VideoBlendFilter2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.VideoBlendFilter2
  * JD-Core Version:    0.7.0.1
  */

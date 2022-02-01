@@ -33,10 +33,15 @@ public class UIJsPlugin
   
   private void hideLoadingView()
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("UIJsPlugin", "hideLoadingView LoadingView=" + this.loadingView);
+    if (QMLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hideLoadingView LoadingView=");
+      ((StringBuilder)localObject).append(this.loadingView);
+      QMLog.d("UIJsPlugin", ((StringBuilder)localObject).toString());
     }
-    if ((this.loadingView != null) && (this.loadingView.shown()))
+    Object localObject = this.loadingView;
+    if ((localObject != null) && (((ToastView)localObject).shown()))
     {
       this.loadingView.hide();
       this.loadingView = null;
@@ -45,10 +50,15 @@ public class UIJsPlugin
   
   private void hideToastView()
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("UIJsPlugin", "hideToastView toastView=" + this.toastView);
+    if (QMLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hideToastView toastView=");
+      ((StringBuilder)localObject).append(this.toastView);
+      QMLog.d("UIJsPlugin", ((StringBuilder)localObject).toString());
     }
-    if ((this.toastView != null) && (this.toastView.shown()))
+    Object localObject = this.toastView;
+    if ((localObject != null) && (((ToastView)localObject).shown()))
     {
       this.toastView.hide();
       this.toastView = null;
@@ -57,11 +67,10 @@ public class UIJsPlugin
   
   private boolean isLastPageValid(String paramString)
   {
-    if (this.mIsMiniGame) {}
-    while (paramString != null) {
+    if (this.mIsMiniGame) {
       return true;
     }
-    return false;
+    return paramString != null;
   }
   
   @JsEvent({"insertTextArea", "updateTextArea", "removeTextArea", "getMenuButtonBoundingClientRect"})
@@ -103,17 +112,20 @@ public class UIJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      String str1 = localJSONObject.optString("title", "");
-      String str2 = localJSONObject.optString("content", "");
+      localObject = localJSONObject.optString("title", "");
+      String str1 = localJSONObject.optString("content", "");
       boolean bool = localJSONObject.optBoolean("showCancel", true);
-      String str3 = localJSONObject.optString("cancelText", "取消");
-      String str4 = localJSONObject.optString("cancelColor", "#000000");
-      AppBrandTask.runTaskOnUiThread(new UIJsPlugin.5(this, str1, str2, localJSONObject.optString("confirmText", "确定"), localJSONObject.optString("confirmColor", "#3CC51F"), paramRequestEvent, bool, str3, str4));
+      String str2 = localJSONObject.optString("cancelText", "取消");
+      String str3 = localJSONObject.optString("cancelColor", "#000000");
+      AppBrandTask.runTaskOnUiThread(new UIJsPlugin.5(this, (String)localObject, str1, localJSONObject.optString("confirmText", "确定"), localJSONObject.optString("confirmColor", "#3CC51F"), paramRequestEvent, bool, str2, str3));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("UIJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramRequestEvent.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("UIJsPlugin", ((StringBuilder)localObject).toString(), localJSONException);
     }
   }
   
@@ -137,7 +149,7 @@ public class UIJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.UIJsPlugin
  * JD-Core Version:    0.7.0.1
  */

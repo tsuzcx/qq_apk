@@ -11,28 +11,40 @@ class PressToSpeakPanel$16
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      paramAnimation = new StringBuilder();
+      paramAnimation.append("startStartRecordAnim(),onAnimationEnd is called,time is:");
+      paramAnimation.append(System.currentTimeMillis());
+      QLog.d("AIOAudioPanel", 2, paramAnimation.toString());
     }
   }
   
   public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      paramAnimation = new StringBuilder();
+      paramAnimation.append("startStartRecordAnim(),onAnimationRepeat is called,time is:");
+      paramAnimation.append(System.currentTimeMillis());
+      QLog.d("AIOAudioPanel", 2, paramAnimation.toString());
     }
   }
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationStart is called,time is:" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      paramAnimation = new StringBuilder();
+      paramAnimation.append("startStartRecordAnim(),onAnimationStart is called,time is:");
+      paramAnimation.append(System.currentTimeMillis());
+      QLog.d("AIOAudioPanel", 2, paramAnimation.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel.16
  * JD-Core Version:    0.7.0.1
  */

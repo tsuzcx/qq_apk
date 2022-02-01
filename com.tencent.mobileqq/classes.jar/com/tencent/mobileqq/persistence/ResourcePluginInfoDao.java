@@ -43,209 +43,143 @@ public class ResourcePluginInfoDao
       return paramEntity;
     }
     int i = paramCursor.getColumnIndex("strPkgName");
-    if (i == -1)
-    {
+    if (i == -1) {
       paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strPkgName", String.class));
-      i = paramCursor.getColumnIndex("strResName");
-      if (i != -1) {
-        break label1244;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strResName", String.class));
-      label499:
-      i = paramCursor.getColumnIndex("strResURL");
-      if (i != -1) {
-        break label1259;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strResURL", String.class));
-      label533:
-      i = paramCursor.getColumnIndex("uiCurVer");
-      if (i != -1) {
-        break label1274;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uiCurVer", Long.TYPE));
-      label568:
-      i = paramCursor.getColumnIndex("sLanType");
-      if (i != -1) {
-        break label1289;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("sLanType", Short.TYPE));
-      label603:
-      i = paramCursor.getColumnIndex("strGotoUrl");
-      if (i != -1) {
-        break label1304;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strGotoUrl", String.class));
-      label637:
-      i = paramCursor.getColumnIndex("sResSubType");
-      if (i != -1) {
-        break label1319;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("sResSubType", Short.TYPE));
-      label672:
-      i = paramCursor.getColumnIndex("sPriority");
-      if (i != -1) {
-        break label1334;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("sPriority", Short.TYPE));
-      label707:
-      i = paramCursor.getColumnIndex("strResDesc");
-      if (i != -1) {
-        break label1349;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strResDesc", String.class));
-      label741:
-      i = paramCursor.getColumnIndex("uiResId");
-      if (i != -1) {
-        break label1364;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uiResId", Long.TYPE));
-      label776:
-      i = paramCursor.getColumnIndex("cDefaultState");
-      if (i != -1) {
-        break label1379;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cDefaultState", Byte.TYPE));
-      label811:
-      i = paramCursor.getColumnIndex("cCanChangeState");
-      if (i != -1) {
-        break label1395;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cCanChangeState", Byte.TYPE));
-      label846:
-      i = paramCursor.getColumnIndex("isNew");
-      if (i != -1) {
-        break label1411;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isNew", Byte.TYPE));
-      label881:
-      i = paramCursor.getColumnIndex("cDataType");
-      if (i != -1) {
-        break label1427;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cDataType", Byte.TYPE));
-      label916:
-      i = paramCursor.getColumnIndex("cLocalState");
-      if (i != -1) {
-        break label1443;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cLocalState", Byte.TYPE));
-      label951:
-      i = paramCursor.getColumnIndex("iPluginType");
-      if (i != -1) {
-        break label1459;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("iPluginType", Integer.TYPE));
-      label986:
-      i = paramCursor.getColumnIndex("timeStamp");
-      if (i != -1) {
-        break label1474;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("timeStamp", Long.TYPE));
-      label1021:
-      i = paramCursor.getColumnIndex("strNewPluginDesc");
-      if (i != -1) {
-        break label1489;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strNewPluginDesc", String.class));
-      label1055:
-      i = paramCursor.getColumnIndex("strNewPluginURL");
-      if (i != -1) {
-        break label1504;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strNewPluginURL", String.class));
-      label1089:
-      i = paramCursor.getColumnIndex("lebaSearchResultType");
-      if (i != -1) {
-        break label1519;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("lebaSearchResultType", Integer.TYPE));
-      label1124:
-      i = paramCursor.getColumnIndex("pluginSetTips");
-      if (i != -1) {
-        break label1534;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("pluginSetTips", String.class));
-      label1158:
-      i = paramCursor.getColumnIndex("pluginBg");
-      if (i != -1) {
-        break label1549;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("pluginBg", String.class));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("flags");
-      if (i != -1) {
-        break label1564;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("flags", Integer.TYPE));
-      return paramEntity;
+    } else {
       paramEntity.strPkgName = paramCursor.getString(i);
-      break;
-      label1244:
+    }
+    i = paramCursor.getColumnIndex("strResName");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strResName", String.class));
+    } else {
       paramEntity.strResName = paramCursor.getString(i);
-      break label499;
-      label1259:
+    }
+    i = paramCursor.getColumnIndex("strResURL");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strResURL", String.class));
+    } else {
       paramEntity.strResURL = paramCursor.getString(i);
-      break label533;
-      label1274:
+    }
+    i = paramCursor.getColumnIndex("uiCurVer");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uiCurVer", Long.TYPE));
+    } else {
       paramEntity.uiCurVer = paramCursor.getLong(i);
-      break label568;
-      label1289:
+    }
+    i = paramCursor.getColumnIndex("sLanType");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("sLanType", Short.TYPE));
+    } else {
       paramEntity.sLanType = paramCursor.getShort(i);
-      break label603;
-      label1304:
+    }
+    i = paramCursor.getColumnIndex("strGotoUrl");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strGotoUrl", String.class));
+    } else {
       paramEntity.strGotoUrl = paramCursor.getString(i);
-      break label637;
-      label1319:
+    }
+    i = paramCursor.getColumnIndex("sResSubType");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("sResSubType", Short.TYPE));
+    } else {
       paramEntity.sResSubType = paramCursor.getShort(i);
-      break label672;
-      label1334:
+    }
+    i = paramCursor.getColumnIndex("sPriority");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("sPriority", Short.TYPE));
+    } else {
       paramEntity.sPriority = paramCursor.getShort(i);
-      break label707;
-      label1349:
+    }
+    i = paramCursor.getColumnIndex("strResDesc");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strResDesc", String.class));
+    } else {
       paramEntity.strResDesc = paramCursor.getString(i);
-      break label741;
-      label1364:
+    }
+    i = paramCursor.getColumnIndex("uiResId");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uiResId", Long.TYPE));
+    } else {
       paramEntity.uiResId = paramCursor.getLong(i);
-      break label776;
-      label1379:
+    }
+    i = paramCursor.getColumnIndex("cDefaultState");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cDefaultState", Byte.TYPE));
+    } else {
       paramEntity.cDefaultState = ((byte)paramCursor.getShort(i));
-      break label811;
-      label1395:
+    }
+    i = paramCursor.getColumnIndex("cCanChangeState");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cCanChangeState", Byte.TYPE));
+    } else {
       paramEntity.cCanChangeState = ((byte)paramCursor.getShort(i));
-      break label846;
-      label1411:
+    }
+    i = paramCursor.getColumnIndex("isNew");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isNew", Byte.TYPE));
+    } else {
       paramEntity.isNew = ((byte)paramCursor.getShort(i));
-      break label881;
-      label1427:
+    }
+    i = paramCursor.getColumnIndex("cDataType");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cDataType", Byte.TYPE));
+    } else {
       paramEntity.cDataType = ((byte)paramCursor.getShort(i));
-      break label916;
-      label1443:
+    }
+    i = paramCursor.getColumnIndex("cLocalState");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cLocalState", Byte.TYPE));
+    } else {
       paramEntity.cLocalState = ((byte)paramCursor.getShort(i));
-      break label951;
-      label1459:
+    }
+    i = paramCursor.getColumnIndex("iPluginType");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("iPluginType", Integer.TYPE));
+    } else {
       paramEntity.iPluginType = paramCursor.getInt(i);
-      break label986;
-      label1474:
+    }
+    i = paramCursor.getColumnIndex("timeStamp");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("timeStamp", Long.TYPE));
+    } else {
       paramEntity.timeStamp = paramCursor.getLong(i);
-      break label1021;
-      label1489:
+    }
+    i = paramCursor.getColumnIndex("strNewPluginDesc");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strNewPluginDesc", String.class));
+    } else {
       paramEntity.strNewPluginDesc = paramCursor.getString(i);
-      break label1055;
-      label1504:
+    }
+    i = paramCursor.getColumnIndex("strNewPluginURL");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("strNewPluginURL", String.class));
+    } else {
       paramEntity.strNewPluginURL = paramCursor.getString(i);
-      break label1089;
-      label1519:
+    }
+    i = paramCursor.getColumnIndex("lebaSearchResultType");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("lebaSearchResultType", Integer.TYPE));
+    } else {
       paramEntity.lebaSearchResultType = paramCursor.getInt(i);
-      break label1124;
-      label1534:
+    }
+    i = paramCursor.getColumnIndex("pluginSetTips");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("pluginSetTips", String.class));
+    } else {
       paramEntity.pluginSetTips = paramCursor.getString(i);
-      break label1158;
-      label1549:
+    }
+    i = paramCursor.getColumnIndex("pluginBg");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("pluginBg", String.class));
+    } else {
       paramEntity.pluginBg = paramCursor.getString(i);
     }
-    label1564:
+    i = paramCursor.getColumnIndex("flags");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("flags", Integer.TYPE));
+      return paramEntity;
+    }
     paramEntity.flags = paramCursor.getInt(i);
     return paramEntity;
   }
@@ -288,7 +222,7 @@ public class ResourcePluginInfoDao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.ResourcePluginInfoDao
  * JD-Core Version:    0.7.0.1
  */

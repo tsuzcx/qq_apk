@@ -17,246 +17,247 @@ class GuideVideoHandler$2
     //   5: new 39	java/lang/StringBuilder
     //   8: dup
     //   9: invokespecial 40	java/lang/StringBuilder:<init>	()V
-    //   12: ldc 42
-    //   14: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: aload_0
-    //   18: getfield 18	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   21: invokevirtual 52	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   24: invokevirtual 56	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   27: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: ldc 58
-    //   32: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: ldc 59
-    //   37: invokevirtual 62	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   40: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: invokestatic 71	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   46: astore 8
-    //   48: aconst_null
-    //   49: astore 9
-    //   51: aconst_null
-    //   52: astore 7
-    //   54: new 73	android/media/MediaMetadataRetriever
-    //   57: dup
-    //   58: invokespecial 74	android/media/MediaMetadataRetriever:<init>	()V
-    //   61: astore 10
-    //   63: aload 10
-    //   65: aload_0
-    //   66: getfield 18	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   69: aload 8
-    //   71: invokevirtual 78	android/media/MediaMetadataRetriever:setDataSource	(Landroid/content/Context;Landroid/net/Uri;)V
-    //   74: aload 10
-    //   76: aload_0
-    //   77: getfield 20	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_Int	I
-    //   80: sipush 1000
-    //   83: imul
-    //   84: i2l
-    //   85: invokevirtual 82	android/media/MediaMetadataRetriever:getFrameAtTime	(J)Landroid/graphics/Bitmap;
-    //   88: astore 7
-    //   90: aload 7
-    //   92: ifnonnull +79 -> 171
-    //   95: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   98: ifeq +11 -> 109
-    //   101: ldc 90
-    //   103: iconst_2
-    //   104: ldc 92
-    //   106: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   109: aload_0
-    //   110: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   113: bipush 101
-    //   115: invokevirtual 102	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
-    //   118: pop
-    //   119: aload_0
-    //   120: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   123: invokevirtual 106	mqq/os/MqqHandler:obtainMessage	()Landroid/os/Message;
-    //   126: astore 8
-    //   128: aload 8
-    //   130: aconst_null
-    //   131: putfield 112	android/os/Message:obj	Ljava/lang/Object;
-    //   134: aload 8
-    //   136: bipush 101
-    //   138: putfield 115	android/os/Message:what	I
-    //   141: aload_0
-    //   142: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   145: aload 8
-    //   147: invokevirtual 119	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
-    //   150: pop
-    //   151: aload 7
-    //   153: ifnull +3 -> 156
-    //   156: aload 10
-    //   158: invokevirtual 122	android/media/MediaMetadataRetriever:release	()V
-    //   161: aload_0
-    //   162: getfield 16	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;
-    //   165: iconst_0
-    //   166: invokestatic 128	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler:b	(Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;Z)Z
-    //   169: pop
-    //   170: return
-    //   171: aload_0
-    //   172: getfield 18	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   175: invokevirtual 132	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   178: invokevirtual 138	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   181: getfield 143	android/util/DisplayMetrics:widthPixels	I
-    //   184: istore_3
-    //   185: aload_0
-    //   186: getfield 18	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   189: invokevirtual 132	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   192: invokevirtual 138	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   195: getfield 146	android/util/DisplayMetrics:heightPixels	I
-    //   198: istore 4
-    //   200: iload_3
-    //   201: i2f
-    //   202: aload 7
-    //   204: invokevirtual 152	android/graphics/Bitmap:getWidth	()I
-    //   207: i2f
-    //   208: fdiv
-    //   209: fstore_1
-    //   210: iload 4
-    //   212: i2f
-    //   213: aload 7
-    //   215: invokevirtual 155	android/graphics/Bitmap:getHeight	()I
-    //   218: i2f
-    //   219: fdiv
-    //   220: fstore_2
-    //   221: new 157	android/graphics/Matrix
-    //   224: dup
-    //   225: invokespecial 158	android/graphics/Matrix:<init>	()V
-    //   228: astore 8
-    //   230: aload 8
-    //   232: fload_1
-    //   233: fload_2
-    //   234: invokevirtual 162	android/graphics/Matrix:postScale	(FF)Z
-    //   237: pop
-    //   238: aload 7
-    //   240: iconst_0
-    //   241: iconst_0
-    //   242: aload 7
-    //   244: invokevirtual 152	android/graphics/Bitmap:getWidth	()I
-    //   247: aload 7
-    //   249: invokevirtual 155	android/graphics/Bitmap:getHeight	()I
-    //   252: aload 8
-    //   254: iconst_1
-    //   255: invokestatic 166	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
-    //   258: astore 8
-    //   260: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   263: ifeq +50 -> 313
-    //   266: ldc 90
-    //   268: iconst_2
-    //   269: iconst_2
-    //   270: anewarray 4	java/lang/Object
-    //   273: dup
-    //   274: iconst_0
-    //   275: ldc 168
-    //   277: aastore
-    //   278: dup
-    //   279: iconst_1
-    //   280: new 39	java/lang/StringBuilder
-    //   283: dup
-    //   284: invokespecial 40	java/lang/StringBuilder:<init>	()V
-    //   287: invokestatic 37	java/lang/System:currentTimeMillis	()J
-    //   290: lload 5
-    //   292: lsub
-    //   293: invokevirtual 171	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   296: ldc 173
-    //   298: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   301: aload 8
-    //   303: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   306: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   309: aastore
-    //   310: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   313: aload_0
-    //   314: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   317: invokevirtual 106	mqq/os/MqqHandler:obtainMessage	()Landroid/os/Message;
-    //   320: astore 9
-    //   322: aload 9
-    //   324: aload 8
-    //   326: putfield 112	android/os/Message:obj	Ljava/lang/Object;
-    //   329: aload 9
-    //   331: bipush 101
-    //   333: putfield 115	android/os/Message:what	I
-    //   336: aload_0
-    //   337: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   340: aload 9
-    //   342: invokevirtual 119	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
-    //   345: pop
-    //   346: aload 8
-    //   348: aload 7
-    //   350: if_acmpeq +3 -> 353
-    //   353: aload 10
-    //   355: invokevirtual 122	android/media/MediaMetadataRetriever:release	()V
-    //   358: aload_0
-    //   359: getfield 16	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;
-    //   362: iconst_0
-    //   363: invokestatic 128	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler:b	(Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;Z)Z
-    //   366: pop
-    //   367: return
-    //   368: astore 8
-    //   370: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   373: ifeq +11 -> 384
-    //   376: ldc 90
-    //   378: iconst_2
-    //   379: ldc 181
-    //   381: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   384: aload_0
-    //   385: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   388: invokevirtual 106	mqq/os/MqqHandler:obtainMessage	()Landroid/os/Message;
-    //   391: astore 8
-    //   393: aload 8
-    //   395: aconst_null
-    //   396: putfield 112	android/os/Message:obj	Ljava/lang/Object;
-    //   399: aload 8
-    //   401: bipush 101
-    //   403: putfield 115	android/os/Message:what	I
-    //   406: aload_0
-    //   407: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   410: aload 8
-    //   412: invokevirtual 119	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
-    //   415: pop
-    //   416: iconst_0
-    //   417: ifeq +3 -> 420
-    //   420: aload 7
-    //   422: invokevirtual 122	android/media/MediaMetadataRetriever:release	()V
-    //   425: aload_0
-    //   426: getfield 16	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;
-    //   429: iconst_0
-    //   430: invokestatic 128	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler:b	(Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;Z)Z
-    //   433: pop
-    //   434: return
-    //   435: astore 7
-    //   437: aconst_null
-    //   438: astore 10
-    //   440: aconst_null
+    //   12: astore 7
+    //   14: aload 7
+    //   16: ldc 42
+    //   18: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: pop
+    //   22: aload 7
+    //   24: aload_0
+    //   25: getfield 18	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   28: invokevirtual 52	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   31: invokevirtual 56	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   34: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: pop
+    //   38: aload 7
+    //   40: ldc 58
+    //   42: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: aload 7
+    //   48: ldc 59
+    //   50: invokevirtual 62	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: aload 7
+    //   56: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokestatic 71	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   62: astore 9
+    //   64: aconst_null
+    //   65: astore 11
+    //   67: new 73	android/media/MediaMetadataRetriever
+    //   70: dup
+    //   71: invokespecial 74	android/media/MediaMetadataRetriever:<init>	()V
+    //   74: astore 7
+    //   76: aload 7
+    //   78: astore 8
+    //   80: aload 7
+    //   82: aload_0
+    //   83: getfield 18	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   86: aload 9
+    //   88: invokevirtual 78	android/media/MediaMetadataRetriever:setDataSource	(Landroid/content/Context;Landroid/net/Uri;)V
+    //   91: aload 7
+    //   93: astore 8
+    //   95: aload 7
+    //   97: aload_0
+    //   98: getfield 20	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_Int	I
+    //   101: sipush 1000
+    //   104: imul
+    //   105: i2l
+    //   106: invokevirtual 82	android/media/MediaMetadataRetriever:getFrameAtTime	(J)Landroid/graphics/Bitmap;
+    //   109: astore 9
+    //   111: aload 9
+    //   113: ifnonnull +74 -> 187
+    //   116: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   119: ifeq +11 -> 130
+    //   122: ldc 90
+    //   124: iconst_2
+    //   125: ldc 92
+    //   127: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   130: aload_0
+    //   131: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   134: bipush 101
+    //   136: invokevirtual 102	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   139: pop
+    //   140: aload_0
+    //   141: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   144: invokevirtual 106	mqq/os/MqqHandler:obtainMessage	()Landroid/os/Message;
+    //   147: astore 8
+    //   149: aload 8
+    //   151: aconst_null
+    //   152: putfield 112	android/os/Message:obj	Ljava/lang/Object;
+    //   155: aload 8
+    //   157: bipush 101
+    //   159: putfield 115	android/os/Message:what	I
+    //   162: aload_0
+    //   163: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   166: aload 8
+    //   168: invokevirtual 119	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   171: pop
+    //   172: aload 7
+    //   174: invokevirtual 122	android/media/MediaMetadataRetriever:release	()V
+    //   177: aload_0
+    //   178: getfield 16	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;
+    //   181: iconst_0
+    //   182: invokestatic 128	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler:b	(Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;Z)Z
+    //   185: pop
+    //   186: return
+    //   187: aload_0
+    //   188: getfield 18	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   191: invokevirtual 132	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   194: invokevirtual 138	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   197: getfield 143	android/util/DisplayMetrics:widthPixels	I
+    //   200: istore_3
+    //   201: aload_0
+    //   202: getfield 18	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   205: invokevirtual 132	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   208: invokevirtual 138	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   211: getfield 146	android/util/DisplayMetrics:heightPixels	I
+    //   214: istore 4
+    //   216: iload_3
+    //   217: i2f
+    //   218: aload 9
+    //   220: invokevirtual 152	android/graphics/Bitmap:getWidth	()I
+    //   223: i2f
+    //   224: fdiv
+    //   225: fstore_1
+    //   226: iload 4
+    //   228: i2f
+    //   229: aload 9
+    //   231: invokevirtual 155	android/graphics/Bitmap:getHeight	()I
+    //   234: i2f
+    //   235: fdiv
+    //   236: fstore_2
+    //   237: new 157	android/graphics/Matrix
+    //   240: dup
+    //   241: invokespecial 158	android/graphics/Matrix:<init>	()V
+    //   244: astore 8
+    //   246: aload 8
+    //   248: fload_1
+    //   249: fload_2
+    //   250: invokevirtual 162	android/graphics/Matrix:postScale	(FF)Z
+    //   253: pop
+    //   254: aload 9
+    //   256: iconst_0
+    //   257: iconst_0
+    //   258: aload 9
+    //   260: invokevirtual 152	android/graphics/Bitmap:getWidth	()I
+    //   263: aload 9
+    //   265: invokevirtual 155	android/graphics/Bitmap:getHeight	()I
+    //   268: aload 8
+    //   270: iconst_1
+    //   271: invokestatic 166	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   274: astore 9
+    //   276: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   279: ifeq +63 -> 342
+    //   282: new 39	java/lang/StringBuilder
+    //   285: dup
+    //   286: invokespecial 40	java/lang/StringBuilder:<init>	()V
+    //   289: astore 8
+    //   291: aload 8
+    //   293: invokestatic 37	java/lang/System:currentTimeMillis	()J
+    //   296: lload 5
+    //   298: lsub
+    //   299: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   302: pop
+    //   303: aload 8
+    //   305: ldc 171
+    //   307: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: pop
+    //   311: aload 8
+    //   313: aload 9
+    //   315: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   318: pop
+    //   319: ldc 90
+    //   321: iconst_2
+    //   322: iconst_2
+    //   323: anewarray 4	java/lang/Object
+    //   326: dup
+    //   327: iconst_0
+    //   328: ldc 176
+    //   330: aastore
+    //   331: dup
+    //   332: iconst_1
+    //   333: aload 8
+    //   335: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   338: aastore
+    //   339: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   342: aload_0
+    //   343: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   346: invokevirtual 106	mqq/os/MqqHandler:obtainMessage	()Landroid/os/Message;
+    //   349: astore 8
+    //   351: aload 8
+    //   353: aload 9
+    //   355: putfield 112	android/os/Message:obj	Ljava/lang/Object;
+    //   358: goto +130 -> 488
+    //   361: astore 8
+    //   363: goto +171 -> 534
+    //   366: astore 8
+    //   368: aload 11
+    //   370: astore 9
+    //   372: goto +162 -> 534
+    //   375: astore 10
+    //   377: goto +20 -> 397
+    //   380: astore 8
+    //   382: aconst_null
+    //   383: astore 7
+    //   385: aload 11
+    //   387: astore 9
+    //   389: goto +145 -> 534
+    //   392: astore 10
+    //   394: aconst_null
+    //   395: astore 7
+    //   397: aload 7
+    //   399: astore 9
+    //   401: aload 7
+    //   403: astore 8
+    //   405: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   408: ifeq +61 -> 469
+    //   411: aload 7
+    //   413: astore 8
+    //   415: ldc 90
+    //   417: iconst_2
+    //   418: aload 10
+    //   420: iconst_1
+    //   421: anewarray 4	java/lang/Object
+    //   424: dup
+    //   425: iconst_0
+    //   426: ldc 181
+    //   428: aastore
+    //   429: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   432: aload 7
+    //   434: astore 9
+    //   436: goto +33 -> 469
+    //   439: aload 7
     //   441: astore 9
-    //   443: aconst_null
-    //   444: astore 8
-    //   446: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   449: ifeq +20 -> 469
-    //   452: ldc 90
-    //   454: iconst_2
-    //   455: aload 7
-    //   457: iconst_1
-    //   458: anewarray 4	java/lang/Object
-    //   461: dup
-    //   462: iconst_0
-    //   463: ldc 183
-    //   465: aastore
-    //   466: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   443: aload 7
+    //   445: astore 8
+    //   447: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   450: ifeq +19 -> 469
+    //   453: aload 7
+    //   455: astore 8
+    //   457: ldc 90
+    //   459: iconst_2
+    //   460: ldc 186
+    //   462: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   465: aload 7
+    //   467: astore 9
     //   469: aload_0
     //   470: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
     //   473: invokevirtual 106	mqq/os/MqqHandler:obtainMessage	()Landroid/os/Message;
-    //   476: astore 7
-    //   478: aload 7
+    //   476: astore 8
+    //   478: aload 8
     //   480: aconst_null
     //   481: putfield 112	android/os/Message:obj	Ljava/lang/Object;
-    //   484: aload 7
-    //   486: bipush 101
-    //   488: putfield 115	android/os/Message:what	I
-    //   491: aload_0
-    //   492: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   495: aload 7
-    //   497: invokevirtual 119	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
-    //   500: pop
-    //   501: iconst_0
-    //   502: ifeq +3 -> 505
-    //   505: aload 10
+    //   484: aload 9
+    //   486: astore 7
+    //   488: aload 8
+    //   490: bipush 101
+    //   492: putfield 115	android/os/Message:what	I
+    //   495: aload_0
+    //   496: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   499: aload 8
+    //   501: invokevirtual 119	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   504: pop
+    //   505: aload 7
     //   507: invokevirtual 122	android/media/MediaMetadataRetriever:release	()V
     //   510: aload_0
     //   511: getfield 16	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;
@@ -264,130 +265,99 @@ class GuideVideoHandler$2
     //   515: invokestatic 128	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler:b	(Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;Z)Z
     //   518: pop
     //   519: return
-    //   520: astore 7
-    //   522: aconst_null
-    //   523: astore 10
-    //   525: aconst_null
-    //   526: astore 8
-    //   528: aload_0
-    //   529: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   532: invokevirtual 106	mqq/os/MqqHandler:obtainMessage	()Landroid/os/Message;
-    //   535: astore 11
-    //   537: aload 11
-    //   539: aload 8
-    //   541: putfield 112	android/os/Message:obj	Ljava/lang/Object;
-    //   544: aload 11
-    //   546: bipush 101
-    //   548: putfield 115	android/os/Message:what	I
-    //   551: aload_0
-    //   552: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   555: aload 11
-    //   557: invokevirtual 119	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
-    //   560: pop
-    //   561: aload 8
-    //   563: aload 9
-    //   565: if_acmpeq +3 -> 568
-    //   568: aload 10
-    //   570: invokevirtual 122	android/media/MediaMetadataRetriever:release	()V
-    //   573: aload_0
-    //   574: getfield 16	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;
-    //   577: iconst_0
-    //   578: invokestatic 128	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler:b	(Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;Z)Z
-    //   581: pop
-    //   582: aload 7
-    //   584: athrow
-    //   585: astore 7
-    //   587: aconst_null
-    //   588: astore 8
-    //   590: goto -62 -> 528
-    //   593: astore 8
-    //   595: aload 7
-    //   597: astore 9
-    //   599: aload 8
-    //   601: astore 7
-    //   603: aconst_null
-    //   604: astore 8
-    //   606: goto -78 -> 528
-    //   609: astore 11
-    //   611: aload 7
-    //   613: astore 9
-    //   615: aload 11
-    //   617: astore 7
-    //   619: goto -91 -> 528
-    //   622: astore 8
-    //   624: aload 7
-    //   626: astore 10
-    //   628: aload 8
-    //   630: astore 7
-    //   632: aconst_null
-    //   633: astore 8
-    //   635: aconst_null
-    //   636: astore 9
-    //   638: goto -110 -> 528
-    //   641: astore 7
-    //   643: goto -115 -> 528
-    //   646: astore 7
-    //   648: goto -208 -> 440
-    //   651: astore 7
-    //   653: aload 10
-    //   655: astore 7
-    //   657: goto -287 -> 370
+    //   520: astore 10
+    //   522: aload 8
+    //   524: astore 7
+    //   526: aload 11
+    //   528: astore 9
+    //   530: aload 10
+    //   532: astore 8
+    //   534: aload_0
+    //   535: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   538: invokevirtual 106	mqq/os/MqqHandler:obtainMessage	()Landroid/os/Message;
+    //   541: astore 10
+    //   543: aload 10
+    //   545: aload 9
+    //   547: putfield 112	android/os/Message:obj	Ljava/lang/Object;
+    //   550: aload 10
+    //   552: bipush 101
+    //   554: putfield 115	android/os/Message:what	I
+    //   557: aload_0
+    //   558: getfield 22	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   561: aload 10
+    //   563: invokevirtual 119	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   566: pop
+    //   567: aload 7
+    //   569: invokevirtual 122	android/media/MediaMetadataRetriever:release	()V
+    //   572: aload_0
+    //   573: getfield 16	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler$2:this$0	Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;
+    //   576: iconst_0
+    //   577: invokestatic 128	com/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler:b	(Lcom/tencent/mobileqq/activity/registerGuideLogin/GuideVideoHandler;Z)Z
+    //   580: pop
+    //   581: aload 8
+    //   583: athrow
+    //   584: astore 7
+    //   586: goto +8 -> 594
+    //   589: astore 8
+    //   591: goto -152 -> 439
+    //   594: aconst_null
+    //   595: astore 7
+    //   597: goto -158 -> 439
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	660	0	this	2
-    //   209	24	1	f1	float
-    //   220	14	2	f2	float
-    //   184	17	3	i	int
-    //   198	13	4	j	int
-    //   3	288	5	l	long
-    //   52	369	7	localBitmap	android.graphics.Bitmap
-    //   435	21	7	localException1	java.lang.Exception
-    //   476	20	7	localMessage1	android.os.Message
-    //   520	63	7	localObject1	Object
-    //   585	11	7	localObject2	Object
-    //   601	30	7	localObject3	Object
-    //   641	1	7	localObject4	Object
-    //   646	1	7	localException2	java.lang.Exception
-    //   651	1	7	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   655	1	7	localObject5	Object
-    //   46	301	8	localObject6	Object
-    //   368	1	8	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   391	198	8	localMessage2	android.os.Message
-    //   593	7	8	localObject7	Object
-    //   604	1	8	localObject8	Object
-    //   622	7	8	localObject9	Object
-    //   633	1	8	localObject10	Object
-    //   49	588	9	localObject11	Object
-    //   61	593	10	localObject12	Object
-    //   535	21	11	localMessage3	android.os.Message
-    //   609	7	11	localObject13	Object
+    //   0	600	0	this	2
+    //   225	24	1	f1	float
+    //   236	14	2	f2	float
+    //   200	17	3	i	int
+    //   214	13	4	j	int
+    //   3	294	5	l	long
+    //   12	556	7	localObject1	Object
+    //   584	1	7	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   595	1	7	localObject2	Object
+    //   78	274	8	localObject3	Object
+    //   361	1	8	localObject4	Object
+    //   366	1	8	localObject5	Object
+    //   380	1	8	localObject6	Object
+    //   403	179	8	localObject7	Object
+    //   589	1	8	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   62	484	9	localObject8	Object
+    //   375	1	10	localException1	java.lang.Exception
+    //   392	27	10	localException2	java.lang.Exception
+    //   520	11	10	localObject9	Object
+    //   541	21	10	localMessage	android.os.Message
+    //   65	462	11	localObject10	Object
     // Exception table:
     //   from	to	target	type
-    //   54	63	368	java/lang/OutOfMemoryError
-    //   54	63	435	java/lang/Exception
-    //   54	63	520	finally
-    //   63	90	585	finally
-    //   95	109	593	finally
-    //   109	119	593	finally
-    //   171	260	593	finally
-    //   260	313	609	finally
-    //   370	384	622	finally
-    //   446	469	641	finally
-    //   63	90	646	java/lang/Exception
-    //   95	109	646	java/lang/Exception
-    //   109	119	646	java/lang/Exception
-    //   171	260	646	java/lang/Exception
-    //   260	313	646	java/lang/Exception
-    //   63	90	651	java/lang/OutOfMemoryError
-    //   95	109	651	java/lang/OutOfMemoryError
-    //   109	119	651	java/lang/OutOfMemoryError
-    //   171	260	651	java/lang/OutOfMemoryError
-    //   260	313	651	java/lang/OutOfMemoryError
+    //   276	342	361	finally
+    //   116	130	366	finally
+    //   130	140	366	finally
+    //   187	276	366	finally
+    //   80	91	375	java/lang/Exception
+    //   95	111	375	java/lang/Exception
+    //   116	130	375	java/lang/Exception
+    //   130	140	375	java/lang/Exception
+    //   187	276	375	java/lang/Exception
+    //   276	342	375	java/lang/Exception
+    //   67	76	380	finally
+    //   67	76	392	java/lang/Exception
+    //   80	91	520	finally
+    //   95	111	520	finally
+    //   405	411	520	finally
+    //   415	432	520	finally
+    //   447	453	520	finally
+    //   457	465	520	finally
+    //   67	76	584	java/lang/OutOfMemoryError
+    //   80	91	589	java/lang/OutOfMemoryError
+    //   95	111	589	java/lang/OutOfMemoryError
+    //   116	130	589	java/lang/OutOfMemoryError
+    //   130	140	589	java/lang/OutOfMemoryError
+    //   187	276	589	java/lang/OutOfMemoryError
+    //   276	342	589	java/lang/OutOfMemoryError
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.GuideVideoHandler.2
  * JD-Core Version:    0.7.0.1
  */

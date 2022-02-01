@@ -16,7 +16,10 @@ class MiniMsgIPCServer$1
     if (paramBoolean)
     {
       paramBundle = paramBundle.getString("imageUrl", "").replaceFirst("https*://", "");
-      QLog.d("mini_msg_IPCServer", 1, "doMiniShareUploadImage newImagePath: " + paramBundle);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doMiniShareUploadImage newImagePath: ");
+      localStringBuilder.append(paramBundle);
+      QLog.d("mini_msg_IPCServer", 1, localStringBuilder.toString());
       this.jdField_a_of_type_AndroidOsBundle.putString("preview", paramBundle);
     }
     localEIPCResult.data = this.jdField_a_of_type_AndroidOsBundle;
@@ -25,7 +28,7 @@ class MiniMsgIPCServer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgIPCServer.1
  * JD-Core Version:    0.7.0.1
  */

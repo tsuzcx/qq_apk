@@ -50,17 +50,16 @@ public class IndexBar
   
   private int a(int paramInt1, int paramInt2)
   {
-    int j = View.MeasureSpec.getMode(paramInt1);
-    int i = View.MeasureSpec.getSize(paramInt1);
-    if (j == 1073741824) {
-      paramInt1 = i;
+    int i = View.MeasureSpec.getMode(paramInt1);
+    int j = View.MeasureSpec.getSize(paramInt1);
+    if (i == 1073741824) {
+      return j;
     }
-    do
-    {
-      return paramInt1;
-      paramInt1 = paramInt2;
-    } while (j != -2147483648);
-    return Math.min(paramInt2, i);
+    paramInt1 = paramInt2;
+    if (i == -2147483648) {
+      paramInt1 = Math.min(paramInt2, j);
+    }
+    return paramInt1;
   }
   
   private void a()
@@ -83,10 +82,10 @@ public class IndexBar
   {
     this.jdField_b_of_type_Int = paramContext.getResources().getColor(17170444);
     this.jdField_c_of_type_Int = paramContext.getResources().getColor(17170444);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131297225);
-    this.jdField_b_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131297226);
-    this.jdField_c_of_type_Float = paramContext.getResources().getDimension(2131297222);
-    this.jdField_d_of_type_Float = paramContext.getResources().getDimension(2131297224);
+    this.jdField_a_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131297214);
+    this.jdField_b_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131297215);
+    this.jdField_c_of_type_Float = paramContext.getResources().getDimension(2131297211);
+    this.jdField_d_of_type_Float = paramContext.getResources().getDimension(2131297213);
     if (paramAttributeSet != null)
     {
       paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.IndexBar);
@@ -103,117 +102,131 @@ public class IndexBar
   
   private void a(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {}
-    int j;
-    do
-    {
+    Object localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+    if (localObject == null) {
       return;
-      j = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-    } while (j <= 0);
-    int k = this.e / j;
-    int i = 0;
-    label32:
-    if (i < j) {
-      if (i != this.jdField_a_of_type_Int) {
-        break label114;
-      }
     }
-    label114:
-    for (Paint localPaint = this.jdField_b_of_type_AndroidGraphicsPaint;; localPaint = this.jdField_a_of_type_AndroidGraphicsPaint)
+    int k = localObject.length;
+    if (k <= 0) {
+      return;
+    }
+    int m = this.e / k;
+    int j;
+    for (int i = 0; i < k; i = j)
     {
+      if (i == this.jdField_a_of_type_Int) {
+        localObject = this.jdField_b_of_type_AndroidGraphicsPaint;
+      } else {
+        localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
+      }
       float f1 = this.jdField_d_of_type_Int / 2;
-      float f2 = (i + 1) * k;
-      float f3 = localPaint.measureText(this.jdField_a_of_type_ArrayOfJavaLangString[i]) / 2.0F;
-      paramCanvas.drawText(this.jdField_a_of_type_ArrayOfJavaLangString[i], f1, f2 - f3, localPaint);
-      i += 1;
-      break label32;
-      break;
+      j = i + 1;
+      float f2 = m * j;
+      float f3 = ((Paint)localObject).measureText(this.jdField_a_of_type_ArrayOfJavaLangString[i]) / 2.0F;
+      paramCanvas.drawText(this.jdField_a_of_type_ArrayOfJavaLangString[i], f1, f2 - f3, (Paint)localObject);
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     a(paramCanvas);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_d_of_type_Int = getWidth();
     this.e = getHeight();
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i = 0;
     super.onMeasure(paramInt1, paramInt2);
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds("W", 0, 1, localRect);
-    int j = localRect.width();
+    Object localObject = new Rect();
+    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    int i = 0;
+    localPaint.getTextBounds("W", 0, 1, (Rect)localObject);
+    int j = ((Rect)localObject).width();
     int k = (int)this.jdField_d_of_type_Float;
-    int i1 = localRect.height();
+    int i1 = ((Rect)localObject).height();
     int i2 = (int)this.jdField_d_of_type_Float;
     int m = getPaddingLeft();
     int n = getPaddingRight();
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {}
-    for (;;)
-    {
-      i1 = getPaddingTop();
-      i2 = getPaddingBottom();
-      setMeasuredDimension(a(paramInt1, j + k + m + n), a(paramInt2, i + i1 + i2));
-      return;
-      i = this.jdField_a_of_type_ArrayOfJavaLangString.length * (i1 + i2);
+    localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+    if (localObject != null) {
+      i = (i1 + i2) * localObject.length;
     }
+    i1 = getPaddingTop();
+    i2 = getPaddingBottom();
+    setMeasuredDimension(a(paramInt1, m + (j + k) + n), a(paramInt2, i1 + i + i2));
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
     int j = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getY();
     int k = this.jdField_a_of_type_Int;
-    int i = -1;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      i = (int)(f1 / this.e * this.jdField_a_of_type_ArrayOfJavaLangString.length);
+    Object localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+    int i;
+    if (localObject != null) {
+      i = (int)(f1 / this.e * localObject.length);
+    } else {
+      i = -1;
     }
-    switch (j)
+    if (j != 0)
     {
-    default: 
-      bool = false;
-    }
-    do
-    {
-      return bool;
+      if (j != 1)
+      {
+        if (j == 2) {
+          break label101;
+        }
+        if (j != 3) {
+          return false;
+        }
+      }
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar$OnIndexBarTouchListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar$OnIndexBarTouchListener.c(false);
+      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar$OnIndexBarTouchListener;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.c(false);
       }
       invalidate();
       return true;
-      if (k != i)
-      {
-        if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (i >= 0) && (i < this.jdField_a_of_type_ArrayOfJavaLangString.length))
-        {
-          this.jdField_a_of_type_Int = i;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar$OnIndexBarTouchListener != null)
-          {
-            Rect localRect = new Rect();
-            this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int], 0, this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int].length(), localRect);
-            k = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-            f1 = this.e / k * (this.jdField_a_of_type_Int + 1);
-            float f2 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int]) / 2.0F;
-            this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar$OnIndexBarTouchListener.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], j, f1 - f2);
-          }
-        }
-        invalidate();
-      }
-    } while (paramMotionEvent.getAction() != 0);
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar$OnIndexBarTouchListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar$OnIndexBarTouchListener.c(true);
     }
-    invalidate();
+    label101:
+    if (k != i)
+    {
+      localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+      if ((localObject != null) && (i >= 0) && (i < localObject.length))
+      {
+        this.jdField_a_of_type_Int = i;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar$OnIndexBarTouchListener != null)
+        {
+          localObject = new Rect();
+          Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+          String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+          k = this.jdField_a_of_type_Int;
+          localPaint.getTextBounds(arrayOfString[k], 0, arrayOfString[k].length(), (Rect)localObject);
+          localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+          k = localObject.length;
+          k = this.e / k;
+          int m = this.jdField_a_of_type_Int;
+          f1 = k * (m + 1);
+          float f2 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(localObject[m]) / 2.0F;
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar$OnIndexBarTouchListener.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], j, f1 - f2);
+        }
+      }
+      invalidate();
+    }
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar$OnIndexBarTouchListener;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.c(true);
+      }
+      invalidate();
+    }
     return true;
   }
   
@@ -237,7 +250,7 @@ public class IndexBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.IndexBar
  * JD-Core Version:    0.7.0.1
  */

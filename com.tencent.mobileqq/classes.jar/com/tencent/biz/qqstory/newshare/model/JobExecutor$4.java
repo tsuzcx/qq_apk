@@ -7,12 +7,13 @@ class JobExecutor$4
   
   public void run()
   {
-    this.a.a(this.a.b());
+    Job localJob = this.a;
+    localJob.a(localJob.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.JobExecutor.4
  * JD-Core Version:    0.7.0.1
  */

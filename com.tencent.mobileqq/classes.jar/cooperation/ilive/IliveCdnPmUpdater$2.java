@@ -10,15 +10,18 @@ class IliveCdnPmUpdater$2
   
   public Boolean a()
   {
-    if ((IliveCdnPmUpdater.a(this.jdField_a_of_type_CooperationIliveIliveCdnPmUpdater).exists()) && (this.jdField_a_of_type_JavaIoFile == IliveCdnPmUpdater.a(this.jdField_a_of_type_CooperationIliveIliveCdnPmUpdater))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    boolean bool;
+    if ((IliveCdnPmUpdater.a(this.jdField_a_of_type_CooperationIliveIliveCdnPmUpdater).exists()) && (this.jdField_a_of_type_JavaIoFile == IliveCdnPmUpdater.a(this.jdField_a_of_type_CooperationIliveIliveCdnPmUpdater))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return Boolean.valueOf(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IliveCdnPmUpdater.2
  * JD-Core Version:    0.7.0.1
  */

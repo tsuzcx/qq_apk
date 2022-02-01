@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,8 +18,9 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.av.utils.AVUtil;
 import com.tencent.av.utils.PopupDialog;
-import com.tencent.av.wtogether.adapter.QVideoGroupFileExpandableListAdapter.UIEvent;
+import com.tencent.av.wtogether.callback.GroupFileClickListener;
 import com.tencent.av.wtogether.data.ChooseFileInfo;
+import com.tencent.av.wtogether.util.WTBusinessForWebPlugin;
 import com.tencent.av.wtogether.view.GroupFileSearchDialog;
 import com.tencent.av.wtogether.view.GroupFileSearchDialog.ClickListener;
 import com.tencent.av.wtogether.view.QBaseContentView;
@@ -28,6 +28,7 @@ import com.tencent.av.wtogether.view.QGroupAVFileListContentView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -36,24 +37,23 @@ import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQBlurView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.ListView;
+import java.util.Stack;
 
 public class AVGroupFileSelectFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, QVideoGroupFileExpandableListAdapter.UIEvent, GroupFileSearchDialog.ClickListener
+  implements View.OnClickListener, GroupFileClickListener, GroupFileSearchDialog.ClickListener
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private Dialog jdField_a_of_type_AndroidAppDialog = null;
-  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ChooseFileInfo jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = new ChooseFileInfo(1);
   private QBaseContentView jdField_a_of_type_ComTencentAvWtogetherViewQBaseContentView;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private QQBlurView jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
   private String jdField_a_of_type_JavaLangString;
@@ -83,33 +83,36 @@ public class AVGroupFileSelectFragment
   
   private void a(ListView paramListView)
   {
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    localRelativeLayout.addView(new View(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity), new RelativeLayout.LayoutParams(-1, AIOUtils.a(50.0F, getResources())));
-    paramListView.addFooterView(localRelativeLayout);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null)
+    Object localObject = new RelativeLayout(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    ((RelativeLayout)localObject).addView(new View(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity), new RelativeLayout.LayoutParams(-1, AIOUtils.b(50.0F, getResources())));
+    paramListView.addFooterView((View)localObject);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
+      ((QQBlurView)localObject).c();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381097));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380356));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(paramListView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView);
+    paramListView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    paramListView.b(paramListView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c(-1);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(new ColorDrawable(Color.parseColor("#E5EBEDF5")));
     paramListView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
-    if (Build.VERSION.SDK_INT >= 24) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramListView.setEnableBlur(bool);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setDisableBlurDrawableRes(2130850501);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
-      return;
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramListView.setEnableBlur(bool);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setDisableBlurDrawableRes(2130850581);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
   }
   
   private void c()
@@ -123,12 +126,12 @@ public class AVGroupFileSelectFragment
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363406));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369534));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363338));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369249));
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378916));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370464));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131381801));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378304));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370123));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131381023));
   }
   
   private void e()
@@ -140,7 +143,7 @@ public class AVGroupFileSelectFragment
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentAvWtogetherViewQBaseContentView = new QGroupAVFileListContentView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentAvWtogetherViewQBaseContentView = new QGroupAVFileListContentView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this, this.jdField_a_of_type_Long);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_a_of_type_ComTencentAvWtogetherViewQBaseContentView.a();
     a(this.jdField_a_of_type_ComTencentAvWtogetherViewQBaseContentView.a());
@@ -149,10 +152,11 @@ public class AVGroupFileSelectFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
+    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+    if (localBaseActivity != null)
     {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.superFinish();
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(2130772236, 2130772239);
+      localBaseActivity.superFinish();
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.overridePendingTransition(2130772265, 2130772268);
       QLog.d("AVGroupFileSelectFragment", 2, "finish");
     }
   }
@@ -164,16 +168,19 @@ public class AVGroupFileSelectFragment
     paramChooseFileInfo.jdField_c_of_type_Long = AVUtil.a(this.jdField_b_of_type_JavaLangString);
     if (!AppNetConnInfo.isWifiConn())
     {
-      PopupDialog.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230, null, getString(2131695967), 2131690800, 2131691684, new AVGroupFileSelectFragment.1(this, paramChooseFileInfo), new AVGroupFileSelectFragment.2(this));
+      PopupDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, null, getString(2131695982), 2131690728, 2131691606, new AVGroupFileSelectFragment.1(this, paramChooseFileInfo), new AVGroupFileSelectFragment.2(this));
       return;
     }
-    QLog.d("AVGroupFileSelectFragment", 1, "enter video " + paramChooseFileInfo);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("watch_together_uinType", this.jdField_b_of_type_Int);
-    localIntent.putExtra("watch_together_uin", this.jdField_b_of_type_JavaLangString);
-    localIntent.putExtra("ChooseFileInfo", paramChooseFileInfo);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.superFinish();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("enter video ");
+    ((StringBuilder)localObject).append(paramChooseFileInfo);
+    QLog.d("AVGroupFileSelectFragment", 1, ((StringBuilder)localObject).toString());
+    localObject = new Intent();
+    ((Intent)localObject).putExtra("watch_together_uinType", this.jdField_b_of_type_Int);
+    ((Intent)localObject).putExtra("watch_together_uin", this.jdField_b_of_type_JavaLangString);
+    ((Intent)localObject).putExtra("ChooseFileInfo", paramChooseFileInfo);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, (Intent)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.superFinish();
   }
   
   public void a(FileManagerEntity paramFileManagerEntity)
@@ -182,32 +189,35 @@ public class AVGroupFileSelectFragment
     {
       this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_b_of_type_Long = paramFileManagerEntity.TroopUin;
       this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_c_of_type_Int = paramFileManagerEntity.busId;
-      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_a_of_type_JavaLangString = "/";
-      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_b_of_type_JavaLangString = paramFileManagerEntity.Uuid;
+      localObject = this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo;
+      ((ChooseFileInfo)localObject).jdField_a_of_type_JavaLangString = "/";
+      ((ChooseFileInfo)localObject).jdField_b_of_type_JavaLangString = paramFileManagerEntity.Uuid;
       this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_c_of_type_JavaLangString = paramFileManagerEntity.strFileMd5;
       this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_d_of_type_Long = paramFileManagerEntity.fileSize;
       this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_d_of_type_JavaLangString = paramFileManagerEntity.fileName;
     }
-    Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
-    if (paramFileManagerEntity != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localButton.setEnabled(bool);
-      return;
+    Object localObject = this.jdField_a_of_type_AndroidWidgetButton;
+    boolean bool;
+    if (paramFileManagerEntity != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    ((Button)localObject).setEnabled(bool);
   }
   
   protected void b()
   {
     this.jdField_a_of_type_ComTencentAvWtogetherViewQBaseContentView.d();
-    this.jdField_a_of_type_AndroidAppDialog = new GroupFileSearchDialog(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, this);
-    this.jdField_a_of_type_AndroidAppDialog.setTitle(HardCodeUtil.a(2131715195));
+    this.jdField_a_of_type_AndroidAppDialog = new GroupFileSearchDialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, this);
+    this.jdField_a_of_type_AndroidAppDialog.setTitle(HardCodeUtil.a(2131715118));
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
     int i = this.jdField_b_of_type_AndroidWidgetTextView.getHeight();
-    TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -i);
+    float f = -i;
+    TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, f);
     localTranslateAnimation1.setDuration(200L);
     localTranslateAnimation1.setFillAfter(true);
-    TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
+    TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, f, 0.0F);
     localTranslateAnimation2.setDuration(200L);
     localTranslateAnimation1.setAnimationListener(new AVGroupFileSelectFragment.3(this));
     localTranslateAnimation2.setAnimationListener(new AVGroupFileSelectFragment.4(this, i));
@@ -225,34 +235,37 @@ public class AVGroupFileSelectFragment
   {
     if ((paramInt2 == -1) && (paramInt1 == 9999) && (paramIntent != null))
     {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.setResult(-1, paramIntent);
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.superFinish();
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, paramIntent);
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.superFinish();
     }
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131363338)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      a();
-      continue;
+      if (i != 2131378304)
+      {
+        if (i != 2131381023) {
+          return;
+        }
+        a(this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
+        ReportController.b(null, "dc00898", "", "", "0X800B628", "0X800B628", 0, 0, "", "", "", "");
+        return;
+      }
       c();
-      continue;
-      a(this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
-      ReportController.b(null, "dc00898", "", "", "0X800B628", "0X800B628", 0, 0, "", "", "", "");
+      return;
     }
+    a();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
-    paramBundle = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getBaseActivity();
+    WTBusinessForWebPlugin.a.push(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
     if (paramBundle == null)
     {
       QLog.e("AVGroupFileSelectFragment", 2, "intent is null");
@@ -264,17 +277,15 @@ public class AVGroupFileSelectFragment
     this.jdField_a_of_type_Int = paramBundle.getIntExtra("key_from_type", 0);
     this.jdField_b_of_type_Int = paramBundle.getIntExtra("watch_together_uinType", -1);
     this.jdField_b_of_type_JavaLangString = paramBundle.getStringExtra("watch_together_uin");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getAppInterface());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppInterface());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559920, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559790, null);
     d();
     e();
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-    return paramLayoutInflater;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void onDestroy()
@@ -282,6 +293,7 @@ public class AVGroupFileSelectFragment
     QLog.i("AVGroupFileSelectFragment", 2, "onDestroy");
     this.jdField_a_of_type_ComTencentAvWtogetherViewQBaseContentView.b();
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_ComTencentAvWtogetherViewQBaseContentView);
+    WTBusinessForWebPlugin.a.pop();
     super.onDestroy();
   }
   
@@ -319,7 +331,7 @@ public class AVGroupFileSelectFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.fragment.AVGroupFileSelectFragment
  * JD-Core Version:    0.7.0.1
  */

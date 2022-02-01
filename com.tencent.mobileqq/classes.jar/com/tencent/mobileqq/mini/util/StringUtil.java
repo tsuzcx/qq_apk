@@ -15,8 +15,10 @@ public class StringUtil
     int i = 0;
     while (i < m)
     {
-      int k = Character.digit(paramString[(i * 2)], 16) << 4 | Character.digit(paramString[(i * 2 + 1)], 16);
-      int j = k;
+      int j = i * 2;
+      int k = Character.digit(paramString[j], 16);
+      k = Character.digit(paramString[(j + 1)], 16) | k << 4;
+      j = k;
       if (k > 127) {
         j = k - 256;
       }
@@ -61,35 +63,46 @@ public class StringUtil
     localStringBuilder.append("\"");
     int j = paramString.length();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramString.charAt(i);
-      switch (c)
+      if (c != '\f')
       {
-      default: 
-        if (c <= '\037') {
-          localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+        if (c != '\r')
+        {
+          if ((c != '"') && (c != '/') && (c != '\\')) {}
+          switch (c)
+          {
+          default: 
+            if (c <= '\037') {
+              localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+            } else {
+              localStringBuilder.append(c);
+            }
+            break;
+          case '\n': 
+            localStringBuilder.append("\\n");
+            break;
+          case '\t': 
+            localStringBuilder.append("\\t");
+            break;
+          case '\b': 
+            localStringBuilder.append("\\b");
+            break;
+            localStringBuilder.append('\\');
+            localStringBuilder.append(c);
+            break;
+          }
         }
-        break;
+        else
+        {
+          localStringBuilder.append("\\r");
+        }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append('\\').append(c);
-        continue;
-        localStringBuilder.append("\\t");
-        continue;
-        localStringBuilder.append("\\b");
-        continue;
-        localStringBuilder.append("\\n");
-        continue;
-        localStringBuilder.append("\\r");
-        continue;
+      else {
         localStringBuilder.append("\\f");
-        continue;
-        localStringBuilder.append(c);
       }
+      i += 1;
     }
     localStringBuilder.append("\"");
     return localStringBuilder.toString();
@@ -109,7 +122,7 @@ public class StringUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.StringUtil
  * JD-Core Version:    0.7.0.1
  */

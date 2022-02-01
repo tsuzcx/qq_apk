@@ -26,17 +26,20 @@ public class MusicPlayerHandler
   
   private long a()
   {
-    long l = 0L;
     String str;
-    if (!TextUtils.isEmpty("8.5.5")) {
-      str = "8.5.5".replace(".", "");
+    if (!TextUtils.isEmpty("8.7.0")) {
+      str = "8.7.0".replace(".", "");
     }
     try
     {
-      l = Long.parseLong(str);
+      long l = Long.parseLong(str);
       return l;
     }
-    catch (NumberFormatException localNumberFormatException) {}
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label25:
+      break label25;
+    }
     return 0L;
   }
   
@@ -50,21 +53,24 @@ public class MusicPlayerHandler
         paramToServiceMsg = new MusicSongInfoMatch.CMsgResponse();
         paramToServiceMsg.mergeFrom(paramFromServiceMsg);
         paramFromServiceMsg = new String(paramToServiceMsg.data.get().toByteArray());
-      }
-      switch (paramToServiceMsg.reqtype.get())
-      {
-      case 1: 
+        int i = paramToServiceMsg.reqtype.get();
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              return;
+            }
+            notifyUI(83, true, paramFromServiceMsg);
+            return;
+          }
+          notifyUI(82, true, paramFromServiceMsg);
+          return;
+        }
         notifyUI(81, true, paramFromServiceMsg);
         return;
-      case 2: 
-        notifyUI(82, true, paramFromServiceMsg);
-        return;
-      case 3: 
-        notifyUI(83, true, paramFromServiceMsg);
-        return;
-        notifyUI(81, false, null);
-        return;
       }
+      notifyUI(81, false, null);
       return;
     }
     catch (Exception paramToServiceMsg) {}
@@ -141,20 +147,17 @@ public class MusicPlayerHandler
     localCMsgRequest.urlparams.add(localParamPair2);
     if (paramBoolean) {
       localCMsgRequest.reqtype.set(2);
-    }
-    for (;;)
-    {
-      localCMsgRequest.uin.set(paramLong1);
-      localCMsgRequest.ct.set(1008L);
-      localCMsgRequest.cv.set(a());
-      localToServiceMsg.putWupBuffer(localCMsgRequest.toByteArray());
-      sendPbReq(localToServiceMsg);
-      return;
+    } else {
       localCMsgRequest.reqtype.set(3);
     }
+    localCMsgRequest.uin.set(paramLong1);
+    localCMsgRequest.ct.set(1008L);
+    localCMsgRequest.cv.set(a());
+    localToServiceMsg.putWupBuffer(localCMsgRequest.toByteArray());
+    sendPbReq(localToServiceMsg);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return MusicPlayerActivity.MusicPlayerObserver.class;
   }
@@ -168,7 +171,7 @@ public class MusicPlayerHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,28 @@
 package com.tencent.mobileqq.scribble;
 
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.msg.api.IMessageRecordFactory;
 import com.tencent.mobileqq.pic.DownCallBack;
 import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class ScribbleBaseOperator
 {
-  public QQAppInterface a;
+  public AppRuntime a;
   
-  public ScribbleBaseOperator(QQAppInterface paramQQAppInterface)
+  public ScribbleBaseOperator(AppRuntime paramAppRuntime)
   {
-    this.a = paramQQAppInterface;
+    this.a = paramAppRuntime;
   }
   
   public MessageForScribble a(MessageForScribble paramMessageForScribble)
   {
-    MessageForScribble localMessageForScribble = (MessageForScribble)MessageRecordFactory.a(paramMessageForScribble);
+    MessageForScribble localMessageForScribble = (MessageForScribble)((IMessageRecordFactory)QRoute.api(IMessageRecordFactory.class)).createResendMsg(paramMessageForScribble);
     if (localMessageForScribble == null) {
       QLog.e("CreateResendScribbleMsg", 2, "null msg");
     }
@@ -39,8 +40,8 @@ public class ScribbleBaseOperator
   
   public MessageForScribble a(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, int paramInt3)
   {
-    MessageForScribble localMessageForScribble = (MessageForScribble)MessageRecordFactory.a(-7001);
-    MessageRecordFactory.a(this.a, localMessageForScribble, paramString3, paramString3, paramInt2);
+    MessageForScribble localMessageForScribble = (MessageForScribble)((IMessageRecordFactory)QRoute.api(IMessageRecordFactory.class)).createMsgRecordByMsgType(-7001);
+    ((IMessageRecordFactory)QRoute.api(IMessageRecordFactory.class)).setSendingMsgRecordBaseInfo(this.a, localMessageForScribble, paramString3, paramString3, paramInt2);
     localMessageForScribble.msgtype = -7001;
     localMessageForScribble.offSet = paramInt1;
     localMessageForScribble.gifId = paramInt3;
@@ -70,7 +71,7 @@ public class ScribbleBaseOperator
     localTransferRequest.mUniseq = paramMessageForScribble.uniseq;
     localTransferRequest.mDownCallBack = paramDownCallBack;
     localTransferRequest.mRec = paramMessageForScribble;
-    ((ITransFileController)this.a.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
+    ((ITransFileController)this.a.getRuntimeService(ITransFileController.class, "")).transferAsync(localTransferRequest);
     return true;
   }
   
@@ -87,13 +88,13 @@ public class ScribbleBaseOperator
     localTransferRequest.mLocalPath = paramString;
     localTransferRequest.mRec = paramMessageForScribble;
     paramMessageForScribble.fileUploadStatus = 3;
-    ((ITransFileController)this.a.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
+    ((ITransFileController)this.a.getRuntimeService(ITransFileController.class, "")).transferAsync(localTransferRequest);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleBaseOperator
  * JD-Core Version:    0.7.0.1
  */

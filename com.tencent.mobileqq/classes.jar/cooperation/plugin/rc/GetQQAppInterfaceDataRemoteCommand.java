@@ -21,24 +21,24 @@ public class GetQQAppInterfaceDataRemoteCommand
   {
     int i = paramBundle.getInt("param_data_type", 0);
     paramOnInvokeFinishLinstener = new Bundle();
-    switch (i)
+    if (i != 1)
     {
-    default: 
-      return paramOnInvokeFinishLinstener;
-    case 1: 
-      paramBundle = paramBundle.getString("param_uin");
-      paramOnInvokeFinishLinstener.putString("result_key", ContactUtils.h(this.a, paramBundle));
+      if (i != 2) {
+        return paramOnInvokeFinishLinstener;
+      }
+      String str = paramBundle.getString("param_uin");
+      boolean bool = paramBundle.getBoolean("param_fetch_if_not_exist", false);
+      paramOnInvokeFinishLinstener.putString("result_key", ContactUtils.a(this.a, str, bool));
       return paramOnInvokeFinishLinstener;
     }
-    String str = paramBundle.getString("param_uin");
-    boolean bool = paramBundle.getBoolean("param_fetch_if_not_exist", false);
-    paramOnInvokeFinishLinstener.putString("result_key", ContactUtils.c(this.a, str, bool));
+    paramBundle = paramBundle.getString("param_uin");
+    paramOnInvokeFinishLinstener.putString("result_key", ContactUtils.e(this.a, paramBundle));
     return paramOnInvokeFinishLinstener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.rc.GetQQAppInterfaceDataRemoteCommand
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,35 @@ class QavPanel$7
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.this$0.jdField_a_of_type_ArrayOfComTencentAvUiNormalMenuView[this.jdField_a_of_type_Int] == null)) {
-      return;
-    }
-    if (this.jdField_a_of_type_Int != this.this$0.b)
+    if (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-      QLog.w(this.this$0.jdField_a_of_type_JavaLangString, 1, "doShowAnimation, invalid menuType[" + this.jdField_a_of_type_Int + "], curMenuType[" + this.this$0.b + "], seq[" + this.jdField_a_of_type_Long + "]");
-      return;
+      Object localObject = this.this$0.jdField_a_of_type_ArrayOfComTencentAvUiNormalMenuView;
+      int i = this.jdField_a_of_type_Int;
+      if (localObject[i] == null) {
+        return;
+      }
+      if (i != this.this$0.b)
+      {
+        localObject = this.this$0.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("doShowAnimation, invalid menuType[");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append("], curMenuType[");
+        localStringBuilder.append(this.this$0.b);
+        localStringBuilder.append("], seq[");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append("]");
+        QLog.w((String)localObject, 1, localStringBuilder.toString());
+        return;
+      }
+      this.this$0.jdField_a_of_type_ArrayOfComTencentAvUiNormalMenuView[this.jdField_a_of_type_Int].a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(123), Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long) });
     }
-    this.this$0.jdField_a_of_type_ArrayOfComTencentAvUiNormalMenuView[this.jdField_a_of_type_Int].a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(123), Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavPanel.7
  * JD-Core Version:    0.7.0.1
  */

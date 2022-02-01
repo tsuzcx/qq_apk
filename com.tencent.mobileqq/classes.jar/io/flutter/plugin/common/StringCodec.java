@@ -21,14 +21,16 @@ public final class StringCodec
     {
       arrayOfByte = paramByteBuffer.array();
       i = paramByteBuffer.arrayOffset();
+      paramByteBuffer = arrayOfByte;
     }
-    for (paramByteBuffer = arrayOfByte;; paramByteBuffer = arrayOfByte)
+    else
     {
-      return new String(paramByteBuffer, i, j, UTF8);
       arrayOfByte = new byte[j];
       paramByteBuffer.get(arrayOfByte);
       i = 0;
+      paramByteBuffer = arrayOfByte;
     }
+    return new String(paramByteBuffer, i, j, UTF8);
   }
   
   public ByteBuffer encodeMessage(String paramString)
@@ -44,7 +46,7 @@ public final class StringCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.StringCodec
  * JD-Core Version:    0.7.0.1
  */

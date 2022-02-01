@@ -20,7 +20,7 @@ class ARLocalFaceRecog$1$1
       QLog.d("AREngine_ARLocalFaceRecog", 2, "SUB_MSG_EXTRACT_FACE_FEATRUE start ");
     }
     int i = 0;
-    if (i < this.jdField_a_of_type_Int)
+    while (i < this.jdField_a_of_type_Int)
     {
       if ((this.jdField_a_of_type_Array2dOfFloat[i] != null) && (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_c_of_type_Boolean))
       {
@@ -33,135 +33,138 @@ class ARLocalFaceRecog$1$1
         ARFaceDataCollector.c(l);
         if (QLog.isColorLevel())
         {
-          QLog.d("AREngine_ARLocalFaceRecog", 2, "[DEBUG_SCAN_yt_face]SUB_MSG_EXTRACT_FACE_FEATRUE  calcuFaceFeature[TimeCost] = " + l);
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("[DEBUG_SCAN_yt_face]SUB_MSG_EXTRACT_FACE_FEATRUE  calcuFaceFeature[TimeCost] = ");
+          ((StringBuilder)???).append(l);
+          QLog.d("AREngine_ARLocalFaceRecog", 2, ((StringBuilder)???).toString());
           ARDebugReport.a().d(l);
-          if (this.b[i] != null) {
-            QLog.d("AREngine_ARLocalFaceRecog", 2, "  calcuFaceFeature feature = " + Arrays.toString(this.b[i]));
+          if (this.b[i] != null)
+          {
+            ??? = new StringBuilder();
+            ((StringBuilder)???).append("  calcuFaceFeature feature = ");
+            ((StringBuilder)???).append(Arrays.toString(this.b[i]));
+            QLog.d("AREngine_ARLocalFaceRecog", 2, ((StringBuilder)???).toString());
           }
         }
       }
-      for (;;)
+      else if (QLog.isColorLevel())
       {
-        i += 1;
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARLocalFaceRecog", 2, "SUB_MSG_EXTRACT_FACE_FEATRUE  faceShape is null i = " + i);
-        }
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("SUB_MSG_EXTRACT_FACE_FEATRUE  faceShape is null i = ");
+        ((StringBuilder)???).append(i);
+        QLog.d("AREngine_ARLocalFaceRecog", 2, ((StringBuilder)???).toString());
       }
+      i += 1;
     }
-    for (;;)
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_a_of_type_JavaLangObject)
     {
-      ARLocalFaceRecog.FaceInfo localFaceInfo1;
-      ARLocalFaceRecog.FaceInfo localFaceInfo2;
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_a_of_type_JavaLangObject)
-      {
-        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_a_of_type_JavaUtilList;
-        i = ((List)localObject2).size();
-        if ((i > 0) && (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_c_of_type_Boolean))
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_a_of_type_JavaUtilList;
+      i = ((List)localObject2).size();
+      if ((i > 0) && (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_c_of_type_Boolean)) {
+        if (i == 1)
         {
-          if (i != 1) {
-            continue;
-          }
           localObject2 = (ARLocalFaceRecog.FaceInfo)((List)localObject2).get(0);
           if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a((ARLocalFaceRecog.FaceInfo)localObject2, this.b, this.jdField_a_of_type_Array2dOfFloat)) && (ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
             ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_b_of_type_JavaUtilList);
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.f = 10;
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARLocalFaceRecog", 2, "SUB_MSG_EXTRACT_FACE_FEATRUE end ,clear tmpFace");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.e = false;
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARLocalFaceRecog", 2, "SUB_MSG_EXTRACT_FACE_FEATRUE  finish");
-        }
-        return;
-        if (i != 2) {
-          continue;
-        }
-        localFaceInfo1 = (ARLocalFaceRecog.FaceInfo)((List)localObject2).get(0);
-        localFaceInfo2 = (ARLocalFaceRecog.FaceInfo)((List)localObject2).get(1);
-        if ((!localFaceInfo1.jdField_a_of_type_Boolean) && (localFaceInfo2.jdField_a_of_type_Boolean))
+        else if (i == 2)
         {
-          if ((!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(localFaceInfo1, this.b, this.jdField_a_of_type_Array2dOfFloat)) || (!ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
-            continue;
-          }
-          ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        }
-      }
-      if ((localFaceInfo1.jdField_a_of_type_Boolean) && (!localFaceInfo2.jdField_a_of_type_Boolean))
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(localFaceInfo2, this.b, this.jdField_a_of_type_Array2dOfFloat)) && (ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
-          ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        }
-      }
-      else if ((!localFaceInfo1.jdField_a_of_type_Boolean) && (!localFaceInfo2.jdField_a_of_type_Boolean))
-      {
-        i = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(this.b, localFaceInfo1.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.feature);
-        int j = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(this.b, localFaceInfo2.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.feature);
-        if ((i < 0) && (j < 0)) {}
-        for (;;)
-        {
-          if ((!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(localList)) || (!ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
-            break label1029;
-          }
-          ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-          break;
-          if ((i >= 0) && (j < 0))
+          ARLocalFaceRecog.FaceInfo localFaceInfo1 = (ARLocalFaceRecog.FaceInfo)((List)localObject2).get(0);
+          ARLocalFaceRecog.FaceInfo localFaceInfo2 = (ARLocalFaceRecog.FaceInfo)((List)localObject2).get(1);
+          if ((!localFaceInfo1.jdField_a_of_type_Boolean) && (localFaceInfo2.jdField_a_of_type_Boolean))
           {
-            localFaceInfo1.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[i];
-            localFaceInfo1.jdField_a_of_type_Boolean = true;
-          }
-          else if ((i < 0) && (j >= 0))
-          {
-            localFaceInfo2.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[j];
-            localFaceInfo2.jdField_a_of_type_Boolean = true;
-          }
-          else if (i == j)
-          {
-            float f1 = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.calcuSimilarity(this.b[i], localFaceInfo1.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.feature);
-            float f2 = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.calcuSimilarity(this.b[j], localFaceInfo2.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.feature);
-            if (QLog.isColorLevel()) {
-              QLog.d("AREngine_ARLocalFaceRecog", 2, "SUB_MSG_EXTRACT_FACE_FEATRUE  similarity1  = " + f1 + ",similarity2 = " + f2);
-            }
-            if (f1 > f2)
-            {
-              localFaceInfo1.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[i];
-              localFaceInfo1.jdField_a_of_type_Boolean = true;
-              this.b[i] = null;
-              this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(localFaceInfo2, this.b, this.jdField_a_of_type_Array2dOfFloat);
-            }
-            else
-            {
-              localFaceInfo2.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[j];
-              localFaceInfo2.jdField_a_of_type_Boolean = true;
-              this.b[j] = null;
-              this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(localFaceInfo1, this.b, this.jdField_a_of_type_Array2dOfFloat);
+            if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(localFaceInfo1, this.b, this.jdField_a_of_type_Array2dOfFloat)) && (ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
+              ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
             }
           }
-          else
+          else if ((localFaceInfo1.jdField_a_of_type_Boolean) && (!localFaceInfo2.jdField_a_of_type_Boolean))
           {
-            localFaceInfo1.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[i];
-            localFaceInfo1.jdField_a_of_type_Boolean = true;
-            localFaceInfo2.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[j];
-            localFaceInfo2.jdField_a_of_type_Boolean = true;
+            if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(localFaceInfo2, this.b, this.jdField_a_of_type_Array2dOfFloat)) && (ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
+              ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+            }
+          }
+          else if ((!localFaceInfo1.jdField_a_of_type_Boolean) && (!localFaceInfo2.jdField_a_of_type_Boolean))
+          {
+            i = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(this.b, localFaceInfo1.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.feature);
+            int j = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(this.b, localFaceInfo2.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.feature);
+            if ((i >= 0) || (j >= 0)) {
+              if ((i >= 0) && (j < 0))
+              {
+                localFaceInfo1.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[i];
+                localFaceInfo1.jdField_a_of_type_Boolean = true;
+              }
+              else if ((i < 0) && (j >= 0))
+              {
+                localFaceInfo2.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[j];
+                localFaceInfo2.jdField_a_of_type_Boolean = true;
+              }
+              else if (i == j)
+              {
+                float f1 = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.calcuSimilarity(this.b[i], localFaceInfo1.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.feature);
+                float f2 = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.calcuSimilarity(this.b[j], localFaceInfo2.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.feature);
+                if (QLog.isColorLevel())
+                {
+                  StringBuilder localStringBuilder = new StringBuilder();
+                  localStringBuilder.append("SUB_MSG_EXTRACT_FACE_FEATRUE  similarity1  = ");
+                  localStringBuilder.append(f1);
+                  localStringBuilder.append(",similarity2 = ");
+                  localStringBuilder.append(f2);
+                  QLog.d("AREngine_ARLocalFaceRecog", 2, localStringBuilder.toString());
+                }
+                if (f1 > f2)
+                {
+                  localFaceInfo1.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[i];
+                  localFaceInfo1.jdField_a_of_type_Boolean = true;
+                  this.b[i] = null;
+                  this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(localFaceInfo2, this.b, this.jdField_a_of_type_Array2dOfFloat);
+                }
+                else
+                {
+                  localFaceInfo2.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[j];
+                  localFaceInfo2.jdField_a_of_type_Boolean = true;
+                  this.b[j] = null;
+                  this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(localFaceInfo1, this.b, this.jdField_a_of_type_Array2dOfFloat);
+                }
+              }
+              else
+              {
+                localFaceInfo1.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[i];
+                localFaceInfo1.jdField_a_of_type_Boolean = true;
+                localFaceInfo2.jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys = this.jdField_a_of_type_Array2dOfFloat[j];
+                localFaceInfo2.jdField_a_of_type_Boolean = true;
+              }
+            }
+            if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a((List)localObject2)) && (ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
+              ARLocalFaceRecog.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.d("AREngine_ARLocalFaceRecog", 2, "SUB_MSG_EXTRACT_FACE_FEATRUE  calc error status");
           }
         }
       }
-      else
-      {
-        label1029:
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARLocalFaceRecog", 2, "SUB_MSG_EXTRACT_FACE_FEATRUE  calc error status");
-        }
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.jdField_b_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.f = 10;
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "SUB_MSG_EXTRACT_FACE_FEATRUE end ,clear tmpFace");
       }
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog$1.a.e = false;
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "SUB_MSG_EXTRACT_FACE_FEATRUE  finish");
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalFaceRecog.1.1
  * JD-Core Version:    0.7.0.1
  */

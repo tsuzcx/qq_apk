@@ -58,171 +58,151 @@ public class WTFileInfo
   
   public WTFileInfo(WTogetherCommon.VideoInfoRsp paramVideoInfoRsp)
   {
-    String str5;
+    int m = paramVideoInfoRsp.video_src_type.get();
+    int k = 3;
+    String str = null;
     Object localObject1;
-    Object localObject3;
-    String str2;
-    Object localObject4;
     Object localObject2;
-    String str1;
-    String str3;
-    String str4;
-    int m;
+    Object localObject6;
+    Object localObject7;
     long l;
-    int k;
-    switch (paramVideoInfoRsp.video_src_type.get())
+    Object localObject8;
+    Object localObject5;
+    Object localObject3;
+    Object localObject4;
+    if (m != 0)
     {
-    default: 
-      str5 = null;
-      localObject1 = null;
-      localObject3 = null;
-      str2 = null;
-      localObject4 = null;
-      localObject2 = null;
-      str1 = null;
-      str3 = null;
-      str4 = null;
-      m = 1;
-      l = 0L;
-      paramVideoInfoRsp = null;
-      k = 0;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = m;
-      this.jdField_a_of_type_JavaLangString = ((String)localObject4);
-      this.jdField_b_of_type_JavaLangString = str5;
-      this.jdField_c_of_type_JavaLangString = str4;
-      this.jdField_d_of_type_JavaLangString = str3;
-      this.e = str2;
-      this.f = str1;
-      this.g = ((String)localObject3);
-      this.h = ((String)localObject2);
-      this.i = ((String)localObject1);
-      this.jdField_b_of_type_Int = k;
-      this.j = paramVideoInfoRsp;
-      this.jdField_a_of_type_Long = l;
-      this.jdField_d_of_type_Int = 0;
-      return;
-      m = 0;
-      localObject1 = (WTogetherCommon.QQFileInfo)paramVideoInfoRsp.qqfile_info.get();
-      localObject4 = paramVideoInfoRsp.title.get();
-      str5 = ((WTogetherCommon.QQFileInfo)localObject1).file_uuid.get();
-      str4 = ((WTogetherCommon.QQFileInfo)localObject1).file_id.get();
-      paramVideoInfoRsp = null;
-      k = 0;
-      localObject1 = null;
-      localObject2 = null;
-      localObject3 = null;
-      str1 = null;
-      str2 = null;
-      str3 = null;
-      l = 0L;
-      continue;
-      localObject1 = (WTogetherCommon.DirectUrlInfo)paramVideoInfoRsp.direct_url_info.get();
-      localObject4 = paramVideoInfoRsp.title.get();
-      str3 = ((WTogetherCommon.DirectUrlInfo)localObject1).url.get();
-      str2 = ((WTogetherCommon.DirectUrlInfo)localObject1).cookie.get();
-      l = ((WTogetherCommon.DirectUrlInfo)localObject1).media_format.get();
-      str5 = null;
-      localObject2 = null;
-      str1 = null;
-      k = 0;
-      localObject3 = null;
-      paramVideoInfoRsp = null;
-      localObject1 = null;
-      m = 1;
-      str4 = null;
-      continue;
-      localObject2 = paramVideoInfoRsp.title.get();
-      localObject3 = (WTogetherCommon.OnlineResourceInfo)paramVideoInfoRsp.online_resource_info.get();
-      paramVideoInfoRsp = ((WTogetherCommon.OnlineResourceInfo)localObject3).platform_id.get();
-      localObject1 = ((WTogetherCommon.OnlineResourceInfo)localObject3).sdtform_id.get();
-      k = ((WTogetherCommon.OnlineResourceInfo)localObject3).is_pay.get();
-      localObject3 = (WTogetherCommon.PlayInfo)((WTogetherCommon.OnlineResourceInfo)localObject3).play_info.get();
-      m = ((WTogetherCommon.PlayInfo)localObject3).player_mode.get();
-      int n = ((WTogetherCommon.PlayInfo)localObject3).player_params.type.get();
-      localObject3 = (WTogetherCommon.PlayerParams)((WTogetherCommon.PlayInfo)localObject3).player_params.get();
-      Object localObject5;
-      if (n == 0)
+      if (m != 1)
       {
-        if (m == 0) {}
-        for (m = 2;; m = 1)
+        if (m != 2)
         {
-          localObject3 = (WTogetherCommon.UrlParams)((WTogetherCommon.PlayerParams)localObject3).url_params.get();
-          str3 = ((WTogetherCommon.UrlParams)localObject3).url.get();
-          l = ((WTogetherCommon.UrlParams)localObject3).media_format.get();
-          str4 = null;
-          localObject3 = paramVideoInfoRsp;
-          str1 = null;
-          localObject4 = localObject2;
-          str5 = null;
-          paramVideoInfoRsp = null;
+          localObject1 = null;
+          localObject2 = localObject1;
+          localObject6 = localObject2;
+          localObject7 = localObject6;
+          l = 0L;
+          k = 1;
+          m = 0;
+        }
+        int i1;
+        for (;;)
+        {
+          localObject8 = null;
           localObject5 = null;
-          str2 = null;
-          localObject2 = localObject3;
-          localObject3 = localObject5;
+          paramVideoInfoRsp = null;
+          localObject3 = null;
+          localObject4 = localObject3;
+          break label519;
+          localObject2 = paramVideoInfoRsp.title.get();
+          paramVideoInfoRsp = (WTogetherCommon.OnlineResourceInfo)paramVideoInfoRsp.online_resource_info.get();
+          localObject6 = paramVideoInfoRsp.platform_id.get();
+          localObject7 = paramVideoInfoRsp.sdtform_id.get();
+          m = paramVideoInfoRsp.is_pay.get();
+          paramVideoInfoRsp = (WTogetherCommon.PlayInfo)paramVideoInfoRsp.play_info.get();
+          int n = paramVideoInfoRsp.player_mode.get();
+          i1 = paramVideoInfoRsp.player_params.type.get();
+          paramVideoInfoRsp = (WTogetherCommon.PlayerParams)paramVideoInfoRsp.player_params.get();
+          if (i1 != 0) {
+            break;
+          }
+          if (n == 0) {
+            k = 2;
+          } else {
+            k = 1;
+          }
+          localObject1 = (WTogetherCommon.UrlParams)paramVideoInfoRsp.url_params.get();
+          paramVideoInfoRsp = ((WTogetherCommon.UrlParams)localObject1).url.get();
+          l = ((WTogetherCommon.UrlParams)localObject1).media_format.get();
+          localObject1 = localObject2;
+          localObject2 = paramVideoInfoRsp;
+        }
+        if (i1 == 1)
+        {
+          k = 4;
+          paramVideoInfoRsp = (WTogetherCommon.TxvlivePlayerParams)paramVideoInfoRsp.txvlive_player_params.get();
+          localObject4 = paramVideoInfoRsp.vid.get();
+          localObject8 = paramVideoInfoRsp.livepid.get();
+        }
+        for (localObject5 = null;; localObject5 = localObject1)
+        {
+          l = 0L;
+          Object localObject9 = null;
+          paramVideoInfoRsp = null;
+          localObject3 = null;
+          localObject1 = localObject2;
+          localObject2 = localObject9;
           break;
+          if (i1 == 2)
+          {
+            localObject1 = (WTogetherCommon.TxPlayerParams)paramVideoInfoRsp.tx_player_params.get();
+            paramVideoInfoRsp = ((WTogetherCommon.TxPlayerParams)localObject1).vid.get();
+            localObject1 = ((WTogetherCommon.TxPlayerParams)localObject1).cid.get();
+          }
+          else
+          {
+            localObject1 = (WTogetherCommon.TxPlayerParams)paramVideoInfoRsp.tx_player_params.get();
+            paramVideoInfoRsp = ((WTogetherCommon.TxPlayerParams)localObject1).vid.get();
+            localObject1 = ((WTogetherCommon.TxPlayerParams)localObject1).cid.get();
+          }
+          localObject8 = null;
+          localObject4 = paramVideoInfoRsp;
         }
       }
-      if (n == 1)
-      {
-        localObject3 = (WTogetherCommon.TxvlivePlayerParams)((WTogetherCommon.PlayerParams)localObject3).txvlive_player_params.get();
-        str1 = ((WTogetherCommon.TxvlivePlayerParams)localObject3).vid.get();
-        localObject3 = ((WTogetherCommon.TxvlivePlayerParams)localObject3).livepid.get();
-        str3 = null;
-        str4 = null;
-        m = 4;
-        localObject5 = null;
-        str2 = null;
-        localObject4 = localObject2;
-        str5 = null;
-        localObject2 = paramVideoInfoRsp;
-        l = 0L;
-        paramVideoInfoRsp = (WTogetherCommon.VideoInfoRsp)localObject3;
-        localObject3 = localObject5;
-      }
-      else if (n == 2)
-      {
-        localObject3 = (WTogetherCommon.TxPlayerParams)((WTogetherCommon.PlayerParams)localObject3).tx_player_params.get();
-        str1 = ((WTogetherCommon.TxPlayerParams)localObject3).vid.get();
-        localObject3 = ((WTogetherCommon.TxPlayerParams)localObject3).cid.get();
-        str3 = null;
-        str4 = null;
-        m = 3;
-        str2 = null;
-        localObject4 = localObject2;
-        str5 = null;
-        l = 0L;
-        localObject5 = null;
-        localObject2 = paramVideoInfoRsp;
-        paramVideoInfoRsp = localObject5;
-      }
-      else
-      {
-        localObject3 = (WTogetherCommon.TxPlayerParams)((WTogetherCommon.PlayerParams)localObject3).tx_player_params.get();
-        str1 = ((WTogetherCommon.TxPlayerParams)localObject3).vid.get();
-        localObject3 = ((WTogetherCommon.TxPlayerParams)localObject3).cid.get();
-        str3 = null;
-        str4 = null;
-        m = 3;
-        str2 = null;
-        localObject4 = localObject2;
-        str5 = null;
-        l = 0L;
-        localObject5 = null;
-        localObject2 = paramVideoInfoRsp;
-        paramVideoInfoRsp = localObject5;
-      }
+      localObject4 = (WTogetherCommon.DirectUrlInfo)paramVideoInfoRsp.direct_url_info.get();
+      localObject1 = paramVideoInfoRsp.title.get();
+      localObject2 = ((WTogetherCommon.DirectUrlInfo)localObject4).url.get();
+      localObject3 = ((WTogetherCommon.DirectUrlInfo)localObject4).cookie.get();
+      l = ((WTogetherCommon.DirectUrlInfo)localObject4).media_format.get();
+      paramVideoInfoRsp = null;
+      localObject6 = paramVideoInfoRsp;
+      localObject7 = localObject6;
+      localObject8 = localObject7;
+      k = 1;
+      m = 0;
+      localObject4 = localObject8;
+      localObject5 = localObject4;
     }
+    else
+    {
+      localObject2 = (WTogetherCommon.QQFileInfo)paramVideoInfoRsp.qqfile_info.get();
+      localObject1 = paramVideoInfoRsp.title.get();
+      str = ((WTogetherCommon.QQFileInfo)localObject2).file_uuid.get();
+      paramVideoInfoRsp = ((WTogetherCommon.QQFileInfo)localObject2).file_id.get();
+      localObject2 = null;
+      localObject5 = localObject2;
+      localObject6 = localObject5;
+      localObject7 = localObject6;
+      localObject8 = localObject7;
+      l = 0L;
+      m = 0;
+      localObject3 = localObject8;
+      localObject4 = localObject3;
+      k = 0;
+    }
+    label519:
+    this.jdField_a_of_type_Int = k;
+    this.jdField_a_of_type_JavaLangString = ((String)localObject1);
+    this.jdField_b_of_type_JavaLangString = str;
+    this.jdField_c_of_type_JavaLangString = paramVideoInfoRsp;
+    this.jdField_d_of_type_JavaLangString = ((String)localObject2);
+    this.e = ((String)localObject3);
+    this.f = ((String)localObject4);
+    this.g = localObject5;
+    this.h = ((String)localObject6);
+    this.i = ((String)localObject7);
+    this.jdField_b_of_type_Int = m;
+    this.j = ((String)localObject8);
+    this.jdField_a_of_type_Long = l;
+    this.jdField_d_of_type_Int = 0;
   }
   
   public int a()
   {
     if (this.jdField_a_of_type_Int == 0)
     {
-      if (this.jdField_d_of_type_Int != 0) {
-        return this.jdField_d_of_type_Int;
+      int k = this.jdField_d_of_type_Int;
+      if (k != 0) {
+        return k;
       }
       return 1;
     }
@@ -236,66 +216,124 @@ public class WTFileInfo
   
   public boolean a()
   {
-    boolean bool = true;
-    switch (this.jdField_a_of_type_Int)
+    int k = this.jdField_a_of_type_Int;
+    boolean bool2 = false;
+    boolean bool1;
+    if (k != 0)
     {
-    default: 
-      bool = false;
-    }
-    do
-    {
-      do
+      if ((k != 1) && (k != 2))
       {
-        do
+        if (k != 3)
         {
-          do
-          {
-            return bool;
-          } while (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
-          return false;
-        } while (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString));
-        return false;
-      } while ((!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.h)) && (!TextUtils.isEmpty(this.i)));
-      return false;
-    } while ((!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.h)) && (!TextUtils.isEmpty(this.i)) && (!TextUtils.isEmpty(this.j)));
-    return false;
+          if (k != 4) {
+            return false;
+          }
+          bool1 = bool2;
+          if (TextUtils.isEmpty(this.f)) {
+            return bool1;
+          }
+          bool1 = bool2;
+          if (TextUtils.isEmpty(this.h)) {
+            return bool1;
+          }
+          bool1 = bool2;
+          if (TextUtils.isEmpty(this.i)) {
+            return bool1;
+          }
+          bool1 = bool2;
+          if (TextUtils.isEmpty(this.j)) {
+            return bool1;
+          }
+        }
+        for (;;)
+        {
+          return true;
+          bool1 = bool2;
+          if (TextUtils.isEmpty(this.f)) {
+            break;
+          }
+          bool1 = bool2;
+          if (TextUtils.isEmpty(this.h)) {
+            break;
+          }
+          bool1 = bool2;
+          if (TextUtils.isEmpty(this.i)) {
+            break;
+          }
+        }
+      }
+      bool1 = TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString);
+    }
+    else
+    {
+      bool1 = TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
+    }
+    bool1 ^= true;
+    return bool1;
   }
   
   public boolean a(WTogetherCommon.VideoInfoRsp paramVideoInfoRsp)
   {
-    boolean bool = false;
     if (paramVideoInfoRsp != null) {
-      bool = equals(new WTFileInfo(paramVideoInfoRsp));
+      return equals(new WTFileInfo(paramVideoInfoRsp));
     }
-    return bool;
+    return false;
   }
   
   public String b()
   {
-    if (this.jdField_a_of_type_Int == 0) {
+    int k = this.jdField_a_of_type_Int;
+    if (k == 0) {
       return this.jdField_b_of_type_JavaLangString;
     }
-    if (this.jdField_a_of_type_Int == 3) {
+    if (k == 3) {
       return this.f;
     }
-    if (this.jdField_a_of_type_Int == 4) {
-      return this.f + "_" + this.j;
+    if (k == 4)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.f);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.j);
+      return localStringBuilder.toString();
     }
     return "0";
   }
   
   public String c()
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      return this.jdField_a_of_type_Int + "_" + this.jdField_b_of_type_JavaLangString;
+    int k = this.jdField_a_of_type_Int;
+    if (k == 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      return localStringBuilder.toString();
     }
-    if (this.jdField_a_of_type_Int == 3) {
-      return this.jdField_a_of_type_Int + "_" + this.f;
+    if (k == 3)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.f);
+      return localStringBuilder.toString();
     }
-    if (this.jdField_a_of_type_Int == 4) {
-      return this.jdField_a_of_type_Int + "_" + this.f + "_" + this.j;
+    if (k == 4)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.f);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.j);
+      return localStringBuilder.toString();
     }
-    return this.jdField_a_of_type_Int + "_" + this.jdField_d_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
   
   public int describeContents()
@@ -305,9 +343,10 @@ public class WTFileInfo
   
   public boolean equals(Object paramObject)
   {
+    boolean bool3 = paramObject instanceof WTFileInfo;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramObject instanceof WTFileInfo))
+    if (bool3)
     {
       paramObject = (WTFileInfo)paramObject;
       bool1 = bool2;
@@ -368,7 +407,39 @@ public class WTFileInfo
   
   public String toString()
   {
-    return "WTFileInfo{videoSrcType: " + this.jdField_a_of_type_Int + ", uuid: " + this.jdField_b_of_type_JavaLangString + ", fileId: " + this.jdField_c_of_type_JavaLangString + ", fileName: " + this.jdField_a_of_type_JavaLangString + ", url: " + this.jdField_d_of_type_JavaLangString + ", cookie: " + this.e + ", vid: " + this.f + ", cid: " + this.g + ", platForm: " + this.h + ", sdtForm: " + this.i + ", isPay: " + this.jdField_b_of_type_Int + ", livePid: " + this.j + ", mediaFormat: " + this.jdField_a_of_type_Long + ", seq: " + this.jdField_c_of_type_Int + ", videoSrcTypeExtra: " + this.jdField_d_of_type_Int + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WTFileInfo{videoSrcType: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", uuid: ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", fileId: ");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", fileName: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", url: ");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(", cookie: ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", vid: ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", cid: ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", platForm: ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", sdtForm: ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", isPay: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", livePid: ");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", mediaFormat: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", seq: ");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", videoSrcTypeExtra: ");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -392,7 +463,7 @@ public class WTFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.data.WTFileInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.av.ui;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 import com.tencent.qphone.base.util.QLog;
 
 class QavVideoRecordUICtrl$6
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   QavVideoRecordUICtrl$6(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
@@ -53,7 +53,7 @@ class QavVideoRecordUICtrl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavVideoRecordUICtrl.6
  * JD-Core Version:    0.7.0.1
  */

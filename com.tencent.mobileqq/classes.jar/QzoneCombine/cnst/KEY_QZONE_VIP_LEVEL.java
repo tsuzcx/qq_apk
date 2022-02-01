@@ -3,7 +3,7 @@ package QzoneCombine.cnst;
 public abstract interface KEY_QZONE_VIP_LEVEL {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QzoneCombine.cnst.KEY_QZONE_VIP_LEVEL
  * JD-Core Version:    0.7.0.1
  */

@@ -35,8 +35,12 @@ public class DanmuConfProcessor
     try
     {
       paramString = new JSONObject(paramString).optString("IsDanmuEnable");
-      if (QLog.isColorLevel()) {
-        QLog.e("DanmuConfProcessor", 2, "parse conf, IsDanmuEnable:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parse conf, IsDanmuEnable:");
+        localStringBuilder.append(paramString);
+        QLog.e("DanmuConfProcessor", 2, localStringBuilder.toString());
       }
       paramString = new DanmuConfProcessor.DanmuConfBean(paramString.trim());
       return paramString;
@@ -54,8 +58,12 @@ public class DanmuConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       DanmuConfProcessor.DanmuConfBean localDanmuConfBean = a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DanmuConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("DanmuConfProcessor", 2, localStringBuilder.toString());
       }
       return localDanmuConfBean;
     }
@@ -67,8 +75,12 @@ public class DanmuConfProcessor
     if ((paramDanmuConfBean != null) && (!TextUtils.isEmpty(paramDanmuConfBean.a)))
     {
       a = "1".equals(paramDanmuConfBean.a);
-      if (QLog.isColorLevel()) {
-        QLog.e("DanmuConfProcessor", 2, "onUpdate, isDanmuEnable:" + a);
+      if (QLog.isColorLevel())
+      {
+        paramDanmuConfBean = new StringBuilder();
+        paramDanmuConfBean.append("onUpdate, isDanmuEnable:");
+        paramDanmuConfBean.append(a);
+        QLog.e("DanmuConfProcessor", 2, paramDanmuConfBean.toString());
       }
     }
   }
@@ -102,7 +114,7 @@ public class DanmuConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.comment.config.DanmuConfProcessor
  * JD-Core Version:    0.7.0.1
  */

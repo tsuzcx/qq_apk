@@ -23,51 +23,66 @@ public class PTSLayoutTempPatch
   
   static void applyLayoutTempPatchList(List<PTSLayoutTempPatch> paramList, PTSAppInstance paramPTSAppInstance)
   {
-    if ((paramPTSAppInstance == null) || (paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    paramPTSAppInstance = paramPTSAppInstance.getRootNode();
-    if (paramPTSAppInstance == null)
+    if ((paramPTSAppInstance != null) && (paramList != null))
     {
-      PTSLog.e("PTSLayoutTempPatch", "[applyLayoutTempPatchList] failed, ptsRootNode is null.");
-      return;
-    }
-    int i = 0;
-    while (i < paramList.size())
-    {
-      Object localObject1 = (PTSLayoutTempPatch)paramList.get(i);
-      Object localObject2;
-      if (((((PTSLayoutTempPatch)localObject1).layoutPatchType & 0x2) > 0) && (((PTSLayoutTempPatch)localObject1).newNodeInfoList != null))
+      if (paramList.isEmpty()) {
+        return;
+      }
+      paramPTSAppInstance = paramPTSAppInstance.getRootNode();
+      if (paramPTSAppInstance == null)
       {
-        localObject2 = ((PTSLayoutTempPatch)localObject1).newNodeInfoList.iterator();
-        while (((Iterator)localObject2).hasNext())
+        PTSLog.e("PTSLayoutTempPatch", "[applyLayoutTempPatchList] failed, ptsRootNode is null.");
+        return;
+      }
+      int i = 0;
+      while (i < paramList.size())
+      {
+        Object localObject1 = (PTSLayoutTempPatch)paramList.get(i);
+        if ((((PTSLayoutTempPatch)localObject1).layoutPatchType & 0x2) > 0)
         {
-          PTSLayoutTempPatch.PTSNodeInfoInsert localPTSNodeInfoInsert = (PTSLayoutTempPatch.PTSNodeInfoInsert)((Iterator)localObject2).next();
-          paramPTSAppInstance.insert(localPTSNodeInfoInsert.nodeInfo, localPTSNodeInfoInsert.insertIndex);
+          localObject2 = ((PTSLayoutTempPatch)localObject1).newNodeInfoList;
+          if (localObject2 != null)
+          {
+            localObject2 = ((List)localObject2).iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              PTSLayoutTempPatch.PTSNodeInfoInsert localPTSNodeInfoInsert = (PTSLayoutTempPatch.PTSNodeInfoInsert)((Iterator)localObject2).next();
+              paramPTSAppInstance.insert(localPTSNodeInfoInsert.nodeInfo, localPTSNodeInfoInsert.insertIndex);
+            }
+          }
         }
-      }
-      if (((((PTSLayoutTempPatch)localObject1).layoutPatchType & 0x4) > 0) && (((PTSLayoutTempPatch)localObject1).removeNodeIDList != null))
-      {
-        localObject2 = ((PTSLayoutTempPatch)localObject1).removeNodeIDList.iterator();
-        while (((Iterator)localObject2).hasNext()) {
-          paramPTSAppInstance.remove(((Integer)((Iterator)localObject2).next()).intValue());
+        if ((((PTSLayoutTempPatch)localObject1).layoutPatchType & 0x4) > 0)
+        {
+          localObject2 = ((PTSLayoutTempPatch)localObject1).removeNodeIDList;
+          if (localObject2 != null)
+          {
+            localObject2 = ((List)localObject2).iterator();
+            while (((Iterator)localObject2).hasNext()) {
+              paramPTSAppInstance.remove(((Integer)((Iterator)localObject2).next()).intValue());
+            }
+          }
         }
-      }
-      if ((((PTSLayoutTempPatch)localObject1).animationNodeList != null) && (!((PTSLayoutTempPatch)localObject1).animationNodeList.isEmpty())) {
-        localObject1 = ((PTSLayoutTempPatch)localObject1).animationNodeList.iterator();
-      }
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (PTSLayoutTempPatch.PTSAnimationSet)((Iterator)localObject1).next();
-        paramPTSAppInstance.animation(PTSLayoutTempPatch.PTSAnimationSet.access$000((PTSLayoutTempPatch.PTSAnimationSet)localObject2), PTSLayoutTempPatch.PTSAnimationSet.access$100((PTSLayoutTempPatch.PTSAnimationSet)localObject2));
-        continue;
-        if (((((PTSLayoutTempPatch)localObject1).layoutPatchType & 0x1) > 0) && (((PTSLayoutTempPatch)localObject1).nodeInfo != null)) {
-          paramPTSAppInstance.modify(((PTSLayoutTempPatch)localObject1).nodeInfo);
+        Object localObject2 = ((PTSLayoutTempPatch)localObject1).animationNodeList;
+        if ((localObject2 != null) && (!((List)localObject2).isEmpty())) {
+          localObject1 = ((PTSLayoutTempPatch)localObject1).animationNodeList.iterator();
         }
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (PTSLayoutTempPatch.PTSAnimationSet)((Iterator)localObject1).next();
+          paramPTSAppInstance.animation(PTSLayoutTempPatch.PTSAnimationSet.access$000((PTSLayoutTempPatch.PTSAnimationSet)localObject2), PTSLayoutTempPatch.PTSAnimationSet.access$100((PTSLayoutTempPatch.PTSAnimationSet)localObject2));
+          continue;
+          if ((((PTSLayoutTempPatch)localObject1).layoutPatchType & 0x1) > 0)
+          {
+            localObject1 = ((PTSLayoutTempPatch)localObject1).nodeInfo;
+            if (localObject1 != null) {
+              paramPTSAppInstance.modify((PTSNodeInfo)localObject1);
+            }
+          }
+        }
+        i += 1;
       }
-      i += 1;
+      paramPTSAppInstance.onLayoutTempPatchFinished();
     }
-    paramPTSAppInstance.onLayoutTempPatchFinished();
   }
   
   public void appendAnimation(PTSNodeInfo paramPTSNodeInfo, PTSAnimationUtil.AnimationInfo paramAnimationInfo)
@@ -103,7 +118,7 @@ public class PTSLayoutTempPatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSLayoutTempPatch
  * JD-Core Version:    0.7.0.1
  */

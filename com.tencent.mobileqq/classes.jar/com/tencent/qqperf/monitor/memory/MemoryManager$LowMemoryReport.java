@@ -28,32 +28,32 @@ class MemoryManager$LowMemoryReport
     try
     {
       Object localObject = MobileQQ.getContext().getSharedPreferences("MemoryManagerMemoryStat", 0).getString("LowMemoryStat", null);
-      if (localObject == null) {
-        return;
+      if (localObject != null)
+      {
+        if (((String)localObject).length() == 0) {
+          return;
+        }
+        localObject = new DataInputStream(new ByteArrayInputStream(Base64Util.decode((String)localObject, 0)));
+        this.jdField_a_of_type_Long = ((DataInputStream)localObject).readLong();
+        this.jdField_b_of_type_Long = ((DataInputStream)localObject).readLong();
+        this.jdField_a_of_type_Int = ((DataInputStream)localObject).readInt();
+        this.c = ((DataInputStream)localObject).readLong();
+        this.d = ((DataInputStream)localObject).readLong();
+        this.jdField_b_of_type_Int = ((DataInputStream)localObject).readInt();
+        this.e = ((DataInputStream)localObject).readLong();
+        break label118;
       }
-      if (((String)localObject).length() == 0) {
-        return;
-      }
-      localObject = new DataInputStream(new ByteArrayInputStream(Base64Util.decode((String)localObject, 0)));
-      this.jdField_a_of_type_Long = ((DataInputStream)localObject).readLong();
-      this.jdField_b_of_type_Long = ((DataInputStream)localObject).readLong();
-      this.jdField_a_of_type_Int = ((DataInputStream)localObject).readInt();
-      this.c = ((DataInputStream)localObject).readLong();
-      this.d = ((DataInputStream)localObject).readLong();
-      this.jdField_b_of_type_Int = ((DataInputStream)localObject).readInt();
-      this.e = ((DataInputStream)localObject).readLong();
+      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        b();
-      }
+      label114:
+      break label114;
     }
-    if ((l < this.jdField_a_of_type_Long) || (l < this.jdField_b_of_type_Long) || (l < this.c) || (l < this.d))
-    {
+    b();
+    label118:
+    if ((l < this.jdField_a_of_type_Long) || (l < this.jdField_b_of_type_Long) || (l < this.c) || (l < this.d)) {
       b();
-      return;
     }
   }
   
@@ -91,7 +91,7 @@ class MemoryManager$LowMemoryReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.MemoryManager.LowMemoryReport
  * JD-Core Version:    0.7.0.1
  */

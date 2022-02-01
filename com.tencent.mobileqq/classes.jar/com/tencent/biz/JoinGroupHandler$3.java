@@ -1,32 +1,33 @@
 package com.tencent.biz;
 
-import com.tencent.mobileqq.app.TroopBusinessObserver;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.api.observer.TroopMngObserver;
 
 class JoinGroupHandler$3
-  extends TroopBusinessObserver
+  extends TroopMngObserver
 {
   JoinGroupHandler$3(JoinGroupHandler paramJoinGroupHandler) {}
   
-  public void onOIDB0X88D_1_Ret(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
   {
     if (paramLong != this.a.jdField_a_of_type_Long) {
       return;
     }
-    this.a.jdField_a_of_type_Long = 0L;
-    JoinGroupHandler.a(this.a, false);
+    JoinGroupHandler localJoinGroupHandler = this.a;
+    localJoinGroupHandler.jdField_a_of_type_Long = 0L;
+    JoinGroupHandler.a(localJoinGroupHandler, false);
     if (paramBoolean)
     {
       JoinGroupHandler.a(this.a, paramTroopInfo);
       return;
     }
-    JoinGroupHandler.a(this.a, 2131719023, 1);
+    JoinGroupHandler.a(this.a, 2131718739, 1);
     this.a.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.JoinGroupHandler.3
  * JD-Core Version:    0.7.0.1
  */

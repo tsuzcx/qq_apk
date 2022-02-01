@@ -18,28 +18,30 @@ class GameRoomPresenterImp$3
     GameEngine.a().e();
     this.this$0.a.sendEmptyMessage(4);
     long l = GameEngine.a().a();
-    if (QLog.isColorLevel()) {
-      QLog.i("GameRoomPresenterImp", 2, "mRefreshGameListRunnable run and next nextRefreshInterval is " + l);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mRefreshGameListRunnable run and next nextRefreshInterval is ");
+      localStringBuilder.append(l);
+      QLog.i("GameRoomPresenterImp", 2, localStringBuilder.toString());
     }
     if (l == 0L)
     {
       GameRoomPresenterImp.a(this.this$0);
-      if (GameRoomPresenterImp.b(this.this$0) < 5) {
-        break label105;
-      }
+      if (GameRoomPresenterImp.b(this.this$0) < 5) {}
     }
-    label105:
-    while (l == 9223372036854775807L)
+    else
     {
-      return;
       GameRoomPresenterImp.a(this.this$0, 0);
     }
-    ThreadManager.a().postDelayed(this, l * 1000L + 2000L);
+    if (l != 9223372036854775807L) {
+      ThreadManager.a().postDelayed(this, l * 1000L + 2000L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomPresenterImp.3
  * JD-Core Version:    0.7.0.1
  */

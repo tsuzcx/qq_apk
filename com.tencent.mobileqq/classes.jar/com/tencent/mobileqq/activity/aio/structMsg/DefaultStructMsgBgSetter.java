@@ -9,17 +9,18 @@ public class DefaultStructMsgBgSetter
 {
   public void a(MessageForStructing paramMessageForStructing, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 2130838433;; i = 2130838417)
-    {
-      paramView.setBackgroundResource(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 2130838269;
+    } else {
+      i = 2130838253;
     }
+    paramView.setBackgroundResource(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.structMsg.DefaultStructMsgBgSetter
  * JD-Core Version:    0.7.0.1
  */

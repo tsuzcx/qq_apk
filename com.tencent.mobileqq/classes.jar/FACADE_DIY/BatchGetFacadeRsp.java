@@ -35,17 +35,19 @@ public final class BatchGetFacadeRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.info != null) {
-      paramJceOutputStream.write(this.info, 0);
+    Object localObject = this.info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
-    if (this.jumpUrl != null) {
-      paramJceOutputStream.write(this.jumpUrl, 1);
+    localObject = this.jumpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FACADE_DIY.BatchGetFacadeRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.drawer;
 
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.api.script.ISpriteCommFunc;
+import com.tencent.mobileqq.apollo.script.api.ISpriteCommFunc;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.DrawerFrame.IDrawerCallbacks;
 
@@ -35,18 +35,13 @@ class BaseChatDrawer$3
   public void f()
   {
     if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.ai();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.N();
     }
     if (BaseChatDrawer.a(this.a)) {
       this.a.f();
     }
-    if (!((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", true);
-      }
-      return;
+    if ((((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) ^ true)) {
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", true);
     }
   }
   
@@ -77,7 +72,7 @@ class BaseChatDrawer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.BaseChatDrawer.3
  * JD-Core Version:    0.7.0.1
  */

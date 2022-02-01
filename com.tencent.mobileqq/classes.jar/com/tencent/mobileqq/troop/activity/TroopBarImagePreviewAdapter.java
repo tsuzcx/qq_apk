@@ -1,17 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
-import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Path.Direction;
-import android.graphics.Path.FillType;
-import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.text.TextUtils;
@@ -19,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -27,7 +16,6 @@ import android.widget.ImageView.ScaleType;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -36,13 +24,13 @@ import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class TroopBarImagePreviewAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  protected int a;
   public Bitmap a;
   protected Drawable a;
   protected LayoutInflater a;
@@ -52,109 +40,30 @@ public class TroopBarImagePreviewAdapter
   private HashMap<String, Drawable.ConstantState> a;
   protected List<String> a;
   protected boolean a;
-  protected int b;
   protected CharSequence b;
   
-  public TroopBarImagePreviewAdapter(Context paramContext, ExtendGridView paramExtendGridView)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions = null;
-    this.jdField_a_of_type_JavaLangCharSequence = null;
-    this.jdField_b_of_type_JavaLangCharSequence = null;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 9;
-    this.jdField_a_of_type_JavaUtilHashMap = null;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView = paramExtendGridView;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130848203);
-    this.jdField_a_of_type_JavaLangCharSequence = BaseApplication.getContext().getText(2131696218);
-    this.jdField_b_of_type_JavaLangCharSequence = BaseApplication.getContext().getResources().getText(2131718056);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mUseMemoryCache = false;
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    a(paramContext);
-  }
-  
-  private void c()
+  private void a()
   {
     long l = System.currentTimeMillis();
-    HashMap localHashMap = new HashMap();
+    Object localObject = new HashMap();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.contains(str))) {
-        localHashMap.put(str, this.jdField_a_of_type_JavaUtilHashMap.get(str));
+      List localList = this.jdField_a_of_type_JavaUtilList;
+      if ((localList != null) && (localList.contains(str))) {
+        ((HashMap)localObject).put(str, this.jdField_a_of_type_JavaUtilHashMap.get(str));
       }
     }
     this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_JavaUtilHashMap.putAll(localHashMap);
-    localHashMap.clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopBar", 2, "!!!clearDirtyCache time is " + (System.currentTimeMillis() - l));
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  @TargetApi(16)
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView == null) {
-      return;
-    }
-    int j = getCount();
-    int i = j;
-    if (j == this.jdField_a_of_type_Int + 1) {
-      i = j - 1;
-    }
-    i = (int)Math.ceil(i / this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getNumColumns());
-    Object localObject = getView(0, null, this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView);
-    ((View)localObject).measure(0, 0);
-    this.jdField_b_of_type_Int = ((View)localObject).getMeasuredHeight();
-    j = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getVerticalSpacing();
-    int k = this.jdField_b_of_type_Int;
-    int m = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getPaddingTop();
-    int n = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getPaddingBottom();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).height = (i * k + j * (i - 1) + m + n);
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-  }
-  
-  protected void a(Context paramContext)
-  {
-    int i = (int)DisplayUtils.a(paramContext, 60.0F);
-    int j = (int)DisplayUtils.a(paramContext, 5.0F);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
-    paramContext = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    Paint localPaint = new Paint();
-    localPaint.setAntiAlias(true);
-    RectF localRectF = new RectF(0.0F, 0.0F, i, i);
-    localPaint.setAlpha(0);
-    paramContext.drawRect(0.0F, 0.0F, i, i, localPaint);
-    localPaint.setARGB(255, 255, 255, 255);
-    Path localPath = new Path();
-    localPath.addRoundRect(localRectF, j, j, Path.Direction.CW);
-    localPath.setFillType(Path.FillType.INVERSE_WINDING);
-    paramContext.drawPath(localPath, localPaint);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    a();
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    if (paramBoolean2) {
-      notifyDataSetChanged();
+    this.jdField_a_of_type_JavaUtilHashMap.putAll((Map)localObject);
+    ((HashMap)localObject).clear();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("!!!clearDirtyCache time is ");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      QLog.d("TroopBar", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -163,18 +72,14 @@ public class TroopBarImagePreviewAdapter
     return (this.jdField_a_of_type_Boolean) && (paramInt == getCount() - 1);
   }
   
-  public void b()
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-  }
-  
   public int getCount()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      i = this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    int i;
+    if (localList != null) {
+      i = localList.size();
+    } else {
+      i = 0;
     }
     int j = i;
     if (this.jdField_a_of_type_Boolean) {
@@ -185,10 +90,14 @@ public class TroopBarImagePreviewAdapter
   
   public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (a(paramInt))) {
-      return null;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      if (a(paramInt)) {
+        return null;
+      }
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return null;
   }
   
   public long getItemId(int paramInt)
@@ -201,124 +110,116 @@ public class TroopBarImagePreviewAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (a(paramInt)) {
-      return 1;
-    }
-    return 0;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int k = 2147483647;
     long l = System.currentTimeMillis();
+    localObject = null;
     View localView;
     TroopBarImagePreviewAdapter.ViewHolder localViewHolder;
-    int i;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560044, null);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559914, null);
       localViewHolder = new TroopBarImagePreviewAdapter.ViewHolder();
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131381011));
-      localViewHolder.b = ((ImageView)localView.findViewById(2131368936));
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377391));
+      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131380276));
+      localViewHolder.b = ((ImageView)localView.findViewById(2131368657));
+      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376842));
       localView.setTag(localViewHolder);
-      i = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.a();
-      paramView = localView.getLayoutParams();
-      if ((paramView != null) && ((paramView instanceof AbsListView.LayoutParams))) {
-        break label260;
-      }
+    }
+    else
+    {
+      localViewHolder = (TroopBarImagePreviewAdapter.ViewHolder)paramView.getTag();
+      localView = paramView;
+    }
+    int i = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.a();
+    paramView = localView.getLayoutParams();
+    if ((paramView != null) && ((paramView instanceof AbsListView.LayoutParams)))
+    {
+      paramView.width = i;
+      paramView.height = i;
+    }
+    else
+    {
       paramView = new AbsListView.LayoutParams(i, i);
-      label129:
-      localView.setLayoutParams((AbsListView.LayoutParams)paramView);
-      if (!a(paramInt)) {
-        break label275;
-      }
+    }
+    localView.setLayoutParams((AbsListView.LayoutParams)paramView);
+    String str;
+    int k;
+    if (a(paramInt))
+    {
       localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130842699);
+      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130842598);
       localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
       localViewHolder.b.setVisibility(8);
     }
-    label260:
-    label275:
-    String str;
-    do
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopBar", 2, "---getView time is " + (System.currentTimeMillis() - l));
-      }
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localViewHolder = (TroopBarImagePreviewAdapter.ViewHolder)paramView.getTag();
-      localView = paramView;
-      break;
-      paramView.width = i;
-      paramView.height = i;
-      break label129;
       str = (String)getItem(paramInt);
-    } while (TextUtils.isEmpty(str));
-    int j;
-    if (i < 0)
-    {
-      j = 2147483647;
-      label303:
-      j = Math.min(100, j);
-      if (i >= 0) {
-        break label484;
-      }
-      i = k;
-      label321:
-      i = Math.min(100, i);
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(false);
-      paramView = new File(str);
-      if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 18) {
-        c();
-      }
-      Drawable.ConstantState localConstantState = (Drawable.ConstantState)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-      if (((paramInt == 0) && (paramViewGroup.getChildCount() == 0)) || (localConstantState == null)) {
-        break label487;
-      }
-      paramView = localConstantState.newDrawable();
-    }
-    for (;;)
-    {
-      paramView.setBounds(0, 0, j, i);
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramView);
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_b_of_type_JavaLangCharSequence);
-      localViewHolder.b.setVisibility(0);
-      localViewHolder.b.setTag(Integer.valueOf(paramInt));
-      localViewHolder.b.setOnClickListener(this);
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      break;
-      j = i;
-      break label303;
-      label484:
-      break label321;
-      try
+      if (!TextUtils.isEmpty(str))
       {
-        label487:
-        this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestWidth = j;
-        this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestHeight = i;
-        this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mPlayGifImage = true;
-        if (paramView.exists()) {}
-        for (paramView = URLDrawable.getDrawable(paramView.toURL(), this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions);; paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
-        {
-          if (paramView != null) {
-            break label558;
-          }
-          paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-          break;
+        if (i < 0) {
+          j = 2147483647;
+        } else {
+          j = i;
+        }
+        k = Math.min(100, j);
+        int j = i;
+        if (i < 0) {
+          j = 2147483647;
+        }
+        i = Math.min(100, j);
+        localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(false);
+        paramView = new File(str);
+        if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 18) {
+          a();
+        }
+        Drawable.ConstantState localConstantState = (Drawable.ConstantState)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+        if (((paramInt != 0) || (paramViewGroup.getChildCount() != 0)) && (localConstantState != null)) {
+          paramView = localConstantState.newDrawable();
         }
       }
-      catch (MalformedURLException paramView)
-      {
-        for (;;)
-        {
-          paramView = null;
-        }
-        label558:
-        this.jdField_a_of_type_JavaUtilHashMap.put(str, paramView.getConstantState());
+    }
+    try
+    {
+      this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestWidth = k;
+      this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestHeight = i;
+      this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mPlayGifImage = true;
+      if (paramView.exists()) {
+        paramView = URLDrawable.getDrawable(paramView.toURL(), this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions);
+      } else {
+        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
       }
     }
+    catch (MalformedURLException paramView)
+    {
+      for (;;)
+      {
+        paramView = localObject;
+      }
+    }
+    if (paramView == null) {
+      paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    } else {
+      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramView.getConstantState());
+    }
+    paramView.setBounds(0, 0, k, i);
+    localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramView);
+    localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.b);
+    localViewHolder.b.setVisibility(0);
+    localViewHolder.b.setTag(Integer.valueOf(paramInt));
+    localViewHolder.b.setOnClickListener(this);
+    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("---getView time is ");
+      paramView.append(System.currentTimeMillis() - l);
+      QLog.d("TroopBar", 2, paramView.toString());
+    }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public int getViewTypeCount()
@@ -331,23 +232,19 @@ public class TroopBarImagePreviewAdapter
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131368657)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       Integer localInteger = (Integer)paramView.getTag();
       Intent localIntent = new Intent("key_photo_delete_action");
       localIntent.putExtra("key_photo_delete_position", localInteger.intValue());
       BaseApplication.getContext().sendBroadcast(localIntent);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarImagePreviewAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -27,13 +27,14 @@ public final class QQCircleProfile$StGetMainPageProfileRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48, 58 }, new String[] { "extInfo", "user", "bizData", "TempChatBtnStatus", "recomTagList", "pattonType", "pmBeginShow" }, new Object[] { null, null, localByteStringMicro, Integer.valueOf(0), null, Integer.valueOf(0), "" }, StGetMainPageProfileRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48, 58 }, new String[] { "extInfo", "user", "bizData", "TempChatBtnStatus", "recomTagList", "pattonType", "pmBeginShow" }, new Object[] { null, null, localByteStringMicro, localInteger, null, localInteger, "" }, StGetMainPageProfileRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleProfile.StGetMainPageProfileRsp
  * JD-Core Version:    0.7.0.1
  */

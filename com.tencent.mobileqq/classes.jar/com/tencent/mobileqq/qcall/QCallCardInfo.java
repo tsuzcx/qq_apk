@@ -16,9 +16,9 @@ public class QCallCardInfo
   public static final int CARD_BLACK = 2;
   public static final int CARD_FREE = 1;
   public static final Parcelable.Creator<QCallCardInfo> CREATOR = new QCallCardInfo.1();
-  public static int HIDE;
+  public static int HIDE = 1;
   public static final int NONE = 0;
-  public static int SHOW = 0;
+  public static int SHOW;
   public String autoRemark;
   public int birthday;
   @notColumn
@@ -61,11 +61,6 @@ public class QCallCardInfo
   public int vip_all_free_time;
   public int vip_left_free_time;
   
-  static
-  {
-    HIDE = 1;
-  }
-  
   public Object clone()
   {
     try
@@ -95,29 +90,52 @@ public class QCallCardInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[ qid=").append(UinUtils.a(this.uin));
-    localStringBuilder.append(",nickname=").append(StringUtil.g(this.nickname));
-    localStringBuilder.append(",in_use_flag=").append(this.in_use_flag);
-    localStringBuilder.append(",phoneNum=").append(UinUtils.a(this.phonenum));
-    localStringBuilder.append(",phone_mask=").append(this.phone_mask);
-    localStringBuilder.append(",qqUin=").append(UinUtils.a(this.qq));
-    localStringBuilder.append(",qqUin2=").append(UinUtils.a(this.qqUin2));
-    localStringBuilder.append(",remark=").append(this.remark);
-    localStringBuilder.append(",network=").append(this.netstatus);
-    localStringBuilder.append(",autoRemark=").append(this.autoRemark);
-    localStringBuilder.append(",freestatus=").append(this.freeStatus);
-    localStringBuilder.append(",pstn_freestatus=").append(this.pstn_freeStatus);
-    localStringBuilder.append(",card_type=").append(this.card_type);
-    localStringBuilder.append(",is_ever_pstn=").append(this.is_ever_pstn);
-    localStringBuilder.append(",vip_all_free_time=").append(this.vip_all_free_time);
-    localStringBuilder.append(",vip_left_free_time=").append(this.vip_left_free_time);
-    localStringBuilder.append(",normal_all_free_time=").append(this.normal_all_free_time);
-    localStringBuilder.append(",normal_left_free_time=").append(this.normal_left_free_time);
-    localStringBuilder.append(",used_free_time=").append(this.used_free_time);
-    localStringBuilder.append(",identity=").append(this.identity);
-    localStringBuilder.append(",isPopup=").append(this.isPopup);
-    localStringBuilder.append(",qid_qq_status=").append(this.qid_qq_status);
-    localStringBuilder.append(",contact_qq_status=").append(this.contact_qq_status);
+    localStringBuilder.append("[ qid=");
+    localStringBuilder.append(UinUtils.a(this.uin));
+    localStringBuilder.append(",nickname=");
+    localStringBuilder.append(StringUtil.g(this.nickname));
+    localStringBuilder.append(",in_use_flag=");
+    localStringBuilder.append(this.in_use_flag);
+    localStringBuilder.append(",phoneNum=");
+    localStringBuilder.append(UinUtils.a(this.phonenum));
+    localStringBuilder.append(",phone_mask=");
+    localStringBuilder.append(this.phone_mask);
+    localStringBuilder.append(",qqUin=");
+    localStringBuilder.append(UinUtils.a(this.qq));
+    localStringBuilder.append(",qqUin2=");
+    localStringBuilder.append(UinUtils.a(this.qqUin2));
+    localStringBuilder.append(",remark=");
+    localStringBuilder.append(this.remark);
+    localStringBuilder.append(",network=");
+    localStringBuilder.append(this.netstatus);
+    localStringBuilder.append(",autoRemark=");
+    localStringBuilder.append(this.autoRemark);
+    localStringBuilder.append(",freestatus=");
+    localStringBuilder.append(this.freeStatus);
+    localStringBuilder.append(",pstn_freestatus=");
+    localStringBuilder.append(this.pstn_freeStatus);
+    localStringBuilder.append(",card_type=");
+    localStringBuilder.append(this.card_type);
+    localStringBuilder.append(",is_ever_pstn=");
+    localStringBuilder.append(this.is_ever_pstn);
+    localStringBuilder.append(",vip_all_free_time=");
+    localStringBuilder.append(this.vip_all_free_time);
+    localStringBuilder.append(",vip_left_free_time=");
+    localStringBuilder.append(this.vip_left_free_time);
+    localStringBuilder.append(",normal_all_free_time=");
+    localStringBuilder.append(this.normal_all_free_time);
+    localStringBuilder.append(",normal_left_free_time=");
+    localStringBuilder.append(this.normal_left_free_time);
+    localStringBuilder.append(",used_free_time=");
+    localStringBuilder.append(this.used_free_time);
+    localStringBuilder.append(",identity=");
+    localStringBuilder.append(this.identity);
+    localStringBuilder.append(",isPopup=");
+    localStringBuilder.append(this.isPopup);
+    localStringBuilder.append(",qid_qq_status=");
+    localStringBuilder.append(this.qid_qq_status);
+    localStringBuilder.append(",contact_qq_status=");
+    localStringBuilder.append(this.contact_qq_status);
     localStringBuilder.append(" ] ");
     return localStringBuilder.toString();
   }
@@ -164,7 +182,7 @@ public class QCallCardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallCardInfo
  * JD-Core Version:    0.7.0.1
  */

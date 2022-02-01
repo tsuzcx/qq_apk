@@ -11,31 +11,37 @@ public class f$a
   
   public void a()
   {
-    this.a[0] = 0.0D;
-    this.a[1] = 0.0D;
-    this.a[2] = 0.0D;
-    this.a[3] = 0.0D;
-    this.b[0] = 0.0D;
-    this.b[1] = 0.0D;
-    this.b[2] = 0.0D;
-    this.b[3] = 0.0D;
-    this.c[0] = 0.0D;
-    this.c[1] = 0.0D;
-    this.c[2] = 0.0D;
-    this.d[0] = 0.0D;
-    this.d[1] = 0.0D;
-    this.d[2] = 0.0D;
-    this.e[0] = 0.0D;
-    this.e[1] = 0.0D;
-    this.e[2] = 0.0D;
-    this.f[0] = 0.0D;
-    this.f[1] = 0.0D;
-    this.f[2] = 0.0D;
+    double[] arrayOfDouble = this.a;
+    arrayOfDouble[0] = 0.0D;
+    arrayOfDouble[1] = 0.0D;
+    arrayOfDouble[2] = 0.0D;
+    arrayOfDouble[3] = 0.0D;
+    arrayOfDouble = this.b;
+    arrayOfDouble[0] = 0.0D;
+    arrayOfDouble[1] = 0.0D;
+    arrayOfDouble[2] = 0.0D;
+    arrayOfDouble[3] = 0.0D;
+    arrayOfDouble = this.c;
+    arrayOfDouble[0] = 0.0D;
+    arrayOfDouble[1] = 0.0D;
+    arrayOfDouble[2] = 0.0D;
+    arrayOfDouble = this.d;
+    arrayOfDouble[0] = 0.0D;
+    arrayOfDouble[1] = 0.0D;
+    arrayOfDouble[2] = 0.0D;
+    arrayOfDouble = this.e;
+    arrayOfDouble[0] = 0.0D;
+    arrayOfDouble[1] = 0.0D;
+    arrayOfDouble[2] = 0.0D;
+    arrayOfDouble = this.f;
+    arrayOfDouble[0] = 0.0D;
+    arrayOfDouble[1] = 0.0D;
+    arrayOfDouble[2] = 0.0D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.f.a
  * JD-Core Version:    0.7.0.1
  */

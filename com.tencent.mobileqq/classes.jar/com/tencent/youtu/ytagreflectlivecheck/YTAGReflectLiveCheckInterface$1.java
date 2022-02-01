@@ -13,10 +13,18 @@ final class YTAGReflectLiveCheckInterface$1
   public void onGetValue(float paramFloat)
   {
     YTAGReflectLiveCheckInterface.access$008();
-    YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: " + paramFloat + " mOnGetValueCount: " + YTAGReflectLiveCheckInterface.access$000());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: ");
+    localStringBuilder.append(paramFloat);
+    localStringBuilder.append(" mOnGetValueCount: ");
+    localStringBuilder.append(YTAGReflectLiveCheckInterface.access$000());
+    YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", localStringBuilder.toString());
     if (YTAGReflectLiveCheckInterface.access$000() > 1)
     {
-      YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: " + paramFloat);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: ");
+      localStringBuilder.append(paramFloat);
+      YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", localStringBuilder.toString());
       if (YTAGReflectLiveCheckInterface.access$100() != null)
       {
         YTAGReflectLiveCheckInterface.access$100().cancel();
@@ -33,7 +41,7 @@ final class YTAGReflectLiveCheckInterface$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.1
  * JD-Core Version:    0.7.0.1
  */

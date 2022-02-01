@@ -12,34 +12,43 @@ import org.json.JSONObject;
 public class MsgforwardWXWebViewPlugin
   extends WebViewPlugin
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    int i = 0;
-    if ((paramString2 == null) || (!"msgForward".equalsIgnoreCase(paramString2)) || (paramString3 == null)) {}
-    while ((this.mRuntime == null) || (this.mRuntime.a() == null) || (!"showForwardToWXMsg".equalsIgnoreCase(paramString3)) || (paramVarArgs == null)) {
-      return false;
-    }
-    if (paramVarArgs.length > 0) {
-      while (i < paramVarArgs.length)
+    if ((paramString2 != null) && ("msgForward".equalsIgnoreCase(paramString2)))
+    {
+      if (paramString3 == null) {
+        return false;
+      }
+      if (this.mRuntime != null)
       {
-        QLog.d("MsgforwardWXWebViewPlugin", 1, paramVarArgs[i]);
-        i += 1;
+        if (this.mRuntime.a() == null) {
+          return false;
+        }
+        if (("showForwardToWXMsg".equalsIgnoreCase(paramString3)) && (paramVarArgs != null)) {
+          if (paramVarArgs.length > 0)
+          {
+            int i = 0;
+            while (i < paramVarArgs.length)
+            {
+              QLog.d("MsgforwardWXWebViewPlugin", 1, paramVarArgs[i]);
+              i += 1;
+            }
+          }
+        }
       }
     }
-    paramJsBridgeListener = "0";
     try
     {
-      paramString1 = new JSONObject(paramVarArgs[0]).optString("rId");
-      paramJsBridgeListener = paramString1;
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("rId");
     }
-    catch (Exception paramString1)
+    catch (Exception paramJsBridgeListener)
     {
-      for (;;)
-      {
-        long l;
-        QLog.e("MsgforwardWXWebViewPlugin", 1, "MsgforwardWXWebViewPlugin get resid exception!");
-      }
+      label111:
+      long l;
+      break label111;
     }
+    QLog.e("MsgforwardWXWebViewPlugin", 1, "MsgforwardWXWebViewPlugin get resid exception!");
+    paramJsBridgeListener = "0";
     paramString1 = this.mRuntime.a();
     l = paramJsBridgeListener.hashCode();
     paramString2 = new Intent(paramString1, MultiForwardActivity.class);
@@ -51,11 +60,12 @@ public class MsgforwardWXWebViewPlugin
     paramString1.startActivity(paramString2);
     paramString1.finish();
     return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgforward.MsgforwardWXWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

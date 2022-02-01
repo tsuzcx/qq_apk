@@ -13,7 +13,10 @@ class AppBrandProxyImpl$1
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     AppBrandProxyImpl.access$002(this.this$0, IAppBrandService.Stub.asInterface(paramIBinder));
-    QLog.w("miniapp-process_AppBrandProxy", 1, "onServiceConnected:" + AppBrandProxyImpl.access$000(this.this$0));
+    paramComponentName = new StringBuilder();
+    paramComponentName.append("onServiceConnected:");
+    paramComponentName.append(AppBrandProxyImpl.access$000(this.this$0));
+    QLog.w("miniapp-process_AppBrandProxy", 1, paramComponentName.toString());
     AppBrandProxyImpl.access$102(this.this$0, false);
     AppBrandProxyImpl.access$200(this.this$0);
     AppBrandProxyImpl.access$300(this.this$0);
@@ -28,7 +31,7 @@ class AppBrandProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

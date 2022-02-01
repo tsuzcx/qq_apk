@@ -17,57 +17,66 @@ public class HttpUrlProcessor
   private boolean jdField_a_of_type_Boolean;
   private Iterator<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilIterator;
   private List<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilList;
-  private boolean jdField_b_of_type_Boolean = false;
+  private boolean jdField_b_of_type_Boolean;
   
   public HttpUrlProcessor(AppRuntime paramAppRuntime, String paramString)
   {
+    int i = 0;
+    this.jdField_b_of_type_Boolean = false;
     int j = paramString.indexOf("://");
-    if (j == -1)
+    if (j != -1) {
+      i = j + 3;
+    }
+    j = paramString.substring(i).indexOf("/") + i;
+    Object localObject = null;
+    String str = null;
+    if ((-1 == j) && (-1 == j))
     {
-      j = paramString.substring(i).indexOf("/") + i;
-      if ((-1 != j) || (-1 != j)) {
-        break label124;
-      }
       paramString = null;
     }
-    for (;;)
+    else
     {
-      if ((localObject != null) && (paramString != null))
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        this.jdField_a_of_type_JavaLangString = paramString;
-      }
-      a(paramAppRuntime);
-      return;
-      i = j + 3;
-      break;
-      label124:
       int k = paramString.indexOf("&bHost=");
-      if (-1 == k) {
+      if (-1 == k)
+      {
         localObject = str;
       }
-      for (;;)
+      else
       {
-        if (localObject != null) {
-          break label246;
+        int m = paramString.indexOf("&bPort=", k);
+        if (-1 == m)
+        {
+          localObject = str;
         }
+        else
+        {
+          localObject = paramString.substring(k + 7, m);
+          str = paramString.substring(m + 7);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(":");
+          localStringBuilder.append(str);
+          localObject = localStringBuilder.toString();
+        }
+      }
+      if (localObject == null)
+      {
         localObject = paramString.substring(i, j);
         paramString = paramString.substring(j);
-        break;
-        int m = paramString.indexOf("&bPort=", k);
-        localObject = str;
-        if (-1 != m)
-        {
-          localObject = paramString.substring("&bHost=".length() + k, m);
-          str = paramString.substring(m + "&bPort=".length());
-          localObject = (String)localObject + ":" + str;
-        }
       }
-      label246:
-      paramString = paramString.substring(j, k);
+      else
+      {
+        paramString = paramString.substring(j, k);
+      }
     }
+    if ((localObject != null) && (paramString != null))
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
+      this.jdField_a_of_type_JavaUtilList.add(localObject);
+      this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      this.jdField_a_of_type_JavaLangString = paramString;
+    }
+    a(paramAppRuntime);
   }
   
   private void a(AppRuntime paramAppRuntime)
@@ -85,106 +94,133 @@ public class HttpUrlProcessor
   
   public String a()
   {
-    Object localObject1 = null;
-    Object localObject2;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject1 != null) && (((List)localObject1).size() != 0))
     {
-      localObject2 = localObject1;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("HttpUrlProcessor", 4, "getNextUrl: no host, so return null");
-        localObject2 = localObject1;
+      if (!this.jdField_a_of_type_JavaUtilIterator.hasNext()) {
+        if (this.jdField_b_of_type_JavaUtilIterator.hasNext())
+        {
+          this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
+          this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        }
+        else if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        }
+        else
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.d("HttpUrlProcessor", 4, "getNextUrl: no proxy no host, so return null");
+          }
+          return null;
+        }
       }
-      return localObject2;
-    }
-    if (!this.jdField_a_of_type_JavaUtilIterator.hasNext())
-    {
-      if (this.jdField_b_of_type_JavaUtilIterator.hasNext())
-      {
-        this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      }
-    }
-    else
-    {
-      label94:
-      localObject2 = (String)this.jdField_a_of_type_JavaUtilIterator.next();
-      QLog.e("HttpUrlProcessor", 4, "waterLog- getNextUrl: host[" + (String)localObject2 + "]");
-      if (!this.jdField_a_of_type_Boolean) {
-        break label418;
-      }
-      int i = ((String)localObject2).indexOf(":");
-      if (i <= 0) {
-        break label330;
-      }
-      localObject1 = ((String)localObject2).substring(0, i);
-      String str = ((String)localObject2).substring(i + 1);
-      localObject2 = localObject1;
-      localObject1 = str;
-      label176:
-      if (!this.jdField_b_of_type_Boolean) {
-        break label349;
-      }
-      localObject1 = "https://" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip + ":" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port + this.jdField_a_of_type_JavaLangString + "&bHost=" + (String)localObject2 + "&bPort=" + (String)localObject1;
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("HttpUrlProcessor", 4, "getNextUrl: url:" + (String)localObject1);
-      return localObject1;
+      Object localObject2 = (String)this.jdField_a_of_type_JavaUtilIterator.next();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("waterLog- getNextUrl: host[");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("]");
+      QLog.e("HttpUrlProcessor", 4, ((StringBuilder)localObject1).toString());
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        break label94;
+        int i = ((String)localObject2).indexOf(":");
+        Object localObject3;
+        if (i > 0)
+        {
+          localObject3 = ((String)localObject2).substring(0, i);
+          localObject1 = ((String)localObject2).substring(i + 1);
+          localObject2 = localObject3;
+        }
+        else if (this.jdField_b_of_type_Boolean)
+        {
+          localObject1 = "443";
+        }
+        else
+        {
+          localObject1 = "80";
+        }
+        if (this.jdField_b_of_type_Boolean)
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("https://");
+          ((StringBuilder)localObject3).append(this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip);
+          ((StringBuilder)localObject3).append(":");
+          ((StringBuilder)localObject3).append(this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port);
+          ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject3).append("&bHost=");
+          ((StringBuilder)localObject3).append((String)localObject2);
+          ((StringBuilder)localObject3).append("&bPort=");
+          ((StringBuilder)localObject3).append((String)localObject1);
+          localObject1 = ((StringBuilder)localObject3).toString();
+        }
+        else
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("http://");
+          ((StringBuilder)localObject3).append(this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip);
+          ((StringBuilder)localObject3).append(":");
+          ((StringBuilder)localObject3).append(this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port);
+          ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject3).append("&bHost=");
+          ((StringBuilder)localObject3).append((String)localObject2);
+          ((StringBuilder)localObject3).append("&bPort=");
+          ((StringBuilder)localObject3).append((String)localObject1);
+          localObject1 = ((StringBuilder)localObject3).toString();
+        }
       }
-      localObject2 = localObject1;
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("HttpUrlProcessor", 4, "getNextUrl: no proxy no host, so return null");
-      return null;
-      label330:
-      if (this.jdField_b_of_type_Boolean)
+      else if (this.jdField_b_of_type_Boolean)
       {
-        localObject1 = "443";
-        break label176;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("https://");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
-      localObject1 = "80";
-      break label176;
-      label349:
-      localObject1 = "http://" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip + ":" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port + this.jdField_a_of_type_JavaLangString + "&bHost=" + (String)localObject2 + "&bPort=" + (String)localObject1;
-      continue;
-      label418:
-      if (this.jdField_b_of_type_Boolean) {
-        localObject1 = "https://" + (String)localObject2 + this.jdField_a_of_type_JavaLangString;
-      } else {
-        localObject1 = "http://" + (String)localObject2 + this.jdField_a_of_type_JavaLangString;
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("http://");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
+      if (QLog.isDevelopLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getNextUrl: url:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("HttpUrlProcessor", 4, ((StringBuilder)localObject2).toString());
+      }
+      return localObject1;
     }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("HttpUrlProcessor", 4, "getNextUrl: no host, so return null");
+    }
+    return null;
   }
   
   public void a()
   {
     this.jdField_b_of_type_JavaUtilIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    if (this.jdField_b_of_type_JavaUtilIterator.hasNext()) {
-      this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
-    }
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
+    if (this.jdField_b_of_type_JavaUtilIterator.hasNext())
     {
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      }
-      return;
+      this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
+      this.jdField_a_of_type_Boolean = true;
+    }
+    else
+    {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      this.jdField_a_of_type_JavaUtilIterator = localList.iterator();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.filemanager.HttpUrlProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -21,10 +21,12 @@ public abstract class RecentUserBaseData
   
   public RecentUserBaseData(RecentUser paramRecentUser)
   {
-    if (paramRecentUser == null) {
-      throw new NullPointerException("RecentUser is null");
+    if (paramRecentUser != null)
+    {
+      this.mUser = paramRecentUser;
+      return;
     }
-    this.mUser = paramRecentUser;
+    throw new NullPointerException("RecentUser is null");
   }
   
   public RecentUser a()
@@ -52,15 +54,13 @@ public abstract class RecentUserBaseData
     if ((isUnreadMsgNumInTabNum()) && (a()))
     {
       this.mMenuFlag &= 0xFFF0FFFF;
-      if (this.mUnreadNum != 0) {
+      if (this.mUnreadNum != 0)
+      {
         this.mMenuFlag |= 0x10000;
+        return;
       }
+      this.mMenuFlag |= 0x20000;
     }
-    else
-    {
-      return;
-    }
-    this.mMenuFlag |= 0x20000;
   }
   
   public long getLastDraftTime()
@@ -85,26 +85,33 @@ public abstract class RecentUserBaseData
   
   public final boolean isUnreadMsgNumInTabNum()
   {
-    return (this.mUnreadFlag == 1) || (this.mUnreadFlag == 4);
+    int i = this.mUnreadFlag;
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (this.mUnreadFlag == 4) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
-    if (this.mArgsBundle == null) {
+    paramContext = this.mArgsBundle;
+    if (paramContext == null) {
       this.mArgsBundle = new Bundle();
+    } else {
+      paramContext.clear();
     }
-    for (;;)
-    {
-      this.mMsgExtroInfo = "";
-      RecentBaseDataConfig.a().a(paramBaseQQAppInterface, this);
-      return;
-      this.mArgsBundle.clear();
-    }
+    this.mMsgExtroInfo = "";
+    RecentBaseDataConfig.a().a(paramBaseQQAppInterface, this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentUserBaseData
  * JD-Core Version:    0.7.0.1
  */

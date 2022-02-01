@@ -16,12 +16,16 @@ class DragAdapter$2$1
   {
     if (this.val$isSuc)
     {
-      QLog.i("DragAdapter", 1, "sendDelUserAppRequest, success. delete appInfo: " + this.this$1.val$miniAppInfo);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendDelUserAppRequest, success. delete appInfo: ");
+      localStringBuilder.append(this.this$1.val$miniAppInfo);
+      QLog.i("DragAdapter", 1, localStringBuilder.toString());
       try
       {
-        if (this.this$1.val$desktopAppInfo.mModuleType == 1) {
-          ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).loadMoreRecentIfNeed();
+        if (this.this$1.val$desktopAppInfo.mModuleType != 1) {
+          return;
         }
+        ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).loadMoreRecentIfNeed();
         return;
       }
       catch (Throwable localThrowable)
@@ -30,12 +34,15 @@ class DragAdapter$2$1
         return;
       }
     }
-    QLog.e("DragAdapter", 1, "sendDelUserAppRequest, failed to delete miniapp!");
+    else
+    {
+      QLog.e("DragAdapter", 1, "sendDelUserAppRequest, failed to delete miniapp!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragAdapter.2.1
  * JD-Core Version:    0.7.0.1
  */

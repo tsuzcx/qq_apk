@@ -24,46 +24,51 @@ public class MiniAppGetGroupShareInfoServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    localBundle = new Bundle();
-    for (;;)
+    Bundle localBundle = new Bundle();
+    try
     {
-      try
+      localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
+      if (paramFromServiceMsg != null)
       {
-        localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-        if (paramFromServiceMsg == null) {
-          continue;
-        }
-        localStQWebRsp = new PROTOCAL.StQWebRsp();
+        PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
         localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
-        if (!paramFromServiceMsg.isSuccess()) {
-          continue;
+        if (paramFromServiceMsg.isSuccess())
+        {
+          localBundle.putParcelable("getGroupShareInfo", paramFromServiceMsg);
+          localBundle.putInt("getGroupShareInfoRetCode", (int)localStQWebRsp.retCode.get());
+          localBundle.putString("getGroupShareInfoErrMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+          notifyObserver(paramIntent, 1033, true, localBundle, MiniAppObserver.class);
         }
-        localBundle.putParcelable("getGroupShareInfo", paramFromServiceMsg);
-        localBundle.putInt("getGroupShareInfoRetCode", (int)localStQWebRsp.retCode.get());
-        localBundle.putString("getGroupShareInfoErrMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        notifyObserver(paramIntent, 1033, true, localBundle, MiniAppObserver.class);
+        else
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("onReceive. MiniAppGetGroupShareInfoServlet rsp = ");
+            localStringBuilder.append(localStQWebRsp);
+            QLog.d("MiniAppGetGroupShareInfoServlet", 2, localStringBuilder.toString());
+          }
+          notifyObserver(null, 1033, false, localBundle, MiniAppObserver.class);
+        }
       }
-      catch (Throwable localThrowable)
+      else
       {
-        PROTOCAL.StQWebRsp localStQWebRsp;
-        QLog.e("MiniAppGetGroupShareInfoServlet", 1, localThrowable + "onReceive error");
-        notifyObserver(null, 1033, false, localBundle, MiniAppObserver.class);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniAppGetGroupShareInfoServlet", 2, "onReceive. inform MiniAppGetGroupShareInfoServlet resultcode fail.");
         }
-        QLog.d("MiniAppGetGroupShareInfoServlet", 2, "onReceive. inform MiniAppGetGroupShareInfoServlet resultcode fail.");
         notifyObserver(null, 1033, false, localBundle, MiniAppObserver.class);
-        continue;
       }
-      doReport(paramIntent, paramFromServiceMsg);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppGetGroupShareInfoServlet", 2, "onReceive. MiniAppGetGroupShareInfoServlet rsp = " + localStQWebRsp);
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localThrowable);
+      localStringBuilder.append("onReceive error");
+      QLog.e("MiniAppGetGroupShareInfoServlet", 1, localStringBuilder.toString());
       notifyObserver(null, 1033, false, localBundle, MiniAppObserver.class);
     }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -72,27 +77,14 @@ public class MiniAppGetGroupShareInfoServlet
     int i = paramIntent.getIntExtra("key_index", -1);
     Object localObject2 = paramIntent.getStringExtra("key_appid");
     String str = paramIntent.getStringExtra("key_shareTicket");
-    Object localObject1 = null;
-    if (arrayOfByte != null) {
+    if (arrayOfByte != null)
+    {
       localObject1 = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
-      localObject2 = new MiniAppGetGroupShareInfoRequest((COMM.StCommonExt)localObject1, (String)localObject2, str).encode(paramIntent, i, getTraceId());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_share.GetGroupShareInfo");
-      paramPacket.putSendData(WupUtil.a((byte[])localObject1));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MiniAppGetGroupShareInfoServlet", 2, "onSend. mergeFrom extData exception!");
@@ -100,11 +92,24 @@ public class MiniAppGetGroupShareInfoServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    else
+    {
+      localObject1 = null;
+    }
+    localObject2 = new MiniAppGetGroupShareInfoRequest((COMM.StCommonExt)localObject1, (String)localObject2, str).encode(paramIntent, i, getTraceId());
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_share.GetGroupShareInfo");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetGroupShareInfoServlet
  * JD-Core Version:    0.7.0.1
  */

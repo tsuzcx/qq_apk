@@ -13,64 +13,71 @@ public class IOUtil
   {
     // Byte code:
     //   0: aload_0
-    //   1: ifnull +10 -> 11
+    //   1: ifnull +84 -> 85
     //   4: aload_0
     //   5: invokevirtual 19	java/io/File:exists	()Z
     //   8: ifne +7 -> 15
     //   11: ldc2_w 20
     //   14: lreturn
-    //   15: new 23	java/io/FileInputStream
-    //   18: dup
-    //   19: aload_0
-    //   20: invokespecial 26	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   23: astore_3
-    //   24: aload_3
-    //   25: astore_0
-    //   26: aload_3
-    //   27: invokestatic 29	com/tencent/mobileqq/soload/util/IOUtil:a	(Ljava/io/InputStream;)J
-    //   30: lstore_1
-    //   31: aload_3
-    //   32: invokestatic 32	com/tencent/mobileqq/soload/util/IOUtil:a	(Ljava/io/Closeable;)V
-    //   35: lload_1
-    //   36: lreturn
-    //   37: astore 4
-    //   39: aconst_null
-    //   40: astore_3
-    //   41: aload_3
-    //   42: astore_0
-    //   43: aload 4
-    //   45: invokevirtual 35	java/lang/Exception:printStackTrace	()V
-    //   48: aload_3
-    //   49: invokestatic 32	com/tencent/mobileqq/soload/util/IOUtil:a	(Ljava/io/Closeable;)V
-    //   52: ldc2_w 20
-    //   55: lreturn
-    //   56: astore_3
-    //   57: aconst_null
-    //   58: astore_0
-    //   59: aload_0
-    //   60: invokestatic 32	com/tencent/mobileqq/soload/util/IOUtil:a	(Ljava/io/Closeable;)V
-    //   63: aload_3
-    //   64: athrow
+    //   15: aconst_null
+    //   16: astore 5
+    //   18: aconst_null
+    //   19: astore_3
+    //   20: new 23	java/io/FileInputStream
+    //   23: dup
+    //   24: aload_0
+    //   25: invokespecial 26	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   28: astore_0
+    //   29: aload_0
+    //   30: invokestatic 29	com/tencent/mobileqq/soload/util/IOUtil:a	(Ljava/io/InputStream;)J
+    //   33: lstore_1
+    //   34: aload_0
+    //   35: invokestatic 32	com/tencent/mobileqq/soload/util/IOUtil:a	(Ljava/io/Closeable;)V
+    //   38: lload_1
+    //   39: lreturn
+    //   40: astore 4
+    //   42: aload_0
+    //   43: astore_3
+    //   44: aload 4
+    //   46: astore_0
+    //   47: goto +32 -> 79
+    //   50: astore 4
+    //   52: goto +12 -> 64
+    //   55: astore_0
+    //   56: goto +23 -> 79
+    //   59: astore 4
+    //   61: aload 5
+    //   63: astore_0
+    //   64: aload_0
     //   65: astore_3
-    //   66: goto -7 -> 59
-    //   69: astore 4
-    //   71: goto -30 -> 41
+    //   66: aload 4
+    //   68: invokevirtual 35	java/lang/Exception:printStackTrace	()V
+    //   71: aload_0
+    //   72: invokestatic 32	com/tencent/mobileqq/soload/util/IOUtil:a	(Ljava/io/Closeable;)V
+    //   75: ldc2_w 20
+    //   78: lreturn
+    //   79: aload_3
+    //   80: invokestatic 32	com/tencent/mobileqq/soload/util/IOUtil:a	(Ljava/io/Closeable;)V
+    //   83: aload_0
+    //   84: athrow
+    //   85: ldc2_w 20
+    //   88: lreturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	74	0	paramFile	java.io.File
-    //   30	6	1	l	long
-    //   23	26	3	localFileInputStream	java.io.FileInputStream
-    //   56	8	3	localObject1	Object
-    //   65	1	3	localObject2	Object
-    //   37	7	4	localException1	java.lang.Exception
-    //   69	1	4	localException2	java.lang.Exception
+    //   0	89	0	paramFile	java.io.File
+    //   33	6	1	l	long
+    //   19	61	3	localFile	java.io.File
+    //   40	5	4	localObject1	Object
+    //   50	1	4	localException1	java.lang.Exception
+    //   59	8	4	localException2	java.lang.Exception
+    //   16	46	5	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   15	24	37	java/lang/Exception
-    //   15	24	56	finally
-    //   26	31	65	finally
-    //   43	48	65	finally
-    //   26	31	69	java/lang/Exception
+    //   29	34	40	finally
+    //   29	34	50	java/lang/Exception
+    //   20	29	55	finally
+    //   66	71	55	finally
+    //   20	29	59	java/lang/Exception
   }
   
   public static long a(InputStream paramInputStream)
@@ -88,29 +95,36 @@ public class IOUtil
       localCRC32.update(arrayOfByte, 0, j);
     }
     long l2 = localCRC32.getValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("IOUtil", 2, "getCRC32Value fileTotalSize = " + i + " takeTime = " + (System.currentTimeMillis() - l1));
+    if (QLog.isColorLevel())
+    {
+      paramInputStream = new StringBuilder();
+      paramInputStream.append("getCRC32Value fileTotalSize = ");
+      paramInputStream.append(i);
+      paramInputStream.append(" takeTime = ");
+      paramInputStream.append(System.currentTimeMillis() - l1);
+      QLog.d("IOUtil", 2, paramInputStream.toString());
     }
     return l2;
   }
   
   public static void a(Closeable paramCloseable)
   {
-    if (paramCloseable != null) {}
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (IOException paramCloseable)
-    {
-      paramCloseable.printStackTrace();
+    if (paramCloseable != null) {
+      try
+      {
+        paramCloseable.close();
+        return;
+      }
+      catch (IOException paramCloseable)
+      {
+        paramCloseable.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.util.IOUtil
  * JD-Core Version:    0.7.0.1
  */

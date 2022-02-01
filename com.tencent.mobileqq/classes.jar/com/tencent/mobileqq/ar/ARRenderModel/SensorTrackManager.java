@@ -36,40 +36,42 @@ public class SensorTrackManager
   
   public static boolean a()
   {
-    boolean bool2 = false;
     String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.ARCfg.name());
-    boolean bool1;
-    if (!TextUtils.isEmpty(str))
+    boolean bool1 = TextUtils.isEmpty(str);
+    boolean bool2 = true;
+    if (!bool1)
     {
       String[] arrayOfString = new String[1];
       arrayOfString[0] = "";
       int i = ((IDPCApi)QRoute.api(IDPCApi.class)).parseComplexParamsBySimpleStringParser(str, arrayOfString);
-      if (i >= 1) {
-        if (Integer.valueOf(arrayOfString[0]).intValue() == 1)
-        {
-          bool1 = true;
-          QLog.i("AREngine_SensorTrackManager", 1, "arCfg = " + str + ", size = " + i + ", params[0] = " + arrayOfString[0] + ", isUseGameRotationVector = " + bool1);
-        }
-      }
-    }
-    for (;;)
-    {
-      if (!bool1)
-      {
-        bool1 = bool2;
-        if (!b()) {}
-      }
-      else
-      {
+      if ((i >= 1) && (Integer.valueOf(arrayOfString[0]).intValue() == 1)) {
         bool1 = true;
+      } else {
+        bool1 = false;
       }
-      return bool1;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("arCfg = ");
+      localStringBuilder.append(str);
+      localStringBuilder.append(", size = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", params[0] = ");
+      localStringBuilder.append(arrayOfString[0]);
+      localStringBuilder.append(", isUseGameRotationVector = ");
+      localStringBuilder.append(bool1);
+      QLog.i("AREngine_SensorTrackManager", 1, localStringBuilder.toString());
+    }
+    else
+    {
       bool1 = false;
     }
+    if (!bool1)
+    {
+      if (b()) {
+        return true;
+      }
+      bool2 = false;
+    }
+    return bool2;
   }
   
   private static boolean b()
@@ -97,26 +99,26 @@ public class SensorTrackManager
     if (this.jdField_b_of_type_Boolean != paramBoolean)
     {
       this.jdField_b_of_type_Boolean = paramBoolean;
-      QLog.d("SensorTrackManager", 2, "enableSensor enabled: " + paramBoolean);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enableSensor enabled: ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("SensorTrackManager", 2, localStringBuilder.toString());
     }
   }
   
   public void b()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager == null) {
-      if (!a()) {
-        break label57;
+      if (a()) {
+        this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager = new ARSensorManager(this.jdField_a_of_type_AndroidContentContext, 5);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager = new ARSensorManager(this.jdField_a_of_type_AndroidContentContext, 4);
       }
     }
-    label57:
-    for (this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager = new ARSensorManager(this.jdField_a_of_type_AndroidContentContext, 5);; this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager = new ARSensorManager(this.jdField_a_of_type_AndroidContentContext, 4))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SensorTrackManager", 2, "startupSensor");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorSimpleSensorChangeListener, 1);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SensorTrackManager", 2, "startupSensor");
     }
+    this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorSimpleSensorChangeListener, 1);
   }
   
   public void c()
@@ -124,9 +126,10 @@ public class SensorTrackManager
     if (QLog.isColorLevel()) {
       QLog.d("SensorTrackManager", 2, "stopSensor");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager != null)
+    ARSensorManager localARSensorManager = this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager;
+    if (localARSensorManager != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager.a();
+      localARSensorManager.a();
       this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager = null;
     }
   }
@@ -146,7 +149,7 @@ public class SensorTrackManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.SensorTrackManager
  * JD-Core Version:    0.7.0.1
  */

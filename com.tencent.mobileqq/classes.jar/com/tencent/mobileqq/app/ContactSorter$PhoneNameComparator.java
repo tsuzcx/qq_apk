@@ -10,57 +10,55 @@ public class ContactSorter$PhoneNameComparator
 {
   public int a(String paramString1, String paramString2)
   {
-    int i = 1;
-    if ((paramString1 == null) || (paramString1.length() == 0))
+    if ((paramString1 != null) && (paramString1.length() != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ContactUtils.PhoneNameComparator", 2, "lhsName is null");
+      if ((paramString2 != null) && (paramString2.length() != 0))
+      {
+        if ((!Character.isDigit(paramString1.charAt(0))) && (!Character.isDigit(paramString2.charAt(0))))
+        {
+          String str1 = ChnToSpell.a(paramString1, 1);
+          String str2 = ChnToSpell.a(paramString2, 1);
+          if ((str1.length() != 0) && (str2.length() != 0))
+          {
+            if (str1.charAt(0) == str2.charAt(0))
+            {
+              if ((StringUtil.b(paramString1.charAt(0))) && (StringUtil.b(paramString2.charAt(0)))) {
+                return paramString1.charAt(0) - paramString2.charAt(0);
+              }
+              if (Character.isLetter(paramString1.charAt(0))) {
+                return 1;
+              }
+              if (Character.isLetter(paramString2.charAt(0))) {
+                return -1;
+              }
+              return str1.compareTo(str2);
+            }
+            return str1.charAt(0) - str2.charAt(0);
+          }
+          return -str1.compareTo(str2);
+        }
+        if ((Character.isDigit(paramString1.charAt(0))) && (Character.isDigit(paramString2.charAt(0)))) {
+          return paramString1.charAt(0) - paramString2.charAt(0);
+        }
+        if (Character.isDigit(paramString1.charAt(0))) {
+          return 1;
+        }
+        return -1;
       }
-      throw new NullPointerException("com.tencent.mobileqq.utils.ContactUtils int compare lhsName is null for check ");
-    }
-    if ((paramString2 == null) || (paramString2.length() == 0))
-    {
       if (QLog.isColorLevel()) {
         QLog.e("ContactUtils.PhoneNameComparator", 2, "rhsName is null");
       }
       throw new NullPointerException("com.tencent.mobileqq.utils.ContactUtils  int compare rhsName is null for check ");
     }
-    if ((Character.isDigit(paramString1.charAt(0))) || (Character.isDigit(paramString2.charAt(0)))) {
-      if ((Character.isDigit(paramString1.charAt(0))) && (Character.isDigit(paramString2.charAt(0)))) {
-        i = paramString1.charAt(0) - paramString2.charAt(0);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.e("ContactUtils.PhoneNameComparator", 2, "lhsName is null");
     }
-    String str1;
-    String str2;
-    do
-    {
-      do
-      {
-        return i;
-      } while (Character.isDigit(paramString1.charAt(0)));
-      return -1;
-      str1 = ChnToSpell.a(paramString1, 1);
-      str2 = ChnToSpell.a(paramString2, 1);
-      if ((str1.length() == 0) || (str2.length() == 0)) {
-        return -str1.compareTo(str2);
-      }
-      if (str1.charAt(0) != str2.charAt(0)) {
-        break;
-      }
-      if ((StringUtil.b(paramString1.charAt(0))) && (StringUtil.b(paramString2.charAt(0)))) {
-        return paramString1.charAt(0) - paramString2.charAt(0);
-      }
-    } while (Character.isLetter(paramString1.charAt(0)));
-    if (Character.isLetter(paramString2.charAt(0))) {
-      return -1;
-    }
-    return str1.compareTo(str2);
-    return str1.charAt(0) - str2.charAt(0);
+    throw new NullPointerException("com.tencent.mobileqq.utils.ContactUtils int compare lhsName is null for check ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ContactSorter.PhoneNameComparator
  * JD-Core Version:    0.7.0.1
  */

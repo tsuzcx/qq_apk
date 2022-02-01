@@ -33,23 +33,26 @@ public class ArkFlashChatMessage
   public boolean fromAppXml(String paramString)
   {
     reset();
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return false;
-    }
-    try
+    if (paramString != null)
     {
-      paramString = new JSONObject(paramString);
-      this.appName = paramString.optString("a");
-      this.appView = paramString.optString("m");
-      this.appDesc = paramString.optString("desc");
-      this.appMinVersion = paramString.optString("v");
-      this.promptText = paramString.optString("prompt");
-      this.appResId = paramString.optInt("resid");
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+      if (paramString.length() == 0) {
+        return false;
+      }
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.appName = paramString.optString("a");
+        this.appView = paramString.optString("m");
+        this.appDesc = paramString.optString("desc");
+        this.appMinVersion = paramString.optString("v");
+        this.promptText = paramString.optString("prompt");
+        this.appResId = paramString.optInt("resid");
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return false;
   }
@@ -82,29 +85,33 @@ public class ArkFlashChatMessage
   
   public String getMeta(long paramLong, boolean paramBoolean)
   {
-    try
+    for (;;)
     {
-      String str = FlashChatManager.b(getArkDisplay());
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("id", String.valueOf(paramLong));
-      localJSONObject2.put("text", str);
-      if (paramBoolean) {}
-      for (int i = 1;; i = 0)
+      try
       {
-        localJSONObject2.put("runstate", i);
-        if (this.preview) {
-          localJSONObject2.put("preview", 1);
+        String str = FlashChatManager.b(getArkDisplay());
+        JSONObject localJSONObject1 = new JSONObject();
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("id", String.valueOf(paramLong));
+        localJSONObject2.put("text", str);
+        if (paramBoolean)
+        {
+          i = 1;
+          localJSONObject2.put("runstate", i);
+          if (this.preview) {
+            localJSONObject2.put("preview", 1);
+          }
+          localJSONObject1.put("content", localJSONObject2);
+          str = localJSONObject1.toString();
+          return str;
         }
-        localJSONObject1.put("content", localJSONObject2);
-        str = localJSONObject1.toString();
-        return str;
       }
-      return "";
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ArkApp.Message", 1, localException, new Object[0]);
+      catch (Exception localException)
+      {
+        QLog.e("ArkApp.Message", 1, localException, new Object[0]);
+        return "";
+      }
+      int i = 0;
     }
   }
   
@@ -113,7 +120,7 @@ public class ArkFlashChatMessage
     if (!android.text.TextUtils.isEmpty(this.promptText)) {
       return this.promptText;
     }
-    return MobileQQ.sMobileQQ.getString(2131690246);
+    return MobileQQ.sMobileQQ.getString(2131690162);
   }
   
   public void reset()
@@ -152,18 +159,15 @@ public class ArkFlashChatMessage
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
-      return null;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    return null;
   }
   
   public byte[] toBytes()
@@ -202,7 +206,7 @@ public class ArkFlashChatMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.ArkFlashChatMessage
  * JD-Core Version:    0.7.0.1
  */

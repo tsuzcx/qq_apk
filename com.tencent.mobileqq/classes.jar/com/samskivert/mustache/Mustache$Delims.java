@@ -9,7 +9,11 @@ public class Mustache$Delims
   
   private static String errmsg(String paramString)
   {
-    return "Invalid delimiter configuration '" + paramString + "'. Must be of the form {{=1 2=}} or {{=12 34=}} where 1, 2, 3 and 4 are delimiter chars.";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Invalid delimiter configuration '");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("'. Must be of the form {{=1 2=}} or {{=12 34=}} where 1, 2, 3 and 4 are delimiter chars.");
+    return localStringBuilder.toString();
   }
   
   public void addTag(char paramChar, String paramString, StringBuilder paramStringBuilder)
@@ -42,30 +46,42 @@ public class Mustache$Delims
   public Delims updateDelims(String paramString)
   {
     String[] arrayOfString = paramString.split(" ");
-    if (arrayOfString.length != 2) {
-      throw new MustacheException(errmsg(paramString));
-    }
-    switch (arrayOfString[0].length())
+    if (arrayOfString.length == 2)
     {
-    default: 
-      throw new MustacheException(errmsg(paramString));
-    case 1: 
-      this.start1 = arrayOfString[0].charAt(0);
-    }
-    for (this.start2 = '\000';; this.start2 = arrayOfString[0].charAt(1)) {
-      switch (arrayOfString[1].length())
+      int i = arrayOfString[0].length();
+      if (i != 1)
       {
-      default: 
-        throw new MustacheException(errmsg(paramString));
-        this.start1 = arrayOfString[0].charAt(0);
+        if (i == 2)
+        {
+          this.start1 = arrayOfString[0].charAt(0);
+          this.start2 = arrayOfString[0].charAt(1);
+        }
+        else
+        {
+          throw new MustacheException(errmsg(paramString));
+        }
       }
+      else
+      {
+        this.start1 = arrayOfString[0].charAt(0);
+        this.start2 = '\000';
+      }
+      i = arrayOfString[1].length();
+      if (i != 1)
+      {
+        if (i == 2)
+        {
+          this.end1 = arrayOfString[1].charAt(0);
+          this.end2 = arrayOfString[1].charAt(1);
+          return this;
+        }
+        throw new MustacheException(errmsg(paramString));
+      }
+      this.end1 = arrayOfString[1].charAt(0);
+      this.end2 = '\000';
+      return this;
     }
-    this.end1 = arrayOfString[1].charAt(0);
-    this.end2 = '\000';
-    return this;
-    this.end1 = arrayOfString[1].charAt(0);
-    this.end2 = arrayOfString[1].charAt(1);
-    return this;
+    throw new MustacheException(errmsg(paramString));
   }
 }
 

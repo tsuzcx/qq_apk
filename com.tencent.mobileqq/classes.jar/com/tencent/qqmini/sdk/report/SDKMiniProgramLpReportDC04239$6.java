@@ -26,12 +26,12 @@ final class SDKMiniProgramLpReportDC04239$6
           String str2 = this.val$path;
           String str3 = this.val$subActionType;
           int i = ((MiniAppExposureManager.MiniAppExposureData)localObject).getPosition();
-          if (this.val$reportReserves2) {}
-          for (localObject = ((MiniAppExposureManager.MiniAppExposureData)localObject).getReserves2();; localObject = null)
-          {
-            SDKMiniProgramLpReportDC04239.exposureReport(localMiniAppInfo, str1, str2, "page_view", str3, String.valueOf(i), (String)localObject);
-            break;
+          if (this.val$reportReserves2) {
+            localObject = ((MiniAppExposureManager.MiniAppExposureData)localObject).getReserves2();
+          } else {
+            localObject = null;
           }
+          SDKMiniProgramLpReportDC04239.exposureReport(localMiniAppInfo, str1, str2, "page_view", str3, String.valueOf(i), (String)localObject);
         }
       }
     }
@@ -40,7 +40,7 @@ final class SDKMiniProgramLpReportDC04239$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.6
  * JD-Core Version:    0.7.0.1
  */

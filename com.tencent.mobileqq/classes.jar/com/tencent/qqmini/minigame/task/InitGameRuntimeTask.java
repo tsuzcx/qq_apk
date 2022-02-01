@@ -22,24 +22,22 @@ public class InitGameRuntimeTask
   
   public void executeInMainThread()
   {
-    TritonPlatform localTritonPlatform = null;
-    GameRuntime localGameRuntime;
-    if (getDependTasks() != null)
+    Object localObject = getDependTasks();
+    GameRuntime localGameRuntime = null;
+    if (localObject != null)
     {
       localGameRuntime = ((GameRuntimeCreateTask)getRuntimeLoader().getTask(GameRuntimeCreateTask.class)).getGameRuntime();
-      localTritonPlatform = ((TritonEngineInitTask)getRuntimeLoader().getTask(TritonEngineInitTask.class)).getTritonPlatform();
+      localObject = ((TritonEngineInitTask)getRuntimeLoader().getTask(TritonEngineInitTask.class)).getTritonPlatform();
     }
-    for (;;)
+    else
     {
-      MiniAppInfo localMiniAppInfo = getRuntimeLoader().getMiniAppInfo();
-      if ((localGameRuntime == null) || (localTritonPlatform == null) || (localMiniAppInfo == null))
-      {
-        onTaskFailed();
-        return;
-      }
+      localObject = null;
+    }
+    MiniAppInfo localMiniAppInfo = getRuntimeLoader().getMiniAppInfo();
+    if ((localGameRuntime != null) && (localObject != null) && (localMiniAppInfo != null)) {
       try
       {
-        localGameRuntime.init(localTritonPlatform);
+        localGameRuntime.init((TritonPlatform)localObject);
         localGameRuntime.loadMiniApp(localMiniAppInfo);
         onTaskSucceed();
         return;
@@ -50,13 +48,13 @@ public class InitGameRuntimeTask
         onTaskFailed();
         return;
       }
-      localGameRuntime = null;
     }
+    onTaskFailed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.task.InitGameRuntimeTask
  * JD-Core Version:    0.7.0.1
  */

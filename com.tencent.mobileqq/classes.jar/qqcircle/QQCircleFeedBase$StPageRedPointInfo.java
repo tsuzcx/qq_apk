@@ -24,13 +24,14 @@ public final class QQCircleFeedBase$StPageRedPointInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 48, 58, 186 }, new String[] { "appid", "redType", "redTotalNum", "pushTime", "extend", "lastVisitTime", "transInfo", "qqProfileInfo" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(0L), localByteStringMicro, null }, StPageRedPointInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 48, 58, 186 }, new String[] { "appid", "redType", "redTotalNum", "pushTime", "extend", "lastVisitTime", "transInfo", "qqProfileInfo" }, new Object[] { "", localInteger, localInteger, localInteger, "", Long.valueOf(0L), localByteStringMicro, null }, StPageRedPointInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleFeedBase.StPageRedPointInfo
  * JD-Core Version:    0.7.0.1
  */

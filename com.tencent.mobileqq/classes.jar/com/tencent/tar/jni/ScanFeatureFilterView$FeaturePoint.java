@@ -13,10 +13,11 @@ public final class ScanFeatureFilterView$FeaturePoint
   
   public float a(int paramInt, long paramLong)
   {
-    if (paramLong < this.jdField_b_of_type_Long) {
+    long l = this.jdField_b_of_type_Long;
+    if (paramLong < l) {
       return 0.0F;
     }
-    if (paramLong - this.jdField_b_of_type_Long > paramInt) {
+    if (paramLong - l > paramInt) {
       this.jdField_a_of_type_Boolean = true;
     }
     return (float)(paramLong - this.jdField_b_of_type_Long) / paramInt % 1.0F;
@@ -31,7 +32,7 @@ public final class ScanFeatureFilterView$FeaturePoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tar.jni.ScanFeatureFilterView.FeaturePoint
  * JD-Core Version:    0.7.0.1
  */

@@ -31,13 +31,15 @@ final class MapCollections$ArrayIterator<T>
   
   public void remove()
   {
-    if (!this.mCanRemove) {
-      throw new IllegalStateException();
+    if (this.mCanRemove)
+    {
+      this.mIndex -= 1;
+      this.mSize -= 1;
+      this.mCanRemove = false;
+      this.this$0.colRemoveAt(this.mIndex);
+      return;
     }
-    this.mIndex -= 1;
-    this.mSize -= 1;
-    this.mCanRemove = false;
-    this.this$0.colRemoveAt(this.mIndex);
+    throw new IllegalStateException();
   }
 }
 

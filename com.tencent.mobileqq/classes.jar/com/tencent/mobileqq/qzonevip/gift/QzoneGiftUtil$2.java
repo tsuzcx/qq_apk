@@ -11,15 +11,17 @@ final class QzoneGiftUtil$2
   
   public void onDownloadCanceled(String paramString)
   {
-    if (this.a != null) {
-      this.a.onResult(false);
+    paramString = this.a;
+    if (paramString != null) {
+      paramString.onResult(false);
     }
   }
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (this.a != null) {
-      this.a.onResult(false);
+    paramString = this.a;
+    if (paramString != null) {
+      paramString.onResult(false);
     }
   }
   
@@ -27,14 +29,15 @@ final class QzoneGiftUtil$2
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (this.a != null) {
-      this.a.onResult(true);
+    paramString = this.a;
+    if (paramString != null) {
+      paramString.onResult(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.2
  * JD-Core Version:    0.7.0.1
  */

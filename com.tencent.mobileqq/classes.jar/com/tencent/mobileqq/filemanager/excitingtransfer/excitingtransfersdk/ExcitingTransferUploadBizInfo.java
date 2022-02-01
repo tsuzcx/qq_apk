@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
-import android.support.annotation.NonNull;
 import com.tencent.commonsdk.util.HexUtil;
 
 public class ExcitingTransferUploadBizInfo
@@ -25,19 +24,48 @@ public class ExcitingTransferUploadBizInfo
   public ExcitingTransferHostInfo[] vecFtnLanIpV4AndPorts;
   public ExcitingTransferHostInfo[] vecFtnLanIpV6AndPorts;
   
-  @NonNull
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("commandId:").append(this.commandId).append(" businessType:").append(this.businessType).append(" chateType:").append(this.chateType).append(" senderUin:").append(this.senderUin).append(" receiverUin:").append(this.receiverUin).append(" groupCode:").append(this.groupCode).append(" client_type:").append(this.clientType).append(" client_ver:").append(this.clientVer).append(" bUseMediaPlatform:").append(this.bUseMediaPlatform).append(" bufSig:").append(HexUtil.bytes2HexStr(this.bufSig)).append(" bufUuid:").append(HexUtil.bytes2HexStr(this.bufUuid)).append(" bufUploadKey:").append(HexUtil.bytes2HexStr(this.bufUploadKey)).append(" bufBusinessExt_l:");
-    if (this.bufBusinessExt != null) {}
-    for (int i = this.bufBusinessExt.length;; i = 0) {
-      return i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("commandId:");
+    localStringBuilder.append(this.commandId);
+    localStringBuilder.append(" businessType:");
+    localStringBuilder.append(this.businessType);
+    localStringBuilder.append(" chateType:");
+    localStringBuilder.append(this.chateType);
+    localStringBuilder.append(" senderUin:");
+    localStringBuilder.append(this.senderUin);
+    localStringBuilder.append(" receiverUin:");
+    localStringBuilder.append(this.receiverUin);
+    localStringBuilder.append(" groupCode:");
+    localStringBuilder.append(this.groupCode);
+    localStringBuilder.append(" client_type:");
+    localStringBuilder.append(this.clientType);
+    localStringBuilder.append(" client_ver:");
+    localStringBuilder.append(this.clientVer);
+    localStringBuilder.append(" bUseMediaPlatform:");
+    localStringBuilder.append(this.bUseMediaPlatform);
+    localStringBuilder.append(" bufSig:");
+    localStringBuilder.append(HexUtil.bytes2HexStr(this.bufSig));
+    localStringBuilder.append(" bufUuid:");
+    localStringBuilder.append(HexUtil.bytes2HexStr(this.bufUuid));
+    localStringBuilder.append(" bufUploadKey:");
+    localStringBuilder.append(HexUtil.bytes2HexStr(this.bufUploadKey));
+    localStringBuilder.append(" bufBusinessExt_l:");
+    byte[] arrayOfByte = this.bufBusinessExt;
+    int i;
+    if (arrayOfByte != null) {
+      i = arrayOfByte.length;
+    } else {
+      i = 0;
     }
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadBizInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -24,30 +24,28 @@ public final class EnvironmentChecker
   
   public final boolean checkAuthorization()
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
     Object localObject = BaseInfo.app;
+    boolean bool = false;
     if (localObject != null)
     {
       NetworkWatcher localNetworkWatcher = NetworkWatcher.INSTANCE;
       localObject = ((Application)localObject).getApplicationContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "it.applicationContext");
       localNetworkWatcher.init((Context)localObject);
-      if (AuthorizationProxy.INSTANCE.getAuthorization().getToken(BaseInfo.userMeta.appKey, false)) {
-        break label81;
+      if (!AuthorizationProxy.INSTANCE.getAuthorization().getToken(BaseInfo.userMeta.appKey, false))
+      {
+        Logger.INSTANCE.i(new String[] { "QAPM_manager_EnvironmentChecker", "No available authorities." });
+        return false;
       }
-      Logger.INSTANCE.i(new String[] { "QAPM_manager_EnvironmentChecker", "No available authorities." });
+      bool = true;
     }
-    label81:
-    for (bool1 = bool2;; bool1 = true) {
-      return bool1;
-    }
+    return bool;
   }
   
   public final int checkConfigs(int paramInt)
   {
     ConfigProxy.INSTANCE.getConfig().loadConfigs(paramInt);
-    return ConfigProxy.INSTANCE.getConfig().getServiceSwitch() & paramInt;
+    return paramInt & ConfigProxy.INSTANCE.getConfig().getServiceSwitch();
   }
   
   public final boolean checkSysPermission()
@@ -61,7 +59,7 @@ public final class EnvironmentChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qapmmanager.EnvironmentChecker
  * JD-Core Version:    0.7.0.1
  */

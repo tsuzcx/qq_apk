@@ -12,22 +12,28 @@ class PttItemBuilder$4
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttItemBuilder", 2, "PttSttReport PTT_STT_RESULT_ERROR strErrorCode = " + this.a + "  | strSubErrorCode = " + this.b);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PttSttReport PTT_STT_RESULT_ERROR strErrorCode = ");
+      ((StringBuilder)localObject).append(this.a);
+      ((StringBuilder)localObject).append("  | strSubErrorCode = ");
+      ((StringBuilder)localObject).append(this.b);
+      QLog.d("PttItemBuilder", 2, ((StringBuilder)localObject).toString());
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("sttErrorCode", this.a);
-    localHashMap.put("sttSubErrorCode", this.b);
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttSttResultError", true, 0L, 0L, localHashMap, null);
-    localHashMap = new HashMap();
-    localHashMap.put("resultCode", this.a);
-    localHashMap.put("subCode", this.b);
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttSttResultMonitor", false, 0L, 0L, localHashMap, null);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("sttErrorCode", this.a);
+    ((HashMap)localObject).put("sttSubErrorCode", this.b);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttSttResultError", true, 0L, 0L, (HashMap)localObject, null);
+    localObject = new HashMap();
+    ((HashMap)localObject).put("resultCode", this.a);
+    ((HashMap)localObject).put("subCode", this.b);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttSttResultMonitor", false, 0L, 0L, (HashMap)localObject, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

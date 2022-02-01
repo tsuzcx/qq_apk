@@ -14,119 +14,125 @@ public final class ThreadManager$Companion
   @Nullable
   public final Looper getBatteryThreadLooper()
   {
-    if (ThreadManager.access$getBATTERY_LOOPER$cp() == null) {}
-    try
-    {
-      if (ThreadManager.access$getBATTERY_LOOPER$cp() == null)
+    if (ThreadManager.access$getBATTERY_LOOPER$cp() == null) {
+      try
       {
-        localObject1 = new HandlerThread("QAPM_Battery");
-        ((HandlerThread)localObject1).start();
-        ThreadManager.access$setBATTERY_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        if (ThreadManager.access$getBATTERY_LOOPER$cp() == null)
+        {
+          localObject1 = new HandlerThread("QAPM_Battery");
+          ((HandlerThread)localObject1).start();
+          ThreadManager.access$setBATTERY_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        }
+        Object localObject1 = Unit.INSTANCE;
       }
-      Object localObject1 = Unit.INSTANCE;
-      return ThreadManager.access$getBATTERY_LOOPER$cp();
+      finally {}
     }
-    finally {}
+    return ThreadManager.access$getBATTERY_LOOPER$cp();
   }
   
   @JvmStatic
   @Nullable
   public final Looper getLogThreadLooper()
   {
-    if (ThreadManager.access$getLOG_LOOPER$cp() == null) {}
-    try
-    {
-      if (ThreadManager.access$getLOG_LOOPER$cp() == null)
+    if (ThreadManager.access$getLOG_LOOPER$cp() == null) {
+      try
       {
-        localObject1 = new HandlerThread("QAPM_Log");
-        ((HandlerThread)localObject1).start();
-        ThreadManager.access$setLOG_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        if (ThreadManager.access$getLOG_LOOPER$cp() == null)
+        {
+          localObject1 = new HandlerThread("QAPM_Log");
+          ((HandlerThread)localObject1).start();
+          ThreadManager.access$setLOG_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        }
+        Object localObject1 = Unit.INSTANCE;
       }
-      Object localObject1 = Unit.INSTANCE;
-      return ThreadManager.access$getLOG_LOOPER$cp();
+      finally {}
     }
-    finally {}
+    return ThreadManager.access$getLOG_LOOPER$cp();
   }
   
   @JvmStatic
   @Nullable
   public final Looper getMonitorThreadLooper()
   {
-    if (ThreadManager.access$getMONITOR_LOOPER$cp() == null) {}
-    try
-    {
-      if (ThreadManager.access$getMONITOR_LOOPER$cp() == null)
+    if (ThreadManager.access$getMONITOR_LOOPER$cp() == null) {
+      try
       {
-        localObject1 = new HandlerThread("QAPM_Monitor");
-        ((HandlerThread)localObject1).start();
-        ThreadManager.access$setMONITOR_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        if (ThreadManager.access$getMONITOR_LOOPER$cp() == null)
+        {
+          localObject1 = new HandlerThread("QAPM_Monitor");
+          ((HandlerThread)localObject1).start();
+          ThreadManager.access$setMONITOR_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        }
+        Object localObject1 = Unit.INSTANCE;
       }
-      Object localObject1 = Unit.INSTANCE;
-      return ThreadManager.access$getMONITOR_LOOPER$cp();
+      finally {}
     }
-    finally {}
+    return ThreadManager.access$getMONITOR_LOOPER$cp();
   }
   
   @JvmStatic
   @Nullable
   public final Looper getReporterThreadLooper()
   {
-    if (ThreadManager.access$getREPORTER_LOOPER$cp() == null) {}
-    try
-    {
-      if (ThreadManager.access$getREPORTER_LOOPER$cp() == null)
+    if (ThreadManager.access$getREPORTER_LOOPER$cp() == null) {
+      try
       {
-        localObject1 = new HandlerThread("QAPM_Reporter");
-        ((HandlerThread)localObject1).start();
-        ThreadManager.access$setREPORTER_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        if (ThreadManager.access$getREPORTER_LOOPER$cp() == null)
+        {
+          localObject1 = new HandlerThread("QAPM_Reporter");
+          ((HandlerThread)localObject1).start();
+          ThreadManager.access$setREPORTER_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        }
+        Object localObject1 = Unit.INSTANCE;
       }
-      Object localObject1 = Unit.INSTANCE;
-      return ThreadManager.access$getREPORTER_LOOPER$cp();
+      finally {}
     }
-    finally {}
+    return ThreadManager.access$getREPORTER_LOOPER$cp();
   }
   
   @JvmStatic
   @Nullable
   public final Looper getStackThreadLooper()
   {
-    if (ThreadManager.access$getSTACK_LOOPER$cp() == null) {}
-    try
-    {
-      if (ThreadManager.access$getSTACK_LOOPER$cp() == null)
+    if (ThreadManager.access$getSTACK_LOOPER$cp() == null) {
+      try
       {
-        localObject1 = new HandlerThread("QAPM_Stack");
-        ((HandlerThread)localObject1).start();
-        ThreadManager.access$setSTACK_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        if (ThreadManager.access$getSTACK_LOOPER$cp() == null)
+        {
+          localObject1 = new HandlerThread("QAPM_Stack");
+          ((HandlerThread)localObject1).start();
+          ThreadManager.access$setSTACK_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        }
+        Object localObject1 = Unit.INSTANCE;
       }
-      Object localObject1 = Unit.INSTANCE;
-      return ThreadManager.access$getSTACK_LOOPER$cp();
+      finally {}
     }
-    finally {}
+    return ThreadManager.access$getSTACK_LOOPER$cp();
   }
   
   @JvmStatic
   @Nullable
   public final Looper getUserBehaviorLooper()
   {
-    if (ThreadManager.access$getUSER_BEHAVIOR_LOOPER$cp() == null) {}
-    try
-    {
-      if (ThreadManager.access$getUSER_BEHAVIOR_LOOPER$cp() == null)
+    if (ThreadManager.access$getUSER_BEHAVIOR_LOOPER$cp() == null) {
+      try
       {
-        localObject1 = new HandlerThread("QAPM_User_Behavior");
-        ((HandlerThread)localObject1).start();
-        ThreadManager.access$setUSER_BEHAVIOR_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        if (ThreadManager.access$getUSER_BEHAVIOR_LOOPER$cp() == null)
+        {
+          localObject1 = new HandlerThread("QAPM_User_Behavior");
+          ((HandlerThread)localObject1).start();
+          ThreadManager.access$setUSER_BEHAVIOR_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+        }
+        Object localObject1 = Unit.INSTANCE;
       }
-      Object localObject1 = Unit.INSTANCE;
-      return ThreadManager.access$getUSER_BEHAVIOR_LOOPER$cp();
+      finally {}
     }
-    finally {}
+    return ThreadManager.access$getUSER_BEHAVIOR_LOOPER$cp();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.thread.ThreadManager.Companion
  * JD-Core Version:    0.7.0.1
  */

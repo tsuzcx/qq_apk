@@ -13,18 +13,23 @@ class X5UpdateGuard$1
   {
     int i = QbSdk.getTbsVersion(X5UpdateGuard.a(this.this$0).getContext());
     int j = QbSdk.getTmpDirTbsVersion(X5UpdateGuard.a(this.this$0).getContext());
-    QLog.d("minisdk_X5UpdateGuard", 1, "timeout, getTbsVersion=" + i + " tmpDirTbsVersion=" + j);
-    if ((i > 0) || (j > 0))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("timeout, getTbsVersion=");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" tmpDirTbsVersion=");
+    localStringBuilder.append(j);
+    QLog.d("minisdk_X5UpdateGuard", 1, localStringBuilder.toString());
+    if ((i <= 0) && (j <= 0))
     {
-      X5UpdateGuard.a(this.this$0);
+      X5UpdateGuard.b(this.this$0);
       return;
     }
-    X5UpdateGuard.b(this.this$0);
+    X5UpdateGuard.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.X5UpdateGuard.1
  * JD-Core Version:    0.7.0.1
  */

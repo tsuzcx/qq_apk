@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.loginregister.LoginUtils;
 import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
@@ -47,6 +48,7 @@ public class LoginPhoneNumActivity
   private static final String WATERPROOF_URL = "https://ti.qq.com/safe/tools/captcha/sms-verify-login";
   private ImageView arrowCountry;
   private Button btnNextStep;
+  private String countryName = HardCodeUtil.a(2131716551);
   private ConfigClearableEditText editText;
   private String fromWhere;
   private String mEntrance;
@@ -54,30 +56,32 @@ public class LoginPhoneNumActivity
   MqqHandler mHandler = new LoginPhoneNumActivity.1(this);
   private boolean mIsOpeningBrowser;
   private boolean mIsSubaccount = false;
+  private boolean mIsValidPhoneNum = false;
   private LoginUserPrivateHelper mLoginUserPrivateHelper;
   private byte[] mReqData;
   private String mTitle;
   WtloginObserver mWtloginObserver = new LoginPhoneNumActivity.7(this);
   private TextView txtCountryCode;
-  private TextView txtCountryName;
   
   private int getEntranceType()
   {
-    if (this.mEntrance == null) {}
-    do
-    {
+    String str = this.mEntrance;
+    if (str == null) {
       return 0;
-      if ("fromLogin".equals(this.mEntrance)) {
-        return 4;
-      }
-      if (LoginView.class.getName().equals(this.mEntrance)) {
-        return 1;
-      }
-      if ("fromAddAccount".equals(this.mEntrance)) {
-        return 3;
-      }
-    } while (!"fromSubLogin".equals(this.mEntrance));
-    return 2;
+    }
+    if ("fromLogin".equals(str)) {
+      return 4;
+    }
+    if (LoginView.class.getName().equals(this.mEntrance)) {
+      return 1;
+    }
+    if ("fromAddAccount".equals(this.mEntrance)) {
+      return 3;
+    }
+    if ("fromSubLogin".equals(this.mEntrance)) {
+      return 2;
+    }
+    return 0;
   }
   
   private String getFUIN()
@@ -103,168 +107,86 @@ public class LoginPhoneNumActivity
   private void handleMaskUinLogin(WUserSigInfo paramWUserSigInfo)
   {
     if (!PhoneNumQuickLoginManager.a(paramWUserSigInfo, this, new LoginPhoneNumActivity.5(this), new LoginPhoneNumActivity.6(this))) {
-      QQToast.a(this, 2131698909, 0).a();
+      QQToast.a(this, 2131698988, 0).a();
     }
   }
   
   private void initViews()
   {
-    String str;
-    if (TextUtils.isEmpty(this.mTitle))
-    {
-      str = getResources().getString(2131720470);
-      setTitleText(str);
-      setBackListener();
-      setProgressBarVisible(false);
-      this.txtCountryName = ((TextView)findViewById(2131380754));
-      this.txtCountryName.setOnClickListener(this);
-      this.arrowCountry = ((ImageView)findViewById(2131363032));
-      this.arrowCountry.setOnClickListener(this);
-      this.txtCountryCode = ((TextView)findViewById(2131380753));
-      this.countryCode = PhoneCodeUtils.b(this);
-      this.txtCountryCode.setText("+" + this.countryCode);
-      if ("86".equals(this.countryCode)) {
-        this.txtCountryName.setText(getString(2131716898));
-      }
-      this.editText = ((ConfigClearableEditText)findViewById(2131372461));
-      this.editText.addTextChangedListener(this);
-      if (Build.VERSION.SDK_INT < 11) {
-        break label229;
-      }
-      this.editText.setCustomSelectionActionModeCallback(new LoginPhoneNumActivity.3(this));
+    if (TextUtils.isEmpty(this.mTitle)) {
+      localObject = getResources().getString(2131693845);
+    } else {
+      localObject = this.mTitle;
     }
-    for (;;)
-    {
-      this.btnNextStep = ((Button)findViewById(2131364061));
-      this.btnNextStep.setOnClickListener(this);
-      return;
-      str = this.mTitle;
-      break;
-      label229:
+    setTitleText((String)localObject);
+    setBackListener();
+    setProgressBarVisible(false);
+    this.arrowCountry = ((ImageView)findViewById(2131362980));
+    this.arrowCountry.setOnClickListener(this);
+    this.txtCountryCode = ((TextView)findViewById(2131380021));
+    this.txtCountryCode.setOnClickListener(this);
+    this.countryCode = PhoneCodeUtils.b(this);
+    Object localObject = this.txtCountryCode;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("+");
+    localStringBuilder.append(this.countryCode);
+    ((TextView)localObject).setText(localStringBuilder.toString());
+    this.editText = ((ConfigClearableEditText)findViewById(2131372044));
+    this.editText.addTextChangedListener(this);
+    if (Build.VERSION.SDK_INT >= 11) {
+      this.editText.setCustomSelectionActionModeCallback(new LoginPhoneNumActivity.3(this));
+    } else {
       this.editText.setOnCreateContextMenuListener(new LoginPhoneNumActivity.4(this));
     }
-  }
-  
-  private String isValidMobileNum(String paramString)
-  {
-    int k = 0;
-    int j = 1;
-    if (paramString != null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        if ("852".equals(this.countryCode)) {
-          break label176;
-        }
-        if ("853".equals(this.countryCode))
-        {
-          break label176;
-          paramString = paramString.toString().trim();
-        }
-      }
-      catch (Exception paramString)
-      {
-        boolean bool;
-        paramString = null;
-      }
-      try
-      {
-        Long.parseLong(paramString);
-        if (paramString.length() < i) {
-          j = 0;
-        }
-        i = j;
-        if (!paramString.startsWith("1"))
-        {
-          i = j;
-          if ("86".equals(this.countryCode)) {
-            i = 0;
-          }
-        }
-        if (!"86".equals(this.countryCode)) {
-          break label168;
-        }
-        j = paramString.length();
-        if (j == 11) {
-          break label168;
-        }
-        i = k;
-      }
-      catch (Exception localException)
-      {
-        break label151;
-        continue;
-        i = 3;
-      }
-      if (i == 0) {
-        paramString = null;
-      }
-      return paramString;
-      bool = "886".equals(this.countryCode);
-      if (bool)
-      {
-        i = 9;
-        continue;
-        label151:
-        i = 0;
-        continue;
-        i = 0;
-        paramString = null;
-      }
-      else
-      {
-        label168:
-        continue;
-        label176:
-        i = 6;
-      }
-    }
+    this.btnNextStep = ((Button)findViewById(2131363982));
+    this.btnNextStep.setOnClickListener(this);
   }
   
   private void startQueryAccount()
   {
-    if (!validNum()) {}
-    do
+    if (this.mReqData == null)
     {
+      QLog.d("LoginPhoneNumActivity", 1, "startQueryAccount, but mReqData is null");
       return;
-      if (this.mReqData == null)
-      {
-        QLog.d("LoginPhoneNumActivity", 1, "startQueryAccount, but mReqData is null");
-        return;
-      }
-      if (!NetworkUtil.d(BaseApplication.getContext()))
-      {
-        notifyToast(2131692257, 0);
-        return;
-      }
-      createWaitingDialog(2131699695);
-    } while (PhoneNumLoginImpl.a().a(this.mRuntime, this.phoneNum, this.countryCode, this.mReqData, this.mWtloginObserver) == 0);
-    closeDialog();
-    notifyToast(getString(2131716956), 1);
+    }
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    {
+      notifyToast(2131692183, 0);
+      return;
+    }
+    createWaitingDialog(2131699828);
+    if (PhoneNumLoginImpl.a().a(this.mRuntime, this.phoneNum, this.countryCode, this.mReqData, this.mWtloginObserver) != 0)
+    {
+      closeDialog();
+      notifyToast(getString(2131716609), 1);
+    }
   }
   
-  private boolean validNum()
+  private void updateNextStepButton()
   {
-    boolean bool = true;
-    this.phoneNum = isValidMobileNum(this.editText.getText().toString());
-    if (this.phoneNum == null)
-    {
-      notifyToast(2131716940, 1);
-      bool = false;
+    if (this.btnNextStep == null) {
+      return;
     }
-    return bool;
+    Object localObject = this.editText;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((ConfigClearableEditText)localObject).getText();
+    }
+    this.mIsValidPhoneNum = checkPhoneNumLength((Editable)localObject);
+    if (this.mIsValidPhoneNum)
+    {
+      this.btnNextStep.setBackgroundResource(2130841441);
+      this.btnNextStep.setEnabled(true);
+      return;
+    }
+    this.btnNextStep.setBackgroundResource(2130841442);
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (isValidMobileNum(paramEditable.toString()) != null)
-    {
-      this.btnNextStep.setEnabled(true);
-      return;
-    }
-    this.btnNextStep.setEnabled(false);
+    this.phoneNum = this.editText.getText().toString();
+    updateNextStepButton();
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -281,7 +203,7 @@ public class LoginPhoneNumActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561319);
+    setContentView(2131559092);
     paramBundle = getIntent();
     if (paramBundle != null)
     {
@@ -301,7 +223,7 @@ public class LoginPhoneNumActivity
     return true;
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     if (this.mIsOpeningBrowser)
@@ -320,10 +242,10 @@ public class LoginPhoneNumActivity
     localIntent.putExtra("fromWhere", this.fromWhere);
     localIntent.putExtra("login_from_account_change", this.mFromAccountChange);
     localIntent.putExtra("entrance", this.mEntrance);
-    startActivityForResult(localIntent, 20140319);
+    startActivityForResult(localIntent, 2003);
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
@@ -333,18 +255,16 @@ public class LoginPhoneNumActivity
     Object localObject;
     if ((paramInt1 == 1) && (paramInt2 == -1))
     {
-      localObject = paramIntent.getStringExtra("k_name");
-      this.txtCountryName.setText((CharSequence)localObject);
       this.countryCode = paramIntent.getStringExtra("k_code");
-      this.txtCountryCode.setText("+" + this.countryCode);
+      this.countryName = paramIntent.getStringExtra("k_name");
+      paramIntent = this.txtCountryCode;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("+");
+      ((StringBuilder)localObject).append(this.countryCode);
+      paramIntent.setText(((StringBuilder)localObject).toString());
       try
       {
-        if (isValidMobileNum(this.editText.getText().toString()) != null)
-        {
-          this.btnNextStep.setEnabled(true);
-          return;
-        }
-        this.btnNextStep.setEnabled(false);
+        updateNextStepButton();
         return;
       }
       catch (Exception paramIntent)
@@ -353,7 +273,7 @@ public class LoginPhoneNumActivity
         return;
       }
     }
-    if ((paramInt1 == 20140319) && (paramInt2 == -1))
+    if ((paramInt1 == 2003) && (paramInt2 == -1))
     {
       if (paramIntent != null)
       {
@@ -377,34 +297,41 @@ public class LoginPhoneNumActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i == 2131380754) || (i == 2131363032))
+    Intent localIntent;
+    if ((i != 2131380021) && (i != 2131362980))
     {
-      startActivityForResult(new Intent(this, NewStyleCountryActivity.class), 1);
-      ReportController.a(this.mRuntime, "dc00898", "", "", "0X800B105", "0X800B105", getEntranceType(), 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (i == 2131364061) {
-        if (!this.mLoginUserPrivateHelper.a(this))
+      if (i == 2131363982) {
+        if (!this.mIsValidPhoneNum)
         {
-          ((InputMethodManager)getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+          QQToast.a(this, 1, 2131694818, 0).a();
         }
         else
         {
-          QLog.d("LoginPhoneNumActivity", 1, "click next step");
-          Intent localIntent = new Intent();
-          localIntent.putExtra("keyFrom", "LoginPhoneNumActivity");
-          localIntent.putExtra("url", "https://ti.qq.com/safe/tools/captcha/sms-verify-login");
-          LoginUtils.a(this, localIntent, "/base/browser");
-          this.btnNextStep.setEnabled(false);
-          this.mIsOpeningBrowser = true;
-          ReportController.a(this.mRuntime, "dc00898", "", getFUIN(), "0X800B106", "0X800B106", getEntranceType(), 0, "", "", "", "");
-          ReportController.a(this.mRuntime, "dc00898", "", getFUIN(), "0X800B108", "0X800B108", getEntranceType(), 0, "", "", "", "");
+          ((InputMethodManager)getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+          if (this.mLoginUserPrivateHelper.a(this))
+          {
+            QLog.d("LoginPhoneNumActivity", 1, "click next step");
+            localIntent = new Intent();
+            localIntent.putExtra("keyFrom", "LoginPhoneNumActivity");
+            localIntent.putExtra("url", "https://ti.qq.com/safe/tools/captcha/sms-verify-login");
+            LoginUtils.a(this, localIntent, "/base/browser");
+            this.btnNextStep.setEnabled(false);
+            this.mIsOpeningBrowser = true;
+            ReportController.a(this.mRuntime, "dc00898", "", getFUIN(), "0X800B106", "0X800B106", getEntranceType(), 0, "", "", "", "");
+            ReportController.a(this.mRuntime, "dc00898", "", getFUIN(), "0X800B108", "0X800B108", getEntranceType(), 0, "", "", "", "");
+          }
         }
       }
     }
+    else
+    {
+      localIntent = new Intent(this, NewStyleCountryActivity.class);
+      localIntent.putExtra("k_code", this.countryCode);
+      localIntent.putExtra("k_name", this.countryName);
+      startActivityForResult(localIntent, 1);
+      ReportController.a(this.mRuntime, "dc00898", "", "", "0X800B105", "0X800B105", getEntranceType(), 0, "", "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -427,7 +354,7 @@ public class LoginPhoneNumActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginPhoneNumActivity
  * JD-Core Version:    0.7.0.1
  */

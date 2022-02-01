@@ -12,41 +12,52 @@ class MiniSDKClientQIPCModule$6
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QLog.i("MiniSDKClientQIPCModule", 2, "createUpdatableMsg receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("createUpdatableMsg receive isSuc= ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" ret=");
+    ((StringBuilder)localObject).append(String.valueOf(paramJSONObject));
+    QLog.i("MiniSDKClientQIPCModule", 2, ((StringBuilder)localObject).toString());
     if (paramJSONObject != null)
     {
       int i = paramJSONObject.optInt("retCode");
-      String str = paramJSONObject.optString("errMsg");
+      localObject = paramJSONObject.optString("errMsg");
       paramJSONObject = new JSONObject();
       if (i == 0) {}
       try
       {
         paramJSONObject.put("retCode", i);
-        paramJSONObject.put("errMsg", str);
-        while (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIJsService != null)
-        {
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIJsService.evaluateCallbackJs(this.jdField_a_of_type_Int, paramJSONObject.toString());
-          return;
-          paramJSONObject.put("retCode", 2);
-          paramJSONObject.put("errMsg", this.jdField_a_of_type_JavaLangString + ":fail " + str + "(" + i + ")");
-        }
+        paramJSONObject.put("errMsg", localObject);
       }
       catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          localThrowable.printStackTrace();
-        }
-        QLog.d("MiniSDKClientQIPCModule", 1, "createUpdatableMsg error, null jsService");
+        StringBuilder localStringBuilder;
+        localThrowable.printStackTrace();
+      }
+      paramJSONObject.put("retCode", 2);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(":fail ");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("(");
+      localStringBuilder.append(i);
+      localStringBuilder.append(")");
+      paramJSONObject.put("errMsg", localStringBuilder.toString());
+      IJsService localIJsService = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIJsService;
+      if (localIJsService != null)
+      {
+        localIJsService.evaluateCallbackJs(this.jdField_a_of_type_Int, paramJSONObject.toString());
         return;
       }
+      QLog.d("MiniSDKClientQIPCModule", 1, "createUpdatableMsg error, null jsService");
+      return;
     }
     QLog.d("MiniSDKClientQIPCModule", 1, "createUpdatableMsg error, null ret");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule.6
  * JD-Core Version:    0.7.0.1
  */

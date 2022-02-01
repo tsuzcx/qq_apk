@@ -38,11 +38,15 @@ public class MiniAIOPresenter
   
   public void a(MiniMsgUser paramMiniMsgUser)
   {
-    if ((this.jdField_a_of_type_Int > 0) && (paramMiniMsgUser != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    if ((this.jdField_a_of_type_Int > 0) && (paramMiniMsgUser != null))
     {
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      paramMiniMsgUser.onClick(this.jdField_a_of_type_AndroidViewView);
+      View localView = this.jdField_a_of_type_AndroidViewView;
+      if (localView != null)
+      {
+        this.jdField_a_of_type_Int = 0;
+        localView.setVisibility(4);
+        paramMiniMsgUser.onClick(this.jdField_a_of_type_AndroidViewView);
+      }
     }
   }
   
@@ -53,7 +57,7 @@ public class MiniAIOPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.miniaio.MiniAIOPresenter
  * JD-Core Version:    0.7.0.1
  */

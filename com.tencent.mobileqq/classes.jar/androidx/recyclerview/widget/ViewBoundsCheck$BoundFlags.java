@@ -10,16 +10,25 @@ class ViewBoundsCheck$BoundFlags
   
   void addFlags(int paramInt)
   {
-    this.mBoundFlags |= paramInt;
+    this.mBoundFlags = (paramInt | this.mBoundFlags);
   }
   
   boolean boundsMatch()
   {
-    if (((this.mBoundFlags & 0x7) != 0) && ((this.mBoundFlags & compare(this.mChildStart, this.mRvStart) << 0) == 0)) {}
-    while ((((this.mBoundFlags & 0x70) != 0) && ((this.mBoundFlags & compare(this.mChildStart, this.mRvEnd) << 4) == 0)) || (((this.mBoundFlags & 0x700) != 0) && ((this.mBoundFlags & compare(this.mChildEnd, this.mRvStart) << 8) == 0)) || (((this.mBoundFlags & 0x7000) != 0) && ((this.mBoundFlags & compare(this.mChildEnd, this.mRvEnd) << 12) == 0))) {
+    int i = this.mBoundFlags;
+    if (((i & 0x7) != 0) && ((i & compare(this.mChildStart, this.mRvStart) << 0) == 0)) {
       return false;
     }
-    return true;
+    i = this.mBoundFlags;
+    if (((i & 0x70) != 0) && ((i & compare(this.mChildStart, this.mRvEnd) << 4) == 0)) {
+      return false;
+    }
+    i = this.mBoundFlags;
+    if (((i & 0x700) != 0) && ((i & compare(this.mChildEnd, this.mRvStart) << 8) == 0)) {
+      return false;
+    }
+    i = this.mBoundFlags;
+    return ((i & 0x7000) == 0) || ((i & compare(this.mChildEnd, this.mRvEnd) << 12) != 0);
   }
   
   int compare(int paramInt1, int paramInt2)
@@ -48,7 +57,7 @@ class ViewBoundsCheck$BoundFlags
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.ViewBoundsCheck.BoundFlags
  * JD-Core Version:    0.7.0.1
  */

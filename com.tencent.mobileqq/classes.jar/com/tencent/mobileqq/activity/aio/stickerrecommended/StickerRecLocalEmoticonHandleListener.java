@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.emosm.api.IEmoticonManagerService;
 import com.tencent.mobileqq.util.MessageRecordUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -15,9 +14,9 @@ import java.util.List;
 public class StickerRecLocalEmoticonHandleListener
   extends BaseLocalEmoticonHandleListener
 {
-  public StickerRecLocalEmoticonHandleListener(QQAppInterface paramQQAppInterface)
+  public StickerRecLocalEmoticonHandleListener(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    super(paramQQAppInterface);
+    super(paramBaseQQAppInterface);
   }
   
   private List<StickerRecLocalData> a(String paramString)
@@ -28,61 +27,57 @@ public class StickerRecLocalEmoticonHandleListener
     if (QLog.isColorLevel()) {
       QLog.d("StickerRecLocalEmoticonHandleListener", 2, "local emoticon search start.");
     }
-    EmoticonManager localEmoticonManager = (EmoticonManager)this.a.getManager(QQManagerFactory.EMOTICON_MANAGER);
-    List localList = localEmoticonManager.b(paramString, true);
-    if ((localList == null) || (localList.isEmpty()))
+    Object localObject2 = (IEmoticonManagerService)this.a.getRuntimeService(IEmoticonManagerService.class);
+    List localList = ((IEmoticonManagerService)localObject2).syncGetEmoticonsByKeyword(paramString, true);
+    Object localObject1;
+    if ((localList != null) && (!localList.isEmpty()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons arrEmoticon is null or empty,keyWord: " + MessageRecordUtil.a(paramString));
-      }
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < localList.size())
-    {
-      Object localObject = (Emoticon)localList.get(i);
-      EmoticonPackage localEmoticonPackage = localEmoticonManager.a(((Emoticon)localObject).epId);
-      if (localEmoticonPackage == null) {
-        if (QLog.isColorLevel()) {
-          QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons emoticonPackage is null.");
-        }
-      }
-      label226:
-      do
+      localObject1 = new ArrayList();
+      int i = 0;
+      while (i < localList.size())
       {
-        for (;;)
+        Emoticon localEmoticon = (Emoticon)localList.get(i);
+        EmoticonPackage localEmoticonPackage = ((IEmoticonManagerService)localObject2).syncFindEmoticonPackageById(localEmoticon.epId);
+        if (localEmoticonPackage == null)
         {
-          i += 1;
-          break;
-          if ((localEmoticonManager.a == null) || (!localEmoticonManager.a.contains(((Emoticon)localObject).epId)) || (localEmoticonPackage.status != 2)) {
-            break label226;
+          if (QLog.isColorLevel()) {
+            QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons emoticonPackage is null.");
           }
-          localArrayList.add(new StickerRecLocalData((Emoticon)localObject));
         }
-      } while (!QLog.isColorLevel());
-      localObject = new StringBuilder().append("findLocalMatchEmoticons emoticonPackage not match, status: ").append(localEmoticonPackage.status).append(" tabCache.size: ");
-      if (localEmoticonManager.a != null) {}
-      for (int j = localEmoticonManager.a.size();; j = -1)
-      {
-        QLog.d("StickerRecLocalEmoticonHandleListener", 2, j);
-        break;
+        else if ((((IEmoticonManagerService)localObject2).getTabCache() != null) && (((IEmoticonManagerService)localObject2).getTabCache().contains(localEmoticon.epId)) && (localEmoticonPackage.status == 2)) {
+          ((List)localObject1).add(new StickerRecLocalData(localEmoticon));
+        }
+        i += 1;
       }
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("findLocalMatchEmoticons stickerRecEmotionList.size:");
+        ((StringBuilder)localObject2).append(((List)localObject1).size());
+        ((StringBuilder)localObject2).append(",keyWord: ");
+        ((StringBuilder)localObject2).append(MessageRecordUtil.a(paramString));
+        QLog.d("StickerRecLocalEmoticonHandleListener", 2, ((StringBuilder)localObject2).toString());
+      }
+      return localObject1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons stickerRecEmotionList.size:" + localArrayList.size() + ",keyWord: " + MessageRecordUtil.a(paramString));
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("findLocalMatchEmoticons arrEmoticon is null or empty,keyWord: ");
+      ((StringBuilder)localObject1).append(MessageRecordUtil.a(paramString));
+      QLog.d("StickerRecLocalEmoticonHandleListener", 2, ((StringBuilder)localObject1).toString());
     }
-    return localArrayList;
+    return null;
   }
   
-  public List<StickerRecLocalData> a(String paramString, SessionInfo paramSessionInfo)
+  public List<StickerRecLocalData> a(String paramString, BaseSessionInfo paramBaseSessionInfo)
   {
     return a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecLocalEmoticonHandleListener
  * JD-Core Version:    0.7.0.1
  */

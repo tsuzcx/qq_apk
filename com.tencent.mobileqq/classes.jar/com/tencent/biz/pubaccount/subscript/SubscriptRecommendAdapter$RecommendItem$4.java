@@ -2,9 +2,9 @@ package com.tencent.biz.pubaccount.subscript;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
 import com.tencent.mobileqq.activity.PublicAccountSearchActivity;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -25,7 +25,7 @@ class SubscriptRecommendAdapter$RecommendItem$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter.RecommendItem.4
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,9 @@ import org.json.JSONObject;
 public class TPPlayerConfig
 {
   private static String DOT = "\\.";
-  private static final String HOST_CONFIG_KEY = "host_config";
   public static final boolean ISOTT = false;
   private static final String TAG = "TPPlayerConfig";
-  public static final String VERSION = "2.9.0.1112";
+  public static final String VERSION = "2.16.0.1123";
   private static String appVersion = "";
   private static String appVersionName;
   public static String beacon_log_host;
@@ -73,57 +72,59 @@ public class TPPlayerConfig
       if (arrayOfString != null)
       {
         paramContext = str;
-        if (arrayOfString.length != 4) {}
+        if (arrayOfString.length == 4) {
+          paramContext = str.substring(0, str.lastIndexOf("."));
+        }
       }
     }
-    for (paramContext = str.substring(0, str.lastIndexOf("."));; paramContext = "0.0.0")
+    else
     {
-      appVersion = paramContext;
-      return paramContext;
+      paramContext = "0.0.0";
     }
+    appVersion = paramContext;
+    return paramContext;
   }
   
   public static String getAppVersionName(Context paramContext)
   {
-    Object localObject;
     if (!TextUtils.isEmpty(appVersionName)) {
-      localObject = appVersionName;
+      return appVersionName;
     }
-    for (;;)
+    if (paramContext == null) {
+      return "";
+    }
+    try
     {
-      return localObject;
-      localObject = "";
-      if (paramContext != null) {
-        try
-        {
-          appVersionName = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-          paramContext = appVersionName;
-          localObject = paramContext;
-          if (paramContext == null) {
-            return "";
-          }
-        }
-        catch (Throwable paramContext) {}
+      appVersionName = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
+      String str = appVersionName;
+      paramContext = str;
+      if (str == null) {
+        paramContext = "";
       }
+      return paramContext;
     }
+    catch (Throwable paramContext) {}
     return "";
   }
   
   public static long getBuildNumber(Context paramContext)
   {
-    if (-1L != buildNum) {
-      return buildNum;
+    long l = buildNum;
+    if (-1L != l) {
+      return l;
     }
     try
     {
       buildNum = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).getLongVersionCode();
-      long l = buildNum;
+      l = buildNum;
       return l;
     }
     catch (Throwable paramContext)
     {
-      TPLogUtil.e("TPPlayerConfig", "getLongVersionCode less api 28");
+      label38:
+      break label38;
     }
+    TPLogUtil.e("TPPlayerConfig", "getLongVersionCode less api 28");
     return buildNum;
   }
   
@@ -149,20 +150,23 @@ public class TPPlayerConfig
   
   public static String getProxyConfigDir()
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (!TextUtils.isEmpty(host_config)) {}
+    if (TextUtils.isEmpty(host_config)) {
+      return "";
+    }
     try
     {
-      localJSONObject.put("host_config", new JSONObject(host_config));
-      return localJSONObject.toString();
+      Object localObject = new JSONObject(host_config);
+      if (!((JSONObject)localObject).has("httpproxy_config")) {
+        return "";
+      }
+      localObject = ((JSONObject)localObject).getString("httpproxy_config");
+      return localObject;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        TPLogUtil.e("TPPlayerConfig", localJSONException);
-      }
+      TPLogUtil.e("TPPlayerConfig", localJSONException);
     }
+    return "";
   }
   
   public static String getProxyConfigStr()
@@ -177,8 +181,12 @@ public class TPPlayerConfig
   
   public static int getProxyServiceType()
   {
-    if ((mProxyServiceType == -1) && (mPlatform != -1)) {
-      return mPlatform;
+    if (mProxyServiceType == -1)
+    {
+      int i = mPlatform;
+      if (i != -1) {
+        return i;
+      }
     }
     return mProxyServiceType;
   }
@@ -215,34 +223,38 @@ public class TPPlayerConfig
   
   public static void parseHostConfig(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      TPLogUtil.w("TPPlayerConfig", "parseHostConfig, config is null.");
-    }
-    for (;;)
+    if (TextUtils.isEmpty(paramString))
     {
+      TPLogUtil.w("TPPlayerConfig", "parseHostConfig, config is null.");
       return;
-      host_config = paramString;
-      TPLogUtil.i("TPPlayerConfig", "parseHostConfig:" + paramString);
-      try
+    }
+    host_config = paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseHostConfig:");
+    localStringBuilder.append(paramString);
+    TPLogUtil.i("TPPlayerConfig", localStringBuilder.toString());
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("player_host_config"))
       {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("player_host_config"))
+        paramString = paramString.getJSONObject("player_host_config");
+        if (paramString.has("beacon_policy_host")) {
+          beacon_policy_host = paramString.getString("beacon_policy_host");
+        }
+        if (paramString.has("beacon_log_host"))
         {
-          paramString = paramString.getJSONObject("player_host_config");
-          if (paramString.has("beacon_policy_host")) {
-            beacon_policy_host = paramString.getString("beacon_policy_host");
-          }
-          if (paramString.has("beacon_log_host"))
-          {
-            beacon_log_host = paramString.getString("beacon_log_host");
-            return;
-          }
+          beacon_log_host = paramString.getString("beacon_log_host");
+          return;
         }
       }
-      catch (Throwable paramString)
-      {
-        TPLogUtil.w("TPPlayerConfig", "parseHostConfig exception: " + paramString.toString());
-      }
+    }
+    catch (Throwable paramString)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseHostConfig exception: ");
+      localStringBuilder.append(paramString.toString());
+      TPLogUtil.w("TPPlayerConfig", localStringBuilder.toString());
     }
   }
   
@@ -308,7 +320,7 @@ public class TPPlayerConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.config.TPPlayerConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -19,24 +19,25 @@ class AIOShakeHelper$1
     AIOShakeHelper.a(this.this$0, new View(this.a));
     AIOShakeHelper.a(this.this$0).setOnTouchListener(new AIOShakeHelper.1.1(this));
     this.a.addContentView(AIOShakeHelper.a(this.this$0), new ViewGroup.LayoutParams(-1, -1));
-    View localView = ((ViewGroup)this.a.getWindow().getDecorView()).getChildAt(0);
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    long l = 0L;
-    long[] arrayOfLong = new long[6];
-    long[] tmp99_97 = arrayOfLong;
-    tmp99_97[0] = 200L;
-    long[] tmp105_99 = tmp99_97;
-    tmp105_99[1] = 300L;
-    long[] tmp111_105 = tmp105_99;
-    tmp111_105[2] = 200L;
-    long[] tmp117_111 = tmp111_105;
-    tmp117_111[3] = 300L;
-    long[] tmp123_117 = tmp117_111;
-    tmp123_117[4] = 200L;
-    long[] tmp129_123 = tmp123_117;
-    tmp129_123[5] = 300L;
-    tmp129_123;
+    Object localObject = (ViewGroup)this.a.getWindow().getDecorView();
     int i = 0;
+    localObject = ((ViewGroup)localObject).getChildAt(0);
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    long[] arrayOfLong = new long[6];
+    long[] tmp103_101 = arrayOfLong;
+    tmp103_101[0] = 200L;
+    long[] tmp109_103 = tmp103_101;
+    tmp109_103[1] = 300L;
+    long[] tmp115_109 = tmp109_103;
+    tmp115_109[2] = 200L;
+    long[] tmp121_115 = tmp115_109;
+    tmp121_115[3] = 300L;
+    long[] tmp127_121 = tmp121_115;
+    tmp127_121[4] = 200L;
+    long[] tmp133_127 = tmp127_121;
+    tmp133_127[5] = 300L;
+    tmp133_127;
+    long l = 0L;
     while (i < arrayOfLong.length)
     {
       if (i % 2 != 0)
@@ -51,12 +52,12 @@ class AIOShakeHelper$1
       i += 1;
     }
     localAnimationSet.setAnimationListener(new AIOShakeHelper.1.2(this));
-    localView.startAnimation(localAnimationSet);
+    ((View)localObject).startAnimation(localAnimationSet);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1
  * JD-Core Version:    0.7.0.1
  */

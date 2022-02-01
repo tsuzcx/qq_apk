@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.fling.FlingHandler;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
+import com.tencent.mobileqq.app.BaseFragment;
 
 @Deprecated
 public class PublicBaseFragment
-  extends ReportV4Fragment
+  extends BaseFragment
 {
   public void beforeFinish() {}
   
@@ -79,7 +79,7 @@ public class PublicBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.PublicBaseFragment
  * JD-Core Version:    0.7.0.1
  */

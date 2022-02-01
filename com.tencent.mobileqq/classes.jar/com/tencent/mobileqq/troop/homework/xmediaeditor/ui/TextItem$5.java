@@ -20,47 +20,62 @@ class TextItem$5
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     int i;
-    int k;
+    Object localObject;
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b() != 0)
     {
       int j = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b();
       i = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
       j -= i;
-      k = paramInt3 - paramInt2;
+      int k = paramInt3 - paramInt2;
       if (k > j)
       {
         QQToast.a(TextItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem), "最多可以输入500个字", 1).a();
         paramInt2 = j + paramInt2;
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.removeTextChangedListener(this);
-        CharSequence localCharSequence = paramCharSequence.subSequence(0, paramInt1 + paramInt2);
+        j = paramInt1 + paramInt2;
+        localObject = paramCharSequence.subSequence(0, j);
         paramCharSequence = paramCharSequence.subSequence(paramInt1 + paramInt3, paramCharSequence.length());
-        paramCharSequence = localCharSequence.toString() + paramCharSequence.toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((CharSequence)localObject).toString());
+        localStringBuilder.append(paramCharSequence.toString());
+        paramCharSequence = localStringBuilder.toString();
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setText(paramCharSequence);
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.addTextChangedListener(this);
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setSelection(paramInt1 + paramInt2);
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a(i, i + paramInt2);
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.jdField_a_of_type_Int = (paramInt2 + paramInt1);
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.b(paramCharSequence);
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setSelection(j);
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a(i, paramInt2 + i);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo;
+        ((TextInfo)localObject).jdField_a_of_type_Int = j;
+        ((TextInfo)localObject).a(paramCharSequence);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a(i, i + k);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo;
+        ((TextInfo)localObject).jdField_a_of_type_Int = (paramInt1 + k);
+        ((TextInfo)localObject).a(paramCharSequence.toString());
       }
     }
-    for (;;)
+    else
     {
-      QLog.i("xmediaEditor", 1, "onTextChanged, mData.position:" + this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.c + ", text:" + this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.jdField_a_of_type_JavaLangString + ",Listener:" + toString());
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a(i, i + k);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.jdField_a_of_type_Int = (paramInt1 + k);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.b(paramCharSequence.toString());
-      continue;
       i = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a(i, i + paramInt3 - paramInt2);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.jdField_a_of_type_Int = (paramInt1 + paramInt3);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.b(paramCharSequence.toString());
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo;
+      ((TextInfo)localObject).jdField_a_of_type_Int = (paramInt1 + paramInt3);
+      ((TextInfo)localObject).a(paramCharSequence.toString());
     }
+    paramCharSequence = new StringBuilder();
+    paramCharSequence.append("onTextChanged, mData.position:");
+    paramCharSequence.append(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.c);
+    paramCharSequence.append(", text:");
+    paramCharSequence.append(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.jdField_a_of_type_JavaLangString);
+    paramCharSequence.append(",Listener:");
+    paramCharSequence.append(toString());
+    QLog.i("xmediaEditor", 1, paramCharSequence.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.5
  * JD-Core Version:    0.7.0.1
  */

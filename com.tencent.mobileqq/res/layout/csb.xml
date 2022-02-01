@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/nsq" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/nsp" android:background="@drawable/e_o" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
-        <ImageView android:id="@id/nso" android:layout_width="50.0dip" android:layout_height="50.0dip" android:alpha="0.8" />
-        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/nsr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xbx" android:alpha="0.9" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/b8q" android:background="@drawable/eef" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/h_n" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff989eb4" android:gravity="center" android:id="@id/mdl" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="8.0dip" android:text="深圳大学" />
     </LinearLayout>
-</RelativeLayout>
+</FrameLayout>

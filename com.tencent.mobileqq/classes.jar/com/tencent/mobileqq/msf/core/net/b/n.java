@@ -54,9 +54,12 @@ public class n
   public String a()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(this.a).append("&#&");
-    localStringBuffer.append(this.b).append("&#&");
-    localStringBuffer.append(this.c).append("&#&");
+    localStringBuffer.append(this.a);
+    localStringBuffer.append("&#&");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append("&#&");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append("&#&");
     localStringBuffer.append(this.d);
     return localStringBuffer.toString();
   }
@@ -80,7 +83,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b.n
  * JD-Core Version:    0.7.0.1
  */

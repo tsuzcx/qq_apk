@@ -2,6 +2,7 @@ package com.tencent.mobileqq.nearby.now.view;
 
 import android.content.Context;
 import android.os.Handler;
+import android.support.annotation.IntRange;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,14 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.nearby.now.protocol.INowShortVideoProtoManager;
+import com.tencent.mobileqq.nearby.now.utils.INowVideoReporter;
 import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
+import com.tencent.mobileqq.nearby.now.view.logic.IVideoInfoListener;
 import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
+import com.tencent.mobileqq.nearby.now.view.player.impl.VideoViewTVKImpl;
+import com.tencent.mobileqq.nearby.now.view.player.impl.VideoViewTextureImpl;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
@@ -29,53 +32,57 @@ import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import java.io.File;
 
 public class VideoPlayerView
+  implements IVideoPlayerView
 {
-  public int a;
-  long jdField_a_of_type_Long = 0L;
-  protected Context a;
-  protected Handler a;
-  protected ImageView a;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  protected QQAppInterface a;
-  private VideoData jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData;
-  NowShortVideoProtoManager jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager;
-  PlayResultListener jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener;
-  protected VideoPlayerView.VideoInfoListener a;
-  protected IVideoView a;
-  public String a;
-  protected boolean a;
-  private final int jdField_b_of_type_Int = 1024;
-  long jdField_b_of_type_Long = 0L;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private final int jdField_c_of_type_Int = -2147483648;
-  long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean = false;
-  private final int jdField_d_of_type_Int = 2025;
-  private long jdField_d_of_type_Long = -1L;
-  private boolean jdField_d_of_type_Boolean = false;
-  private final int jdField_e_of_type_Int = 2026;
-  private long jdField_e_of_type_Long;
-  private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int = 0;
-  private long jdField_f_of_type_Long;
+  public static final int EXO_PLAYER = 1;
+  public static final int LOCAL_PLAYER = 2;
+  public static final int NOWN_PLAYER = 0;
+  private static final String TAG = "VideoPlayerView";
+  public static boolean shouldForceCreate;
+  private final int NULL_PATH_ERROR_CODE = 1024;
+  private final int PROGRESS_MSG = 2025;
+  private final int UNKNOWN_ERROR_ERROR_CODE = -2147483648;
+  private final int UPDATE_COVER = 2026;
+  private ImageView doodleView;
+  private boolean hasError = false;
+  private boolean isLocalFile = true;
+  protected boolean isPlaying = false;
+  protected ImageView ivCover;
+  protected QQAppInterface mApp;
+  protected Context mContext;
+  private String mCurrentPath;
+  private long mEndPlayTime;
+  long mFileSize = 0L;
+  protected Handler mHandler;
+  private long mInterval = -1L;
+  long mLastPos;
+  public String mLastUrl = "";
+  long mOffset = 0L;
+  private boolean mPaused = false;
+  protected IVideoView mPlayer;
+  public int mPlayerType = 0;
+  PlayResultListener mReultListener;
+  private RelativeLayout mRootView;
+  IVideoPlayerView.ShowLoadingWhenLoadingCoverListener mShowLoadingWhenLoadingCoverListener;
+  private long mStartPlayTime;
+  private boolean mStartPlayed;
+  private VideoData mVideoData;
+  protected IVideoInfoListener mVideoInfoListener;
+  INowShortVideoProtoManager nowShortVideoProtoManager;
+  private int retryCount = 0;
   
   public VideoPlayerView(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView = a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager = new NowShortVideoProtoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.mContext = paramContext;
+    this.mPlayer = createVideoView();
+    this.mApp = paramQQAppInterface;
+    this.nowShortVideoProtoManager = ((INowShortVideoProtoManager)QRoute.api(INowShortVideoProtoManager.class)).init(this.mApp);
   }
   
-  public static TVK_ICacheMgr a()
+  public static TVK_ICacheMgr createCacheMgr()
   {
     if (!TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) {
-      a(BaseApplicationImpl.getContext());
+      initTVKSDK(BaseApplicationImpl.getContext());
     }
     if (TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) {
       return TVK_SDKMgr.getProxyFactory().getCacheMgr(BaseApplicationImpl.getContext());
@@ -83,318 +90,460 @@ public class VideoPlayerView
     return null;
   }
   
-  public static String a(File paramFile)
-  {
-    if (paramFile.exists())
-    {
-      String str3 = paramFile.getParentFile().getAbsolutePath();
-      String str2 = paramFile.getName();
-      String str1 = str2;
-      if (str2.endsWith(".tmp")) {
-        str1 = str2.substring(0, str2.length() - ".tmp".length());
-      }
-      str1 = str3 + "/" + str1;
-      paramFile.renameTo(new File(str1));
-      return str1;
-    }
-    return "";
-  }
-  
-  public static String a(String paramString)
+  public static String getFileName(String paramString)
   {
     return MD5.toMD5(paramString);
   }
   
-  public static void a(Context paramContext)
+  public static void initTVKSDK(Context paramContext)
   {
     TVK_SDKMgr.setOnLogListener(new VideoPlayerView.TVKSDKOnLogListener(null));
     TVK_SDKMgr.initSdk(paramContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
   }
   
-  public static void a(String paramString)
+  public static void preloadVideo(String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.i("VideoPlayerView", 2, "startPreloadVideo");
     }
-    TVK_ICacheMgr localTVK_ICacheMgr = a();
+    TVK_ICacheMgr localTVK_ICacheMgr = createCacheMgr();
     if (localTVK_ICacheMgr == null) {
       QLog.w("VideoPlayerView", 1, "preloadVideo failed , cacheMgr==null!");
     }
-    Object localObject = AppConstants.SDCARD_PATH + ".now_video/" + "vid_" + a(paramString) + ".mp4";
-    if (new File((String)localObject).exists())
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(AppConstants.SDCARD_PATH);
+    ((StringBuilder)localObject1).append(".now_video/");
+    ((StringBuilder)localObject1).append("vid_");
+    ((StringBuilder)localObject1).append(getFileName(paramString));
+    ((StringBuilder)localObject1).append(".mp4");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    if (new File((String)localObject1).exists())
     {
       if (QLog.isColorLevel()) {
         QLog.i("VideoPlayerView", 2, "file.exists ! use local file");
       }
       return;
     }
-    localObject = VideoViewTVKImpl.a(DownloadTask.a("vid_" + a(paramString), 0), (String)localObject + ".tmp", 0L);
-    ((TVK_PlayerVideoInfo)localObject).setConfigMap("cache_duration", "5");
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("vid_");
+    ((StringBuilder)localObject2).append(getFileName(paramString));
+    localObject2 = DownloadTask.a(((StringBuilder)localObject2).toString(), 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(".tmp");
+    localObject1 = VideoViewTVKImpl.a((String)localObject2, localStringBuilder.toString(), 0L);
+    ((TVK_PlayerVideoInfo)localObject1).setConfigMap("cache_duration", "5");
     paramString = InnerDns.replaceDomainWithIp(paramString.replace("https://", "http://"), 1012);
     localTVK_ICacheMgr.setPreloadCallback(new VideoPlayerView.1());
-    localTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, (TVK_PlayerVideoInfo)localObject);
+    localTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, (TVK_PlayerVideoInfo)localObject1);
   }
   
-  public long a()
+  public static String setFileCompleted(File paramFile)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a();
-  }
-  
-  public IVideoView a()
-  {
-    if (!TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext)) {
-      a(this.jdField_a_of_type_AndroidContentContext);
+    if (paramFile.exists())
+    {
+      String str = paramFile.getParentFile().getAbsolutePath();
+      Object localObject2 = paramFile.getName();
+      Object localObject1 = localObject2;
+      if (((String)localObject2).endsWith(".tmp")) {
+        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 4);
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(str);
+      ((StringBuilder)localObject2).append("/");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject2).toString();
+      paramFile.renameTo(new File((String)localObject1));
+      return localObject1;
     }
-    if (TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext)) {
-      return new VideoViewTVKImpl(this.jdField_a_of_type_AndroidContentContext);
+    return "";
+  }
+  
+  public IVideoView createVideoView()
+  {
+    if (!TVK_SDKMgr.isInstalled(this.mContext)) {
+      initTVKSDK(this.mContext);
+    }
+    if (TVK_SDKMgr.isInstalled(this.mContext)) {
+      return new VideoViewTVKImpl(this.mContext);
     }
     QLog.w("VideoPlayerView", 1, "use VideoViewTextureImpl!");
-    return new VideoViewTextureImpl(this.jdField_a_of_type_AndroidContentContext);
+    return new VideoViewTextureImpl(this.mContext);
   }
   
-  public void a()
+  public long getCurrentPosition()
+  {
+    return this.mPlayer.a();
+  }
+  
+  public long getDownloadOffset()
+  {
+    if (this.mVideoData == null) {
+      return 0L;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
+    ((StringBuilder)localObject).append(".now_video/");
+    ((StringBuilder)localObject).append("vid_");
+    ((StringBuilder)localObject).append(getFileName(this.mVideoData.b));
+    ((StringBuilder)localObject).append(".mp4");
+    localObject = ((StringBuilder)localObject).toString();
+    if (new File((String)localObject).exists()) {
+      return ((String)localObject).length();
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
+    ((StringBuilder)localObject).append(".now_video/");
+    ((StringBuilder)localObject).append("vid_");
+    ((StringBuilder)localObject).append(getFileName(this.mVideoData.b));
+    ((StringBuilder)localObject).append(".mp4.tmp");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (((File)localObject).exists()) {
+      return ((File)localObject).length();
+    }
+    return 0L;
+  }
+  
+  public long getDuration()
+  {
+    return this.mPlayer.b();
+  }
+  
+  public long getFileSize()
+  {
+    return this.mFileSize;
+  }
+  
+  public int getPlayerType()
+  {
+    return this.mPlayerType;
+  }
+  
+  public String getmLastUrl()
+  {
+    return this.mLastUrl;
+  }
+  
+  public int getmPlayerType()
+  {
+    return this.mPlayerType;
+  }
+  
+  public void hideDownloadProgress() {}
+  
+  public void initWidgetView(RelativeLayout paramRelativeLayout)
+  {
+    this.mRootView = paramRelativeLayout;
+    this.ivCover = ((ImageView)this.mRootView.findViewById(2131369331));
+    this.doodleView = ((ImageView)this.mRootView.findViewById(2131365808));
+    paramRelativeLayout = this.mHandler;
+    if (paramRelativeLayout != null)
+    {
+      paramRelativeLayout.removeMessages(2025);
+      this.mHandler.removeMessages(2026);
+    }
+    this.mHandler = new VideoPlayerView.2(this, this.mContext.getMainLooper());
+  }
+  
+  public boolean isPlaying()
+  {
+    return this.mPlayer.a();
+  }
+  
+  public boolean isVideoCached()
+  {
+    if (this.mVideoData == null) {
+      return false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append(".now_video/");
+    localStringBuilder.append("vid_");
+    localStringBuilder.append(getFileName(this.mVideoData.b));
+    localStringBuilder.append(".mp4");
+    if (new File(localStringBuilder.toString()).exists()) {
+      return true;
+    }
+    long l = this.mOffset;
+    return (l >= this.mFileSize) && (l != 0L);
+  }
+  
+  public void pause()
   {
     if (QLog.isColorLevel()) {
       QLog.i("VideoPlayerView", 2, "pause");
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.c();
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_c_of_type_Long = a();
+    this.mPlayer.c();
+    this.mPaused = true;
+    this.mLastPos = getCurrentPosition();
   }
   
-  public void a(RelativeLayout paramRelativeLayout)
+  public void play(RelativeLayout paramRelativeLayout, VideoData paramVideoData, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369628));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365969));
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    this.mVideoData = paramVideoData;
+    initWidgetView(paramRelativeLayout);
+    play(paramVideoData);
+  }
+  
+  public void play(VideoData paramVideoData)
+  {
+    String str = paramVideoData.b;
+    this.mFileSize = 0L;
+    this.mOffset = 0L;
+    boolean bool2 = isVideoCached();
+    this.mLastUrl = str;
+    this.mCurrentPath = str;
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2026);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("play(String videoPath)! path is: ");
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append("play stack is: ");
+      ((StringBuilder)localObject1).append(Log.getStackTraceString(new Throwable()));
+      QLog.i("VideoPlayerView", 2, ((StringBuilder)localObject1).toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler = new VideoPlayerView.2(this, this.jdField_a_of_type_AndroidContentContext.getMainLooper());
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout, VideoData paramVideoData, PlayResultListener paramPlayResultListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
-    a(paramRelativeLayout);
-    a(paramVideoData);
-  }
-  
-  public void a(VideoData paramVideoData)
-  {
-    String str = paramVideoData.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    boolean bool2 = c();
-    this.jdField_a_of_type_JavaLangString = str;
-    this.jdField_b_of_type_JavaLangString = str;
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "play(String videoPath)! path is: " + str + "play stack is: " + Log.getStackTraceString(new Throwable()));
+    Object localObject1 = this.mPlayer;
+    if (localObject1 != null) {
+      ((IVideoView)localObject1).a();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a();
+    localObject1 = this.mPlayer;
+    if ((localObject1 != null) && (((IVideoView)localObject1).a() != null) && (this.mPlayer.a().getParent() != null)) {
+      ((ViewGroup)this.mPlayer.a().getParent()).removeView(this.mPlayer.a());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a().getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a().getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a());
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView = a();
-    Object localObject;
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView instanceof VideoViewTVKImpl))
+    this.mPlayer = createVideoView();
+    localObject1 = this.mPlayer;
+    if ((localObject1 instanceof VideoViewTVKImpl))
     {
-      localObject = (VideoViewTVKImpl)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView;
-      if (paramVideoData.k >= paramVideoData.l) {
-        break label225;
+      localObject1 = (VideoViewTVKImpl)localObject1;
+      boolean bool1;
+      if (paramVideoData.l < paramVideoData.m) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
+      ((VideoViewTVKImpl)localObject1).a(bool1);
     }
-    label225:
-    for (boolean bool1 = true;; bool1 = false)
+    localObject1 = this.mPlayer;
+    if (localObject1 == null)
     {
-      ((VideoViewTVKImpl)localObject).a(bool1);
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView != null) {
-        break;
-      }
       QLog.e("VideoPlayerView", 1, "mPlayer == null!");
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a().getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a().getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a());
+    if ((localObject1 != null) && (((IVideoView)localObject1).a() != null) && (this.mPlayer.a().getParent() != null)) {
+      ((ViewGroup)this.mPlayer.a().getParent()).removeView(this.mPlayer.a());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(), 0, new RelativeLayout.LayoutParams(-1, -1));
+    localObject1 = this.mPlayer;
+    if (localObject1 != null) {
+      this.mRootView.addView(((IVideoView)localObject1).a(), 0, new RelativeLayout.LayoutParams(-1, -1));
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
-    this.jdField_a_of_type_Int = 1;
-    NowVideoReporter.jdField_a_of_type_Int = 0;
-    NowVideoReporter.jdField_a_of_type_Long = System.currentTimeMillis();
-    NowVideoReporter.c = paramVideoData.jdField_a_of_type_JavaLangString;
-    NowVideoReporter.d = String.valueOf(paramVideoData.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.d();
+    this.mRootView.requestLayout();
+    this.mPlayerType = 1;
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setRePlayCount(0);
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setPlayTimeBegin(System.currentTimeMillis());
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setFeedId(paramVideoData.jdField_a_of_type_JavaLangString);
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setAnchorUin(String.valueOf(paramVideoData.jdField_a_of_type_Long));
+    localObject1 = this.mVideoInfoListener;
+    if (localObject1 != null) {
+      ((IVideoPlayerView.VideoInfoListener)localObject1).onDoingStartPlayback();
     }
-    for (;;)
+    try
     {
-      try
+      this.ivCover.setVisibility(0);
+      this.doodleView.setVisibility(0);
+      this.mPlayer.a(new VideoPlayerView.3(this));
+      this.mPlayer.a(new VideoPlayerView.4(this));
+      this.mPlayer.a(new VideoPlayerView.5(this));
+      this.mPlayer.a(new VideoPlayerView.6(this, paramVideoData));
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(AppConstants.SDCARD_PATH);
+      ((StringBuilder)localObject1).append(".now_video/");
+      ((StringBuilder)localObject1).append("vid_");
+      ((StringBuilder)localObject1).append(getFileName(str));
+      ((StringBuilder)localObject1).append(".mp4");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new File((String)localObject1);
+      Object localObject3;
+      if (((File)localObject2).exists())
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new VideoPlayerView.3(this));
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new VideoPlayerView.4(this));
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new VideoPlayerView.5(this));
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new VideoPlayerView.6(this, paramVideoData));
-        localObject = AppConstants.SDCARD_PATH + ".now_video/" + "vid_" + a(str) + ".mp4";
-        localFile = new File((String)localObject);
-        if (localFile.exists())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("VideoPlayerView", 2, "file.exists ! use local file");
-          }
-          this.jdField_a_of_type_Long = localFile.length();
-          this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a("vid_" + a(str), (String)localObject, str, paramVideoData.jdField_f_of_type_Long);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new VideoPlayerView.7(this, paramVideoData, bool2));
-          if (QLog.isColorLevel()) {
-            QLog.i("VideoPlayerView", 2, "player start!");
-          }
-          this.jdField_d_of_type_Boolean = false;
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.i("VideoPlayerView", 2, "file.exists ! use local file");
         }
+        this.mFileSize = ((File)localObject2).length();
+        this.mOffset = this.mFileSize;
+        localObject2 = this.mPlayer;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("vid_");
+        ((StringBuilder)localObject3).append(getFileName(str));
+        ((IVideoView)localObject2).a(((StringBuilder)localObject3).toString(), (String)localObject1, str, paramVideoData.g);
       }
-      catch (Exception paramVideoData)
+      else
       {
-        Log.e("VideoPlayerView", paramVideoData.toString());
-        return;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(".tmp");
+        localObject2 = new File(((StringBuilder)localObject2).toString());
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("use remote file,tmp's exsit=");
+          ((StringBuilder)localObject3).append(((File)localObject2).exists());
+          QLog.i("VideoPlayerView", 2, ((StringBuilder)localObject3).toString());
+        }
+        localObject2 = this.mPlayer;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("vid_");
+        ((StringBuilder)localObject3).append(getFileName(str));
+        localObject3 = ((StringBuilder)localObject3).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(".tmp");
+        ((IVideoView)localObject2).a((String)localObject3, localStringBuilder.toString(), str, paramVideoData.g);
       }
-      File localFile = new File((String)localObject + ".tmp");
+      this.mPlayer.a(new VideoPlayerView.7(this, paramVideoData, bool2));
       if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayerView", 2, "use remote file,tmp's exsit=" + localFile.exists());
+        QLog.i("VideoPlayerView", 2, "player start!");
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a("vid_" + a(str), (String)localObject + ".tmp", str, paramVideoData.jdField_f_of_type_Long);
+      this.mPaused = false;
+      return;
     }
-  }
-  
-  public void a(VideoPlayerView.VideoInfoListener paramVideoInfoListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener = paramVideoInfoListener;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "stopPlayback, clearSurface=" + paramBoolean);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.e();
-    }
-    if (this.jdField_e_of_type_Boolean)
+    catch (Exception paramVideoData)
     {
-      this.jdField_f_of_type_Long = System.currentTimeMillis();
-      if (this.jdField_f_of_type_Long - this.jdField_e_of_type_Long > this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.b()) {}
-      this.jdField_e_of_type_Boolean = false;
+      Log.e("VideoPlayerView", paramVideoData.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a();
-    this.jdField_d_of_type_Boolean = false;
   }
   
-  public boolean a()
+  public boolean restart()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a();
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setRePlayCount(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getRePlayCount() + 1);
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoPlayerView", 2, "restart");
+    }
+    String str = this.mVideoData.jdField_a_of_type_JavaLangString;
+    int i;
+    if (isVideoCached()) {
+      i = 1;
+    } else {
+      i = 2;
+    }
+    QualityReporter.a(str, i, "0", "0");
+    QualityReporter.a(2);
+    QualityReporter.d();
+    this.mPlayer.d();
+    return true;
   }
   
-  public long b()
+  public void resume()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_d_of_type_Boolean)
+    if (this.mPaused)
     {
       if (QLog.isColorLevel()) {
         QLog.i("VideoPlayerView", 2, "resume");
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.b();
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(this.jdField_c_of_type_Long);
-    }
-    while (!QLog.isColorLevel()) {
+      this.mPlayer.b();
+      this.mPlayer.a(this.mLastPos);
       return;
     }
-    QLog.w("VideoPlayerView", 2, "!not paused no resume!");
-  }
-  
-  public boolean b()
-  {
-    NowVideoReporter.jdField_a_of_type_Int += 1;
     if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "restart");
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString;
-    if (c()) {}
-    for (int i = 1;; i = 2)
-    {
-      QualityReporter.a(str, i, "0", "0");
-      QualityReporter.a(2);
-      QualityReporter.d();
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.d();
-      return true;
+      QLog.w("VideoPlayerView", 2, "!not paused no resume!");
     }
   }
   
-  public long c()
+  public void seekTo(@IntRange(from=0L) long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
-    Object localObject;
-    do
-    {
-      return 0L;
-      localObject = AppConstants.SDCARD_PATH + ".now_video/" + "vid_" + a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_JavaLangString) + ".mp4";
-      if (new File((String)localObject).exists()) {
-        return ((String)localObject).length();
-      }
-      localObject = new File(AppConstants.SDCARD_PATH + ".now_video/" + "vid_" + a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_JavaLangString) + ".mp4.tmp");
-    } while (!((File)localObject).exists());
-    return ((File)localObject).length();
+    this.mPlayer.a(paramLong);
+    this.mStartPlayed = true;
   }
   
-  public void c()
+  public void setCoverVisibility(int paramInt)
+  {
+    this.ivCover.setVisibility(paramInt);
+    this.doodleView.setVisibility(paramInt);
+  }
+  
+  public void setOnVideoInfoListener(IVideoInfoListener paramIVideoInfoListener)
+  {
+    this.mVideoInfoListener = paramIVideoInfoListener;
+  }
+  
+  public void setProgressCallbackInterval(long paramLong)
+  {
+    IVideoView localIVideoView = this.mPlayer;
+    this.mInterval = paramLong;
+  }
+  
+  public void setShowLoadingWhenLoadingCoverListener(IVideoPlayerView.ShowLoadingWhenLoadingCoverListener paramShowLoadingWhenLoadingCoverListener)
+  {
+    this.mShowLoadingWhenLoadingCoverListener = paramShowLoadingWhenLoadingCoverListener;
+  }
+  
+  public void setVideoPlayViewVisibility(int paramInt)
+  {
+    IVideoView localIVideoView = this.mPlayer;
+    if ((localIVideoView != null) && (localIVideoView.a() != null)) {
+      this.mPlayer.a().setVisibility(paramInt);
+    }
+  }
+  
+  public void setmLastUrl(String paramString)
+  {
+    this.mLastUrl = paramString;
+  }
+  
+  public void setmPlayerType(int paramInt)
+  {
+    this.mPlayerType = paramInt;
+  }
+  
+  public void stopPlayback(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("stopPlayback, clearSurface=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.i("VideoPlayerView", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.mVideoInfoListener;
+    if (localObject != null) {
+      ((IVideoPlayerView.VideoInfoListener)localObject).onDoingStopPlayback();
+    }
+    if (this.mStartPlayed)
+    {
+      this.mEndPlayTime = System.currentTimeMillis();
+      long l = this.mEndPlayTime;
+      l = this.mStartPlayTime;
+      this.mPlayer.b();
+      this.mStartPlayed = false;
+    }
+    this.mPlayer.a();
+    this.mPaused = false;
+  }
+  
+  public void suspend()
   {
     if (QLog.isColorLevel()) {
       QLog.i("VideoPlayerView", 2, "stop");
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Object localObject = this.mHandler;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2026);
+      ((Handler)localObject).removeMessages(2025);
+      this.mHandler.removeMessages(2026);
     }
-    if (this.jdField_e_of_type_Boolean) {
-      this.jdField_e_of_type_Boolean = false;
+    if (this.mStartPlayed) {
+      this.mStartPlayed = false;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a().getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a().getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a());
+    localObject = this.mPlayer;
+    if ((localObject != null) && (((IVideoView)localObject).a() != null) && (this.mPlayer.a().getParent() != null)) {
+      ((ViewGroup)this.mPlayer.a().getParent()).removeView(this.mPlayer.a());
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener = null;
+    this.mPlayer.a();
+    this.mReultListener = null;
   }
-  
-  public boolean c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
-    do
-    {
-      return false;
-      if (new File(AppConstants.SDCARD_PATH + ".now_video/" + "vid_" + a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_JavaLangString) + ".mp4").exists()) {
-        return true;
-      }
-    } while ((this.jdField_b_of_type_Long < this.jdField_a_of_type_Long) || (this.jdField_b_of_type_Long == 0L));
-    return true;
-  }
-  
-  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.VideoPlayerView
  * JD-Core Version:    0.7.0.1
  */

@@ -31,62 +31,58 @@ public final class JsonStreamParser
   
   public boolean hasNext()
   {
-    for (;;)
+    synchronized (this.lock)
     {
       try
       {
-        synchronized (this.lock)
-        {
-          try
-          {
-            JsonToken localJsonToken1 = this.parser.peek();
-            JsonToken localJsonToken2 = JsonToken.END_DOCUMENT;
-            if (localJsonToken1 != localJsonToken2)
-            {
-              bool = true;
-              return bool;
-            }
-          }
-          catch (MalformedJsonException localMalformedJsonException)
-          {
-            throw new JsonSyntaxException(localMalformedJsonException);
-          }
+        JsonToken localJsonToken1 = this.parser.peek();
+        JsonToken localJsonToken2 = JsonToken.END_DOCUMENT;
+        boolean bool;
+        if (localJsonToken1 != localJsonToken2) {
+          bool = true;
+        } else {
+          bool = false;
         }
-        boolean bool = false;
+        return bool;
       }
       catch (IOException localIOException)
       {
         throw new JsonIOException(localIOException);
       }
+      catch (MalformedJsonException localMalformedJsonException)
+      {
+        throw new JsonSyntaxException(localMalformedJsonException);
+      }
+      throw localMalformedJsonException;
     }
   }
   
   public JsonElement next()
   {
-    if (!hasNext()) {
-      throw new NoSuchElementException();
-    }
-    try
-    {
-      JsonElement localJsonElement = Streams.parse(this.parser);
-      return localJsonElement;
-    }
-    catch (StackOverflowError localStackOverflowError)
-    {
-      throw new JsonParseException("Failed parsing JSON source to Json", localStackOverflowError);
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      throw new JsonParseException("Failed parsing JSON source to Json", localOutOfMemoryError);
-    }
-    catch (JsonParseException localJsonParseException)
-    {
-      Object localObject = localJsonParseException;
-      if ((localJsonParseException.getCause() instanceof EOFException)) {
-        localObject = new NoSuchElementException();
+    if (hasNext()) {
+      try
+      {
+        localObject = Streams.parse(this.parser);
+        return localObject;
       }
-      throw ((Throwable)localObject);
+      catch (JsonParseException localJsonParseException)
+      {
+        Object localObject = localJsonParseException;
+        if ((localJsonParseException.getCause() instanceof EOFException)) {
+          localObject = new NoSuchElementException();
+        }
+        throw ((Throwable)localObject);
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        throw new JsonParseException("Failed parsing JSON source to Json", localOutOfMemoryError);
+      }
+      catch (StackOverflowError localStackOverflowError)
+      {
+        throw new JsonParseException("Failed parsing JSON source to Json", localStackOverflowError);
+      }
     }
+    throw new NoSuchElementException();
   }
   
   public void remove()
@@ -96,7 +92,7 @@ public final class JsonStreamParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.JsonStreamParser
  * JD-Core Version:    0.7.0.1
  */

@@ -44,7 +44,7 @@ public class EncryptUrlJob
     CmdTaskManger.a().a(localStoryShareTranslateTokenRequest, new EncryptUrlJob.1(this, arrayOfString));
   }
   
-  public void a(Map<String, Object> paramMap)
+  protected void a(Map<String, Object> paramMap)
   {
     if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()))
     {
@@ -59,7 +59,7 @@ public class EncryptUrlJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.EncryptUrlJob
  * JD-Core Version:    0.7.0.1
  */

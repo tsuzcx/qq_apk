@@ -11,27 +11,32 @@ class MayKnowAdapter$4
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    double d1 = paramFloat;
+    double d2 = Math.sqrt(d1) / 2.0D;
+    Double.isNaN(d1);
+    paramFloat = (float)(d1 * (d2 + 0.5D));
+    paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    int i = this.jdField_a_of_type_Int;
+    paramTransformation.width = (i - (int)(i * paramFloat));
     this.jdField_a_of_type_AndroidViewView.requestLayout();
-    if (paramFloat <= 0.4F) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
-    }
-    do
+    if (paramFloat <= 0.4F)
     {
-      do
-      {
-        return;
-        if (paramFloat > 0.99F) {
-          break;
-        }
-      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
       return;
-    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+    }
+    if (paramFloat <= 0.99F)
+    {
+      if (this.jdField_a_of_type_AndroidViewView.getVisibility() != 4)
+      {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+        this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      }
+    }
+    else if (this.jdField_a_of_type_AndroidViewView.getVisibility() != 8)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+    }
   }
   
   public boolean willChangeBounds()
@@ -41,7 +46,7 @@ class MayKnowAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.MayKnowAdapter.4
  * JD-Core Version:    0.7.0.1
  */

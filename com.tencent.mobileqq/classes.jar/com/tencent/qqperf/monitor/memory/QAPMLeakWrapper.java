@@ -35,8 +35,26 @@ public class QAPMLeakWrapper
   
   public static void c()
   {
-    if ((new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_02")).exists()) || (new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03")).exists())) {}
-    for (jdField_a_of_type_Boolean = false; new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03")).exists(); jdField_a_of_type_Boolean = true)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+    localStringBuilder.append("/tencent/AutoTestFlag_02");
+    if (!new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString())).exists())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+      localStringBuilder.append("/tencent/AutoTestFlag_03");
+      if (!new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString())).exists())
+      {
+        jdField_a_of_type_Boolean = true;
+        break label106;
+      }
+    }
+    jdField_a_of_type_Boolean = false;
+    label106:
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+    localStringBuilder.append("/tencent/AutoTestFlag_03");
+    if (new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString())).exists())
     {
       b = false;
       return;
@@ -48,7 +66,10 @@ public class QAPMLeakWrapper
   {
     try
     {
-      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "dumpMemory " + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dumpMemory ");
+      localStringBuilder.append(paramString);
+      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, localStringBuilder.toString());
       paramString = LeakInspector.dumpMemory(paramString, true, new QAPMLeakWrapper.1(this, paramIDumpMemoryCallback));
       return paramString;
     }
@@ -68,8 +89,14 @@ public class QAPMLeakWrapper
   {
     try
     {
-      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "dumpMemory " + paramString);
-      LeakInspector.report("" + paramLong, paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dumpMemory ");
+      localStringBuilder.append(paramString);
+      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramLong);
+      LeakInspector.report(localStringBuilder.toString(), paramString);
       return;
     }
     catch (JSONException paramString)
@@ -78,11 +105,11 @@ public class QAPMLeakWrapper
     }
   }
   
-  public void a(APMModuleConfig paramAPMModuleConfig) {}
+  protected void a(APMModuleConfig paramAPMModuleConfig) {}
   
   public void a(Object paramObject, String paramString)
   {
-    if (n_())
+    if (o_())
     {
       LeakInspector.startInspect(paramObject, paramString);
       return;
@@ -130,7 +157,7 @@ public class QAPMLeakWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.QAPMLeakWrapper
  * JD-Core Version:    0.7.0.1
  */

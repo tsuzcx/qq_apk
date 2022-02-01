@@ -45,7 +45,12 @@ public class MiniLoadingAdManager$CachedAdInfo
         this.filePath = MiniAppFileManager.getLoadingAdCacheFilePath(this.url, paramString1);
       }
     }
-    this.saveKey = ("mini_loading_ad_preload_adjson_key_" + paramString1 + "_" + paramString2);
+    paramGdtAd = new StringBuilder();
+    paramGdtAd.append("mini_loading_ad_preload_adjson_key_");
+    paramGdtAd.append(paramString1);
+    paramGdtAd.append("_");
+    paramGdtAd.append(paramString2);
+    this.saveKey = paramGdtAd.toString();
   }
   
   private void updatePreloadAdCache()
@@ -87,7 +92,7 @@ public class MiniLoadingAdManager$CachedAdInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.manager.MiniLoadingAdManager.CachedAdInfo
  * JD-Core Version:    0.7.0.1
  */

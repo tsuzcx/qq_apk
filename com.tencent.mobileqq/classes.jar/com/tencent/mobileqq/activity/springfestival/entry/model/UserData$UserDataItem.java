@@ -31,21 +31,53 @@ public class UserData$UserDataItem
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass()))
+    {
+      paramObject = (UserDataItem)paramObject;
+      return this.activityId.equals(paramObject.activityId);
     }
-    paramObject = (UserDataItem)paramObject;
-    return this.activityId.equals(paramObject.activityId);
+    return false;
   }
   
   public String toString()
   {
-    return "UserDataItem{activityId='" + this.activityId + '\'' + ", startGrabTs=" + this.startGrabTs + ", lastReqGrabTs=" + this.lastReqGrabTs + ", leftCountDownDuration=" + this.leftCountDownDuration + ", isHit=" + this.isHit + ", hasClickCloseBtn=" + this.hasClickCloseBtn + ", pendantCloseType=" + this.pendantCloseType + ", hasDisplayBreathLight=" + this.hasDisplayBreathLight + ", isAbnormalQuit=" + this.isAbnormalQuit + ", hasReportedAbnormalQuit=" + this.hasReportedAbnormalQuit + ", totalGrabCountForShare=" + this.totalGrabCountForShare + ", maxComboCountForShare=" + this.maxComboCountForShare + ", totalHitCountForShare=" + this.totalHitCountForShare + ", brushStartTsForReport=" + this.brushStartTsForReport + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UserDataItem{activityId='");
+    localStringBuilder.append(this.activityId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", startGrabTs=");
+    localStringBuilder.append(this.startGrabTs);
+    localStringBuilder.append(", lastReqGrabTs=");
+    localStringBuilder.append(this.lastReqGrabTs);
+    localStringBuilder.append(", leftCountDownDuration=");
+    localStringBuilder.append(this.leftCountDownDuration);
+    localStringBuilder.append(", isHit=");
+    localStringBuilder.append(this.isHit);
+    localStringBuilder.append(", hasClickCloseBtn=");
+    localStringBuilder.append(this.hasClickCloseBtn);
+    localStringBuilder.append(", pendantCloseType=");
+    localStringBuilder.append(this.pendantCloseType);
+    localStringBuilder.append(", hasDisplayBreathLight=");
+    localStringBuilder.append(this.hasDisplayBreathLight);
+    localStringBuilder.append(", isAbnormalQuit=");
+    localStringBuilder.append(this.isAbnormalQuit);
+    localStringBuilder.append(", hasReportedAbnormalQuit=");
+    localStringBuilder.append(this.hasReportedAbnormalQuit);
+    localStringBuilder.append(", totalGrabCountForShare=");
+    localStringBuilder.append(this.totalGrabCountForShare);
+    localStringBuilder.append(", maxComboCountForShare=");
+    localStringBuilder.append(this.maxComboCountForShare);
+    localStringBuilder.append(", totalHitCountForShare=");
+    localStringBuilder.append(this.totalHitCountForShare);
+    localStringBuilder.append(", brushStartTsForReport=");
+    localStringBuilder.append(this.brushStartTsForReport);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.UserData.UserDataItem
  * JD-Core Version:    0.7.0.1
  */

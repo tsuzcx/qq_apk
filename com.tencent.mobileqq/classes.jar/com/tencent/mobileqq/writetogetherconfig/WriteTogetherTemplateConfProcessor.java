@@ -19,11 +19,18 @@ public class WriteTogetherTemplateConfProcessor
   
   private static String a()
   {
-    Calendar localCalendar = Calendar.getInstance();
-    int i = localCalendar.get(1);
-    int j = localCalendar.get(2);
-    int k = localCalendar.get(5);
-    return i + "年" + (j + 1) + "月" + k + "日";
+    Object localObject = Calendar.getInstance();
+    int i = ((Calendar)localObject).get(1);
+    int j = ((Calendar)localObject).get(2);
+    int k = ((Calendar)localObject).get(5);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("年");
+    ((StringBuilder)localObject).append(j + 1);
+    ((StringBuilder)localObject).append("月");
+    ((StringBuilder)localObject).append(k);
+    ((StringBuilder)localObject).append("日");
+    return ((StringBuilder)localObject).toString();
   }
   
   private static String a(String paramString)
@@ -34,90 +41,87 @@ public class WriteTogetherTemplateConfProcessor
   
   public static String a(String paramString, int paramInt)
   {
-    char[] arrayOfChar = paramString.toCharArray();
+    Object localObject = paramString.toCharArray();
     int j = 0;
     int i = 0;
-    for (;;)
+    while (j < localObject.length)
     {
-      String str = paramString;
-      if (j < arrayOfChar.length)
-      {
-        int k = Character.codePointAt(arrayOfChar, j);
-        if ((k < 0) || (k > 255)) {
-          break label80;
-        }
+      int k = Character.codePointAt((char[])localObject, j);
+      if ((k >= 0) && (k <= 255)) {
         i += 1;
-      }
-      while (i > paramInt)
-      {
-        str = paramString.substring(0, j) + b;
-        return str;
-        label80:
+      } else {
         i += 2;
+      }
+      if (i > paramInt)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString.substring(0, j));
+        ((StringBuilder)localObject).append(b);
+        return ((StringBuilder)localObject).toString();
       }
       j += 1;
     }
+    return paramString;
   }
   
   public static int[] a(WriteTogetherTemplateConfBean paramWriteTogetherTemplateConfBean, long paramLong)
   {
     WriteTogetherTemplateConfBean.TemplateBean[] arrayOfTemplateBean = paramWriteTogetherTemplateConfBean.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$TemplateBean;
     int k = arrayOfTemplateBean.length;
-    int i = 0;
     paramWriteTogetherTemplateConfBean = new int[0];
-    for (;;)
+    int i = 0;
+    while (i < k)
     {
-      Object localObject = paramWriteTogetherTemplateConfBean;
-      long[] arrayOfLong;
-      int m;
-      int j;
-      if (i < k)
-      {
-        localObject = arrayOfTemplateBean[i];
-        arrayOfLong = ((WriteTogetherTemplateConfBean.TemplateBean)localObject).jdField_a_of_type_ArrayOfLong;
-        m = arrayOfLong.length;
-        j = 0;
-      }
+      WriteTogetherTemplateConfBean.TemplateBean localTemplateBean = arrayOfTemplateBean[i];
+      long[] arrayOfLong = localTemplateBean.jdField_a_of_type_ArrayOfLong;
+      int m = arrayOfLong.length;
+      int j = 0;
       while (j < m)
       {
         long l = arrayOfLong[j];
-        if (l == paramLong)
-        {
-          localObject = ((WriteTogetherTemplateConfBean.TemplateBean)localObject).jdField_a_of_type_ArrayOfInt;
-          return localObject;
+        if (l == paramLong) {
+          return localTemplateBean.jdField_a_of_type_ArrayOfInt;
         }
         if (l == -1L) {
-          paramWriteTogetherTemplateConfBean = ((WriteTogetherTemplateConfBean.TemplateBean)localObject).jdField_a_of_type_ArrayOfInt;
+          paramWriteTogetherTemplateConfBean = localTemplateBean.jdField_a_of_type_ArrayOfInt;
         }
         j += 1;
       }
       i += 1;
     }
+    return paramWriteTogetherTemplateConfBean;
   }
   
   private static WriteTogetherTemplateConfBean.Template[] a(long paramLong)
   {
-    WriteTogetherTemplateConfBean localWriteTogetherTemplateConfBean = (WriteTogetherTemplateConfBean)QConfigManager.a().a(680);
-    if ((localWriteTogetherTemplateConfBean == null) || (localWriteTogetherTemplateConfBean.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template.length == 0) || (localWriteTogetherTemplateConfBean.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$TemplateBean.length == 0))
+    Object localObject1 = (WriteTogetherTemplateConfBean)QConfigManager.a().a(680);
+    if ((localObject1 != null) && (((WriteTogetherTemplateConfBean)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template.length != 0) && (((WriteTogetherTemplateConfBean)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$TemplateBean.length != 0))
     {
-      QLog.d("WriteTogetherTemplateConfProcessor", 1, "getTemplateList: no config" + localWriteTogetherTemplateConfBean);
-      return null;
+      int[] arrayOfInt = a((WriteTogetherTemplateConfBean)localObject1, paramLong);
+      localObject2 = new WriteTogetherTemplateConfBean.Template[arrayOfInt.length];
+      int i = 0;
+      while (i < arrayOfInt.length)
+      {
+        WriteTogetherTemplateConfBean.Template localTemplate = localObject1.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template[(arrayOfInt[i] - 1)];
+        localTemplate.b = a(localTemplate.b);
+        localTemplate.a = a(localTemplate.a, 16);
+        localObject2[i] = localTemplate;
+        i += 1;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getTemplateList: ");
+        ((StringBuilder)localObject1).append(Arrays.toString((Object[])localObject2));
+        QLog.d("WriteTogetherTemplateConfProcessor", 2, ((StringBuilder)localObject1).toString());
+      }
+      return localObject2;
     }
-    int[] arrayOfInt = a(localWriteTogetherTemplateConfBean, paramLong);
-    WriteTogetherTemplateConfBean.Template[] arrayOfTemplate = new WriteTogetherTemplateConfBean.Template[arrayOfInt.length];
-    int i = 0;
-    while (i < arrayOfInt.length)
-    {
-      WriteTogetherTemplateConfBean.Template localTemplate = localWriteTogetherTemplateConfBean.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template[(arrayOfInt[i] - 1)];
-      localTemplate.b = a(localTemplate.b);
-      localTemplate.a = a(localTemplate.a, 16);
-      arrayOfTemplate[i] = localTemplate;
-      i += 1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WriteTogetherTemplateConfProcessor", 2, "getTemplateList: " + Arrays.toString(arrayOfTemplate));
-    }
-    return arrayOfTemplate;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getTemplateList: no config");
+    ((StringBuilder)localObject2).append(localObject1);
+    QLog.d("WriteTogetherTemplateConfProcessor", 1, ((StringBuilder)localObject2).toString());
+    return null;
   }
   
   public static WriteTogetherTemplateConfBean.Template[] a(AppRuntime paramAppRuntime, String paramString)
@@ -142,8 +146,12 @@ public class WriteTogetherTemplateConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WriteTogetherTemplateConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("WriteTogetherTemplateConfProcessor", 2, localStringBuilder.toString());
       }
       return WriteTogetherTemplateConfBean.a(paramArrayOfQConfItem[0].a);
     }
@@ -184,7 +192,7 @@ public class WriteTogetherTemplateConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherconfig.WriteTogetherTemplateConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,11 @@ class Mustache$Accumulator$2
   
   public Template.Segment[] finish()
   {
-    throw new MustacheParseException("Inverted section missing close tag '" + this.val$tag1 + "'", this.val$tagLine);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Inverted section missing close tag '");
+    localStringBuilder.append(this.val$tag1);
+    localStringBuilder.append("'");
+    throw new MustacheParseException(localStringBuilder.toString(), this.val$tagLine);
   }
 }
 

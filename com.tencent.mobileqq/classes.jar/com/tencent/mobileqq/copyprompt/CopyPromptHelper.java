@@ -41,27 +41,28 @@ public class CopyPromptHelper
   
   private View a(String paramString)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext).inflate(2131559705, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c, false);
-    ((TextView)localView.findViewById(2131373587)).setText(new QQText(paramString, 3, 16));
+    View localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext).inflate(2131559581, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c, false);
+    ((TextView)localView.findViewById(2131373167)).setText(new QQText(paramString, 3, 16));
     paramString = new RelativeLayout.LayoutParams(-2, -2);
     paramString.addRule(9);
-    paramString.addRule(2, 2131369142);
-    paramString.leftMargin = AIOUtils.a(14.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources());
-    ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131364598)).addView(localView, paramString);
+    paramString.addRule(2, 2131368875);
+    paramString.leftMargin = AIOUtils.b(14.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources());
+    ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131364485)).addView(localView, paramString);
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "dc00898", "", "", "0X800B22B", "0X800B22B", 0, 0, "", "", "", "");
     return localView;
   }
   
   private void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new CopyPromptHelper.3(this, paramString));
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      localView.setOnClickListener(new CopyPromptHelper.3(this, paramString));
     }
   }
   
   private boolean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131364695).getVisibility() == 0;
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131364582).getVisibility() == 0;
   }
   
   private void b()
@@ -70,8 +71,12 @@ public class CopyPromptHelper
     if ((localObject instanceof CopyPromptManager))
     {
       localObject = ((CopyPromptManager)localObject).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("CopyPromptHelper", 2, "handlePrompt content : " + (String)localObject);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handlePrompt content : ");
+        localStringBuilder.append((String)localObject);
+        QLog.d("CopyPromptHelper", 2, localStringBuilder.toString());
       }
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
@@ -104,7 +109,7 @@ public class CopyPromptHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 14 };
+    return new int[] { 4, 15 };
   }
   
   public void onClick(View paramView)
@@ -117,29 +122,33 @@ public class CopyPromptHelper
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      return;
+      if (paramInt != 15) {
+        return;
+      }
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_JavaLangRunnable.run();
-      if (this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver != null)
+      SoftKeyboardObserver localSoftKeyboardObserver = this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver;
+      if (localSoftKeyboardObserver != null)
       {
-        this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver.a();
+        localSoftKeyboardObserver.a();
         this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = null;
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.a(this);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.copyprompt.CopyPromptHelper
  * JD-Core Version:    0.7.0.1
  */

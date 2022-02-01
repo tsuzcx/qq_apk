@@ -129,14 +129,13 @@ public class DebugWebSocket
   
   protected void sendStringMessage(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    Handler localHandler;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      localHandler = getSocketHandler();
-    } while (localHandler == null);
-    localHandler.post(new DebugWebSocket.2(this, paramString));
+    }
+    Handler localHandler = getSocketHandler();
+    if (localHandler != null) {
+      localHandler.post(new DebugWebSocket.2(this, paramString));
+    }
   }
   
   public void setCanSendMsg(boolean paramBoolean)
@@ -146,7 +145,7 @@ public class DebugWebSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.debug.DebugWebSocket
  * JD-Core Version:    0.7.0.1
  */

@@ -15,62 +15,78 @@ class SpecailCareListActivity$4
 {
   SpecailCareListActivity$4(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
   {
     int i = ((Integer)paramArrayOfObject[0]).intValue();
     paramArrayOfObject = (String[])paramArrayOfObject[1];
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecailCareListActivity", 2, "onSetSpecialCareSwitch_global isSucess= " + paramBoolean + ",type=" + i + ",uinSize=" + paramArrayOfObject.length);
-    }
-    if ((SpecailCareListActivity.a(this.a) != null) && (paramArrayOfObject != null)) {}
-    for (boolean bool = Arrays.equals(SpecailCareListActivity.a(this.a), paramArrayOfObject);; bool = false)
+    if (QLog.isColorLevel())
     {
-      if (bool) {
-        if (paramArrayOfObject.length >= 1)
-        {
-          this.a.h();
-          if (paramBoolean) {
-            if (this.a.c != null)
-            {
-              this.a.d();
-              QQToast.a(BaseApplication.getContext(), 2, 2131689567, 0).b(this.a.getTitleBarHeight());
-              this.a.a();
-              this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
-            }
-          }
-        }
-      }
-      while (!paramBoolean)
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSetSpecialCareSwitch_global isSucess= ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(",type=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(",uinSize=");
+      localStringBuilder.append(paramArrayOfObject.length);
+      QLog.d("SpecailCareListActivity", 2, localStringBuilder.toString());
+    }
+    boolean bool;
+    if ((SpecailCareListActivity.a(this.a) != null) && (paramArrayOfObject != null)) {
+      bool = Arrays.equals(SpecailCareListActivity.a(this.a), paramArrayOfObject);
+    } else {
+      bool = false;
+    }
+    if (bool)
+    {
+      if (paramArrayOfObject.length >= 1)
       {
-        do
+        this.a.h();
+        if (paramBoolean)
         {
-          for (;;)
-          {
-            return;
-            QQToast.a(BaseApplication.getContext(), 2, 2131699221, 0).b(this.a.getTitleBarHeight());
-          }
           if (this.a.c != null)
           {
-            QQToast.a(BaseApplication.getContext(), 1, 2131699205, 0).b(this.a.getTitleBarHeight());
-            return;
+            this.a.d();
+            QQToast.a(BaseApplication.getContext(), 2, 2131689599, 0).b(this.a.getTitleBarHeight());
           }
-          QQToast.a(BaseApplication.getContext(), 1, 2131699220, 0).b(this.a.getTitleBarHeight());
+          else
+          {
+            QQToast.a(BaseApplication.getContext(), 2, 2131699325, 0).b(this.a.getTitleBarHeight());
+          }
+          this.a.a();
+          this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
           return;
-        } while (!paramBoolean);
-        this.a.a();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
+        }
+        if (this.a.c != null)
+        {
+          QQToast.a(BaseApplication.getContext(), 1, 2131699309, 0).b(this.a.getTitleBarHeight());
+          return;
+        }
+        QQToast.a(BaseApplication.getContext(), 1, 2131699324, 0).b(this.a.getTitleBarHeight());
         return;
       }
+      if (paramBoolean)
+      {
+        this.a.a();
+        this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
+      }
+    }
+    else if (paramBoolean)
+    {
       this.a.a();
       this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
-      return;
     }
   }
   
-  public void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecailCareListActivity", 2, "onUpdateDelFriend isSucess= " + paramBoolean + ", uin=" + (Long)paramObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateDelFriend isSucess= ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", uin=");
+      localStringBuilder.append((Long)paramObject);
+      QLog.d("SpecailCareListActivity", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
@@ -79,10 +95,18 @@ class SpecailCareListActivity$4
     }
   }
   
-  public void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecailCareListActivity", 2, "onUpdateFriendList isSuccess=" + paramBoolean1 + ", isComplete=" + paramBoolean2 + " mIsPullRefresh=" + this.a.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateFriendList isSuccess=");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(", isComplete=");
+      localStringBuilder.append(paramBoolean2);
+      localStringBuilder.append(" mIsPullRefresh=");
+      localStringBuilder.append(this.a.jdField_a_of_type_Boolean);
+      QLog.d("SpecailCareListActivity", 2, localStringBuilder.toString());
     }
     if ((!paramBoolean1) || (paramBoolean2))
     {
@@ -91,43 +115,50 @@ class SpecailCareListActivity$4
     }
     if (this.a.jdField_a_of_type_Boolean)
     {
-      if ((!paramBoolean1) || (!paramBoolean2)) {
-        break label135;
+      if ((paramBoolean1) && (paramBoolean2))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2001, 1000L);
+        this.a.jdField_a_of_type_Boolean = false;
+        return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2001, 1000L);
-      this.a.jdField_a_of_type_Boolean = false;
+      if (!paramBoolean1)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2001, 1000L);
+        this.a.jdField_a_of_type_Boolean = false;
+      }
     }
-    label135:
-    while (paramBoolean1) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2001, 1000L);
-    this.a.jdField_a_of_type_Boolean = false;
   }
   
-  public void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecailCareListActivity", 2, "onUpdateSignature isSucess= " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfString = new StringBuilder();
+      paramArrayOfString.append("onUpdateSignature isSucess= ");
+      paramArrayOfString.append(paramBoolean);
+      QLog.d("SpecailCareListActivity", 2, paramArrayOfString.toString());
     }
     if (paramBoolean)
     {
-      if (this.a.d != 0) {
+      if (this.a.d != 0)
+      {
         this.a.b = true;
+        return;
       }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
   }
   
-  public void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecailCareListActivity", 2, "onUpdateSignature isSucess= " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfString = new StringBuilder();
+      paramArrayOfString.append("onUpdateSignature isSucess= ");
+      paramArrayOfString.append(paramBoolean);
+      QLog.d("SpecailCareListActivity", 2, paramArrayOfString.toString());
     }
     if (this.a.d != 0)
     {
@@ -137,10 +168,16 @@ class SpecailCareListActivity$4
     this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
   }
   
-  public void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecailCareListActivity", 2, "onUpdateSpecialCareList isSucess= " + paramBoolean1 + ",isComplete=" + paramBoolean2);
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("onUpdateSpecialCareList isSucess= ");
+      paramList.append(paramBoolean1);
+      paramList.append(",isComplete=");
+      paramList.append(paramBoolean2);
+      QLog.d("SpecailCareListActivity", 2, paramList.toString());
     }
     if (paramBoolean1)
     {
@@ -151,7 +188,7 @@ class SpecailCareListActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.4
  * JD-Core Version:    0.7.0.1
  */

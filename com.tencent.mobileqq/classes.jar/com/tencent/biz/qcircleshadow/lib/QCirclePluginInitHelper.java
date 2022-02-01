@@ -7,13 +7,21 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.api.IAppSettingApi;
 import com.tencent.mobileqq.peak.api.IPeakHelperApi;
 import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneHelper;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soload.api.SoLoadManager;
+import com.tencent.mobileqq.soload.biz.OnLoadListener;
+import com.tencent.mobileqq.soload.biz.entity.LoadExtResult;
+import com.tencent.qzonehub.api.font.IFontManager;
 import mqq.os.MqqHandler;
 
 public class QCirclePluginInitHelper
+  implements OnLoadListener
 {
+  public static final String RE_RANK_SO_TAG = "rerank";
   private static final String TAG = "QCirclePluginInitHelper";
   private static volatile QCirclePluginInitHelper sInstance;
+  private boolean mRankSoLoaded;
   
   public static void cancelPeakAlive(@NonNull Context paramContext)
   {
@@ -22,20 +30,21 @@ public class QCirclePluginInitHelper
   
   public static void cancelQzoneAlive()
   {
-    ((IQZoneHelper)QRoute.api(IQZoneHelper.class)).cancelQzoneAlive();
+    ThreadManager.getSubThreadHandler().post(new QCirclePluginInitHelper.3());
   }
   
   public static QCirclePluginInitHelper getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new QCirclePluginInitHelper();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new QCirclePluginInitHelper();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static String getPluginQUA()
@@ -55,7 +64,7 @@ public class QCirclePluginInitHelper
   
   public static boolean isVideoSDKReady()
   {
-    return ((IQZoneHelper)QRoute.api(IQZoneHelper.class)).isVideoSDKReady();
+    return QQVideoPlaySDKManager.a();
   }
   
   public static void preloadPeakProcess(@NonNull Context paramContext)
@@ -65,7 +74,7 @@ public class QCirclePluginInitHelper
   
   public static void preloadQZoneProcess()
   {
-    ((IQZoneHelper)QRoute.api(IQZoneHelper.class)).preloadQZoneProcess();
+    ThreadManager.getSubThreadHandler().post(new QCirclePluginInitHelper.2());
   }
   
   public static void preloadToolProgress()
@@ -75,7 +84,26 @@ public class QCirclePluginInitHelper
   
   public static void startFontSoDownload()
   {
-    ((IQZoneHelper)QRoute.api(IQZoneHelper.class)).startFontSoDownload();
+    ((IFontManager)QRoute.api(IFontManager.class)).startFontSoDownload(null);
+  }
+  
+  public boolean isRankSoLoaded()
+  {
+    return this.mRankSoLoaded;
+  }
+  
+  public void loadSoWithSoLoadManager()
+  {
+    if (!this.mRankSoLoaded) {
+      SoLoadManager.getInstance().load("rerank", this);
+    }
+  }
+  
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
+  {
+    if ((paramInt == 0) && (paramLoadExtResult.isSucc())) {
+      this.mRankSoLoaded = true;
+    }
   }
   
   public void preloadHippy()
@@ -85,7 +113,7 @@ public class QCirclePluginInitHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCirclePluginInitHelper
  * JD-Core Version:    0.7.0.1
  */

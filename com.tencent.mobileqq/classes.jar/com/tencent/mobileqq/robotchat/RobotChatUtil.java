@@ -7,9 +7,9 @@ import android.graphics.drawable.Drawable.ConstantState;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.troop.utils.RobotUtils;
 import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.widget.SingleLineTextView;
 import com.tencent.widget.ThemeURLImageView;
 import java.lang.ref.WeakReference;
@@ -25,50 +25,46 @@ public class RobotChatUtil
     if (paramContext == null) {
       return null;
     }
-    return paramContext.getResources().getDrawable(2130846489);
+    return paramContext.getResources().getDrawable(2130846369);
   }
   
   private static Drawable a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    paramQQAppInterface = jdField_a_of_type_JavaLangRefWeakReference;
+    if (paramQQAppInterface != null)
     {
-      Drawable localDrawable = (Drawable)jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localDrawable != null) {
-        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      paramQQAppInterface = (Drawable)paramQQAppInterface.get();
+      if (paramQQAppInterface != null)
+      {
+        if ((TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) || (!jdField_a_of_type_JavaLangString.equals(ThemeUtil.curThemeId)))
         {
-          paramQQAppInterface = localDrawable;
-          if (jdField_a_of_type_JavaLangString.equals(ThemeUtil.curThemeId)) {}
-        }
-        else
-        {
-          ThemeUtil.setThemeFilter(localDrawable, ThemeUtil.curThemeId);
+          ThemeUtil.setThemeFilter(paramQQAppInterface, ThemeUtil.curThemeId);
           jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-          paramQQAppInterface = localDrawable;
         }
+        return paramQQAppInterface;
       }
     }
-    do
+    paramContext = a(paramContext);
+    paramQQAppInterface = paramContext;
+    if (paramContext != null)
     {
-      return paramQQAppInterface;
-      paramContext = a(paramContext);
-      paramQQAppInterface = paramContext;
-    } while (paramContext == null);
-    paramQQAppInterface = paramContext.getConstantState().newDrawable().mutate();
-    ThemeUtil.setThemeFilter(paramQQAppInterface, ThemeUtil.curThemeId);
-    jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+      paramQQAppInterface = paramContext.getConstantState().newDrawable().mutate();
+      ThemeUtil.setThemeFilter(paramQQAppInterface, ThemeUtil.curThemeId);
+      jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
+      jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    }
     return paramQQAppInterface;
   }
   
   public static ThemeURLImageView a(Context paramContext)
   {
-    if (paramContext == null) {}
-    Drawable localDrawable;
-    do
-    {
+    if (paramContext == null) {
       return null;
-      localDrawable = a(paramContext);
-    } while (localDrawable == null);
+    }
+    Drawable localDrawable = a(paramContext);
+    if (localDrawable == null) {
+      return null;
+    }
     paramContext = new ThemeURLImageView(paramContext);
     paramContext.setContentDescription("BOT");
     paramContext.setImageDrawable(localDrawable);
@@ -77,31 +73,39 @@ public class RobotChatUtil
   
   public static void a(Context paramContext, SingleLineTextView paramSingleLineTextView, String paramString)
   {
-    if ((paramSingleLineTextView == null) || (TextUtils.isEmpty(paramString)) || (paramContext == null)) {}
-    do
+    if ((paramSingleLineTextView != null) && (!TextUtils.isEmpty(paramString)))
     {
-      return;
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((!(localAppRuntime instanceof QQAppInterface)) || (!RobotUtils.b((QQAppInterface)localAppRuntime, paramString))) {
-        break;
+      if (paramContext == null) {
+        return;
       }
-      paramString = a((QQAppInterface)localAppRuntime, paramContext);
-    } while (paramString == null);
-    paramSingleLineTextView.setCompoundDrawablePadding((int)DisplayUtils.a(paramContext, 5.0F));
-    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(paramString);
-    return;
-    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(null);
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = (QQAppInterface)localObject;
+        if (RobotUtils.a((QQAppInterface)localObject, paramString))
+        {
+          paramString = a((QQAppInterface)localObject, paramContext);
+          if (paramString == null) {
+            return;
+          }
+          paramSingleLineTextView.setCompoundDrawablePadding((int)DisplayUtils.a(paramContext, 5.0F));
+          paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(paramString);
+          return;
+        }
+      }
+      paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(null);
+    }
   }
   
   public static boolean a(String paramString)
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    return ((localAppRuntime instanceof QQAppInterface)) && (RobotUtils.b((QQAppInterface)localAppRuntime, paramString));
+    return ((localAppRuntime instanceof QQAppInterface)) && (RobotUtils.a((QQAppInterface)localAppRuntime, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.robotchat.RobotChatUtil
  * JD-Core Version:    0.7.0.1
  */

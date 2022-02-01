@@ -10,7 +10,10 @@ public class JpegSoData
   
   public String getSharedPreferencesName()
   {
-    return "early_" + JpegSoDownloadHandler.e();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("early_");
+    localStringBuilder.append(JpegSoDownloadHandler.e());
+    return localStringBuilder.toString();
   }
   
   public String getStrResName()
@@ -20,7 +23,7 @@ public class JpegSoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.JpegSoData
  * JD-Core Version:    0.7.0.1
  */

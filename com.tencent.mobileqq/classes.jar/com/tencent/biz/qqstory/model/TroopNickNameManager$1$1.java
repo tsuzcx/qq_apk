@@ -20,31 +20,29 @@ class TroopNickNameManager$1$1
     String str1 = ((TroopMemberCardInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0)).troopuin;
     ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList.size());
     Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    if (((Iterator)localObject).hasNext())
+    while (((Iterator)localObject).hasNext())
     {
-      localTroopMemberCardInfo = (TroopMemberCardInfo)((Iterator)localObject).next();
-      str2 = TroopNickNameManager.a(str1, localTroopMemberCardInfo.memberuin);
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager$1.a.a.remove(str2) == null) && (QLog.isColorLevel())) {
+      TroopMemberCardInfo localTroopMemberCardInfo = (TroopMemberCardInfo)((Iterator)localObject).next();
+      String str2 = TroopNickNameManager.a(str1, localTroopMemberCardInfo.memberuin);
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager$1.a.a.remove(str2) == null) && (QLog.isColorLevel()))
+      {
         QLog.d("TroopNickNameManager", 2, "loading not match, return");
+        return;
       }
-    }
-    while (localArrayList.size() <= 0)
-    {
-      TroopMemberCardInfo localTroopMemberCardInfo;
-      String str2;
-      return;
       localArrayList.add(localTroopMemberCardInfo.memberuin);
-      break;
     }
-    localObject = new TroopNickNameManager.TroopNickNameUpdateEvent();
-    ((TroopNickNameManager.TroopNickNameUpdateEvent)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
-    ((TroopNickNameManager.TroopNickNameUpdateEvent)localObject).jdField_a_of_type_JavaLangString = str1;
-    StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
+    if (localArrayList.size() > 0)
+    {
+      localObject = new TroopNickNameManager.TroopNickNameUpdateEvent();
+      ((TroopNickNameManager.TroopNickNameUpdateEvent)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
+      ((TroopNickNameManager.TroopNickNameUpdateEvent)localObject).jdField_a_of_type_JavaLangString = str1;
+      StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopNickNameManager.1.1
  * JD-Core Version:    0.7.0.1
  */

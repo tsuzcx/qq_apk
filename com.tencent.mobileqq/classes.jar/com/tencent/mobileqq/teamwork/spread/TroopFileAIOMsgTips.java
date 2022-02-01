@@ -21,15 +21,20 @@ public class TroopFileAIOMsgTips
   
   protected void a(BaseTimAIOTipsProcessor.ListResult paramListResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileAIOMsgTips", 1, "getWordsList by TroopFile[" + System.currentTimeMillis() + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWordsList by TroopFile[");
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append("]");
+      QLog.i("TroopFileAIOMsgTips", 1, localStringBuilder.toString());
     }
     ThreadManager.post(new TroopFileAIOMsgTips.1(this, paramListResult), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips
  * JD-Core Version:    0.7.0.1
  */

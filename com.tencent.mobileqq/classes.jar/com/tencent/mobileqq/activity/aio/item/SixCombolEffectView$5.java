@@ -22,18 +22,22 @@ class SixCombolEffectView$5
   public void onAnimationStart(Animator paramAnimator)
   {
     super.onAnimationStart(paramAnimator);
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
+    if (SixCombolEffectView.a(this.a)) {
       return;
-      SixCombolEffectView.jdField_a_of_type_Int = 2;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 2 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    }
+    SixCombolEffectView.jdField_a_of_type_Int = 2;
+    if (QLog.isColorLevel())
+    {
+      paramAnimator = new StringBuilder();
+      paramAnimator.append("Animation 2 ,mAnimationState = ");
+      paramAnimator.append(SixCombolEffectView.jdField_a_of_type_Int);
+      QLog.w("SixCombolEffectView", 2, paramAnimator.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.SixCombolEffectView.5
  * JD-Core Version:    0.7.0.1
  */

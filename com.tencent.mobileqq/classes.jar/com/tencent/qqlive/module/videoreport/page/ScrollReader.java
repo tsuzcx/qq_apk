@@ -51,21 +51,24 @@ class ScrollReader
   
   static void injectScrollListener(View paramView, ScrollReader.OnScrollChangeListener paramOnScrollChangeListener)
   {
-    if ((paramView == null) || (paramOnScrollChangeListener == null) || (INJECTED_VIEWS.contains(paramView))) {
-      return;
-    }
-    INJECTED_VIEWS.add(paramView);
-    if ((paramView instanceof RecyclerView))
+    if ((paramView != null) && (paramOnScrollChangeListener != null))
     {
-      injectRecyclerViewScroll((RecyclerView)paramView, paramOnScrollChangeListener);
-      return;
+      if (INJECTED_VIEWS.contains(paramView)) {
+        return;
+      }
+      INJECTED_VIEWS.add(paramView);
+      if ((paramView instanceof RecyclerView))
+      {
+        injectRecyclerViewScroll((RecyclerView)paramView, paramOnScrollChangeListener);
+        return;
+      }
+      injectCommonViewScroll(paramView, paramOnScrollChangeListener);
     }
-    injectCommonViewScroll(paramView, paramOnScrollChangeListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.ScrollReader
  * JD-Core Version:    0.7.0.1
  */

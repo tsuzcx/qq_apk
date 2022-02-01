@@ -2,17 +2,18 @@ package cooperation.qzone.util;
 
 import android.net.NetworkInfo;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.PlatformInfor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class NetworkState
 {
@@ -58,7 +59,13 @@ public class NetworkState
   public static String IntAddr2Ip(int paramInt)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(paramInt & 0xFF).append(".").append(paramInt >> 8 & 0xFF).append(".").append(paramInt >> 16 & 0xFF).append(".").append(paramInt >> 24 & 0xFF);
+    localStringBuffer.append(paramInt & 0xFF);
+    localStringBuffer.append(".");
+    localStringBuffer.append(paramInt >> 8 & 0xFF);
+    localStringBuffer.append(".");
+    localStringBuffer.append(paramInt >> 16 & 0xFF);
+    localStringBuffer.append(".");
+    localStringBuffer.append(paramInt >> 24 & 0xFF);
     return localStringBuffer.toString();
   }
   
@@ -78,8 +85,9 @@ public class NetworkState
   
   public static void clearConfigCache()
   {
-    if (map != null) {
-      map.clear();
+    Map localMap = map;
+    if (localMap != null) {
+      localMap.clear();
     }
   }
   
@@ -88,29 +96,29 @@ public class NetworkState
   
   public static String getAPN()
   {
-    Object localObject;
     if (AppNetConnInfo.isWifiConn()) {
-      localObject = "wifi";
+      return "wifi";
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = AppNetConnInfo.getCurrentAPN();
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return "unknown";
+    String str2 = AppNetConnInfo.getCurrentAPN();
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "unknown";
+    }
+    return str1;
   }
   
   public static int getApnValue()
   {
-    if (!AppNetConnInfo.isNetSupport()) {}
-    NetworkInfo localNetworkInfo;
-    do
-    {
+    if (!AppNetConnInfo.isNetSupport()) {
       return 0;
-      localNetworkInfo = AppNetConnInfo.getRecentNetworkInfo();
-    } while ((localNetworkInfo == null) || (!localNetworkInfo.isConnectedOrConnecting()));
+    }
+    NetworkInfo localNetworkInfo = AppNetConnInfo.getRecentNetworkInfo();
+    if (localNetworkInfo == null) {
+      return 0;
+    }
+    if (!localNetworkInfo.isConnectedOrConnecting()) {
+      return 0;
+    }
     if (1 == localNetworkInfo.getType()) {
       return 4;
     }
@@ -121,40 +129,40 @@ public class NetworkState
     switch (i)
     {
     default: 
-      i = 0;
+      return 0;
+    case 8: 
+    case 9: 
+    case 12: 
+      return 3;
+    case 7: 
+      return 4;
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
+    case 11: 
+      return 2;
     }
-    for (;;)
-    {
-      return i;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-    }
+    return 1;
   }
   
   public static boolean getConfigIsForceWifiTo4g()
   {
-    boolean bool = true;
-    uin = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+    uin = MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin();
     if (map.get(Long.valueOf(uin)) != null) {
       return ((Boolean)map.get(Long.valueOf(uin))).booleanValue();
     }
-    if (1 == LocalMultiProcConfig.getInt4Uin("key_force_wifi_to_4g", 0, uin)) {}
-    for (;;)
-    {
-      map.put(Long.valueOf(uin), Boolean.valueOf(bool));
-      return bool;
+    int i = LocalMultiProcConfig.getInt4Uin("key_force_wifi_to_4g", 0, uin);
+    boolean bool = true;
+    if (1 != i) {
       bool = false;
     }
+    map.put(Long.valueOf(uin), Boolean.valueOf(bool));
+    return bool;
   }
   
   private static boolean getIsMobileForDebugVersion()
   {
-    boolean bool1 = false;
     try
     {
       if (!isNetSupport()) {
@@ -163,109 +171,123 @@ public class NetworkState
       if (!AppNetConnInfo.isWifiConn()) {
         return true;
       }
-      boolean bool2 = getConfigIsForceWifiTo4g();
-      if (bool2) {
-        return true;
-      }
+      boolean bool = getConfigIsForceWifiTo4g();
+      return bool;
     }
     catch (Exception localException)
     {
       QZLog.e("NetworkState", "getIsMobileForDebugVersion error", localException);
-      bool1 = AppNetConnInfo.isMobileConn();
     }
-    return bool1;
+    return AppNetConnInfo.isMobileConn();
   }
   
   public static boolean getIsUnicomNetWork()
   {
     String str = getAPN();
-    if (TextUtils.isEmpty(str)) {}
-    while ((!str.equalsIgnoreCase("UNIWAP")) && (!str.equalsIgnoreCase("UNINET")) && (!str.equalsIgnoreCase("3GWAP")) && (!str.equalsIgnoreCase("3GNET")) && (!str.equalsIgnoreCase("WONET"))) {
+    if (TextUtils.isEmpty(str)) {
       return false;
     }
-    return true;
+    return (str.equalsIgnoreCase("UNIWAP")) || (str.equalsIgnoreCase("UNINET")) || (str.equalsIgnoreCase("3GWAP")) || (str.equalsIgnoreCase("3GNET")) || (str.equalsIgnoreCase("WONET"));
   }
   
   private static boolean getIsWifiForDebugVersion()
   {
-    if (!isNetSupport()) {}
-    while (getIsMobileForDebugVersion()) {
+    if (!isNetSupport()) {
       return false;
     }
-    return true;
+    return !getIsMobileForDebugVersion();
   }
   
   public static int getNetworkType()
   {
-    int i = 0;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
+    boolean bool = AppNetConnInfo.isWifiConn();
+    int i = 4;
+    if (bool) {
+      return 1;
     }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return i;
-    }
-    switch (AppNetConnInfo.getMobileInfo())
+    if (AppNetConnInfo.isMobileConn())
     {
-    default: 
-      return 0;
-    case 1: 
-      return 2;
-    case 2: 
-      return 3;
-    case 3: 
-      return 4;
+      int j = AppNetConnInfo.getMobileInfo();
+      if (j != 1)
+      {
+        if (j != 2)
+        {
+          if (j == 3) {
+            return i;
+          }
+          if (j == 4) {
+            return 5;
+          }
+        }
+        else
+        {
+          return 3;
+        }
+      }
+      else {
+        return 2;
+      }
     }
-    return 5;
+    i = 0;
+    return i;
   }
   
   public static String getNetworkTypeString()
   {
+    boolean bool = AppNetConnInfo.isWifiConn();
     String str = "unknown";
-    if (AppNetConnInfo.isWifiConn()) {
-      str = "wifi";
+    if (bool) {
+      return "wifi";
     }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return str;
-    }
-    switch (AppNetConnInfo.getMobileInfo())
+    if (AppNetConnInfo.isMobileConn())
     {
-    default: 
-      return "unknown";
-    case 1: 
-      return "2G";
-    case 2: 
-      return "3G";
-    case 3: 
-      return "4G";
+      int i = AppNetConnInfo.getMobileInfo();
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4) {
+              return "unknown";
+            }
+            return "5G";
+          }
+          return "4G";
+        }
+        return "3G";
+      }
+      str = "2G";
     }
-    return "5G";
+    return str;
   }
   
   public static String getProviderName()
   {
-    String str;
     if (TextUtils.isEmpty(providerName))
     {
-      str = PlatformInfor.g().getIMSI();
-      if ((str != null) && (!"".equals(str))) {
-        break label39;
+      String str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getIMSI();
+      if ((str != null) && (!"".equals(str)))
+      {
+        if ((!str.startsWith("46000")) && (!str.startsWith("46002")))
+        {
+          if (str.startsWith("46001")) {
+            providerName = "ChinaUnicom";
+          } else if (str.startsWith("46003")) {
+            providerName = "ChinaTelecom";
+          } else {
+            providerName = "unknown";
+          }
+        }
+        else {
+          providerName = "ChinaMobile";
+        }
       }
-      providerName = "unknown";
-    }
-    for (;;)
-    {
-      return providerName;
-      label39:
-      if ((str.startsWith("46000")) || (str.startsWith("46002"))) {
-        providerName = "ChinaMobile";
-      } else if (str.startsWith("46001")) {
-        providerName = "ChinaUnicom";
-      } else if (str.startsWith("46003")) {
-        providerName = "ChinaTelecom";
-      } else {
+      else {
         providerName = "unknown";
       }
     }
+    return providerName;
   }
   
   public static boolean isMobile()
@@ -282,25 +304,26 @@ public class NetworkState
   {
     if (AppNetConnInfo.isMobileConn())
     {
+      int i = 5;
       try
       {
-        i = ((Integer)mApnMap.get(AppNetConnInfo.getCurrentAPN())).intValue();
-        switch (i)
-        {
-        default: 
-          return false;
-        }
+        int j = ((Integer)mApnMap.get(AppNetConnInfo.getCurrentAPN())).intValue();
+        i = j;
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          localException.printStackTrace();
-          int i = 5;
-        }
+        localException.printStackTrace();
+      }
+      switch (i)
+      {
+      default: 
+        return false;
+      case 2: 
+      case 4: 
+      case 6: 
+      case 8: 
         return true;
       }
-      return false;
     }
     return false;
   }
@@ -316,16 +339,18 @@ public class NetworkState
     {
       NetworkState.NetworkStateListener[] arrayOfNetworkStateListener = new NetworkState.NetworkStateListener[observers.size()];
       observers.toArray(arrayOfNetworkStateListener);
-      if (arrayOfNetworkStateListener != null)
+      int j = arrayOfNetworkStateListener.length;
+      int i = 0;
+      while (i < j)
       {
-        int j = arrayOfNetworkStateListener.length;
-        int i = 0;
-        if (i < j)
-        {
-          arrayOfNetworkStateListener[i].onNetworkConnect(paramBoolean);
-          i += 1;
-        }
+        arrayOfNetworkStateListener[i].onNetworkConnect(paramBoolean);
+        i += 1;
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -353,7 +378,7 @@ public class NetworkState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.NetworkState
  * JD-Core Version:    0.7.0.1
  */

@@ -50,12 +50,14 @@ public class TroopStoryForwardTask
   
   private TroopStoryForwardTask(QQAppInterface paramQQAppInterface, Bundle paramBundle, SessionInfo paramSessionInfo)
   {
-    if (!a(paramBundle, paramSessionInfo)) {
-      throw new IllegalArgumentException("params in bundle is Illegal");
+    if (a(paramBundle, paramSessionInfo))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+      this.jdField_a_of_type_Boolean = false;
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Boolean = false;
+    throw new IllegalArgumentException("params in bundle is Illegal");
   }
   
   private TroopStoryForwardTask(QQAppInterface paramQQAppInterface, MessageForTroopStory paramMessageForTroopStory)
@@ -136,43 +138,54 @@ public class TroopStoryForwardTask
   
   public void b()
   {
-    qqstory_group.ReqGroupVideoForward localReqGroupVideoForward = new qqstory_group.ReqGroupVideoForward();
-    int m;
-    switch (this.jdField_d_of_type_Int)
+    Object localObject = new qqstory_group.ReqGroupVideoForward();
+    int n = this.jdField_d_of_type_Int;
+    int m = 1;
+    if (n != 0)
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.qqstory.troopstory.share", 2, "unsupport type:" + this.jdField_d_of_type_Int);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-      return;
-    case 1: 
-      m = 1;
-    }
-    for (;;)
-    {
-      localReqGroupVideoForward.type.set(m);
-      try
+      if (n != 1)
       {
-        long l1 = Long.parseLong(this.k);
-        localReqGroupVideoForward.forward_to.set(l1);
-        localReqGroupVideoForward.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
-        localReqGroupVideoForward.time.set((int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.time);
-        ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver, localReqGroupVideoForward.toByteArray(), jdField_a_of_type_JavaLangString);
-        return;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
+        if (n != 3000)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("unsupport type:");
+            ((StringBuilder)localObject).append(this.jdField_d_of_type_Int);
+            QLog.e("Q.qqstory.troopstory.share", 2, ((StringBuilder)localObject).toString());
+          }
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+          return;
         }
-        QLog.e("Q.qqstory.troopstory.share", 2, "uin parse error:" + this.k);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+        m = 3;
       }
-      m = 2;
-      continue;
-      m = 3;
     }
+    else {
+      m = 2;
+    }
+    ((qqstory_group.ReqGroupVideoForward)localObject).type.set(m);
+    try
+    {
+      long l1 = Long.parseLong(this.k);
+      ((qqstory_group.ReqGroupVideoForward)localObject).forward_to.set(l1);
+      ((qqstory_group.ReqGroupVideoForward)localObject).vid.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
+      ((qqstory_group.ReqGroupVideoForward)localObject).time.set((int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.time);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver, ((qqstory_group.ReqGroupVideoForward)localObject).toByteArray(), jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label171:
+      break label171;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("uin parse error:");
+      ((StringBuilder)localObject).append(this.k);
+      QLog.e("Q.qqstory.troopstory.share", 2, ((StringBuilder)localObject).toString());
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
   }
   
   public void c()
@@ -198,30 +211,46 @@ public class TroopStoryForwardTask
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.troopstory.share", 2, "forward step=" + paramMessage.what + ", task=" + this);
-    }
-    switch (paramMessage.what)
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("forward step=");
+      localStringBuilder.append(paramMessage.what);
+      localStringBuilder.append(", task=");
+      localStringBuilder.append(this);
+      QLog.i("Q.qqstory.troopstory.share", 2, localStringBuilder.toString());
     }
-    for (;;)
+    int m = paramMessage.what;
+    if (m != 1)
     {
-      return true;
-      a();
-      continue;
+      if (m != 2)
+      {
+        if (m != 3)
+        {
+          if (m != 4)
+          {
+            if (m != 5) {
+              return true;
+            }
+            e();
+            return true;
+          }
+          d();
+          return true;
+        }
+        c();
+        return true;
+      }
       b();
-      continue;
-      c();
-      continue;
-      d();
-      continue;
-      e();
+      return true;
     }
+    a();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask
  * JD-Core Version:    0.7.0.1
  */

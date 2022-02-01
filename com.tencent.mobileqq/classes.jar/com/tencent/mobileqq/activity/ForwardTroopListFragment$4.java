@@ -2,47 +2,45 @@ package com.tencent.mobileqq.activity;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.troop.api.observer.TroopCommonlyUsedObserver;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ForwardTroopListFragment$4
-  extends BizTroopObserver
+  extends TroopCommonlyUsedObserver
 {
   ForwardTroopListFragment$4(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onSetCommonUsedTroop(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
     if (paramInt2 == 0)
     {
       this.a.a();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label47;
+      if (this.a.isResumed())
+      {
+        if (paramInt1 == 0)
+        {
+          QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131704941), 0).a();
+          return;
+        }
+        if (paramInt1 == 1) {
+          QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131704940), 0).a();
         }
       }
     }
-    label47:
-    while (!this.a.isResumed())
+    else if (this.a.isResumed())
     {
-      QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131704865), 0).a();
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-      QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131704864), 0).a();
-      return;
+      paramString1 = paramString2;
+      if (TextUtils.isEmpty(paramString2)) {
+        paramString1 = this.a.getResources().getString(2131694666);
+      }
+      QQToast.a(this.a.getBaseActivity(), 1, paramString1, 0).a();
     }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131694692);
-    }
-    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardTroopListFragment.4
  * JD-Core Version:    0.7.0.1
  */

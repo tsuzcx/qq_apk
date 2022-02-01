@@ -17,13 +17,16 @@ class ARTransferPromotionRenderable$14$2
       if (ARTransferPromotionRenderable.a(this.a.this$0) != null) {
         this.a.this$0.a.postDelayed(ARTransferPromotionRenderable.a(this.a.this$0), 4600L - l);
       }
-      QLog.d("ARTransferPromotionRenderable", 2, "start Post  mRepeatCheckRunnable " + l);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start Post  mRepeatCheckRunnable ");
+      localStringBuilder.append(l);
+      QLog.d("ARTransferPromotionRenderable", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.14.2
  * JD-Core Version:    0.7.0.1
  */

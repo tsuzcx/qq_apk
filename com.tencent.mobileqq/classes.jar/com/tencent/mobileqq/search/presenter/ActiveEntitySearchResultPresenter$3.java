@@ -4,8 +4,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
+import com.tencent.mobileqq.troop.api.handler.ITroopMngHandler;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ActiveEntitySearchResultPresenter$3
@@ -19,33 +19,30 @@ class ActiveEntitySearchResultPresenter$3
     {
       ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter, paramView);
       ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter, this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem);
-      if (ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter) == null) {
-        break label122;
-      }
-      ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).addObserver(ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter));
-    }
-    for (;;)
-    {
-      try
+      if (ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter) != null)
       {
-        ((TroopHandler)ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).b(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b), Long.valueOf(ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).getCurrentUin()).longValue(), null);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
+        ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).addObserver(ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter));
+        try
+        {
+          ((ITroopMngHandler)ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER)).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b), Long.valueOf(ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).getCurrentUin()).longValue(), null);
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
       }
-      catch (Exception localException)
+      else
       {
-        localException.printStackTrace();
-        continue;
+        ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter, paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem);
+        ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter);
       }
-      label122:
-      ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter, paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem);
-      ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter.3
  * JD-Core Version:    0.7.0.1
  */

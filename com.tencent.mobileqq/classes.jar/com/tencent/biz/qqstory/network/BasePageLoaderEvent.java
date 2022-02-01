@@ -19,12 +19,22 @@ public class BasePageLoaderEvent
   
   public String toString()
   {
-    return "{\"_class\":\"BasePageLoaderEvent\", \"errorInfo\":\"" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + "\", \"isEnd\":\"" + this.jdField_a_of_type_Boolean + "\", \"isLocalData\":\"" + this.b + "\", \"isFirstPage\":\"" + this.c + "\"}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{\"_class\":\"BasePageLoaderEvent\", \"errorInfo\":\"");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    localStringBuilder.append("\", \"isEnd\":\"");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("\", \"isLocalData\":\"");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("\", \"isFirstPage\":\"");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("\"}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.BasePageLoaderEvent
  * JD-Core Version:    0.7.0.1
  */

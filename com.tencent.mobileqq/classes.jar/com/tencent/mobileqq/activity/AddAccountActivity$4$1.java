@@ -9,15 +9,15 @@ class AddAccountActivity$4$1
   
   public void run()
   {
-    String str = this.a.a.a.getText().toString();
+    String str = this.a.a.mPwdEdit.getText().toString();
     if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
-      this.a.a.a.setText("");
+      this.a.a.mPwdEdit.setText("");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity.4.1
  * JD-Core Version:    0.7.0.1
  */

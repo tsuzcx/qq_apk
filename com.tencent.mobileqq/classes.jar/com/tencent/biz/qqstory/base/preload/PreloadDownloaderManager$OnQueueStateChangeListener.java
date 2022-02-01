@@ -16,14 +16,19 @@ public class PreloadDownloaderManager$OnQueueStateChangeListener
     if (i < this.a.jdField_a_of_type_JavaUtilList.size())
     {
       PreloadQueue localPreloadQueue = (PreloadQueue)this.a.jdField_a_of_type_JavaUtilList.get(i);
-      SLog.b("Q.qqstory.download.preload.PreloadDownloaderManager", "queue " + paramInt + " download completed , turn to " + localPreloadQueue.getId());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("queue ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" download completed , turn to ");
+      localStringBuilder.append(localPreloadQueue.getId());
+      SLog.b("Q.qqstory.download.preload.PreloadDownloaderManager", localStringBuilder.toString());
       this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localPreloadQueue);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager.OnQueueStateChangeListener
  * JD-Core Version:    0.7.0.1
  */

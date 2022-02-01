@@ -79,50 +79,53 @@ public class AudioPlayerListenerImpl
   
   private void endCurrentAudioSession()
   {
-    if ((this.mCurrentAudioSession != null) && (!this.mCurrentAudioSession.isInEndState())) {
+    AudioSession localAudioSession = this.mCurrentAudioSession;
+    if ((localAudioSession != null) && (!localAudioSession.isInEndState())) {
       this.mCurrentAudioSession.audioEnd();
     }
   }
   
   private void pauseCurrentAudioSession()
   {
-    if (this.mCurrentAudioSession != null) {
-      this.mCurrentAudioSession.audioPause();
+    AudioSession localAudioSession = this.mCurrentAudioSession;
+    if (localAudioSession != null) {
+      localAudioSession.audioPause();
     }
   }
   
   private void resumeCurrentAudioSession()
   {
-    if (this.mCurrentAudioSession != null) {
-      this.mCurrentAudioSession.audioResume();
+    AudioSession localAudioSession = this.mCurrentAudioSession;
+    if (localAudioSession != null) {
+      localAudioSession.audioResume();
     }
   }
   
   private void setCurrentAudioSessionBufferingEnd()
   {
-    if (this.mCurrentAudioSession != null) {
-      this.mCurrentAudioSession.onBufferingEnd();
+    AudioSession localAudioSession = this.mCurrentAudioSession;
+    if (localAudioSession != null) {
+      localAudioSession.onBufferingEnd();
     }
   }
   
   private void setCurrentAudioSessionBufferingStart()
   {
-    if (this.mCurrentAudioSession != null) {
-      this.mCurrentAudioSession.onBufferingStart();
+    AudioSession localAudioSession = this.mCurrentAudioSession;
+    if (localAudioSession != null) {
+      localAudioSession.onBufferingStart();
     }
   }
   
   private void startAudioSession()
   {
-    if (this.mCurrentAudioSession == null) {
+    AudioSession localAudioSession = this.mCurrentAudioSession;
+    if (localAudioSession == null) {
       this.mCurrentAudioSession = new AudioSession(this.mAudioPlayer);
+    } else {
+      localAudioSession.reset();
     }
-    for (;;)
-    {
-      this.mCurrentAudioSession.audioStart();
-      return;
-      this.mCurrentAudioSession.reset();
-    }
+    this.mCurrentAudioSession.audioStart();
   }
   
   public void onAudioComplete(@NonNull IAudioPlayer paramIAudioPlayer)
@@ -133,7 +136,12 @@ public class AudioPlayerListenerImpl
   
   public void onAudioError(@NonNull IAudioPlayer paramIAudioPlayer, int paramInt1, int paramInt2)
   {
-    Log.i("AudioPlayerListenerImpl", "error " + paramInt1 + ", " + paramInt2);
+    paramIAudioPlayer = new StringBuilder();
+    paramIAudioPlayer.append("error ");
+    paramIAudioPlayer.append(paramInt1);
+    paramIAudioPlayer.append(", ");
+    paramIAudioPlayer.append(paramInt2);
+    Log.i("AudioPlayerListenerImpl", paramIAudioPlayer.toString());
     ThreadUtils.runOnUiThread(new AudioPlayerListenerImpl.7(this));
   }
   
@@ -145,7 +153,12 @@ public class AudioPlayerListenerImpl
   
   public void onAudioProgressChanged(@NonNull IAudioPlayer paramIAudioPlayer, int paramInt1, int paramInt2)
   {
-    Log.i("AudioPlayerListenerImpl", "progress, " + paramInt1 + ", " + paramInt2);
+    paramIAudioPlayer = new StringBuilder();
+    paramIAudioPlayer.append("progress, ");
+    paramIAudioPlayer.append(paramInt1);
+    paramIAudioPlayer.append(", ");
+    paramIAudioPlayer.append(paramInt2);
+    Log.i("AudioPlayerListenerImpl", paramIAudioPlayer.toString());
   }
   
   public void onAudioStart(boolean paramBoolean, @NonNull IAudioPlayer paramIAudioPlayer)
@@ -174,7 +187,7 @@ public class AudioPlayerListenerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.audio.AudioPlayerListenerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -9,50 +9,85 @@ public class ServerAddr
   
   public String getServerUrl(String paramString)
   {
-    Object localObject1 = null;
-    Object localObject3 = null;
     Object localObject2 = null;
+    Object localObject1 = null;
     if (paramString != null)
     {
-      if (!this.isDomain) {
-        break label109;
+      if (this.isDomain)
+      {
+        if (paramString.startsWith("http://"))
+        {
+          paramString = new StringBuilder();
+          paramString.append("http://");
+          paramString.append(this.mIp);
+          localObject1 = paramString.toString();
+        }
+        else if (paramString.startsWith("https://"))
+        {
+          paramString = new StringBuilder();
+          paramString.append("https://");
+          paramString.append(this.mIp);
+          localObject1 = paramString.toString();
+        }
+        paramString = new StringBuilder();
+        paramString.append((String)localObject1);
+        paramString.append("/");
+        return paramString.toString();
       }
-      if (!paramString.startsWith("http://")) {
-        break label72;
-      }
-      localObject1 = "http://" + this.mIp;
-    }
-    for (;;)
-    {
-      localObject1 = (String)localObject1 + "/";
-      return localObject1;
-      label72:
-      localObject1 = localObject2;
-      if (paramString.startsWith("https://")) {
-        localObject1 = "https://" + this.mIp;
-      }
-    }
-    label109:
-    if (paramString.startsWith("http://")) {
-      if ((this.isIpv6) && (!this.mIp.startsWith("["))) {
-        localObject1 = "http://[" + this.mIp + "]";
-      }
-    }
-    while (this.port != 80)
-    {
-      return (String)localObject1 + ":" + this.port + "/";
-      localObject1 = "http://" + this.mIp;
-      continue;
-      localObject1 = localObject3;
-      if (paramString.startsWith("https://")) {
-        if ((this.isIpv6) && (!this.mIp.startsWith("["))) {
-          localObject1 = "https://[" + this.mIp + "]";
-        } else {
-          localObject1 = "https://" + this.mIp;
+      if (paramString.startsWith("http://"))
+      {
+        if ((this.isIpv6) && (!this.mIp.startsWith("[")))
+        {
+          paramString = new StringBuilder();
+          paramString.append("http://[");
+          paramString.append(this.mIp);
+          paramString.append("]");
+          localObject1 = paramString.toString();
+        }
+        else
+        {
+          paramString = new StringBuilder();
+          paramString.append("http://");
+          paramString.append(this.mIp);
+          localObject1 = paramString.toString();
         }
       }
+      else
+      {
+        localObject1 = localObject2;
+        if (paramString.startsWith("https://")) {
+          if ((this.isIpv6) && (!this.mIp.startsWith("[")))
+          {
+            paramString = new StringBuilder();
+            paramString.append("https://[");
+            paramString.append(this.mIp);
+            paramString.append("]");
+            localObject1 = paramString.toString();
+          }
+          else
+          {
+            paramString = new StringBuilder();
+            paramString.append("https://");
+            paramString.append(this.mIp);
+            localObject1 = paramString.toString();
+          }
+        }
+      }
+      if (this.port != 80)
+      {
+        paramString = new StringBuilder();
+        paramString.append((String)localObject1);
+        paramString.append(":");
+        paramString.append(this.port);
+        paramString.append("/");
+        return paramString.toString();
+      }
+      paramString = new StringBuilder();
+      paramString.append((String)localObject1);
+      paramString.append("/");
+      return paramString.toString();
     }
-    return (String)localObject1 + "/";
+    return null;
   }
   
   public void onFail() {}
@@ -61,12 +96,16 @@ public class ServerAddr
   
   public String toString()
   {
-    return this.mIp + ":" + this.port;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mIp);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.port);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ServerAddr
  * JD-Core Version:    0.7.0.1
  */

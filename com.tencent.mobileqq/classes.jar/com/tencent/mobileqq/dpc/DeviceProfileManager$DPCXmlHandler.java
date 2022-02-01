@@ -25,10 +25,10 @@ class DeviceProfileManager$DPCXmlHandler
   
   private boolean checkFormat(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return false;
+    if ((paramString != null) && (paramString.length() != 0)) {
+      return this.checkPattern.matcher(paramString).matches();
     }
-    return this.checkPattern.matcher(paramString).matches();
+    return false;
   }
   
   public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
@@ -44,45 +44,69 @@ class DeviceProfileManager$DPCXmlHandler
     {
       if (!checkFormat(this.sb.toString()))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("DeviceProfileManager", 2, "DPCXmlHandler format is error: " + paramString2 + "-" + this.sb.toString());
+        if (QLog.isColorLevel())
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append("DPCXmlHandler format is error: ");
+          paramString1.append(paramString2);
+          paramString1.append("-");
+          paramString1.append(this.sb.toString());
+          QLog.e("DeviceProfileManager", 2, paramString1.toString());
         }
         return;
       }
-      if (!this.tempMap.containsKey(paramString2)) {
-        break label229;
-      }
-      paramString1 = (DeviceProfileManager.DPCXmlHandler.DPCXMLParseInfo)this.tempMap.get(paramString2);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP update oldInfo: " + paramString2 + "-" + paramString1.toString());
-      }
-      if (paramString1.weight < this.weight)
+      if (this.tempMap.containsKey(paramString2))
       {
-        paramString1.weight = this.weight;
+        paramString1 = (DeviceProfileManager.DPCXmlHandler.DPCXMLParseInfo)this.tempMap.get(paramString2);
+        if (QLog.isColorLevel())
+        {
+          paramString3 = new StringBuilder();
+          paramString3.append("DPCXmlHandler parse to TEMPMAP update oldInfo: ");
+          paramString3.append(paramString2);
+          paramString3.append("-");
+          paramString3.append(paramString1.toString());
+          QLog.d("DeviceProfileManager", 2, paramString3.toString());
+        }
+        int i = paramString1.weight;
+        int j = this.weight;
+        if (i < j)
+        {
+          paramString1.weight = j;
+          paramString1.value = this.sb.toString();
+          paramString1.taskId = this.taskId;
+          paramString1.testType = this.testType;
+        }
+        if (QLog.isColorLevel())
+        {
+          paramString3 = new StringBuilder();
+          paramString3.append("DPCXmlHandler parse to TEMPMAP update newInfo: ");
+          paramString3.append(paramString2);
+          paramString3.append("-");
+          paramString3.append(paramString1.toString());
+          QLog.d("DeviceProfileManager", 2, paramString3.toString());
+        }
+      }
+      else
+      {
+        paramString1 = new DeviceProfileManager.DPCXmlHandler.DPCXMLParseInfo();
+        paramString1.key = paramString2;
         paramString1.value = this.sb.toString();
         paramString1.taskId = this.taskId;
+        paramString1.weight = this.weight;
         paramString1.testType = this.testType;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP update newInfo: " + paramString2 + "-" + paramString1.toString());
-      }
-    }
-    for (;;)
-    {
-      this.mIsText = false;
-      return;
-      label229:
-      paramString1 = new DeviceProfileManager.DPCXmlHandler.DPCXMLParseInfo();
-      paramString1.key = paramString2;
-      paramString1.value = this.sb.toString();
-      paramString1.taskId = this.taskId;
-      paramString1.weight = this.weight;
-      paramString1.testType = this.testType;
-      this.tempMap.put(paramString2, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP add: " + paramString2 + "-" + paramString1.toString());
+        this.tempMap.put(paramString2, paramString1);
+        if (QLog.isColorLevel())
+        {
+          paramString3 = new StringBuilder();
+          paramString3.append("DPCXmlHandler parse to TEMPMAP add: ");
+          paramString3.append(paramString2);
+          paramString3.append("-");
+          paramString3.append(paramString1.toString());
+          QLog.d("DeviceProfileManager", 2, paramString3.toString());
+        }
       }
     }
+    this.mIsText = false;
   }
   
   public void startDocument()
@@ -95,36 +119,31 @@ class DeviceProfileManager$DPCXmlHandler
   
   public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
+    boolean bool = paramString2.equals("features");
     int i = 0;
-    if (paramString2.equals("features"))
+    if (bool)
     {
-      if (i < paramAttributes.getLength())
+      while (i < paramAttributes.getLength())
       {
         if (paramAttributes.getLocalName(i).equals("weight")) {
           this.weight = Integer.parseInt(paramAttributes.getValue(i));
+        } else if (paramAttributes.getLocalName(i).equals("taskId")) {
+          this.taskId = paramAttributes.getValue(i);
+        } else if (paramAttributes.getLocalName(i).equals("testType")) {
+          this.testType = paramAttributes.getValue(i);
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (paramAttributes.getLocalName(i).equals("taskId")) {
-            this.taskId = paramAttributes.getValue(i);
-          } else if (paramAttributes.getLocalName(i).equals("testType")) {
-            this.testType = paramAttributes.getValue(i);
-          }
-        }
+        i += 1;
       }
+      return;
     }
-    else
-    {
-      this.mIsText = true;
-      this.sb.delete(0, this.sb.length());
-    }
+    this.mIsText = true;
+    paramString1 = this.sb;
+    paramString1.delete(0, paramString1.length());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dpc.DeviceProfileManager.DPCXmlHandler
  * JD-Core Version:    0.7.0.1
  */

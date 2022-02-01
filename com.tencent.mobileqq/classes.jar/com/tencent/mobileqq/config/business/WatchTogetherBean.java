@@ -49,12 +49,24 @@ public class WatchTogetherBean
   
   public String toString()
   {
-    return "WatchTogetherBean{version=" + this.jdField_a_of_type_Int + ", jumpType=" + this.jdField_b_of_type_Int + ", jumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", jumpExtensionInfo='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WatchTogetherBean{version=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", jumpType=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpExtensionInfo='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.WatchTogetherBean
  * JD-Core Version:    0.7.0.1
  */

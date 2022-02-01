@@ -1,26 +1,26 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.newshare.job.WeChatImageJob;
 import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
 
 class ShareModeBase$5
-  extends AddPollViewJob
+  extends WeChatImageJob
 {
-  ShareModeBase$5(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareWeChatData paramShareWeChatData)
+  ShareModeBase$5(ShareModeBase paramShareModeBase, boolean paramBoolean1, boolean paramBoolean2, ShareWeChatData paramShareWeChatData)
   {
-    super(paramStoryVideoItem);
+    super(paramBoolean1, paramBoolean2);
   }
   
   public boolean b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.e = ((String)a("result"));
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.5
  * JD-Core Version:    0.7.0.1
  */

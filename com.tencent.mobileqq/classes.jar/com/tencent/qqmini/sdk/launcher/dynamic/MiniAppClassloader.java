@@ -22,21 +22,29 @@ public class MiniAppClassloader
       Class localClass = super.findClass(paramString);
       return localClass;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      QMLog.w("MiniAppClassloader", "ClassNotFoundException, load class from old loader: " + paramString);
-      return this.originClassLoader.loadClass(paramString);
-    }
     catch (InternalError localInternalError)
     {
-      QMLog.w("MiniAppClassloader", "InternalError, load class from old loader: " + paramString);
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("InternalError, load class from old loader: ");
+      localStringBuilder2.append(paramString);
+      QMLog.w("MiniAppClassloader", localStringBuilder2.toString(), localInternalError);
+      return this.originClassLoader.loadClass(paramString);
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("ClassNotFoundException, load class from old loader: ");
+      localStringBuilder1.append(paramString);
+      QMLog.w("MiniAppClassloader", localStringBuilder1.toString());
+      return this.originClassLoader.loadClass(paramString);
     }
-    return this.originClassLoader.loadClass(paramString);
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      label49:
+      break label49;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.dynamic.MiniAppClassloader
  * JD-Core Version:    0.7.0.1
  */

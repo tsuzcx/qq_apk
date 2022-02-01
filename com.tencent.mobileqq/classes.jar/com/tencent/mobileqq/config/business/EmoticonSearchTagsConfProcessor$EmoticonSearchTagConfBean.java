@@ -30,8 +30,7 @@ public class EmoticonSearchTagsConfProcessor$EmoticonSearchTagConfBean
     }
     Object localObject1 = ((QConfItem)localObject1).a;
     bool = TextUtils.isEmpty((CharSequence)localObject1);
-    if (!bool)
-    {
+    if (!bool) {
       try
       {
         Object localObject2 = new JSONObject((String)localObject1);
@@ -45,49 +44,50 @@ public class EmoticonSearchTagsConfProcessor$EmoticonSearchTagConfBean
             j += 1;
           }
         }
-        if (!QLog.isColorLevel()) {
-          break label173;
-        }
+        StringBuilder localStringBuilder;
+        i += 1;
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("parse S$EConfBean: ");
+          localStringBuilder.append((String)localObject1);
+          QLog.i("EmoticonSearchTagsConfProcessor", 2, localStringBuilder.toString());
+        }
       }
-      QLog.i("EmoticonSearchTagsConfProcessor", 2, "parse S$EConfBean: " + (String)localObject1);
     }
-    label173:
-    label178:
     for (;;)
     {
-      return localEmoticonSearchTagConfBean;
-      for (;;)
-      {
-        if (i >= k) {
-          break label178;
-        }
-        localObject1 = paramArrayOfQConfItem[i];
-        if (localObject1 != null) {
-          break;
-        }
-        i += 1;
+      while (i >= k) {
+        return localEmoticonSearchTagConfBean;
+      }
+      localObject1 = paramArrayOfQConfItem[i];
+      if (localObject1 != null) {
+        break;
       }
     }
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("mConfig:");
-    if (this.a == null) {}
-    for (String str = "null";; str = this.a.toString())
-    {
-      localStringBuilder.append(str);
-      return super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mConfig:");
+    Object localObject = this.a;
+    if (localObject == null) {
+      localObject = "null";
+    } else {
+      localObject = localObject.toString();
     }
+    localStringBuilder.append((String)localObject);
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.EmoticonSearchTagsConfProcessor.EmoticonSearchTagConfBean
  * JD-Core Version:    0.7.0.1
  */

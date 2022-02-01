@@ -9,7 +9,7 @@ import java.nio.FloatBuffer;
 
 public class BackgroundRenderer
 {
-  private static final String jdField_a_of_type_JavaLangString = BackgroundRenderer.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = "BackgroundRenderer";
   private int jdField_a_of_type_Int;
   private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
   private boolean jdField_a_of_type_Boolean = false;
@@ -44,42 +44,34 @@ public class BackgroundRenderer
     this.jdField_a_of_type_Boolean = true;
     float f1 = paramInt1 / paramInt2;
     float f2 = paramInt3 / paramInt4;
-    Object localObject;
     if (f1 < f2)
     {
       f1 = f2 / f1;
       localObject = this.jdField_a_of_type_ArrayOfFloat;
       localObject[1] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
       localObject[3] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
       localObject[5] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[7] = (f1 * localObject[7]);
+      localObject[7] *= f1;
     }
-    for (;;)
+    else
     {
-      localObject = ByteBuffer.allocateDirect(this.jdField_a_of_type_ArrayOfFloat.length * 4);
-      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-      this.jdField_a_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
-      this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-      localObject = ByteBuffer.allocateDirect(32);
-      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-      this.jdField_b_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
-      this.jdField_b_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat);
-      this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
-      return;
       f1 /= f2;
       localObject = this.jdField_a_of_type_ArrayOfFloat;
       localObject[0] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
       localObject[2] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
       localObject[4] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[6] = (f1 * localObject[6]);
+      localObject[6] *= f1;
     }
+    Object localObject = ByteBuffer.allocateDirect(this.jdField_a_of_type_ArrayOfFloat.length * 4);
+    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+    this.jdField_a_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfFloat);
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    localObject = ByteBuffer.allocateDirect(32);
+    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+    this.jdField_b_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
+    this.jdField_b_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat);
+    this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
   }
   
   public void a(Context paramContext)
@@ -92,24 +84,26 @@ public class BackgroundRenderer
     GLES20.glTexParameteri(this.f, 10243, 33071);
     GLES20.glTexParameteri(this.f, 10241, 9728);
     GLES20.glTexParameteri(this.f, 10240, 9728);
-    if (4 != this.jdField_a_of_type_ArrayOfFloat.length / 2) {
-      throw new RuntimeException("Unexpected number of vertices in BackgroundRenderer.");
+    if (4 == this.jdField_a_of_type_ArrayOfFloat.length / 2)
+    {
+      localObject = ByteBuffer.allocateDirect(32);
+      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+      this.jdField_c_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
+      int i = ShaderHelper.a(jdField_a_of_type_JavaLangString, paramContext, 35633, "attribute vec4 a_Position;\nattribute vec2 a_TexCoord;\n\nvarying vec2 v_TexCoord;\n\nvoid main() {\n   gl_Position = a_Position;\n   v_TexCoord = a_TexCoord;\n}");
+      int j = ShaderHelper.a(jdField_a_of_type_JavaLangString, paramContext, 35632, "\n#extension GL_OES_EGL_image_external : require\n\nprecision mediump float;\nvarying vec2 v_TexCoord;\nuniform samplerExternalOES sTexture;\n\n\nvoid main() {\n    gl_FragColor = texture2D(sTexture, v_TexCoord);\n}");
+      this.jdField_a_of_type_Int = GLES20.glCreateProgram();
+      GLES20.glAttachShader(this.jdField_a_of_type_Int, i);
+      GLES20.glAttachShader(this.jdField_a_of_type_Int, j);
+      GLES20.glLinkProgram(this.jdField_a_of_type_Int);
+      GLES20.glUseProgram(this.jdField_a_of_type_Int);
+      ShaderHelper.a(jdField_a_of_type_JavaLangString, "program creation");
+      this.jdField_b_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "a_Position");
+      this.jdField_c_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "a_TexCoord");
+      this.d = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "sTexture");
+      ShaderHelper.a(jdField_a_of_type_JavaLangString, "program parameters");
+      return;
     }
-    localObject = ByteBuffer.allocateDirect(32);
-    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-    this.jdField_c_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
-    int i = ShaderHelper.a(jdField_a_of_type_JavaLangString, paramContext, 35633, "attribute vec4 a_Position;\nattribute vec2 a_TexCoord;\n\nvarying vec2 v_TexCoord;\n\nvoid main() {\n   gl_Position = a_Position;\n   v_TexCoord = a_TexCoord;\n}");
-    int j = ShaderHelper.a(jdField_a_of_type_JavaLangString, paramContext, 35632, "\n#extension GL_OES_EGL_image_external : require\n\nprecision mediump float;\nvarying vec2 v_TexCoord;\nuniform samplerExternalOES sTexture;\n\n\nvoid main() {\n    gl_FragColor = texture2D(sTexture, v_TexCoord);\n}");
-    this.jdField_a_of_type_Int = GLES20.glCreateProgram();
-    GLES20.glAttachShader(this.jdField_a_of_type_Int, i);
-    GLES20.glAttachShader(this.jdField_a_of_type_Int, j);
-    GLES20.glLinkProgram(this.jdField_a_of_type_Int);
-    GLES20.glUseProgram(this.jdField_a_of_type_Int);
-    ShaderHelper.a(jdField_a_of_type_JavaLangString, "program creation");
-    this.jdField_b_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "a_Position");
-    this.jdField_c_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "a_TexCoord");
-    this.d = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "sTexture");
-    ShaderHelper.a(jdField_a_of_type_JavaLangString, "program parameters");
+    throw new RuntimeException("Unexpected number of vertices in BackgroundRenderer.");
   }
   
   public void a(FloatBuffer paramFloatBuffer)
@@ -139,7 +133,7 @@ public class BackgroundRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.BackgroundRenderer
  * JD-Core Version:    0.7.0.1
  */

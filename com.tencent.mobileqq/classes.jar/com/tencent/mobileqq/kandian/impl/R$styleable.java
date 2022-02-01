@@ -2,28 +2,31 @@ package com.tencent.mobileqq.kandian.impl;
 
 public final class R$styleable
 {
-  public static final int[] a = { 2113994762 };
-  public static final int[] b = { 2113994764 };
-  public static final int[] c = { 2113994752, 2113994753, 2113994755, 2113994779, 2113994780 };
-  public static final int[] d = { 2113994761, 2113994763 };
-  public static final int[] e = { 2113994761, 2113994763 };
-  public static final int[] f = { 2113994761, 2113994763 };
-  public static final int[] g = { 2113994761, 2113994763 };
-  public static final int[] h = { 2113994761, 2113994763 };
-  public static final int[] i = { 2113994753, 2113994768 };
-  public static final int[] j = { 2113994754, 2113994769, 2113994770, 2113994771, 2113994772 };
-  public static final int[] k = { 2113994754, 2113994769, 2113994770, 2113994771, 2113994772 };
-  public static final int[] l = { 2113994754, 2113994769, 2113994770, 2113994771, 2113994772 };
-  public static final int[] m = { 2113994754, 2113994769, 2113994770, 2113994771, 2113994772 };
-  public static final int[] n = { 2113994765, 2113994766, 2113994767 };
-  public static final int[] o = { 2113994773 };
-  public static final int[] p = { 2113994774, 2113994775, 2113994776, 2113994777, 2113994778 };
-  public static final int[] q = { 2113994781, 2113994782, 2113994783, 2113994784, 2113994785, 2113994786, 2113994787, 2113994788, 2113994789, 2113994790, 2113994791, 2113994792, 2113994793 };
-  public static final int[] r = { 2113994756, 2113994757, 2113994758, 2113994759, 2113994760 };
+  public static final int[] a = { 2097283084 };
+  public static final int[] b = { 2097283086 };
+  public static final int[] c = { 2097283072, 2097283074, 2097283077, 2097283102, 2097283103 };
+  public static final int[] d = { 2097283083, 2097283085 };
+  public static final int[] e = { 2097283083, 2097283085 };
+  public static final int[] f = { 2097283083, 2097283085 };
+  public static final int[] g = { 2097283083, 2097283085 };
+  public static final int[] h = { 2097283083, 2097283085 };
+  public static final int[] i = { 2097283074, 2097283091 };
+  public static final int[] j = { 2097283076, 2097283092, 2097283093, 2097283094, 2097283095 };
+  public static final int[] k = { 2097283076, 2097283092, 2097283093, 2097283094, 2097283095 };
+  public static final int[] l = { 2097283076, 2097283092, 2097283093, 2097283094, 2097283095 };
+  public static final int[] m = { 2097283076, 2097283092, 2097283093, 2097283094, 2097283095 };
+  public static final int[] n = { 2097283075, 2097283087, 2097283089, 2097283090 };
+  public static final int[] o = { 2097283096 };
+  public static final int[] p = { 2097283097, 2097283098, 2097283099, 2097283100, 2097283101 };
+  public static final int[] q = { 2097283073, 2097283075, 2097283087, 2097283088, 2097283089, 2097283090 };
+  public static final int[] r = { 2097283104 };
+  public static final int[] s = { 2097283078, 2097283079, 2097283080, 2097283081, 2097283082 };
+  public static final int[] t = { 2097283105, 2097283106, 2097283107 };
+  public static final int[] u = { 2097283108, 2097283109, 2097283110, 2097283111, 2097283112, 2097283113, 2097283114, 2097283115, 2097283116, 2097283117, 2097283118, 2097283119, 2097283120 };
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.impl.R.styleable
  * JD-Core Version:    0.7.0.1
  */

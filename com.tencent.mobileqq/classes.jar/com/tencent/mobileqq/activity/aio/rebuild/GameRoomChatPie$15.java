@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 
 class GameRoomChatPie$15
@@ -10,7 +10,7 @@ class GameRoomChatPie$15
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {
       return;
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
@@ -18,7 +18,7 @@ class GameRoomChatPie$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.15
  * JD-Core Version:    0.7.0.1
  */

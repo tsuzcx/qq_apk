@@ -14,7 +14,8 @@ public class TopAlignSuperscriptSpan
   
   public TopAlignSuperscriptSpan(float paramFloat)
   {
-    if ((paramFloat > 0.0D) && (paramFloat < 1.0D)) {
+    double d = paramFloat;
+    if ((d > 0.0D) && (d < 1.0D)) {
       this.jdField_a_of_type_Float = paramFloat;
     }
   }
@@ -27,7 +28,8 @@ public class TopAlignSuperscriptSpan
       paramTextPaint.setTextSize(paramTextPaint.getTextSize() / this.jdField_a_of_type_Int);
       float f2 = paramTextPaint.getFontMetrics().ascent;
       float f3 = paramTextPaint.baselineShift;
-      paramTextPaint.baselineShift = ((int)(f1 - this.jdField_a_of_type_Float * f1 - (f2 - this.jdField_a_of_type_Float * f2) + f3));
+      float f4 = this.jdField_a_of_type_Float;
+      paramTextPaint.baselineShift = ((int)(f3 + (f1 - f1 * f4 - (f2 - f4 * f2))));
     }
   }
   
@@ -38,7 +40,7 @@ public class TopAlignSuperscriptSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.TopAlignSuperscriptSpan
  * JD-Core Version:    0.7.0.1
  */

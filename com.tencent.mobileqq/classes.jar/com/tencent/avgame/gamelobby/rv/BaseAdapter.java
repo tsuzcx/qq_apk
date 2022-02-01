@@ -22,16 +22,6 @@ public class BaseAdapter
   private List<BaseViewHolder> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean b = false;
   
-  static
-  {
-    if (!BaseAdapter.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
   public BaseAdapter()
   {
     this(false);
@@ -68,33 +58,36 @@ public class BaseAdapter
       }
       paramViewGroup = this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$Factory.a(localBaseViewConfig.jdField_a_of_type_Int, paramViewGroup, (Class)localObject);
     }
-    do
+    else
     {
-      do
-      {
-        paramViewGroup.a(localBaseViewConfig.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener);
-        this.jdField_a_of_type_JavaUtilList.add(paramViewGroup);
-        return paramViewGroup;
-        localObject = localBaseViewConfig.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$ViewHolderFactory;
-        if ((!jdField_a_of_type_Boolean) && (localObject == null)) {
-          throw new AssertionError("ViewHolderFactory未注册");
-        }
-        localObject = ((BaseViewHolder.ViewHolderFactory)localObject).a(this.jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext, localBaseViewConfig.jdField_a_of_type_Int, paramViewGroup);
-        paramViewGroup = (ViewGroup)localObject;
-      } while (jdField_a_of_type_Boolean);
+      localObject = localBaseViewConfig.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$ViewHolderFactory;
+      if ((!jdField_a_of_type_Boolean) && (localObject == null)) {
+        throw new AssertionError("ViewHolderFactory未注册");
+      }
+      localObject = ((BaseViewHolder.ViewHolderFactory)localObject).a(this.jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext, localBaseViewConfig.jdField_a_of_type_Int, paramViewGroup);
       paramViewGroup = (ViewGroup)localObject;
-    } while (localObject != null);
-    throw new AssertionError();
+      if (!jdField_a_of_type_Boolean) {
+        if (localObject != null) {
+          paramViewGroup = (ViewGroup)localObject;
+        } else {
+          throw new AssertionError();
+        }
+      }
+    }
+    paramViewGroup.a(localBaseViewConfig.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener);
+    this.jdField_a_of_type_JavaUtilList.add(paramViewGroup);
+    return paramViewGroup;
   }
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((BaseViewHolder)localIterator.next()).a();
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((BaseViewHolder)((Iterator)localObject).next()).a();
     }
-    if (this.jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext != null) {
-      this.jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext.a();
+    localObject = this.jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext;
+    if (localObject != null) {
+      ((ViewHolderContext)localObject).a();
     }
     this.jdField_a_of_type_JavaUtilList.clear();
   }
@@ -111,32 +104,32 @@ public class BaseAdapter
   
   public void a(@NonNull BaseViewHolder<? extends IBaseData> paramBaseViewHolder, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource != null) {
-      paramBaseViewHolder.b(this.jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext, this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource.b(paramInt), paramInt);
+    IBaseDataSource localIBaseDataSource = this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource;
+    if (localIBaseDataSource != null) {
+      paramBaseViewHolder.b(this.jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext, localIBaseDataSource.b(paramInt), paramInt);
     }
   }
   
   public int getItemCount()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource != null) {
-      return this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource.a();
+    IBaseDataSource localIBaseDataSource = this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource;
+    if (localIBaseDataSource != null) {
+      return localIBaseDataSource.a();
     }
     return 0;
   }
   
   public int getItemViewType(int paramInt)
   {
-    int j = 0;
-    int i = j;
-    if (this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource != null)
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource;
+    if (localObject != null)
     {
-      Integer localInteger = Integer.valueOf(this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource.a(paramInt));
-      i = j;
-      if (localInteger != null) {
-        i = localInteger.intValue();
+      localObject = Integer.valueOf(((IBaseDataSource)localObject).a(paramInt));
+      if (localObject != null) {
+        return ((Integer)localObject).intValue();
       }
     }
-    return i;
+    return 0;
   }
   
   public void onAttachedToRecyclerView(@NonNull RecyclerView paramRecyclerView)
@@ -152,7 +145,7 @@ public class BaseAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.rv.BaseAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,305 +1,164 @@
 package com.tencent.mobileqq.profilecard.bussiness.accountinfo.utils;
 
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profilesetting.ProfileSettingUtils;
-import com.tencent.mobileqq.profilesetting.ProfileSettingUtils.Companion;
-import com.tencent.mobileqq.util.NearbyProfileUtil;
+import com.tencent.mobileqq.profilecard.api.IProfileCardBusinessApi;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilesetting.api.IProfileSettingApi;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class ProfileAccountInfoUtils
 {
   public static short getAgeWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    short s2 = 0;
-    short s1 = s2;
-    if (paramProfileCardInfo != null)
-    {
-      s1 = s2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        s1 = s2;
-        if (isFieldVisible(41610, paramProfileCardInfo)) {
-          s1 = (short)paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.age;
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41610, paramProfileCardInfo))) {
+      return (short)paramProfileCardInfo.card.age;
     }
-    return s1;
+    return 0;
   }
   
   public static long getBirthdayWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    long l2 = 0L;
-    long l1 = l2;
-    if (paramProfileCardInfo != null)
-    {
-      l1 = l2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        l1 = l2;
-        if (isFieldVisible(41607, paramProfileCardInfo)) {
-          l1 = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lBirthday;
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41607, paramProfileCardInfo))) {
+      return paramProfileCardInfo.card.lBirthday;
     }
-    return l1;
+    return 0L;
   }
   
   public static String getCompanyWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(40272, paramProfileCardInfo)) {
-          localObject1 = getStringTrim(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strCompany);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(40272, paramProfileCardInfo))) {
+      return getStringTrim(paramProfileCardInfo.card.strCompany);
     }
-    return localObject1;
+    return null;
   }
   
   public static String getConstellationWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(41609, paramProfileCardInfo)) {
-          localObject1 = NearbyProfileUtil.c(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.constellation);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41609, paramProfileCardInfo))) {
+      return ((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).getConstellation(paramProfileCardInfo.card.constellation);
     }
-    return localObject1;
+    return null;
   }
   
   public static String getEmailWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(41622, paramProfileCardInfo)) {
-          localObject1 = getStringTrim(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strEmail);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41622, paramProfileCardInfo))) {
+      return getStringTrim(paramProfileCardInfo.card.strEmail);
     }
-    return localObject1;
+    return null;
   }
   
   public static short getGenderWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    short s2 = -1;
-    short s1 = s2;
-    if (paramProfileCardInfo != null)
-    {
-      s1 = s2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        s1 = s2;
-        if (isFieldVisible(41611, paramProfileCardInfo)) {
-          s1 = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.shGender;
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41611, paramProfileCardInfo))) {
+      return paramProfileCardInfo.card.shGender;
     }
-    return s1;
+    return -1;
   }
   
   public static String getHometownCityWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(41613, paramProfileCardInfo)) {
-          localObject1 = getStringTrim(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strHometownCity);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41613, paramProfileCardInfo))) {
+      return getStringTrim(paramProfileCardInfo.card.strHometownCity);
     }
-    return localObject1;
+    return null;
   }
   
   public static String getHometownProvinceWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(41613, paramProfileCardInfo)) {
-          localObject1 = getStringTrim(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strHometownProvince);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41613, paramProfileCardInfo))) {
+      return getStringTrim(paramProfileCardInfo.card.strHometownProvince);
     }
-    return localObject1;
+    return null;
   }
   
   public static String getHometownWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(41613, paramProfileCardInfo)) {
-          localObject1 = getStringTrim(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strHometownDesc);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41613, paramProfileCardInfo))) {
+      return getStringTrim(paramProfileCardInfo.card.strHometownDesc);
     }
-    return localObject1;
+    return null;
   }
   
   public static String getLocationCityWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(41614, paramProfileCardInfo)) {
-          localObject1 = getStringTrim(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strCity);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41614, paramProfileCardInfo))) {
+      return getStringTrim(paramProfileCardInfo.card.strCity);
     }
-    return localObject1;
+    return null;
   }
   
   public static String getLocationCountryWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(41614, paramProfileCardInfo)) {
-          localObject1 = getStringTrim(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strCountry);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41614, paramProfileCardInfo))) {
+      return getStringTrim(paramProfileCardInfo.card.strCountry);
     }
-    return localObject1;
+    return null;
   }
   
   public static String getLocationProvinceWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(41614, paramProfileCardInfo)) {
-          localObject1 = getStringTrim(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strProvince);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41614, paramProfileCardInfo))) {
+      return getStringTrim(paramProfileCardInfo.card.strProvince);
     }
-    return localObject1;
+    return null;
   }
   
   public static String getProfessionTagWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(41618, paramProfileCardInfo)) {
-          localObject1 = NearbyProfileUtil.d(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.iProfession);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41618, paramProfileCardInfo))) {
+      return ((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).getJobTag(paramProfileCardInfo.card.iProfession);
     }
-    return localObject1;
+    return null;
   }
   
   public static String getProfessionWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(41618, paramProfileCardInfo)) {
-          localObject1 = NearbyProfileUtil.e(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.iProfession);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41618, paramProfileCardInfo))) {
+      return ((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).getJob(paramProfileCardInfo.card.iProfession);
     }
-    return localObject1;
+    return null;
   }
   
   public static String getSchoolWithPrivacy(ProfileCardInfo paramProfileCardInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramProfileCardInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (isFieldVisible(41619, paramProfileCardInfo)) {
-          localObject1 = getStringTrim(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strSchool);
-        }
-      }
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.card != null) && (isFieldVisible(41619, paramProfileCardInfo))) {
+      return getStringTrim(paramProfileCardInfo.card.strSchool);
     }
-    return localObject1;
+    return null;
   }
   
   public static String getStringTrim(String paramString)
   {
-    String str = null;
     if (paramString != null) {
-      str = paramString.trim();
+      return paramString.trim();
     }
-    return str;
+    return null;
   }
   
   public static boolean isFieldVisible(int paramInt, ProfileCardInfo paramProfileCardInfo)
   {
-    if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {}
-    for (int i = 1; (i == 0) || (ProfileSettingUtils.a.a(paramInt, paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard, null) != 2); i = 0) {
-      return true;
+    int i = paramProfileCardInfo.allInOne.pa;
+    boolean bool = true;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    if (i != 0)
+    {
+      if (((IProfileSettingApi)QRoute.api(IProfileSettingApi.class)).getProfileDisplaySettingStateFromCard(paramInt, paramProfileCardInfo.card, null) != 2) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.accountinfo.utils.ProfileAccountInfoUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ class TroopTransferActivity$7
     //   12: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
     //   15: astore_1
     //   16: aload_1
-    //   17: ifnull +91 -> 108
+    //   17: ifnull +86 -> 103
     //   20: aload_0
     //   21: getfield 15	com/tencent/mobileqq/activity/TroopTransferActivity$7:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
     //   24: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
@@ -41,7 +41,7 @@ class TroopTransferActivity$7
     //   54: aload_1
     //   55: aload_0
     //   56: getfield 19	com/tencent/mobileqq/activity/TroopTransferActivity$7:b	Landroid/view/animation/TranslateAnimation;
-    //   59: if_acmpne +49 -> 108
+    //   59: if_acmpne +44 -> 103
     //   62: aload_0
     //   63: getfield 15	com/tencent/mobileqq/activity/TroopTransferActivity$7:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
     //   66: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
@@ -64,11 +64,10 @@ class TroopTransferActivity$7
     //   103: return
     //   104: astore_1
     //   105: goto -75 -> 30
-    //   108: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	109	0	this	7
-    //   0	109	1	paramAnimation	Animation
+    //   0	108	0	this	7
+    //   0	108	1	paramAnimation	Animation
     // Exception table:
     //   from	to	target	type
     //   0	16	98	java/lang/Exception
@@ -83,7 +82,7 @@ class TroopTransferActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.7
  * JD-Core Version:    0.7.0.1
  */

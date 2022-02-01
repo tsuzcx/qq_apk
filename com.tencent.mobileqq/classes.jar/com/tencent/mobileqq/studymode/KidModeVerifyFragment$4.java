@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.studymode;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class KidModeVerifyFragment$4
   implements Runnable
@@ -11,15 +11,15 @@ class KidModeVerifyFragment$4
   
   public void run()
   {
-    FragmentActivity localFragmentActivity = this.this$0.getActivity();
-    if (localFragmentActivity != null) {
-      ((InputMethodManager)localFragmentActivity.getSystemService("input_method")).showSoftInput(KidModeVerifyFragment.a(this.this$0), 0);
+    BaseActivity localBaseActivity = this.this$0.getBaseActivity();
+    if (localBaseActivity != null) {
+      ((InputMethodManager)localBaseActivity.getSystemService("input_method")).showSoftInput(KidModeVerifyFragment.a(this.this$0), 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeVerifyFragment.4
  * JD-Core Version:    0.7.0.1
  */

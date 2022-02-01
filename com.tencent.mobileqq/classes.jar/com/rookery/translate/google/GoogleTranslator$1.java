@@ -19,8 +19,12 @@ class GoogleTranslator$1
   
   public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("GoogleTranslator", 2, "[ERROR][SHOULD NOT GO HERE][onSuccess] statusCode:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfHeader = new StringBuilder();
+      paramArrayOfHeader.append("[ERROR][SHOULD NOT GO HERE][onSuccess] statusCode:");
+      paramArrayOfHeader.append(paramInt);
+      QLog.e("GoogleTranslator", 2, paramArrayOfHeader.toString());
     }
   }
   
@@ -39,13 +43,9 @@ class GoogleTranslator$1
           paramInt = 0;
           while (paramInt < paramJSONObject.length())
           {
-            String str1 = ((JSONObject)paramJSONObject.get(paramInt)).getString("translatedText");
-            String str2 = ((JSONObject)paramJSONObject.get(paramInt)).getString("detectedSourceLanguage");
-            if ((paramArrayOfHeader != null) && (localArrayList != null))
-            {
-              paramArrayOfHeader.add(Language.fromString(str2));
-              localArrayList.add(str1);
-            }
+            String str = ((JSONObject)paramJSONObject.get(paramInt)).getString("translatedText");
+            paramArrayOfHeader.add(Language.fromString(((JSONObject)paramJSONObject.get(paramInt)).getString("detectedSourceLanguage")));
+            localArrayList.add(str);
             paramInt += 1;
           }
         }
@@ -62,8 +62,12 @@ class GoogleTranslator$1
   public void a(Throwable paramThrowable, String paramString)
   {
     this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
-    if (QLog.isColorLevel()) {
-      QLog.e("GoogleTranslator", 2, " [onFailure][GoogleTranslateClient] Throwable:" + paramThrowable);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append(" [onFailure][GoogleTranslateClient] Throwable:");
+      paramString.append(paramThrowable);
+      QLog.e("GoogleTranslator", 2, paramString.toString());
     }
   }
 }

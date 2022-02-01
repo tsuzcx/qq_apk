@@ -1,7 +1,6 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils.TruncateAt;
@@ -11,12 +10,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import com.tencent.biz.pubaccount.api.IPublicAccountConfigAttr.PaConfigInfo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.widget.BubbleViewLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
 
@@ -25,9 +23,9 @@ public class AccountDetailWindowViewWrapper$PhotoAdapter
 {
   public AccountDetailWindowViewWrapper$PhotoAdapter(AccountDetailWindowViewWrapper paramAccountDetailWindowViewWrapper) {}
   
-  public PaConfigAttr.PaConfigInfo a(int paramInt)
+  public IPublicAccountConfigAttr.PaConfigInfo a(int paramInt)
   {
-    return (PaConfigAttr.PaConfigInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return (IPublicAccountConfigAttr.PaConfigInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
   
   public int getCount()
@@ -42,24 +40,24 @@ public class AccountDetailWindowViewWrapper$PhotoAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject1 = this.a.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = AIOUtils.a(200.0F, (Resources)localObject1);
-    int j = AIOUtils.a(140.0F, (Resources)localObject1);
-    int k = AIOUtils.a(12.0F, (Resources)localObject1);
-    Object localObject2;
+    paramViewGroup = this.a.jdField_a_of_type_AndroidContentContext.getResources();
+    int i = AIOUtils.b(200.0F, paramViewGroup);
+    int j = AIOUtils.b(140.0F, paramViewGroup);
+    int k = AIOUtils.b(12.0F, paramViewGroup);
     if (paramView == null)
     {
-      paramView = new AccountDetailWindowViewWrapper.PhotoAdapter.ViewHolder(this);
-      localObject1 = new BubbleViewLayout(this.a.jdField_a_of_type_AndroidContentContext);
-      ((BubbleViewLayout)localObject1).setRadius(6.0F);
-      ((BubbleViewLayout)localObject1).a(false);
-      ((View)localObject1).setLayoutParams(new AbsListView.LayoutParams(j, i));
-      localObject2 = new URLImageView(this.a.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup = new AccountDetailWindowViewWrapper.PhotoAdapter.ViewHolder(this);
+      paramView = new BubbleViewLayout(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.setRadius(6.0F);
+      paramView.a(false);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(j, i));
+      Object localObject2 = new URLImageView(this.a.jdField_a_of_type_AndroidContentContext);
       ((URLImageView)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
       ((URLImageView)localObject2).setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
       ((URLImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER_CROP);
+      localObject1 = (ViewGroup)paramView;
       ((ViewGroup)localObject1).addView((View)localObject2);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject2);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject2);
       localObject2 = new TextView(this.a.jdField_a_of_type_AndroidContentContext);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(12, -1);
@@ -71,25 +69,22 @@ public class AccountDetailWindowViewWrapper$PhotoAdapter
       ((TextView)localObject2).setMaxLines(2);
       ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
       ((ViewGroup)localObject1).addView((View)localObject2);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-      ((View)localObject1).setTag(paramView);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
+      paramView.setTag(paramViewGroup);
     }
-    for (;;)
+    else
     {
-      localObject2 = a(paramInt);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(((PaConfigAttr.PaConfigInfo)localObject2).e, null, null, true));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PaConfigAttr.PaConfigInfo)localObject2).a);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject2 = (AccountDetailWindowViewWrapper.PhotoAdapter.ViewHolder)paramView.getTag();
-      localObject1 = paramView;
-      paramView = (View)localObject2;
+      paramViewGroup = (AccountDetailWindowViewWrapper.PhotoAdapter.ViewHolder)paramView.getTag();
     }
+    Object localObject1 = a(paramInt);
+    paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(((IPublicAccountConfigAttr.PaConfigInfo)localObject1).e, null, null, true));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((IPublicAccountConfigAttr.PaConfigInfo)localObject1).a);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailWindowViewWrapper.PhotoAdapter
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailWindowViewWrapper.PhotoAdapter
  * JD-Core Version:    0.7.0.1
  */

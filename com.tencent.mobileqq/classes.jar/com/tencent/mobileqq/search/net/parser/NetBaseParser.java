@@ -6,247 +6,238 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.search.base.model.SearchResultModelForEntrance;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateAvatarsItem;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateBannerTitleItem;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateBaseItem;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateBigImageItem;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateFriendUpdatesItem;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateNetSeaEntranceItem;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateQAItem;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateSubItem;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateSubItemTitle;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateTitleItem;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateUniversalItem;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateUpdatesItem;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModel;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.model.NetSearchTemplateAvatarsItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateBannerTitleItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateBaseItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateBigImageItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateFriendUpdatesItem;
 import com.tencent.mobileqq.search.model.NetSearchTemplateHorSlidingContainerItem;
 import com.tencent.mobileqq.search.model.NetSearchTemplateHorizontalContainerItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateNetSeaEntranceItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateQAItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateSubItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateSubItemTitle;
-import com.tencent.mobileqq.search.model.NetSearchTemplateTitleItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateUniversalItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateUpdatesItem;
-import com.tencent.mobileqq.search.model.SearchResultModelForEntrance;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import pb.unite.search.DynamicSearch.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItemGroup;
+import unite.DynamicSearch.ResultItem;
+import unite.DynamicSearch.ResultItemGroup;
 
 public class NetBaseParser
   implements INetSearchResultParser<ISearchResultGroupModel>
 {
   public List<ISearchResultGroupModel> a(Object... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length < 3)) {
-      return null;
-    }
-    String str1 = "";
-    if ((paramVarArgs[0] instanceof String)) {
-      str1 = (String)paramVarArgs[0];
-    }
-    Object localObject;
-    int i;
-    ArrayList localArrayList1;
-    Iterator localIterator;
-    if ((paramVarArgs[1] instanceof List))
+    if ((paramVarArgs != null) && (paramVarArgs.length >= 3))
     {
-      localObject = (List)paramVarArgs[1];
-      i = -1;
-      if ((paramVarArgs[2] instanceof Integer)) {
-        i = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      if ((paramVarArgs[0] instanceof String)) {
+        localObject2 = (String)paramVarArgs[0];
+      } else {
+        localObject2 = "";
       }
-      localArrayList1 = new ArrayList(((List)localObject).size());
-      localIterator = ((List)localObject).iterator();
-    }
-    label920:
-    for (;;)
-    {
-      label448:
-      label1223:
-      if (localIterator.hasNext())
+      if ((paramVarArgs[1] instanceof List)) {
+        localObject1 = (List)paramVarArgs[1];
+      } else {
+        localObject1 = new ArrayList();
+      }
+      int j;
+      if ((paramVarArgs[2] instanceof Integer)) {
+        j = ((Integer)paramVarArgs[2]).intValue();
+      } else {
+        j = -1;
+      }
+      paramVarArgs = new ArrayList(((List)localObject1).size());
+      Iterator localIterator = ((List)localObject1).iterator();
+      Object localObject1 = paramVarArgs;
+      paramVarArgs = (Object[])localObject2;
+      while (localIterator.hasNext())
       {
         DynamicSearch.ResultItemGroup localResultItemGroup = (DynamicSearch.ResultItemGroup)localIterator.next();
         long l3 = localResultItemGroup.group_mask.get();
-        String str2 = localResultItemGroup.group_name.get().toStringUtf8();
-        paramVarArgs = localResultItemGroup.rpt_highlight_words.get();
-        ArrayList localArrayList2 = new ArrayList(paramVarArgs.size());
-        paramVarArgs = paramVarArgs.iterator();
-        for (;;)
-        {
-          if (paramVarArgs.hasNext())
-          {
-            localArrayList2.add(((ByteStringMicro)paramVarArgs.next()).toStringUtf8());
-            continue;
-            localObject = new ArrayList();
-            break;
-          }
+        String str1 = localResultItemGroup.group_name.get().toStringUtf8();
+        localObject2 = localResultItemGroup.rpt_highlight_words.get();
+        ArrayList localArrayList = new ArrayList(((List)localObject2).size());
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext()) {
+          localArrayList.add(((ByteStringMicro)((Iterator)localObject2).next()).toStringUtf8());
         }
-        List localList = localResultItemGroup.result_items.get();
-        ArrayList localArrayList3 = new ArrayList(localList.size());
+        Object localObject3 = localResultItemGroup.result_items.get();
+        localObject2 = new ArrayList(((List)localObject3).size());
         boolean bool1;
-        String str3;
-        String str4;
-        long l1;
-        int j;
-        if (localResultItemGroup.hide_title.get() == 1)
-        {
+        if (localResultItemGroup.hide_title.get() == 1) {
           bool1 = true;
-          str3 = localResultItemGroup.group_footer_name.get().toStringUtf8();
-          str4 = localResultItemGroup.group_footer_jump_url.get().toStringUtf8();
-          l1 = localList.size();
-          j = 0;
+        } else {
+          bool1 = false;
         }
-        label371:
+        String str2 = localResultItemGroup.group_footer_name.get().toStringUtf8();
+        String str3 = localResultItemGroup.group_footer_jump_url.get().toStringUtf8();
+        long l1 = ((List)localObject3).size();
+        int i = 0;
+        Object localObject4;
         boolean bool2;
-        for (;;)
+        while (i < ((List)localObject3).size())
         {
-          if (j >= localList.size()) {
-            break label1102;
-          }
-          paramVarArgs = (DynamicSearch.ResultItem)localList.get(j);
-          localObject = paramVarArgs.sub_result_items.get();
-          int m = ((List)localObject).size() + 1;
-          ArrayList localArrayList4 = new ArrayList(m);
-          localArrayList4.add(paramVarArgs);
-          localArrayList4.addAll((Collection)localObject);
-          int k = 0;
-          if (k < m)
+          Object localObject5 = (DynamicSearch.ResultItem)((List)localObject3).get(i);
+          Object localObject6 = ((DynamicSearch.ResultItem)localObject5).sub_result_items.get();
+          int k = ((List)localObject6).size() + 1;
+          localObject4 = new ArrayList(k);
+          ((List)localObject4).add(localObject5);
+          ((List)localObject4).addAll((Collection)localObject6);
+          int m = 0;
+          localObject5 = paramVarArgs;
+          while (m < k)
           {
-            DynamicSearch.ResultItem localResultItem = (DynamicSearch.ResultItem)localArrayList4.get(k);
-            paramVarArgs = localResultItem.result_id.get().toStringUtf8();
-            bool2 = localResultItem.layout_id.has();
-            localObject = localResultItem.name.get().toStringUtf8();
+            localObject6 = (DynamicSearch.ResultItem)((List)localObject4).get(m);
+            Object localObject7 = ((DynamicSearch.ResultItem)localObject6).result_id.get().toStringUtf8();
+            bool2 = ((DynamicSearch.ResultItem)localObject6).layout_id.has();
+            String str4 = ((DynamicSearch.ResultItem)localObject6).name.get().toStringUtf8();
             long l2;
-            String str5;
-            String str6;
-            String str7;
-            if (localResultItem.group_mask.has())
+            if (((DynamicSearch.ResultItem)localObject6).group_mask.has()) {
+              l2 = ((DynamicSearch.ResultItem)localObject6).group_mask.get();
+            } else {
+              l2 = l3;
+            }
+            String str5 = ((DynamicSearch.ResultItem)localObject6).pic_url.get().toStringUtf8();
+            String str6 = ((DynamicSearch.ResultItem)localObject6).jmp_url.get().toStringUtf8();
+            String str7 = ((DynamicSearch.ResultItem)localObject6).extension.get().toStringUtf8();
+            if (bool2)
             {
-              l2 = localResultItem.group_mask.get();
-              str5 = localResultItem.pic_url.get().toStringUtf8();
-              str6 = localResultItem.jmp_url.get().toStringUtf8();
-              str7 = localResultItem.extension.get().toStringUtf8();
-              if (!bool2) {
-                break label920;
-              }
-              localObject = null;
-              paramVarArgs = (Object[])localObject;
-              switch (localResultItem.layout_id.get())
+              switch (((DynamicSearch.ResultItem)localObject6).layout_id.get())
               {
-              default: 
-                paramVarArgs = (Object[])localObject;
               case 5: 
               case 10: 
-                label583:
-                if ((paramVarArgs != null) && (paramVarArgs.b()))
-                {
-                  paramVarArgs.u = localResultItem.seporator_type.get();
-                  paramVarArgs.a = bool1;
-                  localArrayList3.add(paramVarArgs);
-                  l2 = l1;
-                }
+              default: 
+                paramVarArgs = null;
                 break;
+              case 16: 
+                paramVarArgs = new NetSearchTemplateNetSeaEntranceItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 15: 
+                paramVarArgs = new NetSearchTemplateQAItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 14: 
+                paramVarArgs = new NetSearchTemplateTitleItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 13: 
+                paramVarArgs = new NetSearchTemplateHorSlidingContainerItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 12: 
+                paramVarArgs = new NetSearchTemplateBigImageItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 11: 
+                paramVarArgs = new NetSearchTemplateFriendUpdatesItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 9: 
+                paramVarArgs = new NetSearchTemplateSubItemTitle((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 8: 
+                paramVarArgs = new NetSearchTemplateSubItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 7: 
+                paramVarArgs = new NetSearchTemplateHorizontalContainerItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 6: 
+                paramVarArgs = new NetSearchTemplateUniversalItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 4: 
+                paramVarArgs = new NetSearchTemplateBannerTitleItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 3: 
+                paramVarArgs = new NetSearchTemplateUpdatesItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+                break;
+              case 2: 
+                paramVarArgs = new NetSearchTemplateAvatarsItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
+              }
+              if ((paramVarArgs != null) && (paramVarArgs.b()))
+              {
+                paramVarArgs.u = ((DynamicSearch.ResultItem)localObject6).seporator_type.get();
+                paramVarArgs.a = bool1;
+                ((List)localObject2).add(paramVarArgs);
+              }
+              else
+              {
+                l1 -= 1L;
               }
             }
             for (;;)
             {
-              k += 1;
-              l1 = l2;
-              break label371;
-              bool1 = false;
-              break;
-              l2 = l3;
-              break label448;
-              paramVarArgs = new NetSearchTemplateAvatarsItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateUpdatesItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateBannerTitleItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateHorizontalContainerItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateUniversalItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateSubItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateSubItemTitle(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateFriendUpdatesItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateBigImageItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateHorSlidingContainerItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateTitleItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateQAItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new NetSearchTemplateNetSeaEntranceItem(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              l2 = l1 - 1L;
-              continue;
+              paramVarArgs = (Object[])localObject1;
+              localObject1 = localObject2;
+              break label1112;
+              paramVarArgs = (Object[])localObject2;
               if (!SearchUtils.b(l2))
               {
-                QLog.e("Q.uniteSearch.NetBaseParser", 1, "itemGroupMask is not valid. mask=" + l2);
-                l2 = l1;
-              }
-              else if (l2 == 2073745984L)
-              {
-                paramVarArgs = new SearchResultModelForEntrance(str1, str7, -4, str5);
-                paramVarArgs.u = localResultItem.seporator_type.get();
-                localArrayList3.add(paramVarArgs);
-                l2 = l1;
+                paramVarArgs = new StringBuilder();
+                paramVarArgs.append("itemGroupMask is not valid. mask=");
+                paramVarArgs.append(l2);
+                QLog.e("Q.uniteSearch.NetBaseParser", 1, paramVarArgs.toString());
               }
               else
               {
-                paramVarArgs = new GroupBaseNetSearchModelItem(str1, paramVarArgs, (String)localObject, str5, str6, str7, l2, localArrayList2, i);
-                l2 = l1;
-                if (paramVarArgs != null)
-                {
-                  paramVarArgs.u = localResultItem.seporator_type.get();
-                  paramVarArgs.c = bool1;
-                  paramVarArgs.j = j;
-                  paramVarArgs.k = j;
-                  paramVarArgs.a = i;
-                  localArrayList3.add(paramVarArgs);
-                  l2 = l1;
+                if (l2 != 2073745984L) {
+                  break;
                 }
+                localObject7 = new SearchResultModelForEntrance((String)localObject5, str7, -4, str5);
+                ((SearchResultModelForEntrance)localObject7).u = ((DynamicSearch.ResultItem)localObject6).seporator_type.get();
+                paramVarArgs.add(localObject7);
               }
             }
+            localObject2 = paramVarArgs;
+            paramVarArgs = (Object[])localObject1;
+            localObject1 = new GroupBaseNetSearchModelItem((String)localObject5, (String)localObject7, str4, str5, str6, str7, l2, localArrayList, j);
+            ((GroupBaseNetSearchModelItem)localObject1).u = ((DynamicSearch.ResultItem)localObject6).seporator_type.get();
+            ((GroupBaseNetSearchModelItem)localObject1).c = bool1;
+            ((GroupBaseNetSearchModelItem)localObject1).j = i;
+            ((GroupBaseNetSearchModelItem)localObject1).k = i;
+            ((GroupBaseNetSearchModelItem)localObject1).a = j;
+            ((List)localObject2).add(localObject1);
+            localObject1 = localObject2;
+            label1112:
+            m += 1;
+            localObject2 = localObject1;
+            localObject1 = paramVarArgs;
           }
-          j += 1;
+          i += 1;
+          paramVarArgs = (Object[])localObject5;
         }
-        label1102:
         if (l1 > 0L)
         {
           l1 = localResultItemGroup.total_result_count.get();
-          paramVarArgs = localResultItemGroup.more_url.get().toStringUtf8();
-          localObject = localResultItemGroup.more_name.get().toStringUtf8();
-          if (localResultItemGroup.highlight_title_keyword.get() == 1)
-          {
+          localObject3 = localResultItemGroup.more_url.get().toStringUtf8();
+          localObject4 = localResultItemGroup.more_name.get().toStringUtf8();
+          if (localResultItemGroup.highlight_title_keyword.get() == 1) {
             bool2 = true;
-            if (localResultItemGroup.hide_title_blank_view.get() != 1) {
-              break label1223;
-            }
-          }
-          for (boolean bool3 = true;; bool3 = false)
-          {
-            localArrayList1.add(new GroupBaseNetSearchModel(str1, l3, str2, localArrayList3, l1, paramVarArgs, (String)localObject, localArrayList2, bool1, bool2, bool3, str3, str4));
-            break;
+          } else {
             bool2 = false;
-            break label1159;
           }
+          boolean bool3;
+          if (localResultItemGroup.hide_title_blank_view.get() == 1) {
+            bool3 = true;
+          } else {
+            bool3 = false;
+          }
+          ((List)localObject1).add(new GroupBaseNetSearchModel(paramVarArgs, l3, str1, (List)localObject2, l1, (String)localObject3, (String)localObject4, localArrayList, bool1, bool2, bool3, str2, str3));
         }
       }
+      return localObject1;
     }
-    label1159:
-    return localArrayList1;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.net.parser.NetBaseParser
  * JD-Core Version:    0.7.0.1
  */

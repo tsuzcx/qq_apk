@@ -11,12 +11,12 @@ class QrAgentLoginManager$1$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.context, HardCodeUtil.a(2131711161), 1).a();
+    QQToast.a(BaseApplicationImpl.context, HardCodeUtil.a(2131711137), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.QrAgentLoginManager.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -35,44 +35,48 @@ public class WnsCondition
   
   public boolean meet(Collector paramCollector)
   {
-    int i;
-    int j;
-    label30:
-    int k;
-    if (paramCollector.getStatistics().size() > 0)
-    {
+    int i = paramCollector.getStatistics().size();
+    boolean bool2 = true;
+    if (i > 0) {
       i = 1;
-      if (System.currentTimeMillis() - paramCollector.getLatestWorkTime() <= this.timespan) {
-        break label89;
-      }
-      j = 1;
-      if (paramCollector.getStatistics().size() < this.maxsize) {
-        break label94;
-      }
-      k = 1;
-      label47:
-      if ((!this.enableWorkOnExit) || (!paramCollector.isStopped())) {
-        break label100;
-      }
-    }
-    label89:
-    label94:
-    label100:
-    for (int m = 1;; m = 0)
-    {
-      if ((i == 0) || ((j == 0) && (k == 0) && (m == 0))) {
-        break label106;
-      }
-      return true;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label30;
-      k = 0;
-      break label47;
     }
-    label106:
-    return false;
+    int j;
+    if (System.currentTimeMillis() - paramCollector.getLatestWorkTime() > this.timespan) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    int k;
+    if (paramCollector.getStatistics().size() >= this.maxsize) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    int m;
+    if ((this.enableWorkOnExit) && (paramCollector.isStopped())) {
+      m = 1;
+    } else {
+      m = 0;
+    }
+    if (i != 0)
+    {
+      bool1 = bool2;
+      if (j != 0) {
+        break label122;
+      }
+      bool1 = bool2;
+      if (k != 0) {
+        break label122;
+      }
+      if (m != 0) {
+        return true;
+      }
+    }
+    boolean bool1 = false;
+    label122:
+    return bool1;
   }
   
   public void setMaxsize(int paramInt)
@@ -92,7 +96,7 @@ public class WnsCondition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.WnsCondition
  * JD-Core Version:    0.7.0.1
  */

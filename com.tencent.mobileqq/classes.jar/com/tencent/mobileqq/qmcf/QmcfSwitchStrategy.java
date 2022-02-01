@@ -45,29 +45,26 @@ public class QmcfSwitchStrategy
   
   public int getEntranceState()
   {
-    if (this.currEntranceState > -1) {
-      return this.currEntranceState;
+    int i = this.currEntranceState;
+    if (i > -1) {
+      return i;
     }
     if (Build.VERSION.SDK_INT < 21) {
       this.currEntranceState = 1;
+    } else if (this.qmcfMobileSupport == 0) {
+      this.currEntranceState = 2;
+    } else if (this.qmcfMainSwitch == 0) {
+      this.currEntranceState = 3;
+    } else if (this.danceCurrExcpCount >= this.qmcfMaxExcpCount) {
+      this.currEntranceState = 5;
+    } else if (!this.initSuccess) {
+      this.currEntranceState = 6;
+    } else if (!SoLoader.isLoadArtFilterSuccess()) {
+      this.currEntranceState = 7;
+    } else {
+      this.currEntranceState = 0;
     }
-    for (;;)
-    {
-      return this.currEntranceState;
-      if (this.qmcfMobileSupport == 0) {
-        this.currEntranceState = 2;
-      } else if (this.qmcfMainSwitch == 0) {
-        this.currEntranceState = 3;
-      } else if (this.danceCurrExcpCount >= this.qmcfMaxExcpCount) {
-        this.currEntranceState = 5;
-      } else if (!this.initSuccess) {
-        this.currEntranceState = 6;
-      } else if (!SoLoader.isLoadArtFilterSuccess()) {
-        this.currEntranceState = 7;
-      } else {
-        this.currEntranceState = 0;
-      }
-    }
+    return this.currEntranceState;
   }
   
   public boolean isArtFilterSupported()
@@ -75,25 +72,24 @@ public class QmcfSwitchStrategy
     if (this.qmcfMainSwitch == -1) {
       this.qmcfMainSwitch = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt("qmcf_main_switch", 1);
     }
-    if (this.qmcfMobileSupport == -1) {
-      if (SdkContext.getInstance().getApplication() != null) {}
-    }
-    do
+    if (this.qmcfMobileSupport == -1)
     {
-      return true;
+      if (SdkContext.getInstance().getApplication() == null) {
+        return true;
+      }
       this.qmcfMobileSupport = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt("qmcf_mobile_support", 1);
-      this.artFilterDpcSwitch = SdkContext.getInstance().getDpcSwitcher().isSvafSwitchOpen();
-      if ((this.artCurrExcpCount == -1) || (this.qmcfMaxExcpCount == -1))
-      {
-        SharedPreferences localSharedPreferences = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4);
-        this.artCurrExcpCount = localSharedPreferences.getInt("qmcf_exception_curr_count_art", 0);
-        this.qmcfMaxExcpCount = localSharedPreferences.getInt("qmcf_exception_max_count", 2);
-      }
-      if (SLog.isEnable()) {
-        SLog.d("QmcfSwitchStrategy", String.format("ArtMode: MainSwitch[%s], MobileSupport[%s], DPCSwitch[%s], currCount[%s], maxCount[%s]", new Object[] { Integer.valueOf(this.qmcfMainSwitch), Integer.valueOf(this.qmcfMobileSupport), Boolean.valueOf(this.artFilterDpcSwitch), Integer.valueOf(this.artCurrExcpCount), Integer.valueOf(this.qmcfMaxExcpCount) }));
-      }
-    } while ((this.qmcfMainSwitch == 1) && (this.qmcfMobileSupport == 1) && (this.artFilterDpcSwitch) && (this.artCurrExcpCount < this.qmcfMaxExcpCount));
-    return false;
+    }
+    this.artFilterDpcSwitch = SdkContext.getInstance().getDpcSwitcher().isSvafSwitchOpen();
+    if ((this.artCurrExcpCount == -1) || (this.qmcfMaxExcpCount == -1))
+    {
+      SharedPreferences localSharedPreferences = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4);
+      this.artCurrExcpCount = localSharedPreferences.getInt("qmcf_exception_curr_count_art", 0);
+      this.qmcfMaxExcpCount = localSharedPreferences.getInt("qmcf_exception_max_count", 2);
+    }
+    if (SLog.isEnable()) {
+      SLog.d("QmcfSwitchStrategy", String.format("ArtMode: MainSwitch[%s], MobileSupport[%s], DPCSwitch[%s], currCount[%s], maxCount[%s]", new Object[] { Integer.valueOf(this.qmcfMainSwitch), Integer.valueOf(this.qmcfMobileSupport), Boolean.valueOf(this.artFilterDpcSwitch), Integer.valueOf(this.artCurrExcpCount), Integer.valueOf(this.qmcfMaxExcpCount) }));
+    }
+    return (this.qmcfMainSwitch == 1) && (this.qmcfMobileSupport == 1) && (this.artFilterDpcSwitch) && (this.artCurrExcpCount < this.qmcfMaxExcpCount);
   }
   
   public boolean isBigHeadSupported()
@@ -101,24 +97,23 @@ public class QmcfSwitchStrategy
     if (this.qmcfMainSwitch == -1) {
       this.qmcfMainSwitch = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt("qmcf_main_switch", 1);
     }
-    if (this.qmcfMobileSupport == -1) {
-      if (SdkContext.getInstance().getApplication() != null) {}
-    }
-    do
+    if (this.qmcfMobileSupport == -1)
     {
-      return true;
+      if (SdkContext.getInstance().getApplication() == null) {
+        return true;
+      }
       this.qmcfMobileSupport = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt("qmcf_mobile_support", 1);
-      if ((this.bigHeadCurrExcpCount == -1) || (this.qmcfMaxExcpCount == -1))
-      {
-        SharedPreferences localSharedPreferences = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4);
-        this.bigHeadCurrExcpCount = localSharedPreferences.getInt("qmcf_exception_curr_count_bighead", 0);
-        this.qmcfMaxExcpCount = localSharedPreferences.getInt("qmcf_exception_max_count", 2);
-      }
-      if (SLog.isEnable()) {
-        SLog.d("QmcfSwitchStrategy", String.format("BigheadMode: MainSwitch[%s], MobileSupport[%s], currCount[%s], maxCount[%s]", new Object[] { Integer.valueOf(this.qmcfMainSwitch), Integer.valueOf(this.qmcfMobileSupport), Integer.valueOf(this.bigHeadCurrExcpCount), Integer.valueOf(this.qmcfMaxExcpCount) }));
-      }
-    } while ((this.qmcfMainSwitch == 1) && (this.qmcfMobileSupport == 1) && (this.bigHeadCurrExcpCount < this.qmcfMaxExcpCount));
-    return false;
+    }
+    if ((this.bigHeadCurrExcpCount == -1) || (this.qmcfMaxExcpCount == -1))
+    {
+      SharedPreferences localSharedPreferences = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4);
+      this.bigHeadCurrExcpCount = localSharedPreferences.getInt("qmcf_exception_curr_count_bighead", 0);
+      this.qmcfMaxExcpCount = localSharedPreferences.getInt("qmcf_exception_max_count", 2);
+    }
+    if (SLog.isEnable()) {
+      SLog.d("QmcfSwitchStrategy", String.format("BigheadMode: MainSwitch[%s], MobileSupport[%s], currCount[%s], maxCount[%s]", new Object[] { Integer.valueOf(this.qmcfMainSwitch), Integer.valueOf(this.qmcfMobileSupport), Integer.valueOf(this.bigHeadCurrExcpCount), Integer.valueOf(this.qmcfMaxExcpCount) }));
+    }
+    return (this.qmcfMainSwitch == 1) && (this.qmcfMobileSupport == 1) && (this.bigHeadCurrExcpCount < this.qmcfMaxExcpCount);
   }
   
   public boolean isDanceGameSupported()
@@ -126,52 +121,56 @@ public class QmcfSwitchStrategy
     if (this.qmcfMainSwitch == -1) {
       this.qmcfMainSwitch = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt("qmcf_main_switch", 1);
     }
-    if (this.qmcfMobileSupport == -1) {
-      if (SdkContext.getInstance().getApplication() != null) {}
-    }
-    do
+    if (this.qmcfMobileSupport == -1)
     {
-      return true;
+      if (SdkContext.getInstance().getApplication() == null) {
+        return true;
+      }
       this.qmcfMobileSupport = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt("qmcf_mobile_support", 1);
-      if ((this.danceCurrExcpCount == -1) || (this.qmcfMaxExcpCount == -1))
-      {
-        SharedPreferences localSharedPreferences = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4);
-        this.danceCurrExcpCount = localSharedPreferences.getInt("qmcf_exception_curr_count_dance", 0);
-        this.qmcfMaxExcpCount = localSharedPreferences.getInt("qmcf_exception_max_count", 2);
-      }
-      if (SLog.isEnable()) {
-        SLog.d("QmcfSwitchStrategy", String.format("DanceMode: MainSwitch[%s], MobileSupport[%s], currCount[%s], maxCount[%s]", new Object[] { Integer.valueOf(this.qmcfMainSwitch), Integer.valueOf(this.qmcfMobileSupport), Integer.valueOf(this.danceCurrExcpCount), Integer.valueOf(this.qmcfMaxExcpCount) }));
-      }
-    } while ((this.qmcfMainSwitch == 1) && (this.qmcfMobileSupport == 1) && (this.danceCurrExcpCount < this.qmcfMaxExcpCount));
-    return false;
+    }
+    if ((this.danceCurrExcpCount == -1) || (this.qmcfMaxExcpCount == -1))
+    {
+      SharedPreferences localSharedPreferences = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4);
+      this.danceCurrExcpCount = localSharedPreferences.getInt("qmcf_exception_curr_count_dance", 0);
+      this.qmcfMaxExcpCount = localSharedPreferences.getInt("qmcf_exception_max_count", 2);
+    }
+    if (SLog.isEnable()) {
+      SLog.d("QmcfSwitchStrategy", String.format("DanceMode: MainSwitch[%s], MobileSupport[%s], currCount[%s], maxCount[%s]", new Object[] { Integer.valueOf(this.qmcfMainSwitch), Integer.valueOf(this.qmcfMobileSupport), Integer.valueOf(this.danceCurrExcpCount), Integer.valueOf(this.qmcfMaxExcpCount) }));
+    }
+    return (this.qmcfMainSwitch == 1) && (this.qmcfMobileSupport == 1) && (this.danceCurrExcpCount < this.qmcfMaxExcpCount);
   }
   
   public boolean isMobileSupported()
   {
-    if (this.qmcfMobileSupport == -1) {
-      if (SdkContext.getInstance().getApplication() != null) {}
-    }
-    while (this.qmcfMobileSupport == 1)
+    if (this.qmcfMobileSupport == -1)
     {
-      return true;
+      if (SdkContext.getInstance().getApplication() == null) {
+        return true;
+      }
       this.qmcfMobileSupport = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt("qmcf_mobile_support", 1);
     }
-    return false;
+    return this.qmcfMobileSupport == 1;
   }
   
   public boolean isModeSupported(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      SLog.d("QmcfSwitchStrategy", "unknown mode:" + paramInt);
-      return false;
-    case 1: 
-      return isArtFilterSupported();
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("unknown mode:");
+          localStringBuilder.append(paramInt);
+          SLog.d("QmcfSwitchStrategy", localStringBuilder.toString());
+          return false;
+        }
+        return isBigHeadSupported();
+      }
       return isDanceGameSupported();
     }
-    return isBigHeadSupported();
+    return isArtFilterSupported();
   }
   
   public void setArtFilterRunSupport(boolean paramBoolean1, boolean paramBoolean2)
@@ -187,23 +186,21 @@ public class QmcfSwitchStrategy
     }
     else
     {
-      if (!paramBoolean1) {
-        break label120;
+      if (paramBoolean1)
+      {
+        this.artCurrExcpCount = 0;
       }
-      this.artCurrExcpCount = 0;
-    }
-    for (;;)
-    {
+      else
+      {
+        this.artCurrExcpCount += 1;
+        this.artFrameExcpCount = 0;
+      }
       SharedPreferences.Editor localEditor = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).edit();
       localEditor.putInt("qmcf_exception_curr_count_art", this.artCurrExcpCount);
       localEditor.commit();
       if (SLog.isEnable()) {
         SLog.d("QmcfSwitchStrategy", String.format("ArtMode: isSuccess[%s], forceUpdate[%s], currCount[%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(this.artCurrExcpCount) }));
       }
-      return;
-      label120:
-      this.artCurrExcpCount += 1;
-      this.artFrameExcpCount = 0;
     }
   }
   
@@ -220,23 +217,21 @@ public class QmcfSwitchStrategy
     }
     else
     {
-      if (!paramBoolean1) {
-        break label120;
+      if (paramBoolean1)
+      {
+        this.bigHeadCurrExcpCount = 0;
       }
-      this.bigHeadCurrExcpCount = 0;
-    }
-    for (;;)
-    {
+      else
+      {
+        this.bigHeadCurrExcpCount += 1;
+        this.bigHeadFrameExcpCount = 0;
+      }
       SharedPreferences.Editor localEditor = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).edit();
       localEditor.putInt("qmcf_exception_curr_count_bighead", this.bigHeadCurrExcpCount);
       localEditor.commit();
       if (SLog.isEnable()) {
         SLog.d("QmcfSwitchStrategy", String.format("BigHeadMode: isSuccess[%s], forceUpdate[%s], currCount[%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(this.bigHeadCurrExcpCount) }));
       }
-      return;
-      label120:
-      this.bigHeadCurrExcpCount += 1;
-      this.bigHeadFrameExcpCount = 0;
     }
   }
   
@@ -253,23 +248,21 @@ public class QmcfSwitchStrategy
     }
     else
     {
-      if (!paramBoolean1) {
-        break label120;
+      if (paramBoolean1)
+      {
+        this.danceCurrExcpCount = 0;
       }
-      this.danceCurrExcpCount = 0;
-    }
-    for (;;)
-    {
+      else
+      {
+        this.danceCurrExcpCount += 1;
+        this.danceFrameExcpCount = 0;
+      }
       SharedPreferences.Editor localEditor = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).edit();
       localEditor.putInt("qmcf_exception_curr_count_dance", this.danceCurrExcpCount);
       localEditor.commit();
       if (SLog.isEnable()) {
         SLog.d("QmcfSwitchStrategy", String.format("DanceMode: isSuccess[%s], forceUpdate[%s], currCount[%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(this.danceCurrExcpCount) }));
       }
-      return;
-      label120:
-      this.danceCurrExcpCount += 1;
-      this.danceFrameExcpCount = 0;
     }
   }
   
@@ -280,34 +273,25 @@ public class QmcfSwitchStrategy
   
   public void setMobileSupport(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.qmcfMobileSupport = i;
-      SharedPreferences.Editor localEditor = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).edit();
-      localEditor.putInt("qmcf_mobile_support", this.qmcfMobileSupport);
-      localEditor.commit();
-      if (SLog.isEnable()) {
-        SLog.d("QmcfSwitchStrategy", "setMobileSupport :" + this.qmcfMobileSupport);
-      }
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setQmcfRunSupported(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      setArtFilterRunSupport(paramBoolean1, paramBoolean2);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return;
+        }
+        setBigHeadRunSupport(paramBoolean1, paramBoolean2);
+        return;
+      }
       setDanceGameRunSupport(paramBoolean1, paramBoolean2);
       return;
     }
-    setBigHeadRunSupport(paramBoolean1, paramBoolean2);
+    setArtFilterRunSupport(paramBoolean1, paramBoolean2);
   }
   
   public void updateMainSwitch(JSONObject paramJSONObject)
@@ -332,7 +316,7 @@ public class QmcfSwitchStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qmcf.QmcfSwitchStrategy
  * JD-Core Version:    0.7.0.1
  */

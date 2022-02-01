@@ -17,13 +17,14 @@ public final class DynamicPluginSvc$PluginData
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "plugin_id", "plugin_name", "click_cnt" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, PluginData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "plugin_id", "plugin_name", "click_cnt" }, new Object[] { localInteger, localByteStringMicro, localInteger }, PluginData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.DynamicPluginSvc.DynamicPluginSvc.PluginData
  * JD-Core Version:    0.7.0.1
  */

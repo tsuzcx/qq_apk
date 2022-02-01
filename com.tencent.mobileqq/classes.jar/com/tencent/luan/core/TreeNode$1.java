@@ -36,12 +36,13 @@ class TreeNode$1
       return localObject2;
     }
     Object localObject1 = getNextLinkedNode(TreeNode.access$100(this.node));
-    if (localObject1 == null) {}
-    for (localObject1 = null;; localObject1 = (TreeNode)((SingleLinkedListNode)localObject1).element)
-    {
-      this.node = ((TreeNode)localObject1);
-      return localObject2;
+    if (localObject1 == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = (TreeNode)((SingleLinkedListNode)localObject1).element;
     }
+    this.node = ((TreeNode)localObject1);
+    return localObject2;
   }
   
   public void remove()
@@ -51,7 +52,7 @@ class TreeNode$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.luan.core.TreeNode.1
  * JD-Core Version:    0.7.0.1
  */

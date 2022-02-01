@@ -20,23 +20,24 @@ class IliveGroupTipsBarHelper$IliveHandler
   
   private void a(Message paramMessage)
   {
-    if (this.a == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
+    if (this.a == null) {
       return;
-      QLog.i("IliveGroupTipsBarHelper", 1, "getGroupTipsData");
-      localQQAppInterface = (QQAppInterface)this.a.get();
-    } while ((localQQAppInterface == null) || ((paramMessage.obj == null) && (!(paramMessage.obj instanceof IliveGroupTipsEntity))));
+    }
+    QLog.i("IliveGroupTipsBarHelper", 1, "getGroupTipsData");
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    if ((paramMessage.obj == null) && (!(paramMessage.obj instanceof IliveGroupTipsEntity))) {
+      return;
+    }
     paramMessage = (IliveGroupTipsEntity)paramMessage.obj;
     ((IliveGroupTipsManager)localQQAppInterface.getManager(QQManagerFactory.ILIVE_GROUP_TIPS_MANAGER)).a(String.valueOf(paramMessage.c), paramMessage.e, IliveGroupTipsManager.c);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     a(paramMessage);
@@ -44,7 +45,7 @@ class IliveGroupTipsBarHelper$IliveHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.group.IliveGroupTipsBarHelper.IliveHandler
  * JD-Core Version:    0.7.0.1
  */

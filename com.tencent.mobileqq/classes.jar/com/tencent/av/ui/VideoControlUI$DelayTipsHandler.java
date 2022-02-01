@@ -16,20 +16,21 @@ public class VideoControlUI$DelayTipsHandler
   public void handleMessage(Message paramMessage)
   {
     String str = (String)paramMessage.obj;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 256)
     {
-    default: 
-      return;
-    case 256: 
-      TipsUtil.a(this.a.a, 1037, str);
+      if (i != 257) {
+        return;
+      }
+      TipsUtil.a(this.a.a, 1036, str);
       return;
     }
-    TipsUtil.a(this.a.a, 1036, str);
+    TipsUtil.a(this.a.a, 1037, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.DelayTipsHandler
  * JD-Core Version:    0.7.0.1
  */

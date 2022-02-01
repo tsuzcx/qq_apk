@@ -20,16 +20,19 @@ public final class ProfileBasePrivacySettingAdapter$ProfileOtherWithSecondHolder
   public ProfileBasePrivacySettingAdapter$ProfileOtherWithSecondHolder(@NotNull View paramView)
   {
     super(paramView);
-    View localView = paramView.findViewById(2131366493);
-    if (localView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView);
-    paramView = paramView.findViewById(2131366497);
-    if (paramView == null) {
+    View localView = paramView.findViewById(2131366375);
+    if (localView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView);
+      paramView = paramView.findViewById(2131366377);
+      if (paramView != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
+        return;
+      }
       throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
   }
   
   @NotNull
@@ -46,7 +49,7 @@ public final class ProfileBasePrivacySettingAdapter$ProfileOtherWithSecondHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileBasePrivacySettingAdapter.ProfileOtherWithSecondHolder
  * JD-Core Version:    0.7.0.1
  */

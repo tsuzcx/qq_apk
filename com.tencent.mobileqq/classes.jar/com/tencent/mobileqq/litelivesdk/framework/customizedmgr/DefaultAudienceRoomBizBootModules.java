@@ -3,8 +3,8 @@ package com.tencent.mobileqq.litelivesdk.framework.customizedmgr;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import com.tencent.ilive.audiencepages.room.bizmodule.AVPlayerModule;
 import com.tencent.mobileqq.litelivesdk.api.customized.BaseSDKPageBizBootModules;
+import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.avmodule.CustomAVModule;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.closebtn.CustomCloseBtnModule;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.keyboard.CustomKeyboardModule;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.switchroom.CustomSwitchRoomModule;
@@ -22,14 +22,14 @@ public class DefaultAudienceRoomBizBootModules
   
   public void a(Context paramContext)
   {
-    a((ViewGroup)LayoutInflater.from(paramContext).inflate(2131559365, (ViewGroup)null));
+    a((ViewGroup)LayoutInflater.from(paramContext).inflate(2131559240, (ViewGroup)null));
   }
   
   public void b() {}
   
   public void c()
   {
-    a(SDKPageBizModuleType.Bottom, new AVPlayerModule());
+    a(SDKPageBizModuleType.Bottom, new CustomAVModule());
   }
   
   public void d()
@@ -39,7 +39,7 @@ public class DefaultAudienceRoomBizBootModules
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.framework.customizedmgr.DefaultAudienceRoomBizBootModules
  * JD-Core Version:    0.7.0.1
  */

@@ -27,14 +27,13 @@ public class ArraySetList<T>
   
   public boolean add(T paramT)
   {
-    boolean bool = false;
     if (!contains(paramT))
     {
       this.mDataList.add(paramT);
       this.mDataSet.add(paramT);
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public boolean addAll(int paramInt, @NonNull Collection<? extends T> paramCollection)
@@ -55,22 +54,18 @@ public class ArraySetList<T>
   
   public boolean addAll(@NonNull Collection<? extends T> paramCollection)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if (paramCollection.size() == 0) {
-      return bool2;
+    int i = paramCollection.size();
+    boolean bool = false;
+    if (i == 0) {
+      return false;
     }
     paramCollection = paramCollection.iterator();
-    for (;;)
-    {
-      bool2 = bool1;
-      if (!paramCollection.hasNext()) {
-        break;
-      }
+    while (paramCollection.hasNext()) {
       if (add(paramCollection.next())) {
-        bool1 = true;
+        bool = true;
       }
     }
+    return bool;
   }
   
   public void addFirst(T paramT)
@@ -101,11 +96,10 @@ public class ArraySetList<T>
   
   public T getFirst()
   {
-    Object localObject = null;
     if (this.mDataList.size() > 0) {
-      localObject = this.mDataList.get(0);
+      return this.mDataList.get(0);
     }
-    return localObject;
+    return null;
   }
   
   public List<T> getList()
@@ -161,44 +155,48 @@ public class ArraySetList<T>
   
   public boolean remove(Object paramObject)
   {
-    if (paramObject == null) {}
-    while (!contains(paramObject)) {
+    if (paramObject == null) {
       return false;
     }
-    this.mDataSet.remove(paramObject);
-    this.mDataList.remove(paramObject);
-    return true;
+    if (contains(paramObject))
+    {
+      this.mDataSet.remove(paramObject);
+      this.mDataList.remove(paramObject);
+      return true;
+    }
+    return false;
   }
   
   public boolean removeAll(Collection<?> paramCollection)
   {
-    if ((paramCollection == null) || (paramCollection.size() == 0)) {
-      return false;
+    if ((paramCollection != null) && (paramCollection.size() != 0))
+    {
+      this.mDataSet.removeAll(paramCollection);
+      return this.mDataList.removeAll(paramCollection);
     }
-    this.mDataSet.removeAll(paramCollection);
-    return this.mDataList.removeAll(paramCollection);
+    return false;
   }
   
   public T removeByIndex(int paramInt)
   {
-    Object localObject = null;
     if (this.mDataSet.size() > paramInt)
     {
-      localObject = this.mDataList.remove(paramInt);
+      Object localObject = this.mDataList.remove(paramInt);
       this.mDataSet.remove(localObject);
+      return localObject;
     }
-    return localObject;
+    return null;
   }
   
   public T removeFirst()
   {
-    Object localObject = null;
     if (this.mDataSet.size() > 0)
     {
-      localObject = this.mDataList.remove(0);
+      Object localObject = this.mDataList.remove(0);
       this.mDataSet.remove(localObject);
+      return localObject;
     }
-    return localObject;
+    return null;
   }
   
   public void replaceAll(UnaryOperator<T> paramUnaryOperator)
@@ -244,7 +242,7 @@ public class ArraySetList<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.ArraySetList
  * JD-Core Version:    0.7.0.1
  */

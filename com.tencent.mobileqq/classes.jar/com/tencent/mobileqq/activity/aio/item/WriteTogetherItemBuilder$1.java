@@ -18,15 +18,14 @@ class WriteTogetherItemBuilder$1
   public void onClick(View paramView)
   {
     Object localObject = AIOUtils.a(paramView);
-    if (!(localObject instanceof MessageForText)) {
+    if (!(localObject instanceof MessageForText))
+    {
       if (QLog.isColorLevel()) {
         QLog.w("WriteTogetherItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
       }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       localObject = (MessageForText)localObject;
       if (!this.a.a())
       {
@@ -40,11 +39,12 @@ class WriteTogetherItemBuilder$1
         }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.WriteTogetherItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

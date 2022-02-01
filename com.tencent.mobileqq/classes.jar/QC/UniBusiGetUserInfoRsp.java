@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class UniBusiGetUserInfoRsp
   extends JceStruct
@@ -49,23 +50,27 @@ public final class UniBusiGetUserInfoRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.errmsg != null) {
-      paramJceOutputStream.write(this.errmsg, 1);
+    Object localObject = this.errmsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.globalUsingItem != null) {
-      paramJceOutputStream.write(this.globalUsingItem, 2);
+    localObject = this.globalUsingItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.uniBusiUsingItemList != null) {
-      paramJceOutputStream.write(this.uniBusiUsingItemList, 3);
+    localObject = this.uniBusiUsingItemList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.uniBusiHistoryItemList != null) {
-      paramJceOutputStream.write(this.uniBusiHistoryItemList, 4);
+    localObject = this.uniBusiHistoryItemList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniBusiGetUserInfoRsp
  * JD-Core Version:    0.7.0.1
  */

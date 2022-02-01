@@ -14,11 +14,11 @@ class AVContextImpl$2
     {
       Log.d("tips", this.this$0.getRoom().getQualityTips());
       AVContextImpl.access$200(this.this$0).postDelayed(this, 30000L);
-    }
-    while (this.this$0.getRoom() != null) {
       return;
     }
-    AVContextImpl.access$300(this.this$0);
+    if (this.this$0.getRoom() == null) {
+      AVContextImpl.access$300(this.this$0);
+    }
   }
 }
 

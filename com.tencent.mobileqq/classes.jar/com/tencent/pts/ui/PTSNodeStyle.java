@@ -36,51 +36,52 @@ public class PTSNodeStyle
   
   public float[] getBorderRadii()
   {
-    float[] arrayOfFloat = new float[4];
-    for (;;)
+    arrayOfFloat = new float[4];
+    try
     {
-      int i;
-      try
+      Object localObject = (String)get("border-radius");
+      if (localObject != null)
       {
-        Object localObject = (String)get("border-radius");
-        if (localObject != null)
+        localObject = ((String)localObject).trim().split("\\s+");
+        int i = 0;
+        while (i < Math.min(localObject.length, 4))
         {
-          localObject = ((String)localObject).trim().split("\\s+");
-          i = 0;
-          if (i < Math.min(localObject.length, 4)) {
-            if (Float.valueOf(localObject[i]).floatValue() > 0.0F) {
-              arrayOfFloat[i] = PTSDeviceUtil.dp2px(Float.valueOf(localObject[i]).floatValue());
-            } else {
-              arrayOfFloat[i] = 0.0F;
-            }
+          if (Float.valueOf(localObject[i]).floatValue() > 0.0F) {
+            arrayOfFloat[i] = PTSDeviceUtil.dp2px(Float.valueOf(localObject[i]).floatValue());
+          } else {
+            arrayOfFloat[i] = 0.0F;
           }
+          i += 1;
         }
       }
-      catch (Exception localException)
-      {
-        PTSLog.e(this.TAG, "getBorderRadii, e = " + localException);
-      }
+      String str;
+      StringBuilder localStringBuilder;
       return arrayOfFloat;
-      i += 1;
+    }
+    catch (Exception localException)
+    {
+      str = this.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getBorderRadii, e = ");
+      localStringBuilder.append(localException);
+      PTSLog.e(str, localStringBuilder.toString());
     }
   }
   
   public float getFontSize()
   {
-    float f = 16.0F;
     if (get("font-size") != null) {
-      f = PTSValueConvertUtil.getFloat(get("font-size"));
+      return PTSValueConvertUtil.getFloat(get("font-size"));
     }
-    return f;
+    return 16.0F;
   }
   
   public String getFontWeight()
   {
-    String str = "normal";
     if (get("font-weight") != null) {
-      str = PTSValueConvertUtil.getString(get("font-weight"));
+      return PTSValueConvertUtil.getString(get("font-weight"));
     }
-    return str;
+    return "normal";
   }
   
   public int getHeight()
@@ -95,7 +96,7 @@ public class PTSNodeStyle
   
   public float getLineHeight()
   {
-    float f = 1.6F * getFontSize();
+    float f = getFontSize() * 1.6F;
     if (get("line-height") != null) {
       f = PTSValueConvertUtil.getFloat(get("line-height"));
     }
@@ -126,11 +127,17 @@ public class PTSNodeStyle
         arrayOfInt[i] = PTSDeviceUtil.dp2pxInt(Float.valueOf(arrayOfString[i]).floatValue());
         i += 1;
       }
+      String str;
+      StringBuilder localStringBuilder;
       return arrayOfInt;
     }
     catch (Exception localException)
     {
-      PTSLog.e(this.TAG, "getPadding, e = " + localException);
+      str = this.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPadding, e = ");
+      localStringBuilder.append(localException);
+      PTSLog.e(str, localStringBuilder.toString());
     }
   }
   
@@ -146,7 +153,7 @@ public class PTSNodeStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.PTSNodeStyle
  * JD-Core Version:    0.7.0.1
  */

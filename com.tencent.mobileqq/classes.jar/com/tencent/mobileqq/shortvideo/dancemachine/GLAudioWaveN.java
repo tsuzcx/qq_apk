@@ -8,20 +8,26 @@ public class GLAudioWaveN
 {
   public static final int NUM_OF_COLUMN = 5;
   public static final int WAVE_COLUMN = 15;
-  private float extraSizeH = (this.mWaveColumn.length - 1) * this.spacing;
-  private float extraSizeV = 4.0F * this.spacing;
+  private float extraSizeH;
+  private float extraSizeV;
   private float mHeightBlock;
   private Random mRandom = new Random();
-  private RectF mSoundRegion = new RectF();
+  private RectF mSoundRegion;
   private float mTotalHeight;
   private float[] mWaveColumn = new float[15];
-  private RectF mWaveRegion = new RectF();
+  private RectF mWaveRegion;
   private float mWidthBlock;
   private float spacing = DisplayUtils.pixelToRealPixel(2.0F);
   
   public GLAudioWaveN(GLViewContext paramGLViewContext, String paramString)
   {
     super(paramGLViewContext, paramString);
+    float f1 = this.mWaveColumn.length - 1;
+    float f2 = this.spacing;
+    this.extraSizeH = (f1 * f2);
+    this.extraSizeV = (f2 * 4.0F);
+    this.mWaveRegion = new RectF();
+    this.mSoundRegion = new RectF();
   }
   
   private void computeBlockSize()
@@ -38,13 +44,10 @@ public class GLAudioWaveN
   private void drawColumn(float paramFloat1, float paramFloat2)
   {
     float f1 = this.mWaveRegion.bottom;
-    int i = (int)paramFloat2;
-    float f2 = i;
+    float f2 = (int)paramFloat2;
     float f3 = this.mHeightBlock;
     float f4 = this.spacing;
-    float f5 = i;
-    float f6 = this.mHeightBlock;
-    this.mSoundRegion.set(paramFloat1, f1 - ((paramFloat2 - f5) * f6 + f2 * (f3 + f4)), this.mWidthBlock + paramFloat1, f1);
+    this.mSoundRegion.set(paramFloat1, f1 - ((f4 + f3) * f2 + (paramFloat2 - f2) * f3), this.mWidthBlock + paramFloat1, f1);
     super.setImageClipDrawRegion(this.mSoundRegion);
     this.mSoundRegion.set(paramFloat1, f1 - this.mTotalHeight, this.mWidthBlock + paramFloat1, f1);
     super.setImageRegion(this.mSoundRegion);
@@ -86,7 +89,7 @@ public class GLAudioWaveN
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLAudioWaveN
  * JD-Core Version:    0.7.0.1
  */

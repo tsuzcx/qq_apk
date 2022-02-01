@@ -25,28 +25,33 @@ class Http1Codec$UnknownLengthSource
   
   public long read(Buffer paramBuffer, long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-    }
-    if (this.closed) {
+    if (paramLong >= 0L)
+    {
+      if (!this.closed)
+      {
+        if (this.inputExhausted) {
+          return -1L;
+        }
+        paramLong = super.read(paramBuffer, paramLong);
+        if (paramLong == -1L)
+        {
+          this.inputExhausted = true;
+          endOfInput(true, null);
+          return -1L;
+        }
+        return paramLong;
+      }
       throw new IllegalStateException("closed");
     }
-    if (this.inputExhausted) {
-      return -1L;
-    }
-    paramLong = super.read(paramBuffer, paramLong);
-    if (paramLong == -1L)
-    {
-      this.inputExhausted = true;
-      endOfInput(true, null);
-      return -1L;
-    }
-    return paramLong;
+    paramBuffer = new StringBuilder();
+    paramBuffer.append("byteCount < 0: ");
+    paramBuffer.append(paramLong);
+    throw new IllegalArgumentException(paramBuffer.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http1.Http1Codec.UnknownLengthSource
  * JD-Core Version:    0.7.0.1
  */

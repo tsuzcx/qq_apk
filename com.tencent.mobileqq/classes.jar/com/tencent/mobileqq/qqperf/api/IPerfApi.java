@@ -10,10 +10,6 @@ public abstract interface IPerfApi
 {
   public abstract String getDeviceId();
   
-  public abstract int getFTSSyncHandlerFtsSyncThreadid();
-  
-  public abstract long getFTSSyncHandlerThreadTime();
-  
   public abstract String getGuardConfigID();
   
   public abstract String getTopActivityName();
@@ -28,7 +24,7 @@ public abstract interface IPerfApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqperf.api.IPerfApi
  * JD-Core Version:    0.7.0.1
  */

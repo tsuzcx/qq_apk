@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import com.tencent.mobileqq.extendfriend.network.ExtendFriendObserver;
+import com.tencent.mobileqq.qqexpand.network.ExpandObserver;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 
 class CTEntryMng$6
-  extends ExtendFriendObserver
+  extends ExpandObserver
 {
   CTEntryMng$6(CTEntryMng paramCTEntryMng) {}
   
-  public void onResourceStateUpdate(boolean paramBoolean)
+  protected void a(boolean paramBoolean)
   {
     CTEntry localCTEntry = this.a.a(2);
     localCTEntry.jdField_a_of_type_JavaLangObject = Boolean.valueOf(paramBoolean);
@@ -23,7 +23,7 @@ class CTEntryMng$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.6
  * JD-Core Version:    0.7.0.1
  */

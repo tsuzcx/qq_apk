@@ -25,8 +25,8 @@ class MusicGeneWebViewPlugin$1
         paramComponentName.put("code", "0");
         MusicGeneWebViewPlugin.a(this.a).a(paramComponentName);
         MusicGeneWebViewPlugin.a(this.a, null);
+        return;
       }
-      return;
     }
     catch (Exception paramComponentName)
     {
@@ -51,17 +51,14 @@ class MusicGeneWebViewPlugin$1
     }
     catch (Exception paramComponentName)
     {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
+      paramComponentName.printStackTrace();
     }
     MusicGeneWebViewPlugin.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin.1
  * JD-Core Version:    0.7.0.1
  */

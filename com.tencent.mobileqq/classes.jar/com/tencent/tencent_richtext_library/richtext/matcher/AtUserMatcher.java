@@ -18,7 +18,6 @@ public class AtUserMatcher
   public static HashMap<String, Object> a(String paramString1, String paramString2)
   {
     int i = paramString1.indexOf("uin:");
-    int j = "uin:".length();
     int k = paramString1.indexOf(paramString2);
     if (k == -1)
     {
@@ -26,8 +25,8 @@ public class AtUserMatcher
       paramString1.put("text", "");
       return paramString1;
     }
-    String str = paramString1.substring(i + j, k);
-    j = paramString1.indexOf(",who:", k);
+    String str = paramString1.substring(i + 4, k);
+    int j = paramString1.indexOf(",who:", k);
     i = j;
     if (j == -1) {
       i = paramString1.length() - 1;
@@ -40,7 +39,7 @@ public class AtUserMatcher
     if (i == -1) {
       j = paramString1.length() - 1;
     }
-    paramString1 = paramString1.substring(paramString2.length() + k, j);
+    paramString1 = paramString1.substring(k + paramString2.length(), j);
     try
     {
       paramString2 = URLDecoder.decode(paramString1, "UTF-8");
@@ -48,8 +47,8 @@ public class AtUserMatcher
     }
     catch (Exception paramString2)
     {
-      label129:
-      break label129;
+      label123:
+      break label123;
     }
     paramString2 = new HashMap();
     paramString2.put("nodeType", Integer.valueOf(QcircleFlutterTextCellParser.b));
@@ -66,7 +65,7 @@ public class AtUserMatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencent_richtext_library.richtext.matcher.AtUserMatcher
  * JD-Core Version:    0.7.0.1
  */

@@ -20,8 +20,11 @@ public class NetworkUtil
     try
     {
       NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if ((localNetworkInfo != null) && (localNetworkInfo.isAvailable())) {
-        switch (localNetworkInfo.getType())
+      if ((localNetworkInfo != null) && (localNetworkInfo.isAvailable()))
+      {
+        int i = localNetworkInfo.getType();
+        if (i != 9) {}
+        switch (i)
         {
         case 0: 
         case 2: 
@@ -29,22 +32,18 @@ public class NetworkUtil
         case 4: 
         case 5: 
           i = getMobileNetworkType(paramContext);
+          return i;
+          return 5;
         }
       }
     }
     catch (Throwable paramContext)
     {
       QMLog.e("NetworkUtil", "fail to get active network info", paramContext);
-      i = 0;
     }
-    int i = 0;
-    for (;;)
-    {
-      return i;
-      i = 5;
-      continue;
-      i = 1;
-    }
+    return 0;
+    return 0;
+    return 1;
   }
   
   public static String getCurrentWifiSSID(Context paramContext)
@@ -52,23 +51,25 @@ public class NetworkUtil
     try
     {
       paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if ((paramContext != null) && (paramContext.getSSID() != null))
+      if (paramContext != null)
       {
+        if (paramContext.getSSID() == null) {
+          return null;
+        }
         paramContext = paramContext.getSSID().replaceAll("\"", "");
         boolean bool = paramContext.equals("<unknown ssid>");
-        if (!bool) {
-          return paramContext;
+        if (bool) {
+          return null;
         }
-        return null;
+        return paramContext;
       }
+      return null;
     }
     catch (Throwable paramContext)
     {
       QMLog.e("NetworkUtil", "fail to get active network info", paramContext);
-      return null;
     }
-    paramContext = null;
-    return paramContext;
+    return null;
   }
   
   private static int getMobileNetworkType(Context paramContext)
@@ -88,29 +89,31 @@ public class NetworkUtil
   
   public static String getNetWorkTypeByStr(Context paramContext)
   {
-    switch (getActiveNetworkType(paramContext))
+    int i = getActiveNetworkType(paramContext);
+    paramContext = "UNKNOWN";
+    switch (i)
     {
     default: 
       return "UNKNOWN";
-    case -1: 
-      return "UNKNOWN";
-    case 0: 
-      return "NONE";
-    case 1: 
-      return "WIFI";
-    case 2: 
-      return "2G";
-    case 3: 
-      return "3G";
+    case 5: 
+      return "CABLE";
     case 4: 
       return "4G";
+    case 3: 
+      return "3G";
+    case 2: 
+      return "2G";
+    case 1: 
+      return "WIFI";
+    case 0: 
+      paramContext = "NONE";
     }
-    return "CABLE";
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

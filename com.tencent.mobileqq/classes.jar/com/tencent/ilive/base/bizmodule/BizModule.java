@@ -36,6 +36,10 @@ public abstract interface BizModule
   
   public abstract void onExtDeActive();
   
+  public abstract void onExtOnStart();
+  
+  public abstract void onExtOnStop();
+  
   public abstract void onVisibleToUser(boolean paramBoolean);
   
   public abstract <T extends BizModuleContext> void setBizLogicContext(T paramT);
@@ -54,7 +58,7 @@ public abstract interface BizModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.base.bizmodule.BizModule
  * JD-Core Version:    0.7.0.1
  */

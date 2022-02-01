@@ -25,18 +25,6 @@ public abstract class PollWidgetUtils$WidgetElement
     this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnSelectedChangedListener = paramOnSelectedChangedListener;
   }
   
-  public void a(PollWidgetUtils.OnWidgetElementClickListener paramOnWidgetElementClickListener)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener = paramOnWidgetElementClickListener;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-    this.jdField_a_of_type_AndroidViewView.setClickable(false);
-  }
-  
   public void a(CharSequence paramCharSequence) {}
   
   public void a(boolean paramBoolean)
@@ -56,11 +44,11 @@ public abstract class PollWidgetUtils$WidgetElement
     return this.b;
   }
   
-  public void d(boolean paramBoolean) {}
+  public void c(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetElement
  * JD-Core Version:    0.7.0.1
  */

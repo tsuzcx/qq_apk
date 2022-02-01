@@ -30,16 +30,25 @@ public final class ZipLong
   
   public byte[] a()
   {
-    return new byte[] { (byte)(int)(this.a & 0xFF), (byte)(int)((this.a & 0xFF00) >> 8), (byte)(int)((this.a & 0xFF0000) >> 16), (byte)(int)((this.a & 0xFF000000) >> 24) };
+    long l = this.a;
+    return new byte[] { (byte)(int)(0xFF & l), (byte)(int)((0xFF00 & l) >> 8), (byte)(int)((0xFF0000 & l) >> 16), (byte)(int)((l & 0xFF000000) >> 24) };
   }
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof ZipLong))) {}
-    while (this.a != ((ZipLong)paramObject).a()) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof ZipLong)) {
+        return false;
+      }
+      bool1 = bool2;
+      if (this.a == ((ZipLong)paramObject).a()) {
+        bool1 = true;
+      }
     }
-    return true;
+    return bool1;
   }
   
   public int hashCode()
@@ -49,7 +58,7 @@ public final class ZipLong
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securitysdk.utils.ZipLong
  * JD-Core Version:    0.7.0.1
  */

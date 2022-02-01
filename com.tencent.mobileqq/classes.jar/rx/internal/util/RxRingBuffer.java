@@ -12,7 +12,7 @@ public class RxRingBuffer
   implements Subscription
 {
   public static final int SIZE;
-  public static ObjectPool<Queue<Object>> SPMC_POOL;
+  public static ObjectPool<Queue<Object>> SPMC_POOL = new RxRingBuffer.2();
   public static ObjectPool<Queue<Object>> SPSC_POOL;
   static int _size;
   private static final NotificationLite<Object> on = ;
@@ -28,22 +28,24 @@ public class RxRingBuffer
       _size = 16;
     }
     String str = System.getProperty("rx.ring-buffer.size");
-    if (str != null) {}
-    try
-    {
-      _size = Integer.parseInt(str);
-      SIZE = _size;
-      SPSC_POOL = new RxRingBuffer.1();
-      SPMC_POOL = new RxRingBuffer.2();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (str != null) {
+      try
       {
-        System.err.println("Failed to set 'rx.buffer.size' with value " + str + " => " + localException.getMessage());
+        _size = Integer.parseInt(str);
+      }
+      catch (Exception localException)
+      {
+        PrintStream localPrintStream = System.err;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Failed to set 'rx.buffer.size' with value ");
+        localStringBuilder.append(str);
+        localStringBuilder.append(" => ");
+        localStringBuilder.append(localException.getMessage());
+        localPrintStream.println(localStringBuilder.toString());
       }
     }
+    SIZE = _size;
+    SPSC_POOL = new RxRingBuffer.1();
   }
   
   RxRingBuffer()
@@ -155,76 +157,85 @@ public class RxRingBuffer
   
   public void onNext(Object paramObject)
   {
-    int i = 1;
-    int j = 0;
-    try
+    for (;;)
     {
-      Queue localQueue = this.queue;
-      if (localQueue != null) {
-        if (localQueue.offer(on.next(paramObject))) {}
-      }
-      for (;;)
+      try
       {
-        if (j == 0) {
-          break;
+        Queue localQueue = this.queue;
+        int i = 1;
+        if (localQueue != null)
+        {
+          bool = localQueue.offer(on.next(paramObject)) ^ true;
+          i = 0;
+          if (i == 0)
+          {
+            if (!bool) {
+              return;
+            }
+            throw new MissingBackpressureException();
+          }
+          throw new IllegalStateException("This instance has been unsubscribed and the queue is no longer usable.");
         }
-        throw new IllegalStateException("This instance has been unsubscribed and the queue is no longer usable.");
-        i = 0;
-        continue;
-        j = 1;
-        i = 0;
       }
-      if (i == 0) {
-        return;
-      }
+      finally {}
+      boolean bool = false;
     }
-    finally {}
-    throw new MissingBackpressureException();
   }
   
   public Object peek()
   {
-    for (;;)
+    try
     {
-      try
+      Queue localQueue = this.queue;
+      if (localQueue == null) {
+        return null;
+      }
+      Object localObject3 = localQueue.peek();
+      Object localObject4 = this.terminalState;
+      Object localObject1 = localObject3;
+      if (localObject3 == null)
       {
-        Queue localQueue = this.queue;
-        if (localQueue == null) {
-          return null;
-        }
-        Object localObject1 = localQueue.peek();
-        Object localObject3 = this.terminalState;
-        if ((localObject1 == null) && (localObject3 != null) && (localQueue.peek() == null))
+        localObject1 = localObject3;
+        if (localObject4 != null)
         {
           localObject1 = localObject3;
-          return localObject1;
+          if (localQueue.peek() == null) {
+            localObject1 = localObject4;
+          }
         }
       }
-      finally {}
+      return localObject1;
     }
+    finally {}
   }
   
   public Object poll()
   {
-    for (;;)
+    try
     {
-      try
+      Queue localQueue = this.queue;
+      if (localQueue == null) {
+        return null;
+      }
+      Object localObject3 = localQueue.poll();
+      Object localObject4 = this.terminalState;
+      Object localObject1 = localObject3;
+      if (localObject3 == null)
       {
-        Queue localQueue = this.queue;
-        if (localQueue == null) {
-          return null;
-        }
-        Object localObject1 = localQueue.poll();
-        Object localObject3 = this.terminalState;
-        if ((localObject1 == null) && (localObject3 != null) && (localQueue.peek() == null))
+        localObject1 = localObject3;
+        if (localObject4 != null)
         {
-          this.terminalState = null;
           localObject1 = localObject3;
-          return localObject1;
+          if (localQueue.peek() == null)
+          {
+            this.terminalState = null;
+            localObject1 = localObject4;
+          }
         }
       }
-      finally {}
+      return localObject1;
     }
+    finally {}
   }
   
   public void release()
@@ -251,7 +262,7 @@ public class RxRingBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.RxRingBuffer
  * JD-Core Version:    0.7.0.1
  */

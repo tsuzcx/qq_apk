@@ -4,9 +4,11 @@ import android.os.StatFs;
 import com.tencent.component.network.utils.FileUtils;
 import com.tencent.component.network.utils.thread.Future;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQzoneResLoader;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
@@ -46,109 +48,115 @@ public class FileStorageHandler
     if (paramInt1 <= 0) {
       return paramInt1;
     }
-    if (paramInt2 / paramInt1 < 0.12F) {}
-    for (float f = 0.05F;; f = 0.1F) {
-      return (int)(f * paramInt1);
+    float f1 = paramInt2;
+    float f2 = paramInt1;
+    if (f1 / f2 < 0.12F) {
+      f1 = 0.05F;
+    } else {
+      f1 = 0.1F;
     }
+    return (int)(f2 * f1);
   }
   
   private int calculateUsedSize(String paramString)
   {
-    int j = 0;
-    int k = 0;
     paramString = new File(paramString);
-    int i = j;
-    if (paramString.exists())
+    boolean bool = paramString.exists();
+    int k = 0;
+    if ((bool) && (paramString.isDirectory()))
     {
-      i = j;
-      if (paramString.isDirectory())
-      {
-        paramString = paramString.listFiles(filenameFilter);
-        i = j;
-        if (paramString != null)
+      paramString = paramString.listFiles(filenameFilter);
+      if ((paramString != null) && (paramString.length > 0)) {
+        for (int i = 0;; i = j)
         {
-          i = j;
-          if (paramString.length > 0)
+          j = i;
+          if (k >= paramString.length) {
+            break;
+          }
+          j = i;
+          if (paramString[k] != null)
           {
-            i = 0;
-            if (k < paramString.length)
-            {
-              j = i;
-              if (paramString[k] != null)
-              {
-                j = i;
-                if (paramString[k].getName() != null) {
-                  if (!paramString[k].isDirectory()) {
-                    break label118;
-                  }
-                }
-              }
-              label118:
-              for (j = i + calculateUsedSize(paramString[k].getAbsolutePath());; j = (int)(i + paramString[k].length()))
-              {
-                k += 1;
-                i = j;
-                break;
+            j = i;
+            if (paramString[k].getName() != null) {
+              if (paramString[k].isDirectory()) {
+                j = i + calculateUsedSize(paramString[k].getAbsolutePath());
+              } else {
+                j = (int)(i + paramString[k].length());
               }
             }
           }
+          k += 1;
         }
       }
     }
-    return i;
+    int j = 0;
+    return j;
   }
   
   private long deleteFile(String paramString)
   {
-    long l2 = 0L;
     paramString = new File(paramString);
-    long l1 = l2;
-    if (paramString.exists())
+    boolean bool = paramString.exists();
+    long l1 = 0L;
+    long l2 = l1;
+    if (bool)
     {
-      if (!paramString.isFile()) {
-        break label42;
+      if (paramString.isFile())
+      {
+        l1 = paramString.length();
+        FileUtils.delete(paramString);
+        return 0L + l1;
       }
-      l1 = 0L + paramString.length();
-      FileUtils.delete(paramString);
-    }
-    label42:
-    do
-    {
-      return l1;
-      l1 = l2;
-    } while (!paramString.isDirectory());
-    paramString = paramString.listFiles();
-    int i = 0;
-    for (;;)
-    {
-      l1 = l2;
-      if (i >= paramString.length) {
-        break;
+      l2 = l1;
+      if (paramString.isDirectory())
+      {
+        paramString = paramString.listFiles();
+        int i = 0;
+        for (;;)
+        {
+          l2 = l1;
+          if (i >= paramString.length) {
+            break;
+          }
+          l1 += deleteFile(paramString[i].getAbsolutePath());
+          i += 1;
+        }
       }
-      l2 += deleteFile(paramString[i].getAbsolutePath());
-      i += 1;
     }
+    return l2;
   }
   
   public static boolean isStorageSizeLow(String paramString)
   {
-    try
+    for (;;)
     {
-      StatFs localStatFs = new StatFs(paramString);
-      long l = localStatFs.getAvailableBlocks() * localStatFs.getBlockSize();
-      if (l < 20971520L) {}
-      for (boolean bool = true;; bool = false)
+      try
       {
-        if (bool) {
-          QLog.w("CacheManager", 1, "low storage: totalSize=" + localStatFs.getBlockCount() * localStatFs.getBlockSize() + ", availableSize=" + l + ", external=" + paramString);
+        StatFs localStatFs = new StatFs(paramString);
+        long l = localStatFs.getAvailableBlocks() * localStatFs.getBlockSize();
+        if (l < 20971520L)
+        {
+          bool = true;
+          if (bool)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("low storage: totalSize=");
+            localStringBuilder.append(localStatFs.getBlockCount() * localStatFs.getBlockSize());
+            localStringBuilder.append(", availableSize=");
+            localStringBuilder.append(l);
+            localStringBuilder.append(", external=");
+            localStringBuilder.append(paramString);
+            QLog.w("CacheManager", 1, localStringBuilder.toString());
+          }
+          return bool;
         }
-        return bool;
       }
-      return false;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("CacheManager", 1, "", paramString);
+      catch (Throwable paramString)
+      {
+        QLog.e("CacheManager", 1, "", paramString);
+        return false;
+      }
+      boolean bool = false;
     }
   }
   
@@ -157,53 +165,56 @@ public class FileStorageHandler
     if (!shouldShowWarning()) {
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 2131690008, 1).a();
+    QQToast.a(BaseApplication.getContext(), ((IQzoneResLoader)QRoute.api(IQzoneResLoader.class)).getStringId(1), 1).a();
   }
   
   private boolean shouldShowWarning()
   {
     long l1 = ((1.0F - 1.0F / (this.mWarnCount / 6.0F + 1.0F)) * 1800000.0F);
     long l2 = System.currentTimeMillis();
-    if (l2 - this.mLastWarnTime >= l1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool)
-      {
-        if (this.mWarnCount < 2147483647) {
-          this.mWarnCount += 1;
-        }
-        this.mLastWarnTime = l2;
-      }
-      return bool;
+    boolean bool;
+    if (l2 - this.mLastWarnTime >= l1) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (bool)
+    {
+      int i = this.mWarnCount;
+      if (i < 2147483647) {
+        this.mWarnCount = (i + 1);
+      }
+      this.mLastWarnTime = l2;
+    }
+    return bool;
   }
   
   /* Error */
   public void checkFileAndClean(String paramString, int paramInt)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: new 93	java/io/File
-    //   6: dup
-    //   7: aload_1
-    //   8: invokespecial 96	java/io/File:<init>	(Ljava/lang/String;)V
-    //   11: astore_1
-    //   12: aload_1
-    //   13: invokevirtual 100	java/io/File:exists	()Z
-    //   16: ifeq +236 -> 252
-    //   19: aload_1
-    //   20: invokevirtual 103	java/io/File:isDirectory	()Z
-    //   23: ifeq +229 -> 252
-    //   26: aload_1
-    //   27: getstatic 54	cooperation/qzone/cache/FileStorageHandler:filenameFilter	Ljava/io/FilenameFilter;
-    //   30: invokevirtual 107	java/io/File:listFiles	(Ljava/io/FilenameFilter;)[Ljava/io/File;
-    //   33: astore 11
-    //   35: aload 11
-    //   37: ifnull +215 -> 252
-    //   40: aload 11
-    //   42: arraylength
-    //   43: ifle +209 -> 252
+    //   0: new 93	java/io/File
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 96	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore_1
+    //   9: aload_1
+    //   10: invokevirtual 100	java/io/File:exists	()Z
+    //   13: ifeq +278 -> 291
+    //   16: aload_1
+    //   17: invokevirtual 103	java/io/File:isDirectory	()Z
+    //   20: ifeq +271 -> 291
+    //   23: aload_1
+    //   24: getstatic 54	cooperation/qzone/cache/FileStorageHandler:filenameFilter	Ljava/io/FilenameFilter;
+    //   27: invokevirtual 107	java/io/File:listFiles	(Ljava/io/FilenameFilter;)[Ljava/io/File;
+    //   30: astore 11
+    //   32: aload 11
+    //   34: ifnull +257 -> 291
+    //   37: aload 11
+    //   39: arraylength
+    //   40: ifle +251 -> 291
+    //   43: iconst_0
+    //   44: istore 4
     //   46: lconst_0
     //   47: lstore 5
     //   49: iconst_0
@@ -228,10 +239,10 @@ public class FileStorageHandler
     //   79: iload_2
     //   80: i2l
     //   81: lcmp
-    //   82: ifle +170 -> 252
-    //   85: ldc 150
+    //   82: ifle +209 -> 291
+    //   85: ldc 169
     //   87: iconst_1
-    //   88: ldc 221
+    //   88: ldc 232
     //   90: invokestatic 178	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   93: iload_2
     //   94: i2f
@@ -239,11 +250,11 @@ public class FileStorageHandler
     //   97: fmul
     //   98: f2l
     //   99: lstore 9
-    //   101: new 223	java/util/ArrayList
+    //   101: new 234	java/util/ArrayList
     //   104: dup
     //   105: aload 11
     //   107: arraylength
-    //   108: invokespecial 224	java/util/ArrayList:<init>	(I)V
+    //   108: invokespecial 235	java/util/ArrayList:<init>	(I)V
     //   111: astore_1
     //   112: iload 4
     //   114: istore_2
@@ -255,7 +266,7 @@ public class FileStorageHandler
     //   123: aload 11
     //   125: iload_2
     //   126: aaload
-    //   127: invokevirtual 228	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   127: invokevirtual 239	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   130: pop
     //   131: iload_2
     //   132: iconst_1
@@ -264,170 +275,171 @@ public class FileStorageHandler
     //   135: goto -20 -> 115
     //   138: aload_1
     //   139: getstatic 59	cooperation/qzone/cache/FileStorageHandler:fileTimeComparator	Ljava/util/Comparator;
-    //   142: invokestatic 234	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   142: invokestatic 245	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   145: aload_1
-    //   146: invokevirtual 237	java/util/ArrayList:size	()I
+    //   146: invokevirtual 248	java/util/ArrayList:size	()I
     //   149: iconst_1
     //   150: isub
     //   151: istore_2
     //   152: iload_2
-    //   153: ifle +99 -> 252
+    //   153: ifle +138 -> 291
     //   156: aload_1
     //   157: iload_2
-    //   158: invokevirtual 241	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   158: invokevirtual 252	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   161: checkcast 93	java/io/File
-    //   164: astore 11
-    //   166: aload 11
+    //   164: astore 12
+    //   166: aload 12
     //   168: invokevirtual 114	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   171: astore 12
+    //   171: astore 11
     //   173: lload 5
     //   175: lstore 7
-    //   177: aload 11
+    //   177: aload 12
     //   179: invokevirtual 100	java/io/File:exists	()Z
     //   182: ifeq +19 -> 201
     //   185: lload 5
-    //   187: aload 11
+    //   187: aload 12
     //   189: invokevirtual 118	java/io/File:length	()J
     //   192: lsub
     //   193: lstore 7
-    //   195: aload 11
-    //   197: invokevirtual 243	java/io/File:delete	()Z
+    //   195: aload 12
+    //   197: invokevirtual 254	java/io/File:delete	()Z
     //   200: pop
-    //   201: new 93	java/io/File
+    //   201: new 150	java/lang/StringBuilder
     //   204: dup
-    //   205: new 152	java/lang/StringBuilder
-    //   208: dup
-    //   209: invokespecial 153	java/lang/StringBuilder:<init>	()V
-    //   212: aload 12
-    //   214: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: ldc 245
-    //   219: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   225: invokespecial 96	java/io/File:<init>	(Ljava/lang/String;)V
-    //   228: astore 11
-    //   230: aload 11
-    //   232: invokevirtual 100	java/io/File:exists	()Z
-    //   235: ifeq +9 -> 244
-    //   238: aload 11
-    //   240: invokevirtual 243	java/io/File:delete	()Z
-    //   243: pop
-    //   244: lload 7
-    //   246: lload 9
-    //   248: lcmp
-    //   249: ifge +4 -> 253
-    //   252: return
-    //   253: iload_2
-    //   254: iconst_1
-    //   255: isub
-    //   256: istore_2
-    //   257: lload 7
-    //   259: lstore 5
-    //   261: goto -109 -> 152
-    //   264: astore_1
-    //   265: aload_1
-    //   266: invokevirtual 248	java/lang/Exception:printStackTrace	()V
-    //   269: return
-    //   270: astore_1
-    //   271: ldc 150
-    //   273: iconst_1
-    //   274: ldc 180
+    //   205: invokespecial 151	java/lang/StringBuilder:<init>	()V
+    //   208: astore 12
+    //   210: aload 12
+    //   212: aload 11
+    //   214: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: pop
+    //   218: aload 12
+    //   220: ldc_w 256
+    //   223: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   226: pop
+    //   227: new 93	java/io/File
+    //   230: dup
+    //   231: aload 12
+    //   233: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   236: invokespecial 96	java/io/File:<init>	(Ljava/lang/String;)V
+    //   239: astore 11
+    //   241: aload 11
+    //   243: invokevirtual 100	java/io/File:exists	()Z
+    //   246: ifeq +9 -> 255
+    //   249: aload 11
+    //   251: invokevirtual 254	java/io/File:delete	()Z
+    //   254: pop
+    //   255: lload 7
+    //   257: lload 9
+    //   259: lcmp
+    //   260: ifge +4 -> 264
+    //   263: return
+    //   264: iload_2
+    //   265: iconst_1
+    //   266: isub
+    //   267: istore_2
+    //   268: lload 7
+    //   270: lstore 5
+    //   272: goto -120 -> 152
+    //   275: astore_1
     //   276: aload_1
-    //   277: invokestatic 184	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   277: invokevirtual 259	java/lang/Exception:printStackTrace	()V
     //   280: return
+    //   281: astore_1
+    //   282: ldc 169
+    //   284: iconst_1
+    //   285: ldc 180
+    //   287: aload_1
+    //   288: invokestatic 184	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   291: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	281	0	this	FileStorageHandler
-    //   0	281	1	paramString	String
-    //   0	281	2	paramInt	int
+    //   0	292	0	this	FileStorageHandler
+    //   0	292	1	paramString	String
+    //   0	292	2	paramInt	int
     //   50	24	3	i	int
-    //   1	112	4	j	int
-    //   47	213	5	l1	long
-    //   175	83	7	l2	long
-    //   99	148	9	l3	long
-    //   33	206	11	localObject	Object
-    //   171	42	12	str	String
+    //   44	69	4	j	int
+    //   47	224	5	l1	long
+    //   175	94	7	l2	long
+    //   99	159	9	l3	long
+    //   30	220	11	localObject1	Object
+    //   164	68	12	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   145	152	264	java/lang/Exception
-    //   156	173	264	java/lang/Exception
-    //   177	201	264	java/lang/Exception
-    //   201	244	264	java/lang/Exception
-    //   3	35	270	java/lang/Throwable
-    //   40	46	270	java/lang/Throwable
-    //   51	70	270	java/lang/Throwable
-    //   85	93	270	java/lang/Throwable
-    //   101	112	270	java/lang/Throwable
-    //   115	131	270	java/lang/Throwable
-    //   138	145	270	java/lang/Throwable
-    //   145	152	270	java/lang/Throwable
-    //   156	173	270	java/lang/Throwable
-    //   177	201	270	java/lang/Throwable
-    //   201	244	270	java/lang/Throwable
-    //   265	269	270	java/lang/Throwable
+    //   145	152	275	java/lang/Exception
+    //   156	173	275	java/lang/Exception
+    //   177	201	275	java/lang/Exception
+    //   201	255	275	java/lang/Exception
+    //   0	32	281	java/lang/Throwable
+    //   37	43	281	java/lang/Throwable
+    //   51	70	281	java/lang/Throwable
+    //   85	93	281	java/lang/Throwable
+    //   101	112	281	java/lang/Throwable
+    //   115	131	281	java/lang/Throwable
+    //   138	145	281	java/lang/Throwable
+    //   145	152	281	java/lang/Throwable
+    //   156	173	281	java/lang/Throwable
+    //   177	201	281	java/lang/Throwable
+    //   201	255	281	java/lang/Throwable
+    //   276	280	281	java/lang/Throwable
   }
   
   public void cleanOldFile(int paramInt1, int paramInt2, String paramString)
   {
-    for (;;)
+    try
     {
-      try
+      long l1 = System.currentTimeMillis();
+      paramString = new File(paramString);
+      long l2;
+      if ((paramString.exists()) && (paramString.isDirectory()))
       {
-        long l1 = System.currentTimeMillis();
-        paramString = new File(paramString);
-        Object localObject;
-        int i;
-        if ((paramString.exists()) && (paramString.isDirectory()))
+        Object localObject = paramString.listFiles(filenameFilter);
+        if ((localObject != null) && (localObject.length > 0))
         {
-          localObject = paramString.listFiles(filenameFilter);
-          if ((localObject != null) && (localObject.length > 0))
+          paramString = new ArrayList(localObject.length);
+          int i = 0;
+          while (i < localObject.length)
           {
-            paramString = new ArrayList(localObject.length);
-            i = 0;
-            if (i < localObject.length)
+            paramString.add(localObject[i]);
+            i += 1;
+          }
+          Collections.sort(paramString, fileTimeComparator);
+          try
+          {
+            i = paramString.size() - 1;
+            while (i > 0)
             {
-              paramString.add(localObject[i]);
-              i += 1;
-              continue;
+              localObject = ((File)paramString.get(i)).getAbsolutePath();
+              l2 = deleteFile((String)localObject);
+              paramInt1 = (int)(paramInt1 - l2);
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append(".headers");
+              localObject = new File(localStringBuilder.toString());
+              if (((File)localObject).exists()) {
+                ((File)localObject).delete();
+              }
+              if (paramInt1 < paramInt2) {
+                break;
+              }
+              i -= 1;
             }
-            Collections.sort(paramString, fileTimeComparator);
+            l2 = System.currentTimeMillis();
           }
-        }
-        try
-        {
-          int j = paramString.size() - 1;
-          i = paramInt1;
-          paramInt1 = j;
-          if (paramInt1 > 0)
+          catch (Exception paramString)
           {
-            localObject = ((File)paramString.get(paramInt1)).getAbsolutePath();
-            l2 = deleteFile((String)localObject);
-            i = (int)(i - l2);
-            localObject = new File((String)localObject + ".headers");
-            if (((File)localObject).exists()) {
-              ((File)localObject).delete();
-            }
-            if (i >= paramInt2) {
-              break label247;
-            }
+            paramString.printStackTrace();
           }
         }
-        catch (Exception paramString)
-        {
-          long l2;
-          paramString.printStackTrace();
-          continue;
-        }
-        l2 = System.currentTimeMillis();
-        QLog.w("CacheManager", 1, "onLowStorage time:" + (l2 - l1));
-        return;
       }
-      catch (Throwable paramString)
-      {
-        QLog.e("CacheManager", 1, "", paramString);
-        return;
-      }
-      label247:
-      paramInt1 -= 1;
+      paramString = new StringBuilder();
+      paramString.append("onLowStorage time:");
+      paramString.append(l2 - l1);
+      QLog.w("CacheManager", 1, paramString.toString());
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("CacheManager", 1, "", paramString);
     }
   }
   
@@ -456,14 +468,15 @@ public class FileStorageHandler
       if ((this.mPendingFuture != null) && (!this.mPendingFuture.isDone())) {
         return;
       }
+      this.mPendingFuture = PriorityThreadPool.getDefault().submit(new FileStorageHandler.1(this, paramBoolean));
+      return;
     }
     finally {}
-    this.mPendingFuture = PriorityThreadPool.getDefault().submit(new FileStorageHandler.1(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.cache.FileStorageHandler
  * JD-Core Version:    0.7.0.1
  */

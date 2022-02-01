@@ -6,8 +6,9 @@ public class ThreadTraceHelperProxy
   
   public static void addWaitingTransThread(long paramLong, String paramString)
   {
-    if (proxy != null) {
-      proxy.addWaitingTransThread(paramLong, paramString);
+    ThreadTraceHelperProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      localProxy.addWaitingTransThread(paramLong, paramString);
     }
   }
   
@@ -18,21 +19,23 @@ public class ThreadTraceHelperProxy
   
   public static void removeWaitingTransThread(long paramLong)
   {
-    if (proxy != null) {
-      proxy.removeWaitingTransThread(paramLong);
+    ThreadTraceHelperProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      localProxy.removeWaitingTransThread(paramLong);
     }
   }
   
   public static void setCurrentTransThread(long paramLong, String paramString)
   {
-    if (proxy != null) {
-      proxy.setCurrentTransThread(paramLong, paramString);
+    ThreadTraceHelperProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      localProxy.setCurrentTransThread(paramLong, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.db.ThreadTraceHelperProxy
  * JD-Core Version:    0.7.0.1
  */

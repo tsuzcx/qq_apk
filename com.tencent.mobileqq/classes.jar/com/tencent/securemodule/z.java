@@ -19,18 +19,17 @@ public class z
         SecureService.d(this.b);
         SecureService.e(this.b);
       }
-      while ((!SecureService.f(this.b)) && (SecureService.g(this.b) == 0))
+      else if ("1000011".equals(this.a.getAction()))
+      {
+        SecureService.b(this.b, this.a.getBooleanExtra("key_download_listener", false));
+        SecureService.b(this.b, "https://qqwx.qq.com/s?aid=index&p=1&c=107048&vt=1&pf=0");
+      }
+      if ((!SecureService.f(this.b)) && (SecureService.g(this.b) == 0))
       {
         this.b.stopSelf();
         SecureService.a(this.b);
         return;
-        if ("1000011".equals(this.a.getAction()))
-        {
-          SecureService.b(this.b, this.a.getBooleanExtra("key_download_listener", false));
-          SecureService.b(this.b, "https://qqwx.qq.com/s?aid=index&p=1&c=107048&vt=1&pf=0");
-        }
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -42,7 +41,7 @@ public class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.z
  * JD-Core Version:    0.7.0.1
  */

@@ -21,12 +21,13 @@ public final class homework$ReqSend1V1Msg
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "text", "group_id", "to_uins", "int32_time_zone" }, new Object[] { localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, ReqSend1V1Msg.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "text", "group_id", "to_uins", "int32_time_zone" }, new Object[] { localByteStringMicro, localLong, localLong, Integer.valueOf(0) }, ReqSend1V1Msg.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.troop.homework.ReqSend1V1Msg
  * JD-Core Version:    0.7.0.1
  */

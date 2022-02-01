@@ -55,14 +55,15 @@ public final class FlowerWidgetInfo
     paramJceOutputStream.write(this.lovemax, 5);
     paramJceOutputStream.write(this.nutri, 6);
     paramJceOutputStream.write(this.nutrimax, 7);
-    if (this.flowerpicurl != null) {
-      paramJceOutputStream.write(this.flowerpicurl, 8);
+    String str = this.flowerpicurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_WIDGET.FlowerWidgetInfo
  * JD-Core Version:    0.7.0.1
  */

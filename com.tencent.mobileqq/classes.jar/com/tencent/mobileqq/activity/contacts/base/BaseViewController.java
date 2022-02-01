@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public abstract class BaseViewController
   implements InterceptListener
 {
-  public Activity a;
+  protected Activity a;
   
   public BaseViewController(Activity paramActivity)
   {
@@ -25,21 +25,16 @@ public abstract class BaseViewController
   
   public void a(QQAppInterface paramQQAppInterface) {}
   
+  public void a(boolean paramBoolean) {}
+  
   public void b() {}
   
-  public void b(boolean paramBoolean) {}
+  public void b(boolean paramBoolean)
+  {
+    FrameHelperActivity.b(paramBoolean ^ true);
+  }
   
   public void c() {}
-  
-  public void c(boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      FrameHelperActivity.c(paramBoolean);
-      return;
-    }
-  }
   
   public void d() {}
   
@@ -47,7 +42,7 @@ public abstract class BaseViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.BaseViewController
  * JD-Core Version:    0.7.0.1
  */

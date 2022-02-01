@@ -69,42 +69,51 @@ public final class SimpleKuolieRoomInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.roomID != null) {
-      paramJceOutputStream.write(this.roomID, 0);
+    Object localObject = this.roomID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.roomName != null) {
-      paramJceOutputStream.write(this.roomName, 1);
+    localObject = this.roomName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.owner != null) {
-      paramJceOutputStream.write(this.owner, 2);
+    localObject = this.owner;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 3);
+    localObject = this.nickname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.logo != null) {
-      paramJceOutputStream.write(this.logo, 4);
+    localObject = this.logo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.coverurl != null) {
-      paramJceOutputStream.write(this.coverurl, 5);
+    localObject = this.coverurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.backgroundPicUrl != null) {
-      paramJceOutputStream.write(this.backgroundPicUrl, 6);
+    localObject = this.backgroundPicUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.onlineNum, 7);
     paramJceOutputStream.write(this.isFav, 8);
     paramJceOutputStream.write(this.favTime, 9);
     paramJceOutputStream.write(this.roomStatus, 10);
-    if (this.roomColor != null) {
-      paramJceOutputStream.write(this.roomColor, 11);
+    localObject = this.roomColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 12);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_KUOLIE_PROTOCOL.SimpleKuolieRoomInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.identity;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -19,24 +19,22 @@ public class SmsQuickLoginReporter
         return true;
       }
       paramString = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (paramString != null) {
-        break label67;
+      if (paramString == null) {
+        paramString = "";
+      } else {
+        paramString = paramString.getAccount();
       }
-    }
-    label67:
-    for (paramString = "";; paramString = paramString.getAccount())
-    {
       if (!TextUtils.isEmpty(paramString)) {
         paramHashMap.put("keyUin", paramString);
       }
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(paramString, "quickLoginError", false, 0L, 0L, paramHashMap, "");
-      return bool;
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramString, "quickLoginError", false, 0L, 0L, paramHashMap, "");
     }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.SmsQuickLoginReporter
  * JD-Core Version:    0.7.0.1
  */

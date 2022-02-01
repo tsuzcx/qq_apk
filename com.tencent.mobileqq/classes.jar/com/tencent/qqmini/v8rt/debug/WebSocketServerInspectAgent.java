@@ -32,10 +32,14 @@ public class WebSocketServerInspectAgent
   
   public void sendMessageToDebugger(@NotNull String paramString)
   {
-    if (this.mWebSocket != null)
+    Object localObject = this.mWebSocket;
+    if (localObject != null)
     {
-      this.mWebSocket.send(paramString);
-      Logger.i("WebSocketServerInspectAgent", ">> " + paramString);
+      ((WebSocket)localObject).send(paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(">> ");
+      ((StringBuilder)localObject).append(paramString);
+      Logger.i("WebSocketServerInspectAgent", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -54,20 +58,20 @@ public class WebSocketServerInspectAgent
       this.mAgentServer.stop();
       return;
     }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-      return;
-    }
     catch (InterruptedException localInterruptedException)
     {
       localInterruptedException.printStackTrace();
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.debug.WebSocketServerInspectAgent
  * JD-Core Version:    0.7.0.1
  */

@@ -23,159 +23,243 @@ public class BirthdayActivateData
   {
     try
     {
-      Object localObject = new JSONObject();
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      ((JSONObject)localObject).put("app", "com.tencent.giftmall.greeting");
-      ((JSONObject)localObject).put("view", "greeting-0");
-      ((JSONObject)localObject).put("ver", "1.0.4.1");
-      localJSONObject1.put("greetingData", localJSONObject2);
-      ((JSONObject)localObject).put("meta", localJSONObject1);
-      QLog.i("BirthdayActivateData", 1, " @arkgif getEmptyErroJson json data =" + ((JSONObject)localObject).toString());
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      Object localObject1 = new JSONObject();
+      localObject2 = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
+      ((JSONObject)localObject1).put("app", "com.tencent.giftmall.greeting");
+      ((JSONObject)localObject1).put("view", "greeting-0");
+      ((JSONObject)localObject1).put("ver", "1.0.4.1");
+      ((JSONObject)localObject2).put("greetingData", localJSONObject);
+      ((JSONObject)localObject1).put("meta", localObject2);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" @arkgif getEmptyErroJson json data =");
+      ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+      QLog.i("BirthdayActivateData", 1, ((StringBuilder)localObject2).toString());
+      localObject1 = ((JSONObject)localObject1).toString();
+      return localObject1;
     }
     catch (Exception localException)
     {
-      QLog.e("BirthdayActivateData", 1, "getEmptyErroJson" + localException.toString());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getEmptyErroJson");
+      ((StringBuilder)localObject2).append(localException.toString());
+      QLog.e("BirthdayActivateData", 1, ((StringBuilder)localObject2).toString());
     }
     return null;
   }
   
   public static String a(SubMsgType0x76.BirthdayNotify paramBirthdayNotify, QQAppInterface paramQQAppInterface)
   {
+    Object localObject5 = paramBirthdayNotify;
+    Object localObject1 = "BirthdayActivateData";
+    Object localObject2 = localObject1;
+    label1290:
+    label1304:
+    label1311:
+    label1318:
     for (;;)
     {
-      JSONObject localJSONObject1;
-      JSONObject localJSONObject2;
-      JSONObject localJSONObject3;
-      String str2;
-      Object localObject2;
-      String str1;
-      int j;
-      int m;
-      int n;
       try
       {
-        localJSONObject1 = new JSONObject();
-        localJSONObject2 = new JSONObject();
-        localJSONObject3 = new JSONObject();
-        localJSONObject1.put("app", "com.tencent.giftmall.greeting");
-        localJSONObject3.put("ua", WebSoUtils.a());
-        if (paramBirthdayNotify == null)
+        Object localObject4 = new JSONObject();
+        localObject2 = localObject1;
+        JSONObject localJSONObject1 = new JSONObject();
+        localObject2 = localObject1;
+        JSONObject localJSONObject2 = new JSONObject();
+        localObject2 = localObject1;
+        ((JSONObject)localObject4).put("app", "com.tencent.giftmall.greeting");
+        localObject2 = localObject1;
+        localJSONObject2.put("ua", WebSoUtils.a());
+        String str2 = "meta";
+        String str1 = "greetingData";
+        if (localObject5 == null)
         {
-          localJSONObject1.put("view", "greeting-0");
-          localJSONObject1.put("ver", "1.0.4.1");
-          localJSONObject2.put("greetingData", localJSONObject3);
-          localJSONObject1.put("meta", localJSONObject2);
-          QLog.i("BirthdayActivateData", 1, "@arkgif msg_birthday_info is null  =" + localJSONObject1.toString());
-          return localJSONObject1.toString();
+          localObject2 = localObject1;
+          ((JSONObject)localObject4).put("view", "greeting-0");
+          localObject2 = localObject1;
+          ((JSONObject)localObject4).put("ver", "1.0.4.1");
+          localObject2 = localObject1;
+          localJSONObject1.put("greetingData", localJSONObject2);
+          localObject2 = localObject1;
+          ((JSONObject)localObject4).put("meta", localJSONObject1);
+          localObject2 = localObject1;
+          paramBirthdayNotify = new StringBuilder();
+          localObject2 = localObject1;
+          paramBirthdayNotify.append("@arkgif msg_birthday_info is null  =");
+          localObject2 = localObject1;
+          paramBirthdayNotify.append(((JSONObject)localObject4).toString());
+          localObject2 = localObject1;
+          QLog.i("BirthdayActivateData", 1, paramBirthdayNotify.toString());
+          localObject2 = localObject1;
+          return ((JSONObject)localObject4).toString();
         }
-        str2 = paramBirthdayNotify.str_extend.get();
-        if (!TextUtils.isEmpty(str2))
+        localObject2 = localObject1;
+        String str3 = ((SubMsgType0x76.BirthdayNotify)localObject5).str_extend.get();
+        localObject2 = localObject1;
+        String str4;
+        Object localObject6;
+        boolean bool;
+        if (!TextUtils.isEmpty(str3))
         {
-          localObject1 = new JSONObject(str2);
-          localObject2 = ((JSONObject)localObject1).getString("type");
-          str1 = ((JSONObject)localObject1).getString("ver");
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label1036;
+          localObject2 = localObject1;
+          localObject3 = new JSONObject(str3);
+          localObject2 = localObject1;
+          str4 = ((JSONObject)localObject3).getString("type");
+          localObject2 = localObject1;
+          localObject6 = ((JSONObject)localObject3).getString("ver");
+          localObject2 = localObject1;
+          bool = TextUtils.isEmpty(str4);
+          if (bool) {
+            break label1304;
           }
-          localObject1 = localObject2;
-          if ("null".equals(localObject2)) {
-            break label1036;
+          localObject3 = str4;
+          localObject2 = localObject1;
+          if ("null".equals(str4)) {
+            break label1304;
           }
-          localJSONObject1.put("view", localObject1);
-          if (TextUtils.isEmpty(str1)) {
-            break label1043;
+          localObject2 = localObject1;
+          ((JSONObject)localObject4).put("view", localObject3);
+          localObject2 = localObject1;
+          if (TextUtils.isEmpty((CharSequence)localObject6)) {
+            break label1311;
           }
-          localObject1 = str1;
-          if ("null".equals(str1)) {
-            break label1043;
+          localObject3 = localObject6;
+          localObject2 = localObject1;
+          if ("null".equals(localObject6)) {
+            break label1311;
           }
-          localJSONObject1.put("ver", localObject1);
-          QLog.i("BirthdayActivateData", 1, "@arkgif strExtend = " + str2);
-          localJSONObject3.put("str_extend", str2);
-          j = paramBirthdayNotify.rpt_msg_one_friend.get().size();
-          localObject1 = new JSONArray();
-          i = 0;
-          if (i < j)
-          {
-            long l1 = ((SubMsgType0x76.OneBirthdayFriend)paramBirthdayNotify.rpt_msg_one_friend.get().get(i)).uint64_uin.get();
-            boolean bool = ((SubMsgType0x76.OneBirthdayFriend)paramBirthdayNotify.rpt_msg_one_friend.get().get(i)).bool_lunar_birth.get();
-            k = ((SubMsgType0x76.OneBirthdayFriend)paramBirthdayNotify.rpt_msg_one_friend.get().get(i)).uint32_birth_month.get();
-            m = ((SubMsgType0x76.OneBirthdayFriend)paramBirthdayNotify.rpt_msg_one_friend.get().get(i)).uint32_birth_date.get();
-            n = ((SubMsgType0x76.OneBirthdayFriend)paramBirthdayNotify.rpt_msg_one_friend.get().get(i)).uint32_birth_year.get();
-            long l2 = ((SubMsgType0x76.OneBirthdayFriend)paramBirthdayNotify.rpt_msg_one_friend.get().get(i)).uint64_msg_send_time.get();
-            str1 = ContactUtils.c(paramQQAppInterface, l1 + "", true);
-            localObject2 = new JSONObject();
-            ((JSONObject)localObject2).put("friendUin", l1 + "");
-            ((JSONObject)localObject2).put("lunarBirthday", bool);
-            ((JSONObject)localObject2).put("birthdayYear", n);
-            ((JSONObject)localObject2).put("birthdayMonth", k);
-            ((JSONObject)localObject2).put("birthdayDay", m);
-            ((JSONObject)localObject2).put("messageSendTime", l2 + "");
-            ((JSONObject)localObject2).put("nickName", str1);
-            ((JSONArray)localObject1).put(i, localObject2);
-            i += 1;
-            continue;
-          }
+          localObject2 = localObject1;
+          ((JSONObject)localObject4).put("ver", localObject3);
+          localObject2 = localObject1;
+          localObject3 = new StringBuilder();
+          localObject2 = localObject1;
+          ((StringBuilder)localObject3).append("@arkgif strExtend = ");
+          localObject2 = localObject1;
+          ((StringBuilder)localObject3).append(str3);
+          localObject2 = localObject1;
+          QLog.i("BirthdayActivateData", 1, ((StringBuilder)localObject3).toString());
         }
         else
         {
+          localObject2 = localObject1;
           QLog.i("BirthdayActivateData", 1, "@arkgif json data strExtend is null  =");
-          localJSONObject1.put("view", "greeting-0");
-          localJSONObject1.put("ver", "1.0.4.1");
+          localObject2 = localObject1;
+          ((JSONObject)localObject4).put("view", "greeting-0");
+          localObject2 = localObject1;
+          ((JSONObject)localObject4).put("ver", "1.0.4.1");
+        }
+        localObject2 = localObject1;
+        localJSONObject2.put("str_extend", str3);
+        localObject2 = localObject1;
+        int i = ((SubMsgType0x76.BirthdayNotify)localObject5).rpt_msg_one_friend.get().size();
+        localObject2 = localObject1;
+        localObject5 = new JSONArray();
+        int j = 0;
+        localObject3 = localObject4;
+        localObject4 = paramBirthdayNotify;
+        long l1;
+        if (j < i)
+        {
+          localObject2 = localObject1;
+          l1 = ((SubMsgType0x76.OneBirthdayFriend)((SubMsgType0x76.BirthdayNotify)localObject4).rpt_msg_one_friend.get().get(j)).uint64_uin.get();
+          localObject2 = localObject1;
+          bool = ((SubMsgType0x76.OneBirthdayFriend)((SubMsgType0x76.BirthdayNotify)localObject4).rpt_msg_one_friend.get().get(j)).bool_lunar_birth.get();
+          localObject2 = localObject1;
+          k = ((SubMsgType0x76.OneBirthdayFriend)((SubMsgType0x76.BirthdayNotify)localObject4).rpt_msg_one_friend.get().get(j)).uint32_birth_month.get();
+        }
+        try
+        {
+          m = ((SubMsgType0x76.OneBirthdayFriend)((SubMsgType0x76.BirthdayNotify)localObject4).rpt_msg_one_friend.get().get(j)).uint32_birth_date.get();
+          n = ((SubMsgType0x76.OneBirthdayFriend)((SubMsgType0x76.BirthdayNotify)localObject4).rpt_msg_one_friend.get().get(j)).uint32_birth_year.get();
+          long l2 = ((SubMsgType0x76.OneBirthdayFriend)((SubMsgType0x76.BirthdayNotify)localObject4).rpt_msg_one_friend.get().get(j)).uint64_msg_send_time.get();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(l1);
+          ((StringBuilder)localObject2).append("");
+          localObject2 = ContactUtils.a(paramQQAppInterface, ((StringBuilder)localObject2).toString(), true);
+          localObject4 = new JSONObject();
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append(l1);
+          ((StringBuilder)localObject6).append("");
+          ((JSONObject)localObject4).put("friendUin", ((StringBuilder)localObject6).toString());
+          ((JSONObject)localObject4).put("lunarBirthday", bool);
+          ((JSONObject)localObject4).put("birthdayYear", n);
+          ((JSONObject)localObject4).put("birthdayMonth", k);
+          ((JSONObject)localObject4).put("birthdayDay", m);
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append(l2);
+          ((StringBuilder)localObject6).append("");
+          ((JSONObject)localObject4).put("messageSendTime", ((StringBuilder)localObject6).toString());
+          ((JSONObject)localObject4).put("nickName", localObject2);
+          ((JSONArray)localObject5).put(j, localObject4);
+          j += 1;
+        }
+        catch (Exception paramBirthdayNotify)
+        {
+          int m;
+          int n;
+          int i1;
+          int i2;
+          break label1290;
+        }
+        paramQQAppInterface = (QQAppInterface)localObject1;
+        localJSONObject2.put("friendModels", localObject5);
+        int k = paramBirthdayNotify.rpt_gift_msg.get().size();
+        localObject2 = new JSONArray();
+        j = 0;
+        if (j < k)
+        {
+          localObject4 = new JSONObject();
+          m = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(j)).gift_id.get();
+          localObject5 = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(j)).gift_name.get();
+          n = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(j)).type.get();
+          localObject6 = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(j)).gift_url.get();
+          i1 = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(j)).price.get();
+          i2 = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(j)).play_cnt.get();
+          str4 = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(j)).background_color.get();
+          ((JSONObject)localObject4).put("gift_id", m);
+          ((JSONObject)localObject4).put("gift_name", localObject5);
+          ((JSONObject)localObject4).put("gift_type", n);
+          ((JSONObject)localObject4).put("gift_url", localObject6);
+          ((JSONObject)localObject4).put("gift_price", i1);
+          ((JSONObject)localObject4).put("play_count", i2);
+          ((JSONObject)localObject4).put("bgColorStr", str4);
+          ((JSONArray)localObject2).put(j, localObject4);
+          j += 1;
           continue;
         }
-        localJSONObject3.put("friendModels", localObject1);
+        localJSONObject2.put("giftModels", localObject2);
+        localJSONObject1.put(str1, localJSONObject2);
+        ((JSONObject)localObject3).put(str2, localJSONObject1);
+        if (!QLog.isColorLevel()) {
+          break label1318;
+        }
+        paramBirthdayNotify = new StringBuilder();
+        paramBirthdayNotify.append("@arkgif json data friendnum=");
+        paramBirthdayNotify.append(i);
+        paramBirthdayNotify.append("strExtend = ");
+        paramBirthdayNotify.append(str3);
+        paramBirthdayNotify = paramBirthdayNotify.toString();
+        localObject2 = paramQQAppInterface;
+        QLog.i(paramQQAppInterface, 1, paramBirthdayNotify);
+        localObject2 = localObject1;
+        paramBirthdayNotify = ((JSONObject)localObject3).toString();
+        return paramBirthdayNotify;
       }
       catch (Exception paramBirthdayNotify)
       {
-        QLog.e("BirthdayActivateData", 1, paramBirthdayNotify.toString());
-        return a();
+        localObject1 = localObject2;
       }
-      int k = paramBirthdayNotify.rpt_gift_msg.get().size();
-      paramQQAppInterface = new JSONArray();
-      int i = 0;
-      while (i < k)
-      {
-        localObject1 = new JSONObject();
-        m = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(i)).gift_id.get();
-        str1 = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(i)).gift_name.get();
-        n = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(i)).type.get();
-        localObject2 = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(i)).gift_url.get();
-        int i1 = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(i)).price.get();
-        int i2 = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(i)).play_cnt.get();
-        String str3 = ((SubMsgType0x76.OneGiftMessage)paramBirthdayNotify.rpt_gift_msg.get().get(i)).background_color.get();
-        ((JSONObject)localObject1).put("gift_id", m);
-        ((JSONObject)localObject1).put("gift_name", str1);
-        ((JSONObject)localObject1).put("gift_type", n);
-        ((JSONObject)localObject1).put("gift_url", localObject2);
-        ((JSONObject)localObject1).put("gift_price", i1);
-        ((JSONObject)localObject1).put("play_count", i2);
-        ((JSONObject)localObject1).put("bgColorStr", str3);
-        paramQQAppInterface.put(i, localObject1);
-        i += 1;
-      }
-      localJSONObject3.put("giftModels", paramQQAppInterface);
-      localJSONObject2.put("greetingData", localJSONObject3);
-      localJSONObject1.put("meta", localJSONObject2);
-      if (QLog.isColorLevel()) {
-        QLog.i("BirthdayActivateData", 1, "@arkgif json data friendnum=" + j + "strExtend = " + str2);
-      }
-      paramBirthdayNotify = localJSONObject1.toString();
-      return paramBirthdayNotify;
-      label1036:
-      Object localObject1 = "greeting-0";
+      QLog.e((String)localObject1, 1, paramBirthdayNotify.toString());
+      return a();
+      Object localObject3 = "greeting-0";
       continue;
-      label1043:
-      localObject1 = "1.0.4.1";
+      localObject3 = "1.0.4.1";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.BirthdayActivateData
  * JD-Core Version:    0.7.0.1
  */

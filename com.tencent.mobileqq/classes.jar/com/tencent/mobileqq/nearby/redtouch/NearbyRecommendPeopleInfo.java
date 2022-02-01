@@ -5,13 +5,8 @@ import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.NearbyPeople;
 
 public class NearbyRecommendPeopleInfo
 {
-  public static String a;
+  public static String a = "0";
   public static List<oidb_0x8dd.NearbyPeople> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "0";
-  }
   
   public static String a()
   {
@@ -31,7 +26,7 @@ public class NearbyRecommendPeopleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.NearbyRecommendPeopleInfo
  * JD-Core Version:    0.7.0.1
  */

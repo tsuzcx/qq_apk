@@ -14,29 +14,30 @@ public class AVLoggerClient
   
   public static void initLogSetting(Context paramContext, String paramString)
   {
-    boolean bool = true;
     Logger localLogger = AVLoggerChooser.getLogger();
+    boolean bool = true;
     if (localLogger != null)
     {
       localLogger.init(paramString);
       setIsEnablePrintLog(localLogger.isEnablePrintLog());
-      if (localLogger.getWriteLogLevel() >= 1)
-      {
-        setIsEnableWriteLog(bool);
-        setLogDir(localLogger.getLogDir());
+      if (localLogger.getWriteLogLevel() < 1) {
+        bool = false;
       }
+      setIsEnableWriteLog(bool);
+      setLogDir(localLogger.getLogDir());
     }
-    for (;;)
+    else
     {
-      setMaxFileSize(52428800);
-      setLogListener(null);
-      return;
-      bool = false;
-      break;
       setIsEnablePrintLog(true);
       setIsEnableWriteLog(true);
-      setLogDir(Environment.getExternalStorageDirectory() + "/tencent/imsdklogs/" + paramContext.getPackageName().replace('.', '/'));
+      paramString = new StringBuilder();
+      paramString.append(Environment.getExternalStorageDirectory());
+      paramString.append("/tencent/imsdklogs/");
+      paramString.append(paramContext.getPackageName().replace('.', '/'));
+      setLogDir(paramString.toString());
     }
+    setMaxFileSize(52428800);
+    setLogListener(null);
   }
   
   public static boolean isLogUploadToApp()

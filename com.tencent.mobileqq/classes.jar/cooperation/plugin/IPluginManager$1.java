@@ -1,6 +1,8 @@
 package cooperation.plugin;
 
 import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.qshadow.core.QShadow;
 import com.tencent.qphone.base.util.QLog;
 
 final class IPluginManager$1
@@ -10,32 +12,45 @@ final class IPluginManager$1
   
   public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
-    }
-    bool = paramBoolean;
-    if (paramBoolean) {}
-    try
+    if (QLog.isColorLevel())
     {
-      IPluginManager.d(paramContext, paramPluginParams);
-      bool = paramBoolean;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("openActivityForResult onPluginReady.");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
     }
-    catch (Exception paramContext)
+    if (paramBoolean)
     {
-      for (;;)
+      if (paramPluginParams.b == 1)
       {
-        QLog.e("plugin_tag", 2, "launch plugin error", paramContext);
-        bool = false;
+        QShadow.getInstance().startActivity(paramPluginParams.c, paramPluginParams.f, paramPluginParams.a.getExtras(), new IPluginManager.1.1(this, paramPluginParams));
+        return;
+      }
+      if (paramPluginParams.b == 2)
+      {
+        IPluginManager.b(paramContext, paramPluginParams, this.a);
+        return;
+      }
+      PluginReporter.a(paramPluginParams, true);
+      IPluginManager.d(paramContext, paramPluginParams);
+      paramContext = this.a;
+      if (paramContext != null) {
+        paramContext.a(true);
       }
     }
-    if (this.a != null) {
-      this.a.a(bool);
+    else
+    {
+      paramContext = this.a;
+      if (paramContext != null) {
+        paramContext.a(false);
+      }
+      PluginReporter.a(paramPluginParams, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.1
  * JD-Core Version:    0.7.0.1
  */

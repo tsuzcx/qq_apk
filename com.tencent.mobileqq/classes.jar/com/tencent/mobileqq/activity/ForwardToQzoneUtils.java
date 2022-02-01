@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import cooperation.qzone.QZoneHelper;
@@ -21,17 +21,20 @@ public class ForwardToQzoneUtils
     BaseApplicationImpl.getContext().startActivity(localIntent);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Intent paramIntent, String paramString, boolean paramBoolean)
+  public static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, Intent paramIntent, String paramString, boolean paramBoolean)
   {
-    if ((!"msg_tab_camera".equals(paramString)) || (paramIntent == null)) {
-      return;
+    if ("msg_tab_camera".equals(paramString))
+    {
+      if (paramIntent == null) {
+        return;
+      }
+      QZoneHelper.forwardToWriteMood(paramBaseActivity, paramQQAppInterface, paramIntent, 20005, paramBoolean);
     }
-    QZoneHelper.forwardToWriteMood(paramFragmentActivity, paramQQAppInterface, paramIntent, 20005, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardToQzoneUtils
  * JD-Core Version:    0.7.0.1
  */

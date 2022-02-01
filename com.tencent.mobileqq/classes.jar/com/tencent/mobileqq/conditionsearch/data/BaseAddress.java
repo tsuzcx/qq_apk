@@ -45,15 +45,16 @@ public class BaseAddress
   
   public int getColumnNember()
   {
-    int j = 0;
     if (this.hasProvince) {
       j = 1;
+    } else {
+      j = 0;
     }
     int i = j;
     if (this.hasCity) {
       i = j + 1;
     }
-    j = i;
+    int j = i;
     if (this.hasDistrict) {
       j = i + 1;
     }
@@ -62,8 +63,9 @@ public class BaseAddress
   
   public ArrayList<BaseAddress> getDataList()
   {
-    if (this.dataMap != null) {
-      return new ArrayList(this.dataMap.values());
+    LinkedHashMap localLinkedHashMap = this.dataMap;
+    if (localLinkedHashMap != null) {
+      return new ArrayList(localLinkedHashMap.values());
     }
     return null;
   }
@@ -80,7 +82,7 @@ public class BaseAddress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.data.BaseAddress
  * JD-Core Version:    0.7.0.1
  */

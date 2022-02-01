@@ -30,9 +30,9 @@ public final class WireFormatNano
   
   public static final int getRepeatedFieldArrayLength(CodedInputByteBufferNano paramCodedInputByteBufferNano, int paramInt)
   {
-    int i = 1;
     int j = paramCodedInputByteBufferNano.getPosition();
     paramCodedInputByteBufferNano.skipField(paramInt);
+    int i = 1;
     while (paramCodedInputByteBufferNano.readTag() == paramInt)
     {
       paramCodedInputByteBufferNano.skipField(paramInt);
@@ -64,7 +64,7 @@ public final class WireFormatNano
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.protobuf.nano.WireFormatNano
  * JD-Core Version:    0.7.0.1
  */

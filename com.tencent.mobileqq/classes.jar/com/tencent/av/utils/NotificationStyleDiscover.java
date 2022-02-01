@@ -1,6 +1,7 @@
 package com.tencent.av.utils;
 
 import android.app.Notification;
+import android.app.Notification.Builder;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.util.DisplayMetrics;
@@ -18,11 +19,8 @@ public class NotificationStyleDiscover
   Context jdField_a_of_type_AndroidContentContext;
   DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
   Integer jdField_a_of_type_JavaLangInteger = null;
-  String jdField_a_of_type_JavaLangString = "NotificationStyleDiscover";
   float jdField_b_of_type_Float = 16.0F;
   Integer jdField_b_of_type_JavaLangInteger = null;
-  final String jdField_b_of_type_JavaLangString = "SearchForText";
-  final String c = "SearchForTitle";
   
   public NotificationStyleDiscover(Context paramContext)
   {
@@ -33,8 +31,7 @@ public class NotificationStyleDiscover
     }
     try
     {
-      Object localObject = new Notification();
-      ((Notification)localObject).setLatestEventInfo(this.jdField_a_of_type_AndroidContentContext, "SearchForTitle", "SearchForText", null);
+      Object localObject = new Notification.Builder(this.jdField_a_of_type_AndroidContentContext).setContentTitle("SearchForTitle").setContentText("SearchForText").build();
       paramContext = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       localObject = (ViewGroup)((Notification)localObject).contentView.apply(this.jdField_a_of_type_AndroidContentContext, paramContext);
       a((ViewGroup)localObject);
@@ -44,8 +41,10 @@ public class NotificationStyleDiscover
     }
     catch (Exception paramContext)
     {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "erro");
+      label151:
+      break label151;
     }
+    QLog.e("NotificationStyleDiscover", 2, "erro");
   }
   
   boolean a(ViewGroup paramViewGroup)
@@ -102,7 +101,7 @@ public class NotificationStyleDiscover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.NotificationStyleDiscover
  * JD-Core Version:    0.7.0.1
  */

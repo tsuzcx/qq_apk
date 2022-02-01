@@ -50,25 +50,19 @@ public class ThreeDes
       paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
       return paramArrayOfByte1;
     }
-    catch (NoSuchAlgorithmException paramArrayOfByte1)
+    catch (Exception paramArrayOfByte1)
     {
       paramArrayOfByte1.printStackTrace();
-      return null;
     }
     catch (NoSuchPaddingException paramArrayOfByte1)
     {
-      for (;;)
-      {
-        paramArrayOfByte1.printStackTrace();
-      }
+      paramArrayOfByte1.printStackTrace();
     }
-    catch (Exception paramArrayOfByte1)
+    catch (NoSuchAlgorithmException paramArrayOfByte1)
     {
-      for (;;)
-      {
-        paramArrayOfByte1.printStackTrace();
-      }
+      paramArrayOfByte1.printStackTrace();
     }
+    return null;
   }
   
   public static String b(String paramString1, String paramString2)
@@ -84,18 +78,15 @@ public class ThreeDes
       }
       return null;
     }
-    catch (UnsupportedEncodingException paramString1)
+    catch (IllegalArgumentException paramString1) {}catch (UnsupportedEncodingException paramString1)
     {
-      paramString1.printStackTrace();
-      return null;
+      break label50;
     }
-    catch (IllegalArgumentException paramString1)
-    {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
-    }
+    paramString1.printStackTrace();
+    return null;
+    label50:
+    paramString1.printStackTrace();
+    return null;
   }
   
   public static byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -108,30 +99,24 @@ public class ThreeDes
       paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
       return paramArrayOfByte1;
     }
-    catch (NoSuchAlgorithmException paramArrayOfByte1)
+    catch (Exception paramArrayOfByte1)
     {
       paramArrayOfByte1.printStackTrace();
-      return null;
     }
     catch (NoSuchPaddingException paramArrayOfByte1)
     {
-      for (;;)
-      {
-        paramArrayOfByte1.printStackTrace();
-      }
+      paramArrayOfByte1.printStackTrace();
     }
-    catch (Exception paramArrayOfByte1)
+    catch (NoSuchAlgorithmException paramArrayOfByte1)
     {
-      for (;;)
-      {
-        paramArrayOfByte1.printStackTrace();
-      }
+      paramArrayOfByte1.printStackTrace();
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.ThreeDes
  * JD-Core Version:    0.7.0.1
  */

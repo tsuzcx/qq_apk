@@ -17,7 +17,12 @@ final class MiniCacheFreeManager$5
     {
       long l = paramJSONObject.optLong("retCode");
       String str = paramJSONObject.optString("errMsg");
-      QLog.i("MiniCacheFreeManager", 1, "getAppInfoById, retCode = " + l + ",errMsg = " + str);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getAppInfoById, retCode = ");
+      localStringBuilder.append(l);
+      localStringBuilder.append(",errMsg = ");
+      localStringBuilder.append(str);
+      QLog.i("MiniCacheFreeManager", 1, localStringBuilder.toString());
       paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
       if (paramJSONObject != null) {
         MiniSDK.stopMiniApp(BaseApplicationImpl.getContext(), MiniSdkUtil.a(paramJSONObject));
@@ -27,7 +32,7 @@ final class MiniCacheFreeManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.cache.MiniCacheFreeManager.5
  * JD-Core Version:    0.7.0.1
  */

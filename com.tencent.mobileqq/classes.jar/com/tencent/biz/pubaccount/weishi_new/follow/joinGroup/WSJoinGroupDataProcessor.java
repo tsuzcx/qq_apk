@@ -14,15 +14,16 @@ public class WSJoinGroupDataProcessor
   
   public static WSJoinGroupDataProcessor a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor == null) {
-        jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor = new WSJoinGroupDataProcessor();
+    if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor == null) {
+          jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor = new WSJoinGroupDataProcessor();
+        }
       }
-      return jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor;
   }
   
   @NotNull
@@ -33,7 +34,10 @@ public class WSJoinGroupDataProcessor
   
   public void a(String paramString1, String paramString2, WSJoinGroupDataProcessor.DataCallback paramDataCallback)
   {
-    WSLog.e("WSJoinGroupDataProcessor", "requestGroupSign: UserConfig request  groupId = " + paramString1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestGroupSign: UserConfig request  groupId = ");
+    localStringBuilder.append(paramString1);
+    WSLog.e("WSJoinGroupDataProcessor", localStringBuilder.toString());
     this.jdField_a_of_type_JavaLangString = paramString1;
     if (paramDataCallback != null) {
       paramDataCallback.b();
@@ -46,7 +50,7 @@ public class WSJoinGroupDataProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.WSJoinGroupDataProcessor
  * JD-Core Version:    0.7.0.1
  */

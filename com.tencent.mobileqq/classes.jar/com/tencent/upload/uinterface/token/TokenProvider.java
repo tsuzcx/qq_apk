@@ -16,42 +16,52 @@ public class TokenProvider
     paramArrayOfByte1 = getInstance().getEncryptTokenData(paramArrayOfByte1);
     int i = getInstance().getTokenEncTye();
     AuthToken localAuthToken = new AuthToken(i, paramArrayOfByte1, paramArrayOfByte2, UploadGlobalConfig.getConfig().getAppId(), UploadGlobalConfig.getConfig().getWtAppId());
-    StringBuilder localStringBuilder = new StringBuilder().append(" vLoginData.size: ");
-    if (paramArrayOfByte1 == null) {}
-    for (paramArrayOfByte1 = "null";; paramArrayOfByte1 = Integer.valueOf(paramArrayOfByte1.length))
-    {
-      UploadLog.i("TokenProvider", paramArrayOfByte1 + " vLoginKey.size: " + paramArrayOfByte2.length + " tokenEncType: " + i);
-      return localAuthToken;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" vLoginData.size: ");
+    if (paramArrayOfByte1 == null) {
+      paramArrayOfByte1 = "null";
+    } else {
+      paramArrayOfByte1 = Integer.valueOf(paramArrayOfByte1.length);
     }
+    localStringBuilder.append(paramArrayOfByte1);
+    localStringBuilder.append(" vLoginKey.size: ");
+    localStringBuilder.append(paramArrayOfByte2.length);
+    localStringBuilder.append(" tokenEncType: ");
+    localStringBuilder.append(i);
+    UploadLog.i("TokenProvider", localStringBuilder.toString());
+    return localAuthToken;
   }
   
   public static TokenProvider getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new TokenProvider();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new TokenProvider();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public byte[] getEncryptTokenData(byte[] paramArrayOfByte)
   {
-    if (this.mTokenEncryptor == null) {
+    ITokenEncryptor localITokenEncryptor = this.mTokenEncryptor;
+    if (localITokenEncryptor == null) {
       return paramArrayOfByte;
     }
-    return this.mTokenEncryptor.getTokenData(paramArrayOfByte);
+    return localITokenEncryptor.getTokenData(paramArrayOfByte);
   }
   
   public int getTokenEncTye()
   {
-    if (this.mTokenEncryptor == null) {
+    ITokenEncryptor localITokenEncryptor = this.mTokenEncryptor;
+    if (localITokenEncryptor == null) {
       return 2;
     }
-    return this.mTokenEncryptor.getTokenEncTye();
+    return localITokenEncryptor.getTokenEncTye();
   }
   
   public TokenProvider setTokenEncryptor(ITokenEncryptor paramITokenEncryptor)
@@ -62,7 +72,7 @@ public class TokenProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.uinterface.token.TokenProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -27,8 +27,9 @@ public class Lyric
   
   public int a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList != null) {
+      return localArrayList.size();
     }
     return 0;
   }
@@ -57,12 +58,13 @@ public class Lyric
   {
     this.jdField_b_of_type_JavaUtilArrayList.clear();
     this.c = 0;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Sentence localSentence = (Sentence)localIterator.next();
+        Sentence localSentence = (Sentence)((Iterator)localObject).next();
         localSentence.a(paramPaint1, paramPaint2, paramInt, paramBoolean1, paramBoolean2);
         this.c += localSentence.a();
         this.jdField_b_of_type_JavaUtilArrayList.addAll(localSentence.jdField_a_of_type_JavaUtilArrayList);
@@ -74,26 +76,29 @@ public class Lyric
   {
     this.jdField_a_of_type_Int = paramLyric.jdField_a_of_type_Int;
     this.jdField_b_of_type_Int = paramLyric.jdField_b_of_type_Int;
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject == null) {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    } else {
+      ((ArrayList)localObject).clear();
     }
-    for (;;)
+    localObject = paramLyric.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Iterator localIterator = paramLyric.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        Sentence localSentence = (Sentence)localIterator.next();
-        this.jdField_a_of_type_JavaUtilArrayList.add(localSentence.a());
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      Sentence localSentence = (Sentence)((Iterator)localObject).next();
+      this.jdField_a_of_type_JavaUtilArrayList.add(localSentence.a());
     }
     this.c = paramLyric.b();
-    Log.d("Lyric", "copy -> mType : " + this.jdField_a_of_type_Int);
+    paramLyric = new StringBuilder();
+    paramLyric.append("copy -> mType : ");
+    paramLyric.append(this.jdField_a_of_type_Int);
+    Log.d("Lyric", paramLyric.toString());
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0);
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    return (localArrayList == null) || (localArrayList.size() == 0);
   }
   
   public int b()
@@ -108,41 +113,46 @@ public class Lyric
       Log.w("Lyric", "findLineNoByStartTime -> illegal time");
       return -1;
     }
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (((ArrayList)localObject).size() != 0))
     {
-      Log.w("Lyric", "findLineNoByStartTime -> lyric is empty");
-      return -1;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence != null) && (this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence.jdField_a_of_type_Long < paramInt) && (this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence.jdField_a_of_type_Long + this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence.b > paramInt)) {
-      return this.d;
-    }
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    int k = localArrayList.size();
-    int j = 0;
-    if (j < k)
-    {
-      Sentence localSentence = (Sentence)localArrayList.get(j);
-      if (localSentence == null) {}
-      while (localSentence.jdField_a_of_type_Long <= paramInt)
+      localObject = this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence;
+      if (localObject != null)
       {
-        j += 1;
-        break;
+        long l1 = ((Sentence)localObject).jdField_a_of_type_Long;
+        long l2 = paramInt;
+        if ((l1 < l2) && (this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence.jdField_a_of_type_Long + this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence.b > l2)) {
+          return this.d;
+        }
       }
-    }
-    for (paramInt = j - 1;; paramInt = 0)
-    {
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      int k = ((List)localObject).size();
+      int j = 0;
+      while (j < k)
+      {
+        Sentence localSentence = (Sentence)((List)localObject).get(j);
+        if ((localSentence != null) && (localSentence.jdField_a_of_type_Long > paramInt))
+        {
+          paramInt = j - 1;
+          break label163;
+        }
+        j += 1;
+      }
+      paramInt = 0;
+      label163:
       int i = paramInt;
       if (paramInt < 0) {
         i = 0;
       }
-      if (j == k) {}
-      for (paramInt = k - 1;; paramInt = i)
-      {
-        this.d = paramInt;
-        this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence = ((Sentence)localArrayList.get(paramInt));
-        return paramInt;
+      if (j == k) {
+        i = k - 1;
       }
+      this.d = i;
+      this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence = ((Sentence)((List)localObject).get(i));
+      return i;
     }
+    Log.w("Lyric", "findLineNoByStartTime -> lyric is empty");
+    return -1;
   }
   
   public int c()
@@ -150,19 +160,17 @@ public class Lyric
     if (a()) {
       return 0;
     }
-    Sentence localSentence = (Sentence)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    long l = localSentence.jdField_a_of_type_Long;
-    return (int)(localSentence.b + l);
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject = (Sentence)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
+    return (int)(((Sentence)localObject).jdField_a_of_type_Long + ((Sentence)localObject).b);
   }
   
   public int c(int paramInt)
   {
-    int i;
     if (paramInt < 0)
     {
       Log.w("Lyric", "findEndLineByStartTime -> illegal time");
-      i = 0;
-      return i;
+      return 0;
     }
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
     if (localArrayList == null)
@@ -172,27 +180,26 @@ public class Lyric
     }
     int k = localArrayList.size();
     int j = 0;
-    if (j < k)
+    while (j < k)
     {
       Sentence localSentence = (Sentence)localArrayList.get(j);
-      if (localSentence == null) {}
-      while (paramInt > localSentence.jdField_a_of_type_Long)
+      if ((localSentence != null) && (paramInt <= localSentence.jdField_a_of_type_Long))
       {
-        j += 1;
-        break;
+        paramInt = j - 1;
+        break label96;
       }
+      j += 1;
     }
-    for (paramInt = j - 1;; paramInt = 0)
-    {
-      i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
-      }
-      if (j != k) {
-        break;
-      }
-      return k - 1;
+    paramInt = 0;
+    label96:
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = 0;
     }
+    if (j == k) {
+      i = k - 1;
+    }
+    return i;
   }
   
   public String toString()
@@ -220,7 +227,7 @@ public class Lyric
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.data.Lyric
  * JD-Core Version:    0.7.0.1
  */

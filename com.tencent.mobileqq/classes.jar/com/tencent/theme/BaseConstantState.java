@@ -28,15 +28,24 @@ public abstract class BaseConstantState
   
   public static int scaleFromDensity(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt2 == 0) || (paramInt3 == 0) || (paramInt2 == paramInt3)) {
-      return paramInt1;
+    int i = paramInt1;
+    if (paramInt2 != 0)
+    {
+      i = paramInt1;
+      if (paramInt3 != 0)
+      {
+        if (paramInt2 == paramInt3) {
+          return paramInt1;
+        }
+        i = (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
+      }
     }
-    return (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.theme.BaseConstantState
  * JD-Core Version:    0.7.0.1
  */

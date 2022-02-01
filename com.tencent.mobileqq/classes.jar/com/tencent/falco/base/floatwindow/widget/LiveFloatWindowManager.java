@@ -44,15 +44,16 @@ public class LiveFloatWindowManager
   
   public static LiveFloatWindowManager getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new LiveFloatWindowManager();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new LiveFloatWindowManager();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private FWActivityManager manager(@Nullable Activity paramActivity)
@@ -60,7 +61,8 @@ public class LiveFloatWindowManager
     if (paramActivity != null) {
       return new FWActivityManager(paramActivity);
     }
-    if ((this.activityWr != null) && (this.activityWr.get() != null)) {
+    paramActivity = this.activityWr;
+    if ((paramActivity != null) && (paramActivity.get() != null)) {
       return new FWActivityManager((Activity)this.activityWr.get());
     }
     return null;
@@ -191,10 +193,10 @@ public class LiveFloatWindowManager
   public int getWidth(String paramString)
   {
     paramString = FWAppManager.INSTANCE.getAppFloatManager(paramString);
-    if ((paramString == null) || (paramString.getFrameLayout() == null)) {
-      return 0;
+    if ((paramString != null) && (paramString.getFrameLayout() != null)) {
+      return paramString.getFrameLayout().getWidth();
     }
-    return paramString.getFrameLayout().getWidth();
+    return 0;
   }
   
   public void hide()
@@ -351,7 +353,7 @@ public class LiveFloatWindowManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.widget.LiveFloatWindowManager
  * JD-Core Version:    0.7.0.1
  */

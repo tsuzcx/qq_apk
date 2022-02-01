@@ -63,8 +63,9 @@ public final class stTroopInfoV2
     paramJceOutputStream.write(this.dwGroupOwnerUin, 4);
     paramJceOutputStream.write(this.dwGroupClassExt, 5);
     paramJceOutputStream.write(this.wGroupFace, 6);
-    if (this.strFingerMemo != null) {
-      paramJceOutputStream.write(this.strFingerMemo, 7);
+    String str = this.strFingerMemo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.cGroupOption, 8);
     paramJceOutputStream.write(this.memberNum, 9);
@@ -74,7 +75,7 @@ public final class stTroopInfoV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.stTroopInfoV2
  * JD-Core Version:    0.7.0.1
  */

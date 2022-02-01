@@ -12,16 +12,25 @@ class ForwardMultServerShare$4
 {
   ForwardMultServerShare$4(ForwardMultServerShare paramForwardMultServerShare) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onError(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.e(ForwardMultServerShare.a(), 1, new Object[] { "notifyNormalSendMessage onError msg =", paramString });
+    }
+    return super.onError(paramInt, paramString, paramBundle);
+  }
+  
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     QLog.d(ForwardMultServerShare.a(), 1, new Object[] { "notifyNormalSendMessage onResult errorCode=", Integer.valueOf(paramInt), ", isTimeOut=", Boolean.valueOf(ForwardMultServerShare.a(this.a)) });
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ForwardStatisticsReporter.a("KEY_STAGE_2_NORMAL_DC2", bool);
-      if (!ForwardMultServerShare.a(this.a)) {
-        break;
-      }
+    boolean bool;
+    if (paramInt == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ForwardStatisticsReporter.a("KEY_STAGE_2_NORMAL_DC2", bool);
+    if (ForwardMultServerShare.a(this.a)) {
       return;
     }
     if (paramBundle != null)
@@ -36,29 +45,24 @@ class ForwardMultServerShare$4
         return;
       }
     }
-    ReportController.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, "", "", "");
+    paramBundle = new StringBuilder();
+    paramBundle.append("");
+    paramBundle.append(paramInt);
+    ReportController.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, paramBundle.toString(), "", "", "");
     paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      QLog.e(ForwardMultServerShare.a(), 1, new Object[] { "notifyNormalSendMessage sendOIDBRequest onResult errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
-      ForwardMultServerShare.a(this.a);
+      ForwardMultServerShare.a(this.a, paramArrayOfByte);
+      ForwardUtils.a(ForwardMultServerShare.a(this.a), paramArrayOfByte, ForwardMultServerShare.a(this.a), ForwardMultServerShare.a(this.a).getString("share_comment_message_for_server"));
       return;
     }
-    ForwardMultServerShare.a(this.a, paramArrayOfByte);
-    ForwardUtils.a(ForwardMultServerShare.a(this.a), paramArrayOfByte, ForwardMultServerShare.a(this.a), ForwardMultServerShare.a(this.a).getString("share_comment_message_for_server"));
-  }
-  
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.e(ForwardMultServerShare.a(), 1, new Object[] { "notifyNormalSendMessage onError msg =", paramString });
-    }
-    return super.a(paramInt, paramString, paramBundle);
+    QLog.e(ForwardMultServerShare.a(), 1, new Object[] { "notifyNormalSendMessage sendOIDBRequest onResult errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
+    ForwardMultServerShare.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMultServerShare.4
  * JD-Core Version:    0.7.0.1
  */

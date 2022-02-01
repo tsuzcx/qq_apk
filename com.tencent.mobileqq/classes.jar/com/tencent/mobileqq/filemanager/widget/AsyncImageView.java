@@ -50,21 +50,21 @@ public class AsyncImageView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ar);
-    this.c = paramContext.getDimensionPixelOffset(R.styleable.jdField_a_of_type_Int, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ba);
+    this.c = paramContext.getDimensionPixelOffset(R.styleable.q, 0);
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    if (Build.VERSION.SDK_INT <= 26) {}
-    for (this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);; this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT))
-    {
-      this.themeImageWrapper.setMaskShape(ThemeImageWrapper.MODE_SQURE);
-      this.jdField_b_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_ArrayOfFloat = new float[8];
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      a();
-      b();
-      paramContext.recycle();
-      return;
+    if (Build.VERSION.SDK_INT <= 26) {
+      this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
     }
+    this.themeImageWrapper.setMaskShape(ThemeImageWrapper.MODE_SQURE);
+    this.jdField_b_of_type_AndroidGraphicsPath = new Path();
+    this.jdField_a_of_type_ArrayOfFloat = new float[8];
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    a();
+    b();
+    paramContext.recycle();
   }
   
   public static URL a(String paramString)
@@ -90,45 +90,75 @@ public class AsyncImageView
   
   public static URL a(String paramString, int paramInt1, int paramInt2, File paramFile, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    long l = 0L;
+    long l;
     if (paramFile != null) {
       l = paramFile.lastModified();
+    } else {
+      l = 0L;
     }
-    paramString = paramString + "|" + paramInt1 + "|" + paramInt2 + "|" + l + "|1";
+    paramFile = new StringBuilder();
+    paramFile.append(paramString);
+    paramFile.append("|");
+    paramFile.append(paramInt1);
+    paramFile.append("|");
+    paramFile.append(paramInt2);
+    paramFile.append("|");
+    paramFile.append(l);
+    paramFile.append("|1");
+    paramString = paramFile.toString();
     if (paramBoolean1)
     {
-      paramString = paramString + "|1";
-      if (!paramBoolean2) {
-        break label174;
-      }
-      paramString = paramString + "|1";
-      label111:
-      if (!paramBoolean3) {
-        break label197;
-      }
+      paramFile = new StringBuilder();
+      paramFile.append(paramString);
+      paramFile.append("|1");
+      paramString = paramFile.toString();
     }
-    for (paramString = paramString + "|1";; paramString = paramString + "|0")
+    else
     {
-      try
-      {
-        paramString = new URL("fileassistantimage", "", paramString);
-        return paramString;
-      }
-      catch (MalformedURLException paramString)
-      {
-        label174:
-        label197:
-        if (!QLog.isColorLevel()) {
-          break label238;
-        }
+      paramFile = new StringBuilder();
+      paramFile.append(paramString);
+      paramFile.append("|0");
+      paramString = paramFile.toString();
+    }
+    if (paramBoolean2)
+    {
+      paramFile = new StringBuilder();
+      paramFile.append(paramString);
+      paramFile.append("|1");
+      paramString = paramFile.toString();
+    }
+    else
+    {
+      paramFile = new StringBuilder();
+      paramFile.append(paramString);
+      paramFile.append("|0");
+      paramString = paramFile.toString();
+    }
+    if (paramBoolean3)
+    {
+      paramFile = new StringBuilder();
+      paramFile.append(paramString);
+      paramFile.append("|1");
+      paramString = paramFile.toString();
+    }
+    else
+    {
+      paramFile = new StringBuilder();
+      paramFile.append(paramString);
+      paramFile.append("|0");
+      paramString = paramFile.toString();
+    }
+    try
+    {
+      paramString = new URL("fileassistantimage", "", paramString);
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      if (QLog.isColorLevel()) {
         QLog.d("SelectPhotoTrace", 2, paramString.getMessage(), paramString);
       }
-      paramString = paramString + "|0";
-      break;
-      paramString = paramString + "|0";
-      break label111;
     }
-    label238:
     return null;
   }
   
@@ -142,14 +172,19 @@ public class AsyncImageView
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ArrayOfFloat[0] = (paramInt1 / 2.0F);
-    this.jdField_a_of_type_ArrayOfFloat[1] = (paramInt1 / 2.0F);
-    this.jdField_a_of_type_ArrayOfFloat[2] = (paramInt2 / 2.0F);
-    this.jdField_a_of_type_ArrayOfFloat[3] = (paramInt2 / 2.0F);
-    this.jdField_a_of_type_ArrayOfFloat[4] = (paramInt3 / 2.0F);
-    this.jdField_a_of_type_ArrayOfFloat[5] = (paramInt3 / 2.0F);
-    this.jdField_a_of_type_ArrayOfFloat[6] = (paramInt4 / 2.0F);
-    this.jdField_a_of_type_ArrayOfFloat[7] = (paramInt4 / 2.0F);
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    float f = paramInt1 / 2.0F;
+    arrayOfFloat[0] = f;
+    arrayOfFloat[1] = f;
+    f = paramInt2 / 2.0F;
+    arrayOfFloat[2] = f;
+    arrayOfFloat[3] = f;
+    f = paramInt3 / 2.0F;
+    arrayOfFloat[4] = f;
+    arrayOfFloat[5] = f;
+    f = paramInt4 / 2.0F;
+    arrayOfFloat[6] = f;
+    arrayOfFloat[7] = f;
   }
   
   private void a(Drawable paramDrawable)
@@ -162,23 +197,22 @@ public class AsyncImageView
   
   public static boolean a(URL paramURL)
   {
-    if (paramURL == null) {}
-    for (;;)
-    {
+    if (paramURL == null) {
       return false;
-      try
+    }
+    try
+    {
+      paramURL = paramURL.getProtocol();
+      if (paramURL != null)
       {
-        paramURL = paramURL.getProtocol();
-        if (paramURL != null)
-        {
-          boolean bool = paramURL.equals("filegalleryorigimage");
-          if (bool) {
-            return true;
-          }
+        boolean bool = paramURL.equals("filegalleryorigimage");
+        if (bool) {
+          return true;
         }
       }
-      catch (Exception paramURL) {}
+      return false;
     }
+    catch (Exception paramURL) {}
     return false;
   }
   
@@ -187,15 +221,19 @@ public class AsyncImageView
     if (this.c > 0)
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
+      for (;;)
       {
-        this.jdField_a_of_type_ArrayOfFloat[i] = (this.c / 2.0F);
+        float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+        if (i >= arrayOfFloat.length) {
+          break;
+        }
+        arrayOfFloat[i] = (this.c / 2.0F);
         i += 1;
       }
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.c <= 0)
     {
@@ -211,21 +249,21 @@ public class AsyncImageView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsXfermode);
-    if (Build.VERSION.SDK_INT <= 26) {
+    if (Build.VERSION.SDK_INT <= 26)
+    {
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      paramCanvas.restore();
-      return;
       this.jdField_b_of_type_AndroidGraphicsPath.addRect(this.jdField_a_of_type_AndroidGraphicsRectF, Path.Direction.CCW);
       this.jdField_b_of_type_AndroidGraphicsPath.op(this.jdField_a_of_type_AndroidGraphicsPath, Path.Op.DIFFERENCE);
       paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+    paramCanvas.restore();
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     a();
@@ -237,22 +275,20 @@ public class AsyncImageView
       return;
     }
     Object localObject = new File(paramString);
-    if (((File)localObject).exists())
+    if (((File)localObject).exists()) {}
+    try
     {
-      try
+      int i = getWidth();
+      int j = getHeight();
+      if ((i > 0) && (j > 0))
       {
-        int i = getWidth();
-        int j = getHeight();
-        if ((i > 0) && (j > 0))
-        {
-          this.jdField_a_of_type_Int = i;
-          this.jdField_b_of_type_Int = j;
-        }
-        setAdjustViewBounds(false);
-        paramString = a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, (File)localObject, false, true);
-        if (paramString == null) {
-          break label162;
-        }
+        this.jdField_a_of_type_Int = i;
+        this.jdField_b_of_type_Int = j;
+      }
+      setAdjustViewBounds(false);
+      paramString = a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, (File)localObject, false, true);
+      if (paramString != null)
+      {
         localObject = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_Int;
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_b_of_type_Int;
@@ -265,18 +301,19 @@ public class AsyncImageView
           setImageDrawable(paramString);
           return;
         }
-      }
-      catch (Exception paramString)
-      {
         a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         return;
       }
       a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       return;
-      label162:
-      a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return;
     }
+    catch (Exception paramString)
+    {
+      label161:
+      break label161;
+    }
+    a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    return;
     a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
@@ -292,37 +329,34 @@ public class AsyncImageView
   
   public void setAsyncImage(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return;
-      File localFile = new File(paramString);
-      if (!localFile.exists()) {
-        break label97;
+    }
+    File localFile = new File(paramString);
+    if (localFile.exists()) {}
+    try
+    {
+      setAdjustViewBounds(false);
+      paramString = a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, localFile, false, false);
+      if (paramString == null) {
+        return;
       }
-      try
-      {
-        setAdjustViewBounds(false);
-        paramString = a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, localFile, false, false);
-        if (paramString != null)
-        {
-          paramString = URLDrawable.getDrawable(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
-          if (paramString == null)
-          {
-            a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-            return;
-          }
-        }
-      }
-      catch (Exception paramString)
+      paramString = URLDrawable.getDrawable(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
+      if (paramString == null)
       {
         a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         return;
       }
+      setImageDrawable(paramString);
+      return;
     }
-    setImageDrawable(paramString);
+    catch (Exception paramString)
+    {
+      label88:
+      break label88;
+    }
+    a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     return;
-    label97:
     a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
@@ -362,25 +396,21 @@ public class AsyncImageView
     }
     try
     {
-      paramString = new URL(paramString);
+      paramString = URLDrawable.getDrawable(new URL(paramString), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
       if (paramString == null)
       {
         a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         return;
       }
+      setImageDrawable(paramString);
+      return;
     }
     catch (Exception paramString)
     {
-      a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return;
+      label61:
+      break label61;
     }
-    paramString = URLDrawable.getDrawable(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
-    if (paramString == null)
-    {
-      a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return;
-    }
-    setImageDrawable(paramString);
+    a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
   public void setWidth(int paramInt)
@@ -390,7 +420,7 @@ public class AsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.AsyncImageView
  * JD-Core Version:    0.7.0.1
  */

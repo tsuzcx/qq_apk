@@ -17,7 +17,7 @@ class AudioMediaModule$1
     AudioMediaModule.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizModuleAudioMediaModule).i("AudioMediaModule", "audioCoreEventCallback: onAVStart", new Object[0]);
     AudioMediaModule.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizModuleAudioMediaModule);
     AudioMediaModule.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizModuleAudioMediaModule);
-    DataReport.a(AudioMediaModule.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizModuleAudioMediaModule).getEnterRoomInfo().extData, String.valueOf(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesAudioEnterRoomParam.b));
+    DataReport.a(AudioMediaModule.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizModuleAudioMediaModule).getEnterRoomInfo().extData, String.valueOf(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesAudioEnterRoomParam.b), this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesAudioEnterRoomParam.a, this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesAudioEnterRoomParam.c);
   }
   
   public void a(int paramInt, String paramString)
@@ -32,7 +32,7 @@ class AudioMediaModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.module.AudioMediaModule.1
  * JD-Core Version:    0.7.0.1
  */

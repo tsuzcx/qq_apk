@@ -1,30 +1,28 @@
 package com.tencent.mobileqq.qassistant.core;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.qassistant.api.IVoiceAssistantCore;
 import com.tencent.mobileqq.qassistant.data.CommandInfo;
+import com.tencent.mobileqq.qassistant.data.ConfirmSendInfo;
 import com.tencent.mobileqq.qassistant.data.ContentJsonInfo;
 import com.tencent.mobileqq.qassistant.data.FriendItemInfo;
 import com.tencent.mobileqq.qassistant.data.JumpInfo;
-import com.tencent.mobileqq.qassistant.data.VoiceAssiatantRespInfo;
-import com.tencent.mobileqq.qassistant.data.VoiceAssiatantRespInfo.ConfirmSendInfo;
-import com.tencent.mobileqq.qassistant.data.VoiceAssiatantRespInfo.Slot;
-import com.tencent.mobileqq.qassistant.data.VoiceAssiatantRespInfo.UserInfo;
+import com.tencent.mobileqq.qassistant.data.VoiceAssistantRespInfo;
+import com.tencent.mobileqq.qassistant.data.VoiceAssistantRespInfo.Slot;
+import com.tencent.mobileqq.qassistant.data.VoiceAssistantRespInfo.UserInfo;
 import com.tencent.mobileqq.qassistant.data.VoiceItemInfo;
 import com.tencent.mobileqq.qassistant.util.CommandUtils;
 import com.tencent.mobileqq.qassistant.util.ReportUtils;
-import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class CommandDistributorHelper
 {
-  private VoiceAssistantManager jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceAssistantManager = (VoiceAssistantManager)AssistantUtils.a().getManager(QQManagerFactory.VOICE_ASSISTANT_MANAGER);
+  private IVoiceAssistantCore jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore = AssistantUtils.a();
   private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
   
   public CommandDistributorHelper()
@@ -32,113 +30,132 @@ public class CommandDistributorHelper
     a();
   }
   
-  private CommandInfo a(VoiceAssiatantRespInfo.ConfirmSendInfo paramConfirmSendInfo)
+  private CommandInfo a(ConfirmSendInfo paramConfirmSendInfo)
   {
     return CommandUtils.a(paramConfirmSendInfo);
   }
   
-  private CommandInfo a(VoiceAssiatantRespInfo paramVoiceAssiatantRespInfo)
+  private CommandInfo a(VoiceAssistantRespInfo paramVoiceAssistantRespInfo)
   {
-    ContentJsonInfo localContentJsonInfo;
-    if ((paramVoiceAssiatantRespInfo != null) && (!TextUtils.isEmpty(paramVoiceAssiatantRespInfo.d)) && (this.jdField_a_of_type_JavaUtilHashMap != null))
+    if ((paramVoiceAssistantRespInfo != null) && (!TextUtils.isEmpty(paramVoiceAssistantRespInfo.d)) && (this.jdField_a_of_type_JavaUtilHashMap != null))
     {
-      if (("NO_MATCH".equals(paramVoiceAssiatantRespInfo.d)) && (paramVoiceAssiatantRespInfo.jdField_a_of_type_Boolean))
+      if (("NO_MATCH".equals(paramVoiceAssistantRespInfo.d)) && (paramVoiceAssistantRespInfo.jdField_a_of_type_Boolean))
       {
-        ReportUtils.a(paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-        return CommandUtils.a(BaseApplicationImpl.getContext().getString(2131720610), true);
+        ReportUtils.a(paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+        return CommandUtils.a(AssistantUtils.a(2131720325), true);
       }
-      if (TextUtils.isEmpty(paramVoiceAssiatantRespInfo.e)) {
-        break label683;
-      }
-      if (!"跳转页面".equals(paramVoiceAssiatantRespInfo.d)) {
-        break label205;
-      }
-      if (("NO_MATCH".equals(paramVoiceAssiatantRespInfo.e)) || ("不支持此功能".equals(paramVoiceAssiatantRespInfo.e)))
+      StringBuilder localStringBuilder1;
+      if (!TextUtils.isEmpty(paramVoiceAssistantRespInfo.e))
       {
-        ReportUtils.b();
-        return CommandUtils.a(BaseApplicationImpl.getContext().getString(2131720609), true);
-      }
-      localContentJsonInfo = a(paramVoiceAssiatantRespInfo.c);
-      if (localContentJsonInfo != null)
-      {
-        ReportUtils.a(16, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-        return new CommandInfo(localContentJsonInfo.jdField_a_of_type_Int, localContentJsonInfo.jdField_a_of_type_JavaLangString, new JumpInfo(localContentJsonInfo.jdField_b_of_type_Int));
-      }
-      AssistantUtils.a("CommandDistributorHelper", "buildCommandInfo JumpSkill content = " + paramVoiceAssiatantRespInfo.c);
-    }
-    label683:
-    for (;;)
-    {
-      return null;
-      label205:
-      if ("智能应答".equals(paramVoiceAssiatantRespInfo.d))
-      {
-        localContentJsonInfo = a(paramVoiceAssiatantRespInfo.c);
-        if (localContentJsonInfo != null)
+        Object localObject;
+        if ("跳转页面".equals(paramVoiceAssistantRespInfo.d))
         {
-          a(paramVoiceAssiatantRespInfo.e, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return new CommandInfo(localContentJsonInfo.jdField_a_of_type_Int, localContentJsonInfo.jdField_a_of_type_JavaLangString);
+          if ((!"NO_MATCH".equals(paramVoiceAssistantRespInfo.e)) && (!"不支持此功能".equals(paramVoiceAssistantRespInfo.e)))
+          {
+            localObject = a(paramVoiceAssistantRespInfo.c);
+            if (localObject != null)
+            {
+              ReportUtils.a(16, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+              return new CommandInfo(((ContentJsonInfo)localObject).jdField_a_of_type_Int, ((ContentJsonInfo)localObject).jdField_a_of_type_JavaLangString, new JumpInfo(((ContentJsonInfo)localObject).jdField_b_of_type_Int));
+            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("buildCommandInfo JumpSkill content = ");
+            ((StringBuilder)localObject).append(paramVoiceAssistantRespInfo.c);
+            AssistantUtils.a("CommandDistributorHelper", ((StringBuilder)localObject).toString());
+          }
+          else
+          {
+            ReportUtils.b();
+            return CommandUtils.a(AssistantUtils.a(2131720324), true);
+          }
         }
-        AssistantUtils.a("CommandDistributorHelper", "buildCommandInfo smartAnswerSkill content = " + paramVoiceAssiatantRespInfo.c);
+        else if ("智能应答".equals(paramVoiceAssistantRespInfo.d))
+        {
+          localObject = a(paramVoiceAssistantRespInfo.c);
+          if (localObject != null)
+          {
+            a(paramVoiceAssistantRespInfo.e, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return new CommandInfo(((ContentJsonInfo)localObject).jdField_a_of_type_Int, ((ContentJsonInfo)localObject).jdField_a_of_type_JavaLangString);
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("buildCommandInfo smartAnswerSkill content = ");
+          ((StringBuilder)localObject).append(paramVoiceAssistantRespInfo.c);
+          AssistantUtils.a("CommandDistributorHelper", ((StringBuilder)localObject).toString());
+        }
+        else
+        {
+          int i;
+          try
+          {
+            localObject = this.jdField_a_of_type_JavaUtilHashMap;
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append(paramVoiceAssistantRespInfo.d);
+            localStringBuilder2.append(paramVoiceAssistantRespInfo.e);
+            i = ((Integer)((HashMap)localObject).get(localStringBuilder2.toString())).intValue();
+          }
+          catch (Exception localException)
+          {
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("buildCommandInfo getIntentType exception = ");
+            localStringBuilder2.append(localException.getMessage());
+            AssistantUtils.a("CommandDistributorHelper", localStringBuilder2.toString());
+            i = 0;
+          }
+          switch (i)
+          {
+          default: 
+            localStringBuilder1 = new StringBuilder();
+            localStringBuilder1.append("buildCommandInfo skill = ");
+            localStringBuilder1.append(paramVoiceAssistantRespInfo.d);
+            localStringBuilder1.append(", intent = ");
+            localStringBuilder1.append(paramVoiceAssistantRespInfo.e);
+            AssistantUtils.a("CommandDistributorHelper", localStringBuilder1.toString());
+            break;
+          case 11: 
+            ReportUtils.a(17, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return a(paramVoiceAssistantRespInfo.c);
+          case 10: 
+            ReportUtils.a(6, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return a(paramVoiceAssistantRespInfo.c);
+          case 9: 
+            ReportUtils.a(5, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return a(paramVoiceAssistantRespInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataConfirmSendInfo);
+          case 8: 
+            ReportUtils.a(15, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return a(paramVoiceAssistantRespInfo.c);
+          case 7: 
+            ReportUtils.a(9, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return a(false);
+          case 6: 
+            ReportUtils.a(10, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return a(true);
+          case 5: 
+            ReportUtils.a(8, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return a(paramVoiceAssistantRespInfo.jdField_a_of_type_JavaUtilList, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaUtilList, true);
+          case 4: 
+            ReportUtils.a(12, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return a(paramVoiceAssistantRespInfo.jdField_a_of_type_JavaUtilList, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaUtilList, false);
+          case 3: 
+            ReportUtils.a(11, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return a(paramVoiceAssistantRespInfo.jdField_a_of_type_JavaUtilList);
+          case 2: 
+            ReportUtils.a(13, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return a(paramVoiceAssistantRespInfo.jdField_a_of_type_JavaUtilList, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaUtilList, false);
+          case 1: 
+            ReportUtils.a(14, paramVoiceAssistantRespInfo.jdField_b_of_type_JavaLangString);
+            return a(paramVoiceAssistantRespInfo.e, paramVoiceAssistantRespInfo.c);
+          }
+        }
       }
       else
       {
-        try
-        {
-          int i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramVoiceAssiatantRespInfo.d + paramVoiceAssiatantRespInfo.e)).intValue();
-          j = i;
-          if (i <= 0) {}
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            AssistantUtils.a("CommandDistributorHelper", "buildCommandInfo getIntentType exception = " + localException.getMessage());
-            int j = 0;
-          }
-          ReportUtils.a(14, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return a(paramVoiceAssiatantRespInfo.e, paramVoiceAssiatantRespInfo.c);
-        }
-        switch (j)
-        {
-        default: 
-          AssistantUtils.a("CommandDistributorHelper", "buildCommandInfo skill = " + paramVoiceAssiatantRespInfo.d + ", intent = " + paramVoiceAssiatantRespInfo.e);
-          break;
-        case 1: 
-        case 2: 
-          ReportUtils.a(13, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return a(paramVoiceAssiatantRespInfo.jdField_a_of_type_JavaUtilList, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaUtilList, false);
-        case 3: 
-          ReportUtils.a(11, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return a(paramVoiceAssiatantRespInfo.jdField_a_of_type_JavaUtilList);
-        case 4: 
-          ReportUtils.a(12, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return a(paramVoiceAssiatantRespInfo.jdField_a_of_type_JavaUtilList, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaUtilList, false);
-        case 5: 
-          ReportUtils.a(8, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return a(paramVoiceAssiatantRespInfo.jdField_a_of_type_JavaUtilList, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaUtilList, true);
-        case 6: 
-          ReportUtils.a(10, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return a(true);
-        case 7: 
-          ReportUtils.a(9, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return a(false);
-        case 8: 
-          ReportUtils.a(15, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return a(paramVoiceAssiatantRespInfo.c);
-        case 9: 
-          ReportUtils.a(5, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return a(paramVoiceAssiatantRespInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataVoiceAssiatantRespInfo$ConfirmSendInfo);
-        case 10: 
-          ReportUtils.a(6, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return a(paramVoiceAssiatantRespInfo.c);
-        case 11: 
-          ReportUtils.a(17, paramVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString);
-          return a(paramVoiceAssiatantRespInfo.c);
-          AssistantUtils.a("CommandDistributorHelper", "buildCommandInfo skill = " + paramVoiceAssiatantRespInfo.d);
-        }
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("buildCommandInfo skill = ");
+        localStringBuilder1.append(paramVoiceAssistantRespInfo.d);
+        AssistantUtils.a("CommandDistributorHelper", localStringBuilder1.toString());
       }
     }
+    return null;
   }
   
   private CommandInfo a(String paramString)
@@ -159,10 +176,10 @@ public class CommandDistributorHelper
     return paramString2;
   }
   
-  private CommandInfo a(List<VoiceAssiatantRespInfo.Slot> paramList)
+  private CommandInfo a(List<VoiceAssistantRespInfo.Slot> paramList)
   {
     Object localObject;
-    if ((paramList != null) && (!paramList.isEmpty()) && (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceAssistantManager != null))
+    if ((paramList != null) && (!paramList.isEmpty()) && (this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore != null))
     {
       Iterator localIterator = paramList.iterator();
       do
@@ -172,10 +189,10 @@ public class CommandDistributorHelper
           if (!localIterator.hasNext()) {
             break;
           }
-          localObject = (VoiceAssiatantRespInfo.Slot)localIterator.next();
-        } while ((TextUtils.isEmpty(((VoiceAssiatantRespInfo.Slot)localObject).jdField_a_of_type_JavaLangString)) || (!((VoiceAssiatantRespInfo.Slot)localObject).jdField_a_of_type_JavaLangString.equals("num")));
-        paramList = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceAssistantManager.a();
-      } while ((TextUtils.isEmpty(((VoiceAssiatantRespInfo.Slot)localObject).c)) || (paramList == null) || (paramList.isEmpty()));
+          localObject = (VoiceAssistantRespInfo.Slot)localIterator.next();
+        } while ((TextUtils.isEmpty(((VoiceAssistantRespInfo.Slot)localObject).jdField_a_of_type_JavaLangString)) || (!((VoiceAssistantRespInfo.Slot)localObject).jdField_a_of_type_JavaLangString.equals("num")));
+        paramList = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.getCurrentVoiceItemInfo();
+      } while ((TextUtils.isEmpty(((VoiceAssistantRespInfo.Slot)localObject).c)) || (paramList == null) || (paramList.isEmpty()));
     }
     for (;;)
     {
@@ -183,25 +200,21 @@ public class CommandDistributorHelper
       int i;
       try
       {
-        j = Integer.parseInt(((VoiceAssiatantRespInfo.Slot)localObject).c);
+        j = Integer.parseInt(((VoiceAssistantRespInfo.Slot)localObject).c);
         localObject = paramList.iterator();
         i = 0;
         if (!((Iterator)localObject).hasNext()) {
-          break label284;
+          break label293;
         }
         if (((VoiceItemInfo)((Iterator)localObject).next()).a == null) {
-          break label281;
+          continue;
         }
         i += 1;
-      }
-      catch (Exception paramList)
-      {
-        AssistantUtils.a("CommandDistributorHelper", "buildCommandInfo exception = " + paramList.getMessage());
-      }
-      return CommandUtils.a();
-      paramList = paramList.iterator();
-      if (paramList.hasNext())
-      {
+        continue;
+        paramList = paramList.iterator();
+        if (!paramList.hasNext()) {
+          break label305;
+        }
         localObject = (VoiceItemInfo)paramList.next();
         if ((((VoiceItemInfo)localObject).a == null) || (j != ((VoiceItemInfo)localObject).a.jdField_b_of_type_Int)) {
           continue;
@@ -213,36 +226,45 @@ public class CommandDistributorHelper
           return CommandUtils.a(paramList, paramList.jdField_a_of_type_Boolean, false);
         }
         AssistantUtils.a("CommandDistributorHelper", "buildCommandInfo not find friendItemInfo");
-        break;
-        break;
-        return null;
       }
-      paramList = null;
-      continue;
-      label281:
-      continue;
-      label284:
+      catch (Exception paramList)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("buildCommandInfo exception = ");
+        ((StringBuilder)localObject).append(paramList.getMessage());
+        AssistantUtils.a("CommandDistributorHelper", ((StringBuilder)localObject).toString());
+      }
+      paramList = CommandUtils.a();
+      return paramList;
+      break;
+      return null;
+      label293:
       if (j > 0) {
-        if (j <= i) {}
+        if (j > i)
+        {
+          continue;
+          label305:
+          paramList = null;
+        }
       }
     }
   }
   
-  private CommandInfo a(List<VoiceAssiatantRespInfo.Slot> paramList, List<VoiceAssiatantRespInfo.UserInfo> paramList1, boolean paramBoolean)
+  private CommandInfo a(List<VoiceAssistantRespInfo.Slot> paramList, List<VoiceAssistantRespInfo.UserInfo> paramList1, boolean paramBoolean)
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       Object localObject = paramList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        paramList = (VoiceAssiatantRespInfo.Slot)((Iterator)localObject).next();
+        paramList = (VoiceAssistantRespInfo.Slot)((Iterator)localObject).next();
         if ((!TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString)) && (paramList.jdField_a_of_type_JavaLangString.equals("voiceCallObject")) && (!TextUtils.isEmpty(paramList.c)) && (paramList1 != null) && (!paramList1.isEmpty()))
         {
           localObject = new ArrayList();
           paramList1 = paramList1.iterator();
           while (paramList1.hasNext())
           {
-            VoiceAssiatantRespInfo.UserInfo localUserInfo = (VoiceAssiatantRespInfo.UserInfo)paramList1.next();
+            VoiceAssistantRespInfo.UserInfo localUserInfo = (VoiceAssistantRespInfo.UserInfo)paramList1.next();
             FriendItemInfo localFriendItemInfo = new FriendItemInfo();
             localFriendItemInfo.jdField_a_of_type_JavaLangString = String.valueOf(localUserInfo.jdField_a_of_type_Long);
             localFriendItemInfo.jdField_b_of_type_JavaLangString = localUserInfo.jdField_a_of_type_JavaLangString;
@@ -255,7 +277,7 @@ public class CommandDistributorHelper
         }
       }
     }
-    return CommandUtils.a(BaseApplicationImpl.getContext().getString(2131720607));
+    return CommandUtils.a(AssistantUtils.a(2131720322));
   }
   
   private CommandInfo a(boolean paramBoolean)
@@ -263,73 +285,43 @@ public class CommandDistributorHelper
     return CommandUtils.a(paramBoolean);
   }
   
-  /* Error */
   private ContentJsonInfo a(String paramString)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokestatic 56	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifne +99 -> 103
-    //   7: aload_1
-    //   8: invokestatic 295	com/tencent/mobileqq/qassistant/core/CommandDistributorHelper:a	(Ljava/lang/String;)Z
-    //   11: ifeq +92 -> 103
-    //   14: new 297	org/json/JSONObject
-    //   17: dup
-    //   18: aload_1
-    //   19: invokespecial 299	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   22: astore_2
-    //   23: new 116	com/tencent/mobileqq/qassistant/data/ContentJsonInfo
-    //   26: dup
-    //   27: invokespecial 300	com/tencent/mobileqq/qassistant/data/ContentJsonInfo:<init>	()V
-    //   30: astore_1
-    //   31: aload_1
-    //   32: aload_2
-    //   33: ldc_w 302
-    //   36: invokevirtual 305	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   39: putfield 118	com/tencent/mobileqq/qassistant/data/ContentJsonInfo:jdField_a_of_type_Int	I
-    //   42: aload_1
-    //   43: aload_2
-    //   44: ldc_w 307
-    //   47: invokevirtual 305	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   50: putfield 124	com/tencent/mobileqq/qassistant/data/ContentJsonInfo:jdField_b_of_type_Int	I
-    //   53: aload_1
-    //   54: aload_2
-    //   55: ldc_w 309
-    //   58: invokevirtual 312	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   61: putfield 120	com/tencent/mobileqq/qassistant/data/ContentJsonInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   64: aload_1
-    //   65: areturn
-    //   66: astore_2
-    //   67: aconst_null
-    //   68: astore_1
-    //   69: ldc 132
-    //   71: new 134	java/lang/StringBuilder
-    //   74: dup
-    //   75: invokespecial 135	java/lang/StringBuilder:<init>	()V
-    //   78: ldc_w 314
-    //   81: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: aload_2
-    //   85: invokevirtual 315	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   88: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   94: invokestatic 148	com/tencent/mobileqq/qassistant/core/AssistantUtils:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   97: aload_1
-    //   98: areturn
-    //   99: astore_2
-    //   100: goto -31 -> 69
-    //   103: aconst_null
-    //   104: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	105	0	this	CommandDistributorHelper
-    //   0	105	1	paramString	String
-    //   22	33	2	localJSONObject	JSONObject
-    //   66	19	2	localJSONException1	org.json.JSONException
-    //   99	1	2	localJSONException2	org.json.JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   14	31	66	org/json/JSONException
-    //   31	64	99	org/json/JSONException
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject2 = null;
+    StringBuilder localStringBuilder = null;
+    Object localObject1 = localObject2;
+    String str;
+    if (!bool)
+    {
+      localObject1 = localObject2;
+      if (a(paramString))
+      {
+        try
+        {
+          localObject1 = new JSONObject(paramString);
+          paramString = new ContentJsonInfo();
+          try
+          {
+            paramString.jdField_a_of_type_Int = ((JSONObject)localObject1).getInt("command_type");
+            paramString.jdField_b_of_type_Int = ((JSONObject)localObject1).getInt("jump_type");
+            paramString.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("command_name");
+            return paramString;
+          }
+          catch (JSONException localJSONException1) {}
+          localStringBuilder = new StringBuilder();
+        }
+        catch (JSONException localJSONException2)
+        {
+          paramString = localStringBuilder;
+        }
+        localStringBuilder.append("parseContent exception :");
+        localStringBuilder.append(localJSONException2.getMessage());
+        AssistantUtils.a("CommandDistributorHelper", localStringBuilder.toString());
+        str = paramString;
+      }
+    }
+    return str;
   }
   
   private void a()
@@ -350,32 +342,23 @@ public class CommandDistributorHelper
   
   private void a(String paramString1, String paramString2)
   {
-    String str;
-    int i;
     if (!TextUtils.isEmpty(paramString1))
     {
-      str = paramString2;
+      String str = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
         str = "";
       }
-      i = 0;
-      if (!"功能".equals(paramString1)) {
-        break label43;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      ReportUtils.a(i, str);
-      return;
-      label43:
-      if ("脏话".equals(paramString1)) {
+      int i = 0;
+      if ("功能".equals(paramString1)) {
+        i = 1;
+      } else if ("脏话".equals(paramString1)) {
         i = 2;
       } else if ("你是谁".equals(paramString1)) {
         i = 3;
       } else if ("在干嘛".equals(paramString1)) {
         i = 4;
       }
+      ReportUtils.a(i, str);
     }
   }
   
@@ -386,21 +369,26 @@ public class CommandDistributorHelper
       new JSONObject(paramString);
       return true;
     }
-    catch (Throwable paramString) {}
+    catch (Throwable paramString)
+    {
+      label11:
+      break label11;
+    }
     return false;
   }
   
-  public void a(VoiceAssiatantRespInfo paramVoiceAssiatantRespInfo)
+  public void a(VoiceAssistantRespInfo paramVoiceAssistantRespInfo)
   {
-    paramVoiceAssiatantRespInfo = a(paramVoiceAssiatantRespInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceAssistantManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceAssistantManager.a(paramVoiceAssiatantRespInfo);
+    paramVoiceAssistantRespInfo = a(paramVoiceAssistantRespInfo);
+    IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    if (localIVoiceAssistantCore != null) {
+      localIVoiceAssistantCore.executeCommand(paramVoiceAssistantRespInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.CommandDistributorHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,8 @@ class InternalJSPlugin$5
       String str3 = paramJSONObject.optString("nativeAppId");
       String str4 = paramJSONObject.optString("downloadUrl");
       int i = paramJSONObject.optInt("onlyOpen");
-      InternalJSPlugin.access$600(this.this$0, InternalJSPlugin.access$500(this.this$0).getAttachedActivity(), str3, str2, str1, str4, i, this.val$appParameter, this.val$req);
+      paramJSONObject = this.this$0;
+      InternalJSPlugin.access$600(paramJSONObject, InternalJSPlugin.access$500(paramJSONObject).getAttachedActivity(), str3, str2, str1, str4, i, this.val$appParameter, this.val$req);
       return;
     }
     paramJSONObject = InternalJSPlugin.access$700(this.this$0, 2);
@@ -30,7 +31,7 @@ class InternalJSPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InternalJSPlugin.5
  * JD-Core Version:    0.7.0.1
  */

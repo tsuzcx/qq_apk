@@ -44,42 +44,44 @@ class HotPicTab$HotPicTabAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject;
     if (paramView == null)
     {
       localObject = new HotPicTab.ViewHolder(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab);
-      paramView = LayoutInflater.from(HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab)).inflate(2131558655, null);
-      ((HotPicTab.ViewHolder)localObject).a = ((TextView)paramView.findViewById(2131368545));
+      paramView = LayoutInflater.from(HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab)).inflate(2131558553, null);
+      ((HotPicTab.ViewHolder)localObject).a = ((TextView)paramView.findViewById(2131368288));
       paramView.setTag(localObject);
     }
-    for (;;)
+    else
     {
-      String str = ((HotPicTagInfo)getItem(paramInt)).tagName;
-      localObject = ((HotPicTab.ViewHolder)localObject).a;
-      ((TextView)localObject).setText(str);
-      ((TextView)localObject).setTextSize(2, HotPicTab.b());
-      ((TextView)localObject).setTextColor(HotPicTab.c());
-      ((TextView)localObject).setPadding(0, 0, 0, 0);
-      ((TextView)localObject).setFocusable(true);
-      ((TextView)localObject).setGravity(17);
-      paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue(), -1));
-      paramView.setContentDescription(str);
-      paramView.setFocusable(true);
-      paramView.setOnHoverListener(new HotPicTab.HotPicTabAdapter.1(this));
-      if (!HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).contains(Integer.valueOf(paramInt)))
-      {
-        ReportController.b(null, "dc00898", "", "", "0X8008077", "0X8008077", 0, 0, paramInt + "", "", str, "");
-        HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).add(Integer.valueOf(paramInt));
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
       localObject = (HotPicTab.ViewHolder)paramView.getTag();
     }
+    String str = ((HotPicTagInfo)getItem(paramInt)).tagName;
+    Object localObject = ((HotPicTab.ViewHolder)localObject).a;
+    ((TextView)localObject).setText(str);
+    ((TextView)localObject).setTextSize(2, HotPicTab.b());
+    ((TextView)localObject).setTextColor(HotPicTab.c());
+    ((TextView)localObject).setPadding(0, 0, 0, 0);
+    ((TextView)localObject).setFocusable(true);
+    ((TextView)localObject).setGravity(17);
+    paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue(), -1));
+    paramView.setContentDescription(str);
+    paramView.setFocusable(true);
+    paramView.setOnHoverListener(new HotPicTab.HotPicTabAdapter.1(this));
+    if (!HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).contains(Integer.valueOf(paramInt)))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("");
+      ReportController.b(null, "dc00898", "", "", "0X8008077", "0X8008077", 0, 0, ((StringBuilder)localObject).toString(), "", str, "");
+      HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).add(Integer.valueOf(paramInt));
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicTab.HotPicTabAdapter
  * JD-Core Version:    0.7.0.1
  */

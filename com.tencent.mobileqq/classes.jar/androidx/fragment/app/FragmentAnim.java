@@ -40,37 +40,37 @@ class FragmentAnim
   
   static FragmentAnim.AnimationOrAnimator loadAnimation(@NonNull Context paramContext, @NonNull FragmentContainer paramFragmentContainer, @NonNull Fragment paramFragment, boolean paramBoolean)
   {
-    int j = paramFragment.getNextTransition();
-    int k = paramFragment.getNextAnim();
+    int k = paramFragment.getNextTransition();
+    int m = paramFragment.getNextAnim();
+    j = 0;
     paramFragment.setNextAnim(0);
     paramFragmentContainer = paramFragmentContainer.onFindViewById(paramFragment.mContainerId);
-    if ((paramFragmentContainer != null) && (paramFragmentContainer.getTag(2131381729) != null)) {
-      paramFragmentContainer.setTag(2131381729, null);
+    if ((paramFragmentContainer != null) && (paramFragmentContainer.getTag(2131380961) != null)) {
+      paramFragmentContainer.setTag(2131380961, null);
     }
     if ((paramFragment.mContainer != null) && (paramFragment.mContainer.getLayoutTransition() != null)) {
       return null;
     }
-    paramFragmentContainer = paramFragment.onCreateAnimation(j, paramBoolean, k);
+    paramFragmentContainer = paramFragment.onCreateAnimation(k, paramBoolean, m);
     if (paramFragmentContainer != null) {
       return new FragmentAnim.AnimationOrAnimator(paramFragmentContainer);
     }
-    paramFragmentContainer = paramFragment.onCreateAnimator(j, paramBoolean, k);
+    paramFragmentContainer = paramFragment.onCreateAnimator(k, paramBoolean, m);
     if (paramFragmentContainer != null) {
       return new FragmentAnim.AnimationOrAnimator(paramFragmentContainer);
     }
     boolean bool;
-    if (k != 0)
+    if (m != 0)
     {
-      bool = "anim".equals(paramContext.getResources().getResourceTypeName(k));
-      if (!bool) {
-        break label259;
-      }
+      bool = "anim".equals(paramContext.getResources().getResourceTypeName(m));
+      i = j;
+      if (!bool) {}
     }
-    for (;;)
+    try
     {
       try
       {
-        paramFragmentContainer = AnimationUtils.loadAnimation(paramContext, k);
+        paramFragmentContainer = AnimationUtils.loadAnimation(paramContext, m);
         if (paramFragmentContainer != null)
         {
           paramFragmentContainer = new FragmentAnim.AnimationOrAnimator(paramFragmentContainer);
@@ -80,78 +80,80 @@ class FragmentAnim
       }
       catch (Resources.NotFoundException paramContext)
       {
-        try
+        throw paramContext;
+      }
+    }
+    catch (RuntimeException paramFragmentContainer)
+    {
+      for (;;)
+      {
+        i = j;
+      }
+    }
+    if (i == 0) {
+      try
+      {
+        paramFragmentContainer = AnimatorInflater.loadAnimator(paramContext, m);
+        if (paramFragmentContainer != null)
         {
-          paramFragmentContainer = AnimatorInflater.loadAnimator(paramContext, k);
-          if (paramFragmentContainer == null) {
-            break label227;
-          }
           paramFragmentContainer = new FragmentAnim.AnimationOrAnimator(paramFragmentContainer);
           return paramFragmentContainer;
         }
-        catch (RuntimeException paramFragmentContainer)
-        {
-          if (!bool) {
-            break label207;
-          }
-          throw paramFragmentContainer;
-          paramFragmentContainer = AnimationUtils.loadAnimation(paramContext, k);
-          if (paramFragmentContainer == null) {
-            break label227;
-          }
-          return new FragmentAnim.AnimationOrAnimator(paramFragmentContainer);
-        }
-        paramContext = paramContext;
-        throw paramContext;
       }
       catch (RuntimeException paramFragmentContainer)
       {
-        i = 0;
-        continue;
+        if (!bool)
+        {
+          paramFragmentContainer = AnimationUtils.loadAnimation(paramContext, m);
+          if (paramFragmentContainer != null) {
+            return new FragmentAnim.AnimationOrAnimator(paramFragmentContainer);
+          }
+        }
+        else
+        {
+          throw paramFragmentContainer;
+        }
       }
-      if (i == 0) {}
-      label207:
-      label227:
-      if (j == 0) {
-        break;
-      }
-      int i = transitToAnimResourceId(j, paramBoolean);
-      if (i < 0) {
-        break;
-      }
-      return new FragmentAnim.AnimationOrAnimator(AnimationUtils.loadAnimation(paramContext, i));
-      label259:
-      i = 0;
     }
+    if (k == 0) {
+      return null;
+    }
+    i = transitToAnimResourceId(k, paramBoolean);
+    if (i < 0) {
+      return null;
+    }
+    return new FragmentAnim.AnimationOrAnimator(AnimationUtils.loadAnimation(paramContext, i));
   }
   
   @AnimRes
   private static int transitToAnimResourceId(int paramInt, boolean paramBoolean)
   {
-    switch (paramInt)
+    if (paramInt != 4097)
     {
-    default: 
-      return -1;
-    case 4097: 
-      if (paramBoolean) {
-        return 2130772063;
+      if (paramInt != 4099)
+      {
+        if (paramInt != 8194) {
+          return -1;
+        }
+        if (paramBoolean) {
+          return 2130772076;
+        }
+        return 2130772077;
       }
-      return 2130772064;
-    case 8194: 
       if (paramBoolean) {
-        return 2130772054;
+        return 2130772080;
       }
-      return 2130772055;
+      return 2130772081;
     }
     if (paramBoolean) {
-      return 2130772058;
+      return 2130772085;
     }
-    return 2130772059;
+    return 2130772086;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentAnim
  * JD-Core Version:    0.7.0.1
  */

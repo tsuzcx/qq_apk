@@ -1,14 +1,14 @@
 package com.tencent.av.ui;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.QavMuteButtonForeGroundDrawable;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class QavPanel$5
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   QavPanel$5(QavPanel paramQavPanel) {}
   
@@ -20,7 +20,7 @@ class QavPanel$5
     {
       paramAnimator = this.a.a.a().a();
       paramAnimator.a("tryPlayBtnMuteAnimation onAnimationEnd", true);
-      paramAnimator.b("tryPlayBtnMuteAnimation onAnimationEnd", 1);
+      paramAnimator.c("tryPlayBtnMuteAnimation onAnimationEnd", 1);
       this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
       return;
     }
@@ -29,16 +29,26 @@ class QavPanel$5
     QavPanel.a(this.a).a(false, false);
   }
   
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
+  }
+  
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
     QavPanel.a(this.a).a(false);
   }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavPanel.5
  * JD-Core Version:    0.7.0.1
  */

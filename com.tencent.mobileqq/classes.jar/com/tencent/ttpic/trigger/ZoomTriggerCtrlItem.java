@@ -17,17 +17,21 @@ public class ZoomTriggerCtrlItem
   
   private String checkTriggeredID(PTDetectInfo paramPTDetectInfo, int paramInt)
   {
-    if ((this.triggerCtrlMap == null) || (this.mZoomMap == null)) {
-      return null;
-    }
-    Iterator localIterator = this.triggerCtrlMap.keySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.triggerCtrlMap;
+    if (localObject != null)
     {
-      String str = (String)localIterator.next();
-      TriggerCtrlItem localTriggerCtrlItem = (TriggerCtrlItem)this.triggerCtrlMap.get(str);
-      ZoomInfo localZoomInfo = (ZoomInfo)this.mZoomMap.get(str);
-      if ((localTriggerCtrlItem != null) && (localZoomInfo != null) && (localTriggerCtrlItem.isCurrentFrameTriggered(paramPTDetectInfo)) && (localZoomInfo.isInCurPart(paramInt))) {
-        return str;
+      if (this.mZoomMap == null) {
+        return null;
+      }
+      localObject = ((HashMap)localObject).keySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        TriggerCtrlItem localTriggerCtrlItem = (TriggerCtrlItem)this.triggerCtrlMap.get(str);
+        ZoomInfo localZoomInfo = (ZoomInfo)this.mZoomMap.get(str);
+        if ((localTriggerCtrlItem != null) && (localZoomInfo != null) && (localTriggerCtrlItem.isCurrentFrameTriggered(paramPTDetectInfo)) && (localZoomInfo.isInCurPart(paramInt))) {
+          return str;
+        }
       }
     }
     return null;
@@ -59,7 +63,8 @@ public class ZoomTriggerCtrlItem
   
   public boolean isTriggered()
   {
-    return (this.zoomModel != null) && (this.zoomModel.zoomId != null);
+    ZoomTriggerCtrlItem.ZoomModel localZoomModel = this.zoomModel;
+    return (localZoomModel != null) && (localZoomModel.zoomId != null);
   }
   
   public void reset() {}
@@ -72,62 +77,63 @@ public class ZoomTriggerCtrlItem
     int i;
     if (this.triggeredID == null) {
       i = 1;
+    } else {
+      i = 0;
     }
-    TriggerCtrlItem localTriggerCtrlItem;
-    while (this.triggeredID == null)
+    Object localObject2;
+    if (this.triggeredID == null)
     {
       this.triggeredID = checkTriggeredID(paramPTDetectInfo, paramInt);
-      if (this.triggeredID == null)
-      {
+      localObject1 = this.triggeredID;
+      if (localObject1 == null) {
         return;
-        i = 0;
       }
-      else if (this.triggerCtrlMap != null)
+      localObject2 = this.triggerCtrlMap;
+      if (localObject2 != null)
       {
-        localTriggerCtrlItem = (TriggerCtrlItem)this.triggerCtrlMap.get(this.triggeredID);
-        if (localTriggerCtrlItem != null) {
-          localTriggerCtrlItem.setFrameStartTime(paramPTDetectInfo.timestamp);
+        localObject1 = (TriggerCtrlItem)((HashMap)localObject2).get(localObject1);
+        if (localObject1 != null) {
+          ((TriggerCtrlItem)localObject1).setFrameStartTime(paramPTDetectInfo.timestamp);
         }
       }
     }
-    if (this.triggerCtrlMap != null)
+    Object localObject1 = this.triggerCtrlMap;
+    if (localObject1 != null)
     {
-      localTriggerCtrlItem = (TriggerCtrlItem)this.triggerCtrlMap.get(this.triggeredID);
-      ZoomInfo localZoomInfo = (ZoomInfo)this.mZoomMap.get(this.triggeredID);
-      if (localTriggerCtrlItem != null) {
-        localTriggerCtrlItem.isCurrentFrameTriggered(paramPTDetectInfo);
+      localObject1 = (TriggerCtrlItem)((HashMap)localObject1).get(this.triggeredID);
+      localObject2 = (ZoomInfo)this.mZoomMap.get(this.triggeredID);
+      if (localObject1 != null) {
+        ((TriggerCtrlItem)localObject1).isCurrentFrameTriggered(paramPTDetectInfo);
       }
-      if ((localTriggerCtrlItem == null) || (localZoomInfo == null) || (!localZoomInfo.isInCurPart(paramInt)) || (!localTriggerCtrlItem.isTriggered())) {
-        break label199;
-      }
-      localTriggerCtrlItem.updateFrameIndex(paramPTDetectInfo.timestamp);
-      this.zoomModel.frameIndex = localTriggerCtrlItem.getFrameIndex();
-    }
-    for (;;)
-    {
-      this.zoomModel.zoomId = this.triggeredID;
-      return;
-      label199:
-      this.triggeredID = null;
-      if (localTriggerCtrlItem != null) {
-        localTriggerCtrlItem.reset();
-      }
-      if (i == 0)
+      if ((localObject1 != null) && (localObject2 != null) && (((ZoomInfo)localObject2).isInCurPart(paramInt)) && (((TriggerCtrlItem)localObject1).isTriggered()))
       {
-        this.triggeredID = checkTriggeredID(paramPTDetectInfo, paramInt);
-        if (this.triggeredID != null)
+        ((TriggerCtrlItem)localObject1).updateFrameIndex(paramPTDetectInfo.timestamp);
+        this.zoomModel.frameIndex = ((TriggerCtrlItem)localObject1).getFrameIndex();
+      }
+      else
+      {
+        this.triggeredID = null;
+        if (localObject1 != null) {
+          ((TriggerCtrlItem)localObject1).reset();
+        }
+        if (i == 0)
         {
-          localTriggerCtrlItem.setFrameStartTime(paramPTDetectInfo.timestamp);
-          localTriggerCtrlItem.updateFrameIndex(paramPTDetectInfo.timestamp);
-          this.zoomModel.frameIndex = localTriggerCtrlItem.getFrameIndex();
+          this.triggeredID = checkTriggeredID(paramPTDetectInfo, paramInt);
+          if (this.triggeredID != null)
+          {
+            ((TriggerCtrlItem)localObject1).setFrameStartTime(paramPTDetectInfo.timestamp);
+            ((TriggerCtrlItem)localObject1).updateFrameIndex(paramPTDetectInfo.timestamp);
+            this.zoomModel.frameIndex = ((TriggerCtrlItem)localObject1).getFrameIndex();
+          }
         }
       }
     }
+    this.zoomModel.zoomId = this.triggeredID;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.trigger.ZoomTriggerCtrlItem
  * JD-Core Version:    0.7.0.1
  */

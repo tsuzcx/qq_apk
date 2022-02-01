@@ -24,15 +24,25 @@ public class LongVideoUrlCacheManager$UrlsCacheBean
   {
     long l1 = System.currentTimeMillis();
     long l2 = l1 - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d(" LongVideoUrlCacheManager", 2, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.jdField_a_of_type_Long + " diff=" + l2 + " urlTimeValidDiff=" + LongVideoUrlCacheManager.a());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("UrlsCacheBean, now=  ");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(", mGetTime");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(" diff=");
+      localStringBuilder.append(l2);
+      localStringBuilder.append(" urlTimeValidDiff=");
+      localStringBuilder.append(LongVideoUrlCacheManager.a());
+      QLog.d(" LongVideoUrlCacheManager", 2, localStringBuilder.toString());
     }
     return l2 < LongVideoUrlCacheManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.LongVideoUrlCacheManager.UrlsCacheBean
  * JD-Core Version:    0.7.0.1
  */

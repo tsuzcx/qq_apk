@@ -7,18 +7,10 @@ import com.tencent.mobileqq.shortvideo.resource.GestureResource;
 public class SvEffectSdkInitor$QQGestureResource
   implements GestureResource
 {
-  public static String a;
-  public static boolean a;
-  public static String b;
-  public static String c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "5";
-    b = "200";
-    c = "20";
-    jdField_a_of_type_Boolean = false;
-  }
+  public static String a = "5";
+  public static boolean a = false;
+  public static String b = "200";
+  public static String c = "20";
   
   public String getGestureGapFrame()
   {
@@ -57,7 +49,7 @@ public class SvEffectSdkInitor$QQGestureResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sveffects.SvEffectSdkInitor.QQGestureResource
  * JD-Core Version:    0.7.0.1
  */

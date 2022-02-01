@@ -18,18 +18,19 @@ class ActionSheetAdapter$CustomDismissListener
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
-    if (localOnDismissListener != null) {
+    if (localOnDismissListener != null)
+    {
       localOnDismissListener.onDismiss(paramDialogInterface);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.i("Q.dating", 2, "CustomDismissListener, lis is null");
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dating", 2, "CustomDismissListener, lis is null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ActionSheetAdapter.CustomDismissListener
  * JD-Core Version:    0.7.0.1
  */

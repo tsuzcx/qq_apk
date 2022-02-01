@@ -9,18 +9,20 @@ class ZhituPanelView$ZhituPanelAdapter$1
   
   public int getSpanSize(int paramInt)
   {
-    switch (this.a.getItemViewType(paramInt))
+    paramInt = this.a.getItemViewType(paramInt);
+    if (paramInt != 1)
     {
-    case 1: 
-    default: 
-      return 1;
+      if ((paramInt != 2) && (paramInt != 3)) {
+        return 1;
+      }
+      return 3;
     }
-    return 3;
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView.ZhituPanelAdapter.1
  * JD-Core Version:    0.7.0.1
  */

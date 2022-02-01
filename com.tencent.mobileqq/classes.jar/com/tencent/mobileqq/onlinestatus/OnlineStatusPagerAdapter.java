@@ -1,22 +1,26 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.config.business.OnlineStatusBean;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class OnlineStatusPagerAdapter
   extends PagerAdapter
-  implements View.OnClickListener
+  implements View.OnClickListener, ViewPager.OnPageChangeListener
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
+  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
   private OnlineStatusPagerAdapter.OnStatusItemClickListener jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener;
   private OnlineStatusPanelParams jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams;
   private OnlineStatusRecycleBin jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusRecycleBin = new OnlineStatusRecycleBin();
@@ -32,44 +36,43 @@ public class OnlineStatusPagerAdapter
     this.jdField_a_of_type_Int = (paramOnlineStatusPanelParams.jdField_b_of_type_Int * paramOnlineStatusPanelParams.c);
     this.jdField_a_of_type_Boolean = paramOnlineStatusPanelParams.jdField_a_of_type_Boolean;
     this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams = paramOnlineStatusPanelParams;
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = paramViewPager;
   }
   
   private List<OnlineStatusItem> a(int paramInt)
   {
-    paramInt = this.jdField_a_of_type_Int * paramInt;
+    paramInt *= this.jdField_a_of_type_Int;
     int i = Math.min(this.jdField_b_of_type_JavaUtilArrayList.size(), this.jdField_a_of_type_Int + paramInt);
     return this.jdField_b_of_type_JavaUtilArrayList.subList(paramInt, i);
   }
   
   public int a()
   {
+    boolean bool = this.jdField_a_of_type_Boolean;
     int k = 0;
-    if (this.jdField_a_of_type_Boolean) {
+    if (bool) {
       return 0;
     }
     int j = k;
-    OnlineStatusItem localOnlineStatusItem;
-    int i;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1)
     {
-      localOnlineStatusItem = (OnlineStatusItem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      i = 0;
-    }
-    for (;;)
-    {
-      j = k;
-      if (i < this.jdField_b_of_type_JavaUtilArrayList.size())
+      OnlineStatusItem localOnlineStatusItem = (OnlineStatusItem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      int i = 0;
+      for (;;)
       {
-        if (((OnlineStatusItem)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a == localOnlineStatusItem.a) {
-          j = i;
+        j = k;
+        if (i >= this.jdField_b_of_type_JavaUtilArrayList.size()) {
+          break;
         }
+        if (((OnlineStatusItem)this.jdField_b_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long == localOnlineStatusItem.jdField_a_of_type_Long)
+        {
+          j = i;
+          break;
+        }
+        i += 1;
       }
-      else {
-        return j / this.jdField_a_of_type_Int;
-      }
-      i += 1;
     }
+    return j / this.jdField_a_of_type_Int;
   }
   
   public ArrayList<OnlineStatusItem> a()
@@ -79,31 +82,23 @@ public class OnlineStatusPagerAdapter
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null) {
+    if (this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager == null) {
       return;
     }
     int j = getCount();
-    int k = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildCount();
+    int k = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.getChildCount();
     int i = 0;
-    label23:
-    OnlineStatusListLayout localOnlineStatusListLayout;
-    if (i < k)
+    while (i < k)
     {
-      localOnlineStatusListLayout = (OnlineStatusListLayout)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildAt(i);
-      if (localOnlineStatusListLayout != null) {
-        break label53;
+      OnlineStatusListLayout localOnlineStatusListLayout = (OnlineStatusListLayout)this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.getChildAt(i);
+      if (localOnlineStatusListLayout != null)
+      {
+        int m = localOnlineStatusListLayout.a();
+        if ((m >= 0) && (m < j)) {
+          localOnlineStatusListLayout.a(a(m), this.jdField_a_of_type_JavaUtilArrayList);
+        }
       }
-    }
-    for (;;)
-    {
       i += 1;
-      break label23;
-      break;
-      label53:
-      int m = localOnlineStatusListLayout.a();
-      if ((m >= 0) && (m < j)) {
-        localOnlineStatusListLayout.a(a(m), this.jdField_a_of_type_JavaUtilArrayList);
-      }
     }
   }
   
@@ -112,35 +107,63 @@ public class OnlineStatusPagerAdapter
     this.jdField_b_of_type_Int = paramInt;
   }
   
+  public void a(OnlineStatusItem paramOnlineStatusItem)
+  {
+    OnlineStatusBean localOnlineStatusBean = (OnlineStatusBean)QConfigManager.a().a(578);
+    boolean bool = localOnlineStatusBean.a(paramOnlineStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status, paramOnlineStatusItem.jdField_a_of_type_Long);
+    int k = 0;
+    int i = 0;
+    for (;;)
+    {
+      j = k;
+      if (i >= this.jdField_b_of_type_JavaUtilArrayList.size()) {
+        break label109;
+      }
+      OnlineStatusItem localOnlineStatusItem = (OnlineStatusItem)this.jdField_b_of_type_JavaUtilArrayList.get(i);
+      if ((localOnlineStatusItem.jdField_a_of_type_Long == paramOnlineStatusItem.jdField_a_of_type_Long) || ((bool) && (localOnlineStatusBean.a(localOnlineStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status, localOnlineStatusItem.jdField_a_of_type_Long)))) {
+        break;
+      }
+      i += 1;
+    }
+    int j = i;
+    label109:
+    i = j / this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setCurrentItem(i);
+  }
+  
   public void a(OnlineStatusItem paramOnlineStatusItem, View paramView)
   {
-    OnlineStatusItem localOnlineStatusItem = null;
-    if (!this.jdField_a_of_type_Boolean)
+    boolean bool = this.jdField_a_of_type_Boolean;
+    Object localObject = null;
+    if (!bool)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        localOnlineStatusItem = (OnlineStatusItem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        localObject = (OnlineStatusItem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
       }
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       this.jdField_a_of_type_JavaUtilArrayList.add(paramOnlineStatusItem);
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener.a(localOnlineStatusItem, paramOnlineStatusItem, paramView);
+      OnlineStatusPagerAdapter.OnStatusItemClickListener localOnStatusItemClickListener = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener;
+      if (localOnStatusItemClickListener != null) {
+        localOnStatusItemClickListener.a((OnlineStatusItem)localObject, paramOnlineStatusItem, paramView);
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramOnlineStatusItem))
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramOnlineStatusItem);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener;
+      if (localObject != null) {
+        ((OnlineStatusPagerAdapter.OnStatusItemClickListener)localObject).a(paramOnlineStatusItem, null, paramView);
       }
     }
-    do
+    else
     {
-      do
-      {
-        return;
-        if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramOnlineStatusItem)) {
-          break;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramOnlineStatusItem);
-      } while (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener == null);
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener.a(paramOnlineStatusItem, null, paramView);
-      return;
       this.jdField_a_of_type_JavaUtilArrayList.add(paramOnlineStatusItem);
-    } while (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener.a(null, paramOnlineStatusItem, paramView);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener;
+      if (localObject != null) {
+        ((OnlineStatusPagerAdapter.OnStatusItemClickListener)localObject).a(null, paramOnlineStatusItem, paramView);
+      }
+    }
   }
   
   void a(OnlineStatusPagerAdapter.OnStatusItemClickListener paramOnStatusItemClickListener)
@@ -167,11 +190,14 @@ public class OnlineStatusPagerAdapter
   public int getCount()
   {
     int i = this.jdField_b_of_type_JavaUtilArrayList.size();
-    int j = i / this.jdField_a_of_type_Int;
-    if (i % this.jdField_a_of_type_Int > 0) {}
-    for (i = 1;; i = 0) {
-      return i + j;
+    int k = this.jdField_a_of_type_Int;
+    int j = i / k;
+    if (i % k > 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    return j + i;
   }
   
   public int getItemPosition(Object paramObject)
@@ -208,26 +234,39 @@ public class OnlineStatusPagerAdapter
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    if ((paramView instanceof OnlineStatusListLayout)) {
-      if ((((OnlineStatusListLayout)paramView).a()) && (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener.a(paramView);
+    if ((paramView instanceof OnlineStatusListLayout))
+    {
+      if (((OnlineStatusListLayout)paramView).a())
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener;
+        if (localObject != null) {
+          ((OnlineStatusPagerAdapter.OnStatusItemClickListener)localObject).c(paramView);
+        }
       }
     }
-    for (;;)
+    else if ((localObject instanceof OnlineStatusItem))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((localObject instanceof OnlineStatusItem))
-      {
-        a((OnlineStatusItem)localObject, paramView);
-        a();
-      }
+      a((OnlineStatusItem)localObject, paramView);
+      a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    Iterator localIterator = a(paramInt).iterator();
+    while (localIterator.hasNext()) {
+      ReportHelperKt.a("0X800BB58", (int)((OnlineStatusItem)localIterator.next()).jdField_a_of_type_Long);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

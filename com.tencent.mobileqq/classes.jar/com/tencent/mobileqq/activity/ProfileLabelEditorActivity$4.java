@@ -16,35 +16,41 @@ class ProfileLabelEditorActivity$4
   {
     if (paramBoolean.booleanValue())
     {
-      if ((this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) || (this.a.a(this.a.jdField_a_of_type_JavaUtilList)))
+      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList))
       {
-        if (this.a.a(this.a.jdField_a_of_type_JavaUtilList)) {
-          this.a.b(2131693422);
+        paramBoolean = this.a;
+        if (!paramBoolean.a(paramBoolean.jdField_a_of_type_JavaUtilList))
+        {
+          ReportController.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "1", "", "", "");
+          this.a.jdField_a_of_type_JavaUtilList.add(paramProfileLabelInfo);
+          break label156;
         }
+      }
+      paramProfileLabelInfo = this.a;
+      if (paramProfileLabelInfo.a(paramProfileLabelInfo.jdField_a_of_type_JavaUtilList)) {
+        this.a.b(2131693377);
+      }
+    }
+    else
+    {
+      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) {
         return;
       }
-      ReportController.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "1", "", "", "");
-      this.a.jdField_a_of_type_JavaUtilList.add(paramProfileLabelInfo);
+      paramBoolean = this.a;
+      paramBoolean.a(paramProfileLabelInfo, paramBoolean.jdField_a_of_type_JavaUtilList);
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.c(paramProfileLabelInfo, paramToggleButton);
-      this.a.a(this.a.jdField_a_of_type_JavaUtilList.size());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity$MyLabelGridViewAdapter == null) {
-        break;
-      }
+    label156:
+    this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.c(paramProfileLabelInfo, paramToggleButton);
+    paramProfileLabelInfo = this.a;
+    paramProfileLabelInfo.a(paramProfileLabelInfo.jdField_a_of_type_JavaUtilList.size());
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity$MyLabelGridViewAdapter != null) {
       this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity$MyLabelGridViewAdapter.notifyDataSetChanged();
-      return;
-      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) {
-        break;
-      }
-      this.a.a(paramProfileLabelInfo, this.a.jdField_a_of_type_JavaUtilList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileLabelEditorActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -74,25 +74,48 @@ public class OuterCallReportModel
       localJSONObject.put("outerCallTime", String.valueOf(this.mOuterCallTime));
       localJSONObject.put("hostversion", this.mHostVersion);
       localJSONObject.put("hostpname", GlobalUtil.getAppPackageName(GlobalUtil.getInstance().getContext()));
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString();
   }
   
   public String toString()
   {
-    return "||||||||" + this.mComponentName + "|" + this.mVia + "|" + this.mOuterCallType + "|" + this.mOuterCallMode + "|" + this.mOuterCallTime + "|" + this.mFingerprints + "|" + this.mDisplay + "|" + this.mBuildId + "|" + this.mInCremental + "|" + this.mHostPname + "|" + this.mHostVersion + "|" + this.mYYBVersion + "|" + this.mYYBSDKAPILevel;
+    StringBuilder localStringBuilder = new StringBuilder("||||||||");
+    localStringBuilder.append(this.mComponentName);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mVia);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mOuterCallType);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mOuterCallMode);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mOuterCallTime);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mFingerprints);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mDisplay);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mBuildId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mInCremental);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mHostPname);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mHostVersion);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mYYBVersion);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mYYBSDKAPILevel);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.logreport.OuterCallReportModel
  * JD-Core Version:    0.7.0.1
  */

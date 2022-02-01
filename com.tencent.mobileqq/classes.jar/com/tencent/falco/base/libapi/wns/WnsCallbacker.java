@@ -11,7 +11,10 @@ public abstract class WnsCallbacker
   
   public WnsCallbacker()
   {
-    Log.d("WnsCallbacker", "msgID=" + this.msgID);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("msgID=");
+    localStringBuilder.append(this.msgID);
+    Log.d("WnsCallbacker", localStringBuilder.toString());
   }
   
   private static long genMsgID()
@@ -26,7 +29,7 @@ public abstract class WnsCallbacker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.libapi.wns.WnsCallbacker
  * JD-Core Version:    0.7.0.1
  */

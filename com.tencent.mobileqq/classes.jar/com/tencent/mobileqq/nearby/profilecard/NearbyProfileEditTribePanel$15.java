@@ -15,35 +15,39 @@ class NearbyProfileEditTribePanel$15
   public void handleMessage(Message paramMessage)
   {
     FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1003)
     {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
-      {
-        do
-        {
-          return;
-        } while (localFileMsg.fileType != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.mPhotoId);
-        }
-      } while (NearbyProfileEditTribePanel.a(this.a) == null);
-      NearbyProfileEditTribePanel.a(this.a).a = NearbyPeoplePhotoUploadProcessor.mPhotoId;
-      NearbyProfileEditTribePanel.a(this.a);
+      if (i != 1005) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
+      }
+      this.a.a.dismissWaittingDialog();
+      this.a.a.showToast(HardCodeUtil.a(2131707351));
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
+    if (localFileMsg.fileType == 8)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramMessage = new StringBuilder();
+        paramMessage.append("Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = ");
+        paramMessage.append(NearbyPeoplePhotoUploadProcessor.mPhotoId);
+        QLog.i("Q.nearby_people_card.upload_local_photo", 2, paramMessage.toString());
+      }
+      if (NearbyProfileEditTribePanel.a(this.a) != null)
+      {
+        NearbyProfileEditTribePanel.a(this.a).a = NearbyPeoplePhotoUploadProcessor.mPhotoId;
+        NearbyProfileEditTribePanel.a(this.a);
+      }
     }
-    this.a.a.b();
-    this.a.a.b(HardCodeUtil.a(2131707326));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.15
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,9 @@ class ArkViewImplement$1
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((this.this$0.mArkView == paramView) && (this.this$0.mImm != null) && (!paramBoolean)) {}
+    if (this.this$0.mArkView == paramView) {
+      paramView = this.this$0.mImm;
+    }
   }
 }
 

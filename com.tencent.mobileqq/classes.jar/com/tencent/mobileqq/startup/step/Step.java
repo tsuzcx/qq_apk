@@ -103,62 +103,70 @@ public class Step
   
   public boolean step()
   {
-    long l = 0L;
-    int i = 5;
-    Thread localThread = null;
+    Thread localThread;
+    int i;
     if (this.mHandler != null)
     {
       localThread = Thread.currentThread();
       i = localThread.getPriority();
       localThread.setPriority(10);
     }
+    else
+    {
+      i = 5;
+      localThread = null;
+    }
+    long l;
     if (StartupDirector.a)
     {
       l = SystemClock.uptimeMillis();
-      if (Looper.myLooper() != Looper.getMainLooper()) {
-        break label170;
+      if (Looper.myLooper() == Looper.getMainLooper()) {
+        TraceUtils.traceBegin(this.mName);
+      } else {
+        TraceUtils.asyncTraceBegin(4096L, this.mName, Process.myTid());
       }
-      TraceUtils.traceBegin(this.mName);
     }
-    for (;;)
+    else
     {
-      boolean bool1 = false;
-      try
-      {
-        boolean bool2 = doStep();
-        bool1 = bool2;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.e("AutoMonitor", 1, "", localThrowable);
-          continue;
-          TraceUtils.asyncTraceEnd(4096L, this.mName, Process.myTid());
-        }
-      }
-      if (StartupDirector.a)
-      {
-        if (Looper.myLooper() != Looper.getMainLooper()) {
-          break;
-        }
-        TraceUtils.traceEnd();
-        Log.i("AutoMonitor", this.mName + ", cost=" + (SystemClock.uptimeMillis() - l) + " results: " + bool1);
-      }
-      if (this.mHandler != null)
-      {
-        this.mHandler.obtainMessage(this.mResultMessage, Boolean.valueOf(bool1)).sendToTarget();
-        localThread.setPriority(i);
-      }
-      return bool1;
-      label170:
-      TraceUtils.asyncTraceBegin(4096L, this.mName, Process.myTid());
+      l = 0L;
     }
+    boolean bool1 = false;
+    try
+    {
+      boolean bool2 = doStep();
+      bool1 = bool2;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("AutoMonitor", 1, "", localThrowable);
+    }
+    if (StartupDirector.a)
+    {
+      if (Looper.myLooper() == Looper.getMainLooper()) {
+        TraceUtils.traceEnd();
+      } else {
+        TraceUtils.asyncTraceEnd(4096L, this.mName, Process.myTid());
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mName);
+      ((StringBuilder)localObject).append(", cost=");
+      ((StringBuilder)localObject).append(SystemClock.uptimeMillis() - l);
+      ((StringBuilder)localObject).append(" results: ");
+      ((StringBuilder)localObject).append(bool1);
+      Log.i("AutoMonitor", ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.mHandler;
+    if (localObject != null)
+    {
+      ((Handler)localObject).obtainMessage(this.mResultMessage, Boolean.valueOf(bool1)).sendToTarget();
+      localThread.setPriority(i);
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Step
  * JD-Core Version:    0.7.0.1
  */

@@ -15,47 +15,38 @@ class InitUrlDrawable$JpegExifReaderOperator
   
   public boolean readEnableFromDPC()
   {
-    boolean bool2 = true;
-    for (;;)
+    try
     {
-      try
+      Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_gifplay.name(), null);
+      if (QLog.isColorLevel())
       {
-        Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_gifplay.name(), null);
-        if (QLog.isColorLevel()) {
-          QLog.d("JpegExifReader", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
-        }
-        bool1 = bool2;
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isAllowDPC(): parseConfig, aio_gifplay =");
+        localStringBuilder.append((String)localObject);
+        QLog.d("JpegExifReader", 2, localStringBuilder.toString());
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length >= 9)
         {
-          localObject = ((String)localObject).split("\\|");
-          bool1 = bool2;
-          if (localObject.length >= 9)
-          {
-            int i = Integer.parseInt(localObject[8]);
-            if (i != 1) {
-              continue;
-            }
-            bool1 = true;
-          }
+          int i = Integer.parseInt(localObject[8]);
+          return i == 1;
         }
       }
-      catch (Exception localException)
-      {
-        boolean bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
         QLog.e("JpegExifReader", 2, "read dpc", localException);
       }
-      return bool1;
-      bool1 = false;
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitUrlDrawable.JpegExifReaderOperator
  * JD-Core Version:    0.7.0.1
  */

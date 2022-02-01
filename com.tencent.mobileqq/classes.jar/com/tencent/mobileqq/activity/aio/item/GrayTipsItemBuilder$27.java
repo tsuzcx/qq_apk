@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.qwallet.report.VACDReportUtil;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,17 +22,26 @@ class GrayTipsItemBuilder$27
   
   public void onClick(View paramView)
   {
-    int i = 1;
-    int j;
     if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) {
-        break label225;
+      int k = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      int i = 1;
+      int j = 0;
+      if (k != 0) {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)
+        {
+          j = ((DiscussionManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+          i = 2;
+        }
+        else if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+        {
+          i = 3;
+        }
+        else
+        {
+          i = 0;
+        }
       }
-      j = 0;
-    }
-    for (;;)
-    {
       paramView = new JSONObject();
       try
       {
@@ -46,35 +54,24 @@ class GrayTipsItemBuilder$27
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          Intent localIntent;
-          localJSONException.printStackTrace();
-        }
-        i = 0;
-        j = 0;
+        localJSONException.printStackTrace();
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("GrayTipsItemBuilder", 2, "click HongBao:params=" + paramView.toString());
-      }
-      localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, SendHbActivity.class);
-      localIntent.putExtra("come_from", 2);
-      localIntent.putExtra("extra_data", paramView.toString());
-      localIntent.addFlags(536870912);
-      localIntent.putExtra("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "makeHongbao", "click", "groupType=" + i, 0, null));
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      return;
-      label225:
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)
+      if (QLog.isColorLevel())
       {
-        j = ((DiscussionManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        i = 2;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("click HongBao:params=");
+        ((StringBuilder)localObject).append(paramView.toString());
+        QLog.d("GrayTipsItemBuilder", 2, ((StringBuilder)localObject).toString());
       }
-      else if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
-      {
-        i = 3;
-        j = 0;
-      }
+      Object localObject = new Intent();
+      ((Intent)localObject).putExtra("come_from", 2);
+      ((Intent)localObject).putExtra("extra_data", paramView.toString());
+      ((Intent)localObject).addFlags(536870912);
+      paramView = new StringBuilder();
+      paramView.append("groupType=");
+      paramView.append(i);
+      ((Intent)localObject).putExtra("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "makeHongbao", "click", paramView.toString(), 0, null));
+      RouteUtils.a(this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, "/qwallet/redpacket/sendhb");
     }
   }
   
@@ -85,7 +82,7 @@ class GrayTipsItemBuilder$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.27
  * JD-Core Version:    0.7.0.1
  */

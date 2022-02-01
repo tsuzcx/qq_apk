@@ -1,50 +1,37 @@
 package cooperation.qzone.video;
 
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewwrapper.IWebviewOnClassLoaded;
+import android.graphics.drawable.Drawable;
+import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 final class QzoneLiveVideoInterface$3
-  implements Runnable
+  implements InvocationHandler
 {
-  QzoneLiveVideoInterface$3(IWebviewOnClassLoaded paramIWebviewOnClassLoaded) {}
+  QzoneLiveVideoInterface$3(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
   
-  public void run()
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    for (;;)
+    if (paramMethod.getName().equals("onFailed"))
     {
-      try
-      {
-        if (1 != QzoneLiveVideoInterface.getIntConfig("LiveSetting", "qzone_webview_need_preload_dex_classes", 1)) {
-          return;
-        }
-        if (!QzoneLiveVideoInterface.isBestPerformanceDevice()) {
-          break;
-        }
-        if (!SwiftWebAccelerator.TbsAccelerator.a())
-        {
-          long l = System.currentTimeMillis();
-          SwiftWebAccelerator.TbsAccelerator.b();
-          QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator init cost " + (System.currentTimeMillis() - l));
-          if (this.val$listener == null) {
-            break;
-          }
-          this.val$listener.onLoadClassFinish();
-          return;
-        }
+      paramObject = this.val$resourceLoaderListener;
+      if (paramObject != null) {
+        paramObject.onFailed();
       }
-      catch (Exception localException)
-      {
-        QLog.e("QzoneLiveVideoInterface", 1, localException, new Object[0]);
-        return;
-      }
-      QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator is inited");
     }
+    else if (paramMethod.getName().equals("onLoaded"))
+    {
+      paramObject = this.val$resourceLoaderListener;
+      if (paramObject != null) {
+        paramObject.onLoaded((Drawable)paramArrayOfObject[0]);
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.video.QzoneLiveVideoInterface.3
  * JD-Core Version:    0.7.0.1
  */

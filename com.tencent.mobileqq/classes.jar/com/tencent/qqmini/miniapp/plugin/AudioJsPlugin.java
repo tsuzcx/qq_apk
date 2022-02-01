@@ -55,57 +55,54 @@ public class AudioJsPlugin
   
   private boolean checkAvalibleSdCard()
   {
-    boolean bool = true;
     if (this.mMiniAppContext.getAttachedActivity() == null) {
       return false;
     }
     Object localObject = Environment.getExternalStorageDirectory();
     int i;
-    if ((((File)localObject).exists()) && (((File)localObject).canWrite()))
-    {
+    if ((((File)localObject).exists()) && (((File)localObject).canWrite())) {
       i = 1;
-      if ((!Environment.getExternalStorageState().equals("mounted")) || (i == 0)) {
-        break label102;
-      }
+    } else {
+      i = 0;
+    }
+    if ((Environment.getExternalStorageState().equals("mounted")) && (i != 0)) {
       i = 1;
+    } else {
+      i = 0;
     }
-    for (;;)
+    if (i != 0)
     {
-      if (i != 0)
-      {
-        localObject = DeviceInfoUtil.getSDCardMemory();
-        if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
-        {
-          return bool;
-          i = 0;
-          break;
-          label102:
-          i = 0;
-          continue;
-        }
-        QMLog.d("AudioJsPlugin", "startRecord() " + this.mMiniAppContext.getAttachedActivity().getString(R.string.mini_sdk_sdcard_full_no_send));
+      localObject = DeviceInfoUtil.getSDCardMemory();
+      if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L)) {
+        return true;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startRecord() ");
+      ((StringBuilder)localObject).append(this.mMiniAppContext.getAttachedActivity().getString(R.string.mini_sdk_sdcard_full_no_send));
+      QMLog.d("AudioJsPlugin", ((StringBuilder)localObject).toString());
+      return false;
     }
-    for (;;)
-    {
-      bool = false;
-      break;
-      QMLog.w("AudioJsPlugin", "startRecord() " + this.mMiniAppContext.getAttachedActivity().getString(R.string.mini_sdk_nosdcardnosend));
-    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startRecord() ");
+    ((StringBuilder)localObject).append(this.mMiniAppContext.getAttachedActivity().getString(R.string.mini_sdk_nosdcardnosend));
+    QMLog.w("AudioJsPlugin", ((StringBuilder)localObject).toString());
+    return false;
   }
   
   private int convertErrorCode(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 5)
     {
-    default: 
-      return -1;
-    case 5: 
-      return 10001;
-    case 7: 
-      return 10003;
+      if (paramInt != 6)
+      {
+        if (paramInt != 7) {
+          return -1;
+        }
+        return 10003;
+      }
+      return 10002;
     }
-    return 10002;
+    return 10001;
   }
   
   private void evaluateBgAudioStateJs(String paramString)
@@ -132,19 +129,17 @@ public class AudioJsPlugin
   private int getCurrentSongDuration()
   {
     MusicPlayerProxy localMusicPlayerProxy = (MusicPlayerProxy)ProxyManager.get(MusicPlayerProxy.class);
-    if (localMusicPlayerProxy != null) {}
-    try
-    {
-      this.mCurrentSongDuration = Math.max(localMusicPlayerProxy.getDuration(), 0);
-      return this.mCurrentSongDuration;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (localMusicPlayerProxy != null) {
+      try
+      {
+        this.mCurrentSongDuration = Math.max(localMusicPlayerProxy.getDuration(), 0);
+      }
+      catch (Exception localException)
       {
         QMLog.e("AudioJsPlugin", "getCurrentSongDuration exception ", localException);
       }
     }
+    return this.mCurrentSongDuration;
   }
   
   private SongInfo getCurrentSongInfo()
@@ -174,18 +169,16 @@ public class AudioJsPlugin
     if (this.mPlayState == 3) {
       return this.mCurrentSongPosition;
     }
-    if (localMusicPlayerProxy != null) {}
-    try
-    {
-      this.mCurrentSongPosition = Math.max(localMusicPlayerProxy.getCurrentSongPosition(), 0);
-      if (this.mCurrentSongPosition % 1000 != 0) {
-        this.mCurrentSongPosition = ((this.mCurrentSongPosition / 1000 + 1) * 1000);
+    if (localMusicPlayerProxy != null) {
+      try
+      {
+        this.mCurrentSongPosition = Math.max(localMusicPlayerProxy.getCurrentSongPosition(), 0);
+        if (this.mCurrentSongPosition % 1000 != 0) {
+          this.mCurrentSongPosition = ((this.mCurrentSongPosition / 1000 + 1) * 1000);
+        }
+        this.mCurrentSongPosition = Math.min(this.mCurrentSongPosition, this.mCurrentSongDuration);
       }
-      this.mCurrentSongPosition = Math.min(this.mCurrentSongPosition, this.mCurrentSongDuration);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         QMLog.e("AudioJsPlugin", "getCurrentSongPosition exception ", localException);
       }
@@ -236,32 +229,34 @@ public class AudioJsPlugin
   
   private void onMusicCanplay()
   {
-    Log.i("AudioJsPlugin", "onMusicCanplay: " + Thread.currentThread().getId());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onMusicCanplay: ");
+    localStringBuilder.append(Thread.currentThread().getId());
+    Log.i("AudioJsPlugin", localStringBuilder.toString());
     evaluateBgAudioStateJs("canplay");
   }
   
   private void onMusicError()
   {
-    QMLog.i("AudioJsPlugin", "onMusicError " + this.mPlayState);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onMusicError ");
+    ((StringBuilder)localObject).append(this.mPlayState);
+    QMLog.i("AudioJsPlugin", ((StringBuilder)localObject).toString());
     if (this.mPlayState == 5) {
       return;
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("state", "error");
-      localJSONObject.put("errorCode", convertErrorCode(this.mPlayState));
-      sendSubscribeEvent("onBackgroundAudioStateChange", localJSONObject.toString());
-      this.mBgMusicReq.fail();
-      return;
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("state", "error");
+      ((JSONObject)localObject).put("errorCode", convertErrorCode(this.mPlayState));
+      sendSubscribeEvent("onBackgroundAudioStateChange", ((JSONObject)localObject).toString());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    this.mBgMusicReq.fail();
   }
   
   private void onMusicPause()
@@ -277,33 +272,32 @@ public class AudioJsPlugin
     {
       Thread.sleep(500L);
       label6:
-      localObject3 = null;
+      StringBuilder localStringBuilder2 = null;
+      StringBuilder localStringBuilder1;
       try
       {
         JSONObject localJSONObject = getStateJson();
-        localObject1 = localObject3;
+        Object localObject = localStringBuilder2;
         if (localJSONObject != null) {
-          localObject1 = localJSONObject.toString();
+          localObject = localJSONObject.toString();
         }
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          Object localObject1;
-          Log.w("AudioJsPlugin", "onMusicPlay: ", localException);
-          Object localObject2 = localObject3;
-        }
+        Log.w("AudioJsPlugin", "onMusicPlay: ", localException);
+        localStringBuilder1 = localStringBuilder2;
       }
-      Log.i("AudioJsPlugin", "onMusicPlay: " + (String)localObject1);
-      sendSubscribeEvent("onMusicPlay", (String)localObject1);
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("onMusicPlay: ");
+      localStringBuilder2.append(localStringBuilder1);
+      Log.i("AudioJsPlugin", localStringBuilder2.toString());
+      sendSubscribeEvent("onMusicPlay", localStringBuilder1);
       evaluateBgAudioStateJs("play");
       this.mBgMusicReq.ok();
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      Object localObject3;
       break label6;
     }
   }
@@ -323,66 +317,57 @@ public class AudioJsPlugin
   private void operateRecorderByLameMp3(String paramString, RequestEvent paramRequestEvent)
   {
     LameMp3Recorder localLameMp3Recorder = getLameMp3Recorder();
-    for (;;)
+    try
     {
-      String str;
-      try
+      paramString = new JSONObject(paramString);
+      String str = paramString.optString("operationType");
+      if ("start".equals(str))
       {
-        paramString = new JSONObject(paramString);
-        str = paramString.optString("operationType");
-        if ("start".equals(str))
+        if (!checkAvalibleSdCard())
         {
-          if (!checkAvalibleSdCard())
-          {
-            paramRequestEvent.fail();
-            return;
-          }
-          updateAudioConfig(localLameMp3Recorder, paramString);
-          getAudioManager().startRecord(paramRequestEvent, true);
-          paramRequestEvent.ok();
+          paramRequestEvent.fail();
           return;
         }
+        updateAudioConfig(localLameMp3Recorder, paramString);
+        getAudioManager().startRecord(paramRequestEvent, true);
       }
-      catch (Exception paramString)
+      else if ("stop".equals(str))
       {
-        QMLog.e("AudioJsPlugin", "operateRecorderByLameMp3 failed:", paramString);
-        paramRequestEvent.fail();
-        return;
-      }
-      if ("stop".equals(str)) {
         getAudioManager().stopRecord(0, paramRequestEvent, true);
-      } else if ("pause".equals(str)) {
+      }
+      else if ("pause".equals(str))
+      {
         localLameMp3Recorder.recordPause();
-      } else if ("resume".equals(str)) {
+      }
+      else if ("resume".equals(str))
+      {
         localLameMp3Recorder.recordResume();
       }
+      paramRequestEvent.ok();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QMLog.e("AudioJsPlugin", "operateRecorderByLameMp3 failed:", paramString);
+      paramRequestEvent.fail();
     }
   }
   
   private String parseAudioFormat(String paramString)
   {
-    String str2 = "mp3";
-    String str1 = str2;
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = paramString.toLowerCase();
-      if (!paramString.endsWith("aac")) {
-        break label34;
+      if (paramString.endsWith("aac")) {
+        return "m4a";
       }
-      str1 = "m4a";
+      paramString.endsWith("mp3");
     }
-    label34:
-    do
-    {
-      return str1;
-      str1 = str2;
-    } while (!paramString.endsWith("mp3"));
     return "mp3";
   }
   
   private void updateAudioConfig(LameMp3Recorder paramLameMp3Recorder, JSONObject paramJSONObject)
   {
-    int i = 600000;
     String str1 = paramJSONObject.optString("sampleRate");
     String str2 = paramJSONObject.optString("numberOfChannels");
     String str3 = paramJSONObject.optString("audioSource");
@@ -404,21 +389,23 @@ public class AudioJsPlugin
       paramLameMp3Recorder.setRecordFileFormat(str1);
     }
     int j = paramJSONObject.optInt("duration");
-    if (j < 0) {
+    int i;
+    if (j < 0)
+    {
       i = 1000;
     }
-    for (;;)
+    else
     {
-      if (i > 1) {
-        paramLameMp3Recorder.setMaxRecordTime(i / 1000);
-      }
-      paramLameMp3Recorder.setCallbackFrameSize(paramJSONObject.optInt("frameSize") * 1024);
-      paramLameMp3Recorder.setRecordFilPath(((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPath(str1));
-      return;
-      if (j <= 600000) {
-        i = j;
+      i = j;
+      if (j > 600000) {
+        i = 600000;
       }
     }
+    if (i > 1) {
+      paramLameMp3Recorder.setMaxRecordTime(i / 1000);
+    }
+    paramLameMp3Recorder.setCallbackFrameSize(paramJSONObject.optInt("frameSize") * 1024);
+    paramLameMp3Recorder.setRecordFilPath(((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPath(str1));
   }
   
   @JsEvent({"createAudioInstance"})
@@ -463,8 +450,8 @@ public class AudioJsPlugin
         AudioJsPlugin.InnerAudioManager.access$2100(localInnerAudioManager);
         int i = localJSONObject.optInt("audioId", -1);
         this.mInnerAudioManagers.remove(i);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -538,20 +525,28 @@ public class AudioJsPlugin
         Log.i("AudioJsPlugin", "getBackgroundAudioState: isPlaying = false ");
         return;
       }
+      JSONObject localJSONObject = getStateJson();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getBackgroundAudioState: ");
+      localStringBuilder.append(localJSONObject);
+      Log.i("AudioJsPlugin", localStringBuilder.toString());
+      if (localJSONObject != null)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getBackgroundAudioState: ok ");
+        localStringBuilder.append(Thread.currentThread().getId());
+        localStringBuilder.append(" ");
+        localStringBuilder.append(localJSONObject.toString());
+        Log.i("AudioJsPlugin", localStringBuilder.toString());
+        paramRequestEvent.ok(localJSONObject);
+        this.mBgAudioState = localJSONObject;
+        return;
+      }
     }
     catch (Exception localException)
     {
       QMLog.e("AudioJsPlugin", "getBackgroundAudioState failed:", localException);
       paramRequestEvent.fail();
-      return;
-    }
-    JSONObject localJSONObject = getStateJson();
-    Log.i("AudioJsPlugin", "getBackgroundAudioState: " + localJSONObject);
-    if (localJSONObject != null)
-    {
-      Log.i("AudioJsPlugin", "getBackgroundAudioState: ok " + Thread.currentThread().getId() + " " + localJSONObject.toString());
-      paramRequestEvent.ok(localJSONObject);
-      this.mBgAudioState = localJSONObject;
     }
   }
   
@@ -625,25 +620,25 @@ public class AudioJsPlugin
     catch (Throwable localThrowable)
     {
       QMLog.e("AudioJsPlugin", "onPause - manager.pause get a throwable", localThrowable);
-      if (this.lastPlayData == null) {}
-      do
-      {
+      if (this.lastPlayData == null) {
         return;
-        if (isPaused())
-        {
-          this.lastPlayData = null;
-          return;
-        }
-        localObject = getCurrentSongInfo();
-        if (localObject == null)
-        {
-          this.lastPlayData = null;
-          return;
-        }
-        localObject = ((SongInfo)localObject).url;
-        str = this.lastPlayData.jsonObject.optString("dataUrl", this.lastPlayData.jsonObject.optString("src"));
-      } while ((!TextUtils.isEmpty(str)) && (str.equals(localObject)));
-      this.lastPlayData = null;
+      }
+      if (isPaused())
+      {
+        this.lastPlayData = null;
+        return;
+      }
+      localObject = getCurrentSongInfo();
+      if (localObject == null)
+      {
+        this.lastPlayData = null;
+        return;
+      }
+      localObject = ((SongInfo)localObject).url;
+      str = this.lastPlayData.jsonObject.optString("dataUrl", this.lastPlayData.jsonObject.optString("src"));
+      if ((TextUtils.isEmpty(str)) || (!str.equals(localObject))) {
+        this.lastPlayData = null;
+      }
     }
   }
   
@@ -660,85 +655,70 @@ public class AudioJsPlugin
   @JsEvent({"operateAudio"})
   public void operateAudio(RequestEvent paramRequestEvent)
   {
-    for (;;)
+    try
     {
-      AudioJsPlugin.InnerAudioManager localInnerAudioManager;
-      String str;
-      try
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      AudioJsPlugin.InnerAudioManager localInnerAudioManager = getInnerAudioManager(localJSONObject);
+      if (localInnerAudioManager != null)
       {
-        JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-        localInnerAudioManager = getInnerAudioManager(localJSONObject);
-        if (localInnerAudioManager == null) {
-          break;
-        }
-        str = localJSONObject.optString("operationType");
-        if ("play".equals(str))
-        {
+        String str = localJSONObject.optString("operationType");
+        if ("play".equals(str)) {
           AudioJsPlugin.InnerAudioManager.access$1800(localInnerAudioManager);
-          paramRequestEvent.ok();
-          return;
-        }
-        if ("pause".equals(str))
-        {
+        } else if ("pause".equals(str)) {
           AudioJsPlugin.InnerAudioManager.access$1200(localInnerAudioManager);
-          continue;
+        } else if ("stop".equals(str)) {
+          AudioJsPlugin.InnerAudioManager.access$1900(localInnerAudioManager);
+        } else if ("seek".equals(str)) {
+          AudioJsPlugin.InnerAudioManager.access$2000(localInnerAudioManager, (int)localJSONObject.optDouble("currentTime"));
         }
-        if (!"stop".equals(str)) {
-          break label104;
-        }
-      }
-      catch (Exception localException)
-      {
-        QMLog.e("AudioJsPlugin", "operateAudio failed:", localException);
-        paramRequestEvent.fail();
+        paramRequestEvent.ok();
         return;
       }
-      AudioJsPlugin.InnerAudioManager.access$1900(localInnerAudioManager);
-      continue;
-      label104:
-      if ("seek".equals(str)) {
-        AudioJsPlugin.InnerAudioManager.access$2000(localInnerAudioManager, (int)localException.optDouble("currentTime"));
-      }
+    }
+    catch (Exception localException)
+    {
+      QMLog.e("AudioJsPlugin", "operateAudio failed:", localException);
+      paramRequestEvent.fail();
     }
   }
   
   @JsEvent({"operateBackgroundAudio"})
   public void operateBackgroundAudio(RequestEvent paramRequestEvent)
   {
-    String str;
     try
     {
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      str = localJSONObject.optString("operationType");
+      String str = localJSONObject.optString("operationType");
       if ("play".equals(str))
       {
-        if (this.mBgAudioState == null) {
+        if (this.mBgAudioState != null) {
+          getBgMusicManager().handleMessage(1, paramRequestEvent, this.mBgAudioState);
+        }
+      }
+      else
+      {
+        if ("pause".equals(str))
+        {
+          getBgMusicManager().handleMessage(2, paramRequestEvent);
           return;
         }
-        getBgMusicManager().handleMessage(1, paramRequestEvent, this.mBgAudioState);
-        return;
-      }
-      if ("pause".equals(str))
-      {
-        getBgMusicManager().handleMessage(2, paramRequestEvent);
-        return;
+        if ("stop".equals(str))
+        {
+          getBgMusicManager().handleMessage(3, paramRequestEvent);
+          return;
+        }
+        if (("seek".equals(str)) && (this.mBgAudioState != null))
+        {
+          getBgMusicManager().handleMessage(4, paramRequestEvent, localJSONObject);
+          paramRequestEvent.ok();
+          return;
+        }
       }
     }
     catch (Exception localException)
     {
       QMLog.e("AudioJsPlugin", "operateBackgroundAudio failed:", localException);
       paramRequestEvent.fail();
-      return;
-    }
-    if ("stop".equals(str))
-    {
-      getBgMusicManager().handleMessage(3, paramRequestEvent);
-      return;
-    }
-    if (("seek".equals(str)) && (this.mBgAudioState != null))
-    {
-      getBgMusicManager().handleMessage(4, paramRequestEvent, localException);
-      paramRequestEvent.ok();
     }
   }
   
@@ -746,12 +726,14 @@ public class AudioJsPlugin
   public void operateMusicPlayer(RequestEvent paramRequestEvent)
   {
     ((MusicPlayerProxy)ProxyManager.get(MusicPlayerProxy.class)).init(this.mMusicPlayerListener, this.mMiniAppInfo.appId, this.mMiniAppInfo.name);
-    String str;
     try
     {
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      str = localJSONObject.optString("operationType");
-      Log.i("AudioJsPlugin", "operateMusicPlayer: " + str);
+      String str = localJSONObject.optString("operationType");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("operateMusicPlayer: ");
+      localStringBuilder.append(str);
+      Log.i("AudioJsPlugin", localStringBuilder.toString());
       if ("play".equals(str))
       {
         this.mBgAudioState = localJSONObject;
@@ -763,22 +745,22 @@ public class AudioJsPlugin
         getBgMusicManager().handleMessage(2, paramRequestEvent);
         return;
       }
+      if ("stop".equals(str))
+      {
+        getBgMusicManager().handleMessage(3, paramRequestEvent);
+        return;
+      }
+      if ("seek".equals(str))
+      {
+        getBgMusicManager().handleMessage(4, paramRequestEvent, localJSONObject);
+        paramRequestEvent.ok();
+        return;
+      }
     }
     catch (Exception localException)
     {
       QMLog.e("AudioJsPlugin", "operateMusicPlayer failed:", localException);
       paramRequestEvent.fail();
-      return;
-    }
-    if ("stop".equals(str))
-    {
-      getBgMusicManager().handleMessage(3, paramRequestEvent);
-      return;
-    }
-    if ("seek".equals(str))
-    {
-      getBgMusicManager().handleMessage(4, paramRequestEvent, localException);
-      paramRequestEvent.ok();
     }
   }
   
@@ -830,17 +812,20 @@ public class AudioJsPlugin
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      getInnerAudioManager(localJSONObject).setAudioContext(localJSONObject);
-      String str = localJSONObject.optString("src");
+      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+      getInnerAudioManager((JSONObject)localObject).setAudioContext((JSONObject)localObject);
+      String str = ((JSONObject)localObject).optString("src");
       if (!TextUtils.isEmpty(str))
       {
-        localJSONObject.put("src", ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(str));
-        boolean bool = localJSONObject.optBoolean("autoplay");
-        AudioJsPlugin.InnerAudioManager.access$1700(getInnerAudioManager(localJSONObject), bool, new AudioJsPlugin.2(this, localJSONObject, paramRequestEvent));
+        ((JSONObject)localObject).put("src", ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(str));
+        boolean bool = ((JSONObject)localObject).optBoolean("autoplay");
+        AudioJsPlugin.InnerAudioManager.access$1700(getInnerAudioManager((JSONObject)localObject), bool, new AudioJsPlugin.2(this, (JSONObject)localObject, paramRequestEvent));
         return;
       }
-      QMLog.e("AudioJsPlugin", "setAudioState err" + paramRequestEvent.jsonParams);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setAudioState err");
+      ((StringBuilder)localObject).append(paramRequestEvent.jsonParams);
+      QMLog.e("AudioJsPlugin", ((StringBuilder)localObject).toString());
       paramRequestEvent.fail();
       return;
     }
@@ -858,15 +843,18 @@ public class AudioJsPlugin
     {
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = localJSONObject.optString("src");
-      Log.i("AudioJsPlugin", "setBackgroundAudioState: " + paramRequestEvent.jsonParams);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setBackgroundAudioState: ");
+      localStringBuilder.append(paramRequestEvent.jsonParams);
+      Log.i("AudioJsPlugin", localStringBuilder.toString());
       if (!TextUtils.isEmpty(str))
       {
         localJSONObject.put("src", ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(str));
         this.mBgAudioState = localJSONObject;
         getBgMusicManager().handleMessage(1, paramRequestEvent, this.mBgAudioState);
         paramRequestEvent.ok();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -885,17 +873,12 @@ public class AudioJsPlugin
       {
         if (str.equalsIgnoreCase("true")) {
           mMixWithOther = true;
+        } else if (str.equalsIgnoreCase("false")) {
+          mMixWithOther = false;
         }
-        for (;;)
-        {
-          paramRequestEvent.ok();
-          return;
-          if (str.equalsIgnoreCase("false")) {
-            mMixWithOther = false;
-          }
-        }
+        paramRequestEvent.ok();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -935,7 +918,7 @@ public class AudioJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.AudioJsPlugin
  * JD-Core Version:    0.7.0.1
  */

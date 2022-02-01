@@ -15,44 +15,43 @@ class SayHelloMsgListActivity$1
 {
   SayHelloMsgListActivity$1(SayHelloMsgListActivity paramSayHelloMsgListActivity) {}
   
-  public void a(boolean paramBoolean, List<FansEntity> paramList)
+  public void a(boolean paramBoolean, List<Object> paramList)
   {
-    int i = 0;
     if (paramBoolean)
     {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
+      localObject = paramList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        FansEntity localFansEntity = (FansEntity)localIterator.next();
-        RecentBaseData localRecentBaseData = (RecentBaseData)this.a.jdField_a_of_type_JavaUtilMap.get(String.valueOf(localFansEntity.uin));
+        FansEntity localFansEntity = (FansEntity)((Iterator)localObject).next();
+        RecentBaseData localRecentBaseData = (RecentBaseData)this.a.mMsgItemCache.get(String.valueOf(localFansEntity.uin));
         if ((localRecentBaseData != null) && ((localRecentBaseData instanceof RecentSayHelloListItem))) {
           ((RecentSayHelloListItem)localRecentBaseData).a(localFansEntity);
         }
       }
       ReportController.b(this.a.app, "dc00899", "grp_lbs", "", "c2c_tmp", "exp_hi_list", 0, 0, "", "", "", "");
     }
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null)
+    Object localObject = this.a.mRefreshHandler;
+    int i = 0;
+    if (localObject != null)
     {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(0);
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(0);
+      this.a.mRefreshHandler.removeMessages(0);
+      this.a.mRefreshHandler.sendEmptyMessage(0);
     }
-    if (QLog.isDevelopLevel()) {
+    if (QLog.isDevelopLevel())
+    {
       if (paramList != null) {
-        break label187;
+        i = paramList.size();
       }
-    }
-    for (;;)
-    {
-      QLog.d("Q.msg_box", 4, "get tags, size is " + i);
-      return;
-      label187:
-      i = paramList.size();
+      paramList = new StringBuilder();
+      paramList.append("get tags, size is ");
+      paramList.append(i);
+      QLog.d("Q.msg_box", 4, paramList.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.SayHelloMsgListActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -30,12 +30,15 @@ public abstract class EIPCModule
   
   public String toString()
   {
-    return "name:" + this.name;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("name:");
+    localStringBuilder.append(this.name);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     eipc.EIPCModule
  * JD-Core Version:    0.7.0.1
  */

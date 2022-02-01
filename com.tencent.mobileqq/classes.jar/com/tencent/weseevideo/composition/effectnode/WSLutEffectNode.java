@@ -13,8 +13,17 @@ public class WSLutEffectNode
 {
   private Bitmap mLutBitmap;
   private LutModel mLutModel;
-  protected String reportKey = "WSLutEffectNode";
-  private final String sEffectId = "WSLutEffectNode" + Integer.toHexString(hashCode());
+  protected String reportKey;
+  private final String sEffectId;
+  
+  public WSLutEffectNode()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSLutEffectNode");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.sEffectId = localStringBuilder.toString();
+    this.reportKey = "WSLutEffectNode";
+  }
   
   public TAVVideoEffect.Filter createFilter()
   {
@@ -45,7 +54,7 @@ public class WSLutEffectNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSLutEffectNode
  * JD-Core Version:    0.7.0.1
  */

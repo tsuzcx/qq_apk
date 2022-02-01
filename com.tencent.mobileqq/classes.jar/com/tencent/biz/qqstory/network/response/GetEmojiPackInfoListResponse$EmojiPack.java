@@ -35,64 +35,105 @@ public class GetEmojiPackInfoListResponse$EmojiPack
   
   private int a(int paramInt)
   {
-    int i = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      i = 1;
+    if ((paramInt != 1) && (paramInt != 2)) {
+      return 1;
     }
-    return i;
+    return paramInt;
   }
   
   public boolean a()
   {
-    if (this.jdField_b_of_type_Int == 1) {
-      if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {}
-    }
-    while ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.d)))
+    int i = this.jdField_b_of_type_Int;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (i == 1)
     {
-      return true;
-      return false;
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(this.d))
+        {
+          bool1 = bool2;
+          if (!TextUtils.isEmpty(this.e))
+          {
+            bool1 = bool2;
+            if (!TextUtils.isEmpty(this.f)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+      return bool1;
     }
-    return false;
+    boolean bool1 = bool3;
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    {
+      bool1 = bool3;
+      if (!TextUtils.isEmpty(this.d)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    boolean bool = true;
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (EmojiPack)paramObject;
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        break;
+      String str = this.jdField_a_of_type_JavaLangString;
+      if (str != null) {
+        if (str.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+          break label65;
+        }
+      } else if (paramObject.jdField_a_of_type_JavaLangString == null) {
+        return true;
       }
-    } while (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
-    while (paramObject.jdField_a_of_type_JavaLangString != null) {
-      return false;
+      bool = false;
+      label65:
+      return bool;
     }
-    return true;
+    return false;
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.hashCode();
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {
+      return str.hashCode();
     }
     return 0;
   }
   
   public String toString()
   {
-    return "EmojiPack{mPackId=" + this.jdField_a_of_type_JavaLangString + ", mLogoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mPackName='" + this.d + '\'' + ", mPackDownloadUrl='" + this.e + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EmojiPack{mPackId=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mLogoUrl='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mPackName='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mPackDownloadUrl='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetEmojiPackInfoListResponse.EmojiPack
  * JD-Core Version:    0.7.0.1
  */

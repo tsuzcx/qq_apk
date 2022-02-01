@@ -25,64 +25,70 @@ public class OneWayFriendHandler
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     OneWayFriendResult localOneWayFriendResult = new OneWayFriendResult();
-    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {}
-    for (;;)
+    int i;
+    int j;
+    label119:
+    boolean bool;
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
     {
-      int j;
       try
       {
         paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
         paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramToServiceMsg.uint32_result.get() == 0)
-        {
-          i = 1;
-          if (i == 0) {
-            break label224;
-          }
-          paramFromServiceMsg = new oidb_0xe8c.RspBody();
-          paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          long l = paramFromServiceMsg.uint64_friend_uin.get();
-          j = paramFromServiceMsg.uint32_flag.get();
-          if ((j & 0x1) != 0)
-          {
-            i = 1;
-            break label230;
-            localOneWayFriendResult.jdField_a_of_type_Long = l;
-            if ((i != 0) || (j == 0)) {
-              continue;
-            }
-            bool = true;
-            localOneWayFriendResult.jdField_a_of_type_Boolean = bool;
-            bool = true;
-            if (QLog.isColorLevel()) {
-              QLog.d("OneWayFriendHandler", 0, String.format("handleGetOneWayFriendFlag success=%s result=%s", new Object[] { Boolean.valueOf(bool), localOneWayFriendResult }));
-            }
-            notifyUI(1, bool, localOneWayFriendResult);
-          }
+        if (paramToServiceMsg.uint32_result.get() != 0) {
+          break label212;
         }
-        else
-        {
-          i = 0;
-          continue;
+        i = 1;
+        if (i == 0) {
+          break label165;
         }
-        int i = 0;
-        break label230;
-        j = 0;
-        continue;
-        boolean bool = false;
-        continue;
-        bool = false;
+        paramFromServiceMsg = new oidb_0xe8c.RspBody();
+        paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+        l = paramFromServiceMsg.uint64_friend_uin.get();
+        j = paramFromServiceMsg.uint32_flag.get();
+        if ((j & 0x1) == 0) {
+          break label218;
+        }
+        i = 1;
       }
       catch (Exception paramToServiceMsg)
       {
+        long l;
         QLog.e("OneWayFriendHandler", 1, "handleGetOneWayFriendFlag fail.", paramToServiceMsg);
       }
-      label224:
-      continue;
-      label230:
-      if ((j & 0x2) != 0) {
-        j = 1;
+      localOneWayFriendResult.jdField_a_of_type_Long = l;
+      if ((i != 0) || (j == 0)) {
+        break label240;
       }
+      bool = true;
+    }
+    for (;;)
+    {
+      localOneWayFriendResult.jdField_a_of_type_Boolean = bool;
+      bool = true;
+      break label168;
+      label165:
+      bool = false;
+      label168:
+      if (QLog.isColorLevel()) {
+        QLog.d("OneWayFriendHandler", 0, String.format("handleGetOneWayFriendFlag success=%s result=%s", new Object[] { Boolean.valueOf(bool), localOneWayFriendResult }));
+      }
+      notifyUI(1, bool, localOneWayFriendResult);
+      return;
+      label212:
+      i = 0;
+      break;
+      label218:
+      i = 0;
+      if ((j & 0x2) != 0)
+      {
+        j = 1;
+        break label119;
+      }
+      j = 0;
+      break label119;
+      label240:
+      bool = false;
     }
   }
   
@@ -96,7 +102,7 @@ public class OneWayFriendHandler
     sendPbReq(makeOIDBPkg("OidbSvc.0xe8c", 3724, 0, localReqBody.toByteArray()));
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return OneWayFriendObserver.class;
   }
@@ -110,7 +116,7 @@ public class OneWayFriendHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.onewayfriend.OneWayFriendHandler
  * JD-Core Version:    0.7.0.1
  */

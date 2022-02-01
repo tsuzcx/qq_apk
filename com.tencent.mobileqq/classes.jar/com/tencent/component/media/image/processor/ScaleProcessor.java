@@ -21,7 +21,7 @@ import com.tencent.component.media.image.drawable.SpecifiedBitmapDrawable;
 public class ScaleProcessor
   extends ImageProcessor
 {
-  private static volatile Matrix sScaleMatrix = null;
+  private static volatile Matrix sScaleMatrix;
   private int mHeight;
   private boolean mIsScaleInProportion;
   private int mWidth;
@@ -43,104 +43,114 @@ public class ScaleProcessor
   
   public static BitmapReference createBitmap(BitmapReference paramBitmapReference, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Matrix paramMatrix, boolean paramBoolean)
   {
-    if (paramInt1 + paramInt3 > paramBitmapReference.getWidth()) {
-      throw new IllegalArgumentException("x + width must be <= bitmap.width()");
-    }
-    if (paramInt2 + paramInt4 > paramBitmapReference.getHeight()) {
-      throw new IllegalArgumentException("y + height must be <= bitmap.height()");
-    }
-    if ((!paramBitmapReference.isMutable()) && (paramInt1 == 0) && (paramInt2 == 0) && (paramInt3 == paramBitmapReference.getWidth()) && (paramInt4 == paramBitmapReference.getHeight()) && ((paramMatrix == null) || (paramMatrix.isIdentity()))) {
-      return paramBitmapReference;
-    }
-    Canvas localCanvas = new Canvas();
-    Rect localRect = new Rect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
-    RectF localRectF1 = new RectF(0.0F, 0.0F, paramInt3, paramInt4);
-    Object localObject1 = Bitmap.Config.ARGB_8888;
-    Object localObject2 = paramBitmapReference.getConfig();
-    if (localObject2 != null) {
-      switch (ScaleProcessor.1.$SwitchMap$android$graphics$Bitmap$Config[localObject2.ordinal()])
-      {
-      default: 
-        localObject1 = Bitmap.Config.ARGB_8888;
-      }
-    }
-    for (;;)
+    int i = paramInt1 + paramInt3;
+    if (i <= paramBitmapReference.getWidth())
     {
-      if ((paramMatrix == null) || (paramMatrix.isIdentity()))
+      int j = paramInt2 + paramInt4;
+      if (j <= paramBitmapReference.getHeight())
       {
-        paramMatrix = ImageManager.getInstance().getBitmap(paramInt3, paramInt4, (Bitmap.Config)localObject1);
-        localCanvas.setBitmap(paramMatrix.getBitmap());
-        localObject1 = null;
-        localCanvas.drawBitmap(paramBitmapReference.getBitmap(), localRect, localRectF1, (Paint)localObject1);
-      }
-      try
-      {
-        localCanvas.setBitmap(null);
-        return paramMatrix;
-        localObject1 = Bitmap.Config.RGB_565;
-        continue;
-        localObject1 = Bitmap.Config.ALPHA_8;
-        continue;
-        if (!paramMatrix.rectStaysRect()) {}
-        for (paramInt1 = 1;; paramInt1 = 0)
+        if ((!paramBitmapReference.isMutable()) && (paramInt1 == 0) && (paramInt2 == 0) && (paramInt3 == paramBitmapReference.getWidth()) && (paramInt4 == paramBitmapReference.getHeight()) && ((paramMatrix == null) || (paramMatrix.isIdentity()))) {
+          return paramBitmapReference;
+        }
+        Canvas localCanvas = new Canvas();
+        Rect localRect = new Rect(paramInt1, paramInt2, i, j);
+        RectF localRectF = new RectF(0.0F, 0.0F, paramInt3, paramInt4);
+        Object localObject1 = Bitmap.Config.ARGB_8888;
+        Object localObject2 = paramBitmapReference.getConfig();
+        if (localObject2 != null)
         {
-          RectF localRectF2 = new RectF();
-          paramMatrix.mapRect(localRectF2, localRectF1);
-          paramInt2 = Math.round(localRectF2.width());
-          paramInt3 = Math.round(localRectF2.height());
+          paramInt1 = ScaleProcessor.1.$SwitchMap$android$graphics$Bitmap$Config[localObject2.ordinal()];
+          if (paramInt1 != 1)
+          {
+            if (paramInt1 != 2) {
+              localObject1 = Bitmap.Config.ARGB_8888;
+            } else {
+              localObject1 = Bitmap.Config.ALPHA_8;
+            }
+          }
+          else {
+            localObject1 = Bitmap.Config.RGB_565;
+          }
+        }
+        if ((paramMatrix != null) && (!paramMatrix.isIdentity()))
+        {
+          paramInt1 = paramMatrix.rectStaysRect() ^ true;
+          Object localObject3 = new RectF();
+          paramMatrix.mapRect((RectF)localObject3, localRectF);
+          paramInt2 = Math.round(((RectF)localObject3).width());
+          paramInt3 = Math.round(((RectF)localObject3).height());
           localObject2 = ImageManager.getInstance();
           if (paramInt1 != 0) {
             localObject1 = Bitmap.Config.ARGB_8888;
           }
           localObject2 = ((ImageManager)localObject2).getBitmap(paramInt2, paramInt3, (Bitmap.Config)localObject1);
           localCanvas.setBitmap(((BitmapReference)localObject2).getBitmap());
-          localCanvas.translate(-localRectF2.left, -localRectF2.top);
+          localCanvas.translate(-((RectF)localObject3).left, -((RectF)localObject3).top);
           localCanvas.concat(paramMatrix);
-          localObject1 = new Paint();
-          ((Paint)localObject1).setFilterBitmap(paramBoolean);
-          if (paramInt1 != 0) {
-            ((Paint)localObject1).setAntiAlias(true);
-          }
+          localObject3 = new Paint();
+          ((Paint)localObject3).setFilterBitmap(paramBoolean);
           paramMatrix = (Matrix)localObject2;
-          break;
+          localObject1 = localObject3;
+          if (paramInt1 != 0)
+          {
+            ((Paint)localObject3).setAntiAlias(true);
+            paramMatrix = (Matrix)localObject2;
+            localObject1 = localObject3;
+          }
         }
-      }
-      catch (Throwable paramBitmapReference)
-      {
-        for (;;)
+        else
+        {
+          paramMatrix = ImageManager.getInstance().getBitmap(paramInt3, paramInt4, (Bitmap.Config)localObject1);
+          localCanvas.setBitmap(paramMatrix.getBitmap());
+          localObject1 = null;
+        }
+        localCanvas.drawBitmap(paramBitmapReference.getBitmap(), localRect, localRectF, (Paint)localObject1);
+        try
+        {
+          localCanvas.setBitmap(null);
+          return paramMatrix;
+        }
+        catch (Throwable paramBitmapReference)
         {
           paramBitmapReference.printStackTrace();
-          ImageManagerEnv.getLogger().e("ScaleProcessor", new Object[] { "canvas.setBitmap(null) catch an exception:" + paramBitmapReference.getMessage() });
+          localObject1 = ImageManagerEnv.getLogger();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("canvas.setBitmap(null) catch an exception:");
+          ((StringBuilder)localObject2).append(paramBitmapReference.getMessage());
+          ((ILog)localObject1).e("ScaleProcessor", new Object[] { ((StringBuilder)localObject2).toString() });
+          return paramMatrix;
         }
       }
+      throw new IllegalArgumentException("y + height must be <= bitmap.height()");
     }
+    throw new IllegalArgumentException("x + width must be <= bitmap.width()");
   }
   
   /* Error */
   public static BitmapReference createScaledBitmap(BitmapReference paramBitmapReference, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc 204
+    //   0: ldc 202
     //   2: monitorenter
-    //   3: getstatic 16	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
+    //   3: getstatic 204	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
     //   6: astore 7
     //   8: aconst_null
-    //   9: putstatic 16	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
-    //   12: ldc 204
+    //   9: putstatic 204	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
+    //   12: ldc 202
     //   14: monitorexit
     //   15: aload 7
     //   17: astore 6
     //   19: aload 7
     //   21: ifnonnull +12 -> 33
-    //   24: new 57	android/graphics/Matrix
+    //   24: new 46	android/graphics/Matrix
     //   27: dup
     //   28: invokespecial 205	android/graphics/Matrix:<init>	()V
     //   31: astore 6
     //   33: aload_0
-    //   34: invokevirtual 39	com/tencent/component/media/image/BitmapReference:getWidth	()I
+    //   34: invokevirtual 37	com/tencent/component/media/image/BitmapReference:getWidth	()I
     //   37: istore 4
     //   39: aload_0
-    //   40: invokevirtual 49	com/tencent/component/media/image/BitmapReference:getHeight	()I
+    //   40: invokevirtual 40	com/tencent/component/media/image/BitmapReference:getHeight	()I
     //   43: istore 5
     //   45: aload 6
     //   47: iload_1
@@ -163,23 +173,23 @@ public class ScaleProcessor
     //   71: iload_3
     //   72: invokestatic 210	com/tencent/component/media/image/processor/ScaleProcessor:createBitmap	(Lcom/tencent/component/media/image/BitmapReference;IIIILandroid/graphics/Matrix;Z)Lcom/tencent/component/media/image/BitmapReference;
     //   75: astore_0
-    //   76: ldc 204
+    //   76: ldc 202
     //   78: monitorenter
-    //   79: getstatic 16	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
+    //   79: getstatic 204	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
     //   82: ifnonnull +8 -> 90
     //   85: aload 6
-    //   87: putstatic 16	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
-    //   90: ldc 204
+    //   87: putstatic 204	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
+    //   90: ldc 202
     //   92: monitorexit
     //   93: aload_0
     //   94: areturn
     //   95: astore_0
-    //   96: ldc 204
+    //   96: ldc 202
     //   98: monitorexit
     //   99: aload_0
     //   100: athrow
     //   101: astore_0
-    //   102: ldc 204
+    //   102: ldc 202
     //   104: monitorexit
     //   105: aload_0
     //   106: athrow
@@ -195,10 +205,10 @@ public class ScaleProcessor
     //   6	14	7	localMatrix2	Matrix
     // Exception table:
     //   from	to	target	type
-    //   3	15	95	finally
+    //   79	90	95	finally
+    //   90	93	95	finally
     //   96	99	95	finally
-    //   79	90	101	finally
-    //   90	93	101	finally
+    //   3	15	101	finally
     //   102	105	101	finally
   }
   
@@ -211,58 +221,74 @@ public class ScaleProcessor
   @Public
   public static BitmapReference getScaledBitmap(BitmapReference paramBitmapReference, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((paramBitmapReference == null) || ((paramInt1 <= 0) && (paramInt2 <= 0)) || ((paramBitmapReference.getWidth() == paramInt1) && (paramBitmapReference.getHeight() == paramInt2))) {
-      return paramBitmapReference;
-    }
-    label50:
-    int j;
-    int i;
-    if (paramInt1 <= 0) {
-      if (paramBoolean)
+    BitmapReference localBitmapReference1 = paramBitmapReference;
+    BitmapReference localBitmapReference2;
+    if (paramBitmapReference != null) {
+      if (paramInt1 <= 0)
       {
-        paramInt1 = paramBitmapReference.getWidth() * paramInt2 / paramBitmapReference.getHeight();
-        j = paramInt2;
-        i = paramInt1;
+        localBitmapReference1 = paramBitmapReference;
+        if (paramInt2 <= 0) {}
       }
-    }
-    do
-    {
-      Object localObject = null;
-      try
+      else
       {
-        BitmapReference localBitmapReference = createScaledBitmap(paramBitmapReference, i, j, false);
-        localObject = localBitmapReference;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
+        if ((paramBitmapReference.getWidth() == paramInt1) && (paramBitmapReference.getHeight() == paramInt2)) {
+          return paramBitmapReference;
+        }
+        int i;
+        int j;
+        if (paramInt1 <= 0)
+        {
+          if (paramBoolean)
+          {
+            i = paramBitmapReference.getWidth() * paramInt2 / paramBitmapReference.getHeight();
+            j = paramInt2;
+          }
+          else
+          {
+            i = paramBitmapReference.getWidth();
+            j = paramInt2;
+          }
+        }
+        else
+        {
+          i = paramInt1;
+          j = paramInt2;
+          if (paramInt2 <= 0) {
+            if (paramBoolean)
+            {
+              j = paramBitmapReference.getHeight() * paramInt1 / paramBitmapReference.getWidth();
+              i = paramInt1;
+            }
+            else
+            {
+              j = paramBitmapReference.getHeight();
+              i = paramInt1;
+            }
+          }
+        }
+        try
+        {
+          localBitmapReference1 = createScaledBitmap(paramBitmapReference, i, j, false);
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
         {
           localOutOfMemoryError.printStackTrace();
+          localBitmapReference2 = null;
+        }
+        if (localBitmapReference2 == null) {
+          return paramBitmapReference;
         }
       }
-      if (localObject == null) {
-        break;
-      }
-      return localObject;
-      paramInt1 = paramBitmapReference.getWidth();
-      break label50;
-      i = paramInt1;
-      j = paramInt2;
-    } while (paramInt2 > 0);
-    if (paramBoolean) {}
-    for (paramInt2 = paramBitmapReference.getHeight() * paramInt1 / paramBitmapReference.getWidth();; paramInt2 = paramBitmapReference.getHeight())
-    {
-      i = paramInt1;
-      j = paramInt2;
-      break;
     }
+    return localBitmapReference2;
   }
   
   @Public
   public int getHeight()
   {
-    if (this.mHeight > 0) {
-      return this.mHeight;
+    int i = this.mHeight;
+    if (i > 0) {
+      return i;
     }
     return 0;
   }
@@ -281,37 +307,35 @@ public class ScaleProcessor
   @Public
   public int getWidth()
   {
-    if (this.mWidth > 0) {
-      return this.mWidth;
+    int i = this.mWidth;
+    if (i > 0) {
+      return i;
     }
     return 0;
   }
   
   public Drawable process(Drawable paramDrawable)
   {
-    if ((this.mWidth <= 0) && (this.mHeight <= 0)) {}
-    for (;;)
-    {
+    if ((this.mWidth <= 0) && (this.mHeight <= 0)) {
       return paramDrawable;
-      BitmapReference localBitmapReference = null;
-      if ((paramDrawable instanceof ImageDrawable)) {
-        localBitmapReference = ((ImageDrawable)paramDrawable).getBitmapRef();
-      }
-      while (localBitmapReference != null)
-      {
-        return new SpecifiedBitmapDrawable(getScaledBitmap(localBitmapReference, this.mWidth, this.mHeight, this.mIsScaleInProportion));
-        if ((paramDrawable instanceof SpecifiedBitmapDrawable)) {
-          localBitmapReference = ((SpecifiedBitmapDrawable)paramDrawable).getBitmapRef();
-        } else if ((paramDrawable instanceof BitmapDrawable)) {
-          localBitmapReference = BitmapReference.getBitmapReference(((BitmapDrawable)paramDrawable).getBitmap());
-        }
-      }
     }
+    BitmapReference localBitmapReference = null;
+    if ((paramDrawable instanceof ImageDrawable)) {
+      localBitmapReference = ((ImageDrawable)paramDrawable).getBitmapRef();
+    } else if ((paramDrawable instanceof SpecifiedBitmapDrawable)) {
+      localBitmapReference = ((SpecifiedBitmapDrawable)paramDrawable).getBitmapRef();
+    } else if ((paramDrawable instanceof BitmapDrawable)) {
+      localBitmapReference = BitmapReference.getBitmapReference(((BitmapDrawable)paramDrawable).getBitmap());
+    }
+    if (localBitmapReference == null) {
+      return paramDrawable;
+    }
+    return new SpecifiedBitmapDrawable(getScaledBitmap(localBitmapReference, this.mWidth, this.mHeight, this.mIsScaleInProportion));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.processor.ScaleProcessor
  * JD-Core Version:    0.7.0.1
  */

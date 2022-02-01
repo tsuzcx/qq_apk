@@ -22,14 +22,20 @@ public class QZoneConfigSQLiteHelper
     paramSQLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS qz_update (name text PRIMARY KEY NOT NULL,updatelog text NOT NULL)");
     paramSQLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS qz_isp_config (key text PRIMARY KEY NOT NULL,value text)");
     paramSQLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS qz_check_time (name text PRIMARY KEY NOT NULL,check_time INTEGER NOT NULL)");
-    paramSQLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS qz_navigator_bar (uin text PRIMARY KEY NOT NULL,entraceid INTEGER NOT NULL,entracename text NOT NULL,entraceicon text,entraceaction text,isDefault INTEGER,tabid INTEGER,qbossentraceicon text,qbosstraceinfo text)");
+    paramSQLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS qz_navigator_bar (uin text PRIMARY KEY NOT NULL,entraceid INTEGER NOT NULL,entracename text NOT NULL,entraceicon text,entraceaction text,isDefault INTEGER,tabid INTEGER,qbossentraceicon text,qbosstraceinfo text,iscannotshowteenagermode INTEGER)");
     paramSQLiteDatabase.execSQL("create table if not exists table_qz_unread(own_uin text, type integer, ucount integer,icontrol integer,frienduins BLOB,friendMsg text,friendsNum integer,trace_info text,existDL integer, pushMsg text,schema text,iconUrl text,showMsg text,reportValue text,countID text,cTime text,iShowLevel integer,hasShow integer,actPageAttach text,  PRIMARY KEY(own_uin,type))");
   }
   
   public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneConfigHelper", 2, "updating database from version " + paramInt1 + " to " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updating database from version ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" to ");
+      localStringBuilder.append(paramInt2);
+      QLog.i("QZoneConfigHelper", 2, localStringBuilder.toString());
     }
     paramSQLiteDatabase.execSQL("drop table if exists qz_configs");
     paramSQLiteDatabase.execSQL("drop table if exists qz_cookie");
@@ -43,8 +49,14 @@ public class QZoneConfigSQLiteHelper
   
   public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneConfigHelper", 2, "updating database from version " + paramInt1 + " to " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updating database from version ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" to ");
+      localStringBuilder.append(paramInt2);
+      QLog.i("QZoneConfigHelper", 2, localStringBuilder.toString());
     }
     paramSQLiteDatabase.execSQL("drop table if exists qz_configs");
     paramSQLiteDatabase.execSQL("drop table if exists qz_cookie");
@@ -58,7 +70,7 @@ public class QZoneConfigSQLiteHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.config.provider.QZoneConfigSQLiteHelper
  * JD-Core Version:    0.7.0.1
  */

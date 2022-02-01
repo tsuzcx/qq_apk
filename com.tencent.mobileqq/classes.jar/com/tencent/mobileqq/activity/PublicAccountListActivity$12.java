@@ -1,28 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 class PublicAccountListActivity$12
-  extends PublicAccountObserver
+  extends FriendListObserver
 {
   PublicAccountListActivity$12(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c();
-    }
-  }
-  
-  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c();
-    }
-  }
-  
-  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
     if (paramBoolean) {
       this.a.c();
@@ -31,7 +16,7 @@ class PublicAccountListActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.12
  * JD-Core Version:    0.7.0.1
  */

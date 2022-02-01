@@ -16,29 +16,31 @@ import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.troop.utils.TroopGiftManager;
 
 public class NearbyGiftPanelDialog
+  implements INearbyGiftPanelDialog
 {
-  public static long a;
-  private static final String jdField_a_of_type_JavaLangString = NearbyGiftPanelDialog.class.getName() + "Q.nearby.video_chat.gift";
-  public static long[] a;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TroopGiftPanel jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private boolean jdField_a_of_type_Boolean;
+  private static final String a;
+  public int a;
+  public Context a;
+  public ViewGroup a;
+  public TroopGiftPanel a;
+  public AppInterface a;
+  public SessionInfo a;
+  public boolean a;
   
   static
   {
-    jdField_a_of_type_ArrayOfLong = new long[2];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(NearbyGiftPanelDialog.class.getName());
+    localStringBuilder.append("Q.nearby.video_chat.gift");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
-  public NearbyGiftPanelDialog(AppInterface paramAppInterface, Context paramContext, SessionInfo paramSessionInfo, TroopGiftPanel paramTroopGiftPanel, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2)
+  public NearbyGiftPanelDialog(AppInterface paramAppInterface, Context paramContext, Object paramObject1, Object paramObject2, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel = paramTroopGiftPanel;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = ((SessionInfo)paramObject1);
+    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel = ((TroopGiftPanel)paramObject2);
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
     this.jdField_a_of_type_Boolean = paramBoolean1;
     this.jdField_a_of_type_Int = 3;
@@ -73,28 +75,31 @@ public class NearbyGiftPanelDialog
     AIOAnimationControlManager localAIOAnimationControlManager = (AIOAnimationControlManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
     TroopGiftManager localTroopGiftManager = (TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER);
     String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (paramBoolean) {}
-    for (int i = 4;; i = 3)
-    {
-      localTroopGiftManager.a("OidbSvc.0x7f8", 2040, paramInt2, str, 2, i, 0, new NearbyGiftPanelDialog.1(this, localTroopGiftManager, l, localAIOAnimationControlManager, paramInt1));
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 4;
+    } else {
+      i = 3;
     }
+    localTroopGiftManager.a("OidbSvc.0x7f8", 2040, paramInt2, str, 2, i, 0, new NearbyGiftPanelDialog.1(this, localTroopGiftManager, l, localAIOAnimationControlManager, paramInt1));
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel;
+    int i = 0;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setIsShow(true);
-      Object localObject;
+      ((TroopGiftPanel)localObject).setIsShow(true);
       if (paramBoolean1)
       {
         this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(TroopGiftPanel.e);
         localObject = TroopGiftAioPanelData.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-        if (localObject == null) {
-          break label182;
+        if (localObject != null) {
+          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setGiftData((TroopGiftAioPanelData)localObject, true);
+        } else {
+          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d();
         }
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setGiftData((TroopGiftAioPanelData)localObject, true);
         a(0, paramBoolean2, paramInt);
       }
       if (this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("mTroopGiftPanel") == null)
@@ -106,16 +111,16 @@ public class NearbyGiftPanelDialog
         this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setTag("mTroopGiftPanel");
       }
     }
-    if ((Build.VERSION.SDK_INT >= 23) && (this.jdField_a_of_type_AndroidContentContext.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {}
-    for (paramInt = 1;; paramInt = 0)
+    paramInt = i;
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      if (paramInt == 0) {
-        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new NearbyGiftPanelDialog.LocationListener(3, true, true, 60000L, true, false, "NearbyTroopsView"));
+      paramInt = i;
+      if (this.jdField_a_of_type_AndroidContentContext.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0) {
+        paramInt = 1;
       }
-      return;
-      label182:
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d();
-      break;
+    }
+    if (paramInt == 0) {
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new LocationListener(3, true, true, 60000L, true, false, "NearbyTroopsView"));
     }
   }
   
@@ -126,7 +131,7 @@ public class NearbyGiftPanelDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog
  * JD-Core Version:    0.7.0.1
  */

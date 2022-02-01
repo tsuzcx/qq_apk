@@ -4,7 +4,7 @@ import android.content.Intent;
 import com.tencent.mobileqq.activity.TextPreviewActivity;
 import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 import com.tencent.mobileqq.textpreview.MenuUtil;
-import com.tencent.mobileqq.widget.ParticipleBottomMenuView.OnMenuClickListener;
+import com.tencent.mobileqq.widget.participle.ParticipleBottomMenuView.OnMenuClickListener;
 
 class TextPreviewMenu$1
   implements ParticipleBottomMenuView.OnMenuClickListener
@@ -28,7 +28,8 @@ class TextPreviewMenu$1
   
   public void c(String paramString)
   {
-    MenuUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, paramString);
+    TextPreviewActivity localTextPreviewActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity;
+    MenuUtil.a(localTextPreviewActivity, localTextPreviewActivity.app, paramString);
   }
   
   public void d(String paramString)
@@ -41,7 +42,7 @@ class TextPreviewMenu$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.TextPreviewMenu.1
  * JD-Core Version:    0.7.0.1
  */

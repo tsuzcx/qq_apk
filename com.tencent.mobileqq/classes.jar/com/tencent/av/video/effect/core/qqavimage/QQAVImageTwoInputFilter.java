@@ -41,8 +41,9 @@ public class QQAVImageTwoInputFilter
   
   protected void onDrawArraysAfter()
   {
-    if (this.mFilterSecondTextureCoordinateAttribute != -1) {
-      GLES20.glDisableVertexAttribArray(this.mFilterSecondTextureCoordinateAttribute);
+    int i = this.mFilterSecondTextureCoordinateAttribute;
+    if (i != -1) {
+      GLES20.glDisableVertexAttribArray(i);
     }
     GLES20.glActiveTexture(33987);
     GLES20.glBindTexture(3553, 0);
@@ -51,9 +52,10 @@ public class QQAVImageTwoInputFilter
   
   protected void onDrawArraysPre()
   {
-    if (this.mFilterSecondTextureCoordinateAttribute != -1)
+    int i = this.mFilterSecondTextureCoordinateAttribute;
+    if (i != -1)
     {
-      GLES20.glEnableVertexAttribArray(this.mFilterSecondTextureCoordinateAttribute);
+      GLES20.glEnableVertexAttribArray(i);
       this.mTexture2CoordinatesBuffer.position(0);
       GLES20.glVertexAttribPointer(this.mFilterSecondTextureCoordinateAttribute, 2, 5126, false, 0, this.mTexture2CoordinatesBuffer);
     }
@@ -71,14 +73,16 @@ public class QQAVImageTwoInputFilter
     this.mFilterSecondTextureCoordinateAttribute = GLES20.glGetAttribLocation(getProgram(), "inputTextureCoordinate2");
     this.mFilterInputTextureUniform2 = GLES20.glGetUniformLocation(getProgram(), "inputImageTexture2");
     GLES20.glEnableVertexAttribArray(this.mFilterSecondTextureCoordinateAttribute);
-    if ((this.mBitmap != null) && (!this.mBitmap.isRecycled())) {
+    Bitmap localBitmap = this.mBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       setBitmap(this.mBitmap);
     }
   }
   
   public void recycleBitmap()
   {
-    if ((this.mBitmap != null) && (!this.mBitmap.isRecycled()))
+    Bitmap localBitmap = this.mBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       this.mBitmap.recycle();
       this.mBitmap = null;
@@ -87,12 +91,13 @@ public class QQAVImageTwoInputFilter
   
   public void setBitmap(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (paramBitmap.isRecycled())) {}
-    do
-    {
+    if ((paramBitmap != null) && (paramBitmap.isRecycled())) {
       return;
-      this.mBitmap = paramBitmap;
-    } while (this.mBitmap == null);
+    }
+    this.mBitmap = paramBitmap;
+    if (this.mBitmap == null) {
+      return;
+    }
     runOnDraw(new QQAVImageTwoInputFilter.1(this, paramBitmap));
   }
   
@@ -108,7 +113,7 @@ public class QQAVImageTwoInputFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageTwoInputFilter
  * JD-Core Version:    0.7.0.1
  */

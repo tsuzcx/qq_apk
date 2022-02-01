@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 class GameMsgChatPie$2
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
-  GameMsgChatPie$2(GameMsgChatPie paramGameMsgChatPie, GameMsgChatPie.ButtonInfo paramButtonInfo) {}
+  GameMsgChatPie$2(GameMsgChatPie paramGameMsgChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onAddFriend(String paramString)
   {
-    GameMsgChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$ButtonInfo);
+    this.a.d(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie.2
  * JD-Core Version:    0.7.0.1
  */

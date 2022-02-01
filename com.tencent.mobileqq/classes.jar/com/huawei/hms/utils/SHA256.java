@@ -11,144 +11,119 @@ public abstract class SHA256
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_3
-    //   2: ldc 17
-    //   4: invokestatic 23	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   7: astore 4
-    //   9: new 25	java/io/FileInputStream
-    //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 28	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   17: astore_0
-    //   18: new 30	java/io/BufferedInputStream
-    //   21: dup
-    //   22: aload_0
-    //   23: invokespecial 33	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   26: astore_0
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 4
+    //   6: aload 5
+    //   8: astore_3
+    //   9: ldc 17
+    //   11: invokestatic 23	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   14: astore 6
+    //   16: aload 5
+    //   18: astore_3
+    //   19: new 25	java/io/BufferedInputStream
+    //   22: dup
+    //   23: new 27	java/io/FileInputStream
+    //   26: dup
     //   27: aload_0
-    //   28: astore_3
-    //   29: sipush 4096
-    //   32: newarray byte
-    //   34: astore 5
-    //   36: iconst_0
-    //   37: istore_1
-    //   38: aload_0
-    //   39: astore_3
-    //   40: aload_0
-    //   41: aload 5
-    //   43: invokevirtual 39	java/io/InputStream:read	([B)I
-    //   46: istore_2
-    //   47: iload_2
-    //   48: iconst_m1
-    //   49: if_icmpeq +39 -> 88
-    //   52: iload_1
-    //   53: iload_2
-    //   54: iadd
-    //   55: istore_1
-    //   56: aload_0
-    //   57: astore_3
-    //   58: aload 4
-    //   60: aload 5
-    //   62: iconst_0
-    //   63: iload_2
-    //   64: invokevirtual 43	java/security/MessageDigest:update	([BII)V
-    //   67: goto -29 -> 38
-    //   70: astore_3
-    //   71: aload_0
-    //   72: astore_3
-    //   73: ldc 45
-    //   75: ldc 47
-    //   77: invokestatic 53	com/huawei/hms/support/log/HMSLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   80: aload_0
-    //   81: invokestatic 58	com/huawei/hms/utils/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   84: iconst_0
-    //   85: newarray byte
-    //   87: areturn
-    //   88: iload_1
-    //   89: ifle +19 -> 108
-    //   92: aload_0
-    //   93: astore_3
-    //   94: aload 4
-    //   96: invokevirtual 61	java/security/MessageDigest:digest	()[B
-    //   99: astore 4
-    //   101: aload_0
-    //   102: invokestatic 58	com/huawei/hms/utils/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   105: aload 4
-    //   107: areturn
-    //   108: aload_0
-    //   109: invokestatic 58	com/huawei/hms/utils/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   112: goto -28 -> 84
-    //   115: astore_0
-    //   116: aconst_null
-    //   117: astore_3
-    //   118: aload_3
-    //   119: invokestatic 58	com/huawei/hms/utils/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   122: aload_0
-    //   123: athrow
-    //   124: astore_0
-    //   125: goto -7 -> 118
-    //   128: astore_0
-    //   129: aload_3
-    //   130: astore_0
-    //   131: goto -60 -> 71
-    //   134: astore_0
-    //   135: aload_3
-    //   136: astore_0
-    //   137: goto -66 -> 71
-    //   140: astore_0
-    //   141: goto -70 -> 71
-    //   144: astore_0
-    //   145: goto -74 -> 71
-    //   148: astore_0
-    //   149: aload_3
-    //   150: astore_0
-    //   151: goto -80 -> 71
-    //   154: astore_0
-    //   155: aload_3
-    //   156: astore_0
-    //   157: goto -86 -> 71
-    //   160: astore_3
-    //   161: goto -90 -> 71
-    //   164: astore_3
-    //   165: goto -94 -> 71
-    //   168: astore_3
-    //   169: goto -98 -> 71
-    //   172: astore_3
-    //   173: goto -102 -> 71
+    //   28: invokespecial 30	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   31: invokespecial 33	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   34: astore_0
+    //   35: sipush 4096
+    //   38: newarray byte
+    //   40: astore_3
+    //   41: iconst_0
+    //   42: istore_1
+    //   43: aload_0
+    //   44: aload_3
+    //   45: invokevirtual 39	java/io/InputStream:read	([B)I
+    //   48: istore_2
+    //   49: iload_2
+    //   50: iconst_m1
+    //   51: if_icmpeq +18 -> 69
+    //   54: iload_1
+    //   55: iload_2
+    //   56: iadd
+    //   57: istore_1
+    //   58: aload 6
+    //   60: aload_3
+    //   61: iconst_0
+    //   62: iload_2
+    //   63: invokevirtual 43	java/security/MessageDigest:update	([BII)V
+    //   66: goto -23 -> 43
+    //   69: iload_1
+    //   70: ifle +15 -> 85
+    //   73: aload 6
+    //   75: invokevirtual 46	java/security/MessageDigest:digest	()[B
+    //   78: astore_3
+    //   79: aload_0
+    //   80: invokestatic 51	com/huawei/hms/utils/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   83: aload_3
+    //   84: areturn
+    //   85: aload_0
+    //   86: invokestatic 51	com/huawei/hms/utils/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   89: goto +26 -> 115
+    //   92: astore 4
+    //   94: aload_0
+    //   95: astore_3
+    //   96: aload 4
+    //   98: astore_0
+    //   99: goto +21 -> 120
+    //   102: aload_0
+    //   103: astore_3
+    //   104: ldc 53
+    //   106: ldc 55
+    //   108: invokestatic 61	com/huawei/hms/support/log/HMSLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   111: aload_0
+    //   112: invokestatic 51	com/huawei/hms/utils/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   115: iconst_0
+    //   116: newarray byte
+    //   118: areturn
+    //   119: astore_0
+    //   120: aload_3
+    //   121: invokestatic 51	com/huawei/hms/utils/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   124: goto +5 -> 129
+    //   127: aload_0
+    //   128: athrow
+    //   129: goto -2 -> 127
+    //   132: astore_0
+    //   133: aload 4
+    //   135: astore_0
+    //   136: goto -34 -> 102
+    //   139: astore_3
+    //   140: goto -38 -> 102
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	176	0	paramFile	java.io.File
-    //   37	52	1	i	int
-    //   46	18	2	j	int
-    //   1	57	3	localFile1	java.io.File
-    //   70	1	3	localNoSuchAlgorithmException	NoSuchAlgorithmException
-    //   72	64	3	localFile2	java.io.File
-    //   7	99	4	localObject	Object
-    //   34	27	5	arrayOfByte	byte[]
+    //   0	143	0	paramFile	java.io.File
+    //   42	28	1	i	int
+    //   48	15	2	j	int
+    //   8	113	3	localObject1	Object
+    //   139	1	3	localNoSuchAlgorithmException	NoSuchAlgorithmException
+    //   4	1	4	localObject2	Object
+    //   92	42	4	localObject3	Object
+    //   1	16	5	localObject4	Object
+    //   14	60	6	localMessageDigest	MessageDigest
     // Exception table:
     //   from	to	target	type
-    //   29	36	70	java/security/NoSuchAlgorithmException
-    //   40	47	70	java/security/NoSuchAlgorithmException
-    //   58	67	70	java/security/NoSuchAlgorithmException
-    //   94	101	70	java/security/NoSuchAlgorithmException
-    //   2	9	115	finally
-    //   9	18	115	finally
-    //   18	27	115	finally
-    //   29	36	124	finally
-    //   40	47	124	finally
-    //   58	67	124	finally
-    //   73	80	124	finally
-    //   94	101	124	finally
-    //   2	9	128	java/security/NoSuchAlgorithmException
-    //   9	18	128	java/security/NoSuchAlgorithmException
-    //   18	27	128	java/security/NoSuchAlgorithmException
-    //   2	9	134	java/io/IOException
-    //   9	18	148	java/io/IOException
-    //   18	27	154	java/io/IOException
-    //   29	36	160	java/io/IOException
-    //   40	47	164	java/io/IOException
-    //   58	67	168	java/io/IOException
-    //   94	101	172	java/io/IOException
+    //   35	41	92	finally
+    //   43	49	92	finally
+    //   58	66	92	finally
+    //   73	79	92	finally
+    //   9	16	119	finally
+    //   19	35	119	finally
+    //   104	111	119	finally
+    //   9	16	132	java/security/NoSuchAlgorithmException
+    //   9	16	132	java/io/IOException
+    //   19	35	132	java/security/NoSuchAlgorithmException
+    //   19	35	132	java/io/IOException
+    //   35	41	139	java/security/NoSuchAlgorithmException
+    //   35	41	139	java/io/IOException
+    //   43	49	139	java/security/NoSuchAlgorithmException
+    //   43	49	139	java/io/IOException
+    //   58	66	139	java/security/NoSuchAlgorithmException
+    //   58	66	139	java/io/IOException
+    //   73	79	139	java/security/NoSuchAlgorithmException
+    //   73	79	139	java/io/IOException
   }
   
   public static byte[] digest(byte[] paramArrayOfByte)
@@ -160,14 +135,17 @@ public abstract class SHA256
     }
     catch (NoSuchAlgorithmException paramArrayOfByte)
     {
-      HMSLog.e("SHA256", "NoSuchAlgorithmException" + paramArrayOfByte.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("NoSuchAlgorithmException");
+      localStringBuilder.append(paramArrayOfByte.getMessage());
+      HMSLog.e("SHA256", localStringBuilder.toString());
     }
     return new byte[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.utils.SHA256
  * JD-Core Version:    0.7.0.1
  */

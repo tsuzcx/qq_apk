@@ -1,12 +1,9 @@
 package com.tencent.biz.pubaccount.util.api;
 
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule.CallCommentJs;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import java.util.ArrayList;
 import org.json.JSONObject;
 
@@ -60,9 +57,9 @@ public abstract interface IPublicAccountH5AbilityPlugin
   
   public abstract String getUserInfoFailStr(String paramString);
   
-  public abstract String getUserInfoJson(ReadInJoyUserInfo paramReadInJoyUserInfo);
+  public abstract String getUserInfoJson(Object paramObject);
   
-  public abstract WebResourceResponse getWebResponse(String paramString);
+  public abstract Object getWebResponse(String paramString);
   
   public abstract WebViewPlugin getWebViewPlugin();
   
@@ -70,11 +67,11 @@ public abstract interface IPublicAccountH5AbilityPlugin
   
   public abstract boolean hasRight(String paramString1, String paramString2);
   
-  public abstract void showReadInJoyNativeCommentView(JSONObject paramJSONObject, String paramString, BridgeModule.CallCommentJs paramCallCommentJs);
+  public abstract void showReadInJoyNativeCommentView(JSONObject paramJSONObject, String paramString, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.IPublicAccountH5AbilityPlugin
  * JD-Core Version:    0.7.0.1
  */

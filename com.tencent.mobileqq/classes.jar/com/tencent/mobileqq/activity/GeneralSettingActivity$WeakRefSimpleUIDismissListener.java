@@ -19,30 +19,25 @@ class GeneralSettingActivity$WeakRefSimpleUIDismissListener
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
+    paramDialogInterface = this.a;
     CompoundButton localCompoundButton = null;
-    if (this.a == null)
-    {
+    if (paramDialogInterface == null) {
       paramDialogInterface = null;
-      if (this.b != null) {
-        break label47;
-      }
+    } else {
+      paramDialogInterface = (GeneralSettingActivity)paramDialogInterface.get();
     }
-    for (;;)
-    {
-      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
-        paramDialogInterface.a(localCompoundButton, false);
-      }
-      return;
-      paramDialogInterface = (GeneralSettingActivity)this.a.get();
-      break;
-      label47:
-      localCompoundButton = (CompoundButton)this.b.get();
+    WeakReference localWeakReference = this.b;
+    if (localWeakReference != null) {
+      localCompoundButton = (CompoundButton)localWeakReference.get();
+    }
+    if ((paramDialogInterface != null) && (localCompoundButton != null)) {
+      paramDialogInterface.a(localCompoundButton, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.WeakRefSimpleUIDismissListener
  * JD-Core Version:    0.7.0.1
  */

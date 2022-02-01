@@ -15,14 +15,13 @@ public class QAPMOkHttpInstrumentation
     Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMOkHttpInstrumentation", "OkHttpInstrumentation - wrapping return of call to open" });
     HttpURLConnection localHttpURLConnection = processControllerDispatch(paramHttpURLConnection);
     if ((localHttpURLConnection instanceof HttpsURLConnection)) {
-      paramHttpURLConnection = new e((HttpsURLConnection)localHttpURLConnection);
+      return new e((HttpsURLConnection)localHttpURLConnection);
     }
-    do
-    {
-      return paramHttpURLConnection;
-      paramHttpURLConnection = localHttpURLConnection;
-    } while (localHttpURLConnection == null);
-    return new d(localHttpURLConnection);
+    paramHttpURLConnection = localHttpURLConnection;
+    if (localHttpURLConnection != null) {
+      paramHttpURLConnection = new d(localHttpURLConnection);
+    }
+    return paramHttpURLConnection;
   }
   
   @QAPMWrapReturn
@@ -31,14 +30,13 @@ public class QAPMOkHttpInstrumentation
     Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMOkHttpInstrumentation", "OkHttpInstrumentation -wrapping return of call to openWithProxy" });
     HttpURLConnection localHttpURLConnection = processControllerDispatch(paramHttpURLConnection);
     if ((localHttpURLConnection instanceof HttpsURLConnection)) {
-      paramHttpURLConnection = new e((HttpsURLConnection)localHttpURLConnection);
+      return new e((HttpsURLConnection)localHttpURLConnection);
     }
-    do
-    {
-      return paramHttpURLConnection;
-      paramHttpURLConnection = localHttpURLConnection;
-    } while (localHttpURLConnection == null);
-    return new d(localHttpURLConnection);
+    paramHttpURLConnection = localHttpURLConnection;
+    if (localHttpURLConnection != null) {
+      paramHttpURLConnection = new d(localHttpURLConnection);
+    }
+    return paramHttpURLConnection;
   }
   
   private static HttpURLConnection processControllerDispatch(HttpURLConnection paramHttpURLConnection)
@@ -56,19 +54,18 @@ public class QAPMOkHttpInstrumentation
     Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMOkHttpInstrumentation", "OkHttpInstrumentation - wrapping return of call to OkUrlFactory.open..." });
     HttpURLConnection localHttpURLConnection = processControllerDispatch(paramHttpURLConnection);
     if ((localHttpURLConnection instanceof HttpsURLConnection)) {
-      paramHttpURLConnection = new e((HttpsURLConnection)localHttpURLConnection);
+      return new e((HttpsURLConnection)localHttpURLConnection);
     }
-    do
-    {
-      return paramHttpURLConnection;
-      paramHttpURLConnection = localHttpURLConnection;
-    } while (localHttpURLConnection == null);
-    return new d(localHttpURLConnection);
+    paramHttpURLConnection = localHttpURLConnection;
+    if (localHttpURLConnection != null) {
+      paramHttpURLConnection = new d(localHttpURLConnection);
+    }
+    return paramHttpURLConnection;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMOkHttpInstrumentation
  * JD-Core Version:    0.7.0.1
  */

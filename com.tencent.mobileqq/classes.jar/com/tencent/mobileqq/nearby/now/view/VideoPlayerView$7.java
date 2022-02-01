@@ -5,12 +5,13 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.nearby.now.protocol.INowShortVideoProtoManager;
+import com.tencent.mobileqq.nearby.now.utils.INowVideoReporter;
 import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
 import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
 import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnPreparedListener;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
+import com.tencent.mobileqq.nearby.profilecard.INearbyMomentManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 class VideoPlayerView$7
@@ -20,46 +21,54 @@ class VideoPlayerView$7
   
   public void a(IVideoView paramIVideoView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.c();
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mVideoInfoListener != null) {
+      ((IVideoPlayerView.VideoInfoListener)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mVideoInfoListener).onStartPlaying();
     }
-    NowVideoReporter localNowVideoReporter;
-    if (((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) && (((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidContentContext).isResume()))
+    if (((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mContext instanceof BaseActivity)) && (((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mContext).isResume()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayerView", 2, "player truly start! app=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (QLog.isColorLevel())
+      {
+        paramIVideoView = new StringBuilder();
+        paramIVideoView.append("player truly start! app=");
+        paramIVideoView.append(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mApp);
+        QLog.i("VideoPlayerView", 2, paramIVideoView.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, null);
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 100, 0, "");
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.nowShortVideoProtoManager.reportPlay(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, null);
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mReultListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mReultListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 100, 0, "");
       }
-      ((NearbyMomentManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
-      localNowVideoReporter = new NowVideoReporter().i("video_view").h("video");
-      if (!this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Boolean) {
-        break label367;
+      ((INearbyMomentManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mApp.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
+      Object localObject = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opName("video_view").opType("video");
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Boolean) {
+        paramIVideoView = "0";
+      } else {
+        paramIVideoView = "1";
       }
-    }
-    label367:
-    for (paramIVideoView = "0";; paramIVideoView = "1")
-    {
-      localNowVideoReporter.g(paramIVideoView).b().f(NowVideoReporter.a + "").a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.b();
+      paramIVideoView = ((INowVideoReporter)localObject).d4(paramIVideoView).genderInd1();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getRePlayCount());
+      ((StringBuilder)localObject).append("");
+      paramIVideoView.d2(((StringBuilder)localObject).toString()).reportByVideo(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mApp);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mPlayer.b();
       if (!this.jdField_a_of_type_Boolean)
       {
-        long l = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.b();
-        double d = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.c() / l;
-        QualityReporter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 1, String.valueOf(d), String.valueOf(l), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.c()), String.valueOf(QualityReporter.a()), true);
+        long l = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.getFileSize();
+        double d1 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.getDownloadOffset();
+        double d2 = l;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        d1 /= d2;
+        QualityReporter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 1, String.valueOf(d1), String.valueOf(l), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.getDownloadOffset()), String.valueOf(QualityReporter.a()), true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2026, 300L);
-      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mHandler.removeMessages(2025);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mHandler.sendEmptyMessageDelayed(2025, 100L);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mHandler.sendEmptyMessageDelayed(2026, 300L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.VideoPlayerView.7
  * JD-Core Version:    0.7.0.1
  */

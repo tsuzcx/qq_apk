@@ -61,10 +61,13 @@ public class MsgBackupDBHelper
   
   public void a(List<MsgBackupMsgEntity> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return;
+      }
+      this.a.b(paramList);
     }
-    this.a.b(paramList);
   }
   
   public int b()
@@ -74,23 +77,29 @@ public class MsgBackupDBHelper
   
   public void b(List<MsgBackupResEntity> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return;
+      }
+      this.a.c(paramList);
     }
-    this.a.c(paramList);
   }
   
   public void c(List<MsgBackupExtraEntity> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return;
+      }
+      this.a.a(paramList);
     }
-    this.a.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupDBHelper
  * JD-Core Version:    0.7.0.1
  */

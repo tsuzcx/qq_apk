@@ -1,6 +1,5 @@
 package com.tencent.tkd.topicsdk.widget.dialog;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
@@ -16,9 +15,7 @@ import com.tencent.tkd.R.style;
 import com.tencent.tkd.topicsdk.TopicSDK;
 import com.tencent.tkd.topicsdk.TopicSDK.Companion;
 import com.tencent.tkd.topicsdk.TopicSDKConfig;
-import com.tencent.tkd.topicsdk.common.ActivityLeakSolution;
 import com.tencent.tkd.topicsdk.framework.BaseDialog;
-import com.tencent.tkd.topicsdk.framework.TLog;
 import com.tencent.tkd.topicsdk.interfaces.ITheme;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
@@ -49,31 +46,32 @@ public final class CommonProgressDialog
     super(paramContext, R.style.a);
     if (paramInt == 2)
     {
-      paramContext = LayoutInflater.from(paramContext).inflate(R.layout.d, null);
+      paramContext = LayoutInflater.from(paramContext).inflate(R.layout.c, null);
       Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…on_progress_center, null)");
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidViewView = paramContext;
-      paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.o);
-      Intrinsics.checkExpressionValueIsNotNull(paramContext, "rootView.findViewById(R.id.background)");
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramContext);
-      paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.bA);
-      Intrinsics.checkExpressionValueIsNotNull(paramContext, "rootView.findViewById(R.id.tv_content)");
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-      paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.ar);
-      Intrinsics.checkExpressionValueIsNotNull(paramContext, "rootView.findViewById(R.id.iv_progress)");
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext);
-      paramContext = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-      if (paramContext != null) {
-        break;
-      }
-      throw new TypeCastException("null cannot be cast to non-null type android.graphics.drawable.Animatable");
-      paramContext = LayoutInflater.from(paramContext).inflate(R.layout.c, null);
+      paramContext = LayoutInflater.from(paramContext).inflate(R.layout.b, null);
       Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…og_common_progress, null)");
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)paramContext);
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidViewView = paramContext;
+    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.k);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "rootView.findViewById(R.id.background)");
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramContext);
+    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.aV);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "rootView.findViewById(R.id.tv_content)");
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
+    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.ac);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "rootView.findViewById(R.id.iv_progress)");
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext);
+    paramContext = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
+    if (paramContext != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)paramContext);
+      this.jdField_a_of_type_JavaLangString = "";
+      return;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type android.graphics.drawable.Animatable");
   }
   
   public final void a(@NotNull String paramString)
@@ -88,25 +86,59 @@ public final class CommonProgressDialog
     return TopicSDK.a.a().a().a().a();
   }
   
+  /* Error */
   public void dismiss()
   {
-    try
-    {
-      super.dismiss();
-      return;
-    }
-    catch (Exception localException)
-    {
-      TLog.d("CommonProgressDialog", "dismiss exception = " + localException);
-      return;
-    }
-    finally
-    {
-      ActivityLeakSolution.a.a((Dialog)this);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 192	com/tencent/tkd/topicsdk/framework/BaseDialog:dismiss	()V
+    //   4: getstatic 197	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	Lcom/tencent/tkd/topicsdk/common/ActivityLeakSolution;
+    //   7: aload_0
+    //   8: checkcast 199	android/app/Dialog
+    //   11: invokevirtual 202	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   14: return
+    //   15: astore_1
+    //   16: goto +37 -> 53
+    //   19: astore_1
+    //   20: new 204	java/lang/StringBuilder
+    //   23: dup
+    //   24: invokespecial 206	java/lang/StringBuilder:<init>	()V
+    //   27: astore_2
+    //   28: aload_2
+    //   29: ldc 208
+    //   31: invokevirtual 212	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: pop
+    //   35: aload_2
+    //   36: aload_1
+    //   37: invokevirtual 215	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   40: pop
+    //   41: ldc 217
+    //   43: aload_2
+    //   44: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   47: invokestatic 226	com/tencent/tkd/topicsdk/framework/TLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   50: goto -46 -> 4
+    //   53: getstatic 197	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	Lcom/tencent/tkd/topicsdk/common/ActivityLeakSolution;
+    //   56: aload_0
+    //   57: checkcast 199	android/app/Dialog
+    //   60: invokevirtual 202	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   63: goto +5 -> 68
+    //   66: aload_1
+    //   67: athrow
+    //   68: goto -2 -> 66
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	71	0	this	CommonProgressDialog
+    //   15	1	1	localObject	java.lang.Object
+    //   19	48	1	localException	java.lang.Exception
+    //   27	17	2	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   0	4	15	finally
+    //   20	50	15	finally
+    //   0	4	19	java/lang/Exception
   }
   
-  public void onCreate(@Nullable Bundle paramBundle)
+  protected void onCreate(@Nullable Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     paramBundle = getWindow();
@@ -114,25 +146,25 @@ public final class CommonProgressDialog
       paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
     }
     paramBundle = getWindow();
-    if (paramBundle != null) {}
-    for (paramBundle = paramBundle.getAttributes();; paramBundle = null)
-    {
-      if (paramBundle != null) {
-        paramBundle.width = -1;
-      }
-      if (paramBundle != null) {
-        paramBundle.height = -1;
-      }
-      if (paramBundle != null) {
-        paramBundle.gravity = 48;
-      }
-      Window localWindow = getWindow();
-      if (localWindow != null) {
-        localWindow.setAttributes(paramBundle);
-      }
-      setCanceledOnTouchOutside(false);
-      return;
+    if (paramBundle != null) {
+      paramBundle = paramBundle.getAttributes();
+    } else {
+      paramBundle = null;
     }
+    if (paramBundle != null) {
+      paramBundle.width = -1;
+    }
+    if (paramBundle != null) {
+      paramBundle.height = -1;
+    }
+    if (paramBundle != null) {
+      paramBundle.gravity = 48;
+    }
+    Window localWindow = getWindow();
+    if (localWindow != null) {
+      localWindow.setAttributes(paramBundle);
+    }
+    setCanceledOnTouchOutside(false);
   }
   
   protected void onStart()
@@ -151,7 +183,7 @@ public final class CommonProgressDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.dialog.CommonProgressDialog
  * JD-Core Version:    0.7.0.1
  */

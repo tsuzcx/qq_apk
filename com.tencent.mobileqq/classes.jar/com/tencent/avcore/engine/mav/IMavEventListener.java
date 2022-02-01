@@ -69,6 +69,8 @@ public abstract interface IMavEventListener
   
   public abstract void onMultiVideoChatMembersInfoChange(long paramLong1, long[] paramArrayOfLong, int paramInt1, int paramInt2, long paramLong2, int paramInt3, int paramInt4);
   
+  public abstract void onNotifyAIDenoiseTips(boolean paramBoolean);
+  
   public abstract void onOpenMicFail();
   
   public abstract void onPPTInOrOut(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
@@ -87,7 +89,7 @@ public abstract interface IMavEventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.engine.mav.IMavEventListener
  * JD-Core Version:    0.7.0.1
  */

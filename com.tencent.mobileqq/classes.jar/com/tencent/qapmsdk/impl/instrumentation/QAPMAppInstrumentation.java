@@ -77,10 +77,11 @@ public class QAPMAppInstrumentation
     try
     {
       paramActivity = paramActivity.getWindow().getDecorView().getViewTreeObserver();
-      if ((paramActivity != null) && (paramActivity.isAlive()) && (AndroidVersion.isKitKat())) {
+      if ((paramActivity != null) && (paramActivity.isAlive()) && (AndroidVersion.isKitKat()))
+      {
         paramActivity.addOnWindowFocusChangeListener(new QAPMAppInstrumentation.1());
+        return;
       }
-      return;
     }
     catch (Throwable paramActivity)
     {
@@ -257,7 +258,7 @@ public class QAPMAppInstrumentation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMAppInstrumentation
  * JD-Core Version:    0.7.0.1
  */

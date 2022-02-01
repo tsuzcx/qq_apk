@@ -40,8 +40,9 @@ public class RedTouchPicDownloader
         {
           int j = Integer.valueOf(paramDownloadParams).intValue();
           int i = 90;
-          if (this.a != null) {
-            i = DisplayUtil.a(this.a, 30.0F);
+          paramDownloadParams = this.a;
+          if (paramDownloadParams != null) {
+            i = DisplayUtil.a(paramDownloadParams, 30.0F);
           }
           paramDownloadParams = ImageUtil.a(paramFile.getAbsolutePath(), i, i);
           paramFile = paramDownloadParams;
@@ -81,7 +82,10 @@ public class RedTouchPicDownloader
       }
       catch (Exception paramOutputStream)
       {
-        QLog.e("AbsDownloader", 1, "download exception " + paramOutputStream);
+        paramDownloadParams = new StringBuilder();
+        paramDownloadParams.append("download exception ");
+        paramDownloadParams.append(paramOutputStream);
+        QLog.e("AbsDownloader", 1, paramDownloadParams.toString());
       }
     }
     return null;
@@ -89,7 +93,7 @@ public class RedTouchPicDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchPicDownloader
  * JD-Core Version:    0.7.0.1
  */

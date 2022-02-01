@@ -42,81 +42,73 @@ class CardPicGalleryActivity$10
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     CardPicGalleryActivity.ImagePhotoHolder localImagePhotoHolder;
-    Object localObject;
     if (paramView == null)
     {
-      paramView = this.a.getLayoutInflater().inflate(2131561131, null);
+      paramView = this.a.getLayoutInflater().inflate(2131560995, null);
       localImagePhotoHolder = new CardPicGalleryActivity.ImagePhotoHolder();
-      localImagePhotoHolder.a = ((URLImageView)paramView.findViewById(2131364450));
+      localImagePhotoHolder.a = ((URLImageView)paramView.findViewById(2131364340));
       paramView.setTag(localImagePhotoHolder);
-      localObject = a(paramInt);
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
+    }
+    else
+    {
+      localImagePhotoHolder = (CardPicGalleryActivity.ImagePhotoHolder)paramView.getTag();
+    }
+    Object localObject1 = a(paramInt);
+    Object localObject2;
+    if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
+    {
+      localObject2 = this.a;
+      ((CardPicGalleryActivity)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((CardPicGalleryActivity)localObject2).getResources().getDrawable(this.a.jdField_a_of_type_Int);
+    }
+    if (localObject1 != null)
+    {
+      try
+      {
+        localObject2 = URLDrawable.URLDrawableOptions.obtain();
+        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+          localObject1 = URLDrawable.getDrawable((String)localObject1, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        } else {
+          localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+        }
+        localImagePhotoHolder.a.setImageDrawable((Drawable)localObject1);
       }
-      if (localObject == null) {}
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+      }
+      if ((this.a.d == 1) && (!this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      } else {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
     }
     else
     {
       try
       {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-          break label210;
-        }
-        localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        label139:
-        localImagePhotoHolder.a.setImageDrawable((Drawable)localObject);
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          URLDrawable.URLDrawableOptions localURLDrawableOptions;
-          localException1.printStackTrace();
-          continue;
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-      }
-      if ((this.a.d == 1) && (!this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localImagePhotoHolder = (CardPicGalleryActivity.ImagePhotoHolder)paramView.getTag();
-      break;
-      label210:
-      localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
-      break label139;
-      try
-      {
         if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
         {
-          localObject = URLDrawable.getDrawable("https://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          localException1.a.setImageDrawable((Drawable)localObject);
+          localObject1 = URLDrawable.getDrawable("https://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          localException1.a.setImageDrawable((Drawable)localObject1);
         }
-        for (;;)
+        else
         {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          break;
           localException1.a.setImageDrawable(null);
         }
       }
       catch (Exception localException2)
       {
-        for (;;)
-        {
-          localException2.printStackTrace();
-        }
+        localException2.printStackTrace();
       }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity.10
  * JD-Core Version:    0.7.0.1
  */

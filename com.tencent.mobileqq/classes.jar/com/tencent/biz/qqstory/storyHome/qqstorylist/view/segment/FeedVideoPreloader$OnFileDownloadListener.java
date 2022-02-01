@@ -24,41 +24,45 @@ class FeedVideoPreloader$OnFileDownloadListener
   protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, DownloadTask paramDownloadTask)
   {
     FeedVideoPreloader.CurrentVid localCurrentVid = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$CurrentVid;
-    if (localCurrentVid == null) {}
-    label14:
-    label168:
-    do
+    if (localCurrentVid == null) {
+      return;
+    }
+    if (!TextUtils.equals(paramString, localCurrentVid.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if (paramErrorMessage.isFail())
     {
-      break label14;
-      do
+      if (TextUtils.isEmpty(localCurrentVid.b))
       {
-        return;
-      } while (!TextUtils.equals(paramString, localCurrentVid.jdField_a_of_type_JavaLangString));
-      if (paramErrorMessage.isFail()) {
-        if (!TextUtils.isEmpty(localCurrentVid.b)) {
-          break label135;
-        }
+        paramErrorMessage = paramErrorMessage.errorMsg;
       }
-      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
+      else
       {
-        localCurrentVid.b = paramErrorMessage;
-        localCurrentVid.jdField_a_of_type_Int = (paramInt + 1000);
-        if ((!paramDownloadTask.a.containsKey("handleCallback")) || (localCurrentVid.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        localCurrentVid.jdField_a_of_type_Boolean = true;
-        if (!this.a.a(paramString)) {
-          break label168;
-        }
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener == null) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramErrorMessage.errorMsg);
+        localStringBuilder.append(" | ");
+        localStringBuilder.append(paramErrorMessage.errorMsg);
+        paramErrorMessage = localStringBuilder.toString();
+      }
+      localCurrentVid.b = paramErrorMessage;
+      localCurrentVid.jdField_a_of_type_Int = (paramInt + 1000);
+    }
+    if (paramDownloadTask.a.containsKey("handleCallback"))
+    {
+      if (localCurrentVid.jdField_a_of_type_Boolean) {
         return;
       }
-    } while (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener == null);
-    label135:
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, localCurrentVid.a());
+      localCurrentVid.jdField_a_of_type_Boolean = true;
+      if (this.a.a(paramString))
+      {
+        if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener != null) {
+          this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d);
+        }
+      }
+      else if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener != null) {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, localCurrentVid.a());
+      }
+    }
   }
   
   public void b(String paramString, int paramInt, DownloadTask paramDownloadTask)
@@ -77,7 +81,7 @@ class FeedVideoPreloader$OnFileDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedVideoPreloader.OnFileDownloadListener
  * JD-Core Version:    0.7.0.1
  */

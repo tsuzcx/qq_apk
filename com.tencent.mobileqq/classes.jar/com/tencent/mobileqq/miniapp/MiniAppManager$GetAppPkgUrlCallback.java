@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.miniapp;
 
 class MiniAppManager$GetAppPkgUrlCallback
-  extends MiniAppInfoManager.MiniAppInfoCallback<MiniAppManager>
+  extends MiniAppInfoCallback<MiniAppManager>
 {
   public MiniAppManager$GetAppPkgUrlCallback(MiniAppManager paramMiniAppManager)
   {
@@ -27,7 +27,7 @@ class MiniAppManager$GetAppPkgUrlCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppManager.GetAppPkgUrlCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -28,19 +28,12 @@ public class GoogleTranslator
   
   public void a(Context paramContext, List<String> paramList, Language paramLanguage, String paramString, Long paramLong, TranslateWithTimeCallback paramTranslateWithTimeCallback)
   {
-    if (paramLanguage == null) {
+    if (paramLanguage == null)
+    {
       paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
     }
-    Object localObject;
-    for (;;)
+    else
     {
-      localObject = new ArrayList();
-      ((List)localObject).add(new Pair("key", paramString));
-      ((List)localObject).add(new Pair("target", paramLanguage));
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        ((List)localObject).add(new Pair("q", (String)paramList.next()));
-      }
       localObject = paramLanguage.toString();
       if (localObject != null)
       {
@@ -51,6 +44,13 @@ public class GoogleTranslator
       {
         paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
       }
+    }
+    Object localObject = new ArrayList();
+    ((List)localObject).add(new Pair("key", paramString));
+    ((List)localObject).add(new Pair("target", paramLanguage));
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      ((List)localObject).add(new Pair("q", (String)paramList.next()));
     }
     GoogleTranslateClient.a(paramContext, null, (List)localObject, new GoogleTranslator.1(this, paramTranslateWithTimeCallback, paramLong));
   }

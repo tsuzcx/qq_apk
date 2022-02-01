@@ -10,12 +10,17 @@ final class QCircleFeedPicLoader$3
 {
   public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
   {
-    RFLog.d("QCircleFeedPicLoader", RFLog.DEV, "seq = " + ((PicDownLoadTask)paramRunnable).getOption().getSeq() + " reject task");
+    int i = RFLog.DEV;
+    paramThreadPoolExecutor = new StringBuilder();
+    paramThreadPoolExecutor.append("seq = ");
+    paramThreadPoolExecutor.append(((PicDownLoadTask)paramRunnable).getOption().getSeq());
+    paramThreadPoolExecutor.append(" reject task");
+    RFLog.d("QCircleFeedPicLoader", i, paramThreadPoolExecutor.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.picload.QCircleFeedPicLoader.3
  * JD-Core Version:    0.7.0.1
  */

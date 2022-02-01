@@ -41,15 +41,18 @@ public class ArkAppItemBubbleBuilder$Holder
         paramHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramArkAdapterItemInterface);
       }
     }
-    while ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null) {
-      return;
+    else
+    {
+      if ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null) {
+        return;
+      }
+      ArkAppMgr.getInstance().getAppPathByName(str, "0.0.0.1", new ArkAppItemBubbleBuilder.Holder.2(this, str, paramHolder));
     }
-    ArkAppMgr.getInstance().getAppPathByName(str, (String)localObject2, "0.0.0.1", null, new ArkAppItemBubbleBuilder.Holder.2(this, str, paramHolder));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

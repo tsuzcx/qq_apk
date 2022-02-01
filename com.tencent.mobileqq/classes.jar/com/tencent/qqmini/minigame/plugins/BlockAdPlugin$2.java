@@ -30,27 +30,28 @@ class BlockAdPlugin$2
   public void onADReceive(int paramInt1, int paramInt2, int paramInt3)
   {
     QMLog.i("BlockAdPlugin", "onADReceive");
-    if (this.val$adInfo == null) {
+    Object localObject = this.val$adInfo;
+    if (localObject == null) {
       return;
     }
-    this.val$adInfo.setRealWidth(paramInt2);
+    ((BlockAdInfo)localObject).setRealWidth(paramInt2);
     this.val$adInfo.setRealHeight(paramInt3);
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("state", "load");
-      localJSONObject.put("adUnitId", this.val$adInfo.getAdUnitId());
-      localJSONObject.put("compId", this.val$adInfo.getCompId());
-      localJSONObject.put("realAdNum", paramInt1);
-      localJSONObject.put("realWidth", this.val$adInfo.getRealWidth());
-      localJSONObject.put("realHeight", this.val$adInfo.getRealHeight());
-      BlockAdPlugin.access$200(this.this$0, this.val$req, localJSONObject, "onBlockAdStateChange");
-      localJSONObject = new JSONObject();
-      localJSONObject.put("state", "resize");
-      localJSONObject.put("compId", this.val$adInfo.getCompId());
-      localJSONObject.put("width", paramInt2);
-      localJSONObject.put("height", paramInt3);
-      BlockAdPlugin.access$200(this.this$0, this.val$req, localJSONObject, "onBlockAdStateChange");
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("state", "load");
+      ((JSONObject)localObject).put("adUnitId", this.val$adInfo.getAdUnitId());
+      ((JSONObject)localObject).put("compId", this.val$adInfo.getCompId());
+      ((JSONObject)localObject).put("realAdNum", paramInt1);
+      ((JSONObject)localObject).put("realWidth", this.val$adInfo.getRealWidth());
+      ((JSONObject)localObject).put("realHeight", this.val$adInfo.getRealHeight());
+      BlockAdPlugin.access$200(this.this$0, this.val$req, (JSONObject)localObject, "onBlockAdStateChange");
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("state", "resize");
+      ((JSONObject)localObject).put("compId", this.val$adInfo.getCompId());
+      ((JSONObject)localObject).put("width", paramInt2);
+      ((JSONObject)localObject).put("height", paramInt3);
+      BlockAdPlugin.access$200(this.this$0, this.val$req, (JSONObject)localObject, "onBlockAdStateChange");
       return;
     }
     catch (JSONException localJSONException)
@@ -61,13 +62,18 @@ class BlockAdPlugin$2
   
   public void onNoAD(int paramInt, String paramString)
   {
-    QMLog.i("BlockAdPlugin", "onNoAD, errCode = " + paramInt + ", errMsg = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onNoAD, errCode = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errMsg = ");
+    localStringBuilder.append(paramString);
+    QMLog.i("BlockAdPlugin", localStringBuilder.toString());
     BlockAdPlugin.access$100(this.this$0, this.val$req, paramInt, paramString, this.val$adInfo.getCompId(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.BlockAdPlugin.2
  * JD-Core Version:    0.7.0.1
  */

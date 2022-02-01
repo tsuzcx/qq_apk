@@ -35,30 +35,36 @@ public final class ApicFrame
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (ApicFrame)paramObject;
-    } while ((this.pictureType == paramObject.pictureType) && (Util.areEqual(this.mimeType, paramObject.mimeType)) && (Util.areEqual(this.description, paramObject.description)) && (Arrays.equals(this.pictureData, paramObject.pictureData)));
+      return (this.pictureType == paramObject.pictureType) && (Util.areEqual(this.mimeType, paramObject.mimeType)) && (Util.areEqual(this.description, paramObject.description)) && (Arrays.equals(this.pictureData, paramObject.pictureData));
+    }
     return false;
   }
   
   public int hashCode()
   {
-    int j = 0;
     int k = this.pictureType;
-    if (this.mimeType != null) {}
-    for (int i = this.mimeType.hashCode();; i = 0)
-    {
-      if (this.description != null) {
-        j = this.description.hashCode();
-      }
-      return ((i + (k + 527) * 31) * 31 + j) * 31 + Arrays.hashCode(this.pictureData);
+    String str = this.mimeType;
+    int j = 0;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    str = this.description;
+    if (str != null) {
+      j = str.hashCode();
+    }
+    return (((527 + k) * 31 + i) * 31 + j) * 31 + Arrays.hashCode(this.pictureData);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -71,7 +77,7 @@ public final class ApicFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.ApicFrame
  * JD-Core Version:    0.7.0.1
  */

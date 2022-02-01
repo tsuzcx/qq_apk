@@ -32,26 +32,33 @@ public enum AdLocationManager
   
   private void updateLocationCacheOnChildProcess(Context paramContext, AdLocation paramAdLocation)
   {
-    if (!this.initialized) {}
-    Boolean localBoolean;
-    do
-    {
+    if (!this.initialized) {
       return;
-      localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
-    } while ((localBoolean == null) || (localBoolean.booleanValue()) || ((this.tryToUpdateCacheTimeMillis != -2147483648L) && (System.currentTimeMillis() - this.tryToUpdateCacheTimeMillis < 60000L)));
-    this.tryToUpdateCacheTimeMillis = System.currentTimeMillis();
-    this.ipcHandler.updateCacheByIPC(paramContext, paramAdLocation);
+    }
+    Boolean localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
+    if (localBoolean != null)
+    {
+      if (localBoolean.booleanValue()) {
+        return;
+      }
+      if ((this.tryToUpdateCacheTimeMillis != -2147483648L) && (System.currentTimeMillis() - this.tryToUpdateCacheTimeMillis < 60000L)) {
+        return;
+      }
+      this.tryToUpdateCacheTimeMillis = System.currentTimeMillis();
+      this.ipcHandler.updateCacheByIPC(paramContext, paramAdLocation);
+    }
   }
   
   private AdLocation updateLocationCacheOnCurrentProcess()
   {
-    if (getAdapter() != null) {}
-    for (AdLocation localAdLocation = getAdapter().getLocationCache();; localAdLocation = null)
-    {
-      localAdLocation = AdLocation.merge(localAdLocation, getLocation());
-      setLocation(localAdLocation);
-      return localAdLocation;
+    if (getAdapter() != null) {
+      localAdLocation = getAdapter().getLocationCache();
+    } else {
+      localAdLocation = null;
     }
+    AdLocation localAdLocation = AdLocation.merge(localAdLocation, getLocation());
+    setLocation(localAdLocation);
+    return localAdLocation;
   }
   
   public AdLocationAdapter getAdapter()
@@ -79,10 +86,11 @@ public enum AdLocationManager
       if (this.initialized) {
         return;
       }
+      this.ipcHandler = new AdLocationManager.a();
+      this.initialized = true;
+      return;
     }
     finally {}
-    this.ipcHandler = new AdLocationManager.a();
-    this.initialized = true;
   }
   
   public void setAdapter(WeakReference<AdLocationAdapter> paramWeakReference)

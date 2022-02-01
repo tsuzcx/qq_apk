@@ -4,8 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -29,10 +28,7 @@ public class NewerGuideWebLaunchSuccessReceiver
       paramContext = (NewerGuideBannerViewModel)this.a.get();
       if (paramContext != null)
       {
-        paramIntent = BaseApplicationImpl.getApplication().getRuntime();
-        if ((paramIntent instanceof QQAppInterface)) {
-          paramContext.b((QQAppInterface)paramIntent);
-        }
+        ((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).notifyClickCloseBanner(paramContext);
         paramContext.b();
       }
     }
@@ -40,7 +36,7 @@ public class NewerGuideWebLaunchSuccessReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideWebLaunchSuccessReceiver
  * JD-Core Version:    0.7.0.1
  */

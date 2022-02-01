@@ -4,10 +4,9 @@ import android.app.Activity;
 import com.tencent.mfsdk.impls.memory.ActivityLeakSolutionInner;
 import com.tencent.mfsdk.impls.memory.MemoryDumpHelper;
 import com.tencent.mfsdk.tools.PhoneUtil;
-import com.tencent.mobileqq.app.GuardConfig;
 import com.tencent.mobileqq.app.ProcessUtil;
 import com.tencent.mobileqq.app.QBaseActivity;
-import com.tencent.mobileqq.app.proxy.fts.FTSSyncHandler;
+import com.tencent.mobileqq.app.guard.GuardConfig;
 import com.tencent.mobileqq.qqperf.api.IPerfApi;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
@@ -18,16 +17,6 @@ public class PerfApiImpl
   public String getDeviceId()
   {
     return PhoneUtil.a(MobileQQ.getContext(), QBaseActivity.sTopActivity);
-  }
-  
-  public int getFTSSyncHandlerFtsSyncThreadid()
-  {
-    return FTSSyncHandler.jdField_a_of_type_Int;
-  }
-  
-  public long getFTSSyncHandlerThreadTime()
-  {
-    return FTSSyncHandler.jdField_a_of_type_Long;
   }
   
   public String getGuardConfigID()
@@ -70,7 +59,7 @@ public class PerfApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqperf.api.impl.PerfApiImpl
  * JD-Core Version:    0.7.0.1
  */

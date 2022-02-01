@@ -37,8 +37,13 @@ public class LiuHaiWhiteListConfProcessor
   @Nullable
   public LiuHaiConfigInfo a(QConfItem[] paramArrayOfQConfItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LiuHaiWhiteListConfProcessor", 2, "onParsed confFiles = " + paramArrayOfQConfItem);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onParsed confFiles = ");
+      localStringBuilder.append(paramArrayOfQConfItem);
+      QLog.d("LiuHaiWhiteListConfProcessor", 2, localStringBuilder.toString());
     }
     if (this.a == null) {
       this.a = new LiuHaiConfigInfo();
@@ -46,8 +51,12 @@ public class LiuHaiWhiteListConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("LiuHaiWhiteListConfProcessor", 2, "onParsed config = " + paramArrayOfQConfItem);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed config = ");
+        localStringBuilder.append(paramArrayOfQConfItem);
+        QLog.d("LiuHaiWhiteListConfProcessor", 2, localStringBuilder.toString());
       }
       this.a.a = ListConfigParseUtils.a(paramArrayOfQConfItem);
     }
@@ -56,8 +65,12 @@ public class LiuHaiWhiteListConfProcessor
   
   public void a(LiuHaiConfigInfo paramLiuHaiConfigInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LiuHaiWhiteListConfProcessor", 2, "onUpdate newConf = " + paramLiuHaiConfigInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate newConf = ");
+      localStringBuilder.append(paramLiuHaiConfigInfo);
+      QLog.d("LiuHaiWhiteListConfProcessor", 2, localStringBuilder.toString());
     }
     if ((paramLiuHaiConfigInfo != null) && (paramLiuHaiConfigInfo.a != null)) {
       this.a = paramLiuHaiConfigInfo;
@@ -69,17 +82,21 @@ public class LiuHaiWhiteListConfProcessor
     if (this.a == null) {
       this.a = a();
     }
-    if ((this.a == null) || (this.a.a == null) || (this.a.a.isEmpty())) {
-      return false;
-    }
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    Object localObject = this.a;
+    if ((localObject != null) && (((LiuHaiConfigInfo)localObject).a != null))
     {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext())
+      if (this.a.a.isEmpty()) {
+        return false;
+      }
+      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
       {
-        MachineInfo localMachineInfo = (MachineInfo)localIterator.next();
-        if ((!TextUtils.isEmpty(localMachineInfo.a)) && (!TextUtils.isEmpty(localMachineInfo.b)) && (!TextUtils.isEmpty(localMachineInfo.c)) && (paramString1.equals(localMachineInfo.a)) && (paramString2.equals(localMachineInfo.b)) && (paramString3.equals(localMachineInfo.c))) {
-          return true;
+        localObject = this.a.a.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          MachineInfo localMachineInfo = (MachineInfo)((Iterator)localObject).next();
+          if ((!TextUtils.isEmpty(localMachineInfo.a)) && (!TextUtils.isEmpty(localMachineInfo.b)) && (!TextUtils.isEmpty(localMachineInfo.c)) && (paramString1.equals(localMachineInfo.a)) && (paramString2.equals(localMachineInfo.b)) && (paramString3.equals(localMachineInfo.c))) {
+            return true;
+          }
         }
       }
     }
@@ -108,8 +125,12 @@ public class LiuHaiWhiteListConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LiuHaiWhiteListConfProcessor", 2, "onReqFailed failCode = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed failCode = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("LiuHaiWhiteListConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -120,7 +141,7 @@ public class LiuHaiWhiteListConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.config.LiuHaiWhiteListConfProcessor
  * JD-Core Version:    0.7.0.1
  */

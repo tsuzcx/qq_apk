@@ -16,14 +16,15 @@ class QCallProxy$1
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("QCallProxy", 2, localException.getMessage(), localException);
+      if (QLog.isColorLevel()) {
+        QLog.w("QCallProxy", 2, localException.getMessage(), localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallProxy.1
  * JD-Core Version:    0.7.0.1
  */

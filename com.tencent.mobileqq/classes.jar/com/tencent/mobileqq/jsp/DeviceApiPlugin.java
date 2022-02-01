@@ -26,14 +26,9 @@ public class DeviceApiPlugin
   extends WebViewPlugin
 {
   public static PowerManager.WakeLock a;
-  public static boolean a;
+  public static boolean a = false;
   private String jdField_a_of_type_JavaLangString = "";
   private int[] jdField_a_of_type_ArrayOfInt;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
   
   public DeviceApiPlugin()
   {
@@ -54,15 +49,15 @@ public class DeviceApiPlugin
       }
       jdField_a_of_type_AndroidOsPowerManager$WakeLock.acquire();
       jdField_a_of_type_Boolean = true;
-    }
-    do
-    {
       return;
-      if ((jdField_a_of_type_AndroidOsPowerManager$WakeLock != null) && (jdField_a_of_type_AndroidOsPowerManager$WakeLock.isHeld())) {
-        jdField_a_of_type_AndroidOsPowerManager$WakeLock.release();
-      }
-    } while (paramBoolean2);
-    jdField_a_of_type_Boolean = false;
+    }
+    paramContext = jdField_a_of_type_AndroidOsPowerManager$WakeLock;
+    if ((paramContext != null) && (paramContext.isHeld())) {
+      jdField_a_of_type_AndroidOsPowerManager$WakeLock.release();
+    }
+    if (!paramBoolean2) {
+      jdField_a_of_type_Boolean = false;
+    }
   }
   
   public long a()
@@ -75,30 +70,26 @@ public class DeviceApiPlugin
   
   public final String a()
   {
+    Object localObject1 = "";
+    Object localObject2;
     try
     {
-      str = BaseApplicationImpl.getApplication().getResources().getConfiguration().toString();
-      QLog.e("DeviceApiPlugin", 1, "getConfiguration ", localThrowable1);
-    }
-    catch (Throwable localThrowable1)
-    {
-      try
+      String str = BaseApplicationImpl.getApplication().getResources().getConfiguration().toString();
+      localObject1 = str;
+      localObject2 = str;
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("DeviceApiPlugin", 2, new Object[] { "getConfiguration:", str });
-        }
+        localObject1 = str;
+        QLog.d("DeviceApiPlugin", 2, new Object[] { "getConfiguration:", str });
         return str;
       }
-      catch (Throwable localThrowable2)
-      {
-        String str;
-        break label44;
-      }
-      localThrowable1 = localThrowable1;
-      str = "";
     }
-    label44:
-    return str;
+    catch (Throwable localThrowable)
+    {
+      QLog.e("DeviceApiPlugin", 1, "getConfiguration ", localThrowable);
+      localObject2 = localObject1;
+    }
+    return localObject2;
   }
   
   /* Error */
@@ -106,173 +97,155 @@ public class DeviceApiPlugin
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 6
+    //   1: astore 5
     //   3: aconst_null
-    //   4: astore_3
-    //   5: aconst_null
-    //   6: astore 5
-    //   8: lconst_0
-    //   9: lstore_1
-    //   10: new 144	java/io/BufferedReader
-    //   13: dup
-    //   14: new 146	java/io/FileReader
-    //   17: dup
-    //   18: ldc 148
-    //   20: invokespecial 151	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   23: bipush 8
-    //   25: invokespecial 154	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   28: astore 4
-    //   30: aload 4
-    //   32: astore_3
-    //   33: aload 4
-    //   35: invokevirtual 157	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   38: astore 7
-    //   40: aload 5
-    //   42: astore_3
-    //   43: aload 7
-    //   45: ifnull +6 -> 51
-    //   48: aload 7
-    //   50: astore_3
-    //   51: aload_3
-    //   52: astore 5
-    //   54: aload 4
-    //   56: ifnull +11 -> 67
-    //   59: aload 4
-    //   61: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   64: aload_3
-    //   65: astore 5
-    //   67: aload 5
-    //   69: ifnull +32 -> 101
-    //   72: aload 5
-    //   74: aload 5
-    //   76: bipush 58
-    //   78: invokevirtual 166	java/lang/String:indexOf	(I)I
-    //   81: iconst_1
-    //   82: iadd
-    //   83: aload 5
-    //   85: bipush 107
-    //   87: invokevirtual 166	java/lang/String:indexOf	(I)I
-    //   90: invokevirtual 170	java/lang/String:substring	(II)Ljava/lang/String;
-    //   93: invokevirtual 173	java/lang/String:trim	()Ljava/lang/String;
-    //   96: invokestatic 179	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   99: i2l
-    //   100: lstore_1
-    //   101: lload_1
-    //   102: lreturn
-    //   103: astore 4
+    //   4: astore 4
+    //   6: aconst_null
+    //   7: astore 6
+    //   9: aconst_null
+    //   10: astore_3
+    //   11: new 145	java/io/BufferedReader
+    //   14: dup
+    //   15: new 147	java/io/FileReader
+    //   18: dup
+    //   19: ldc 149
+    //   21: invokespecial 152	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   24: bipush 8
+    //   26: invokespecial 155	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   29: astore_2
+    //   30: aload_2
+    //   31: astore_1
+    //   32: aload_2
+    //   33: invokevirtual 158	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   36: astore 6
+    //   38: aload_3
+    //   39: astore_1
+    //   40: aload 6
+    //   42: ifnull +6 -> 48
+    //   45: aload 6
+    //   47: astore_1
+    //   48: aload_1
+    //   49: astore_3
+    //   50: aload_2
+    //   51: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   54: goto +83 -> 137
+    //   57: astore_1
+    //   58: aload_1
+    //   59: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   62: aload_3
+    //   63: astore_1
+    //   64: goto +73 -> 137
+    //   67: astore_3
+    //   68: goto +17 -> 85
+    //   71: astore_3
+    //   72: goto +42 -> 114
+    //   75: astore_1
+    //   76: aload 6
+    //   78: astore_2
+    //   79: goto +95 -> 174
+    //   82: astore_3
+    //   83: aconst_null
+    //   84: astore_2
+    //   85: aload_2
+    //   86: astore_1
+    //   87: aload_3
+    //   88: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   91: aload 4
+    //   93: astore_1
+    //   94: aload_2
+    //   95: ifnull +42 -> 137
+    //   98: aload 5
+    //   100: astore_3
+    //   101: aload_2
+    //   102: invokevirtual 161	java/io/BufferedReader:close	()V
     //   105: aload 4
-    //   107: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   110: aload_3
-    //   111: astore 5
-    //   113: goto -46 -> 67
-    //   116: astore 5
-    //   118: aconst_null
-    //   119: astore 4
-    //   121: aload 4
-    //   123: astore_3
-    //   124: aload 5
-    //   126: invokevirtual 183	java/io/FileNotFoundException:printStackTrace	()V
-    //   129: aload 6
-    //   131: astore 5
-    //   133: aload 4
-    //   135: ifnull -68 -> 67
-    //   138: aload 4
-    //   140: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   143: aload 6
-    //   145: astore 5
-    //   147: goto -80 -> 67
-    //   150: astore_3
-    //   151: aload_3
-    //   152: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   155: aload 6
-    //   157: astore 5
-    //   159: goto -92 -> 67
-    //   162: astore 5
-    //   164: aconst_null
-    //   165: astore 4
-    //   167: aload 4
+    //   107: astore_1
+    //   108: goto +29 -> 137
+    //   111: astore_3
+    //   112: aconst_null
+    //   113: astore_2
+    //   114: aload_2
+    //   115: astore_1
+    //   116: aload_3
+    //   117: invokevirtual 165	java/io/FileNotFoundException:printStackTrace	()V
+    //   120: aload 4
+    //   122: astore_1
+    //   123: aload_2
+    //   124: ifnull +13 -> 137
+    //   127: aload 5
+    //   129: astore_3
+    //   130: aload_2
+    //   131: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   134: aload 4
+    //   136: astore_1
+    //   137: aload_1
+    //   138: ifnull +29 -> 167
+    //   141: aload_1
+    //   142: aload_1
+    //   143: bipush 58
+    //   145: invokevirtual 171	java/lang/String:indexOf	(I)I
+    //   148: iconst_1
+    //   149: iadd
+    //   150: aload_1
+    //   151: bipush 107
+    //   153: invokevirtual 171	java/lang/String:indexOf	(I)I
+    //   156: invokevirtual 175	java/lang/String:substring	(II)Ljava/lang/String;
+    //   159: invokevirtual 178	java/lang/String:trim	()Ljava/lang/String;
+    //   162: invokestatic 184	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   165: i2l
+    //   166: lreturn
+    //   167: lconst_0
+    //   168: lreturn
     //   169: astore_3
-    //   170: aload 5
-    //   172: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   175: aload 6
-    //   177: astore 5
-    //   179: aload 4
-    //   181: ifnull -114 -> 67
-    //   184: aload 4
-    //   186: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   189: aload 6
-    //   191: astore 5
-    //   193: goto -126 -> 67
-    //   196: astore_3
-    //   197: aload_3
-    //   198: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   201: aload 6
-    //   203: astore 5
-    //   205: goto -138 -> 67
-    //   208: astore 5
-    //   210: aload_3
-    //   211: astore 4
-    //   213: aload 5
-    //   215: astore_3
-    //   216: aload 4
-    //   218: ifnull +8 -> 226
-    //   221: aload 4
-    //   223: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   226: aload_3
-    //   227: athrow
-    //   228: astore 4
-    //   230: aload 4
-    //   232: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   235: goto -9 -> 226
-    //   238: astore 5
-    //   240: aload_3
-    //   241: astore 4
-    //   243: aload 5
-    //   245: astore_3
-    //   246: goto -30 -> 216
-    //   249: astore 5
-    //   251: goto -84 -> 167
-    //   254: astore 5
-    //   256: goto -135 -> 121
+    //   170: aload_1
+    //   171: astore_2
+    //   172: aload_3
+    //   173: astore_1
+    //   174: aload_2
+    //   175: ifnull +15 -> 190
+    //   178: aload_2
+    //   179: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   182: goto +8 -> 190
+    //   185: astore_2
+    //   186: aload_2
+    //   187: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   190: aload_1
+    //   191: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	259	0	this	DeviceApiPlugin
-    //   9	93	1	l	long
-    //   4	120	3	localObject1	Object
-    //   150	2	3	localIOException1	IOException
-    //   169	1	3	localObject2	Object
-    //   196	15	3	localIOException2	IOException
-    //   215	31	3	localObject3	Object
-    //   28	32	4	localBufferedReader	java.io.BufferedReader
-    //   103	3	4	localIOException3	IOException
-    //   119	103	4	localIOException4	IOException
-    //   228	3	4	localIOException5	IOException
-    //   241	1	4	localObject4	Object
-    //   6	106	5	localObject5	Object
-    //   116	9	5	localFileNotFoundException1	java.io.FileNotFoundException
-    //   131	27	5	localObject6	Object
-    //   162	9	5	localIOException6	IOException
-    //   177	27	5	localObject7	Object
-    //   208	6	5	localObject8	Object
-    //   238	6	5	localObject9	Object
-    //   249	1	5	localIOException7	IOException
-    //   254	1	5	localFileNotFoundException2	java.io.FileNotFoundException
-    //   1	201	6	localObject10	Object
-    //   38	11	7	str	String
+    //   0	192	0	this	DeviceApiPlugin
+    //   31	18	1	localObject1	Object
+    //   57	2	1	localIOException1	IOException
+    //   63	1	1	localObject2	Object
+    //   75	1	1	localObject3	Object
+    //   86	105	1	localObject4	Object
+    //   29	150	2	localObject5	Object
+    //   185	2	2	localIOException2	IOException
+    //   10	53	3	localObject6	Object
+    //   67	1	3	localIOException3	IOException
+    //   71	1	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   82	6	3	localIOException4	IOException
+    //   100	1	3	localObject7	Object
+    //   111	6	3	localFileNotFoundException2	java.io.FileNotFoundException
+    //   129	1	3	localObject8	Object
+    //   169	4	3	localObject9	Object
+    //   4	131	4	localObject10	Object
+    //   1	127	5	localObject11	Object
+    //   7	70	6	str	String
     // Exception table:
     //   from	to	target	type
-    //   59	64	103	java/io/IOException
-    //   10	30	116	java/io/FileNotFoundException
-    //   138	143	150	java/io/IOException
-    //   10	30	162	java/io/IOException
-    //   184	189	196	java/io/IOException
-    //   10	30	208	finally
-    //   221	226	228	java/io/IOException
-    //   33	40	238	finally
-    //   124	129	238	finally
-    //   170	175	238	finally
-    //   33	40	249	java/io/IOException
-    //   33	40	254	java/io/FileNotFoundException
+    //   50	54	57	java/io/IOException
+    //   101	105	57	java/io/IOException
+    //   130	134	57	java/io/IOException
+    //   32	38	67	java/io/IOException
+    //   32	38	71	java/io/FileNotFoundException
+    //   11	30	75	finally
+    //   11	30	82	java/io/IOException
+    //   11	30	111	java/io/FileNotFoundException
+    //   32	38	169	finally
+    //   87	91	169	finally
+    //   116	120	169	finally
+    //   178	182	185	java/io/IOException
   }
   
   public String b()
@@ -282,740 +255,787 @@ public class DeviceApiPlugin
   
   public String c()
   {
-    String str1 = "";
+    String str2;
     try
     {
       InputStream localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq" }).start().getInputStream();
       byte[] arrayOfByte = new byte[24];
-      while (localInputStream.read(arrayOfByte) != -1) {
-        str1 = str1 + new String(arrayOfByte);
+      StringBuilder localStringBuilder;
+      for (String str1 = ""; localInputStream.read(arrayOfByte) != -1; str1 = localStringBuilder.toString())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(new String(arrayOfByte));
       }
       localInputStream.close();
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-        String str2 = "N/A";
-      }
+      localIOException.printStackTrace();
+      str2 = "N/A";
     }
-    return str1.trim();
+    return str2.trim();
   }
   
   /* Error */
   public String d()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: aconst_null
-    //   4: astore_3
-    //   5: aconst_null
-    //   6: astore 4
-    //   8: aconst_null
-    //   9: astore_2
-    //   10: ldc 229
-    //   12: astore 6
-    //   14: new 146	java/io/FileReader
-    //   17: dup
-    //   18: ldc 231
-    //   20: invokespecial 151	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   23: astore_1
-    //   24: aload 4
-    //   26: astore_3
-    //   27: aload_1
-    //   28: astore 4
-    //   30: new 144	java/io/BufferedReader
-    //   33: dup
-    //   34: aload_1
-    //   35: invokespecial 234	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   38: astore_2
-    //   39: aload_2
-    //   40: invokevirtual 157	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   43: astore_3
-    //   44: aload_1
-    //   45: invokevirtual 235	java/io/FileReader:close	()V
-    //   48: aload_2
-    //   49: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   52: aload_3
-    //   53: invokevirtual 173	java/lang/String:trim	()Ljava/lang/String;
-    //   56: astore_3
-    //   57: aload_1
-    //   58: ifnull +7 -> 65
-    //   61: aload_1
-    //   62: invokevirtual 235	java/io/FileReader:close	()V
-    //   65: aload_3
-    //   66: astore 4
-    //   68: aload_2
-    //   69: ifnull +10 -> 79
-    //   72: aload_2
-    //   73: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   76: aload_3
-    //   77: astore 4
-    //   79: aload 4
-    //   81: areturn
-    //   82: astore_1
-    //   83: aload_1
-    //   84: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   87: goto -22 -> 65
-    //   90: astore_1
-    //   91: aload_1
-    //   92: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   95: aload_3
-    //   96: areturn
-    //   97: astore_3
-    //   98: aconst_null
-    //   99: astore_1
-    //   100: aload_3
-    //   101: invokevirtual 183	java/io/FileNotFoundException:printStackTrace	()V
-    //   104: aload_2
-    //   105: ifnull +7 -> 112
-    //   108: aload_2
-    //   109: invokevirtual 235	java/io/FileReader:close	()V
-    //   112: aload 6
-    //   114: astore 4
-    //   116: aload_1
-    //   117: ifnull -38 -> 79
-    //   120: aload_1
-    //   121: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   124: ldc 229
-    //   126: areturn
+    //   0: new 147	java/io/FileReader
+    //   3: dup
+    //   4: ldc 232
+    //   6: invokespecial 152	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   9: astore_1
+    //   10: new 145	java/io/BufferedReader
+    //   13: dup
+    //   14: aload_1
+    //   15: invokespecial 235	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   18: astore 4
+    //   20: aload_1
+    //   21: astore_2
+    //   22: aload 4
+    //   24: astore_3
+    //   25: aload 4
+    //   27: invokevirtual 158	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   30: astore 5
+    //   32: aload_1
+    //   33: astore_2
+    //   34: aload 4
+    //   36: astore_3
+    //   37: aload_1
+    //   38: invokevirtual 236	java/io/FileReader:close	()V
+    //   41: aload_1
+    //   42: astore_2
+    //   43: aload 4
+    //   45: astore_3
+    //   46: aload 4
+    //   48: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   51: aload_1
+    //   52: astore_2
+    //   53: aload 4
+    //   55: astore_3
+    //   56: aload 5
+    //   58: invokevirtual 178	java/lang/String:trim	()Ljava/lang/String;
+    //   61: astore 5
+    //   63: aload_1
+    //   64: invokevirtual 236	java/io/FileReader:close	()V
+    //   67: goto +8 -> 75
+    //   70: astore_1
+    //   71: aload_1
+    //   72: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   75: aload 4
+    //   77: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   80: aload 5
+    //   82: areturn
+    //   83: astore_1
+    //   84: aload_1
+    //   85: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   88: aload 5
+    //   90: areturn
+    //   91: astore 5
+    //   93: aload_1
+    //   94: astore 6
+    //   96: aload 4
+    //   98: astore_1
+    //   99: goto +59 -> 158
+    //   102: astore 5
+    //   104: aload_1
+    //   105: astore 6
+    //   107: aload 4
+    //   109: astore_1
+    //   110: goto +94 -> 204
+    //   113: astore_2
+    //   114: aconst_null
+    //   115: astore_3
+    //   116: goto +142 -> 258
+    //   119: astore 5
+    //   121: aconst_null
+    //   122: astore_2
+    //   123: aload_1
+    //   124: astore 6
+    //   126: aload_2
     //   127: astore_1
-    //   128: aload_1
-    //   129: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   132: ldc 229
-    //   134: areturn
-    //   135: astore_2
-    //   136: aload_2
-    //   137: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   140: goto -28 -> 112
-    //   143: astore 5
-    //   145: aconst_null
-    //   146: astore_1
-    //   147: aload 7
-    //   149: astore_2
-    //   150: aload_2
-    //   151: astore_3
-    //   152: aload_1
-    //   153: astore 4
-    //   155: aload 5
-    //   157: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   160: aload_1
-    //   161: ifnull +7 -> 168
-    //   164: aload_1
-    //   165: invokevirtual 235	java/io/FileReader:close	()V
+    //   128: goto +30 -> 158
+    //   131: astore 5
+    //   133: aconst_null
+    //   134: astore_2
+    //   135: aload_1
+    //   136: astore 6
+    //   138: aload_2
+    //   139: astore_1
+    //   140: goto +64 -> 204
+    //   143: astore_2
+    //   144: aconst_null
+    //   145: astore_3
+    //   146: aload_3
+    //   147: astore_1
+    //   148: goto +110 -> 258
+    //   151: astore 5
+    //   153: aconst_null
+    //   154: astore_1
+    //   155: aload_1
+    //   156: astore 6
+    //   158: aload 6
+    //   160: astore_2
+    //   161: aload_1
+    //   162: astore_3
+    //   163: aload 5
+    //   165: invokevirtual 164	java/io/IOException:printStackTrace	()V
     //   168: aload 6
-    //   170: astore 4
-    //   172: aload_2
-    //   173: ifnull -94 -> 79
-    //   176: aload_2
-    //   177: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   180: ldc 229
-    //   182: areturn
-    //   183: astore_1
-    //   184: aload_1
-    //   185: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   188: ldc 229
-    //   190: areturn
-    //   191: astore_1
-    //   192: aload_1
-    //   193: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   196: goto -28 -> 168
-    //   199: astore_2
-    //   200: aconst_null
-    //   201: astore_1
-    //   202: aload_1
-    //   203: ifnull +7 -> 210
-    //   206: aload_1
-    //   207: invokevirtual 235	java/io/FileReader:close	()V
-    //   210: aload_3
-    //   211: ifnull +7 -> 218
-    //   214: aload_3
-    //   215: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   218: aload_2
-    //   219: athrow
-    //   220: astore_1
-    //   221: aload_1
-    //   222: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   225: goto -15 -> 210
-    //   228: astore_1
-    //   229: aload_1
-    //   230: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   233: goto -15 -> 218
-    //   236: astore_2
-    //   237: aload 4
-    //   239: astore_1
-    //   240: goto -38 -> 202
-    //   243: astore 4
-    //   245: aload_2
-    //   246: astore_3
-    //   247: aload 4
-    //   249: astore_2
-    //   250: goto -48 -> 202
-    //   253: astore_3
-    //   254: aload_2
-    //   255: astore 4
-    //   257: aload_3
-    //   258: astore_2
-    //   259: aload_1
-    //   260: astore_3
-    //   261: aload 4
-    //   263: astore_1
-    //   264: goto -62 -> 202
-    //   267: astore 5
-    //   269: aload 7
-    //   271: astore_2
-    //   272: goto -122 -> 150
-    //   275: astore 5
-    //   277: goto -127 -> 150
-    //   280: astore_3
-    //   281: aconst_null
-    //   282: astore 4
-    //   284: aload_1
-    //   285: astore_2
-    //   286: aload 4
-    //   288: astore_1
-    //   289: goto -189 -> 100
-    //   292: astore_3
-    //   293: aload_1
-    //   294: astore 4
-    //   296: aload_2
-    //   297: astore_1
-    //   298: aload 4
-    //   300: astore_2
-    //   301: goto -201 -> 100
+    //   170: ifnull +16 -> 186
+    //   173: aload 6
+    //   175: invokevirtual 236	java/io/FileReader:close	()V
+    //   178: goto +8 -> 186
+    //   181: astore_2
+    //   182: aload_2
+    //   183: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   186: aload_1
+    //   187: ifnull +61 -> 248
+    //   190: aload_1
+    //   191: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   194: goto +54 -> 248
+    //   197: astore 5
+    //   199: aconst_null
+    //   200: astore_1
+    //   201: aload_1
+    //   202: astore 6
+    //   204: aload 6
+    //   206: astore_2
+    //   207: aload_1
+    //   208: astore_3
+    //   209: aload 5
+    //   211: invokevirtual 165	java/io/FileNotFoundException:printStackTrace	()V
+    //   214: aload 6
+    //   216: ifnull +16 -> 232
+    //   219: aload 6
+    //   221: invokevirtual 236	java/io/FileReader:close	()V
+    //   224: goto +8 -> 232
+    //   227: astore_2
+    //   228: aload_2
+    //   229: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   232: aload_1
+    //   233: ifnull +15 -> 248
+    //   236: aload_1
+    //   237: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   240: goto +8 -> 248
+    //   243: astore_1
+    //   244: aload_1
+    //   245: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   248: ldc 230
+    //   250: areturn
+    //   251: astore 4
+    //   253: aload_2
+    //   254: astore_1
+    //   255: aload 4
+    //   257: astore_2
+    //   258: aload_1
+    //   259: ifnull +15 -> 274
+    //   262: aload_1
+    //   263: invokevirtual 236	java/io/FileReader:close	()V
+    //   266: goto +8 -> 274
+    //   269: astore_1
+    //   270: aload_1
+    //   271: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   274: aload_3
+    //   275: ifnull +15 -> 290
+    //   278: aload_3
+    //   279: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   282: goto +8 -> 290
+    //   285: astore_1
+    //   286: aload_1
+    //   287: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   290: aload_2
+    //   291: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	304	0	this	DeviceApiPlugin
-    //   23	39	1	localFileReader	java.io.FileReader
-    //   82	2	1	localIOException1	IOException
-    //   90	2	1	localIOException2	IOException
-    //   99	22	1	localObject1	Object
-    //   127	2	1	localIOException3	IOException
-    //   146	19	1	localObject2	Object
-    //   183	2	1	localIOException4	IOException
-    //   191	2	1	localIOException5	IOException
-    //   201	6	1	localObject3	Object
-    //   220	2	1	localIOException6	IOException
-    //   228	2	1	localIOException7	IOException
-    //   239	59	1	localObject4	Object
-    //   9	100	2	localBufferedReader	java.io.BufferedReader
-    //   135	2	2	localIOException8	IOException
-    //   149	28	2	localObject5	Object
-    //   199	20	2	localObject6	Object
-    //   236	10	2	localObject7	Object
-    //   249	52	2	localObject8	Object
-    //   4	92	3	localObject9	Object
-    //   97	4	3	localFileNotFoundException1	java.io.FileNotFoundException
-    //   151	96	3	localObject10	Object
-    //   253	5	3	localObject11	Object
-    //   260	1	3	localObject12	Object
-    //   280	1	3	localFileNotFoundException2	java.io.FileNotFoundException
-    //   292	1	3	localFileNotFoundException3	java.io.FileNotFoundException
-    //   6	232	4	localObject13	Object
-    //   243	5	4	localObject14	Object
-    //   255	44	4	localObject15	Object
-    //   143	13	5	localIOException9	IOException
-    //   267	1	5	localIOException10	IOException
-    //   275	1	5	localIOException11	IOException
-    //   12	157	6	str	String
-    //   1	269	7	localObject16	Object
+    //   0	292	0	this	DeviceApiPlugin
+    //   9	55	1	localFileReader1	java.io.FileReader
+    //   70	2	1	localIOException1	IOException
+    //   83	11	1	localIOException2	IOException
+    //   98	139	1	localObject1	Object
+    //   243	2	1	localIOException3	IOException
+    //   254	9	1	localObject2	Object
+    //   269	2	1	localIOException4	IOException
+    //   285	2	1	localIOException5	IOException
+    //   21	32	2	localFileReader2	java.io.FileReader
+    //   113	1	2	localObject3	Object
+    //   122	17	2	localObject4	Object
+    //   143	1	2	localObject5	Object
+    //   160	1	2	localObject6	Object
+    //   181	2	2	localIOException6	IOException
+    //   206	1	2	localObject7	Object
+    //   227	27	2	localIOException7	IOException
+    //   257	34	2	localObject8	Object
+    //   24	255	3	localObject9	Object
+    //   18	90	4	localBufferedReader	java.io.BufferedReader
+    //   251	5	4	localObject10	Object
+    //   30	59	5	str	String
+    //   91	1	5	localIOException8	IOException
+    //   102	1	5	localFileNotFoundException1	java.io.FileNotFoundException
+    //   119	1	5	localIOException9	IOException
+    //   131	1	5	localFileNotFoundException2	java.io.FileNotFoundException
+    //   151	13	5	localIOException10	IOException
+    //   197	13	5	localFileNotFoundException3	java.io.FileNotFoundException
+    //   94	126	6	localObject11	Object
     // Exception table:
     //   from	to	target	type
-    //   61	65	82	java/io/IOException
-    //   72	76	90	java/io/IOException
-    //   14	24	97	java/io/FileNotFoundException
-    //   120	124	127	java/io/IOException
-    //   108	112	135	java/io/IOException
-    //   14	24	143	java/io/IOException
-    //   176	180	183	java/io/IOException
-    //   164	168	191	java/io/IOException
-    //   14	24	199	finally
-    //   206	210	220	java/io/IOException
-    //   214	218	228	java/io/IOException
-    //   30	39	236	finally
-    //   155	160	236	finally
-    //   39	57	243	finally
-    //   100	104	253	finally
-    //   30	39	267	java/io/IOException
-    //   39	57	275	java/io/IOException
-    //   30	39	280	java/io/FileNotFoundException
-    //   39	57	292	java/io/FileNotFoundException
+    //   63	67	70	java/io/IOException
+    //   75	80	83	java/io/IOException
+    //   25	32	91	java/io/IOException
+    //   37	41	91	java/io/IOException
+    //   46	51	91	java/io/IOException
+    //   56	63	91	java/io/IOException
+    //   25	32	102	java/io/FileNotFoundException
+    //   37	41	102	java/io/FileNotFoundException
+    //   46	51	102	java/io/FileNotFoundException
+    //   56	63	102	java/io/FileNotFoundException
+    //   10	20	113	finally
+    //   10	20	119	java/io/IOException
+    //   10	20	131	java/io/FileNotFoundException
+    //   0	10	143	finally
+    //   0	10	151	java/io/IOException
+    //   173	178	181	java/io/IOException
+    //   0	10	197	java/io/FileNotFoundException
+    //   219	224	227	java/io/IOException
+    //   190	194	243	java/io/IOException
+    //   236	240	243	java/io/IOException
+    //   25	32	251	finally
+    //   37	41	251	finally
+    //   46	51	251	finally
+    //   56	63	251	finally
+    //   163	168	251	finally
+    //   209	214	251	finally
+    //   262	266	269	java/io/IOException
+    //   278	282	285	java/io/IOException
   }
   
   /* Error */
   public String e()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: new 146	java/io/FileReader
-    //   6: dup
-    //   7: ldc 237
-    //   9: invokespecial 151	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   12: astore_2
-    //   13: new 144	java/io/BufferedReader
-    //   16: dup
-    //   17: aload_2
-    //   18: invokespecial 234	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   21: astore 5
-    //   23: aload 5
-    //   25: astore 4
-    //   27: aload_2
-    //   28: astore_3
-    //   29: aload 5
-    //   31: invokevirtual 157	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   34: ldc 239
-    //   36: iconst_2
-    //   37: invokevirtual 243	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
-    //   40: astore 6
-    //   42: iconst_0
-    //   43: istore_1
-    //   44: aload 5
-    //   46: astore 4
-    //   48: aload_2
-    //   49: astore_3
-    //   50: iload_1
-    //   51: aload 6
-    //   53: arraylength
-    //   54: if_icmpge +10 -> 64
-    //   57: iload_1
-    //   58: iconst_1
-    //   59: iadd
-    //   60: istore_1
-    //   61: goto -17 -> 44
-    //   64: aload 6
-    //   66: iconst_1
-    //   67: aaload
-    //   68: astore_3
-    //   69: aload_2
-    //   70: ifnull +7 -> 77
-    //   73: aload_2
-    //   74: invokevirtual 235	java/io/FileReader:close	()V
-    //   77: aload_3
-    //   78: astore_2
-    //   79: aload 5
-    //   81: ifnull +10 -> 91
-    //   84: aload 5
-    //   86: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   89: aload_3
-    //   90: astore_2
-    //   91: aload_2
-    //   92: areturn
-    //   93: astore_2
-    //   94: aload_2
-    //   95: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   98: goto -21 -> 77
-    //   101: astore_2
-    //   102: aload_2
-    //   103: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   106: aload_3
-    //   107: areturn
-    //   108: astore 6
-    //   110: aconst_null
-    //   111: astore 5
-    //   113: aconst_null
-    //   114: astore_2
-    //   115: aload 5
-    //   117: astore 4
-    //   119: aload_2
-    //   120: astore_3
-    //   121: aload 6
-    //   123: invokevirtual 183	java/io/FileNotFoundException:printStackTrace	()V
-    //   126: aload_2
-    //   127: ifnull +7 -> 134
-    //   130: aload_2
-    //   131: invokevirtual 235	java/io/FileReader:close	()V
-    //   134: aload 7
-    //   136: astore_2
-    //   137: aload 5
-    //   139: ifnull -48 -> 91
-    //   142: aload 5
-    //   144: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   147: aconst_null
-    //   148: areturn
-    //   149: astore_2
-    //   150: aload_2
-    //   151: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   154: aconst_null
-    //   155: areturn
-    //   156: astore_2
-    //   157: aload_2
-    //   158: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   161: goto -27 -> 134
-    //   164: astore 6
-    //   166: aconst_null
-    //   167: astore 5
-    //   169: aconst_null
-    //   170: astore_2
-    //   171: aload 5
-    //   173: astore 4
-    //   175: aload_2
-    //   176: astore_3
-    //   177: aload 6
-    //   179: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   182: aload_2
-    //   183: ifnull +7 -> 190
-    //   186: aload_2
-    //   187: invokevirtual 235	java/io/FileReader:close	()V
-    //   190: aload 7
-    //   192: astore_2
-    //   193: aload 5
-    //   195: ifnull -104 -> 91
-    //   198: aload 5
-    //   200: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   203: aconst_null
-    //   204: areturn
-    //   205: astore_2
-    //   206: aload_2
-    //   207: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   210: aconst_null
-    //   211: areturn
-    //   212: astore_2
-    //   213: aload_2
-    //   214: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   217: goto -27 -> 190
-    //   220: astore 5
-    //   222: aconst_null
-    //   223: astore 4
-    //   225: aconst_null
-    //   226: astore_2
-    //   227: aload_2
-    //   228: ifnull +7 -> 235
-    //   231: aload_2
-    //   232: invokevirtual 235	java/io/FileReader:close	()V
-    //   235: aload 4
-    //   237: ifnull +8 -> 245
-    //   240: aload 4
-    //   242: invokevirtual 160	java/io/BufferedReader:close	()V
-    //   245: aload 5
-    //   247: athrow
-    //   248: astore_2
-    //   249: aload_2
-    //   250: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   253: goto -18 -> 235
-    //   256: astore_2
-    //   257: aload_2
-    //   258: invokevirtual 182	java/io/IOException:printStackTrace	()V
-    //   261: goto -16 -> 245
-    //   264: astore 5
-    //   266: aconst_null
-    //   267: astore 4
-    //   269: goto -42 -> 227
-    //   272: astore 5
-    //   274: aload_3
-    //   275: astore_2
-    //   276: goto -49 -> 227
-    //   279: astore 6
-    //   281: aconst_null
-    //   282: astore 5
-    //   284: goto -113 -> 171
-    //   287: astore 6
-    //   289: goto -118 -> 171
-    //   292: astore 6
-    //   294: aconst_null
-    //   295: astore 5
-    //   297: goto -182 -> 115
-    //   300: astore 6
-    //   302: goto -187 -> 115
+    //   0: new 147	java/io/FileReader
+    //   3: dup
+    //   4: ldc 238
+    //   6: invokespecial 152	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   9: astore_2
+    //   10: new 145	java/io/BufferedReader
+    //   13: dup
+    //   14: aload_2
+    //   15: invokespecial 235	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   18: astore 5
+    //   20: aload_2
+    //   21: astore_3
+    //   22: aload 5
+    //   24: astore 4
+    //   26: aload 5
+    //   28: invokevirtual 158	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   31: ldc 240
+    //   33: iconst_2
+    //   34: invokevirtual 244	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   37: astore 6
+    //   39: iconst_0
+    //   40: istore_1
+    //   41: aload_2
+    //   42: astore_3
+    //   43: aload 5
+    //   45: astore 4
+    //   47: iload_1
+    //   48: aload 6
+    //   50: arraylength
+    //   51: if_icmpge +10 -> 61
+    //   54: iload_1
+    //   55: iconst_1
+    //   56: iadd
+    //   57: istore_1
+    //   58: goto -17 -> 41
+    //   61: aload 6
+    //   63: iconst_1
+    //   64: aaload
+    //   65: astore_3
+    //   66: aload_2
+    //   67: invokevirtual 236	java/io/FileReader:close	()V
+    //   70: goto +8 -> 78
+    //   73: astore_2
+    //   74: aload_2
+    //   75: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   78: aload 5
+    //   80: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   83: aload_3
+    //   84: areturn
+    //   85: astore_2
+    //   86: aload_2
+    //   87: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   90: aload_3
+    //   91: areturn
+    //   92: astore_3
+    //   93: aload_2
+    //   94: astore 6
+    //   96: aload 5
+    //   98: astore_2
+    //   99: aload_3
+    //   100: astore 5
+    //   102: goto +65 -> 167
+    //   105: astore_3
+    //   106: aload_2
+    //   107: astore 6
+    //   109: aload 5
+    //   111: astore_2
+    //   112: aload_3
+    //   113: astore 5
+    //   115: goto +99 -> 214
+    //   118: astore_3
+    //   119: aconst_null
+    //   120: astore 4
+    //   122: goto +145 -> 267
+    //   125: astore 5
+    //   127: aconst_null
+    //   128: astore_3
+    //   129: aload_2
+    //   130: astore 6
+    //   132: aload_3
+    //   133: astore_2
+    //   134: goto +33 -> 167
+    //   137: astore 5
+    //   139: aconst_null
+    //   140: astore_3
+    //   141: aload_2
+    //   142: astore 6
+    //   144: aload_3
+    //   145: astore_2
+    //   146: goto +68 -> 214
+    //   149: astore_3
+    //   150: aconst_null
+    //   151: astore 4
+    //   153: aload 4
+    //   155: astore_2
+    //   156: goto +111 -> 267
+    //   159: astore 5
+    //   161: aconst_null
+    //   162: astore 6
+    //   164: aload 6
+    //   166: astore_2
+    //   167: aload 6
+    //   169: astore_3
+    //   170: aload_2
+    //   171: astore 4
+    //   173: aload 5
+    //   175: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   178: aload 6
+    //   180: ifnull +16 -> 196
+    //   183: aload 6
+    //   185: invokevirtual 236	java/io/FileReader:close	()V
+    //   188: goto +8 -> 196
+    //   191: astore_3
+    //   192: aload_3
+    //   193: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   196: aload_2
+    //   197: ifnull +61 -> 258
+    //   200: aload_2
+    //   201: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   204: aconst_null
+    //   205: areturn
+    //   206: astore 5
+    //   208: aconst_null
+    //   209: astore 6
+    //   211: aload 6
+    //   213: astore_2
+    //   214: aload 6
+    //   216: astore_3
+    //   217: aload_2
+    //   218: astore 4
+    //   220: aload 5
+    //   222: invokevirtual 165	java/io/FileNotFoundException:printStackTrace	()V
+    //   225: aload 6
+    //   227: ifnull +16 -> 243
+    //   230: aload 6
+    //   232: invokevirtual 236	java/io/FileReader:close	()V
+    //   235: goto +8 -> 243
+    //   238: astore_3
+    //   239: aload_3
+    //   240: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   243: aload_2
+    //   244: ifnull +14 -> 258
+    //   247: aload_2
+    //   248: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   251: aconst_null
+    //   252: areturn
+    //   253: astore_2
+    //   254: aload_2
+    //   255: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   258: aconst_null
+    //   259: areturn
+    //   260: astore 5
+    //   262: aload_3
+    //   263: astore_2
+    //   264: aload 5
+    //   266: astore_3
+    //   267: aload_2
+    //   268: ifnull +15 -> 283
+    //   271: aload_2
+    //   272: invokevirtual 236	java/io/FileReader:close	()V
+    //   275: goto +8 -> 283
+    //   278: astore_2
+    //   279: aload_2
+    //   280: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   283: aload 4
+    //   285: ifnull +16 -> 301
+    //   288: aload 4
+    //   290: invokevirtual 161	java/io/BufferedReader:close	()V
+    //   293: goto +8 -> 301
+    //   296: astore_2
+    //   297: aload_2
+    //   298: invokevirtual 164	java/io/IOException:printStackTrace	()V
+    //   301: goto +5 -> 306
+    //   304: aload_3
+    //   305: athrow
+    //   306: goto -2 -> 304
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	305	0	this	DeviceApiPlugin
-    //   43	18	1	i	int
-    //   12	80	2	localObject1	Object
-    //   93	2	2	localIOException1	IOException
-    //   101	2	2	localIOException2	IOException
-    //   114	23	2	localObject2	Object
-    //   149	2	2	localIOException3	IOException
-    //   156	2	2	localIOException4	IOException
-    //   170	23	2	localObject3	Object
-    //   205	2	2	localIOException5	IOException
-    //   212	2	2	localIOException6	IOException
-    //   226	6	2	localObject4	Object
-    //   248	2	2	localIOException7	IOException
-    //   256	2	2	localIOException8	IOException
-    //   275	1	2	localObject5	Object
-    //   28	247	3	localObject6	Object
-    //   25	243	4	localBufferedReader1	java.io.BufferedReader
-    //   21	178	5	localBufferedReader2	java.io.BufferedReader
-    //   220	26	5	localObject7	Object
-    //   264	1	5	localObject8	Object
-    //   272	1	5	localObject9	Object
-    //   282	14	5	localObject10	Object
-    //   40	25	6	arrayOfString	String[]
-    //   108	14	6	localFileNotFoundException1	java.io.FileNotFoundException
-    //   164	14	6	localIOException9	IOException
-    //   279	1	6	localIOException10	IOException
-    //   287	1	6	localIOException11	IOException
-    //   292	1	6	localFileNotFoundException2	java.io.FileNotFoundException
-    //   300	1	6	localFileNotFoundException3	java.io.FileNotFoundException
-    //   1	190	7	localObject11	Object
+    //   0	309	0	this	DeviceApiPlugin
+    //   40	18	1	i	int
+    //   9	58	2	localFileReader1	java.io.FileReader
+    //   73	2	2	localIOException1	IOException
+    //   85	9	2	localIOException2	IOException
+    //   98	150	2	localObject1	Object
+    //   253	2	2	localIOException3	IOException
+    //   263	9	2	localObject2	Object
+    //   278	2	2	localIOException4	IOException
+    //   296	2	2	localIOException5	IOException
+    //   21	70	3	localFileReader2	java.io.FileReader
+    //   92	8	3	localIOException6	IOException
+    //   105	8	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   118	1	3	localObject3	Object
+    //   128	17	3	localObject4	Object
+    //   149	1	3	localObject5	Object
+    //   169	1	3	localObject6	Object
+    //   191	2	3	localIOException7	IOException
+    //   216	1	3	localObject7	Object
+    //   238	25	3	localIOException8	IOException
+    //   266	39	3	localObject8	Object
+    //   24	265	4	localObject9	Object
+    //   18	96	5	localObject10	Object
+    //   125	1	5	localIOException9	IOException
+    //   137	1	5	localFileNotFoundException2	java.io.FileNotFoundException
+    //   159	15	5	localIOException10	IOException
+    //   206	15	5	localFileNotFoundException3	java.io.FileNotFoundException
+    //   260	5	5	localObject11	Object
+    //   37	194	6	localObject12	Object
     // Exception table:
     //   from	to	target	type
-    //   73	77	93	java/io/IOException
-    //   84	89	101	java/io/IOException
-    //   3	13	108	java/io/FileNotFoundException
-    //   142	147	149	java/io/IOException
-    //   130	134	156	java/io/IOException
-    //   3	13	164	java/io/IOException
-    //   198	203	205	java/io/IOException
-    //   186	190	212	java/io/IOException
-    //   3	13	220	finally
-    //   231	235	248	java/io/IOException
-    //   240	245	256	java/io/IOException
-    //   13	23	264	finally
-    //   29	42	272	finally
-    //   50	57	272	finally
-    //   121	126	272	finally
-    //   177	182	272	finally
-    //   13	23	279	java/io/IOException
-    //   29	42	287	java/io/IOException
-    //   50	57	287	java/io/IOException
-    //   13	23	292	java/io/FileNotFoundException
-    //   29	42	300	java/io/FileNotFoundException
-    //   50	57	300	java/io/FileNotFoundException
+    //   66	70	73	java/io/IOException
+    //   78	83	85	java/io/IOException
+    //   26	39	92	java/io/IOException
+    //   47	54	92	java/io/IOException
+    //   26	39	105	java/io/FileNotFoundException
+    //   47	54	105	java/io/FileNotFoundException
+    //   10	20	118	finally
+    //   10	20	125	java/io/IOException
+    //   10	20	137	java/io/FileNotFoundException
+    //   0	10	149	finally
+    //   0	10	159	java/io/IOException
+    //   183	188	191	java/io/IOException
+    //   0	10	206	java/io/FileNotFoundException
+    //   230	235	238	java/io/IOException
+    //   200	204	253	java/io/IOException
+    //   247	251	253	java/io/IOException
+    //   26	39	260	finally
+    //   47	54	260	finally
+    //   173	178	260	finally
+    //   220	225	260	finally
+    //   271	275	278	java/io/IOException
+    //   288	293	296	java/io/IOException
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceApiPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
+    if (QLog.isColorLevel())
+    {
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest, url=");
+      paramJsBridgeListener.append(paramString1);
+      paramJsBridgeListener.append(", pkgName=");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append(", methodName=");
+      paramJsBridgeListener.append(paramString3);
+      QLog.d("DeviceApiPlugin", 2, paramJsBridgeListener.toString());
     }
-    if ((paramString1 == null) || (!"device".equals(paramString2)) || (paramString3 == null)) {
-      return false;
+    if ((paramString1 != null) && ("device".equals(paramString2)))
+    {
+      if (paramString3 == null) {
+        return false;
+      }
+      paramString2 = WebViewPlugin.getJsonFromJSBridge(paramString1);
+      if (paramString2 == null) {
+        return true;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append("handleJsRequest JSON = ");
+        paramJsBridgeListener.append(paramString2.toString());
+        QLog.d("DeviceApiPlugin", 2, paramJsBridgeListener.toString());
+      }
     }
-    paramString2 = WebViewPlugin.getJsonFromJSBridge(paramString1);
-    if (paramString2 == null) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceApiPlugin", 2, "handleJsRequest JSON = " + paramString2.toString());
-    }
-    int i;
     try
     {
       if (paramString2.has("callback"))
       {
         paramJsBridgeListener = paramString2.getString("callback");
+        break label243;
       }
-      else
+      i = paramString1.indexOf("#");
+      if (i != -1)
       {
-        i = paramString1.indexOf("#");
-        if ((i == -1) || (i + 1 > paramString1.length() - 1)) {
-          break label1066;
+        i += 1;
+        if (i > paramString1.length() - 1) {
+          return false;
         }
-        paramJsBridgeListener = paramString1.substring(i + 1);
+        paramJsBridgeListener = paramString1.substring(i);
+        break label243;
       }
+      return false;
     }
     catch (JSONException paramJsBridgeListener)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceApiPlugin", 2, "Failed to parse callbackid,json=" + paramString2);
+      for (;;)
+      {
+        boolean bool;
+        continue;
+        int i = 0;
+        if (i == 1)
+        {
+          bool = true;
+        }
+        else
+        {
+          bool = false;
+          continue;
+          paramString1 = "{'result':0,'message':'dim'}";
+        }
       }
-      paramJsBridgeListener = null;
     }
-    if ("setScreenStatus".equals(paramString3)) {}
-    for (;;)
+    if (QLog.isColorLevel())
+    {
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("Failed to parse callbackid,json=");
+      paramJsBridgeListener.append(paramString2);
+      QLog.i("DeviceApiPlugin", 2, paramJsBridgeListener.toString());
+    }
+    paramJsBridgeListener = null;
+    label243:
+    if (paramJsBridgeListener == null) {
+      return false;
+    }
+    if ("setScreenStatus".equals(paramString3))
     {
       try
       {
         if (!paramString2.has("status")) {
-          break label1054;
+          break label1127;
         }
         i = paramString2.getInt("status");
       }
       catch (JSONException paramString1)
       {
         if (!QLog.isColorLevel()) {
-          continue;
+          break label368;
         }
-        QLog.i("DeviceApiPlugin", 2, "Failed to setScreenStatus:" + paramString1.getMessage());
-        callJs(paramJsBridgeListener, new String[] { "{'result':-1,'message':" + paramString1.getMessage() + "}" });
-        break label1080;
+        paramString2 = new StringBuilder();
+        paramString2.append("Failed to setScreenStatus:");
+        paramString2.append(paramString1.getMessage());
+        QLog.i("DeviceApiPlugin", 2, paramString2.toString());
+        label368:
+        paramString2 = new StringBuilder();
+        paramString2.append("{'result':-1,'message':");
+        paramString2.append(paramString1.getMessage());
+        paramString2.append("}");
+        callJs(paramJsBridgeListener, new String[] { paramString2.toString() });
+        return true;
       }
       a(bool, this.mRuntime.a().getApplicationContext(), false);
-      if (jdField_a_of_type_Boolean)
-      {
-        paramString1 = "{'result':1,'message':'light'}";
-        callJs(paramJsBridgeListener, new String[] { paramString1 });
+      if (!jdField_a_of_type_Boolean) {
+        break label1148;
       }
-      else
+      paramString1 = "{'result':1,'message':'light'}";
+      callJs(paramJsBridgeListener, new String[] { paramString1 });
+      return true;
+    }
+    else
+    {
+      if ("getWebpDecoderVersion".equals(paramString3))
       {
-        paramString1 = "{'result':0,'message':'dim'}";
-        continue;
-        if ("getWebpDecoderVersion".equals(paramString3))
+        paramString1 = new JSONObject();
+        try
         {
-          paramString1 = new JSONObject();
-          try
+          paramString1.put("result", -1);
+          if (this.jdField_a_of_type_ArrayOfInt != null)
           {
-            paramString1.put("result", -1);
-            if (this.jdField_a_of_type_ArrayOfInt != null)
-            {
-              paramString1.put("result", 0);
-              paramString1.put("type", this.jdField_a_of_type_JavaLangString);
-              paramString1.put("version", String.format("%d.%d.%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[0]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[1]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[2]) }));
-            }
-            callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+            paramString1.put("result", 0);
+            paramString1.put("type", this.jdField_a_of_type_JavaLangString);
+            paramString1.put("version", String.format("%d.%d.%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[0]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[1]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[2]) }));
           }
-          catch (JSONException paramJsBridgeListener)
-          {
-            paramJsBridgeListener.printStackTrace();
-          }
+          callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return true;
+        }
+      }
+      if ("canInstallThirdPartyApp".equals(paramString3))
+      {
+        paramString1 = this.mRuntime.a();
+        if (paramString1 != null)
+        {
+          i = Settings.Secure.getInt(paramString1.getContentResolver(), "install_non_market_apps", 0);
+          paramString1 = new StringBuilder();
+          paramString1.append("{'result':");
+          paramString1.append(i);
+          paramString1.append("}");
+          paramString1 = paramString1.toString();
         }
         else
         {
-          if ("canInstallThirdPartyApp".equals(paramString3))
-          {
-            paramString1 = this.mRuntime.a();
-            if (paramString1 != null) {
-              i = Settings.Secure.getInt(paramString1.getContentResolver(), "install_non_market_apps", 0);
-            }
-            for (paramString1 = "{'result':" + i + "}";; paramString1 = "{'result':-1,'message':'Context is null!'}")
-            {
-              callJs(paramJsBridgeListener, new String[] { paramString1 });
-              break;
-            }
-          }
-          if ("getCPUInfo".equals(paramString3)) {
-            try
-            {
-              paramString1 = new JSONObject();
-              paramString1.put("maxFreq", b());
-              paramString1.put("minFreq", c());
-              paramString1.put("curFreq", d());
-              paramString1.put("CPUName", e());
-              paramString1 = paramString1.toString();
-              QLog.i("DeviceApiPlugin", 2, "getCPUInfo : " + paramString1);
-              callJs(paramJsBridgeListener, new String[] { paramString1 });
-              return true;
-            }
-            catch (JSONException paramJsBridgeListener)
-            {
-              for (;;)
-              {
-                paramJsBridgeListener.printStackTrace();
-              }
-            }
-          }
-          if ("getMemInfo".equals(paramString3))
-          {
-            try
-            {
-              paramString1 = new JSONObject();
-              paramString1.put("idleMem", a());
-              paramString1.put("totalMem", b());
-              paramString1 = paramString1.toString();
-              QLog.i("DeviceApiPlugin", 2, "getMemInfo : " + paramString1);
-              callJs(paramJsBridgeListener, new String[] { paramString1 });
-            }
-            catch (JSONException paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-            }
-          }
-          else if ("getCPUCoreNum".equals(paramString3))
-          {
-            try
-            {
-              paramString1 = new JSONObject();
-              paramString1.put("count", a());
-              paramString1 = paramString1.toString();
-              QLog.i("DeviceApiPlugin", 2, "getCPUCoreNum : " + paramString1);
-              callJs(paramJsBridgeListener, new String[] { paramString1 });
-            }
-            catch (JSONException paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-            }
-          }
-          else if ("getConfiguration".equals(paramString3))
-          {
-            try
-            {
-              paramString1 = new JSONObject();
-              paramString1.put("config", a());
-              paramString1 = paramString1.toString();
-              QLog.i("DeviceApiPlugin", 1, "getConfiguration : " + paramString1);
-              callJs(paramJsBridgeListener, new String[] { paramString1 });
-            }
-            catch (JSONException paramJsBridgeListener)
-            {
-              QLog.e("DeviceApiPlugin", 1, new Object[] { "getConfiguration ", paramJsBridgeListener.toString() });
-            }
-          }
-          else
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("DeviceApiPlugin", 2, "NOT support method " + paramString3 + " yet!!");
-            }
-            return false;
-            label1054:
-            i = 0;
-            break label1068;
-            if (paramJsBridgeListener != null) {
-              break;
-            }
-            return false;
-            label1066:
-            return false;
-            label1068:
-            if (i != 1) {
-              break label1082;
-            }
-            bool = true;
-            continue;
-          }
+          paramString1 = "{'result':-1,'message':'Context is null!'}";
+        }
+        callJs(paramJsBridgeListener, new String[] { paramString1 });
+        return true;
+      }
+      if ("getCPUInfo".equals(paramString3)) {
+        try
+        {
+          paramString1 = new JSONObject();
+          paramString1.put("maxFreq", b());
+          paramString1.put("minFreq", c());
+          paramString1.put("curFreq", d());
+          paramString1.put("CPUName", e());
+          paramString1 = paramString1.toString();
+          paramString2 = new StringBuilder();
+          paramString2.append("getCPUInfo : ");
+          paramString2.append(paramString1);
+          QLog.i("DeviceApiPlugin", 2, paramString2.toString());
+          callJs(paramJsBridgeListener, new String[] { paramString1 });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return true;
         }
       }
-      label1080:
-      return true;
-      label1082:
-      boolean bool = false;
+      if ("getMemInfo".equals(paramString3)) {
+        try
+        {
+          paramString1 = new JSONObject();
+          paramString1.put("idleMem", a());
+          paramString1.put("totalMem", b());
+          paramString1 = paramString1.toString();
+          paramString2 = new StringBuilder();
+          paramString2.append("getMemInfo : ");
+          paramString2.append(paramString1);
+          QLog.i("DeviceApiPlugin", 2, paramString2.toString());
+          callJs(paramJsBridgeListener, new String[] { paramString1 });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return true;
+        }
+      }
+      if ("getCPUCoreNum".equals(paramString3)) {
+        try
+        {
+          paramString1 = new JSONObject();
+          paramString1.put("count", a());
+          paramString1 = paramString1.toString();
+          paramString2 = new StringBuilder();
+          paramString2.append("getCPUCoreNum : ");
+          paramString2.append(paramString1);
+          QLog.i("DeviceApiPlugin", 2, paramString2.toString());
+          callJs(paramJsBridgeListener, new String[] { paramString1 });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return true;
+        }
+      }
+      if ("getConfiguration".equals(paramString3)) {
+        try
+        {
+          paramString1 = new JSONObject();
+          paramString1.put("config", a());
+          paramString1 = paramString1.toString();
+          paramString2 = new StringBuilder();
+          paramString2.append("getConfiguration : ");
+          paramString2.append(paramString1);
+          QLog.i("DeviceApiPlugin", 1, paramString2.toString());
+          callJs(paramJsBridgeListener, new String[] { paramString1 });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          QLog.e("DeviceApiPlugin", 1, new Object[] { "getConfiguration ", paramJsBridgeListener.toString() });
+          return true;
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append("NOT support method ");
+        paramJsBridgeListener.append(paramString3);
+        paramJsBridgeListener.append(" yet!!");
+        QLog.w("DeviceApiPlugin", 2, paramJsBridgeListener.toString());
+      }
+      return false;
     }
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     if (jdField_a_of_type_Boolean) {
       a(false, null, false);
     }
-    if ((jdField_a_of_type_AndroidOsPowerManager$WakeLock != null) && (jdField_a_of_type_AndroidOsPowerManager$WakeLock.isHeld())) {
+    PowerManager.WakeLock localWakeLock = jdField_a_of_type_AndroidOsPowerManager$WakeLock;
+    if ((localWakeLock != null) && (localWakeLock.isHeld())) {
       jdField_a_of_type_AndroidOsPowerManager$WakeLock.release();
     }
     jdField_a_of_type_AndroidOsPowerManager$WakeLock = null;
     super.onDestroy();
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     if ((paramCustomWebView != null) && (paramCustomWebView.getX5WebViewExtension() != null))
     {
       this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 3, 0, 0 };
       this.jdField_a_of_type_JavaLangString = "QQBrowser";
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ArrayOfInt = WebpSoLoader.a();
-    } while (this.jdField_a_of_type_ArrayOfInt == null);
-    if (WebpSoLoader.jdField_a_of_type_ArrayOfInt != null)
-    {
-      this.jdField_a_of_type_JavaLangString = "Hook";
       return;
     }
-    this.jdField_a_of_type_JavaLangString = "System";
+    this.jdField_a_of_type_ArrayOfInt = WebpSoLoader.a();
+    if (this.jdField_a_of_type_ArrayOfInt != null)
+    {
+      if (WebpSoLoader.jdField_a_of_type_ArrayOfInt != null)
+      {
+        this.jdField_a_of_type_JavaLangString = "Hook";
+        return;
+      }
+      this.jdField_a_of_type_JavaLangString = "System";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DeviceApiPlugin
  * JD-Core Version:    0.7.0.1
  */

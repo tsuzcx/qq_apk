@@ -35,142 +35,142 @@ public final class b
     //   15: aload_3
     //   16: aconst_null
     //   17: invokevirtual 24	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   20: astore_1
-    //   21: aload_1
-    //   22: ifnull +43 -> 65
-    //   25: aload_1
-    //   26: astore_0
-    //   27: aload_1
+    //   20: astore_0
+    //   21: aload_0
+    //   22: ifnull +47 -> 69
+    //   25: aload_0
+    //   26: astore_1
+    //   27: aload_0
     //   28: invokeinterface 30 1 0
-    //   33: ifeq +32 -> 65
-    //   36: aload_1
-    //   37: astore_0
-    //   38: aload_1
-    //   39: aload_1
+    //   33: ifeq +36 -> 69
+    //   36: aload_0
+    //   37: astore_1
+    //   38: aload_0
+    //   39: aload_0
     //   40: ldc 18
     //   42: invokeinterface 34 2 0
     //   47: invokeinterface 38 2 0
     //   52: astore_2
-    //   53: aload_1
+    //   53: aload_0
     //   54: ifnull +9 -> 63
-    //   57: aload_1
+    //   57: aload_0
     //   58: invokeinterface 42 1 0
     //   63: aload_2
     //   64: areturn
-    //   65: aload_1
-    //   66: ifnull +9 -> 75
-    //   69: aload_1
-    //   70: invokeinterface 42 1 0
-    //   75: aconst_null
-    //   76: areturn
-    //   77: astore_2
-    //   78: aconst_null
-    //   79: astore_1
-    //   80: aload_1
-    //   81: astore_0
-    //   82: aload_2
-    //   83: invokevirtual 45	java/lang/Exception:printStackTrace	()V
-    //   86: aload_1
-    //   87: ifnull -12 -> 75
-    //   90: aload_1
-    //   91: invokeinterface 42 1 0
-    //   96: goto -21 -> 75
-    //   99: astore_1
-    //   100: aconst_null
-    //   101: astore_0
-    //   102: aload_0
-    //   103: ifnull +9 -> 112
-    //   106: aload_0
-    //   107: invokeinterface 42 1 0
-    //   112: aload_1
-    //   113: athrow
-    //   114: astore_1
-    //   115: goto -13 -> 102
-    //   118: astore_2
-    //   119: goto -39 -> 80
+    //   65: astore_2
+    //   66: goto +19 -> 85
+    //   69: aload_0
+    //   70: ifnull +31 -> 101
+    //   73: goto +22 -> 95
+    //   76: astore_0
+    //   77: aconst_null
+    //   78: astore_1
+    //   79: goto +25 -> 104
+    //   82: astore_2
+    //   83: aconst_null
+    //   84: astore_0
+    //   85: aload_0
+    //   86: astore_1
+    //   87: aload_2
+    //   88: invokevirtual 45	java/lang/Exception:printStackTrace	()V
+    //   91: aload_0
+    //   92: ifnull +9 -> 101
+    //   95: aload_0
+    //   96: invokeinterface 42 1 0
+    //   101: aconst_null
+    //   102: areturn
+    //   103: astore_0
+    //   104: aload_1
+    //   105: ifnull +9 -> 114
+    //   108: aload_1
+    //   109: invokeinterface 42 1 0
+    //   114: aload_0
+    //   115: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	122	0	paramContext	Context
-    //   0	122	1	paramUri	Uri
-    //   0	122	2	paramString	String
-    //   0	122	3	paramArrayOfString	String[]
+    //   0	116	0	paramContext	Context
+    //   0	116	1	paramUri	Uri
+    //   0	116	2	paramString	String
+    //   0	116	3	paramArrayOfString	String[]
     // Exception table:
     //   from	to	target	type
-    //   0	21	77	java/lang/Exception
-    //   0	21	99	finally
-    //   27	36	114	finally
-    //   38	53	114	finally
-    //   82	86	114	finally
-    //   27	36	118	java/lang/Exception
-    //   38	53	118	java/lang/Exception
+    //   27	36	65	java/lang/Exception
+    //   38	53	65	java/lang/Exception
+    //   0	21	76	finally
+    //   0	21	82	java/lang/Exception
+    //   27	36	103	finally
+    //   38	53	103	finally
+    //   87	91	103	finally
   }
   
   private static String a(File paramFile)
   {
-    Object localObject1 = null;
     try
     {
       paramFile = paramFile.getAbsolutePath();
-      Object localObject2 = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(paramFile, (BitmapFactory.Options)localObject2);
-      localObject2 = ((BitmapFactory.Options)localObject2).outMimeType;
-      if ((!((String)localObject2).contains("jpg")) && (!((String)localObject2).contains("gif")) && (!((String)localObject2).contains("png")))
-      {
-        paramFile = localObject1;
-        if (!((String)localObject2).contains("jpeg")) {}
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(paramFile, localOptions);
+      paramFile = localOptions.outMimeType;
+      if ((!paramFile.contains("jpg")) && (!paramFile.contains("gif")) && (!paramFile.contains("png"))) {
+        if (!paramFile.contains("jpeg")) {
+          break label78;
+        }
       }
-      else
-      {
-        paramFile = "image/*";
-      }
-      return paramFile;
+      return "image/*";
     }
-    catch (Exception paramFile) {}
+    catch (Exception paramFile)
+    {
+      label71:
+      break label71;
+    }
     return "*/*";
+    label78:
+    return null;
   }
   
   public static boolean a(Context paramContext, Uri paramUri)
   {
     paramContext = c(paramContext, paramUri);
-    if (TextUtils.isEmpty(paramContext)) {
-      throw new IllegalArgumentException("get image path is null");
-    }
-    paramContext = new File(paramContext);
-    if (b(paramContext)) {}
-    do
+    if (!TextUtils.isEmpty(paramContext))
     {
-      return false;
+      paramContext = new File(paramContext);
+      if (b(paramContext)) {
+        return false;
+      }
       paramContext = a(paramContext);
-    } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.startsWith("image/")));
-    return true;
+      return (!TextUtils.isEmpty(paramContext)) && (paramContext.startsWith("image/"));
+    }
+    throw new IllegalArgumentException("get image path is null");
   }
   
   public static boolean b(Context paramContext, Uri paramUri)
   {
     paramContext = c(paramContext, paramUri);
-    if (TextUtils.isEmpty(paramContext)) {
-      throw new IllegalArgumentException("get video path is null");
-    }
-    paramUri = new File(paramContext);
-    if (b(paramUri)) {
-      return false;
-    }
-    paramContext = "*/*";
-    paramUri = paramUri.getName();
-    int i = paramUri.lastIndexOf(".");
-    if (i < 0) {}
-    while ((!TextUtils.isEmpty(paramContext)) && (paramContext.startsWith("video/")))
+    if (!TextUtils.isEmpty(paramContext))
     {
-      return true;
-      paramUri = paramUri.substring(i);
-      if ((!TextUtils.isEmpty(paramUri)) || (paramUri.length() >= 2))
-      {
-        paramContext = paramUri.substring(1).toLowerCase();
-        paramContext = MimeTypeMap.getSingleton().getMimeTypeFromExtension(paramContext);
+      paramContext = new File(paramContext);
+      if (b(paramContext)) {
+        return false;
       }
+      paramContext = paramContext.getName();
+      int i = paramContext.lastIndexOf(".");
+      if (i >= 0)
+      {
+        paramContext = paramContext.substring(i);
+        if ((!TextUtils.isEmpty(paramContext)) || (paramContext.length() >= 2)) {}
+      }
+      else
+      {
+        paramContext = "*/*";
+        break label94;
+      }
+      paramContext = paramContext.substring(1).toLowerCase();
+      paramContext = MimeTypeMap.getSingleton().getMimeTypeFromExtension(paramContext);
+      label94:
+      return (!TextUtils.isEmpty(paramContext)) && (paramContext.startsWith("video/"));
     }
-    return false;
+    throw new IllegalArgumentException("get video path is null");
   }
   
   private static boolean b(File paramFile)
@@ -185,58 +185,59 @@ public final class b
   @TargetApi(19)
   private static String c(Context paramContext, Uri paramUri)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
     int i;
-    if (Build.VERSION.SDK_INT >= 19)
-    {
+    if (Build.VERSION.SDK_INT >= 19) {
       i = 1;
-      if ((i == 0) || (!DocumentsContract.isDocumentUri(paramContext, paramUri))) {
-        break label234;
-      }
-      if (!"com.android.externalstorage.documents".equals(paramUri.getAuthority())) {
-        break label95;
-      }
-      paramContext = DocumentsContract.getDocumentId(paramUri).split(":");
-      if ("primary".equalsIgnoreCase(paramContext[0])) {
-        localObject1 = Environment.getExternalStorageDirectory() + "/" + paramContext[1];
-      }
+    } else {
+      i = 0;
     }
-    label95:
-    label234:
-    do
+    Object localObject = null;
+    if ((i != 0) && (DocumentsContract.isDocumentUri(paramContext, paramUri)))
     {
-      do
+      if ("com.android.externalstorage.documents".equals(paramUri.getAuthority()))
       {
-        return localObject1;
-        i = 0;
-        break;
+        paramContext = DocumentsContract.getDocumentId(paramUri).split(":");
+        if ("primary".equalsIgnoreCase(paramContext[0]))
+        {
+          paramUri = new StringBuilder();
+          paramUri.append(Environment.getExternalStorageDirectory());
+          paramUri.append("/");
+          paramUri.append(paramContext[1]);
+          return paramUri.toString();
+        }
+      }
+      else
+      {
         if ("com.android.providers.downloads.documents".equals(paramUri.getAuthority()))
         {
           paramUri = DocumentsContract.getDocumentId(paramUri);
           return a(paramContext, ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(paramUri).longValue()), null, null);
         }
-      } while (!"com.android.providers.media.documents".equals(paramUri.getAuthority()));
-      localObject1 = DocumentsContract.getDocumentId(paramUri).split(":");
-      Object localObject3 = localObject1[0];
-      if ("image".equals(localObject3)) {
-        paramUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-      }
-      for (;;)
-      {
-        return a(paramContext, paramUri, "_id=?", new String[] { localObject1[1] });
-        if ("video".equals(localObject3))
+        if ("com.android.providers.media.documents".equals(paramUri.getAuthority()))
         {
-          paramUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
-        }
-        else
-        {
-          paramUri = localObject2;
-          if ("audio".equals(localObject3)) {
-            paramUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+          String[] arrayOfString = DocumentsContract.getDocumentId(paramUri).split(":");
+          String str = arrayOfString[0];
+          if ("image".equals(str))
+          {
+            paramUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
           }
+          else if ("video".equals(str))
+          {
+            paramUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+          }
+          else
+          {
+            paramUri = localObject;
+            if ("audio".equals(str)) {
+              paramUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+            }
+          }
+          return a(paramContext, paramUri, "_id=?", new String[] { arrayOfString[1] });
         }
       }
+    }
+    else
+    {
       if ("content".equalsIgnoreCase(paramUri.getScheme()))
       {
         if ("com.google.android.apps.photos.content".equals(paramUri.getAuthority())) {
@@ -244,8 +245,11 @@ public final class b
         }
         return a(paramContext, paramUri, null, null);
       }
-    } while (!"file".equalsIgnoreCase(paramUri.getScheme()));
-    return paramUri.getPath();
+      if ("file".equalsIgnoreCase(paramUri.getScheme())) {
+        return paramUri.getPath();
+      }
+    }
+    return null;
   }
 }
 

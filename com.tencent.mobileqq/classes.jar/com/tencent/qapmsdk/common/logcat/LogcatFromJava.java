@@ -29,31 +29,33 @@ public final class LogcatFromJava
   @Nullable
   public String getLogcatFile()
   {
-    Object localObject = new ArrayList();
-    ((ArrayList)localObject).add("logcat");
-    CollectionsKt.addAll((Collection)localObject, this.logcatArguments);
-    File localFile = new File(FileUtil.Companion.getRootPath() + "/logcat/log_" + System.currentTimeMillis() + ".txt");
-    localObject = new ProcessBuilder(new String[0]).command((List)localObject).redirectErrorStream(true).start();
+    Object localObject2 = new ArrayList();
+    ((ArrayList)localObject2).add("logcat");
+    CollectionsKt.addAll((Collection)localObject2, this.logcatArguments);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(FileUtil.Companion.getRootPath());
+    ((StringBuilder)localObject1).append("/logcat/log_");
+    ((StringBuilder)localObject1).append(System.currentTimeMillis());
+    ((StringBuilder)localObject1).append(".txt");
+    localObject1 = new File(((StringBuilder)localObject1).toString());
+    localObject2 = new ProcessBuilder(new String[0]).command((List)localObject2).redirectErrorStream(true).start();
     FileUtil.Companion localCompanion1 = FileUtil.Companion;
-    String str = localFile.getAbsolutePath();
+    String str = ((File)localObject1).getAbsolutePath();
     FileUtil.Companion localCompanion2 = FileUtil.Companion;
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "process");
-    InputStream localInputStream = ((Process)localObject).getInputStream();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "process");
+    InputStream localInputStream = ((Process)localObject2).getInputStream();
     Intrinsics.checkExpressionValueIsNotNull(localInputStream, "process.inputStream");
     localCompanion1.writeFile(str, localCompanion2.readStream(localInputStream, 8196), false);
-    ((Process)localObject).destroy();
-    return localFile.getAbsolutePath();
+    ((Process)localObject2).destroy();
+    return ((File)localObject1).getAbsolutePath();
   }
   
   public void setArgs(@Nullable String[] paramArrayOfString)
   {
-    if (paramArrayOfString != null) {}
-    for (;;)
-    {
-      this.logcatArguments = paramArrayOfString;
-      return;
+    if (paramArrayOfString == null) {
       paramArrayOfString = new String[0];
     }
+    this.logcatArguments = paramArrayOfString;
   }
   
   public final void setLogcatArguments(@NotNull String[] paramArrayOfString)
@@ -64,7 +66,7 @@ public final class LogcatFromJava
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.logcat.LogcatFromJava
  * JD-Core Version:    0.7.0.1
  */

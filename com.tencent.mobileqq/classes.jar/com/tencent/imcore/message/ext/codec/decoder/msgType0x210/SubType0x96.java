@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 import tencent.im.s2c.msgtype0x210.submsgtype0x96.submsgtype0x96.MsgBody;
 
 public class SubType0x96
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
@@ -25,43 +25,49 @@ public class SubType0x96
     {
       localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
       paramMsgType0x210 = new Intent("tencent.qqcomic.push.msg");
-      if (localMsgBody.uint32_push_type.has()) {
-        switch (localMsgBody.uint32_push_type.get())
+      boolean bool = localMsgBody.uint32_push_type.has();
+      if (bool)
+      {
+        int i = localMsgBody.uint32_push_type.get();
+        if (i != 0)
         {
-        case 0: 
-          paramMsgType0x210.setAction("tencent.qqcomic.show.dialog");
-          for (;;)
-          {
-            paramMsgType0x210.putExtra("msg", localMsgBody.string_push_msg.get());
-            paramQQAppInterface.getApp().sendBroadcast(paramMsgType0x210);
-            return;
+          if (i != 1) {
             paramMsgType0x210.setAction("tencent.qqcomic.show.dialog");
+          } else {
+            paramMsgType0x210.setAction("tencent.qqcomic.show.egg");
           }
         }
+        else {
+          paramMsgType0x210.setAction("tencent.qqcomic.show.dialog");
+        }
       }
+      else
+      {
+        paramMsgType0x210.setAction("tencent.qqcomic.show.dialog");
+      }
+      paramMsgType0x210.putExtra("msg", localMsgBody.string_push_msg.get());
+      paramQQAppInterface.getApp().sendBroadcast(paramMsgType0x210);
+      return;
     }
     catch (Exception paramQQAppInterface)
     {
-      while (QLog.isColorLevel())
-      {
-        QLog.d("Q.msg.BaseMessageProcessor", 4, "OnLinePushMessageProcessor mergeFrom 0x96 exception ");
-        return;
-        paramMsgType0x210.setAction("tencent.qqcomic.show.egg");
-        continue;
-        paramMsgType0x210.setAction("tencent.qqcomic.show.dialog");
-      }
+      label135:
+      break label135;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 4, "OnLinePushMessageProcessor mergeFrom 0x96 exception ");
     }
   }
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    a(paramOnLinePushMessageProcessor.a(), paramMsgType0x210);
+    a((QQAppInterface)paramOnLinePushMessageProcessor.a(), paramMsgType0x210);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x96
  * JD-Core Version:    0.7.0.1
  */

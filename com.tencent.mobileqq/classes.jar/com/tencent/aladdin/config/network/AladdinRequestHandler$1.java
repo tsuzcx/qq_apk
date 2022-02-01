@@ -23,56 +23,54 @@ class AladdinRequestHandler$1
   public void onReceive(@NonNull byte[] paramArrayOfByte, @NonNull Bundle paramBundle)
   {
     oidb_cmd0xbf8.RspBody localRspBody = new oidb_cmd0xbf8.RspBody();
-    int j;
-    try
-    {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      int k = localRspBody.rsp_type.get();
-      int m = localRspBody.ret_code.get();
-      Log.i("AladdinRequestHandler", "onReceive: retCode=" + m + ", rspType=" + k);
-      if (k == 0)
-      {
-        paramArrayOfByte = AladdinRequestHandler.access$000(this.this$0, (oidb_cmd0xbf8.RspBodyType1)localRspBody.body_type_1.get());
-        paramBundle.putLong("key_config_count", paramArrayOfByte.size());
-        paramArrayOfByte = paramArrayOfByte.iterator();
-        i = 0;
-        if (paramArrayOfByte.hasNext())
-        {
-          if (AladdinRequestHandler.ConfigResult.access$100((AladdinRequestHandler.ConfigResult)paramArrayOfByte.next()) == 0) {
-            break label218;
-          }
-          j = 1;
-        }
-        else
-        {
-          paramBundle.putLong("key_failed_count", i);
-        }
-      }
-      else
-      {
-        for (;;)
-        {
-          paramBundle.putInt("key_rsp_type", k);
-          paramBundle.putInt("key_ret_code", m);
-          paramBundle.putLong("key_response_timestamp", System.currentTimeMillis());
-          return;
-          if (k == 1) {
-            AladdinRequestHandler.access$200((oidb_cmd0xbf8.RspBodyType2)localRspBody.body_type_2.get());
-          }
-        }
-      }
-      int i = j + i;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      Log.e("AladdinRequestHandler", "onReceive: ", paramArrayOfByte);
-      return;
-    }
     for (;;)
     {
-      break;
-      label218:
-      j = 0;
+      int i;
+      try
+      {
+        localRspBody.mergeFrom(paramArrayOfByte);
+        int k = localRspBody.rsp_type.get();
+        int m = localRspBody.ret_code.get();
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("onReceive: retCode=");
+        paramArrayOfByte.append(m);
+        paramArrayOfByte.append(", rspType=");
+        paramArrayOfByte.append(k);
+        Log.i("AladdinRequestHandler", paramArrayOfByte.toString());
+        if (k == 0)
+        {
+          paramArrayOfByte = AladdinRequestHandler.access$000(this.this$0, (oidb_cmd0xbf8.RspBodyType1)localRspBody.body_type_1.get());
+          paramBundle.putLong("key_config_count", paramArrayOfByte.size());
+          paramArrayOfByte = paramArrayOfByte.iterator();
+          i = 0;
+          if (paramArrayOfByte.hasNext())
+          {
+            if (AladdinRequestHandler.ConfigResult.access$100((AladdinRequestHandler.ConfigResult)paramArrayOfByte.next()) == 0) {
+              break label220;
+            }
+            j = 1;
+            break label223;
+          }
+          paramBundle.putLong("key_failed_count", i);
+        }
+        else if (k == 1)
+        {
+          AladdinRequestHandler.access$200((oidb_cmd0xbf8.RspBodyType2)localRspBody.body_type_2.get());
+        }
+        paramBundle.putInt("key_rsp_type", k);
+        paramBundle.putInt("key_ret_code", m);
+        paramBundle.putLong("key_response_timestamp", System.currentTimeMillis());
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        Log.e("AladdinRequestHandler", "onReceive: ", paramArrayOfByte);
+        return;
+      }
+      label220:
+      int j = 0;
+      label223:
+      i += j;
     }
   }
   

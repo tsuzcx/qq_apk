@@ -12,37 +12,34 @@ class AddFriendVerifyActivity$18
 {
   AddFriendVerifyActivity$18(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
     if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
       paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
+      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin))
+      {
         if (AddFriendVerifyActivity.a(this.a) != null)
         {
-          str = AddFriendVerifyActivity.a(this.a).getText().toString();
+          String str = AddFriendVerifyActivity.a(this.a).getText().toString();
           if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
             AddFriendVerifyActivity.a(this.a).setText(paramHashMap.nickname);
           }
         }
       }
+      else if (QLog.isColorLevel()) {
+        QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
+      }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      String str;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
-      return;
+      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
     }
-    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.18
  * JD-Core Version:    0.7.0.1
  */

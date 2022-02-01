@@ -8,7 +8,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 
 public class FormItemRelativeLayout
   extends RelativeLayout
@@ -36,39 +36,43 @@ public class FormItemRelativeLayout
     if (paramBoolean)
     {
       if (jdField_a_of_type_Boolean) {
-        return paramResources.getDrawable(2130839575);
+        return paramResources.getDrawable(2130839433);
       }
-      return paramResources.getDrawable(2130850777);
+      return paramResources.getDrawable(2130850703);
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return paramResources.getDrawable(2130839575);
-    case 0: 
-      if (jdField_a_of_type_Boolean) {
-        return paramResources.getDrawable(2130839575);
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return paramResources.getDrawable(2130839433);
+          }
+          if (jdField_a_of_type_Boolean) {
+            return paramResources.getDrawable(2130839440);
+          }
+          return paramResources.getDrawable(2130850708);
+        }
+        if (jdField_a_of_type_Boolean) {
+          return paramResources.getDrawable(2130839443);
+        }
+        return paramResources.getDrawable(2130850717);
       }
-      return paramResources.getDrawable(2130850777);
-    case 1: 
       if (jdField_a_of_type_Boolean) {
-        return paramResources.getDrawable(2130839585);
+        return paramResources.getDrawable(2130839443);
       }
-      return paramResources.getDrawable(2130850791);
-    case 2: 
-      if (jdField_a_of_type_Boolean) {
-        return paramResources.getDrawable(2130839585);
-      }
-      return paramResources.getDrawable(2130850791);
+      return paramResources.getDrawable(2130850717);
     }
     if (jdField_a_of_type_Boolean) {
-      return paramResources.getDrawable(2130839582);
+      return paramResources.getDrawable(2130839433);
     }
-    return paramResources.getDrawable(2130850782);
+    return paramResources.getDrawable(2130850703);
   }
   
   private boolean a()
   {
-    return ("1000".equals(ThemeUtil.curThemeId)) || ("999".equals(ThemeUtil.curThemeId));
+    return QQTheme.b();
   }
   
   protected Drawable a(Resources paramResources, int paramInt)
@@ -76,24 +80,20 @@ public class FormItemRelativeLayout
     return a(paramResources, paramInt, a());
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2))
+    int i = this.jdField_a_of_type_Int;
+    if ((i == 1) || (i == 2))
     {
-      if (!a()) {
-        break label73;
+      if (a()) {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(FormItemConstants.c);
+      } else {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(FormItemConstants.c);
-    }
-    for (;;)
-    {
-      int i = getMeasuredWidth();
+      i = getMeasuredWidth();
       int j = getMeasuredHeight();
       this.jdField_a_of_type_AndroidGraphicsRect.set(FormItemConstants.d, j - FormItemConstants.b, i, j);
       paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-      label73:
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
     }
   }
   
@@ -110,7 +110,7 @@ public class FormItemRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormItemRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -60,22 +60,30 @@ public class X5JsCore
       if ((localx != null) && (localx.b())) {
         return localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", paramString, paramArrayOfClass, paramVarArgs);
       }
-      Log.e("X5JsCore", "X5Jscore#" + paramString + " - x5CoreEngine is null or is not x5core.");
+      paramArrayOfClass = new StringBuilder();
+      paramArrayOfClass.append("X5Jscore#");
+      paramArrayOfClass.append(paramString);
+      paramArrayOfClass.append(" - x5CoreEngine is null or is not x5core.");
+      Log.e("X5JsCore", paramArrayOfClass.toString());
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
     return null;
   }
   
   public static boolean canUseX5JsCore(Context paramContext)
   {
-    if (a != X5JsCore.a.a) {
-      return a == X5JsCore.a.c;
+    X5JsCore.a locala1 = a;
+    X5JsCore.a locala2 = X5JsCore.a.a;
+    boolean bool = false;
+    if (locala1 != locala2)
+    {
+      if (a == X5JsCore.a.c) {
+        bool = true;
+      }
+      return bool;
     }
     a = X5JsCore.a.b;
     paramContext = a("canUseX5JsCore", new Class[] { Context.class }, new Object[] { paramContext });
@@ -91,8 +99,15 @@ public class X5JsCore
   
   public static boolean canUseX5JsCoreNewAPI(Context paramContext)
   {
-    if (c != X5JsCore.a.a) {
-      return c == X5JsCore.a.c;
+    X5JsCore.a locala1 = c;
+    X5JsCore.a locala2 = X5JsCore.a.a;
+    boolean bool = false;
+    if (locala1 != locala2)
+    {
+      if (c == X5JsCore.a.c) {
+        bool = true;
+      }
+      return bool;
     }
     c = X5JsCore.a.b;
     paramContext = a("canUseX5JsCoreNewAPI", new Class[] { Context.class }, new Object[] { paramContext });
@@ -106,94 +121,75 @@ public class X5JsCore
   
   public static boolean canX5JsCoreUseNativeBuffer(Context paramContext)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (b != X5JsCore.a.a) {
-      if (b == X5JsCore.a.c) {
-        bool1 = true;
-      }
+      return b == X5JsCore.a.c;
     }
-    do
+    b = X5JsCore.a.b;
+    if (!canUseX5JsCore(paramContext)) {
+      return false;
+    }
+    paramContext = a("canX5JsCoreUseBuffer", new Class[] { Context.class }, new Object[] { paramContext });
+    if ((paramContext != null) && ((paramContext instanceof Boolean)) && (((Boolean)paramContext).booleanValue()))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            for (;;)
-            {
-              return bool1;
-              bool1 = false;
-            }
-            b = X5JsCore.a.b;
-            bool1 = bool2;
-          } while (!canUseX5JsCore(paramContext));
-          paramContext = a("canX5JsCoreUseBuffer", new Class[] { Context.class }, new Object[] { paramContext });
-          bool1 = bool2;
-        } while (paramContext == null);
-        bool1 = bool2;
-      } while (!(paramContext instanceof Boolean));
-      bool1 = bool2;
-    } while (!((Boolean)paramContext).booleanValue());
-    b = X5JsCore.a.c;
-    return true;
+      b = X5JsCore.a.c;
+      return true;
+    }
+    return false;
   }
   
   @Deprecated
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
-    if (this.e != null)
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      localObject = this.e;
       a("addJavascriptInterface", new Class[] { Object.class, String.class, Object.class }, new Object[] { paramObject, paramString, localObject });
-    }
-    while (this.f == null)
-    {
-      Object localObject;
       return;
     }
-    this.f.addJavascriptInterface(paramObject, paramString);
-    this.f.loadUrl("about:blank");
+    localObject = this.f;
+    if (localObject != null)
+    {
+      ((WebView)localObject).addJavascriptInterface(paramObject, paramString);
+      this.f.loadUrl("about:blank");
+    }
   }
   
   @Deprecated
   public void destroy()
   {
-    if (this.e != null)
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      localObject = this.e;
       a("destroyX5JsCore", new Class[] { Object.class }, new Object[] { localObject });
       this.e = null;
-    }
-    while (this.f == null)
-    {
-      Object localObject;
       return;
     }
-    this.f.clearHistory();
-    this.f.clearCache(true);
-    this.f.loadUrl("about:blank");
-    this.f.freeMemory();
-    this.f.pauseTimers();
-    this.f.destroy();
-    this.f = null;
+    localObject = this.f;
+    if (localObject != null)
+    {
+      ((WebView)localObject).clearHistory();
+      this.f.clearCache(true);
+      this.f.loadUrl("about:blank");
+      this.f.freeMemory();
+      this.f.pauseTimers();
+      this.f.destroy();
+      this.f = null;
+    }
   }
   
   @Deprecated
   public void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
   {
-    if (this.e != null)
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      localObject = this.e;
       a("evaluateJavascript", new Class[] { String.class, android.webkit.ValueCallback.class, Object.class }, new Object[] { paramString, paramValueCallback, localObject });
-    }
-    while (this.f == null)
-    {
-      Object localObject;
       return;
     }
-    this.f.evaluateJavascript(paramString, paramValueCallback);
+    localObject = this.f;
+    if (localObject != null) {
+      ((WebView)localObject).evaluateJavascript(paramString, paramValueCallback);
+    }
   }
   
   @Deprecated
@@ -228,9 +224,8 @@ public class X5JsCore
   @Deprecated
   public void pause()
   {
-    if (this.e != null)
-    {
-      Object localObject = this.e;
+    Object localObject = this.e;
+    if (localObject != null) {
       a("pause", new Class[] { Object.class }, new Object[] { localObject });
     }
   }
@@ -238,9 +233,8 @@ public class X5JsCore
   @Deprecated
   public void pauseTimers()
   {
-    if (this.e != null)
-    {
-      Object localObject = this.e;
+    Object localObject = this.e;
+    if (localObject != null) {
       a("pauseTimers", new Class[] { Object.class }, new Object[] { localObject });
     }
   }
@@ -248,25 +242,23 @@ public class X5JsCore
   @Deprecated
   public void removeJavascriptInterface(String paramString)
   {
-    if (this.e != null)
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      localObject = this.e;
       a("removeJavascriptInterface", new Class[] { String.class, Object.class }, new Object[] { paramString, localObject });
-    }
-    while (this.f == null)
-    {
-      Object localObject;
       return;
     }
-    this.f.removeJavascriptInterface(paramString);
+    localObject = this.f;
+    if (localObject != null) {
+      ((WebView)localObject).removeJavascriptInterface(paramString);
+    }
   }
   
   @Deprecated
   public void resume()
   {
-    if (this.e != null)
-    {
-      Object localObject = this.e;
+    Object localObject = this.e;
+    if (localObject != null) {
       a("resume", new Class[] { Object.class }, new Object[] { localObject });
     }
   }
@@ -274,9 +266,8 @@ public class X5JsCore
   @Deprecated
   public void resumeTimers()
   {
-    if (this.e != null)
-    {
-      Object localObject = this.e;
+    Object localObject = this.e;
+    if (localObject != null) {
       a("resumeTimers", new Class[] { Object.class }, new Object[] { localObject });
     }
   }
@@ -294,7 +285,7 @@ public class X5JsCore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.X5JsCore
  * JD-Core Version:    0.7.0.1
  */

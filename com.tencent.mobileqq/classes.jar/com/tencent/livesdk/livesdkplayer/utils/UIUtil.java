@@ -52,64 +52,63 @@ public final class UIUtil
   
   public static void fixInputMethodManagerLeak(Context paramContext)
   {
-    if (paramContext == null) {}
-    label250:
-    for (;;)
-    {
+    if (paramContext == null) {
       return;
-      InputMethodManager localInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
-      if (localInputMethodManager != null)
+    }
+    InputMethodManager localInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
+    if (localInputMethodManager == null) {
+      return;
+    }
+    String[] arrayOfString = new String[4];
+    int i = 0;
+    arrayOfString[0] = "mCurRootView";
+    arrayOfString[1] = "mServedView";
+    arrayOfString[2] = "mNextServedView";
+    arrayOfString[3] = "mLastSrvView";
+    while (i < arrayOfString.length)
+    {
+      Object localObject1 = arrayOfString[i];
+      try
       {
-        String[] arrayOfString = new String[4];
-        arrayOfString[0] = "mCurRootView";
-        arrayOfString[1] = "mServedView";
-        arrayOfString[2] = "mNextServedView";
-        arrayOfString[3] = "mLastSrvView";
-        int i = 0;
-        for (;;)
+        localObject1 = localInputMethodManager.getClass().getDeclaredField((String)localObject1);
+        if (localObject1 == null) {
+          return;
+        }
+        if (!((Field)localObject1).isAccessible()) {
+          ((Field)localObject1).setAccessible(true);
+        }
+        Object localObject2 = ((Field)localObject1).get(localInputMethodManager);
+        if ((localObject2 != null) && ((localObject2 instanceof View)))
         {
-          for (;;)
+          localObject2 = (View)localObject2;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("v_get.getContext() is ");
+          localStringBuilder.append(((View)localObject2).getContext());
+          Log.i("UIUtil", localStringBuilder.toString());
+          if ((((View)localObject2).getContext() instanceof MutableContextWrapper))
           {
-            if (i >= arrayOfString.length) {
-              break label250;
-            }
-            Object localObject1 = arrayOfString[i];
-            try
-            {
-              localObject1 = localInputMethodManager.getClass().getDeclaredField((String)localObject1);
-              if (localObject1 == null) {
-                break;
-              }
-              if (!((Field)localObject1).isAccessible()) {
-                ((Field)localObject1).setAccessible(true);
-              }
-              Object localObject2 = ((Field)localObject1).get(localInputMethodManager);
-              if ((localObject2 != null) && ((localObject2 instanceof View)))
-              {
-                localObject2 = (View)localObject2;
-                Log.i("UIUtil", "v_get.getContext() is " + ((View)localObject2).getContext());
-                if ((((View)localObject2).getContext() instanceof MutableContextWrapper))
-                {
-                  localObject2 = ((MutableContextWrapper)((View)localObject2).getContext()).getBaseContext();
-                  Log.i("UIUtil", "contextis " + localObject2 + ", destContext is " + paramContext);
-                  if (localObject2 == paramContext) {
-                    ((Field)localObject1).set(localInputMethodManager, null);
-                  }
-                }
-                else if (((View)localObject2).getContext() == paramContext)
-                {
-                  ((Field)localObject1).set(localInputMethodManager, null);
-                }
-              }
-            }
-            catch (Throwable localThrowable)
-            {
-              localThrowable.printStackTrace();
+            localObject2 = ((MutableContextWrapper)((View)localObject2).getContext()).getBaseContext();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("contextis ");
+            localStringBuilder.append(localObject2);
+            localStringBuilder.append(", destContext is ");
+            localStringBuilder.append(paramContext);
+            Log.i("UIUtil", localStringBuilder.toString());
+            if (localObject2 == paramContext) {
+              ((Field)localObject1).set(localInputMethodManager, null);
             }
           }
-          i += 1;
+          else if (((View)localObject2).getContext() == paramContext)
+          {
+            ((Field)localObject1).set(localInputMethodManager, null);
+          }
         }
       }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+      i += 1;
     }
   }
   
@@ -120,51 +119,61 @@ public final class UIUtil
   
   private static String getNavBarOverride()
   {
-    if (Build.VERSION.SDK_INT >= 19) {
-      try
-      {
-        Object localObject = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });
-        ((Method)localObject).setAccessible(true);
-        localObject = (String)((Method)localObject).invoke(null, new Object[] { "qemu.hw.mainkeys" });
-        return localObject;
-      }
-      catch (Throwable localThrowable)
-      {
-        return null;
-      }
+    if (Build.VERSION.SDK_INT >= 19) {}
+    try
+    {
+      Object localObject = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });
+      ((Method)localObject).setAccessible(true);
+      localObject = (String)((Method)localObject).invoke(null, new Object[] { "qemu.hw.mainkeys" });
+      return localObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      label53:
+      break label53;
     }
     return null;
   }
   
   public static int getNavigationBarHeight(Context paramContext)
   {
-    if (isMIUI()) {
-      if ((Build.VERSION.SDK_INT < 17) || (Settings.Global.getInt(paramContext.getContentResolver(), "force_fsg_nav_bar", 0) == 0)) {}
-    }
-    int i;
-    do
+    boolean bool = isMIUI();
+    int j = 0;
+    if (bool)
     {
-      do
-      {
+      if ((Build.VERSION.SDK_INT >= 17) && (Settings.Global.getInt(paramContext.getContentResolver(), "force_fsg_nav_bar", 0) != 0)) {
         return 0;
-        i = getScreenSize(paramContext)[1];
-        paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-        DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-        paramContext.getMetrics(localDisplayMetrics);
-        return i - localDisplayMetrics.heightPixels;
-      } while (!hasNavBar(paramContext));
+      }
+      i = getScreenSize(paramContext)[1];
+      paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      paramContext.getMetrics(localDisplayMetrics);
+      return i - localDisplayMetrics.heightPixels;
+    }
+    int i = j;
+    if (hasNavBar(paramContext))
+    {
       paramContext = paramContext.getResources();
-      i = paramContext.getIdentifier("navigation_bar_height", "dimen", "android");
-    } while (i <= 0);
-    return paramContext.getDimensionPixelSize(i);
+      int k = paramContext.getIdentifier("navigation_bar_height", "dimen", "android");
+      i = j;
+      if (k > 0) {
+        i = paramContext.getDimensionPixelSize(k);
+      }
+    }
+    return i;
   }
   
   public static int getRawScreenHeight(Context paramContext)
   {
+    int i;
     if (isMeizu()) {
-      return getScreenHeight(paramContext) - getSmartBarHeight(paramContext);
+      i = getScreenHeight(paramContext);
     }
-    return getScreenHeight(paramContext) - getNavigationBarHeight(paramContext);
+    for (int j = getSmartBarHeight(paramContext);; j = getNavigationBarHeight(paramContext))
+    {
+      return i - j;
+      i = getScreenHeight(paramContext);
+    }
   }
   
   public static int getRealScreenHeight(Context paramContext)
@@ -219,48 +228,56 @@ public final class UIUtil
     paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     Object localObject = new DisplayMetrics();
     paramContext.getMetrics((DisplayMetrics)localObject);
-    int i = ((DisplayMetrics)localObject).widthPixels;
-    int j = ((DisplayMetrics)localObject).heightPixels;
-    if ((Build.VERSION.SDK_INT >= 14) && (Build.VERSION.SDK_INT < 17)) {}
-    int m;
-    for (;;)
+    int k = ((DisplayMetrics)localObject).widthPixels;
+    m = ((DisplayMetrics)localObject).heightPixels;
+    j = m;
+    int i = k;
+    if (Build.VERSION.SDK_INT >= 14)
     {
-      try
-      {
-        k = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
+      j = m;
+      i = k;
+      if (Build.VERSION.SDK_INT < 17) {
         i = k;
-        m = ((Integer)Display.class.getMethod("getRawHeight", new Class[0]).invoke(paramContext, new Object[0])).intValue();
+      }
+    }
+    try
+    {
+      k = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
+      i = k;
+      j = ((Integer)Display.class.getMethod("getRawHeight", new Class[0]).invoke(paramContext, new Object[0])).intValue();
+      i = k;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
         j = m;
-        i = k;
       }
-      catch (Exception localException)
-      {
-        int k;
-        continue;
-      }
-      m = j;
+    }
+    m = j;
+    k = i;
+    if (Build.VERSION.SDK_INT >= 17) {
       k = i;
-      if (Build.VERSION.SDK_INT >= 17) {
-        k = i;
-      }
-      try
-      {
-        localObject = new Point();
-        k = i;
-        Display.class.getMethod("getRealSize", new Class[] { Point.class }).invoke(paramContext, new Object[] { localObject });
-        k = i;
-        i = ((Point)localObject).x;
-        k = i;
-        m = ((Point)localObject).y;
-        k = i;
-      }
-      catch (Exception paramContext)
+    }
+    try
+    {
+      localObject = new Point();
+      k = i;
+      Display.class.getMethod("getRealSize", new Class[] { Point.class }).invoke(paramContext, new Object[] { localObject });
+      k = i;
+      i = ((Point)localObject).x;
+      k = i;
+      m = ((Point)localObject).y;
+      k = i;
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
       {
         m = j;
-        continue;
       }
-      return new int[] { k, m };
     }
+    return new int[] { k, m };
   }
   
   public static int getScreenWidth(Context paramContext)
@@ -294,13 +311,14 @@ public final class UIUtil
   
   public static int getStatusBarHeight(Context paramContext)
   {
-    int i = -1;
     Resources localResources = paramContext.getResources();
-    int j = localResources.getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = localResources.getDimensionPixelSize(j);
+    int i = localResources.getIdentifier("status_bar_height", "dimen", "android");
+    if (i > 0) {
+      i = localResources.getDimensionPixelSize(i);
+    } else {
+      i = -1;
     }
-    j = i;
+    int j = i;
     if (i <= 0) {
       j = dp2px(paramContext, 25.0F);
     }
@@ -309,12 +327,11 @@ public final class UIUtil
   
   public static boolean hasNavBar(Context paramContext)
   {
-    boolean bool = true;
     Resources localResources = paramContext.getResources();
     int i = localResources.getIdentifier("config_showNavigationBar", "bool", "android");
     if (i != 0)
     {
-      bool = localResources.getBoolean(i);
+      boolean bool = localResources.getBoolean(i);
       paramContext = getNavBarOverride();
       if ("1".equals(paramContext)) {
         return false;
@@ -322,17 +339,9 @@ public final class UIUtil
       if ("0".equals(paramContext)) {
         return true;
       }
+      return bool;
     }
-    else
-    {
-      if (!ViewConfiguration.get(paramContext).hasPermanentMenuKey()) {}
-      for (;;)
-      {
-        return bool;
-        bool = false;
-      }
-    }
-    return bool;
+    return ViewConfiguration.get(paramContext).hasPermanentMenuKey() ^ true;
   }
   
   public static boolean isHUAWEI()
@@ -352,74 +361,62 @@ public final class UIUtil
   
   public static boolean isNavigationBarShow(Activity paramActivity, boolean paramBoolean)
   {
-    boolean bool1 = true;
     Object localObject;
     int i;
     if (isHUAWEI())
     {
       localObject = paramActivity.getResources();
       i = ((Resources)localObject).getIdentifier("config_showNavigationBar", "bool", "android");
-      if (i <= 0) {
-        break label278;
+      if (i > 0) {
+        paramBoolean = ((Resources)localObject).getBoolean(i);
+      } else {
+        paramBoolean = false;
       }
     }
-    label275:
-    label278:
-    for (paramBoolean = ((Resources)localObject).getBoolean(i);; paramBoolean = false)
+    try
     {
-      try
-      {
-        localObject = Class.forName("android.os.SystemProperties");
-        localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class }).invoke(localObject, new Object[] { "qemu.hw.mainkeys" });
-        if (Build.VERSION.SDK_INT < 21) {}
-        for (i = Settings.System.getInt(paramActivity.getContentResolver(), "navigationbar_is_min", 0);; i = Settings.Global.getInt(paramActivity.getContentResolver(), "navigationbar_is_min", 0))
-        {
-          if ("1".equals(localObject)) {
-            break label283;
-          }
-          if (1 != i) {
-            break;
-          }
-          break label283;
-        }
-        bool1 = "0".equals(localObject);
-        if (!bool1) {
-          break label275;
-        }
-        paramBoolean = true;
+      localObject = Class.forName("android.os.SystemProperties");
+      localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class }).invoke(localObject, new Object[] { "qemu.hw.mainkeys" });
+      i = Build.VERSION.SDK_INT;
+      if (i < 21) {
+        i = Settings.System.getInt(paramActivity.getContentResolver(), "navigationbar_is_min", 0);
+      } else {
+        i = Settings.Global.getInt(paramActivity.getContentResolver(), "navigationbar_is_min", 0);
       }
-      catch (Exception paramActivity) {}
-      if (Build.VERSION.SDK_INT >= 17)
+      if ((!"1".equals(localObject)) && (1 != i))
       {
-        localObject = paramActivity.getWindowManager().getDefaultDisplay();
-        Point localPoint1 = new Point();
-        Point localPoint2 = new Point();
-        ((Display)localObject).getSize(localPoint1);
-        ((Display)localObject).getRealSize(localPoint2);
-        if (paramBoolean) {}
-        for (i = localPoint1.y + getStatusBarHeight(paramActivity.getApplicationContext());; i = localPoint1.y)
-        {
-          paramBoolean = bool1;
-          if (localPoint2.y != i) {
-            break;
-          }
-          return false;
+        bool = "0".equals(localObject);
+        if (bool) {
+          return true;
         }
       }
-      paramBoolean = ViewConfiguration.get(paramActivity).hasPermanentMenuKey();
-      boolean bool2 = KeyCharacterMap.deviceHasKey(4);
-      if (!paramBoolean)
+      else
       {
-        paramBoolean = bool1;
-        if (!bool2) {
-          return paramBoolean;
-        }
+        paramBoolean = false;
       }
-      return false;
       return paramBoolean;
     }
-    label283:
-    paramBoolean = false;
+    catch (Exception paramActivity) {}
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      localObject = paramActivity.getWindowManager().getDefaultDisplay();
+      Point localPoint1 = new Point();
+      Point localPoint2 = new Point();
+      ((Display)localObject).getSize(localPoint1);
+      ((Display)localObject).getRealSize(localPoint2);
+      if (paramBoolean) {
+        i = localPoint1.y + getStatusBarHeight(paramActivity.getApplicationContext());
+      } else {
+        i = localPoint1.y;
+      }
+      return localPoint2.y != i;
+    }
+    paramBoolean = ViewConfiguration.get(paramActivity).hasPermanentMenuKey();
+    boolean bool = KeyCharacterMap.deviceHasKey(4);
+    if (!paramBoolean) {
+      return !bool;
+    }
+    return false;
     return paramBoolean;
   }
   
@@ -442,9 +439,11 @@ public final class UIUtil
   
   public static void setFullscreen(Window paramWindow, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = 5376;
+    int i;
     if (!paramBoolean1) {
       i = 5380;
+    } else {
+      i = 5376;
     }
     int j = i;
     if (!paramBoolean2) {
@@ -474,7 +473,7 @@ public final class UIUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.utils.UIUtil
  * JD-Core Version:    0.7.0.1
  */

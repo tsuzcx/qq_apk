@@ -85,15 +85,13 @@ public final class VideoFrameSelectBar
         ((RangeProcessor)localObject).a(paramMotionEvent);
       }
     }
-    do
+    else if (this.jdField_b_of_type_Boolean)
     {
-      do
-      {
-        return;
-      } while (!this.jdField_b_of_type_Boolean);
       localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor;
-    } while (localObject == null);
-    ((FramesProcessor)localObject).a(paramMotionEvent);
+      if (localObject != null) {
+        ((FramesProcessor)localObject).a(paramMotionEvent);
+      }
+    }
   }
   
   private final void b()
@@ -138,25 +136,26 @@ public final class VideoFrameSelectBar
   public void a(float paramFloat1, float paramFloat2)
   {
     Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
-    if (localObject != null) {}
-    for (float f1 = ((RangeProcessor)localObject).a();; f1 = 0.0F)
-    {
-      this.f = a((int)(paramFloat1 - f1));
-      a(paramFloat2 - paramFloat1);
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor;
-      if (localObject != null) {
-        ((FramesProcessor)localObject).a((int)paramFloat1);
-      }
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor;
-      if (localObject != null) {
-        ((FramesProcessor)localObject).b((int)paramFloat2);
-      }
-      invalidate();
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoFrameSelectBar$OnFramesClipChangeListener;
-      if (localObject != null) {
-        ((VideoFrameSelectBar.OnFramesClipChangeListener)localObject).a((int)a(), (int)b());
-      }
-      return;
+    float f1;
+    if (localObject != null) {
+      f1 = ((RangeProcessor)localObject).a();
+    } else {
+      f1 = 0.0F;
+    }
+    this.f = a((int)(paramFloat1 - f1));
+    a(paramFloat2 - paramFloat1);
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor;
+    if (localObject != null) {
+      ((FramesProcessor)localObject).a((int)paramFloat1);
+    }
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor;
+    if (localObject != null) {
+      ((FramesProcessor)localObject).b((int)paramFloat2);
+    }
+    invalidate();
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoFrameSelectBar$OnFramesClipChangeListener;
+    if (localObject != null) {
+      ((VideoFrameSelectBar.OnFramesClipChangeListener)localObject).a((int)a(), (int)b());
     }
   }
   
@@ -181,26 +180,27 @@ public final class VideoFrameSelectBar
   {
     Intrinsics.checkParameterIsNotNull(paramString, "videoPath");
     this.jdField_d_of_type_Int = (paramInt / 12);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor = new RangeProcessor((FrameParent)this, this.jdField_d_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Int);
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
-    if (localObject != null) {
-      ((RangeProcessor)localObject).a((RangeProcessor.OnRangeChangeListener)this);
+    FrameParent localFrameParent = (FrameParent)this;
+    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor = new RangeProcessor(localFrameParent, this.jdField_d_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Int);
+    RangeProcessor localRangeProcessor = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
+    if (localRangeProcessor != null) {
+      localRangeProcessor.a((RangeProcessor.OnRangeChangeListener)this);
     }
-    localObject = (FrameParent)this;
     float f2 = this.jdField_d_of_type_Float;
     float f3 = this.jdField_c_of_type_Float;
-    RangeProcessor localRangeProcessor = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
-    if (localRangeProcessor != null) {}
-    for (float f1 = localRangeProcessor.a();; f1 = 0.0F)
-    {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor = new FramesProcessor((FrameParent)localObject, paramString, paramInt, f2, f3, f1, this.jdField_d_of_type_Int);
-      paramString = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor;
-      if (paramString != null) {
-        paramString.a((FramesProcessor.OnMoveListener)this);
-      }
-      this.jdField_d_of_type_Boolean = true;
-      return;
+    localRangeProcessor = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
+    float f1;
+    if (localRangeProcessor != null) {
+      f1 = localRangeProcessor.a();
+    } else {
+      f1 = 0.0F;
     }
+    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor = new FramesProcessor(localFrameParent, paramString, paramInt, f2, f3, f1, this.jdField_d_of_type_Int);
+    paramString = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor;
+    if (paramString != null) {
+      paramString.a((FramesProcessor.OnMoveListener)this);
+    }
+    this.jdField_d_of_type_Boolean = true;
   }
   
   public final boolean a()
@@ -215,106 +215,106 @@ public final class VideoFrameSelectBar
   
   public final boolean b()
   {
+    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor;
     boolean bool3 = false;
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor;
     boolean bool1;
-    if (localObject != null)
-    {
-      bool1 = ((FramesProcessor)localObject).a();
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
-      if (localObject == null) {
-        break label55;
-      }
-    }
-    label55:
-    for (boolean bool2 = ((RangeProcessor)localObject).a();; bool2 = false)
-    {
-      if (!bool1)
-      {
-        bool1 = bool3;
-        if (!bool2) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public void onDraw(@NotNull Canvas paramCanvas)
-  {
-    Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
-    if ((this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor == null) || (this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor == null)) {
-      return;
-    }
-    paramCanvas.translate(0.0F, this.jdField_b_of_type_Int + this.jdField_c_of_type_Int);
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor;
     if (localObject != null) {
-      ((FramesProcessor)localObject).a(paramCanvas);
+      bool1 = ((FramesProcessor)localObject).a();
+    } else {
+      bool1 = false;
     }
     localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
+    boolean bool2;
     if (localObject != null) {
-      ((RangeProcessor)localObject).a(paramCanvas);
+      bool2 = ((RangeProcessor)localObject).a();
+    } else {
+      bool2 = false;
     }
-    paramCanvas.translate(0.0F, -this.jdField_b_of_type_Int - this.jdField_c_of_type_Int);
+    if (!bool1)
+    {
+      bool1 = bool3;
+      if (!bool2) {}
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onDraw(@NotNull Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor == null) || (this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor == null))
+    Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
+    if (this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor != null)
     {
-      setMeasuredDimension(0, 0);
+      if (this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor == null) {
+        return;
+      }
+      paramCanvas.translate(0.0F, this.jdField_b_of_type_Int + this.jdField_c_of_type_Int);
+      Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor;
+      if (localObject != null) {
+        ((FramesProcessor)localObject).a(paramCanvas);
+      }
+      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
+      if (localObject != null) {
+        ((RangeProcessor)localObject).a(paramCanvas);
+      }
+      paramCanvas.translate(0.0F, -this.jdField_b_of_type_Int - this.jdField_c_of_type_Int);
+    }
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor != null) && (this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor != null))
+    {
+      paramInt1 = View.MeasureSpec.getSize(paramInt1);
+      RangeProcessor localRangeProcessor = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
+      float f1;
+      if (localRangeProcessor != null) {
+        f1 = localRangeProcessor.b();
+      } else {
+        f1 = 0.0F;
+      }
+      setMeasuredDimension(paramInt1, (int)(this.jdField_c_of_type_Int + f1 + this.jdField_b_of_type_Int));
       return;
     }
-    paramInt1 = View.MeasureSpec.getSize(paramInt1);
-    RangeProcessor localRangeProcessor = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
-    if (localRangeProcessor != null) {}
-    for (float f1 = localRangeProcessor.b();; f1 = 0.0F)
-    {
-      setMeasuredDimension(paramInt1, (int)(f1 + this.jdField_c_of_type_Int + this.jdField_b_of_type_Int));
-      return;
-    }
+    setMeasuredDimension(0, 0);
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   public boolean onTouchEvent(@NotNull MotionEvent paramMotionEvent)
   {
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
-    if (!isEnabled()) {}
-    for (;;)
-    {
+    boolean bool1 = isEnabled();
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      if ((this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor != null) && (this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor != null))
+    }
+    bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor != null)
+    {
+      if (this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFramesProcessor == null) {
+        return false;
+      }
+      int i = paramMotionEvent.getAction() & 0xFF;
+      if (i != 0)
       {
-        switch (paramMotionEvent.getAction() & 0xFF)
+        if (i != 1)
         {
-        }
-        while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Boolean))
-        {
-          return true;
-          this.jdField_a_of_type_Float = paramMotionEvent.getX();
-          this.jdField_b_of_type_Float = paramMotionEvent.getY();
-          RangeProcessor localRangeProcessor = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
-          if (localRangeProcessor != null) {}
-          for (boolean bool = localRangeProcessor.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float - this.jdField_c_of_type_Int);; bool = false)
+          if (i != 2)
           {
-            this.jdField_a_of_type_Boolean = bool;
-            this.jdField_b_of_type_Boolean = false;
-            if ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Boolean)) {
-              break;
+            if (i == 3)
+            {
+              if (this.jdField_c_of_type_Boolean)
+              {
+                d();
+                a(paramMotionEvent);
+                setPressed(false);
+              }
+              invalidate();
             }
-            return super.onTouchEvent(paramMotionEvent);
           }
-          setPressed(true);
-          invalidate();
-          c();
-          a(paramMotionEvent);
-          b();
-          continue;
-          if (this.jdField_c_of_type_Boolean)
+          else if (this.jdField_c_of_type_Boolean)
           {
             a(paramMotionEvent);
           }
@@ -325,32 +325,57 @@ public final class VideoFrameSelectBar
             c();
             a(paramMotionEvent);
             b();
-            continue;
-            if (this.jdField_c_of_type_Boolean)
-            {
-              a(paramMotionEvent);
-              d();
-              setPressed(false);
-            }
-            for (;;)
-            {
-              invalidate();
-              break;
-              c();
-              a(paramMotionEvent);
-              d();
-            }
-            if (this.jdField_c_of_type_Boolean)
-            {
-              d();
-              a(paramMotionEvent);
-              setPressed(false);
-            }
-            invalidate();
           }
         }
+        else
+        {
+          if (this.jdField_c_of_type_Boolean)
+          {
+            a(paramMotionEvent);
+            d();
+            setPressed(false);
+          }
+          else
+          {
+            c();
+            a(paramMotionEvent);
+            d();
+          }
+          invalidate();
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Float = paramMotionEvent.getX();
+        this.jdField_b_of_type_Float = paramMotionEvent.getY();
+        RangeProcessor localRangeProcessor = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
+        if (localRangeProcessor != null) {
+          bool1 = localRangeProcessor.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float - this.jdField_c_of_type_Int);
+        } else {
+          bool1 = false;
+        }
+        this.jdField_a_of_type_Boolean = bool1;
+        this.jdField_b_of_type_Boolean = false;
+        if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
+          return super.onTouchEvent(paramMotionEvent);
+        }
+        setPressed(true);
+        invalidate();
+        c();
+        a(paramMotionEvent);
+        b();
+      }
+      if (!this.jdField_b_of_type_Boolean)
+      {
+        bool1 = bool2;
+        if (!this.jdField_a_of_type_Boolean) {}
+      }
+      else
+      {
+        bool1 = true;
       }
     }
+    return bool1;
   }
   
   public void postInvalidate()
@@ -375,17 +400,18 @@ public final class VideoFrameSelectBar
       localRangeProcessor.a(paramInt1, paramInt2);
     }
     localRangeProcessor = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor;
-    if (localRangeProcessor != null) {}
-    for (float f1 = localRangeProcessor.c();; f1 = 0.0F)
-    {
-      a(f1);
-      return;
+    float f1;
+    if (localRangeProcessor != null) {
+      f1 = localRangeProcessor.c();
+    } else {
+      f1 = 0.0F;
     }
+    a(f1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoFrameSelectBar
  * JD-Core Version:    0.7.0.1
  */

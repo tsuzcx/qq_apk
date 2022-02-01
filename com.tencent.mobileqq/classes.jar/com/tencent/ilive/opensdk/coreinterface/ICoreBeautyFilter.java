@@ -11,6 +11,8 @@ public abstract interface ICoreBeautyFilter
   
   public abstract VFrame drawFrame(GL10 paramGL10);
   
+  public abstract IGLRenderThread getGlThread();
+  
   public abstract SurfaceTexture getSurfaceTexture();
   
   public abstract void onCreate();
@@ -29,13 +31,17 @@ public abstract interface ICoreBeautyFilter
   
   public abstract void setFilterValue(String paramString, float paramFloat);
   
+  public abstract void setGLThread(IGLRenderThread paramIGLRenderThread);
+  
   public abstract boolean updateFrame(VFrame paramVFrame);
+  
+  public abstract void updateMaterial(String paramString);
   
   public abstract void updateVideoSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.opensdk.coreinterface.ICoreBeautyFilter
  * JD-Core Version:    0.7.0.1
  */

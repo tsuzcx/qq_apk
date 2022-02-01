@@ -1,39 +1,46 @@
 package com.tencent.mobileqq.location.net;
 
-import android.app.Activity;
-import com.tencent.mobileqq.location.data.LocationRoom.RoomKey;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
 
 class LocationHandler$3
   implements Runnable
 {
-  LocationHandler$3(LocationHandler paramLocationHandler, SoftReference paramSoftReference) {}
+  LocationHandler$3(LocationHandler paramLocationHandler) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationHandler", 2, "[LocationManager] startLocationUpdate: invoked. call over time runnable");
-    }
-    if (LocationHandler.a(this.this$0) != null)
+    if (LocationHandler.a(this.this$0))
     {
-      this.this$0.a(LocationHandler.a(this.this$0).a(), LocationHandler.a(this.this$0).a(), LocationHandler.a(this.this$0), 4);
-      this.this$0.a(LocationHandler.a(this.this$0), true);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "run: invoked. ", " bgHandlerForDelayExitRoomStopped: ", Boolean.valueOf(LocationHandler.a(this.this$0)) });
+      }
+      return;
     }
-    QQToast.a(BaseApplication.getContext(), "位置获取失败，请稍后再试", 0).a();
-    Activity localActivity = (Activity)this.a.get();
-    if ((localActivity != null) && (!localActivity.isFinishing()))
+    LocationShareLocationManager.a().a(LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey, true);
+    LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomQueryHandler.a();
+    QQToast.a(BaseApplication.getContext(), BaseApplication.getContext().getString(2131693118), 0).a();
+    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
+    if (localQBaseActivity != null)
     {
-      this.a.clear();
-      localActivity.finish();
+      String str = localQBaseActivity.getIntent().getStringExtra("FRAGMENT_KEY");
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "onAppBackground::run: invoked[仅用来关闭地图页]. ", " fragmentKey: ", str });
+      }
+      if ("LocationShareFragment".equals(str)) {
+        localQBaseActivity.finish();
+      }
     }
+    ReportController.b(null, "CliOper", "", "", "0X800A8BB", "0X800A8BB", 0, 0, "", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationHandler.3
  * JD-Core Version:    0.7.0.1
  */

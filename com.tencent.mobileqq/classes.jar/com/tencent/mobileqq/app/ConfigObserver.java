@@ -45,64 +45,79 @@ public class ConfigObserver
   {
     switch (paramInt)
     {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              a(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
-              return;
-              a(paramBoolean, (GetResourceRespInfo)paramObject);
-              return;
-              a(paramBoolean, (String)paramObject);
-              return;
-              a(paramBoolean, (UpgradeDetailWrapper)paramObject);
-              return;
-              a(paramBoolean, (AppShareID)paramObject);
-              return;
-              b(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
-              return;
-              a(paramBoolean, ((Integer)paramObject).intValue());
-              return;
-              if ((paramObject != null) && ((paramObject instanceof OperateVoipTipsInfo)))
-              {
-                paramObject = (OperateVoipTipsInfo)paramObject;
-                a(paramObject.uin, paramObject.uinType, paramObject.taskList);
-              }
-              b(paramBoolean);
-              return;
-              paramObject = (Pair)paramObject;
-              a(paramBoolean, (String)paramObject.first, (String)paramObject.second);
-              return;
-              b(paramBoolean, ((Boolean)paramObject).booleanValue());
-              return;
-            } while (!(paramObject instanceof Object[]));
-            paramObject = (Object[])paramObject;
-            a(((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
-            return;
-          } while (!(paramObject instanceof Object[]));
-          paramObject = (Object[])paramObject;
-          a((Boolean)paramObject[0], (Boolean)paramObject[1], (String)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
-          return;
-        } while (!(paramObject instanceof Object[]));
-        paramObject = (Object[])paramObject;
-      } while (paramObject.length <= 4);
+    default: 
+      return;
+    case 15: 
+      if (!(paramObject instanceof Object[])) {
+        return;
+      }
+      a(((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
+      return;
+    case 14: 
+      if (!(paramObject instanceof Object[])) {
+        return;
+      }
+      paramObject = (Object[])paramObject;
+      if (paramObject.length <= 4) {
+        return;
+      }
       b((Boolean)paramObject[0], (Boolean)paramObject[1], (String)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
       return;
-    } while (!(paramObject instanceof Object[]));
-    a(((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
+    case 13: 
+      if (!(paramObject instanceof Object[])) {
+        return;
+      }
+      paramObject = (Object[])paramObject;
+      a((Boolean)paramObject[0], (Boolean)paramObject[1], (String)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
+      return;
+    case 12: 
+      if (!(paramObject instanceof Object[])) {
+        return;
+      }
+      paramObject = (Object[])paramObject;
+      a(((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
+      return;
+    case 11: 
+      b(paramBoolean, ((Boolean)paramObject).booleanValue());
+      return;
+    case 10: 
+      paramObject = (Pair)paramObject;
+      a(paramBoolean, (String)paramObject.first, (String)paramObject.second);
+      return;
+    case 8: 
+      if ((paramObject != null) && ((paramObject instanceof OperateVoipTipsInfo)))
+      {
+        paramObject = (OperateVoipTipsInfo)paramObject;
+        a(paramObject.uin, paramObject.uinType, paramObject.taskList);
+      }
+    case 9: 
+      b(paramBoolean);
+      return;
+    case 7: 
+      a(paramBoolean, ((Integer)paramObject).intValue());
+      return;
+    case 6: 
+      b(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
+      return;
+    case 5: 
+      a(paramBoolean, (AppShareID)paramObject);
+      return;
+    case 4: 
+      a(paramBoolean, (UpgradeDetailWrapper)paramObject);
+      return;
+    case 3: 
+      a(paramBoolean, (String)paramObject);
+      return;
+    case 2: 
+      a(paramBoolean, (GetResourceRespInfo)paramObject);
+      return;
+    }
+    a(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigObserver
  * JD-Core Version:    0.7.0.1
  */

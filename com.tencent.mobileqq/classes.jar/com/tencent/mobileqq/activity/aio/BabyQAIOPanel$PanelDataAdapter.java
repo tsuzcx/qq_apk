@@ -39,58 +39,53 @@ class BabyQAIOPanel$PanelDataAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView;
-    Object localObject;
+    BabyQAIOPanel.GridItemViewHolder localGridItemViewHolder;
     if (paramView == null)
     {
-      paramView = new BabyQAIOPanel.GridItemViewHolder();
-      localView = LayoutInflater.from(BabyQAIOPanel.a(this.a)).inflate(2131558626, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369361));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368630));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379106));
-      paramView.b = ((ImageView)localView.findViewById(2131372220));
-      localView.setTag(paramView);
-      localObject = (RelativeLayout.LayoutParams)paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      if (paramInt % 2 == 0) {
-        break label271;
-      }
+      localGridItemViewHolder = new BabyQAIOPanel.GridItemViewHolder();
+      paramView = LayoutInflater.from(BabyQAIOPanel.a(this.a)).inflate(2131558526, paramViewGroup, false);
+      localGridItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369090));
+      localGridItemViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368367));
+      localGridItemViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378476));
+      localGridItemViewHolder.b = ((ImageView)paramView.findViewById(2131371804));
+      paramView.setTag(localGridItemViewHolder);
+    }
+    else
+    {
+      localGridItemViewHolder = (BabyQAIOPanel.GridItemViewHolder)paramView.getTag();
+    }
+    Object localObject = (RelativeLayout.LayoutParams)localGridItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    if (paramInt % 2 != 0)
+    {
       ((RelativeLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(this.a.getContext(), 8.0F);
       ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(this.a.getContext(), 12.0F);
-      label145:
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = a(paramInt);
-      paramView.jdField_a_of_type_Int = ((BabyQAIOPanel.GridItemData)localObject).jdField_a_of_type_Int;
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((BabyQAIOPanel.GridItemData)localObject).jdField_a_of_type_JavaLangString);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((BabyQAIOPanel.GridItemData)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      if (!((BabyQAIOPanel.GridItemData)localObject).jdField_a_of_type_Boolean) {
-        break label308;
-      }
-      paramView.b.setVisibility(0);
     }
-    for (;;)
+    else
     {
-      localView.setOnClickListener(this.a);
-      if (AppSetting.d) {
-        localView.setContentDescription(((BabyQAIOPanel.GridItemData)localObject).jdField_a_of_type_JavaLangString);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (BabyQAIOPanel.GridItemViewHolder)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label271:
       ((RelativeLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(this.a.getContext(), 12.0F);
       ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(this.a.getContext(), 8.0F);
-      break label145;
-      label308:
-      paramView.b.setVisibility(8);
     }
+    localGridItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = a(paramInt);
+    localGridItemViewHolder.jdField_a_of_type_Int = ((BabyQAIOPanel.GridItemData)localObject).jdField_a_of_type_Int;
+    localGridItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((BabyQAIOPanel.GridItemData)localObject).jdField_a_of_type_JavaLangString);
+    localGridItemViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((BabyQAIOPanel.GridItemData)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (((BabyQAIOPanel.GridItemData)localObject).jdField_a_of_type_Boolean) {
+      localGridItemViewHolder.b.setVisibility(0);
+    } else {
+      localGridItemViewHolder.b.setVisibility(8);
+    }
+    paramView.setOnClickListener(this.a);
+    if (AppSetting.d) {
+      paramView.setContentDescription(((BabyQAIOPanel.GridItemData)localObject).jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BabyQAIOPanel.PanelDataAdapter
  * JD-Core Version:    0.7.0.1
  */

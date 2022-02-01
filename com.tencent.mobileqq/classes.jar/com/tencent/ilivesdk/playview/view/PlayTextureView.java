@@ -96,17 +96,21 @@ public class PlayTextureView
   {
     if (this.mIsPortrait)
     {
-      if (this.mHalfVideoWidth > this.mVideoHeight)
+      i = this.mHalfVideoWidth;
+      j = this.mVideoHeight;
+      if (i > j)
       {
-        this.mCropValue = calCrop(this.mVideoHeight, this.mHalfVideoWidth, this.mGLViewWidth, this.mGLViewHeight);
+        this.mCropValue = calCrop(j, i, this.mGLViewWidth, this.mGLViewHeight);
         return;
       }
-      this.mCropValue = calCrop(this.mHalfVideoWidth, this.mVideoHeight, this.mGLViewWidth, this.mGLViewHeight);
+      this.mCropValue = calCrop(i, j, this.mGLViewWidth, this.mGLViewHeight);
       return;
     }
-    if (this.mHalfVideoWidth * 9 >= this.mVideoHeight * 16)
+    int i = this.mHalfVideoWidth;
+    int j = this.mVideoHeight;
+    if (i * 9 >= j * 16)
     {
-      this.mCropValue = calCrop(this.mHalfVideoWidth, this.mVideoHeight, this.mGLViewWidth, this.mGLViewHeight);
+      this.mCropValue = calCrop(i, j, this.mGLViewWidth, this.mGLViewHeight);
       return;
     }
     this.mCropValue = 0.0F;
@@ -114,74 +118,117 @@ public class PlayTextureView
   
   private float calCrop(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt2 != 0) && (paramInt3 != 0) && (paramInt1 != 0) && (paramInt4 != 0))
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (paramInt2 != 0)
     {
-      if (paramInt2 * paramInt3 == paramInt1 * paramInt4) {
-        LogUtils.i("Render|PlayTextureView", " crop 0");
+      f1 = f2;
+      if (paramInt3 != 0)
+      {
+        f1 = f2;
+        if (paramInt1 != 0)
+        {
+          f1 = f2;
+          if (paramInt4 != 0)
+          {
+            int i = paramInt2 * paramInt3;
+            int j = paramInt1 * paramInt4;
+            if (i == j)
+            {
+              LogUtils.i("Render|PlayTextureView", " crop 0");
+              return 0.0F;
+            }
+            if (i > j)
+            {
+              f1 = 0.5F - paramInt4 * paramInt1 * 0.5F / paramInt3 / paramInt2;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(" crop height = ");
+              localStringBuilder.append(f1);
+              LogUtils.i("Render|PlayTextureView", localStringBuilder.toString());
+              return f1;
+            }
+            f1 = paramInt3 * paramInt2 * 0.5F / paramInt4 / paramInt1 - 0.5F;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" crop width = ");
+            localStringBuilder.append(f1);
+            LogUtils.i("Render|PlayTextureView", localStringBuilder.toString());
+          }
+        }
       }
     }
-    else {
-      return 0.0F;
-    }
-    if (paramInt2 * paramInt3 > paramInt1 * paramInt4)
-    {
-      f = 0.5F - paramInt4 * paramInt1 * 0.5F / paramInt3 / paramInt2;
-      LogUtils.i("Render|PlayTextureView", " crop height = " + f);
-      return f;
-    }
-    float f = paramInt3 * paramInt2 * 0.5F / paramInt4 / paramInt1 - 0.5F;
-    LogUtils.i("Render|PlayTextureView", " crop width = " + f);
-    return f;
+    return f1;
   }
   
   private void callbackError(int paramInt)
   {
-    if ((this.mPlayListener != null) && (this.mViewHandler != null)) {
-      this.mViewHandler.post(new PlayTextureView.4(this, paramInt));
+    if (this.mPlayListener != null)
+    {
+      Handler localHandler = this.mViewHandler;
+      if (localHandler != null) {
+        localHandler.post(new PlayTextureView.4(this, paramInt));
+      }
     }
   }
   
   private void configViewportOnDraw()
   {
-    if (this.mIsPortrait) {
-      if (this.mHalfVideoWidth < this.mVideoHeight) {
-        if (this.mCurRender != null)
+    int j;
+    BaseRender localBaseRender;
+    int i;
+    if (this.mIsPortrait)
+    {
+      j = this.mHalfVideoWidth;
+      int k = this.mVideoHeight;
+      if (j < k)
+      {
+        localBaseRender = this.mCurRender;
+        if (localBaseRender != null)
         {
-          this.mCurRender.setCropValue(this.mCropValue);
+          localBaseRender.setCropValue(this.mCropValue);
           GLES20.glViewport(0, 0, this.mGLViewWidth, this.mGLViewHeight);
         }
       }
-    }
-    int i;
-    int j;
-    do
-    {
-      do
+      else
       {
-        do
-        {
-          return;
-          i = this.mGLViewWidth * 9 / 16;
-          if (this.mHalfVideoWidth != 0) {
-            i = this.mGLViewWidth * this.mVideoHeight / this.mHalfVideoWidth;
-          }
-          j = (this.mGLViewHeight - i) * 2 / 3;
-        } while (this.mCurRender == null);
-        this.mCurRender.setCropValue(this.mCropValue);
-        GLES20.glViewport(0, j, this.mGLViewWidth, i);
-        return;
-        if (this.mHalfVideoWidth * 9 < this.mVideoHeight * 16) {
-          break;
+        int m = this.mGLViewWidth;
+        i = m * 9 / 16;
+        if (j != 0) {
+          i = m * k / j;
         }
-      } while (this.mCurRender == null);
-      this.mCurRender.setCropValue(this.mCropValue);
-      GLES20.glViewport(0, 0, this.mGLViewWidth, this.mGLViewHeight);
-      return;
-      i = this.mHalfVideoWidth * this.mGLViewHeight / this.mVideoHeight;
-      j = (this.mGLViewWidth - i) / 2;
-    } while (this.mCurRender == null);
-    this.mCurRender.setCropValue(this.mCropValue);
-    GLES20.glViewport(j, 0, i, this.mGLViewHeight);
+        j = (this.mGLViewHeight - i) * 2 / 3;
+        localBaseRender = this.mCurRender;
+        if (localBaseRender != null)
+        {
+          localBaseRender.setCropValue(this.mCropValue);
+          GLES20.glViewport(0, j, this.mGLViewWidth, i);
+        }
+      }
+    }
+    else
+    {
+      i = this.mHalfVideoWidth;
+      j = this.mVideoHeight;
+      if (i * 9 >= j * 16)
+      {
+        localBaseRender = this.mCurRender;
+        if (localBaseRender != null)
+        {
+          localBaseRender.setCropValue(this.mCropValue);
+          GLES20.glViewport(0, 0, this.mGLViewWidth, this.mGLViewHeight);
+        }
+      }
+      else
+      {
+        i = i * this.mGLViewHeight / j;
+        j = (this.mGLViewWidth - i) / 2;
+        localBaseRender = this.mCurRender;
+        if (localBaseRender != null)
+        {
+          localBaseRender.setCropValue(this.mCropValue);
+          GLES20.glViewport(j, 0, i, this.mGLViewHeight);
+        }
+      }
+    }
   }
   
   private boolean fileIsExists(String paramString)
@@ -190,10 +237,16 @@ public class PlayTextureView
     {
       if (new File(paramString).exists())
       {
-        LogUtils.i("Render|PlayTextureView", paramString + "--------->file have exist");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("--------->file have exist");
+        LogUtils.i("Render|PlayTextureView", localStringBuilder.toString());
         return true;
       }
-      LogUtils.i("Render|PlayTextureView", paramString + "---------->file not exists");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("---------->file not exists");
+      LogUtils.i("Render|PlayTextureView", localStringBuilder.toString());
       return false;
     }
     catch (Exception paramString)
@@ -208,191 +261,199 @@ public class PlayTextureView
   private String getAssetsFiles(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: new 259	java/lang/StringBuilder
-    //   6: dup
-    //   7: invokespecial 260	java/lang/StringBuilder:<init>	()V
-    //   10: aload_0
-    //   11: getfield 163	com/tencent/ilivesdk/playview/view/PlayTextureView:mContext	Landroid/content/Context;
-    //   14: invokevirtual 332	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   17: invokevirtual 335	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   20: ldc_w 337
-    //   23: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: aload_1
-    //   27: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 273	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: astore 6
-    //   35: aload_0
-    //   36: aload 6
-    //   38: invokespecial 339	com/tencent/ilivesdk/playview/view/PlayTextureView:fileIsExists	(Ljava/lang/String;)Z
-    //   41: ifne +107 -> 148
-    //   44: aload_0
-    //   45: getfield 163	com/tencent/ilivesdk/playview/view/PlayTextureView:mContext	Landroid/content/Context;
-    //   48: invokevirtual 343	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   51: astore_3
-    //   52: aload_3
-    //   53: aload_1
-    //   54: invokevirtual 349	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   57: astore_3
-    //   58: aload_3
-    //   59: invokevirtual 355	java/io/InputStream:available	()I
-    //   62: istore_2
-    //   63: ldc 12
-    //   65: new 259	java/lang/StringBuilder
-    //   68: dup
-    //   69: invokespecial 260	java/lang/StringBuilder:<init>	()V
-    //   72: ldc_w 357
-    //   75: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: iload_2
-    //   79: invokevirtual 360	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   82: invokevirtual 273	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   85: invokestatic 256	com/tencent/ilivesdk/utils/LogUtils:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   88: iload_2
-    //   89: newarray byte
-    //   91: astore 8
-    //   93: aload_3
-    //   94: aload 8
-    //   96: invokevirtual 364	java/io/InputStream:read	([B)I
-    //   99: pop
-    //   100: aload_0
-    //   101: getfield 163	com/tencent/ilivesdk/playview/view/PlayTextureView:mContext	Landroid/content/Context;
-    //   104: aload_1
-    //   105: iconst_0
-    //   106: invokevirtual 368	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
-    //   109: astore_1
-    //   110: aload_1
-    //   111: astore 5
-    //   113: aload_3
-    //   114: astore 4
-    //   116: aload_1
-    //   117: aload 8
-    //   119: invokevirtual 374	java/io/FileOutputStream:write	([B)V
+    //   0: new 259	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 260	java/lang/StringBuilder:<init>	()V
+    //   7: astore_3
+    //   8: aload_3
+    //   9: aload_0
+    //   10: getfield 163	com/tencent/ilivesdk/playview/view/PlayTextureView:mContext	Landroid/content/Context;
+    //   13: invokevirtual 332	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   16: invokevirtual 335	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   19: pop
+    //   20: aload_3
+    //   21: ldc_w 337
+    //   24: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: pop
+    //   28: aload_3
+    //   29: aload_1
+    //   30: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: pop
+    //   34: aload_3
+    //   35: invokevirtual 273	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: astore 6
+    //   40: aload_0
+    //   41: aload 6
+    //   43: invokespecial 339	com/tencent/ilivesdk/playview/view/PlayTextureView:fileIsExists	(Ljava/lang/String;)Z
+    //   46: ifne +204 -> 250
+    //   49: aload_0
+    //   50: getfield 163	com/tencent/ilivesdk/playview/view/PlayTextureView:mContext	Landroid/content/Context;
+    //   53: invokevirtual 343	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   56: astore_3
+    //   57: aconst_null
+    //   58: astore 5
+    //   60: aload_3
+    //   61: aload_1
+    //   62: invokevirtual 349	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   65: astore_3
+    //   66: aload_3
+    //   67: invokevirtual 355	java/io/InputStream:available	()I
+    //   70: istore_2
+    //   71: new 259	java/lang/StringBuilder
+    //   74: dup
+    //   75: invokespecial 260	java/lang/StringBuilder:<init>	()V
+    //   78: astore 4
+    //   80: aload 4
+    //   82: ldc_w 357
+    //   85: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: pop
+    //   89: aload 4
+    //   91: iload_2
+    //   92: invokevirtual 360	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   95: pop
+    //   96: ldc 12
+    //   98: aload 4
+    //   100: invokevirtual 273	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   103: invokestatic 256	com/tencent/ilivesdk/utils/LogUtils:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   106: iload_2
+    //   107: newarray byte
+    //   109: astore 7
+    //   111: aload_3
+    //   112: aload 7
+    //   114: invokevirtual 364	java/io/InputStream:read	([B)I
+    //   117: pop
+    //   118: aload_0
+    //   119: getfield 163	com/tencent/ilivesdk/playview/view/PlayTextureView:mContext	Landroid/content/Context;
     //   122: aload_1
-    //   123: astore 5
-    //   125: aload_3
-    //   126: astore 4
-    //   128: aload_1
-    //   129: invokevirtual 377	java/io/FileOutputStream:flush	()V
-    //   132: aload_3
-    //   133: ifnull +7 -> 140
-    //   136: aload_3
-    //   137: invokevirtual 380	java/io/InputStream:close	()V
-    //   140: aload_1
-    //   141: ifnull +7 -> 148
-    //   144: aload_1
-    //   145: invokevirtual 381	java/io/FileOutputStream:close	()V
-    //   148: aload 6
-    //   150: astore_3
-    //   151: aload_3
-    //   152: areturn
-    //   153: astore 6
-    //   155: aconst_null
-    //   156: astore_1
-    //   157: aconst_null
-    //   158: astore_3
-    //   159: aload_1
-    //   160: astore 5
-    //   162: aload_3
-    //   163: astore 4
-    //   165: aload 6
-    //   167: invokevirtual 382	java/io/IOException:printStackTrace	()V
-    //   170: aload_3
-    //   171: ifnull +7 -> 178
-    //   174: aload_3
-    //   175: invokevirtual 380	java/io/InputStream:close	()V
-    //   178: aload 7
-    //   180: astore_3
-    //   181: aload_1
-    //   182: ifnull -31 -> 151
-    //   185: aload_1
-    //   186: invokevirtual 381	java/io/FileOutputStream:close	()V
-    //   189: aconst_null
-    //   190: areturn
-    //   191: astore_1
-    //   192: aconst_null
-    //   193: areturn
+    //   123: iconst_0
+    //   124: invokevirtual 368	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   127: astore_1
+    //   128: aload_3
+    //   129: astore 4
+    //   131: aload_1
+    //   132: astore 5
+    //   134: aload_1
+    //   135: aload 7
+    //   137: invokevirtual 374	java/io/FileOutputStream:write	([B)V
+    //   140: aload_3
+    //   141: astore 4
+    //   143: aload_1
+    //   144: astore 5
+    //   146: aload_1
+    //   147: invokevirtual 377	java/io/FileOutputStream:flush	()V
+    //   150: aload_3
+    //   151: ifnull +7 -> 158
+    //   154: aload_3
+    //   155: invokevirtual 380	java/io/InputStream:close	()V
+    //   158: aload_1
+    //   159: ifnull +91 -> 250
+    //   162: aload_1
+    //   163: invokevirtual 381	java/io/FileOutputStream:close	()V
+    //   166: aload 6
+    //   168: areturn
+    //   169: astore 6
+    //   171: goto +26 -> 197
+    //   174: astore_1
+    //   175: goto +55 -> 230
+    //   178: astore 6
+    //   180: aconst_null
+    //   181: astore_1
+    //   182: goto +15 -> 197
+    //   185: astore_1
+    //   186: aconst_null
+    //   187: astore_3
+    //   188: goto +42 -> 230
+    //   191: astore 6
+    //   193: aconst_null
     //   194: astore_1
-    //   195: aconst_null
-    //   196: astore 5
-    //   198: aconst_null
-    //   199: astore_3
-    //   200: aload_3
-    //   201: ifnull +7 -> 208
-    //   204: aload_3
-    //   205: invokevirtual 380	java/io/InputStream:close	()V
-    //   208: aload 5
-    //   210: ifnull +8 -> 218
-    //   213: aload 5
-    //   215: invokevirtual 381	java/io/FileOutputStream:close	()V
-    //   218: aload_1
-    //   219: athrow
-    //   220: astore_3
-    //   221: goto -81 -> 140
-    //   224: astore_1
-    //   225: goto -77 -> 148
-    //   228: astore_3
-    //   229: goto -51 -> 178
-    //   232: astore_3
-    //   233: goto -25 -> 208
-    //   236: astore_3
-    //   237: goto -19 -> 218
-    //   240: astore_1
-    //   241: aconst_null
-    //   242: astore 5
-    //   244: goto -44 -> 200
-    //   247: astore_1
-    //   248: aload 4
-    //   250: astore_3
-    //   251: goto -51 -> 200
-    //   254: astore 6
-    //   256: aconst_null
+    //   195: aload_1
+    //   196: astore_3
+    //   197: aload_3
+    //   198: astore 4
+    //   200: aload_1
+    //   201: astore 5
+    //   203: aload 6
+    //   205: invokevirtual 382	java/io/IOException:printStackTrace	()V
+    //   208: aload_3
+    //   209: ifnull +7 -> 216
+    //   212: aload_3
+    //   213: invokevirtual 380	java/io/InputStream:close	()V
+    //   216: aload_1
+    //   217: ifnull +7 -> 224
+    //   220: aload_1
+    //   221: invokevirtual 381	java/io/FileOutputStream:close	()V
+    //   224: aconst_null
+    //   225: areturn
+    //   226: astore_1
+    //   227: aload 4
+    //   229: astore_3
+    //   230: aload_3
+    //   231: ifnull +7 -> 238
+    //   234: aload_3
+    //   235: invokevirtual 380	java/io/InputStream:close	()V
+    //   238: aload 5
+    //   240: ifnull +8 -> 248
+    //   243: aload 5
+    //   245: invokevirtual 381	java/io/FileOutputStream:close	()V
+    //   248: aload_1
+    //   249: athrow
+    //   250: aload 6
+    //   252: areturn
+    //   253: astore_3
+    //   254: goto -96 -> 158
     //   257: astore_1
-    //   258: goto -99 -> 159
-    //   261: astore 6
-    //   263: goto -104 -> 159
+    //   258: aload 6
+    //   260: areturn
+    //   261: astore_3
+    //   262: goto -46 -> 216
+    //   265: astore_1
+    //   266: aconst_null
+    //   267: areturn
+    //   268: astore_3
+    //   269: goto -31 -> 238
+    //   272: astore_3
+    //   273: goto -25 -> 248
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	266	0	this	PlayTextureView
-    //   0	266	1	paramString	String
-    //   62	27	2	i	int
-    //   51	154	3	localObject1	Object
-    //   220	1	3	localIOException1	java.io.IOException
-    //   228	1	3	localIOException2	java.io.IOException
-    //   232	1	3	localIOException3	java.io.IOException
-    //   236	1	3	localIOException4	java.io.IOException
-    //   250	1	3	localObject2	Object
-    //   114	135	4	localObject3	Object
-    //   111	132	5	str1	String
-    //   33	116	6	str2	String
-    //   153	13	6	localIOException5	java.io.IOException
-    //   254	1	6	localIOException6	java.io.IOException
-    //   261	1	6	localIOException7	java.io.IOException
-    //   1	178	7	localObject4	Object
-    //   91	27	8	arrayOfByte	byte[]
+    //   0	276	0	this	PlayTextureView
+    //   0	276	1	paramString	String
+    //   70	37	2	i	int
+    //   7	228	3	localObject1	Object
+    //   253	1	3	localIOException1	java.io.IOException
+    //   261	1	3	localIOException2	java.io.IOException
+    //   268	1	3	localIOException3	java.io.IOException
+    //   272	1	3	localIOException4	java.io.IOException
+    //   78	150	4	localObject2	Object
+    //   58	186	5	str1	String
+    //   38	129	6	str2	String
+    //   169	1	6	localIOException5	java.io.IOException
+    //   178	1	6	localIOException6	java.io.IOException
+    //   191	68	6	localIOException7	java.io.IOException
+    //   109	27	7	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   52	58	153	java/io/IOException
-    //   185	189	191	java/io/IOException
-    //   52	58	194	finally
-    //   136	140	220	java/io/IOException
-    //   144	148	224	java/io/IOException
-    //   174	178	228	java/io/IOException
-    //   204	208	232	java/io/IOException
-    //   213	218	236	java/io/IOException
-    //   58	110	240	finally
-    //   116	122	247	finally
-    //   128	132	247	finally
-    //   165	170	247	finally
-    //   58	110	254	java/io/IOException
-    //   116	122	261	java/io/IOException
-    //   128	132	261	java/io/IOException
+    //   134	140	169	java/io/IOException
+    //   146	150	169	java/io/IOException
+    //   66	128	174	finally
+    //   66	128	178	java/io/IOException
+    //   60	66	185	finally
+    //   60	66	191	java/io/IOException
+    //   134	140	226	finally
+    //   146	150	226	finally
+    //   203	208	226	finally
+    //   154	158	253	java/io/IOException
+    //   162	166	257	java/io/IOException
+    //   212	216	261	java/io/IOException
+    //   220	224	265	java/io/IOException
+    //   234	238	268	java/io/IOException
+    //   243	248	272	java/io/IOException
   }
   
   private Surface getSurface()
   {
-    if ((this.mSurfaceTextureRender != null) && ((this.mSurfaceTextureRender instanceof SurfaceTextureBlendRender))) {
-      return ((SurfaceTextureBlendRender)this.mSurfaceTextureRender).getSurface();
+    BaseRender localBaseRender = this.mSurfaceTextureRender;
+    if ((localBaseRender != null) && ((localBaseRender instanceof SurfaceTextureBlendRender))) {
+      return ((SurfaceTextureBlendRender)localBaseRender).getSurface();
     }
     return null;
   }
@@ -418,14 +479,16 @@ public class PlayTextureView
   
   private void releaseRenderGLThread()
   {
-    if (this.mSurfaceTextureRender != null)
+    BaseRender localBaseRender = this.mSurfaceTextureRender;
+    if (localBaseRender != null)
     {
-      this.mSurfaceTextureRender.destroy();
+      localBaseRender.destroy();
       this.mSurfaceTextureRender = null;
     }
-    if (this.mRGBARender != null)
+    localBaseRender = this.mRGBARender;
+    if (localBaseRender != null)
     {
-      this.mRGBARender.destroy();
+      localBaseRender.destroy();
       this.mRGBARender = null;
     }
   }
@@ -439,27 +502,27 @@ public class PlayTextureView
       this.mSurfaceTextureRender = new SurfaceTextureBlendRender();
       this.mSurfaceTextureRender.setup();
       setupFrameListenerOES();
-      this.mSoftDecoder = new SoftwareFileDecoder(this.mLoop);
-      this.mSoftDecoder.setDecodeListener(this.mDecodeListener);
-      this.mRGBARender = new RGBABlendRender();
-      this.mRGBARender.setup();
-      this.mHasRGBAData = false;
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        this.mUseHardwareDecoder = false;
-        LogUtils.i("Render|PlayTextureView", "mSurfaceTextureRender Exception switch  soft decode Exception=" + localException);
-        localException.printStackTrace();
-      }
+      this.mUseHardwareDecoder = false;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mSurfaceTextureRender Exception switch  soft decode Exception=");
+      localStringBuilder.append(localException);
+      LogUtils.i("Render|PlayTextureView", localStringBuilder.toString());
+      localException.printStackTrace();
     }
+    this.mSoftDecoder = new SoftwareFileDecoder(this.mLoop);
+    this.mSoftDecoder.setDecodeListener(this.mDecodeListener);
+    this.mRGBARender = new RGBABlendRender();
+    this.mRGBARender.setup();
+    this.mHasRGBAData = false;
   }
   
   private void setupFrameListenerOES()
   {
-    if ((this.mSurfaceTextureRender != null) && (this.mSurfaceTextureRender.getRenderType() == 1) && (((SurfaceTextureBlendRender)this.mSurfaceTextureRender).getVideoTexture() != null)) {
+    BaseRender localBaseRender = this.mSurfaceTextureRender;
+    if ((localBaseRender != null) && (localBaseRender.getRenderType() == 1) && (((SurfaceTextureBlendRender)this.mSurfaceTextureRender).getVideoTexture() != null)) {
       ((SurfaceTextureBlendRender)this.mSurfaceTextureRender).getVideoTexture().setOnFrameAvailableListener(new PlayTextureView.11(this));
     }
   }
@@ -489,39 +552,49 @@ public class PlayTextureView
   
   public void onDrawFrame(GL10 arg1)
   {
-    if ((!this.mViewReady) || (this.mCurRender == null) || (this.mVideoWidth <= 0) || (this.mVideoHeight <= 0)) {
-      return;
-    }
-    if ((this.mNeedConfigViewport) && (this.mVideoWidth > 0) && (this.mVideoHeight > 0) && (this.mGLViewWidth > 0) && (this.mGLViewHeight > 0))
+    if ((this.mViewReady) && (this.mCurRender != null))
     {
-      _calcCropValue();
-      configViewportOnDraw();
-      this.mNeedConfigViewport = false;
-    }
-    if (this.mUseHardwareDecoder) {
-      this.mCurRender.draw(null, 0, 0, false);
-    }
-    for (;;)
-    {
-      if (this.mFrameTime > 0)
+      int i = this.mVideoWidth;
+      if (i > 0)
       {
-        this.mCurFrameCount += 1;
-        this.mCurTime = (this.mFrameTime * this.mCurFrameCount);
-        this.mViewHandler.post(new PlayTextureView.10(this));
-      }
-      if (this.mOnPreviewFrameLogTimer.isTimeToWriteLog()) {
-        LogUtils.i("Render|PlayTextureView", "onDrawFrame fps= " + this.mOnPreviewFrameLogTimer.getFps());
-      }
-      if (this.mContentVisible) {
-        break;
-      }
-      GLES20.glClear(16384);
-      GLES20.glFinish();
-      return;
-      synchronized (this.mLock)
-      {
-        if ((this.mCurRGBAData != null) && (this.mHasRGBAData)) {
-          this.mCurRender.draw(this.mCurRGBAData, this.mVideoWidth, this.mVideoHeight, false);
+        int j = this.mVideoHeight;
+        if (j <= 0) {
+          return;
+        }
+        if ((this.mNeedConfigViewport) && (i > 0) && (j > 0) && (this.mGLViewWidth > 0) && (this.mGLViewHeight > 0))
+        {
+          _calcCropValue();
+          configViewportOnDraw();
+          this.mNeedConfigViewport = false;
+        }
+        if (this.mUseHardwareDecoder) {
+          this.mCurRender.draw(null, 0, 0, false);
+        }
+        synchronized (this.mLock)
+        {
+          if ((this.mCurRGBAData != null) && (this.mHasRGBAData)) {
+            this.mCurRender.draw(this.mCurRGBAData, this.mVideoWidth, this.mVideoHeight, false);
+          }
+          i = this.mFrameTime;
+          if (i > 0)
+          {
+            this.mCurFrameCount += 1;
+            this.mCurTime = (i * this.mCurFrameCount);
+            this.mViewHandler.post(new PlayTextureView.10(this));
+          }
+          if (this.mOnPreviewFrameLogTimer.isTimeToWriteLog())
+          {
+            ??? = new StringBuilder();
+            ???.append("onDrawFrame fps= ");
+            ???.append(this.mOnPreviewFrameLogTimer.getFps());
+            LogUtils.i("Render|PlayTextureView", ???.toString());
+          }
+          if (!this.mContentVisible)
+          {
+            GLES20.glClear(16384);
+            GLES20.glFinish();
+          }
+          return;
         }
       }
     }
@@ -529,23 +602,29 @@ public class PlayTextureView
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    LogUtils.i("Render|PlayTextureView", "===================gl render onSurfaceChanged " + paramInt1 + " h=" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("===================gl render onSurfaceChanged ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" h=");
+    localStringBuilder.append(paramInt2);
+    LogUtils.i("Render|PlayTextureView", localStringBuilder.toString());
     paramGL10.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     this.mGLViewWidth = paramInt1;
     this.mGLViewHeight = paramInt2;
-    if (this.mGLViewWidth > this.mGLViewHeight) {}
-    for (boolean bool = false;; bool = true)
+    boolean bool;
+    if (this.mGLViewWidth > this.mGLViewHeight) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    this.mIsPortrait = bool;
+    if ((this.mVideoWidth > 0) && (this.mVideoHeight > 0) && (this.mGLViewWidth > 0) && (this.mGLViewHeight > 0)) {
+      this.mNeedConfigViewport = true;
+    }
+    if (!this.mViewReady)
     {
-      this.mIsPortrait = bool;
-      if ((this.mVideoWidth > 0) && (this.mVideoHeight > 0) && (this.mGLViewWidth > 0) && (this.mGLViewHeight > 0)) {
-        this.mNeedConfigViewport = true;
-      }
-      if (!this.mViewReady)
-      {
-        this.mViewReady = true;
-        this.mViewHandler.post(new PlayTextureView.9(this));
-      }
-      return;
+      this.mViewReady = true;
+      this.mViewHandler.post(new PlayTextureView.9(this));
     }
   }
   
@@ -557,7 +636,10 @@ public class PlayTextureView
   
   public void playAssetsFile(String paramString)
   {
-    LogUtils.i("Render|PlayTextureView", " playAssetsFile , want to play filename =" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" playAssetsFile , want to play filename =");
+    localStringBuilder.append(paramString);
+    LogUtils.i("Render|PlayTextureView", localStringBuilder.toString());
     if (this.mPlayStarting)
     {
       LogUtils.i("Render|PlayTextureView", " playAssetsFile , one has played , return");
@@ -585,13 +667,17 @@ public class PlayTextureView
   
   public void playFile(String paramString)
   {
-    if (this.mStopping) {}
-    for (this.mTmpFilePath = paramString;; this.mTmpFilePath = null)
+    if (this.mStopping) {
+      this.mTmpFilePath = paramString;
+    } else {
+      this.mTmpFilePath = null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" playFile , want to play filepath =");
+    localStringBuilder.append(paramString);
+    LogUtils.i("Render|PlayTextureView", localStringBuilder.toString());
+    if (this.mPlayStarting)
     {
-      LogUtils.i("Render|PlayTextureView", " playFile , want to play filepath =" + paramString);
-      if (!this.mPlayStarting) {
-        break;
-      }
       LogUtils.i("Render|PlayTextureView", " playFile , one has played , return");
       return;
     }
@@ -622,11 +708,13 @@ public class PlayTextureView
   public void setLoopState(boolean paramBoolean)
   {
     this.mLoop = paramBoolean;
-    if (this.mHardDecoder != null) {
-      this.mHardDecoder.setLoopState(this.mLoop);
+    VideoFileDecoder localVideoFileDecoder = this.mHardDecoder;
+    if (localVideoFileDecoder != null) {
+      localVideoFileDecoder.setLoopState(this.mLoop);
     }
-    if (this.mSoftDecoder != null) {
-      this.mSoftDecoder.setLoopState(this.mLoop);
+    localVideoFileDecoder = this.mSoftDecoder;
+    if (localVideoFileDecoder != null) {
+      localVideoFileDecoder.setLoopState(this.mLoop);
     }
   }
   
@@ -641,24 +729,27 @@ public class PlayTextureView
     if (!this.mViewReady) {
       return;
     }
-    if (this.mUseHardwareDecoder) {
-      if (this.mHardDecoder != null) {
-        this.mHardDecoder.stop();
-      }
-    }
-    for (;;)
+    VideoFileDecoder localVideoFileDecoder;
+    if (this.mUseHardwareDecoder)
     {
-      this.mStopping = true;
-      return;
-      if (this.mSoftDecoder != null) {
-        this.mSoftDecoder.stop();
+      localVideoFileDecoder = this.mHardDecoder;
+      if (localVideoFileDecoder != null) {
+        localVideoFileDecoder.stop();
       }
     }
+    else
+    {
+      localVideoFileDecoder = this.mSoftDecoder;
+      if (localVideoFileDecoder != null) {
+        localVideoFileDecoder.stop();
+      }
+    }
+    this.mStopping = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.playview.view.PlayTextureView
  * JD-Core Version:    0.7.0.1
  */

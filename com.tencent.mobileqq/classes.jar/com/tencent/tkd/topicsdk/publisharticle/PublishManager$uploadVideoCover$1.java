@@ -4,6 +4,7 @@ import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig;
 import com.tencent.tkd.topicsdk.bean.PublishArticleInfo;
 import com.tencent.tkd.topicsdk.bean.VideoInfo;
 import com.tencent.tkd.topicsdk.framework.TLog;
+import com.tencent.tkd.topicsdk.framework.TopicSDKHelperKt;
 import com.tencent.tkd.topicsdk.framework.Uploader;
 import com.tencent.tkd.topicsdk.interfaces.IUploadListener;
 import kotlin.Metadata;
@@ -18,7 +19,7 @@ public final class PublishManager$uploadVideoCover$1
   
   public void a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkBeanVideoInfo.setCoverProgress((int)(100 * paramLong1 / paramLong2));
+    this.jdField_a_of_type_ComTencentTkdTopicsdkBeanVideoInfo.setCoverProgress((int)(paramLong1 * 100 / paramLong2));
     PublishManager.a.a(this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getPublishId(), (int)this.jdField_a_of_type_ComTencentTkdTopicsdkBeanVideoInfo.getProgress());
   }
   
@@ -31,10 +32,13 @@ public final class PublishManager$uploadVideoCover$1
   {
     Intrinsics.checkParameterIsNotNull(paramString, "url");
     this.jdField_a_of_type_ComTencentTkdTopicsdkBeanVideoInfo.setCoverProgress(100);
-    TLog.d("PublishManager", "封面上传成功,url = " + paramString);
-    PublishManager.PublishTask localPublishTask = PublishManager.a(PublishManager.a, this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getPublishId());
-    if (localPublishTask != null) {
-      localPublishTask.a((Uploader)null);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("封面上传成功,url = ");
+    ((StringBuilder)localObject).append(paramString);
+    TLog.d("PublishManager", ((StringBuilder)localObject).toString());
+    localObject = PublishManager.a(PublishManager.a, this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getPublishId());
+    if (localObject != null) {
+      ((PublishManager.PublishTask)localObject).a((Uploader)null);
     }
     this.jdField_a_of_type_ComTencentTkdTopicsdkBeanVideoInfo.setCoverUrl(paramString);
     PublishManager.a(PublishManager.a, this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig, this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo, this.jdField_a_of_type_ComTencentTkdTopicsdkBeanVideoInfo);
@@ -45,12 +49,13 @@ public final class PublishManager$uploadVideoCover$1
   {
     Intrinsics.checkParameterIsNotNull(paramString, "errMsg");
     TLog.d("PublishManager", "封面上传失败");
+    TopicSDKHelperKt.a("视频封面上传失败");
     PublishManager.a.c(this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig, this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.PublishManager.uploadVideoCover.1
  * JD-Core Version:    0.7.0.1
  */

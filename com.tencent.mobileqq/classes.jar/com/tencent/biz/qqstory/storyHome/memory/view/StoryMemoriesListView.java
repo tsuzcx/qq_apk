@@ -45,7 +45,7 @@ public class StoryMemoriesListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a()
+  protected void a()
   {
     Iterator localIterator = this.a.a().iterator();
     while (localIterator.hasNext()) {
@@ -80,7 +80,7 @@ public class StoryMemoriesListView
   
   public void e() {}
   
-  public void layoutChildren()
+  protected void layoutChildren()
   {
     try
     {
@@ -107,12 +107,13 @@ public class StoryMemoriesListView
       b();
       paramView = paramView.a.a;
       int i = StoryReportor.a(paramView.getOwner());
-      if (paramView.getOwner().isMe()) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        StoryReportor.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
-        return true;
+      if (paramView.getOwner().isMe()) {
+        paramView = "1";
+      } else {
+        paramView = "2";
       }
+      StoryReportor.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
+      return true;
     }
     return false;
   }
@@ -125,18 +126,19 @@ public class StoryMemoriesListView
   public boolean trackMotionScroll(int paramInt1, int paramInt2)
   {
     MemoriesFeedSegment localMemoriesFeedSegment = (MemoriesFeedSegment)a("FeedSegment");
-    if ((localMemoriesFeedSegment == null) || (localMemoriesFeedSegment.a() == 0) || (!localMemoriesFeedSegment.c())) {
-      return super.trackMotionScroll(paramInt1, paramInt2);
+    if ((localMemoriesFeedSegment != null) && (localMemoriesFeedSegment.a() != 0) && (localMemoriesFeedSegment.c()))
+    {
+      localMemoriesFeedSegment.c(1);
+      boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
+      localMemoriesFeedSegment.c(0);
+      return bool;
     }
-    localMemoriesFeedSegment.c(1);
-    boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
-    localMemoriesFeedSegment.c(0);
-    return bool;
+    return super.trackMotionScroll(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesListView
  * JD-Core Version:    0.7.0.1
  */

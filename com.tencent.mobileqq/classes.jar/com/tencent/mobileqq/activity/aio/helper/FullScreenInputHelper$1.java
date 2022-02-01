@@ -11,12 +11,13 @@ class FullScreenInputHelper$1
   
   public Drawable getDrawable(String paramString)
   {
-    return this.a.a(FullScreenInputHelper.a(this.a).a, paramString);
+    FullScreenInputHelper localFullScreenInputHelper = this.a;
+    return localFullScreenInputHelper.a(FullScreenInputHelper.a(localFullScreenInputHelper).a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.1
  * JD-Core Version:    0.7.0.1
  */

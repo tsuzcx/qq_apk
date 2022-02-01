@@ -48,15 +48,17 @@ public final class STCheckGame$STCheckGameRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50, 58, 66, 72, 82, 88, 96, 106, 114, 122, 130, 136, 144, 152, 162, 170, 176, 184, 192, 200, 210, 218, 226, 232, 242, 402 }, new String[] { "st", "stKey", "expTs", "remainPlays", "wording", "openId", "openKey", "sessionOpenId", "needGCoins", "wordingV2", "updateFlag", "isPatch", "patchContent", "patchUrl", "zipMd5", "zipUrl", "svrResVer", "packageSize", "tipsSize", "ssoCmdRule", "extInfo", "appIdSource", "commFlagBits", "adDevUin", "adShareRate", "adForbitPosId", "rpUrl", "rpPic", "delayMs", "transInfo", "gameConfInfo" }, new Object[] { "", "", Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, "", "", "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), "", localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), "", "", "", Integer.valueOf(0), localByteStringMicro3, null }, STCheckGameRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50, 58, 66, 72, 82, 88, 96, 106, 114, 122, 130, 136, 144, 152, 162, 170, 176, 184, 192, 200, 210, 218, 226, 232, 242, 402 }, new String[] { "st", "stKey", "expTs", "remainPlays", "wording", "openId", "openKey", "sessionOpenId", "needGCoins", "wordingV2", "updateFlag", "isPatch", "patchContent", "patchUrl", "zipMd5", "zipUrl", "svrResVer", "packageSize", "tipsSize", "ssoCmdRule", "extInfo", "appIdSource", "commFlagBits", "adDevUin", "adShareRate", "adForbitPosId", "rpUrl", "rpPic", "delayMs", "transInfo", "gameConfInfo" }, new Object[] { "", "", localInteger, localInteger, "", "", "", "", localInteger, "", localInteger, localInteger, localByteStringMicro1, "", "", "", localInteger, localLong, localLong, "", localByteStringMicro2, localInteger, localInteger, localLong, localInteger, "", "", "", localInteger, localByteStringMicro3, null }, STCheckGameRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.apollo.STCheckGame.STCheckGameRsp
  * JD-Core Version:    0.7.0.1
  */

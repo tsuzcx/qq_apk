@@ -11,7 +11,10 @@ class WeatherDataProvider$1
   
   public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
   {
-    SLog.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WeatherLbsListener: onLbsUpdate, isSuccess=");
+    localStringBuilder.append(paramBoolean);
+    SLog.b("WeatherDataProvider", localStringBuilder.toString());
     if ((paramBoolean) && (paramBasicLocation != null))
     {
       this.a.a(paramBasicLocation.b, paramBasicLocation.a);
@@ -22,7 +25,7 @@ class WeatherDataProvider$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.WeatherDataProvider.1
  * JD-Core Version:    0.7.0.1
  */

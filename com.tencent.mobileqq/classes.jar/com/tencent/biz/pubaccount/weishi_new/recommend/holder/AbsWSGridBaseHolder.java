@@ -21,16 +21,16 @@ public abstract class AbsWSGridBaseHolder<T>
   
   public abstract IWSItemView<T> a(int paramInt);
   
-  public void a(T paramT)
+  public void bindData(T paramT)
   {
-    super.a(paramT);
+    super.bindData(paramT);
     this.jdField_a_of_type_JavaLangObject = paramT;
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView.a(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.AbsWSGridBaseHolder
  * JD-Core Version:    0.7.0.1
  */

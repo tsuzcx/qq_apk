@@ -1,18 +1,43 @@
 package com.tencent.mobileqq.activity;
 
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
+
 class TroopAssistantActivity$19
-  implements Runnable
+  implements ThreadExcutor.IThreadListener
 {
   TroopAssistantActivity$19(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  public void onAdded()
   {
-    this.this$0.b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mRefreshListener onAdded:");
+    localStringBuilder.append(TroopAssistantActivity.a(this.a));
+    QLog.e("TroopAssistantActivity", 2, localStringBuilder.toString());
+    TroopAssistantActivity.a(this.a, true);
+  }
+  
+  public void onPostRun()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mRefreshListener onPostRun:");
+    localStringBuilder.append(TroopAssistantActivity.a(this.a));
+    QLog.e("TroopAssistantActivity", 2, localStringBuilder.toString());
+    TroopAssistantActivity.a(this.a, false);
+  }
+  
+  public void onPreRun()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mRefreshListener onPreRun:");
+    localStringBuilder.append(TroopAssistantActivity.a(this.a));
+    QLog.e("TroopAssistantActivity", 2, localStringBuilder.toString());
+    TroopAssistantActivity.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.19
  * JD-Core Version:    0.7.0.1
  */

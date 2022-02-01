@@ -40,7 +40,11 @@ public class TroopNickFontAdapter
   
   public static String a(int paramInt1, int paramInt2)
   {
-    return paramInt1 + "_" + paramInt2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    return localStringBuilder.toString();
   }
   
   private boolean a(Typeface paramTypeface)
@@ -56,20 +60,25 @@ public class TroopNickFontAdapter
     return true;
   }
   
-  public void b()
+  public void a()
   {
-    if (AppUtil.a()) {}
-    for (FontInfo localFontInfo = a(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a(), this.jdField_a_of_type_Int);; localFontInfo = FontManagerForTool.a().a(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a(), this.jdField_a_of_type_Int))
+    Object localObject;
+    if (AppUtil.a()) {
+      localObject = a(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a(), this.jdField_a_of_type_Int);
+    } else {
+      localObject = FontManagerForTool.a().a(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a(), this.jdField_a_of_type_Int);
+    }
+    if (localObject != null)
     {
-      if (localFontInfo != null)
+      b(((FontInfo)localObject).jdField_a_of_type_Int, ((FontInfo)localObject).b);
+      b();
+      if (QLog.isColorLevel())
       {
-        b(localFontInfo.jdField_a_of_type_Int, localFontInfo.b);
-        c();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopNickFontAdapter", 1, "troop_nick_font_load," + b);
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("troop_nick_font_load,");
+        ((StringBuilder)localObject).append(b);
+        QLog.d("TroopNickFontAdapter", 1, ((StringBuilder)localObject).toString());
       }
-      return;
     }
   }
   
@@ -80,7 +89,7 @@ public class TroopNickFontAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickFontAdapter
  * JD-Core Version:    0.7.0.1
  */

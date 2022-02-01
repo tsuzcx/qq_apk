@@ -24,6 +24,8 @@ public abstract interface IQQServiceForAV
   
   public abstract String a(int paramInt, String paramString1, String paramString2);
   
+  public abstract String a(int paramInt1, String paramString1, String paramString2, int paramInt2);
+  
   public abstract String a(String paramString);
   
   public abstract void a();
@@ -41,8 +43,6 @@ public abstract interface IQQServiceForAV
   public abstract void a(long paramLong, String paramString, int paramInt);
   
   public abstract void a(long paramLong1, String paramString, long paramLong2);
-  
-  public abstract void a(IAVRedPacketCallback paramIAVRedPacketCallback);
   
   public abstract void a(IQQServiceCallback paramIQQServiceCallback);
   
@@ -100,8 +100,6 @@ public abstract interface IQQServiceForAV
   
   public abstract void b(int paramInt, String paramString);
   
-  public abstract void b(IAVRedPacketCallback paramIAVRedPacketCallback);
-  
   public abstract void b(IQQServiceLocationCallback paramIQQServiceLocationCallback);
   
   public abstract void b(String paramString);
@@ -158,7 +156,7 @@ public abstract interface IQQServiceForAV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.IQQServiceForAV
  * JD-Core Version:    0.7.0.1
  */

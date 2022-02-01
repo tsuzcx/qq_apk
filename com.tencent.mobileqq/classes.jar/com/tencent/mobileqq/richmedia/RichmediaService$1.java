@@ -23,7 +23,10 @@ final class RichmediaService$1
         }
         catch (RemoteException localRemoteException)
         {
-          LOG.a("RichmediaService", "sendICallBackRequest cb.sendRequest ipc fail, RemoteException : " + localRemoteException.getMessage());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("sendICallBackRequest cb.sendRequest ipc fail, RemoteException : ");
+          localStringBuilder.append(localRemoteException.getMessage());
+          LOG.a("RichmediaService", localStringBuilder.toString());
           return;
         }
       }
@@ -35,7 +38,7 @@ final class RichmediaService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaService.1
  * JD-Core Version:    0.7.0.1
  */

@@ -24,28 +24,29 @@ public class WSFriendItemDataUtil
       return Collections.emptyList();
     }
     paramstFriendFeed = paramstFriendFeed.friendFeeds;
-    if ((paramstFriendFeed == null) || (paramstFriendFeed.size() == 0)) {
-      return Collections.emptyList();
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(a((stSimpleMetaFeed)paramstFriendFeed.get(0)));
-    int i = 1;
-    while (i < paramstFriendFeed.size())
+    if ((paramstFriendFeed != null) && (paramstFriendFeed.size() != 0))
     {
-      Object localObject = (stSimpleMetaFeed)paramstFriendFeed.get(i);
-      WSFriendItemData localWSFriendItemData = (WSFriendItemData)localArrayList.get(localArrayList.size() - 1);
-      if (!localWSFriendItemData.a((stSimpleMetaFeed)localObject))
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(a((stSimpleMetaFeed)paramstFriendFeed.get(0)));
+      int i = 1;
+      while (i < paramstFriendFeed.size())
       {
-        a(localWSFriendItemData);
-        localObject = a((stSimpleMetaFeed)localObject);
-        ((WSFriendItemData)localObject).a(i);
-        localArrayList.add(localObject);
+        Object localObject = (stSimpleMetaFeed)paramstFriendFeed.get(i);
+        WSFriendItemData localWSFriendItemData = (WSFriendItemData)localArrayList.get(localArrayList.size() - 1);
+        if (!localWSFriendItemData.a((stSimpleMetaFeed)localObject))
+        {
+          a(localWSFriendItemData);
+          localObject = a((stSimpleMetaFeed)localObject);
+          ((WSFriendItemData)localObject).a(i);
+          localArrayList.add(localObject);
+        }
+        i += 1;
       }
-      i += 1;
+      a((WSFriendItemData)localArrayList.get(localArrayList.size() - 1));
+      WeiShiCacheManager.a().c(localArrayList);
+      return localArrayList;
     }
-    a((WSFriendItemData)localArrayList.get(localArrayList.size() - 1));
-    WeiShiCacheManager.a().c(localArrayList);
-    return localArrayList;
+    return Collections.emptyList();
   }
   
   private static void a(WSFriendItemData paramWSFriendItemData)
@@ -55,7 +56,7 @@ public class WSFriendItemDataUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.WSFriendItemDataUtil
  * JD-Core Version:    0.7.0.1
  */

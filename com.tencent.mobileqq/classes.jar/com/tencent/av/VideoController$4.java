@@ -15,35 +15,35 @@ class VideoController$4
   
   public void onOrientationChanged(int paramInt)
   {
-    if (paramInt == -1) {}
-    long l;
-    do
-    {
+    if (paramInt == -1) {
       return;
-      l = System.currentTimeMillis();
-    } while (l - this.jdField_a_of_type_Long < 50L);
+    }
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 50L) {
+      return;
+    }
     this.jdField_a_of_type_Long = l;
-    if ((paramInt > 315) || (paramInt <= 45))
+    if ((paramInt <= 315) && (paramInt > 45))
     {
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 1);
+      if ((paramInt > 45) && (paramInt <= 135))
+      {
+        VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 2);
+        return;
+      }
+      if ((paramInt > 135) && (paramInt <= 225))
+      {
+        VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 3);
+        return;
+      }
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 4);
       return;
     }
-    if ((paramInt > 45) && (paramInt <= 135))
-    {
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 2);
-      return;
-    }
-    if ((paramInt > 135) && (paramInt <= 225))
-    {
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 3);
-      return;
-    }
-    VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 4);
+    VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.4
  * JD-Core Version:    0.7.0.1
  */

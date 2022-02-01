@@ -7,12 +7,12 @@ import com.tencent.av.opengl.program.TextureProgram;
 import com.tencent.av.opengl.program.TextureProgramFactory;
 import com.tencent.av.opengl.shader.ShaderParameter;
 import com.tencent.av.opengl.utils.AVGLUtils;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.PerfRecorder;
 import com.tencent.av.utils.QAVConfigUtils;
 import com.tencent.mobileqq.dpc.api.IDPCApi;
 import com.tencent.mobileqq.dpc.enumname.DPCNames;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
@@ -68,54 +68,56 @@ public class YuvPostRender
   
   private void a(FilterProcessRender paramFilterProcessRender, CameraFrame paramCameraFrame, GLTexture paramGLTexture, FaceData paramFaceData, FloatBuffer paramFloatBuffer, RenderResult paramRenderResult)
   {
-    int i = paramCameraFrame.jdField_a_of_type_Int;
-    int j = paramCameraFrame.jdField_b_of_type_Int;
-    int k = i * j * 3 / 2;
+    int i = paramCameraFrame.jdField_a_of_type_Int * paramCameraFrame.jdField_b_of_type_Int;
+    int j = i * 3 / 2;
+    byte[] arrayOfByte;
     if (this.jdField_b_of_type_Boolean)
     {
-      if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte.length != k)) {
-        this.jdField_b_of_type_ArrayOfByte = new byte[k];
+      arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+      if ((arrayOfByte == null) || (arrayOfByte.length != j)) {
+        this.jdField_b_of_type_ArrayOfByte = new byte[j];
       }
-      i = i * j * 1 / 2;
-      if ((this.jdField_c_of_type_ArrayOfByte == null) || (this.jdField_c_of_type_ArrayOfByte.length != i)) {
+      i = i * 1 / 2;
+      arrayOfByte = this.jdField_c_of_type_ArrayOfByte;
+      if ((arrayOfByte == null) || (arrayOfByte.length != i)) {
         this.jdField_c_of_type_ArrayOfByte = new byte[i];
       }
-      if (!this.jdField_b_of_type_Boolean) {
-        break label311;
+    }
+    else
+    {
+      i *= 4;
+      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      if ((arrayOfByte == null) || (arrayOfByte.length != i)) {
+        this.jdField_a_of_type_ArrayOfByte = new byte[i];
       }
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
       b(paramFilterProcessRender.jdField_a_of_type_Int, paramFilterProcessRender.jdField_b_of_type_Int, paramGLTexture.jdField_b_of_type_Int, this.jdField_c_of_type_Int, paramFloatBuffer);
       b(paramFilterProcessRender.jdField_a_of_type_Int, paramFilterProcessRender.jdField_b_of_type_Int);
     }
-    for (;;)
+    else
     {
-      GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glViewport(0, 0, paramCameraFrame.jdField_a_of_type_Int, paramCameraFrame.jdField_b_of_type_Int);
-      if ((!this.jdField_a_of_type_Boolean) || (!paramCameraFrame.b()))
-      {
-        paramCameraFrame.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-        paramCameraFrame.jdField_a_of_type_Int = paramFilterProcessRender.jdField_b_of_type_Int;
-        paramCameraFrame.jdField_b_of_type_Int = paramFilterProcessRender.jdField_a_of_type_Int;
-        paramCameraFrame.jdField_c_of_type_Int = 21;
-        if (this.jdField_b_of_type_Boolean)
-        {
-          paramCameraFrame.jdField_c_of_type_Int = 100;
-          paramCameraFrame.jdField_a_of_type_ArrayOfByte = this.jdField_b_of_type_ArrayOfByte;
-        }
-        paramCameraFrame.d = ((paramCameraFrame.d - RenderUtil.a(paramCameraFrame.jdField_a_of_type_Boolean) - 1 + 4) % 4);
-        paramRenderResult.a(paramCameraFrame, paramFaceData.jdField_a_of_type_ArrayOfByte, paramFaceData.jdField_b_of_type_ArrayOfByte, paramFaceData.jdField_c_of_type_ArrayOfByte, paramFaceData.jdField_a_of_type_Short, paramFaceData.jdField_b_of_type_Short);
-      }
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      i = i * j * 4;
-      if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length == i)) {
-        break;
-      }
-      this.jdField_a_of_type_ArrayOfByte = new byte[i];
-      break;
-      label311:
       a(paramFilterProcessRender.jdField_a_of_type_Int, paramFilterProcessRender.jdField_b_of_type_Int, paramGLTexture.jdField_b_of_type_Int, this.jdField_b_of_type_Int, paramFloatBuffer);
       a(this.jdField_b_of_type_Int, paramFilterProcessRender.jdField_b_of_type_Int, paramFilterProcessRender.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
     }
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glViewport(0, 0, paramCameraFrame.jdField_a_of_type_Int, paramCameraFrame.jdField_b_of_type_Int);
+    if ((!this.jdField_a_of_type_Boolean) || (!paramCameraFrame.b()))
+    {
+      paramCameraFrame.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      paramCameraFrame.jdField_a_of_type_Int = paramFilterProcessRender.jdField_b_of_type_Int;
+      paramCameraFrame.jdField_b_of_type_Int = paramFilterProcessRender.jdField_a_of_type_Int;
+      paramCameraFrame.jdField_c_of_type_Int = 21;
+      if (this.jdField_b_of_type_Boolean)
+      {
+        paramCameraFrame.jdField_c_of_type_Int = 100;
+        paramCameraFrame.jdField_a_of_type_ArrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+      }
+      paramCameraFrame.d = ((paramCameraFrame.d - RenderUtil.a(paramCameraFrame.jdField_a_of_type_Boolean) - 1 + 4) % 4);
+      paramRenderResult.a(paramCameraFrame, paramFaceData.jdField_a_of_type_ArrayOfByte, paramFaceData.jdField_b_of_type_ArrayOfByte, paramFaceData.jdField_c_of_type_ArrayOfByte, paramFaceData.jdField_a_of_type_Short, paramFaceData.jdField_b_of_type_Short);
+    }
+    this.jdField_a_of_type_Boolean = false;
   }
   
   private void b(int paramInt1, int paramInt2)
@@ -125,10 +127,11 @@ public class YuvPostRender
     }
     Object localObject = ByteBuffer.wrap(this.jdField_b_of_type_ArrayOfByte);
     GLES20.glBindFramebuffer(36160, this.jdField_c_of_type_Int);
-    GLES20.glReadPixels(0, 0, paramInt2 * 2 / 8, paramInt1, 6408, 5121, (Buffer)localObject);
+    int i = paramInt2 * 2 / 8;
+    GLES20.glReadPixels(0, 0, i, paramInt1, 6408, 5121, (Buffer)localObject);
     localObject = this.jdField_c_of_type_ArrayOfByte;
     ByteBuffer localByteBuffer = ByteBuffer.wrap((byte[])localObject);
-    GLES20.glReadPixels(paramInt2 * 2 / 8, 0, paramInt2 * 1 / 8, paramInt1, 6408, 5121, localByteBuffer);
+    GLES20.glReadPixels(i, 0, paramInt2 * 1 / 8, paramInt1, 6408, 5121, localByteBuffer);
     GLES20.glBindFramebuffer(36160, 0);
     System.arraycopy(localObject, 0, this.jdField_b_of_type_ArrayOfByte, paramInt2 * paramInt1, localObject.length);
   }
@@ -158,38 +161,46 @@ public class YuvPostRender
   private void d()
   {
     this.jdField_b_of_type_Boolean = QAVConfigUtils.g();
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "initUseRBG2I420Switch useRGB2I420Shader = " + this.jdField_b_of_type_Boolean);
+    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initUseRBG2I420Switch useRGB2I420Shader = ");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+    QLog.d(str, 1, ((StringBuilder)localObject).toString());
     if (this.jdField_b_of_type_Boolean)
     {
-      String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.useRGB2I420ShaderCfg.name(), "1");
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "initUseRBG2I420Switch dpcValue = " + str);
+      str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.useRGB2I420ShaderCfg.name(), "1");
+      localObject = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initUseRBG2I420Switch dpcValue = ");
+      localStringBuilder.append(str);
+      QLog.d((String)localObject, 1, localStringBuilder.toString());
       if (str.equals("0")) {
         this.jdField_b_of_type_Boolean = false;
       }
     }
     if (AudioHelper.a(21) == 1) {
       this.jdField_b_of_type_Boolean = true;
+    } else if (AudioHelper.a(21) == 0) {
+      this.jdField_b_of_type_Boolean = false;
     }
-    for (;;)
-    {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "initUseRBG2I420Switch,after getDebugValue, initial useRGB2I420Shader = " + this.jdField_b_of_type_Boolean + ",Build.MODEL = " + Build.MODEL);
-      return;
-      if (AudioHelper.a(21) == 0) {
-        this.jdField_b_of_type_Boolean = false;
-      }
-    }
+    str = this.jdField_a_of_type_JavaLangString;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initUseRBG2I420Switch,after getDebugValue, initial useRGB2I420Shader = ");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+    ((StringBuilder)localObject).append(",Build.MODEL = ");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    QLog.d(str, 1, ((StringBuilder)localObject).toString());
   }
   
   public int a()
   {
-    int i = 0;
     if (this.jdField_a_of_type_ArrayOfByte != null) {
-      i = 42;
+      return 42;
     }
-    while (this.jdField_b_of_type_ArrayOfByte == null) {
-      return i;
+    if (this.jdField_b_of_type_ArrayOfByte != null) {
+      return 35;
     }
-    return 35;
+    return 0;
   }
   
   public void a()
@@ -234,14 +245,15 @@ public class YuvPostRender
   
   public byte[] a()
   {
-    byte[] arrayOfByte = null;
-    if (this.jdField_a_of_type_ArrayOfByte != null) {
-      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    }
-    while (this.jdField_b_of_type_ArrayOfByte == null) {
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (arrayOfByte != null) {
       return arrayOfByte;
     }
-    return this.jdField_b_of_type_ArrayOfByte;
+    arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+    if (arrayOfByte != null) {
+      return arrayOfByte;
+    }
+    return null;
   }
   
   public void b()
@@ -276,7 +288,7 @@ public class YuvPostRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.YuvPostRender
  * JD-Core Version:    0.7.0.1
  */

@@ -39,43 +39,61 @@ public final class LiveFloatWindow
   
   private final void callbackCreateFailed(int paramInt)
   {
-    OnFloatWindowCallbacks localOnFloatWindowCallbacks = this.config.callbacks;
-    if (localOnFloatWindowCallbacks != null) {
-      localOnFloatWindowCallbacks.createdResult(false, paramInt, null);
+    Object localObject = this.config.callbacks;
+    if (localObject != null) {
+      ((OnFloatWindowCallbacks)localObject).createdResult(false, paramInt, null);
     }
     Logger.w(Integer.valueOf(paramInt));
-    if ((paramInt == 2) || (paramInt == 3) || (paramInt == 5)) {
-      throw ((Throwable)new Exception("callbackCreateFailed失败:" + paramInt));
+    if ((paramInt != 2) && (paramInt != 3) && (paramInt != 5)) {
+      return;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("callbackCreateFailed失败:");
+    ((StringBuilder)localObject).append(paramInt);
+    throw ((Throwable)new Exception(((StringBuilder)localObject).toString()));
   }
   
   private final boolean checkUninitialized()
   {
-    switch (this.config.showPattern)
+    int i = this.config.showPattern;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i != 0)
     {
-    default: 
-      return false;
-    case 0: 
-      return false;
-    case 1: 
-    case 2: 
-    case 3: 
-      return !LiveFloatWindowManager.getInstance().isInitialized;
+      if ((i != 1) && (i != 2) && (i != 3))
+      {
+        if (i != 4) {
+          return false;
+        }
+        ArrayList localArrayList = this.config.filterList;
+        Intrinsics.checkExpressionValueIsNotNull(localArrayList, "config.filterList");
+        bool1 = bool2;
+        if (!(((Collection)localArrayList).isEmpty() ^ true)) {
+          return bool1;
+        }
+        bool1 = bool2;
+        if (LiveFloatWindowManager.getInstance().isInitialized) {
+          return bool1;
+        }
+      }
+      else
+      {
+        bool1 = bool2;
+        if (LiveFloatWindowManager.getInstance().isInitialized) {
+          return bool1;
+        }
+      }
+      bool1 = true;
     }
-    ArrayList localArrayList = this.config.filterList;
-    Intrinsics.checkExpressionValueIsNotNull(localArrayList, "config.filterList");
-    if (!((Collection)localArrayList).isEmpty()) {}
-    for (int i = 1; (i != 0) && (!LiveFloatWindowManager.getInstance().isInitialized); i = 0) {
-      return true;
-    }
-    return false;
+    return bool1;
   }
   
   private final void createActivityFloat()
   {
-    if ((this.activity instanceof Activity))
+    Context localContext = this.activity;
+    if ((localContext instanceof Activity))
     {
-      new FWActivityManager((Activity)this.activity).createFloat(this.config);
+      new FWActivityManager((Activity)localContext).createFloat(this.config);
       return;
     }
     callbackCreateFailed(5);
@@ -88,9 +106,10 @@ public final class LiveFloatWindow
   
   private final void requestPermission()
   {
-    if ((this.activity instanceof Activity))
+    Context localContext = this.activity;
+    if ((localContext instanceof Activity))
     {
-      FWPermission.requestPermission((Activity)this.activity, (OnFloatWindowPermissionListener)this);
+      FWPermission.requestPermission((Activity)localContext, (OnFloatWindowPermissionListener)this);
       return;
     }
     callbackCreateFailed(6);
@@ -99,16 +118,18 @@ public final class LiveFloatWindow
   @NotNull
   public final LiveFloatWindow hasEditText(boolean paramBoolean)
   {
-    ((LiveFloatWindow)this).config.hasEditText = paramBoolean;
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.hasEditText = paramBoolean;
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow invokeView(@NotNull OnInvokeView paramOnInvokeView)
   {
     Intrinsics.checkParameterIsNotNull(paramOnInvokeView, "invokeView");
-    ((LiveFloatWindow)this).config.invokeView = paramOnInvokeView;
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.invokeView = paramOnInvokeView;
+    return localLiveFloatWindow;
   }
   
   public void permissionFinish(boolean paramBoolean)
@@ -125,37 +146,42 @@ public final class LiveFloatWindow
   public final LiveFloatWindow registerCallbacks(@NotNull OnFloatWindowCallbacks paramOnFloatWindowCallbacks)
   {
     Intrinsics.checkParameterIsNotNull(paramOnFloatWindowCallbacks, "callbacks");
-    ((LiveFloatWindow)this).config.callbacks = paramOnFloatWindowCallbacks;
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.callbacks = paramOnFloatWindowCallbacks;
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow setAnimator(@Nullable OnActivityFloatWindowAnimator paramOnActivityFloatWindowAnimator)
   {
-    ((LiveFloatWindow)this).config.activityFloatAnimator = paramOnActivityFloatWindowAnimator;
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.activityFloatAnimator = paramOnActivityFloatWindowAnimator;
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow setAppFloatAnimator(@Nullable OnAppFloatWindowAnimator paramOnAppFloatWindowAnimator)
   {
-    ((LiveFloatWindow)this).config.appFloatAnimator = paramOnAppFloatWindowAnimator;
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.appFloatAnimator = paramOnAppFloatWindowAnimator;
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow setDisplayHeight(@NotNull OnDisplayHeight paramOnDisplayHeight)
   {
     Intrinsics.checkParameterIsNotNull(paramOnDisplayHeight, "displayHeight");
-    ((LiveFloatWindow)this).config.displayHeight = paramOnDisplayHeight;
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.displayHeight = paramOnDisplayHeight;
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow setDragEnable(boolean paramBoolean)
   {
-    ((LiveFloatWindow)this).config.dragEnable = paramBoolean;
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.dragEnable = paramBoolean;
+    return localLiveFloatWindow;
   }
   
   @NotNull
@@ -180,7 +206,7 @@ public final class LiveFloatWindow
       }
       i += 1;
     }
-    return (LiveFloatWindow)this;
+    return localLiveFloatWindow;
   }
   
   @JvmOverloads
@@ -202,16 +228,18 @@ public final class LiveFloatWindow
   public final LiveFloatWindow setGravity(int paramInt1, int paramInt2, int paramInt3)
   {
     LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
-    localLiveFloatWindow.config.gravity = paramInt1;
-    localLiveFloatWindow.config.offsetPair = new Point(paramInt2, paramInt3);
-    return (LiveFloatWindow)this;
+    FloatWindowConfig localFloatWindowConfig = localLiveFloatWindow.config;
+    localFloatWindowConfig.gravity = paramInt1;
+    localFloatWindowConfig.offsetPair = new Point(paramInt2, paramInt3);
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow setHorizontalMargin(float paramFloat)
   {
-    ((LiveFloatWindow)this).config.horizontalMargin = paramFloat;
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.horizontalMargin = paramFloat;
+    return localLiveFloatWindow;
   }
   
   @JvmOverloads
@@ -226,92 +254,97 @@ public final class LiveFloatWindow
   public final LiveFloatWindow setLayout(@LayoutRes int paramInt, @Nullable OnInvokeView paramOnInvokeView)
   {
     LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
-    localLiveFloatWindow.config.layoutId = paramInt;
-    localLiveFloatWindow.config.invokeView = paramOnInvokeView;
-    return (LiveFloatWindow)this;
+    FloatWindowConfig localFloatWindowConfig = localLiveFloatWindow.config;
+    localFloatWindowConfig.layoutId = paramInt;
+    localFloatWindowConfig.invokeView = paramOnInvokeView;
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow setLocation(int paramInt1, int paramInt2)
   {
-    ((LiveFloatWindow)this).config.locationPair = new Point(paramInt1, paramInt2);
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.locationPair = new Point(paramInt1, paramInt2);
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow setMatchParent(boolean paramBoolean1, boolean paramBoolean2)
   {
     LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
-    localLiveFloatWindow.config.widthMatch = paramBoolean1;
-    localLiveFloatWindow.config.heightMatch = paramBoolean2;
-    return (LiveFloatWindow)this;
+    FloatWindowConfig localFloatWindowConfig = localLiveFloatWindow.config;
+    localFloatWindowConfig.widthMatch = paramBoolean1;
+    localFloatWindowConfig.heightMatch = paramBoolean2;
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow setShowPattern(int paramInt)
   {
-    Object localObject = (LiveFloatWindow)this;
-    ((LiveFloatWindow)localObject).config.showPattern = paramInt;
-    if (!(((LiveFloatWindow)localObject).activity instanceof Activity)) {}
-    for (;;)
-    {
-      return (LiveFloatWindow)this;
-      if ((paramInt == 1) || (paramInt == 0))
-      {
-        FloatWindowConfig localFloatWindowConfig = ((LiveFloatWindow)localObject).config;
-        localObject = ((Activity)((LiveFloatWindow)localObject).activity).getComponentName();
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "activity.componentName");
-        localFloatWindowConfig.currentActivityName = ((ComponentName)localObject).getClassName();
-      }
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.showPattern = paramInt;
+    if (!(localLiveFloatWindow.activity instanceof Activity)) {
+      return localLiveFloatWindow;
     }
+    if ((paramInt == 1) || (paramInt == 0))
+    {
+      FloatWindowConfig localFloatWindowConfig = localLiveFloatWindow.config;
+      ComponentName localComponentName = ((Activity)localLiveFloatWindow.activity).getComponentName();
+      Intrinsics.checkExpressionValueIsNotNull(localComponentName, "activity.componentName");
+      localFloatWindowConfig.currentActivityName = localComponentName.getClassName();
+    }
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow setSidePattern(int paramInt)
   {
-    ((LiveFloatWindow)this).config.sidePattern = paramInt;
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.sidePattern = paramInt;
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow setTag(@Nullable String paramString)
   {
-    ((LiveFloatWindow)this).config.floatTag = paramString;
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.floatTag = paramString;
+    return localLiveFloatWindow;
   }
   
   @NotNull
   public final LiveFloatWindow setVerticalMargin(float paramFloat)
   {
-    ((LiveFloatWindow)this).config.verticalMargin = paramFloat;
-    return (LiveFloatWindow)this;
+    LiveFloatWindow localLiveFloatWindow = (LiveFloatWindow)this;
+    localLiveFloatWindow.config.verticalMargin = paramFloat;
+    return localLiveFloatWindow;
   }
   
   public final void show()
   {
-    if (this.config.layoutId == -1) {
-      callbackCreateFailed(2);
-    }
-    do
+    if (this.config.layoutId == -1)
     {
+      callbackCreateFailed(2);
       return;
-      if (checkUninitialized())
-      {
-        callbackCreateFailed(3);
-        return;
-      }
-      if (this.config.showPattern == 0)
-      {
-        createActivityFloat();
-        return;
-      }
-    } while (!FWPermission.hasPermission(this.activity));
-    createAppFloat();
+    }
+    if (checkUninitialized())
+    {
+      callbackCreateFailed(3);
+      return;
+    }
+    if (this.config.showPattern == 0)
+    {
+      createActivityFloat();
+      return;
+    }
+    if (FWPermission.hasPermission(this.activity)) {
+      createAppFloat();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.widget.LiveFloatWindow
  * JD-Core Version:    0.7.0.1
  */

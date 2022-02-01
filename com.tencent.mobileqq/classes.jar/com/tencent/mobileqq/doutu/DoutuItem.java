@@ -45,19 +45,26 @@ public class DoutuItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("DoutuItem uuid:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", md5").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", fileId").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", url").append(this.c);
-    localStringBuilder.append(",key:").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(",count:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",picUin:").append(this.d);
+    localStringBuilder.append("DoutuItem uuid:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", md5");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", fileId");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", url");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",key:");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(",count:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",picUin:");
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuItem
  * JD-Core Version:    0.7.0.1
  */

@@ -16,62 +16,75 @@ public class FeedFeatureItem
   
   public void a(qqstory_struct.FeedFeature paramFeedFeature)
   {
-    boolean bool2 = true;
     this.jdField_a_of_type_JavaLangString = paramFeedFeature.feed_id.get().toStringUtf8();
     this.jdField_a_of_type_Int = paramFeedFeature.total_like_num.get();
     this.jdField_b_of_type_Int = paramFeedFeature.total_comment_num.get();
     this.c = paramFeedFeature.total_viewing_num.get();
-    if (paramFeedFeature.deny_comment.get() == 1)
-    {
+    int i = paramFeedFeature.deny_comment.get();
+    boolean bool2 = false;
+    if (i == 1) {
       bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      if (paramFeedFeature.has_like.get() != 1) {
-        break label91;
-      }
-    }
-    label91:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_b_of_type_Boolean = bool1;
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    this.jdField_a_of_type_Boolean = bool1;
+    boolean bool1 = bool2;
+    if (paramFeedFeature.has_like.get() == 1) {
+      bool1 = true;
+    }
+    this.jdField_b_of_type_Boolean = bool1;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (FeedFeatureItem)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      String str = this.jdField_a_of_type_JavaLangString;
+      if (str != null) {
+        return str.equals(paramObject.jdField_a_of_type_JavaLangString);
       }
-    } while (paramObject.jdField_a_of_type_JavaLangString == null);
+      return paramObject.jdField_a_of_type_JavaLangString == null;
+    }
     return false;
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.hashCode();
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {
+      return str.hashCode();
     }
     return 0;
   }
   
   public String toString()
   {
-    return "FeedFeatureItem{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", totalLikeCount=" + this.jdField_a_of_type_Int + ", totalCommentCount=" + this.jdField_b_of_type_Int + ", totalViewCount=" + this.c + ", isDenyComment=" + this.jdField_a_of_type_Boolean + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FeedFeatureItem{feedId='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", totalLikeCount=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", totalCommentCount=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", totalViewCount=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", isDenyComment=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.FeedFeatureItem
  * JD-Core Version:    0.7.0.1
  */

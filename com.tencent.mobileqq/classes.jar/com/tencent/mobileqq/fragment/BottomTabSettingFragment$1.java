@@ -17,27 +17,36 @@ class BottomTabSettingFragment$1
   {
     if ((paramBoolean) && (paramLong == 0L))
     {
-      QLog.w("IphoneTitleBarFragment", 1, "toggleQCircleTab success isChecked" + this.jdField_a_of_type_Boolean);
+      paramBaseRequest = new StringBuilder();
+      paramBaseRequest.append("toggleQCircleTab success isChecked");
+      paramBaseRequest.append(this.jdField_a_of_type_Boolean);
+      QLog.w("BottomTabSettingFragment", 1, paramBaseRequest.toString());
       paramString = QzoneConfig.getInstance();
       paramSetCircleSwitchRsp = this.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramBaseRequest = "1";; paramBaseRequest = "0")
+      if (this.jdField_a_of_type_Boolean) {
+        paramBaseRequest = "1";
+      } else {
+        paramBaseRequest = "0";
+      }
+      paramString.updateOneConfig("qqcircle", paramSetCircleSwitchRsp, paramBaseRequest);
+      if (!this.jdField_a_of_type_Boolean)
       {
-        paramString.updateOneConfig("qqcircle", paramSetCircleSwitchRsp, paramBaseRequest);
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          QCircleUtils.a().clearPedPoint();
-          QLog.w("IphoneTitleBarFragment", 1, "toggleQCircleTab success clearPedPoint");
-        }
-        return;
+        QCircleUtils.a().clearPedPoint();
+        QLog.w("BottomTabSettingFragment", 1, "toggleQCircleTab success clearPedPoint");
       }
     }
-    QLog.w("IphoneTitleBarFragment", 1, "toggleQCircleTab error retcode= " + paramLong);
+    else
+    {
+      paramBaseRequest = new StringBuilder();
+      paramBaseRequest.append("toggleQCircleTab error retcode= ");
+      paramBaseRequest.append(paramLong);
+      QLog.w("BottomTabSettingFragment", 1, paramBaseRequest.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.BottomTabSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

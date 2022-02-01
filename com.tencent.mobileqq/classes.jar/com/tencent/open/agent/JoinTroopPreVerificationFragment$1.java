@@ -1,42 +1,49 @@
 package com.tencent.open.agent;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
+import com.tencent.mobileqq.troop.api.observer.TroopObserver;
+import com.tencent.mobileqq.troop.utils.TroopInfoUIUtil;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 
 class JoinTroopPreVerificationFragment$1
-  extends TroopBusinessObserver
+  extends TroopObserver
 {
   JoinTroopPreVerificationFragment$1(JoinTroopPreVerificationFragment paramJoinTroopPreVerificationFragment) {}
   
-  public void onGetJoinTroopTokenForThirdApp(boolean paramBoolean, String paramString1, String paramString2)
+  protected void onGetJoinTroopTokenForThirdApp(boolean paramBoolean, String paramString1, String paramString2)
   {
     this.a.d();
-    QLog.i("TroopAbility.PreVerification", 1, "onGetJoinTroopTokenForThirdApp, isSuccess: " + paramBoolean + " token: " + paramString1 + ", troopUin: " + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetJoinTroopTokenForThirdApp, isSuccess: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" token: ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", troopUin: ");
+    localStringBuilder.append(paramString2);
+    QLog.i("TroopAbility.PreVerification", 1, localStringBuilder.toString());
     if (paramBoolean)
     {
-      paramString2 = TroopInfoActivity.a(String.valueOf(paramString2), 32);
+      paramString2 = TroopInfoUIUtil.a(String.valueOf(paramString2), 32);
       paramString2.putString("authSig", paramString1);
       paramString2.putString("appid", this.a.c);
       paramString2.putBoolean("fromThirdAppByOpenSDK", true);
       paramString2.putInt("action", 3);
       paramString2.putString("pkg_name", this.a.d);
       paramString2.putString("app_name", this.a.jdField_a_of_type_JavaLangString);
-      TroopUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString2, 2);
-      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+      TroopUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString2, 2);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
       return;
     }
-    this.a.a(HardCodeUtil.a(2131705903));
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+    this.a.a(HardCodeUtil.a(2131705955));
+    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.JoinTroopPreVerificationFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,12 @@
 package com.tencent.hippy.qq.update;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.hippy.qq.api.PackageUpdateListener;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,38 +14,33 @@ import org.json.JSONObject;
 public class HippyQQUpdateManager
   implements ReqCallBack
 {
-  private HippyQQUpdateManager.PackageUpdateListener mUpdateListener;
+  private PackageUpdateListener mUpdateListener;
   
   public static String getGuid()
   {
-    Object localObject2 = "0";
-    Object localObject3 = BaseApplicationImpl.getApplication();
-    Object localObject1 = localObject2;
-    if (localObject3 != null)
-    {
-      localObject3 = ((BaseApplicationImpl)localObject3).getRuntime();
-      localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = ((AppRuntime)localObject3).getAccount();
-      }
+    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getAccount();
+    } else {
+      localObject = "0";
     }
     int i = 32;
-    localObject2 = new StringBuffer();
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      i = 32 - ((String)localObject1).length();
-      ((StringBuffer)localObject2).append((String)localObject1);
+      i = 32 - ((String)localObject).length();
+      localStringBuffer.append((String)localObject);
     }
     int j = 0;
     while (j < i)
     {
-      ((StringBuffer)localObject2).append("0");
+      localStringBuffer.append("0");
       j += 1;
     }
-    return ((StringBuffer)localObject2).toString();
+    return localStringBuffer.toString();
   }
   
-  public void checkUpdate(String paramString, HippyQQUpdateManager.PackageUpdateListener paramPackageUpdateListener)
+  public void checkUpdate(String paramString, PackageUpdateListener paramPackageUpdateListener)
   {
     try
     {
@@ -57,20 +53,19 @@ public class HippyQQUpdateManager
           i = 0;
         }
         sendUpdateRequest(paramString, i, this);
+        return;
       }
-      return;
     }
     catch (JSONException paramString)
     {
-      do
-      {
-        paramString.printStackTrace();
-      } while (paramPackageUpdateListener == null);
-      paramPackageUpdateListener.onUpdateComplete(1, "", null);
+      paramString.printStackTrace();
+      if (paramPackageUpdateListener != null) {
+        paramPackageUpdateListener.onUpdateComplete(1, "", null);
+      }
     }
   }
   
-  public void loadOnlineBundle(String paramString1, String paramString2, HippyQQUpdateManager.PackageUpdateListener paramPackageUpdateListener)
+  public void loadOnlineBundle(String paramString1, String paramString2, PackageUpdateListener paramPackageUpdateListener)
   {
     ThreadManagerV2.excute(new HippyQQUpdateManager.2(this, paramString1, paramString2, paramPackageUpdateListener), 128, null, true);
   }
@@ -86,57 +81,75 @@ public class HippyQQUpdateManager
       {
         paramString = new JSONObject(paramString);
         i = paramString.getInt("iResult");
-        if (QLog.isColorLevel()) {
-          QLog.d("Hippy", 2, "Hippy: onResponse iResult=" + i);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Hippy: onResponse iResult=");
+          ((StringBuilder)localObject).append(i);
+          QLog.d("Hippy", 2, ((StringBuilder)localObject).toString());
         }
         if (i == 0)
         {
           paramString = paramString.getJSONArray("vstModules");
           if ((paramString.length() != 0) || (this.mUpdateListener == null)) {
-            break label377;
+            break label415;
           }
           this.mUpdateListener.onUpdateComplete(1, "", null);
-          break label377;
-          if (i >= paramString.length()) {
-            break;
+          break label415;
+          if (i < paramString.length())
+          {
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            localJSONObject.getInt("iUpdateType");
+            int j = localJSONObject.getInt("iVersionCode");
+            localJSONObject.getString("sMaxAppVer");
+            localJSONObject.getString("sMinAppVer");
+            localJSONObject.getString("sMaxSdkVer");
+            localJSONObject.getString("sMinSdkVer");
+            localObject = localJSONObject.getString("sModuleName");
+            localJSONObject.getString("sVersionName");
+            localJSONObject = localJSONObject.getJSONObject("stTotalPkg");
+            String str = localJSONObject.getString("sUrl");
+            int k = localJSONObject.getInt("iSize");
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("Hippy: onResponse moduleName=");
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append(", version=");
+              localStringBuilder.append(j);
+              localStringBuilder.append(", size=");
+              localStringBuilder.append(k);
+              QLog.d("Hippy", 2, localStringBuilder.toString());
+            }
+            new UpdateTotal(str, localJSONObject.getString("sMd5"), null, (String)localObject, j, this.mUpdateListener).startDownload();
+            i += 1;
+            continue;
           }
-          JSONObject localJSONObject = paramString.getJSONObject(i);
-          localJSONObject.getInt("iUpdateType");
-          int j = localJSONObject.getInt("iVersionCode");
-          localJSONObject.getString("sMaxAppVer");
-          localJSONObject.getString("sMinAppVer");
-          localJSONObject.getString("sMaxSdkVer");
-          localJSONObject.getString("sMinSdkVer");
-          String str1 = localJSONObject.getString("sModuleName");
-          localJSONObject.getString("sVersionName");
-          localJSONObject = localJSONObject.getJSONObject("stTotalPkg");
-          String str2 = localJSONObject.getString("sUrl");
-          int k = localJSONObject.getInt("iSize");
-          if (QLog.isColorLevel()) {
-            QLog.d("Hippy", 2, "Hippy: onResponse moduleName=" + str1 + ", version=" + j + ", size=" + k);
-          }
-          new UpdateTotal(str2, localJSONObject.getString("sMd5"), null, str1, j, this.mUpdateListener).startDownload();
-          i += 1;
-          continue;
         }
-        if (this.mUpdateListener == null) {
-          break;
+        else if (this.mUpdateListener != null)
+        {
+          paramString = new StringBuilder();
+          paramString.append("check update result: ");
+          paramString.append(i);
+          paramString = paramString.toString();
+          this.mUpdateListener.onUpdateComplete(-5, paramString, null);
+          return;
         }
-        paramString = "check update result: " + i;
-        this.mUpdateListener.onUpdateComplete(-5, paramString, null);
-        return;
       }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      if (paramString != null) {}
-      for (paramString = paramString.getMessage();; paramString = "")
+      catch (JSONException paramString)
       {
-        QLog.d("Hippy", 2, "Hippy: onResponse JSONException msg=" + paramString);
-        return;
+        Object localObject;
+        if (QLog.isColorLevel())
+        {
+          paramString = paramString.getMessage();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Hippy: onResponse JSONException msg=");
+          ((StringBuilder)localObject).append(paramString);
+          QLog.d("Hippy", 2, ((StringBuilder)localObject).toString());
+        }
       }
-      label377:
+      return;
+      label415:
       int i = 0;
     }
   }
@@ -147,7 +160,7 @@ public class HippyQQUpdateManager
     JSONObject localJSONObject2 = new JSONObject();
     localJSONObject2.put("iPlatform", 0);
     localJSONObject2.put("sAppKey", "mqq");
-    localJSONObject2.put("sAppVer", "8.5.5.5105");
+    localJSONObject2.put("sAppVer", "8.7.0.5295");
     localJSONObject2.put("sSdkVer", "3.0");
     localJSONObject2.put("sChannel", "10001");
     localJSONObject2.put("sGuid", getGuid());
@@ -164,7 +177,7 @@ public class HippyQQUpdateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyQQUpdateManager
  * JD-Core Version:    0.7.0.1
  */

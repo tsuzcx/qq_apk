@@ -12,15 +12,15 @@ class ApolloGameResManager$1
   
   protected int a(String paramString, ApolloGameResManager.ApolloGameRes paramApolloGameRes)
   {
-    if ((paramApolloGameRes == null) || (paramApolloGameRes.a == null)) {
-      return 0;
+    if ((paramApolloGameRes != null) && (paramApolloGameRes.a != null)) {
+      return paramApolloGameRes.a.length;
     }
-    return paramApolloGameRes.a.length;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameResManager.1
  * JD-Core Version:    0.7.0.1
  */

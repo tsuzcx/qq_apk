@@ -43,59 +43,54 @@ final class d$a
   
   static a a(d.b paramb)
   {
-    if (d.a(paramb) != 538247942) {
-      throw new IOException();
+    if (d.a(paramb) == 538247942) {
+      return new a(d.a(paramb), d.a(paramb), d.b(paramb), d.b(paramb), d.b(paramb), d.b(paramb), d.b(paramb));
     }
-    return new a(d.a(paramb), d.a(paramb), d.b(paramb), d.b(paramb), d.b(paramb), d.b(paramb), d.b(paramb));
+    throw new IOException();
   }
   
   final boolean a(OutputStream paramOutputStream)
   {
-    for (;;)
+    try
     {
-      try
+      d.a(paramOutputStream, 538247942);
+      d.a(paramOutputStream, this.b);
+      if (this.c == null) {
+        localObject = "";
+      } else {
+        localObject = this.c;
+      }
+      d.a(paramOutputStream, (String)localObject);
+      d.a(paramOutputStream, this.d);
+      d.a(paramOutputStream, this.e);
+      d.a(paramOutputStream, this.f);
+      d.a(paramOutputStream, this.g);
+      Object localObject = this.h;
+      if (localObject != null)
       {
-        d.a(paramOutputStream, 538247942);
-        d.a(paramOutputStream, this.b);
-        if (this.c == null)
+        d.a(paramOutputStream, ((Map)localObject).size());
+        localObject = ((Map)localObject).entrySet().iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          localObject = "";
-          d.a(paramOutputStream, (String)localObject);
-          d.a(paramOutputStream, this.d);
-          d.a(paramOutputStream, this.e);
-          d.a(paramOutputStream, this.f);
-          d.a(paramOutputStream, this.g);
-          localObject = this.h;
-          if (localObject == null) {
-            break;
-          }
-          d.a(paramOutputStream, ((Map)localObject).size());
-          localObject = ((Map)localObject).entrySet().iterator();
-          if (!((Iterator)localObject).hasNext()) {
-            break label172;
-          }
           Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
           d.a(paramOutputStream, (String)localEntry.getKey());
           d.a(paramOutputStream, (String)localEntry.getValue());
-          continue;
         }
-        Object localObject = this.c;
       }
-      catch (IOException paramOutputStream)
-      {
-        u.b("%s", new Object[] { paramOutputStream.toString() });
-        return false;
-      }
+      d.a(paramOutputStream, 0);
+      paramOutputStream.flush();
+      return true;
     }
-    d.a(paramOutputStream, 0);
-    label172:
-    paramOutputStream.flush();
-    return true;
+    catch (IOException paramOutputStream)
+    {
+      u.b("%s", new Object[] { paramOutputStream.toString() });
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.a.d.a
  * JD-Core Version:    0.7.0.1
  */

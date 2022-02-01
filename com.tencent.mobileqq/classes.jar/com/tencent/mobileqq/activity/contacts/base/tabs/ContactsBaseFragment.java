@@ -5,39 +5,40 @@ import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.activity.contacts.base.HeaderScrollHelper.ScrollableContainer;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 
 public abstract class ContactsBaseFragment
-  extends ReportV4Fragment
+  extends BaseFragment
   implements HeaderScrollHelper.ScrollableContainer, AbsListView.OnScrollListener
 {
   public static Rect a;
   private int a;
   protected ContactsBaseFragment.FragmentLifeListener a;
-  public ContactsBaseFragment.RefreshDataListener a;
-  public BaseActivity a;
-  public QQAppInterface a;
+  protected ContactsBaseFragment.RefreshDataListener a;
+  protected BaseActivity a;
+  protected QQAppInterface a;
   public boolean a;
   private int b;
   protected View b;
   public boolean b;
   protected boolean c = false;
   
-  static
+  private void a(View paramView, int paramInt)
   {
-    jdField_a_of_type_AndroidGraphicsRect = null;
+    if ((paramInt != -1) && (paramView != null)) {
+      paramView.setPadding(0, 0, 0, paramInt);
+    }
   }
   
   public int a()
@@ -71,7 +72,8 @@ public abstract class ContactsBaseFragment
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramQQAppInterface != this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if ((localQQAppInterface != null) && (paramQQAppInterface != localQQAppInterface)) {
       e();
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
@@ -80,7 +82,7 @@ public abstract class ContactsBaseFragment
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract void ag_();
+  public abstract void ae_();
   
   public int b()
   {
@@ -88,6 +90,11 @@ public abstract class ContactsBaseFragment
   }
   
   public abstract void b(boolean paramBoolean);
+  
+  public void b(boolean paramBoolean, int paramInt)
+  {
+    a(a(), paramInt);
+  }
   
   public abstract void c();
   
@@ -104,14 +111,13 @@ public abstract class ContactsBaseFragment
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_b_of_type_AndroidViewView != null)
     {
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         a(true);
+        return;
       }
+      b(true);
     }
-    else {
-      return;
-    }
-    b(true);
   }
   
   protected abstract void e();
@@ -120,8 +126,6 @@ public abstract class ContactsBaseFragment
   {
     this.jdField_b_of_type_Int = paramInt;
   }
-  
-  public void e(boolean paramBoolean) {}
   
   public void f() {}
   
@@ -134,16 +138,26 @@ public abstract class ContactsBaseFragment
   
   public void onAttach(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onAttach");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pos:");
+      localStringBuilder.append(b());
+      localStringBuilder.append(" onAttach");
+      QLog.d("Contacts.BaseFragment", 2, localStringBuilder.toString());
     }
     super.onAttach(paramActivity);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onCreate");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pos:");
+      localStringBuilder.append(b());
+      localStringBuilder.append(" onCreate");
+      QLog.d("Contacts.BaseFragment", 2, localStringBuilder.toString());
     }
     super.onCreate(paramBundle);
   }
@@ -151,8 +165,13 @@ public abstract class ContactsBaseFragment
   @TargetApi(16)
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onCreateView");
+    if (QLog.isColorLevel())
+    {
+      paramViewGroup = new StringBuilder();
+      paramViewGroup.append("pos:");
+      paramViewGroup.append(b());
+      paramViewGroup.append(" onCreateView");
+      QLog.d("Contacts.BaseFragment", 2, paramViewGroup.toString());
     }
     this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
     paramLayoutInflater = a();
@@ -168,14 +187,19 @@ public abstract class ContactsBaseFragment
       a(true);
     }
     paramLayoutInflater = this.jdField_b_of_type_AndroidViewView;
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onDestroy");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("pos:");
+      ((StringBuilder)localObject).append(b());
+      ((StringBuilder)localObject).append(" onDestroy");
+      QLog.d("Contacts.BaseFragment", 2, ((StringBuilder)localObject).toString());
     }
     super.onDestroy();
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
@@ -183,23 +207,34 @@ public abstract class ContactsBaseFragment
     }
     this.jdField_b_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$FragmentLifeListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$FragmentLifeListener.a(this.jdField_a_of_type_Int);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$FragmentLifeListener;
+    if (localObject != null) {
+      ((ContactsBaseFragment.FragmentLifeListener)localObject).a(this.jdField_a_of_type_Int);
     }
   }
   
   public void onDestroyView()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onDestroyView");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pos:");
+      localStringBuilder.append(b());
+      localStringBuilder.append(" onDestroyView");
+      QLog.d("Contacts.BaseFragment", 2, localStringBuilder.toString());
     }
     super.onDestroyView();
   }
   
   public void onDetach()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onDetach");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pos:");
+      localStringBuilder.append(b());
+      localStringBuilder.append(" onDetach");
+      QLog.d("Contacts.BaseFragment", 2, localStringBuilder.toString());
     }
     super.onDetach();
   }
@@ -208,20 +243,20 @@ public abstract class ContactsBaseFragment
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramAbsListView == null) {}
-    do
-    {
+    if (paramAbsListView == null) {
       return;
-      if (paramInt != 0) {
-        ApngImage.pauseByTag(3);
-      }
-    } while (paramInt != 0);
-    ApngImage.playByTag(3);
+    }
+    if (paramInt != 0) {
+      ApngImage.pauseByTag(3);
+    }
+    if (paramInt == 0) {
+      ApngImage.playByTag(3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment
  * JD-Core Version:    0.7.0.1
  */

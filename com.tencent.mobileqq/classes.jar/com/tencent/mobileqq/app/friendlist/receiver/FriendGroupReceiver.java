@@ -39,32 +39,28 @@ public class FriendGroupReceiver
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i;
     if ("friendlist.MovGroupMemReq".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      i = paramToServiceMsg.extraData.getByte("move_fri_type");
-      if (i != 0) {
-        break label51;
+      int i = paramToServiceMsg.extraData.getByte("move_fri_type");
+      if (i == 0)
+      {
+        if (paramObject != null)
+        {
+          a(paramToServiceMsg, (MovGroupMemResp)paramObject);
+          return;
+        }
+        a(9, false, null);
+        return;
       }
-      if (paramObject == null) {
-        break label42;
+      if ((i == 1) && (paramObject != null)) {
+        paramToServiceMsg = (MovGroupMemResp)paramObject;
       }
-      a(paramToServiceMsg, (MovGroupMemResp)paramObject);
     }
-    label42:
-    label51:
-    while ((i != 1) || (paramObject == null))
-    {
-      return;
-      a(9, false, null);
-      return;
-    }
-    paramToServiceMsg = (MovGroupMemResp)paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.FriendGroupReceiver
  * JD-Core Version:    0.7.0.1
  */

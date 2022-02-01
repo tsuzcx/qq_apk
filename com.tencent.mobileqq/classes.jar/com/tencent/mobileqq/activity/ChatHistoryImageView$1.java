@@ -16,27 +16,31 @@ class ChatHistoryImageView$1
   
   public void run()
   {
-    if (this.this$0.h) {}
-    do
-    {
+    if (this.this$0.h) {
       return;
-      Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.b(this.a);
-      if ((localObject != null) && (QLog.isColorLevel())) {
-        QLog.i("ChatHistoryImageView", 2, "onRevokeMsg, seq:" + ((ChatMessage)localObject).uniseq);
-      }
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a(this.a);
-      if (localObject != null)
-      {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.b((AIORichMediaInfo)localObject);
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.notifyDataSetChanged();
-      }
-    } while ((!this.this$0.g) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.f != this.a));
-    AIOGalleryMsgRevokeMgr.a(this.this$0.jdField_a_of_type_AndroidAppActivity);
+    }
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.b(this.a);
+    if ((localObject != null) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRevokeMsg, seq:");
+      localStringBuilder.append(((ChatMessage)localObject).uniseq);
+      QLog.i("ChatHistoryImageView", 2, localStringBuilder.toString());
+    }
+    localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a(this.a);
+    if (localObject != null)
+    {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.b((AIORichMediaInfo)localObject);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.notifyDataSetChanged();
+    }
+    if ((this.this$0.g) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.f == this.a)) {
+      AIOGalleryMsgRevokeMgr.a(this.this$0.jdField_a_of_type_AndroidAppActivity);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryImageView.1
  * JD-Core Version:    0.7.0.1
  */

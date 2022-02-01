@@ -29,8 +29,9 @@ public class MagicHeadWriter
   
   public boolean prepareToWrite()
   {
+    MappedByteBuffer localMappedByteBuffer = this.cacheFileMmapBuffer;
     boolean bool = false;
-    int i = this.cacheFileMmapBuffer.getInt(0);
+    int i = localMappedByteBuffer.getInt(0);
     int j = this.cacheFileMmapBuffer.getInt(4);
     if ((j > 0) && (j < this.cacheFileMmapBuffer.capacity() - 8) && ((i == -21937241) || (i == -18239)))
     {
@@ -47,30 +48,34 @@ public class MagicHeadWriter
   public void updateLength()
   {
     MappedByteBuffer localMappedByteBuffer = this.cacheFileMmapBuffer;
-    if (this.compress) {}
-    for (int i = -21937241;; i = -18239)
-    {
-      localMappedByteBuffer.putInt(0, i);
-      this.cacheFileMmapBuffer.putInt(4, this.cacheFileMmapBuffer.position() - 8);
-      return;
+    int i;
+    if (this.compress) {
+      i = -21937241;
+    } else {
+      i = -18239;
     }
+    localMappedByteBuffer.putInt(0, i);
+    localMappedByteBuffer = this.cacheFileMmapBuffer;
+    localMappedByteBuffer.putInt(4, localMappedByteBuffer.position() - 8);
   }
   
   public void writeInitLength()
   {
     MappedByteBuffer localMappedByteBuffer = this.cacheFileMmapBuffer;
-    if (this.compress) {}
-    for (int i = -21937241;; i = -18239)
-    {
-      localMappedByteBuffer.putInt(i);
-      this.cacheFileMmapBuffer.putInt(this.cacheFileMmapBuffer.position() - 8);
-      return;
+    int i;
+    if (this.compress) {
+      i = -21937241;
+    } else {
+      i = -18239;
     }
+    localMappedByteBuffer.putInt(i);
+    localMappedByteBuffer = this.cacheFileMmapBuffer;
+    localMappedByteBuffer.putInt(localMappedByteBuffer.position() - 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.utils.MagicHeadWriter
  * JD-Core Version:    0.7.0.1
  */

@@ -64,7 +64,8 @@
                                 "pts:on-tap": "{{$RIJArticle.rowKey}}",
                                 "data-event-type": "{{'allInOneJump'}}",
                                 "data-jump-url": "{{swiperItemData.jump_url}}",
-                                "data-r5": "{{swiperItemData.inner_report_params}}"
+                                "data-r5": "{{swiperItemData.inner_report_params}}",
+                                "data-rowkey": "{{swiperItemData.rowkey}}"
                             },
                             "styles": {
                                 "display": "flex",

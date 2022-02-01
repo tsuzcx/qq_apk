@@ -11,7 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QFileDatalineConfigBean
-  implements IQStorageSafable<String>
+  implements IQFileDatalineConfigBean, IQStorageSafable<String>
 {
   public long a;
   public String a;
@@ -29,6 +29,11 @@ public class QFileDatalineConfigBean
     this.jdField_a_of_type_JavaLangString = "{}";
   }
   
+  public long a()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
   public void a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -43,20 +48,20 @@ public class QFileDatalineConfigBean
         return;
       }
       this.jdField_a_of_type_Boolean = paramString.getBoolean("switch");
-      if (paramString.has("options"))
+      if (!paramString.has("options")) {
+        return;
+      }
+      paramString = paramString.getJSONObject("options");
+      if (paramString.has("offline"))
       {
-        paramString = paramString.getJSONObject("options");
-        if (paramString.has("offline"))
-        {
-          JSONObject localJSONObject = paramString.getJSONObject("offline");
-          this.jdField_a_of_type_Long = localJSONObject.getLong("onlyofflinesize");
-          this.jdField_b_of_type_Long = localJSONObject.getLong("autodown");
-        }
-        if (paramString.has("wlan"))
-        {
-          this.c = paramString.getJSONObject("wlan").getLong("offlinedealy");
-          return;
-        }
+        JSONObject localJSONObject = paramString.getJSONObject("offline");
+        this.jdField_a_of_type_Long = localJSONObject.getLong("onlyofflinesize");
+        this.jdField_b_of_type_Long = localJSONObject.getLong("autodown");
+      }
+      if (paramString.has("wlan"))
+      {
+        this.c = paramString.getJSONObject("wlan").getLong("offlinedealy");
+        return;
       }
     }
     catch (JSONException paramString)
@@ -67,51 +72,80 @@ public class QFileDatalineConfigBean
   
   public void a(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
-    label225:
-    for (;;)
+    try
     {
-      try
-      {
-        JSONObject localJSONObject4 = new JSONObject();
-        localJSONObject4.put("switch", paramBoolean);
-        Object localObject = localJSONObject4.optJSONObject("options");
-        if (localObject != null) {
-          break label225;
-        }
-        localObject = new JSONObject();
-        JSONObject localJSONObject1 = localJSONObject4.optJSONObject("offline");
-        if (localJSONObject1 == null)
-        {
-          localJSONObject1 = new JSONObject();
-          JSONObject localJSONObject3 = localJSONObject4.optJSONObject("wlan");
-          JSONObject localJSONObject2 = localJSONObject3;
-          if (localJSONObject3 == null) {
-            localJSONObject2 = new JSONObject();
-          }
-          localJSONObject1.put("onlyofflinesize", this.jdField_a_of_type_Long);
-          localJSONObject1.put("autodown", this.jdField_b_of_type_Long);
-          localJSONObject2.put("offlinedealy", this.c);
-          ((JSONObject)localObject).putOpt("offline", localJSONObject1);
-          ((JSONObject)localObject).putOpt("wlan", localJSONObject2);
-          localJSONObject4.putOpt("options", localObject);
-          localObject = localJSONObject4.toString();
-          paramAppRuntime = paramAppRuntime.getApplicationContext().getSharedPreferences("file_config_" + paramAppRuntime.getCurrentUin(), 4).edit();
-          paramAppRuntime.putString("file_dataline_key", (String)localObject);
-          paramAppRuntime.apply();
-          return;
-        }
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("switch", paramBoolean);
+      Object localObject2 = localJSONObject2.optJSONObject("options");
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new JSONObject();
       }
-      catch (JSONException paramAppRuntime)
-      {
-        QLog.e("QFileDatalineConfigBean", 1, QLog.getStackTraceString(paramAppRuntime));
-        return;
+      Object localObject3 = localJSONObject2.optJSONObject("offline");
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = new JSONObject();
       }
+      JSONObject localJSONObject1 = localJSONObject2.optJSONObject("wlan");
+      localObject3 = localJSONObject1;
+      if (localJSONObject1 == null) {
+        localObject3 = new JSONObject();
+      }
+      ((JSONObject)localObject2).put("onlyofflinesize", this.jdField_a_of_type_Long);
+      ((JSONObject)localObject2).put("autodown", this.jdField_b_of_type_Long);
+      ((JSONObject)localObject3).put("offlinedealy", this.c);
+      ((JSONObject)localObject1).putOpt("offline", localObject2);
+      ((JSONObject)localObject1).putOpt("wlan", localObject3);
+      localJSONObject2.putOpt("options", localObject1);
+      localObject1 = localJSONObject2.toString();
+      localObject2 = paramAppRuntime.getApplicationContext();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("file_config_");
+      ((StringBuilder)localObject3).append(paramAppRuntime.getCurrentUin());
+      paramAppRuntime = ((Context)localObject2).getSharedPreferences(((StringBuilder)localObject3).toString(), 4).edit();
+      paramAppRuntime.putString("file_dataline_key", (String)localObject1);
+      paramAppRuntime.apply();
+      return;
     }
+    catch (JSONException paramAppRuntime)
+    {
+      QLog.e("QFileDatalineConfigBean", 1, QLog.getStackTraceString(paramAppRuntime));
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public long c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileDatalineConfigBean
  * JD-Core Version:    0.7.0.1
  */

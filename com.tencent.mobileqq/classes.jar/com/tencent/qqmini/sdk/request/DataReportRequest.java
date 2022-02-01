@@ -39,33 +39,35 @@ public class DataReportRequest
   public JSONObject getResponse(byte[] paramArrayOfByte, JSONObject paramJSONObject)
   {
     if (paramArrayOfByte == null) {
-      paramJSONObject = null;
+      return null;
     }
-    for (;;)
+    try
     {
-      return paramJSONObject;
-      try
-      {
-        APP_REPORT_TRANSFER.StDataReportRsp localStDataReportRsp = new APP_REPORT_TRANSFER.StDataReportRsp();
-        localStDataReportRsp.mergeFrom(paramArrayOfByte);
-        int i = localStDataReportRsp.ret.get();
-        if (i != 0)
-        {
-          QMLog.d("ProtoBufRequest", "onResponse fail.retCode = " + i);
-          return null;
-        }
+      APP_REPORT_TRANSFER.StDataReportRsp localStDataReportRsp = new APP_REPORT_TRANSFER.StDataReportRsp();
+      localStDataReportRsp.mergeFrom(paramArrayOfByte);
+      int i = localStDataReportRsp.ret.get();
+      if (i == 0) {
+        return paramJSONObject;
       }
-      catch (Exception paramArrayOfByte)
-      {
-        QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-      }
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("onResponse fail.retCode = ");
+      paramArrayOfByte.append(i);
+      QMLog.d("ProtoBufRequest", paramArrayOfByte.toString());
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("ProtoBufRequest", paramJSONObject.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.DataReportRequest
  * JD-Core Version:    0.7.0.1
  */

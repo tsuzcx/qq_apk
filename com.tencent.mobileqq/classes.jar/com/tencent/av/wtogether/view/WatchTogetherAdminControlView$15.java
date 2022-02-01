@@ -13,7 +13,7 @@ class WatchTogetherAdminControlView$15
   {
     WatchTogetherAdminControlView.a(this.this$0).setMax(this.a);
     WatchTogetherAdminControlView.a(this.this$0).setProgress(0);
-    this.this$0.b.setImageResource(2130842492);
+    this.this$0.b.setImageResource(2130842391);
     WatchTogetherAdminControlView.i(this.this$0);
     this.this$0.a.setVisibility(8);
     WatchTogetherAdminControlView.a(this.this$0);
@@ -21,7 +21,7 @@ class WatchTogetherAdminControlView$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.view.WatchTogetherAdminControlView.15
  * JD-Core Version:    0.7.0.1
  */

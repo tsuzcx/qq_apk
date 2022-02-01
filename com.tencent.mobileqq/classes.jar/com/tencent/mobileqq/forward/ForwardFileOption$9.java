@@ -12,21 +12,28 @@ class ForwardFileOption$9
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(25, 0, 0, 0));
+    if (paramMotionEvent.getAction() == 0)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewView;
+      if (paramView != null)
+      {
+        paramView.setBackgroundColor(Color.argb(25, 0, 0, 0));
+        return false;
       }
     }
-    while ((paramMotionEvent.getAction() != 1) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return false;
+    else if (paramMotionEvent.getAction() == 1)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewView;
+      if (paramView != null) {
+        paramView.setBackgroundColor(Color.argb(0, 0, 0, 0));
+      }
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(0, 0, 0, 0));
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardFileOption.9
  * JD-Core Version:    0.7.0.1
  */

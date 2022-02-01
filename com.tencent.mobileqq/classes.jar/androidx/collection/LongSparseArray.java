@@ -59,7 +59,8 @@ public class LongSparseArray<E>
   
   public void append(long paramLong, E paramE)
   {
-    if ((this.mSize != 0) && (paramLong <= this.mKeys[(this.mSize - 1)]))
+    int i = this.mSize;
+    if ((i != 0) && (paramLong <= this.mKeys[(i - 1)]))
     {
       put(paramLong, paramE);
       return;
@@ -67,14 +68,16 @@ public class LongSparseArray<E>
     if ((this.mGarbage) && (this.mSize >= this.mKeys.length)) {
       gc();
     }
-    int i = this.mSize;
+    i = this.mSize;
     if (i >= this.mKeys.length)
     {
       int j = ContainerHelpers.idealLongArraySize(i + 1);
       long[] arrayOfLong = new long[j];
       Object[] arrayOfObject = new Object[j];
-      System.arraycopy(this.mKeys, 0, arrayOfLong, 0, this.mKeys.length);
-      System.arraycopy(this.mValues, 0, arrayOfObject, 0, this.mValues.length);
+      Object localObject = this.mKeys;
+      System.arraycopy(localObject, 0, arrayOfLong, 0, localObject.length);
+      localObject = this.mValues;
+      System.arraycopy(localObject, 0, arrayOfObject, 0, localObject.length);
       this.mKeys = arrayOfLong;
       this.mValues = arrayOfObject;
     }
@@ -137,10 +140,15 @@ public class LongSparseArray<E>
   public E get(long paramLong, E paramE)
   {
     int i = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramLong);
-    if ((i < 0) || (this.mValues[i] == DELETED)) {
-      return paramE;
+    if (i >= 0)
+    {
+      Object[] arrayOfObject = this.mValues;
+      if (arrayOfObject[i] == DELETED) {
+        return paramE;
+      }
+      return arrayOfObject[i];
     }
-    return this.mValues[i];
+    return paramE;
   }
   
   public int indexOfKey(long paramLong)
@@ -189,11 +197,16 @@ public class LongSparseArray<E>
       return;
     }
     int j = i ^ 0xFFFFFFFF;
-    if ((j < this.mSize) && (this.mValues[j] == DELETED))
+    Object localObject1;
+    if (j < this.mSize)
     {
-      this.mKeys[j] = paramLong;
-      this.mValues[j] = paramE;
-      return;
+      localObject1 = this.mValues;
+      if (localObject1[j] == DELETED)
+      {
+        this.mKeys[j] = paramLong;
+        localObject1[j] = paramE;
+        return;
+      }
     }
     i = j;
     if (this.mGarbage)
@@ -205,20 +218,27 @@ public class LongSparseArray<E>
         i = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramLong) ^ 0xFFFFFFFF;
       }
     }
-    if (this.mSize >= this.mKeys.length)
+    j = this.mSize;
+    if (j >= this.mKeys.length)
     {
-      j = ContainerHelpers.idealLongArraySize(this.mSize + 1);
-      long[] arrayOfLong = new long[j];
+      j = ContainerHelpers.idealLongArraySize(j + 1);
+      localObject1 = new long[j];
       Object[] arrayOfObject = new Object[j];
-      System.arraycopy(this.mKeys, 0, arrayOfLong, 0, this.mKeys.length);
-      System.arraycopy(this.mValues, 0, arrayOfObject, 0, this.mValues.length);
-      this.mKeys = arrayOfLong;
+      Object localObject2 = this.mKeys;
+      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
+      localObject2 = this.mValues;
+      System.arraycopy(localObject2, 0, arrayOfObject, 0, localObject2.length);
+      this.mKeys = ((long[])localObject1);
       this.mValues = arrayOfObject;
     }
-    if (this.mSize - i != 0)
+    j = this.mSize;
+    if (j - i != 0)
     {
-      System.arraycopy(this.mKeys, i, this.mKeys, i + 1, this.mSize - i);
-      System.arraycopy(this.mValues, i, this.mValues, i + 1, this.mSize - i);
+      localObject1 = this.mKeys;
+      int k = i + 1;
+      System.arraycopy(localObject1, i, localObject1, k, j - i);
+      localObject1 = this.mValues;
+      System.arraycopy(localObject1, i, localObject1, k, this.mSize - i);
     }
     this.mKeys[i] = paramLong;
     this.mValues[i] = paramE;
@@ -227,8 +247,8 @@ public class LongSparseArray<E>
   
   public void putAll(@NonNull LongSparseArray<? extends E> paramLongSparseArray)
   {
-    int i = 0;
     int j = paramLongSparseArray.size();
+    int i = 0;
     while (i < j)
     {
       put(paramLongSparseArray.keyAt(i), paramLongSparseArray.valueAt(i));
@@ -249,10 +269,16 @@ public class LongSparseArray<E>
   public void remove(long paramLong)
   {
     int i = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramLong);
-    if ((i >= 0) && (this.mValues[i] != DELETED))
+    if (i >= 0)
     {
-      this.mValues[i] = DELETED;
-      this.mGarbage = true;
+      Object[] arrayOfObject = this.mValues;
+      Object localObject1 = arrayOfObject[i];
+      Object localObject2 = DELETED;
+      if (localObject1 != localObject2)
+      {
+        arrayOfObject[i] = localObject2;
+        this.mGarbage = true;
+      }
     }
   }
   
@@ -273,9 +299,12 @@ public class LongSparseArray<E>
   
   public void removeAt(int paramInt)
   {
-    if (this.mValues[paramInt] != DELETED)
+    Object[] arrayOfObject = this.mValues;
+    Object localObject1 = arrayOfObject[paramInt];
+    Object localObject2 = DELETED;
+    if (localObject1 != localObject2)
     {
-      this.mValues[paramInt] = DELETED;
+      arrayOfObject[paramInt] = localObject2;
       this.mGarbage = true;
     }
   }
@@ -286,8 +315,9 @@ public class LongSparseArray<E>
     int i = indexOfKey(paramLong);
     if (i >= 0)
     {
-      Object localObject = this.mValues[i];
-      this.mValues[i] = paramE;
+      Object[] arrayOfObject = this.mValues;
+      Object localObject = arrayOfObject[i];
+      arrayOfObject[i] = paramE;
       return localObject;
     }
     return null;
@@ -332,7 +362,7 @@ public class LongSparseArray<E>
     StringBuilder localStringBuilder = new StringBuilder(this.mSize * 28);
     localStringBuilder.append('{');
     int i = 0;
-    if (i < this.mSize)
+    while (i < this.mSize)
     {
       if (i > 0) {
         localStringBuilder.append(", ");
@@ -342,13 +372,10 @@ public class LongSparseArray<E>
       Object localObject = valueAt(i);
       if (localObject != this) {
         localStringBuilder.append(localObject);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localStringBuilder.append("(this Map)");
       }
+      i += 1;
     }
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -364,7 +391,7 @@ public class LongSparseArray<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.collection.LongSparseArray
  * JD-Core Version:    0.7.0.1
  */

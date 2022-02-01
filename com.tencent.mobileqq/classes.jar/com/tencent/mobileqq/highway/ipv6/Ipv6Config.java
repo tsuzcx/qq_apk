@@ -42,11 +42,18 @@ public class Ipv6Config
   private static Ipv6Flags readFromSP()
   {
     Ipv6Flags localIpv6Flags = new Ipv6Flags();
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-    localIpv6Flags.mRMDownStrategy = localSharedPreferences.getInt("ipv6_strategy_rm_down", 0);
-    localIpv6Flags.mBdhStrategy = localSharedPreferences.getInt("ipv6_strategy_bdh", 0);
-    localIpv6Flags.mConnAttemptDelay = localSharedPreferences.getInt("ipv6_strategy_cad", 0);
-    BdhLogUtil.LogEvent("E", "readFromSP: sRMDownStrategy = " + localIpv6Flags.mRMDownStrategy + ", sBdhStrategy = " + localIpv6Flags.mBdhStrategy + ", sConnAttemptDelay = " + localIpv6Flags.mConnAttemptDelay);
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
+    localIpv6Flags.mRMDownStrategy = ((SharedPreferences)localObject).getInt("ipv6_strategy_rm_down", 0);
+    localIpv6Flags.mBdhStrategy = ((SharedPreferences)localObject).getInt("ipv6_strategy_bdh", 0);
+    localIpv6Flags.mConnAttemptDelay = ((SharedPreferences)localObject).getInt("ipv6_strategy_cad", 0);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("readFromSP: sRMDownStrategy = ");
+    ((StringBuilder)localObject).append(localIpv6Flags.mRMDownStrategy);
+    ((StringBuilder)localObject).append(", sBdhStrategy = ");
+    ((StringBuilder)localObject).append(localIpv6Flags.mBdhStrategy);
+    ((StringBuilder)localObject).append(", sConnAttemptDelay = ");
+    ((StringBuilder)localObject).append(localIpv6Flags.mConnAttemptDelay);
+    BdhLogUtil.LogEvent("E", ((StringBuilder)localObject).toString());
     return localIpv6Flags;
   }
   
@@ -54,7 +61,14 @@ public class Ipv6Config
   {
     try
     {
-      BdhLogUtil.LogEvent("E", "Ipv6Config.updateCfgFromSrv: rmDownStrategy = " + paramInt1 + ", bdhStrategy = " + paramInt2 + ", connAttemptDelay = " + paramInt3);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Ipv6Config.updateCfgFromSrv: rmDownStrategy = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", bdhStrategy = ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", connAttemptDelay = ");
+      localStringBuilder.append(paramInt3);
+      BdhLogUtil.LogEvent("E", localStringBuilder.toString());
       sIpv6Flags = new Ipv6Flags(paramInt1, paramInt2, paramInt3);
       persistCfg(paramContext, paramInt1, paramInt2, paramInt3);
       return;
@@ -68,7 +82,7 @@ public class Ipv6Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.ipv6.Ipv6Config
  * JD-Core Version:    0.7.0.1
  */

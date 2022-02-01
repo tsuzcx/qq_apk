@@ -22,7 +22,7 @@ public class QQMapActivity$MapRuntime
     this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QQMapActivity.MapRuntime.1(this);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     this.jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
     Thread.setDefaultUncaughtExceptionHandler(this);
@@ -31,7 +31,10 @@ public class QQMapActivity$MapRuntime
     paramBundle.addAction("com.tencent.process.exit");
     paramBundle.addAction("mqq.intent.action.ACCOUNT_CHANGED");
     paramBundle.addAction("mqq.intent.action.LOGOUT");
-    paramBundle.addAction("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mqq.intent.action.EXIT_");
+    localStringBuilder.append(MobileQQ.getMobileQQ().getPackageName());
+    paramBundle.addAction(localStringBuilder.toString());
     MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     Step.AmStepFactory.b(12, BaseApplicationImpl.sDirector, null).step();
   }
@@ -39,14 +42,15 @@ public class QQMapActivity$MapRuntime
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
     PluginRuntime.handleCrash(paramThrowable, "QQMapActivity", MobileQQ.getContext());
-    if (this.jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler != null) {
-      this.jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler.uncaughtException(paramThread, paramThrowable);
+    Thread.UncaughtExceptionHandler localUncaughtExceptionHandler = this.jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler;
+    if (localUncaughtExceptionHandler != null) {
+      localUncaughtExceptionHandler.uncaughtException(paramThread, paramThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.MapRuntime
  * JD-Core Version:    0.7.0.1
  */

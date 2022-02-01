@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.api.IFMSettings;
 import com.tencent.mobileqq.filemanager.settings.FMSettings;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.troop.filemanager.TroopFileTransferRetryController;
@@ -73,25 +74,30 @@ public class TroopFileDownloader
   
   public static ITroopFileDownloader a(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
   {
-    String str = "";
+    String str;
     if (paramString1 == null) {
       str = "strSavePath is null";
+    } else if (paramString1.length() == 0) {
+      str = "strSavePath is empty";
+    } else if (paramList == null) {
+      str = "lstUrl is null";
+    } else if (paramList.size() == 0) {
+      str = "lstUrl is empty";
+    } else if (paramString2 == null) {
+      str = "urlParams is null";
+    } else if (paramString2.length() == 0) {
+      str = "urlParams is empty";
+    } else {
+      str = "";
     }
-    while (!TextUtils.isEmpty(str))
+    if (!TextUtils.isEmpty(str))
     {
-      TroopFileTransferUtil.Log.a("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "getFileDownloader " + str);
+      int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("getFileDownloader ");
+      paramQQAppInterface.append(str);
+      TroopFileTransferUtil.Log.a("TroopFileDownloader", i, paramQQAppInterface.toString());
       return null;
-      if (paramString1.length() == 0) {
-        str = "strSavePath is empty";
-      } else if (paramList == null) {
-        str = "lstUrl is null";
-      } else if (paramList.size() == 0) {
-        str = "lstUrl is empty";
-      } else if (paramString2 == null) {
-        str = "urlParams is null";
-      } else if (paramString2.length() == 0) {
-        str = "urlParams is empty";
-      }
     }
     return new TroopFileDownloader(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean, paramString4);
   }
@@ -116,18 +122,30 @@ public class TroopFileDownloader
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    TroopFileTransferUtil.Log.c("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] reDownload mstrUrl:" + this.jdField_a_of_type_JavaLangString);
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+    ((StringBuilder)localObject).append("] reDownload mstrUrl:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    TroopFileTransferUtil.Log.c("TroopFileDownloader", i, ((StringBuilder)localObject).toString());
     g();
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink.d();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink;
+    if (localObject != null) {
+      ((ITroopFileDownloaderSink)localObject).d();
     }
     this.jdField_d_of_type_Long = FileManagerUtil.a(this.jdField_d_of_type_JavaLangString);
-    if (!NetworkUtil.g(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
     {
       a(true, 9004, "no net work", "");
       return;
     }
     d();
+  }
+  
+  public long a()
+  {
+    return 100L;
   }
   
   public void a() {}
@@ -162,26 +180,39 @@ public class TroopFileDownloader
       a(true, paramInt, paramString1, paramString2);
       return;
     }
-    if (b(paramString1)) {
-      paramInt = 9042;
-    }
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (b(paramString1))
     {
-      if (!NetworkUtil.d(BaseApplication.getContext()))
-      {
-        a(true, 9004, paramString1, paramString2);
-        return;
-      }
-      this.jdField_c_of_type_Boolean = false;
-      TroopFileTransferUtil.Log.a("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] onErr errCode:" + paramInt + " errMsg:" + paramString1 + " rspHeader:" + paramString2);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferRetryController.a(this.jdField_a_of_type_JavaLangString, paramInt, bool))
-      {
-        a(false, paramInt, paramString1, paramString2);
-        return;
-      }
-      a(true, paramInt, paramString1, paramString2);
+      paramInt = 9042;
+      bool = true;
+    }
+    else
+    {
+      bool = false;
+    }
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    {
+      a(true, 9004, paramString1, paramString2);
       return;
     }
+    this.jdField_c_of_type_Boolean = false;
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    paramHttpMsg = new StringBuilder();
+    paramHttpMsg.append("[");
+    paramHttpMsg.append(this.jdField_b_of_type_Long);
+    paramHttpMsg.append("] onErr errCode:");
+    paramHttpMsg.append(paramInt);
+    paramHttpMsg.append(" errMsg:");
+    paramHttpMsg.append(paramString1);
+    paramHttpMsg.append(" rspHeader:");
+    paramHttpMsg.append(paramString2);
+    TroopFileTransferUtil.Log.a("TroopFileDownloader", i, paramHttpMsg.toString());
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferRetryController.a(this.jdField_a_of_type_JavaLangString, paramInt, bool))
+    {
+      a(false, paramInt, paramString1, paramString2);
+      return;
+    }
+    a(true, paramInt, paramString1, paramString2);
   }
   
   public void a(ITroopFileDownloaderSink paramITroopFileDownloaderSink)
@@ -193,170 +224,26 @@ public class TroopFileDownloader
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    a(true, 9062, "net redirect", "");
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
-  {
-    long l = 0L;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      f();
-      e();
-      l = System.currentTimeMillis();
-    }
-    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
-    StringBuilder localStringBuilder = new StringBuilder().append("[").append(this.jdField_b_of_type_Long).append("] onErr errCode:").append(paramInt).append(" bFinished:").append(paramBoolean).append(" errMsg:").append(paramString1).append(" rspHeader:").append(paramString2).append(" cost:");
-    if (paramBoolean) {}
-    for (Object localObject = Long.valueOf(l - this.jdField_a_of_type_Long);; localObject = "")
-    {
-      TroopFileTransferUtil.Log.a("TroopFileDownloader", i, localObject);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink.a(paramBoolean, this.jdField_d_of_type_Long, paramInt, paramString1, paramString2, new Bundle());
-      }
-      return;
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte, long paramLong, String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if ((this.jdField_c_of_type_Long == 0L) && (paramLong != 0L))
-          {
-            TroopFileTransferUtil.Log.c("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] onData getted filesize=" + paramLong);
-            this.jdField_c_of_type_Long = paramLong;
-          }
-        } while ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0));
-        try
-        {
-          this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte);
-          paramLong = paramArrayOfByte.length;
-          this.jdField_d_of_type_Long += paramLong;
-          this.f = (paramLong + this.f);
-          if (!this.jdField_c_of_type_Boolean)
-          {
-            this.jdField_c_of_type_Boolean = true;
-            this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferRetryController.a(this.jdField_a_of_type_JavaLangString);
-          }
-          if (this.jdField_d_of_type_Long == this.jdField_c_of_type_Long)
-          {
-            h();
-            return;
-          }
-        }
-        catch (Exception paramArrayOfByte)
-        {
-          if (paramArrayOfByte.getMessage().contains("ENOSPC")) {}
-          a(true, 9301, "write exception", paramString);
-          return;
-        }
-        if (this.jdField_d_of_type_Long > this.jdField_c_of_type_Long)
-        {
-          a(true, -5001, "transfersize > filesize", paramString);
-          return;
-        }
-      } while (!this.jdField_b_of_type_Boolean);
-      paramLong = System.currentTimeMillis();
-    } while (((this.e != 0L) && (paramLong - this.e < 1000L)) || (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink == null));
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink.a(this.jdField_d_of_type_Long, this.jdField_c_of_type_Long);
-  }
-  
-  protected boolean a()
-  {
-    if (!Common.a())
-    {
-      a(true, 9039, "no sdcard", null);
-      return true;
-    }
-    File localFile = new File(this.jdField_d_of_type_JavaLangString);
-    if (!localFile.exists()) {}
-    try
-    {
-      localFile.createNewFile();
-      this.jdField_d_of_type_Long = FileManagerUtil.a(this.jdField_d_of_type_JavaLangString);
-      if (this.jdField_c_of_type_Long == 0L)
-      {
-        TroopFileTransferUtil.Log.b("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] checkexcpover fileSize=0");
-        return false;
-      }
-    }
-    catch (IOException localIOException)
-    {
-      a(true, -5000, "create new file excption", null);
-      return true;
-    }
-    if (this.jdField_d_of_type_Long > this.jdField_c_of_type_Long)
-    {
-      new File(this.jdField_d_of_type_JavaLangString).delete();
-      this.jdField_d_of_type_Long = 0L;
-    }
-    long l1;
-    long l2;
-    do
-    {
-      return false;
-      if (this.jdField_d_of_type_Long == this.jdField_c_of_type_Long)
-      {
-        TroopFileTransferUtil.Log.c("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] checkexcpover tmpfilesize=filesize");
-        h();
-        return true;
-      }
-      l1 = this.jdField_c_of_type_Long;
-      l2 = this.jdField_d_of_type_Long;
-    } while (FMSettings.a().a() >= l1 - l2);
-    a(true, 9040, "no enugh space", null);
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferRetryController.a();
-  }
-  
-  public long b()
-  {
-    return 100L;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    TroopFileTransferUtil.Log.c("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] download url:" + this.jdField_a_of_type_JavaLangString);
-    ThreadManager.post(new TroopFileDownloader.1(this), 8, null, false);
-  }
-  
-  public void b(HttpMsg paramHttpMsg)
-  {
-    paramHttpMsg.setRequestProperty("User-Agent", "TroopFile");
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      paramHttpMsg.setRequestProperty("Cookie", "FTN5K=" + this.jdField_c_of_type_JavaLangString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
     if (this.jdField_a_of_type_Boolean)
     {
-      TroopFileTransferUtil.Log.c("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] onRetry but stoped");
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramString = new StringBuilder();
+      paramString.append("[");
+      paramString.append(this.jdField_b_of_type_Long);
+      paramString.append("] onRetry but stoped");
+      TroopFileTransferUtil.Log.c("TroopFileDownloader", i, paramString.toString());
       return;
     }
     int i = 0;
     if (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))
     {
       i = 1;
-      TroopFileTransferUtil.Log.c("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] onRetry urlChanged");
+      int j = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(this.jdField_b_of_type_Long);
+      localStringBuilder.append("] onRetry urlChanged");
+      TroopFileTransferUtil.Log.c("TroopFileDownloader", j, localStringBuilder.toString());
     }
     this.jdField_a_of_type_JavaLangString = paramString;
     if (i != 0)
@@ -373,6 +260,212 @@ public class TroopFileDownloader
     i();
   }
   
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    long l;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      f();
+      e();
+      l = System.currentTimeMillis();
+    }
+    else
+    {
+      l = 0L;
+    }
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("] onErr errCode:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" bFinished:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" errMsg:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" rspHeader:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" cost:");
+    if (paramBoolean) {
+      localObject = Long.valueOf(l - this.jdField_a_of_type_Long);
+    } else {
+      localObject = "";
+    }
+    localStringBuilder.append(localObject);
+    TroopFileTransferUtil.Log.a("TroopFileDownloader", i, localStringBuilder.toString());
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink;
+    if (localObject != null) {
+      ((ITroopFileDownloaderSink)localObject).a(paramBoolean, this.jdField_d_of_type_Long, paramInt, paramString1, paramString2, new Bundle());
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, long paramLong, String paramString)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if ((this.jdField_c_of_type_Long == 0L) && (paramLong != 0L))
+    {
+      int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(this.jdField_b_of_type_Long);
+      localStringBuilder.append("] onData getted filesize=");
+      localStringBuilder.append(paramLong);
+      TroopFileTransferUtil.Log.c("TroopFileDownloader", i, localStringBuilder.toString());
+      this.jdField_c_of_type_Long = paramLong;
+    }
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length == 0) {
+        return;
+      }
+      try
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte);
+        paramLong = paramArrayOfByte.length;
+        this.jdField_d_of_type_Long += paramLong;
+        this.f += paramLong;
+        if (!this.jdField_c_of_type_Boolean)
+        {
+          this.jdField_c_of_type_Boolean = true;
+          this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferRetryController.a(this.jdField_a_of_type_JavaLangString);
+        }
+        paramLong = this.jdField_d_of_type_Long;
+        long l = this.jdField_c_of_type_Long;
+        if (paramLong == l)
+        {
+          h();
+          return;
+        }
+        if (paramLong > l)
+        {
+          a(true, -5001, "transfersize > filesize", paramString);
+          return;
+        }
+        if (this.jdField_b_of_type_Boolean)
+        {
+          paramLong = System.currentTimeMillis();
+          l = this.e;
+          if ((l == 0L) || (paramLong - l >= 1000L))
+          {
+            paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink;
+            if (paramArrayOfByte != null) {
+              paramArrayOfByte.a(this.jdField_d_of_type_Long, this.jdField_c_of_type_Long);
+            }
+          }
+        }
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        paramArrayOfByte.getMessage().contains("ENOSPC");
+        a(true, 9301, "write exception", paramString);
+      }
+    }
+  }
+  
+  protected boolean a()
+  {
+    if (!Common.a())
+    {
+      a(true, 9039, "no sdcard", null);
+      return true;
+    }
+    Object localObject = new File(this.jdField_d_of_type_JavaLangString);
+    if (!((File)localObject).exists()) {}
+    try
+    {
+      ((File)localObject).createNewFile();
+    }
+    catch (IOException localIOException)
+    {
+      label50:
+      long l1;
+      int i;
+      long l2;
+      break label50;
+    }
+    a(true, -5000, "create new file excption", null);
+    return true;
+    this.jdField_d_of_type_Long = FileManagerUtil.a(this.jdField_d_of_type_JavaLangString);
+    l1 = this.jdField_c_of_type_Long;
+    if (l1 == 0L)
+    {
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append("] checkexcpover fileSize=0");
+      TroopFileTransferUtil.Log.b("TroopFileDownloader", i, ((StringBuilder)localObject).toString());
+      return false;
+    }
+    l2 = this.jdField_d_of_type_Long;
+    if (l2 > l1)
+    {
+      new File(this.jdField_d_of_type_JavaLangString).delete();
+      this.jdField_d_of_type_Long = 0L;
+      return false;
+    }
+    if (l2 == l1)
+    {
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append("] checkexcpover tmpfilesize=filesize");
+      TroopFileTransferUtil.Log.c("TroopFileDownloader", i, ((StringBuilder)localObject).toString());
+      h();
+      return true;
+    }
+    if (FMSettings.a().getDefalutStorgeFreeSpace() < l1 - l2)
+    {
+      a(true, 9040, "no enugh space", null);
+      return true;
+    }
+    return false;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferRetryController.a();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("] download url:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    TroopFileTransferUtil.Log.c("TroopFileDownloader", i, localStringBuilder.toString());
+    ThreadManager.post(new TroopFileDownloader.1(this), 8, null, false);
+  }
+  
+  public void b(HttpMsg paramHttpMsg)
+  {
+    paramHttpMsg.setRequestProperty("User-Agent", "TroopFile");
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("FTN5K=");
+      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+      paramHttpMsg.setRequestProperty("Cookie", localStringBuilder.toString());
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    a(true, 9062, "net redirect", "");
+  }
+  
   public boolean b()
   {
     return this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferRetryController.a();
@@ -385,7 +478,12 @@ public class TroopFileDownloader
   
   public void c()
   {
-    TroopFileTransferUtil.Log.c("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] cancelTask");
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("] cancelTask");
+    TroopFileTransferUtil.Log.c("TroopFileDownloader", i, localStringBuilder.toString());
     this.jdField_a_of_type_Boolean = true;
     f();
     e();
@@ -401,7 +499,12 @@ public class TroopFileDownloader
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      TroopFileTransferUtil.Log.a("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] openOutputStream excp");
+      int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(this.jdField_b_of_type_Long);
+      localStringBuilder.append("] openOutputStream excp");
+      TroopFileTransferUtil.Log.a("TroopFileDownloader", i, localStringBuilder.toString());
       this.jdField_a_of_type_JavaIoFileOutputStream = null;
       localFileNotFoundException.printStackTrace();
     }
@@ -436,40 +539,47 @@ public class TroopFileDownloader
   
   protected void f()
   {
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-    try
+    FileOutputStream localFileOutputStream = this.jdField_a_of_type_JavaIoFileOutputStream;
+    if (localFileOutputStream != null)
     {
-      this.jdField_a_of_type_JavaIoFileOutputStream.close();
-      this.jdField_a_of_type_JavaIoFileOutputStream = null;
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      try
       {
-        TroopFileTransferUtil.Log.a("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] closeOutputStream excp");
+        localFileOutputStream.close();
+      }
+      catch (IOException localIOException)
+      {
+        int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(this.jdField_b_of_type_Long);
+        localStringBuilder.append("] closeOutputStream excp");
+        TroopFileTransferUtil.Log.a("TroopFileDownloader", i, localStringBuilder.toString());
         localIOException.printStackTrace();
       }
+      this.jdField_a_of_type_JavaIoFileOutputStream = null;
     }
   }
   
   protected void g()
   {
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream.flush();
-      this.f = 0L;
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+    FileOutputStream localFileOutputStream = this.jdField_a_of_type_JavaIoFileOutputStream;
+    if (localFileOutputStream != null) {
+      try
       {
-        TroopFileTransferUtil.Log.a("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] flushOutputStream excp");
+        localFileOutputStream.flush();
+      }
+      catch (IOException localIOException)
+      {
+        int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(this.jdField_b_of_type_Long);
+        localStringBuilder.append("] flushOutputStream excp");
+        TroopFileTransferUtil.Log.a("TroopFileDownloader", i, localStringBuilder.toString());
         localIOException.printStackTrace();
       }
     }
+    this.f = 0L;
   }
   
   protected void h()
@@ -478,15 +588,22 @@ public class TroopFileDownloader
     f();
     e();
     long l = System.currentTimeMillis();
-    TroopFileTransferUtil.Log.c("TroopFileDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_b_of_type_Long + "] onSuc. cost:" + (l - this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink.a(this.jdField_d_of_type_JavaLangString);
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+    ((StringBuilder)localObject).append("] onSuc. cost:");
+    ((StringBuilder)localObject).append(l - this.jdField_a_of_type_Long);
+    TroopFileTransferUtil.Log.c("TroopFileDownloader", i, ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink;
+    if (localObject != null) {
+      ((ITroopFileDownloaderSink)localObject).a(this.jdField_d_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloader
  * JD-Core Version:    0.7.0.1
  */

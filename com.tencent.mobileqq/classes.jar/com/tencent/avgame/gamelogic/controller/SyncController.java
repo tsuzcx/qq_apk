@@ -1,66 +1,56 @@
 package com.tencent.avgame.gamelogic.controller;
 
 import android.os.SystemClock;
-import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.business.handler.HandlerFactory;
-import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.IGameEngine;
+import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.handler.GameRoomHandler;
 import com.tencent.avgame.gamelogic.listener.SyncListener;
+import com.tencent.common.app.business.BaseAVGameAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class SyncController
   implements SyncListener
 {
   long jdField_a_of_type_Long = 0L;
-  AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
+  BaseAVGameAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface;
   long b = 0L;
   long c = 0L;
   
-  public SyncController(AVGameAppInterface paramAVGameAppInterface)
+  public SyncController(BaseAVGameAppInterface paramBaseAVGameAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface = paramBaseAVGameAppInterface;
   }
   
   private boolean a(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt)
   {
-    boolean bool1 = false;
     long l = this.jdField_a_of_type_Long;
-    boolean bool3 = false;
-    boolean bool2;
-    if (paramBoolean)
-    {
-      bool2 = bool3;
-      if (paramLong1 > this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Long = paramLong1;
-        bool1 = true;
-        bool2 = bool3;
-      }
+    if (paramBoolean) {
+      if (paramLong1 <= l) {}
     }
-    for (;;)
+    boolean bool1;
+    boolean bool2;
+    for (this.jdField_a_of_type_Long = paramLong1;; this.jdField_a_of_type_Long = paramLong1)
     {
-      QLog.d("avgame_logic.SyncController", 1, String.format("onGetNewSeq [%d-->%d] result=%b needSync=%b fromSync=%b", new Object[] { Long.valueOf(l), Long.valueOf(paramLong1), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(paramBoolean) }));
-      if (bool2) {
-        a(paramLong2, paramInt);
-      }
-      return bool1;
-      if (paramLong1 <= this.jdField_a_of_type_Long)
+      bool1 = true;
+      do
       {
         bool1 = false;
-        bool2 = bool3;
-      }
-      else if ((paramLong1 - this.jdField_a_of_type_Long == 1L) || (this.jdField_a_of_type_Long <= 0L))
-      {
-        this.jdField_a_of_type_Long = paramLong1;
-        bool1 = true;
-        bool2 = bool3;
-      }
-      else
+        bool2 = false;
+        break;
+      } while (paramLong1 <= l);
+      if ((paramLong1 - l != 1L) && (l > 0L))
       {
         bool1 = false;
         bool2 = true;
+        break;
       }
     }
+    QLog.d("avgame_logic.SyncController", 1, String.format("onGetNewSeq [%d-->%d] result=%b needSync=%b fromSync=%b", new Object[] { Long.valueOf(l), Long.valueOf(paramLong1), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(paramBoolean) }));
+    if (bool2) {
+      a(paramLong2, paramInt);
+    }
+    return bool1;
   }
   
   public long a()
@@ -70,15 +60,27 @@ public class SyncController
   
   public long a(long paramLong, int paramInt)
   {
-    int i = 0;
-    String str = this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin();
-    boolean bool = GameEngine.a().i();
-    QLog.d("avgame_logic.SyncController", 1, new Object[] { "reqPullSnapshot curSeq=", Long.valueOf(this.jdField_a_of_type_Long), " roomId=", Long.valueOf(paramLong), " uin=", str, "isQQCJ=", Boolean.valueOf(bool) });
-    long l = System.currentTimeMillis();
-    if (bool) {
-      i = 1;
+    String str = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getCurrentAccountUin();
+    boolean bool;
+    if (!IGameEngine.k())
+    {
+      bool = IGameEngine.a().a().g();
     }
-    ((GameRoomHandler)this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getBusinessHandler(HandlerFactory.a)).a(paramLong, str, true, paramInt, i);
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("avgame_logic.SyncController", 2, "IGameEngine = null");
+      }
+      bool = false;
+    }
+    long l = this.jdField_a_of_type_Long;
+    int i = 1;
+    QLog.d("avgame_logic.SyncController", 1, new Object[] { "reqPullSnapshot curSeq=", Long.valueOf(l), " roomId=", Long.valueOf(paramLong), " uin=", str, "isQQCJ=", Boolean.valueOf(bool) });
+    l = System.currentTimeMillis();
+    if (!bool) {
+      i = 0;
+    }
+    ((GameRoomHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getBusinessHandler(HandlerFactory.a)).a(paramLong, str, true, paramInt, i);
     return l;
   }
   
@@ -89,28 +91,25 @@ public class SyncController
   
   public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    boolean bool = false;
-    long l;
     if (paramLong1 > this.jdField_a_of_type_Long)
     {
-      l = SystemClock.elapsedRealtime();
-      if ((this.b != paramLong1) || (l - this.c >= paramInt1)) {
-        break label41;
+      long l = SystemClock.elapsedRealtime();
+      if ((this.b == paramLong1) && (l - this.c < paramInt1)) {
+        return;
       }
-    }
-    label41:
-    do
-    {
-      return;
       this.b = paramLong1;
       this.c = l;
       a(paramLong2, 2);
-    } while (!QLog.isColorLevel());
-    paramLong2 = this.jdField_a_of_type_Long;
-    if (paramLong1 > this.jdField_a_of_type_Long) {
-      bool = true;
+      if (QLog.isColorLevel())
+      {
+        paramLong2 = this.jdField_a_of_type_Long;
+        boolean bool = false;
+        if (paramLong1 > this.jdField_a_of_type_Long) {
+          bool = true;
+        }
+        QLog.d("avgame_logic.SyncController", 1, String.format("onGetNewSeqByHeartBeat [%d-->%d] needSync=%b", new Object[] { Long.valueOf(paramLong2), Long.valueOf(paramLong1), Boolean.valueOf(bool) }));
+      }
     }
-    QLog.d("avgame_logic.SyncController", 1, String.format("onGetNewSeqByHeartBeat [%d-->%d] needSync=%b", new Object[] { Long.valueOf(paramLong2), Long.valueOf(paramLong1), Boolean.valueOf(bool) }));
   }
   
   public boolean a(long paramLong1, long paramLong2)
@@ -131,7 +130,7 @@ public class SyncController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.controller.SyncController
  * JD-Core Version:    0.7.0.1
  */

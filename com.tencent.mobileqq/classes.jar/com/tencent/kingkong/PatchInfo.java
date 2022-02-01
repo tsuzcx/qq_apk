@@ -44,29 +44,36 @@ public class PatchInfo
   
   public static PatchInfo a(JSONObject paramJSONObject)
   {
-    PatchInfo localPatchInfo = new PatchInfo();
+    Object localObject = new PatchInfo();
     try
     {
-      localPatchInfo.a = paramJSONObject.getString("name").trim();
-      localPatchInfo.b = paramJSONObject.getString("ver").trim();
-      localPatchInfo.c = paramJSONObject.getString("system").trim();
-      localPatchInfo.d = paramJSONObject.getString("driver").trim();
-      localPatchInfo.e = paramJSONObject.getString("url").trim();
-      localPatchInfo.f = paramJSONObject.getString("type").trim();
-      localPatchInfo.h = paramJSONObject.getString("enabled").trim();
-      localPatchInfo.k = paramJSONObject.optString("previousPatch", "").trim();
-      return localPatchInfo;
+      ((PatchInfo)localObject).a = paramJSONObject.getString("name").trim();
+      ((PatchInfo)localObject).b = paramJSONObject.getString("ver").trim();
+      ((PatchInfo)localObject).c = paramJSONObject.getString("system").trim();
+      ((PatchInfo)localObject).d = paramJSONObject.getString("driver").trim();
+      ((PatchInfo)localObject).e = paramJSONObject.getString("url").trim();
+      ((PatchInfo)localObject).f = paramJSONObject.getString("type").trim();
+      ((PatchInfo)localObject).h = paramJSONObject.getString("enabled").trim();
+      ((PatchInfo)localObject).k = paramJSONObject.optString("previousPatch", "").trim();
+      return localObject;
     }
     catch (Exception paramJSONObject)
     {
-      Common.Log.a("PatchInfo", "Parse PatchInfo from JSON exception " + paramJSONObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Parse PatchInfo from JSON exception ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      Common.Log.a("PatchInfo", ((StringBuilder)localObject).toString());
     }
     return null;
   }
   
   private String a(String paramString1, String paramString2)
   {
-    return paramString1 + "_" + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   public JSONObject a()
@@ -86,7 +93,10 @@ public class PatchInfo
     }
     catch (JSONException localJSONException)
     {
-      Common.Log.a("PatchInfo", "Get JSON String failed " + localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Get JSON String failed ");
+      localStringBuilder.append(localJSONException);
+      Common.Log.a("PatchInfo", localStringBuilder.toString());
     }
     return new JSONObject();
   }
@@ -145,12 +155,29 @@ public class PatchInfo
   
   public String toString()
   {
-    return "I'm Patch " + this.a + "," + this.h + "," + this.f + "," + this.e + "," + this.j + "," + this.k + "," + this.i + "," + this.g;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("I'm Patch ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.g);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kingkong.PatchInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -20,21 +20,18 @@ class CopyPromptHelper$3
     CopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptCopyPromptHelper).run();
     int i = CopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptCopyPromptHelper).a.getSelectionStart();
     Editable localEditable = CopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptCopyPromptHelper).a.getEditableText();
-    if ((i < 0) || (i >= localEditable.length())) {
+    if ((i >= 0) && (i < localEditable.length())) {
+      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
+    } else {
       localEditable.append(this.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
-    {
-      ReportController.b(CopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptCopyPromptHelper).a(), "dc00898", "", "", "0X800B22C", "0X800B22C", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
-    }
+    ReportController.b(CopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptCopyPromptHelper).a(), "dc00898", "", "", "0X800B22C", "0X800B22C", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.copyprompt.CopyPromptHelper.3
  * JD-Core Version:    0.7.0.1
  */

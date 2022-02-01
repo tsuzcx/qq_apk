@@ -18,8 +18,12 @@ class ZhituManager$FontDownloadListener
   
   public void onResp(NetResp paramNetResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "FontDownloadListener onResp: " + paramNetResp);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("FontDownloadListener onResp: ");
+      localStringBuilder.append(paramNetResp);
+      QLog.d("ZhituManager", 2, localStringBuilder.toString());
     }
     if (paramNetResp.mResult == 3) {
       return;
@@ -44,7 +48,7 @@ class ZhituManager$FontDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituManager.FontDownloadListener
  * JD-Core Version:    0.7.0.1
  */

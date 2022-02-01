@@ -11,15 +11,16 @@ public class EmotionPanelPayBackListenerManager
   
   public static EmotionPanelPayBackListenerManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqEmoticonEmotionPanelPayBackListenerManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqEmoticonEmotionPanelPayBackListenerManager == null) {
-        jdField_a_of_type_ComTencentMobileqqEmoticonEmotionPanelPayBackListenerManager = new EmotionPanelPayBackListenerManager();
+    if (jdField_a_of_type_ComTencentMobileqqEmoticonEmotionPanelPayBackListenerManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqEmoticonEmotionPanelPayBackListenerManager == null) {
+          jdField_a_of_type_ComTencentMobileqqEmoticonEmotionPanelPayBackListenerManager = new EmotionPanelPayBackListenerManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqEmoticonEmotionPanelPayBackListenerManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqEmoticonEmotionPanelPayBackListenerManager;
   }
   
   public void a()
@@ -33,12 +34,13 @@ public class EmotionPanelPayBackListenerManager
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        EmotionPanelPayBackListener localEmotionPanelPayBackListener = (EmotionPanelPayBackListener)((WeakReference)localIterator.next()).get();
+        EmotionPanelPayBackListener localEmotionPanelPayBackListener = (EmotionPanelPayBackListener)((WeakReference)((Iterator)localObject).next()).get();
         if (localEmotionPanelPayBackListener != null) {
           localEmotionPanelPayBackListener.onPayBack(paramInt);
         }
@@ -59,9 +61,14 @@ public class EmotionPanelPayBackListenerManager
           return;
         }
       }
+      paramEmotionPanelPayBackListener = new WeakReference(paramEmotionPanelPayBackListener);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramEmotionPanelPayBackListener);
+      return;
     }
-    paramEmotionPanelPayBackListener = new WeakReference(paramEmotionPanelPayBackListener);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramEmotionPanelPayBackListener);
+    for (;;)
+    {
+      throw paramEmotionPanelPayBackListener;
+    }
   }
   
   public void b(EmotionPanelPayBackListener paramEmotionPanelPayBackListener)
@@ -77,12 +84,17 @@ public class EmotionPanelPayBackListenerManager
           localIterator.remove();
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramEmotionPanelPayBackListener;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmotionPanelPayBackListenerManager
  * JD-Core Version:    0.7.0.1
  */

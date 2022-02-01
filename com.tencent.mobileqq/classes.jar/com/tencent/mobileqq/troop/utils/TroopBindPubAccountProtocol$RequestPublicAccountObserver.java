@@ -2,87 +2,93 @@ package com.tencent.mobileqq.troop.utils;
 
 import android.os.Bundle;
 import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
 import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 public abstract class TroopBindPubAccountProtocol$RequestPublicAccountObserver
   extends ProtoUtils.TroopProtocolObserver
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected abstract void a(boolean paramBoolean, long paramLong, IPublicAccountDetail paramIPublicAccountDetail);
+  
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    boolean bool2 = false;
+    boolean bool4 = false;
+    boolean bool3 = false;
     Object localObject = null;
-    long l2 = 0L;
+    boolean bool2;
     long l1;
-    boolean bool1;
     if ((paramInt == 0) && (paramBundle != null))
     {
-      l2 = paramBundle.getLong("uin");
+      long l2 = paramBundle.getLong("uin");
+      bool2 = bool4;
+      paramBundle = localObject;
       l1 = l2;
-      if (paramArrayOfByte == null) {
-        break label199;
-      }
-      paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      try
+      if (paramArrayOfByte != null)
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        bool1 = bool2;
-        if (!((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) {
-          break label211;
+        mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+        boolean bool1 = bool3;
+        try
+        {
+          localGetPublicAccountDetailInfoResponse.mergeFrom(paramArrayOfByte);
+          bool1 = bool3;
+          bool2 = bool4;
+          paramBundle = localObject;
+          l1 = l2;
+          if (!((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) {
+            break label248;
+          }
+          bool1 = bool3;
+          bool2 = bool4;
+          paramBundle = localObject;
+          l1 = l2;
+          if (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() != 0) {
+            break label248;
+          }
+          bool2 = true;
+          bool1 = true;
+          paramBundle = ((IPublicAccountDetail)QRoute.api(IPublicAccountDetail.class)).init(localGetPublicAccountDetailInfoResponse);
+          l1 = l2;
         }
-        bool1 = bool2;
-        if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() != 0) {
-          break label211;
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          bool2 = bool1;
+          paramBundle = localObject;
+          l1 = l2;
+          if (!QLog.isColorLevel()) {
+            break label248;
+          }
         }
-        bool1 = true;
-        paramArrayOfByte = new AccountDetail(paramBundle);
-        bool1 = true;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
+        QLog.i("TroopBindPubAccountProtocol", 2, paramArrayOfByte.toString());
         bool2 = bool1;
-        bool1 = bool2;
-        paramArrayOfByte = localObject;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("TroopBindPubAccountProtocol", 2, paramBundle.toString());
-        bool1 = bool2;
-        paramArrayOfByte = localObject;
-        continue;
-      }
-      a(bool1, l2, paramArrayOfByte);
-      return;
-      l1 = l2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("TroopBindPubAccountProtocol", 2, "get pubAccountInfo failed, errorCode=" + paramInt);
+        paramBundle = localObject;
         l1 = l2;
       }
-      label199:
-      bool1 = false;
-      paramArrayOfByte = null;
-      l2 = l1;
-      continue;
-      label211:
-      paramArrayOfByte = null;
-      bool1 = false;
     }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("get pubAccountInfo failed, errorCode=");
+        paramArrayOfByte.append(paramInt);
+        QLog.i("TroopBindPubAccountProtocol", 2, paramArrayOfByte.toString());
+      }
+      l1 = 0L;
+      paramBundle = localObject;
+      bool2 = bool4;
+    }
+    label248:
+    a(bool2, l1, paramBundle);
   }
-  
-  protected abstract void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.RequestPublicAccountObserver
  * JD-Core Version:    0.7.0.1
  */

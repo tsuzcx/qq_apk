@@ -9,9 +9,12 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.hiboom.HiBoomManager;
+import com.tencent.mobileqq.core.util.EmotionSharedPreUtils;
+import com.tencent.mobileqq.hiboom.HiBoomConstants;
+import com.tencent.mobileqq.hiboom.api.IHiBoomManager;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.vas.api.IVasService;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,9 +34,9 @@ public class RichTextChatManager
   private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131713404);
+  private String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131713372);
   private boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131713405);
+  private String jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131713373);
   private boolean jdField_c_of_type_Boolean;
   private String d = "";
   private String e = "";
@@ -41,7 +44,7 @@ public class RichTextChatManager
   public RichTextChatManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_Boolean = SharedPreUtils.z(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
+    this.jdField_b_of_type_Boolean = SharedPreUtils.v(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
   }
   
   public static RichTextChatManager a(QQAppInterface paramQQAppInterface)
@@ -66,9 +69,17 @@ public class RichTextChatManager
   
   private void a(SharedPreferences paramSharedPreferences, String paramString)
   {
-    paramSharedPreferences = paramSharedPreferences.getString(paramString + "_" + "rich_text_chat_config_content", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTextChatManager", 2, "get content from sp:" + paramSharedPreferences);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append("rich_text_chat_config_content");
+    paramSharedPreferences = paramSharedPreferences.getString(localStringBuilder.toString(), "");
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("get content from sp:");
+      paramString.append(paramSharedPreferences);
+      QLog.d("RichTextChatManager", 2, paramString.toString());
     }
     if (!TextUtils.isEmpty(paramSharedPreferences)) {
       a(paramSharedPreferences);
@@ -78,10 +89,13 @@ public class RichTextChatManager
   private void a(QQAppInterface paramQQAppInterface)
   {
     boolean bool = this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(2));
-    QLog.d("RichTextChatManager", 2, "updateHiBoomSwith: enable=" + bool);
-    paramQQAppInterface = (HiBoomManager)paramQQAppInterface.getManager(QQManagerFactory.HIBOOM_MANAGER);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateHiBoomSwith: enable=");
+    localStringBuilder.append(bool);
+    QLog.d("RichTextChatManager", 2, localStringBuilder.toString());
+    paramQQAppInterface = ((IVasService)paramQQAppInterface.getRuntimeService(IVasService.class, "")).getHiBoomManager();
     if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(bool);
+      paramQQAppInterface.updateHiBoomSwitch(bool);
     }
   }
   
@@ -89,7 +103,6 @@ public class RichTextChatManager
   {
     for (;;)
     {
-      int i;
       try
       {
         paramString = new JSONObject(paramString);
@@ -99,6 +112,7 @@ public class RichTextChatManager
         }
         Object localObject1 = new ArrayList();
         ??? = paramString.optJSONArray("enrty_orders");
+        int i;
         if (??? != null)
         {
           i = 0;
@@ -106,10 +120,10 @@ public class RichTextChatManager
           {
             int j = ((JSONArray)???).getInt(i);
             if ((j < 0) || (j >= 6)) {
-              break label297;
+              break label294;
             }
             ((ArrayList)localObject1).add(Integer.valueOf(j));
-            break label297;
+            break label294;
           }
         }
         synchronized (this.jdField_a_of_type_JavaUtilArrayList)
@@ -125,22 +139,22 @@ public class RichTextChatManager
           if (paramString.has("aio_input_shan_icon_url2")) {
             this.e = paramString.optString("aio_input_shan_icon_url2");
           }
-          if (paramString.optInt("zhitu_legal_switch") == 1)
-          {
-            bool = true;
-            this.jdField_c_of_type_Boolean = bool;
-            this.jdField_b_of_type_Int = paramString.optInt("zhitu_style", 0);
-            if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-              this.jdField_b_of_type_JavaLangString = ((String)localObject1);
-            }
-            if (!TextUtils.isEmpty((CharSequence)???)) {
-              this.jdField_c_of_type_JavaLangString = ((String)???);
-            }
-            this.jdField_a_of_type_Boolean = true;
-            return true;
+          if (paramString.optInt("zhitu_legal_switch") != 1) {
+            break label301;
           }
+          bool = true;
+          this.jdField_c_of_type_Boolean = bool;
+          this.jdField_b_of_type_Int = paramString.optInt("zhitu_style", 0);
+          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+            this.jdField_b_of_type_JavaLangString = ((String)localObject1);
+          }
+          if (!TextUtils.isEmpty((CharSequence)???)) {
+            this.jdField_c_of_type_JavaLangString = ((String)???);
+          }
+          this.jdField_a_of_type_Boolean = true;
+          return true;
         }
-        boolean bool = false;
+        i += 1;
       }
       catch (JSONException paramString)
       {
@@ -150,9 +164,10 @@ public class RichTextChatManager
         this.jdField_a_of_type_Boolean = true;
         return false;
       }
+      label294:
       continue;
-      label297:
-      i += 1;
+      label301:
+      boolean bool = false;
     }
   }
   
@@ -163,33 +178,44 @@ public class RichTextChatManager
   
   public int a(QQAppInterface paramQQAppInterface, ArrayList<Integer> paramArrayList)
   {
-    int j = SharedPreUtils.aL(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTextChatManager", 2, "last Memoried Tab:" + j);
-    }
-    int i;
-    if (j == -1) {
-      if (!SharedPreUtils.y(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin()))
-      {
-        i = paramArrayList.indexOf(Integer.valueOf(a(paramQQAppInterface)));
-        SharedPreUtils.r(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), true);
-        if (QLog.isColorLevel()) {
-          QLog.d("RichTextChatManager", 2, "Accourding to : selectedTab:" + j);
-        }
-        if (i == -1) {}
-      }
-    }
-    do
+    int i = EmotionSharedPreUtils.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
+    if (QLog.isColorLevel())
     {
-      return i;
-      return 0;
-      return 0;
-      j = paramArrayList.indexOf(Integer.valueOf(j));
-      if (QLog.isColorLevel()) {
-        QLog.d("RichTextChatManager", 2, "Accourding to orderlist, currentTabPosition:" + j);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("last Memoried Tab:");
+      localStringBuilder.append(i);
+      QLog.d("RichTextChatManager", 2, localStringBuilder.toString());
+    }
+    if (i == -1)
+    {
+      if (!SharedPreUtils.u(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin()))
+      {
+        int j = paramArrayList.indexOf(Integer.valueOf(a(paramQQAppInterface)));
+        SharedPreUtils.n(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), true);
+        if (QLog.isColorLevel())
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("Accourding to : selectedTab:");
+          paramQQAppInterface.append(i);
+          QLog.d("RichTextChatManager", 2, paramQQAppInterface.toString());
+        }
+        if (j != -1) {
+          return j;
+        }
       }
-      i = j;
-    } while (-1 != j);
+      return 0;
+    }
+    i = paramArrayList.indexOf(Integer.valueOf(i));
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("Accourding to orderlist, currentTabPosition:");
+      paramQQAppInterface.append(i);
+      QLog.d("RichTextChatManager", 2, paramQQAppInterface.toString());
+    }
+    if (-1 != i) {
+      return i;
+    }
     return 0;
   }
   
@@ -212,48 +238,44 @@ public class RichTextChatManager
   
   public void a(QQAppInterface paramQQAppInterface, Integer paramInteger, ConfigurationService.Config paramConfig)
   {
-    int i = 0;
-    int k = paramConfig.version.get();
-    int j = SharedPreUtils.aJ(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
-    int m = SharedPreUtils.aK(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
-    int n = AppSetting.a();
+    int j = paramConfig.version.get();
+    int i = SharedPreUtils.aC(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    int k = SharedPreUtils.aD(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    int m = AppSetting.a();
     if (QLog.isColorLevel()) {
-      QLog.d("RichTextChatManager", 1, String.format("received richTextChat remote version: %d, localVersion: %d ,originalAppId:%d, currentAppId:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(m), Integer.valueOf(n) }));
+      QLog.d("RichTextChatManager", 1, String.format("received richTextChat remote version: %d, localVersion: %d ,originalAppId:%d, currentAppId:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(m) }));
     }
-    if (m != n) {
-      SharedPreUtils.aa(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount(), n);
-    }
-    for (;;)
+    if (k != m)
     {
-      if (k != i)
+      SharedPreUtils.R(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount(), m);
+      i = 0;
+    }
+    if (j != i)
+    {
+      paramInteger = ConfigServlet.b(paramConfig, i, paramInteger.intValue());
+      if (QLog.isColorLevel())
       {
-        paramInteger = ConfigServlet.b(paramConfig, i, paramInteger.intValue());
-        if (QLog.isColorLevel()) {
-          QLog.d("RichTextChatManager", 1, "content:" + paramInteger);
-        }
-        if (TextUtils.isEmpty(paramInteger)) {
-          break label218;
-        }
-        if (!a(paramInteger)) {
-          break label202;
-        }
-        SharedPreUtils.f(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount(), k, paramInteger);
-        a(paramQQAppInterface);
+        paramConfig = new StringBuilder();
+        paramConfig.append("content:");
+        paramConfig.append(paramInteger);
+        QLog.d("RichTextChatManager", 1, paramConfig.toString());
       }
-      label202:
-      label218:
-      while (!QLog.isColorLevel())
+      if (!TextUtils.isEmpty(paramInteger))
       {
-        do
+        if (a(paramInteger))
         {
+          SharedPreUtils.f(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount(), j, paramInteger);
+          a(paramQQAppInterface);
           return;
-        } while (!QLog.isColorLevel());
-        QLog.d("RichTextChatManager", 1, "config content parse error , do nothing");
-        return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("RichTextChatManager", 1, "config content parse error , do nothing");
+        }
       }
-      QLog.d("RichTextChatManager", 1, "config content is null , do nothing");
-      return;
-      i = j;
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("RichTextChatManager", 1, "config content is null , do nothing");
+      }
     }
   }
   
@@ -265,7 +287,11 @@ public class RichTextChatManager
       if ((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_JavaLangString.equals(str)))
       {
         SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramAppRuntime.getApplication());
-        if (localSharedPreferences.contains(str + "_" + "rich_text_chat_config_version"))
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("_");
+        localStringBuilder.append("rich_text_chat_config_version");
+        if (localSharedPreferences.contains(localStringBuilder.toString()))
         {
           a(localSharedPreferences, str);
           if ((paramAppRuntime instanceof QQAppInterface)) {
@@ -275,15 +301,21 @@ public class RichTextChatManager
         this.jdField_a_of_type_JavaLangString = str;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTextChatManager", 2, "first install entry:" + this.jdField_a_of_type_Int + " mOder:" + this.jdField_a_of_type_JavaUtilArrayList);
+    if (QLog.isColorLevel())
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("first install entry:");
+      paramAppRuntime.append(this.jdField_a_of_type_Int);
+      paramAppRuntime.append(" mOder:");
+      paramAppRuntime.append(this.jdField_a_of_type_JavaUtilArrayList);
+      QLog.d("RichTextChatManager", 2, paramAppRuntime.toString());
     }
   }
   
   public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
-    SharedPreUtils.s(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    SharedPreUtils.o(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
   }
   
   public boolean a()
@@ -299,75 +331,70 @@ public class RichTextChatManager
     }
     FlashChatManager localFlashChatManager = (FlashChatManager)paramQQAppInterface.getManager(QQManagerFactory.FLASH_CHAT_MANAGER);
     localObject = ((ArrayList)localObject).iterator();
-    int k = 0;
-    if (((Iterator)localObject).hasNext())
+    boolean bool2 = false;
+    while (((Iterator)localObject).hasNext())
     {
       int i = ((Integer)((Iterator)localObject).next()).intValue();
-      if (i == 1) {
-        if (localFlashChatManager.a().size() > 0)
+      boolean bool1 = true;
+      if (i == 1)
+      {
+        if (localFlashChatManager.a().size() <= 0) {
+          bool1 = false;
+        }
+        bool2 |= bool1;
+      }
+      else if (i == 2)
+      {
+        bool2 |= HiBoomConstants.a(paramQQAppInterface).isMemorySupport();
+      }
+      else if (i == 0)
+      {
+        bool2 |= true;
+      }
+      else
+      {
+        if (i == 3) {}
+        for (;;)
         {
-          i = 1;
-          label83:
-          k = i | k;
+          bool2 = true;
+          break;
+          if (i != 4) {
+            if (i != 5) {
+              break;
+            }
+          }
         }
       }
     }
-    for (;;)
-    {
-      break;
-      int j = 0;
-      break label83;
-      if (j == 2)
-      {
-        HiBoomManager.a(paramQQAppInterface);
-        k = HiBoomManager.b() | k;
-      }
-      else if (j == 0)
-      {
-        k |= 0x1;
-      }
-      else if (j == 3)
-      {
-        k = 1;
-      }
-      else if (j == 4)
-      {
-        k = 1;
-      }
-      else if (j == 5)
-      {
-        k = 1;
-        continue;
-        return k;
-      }
-    }
+    return bool2;
   }
   
   public boolean a(AppRuntime paramAppRuntime)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    label70:
-    for (;;)
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      paramAppRuntime = a(paramAppRuntime);
+      boolean bool2 = false;
+      boolean bool1 = false;
+      if (paramAppRuntime != null)
       {
-        paramAppRuntime = a(paramAppRuntime);
-        if (paramAppRuntime != null)
+        paramAppRuntime = paramAppRuntime.iterator();
+        for (;;)
         {
-          paramAppRuntime = paramAppRuntime.iterator();
           bool2 = bool1;
-          if (paramAppRuntime.hasNext())
-          {
-            if (((Integer)paramAppRuntime.next()).intValue() != 0) {
-              break label70;
-            }
+          if (!paramAppRuntime.hasNext()) {
+            break;
+          }
+          if (((Integer)paramAppRuntime.next()).intValue() == 0) {
             bool1 = true;
-            break label70;
           }
         }
-        return bool2;
       }
+      return bool2;
+    }
+    for (;;)
+    {
+      throw paramAppRuntime;
     }
   }
   
@@ -400,7 +427,7 @@ public class RichTextChatManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.RichTextChatManager
  * JD-Core Version:    0.7.0.1
  */

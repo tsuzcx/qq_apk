@@ -8,7 +8,6 @@ import com.tencent.mobileqq.vas.updatesystem.callback.QueryItemVersionCallback;
 import com.tencent.mobileqq.vas.updatesystem.impl.VasCmdManagerImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.vas.update.business.BaseUpdateBusiness;
-import com.tencent.vas.update.callback.ICmdManager;
 import com.tencent.vas.update.callback.listener.IBusinessCallback;
 import com.tencent.vas.update.callback.listener.ICmdListener;
 import com.tencent.vas.update.entity.BusinessUpdateParams;
@@ -24,7 +23,8 @@ public class VasEngineImpl
   
   public void cancelDwonloadItem(long paramLong, String paramString)
   {
-    if ((this.mNewEngine != null) && (this.mNewEngine.getBusinessCallback(paramLong) != null)) {
+    QQVasUpdateManager localQQVasUpdateManager = this.mNewEngine;
+    if ((localQQVasUpdateManager != null) && (localQQVasUpdateManager.getBusinessCallback(paramLong) != null)) {
       this.mNewEngine.getBusinessCallback(paramLong).cancelDownload(paramString);
     }
   }
@@ -33,7 +33,8 @@ public class VasEngineImpl
   
   public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
   {
-    if ((this.mNewEngine != null) && (this.mNewEngine.getBusinessCallback(paramLong) != null))
+    paramString1 = this.mNewEngine;
+    if ((paramString1 != null) && (paramString1.getBusinessCallback(paramLong) != null))
     {
       int j = paramArrayOfString.length;
       int i = 0;
@@ -48,7 +49,8 @@ public class VasEngineImpl
   
   public void downloadItem(long paramLong, String paramString1, String paramString2)
   {
-    if ((this.mNewEngine != null) && (this.mNewEngine.getBusinessCallback(paramLong) != null))
+    QQVasUpdateManager localQQVasUpdateManager = this.mNewEngine;
+    if ((localQQVasUpdateManager != null) && (localQQVasUpdateManager.getBusinessCallback(paramLong) != null))
     {
       paramString1 = new BusinessUpdateParams(paramLong, paramString1, paramString2);
       this.mNewEngine.getBusinessCallback(paramLong).startDownload(paramString1);
@@ -57,16 +59,18 @@ public class VasEngineImpl
   
   public BaseUpdateBusiness getBusinessCallback(long paramLong)
   {
-    if (this.mNewEngine != null) {
-      return this.mNewEngine.getBusinessCallback(paramLong);
+    QQVasUpdateManager localQQVasUpdateManager = this.mNewEngine;
+    if (localQQVasUpdateManager != null) {
+      return localQQVasUpdateManager.getBusinessCallback(paramLong);
     }
     return null;
   }
   
   public <T extends IBusinessCallback> T getBusinessCallback(Class<T> paramClass)
   {
-    if (this.mNewEngine != null) {
-      return this.mNewEngine.getBusinessCallback(paramClass);
+    QQVasUpdateManager localQQVasUpdateManager = this.mNewEngine;
+    if (localQQVasUpdateManager != null) {
+      return localQQVasUpdateManager.getBusinessCallback(paramClass);
     }
     return null;
   }
@@ -78,16 +82,18 @@ public class VasEngineImpl
   
   public void onDestroy()
   {
-    if (this.mNewEngine != null)
+    QQVasUpdateManager localQQVasUpdateManager = this.mNewEngine;
+    if (localQQVasUpdateManager != null)
     {
-      this.mNewEngine.onDestory();
+      localQQVasUpdateManager.onDestory();
       this.mNewEngine = null;
     }
   }
   
   public void onPbMsgRecv(int paramInt, String paramString1, String paramString2)
   {
-    if ((this.mVasCmdManagerImpl != null) && (this.mVasCmdManagerImpl.a() != null)) {
+    VasCmdManagerImpl localVasCmdManagerImpl = this.mVasCmdManagerImpl;
+    if ((localVasCmdManagerImpl != null) && (localVasCmdManagerImpl.a() != null)) {
       this.mVasCmdManagerImpl.a().onPbResponse(paramInt, paramString1, paramString2);
     }
   }
@@ -99,30 +105,34 @@ public class VasEngineImpl
   
   public void setRequestHandler(IVasApolloExtensionHandler paramIVasApolloExtensionHandler)
   {
-    if (this.mNewEngine == null) {}
-    while (this.mNewEngine.a() == null) {
+    Object localObject = this.mNewEngine;
+    if (localObject == null) {
       return;
     }
-    ICmdManager localICmdManager = VasUpdateWrapper.getCmdManager();
-    if ((localICmdManager == null) || (!(localICmdManager instanceof VasCmdManagerImpl)))
+    if (((QQVasUpdateManager)localObject).a() == null) {
+      return;
+    }
+    localObject = VasUpdateWrapper.getCmdManager();
+    if ((localObject != null) && ((localObject instanceof VasCmdManagerImpl)))
     {
-      QLog.e("VasUpdate_VasUpdateEngineV2", 1, "setWeakHandler cmdManager == null or != VasCmdImpl");
+      this.mVasCmdManagerImpl = ((VasCmdManagerImpl)localObject);
+      this.mVasCmdManagerImpl.a(paramIVasApolloExtensionHandler);
       return;
     }
-    this.mVasCmdManagerImpl = ((VasCmdManagerImpl)localICmdManager);
-    this.mVasCmdManagerImpl.a(paramIVasApolloExtensionHandler);
+    QLog.e("VasUpdate_VasUpdateEngineV2", 1, "setWeakHandler cmdManager == null or != VasCmdImpl");
   }
   
   public void startUpdateAllItem()
   {
-    if (this.mNewEngine != null) {
-      this.mNewEngine.updateAllItem();
+    QQVasUpdateManager localQQVasUpdateManager = this.mNewEngine;
+    if (localQQVasUpdateManager != null) {
+      localQQVasUpdateManager.updateAllItem();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.api.impl.VasEngineImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -38,155 +38,159 @@ class FieldData
   
   public final FieldData clone()
   {
-    int i = 0;
     FieldData localFieldData = new FieldData();
+    AssertionError localAssertionError;
     try
     {
       localFieldData.cachedExtension = this.cachedExtension;
       if (this.unknownFieldData == null) {
         localFieldData.unknownFieldData = null;
-      }
-      while (this.value == null)
-      {
-        return localFieldData;
+      } else {
         localFieldData.unknownFieldData.addAll(this.unknownFieldData);
       }
-      if (!(this.value instanceof MessageNano)) {
-        break label92;
+      if (this.value == null) {
+        return localFieldData;
       }
+      if ((this.value instanceof MessageNano))
+      {
+        localFieldData.value = ((MessageNano)this.value).clone();
+        return localFieldData;
+      }
+      if ((this.value instanceof byte[]))
+      {
+        localFieldData.value = ((byte[])this.value).clone();
+        return localFieldData;
+      }
+      boolean bool = this.value instanceof byte[][];
+      int j = 0;
+      int i = 0;
+      Object localObject1;
+      Object localObject2;
+      if (bool)
+      {
+        localObject1 = (byte[][])this.value;
+        localObject2 = new byte[localObject1.length][];
+        localFieldData.value = localObject2;
+        while (i < localObject1.length)
+        {
+          localObject2[i] = ((byte[])localObject1[i].clone());
+          i += 1;
+        }
+      }
+      if ((this.value instanceof boolean[]))
+      {
+        localFieldData.value = ((boolean[])this.value).clone();
+        return localFieldData;
+      }
+      if ((this.value instanceof int[]))
+      {
+        localFieldData.value = ((int[])this.value).clone();
+        return localFieldData;
+      }
+      if ((this.value instanceof long[]))
+      {
+        localFieldData.value = ((long[])this.value).clone();
+        return localFieldData;
+      }
+      if ((this.value instanceof float[]))
+      {
+        localFieldData.value = ((float[])this.value).clone();
+        return localFieldData;
+      }
+      if ((this.value instanceof double[]))
+      {
+        localFieldData.value = ((double[])this.value).clone();
+        return localFieldData;
+      }
+      if ((this.value instanceof MessageNano[]))
+      {
+        localObject1 = (MessageNano[])this.value;
+        localObject2 = new MessageNano[localObject1.length];
+        localFieldData.value = localObject2;
+        i = j;
+        while (i < localObject1.length)
+        {
+          localObject2[i] = localObject1[i].clone();
+          i += 1;
+        }
+      }
+      return localFieldData;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      throw new AssertionError(localCloneNotSupportedException);
+      localAssertionError = new AssertionError(localCloneNotSupportedException);
     }
-    localCloneNotSupportedException.value = ((MessageNano)this.value).clone();
-    return localCloneNotSupportedException;
-    label92:
-    if ((this.value instanceof byte[]))
+    for (;;)
     {
-      localCloneNotSupportedException.value = ((byte[])this.value).clone();
-      return localCloneNotSupportedException;
+      throw localAssertionError;
     }
-    Object localObject1;
-    Object localObject2;
-    if ((this.value instanceof byte[][]))
-    {
-      localObject1 = (byte[][])this.value;
-      localObject2 = new byte[localObject1.length][];
-      localCloneNotSupportedException.value = localObject2;
-      i = 0;
-      while (i < localObject1.length)
-      {
-        localObject2[i] = ((byte[])localObject1[i].clone());
-        i += 1;
-      }
-    }
-    if ((this.value instanceof boolean[]))
-    {
-      localCloneNotSupportedException.value = ((boolean[])this.value).clone();
-      return localCloneNotSupportedException;
-    }
-    if ((this.value instanceof int[]))
-    {
-      localCloneNotSupportedException.value = ((int[])this.value).clone();
-      return localCloneNotSupportedException;
-    }
-    if ((this.value instanceof long[]))
-    {
-      localCloneNotSupportedException.value = ((long[])this.value).clone();
-      return localCloneNotSupportedException;
-    }
-    if ((this.value instanceof float[]))
-    {
-      localCloneNotSupportedException.value = ((float[])this.value).clone();
-      return localCloneNotSupportedException;
-    }
-    if ((this.value instanceof double[]))
-    {
-      localCloneNotSupportedException.value = ((double[])this.value).clone();
-      return localCloneNotSupportedException;
-    }
-    if ((this.value instanceof MessageNano[]))
-    {
-      localObject1 = (MessageNano[])this.value;
-      localObject2 = new MessageNano[localObject1.length];
-      localCloneNotSupportedException.value = localObject2;
-      while (i < localObject1.length)
-      {
-        localObject2[i] = localObject1[i].clone();
-        i += 1;
-      }
-    }
-    return localCloneNotSupportedException;
   }
   
   int computeSerializedSize()
   {
-    int j;
-    if (this.value != null)
-    {
-      j = this.cachedExtension.computeSerializedSize(this.value);
-      return j;
+    Object localObject = this.value;
+    if (localObject != null) {
+      return this.cachedExtension.computeSerializedSize(localObject);
     }
-    Iterator localIterator = this.unknownFieldData.iterator();
-    for (int i = 0;; i = ((UnknownFieldData)localIterator.next()).computeSerializedSize() + i)
-    {
-      j = i;
-      if (!localIterator.hasNext()) {
-        break;
-      }
+    localObject = this.unknownFieldData.iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext()) {
+      i += ((UnknownFieldData)((Iterator)localObject).next()).computeSerializedSize();
     }
+    return i;
   }
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (paramObject == this) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (!(paramObject instanceof FieldData)) {
+      return false;
+    }
+    paramObject = (FieldData)paramObject;
+    if ((this.value != null) && (paramObject.value != null))
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!(paramObject instanceof FieldData));
-      paramObject = (FieldData)paramObject;
-      if ((this.value == null) || (paramObject.value == null)) {
-        break;
+      localObject = this.cachedExtension;
+      if (localObject != paramObject.cachedExtension) {
+        return false;
       }
-      bool1 = bool2;
-    } while (this.cachedExtension != paramObject.cachedExtension);
-    if (!this.cachedExtension.clazz.isArray()) {
-      return this.value.equals(paramObject.value);
+      if (!((Extension)localObject).clazz.isArray()) {
+        return this.value.equals(paramObject.value);
+      }
+      localObject = this.value;
+      if ((localObject instanceof byte[])) {
+        return Arrays.equals((byte[])localObject, (byte[])paramObject.value);
+      }
+      if ((localObject instanceof int[])) {
+        return Arrays.equals((int[])localObject, (int[])paramObject.value);
+      }
+      if ((localObject instanceof long[])) {
+        return Arrays.equals((long[])localObject, (long[])paramObject.value);
+      }
+      if ((localObject instanceof float[])) {
+        return Arrays.equals((float[])localObject, (float[])paramObject.value);
+      }
+      if ((localObject instanceof double[])) {
+        return Arrays.equals((double[])localObject, (double[])paramObject.value);
+      }
+      if ((localObject instanceof boolean[])) {
+        return Arrays.equals((boolean[])localObject, (boolean[])paramObject.value);
+      }
+      return Arrays.deepEquals((Object[])localObject, (Object[])paramObject.value);
     }
-    if ((this.value instanceof byte[])) {
-      return Arrays.equals((byte[])this.value, (byte[])paramObject.value);
-    }
-    if ((this.value instanceof int[])) {
-      return Arrays.equals((int[])this.value, (int[])paramObject.value);
-    }
-    if ((this.value instanceof long[])) {
-      return Arrays.equals((long[])this.value, (long[])paramObject.value);
-    }
-    if ((this.value instanceof float[])) {
-      return Arrays.equals((float[])this.value, (float[])paramObject.value);
-    }
-    if ((this.value instanceof double[])) {
-      return Arrays.equals((double[])this.value, (double[])paramObject.value);
-    }
-    if ((this.value instanceof boolean[])) {
-      return Arrays.equals((boolean[])this.value, (boolean[])paramObject.value);
-    }
-    return Arrays.deepEquals((Object[])this.value, (Object[])paramObject.value);
-    if ((this.unknownFieldData != null) && (paramObject.unknownFieldData != null)) {
-      return this.unknownFieldData.equals(paramObject.unknownFieldData);
+    Object localObject = this.unknownFieldData;
+    if (localObject != null)
+    {
+      List localList = paramObject.unknownFieldData;
+      if (localList != null) {
+        return ((List)localObject).equals(localList);
+      }
     }
     try
     {
-      bool1 = Arrays.equals(toByteArray(), paramObject.toByteArray());
-      return bool1;
+      boolean bool = Arrays.equals(toByteArray(), paramObject.toByteArray());
+      return bool;
     }
     catch (IOException paramObject)
     {
@@ -196,19 +200,23 @@ class FieldData
   
   UnknownFieldData getUnknownField(int paramInt)
   {
-    if (this.unknownFieldData == null) {}
-    while (paramInt >= this.unknownFieldData.size()) {
+    List localList = this.unknownFieldData;
+    if (localList == null) {
       return null;
     }
-    return (UnknownFieldData)this.unknownFieldData.get(paramInt);
+    if (paramInt < localList.size()) {
+      return (UnknownFieldData)this.unknownFieldData.get(paramInt);
+    }
+    return null;
   }
   
   int getUnknownFieldSize()
   {
-    if (this.unknownFieldData == null) {
+    List localList = this.unknownFieldData;
+    if (localList == null) {
       return 0;
     }
-    return this.unknownFieldData.size();
+    return localList.size();
   }
   
   <T> T getValue(Extension<?, T> paramExtension)
@@ -233,7 +241,7 @@ class FieldData
     try
     {
       int i = Arrays.hashCode(toByteArray());
-      return i + 527;
+      return 527 + i;
     }
     catch (IOException localIOException)
     {
@@ -250,22 +258,21 @@ class FieldData
   
   void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.value != null) {
-      this.cachedExtension.writeTo(this.value, paramCodedOutputByteBufferNano);
-    }
-    for (;;)
+    Object localObject = this.value;
+    if (localObject != null)
     {
+      this.cachedExtension.writeTo(localObject, paramCodedOutputByteBufferNano);
       return;
-      Iterator localIterator = this.unknownFieldData.iterator();
-      while (localIterator.hasNext()) {
-        ((UnknownFieldData)localIterator.next()).writeTo(paramCodedOutputByteBufferNano);
-      }
+    }
+    localObject = this.unknownFieldData.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((UnknownFieldData)((Iterator)localObject).next()).writeTo(paramCodedOutputByteBufferNano);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.protobuf.nano.FieldData
  * JD-Core Version:    0.7.0.1
  */

@@ -21,55 +21,58 @@ public class gb
     {
       parambb.a(paramVarArgs);
       i = parambb.F();
-      if ((i != -1) && (this.rQ != null))
-      {
-        parambb = new q(parambb.E().bN);
-        this.rQ.a(i, parambb);
-      }
-      return;
     }
     catch (Throwable paramVarArgs)
     {
-      for (;;)
-      {
-        int i = -1;
-      }
+      int i;
+      label14:
+      break label14;
+    }
+    i = -1;
+    if ((i != -1) && (this.rQ != null))
+    {
+      parambb = new q(parambb.E().bN);
+      this.rQ.a(i, parambb);
     }
   }
   
   public void b(int paramInt, String paramString)
   {
-    if (this.rQ != null) {
-      this.rQ.b(paramInt, paramString);
+    c localc = this.rQ;
+    if (localc != null) {
+      localc.b(paramInt, paramString);
     }
   }
   
   public void c(int paramInt1, int paramInt2)
   {
     TMSDKWifiManager.getCustomConfig().onCustomReport(paramInt1, paramInt2);
-    if (this.rQ != null) {
-      this.rQ.c(paramInt1, paramInt2);
+    c localc = this.rQ;
+    if (localc != null) {
+      localc.c(paramInt1, paramInt2);
     }
   }
   
   public void eR()
   {
-    if (this.rQ != null) {
-      this.rQ.fl();
+    c localc = this.rQ;
+    if (localc != null) {
+      localc.fl();
     }
   }
   
   public void r(int paramInt)
   {
     TMSDKWifiManager.getCustomConfig().onCustomReport(paramInt, 0);
-    if (this.rQ != null) {
-      this.rQ.r(paramInt);
+    c localc = this.rQ;
+    if (localc != null) {
+      localc.r(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.gb
  * JD-Core Version:    0.7.0.1
  */

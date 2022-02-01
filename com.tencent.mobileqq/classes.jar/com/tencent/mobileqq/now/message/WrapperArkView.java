@@ -31,22 +31,22 @@ public class WrapperArkView
     return this.jdField_a_of_type_ComTencentMobileqqActivityAioChatItemBuilder.a(0, 0, paramChatMessage, null, this, this.jdField_a_of_type_ComTencentMobileqqNowMessageOnArkViewTouchListener);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer instanceof QQLiveArkContainerWrapper)) {
-      ((QQLiveArkContainerWrapper)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer).f();
+      ((QQLiveArkContainerWrapper)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer).e();
     }
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer = new QQLiveArkContainerWrapper();
     removeAllViews();
     addView(a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp));
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer instanceof QQLiveArkContainerWrapper)) {
-      ((QQLiveArkContainerWrapper)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer).f();
+      ((QQLiveArkContainerWrapper)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer).e();
     }
   }
   
@@ -57,7 +57,7 @@ public class WrapperArkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.WrapperArkView
  * JD-Core Version:    0.7.0.1
  */

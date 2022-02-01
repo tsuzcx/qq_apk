@@ -12,20 +12,15 @@ class ARTransferDoorLogicManager$2
   {
     if (ARTransferDoorLogicManager.a(this.this$0).a.a == 0) {
       this.this$0.c(5);
+    } else if (ARTransferDoorLogicManager.a(this.this$0).a.c == 0) {
+      this.this$0.e();
     }
-    for (;;)
-    {
-      ARTransferDoorLogicManager.a(this.this$0, 0L);
-      return;
-      if (ARTransferDoorLogicManager.a(this.this$0).a.c == 0) {
-        this.this$0.e();
-      }
-    }
+    ARTransferDoorLogicManager.a(this.this$0, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -17,63 +17,64 @@ public final class ProducerArbiter
   {
     for (;;)
     {
-      long l3;
-      long l1;
-      for (;;)
+      try
       {
-        long l4;
-        try
+        long l3 = this.missedRequested;
+        long l4 = this.missedProduced;
+        Producer localProducer = this.missedProducer;
+        if ((l3 == 0L) && (l4 == 0L) && (localProducer == null))
         {
-          l3 = this.missedRequested;
-          l4 = this.missedProduced;
-          Producer localProducer1 = this.missedProducer;
-          if ((l3 == 0L) && (l4 == 0L) && (localProducer1 == null))
+          this.emitting = false;
+          return;
+        }
+        this.missedRequested = 0L;
+        this.missedProduced = 0L;
+        this.missedProducer = null;
+        long l2 = this.requested;
+        long l1 = l2;
+        if (l2 != 9223372036854775807L)
+        {
+          l1 = l2 + l3;
+          if ((l1 >= 0L) && (l1 != 9223372036854775807L))
           {
-            this.emitting = false;
-            return;
-          }
-          this.missedRequested = 0L;
-          this.missedProduced = 0L;
-          this.missedProducer = null;
-          long l2 = this.requested;
-          l1 = l2;
-          if (l2 != 9223372036854775807L)
-          {
-            l1 = l2 + l3;
-            if ((l1 < 0L) || (l1 == 9223372036854775807L))
-            {
-              this.requested = 9223372036854775807L;
-              l1 = 9223372036854775807L;
+            l1 -= l4;
+            if (l1 >= 0L) {
+              this.requested = l1;
+            } else {
+              throw new IllegalStateException("more produced than requested");
             }
           }
           else
           {
-            if (localProducer1 == null) {
-              break label183;
-            }
-            if (localProducer1 != NULL_PRODUCER) {
-              break label166;
-            }
-            this.currentProducer = null;
-            break;
+            this.requested = 9223372036854775807L;
+            l1 = 9223372036854775807L;
           }
         }
-        finally {}
-        l1 -= l4;
-        if (l1 < 0L) {
-          throw new IllegalStateException("more produced than requested");
+        if (localProducer != null)
+        {
+          if (localProducer == NULL_PRODUCER)
+          {
+            this.currentProducer = null;
+          }
+          else
+          {
+            this.currentProducer = localProducer;
+            localProducer.request(l1);
+          }
         }
-        this.requested = l1;
+        else
+        {
+          localProducer = this.currentProducer;
+          if ((localProducer != null) && (l3 != 0L)) {
+            localProducer.request(l3);
+          }
+        }
       }
-      label166:
-      this.currentProducer = localObject;
-      localObject.request(l1);
-      continue;
-      label183:
-      Producer localProducer2 = this.currentProducer;
-      if ((localProducer2 != null) && (l3 != 0L)) {
-        localProducer2.request(l3);
-      }
+      finally {}
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -84,96 +85,97 @@ public final class ProducerArbiter
     //   0: lload_1
     //   1: lconst_0
     //   2: lcmp
-    //   3: ifgt +13 -> 16
-    //   6: new 56	java/lang/IllegalArgumentException
-    //   9: dup
-    //   10: ldc 58
-    //   12: invokespecial 59	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
-    //   15: athrow
+    //   3: ifle +106 -> 109
+    //   6: aload_0
+    //   7: monitorenter
+    //   8: aload_0
+    //   9: getfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
+    //   12: ifeq +16 -> 28
+    //   15: aload_0
     //   16: aload_0
-    //   17: monitorenter
-    //   18: aload_0
-    //   19: getfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
-    //   22: ifeq +16 -> 38
+    //   17: getfield 32	rx/internal/producers/ProducerArbiter:missedProduced	J
+    //   20: lload_1
+    //   21: ladd
+    //   22: putfield 32	rx/internal/producers/ProducerArbiter:missedProduced	J
     //   25: aload_0
-    //   26: aload_0
-    //   27: getfield 32	rx/internal/producers/ProducerArbiter:missedProduced	J
-    //   30: lload_1
-    //   31: ladd
-    //   32: putfield 32	rx/internal/producers/ProducerArbiter:missedProduced	J
+    //   26: monitorexit
+    //   27: return
+    //   28: aload_0
+    //   29: iconst_1
+    //   30: putfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
+    //   33: aload_0
+    //   34: monitorexit
     //   35: aload_0
-    //   36: monitorexit
-    //   37: return
-    //   38: aload_0
-    //   39: iconst_1
-    //   40: putfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_0
-    //   46: getfield 38	rx/internal/producers/ProducerArbiter:requested	J
-    //   49: lstore_3
-    //   50: lload_3
-    //   51: ldc2_w 39
+    //   36: getfield 38	rx/internal/producers/ProducerArbiter:requested	J
+    //   39: lstore_3
+    //   40: lload_3
+    //   41: ldc2_w 39
+    //   44: lcmp
+    //   45: ifeq +31 -> 76
+    //   48: lload_3
+    //   49: lload_1
+    //   50: lsub
+    //   51: lstore_1
+    //   52: lload_1
+    //   53: lconst_0
     //   54: lcmp
-    //   55: ifeq +49 -> 104
-    //   58: lload_3
+    //   55: iflt +11 -> 66
+    //   58: aload_0
     //   59: lload_1
-    //   60: lsub
-    //   61: lstore_1
-    //   62: lload_1
-    //   63: lconst_0
-    //   64: lcmp
-    //   65: ifge +34 -> 99
-    //   68: new 44	java/lang/IllegalStateException
-    //   71: dup
-    //   72: ldc 61
-    //   74: invokespecial 49	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
-    //   77: athrow
-    //   78: astore 5
-    //   80: aload_0
-    //   81: monitorenter
-    //   82: aload_0
-    //   83: iconst_0
-    //   84: putfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
-    //   87: aload_0
-    //   88: monitorexit
-    //   89: aload 5
-    //   91: athrow
-    //   92: astore 5
-    //   94: aload_0
-    //   95: monitorexit
-    //   96: aload 5
-    //   98: athrow
-    //   99: aload_0
-    //   100: lload_1
-    //   101: putfield 38	rx/internal/producers/ProducerArbiter:requested	J
+    //   60: putfield 38	rx/internal/producers/ProducerArbiter:requested	J
+    //   63: goto +13 -> 76
+    //   66: new 42	java/lang/IllegalStateException
+    //   69: dup
+    //   70: ldc 56
+    //   72: invokespecial 47	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   75: athrow
+    //   76: aload_0
+    //   77: invokevirtual 58	rx/internal/producers/ProducerArbiter:emitLoop	()V
+    //   80: return
+    //   81: astore 5
+    //   83: aload_0
+    //   84: monitorenter
+    //   85: aload_0
+    //   86: iconst_0
+    //   87: putfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
+    //   90: aload_0
+    //   91: monitorexit
+    //   92: aload 5
+    //   94: athrow
+    //   95: astore 5
+    //   97: aload_0
+    //   98: monitorexit
+    //   99: aload 5
+    //   101: athrow
+    //   102: astore 5
     //   104: aload_0
-    //   105: invokevirtual 63	rx/internal/producers/ProducerArbiter:emitLoop	()V
-    //   108: return
-    //   109: astore 5
-    //   111: aload_0
-    //   112: monitorexit
-    //   113: aload 5
-    //   115: athrow
+    //   105: monitorexit
+    //   106: aload 5
+    //   108: athrow
+    //   109: new 60	java/lang/IllegalArgumentException
+    //   112: dup
+    //   113: ldc 62
+    //   115: invokespecial 63	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   118: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	116	0	this	ProducerArbiter
-    //   0	116	1	paramLong	long
-    //   49	10	3	l	long
-    //   78	12	5	localObject1	Object
-    //   92	5	5	localObject2	Object
-    //   109	5	5	localObject3	Object
+    //   0	119	0	this	ProducerArbiter
+    //   0	119	1	paramLong	long
+    //   39	10	3	l	long
+    //   81	12	5	localObject1	Object
+    //   95	5	5	localObject2	Object
+    //   102	5	5	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   45	50	78	finally
-    //   68	78	78	finally
-    //   99	104	78	finally
-    //   104	108	78	finally
-    //   18	37	92	finally
-    //   38	45	92	finally
-    //   94	96	92	finally
-    //   82	89	109	finally
-    //   111	113	109	finally
+    //   35	40	81	finally
+    //   58	63	81	finally
+    //   66	76	81	finally
+    //   76	80	81	finally
+    //   85	92	95	finally
+    //   97	99	95	finally
+    //   8	27	102	finally
+    //   28	35	102	finally
+    //   104	106	102	finally
   }
   
   /* Error */
@@ -183,104 +185,104 @@ public final class ProducerArbiter
     //   0: lload_1
     //   1: lconst_0
     //   2: lcmp
-    //   3: ifge +13 -> 16
-    //   6: new 56	java/lang/IllegalArgumentException
-    //   9: dup
-    //   10: ldc 65
-    //   12: invokespecial 59	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
-    //   15: athrow
-    //   16: lload_1
-    //   17: lconst_0
-    //   18: lcmp
-    //   19: ifne +4 -> 23
-    //   22: return
+    //   3: iflt +118 -> 121
+    //   6: lload_1
+    //   7: lconst_0
+    //   8: lcmp
+    //   9: ifne +4 -> 13
+    //   12: return
+    //   13: aload_0
+    //   14: monitorenter
+    //   15: aload_0
+    //   16: getfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
+    //   19: ifeq +16 -> 35
+    //   22: aload_0
     //   23: aload_0
-    //   24: monitorenter
-    //   25: aload_0
-    //   26: getfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
-    //   29: ifeq +23 -> 52
+    //   24: getfield 30	rx/internal/producers/ProducerArbiter:missedRequested	J
+    //   27: lload_1
+    //   28: ladd
+    //   29: putfield 30	rx/internal/producers/ProducerArbiter:missedRequested	J
     //   32: aload_0
-    //   33: aload_0
-    //   34: getfield 30	rx/internal/producers/ProducerArbiter:missedRequested	J
-    //   37: lload_1
-    //   38: ladd
-    //   39: putfield 30	rx/internal/producers/ProducerArbiter:missedRequested	J
+    //   33: monitorexit
+    //   34: return
+    //   35: aload_0
+    //   36: iconst_1
+    //   37: putfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
+    //   40: aload_0
+    //   41: monitorexit
     //   42: aload_0
-    //   43: monitorexit
-    //   44: return
-    //   45: astore 7
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: aload 7
-    //   51: athrow
-    //   52: aload_0
-    //   53: iconst_1
-    //   54: putfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: aload_0
-    //   60: getfield 38	rx/internal/producers/ProducerArbiter:requested	J
-    //   63: lload_1
-    //   64: ladd
-    //   65: lstore 5
-    //   67: lload 5
-    //   69: lstore_3
-    //   70: lload 5
-    //   72: lconst_0
-    //   73: lcmp
-    //   74: ifge +7 -> 81
-    //   77: ldc2_w 39
-    //   80: lstore_3
-    //   81: aload_0
-    //   82: lload_3
-    //   83: putfield 38	rx/internal/producers/ProducerArbiter:requested	J
-    //   86: aload_0
-    //   87: getfield 42	rx/internal/producers/ProducerArbiter:currentProducer	Lrx/Producer;
-    //   90: astore 7
-    //   92: aload 7
-    //   94: ifnull +11 -> 105
-    //   97: aload 7
-    //   99: lload_1
-    //   100: invokeinterface 53 3 0
-    //   105: aload_0
-    //   106: invokevirtual 63	rx/internal/producers/ProducerArbiter:emitLoop	()V
-    //   109: return
-    //   110: astore 7
-    //   112: aload_0
-    //   113: monitorenter
-    //   114: aload_0
-    //   115: iconst_0
-    //   116: putfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
-    //   119: aload_0
-    //   120: monitorexit
-    //   121: aload 7
-    //   123: athrow
-    //   124: astore 7
-    //   126: aload_0
-    //   127: monitorexit
-    //   128: aload 7
+    //   43: getfield 38	rx/internal/producers/ProducerArbiter:requested	J
+    //   46: lload_1
+    //   47: ladd
+    //   48: lstore 5
+    //   50: lload 5
+    //   52: lstore_3
+    //   53: lload 5
+    //   55: lconst_0
+    //   56: lcmp
+    //   57: ifge +7 -> 64
+    //   60: ldc2_w 39
+    //   63: lstore_3
+    //   64: aload_0
+    //   65: lload_3
+    //   66: putfield 38	rx/internal/producers/ProducerArbiter:requested	J
+    //   69: aload_0
+    //   70: getfield 49	rx/internal/producers/ProducerArbiter:currentProducer	Lrx/Producer;
+    //   73: astore 7
+    //   75: aload 7
+    //   77: ifnull +11 -> 88
+    //   80: aload 7
+    //   82: lload_1
+    //   83: invokeinterface 53 3 0
+    //   88: aload_0
+    //   89: invokevirtual 58	rx/internal/producers/ProducerArbiter:emitLoop	()V
+    //   92: return
+    //   93: astore 7
+    //   95: aload_0
+    //   96: monitorenter
+    //   97: aload_0
+    //   98: iconst_0
+    //   99: putfield 36	rx/internal/producers/ProducerArbiter:emitting	Z
+    //   102: aload_0
+    //   103: monitorexit
+    //   104: aload 7
+    //   106: athrow
+    //   107: astore 7
+    //   109: aload_0
+    //   110: monitorexit
+    //   111: aload 7
+    //   113: athrow
+    //   114: astore 7
+    //   116: aload_0
+    //   117: monitorexit
+    //   118: aload 7
+    //   120: athrow
+    //   121: new 60	java/lang/IllegalArgumentException
+    //   124: dup
+    //   125: ldc 65
+    //   127: invokespecial 63	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   130: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	131	0	this	ProducerArbiter
     //   0	131	1	paramLong	long
-    //   69	14	3	l1	long
-    //   65	6	5	l2	long
-    //   45	5	7	localObject1	Object
-    //   90	8	7	localProducer	Producer
-    //   110	12	7	localObject2	Object
-    //   124	5	7	localObject3	Object
+    //   52	14	3	l1	long
+    //   48	6	5	l2	long
+    //   73	8	7	localProducer	Producer
+    //   93	12	7	localObject1	Object
+    //   107	5	7	localObject2	Object
+    //   114	5	7	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   25	44	45	finally
-    //   47	49	45	finally
-    //   52	59	45	finally
-    //   59	67	110	finally
-    //   81	92	110	finally
-    //   97	105	110	finally
-    //   105	109	110	finally
-    //   114	121	124	finally
-    //   126	128	124	finally
+    //   42	50	93	finally
+    //   64	75	93	finally
+    //   80	88	93	finally
+    //   88	92	93	finally
+    //   97	104	107	finally
+    //   109	111	107	finally
+    //   15	34	114	finally
+    //   35	42	114	finally
+    //   116	118	114	finally
   }
   
   /* Error */
@@ -311,7 +313,7 @@ public final class ProducerArbiter
     //   33: monitorexit
     //   34: aload_0
     //   35: aload_1
-    //   36: putfield 42	rx/internal/producers/ProducerArbiter:currentProducer	Lrx/Producer;
+    //   36: putfield 49	rx/internal/producers/ProducerArbiter:currentProducer	Lrx/Producer;
     //   39: aload_1
     //   40: ifnull +13 -> 53
     //   43: aload_1
@@ -319,7 +321,7 @@ public final class ProducerArbiter
     //   45: getfield 38	rx/internal/producers/ProducerArbiter:requested	J
     //   48: invokeinterface 53 3 0
     //   53: aload_0
-    //   54: invokevirtual 63	rx/internal/producers/ProducerArbiter:emitLoop	()V
+    //   54: invokevirtual 58	rx/internal/producers/ProducerArbiter:emitLoop	()V
     //   57: return
     //   58: astore_1
     //   59: aload_0
@@ -351,18 +353,18 @@ public final class ProducerArbiter
     //   34	39	58	finally
     //   43	53	58	finally
     //   53	57	58	finally
-    //   2	9	70	finally
-    //   15	19	70	finally
-    //   19	26	70	finally
-    //   27	34	70	finally
+    //   61	68	70	finally
     //   71	73	70	finally
-    //   61	68	75	finally
+    //   2	9	75	finally
+    //   15	19	75	finally
+    //   19	26	75	finally
+    //   27	34	75	finally
     //   76	78	75	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.producers.ProducerArbiter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,23 @@ import android.view.animation.Transformation;
 class ReboundLayout$ProgressAnimation
   extends Animation
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private float b = 1.0F;
+  private float endProgress = 1.0F;
+  private float startProgress = 0.0F;
   
   private ReboundLayout$ProgressAnimation(ReboundLayout paramReboundLayout)
   {
-    ReboundLayout.a(paramReboundLayout, true);
+    ReboundLayout.access$102(paramReboundLayout, true);
   }
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    paramFloat = (this.b - this.jdField_a_of_type_Float) * paramFloat + this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_ComTencentWidgetReboundLayout.scrollBy((int)((400 - this.jdField_a_of_type_ComTencentWidgetReboundLayout.getScrollX()) * paramFloat), 0);
+    float f1 = this.endProgress;
+    float f2 = this.startProgress;
+    paramFloat = (f1 - f2) * paramFloat + f2;
+    paramTransformation = this.this$0;
+    paramTransformation.scrollBy((int)((400 - paramTransformation.getScrollX()) * paramFloat), 0);
     if (paramFloat == 1.0F) {
-      ReboundLayout.a(this.jdField_a_of_type_ComTencentWidgetReboundLayout, false);
+      ReboundLayout.access$102(this.this$0, false);
     }
   }
   
@@ -33,7 +36,7 @@ class ReboundLayout$ProgressAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ReboundLayout.ProgressAnimation
  * JD-Core Version:    0.7.0.1
  */

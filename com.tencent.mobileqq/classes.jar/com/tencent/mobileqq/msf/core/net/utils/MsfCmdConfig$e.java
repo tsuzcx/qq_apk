@@ -22,48 +22,55 @@ class MsfCmdConfig$e
   
   protected void a(int paramInt, List paramList)
   {
-    Pair localPair = null;
-    boolean bool = false;
-    Object localObject = BaseApplication.getContext().getSharedPreferences("pref_safemode_not_exit", 0);
-    SharedPreferences.Editor localEditor;
+    Object localObject = BaseApplication.getContext();
+    boolean bool1 = false;
+    localObject = ((BaseApplication)localObject).getSharedPreferences("pref_safemode_not_exit", 0);
     if (paramInt > ((SharedPreferences)localObject).getInt("key_not_exit_version", 0))
     {
-      localEditor = ((SharedPreferences)localObject).edit();
+      SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
       localEditor.putInt("key_not_exit_version", paramInt);
       Iterator localIterator = paramList.iterator();
       localObject = null;
-      paramList = localPair;
-      if (localIterator.hasNext())
+      List localList = null;
+      while (localIterator.hasNext())
       {
-        localPair = (Pair)localIterator.next();
-        if ("enable".equals(localPair.first)) {
-          bool = Boolean.parseBoolean((String)localPair.second);
+        Pair localPair = (Pair)localIterator.next();
+        if ("enable".equals(localPair.first))
+        {
+          bool1 = Boolean.parseBoolean((String)localPair.second);
+        }
+        else
+        {
+          boolean bool2 = "crashType".equals(localPair.first);
+          paramList = "";
+          if (bool2)
+          {
+            if (localPair.second != null) {
+              paramList = (String)localPair.second;
+            }
+            localObject = paramList;
+          }
+          else if ("crashStack".equals(localPair.first))
+          {
+            if (localPair.second != null) {
+              paramList = (String)localPair.second;
+            }
+            localList = paramList;
+          }
         }
       }
-    }
-    for (;;)
-    {
-      break;
-      if ("crashType".equals(localPair.first))
-      {
-        if (localPair.second == null) {}
-        for (localObject = "";; localObject = (String)localPair.second) {
-          break;
-        }
-      }
-      if ("crashStack".equals(localPair.first))
-      {
-        if (localPair.second == null) {}
-        for (paramList = "";; paramList = (String)localPair.second) {
-          break;
-        }
-        QLog.d("MsfCmdConfig", 1, "noExitEnable=" + bool + ",noExitCrashType=" + (String)localObject + ",noExitCrashStack=" + paramList);
-        localEditor.putBoolean("key_not_exit_enable", bool);
-        localEditor.putString("key_not_exit_crash_type", (String)localObject);
-        localEditor.putString("key_not_exit_crash_stack", paramList);
-        localEditor.commit();
-        return;
-      }
+      paramList = new StringBuilder();
+      paramList.append("noExitEnable=");
+      paramList.append(bool1);
+      paramList.append(",noExitCrashType=");
+      paramList.append((String)localObject);
+      paramList.append(",noExitCrashStack=");
+      paramList.append(localList);
+      QLog.d("MsfCmdConfig", 1, paramList.toString());
+      localEditor.putBoolean("key_not_exit_enable", bool1);
+      localEditor.putString("key_not_exit_crash_type", (String)localObject);
+      localEditor.putString("key_not_exit_crash_stack", localList);
+      localEditor.commit();
     }
   }
   
@@ -82,7 +89,7 @@ class MsfCmdConfig$e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.utils.MsfCmdConfig.e
  * JD-Core Version:    0.7.0.1
  */

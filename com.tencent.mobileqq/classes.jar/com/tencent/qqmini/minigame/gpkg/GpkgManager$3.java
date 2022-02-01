@@ -17,9 +17,15 @@ final class GpkgManager$3
   
   public void onDownloadFailed(int paramInt, String paramString)
   {
-    QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin failed " + paramInt + " " + this.val$pluginInfo);
-    if (this.val$listener != null) {
-      this.val$listener.onPluginDownloadComplete(false, null, null);
+    paramString = new StringBuilder();
+    paramString.append("[Gpkg] download plugin failed ");
+    paramString.append(paramInt);
+    paramString.append(" ");
+    paramString.append(this.val$pluginInfo);
+    QMLog.e("[minigame] GpkgManager", paramString.toString());
+    paramString = this.val$listener;
+    if (paramString != null) {
+      paramString.onPluginDownloadComplete(false, null, null);
     }
   }
   
@@ -31,38 +37,63 @@ final class GpkgManager$3
   {
     try
     {
-      if ((this.val$pluginInfo.packageSize != 0) && (this.val$pluginInfo.packageSize != this.val$pkgFile.length()))
+      paramInt = this.val$pluginInfo.packageSize;
+      if ((paramInt != 0) && (this.val$pluginInfo.packageSize != this.val$pkgFile.length()))
       {
-        QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin file-size mismatch " + this.val$pluginInfo);
-        if (this.val$listener != null) {
-          this.val$listener.onPluginDownloadComplete(false, new RuntimeException("file size mismatch, expected:" + this.val$pluginInfo.packageSize + " got:" + this.val$pkgFile.length()), null);
+        paramString = new StringBuilder();
+        paramString.append("[Gpkg] download plugin file-size mismatch ");
+        paramString.append(this.val$pluginInfo);
+        QMLog.e("[minigame] GpkgManager", paramString.toString());
+        if (this.val$listener != null)
+        {
+          paramString = this.val$listener;
+          paramDownloadResult = new StringBuilder();
+          paramDownloadResult.append("file size mismatch, expected:");
+          paramDownloadResult.append(this.val$pluginInfo.packageSize);
+          paramDownloadResult.append(" got:");
+          paramDownloadResult.append(this.val$pkgFile.length());
+          paramString.onPluginDownloadComplete(false, new RuntimeException(paramDownloadResult.toString()), null);
         }
-        return;
       }
-      FileUtils.delete(this.val$folder.getAbsolutePath(), false);
-      if (!WxapkgUnpacker.unpackSync(this.val$pkgFile.getAbsolutePath(), this.val$folder.getAbsolutePath()))
+      for (;;)
       {
-        QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin unpack failed " + this.val$pluginInfo);
+        this.val$pkgFile.delete();
+        return;
+        FileUtils.delete(this.val$folder.getAbsolutePath(), false);
+        if (WxapkgUnpacker.unpackSync(this.val$pkgFile.getAbsolutePath(), this.val$folder.getAbsolutePath())) {
+          break;
+        }
+        paramString = new StringBuilder();
+        paramString.append("[Gpkg] download plugin unpack failed ");
+        paramString.append(this.val$pluginInfo);
+        QMLog.e("[minigame] GpkgManager", paramString.toString());
         if (this.val$listener != null) {
           this.val$listener.onPluginDownloadComplete(false, new RuntimeException("unpack file failed"), null);
         }
-        return;
       }
-      QMLog.i("[minigame] GpkgManager", "[Gpkg] download plugin success " + this.val$pluginInfo);
+      paramString = new StringBuilder();
+      paramString.append("[Gpkg] download plugin success ");
+      paramString.append(this.val$pluginInfo);
+      QMLog.i("[minigame] GpkgManager", paramString.toString());
       if (this.val$listener != null) {
         this.val$listener.onPluginDownloadComplete(true, null, GpkgManager.access$000(paramDownloadResult));
       }
+      this.val$pkgFile.delete();
       return;
     }
     finally
     {
       this.val$pkgFile.delete();
     }
+    for (;;)
+    {
+      throw paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.GpkgManager.3
  * JD-Core Version:    0.7.0.1
  */

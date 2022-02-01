@@ -46,7 +46,10 @@ public class StoryVideoSimpleList
     catch (InvalidProtocolBufferMicroException paramStoryVideoSimpleInfoEntity)
     {
       paramStoryVideoSimpleInfoEntity.printStackTrace();
-      SLog.e("Q.qqstory.home.StoryVideoSimpleList", "<init> error:" + paramStoryVideoSimpleInfoEntity);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("<init> error:");
+      ((StringBuilder)localObject).append(paramStoryVideoSimpleInfoEntity);
+      SLog.e("Q.qqstory.home.StoryVideoSimpleList", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -68,9 +71,10 @@ public class StoryVideoSimpleList
   
   public void copy(Object paramObject)
   {
-    this.unionId = ((StoryVideoSimpleList)paramObject).unionId;
-    this.vid = ((StoryVideoSimpleList)paramObject).vid;
-    this.videoCover = ((StoryVideoSimpleList)paramObject).videoCover;
+    paramObject = (StoryVideoSimpleList)paramObject;
+    this.unionId = paramObject.unionId;
+    this.vid = paramObject.vid;
+    this.videoCover = paramObject.videoCover;
   }
   
   public StoryVideoSimpleInfoEntity cover2Entity()
@@ -80,28 +84,35 @@ public class StoryVideoSimpleList
     qqstory_struct.FriendStoryDes localFriendStoryDes = new qqstory_struct.FriendStoryDes();
     ArrayList localArrayList = new ArrayList(getCount());
     int i = 0;
-    if (i < getCount())
+    while (i < getCount())
     {
-      qqstory_struct.StoryVideoSimpleInfo localStoryVideoSimpleInfo = new qqstory_struct.StoryVideoSimpleInfo();
-      if ((this.videoCover.length > i) && (!TextUtils.isEmpty(this.videoCover[i])))
+      Object localObject1 = new qqstory_struct.StoryVideoSimpleInfo();
+      Object localObject2 = this.videoCover;
+      if ((localObject2.length > i) && (!TextUtils.isEmpty(localObject2[i])))
       {
-        localStoryVideoSimpleInfo.video_cover.set(ByteStringMicro.copyFromUtf8(this.videoCover[i]));
-        label94:
-        if ((this.vid.length <= i) || (TextUtils.isEmpty(this.vid[i]))) {
-          break label176;
-        }
-        localStoryVideoSimpleInfo.vid.set(ByteStringMicro.copyFromUtf8(this.vid[i]));
-        localArrayList.add(localStoryVideoSimpleInfo);
+        ((qqstory_struct.StoryVideoSimpleInfo)localObject1).video_cover.set(ByteStringMicro.copyFromUtf8(this.videoCover[i]));
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        SLog.e("Q.qqstory.home.StoryVideoSimpleList", "cover2Entity error video cover is null:" + i);
-        break label94;
-        label176:
-        SLog.e("Q.qqstory.home.StoryVideoSimpleList", "cover2Entity error vid is null:" + i);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("cover2Entity error video cover is null:");
+        ((StringBuilder)localObject2).append(i);
+        SLog.e("Q.qqstory.home.StoryVideoSimpleList", ((StringBuilder)localObject2).toString());
       }
+      localObject2 = this.vid;
+      if ((localObject2.length > i) && (!TextUtils.isEmpty(localObject2[i])))
+      {
+        ((qqstory_struct.StoryVideoSimpleInfo)localObject1).vid.set(ByteStringMicro.copyFromUtf8(this.vid[i]));
+        localArrayList.add(localObject1);
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("cover2Entity error vid is null:");
+        ((StringBuilder)localObject1).append(i);
+        SLog.e("Q.qqstory.home.StoryVideoSimpleList", ((StringBuilder)localObject1).toString());
+      }
+      i += 1;
     }
     localFriendStoryDes.simple_info_list.set(localArrayList);
     localStoryVideoSimpleInfoEntity.data = localFriendStoryDes.toByteArray();
@@ -110,20 +121,31 @@ public class StoryVideoSimpleList
   
   public int getCount()
   {
-    if (this.vid == null) {
+    String[] arrayOfString = this.vid;
+    if (arrayOfString == null) {
       return 0;
     }
-    return this.vid.length;
+    return arrayOfString.length;
   }
   
   public String toString()
   {
-    return "StoryVideoSimpleList{unionId='" + this.unionId + '\'' + ", vid=" + Arrays.toString(this.vid) + ", videoCover=" + Arrays.toString(this.videoCover) + "} " + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StoryVideoSimpleList{unionId='");
+    localStringBuilder.append(this.unionId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", vid=");
+    localStringBuilder.append(Arrays.toString(this.vid));
+    localStringBuilder.append(", videoCover=");
+    localStringBuilder.append(Arrays.toString(this.videoCover));
+    localStringBuilder.append("} ");
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.StoryVideoSimpleList
  * JD-Core Version:    0.7.0.1
  */

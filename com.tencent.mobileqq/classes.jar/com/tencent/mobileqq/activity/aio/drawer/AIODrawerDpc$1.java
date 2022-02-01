@@ -11,14 +11,18 @@ final class AIODrawerDpc$1
     if (paramBoolean) {
       AIODrawerDpc.a(true);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDpcPullFinished, hasChanged = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("AIODrawerDpc", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.AIODrawerDpc.1
  * JD-Core Version:    0.7.0.1
  */

@@ -46,51 +46,52 @@ public class AsyncImageView
   
   public static URL a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    Object localObject = null;
-    if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {}
-    do
+    if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
     {
+      Object localObject;
+      if (FileManagerUtil.a(paramString) == 2)
+      {
+        localObject = "videothumb";
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("|");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append("|");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append("|");
+        ((StringBuilder)localObject).append("0");
+        ((StringBuilder)localObject).append("|");
+        ((StringBuilder)localObject).append(paramBoolean);
+        paramString = ((StringBuilder)localObject).toString();
+        localObject = "datalineimage";
+      }
       try
       {
-        paramString = new URL(paramString);
+        paramString = new URL((String)localObject, "", paramString);
         return paramString;
       }
       catch (MalformedURLException paramString)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AsyncImageView", 2, paramString.getMessage(), paramString);
-          }
-          paramString = null;
+        if (QLog.isColorLevel()) {
+          QLog.d("AsyncImageView", 2, paramString.getMessage(), paramString);
         }
+        return null;
       }
-      String str2;
-      String str1;
-      if (FileManagerUtil.a(paramString) == 2)
-      {
-        str2 = "videothumb";
-        str1 = paramString;
-        paramString = str2;
+    }
+    try
+    {
+      paramString = new URL(paramString);
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AsyncImageView", 2, paramString.getMessage(), paramString);
       }
-      for (;;)
-      {
-        try
-        {
-          paramString = new URL(paramString, "", str1);
-          return paramString;
-        }
-        catch (MalformedURLException localMalformedURLException)
-        {
-          paramString = localObject;
-        }
-        str1 = "datalineimage";
-        str2 = paramString + "|" + paramInt1 + "|" + paramInt2 + "|" + "0" + "|" + paramBoolean;
-        paramString = str1;
-        str1 = str2;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AsyncImageView", 2, localMalformedURLException.getMessage(), localMalformedURLException);
+    }
     return null;
   }
   
@@ -114,37 +115,37 @@ public class AsyncImageView
         return;
       }
     }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = paramString;
-      localURLDrawableOptions.mFailedDrawable = paramString;
-      localURLDrawableOptions.mPlayGifImage = false;
-      localURLDrawableOptions.mGifRoundCorner = 0.0F;
-      localURLDrawableOptions.mDecodeFileStrategy = 3;
-      if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0)) {
-        break label204;
-      }
-      localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
-    }
-    for (localURLDrawableOptions.mRequestHeight = this.jdField_b_of_type_Int;; localURLDrawableOptions.mRequestHeight = 0)
-    {
-      paramString = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
-      setImageDrawable(paramString);
-      paramString.setURLDrawableListener(new AsyncImageView.1(this));
-      return;
-      if (this.jdField_b_of_type_Boolean)
-      {
+    paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (paramString == null) {
+      if (this.jdField_b_of_type_Boolean) {
         paramString = new ColorDrawable(this.d);
-        break;
+      } else {
+        paramString = getResources().getDrawable(this.c);
       }
-      paramString = getResources().getDrawable(this.c);
-      break;
-      label204:
-      localURLDrawableOptions.mRequestWidth = 0;
     }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = paramString;
+    localURLDrawableOptions.mFailedDrawable = paramString;
+    localURLDrawableOptions.mPlayGifImage = false;
+    localURLDrawableOptions.mGifRoundCorner = 0.0F;
+    localURLDrawableOptions.mDecodeFileStrategy = 3;
+    int i = this.jdField_a_of_type_Int;
+    if (i > 0)
+    {
+      int j = this.jdField_b_of_type_Int;
+      if (j > 0)
+      {
+        localURLDrawableOptions.mRequestWidth = i;
+        localURLDrawableOptions.mRequestHeight = j;
+        break label200;
+      }
+    }
+    localURLDrawableOptions.mRequestWidth = 0;
+    localURLDrawableOptions.mRequestHeight = 0;
+    label200:
+    paramString = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
+    setImageDrawable(paramString);
+    paramString.setURLDrawableListener(new AsyncImageView.1(this));
   }
   
   public void setDefaultColorDrawable(int paramInt)
@@ -189,7 +190,7 @@ public class AsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.widget.AsyncImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -43,26 +43,26 @@ public final class TAVLoopImageResource
   {
     Intrinsics.checkParameterIsNotNull(paramCMTime, "time");
     Intrinsics.checkParameterIsNotNull(paramCGSize, "renderSize");
-    if (!this.sourceTimeRange.containsTime(paramCMTime)) {}
-    while (this.images.isEmpty()) {
+    if (!this.sourceTimeRange.containsTime(paramCMTime)) {
+      return null;
+    }
+    if (this.images.isEmpty()) {
       return null;
     }
     ThreadLocal localThreadLocal = this.ciImageHashMap;
     paramCGSize = localThreadLocal.get();
-    if (paramCGSize != null) {}
-    int i;
-    for (;;)
+    if (paramCGSize == null)
     {
-      paramCGSize = (SparseArray)paramCGSize;
-      i = (int)(paramCMTime.getTimeUs() / this.interval.getTimeUs() % this.images.size());
-      paramCMTime = (CIImage)paramCGSize.get(i);
-      if (paramCMTime == null) {
-        break;
-      }
-      paramCMTime.reset();
-      return paramCMTime;
       paramCGSize = new SparseArray();
       localThreadLocal.set(paramCGSize);
+    }
+    paramCGSize = (SparseArray)paramCGSize;
+    int i = (int)(paramCMTime.getTimeUs() / this.interval.getTimeUs() % this.images.size());
+    paramCMTime = (CIImage)paramCGSize.get(i);
+    if (paramCMTime != null)
+    {
+      paramCMTime.reset();
+      return paramCMTime;
     }
     paramCGSize.put(i, ((CIImage)this.images.get(i)).clone());
     return (CIImage)paramCGSize.get(i);
@@ -70,7 +70,7 @@ public final class TAVLoopImageResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TAVLoopImageResource
  * JD-Core Version:    0.7.0.1
  */

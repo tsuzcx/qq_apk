@@ -6,7 +6,8 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.nearby.NearbyFlowerUtil;
+import com.tencent.mobileqq.nearby.api.INearbyFlowerUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.data.MessageNavInfo;
@@ -27,19 +28,17 @@ public class TroopReceivedFlowsersMsg
   public TroopReceivedFlowsersMsg(Context paramContext, boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697681);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697687);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    if (paramMessageRecord == null)
-    {
-      paramMessageInfo = null;
-      return paramMessageInfo;
+    if (paramMessageRecord == null) {
+      return null;
     }
-    boolean bool = NearbyFlowerUtil.a(paramMessageRecord);
+    boolean bool = ((INearbyFlowerUtil)QRoute.api(INearbyFlowerUtil.class)).isNearbyFlowerMsg(paramMessageRecord);
     if ((paramMessageRecord.msgtype != -2035) && (paramMessageRecord.msgtype != -2038) && (!bool)) {
       return null;
     }
@@ -59,46 +58,45 @@ public class TroopReceivedFlowsersMsg
     {
       paramQQAppInterface = (MessageForDeliverGiftTips)paramMessageRecord;
       paramInt = 1;
-      i = 1;
-      if (!(paramObject instanceof TroopReceivedFlowsersMsg)) {
-        break label287;
-      }
-      paramMessageRecord = (TroopReceivedFlowsersMsg)paramObject;
-      paramInt = i;
-      if (paramMessageRecord.jdField_a_of_type_Boolean)
+      int i = 1;
+      if ((paramObject instanceof TroopReceivedFlowsersMsg))
       {
+        paramMessageRecord = (TroopReceivedFlowsersMsg)paramObject;
         paramInt = i;
-        if (!paramQQAppInterface.isToAll()) {
-          paramInt = 0;
+        if (paramMessageRecord.jdField_a_of_type_Boolean)
+        {
+          paramInt = i;
+          if (!paramQQAppInterface.isToAll()) {
+            paramInt = 0;
+          }
+        }
+        paramObject = paramMessageRecord;
+        i = paramInt;
+        if (!paramMessageRecord.jdField_a_of_type_Boolean)
+        {
+          paramMessageRecord.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+          paramObject = paramMessageRecord;
+          i = paramInt;
         }
       }
-      i = paramInt;
-      paramObject = paramMessageRecord;
-      if (!paramMessageRecord.jdField_a_of_type_Boolean)
+      else
       {
-        paramMessageRecord.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
-        paramObject = paramMessageRecord;
+        paramObject = new TroopReceivedFlowsersMsg(BaseApplication.getContext(), paramQQAppInterface.isToAll());
+        paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+        i = paramInt;
       }
-    }
-    for (int i = paramInt;; i = paramInt)
-    {
-      paramMessageInfo = paramObject;
-      if (i == 0) {
-        break;
+      if ((i != 0) && (!TextUtils.isEmpty(paramQQAppInterface.remindBrief)))
+      {
+        paramMessageInfo = paramQQAppInterface.remindBrief.split("#");
+        paramMessageRecord = new StringBuffer("[");
+        paramMessageRecord.append(paramMessageInfo[0]);
+        paramMessageRecord.append("]");
+        paramObject.jdField_a_of_type_JavaLangString = paramMessageRecord.toString();
       }
-      paramMessageInfo = paramObject;
-      if (TextUtils.isEmpty(paramQQAppInterface.remindBrief)) {
-        break;
-      }
-      paramMessageInfo = paramQQAppInterface.remindBrief.split("#");
-      paramObject.jdField_a_of_type_JavaLangString = ("[" + paramMessageInfo[0] + "]");
       return paramObject;
-      ReportController.b(paramQQAppInterface, "P_CliOper", "BizTechReport", "", "Troop_gift", "MsgBizType.TYPE_TROOP_RECEIVED_FLOWSER_MSG, MessageRecord cast to GiftTips", 0, -1, paramMessageRecord.getClass().getName(), "", "", "");
-      return null;
-      label287:
-      paramObject = new TroopReceivedFlowsersMsg(BaseApplication.getContext(), paramQQAppInterface.isToAll());
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
     }
+    ReportController.b(paramQQAppInterface, "P_CliOper", "BizTechReport", "", "Troop_gift", "MsgBizType.TYPE_TROOP_RECEIVED_FLOWSER_MSG, MessageRecord cast to GiftTips", 0, -1, paramMessageRecord.getClass().getName(), "", "", "");
+    return null;
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -142,20 +140,17 @@ public class TroopReceivedFlowsersMsg
       if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo != null) {
         localJSONObject.put("messageNavInfo", this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a());
       }
-      return localJSONObject.toString().getBytes();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString().getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopReceivedFlowsersMsg
  * JD-Core Version:    0.7.0.1
  */

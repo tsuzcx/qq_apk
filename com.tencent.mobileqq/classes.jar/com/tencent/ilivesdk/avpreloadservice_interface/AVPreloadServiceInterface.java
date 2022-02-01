@@ -9,8 +9,6 @@ public abstract interface AVPreloadServiceInterface
   
   public abstract String a(String paramString);
   
-  public abstract void a();
-  
   public abstract void a(AVPreloadServiceAdapter paramAVPreloadServiceAdapter);
   
   public abstract void a(AVPreloadServiceInterface.AVPreloadResultListener paramAVPreloadResultListener);
@@ -31,13 +29,15 @@ public abstract interface AVPreloadServiceInterface
   
   public abstract boolean b(String paramString);
   
+  public abstract void c();
+  
   public abstract void c(String paramString);
   
   public abstract void d(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice_interface.AVPreloadServiceInterface
  * JD-Core Version:    0.7.0.1
  */

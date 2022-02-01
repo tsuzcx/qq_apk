@@ -27,15 +27,16 @@ public class SetViewVisibilityAction
     if (paramBaseRuntime == null) {
       return null;
     }
-    switch (this.action)
+    int i = this.action;
+    if (i != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      paramBaseRuntime.setTabBarVisibility(this.mVisibility);
+      if (i != 2) {
+        return null;
+      }
+      paramBaseRuntime.setNaviVisibility(this.mVisibility);
       return null;
     }
-    paramBaseRuntime.setNaviVisibility(this.mVisibility);
+    paramBaseRuntime.setTabBarVisibility(this.mVisibility);
     return null;
   }
   
@@ -55,7 +56,7 @@ public class SetViewVisibilityAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.action.SetViewVisibilityAction
  * JD-Core Version:    0.7.0.1
  */

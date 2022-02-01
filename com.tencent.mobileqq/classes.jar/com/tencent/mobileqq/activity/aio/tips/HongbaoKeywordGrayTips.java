@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import android.text.format.Time;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
+import com.tencent.mobileqq.activity.aio.core.AIOContext;
+import com.tencent.mobileqq.activity.aio.core.msglist.MsgList;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.ListUI;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,118 +28,125 @@ public class HongbaoKeywordGrayTips
 {
   private volatile long jdField_a_of_type_Long = -1L;
   private Time jdField_a_of_type_AndroidTextFormatTime;
-  private ChatAdapter1 jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
+  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
   private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(2131705541), HardCodeUtil.a(2131705542), HardCodeUtil.a(2131705543) };
+  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(2131705614), HardCodeUtil.a(2131705615), HardCodeUtil.a(2131705616) };
   
-  public HongbaoKeywordGrayTips(QQAppInterface paramQQAppInterface, TipsManager paramTipsManager, Activity paramActivity, SessionInfo paramSessionInfo, ChatAdapter1 paramChatAdapter1)
+  public HongbaoKeywordGrayTips(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = paramChatAdapter1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramAIOContext.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramAIOContext.a();
   }
   
   private void a(ChatMessage paramChatMessage)
   {
     boolean bool = a(paramChatMessage);
-    if (QLog.isColorLevel()) {
-      QLog.d("HongbaoKeywordGrayTips", 2, "detect : matchKeywords=" + bool);
+    if (QLog.isColorLevel())
+    {
+      paramChatMessage = new StringBuilder();
+      paramChatMessage.append("detect : matchKeywords=");
+      paramChatMessage.append(bool);
+      QLog.d("HongbaoKeywordGrayTips", 2, paramChatMessage.toString());
     }
-    SharedPreferences localSharedPreferences;
-    long l1;
     if (bool)
     {
-      paramChatMessage = "key_hongbao_keyword_gray_tips" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localSharedPreferences = BaseApplication.getContext().getSharedPreferences("free_call", 0);
-      String str = localSharedPreferences.getString(paramChatMessage, "");
-      l1 = MessageCache.a() * 1000L;
-      if (TextUtils.isEmpty(str)) {
-        break label303;
-      }
-      long l2 = Long.parseLong(str);
-      this.jdField_a_of_type_AndroidTextFormatTime.set(l2);
-      int i = this.jdField_a_of_type_AndroidTextFormatTime.year;
-      int j = this.jdField_a_of_type_AndroidTextFormatTime.month;
-      int k = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-      int m = this.jdField_a_of_type_AndroidTextFormatTime.hour;
-      if (QLog.isColorLevel()) {
-        QLog.d("HongbaoKeywordGrayTips", 2, "lastShowDate :" + i + " - " + (j + 1) + " - " + k + " - " + m);
-      }
-      if (l1 - l2 > 86400000L) {
-        break label249;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("HongbaoKeywordGrayTips", 2, "has show in a day, just return;");
-      }
-    }
-    label249:
-    do
-    {
-      do
+      paramChatMessage = new StringBuilder();
+      paramChatMessage.append("key_hongbao_keyword_gray_tips");
+      paramChatMessage.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      paramChatMessage = paramChatMessage.toString();
+      SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("free_call", 0);
+      Object localObject = localSharedPreferences.getString(paramChatMessage, "");
+      long l1 = MessageCache.a() * 1000L;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        return;
+        long l2 = Long.parseLong((String)localObject);
+        this.jdField_a_of_type_AndroidTextFormatTime.set(l2);
+        int i = this.jdField_a_of_type_AndroidTextFormatTime.year;
+        int j = this.jdField_a_of_type_AndroidTextFormatTime.month;
+        int k = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
+        int m = this.jdField_a_of_type_AndroidTextFormatTime.hour;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("lastShowDate :");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(" - ");
+          ((StringBuilder)localObject).append(j + 1);
+          ((StringBuilder)localObject).append(" - ");
+          ((StringBuilder)localObject).append(k);
+          ((StringBuilder)localObject).append(" - ");
+          ((StringBuilder)localObject).append(m);
+          QLog.d("HongbaoKeywordGrayTips", 2, ((StringBuilder)localObject).toString());
+        }
+        if (l1 - l2 <= 86400000L)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("HongbaoKeywordGrayTips", 2, "has show in a day, just return;");
+          }
+          return;
+        }
         if (QLog.isColorLevel()) {
           QLog.i("HongbaoKeywordGrayTips", 2, "GrayTips show time interval > 1day, can show.");
         }
-      } while (!this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0]));
-      localSharedPreferences.edit().putString(paramChatMessage, String.valueOf(l1)).commit();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("HongbaoKeywordGrayTips", 2, "GrayTips has never been shown, can show.");
-      }
-    } while (!this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0]));
-    label303:
-    localSharedPreferences.edit().putString(paramChatMessage, String.valueOf(l1)).commit();
-  }
-  
-  private boolean a(ChatMessage paramChatMessage)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (!(paramChatMessage instanceof MessageForText))
-    {
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("HongbaoKeywordGrayTips", 2, "match : not MessageForText");
-        bool2 = bool1;
-      }
-      return bool2;
-    }
-    bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
-    if (!TextUtils.isEmpty(paramChatMessage.msg))
-    {
-      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-      j = arrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        String str = arrayOfString[i];
-        if (paramChatMessage.msg.contains(str)) {
-          bool1 = true;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0])) {
+          localSharedPreferences.edit().putString(paramChatMessage, String.valueOf(l1)).commit();
         }
       }
       else
       {
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
+        if (QLog.isColorLevel()) {
+          QLog.i("HongbaoKeywordGrayTips", 2, "GrayTips has never been shown, can show.");
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0])) {
+          localSharedPreferences.edit().putString(paramChatMessage, String.valueOf(l1)).commit();
+        }
+      }
+    }
+  }
+  
+  private boolean a(ChatMessage paramChatMessage)
+  {
+    boolean bool1 = paramChatMessage instanceof MessageForText;
+    boolean bool2 = false;
+    if (!bool1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HongbaoKeywordGrayTips", 2, "match : not MessageForText");
+      }
+      return false;
+    }
+    bool1 = bool2;
+    if (!TextUtils.isEmpty(paramChatMessage.msg))
+    {
+      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      int i = 0;
+      for (;;)
+      {
+        bool1 = bool2;
+        if (i >= j) {
           break;
         }
-        QLog.d("HongbaoKeywordGrayTips", 2, "match : ret=" + bool1);
-        return bool1;
+        String str = arrayOfString[i];
+        if (paramChatMessage.msg.contains(str))
+        {
+          bool1 = true;
+          break;
+        }
+        i += 1;
       }
-      i += 1;
     }
+    if (QLog.isColorLevel())
+    {
+      paramChatMessage = new StringBuilder();
+      paramChatMessage.append("match : ret=");
+      paramChatMessage.append(bool1);
+      QLog.d("HongbaoKeywordGrayTips", 2, paramChatMessage.toString());
+    }
+    return bool1;
   }
   
   public MessageRecord a(Object... paramVarArgs)
@@ -146,133 +154,128 @@ public class HongbaoKeywordGrayTips
     paramVarArgs = MessageRecordFactory.a(-1045);
     long l = MessageCache.a();
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, "", l, -1045, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
+    paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, str, "", l, -1045, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, l);
     paramVarArgs.isread = true;
     return paramVarArgs;
   }
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    int j = 1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1)) {}
-    label104:
-    long l;
-    int i;
-    Object localObject;
-    label204:
-    label355:
-    do
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 3000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 1)) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 1)
     {
-      do
+      paramVarArgs = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+      if ((paramVarArgs != null) && (paramVarArgs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString))) {
+        return;
+      }
+    }
+    if ((paramInt != 1000) && (paramInt != 1001)) {
+      return;
+    }
+    int j = 0;
+    if (paramInt == 1000) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
+    }
+    long l = MessageCache.a();
+    if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
+      this.jdField_a_of_type_AndroidTextFormatTime = new Time();
+    }
+    this.jdField_a_of_type_AndroidTextFormatTime.set(l * 1000L);
+    int i = this.jdField_a_of_type_AndroidTextFormatTime.year;
+    int k = this.jdField_a_of_type_AndroidTextFormatTime.month + 1;
+    int m = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
+    int n = this.jdField_a_of_type_AndroidTextFormatTime.hour;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onAIOEvent() :");
+      if (paramInt != 0) {
+        paramVarArgs = " TYPE_ON_SHOW ";
+      } else {
+        paramVarArgs = " TYPE_ON_MSG_SENT_RECV";
+      }
+      ((StringBuilder)localObject).append(paramVarArgs);
+      ((StringBuilder)localObject).append(", curDate :");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" - ");
+      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(" - ");
+      ((StringBuilder)localObject).append(m);
+      ((StringBuilder)localObject).append(" - ");
+      ((StringBuilder)localObject).append(n);
+      QLog.d("HongbaoKeywordGrayTips", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((i == 2015) && (k == 2) && (m <= 21) && (m >= 18)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HongbaoKeywordGrayTips", 2, "time not match, just return");
+      }
+      return;
+    }
+    if (paramInt != 0)
+    {
+      ThreadManager.getSubThreadHandler().post(new HongbaoKeywordGrayTips.1(this));
+      return;
+    }
+    paramInt = j;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 0) {
+      paramInt = 1;
+    }
+    l = this.jdField_a_of_type_Long;
+    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
+    i = paramVarArgs.size();
+    if (i > 0)
+    {
+      i -= 1;
+      while (i >= 0)
       {
-        do
-        {
-          do
-          {
-            return;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
-              break;
-            }
-            paramVarArgs = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-          } while ((paramVarArgs != null) && (paramVarArgs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
-        } while ((paramInt != 1000) && (paramInt != 1001));
-        if (paramInt == 1000)
-        {
-          paramInt = 1;
-          l = MessageCache.a();
-          if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
-            this.jdField_a_of_type_AndroidTextFormatTime = new Time();
-          }
-          this.jdField_a_of_type_AndroidTextFormatTime.set(l * 1000L);
-          i = this.jdField_a_of_type_AndroidTextFormatTime.year;
-          int k = this.jdField_a_of_type_AndroidTextFormatTime.month + 1;
-          int m = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-          int n = this.jdField_a_of_type_AndroidTextFormatTime.hour;
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder().append("onAIOEvent() :");
-            if (paramInt == 0) {
-              break label311;
-            }
-            paramVarArgs = " TYPE_ON_SHOW ";
-            QLog.d("HongbaoKeywordGrayTips", 2, paramVarArgs + ", curDate :" + i + " - " + k + " - " + m + " - " + n);
-          }
-          if ((i != 2015) || (k != 2) || (m > 21) || (m < 18)) {
-            break label317;
-          }
-        }
-        for (i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label322;
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("HongbaoKeywordGrayTips", 2, "time not match, just return");
-          return;
-          paramInt = 0;
-          break label104;
-          paramVarArgs = " TYPE_ON_MSG_SENT_RECV";
-          break label204;
-        }
+        localObject = (ChatMessage)paramVarArgs.get(i);
         if (paramInt != 0)
         {
-          ThreadManager.getSubThreadHandler().post(new HongbaoKeywordGrayTips.1(this));
-          return;
+          if (((ChatMessage)localObject).time <= l) {
+            return;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("HongbaoKeywordGrayTips", 2, "TYPE_ON_MSG_SENT_RECV : new message =====>");
+          }
+          if ((((ChatMessage)localObject).isSendFromLocal()) && (((ChatMessage)localObject).extraflag != 0))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("HongbaoKeywordGrayTips", 2, "TYPE_ON_MSG_SENT_RECV : msg send not success");
+            }
+          }
+          else
+          {
+            a((ChatMessage)localObject);
+            if (((ChatMessage)localObject).time > this.jdField_a_of_type_Long) {
+              this.jdField_a_of_type_Long = ((ChatMessage)localObject).time;
+            }
+          }
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) {
-          break;
+        else
+        {
+          if (((ChatMessage)localObject).shmsgseq <= l) {
+            return;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("HongbaoKeywordGrayTips", 2, "TYPE_ON_MSG_SENT_RECV : new message =====>");
+          }
+          a((ChatMessage)localObject);
+          if (((ChatMessage)localObject).shmsgseq > this.jdField_a_of_type_Long) {
+            this.jdField_a_of_type_Long = ((ChatMessage)localObject).shmsgseq;
+          }
         }
-        paramInt = j;
-        l = this.jdField_a_of_type_Long;
-        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
-        i = paramVarArgs.size();
-      } while (i <= 0);
-      i -= 1;
-      if (i < 0) {
-        break;
-      }
-      localObject = (ChatMessage)paramVarArgs.get(i);
-      if (paramInt == 0) {
-        break label504;
-      }
-    } while (((ChatMessage)localObject).time <= l);
-    label311:
-    label317:
-    label322:
-    if (QLog.isColorLevel()) {
-      QLog.d("HongbaoKeywordGrayTips", 2, "TYPE_ON_MSG_SENT_RECV : new message =====>");
-    }
-    label384:
-    if ((((ChatMessage)localObject).isSendFromLocal()) && (((ChatMessage)localObject).extraflag != 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HongbaoKeywordGrayTips", 2, "TYPE_ON_MSG_SENT_RECV : msg send not success");
-      }
-    }
-    for (;;)
-    {
-      i -= 1;
-      break label384;
-      break;
-      paramInt = 0;
-      break label355;
-      a((ChatMessage)localObject);
-      if (((ChatMessage)localObject).time > this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Long = ((ChatMessage)localObject).time;
-        continue;
-        label504:
-        if (((ChatMessage)localObject).shmsgseq <= l) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("HongbaoKeywordGrayTips", 2, "TYPE_ON_MSG_SENT_RECV : new message =====>");
-        }
-        a((ChatMessage)localObject);
-        if (((ChatMessage)localObject).shmsgseq > this.jdField_a_of_type_Long) {
-          this.jdField_a_of_type_Long = ((ChatMessage)localObject).shmsgseq;
-        }
+        i -= 1;
       }
     }
   }
@@ -289,7 +292,7 @@ public class HongbaoKeywordGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.HongbaoKeywordGrayTips
  * JD-Core Version:    0.7.0.1
  */

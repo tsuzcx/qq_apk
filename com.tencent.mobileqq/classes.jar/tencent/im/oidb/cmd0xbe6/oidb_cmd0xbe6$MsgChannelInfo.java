@@ -9,14 +9,20 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class oidb_cmd0xbe6$MsgChannelInfo
   extends MessageMicro<MsgChannelInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "string_name", "uint32_channel_id", "uint32_channel_type" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0) }, MsgChannelInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField string_name = PBField.initString("");
   public final PBUInt32Field uint32_channel_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_channel_type = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "string_name", "uint32_channel_id", "uint32_channel_type" }, new Object[] { "", localInteger, localInteger }, MsgChannelInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbe6.oidb_cmd0xbe6.MsgChannelInfo
  * JD-Core Version:    0.7.0.1
  */

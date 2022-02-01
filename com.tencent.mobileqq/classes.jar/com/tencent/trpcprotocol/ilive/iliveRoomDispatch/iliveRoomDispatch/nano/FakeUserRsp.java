@@ -24,16 +24,13 @@ public final class FakeUserRsp
     do
     {
       i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      }
-    } while (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i));
+    } while ((i != 0) && (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)));
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.FakeUserRsp
  * JD-Core Version:    0.7.0.1
  */

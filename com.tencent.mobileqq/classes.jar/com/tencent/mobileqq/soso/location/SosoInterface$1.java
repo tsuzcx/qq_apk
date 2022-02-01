@@ -10,29 +10,29 @@ final class SosoInterface$1
 {
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1001)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.i("SOSO.LBS", 2, "msg_stop_location.");
-      }
-      SosoInterface.access$000();
-      SosoInterface.access$100();
-      continue;
-      if (SosoInterface.access$200().hasMessages(1001))
+      if ((i == 1002) && (SosoInterface.access$200().hasMessages(1001)))
       {
         SosoInterface.access$200().removeMessages(1001);
         SosoInterface.access$200().sendEmptyMessageDelayed(1001, 3000L);
       }
     }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("SOSO.LBS", 2, "msg_stop_location.");
+      }
+      SosoInterface.access$000();
+      SosoInterface.access$100();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.SosoInterface.1
  * JD-Core Version:    0.7.0.1
  */

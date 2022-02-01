@@ -15,7 +15,7 @@ import com.tencent.mobileqq.data.ChatHistorySearchData;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.mobileqq.troop.aioapp.GroupUtil;
+import com.tencent.mobileqq.troop.troopapps.GroupUtil;
 import com.tencent.mobileqq.widget.ColorNickTextView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -56,11 +56,11 @@ public class C2CLinkMessageResultAdapter
         localObject = (C2CLinkElement)localObject;
         return localObject;
       }
+      return null;
     }
     catch (Exception localException)
     {
       QLog.e("C2CLinkMessageResultAdapter", 2, new Object[] { "getLinkElement, e:", localException.toString() });
-      return null;
     }
     return null;
   }
@@ -113,113 +113,120 @@ public class C2CLinkMessageResultAdapter
   public void a(List<MessageItem> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
   {
     Object localObject;
-    int i;
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("setMessageItems loadType: ").append(paramInt1).append(", searchMode: ").append(paramInt2).append(", cloudGetCompleted: ").append(paramBoolean).append(", messageItems size: ");
-      if (paramList == null)
-      {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setMessageItems loadType: ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", searchMode: ");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(", cloudGetCompleted: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", messageItems size: ");
+      int i;
+      if (paramList == null) {
         i = 0;
-        QLog.d("C2CLinkMessageResultAdapter", 2, i);
-      }
-    }
-    else
-    {
-      if ((paramInt1 != 1) || (paramInt2 != 0)) {
-        break label98;
-      }
-      this.b = paramList;
-    }
-    label98:
-    do
-    {
-      do
-      {
-        return;
+      } else {
         i = paramList.size();
-        break;
-        if ((paramInt1 == 2) && (paramInt2 == 0))
+      }
+      ((StringBuilder)localObject).append(i);
+      QLog.d("C2CLinkMessageResultAdapter", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((paramInt1 == 1) && (paramInt2 == 0))
+    {
+      this.b = paramList;
+      return;
+    }
+    if ((paramInt1 == 2) && (paramInt2 == 0))
+    {
+      this.b.addAll(paramList);
+      return;
+    }
+    if ((paramInt1 == 4) && (paramList != null) && (paramList.size() != 0))
+    {
+      if (paramInt2 != 1) {
+        return;
+      }
+      if ((this.b.size() > 0) && (paramList.size() > 0))
+      {
+        localObject = (MessageItem)paramList.get(0);
+        MessageItem localMessageItem = (MessageItem)this.b.get(this.b.size() - 1);
+        if (((MessageItem)localObject).a.time > localMessageItem.a.time)
         {
-          this.b.addAll(paramList);
+          if (QLog.isColorLevel()) {
+            QLog.e("C2CLinkMessageResultAdapter", 2, "setMessageItems: error firstItem time > lastItem time");
+          }
           return;
         }
-      } while ((paramInt1 != 4) || (paramList == null) || (paramList.size() == 0) || (paramInt2 != 1));
-      if ((this.b.size() <= 0) || (paramList.size() <= 0)) {
-        break label237;
       }
-      localObject = (MessageItem)paramList.get(0);
-      MessageItem localMessageItem = (MessageItem)this.b.get(this.b.size() - 1);
-      if (((MessageItem)localObject).a.time <= localMessageItem.a.time) {
-        break label237;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("C2CLinkMessageResultAdapter", 2, "setMessageItems: error firstItem time > lastItem time");
-    return;
-    label237:
-    this.b.addAll(paramList);
+      this.b.addAll(paramList);
+    }
   }
   
   public void a(List<MessageItem> paramList, boolean paramBoolean)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mergeMsgsAtFirstTime: merge cloud and local msgs cloudGetCompleted: ");
+        localStringBuilder.append(paramBoolean);
+        QLog.d("C2CLinkMessageResultAdapter", 2, localStringBuilder.toString());
+      }
+      this.b.clear();
+      this.b.addAll(paramList);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CLinkMessageResultAdapter", 2, "mergeMsgsAtFirstTime: merge cloud and local msgs cloudGetCompleted: " + paramBoolean);
-    }
-    this.b.clear();
-    this.b.addAll(paramList);
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     MessageItem localMessageItem = (MessageItem)getItem(paramInt);
+    C2CLinkElement localC2CLinkElement = null;
     BaseMessageResultAdapter.MessageHolder localMessageHolder;
     if (paramView == null)
     {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559456, null);
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559330, null);
       localMessageHolder = new BaseMessageResultAdapter.MessageHolder();
-      localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131379538));
-      localMessageHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365698));
-      localMessageHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368603));
+      localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131378886));
+      localMessageHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365535));
+      localMessageHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
       paramView.setTag(localMessageHolder);
     }
-    for (;;)
+    else
     {
-      localObject = localMessageItem.a;
-      try
-      {
-        localObject = GroupUtil.a(((MessageRecord)localObject).msgData);
-        if (localObject == null) {
-          break;
-        }
-        localObject = (C2CLinkElement)localObject;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          CharSequence localCharSequence;
-          continue;
-          localObject = null;
-        }
-      }
-      if (localObject != null)
-      {
-        localCharSequence = localMessageItem.a(((C2CLinkElement)localObject).title, -11353092);
-        localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(localCharSequence);
-        localMessageHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localMessageItem.a(((C2CLinkElement)localObject).timeSecond, -11353092));
-        LinkAdapter.a(localMessageHolder.jdField_a_of_type_AndroidWidgetImageView, ((C2CLinkElement)localObject).iconUrl);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
       localMessageHolder = (BaseMessageResultAdapter.MessageHolder)paramView.getTag();
     }
+    Object localObject = localMessageItem.a;
+    try
+    {
+      localObject = GroupUtil.a(((MessageRecord)localObject).msgData);
+      if (localObject != null) {
+        localC2CLinkElement = (C2CLinkElement)localObject;
+      }
+      if (localC2CLinkElement != null)
+      {
+        localObject = localMessageItem.a(localC2CLinkElement.title, -11353092);
+        localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject);
+        localMessageHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localMessageItem.a(localC2CLinkElement.timeSecond, -11353092));
+        LinkAdapter.a(localMessageHolder.jdField_a_of_type_AndroidWidgetImageView, localC2CLinkElement.iconUrl);
+      }
+    }
+    catch (Exception localException)
+    {
+      label194:
+      break label194;
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CLinkMessageResultAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -24,14 +24,15 @@ public final class GetPicTagBinRspNode
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stPicTagInfo != null) {
-      paramJceOutputStream.write(this.stPicTagInfo, 0);
+    PicTagInfo localPicTagInfo = this.stPicTagInfo;
+    if (localPicTagInfo != null) {
+      paramJceOutputStream.write(localPicTagInfo, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_FASHION_FEEDS_TAG_PROTO.GetPicTagBinRspNode
  * JD-Core Version:    0.7.0.1
  */

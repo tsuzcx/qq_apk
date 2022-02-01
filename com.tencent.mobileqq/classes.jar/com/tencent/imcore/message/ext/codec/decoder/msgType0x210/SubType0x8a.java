@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 import tencent.im.msgsync.cmd0x100.Submsgtype0x8a.ReqBody;
 
 public class SubType0x8a
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
@@ -26,20 +26,23 @@ public class SubType0x8a
     }
     catch (Exception paramQQAppInterface)
     {
-      while (!QLog.isColorLevel()) {}
+      label39:
+      break label39;
+    }
+    if (QLog.isColorLevel()) {
       QLog.d("revokeMsg", 2, "recv 0x210_0x8a_8b online msg, prase reqBody error");
     }
   }
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    a(paramOnLinePushMessageProcessor.a(), paramMsgType0x210);
+    a((QQAppInterface)paramOnLinePushMessageProcessor.a(), paramMsgType0x210);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x8a
  * JD-Core Version:    0.7.0.1
  */

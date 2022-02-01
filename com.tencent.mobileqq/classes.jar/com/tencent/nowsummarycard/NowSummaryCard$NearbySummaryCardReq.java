@@ -20,12 +20,13 @@ public final class NowSummaryCard$NearbySummaryCardReq
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "pb_data", "id", "id_type", "gender" }, new Object[] { localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L) }, NearbySummaryCardReq.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "pb_data", "id", "id_type", "gender" }, new Object[] { localByteStringMicro, localLong, Integer.valueOf(0), localLong }, NearbySummaryCardReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.nowsummarycard.NowSummaryCard.NearbySummaryCardReq
  * JD-Core Version:    0.7.0.1
  */

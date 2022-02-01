@@ -29,7 +29,7 @@ public class ActivateFriendView
   implements DecodeTaskCompletionListener
 {
   private static final int jdField_a_of_type_Int = ViewUtils.b(85.0F);
-  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
+  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private static final int jdField_b_of_type_Int = ViewUtils.b(70.0F);
   private static final int jdField_c_of_type_Int = ViewUtils.b(70.0F);
   private static final int d = ViewUtils.b(52.0F);
@@ -106,7 +106,7 @@ public class ActivateFriendView
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.c();
+      jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.f();
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     paramQQAppInterface = this.jdField_b_of_type_JavaUtilArrayList.iterator();
@@ -125,69 +125,69 @@ public class ActivateFriendView
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsObserver);
     this.e = 0;
     int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i;
-    int j;
-    switch (k)
+    int i = -2;
+    if (k != 2)
     {
-    default: 
-      i = -2;
-      j = 0;
-      label210:
-      if (j >= k) {
-        break label604;
+      if (k != 3)
+      {
+        if (k != 4)
+        {
+          if (k == 5) {
+            i = d;
+          }
+        }
+        else {
+          i = jdField_c_of_type_Int;
+        }
       }
+      else {
+        i = jdField_b_of_type_Int;
+      }
+    }
+    else {
+      i = jdField_a_of_type_Int;
+    }
+    int j = 0;
+    while (j < k)
+    {
       paramQQAppInterface = a(i);
       paramQQAppInterface.setBirthday(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).birthdayDesc);
       paramArrayList = String.valueOf(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin);
-      if (!TextUtils.isEmpty(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).nickName))
-      {
+      if (!TextUtils.isEmpty(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).nickName)) {
         paramQQAppInterface.setNickName(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).nickName);
-        label301:
-        paramQQAppInterface.setHead(a(paramArrayList));
-        if (this.jdField_a_of_type_Boolean) {
-          paramQQAppInterface.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        }
-        if (this.jdField_a_of_type_Boolean)
+      } else {
+        paramQQAppInterface.setNickName(ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList, true));
+      }
+      paramQQAppInterface.setHead(a(paramArrayList));
+      if (this.jdField_a_of_type_Boolean) {
+        paramQQAppInterface.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        if ((!getResources().getString(2131689549).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).birthdayDesc)) && (!this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)))
         {
-          if ((!getResources().getString(2131689522).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).birthdayDesc)) && (!this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type))) {
-            break label484;
+          if ((!this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.a(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)) && (!this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.b(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)))
+          {
+            this.e += 1;
+            paramQQAppInterface.setChecked(true);
           }
+          else
+          {
+            paramQQAppInterface.setChecked(false);
+            paramQQAppInterface.setBirthday(getResources().getString(2131689552));
+          }
+        }
+        else
+        {
           paramQQAppInterface.setChecked(false);
-          paramQQAppInterface.setBirthday(getResources().getString(2131689522));
+          paramQQAppInterface.setBirthday(getResources().getString(2131689549));
         }
       }
-      break;
-    }
-    for (;;)
-    {
       this.jdField_b_of_type_JavaUtilArrayList.add(paramQQAppInterface);
       j += 1;
-      break label210;
-      i = jdField_a_of_type_Int;
-      break;
-      i = jdField_b_of_type_Int;
-      break;
-      i = jdField_c_of_type_Int;
-      break;
-      i = d;
-      break;
-      paramQQAppInterface.setNickName(ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList, true));
-      break label301;
-      label484:
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.a(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)) || (this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.b(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)))
-      {
-        paramQQAppInterface.setChecked(false);
-        paramQQAppInterface.setBirthday(getResources().getString(2131689525));
-      }
-      else
-      {
-        this.e += 1;
-        paramQQAppInterface.setChecked(true);
-      }
     }
-    label604:
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack.a(this.e);
+    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack;
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(this.e);
     }
   }
   
@@ -208,7 +208,7 @@ public class ActivateFriendView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendView
  * JD-Core Version:    0.7.0.1
  */

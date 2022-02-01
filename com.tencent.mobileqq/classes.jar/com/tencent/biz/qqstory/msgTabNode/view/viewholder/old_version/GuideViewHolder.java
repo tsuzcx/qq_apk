@@ -15,18 +15,24 @@ public class GuideViewHolder
   {
     this.itemView.setTag(Integer.valueOf(3));
     TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {}
-    for (paramMsgTabNodeInfo = QQStoryConstant.a + HardCodeUtil.a(2131705446);; paramMsgTabNodeInfo = paramMsgTabNodeInfo.c)
+    if (TextUtils.isEmpty(paramMsgTabNodeInfo.c))
     {
-      localTextView.setText(paramMsgTabNodeInfo);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846988);
-      return;
+      paramMsgTabNodeInfo = new StringBuilder();
+      paramMsgTabNodeInfo.append(QQStoryConstant.a);
+      paramMsgTabNodeInfo.append(HardCodeUtil.a(2131705519));
+      paramMsgTabNodeInfo = paramMsgTabNodeInfo.toString();
     }
+    else
+    {
+      paramMsgTabNodeInfo = paramMsgTabNodeInfo.c;
+    }
+    localTextView.setText(paramMsgTabNodeInfo);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846866);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.GuideViewHolder
  * JD-Core Version:    0.7.0.1
  */

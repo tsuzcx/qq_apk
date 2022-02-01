@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<selector android:exitFadeDuration="@android:integer/config_mediumAnimTime"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="100" android:drawable="@drawable/gt1" />
-    <item android:duration="100" android:drawable="@drawable/gt3" />
-    <item android:duration="100" android:drawable="@drawable/gt4" />
-    <item android:duration="100" android:drawable="@drawable/gt6" />
-    <item android:duration="100" android:drawable="@drawable/gt7" />
-    <item android:duration="100" android:drawable="@drawable/gt8" />
-    <item android:duration="100" android:drawable="@drawable/gt9" />
-    <item android:duration="100" android:drawable="@drawable/gt_" />
-    <item android:duration="100" android:drawable="@drawable/gta" />
-    <item android:duration="100" android:drawable="@drawable/gtb" />
-    <item android:duration="100" android:drawable="@drawable/gtc" />
-    <item android:duration="100" android:drawable="@drawable/gtd" />
-    <item android:duration="100" android:drawable="@drawable/gte" />
-    <item android:duration="100" android:drawable="@drawable/gtf" />
-    <item android:duration="100" android:drawable="@drawable/gtg" />
-</animation-list>
+    <item android:state_pressed="true" android:drawable="@drawable/g05" />
+    <item android:state_pressed="false" android:drawable="@drawable/g04" />
+</selector>

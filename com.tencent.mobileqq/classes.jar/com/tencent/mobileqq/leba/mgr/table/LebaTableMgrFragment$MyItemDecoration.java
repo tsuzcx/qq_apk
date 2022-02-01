@@ -26,23 +26,26 @@ public class LebaTableMgrFragment$MyItemDecoration
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131165773));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131165764));
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131165772));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131165763));
   }
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
     super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaMgrTableLebaTableMgrAdpter == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqLebaMgrTableLebaTableMgrAdpter == null)
+    {
       QLog.i("LebaTableMgrFragment", 1, "MyItemDecoration getItemOffsets mAdapter == null");
-    }
-    while (paramRecyclerView.getChildAdapterPosition(paramView) < 0) {
       return;
     }
-    paramRect.bottom = this.jdField_a_of_type_Int;
-    paramRect.right = this.jdField_a_of_type_Int;
+    if (paramRecyclerView.getChildAdapterPosition(paramView) < 0) {
+      return;
+    }
+    int i = this.jdField_a_of_type_Int;
+    paramRect.bottom = i;
+    paramRect.right = i;
   }
   
   public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
@@ -53,7 +56,7 @@ public class LebaTableMgrFragment$MyItemDecoration
     while (i < j)
     {
       paramState = paramRecyclerView.getChildAt(i);
-      Object localObject = paramState.getTag(2131370251);
+      Object localObject = paramState.getTag(2131369919);
       if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2)) {
         paramCanvas.drawRect(paramState.getLeft(), paramState.getTop(), paramState.getRight(), paramState.getBottom(), this.jdField_a_of_type_AndroidGraphicsPaint);
       }
@@ -63,7 +66,7 @@ public class LebaTableMgrFragment$MyItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.mgr.table.LebaTableMgrFragment.MyItemDecoration
  * JD-Core Version:    0.7.0.1
  */

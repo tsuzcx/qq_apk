@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.jsp;
 
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule.CallCommentJs;
+import com.tencent.mobileqq.kandian.biz.fastweb.CallCommentJs;
 import org.json.JSONObject;
 
 class UiApiPlugin$13
-  implements BridgeModule.CallCommentJs
+  implements CallCommentJs
 {
   UiApiPlugin$13(UiApiPlugin paramUiApiPlugin) {}
   
@@ -15,7 +15,7 @@ class UiApiPlugin$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.13
  * JD-Core Version:    0.7.0.1
  */

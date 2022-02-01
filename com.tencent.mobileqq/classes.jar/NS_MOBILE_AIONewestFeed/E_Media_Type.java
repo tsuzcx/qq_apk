@@ -10,7 +10,7 @@ public final class E_Media_Type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_AIONewestFeed.E_Media_Type
  * JD-Core Version:    0.7.0.1
  */

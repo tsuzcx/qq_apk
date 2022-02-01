@@ -1,13 +1,20 @@
 package cooperation.qqcircle.picload.avatar;
 
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.avatarinfo.QQHeadUrl.QQHeadUrlReq;
+import com.tencent.avatarinfo.QQHeadUrl.ReqUsrInfo;
+import com.tencent.biz.qcircleshadow.handler.QCircleHandler;
+import com.tencent.biz.qcircleshadow.lib.variation.HostDataTransUtils;
 import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.qcircle.api.data.Option;
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQQBaseService;
 import com.tencent.mobileqq.qcircle.tempapi.avatar.IAvatarListener;
 import com.tencent.mobileqq.qcircle.tempapi.avatar.QCircleAvatarInfo;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import cooperation.qqcircle.picload.QCircleFeedPicLoader;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -46,7 +53,13 @@ class QCircleAvatarLoader$QCircleAvatarCheckTask
   private void callSuccess(String paramString, Option paramOption)
   {
     QCircleAvatarLoader.access$800(this.this$0).remove(paramString);
-    RFLog.d("QCircleAvatar", RFLog.USR, "seq = " + this.mOption.getSeq() + "  all cost times:" + (System.currentTimeMillis() - paramOption.mStartTime.longValue()));
+    int i = RFLog.USR;
+    paramString = new StringBuilder();
+    paramString.append("seq = ");
+    paramString.append(this.mOption.getSeq());
+    paramString.append("  all cost times:");
+    paramString.append(System.currentTimeMillis() - paramOption.mStartTime.longValue());
+    RFLog.d("QCircleAvatar", i, paramString.toString());
   }
   
   private long computeTimeSpan(QCircleAvatarInfo paramQCircleAvatarInfo)
@@ -69,11 +82,14 @@ class QCircleAvatarLoader$QCircleAvatarCheckTask
   
   private void loadPicByPicLoad(AvatarOption paramAvatarOption, QCircleAvatarInfo paramQCircleAvatarInfo)
   {
-    if ((paramQCircleAvatarInfo == null) || (paramAvatarOption == null)) {
-      return;
+    if (paramQCircleAvatarInfo != null)
+    {
+      if (paramAvatarOption == null) {
+        return;
+      }
+      paramAvatarOption.setUrl(paramQCircleAvatarInfo.getDownLoadUrl());
+      QCircleFeedPicLoader.g().loadImage(paramAvatarOption, new QCircleAvatarLoader.QCircleAvatarCheckTask.2(this, paramQCircleAvatarInfo));
     }
-    paramAvatarOption.setUrl(paramQCircleAvatarInfo.getDownLoadUrl());
-    QCircleFeedPicLoader.g().loadImage(paramAvatarOption, new QCircleAvatarLoader.QCircleAvatarCheckTask.2(this, paramQCircleAvatarInfo));
   }
   
   private QCircleAvatarInfo queryInfoFromDataBase(AvatarOption paramAvatarOption)
@@ -96,11 +112,47 @@ class QCircleAvatarLoader$QCircleAvatarCheckTask
     if (QCircleAvatarLoader.access$100(this.this$0).containsKey(paramAvatarOption.getUin()))
     {
       addToTogether(paramAvatarOption);
-      RFLog.d("QCircleAvatar", RFLog.USR, "seq = " + this.mOption.getSeq() + "  on requesting return ");
+      int i = RFLog.USR;
+      paramAvatarOption = new StringBuilder();
+      paramAvatarOption.append("seq = ");
+      paramAvatarOption.append(this.mOption.getSeq());
+      paramAvatarOption.append("  on requesting return ");
+      RFLog.d("QCircleAvatar", i, paramAvatarOption.toString());
       return;
     }
     QCircleAvatarLoader.access$100(this.this$0).put(paramAvatarOption.getUin(), paramAvatarOption.getUin());
-    QCircleServiceImpl.getQQService().getNewQQHead(paramAvatarOption.getUin(), createListener(paramAvatarOption));
+    QCircleHandler localQCircleHandler = QCircleHandler.a();
+    ToServiceMsg localToServiceMsg;
+    QQHeadUrl.QQHeadUrlReq localQQHeadUrlReq;
+    QQHeadUrl.ReqUsrInfo localReqUsrInfo;
+    if (localQCircleHandler != null)
+    {
+      localToServiceMsg = localQCircleHandler.createToServiceMsg("IncreaseURLSvr.QQHeadUrlReq");
+      localQQHeadUrlReq = new QQHeadUrl.QQHeadUrlReq();
+      localQQHeadUrlReq.srcUsrType.set(1);
+      localQQHeadUrlReq.srcUin.set(HostDataTransUtils.getLongAccountUin());
+      localQQHeadUrlReq.dstUsrType.set(1);
+      localReqUsrInfo = new QQHeadUrl.ReqUsrInfo();
+    }
+    try
+    {
+      localReqUsrInfo.dstUin.set(Long.parseLong(paramAvatarOption.getUin()));
+      label173:
+      localReqUsrInfo.timestamp.set(0);
+      localQQHeadUrlReq.dstUsrInfos.add(localReqUsrInfo);
+      localToServiceMsg.extraData.putLong("startTime", System.currentTimeMillis());
+      localToServiceMsg.extraData.putInt("dstUsrType", 1);
+      localToServiceMsg.extraData.putString("dstUin", paramAvatarOption.getUin());
+      localToServiceMsg.extraData.putBoolean("qcircle", true);
+      localToServiceMsg.putWupBuffer(localQQHeadUrlReq.toByteArray());
+      localQCircleHandler.a(paramAvatarOption.getUin(), createListener(paramAvatarOption));
+      localQCircleHandler.sendPbReq(localToServiceMsg);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label173;
+    }
   }
   
   private void updateToDataBase(QCircleAvatarInfo paramQCircleAvatarInfo)
@@ -126,36 +178,58 @@ class QCircleAvatarLoader$QCircleAvatarCheckTask
       localObject1 = localObject2;
       if (localObject2 != null)
       {
-        RFLog.d("QCircleAvatar", RFLog.USR, "seq = " + this.mOption.getSeq() + "  query from dataBase success:" + ((QCircleAvatarInfo)localObject2).toString());
+        i = RFLog.USR;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("seq = ");
+        ((StringBuilder)localObject1).append(this.mOption.getSeq());
+        ((StringBuilder)localObject1).append("  query from dataBase success:");
+        ((StringBuilder)localObject1).append(((QCircleAvatarInfo)localObject2).toString());
+        RFLog.d("QCircleAvatar", i, ((StringBuilder)localObject1).toString());
         localObject1 = localObject2;
       }
     }
     if (localObject1 == null)
     {
-      RFLog.d("QCircleAvatar", RFLog.USR, "seq = " + this.mOption.getSeq() + "  query from dataBase null to server");
+      i = RFLog.USR;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("seq = ");
+      ((StringBuilder)localObject1).append(this.mOption.getSeq());
+      ((StringBuilder)localObject1).append("  query from dataBase null to server");
+      RFLog.d("QCircleAvatar", i, ((StringBuilder)localObject1).toString());
       requestServer(this.mOption);
       return;
     }
-    if ((computeTimeSpan(localObject1) < 86400000L) && (!TextUtils.isEmpty(localObject1.getDownLoadUrl())))
+    if ((computeTimeSpan((QCircleAvatarInfo)localObject1) < 86400000L) && (!TextUtils.isEmpty(((QCircleAvatarInfo)localObject1).getDownLoadUrl())))
     {
-      RFLog.d("QCircleAvatar", RFLog.USR, "seq = " + this.mOption.getSeq() + "  query from dataBase success ,timSpan is validate ");
-      loadPicByPicLoad(this.mOption, localObject1);
+      i = RFLog.USR;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("seq = ");
+      ((StringBuilder)localObject2).append(this.mOption.getSeq());
+      ((StringBuilder)localObject2).append("  query from dataBase success ,timSpan is validate ");
+      RFLog.d("QCircleAvatar", i, ((StringBuilder)localObject2).toString());
+      loadPicByPicLoad(this.mOption, (QCircleAvatarInfo)localObject1);
       return;
     }
-    RFLog.d("QCircleAvatar", RFLog.USR, "seq = " + this.mOption.getSeq() + "  query from dataBase success ,timSpan is unValidate to server ");
+    int i = RFLog.USR;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("seq = ");
+    ((StringBuilder)localObject2).append(this.mOption.getSeq());
+    ((StringBuilder)localObject2).append("  query from dataBase success ,timSpan is unValidate to server ");
+    RFLog.d("QCircleAvatar", i, ((StringBuilder)localObject2).toString());
     localObject2 = this.mOption;
-    if (TextUtils.isEmpty(localObject1.getTimestamp())) {}
-    for (long l = 0L;; l = Long.parseLong(localObject1.getTimestamp()))
-    {
-      ((AvatarOption)localObject2).setTimeStamp(l);
-      requestServer(this.mOption);
-      return;
+    long l;
+    if (TextUtils.isEmpty(((QCircleAvatarInfo)localObject1).getTimestamp())) {
+      l = 0L;
+    } else {
+      l = Long.parseLong(((QCircleAvatarInfo)localObject1).getTimestamp());
     }
+    ((AvatarOption)localObject2).setTimeStamp(l);
+    requestServer(this.mOption);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.picload.avatar.QCircleAvatarLoader.QCircleAvatarCheckTask
  * JD-Core Version:    0.7.0.1
  */

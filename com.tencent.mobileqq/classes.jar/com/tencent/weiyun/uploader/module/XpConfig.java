@@ -12,83 +12,93 @@ public class XpConfig
   public static final String DEFAULT_TERMINAL = "android";
   public static final String DEFAULT_USER_AGENT = "android-tencent";
   public static final String DEFAULT_VERSION = "1.0";
-  private static IConfig sRealConfig = null;
+  private static IConfig sRealConfig;
   
   public static String getCachePath()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getCachePath();
+    IConfig localIConfig = sRealConfig;
+    if (localIConfig != null) {
+      return localIConfig.getCachePath();
     }
     return Environment.getDataDirectory().getAbsolutePath();
   }
   
   public static String getCurrentUin()
   {
-    if (sRealConfig != null) {
-      return String.valueOf(sRealConfig.getCurrentUin());
+    IConfig localIConfig = sRealConfig;
+    if (localIConfig != null) {
+      return String.valueOf(localIConfig.getCurrentUin());
     }
     return "0";
   }
   
   public static int getIsp()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getIsp();
+    IConfig localIConfig = sRealConfig;
+    if (localIConfig != null) {
+      return localIConfig.getIsp();
     }
     return 0;
   }
   
   public static String getQUA()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getQUA();
+    IConfig localIConfig = sRealConfig;
+    if (localIConfig != null) {
+      return localIConfig.getQUA();
     }
     return "";
   }
   
   public static String getRefer()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getRefer();
+    IConfig localIConfig = sRealConfig;
+    if (localIConfig != null) {
+      return localIConfig.getRefer();
     }
     return "tencent";
   }
   
   public static int getReportPercent()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getReportPercent();
+    IConfig localIConfig = sRealConfig;
+    if (localIConfig != null) {
+      return localIConfig.getReportPercent();
     }
     return 5;
   }
   
   public static String getTerminal()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getTerminal();
+    IConfig localIConfig = sRealConfig;
+    if (localIConfig != null) {
+      return localIConfig.getTerminal();
     }
     return "android";
   }
   
   public static String getUserAgent()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getUserAgent();
+    IConfig localIConfig = sRealConfig;
+    if (localIConfig != null) {
+      return localIConfig.getUserAgent();
     }
     return "android-tencent";
   }
   
   public static String getVersion()
   {
-    if (sRealConfig != null) {
-      return sRealConfig.getVersion();
+    IConfig localIConfig = sRealConfig;
+    if (localIConfig != null) {
+      return localIConfig.getVersion();
     }
     return "1.0";
   }
   
   public static boolean isRdm()
   {
-    return (sRealConfig != null) && (sRealConfig.isRdm());
+    IConfig localIConfig = sRealConfig;
+    return (localIConfig != null) && (localIConfig.isRdm());
   }
   
   public static void setConfig(IConfig paramIConfig)
@@ -98,7 +108,7 @@ public class XpConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.uploader.module.XpConfig
  * JD-Core Version:    0.7.0.1
  */

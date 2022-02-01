@@ -20,8 +20,9 @@ class SwiftFloatViewUI$4
     if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_c_of_type_Int != paramInt2) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.d != paramInt4))
     {
       ThreadManager.getUIHandler().post(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_c_of_type_Int = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.d = paramInt4;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI;
+      paramView.jdField_c_of_type_Int = paramInt2;
+      paramView.d = paramInt4;
     }
     paramInt1 = paramInt3 - paramInt1;
     if (paramInt1 != paramInt7 - paramInt5)
@@ -38,7 +39,7 @@ class SwiftFloatViewUI$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftFloatViewUI.4
  * JD-Core Version:    0.7.0.1
  */

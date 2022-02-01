@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
 import com.tencent.tkd.topicsdk.interfaces.IPageOpener;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -22,7 +21,7 @@ public final class PageOpenerImpl
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("big_brother_source_key", "biz_src_feeds_kandian");
-    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicFragmentActivity.class, PublishFragment.class, paramInt);
+    QPublicFragmentActivity.startForResult(paramActivity, localIntent, PublishFragment.class, paramInt);
   }
   
   public void a(@NotNull Context paramContext, @NotNull Bundle paramBundle)
@@ -32,12 +31,12 @@ public final class PageOpenerImpl
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("big_brother_source_key", "biz_src_feeds_kandian");
-    PublicFragmentActivity.Launcher.a(paramContext, localIntent, PublicFragmentActivity.class, PublishFragment.class);
+    QPublicFragmentActivity.start(paramContext, localIntent, PublishFragment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.PageOpenerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.hotpic;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -31,15 +31,15 @@ public class PublicAccountHotPicPanel
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout = paramPanelIconLinearLayout;
     this.jdField_a_of_type_ComTencentWidgetXPanelContainer = paramXPanelContainer;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370723);
-    this.c = findViewById(2131368559);
-    this.b = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558647, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = new SessionInfo();
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370360);
+    this.c = findViewById(2131368302);
+    this.b = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558546, null);
     this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131368565));
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131368546));
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = ((ViewPager)findViewById(2131368308));
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131368289));
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab.setOnItemClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a = 1008;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a = 1008;
   }
   
   public void c() {}
@@ -54,7 +54,7 @@ public class PublicAccountHotPicPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.PublicAccountHotPicPanel
  * JD-Core Version:    0.7.0.1
  */

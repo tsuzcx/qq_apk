@@ -14,34 +14,41 @@ class AboutConfig$1
   
   public void run()
   {
-    int i = 0;
     ??? = AboutConfig.a(this.this$0).getEntityManagerFactory().createEntityManager();
+    int i = 0;
     List localList = ResourcePluginInfo.getAll((EntityManager)???, 32, false);
     ((EntityManager)???).close();
-    int j;
     if (localList != null)
     {
-      j = localList.size();
+      int j = localList.size();
       i = j;
-      if (j <= 0) {}
-    }
-    synchronized (AboutConfig.a(this.this$0))
-    {
-      AboutConfig.a(this.this$0);
-      AboutConfig.a(this.this$0, localList);
-      this.this$0.b();
-      i = j;
-      if (QLog.isColorLevel()) {
-        QLog.d("AboutConfig", 2, "Load about config from DB = " + AboutConfig.a(this.this$0) + ",asynchronous=" + this.a + ",size=" + i);
+      if (j > 0) {
+        synchronized (AboutConfig.a(this.this$0))
+        {
+          AboutConfig.a(this.this$0);
+          AboutConfig.a(this.this$0, localList);
+          this.this$0.b();
+          i = j;
+        }
       }
-      AboutConfig.a(this.this$0, true);
-      return;
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Load about config from DB = ");
+      localStringBuilder.append(AboutConfig.a(this.this$0));
+      localStringBuilder.append(",asynchronous=");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(",size=");
+      localStringBuilder.append(i);
+      QLog.d("AboutConfig", 2, localStringBuilder.toString());
+    }
+    AboutConfig.a(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.AboutConfig.1
  * JD-Core Version:    0.7.0.1
  */

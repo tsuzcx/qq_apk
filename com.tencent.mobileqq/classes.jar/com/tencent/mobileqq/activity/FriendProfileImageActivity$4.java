@@ -14,8 +14,9 @@ class FriendProfileImageActivity$4
     if (paramView == null) {
       return;
     }
-    this.a.jdField_a_of_type_AndroidViewView = paramView;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(paramInt);
+    FriendProfileImageActivity localFriendProfileImageActivity = this.a;
+    localFriendProfileImageActivity.jdField_a_of_type_AndroidViewView = paramView;
+    localFriendProfileImageActivity.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(paramInt);
     this.a.a(paramAdapterView, paramInt);
   }
   
@@ -23,7 +24,7 @@ class FriendProfileImageActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageActivity.4
  * JD-Core Version:    0.7.0.1
  */

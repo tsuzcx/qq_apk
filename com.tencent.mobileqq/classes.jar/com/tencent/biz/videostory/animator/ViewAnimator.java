@@ -2,11 +2,13 @@ package com.tencent.biz.videostory.animator;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
+import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,68 +38,71 @@ public class ViewAnimator
   protected AnimatorSet a()
   {
     this.jdField_a_of_type_Boolean = false;
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject2;
-    while (((Iterator)localObject1).hasNext())
+    Object localObject1 = new ArrayList();
+    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject3;
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject2 = (AnimationBuilder)((Iterator)localObject1).next();
-      List localList = ((AnimationBuilder)localObject2).a();
-      if (((AnimationBuilder)localObject2).a() != null)
+      localObject3 = (AnimationBuilder)((Iterator)localObject2).next();
+      List localList = ((AnimationBuilder)localObject3).a();
+      if (((AnimationBuilder)localObject3).a() != null)
       {
         Iterator localIterator = localList.iterator();
         while (localIterator.hasNext()) {
-          ((Animator)localIterator.next()).setInterpolator(((AnimationBuilder)localObject2).a());
+          ((Animator)localIterator.next()).setInterpolator(((AnimationBuilder)localObject3).a());
         }
       }
-      localArrayList.addAll(localList);
+      ((List)localObject1).addAll(localList);
     }
-    localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject1).hasNext())
+    localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject2 = (AnimationBuilder)((Iterator)localObject1).next();
-      if (((AnimationBuilder)localObject2).a()) {
-        this.jdField_a_of_type_AndroidViewView = ((AnimationBuilder)localObject2).a();
+      localObject3 = (AnimationBuilder)((Iterator)localObject2).next();
+      if (((AnimationBuilder)localObject3).a()) {
+        this.jdField_a_of_type_AndroidViewView = ((AnimationBuilder)localObject3).a();
       }
     }
-    localObject1 = localArrayList.iterator();
-    while (((Iterator)localObject1).hasNext())
+    localObject2 = ((List)localObject1).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject2 = (Animator)((Iterator)localObject1).next();
-      if ((localObject2 instanceof ValueAnimator))
+      localObject3 = (Animator)((Iterator)localObject2).next();
+      if ((localObject3 instanceof ValueAnimator))
       {
-        localObject2 = (ValueAnimator)localObject2;
-        ((ValueAnimator)localObject2).setRepeatCount(this.jdField_a_of_type_Int);
-        ((ValueAnimator)localObject2).setRepeatMode(this.jdField_b_of_type_Int);
+        localObject3 = (ValueAnimator)localObject3;
+        ((ValueAnimator)localObject3).setRepeatCount(this.jdField_a_of_type_Int);
+        ((ValueAnimator)localObject3).setRepeatMode(this.jdField_b_of_type_Int);
         if (!this.jdField_a_of_type_Boolean)
         {
-          ((ValueAnimator)localObject2).addListener(new ViewAnimator.1(this));
+          ((ValueAnimator)localObject3).addListener(new ViewAnimator.1(this));
           this.jdField_a_of_type_Boolean = true;
         }
       }
     }
-    localObject1 = new AnimatorSet();
-    ((AnimatorSet)localObject1).playTogether(localArrayList);
-    ((AnimatorSet)localObject1).setDuration(this.jdField_a_of_type_Long);
-    ((AnimatorSet)localObject1).setStartDelay(this.jdField_b_of_type_Long);
-    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {
-      ((AnimatorSet)localObject1).setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
+    localObject2 = new AnimatorSet();
+    ((AnimatorSet)localObject2).playTogether((Collection)localObject1);
+    ((AnimatorSet)localObject2).setDuration(this.jdField_a_of_type_Long);
+    ((AnimatorSet)localObject2).setStartDelay(this.jdField_b_of_type_Long);
+    localObject1 = this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+    if (localObject1 != null) {
+      ((AnimatorSet)localObject2).setInterpolator((TimeInterpolator)localObject1);
     }
-    ((AnimatorSet)localObject1).addListener(new ViewAnimator.2(this));
-    return localObject1;
+    ((AnimatorSet)localObject2).addListener(new ViewAnimator.2(this));
+    return localObject2;
   }
   
   public ViewAnimator a()
   {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator.a();
+      ((ViewAnimator)localObject).a();
       return this;
     }
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = a();
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnPreDrawListener(new ViewAnimator.3(this));
+      ((View)localObject).getViewTreeObserver().addOnPreDrawListener(new ViewAnimator.3(this));
       return this;
     }
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
@@ -137,7 +142,7 @@ public class ViewAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.animator.ViewAnimator
  * JD-Core Version:    0.7.0.1
  */

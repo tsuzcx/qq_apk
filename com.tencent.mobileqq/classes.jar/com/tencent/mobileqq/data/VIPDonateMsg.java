@@ -14,12 +14,24 @@ public class VIPDonateMsg
   
   public String toString()
   {
-    return "VIPDonateMsg [title=" + this.title + ", subTitle=" + this.subTitle + ", footer=" + this.footer + ", jumpUrl=" + this.jumpUrl + ", brief=" + this.brief + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VIPDonateMsg [title=");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append(", subTitle=");
+    localStringBuilder.append(this.subTitle);
+    localStringBuilder.append(", footer=");
+    localStringBuilder.append(this.footer);
+    localStringBuilder.append(", jumpUrl=");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append(", brief=");
+    localStringBuilder.append(this.brief);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.VIPDonateMsg
  * JD-Core Version:    0.7.0.1
  */

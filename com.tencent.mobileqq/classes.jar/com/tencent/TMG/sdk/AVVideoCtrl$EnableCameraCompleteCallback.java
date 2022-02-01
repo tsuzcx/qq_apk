@@ -8,7 +8,10 @@ public class AVVideoCtrl$EnableCameraCompleteCallback
   
   protected void onComplete(boolean paramBoolean, int paramInt)
   {
-    Log.d("SdkJni", "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EnableCameraCompleteCallback.OnComplete. result = ");
+    localStringBuilder.append(paramInt);
+    Log.d("SdkJni", localStringBuilder.toString());
   }
 }
 

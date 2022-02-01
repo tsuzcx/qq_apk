@@ -16,17 +16,27 @@ class PreCacheManager$4
   
   public void onDownloadCanceled(String paramString)
   {
-    QLog.i("miniapp-start_PreCacheManager", 1, this.val$logPrefix + " fetch PreCache url canceled! url=" + paramString);
-    if (this.val$listener != null) {
-      this.val$listener.onCacheUpdated(false, false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.val$logPrefix);
+    localStringBuilder.append(" fetch PreCache url canceled! url=");
+    localStringBuilder.append(paramString);
+    QLog.i("miniapp-start_PreCacheManager", 1, localStringBuilder.toString());
+    paramString = this.val$listener;
+    if (paramString != null) {
+      paramString.onCacheUpdated(false, false);
     }
   }
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    QLog.i("miniapp-start_PreCacheManager", 1, this.val$logPrefix + " fetch PreCache url failed! url=" + paramString);
-    if (this.val$listener != null) {
-      this.val$listener.onCacheUpdated(false, false);
+    paramDownloadResult = new StringBuilder();
+    paramDownloadResult.append(this.val$logPrefix);
+    paramDownloadResult.append(" fetch PreCache url failed! url=");
+    paramDownloadResult.append(paramString);
+    QLog.i("miniapp-start_PreCacheManager", 1, paramDownloadResult.toString());
+    paramString = this.val$listener;
+    if (paramString != null) {
+      paramString.onCacheUpdated(false, false);
     }
   }
   
@@ -36,34 +46,55 @@ class PreCacheManager$4
   {
     try
     {
-      QLog.i("miniapp-start_PreCacheManager", 1, this.val$logPrefix + " fetch PreCache succful. url" + paramString + " length=" + paramDownloadResult.getContent().length);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.val$logPrefix);
+      localStringBuilder.append(" fetch PreCache succful. url");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" length=");
+      localStringBuilder.append(paramDownloadResult.getContent().length);
+      QLog.i("miniapp-start_PreCacheManager", 1, localStringBuilder.toString());
       if (paramDownloadResult.getContent().length <= PreCacheManager.access$200(this.this$0))
       {
         this.val$cacheInfo.timeStamp = System.currentTimeMillis();
         this.val$cacheInfo.filePath = this.val$tmpFilePath;
         MiniAppFileManager.getInstance();
-        paramString = MiniAppFileManager.getPreCacheFilePath(this.val$miniAppConfig.config.appId, this.val$cacheType, this.val$cacheInfo.getCacheKey(this.val$cacheType) + "_index");
+        paramString = this.val$miniAppConfig.config.appId;
+        paramDownloadResult = this.val$cacheType;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.val$cacheInfo.getCacheKey(this.val$cacheType));
+        localStringBuilder.append("_index");
+        paramString = MiniAppFileManager.getPreCacheFilePath(paramString, paramDownloadResult, localStringBuilder.toString());
         ParcelableUtil.writeParcelableToFile(this.val$cacheInfo, paramString);
-        QLog.i("miniapp-start_PreCacheManager", 1, this.val$logPrefix + " save PreCache info. index=" + paramString + " content=" + this.val$tmpFilePath);
-        if (this.val$listener != null) {
+        paramDownloadResult = new StringBuilder();
+        paramDownloadResult.append(this.val$logPrefix);
+        paramDownloadResult.append(" save PreCache info. index=");
+        paramDownloadResult.append(paramString);
+        paramDownloadResult.append(" content=");
+        paramDownloadResult.append(this.val$tmpFilePath);
+        QLog.i("miniapp-start_PreCacheManager", 1, paramDownloadResult.toString());
+        if (this.val$listener != null)
+        {
           this.val$listener.onCacheUpdated(true, true);
+          return;
         }
       }
-      return;
     }
     catch (Throwable paramString)
     {
-      do
-      {
-        QLog.i("miniapp-start_PreCacheManager", 1, this.val$logPrefix + " fetch PreCache exception!", paramString);
-      } while (this.val$listener == null);
-      this.val$listener.onCacheUpdated(false, false);
+      paramDownloadResult = new StringBuilder();
+      paramDownloadResult.append(this.val$logPrefix);
+      paramDownloadResult.append(" fetch PreCache exception!");
+      QLog.i("miniapp-start_PreCacheManager", 1, paramDownloadResult.toString(), paramString);
+      paramString = this.val$listener;
+      if (paramString != null) {
+        paramString.onCacheUpdated(false, false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.PreCacheManager.4
  * JD-Core Version:    0.7.0.1
  */

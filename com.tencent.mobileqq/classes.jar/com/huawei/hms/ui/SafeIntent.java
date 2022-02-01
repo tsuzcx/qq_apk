@@ -9,8 +9,6 @@ import java.util.ArrayList;
 public class SafeIntent
   extends Intent
 {
-  private static final String a = SafeIntent.class.getSimpleName();
-  
   public SafeIntent(Intent paramIntent)
   {
     super(localIntent);
@@ -23,22 +21,11 @@ public class SafeIntent
       String str = super.getAction();
       return str;
     }
-    catch (Exception localException) {}
-    return "";
-  }
-  
-  public String getActionReturnNotNull()
-  {
-    try
+    catch (Exception localException)
     {
-      String str1 = super.getAction();
-      String str2 = str1;
-      if (str1 == null) {
-        str2 = "";
-      }
-      return str2;
+      label7:
+      break label7;
     }
-    catch (Exception localException) {}
     return "";
   }
   
@@ -49,22 +36,11 @@ public class SafeIntent
       paramString = super.getBooleanArrayExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new boolean[0];
-  }
-  
-  public boolean[] getBooleanArrayExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getBooleanArrayExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new boolean[0];
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new boolean[0];
   }
   
@@ -86,22 +62,11 @@ public class SafeIntent
       paramString = super.getBundleExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new Bundle();
-  }
-  
-  public Bundle getBundleExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getBundleExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new Bundle();
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new Bundle();
   }
   
@@ -112,22 +77,11 @@ public class SafeIntent
       paramString = super.getByteArrayExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new byte[0];
-  }
-  
-  public byte[] getByteArrayExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getByteArrayExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new byte[0];
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new byte[0];
   }
   
@@ -149,22 +103,11 @@ public class SafeIntent
       paramString = super.getCharArrayExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new char[0];
-  }
-  
-  public char[] getCharArrayExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getCharArrayExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new char[0];
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new char[0];
   }
   
@@ -186,22 +129,11 @@ public class SafeIntent
       paramString = super.getCharSequenceArrayExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new CharSequence[0];
-  }
-  
-  public CharSequence[] getCharSequenceArrayExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getCharSequenceArrayExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new CharSequence[0];
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new CharSequence[0];
   }
   
@@ -212,22 +144,11 @@ public class SafeIntent
       paramString = super.getCharSequenceArrayListExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new ArrayList();
-  }
-  
-  public ArrayList<CharSequence> getCharSequenceArrayListExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getCharSequenceArrayListExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new ArrayList();
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new ArrayList();
   }
   
@@ -238,22 +159,11 @@ public class SafeIntent
       paramString = super.getCharSequenceExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return "";
-  }
-  
-  public CharSequence getCharSequenceExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getCharSequenceExtra(paramString);
-      String str = paramString;
-      if (paramString == null) {
-        str = "";
-      }
-      return str;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return "";
   }
   
@@ -264,22 +174,11 @@ public class SafeIntent
       paramString = super.getDoubleArrayExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new double[0];
-  }
-  
-  public double[] getDoubleArrayExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getDoubleArrayExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new double[0];
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new double[0];
   }
   
@@ -301,22 +200,11 @@ public class SafeIntent
       Bundle localBundle = super.getExtras();
       return localBundle;
     }
-    catch (Exception localException) {}
-    return new Bundle();
-  }
-  
-  public Bundle getExtrasReturnNotNull()
-  {
-    try
+    catch (Exception localException)
     {
-      Bundle localBundle1 = super.getExtras();
-      Bundle localBundle2 = localBundle1;
-      if (localBundle1 == null) {
-        localBundle2 = new Bundle();
-      }
-      return localBundle2;
+      label7:
+      break label7;
     }
-    catch (Exception localException) {}
     return new Bundle();
   }
   
@@ -327,22 +215,11 @@ public class SafeIntent
       paramString = super.getFloatArrayExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new float[0];
-  }
-  
-  public float[] getFloatArrayExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getFloatArrayExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new float[0];
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new float[0];
   }
   
@@ -364,22 +241,11 @@ public class SafeIntent
       paramString = super.getIntArrayExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new int[0];
-  }
-  
-  public int[] getIntArrayExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getIntArrayExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new int[0];
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new int[0];
   }
   
@@ -401,22 +267,11 @@ public class SafeIntent
       paramString = super.getIntegerArrayListExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new ArrayList();
-  }
-  
-  public ArrayList<Integer> getIntegerArrayListExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getIntegerArrayListExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new ArrayList();
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new ArrayList();
   }
   
@@ -427,22 +282,11 @@ public class SafeIntent
       paramString = super.getLongArrayExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new long[0];
-  }
-  
-  public long[] getLongArrayExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getLongArrayExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new long[0];
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new long[0];
   }
   
@@ -464,22 +308,11 @@ public class SafeIntent
       paramString = super.getParcelableArrayExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new Parcelable[0];
-  }
-  
-  public Parcelable[] getParcelableArrayExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getParcelableArrayExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new Parcelable[0];
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new Parcelable[0];
   }
   
@@ -490,7 +323,11 @@ public class SafeIntent
       paramString = super.getParcelableArrayListExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label8:
+      break label8;
+    }
     return null;
   }
   
@@ -501,7 +338,11 @@ public class SafeIntent
       paramString = super.getParcelableExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label8:
+      break label8;
+    }
     return null;
   }
   
@@ -512,7 +353,11 @@ public class SafeIntent
       paramString = super.getSerializableExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label8:
+      break label8;
+    }
     return null;
   }
   
@@ -523,22 +368,11 @@ public class SafeIntent
       paramString = super.getShortArrayExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new short[0];
-  }
-  
-  public short[] getShortArrayExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getShortArrayExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new short[0];
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new short[0];
   }
   
@@ -560,22 +394,11 @@ public class SafeIntent
       paramString = super.getStringArrayExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new String[0];
-  }
-  
-  public String[] getStringArrayExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getStringArrayExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new String[0];
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new String[0];
   }
   
@@ -586,22 +409,11 @@ public class SafeIntent
       paramString = super.getStringArrayListExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return new ArrayList();
-  }
-  
-  public ArrayList<String> getStringArrayListExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getStringArrayListExtra(paramString);
-      Object localObject = paramString;
-      if (paramString == null) {
-        localObject = new ArrayList();
-      }
-      return localObject;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return new ArrayList();
   }
   
@@ -612,22 +424,11 @@ public class SafeIntent
       paramString = super.getStringExtra(paramString);
       return paramString;
     }
-    catch (Exception paramString) {}
-    return "";
-  }
-  
-  public String getStringExtraReturnNotNull(String paramString)
-  {
-    try
+    catch (Exception paramString)
     {
-      paramString = super.getStringExtra(paramString);
-      String str = paramString;
-      if (paramString == null) {
-        str = "";
-      }
-      return str;
+      label8:
+      break label8;
     }
-    catch (Exception paramString) {}
     return "";
   }
   
@@ -638,13 +439,17 @@ public class SafeIntent
       boolean bool = super.hasExtra(paramString);
       return bool;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label8:
+      break label8;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.ui.SafeIntent
  * JD-Core Version:    0.7.0.1
  */

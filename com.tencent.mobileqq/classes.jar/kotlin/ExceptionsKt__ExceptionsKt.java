@@ -9,7 +9,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"stackTrace", "", "Ljava/lang/StackTraceElement;", "", "stackTrace$annotations", "(Ljava/lang/Throwable;)V", "getStackTrace", "(Ljava/lang/Throwable;)[Ljava/lang/StackTraceElement;", "addSuppressed", "", "exception", "printStackTrace", "stream", "Ljava/io/PrintStream;", "writer", "Ljava/io/PrintWriter;", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/ExceptionsKt")
-public class ExceptionsKt__ExceptionsKt
+class ExceptionsKt__ExceptionsKt
 {
   public static final void addSuppressed(@NotNull Throwable paramThrowable1, @NotNull Throwable paramThrowable2)
   {
@@ -32,33 +32,39 @@ public class ExceptionsKt__ExceptionsKt
   @InlineOnly
   private static final void printStackTrace(@NotNull Throwable paramThrowable)
   {
-    if (paramThrowable == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.Throwable");
+    if (paramThrowable != null)
+    {
+      paramThrowable.printStackTrace();
+      return;
     }
-    paramThrowable.printStackTrace();
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.Throwable");
   }
   
   @InlineOnly
   private static final void printStackTrace(@NotNull Throwable paramThrowable, PrintStream paramPrintStream)
   {
-    if (paramThrowable == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.Throwable");
+    if (paramThrowable != null)
+    {
+      paramThrowable.printStackTrace(paramPrintStream);
+      return;
     }
-    paramThrowable.printStackTrace(paramPrintStream);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.Throwable");
   }
   
   @InlineOnly
   private static final void printStackTrace(@NotNull Throwable paramThrowable, PrintWriter paramPrintWriter)
   {
-    if (paramThrowable == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.Throwable");
+    if (paramThrowable != null)
+    {
+      paramThrowable.printStackTrace(paramPrintWriter);
+      return;
     }
-    paramThrowable.printStackTrace(paramPrintWriter);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.Throwable");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ExceptionsKt__ExceptionsKt
  * JD-Core Version:    0.7.0.1
  */

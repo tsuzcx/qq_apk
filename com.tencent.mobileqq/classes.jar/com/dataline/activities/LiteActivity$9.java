@@ -13,8 +13,13 @@ class LiteActivity$9
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(LiteActivity.jdField_a_of_type_JavaLangString, 2, "ontouch--fcc----: " + paramMotionEvent.getAction());
+    if (QLog.isColorLevel())
+    {
+      String str = LiteActivity.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ontouch--fcc----: ");
+      localStringBuilder.append(paramMotionEvent.getAction());
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     this.a.q();
     LiteActivity.a(this.a, false);
@@ -25,7 +30,7 @@ class LiteActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.9
  * JD-Core Version:    0.7.0.1
  */

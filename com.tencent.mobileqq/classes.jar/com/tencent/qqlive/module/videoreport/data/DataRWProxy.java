@@ -77,6 +77,7 @@ public class DataRWProxy
     DataEntityOperator.removePageParam(getDataEntity(paramObject, false), paramString);
   }
   
+  @Deprecated
   public static void setElementDynamicParam(Object paramObject, IElementDynamicParams paramIElementDynamicParams)
   {
     DataEntityOperator.setElementParams(getDataEntity(paramObject, true), paramIElementDynamicParams);
@@ -100,6 +101,11 @@ public class DataRWProxy
   public static void setElementVirtualParentParams(Object paramObject, int paramInt, String paramString, Map<String, Object> paramMap)
   {
     DataEntityOperator.setElementVirtualParentParams(getDataEntity(paramObject, false), paramInt, paramString, paramMap);
+  }
+  
+  public static void setEventDynamicParam(Object paramObject, @Nullable IDynamicParams paramIDynamicParams)
+  {
+    DataEntityOperator.setEventDynamicParams(getDataEntity(paramObject, true), paramIDynamicParams);
   }
   
   public static void setInnerParam(Object paramObject1, String paramString, Object paramObject2)
@@ -129,7 +135,7 @@ public class DataRWProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.data.DataRWProxy
  * JD-Core Version:    0.7.0.1
  */

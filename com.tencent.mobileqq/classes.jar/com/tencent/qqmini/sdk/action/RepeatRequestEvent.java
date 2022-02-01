@@ -46,16 +46,22 @@ public final class RepeatRequestEvent
     if ((paramBaseRuntime instanceof JsPluginEngine))
     {
       paramBaseRuntime = (JsPluginEngine)paramBaseRuntime;
-      QMLog.d("RepeatRequestEvent", "Dispatch repeat RequestEvent=" + this.event);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Dispatch repeat RequestEvent=");
+      localStringBuilder.append(this.event);
+      QMLog.d("RepeatRequestEvent", localStringBuilder.toString());
       return paramBaseRuntime.dispatchSecondaryRequestEvent(this);
     }
-    QMLog.w("RepeatRequestEvent", "Failed to handle repeat RequestEvent=" + this.event);
+    paramBaseRuntime = new StringBuilder();
+    paramBaseRuntime.append("Failed to handle repeat RequestEvent=");
+    paramBaseRuntime.append(this.event);
+    QMLog.w("RepeatRequestEvent", paramBaseRuntime.toString());
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.action.RepeatRequestEvent
  * JD-Core Version:    0.7.0.1
  */

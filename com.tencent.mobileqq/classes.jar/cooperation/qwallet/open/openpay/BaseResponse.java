@@ -32,7 +32,7 @@ public abstract class BaseResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     cooperation.qwallet.open.openpay.BaseResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ package com.tencent.mobileqq.msgbackup.transport;
 public class MsgBackupRecvBuffer {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupRecvBuffer
  * JD-Core Version:    0.7.0.1
  */

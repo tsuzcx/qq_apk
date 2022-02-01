@@ -8,9 +8,10 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
 import com.tencent.mobileqq.emosm.web.IPCConstants;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.emoticonview.api.IEmosmService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 public class Client
@@ -26,22 +27,18 @@ public class Client
   {
     try
     {
-      paramContext.bindService(new Intent(paramContext, MessengerService.class), this.mConnection, 1);
+      paramContext.bindService(new Intent(paramContext, ((IEmosmService)QRoute.api(IEmosmService.class)).getMessengerServiceClass()), this.mConnection, 1);
       this.mIsBound = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.Client", 2, "Binding...");
-      }
-      return;
     }
     catch (SecurityException paramContext)
     {
-      for (;;)
-      {
-        this.mIsBound = false;
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.emoji.web.Client", 2, paramContext.getMessage());
-        }
+      this.mIsBound = false;
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.emoji.web.Client", 2, paramContext.getMessage());
       }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.Client", 2, "Binding...");
     }
   }
   
@@ -53,26 +50,28 @@ public class Client
       Message localMessage = Message.obtain(null, 2);
       localMessage.replyTo = this.mMessenger;
       this.mService.send(localMessage);
+    }
+    catch (RemoteException localRemoteException)
+    {
       try
       {
-        label36:
-        paramContext.unbindService(this.mConnection);
-        label44:
-        this.mService = null;
-        this.mIsBound = false;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.emoji.web.Client", 2, "Unbinding.");
+        for (;;)
+        {
+          paramContext.unbindService(this.mConnection);
+          label44:
+          this.mService = null;
+          this.mIsBound = false;
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.emoji.web.Client", 2, "Unbinding.");
+          }
+          return;
+          localRemoteException = localRemoteException;
         }
-        return;
       }
       catch (IllegalArgumentException paramContext)
       {
         break label44;
       }
-    }
-    catch (RemoteException localRemoteException)
-    {
-      break label36;
     }
   }
   
@@ -83,74 +82,85 @@ public class Client
   
   void onDisconnectWithService()
   {
-    WebIPCOperator.a().b();
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).onDisconnectWithService();
   }
   
   void onPushMsgFromServer(Bundle paramBundle)
   {
-    WebIPCOperator.a().d(paramBundle);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).onPushMsgFromServer(paramBundle);
   }
   
   public boolean onReqToServer(Bundle paramBundle)
   {
+    Object localObject = this.mService;
     boolean bool3 = false;
     boolean bool1 = false;
     boolean bool2;
-    if (this.mService != null) {
+    if (localObject != null) {
       bool2 = bool3;
     }
     try
     {
-      Message localMessage = Message.obtain(null, 3, 0, 0);
+      localObject = Message.obtain(null, 3, 0, 0);
       bool2 = bool3;
-      localMessage.replyTo = this.mMessenger;
+      ((Message)localObject).replyTo = this.mMessenger;
       bool2 = bool3;
-      localMessage.setData(paramBundle);
+      ((Message)localObject).setData(paramBundle);
       bool2 = bool3;
-      this.mService.send(localMessage);
-      boolean bool4 = true;
+      this.mService.send((Message)localObject);
       bool3 = true;
-      bool1 = bool3;
-      bool2 = bool4;
-      if (QLog.isColorLevel())
-      {
-        bool2 = bool4;
-        QLog.i("Q.emoji.web.Client", 2, "req to server");
-        bool1 = bool3;
+      bool1 = true;
+      bool2 = bool3;
+      if (!QLog.isColorLevel()) {
+        break label95;
       }
-      return bool1;
+      bool2 = bool3;
+      QLog.i("Q.emoji.web.Client", 2, "req to server");
+      return true;
     }
     catch (RemoteException paramBundle)
     {
-      this.mService = null;
+      label88:
+      break label88;
     }
-    return bool2;
+    this.mService = null;
+    bool1 = bool2;
+    label95:
+    return bool1;
   }
   
   void onRespFromServer(Bundle paramBundle)
   {
     try
     {
-      WebIPCOperator.a().c(paramBundle);
+      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).onRespFromClient(paramBundle);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      try
-      {
-        QLog.e("Q.emoji.web.Client", 2, "onRespFromServer bundle error:" + paramBundle);
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        QLog.e("Q.emoji.web.Client", 2, "print error");
-      }
+      label15:
+      StringBuilder localStringBuilder;
+      label47:
+      break label15;
     }
+    try
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRespFromServer bundle error:");
+      localStringBuilder.append(paramBundle);
+      QLog.e("Q.emoji.web.Client", 2, localStringBuilder.toString());
+      return;
+    }
+    catch (Throwable paramBundle)
+    {
+      break label47;
+    }
+    QLog.e("Q.emoji.web.Client", 2, "print error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.Client
  * JD-Core Version:    0.7.0.1
  */

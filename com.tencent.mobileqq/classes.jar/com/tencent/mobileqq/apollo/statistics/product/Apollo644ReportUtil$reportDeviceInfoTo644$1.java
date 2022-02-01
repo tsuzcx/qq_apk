@@ -18,17 +18,23 @@ final class Apollo644ReportUtil$reportDeviceInfoTo644$1
   {
     try
     {
-      Object localObject2 = DeviceInfoUtil.i();
-      String str = DeviceInfoUtil.e();
+      localObject2 = DeviceInfoUtil.i();
+      Object localObject3 = DeviceInfoUtil.e();
       int i = DeviceInfoUtil.b();
       long l1 = DeviceInfoUtil.b();
-      long l2 = Math.ceil(DeviceInfoUtil.a() / 1073741824);
+      long l2 = DeviceInfoUtil.a();
+      double d1 = l2;
+      double d2 = 1073741824;
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      d1 /= d2;
+      l2 = Math.ceil(d1);
       long l3 = DeviceInfoUtil.k();
       long l4 = DeviceInfoUtil.l();
       float f = DeviceInfoUtil.a();
       Object localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("mo", localObject2);
-      ((JSONObject)localObject1).put("os", str);
+      ((JSONObject)localObject1).put("os", localObject3);
       ((JSONObject)localObject1).put("cc", String.valueOf(i));
       ((JSONObject)localObject1).put("cf", String.valueOf(l1));
       ((JSONObject)localObject1).put("mm", String.valueOf(l2));
@@ -44,18 +50,26 @@ final class Apollo644ReportUtil$reportDeviceInfoTo644$1
       localObject2 = ((JSONObject)localObject2).toString();
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "gpuJSON.toString()");
       VipUtils.a(null, "cmshow", "Apollo", "device_info", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Int), localObject1, localObject2 });
-      QLog.i("sava_ApolloRender", 1, " onSurfaceCreated report 644 data: " + (String)localObject1 + ';' + (String)localObject2);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(" onSurfaceCreated report 644 data: ");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append(';');
+      ((StringBuilder)localObject3).append((String)localObject2);
+      QLog.i("Apollo644ReportUtil", 1, ((StringBuilder)localObject3).toString());
       return;
     }
     catch (JSONException localJSONException)
     {
-      QLog.d("sava_ApolloRender", 2, " onSurfaceCreated report 644 data fail: " + localJSONException);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" onSurfaceCreated report 644 data fail: ");
+      ((StringBuilder)localObject2).append(localJSONException);
+      QLog.d("Apollo644ReportUtil", 2, ((StringBuilder)localObject2).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.product.Apollo644ReportUtil.reportDeviceInfoTo644.1
  * JD-Core Version:    0.7.0.1
  */

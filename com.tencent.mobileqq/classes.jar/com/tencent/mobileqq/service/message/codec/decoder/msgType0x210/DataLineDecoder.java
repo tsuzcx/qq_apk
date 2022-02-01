@@ -23,8 +23,12 @@ public class DataLineDecoder
     }
     if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("DataLineDecoder", 2, "<---decodeC2CMsgPkg_Dataline: return isReaded4DataLine:" + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        paramMessageHandler = new StringBuilder();
+        paramMessageHandler.append("<---decodeC2CMsgPkg_Dataline: return isReaded4DataLine:");
+        paramMessageHandler.append(paramBoolean);
+        QLog.e("DataLineDecoder", 2, paramMessageHandler.toString());
       }
       return;
     }
@@ -44,7 +48,7 @@ public class DataLineDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.DataLineDecoder
  * JD-Core Version:    0.7.0.1
  */

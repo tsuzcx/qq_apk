@@ -33,8 +33,9 @@ public final class UserFeed
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uFlag, 0);
-    if (this.vFeedInfo != null) {
-      paramJceOutputStream.write(this.vFeedInfo, 1);
+    byte[] arrayOfByte = this.vFeedInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }

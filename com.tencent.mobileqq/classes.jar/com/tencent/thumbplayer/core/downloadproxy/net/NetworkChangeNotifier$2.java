@@ -1,6 +1,5 @@
 package com.tencent.thumbplayer.core.downloadproxy.net;
 
-import android.os.Handler;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyLog;
 import java.util.Arrays;
 
@@ -11,43 +10,63 @@ class NetworkChangeNotifier$2
   
   public void onConnectionSubtypeChanged(int paramInt)
   {
-    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", "onConnectionSubtypeChanged, newConnectionSubtype:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onConnectionSubtypeChanged, newConnectionSubtype:");
+    localStringBuilder.append(paramInt);
+    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
     this.this$0.notifyObserversOfConnectionSubtypeChange(paramInt);
   }
   
   public void onConnectionTypeChanged(int paramInt)
   {
-    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", "onConnectionTypeChanged, newConnectionType:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onConnectionTypeChanged, newConnectionType:");
+    localStringBuilder.append(paramInt);
+    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
     NetworkChangeNotifier.access$100(this.this$0, paramInt);
   }
   
   public void onNetworkConnect(long paramLong, int paramInt)
   {
-    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", "onNetworkConnect, connectionType:" + paramInt + ", netId:" + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onNetworkConnect, connectionType:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", netId:");
+    localStringBuilder.append(paramLong);
+    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
     this.this$0.notifyObserversOfNetworkConnect(paramLong, paramInt);
   }
   
   public void onNetworkDisconnect(long paramLong)
   {
-    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", "onNetworkDisconnect, netId:" + paramLong);
-    NetworkChangeNotifier.access$200(this.this$0).postDelayed(new NetworkChangeNotifier.2.1(this, paramLong), 1000L);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onNetworkDisconnect, netId:");
+    localStringBuilder.append(paramLong);
+    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
+    this.this$0.notifyObserversOfNetworkDisconnect(paramLong);
   }
   
   public void onNetworkSoonToDisconnect(long paramLong)
   {
-    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", "onNetworkSoonToDisconnect, netId:" + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onNetworkSoonToDisconnect, netId:");
+    localStringBuilder.append(paramLong);
+    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
     this.this$0.notifyObserversOfNetworkSoonToDisconnect(paramLong);
   }
   
   public void purgeActiveNetworkList(long[] paramArrayOfLong)
   {
-    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", "purgeActiveNetworkList, activeNetIds:" + Arrays.toString(paramArrayOfLong));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("purgeActiveNetworkList, activeNetIds:");
+    localStringBuilder.append(Arrays.toString(paramArrayOfLong));
+    TPDLProxyLog.d("NetworkChangeNotifier.java", 0, "tpdlnative", localStringBuilder.toString());
     this.this$0.notifyObserversToPurgeActiveNetworkList(paramArrayOfLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.net.NetworkChangeNotifier.2
  * JD-Core Version:    0.7.0.1
  */

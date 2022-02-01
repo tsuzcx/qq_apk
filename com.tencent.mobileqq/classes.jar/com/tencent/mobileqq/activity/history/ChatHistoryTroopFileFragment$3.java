@@ -13,10 +13,11 @@ class ChatHistoryTroopFileFragment$3
   
   public void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.what != 1) || (ChatHistoryTroopFileFragment.a(this.a) == null)) {}
-    for (;;)
+    if (paramMessage.what == 1)
     {
-      return;
+      if (ChatHistoryTroopFileFragment.a(this.a) == null) {
+        return;
+      }
       int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
       while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
       {
@@ -35,7 +36,7 @@ class ChatHistoryTroopFileFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.3
  * JD-Core Version:    0.7.0.1
  */

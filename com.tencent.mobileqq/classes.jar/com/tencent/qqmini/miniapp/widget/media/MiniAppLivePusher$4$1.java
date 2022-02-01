@@ -18,27 +18,30 @@ class MiniAppLivePusher$4$1
   {
     try
     {
-      Object localObject = new File(((MiniAppFileManager)MiniAppLivePusher.access$100(this.this$1.this$0).getManager(MiniAppFileManager.class)).getTmpPath("jpg"));
+      localObject = new File(((MiniAppFileManager)MiniAppLivePusher.access$100(this.this$1.this$0).getManager(MiniAppFileManager.class)).getTmpPath("jpg"));
       ((File)localObject).getParentFile().mkdirs();
       MiniAppLivePusher.access$200(this.val$bitmap, (File)localObject);
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("tempImagePath", ((File)localObject).getAbsolutePath());
-      localJSONObject2.put("width", this.val$bitmap.getWidth());
-      localJSONObject2.put("height", this.val$bitmap.getHeight());
-      localObject = ApiUtil.wrapCallbackOk(this.this$1.val$eventName, localJSONObject2);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("tempImagePath", ((File)localObject).getAbsolutePath());
+      localJSONObject.put("width", this.val$bitmap.getWidth());
+      localJSONObject.put("height", this.val$bitmap.getHeight());
+      localObject = ApiUtil.wrapCallbackOk(this.this$1.val$eventName, localJSONObject);
       this.this$1.val$req.jsService.evaluateCallbackJs(this.this$1.val$req.callbackId, ((JSONObject)localObject).toString());
       return;
     }
     catch (Exception localException)
     {
-      JSONObject localJSONObject1 = ApiUtil.wrapCallbackFail(this.this$1.val$eventName, new JSONObject());
-      this.this$1.val$req.jsService.evaluateCallbackJs(this.this$1.val$req.callbackId, localJSONObject1.toString());
+      Object localObject;
+      label138:
+      break label138;
     }
+    localObject = ApiUtil.wrapCallbackFail(this.this$1.val$eventName, new JSONObject());
+    this.this$1.val$req.jsService.evaluateCallbackJs(this.this$1.val$req.callbackId, ((JSONObject)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.MiniAppLivePusher.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,6 @@
         <include layout="@layout/a6t" />
     </FrameLayout>
     <FrameLayout android:id="@id/f8e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/f8g">
-        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView android:textSize="17.0sp" android:id="@id/f8f" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="1.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="8.0dip" android:includeFontPadding="false" android:lineSpacingMultiplier="1.2" />
+        <com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyYAFolderTextView android:textSize="17.0sp" android:id="@id/f8f" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="1.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="8.0dip" android:includeFontPadding="false" android:lineSpacingMultiplier="1.2" />
     </FrameLayout>
 </LinearLayout>

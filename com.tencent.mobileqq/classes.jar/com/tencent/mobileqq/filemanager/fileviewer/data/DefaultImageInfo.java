@@ -59,16 +59,16 @@ public class DefaultImageInfo
       }
       this.jdField_a_of_type_Int = 2;
     }
-    while (FileUtil.b(str)) {
-      if (this.jdField_a_of_type_Int == 1)
-      {
+    else
+    {
+      this.jdField_a_of_type_Int = 1;
+    }
+    if (FileUtil.a(str))
+    {
+      if (this.jdField_a_of_type_Int == 1) {
         return AsyncImageView.a(str);
-        this.jdField_a_of_type_Int = 1;
       }
-      else
-      {
-        return AsyncImageView.a(str, -1, -1, new File(str), false, false, false);
-      }
+      return AsyncImageView.a(str, -1, -1, new File(str), false, false, false);
     }
     a(1);
     return null;
@@ -90,28 +90,28 @@ public class DefaultImageInfo
   
   public boolean a()
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
-    {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (localObject == null) {
       return false;
-      localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    } while (localFileManagerEntity == null);
-    if (localFileManagerEntity.isZipInnerFile)
-    {
-      if (localFileManagerEntity.status == 2) {}
-      for (;;)
-      {
-        return bool1;
-        bool1 = false;
-      }
     }
-    if (this.jdField_b_of_type_Int == 1) {}
-    for (bool1 = bool2;; bool1 = false) {
+    localObject = ((IFileViewerAdapter)localObject).a();
+    if (localObject == null) {
+      return false;
+    }
+    if (((FileManagerEntity)localObject).isZipInnerFile)
+    {
+      if (((FileManagerEntity)localObject).status == 2) {
+        bool1 = true;
+      }
       return bool1;
     }
+    bool1 = bool2;
+    if (this.jdField_b_of_type_Int == 1) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public boolean a(String paramString)
@@ -128,20 +128,21 @@ public class DefaultImageInfo
     try
     {
       String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.f();
-      if (FileUtil.b(str))
+      if (FileUtil.a(str))
       {
         this.c = JpegExifReader.readOrientation(str);
-        return this.c;
+        break label43;
       }
       return 1;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        this.c = 0;
-      }
+      label38:
+      label43:
+      break label38;
     }
+    this.c = 0;
+    return this.c;
   }
   
   public String b()
@@ -156,26 +157,28 @@ public class DefaultImageInfo
     else
     {
       str1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.h();
-      if (str1 != null) {
-        break label44;
+      if (str1 == null) {
+        return "";
       }
-      str1 = "";
+      this.jdField_a_of_type_Int = 2;
     }
-    return str1;
-    label44:
-    this.jdField_a_of_type_Int = 2;
     return str1;
   }
   
   public void b(String paramString)
   {
-    if (FileUtil.b(paramString)) {
+    if (FileUtil.a(paramString))
+    {
       this.jdField_b_of_type_JavaLangString = paramString;
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.i("DefaultImageInfo", 2, "setImageOriginPath error  : can not find origin file [path] =  " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setImageOriginPath error  : can not find origin file [path] =  ");
+      localStringBuilder.append(paramString);
+      QLog.i("DefaultImageInfo", 2, localStringBuilder.toString());
+    }
   }
   
   public boolean b()
@@ -185,7 +188,7 @@ public class DefaultImageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.DefaultImageInfo
  * JD-Core Version:    0.7.0.1
  */

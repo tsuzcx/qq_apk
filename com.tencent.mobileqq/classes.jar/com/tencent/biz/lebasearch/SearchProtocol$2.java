@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResponseBody;
 import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResultItem;
 import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResultItemGroup;
+import com.tencent.mobileqq.kandian.biz.search.entity.WordItem;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -26,37 +27,40 @@ final class SearchProtocol$2
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
+    Object localObject;
     if (paramBoolean)
     {
       paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      if (paramBundle != null) {
+        localObject = new mobileqq_dynamic_search.ResponseBody();
+      }
+    }
+    for (;;)
+    {
+      try
       {
-        Object localObject = new mobileqq_dynamic_search.ResponseBody();
-        for (;;)
+        ((mobileqq_dynamic_search.ResponseBody)localObject).mergeFrom(paramBundle);
+        paramInt = ((mobileqq_dynamic_search.ResponseBody)localObject).retcode.get();
+        if (paramInt != 0)
         {
-          try
+          if (!QLog.isColorLevel()) {
+            break label482;
+          }
+          paramBundle = new StringBuilder();
+          paramBundle.append("retcode:");
+          paramBundle.append(paramInt);
+          QLog.d("lebasearch.SearchProtocol", 2, paramBundle.toString());
+          return;
+        }
+        if ((((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.has()) && (((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.has()))
+        {
+          paramBundle = ((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.get();
+          ArrayList localArrayList = new ArrayList();
+          Iterator localIterator = paramBundle.iterator();
+          if (localIterator.hasNext())
           {
-            ((mobileqq_dynamic_search.ResponseBody)localObject).mergeFrom(paramBundle);
-            paramInt = ((mobileqq_dynamic_search.ResponseBody)localObject).retcode.get();
-            if (paramInt != 0)
-            {
-              if (!QLog.isColorLevel()) {
-                break label472;
-              }
-              QLog.d("lebasearch.SearchProtocol", 2, "retcode:" + paramInt);
-              return;
-            }
-            if ((!((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.has()) || (!((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.has())) {
-              break label472;
-            }
-            paramBundle = ((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.get();
-            localArrayList = new ArrayList();
-            Iterator localIterator = paramBundle.iterator();
-            if (!localIterator.hasNext()) {
-              continue;
-            }
-            localResultItem = (mobileqq_dynamic_search.ResultItem)localIterator.next();
-            localWordItem = new SearchProtocol.WordItem();
+            mobileqq_dynamic_search.ResultItem localResultItem = (mobileqq_dynamic_search.ResultItem)localIterator.next();
+            WordItem localWordItem = new WordItem();
             if (!localResultItem.word.has()) {
               continue;
             }
@@ -65,73 +69,72 @@ final class SearchProtocol$2
             if (localResultItem.extension.has())
             {
               localObject = localResultItem.extension.get().toStringUtf8();
-              if (QLog.isColorLevel()) {
-                QLog.d("lebasearch.SearchProtocol", 2, "extension info:" + (String)localObject);
+              if (QLog.isColorLevel())
+              {
+                paramBundle = new StringBuilder();
+                paramBundle.append("extension info:");
+                paramBundle.append((String)localObject);
+                QLog.d("lebasearch.SearchProtocol", 2, paramBundle.toString());
               }
               paramBoolean = TextUtils.isEmpty((CharSequence)localObject);
-              if (!paramBoolean) {
+              if (!paramBoolean)
+              {
                 paramBundle = null;
+                try
+                {
+                  localObject = new JSONObject((String)localObject);
+                  paramBundle = (Bundle)localObject;
+                }
+                catch (JSONException localJSONException)
+                {
+                  localJSONException.printStackTrace();
+                }
+                paramInt = paramBundle.optInt("type");
+                if ((paramInt == 2) && (localResultItem.jmp_url.has()) && (!TextUtils.isEmpty(localResultItem.jmp_url.get().toStringUtf8())))
+                {
+                  localWordItem.type = paramInt;
+                  localWordItem.jumpUrl = localResultItem.jmp_url.get().toStringUtf8();
+                  paramInt = SearchProtocol.a(paramBundle.optString("color"));
+                  if (paramInt == 0) {
+                    break label492;
+                  }
+                  localWordItem.textColor = paramInt;
+                  localWordItem.frameColor = SearchProtocol.a(paramBundle.optString("framecolor"));
+                }
               }
             }
-          }
-          catch (InvalidProtocolBufferMicroException paramBundle)
-          {
-            ArrayList localArrayList;
-            mobileqq_dynamic_search.ResultItem localResultItem;
-            SearchProtocol.WordItem localWordItem;
-            if (!QLog.isColorLevel()) {
-              break label472;
-            }
-            QLog.d("lebasearch.SearchProtocol", 2, paramBundle.getMessage());
-            return;
-            paramBundle = this.a.obtainMessage();
-            paramBundle.arg1 = 0;
-            paramBundle.obj = localArrayList;
-            this.a.sendMessage(paramBundle);
-          }
-          try
-          {
-            localObject = new JSONObject((String)localObject);
-            paramBundle = (Bundle)localObject;
-          }
-          catch (JSONException localJSONException)
-          {
-            localJSONException.printStackTrace();
+            localArrayList.add(localWordItem);
             continue;
-            paramInt = paramBundle.optInt("type");
           }
-        }
-        if (paramBundle == null)
-        {
-          paramInt = 0;
-          if ((paramInt == 2) && (localResultItem.jmp_url.has()) && (!TextUtils.isEmpty(localResultItem.jmp_url.get().toStringUtf8())))
-          {
-            localWordItem.type = paramInt;
-            localWordItem.jumpUrl = localResultItem.jmp_url.get().toStringUtf8();
-            paramInt = SearchProtocol.a(paramBundle.optString("color"));
-            if (paramInt == 0) {
-              break label473;
-            }
-          }
+          paramBundle = this.a.obtainMessage();
+          paramBundle.arg1 = 0;
+          paramBundle.obj = localArrayList;
+          this.a.sendMessage(paramBundle);
+          return;
         }
       }
-    }
-    for (;;)
-    {
-      localWordItem.textColor = paramInt;
-      localWordItem.frameColor = SearchProtocol.a(paramBundle.optString("framecolor"));
-      localArrayList.add(localWordItem);
-      break;
-      label472:
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("lebasearch.SearchProtocol", 2, paramBundle.getMessage());
+        }
+      }
       return;
-      label473:
-      paramInt = -16734752;
+      label482:
+      return;
+      if (paramBundle == null)
+      {
+        paramInt = 0;
+        continue;
+        label492:
+        paramInt = -16734752;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.lebasearch.SearchProtocol.2
  * JD-Core Version:    0.7.0.1
  */

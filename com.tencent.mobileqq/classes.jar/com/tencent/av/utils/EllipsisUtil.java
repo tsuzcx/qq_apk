@@ -11,29 +11,22 @@ public class EllipsisUtil
   
   public static float a(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
   {
-    float f1;
-    if (paramString == null)
-    {
-      f1 = paramFloat;
-      return f1;
+    if (paramString == null) {
+      return paramFloat;
     }
     paramString = paramString.toCharArray();
     int i = 0;
-    for (;;)
+    while (i < paramString.length)
     {
-      f1 = paramFloat;
-      if (i >= paramString.length) {
+      float f = paramTextPaint.measureText(paramString, i, 1);
+      if (f >= paramFloat) {
         break;
       }
-      float f2 = paramTextPaint.measureText(paramString, i, 1);
-      f1 = paramFloat;
-      if (f2 >= paramFloat) {
-        break;
-      }
-      paramFloat -= f2;
+      paramFloat -= f;
       paramStringBuilder.append(paramString[i]);
       i += 1;
     }
+    return paramFloat;
   }
   
   public static float b(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
@@ -47,7 +40,7 @@ public class EllipsisUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.EllipsisUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -26,32 +26,57 @@ public class UniformParam$FloatsParam
     if (this.handle < 0) {
       return;
     }
-    switch (this.value.length)
+    paramInt = this.value.length;
+    if (paramInt != 1)
     {
-    default: 
-      GLES20.glUniform1fv(this.handle, this.value.length, this.value, 0);
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 9)
+            {
+              if (paramInt != 16)
+              {
+                paramInt = this.handle;
+                float[] arrayOfFloat = this.value;
+                GLES20.glUniform1fv(paramInt, arrayOfFloat.length, arrayOfFloat, 0);
+              }
+              else
+              {
+                GLES20.glUniformMatrix4fv(this.handle, 1, false, this.value, 0);
+              }
+            }
+            else {
+              GLES20.glUniformMatrix3fv(this.handle, 1, false, this.value, 0);
+            }
+          }
+          else {
+            GLES20.glUniform4fv(this.handle, 1, this.value, 0);
+          }
+        }
+        else {
+          GLES20.glUniform3fv(this.handle, 1, this.value, 0);
+        }
+      }
+      else {
+        GLES20.glUniform2fv(this.handle, 1, this.value, 0);
+      }
     }
-    for (;;)
-    {
-      GlUtil.checkGlError("FloatsParam setParams");
-      return;
+    else {
       GLES20.glUniform1f(this.handle, this.value[0]);
-      continue;
-      GLES20.glUniform2fv(this.handle, 1, this.value, 0);
-      continue;
-      GLES20.glUniform3fv(this.handle, 1, this.value, 0);
-      continue;
-      GLES20.glUniform4fv(this.handle, 1, this.value, 0);
-      continue;
-      GLES20.glUniformMatrix3fv(this.handle, 1, false, this.value, 0);
-      continue;
-      GLES20.glUniformMatrix4fv(this.handle, 1, false, this.value, 0);
     }
+    GlUtil.checkGlError("FloatsParam setParams");
   }
   
   public String toString()
   {
-    return this.name + " = " + Arrays.toString(this.value);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(Arrays.toString(this.value));
+    return localStringBuilder.toString();
   }
 }
 

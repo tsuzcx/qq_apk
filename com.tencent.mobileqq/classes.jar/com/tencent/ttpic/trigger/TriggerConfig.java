@@ -172,31 +172,38 @@ public class TriggerConfig
       int i = Integer.parseInt(paramString);
       return i;
     }
-    catch (NumberFormatException paramString) {}
+    catch (NumberFormatException paramString)
+    {
+      label7:
+      break label7;
+    }
     return PTFaceAttr.PTExpression.FACE_DETECT.value;
   }
   
   public int getBodyTriggerAngle()
   {
-    switch (this.bodyTriggerDirection)
+    int j = this.bodyTriggerDirection;
+    int i = 0;
+    switch (j)
     {
-    case 0: 
     default: 
       return 0;
-    case 1: 
-      return 45;
-    case 2: 
-      return 90;
-    case 3: 
-      return 135;
-    case 4: 
-      return 180;
-    case 5: 
-      return 225;
+    case 7: 
+      return 315;
     case 6: 
       return 270;
+    case 5: 
+      return 225;
+    case 4: 
+      return 180;
+    case 3: 
+      return 135;
+    case 2: 
+      return 90;
+    case 1: 
+      i = 45;
     }
-    return 315;
+    return i;
   }
   
   public StickerItem getStickerItem()
@@ -206,8 +213,9 @@ public class TriggerConfig
   
   public String getStickerItemId()
   {
-    if (this.stickerItem != null) {
-      return this.stickerItem.id;
+    StickerItem localStickerItem = this.stickerItem;
+    if (localStickerItem != null) {
+      return localStickerItem.id;
     }
     return null;
   }
@@ -219,7 +227,11 @@ public class TriggerConfig
       int i = Integer.parseInt(this.triggerType);
       return i;
     }
-    catch (NumberFormatException localNumberFormatException) {}
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label10:
+      break label10;
+    }
     return PTFaceAttr.PTExpression.FACE_DETECT.value;
   }
   
@@ -230,7 +242,8 @@ public class TriggerConfig
   
   public boolean isDBTriggered()
   {
-    return (this.stickerItem != null) && (this.stickerItem.isDBTriggered());
+    StickerItem localStickerItem = this.stickerItem;
+    return (localStickerItem != null) && (localStickerItem.isDBTriggered());
   }
   
   public boolean isRenderForBitmap()
@@ -240,29 +253,26 @@ public class TriggerConfig
   
   public boolean isSentenceTriggered(String paramString)
   {
-    if (this.triggerWordsPattern == null) {
+    Pattern localPattern = this.triggerWordsPattern;
+    if (localPattern == null) {
       return false;
     }
-    return this.triggerWordsPattern.matcher(paramString).find();
+    return localPattern.matcher(paramString).find();
   }
   
   public boolean isTypeInteger()
   {
-    if (this.isTriggerTypeInteger == 0) {
-      if (!doIntegerCheck(this.triggerType)) {
-        break label35;
-      }
-    }
-    label35:
-    for (int i = 1;; i = 2)
+    if (this.isTriggerTypeInteger == 0)
     {
-      this.isTriggerTypeInteger = i;
-      if (this.isTriggerTypeInteger != 1) {
-        break;
+      int i;
+      if (doIntegerCheck(this.triggerType)) {
+        i = 1;
+      } else {
+        i = 2;
       }
-      return true;
+      this.isTriggerTypeInteger = i;
     }
-    return false;
+    return this.isTriggerTypeInteger == 1;
   }
   
   public void setRenderForBitmap(boolean paramBoolean)
@@ -280,7 +290,7 @@ public class TriggerConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.trigger.TriggerConfig
  * JD-Core Version:    0.7.0.1
  */

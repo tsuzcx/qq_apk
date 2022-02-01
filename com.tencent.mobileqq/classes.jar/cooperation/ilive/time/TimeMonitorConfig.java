@@ -1,6 +1,7 @@
 package cooperation.ilive.time;
 
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.tools.DeviceInfoUtils;
 import java.util.HashMap;
 
@@ -30,6 +31,10 @@ public class TimeMonitorConfig
   
   public static void a(String paramString)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startMonitor : ");
+    localStringBuilder.append(paramString);
+    QLog.d("LiteMonitorTag", 1, localStringBuilder.toString());
     TimeMonitorManager.a().b(paramString);
   }
   
@@ -55,7 +60,7 @@ public class TimeMonitorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.time.TimeMonitorConfig
  * JD-Core Version:    0.7.0.1
  */

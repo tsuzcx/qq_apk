@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class AuthToken
   extends JceStruct
 {
-  static byte[] cache_data;
+  static byte[] cache_data = (byte[])new byte[1];
   static byte[] cache_ext_key;
-  static int cache_type = 0;
+  static int cache_type;
   public int appid = 0;
   public byte[] data = null;
   public byte[] ext_key = null;
@@ -18,7 +18,6 @@ public final class AuthToken
   
   static
   {
-    cache_data = (byte[])new byte[1];
     ((byte[])cache_data)[0] = 0;
     cache_ext_key = (byte[])new byte[1];
     ((byte[])cache_ext_key)[0] = 0;
@@ -55,7 +54,7 @@ public final class AuthToken
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.AuthToken
  * JD-Core Version:    0.7.0.1
  */

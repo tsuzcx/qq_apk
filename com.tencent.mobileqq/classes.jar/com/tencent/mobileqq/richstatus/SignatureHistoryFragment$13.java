@@ -1,52 +1,47 @@
 package com.tencent.mobileqq.richstatus;
 
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.text.TextUtils;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
+import com.tencent.mobileqq.richstatus.comment.bean.User;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView.OnItemLongClickListener;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import java.util.List;
 
-final class SignatureHistoryFragment$13
-  implements EmoticonCallback
+class SignatureHistoryFragment$13
+  implements CommentsView.OnItemLongClickListener
 {
-  SignatureHistoryFragment$13(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  SignatureHistoryFragment$13(SignatureHistoryFragment paramSignatureHistoryFragment, HistorySignItem paramHistorySignItem) {}
   
-  public void delete()
+  public void a(int paramInt, View paramView)
   {
-    TextUtils.backspace(this.jdField_a_of_type_AndroidWidgetEditText);
-  }
-  
-  public void emoticonMall() {}
-  
-  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
-  
-  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
-  {
-    return false;
-  }
-  
-  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public void send() {}
-  
-  public void send(EmoticonInfo paramEmoticonInfo)
-  {
-    if (paramEmoticonInfo != null) {}
-    try
-    {
-      paramEmoticonInfo.send(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+    if (SignatureHistoryFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment)) {
       return;
     }
-    catch (Throwable paramEmoticonInfo) {}
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusHistorySignItem.commentItemList;
+    if ((localObject != null) && (((List)localObject).size() > paramInt))
+    {
+      localObject = (CommentItem)((List)localObject).get(paramInt);
+      User localUser = ((CommentItem)localObject).user;
+      if ((localUser != null) && (!TextUtils.isEmpty(localUser.a)))
+      {
+        paramView.setSelected(true);
+        QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+        SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, (CommentItem)localObject);
+        localQQCustomMenu.a(2131365311, this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getString(2131691294), 0);
+        if ((localUser.a.equals(SignatureHistoryFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment))) || (Utils.a(SignatureHistoryFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment), SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment)))) {
+          localQQCustomMenu.a(2131365480, this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getString(2131692630), 0);
+        }
+        BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, new SignatureHistoryFragment.13.1(this, paramView));
+      }
+    }
   }
-  
-  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.13
  * JD-Core Version:    0.7.0.1
  */

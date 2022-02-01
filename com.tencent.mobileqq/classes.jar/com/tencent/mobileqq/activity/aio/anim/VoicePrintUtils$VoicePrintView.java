@@ -10,15 +10,16 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
+import com.tencent.mobileqq.vas.ui.VipPngPlayAnimationDrawable;
 
 public class VoicePrintUtils$VoicePrintView
   extends ImageView
 {
   public int a;
   BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
-  private VipPngPlayAnimationDrawable jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable;
   private VoicePrintUtils.VoicePrintDrawable jdField_a_of_type_ComTencentMobileqqActivityAioAnimVoicePrintUtils$VoicePrintDrawable;
   private BubbleInfo.CommonAttrs jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs;
+  private VipPngPlayAnimationDrawable jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   public int b;
@@ -28,29 +29,33 @@ public class VoicePrintUtils$VoicePrintView
   public VoicePrintUtils$VoicePrintView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inDensity = 320;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inTargetDensity = getResources().getDisplayMetrics().densityDpi;
+    paramContext = this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options;
+    paramContext.inDensity = 320;
+    paramContext.inTargetDensity = getResources().getDisplayMetrics().densityDpi;
   }
   
   private boolean a()
   {
-    Bitmap localBitmap = (Bitmap)GlobalImageCache.a.get(this.jdField_a_of_type_JavaLangString);
-    if (localBitmap != null)
+    Object localObject = (Bitmap)GlobalImageCache.a.get(this.jdField_a_of_type_JavaLangString);
+    if (localObject != null)
     {
       ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-      if (localLayoutParams.height > localBitmap.getHeight())
+      if (localLayoutParams.height > ((Bitmap)localObject).getHeight())
       {
-        localLayoutParams.height = localBitmap.getHeight();
-        this.b = localBitmap.getHeight();
+        localLayoutParams.height = ((Bitmap)localObject).getHeight();
+        this.b = ((Bitmap)localObject).getHeight();
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVoicePrintUtils$VoicePrintDrawable.a(localBitmap, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.e = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVoicePrintUtils$VoicePrintDrawable.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.g = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.h = this.b;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.a, this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.c);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.f = -1;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.c = this.jdField_a_of_type_Boolean;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVoicePrintUtils$VoicePrintDrawable.a((Bitmap)localObject, this.jdField_a_of_type_Int);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable;
+      ((VipPngPlayAnimationDrawable)localObject).f = this.jdField_a_of_type_Int;
+      ((VipPngPlayAnimationDrawable)localObject).g = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVoicePrintUtils$VoicePrintDrawable.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable;
+      ((VipPngPlayAnimationDrawable)localObject).i = this.jdField_a_of_type_Int;
+      ((VipPngPlayAnimationDrawable)localObject).j = this.b;
+      ((VipPngPlayAnimationDrawable)localObject).a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.a, this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.c);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable;
+      ((VipPngPlayAnimationDrawable)localObject).h = -1;
+      ((VipPngPlayAnimationDrawable)localObject).c = this.jdField_a_of_type_Boolean;
       return true;
     }
     return false;
@@ -63,7 +68,7 @@ public class VoicePrintUtils$VoicePrintView
       setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVoicePrintUtils$VoicePrintDrawable);
       return;
     }
-    setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable);
+    setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable);
   }
   
   public void setBitmap(BubbleInfo.CommonAttrs paramCommonAttrs, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
@@ -78,7 +83,7 @@ public class VoicePrintUtils$VoicePrintView
     this.jdField_a_of_type_JavaLangString = paramCommonAttrs.a[0];
     this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs = paramCommonAttrs;
     setPadding(paramInt3, 0, paramInt4, 0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable = new VipPngPlayAnimationDrawable(getResources());
+    this.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable = new VipPngPlayAnimationDrawable(getResources());
     if (!a()) {
       new VoicePrintUtils.VoicePrintView.DecodePngTask(this).execute(new String[] { this.jdField_a_of_type_JavaLangString });
     }
@@ -86,7 +91,7 @@ public class VoicePrintUtils$VoicePrintView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView
  * JD-Core Version:    0.7.0.1
  */

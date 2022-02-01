@@ -1,31 +1,35 @@
 package com.tencent.mobileqq.vashealth;
 
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.app.Activity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 class HealthBusinessPlugin$7
-  implements Runnable
+  implements QQPermissionCallback
 {
-  HealthBusinessPlugin$7(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  HealthBusinessPlugin$7(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString, Activity paramActivity) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Iterator localIterator = this.this$0.d.keySet().iterator();
-    while (localIterator.hasNext())
+    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel())
     {
-      Object localObject = (String)localIterator.next();
-      localObject = (ImageView)((FrameLayout)this.this$0.e.get(localObject)).findViewById(2131374812);
-      ((ImageView)localObject).setImageResource(2130849563);
-      ((ImageView)localObject).setVisibility(0);
+      paramArrayOfString = new StringBuilder();
+      paramArrayOfString.append("permission of ");
+      paramArrayOfString.append(this.jdField_a_of_type_JavaLangString);
+      paramArrayOfString.append(" is granted.");
+      QLog.d("HealthBusinessPlugin", 2, paramArrayOfString.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.7
  * JD-Core Version:    0.7.0.1
  */

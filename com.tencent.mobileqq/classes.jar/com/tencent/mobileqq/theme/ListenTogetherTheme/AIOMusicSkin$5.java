@@ -15,32 +15,44 @@ class AIOMusicSkin$5
   public void run()
   {
     ThreadManager.getSubThreadHandler().removeCallbacks(this);
-    boolean bool2;
-    if (this.this$0.m_())
+    boolean bool1;
+    StringBuilder localStringBuilder;
+    if (this.this$0.n_())
     {
-      bool2 = AIOMusicSkin.a(AIOMusicSkin.b(this.this$0));
+      boolean bool2 = AIOMusicSkin.a(AIOMusicSkin.b(this.this$0));
       bool1 = bool2;
       if (!bool2)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("AIOMusicSkin", 2, "download themeId:" + AIOMusicSkin.b(this.this$0));
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("download themeId:");
+          localStringBuilder.append(AIOMusicSkin.b(this.this$0));
+          QLog.i("AIOMusicSkin", 2, localStringBuilder.toString());
         }
         MusicThemeCallback.sInstance.download(AIOMusicSkin.b(this.this$0), AIOMusicSkin.a(this.this$0), false);
+        bool1 = bool2;
       }
     }
-    for (boolean bool1 = bool2;; bool1 = false)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOMusicSkin", 2, "refresh, needSkin:" + this.this$0.m_() + " isShow: " + bool1);
-      }
-      ThreadManagerV2.getUIHandlerV2().post(new AIOMusicSkin.5.1(this, bool1));
-      return;
+      bool1 = false;
     }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refresh, needSkin:");
+      localStringBuilder.append(this.this$0.n_());
+      localStringBuilder.append(" isShow: ");
+      localStringBuilder.append(bool1);
+      QLog.d("AIOMusicSkin", 2, localStringBuilder.toString());
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new AIOMusicSkin.5.1(this, bool1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin.5
  * JD-Core Version:    0.7.0.1
  */

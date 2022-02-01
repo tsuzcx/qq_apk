@@ -28,22 +28,21 @@ public class CheckInUploadPicTask
   
   public void c()
   {
-    boolean bool = true;
     Bundle localBundle = new Bundle();
+    boolean bool = false;
     localBundle.putInt("isVideo", 0);
     if (this.b != null)
     {
       localBundle.putInt("result", 1);
       localBundle.putString("url", this.b);
+      bool = true;
     }
-    for (;;)
+    else
     {
-      CheckInServer.a().a(bool, this.jdField_a_of_type_Int, localBundle);
-      return;
       localBundle.putInt("result", 0);
       localBundle.putString("error", "");
-      bool = false;
     }
+    CheckInServer.a().a(bool, this.jdField_a_of_type_Int, localBundle);
   }
   
   public void d()
@@ -55,7 +54,7 @@ public class CheckInUploadPicTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopcheckin.CheckInUploadPicTask
  * JD-Core Version:    0.7.0.1
  */

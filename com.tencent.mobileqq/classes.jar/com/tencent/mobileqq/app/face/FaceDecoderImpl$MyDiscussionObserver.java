@@ -11,51 +11,55 @@ class FaceDecoderImpl$MyDiscussionObserver
 {
   private FaceDecoderImpl$MyDiscussionObserver(FaceDecoderImpl paramFaceDecoderImpl) {}
   
-  public void onUpdateDiscussionFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected void onUpdateDiscussionFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     if (FaceDecoderImpl.access$200(this.this$0) == null) {
       return;
     }
-    int i;
-    String str;
     if (this.this$0.mDecodeTaskCompletionListener != null)
     {
-      i = 101;
-      if (!AvatarUtil.a(paramString)) {
-        break label228;
-      }
-      str = AvatarUtil.b(paramString);
-      i = 1001;
-    }
-    for (;;)
-    {
-      paramString = this.this$0.getBitmapFromCache(i, paramString, 0, (byte)3, 0);
-      if ((paramBoolean1) && (paramString != null)) {
-        if (i != 1001) {
-          break label190;
-        }
-      }
-      for (;;)
+      int i = 101;
+      String str;
+      if (AvatarUtil.a(paramString))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqhead.FaceDecoderImpl", 2, "====faceDecoderImpl onUpdateDiscussionFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + str + ",type: " + i + ",style: " + -1);
-        }
-        if ((this.this$0.mPause) || (this.this$0.mReadyRequests.isEmpty()) || (this.this$0.iRunningRequests >= this.this$0.maxDecodingTask)) {
-          break;
-        }
-        this.this$0.runNextTask();
-        return;
-        label190:
-        this.this$0.mDecodeTaskCompletionListener.onDecodeTaskCompleted(this.this$0.iRunningRequests + this.this$0.mReadyRequests.size(), i, str, paramString);
+        str = AvatarUtil.b(paramString);
+        i = 1001;
       }
-      label228:
-      str = paramString;
+      else
+      {
+        str = paramString;
+      }
+      paramString = this.this$0.getBitmapFromCache(i, paramString, 0, (byte)3, 0);
+      if ((paramBoolean1) && (paramString != null))
+      {
+        if (i != 1001) {
+          this.this$0.mDecodeTaskCompletionListener.onDecodeTaskCompleted(this.this$0.iRunningRequests + this.this$0.mReadyRequests.size(), i, str, paramString);
+        }
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("====faceDecoderImpl onUpdateDiscussionFaceIcon === isSuccess: ");
+          paramString.append(paramBoolean1);
+          paramString.append(", isComplete: ");
+          paramString.append(paramBoolean2);
+          paramString.append(",disUin: ");
+          paramString.append(str);
+          paramString.append(",type: ");
+          paramString.append(i);
+          paramString.append(",style: ");
+          paramString.append(-1);
+          QLog.i("Q.qqhead.FaceDecoderImpl", 2, paramString.toString());
+        }
+      }
+    }
+    if ((!this.this$0.mPause) && (!this.this$0.mReadyRequests.isEmpty()) && (this.this$0.iRunningRequests < this.this$0.maxDecodingTask)) {
+      this.this$0.runNextTask();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoderImpl.MyDiscussionObserver
  * JD-Core Version:    0.7.0.1
  */

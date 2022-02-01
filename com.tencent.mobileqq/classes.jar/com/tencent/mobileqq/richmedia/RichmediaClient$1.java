@@ -31,7 +31,10 @@ class RichmediaClient$1
     }
     catch (RemoteException paramComponentName)
     {
-      LOG.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
+      paramIBinder = new StringBuilder();
+      paramIBinder.append("MSG_C2S_REGISTER_CLIENT send failed. e = ");
+      paramIBinder.append(paramComponentName);
+      LOG.b("PTV.RichmediaClient", paramIBinder.toString());
     }
   }
   
@@ -42,7 +45,7 @@ class RichmediaClient$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaClient.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,9 @@ import android.os.Looper;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mqsafeedit.MD5;
 import com.tencent.mobileqq.music.IQQPlayerCallback.Stub;
 import com.tencent.mobileqq.music.IQQPlayerService;
 import com.tencent.mobileqq.music.QQPlayerService;
@@ -29,11 +33,15 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Timer;
 import org.json.JSONArray;
@@ -66,33 +74,47 @@ public class MusicGeneWebViewPlugin
   
   private int a()
   {
-    if ((this.jdField_a_of_type_Int <= 0) && (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService != null)) {}
-    try
+    if (this.jdField_a_of_type_Int <= 0)
     {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.c();
-      return this.jdField_a_of_type_Int;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        localRemoteException.printStackTrace();
+      IQQPlayerService localIQQPlayerService = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
+      if (localIQQPlayerService != null) {
+        try
+        {
+          this.jdField_a_of_type_Int = localIQQPlayerService.c();
+        }
+        catch (RemoteException localRemoteException)
+        {
+          localRemoteException.printStackTrace();
+        }
       }
     }
+    return this.jdField_a_of_type_Int;
   }
   
   private int a(int paramInt)
   {
-    switch (paramInt)
+    int j = 103;
+    int i;
+    if (paramInt != 0)
     {
-    case 1: 
-    case 2: 
-    default: 
-      return 103;
-    case 0: 
-      return 102;
+      i = j;
+      if (paramInt != 1)
+      {
+        i = j;
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return 103;
+          }
+          return 101;
+        }
+      }
     }
-    return 101;
+    else
+    {
+      i = 102;
+    }
+    return i;
   }
   
   public static Bitmap a(String paramString)
@@ -105,12 +127,12 @@ public class MusicGeneWebViewPlugin
       paramString = BitmapFactory.decodeStream(paramString.getInputStream());
       return paramString;
     }
-    catch (IOException paramString)
+    catch (OutOfMemoryError paramString)
     {
       paramString.printStackTrace();
       return null;
     }
-    catch (OutOfMemoryError paramString)
+    catch (IOException paramString)
     {
       paramString.printStackTrace();
     }
@@ -119,23 +141,23 @@ public class MusicGeneWebViewPlugin
   
   private SongInfo a()
   {
-    SongInfo localSongInfo2 = this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo;
-    SongInfo localSongInfo1 = localSongInfo2;
-    if (localSongInfo2 == null)
+    SongInfo localSongInfo = this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo;
+    if (localSongInfo == null)
     {
-      localSongInfo1 = localSongInfo2;
-      if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService == null) {}
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
+      if (localObject != null) {
+        try
+        {
+          localObject = ((IQQPlayerService)localObject).a();
+          return localObject;
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+      }
     }
-    try
-    {
-      localSongInfo1 = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
-      return localSongInfo1;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return localSongInfo2;
+    return localSongInfo;
   }
   
   private String a()
@@ -201,30 +223,28 @@ public class MusicGeneWebViewPlugin
   
   private void a(Bitmap paramBitmap)
   {
-    Object localObject;
     if (paramBitmap != null)
     {
-      localObject = new ByteArrayOutputStream();
+      Object localObject = new ByteArrayOutputStream();
       paramBitmap.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
       paramBitmap = Base64Util.encodeToString(((ByteArrayOutputStream)localObject).toByteArray(), 0);
-      localObject = "data:image\\/jpg;base64," + paramBitmap;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("data:image\\/jpg;base64,");
+      ((StringBuilder)localObject).append(paramBitmap);
+      localObject = ((StringBuilder)localObject).toString();
       paramBitmap = new JSONObject();
-    }
-    try
-    {
-      paramBitmap.put("code", "0");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("imgUrl", localObject);
-      paramBitmap.put("data", localJSONObject);
-      callJs(String.format("try{qqmusicBridge.appTrigger('%s',  %s);}catch(e){}", new Object[] { "DO_MACK_IMG_CALLBACK", paramBitmap }));
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      try
+      {
+        paramBitmap.put("code", "0");
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("imgUrl", localObject);
+        paramBitmap.put("data", localJSONObject);
+      }
+      catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
+      callJs(String.format("try{qqmusicBridge.appTrigger('%s',  %s);}catch(e){}", new Object[] { "DO_MACK_IMG_CALLBACK", paramBitmap }));
     }
   }
   
@@ -232,517 +252,469 @@ public class MusicGeneWebViewPlugin
   private boolean a()
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 6
-    //   3: iload 6
-    //   5: istore 5
-    //   7: aload_0
-    //   8: getfield 30	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_b_of_type_Boolean	Z
-    //   11: ifeq +286 -> 297
-    //   14: aload_0
-    //   15: invokespecial 306	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	()Lcom/tencent/mobileqq/music/SongInfo;
-    //   18: astore 7
-    //   20: aload_0
-    //   21: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
-    //   24: ifnull +456 -> 480
-    //   27: aload_0
-    //   28: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
-    //   31: invokeinterface 309 1 0
-    //   36: istore_1
-    //   37: aload_0
-    //   38: invokespecial 311	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	()I
-    //   41: istore_3
-    //   42: iload_1
-    //   43: istore 4
-    //   45: aload 7
-    //   47: astore 9
-    //   49: ldc_w 281
-    //   52: astore 8
-    //   54: aload_0
-    //   55: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
-    //   58: ifnull +409 -> 467
-    //   61: aload_0
-    //   62: aload_0
-    //   63: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
-    //   66: invokeinterface 312 1 0
-    //   71: invokespecial 314	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:b	(I)I
-    //   74: istore_1
-    //   75: aload 8
-    //   77: astore 7
-    //   79: aload_0
-    //   80: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
-    //   83: invokeinterface 317 1 0
-    //   88: astore 10
-    //   90: aload 10
-    //   92: ifnull +369 -> 461
-    //   95: aload 8
-    //   97: astore 7
-    //   99: aload 10
-    //   101: ldc_w 319
-    //   104: invokevirtual 322	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   107: astore 8
-    //   109: aload 8
-    //   111: astore 7
-    //   113: new 176	org/json/JSONObject
-    //   116: dup
-    //   117: aload 10
-    //   119: ldc_w 285
-    //   122: invokevirtual 322	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   125: invokespecial 323	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   128: astore 10
-    //   130: aload 10
-    //   132: astore 7
-    //   134: aload 7
-    //   136: ifnonnull +322 -> 458
-    //   139: new 176	org/json/JSONObject
-    //   142: dup
-    //   143: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   146: astore 7
-    //   148: iload 6
-    //   150: istore 5
-    //   152: aload 9
-    //   154: ifnull +143 -> 297
-    //   157: aload_0
-    //   158: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
-    //   161: ifnull +324 -> 485
-    //   164: aload_0
-    //   165: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
-    //   168: invokeinterface 317 1 0
-    //   173: astore 10
-    //   175: aload 10
-    //   177: ifnull +175 -> 352
-    //   180: aload 10
-    //   182: ldc_w 325
-    //   185: iconst_0
-    //   186: invokevirtual 329	android/os/Bundle:getInt	(Ljava/lang/String;I)I
-    //   189: istore_2
-    //   190: aload_0
-    //   191: aload 9
-    //   193: invokespecial 331	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	(Lcom/tencent/mobileqq/music/SongInfo;)Lorg/json/JSONObject;
-    //   196: astore 9
-    //   198: aload 9
-    //   200: ifnull +167 -> 367
-    //   203: aload 9
-    //   205: invokevirtual 335	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   208: astore 10
-    //   210: aload 10
-    //   212: invokeinterface 340 1 0
-    //   217: ifeq +150 -> 367
-    //   220: aload 10
-    //   222: invokeinterface 344 1 0
-    //   227: checkcast 293	java/lang/String
-    //   230: astore 11
-    //   232: aload 7
-    //   234: aload 11
-    //   236: aload 9
-    //   238: aload 11
-    //   240: invokevirtual 347	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
-    //   243: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   246: pop
-    //   247: goto -37 -> 210
-    //   250: astore 8
-    //   252: aload 8
-    //   254: invokevirtual 141	java/lang/Exception:printStackTrace	()V
-    //   257: iload 6
-    //   259: istore 5
-    //   261: aload 7
-    //   263: ifnull +34 -> 297
-    //   266: aload_0
-    //   267: ldc_w 349
-    //   270: iconst_2
-    //   271: anewarray 289	java/lang/Object
-    //   274: dup
-    //   275: iconst_0
-    //   276: ldc_w 351
-    //   279: aastore
-    //   280: dup
-    //   281: iconst_1
-    //   282: aload 7
-    //   284: invokevirtual 352	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   287: aastore
-    //   288: invokestatic 297	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   291: invokevirtual 300	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:callJs	(Ljava/lang/String;)V
-    //   294: iconst_1
-    //   295: istore 5
-    //   297: iload 5
-    //   299: ireturn
-    //   300: astore 8
-    //   302: aconst_null
-    //   303: astore 7
-    //   305: iconst_0
-    //   306: istore_1
-    //   307: aload 8
-    //   309: invokevirtual 141	java/lang/Exception:printStackTrace	()V
-    //   312: iconst_0
-    //   313: istore_3
-    //   314: aload 7
-    //   316: astore 9
-    //   318: iload_1
-    //   319: istore 4
-    //   321: goto -272 -> 49
-    //   324: astore 8
-    //   326: ldc_w 281
-    //   329: astore 7
-    //   331: iconst_0
-    //   332: istore_1
-    //   333: aload 8
-    //   335: invokevirtual 141	java/lang/Exception:printStackTrace	()V
-    //   338: aconst_null
-    //   339: astore 10
+    //   0: aload_0
+    //   1: getfield 30	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_b_of_type_Boolean	Z
+    //   4: ifeq +467 -> 471
+    //   7: aconst_null
+    //   8: astore 9
+    //   10: aload_0
+    //   11: invokespecial 306	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	()Lcom/tencent/mobileqq/music/SongInfo;
+    //   14: astore 5
+    //   16: aload_0
+    //   17: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
+    //   20: ifnull +16 -> 36
+    //   23: aload_0
+    //   24: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
+    //   27: invokeinterface 309 1 0
+    //   32: istore_1
+    //   33: goto +5 -> 38
+    //   36: iconst_0
+    //   37: istore_1
+    //   38: aload_0
+    //   39: invokespecial 311	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	()I
+    //   42: istore_3
+    //   43: aload 5
+    //   45: astore 8
+    //   47: iload_1
+    //   48: istore_2
+    //   49: goto +33 -> 82
+    //   52: astore 6
+    //   54: goto +15 -> 69
+    //   57: astore 6
+    //   59: goto +8 -> 67
+    //   62: astore 6
+    //   64: aconst_null
+    //   65: astore 5
+    //   67: iconst_0
+    //   68: istore_1
+    //   69: aload 6
+    //   71: invokevirtual 141	java/lang/Exception:printStackTrace	()V
+    //   74: iconst_0
+    //   75: istore_3
+    //   76: iload_1
+    //   77: istore_2
+    //   78: aload 5
+    //   80: astore 8
+    //   82: ldc_w 281
+    //   85: astore 6
+    //   87: aload_0
+    //   88: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
+    //   91: astore 5
+    //   93: aload 5
+    //   95: ifnull +120 -> 215
+    //   98: aload_0
+    //   99: aload 5
+    //   101: invokeinterface 312 1 0
+    //   106: invokespecial 314	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:b	(I)I
+    //   109: istore 4
+    //   111: aload 6
+    //   113: astore 5
+    //   115: aload_0
+    //   116: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
+    //   119: invokeinterface 317 1 0
+    //   124: astore 10
+    //   126: aload 9
+    //   128: astore 7
+    //   130: aload 6
+    //   132: astore 5
+    //   134: iload 4
+    //   136: istore_1
+    //   137: aload 10
+    //   139: ifnull +86 -> 225
+    //   142: aload 6
+    //   144: astore 5
+    //   146: aload 10
+    //   148: ldc_w 319
+    //   151: invokevirtual 322	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   154: astore 6
+    //   156: aload 6
+    //   158: astore 5
+    //   160: new 176	org/json/JSONObject
+    //   163: dup
+    //   164: aload 10
+    //   166: ldc_w 285
+    //   169: invokevirtual 322	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   172: invokespecial 323	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   175: astore 7
+    //   177: aload 6
+    //   179: astore 5
+    //   181: iload 4
+    //   183: istore_1
+    //   184: goto +41 -> 225
+    //   187: astore 7
+    //   189: iload 4
+    //   191: istore_1
+    //   192: goto +11 -> 203
+    //   195: astore 7
+    //   197: iconst_0
+    //   198: istore_1
+    //   199: aload 6
+    //   201: astore 5
+    //   203: aload 7
+    //   205: invokevirtual 141	java/lang/Exception:printStackTrace	()V
+    //   208: aload 9
+    //   210: astore 7
+    //   212: goto +13 -> 225
+    //   215: iconst_0
+    //   216: istore_1
+    //   217: aload 6
+    //   219: astore 5
+    //   221: aload 9
+    //   223: astore 7
+    //   225: aload 7
+    //   227: astore 6
+    //   229: aload 7
+    //   231: ifnonnull +12 -> 243
+    //   234: new 176	org/json/JSONObject
+    //   237: dup
+    //   238: invokespecial 191	org/json/JSONObject:<init>	()V
+    //   241: astore 6
+    //   243: aload 8
+    //   245: ifnull +226 -> 471
+    //   248: aload_0
+    //   249: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
+    //   252: ifnull +221 -> 473
+    //   255: aload_0
+    //   256: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
+    //   259: invokeinterface 317 1 0
+    //   264: astore 7
+    //   266: aload 7
+    //   268: ifnull +205 -> 473
+    //   271: aload 7
+    //   273: ldc_w 325
+    //   276: iconst_0
+    //   277: invokevirtual 329	android/os/Bundle:getInt	(Ljava/lang/String;I)I
+    //   280: istore 4
+    //   282: goto +13 -> 295
+    //   285: astore 7
+    //   287: aload 7
+    //   289: invokevirtual 141	java/lang/Exception:printStackTrace	()V
+    //   292: goto +181 -> 473
+    //   295: aload_0
+    //   296: aload 8
+    //   298: invokespecial 331	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	(Lcom/tencent/mobileqq/music/SongInfo;)Lorg/json/JSONObject;
+    //   301: astore 7
+    //   303: aload 7
+    //   305: ifnull +50 -> 355
+    //   308: aload 7
+    //   310: invokevirtual 335	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   313: astore 8
+    //   315: aload 8
+    //   317: invokeinterface 340 1 0
+    //   322: ifeq +33 -> 355
+    //   325: aload 8
+    //   327: invokeinterface 344 1 0
+    //   332: checkcast 293	java/lang/String
+    //   335: astore 9
+    //   337: aload 6
+    //   339: aload 9
     //   341: aload 7
-    //   343: astore 8
-    //   345: aload 10
-    //   347: astore 7
-    //   349: goto -215 -> 134
-    //   352: iconst_0
-    //   353: istore_2
-    //   354: goto -164 -> 190
-    //   357: astore 10
-    //   359: aload 10
-    //   361: invokevirtual 141	java/lang/Exception:printStackTrace	()V
-    //   364: goto +121 -> 485
-    //   367: aload 7
-    //   369: ldc_w 354
-    //   372: iload 4
-    //   374: sipush 1000
-    //   377: idiv
-    //   378: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   381: pop
-    //   382: aload 7
-    //   384: ldc_w 359
-    //   387: iload_3
-    //   388: sipush 1000
-    //   391: idiv
-    //   392: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   395: pop
-    //   396: aload 7
-    //   398: ldc_w 361
-    //   401: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   404: ifne +14 -> 418
-    //   407: aload 7
-    //   409: ldc_w 361
-    //   412: aload 8
-    //   414: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   417: pop
-    //   418: aload 7
-    //   420: ldc_w 367
-    //   423: iload_1
-    //   424: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   427: pop
-    //   428: aload 7
-    //   430: ldc_w 369
-    //   433: iload_2
-    //   434: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   437: pop
-    //   438: goto -181 -> 257
-    //   441: astore 8
-    //   443: goto -110 -> 333
-    //   446: astore 8
-    //   448: iconst_0
-    //   449: istore_1
-    //   450: goto -143 -> 307
-    //   453: astore 8
-    //   455: goto -148 -> 307
-    //   458: goto -310 -> 148
-    //   461: aconst_null
-    //   462: astore 7
-    //   464: goto -330 -> 134
-    //   467: iconst_0
-    //   468: istore_1
-    //   469: aconst_null
-    //   470: astore 7
-    //   472: ldc_w 281
-    //   475: astore 8
-    //   477: goto -343 -> 134
-    //   480: iconst_0
-    //   481: istore_1
-    //   482: goto -445 -> 37
-    //   485: iconst_0
-    //   486: istore_2
-    //   487: goto -297 -> 190
+    //   343: aload 9
+    //   345: invokevirtual 347	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   348: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   351: pop
+    //   352: goto -37 -> 315
+    //   355: aload 6
+    //   357: ldc_w 349
+    //   360: iload_2
+    //   361: sipush 1000
+    //   364: idiv
+    //   365: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   368: pop
+    //   369: aload 6
+    //   371: ldc_w 354
+    //   374: iload_3
+    //   375: sipush 1000
+    //   378: idiv
+    //   379: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   382: pop
+    //   383: aload 6
+    //   385: ldc_w 356
+    //   388: invokevirtual 360	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   391: ifne +14 -> 405
+    //   394: aload 6
+    //   396: ldc_w 356
+    //   399: aload 5
+    //   401: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   404: pop
+    //   405: aload 6
+    //   407: ldc_w 362
+    //   410: iload_1
+    //   411: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   414: pop
+    //   415: aload 6
+    //   417: ldc_w 364
+    //   420: iload 4
+    //   422: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   425: pop
+    //   426: goto +10 -> 436
+    //   429: astore 5
+    //   431: aload 5
+    //   433: invokevirtual 141	java/lang/Exception:printStackTrace	()V
+    //   436: aload 6
+    //   438: ifnull +33 -> 471
+    //   441: aload_0
+    //   442: ldc_w 366
+    //   445: iconst_2
+    //   446: anewarray 289	java/lang/Object
+    //   449: dup
+    //   450: iconst_0
+    //   451: ldc_w 368
+    //   454: aastore
+    //   455: dup
+    //   456: iconst_1
+    //   457: aload 6
+    //   459: invokevirtual 369	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   462: aastore
+    //   463: invokestatic 297	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   466: invokevirtual 300	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:callJs	(Ljava/lang/String;)V
+    //   469: iconst_1
+    //   470: ireturn
+    //   471: iconst_0
+    //   472: ireturn
+    //   473: iconst_0
+    //   474: istore 4
+    //   476: goto -181 -> 295
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	490	0	this	MusicGeneWebViewPlugin
-    //   36	446	1	i	int
-    //   189	298	2	j	int
-    //   41	351	3	k	int
-    //   43	335	4	m	int
-    //   5	293	5	bool1	boolean
-    //   1	257	6	bool2	boolean
-    //   18	453	7	localObject1	Object
-    //   52	58	8	str1	String
-    //   250	3	8	localException1	Exception
-    //   300	8	8	localException2	Exception
-    //   324	10	8	localException3	Exception
-    //   343	70	8	localObject2	Object
-    //   441	1	8	localException4	Exception
-    //   446	1	8	localException5	Exception
-    //   453	1	8	localException6	Exception
-    //   475	1	8	str2	String
-    //   47	270	9	localObject3	Object
-    //   88	258	10	localObject4	Object
-    //   357	3	10	localException7	Exception
-    //   230	9	11	str3	String
+    //   0	479	0	this	MusicGeneWebViewPlugin
+    //   32	379	1	i	int
+    //   48	317	2	j	int
+    //   42	337	3	k	int
+    //   109	366	4	m	int
+    //   14	386	5	localObject1	Object
+    //   429	3	5	localException1	Exception
+    //   52	1	6	localException2	Exception
+    //   57	1	6	localException3	Exception
+    //   62	8	6	localException4	Exception
+    //   85	373	6	localObject2	Object
+    //   128	48	7	localObject3	Object
+    //   187	1	7	localException5	Exception
+    //   195	9	7	localException6	Exception
+    //   210	62	7	localObject4	Object
+    //   285	3	7	localException7	Exception
+    //   301	41	7	localJSONObject	JSONObject
+    //   45	281	8	localObject5	Object
+    //   8	336	9	str	String
+    //   124	41	10	localBundle	Bundle
     // Exception table:
     //   from	to	target	type
-    //   190	198	250	java/lang/Exception
-    //   203	210	250	java/lang/Exception
-    //   210	247	250	java/lang/Exception
-    //   359	364	250	java/lang/Exception
-    //   367	418	250	java/lang/Exception
-    //   418	438	250	java/lang/Exception
-    //   14	20	300	java/lang/Exception
-    //   61	75	324	java/lang/Exception
-    //   157	175	357	java/lang/Exception
-    //   180	190	357	java/lang/Exception
-    //   79	90	441	java/lang/Exception
-    //   99	109	441	java/lang/Exception
-    //   113	130	441	java/lang/Exception
-    //   20	37	446	java/lang/Exception
-    //   37	42	453	java/lang/Exception
+    //   38	43	52	java/lang/Exception
+    //   16	33	57	java/lang/Exception
+    //   10	16	62	java/lang/Exception
+    //   115	126	187	java/lang/Exception
+    //   146	156	187	java/lang/Exception
+    //   160	177	187	java/lang/Exception
+    //   98	111	195	java/lang/Exception
+    //   248	266	285	java/lang/Exception
+    //   271	282	285	java/lang/Exception
+    //   287	292	429	java/lang/Exception
+    //   295	303	429	java/lang/Exception
+    //   308	315	429	java/lang/Exception
+    //   315	352	429	java/lang/Exception
+    //   355	405	429	java/lang/Exception
+    //   405	426	429	java/lang/Exception
   }
   
   private boolean a(int paramInt)
   {
-    boolean bool2 = false;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Boolean)
+    IQQPlayerService localIQQPlayerService = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
+    int i;
+    int j;
+    JSONObject localJSONObject;
+    if ((this.jdField_a_of_type_Boolean) && (localIQQPlayerService != null))
     {
-      bool1 = bool2;
-      if (localObject == null) {}
-    }
-    try
-    {
-      i = ((IQQPlayerService)localObject).e();
-      int j = b(paramInt);
-      localObject = new JSONObject();
+      try
+      {
+        i = localIQQPlayerService.e();
+      }
+      catch (RemoteException localRemoteException)
+      {
+        localRemoteException.printStackTrace();
+        i = 0;
+      }
+      j = b(paramInt);
+      localJSONObject = new JSONObject();
       try
       {
         Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
-        if (localBundle == null) {
-          break label182;
-        }
-        paramInt = localBundle.getInt("BUNDLE_KEY_PLAY_TYPE", 0);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-          paramInt = 0;
-          continue;
-          localRemoteException.put("code", "0");
+        if (localBundle != null) {
+          paramInt = localBundle.getInt("BUNDLE_KEY_PLAY_TYPE", 0);
         }
       }
-      catch (JSONException localJSONException)
+      catch (JSONException localJSONException) {}catch (Exception localException)
       {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
-      ((JSONObject)localObject).put("state", j);
-      ((JSONObject)localObject).put("index", i);
-      ((JSONObject)localObject).put("playType", paramInt);
-      if (b())
-      {
-        ((JSONObject)localObject).put("code", "0");
-        bool1 = bool2;
-        if (localObject != null)
-        {
-          callJs(String.format("try{qqmusicBridge.appTrigger('%s', %s);}catch(e){}", new Object[] { "CALLPAGE_SONG_STATE_CHANGE", ((JSONObject)localObject).toString() }));
-          bool1 = true;
-        }
-        return bool1;
+        localException.printStackTrace();
       }
     }
-    catch (RemoteException localRemoteException)
+    for (;;)
     {
-      for (;;)
+      localJSONObject.put("state", j);
+      localJSONObject.put("index", i);
+      localJSONObject.put("playType", paramInt);
+      boolean bool = b();
+      if (bool)
       {
-        localRemoteException.printStackTrace();
-        int i = 0;
-        continue;
-        label182:
-        paramInt = 0;
+        localJSONObject.put("code", "0");
       }
+      else
+      {
+        localJSONObject.put("code", "0");
+        break label173;
+        localException.printStackTrace();
+      }
+      label173:
+      callJs(String.format("try{qqmusicBridge.appTrigger('%s', %s);}catch(e){}", new Object[] { "CALLPAGE_SONG_STATE_CHANGE", localJSONObject.toString() }));
+      return true;
+      return false;
+      paramInt = 0;
     }
   }
   
   public static boolean a(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     try
     {
-      if (TextUtils.isEmpty(paramString)) {
-        return bool1;
-      }
-      paramString = Uri.parse(paramString);
-      String str = paramString.getScheme();
-      if (("http".equalsIgnoreCase(str)) || ("https".equalsIgnoreCase(str)))
+      if (!TextUtils.isEmpty(paramString))
       {
-        paramString = paramString.getHost();
-        bool1 = bool2;
-        if (TextUtils.isEmpty(paramString)) {
-          return bool1;
-        }
-        if ((!paramString.contains("y.qq.com")) && (!paramString.contains("music.qq.com")) && (!paramString.contains("imgcache.gtimg.cn")) && (!paramString.contains("article.mp.qq.com")))
+        paramString = Uri.parse(paramString);
+        localObject = paramString.getScheme();
+        if ((!"http".equalsIgnoreCase((String)localObject)) && (!"https".equalsIgnoreCase((String)localObject)))
         {
-          bool1 = bool2;
-          if (!paramString.contains("post.mp.qq.com")) {
-            return bool1;
+          QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.isURLBelongToQQMusic urlString is not url!");
+          return false;
+        }
+        paramString = paramString.getHost();
+        if (!TextUtils.isEmpty(paramString)) {
+          if ((!paramString.contains("y.qq.com")) && (!paramString.contains("music.qq.com")) && (!paramString.contains("imgcache.gtimg.cn")) && (!paramString.contains("article.mp.qq.com")))
+          {
+            boolean bool = paramString.contains("post.mp.qq.com");
+            if (!bool) {}
+          }
+          else
+          {
+            return true;
           }
         }
-      }
-      else
-      {
-        QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.isURLBelongToQQMusic urlString is not url!");
-        return false;
       }
     }
     catch (Exception paramString)
     {
-      QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.isURLBelongToQQMusic exception: " + paramString);
-      return false;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("MusicGeneWebViewPlugin.isURLBelongToQQMusic exception: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("MusicGeneWebViewPlugin", 1, ((StringBuilder)localObject).toString());
     }
-    bool1 = true;
-    return bool1;
+    return false;
   }
   
   private SongInfo[] a(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    while (!paramJSONObject.has("list")) {
+    Object localObject = null;
+    if (paramJSONObject == null) {
       return null;
     }
-    JSONArray localJSONArray = paramJSONObject.getJSONArray("list");
-    SongInfo[] arrayOfSongInfo = new SongInfo[localJSONArray.length()];
-    int i = 0;
-    if (i < localJSONArray.length())
+    if (paramJSONObject.has("list"))
     {
-      JSONObject localJSONObject = (JSONObject)localJSONArray.get(i);
-      label80:
-      SongInfo localSongInfo;
-      String str;
-      label108:
-      long l;
-      if (localJSONObject != null)
+      JSONArray localJSONArray = paramJSONObject.getJSONArray("list");
+      SongInfo[] arrayOfSongInfo = new SongInfo[localJSONArray.length()];
+      int i = 0;
+      for (;;)
       {
-        if (!localJSONObject.has("songId")) {
-          break label321;
+        localObject = arrayOfSongInfo;
+        if (i >= localJSONArray.length()) {
+          break;
         }
-        paramJSONObject = localJSONObject.getString("songId");
-        localSongInfo = new SongInfo();
-        if (!localJSONObject.has("songName")) {
-          break label327;
+        JSONObject localJSONObject = (JSONObject)localJSONArray.get(i);
+        if (localJSONObject != null)
+        {
+          boolean bool = localJSONObject.has("songId");
+          String str = "";
+          if (bool) {
+            paramJSONObject = localJSONObject.getString("songId");
+          } else {
+            paramJSONObject = "";
+          }
+          SongInfo localSongInfo = new SongInfo();
+          if (localJSONObject.has("songName")) {
+            localObject = localJSONObject.getString("songName");
+          } else {
+            localObject = "";
+          }
+          localSongInfo.c = ((String)localObject);
+          if (localJSONObject.has("playUrl")) {
+            localObject = localJSONObject.getString("playUrl");
+          } else {
+            localObject = "";
+          }
+          localSongInfo.b = ((String)localObject);
+          if (localJSONObject.has("albumName")) {
+            localObject = localJSONObject.getString("albumName");
+          } else {
+            localObject = "";
+          }
+          localSongInfo.d = ((String)localObject);
+          if (localJSONObject.has("albumImg")) {
+            localObject = localJSONObject.getString("albumImg");
+          } else {
+            localObject = "";
+          }
+          localSongInfo.e = ((String)localObject);
+          if (localJSONObject.has("songPage")) {
+            localObject = localJSONObject.getString("songPage");
+          } else {
+            localObject = "";
+          }
+          localSongInfo.f = ((String)localObject);
+          long l;
+          if (TextUtils.isEmpty(paramJSONObject)) {
+            l = 0L;
+          } else {
+            l = Long.parseLong(paramJSONObject);
+          }
+          localSongInfo.jdField_a_of_type_Long = l;
+          if (localJSONObject.has("albumName")) {
+            paramJSONObject = localJSONObject.getString("albumName");
+          } else {
+            paramJSONObject = "";
+          }
+          localSongInfo.g = paramJSONObject;
+          if (localJSONObject.has("singerName")) {
+            paramJSONObject = localJSONObject.getString("singerName");
+          } else {
+            paramJSONObject = "";
+          }
+          localSongInfo.h = paramJSONObject;
+          paramJSONObject = str;
+          if (localJSONObject.has("songmid")) {
+            paramJSONObject = localJSONObject.getString("songmid");
+          }
+          localSongInfo.jdField_a_of_type_JavaLangString = paramJSONObject;
+          arrayOfSongInfo[i] = localSongInfo;
         }
-        str = localJSONObject.getString("songName");
-        localSongInfo.c = str;
-        if (!localJSONObject.has("playUrl")) {
-          break label334;
-        }
-        str = localJSONObject.getString("playUrl");
-        label134:
-        localSongInfo.b = str;
-        if (!localJSONObject.has("albumName")) {
-          break label341;
-        }
-        str = localJSONObject.getString("albumName");
-        label160:
-        localSongInfo.d = str;
-        if (!localJSONObject.has("albumImg")) {
-          break label348;
-        }
-        str = localJSONObject.getString("albumImg");
-        label186:
-        localSongInfo.e = str;
-        if (!localJSONObject.has("songPage")) {
-          break label355;
-        }
-        str = localJSONObject.getString("songPage");
-        label212:
-        localSongInfo.f = str;
-        if (!TextUtils.isEmpty(paramJSONObject)) {
-          break label362;
-        }
-        l = 0L;
-        label228:
-        localSongInfo.jdField_a_of_type_Long = l;
-        if (!localJSONObject.has("albumName")) {
-          break label370;
-        }
-        paramJSONObject = localJSONObject.getString("albumName");
-        label252:
-        localSongInfo.g = paramJSONObject;
-        if (!localJSONObject.has("singerName")) {
-          break label376;
-        }
-        paramJSONObject = localJSONObject.getString("singerName");
-        label276:
-        localSongInfo.h = paramJSONObject;
-        if (!localJSONObject.has("songmid")) {
-          break label382;
-        }
-      }
-      label321:
-      label327:
-      label334:
-      label341:
-      label348:
-      label355:
-      label362:
-      label370:
-      label376:
-      label382:
-      for (paramJSONObject = localJSONObject.getString("songmid");; paramJSONObject = "")
-      {
-        localSongInfo.jdField_a_of_type_JavaLangString = paramJSONObject;
-        arrayOfSongInfo[i] = localSongInfo;
         i += 1;
-        break;
-        paramJSONObject = "";
-        break label80;
-        str = "";
-        break label108;
-        str = "";
-        break label134;
-        str = "";
-        break label160;
-        str = "";
-        break label186;
-        str = "";
-        break label212;
-        l = Long.parseLong(paramJSONObject);
-        break label228;
-        paramJSONObject = "";
-        break label252;
-        paramJSONObject = "";
-        break label276;
       }
     }
-    return arrayOfSongInfo;
+    return localObject;
   }
   
   private int b(int paramInt)
   {
+    int i = 0;
     switch (paramInt)
     {
-    case 0: 
-    case 4: 
-    case 5: 
-    case 7: 
     default: 
       return 0;
+    case 6: 
+      return -1001;
+    case 3: 
+      return 2;
     case 2: 
       return 1;
     case 1: 
-      return 4;
-    case 3: 
-      return 2;
+      i = 4;
     }
-    return -1001;
+    return i;
   }
   
   private void b()
@@ -752,27 +724,24 @@ public class MusicGeneWebViewPlugin
   
   private boolean b()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService != null) {}
-    try
-    {
-      String str1 = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
-      String str2 = a();
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(str1))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
+    if (localObject != null) {
+      try
       {
-        boolean bool3 = str1.equals(str2);
-        bool1 = bool2;
-        if (bool3) {
-          bool1 = true;
+        localObject = ((IQQPlayerService)localObject).a();
+        String str = a();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          boolean bool = ((String)localObject).equals(str);
+          if (bool) {
+            return true;
+          }
         }
       }
-      return bool1;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      localRemoteException.printStackTrace();
+      catch (RemoteException localRemoteException)
+      {
+        localRemoteException.printStackTrace();
+      }
     }
     return false;
   }
@@ -784,7 +753,16 @@ public class MusicGeneWebViewPlugin
   
   private boolean c()
   {
-    return (1 == this.c) || (2 == this.c);
+    int i = this.c;
+    boolean bool = true;
+    if (1 != i)
+    {
+      if (2 == i) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   private void d()
@@ -803,13 +781,13 @@ public class MusicGeneWebViewPlugin
         QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.bindQQPlayerService activity is null!");
         return;
       }
+      QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.bindQQPlayerService mRuntime is null!");
+      return;
     }
     catch (Exception localException)
     {
       QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.bindQQPlayerService exception", localException);
-      return;
     }
-    QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.bindQQPlayerService mRuntime is null!");
   }
   
   private void e()
@@ -833,7 +811,7 @@ public class MusicGeneWebViewPlugin
     return 3L;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if ((paramLong == 8589934594L) && (this.jdField_a_of_type_AndroidContentContext != null))
     {
@@ -844,1624 +822,725 @@ public class MusicGeneWebViewPlugin
     return super.handleEvent(paramString, paramLong, paramMap);
   }
   
-  /* Error */
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    // Byte code:
-    //   0: new 537	java/util/ArrayList
-    //   3: dup
-    //   4: aload 5
-    //   6: invokestatic 543	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
-    //   9: invokespecial 546	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
-    //   12: astore 20
-    //   14: ldc 79
-    //   16: aload_3
-    //   17: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   20: ifeq +2959 -> 2979
-    //   23: ldc_w 548
-    //   26: aload 4
-    //   28: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   31: ifeq +2741 -> 2772
-    //   34: aload 20
-    //   36: iconst_0
-    //   37: invokevirtual 549	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   40: checkcast 293	java/lang/String
-    //   43: astore_2
-    //   44: new 176	org/json/JSONObject
-    //   47: dup
-    //   48: aload_2
-    //   49: invokespecial 323	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   52: astore_2
-    //   53: aload_2
-    //   54: ldc_w 551
-    //   57: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   60: ifeq +108 -> 168
-    //   63: aload_2
-    //   64: ldc_w 551
-    //   67: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   70: astore_3
-    //   71: aload_2
-    //   72: ldc_w 285
-    //   75: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   78: ifeq +2974 -> 3052
-    //   81: aload_2
-    //   82: ldc_w 285
-    //   85: invokevirtual 555	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   88: astore_2
-    //   89: aload_2
-    //   90: ifnull +65 -> 155
-    //   93: aload_2
-    //   94: ldc_w 369
-    //   97: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   100: ifeq +55 -> 155
-    //   103: aload_0
-    //   104: aload_2
-    //   105: ldc_w 369
-    //   108: invokevirtual 558	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   111: putfield 45	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:c	I
-    //   114: ldc_w 560
-    //   117: aload_3
-    //   118: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   121: istore 13
-    //   123: iload 13
-    //   125: ifeq +86 -> 211
-    //   128: ldc 154
-    //   130: iconst_1
-    //   131: ldc_w 562
-    //   134: invokestatic 429	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   137: aload_0
-    //   138: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
-    //   141: ifnonnull +29 -> 170
-    //   144: aload_0
-    //   145: aload_1
-    //   146: putfield 47	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener	Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;
-    //   149: aload_0
-    //   150: invokespecial 564	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:d	()V
-    //   153: iconst_1
-    //   154: ireturn
-    //   155: aload_0
-    //   156: iconst_0
-    //   157: putfield 45	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:c	I
-    //   160: goto -46 -> 114
-    //   163: astore_1
-    //   164: aload_1
-    //   165: invokevirtual 141	java/lang/Exception:printStackTrace	()V
-    //   168: iconst_1
-    //   169: ireturn
-    //   170: new 176	org/json/JSONObject
-    //   173: dup
-    //   174: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   177: astore_2
-    //   178: aload_2
-    //   179: ldc_w 279
-    //   182: ldc_w 281
-    //   185: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   188: pop
-    //   189: aload_1
-    //   190: aload_2
-    //   191: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   194: goto -41 -> 153
-    //   197: astore_1
-    //   198: ldc 154
-    //   200: iconst_1
-    //   201: ldc_w 571
-    //   204: aload_1
-    //   205: invokestatic 498	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   208: goto -55 -> 153
-    //   211: aload_0
-    //   212: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
-    //   215: astore 21
-    //   217: aload 21
-    //   219: ifnonnull +5 -> 224
-    //   222: iconst_0
-    //   223: ireturn
-    //   224: ldc_w 573
-    //   227: aload_3
-    //   228: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   231: ifeq +419 -> 650
-    //   234: ldc_w 575
-    //   237: astore_3
-    //   238: aload_0
-    //   239: aload_2
-    //   240: invokespecial 577	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	(Lorg/json/JSONObject;)[Lcom/tencent/mobileqq/music/SongInfo;
-    //   243: astore 5
-    //   245: aload 5
-    //   247: ifnull +358 -> 605
-    //   250: iconst_0
-    //   251: istore 8
-    //   253: ldc_w 281
-    //   256: astore_3
-    //   257: lconst_0
-    //   258: lstore 14
-    //   260: aconst_null
-    //   261: astore 4
-    //   263: aload_2
-    //   264: ldc_w 374
-    //   267: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   270: ifeq +12 -> 282
-    //   273: aload_2
-    //   274: ldc_w 374
-    //   277: invokevirtual 558	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   280: istore 8
-    //   282: aload_2
-    //   283: ldc_w 361
-    //   286: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   289: ifeq +11 -> 300
-    //   292: aload_2
-    //   293: ldc_w 361
-    //   296: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   299: astore_3
-    //   300: aload_2
-    //   301: ldc_w 579
-    //   304: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   307: ifeq +12 -> 319
-    //   310: aload_2
-    //   311: ldc_w 579
-    //   314: invokevirtual 582	org/json/JSONObject:getLong	(Ljava/lang/String;)J
-    //   317: lstore 14
-    //   319: aload_2
-    //   320: ldc_w 584
-    //   323: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   326: ifeq +11 -> 337
-    //   329: aload_2
-    //   330: ldc_w 584
-    //   333: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   336: pop
-    //   337: aload_2
-    //   338: ldc_w 437
-    //   341: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   344: ifeq +12 -> 356
-    //   347: aload_2
-    //   348: ldc_w 437
-    //   351: invokevirtual 441	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   354: astore 4
-    //   356: lload 14
-    //   358: invokestatic 588	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   361: astore 22
-    //   363: new 478	android/content/Intent
-    //   366: dup
-    //   367: aload_0
-    //   368: getfield 26	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   371: ldc_w 590
-    //   374: invokespecial 483	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   377: astore 20
-    //   379: ldc_w 592
-    //   382: iconst_1
-    //   383: anewarray 289	java/lang/Object
-    //   386: dup
-    //   387: iconst_0
-    //   388: aload 22
-    //   390: aastore
-    //   391: invokestatic 297	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   394: astore 23
-    //   396: aload 20
-    //   398: ldc_w 579
-    //   401: aload 22
-    //   403: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   406: pop
-    //   407: aload 20
-    //   409: ldc_w 594
-    //   412: aload 23
-    //   414: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   417: pop
-    //   418: aload 20
-    //   420: ldc_w 596
-    //   423: iconst_1
-    //   424: invokevirtual 599	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-    //   427: pop
-    //   428: aload_2
-    //   429: ldc_w 601
-    //   432: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   435: ifeq +31 -> 466
-    //   438: aload_2
-    //   439: ldc_w 601
-    //   442: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   445: astore 22
-    //   447: aload 22
-    //   449: invokestatic 390	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   452: ifne +14 -> 466
-    //   455: aload 20
-    //   457: ldc_w 594
-    //   460: aload 22
-    //   462: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   465: pop
-    //   466: new 321	android/os/Bundle
-    //   469: dup
-    //   470: invokespecial 602	android/os/Bundle:<init>	()V
-    //   473: astore 22
-    //   475: aload 22
-    //   477: ldc_w 604
-    //   480: lload 14
-    //   482: invokevirtual 608	android/os/Bundle:putLong	(Ljava/lang/String;J)V
-    //   485: aload 22
-    //   487: ldc_w 319
-    //   490: aload_3
-    //   491: invokevirtual 612	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   494: aload 22
-    //   496: ldc_w 325
-    //   499: aload_0
-    //   500: getfield 45	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:c	I
-    //   503: invokevirtual 616	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   506: aload 4
-    //   508: ifnull +16 -> 524
-    //   511: aload 22
-    //   513: ldc_w 618
-    //   516: aload 4
-    //   518: invokevirtual 619	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   521: invokevirtual 612	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   524: aload 22
-    //   526: ldc_w 285
-    //   529: aload_2
-    //   530: invokevirtual 352	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   533: invokevirtual 612	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   536: aload 21
-    //   538: aload 22
-    //   540: invokeinterface 622 2 0
-    //   545: aload 21
-    //   547: aload_0
-    //   548: getfield 59	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub	Lcom/tencent/mobileqq/music/IQQPlayerCallback$Stub;
-    //   551: invokeinterface 625 2 0
-    //   556: aload 20
-    //   558: ifnull +12 -> 570
-    //   561: aload 21
-    //   563: aload 20
-    //   565: invokeinterface 628 2 0
-    //   570: aload_0
-    //   571: invokespecial 148	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:c	()Z
-    //   574: ifeq +56 -> 630
-    //   577: aload 21
-    //   579: bipush 102
-    //   581: invokeinterface 631 2 0
-    //   586: aload 21
-    //   588: aload_0
-    //   589: invokespecial 459	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	()Ljava/lang/String;
-    //   592: aload 5
-    //   594: iload 8
-    //   596: invokeinterface 634 4 0
-    //   601: ldc_w 281
-    //   604: astore_3
-    //   605: new 176	org/json/JSONObject
-    //   608: dup
-    //   609: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   612: astore_2
-    //   613: aload_2
-    //   614: ldc_w 279
-    //   617: aload_3
-    //   618: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   621: pop
-    //   622: aload_1
-    //   623: aload_2
-    //   624: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   627: goto -459 -> 168
-    //   630: aload 21
-    //   632: bipush 103
-    //   634: invokeinterface 631 2 0
-    //   639: goto -53 -> 586
-    //   642: astore_2
-    //   643: aload_2
-    //   644: invokevirtual 141	java/lang/Exception:printStackTrace	()V
-    //   647: goto -46 -> 601
-    //   650: ldc_w 636
-    //   653: aload_3
-    //   654: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   657: ifeq +48 -> 705
-    //   660: aload_0
-    //   661: aload 21
-    //   663: invokeinterface 309 1 0
-    //   668: putfield 41	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_b_of_type_Int	I
-    //   671: aload 21
-    //   673: invokeinterface 638 1 0
-    //   678: new 176	org/json/JSONObject
-    //   681: dup
-    //   682: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   685: astore_2
-    //   686: aload_2
-    //   687: ldc_w 279
-    //   690: ldc_w 281
-    //   693: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   696: pop
-    //   697: aload_1
-    //   698: aload_2
-    //   699: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   702: goto -534 -> 168
-    //   705: ldc_w 640
-    //   708: aload_3
-    //   709: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   712: ifeq +37 -> 749
-    //   715: aload 21
-    //   717: invokeinterface 642 1 0
-    //   722: new 176	org/json/JSONObject
-    //   725: dup
-    //   726: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   729: astore_2
-    //   730: aload_2
-    //   731: ldc_w 279
-    //   734: ldc_w 281
-    //   737: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   740: pop
-    //   741: aload_1
-    //   742: aload_2
-    //   743: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   746: goto -578 -> 168
-    //   749: ldc_w 644
-    //   752: aload_3
-    //   753: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   756: ifeq +37 -> 793
-    //   759: aload 21
-    //   761: invokeinterface 645 1 0
-    //   766: new 176	org/json/JSONObject
-    //   769: dup
-    //   770: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   773: astore_2
-    //   774: aload_2
-    //   775: ldc_w 279
-    //   778: ldc_w 281
-    //   781: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   784: pop
-    //   785: aload_1
-    //   786: aload_2
-    //   787: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   790: goto -622 -> 168
-    //   793: ldc_w 647
-    //   796: aload_3
-    //   797: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   800: ifeq +37 -> 837
-    //   803: aload 21
-    //   805: invokeinterface 648 1 0
-    //   810: new 176	org/json/JSONObject
-    //   813: dup
-    //   814: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   817: astore_2
-    //   818: aload_2
-    //   819: ldc_w 279
-    //   822: ldc_w 281
-    //   825: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   828: pop
-    //   829: aload_1
-    //   830: aload_2
-    //   831: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   834: goto -666 -> 168
-    //   837: ldc_w 650
-    //   840: aload_3
-    //   841: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   844: ifeq +37 -> 881
-    //   847: aload 21
-    //   849: invokeinterface 652 1 0
-    //   854: new 176	org/json/JSONObject
-    //   857: dup
-    //   858: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   861: astore_2
-    //   862: aload_2
-    //   863: ldc_w 279
-    //   866: ldc_w 281
-    //   869: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   872: pop
-    //   873: aload_1
-    //   874: aload_2
-    //   875: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   878: goto -710 -> 168
-    //   881: ldc_w 654
-    //   884: aload_3
-    //   885: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   888: istore 13
-    //   890: iload 13
-    //   892: ifeq +431 -> 1323
-    //   895: aconst_null
-    //   896: astore_2
-    //   897: aload 21
-    //   899: invokeinterface 317 1 0
-    //   904: astore_3
-    //   905: aload_3
-    //   906: ifnull +2141 -> 3047
-    //   909: aload_3
-    //   910: astore_2
-    //   911: aload_3
-    //   912: ldc_w 285
-    //   915: invokevirtual 657	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
-    //   918: ifeq +2129 -> 3047
-    //   921: aload_3
-    //   922: astore_2
-    //   923: new 176	org/json/JSONObject
-    //   926: dup
-    //   927: aload_3
-    //   928: ldc_w 285
-    //   931: invokevirtual 322	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   934: invokespecial 323	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   937: astore 4
-    //   939: aload 4
-    //   941: astore_2
-    //   942: aload_3
-    //   943: astore 4
-    //   945: aload_2
-    //   946: ifnonnull +2096 -> 3042
-    //   949: new 176	org/json/JSONObject
-    //   952: dup
-    //   953: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   956: astore_3
-    //   957: aload_0
-    //   958: invokespecial 306	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	()Lcom/tencent/mobileqq/music/SongInfo;
-    //   961: astore 20
-    //   963: aload 4
-    //   965: ifnull +2092 -> 3057
-    //   968: aload 4
-    //   970: ldc_w 325
-    //   973: iconst_0
-    //   974: invokevirtual 329	android/os/Bundle:getInt	(Ljava/lang/String;I)I
-    //   977: istore 8
-    //   979: aload 4
-    //   981: ifnull +2082 -> 3063
-    //   984: aload 4
-    //   986: ldc_w 604
-    //   989: invokevirtual 657	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
-    //   992: ifeq +2071 -> 3063
-    //   995: aload 4
-    //   997: ldc_w 604
-    //   1000: invokevirtual 658	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   1003: lstore 14
-    //   1005: aload 20
-    //   1007: ifnull +292 -> 1299
-    //   1010: aconst_null
-    //   1011: astore 5
-    //   1013: aload 5
-    //   1015: astore_2
-    //   1016: aload 4
-    //   1018: ifnull +51 -> 1069
-    //   1021: aload 5
-    //   1023: astore_2
-    //   1024: aload 4
-    //   1026: ldc_w 618
-    //   1029: invokevirtual 657	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
-    //   1032: ifeq +37 -> 1069
-    //   1035: aload_0
-    //   1036: new 167	org/json/JSONArray
-    //   1039: dup
-    //   1040: aload 4
-    //   1042: ldc_w 618
-    //   1045: invokevirtual 322	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1048: invokespecial 659	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   1051: invokespecial 661	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	(Lorg/json/JSONArray;)Ljava/util/HashMap;
-    //   1054: aload 20
-    //   1056: getfield 208	com/tencent/mobileqq/music/SongInfo:jdField_a_of_type_Long	J
-    //   1059: invokestatic 588	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1062: invokevirtual 664	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1065: checkcast 176	org/json/JSONObject
-    //   1068: astore_2
-    //   1069: aload_2
-    //   1070: ifnonnull +1969 -> 3039
-    //   1073: aload_0
-    //   1074: aload 20
-    //   1076: invokespecial 331	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	(Lcom/tencent/mobileqq/music/SongInfo;)Lorg/json/JSONObject;
-    //   1079: astore_2
-    //   1080: aload_2
-    //   1081: ifnull +60 -> 1141
-    //   1084: aload_2
-    //   1085: invokevirtual 335	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   1088: astore 4
-    //   1090: aload 4
-    //   1092: invokeinterface 340 1 0
-    //   1097: ifeq +44 -> 1141
-    //   1100: aload 4
-    //   1102: invokeinterface 344 1 0
-    //   1107: checkcast 293	java/lang/String
-    //   1110: astore 5
-    //   1112: aload_3
-    //   1113: aload 5
-    //   1115: aload_2
-    //   1116: aload 5
-    //   1118: invokevirtual 347	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
-    //   1121: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1124: pop
-    //   1125: goto -35 -> 1090
-    //   1128: astore_3
-    //   1129: aload_3
-    //   1130: invokevirtual 141	java/lang/Exception:printStackTrace	()V
-    //   1133: aload_2
-    //   1134: astore 4
-    //   1136: aconst_null
-    //   1137: astore_2
-    //   1138: goto -193 -> 945
-    //   1141: aload_0
-    //   1142: invokespecial 311	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	()I
-    //   1145: i2l
-    //   1146: lstore 18
-    //   1148: aload 21
-    //   1150: invokeinterface 312 1 0
-    //   1155: istore 9
-    //   1157: aload_0
-    //   1158: iload 9
-    //   1160: invokespecial 314	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:b	(I)I
-    //   1163: istore 10
-    //   1165: iload 9
-    //   1167: iconst_3
-    //   1168: if_icmpne +104 -> 1272
-    //   1171: aload_0
-    //   1172: getfield 41	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_b_of_type_Int	I
-    //   1175: i2l
-    //   1176: lstore 16
-    //   1178: aload_0
-    //   1179: invokespecial 376	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:b	()Z
-    //   1182: ifeq +103 -> 1285
-    //   1185: aload_3
-    //   1186: ldc_w 279
-    //   1189: ldc_w 281
-    //   1192: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1195: pop
-    //   1196: aload_3
-    //   1197: ldc_w 354
-    //   1200: lload 16
-    //   1202: ldc2_w 234
-    //   1205: ldiv
-    //   1206: invokevirtual 211	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   1209: pop
-    //   1210: aload_3
-    //   1211: ldc_w 359
-    //   1214: lload 18
-    //   1216: ldc2_w 234
-    //   1219: ldiv
-    //   1220: invokevirtual 211	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   1223: pop
-    //   1224: aload_3
-    //   1225: ldc_w 367
-    //   1228: iload 10
-    //   1230: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1233: pop
-    //   1234: aload_3
-    //   1235: ldc_w 369
-    //   1238: iload 8
-    //   1240: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1243: pop
-    //   1244: aload_3
-    //   1245: ldc_w 579
-    //   1248: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   1251: ifne +13 -> 1264
-    //   1254: aload_3
-    //   1255: ldc_w 579
-    //   1258: lload 14
-    //   1260: invokevirtual 211	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   1263: pop
-    //   1264: aload_1
-    //   1265: aload_3
-    //   1266: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   1269: goto -1101 -> 168
-    //   1272: aload 21
-    //   1274: invokeinterface 309 1 0
-    //   1279: i2l
-    //   1280: lstore 16
-    //   1282: goto -104 -> 1178
-    //   1285: aload_3
-    //   1286: ldc_w 279
-    //   1289: ldc_w 281
-    //   1292: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1295: pop
-    //   1296: goto -100 -> 1196
-    //   1299: aload_3
-    //   1300: ldc_w 279
-    //   1303: ldc_w 575
-    //   1306: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1309: pop
-    //   1310: aload_3
-    //   1311: ldc_w 369
-    //   1314: iload 8
-    //   1316: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1319: pop
-    //   1320: goto -76 -> 1244
-    //   1323: ldc_w 666
-    //   1326: aload_3
-    //   1327: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1330: istore 13
-    //   1332: iload 13
-    //   1334: ifeq +532 -> 1866
-    //   1337: aconst_null
-    //   1338: astore_2
-    //   1339: aload 21
-    //   1341: invokeinterface 317 1 0
-    //   1346: astore_3
-    //   1347: aload_3
-    //   1348: ifnull +1686 -> 3034
-    //   1351: aload_3
-    //   1352: astore_2
-    //   1353: aload_3
-    //   1354: ldc_w 285
-    //   1357: invokevirtual 657	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
-    //   1360: ifeq +1674 -> 3034
-    //   1363: aload_3
-    //   1364: astore_2
-    //   1365: new 176	org/json/JSONObject
-    //   1368: dup
-    //   1369: aload_3
-    //   1370: ldc_w 285
-    //   1373: invokevirtual 322	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1376: invokespecial 323	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   1379: astore 4
-    //   1381: aload 4
-    //   1383: astore_2
-    //   1384: aload_3
-    //   1385: astore 5
-    //   1387: aload_2
-    //   1388: ifnonnull +1640 -> 3028
-    //   1391: new 176	org/json/JSONObject
-    //   1394: dup
-    //   1395: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   1398: astore 4
-    //   1400: aload 5
-    //   1402: ifnull +1680 -> 3082
-    //   1405: aload 5
-    //   1407: ldc_w 325
-    //   1410: iconst_0
-    //   1411: invokevirtual 329	android/os/Bundle:getInt	(Ljava/lang/String;I)I
-    //   1414: istore 11
-    //   1416: aload 5
-    //   1418: ifnull +1670 -> 3088
-    //   1421: aload 5
-    //   1423: ldc_w 604
-    //   1426: invokevirtual 657	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
-    //   1429: ifeq +1659 -> 3088
-    //   1432: aload 5
-    //   1434: ldc_w 604
-    //   1437: invokevirtual 658	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   1440: lstore 14
-    //   1442: aconst_null
-    //   1443: astore 20
-    //   1445: ldc_w 281
-    //   1448: astore_3
-    //   1449: aload 5
-    //   1451: ifnull +1571 -> 3022
-    //   1454: aload 5
-    //   1456: ldc_w 319
-    //   1459: invokevirtual 657	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
-    //   1462: ifeq +1632 -> 3094
-    //   1465: aload 5
-    //   1467: ldc_w 319
-    //   1470: invokevirtual 322	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1473: astore_2
-    //   1474: aload_2
-    //   1475: astore_3
-    //   1476: aload 5
-    //   1478: ldc_w 618
-    //   1481: invokevirtual 657	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
-    //   1484: ifeq +1538 -> 3022
-    //   1487: new 167	org/json/JSONArray
-    //   1490: dup
-    //   1491: aload 5
-    //   1493: ldc_w 618
-    //   1496: invokevirtual 322	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1499: invokespecial 659	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   1502: astore 5
-    //   1504: aload_2
-    //   1505: astore_3
-    //   1506: aload 5
-    //   1508: astore_2
-    //   1509: iconst_0
-    //   1510: istore 12
-    //   1512: iconst_0
-    //   1513: istore 10
-    //   1515: iconst_0
-    //   1516: istore 8
-    //   1518: iconst_0
-    //   1519: istore 9
-    //   1521: aload_2
-    //   1522: ifnonnull +249 -> 1771
-    //   1525: new 167	org/json/JSONArray
-    //   1528: dup
-    //   1529: invokespecial 667	org/json/JSONArray:<init>	()V
-    //   1532: astore_2
-    //   1533: aload 21
-    //   1535: invokeinterface 670 1 0
-    //   1540: astore 5
-    //   1542: aload_0
-    //   1543: invokespecial 306	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	()Lcom/tencent/mobileqq/music/SongInfo;
-    //   1546: astore 20
-    //   1548: iload 8
-    //   1550: istore 10
-    //   1552: aload 5
-    //   1554: ifnull +1547 -> 3101
-    //   1557: iconst_0
-    //   1558: istore 8
-    //   1560: iload 9
-    //   1562: istore 10
-    //   1564: iload 8
-    //   1566: aload 5
-    //   1568: arraylength
-    //   1569: if_icmpge +1532 -> 3101
-    //   1572: aload 5
-    //   1574: iload 8
-    //   1576: aaload
-    //   1577: astore 22
-    //   1579: iload 9
-    //   1581: istore 10
-    //   1583: aload 22
-    //   1585: ifnull +1484 -> 3069
-    //   1588: aload_2
-    //   1589: iload 8
-    //   1591: aload_0
-    //   1592: aload 22
-    //   1594: invokespecial 331	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	(Lcom/tencent/mobileqq/music/SongInfo;)Lorg/json/JSONObject;
-    //   1597: invokevirtual 673	org/json/JSONArray:put	(ILjava/lang/Object;)Lorg/json/JSONArray;
-    //   1600: pop
-    //   1601: iload 9
-    //   1603: istore 10
-    //   1605: aload 20
-    //   1607: ifnull +1462 -> 3069
-    //   1610: iload 9
-    //   1612: istore 10
-    //   1614: aload 22
-    //   1616: getfield 208	com/tencent/mobileqq/music/SongInfo:jdField_a_of_type_Long	J
-    //   1619: aload 20
-    //   1621: getfield 208	com/tencent/mobileqq/music/SongInfo:jdField_a_of_type_Long	J
-    //   1624: lcmp
-    //   1625: ifne +1444 -> 3069
-    //   1628: iload 8
-    //   1630: istore 10
-    //   1632: goto +1437 -> 3069
-    //   1635: astore_3
-    //   1636: aload_3
-    //   1637: invokevirtual 141	java/lang/Exception:printStackTrace	()V
-    //   1640: aload_2
-    //   1641: astore 5
-    //   1643: aconst_null
-    //   1644: astore_2
-    //   1645: goto -258 -> 1387
-    //   1648: aload 4
-    //   1650: ldc_w 374
-    //   1653: iload 10
-    //   1655: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1658: pop
-    //   1659: aload 4
-    //   1661: ldc_w 367
-    //   1664: aload_0
-    //   1665: aload 21
-    //   1667: invokeinterface 312 1 0
-    //   1672: invokespecial 314	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:b	(I)I
-    //   1675: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1678: pop
-    //   1679: aload 4
-    //   1681: ldc_w 361
-    //   1684: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   1687: ifne +13 -> 1700
-    //   1690: aload 4
-    //   1692: ldc_w 361
-    //   1695: aload_3
-    //   1696: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1699: pop
-    //   1700: aload 4
-    //   1702: ldc_w 437
-    //   1705: aload_2
-    //   1706: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1709: pop
-    //   1710: aload_0
-    //   1711: invokespecial 376	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:b	()Z
-    //   1714: ifeq +137 -> 1851
-    //   1717: aload 4
-    //   1719: ldc_w 279
-    //   1722: ldc_w 281
-    //   1725: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1728: pop
-    //   1729: aload 4
-    //   1731: ldc_w 579
-    //   1734: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   1737: ifne +14 -> 1751
-    //   1740: aload 4
-    //   1742: ldc_w 579
-    //   1745: lload 14
-    //   1747: invokevirtual 211	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   1750: pop
-    //   1751: aload 4
-    //   1753: ldc_w 369
-    //   1756: iload 11
-    //   1758: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1761: pop
-    //   1762: aload_1
-    //   1763: aload 4
-    //   1765: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   1768: goto -1600 -> 168
-    //   1771: aload 21
-    //   1773: invokeinterface 670 1 0
-    //   1778: astore 5
-    //   1780: aload_0
-    //   1781: invokespecial 306	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	()Lcom/tencent/mobileqq/music/SongInfo;
-    //   1784: astore 20
-    //   1786: aload 5
-    //   1788: ifnull +1231 -> 3019
-    //   1791: iconst_0
-    //   1792: istore 8
-    //   1794: iload 12
-    //   1796: istore 9
-    //   1798: iload 9
-    //   1800: istore 10
-    //   1802: iload 8
-    //   1804: aload 5
-    //   1806: arraylength
-    //   1807: if_icmpge +1212 -> 3019
-    //   1810: aload 5
-    //   1812: iload 8
-    //   1814: aaload
-    //   1815: astore 22
-    //   1817: iload 9
-    //   1819: istore 10
-    //   1821: aload 22
-    //   1823: ifnull +1281 -> 3104
-    //   1826: iload 9
-    //   1828: istore 10
-    //   1830: aload 22
-    //   1832: getfield 208	com/tencent/mobileqq/music/SongInfo:jdField_a_of_type_Long	J
-    //   1835: aload 20
-    //   1837: getfield 208	com/tencent/mobileqq/music/SongInfo:jdField_a_of_type_Long	J
-    //   1840: lcmp
-    //   1841: ifne +1263 -> 3104
-    //   1844: iload 8
-    //   1846: istore 10
-    //   1848: goto +1256 -> 3104
-    //   1851: aload 4
-    //   1853: ldc_w 279
-    //   1856: ldc_w 281
-    //   1859: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1862: pop
-    //   1863: goto -134 -> 1729
-    //   1866: ldc_w 675
-    //   1869: aload_3
-    //   1870: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1873: ifeq +78 -> 1951
-    //   1876: bipush 103
-    //   1878: istore 9
-    //   1880: iload 9
-    //   1882: istore 8
-    //   1884: aload_2
-    //   1885: ifnull +26 -> 1911
-    //   1888: iload 9
-    //   1890: istore 8
-    //   1892: aload_2
-    //   1893: ldc_w 677
-    //   1896: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   1899: ifeq +12 -> 1911
-    //   1902: aload_2
-    //   1903: ldc_w 677
-    //   1906: invokevirtual 558	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   1909: istore 8
-    //   1911: aload 21
-    //   1913: aload_0
-    //   1914: iload 8
-    //   1916: invokespecial 679	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	(I)I
-    //   1919: invokeinterface 631 2 0
-    //   1924: new 176	org/json/JSONObject
-    //   1927: dup
-    //   1928: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   1931: astore_2
-    //   1932: aload_2
-    //   1933: ldc_w 279
-    //   1936: ldc_w 281
-    //   1939: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1942: pop
-    //   1943: aload_1
-    //   1944: aload_2
-    //   1945: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   1948: goto -1780 -> 168
-    //   1951: ldc_w 681
-    //   1954: aload_3
-    //   1955: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1958: ifeq +108 -> 2066
-    //   1961: aload_2
-    //   1962: ifnull +1051 -> 3013
-    //   1965: aload_2
-    //   1966: ldc_w 683
-    //   1969: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   1972: ifeq +1041 -> 3013
-    //   1975: aload_2
-    //   1976: ldc_w 683
-    //   1979: invokevirtual 558	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   1982: istore 8
-    //   1984: new 176	org/json/JSONObject
-    //   1987: dup
-    //   1988: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   1991: astore_3
-    //   1992: aload_0
-    //   1993: getfield 26	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   1996: astore_2
-    //   1997: aload_2
-    //   1998: ifnull +1008 -> 3006
-    //   2001: iload 8
-    //   2003: iflt +1003 -> 3006
-    //   2006: iload 8
-    //   2008: bipush 100
-    //   2010: if_icmpgt +996 -> 3006
-    //   2013: aload_2
-    //   2014: ldc_w 685
-    //   2017: invokevirtual 688	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   2020: checkcast 690	android/media/AudioManager
-    //   2023: astore_2
-    //   2024: aload_2
-    //   2025: ifnull +981 -> 3006
-    //   2028: aload_2
-    //   2029: iconst_3
-    //   2030: aload_2
-    //   2031: iconst_3
-    //   2032: invokevirtual 693	android/media/AudioManager:getStreamMaxVolume	(I)I
-    //   2035: iload 8
-    //   2037: imul
-    //   2038: bipush 100
-    //   2040: idiv
-    //   2041: iconst_4
-    //   2042: invokevirtual 697	android/media/AudioManager:setStreamVolume	(III)V
-    //   2045: ldc_w 281
-    //   2048: astore_2
-    //   2049: aload_3
-    //   2050: ldc_w 279
-    //   2053: aload_2
-    //   2054: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   2057: pop
-    //   2058: aload_1
-    //   2059: aload_3
-    //   2060: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   2063: goto -1895 -> 168
-    //   2066: ldc_w 699
-    //   2069: aload_3
-    //   2070: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2073: ifeq +192 -> 2265
-    //   2076: aload_2
-    //   2077: ifnull +146 -> 2223
-    //   2080: aload_2
-    //   2081: ldc_w 283
-    //   2084: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   2087: ifeq +136 -> 2223
-    //   2090: aload_2
-    //   2091: ldc_w 283
-    //   2094: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2097: astore_3
-    //   2098: aload_2
-    //   2099: ldc_w 701
-    //   2102: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   2105: ifeq +124 -> 2229
-    //   2108: aload_2
-    //   2109: ldc_w 701
-    //   2112: invokevirtual 558	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   2115: istore 8
-    //   2117: aload_3
-    //   2118: invokestatic 706	com/tencent/mobileqq/mqsafeedit/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
-    //   2121: astore_2
-    //   2122: new 708	java/io/File
-    //   2125: dup
-    //   2126: new 708	java/io/File
-    //   2129: dup
-    //   2130: new 267	java/lang/StringBuilder
-    //   2133: dup
-    //   2134: invokespecial 268	java/lang/StringBuilder:<init>	()V
-    //   2137: getstatic 713	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH	Ljava/lang/String;
-    //   2140: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2143: getstatic 716	java/io/File:separator	Ljava/lang/String;
-    //   2146: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2149: ldc_w 718
-    //   2152: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2155: invokevirtual 277	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2158: invokespecial 719	java/io/File:<init>	(Ljava/lang/String;)V
-    //   2161: aload_2
-    //   2162: invokespecial 722	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   2165: astore_2
-    //   2166: aload_2
-    //   2167: ifnull +10 -> 2177
-    //   2170: aload_2
-    //   2171: invokevirtual 725	java/io/File:exists	()Z
-    //   2174: ifne +61 -> 2235
-    //   2177: new 727	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin$5
-    //   2180: dup
-    //   2181: aload_0
-    //   2182: aload_3
-    //   2183: iload 8
-    //   2185: aload_2
-    //   2186: invokespecial 730	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin$5:<init>	(Lcom/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin;Ljava/lang/String;ILjava/io/File;)V
-    //   2189: bipush 8
-    //   2191: aconst_null
-    //   2192: iconst_1
-    //   2193: invokestatic 736	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   2196: new 176	org/json/JSONObject
-    //   2199: dup
-    //   2200: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   2203: astore_2
-    //   2204: aload_2
-    //   2205: ldc_w 279
-    //   2208: ldc_w 281
-    //   2211: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   2214: pop
-    //   2215: aload_1
-    //   2216: aload_2
-    //   2217: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   2220: goto -2052 -> 168
-    //   2223: ldc 159
-    //   2225: astore_3
-    //   2226: goto -128 -> 2098
-    //   2229: iconst_0
-    //   2230: istore 8
-    //   2232: goto -115 -> 2117
-    //   2235: aload_0
-    //   2236: aload_2
-    //   2237: invokevirtual 739	java/io/File:getPath	()Ljava/lang/String;
-    //   2240: invokestatic 742	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   2243: invokespecial 305	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	(Landroid/graphics/Bitmap;)V
-    //   2246: goto -50 -> 2196
-    //   2249: astore_2
-    //   2250: aload_2
-    //   2251: invokevirtual 131	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   2254: goto -58 -> 2196
-    //   2257: astore_2
-    //   2258: aload_2
-    //   2259: invokevirtual 141	java/lang/Exception:printStackTrace	()V
-    //   2262: goto -66 -> 2196
-    //   2265: ldc_w 744
-    //   2268: aload_3
-    //   2269: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2272: ifeq +106 -> 2378
-    //   2275: aload_0
-    //   2276: getfield 26	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   2279: astore_2
-    //   2280: new 176	org/json/JSONObject
-    //   2283: dup
-    //   2284: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   2287: astore_3
-    //   2288: aload_2
-    //   2289: ifnull +710 -> 2999
-    //   2292: aload_2
-    //   2293: ldc_w 685
-    //   2296: invokevirtual 688	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   2299: checkcast 690	android/media/AudioManager
-    //   2302: astore_2
-    //   2303: aload_2
-    //   2304: ifnull +695 -> 2999
-    //   2307: aload_2
-    //   2308: iconst_3
-    //   2309: invokevirtual 693	android/media/AudioManager:getStreamMaxVolume	(I)I
-    //   2312: i2f
-    //   2313: fstore 6
-    //   2315: aload_2
-    //   2316: iconst_3
-    //   2317: invokevirtual 747	android/media/AudioManager:getStreamVolume	(I)I
-    //   2320: i2f
-    //   2321: fstore 7
-    //   2323: fload 7
-    //   2325: f2i
-    //   2326: istore 8
-    //   2328: fload 6
-    //   2330: fconst_0
-    //   2331: fcmpl
-    //   2332: ifle +15 -> 2347
-    //   2335: fload 7
-    //   2337: fload 6
-    //   2339: fdiv
-    //   2340: ldc_w 748
-    //   2343: fmul
-    //   2344: f2i
-    //   2345: istore 8
-    //   2347: aload_3
-    //   2348: ldc_w 683
-    //   2351: iload 8
-    //   2353: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   2356: pop
-    //   2357: ldc_w 281
-    //   2360: astore_2
-    //   2361: aload_3
-    //   2362: ldc_w 279
-    //   2365: aload_2
-    //   2366: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   2369: pop
-    //   2370: aload_1
-    //   2371: aload_3
-    //   2372: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   2375: goto -2207 -> 168
-    //   2378: ldc_w 750
-    //   2381: aload_3
-    //   2382: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2385: ifeq +185 -> 2570
-    //   2388: aload_2
-    //   2389: ldc_w 752
-    //   2392: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2395: astore 4
-    //   2397: aload_2
-    //   2398: ldc_w 754
-    //   2401: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2404: astore 5
-    //   2406: aload_2
-    //   2407: ldc_w 283
-    //   2410: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2413: astore 20
-    //   2415: aload_2
-    //   2416: ldc_w 756
-    //   2419: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2422: astore 21
-    //   2424: aload_2
-    //   2425: ldc_w 758
-    //   2428: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2431: astore 22
-    //   2433: ldc_w 760
-    //   2436: astore_3
-    //   2437: aload_2
-    //   2438: ldc_w 762
-    //   2441: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   2444: ifeq +11 -> 2455
-    //   2447: aload_2
-    //   2448: ldc_w 762
-    //   2451: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2454: astore_3
-    //   2455: aload_0
-    //   2456: getfield 26	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   2459: ifnull +84 -> 2543
-    //   2462: new 478	android/content/Intent
-    //   2465: dup
-    //   2466: ldc_w 764
-    //   2469: invokespecial 516	android/content/Intent:<init>	(Ljava/lang/String;)V
-    //   2472: astore_2
-    //   2473: aload_2
-    //   2474: ldc_w 766
-    //   2477: aload 4
-    //   2479: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2482: pop
-    //   2483: aload_2
-    //   2484: ldc_w 768
-    //   2487: aload 5
-    //   2489: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2492: pop
-    //   2493: aload_2
-    //   2494: ldc_w 770
-    //   2497: aload 20
-    //   2499: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2502: pop
-    //   2503: aload_2
-    //   2504: ldc_w 772
-    //   2507: aload 21
-    //   2509: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2512: pop
-    //   2513: aload_2
-    //   2514: ldc_w 774
-    //   2517: aload 22
-    //   2519: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2522: pop
-    //   2523: aload_2
-    //   2524: ldc_w 776
-    //   2527: aload_3
-    //   2528: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2531: pop
-    //   2532: aload_0
-    //   2533: getfield 26	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   2536: aload_2
-    //   2537: ldc_w 524
-    //   2540: invokevirtual 530	android/content/Context:sendBroadcast	(Landroid/content/Intent;Ljava/lang/String;)V
-    //   2543: new 176	org/json/JSONObject
-    //   2546: dup
-    //   2547: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   2550: astore_2
-    //   2551: aload_2
-    //   2552: ldc_w 279
-    //   2555: ldc_w 281
-    //   2558: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   2561: pop
-    //   2562: aload_1
-    //   2563: aload_2
-    //   2564: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   2567: goto -2399 -> 168
-    //   2570: ldc_w 778
-    //   2573: aload_3
-    //   2574: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2577: ifeq -2409 -> 168
-    //   2580: aload_2
-    //   2581: ldc_w 752
-    //   2584: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2587: astore 4
-    //   2589: aload_2
-    //   2590: ldc_w 754
-    //   2593: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2596: astore 5
-    //   2598: aload_2
-    //   2599: ldc_w 283
-    //   2602: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2605: astore 20
-    //   2607: aload_2
-    //   2608: ldc_w 756
-    //   2611: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2614: astore 21
-    //   2616: aload_2
-    //   2617: ldc_w 780
-    //   2620: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   2623: ifeq +368 -> 2991
-    //   2626: aload_2
-    //   2627: ldc_w 780
-    //   2630: invokevirtual 582	org/json/JSONObject:getLong	(Ljava/lang/String;)J
-    //   2633: lstore 14
-    //   2635: ldc_w 760
-    //   2638: astore_3
-    //   2639: aload_2
-    //   2640: ldc_w 762
-    //   2643: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   2646: ifeq +11 -> 2657
-    //   2649: aload_2
-    //   2650: ldc_w 762
-    //   2653: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2656: astore_3
-    //   2657: aload_0
-    //   2658: getfield 26	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   2661: ifnull +84 -> 2745
-    //   2664: new 478	android/content/Intent
-    //   2667: dup
-    //   2668: ldc_w 782
-    //   2671: invokespecial 516	android/content/Intent:<init>	(Ljava/lang/String;)V
-    //   2674: astore_2
-    //   2675: aload_2
-    //   2676: ldc_w 766
-    //   2679: aload 4
-    //   2681: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2684: pop
-    //   2685: aload_2
-    //   2686: ldc_w 768
-    //   2689: aload 5
-    //   2691: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2694: pop
-    //   2695: aload_2
-    //   2696: ldc_w 770
-    //   2699: aload 20
-    //   2701: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2704: pop
-    //   2705: aload_2
-    //   2706: ldc_w 772
-    //   2709: aload 21
-    //   2711: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2714: pop
-    //   2715: aload_2
-    //   2716: ldc_w 784
-    //   2719: lload 14
-    //   2721: invokevirtual 787	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
-    //   2724: pop
-    //   2725: aload_2
-    //   2726: ldc_w 776
-    //   2729: aload_3
-    //   2730: invokevirtual 522	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2733: pop
-    //   2734: aload_0
-    //   2735: getfield 26	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   2738: aload_2
-    //   2739: ldc_w 524
-    //   2742: invokevirtual 530	android/content/Context:sendBroadcast	(Landroid/content/Intent;Ljava/lang/String;)V
-    //   2745: new 176	org/json/JSONObject
-    //   2748: dup
-    //   2749: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   2752: astore_2
-    //   2753: aload_2
-    //   2754: ldc_w 279
-    //   2757: ldc_w 281
-    //   2760: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   2763: pop
-    //   2764: aload_1
-    //   2765: aload_2
-    //   2766: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   2769: goto -2601 -> 168
-    //   2772: ldc_w 789
-    //   2775: aload 4
-    //   2777: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2780: ifeq +185 -> 2965
-    //   2783: aload 20
-    //   2785: iconst_0
-    //   2786: invokevirtual 549	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   2789: checkcast 293	java/lang/String
-    //   2792: astore_2
-    //   2793: new 176	org/json/JSONObject
-    //   2796: dup
-    //   2797: aload_2
-    //   2798: invokespecial 323	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   2801: astore_3
-    //   2802: aconst_null
-    //   2803: astore_2
-    //   2804: aload_3
-    //   2805: ldc_w 551
-    //   2808: invokevirtual 365	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   2811: ifeq +11 -> 2822
-    //   2814: aload_3
-    //   2815: ldc_w 551
-    //   2818: invokevirtual 182	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2821: astore_2
-    //   2822: aload_0
-    //   2823: getfield 32	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
-    //   2826: invokeinterface 317 1 0
-    //   2831: astore_3
-    //   2832: aload_3
-    //   2833: ifnull +288 -> 3121
-    //   2836: aload_3
-    //   2837: ldc_w 325
-    //   2840: iconst_0
-    //   2841: invokevirtual 329	android/os/Bundle:getInt	(Ljava/lang/String;I)I
-    //   2844: istore 8
-    //   2846: ldc_w 378
-    //   2849: aload_2
-    //   2850: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2853: ifeq +60 -> 2913
-    //   2856: aload_0
-    //   2857: iconst_1
-    //   2858: putfield 28	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_a_of_type_Boolean	Z
-    //   2861: new 176	org/json/JSONObject
-    //   2864: dup
-    //   2865: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   2868: astore_2
-    //   2869: aload_2
-    //   2870: ldc_w 369
-    //   2873: iload 8
-    //   2875: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   2878: pop
-    //   2879: aload_2
-    //   2880: ldc_w 279
-    //   2883: ldc_w 281
-    //   2886: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   2889: pop
-    //   2890: aload_1
-    //   2891: aload_2
-    //   2892: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   2895: aload_0
-    //   2896: invokespecial 790	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:a	()V
-    //   2899: goto -2731 -> 168
-    //   2902: astore_3
-    //   2903: aload_3
-    //   2904: invokevirtual 141	java/lang/Exception:printStackTrace	()V
-    //   2907: iconst_0
-    //   2908: istore 8
-    //   2910: goto -64 -> 2846
-    //   2913: ldc_w 351
-    //   2916: aload_2
-    //   2917: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2920: ifeq -2752 -> 168
-    //   2923: aload_0
-    //   2924: iconst_1
-    //   2925: putfield 30	com/tencent/mobileqq/musicgene/MusicGeneWebViewPlugin:jdField_b_of_type_Boolean	Z
-    //   2928: new 176	org/json/JSONObject
-    //   2931: dup
-    //   2932: invokespecial 191	org/json/JSONObject:<init>	()V
-    //   2935: astore_2
-    //   2936: aload_2
-    //   2937: ldc_w 369
-    //   2940: iload 8
-    //   2942: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   2945: pop
-    //   2946: aload_2
-    //   2947: ldc_w 279
-    //   2950: ldc_w 281
-    //   2953: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   2956: pop
-    //   2957: aload_1
-    //   2958: aload_2
-    //   2959: invokevirtual 569	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(Ljava/lang/Object;)V
-    //   2962: goto -2794 -> 168
-    //   2965: ldc_w 792
-    //   2968: aload 4
-    //   2970: invokevirtual 463	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2973: ifeq -2805 -> 168
-    //   2976: goto -2808 -> 168
-    //   2979: aload_0
-    //   2980: aload_1
-    //   2981: aload_2
-    //   2982: aload_3
-    //   2983: aload 4
-    //   2985: aload 5
-    //   2987: invokespecial 794	com/tencent/mobileqq/webview/swift/WebViewPlugin:handleJsRequest	(Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Z
-    //   2990: ireturn
-    //   2991: ldc2_w 795
-    //   2994: lstore 14
-    //   2996: goto -361 -> 2635
-    //   2999: ldc_w 575
-    //   3002: astore_2
-    //   3003: goto -642 -> 2361
-    //   3006: ldc_w 575
-    //   3009: astore_2
-    //   3010: goto -961 -> 2049
-    //   3013: iconst_0
-    //   3014: istore 8
-    //   3016: goto -1032 -> 1984
-    //   3019: goto -1371 -> 1648
-    //   3022: aload 20
-    //   3024: astore_2
-    //   3025: goto -1516 -> 1509
-    //   3028: aload_2
-    //   3029: astore 4
-    //   3031: goto -1631 -> 1400
-    //   3034: aconst_null
-    //   3035: astore_2
-    //   3036: goto -1652 -> 1384
-    //   3039: goto -1959 -> 1080
-    //   3042: aload_2
-    //   3043: astore_3
-    //   3044: goto -2087 -> 957
-    //   3047: aconst_null
-    //   3048: astore_2
-    //   3049: goto -2107 -> 942
-    //   3052: aconst_null
-    //   3053: astore_2
-    //   3054: goto -2965 -> 89
-    //   3057: iconst_0
-    //   3058: istore 8
-    //   3060: goto -2081 -> 979
-    //   3063: lconst_0
-    //   3064: lstore 14
-    //   3066: goto -2061 -> 1005
-    //   3069: iload 8
-    //   3071: iconst_1
-    //   3072: iadd
-    //   3073: istore 8
-    //   3075: iload 10
-    //   3077: istore 9
-    //   3079: goto -1519 -> 1560
-    //   3082: iconst_0
-    //   3083: istore 11
-    //   3085: goto -1669 -> 1416
-    //   3088: lconst_0
-    //   3089: lstore 14
-    //   3091: goto -1649 -> 1442
-    //   3094: ldc_w 281
-    //   3097: astore_2
-    //   3098: goto -1624 -> 1474
-    //   3101: goto -1453 -> 1648
-    //   3104: iload 8
-    //   3106: iconst_1
-    //   3107: iadd
-    //   3108: istore 8
-    //   3110: iload 10
-    //   3112: istore 9
-    //   3114: goto -1316 -> 1798
-    //   3117: astore_1
-    //   3118: goto -2950 -> 168
-    //   3121: iconst_0
-    //   3122: istore 8
-    //   3124: goto -278 -> 2846
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	3127	0	this	MusicGeneWebViewPlugin
-    //   0	3127	1	paramJsBridgeListener	JsBridgeListener
-    //   0	3127	2	paramString1	String
-    //   0	3127	3	paramString2	String
-    //   0	3127	4	paramString3	String
-    //   0	3127	5	paramVarArgs	String[]
-    //   2313	25	6	f1	float
-    //   2321	15	7	f2	float
-    //   251	2872	8	i	int
-    //   1155	1958	9	j	int
-    //   1163	1948	10	k	int
-    //   1414	1670	11	m	int
-    //   1510	285	12	n	int
-    //   121	1212	13	bool	boolean
-    //   258	2832	14	l1	long
-    //   1176	105	16	l2	long
-    //   1146	69	18	l3	long
-    //   12	3011	20	localObject1	Object
-    //   215	2495	21	localObject2	Object
-    //   361	2157	22	localObject3	Object
-    //   394	19	23	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   44	89	163	java/lang/Exception
-    //   93	114	163	java/lang/Exception
-    //   114	123	163	java/lang/Exception
-    //   155	160	163	java/lang/Exception
-    //   198	208	163	java/lang/Exception
-    //   211	217	163	java/lang/Exception
-    //   224	234	163	java/lang/Exception
-    //   238	245	163	java/lang/Exception
-    //   263	282	163	java/lang/Exception
-    //   282	300	163	java/lang/Exception
-    //   300	319	163	java/lang/Exception
-    //   319	337	163	java/lang/Exception
-    //   337	356	163	java/lang/Exception
-    //   356	466	163	java/lang/Exception
-    //   466	506	163	java/lang/Exception
-    //   511	524	163	java/lang/Exception
-    //   524	536	163	java/lang/Exception
-    //   605	627	163	java/lang/Exception
-    //   643	647	163	java/lang/Exception
-    //   650	702	163	java/lang/Exception
-    //   705	746	163	java/lang/Exception
-    //   749	790	163	java/lang/Exception
-    //   793	834	163	java/lang/Exception
-    //   837	878	163	java/lang/Exception
-    //   881	890	163	java/lang/Exception
-    //   949	957	163	java/lang/Exception
-    //   957	963	163	java/lang/Exception
-    //   968	979	163	java/lang/Exception
-    //   984	1005	163	java/lang/Exception
-    //   1024	1069	163	java/lang/Exception
-    //   1073	1080	163	java/lang/Exception
-    //   1084	1090	163	java/lang/Exception
-    //   1090	1125	163	java/lang/Exception
-    //   1129	1133	163	java/lang/Exception
-    //   1141	1165	163	java/lang/Exception
-    //   1171	1178	163	java/lang/Exception
-    //   1178	1196	163	java/lang/Exception
-    //   1196	1244	163	java/lang/Exception
-    //   1244	1264	163	java/lang/Exception
-    //   1264	1269	163	java/lang/Exception
-    //   1272	1282	163	java/lang/Exception
-    //   1285	1296	163	java/lang/Exception
-    //   1299	1320	163	java/lang/Exception
-    //   1323	1332	163	java/lang/Exception
-    //   1391	1400	163	java/lang/Exception
-    //   1405	1416	163	java/lang/Exception
-    //   1421	1442	163	java/lang/Exception
-    //   1454	1474	163	java/lang/Exception
-    //   1476	1504	163	java/lang/Exception
-    //   1525	1548	163	java/lang/Exception
-    //   1564	1572	163	java/lang/Exception
-    //   1588	1601	163	java/lang/Exception
-    //   1614	1628	163	java/lang/Exception
-    //   1636	1640	163	java/lang/Exception
-    //   1648	1700	163	java/lang/Exception
-    //   1700	1729	163	java/lang/Exception
-    //   1729	1751	163	java/lang/Exception
-    //   1751	1768	163	java/lang/Exception
-    //   1771	1786	163	java/lang/Exception
-    //   1802	1810	163	java/lang/Exception
-    //   1830	1844	163	java/lang/Exception
-    //   1851	1863	163	java/lang/Exception
-    //   1866	1876	163	java/lang/Exception
-    //   1892	1911	163	java/lang/Exception
-    //   1911	1948	163	java/lang/Exception
-    //   1951	1961	163	java/lang/Exception
-    //   1965	1984	163	java/lang/Exception
-    //   1984	1997	163	java/lang/Exception
-    //   2013	2024	163	java/lang/Exception
-    //   2028	2045	163	java/lang/Exception
-    //   2049	2063	163	java/lang/Exception
-    //   2066	2076	163	java/lang/Exception
-    //   2080	2098	163	java/lang/Exception
-    //   2098	2117	163	java/lang/Exception
-    //   2117	2166	163	java/lang/Exception
-    //   2170	2177	163	java/lang/Exception
-    //   2177	2196	163	java/lang/Exception
-    //   2196	2220	163	java/lang/Exception
-    //   2250	2254	163	java/lang/Exception
-    //   2258	2262	163	java/lang/Exception
-    //   2265	2288	163	java/lang/Exception
-    //   2292	2303	163	java/lang/Exception
-    //   2307	2323	163	java/lang/Exception
-    //   2335	2347	163	java/lang/Exception
-    //   2347	2357	163	java/lang/Exception
-    //   2361	2375	163	java/lang/Exception
-    //   2378	2433	163	java/lang/Exception
-    //   2437	2455	163	java/lang/Exception
-    //   2455	2543	163	java/lang/Exception
-    //   2543	2567	163	java/lang/Exception
-    //   2570	2635	163	java/lang/Exception
-    //   2639	2657	163	java/lang/Exception
-    //   2657	2745	163	java/lang/Exception
-    //   2745	2769	163	java/lang/Exception
-    //   128	153	197	java/lang/Exception
-    //   170	194	197	java/lang/Exception
-    //   536	556	642	java/lang/Exception
-    //   561	570	642	java/lang/Exception
-    //   570	586	642	java/lang/Exception
-    //   586	601	642	java/lang/Exception
-    //   630	639	642	java/lang/Exception
-    //   897	905	1128	java/lang/Exception
-    //   911	921	1128	java/lang/Exception
-    //   923	939	1128	java/lang/Exception
-    //   1339	1347	1635	java/lang/Exception
-    //   1353	1363	1635	java/lang/Exception
-    //   1365	1381	1635	java/lang/Exception
-    //   2235	2246	2249	java/lang/OutOfMemoryError
-    //   2235	2246	2257	java/lang/Exception
-    //   2822	2832	2902	java/lang/Exception
-    //   2836	2846	2902	java/lang/Exception
-    //   2793	2802	3117	org/json/JSONException
-    //   2804	2822	3117	org/json/JSONException
-    //   2822	2832	3117	org/json/JSONException
-    //   2836	2846	3117	org/json/JSONException
-    //   2846	2899	3117	org/json/JSONException
-    //   2903	2907	3117	org/json/JSONException
-    //   2913	2962	3117	org/json/JSONException
+    Object localObject2 = new ArrayList(Arrays.asList(paramVarArgs));
+    Object localObject3;
+    long l1;
+    int i;
+    label285:
+    label306:
+    label365:
+    label628:
+    int j;
+    label967:
+    label1008:
+    int k;
+    if ("qqmusic".equals(paramString2))
+    {
+      boolean bool = "webCallApp".equals(paramString3);
+      localObject3 = "playType";
+      if (bool)
+      {
+        paramString1 = (String)((ArrayList)localObject2).get(0);
+        try
+        {
+          paramString1 = new JSONObject(paramString1);
+          if (!paramString1.has("action")) {
+            break label3026;
+          }
+          paramString3 = paramString1.getString("action");
+          if (!paramString1.has("data")) {
+            break label3044;
+          }
+          paramString2 = paramString1.getJSONObject("data");
+          if ((paramString2 != null) && (paramString2.has("playType"))) {
+            this.c = paramString2.getInt("playType");
+          } else {
+            this.c = 0;
+          }
+          bool = "MANUAL_INIT".equals(paramString3);
+          if (bool) {
+            try
+            {
+              QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.handle js request: MANUAL_INIT");
+              if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService == null)
+              {
+                this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener = paramJsBridgeListener;
+                d();
+                return true;
+              }
+              paramString1 = new JSONObject();
+              paramString1.put("code", "0");
+              paramJsBridgeListener.a(paramString1);
+              return true;
+            }
+            catch (Exception paramJsBridgeListener)
+            {
+              QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.handle js request get exception in ACTION_MANUAL_INIT", paramJsBridgeListener);
+              return true;
+            }
+          }
+          Object localObject5 = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
+          if (localObject5 == null) {
+            return false;
+          }
+          bool = "SONG_PLAY".equals(paramString3);
+          paramString1 = "1";
+          Object localObject4;
+          if (bool)
+          {
+            paramVarArgs = a(paramString2);
+            if (paramVarArgs == null) {
+              break label3075;
+            }
+            l1 = 0L;
+            if (!paramString2.has("index")) {
+              break label3049;
+            }
+            i = paramString2.getInt("index");
+            if (!paramString2.has("geneId")) {
+              break label3055;
+            }
+            paramString1 = paramString2.getString("geneId");
+            if (paramString2.has("uin")) {
+              l1 = paramString2.getLong("uin");
+            }
+            if (paramString2.has("geneType")) {
+              paramString2.getString("geneType");
+            }
+            if (!paramString2.has("list")) {
+              break label3062;
+            }
+            paramString3 = paramString2.getJSONArray("list");
+            localObject3 = String.valueOf(l1);
+            localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, MusicPlayerActivity.class);
+            localObject4 = String.format("https://y.qq.com/m/recent_listen/play.html?uin=%s&_bid=266&_wv=14115", new Object[] { localObject3 });
+            ((Intent)localObject2).putExtra("uin", (String)localObject3);
+            ((Intent)localObject2).putExtra("url", (String)localObject4);
+            ((Intent)localObject2).putExtra("BUNDLE_KEY_FROM_PLAY_BAR", true);
+            if (paramString2.has("pageUrl"))
+            {
+              localObject3 = paramString2.getString("pageUrl");
+              if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+                ((Intent)localObject2).putExtra("url", (String)localObject3);
+              }
+            }
+            localObject3 = new Bundle();
+            ((Bundle)localObject3).putLong("BUNDLE_KEY_UIN", l1);
+            ((Bundle)localObject3).putString("BUNDLE_KEY_GENE_ID", paramString1);
+            ((Bundle)localObject3).putInt("BUNDLE_KEY_PLAY_TYPE", this.c);
+            if (paramString3 != null) {
+              ((Bundle)localObject3).putString("BUNDLE_KEY_JSONARRAY_SONG_LIST", paramString3.toString());
+            }
+            ((Bundle)localObject3).putString("data", paramString2.toString());
+            try
+            {
+              ((IQQPlayerService)localObject5).a((Bundle)localObject3);
+              ((IQQPlayerService)localObject5).a(this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub);
+              ((IQQPlayerService)localObject5).a((Intent)localObject2);
+              if (c()) {
+                ((IQQPlayerService)localObject5).a(102);
+              } else {
+                ((IQQPlayerService)localObject5).a(103);
+              }
+              ((IQQPlayerService)localObject5).a(a(), paramVarArgs, i);
+            }
+            catch (Exception paramString1)
+            {
+              paramString1.printStackTrace();
+            }
+            paramString2 = new JSONObject();
+            paramString2.put("code", paramString1);
+            paramJsBridgeListener.a(paramString2);
+          }
+          else if ("SONG_PAUSE".equals(paramString3))
+          {
+            this.jdField_b_of_type_Int = ((IQQPlayerService)localObject5).d();
+            ((IQQPlayerService)localObject5).a();
+            paramString1 = new JSONObject();
+            paramString1.put("code", "0");
+            paramJsBridgeListener.a(paramString1);
+          }
+          else
+          {
+            paramString1 = "0";
+            if ("SONG_RESUME".equals(paramString3))
+            {
+              ((IQQPlayerService)localObject5).b();
+              paramString2 = new JSONObject();
+              paramString2.put("code", paramString1);
+              paramJsBridgeListener.a(paramString2);
+            }
+            else if ("SONG_STOP".equals(paramString3))
+            {
+              ((IQQPlayerService)localObject5).c();
+              paramString2 = new JSONObject();
+              paramString2.put("code", paramString1);
+              paramJsBridgeListener.a(paramString2);
+            }
+            else if ("SONG_PLAY_NEXT".equals(paramString3))
+            {
+              ((IQQPlayerService)localObject5).d();
+              paramString2 = new JSONObject();
+              paramString2.put("code", paramString1);
+              paramJsBridgeListener.a(paramString2);
+            }
+            else if ("SONG_PLAY_PREV".equals(paramString3))
+            {
+              ((IQQPlayerService)localObject5).e();
+              paramString2 = new JSONObject();
+              paramString2.put("code", paramString1);
+              paramJsBridgeListener.a(paramString2);
+            }
+            else
+            {
+              bool = "SONG_GET_SONG_INFO".equals(paramString3);
+              if (bool)
+              {
+                try
+                {
+                  paramString2 = ((IQQPlayerService)localObject5).a();
+                  paramVarArgs = paramString2;
+                  if (paramString2 == null) {
+                    break label3078;
+                  }
+                  paramVarArgs = paramString2;
+                  try
+                  {
+                    if (!paramString2.containsKey("data")) {
+                      break label3078;
+                    }
+                    paramString3 = new JSONObject(paramString2.getString("data"));
+                  }
+                  catch (Exception paramString3) {}
+                  paramString3.printStackTrace();
+                }
+                catch (Exception paramString3)
+                {
+                  paramString2 = null;
+                }
+                paramVarArgs = paramString2;
+                break label3078;
+                paramVarArgs = paramString3;
+                if (paramString3 == null) {
+                  paramVarArgs = new JSONObject();
+                }
+                localObject2 = a();
+                if (paramString2 == null) {
+                  break label3087;
+                }
+                i = paramString2.getInt("BUNDLE_KEY_PLAY_TYPE", 0);
+                if ((paramString2 == null) || (!paramString2.containsKey("BUNDLE_KEY_UIN"))) {
+                  break label3093;
+                }
+                l1 = paramString2.getLong("BUNDLE_KEY_UIN");
+                label1034:
+                if (localObject2 != null)
+                {
+                  if ((paramString2 == null) || (!paramString2.containsKey("BUNDLE_KEY_JSONARRAY_SONG_LIST"))) {
+                    break label3099;
+                  }
+                  paramString2 = (JSONObject)a(new JSONArray(paramString2.getString("BUNDLE_KEY_JSONARRAY_SONG_LIST"))).get(String.valueOf(((SongInfo)localObject2).jdField_a_of_type_Long));
+                  label1089:
+                  paramString3 = paramString2;
+                  if (paramString2 == null) {
+                    paramString3 = a((SongInfo)localObject2);
+                  }
+                  if (paramString3 != null)
+                  {
+                    paramString2 = paramString3.keys();
+                    while (paramString2.hasNext())
+                    {
+                      localObject2 = (String)paramString2.next();
+                      paramVarArgs.put((String)localObject2, paramString3.get((String)localObject2));
+                    }
+                  }
+                  long l2 = a();
+                  j = ((IQQPlayerService)localObject5).a();
+                  k = b(j);
+                  if (j == 3)
+                  {
+                    j = this.jdField_b_of_type_Int;
+                    break label3104;
+                  }
+                  j = ((IQQPlayerService)localObject5).d();
+                  break label3104;
+                  label1204:
+                  if (b()) {
+                    paramVarArgs.put("code", paramString1);
+                  } else {
+                    paramVarArgs.put("code", paramString1);
+                  }
+                  Object localObject1;
+                  paramVarArgs.put("curTime", localObject1 / 1000L);
+                  paramVarArgs.put("totalTime", l2 / 1000L);
+                  paramVarArgs.put("state", k);
+                  paramVarArgs.put("playType", i);
+                }
+                else
+                {
+                  paramVarArgs.put("code", "1");
+                  paramVarArgs.put("playType", i);
+                }
+                if (!paramVarArgs.has("uin")) {
+                  paramVarArgs.put("uin", l1);
+                }
+                paramJsBridgeListener.a(paramVarArgs);
+              }
+              else
+              {
+                bool = "SONG_GET_LIST_INFO".equals(paramString3);
+                if (bool)
+                {
+                  try
+                  {
+                    paramString2 = ((IQQPlayerService)localObject5).a();
+                    paramVarArgs = paramString2;
+                    if (paramString2 == null) {
+                      break label3112;
+                    }
+                    paramVarArgs = paramString2;
+                    try
+                    {
+                      if (!paramString2.containsKey("data")) {
+                        break label3112;
+                      }
+                      paramString3 = new JSONObject(paramString2.getString("data"));
+                      localObject2 = paramString2;
+                    }
+                    catch (Exception paramString3) {}
+                    paramString3.printStackTrace();
+                  }
+                  catch (Exception paramString3)
+                  {
+                    paramString2 = null;
+                  }
+                  paramVarArgs = paramString2;
+                  break label3112;
+                  label1428:
+                  paramVarArgs = paramString3;
+                  if (paramString3 == null) {
+                    paramVarArgs = new JSONObject();
+                  }
+                  if (localObject2 == null) {
+                    break label3122;
+                  }
+                  k = ((Bundle)localObject2).getInt("BUNDLE_KEY_PLAY_TYPE", 0);
+                  label1465:
+                  if ((localObject2 == null) || (!((Bundle)localObject2).containsKey("BUNDLE_KEY_UIN"))) {
+                    break label3128;
+                  }
+                  l1 = ((Bundle)localObject2).getLong("BUNDLE_KEY_UIN");
+                  label1494:
+                  if (localObject2 == null) {
+                    break label3139;
+                  }
+                  if (!((Bundle)localObject2).containsKey("BUNDLE_KEY_GENE_ID")) {
+                    break label3134;
+                  }
+                  paramString2 = ((Bundle)localObject2).getString("BUNDLE_KEY_GENE_ID");
+                  label1522:
+                  paramString3 = paramString2;
+                  if (!((Bundle)localObject2).containsKey("BUNDLE_KEY_JSONARRAY_SONG_LIST")) {
+                    break label3142;
+                  }
+                  paramString3 = new JSONArray(((Bundle)localObject2).getString("BUNDLE_KEY_JSONARRAY_SONG_LIST"));
+                  localObject2 = paramString2;
+                  paramString2 = paramString3;
+                  label1562:
+                  if (paramString2 == null)
+                  {
+                    paramString2 = new JSONArray();
+                    localObject4 = ((IQQPlayerService)localObject5).a();
+                    localSongInfo = a();
+                    if (localObject4 == null) {
+                      break label3177;
+                    }
+                    i = 0;
+                    j = 0;
+                    paramString3 = (String)localObject3;
+                    localObject3 = localObject4;
+                    label1608:
+                    if (i >= localObject3.length) {
+                      break label3160;
+                    }
+                    localObject4 = localObject3[i];
+                    if (localObject4 == null) {
+                      break label3151;
+                    }
+                    paramString2.put(i, a((SongInfo)localObject4));
+                    if ((localSongInfo == null) || (((SongInfo)localObject4).jdField_a_of_type_Long != localSongInfo.jdField_a_of_type_Long)) {
+                      break label3151;
+                    }
+                    j = i;
+                    break label3151;
+                  }
+                  localObject3 = "playType";
+                  paramString3 = ((IQQPlayerService)localObject5).a();
+                  localObject4 = a();
+                  if (paramString3 == null) {
+                    break label3212;
+                  }
+                  j = 0;
+                  i = 0;
+                  label1698:
+                  if (j >= paramString3.length) {
+                    break label3203;
+                  }
+                  SongInfo localSongInfo = paramString3[j];
+                  if ((localSongInfo == null) || (localSongInfo.jdField_a_of_type_Long != ((SongInfo)localObject4).jdField_a_of_type_Long)) {
+                    break label3194;
+                  }
+                  i = j;
+                  break label3194;
+                  label1739:
+                  paramVarArgs.put("index", i);
+                  paramVarArgs.put("state", b(((IQQPlayerService)localObject5).a()));
+                  if (!paramVarArgs.has("geneId")) {
+                    paramVarArgs.put("geneId", localObject2);
+                  }
+                  paramVarArgs.put("list", paramString3);
+                  if (b()) {
+                    paramVarArgs.put("code", paramString1);
+                  } else {
+                    paramVarArgs.put("code", paramString1);
+                  }
+                  if (!paramVarArgs.has("uin")) {
+                    paramVarArgs.put("uin", l1);
+                  }
+                  paramVarArgs.put(paramString2, k);
+                  paramJsBridgeListener.a(paramVarArgs);
+                }
+                else if ("SONG_SET_PLAYMODE".equals(paramString3))
+                {
+                  j = 103;
+                  i = j;
+                  if (paramString2 != null)
+                  {
+                    i = j;
+                    if (paramString2.has("type")) {
+                      i = paramString2.getInt("type");
+                    }
+                  }
+                  ((IQQPlayerService)localObject5).a(a(i));
+                  paramString2 = new JSONObject();
+                  paramString2.put("code", paramString1);
+                  paramJsBridgeListener.a(paramString2);
+                }
+                else if ("SONG_SET_VOLUME".equals(paramString3))
+                {
+                  if ((paramString2 == null) || (!paramString2.has("volume"))) {
+                    break label3224;
+                  }
+                  i = paramString2.getInt("volume");
+                  label1994:
+                  paramString2 = new JSONObject();
+                  paramString3 = this.jdField_a_of_type_AndroidContentContext;
+                  if ((paramString3 == null) || (i < 0) || (i > 100)) {
+                    break label3230;
+                  }
+                  paramString3 = (AudioManager)paramString3.getSystemService("audio");
+                  if (paramString3 == null) {
+                    break label3230;
+                  }
+                  paramString3.setStreamVolume(3, paramString3.getStreamMaxVolume(3) * i / 100, 4);
+                  label2065:
+                  paramString2.put("code", paramString1);
+                  paramJsBridgeListener.a(paramString2);
+                }
+                else if ("DO_MACK_IMG".equals(paramString3))
+                {
+                  if ((paramString2 == null) || (!paramString2.has("imgUrl"))) {
+                    break label3237;
+                  }
+                  paramString3 = paramString2.getString("imgUrl");
+                  label2119:
+                  if (!paramString2.has("degree")) {
+                    break label3244;
+                  }
+                  i = paramString2.getInt("degree");
+                  label2141:
+                  paramString2 = MD5.toMD5(paramString3);
+                  paramVarArgs = new StringBuilder();
+                  paramVarArgs.append(AppConstants.SDCARD_PATH);
+                  paramVarArgs.append(File.separator);
+                  paramVarArgs.append("diskcache");
+                  paramString2 = new File(new File(paramVarArgs.toString()), paramString2);
+                  if (!paramString2.exists()) {
+                    ThreadManager.post(new MusicGeneWebViewPlugin.5(this, paramString3, i, paramString2), 8, null, true);
+                  } else {
+                    try
+                    {
+                      a(BitmapFactory.decodeFile(paramString2.getPath()));
+                    }
+                    catch (Exception paramString2)
+                    {
+                      paramString2.printStackTrace();
+                    }
+                    catch (OutOfMemoryError paramString2)
+                    {
+                      paramString2.printStackTrace();
+                    }
+                  }
+                  paramString2 = new JSONObject();
+                  paramString2.put("code", paramString1);
+                  paramJsBridgeListener.a(paramString2);
+                }
+                else if ("SONG_GET_VOLUME".equals(paramString3))
+                {
+                  paramString3 = this.jdField_a_of_type_AndroidContentContext;
+                  paramString2 = new JSONObject();
+                  if (paramString3 == null) {
+                    break label3250;
+                  }
+                  paramString3 = (AudioManager)paramString3.getSystemService("audio");
+                  if (paramString3 == null) {
+                    break label3250;
+                  }
+                  float f1 = paramString3.getStreamMaxVolume(3);
+                  float f2 = paramString3.getStreamVolume(3);
+                  i = (int)f2;
+                  if (f1 > 0.0F) {
+                    i = (int)(f2 / f1 * 100.0F);
+                  }
+                  paramString2.put("volume", i);
+                  label2389:
+                  paramString2.put("code", paramString1);
+                  paramJsBridgeListener.a(paramString2);
+                }
+                else if ("SHARE_SONG".equals(paramString3))
+                {
+                  paramVarArgs = paramString2.getString("title");
+                  localObject2 = paramString2.getString("desc");
+                  localObject3 = paramString2.getString("imgUrl");
+                  localObject4 = paramString2.getString("src");
+                  localObject5 = paramString2.getString("audioUrl");
+                  paramString3 = "https://qzonestyle.gtimg.cn/ac/qzone/applogo/16/308/100497308_16.gif";
+                  if (paramString2.has("iconUrl")) {
+                    paramString3 = paramString2.getString("iconUrl");
+                  }
+                  if (this.jdField_a_of_type_AndroidContentContext != null)
+                  {
+                    paramString2 = new Intent("BROAD_CAST_SHARE_SONG");
+                    paramString2.putExtra("BUNDLE_KEY_TITLE", paramVarArgs);
+                    paramString2.putExtra("BUNDLE_KEY_DESC", (String)localObject2);
+                    paramString2.putExtra("BUDNLE_KEY_IMG_URL", (String)localObject3);
+                    paramString2.putExtra("BUNDLE_KEY_SRC", (String)localObject4);
+                    paramString2.putExtra("BUNDLE_KEY_AUDIO_URL", (String)localObject5);
+                    paramString2.putExtra("BUNDLE_KEY_ICON_URL", paramString3);
+                    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramString2, "com.tencent.music.data.permission");
+                  }
+                  paramString2 = new JSONObject();
+                  paramString2.put("code", paramString1);
+                  paramJsBridgeListener.a(paramString2);
+                }
+                else if ("SHARE_GENE".equals(paramString3))
+                {
+                  paramVarArgs = paramString2.getString("title");
+                  localObject2 = paramString2.getString("desc");
+                  localObject3 = paramString2.getString("imgUrl");
+                  localObject4 = paramString2.getString("src");
+                  l1 = 1101244924L;
+                  if (paramString2.has("appid")) {
+                    l1 = paramString2.getLong("appid");
+                  }
+                  paramString3 = "https://qzonestyle.gtimg.cn/ac/qzone/applogo/16/308/100497308_16.gif";
+                  if (paramString2.has("iconUrl")) {
+                    paramString3 = paramString2.getString("iconUrl");
+                  }
+                  if (this.jdField_a_of_type_AndroidContentContext != null)
+                  {
+                    paramString2 = new Intent("BROAD_CAST_SHARE_MUSIC_GENE");
+                    paramString2.putExtra("BUNDLE_KEY_TITLE", paramVarArgs);
+                    paramString2.putExtra("BUNDLE_KEY_DESC", (String)localObject2);
+                    paramString2.putExtra("BUDNLE_KEY_IMG_URL", (String)localObject3);
+                    paramString2.putExtra("BUNDLE_KEY_SRC", (String)localObject4);
+                    paramString2.putExtra("BUNDKE_KEY_APP_ID", l1);
+                    paramString2.putExtra("BUNDLE_KEY_ICON_URL", paramString3);
+                    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramString2, "com.tencent.music.data.permission");
+                  }
+                  paramString2 = new JSONObject();
+                  paramString2.put("code", paramString1);
+                  paramJsBridgeListener.a(paramString2);
+                }
+              }
+            }
+          }
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+        }
+      }
+      else
+      {
+        paramString1 = null;
+        if ("bindApp".equals(paramString3)) {
+          paramString2 = (String)((ArrayList)localObject2).get(0);
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString2 = new JSONObject(paramString2);
+        if (paramString2.has("action")) {
+          paramString1 = paramString2.getString("action");
+        }
+        try
+        {
+          paramString2 = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
+          if (paramString2 != null) {
+            try
+            {
+              i = paramString2.getInt("BUNDLE_KEY_PLAY_TYPE", 0);
+            }
+            catch (Exception paramString2) {}
+          }
+        }
+        catch (Exception paramString2)
+        {
+          paramString2.printStackTrace();
+        }
+        if ("CALLPAGE_SONG_STATE_CHANGE".equals(paramString1))
+        {
+          this.jdField_a_of_type_Boolean = true;
+          paramString1 = new JSONObject();
+          paramString1.put("playType", i);
+          paramString1.put("code", "0");
+          paramJsBridgeListener.a(paramString1);
+          a();
+        }
+        else if ("CALLPAGE_SONG_TIME_UPDATE".equals(paramString1))
+        {
+          this.jdField_b_of_type_Boolean = true;
+          paramString1 = new JSONObject();
+          paramString1.put("playType", i);
+          paramString1.put("code", "0");
+          paramJsBridgeListener.a(paramString1);
+        }
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        label3026:
+        continue;
+      }
+      "unbindApp".equals(paramString3);
+      return true;
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      label3044:
+      paramString2 = null;
+      break;
+      label3049:
+      i = 0;
+      break label285;
+      label3055:
+      paramString1 = "0";
+      break label306;
+      label3062:
+      paramString3 = null;
+      break label365;
+      paramString1 = "0";
+      break label628;
+      label3075:
+      break label628;
+      label3078:
+      paramString3 = null;
+      paramString2 = paramVarArgs;
+      break label967;
+      label3087:
+      i = 0;
+      break label1008;
+      label3093:
+      l1 = 0L;
+      break label1034;
+      label3099:
+      paramString2 = null;
+      break label1089;
+      label3104:
+      long l3 = j;
+      break label1204;
+      label3112:
+      paramString3 = null;
+      localObject2 = paramVarArgs;
+      break label1428;
+      label3122:
+      k = 0;
+      break label1465;
+      label3128:
+      l1 = 0L;
+      break label1494;
+      label3134:
+      paramString2 = paramString1;
+      break label1522;
+      label3139:
+      paramString3 = paramString1;
+      label3142:
+      paramString2 = null;
+      localObject2 = paramString3;
+      break label1562;
+      label3151:
+      i += 1;
+      break label1608;
+      label3160:
+      localObject3 = paramString2;
+      i = j;
+      paramString2 = paramString3;
+      paramString3 = (String)localObject3;
+      break label3191;
+      label3177:
+      localObject3 = "playType";
+      i = 0;
+      paramString3 = paramString2;
+      paramString2 = (String)localObject3;
+      label3191:
+      break label1739;
+      label3194:
+      j += 1;
+      break label1698;
+      label3203:
+      paramString3 = paramString2;
+      paramString2 = (String)localObject3;
+      break label1739;
+      label3212:
+      i = 0;
+      paramString3 = paramString2;
+      paramString2 = (String)localObject3;
+      break label1739;
+      label3224:
+      i = 0;
+      break label1994;
+      label3230:
+      paramString1 = "1";
+      break label2065;
+      label3237:
+      paramString3 = "";
+      break label2119;
+      label3244:
+      i = 0;
+      break label2141;
+      label3250:
+      paramString1 = "1";
+      break label2389;
+      i = 0;
+    }
   }
   
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  protected boolean handleSchemaRequest(String paramString1, String paramString2)
   {
     try
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService == null) && (a(paramString1))) {
         d();
       }
-      return super.handleSchemaRequest(paramString1, paramString2);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.handleSchemaRequest exception", localException);
-      }
+      QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.handleSchemaRequest exception", localException);
     }
+    return super.handleSchemaRequest(paramString1, paramString2);
   }
   
   public boolean isNeedPreCreatePlugin(Intent paramIntent, String paramString1, String paramString2)
@@ -2478,99 +1557,102 @@ public class MusicGeneWebViewPlugin
     super.onCreate();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
-    for (;;)
+    try
     {
-      try
+      b();
+      if (this.jdField_a_of_type_AndroidContentContext != null)
       {
-        b();
-        if (this.jdField_a_of_type_AndroidContentContext != null)
+        IQQPlayerService localIQQPlayerService = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
+        if (localIQQPlayerService != null)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
-          if (localObject == null) {}
-        }
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        int i;
-        QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.onCreate exception", localException);
-        continue;
-      }
-      try
-      {
-        i = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
-        if ((i == 2) || (i == 3)) {}
-        try
-        {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
-          if ((localObject != null) && (((String)localObject).startsWith("music_gene_"))) {
-            this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.c();
+          int i;
+          try
+          {
+            i = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
           }
+          catch (RemoteException localRemoteException1)
+          {
+            localRemoteException1.printStackTrace();
+            i = 4;
+          }
+          if (i != 2)
+          {
+            if (i == 3) {
+              try
+              {
+                String str = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
+                if ((str != null) && (str.startsWith("music_gene_"))) {
+                  this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.c();
+                }
+              }
+              catch (RemoteException localRemoteException2)
+              {
+                localRemoteException2.printStackTrace();
+              }
+            }
+            a(4);
+          }
+          e();
+          this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
         }
-        catch (RemoteException localRemoteException2)
-        {
-          localRemoteException2.printStackTrace();
-          continue;
-        }
-        a(4);
-        e();
-        this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_a_of_type_AndroidContentContext = null;
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener = null;
-        super.onDestroy();
-        return;
-      }
-      catch (RemoteException localRemoteException1)
-      {
-        localRemoteException1.printStackTrace();
-        i = 4;
       }
     }
+    catch (Exception localException)
+    {
+      QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.onCreate exception", localException);
+    }
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener = null;
+    super.onDestroy();
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     if (paramCustomWebView != null) {}
-    label122:
     for (;;)
     {
       try
       {
         paramCustomWebView = paramCustomWebView.getUrl();
-        if (!TextUtils.isEmpty(paramCustomWebView)) {
-          break label122;
+        Object localObject = paramCustomWebView;
+        if (TextUtils.isEmpty(paramCustomWebView))
+        {
+          WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
+          localObject = paramCustomWebView;
+          if (localWebUiBaseInterface != null)
+          {
+            localObject = paramCustomWebView;
+            if ((localWebUiBaseInterface instanceof WebUiUtils.WebUiMethodInterface)) {
+              localObject = ((WebUiUtils.WebUiMethodInterface)localWebUiBaseInterface).getCurrentUrl();
+            }
+          }
         }
-        WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
-        if ((localWebUiBaseInterface == null) || (!(localWebUiBaseInterface instanceof WebUiUtils.WebUiMethodInterface))) {
-          break label122;
+        if (this.jdField_a_of_type_AndroidContentContext != null)
+        {
+          if (a((String)localObject)) {
+            d();
+          }
+          paramCustomWebView = new IntentFilter();
+          paramCustomWebView.addAction("BROAD_CAST_CALL_PAGE_SHARE");
+          this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramCustomWebView);
+          return;
         }
-        paramCustomWebView = ((WebUiUtils.WebUiMethodInterface)localWebUiBaseInterface).getCurrentUrl();
-        if (this.jdField_a_of_type_AndroidContentContext == null) {
-          break;
-        }
-        if (a(paramCustomWebView)) {
-          d();
-        }
-        paramCustomWebView = new IntentFilter();
-        paramCustomWebView.addAction("BROAD_CAST_CALL_PAGE_SHARE");
-        this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramCustomWebView);
-        return;
       }
       catch (Exception paramCustomWebView)
       {
         QLog.e("MusicGeneWebViewPlugin", 1, "MusicGeneWebViewPlugin.onCreate exception", paramCustomWebView);
-        return;
       }
+      return;
       paramCustomWebView = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

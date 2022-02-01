@@ -19,60 +19,69 @@ class PayJsPlugin$3
       try
       {
         if (!paramJSONObject.has("retCode")) {
-          break label256;
+          break label288;
         }
         i = paramJSONObject.getInt("retCode");
-        if ((paramJSONObject == null) || (!paramJSONObject.has("errMsg"))) {
-          break label261;
+        String str;
+        if ((paramJSONObject != null) && (paramJSONObject.has("errMsg"))) {
+          str = paramJSONObject.getString("errMsg");
+        } else {
+          str = "";
         }
-        str = paramJSONObject.getString("errMsg");
-        if ((!paramBoolean) || (i != 0)) {
-          break label217;
-        }
-        if ((paramJSONObject == null) || (!paramJSONObject.has("key_url_valid"))) {
-          break label268;
-        }
-        j = paramJSONObject.getInt("key_url_valid");
-        if (j == 1)
+        if ((paramBoolean) && (i == 0))
         {
-          if (PayJsPlugin.access$900(this.this$0).getAttachedActivity() != null)
-          {
-            PayJsPlugin.access$1100(this.this$0, PayJsPlugin.access$1000(this.this$0).getAttachedActivity(), this.val$payUrl, this.val$referer, this.val$req);
-            QMLog.i("PayJsPlugin", "requestWxPayment urlValid=" + j);
-            QMLog.i("PayJsPlugin", "requestWxPayment error=" + i + ", msg=" + str);
-            return;
+          if ((paramJSONObject == null) || (!paramJSONObject.has("key_url_valid"))) {
+            break label293;
           }
-          QMLog.i("PayJsPlugin", "context is null");
-          continue;
+          j = paramJSONObject.getInt("key_url_valid");
+          if (j == 1)
+          {
+            if (PayJsPlugin.access$900(this.this$0).getAttachedActivity() != null) {
+              PayJsPlugin.access$1100(this.this$0, PayJsPlugin.access$1000(this.this$0).getAttachedActivity(), this.val$payUrl, this.val$referer, this.val$req);
+            } else {
+              QMLog.i("PayJsPlugin", "context is null");
+            }
+          }
+          else {
+            this.val$req.fail("url is invalid");
+          }
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append("requestWxPayment urlValid=");
+          paramJSONObject.append(j);
+          QMLog.i("PayJsPlugin", paramJSONObject.toString());
         }
-        this.val$req.fail("url is invalid");
+        else
+        {
+          paramJSONObject = new JSONObject();
+          paramJSONObject.put("resultCode", i);
+          paramJSONObject.put("resultMsg", str);
+          this.val$req.fail(paramJSONObject, "pay fail");
+        }
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("requestWxPayment error=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(", msg=");
+        paramJSONObject.append(str);
+        QMLog.i("PayJsPlugin", paramJSONObject.toString());
+        return;
       }
       catch (Exception paramJSONObject)
       {
-        this.val$req.fail("pay fail");
-        return;
+        continue;
       }
-      continue;
-      label217:
-      paramJSONObject = new JSONObject();
-      paramJSONObject.put("resultCode", i);
-      paramJSONObject.put("resultMsg", str);
-      this.val$req.fail(paramJSONObject, "pay fail");
-      continue;
-      label256:
+      this.val$req.fail("pay fail");
+      return;
+      label288:
       int i = -1;
       continue;
-      label261:
-      String str = "";
-      continue;
-      label268:
+      label293:
       int j = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PayJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

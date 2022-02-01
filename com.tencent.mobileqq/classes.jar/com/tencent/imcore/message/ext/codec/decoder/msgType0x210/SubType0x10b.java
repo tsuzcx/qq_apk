@@ -14,7 +14,7 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
 
 public class SubType0x10b
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
@@ -27,26 +27,30 @@ public class SubType0x10b
       qqstory_service.MsgTabNodePushNotify localMsgTabNodePushNotify = new qqstory_service.MsgTabNodePushNotify();
       localMsgTabNodePushNotify.mergeFrom(paramMsgType0x210.vProtobuf);
       paramQQAppInterface = (MsgTabStoryManager)paramQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER);
-      if (localMsgTabStoryNodeConfigManager.a) {
+      if (localMsgTabStoryNodeConfigManager.a)
+      {
         paramQQAppInterface.a().a(localMsgTabNodePushNotify);
+        return;
       }
-      return;
     }
     catch (InvalidProtocolBufferMicroException paramQQAppInterface)
     {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0xf3], errInfo->" + paramQQAppInterface.getMessage());
+      paramMsgType0x210 = new StringBuilder();
+      paramMsgType0x210.append("[msg0x210.uSubMsgType == 0xf3], errInfo->");
+      paramMsgType0x210.append(paramQQAppInterface.getMessage());
+      QLog.e("Q.msg.BaseMessageProcessor", 1, paramMsgType0x210.toString());
     }
   }
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    a(paramOnLinePushMessageProcessor.a(), paramMsgType0x210);
+    a((QQAppInterface)paramOnLinePushMessageProcessor.a(), paramMsgType0x210);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x10b
  * JD-Core Version:    0.7.0.1
  */

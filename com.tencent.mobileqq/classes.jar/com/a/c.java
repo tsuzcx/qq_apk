@@ -27,19 +27,22 @@ public final class c
   
   public final InputStream b()
   {
-    if (this.a == null) {
-      throw new IllegalStateException("Content has not been provided");
-    }
-    if (this.b) {
+    InputStream localInputStream = this.a;
+    if (localInputStream != null)
+    {
+      if (!this.b)
+      {
+        this.b = true;
+        return localInputStream;
+      }
       throw new IllegalStateException("Content has been consumed");
     }
-    this.b = true;
-    return this.a;
+    throw new IllegalStateException("Content has not been provided");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.a.c
  * JD-Core Version:    0.7.0.1
  */

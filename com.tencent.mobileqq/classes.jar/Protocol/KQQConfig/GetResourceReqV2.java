@@ -45,8 +45,9 @@ public final class GetResourceReqV2
   {
     paramJceOutputStream.write(this.vecResReqInfo, 1);
     paramJceOutputStream.write(this.iPluginType, 2);
-    if (this.strModel != null) {
-      paramJceOutputStream.write(this.strModel, 3);
+    String str = this.strModel;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.iAppid, 4);
     paramJceOutputStream.write(this.cReqVer, 5);
@@ -54,7 +55,7 @@ public final class GetResourceReqV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     protocol.KQQConfig.GetResourceReqV2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,32 @@
 package com.tencent.av.ui;
 
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.HorizontalScrollView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 class EffectSettingUi$3
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  EffectSettingUi$3(EffectSettingUi paramEffectSettingUi, ViewTreeObserver paramViewTreeObserver, HorizontalScrollView paramHorizontalScrollView) {}
+  EffectSettingUi$3(EffectSettingUi paramEffectSettingUi) {}
   
-  @TargetApi(16)
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
+    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1007L);
+    this.a.b(-1007L, true);
+    AVEffectReport.b();
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.a, 1, "onGlobalLayout");
-      this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setTag(new Object());
-      this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.d();
-      return;
-      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
+      AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localAVActivity.a.a(-1007L, localAVActivity, 99, 0);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.EffectSettingUi.3
  * JD-Core Version:    0.7.0.1
  */

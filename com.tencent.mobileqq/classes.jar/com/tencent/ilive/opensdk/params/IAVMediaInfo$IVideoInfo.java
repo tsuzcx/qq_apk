@@ -13,12 +13,19 @@ public class IAVMediaInfo$IVideoInfo
   @NonNull
   public String toString()
   {
-    return "IVideoInfo:[mWidth:" + this.mWidth + " mHeight:" + this.mHeight + " mRotate:" + this.mRotate + "]";
+    StringBuilder localStringBuilder = new StringBuilder("IVideoInfo:[mWidth:");
+    localStringBuilder.append(this.mWidth);
+    localStringBuilder.append(" mHeight:");
+    localStringBuilder.append(this.mHeight);
+    localStringBuilder.append(" mRotate:");
+    localStringBuilder.append(this.mRotate);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.opensdk.params.IAVMediaInfo.IVideoInfo
  * JD-Core Version:    0.7.0.1
  */

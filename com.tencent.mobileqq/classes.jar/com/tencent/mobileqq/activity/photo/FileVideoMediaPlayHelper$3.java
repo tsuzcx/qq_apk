@@ -14,14 +14,14 @@ class FileVideoMediaPlayHelper$3
   public void run()
   {
     String str = QFileUtils.a(this.a);
-    if (FileUtils.b(str)) {
+    if (FileUtils.fileExistsAndNotEmpty(str)) {
       ThreadManagerV2.getUIHandlerV2().post(new FileVideoMediaPlayHelper.3.1(this, str));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.FileVideoMediaPlayHelper.3
  * JD-Core Version:    0.7.0.1
  */

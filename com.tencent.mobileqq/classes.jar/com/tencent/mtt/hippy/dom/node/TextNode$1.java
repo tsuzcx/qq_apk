@@ -1,7 +1,6 @@
 package com.tencent.mtt.hippy.dom.node;
 
 import android.text.Layout;
-import android.util.Log;
 import com.tencent.mtt.hippy.dom.a.f;
 import com.tencent.mtt.hippy.dom.a.g;
 import com.tencent.mtt.hippy.dom.a.g.a;
@@ -13,32 +12,35 @@ final class TextNode$1
 {
   public long measure(g paramg, float paramFloat1, f paramf1, float paramFloat2, f paramf2)
   {
-    paramf2 = (TextNode)paramg;
-    paramg = null;
-    int i = 0;
+    paramg = (TextNode)paramg;
+    int i;
     try
     {
-      paramf1 = TextNode.access$000(paramf2, paramFloat1, paramf1);
-      paramg = paramf1;
+      paramg = TextNode.access$000(paramg, paramFloat1, paramf1);
+      i = 0;
     }
-    catch (Throwable paramf1)
+    catch (Throwable paramg)
     {
-      for (;;)
-      {
-        Log.e("TextNode", "text createLayout", paramf1);
-        i = 1;
-      }
-      LogUtils.d("TextNode", "measure: w: " + paramg.getWidth() + " h: " + paramg.getHeight());
+      LogUtils.e("TextNode", "text createLayout", paramg);
+      i = 1;
+      paramg = null;
     }
-    if ((i != 0) || (paramg == null)) {
-      return h.a(paramFloat1, paramFloat2);
+    if ((i == 0) && (paramg != null))
+    {
+      paramf1 = new StringBuilder();
+      paramf1.append("measure: w: ");
+      paramf1.append(paramg.getWidth());
+      paramf1.append(" h: ");
+      paramf1.append(paramg.getHeight());
+      LogUtils.d("TextNode", paramf1.toString());
+      return h.a(paramg.getWidth(), paramg.getHeight());
     }
-    return h.a(paramg.getWidth(), paramg.getHeight());
+    return h.a(paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.TextNode.1
  * JD-Core Version:    0.7.0.1
  */

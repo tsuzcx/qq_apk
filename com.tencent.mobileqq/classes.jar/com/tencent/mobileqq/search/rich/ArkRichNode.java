@@ -19,8 +19,20 @@ public class ArkRichNode
   public ArkRichNode(ArkNodeConfig paramArkNodeConfig)
   {
     this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig = paramArkNodeConfig;
-    if ((this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig != null) && (QLog.isColorLevel())) {
-      QLog.d("ArkRichNode", 2, "id:" + this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.a() + " appname:" + this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.b() + " viewname:" + this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.d() + " miniversion:" + this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.c() + " path：" + this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.a());
+    if ((this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig != null) && (QLog.isColorLevel()))
+    {
+      paramArkNodeConfig = new StringBuilder();
+      paramArkNodeConfig.append("id:");
+      paramArkNodeConfig.append(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.a());
+      paramArkNodeConfig.append(" appname:");
+      paramArkNodeConfig.append(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.b());
+      paramArkNodeConfig.append(" viewname:");
+      paramArkNodeConfig.append(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.d());
+      paramArkNodeConfig.append(" miniversion:");
+      paramArkNodeConfig.append(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.c());
+      paramArkNodeConfig.append(" path：");
+      paramArkNodeConfig.append(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.a());
+      QLog.d("ArkRichNode", 2, paramArkNodeConfig.toString());
     }
   }
   
@@ -64,12 +76,14 @@ public class ArkRichNode
     if (QLog.isColorLevel()) {
       QLog.d("ArkRichNode", 2, "onDestroy");
     }
-    if (jdField_a_of_type_ComTencentMobileqqSearchRichArkAppCallBackHandler != null) {
-      jdField_a_of_type_ComTencentMobileqqSearchRichArkAppCallBackHandler.b(this);
+    Object localObject = jdField_a_of_type_ComTencentMobileqqSearchRichArkAppCallBackHandler;
+    if (localObject != null) {
+      ((ArkAppCallBackHandler)localObject).b(this);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.doOnEvent(2);
+      ((ArkNodeContainer)localObject).doOnEvent(2);
       this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.a();
       this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer = null;
     }
@@ -84,37 +98,45 @@ public class ArkRichNode
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkRichNode", 2, "onSetTalkBackText:" + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    StringBuilder localStringBuilder;
-    do
+    if (QLog.isColorLevel())
     {
-      IRichNodeView localIRichNodeView;
-      do
-      {
-        do
-        {
-          return;
-          localIRichNodeView = a();
-        } while (localIRichNodeView == null);
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramString);
-        paramString = localIRichNodeView.a();
-        if (paramString != null) {
-          paramString.setContentDescription(localStringBuilder);
-        }
-      } while (!(localIRichNodeView instanceof ArkNodeView));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSetTalkBackText:");
+      localStringBuilder.append(paramString);
+      QLog.d("ArkRichNode", 2, localStringBuilder.toString());
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    IRichNodeView localIRichNodeView = a();
+    if (localIRichNodeView == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    paramString = localIRichNodeView.a();
+    if (paramString != null) {
+      paramString.setContentDescription(localStringBuilder);
+    }
+    if ((localIRichNodeView instanceof ArkNodeView))
+    {
       paramString = ((ArkNodeView)localIRichNodeView).b();
-    } while (!(paramString instanceof ArkAppView));
-    ((ArkAppView)paramString).setContentDescription(localStringBuilder);
+      if ((paramString instanceof ArkAppView)) {
+        ((ArkAppView)paramString).setContentDescription(localStringBuilder);
+      }
+    }
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkRichNode", 2, "onNotifyEvent, key:" + paramString1 + " value:" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onNotifyEvent, key:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" value:");
+      localStringBuilder.append(paramString2);
+      QLog.d("ArkRichNode", 2, localStringBuilder.toString());
     }
     b(paramString1, paramString2);
   }
@@ -122,15 +144,17 @@ public class ArkRichNode
   public void a(String paramString1, String paramString2, String paramString3)
   {
     super.a(paramString1, paramString2, paramString3);
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.updateMetaData(a());
+    paramString1 = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
+    if (paramString1 != null) {
+      paramString1.updateMetaData(a());
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.activateView(paramBoolean);
+    ArkNodeContainer localArkNodeContainer = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
+    if (localArkNodeContainer != null) {
+      localArkNodeContainer.activateView(paramBoolean);
     }
   }
   
@@ -142,22 +166,24 @@ public class ArkRichNode
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.doOnEvent(0);
+    ArkNodeContainer localArkNodeContainer = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
+    if (localArkNodeContainer != null) {
+      localArkNodeContainer.doOnEvent(0);
     }
   }
   
   public void c()
   {
     super.c();
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.doOnEvent(1);
+    ArkNodeContainer localArkNodeContainer = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
+    if (localArkNodeContainer != null) {
+      localArkNodeContainer.doOnEvent(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkRichNode
  * JD-Core Version:    0.7.0.1
  */

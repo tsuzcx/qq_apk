@@ -85,16 +85,6 @@ public final class StorageManager
     a(paramString, paramArrayOfByte);
   }
   
-  public final boolean a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "key");
-    Context localContext = jdField_a_of_type_AndroidContentContext;
-    if (localContext == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("mContext");
-    }
-    return localContext.getSharedPreferences("com_tencent_tkd_topicsdk_sp", 0).contains(paramString);
-  }
-  
   public final boolean a(@NotNull String paramString, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "key");
@@ -114,7 +104,7 @@ public final class StorageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.StorageManager
  * JD-Core Version:    0.7.0.1
  */

@@ -30,22 +30,26 @@ class AvatarOnGestureListener$TroopMemberInfoCallBack
   {
     if (paramTroopMemberInfo == null)
     {
-      if (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {}
-      for (int i = 2131694712;; i = 2131694713)
-      {
-        QQToast.a(BaseApplicationImpl.getContext(), 0, i, 0).a();
-        if (QLog.isColorLevel()) {
-          QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() isKicked");
-        }
-        return;
+      int i;
+      if (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        i = 2131694690;
+      } else {
+        i = 2131694691;
+      }
+      QQToast.a(BaseApplicationImpl.getContext(), 0, i, 0).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() isKicked");
       }
     }
-    AvatarOnGestureListener.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAvatardoubletapAvatarOnGestureListener, this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    else
+    {
+      AvatarOnGestureListener.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAvatardoubletapAvatarOnGestureListener, this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.avatardoubletap.AvatarOnGestureListener.TroopMemberInfoCallBack
  * JD-Core Version:    0.7.0.1
  */

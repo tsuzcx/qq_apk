@@ -21,35 +21,36 @@ public class g
   
   public void a(j paramj, Boolean paramBoolean)
   {
-    if (paramj == null) {}
-    do
+    if (paramj == null) {
+      return;
+    }
+    if (e() != null)
     {
-      do
-      {
-        return;
-      } while (e() == null);
       this.b.set(e());
       if ((e().isEmpty()) || (e().peek() != paramj)) {
         e().push(paramj);
       }
       this.a.set(paramj);
-    } while (!paramBoolean.booleanValue());
-    this.c = paramj;
+      if (paramBoolean.booleanValue()) {
+        this.c = paramj;
+      }
+    }
   }
   
   public void b()
   {
-    if ((this.b.get() == null) || (((k)this.b.get()).isEmpty())) {
+    if ((this.b.get() != null) && (!((k)this.b.get()).isEmpty()))
+    {
+      j localj = (j)((k)this.b.get()).peek();
+      this.a.set(localj);
+      if (Looper.myLooper() == Looper.getMainLooper()) {
+        this.c = localj;
+      }
+    }
+    else
+    {
       this.a.set(null);
     }
-    j localj;
-    do
-    {
-      return;
-      localj = (j)((k)this.b.get()).peek();
-      this.a.set(localj);
-    } while (Looper.myLooper() != Looper.getMainLooper());
-    this.c = localj;
   }
   
   public j c()
@@ -77,7 +78,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.appstate.g
  * JD-Core Version:    0.7.0.1
  */

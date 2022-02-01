@@ -10,39 +10,51 @@ public class ApolloBarrageCache
 {
   public void a(Barrage paramBarrage, Bitmap paramBitmap)
   {
-    if ((paramBitmap == null) || (paramBarrage == null) || (TextUtils.isEmpty(paramBarrage.jdField_a_of_type_JavaLangCharSequence))) {
-      return;
+    if ((paramBitmap != null) && (paramBarrage != null))
+    {
+      if (TextUtils.isEmpty(paramBarrage.jdField_a_of_type_JavaLangCharSequence)) {
+        return;
+      }
+      Object localObject2 = paramBarrage.jdField_a_of_type_JavaLangString;
+      Object localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = "";
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramBarrage.jdField_a_of_type_JavaLangCharSequence);
+      paramBarrage = ((StringBuilder)localObject2).toString();
+      this.a.put(paramBarrage, new WeakReference(paramBitmap));
     }
-    String str2 = paramBarrage.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramBarrage = str1 + paramBarrage.jdField_a_of_type_JavaLangCharSequence;
-    this.a.put(paramBarrage, new WeakReference(paramBitmap));
   }
   
   public Bitmap b(Barrage paramBarrage)
   {
-    if ((paramBarrage == null) || (TextUtils.isEmpty(paramBarrage.jdField_a_of_type_JavaLangCharSequence))) {
-      return null;
-    }
-    String str2 = paramBarrage.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramBarrage = str1 + paramBarrage.jdField_a_of_type_JavaLangCharSequence;
-    paramBarrage = (WeakReference)this.a.get(paramBarrage);
-    if (paramBarrage != null) {
-      return (Bitmap)paramBarrage.get();
+    if (paramBarrage != null)
+    {
+      if (TextUtils.isEmpty(paramBarrage.jdField_a_of_type_JavaLangCharSequence)) {
+        return null;
+      }
+      Object localObject2 = paramBarrage.jdField_a_of_type_JavaLangString;
+      Object localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = "";
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramBarrage.jdField_a_of_type_JavaLangCharSequence);
+      paramBarrage = ((StringBuilder)localObject2).toString();
+      paramBarrage = (WeakReference)this.a.get(paramBarrage);
+      if (paramBarrage != null) {
+        return (Bitmap)paramBarrage.get();
+      }
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.ApolloBarrageCache
  * JD-Core Version:    0.7.0.1
  */

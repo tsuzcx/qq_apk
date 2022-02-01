@@ -24,36 +24,36 @@ class HiddenChatFragment$1
     HiddenChatFragment.a(this.this$0).a((List)localObject1);
     Object localObject2 = HiddenChatFragment.a((List)localObject1, TroopAssistantManager.a().c(HiddenChatFragment.a(this.this$0)));
     localObject1 = new ArrayList(((List)localObject2).size());
-    ConversationDataFactory.a((List)localObject2, HiddenChatFragment.a(this.this$0), this.this$0.getActivity(), (List)localObject1, ((List)localObject2).size());
-    if (QLog.isColorLevel()) {
-      QLog.i("tag_hidden_chat", 2, "data|size" + ((List)localObject1).size());
+    ConversationDataFactory.a((List)localObject2, HiddenChatFragment.a(this.this$0), this.this$0.getBaseActivity(), (List)localObject1, ((List)localObject2).size());
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("data|size");
+      ((StringBuilder)localObject2).append(((List)localObject1).size());
+      QLog.i("tag_hidden_chat", 2, ((StringBuilder)localObject2).toString());
     }
     try
     {
       Collections.sort((List)localObject1, HiddenChatFragment.a(this.this$0));
-      if (HiddenChatFragment.a(this.this$0) != null)
-      {
-        localObject2 = HiddenChatFragment.a(this.this$0).obtainMessage(2);
-        ((Message)localObject2).obj = localObject1;
-        HiddenChatFragment.a(this.this$0).removeMessages(2);
-        HiddenChatFragment.a(this.this$0).sendMessage((Message)localObject2);
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(RecentDataListManager.a, 2, "Comparator Exception: ", localException);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d(RecentDataListManager.a, 2, "Comparator Exception: ", localException);
       }
+    }
+    if (HiddenChatFragment.a(this.this$0) != null)
+    {
+      Message localMessage = HiddenChatFragment.a(this.this$0).obtainMessage(2);
+      localMessage.obj = localObject1;
+      HiddenChatFragment.a(this.this$0).removeMessages(2);
+      HiddenChatFragment.a(this.this$0).sendMessage(localMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment.1
  * JD-Core Version:    0.7.0.1
  */

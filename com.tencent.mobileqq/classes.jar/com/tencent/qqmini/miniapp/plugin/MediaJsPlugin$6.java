@@ -15,18 +15,15 @@ class MediaJsPlugin$6
     int i = ((CoverCameraView)this.val$cameraView).getParentId();
     if (i == 0) {
       CoverViewAction.obtain(MediaJsPlugin.access$1300(this.this$0)).del(this.val$cameraId);
-    }
-    for (;;)
-    {
-      this.val$req.ok();
-      return;
+    } else {
       CoverViewAction.obtain(MediaJsPlugin.access$1400(this.this$0)).del(i);
     }
+    this.val$req.ok();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.MediaJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

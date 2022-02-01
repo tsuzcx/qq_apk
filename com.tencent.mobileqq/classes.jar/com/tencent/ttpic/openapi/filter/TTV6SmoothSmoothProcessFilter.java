@@ -56,10 +56,10 @@ public class TTV6SmoothSmoothProcessFilter
   {
     if (paramInt > 50)
     {
-      addParam(new UniformParam.FloatParam("exposure", 0.0136F * (paramInt - 50) + 1.0F));
+      addParam(new UniformParam.FloatParam("exposure", (paramInt - 50) * 0.0136F + 1.0F));
       return;
     }
-    addParam(new UniformParam.FloatParam("exposure", 0.01F * paramInt + 0.5F));
+    addParam(new UniformParam.FloatParam("exposure", paramInt * 0.01F + 0.5F));
   }
   
   public void setLookUpCurve(int paramInt)
@@ -117,7 +117,7 @@ public class TTV6SmoothSmoothProcessFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TTV6SmoothSmoothProcessFilter
  * JD-Core Version:    0.7.0.1
  */

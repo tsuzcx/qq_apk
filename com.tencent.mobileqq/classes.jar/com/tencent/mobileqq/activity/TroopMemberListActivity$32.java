@@ -13,16 +13,16 @@ class TroopMemberListActivity$32
   
   public void onClick(View paramView)
   {
-    if (this.a.d == 11) {
+    if (this.a.mFrom == 11) {
       ReportController.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
     }
-    this.a.b.cancel();
+    this.a.mSearchDialog.cancel();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.32
  * JD-Core Version:    0.7.0.1
  */

@@ -33,8 +33,8 @@ public class GBatteryMonitor
       {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
         this.jdField_a_of_type_Boolean = false;
+        return;
       }
-      return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
@@ -44,7 +44,7 @@ public class GBatteryMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.GBatteryMonitor
  * JD-Core Version:    0.7.0.1
  */

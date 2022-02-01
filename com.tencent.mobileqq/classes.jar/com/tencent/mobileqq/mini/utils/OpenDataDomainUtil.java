@@ -35,55 +35,71 @@ public class OpenDataDomainUtil
   
   private List<String> getDomainWhiteList()
   {
-    for (;;)
+    try
     {
-      int i;
-      try
-      {
-        if (this.mDomainWhiteList == null)
-        {
-          this.mDomainWhiteList = new ArrayList();
-          String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "opendatahosts", ".qlogo.com;.qlogo.cn;.qq.com;.tcb.qcloud.la");
-          if ((str1 != null) && (!str1.equals(this.mCurWhiteListConfig)))
-          {
-            QLog.i("[mini] http.openDataDomainValid", 1, "Default white domain:" + str1);
-            String[] arrayOfString = str1.split(";");
-            if (arrayOfString != null)
-            {
-              int j = arrayOfString.length;
-              i = 0;
-              if (i < j)
-              {
-                String str2 = arrayOfString[i];
-                if (TextUtils.isEmpty(str2)) {
-                  break label144;
-                }
-                this.mDomainWhiteList.add(str2);
-                break label144;
-              }
-            }
-            this.mCurWhiteListConfig = str1;
-          }
-        }
-        return this.mDomainWhiteList;
+      if (this.mDomainWhiteList != null) {
+        break label140;
       }
-      finally {}
-      label144:
-      i += 1;
+      this.mDomainWhiteList = new ArrayList();
+      str = QzoneConfig.getInstance().getConfig("qqminiapp", "opendatahosts", ".qlogo.com;.qlogo.cn;.qq.com;.tcb.qcloud.la");
+      if ((str == null) || (str.equals(this.mCurWhiteListConfig))) {
+        break label140;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Default white domain:");
+      ((StringBuilder)localObject2).append(str);
+      QLog.i("[mini] http.openDataDomainValid", 1, ((StringBuilder)localObject2).toString());
+      localObject2 = str.split(";");
+      if (localObject2 == null) {
+        break label135;
+      }
+      j = localObject2.length;
+      i = 0;
+    }
+    finally
+    {
+      for (;;)
+      {
+        String str;
+        Object localObject2;
+        int j;
+        int i;
+        CharSequence localCharSequence;
+        for (;;)
+        {
+          label135:
+          label140:
+          throw localObject1;
+        }
+        i += 1;
+      }
+    }
+    if (i < j)
+    {
+      localCharSequence = localObject2[i];
+      if (!TextUtils.isEmpty(localCharSequence)) {
+        this.mDomainWhiteList.add(localCharSequence);
+      }
+    }
+    else
+    {
+      this.mCurWhiteListConfig = str;
+      return this.mDomainWhiteList;
     }
   }
   
   public static OpenDataDomainUtil getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new OpenDataDomainUtil();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new OpenDataDomainUtil();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private boolean isDomainConfigCached(DomainConfig paramDomainConfig, int paramInt)
@@ -101,55 +117,54 @@ public class OpenDataDomainUtil
   
   private void putDomainConfigToCache(DomainConfig paramDomainConfig, int paramInt)
   {
-    if (paramDomainConfig == null) {}
-    ArrayList localArrayList1;
-    do
-    {
+    if (paramDomainConfig == null) {
       return;
-      if (this.mCachedDomainConfigMap == null) {
-        this.mCachedDomainConfigMap = new ConcurrentHashMap();
-      }
-      ArrayList localArrayList2 = (ArrayList)this.mCachedDomainConfigMap.get(Integer.valueOf(paramInt));
-      localArrayList1 = localArrayList2;
-      if (localArrayList2 == null)
-      {
-        localArrayList1 = new ArrayList();
-        this.mCachedDomainConfigMap.put(Integer.valueOf(paramInt), localArrayList1);
-      }
-    } while (localArrayList1.contains(paramDomainConfig));
-    localArrayList1.add(paramDomainConfig);
+    }
+    if (this.mCachedDomainConfigMap == null) {
+      this.mCachedDomainConfigMap = new ConcurrentHashMap();
+    }
+    ArrayList localArrayList2 = (ArrayList)this.mCachedDomainConfigMap.get(Integer.valueOf(paramInt));
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null)
+    {
+      localArrayList1 = new ArrayList();
+      this.mCachedDomainConfigMap.put(Integer.valueOf(paramInt), localArrayList1);
+    }
+    if (!localArrayList1.contains(paramDomainConfig)) {
+      localArrayList1.add(paramDomainConfig);
+    }
   }
   
   public boolean isDomainValid(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("[mini] http.domainValid", 1, "url is null. url : " + paramString);
-    }
-    Object localObject;
-    label80:
-    do
+    if (TextUtils.isEmpty(paramString))
     {
-      for (;;)
-      {
-        return false;
-        localObject = paramString.toLowerCase();
-        if ((URLUtil.isHttpUrl(paramString)) || (URLUtil.isHttpsUrl(paramString))) {}
-        for (int i = 1; i != 0; i = 0)
-        {
-          localObject = DomainConfig.getDomainConfig((String)localObject);
-          if (!isDomainConfigCached((DomainConfig)localObject, 0)) {
-            break label80;
-          }
-          return true;
-        }
-      }
-    } while (!checkWnsConfig(paramString, 0, (DomainConfig)localObject));
-    return true;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("url is null. url : ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("[mini] http.domainValid", 1, ((StringBuilder)localObject).toString());
+      return false;
+    }
+    Object localObject = paramString.toLowerCase();
+    int i;
+    if ((!URLUtil.isHttpUrl(paramString)) && (!URLUtil.isHttpsUrl(paramString))) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i == 0) {
+      return false;
+    }
+    localObject = DomainConfig.getDomainConfig((String)localObject);
+    if (isDomainConfigCached((DomainConfig)localObject, 0)) {
+      return true;
+    }
+    return checkWnsConfig(paramString, 0, (DomainConfig)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.OpenDataDomainUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -18,27 +18,28 @@ class CustomHeightFragment$ConfessUIStyleHandler
 {
   CustomHeightFragment$ConfessUIStyleHandler(CustomHeightFragment paramCustomHeightFragment) {}
   
-  public void a()
+  public void Y_()
   {
-    WebView localWebView;
-    Object localObject;
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a() != null)
     {
-      localWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
-      localWebView.setId(2131381863);
+      WebView localWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
+      localWebView.setId(2131381075);
       if (this.b != -1) {
         localWebView.setBackgroundColor(this.b);
       }
-      localObject = (Activity)localWebView.getContext();
-      if ((((Activity)localObject).getIntent() == null) || (((Activity)localObject).getIntent().getExtras() == null)) {
-        break label210;
+      Object localObject = (Activity)localWebView.getContext();
+      int i;
+      if ((((Activity)localObject).getIntent() != null) && (((Activity)localObject).getIntent().getExtras() != null)) {
+        i = ((Activity)localObject).getIntent().getExtras().getInt("customheight", 0);
+      } else {
+        i = 0;
       }
-    }
-    label210:
-    for (int i = ((Activity)localObject).getIntent().getExtras().getInt("customheight", 0);; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SwiftBrowserUIStyleHandler", 2, "initWebViewInContentView height=" + i);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initWebViewInContentView height=");
+        ((StringBuilder)localObject).append(i);
+        QLog.i("SwiftBrowserUIStyleHandler", 2, ((StringBuilder)localObject).toString());
       }
       if (i != 0)
       {
@@ -48,21 +49,20 @@ class CustomHeightFragment$ConfessUIStyleHandler
           ((RelativeLayout.LayoutParams)localObject).addRule(12);
           this.c.addView(localWebView, 0, (ViewGroup.LayoutParams)localObject);
         }
-        for (;;)
+        else
         {
-          this.c.setOnClickListener(new CustomHeightFragment.ConfessUIStyleHandler.1(this));
-          return;
           this.c.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, i));
         }
+        this.c.setOnClickListener(new CustomHeightFragment.ConfessUIStyleHandler.1(this));
+        return;
       }
       this.c.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, -1));
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.CustomHeightFragment.ConfessUIStyleHandler
  * JD-Core Version:    0.7.0.1
  */

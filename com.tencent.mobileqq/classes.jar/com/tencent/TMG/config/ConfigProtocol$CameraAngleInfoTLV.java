@@ -130,26 +130,27 @@ class ConfigProtocol$CameraAngleInfoTLV
   
   public boolean Unpack(ByteBuffer paramByteBuffer)
   {
-    if ((this.m_length != getLength()) || (paramByteBuffer.length() < this.m_length)) {
-      return false;
+    if ((this.m_length == getLength()) && (paramByteBuffer.length() >= this.m_length))
+    {
+      this.m_FrontCameraAngleForLocalPreview = paramByteBuffer.ReadUInt8();
+      this.m_BackCameraAngleForLocalPreview = paramByteBuffer.ReadUInt8();
+      this.m_FrontCameraAngleForRemote_0 = paramByteBuffer.ReadUInt8();
+      this.m_BackCameraAngleForRemote_0 = paramByteBuffer.ReadUInt8();
+      this.m_FrontCameraAngleForRemote_90 = paramByteBuffer.ReadUInt8();
+      this.m_BackCameraAngleForRemote_90 = paramByteBuffer.ReadUInt8();
+      this.m_FrontCameraAngleForRemote_180 = paramByteBuffer.ReadUInt8();
+      this.m_BackCameraAngleForRemote_180 = paramByteBuffer.ReadUInt8();
+      this.m_FrontCameraAngleForRemote_270 = paramByteBuffer.ReadUInt8();
+      this.m_BackCameraAngleForRemote_270 = paramByteBuffer.ReadUInt8();
+      this.m_FrontCameraFormat = paramByteBuffer.ReadUInt8();
+      this.m_BackCameraFormat = paramByteBuffer.ReadUInt8();
+      this.m_param3 = paramByteBuffer.ReadUInt8();
+      this.m_param4 = paramByteBuffer.ReadUInt8();
+      this.m_param5 = paramByteBuffer.ReadUInt8();
+      this.m_param6 = paramByteBuffer.ReadUInt8();
+      return true;
     }
-    this.m_FrontCameraAngleForLocalPreview = paramByteBuffer.ReadUInt8();
-    this.m_BackCameraAngleForLocalPreview = paramByteBuffer.ReadUInt8();
-    this.m_FrontCameraAngleForRemote_0 = paramByteBuffer.ReadUInt8();
-    this.m_BackCameraAngleForRemote_0 = paramByteBuffer.ReadUInt8();
-    this.m_FrontCameraAngleForRemote_90 = paramByteBuffer.ReadUInt8();
-    this.m_BackCameraAngleForRemote_90 = paramByteBuffer.ReadUInt8();
-    this.m_FrontCameraAngleForRemote_180 = paramByteBuffer.ReadUInt8();
-    this.m_BackCameraAngleForRemote_180 = paramByteBuffer.ReadUInt8();
-    this.m_FrontCameraAngleForRemote_270 = paramByteBuffer.ReadUInt8();
-    this.m_BackCameraAngleForRemote_270 = paramByteBuffer.ReadUInt8();
-    this.m_FrontCameraFormat = paramByteBuffer.ReadUInt8();
-    this.m_BackCameraFormat = paramByteBuffer.ReadUInt8();
-    this.m_param3 = paramByteBuffer.ReadUInt8();
-    this.m_param4 = paramByteBuffer.ReadUInt8();
-    this.m_param5 = paramByteBuffer.ReadUInt8();
-    this.m_param6 = paramByteBuffer.ReadUInt8();
-    return true;
+    return false;
   }
 }
 

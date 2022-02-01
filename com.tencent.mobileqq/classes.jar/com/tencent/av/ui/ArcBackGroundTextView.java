@@ -43,32 +43,40 @@ public class ArcBackGroundTextView
     paramContext.recycle();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
     super.onDraw(paramCanvas);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_Int = Math.round(this.jdField_b_of_type_Float);
     this.jdField_b_of_type_Int = ((int)Math.round(Math.sqrt(Math.pow(this.jdField_a_of_type_Float, 2.0D) - Math.pow(this.jdField_a_of_type_Float - this.jdField_a_of_type_Int, 2.0D)) * 2.0D));
     setMeasuredDimension(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
-    if (getId() == 2131376457) {}
-    for (paramInt1 = 0;; paramInt1 = 5) {
-      for (float f1 = 0.0F; f1 < this.jdField_b_of_type_Int; f1 = (float)(f1 + 0.2D))
-      {
-        float f2 = (float)(Math.sqrt(Math.pow(this.jdField_a_of_type_Float, 2.0D) - Math.pow(f1 - this.jdField_b_of_type_Int / 2, 2.0D)) - this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1, f2 + paramInt1);
-      }
+    if (getId() == 2131375969) {
+      paramInt1 = 0;
+    } else {
+      paramInt1 = 5;
+    }
+    double d1;
+    for (float f1 = 0.0F; f1 < this.jdField_b_of_type_Int; f1 = (float)(d1 + 0.2D))
+    {
+      d1 = Math.sqrt(Math.pow(this.jdField_a_of_type_Float, 2.0D) - Math.pow(f1 - this.jdField_b_of_type_Int / 2, 2.0D));
+      double d2 = this.jdField_a_of_type_Int;
+      Double.isNaN(d2);
+      float f2 = (float)(d1 - d2);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1, f2 + paramInt1);
+      d1 = f1;
+      Double.isNaN(d1);
     }
     this.jdField_a_of_type_AndroidGraphicsPath.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ArcBackGroundTextView
  * JD-Core Version:    0.7.0.1
  */

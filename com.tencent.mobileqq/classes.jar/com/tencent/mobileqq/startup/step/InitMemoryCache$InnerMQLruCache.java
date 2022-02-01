@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.util.MQLruCache;
 import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Utils;
 import com.tencent.commonsdk.cache.Sizeable;
+import com.tencent.mobileqq.kandian.base.image.imageloader.CloseableBitmap;
+import com.tencent.mobileqq.kandian.base.image.imageloader.Utils;
 import com.tencent.qqperf.opt.clearmemory.MemoryClearManager;
 
 class InitMemoryCache$InnerMQLruCache
@@ -30,10 +30,8 @@ class InitMemoryCache$InnerMQLruCache
     if ((paramObject instanceof BitmapDrawable))
     {
       paramObject = ((BitmapDrawable)paramObject).getBitmap();
-      if (paramObject != null)
-      {
-        int i = paramObject.getRowBytes();
-        return paramObject.getHeight() * i;
+      if (paramObject != null) {
+        return paramObject.getRowBytes() * paramObject.getHeight();
       }
     }
     else if ((paramObject instanceof CloseableBitmap))
@@ -80,7 +78,7 @@ class InitMemoryCache$InnerMQLruCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitMemoryCache.InnerMQLruCache
  * JD-Core Version:    0.7.0.1
  */

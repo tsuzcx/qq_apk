@@ -26,14 +26,15 @@ public class CommonLoadingView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetCommonLoadingView$OnFirstDrawListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetCommonLoadingView$OnFirstDrawListener.c();
+      paramCanvas = this.jdField_a_of_type_ComTencentMobileqqWidgetCommonLoadingView$OnFirstDrawListener;
+      if (paramCanvas != null) {
+        paramCanvas.g();
       }
     }
   }
@@ -45,7 +46,7 @@ public class CommonLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CommonLoadingView
  * JD-Core Version:    0.7.0.1
  */

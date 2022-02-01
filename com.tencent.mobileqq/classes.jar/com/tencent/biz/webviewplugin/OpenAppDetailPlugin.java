@@ -37,28 +37,30 @@ public class OpenAppDetailPlugin
     AppClient.a(this.mRuntime.a(), paramString1, 2470, localBundle);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (!"openToAppDetail".equals(paramString2)) {}
-    do
+    if (!"openToAppDetail".equals(paramString2)) {
+      return false;
+    }
+    if ("openAppDetailPage".equals(paramString3))
     {
-      do
-      {
-        return false;
-      } while (!"openAppDetailPage".equals(paramString3));
       if (paramVarArgs.length == 2)
       {
         a(paramVarArgs[0], paramVarArgs[1]);
         return true;
       }
-    } while (paramVarArgs.length != 3);
-    a(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
-    return true;
+      if (paramVarArgs.length == 3)
+      {
+        a(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OpenAppDetailPlugin
  * JD-Core Version:    0.7.0.1
  */

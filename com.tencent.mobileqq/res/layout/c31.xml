@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/idz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" layout="@layout/c50" />
-    <include android:id="@id/mys" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/b_j" android:layout_below="@id/idz" layout="@layout/c34" />
-    <FrameLayout android:id="@id/l9k" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/b_j" android:layout_below="@id/idz" />
-    <include android:id="@id/npe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/c5w" />
-    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ab2" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/egb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/jm8" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="@dimen/al0" android:text="@string/xjn" android:contentDescription="@string/xjn" />
+    <com.tencent.mobileqq.widget.QFormSimpleItem android:id="@id/jbe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al0" formItem:bgType="iwf" formItem:showArrow="true" />
+    <com.tencent.mobileqq.widget.QFormSimpleItem android:id="@id/jom" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:showArrow="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/nq5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="@dimen/al0" android:text="@string/xjm" android:contentDescription="@string/xjm" />
+        <com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/nah" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/al0">
+            <com.tencent.mobileqq.widget.QFormSimpleItem android:id="@id/jnr" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:leftText="@string/xjo" formItem:showArrow="false" />
+            <ImageView android:id="@id/o8s" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </com.tencent.mobileqq.widget.FormItemRelativeLayout>
+        <com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/nai" android:background="@drawable/common_strip_setting_bottom" android:paddingTop="19.5dip" android:paddingBottom="19.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:id="@id/o8v" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:id="@id/joj" android:paddingLeft="@dimen/is" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/xjp" style="@style/w2" />
+                <ImageView android:id="@id/o8t" android:visibility="gone" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/o8u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_below="@id/o8v">
+                <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/jil" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/jbf" android:paddingLeft="@dimen/is" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/jil" />
+            </RelativeLayout>
+        </com.tencent.mobileqq.widget.FormItemRelativeLayout>
+    </LinearLayout>
+    <View android:layout_width="fill_parent" android:layout_height="40.0dip" />
+</LinearLayout>

@@ -5,12 +5,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import androidx.viewpager.widget.ViewPager;
-import com.tencent.tkd.weibo.R.id;
 import com.tencent.tkd.weibo.UiComponentSdkKt;
 import com.tencent.tkd.weibo.bean.EditObject;
+import com.tencent.tkd.weibo.component.R.id;
 import com.tencent.tkd.weibo.data.DataTransferManager;
 import com.tencent.tkd.weibo.framework.BasePopupView;
 import com.tencent.tkd.weibo.framework.color.IComponentColorStrategy;
+import java.util.HashMap;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
@@ -29,6 +30,7 @@ public final class AtContactView
   private final AtContactView.contactFlagListener.1 jdField_a_of_type_ComTencentTkdWeiboAtContactAtContactView$contactFlagListener$1;
   private MyFansListView jdField_a_of_type_ComTencentTkdWeiboAtContactMyFansListView;
   private MyFollowListView jdField_a_of_type_ComTencentTkdWeiboAtContactMyFollowListView;
+  private HashMap jdField_a_of_type_JavaUtilHashMap;
   private View jdField_b_of_type_AndroidViewView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   
@@ -45,7 +47,7 @@ public final class AtContactView
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("myFollowView");
       }
-      ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().c()));
+      ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().d()));
       localObject = this.jdField_a_of_type_AndroidViewView;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("myFollowTipsView");
@@ -55,7 +57,7 @@ public final class AtContactView
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("myFansView");
       }
-      ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().d()));
+      ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().e()));
       localObject = this.jdField_b_of_type_AndroidViewView;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("myFansTipsView");
@@ -67,7 +69,7 @@ public final class AtContactView
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("myFollowView");
     }
-    ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().d()));
+    ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().e()));
     localObject = this.jdField_a_of_type_AndroidViewView;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("myFollowTipsView");
@@ -77,7 +79,7 @@ public final class AtContactView
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("myFansView");
     }
-    ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().c()));
+    ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().d()));
     localObject = this.jdField_b_of_type_AndroidViewView;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("myFansTipsView");
@@ -85,7 +87,22 @@ public final class AtContactView
     ((View)localObject).setVisibility(0);
   }
   
-  public void onAttachedToWindow()
+  public View a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    View localView2 = (View)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = findViewById(paramInt);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localView1);
+    }
+    return localView1;
+  }
+  
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     DataTransferManager.a.a((Function2)this.jdField_a_of_type_ComTencentTkdWeiboAtContactAtContactView$contactFlagListener$1);
@@ -93,36 +110,14 @@ public final class AtContactView
   
   public void onClick(@Nullable View paramView)
   {
-    int i;
-    if (paramView != null)
-    {
+    if (paramView != null) {
       paramView = Integer.valueOf(paramView.getId());
-      i = R.id.h;
-      if (paramView != null) {
-        break label42;
-      }
-      label20:
-      i = R.id.g;
-      if (paramView != null) {
-        break label75;
-      }
-      label28:
-      i = R.id.j;
-      if (paramView != null) {
-        break label108;
-      }
-    }
-    label42:
-    label75:
-    label108:
-    while (paramView.intValue() != i)
-    {
-      return;
+    } else {
       paramView = null;
-      break;
-      if (paramView.intValue() != i) {
-        break label20;
-      }
+    }
+    int i = R.id.i;
+    if ((paramView != null) && (paramView.intValue() == i))
+    {
       a(0);
       paramView = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
       if (paramView == null) {
@@ -130,9 +125,10 @@ public final class AtContactView
       }
       paramView.setCurrentItem(0);
       return;
-      if (paramView.intValue() != i) {
-        break label28;
-      }
+    }
+    i = R.id.h;
+    if ((paramView != null) && (paramView.intValue() == i))
+    {
       a(1);
       paramView = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
       if (paramView == null) {
@@ -141,10 +137,16 @@ public final class AtContactView
       paramView.setCurrentItem(1);
       return;
     }
-    a(null);
+    i = R.id.l;
+    if (paramView == null) {
+      return;
+    }
+    if (paramView.intValue() == i) {
+      a(null);
+    }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     DataTransferManager.a.b((Function2)this.jdField_a_of_type_ComTencentTkdWeiboAtContactAtContactView$contactFlagListener$1);
@@ -152,7 +154,7 @@ public final class AtContactView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.atContact.AtContactView
  * JD-Core Version:    0.7.0.1
  */

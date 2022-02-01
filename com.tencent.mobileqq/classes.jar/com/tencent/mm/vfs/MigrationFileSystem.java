@@ -43,34 +43,34 @@ public class MigrationFileSystem
   private final FileSystem[] mFSList;
   private boolean mPositive;
   private final String mPositiveMacro;
-  private boolean mSpeedMigrateSucc = false;
+  private boolean mSpeedMigrateSucc;
   
   protected MigrationFileSystem(Parcel paramParcel)
   {
+    int i = 0;
+    this.mSpeedMigrateSucc = false;
     VFSUtils.checkFileSystemVersion(paramParcel, MigrationFileSystem.class, 3);
-    int j;
-    if (paramParcel.readInt() == 1)
-    {
-      this.mSpeedMigrateSucc = bool;
-      j = paramParcel.readInt();
-      this.mFSList = new FileSystem[j];
+    int j = paramParcel.readInt();
+    boolean bool = true;
+    if (j != 1) {
+      bool = false;
     }
-    for (;;)
+    this.mSpeedMigrateSucc = bool;
+    j = paramParcel.readInt();
+    this.mFSList = new FileSystem[j];
+    while (i < j)
     {
-      if (i >= j) {
-        break label105;
-      }
       FileSystem localFileSystem = (FileSystem)paramParcel.readParcelable(getClass().getClassLoader());
-      if (localFileSystem == null)
+      if (localFileSystem != null)
+      {
+        this.mFSList[i] = localFileSystem;
+        i += 1;
+      }
+      else
       {
         throw new IllegalArgumentException("Wrong wrapped filesystem.");
-        bool = false;
-        break;
       }
-      this.mFSList[i] = localFileSystem;
-      i += 1;
     }
-    label105:
     this.mPositiveMacro = paramParcel.readString();
     this.mEffectiveFS = Arrays.asList(this.mFSList);
     ensureCallback();
@@ -78,345 +78,396 @@ public class MigrationFileSystem
   
   public MigrationFileSystem(String paramString, FileSystem paramFileSystem, FileSystem... paramVarArgs)
   {
-    if (paramFileSystem == null) {
-      throw new IllegalArgumentException("destination == null");
-    }
-    this.mPositiveMacro = paramString;
-    paramString = new FileSystem[paramVarArgs.length + 1];
-    paramString[0] = paramFileSystem;
-    int i = 1;
-    int m = paramVarArgs.length;
-    int j = 0;
-    if (j < m)
+    int i = 0;
+    this.mSpeedMigrateSucc = false;
+    if (paramFileSystem != null)
     {
-      paramFileSystem = paramVarArgs[j];
-      if (paramFileSystem == null) {
-        break label131;
+      this.mPositiveMacro = paramString;
+      int k = paramVarArgs.length;
+      int j = 1;
+      paramString = new FileSystem[k + 1];
+      paramString[0] = paramFileSystem;
+      int m = paramVarArgs.length;
+      while (i < m)
+      {
+        paramFileSystem = paramVarArgs[i];
+        k = j;
+        if (paramFileSystem != null)
+        {
+          paramString[j] = paramFileSystem;
+          k = j + 1;
+        }
+        i += 1;
+        j = k;
       }
-      int k = i + 1;
-      paramString[i] = paramFileSystem;
-      i = k;
+      if (j != paramString.length) {
+        paramString = (FileSystem[])Arrays.copyOf(paramString, j);
+      }
+      this.mFSList = paramString;
+      this.mEffectiveFS = Arrays.asList(this.mFSList);
+      ensureCallback();
+      return;
     }
-    label131:
+    paramString = new IllegalArgumentException("destination == null");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == paramString.length) {}
-      for (;;)
-      {
-        this.mFSList = paramString;
-        this.mEffectiveFS = Arrays.asList(this.mFSList);
-        ensureCallback();
-        return;
-        paramString = (FileSystem[])Arrays.copyOf(paramString, i);
-      }
+      throw paramString;
     }
   }
   
-  public MigrationFileSystem(boolean paramBoolean, FileSystem paramFileSystem, FileSystem... paramVarArgs) {}
+  public MigrationFileSystem(boolean paramBoolean, FileSystem paramFileSystem, FileSystem... paramVarArgs)
+  {
+    this(str, paramFileSystem, paramVarArgs);
+  }
   
   private void doMaintenance(CancellationSignalCompat paramCancellationSignalCompat)
   {
-    if (this.mSpeedMigrateSucc)
+    Object localObject2 = this;
+    if (((MigrationFileSystem)localObject2).mSpeedMigrateSucc)
     {
-      QLog.d("VFS.MigrationFileSystem", 1, "doMaintenance no need! fast move is success!" + toString());
+      paramCancellationSignalCompat = new StringBuilder();
+      paramCancellationSignalCompat.append("doMaintenance no need! fast move is success!");
+      paramCancellationSignalCompat.append(toString());
+      QLog.d("VFS.MigrationFileSystem", 1, paramCancellationSignalCompat.toString());
       return;
     }
-    j = 0;
-    k = 0;
-    int i1 = 0;
-    int m = 0;
-    n = 0;
-    i3 = 0;
-    i = 0;
-    long l1 = 0L;
-    localHashMap = new HashMap();
-    i2 = i3;
+    HashMap localHashMap = new HashMap();
     for (;;)
     {
+      Object localObject1;
+      int j;
+      int m;
+      int n;
       try
       {
-        localFileSystem1 = (FileSystem)this.mEffectiveFS.get(0);
-        i2 = i3;
-        localHashSet = new HashSet();
-        i2 = i3;
+        FileSystem localFileSystem1 = (FileSystem)((MigrationFileSystem)localObject2).mEffectiveFS.get(0);
+        Object localObject3 = new HashSet();
         paramCancellationSignalCompat.throwIfCanceled();
-        i2 = i3;
-        if (!(localFileSystem1 instanceof NativeFileSystem)) {
-          continue;
+        if ((localFileSystem1 instanceof NativeFileSystem)) {
+          localObject1 = ((NativeFileSystem)localFileSystem1).basePath();
+        } else {
+          localObject1 = localFileSystem1.toString();
         }
-        i2 = i3;
-        localObject1 = ((NativeFileSystem)localFileSystem1).basePath();
-        i2 = i3;
-        statistics(1, new Object[] { "destination", localObject1 });
-        i2 = i3;
-        i5 = this.mEffectiveFS.size();
-        i4 = 1;
-      }
-      catch (Exception paramCancellationSignalCompat)
-      {
-        FileSystem localFileSystem1;
-        HashSet localHashSet;
-        int i5;
-        int i4;
-        FileSystem localFileSystem2;
-        Object localObject2;
-        Iterator localIterator;
-        FileSystem.FileEntry localFileEntry;
-        boolean bool2;
-        long l2;
-        if (!(paramCancellationSignalCompat instanceof OperationCanceledException)) {
-          continue;
+        ((MigrationFileSystem)localObject2).statistics(1, new Object[] { "destination", localObject1 });
+        j = ((MigrationFileSystem)localObject2).mEffectiveFS.size();
+        m = 1;
+        i = 0;
+        localObject1 = localObject3;
+        int k;
+        if (m < j) {
+          k = i;
         }
-        i = 4;
-        QLog.e("VFS.MigrationFileSystem", 1, "maintain error!", paramCancellationSignalCompat);
-        if (!(this.mEffectiveFS.get(0) instanceof NativeFileSystem)) {
-          continue;
-        }
-        localObject1 = ((NativeFileSystem)this.mEffectiveFS.get(0)).basePath();
-        statistics(i, new Object[] { "destination", localObject1, "filesFailed", Integer.valueOf(i2), "failedDetail", paramCancellationSignalCompat.getMessage(), "failedPathCollections", localHashMap });
-        throw paramCancellationSignalCompat;
-        i2 = i;
-        paramCancellationSignalCompat = localFileSystem1.toString();
-        continue;
-        i = 5;
-        continue;
-        localObject1 = ((FileSystem)this.mEffectiveFS.get(0)).toString();
-        continue;
-        continue;
-        continue;
-        n = j;
-        j = i3;
-        continue;
-        i3 = k;
-        continue;
-        continue;
-        i4 += 1;
-        continue;
-        i2 = n;
-        n = k;
-        k = j;
-        j = i2;
-        i2 = n;
-        n = j;
-        j = i2;
-        continue;
-        localObject1 = null;
-        continue;
-      }
-      if (i4 >= i5) {
-        continue;
-      }
-      i2 = i;
-      paramCancellationSignalCompat.throwIfCanceled();
-      i2 = i;
-      localFileSystem2 = (FileSystem)this.mEffectiveFS.get(i4);
-      i2 = i;
-      localObject2 = localFileSystem2.list("", true);
-      if (localObject2 != null) {
-        continue;
-      }
-      continue;
-      i2 = i3;
-      localObject1 = localFileSystem1.toString();
-    }
-    i2 = i;
-    if ((localFileSystem2.capabilityFlags() & 0x9) == 9)
-    {
-      i2 = i;
-      localObject1 = new TreeSet();
-      i2 = i;
-      localIterator = ((Iterable)localObject2).iterator();
-      i2 = i;
-      if (localIterator.hasNext())
-      {
-        i2 = i;
-        localFileEntry = (FileSystem.FileEntry)localIterator.next();
-        i2 = i;
-        paramCancellationSignalCompat.throwIfCanceled();
-        i2 = i;
-        bool1 = localFileEntry.isDirectory;
-        if (bool1) {
-          i2 = i;
-        }
-      }
-    }
-    try
-    {
-      bool2 = localFileSystem1.moveFile(localFileEntry.relPath, localFileSystem2, localFileEntry.relPath);
-      bool1 = bool2;
-      i2 = i;
-      if (QLog.isColorLevel())
-      {
-        i2 = i;
-        QLog.d("VFS.MigrationFileSystem", 2, "migrate file -> moveFile :" + localFileEntry.relPath + " [" + toString() + "], issucc = " + bool2);
-        bool1 = bool2;
-      }
-    }
-    catch (IOException localIOException1)
-    {
-      for (;;)
-      {
-        bool1 = false;
-        continue;
-        i3 = k + 1;
-        continue;
-        k = j;
-        j = i3;
-        continue;
-        i3 = k + 1;
-        continue;
-        if (localObject1 == null) {}
-      }
-    }
-    if (bool1)
-    {
-      i2 = i;
-      localHashSet.add(localFileEntry.relPath);
-      i2 = j + 1;
-      j = k;
-      k = i2;
-    }
-    else
-    {
-      i3 = k;
-      i2 = i;
-      if (localHashSet.add(localFileEntry.relPath))
-      {
-        i2 = i;
-        localFileSystem1.mkdirs(localFileEntry.relPath);
-        i2 = i;
-        if (!QLog.isColorLevel()) {
-          break label1445;
-        }
-        i2 = i;
-        QLog.d("VFS.MigrationFileSystem", 2, "migrate file failed! -> mkdirs :" + localFileEntry.relPath + " [" + toString() + "]");
-        break label1445;
-      }
-      if (localObject1 == null) {
-        break label1454;
-      }
-      i2 = i;
-      ((TreeSet)localObject1).add(localFileEntry.relPath);
-      break label1454;
-      i2 = i;
-      localObject2 = VFSUtils.getParentPath(localFileEntry.relPath);
-      if (localObject2 != null)
-      {
-        i2 = i;
-        if (localHashSet.add(localObject2))
+        try
         {
-          i2 = i;
-          localFileSystem1.mkdirs((String)localObject2);
-          i2 = i;
-          if (!QLog.isColorLevel()) {
-            break label1463;
-          }
-          i2 = i;
-          QLog.d("VFS.MigrationFileSystem", 2, "migrate file -> mkdirs :" + (String)localObject2 + " [" + toString() + "]");
-          break label1463;
-          k = i3;
-          if (localObject1 != null)
+          paramCancellationSignalCompat.throwIfCanceled();
+          k = i;
+          localFileSystem2 = (FileSystem)this.mEffectiveFS.get(m);
+          k = i;
+          localObject3 = localFileSystem2.list("", true);
+          if (localObject3 == null)
           {
-            i2 = i;
-            ((TreeSet)localObject1).add(localObject2);
-            k = i3;
+            n = i;
+            break label1545;
           }
-          i2 = i;
-          if (localFileSystem1.exists(localFileEntry.relPath))
-          {
-            i2 = i;
-            if (QLog.isColorLevel())
-            {
-              i2 = i;
-              QLog.d("VFS.MigrationFileSystem", 2, "migrate file -> exists :" + localFileEntry.relPath + " [" + toString() + "]");
-            }
-            i2 = i;
-            localFileSystem2.delete(localFileEntry.relPath);
-            m += 1;
-            i2 = j;
-            j = n;
-            n = i2;
-            break label1418;
-          }
-          i3 = n;
-          i2 = i;
-          try
-          {
-            localFileSystem1.moveFile(localFileEntry.relPath, localFileSystem2, localFileEntry.relPath);
-            i3 = n;
-            i2 = i;
-            if (QLog.isColorLevel())
-            {
-              i3 = n;
-              i2 = i;
-              QLog.d("VFS.MigrationFileSystem", 2, "migrate file -> moveFile :" + localFileEntry.relPath + " [" + toString() + "]");
-            }
-            n += 1;
-            i3 = n;
-            i2 = i;
-            l2 = localFileEntry.diskSpace;
-            l1 = l2 + l1;
-            i2 = n;
-            n = j;
-            j = i2;
-          }
-          catch (IOException localIOException2)
-          {
-            i += 1;
-          }
-          for (;;)
-          {
+          k = i;
+          n = localFileSystem2.capabilityFlags();
+          if ((n & 0x9) == 9) {
             try
             {
-              QLog.e("VFS.MigrationFileSystem", 1, "Failed to migrate file: " + localFileEntry.relPath + " [" + toString() + "]");
-              if (localHashMap.size() >= 3) {
-                break label1472;
-              }
-              localHashMap.put(localFileEntry.relPath, localIOException2.getMessage());
+              localObject2 = new TreeSet();
             }
             catch (Exception paramCancellationSignalCompat)
             {
-              i2 = i;
-              continue;
+              break label1373;
             }
-            if (localObject2 == null) {
-              break label1376;
-            }
-            ((TreeSet)localObject1).remove(localObject2);
-            localObject2 = VFSUtils.getParentPath((String)localObject2);
+          } else {
+            localObject2 = null;
           }
-          if (localObject1 != null)
+          k = i;
+          localObject3 = ((Iterable)localObject3).iterator();
+          k = i;
+          if (((Iterator)localObject3).hasNext())
           {
-            i2 = i;
-            localObject1 = ((TreeSet)localObject1).descendingSet().iterator();
-            for (;;)
-            {
-              i2 = i;
-              if (!((Iterator)localObject1).hasNext()) {
-                break;
-              }
-              i2 = i;
-              localObject2 = (String)((Iterator)localObject1).next();
-              i2 = i;
-              paramCancellationSignalCompat.throwIfCanceled();
-              i2 = i;
-              localFileSystem2.deleteDir((String)localObject2, false);
-              i1 += 1;
-            }
-            i2 = i;
-            if ((localFileSystem1 instanceof NativeFileSystem))
-            {
-              i2 = i;
-              paramCancellationSignalCompat = ((NativeFileSystem)localFileSystem1).basePath();
-              i2 = i;
-              statistics(3, new Object[] { "destination", paramCancellationSignalCompat, "filesFailed", Integer.valueOf(i), "failedPathCollections", localHashMap });
-              return;
+            k = i;
+            localFileEntry = (FileSystem.FileEntry)((Iterator)localObject3).next();
+            k = i;
+            paramCancellationSignalCompat.throwIfCanceled();
+            k = i;
+            bool1 = localFileEntry.isDirectory;
+            if (bool1) {
+              k = i;
             }
           }
         }
+        catch (Exception paramCancellationSignalCompat)
+        {
+          FileSystem localFileSystem2;
+          FileSystem.FileEntry localFileEntry;
+          boolean bool1;
+          boolean bool2;
+          Object localObject4;
+          StringBuilder localStringBuilder1;
+          int i1;
+          i = k;
+        }
       }
+      catch (Exception paramCancellationSignalCompat)
+      {
+        i = 0;
+      }
+      try
+      {
+        bool2 = localFileSystem1.moveFile(localFileEntry.relPath, localFileSystem2, localFileEntry.relPath);
+        bool1 = bool2;
+        k = i;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        k = i;
+        localObject4 = new StringBuilder();
+        k = i;
+        ((StringBuilder)localObject4).append("migrate file -> moveFile :");
+        k = i;
+        ((StringBuilder)localObject4).append(localFileEntry.relPath);
+        k = i;
+        ((StringBuilder)localObject4).append(" [");
+        k = i;
+        ((StringBuilder)localObject4).append(toString());
+        k = i;
+        ((StringBuilder)localObject4).append("], issucc = ");
+        k = i;
+        ((StringBuilder)localObject4).append(bool2);
+        k = i;
+        QLog.d("VFS.MigrationFileSystem", 2, ((StringBuilder)localObject4).toString());
+        bool1 = bool2;
+      }
+      catch (IOException localIOException1)
+      {
+        continue;
+        continue;
+        continue;
+        continue;
+        if (localObject2 == null) {
+          continue;
+        }
+        continue;
+      }
+      bool1 = false;
+      if (bool1)
+      {
+        k = i;
+        ((HashSet)localObject1).add(localFileEntry.relPath);
+      }
+      else
+      {
+        k = i;
+        if (((HashSet)localObject1).add(localFileEntry.relPath))
+        {
+          k = i;
+          localFileSystem1.mkdirs(localFileEntry.relPath);
+          k = i;
+          if (QLog.isColorLevel())
+          {
+            k = i;
+            localObject4 = new StringBuilder();
+            k = i;
+            ((StringBuilder)localObject4).append("migrate file failed! -> mkdirs :");
+            k = i;
+            ((StringBuilder)localObject4).append(localFileEntry.relPath);
+            k = i;
+            ((StringBuilder)localObject4).append(" [");
+            k = i;
+            ((StringBuilder)localObject4).append(toString());
+            k = i;
+            ((StringBuilder)localObject4).append("]");
+            k = i;
+            QLog.d("VFS.MigrationFileSystem", 2, ((StringBuilder)localObject4).toString());
+          }
+        }
+        if (localObject2 != null)
+        {
+          k = i;
+          ((TreeSet)localObject2).add(localFileEntry.relPath);
+          break label1528;
+          k = i;
+          localObject4 = VFSUtils.getParentPath(localFileEntry.relPath);
+          if (localObject4 == null) {
+            break label1534;
+          }
+          k = i;
+          if (!((HashSet)localObject1).add(localObject4)) {
+            break label1531;
+          }
+          k = i;
+          localFileSystem1.mkdirs((String)localObject4);
+          k = i;
+          if (!QLog.isColorLevel()) {
+            break label1531;
+          }
+          k = i;
+          localStringBuilder1 = new StringBuilder();
+          k = i;
+          localStringBuilder1.append("migrate file -> mkdirs :");
+          k = i;
+          localStringBuilder1.append((String)localObject4);
+          k = i;
+          localStringBuilder1.append(" [");
+          k = i;
+          localStringBuilder1.append(toString());
+          k = i;
+          localStringBuilder1.append("]");
+          k = i;
+          QLog.d("VFS.MigrationFileSystem", 2, localStringBuilder1.toString());
+          if (localObject2 != null)
+          {
+            k = i;
+            ((TreeSet)localObject2).add(localObject4);
+          }
+          k = i;
+          if (localFileSystem1.exists(localFileEntry.relPath))
+          {
+            k = i;
+            if (QLog.isColorLevel())
+            {
+              k = i;
+              localObject4 = new StringBuilder();
+              k = i;
+              ((StringBuilder)localObject4).append("migrate file -> exists :");
+              k = i;
+              ((StringBuilder)localObject4).append(localFileEntry.relPath);
+              k = i;
+              ((StringBuilder)localObject4).append(" [");
+              k = i;
+              ((StringBuilder)localObject4).append(toString());
+              k = i;
+              ((StringBuilder)localObject4).append("]");
+              k = i;
+              QLog.d("VFS.MigrationFileSystem", 2, ((StringBuilder)localObject4).toString());
+            }
+            k = i;
+            localFileSystem2.delete(localFileEntry.relPath);
+          }
+          else
+          {
+            k = i;
+            try
+            {
+              localFileSystem1.moveFile(localFileEntry.relPath, localFileSystem2, localFileEntry.relPath);
+              k = i;
+              if (QLog.isColorLevel())
+              {
+                k = i;
+                localStringBuilder1 = new StringBuilder();
+                k = i;
+                localStringBuilder1.append("migrate file -> moveFile :");
+                k = i;
+                localStringBuilder1.append(localFileEntry.relPath);
+                k = i;
+                localStringBuilder1.append(" [");
+                k = i;
+                localStringBuilder1.append(toString());
+                k = i;
+                localStringBuilder1.append("]");
+                k = i;
+                QLog.d("VFS.MigrationFileSystem", 2, localStringBuilder1.toString());
+              }
+              k = i;
+              long l = localFileEntry.diskSpace;
+            }
+            catch (IOException localIOException2)
+            {
+              i += 1;
+            }
+          }
+          try
+          {
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("Failed to migrate file: ");
+            localStringBuilder2.append(localFileEntry.relPath);
+            localStringBuilder2.append(" [");
+            localStringBuilder2.append(toString());
+            localStringBuilder2.append("]");
+            QLog.e("VFS.MigrationFileSystem", 1, localStringBuilder2.toString());
+            if (localHashMap.size() >= 3) {
+              break label1537;
+            }
+            localHashMap.put(localFileEntry.relPath, localIOException2.getMessage());
+          }
+          catch (Exception paramCancellationSignalCompat)
+          {
+            break label1373;
+          }
+          if (localObject4 != null)
+          {
+            ((TreeSet)localObject2).remove(localObject4);
+            localObject4 = VFSUtils.getParentPath((String)localObject4);
+            continue;
+          }
+          continue;
+          i1 = j;
+          localObject3 = localObject1;
+          n = i;
+          j = i1;
+          localObject1 = localObject3;
+          if (localObject2 == null) {
+            break label1545;
+          }
+          k = i;
+          localObject2 = ((TreeSet)localObject2).descendingSet().iterator();
+          k = i;
+          n = i;
+          j = i1;
+          localObject1 = localObject3;
+          if (!((Iterator)localObject2).hasNext()) {
+            break label1545;
+          }
+          k = i;
+          localObject1 = (String)((Iterator)localObject2).next();
+          k = i;
+          paramCancellationSignalCompat.throwIfCanceled();
+          k = i;
+          localFileSystem2.deleteDir((String)localObject1, false);
+          continue;
+          k = i;
+          if ((localFileSystem1 instanceof NativeFileSystem))
+          {
+            k = i;
+            paramCancellationSignalCompat = ((NativeFileSystem)localFileSystem1).basePath();
+          }
+          else
+          {
+            k = i;
+            paramCancellationSignalCompat = localFileSystem1.toString();
+          }
+          statistics(3, new Object[] { "destination", paramCancellationSignalCompat, "filesFailed", Integer.valueOf(i), "failedPathCollections", localHashMap });
+          return;
+          label1373:
+          localObject2 = this;
+          if ((paramCancellationSignalCompat instanceof OperationCanceledException)) {
+            j = 4;
+          } else {
+            j = 5;
+          }
+          QLog.e("VFS.MigrationFileSystem", 1, "maintain error!", paramCancellationSignalCompat);
+          if ((((MigrationFileSystem)localObject2).mEffectiveFS.get(0) instanceof NativeFileSystem)) {
+            localObject1 = ((NativeFileSystem)((MigrationFileSystem)localObject2).mEffectiveFS.get(0)).basePath();
+          } else {
+            localObject1 = ((FileSystem)((MigrationFileSystem)localObject2).mEffectiveFS.get(0)).toString();
+          }
+          ((MigrationFileSystem)localObject2).statistics(j, new Object[] { "destination", localObject1, "filesFailed", Integer.valueOf(i), "failedDetail", paramCancellationSignalCompat.getMessage(), "failedPathCollections", localHashMap });
+          for (;;)
+          {
+            throw paramCancellationSignalCompat;
+          }
+        }
+      }
+      label1528:
+      label1531:
+      label1534:
+      m += 1;
+      label1537:
+      label1545:
+      int i = n;
     }
   }
   
@@ -457,9 +508,9 @@ public class MigrationFileSystem
   
   public void configure(Map<String, String> paramMap)
   {
-    boolean bool = true;
     Object localObject1 = this.mFSList;
     int j = localObject1.length;
+    boolean bool = false;
     int i = 0;
     while (i < j)
     {
@@ -470,11 +521,12 @@ public class MigrationFileSystem
     this.mEffectiveFS.add(this.mFSList[0]);
     HashSet localHashSet = new HashSet();
     localObject1 = "";
+    paramMap = this.mFSList;
     Object localObject3;
     Object localObject2;
-    if ((this.mFSList[0] instanceof NativeFileSystem))
+    if ((paramMap[0] instanceof NativeFileSystem))
     {
-      localObject3 = ((NativeFileSystem)this.mFSList[0]).basePath();
+      localObject3 = ((NativeFileSystem)paramMap[0]).basePath();
       if (localObject3 != null)
       {
         localObject2 = new File((String)localObject3);
@@ -483,96 +535,111 @@ public class MigrationFileSystem
           paramMap = null;
         }
         localHashSet.add(localObject3);
+        break label149;
       }
     }
-    for (;;)
+    paramMap = null;
+    label149:
+    if (!this.mSpeedMigrateSucc)
     {
-      localObject2 = localObject1;
-      if (!this.mSpeedMigrateSucc)
-      {
-        j = 1;
-        i = 0;
-        if (j < this.mFSList.length) {
-          if (!(this.mFSList[j] instanceof NativeFileSystem))
-          {
-            this.mEffectiveFS.add(this.mFSList[j]);
-            localObject2 = localObject1;
-            localObject1 = paramMap;
-            paramMap = (Map<String, String>)localObject2;
-          }
-        }
-      }
+      j = 0;
+      localObject1 = "";
+      i = 1;
+      localObject2 = paramMap;
+      paramMap = (Map<String, String>)localObject1;
       for (;;)
       {
-        j += 1;
-        localObject2 = localObject1;
-        localObject1 = paramMap;
-        paramMap = (Map<String, String>)localObject2;
-        break;
-        localObject3 = (NativeFileSystem)this.mFSList[j];
-        String str = ((NativeFileSystem)localObject3).basePath();
-        localObject2 = localObject1;
-        if (str != null)
+        localObject1 = this.mFSList;
+        if (i >= localObject1.length) {
+          break;
+        }
+        int k;
+        if (!(localObject1[i] instanceof NativeFileSystem))
         {
-          localObject2 = new File(str);
-          if (((File)localObject2).isDirectory())
+          this.mEffectiveFS.add(localObject1[i]);
+          k = j;
+          localObject1 = paramMap;
+          localObject3 = localObject2;
+        }
+        else
+        {
+          NativeFileSystem localNativeFileSystem = (NativeFileSystem)localObject1[i];
+          String str = localNativeFileSystem.basePath();
+          k = j;
+          localObject1 = paramMap;
+          localObject3 = localObject2;
+          if (str != null)
           {
-            if (paramMap == null) {
-              localObject1 = "dest dir is exist, so fast rename is failed";
-            }
-            if (paramMap != null)
+            localObject1 = new File(str);
+            if (((File)localObject1).isDirectory())
             {
-              if (((File)localObject2).renameTo(paramMap))
-              {
-                i += 1;
-                if (QLog.isColorLevel()) {
-                  QLog.i("VFS.MigrationFileSystem", 2, "Fast moved '" + localObject2 + "' -> '" + paramMap + "'");
-                }
-                paramMap = (Map<String, String>)localObject1;
-                localObject1 = null;
-                continue;
+              if (localObject2 == null) {
+                paramMap = "dest dir is exist, so fast rename is failed";
               }
-              localObject1 = paramMap;
-              paramMap = "srcDir renameTo destDir is error!";
-              continue;
+              if (localObject2 != null)
+              {
+                if (((File)localObject1).renameTo((File)localObject2))
+                {
+                  k = j + 1;
+                  if (QLog.isColorLevel())
+                  {
+                    localObject3 = new StringBuilder();
+                    ((StringBuilder)localObject3).append("Fast moved '");
+                    ((StringBuilder)localObject3).append(localObject1);
+                    ((StringBuilder)localObject3).append("' -> '");
+                    ((StringBuilder)localObject3).append(localObject2);
+                    ((StringBuilder)localObject3).append("'");
+                    QLog.i("VFS.MigrationFileSystem", 2, ((StringBuilder)localObject3).toString());
+                  }
+                  localObject3 = null;
+                  localObject1 = paramMap;
+                }
+                else
+                {
+                  localObject1 = "srcDir renameTo destDir is error!";
+                  k = j;
+                  localObject3 = localObject2;
+                }
+              }
+              else
+              {
+                k = j;
+                localObject1 = paramMap;
+                localObject3 = localObject2;
+                if (localHashSet.add(str))
+                {
+                  this.mEffectiveFS.add(localNativeFileSystem);
+                  k = j;
+                  localObject1 = paramMap;
+                  localObject3 = localObject2;
+                }
+              }
             }
-            localObject2 = localObject1;
-            if (localHashSet.add(str))
+            else
             {
-              this.mEffectiveFS.add(localObject3);
-              localObject2 = paramMap;
-              paramMap = (Map<String, String>)localObject1;
-              localObject1 = localObject2;
-            }
-          }
-          else
-          {
-            localObject1 = paramMap;
-            paramMap = "srcDir not is Directory";
-            continue;
-            localObject2 = localObject1;
-            if (i == this.mFSList.length - 1)
-            {
-              this.mSpeedMigrateSucc = true;
-              localObject2 = localObject1;
-            }
-            if ((!this.mSpeedMigrateSucc) && ((this.mEffectiveFS.get(0) instanceof NativeFileSystem))) {
-              statistics(7, new Object[] { "destination", ((NativeFileSystem)this.mEffectiveFS.get(0)).basePath(), "fastMigrateState", Boolean.valueOf(this.mSpeedMigrateSucc), "fastMigrateError", localObject2 });
-            }
-            if (this.mPositiveMacro != null) {}
-            for (;;)
-            {
-              this.mPositive = bool;
-              return;
-              bool = false;
+              localObject1 = "srcDir not is Directory";
+              localObject3 = localObject2;
+              k = j;
             }
           }
         }
-        localObject1 = paramMap;
-        paramMap = (Map<String, String>)localObject2;
+        i += 1;
+        j = k;
+        paramMap = (Map<String, String>)localObject1;
+        localObject2 = localObject3;
       }
-      paramMap = null;
+      if (j == localObject1.length - 1) {
+        this.mSpeedMigrateSucc = true;
+      }
+      localObject1 = paramMap;
     }
+    if ((!this.mSpeedMigrateSucc) && ((this.mEffectiveFS.get(0) instanceof NativeFileSystem))) {
+      statistics(7, new Object[] { "destination", ((NativeFileSystem)this.mEffectiveFS.get(0)).basePath(), "fastMigrateState", Boolean.valueOf(this.mSpeedMigrateSucc), "fastMigrateError", localObject1 });
+    }
+    if (this.mPositiveMacro != null) {
+      bool = true;
+    }
+    this.mPositive = bool;
   }
   
   protected FileSystem delegate(String paramString, int paramInt)
@@ -612,77 +679,67 @@ public class MigrationFileSystem
   
   public InputStream openRead(String paramString)
   {
-    Object localObject1 = null;
     Iterator localIterator = this.mEffectiveFS.iterator();
-    for (;;)
+    Object localObject1 = null;
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break label65;
-      }
       Object localObject2 = (FileSystem)localIterator.next();
       try
       {
         localObject2 = ((FileSystem)localObject2).openRead(paramString);
-        if (localObject2 != null) {
-          return localObject2;
+        if (localObject2 == null) {
+          continue;
         }
-        localObject2 = localObject1;
+        return localObject2;
       }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        for (;;)
-        {
-          if (localObject1 != null) {
-            Object localObject3 = localObject1;
-          }
-        }
+      catch (FileNotFoundException localFileNotFoundException) {}
+      if (localObject1 == null) {
+        localObject1 = localFileNotFoundException;
       }
-      localObject1 = localObject2;
     }
-    label65:
-    if (localObject1 != null) {}
+    if (localObject1 == null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(" not found on any file systems.");
+      localObject1 = new FileNotFoundException(((StringBuilder)localObject1).toString());
+    }
     for (;;)
     {
       throw ((Throwable)localObject1);
-      localObject1 = new FileNotFoundException(paramString + " not found on any file systems.");
     }
   }
   
   public ReadableByteChannel openReadChannel(String paramString)
   {
-    Object localObject1 = null;
     Iterator localIterator = this.mEffectiveFS.iterator();
-    for (;;)
+    Object localObject1 = null;
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break label65;
-      }
       Object localObject2 = (FileSystem)localIterator.next();
       try
       {
         localObject2 = ((FileSystem)localObject2).openReadChannel(paramString);
-        if (localObject2 != null) {
-          return localObject2;
+        if (localObject2 == null) {
+          continue;
         }
-        localObject2 = localObject1;
+        return localObject2;
       }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        for (;;)
-        {
-          if (localObject1 != null) {
-            Object localObject3 = localObject1;
-          }
-        }
+      catch (FileNotFoundException localFileNotFoundException) {}
+      if (localObject1 == null) {
+        localObject1 = localFileNotFoundException;
       }
-      localObject1 = localObject2;
     }
-    label65:
-    if (localObject1 != null) {}
+    if (localObject1 == null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(" not found on any file systems.");
+      localObject1 = new FileNotFoundException(((StringBuilder)localObject1).toString());
+    }
     for (;;)
     {
       throw ((Throwable)localObject1);
-      localObject1 = new FileNotFoundException(paramString + " not found on any file systems.");
     }
   }
   
@@ -735,41 +792,33 @@ public class MigrationFileSystem
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("Migration [").append(this.mFSList[0].toString()).append(" <= ");
+    StringBuilder localStringBuilder = new StringBuilder("Migration [");
+    localStringBuilder.append(this.mFSList[0].toString());
+    localStringBuilder.append(" <= ");
     int i = 1;
-    while (i < this.mFSList.length)
+    for (;;)
     {
-      localStringBuilder.append(this.mFSList[i].toString()).append(", ");
+      FileSystem[] arrayOfFileSystem = this.mFSList;
+      if (i >= arrayOfFileSystem.length) {
+        break;
+      }
+      localStringBuilder.append(arrayOfFileSystem[i].toString());
+      localStringBuilder.append(", ");
       i += 1;
     }
     localStringBuilder.setLength(localStringBuilder.length() - 2);
-    return ']';
+    localStringBuilder.append(']');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int j = 0;
-    VFSUtils.writeFileSystemVersion(paramParcel, MigrationFileSystem.class, 3);
-    if (this.mSpeedMigrateSucc) {}
-    for (int i = 1;; i = 0)
-    {
-      paramParcel.writeInt(i);
-      paramParcel.writeInt(this.mFSList.length);
-      FileSystem[] arrayOfFileSystem = this.mFSList;
-      int k = arrayOfFileSystem.length;
-      i = j;
-      while (i < k)
-      {
-        paramParcel.writeParcelable(arrayOfFileSystem[i], paramInt);
-        i += 1;
-      }
-    }
-    paramParcel.writeString(this.mPositiveMacro);
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.MigrationFileSystem
  * JD-Core Version:    0.7.0.1
  */

@@ -20,31 +20,40 @@ class AccountManageActivity$DelHistoryAccountObserver
   
   public void onDeleteAccount(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DelHistoryAccountObserver onDeleteAccount isSuccess ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(",peerUin:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(",isDeleteHistory:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      QLog.d("Switch_Account", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity;
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0)
+    int i;
+    if (Build.VERSION.SDK_INT > 10) {
+      i = 4;
+    } else {
+      i = 0;
+    }
+    localObject = ((AccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
+    if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
     {
-      localObject = ((AccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
-      if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
-      {
-        ((SharedPreferences)localObject).edit().remove("uin").commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("Switch_Account", 2, "delete Last_Login");
-        }
+      ((SharedPreferences)localObject).edit().remove("uin").commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("Switch_Account", 2, "delete Last_Login");
       }
-      if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
+    }
+    if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.DelHistoryAccountObserver
  * JD-Core Version:    0.7.0.1
  */

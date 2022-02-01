@@ -21,27 +21,27 @@ class HotSearchAdapter$HotSearchViewHolder
     this.icon.setImageDrawable(MiniAppUtils.getIcon(paramView.getContext(), localMiniAppInfo.iconUrl, false, 0, 32));
     this.name.setText(localMiniAppInfo.name);
     this.category.setText(paramSearchInfo.getCategoryDesc());
-    if (paramInt1 > 2) {
+    if (paramInt1 > 2)
+    {
       this.ranking.setVisibility(8);
     }
-    for (;;)
+    else
     {
-      paramView.setOnClickListener(new HotSearchAdapter.HotSearchViewHolder.1(this, paramActivity, localMiniAppInfo, paramInt2));
-      return;
       this.ranking.setVisibility(0);
       if (paramInt1 == 0) {
-        this.ranking.setImageResource(2130841186);
+        this.ranking.setImageResource(2130841062);
       } else if (paramInt1 == 1) {
-        this.ranking.setImageResource(2130841187);
+        this.ranking.setImageResource(2130841063);
       } else if (paramInt1 == 2) {
-        this.ranking.setImageResource(2130841188);
+        this.ranking.setImageResource(2130841064);
       }
     }
+    paramView.setOnClickListener(new HotSearchAdapter.HotSearchViewHolder.1(this, paramActivity, localMiniAppInfo, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.HotSearchAdapter.HotSearchViewHolder
  * JD-Core Version:    0.7.0.1
  */

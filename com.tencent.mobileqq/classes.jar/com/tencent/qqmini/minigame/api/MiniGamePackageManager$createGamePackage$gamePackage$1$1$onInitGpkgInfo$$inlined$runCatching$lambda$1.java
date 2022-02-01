@@ -38,13 +38,23 @@ public final class MiniGamePackageManager$createGamePackage$gamePackage$1$1$onIn
         localObject1 = new File((File)localObject2, paramString);
       }
     }
-    GameLog.getInstance().e("subpackage", "getScript name:" + this.this$0.$name + ", pkgFile:" + ((File)localObject1).getAbsolutePath());
-    return (ScriptFile)new ScriptFile.Path(this.this$0.$name, (File)localObject1, new File(((File)localObject1).getAbsolutePath() + ".cc"));
+    paramString = GameLog.getInstance();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getScript name:");
+    ((StringBuilder)localObject2).append(this.this$0.$name);
+    ((StringBuilder)localObject2).append(", pkgFile:");
+    ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+    paramString.e("subpackage", ((StringBuilder)localObject2).toString());
+    paramString = this.this$0.$name;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+    ((StringBuilder)localObject2).append(".cc");
+    return (ScriptFile)new ScriptFile.Path(paramString, (File)localObject1, new File(((StringBuilder)localObject2).toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.api.MiniGamePackageManager.createGamePackage.gamePackage.1.1.onInitGpkgInfo..inlined.runCatching.lambda.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ import java.util.List;
 public class DanmuDataHolder$CacheHolder
 {
   int jdField_a_of_type_Int = 0;
-  DanmuDataContext jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext;
+  public DanmuDataContext a;
   DanmuDataIPCClient.DanmuPullCallback jdField_a_of_type_ComTencentMobileqqCommentDanmuDataIPCClient$DanmuPullCallback;
   List<Long> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
+  public boolean a;
   int jdField_b_of_type_Int = 30;
   List<Long> jdField_b_of_type_JavaUtilList = new ArrayList();
   int jdField_c_of_type_Int = 0;
@@ -20,7 +20,10 @@ public class DanmuDataHolder$CacheHolder
   int e = 0;
   int f = 60;
   
-  public DanmuDataHolder$CacheHolder(DanmuDataHolder paramDanmuDataHolder) {}
+  public DanmuDataHolder$CacheHolder(DanmuDataHolder paramDanmuDataHolder)
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
   
   public CacheHolder a()
   {
@@ -65,32 +68,34 @@ public class DanmuDataHolder$CacheHolder
   
   public void a()
   {
-    Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
+    Object localObject = this.jdField_d_of_type_JavaUtilList.iterator();
     DanmuItemBean localDanmuItemBean;
-    while (localIterator.hasNext())
+    while (((Iterator)localObject).hasNext())
     {
-      localDanmuItemBean = (DanmuItemBean)localIterator.next();
+      localDanmuItemBean = (DanmuItemBean)((Iterator)localObject).next();
       if (this.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(localDanmuItemBean.b))) {
-        localIterator.remove();
+        ((Iterator)localObject).remove();
       }
     }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        long l = ((Long)localIterator.next()).longValue();
+        long l = ((Long)((Iterator)localObject).next()).longValue();
         if (!this.jdField_b_of_type_JavaUtilList.contains(Long.valueOf(l))) {
           this.jdField_b_of_type_JavaUtilList.add(Long.valueOf(l));
         }
       }
     }
-    if ((this.jdField_c_of_type_JavaUtilList != null) && (!this.jdField_c_of_type_JavaUtilList.isEmpty()))
+    localObject = this.jdField_c_of_type_JavaUtilList;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.jdField_c_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localDanmuItemBean = (DanmuItemBean)localIterator.next();
+        localDanmuItemBean = (DanmuItemBean)((Iterator)localObject).next();
         if (!a(localDanmuItemBean.jdField_a_of_type_Long, localDanmuItemBean.b)) {
           this.jdField_d_of_type_JavaUtilList.add(localDanmuItemBean);
         }
@@ -145,7 +150,7 @@ public class DanmuDataHolder$CacheHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.comment.DanmuDataHolder.CacheHolder
  * JD-Core Version:    0.7.0.1
  */

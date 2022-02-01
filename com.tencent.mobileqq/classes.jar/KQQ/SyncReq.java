@@ -39,14 +39,15 @@ public final class SyncReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.vecReqPkg, 0);
-    if (this.userData != null) {
-      paramJceOutputStream.write(this.userData, 1);
+    UserData localUserData = this.userData;
+    if (localUserData != null) {
+      paramJceOutputStream.write(localUserData, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.SyncReq
  * JD-Core Version:    0.7.0.1
  */

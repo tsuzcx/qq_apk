@@ -24,59 +24,58 @@ public class OGEntityManager
   public static void extractedStatementByReflect(List<String> paramList, String paramString, Cursor paramCursor, Class paramClass)
   {
     paramClass = TableBuilder.getValidField(paramClass);
-    int j;
-    Field localField;
     if (paramCursor.moveToFirst())
     {
       paramCursor = SecurityUtile.decode(paramCursor.getString(0)).split(",");
       int k = paramClass.size();
-      j = 0;
-      if (j < k)
+      int i = 0;
+      while (i < k)
       {
-        localField = (Field)paramClass.get(j);
-        i = 1;
-        label64:
-        if (i >= paramCursor.length) {
-          break label266;
-        }
-        String str = paramCursor[i].trim().split(" ")[0];
-        if (localField.getName().equals(str)) {
-          if (QLog.isColorLevel()) {
-            QLog.e("EntityManager", 2, "extractedStatementByReflect -> new field name: " + localField.getName() + ", old field name: " + str);
+        Field localField = (Field)paramClass.get(i);
+        boolean bool2 = true;
+        boolean bool1 = true;
+        int j = 1;
+        while (j < paramCursor.length)
+        {
+          String str = paramCursor[j].trim().split(" ")[0];
+          if (localField.getName().equals(str))
+          {
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("extractedStatementByReflect -> new field name: ");
+              localStringBuilder.append(localField.getName());
+              localStringBuilder.append(", old field name: ");
+              localStringBuilder.append(str);
+              QLog.e("EntityManager", 2, localStringBuilder.toString());
+            }
+            j = 1;
+            break label185;
           }
+          j += 1;
         }
-      }
-    }
-    label266:
-    for (int i = 1;; i = 0)
-    {
-      boolean bool;
-      if (i == 0)
-      {
-        if (!localField.isAnnotationPresent(defaultzero.class)) {
-          break label223;
+        j = 0;
+        label185:
+        if (j == 0)
+        {
+          if (!localField.isAnnotationPresent(defaultzero.class))
+          {
+            if (localField.isAnnotationPresent(defaultValue.class))
+            {
+              j = ((defaultValue)localField.getAnnotation(defaultValue.class)).defaultInteger();
+              bool1 = bool2;
+            }
+            else
+            {
+              bool1 = false;
+            }
+          }
+          else {
+            j = 0;
+          }
+          paramList.add(TableBuilder.addColumn(paramString, localField.getName(), (String)TableBuilder.TYPES.get(localField.getType()), bool1, j));
         }
-        i = 0;
-        bool = true;
-      }
-      for (;;)
-      {
-        paramList.add(TableBuilder.addColumn(paramString, localField.getName(), (String)TableBuilder.TYPES.get(localField.getType()), bool, i));
-        j += 1;
-        break;
         i += 1;
-        break label64;
-        label223:
-        if (localField.isAnnotationPresent(defaultValue.class))
-        {
-          i = ((defaultValue)localField.getAnnotation(defaultValue.class)).defaultInteger();
-          bool = true;
-        }
-        else
-        {
-          i = 0;
-          bool = false;
-        }
       }
     }
   }
@@ -104,45 +103,47 @@ public class OGEntityManager
     }
     try
     {
-      if (paramCursor.getColumnIndex("_id") >= 0) {}
-      Entity localEntity;
-      for (l = paramCursor.getLong(paramCursor.getColumnIndex("_id"));; l = -1L) {
-        try
-        {
-          localEntity = (Entity)paramClass.newInstance();
-          if (localEntity == null) {
-            break;
-          }
-          localEntity._id = l;
-          paramClass = localEntity;
-          if (!localEntity.entityByCursor(paramCursor)) {
-            paramClass = localOGAbstractDao.cursor2Entity(localEntity, paramCursor, localOGAbstractDao.useIndex, paramNoColumnErrorHandler);
-          }
-          if ((l != -1L) && (paramString != null)) {}
-          for (paramClass._status = 1001;; paramClass._status = 1002)
-          {
-            paramClass.postRead();
-            return paramClass;
-          }
-          return super.cursor2Entity(paramClass, paramString, paramCursor, paramNoColumnErrorHandler);
-        }
-        catch (Exception paramClass)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("EntityManager", 2, MsfSdkUtils.getStackTraceString(paramClass));
-          }
-          return null;
-        }
+      if (paramCursor.getColumnIndex("_id") >= 0) {
+        l = paramCursor.getLong(paramCursor.getColumnIndex("_id"));
       }
-      return localEntity;
     }
     catch (Exception localException)
     {
-      for (;;)
+      long l;
+      label57:
+      Object localObject;
+      break label57;
+    }
+    l = -1L;
+    try
+    {
+      paramClass = (Entity)paramClass.newInstance();
+      localObject = paramClass;
+      if (paramClass != null)
       {
-        long l = -1L;
+        paramClass._id = l;
+        localObject = paramClass;
+        if (!paramClass.entityByCursor(paramCursor)) {
+          localObject = localOGAbstractDao.cursor2Entity(paramClass, paramCursor, localOGAbstractDao.useIndex, paramNoColumnErrorHandler);
+        }
+        if ((l != -1L) && (paramString != null)) {
+          ((Entity)localObject)._status = 1001;
+        } else {
+          ((Entity)localObject)._status = 1002;
+        }
+        ((Entity)localObject).postRead();
+        return localObject;
       }
     }
+    catch (Exception paramClass)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("EntityManager", 2, MsfSdkUtils.getStackTraceString(paramClass));
+      }
+      localObject = null;
+    }
+    return localObject;
+    return super.cursor2Entity(paramClass, paramString, paramCursor, paramNoColumnErrorHandler);
   }
   
   protected void insertOrReplace(Entity paramEntity, boolean paramBoolean)
@@ -162,7 +163,7 @@ public class OGEntityManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.OGEntityManager
  * JD-Core Version:    0.7.0.1
  */

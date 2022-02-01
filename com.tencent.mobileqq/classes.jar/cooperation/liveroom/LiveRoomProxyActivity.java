@@ -34,40 +34,52 @@ public class LiveRoomProxyActivity
     localIntent.putExtra("userQqResources", 2);
     localIntent.putExtra("useSkinEngine", false);
     localIntent.putExtra("big_brother_source_key", "biz_src_feeds_kandian");
-    Object localObject = paramString;
+    Object localObject1 = paramString;
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = paramString;
+      localObject1 = paramString;
       if (!paramString.contains("sonic_live=1"))
       {
-        if (!paramString.contains("?")) {
-          break label156;
+        Object localObject2;
+        if (paramString.contains("?"))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(paramString);
+          localObject2 = "&sonic_live=1";
+          paramString = (String)localObject1;
+          localObject1 = localObject2;
         }
-        paramString = paramString + "&sonic_live=1";
-        localObject = paramString;
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(paramString);
+          localObject1 = "?sonic_live=1";
+          paramString = (String)localObject2;
+        }
+        paramString.append((String)localObject1);
+        localObject1 = paramString.toString();
       }
     }
-    localIntent.putExtra("url", (String)localObject);
+    localIntent.putExtra("url", (String)localObject1);
     localIntent.putExtra("startOpenPageTime", clickTime);
     localIntent.putExtra("pluginFinished", System.currentTimeMillis());
-    paramString = "";
-    if ("com.tencent.mobileqq:tool".equals(Common.r())) {
+    if ("com.tencent.mobileqq:tool".equals(Common.r()))
+    {
       paramString = LiveRoomHelper.getPluginVersionInTool();
     }
-    for (;;)
+    else
     {
-      localIntent.putExtra("version", paramString);
-      localIntent.putExtra("param_plugin_gesturelock", true);
-      localIntent.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-      return localIntent;
-      label156:
-      paramString = paramString + "?sonic_live=1";
-      break;
-      localObject = LiveRoomHelper.getPluginInfoInQQ();
-      if (localObject != null) {
-        paramString = ((PluginInfo)localObject).mVersion;
+      paramString = LiveRoomHelper.getPluginInfoInQQ();
+      if (paramString != null) {
+        paramString = paramString.mVersion;
+      } else {
+        paramString = "";
       }
     }
+    localIntent.putExtra("version", paramString);
+    localIntent.putExtra("param_plugin_gesturelock", true);
+    localIntent.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+    return localIntent;
   }
   
   private static void launchPlugin(Activity paramActivity, String paramString)
@@ -87,19 +99,13 @@ public class LiveRoomProxyActivity
   {
     clickTime = System.currentTimeMillis();
     boolean bool = "com.tencent.mobileqq:tool".equals(Common.r());
-    if (bool)
+    if (bool ? LiveRoomHelper.getPluginInstalledInTool() : LiveRoomHelper.isPluginInstalledInQQ())
     {
-      if (!LiveRoomHelper.getPluginInstalledInTool()) {}
-    }
-    else {
-      while (LiveRoomHelper.isPluginInstalledInQQ())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LiveRoomProxyActivity", 2, "plugin is installed, launching plugin");
-        }
-        launchPlugin(paramActivity, paramString1);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.i("LiveRoomProxyActivity", 2, "plugin is installed, launching plugin");
       }
+      launchPlugin(paramActivity, paramString1);
+      return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("LiveRoomProxyActivity", 2, "plugin is NOT installed, opening loading page");
@@ -130,7 +136,7 @@ public class LiveRoomProxyActivity
     return bool;
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
@@ -142,17 +148,20 @@ public class LiveRoomProxyActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     LiveRoomHelper.startTime = NetConnInfoCenter.getServerTimeMillis();
-    LiveRoomHelper.report("proxyActivity", "launch", "load:" + LiveRoomHelper.isSDKLoaded, 0L);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("load:");
+    localStringBuilder.append(LiveRoomHelper.isSDKLoaded);
+    LiveRoomHelper.report("proxyActivity", "launch", localStringBuilder.toString(), 0L);
     LiveRoomHelper.isSDKLoaded = true;
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
     super.onCreate(paramBundle);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     LiveRoomHelper.cleanStaticParam();
     super.onDestroy();
@@ -171,7 +180,7 @@ public class LiveRoomProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomProxyActivity
  * JD-Core Version:    0.7.0.1
  */

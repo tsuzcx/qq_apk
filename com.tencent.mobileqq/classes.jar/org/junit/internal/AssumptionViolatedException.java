@@ -54,8 +54,9 @@ public class AssumptionViolatedException
   
   public void describeTo(Description paramDescription)
   {
-    if (this.fAssumption != null) {
-      paramDescription.appendText(this.fAssumption);
+    String str = this.fAssumption;
+    if (str != null) {
+      paramDescription.appendText(str);
     }
     if (this.fValueMatcher)
     {
@@ -79,7 +80,7 @@ public class AssumptionViolatedException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.internal.AssumptionViolatedException
  * JD-Core Version:    0.7.0.1
  */

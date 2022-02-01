@@ -4,22 +4,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class SuspiciousTroopConfProcessor
   extends IQConfigProcessor<SuspiciousTroopConfBean>
 {
-  public static SuspiciousTroopConfBean a()
-  {
-    SuspiciousTroopConfBean localSuspiciousTroopConfBean2 = (SuspiciousTroopConfBean)QConfigManager.a().a(573);
-    SuspiciousTroopConfBean localSuspiciousTroopConfBean1 = localSuspiciousTroopConfBean2;
-    if (localSuspiciousTroopConfBean2 == null) {
-      localSuspiciousTroopConfBean1 = new SuspiciousTroopConfBean();
-    }
-    return localSuspiciousTroopConfBean1;
-  }
-  
   @NonNull
   public SuspiciousTroopConfBean a(int paramInt)
   {
@@ -37,8 +26,12 @@ public class SuspiciousTroopConfProcessor
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SuspiciousTroopConfProcessor", 2, "onParsed " + paramArrayOfQConfItem.length);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem.length);
+        QLog.d("SuspiciousTroopConfProcessor", 2, localStringBuilder.toString());
       }
       return SuspiciousTroopConfBean.a(paramArrayOfQConfItem[0]);
     }
@@ -47,19 +40,17 @@ public class SuspiciousTroopConfProcessor
   
   public void a(SuspiciousTroopConfBean paramSuspiciousTroopConfBean)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramSuspiciousTroopConfBean == null) {
-        break label43;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      if (paramSuspiciousTroopConfBean != null) {
+        paramSuspiciousTroopConfBean = paramSuspiciousTroopConfBean.toString();
+      } else {
+        paramSuspiciousTroopConfBean = " empty";
       }
-    }
-    label43:
-    for (paramSuspiciousTroopConfBean = paramSuspiciousTroopConfBean.toString();; paramSuspiciousTroopConfBean = " empty")
-    {
-      QLog.d("SuspiciousTroopConfProcessor", 2, paramSuspiciousTroopConfBean);
-      return;
+      localStringBuilder.append(paramSuspiciousTroopConfBean);
+      QLog.d("SuspiciousTroopConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -85,8 +76,12 @@ public class SuspiciousTroopConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SuspiciousTroopConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.e("SuspiciousTroopConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -97,7 +92,7 @@ public class SuspiciousTroopConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.troop.SuspiciousTroopConfProcessor
  * JD-Core Version:    0.7.0.1
  */

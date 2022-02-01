@@ -22,14 +22,15 @@ public final class oidb_0x8b2$RspBody
   static
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 40, 48 }, new String[] { "string_hot_group_id", "uint64_administrator_uin", "string_group_memo", "string_jumping_url", "uint64_modify_time", "uint64_group_code" }, new Object[] { localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), Long.valueOf(0L) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 40, 48 }, new String[] { "string_hot_group_id", "uint64_administrator_uin", "string_group_memo", "string_jumping_url", "uint64_modify_time", "uint64_group_code" }, new Object[] { localByteStringMicro1, localLong, localByteStringMicro2, localByteStringMicro3, localLong, localLong }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8b2.oidb_0x8b2.RspBody
  * JD-Core Version:    0.7.0.1
  */

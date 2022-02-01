@@ -41,7 +41,7 @@ public class MiniProgramLpReportDC04902
   private static long DC_TABLE_VALUE_MAX_MEM = 0L;
   private static String DC_TABLE_VALUE_NETWORK_GATEWAY_IP = null;
   private static String DC_TABLE_VALUE_PLATFORM = "android";
-  private static String DC_TABLE_VALUE_QUA = QUAUtil.getPlatformQUA();
+  private static String DC_TABLE_VALUE_QUA = ;
   private static String DC_TABLE_VALUE_START_TIME = currentTimeString();
   private static String DC_TABLE_VALUE_TEXTURE_OFFLINE;
   private static final int FRAME_TIME_COUNT = 3;
@@ -93,24 +93,19 @@ public class MiniProgramLpReportDC04902
   {
     if (paramLong <= 20L) {
       DC_TABLE_VALUE_F_20 += paramLong;
+    } else if (paramLong <= 33L) {
+      DC_TABLE_VALUE_F_33 += paramLong;
+    } else if (paramLong <= 50L) {
+      DC_TABLE_VALUE_F_50 += paramLong;
+    } else if (paramLong <= 100L) {
+      DC_TABLE_VALUE_F_100 += paramLong;
+    } else {
+      DC_TABLE_VALUE_F_LONG += paramLong;
     }
-    for (;;)
+    if (paramLong > DC_TABLE_VALUE_F_MAX)
     {
-      if (paramLong > DC_TABLE_VALUE_F_MAX)
-      {
-        DC_TABLE_VALUE_F_MAX = paramLong;
-        DC_TABLE_VALUE_F_MAX_TIME_MILLIS = System.currentTimeMillis();
-      }
-      return;
-      if (paramLong <= 33L) {
-        DC_TABLE_VALUE_F_33 += paramLong;
-      } else if (paramLong <= 50L) {
-        DC_TABLE_VALUE_F_50 += paramLong;
-      } else if (paramLong <= 100L) {
-        DC_TABLE_VALUE_F_100 += paramLong;
-      } else {
-        DC_TABLE_VALUE_F_LONG += paramLong;
-      }
+      DC_TABLE_VALUE_F_MAX = paramLong;
+      DC_TABLE_VALUE_F_MAX_TIME_MILLIS = System.currentTimeMillis();
     }
   }
   
@@ -131,77 +126,145 @@ public class MiniProgramLpReportDC04902
   {
     DC_TABLE_VALUE_END_TIME = currentTimeString();
     ThreadManager.getSubThreadHandler().removeCallbacks(PERIODICALLY_COLLECT_CPU_MEM_RUNNABLE);
-    double d3 = (lastFrameUpdateTime - startFrameTime) / 1000000.0D / 1000.0D / 60.0D;
+    double d1 = lastFrameUpdateTime - startFrameTime;
+    Double.isNaN(d1);
+    double d3 = d1 / 1000000.0D / 1000.0D / 60.0D;
     int i;
-    double d1;
-    label57:
-    double d2;
-    label65:
-    Object localObject1;
-    String str1;
-    Object localObject2;
-    if (d3 < 0.01D)
-    {
+    if (d3 < 0.01D) {
       i = 1;
-      if (i == 0) {
-        break label788;
-      }
-      d1 = 0.0D;
-      if (i == 0) {
-        break label800;
-      }
-      d2 = 0.0D;
-      QMLog.d("MiniProgramLpReportDC04902", "reportGameEnd: minuteFromStart=" + d3 + " jankCount=" + jankCount + " bigJankCount=" + bigJankCount);
-      localObject1 = DC_TABLE_VALUE_APPID + '|' + DC_TABLE_VALUE_QUA + '|' + DC_TABLE_VALUE_START_TIME + '|' + DC_TABLE_VALUE_END_TIME + '|' + DC_TABLE_VALUE_F_20 + '|' + DC_TABLE_VALUE_F_33 + '|' + DC_TABLE_VALUE_F_50 + '|' + DC_TABLE_VALUE_F_100 + '|' + DC_TABLE_VALUE_F_LONG + '|' + DC_TABLE_VALUE_AVG_MEM + '|' + DC_TABLE_VALUE_MAX_MEM + '|' + DC_TABLE_VALUE_AVG_CPU + '|' + DC_TABLE_VALUE_MAX_CPU + '|' + DC_TABLE_VALUE_ATTACH_INFO + '|' + DC_TABLE_VALUE_F_MAX_TIME_MILLIS + '|' + DC_TABLE_VALUE_F_MAX + '|' + (int)paramFloat2 + '|' + (int)paramFloat1 + '|' + DC_TABLE_VALUE_TEXTURE_OFFLINE + '|' + MiniProgramReportHelper.getNetworkType() + '|' + DC_TABLE_VALUE_NETWORK_GATEWAY_IP + '|' + NetworkUtil.getCurrentWifiSSID(AppLoaderFactory.g().getContext()) + '|' + DC_TABLE_VALUE_PLATFORM + '|' + Build.MODEL + '|' + Build.VERSION.RELEASE + '|' + d1 + '|' + d2;
-      if (QUAUtil.isQQApp()) {
-        break label820;
-      }
-      str1 = QUAUtil.getQUA();
-      localObject2 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId();
-      String str2 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
-      String str3 = QUAUtil.getLoginType();
-      localObject1 = (String)localObject1 + '|' + str1 + '|' + (String)localObject2 + '|' + str2 + '|' + str3;
+    } else {
+      i = 0;
     }
-    label788:
-    label800:
-    label820:
-    for (;;)
+    double d2 = 0.0D;
+    if (i != 0)
     {
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putStringArray("data", new String[] { localObject1 });
-      if (QUAUtil.isQQApp()) {}
-      for (str1 = "dc04902";; str1 = "dc05389")
-      {
-        ((Bundle)localObject2).putString("log_key", str1);
-        QMLog.d("MiniProgramLpReportDC04902", "reportGameEnd " + (String)localObject1);
-        AppBrandCmdProxy.g().sendCmd("cmd_dc_report_log_key_data", (Bundle)localObject2, null);
-        hasReportStart = false;
-        if (PERF_LEVEL == null) {
-          PERF_LEVEL = String.valueOf(DeviceInfoUtil.getPerfLevel());
-        }
-        localObject1 = new HashMap();
-        ((HashMap)localObject1).put("appId", DC_TABLE_VALUE_APPID);
-        ((HashMap)localObject1).put("qua", DC_TABLE_VALUE_QUA);
-        ((HashMap)localObject1).put("osVersion", Build.VERSION.RELEASE);
-        ((HashMap)localObject1).put("baseLibVersion", paramString1);
-        ((HashMap)localObject1).put("tritonVersion", paramString2);
-        ((HashMap)localObject1).put("isSdk", String.valueOf(1));
-        ((HashMap)localObject1).put("jank", String.valueOf(d1));
-        ((HashMap)localObject1).put("bigJank", String.valueOf(d2));
-        ((HashMap)localObject1).put("level", PERF_LEVEL);
-        ((HashMap)localObject1).put("avgFps", String.valueOf(paramFloat1));
-        ((HashMap)localObject1).put("avgMem", String.valueOf(DC_TABLE_VALUE_AVG_MEM));
-        ((HashMap)localObject1).put("avgCpu", String.valueOf(DC_TABLE_VALUE_AVG_CPU));
-        report("mini_game_jank", (Map)localObject1);
-        return;
-        i = 0;
-        break;
-        d1 = jankCount / d3;
-        break label57;
-        d2 = bigJankCount / d3;
-        break label65;
-      }
+      d1 = 0.0D;
     }
+    else
+    {
+      d1 = jankCount;
+      Double.isNaN(d1);
+      d1 /= d3;
+    }
+    if (i == 0)
+    {
+      d2 = bigJankCount;
+      Double.isNaN(d2);
+      d2 /= d3;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("reportGameEnd: minuteFromStart=");
+    ((StringBuilder)localObject1).append(d3);
+    ((StringBuilder)localObject1).append(" jankCount=");
+    ((StringBuilder)localObject1).append(jankCount);
+    ((StringBuilder)localObject1).append(" bigJankCount=");
+    ((StringBuilder)localObject1).append(bigJankCount);
+    QMLog.d("MiniProgramLpReportDC04902", ((StringBuilder)localObject1).toString());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_APPID);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_QUA);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_START_TIME);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_END_TIME);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_F_20);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_F_33);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_F_50);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_F_100);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_F_LONG);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_AVG_MEM);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_MAX_MEM);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_AVG_CPU);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_MAX_CPU);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_ATTACH_INFO);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_F_MAX_TIME_MILLIS);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_F_MAX);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append((int)paramFloat2);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append((int)paramFloat1);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_TEXTURE_OFFLINE);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(MiniProgramReportHelper.getNetworkType());
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_NETWORK_GATEWAY_IP);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(NetworkUtil.getCurrentWifiSSID(AppLoaderFactory.g().getContext()));
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(DC_TABLE_VALUE_PLATFORM);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(Build.MODEL);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(d1);
+    ((StringBuilder)localObject1).append('|');
+    ((StringBuilder)localObject1).append(d2);
+    Object localObject2 = ((StringBuilder)localObject1).toString();
+    localObject1 = localObject2;
+    if (!QUAUtil.isQQApp())
+    {
+      localObject1 = QUAUtil.getQUA();
+      localObject3 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId();
+      String str1 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
+      String str2 = QUAUtil.getLoginType();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append('|');
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append('|');
+      localStringBuilder.append((String)localObject3);
+      localStringBuilder.append('|');
+      localStringBuilder.append(str1);
+      localStringBuilder.append('|');
+      localStringBuilder.append(str2);
+      localObject1 = localStringBuilder.toString();
+    }
+    Object localObject3 = new Bundle();
+    ((Bundle)localObject3).putStringArray("data", new String[] { localObject1 });
+    if (QUAUtil.isQQApp()) {
+      localObject2 = "dc04902";
+    } else {
+      localObject2 = "dc05389";
+    }
+    ((Bundle)localObject3).putString("log_key", (String)localObject2);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("reportGameEnd ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QMLog.d("MiniProgramLpReportDC04902", ((StringBuilder)localObject2).toString());
+    AppBrandCmdProxy.g().sendCmd("cmd_dc_report_log_key_data", (Bundle)localObject3, null);
+    hasReportStart = false;
+    if (PERF_LEVEL == null) {
+      PERF_LEVEL = String.valueOf(DeviceInfoUtil.getPerfLevel());
+    }
+    localObject1 = new HashMap();
+    ((HashMap)localObject1).put("appId", DC_TABLE_VALUE_APPID);
+    ((HashMap)localObject1).put("qua", DC_TABLE_VALUE_QUA);
+    ((HashMap)localObject1).put("osVersion", Build.VERSION.RELEASE);
+    ((HashMap)localObject1).put("baseLibVersion", paramString1);
+    ((HashMap)localObject1).put("tritonVersion", paramString2);
+    ((HashMap)localObject1).put("isSdk", String.valueOf(1));
+    ((HashMap)localObject1).put("jank", String.valueOf(d1));
+    ((HashMap)localObject1).put("bigJank", String.valueOf(d2));
+    ((HashMap)localObject1).put("level", PERF_LEVEL);
+    ((HashMap)localObject1).put("avgFps", String.valueOf(paramFloat1));
+    ((HashMap)localObject1).put("avgMem", String.valueOf(DC_TABLE_VALUE_AVG_MEM));
+    ((HashMap)localObject1).put("avgCpu", String.valueOf(DC_TABLE_VALUE_AVG_CPU));
+    report("mini_game_jank", (Map)localObject1);
   }
   
   public static void reportGameStart(String paramString)
@@ -232,41 +295,45 @@ public class MiniProgramLpReportDC04902
       startFrameTime = paramLong;
       jankCount = 0;
       bigJankCount = 0;
-      lastFrameUpdateTime = paramLong;
-      return;
     }
-    long l2 = paramLong - lastFrameUpdateTime;
-    if ((totalFrameCount >= 3) && (l2 > 83333332L))
+    else
     {
-      long l1 = 0L;
-      while (i < 3)
+      long l2 = paramLong - lastFrameUpdateTime;
+      if ((totalFrameCount >= 3) && (l2 > 83333332L))
       {
-        l1 += frameTimes[i];
-        i += 1;
-      }
-      if (l2 > l1 / 3L * 2L)
-      {
-        if (l2 <= 124999998L) {
-          break label195;
+        long l1 = 0L;
+        while (i < 3)
+        {
+          l1 += frameTimes[i];
+          i += 1;
         }
-        bigJankCount += 1;
+        if (l2 > l1 / 3L * 2L)
+        {
+          if (l2 > 124999998L) {
+            bigJankCount += 1;
+          } else {
+            jankCount += 1;
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("jankCount=");
+          localStringBuilder.append(jankCount);
+          localStringBuilder.append(" bigJankCount=");
+          localStringBuilder.append(bigJankCount);
+          localStringBuilder.append(" time=");
+          localStringBuilder.append((paramLong - startFrameTime) / 1000000L);
+          QMLog.d("MiniProgramLpReportDC04902", localStringBuilder.toString());
+        }
       }
-    }
-    for (;;)
-    {
-      QMLog.d("MiniProgramLpReportDC04902", "jankCount=" + jankCount + " bigJankCount=" + bigJankCount + " time=" + (paramLong - startFrameTime) / 1000000L);
       i = totalFrameCount;
       frameTimes[(i % 3)] = l2;
-      totalFrameCount += 1;
-      break;
-      label195:
-      jankCount += 1;
+      totalFrameCount = i + 1;
     }
+    lastFrameUpdateTime = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04902
  * JD-Core Version:    0.7.0.1
  */

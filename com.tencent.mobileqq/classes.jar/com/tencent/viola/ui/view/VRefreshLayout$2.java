@@ -12,22 +12,26 @@ class VRefreshLayout$2
   
   public void onRefreshMove(int paramInt)
   {
-    ViolaLogUtils.d(VRefreshLayout.TAG, "onRefreshMove offset:" + paramInt);
+    Object localObject = VRefreshLayout.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRefreshMove offset:");
+    localStringBuilder.append(paramInt);
+    ViolaLogUtils.d((String)localObject, localStringBuilder.toString());
     if (VRefreshLayout.access$000(this.this$0) != null) {
       VRefreshLayout.access$000(this.this$0).onRefreshMove(paramInt);
     }
     if (VRefreshLayout.access$100(this.this$0) != null)
     {
-      Iterator localIterator = VRefreshLayout.access$100(this.this$0).iterator();
-      while (localIterator.hasNext()) {
-        ((VRefreshLayout.OnHeaderStateChangeListener)localIterator.next()).onRefreshMove(paramInt);
+      localObject = VRefreshLayout.access$100(this.this$0).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((VRefreshLayout.OnHeaderStateChangeListener)((Iterator)localObject).next()).onRefreshMove(paramInt);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.VRefreshLayout.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,12 @@ final class ProfileCardUtil$2
     String str2 = CardHandler.a(this.a, i);
     ImageUtil.a(this.b, str1);
     ImageUtil.a(this.b, str2, i, i);
-    FileUtils.a(this.b, true);
+    FileUtils.delete(this.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ProfileCardUtil.2
  * JD-Core Version:    0.7.0.1
  */

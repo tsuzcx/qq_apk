@@ -61,15 +61,22 @@ public class VideoCompressProcessor
   
   public static void a(boolean paramBoolean, long paramLong1, VideoCompressConfig.VideoInfo paramVideoInfo, VideoCompressConfig.CompressInfo paramCompressInfo, long paramLong2)
   {
-    if ((paramVideoInfo == null) || (paramCompressInfo == null)) {}
-    do
+    if (paramVideoInfo != null)
     {
-      return;
+      if (paramCompressInfo == null) {
+        return;
+      }
       HashMap localHashMap = new HashMap();
       a(localHashMap, paramVideoInfo);
       a(localHashMap, paramCompressInfo);
-      localHashMap.put("param_compressSuccess", paramBoolean + "");
-      localHashMap.put("param_compressTime", paramLong1 + "");
+      paramCompressInfo = new StringBuilder();
+      paramCompressInfo.append(paramBoolean);
+      paramCompressInfo.append("");
+      localHashMap.put("param_compressSuccess", paramCompressInfo.toString());
+      paramCompressInfo = new StringBuilder();
+      paramCompressInfo.append(paramLong1);
+      paramCompressInfo.append("");
+      localHashMap.put("param_compressTime", paramCompressInfo.toString());
       localHashMap.put("param_file_target_sze", String.valueOf(paramLong2));
       if ((paramVideoInfo.jdField_a_of_type_Long > 0L) && (paramLong2 > 0L)) {
         localHashMap.put("param_compress_rate", String.valueOf((float)paramLong2 / (float)paramVideoInfo.jdField_a_of_type_Long));
@@ -78,8 +85,16 @@ public class VideoCompressProcessor
         localHashMap.put("param_compressSpeed", String.valueOf((float)paramLong1 / paramVideoInfo.d));
       }
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actVideoCompressTime", paramBoolean, 0L, 0L, localHashMap, "", false);
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoCompressProcessor", 2, "reportVideoCompressTime, success =" + paramBoolean + ", compressTime = " + paramLong1);
+      if (QLog.isColorLevel())
+      {
+        paramVideoInfo = new StringBuilder();
+        paramVideoInfo.append("reportVideoCompressTime, success =");
+        paramVideoInfo.append(paramBoolean);
+        paramVideoInfo.append(", compressTime = ");
+        paramVideoInfo.append(paramLong1);
+        QLog.d("VideoCompressProcessor", 2, paramVideoInfo.toString());
+      }
+    }
   }
   
   public VideoCompressProcessor.CompressTask a(long paramLong)
@@ -123,7 +138,7 @@ public class VideoCompressProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.VideoCompressProcessor
  * JD-Core Version:    0.7.0.1
  */

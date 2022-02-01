@@ -18,32 +18,33 @@ class MagicfaceContainerView$1
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
-      if (this.a.a != null) {
+    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F)
+    {
+      if (this.a.a != null)
+      {
         this.a.a.a(0);
+        return false;
       }
     }
-    do
+    else if (paramMotionEvent1.getX() - paramMotionEvent2.getX() < -150.0F)
     {
-      do
+      if (this.a.a != null)
       {
-        do
-        {
-          return false;
-          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
-            break;
-          }
-        } while (this.a.a == null);
         this.a.a.a(1);
         return false;
-        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
-          break;
-        }
-      } while (this.a.a == null);
-      this.a.a.a(2);
-      return false;
-    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (this.a.a == null));
-    this.a.a.a(3);
+      }
+    }
+    else if (paramMotionEvent1.getY() - paramMotionEvent2.getY() > 150.0F)
+    {
+      if (this.a.a != null)
+      {
+        this.a.a.a(2);
+        return false;
+      }
+    }
+    else if ((paramMotionEvent1.getY() - paramMotionEvent2.getY() < -150.0F) && (this.a.a != null)) {
+      this.a.a.a(3);
+    }
     return false;
   }
   
@@ -57,7 +58,7 @@ class MagicfaceContainerView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceContainerView.1
  * JD-Core Version:    0.7.0.1
  */

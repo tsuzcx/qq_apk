@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -28,15 +27,15 @@ class GetConfig$1
       ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSDKPredownload", true, 0L, 0L, (HashMap)localObject, "");
     }
-    Object localObject = (PreDownloadController)this.this$0.a.a.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
-    if (((PreDownloadController)localObject).isEnable()) {
-      ((PreDownloadController)localObject).preDownloadSuccess("http://tvk_sdkmgr/unkown", -1L);
+    Object localObject = (IPreDownloadController)this.this$0.mAutomator.a.getRuntimeService(IPreDownloadController.class);
+    if (((IPreDownloadController)localObject).isEnable()) {
+      ((IPreDownloadController)localObject).preDownloadSuccess("http://tvk_sdkmgr/unkown", -1L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetConfig.1
  * JD-Core Version:    0.7.0.1
  */

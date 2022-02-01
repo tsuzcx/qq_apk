@@ -33,8 +33,8 @@ public class LiangHaoDialogView
   private void a()
   {
     setOrientation(1);
-    LayoutInflater.from(getContext()).inflate(2131562091, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131370333));
+    LayoutInflater.from(getContext()).inflate(2131561927, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131370000));
   }
   
   public void a(LiangHaoUinData paramLiangHaoUinData)
@@ -45,7 +45,7 @@ public class LiangHaoDialogView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialogView
  * JD-Core Version:    0.7.0.1
  */

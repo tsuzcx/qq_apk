@@ -11,22 +11,20 @@ class VACDReportServiceImpl$5
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
-    if (paramBundle.containsKey("rsp")) {}
-    for (paramBundle = ((ReportRsp)paramBundle.getSerializable("rsp")).headers;; paramBundle = null)
-    {
-      VACDReportServiceImpl.access$1100(this.a, paramBundle);
-      return;
+    if (paramBundle.containsKey("rsp")) {
+      paramBundle = ((ReportRsp)paramBundle.getSerializable("rsp")).headers;
+    } else {
+      paramBundle = null;
     }
+    VACDReportServiceImpl.access$1100(this.a, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.report.impl.VACDReportServiceImpl.5
  * JD-Core Version:    0.7.0.1
  */

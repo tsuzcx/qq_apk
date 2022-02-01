@@ -19,8 +19,9 @@ public class QCircleGetRecommendTagRequest
   public QCircleGetRecommendTagRequest(FeedCloudMeta.StGPSV2 paramStGPSV2, List<FeedCloudTagcategorysvr.PicRecomEntry> paramList)
   {
     this.mReq.reqType.set(1);
-    this.mReq.gpsInfo = paramStGPSV2;
-    this.mReq.picRecomMap.set(paramList);
+    FeedCloudTagcategorysvr.StTagCategoryRecomReq localStTagCategoryRecomReq = this.mReq;
+    localStTagCategoryRecomReq.gpsInfo = paramStGPSV2;
+    localStTagCategoryRecomReq.picRecomMap.set(paramList);
   }
   
   public MessageMicro decode(byte[] paramArrayOfByte)
@@ -43,14 +44,14 @@ public class QCircleGetRecommendTagRequest
     return "FeedCloudSvr.trpc.feedcloud.tagcategorysvr.TagCategoryProcess.GetTagCategoryRecom";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mReq.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.requests.QCircleGetRecommendTagRequest
  * JD-Core Version:    0.7.0.1
  */

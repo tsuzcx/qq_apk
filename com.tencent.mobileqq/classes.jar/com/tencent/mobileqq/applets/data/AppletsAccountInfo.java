@@ -72,13 +72,22 @@ public class AppletsAccountInfo
   {
     String str = StringUtil.e(String.valueOf(this.uin));
     StringBuilder localStringBuilder = new StringBuilder("--AppletsAccountInfo--");
-    localStringBuilder.append(",shortUin:").append(str).append(",nick:").append(this.nick).append(",face_url:").append(this.faceUrl).append(",face_url_simple:").append(this.faceUrlSimple).append(",appInfo:").append(this.appInfo);
+    localStringBuilder.append(",shortUin:");
+    localStringBuilder.append(str);
+    localStringBuilder.append(",nick:");
+    localStringBuilder.append(this.nick);
+    localStringBuilder.append(",face_url:");
+    localStringBuilder.append(this.faceUrl);
+    localStringBuilder.append(",face_url_simple:");
+    localStringBuilder.append(this.faceUrlSimple);
+    localStringBuilder.append(",appInfo:");
+    localStringBuilder.append(this.appInfo);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.applets.data.AppletsAccountInfo
  * JD-Core Version:    0.7.0.1
  */

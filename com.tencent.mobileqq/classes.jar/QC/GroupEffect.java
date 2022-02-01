@@ -34,15 +34,16 @@ public final class GroupEffect
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vUserConfig != null) {
-      paramJceOutputStream.write(this.vUserConfig, 0);
+    ArrayList localArrayList = this.vUserConfig;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
     paramJceOutputStream.write(this.global_effect_id, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.GroupEffect
  * JD-Core Version:    0.7.0.1
  */

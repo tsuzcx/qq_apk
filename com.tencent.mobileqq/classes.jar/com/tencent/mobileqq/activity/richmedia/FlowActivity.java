@@ -28,17 +28,12 @@ public abstract class FlowActivity
     return this.jdField_a_of_type_AndroidViewViewGroup;
   }
   
-  protected FlowPanel a()
-  {
-    return null;
-  }
-  
   protected void a(Bundle paramBundle)
   {
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297111));
+    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297093));
   }
   
   protected abstract void a(ViewGroup paramViewGroup);
@@ -57,7 +52,7 @@ public abstract class FlowActivity
     super.finish();
     if (this.jdField_a_of_type_Boolean)
     {
-      overridePendingTransition(0, 2130772003);
+      overridePendingTransition(0, 2130772015);
       return;
     }
     overridePendingTransition(0, 0);
@@ -75,38 +70,35 @@ public abstract class FlowActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     getWindow().addFlags(256);
     getWindow().addFlags(512);
     paramBundle = getIntent().getExtras();
     if (paramBundle == null) {
-      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297111));
+      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297093));
     }
     a(paramBundle);
-    setContentView(2131558451);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131367254));
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      a(this.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    paramBundle = a();
+    setContentView(2131558479);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131367038));
+    paramBundle = this.jdField_a_of_type_AndroidViewViewGroup;
     if (paramBundle != null) {
-      paramBundle.a((ViewGroup)findViewById(2131367234));
+      a(paramBundle);
     }
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
   }
@@ -129,7 +121,7 @@ public abstract class FlowActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.FlowActivity
  * JD-Core Version:    0.7.0.1
  */

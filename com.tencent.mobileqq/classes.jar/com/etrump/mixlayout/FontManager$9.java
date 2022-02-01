@@ -10,13 +10,13 @@ class FontManager$9
   public void run()
   {
     if (FontManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComEtrumpMixlayoutFontInfo, this.jdField_a_of_type_Int)) {
-      VasUtils.a(this.this$0.a);
+      VasUtils.a(FontManager.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.9
  * JD-Core Version:    0.7.0.1
  */

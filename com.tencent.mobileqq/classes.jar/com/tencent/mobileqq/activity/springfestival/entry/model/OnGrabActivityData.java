@@ -38,44 +38,45 @@ public class OnGrabActivityData
   
   public void parseJson(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    do
-    {
+    if (paramJSONObject == null) {
       return;
-      super.parseJson(paramJSONObject);
-      paramJSONObject = paramJSONObject.optJSONObject("GrabActivity");
-    } while (paramJSONObject == null);
-    this.playDuration = paramJSONObject.optInt("PlayDuration", this.playDuration);
-    this.tipBarWording = paramJSONObject.optString("TipBarWording", this.tipBarWording);
-    this.grabWording = paramJSONObject.optString("GrabWording", this.grabWording);
-    this.noRPWording = paramJSONObject.optString("NoRPWording", this.noRPWording);
-    this.logoImgUrl = paramJSONObject.optString("LogoImgUrl", this.logoImgUrl);
-    this.nameImgUrl = paramJSONObject.optString("NameImgUrl", this.nameImgUrl);
-    this.bgUrl = paramJSONObject.optString("BgUrl", this.bgUrl);
-    this.leftCloudImgUrl = paramJSONObject.optString("LeftCloudImgUrl", this.leftCloudImgUrl);
-    this.rightCloudImgUrl = paramJSONObject.optString("RightCloudImgUrl", this.rightCloudImgUrl);
-    Object localObject = paramJSONObject.optJSONArray("AwardList");
-    if (localObject != null)
-    {
-      int i = 0;
-      while (i < ((JSONArray)localObject).length())
-      {
-        JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
-        if (localJSONObject != null)
-        {
-          OnGrabActivityData.Award localAward = new OnGrabActivityData.Award(this);
-          localAward.parseJson(localJSONObject);
-          this.awardList.add(localAward);
-        }
-        i += 1;
-      }
     }
-    localObject = paramJSONObject.optJSONObject("Share");
-    this.shareData.parseJson((JSONObject)localObject);
-    localObject = paramJSONObject.optJSONObject("PreviewEntry");
-    this.previewEntryData.parseJson((JSONObject)localObject);
-    paramJSONObject = paramJSONObject.optJSONObject("MiniAppEntry");
-    this.miniAppEntryData.parseJson(paramJSONObject);
+    super.parseJson(paramJSONObject);
+    paramJSONObject = paramJSONObject.optJSONObject("GrabActivity");
+    if (paramJSONObject != null)
+    {
+      this.playDuration = paramJSONObject.optInt("PlayDuration", this.playDuration);
+      this.tipBarWording = paramJSONObject.optString("TipBarWording", this.tipBarWording);
+      this.grabWording = paramJSONObject.optString("GrabWording", this.grabWording);
+      this.noRPWording = paramJSONObject.optString("NoRPWording", this.noRPWording);
+      this.logoImgUrl = paramJSONObject.optString("LogoImgUrl", this.logoImgUrl);
+      this.nameImgUrl = paramJSONObject.optString("NameImgUrl", this.nameImgUrl);
+      this.bgUrl = paramJSONObject.optString("BgUrl", this.bgUrl);
+      this.leftCloudImgUrl = paramJSONObject.optString("LeftCloudImgUrl", this.leftCloudImgUrl);
+      this.rightCloudImgUrl = paramJSONObject.optString("RightCloudImgUrl", this.rightCloudImgUrl);
+      Object localObject = paramJSONObject.optJSONArray("AwardList");
+      if (localObject != null)
+      {
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
+          if (localJSONObject != null)
+          {
+            OnGrabActivityData.Award localAward = new OnGrabActivityData.Award(this);
+            localAward.parseJson(localJSONObject);
+            this.awardList.add(localAward);
+          }
+          i += 1;
+        }
+      }
+      localObject = paramJSONObject.optJSONObject("Share");
+      this.shareData.parseJson((JSONObject)localObject);
+      localObject = paramJSONObject.optJSONObject("PreviewEntry");
+      this.previewEntryData.parseJson((JSONObject)localObject);
+      paramJSONObject = paramJSONObject.optJSONObject("MiniAppEntry");
+      this.miniAppEntryData.parseJson(paramJSONObject);
+    }
   }
   
   public boolean schedulePendantNBreathLight()
@@ -90,12 +91,50 @@ public class OnGrabActivityData
   
   public String toString()
   {
-    return "OnGrabActivityData{superData=" + super.toString() + ", playDuration=" + this.playDuration + ", tipBarWording='" + this.tipBarWording + '\'' + ", grabWording='" + this.grabWording + '\'' + ", noRPWording='" + this.noRPWording + '\'' + ", logoImgUrl='" + this.logoImgUrl + '\'' + ", nameImgUrl='" + this.nameImgUrl + '\'' + ", bgUrl='" + this.bgUrl + '\'' + ", leftCloudImgUrl='" + this.leftCloudImgUrl + '\'' + ", rightCloudImgUrl='" + this.rightCloudImgUrl + '\'' + ", awardList=" + Arrays.toString(this.awardList.toArray()) + ", shareData=" + this.shareData + ", previewEntryData=" + this.previewEntryData + ", miniAppEntryData=" + this.miniAppEntryData + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnGrabActivityData{superData=");
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(", playDuration=");
+    localStringBuilder.append(this.playDuration);
+    localStringBuilder.append(", tipBarWording='");
+    localStringBuilder.append(this.tipBarWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", grabWording='");
+    localStringBuilder.append(this.grabWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", noRPWording='");
+    localStringBuilder.append(this.noRPWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", logoImgUrl='");
+    localStringBuilder.append(this.logoImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", nameImgUrl='");
+    localStringBuilder.append(this.nameImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bgUrl='");
+    localStringBuilder.append(this.bgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", leftCloudImgUrl='");
+    localStringBuilder.append(this.leftCloudImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", rightCloudImgUrl='");
+    localStringBuilder.append(this.rightCloudImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", awardList=");
+    localStringBuilder.append(Arrays.toString(this.awardList.toArray()));
+    localStringBuilder.append(", shareData=");
+    localStringBuilder.append(this.shareData);
+    localStringBuilder.append(", previewEntryData=");
+    localStringBuilder.append(this.previewEntryData);
+    localStringBuilder.append(", miniAppEntryData=");
+    localStringBuilder.append(this.miniAppEntryData);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.OnGrabActivityData
  * JD-Core Version:    0.7.0.1
  */

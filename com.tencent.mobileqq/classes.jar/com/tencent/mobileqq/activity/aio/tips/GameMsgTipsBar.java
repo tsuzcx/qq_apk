@@ -35,10 +35,10 @@ public class GameMsgTipsBar
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559265, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559139, null);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367728)).setOnClickListener(this);
-      paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380377);
+      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367485)).setOnClickListener(this);
+      paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379697);
       if ((paramVarArgs != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
         paramVarArgs.setText(this.jdField_a_of_type_JavaLangString);
       }
@@ -58,8 +58,12 @@ public class GameMsgTipsBar
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameMsgTipsBar", 0, "[updateTips], tips:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[updateTips], tips:");
+      localStringBuilder.append(paramString);
+      QLog.d("GameMsgTipsBar", 0, localStringBuilder.toString());
     }
     this.jdField_a_of_type_JavaLangString = paramString;
   }
@@ -76,22 +80,19 @@ public class GameMsgTipsBar
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131367485)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      View localView = this.jdField_a_of_type_AndroidViewView;
+      if (localView != null) {
+        localView.setVisibility(8);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.GameMsgTipsBar
  * JD-Core Version:    0.7.0.1
  */

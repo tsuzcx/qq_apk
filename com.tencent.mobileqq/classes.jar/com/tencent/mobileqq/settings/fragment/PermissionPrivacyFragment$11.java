@@ -8,7 +8,7 @@ class PermissionPrivacyFragment$11
 {
   PermissionPrivacyFragment$11(PermissionPrivacyFragment paramPermissionPrivacyFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, String paramString)
   {
     super.a(paramBoolean, paramString);
     if (QLog.isColorLevel()) {
@@ -17,7 +17,7 @@ class PermissionPrivacyFragment$11
     PermissionPrivacyFragment.b(this.a);
   }
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
     super.a(paramBoolean1, paramString, paramBoolean2);
     if (QLog.isColorLevel()) {
@@ -28,7 +28,7 @@ class PermissionPrivacyFragment$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment.11
  * JD-Core Version:    0.7.0.1
  */

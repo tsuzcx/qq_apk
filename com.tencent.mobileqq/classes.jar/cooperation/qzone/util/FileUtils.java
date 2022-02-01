@@ -12,123 +12,182 @@ import java.util.zip.ZipOutputStream;
 public class FileUtils
 {
   public static final int CPY_BUFFER_SIZE = 4096;
+  public static final String TAG = "FileUtils";
   public static final int ZIP_BUFFER_SIZE = 4096;
   public static final String ZIP_FILE_EXT = ".zip";
+  
+  private static String byteArrayToHex(byte[] paramArrayOfByte)
+  {
+    char[] arrayOfChar1 = new char[16];
+    char[] tmp8_6 = arrayOfChar1;
+    tmp8_6[0] = 48;
+    char[] tmp13_8 = tmp8_6;
+    tmp13_8[1] = 49;
+    char[] tmp18_13 = tmp13_8;
+    tmp18_13[2] = 50;
+    char[] tmp23_18 = tmp18_13;
+    tmp23_18[3] = 51;
+    char[] tmp28_23 = tmp23_18;
+    tmp28_23[4] = 52;
+    char[] tmp33_28 = tmp28_23;
+    tmp33_28[5] = 53;
+    char[] tmp38_33 = tmp33_28;
+    tmp38_33[6] = 54;
+    char[] tmp44_38 = tmp38_33;
+    tmp44_38[7] = 55;
+    char[] tmp50_44 = tmp44_38;
+    tmp50_44[8] = 56;
+    char[] tmp56_50 = tmp50_44;
+    tmp56_50[9] = 57;
+    char[] tmp62_56 = tmp56_50;
+    tmp62_56[10] = 65;
+    char[] tmp68_62 = tmp62_56;
+    tmp68_62[11] = 66;
+    char[] tmp74_68 = tmp68_62;
+    tmp74_68[12] = 67;
+    char[] tmp80_74 = tmp74_68;
+    tmp80_74[13] = 68;
+    char[] tmp86_80 = tmp80_74;
+    tmp86_80[14] = 69;
+    char[] tmp92_86 = tmp86_80;
+    tmp92_86[15] = 70;
+    tmp92_86;
+    char[] arrayOfChar2 = new char[paramArrayOfByte.length * 2];
+    int k = paramArrayOfByte.length;
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      int m = paramArrayOfByte[i];
+      int n = j + 1;
+      arrayOfChar2[j] = arrayOfChar1[(m >>> 4 & 0xF)];
+      j = n + 1;
+      arrayOfChar2[n] = arrayOfChar1[(m & 0xF)];
+      i += 1;
+    }
+    return new String(arrayOfChar2);
+  }
   
   /* Error */
   public static boolean copyFile(File paramFile1, File paramFile2)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_3
-    //   5: new 23	java/io/FileInputStream
-    //   8: dup
-    //   9: aload_0
-    //   10: invokespecial 26	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   13: astore_0
-    //   14: new 28	java/io/BufferedOutputStream
-    //   17: dup
-    //   18: new 30	java/io/FileOutputStream
-    //   21: dup
-    //   22: aload_1
-    //   23: invokespecial 31	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   26: invokespecial 34	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   29: astore_3
-    //   30: sipush 4096
-    //   33: newarray byte
-    //   35: astore_1
-    //   36: aload_0
-    //   37: aload_1
-    //   38: invokevirtual 38	java/io/FileInputStream:read	([B)I
-    //   41: istore_2
-    //   42: iconst_m1
-    //   43: iload_2
-    //   44: if_icmpeq +30 -> 74
-    //   47: aload_3
-    //   48: aload_1
-    //   49: iconst_0
-    //   50: iload_2
-    //   51: invokevirtual 42	java/io/BufferedOutputStream:write	([BII)V
-    //   54: goto -18 -> 36
-    //   57: astore_1
-    //   58: aload_0
-    //   59: astore_1
-    //   60: aload_3
-    //   61: astore_0
-    //   62: aload_0
-    //   63: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   66: pop
-    //   67: aload_1
-    //   68: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   71: pop
-    //   72: iconst_0
-    //   73: ireturn
-    //   74: aload_3
-    //   75: invokevirtual 51	java/io/BufferedOutputStream:flush	()V
-    //   78: aload_3
-    //   79: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   82: pop
-    //   83: aload_0
-    //   84: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   87: pop
-    //   88: iconst_1
-    //   89: ireturn
-    //   90: astore_1
-    //   91: aconst_null
-    //   92: astore_0
-    //   93: aload 4
-    //   95: astore_3
-    //   96: aload_3
-    //   97: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   100: pop
-    //   101: aload_0
-    //   102: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   105: pop
-    //   106: aload_1
-    //   107: athrow
-    //   108: astore_1
-    //   109: aload 4
-    //   111: astore_3
-    //   112: goto -16 -> 96
-    //   115: astore_1
-    //   116: goto -20 -> 96
-    //   119: astore_0
-    //   120: aconst_null
-    //   121: astore_0
-    //   122: aload_3
-    //   123: astore_1
-    //   124: goto -62 -> 62
-    //   127: astore_1
-    //   128: aconst_null
-    //   129: astore_3
-    //   130: aload_0
-    //   131: astore_1
-    //   132: aload_3
-    //   133: astore_0
-    //   134: goto -72 -> 62
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: aconst_null
+    //   3: astore 4
+    //   5: aconst_null
+    //   6: astore 5
+    //   8: new 49	java/io/FileInputStream
+    //   11: dup
+    //   12: aload_0
+    //   13: invokespecial 52	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   16: astore_0
+    //   17: new 54	java/io/BufferedOutputStream
+    //   20: dup
+    //   21: new 56	java/io/FileOutputStream
+    //   24: dup
+    //   25: aload_1
+    //   26: invokespecial 57	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   29: invokespecial 60	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   32: astore_1
+    //   33: sipush 4096
+    //   36: newarray byte
+    //   38: astore 4
+    //   40: aload_0
+    //   41: aload 4
+    //   43: invokevirtual 64	java/io/FileInputStream:read	([B)I
+    //   46: istore_2
+    //   47: iconst_m1
+    //   48: iload_2
+    //   49: if_icmpeq +14 -> 63
+    //   52: aload_1
+    //   53: aload 4
+    //   55: iconst_0
+    //   56: iload_2
+    //   57: invokevirtual 68	java/io/BufferedOutputStream:write	([BII)V
+    //   60: goto -20 -> 40
+    //   63: aload_1
+    //   64: invokevirtual 71	java/io/BufferedOutputStream:flush	()V
+    //   67: iconst_1
+    //   68: istore_3
+    //   69: aload_1
+    //   70: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   73: pop
+    //   74: goto +61 -> 135
+    //   77: astore 5
+    //   79: aload_0
+    //   80: astore 4
+    //   82: aload 5
+    //   84: astore_0
+    //   85: goto +27 -> 112
+    //   88: goto +42 -> 130
+    //   91: astore 6
+    //   93: aload 5
+    //   95: astore_1
+    //   96: aload_0
+    //   97: astore 4
+    //   99: aload 6
+    //   101: astore_0
+    //   102: goto +10 -> 112
+    //   105: astore_0
+    //   106: aconst_null
+    //   107: astore 4
+    //   109: aload 5
+    //   111: astore_1
+    //   112: aload_1
+    //   113: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   116: pop
+    //   117: aload 4
+    //   119: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   122: pop
+    //   123: aload_0
+    //   124: athrow
+    //   125: aconst_null
+    //   126: astore_0
+    //   127: aload 4
+    //   129: astore_1
+    //   130: aload_1
+    //   131: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   134: pop
+    //   135: aload_0
+    //   136: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   139: pop
+    //   140: iload_3
+    //   141: ireturn
+    //   142: astore_0
+    //   143: goto -18 -> 125
+    //   146: astore_1
+    //   147: aload 4
+    //   149: astore_1
+    //   150: goto -20 -> 130
+    //   153: astore 4
+    //   155: goto -67 -> 88
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	137	0	paramFile1	File
-    //   0	137	1	paramFile2	File
-    //   41	10	2	i	int
-    //   4	129	3	localObject1	Object
-    //   1	109	4	localObject2	Object
+    //   0	158	0	paramFile1	File
+    //   0	158	1	paramFile2	File
+    //   46	11	2	i	int
+    //   1	140	3	bool	boolean
+    //   3	145	4	localObject1	Object
+    //   153	1	4	localIOException	IOException
+    //   6	1	5	localObject2	Object
+    //   77	33	5	localObject3	Object
+    //   91	9	6	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   30	36	57	java/io/IOException
-    //   36	42	57	java/io/IOException
-    //   47	54	57	java/io/IOException
-    //   74	78	57	java/io/IOException
-    //   5	14	90	finally
-    //   14	30	108	finally
-    //   30	36	115	finally
-    //   36	42	115	finally
-    //   47	54	115	finally
-    //   74	78	115	finally
-    //   5	14	119	java/io/IOException
-    //   14	30	127	java/io/IOException
+    //   33	40	77	finally
+    //   40	47	77	finally
+    //   52	60	77	finally
+    //   63	67	77	finally
+    //   17	33	91	finally
+    //   8	17	105	finally
+    //   8	17	142	java/io/IOException
+    //   17	33	146	java/io/IOException
+    //   33	40	153	java/io/IOException
+    //   40	47	153	java/io/IOException
+    //   52	60	153	java/io/IOException
+    //   63	67	153	java/io/IOException
   }
   
   public static boolean deleteFile(File paramFile)
@@ -136,113 +195,321 @@ public class FileUtils
     int i = 0;
     if (paramFile != null)
     {
-      if (!paramFile.isFile()) {
-        break label28;
-      }
-      if (paramFile.delete()) {
-        break label26;
-      }
-      paramFile.deleteOnExit();
-    }
-    label26:
-    label28:
-    while (!paramFile.isDirectory())
-    {
-      return false;
-      return true;
-    }
-    File[] arrayOfFile = paramFile.listFiles();
-    if (arrayOfFile != null)
-    {
-      int j = arrayOfFile.length;
-      while (i < j)
+      if (paramFile.isFile())
       {
-        deleteFile(arrayOfFile[i]);
-        i += 1;
+        if (!paramFile.delete())
+        {
+          paramFile.deleteOnExit();
+          return false;
+        }
+        return true;
+      }
+      if (paramFile.isDirectory())
+      {
+        File[] arrayOfFile = paramFile.listFiles();
+        if (arrayOfFile != null)
+        {
+          int j = arrayOfFile.length;
+          while (i < j)
+          {
+            deleteFile(arrayOfFile[i]);
+            i += 1;
+          }
+        }
+        return paramFile.delete();
       }
     }
-    return paramFile.delete();
+    return false;
   }
   
   public static void doZip(ZipOutputStream paramZipOutputStream, File paramFile, String paramString, byte[] paramArrayOfByte)
   {
-    int i = 0;
-    if ((paramZipOutputStream == null) || (paramFile == null)) {
-      throw new IOException("I/O Object got NullPointerException");
-    }
-    if (!paramFile.exists()) {
+    if ((paramZipOutputStream != null) && (paramFile != null))
+    {
+      if (paramFile.exists())
+      {
+        if (TextUtils.isEmpty(paramString))
+        {
+          paramString = paramFile.getName();
+        }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append(paramFile.getName());
+          paramString = localStringBuilder.toString();
+        }
+        boolean bool = paramFile.isFile();
+        int i = 0;
+        if (bool)
+        {
+          try
+          {
+            paramFile = new BufferedInputStream(new FileInputStream(paramFile));
+            try
+            {
+              paramZipOutputStream.putNextEntry(new ZipEntry(paramString));
+              for (;;)
+              {
+                i = paramFile.read(paramArrayOfByte, 0, paramArrayOfByte.length);
+                if (-1 == i) {
+                  break;
+                }
+                paramZipOutputStream.write(paramArrayOfByte, 0, i);
+              }
+              DataUtils.closeDataObject(paramFile);
+              return;
+            }
+            catch (IOException paramString)
+            {
+              paramZipOutputStream = paramFile;
+              paramFile = paramString;
+            }
+            DataUtils.closeDataObject(paramZipOutputStream);
+          }
+          catch (IOException paramFile)
+          {
+            paramZipOutputStream = null;
+          }
+          throw paramFile;
+        }
+        if (paramFile.isDirectory())
+        {
+          paramFile = paramFile.listFiles();
+          int j = paramFile.length;
+          while (i < j)
+          {
+            doZip(paramZipOutputStream, paramFile[i], paramString, paramArrayOfByte);
+            i += 1;
+          }
+        }
+        return;
+      }
       throw new FileNotFoundException("Target File is missing");
     }
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = paramFile.getName();
-    }
-    while (paramFile.isFile())
-    {
-      try
-      {
-        paramFile = new BufferedInputStream(new FileInputStream(paramFile));
-        try
-        {
-          paramZipOutputStream.putNextEntry(new ZipEntry(paramString));
-          for (;;)
-          {
-            i = paramFile.read(paramArrayOfByte, 0, paramArrayOfByte.length);
-            if (-1 == i) {
-              break;
-            }
-            paramZipOutputStream.write(paramArrayOfByte, 0, i);
-          }
-          DataUtils.closeDataObject(paramFile);
-        }
-        catch (IOException paramZipOutputStream) {}
-      }
-      catch (IOException paramZipOutputStream)
-      {
-        for (;;)
-        {
-          paramFile = null;
-        }
-      }
-      throw paramZipOutputStream;
-      paramString = paramString + File.separator + paramFile.getName();
-      continue;
-      DataUtils.closeDataObject(paramFile);
-    }
+    paramZipOutputStream = new IOException("I/O Object got NullPointerException");
     for (;;)
     {
-      return;
-      if (paramFile.isDirectory())
-      {
-        paramFile = paramFile.listFiles();
-        int j = paramFile.length;
-        while (i < j)
-        {
-          doZip(paramZipOutputStream, paramFile[i], paramString, paramArrayOfByte);
-          i += 1;
-        }
-      }
+      throw paramZipOutputStream;
     }
+  }
+  
+  /* Error */
+  private static String encodeFile(String paramString, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: ldc 166
+    //   2: astore 6
+    //   4: aload_0
+    //   5: ifnull +275 -> 280
+    //   8: aload_0
+    //   9: invokevirtual 170	java/lang/String:length	()I
+    //   12: ifne +6 -> 18
+    //   15: ldc 166
+    //   17: areturn
+    //   18: new 81	java/io/File
+    //   21: dup
+    //   22: aload_0
+    //   23: invokespecial 171	java/io/File:<init>	(Ljava/lang/String;)V
+    //   26: astore 7
+    //   28: aload 7
+    //   30: invokevirtual 105	java/io/File:exists	()Z
+    //   33: ifeq +216 -> 249
+    //   36: aload 7
+    //   38: invokevirtual 85	java/io/File:isFile	()Z
+    //   41: ifne +6 -> 47
+    //   44: goto +205 -> 249
+    //   47: aconst_null
+    //   48: astore 5
+    //   50: aconst_null
+    //   51: astore_0
+    //   52: aload_0
+    //   53: astore 4
+    //   55: aload 5
+    //   57: astore_3
+    //   58: new 130	java/io/BufferedInputStream
+    //   61: dup
+    //   62: new 49	java/io/FileInputStream
+    //   65: dup
+    //   66: aload 7
+    //   68: invokespecial 52	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   71: sipush 8192
+    //   74: invokespecial 174	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   77: astore 7
+    //   79: iload_1
+    //   80: ifeq +207 -> 287
+    //   83: aload_0
+    //   84: astore 4
+    //   86: aload 5
+    //   88: astore_3
+    //   89: new 176	java/util/zip/GZIPInputStream
+    //   92: dup
+    //   93: aload 7
+    //   95: invokespecial 177	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   98: astore_0
+    //   99: goto +3 -> 102
+    //   102: aload_0
+    //   103: astore 4
+    //   105: aload_0
+    //   106: astore_3
+    //   107: ldc 179
+    //   109: invokestatic 185	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   112: astore 7
+    //   114: aload_0
+    //   115: astore 4
+    //   117: aload_0
+    //   118: astore_3
+    //   119: sipush 16384
+    //   122: newarray byte
+    //   124: astore 5
+    //   126: goto +15 -> 141
+    //   129: aload_0
+    //   130: astore 4
+    //   132: aload_0
+    //   133: astore_3
+    //   134: sipush 4096
+    //   137: newarray byte
+    //   139: astore 5
+    //   141: aload_0
+    //   142: astore 4
+    //   144: aload_0
+    //   145: astore_3
+    //   146: aload_0
+    //   147: aload 5
+    //   149: invokevirtual 188	java/io/InputStream:read	([B)I
+    //   152: istore_2
+    //   153: iload_2
+    //   154: iconst_m1
+    //   155: if_icmpeq +20 -> 175
+    //   158: aload_0
+    //   159: astore 4
+    //   161: aload_0
+    //   162: astore_3
+    //   163: aload 7
+    //   165: aload 5
+    //   167: iconst_0
+    //   168: iload_2
+    //   169: invokevirtual 191	java/security/MessageDigest:update	([BII)V
+    //   172: goto -31 -> 141
+    //   175: aload_0
+    //   176: astore 4
+    //   178: aload_0
+    //   179: astore_3
+    //   180: aload 7
+    //   182: invokevirtual 195	java/security/MessageDigest:digest	()[B
+    //   185: invokestatic 197	cooperation/qzone/util/FileUtils:byteArrayToHex	([B)Ljava/lang/String;
+    //   188: astore 5
+    //   190: goto +43 -> 233
+    //   193: astore_0
+    //   194: goto +47 -> 241
+    //   197: astore 7
+    //   199: aload_3
+    //   200: astore 4
+    //   202: aload 6
+    //   204: astore 5
+    //   206: aload_3
+    //   207: astore_0
+    //   208: invokestatic 202	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   211: ifeq +22 -> 233
+    //   214: aload_3
+    //   215: astore 4
+    //   217: ldc 11
+    //   219: iconst_2
+    //   220: ldc 204
+    //   222: aload 7
+    //   224: invokestatic 208	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   227: aload_3
+    //   228: astore_0
+    //   229: aload 6
+    //   231: astore 5
+    //   233: aload_0
+    //   234: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   237: pop
+    //   238: aload 5
+    //   240: areturn
+    //   241: aload 4
+    //   243: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   246: pop
+    //   247: aload_0
+    //   248: athrow
+    //   249: new 117	java/lang/StringBuilder
+    //   252: dup
+    //   253: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   256: astore_3
+    //   257: aload_3
+    //   258: ldc 210
+    //   260: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   263: pop
+    //   264: aload_3
+    //   265: aload_0
+    //   266: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: pop
+    //   270: ldc 11
+    //   272: iconst_2
+    //   273: aload_3
+    //   274: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   277: invokestatic 214	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   280: ldc 166
+    //   282: areturn
+    //   283: astore_3
+    //   284: goto -155 -> 129
+    //   287: aload 7
+    //   289: astore_0
+    //   290: goto -188 -> 102
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	293	0	paramString	String
+    //   0	293	1	paramBoolean	boolean
+    //   152	17	2	i	int
+    //   57	217	3	localObject1	Object
+    //   283	1	3	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   53	189	4	localObject2	Object
+    //   48	191	5	localObject3	Object
+    //   2	228	6	str	String
+    //   26	155	7	localObject4	Object
+    //   197	91	7	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   58	79	193	finally
+    //   89	99	193	finally
+    //   107	114	193	finally
+    //   119	126	193	finally
+    //   134	141	193	finally
+    //   146	153	193	finally
+    //   163	172	193	finally
+    //   180	190	193	finally
+    //   208	214	193	finally
+    //   217	227	193	finally
+    //   58	79	197	java/lang/Exception
+    //   89	99	197	java/lang/Exception
+    //   107	114	197	java/lang/Exception
+    //   119	126	197	java/lang/Exception
+    //   134	141	197	java/lang/Exception
+    //   146	153	197	java/lang/Exception
+    //   163	172	197	java/lang/Exception
+    //   180	190	197	java/lang/Exception
+    //   119	126	283	java/lang/OutOfMemoryError
   }
   
   public static long getFileSize(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return 0L;
-      try
+    }
+    try
+    {
+      paramString = new File(paramString);
+      if (paramString.exists())
       {
-        paramString = new File(paramString);
-        if (paramString.exists())
-        {
-          long l = paramString.length();
-          return l;
-        }
+        long l = paramString.length();
+        return l;
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
+      return 0L;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
     return 0L;
   }
@@ -253,15 +520,12 @@ public class FileUtils
       return "";
     }
     int i = paramString.lastIndexOf('/');
-    if (i == -1) {}
-    for (;;)
-    {
-      i = paramString.lastIndexOf('.');
-      if (i != -1) {
-        break;
-      }
-      return "";
+    if (i != -1) {
       paramString = paramString.substring(i);
+    }
+    i = paramString.lastIndexOf('.');
+    if (i == -1) {
+      return "";
     }
     return paramString.substring(i);
   }
@@ -270,299 +534,320 @@ public class FileUtils
   public static String readStringFromFile(File paramFile)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: ifnonnull +5 -> 6
-    //   4: aconst_null
-    //   5: areturn
-    //   6: new 162	java/io/BufferedReader
-    //   9: dup
-    //   10: new 164	java/io/FileReader
-    //   13: dup
-    //   14: aload_0
-    //   15: invokespecial 165	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   18: invokespecial 168	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   21: astore_1
-    //   22: aload_1
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aload_0
+    //   3: ifnonnull +5 -> 8
+    //   6: aconst_null
+    //   7: areturn
+    //   8: new 236	java/io/BufferedReader
+    //   11: dup
+    //   12: new 238	java/io/FileReader
+    //   15: dup
+    //   16: aload_0
+    //   17: invokespecial 239	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   20: invokespecial 242	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   23: astore_0
-    //   24: new 119	java/lang/StringBuilder
-    //   27: dup
-    //   28: invokespecial 120	java/lang/StringBuilder:<init>	()V
-    //   31: astore_2
-    //   32: aload_1
-    //   33: astore_0
-    //   34: aload_1
-    //   35: invokevirtual 171	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   38: astore_3
-    //   39: aload_3
-    //   40: ifnull +37 -> 77
-    //   43: aload_1
-    //   44: astore_0
-    //   45: aload_2
-    //   46: aload_3
-    //   47: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: pop
-    //   51: aload_1
-    //   52: astore_0
-    //   53: aload_2
-    //   54: ldc 173
-    //   56: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: pop
-    //   60: goto -28 -> 32
-    //   63: astore_2
-    //   64: aload_1
-    //   65: astore_0
-    //   66: aload_2
-    //   67: invokevirtual 144	java/lang/Exception:printStackTrace	()V
-    //   70: aload_1
-    //   71: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   74: pop
-    //   75: aconst_null
-    //   76: areturn
-    //   77: aload_1
-    //   78: astore_0
-    //   79: aload_2
-    //   80: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: astore_2
-    //   84: aload_1
-    //   85: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   88: pop
-    //   89: aload_2
-    //   90: areturn
-    //   91: astore_0
-    //   92: aconst_null
-    //   93: astore_2
-    //   94: aload_0
-    //   95: astore_1
-    //   96: aload_2
-    //   97: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   100: pop
-    //   101: aload_1
-    //   102: athrow
-    //   103: astore_1
-    //   104: aload_0
-    //   105: astore_2
-    //   106: goto -10 -> 96
-    //   109: astore_2
-    //   110: aconst_null
-    //   111: astore_1
-    //   112: goto -48 -> 64
+    //   24: aload_0
+    //   25: astore_1
+    //   26: new 117	java/lang/StringBuilder
+    //   29: dup
+    //   30: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   33: astore_2
+    //   34: aload_0
+    //   35: astore_1
+    //   36: aload_0
+    //   37: invokevirtual 245	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   40: astore 4
+    //   42: aload 4
+    //   44: ifnull +24 -> 68
+    //   47: aload_0
+    //   48: astore_1
+    //   49: aload_2
+    //   50: aload 4
+    //   52: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: pop
+    //   56: aload_0
+    //   57: astore_1
+    //   58: aload_2
+    //   59: ldc 247
+    //   61: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: pop
+    //   65: goto -31 -> 34
+    //   68: aload_0
+    //   69: astore_1
+    //   70: aload_2
+    //   71: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   74: astore_2
+    //   75: aload_2
+    //   76: astore_1
+    //   77: goto +24 -> 101
+    //   80: astore_2
+    //   81: goto +12 -> 93
+    //   84: astore_0
+    //   85: aconst_null
+    //   86: astore_1
+    //   87: goto +22 -> 109
+    //   90: astore_2
+    //   91: aconst_null
+    //   92: astore_0
+    //   93: aload_0
+    //   94: astore_1
+    //   95: aload_2
+    //   96: invokevirtual 222	java/lang/Exception:printStackTrace	()V
+    //   99: aload_3
+    //   100: astore_1
+    //   101: aload_0
+    //   102: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   105: pop
+    //   106: aload_1
+    //   107: areturn
+    //   108: astore_0
+    //   109: aload_1
+    //   110: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   113: pop
+    //   114: goto +5 -> 119
+    //   117: aload_0
+    //   118: athrow
+    //   119: goto -2 -> 117
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	115	0	paramFile	File
-    //   21	81	1	localObject1	Object
-    //   103	1	1	localObject2	Object
-    //   111	1	1	localObject3	Object
-    //   31	23	2	localStringBuilder	java.lang.StringBuilder
-    //   63	17	2	localException1	Exception
-    //   83	23	2	localObject4	Object
-    //   109	1	2	localException2	Exception
-    //   38	9	3	str	String
+    //   0	122	0	paramFile	File
+    //   25	85	1	localObject1	Object
+    //   33	43	2	localObject2	Object
+    //   80	1	2	localException1	Exception
+    //   90	6	2	localException2	Exception
+    //   1	99	3	localObject3	Object
+    //   40	11	4	str	String
     // Exception table:
     //   from	to	target	type
-    //   24	32	63	java/lang/Exception
-    //   34	39	63	java/lang/Exception
-    //   45	51	63	java/lang/Exception
-    //   53	60	63	java/lang/Exception
-    //   79	84	63	java/lang/Exception
-    //   6	22	91	finally
-    //   24	32	103	finally
-    //   34	39	103	finally
-    //   45	51	103	finally
-    //   53	60	103	finally
-    //   66	70	103	finally
-    //   79	84	103	finally
-    //   6	22	109	java/lang/Exception
+    //   26	34	80	java/lang/Exception
+    //   36	42	80	java/lang/Exception
+    //   49	56	80	java/lang/Exception
+    //   58	65	80	java/lang/Exception
+    //   70	75	80	java/lang/Exception
+    //   8	24	84	finally
+    //   8	24	90	java/lang/Exception
+    //   26	34	108	finally
+    //   36	42	108	finally
+    //   49	56	108	finally
+    //   58	65	108	finally
+    //   70	75	108	finally
+    //   95	99	108	finally
+  }
+  
+  public static String sourceFileMd5(String paramString, boolean paramBoolean)
+  {
+    paramString = encodeFile(paramString, paramBoolean);
+    if (paramString != null) {
+      return paramString.toLowerCase();
+    }
+    return "";
   }
   
   /* Error */
   public static boolean unzip(File paramFile1, File paramFile2)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore 5
-    //   6: aload_0
-    //   7: ifnull +19 -> 26
-    //   10: aload_0
-    //   11: invokevirtual 141	java/io/File:length	()J
-    //   14: lconst_1
-    //   15: lcmp
-    //   16: iflt +10 -> 26
-    //   19: aload_0
-    //   20: invokevirtual 177	java/io/File:canRead	()Z
-    //   23: ifne +5 -> 28
-    //   26: iconst_0
-    //   27: ireturn
-    //   28: aload_1
-    //   29: invokevirtual 84	java/io/File:exists	()Z
-    //   32: ifne +8 -> 40
-    //   35: aload_1
-    //   36: invokevirtual 180	java/io/File:mkdirs	()Z
-    //   39: pop
-    //   40: sipush 8192
-    //   43: newarray byte
-    //   45: astore 6
-    //   47: new 182	com/tencent/commonsdk/zip/QZipInputStream
-    //   50: dup
-    //   51: new 101	java/io/BufferedInputStream
-    //   54: dup
-    //   55: new 23	java/io/FileInputStream
-    //   58: dup
-    //   59: aload_0
-    //   60: invokespecial 26	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   63: invokespecial 104	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   66: invokespecial 183	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
-    //   69: astore_3
-    //   70: aload 5
-    //   72: astore_0
-    //   73: aload_3
-    //   74: invokevirtual 187	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
-    //   77: astore 4
-    //   79: aload 4
-    //   81: ifnull +143 -> 224
-    //   84: aload 4
-    //   86: invokevirtual 188	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   89: astore 5
-    //   91: aload 5
-    //   93: ldc 190
-    //   95: invokevirtual 193	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   98: ifne -25 -> 73
-    //   101: aload 4
-    //   103: invokevirtual 194	java/util/zip/ZipEntry:isDirectory	()Z
-    //   106: ifeq +35 -> 141
-    //   109: new 55	java/io/File
-    //   112: dup
-    //   113: aload_1
-    //   114: aload 5
-    //   116: invokespecial 197	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   119: invokevirtual 180	java/io/File:mkdirs	()Z
-    //   122: pop
-    //   123: goto -50 -> 73
-    //   126: astore_1
-    //   127: aload_3
-    //   128: astore_1
-    //   129: aload_0
-    //   130: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   133: pop
+    //   0: iconst_0
+    //   1: istore 5
+    //   3: iconst_0
+    //   4: istore 4
+    //   6: iload 5
+    //   8: istore_3
+    //   9: aload_0
+    //   10: ifnull +296 -> 306
+    //   13: iload 5
+    //   15: istore_3
+    //   16: aload_0
+    //   17: invokevirtual 219	java/io/File:length	()J
+    //   20: lconst_1
+    //   21: lcmp
+    //   22: iflt +284 -> 306
+    //   25: aload_0
+    //   26: invokevirtual 257	java/io/File:canRead	()Z
+    //   29: ifne +5 -> 34
+    //   32: iconst_0
+    //   33: ireturn
+    //   34: aload_1
+    //   35: invokevirtual 105	java/io/File:exists	()Z
+    //   38: ifne +8 -> 46
+    //   41: aload_1
+    //   42: invokevirtual 260	java/io/File:mkdirs	()Z
+    //   45: pop
+    //   46: sipush 8192
+    //   49: newarray byte
+    //   51: astore 10
+    //   53: aconst_null
+    //   54: astore 6
+    //   56: aconst_null
+    //   57: astore 8
+    //   59: aconst_null
+    //   60: astore 9
+    //   62: new 262	com/tencent/commonsdk/zip/QZipInputStream
+    //   65: dup
+    //   66: new 130	java/io/BufferedInputStream
+    //   69: dup
+    //   70: new 49	java/io/FileInputStream
+    //   73: dup
+    //   74: aload_0
+    //   75: invokespecial 52	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   78: invokespecial 133	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   81: invokespecial 263	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
+    //   84: astore 7
+    //   86: aload 9
+    //   88: astore_0
+    //   89: aload 7
+    //   91: invokevirtual 267	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   94: astore 6
+    //   96: aload 6
+    //   98: ifnull +149 -> 247
+    //   101: aload 6
+    //   103: invokevirtual 268	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   106: astore 8
+    //   108: aload 8
+    //   110: ldc_w 270
+    //   113: invokevirtual 273	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   116: ifeq +6 -> 122
+    //   119: goto -30 -> 89
+    //   122: aload 6
+    //   124: invokevirtual 274	java/util/zip/ZipEntry:isDirectory	()Z
+    //   127: ifeq +20 -> 147
+    //   130: new 81	java/io/File
+    //   133: dup
     //   134: aload_1
-    //   135: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   138: pop
-    //   139: iconst_0
-    //   140: ireturn
-    //   141: new 55	java/io/File
-    //   144: dup
-    //   145: aload_1
-    //   146: aload 5
-    //   148: invokespecial 197	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   151: astore 4
-    //   153: aload 4
-    //   155: invokevirtual 201	java/io/File:getParentFile	()Ljava/io/File;
-    //   158: invokevirtual 180	java/io/File:mkdirs	()Z
-    //   161: pop
-    //   162: new 28	java/io/BufferedOutputStream
-    //   165: dup
-    //   166: new 30	java/io/FileOutputStream
-    //   169: dup
-    //   170: aload 4
-    //   172: invokespecial 31	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   175: invokespecial 34	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   178: astore 4
-    //   180: aload_3
-    //   181: aload 6
-    //   183: iconst_0
-    //   184: aload 6
-    //   186: arraylength
-    //   187: invokevirtual 202	com/tencent/commonsdk/zip/QZipInputStream:read	([BII)I
-    //   190: istore_2
-    //   191: iconst_m1
-    //   192: iload_2
-    //   193: if_icmpeq +15 -> 208
-    //   196: aload 4
-    //   198: aload 6
-    //   200: iconst_0
-    //   201: iload_2
-    //   202: invokevirtual 42	java/io/BufferedOutputStream:write	([BII)V
-    //   205: goto -25 -> 180
-    //   208: aload 4
-    //   210: invokevirtual 51	java/io/BufferedOutputStream:flush	()V
-    //   213: aload 4
-    //   215: invokevirtual 205	java/io/BufferedOutputStream:close	()V
-    //   218: aload 4
-    //   220: astore_0
-    //   221: goto -148 -> 73
-    //   224: aload_3
-    //   225: invokevirtual 208	com/tencent/commonsdk/zip/QZipInputStream:closeEntry	()V
-    //   228: aload_3
-    //   229: invokevirtual 209	com/tencent/commonsdk/zip/QZipInputStream:close	()V
-    //   232: aload_0
-    //   233: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   236: pop
-    //   237: aload_3
-    //   238: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   241: pop
-    //   242: iconst_1
-    //   243: ireturn
-    //   244: astore_0
-    //   245: aconst_null
-    //   246: astore_3
-    //   247: aconst_null
-    //   248: astore 4
-    //   250: aload 4
-    //   252: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   255: pop
-    //   256: aload_3
-    //   257: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   260: pop
-    //   261: aload_0
-    //   262: athrow
-    //   263: astore_0
-    //   264: goto -14 -> 250
-    //   267: astore_1
-    //   268: aload_0
-    //   269: astore 4
-    //   271: aload_1
+    //   135: aload 8
+    //   137: invokespecial 277	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   140: invokevirtual 260	java/io/File:mkdirs	()Z
+    //   143: pop
+    //   144: goto -55 -> 89
+    //   147: new 81	java/io/File
+    //   150: dup
+    //   151: aload_1
+    //   152: aload 8
+    //   154: invokespecial 277	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   157: astore 6
+    //   159: aload 6
+    //   161: invokevirtual 281	java/io/File:getParentFile	()Ljava/io/File;
+    //   164: invokevirtual 260	java/io/File:mkdirs	()Z
+    //   167: pop
+    //   168: new 54	java/io/BufferedOutputStream
+    //   171: dup
+    //   172: new 56	java/io/FileOutputStream
+    //   175: dup
+    //   176: aload 6
+    //   178: invokespecial 57	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   181: invokespecial 60	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   184: astore 6
+    //   186: aload 7
+    //   188: aload 10
+    //   190: iconst_0
+    //   191: aload 10
+    //   193: arraylength
+    //   194: invokevirtual 282	com/tencent/commonsdk/zip/QZipInputStream:read	([BII)I
+    //   197: istore_2
+    //   198: iconst_m1
+    //   199: iload_2
+    //   200: if_icmpeq +15 -> 215
+    //   203: aload 6
+    //   205: aload 10
+    //   207: iconst_0
+    //   208: iload_2
+    //   209: invokevirtual 68	java/io/BufferedOutputStream:write	([BII)V
+    //   212: goto -26 -> 186
+    //   215: aload 6
+    //   217: invokevirtual 71	java/io/BufferedOutputStream:flush	()V
+    //   220: aload 6
+    //   222: invokevirtual 285	java/io/BufferedOutputStream:close	()V
+    //   225: aload 6
+    //   227: astore_0
+    //   228: goto -139 -> 89
+    //   231: astore_1
+    //   232: aload 6
+    //   234: astore_0
+    //   235: goto +38 -> 273
+    //   238: aload 6
+    //   240: astore_0
+    //   241: iload 4
+    //   243: istore_3
+    //   244: goto +51 -> 295
+    //   247: aload 7
+    //   249: invokevirtual 288	com/tencent/commonsdk/zip/QZipInputStream:closeEntry	()V
+    //   252: aload 7
+    //   254: invokevirtual 289	com/tencent/commonsdk/zip/QZipInputStream:close	()V
+    //   257: iconst_1
+    //   258: istore_3
+    //   259: goto +36 -> 295
+    //   262: astore_1
+    //   263: goto +10 -> 273
+    //   266: astore_1
+    //   267: aconst_null
+    //   268: astore 7
+    //   270: aload 6
     //   272: astore_0
-    //   273: goto -23 -> 250
-    //   276: astore_0
-    //   277: aconst_null
-    //   278: astore_1
-    //   279: aload 4
-    //   281: astore_0
-    //   282: goto -153 -> 129
-    //   285: astore_0
-    //   286: aload 4
-    //   288: astore_0
-    //   289: aload_3
-    //   290: astore_1
-    //   291: goto -162 -> 129
+    //   273: aload_0
+    //   274: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   277: pop
+    //   278: aload 7
+    //   280: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   283: pop
+    //   284: aload_1
+    //   285: athrow
+    //   286: aconst_null
+    //   287: astore 7
+    //   289: aload 8
+    //   291: astore_0
+    //   292: iload 4
+    //   294: istore_3
+    //   295: aload_0
+    //   296: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   299: pop
+    //   300: aload 7
+    //   302: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   305: pop
+    //   306: iload_3
+    //   307: ireturn
+    //   308: astore_0
+    //   309: goto -23 -> 286
+    //   312: astore_1
+    //   313: iload 4
+    //   315: istore_3
+    //   316: goto -21 -> 295
+    //   319: astore_0
+    //   320: goto -82 -> 238
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	294	0	paramFile1	File
-    //   0	294	1	paramFile2	File
-    //   190	12	2	i	int
-    //   69	221	3	localQZipInputStream	com.tencent.commonsdk.zip.QZipInputStream
-    //   1	286	4	localObject	Object
-    //   4	143	5	str	String
-    //   45	154	6	arrayOfByte	byte[]
+    //   0	323	0	paramFile1	File
+    //   0	323	1	paramFile2	File
+    //   197	12	2	i	int
+    //   8	308	3	bool1	boolean
+    //   4	310	4	bool2	boolean
+    //   1	13	5	bool3	boolean
+    //   54	217	6	localObject1	Object
+    //   84	217	7	localQZipInputStream	com.tencent.commonsdk.zip.QZipInputStream
+    //   57	233	8	str	String
+    //   60	27	9	localObject2	Object
+    //   51	155	10	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   73	79	126	java/io/IOException
-    //   84	123	126	java/io/IOException
-    //   141	180	126	java/io/IOException
-    //   224	232	126	java/io/IOException
-    //   47	70	244	finally
-    //   180	191	263	finally
-    //   196	205	263	finally
-    //   208	218	263	finally
-    //   73	79	267	finally
-    //   84	123	267	finally
-    //   141	180	267	finally
-    //   224	232	267	finally
-    //   47	70	276	java/io/IOException
-    //   180	191	285	java/io/IOException
-    //   196	205	285	java/io/IOException
-    //   208	218	285	java/io/IOException
+    //   186	198	231	finally
+    //   203	212	231	finally
+    //   215	225	231	finally
+    //   89	96	262	finally
+    //   101	119	262	finally
+    //   122	144	262	finally
+    //   147	186	262	finally
+    //   247	257	262	finally
+    //   62	86	266	finally
+    //   62	86	308	java/io/IOException
+    //   89	96	312	java/io/IOException
+    //   101	119	312	java/io/IOException
+    //   122	144	312	java/io/IOException
+    //   147	186	312	java/io/IOException
+    //   247	257	312	java/io/IOException
+    //   186	198	319	java/io/IOException
+    //   203	212	319	java/io/IOException
+    //   215	225	319	java/io/IOException
   }
   
   /* Error */
@@ -570,206 +855,207 @@ public class FileUtils
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 4
     //   3: aconst_null
     //   4: astore 6
-    //   6: aload_0
-    //   7: ifnull +19 -> 26
-    //   10: aload_0
-    //   11: invokevirtual 141	java/io/File:length	()J
-    //   14: lconst_1
-    //   15: lcmp
-    //   16: iflt +10 -> 26
-    //   19: aload_0
-    //   20: invokevirtual 177	java/io/File:canRead	()Z
-    //   23: ifne +5 -> 28
-    //   26: aconst_null
-    //   27: areturn
-    //   28: new 213	java/util/ArrayList
-    //   31: dup
-    //   32: invokespecial 214	java/util/ArrayList:<init>	()V
-    //   35: astore 7
-    //   37: aload_1
-    //   38: invokevirtual 84	java/io/File:exists	()Z
-    //   41: ifne +8 -> 49
-    //   44: aload_1
-    //   45: invokevirtual 180	java/io/File:mkdirs	()Z
-    //   48: pop
-    //   49: sipush 8192
-    //   52: newarray byte
-    //   54: astore 8
-    //   56: new 182	com/tencent/commonsdk/zip/QZipInputStream
-    //   59: dup
-    //   60: new 23	java/io/FileInputStream
-    //   63: dup
-    //   64: aload_0
-    //   65: invokespecial 26	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   68: invokespecial 183	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
-    //   71: astore 4
-    //   73: aload 6
-    //   75: astore_0
-    //   76: aload 4
-    //   78: invokevirtual 187	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
-    //   81: astore 5
-    //   83: aload 5
-    //   85: ifnull +181 -> 266
-    //   88: aload 5
-    //   90: invokevirtual 188	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   93: astore 6
-    //   95: aload_2
-    //   96: aload 6
-    //   98: invokeinterface 218 2 0
-    //   103: ifeq -27 -> 76
-    //   106: aload 6
-    //   108: ldc 190
-    //   110: invokevirtual 193	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   113: ifne -37 -> 76
-    //   116: aload 5
-    //   118: invokevirtual 194	java/util/zip/ZipEntry:isDirectory	()Z
-    //   121: ifeq +51 -> 172
-    //   124: new 55	java/io/File
-    //   127: dup
-    //   128: aload_1
-    //   129: aload 6
-    //   131: invokespecial 197	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   134: astore 5
-    //   136: aload 5
-    //   138: invokevirtual 180	java/io/File:mkdirs	()Z
-    //   141: pop
-    //   142: aload 7
-    //   144: aload 5
-    //   146: invokeinterface 223 2 0
+    //   6: aconst_null
+    //   7: astore 7
+    //   9: aload_0
+    //   10: ifnull +319 -> 329
+    //   13: aload_0
+    //   14: invokevirtual 219	java/io/File:length	()J
+    //   17: lconst_1
+    //   18: lcmp
+    //   19: iflt +310 -> 329
+    //   22: aload_0
+    //   23: invokevirtual 257	java/io/File:canRead	()Z
+    //   26: ifne +5 -> 31
+    //   29: aconst_null
+    //   30: areturn
+    //   31: new 293	java/util/ArrayList
+    //   34: dup
+    //   35: invokespecial 294	java/util/ArrayList:<init>	()V
+    //   38: astore 8
+    //   40: aload_1
+    //   41: invokevirtual 105	java/io/File:exists	()Z
+    //   44: ifne +8 -> 52
+    //   47: aload_1
+    //   48: invokevirtual 260	java/io/File:mkdirs	()Z
+    //   51: pop
+    //   52: sipush 8192
+    //   55: newarray byte
+    //   57: astore 9
+    //   59: new 262	com/tencent/commonsdk/zip/QZipInputStream
+    //   62: dup
+    //   63: new 49	java/io/FileInputStream
+    //   66: dup
+    //   67: aload_0
+    //   68: invokespecial 52	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   71: invokespecial 263	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
+    //   74: astore 5
+    //   76: aload 7
+    //   78: astore_0
+    //   79: aload 5
+    //   81: invokevirtual 267	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   84: astore 4
+    //   86: aload 4
+    //   88: ifnull +184 -> 272
+    //   91: aload 4
+    //   93: invokevirtual 268	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   96: astore 6
+    //   98: aload_2
+    //   99: aload 6
+    //   101: invokeinterface 298 2 0
+    //   106: ifne +6 -> 112
+    //   109: goto -30 -> 79
+    //   112: aload 6
+    //   114: ldc_w 270
+    //   117: invokevirtual 273	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   120: ifeq +6 -> 126
+    //   123: goto -44 -> 79
+    //   126: aload 4
+    //   128: invokevirtual 274	java/util/zip/ZipEntry:isDirectory	()Z
+    //   131: ifeq +34 -> 165
+    //   134: new 81	java/io/File
+    //   137: dup
+    //   138: aload_1
+    //   139: aload 6
+    //   141: invokespecial 277	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   144: astore 4
+    //   146: aload 4
+    //   148: invokevirtual 260	java/io/File:mkdirs	()Z
     //   151: pop
-    //   152: goto -76 -> 76
-    //   155: astore_1
-    //   156: aload 4
-    //   158: astore_1
-    //   159: aload_0
-    //   160: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   163: pop
-    //   164: aload_1
-    //   165: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   168: pop
-    //   169: aload 7
-    //   171: areturn
-    //   172: new 55	java/io/File
-    //   175: dup
-    //   176: aload_1
+    //   152: aload 8
+    //   154: aload 4
+    //   156: invokeinterface 303 2 0
+    //   161: pop
+    //   162: goto -83 -> 79
+    //   165: new 81	java/io/File
+    //   168: dup
+    //   169: aload_1
+    //   170: aload 6
+    //   172: invokespecial 277	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   175: astore 6
     //   177: aload 6
-    //   179: invokespecial 197	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   182: astore 6
-    //   184: aload 6
-    //   186: invokevirtual 201	java/io/File:getParentFile	()Ljava/io/File;
-    //   189: invokevirtual 180	java/io/File:mkdirs	()Z
-    //   192: pop
-    //   193: new 28	java/io/BufferedOutputStream
-    //   196: dup
-    //   197: new 30	java/io/FileOutputStream
-    //   200: dup
-    //   201: aload 6
-    //   203: invokespecial 31	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   206: invokespecial 34	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   209: astore 5
-    //   211: aload 4
-    //   213: aload 8
-    //   215: iconst_0
-    //   216: aload 8
-    //   218: arraylength
-    //   219: invokevirtual 202	com/tencent/commonsdk/zip/QZipInputStream:read	([BII)I
-    //   222: istore_3
-    //   223: iconst_m1
-    //   224: iload_3
-    //   225: if_icmpeq +15 -> 240
-    //   228: aload 5
-    //   230: aload 8
-    //   232: iconst_0
-    //   233: iload_3
-    //   234: invokevirtual 42	java/io/BufferedOutputStream:write	([BII)V
-    //   237: goto -26 -> 211
-    //   240: aload 5
-    //   242: invokevirtual 51	java/io/BufferedOutputStream:flush	()V
-    //   245: aload 5
-    //   247: invokevirtual 205	java/io/BufferedOutputStream:close	()V
-    //   250: aload 7
-    //   252: aload 6
-    //   254: invokeinterface 223 2 0
-    //   259: pop
-    //   260: aload 5
+    //   179: invokevirtual 281	java/io/File:getParentFile	()Ljava/io/File;
+    //   182: invokevirtual 260	java/io/File:mkdirs	()Z
+    //   185: pop
+    //   186: new 54	java/io/BufferedOutputStream
+    //   189: dup
+    //   190: new 56	java/io/FileOutputStream
+    //   193: dup
+    //   194: aload 6
+    //   196: invokespecial 57	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   199: invokespecial 60	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   202: astore 4
+    //   204: aload 5
+    //   206: aload 9
+    //   208: iconst_0
+    //   209: aload 9
+    //   211: arraylength
+    //   212: invokevirtual 282	com/tencent/commonsdk/zip/QZipInputStream:read	([BII)I
+    //   215: istore_3
+    //   216: iconst_m1
+    //   217: iload_3
+    //   218: if_icmpeq +15 -> 233
+    //   221: aload 4
+    //   223: aload 9
+    //   225: iconst_0
+    //   226: iload_3
+    //   227: invokevirtual 68	java/io/BufferedOutputStream:write	([BII)V
+    //   230: goto -26 -> 204
+    //   233: aload 4
+    //   235: invokevirtual 71	java/io/BufferedOutputStream:flush	()V
+    //   238: aload 4
+    //   240: invokevirtual 285	java/io/BufferedOutputStream:close	()V
+    //   243: aload 8
+    //   245: aload 6
+    //   247: invokeinterface 303 2 0
+    //   252: pop
+    //   253: aload 4
+    //   255: astore_0
+    //   256: goto -177 -> 79
+    //   259: astore_1
+    //   260: aload 4
     //   262: astore_0
-    //   263: goto -187 -> 76
+    //   263: goto +33 -> 296
     //   266: aload 4
-    //   268: invokevirtual 208	com/tencent/commonsdk/zip/QZipInputStream:closeEntry	()V
-    //   271: aload 4
-    //   273: invokevirtual 209	com/tencent/commonsdk/zip/QZipInputStream:close	()V
-    //   276: aload_0
-    //   277: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   280: pop
-    //   281: aload 4
-    //   283: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   286: pop
-    //   287: goto -118 -> 169
-    //   290: astore_0
-    //   291: aconst_null
-    //   292: astore 4
-    //   294: aconst_null
-    //   295: astore 5
-    //   297: aload 5
-    //   299: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   302: pop
-    //   303: aload 4
-    //   305: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   308: pop
-    //   309: aload_0
-    //   310: athrow
-    //   311: astore_0
-    //   312: goto -15 -> 297
-    //   315: astore_1
-    //   316: aload_0
-    //   317: astore 5
-    //   319: aload_1
-    //   320: astore_0
-    //   321: goto -24 -> 297
-    //   324: astore_0
-    //   325: aconst_null
-    //   326: astore_1
-    //   327: aload 5
-    //   329: astore_0
-    //   330: goto -171 -> 159
-    //   333: astore_0
-    //   334: aload 5
-    //   336: astore_0
-    //   337: aload 4
-    //   339: astore_1
-    //   340: goto -181 -> 159
+    //   268: astore_0
+    //   269: goto +46 -> 315
+    //   272: aload 5
+    //   274: invokevirtual 288	com/tencent/commonsdk/zip/QZipInputStream:closeEntry	()V
+    //   277: aload 5
+    //   279: invokevirtual 289	com/tencent/commonsdk/zip/QZipInputStream:close	()V
+    //   282: goto +33 -> 315
+    //   285: astore_1
+    //   286: goto +10 -> 296
+    //   289: astore_1
+    //   290: aconst_null
+    //   291: astore 5
+    //   293: aload 4
+    //   295: astore_0
+    //   296: aload_0
+    //   297: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   300: pop
+    //   301: aload 5
+    //   303: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   306: pop
+    //   307: aload_1
+    //   308: athrow
+    //   309: aconst_null
+    //   310: astore 5
+    //   312: aload 6
+    //   314: astore_0
+    //   315: aload_0
+    //   316: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   319: pop
+    //   320: aload 5
+    //   322: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   325: pop
+    //   326: aload 8
+    //   328: areturn
+    //   329: aconst_null
+    //   330: areturn
+    //   331: astore_0
+    //   332: goto -23 -> 309
+    //   335: astore_1
+    //   336: goto -21 -> 315
+    //   339: astore_0
+    //   340: goto -74 -> 266
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	343	0	paramFile1	File
     //   0	343	1	paramFile2	File
     //   0	343	2	paramSet	java.util.Set<String>
-    //   222	12	3	i	int
-    //   71	267	4	localQZipInputStream	com.tencent.commonsdk.zip.QZipInputStream
-    //   1	334	5	localObject1	Object
-    //   4	249	6	localObject2	Object
-    //   35	216	7	localArrayList	java.util.ArrayList
-    //   54	177	8	arrayOfByte	byte[]
+    //   215	12	3	i	int
+    //   1	293	4	localObject1	Object
+    //   74	247	5	localQZipInputStream	com.tencent.commonsdk.zip.QZipInputStream
+    //   4	309	6	localObject2	Object
+    //   7	70	7	localObject3	Object
+    //   38	289	8	localArrayList	java.util.ArrayList
+    //   57	167	9	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   76	83	155	java/io/IOException
-    //   88	152	155	java/io/IOException
-    //   172	211	155	java/io/IOException
-    //   266	276	155	java/io/IOException
-    //   56	73	290	finally
-    //   211	223	311	finally
-    //   228	237	311	finally
-    //   240	260	311	finally
-    //   76	83	315	finally
-    //   88	152	315	finally
-    //   172	211	315	finally
-    //   266	276	315	finally
-    //   56	73	324	java/io/IOException
-    //   211	223	333	java/io/IOException
-    //   228	237	333	java/io/IOException
-    //   240	260	333	java/io/IOException
+    //   204	216	259	finally
+    //   221	230	259	finally
+    //   233	253	259	finally
+    //   79	86	285	finally
+    //   91	109	285	finally
+    //   112	123	285	finally
+    //   126	162	285	finally
+    //   165	204	285	finally
+    //   272	282	285	finally
+    //   59	76	289	finally
+    //   59	76	331	java/io/IOException
+    //   79	86	335	java/io/IOException
+    //   91	109	335	java/io/IOException
+    //   112	123	335	java/io/IOException
+    //   126	162	335	java/io/IOException
+    //   165	204	335	java/io/IOException
+    //   272	282	335	java/io/IOException
+    //   204	216	339	java/io/IOException
+    //   221	230	339	java/io/IOException
+    //   233	253	339	java/io/IOException
   }
   
   public static boolean zip(File paramFile1, File paramFile2)
@@ -781,107 +1067,115 @@ public class FileUtils
   public static boolean zip(File[] paramArrayOfFile, File paramFile)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_0
-    //   4: ifnull +13 -> 17
-    //   7: aload_0
-    //   8: arraylength
-    //   9: iconst_1
-    //   10: if_icmplt +7 -> 17
-    //   13: aload_1
-    //   14: ifnonnull +5 -> 19
-    //   17: iconst_0
-    //   18: ireturn
-    //   19: sipush 4096
-    //   22: newarray byte
-    //   24: astore 5
-    //   26: new 109	java/util/zip/ZipOutputStream
-    //   29: dup
-    //   30: new 28	java/io/BufferedOutputStream
-    //   33: dup
-    //   34: new 30	java/io/FileOutputStream
-    //   37: dup
-    //   38: aload_1
-    //   39: iconst_0
-    //   40: invokespecial 232	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   43: invokespecial 34	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   46: invokespecial 233	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   49: astore_1
-    //   50: aload_0
-    //   51: arraylength
-    //   52: istore_3
-    //   53: iconst_0
-    //   54: istore_2
-    //   55: iload_2
-    //   56: iload_3
-    //   57: if_icmpge +20 -> 77
-    //   60: aload_1
-    //   61: aload_0
-    //   62: iload_2
-    //   63: aaload
-    //   64: aconst_null
-    //   65: aload 5
-    //   67: invokestatic 132	cooperation/qzone/util/FileUtils:doZip	(Ljava/util/zip/ZipOutputStream;Ljava/io/File;Ljava/lang/String;[B)V
-    //   70: iload_2
-    //   71: iconst_1
-    //   72: iadd
-    //   73: istore_2
-    //   74: goto -19 -> 55
-    //   77: aload_1
-    //   78: invokevirtual 234	java/util/zip/ZipOutputStream:flush	()V
-    //   81: aload_1
-    //   82: invokevirtual 235	java/util/zip/ZipOutputStream:closeEntry	()V
-    //   85: aload_1
-    //   86: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   89: pop
-    //   90: iconst_1
-    //   91: ireturn
-    //   92: astore_0
-    //   93: aconst_null
-    //   94: astore_0
-    //   95: aload_0
-    //   96: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   99: pop
-    //   100: iconst_0
-    //   101: ireturn
-    //   102: astore_0
-    //   103: aload 4
-    //   105: astore_1
-    //   106: aload_1
-    //   107: invokestatic 48	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   110: pop
-    //   111: aload_0
-    //   112: athrow
-    //   113: astore_0
-    //   114: goto -8 -> 106
-    //   117: astore_0
-    //   118: aload_1
-    //   119: astore_0
-    //   120: goto -25 -> 95
+    //   0: aload_0
+    //   1: ifnull +123 -> 124
+    //   4: aload_0
+    //   5: arraylength
+    //   6: iconst_1
+    //   7: if_icmplt +117 -> 124
+    //   10: aload_1
+    //   11: ifnonnull +5 -> 16
+    //   14: iconst_0
+    //   15: ireturn
+    //   16: aconst_null
+    //   17: astore 5
+    //   19: aconst_null
+    //   20: astore 4
+    //   22: sipush 4096
+    //   25: newarray byte
+    //   27: astore 6
+    //   29: new 140	java/util/zip/ZipOutputStream
+    //   32: dup
+    //   33: new 54	java/io/BufferedOutputStream
+    //   36: dup
+    //   37: new 56	java/io/FileOutputStream
+    //   40: dup
+    //   41: aload_1
+    //   42: iconst_0
+    //   43: invokespecial 312	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   46: invokespecial 60	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   49: invokespecial 313	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   52: astore_1
+    //   53: aload_0
+    //   54: arraylength
+    //   55: istore_3
+    //   56: iconst_0
+    //   57: istore_2
+    //   58: iload_2
+    //   59: iload_3
+    //   60: if_icmpge +20 -> 80
+    //   63: aload_1
+    //   64: aload_0
+    //   65: iload_2
+    //   66: aaload
+    //   67: aconst_null
+    //   68: aload 6
+    //   70: invokestatic 150	cooperation/qzone/util/FileUtils:doZip	(Ljava/util/zip/ZipOutputStream;Ljava/io/File;Ljava/lang/String;[B)V
+    //   73: iload_2
+    //   74: iconst_1
+    //   75: iadd
+    //   76: istore_2
+    //   77: goto -19 -> 58
+    //   80: aload_1
+    //   81: invokevirtual 314	java/util/zip/ZipOutputStream:flush	()V
+    //   84: aload_1
+    //   85: invokevirtual 315	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   88: aload_1
+    //   89: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   92: pop
+    //   93: iconst_1
+    //   94: ireturn
+    //   95: astore 4
+    //   97: aload_1
+    //   98: astore_0
+    //   99: aload 4
+    //   101: astore_1
+    //   102: goto +10 -> 112
+    //   105: goto +14 -> 119
+    //   108: astore_1
+    //   109: aload 4
+    //   111: astore_0
+    //   112: aload_0
+    //   113: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   116: pop
+    //   117: aload_1
+    //   118: athrow
+    //   119: aload_1
+    //   120: invokestatic 77	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   123: pop
+    //   124: iconst_0
+    //   125: ireturn
+    //   126: astore_0
+    //   127: aload 5
+    //   129: astore_1
+    //   130: goto -11 -> 119
+    //   133: astore_0
+    //   134: goto -29 -> 105
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	123	0	paramArrayOfFile	File[]
-    //   0	123	1	paramFile	File
-    //   54	20	2	i	int
-    //   52	6	3	j	int
-    //   1	103	4	localObject	Object
-    //   24	42	5	arrayOfByte	byte[]
+    //   0	137	0	paramArrayOfFile	File[]
+    //   0	137	1	paramFile	File
+    //   57	20	2	i	int
+    //   55	6	3	j	int
+    //   20	1	4	localObject1	Object
+    //   95	15	4	localObject2	Object
+    //   17	111	5	localObject3	Object
+    //   27	42	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   19	50	92	java/io/IOException
-    //   19	50	102	finally
-    //   50	53	113	finally
-    //   60	70	113	finally
-    //   77	85	113	finally
-    //   50	53	117	java/io/IOException
-    //   60	70	117	java/io/IOException
-    //   77	85	117	java/io/IOException
+    //   53	56	95	finally
+    //   63	73	95	finally
+    //   80	88	95	finally
+    //   22	53	108	finally
+    //   22	53	126	java/io/IOException
+    //   53	56	133	java/io/IOException
+    //   63	73	133	java/io/IOException
+    //   80	88	133	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.FileUtils
  * JD-Core Version:    0.7.0.1
  */

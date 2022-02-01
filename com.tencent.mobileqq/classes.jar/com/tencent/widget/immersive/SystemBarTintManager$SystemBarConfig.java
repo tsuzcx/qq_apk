@@ -18,28 +18,26 @@ public class SystemBarTintManager$SystemBarConfig
   
   private SystemBarTintManager$SystemBarConfig(Window paramWindow, boolean paramBoolean)
   {
-    if (paramWindow.getContext().getResources().getConfiguration().orientation == 1) {}
-    for (;;)
-    {
-      this.mInPortrait = bool;
-      this.mStatusBarHeight = ImmersiveUtils.getStatusBarHeight(paramWindow.getContext());
-      this.mTranslucentStatusBar = paramBoolean;
-      return;
+    int i = paramWindow.getContext().getResources().getConfiguration().orientation;
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    this.mInPortrait = bool;
+    this.mStatusBarHeight = ImmersiveUtils.getStatusBarHeight(paramWindow.getContext());
+    this.mTranslucentStatusBar = paramBoolean;
   }
   
   @TargetApi(14)
   private int getActionBarHeight(Context paramContext)
   {
-    int i = 0;
     if (Build.VERSION.SDK_INT >= 14)
     {
       TypedValue localTypedValue = new TypedValue();
       paramContext.getTheme().resolveAttribute(16843499, localTypedValue, true);
-      i = TypedValue.complexToDimensionPixelSize(localTypedValue.data, paramContext.getResources().getDisplayMetrics());
+      return TypedValue.complexToDimensionPixelSize(localTypedValue.data, paramContext.getResources().getDisplayMetrics());
     }
-    return i;
+    return 0;
   }
   
   public int getStatusBarHeight()
@@ -49,7 +47,7 @@ public class SystemBarTintManager$SystemBarConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.immersive.SystemBarTintManager.SystemBarConfig
  * JD-Core Version:    0.7.0.1
  */

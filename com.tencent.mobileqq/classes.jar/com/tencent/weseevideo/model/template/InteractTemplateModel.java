@@ -1,9 +1,6 @@
 package com.tencent.weseevideo.model.template;
 
-import com.tencent.weseevideo.model.BaseMediaModel;
-
 public class InteractTemplateModel
-  extends BaseMediaModel
 {
   protected String shootingGuideText;
   protected String templateThumbnail;
@@ -37,7 +34,7 @@ public class InteractTemplateModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.InteractTemplateModel
  * JD-Core Version:    0.7.0.1
  */

@@ -14,43 +14,33 @@ class NewMyStorySegment$9
   
   public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    boolean bool;
-    switch (paramView.getId())
+    if (paramView.getId() != 2131374606)
     {
-    default: 
-      if (NewMyStorySegment.a(this.a).a().size() <= 0) {
-        break label149;
-      }
-      paramView = this.a;
-      if (!NewMyStorySegment.a(this.a))
+      if (NewMyStorySegment.a(this.a).a().size() > 0)
       {
-        bool = true;
-        NewMyStorySegment.a(paramView, bool);
+        paramView = this.a;
+        NewMyStorySegment.a(paramView, NewMyStorySegment.a(paramView) ^ true);
         NewMyStorySegment.a(this.a);
-        if (!NewMyStorySegment.a(this.a)) {
-          break label143;
+        if (NewMyStorySegment.a(this.a)) {
+          paramView = "1";
+        } else {
+          paramView = "2";
         }
+        StoryReportor.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
+        StoryReportor.a("home_page", "exp_share_day", 0, 0, new String[0]);
+        return;
       }
-      break;
-    }
-    label143:
-    for (paramView = "1";; paramView = "2")
-    {
-      StoryReportor.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
-      StoryReportor.a("home_page", "exp_share_day", 0, 0, new String[0]);
+      paramObject = this.a;
+      NewMyStorySegment.a(paramObject, NewMyStorySegment.a(paramObject), paramView);
       return;
-      NewMyStorySegment.a(this.a, NewMyStorySegment.a(this.a), paramView);
-      return;
-      bool = false;
-      break;
     }
-    label149:
-    NewMyStorySegment.a(this.a, NewMyStorySegment.a(this.a), paramView);
+    paramObject = this.a;
+    NewMyStorySegment.a(paramObject, NewMyStorySegment.a(paramObject), paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.9
  * JD-Core Version:    0.7.0.1
  */

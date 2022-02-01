@@ -10,334 +10,353 @@ class MiniDynamicManager$1
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 4
     //   3: aconst_null
-    //   4: astore_3
-    //   5: new 32	java/net/URL
-    //   8: dup
-    //   9: aload_0
-    //   10: getfield 19	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:val$dexConfig	Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDexConfig;
-    //   13: getfield 37	com/tencent/qqmini/sdk/launcher/dynamic/MiniDexConfig:dexUrl	Ljava/lang/String;
-    //   16: invokespecial 40	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   19: invokevirtual 44	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   22: checkcast 46	java/net/HttpURLConnection
-    //   25: astore_2
-    //   26: aload_2
-    //   27: sipush 10000
-    //   30: invokevirtual 50	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   33: aload_2
-    //   34: ldc 52
-    //   36: invokevirtual 55	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   39: aload_2
-    //   40: invokevirtual 59	java/net/HttpURLConnection:getResponseCode	()I
-    //   43: istore_1
-    //   44: iload_1
-    //   45: sipush 200
-    //   48: if_icmpeq +52 -> 100
-    //   51: ldc 61
-    //   53: new 63	java/lang/StringBuilder
-    //   56: dup
-    //   57: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   60: ldc 66
-    //   62: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: iload_1
-    //   66: invokevirtual 73	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   69: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   72: invokestatic 83	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   75: iconst_0
-    //   76: ifeq +11 -> 87
-    //   79: new 85	java/lang/NullPointerException
-    //   82: dup
-    //   83: invokespecial 86	java/lang/NullPointerException:<init>	()V
-    //   86: athrow
-    //   87: iconst_0
-    //   88: ifeq +11 -> 99
-    //   91: new 85	java/lang/NullPointerException
-    //   94: dup
-    //   95: invokespecial 86	java/lang/NullPointerException:<init>	()V
-    //   98: athrow
-    //   99: return
+    //   4: astore 5
+    //   6: new 32	java/net/URL
+    //   9: dup
+    //   10: aload_0
+    //   11: getfield 19	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:val$dexConfig	Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDexConfig;
+    //   14: getfield 37	com/tencent/qqmini/sdk/launcher/dynamic/MiniDexConfig:dexUrl	Ljava/lang/String;
+    //   17: invokespecial 40	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   20: invokevirtual 44	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   23: checkcast 46	java/net/HttpURLConnection
+    //   26: astore_2
+    //   27: aload_2
+    //   28: sipush 10000
+    //   31: invokevirtual 50	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   34: aload_2
+    //   35: ldc 52
+    //   37: invokevirtual 55	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   40: aload_2
+    //   41: invokevirtual 59	java/net/HttpURLConnection:getResponseCode	()I
+    //   44: istore_1
+    //   45: iload_1
+    //   46: sipush 200
+    //   49: if_icmpeq +34 -> 83
+    //   52: new 61	java/lang/StringBuilder
+    //   55: dup
+    //   56: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   59: astore_2
+    //   60: aload_2
+    //   61: ldc 64
+    //   63: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: pop
+    //   67: aload_2
+    //   68: iload_1
+    //   69: invokevirtual 71	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   72: pop
+    //   73: ldc 73
+    //   75: aload_2
+    //   76: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   79: invokestatic 83	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   82: return
+    //   83: aload_2
+    //   84: invokevirtual 87	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   87: astore_3
+    //   88: new 89	java/io/File
+    //   91: dup
+    //   92: aload_0
+    //   93: getfield 21	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:val$dexPath	Ljava/lang/String;
+    //   96: invokespecial 90	java/io/File:<init>	(Ljava/lang/String;)V
+    //   99: astore_2
     //   100: aload_2
-    //   101: invokevirtual 90	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   104: astore_2
-    //   105: new 92	java/io/File
-    //   108: dup
-    //   109: aload_0
-    //   110: getfield 21	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:val$dexPath	Ljava/lang/String;
-    //   113: invokespecial 93	java/io/File:<init>	(Ljava/lang/String;)V
-    //   116: astore 4
-    //   118: aload 4
-    //   120: invokevirtual 97	java/io/File:exists	()Z
-    //   123: ifeq +9 -> 132
-    //   126: aload 4
-    //   128: invokevirtual 100	java/io/File:delete	()Z
-    //   131: pop
-    //   132: aload 4
-    //   134: invokevirtual 104	java/io/File:getParentFile	()Ljava/io/File;
-    //   137: invokevirtual 97	java/io/File:exists	()Z
-    //   140: ifne +12 -> 152
-    //   143: aload 4
-    //   145: invokevirtual 104	java/io/File:getParentFile	()Ljava/io/File;
-    //   148: invokevirtual 107	java/io/File:mkdirs	()Z
-    //   151: pop
-    //   152: aload 4
-    //   154: invokevirtual 110	java/io/File:createNewFile	()Z
-    //   157: pop
-    //   158: new 112	java/io/FileOutputStream
-    //   161: dup
+    //   101: invokevirtual 94	java/io/File:exists	()Z
+    //   104: ifeq +8 -> 112
+    //   107: aload_2
+    //   108: invokevirtual 97	java/io/File:delete	()Z
+    //   111: pop
+    //   112: aload_2
+    //   113: invokevirtual 101	java/io/File:getParentFile	()Ljava/io/File;
+    //   116: invokevirtual 94	java/io/File:exists	()Z
+    //   119: ifne +11 -> 130
+    //   122: aload_2
+    //   123: invokevirtual 101	java/io/File:getParentFile	()Ljava/io/File;
+    //   126: invokevirtual 104	java/io/File:mkdirs	()Z
+    //   129: pop
+    //   130: aload_2
+    //   131: invokevirtual 107	java/io/File:createNewFile	()Z
+    //   134: pop
+    //   135: new 109	java/io/FileOutputStream
+    //   138: dup
+    //   139: aload_2
+    //   140: invokespecial 112	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   143: astore 4
+    //   145: sipush 8192
+    //   148: newarray byte
+    //   150: astore_2
+    //   151: aload_3
+    //   152: aload_2
+    //   153: invokevirtual 118	java/io/InputStream:read	([B)I
+    //   156: istore_1
+    //   157: iload_1
+    //   158: iconst_m1
+    //   159: if_icmpeq +14 -> 173
     //   162: aload 4
-    //   164: invokespecial 115	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   167: astore 4
-    //   169: sipush 8192
-    //   172: newarray byte
-    //   174: astore_3
-    //   175: aload_2
-    //   176: aload_3
-    //   177: invokevirtual 121	java/io/InputStream:read	([B)I
-    //   180: istore_1
-    //   181: iload_1
-    //   182: iconst_m1
-    //   183: if_icmpeq +51 -> 234
-    //   186: aload 4
-    //   188: aload_3
-    //   189: iconst_0
-    //   190: iload_1
-    //   191: invokevirtual 127	java/io/OutputStream:write	([BII)V
-    //   194: goto -19 -> 175
-    //   197: astore 5
-    //   199: aload 4
-    //   201: astore_3
-    //   202: aload 5
-    //   204: astore 4
-    //   206: ldc 61
-    //   208: ldc 129
-    //   210: aload 4
-    //   212: invokestatic 132	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   164: aload_2
+    //   165: iconst_0
+    //   166: iload_1
+    //   167: invokevirtual 124	java/io/OutputStream:write	([BII)V
+    //   170: goto -19 -> 151
+    //   173: ldc 73
+    //   175: ldc 126
+    //   177: invokestatic 129	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   180: invokestatic 135	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
+    //   183: invokevirtual 139	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getProxyManager	()Lcom/tencent/qqmini/sdk/launcher/core/IProxyManager;
+    //   186: ifnull +23 -> 209
+    //   189: invokestatic 135	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
+    //   192: invokevirtual 139	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getProxyManager	()Lcom/tencent/qqmini/sdk/launcher/core/IProxyManager;
+    //   195: ldc 141
+    //   197: invokeinterface 147 2 0
+    //   202: checkcast 141	com/tencent/qqmini/sdk/launcher/core/proxy/WnsConfigProxy
+    //   205: astore_2
+    //   206: goto +5 -> 211
+    //   209: aconst_null
+    //   210: astore_2
+    //   211: aload_2
+    //   212: ifnull +326 -> 538
     //   215: aload_2
-    //   216: ifnull +7 -> 223
-    //   219: aload_2
-    //   220: invokevirtual 135	java/io/InputStream:close	()V
-    //   223: aload_3
-    //   224: ifnull -125 -> 99
-    //   227: aload_3
-    //   228: invokevirtual 136	java/io/OutputStream:close	()V
-    //   231: return
-    //   232: astore_2
-    //   233: return
-    //   234: ldc 61
-    //   236: ldc 138
-    //   238: invokestatic 141	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   241: invokestatic 147	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
-    //   244: invokevirtual 151	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getProxyManager	()Lcom/tencent/qqmini/sdk/launcher/core/IProxyManager;
-    //   247: ifnull +192 -> 439
-    //   250: invokestatic 147	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
-    //   253: invokevirtual 151	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getProxyManager	()Lcom/tencent/qqmini/sdk/launcher/core/IProxyManager;
-    //   256: ldc 153
-    //   258: invokeinterface 159 2 0
-    //   263: checkcast 153	com/tencent/qqmini/sdk/launcher/core/proxy/WnsConfigProxy
-    //   266: astore_3
-    //   267: aload_3
-    //   268: ifnull +176 -> 444
-    //   271: aload_3
-    //   272: ldc 161
-    //   274: ldc 163
-    //   276: invokevirtual 167	com/tencent/qqmini/sdk/launcher/core/proxy/WnsConfigProxy:getConfig	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   279: astore_3
-    //   280: ldc 61
-    //   282: new 63	java/lang/StringBuilder
-    //   285: dup
-    //   286: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   289: ldc 169
-    //   291: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   294: aload_3
-    //   295: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   298: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   301: invokestatic 141	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   304: ldc 171
-    //   306: aload_3
-    //   307: invokevirtual 177	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   310: ifeq +76 -> 386
-    //   313: invokestatic 147	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
-    //   316: invokevirtual 181	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getContext	()Landroid/content/Context;
-    //   319: astore 7
-    //   321: aload_0
-    //   322: getfield 21	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:val$dexPath	Ljava/lang/String;
-    //   325: astore 6
-    //   327: aload 5
-    //   329: astore_3
-    //   330: aload 7
-    //   332: ifnull +12 -> 344
-    //   335: aload 7
-    //   337: invokevirtual 187	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   340: getfield 192	android/content/pm/ApplicationInfo:nativeLibraryDir	Ljava/lang/String;
-    //   343: astore_3
-    //   344: new 194	com/tencent/qqmini/sdk/launcher/dynamic/MiniAppClassloader
-    //   347: dup
-    //   348: aload 6
-    //   350: aload_3
-    //   351: aload_0
-    //   352: invokevirtual 198	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   355: invokevirtual 204	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   358: invokespecial 207	com/tencent/qqmini/sdk/launcher/dynamic/MiniAppClassloader:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   361: astore_3
-    //   362: ldc 61
-    //   364: new 63	java/lang/StringBuilder
-    //   367: dup
-    //   368: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   371: ldc 209
-    //   373: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   376: aload_3
-    //   377: invokevirtual 212	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   380: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   383: invokestatic 141	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   216: ldc 149
+    //   218: ldc 151
+    //   220: invokevirtual 155	com/tencent/qqmini/sdk/launcher/core/proxy/WnsConfigProxy:getConfig	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   223: astore_2
+    //   224: goto +3 -> 227
+    //   227: new 61	java/lang/StringBuilder
+    //   230: dup
+    //   231: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   234: astore 6
+    //   236: aload 6
+    //   238: ldc 157
+    //   240: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   243: pop
+    //   244: aload 6
+    //   246: aload_2
+    //   247: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: pop
+    //   251: ldc 73
+    //   253: aload 6
+    //   255: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   258: invokestatic 129	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   261: ldc 159
+    //   263: aload_2
+    //   264: invokevirtual 165	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   267: ifeq +98 -> 365
+    //   270: invokestatic 135	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
+    //   273: invokevirtual 169	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getContext	()Landroid/content/Context;
+    //   276: astore 7
+    //   278: aload_0
+    //   279: getfield 21	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:val$dexPath	Ljava/lang/String;
+    //   282: astore 6
+    //   284: aload 5
+    //   286: astore_2
+    //   287: aload 7
+    //   289: ifnull +12 -> 301
+    //   292: aload 7
+    //   294: invokevirtual 175	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   297: getfield 180	android/content/pm/ApplicationInfo:nativeLibraryDir	Ljava/lang/String;
+    //   300: astore_2
+    //   301: new 182	com/tencent/qqmini/sdk/launcher/dynamic/MiniAppClassloader
+    //   304: dup
+    //   305: aload 6
+    //   307: aload_2
+    //   308: aload_0
+    //   309: invokevirtual 186	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   312: invokevirtual 192	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   315: invokespecial 195	com/tencent/qqmini/sdk/launcher/dynamic/MiniAppClassloader:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   318: astore_2
+    //   319: new 61	java/lang/StringBuilder
+    //   322: dup
+    //   323: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   326: astore 5
+    //   328: aload 5
+    //   330: ldc 197
+    //   332: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   335: pop
+    //   336: aload 5
+    //   338: aload_2
+    //   339: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   342: pop
+    //   343: ldc 73
+    //   345: aload 5
+    //   347: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   350: invokestatic 129	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   353: goto +12 -> 365
+    //   356: astore_2
+    //   357: ldc 73
+    //   359: ldc 202
+    //   361: aload_2
+    //   362: invokestatic 205	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   365: aload_0
+    //   366: getfield 23	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:val$config	Ljava/lang/String;
+    //   369: aload_0
+    //   370: getfield 17	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:this$0	Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager;
+    //   373: invokestatic 211	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager:access$000	(Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager;)Ljava/lang/String;
+    //   376: invokevirtual 165	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   379: ifeq +18 -> 397
+    //   382: aload_0
+    //   383: getfield 17	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:this$0	Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager;
     //   386: aload_0
     //   387: getfield 23	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:val$config	Ljava/lang/String;
     //   390: aload_0
-    //   391: getfield 17	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:this$0	Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager;
-    //   394: invokestatic 218	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager:access$000	(Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager;)Ljava/lang/String;
-    //   397: invokevirtual 177	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   400: ifeq +18 -> 418
-    //   403: aload_0
-    //   404: getfield 17	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:this$0	Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager;
-    //   407: aload_0
-    //   408: getfield 23	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:val$config	Ljava/lang/String;
-    //   411: aload_0
-    //   412: getfield 19	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:val$dexConfig	Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDexConfig;
-    //   415: invokestatic 222	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager:access$100	(Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager;Ljava/lang/String;Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDexConfig;)V
-    //   418: aload_2
-    //   419: ifnull +7 -> 426
-    //   422: aload_2
-    //   423: invokevirtual 135	java/io/InputStream:close	()V
-    //   426: aload 4
-    //   428: ifnull -329 -> 99
-    //   431: aload 4
-    //   433: invokevirtual 136	java/io/OutputStream:close	()V
-    //   436: return
-    //   437: astore_2
-    //   438: return
-    //   439: aconst_null
-    //   440: astore_3
-    //   441: goto -174 -> 267
-    //   444: ldc 171
-    //   446: astore_3
-    //   447: goto -167 -> 280
-    //   450: astore_3
-    //   451: ldc 61
-    //   453: ldc 224
-    //   455: aload_3
-    //   456: invokestatic 132	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   459: goto -73 -> 386
-    //   462: astore_3
-    //   463: aload_2
-    //   464: ifnull +7 -> 471
-    //   467: aload_2
-    //   468: invokevirtual 135	java/io/InputStream:close	()V
-    //   471: aload 4
-    //   473: ifnull +8 -> 481
-    //   476: aload 4
-    //   478: invokevirtual 136	java/io/OutputStream:close	()V
-    //   481: aload_3
-    //   482: athrow
-    //   483: astore_2
-    //   484: goto -3 -> 481
-    //   487: astore_3
-    //   488: aconst_null
-    //   489: astore 4
-    //   491: aconst_null
-    //   492: astore_2
-    //   493: goto -30 -> 463
-    //   496: astore_3
-    //   497: aconst_null
-    //   498: astore 4
-    //   500: goto -37 -> 463
-    //   503: astore 5
-    //   505: aload_3
-    //   506: astore 4
-    //   508: aload 5
-    //   510: astore_3
-    //   511: goto -48 -> 463
-    //   514: astore 4
-    //   516: aconst_null
-    //   517: astore_2
-    //   518: goto -312 -> 206
-    //   521: astore 4
-    //   523: goto -317 -> 206
-    //   526: astore_2
-    //   527: return
+    //   391: getfield 19	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager$1:val$dexConfig	Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDexConfig;
+    //   394: invokestatic 215	com/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager:access$100	(Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDynamicManager;Ljava/lang/String;Lcom/tencent/qqmini/sdk/launcher/dynamic/MiniDexConfig;)V
+    //   397: aload 4
+    //   399: astore_2
+    //   400: aload_3
+    //   401: ifnull +10 -> 411
+    //   404: aload_3
+    //   405: invokevirtual 218	java/io/InputStream:close	()V
+    //   408: aload 4
+    //   410: astore_2
+    //   411: aload_2
+    //   412: invokevirtual 219	java/io/OutputStream:close	()V
+    //   415: return
+    //   416: astore_2
+    //   417: aload_3
+    //   418: astore 5
+    //   420: aload 4
+    //   422: astore_3
+    //   423: goto +83 -> 506
+    //   426: astore 5
+    //   428: aload 4
+    //   430: astore_2
+    //   431: goto +40 -> 471
+    //   434: astore_2
+    //   435: aconst_null
+    //   436: astore 4
+    //   438: aload_3
+    //   439: astore 5
+    //   441: aload 4
+    //   443: astore_3
+    //   444: goto +62 -> 506
+    //   447: astore 5
+    //   449: aconst_null
+    //   450: astore_2
+    //   451: goto +20 -> 471
+    //   454: astore_2
+    //   455: aconst_null
+    //   456: astore 5
+    //   458: aload 5
+    //   460: astore_3
+    //   461: goto +45 -> 506
+    //   464: astore 5
+    //   466: aconst_null
+    //   467: astore_2
+    //   468: aload 4
+    //   470: astore_3
+    //   471: ldc 73
+    //   473: ldc 221
+    //   475: aload 5
+    //   477: invokestatic 205	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   480: aload_3
+    //   481: ifnull +7 -> 488
+    //   484: aload_3
+    //   485: invokevirtual 218	java/io/InputStream:close	()V
+    //   488: aload_2
+    //   489: ifnull +6 -> 495
+    //   492: goto -81 -> 411
+    //   495: return
+    //   496: astore 4
+    //   498: aload_3
+    //   499: astore 5
+    //   501: aload_2
+    //   502: astore_3
+    //   503: aload 4
+    //   505: astore_2
+    //   506: aload 5
+    //   508: ifnull +8 -> 516
+    //   511: aload 5
+    //   513: invokevirtual 218	java/io/InputStream:close	()V
+    //   516: aload_3
+    //   517: ifnull +7 -> 524
+    //   520: aload_3
+    //   521: invokevirtual 219	java/io/OutputStream:close	()V
+    //   524: goto +5 -> 529
+    //   527: aload_2
+    //   528: athrow
+    //   529: goto -2 -> 527
+    //   532: astore_2
+    //   533: return
+    //   534: astore_3
+    //   535: goto -11 -> 524
+    //   538: ldc 159
+    //   540: astore_2
+    //   541: goto -314 -> 227
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	528	0	this	1
-    //   43	148	1	i	int
-    //   25	195	2	localObject1	Object
-    //   232	191	2	localThrowable1	java.lang.Throwable
-    //   437	31	2	localThrowable2	java.lang.Throwable
-    //   483	1	2	localThrowable3	java.lang.Throwable
-    //   492	26	2	localObject2	Object
-    //   526	1	2	localThrowable4	java.lang.Throwable
-    //   4	443	3	localObject3	Object
-    //   450	6	3	localThrowable5	java.lang.Throwable
-    //   462	20	3	localObject4	Object
-    //   487	1	3	localObject5	Object
-    //   496	10	3	localObject6	Object
-    //   510	1	3	localObject7	Object
-    //   116	391	4	localObject8	Object
-    //   514	1	4	localThrowable6	java.lang.Throwable
-    //   521	1	4	localThrowable7	java.lang.Throwable
-    //   1	1	5	localObject9	Object
-    //   197	131	5	localThrowable8	java.lang.Throwable
-    //   503	6	5	localObject10	Object
-    //   325	24	6	str	String
-    //   319	17	7	localContext	android.content.Context
+    //   0	544	0	this	1
+    //   44	123	1	i	int
+    //   26	313	2	localObject1	Object
+    //   356	6	2	localThrowable1	java.lang.Throwable
+    //   399	13	2	localFileOutputStream1	java.io.FileOutputStream
+    //   416	1	2	localObject2	Object
+    //   430	1	2	localFileOutputStream2	java.io.FileOutputStream
+    //   434	1	2	localObject3	Object
+    //   450	1	2	localObject4	Object
+    //   454	1	2	localObject5	Object
+    //   467	61	2	localObject6	Object
+    //   532	1	2	localThrowable2	java.lang.Throwable
+    //   540	1	2	str	String
+    //   87	434	3	localObject7	Object
+    //   534	1	3	localThrowable3	java.lang.Throwable
+    //   1	468	4	localFileOutputStream3	java.io.FileOutputStream
+    //   496	8	4	localObject8	Object
+    //   4	415	5	localObject9	Object
+    //   426	1	5	localThrowable4	java.lang.Throwable
+    //   439	1	5	localObject10	Object
+    //   447	1	5	localThrowable5	java.lang.Throwable
+    //   456	3	5	localObject11	Object
+    //   464	12	5	localThrowable6	java.lang.Throwable
+    //   499	13	5	localObject12	Object
+    //   234	72	6	localObject13	Object
+    //   276	17	7	localContext	android.content.Context
     // Exception table:
     //   from	to	target	type
-    //   169	175	197	java/lang/Throwable
-    //   175	181	197	java/lang/Throwable
-    //   186	194	197	java/lang/Throwable
-    //   234	241	197	java/lang/Throwable
-    //   386	418	197	java/lang/Throwable
-    //   451	459	197	java/lang/Throwable
-    //   219	223	232	java/lang/Throwable
-    //   227	231	232	java/lang/Throwable
-    //   422	426	437	java/lang/Throwable
-    //   431	436	437	java/lang/Throwable
-    //   241	267	450	java/lang/Throwable
-    //   271	280	450	java/lang/Throwable
-    //   280	327	450	java/lang/Throwable
-    //   335	344	450	java/lang/Throwable
-    //   344	386	450	java/lang/Throwable
-    //   169	175	462	finally
-    //   175	181	462	finally
-    //   186	194	462	finally
-    //   234	241	462	finally
-    //   241	267	462	finally
-    //   271	280	462	finally
-    //   280	327	462	finally
-    //   335	344	462	finally
-    //   344	386	462	finally
-    //   386	418	462	finally
-    //   451	459	462	finally
-    //   467	471	483	java/lang/Throwable
-    //   476	481	483	java/lang/Throwable
-    //   5	44	487	finally
-    //   51	75	487	finally
-    //   100	105	487	finally
-    //   105	132	496	finally
-    //   132	152	496	finally
-    //   152	169	496	finally
-    //   206	215	503	finally
-    //   5	44	514	java/lang/Throwable
-    //   51	75	514	java/lang/Throwable
-    //   100	105	514	java/lang/Throwable
-    //   105	132	521	java/lang/Throwable
-    //   132	152	521	java/lang/Throwable
-    //   152	169	521	java/lang/Throwable
-    //   79	87	526	java/lang/Throwable
-    //   91	99	526	java/lang/Throwable
+    //   180	206	356	java/lang/Throwable
+    //   215	224	356	java/lang/Throwable
+    //   227	284	356	java/lang/Throwable
+    //   292	301	356	java/lang/Throwable
+    //   301	353	356	java/lang/Throwable
+    //   145	151	416	finally
+    //   151	157	416	finally
+    //   162	170	416	finally
+    //   173	180	416	finally
+    //   180	206	416	finally
+    //   215	224	416	finally
+    //   227	284	416	finally
+    //   292	301	416	finally
+    //   301	353	416	finally
+    //   357	365	416	finally
+    //   365	397	416	finally
+    //   145	151	426	java/lang/Throwable
+    //   151	157	426	java/lang/Throwable
+    //   162	170	426	java/lang/Throwable
+    //   173	180	426	java/lang/Throwable
+    //   357	365	426	java/lang/Throwable
+    //   365	397	426	java/lang/Throwable
+    //   88	112	434	finally
+    //   112	130	434	finally
+    //   130	145	434	finally
+    //   88	112	447	java/lang/Throwable
+    //   112	130	447	java/lang/Throwable
+    //   130	145	447	java/lang/Throwable
+    //   6	45	454	finally
+    //   52	82	454	finally
+    //   83	88	454	finally
+    //   6	45	464	java/lang/Throwable
+    //   52	82	464	java/lang/Throwable
+    //   83	88	464	java/lang/Throwable
+    //   471	480	496	finally
+    //   404	408	532	java/lang/Throwable
+    //   411	415	532	java/lang/Throwable
+    //   484	488	532	java/lang/Throwable
+    //   511	516	534	java/lang/Throwable
+    //   520	524	534	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.dynamic.MiniDynamicManager.1
  * JD-Core Version:    0.7.0.1
  */

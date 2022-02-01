@@ -15,11 +15,17 @@ public class IMChannel$QualityReportCallback
   
   public void onError(int paramInt, String paramString)
   {
-    QLog.e(IMChannel.LOGTAG, 0, "QualityReport failed: " + paramInt + " info: " + paramString);
-    IMChannel.QualityReportResult localQualityReportResult = new IMChannel.QualityReportResult(this.this$0);
-    localQualityReportResult.result = paramInt;
-    localQualityReportResult.errorInfo = paramString;
-    this.this$0.nativeQualityReportCallback(this.mNativeCallback, localQualityReportResult);
+    Object localObject = IMChannel.LOGTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QualityReport failed: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" info: ");
+    localStringBuilder.append(paramString);
+    QLog.e((String)localObject, 0, localStringBuilder.toString());
+    localObject = new IMChannel.QualityReportResult(this.this$0);
+    ((IMChannel.QualityReportResult)localObject).result = paramInt;
+    ((IMChannel.QualityReportResult)localObject).errorInfo = paramString;
+    this.this$0.nativeQualityReportCallback(this.mNativeCallback, (IMChannel.QualityReportResult)localObject);
     this.mNativeCallback = 0;
   }
   

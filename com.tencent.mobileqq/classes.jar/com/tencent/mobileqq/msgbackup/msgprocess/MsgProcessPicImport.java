@@ -20,10 +20,10 @@ public class MsgProcessPicImport
   
   public ResDownloadObject a()
   {
-    boolean bool2 = false;
     MsgBackupResEntity localMsgBackupResEntity = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
     ResDownloadObject localResDownloadObject = new ResDownloadObject();
     String str1 = b(localMsgBackupResEntity);
+    boolean bool2 = false;
     if (str1 == null)
     {
       a("getResDownloadObject realPath is null");
@@ -33,8 +33,20 @@ public class MsgProcessPicImport
     String str2 = a(str1);
     boolean bool3 = a(str2);
     boolean bool4 = a(str1);
-    if (QLog.isColorLevel()) {
-      a("getResDownloadObject,entity:" + localMsgBackupResEntity.toLogString() + " tempPath:" + str2 + " exist:" + bool3 + " realPath:" + str1 + " exist:" + bool4);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getResDownloadObject,entity:");
+      localStringBuilder.append(localMsgBackupResEntity.toLogString());
+      localStringBuilder.append(" tempPath:");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" exist:");
+      localStringBuilder.append(bool3);
+      localStringBuilder.append(" realPath:");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" exist:");
+      localStringBuilder.append(bool4);
+      a(localStringBuilder.toString());
     }
     boolean bool1 = bool2;
     if (!bool3)
@@ -64,49 +76,40 @@ public class MsgProcessPicImport
   {
     String str1 = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
     String str2 = (String)this.jdField_a_of_type_JavaUtilMap.get("isOriginal");
-    int i;
+    boolean bool;
     if (str2 != null) {
-      if (!str2.equals("0")) {
-        i = 1;
-      }
+      bool = str2.equals("0") ^ true;
+    } else {
+      bool = true;
     }
-    for (;;)
+    int i = paramMsgBackupResEntity.msgSubType;
+    paramMsgBackupResEntity = "chatimg";
+    if (i == 1)
     {
-      int j = paramMsgBackupResEntity.msgSubType;
-      if (j == 1) {
-        if (i == 0) {
-          paramMsgBackupResEntity = "chatimg";
-        }
+      if (bool) {
+        paramMsgBackupResEntity = "chatraw";
       }
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(str1))
-        {
-          try
-          {
-            paramMsgBackupResEntity = AbsDownloader.getFilePath(new URL(paramMsgBackupResEntity, null, str1).toString());
-            return paramMsgBackupResEntity;
-          }
-          catch (MalformedURLException paramMsgBackupResEntity)
-          {
-            paramMsgBackupResEntity.printStackTrace();
-          }
-          i = 0;
-          break;
-          paramMsgBackupResEntity = "chatraw";
-          continue;
-          if (j == 2) {
-            paramMsgBackupResEntity = "chatimg";
-          } else if (j == 3) {
-            paramMsgBackupResEntity = "chatthumb";
-          } else {
-            return null;
-          }
-        }
-      }
-      return null;
-      i = 1;
     }
+    else if (i != 2)
+    {
+      if (i != 3) {
+        break label127;
+      }
+      paramMsgBackupResEntity = "chatthumb";
+    }
+    if (!TextUtils.isEmpty(str1)) {
+      try
+      {
+        paramMsgBackupResEntity = AbsDownloader.getFilePath(new URL(paramMsgBackupResEntity, null, str1).toString());
+        return paramMsgBackupResEntity;
+      }
+      catch (MalformedURLException paramMsgBackupResEntity)
+      {
+        paramMsgBackupResEntity.printStackTrace();
+      }
+    }
+    label127:
+    return null;
   }
   
   public String a(String paramString)
@@ -114,7 +117,10 @@ public class MsgProcessPicImport
     try
     {
       paramString = paramString.substring(a());
-      paramString = MsgBackupConstant.jdField_a_of_type_JavaLangString + paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(MsgBackupConstant.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
       return paramString;
     }
     catch (Exception paramString)
@@ -136,7 +142,7 @@ public class MsgProcessPicImport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessPicImport
  * JD-Core Version:    0.7.0.1
  */

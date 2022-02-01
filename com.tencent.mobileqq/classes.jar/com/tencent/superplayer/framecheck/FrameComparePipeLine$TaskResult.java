@@ -16,12 +16,20 @@ class FrameComparePipeLine$TaskResult
   
   public String toString()
   {
-    return "TaskResult{isBlack=" + this.isBlack + ", isTransparent=" + this.isTransparent + ", pHash=" + this.pHash + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TaskResult{isBlack=");
+    localStringBuilder.append(this.isBlack);
+    localStringBuilder.append(", isTransparent=");
+    localStringBuilder.append(this.isTransparent);
+    localStringBuilder.append(", pHash=");
+    localStringBuilder.append(this.pHash);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.framecheck.FrameComparePipeLine.TaskResult
  * JD-Core Version:    0.7.0.1
  */

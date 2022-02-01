@@ -10,12 +10,13 @@ class QZoneLiveVideoBaseDownLoadActivty$1
   
   public void handleMessage(Message paramMessage)
   {
-    this.this$0.onHandleMessage(this.this$0.mHandler, paramMessage);
+    QZoneLiveVideoBaseDownLoadActivty localQZoneLiveVideoBaseDownLoadActivty = this.this$0;
+    localQZoneLiveVideoBaseDownLoadActivty.onHandleMessage(localQZoneLiveVideoBaseDownLoadActivty.mHandler, paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty.1
  * JD-Core Version:    0.7.0.1
  */

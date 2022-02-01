@@ -29,7 +29,11 @@ public class b
     }
     catch (Exception paramResponse)
     {
-      Logger.INSTANCE.e(new String[] { "getQueueTime error:" + paramResponse.getMessage() });
+      Logger localLogger = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getQueueTime error:");
+      localStringBuilder.append(paramResponse.getMessage());
+      localLogger.e(new String[] { localStringBuilder.toString() });
     }
     return 0;
   }
@@ -50,33 +54,30 @@ public class b
   
   private void a(Exception paramException)
   {
-    h localh;
-    com.tencent.qapmsdk.impl.a.a.a locala;
     if (com.tencent.qapmsdk.impl.g.b.c())
     {
-      localh = a();
+      h localh = a();
       i.a(localh, paramException);
       if (!localh.f())
       {
-        locala = localh.j();
-        if (locala != null) {
-          break label33;
+        com.tencent.qapmsdk.impl.a.a.a locala = localh.j();
+        if (locala == null) {
+          return;
         }
+        if (localh.h())
+        {
+          if (localh.k() != null) {
+            paramException = localh.k();
+          } else {
+            paramException = "";
+          }
+          Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMCallbackExtension", "error message:", paramException });
+          com.tencent.qapmsdk.impl.d.a.a(locala, paramException);
+          return;
+        }
+        com.tencent.qapmsdk.impl.d.a.a(locala);
       }
     }
-    return;
-    label33:
-    if (localh.h())
-    {
-      paramException = "";
-      if (localh.k() != null) {
-        paramException = localh.k();
-      }
-      Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMCallbackExtension", "error message:", paramException });
-      com.tencent.qapmsdk.impl.d.a.a(locala, paramException);
-      return;
-    }
-    com.tencent.qapmsdk.impl.d.a.a(locala);
   }
   
   public void onFailure(Request paramRequest, IOException paramIOException)
@@ -84,16 +85,12 @@ public class b
     try
     {
       a(paramIOException);
-      this.b.onFailure(paramRequest, paramIOException);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMCallbackExtension", "QAPMCallbackExtension onFailure : ", localException.toString() });
-      }
+      Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMCallbackExtension", "QAPMCallbackExtension onFailure : ", localException.toString() });
     }
+    this.b.onFailure(paramRequest, paramIOException);
   }
   
   public void onResponse(Response paramResponse)
@@ -101,21 +98,17 @@ public class b
     try
     {
       a(paramResponse);
-      this.b.onResponse(paramResponse);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMCallbackExtension", "QAPMCallbackExtension onResponse ", localException.toString() });
-      }
+      Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMCallbackExtension", "QAPMCallbackExtension onResponse ", localException.toString() });
     }
+    this.b.onResponse(paramResponse);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.okhttp2.b
  * JD-Core Version:    0.7.0.1
  */

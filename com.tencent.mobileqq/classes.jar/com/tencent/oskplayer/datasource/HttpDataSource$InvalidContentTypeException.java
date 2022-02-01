@@ -11,14 +11,14 @@ public final class HttpDataSource$InvalidContentTypeException
   
   public HttpDataSource$InvalidContentTypeException(String paramString, Map<String, List<String>> paramMap, DataSpec paramDataSpec)
   {
-    super("Invalid content type: " + paramString, paramDataSpec);
+    super(localStringBuilder.toString(), paramDataSpec);
     this.contentType = paramString;
     this.headerFields = paramMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.datasource.HttpDataSource.InvalidContentTypeException
  * JD-Core Version:    0.7.0.1
  */

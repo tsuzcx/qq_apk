@@ -28,22 +28,22 @@ public class LinkTouchMovementMethod
       int i = -1;
       Layout localLayout = paramTextView.getLayout();
       if (localLayout != null) {
-        i = localLayout.getOffsetForHorizontal(localLayout.getLineForVertical((int)(f4 + f3)), f2 + f1);
+        i = localLayout.getOffsetForHorizontal(localLayout.getLineForVertical((int)(f3 + f4)), f1 + f2);
       }
       paramSpannable = (ClickableImageSpan[])paramSpannable.getSpans(i, i, ClickableImageSpan.class);
       if ((j == 0) && (paramSpannable != null) && (paramSpannable.length != 0)) {
         this.a = paramSpannable[0];
+      } else if (((j == 1) || (j == 2)) && (paramSpannable != null) && (paramSpannable.length == 0)) {
+        paramMotionEvent.setAction(3);
       }
-      while (this.a != null)
+      paramSpannable = this.a;
+      if (paramSpannable != null)
       {
-        boolean bool = this.a.onTouch(paramTextView, paramMotionEvent);
+        boolean bool = paramSpannable.onTouch(paramTextView, paramMotionEvent);
         if ((j == 1) || (j == 3)) {
           this.a = null;
         }
         return bool;
-        if (((j == 1) || (j == 2)) && (paramSpannable != null) && (paramSpannable.length == 0)) {
-          paramMotionEvent.setAction(3);
-        }
       }
     }
     return false;
@@ -51,7 +51,7 @@ public class LinkTouchMovementMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.LinkTouchMovementMethod
  * JD-Core Version:    0.7.0.1
  */

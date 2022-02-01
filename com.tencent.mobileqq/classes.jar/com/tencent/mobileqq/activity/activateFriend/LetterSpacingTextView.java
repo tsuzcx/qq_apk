@@ -32,7 +32,7 @@ public class LetterSpacingTextView
   
   private void a()
   {
-    if ((this == null) || (this.jdField_a_of_type_JavaLangCharSequence == null)) {
+    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -40,15 +40,18 @@ public class LetterSpacingTextView
     while (i < this.jdField_a_of_type_JavaLangCharSequence.length())
     {
       localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence.charAt(i));
-      if (i + 1 < this.jdField_a_of_type_JavaLangCharSequence.length()) {
+      j = i + 1;
+      i = j;
+      if (j < this.jdField_a_of_type_JavaLangCharSequence.length())
+      {
         localStringBuilder.append(" ");
+        i = j;
       }
-      i += 1;
     }
     SpannableString localSpannableString = new SpannableString(localStringBuilder.toString());
-    if (localStringBuilder.toString().length() > 1)
-    {
-      i = 1;
+    int j = localStringBuilder.toString().length();
+    i = 1;
+    if (j > 1) {
       while (i < localStringBuilder.toString().length())
       {
         localSpannableString.setSpan(new ScaleXSpan(this.jdField_a_of_type_Float), i, i + 1, 33);
@@ -79,7 +82,7 @@ public class LetterSpacingTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.LetterSpacingTextView
  * JD-Core Version:    0.7.0.1
  */

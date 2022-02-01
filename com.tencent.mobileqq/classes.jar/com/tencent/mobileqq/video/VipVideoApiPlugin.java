@@ -3,9 +3,10 @@ package com.tencent.mobileqq.video;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -15,101 +16,108 @@ import org.json.JSONObject;
 public class VipVideoApiPlugin
   extends WebViewPlugin
 {
-  protected Client.OnRemoteRespObserver a;
+  protected OnRemoteRespObserver a;
   public final String a;
   public String b;
   
   public VipVideoApiPlugin()
   {
     this.jdField_a_of_type_JavaLangString = "VideoApiPlugin";
-    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$OnRemoteRespObserver = new VipVideoApiPlugin.1(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver = new VipVideoApiPlugin.1(this);
     this.mPluginNameSpace = "video";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoApiPlugin", 2, "handleJsRequest, url=" + paramString1);
-    }
-    boolean bool1;
-    if ((!"video".equals(paramString2)) || (paramString1 == null) || (paramString3 == null)) {
-      bool1 = false;
-    }
-    label154:
-    do
+    if (QLog.isColorLevel())
     {
-      do
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest, url=");
+      paramJsBridgeListener.append(paramString1);
+      QLog.d("VideoApiPlugin", 2, paramJsBridgeListener.toString());
+    }
+    if (("video".equals(paramString2)) && (paramString1 != null)) {
+      if (paramString3 == null) {
+        return false;
+      }
+    }
+    for (;;)
+    {
+      try
       {
-        do
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        boolean bool = paramString1.has("callback");
+        if (!bool) {
+          break label401;
+        }
+        paramJsBridgeListener = paramString1.getString("callback");
+        if ("isInstalled".equals(paramString3))
         {
-          return bool1;
-          for (;;)
+          if (((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
           {
-            try
-            {
-              paramString1 = new JSONObject(paramVarArgs[0]);
-              if (paramString1.has("callback"))
-              {
-                paramJsBridgeListener = paramString1.getString("callback");
-                if (!"isInstalled".equals(paramString3)) {
-                  break label154;
-                }
-                bool1 = bool2;
-                if (!WebIPCOperator.a().a()) {
-                  break;
-                }
-                paramString1 = new Bundle();
-                paramJsBridgeListener = DataFactory.a("ipc_video_isinstalled", paramJsBridgeListener, this.jdField_a_of_type_ComTencentMobileqqEmosmClient$OnRemoteRespObserver.key, paramString1);
-                WebIPCOperator.a().a(paramJsBridgeListener);
-                return true;
-              }
-            }
-            catch (Exception paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-              return true;
-            }
-            paramJsBridgeListener = "";
+            paramString1 = new Bundle();
+            paramJsBridgeListener = DataFactory.a("ipc_video_isinstalled", paramJsBridgeListener, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramString1);
+            ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJsBridgeListener);
+            return true;
           }
-          if (!"installPlugin".equals(paramString3)) {
-            break;
+        }
+        else if ("installPlugin".equals(paramString3))
+        {
+          if (((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
+          {
+            paramString1 = new Bundle();
+            paramJsBridgeListener = DataFactory.a("ipc_video_install_plugin", paramJsBridgeListener, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramString1);
+            ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJsBridgeListener);
+            return true;
           }
-          bool1 = bool2;
-        } while (!WebIPCOperator.a().a());
-        paramString1 = new Bundle();
-        paramJsBridgeListener = DataFactory.a("ipc_video_install_plugin", paramJsBridgeListener, this.jdField_a_of_type_ComTencentMobileqqEmosmClient$OnRemoteRespObserver.key, paramString1);
-        WebIPCOperator.a().a(paramJsBridgeListener);
-        return true;
-        bool1 = bool2;
-      } while (!"playVideo".equals(paramString3));
-      paramString2 = paramString1.optString("vid", "");
-      paramString3 = paramString1.optString("format", "");
-      int i = paramString1.optInt("playType", 0);
-      paramString1 = paramString1.optString("screenOrientation", "landscape");
-      if (!TextUtils.isEmpty(paramJsBridgeListener)) {
-        this.b = paramJsBridgeListener;
+        }
+        else if ("playVideo".equals(paramString3))
+        {
+          paramString2 = paramString1.optString("vid", "");
+          paramString3 = paramString1.optString("format", "");
+          int i = paramString1.optInt("playType", 0);
+          paramString1 = paramString1.optString("screenOrientation", "landscape");
+          if (!TextUtils.isEmpty(paramJsBridgeListener)) {
+            this.b = paramJsBridgeListener;
+          }
+          if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (i > 0))
+          {
+            paramJsBridgeListener = new Intent(this.mRuntime.a(), VipVideoPlayActivity.class);
+            paramJsBridgeListener.putExtra("vid", paramString2);
+            paramJsBridgeListener.putExtra("videoFormat", paramString3);
+            paramJsBridgeListener.putExtra("vtype", i);
+            paramJsBridgeListener.putExtra("screenOrientation", paramString1);
+            startActivityForResult(paramJsBridgeListener, (byte)100);
+            return true;
+          }
+          if (!TextUtils.isEmpty(this.b))
+          {
+            callJs(this.b, new String[] { String.valueOf(4) });
+            return true;
+          }
+        }
       }
-      if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (i > 0))
+      catch (Exception paramJsBridgeListener)
       {
-        paramJsBridgeListener = new Intent(this.mRuntime.a(), VipVideoPlayActivity.class);
-        paramJsBridgeListener.putExtra("vid", paramString2);
-        paramJsBridgeListener.putExtra("videoFormat", paramString3);
-        paramJsBridgeListener.putExtra("vtype", i);
-        paramJsBridgeListener.putExtra("screenOrientation", paramString1);
-        startActivityForResult(paramJsBridgeListener, (byte)100);
-        return true;
+        paramJsBridgeListener.printStackTrace();
       }
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(this.b));
-    callJs(this.b, new String[] { String.valueOf(4) });
-    return true;
+      return true;
+      return false;
+      label401:
+      paramJsBridgeListener = "";
+    }
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoApiPlugin", 2, "vip video api plugin on activity result requestCode=" + paramByte + ",resultCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("vip video api plugin on activity result requestCode=");
+      localStringBuilder.append(paramByte);
+      localStringBuilder.append(",resultCode=");
+      localStringBuilder.append(paramInt);
+      QLog.d("VideoApiPlugin", 2, localStringBuilder.toString());
     }
     super.onActivityResult(paramIntent, paramByte, paramInt);
     if ((paramByte == 100) && (!TextUtils.isEmpty(this.b))) {
@@ -117,21 +125,21 @@ public class VipVideoApiPlugin
     }
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
-    WebIPCOperator.a().a(this.jdField_a_of_type_ComTencentMobileqqEmosmClient$OnRemoteRespObserver);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    WebIPCOperator.a().b(this.jdField_a_of_type_ComTencentMobileqqEmosmClient$OnRemoteRespObserver);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).unRegisterObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.video.VipVideoApiPlugin
  * JD-Core Version:    0.7.0.1
  */

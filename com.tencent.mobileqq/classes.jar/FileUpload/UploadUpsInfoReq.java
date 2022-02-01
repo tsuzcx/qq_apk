@@ -76,12 +76,14 @@ public final class UploadUpsInfoReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.sBusinessId, 0);
-    if (this.sFileId != null) {
-      paramJceOutputStream.write(this.sFileId, 1);
+    Object localObject = this.sFileId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.iType, 2);
-    if (this.vBusiNessData != null) {
-      paramJceOutputStream.write(this.vBusiNessData, 3);
+    localObject = this.vBusiNessData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 3);
     }
     paramJceOutputStream.write(this.iKeppRaw, 4);
     paramJceOutputStream.write(this.iAppid, 5);
@@ -89,19 +91,21 @@ public final class UploadUpsInfoReq
     paramJceOutputStream.write(this.iBatUploadNum, 7);
     paramJceOutputStream.write(this.iCurUpload, 8);
     paramJceOutputStream.write(this.iBatchId, 9);
-    if (this.sWnsCmd != null) {
-      paramJceOutputStream.write(this.sWnsCmd, 10);
+    localObject = this.sWnsCmd;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.iPicWidth, 11);
     paramJceOutputStream.write(this.iPicHight, 12);
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 13);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.UploadUpsInfoReq
  * JD-Core Version:    0.7.0.1
  */

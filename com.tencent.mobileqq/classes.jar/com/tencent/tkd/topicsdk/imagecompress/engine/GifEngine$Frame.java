@@ -1,5 +1,6 @@
 package com.tencent.tkd.topicsdk.imagecompress.engine;
 
+import .r8.java8methods.utility.Integer.hashCode.II;
 import android.graphics.Bitmap;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -32,38 +33,47 @@ public final class GifEngine$Frame
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof Frame))
       {
         paramObject = (Frame)paramObject;
-        if ((!Intrinsics.areEqual(this.jdField_a_of_type_AndroidGraphicsBitmap, paramObject.jdField_a_of_type_AndroidGraphicsBitmap)) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int)) {}
+        if ((Intrinsics.areEqual(this.jdField_a_of_type_AndroidGraphicsBitmap, paramObject.jdField_a_of_type_AndroidGraphicsBitmap)) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
   {
     Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (localBitmap != null) {}
-    for (int i = localBitmap.hashCode();; i = 0) {
-      return i * 31 + Integer.hashCode(this.jdField_a_of_type_Int);
+    int i;
+    if (localBitmap != null) {
+      i = localBitmap.hashCode();
+    } else {
+      i = 0;
     }
+    return i * 31 + .r8.java8methods.utility.Integer.hashCode.II.hashCode(this.jdField_a_of_type_Int);
   }
   
   @NotNull
   public String toString()
   {
-    return "Frame(bitmap=" + this.jdField_a_of_type_AndroidGraphicsBitmap + ", duration=" + this.jdField_a_of_type_Int + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Frame(bitmap=");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.engine.GifEngine.Frame
  * JD-Core Version:    0.7.0.1
  */

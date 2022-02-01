@@ -7,14 +7,15 @@ import android.os.Looper;
 public class AVGameHandler
 {
   private static final AVGameHandler jdField_a_of_type_ComTencentAvgameUiAVGameHandler = new AVGameHandler();
+  private static String jdField_a_of_type_JavaLangString = "AVGameHandler";
   private Handler jdField_a_of_type_AndroidOsHandler;
+  HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("avgame_chat_thread");
   private Handler b;
   
   private AVGameHandler()
   {
-    HandlerThread localHandlerThread = new HandlerThread("avgame_chat_thread");
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     this.b = new Handler(Looper.getMainLooper());
   }
   
@@ -35,7 +36,7 @@ public class AVGameHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGameHandler
  * JD-Core Version:    0.7.0.1
  */

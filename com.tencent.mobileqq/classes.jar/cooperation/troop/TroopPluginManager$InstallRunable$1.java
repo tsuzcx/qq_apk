@@ -3,6 +3,7 @@ package cooperation.troop;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.mobileqq.troop.plugin.TroopPluginCallback;
 
 class TroopPluginManager$InstallRunable$1
   extends Handler
@@ -14,24 +15,25 @@ class TroopPluginManager$InstallRunable$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1001)
     {
-    }
-    do
-    {
-      do
-      {
+      if (i != 1002) {
         return;
-      } while (this.a.a == null);
+      }
+      if (this.a.a != null) {
+        this.a.a.onInstallFinish(2);
+      }
+    }
+    else if (this.a.a != null)
+    {
       this.a.a.onInstallFinish(0);
-      return;
-    } while (this.a.a == null);
-    this.a.a.onInstallFinish(2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop.TroopPluginManager.InstallRunable.1
  * JD-Core Version:    0.7.0.1
  */

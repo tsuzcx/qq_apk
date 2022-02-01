@@ -1,38 +1,35 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.support.v4.app.FragmentActivity;
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.text.Editable;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.TroopEntranceBar;
 
 public class PAContext
   extends AIOContext
 {
-  public PAContext(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, @NonNull SessionInfo paramSessionInfo, @NonNull BaseChatPie paramBaseChatPie)
+  public TroopEntranceBar a()
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramSessionInfo, paramBaseChatPie);
+    return ((PublicAccountChatPie)this.a).a;
   }
   
-  public boolean f()
+  public void a(Editable paramEditable)
   {
-    return ((PublicAccountChatPie)this.a).T;
+    ((PublicAccountChatPie)this.a).a(paramEditable);
   }
   
-  public boolean g()
+  public boolean k()
   {
-    return ((PublicAccountChatPie)this.a).U;
+    return ((PublicAccountChatPie)this.a).J;
   }
   
-  public boolean h()
+  public boolean l()
   {
-    return ((PublicAccountChatPie)this.a).I();
+    return ((PublicAccountChatPie)this.a).K;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PAContext
  * JD-Core Version:    0.7.0.1
  */

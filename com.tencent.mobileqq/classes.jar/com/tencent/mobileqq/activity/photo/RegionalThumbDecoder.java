@@ -14,7 +14,7 @@ public class RegionalThumbDecoder
     //   1: invokestatic 28	com/tencent/mobileqq/activity/photo/LocalMediaInfo:parseUrl	(Ljava/net/URL;)Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
     //   4: astore 7
     //   6: aload 7
-    //   8: ifnull +291 -> 299
+    //   8: ifnull +657 -> 665
     //   11: new 30	android/graphics/BitmapFactory$Options
     //   14: dup
     //   15: invokespecial 31	android/graphics/BitmapFactory$Options:<init>	()V
@@ -31,362 +31,438 @@ public class RegionalThumbDecoder
     //   35: getfield 49	android/graphics/BitmapFactory$Options:outWidth	I
     //   38: aload_1
     //   39: getfield 52	android/graphics/BitmapFactory$Options:outHeight	I
-    //   42: if_icmple +95 -> 137
+    //   42: if_icmple +21 -> 63
     //   45: aload_1
     //   46: getfield 52	android/graphics/BitmapFactory$Options:outHeight	I
-    //   49: istore_3
+    //   49: istore_2
     //   50: aload_1
     //   51: getfield 49	android/graphics/BitmapFactory$Options:outWidth	I
     //   54: aload_1
     //   55: getfield 52	android/graphics/BitmapFactory$Options:outHeight	I
     //   58: idiv
-    //   59: i2f
-    //   60: fstore_2
-    //   61: fload_2
-    //   62: ldc 53
-    //   64: fcmpg
-    //   65: ifgt +91 -> 156
+    //   59: istore_3
+    //   60: goto +18 -> 78
+    //   63: aload_1
+    //   64: getfield 49	android/graphics/BitmapFactory$Options:outWidth	I
+    //   67: istore_2
     //   68: aload_1
-    //   69: aload_1
-    //   70: getfield 49	android/graphics/BitmapFactory$Options:outWidth	I
-    //   73: aload_1
-    //   74: getfield 52	android/graphics/BitmapFactory$Options:outHeight	I
-    //   77: aload 7
-    //   79: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
-    //   82: invokestatic 62	com/tencent/mobileqq/activity/photo/ThumbDecoder:calSampleSize	(III)I
-    //   85: putfield 65	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   88: aload_1
-    //   89: iconst_0
-    //   90: putfield 35	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   93: aload_1
-    //   94: getstatic 71	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   97: putfield 74	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   100: aload 7
-    //   102: getfield 39	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   105: aload_1
-    //   106: invokestatic 79	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   109: astore_1
-    //   110: aload_1
-    //   111: ifnonnull +190 -> 301
-    //   114: aload_1
-    //   115: astore 6
-    //   117: invokestatic 85	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   120: ifeq +14 -> 134
-    //   123: ldc 87
-    //   125: iconst_2
-    //   126: ldc 89
-    //   128: invokestatic 93	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   131: aload_1
-    //   132: astore 6
-    //   134: aload 6
-    //   136: areturn
-    //   137: aload_1
-    //   138: getfield 49	android/graphics/BitmapFactory$Options:outWidth	I
-    //   141: istore_3
-    //   142: aload_1
-    //   143: getfield 52	android/graphics/BitmapFactory$Options:outHeight	I
-    //   146: aload_1
-    //   147: getfield 49	android/graphics/BitmapFactory$Options:outWidth	I
-    //   150: idiv
-    //   151: i2f
-    //   152: fstore_2
-    //   153: goto -92 -> 61
-    //   156: new 95	android/graphics/Rect
-    //   159: dup
-    //   160: iconst_0
-    //   161: iconst_0
-    //   162: iload_3
-    //   163: iload_3
-    //   164: invokespecial 98	android/graphics/Rect:<init>	(IIII)V
-    //   167: astore 9
-    //   169: aload_1
-    //   170: iload_3
-    //   171: iload_3
-    //   172: aload 7
-    //   174: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
-    //   177: invokestatic 62	com/tencent/mobileqq/activity/photo/ThumbDecoder:calSampleSize	(III)I
-    //   180: putfield 65	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   183: aload_1
-    //   184: iconst_0
-    //   185: putfield 35	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   188: aload_1
-    //   189: getstatic 71	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   192: putfield 74	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   195: new 100	java/io/BufferedInputStream
-    //   198: dup
-    //   199: new 102	java/io/FileInputStream
-    //   202: dup
-    //   203: aload 7
-    //   205: getfield 39	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   208: invokespecial 105	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   211: invokespecial 108	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   214: astore 6
-    //   216: aload 6
-    //   218: iconst_1
-    //   219: invokestatic 114	android/graphics/BitmapRegionDecoder:newInstance	(Ljava/io/InputStream;Z)Landroid/graphics/BitmapRegionDecoder;
-    //   222: astore 8
-    //   224: aload 6
-    //   226: ifnull +8 -> 234
-    //   229: aload 6
-    //   231: invokevirtual 119	java/io/InputStream:close	()V
-    //   234: aload 8
-    //   236: ifnull +358 -> 594
-    //   239: aload 8
-    //   241: aload 9
-    //   243: aload_1
-    //   244: invokevirtual 123	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   247: astore_1
-    //   248: aload 8
-    //   250: invokevirtual 126	android/graphics/BitmapRegionDecoder:recycle	()V
-    //   253: goto -143 -> 110
-    //   256: astore_1
-    //   257: aconst_null
-    //   258: astore 6
-    //   260: aload 6
-    //   262: ifnull +8 -> 270
-    //   265: aload 6
-    //   267: invokevirtual 119	java/io/InputStream:close	()V
-    //   270: aload_1
-    //   271: athrow
-    //   272: astore 6
-    //   274: aconst_null
-    //   275: astore_1
-    //   276: invokestatic 85	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   279: ifeq +13 -> 292
-    //   282: ldc 87
-    //   284: iconst_2
-    //   285: ldc 128
-    //   287: aload 6
-    //   289: invokestatic 131	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   292: aload_1
-    //   293: astore 6
-    //   295: aload_1
-    //   296: ifnonnull -162 -> 134
-    //   299: aconst_null
-    //   300: areturn
-    //   301: aload 7
-    //   303: getfield 39	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   306: invokestatic 137	com/tencent/mobileqq/transfile/URLDrawableHelper:getExifRotation	(Ljava/lang/String;)I
-    //   309: istore_3
-    //   310: iload_3
-    //   311: ifne +30 -> 341
-    //   314: aload_1
-    //   315: invokevirtual 143	android/graphics/Bitmap:getWidth	()I
-    //   318: aload 7
-    //   320: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
-    //   323: if_icmpne +18 -> 341
-    //   326: aload_1
-    //   327: astore 6
-    //   329: aload_1
-    //   330: invokevirtual 146	android/graphics/Bitmap:getHeight	()I
-    //   333: aload 7
-    //   335: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
-    //   338: if_icmpeq -204 -> 134
-    //   341: aload_1
-    //   342: invokevirtual 143	android/graphics/Bitmap:getWidth	()I
-    //   345: istore 4
+    //   69: getfield 52	android/graphics/BitmapFactory$Options:outHeight	I
+    //   72: aload_1
+    //   73: getfield 49	android/graphics/BitmapFactory$Options:outWidth	I
+    //   76: idiv
+    //   77: istore_3
+    //   78: iload_3
+    //   79: i2f
+    //   80: ldc 53
+    //   82: fcmpg
+    //   83: ifgt +48 -> 131
+    //   86: aload_1
+    //   87: aload_1
+    //   88: getfield 49	android/graphics/BitmapFactory$Options:outWidth	I
+    //   91: aload_1
+    //   92: getfield 52	android/graphics/BitmapFactory$Options:outHeight	I
+    //   95: aload 7
+    //   97: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   100: invokestatic 62	com/tencent/mobileqq/activity/photo/ThumbDecoder:calSampleSize	(III)I
+    //   103: putfield 65	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   106: aload_1
+    //   107: iconst_0
+    //   108: putfield 35	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   111: aload_1
+    //   112: getstatic 71	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   115: putfield 74	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   118: aload 7
+    //   120: getfield 39	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   123: aload_1
+    //   124: invokestatic 79	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   127: astore_1
+    //   128: goto +104 -> 232
+    //   131: new 81	android/graphics/Rect
+    //   134: dup
+    //   135: iconst_0
+    //   136: iconst_0
+    //   137: iload_2
+    //   138: iload_2
+    //   139: invokespecial 84	android/graphics/Rect:<init>	(IIII)V
+    //   142: astore 6
+    //   144: aload_1
+    //   145: iload_2
+    //   146: iload_2
+    //   147: aload 7
+    //   149: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   152: invokestatic 62	com/tencent/mobileqq/activity/photo/ThumbDecoder:calSampleSize	(III)I
+    //   155: putfield 65	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   158: aload_1
+    //   159: iconst_0
+    //   160: putfield 35	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   163: aload_1
+    //   164: getstatic 71	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   167: putfield 74	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   170: new 86	java/io/BufferedInputStream
+    //   173: dup
+    //   174: new 88	java/io/FileInputStream
+    //   177: dup
+    //   178: aload 7
+    //   180: getfield 39	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   183: invokespecial 91	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   186: invokespecial 94	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   189: astore 5
+    //   191: aload 5
+    //   193: iconst_1
+    //   194: invokestatic 100	android/graphics/BitmapRegionDecoder:newInstance	(Ljava/io/InputStream;Z)Landroid/graphics/BitmapRegionDecoder;
+    //   197: astore 8
+    //   199: aload 5
+    //   201: invokevirtual 105	java/io/InputStream:close	()V
+    //   204: aload 8
+    //   206: ifnull +471 -> 677
+    //   209: aload 8
+    //   211: aload 6
+    //   213: aload_1
+    //   214: invokevirtual 109	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   217: astore_1
+    //   218: aload_1
+    //   219: astore 5
+    //   221: aload_1
+    //   222: astore 6
+    //   224: aload 8
+    //   226: invokevirtual 112	android/graphics/BitmapRegionDecoder:recycle	()V
+    //   229: goto +3 -> 232
+    //   232: aload_1
+    //   233: ifnonnull +31 -> 264
+    //   236: aload_1
+    //   237: astore 5
+    //   239: aload_1
+    //   240: astore 6
+    //   242: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   245: ifeq +437 -> 682
+    //   248: aload_1
+    //   249: astore 5
+    //   251: aload_1
+    //   252: astore 6
+    //   254: ldc 120
+    //   256: iconst_2
+    //   257: ldc 122
+    //   259: invokestatic 126	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   262: aload_1
+    //   263: areturn
+    //   264: aload_1
+    //   265: astore 5
+    //   267: aload_1
+    //   268: astore 6
+    //   270: aload 7
+    //   272: getfield 39	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   275: invokestatic 132	com/tencent/mobileqq/transfile/URLDrawableHelper:getExifRotation	(Ljava/lang/String;)I
+    //   278: istore_2
+    //   279: iload_2
+    //   280: ifne +41 -> 321
+    //   283: aload_1
+    //   284: astore 5
+    //   286: aload_1
+    //   287: astore 6
+    //   289: aload_1
+    //   290: invokevirtual 138	android/graphics/Bitmap:getWidth	()I
+    //   293: aload 7
+    //   295: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   298: if_icmpne +23 -> 321
+    //   301: aload_1
+    //   302: astore 5
+    //   304: aload_1
+    //   305: astore 6
+    //   307: aload_1
+    //   308: invokevirtual 141	android/graphics/Bitmap:getHeight	()I
+    //   311: aload 7
+    //   313: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   316: if_icmpne +5 -> 321
+    //   319: aload_1
+    //   320: areturn
+    //   321: aload_1
+    //   322: astore 5
+    //   324: aload_1
+    //   325: astore 6
+    //   327: aload_1
+    //   328: invokevirtual 138	android/graphics/Bitmap:getWidth	()I
+    //   331: istore_3
+    //   332: aload_1
+    //   333: astore 5
+    //   335: aload_1
+    //   336: astore 6
+    //   338: aload_1
+    //   339: invokevirtual 141	android/graphics/Bitmap:getHeight	()I
+    //   342: istore 4
+    //   344: aload_1
+    //   345: astore 5
     //   347: aload_1
-    //   348: invokevirtual 146	android/graphics/Bitmap:getHeight	()I
-    //   351: istore 5
-    //   353: new 95	android/graphics/Rect
-    //   356: dup
-    //   357: invokespecial 147	android/graphics/Rect:<init>	()V
-    //   360: astore 6
-    //   362: new 149	android/graphics/RectF
-    //   365: dup
-    //   366: fconst_0
-    //   367: fconst_0
-    //   368: aload 7
-    //   370: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
-    //   373: i2f
-    //   374: aload 7
-    //   376: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
-    //   379: i2f
-    //   380: invokespecial 152	android/graphics/RectF:<init>	(FFFF)V
-    //   383: astore 8
-    //   385: iload 4
-    //   387: iload 5
-    //   389: if_icmple +116 -> 505
-    //   392: iload 4
-    //   394: iload 5
-    //   396: isub
-    //   397: iconst_2
-    //   398: idiv
-    //   399: istore 4
-    //   401: aload 6
-    //   403: iload 4
-    //   405: iconst_0
-    //   406: iload 4
-    //   408: iload 5
-    //   410: iadd
-    //   411: iload 5
-    //   413: iconst_0
-    //   414: iadd
-    //   415: invokevirtual 155	android/graphics/Rect:set	(IIII)V
-    //   418: aload 7
-    //   420: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
-    //   423: aload 7
-    //   425: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
-    //   428: getstatic 71	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   431: invokestatic 159	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   434: astore 9
-    //   436: new 161	android/graphics/Canvas
-    //   439: dup
-    //   440: aload 9
-    //   442: invokespecial 164	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   445: astore 10
-    //   447: iload_3
-    //   448: ifeq +26 -> 474
-    //   451: aload 10
-    //   453: iload_3
-    //   454: i2f
-    //   455: aload 7
-    //   457: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
-    //   460: i2f
-    //   461: fconst_2
-    //   462: fdiv
-    //   463: aload 7
-    //   465: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
-    //   468: i2f
-    //   469: fconst_2
-    //   470: fdiv
-    //   471: invokevirtual 168	android/graphics/Canvas:rotate	(FFF)V
-    //   474: aload 10
-    //   476: aload_1
-    //   477: aload 6
-    //   479: aload 8
-    //   481: new 170	android/graphics/Paint
-    //   484: dup
-    //   485: bipush 6
-    //   487: invokespecial 173	android/graphics/Paint:<init>	(I)V
-    //   490: invokevirtual 177	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
-    //   493: aload 9
-    //   495: ifnull -196 -> 299
-    //   498: aload_1
-    //   499: invokevirtual 178	android/graphics/Bitmap:recycle	()V
-    //   502: aload 9
-    //   504: areturn
-    //   505: iload 5
-    //   507: iload 4
-    //   509: isub
-    //   510: iconst_2
-    //   511: idiv
-    //   512: istore 5
-    //   514: aload 6
-    //   516: iconst_0
-    //   517: iload 5
-    //   519: iconst_0
-    //   520: iload 4
-    //   522: iadd
-    //   523: iload 4
-    //   525: iload 5
-    //   527: iadd
-    //   528: invokevirtual 155	android/graphics/Rect:set	(IIII)V
-    //   531: goto -113 -> 418
-    //   534: astore 6
-    //   536: goto -260 -> 276
-    //   539: astore 6
-    //   541: aconst_null
-    //   542: astore_1
-    //   543: invokestatic 85	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   546: ifeq +13 -> 559
-    //   549: ldc 87
-    //   551: iconst_2
-    //   552: ldc 180
-    //   554: aload 6
-    //   556: invokestatic 131	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   559: aload_1
-    //   560: ifnull -261 -> 299
-    //   563: aload_1
-    //   564: areturn
-    //   565: astore 6
-    //   567: goto -333 -> 234
-    //   570: astore 6
-    //   572: goto -302 -> 270
-    //   575: astore 6
-    //   577: goto -34 -> 543
-    //   580: astore 6
-    //   582: goto -39 -> 543
-    //   585: astore 6
-    //   587: goto -311 -> 276
-    //   590: astore_1
-    //   591: goto -331 -> 260
-    //   594: aconst_null
+    //   348: astore 6
+    //   350: new 81	android/graphics/Rect
+    //   353: dup
+    //   354: invokespecial 142	android/graphics/Rect:<init>	()V
+    //   357: astore 8
+    //   359: aload_1
+    //   360: astore 5
+    //   362: aload_1
+    //   363: astore 6
+    //   365: new 144	android/graphics/RectF
+    //   368: dup
+    //   369: fconst_0
+    //   370: fconst_0
+    //   371: aload 7
+    //   373: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   376: i2f
+    //   377: aload 7
+    //   379: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   382: i2f
+    //   383: invokespecial 147	android/graphics/RectF:<init>	(FFFF)V
+    //   386: astore 9
+    //   388: iload_3
+    //   389: iload 4
+    //   391: if_icmple +40 -> 431
+    //   394: aload_1
+    //   395: astore 5
+    //   397: aload_1
+    //   398: astore 6
+    //   400: iload_3
+    //   401: iload 4
+    //   403: isub
+    //   404: iconst_2
+    //   405: idiv
+    //   406: istore_3
+    //   407: aload_1
+    //   408: astore 5
+    //   410: aload_1
+    //   411: astore 6
+    //   413: aload 8
+    //   415: iload_3
+    //   416: iconst_0
+    //   417: iload_3
+    //   418: iload 4
+    //   420: iadd
+    //   421: iload 4
+    //   423: iconst_0
+    //   424: iadd
+    //   425: invokevirtual 150	android/graphics/Rect:set	(IIII)V
+    //   428: goto +38 -> 466
+    //   431: aload_1
+    //   432: astore 5
+    //   434: aload_1
+    //   435: astore 6
+    //   437: iload 4
+    //   439: iload_3
+    //   440: isub
+    //   441: iconst_2
+    //   442: idiv
+    //   443: istore 4
+    //   445: aload_1
+    //   446: astore 5
+    //   448: aload_1
+    //   449: astore 6
+    //   451: aload 8
+    //   453: iconst_0
+    //   454: iload 4
+    //   456: iload_3
+    //   457: iconst_0
+    //   458: iadd
+    //   459: iload_3
+    //   460: iload 4
+    //   462: iadd
+    //   463: invokevirtual 150	android/graphics/Rect:set	(IIII)V
+    //   466: aload_1
+    //   467: astore 5
+    //   469: aload_1
+    //   470: astore 6
+    //   472: aload 7
+    //   474: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   477: aload 7
+    //   479: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   482: getstatic 71	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   485: invokestatic 154	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   488: astore 10
+    //   490: aload_1
+    //   491: astore 5
+    //   493: aload_1
+    //   494: astore 6
+    //   496: new 156	android/graphics/Canvas
+    //   499: dup
+    //   500: aload 10
+    //   502: invokespecial 159	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   505: astore 11
+    //   507: iload_2
+    //   508: ifeq +32 -> 540
+    //   511: aload_1
+    //   512: astore 5
+    //   514: aload_1
+    //   515: astore 6
+    //   517: aload 11
+    //   519: iload_2
+    //   520: i2f
+    //   521: aload 7
+    //   523: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   526: i2f
+    //   527: fconst_2
+    //   528: fdiv
+    //   529: aload 7
+    //   531: getfield 56	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   534: i2f
+    //   535: fconst_2
+    //   536: fdiv
+    //   537: invokevirtual 163	android/graphics/Canvas:rotate	(FFF)V
+    //   540: aload_1
+    //   541: astore 5
+    //   543: aload_1
+    //   544: astore 6
+    //   546: aload 11
+    //   548: aload_1
+    //   549: aload 8
+    //   551: aload 9
+    //   553: new 165	android/graphics/Paint
+    //   556: dup
+    //   557: bipush 6
+    //   559: invokespecial 168	android/graphics/Paint:<init>	(I)V
+    //   562: invokevirtual 172	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
+    //   565: aload 10
+    //   567: ifnull +98 -> 665
+    //   570: aload_1
+    //   571: astore 5
+    //   573: aload_1
+    //   574: astore 6
+    //   576: aload_1
+    //   577: invokevirtual 173	android/graphics/Bitmap:recycle	()V
+    //   580: aload 10
+    //   582: areturn
+    //   583: astore_1
+    //   584: goto +31 -> 615
+    //   587: astore_1
+    //   588: goto +54 -> 642
+    //   591: astore_1
+    //   592: goto +7 -> 599
     //   595: astore_1
-    //   596: goto -486 -> 110
+    //   596: aconst_null
+    //   597: astore 5
+    //   599: aload 5
+    //   601: ifnull +8 -> 609
+    //   604: aload 5
+    //   606: invokevirtual 105	java/io/InputStream:close	()V
+    //   609: aload_1
+    //   610: athrow
+    //   611: astore_1
+    //   612: aconst_null
+    //   613: astore 5
+    //   615: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   618: ifeq +12 -> 630
+    //   621: ldc 120
+    //   623: iconst_2
+    //   624: ldc 175
+    //   626: aload_1
+    //   627: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   630: aload 5
+    //   632: ifnull +33 -> 665
+    //   635: aload 5
+    //   637: areturn
+    //   638: astore_1
+    //   639: aconst_null
+    //   640: astore 6
+    //   642: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   645: ifeq +12 -> 657
+    //   648: ldc 120
+    //   650: iconst_2
+    //   651: ldc 180
+    //   653: aload_1
+    //   654: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   657: aload 6
+    //   659: ifnull +6 -> 665
+    //   662: aload 6
+    //   664: areturn
+    //   665: aconst_null
+    //   666: areturn
+    //   667: astore 5
+    //   669: goto -465 -> 204
+    //   672: astore 5
+    //   674: goto -65 -> 609
+    //   677: aconst_null
+    //   678: astore_1
+    //   679: goto -447 -> 232
+    //   682: aload_1
+    //   683: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	599	0	this	RegionalThumbDecoder
-    //   0	599	1	paramURL	java.net.URL
-    //   60	93	2	f	float
-    //   49	405	3	i	int
-    //   345	183	4	j	int
-    //   351	177	5	k	int
-    //   115	151	6	localObject1	Object
-    //   272	16	6	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   293	222	6	localObject2	Object
-    //   534	1	6	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   539	16	6	localException1	java.lang.Exception
-    //   565	1	6	localIOException1	java.io.IOException
-    //   570	1	6	localIOException2	java.io.IOException
-    //   575	1	6	localException2	java.lang.Exception
-    //   580	1	6	localException3	java.lang.Exception
-    //   585	1	6	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   4	460	7	localLocalMediaInfo	LocalMediaInfo
-    //   222	258	8	localObject3	Object
-    //   167	336	9	localObject4	Object
-    //   445	30	10	localCanvas	android.graphics.Canvas
+    //   0	684	0	this	RegionalThumbDecoder
+    //   0	684	1	paramURL	java.net.URL
+    //   49	471	2	i	int
+    //   59	404	3	j	int
+    //   342	121	4	k	int
+    //   189	447	5	localObject1	Object
+    //   667	1	5	localIOException1	java.io.IOException
+    //   672	1	5	localIOException2	java.io.IOException
+    //   142	521	6	localObject2	Object
+    //   4	526	7	localLocalMediaInfo	LocalMediaInfo
+    //   197	353	8	localObject3	Object
+    //   386	166	9	localRectF	android.graphics.RectF
+    //   488	93	10	localBitmap	android.graphics.Bitmap
+    //   505	42	11	localCanvas	android.graphics.Canvas
     // Exception table:
     //   from	to	target	type
-    //   195	216	256	finally
-    //   11	61	272	java/lang/OutOfMemoryError
-    //   68	110	272	java/lang/OutOfMemoryError
-    //   137	153	272	java/lang/OutOfMemoryError
-    //   156	195	272	java/lang/OutOfMemoryError
-    //   229	234	272	java/lang/OutOfMemoryError
-    //   239	248	272	java/lang/OutOfMemoryError
-    //   265	270	272	java/lang/OutOfMemoryError
-    //   270	272	272	java/lang/OutOfMemoryError
-    //   117	131	534	java/lang/OutOfMemoryError
-    //   301	310	534	java/lang/OutOfMemoryError
-    //   314	326	534	java/lang/OutOfMemoryError
-    //   329	341	534	java/lang/OutOfMemoryError
-    //   341	385	534	java/lang/OutOfMemoryError
-    //   392	418	534	java/lang/OutOfMemoryError
-    //   418	447	534	java/lang/OutOfMemoryError
-    //   451	474	534	java/lang/OutOfMemoryError
-    //   474	493	534	java/lang/OutOfMemoryError
-    //   498	502	534	java/lang/OutOfMemoryError
-    //   505	531	534	java/lang/OutOfMemoryError
-    //   11	61	539	java/lang/Exception
-    //   68	110	539	java/lang/Exception
-    //   137	153	539	java/lang/Exception
-    //   156	195	539	java/lang/Exception
-    //   229	234	539	java/lang/Exception
-    //   239	248	539	java/lang/Exception
-    //   265	270	539	java/lang/Exception
-    //   270	272	539	java/lang/Exception
-    //   229	234	565	java/io/IOException
-    //   265	270	570	java/io/IOException
-    //   248	253	575	java/lang/Exception
-    //   117	131	580	java/lang/Exception
-    //   301	310	580	java/lang/Exception
-    //   314	326	580	java/lang/Exception
-    //   329	341	580	java/lang/Exception
-    //   341	385	580	java/lang/Exception
-    //   392	418	580	java/lang/Exception
-    //   418	447	580	java/lang/Exception
-    //   451	474	580	java/lang/Exception
-    //   474	493	580	java/lang/Exception
-    //   498	502	580	java/lang/Exception
-    //   505	531	580	java/lang/Exception
-    //   248	253	585	java/lang/OutOfMemoryError
-    //   216	224	590	finally
+    //   224	229	583	java/lang/Exception
+    //   242	248	583	java/lang/Exception
+    //   254	262	583	java/lang/Exception
+    //   270	279	583	java/lang/Exception
+    //   289	301	583	java/lang/Exception
+    //   307	319	583	java/lang/Exception
+    //   327	332	583	java/lang/Exception
+    //   338	344	583	java/lang/Exception
+    //   350	359	583	java/lang/Exception
+    //   365	388	583	java/lang/Exception
+    //   400	407	583	java/lang/Exception
+    //   413	428	583	java/lang/Exception
+    //   437	445	583	java/lang/Exception
+    //   451	466	583	java/lang/Exception
+    //   472	490	583	java/lang/Exception
+    //   496	507	583	java/lang/Exception
+    //   517	540	583	java/lang/Exception
+    //   546	565	583	java/lang/Exception
+    //   576	580	583	java/lang/Exception
+    //   224	229	587	java/lang/OutOfMemoryError
+    //   242	248	587	java/lang/OutOfMemoryError
+    //   254	262	587	java/lang/OutOfMemoryError
+    //   270	279	587	java/lang/OutOfMemoryError
+    //   289	301	587	java/lang/OutOfMemoryError
+    //   307	319	587	java/lang/OutOfMemoryError
+    //   327	332	587	java/lang/OutOfMemoryError
+    //   338	344	587	java/lang/OutOfMemoryError
+    //   350	359	587	java/lang/OutOfMemoryError
+    //   365	388	587	java/lang/OutOfMemoryError
+    //   400	407	587	java/lang/OutOfMemoryError
+    //   413	428	587	java/lang/OutOfMemoryError
+    //   437	445	587	java/lang/OutOfMemoryError
+    //   451	466	587	java/lang/OutOfMemoryError
+    //   472	490	587	java/lang/OutOfMemoryError
+    //   496	507	587	java/lang/OutOfMemoryError
+    //   517	540	587	java/lang/OutOfMemoryError
+    //   546	565	587	java/lang/OutOfMemoryError
+    //   576	580	587	java/lang/OutOfMemoryError
+    //   191	199	591	finally
+    //   170	191	595	finally
+    //   11	60	611	java/lang/Exception
+    //   63	78	611	java/lang/Exception
+    //   86	128	611	java/lang/Exception
+    //   131	170	611	java/lang/Exception
+    //   199	204	611	java/lang/Exception
+    //   209	218	611	java/lang/Exception
+    //   604	609	611	java/lang/Exception
+    //   609	611	611	java/lang/Exception
+    //   11	60	638	java/lang/OutOfMemoryError
+    //   63	78	638	java/lang/OutOfMemoryError
+    //   86	128	638	java/lang/OutOfMemoryError
+    //   131	170	638	java/lang/OutOfMemoryError
+    //   199	204	638	java/lang/OutOfMemoryError
+    //   209	218	638	java/lang/OutOfMemoryError
+    //   604	609	638	java/lang/OutOfMemoryError
+    //   609	611	638	java/lang/OutOfMemoryError
+    //   199	204	667	java/io/IOException
+    //   604	609	672	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.RegionalThumbDecoder
  * JD-Core Version:    0.7.0.1
  */

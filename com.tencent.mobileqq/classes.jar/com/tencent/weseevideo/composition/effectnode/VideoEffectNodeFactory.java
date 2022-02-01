@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.autotemplate.TAVAutomaticRenderContext;
 import com.tencent.tav.coremedia.CGSize;
-import com.tencent.tavkit.composition.video.TAVVideoEffect;
 import com.tencent.tavkit.composition.video.TAVVideoMixEffect;
 import com.tencent.tavmovie.filter.TAVBigStickerOverlayEffect;
 import com.tencent.tavsticker.core.TAVStickerContext;
@@ -29,7 +28,7 @@ import java.util.List;
 
 public class VideoEffectNodeFactory
 {
-  public static String TAG = VideoEffectNodeFactory.class.getSimpleName();
+  public static String TAG = "VideoEffectNodeFactory";
   
   @Nullable
   public static TAVAutomaticRenderContext addPagChainEffectNode(@NonNull VideoPagModel paramVideoPagModel, TAVAutomaticRenderContext paramTAVAutomaticRenderContext)
@@ -44,92 +43,67 @@ public class VideoEffectNodeFactory
       paramTAVAutomaticRenderContext = ModelAdaptUtils.videoBeginModelToTAVSticker((VideoBeginModel)paramVideoPagModel);
       TAVStickerExKt.setExtraStickerType(paramTAVAutomaticRenderContext, "sticker_video_begin");
     }
-    for (;;)
+    else if ((VideoEffectType.TYPE_VIDEO_END.value == paramVideoPagModel.getEffectType()) && ((paramVideoPagModel instanceof VideoEndModel)))
     {
-      if (paramTAVAutomaticRenderContext != null)
-      {
-        paramVideoPagModel.setUniqueId(paramTAVAutomaticRenderContext.getStickerId());
-        localTAVAutomaticRenderContext.loadSticker(paramTAVAutomaticRenderContext, false);
-      }
-      return localTAVAutomaticRenderContext;
-      if ((VideoEffectType.TYPE_VIDEO_END.value == paramVideoPagModel.getEffectType()) && ((paramVideoPagModel instanceof VideoEndModel)))
-      {
-        paramTAVAutomaticRenderContext = ModelAdaptUtils.videoEndModelToTAVSticker((VideoEndModel)paramVideoPagModel);
-        TAVStickerExKt.setExtraStickerType(paramTAVAutomaticRenderContext, "sticker_video_end");
-      }
-      else
+      paramTAVAutomaticRenderContext = ModelAdaptUtils.videoEndModelToTAVSticker((VideoEndModel)paramVideoPagModel);
+      TAVStickerExKt.setExtraStickerType(paramTAVAutomaticRenderContext, "sticker_video_end");
+    }
+    else
+    {
+      paramTAVAutomaticRenderContext = localObject;
+      if (VideoEffectType.TYPE_FEN_WEI.value == paramVideoPagModel.getEffectType())
       {
         paramTAVAutomaticRenderContext = localObject;
-        if (VideoEffectType.TYPE_FEN_WEI.value == paramVideoPagModel.getEffectType())
+        if ((paramVideoPagModel instanceof VideoFenWeiModel))
         {
-          paramTAVAutomaticRenderContext = localObject;
-          if ((paramVideoPagModel instanceof VideoFenWeiModel))
-          {
-            paramTAVAutomaticRenderContext = ModelAdaptUtils.videoFenWeiModelToTAVSticker((VideoFenWeiModel)paramVideoPagModel);
-            TAVStickerExKt.setExtraStickerType(paramTAVAutomaticRenderContext, "sticker_fen_wei");
-          }
+          paramTAVAutomaticRenderContext = ModelAdaptUtils.videoFenWeiModelToTAVSticker((VideoFenWeiModel)paramVideoPagModel);
+          TAVStickerExKt.setExtraStickerType(paramTAVAutomaticRenderContext, "sticker_fen_wei");
         }
       }
     }
+    if (paramTAVAutomaticRenderContext != null)
+    {
+      paramVideoPagModel.setUniqueId(paramTAVAutomaticRenderContext.getStickerId());
+      localTAVAutomaticRenderContext.loadSticker(paramTAVAutomaticRenderContext, false);
+    }
+    return localTAVAutomaticRenderContext;
   }
   
   @Nullable
-  public static TAVStickerRenderContext addPagOverlayEffectNode(@NonNull VideoPagModel paramVideoPagModel, CGSize paramCGSize, TAVStickerRenderContext paramTAVStickerRenderContext, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface)
+  public static TAVStickerRenderContext addPagOverlayEffectNode(@NonNull VideoPagModel paramVideoPagModel, CGSize paramCGSize, @NonNull TAVStickerRenderContext paramTAVStickerRenderContext, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface)
   {
-    Object localObject = paramTAVStickerRenderContext;
-    if (paramTAVStickerRenderContext == null) {
-      if (paramIStickerContextInterface == null) {
-        break label81;
-      }
-    }
-    label81:
-    for (localObject = paramIStickerContextInterface.createStickerContext();; localObject = new TAVStickerRenderContext())
+    if ((VideoEffectType.TYPE_SUBTITLE.value == paramVideoPagModel.getEffectType()) && ((paramVideoPagModel instanceof SubtitleModel)))
     {
-      paramIStickerContextInterface = null;
-      paramTAVStickerRenderContext = paramIStickerContextInterface;
-      if (VideoEffectType.TYPE_SUBTITLE.value == paramVideoPagModel.getEffectType())
-      {
-        paramTAVStickerRenderContext = paramIStickerContextInterface;
-        if ((paramVideoPagModel instanceof SubtitleModel))
-        {
-          paramTAVStickerRenderContext = ModelAdaptUtils.subtitleModelToTAVSticker((SubtitleModel)paramVideoPagModel, paramCGSize);
-          TAVStickerExKt.setExtraStickerType(paramTAVStickerRenderContext, "sticker_lyric");
-        }
-      }
-      if (paramTAVStickerRenderContext != null)
-      {
-        paramVideoPagModel.setUniqueId(paramTAVStickerRenderContext.getStickerId());
-        loadSticker((TAVStickerRenderContext)localObject, paramTAVStickerRenderContext);
-      }
-      return localObject;
+      paramCGSize = ModelAdaptUtils.subtitleModelToTAVSticker((SubtitleModel)paramVideoPagModel, paramCGSize);
+      TAVStickerExKt.setExtraStickerType(paramCGSize, "sticker_lyric");
     }
+    else
+    {
+      paramCGSize = null;
+    }
+    if (paramCGSize != null)
+    {
+      paramVideoPagModel.setUniqueId(paramCGSize.getStickerId());
+      loadSticker(paramTAVStickerRenderContext, paramCGSize);
+    }
+    return paramTAVStickerRenderContext;
   }
   
   @Nullable
   public static TAVStickerRenderContext addStickerEffectNode(@NonNull List<StickerModel> paramList, @NonNull CGSize paramCGSize, @NonNull TAVStickerRenderContext paramTAVStickerRenderContext, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface)
   {
-    Object localObject = paramTAVStickerRenderContext;
-    if (paramTAVStickerRenderContext == null) {
-      if (paramIStickerContextInterface == null) {
-        break label72;
-      }
-    }
-    label72:
-    for (localObject = paramIStickerContextInterface.createStickerContext();; localObject = new TAVStickerRenderContext())
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      paramIStickerContextInterface = (StickerModel)paramList.next();
+      if (paramIStickerContextInterface != null)
       {
-        paramTAVStickerRenderContext = (StickerModel)paramList.next();
-        if (paramTAVStickerRenderContext != null)
-        {
-          paramIStickerContextInterface = ModelAdaptUtils.stickerModelToTAVSticker(paramTAVStickerRenderContext, paramCGSize);
-          paramTAVStickerRenderContext.setUniqueId(paramIStickerContextInterface.getStickerId());
-          loadSticker((TAVStickerRenderContext)localObject, paramIStickerContextInterface);
-        }
+        TAVSticker localTAVSticker = ModelAdaptUtils.stickerModelToTAVSticker(paramIStickerContextInterface, paramCGSize);
+        paramIStickerContextInterface.setUniqueId(localTAVSticker.getStickerId());
+        loadSticker(paramTAVStickerRenderContext, localTAVSticker);
       }
     }
-    return localObject;
+    return paramTAVStickerRenderContext;
   }
   
   @Nullable
@@ -174,15 +148,16 @@ public class VideoEffectNodeFactory
   {
     if ((paramTAVStickerRenderContext instanceof TAVAutomaticRenderContext))
     {
-      ((TAVAutomaticRenderContext)paramTAVStickerRenderContext).readAllVideoTracks();
-      return new WSPagChainStickerMergedEffectNode((TAVAutomaticRenderContext)paramTAVStickerRenderContext);
+      paramTAVStickerRenderContext = (TAVAutomaticRenderContext)paramTAVStickerRenderContext;
+      paramTAVStickerRenderContext.readAllVideoTracks();
+      return new WSPagChainStickerMergedEffectNode(paramTAVStickerRenderContext);
     }
     return new TAVBigStickerOverlayEffect(paramTAVStickerRenderContext);
   }
   
-  public static TAVVideoEffect createPagOverlayEffect(@NonNull TAVStickerRenderContext paramTAVStickerRenderContext, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface)
+  public static WSOverlayStickerMergedEffectNode createPagOverlayEffect(@NonNull TAVStickerRenderContext paramTAVStickerRenderContext, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface, boolean paramBoolean)
   {
-    return new WSOverlayStickerMergedEffectNode(paramTAVStickerRenderContext, paramIStickerContextInterface);
+    return new WSOverlayStickerMergedEffectNode(paramTAVStickerRenderContext, paramIStickerContextInterface, paramBoolean);
   }
   
   public static void loadSticker(@NonNull TAVStickerRenderContext paramTAVStickerRenderContext, @NonNull TAVSticker paramTAVSticker)
@@ -197,7 +172,7 @@ public class VideoEffectNodeFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.VideoEffectNodeFactory
  * JD-Core Version:    0.7.0.1
  */

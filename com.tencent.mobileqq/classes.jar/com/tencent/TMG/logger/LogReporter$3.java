@@ -11,20 +11,23 @@ class LogReporter$3
   
   public void onCompleted(int paramInt, String paramString, Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof LogReporter.LogReprotInfo))) {
-      return;
-    }
-    paramObject = (LogReporter.LogReprotInfo)paramObject;
-    File localFile = new File(paramObject.logPath);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    if (paramInt != 0)
+    if (paramObject != null)
     {
-      Log.e("LogReporter", String.format("mUploadCosFileListener| uplaod log file failed. code=%d", new Object[] { Integer.valueOf(paramInt) }));
-      return;
+      if (!(paramObject instanceof LogReporter.LogReprotInfo)) {
+        return;
+      }
+      paramObject = (LogReporter.LogReprotInfo)paramObject;
+      File localFile = new File(paramObject.logPath);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      if (paramInt != 0)
+      {
+        Log.e("LogReporter", String.format("mUploadCosFileListener| uplaod log file failed. code=%d", new Object[] { Integer.valueOf(paramInt) }));
+        return;
+      }
+      LogReporter.access$200(this.this$0, paramString, paramObject.uploadSeq);
     }
-    LogReporter.access$200(this.this$0, paramString, paramObject.uploadSeq);
   }
 }
 

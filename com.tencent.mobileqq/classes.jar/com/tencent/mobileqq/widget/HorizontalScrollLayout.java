@@ -40,44 +40,58 @@ public class HorizontalScrollLayout
   public void a()
   {
     int i = getScrollX();
-    if (i < 0) {
+    if (i < 0)
+    {
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, -i, 0, Math.abs(i) * 1);
     }
-    while (this.d >= i)
+    else
     {
-      invalidate();
-      return;
+      int j = this.d;
+      if (j < i)
+      {
+        if (j <= 0) {
+          i = getScrollX();
+        } else {
+          i = getScrollX() - this.d;
+        }
+        this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, -i, 0, Math.abs(i) * 1);
+      }
     }
-    if (this.d <= 0) {}
-    for (i = getScrollX();; i = getScrollX() - this.d)
-    {
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, -i, 0, Math.abs(i) * 1);
-      break;
-    }
+    invalidate();
   }
   
   public void a(boolean paramBoolean)
   {
+    int i;
     if (paramBoolean)
     {
-      if (this.d <= 0)
-      {
+      if (this.d <= 0) {
         i = -getScrollX();
-        this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, i, 0, Math.abs(i) * 1);
-        invalidate();
-        return;
       }
-      if (this.c + getScrollX() > this.d) {}
-      for (i = this.d - getScrollX();; i = this.c) {
+      for (;;)
+      {
         break;
+        i = this.c;
+        int j = getScrollX();
+        int k = this.d;
+        if (i + j > k) {
+          i = k - getScrollX();
+        } else {
+          i = this.c;
+        }
       }
-    }
-    if (-this.c + getScrollX() > 0) {}
-    for (int i = -this.c;; i = getScrollX() * -1)
-    {
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, i, 0, Math.abs(i) * 1);
-      break;
     }
+    else
+    {
+      if (-this.c + getScrollX() > 0) {
+        i = -this.c;
+      } else {
+        i = getScrollX() * -1;
+      }
+      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, i, 0, Math.abs(i) * 1);
+    }
+    invalidate();
   }
   
   public void computeScroll()
@@ -92,44 +106,49 @@ public class HorizontalScrollLayout
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    if ((i == 2) && (this.jdField_a_of_type_Int != 0)) {}
-    for (;;)
-    {
+    if ((i == 2) && (this.jdField_a_of_type_Int != 0)) {
       return true;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      switch (i)
-      {
-      }
-      while (this.jdField_a_of_type_Int == 0)
-      {
-        return false;
-        i = (int)Math.abs(this.jdField_a_of_type_Float - f1);
-        int j = (int)Math.abs(this.jdField_b_of_type_Float - f2);
-        if ((i > this.jdField_b_of_type_Int) && (i > j))
+    }
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (i != 0)
+    {
+      if (i != 1) {
+        if (i != 2)
         {
-          this.jdField_a_of_type_Int = 1;
-          paramMotionEvent = getParent();
-          if (paramMotionEvent != null)
-          {
-            paramMotionEvent.requestDisallowInterceptTouchEvent(true);
-            continue;
-            this.jdField_a_of_type_Float = f1;
-            this.jdField_b_of_type_Float = f2;
-            if (this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {}
-            for (i = 0;; i = 1)
-            {
-              this.jdField_a_of_type_Int = i;
-              break;
-            }
-            this.jdField_a_of_type_Int = 0;
+          if (i != 3) {
+            break label152;
           }
         }
+        else
+        {
+          i = (int)Math.abs(this.jdField_a_of_type_Float - f1);
+          int j = (int)Math.abs(this.jdField_b_of_type_Float - f2);
+          if ((i <= this.jdField_b_of_type_Int) || (i <= j)) {
+            break label152;
+          }
+          this.jdField_a_of_type_Int = 1;
+          paramMotionEvent = getParent();
+          if (paramMotionEvent == null) {
+            break label152;
+          }
+          paramMotionEvent.requestDisallowInterceptTouchEvent(true);
+          break label152;
+        }
       }
+      this.jdField_a_of_type_Int = 0;
     }
+    else
+    {
+      this.jdField_a_of_type_Float = f1;
+      this.jdField_b_of_type_Float = f2;
+      this.jdField_a_of_type_Int = (this.jdField_a_of_type_AndroidWidgetScroller.isFinished() ^ true);
+    }
+    label152:
+    return this.jdField_a_of_type_Int != 0;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (1 <= getChildCount()) {
@@ -145,52 +164,53 @@ public class HorizontalScrollLayout
     this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
     int i = paramMotionEvent.getAction();
     float f = paramMotionEvent.getX();
-    switch (i)
+    if (i != 0)
     {
-    default: 
-      return true;
-    case 0: 
-      if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
-        this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return true;
+          }
+          a();
+          this.jdField_a_of_type_Int = 0;
+          return true;
+        }
+        i = (int)(this.jdField_a_of_type_Float - f);
+        this.jdField_a_of_type_Float = f;
+        scrollBy(i, 0);
+        return true;
       }
-      this.jdField_a_of_type_Float = f;
-      return true;
-    case 2: 
-      i = (int)(this.jdField_a_of_type_Float - f);
-      this.jdField_a_of_type_Float = f;
-      scrollBy(i, 0);
-      return true;
-    case 1: 
       paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
       paramMotionEvent.computeCurrentVelocity(1000);
       i = (int)paramMotionEvent.getXVelocity();
       if (i > 600) {
         a(false);
+      } else if (i < -600) {
+        a(true);
+      } else {
+        a();
       }
-      for (;;)
+      paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
+      if (paramMotionEvent != null)
       {
-        if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
-        {
-          this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-          this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-        }
-        this.jdField_a_of_type_Int = 0;
-        return true;
-        if (i < -600) {
-          a(true);
-        } else {
-          a();
-        }
+        paramMotionEvent.recycle();
+        this.jdField_a_of_type_AndroidViewVelocityTracker = null;
       }
+      this.jdField_a_of_type_Int = 0;
+      return true;
     }
-    a();
-    this.jdField_a_of_type_Int = 0;
+    if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
+      this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
+    }
+    this.jdField_a_of_type_Float = f;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.HorizontalScrollLayout
  * JD-Core Version:    0.7.0.1
  */

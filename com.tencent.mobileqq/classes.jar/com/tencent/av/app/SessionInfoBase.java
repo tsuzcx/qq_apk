@@ -13,44 +13,53 @@ public class SessionInfoBase
     return this.l;
   }
   
-  public void d(int paramInt)
+  public void c(long paramLong)
   {
-    this.ah = paramInt;
-  }
-  
-  public void d(long paramLong)
-  {
-    QLog.i("SessionInfoBase", 1, "setRoomId old room id[" + this.l + "], new room id[" + paramLong + "].");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setRoomId old room id[");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("], new room id[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("].");
+    QLog.i("SessionInfoBase", 1, localStringBuilder.toString());
     this.l = paramLong;
   }
   
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (SessionInfoBase)paramObject;
-    } while (this.l == paramObject.l);
-    return false;
-  }
-  
-  public int g()
+  public int d()
   {
     return this.ah;
   }
   
+  public void e(int paramInt)
+  {
+    this.ah = paramInt;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (SessionInfoBase)paramObject;
+      return this.l == paramObject.l;
+    }
+    return false;
+  }
+  
   public int hashCode()
   {
-    return (int)(this.l ^ this.l >>> 32);
+    long l1 = this.l;
+    return (int)(l1 ^ l1 >>> 32);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.SessionInfoBase
  * JD-Core Version:    0.7.0.1
  */

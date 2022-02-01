@@ -3,6 +3,7 @@ package com.tencent.mobileqq.transfile;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.open.agent.util.AuthorityUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -28,48 +29,54 @@ class ForwardSdkShareProcessor$GetSKeyStep
   
   protected void process()
   {
-    String str = this.this$0.app.getCurrentAccountUin();
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|process|account=" + AuthorityUtil.a(str) + ",refresh=" + ForwardSdkShareProcessor.access$100(this.this$0));
-    if (this.isCancelled.get()) {
-      doCancel();
-    }
-    for (;;)
+    Object localObject = this.this$0.app.getCurrentAccountUin();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetSKeyStep|process|account=");
+    localStringBuilder.append(AuthorityUtil.a((String)localObject));
+    localStringBuilder.append(",refresh=");
+    localStringBuilder.append(ForwardSdkShareProcessor.access$100(this.this$0));
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, localStringBuilder.toString());
+    if (this.isCancelled.get())
     {
+      doCancel();
       return;
-      if (!this.this$0.isAppValid())
+    }
+    if (!this.this$0.isAppValid())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("illegal app = ");
+      ((StringBuilder)localObject).append(this.this$0.app);
+      QLog.d("Q.share.ForwardSdkShareProcessor", 1, ((StringBuilder)localObject).toString());
+      this.this$0.mProcessorReport.setError(9366, "illegal app", null, null);
+      doError();
+      return;
+    }
+    if (!ForwardSdkShareProcessor.access$100(this.this$0))
+    {
+      localObject = ((TicketManager)this.this$0.app.getManager(2)).getSkey((String)localObject);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        QLog.d("Q.share.ForwardSdkShareProcessor", 1, "illegal app = " + this.this$0.app);
-        this.this$0.setError(9366, "illegal app");
-        doError();
-        return;
+        i = 0;
+        ForwardSdkShareProcessor.access$202(this.this$0, (String)localObject);
+        this.isSKeyReady.set(true);
+        doNextStep();
+        break label214;
       }
-      int i;
-      if (!ForwardSdkShareProcessor.access$100(this.this$0))
-      {
-        str = ((TicketManager)this.this$0.app.getManager(2)).getSkey(str);
-        if (!TextUtils.isEmpty(str))
-        {
-          i = 0;
-          ForwardSdkShareProcessor.access$202(this.this$0, str);
-          this.isSKeyReady.set(true);
-          doNextStep();
-        }
+    }
+    int i = 1;
+    label214:
+    if (i != 0)
+    {
+      if (this.this$0.isSdkShare()) {
+        ForwardStatisticsReporter.a("KEY_SSO_GET_TICKET_NO_PASSWD");
       }
-      while (i != 0)
-      {
-        if (this.this$0.isSdkShare()) {
-          ForwardStatisticsReporter.a("KEY_SSO_GET_TICKET_NO_PASSWD");
-        }
-        this.this$0.app.ssoGetTicketNoPasswd(this.this$0.app.getCurrentAccountUin(), 4096, this.mAccountObserver);
-        return;
-        i = 1;
-      }
+      this.this$0.app.ssoGetTicketNoPasswd(this.this$0.app.getCurrentAccountUin(), 4096, this.mAccountObserver);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.GetSKeyStep
  * JD-Core Version:    0.7.0.1
  */

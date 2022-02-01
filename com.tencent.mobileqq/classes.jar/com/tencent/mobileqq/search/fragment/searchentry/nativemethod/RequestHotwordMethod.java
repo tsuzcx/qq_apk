@@ -20,22 +20,19 @@ public class RequestHotwordMethod
   
   public void onCallBack(HippyMap paramHippyMap, Promise paramPromise)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (paramHippyMap != null)
-    {
-      bool1 = bool2;
-      if (paramHippyMap.containsKey("isForce")) {
-        bool1 = paramHippyMap.getBoolean("isForce");
-      }
+    boolean bool;
+    if ((paramHippyMap != null) && (paramHippyMap.containsKey("isForce"))) {
+      bool = paramHippyMap.getBoolean("isForce");
+    } else {
+      bool = true;
     }
-    this.methodHandler.requestSearchHotWord(bool1);
+    this.methodHandler.requestSearchHotWord(bool);
     paramPromise.resolve("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.RequestHotwordMethod
  * JD-Core Version:    0.7.0.1
  */

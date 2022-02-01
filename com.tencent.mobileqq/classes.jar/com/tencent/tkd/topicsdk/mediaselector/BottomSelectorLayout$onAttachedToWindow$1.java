@@ -34,52 +34,55 @@ final class BottomSelectorLayout$onAttachedToWindow$1
     if ((paramPanelType1 == PanelType.PHOTO) && (paramPanelType2 == PanelType.VIDEO))
     {
       paramPanelType1 = BottomSelectorLayout.a(this.this$0).a(PanelType.PHOTO);
-      if (paramPanelType1 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel");
-      }
-      if (((MediaSelectorPanel)paramPanelType1).c().size() > 0)
+      if (paramPanelType1 != null)
       {
-        paramPanelType1 = this.this$0.getContext();
-        Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "context");
-        paramPanelType1 = paramPanelType1.getResources().getString(R.string.M);
-        Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "context.resources.getStr…_video_replace_photo_tip)");
-        TopicSDKHelperKt.a(paramPanelType1, false, null, 6, null);
-      }
-    }
-    for (;;)
-    {
-      BottomSelectorLayout.a(this.this$0, this.this$0.getTranslationY(), BottomSelectorLayout.a(this.this$0, paramPanelType2), false, 4, null);
-      paramPanelType1 = (TextView)this.this$0.a(R.id.aV);
-      Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "recentMediaItem");
-      paramPanelType1.setText((CharSequence)BottomSelectorLayout.a(this.this$0).a());
-      paramPanelType1 = InputMethodUtils.a;
-      paramPanelType2 = this.this$0.getContext();
-      Intrinsics.checkExpressionValueIsNotNull(paramPanelType2, "context");
-      IBinder localIBinder = this.this$0.getWindowToken();
-      Intrinsics.checkExpressionValueIsNotNull(localIBinder, "windowToken");
-      paramPanelType1.a(paramPanelType2, localIBinder);
-      return;
-      if ((paramPanelType1 == PanelType.VIDEO) && (paramPanelType2 == PanelType.PHOTO))
-      {
-        paramPanelType1 = BottomSelectorLayout.a(this.this$0).a(PanelType.VIDEO);
-        if (paramPanelType1 == null) {
-          throw new TypeCastException("null cannot be cast to non-null type com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel");
-        }
         if (((MediaSelectorPanel)paramPanelType1).c().size() > 0)
         {
           paramPanelType1 = this.this$0.getContext();
           Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "context");
           paramPanelType1 = paramPanelType1.getResources().getString(R.string.H);
+          Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "context.resources.getStr…_video_replace_photo_tip)");
+          TopicSDKHelperKt.a(paramPanelType1, false, null, 6, null);
+        }
+      }
+      else {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel");
+      }
+    }
+    else if ((paramPanelType1 == PanelType.VIDEO) && (paramPanelType2 == PanelType.PHOTO))
+    {
+      paramPanelType1 = BottomSelectorLayout.a(this.this$0).a(PanelType.VIDEO);
+      if (paramPanelType1 != null)
+      {
+        if (((MediaSelectorPanel)paramPanelType1).c().size() > 0)
+        {
+          paramPanelType1 = this.this$0.getContext();
+          Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "context");
+          paramPanelType1 = paramPanelType1.getResources().getString(R.string.C);
           Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "context.resources.getStr…_photo_replace_video_tip)");
           TopicSDKHelperKt.a(paramPanelType1, false, null, 6, null);
         }
       }
+      else {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel");
+      }
     }
+    paramPanelType1 = this.this$0;
+    BottomSelectorLayout.a(paramPanelType1, paramPanelType1.getTranslationY(), BottomSelectorLayout.a(this.this$0, paramPanelType2), false, 4, null);
+    paramPanelType1 = (TextView)this.this$0.a(R.id.av);
+    Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "recentMediaItem");
+    paramPanelType1.setText((CharSequence)BottomSelectorLayout.a(this.this$0).a());
+    paramPanelType1 = InputMethodUtils.a;
+    paramPanelType2 = this.this$0.getContext();
+    Intrinsics.checkExpressionValueIsNotNull(paramPanelType2, "context");
+    IBinder localIBinder = this.this$0.getWindowToken();
+    Intrinsics.checkExpressionValueIsNotNull(localIBinder, "windowToken");
+    paramPanelType1.a(paramPanelType2, localIBinder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.onAttachedToWindow.1
  * JD-Core Version:    0.7.0.1
  */

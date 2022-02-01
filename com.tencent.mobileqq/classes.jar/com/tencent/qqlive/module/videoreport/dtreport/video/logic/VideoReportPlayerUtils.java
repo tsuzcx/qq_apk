@@ -13,37 +13,20 @@ public class VideoReportPlayerUtils
   private static int bufferStartEventId;
   private static Method getCurrentPosition;
   private static Method getDuration;
-  private static Method getKey = null;
+  private static Method getKey;
   private static Method getParamLong;
   private static Method getParamType;
   private static int loopEndId;
   private static int loopStartId;
   private static int paramsTypeLongId;
-  private static Field paramsValue = null;
-  private static Field scenesId = null;
-  private static int startParamsId = 0;
+  private static Field paramsValue;
+  private static Field scenesId;
+  private static int startParamsId;
   private static Class<?> tpDefaultReportInfoClass;
   private static Class<?> tpOptionalParamClass;
   private static Class<?> tpOptionalParamLongClass;
   private static Class<?> tpPlayerClass;
-  private static Field vid = null;
-  
-  static
-  {
-    bufferStartEventId = 0;
-    bufferEndEventId = 0;
-    paramsTypeLongId = 0;
-    loopStartId = 0;
-    loopEndId = 0;
-    tpPlayerClass = null;
-    tpOptionalParamClass = null;
-    tpOptionalParamLongClass = null;
-    tpDefaultReportInfoClass = null;
-    getCurrentPosition = null;
-    getDuration = null;
-    getParamType = null;
-    getParamLong = null;
-  }
+  private static Field vid;
   
   public static int convertEventIdToPlayer(int paramInt)
   {
@@ -51,47 +34,53 @@ public class VideoReportPlayerUtils
     {
     default: 
       return -1;
-    case 3: 
-      if (startParamsId > 0) {
-        return startParamsId;
+    case 6: 
+      paramInt = loopEndId;
+      if (paramInt > 0) {
+        return paramInt;
       }
-      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPOptionalID", new String[] { "OPTION_ID_BEFORE_LONG_START_PLAYING_TIME_MS" });
-      startParamsId = paramInt;
-      return paramInt;
-    case 1: 
-      if (bufferStartEventId > 0) {
-        return bufferStartEventId;
-      }
-      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", new String[] { "TP_PLAYER_INFO_LONG0_BUFFERING_START" });
-      bufferStartEventId = paramInt;
-      return paramInt;
-    case 2: 
-      if (bufferEndEventId > 0) {
-        return bufferEndEventId;
-      }
-      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", new String[] { "TP_PLAYER_INFO_LONG0_BUFFERING_END" });
-      bufferEndEventId = paramInt;
-      return paramInt;
-    case 4: 
-      if (paramsTypeLongId > 0) {
-        return paramsTypeLongId;
-      }
-      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPOptionalParam", new String[] { "TP_OPTIONAL_RARAM_TYPE_LONG", "TP_OPTIONAL_PARAM_TYPE_LONG" });
-      paramsTypeLongId = paramInt;
+      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", new String[] { "TP_PLAYER_INFO_LONG0_CURRENT_LOOP_END" });
+      loopEndId = paramInt;
       return paramInt;
     case 5: 
-      if (loopStartId > 0) {
-        return loopStartId;
+      paramInt = loopStartId;
+      if (paramInt > 0) {
+        return paramInt;
       }
       paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", new String[] { "TP_PLAYER_INFO_LONG0_CURRENT_LOOP_START" });
       loopStartId = paramInt;
       return paramInt;
+    case 4: 
+      paramInt = paramsTypeLongId;
+      if (paramInt > 0) {
+        return paramInt;
+      }
+      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPOptionalParam", new String[] { "TP_OPTIONAL_RARAM_TYPE_LONG", "TP_OPTIONAL_PARAM_TYPE_LONG" });
+      paramsTypeLongId = paramInt;
+      return paramInt;
+    case 3: 
+      paramInt = startParamsId;
+      if (paramInt > 0) {
+        return paramInt;
+      }
+      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPOptionalID", new String[] { "OPTION_ID_BEFORE_LONG_START_PLAYING_TIME_MS" });
+      startParamsId = paramInt;
+      return paramInt;
+    case 2: 
+      paramInt = bufferEndEventId;
+      if (paramInt > 0) {
+        return paramInt;
+      }
+      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", new String[] { "TP_PLAYER_INFO_LONG0_BUFFERING_END" });
+      bufferEndEventId = paramInt;
+      return paramInt;
     }
-    if (loopEndId > 0) {
-      return loopEndId;
+    paramInt = bufferStartEventId;
+    if (paramInt > 0) {
+      return paramInt;
     }
-    paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", new String[] { "TP_PLAYER_INFO_LONG0_CURRENT_LOOP_END" });
-    loopEndId = paramInt;
+    paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", new String[] { "TP_PLAYER_INFO_LONG0_BUFFERING_START" });
+    bufferStartEventId = paramInt;
     return paramInt;
   }
   
@@ -117,7 +106,11 @@ public class VideoReportPlayerUtils
       paramClass = paramClass.getField(paramString);
       return paramClass;
     }
-    catch (Exception paramClass) {}
+    catch (Exception paramClass)
+    {
+      label8:
+      break label8;
+    }
     return null;
   }
   
@@ -132,12 +125,18 @@ public class VideoReportPlayerUtils
         getCurrentPosition = tpPlayerClass.getDeclaredMethod("getCurrentPositionMs", new Class[0]);
       }
       long l = ((Long)getCurrentPosition.invoke(paramObject, new Object[0])).longValue();
-      Log.i("VideoReportPlayerUtils", "getCurrentPosition,time=" + l);
+      paramObject = new StringBuilder();
+      paramObject.append("getCurrentPosition,time=");
+      paramObject.append(l);
+      Log.i("VideoReportPlayerUtils", paramObject.toString());
       return l;
     }
     catch (Exception paramObject)
     {
-      Log.w("VideoReportPlayerUtils", "getCurrentPosition," + paramObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCurrentPosition,");
+      localStringBuilder.append(paramObject.toString());
+      Log.w("VideoReportPlayerUtils", localStringBuilder.toString());
     }
     return 0L;
   }
@@ -153,12 +152,18 @@ public class VideoReportPlayerUtils
         getDuration = tpPlayerClass.getDeclaredMethod("getDurationMs", new Class[0]);
       }
       int i = ((Integer)getDuration.invoke(paramObject, new Object[0])).intValue();
-      Log.i("VideoReportPlayerUtils", "getDuration,time=" + i);
+      paramObject = new StringBuilder();
+      paramObject.append("getDuration,time=");
+      paramObject.append(i);
+      Log.i("VideoReportPlayerUtils", paramObject.toString());
       return i;
     }
     catch (Exception paramObject)
     {
-      Log.w("VideoReportPlayerUtils", "getDuration," + paramObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDuration,");
+      localStringBuilder.append(paramObject.toString());
+      Log.w("VideoReportPlayerUtils", localStringBuilder.toString());
     }
     return 0;
   }
@@ -191,7 +196,10 @@ public class VideoReportPlayerUtils
     }
     catch (Exception paramObject)
     {
-      Log.w("VideoReportPlayerUtils", "getStartPosition," + paramObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getStartPosition,");
+      localStringBuilder.append(paramObject.toString());
+      Log.w("VideoReportPlayerUtils", localStringBuilder.toString());
     }
     return 0L;
   }
@@ -217,7 +225,10 @@ public class VideoReportPlayerUtils
     }
     catch (Exception paramString)
     {
-      Log.w("VideoReportPlayerUtils", "getStaticFiledFromClass," + paramString.toString());
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append("getStaticFiledFromClass,");
+      paramVarArgs.append(paramString.toString());
+      Log.w("VideoReportPlayerUtils", paramVarArgs.toString());
     }
   }
   
@@ -239,7 +250,10 @@ public class VideoReportPlayerUtils
     }
     catch (Exception paramObject)
     {
-      Log.w("VideoReportPlayerUtils", "getVidByReportInfo," + paramObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getVidByReportInfo,");
+      localStringBuilder.append(paramObject.toString());
+      Log.w("VideoReportPlayerUtils", localStringBuilder.toString());
     }
     return null;
   }
@@ -264,7 +278,10 @@ public class VideoReportPlayerUtils
     }
     catch (Exception paramObject)
     {
-      Log.w("VideoReportPlayerUtils", "isPlayAdByPlayer," + paramObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isPlayAdByPlayer,");
+      localStringBuilder.append(paramObject.toString());
+      Log.w("VideoReportPlayerUtils", localStringBuilder.toString());
     }
     return false;
   }
@@ -287,33 +304,41 @@ public class VideoReportPlayerUtils
     }
     catch (Exception paramObject)
     {
-      Log.w("VideoReportPlayerUtils", "isSetStartPosition," + paramObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSetStartPosition,");
+      localStringBuilder.append(paramObject.toString());
+      Log.w("VideoReportPlayerUtils", localStringBuilder.toString());
     }
     return false;
   }
   
   public static String stateToString(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -1)
     {
-    case 0: 
-    default: 
-      return "";
-    case -1: 
-      return "init";
-    case 3: 
-      return "paused";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4) {
+              return "";
+            }
+            return "stoped";
+          }
+          return "paused";
+        }
+        return "started";
+      }
       return "prepared";
-    case 2: 
-      return "started";
     }
-    return "stoped";
+    return "init";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoReportPlayerUtils
  * JD-Core Version:    0.7.0.1
  */

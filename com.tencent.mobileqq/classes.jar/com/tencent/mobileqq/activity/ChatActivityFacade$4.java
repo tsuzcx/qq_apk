@@ -15,36 +15,41 @@ final class ChatActivityFacade$4
   
   public void run()
   {
-    NewIntent localNewIntent;
+    Object localObject;
     if (ChatActivityFacade.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true))
     {
       long l = ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      QLog.i("ChatActivityFacade.QZoneStoryFeeds", 1, "lastTime: " + l);
-      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), QzoneAioStoryFeedServlet.class);
-      localNewIntent.putExtra("key_last_aio_story_create_time", l);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("lastTime: ");
+      ((StringBuilder)localObject).append(l);
+      QLog.i("ChatActivityFacade.QZoneStoryFeeds", 1, ((StringBuilder)localObject).toString());
+      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), QzoneAioStoryFeedServlet.class);
+      ((NewIntent)localObject).putExtra("key_last_aio_story_create_time", l);
     }
     try
     {
-      localNewIntent.putExtra("key_friend_uid", CharacterUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-      ChatActivityFacade.a().jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      ChatActivityFacade.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      localNewIntent.setObserver(ChatActivityFacade.a());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-      ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_story_feed_time");
-      return;
+      ((NewIntent)localObject).putExtra("key_friend_uid", CharacterUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("ChatActivityFacade.QZoneStoryFeeds", 1, "Long.valueOf " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      }
+      label103:
+      StringBuilder localStringBuilder;
+      break label103;
     }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Long.valueOf ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    QLog.e("ChatActivityFacade.QZoneStoryFeeds", 1, localStringBuilder.toString());
+    ChatActivityFacade.a().jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ChatActivityFacade.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    ((NewIntent)localObject).setObserver(ChatActivityFacade.a());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+    ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_story_feed_time");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.4
  * JD-Core Version:    0.7.0.1
  */

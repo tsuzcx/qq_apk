@@ -5,6 +5,7 @@ import IMMsgBodyPack.PersonInfoField;
 import OnlinePushPack.MsgInfo;
 import OnlinePushPack.SvcReqPushMsg;
 import com.qq.taf.jce.JceInputStream;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.BaseMessageProcessor;
 import com.tencent.imcore.message.OnLinePushParamReturnMsg;
@@ -33,81 +34,56 @@ public class ProfileCardMessageProcessor
     paramMsgInfo.setServerEncoding("utf-8");
     PersonInfoChange localPersonInfoChange = new PersonInfoChange();
     localPersonInfoChange.readFrom(paramMsgInfo);
-    int j;
-    int i;
-    long l;
-    int k;
     if (localPersonInfoChange.cType == 0)
     {
       paramMsgInfo = localPersonInfoChange.vChgField.iterator();
-      j = 0;
-      i = 0;
-      if (paramMsgInfo.hasNext())
+      int j = 0;
+      int i = 0;
+      while (paramMsgInfo.hasNext())
       {
-        l = ((PersonInfoField)paramMsgInfo.next()).uField;
-        if ((l == 20015L) || (l == 10009L))
+        long l = ((PersonInfoField)paramMsgInfo.next()).uField;
+        if ((l != 20015L) && (l != 10009L))
         {
-          k = 1;
-          j = i;
-          i = k;
+          if ((l == 20002L) || (l == 20009L) || (l == 20031L) || (l == 20019L)) {
+            i = 1;
+          }
+        }
+        else {
+          j = 1;
+        }
+      }
+      if (this.a != null)
+      {
+        paramMsgInfo = (IQQAvatarHandlerService)this.a.getRuntimeService(IQQAvatarHandlerService.class, "");
+        if (j != 0) {
+          paramMsgInfo.getCustomHead(this.a.getAccount());
+        }
+        if (i != 0) {
+          BaseApplicationImpl.sUiHandler.postDelayed(new ProfileCardMessageProcessor.1(this), 150L);
         }
       }
     }
-    for (;;)
+    else if ((localPersonInfoChange.cType == 1) && (QLog.isColorLevel()))
     {
-      k = j;
-      j = i;
-      i = k;
-      break;
-      if ((l == 20002L) || (l == 20009L) || (l == 20031L) || (l == 20019L))
-      {
-        i = j;
-        j = 1;
-        continue;
-        if (this.a != null)
-        {
-          paramMsgInfo = (IQQAvatarHandlerService)this.a.getRuntimeService(IQQAvatarHandlerService.class, "");
-          if (j != 0) {
-            paramMsgInfo.getCustomHead(this.a.getAccount());
-          }
-          if (i != 0) {
-            BaseApplicationImpl.sUiHandler.postDelayed(new ProfileCardMessageProcessor.1(this), 150L);
-          }
-        }
-        do
-        {
-          return;
-        } while ((localPersonInfoChange.cType != 1) || (!QLog.isColorLevel()));
-        QLog.d("MessageHandler", 2, "group data update push");
-      }
-      else
-      {
-        k = i;
-        i = j;
-        j = k;
-      }
+      QLog.d("MessageHandler", 2, "group data update push");
     }
   }
   
   public OnLinePushParamReturnMsg a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return new OnLinePushParamReturnMsg(null, false);
+    if (paramInt == 9011) {
       if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
         a(paramMsgInfo);
       } else {
         a(getClass().getName(), paramInt);
       }
     }
+    return new OnLinePushParamReturnMsg(null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.ProfileCardMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

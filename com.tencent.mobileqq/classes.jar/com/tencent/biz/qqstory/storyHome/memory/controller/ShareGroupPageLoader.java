@@ -47,26 +47,25 @@ public class ShareGroupPageLoader
     }
     ShareGroupPageLoader.GetShareGroupListEvent localGetShareGroupListEvent = new ShareGroupPageLoader.GetShareGroupListEvent(paramErrorMessage, this.d);
     localGetShareGroupListEvent.jdField_b_of_type_Boolean = false;
-    if ((paramGetShareGroupListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramGetShareGroupListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      StoryDispatcher.a().dispatch(localGetShareGroupListEvent);
-      return;
+      this.jdField_c_of_type_JavaLangString = paramGetShareGroupListResponse.jdField_a_of_type_JavaLangString;
+      localGetShareGroupListEvent.jdField_a_of_type_JavaUtilList = paramGetShareGroupListResponse.jdField_a_of_type_JavaUtilArrayList;
+      localGetShareGroupListEvent.jdField_a_of_type_Int = paramGetShareGroupListResponse.b;
+      localGetShareGroupListEvent.jdField_a_of_type_Boolean = paramGetShareGroupListResponse.jdField_a_of_type_Boolean;
+      localGetShareGroupListEvent.jdField_c_of_type_Boolean = TextUtils.isEmpty(paramGetShareGroupListRequest.jdField_a_of_type_JavaLangString);
+      paramGetShareGroupListResponse = paramGetShareGroupListResponse.jdField_a_of_type_JavaUtilArrayList;
+      ((MemoryManager)SuperManager.a(19)).b(paramGetShareGroupListResponse, paramGetShareGroupListRequest.jdField_b_of_type_JavaLangString, localGetShareGroupListEvent.jdField_c_of_type_Boolean);
+      try
+      {
+        this.jdField_b_of_type_Boolean = true;
+        StoryDispatcher.a().dispatch(localGetShareGroupListEvent);
+        SLog.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from network: %s", localGetShareGroupListEvent);
+        return;
+      }
+      finally {}
     }
-    this.jdField_c_of_type_JavaLangString = paramGetShareGroupListResponse.jdField_a_of_type_JavaLangString;
-    localGetShareGroupListEvent.jdField_a_of_type_JavaUtilList = paramGetShareGroupListResponse.jdField_a_of_type_JavaUtilArrayList;
-    localGetShareGroupListEvent.jdField_a_of_type_Int = paramGetShareGroupListResponse.b;
-    localGetShareGroupListEvent.jdField_a_of_type_Boolean = paramGetShareGroupListResponse.jdField_a_of_type_Boolean;
-    localGetShareGroupListEvent.jdField_c_of_type_Boolean = TextUtils.isEmpty(paramGetShareGroupListRequest.jdField_a_of_type_JavaLangString);
-    paramGetShareGroupListResponse = paramGetShareGroupListResponse.jdField_a_of_type_JavaUtilArrayList;
-    ((MemoryManager)SuperManager.a(19)).b(paramGetShareGroupListResponse, paramGetShareGroupListRequest.jdField_b_of_type_JavaLangString, localGetShareGroupListEvent.jdField_c_of_type_Boolean);
-    try
-    {
-      this.jdField_b_of_type_Boolean = true;
-      StoryDispatcher.a().dispatch(localGetShareGroupListEvent);
-      SLog.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from network: %s", localGetShareGroupListEvent);
-      return;
-    }
-    finally {}
+    StoryDispatcher.a().dispatch(localGetShareGroupListEvent);
   }
   
   public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
@@ -90,7 +89,7 @@ public class ShareGroupPageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.ShareGroupPageLoader
  * JD-Core Version:    0.7.0.1
  */

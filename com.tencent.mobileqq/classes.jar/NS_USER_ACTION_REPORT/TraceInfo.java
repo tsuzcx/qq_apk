@@ -34,17 +34,19 @@ public final class TraceInfo
   {
     paramJceOutputStream.write(this.trace_id, 0);
     paramJceOutputStream.write(this.trace_num, 1);
-    if (this.trace_detail != null) {
-      paramJceOutputStream.write(this.trace_detail, 2);
+    String str = this.trace_detail;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.trace_index != null) {
-      paramJceOutputStream.write(this.trace_index, 3);
+    str = this.trace_index;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_USER_ACTION_REPORT.TraceInfo
  * JD-Core Version:    0.7.0.1
  */

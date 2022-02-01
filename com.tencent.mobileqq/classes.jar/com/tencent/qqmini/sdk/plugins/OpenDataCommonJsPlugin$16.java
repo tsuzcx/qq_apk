@@ -22,14 +22,17 @@ class OpenDataCommonJsPlugin$16
     }
     catch (Throwable paramDialogInterface)
     {
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ");
+      localStringBuilder.append(paramDialogInterface);
+      QMLog.e("OpenDataCommonJsPlugin", localStringBuilder.toString());
       this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramDialogInterface.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.16
  * JD-Core Version:    0.7.0.1
  */

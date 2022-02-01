@@ -9,7 +9,7 @@ class TextDirectionHeuristicsCompat$FirstStrong
   {
     int j = 2;
     int i = paramInt1;
-    while ((i < paramInt1 + paramInt2) && (j == 2))
+    while ((i < paramInt2 + paramInt1) && (j == 2))
     {
       j = TextDirectionHeuristicsCompat.isRtlTextOrFormat(Character.getDirectionality(paramCharSequence.charAt(i)));
       i += 1;
@@ -19,7 +19,7 @@ class TextDirectionHeuristicsCompat$FirstStrong
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.text.TextDirectionHeuristicsCompat.FirstStrong
  * JD-Core Version:    0.7.0.1
  */

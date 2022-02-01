@@ -41,45 +41,58 @@ public class Face3DCosmeticFilter
   
   private void clearGLResources()
   {
-    GLES20.glDeleteTextures(this.mTexture.length, this.mTexture, 0);
-    GLES20.glDeleteFramebuffers(this.mFrameBuffer.length, this.mFrameBuffer, 0);
-    GLES20.glDeleteRenderbuffers(this.mDepthBuffer.length, this.mDepthBuffer, 0);
-    GLES20.glDeleteBuffers(this.mBuffer.length, this.mBuffer, 0);
+    int[] arrayOfInt = this.mTexture;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+    arrayOfInt = this.mFrameBuffer;
+    GLES20.glDeleteFramebuffers(arrayOfInt.length, arrayOfInt, 0);
+    arrayOfInt = this.mDepthBuffer;
+    GLES20.glDeleteRenderbuffers(arrayOfInt.length, arrayOfInt, 0);
+    arrayOfInt = this.mBuffer;
+    GLES20.glDeleteBuffers(arrayOfInt.length, arrayOfInt, 0);
     this.mCopyFilter.clearGLSL();
   }
   
   private void initGLResources()
   {
-    GLES20.glGenTextures(this.mTexture.length, this.mTexture, 0);
-    GLES20.glGenFramebuffers(this.mFrameBuffer.length, this.mFrameBuffer, 0);
-    GLES20.glGenRenderbuffers(this.mDepthBuffer.length, this.mDepthBuffer, 0);
-    GLES20.glGenBuffers(this.mBuffer.length, this.mBuffer, 0);
+    int[] arrayOfInt = this.mTexture;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+    arrayOfInt = this.mFrameBuffer;
+    GLES20.glGenFramebuffers(arrayOfInt.length, arrayOfInt, 0);
+    arrayOfInt = this.mDepthBuffer;
+    GLES20.glGenRenderbuffers(arrayOfInt.length, arrayOfInt, 0);
+    arrayOfInt = this.mBuffer;
+    GLES20.glGenBuffers(arrayOfInt.length, arrayOfInt, 0);
     this.mCopyFilter.apply();
   }
   
   private void updateGLResources()
   {
-    if ((this.width == 0) || (this.height == 0) || (this.mTexture[0] <= 0) || (!isValid())) {}
-    while ((this.updateVideoWidth == this.width) && (this.updateVideoHeight == this.height)) {
-      return;
+    if ((this.width != 0) && (this.height != 0) && (this.mTexture[0] > 0))
+    {
+      if (!isValid()) {
+        return;
+      }
+      if ((this.updateVideoWidth == this.width) && (this.updateVideoHeight == this.height)) {
+        return;
+      }
+      this.updateVideoWidth = this.width;
+      this.updateVideoHeight = this.height;
+      GLES20.glActiveTexture(33989);
+      GLES20.glBindTexture(3553, this.mTexture[0]);
+      GLES20.glTexImage2D(3553, 0, 6408, this.width, this.height, 0, 6408, 5121, null);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glBindFramebuffer(36160, this.mFrameBuffer[0]);
+      GLES20.glBindRenderbuffer(36161, this.mDepthBuffer[0]);
+      GLES20.glRenderbufferStorage(36161, 33189, this.width, this.height);
+      GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.mDepthBuffer[0]);
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.mTexture[0], 0);
+      GLES20.glCheckFramebufferStatus(36160);
+      GLES20.glBindFramebuffer(36160, 0);
+      GLES20.glBindTexture(3553, 0);
     }
-    this.updateVideoWidth = this.width;
-    this.updateVideoHeight = this.height;
-    GLES20.glActiveTexture(33989);
-    GLES20.glBindTexture(3553, this.mTexture[0]);
-    GLES20.glTexImage2D(3553, 0, 6408, this.width, this.height, 0, 6408, 5121, null);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10242, 33071.0F);
-    GLES20.glTexParameterf(3553, 10243, 33071.0F);
-    GLES20.glBindFramebuffer(36160, this.mFrameBuffer[0]);
-    GLES20.glBindRenderbuffer(36161, this.mDepthBuffer[0]);
-    GLES20.glRenderbufferStorage(36161, 33189, this.width, this.height);
-    GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.mDepthBuffer[0]);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.mTexture[0], 0);
-    if (GLES20.glCheckFramebufferStatus(36160) != 36053) {}
-    GLES20.glBindFramebuffer(36160, 0);
-    GLES20.glBindTexture(3553, 0);
   }
   
   public void ApplyGLSLFilter()
@@ -197,36 +210,48 @@ public class Face3DCosmeticFilter
   
   public void updatePreview(Object paramObject)
   {
-    float[] arrayOfFloat;
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
       super.updatePreview(paramObject);
-      arrayOfFloat = paramObject.face3DVerticesArray;
-      if ((arrayOfFloat != null) && (arrayOfFloat.length >= 10344)) {
-        break label35;
+      float[] arrayOfFloat = paramObject.face3DVerticesArray;
+      if (arrayOfFloat != null)
+      {
+        if (arrayOfFloat.length < 10344) {
+          return;
+        }
+        if (!AlgoUtils.isFace3DPointsValid(arrayOfFloat)) {
+          return;
+        }
+        if ((this.width != 0) && (this.height != 0) && (this.mTexture[0] > 0))
+        {
+          if (!isValid()) {
+            return;
+          }
+          this.mVertexBuffer.put(paramObject.face3DVerticesArray, 0, paramObject.face3DVerticesArray.length).position(0);
+          addParam(new UniformParam.Mat4Param("matrix", paramObject.face3DRotationArray));
+          addParam(new UniformParam.Mat4Param("rotateMatrix", paramObject.face3DNormalRotationArray));
+          addParam(new UniformParam.FloatParam("phoneRotation", (paramObject.phoneAngle + 360.0F) % 360.0F));
+        }
       }
     }
-    label35:
-    while ((!AlgoUtils.isFace3DPointsValid(arrayOfFloat)) || (this.width == 0) || (this.height == 0) || (this.mTexture[0] <= 0) || (!isValid())) {
-      return;
-    }
-    this.mVertexBuffer.put(paramObject.face3DVerticesArray, 0, paramObject.face3DVerticesArray.length).position(0);
-    addParam(new UniformParam.Mat4Param("matrix", paramObject.face3DRotationArray));
-    addParam(new UniformParam.Mat4Param("rotateMatrix", paramObject.face3DNormalRotationArray));
-    addParam(new UniformParam.FloatParam("phoneRotation", (paramObject.phoneAngle + 360.0F) % 360.0F));
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
     super.updateVideoSize(paramInt1, paramInt2, paramDouble);
-    addParam(new UniformParam.Float2fParam("faceDetSize", (int)(paramInt1 * paramDouble), (int)(paramInt2 * paramDouble)));
+    double d = paramInt1;
+    Double.isNaN(d);
+    float f = (int)(d * paramDouble);
+    d = paramInt2;
+    Double.isNaN(d);
+    addParam(new UniformParam.Float2fParam("faceDetSize", f, (int)(d * paramDouble)));
     updateGLResources();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.Face3DCosmeticFilter
  * JD-Core Version:    0.7.0.1
  */

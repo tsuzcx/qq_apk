@@ -9,7 +9,7 @@
             <TextView android:textSize="14.0sp" android:textColor="#ff2bb8f7" android:gravity="center_vertical" android:id="@id/me8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/mw_" />
             <ImageView android:id="@id/l7x" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="3.0dip" android:src="@drawable/d05" />
         </LinearLayout>
-        <CheckBox android:textSize="14.0sp" android:textColor="#80222222" android:id="@id/lcx" android:paddingLeft="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:checked="true" android:button="@drawable/nj" android:text="下次访问wifi下免流量下载" />
+        <CheckBox android:textSize="14.0sp" android:textColor="#80222222" android:id="@id/lcx" android:paddingLeft="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:checked="true" android:button="@drawable/big" android:text="下次访问wifi下免流量下载" />
         <View android:background="#0f000000" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginTop="20.0dip" />
         <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="40.0dip">
             <TextView android:textSize="17.0sp" android:textColor="#ff222222" android:gravity="center" android:id="@id/k6f" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/mw9" android:layout_weight="1.0" />

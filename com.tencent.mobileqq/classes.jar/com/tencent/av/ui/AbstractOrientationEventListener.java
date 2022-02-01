@@ -35,100 +35,118 @@ public abstract class AbstractOrientationEventListener
   
   public void onOrientationChanged(int paramInt)
   {
+    Object localObject;
     if (paramInt == -1)
     {
       this.jdField_a_of_type_Int = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("AbstractOrientationEventListener", 2, "onOrientationChanged ORIENTATION_UNKNOWN. orientation: " + paramInt + ", mLastOrientation: " + this.jdField_a_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onOrientationChanged ORIENTATION_UNKNOWN. orientation: ");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(", mLastOrientation: ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        QLog.d("AbstractOrientationEventListener", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AbstractOrientationEventListener", 2, "onOrientationChanged. orientation: " + paramInt + ", mLastOrientation: " + this.jdField_a_of_type_Int);
-    }
-    int i;
-    if (PhoneStatusTools.d()) {
-      if (paramInt == -2)
-      {
-        i = 0;
-        label111:
-        if (QLog.isColorLevel()) {
-          QLog.d("AbstractOrientationEventListener", 2, "onOrientationChanged returns 0 rotation when auto rotate disabled. orientation: " + 0 + ", mLastOrientation: " + this.jdField_a_of_type_Int);
-        }
-        paramInt = 0;
-      }
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (this.jdField_a_of_type_Int < 0) {
-        this.jdField_a_of_type_Int = 0;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onOrientationChanged. orientation: ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", mLastOrientation: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      QLog.d("AbstractOrientationEventListener", 2, ((StringBuilder)localObject).toString());
+    }
+    if (PhoneStatusTools.d())
+    {
+      if (paramInt == -2) {
+        paramInt = 0;
+      } else {
+        paramInt = 1;
       }
-      if ((paramInt - this.jdField_a_of_type_Int < 20) && (paramInt - this.jdField_a_of_type_Int > -20) && (!this.jdField_a_of_type_Boolean) && (i != 0))
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AbstractOrientationEventListener", 2, "do nothing when orientation and mLastOrientation are too close. orientation: " + paramInt + ", mLastOrientation: " + this.jdField_a_of_type_Int);
-        return;
-      }
+      j = 0;
       i = paramInt;
-      if (this.b) {
-        if (this.jdField_a_of_type_ComTencentAvUiPadOrientationRotateChecker == null) {
-          break label461;
-        }
-      }
-      label461:
-      for (boolean bool = this.jdField_a_of_type_ComTencentAvUiPadOrientationRotateChecker.a();; bool = true)
-      {
-        int j = paramInt;
-        if (bool) {
-          j = paramInt - 90;
-        }
-        i = j;
-        if (j < 0) {
-          i = j + 360;
-        }
-        if (this.jdField_a_of_type_Boolean) {}
-        for (paramInt = ConfigSystemImpl.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90;; paramInt = ConfigSystemImpl.b(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90)
-        {
-          j = paramInt;
-          if (paramInt > 360) {
-            j = paramInt % 360;
-          }
-          i -= j;
-          paramInt = i;
-          if (i < 0) {
-            paramInt = i + 360;
-          }
-          this.jdField_a_of_type_Int = paramInt;
-          if ((paramInt <= 314) && (paramInt >= 45)) {
-            break;
-          }
-          a(0, this.jdField_a_of_type_Boolean);
-          return;
-        }
-        if ((paramInt > 44) && (paramInt < 135))
-        {
-          a(90, this.jdField_a_of_type_Boolean);
-          return;
-        }
-        if ((paramInt > 134) && (paramInt < 225))
-        {
-          a(180, this.jdField_a_of_type_Boolean);
-          return;
-        }
-        a(270, this.jdField_a_of_type_Boolean);
-        return;
-      }
-      i = 1;
-      break label111;
+      paramInt = j;
+    }
+    else
+    {
       i = 1;
     }
+    if (this.jdField_a_of_type_Int < 0) {
+      this.jdField_a_of_type_Int = 0;
+    }
+    int j = this.jdField_a_of_type_Int;
+    if ((paramInt - j < 20) && (paramInt - j > -20) && (!this.jdField_a_of_type_Boolean) && (i != 0))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("do nothing when orientation and mLastOrientation are too close. orientation: ");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(", mLastOrientation: ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        QLog.d("AbstractOrientationEventListener", 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    int i = paramInt;
+    if (this.b)
+    {
+      localObject = this.jdField_a_of_type_ComTencentAvUiPadOrientationRotateChecker;
+      boolean bool;
+      if (localObject != null) {
+        bool = ((PadOrientationRotateChecker)localObject).a();
+      } else {
+        bool = true;
+      }
+      j = paramInt;
+      if (bool) {
+        j = paramInt - 90;
+      }
+      i = j;
+      if (j < 0) {
+        i = j + 360;
+      }
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      paramInt = ConfigSystemImpl.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true);
+    } else {
+      paramInt = ConfigSystemImpl.b(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true);
+    }
+    j = paramInt * 90;
+    paramInt = j;
+    if (j > 360) {
+      paramInt = j % 360;
+    }
+    i -= paramInt;
+    paramInt = i;
+    if (i < 0) {
+      paramInt = i + 360;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    if ((paramInt <= 314) && (paramInt >= 45))
+    {
+      if ((paramInt > 44) && (paramInt < 135))
+      {
+        a(90, this.jdField_a_of_type_Boolean);
+        return;
+      }
+      if ((paramInt > 134) && (paramInt < 225))
+      {
+        a(180, this.jdField_a_of_type_Boolean);
+        return;
+      }
+      a(270, this.jdField_a_of_type_Boolean);
+      return;
+    }
+    a(0, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AbstractOrientationEventListener
  * JD-Core Version:    0.7.0.1
  */

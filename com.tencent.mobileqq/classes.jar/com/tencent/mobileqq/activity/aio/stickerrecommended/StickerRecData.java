@@ -271,7 +271,7 @@ public class StickerRecData
   public String m()
   {
     if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-      this.jdField_e_of_type_JavaLangString = StickerRecManager.d(l());
+      this.jdField_e_of_type_JavaLangString = StickerRecConstants.a(l());
     }
     return this.jdField_e_of_type_JavaLangString;
   }
@@ -288,12 +288,33 @@ public class StickerRecData
   
   public String toString()
   {
-    return "imgUrl=" + this.jdField_a_of_type_JavaLangString + " thumbUrl=" + this.jdField_b_of_type_JavaLangString + " imgMd5=" + this.jdField_c_of_type_JavaLangString + " thumbMd5=" + this.jdField_d_of_type_JavaLangString + " imgWidth=" + this.jdField_b_of_type_Int + " imgHeight=" + this.jdField_c_of_type_Int + " thumbWidth=" + this.jdField_d_of_type_Int + " thumbHeight=" + this.jdField_e_of_type_Int + " imgFileSize=" + this.jdField_a_of_type_Long + " thumbFileSize=" + this.jdField_b_of_type_Long;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("imgUrl=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" thumbUrl=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" imgMd5=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" thumbMd5=");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(" imgWidth=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" imgHeight=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(" thumbWidth=");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(" thumbHeight=");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(" imgFileSize=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" thumbFileSize=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecData
  * JD-Core Version:    0.7.0.1
  */

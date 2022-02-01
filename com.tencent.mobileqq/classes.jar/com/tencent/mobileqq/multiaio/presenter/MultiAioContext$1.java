@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.multiaio.presenter;
 
-import android.support.v4.app.FragmentActivity;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.RecentUser;
@@ -15,11 +15,11 @@ import mqq.os.MqqHandler;
 class MultiAioContext$1
   implements Runnable
 {
-  MultiAioContext$1(MultiAioContext paramMultiAioContext, FragmentActivity paramFragmentActivity, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  MultiAioContext$1(MultiAioContext paramMultiAioContext, BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
   public void run()
   {
-    Object localObject1 = MultiAIOHelper.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    Object localObject1 = MultiAIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
     if (((List)localObject1).size() > 0) {
       ThreadManager.getSubThreadHandler().postDelayed(new MultiAioContext.1.1(this), 100L);
     }
@@ -39,7 +39,7 @@ class MultiAioContext$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.presenter.MultiAioContext.1
  * JD-Core Version:    0.7.0.1
  */

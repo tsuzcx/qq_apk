@@ -30,59 +30,88 @@ class C2CLinkMessageSearchDialog$5
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged, reach bottom, scrollState " + paramInt + " firstVisibleItem: " + this.c + ", lastItem:" + this.jdField_a_of_type_Int + ", totalItemCount = " + this.jdField_b_of_type_Int + ", mIsComplete: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_Boolean + ", requesting:" + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_Boolean + ", mSearchMode: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_Int + ", mCurrentKeyword: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_b_of_type_Int == 0) {}
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) || (paramInt != 0));
+      paramAbsListView = new StringBuilder();
+      paramAbsListView.append("onScrollStateChanged, reach bottom, scrollState ");
+      paramAbsListView.append(paramInt);
+      paramAbsListView.append(" firstVisibleItem: ");
+      paramAbsListView.append(this.c);
+      paramAbsListView.append(", lastItem:");
+      paramAbsListView.append(this.jdField_a_of_type_Int);
+      paramAbsListView.append(", totalItemCount = ");
+      paramAbsListView.append(this.jdField_b_of_type_Int);
+      paramAbsListView.append(", mIsComplete: ");
+      paramAbsListView.append(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_Boolean);
+      paramAbsListView.append(", requesting:");
+      paramAbsListView.append(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_Boolean);
+      paramAbsListView.append(", mSearchMode: ");
+      paramAbsListView.append(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_Int);
+      paramAbsListView.append(", mCurrentKeyword: ");
+      paramAbsListView.append(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_a_of_type_JavaLangString);
+      QLog.i("LinkMessageSearchDialog", 2, paramAbsListView.toString());
+    }
+    int i = this.jdField_b_of_type_Int;
+    if (i == 0) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Int == i) && (paramInt == 0))
+    {
       if ((this.c != 0) && (!this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_Boolean))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_Boolean = true;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_Int == 0)
+        paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog;
+        paramAbsListView.jdField_b_of_type_Boolean = true;
+        if (paramAbsListView.jdField_b_of_type_Int == 0)
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_Boolean);
+          if (QLog.isColorLevel())
+          {
+            paramAbsListView = new StringBuilder();
+            paramAbsListView.append("onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: ");
+            paramAbsListView.append(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_Boolean);
+            QLog.i("LinkMessageSearchDialog", 2, paramAbsListView.toString());
           }
           this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_a_of_type_JavaLangString, 2);
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_a_of_type_AndroidContentContext.getString(2131718898));
+          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_a_of_type_AndroidContentContext.getString(2131718614));
           this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373546).setVisibility(0);
+          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373124).setVisibility(0);
           this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
           return;
         }
-        if (QLog.isColorLevel()) {
-          QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_Boolean);
+        if (QLog.isColorLevel())
+        {
+          paramAbsListView = new StringBuilder();
+          paramAbsListView.append("onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: ");
+          paramAbsListView.append(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_Boolean);
+          QLog.i("LinkMessageSearchDialog", 2, paramAbsListView.toString());
         }
         if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_Boolean)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701353));
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373546).setVisibility(8);
+          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701493));
+          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373124).setVisibility(8);
           this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
           this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidViewView.setVisibility(0);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_a_of_type_AndroidContentContext.getString(2131718897));
+        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_a_of_type_AndroidContentContext.getString(2131718613));
         this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373546).setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373124).setVisibility(0);
         this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_a_of_type_Long = System.currentTimeMillis();
         return;
       }
-    } while ((this.c != 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_Int != 1));
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701354));
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373546).setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      if ((this.c == 0) && (!this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_Int == 1))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701494));
+        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373124).setVisibility(8);
+        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageSearchDialog.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CLinkMessageSearchDialog.5
  * JD-Core Version:    0.7.0.1
  */

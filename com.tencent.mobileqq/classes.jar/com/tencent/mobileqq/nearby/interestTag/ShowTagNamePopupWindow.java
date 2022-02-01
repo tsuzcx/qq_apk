@@ -30,8 +30,10 @@ public class ShowTagNamePopupWindow
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_Int = paramInt2;
     setWidth(this.jdField_a_of_type_Int);
-    setHeight((int)(this.jdField_a_of_type_Float * 42.0F + 0.5D));
-    View localView = LayoutInflater.from(paramContext).inflate(2131559694, null);
+    double d = this.jdField_a_of_type_Float * 42.0F;
+    Double.isNaN(d);
+    setHeight((int)(d + 0.5D));
+    View localView = LayoutInflater.from(paramContext).inflate(2131559571, null);
     setContentView(localView);
     a(paramContext, localView, paramInt1);
     setOutsideTouchable(true);
@@ -39,33 +41,43 @@ public class ShowTagNamePopupWindow
   
   private void a(Context paramContext, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380801));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380064));
     this.jdField_a_of_type_AndroidWidgetTextView.getTextSize();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363982));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.findViewById(2131368994).getLayoutParams();
-    int i = (int)(10.0F * this.jdField_a_of_type_Float + 0.5D);
-    if (paramInt <= 0) {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363909));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.findViewById(2131368716).getLayoutParams();
+    float f = this.jdField_a_of_type_Float;
+    double d = 10.0F * f;
+    Double.isNaN(d);
+    int i = (int)(d + 0.5D);
+    if (paramInt <= 0)
+    {
       localLayoutParams.leftMargin = 0;
     }
-    for (;;)
+    else if (paramInt < (this.jdField_a_of_type_Int - i) / 2)
     {
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      setBackgroundDrawable(paramContext.getResources().getDrawable(2130851162));
-      return;
-      if (paramInt < (this.jdField_a_of_type_Int - i) / 2)
+      localLayoutParams.leftMargin = (paramInt + (int)((f * 40.0F - i) / 2.0F));
+    }
+    else
+    {
+      int j = paramContext.getResources().getDisplayMetrics().widthPixels;
+      f = this.jdField_a_of_type_Float;
+      d = f * 40.0F;
+      Double.isNaN(d);
+      int k = (int)(d + 0.5D);
+      int m = this.jdField_a_of_type_Int;
+      if (paramInt > j - k - (m - i) / 2)
       {
-        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Float * 40.0F - i) / 2.0F) + paramInt);
-      }
-      else if (paramInt > paramContext.getResources().getDisplayMetrics().widthPixels - (int)(this.jdField_a_of_type_Float * 40.0F + 0.5D) - (this.jdField_a_of_type_Int - i) / 2)
-      {
-        int j = this.jdField_a_of_type_Int;
-        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Float * 40.0F - i) / 2.0F) + (j + paramInt) - paramContext.getResources().getDisplayMetrics().widthPixels);
+        localLayoutParams.leftMargin = (m + paramInt + (int)((f * 40.0F - i) / 2.0F) - paramContext.getResources().getDisplayMetrics().widthPixels);
       }
       else
       {
-        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Int - i) / 2 + 0.5D));
+        d = (m - i) / 2;
+        Double.isNaN(d);
+        localLayoutParams.leftMargin = ((int)(d + 0.5D));
       }
     }
+    paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    setBackgroundDrawable(paramContext.getResources().getDrawable(2130851078));
   }
   
   public void a(InterestTagInfo paramInterestTagInfo)
@@ -88,7 +100,7 @@ public class ShowTagNamePopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow
  * JD-Core Version:    0.7.0.1
  */

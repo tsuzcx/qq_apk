@@ -44,55 +44,61 @@ public final class RecentMediaListView$Album
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof Album))
       {
         paramObject = (Album)paramObject;
-        if ((!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.b, paramObject.b)) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaUtilArrayList, paramObject.jdField_a_of_type_JavaUtilArrayList))) {}
+        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaUtilArrayList, paramObject.jdField_a_of_type_JavaUtilArrayList))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
   {
-    int k = 0;
     Object localObject = this.jdField_a_of_type_JavaLangString;
+    int k = 0;
     int i;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = localObject.hashCode();
-      localObject = this.b;
-      if (localObject == null) {
-        break label70;
-      }
-    }
-    label70:
-    for (int j = localObject.hashCode();; j = 0)
-    {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList;
-      if (localObject != null) {
-        k = localObject.hashCode();
-      }
-      return (j + i * 31) * 31 + k;
+    } else {
       i = 0;
-      break;
     }
+    localObject = this.b;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    }
+    return (i * 31 + j) * 31 + k;
   }
   
   @NotNull
   public String toString()
   {
-    return "Album(name=" + this.jdField_a_of_type_JavaLangString + ", dirPath=" + this.b + ", medias=" + this.jdField_a_of_type_JavaUtilArrayList + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Album(name=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", dirPath=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", medias=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.RecentMediaListView.Album
  * JD-Core Version:    0.7.0.1
  */

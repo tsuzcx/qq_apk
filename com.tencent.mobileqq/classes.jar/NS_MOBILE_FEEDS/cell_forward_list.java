@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,23 +54,27 @@ public final class cell_forward_list
   {
     paramJceOutputStream.write(this.num, 0);
     paramJceOutputStream.write(this.isforward, 1);
-    if (this.fwdmans != null) {
-      paramJceOutputStream.write(this.fwdmans, 2);
+    Object localObject = this.fwdmans;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.actionUrl != null) {
-      paramJceOutputStream.write(this.actionUrl, 3);
+    localObject = this.actionUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 4);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
-    if (this.forwardkey != null) {
-      paramJceOutputStream.write(this.forwardkey, 5);
+    localObject = this.forwardkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_forward_list
  * JD-Core Version:    0.7.0.1
  */

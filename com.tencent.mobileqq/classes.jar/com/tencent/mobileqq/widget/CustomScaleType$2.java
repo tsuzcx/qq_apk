@@ -16,13 +16,14 @@ final class CustomScaleType$2
     int j = paramDrawable.getIntrinsicHeight();
     float f = Math.max(paramInt1 / i, paramInt2 / j);
     localMatrix.setScale(f, f);
-    localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
+    f = (int)0.5F;
+    localMatrix.postTranslate(f, f);
     return localMatrix;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomScaleType.2
  * JD-Core Version:    0.7.0.1
  */

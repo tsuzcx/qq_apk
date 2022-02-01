@@ -22,23 +22,25 @@ public class TriggerActionItem
   
   public int getTriggerType()
   {
-    if (this.mTriggerExpression != null) {
-      return this.mTriggerExpression.mTriggerType;
+    TriggerExpression localTriggerExpression = this.mTriggerExpression;
+    if (localTriggerExpression != null) {
+      return localTriggerExpression.mTriggerType;
     }
     return -1;
   }
   
   public boolean isTriggered()
   {
-    if (this.mTriggerExpression != null) {
-      return this.mTriggerExpression.isTriggered();
+    TriggerExpression localTriggerExpression = this.mTriggerExpression;
+    if (localTriggerExpression != null) {
+      return localTriggerExpression.isTriggered();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.TriggerActionItem
  * JD-Core Version:    0.7.0.1
  */

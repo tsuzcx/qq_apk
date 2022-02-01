@@ -4,7 +4,7 @@ import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.AdBuilder;
 import com.tencent.ad.tangram.net.AdHttp.Params;
 import com.tencent.ad.tangram.protocol.msg_content;
-import com.tencent.ad.tangram.statistics.b;
+import com.tencent.ad.tangram.statistics.c;
 
 class b$1$1
   implements Runnable
@@ -19,7 +19,7 @@ class b$1$1
       {
         AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(this.this$0.val$msgId, 5, this.val$finalMsgContent);
         Ad localAd = AdBuilder.INSTANCE.build(this.val$finalMsgContent.ad_info);
-        b.reportAsync(this.this$0.val$context, localAd, 317);
+        c.reportAsync(this.this$0.val$context, localAd, 317);
         return;
       }
       AdAppPreOrderManager.INSTANCE.setTaskFinishedAndCommit(this.this$0.val$msgId, 101);

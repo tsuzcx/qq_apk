@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.apollo.api;
 
-import com.tencent.mobileqq.apollo.api.model.ApolloActionPush;
+import com.tencent.mobileqq.apollo.model.ApolloActionPush;
 import com.tencent.mobileqq.qroute.annotation.Service;
 import kotlin.Metadata;
 import mqq.app.api.IRuntimeService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tencent.im.apollo_push_msgInfo.STPushMsgElem;
 
 @Service(process={"all"})
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/api/IApolloPushManager;", "Lmqq/app/api/IRuntimeService;", "onReceiveAioPush", "", "msgElem", "Ltencent/im/apollo_push_msgInfo$STPushMsgElem;", "onReceiveApolloPush", "onReceiveDrawerHirePush", "onRecvActionPush", "aioType", "", "setActionPushListener", "lis", "Lcom/tencent/mobileqq/apollo/api/IApolloPushManager$OnActionPushListener;", "setOnPushObserver", "onPushObserver", "Lcom/tencent/mobileqq/apollo/api/IApolloPushManager$OnPushObserver;", "triggerAction", "pushData", "Lcom/tencent/mobileqq/apollo/api/model/ApolloActionPush;", "Constant", "OnActionPushListener", "OnPushObserver", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/api/IApolloPushManager;", "Lmqq/app/api/IRuntimeService;", "onReceiveAioPush", "", "msgElem", "", "onReceiveApolloPush", "onReceiveDrawerHirePush", "onRecvActionPush", "aioType", "", "setActionPushListener", "lis", "Lcom/tencent/mobileqq/apollo/api/IApolloPushManager$OnActionPushListener;", "triggerAction", "pushData", "Lcom/tencent/mobileqq/apollo/model/ApolloActionPush;", "Constant", "OnActionPushListener", "cmshow_api_release"}, k=1, mv={1, 1, 16})
 public abstract interface IApolloPushManager
   extends IRuntimeService
 {
@@ -29,23 +28,21 @@ public abstract interface IApolloPushManager
   @NotNull
   public static final String TAG = "ApolloPushManager";
   
-  public abstract void onReceiveAioPush(@Nullable apollo_push_msgInfo.STPushMsgElem paramSTPushMsgElem);
+  public abstract void onReceiveAioPush(@Nullable Object paramObject);
   
-  public abstract void onReceiveApolloPush(@Nullable apollo_push_msgInfo.STPushMsgElem paramSTPushMsgElem);
+  public abstract void onReceiveApolloPush(@Nullable Object paramObject);
   
-  public abstract void onReceiveDrawerHirePush(@Nullable apollo_push_msgInfo.STPushMsgElem paramSTPushMsgElem);
+  public abstract void onReceiveDrawerHirePush(@Nullable Object paramObject);
   
-  public abstract void onRecvActionPush(int paramInt, @Nullable apollo_push_msgInfo.STPushMsgElem paramSTPushMsgElem);
+  public abstract void onRecvActionPush(int paramInt, @Nullable Object paramObject);
   
   public abstract void setActionPushListener(@Nullable IApolloPushManager.OnActionPushListener paramOnActionPushListener);
-  
-  public abstract void setOnPushObserver(@Nullable IApolloPushManager.OnPushObserver paramOnPushObserver);
   
   public abstract void triggerAction(@Nullable ApolloActionPush paramApolloActionPush);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.IApolloPushManager
  * JD-Core Version:    0.7.0.1
  */

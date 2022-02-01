@@ -19,16 +19,6 @@ public final class RspResUpdate
   public int Ret = 0;
   public long SeqID = 0L;
   
-  static
-  {
-    if (!RspResUpdate.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public RspResUpdate() {}
   
   public RspResUpdate(int paramInt1, long paramLong, ArrayList<ResUpdate> paramArrayList, int paramInt2)
@@ -46,18 +36,17 @@ public final class RspResUpdate
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -80,13 +69,28 @@ public final class RspResUpdate
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (RspResUpdate)paramObject;
-    } while ((!JceUtil.equals(this.Ret, paramObject.Ret)) || (!JceUtil.equals(this.SeqID, paramObject.SeqID)) || (!JceUtil.equals(this.ResInfo, paramObject.ResInfo)) || (!JceUtil.equals(this.ResID, paramObject.ResID)));
-    return true;
+    }
+    paramObject = (RspResUpdate)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.Ret, paramObject.Ret))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.SeqID, paramObject.SeqID))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.ResInfo, paramObject.ResInfo))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.ResID, paramObject.ResID)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -165,15 +169,16 @@ public final class RspResUpdate
   {
     paramJceOutputStream.write(this.Ret, 0);
     paramJceOutputStream.write(this.SeqID, 1);
-    if (this.ResInfo != null) {
-      paramJceOutputStream.write(this.ResInfo, 2);
+    ArrayList localArrayList = this.ResInfo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
     paramJceOutputStream.write(this.ResID, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ResPackage.RspResUpdate
  * JD-Core Version:    0.7.0.1
  */

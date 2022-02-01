@@ -62,31 +62,37 @@ public class AntiphingToast
   
   public boolean a(String paramString)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)) {
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViewsInLayout();
-    if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext());
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562027, null);
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      Object localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+      if (localObject == null) {
+        return false;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      ((FrameLayout)localObject).removeAllViewsInLayout();
+      if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+        this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext());
+      }
+      if (this.jdField_a_of_type_AndroidViewView == null)
       {
-        TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362766);
-        if ((localTextView != null) && (paramString != null)) {
-          localTextView.setText(paramString);
+        this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561859, null);
+        localObject = this.jdField_a_of_type_AndroidViewView;
+        if (localObject != null)
+        {
+          localObject = (TextView)((View)localObject).findViewById(2131362721);
+          if ((localObject != null) && (paramString != null)) {
+            ((TextView)localObject).setText(paramString);
+          }
         }
       }
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setFocusable(false);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
+      a(-80.0F, 0.0F, false);
+      new Timer().schedule(new AntiphingToast.3(this), this.jdField_a_of_type_Int + 700);
+      return true;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setFocusable(false);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
-    a(-80.0F, 0.0F, false);
-    new Timer().schedule(new AntiphingToast.3(this), this.jdField_a_of_type_Int + 700);
-    return true;
+    return false;
   }
   
   public void b(int paramInt)
@@ -96,7 +102,7 @@ public class AntiphingToast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AntiphingToast
  * JD-Core Version:    0.7.0.1
  */

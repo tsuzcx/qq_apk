@@ -39,13 +39,31 @@ public class KeyingParams
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("KeyingParams {keyType: ").append(this.jdField_a_of_type_Int).append(", screenColorR: ").append(this.jdField_a_of_type_Float).append(", screenColorG: ").append(this.b).append(", screenColorB: ").append(this.c).append(", uA: ").append(this.d).append(", uD: ").append(this.e).append(", u_threshold: ").append(this.f).append(", u_clipBlack: ").append(this.g).append(", u_clipWhite: ").append(this.h).append("}");
+    localStringBuilder.append("KeyingParams {keyType: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", screenColorR: ");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", screenColorG: ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", screenColorB: ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", uA: ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", uD: ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", u_threshold: ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", u_clipBlack: ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", u_clipWhite: ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.keying.KeyingParams
  * JD-Core Version:    0.7.0.1
  */

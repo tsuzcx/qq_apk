@@ -1,0 +1,611 @@
+[
+  {
+    "dynamicFields": {},
+    "id": "100051",
+    "materials": [
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_guangyingmingxinpian",
+        "packageMd5": "a8902faa6aea7826cdadee44b14d6c4f",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/898e3c34-78df-11eb-95c1-260ddf59845b-frame_guangyingmingxinpian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7ea8b98e-78df-11eb-887b-260ddf59845b-frame_guangyingmingxinpian.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_huaijiupailide",
+        "packageMd5": "2fa76f8bf60c99f2def07761b6412a9e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a6a15540-78df-11eb-8d45-260ddf59845b-frame_huaijiupailide.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9db4cffc-78df-11eb-a41c-260ddf59845b-frame_huaijiupailide.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_huangjiaozhixiangkuang",
+        "packageMd5": "3006880c615a4763f10a25c94e68710f",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9ef53542-78d4-11eb-975c-260ddf59845b-frame_huangjiaozhixiangkuang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f08cb72c-78cf-11eb-8ce8-260ddf59845b-frame_huangjiaozhixiangkuang.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {
+          "name": "frame_jichupailide",
+          "preDownload": "0"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_jichupailide",
+        "packageMd5": "c6b8b619e41a25ff09a981ce360e36d7",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9d04ff5e-78d6-11eb-82c5-260ddf59845b-frame_jichupailide.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8cff78a0-78d6-11eb-9598-260ddf59845b-frame_jichupailide.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_qizhiyouhuazhi",
+        "packageMd5": "a0d9afb20a75b2864c581e8b2632168a",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/140425fa-78d0-11eb-8e89-260ddf59845b-frame_qizhiyouhuazhi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0ae863b4-78d0-11eb-b890-260ddf59845b-frame_qizhiyouhuazhi.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_wenyipailide",
+        "packageMd5": "daf4093c2f3b9c39b1e6d673382eac2e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/bf81dcac-7901-11eb-9aff-260ddf59845b-frame_wenyipailide.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ed5b144c-78ff-11eb-b582-260ddf59845b-frame_wenyipailide.jpg",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_jietoumeishijia",
+        "packageMd5": "15c5f72a000f8dab6f6ecffc412eae25",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b2f211b4-7901-11eb-8ebb-260ddf59845b-frame_jietoumeishijia.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/09c17acc-7900-11eb-b65f-260ddf59845b-frame_jietoumeishijia.jpg",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_riximeishi",
+        "packageMd5": "d4375b5425a94c7d9961ba7da8196bcf",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a658d5be-7901-11eb-83f8-260ddf59845b-frame_riximeishi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1fc62cb4-7900-11eb-9845-260ddf59845b-frame_riximeishi.jpg",
+        "thumbWidth": 120
+      }
+    ],
+    "name": "质感",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100050",
+    "materials": [
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_chunrishanghua",
+        "packageMd5": "b6a5519f7c4e8d33be48ff0643a61f50",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9b5af2f0-7901-11eb-9562-260ddf59845b-frame_chunrishanghua.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/3c17db1a-7900-11eb-8b62-260ddf59845b-frame_chunrishanghua.jpg",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_xingqiuchahua",
+        "packageMd5": "d221b7c23f9ca909f4dd3a12920b26ef",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/87b0e962-7901-11eb-a270-260ddf59845b-frame_xingqiuchahua.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5348f4c2-7900-11eb-bee7-260ddf59845b-frame_xingqiuchahua.jpg",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_guolvxiaohua",
+        "packageMd5": "29bd9e2b7e9a0f8fd5b2d8441f92c97d",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/bdf56ad8-78df-11eb-9213-260ddf59845b-frame_guolvxiaohua.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b4e05052-78df-11eb-8f5e-260ddf59845b-frame_guolvxiaohua.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_emojihuabian",
+        "packageMd5": "d979386639f2b1c532ff2eb2fb111a23",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/3152cfa2-78e0-11eb-99d0-260ddf59845b-frame_emojihuabian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/28221fd2-78e0-11eb-8500-260ddf59845b-frame_emojihuabian.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_manhuabaofa",
+        "packageMd5": "79e0a79f66ecc18295bde65965fa6be1",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/30910324-78e3-11eb-ba89-260ddf59845b-frame_manhuabaofa.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/499ac042-78e0-11eb-b8da-260ddf59845b-frame_manhuabaofa.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_jianbiheibaixin",
+        "packageMd5": "758b71c9c2aa1de6e85815cd6fcb48e6",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/44fe4c12-78d0-11eb-93be-260ddf59845b-frame_jianbiheibaixin.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/38429e88-78d0-11eb-ad87-260ddf59845b-frame_jianbiheibaixin.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_jkfenglanbaige",
+        "packageMd5": "e0acadcf1fd3024f288821e445fdbb65",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c3d8ef60-78d0-11eb-93e2-260ddf59845b-frame_jkfenglanbaige.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a9f0feda-78d0-11eb-b3b8-260ddf59845b-frame_jkfenglanbaige.png",
+        "thumbWidth": 120
+      }
+    ],
+    "name": "可爱",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100052",
+    "materials": [
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_fugujiaopiankuang",
+        "packageMd5": "90a87e9dd4cc988f630fdb0fb31639e1",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/db8bf5f8-78d0-11eb-ba47-260ddf59845b-frame_fugujiaopiankuang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d1a9f42c-78d0-11eb-a60a-260ddf59845b-frame_fugujiaopiankuang.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_louguangjiaopianheibian",
+        "packageMd5": "deff30d36aefd5175e555003f1df9ba0",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/3dd6cfc8-78e3-11eb-9308-260ddf59845b-frame_louguangjiaopianheibian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6146bade-78e0-11eb-becc-260ddf59845b-frame_louguangjiaopianheibian.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_louguangjiaopiannihong",
+        "packageMd5": "251ef2373e487531f3b99cb40fd5e1b4",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8f4b401c-78e0-11eb-a15c-260ddf59845b-frame_louguangjiaopiannihong.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/81030f94-78e0-11eb-992b-260ddf59845b-frame_louguangjiaopiannihong.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_changpianfengmian",
+        "packageMd5": "7c5137795d9aaef51d24e774d3519bb0",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/edf93a0c-78d0-11eb-867b-260ddf59845b-frame_changpianfengmian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/31477ce2-78cc-11eb-9b88-260ddf59845b-frame_changpianfengmian.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_dvmonikuang",
+        "packageMd5": "df569b82e5ceb25ba341772233486687",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/bc3556e4-78e0-11eb-b9c6-260ddf59845b-frame_dvmonikuang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a3d6dabe-78e0-11eb-9a52-260ddf59845b-frame_dvmonikuang.png",
+        "thumbWidth": 120
+      }
+    ],
+    "name": "潮酷",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100054",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "frame_fanersaimeiguishukuang",
+          "preDownload": "0",
+          "displayDownloadIcon": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_fanersaimeiguishukuang",
+        "packageMd5": "47282d5c0e908866585c1f4231d86d27",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c125d7de-78d4-11eb-bd1a-260ddf59845b-frame_fanersaimeiguishukuang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0b125772-78d1-11eb-9c76-260ddf59845b-frame_fanersaimeiguishukuang.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_fanersaimeiguifangkuang",
+        "packageMd5": "e6a8505d45331cf9ff743a675233b119",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/390bf5a2-78d1-11eb-bdf1-260ddf59845b-frame_fanersaimeiguifangkuang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2be6d248-78d1-11eb-95a7-260ddf59845b-frame_fanersaimeiguifangkuang.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_qingsezhengqibowin2000",
+        "packageMd5": "b9d0e5a80510ad84d587b15abadc27dc",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/fdfb397a-78d3-11eb-8be2-260ddf59845b-frame_qingsezhengqibowin2000.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 120,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6965bcec-78d1-11eb-94fd-260ddf59845b-frame_qingsezhengqibowin2000.png",
+        "thumbWidth": 120
+      }
+    ],
+    "name": "趣味",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100053",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "纯色边框",
+          "preDownload": "1",
+          "frameDefaultColor": "#ff000000;#ffffffff;#ffc2c2c2;#fff4675c;#fffda2b6;#ffffb143;#fff8eb74;#ff79d397;#ff9ae3ff;#ff9cc9ff;#ffd592ff",
+          "defaultEffect": "frame"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "frame_solid",
+        "packageMd5": "c57b8563f692f0eaf4b878e614d0d331",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4b2275f8-75b2-11eb-85d4-a2ecb18294e0-frame_solid.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 88,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/36f6ed54-7506-11eb-8059-a2ecb18294e0-ae_editor_frame_cover.png",
+        "thumbWidth": 88
+      }
+    ],
+    "name": "纯色",
+    "subCategories": [],
+    "thumbUrl": ""
+  }
+]

@@ -20,16 +20,20 @@ public class WxPayCheckUrlRequest
   
   public static MiniAppMidasPay.StWxpayCheckMWebURLRsp onResponse(byte[] paramArrayOfByte)
   {
-    MiniAppMidasPay.StWxpayCheckMWebURLRsp localStWxpayCheckMWebURLRsp = new MiniAppMidasPay.StWxpayCheckMWebURLRsp();
+    Object localObject = new MiniAppMidasPay.StWxpayCheckMWebURLRsp();
     try
     {
-      localStWxpayCheckMWebURLRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStWxpayCheckMWebURLRsp;
+      ((MiniAppMidasPay.StWxpayCheckMWebURLRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WxPayCheckUrlRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("WxPayCheckUrlRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -42,7 +46,7 @@ public class WxPayCheckUrlRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.WxPayCheckUrlRequest
  * JD-Core Version:    0.7.0.1
  */

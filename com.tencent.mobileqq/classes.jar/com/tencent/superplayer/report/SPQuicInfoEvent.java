@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 public class SPQuicInfoEvent
 {
-  private static final String TAG = SPQuicInfoEvent.class.getSimpleName();
+  private static final String TAG = "SPQuicInfoEvent";
   private Map<String, String> data = new HashMap();
   
   private void innerParseEvent(String paramString)
@@ -18,19 +18,24 @@ public class SPQuicInfoEvent
     try
     {
       paramString = new JSONObject(paramString);
-      Iterator localIterator = paramString.keys();
-      while (localIterator.hasNext())
+      Object localObject1 = paramString.keys();
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
       {
-        String str = (String)localIterator.next();
-        if (!TextUtils.isEmpty(paramString.optString(str))) {
-          this.data.put(str, paramString.optString(str));
+        localObject2 = (String)((Iterator)localObject1).next();
+        if (!TextUtils.isEmpty(paramString.optString((String)localObject2))) {
+          this.data.put(localObject2, paramString.optString((String)localObject2));
         }
       }
       return;
     }
     catch (JSONException paramString)
     {
-      LogUtil.e(TAG, "innerParseEvent exception = " + paramString.toString());
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("innerParseEvent exception = ");
+      ((StringBuilder)localObject2).append(paramString.toString());
+      LogUtil.e((String)localObject1, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -58,7 +63,7 @@ public class SPQuicInfoEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.report.SPQuicInfoEvent
  * JD-Core Version:    0.7.0.1
  */

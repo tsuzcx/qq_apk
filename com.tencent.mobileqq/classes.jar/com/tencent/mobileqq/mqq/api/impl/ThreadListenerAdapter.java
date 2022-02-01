@@ -20,28 +20,31 @@ public class ThreadListenerAdapter
   
   public void onAdded()
   {
-    if (this.mThreadListener != null) {
-      this.mThreadListener.a();
+    IThreadListener localIThreadListener = this.mThreadListener;
+    if (localIThreadListener != null) {
+      localIThreadListener.a();
     }
   }
   
   public void onPostRun()
   {
-    if (this.mThreadListener != null) {
-      this.mThreadListener.c();
+    IThreadListener localIThreadListener = this.mThreadListener;
+    if (localIThreadListener != null) {
+      localIThreadListener.c();
     }
   }
   
   public void onPreRun()
   {
-    if (this.mThreadListener != null) {
-      this.mThreadListener.b();
+    IThreadListener localIThreadListener = this.mThreadListener;
+    if (localIThreadListener != null) {
+      localIThreadListener.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mqq.api.impl.ThreadListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

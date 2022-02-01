@@ -9,12 +9,18 @@ final class GameGrowthGuardianManager$3
 {
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("GameGrowthGuardianManager", "onReceived() called with: success = [" + paramBoolean + "], stReportExecuteRsp = [" + paramJSONObject + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceived() called with: success = [");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("], stReportExecuteRsp = [");
+    localStringBuilder.append(paramJSONObject);
+    localStringBuilder.append("]");
+    QMLog.d("GameGrowthGuardianManager", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager.3
  * JD-Core Version:    0.7.0.1
  */

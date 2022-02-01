@@ -23,7 +23,7 @@ class QQServiceForAV$LocationListener
     }
   }
   
-  public void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
@@ -43,7 +43,7 @@ class QQServiceForAV$LocationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.QQServiceForAV.LocationListener
  * JD-Core Version:    0.7.0.1
  */

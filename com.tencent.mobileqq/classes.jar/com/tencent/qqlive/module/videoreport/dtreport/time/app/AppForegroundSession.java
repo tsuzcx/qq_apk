@@ -62,8 +62,9 @@ public class AppForegroundSession
     if (this.mTimePinInterval < 5000L) {
       this.mTimePinInterval = 5000L;
     }
-    if (this.mTimePinInterval > this.mHeartBeatInterval) {
-      this.mHeartBeatInterval = this.mTimePinInterval;
+    long l = this.mTimePinInterval;
+    if (l > this.mHeartBeatInterval) {
+      this.mHeartBeatInterval = l;
     }
     this.mCurrentHeartBeatProcessor = new HeartBeatProcessor(true, this.mTimePinInterval);
     this.mCurrentHeartBeatProcessor.setHeartBeatCallback(new AppForegroundSession.2(this));
@@ -98,14 +99,14 @@ public class AppForegroundSession
     FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
     localFinalData.setEventKey("appout");
     localFinalData.put("lvtm", Long.valueOf(l1));
-    localFinalData.put("dt_white_lvtm", Long.valueOf(l3 + (l1 - l2)));
+    localFinalData.put("dt_white_lvtm", Long.valueOf(l1 - l2 + l3));
     localFinalData.put("dt_activity_blacklist", localObject);
     localFinalData.put("dt_lvtm_delta", Long.valueOf(paramLong));
     localFinalData.put("dt_app_stoptime", Long.valueOf(System.currentTimeMillis() - paramLong));
     localFinalData.put("dt_sys_elapsed_realtime", Long.valueOf(SystemClock.elapsedRealtime() - paramLong));
     localFinalData.put("dt_app_sessionid", getAppSessionId());
     localFinalData.put("dt_app_foreground_duration", Long.valueOf(getForegroundDuration() - paramLong));
-    localFinalData.put("cur_pg", PageReporter.getInstance().getCurPageReportInfo());
+    localFinalData.put("cur_pg", PageReporter.getInstance().getCurPageReportInfo("appout"));
     localFinalData.put("dt_activity_name", AppEventReporter.getInstance().getActivityName());
     localFinalData.put("dt_active_info", AppEventReporter.getInstance().getActiveInfo());
     localObject = VideoReportInner.getInstance().getEventDynamicParams();
@@ -259,7 +260,7 @@ public class AppForegroundSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.time.app.AppForegroundSession
  * JD-Core Version:    0.7.0.1
  */

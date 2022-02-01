@@ -11,29 +11,31 @@ class VideoInviteActivity$2
   
   public void onDismiss()
   {
+    String str;
     if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-      for (str = "0X80043A4";; str = "0X80043B6")
-      {
-        ReportController.b(null, "CliOper", "", "", str, str, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
-        {
-          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setEnabled(true);
-          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
-        }
-        return;
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {
+        str = "0X80043A4";
+      } else {
+        str = "0X80043B6";
       }
     }
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-    for (String str = "0X80043AA";; str = "0X80043B0") {
-      break;
+    else if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {
+      str = "0X80043AA";
+    } else {
+      str = "0X80043B0";
+    }
+    ReportController.b(null, "CliOper", "", "", str, str, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setEnabled(true);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -125,16 +125,15 @@ public class QWalletBluetoothJsPlugin
         localJSONObject.put("code", 10002);
         localJSONObject.put("errMsg", "DeviceId is not found");
       }
-      for (;;)
+      else
       {
-        doCallback("closeBLEConnection", localJSONObject.toString());
-        return;
         localBluetoothGatt.disconnect();
         localBluetoothGatt.close();
         this.mConnectedDevices.remove(paramString);
         this.mBluetoothGatts.remove(paramString);
         localJSONObject.put("code", 0);
       }
+      doCallback("closeBLEConnection", localJSONObject.toString());
       return;
     }
     catch (JSONException paramString) {}
@@ -144,16 +143,18 @@ public class QWalletBluetoothJsPlugin
   private void closeBluetoothAdapter()
   {
     unregisterReceiver();
-    if ((this.mBluetoothAdapter != null) && (this.mBluetoothAdapter.isDiscovering())) {
+    Object localObject = this.mBluetoothAdapter;
+    if ((localObject != null) && (((BluetoothAdapter)localObject).isDiscovering())) {
       this.mBluetoothAdapter.cancelDiscovery();
     }
-    if (this.mLeScanCallback != null) {
-      this.mLeScanCallback.stopTimer();
+    localObject = this.mLeScanCallback;
+    if (localObject != null) {
+      ((QWalletBluetoothJsPlugin.QWLeScanCallback)localObject).stopTimer();
     }
-    Iterator localIterator = this.mBluetoothGatts.values().iterator();
-    while (localIterator.hasNext())
+    localObject = this.mBluetoothGatts.values().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      BluetoothGatt localBluetoothGatt = (BluetoothGatt)localIterator.next();
+      BluetoothGatt localBluetoothGatt = (BluetoothGatt)((Iterator)localObject).next();
       localBluetoothGatt.disconnect();
       localBluetoothGatt.close();
     }
@@ -187,7 +188,11 @@ public class QWalletBluetoothJsPlugin
       paramString = localJSONObject.toString();
       return paramString;
     }
-    catch (JSONException paramString) {}
+    catch (JSONException paramString)
+    {
+      label31:
+      break label31;
+    }
     return "{'code':10008,'errMsg':'Parse json error'}";
   }
   
@@ -202,7 +207,12 @@ public class QWalletBluetoothJsPlugin
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       callJs(paramString1, new String[] { paramString2 });
-      Log.i("QWBluetoothJsPlugin", "doCallback: " + paramString1 + "->" + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doCallback: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramString2);
+      Log.i("QWBluetoothJsPlugin", localStringBuilder.toString());
     }
   }
   
@@ -218,71 +228,78 @@ public class QWalletBluetoothJsPlugin
         if (paramString != null)
         {
           paramUUID = paramString.getCharacteristics();
-          if (paramUUID.size() == 0)
+          int i = paramUUID.size();
+          if (i == 0)
           {
             localJSONObject1.put("code", 10005);
             localJSONObject1.put("errMsg", "No characteristics");
           }
           paramString = new JSONArray();
           paramUUID = paramUUID.iterator();
-          if (paramUUID.hasNext())
+          bool1 = paramUUID.hasNext();
+          boolean bool2 = false;
+          if (bool1)
           {
             BluetoothGattCharacteristic localBluetoothGattCharacteristic = (BluetoothGattCharacteristic)paramUUID.next();
             JSONObject localJSONObject2 = new JSONObject();
             localJSONObject2.put("uuid", localBluetoothGattCharacteristic.getUuid().toString());
             JSONObject localJSONObject3 = new JSONObject();
-            int i = localBluetoothGattCharacteristic.getProperties();
-            if ((i & 0x2) <= 0) {
-              break label271;
+            i = localBluetoothGattCharacteristic.getProperties();
+            if ((i & 0x2) > 0)
+            {
+              bool1 = true;
+              localJSONObject3.put("read", bool1);
+              if ((i & 0x8) <= 0) {
+                break label299;
+              }
+              bool1 = true;
+              localJSONObject3.put("write", bool1);
+              if ((i & 0x10) <= 0) {
+                break label305;
+              }
+              bool1 = true;
+              localJSONObject3.put("notify", bool1);
+              bool1 = bool2;
+              if ((i & 0x20) > 0) {
+                bool1 = true;
+              }
+              localJSONObject3.put("indicate", bool1);
+              localJSONObject2.put("properties", localJSONObject3);
+              paramString.put(localJSONObject2);
             }
-            bool = true;
-            localJSONObject3.put("read", bool);
-            if ((i & 0x8) <= 0) {
-              break label277;
-            }
-            bool = true;
-            localJSONObject3.put("write", bool);
-            if ((i & 0x10) <= 0) {
-              break label283;
-            }
-            bool = true;
-            localJSONObject3.put("notify", bool);
-            if ((i & 0x20) <= 0) {
-              break label289;
-            }
-            bool = true;
-            localJSONObject3.put("indicate", bool);
-            localJSONObject2.put("properties", localJSONObject3);
-            paramString.put(localJSONObject2);
-            continue;
           }
-          localJSONObject1.put("characteristics", paramString);
-          localJSONObject1.put("code", 0);
-          doCallback("getBLEDeviceCharacteristics", localJSONObject1.toString());
+          else
+          {
+            localJSONObject1.put("characteristics", paramString);
+            localJSONObject1.put("code", 0);
+            doCallback("getBLEDeviceCharacteristics", localJSONObject1.toString());
+          }
+        }
+        else
+        {
           return;
         }
       }
-      catch (JSONException paramString) {}
-      return;
-      label271:
-      boolean bool = false;
+      catch (JSONException paramString)
+      {
+        return;
+      }
+      boolean bool1 = false;
       continue;
-      label277:
-      bool = false;
+      label299:
+      bool1 = false;
       continue;
-      label283:
-      bool = false;
-      continue;
-      label289:
-      bool = false;
+      label305:
+      bool1 = false;
     }
   }
   
   @TargetApi(18)
   private void getBLEDeviceServices(String paramString)
   {
-    if (this.discoverServicesTimeOut != null) {
-      this.mHandler.removeCallbacks(this.discoverServicesTimeOut);
+    Runnable localRunnable = this.discoverServicesTimeOut;
+    if (localRunnable != null) {
+      this.mHandler.removeCallbacks(localRunnable);
     }
     paramString = (BluetoothGatt)this.mBluetoothGatts.get(paramString);
     if (paramString == null)
@@ -350,17 +367,14 @@ public class QWalletBluetoothJsPlugin
     paramString2 = getService(paramString1, paramString2, paramUUID1);
     if (paramString2 != null)
     {
-      paramUUID1 = paramString2.getCharacteristic(paramUUID2);
-      paramString2 = paramUUID1;
-      if (paramUUID1 == null) {
+      paramString2 = paramString2.getCharacteristic(paramUUID2);
+      if (paramString2 == null) {
         doCallback(paramString1, 10005, "No characteristics");
+      } else {
+        return paramString2;
       }
     }
-    else
-    {
-      paramString2 = null;
-    }
-    return paramString2;
+    return null;
   }
   
   @TargetApi(18)
@@ -379,40 +393,43 @@ public class QWalletBluetoothJsPlugin
       try
       {
         paramString = new JSONObject(paramString).optJSONArray("services");
-        if (localList.isEmpty())
+        boolean bool = localList.isEmpty();
+        if (bool)
         {
           doCallback("getConnectedBluetoothDevices", 10002, "No Devices");
-          doCallback("getConnectedBluetoothDevices", 10003, "Missing parameters");
-          return;
         }
-        if ((paramString == null) || (paramString.length() <= 0)) {
-          continue;
-        }
-        localObject = new ArrayList();
-        i = 0;
-        if (i < paramString.length())
+        else if ((paramString != null) && (paramString.length() > 0))
         {
-          UUID localUUID = parseUuidFromStr(paramString.getString(i));
-          if (localUUID != null) {
-            ((List)localObject).add(localUUID);
-          }
-        }
-        else
-        {
-          if (((List)localObject).size() <= 0) {
-            continue;
-          }
-          this.mGetServicesCallback = new QWalletBluetoothJsPlugin.ConnServicesCallback(this, (List)localObject, localList.size());
-          paramString = localList.iterator();
-          if (paramString.hasNext())
+          localObject = new ArrayList();
+          i = 0;
+          if (i < paramString.length())
           {
+            UUID localUUID = parseUuidFromStr(paramString.getString(i));
+            if (localUUID == null) {
+              break label254;
+            }
+            ((List)localObject).add(localUUID);
+            break label254;
+          }
+          if (((List)localObject).size() > 0)
+          {
+            this.mGetServicesCallback = new QWalletBluetoothJsPlugin.ConnServicesCallback(this, (List)localObject, localList.size());
+            paramString = localList.iterator();
+            if (!paramString.hasNext()) {
+              break;
+            }
             ((BluetoothDevice)paramString.next()).connectGatt(this.mContext, false, this.mGetServicesCallback);
             continue;
           }
-          return;
         }
+        doCallback("getConnectedBluetoothDevices", 10003, "Missing parameters");
+        return;
       }
-      catch (JSONException paramString) {}
+      catch (JSONException paramString)
+      {
+        return;
+      }
+      label254:
       i += 1;
     }
   }
@@ -421,131 +438,114 @@ public class QWalletBluetoothJsPlugin
   private BluetoothGattService getService(String paramString1, String paramString2, UUID paramUUID)
   {
     paramString2 = (BluetoothGatt)this.mBluetoothGatts.get(paramString2);
-    if (paramString2 == null) {}
-    for (paramString2 = createSimpleCallback(10002, "No device");; paramString2 = createSimpleCallback(10004, "No services"))
+    if (paramString2 == null)
     {
-      doCallback(paramString1, paramString2);
-      paramString2 = null;
-      do
-      {
-        return paramString2;
-        paramUUID = paramString2.getService(paramUUID);
-        paramString2 = paramUUID;
-      } while (paramUUID != null);
+      paramString2 = createSimpleCallback(10002, "No device");
     }
+    else
+    {
+      paramString2 = paramString2.getService(paramUUID);
+      if (paramString2 != null) {
+        return paramString2;
+      }
+      paramString2 = createSimpleCallback(10004, "No services");
+    }
+    doCallback(paramString1, paramString2);
+    return null;
+    return paramString2;
   }
   
   private static List<UUID> getUuidsFromRecordData(byte[] paramArrayOfByte)
   {
     ArrayList localArrayList = new ArrayList();
     paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.LITTLE_ENDIAN);
-    for (;;)
+    while (paramArrayOfByte.remaining() > 2)
     {
-      int i;
-      if (paramArrayOfByte.remaining() > 2)
-      {
-        i = paramArrayOfByte.get();
-        if (i != 0) {}
-      }
-      else
-      {
+      int i = paramArrayOfByte.get();
+      if (i == 0) {
         return localArrayList;
       }
+      int k = paramArrayOfByte.get();
       int j = i;
-      int k = i;
-      switch (paramArrayOfByte.get())
+      if (k != 2)
       {
-      case 4: 
-      case 5: 
-      default: 
-        paramArrayOfByte.position(i + paramArrayOfByte.position() - 1);
-        break;
-      case 2: 
-      case 3: 
-        while (j >= 2)
+        j = i;
+        if (k != 3)
         {
-          localArrayList.add(UUID.fromString(String.format("%08x-0000-1000-8000-00805F9B34FB", new Object[] { Short.valueOf(paramArrayOfByte.getShort()) })));
-          j = (byte)(j - 2);
-        }
-      case 6: 
-      case 7: 
-        while (k >= 16)
-        {
-          long l = paramArrayOfByte.getLong();
-          localArrayList.add(new UUID(paramArrayOfByte.getLong(), l));
-          k = (byte)(k - 16);
+          j = i;
+          if (k != 6)
+          {
+            j = i;
+            if (k != 7)
+            {
+              paramArrayOfByte.position(paramArrayOfByte.position() + i - 1);
+              continue;
+            }
+          }
+          while (j >= 16)
+          {
+            long l = paramArrayOfByte.getLong();
+            localArrayList.add(new UUID(paramArrayOfByte.getLong(), l));
+            j = (byte)(j - 16);
+          }
+          continue;
         }
       }
+      while (j >= 2)
+      {
+        localArrayList.add(UUID.fromString(String.format("%08x-0000-1000-8000-00805F9B34FB", new Object[] { Short.valueOf(paramArrayOfByte.getShort()) })));
+        j = (byte)(j - 2);
+      }
     }
+    return localArrayList;
   }
   
   @TargetApi(18)
   private void notifyBLECharacteristicValueChange(String paramString, UUID paramUUID1, UUID paramUUID2, boolean paramBoolean)
   {
-    int j = 1;
-    label133:
-    label158:
-    label179:
-    label180:
-    label190:
-    for (;;)
+    try
     {
-      int k;
-      int i;
-      try
+      paramUUID1 = getCharacteristic("readBLECharacteristicValue", paramString, paramUUID1, paramUUID2);
+      if (paramUUID1 != null)
       {
-        paramUUID1 = getCharacteristic("readBLECharacteristicValue", paramString, paramUUID1, paramUUID2);
-        if (paramUUID1 == null) {
-          break label179;
-        }
         paramString = (BluetoothGatt)this.mBluetoothGatts.get(paramString);
         paramUUID2 = new JSONObject();
-        k = paramUUID1.getProperties();
-        if ((k & 0x10) <= 0) {
-          break label180;
+        int k = paramUUID1.getProperties();
+        int j = 1;
+        int i;
+        if ((k & 0x10) > 0) {
+          i = 1;
+        } else {
+          i = 0;
         }
-        i = 1;
-      }
-      catch (JSONException paramString)
-      {
-        return;
-      }
-      if (paramString.setCharacteristicNotification(paramUUID1, paramBoolean))
-      {
-        paramUUID2.put("code", 0);
-        paramUUID1 = paramUUID1.getDescriptor(parseUuidFromStr("2902"));
-        if (paramUUID1 != null)
+        if ((k & 0x20) <= 0) {
+          j = 0;
+        }
+        if (((i != 0) || (j != 0)) && (paramString.setCharacteristicNotification(paramUUID1, paramBoolean)))
         {
-          if (i != 0) {
-            paramUUID1.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+          paramUUID2.put("code", 0);
+          paramUUID1 = paramUUID1.getDescriptor(parseUuidFromStr("2902"));
+          if (paramUUID1 != null)
+          {
+            if (i != 0) {
+              paramUUID1.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+            }
+            if (j != 0) {
+              paramUUID1.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
+            }
+            paramString.writeDescriptor(paramUUID1);
           }
-          if (j != 0) {
-            paramUUID1.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
-          }
-          paramString.writeDescriptor(paramUUID1);
+        }
+        else
+        {
+          paramUUID2.put("code", 10007);
+          paramUUID2.put("errMsg", "Property is not support");
         }
         doCallback("notifyBLECharacteristicValueChange", paramUUID2.toString());
-        return;
       }
-      paramUUID2.put("code", 10007);
-      paramUUID2.put("errMsg", "Property is not support");
-      continue;
-      if ((k & 0x20) > 0) {}
-      for (;;)
-      {
-        if (i != 0) {
-          break label190;
-        }
-        if (j == 0) {
-          break label133;
-        }
-        break;
-        return;
-        i = 0;
-        break label158;
-        j = 0;
-      }
+      return;
     }
+    catch (JSONException paramString) {}
   }
   
   private void onBluetoothAdapterStateChange()
@@ -569,55 +569,52 @@ public class QWalletBluetoothJsPlugin
     this.mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     try
     {
-      if (!this.mContext.getPackageManager().hasSystemFeature("android.hardware.bluetooth_le"))
+      boolean bool = this.mContext.getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+      if (!bool)
       {
         localJSONObject.put("code", 10009);
         localJSONObject.put("errMsg", "System does not support");
       }
-      for (;;)
+      else if (this.mBluetoothAdapter != null)
       {
-        if (localJSONObject.has("code")) {
-          doCallback("openBluetoothAdapter", localJSONObject.toString());
+        if (this.mBluetoothAdapter.isEnabled()) {
+          localJSONObject.put("code", 0);
+        } else {
+          startActivityForResult(new Intent("android.bluetooth.adapter.action.REQUEST_ENABLE"), (byte)1);
         }
-        return;
-        if (this.mBluetoothAdapter == null) {
-          break label125;
-        }
-        if (!this.mBluetoothAdapter.isEnabled()) {
-          break;
-        }
-        localJSONObject.put("code", 0);
+      }
+      else
+      {
+        localJSONObject.put("code", 10001);
+        localJSONObject.put("errMsg", "Bluetooth is not sAvailable");
       }
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        continue;
-        startActivityForResult(new Intent("android.bluetooth.adapter.action.REQUEST_ENABLE"), (byte)1);
-        continue;
-        label125:
-        localJSONObject.put("code", 10001);
-        localJSONObject.put("errMsg", "Bluetooth is not sAvailable");
-      }
+      localJSONException.printStackTrace();
+    }
+    if (localJSONObject.has("code")) {
+      doCallback("openBluetoothAdapter", localJSONObject.toString());
     }
   }
   
   private void parseCallback(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (paramString2.toLowerCase().indexOf("callback") < 0)) {
-      return;
-    }
-    try
+    if (!TextUtils.isEmpty(paramString2))
     {
-      paramString2 = new JSONObject(paramString2).optString("callback");
-      this.mCallbacks.put(paramString1, paramString2);
-      return;
-    }
-    catch (JSONException paramString1)
-    {
-      paramString1.printStackTrace();
+      if (paramString2.toLowerCase().indexOf("callback") < 0) {
+        return;
+      }
+      try
+      {
+        paramString2 = new JSONObject(paramString2).optString("callback");
+        this.mCallbacks.put(paramString1, paramString2);
+        return;
+      }
+      catch (JSONException paramString1)
+      {
+        paramString1.printStackTrace();
+      }
     }
   }
   
@@ -632,33 +629,44 @@ public class QWalletBluetoothJsPlugin
       localJSONObject.put("advertisData", bytes2Base64(paramBluetoothDeviceExtend.getScanRecord()));
       return localJSONObject;
     }
-    catch (JSONException paramBluetoothDeviceExtend) {}
+    catch (JSONException paramBluetoothDeviceExtend)
+    {
+      label67:
+      break label67;
+    }
     return null;
   }
   
   private static UUID parseUuidFromStr(String paramString)
   {
-    if ((paramString == null) || (paramString.isEmpty())) {
-      return null;
-    }
-    for (;;)
-    {
-      try
-      {
-        switch (paramString.length())
-        {
-        case 4: 
-          return UUID.fromString(paramString);
-        }
-      }
-      catch (IllegalArgumentException paramString)
-      {
+    if (paramString != null) {
+      if (paramString.isEmpty()) {
         return null;
       }
-      return UUID.fromString("0000" + paramString + "-0000-1000-8000-00805F9B34FB");
-      paramString = UUID.fromString(paramString + "-0000-1000-8000-00805F9B34FB");
+    }
+    try
+    {
+      int i = paramString.length();
+      if (i != 4)
+      {
+        if (i != 8) {
+          return UUID.fromString(paramString);
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("-0000-1000-8000-00805F9B34FB");
+        return UUID.fromString(localStringBuilder.toString());
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("0000");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("-0000-1000-8000-00805F9B34FB");
+      paramString = UUID.fromString(localStringBuilder.toString());
       return paramString;
     }
+    catch (IllegalArgumentException paramString) {}
+    return null;
+    return null;
   }
   
   @TargetApi(18)
@@ -673,78 +681,79 @@ public class QWalletBluetoothJsPlugin
   @TargetApi(18)
   private void startBluetoothDevicesDiscovery(String paramString)
   {
-    int i = 0;
     if (sDiscovering)
     {
       doCallback("startBluetoothDevicesDiscovery", 10008, "Bluetooth is scanning");
       return;
     }
-    if (paramString != null) {}
-    for (;;)
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (paramString != null) {
+      localObject1 = localObject2;
+    }
+    try
     {
-      try
-      {
-        localJSONObject = new JSONObject(paramString);
-        paramString = localJSONObject.optJSONArray("services");
-      }
-      catch (JSONException localJSONException1)
+      localJSONObject = new JSONObject(paramString);
+      localObject1 = localObject2;
+      paramString = localJSONObject.optJSONArray("services");
+      localObject1 = paramString;
+      bool = localJSONObject.optBoolean("allowDuplicatesKey", false);
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
         try
         {
           JSONObject localJSONObject;
-          bool = localJSONObject.optBoolean("allowDuplicatesKey", false);
-          try
+          boolean bool;
+          int i;
+          if (this.mBluetoothAdapter != null)
           {
-            int j = localJSONObject.optInt("interval", 0);
-            i = j;
-          }
-          catch (JSONException localJSONException2)
-          {
-            continue;
-          }
-          this.mLeScanCallback = new QWalletBluetoothJsPlugin.QWLeScanCallback(this, paramString, bool, i);
-          this.mDevicesFound.clear();
-          this.stopScan = new QWalletBluetoothJsPlugin.2(this);
-          this.mHandler.postDelayed(this.stopScan, 12000L);
-          paramString = new JSONObject();
-        }
-        catch (JSONException paramString)
-        {
-          try
-          {
-            if (this.mBluetoothAdapter == null) {
-              break;
-            }
             sDiscovering = this.mBluetoothAdapter.startLeScan(this.mLeScanCallback);
-            if (sDiscovering)
+            bool = sDiscovering;
+            if (bool)
             {
               paramString.put("code", 0);
               this.mContext.sendBroadcast(new Intent().setAction("com.tencent.qwallet.bluetooth.scan.changed"));
-              paramString.put("isDiscovering", sDiscovering);
-              doCallback("startBluetoothDevicesDiscovery", paramString.toString());
-              return;
             }
-            paramString.put("code", 10008);
-            paramString.put("errMsg", "Start scan failed");
-            continue;
-            paramString = paramString;
-            paramString = null;
-            bool = false;
+            else
+            {
+              paramString.put("code", 10008);
+              paramString.put("errMsg", "Start scan failed");
+            }
+            paramString.put("isDiscovering", sDiscovering);
+            doCallback("startBluetoothDevicesDiscovery", paramString.toString());
           }
-          catch (JSONException paramString) {}
-          localJSONException1 = localJSONException1;
-          bool = false;
-          continue;
+          return;
         }
+        catch (JSONException paramString) {}
+        paramString = paramString;
       }
-      paramString = null;
-      boolean bool = false;
     }
+    try
+    {
+      i = localJSONObject.optInt("interval", 0);
+    }
+    catch (JSONException localJSONException)
+    {
+      break label87;
+    }
+    bool = false;
+    paramString = (String)localObject1;
+    label87:
+    i = 0;
+    this.mLeScanCallback = new QWalletBluetoothJsPlugin.QWLeScanCallback(this, paramString, bool, i);
+    this.mDevicesFound.clear();
+    this.stopScan = new QWalletBluetoothJsPlugin.2(this);
+    this.mHandler.postDelayed(this.stopScan, 12000L);
+    paramString = new JSONObject();
   }
   
   @TargetApi(18)
   private void stopBluetoothDevicesDiscovery()
   {
+    Object localObject;
     if (this.mBluetoothAdapter != null)
     {
       this.mLeScanCallback.stopTimer();
@@ -752,17 +761,18 @@ public class QWalletBluetoothJsPlugin
       sDiscovering = false;
       sAvailable = this.mBluetoothAdapter.isEnabled();
       this.mContext.sendBroadcast(new Intent().setAction("com.tencent.qwallet.bluetooth.scan.changed"));
-      if (this.stopScan != null) {
-        this.mHandler.removeCallbacks(this.stopScan);
+      localObject = this.stopScan;
+      if (localObject != null) {
+        this.mHandler.removeCallbacks((Runnable)localObject);
       }
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", 0);
-      localJSONObject.put("discovering", sDiscovering);
-      localJSONObject.put("available", sAvailable);
-      doCallback("stopBluetoothDevicesDiscovery", localJSONObject.toString());
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("code", 0);
+      ((JSONObject)localObject).put("discovering", sDiscovering);
+      ((JSONObject)localObject).put("available", sAvailable);
+      doCallback("stopBluetoothDevicesDiscovery", ((JSONObject)localObject).toString());
       return;
     }
     catch (JSONException localJSONException) {}
@@ -770,10 +780,15 @@ public class QWalletBluetoothJsPlugin
   
   private void unregisterReceiver()
   {
-    if ((this.mActivity != null) && (this.mBluetoothStateReceiver != null) && (sIsReceiverRegister))
+    Activity localActivity = this.mActivity;
+    if (localActivity != null)
     {
-      this.mActivity.unregisterReceiver(this.mBluetoothStateReceiver);
-      sIsReceiverRegister = false;
+      BroadcastReceiver localBroadcastReceiver = this.mBluetoothStateReceiver;
+      if ((localBroadcastReceiver != null) && (sIsReceiverRegister))
+      {
+        localActivity.unregisterReceiver(localBroadcastReceiver);
+        sIsReceiverRegister = false;
+      }
     }
   }
   
@@ -790,127 +805,171 @@ public class QWalletBluetoothJsPlugin
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (this.mContext == null)) {}
-    while (!"qw_bluetooth".equals(paramString2)) {
-      return false;
-    }
-    if (paramVarArgs.length > 0) {
-      parseCallback(paramString3, paramVarArgs[0]);
-    }
-    if ("openBluetoothAdapter".equals(paramString3)) {
-      openBluetoothAdapter();
-    }
-    for (;;)
+    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      return true;
-      if ("closeBluetoothAdapter".equals(paramString3)) {
+      if (this.mContext == null) {
+        return false;
+      }
+      if (!"qw_bluetooth".equals(paramString2)) {
+        return false;
+      }
+      if (paramVarArgs.length > 0) {
+        parseCallback(paramString3, paramVarArgs[0]);
+      }
+      if ("openBluetoothAdapter".equals(paramString3))
+      {
+        openBluetoothAdapter();
+        return true;
+      }
+      if ("closeBluetoothAdapter".equals(paramString3))
+      {
         closeBluetoothAdapter();
-      } else if ((!"onBluetoothDeviceFound".equals(paramString3)) && (!"onBLEConnectionStateChange".equals(paramString3)) && (!"onBLECharacteristicValueChange".equals(paramString3))) {
-        if (this.mBluetoothAdapter == null) {
+        return true;
+      }
+      if ((!"onBluetoothDeviceFound".equals(paramString3)) && (!"onBLEConnectionStateChange".equals(paramString3)))
+      {
+        if ("onBLECharacteristicValueChange".equals(paramString3)) {
+          return true;
+        }
+        if (this.mBluetoothAdapter == null)
+        {
           doCallback(paramString3, 10000, "Initialize first");
-        } else if ("getBluetoothAdapterState".equals(paramString3)) {
+          return true;
+        }
+        if ("getBluetoothAdapterState".equals(paramString3))
+        {
           getBluetoothAdapterState();
-        } else if ("onBluetoothAdapterStateChange".equals(paramString3)) {
+          return true;
+        }
+        if ("onBluetoothAdapterStateChange".equals(paramString3))
+        {
           onBluetoothAdapterStateChange();
-        } else if ("startBluetoothDevicesDiscovery".equals(paramString3))
-        {
-          if (paramVarArgs.length > 0) {
-            startBluetoothDevicesDiscovery(paramVarArgs[0]);
-          } else {
-            startBluetoothDevicesDiscovery(null);
-          }
+          return true;
         }
-        else if ("stopBluetoothDevicesDiscovery".equals(paramString3)) {
-          stopBluetoothDevicesDiscovery();
-        } else if ("getBluetoothDevices".equals(paramString3)) {
-          getBluetoothDevices();
-        } else if ("getConnectedBluetoothDevices".equals(paramString3))
+        if ("startBluetoothDevicesDiscovery".equals(paramString3))
         {
-          if (paramVarArgs.length > 0) {
-            getConnectedBluetoothDevices(paramVarArgs[0]);
-          } else {
-            doCallback("getConnectedBluetoothDevices", 10003, "Missing parameters");
-          }
-        }
-        else {
-          try
+          if (paramVarArgs.length > 0)
           {
-            paramJsBridgeListener = createSimpleCallback(10003, "Missing parameters");
-            UUID localUUID;
-            String str;
-            boolean bool;
-            if (paramVarArgs.length > 0)
-            {
-              paramString1 = new JSONObject(paramVarArgs[0]);
-              paramString2 = paramString1.optString("deviceId").toUpperCase();
-              if (BluetoothAdapter.checkBluetoothAddress(paramString2))
-              {
-                if ((!this.mConnectedDevices.contains(paramString2)) && (!"createBLEConnection".equals(paramString3)))
-                {
-                  doCallback(paramString3, 10006, "connect the device first");
-                  return true;
-                }
-              }
-              else
-              {
-                doCallback(paramString3, paramJsBridgeListener);
-                return true;
-              }
-              paramVarArgs = parseUuidFromStr(paramString1.optString("serviceId"));
-              localUUID = parseUuidFromStr(paramString1.optString("characteristicId"));
-              str = paramString1.optString("value");
-              bool = paramString1.optBoolean("state");
-              if ("createBLEConnection".equals(paramString3)) {
-                createBLEConnection(paramString2);
-              }
-            }
-            else
+            startBluetoothDevicesDiscovery(paramVarArgs[0]);
+            return true;
+          }
+          startBluetoothDevicesDiscovery(null);
+          return true;
+        }
+        if ("stopBluetoothDevicesDiscovery".equals(paramString3))
+        {
+          stopBluetoothDevicesDiscovery();
+          return true;
+        }
+        if ("getBluetoothDevices".equals(paramString3))
+        {
+          getBluetoothDevices();
+          return true;
+        }
+        if ("getConnectedBluetoothDevices".equals(paramString3))
+        {
+          if (paramVarArgs.length > 0)
+          {
+            getConnectedBluetoothDevices(paramVarArgs[0]);
+            return true;
+          }
+          doCallback("getConnectedBluetoothDevices", 10003, "Missing parameters");
+          return true;
+        }
+      }
+    }
+    try
+    {
+      paramJsBridgeListener = createSimpleCallback(10003, "Missing parameters");
+      if (paramVarArgs.length > 0)
+      {
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        paramString2 = paramString1.optString("deviceId").toUpperCase();
+        if (BluetoothAdapter.checkBluetoothAddress(paramString2))
+        {
+          boolean bool = this.mConnectedDevices.contains(paramString2);
+          if ((!bool) && (!"createBLEConnection".equals(paramString3)))
+          {
+            doCallback(paramString3, 10006, "connect the device first");
+            return true;
+          }
+          paramVarArgs = parseUuidFromStr(paramString1.optString("serviceId"));
+          UUID localUUID = parseUuidFromStr(paramString1.optString("characteristicId"));
+          String str = paramString1.optString("value");
+          bool = paramString1.optBoolean("state");
+          if ("createBLEConnection".equals(paramString3))
+          {
+            createBLEConnection(paramString2);
+            return true;
+          }
+          if ("closeBLEConnection".equals(paramString3))
+          {
+            closeBLEConnection(paramString2);
+            return true;
+          }
+          if ("getBLEDeviceServices".equals(paramString3))
+          {
+            getBLEDeviceServices(paramString2);
+            return true;
+          }
+          if ("getBLEDeviceCharacteristics".equals(paramString3))
+          {
+            if (paramVarArgs == null)
             {
               doCallback(paramString3, paramJsBridgeListener);
               return true;
             }
-            if ("closeBLEConnection".equals(paramString3)) {
-              closeBLEConnection(paramString2);
-            } else if ("getBLEDeviceServices".equals(paramString3)) {
-              getBLEDeviceServices(paramString2);
-            } else if ("getBLEDeviceCharacteristics".equals(paramString3))
-            {
-              if (paramVarArgs == null) {
-                doCallback(paramString3, paramJsBridgeListener);
-              } else {
-                getBLEDeviceCharacteristics(paramString2, paramVarArgs);
-              }
-            }
-            else if ("readBLECharacteristicValue".equals(paramString3))
-            {
-              if ((paramVarArgs == null) || (localUUID == null)) {
-                doCallback(paramString3, paramJsBridgeListener);
-              } else {
-                readBLECharacteristicValue(paramString2, paramVarArgs, localUUID);
-              }
-            }
-            else if ("writeBLECharacteristicValue".equals(paramString3))
-            {
-              if ((paramVarArgs == null) || (localUUID == null) || (str.isEmpty())) {
-                doCallback(paramString3, paramJsBridgeListener);
-              } else {
-                writeBLECharacteristicValue(paramString2, paramVarArgs, localUUID, str);
-              }
-            }
-            else if ("notifyBLECharacteristicValueChange".equals(paramString3)) {
-              if ((paramVarArgs == null) || (localUUID == null)) {
-                doCallback(paramString3, paramJsBridgeListener);
-              } else {
-                notifyBLECharacteristicValueChange(paramString2, paramVarArgs, localUUID, bool);
-              }
-            }
+            getBLEDeviceCharacteristics(paramString2, paramVarArgs);
+            return true;
           }
-          catch (JSONException paramJsBridgeListener) {}
+          if ("readBLECharacteristicValue".equals(paramString3))
+          {
+            if ((paramVarArgs != null) && (localUUID != null))
+            {
+              readBLECharacteristicValue(paramString2, paramVarArgs, localUUID);
+              return true;
+            }
+            doCallback(paramString3, paramJsBridgeListener);
+            return true;
+          }
+          if ("writeBLECharacteristicValue".equals(paramString3))
+          {
+            if ((paramVarArgs != null) && (localUUID != null) && (!str.isEmpty()))
+            {
+              writeBLECharacteristicValue(paramString2, paramVarArgs, localUUID, str);
+              return true;
+            }
+            doCallback(paramString3, paramJsBridgeListener);
+            return true;
+          }
+          if ("notifyBLECharacteristicValueChange".equals(paramString3))
+          {
+            if ((paramVarArgs != null) && (localUUID != null))
+            {
+              notifyBLECharacteristicValueChange(paramString2, paramVarArgs, localUUID, bool);
+              return true;
+            }
+            doCallback(paramString3, paramJsBridgeListener);
+            return true;
+          }
+        }
+        else
+        {
+          doCallback(paramString3, paramJsBridgeListener);
+          return true;
         }
       }
+      else
+      {
+        doCallback(paramString3, paramJsBridgeListener);
+      }
+      return true;
     }
+    catch (JSONException paramJsBridgeListener) {}
+    return false;
+    return true;
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
@@ -919,23 +978,22 @@ public class QWalletBluetoothJsPlugin
     if (paramByte == 1)
     {
       paramIntent = new JSONObject();
-      if (paramInt == -1) {}
-      for (;;)
-      {
-        try
-        {
-          paramIntent.put("code", 0);
-          doCallback("openBluetoothAdapter", paramIntent.toString());
-          return;
-        }
-        catch (JSONException paramIntent) {}
-        paramIntent.put("code", 10000);
-        paramIntent.put("errMsg", "User refused");
-      }
+      if (paramInt != -1) {}
     }
+    try
+    {
+      paramIntent.put("code", 0);
+      break label56;
+      paramIntent.put("code", 10000);
+      paramIntent.put("errMsg", "User refused");
+      label56:
+      doCallback("openBluetoothAdapter", paramIntent.toString());
+      return;
+    }
+    catch (JSONException paramIntent) {}
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     if (this.mRuntime != null)
@@ -956,7 +1014,7 @@ public class QWalletBluetoothJsPlugin
     this.mHandler = new Handler();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     if (this.mRuntime != null) {
       unregisterReceiver();
@@ -972,7 +1030,7 @@ public class QWalletBluetoothJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin
  * JD-Core Version:    0.7.0.1
  */

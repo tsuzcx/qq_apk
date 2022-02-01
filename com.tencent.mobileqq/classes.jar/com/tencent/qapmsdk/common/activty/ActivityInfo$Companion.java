@@ -22,51 +22,44 @@ public final class ActivityInfo$Companion
 {
   private final ComponentName getActiveComponent(Context paramContext)
   {
-    for (;;)
+    try
     {
-      int i;
-      try
+      Object localObject2 = paramContext.getSystemService("activity");
+      Object localObject1 = localObject2;
+      if (!(localObject2 instanceof ActivityManager)) {
+        localObject1 = null;
+      }
+      localObject1 = (ActivityManager)localObject1;
+      if (localObject1 != null)
       {
-        Object localObject2 = paramContext.getSystemService("activity");
-        Object localObject1 = localObject2;
-        if (!(localObject2 instanceof ActivityManager)) {
-          localObject1 = null;
-        }
-        localObject1 = (ActivityManager)localObject1;
+        localObject1 = ((ActivityManager)localObject1).getRunningAppProcesses();
         if (localObject1 != null)
         {
-          localObject1 = ((ActivityManager)localObject1).getRunningAppProcesses();
-          if (localObject1 != null)
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            localObject1 = ((List)localObject1).iterator();
-            if (!((Iterator)localObject1).hasNext()) {
-              break;
-            }
             localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
-            if (((ActivityManager.RunningAppProcessInfo)localObject2).importance != 100) {
-              continue;
+            if (((ActivityManager.RunningAppProcessInfo)localObject2).importance == 100)
+            {
+              String[] arrayOfString = ((ActivityManager.RunningAppProcessInfo)localObject2).pkgList;
+              int j = arrayOfString.length;
+              int i = 0;
+              while (i < j)
+              {
+                if ((Intrinsics.areEqual(arrayOfString[i], paramContext.getPackageName())) && (((ActivityManager.RunningAppProcessInfo)localObject2).importanceReasonComponent != null)) {
+                  return ((ActivityManager.RunningAppProcessInfo)localObject2).importanceReasonComponent;
+                }
+                i += 1;
+              }
             }
-            String[] arrayOfString = ((ActivityManager.RunningAppProcessInfo)localObject2).pkgList;
-            int j = arrayOfString.length;
-            i = 0;
-            if (i >= j) {
-              continue;
-            }
-            if ((!Intrinsics.areEqual(arrayOfString[i], paramContext.getPackageName())) || (((ActivityManager.RunningAppProcessInfo)localObject2).importanceReasonComponent == null)) {
-              break label151;
-            }
-            return ((ActivityManager.RunningAppProcessInfo)localObject2).importanceReasonComponent;
           }
         }
       }
-      catch (Exception paramContext)
-      {
-        Logger.INSTANCE.exception("QAPM_common_ActivityInfo", (Throwable)paramContext);
-        return null;
-      }
       return null;
-      label151:
-      i += 1;
+    }
+    catch (Exception paramContext)
+    {
+      Logger.INSTANCE.exception("QAPM_common_ActivityInfo", (Throwable)paramContext);
     }
     return null;
   }
@@ -76,18 +69,24 @@ public final class ActivityInfo$Companion
   public final Object getCurrentActivity(@Nullable Application paramApplication)
   {
     WeakReference localWeakReference = LifecycleCallback.INSTANCE.getWeakActivity();
-    if (localWeakReference != null) {}
-    for (Object localObject = (Activity)localWeakReference.get(); localObject != null; localObject = null) {
+    Object localObject2 = null;
+    if (localWeakReference != null) {
+      localObject1 = (Activity)localWeakReference.get();
+    } else {
+      localObject1 = null;
+    }
+    if (localObject1 != null) {
       return localWeakReference.get();
     }
+    Object localObject1 = localObject2;
     if (paramApplication != null)
     {
-      localObject = (Companion)this;
+      localObject1 = (Companion)this;
       paramApplication = paramApplication.getApplicationContext();
       Intrinsics.checkExpressionValueIsNotNull(paramApplication, "app.applicationContext");
-      return ((Companion)localObject).getActiveComponent(paramApplication);
+      localObject1 = ((Companion)localObject1).getActiveComponent(paramApplication);
     }
-    return null;
+    return localObject1;
   }
   
   @JvmStatic
@@ -102,7 +101,7 @@ public final class ActivityInfo$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.activty.ActivityInfo.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,14 @@ class NearbyHybridFragment$20
   
   public void onDismiss()
   {
-    this.a.a = null;
-    this.a.o();
+    NearbyHybridFragment localNearbyHybridFragment = this.a;
+    localNearbyHybridFragment.a = null;
+    localNearbyHybridFragment.n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.20
  * JD-Core Version:    0.7.0.1
  */

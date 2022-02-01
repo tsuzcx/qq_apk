@@ -40,74 +40,69 @@ public class MutableVideoComposition
     Object localObject2 = this.asset.tracksWithMediaType(1);
     this.frameDuration = null;
     this.renderSize = null;
-    Object localObject1;
     if (localObject2 != null)
     {
       Iterator localIterator = ((List)localObject2).iterator();
       while (localIterator.hasNext())
       {
         localObject1 = (AssetTrack)localIterator.next();
-        if (this.frameDuration == null)
+        CMTime localCMTime = this.frameDuration;
+        if (localCMTime == null)
         {
           this.frameDuration = new CMTime(1L, (int)((AssetTrack)localObject1).getNominalFrameRate());
         }
         else
         {
-          if (this.frameDuration.timeScale > ((AssetTrack)localObject1).getNominalFrameRate()) {}
-          for (localObject1 = this.frameDuration;; localObject1 = new CMTime(1L, (int)((AssetTrack)localObject1).getNominalFrameRate()))
-          {
-            this.frameDuration = ((CMTime)localObject1);
-            break;
+          if (localCMTime.timeScale > ((AssetTrack)localObject1).getNominalFrameRate()) {
+            localObject1 = this.frameDuration;
+          } else {
+            localObject1 = new CMTime(1L, (int)((AssetTrack)localObject1).getNominalFrameRate());
           }
+          this.frameDuration = ((CMTime)localObject1);
         }
       }
     }
-    if ((this.frameDuration == null) || (this.frameDuration.timeScale == 0)) {
+    Object localObject1 = this.frameDuration;
+    if ((localObject1 == null) || (((CMTime)localObject1).timeScale == 0)) {
       this.frameDuration = new CMTime(1L, 30);
     }
-    if ((this.asset instanceof Composition)) {
-      this.renderSize = this.asset.getNaturalSize();
-    }
-    for (;;)
+    localObject1 = this.asset;
+    if ((localObject1 instanceof Composition))
     {
-      this.renderScale = 1.0F;
-      return;
-      if (localObject2 != null)
+      this.renderSize = ((Asset)localObject1).getNaturalSize();
+    }
+    else if (localObject2 != null)
+    {
+      localObject1 = ((List)localObject2).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject1 = ((List)localObject2).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (AssetTrack)((Iterator)localObject1).next();
-          if (this.renderSize == null) {
-            this.renderSize = ((AssetTrack)localObject2).getNaturalSize();
-          } else if (((AssetTrack)localObject2).getNaturalSize() != null) {
-            this.renderSize = new CGSize(Math.max(this.renderSize.width, ((AssetTrack)localObject2).getNaturalSize().width), Math.max(this.renderSize.height, ((AssetTrack)localObject2).getNaturalSize().height));
-          }
+        localObject2 = (AssetTrack)((Iterator)localObject1).next();
+        if (this.renderSize == null) {
+          this.renderSize = ((AssetTrack)localObject2).getNaturalSize();
+        } else if (((AssetTrack)localObject2).getNaturalSize() != null) {
+          this.renderSize = new CGSize(Math.max(this.renderSize.width, ((AssetTrack)localObject2).getNaturalSize().width), Math.max(this.renderSize.height, ((AssetTrack)localObject2).getNaturalSize().height));
         }
       }
     }
+    this.renderScale = 1.0F;
   }
   
   @Nullable
   public VideoCompositing getCustomVideoCompositor()
   {
-    if (this.customVideoCompositorClass != null) {}
-    try
+    Object localObject = this.customVideoCompositorClass;
+    if (localObject != null)
     {
-      VideoCompositing localVideoCompositing = (VideoCompositing)this.customVideoCompositorClass.newInstance();
-      return localVideoCompositing;
-    }
-    catch (InstantiationException localInstantiationException)
-    {
+      try
+      {
+        localObject = (VideoCompositing)((Class)localObject).newInstance();
+        return localObject;
+      }
+      catch (IllegalAccessException localIllegalAccessException) {}catch (InstantiationException localInstantiationException) {}
       localInstantiationException.printStackTrace();
       return new VideoCompositor();
-      return new VideoCompositor();
     }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      label21:
-      break label21;
-    }
+    return new VideoCompositor();
   }
   
   @Nullable
@@ -183,12 +178,22 @@ public class MutableVideoComposition
   
   public String toString()
   {
-    return "MutableVideoComposition{, frameDuration=" + this.frameDuration + ", renderSize=" + this.renderSize + ", renderLayoutMode=" + this.renderLayoutMode + ", instructions=" + this.instructions + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MutableVideoComposition{, frameDuration=");
+    localStringBuilder.append(this.frameDuration);
+    localStringBuilder.append(", renderSize=");
+    localStringBuilder.append(this.renderSize);
+    localStringBuilder.append(", renderLayoutMode=");
+    localStringBuilder.append(this.renderLayoutMode);
+    localStringBuilder.append(", instructions=");
+    localStringBuilder.append(this.instructions);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.composition.MutableVideoComposition
  * JD-Core Version:    0.7.0.1
  */

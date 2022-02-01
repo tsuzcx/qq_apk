@@ -31,7 +31,7 @@ public abstract class TwoFingerGestureDetector
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getRawX();
     if (paramInt < paramMotionEvent.getPointerCount()) {
-      return f1 - f2 + paramMotionEvent.getX(paramInt);
+      return paramMotionEvent.getX(paramInt) + (f1 - f2);
     }
     return 0.0F;
   }
@@ -41,7 +41,7 @@ public abstract class TwoFingerGestureDetector
     float f1 = paramMotionEvent.getY();
     float f2 = paramMotionEvent.getRawY();
     if (paramInt < paramMotionEvent.getPointerCount()) {
-      return f1 - f2 + paramMotionEvent.getY(paramInt);
+      return paramMotionEvent.getY(paramInt) + (f1 - f2);
     }
     return 0.0F;
   }
@@ -76,39 +76,34 @@ public abstract class TwoFingerGestureDetector
   {
     DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
     this.mRightSlopEdge = (localDisplayMetrics.widthPixels - this.mEdgeSlop);
-    this.mBottomSlopEdge = (localDisplayMetrics.heightPixels - this.mEdgeSlop);
+    float f2 = localDisplayMetrics.heightPixels;
     float f1 = this.mEdgeSlop;
-    float f2 = this.mRightSlopEdge;
+    this.mBottomSlopEdge = (f2 - f1);
+    f2 = this.mRightSlopEdge;
     float f3 = this.mBottomSlopEdge;
     float f4 = paramMotionEvent.getRawX();
     float f5 = paramMotionEvent.getRawY();
     float f6 = getRawX(paramMotionEvent, 1);
     float f7 = getRawY(paramMotionEvent, 1);
     int i;
-    int j;
-    if ((f4 < f1) || (f5 < f1) || (f4 > f2) || (f5 > f3))
-    {
-      i = 1;
-      if ((f6 >= f1) && (f7 >= f1) && (f6 <= f2) && (f7 <= f3)) {
-        break label166;
-      }
-      j = 1;
-      label148:
-      if ((i == 0) || (j == 0)) {
-        break label172;
-      }
-    }
-    label166:
-    label172:
-    while ((i != 0) || (j != 0))
-    {
-      return true;
+    if ((f4 >= f1) && (f5 >= f1) && (f4 <= f2) && (f5 <= f3)) {
       i = 0;
-      break;
-      j = 0;
-      break label148;
+    } else {
+      i = 1;
     }
-    return false;
+    int j;
+    if ((f6 >= f1) && (f7 >= f1) && (f6 <= f2) && (f7 <= f3)) {
+      j = 0;
+    } else {
+      j = 1;
+    }
+    if ((i != 0) && (j != 0)) {
+      return true;
+    }
+    if (i != 0) {
+      return true;
+    }
+    return j != 0;
   }
   
   protected void updateStateByEvent(MotionEvent paramMotionEvent)

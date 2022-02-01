@@ -11,16 +11,6 @@ public final class j
 {
   public String a = "";
   
-  static
-  {
-    if (!j.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      b = bool;
-      return;
-    }
-  }
-  
   public j()
   {
     a(this.a);
@@ -38,18 +28,20 @@ public final class j
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (b) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (b) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt) {}
@@ -88,7 +80,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.j
  * JD-Core Version:    0.7.0.1
  */

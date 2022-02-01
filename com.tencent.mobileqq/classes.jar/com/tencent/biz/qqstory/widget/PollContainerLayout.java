@@ -40,10 +40,11 @@ public class PollContainerLayout
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout == null) {
+    StoryVideoItem.PollLayout localPollLayout = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout;
+    if (localPollLayout == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout, paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(localPollLayout, paramInt1, paramInt2);
     this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a();
   }
   
@@ -61,8 +62,10 @@ public class PollContainerLayout
     int i = 1;
     while (i < paramPollLayout.length)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(i - 1).a(paramPollLayout[i]);
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(i - 1).a(false);
+      PollWidgetUtils.IPollWidget localIPollWidget = this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget;
+      int j = i - 1;
+      localIPollWidget.a(j).a(paramPollLayout[i]);
+      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(j).a(false);
       i += 1;
     }
     if ((this.jdField_a_of_type_Boolean) && (paramInt >= 0))
@@ -73,15 +76,16 @@ public class PollContainerLayout
         this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(paramArrayOfInt);
         this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(true);
       }
+      else
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(false);
+      }
     }
-    for (;;)
+    else
     {
-      a(getWidth(), getHeight());
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(false);
-      continue;
       this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(false);
     }
+    a(getWidth(), getHeight());
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
@@ -102,16 +106,18 @@ public class PollContainerLayout
     return bool;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    a(paramInt3 - paramInt1, paramInt4 - paramInt2);
-    SLog.a("PollContainerLayout", "onLayout wh(%d, %d)", Integer.valueOf(paramInt3 - paramInt1), Integer.valueOf(paramInt4 - paramInt2));
+    paramInt1 = paramInt3 - paramInt1;
+    paramInt2 = paramInt4 - paramInt2;
+    a(paramInt1, paramInt2);
+    SLog.a("PollContainerLayout", "onLayout wh(%d, %d)", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.widget.PollContainerLayout
  * JD-Core Version:    0.7.0.1
  */

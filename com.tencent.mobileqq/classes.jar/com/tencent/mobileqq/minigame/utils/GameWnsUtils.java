@@ -17,39 +17,49 @@ public class GameWnsUtils
   
   static
   {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
     boolean bool = true;
-    if (QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameLogEnable", 1) == 1) {}
-    for (;;)
-    {
-      sLogEnable = bool;
-      return;
+    if (localQzoneConfig.getConfig("qqtriton", "MiniGameLogEnable", 1) != 1) {
       bool = false;
     }
+    sLogEnable = bool;
   }
   
   private static boolean buildModelEnable()
   {
     String str1 = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameBlackList", "[GT-I9502]");
+    boolean bool1 = false;
     try
     {
       String str2 = Build.MODEL;
-      if (TextUtils.isEmpty(str2))
+      boolean bool2 = TextUtils.isEmpty(str2);
+      if (bool2)
       {
         QZLog.e("GameWnsUtils", 2, new Object[] { "buildModelEnable model empty" });
         return false;
       }
-      if (QZLog.isColorLevel()) {
-        QZLog.d("GameWnsUtils", 2, "build model is " + str2);
+      StringBuilder localStringBuilder;
+      if (QZLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("build model is ");
+        localStringBuilder.append(str2);
+        QZLog.d("GameWnsUtils", 2, localStringBuilder.toString());
       }
       if (!TextUtils.isEmpty(str1))
       {
-        boolean bool = str1.contains("[" + str2 + "]");
-        if (bool) {}
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(str2);
+        localStringBuilder.append("]");
+        bool2 = str1.contains(localStringBuilder.toString());
+        if (bool2) {}
       }
       else
       {
-        return true;
+        bool1 = true;
       }
+      return bool1;
     }
     catch (Throwable localThrowable)
     {
@@ -85,8 +95,9 @@ public class GameWnsUtils
   
   public static boolean enableGameruntimePreload()
   {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
     boolean bool = false;
-    if (QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameRuntimePreload", 0) > 0) {
+    if (localQzoneConfig.getConfig("qqtriton", "MiniGameRuntimePreload", 0) > 0) {
       bool = true;
     }
     return bool;
@@ -109,8 +120,9 @@ public class GameWnsUtils
   
   public static boolean enableInstructionsForMiniApp()
   {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
     boolean bool = false;
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppEnableInstructions", 0) > 0) {
+    if (localQzoneConfig.getConfig("qqminiapp", "MiniAppEnableInstructions", 0) > 0) {
       bool = true;
     }
     return bool;
@@ -133,8 +145,9 @@ public class GameWnsUtils
   
   public static boolean enableStorageExceedDialog()
   {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
     boolean bool = false;
-    if (QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameStorageExceedDialogEnable", 0) > 0) {
+    if (localQzoneConfig.getConfig("qqtriton", "MiniGameStorageExceedDialogEnable", 0) > 0) {
       bool = true;
     }
     return bool;
@@ -196,6 +209,11 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDownloaderMode", 2);
   }
   
+  public static int getDropGuideShowTimes()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "dropGuideTimesLimit", 3);
+  }
+  
   public static String getFakeFristFrameUrl()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameFakeFirstFrameUrl", "");
@@ -209,7 +227,10 @@ public class GameWnsUtils
   public static BaseLibInfo getGameBaseLibInfo()
   {
     Object localObject = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameBaseLib", "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20190708174635_6988/lib-1.4.7.zip\",\"key2\":\"\",\"key3\":\"1.4.7\",\"key4\": {\"file_length\": 6336933},\"key5\":2}");
-    QLog.i("minigame", 1, "MiniEng getWnsGameBaseLibInfo " + (String)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniEng getWnsGameBaseLibInfo ");
+    localStringBuilder.append((String)localObject);
+    QLog.i("minigame", 1, localStringBuilder.toString());
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       try
       {
@@ -405,18 +426,29 @@ public class GameWnsUtils
   
   public static boolean isForceDownloadInMainProcess()
   {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_force_download_in_mainprocess", 0) == 1;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqminiapp", "mini_game_force_download_in_mainprocess", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean killAllGamesWhenDestroy()
   {
-    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameKillAllGamesWhenDestroy", 0) == 1;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqtriton", "MiniGameKillAllGamesWhenDestroy", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean killAllGamesWhenReuse()
   {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
     boolean bool = false;
-    if (QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameKillAllGamesWhenReuse", 0) == 0) {
+    if (localQzoneConfig.getConfig("qqtriton", "MiniGameKillAllGamesWhenReuse", 0) == 0) {
       bool = true;
     }
     return bool;
@@ -476,19 +508,15 @@ public class GameWnsUtils
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        long l;
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
-    l = CommonDataAdapter.a().a() % 100L;
+    long l = CommonDataAdapter.a().a() % 100L;
     return (l >= arrayOfInt[0]) && (l < arrayOfInt[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.GameWnsUtils
  * JD-Core Version:    0.7.0.1
  */

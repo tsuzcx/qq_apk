@@ -28,7 +28,9 @@ public class RoundRectColorDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    float f = this.jdField_a_of_type_Float;
+    paramCanvas.drawRoundRect(localRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   public int getIntrinsicHeight()
@@ -43,7 +45,7 @@ public class RoundRectColorDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.drawable.RoundRectColorDrawable
  * JD-Core Version:    0.7.0.1
  */

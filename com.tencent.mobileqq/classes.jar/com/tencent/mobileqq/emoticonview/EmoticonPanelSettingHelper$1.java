@@ -7,16 +7,17 @@ class EmoticonPanelSettingHelper$1
   
   public void run()
   {
-    if (EmoticonPanelSettingHelper.access$000(this.this$0) == null) {}
-    while (!EmoticonPanelSettingHelper.access$000(this.this$0).isShowing()) {
+    if (EmoticonPanelSettingHelper.access$000(this.this$0) == null) {
       return;
     }
-    EmoticonPanelSettingHelper.access$000(this.this$0).dismiss();
+    if (EmoticonPanelSettingHelper.access$000(this.this$0).isShowing()) {
+      EmoticonPanelSettingHelper.access$000(this.this$0).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelSettingHelper.1
  * JD-Core Version:    0.7.0.1
  */

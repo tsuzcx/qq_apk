@@ -1,30 +1,30 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import android.app.Activity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.QQStoryNetReqUtils.RequestCallBack;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
 class QQStoryTakeVideoHelper$1
-  implements QQStoryTakeVideoHelper.GenerateManifestCallback
+  implements QQStoryNetReqUtils.RequestCallBack<Integer>
 {
-  QQStoryTakeVideoHelper$1(QQStoryTakeVideoHelper paramQQStoryTakeVideoHelper, PublishParam paramPublishParam, String paramString, int paramInt) {}
-  
-  public void a()
+  public void a(ErrorMessage paramErrorMessage)
   {
-    SLog.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
-    QQStoryTakeVideoHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    SLog.e("QQStoryTakeVideoHelper", "get vip error.");
   }
   
-  public void b()
+  public void a(Integer paramInteger)
   {
-    SLog.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
-    QQStoryTakeVideoHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper).finish();
-    QQStoryTakeVideoHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper).overridePendingTransition(0, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("get vip competed, vip:");
+    localStringBuilder.append(paramInteger);
+    SLog.b("QQStoryTakeVideoHelper", localStringBuilder.toString());
+    this.a.b("qqstory_i_am_vip", paramInteger);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper.1
  * JD-Core Version:    0.7.0.1
  */

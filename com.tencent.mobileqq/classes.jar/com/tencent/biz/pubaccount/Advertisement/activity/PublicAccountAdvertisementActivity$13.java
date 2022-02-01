@@ -11,15 +11,19 @@ class PublicAccountAdvertisementActivity$13
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("volumeTrace", 2, ",music system is thread " + PublicAccountAdvertisementActivity.a(this.this$0).a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(",music system is thread ");
+      localStringBuilder.append(PublicAccountAdvertisementActivity.a(this.this$0).a);
+      QLog.d("volumeTrace", 2, localStringBuilder.toString());
     }
     PublicAccountAdvertisementActivity.a(this.this$0).setStreamVolume(3, PublicAccountAdvertisementActivity.a(this.this$0).a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.13
  * JD-Core Version:    0.7.0.1
  */

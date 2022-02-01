@@ -1,145 +1,63 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.coreui.pluspanel.PlusPanel;
+import com.tencent.mobileqq.activity.aio.panel.PanelManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.troopgag.data.SelfGagInfo;
+import com.tencent.mobileqq.widget.QQToast;
 
 class TroopChatPie$10
-  implements Runnable
+  extends Handler
 {
-  TroopChatPie$10(TroopChatPie paramTroopChatPie, List paramList) {}
-  
-  public void run()
+  TroopChatPie$10(TroopChatPie paramTroopChatPie, Looper paramLooper)
   {
-    TroopManager localTroopManager = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    TroopInfo localTroopInfo = localTroopManager.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (localTroopInfo == null) {
-      break label40;
-    }
-    label40:
-    while (StringUtil.a(localTroopInfo.troopowneruin)) {
-      return;
-    }
-    int i = 0;
-    int j = 0;
-    String str = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int k;
-    label86:
-    int m;
-    label89:
-    oidb_0x899.memberlist localmemberlist;
-    int n;
-    if (this.a == null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.what;
+    if (i != 1)
     {
-      k = 0;
-      m = 0;
-      if (m >= k) {
-        break label279;
-      }
-      localmemberlist = (oidb_0x899.memberlist)this.a.get(m);
-      if (localmemberlist == null) {
-        break label534;
-      }
-      if (localmemberlist.uint64_member_uin.has()) {
-        break label169;
-      }
-      n = j;
-      j = i;
-      i = n;
-    }
-    for (;;)
-    {
-      n = m + 1;
-      m = j;
-      j = i;
-      i = m;
-      m = n;
-      break label89;
-      k = this.a.size();
-      break label86;
-      label169:
-      long l = localmemberlist.uint64_member_uin.get();
-      n = localmemberlist.uint32_privilege.get();
-      if (l != 0L) {
-        if (n == 2)
+      if (i != 2)
+      {
+        if (i != 3)
         {
-          localStringBuilder.append(l).append("|");
-          if (String.valueOf(l).equals(str))
+          if (i != 4)
           {
-            n = 1;
-            i = j;
-            j = n;
-          }
-        }
-        else if (n == 1)
-        {
-          localTroopInfo.troopowneruin = String.valueOf(l);
-          if (localTroopInfo.troopowneruin.equals(str))
-          {
-            n = 1;
-            j = i;
-            i = n;
-            continue;
-            label279:
-            localTroopInfo.Administrator = localStringBuilder.toString();
-            if (!TextUtils.isEmpty(str))
-            {
-              if (i == 0) {
-                break label500;
-              }
-              localTroopInfo.dwCmdUinUinFlag |= 1L;
-              label313:
-              if (j == 0) {
-                break label517;
-              }
-            }
-            label517:
-            for (localTroopInfo.dwAdditionalFlag |= 1L;; localTroopInfo.dwAdditionalFlag &= 0xFFFFFFFE)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d(this.this$0.jdField_b_of_type_JavaLangString, 2, "onOIDB0X899_0_Ret: toopUin=" + this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a + ", admin=" + localTroopInfo.Administrator + ", owner=" + localTroopInfo.troopowneruin);
-              }
-              localTroopManager.b(localTroopInfo);
-              if (QLog.isColorLevel()) {
-                QLog.i(this.this$0.jdField_b_of_type_JavaLangString, 2, localTroopInfo.Administrator);
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("troop_gag", 2, "onOIDB0X899_0_Ret, sendEmptyMessage-TIMER_ID, hasDestory=" + this.this$0.I);
-              }
-              if (this.this$0.I) {
-                break;
-              }
-              this.this$0.jdField_b_of_type_AndroidOsHandler.removeMessages(1);
-              this.this$0.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(1);
+            if (i != 5) {
               return;
-              label500:
-              localTroopInfo.dwCmdUinUinFlag &= 0xFFFFFFFE;
-              break label313;
             }
+            String str = (String)paramMessage.obj;
+            i = paramMessage.arg1;
+            QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, str, i).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+            return;
+          }
+          paramMessage = (PlusPanel)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager.b(8);
+          if (paramMessage != null) {
+            paramMessage.a();
           }
         }
       }
-      label534:
-      n = i;
-      i = j;
-      j = n;
+      else
+      {
+        paramMessage = paramMessage.obj;
+        if ((paramMessage instanceof SelfGagInfo)) {
+          this.a.a((SelfGagInfo)paramMessage);
+        }
+      }
+    }
+    else {
+      this.a.a(null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.10
  * JD-Core Version:    0.7.0.1
  */

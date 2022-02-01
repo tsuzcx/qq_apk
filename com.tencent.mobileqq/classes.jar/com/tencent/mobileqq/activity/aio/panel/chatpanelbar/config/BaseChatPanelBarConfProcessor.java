@@ -41,16 +41,21 @@ public abstract class BaseChatPanelBarConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       ChatPanelBarConfBean localChatPanelBarConfBean = ChatPanelBarConfBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseChatPanelBarConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("BaseChatPanelBarConfProcessor", 2, localStringBuilder.toString());
       }
-      if (a() == 707) {
-        ChatPanelDisplayManager.a.put(Integer.valueOf(2131362384), Boolean.valueOf(localChatPanelBarConfBean.a()));
-      }
-      while (a() != 708) {
+      if (a() == 707)
+      {
+        ChatPanelDisplayManager.a.put(Integer.valueOf(2131362340), Boolean.valueOf(localChatPanelBarConfBean.a()));
         return localChatPanelBarConfBean;
       }
-      ChatPanelDisplayManager.b.put(Integer.valueOf(2131362384), Boolean.valueOf(localChatPanelBarConfBean.a()));
+      if (a() == 708) {
+        ChatPanelDisplayManager.b.put(Integer.valueOf(2131362340), Boolean.valueOf(localChatPanelBarConfBean.a()));
+      }
       return localChatPanelBarConfBean;
     }
     return new ChatPanelBarConfBean();
@@ -92,7 +97,7 @@ public abstract class BaseChatPanelBarConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.config.BaseChatPanelBarConfProcessor
  * JD-Core Version:    0.7.0.1
  */

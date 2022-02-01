@@ -38,14 +38,15 @@ public class FaceBeautyManager
   
   public static void removeFaceBeauty(String paramString)
   {
-    if ((faceBeautys != null) && (paramString != null)) {
-      faceBeautys.remove(paramString);
+    Map localMap = faceBeautys;
+    if ((localMap != null) && (paramString != null)) {
+      localMap.remove(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.manager.FaceBeautyManager
  * JD-Core Version:    0.7.0.1
  */

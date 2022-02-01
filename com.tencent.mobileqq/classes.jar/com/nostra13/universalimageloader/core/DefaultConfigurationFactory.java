@@ -61,21 +61,18 @@ public class DefaultConfigurationFactory
   public static Executor createExecutor(int paramInt1, int paramInt2, QueueProcessingType paramQueueProcessingType)
   {
     int i;
-    if (paramQueueProcessingType == QueueProcessingType.LIFO)
-    {
+    if (paramQueueProcessingType == QueueProcessingType.LIFO) {
       i = 1;
-      if (i == 0) {
-        break label52;
-      }
-    }
-    label52:
-    for (paramQueueProcessingType = new LIFOLinkedBlockingDeque();; paramQueueProcessingType = new LinkedBlockingQueue())
-    {
-      paramQueueProcessingType = (BlockingQueue)paramQueueProcessingType;
-      return new ThreadPoolExecutor(paramInt1, paramInt1, 0L, TimeUnit.MILLISECONDS, paramQueueProcessingType, createThreadFactory(paramInt2, "uil-pool-"));
+    } else {
       i = 0;
-      break;
     }
+    if (i != 0) {
+      paramQueueProcessingType = new LIFOLinkedBlockingDeque();
+    } else {
+      paramQueueProcessingType = new LinkedBlockingQueue();
+    }
+    paramQueueProcessingType = (BlockingQueue)paramQueueProcessingType;
+    return new ThreadPoolExecutor(paramInt1, paramInt1, 0L, TimeUnit.MILLISECONDS, paramQueueProcessingType, createThreadFactory(paramInt2, "uil-pool-"));
   }
   
   public static FileNameGenerator createFileNameGenerator()
@@ -99,18 +96,18 @@ public class DefaultConfigurationFactory
     if (paramInt == 0)
     {
       ActivityManager localActivityManager = (ActivityManager)paramContext.getSystemService("activity");
-      paramInt = localActivityManager.getMemoryClass();
-      if ((!hasHoneycomb()) || (!isLargeHeap(paramContext))) {
-        break label56;
+      i = localActivityManager.getMemoryClass();
+      paramInt = i;
+      if (hasHoneycomb())
+      {
+        paramInt = i;
+        if (isLargeHeap(paramContext)) {
+          paramInt = getLargeMemoryClass(localActivityManager);
+        }
       }
-      paramInt = getLargeMemoryClass(localActivityManager);
-    }
-    label56:
-    for (;;)
-    {
       i = paramInt * 1048576 / 8;
-      return new LruMemoryCache(i);
     }
+    return new LruMemoryCache(i);
   }
   
   private static File createReserveDiskCacheDir(Context paramContext)
@@ -152,7 +149,7 @@ public class DefaultConfigurationFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.DefaultConfigurationFactory
  * JD-Core Version:    0.7.0.1
  */

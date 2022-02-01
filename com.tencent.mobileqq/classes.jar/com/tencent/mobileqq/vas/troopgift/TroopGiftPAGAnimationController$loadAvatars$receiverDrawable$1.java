@@ -20,17 +20,20 @@ final class TroopGiftPAGAnimationController$loadAvatars$receiverDrawable$1
   {
     if (paramInt2 == 1)
     {
-      Object localObject = FaceDrawable.getFaceDrawable((AppInterface)((BaseActivity)TroopGiftPAGAnimationController.a(this.jdField_a_of_type_ComTencentMobileqqVasTroopgiftTroopGiftPAGAnimationController)).app, 1, this.jdField_a_of_type_ComTencentMobileqqVasTroopgiftTroopGiftData.giftData.dataForClient.recvUin, 3, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      TroopGiftComboView localTroopGiftComboView = TroopGiftPAGAnimationController.a(this.jdField_a_of_type_ComTencentMobileqqVasTroopgiftTroopGiftPAGAnimationController);
-      localObject = ImageUtil.b((Drawable)localObject);
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "ImageUtil.drawableToBitmap(receiverDrawable)");
-      localTroopGiftComboView.setReceiverAvatar((Bitmap)localObject);
+      Object localObject1 = (AppInterface)this.jdField_a_of_type_ComTencentMobileqqVasTroopgiftTroopGiftPAGAnimationController.a().app;
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqVasTroopgiftTroopGiftData.giftData.dataForClient.recvUin;
+      Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject2 = FaceDrawable.getFaceDrawable((AppInterface)localObject1, 1, (String)localObject2, 3, localDrawable, localDrawable);
+      localObject1 = TroopGiftPAGAnimationController.a(this.jdField_a_of_type_ComTencentMobileqqVasTroopgiftTroopGiftPAGAnimationController);
+      localObject2 = ImageUtil.b((Drawable)localObject2);
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "ImageUtil.drawableToBitmap(receiverDrawable)");
+      ((TroopGiftComboView)localObject1).setReceiverAvatar((Bitmap)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftPAGAnimationController.loadAvatars.receiverDrawable.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,7 @@ import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.recreate.IFModel;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -27,31 +28,40 @@ public class OfflineFileBubbleDownloadHandler
   
   private boolean a(FileManagerEntity paramFileManagerEntity)
   {
-    return ((paramFileManagerEntity.nOpType == 7) || (paramFileManagerEntity.nOpType == 28) || (paramFileManagerEntity.nOpType == 21) || (paramFileManagerEntity.nOpType == 22) || (paramFileManagerEntity.nOpType == 3) || (paramFileManagerEntity.nOpType == 24) || (paramFileManagerEntity.nOpType == 25)) && ((paramFileManagerEntity.status == 1) || (paramFileManagerEntity.status == -1));
+    if ((paramFileManagerEntity.nOpType == 7) || (paramFileManagerEntity.nOpType == 28) || (paramFileManagerEntity.nOpType == 21) || (paramFileManagerEntity.nOpType == 22) || (paramFileManagerEntity.nOpType == 3) || (paramFileManagerEntity.nOpType == 24) || (paramFileManagerEntity.nOpType == 25))
+    {
+      if (paramFileManagerEntity.status == 1) {
+        break label82;
+      }
+      if (paramFileManagerEntity.status == -1) {
+        return true;
+      }
+    }
+    return false;
+    label82:
+    return true;
   }
   
   private boolean b(FileManagerEntity paramFileManagerEntity)
   {
-    if (paramFileManagerEntity.nOpType != 1) {}
-    while ((paramFileManagerEntity.status != -1) && (paramFileManagerEntity.status != 3) && (paramFileManagerEntity.status != 0) && (paramFileManagerEntity.status != 13)) {
+    if (paramFileManagerEntity.nOpType != 1) {
       return false;
+    }
+    if ((paramFileManagerEntity.status != -1) && (paramFileManagerEntity.status != 3) && (paramFileManagerEntity.status != 0)) {
+      return paramFileManagerEntity.status == 13;
     }
     return true;
   }
   
   private boolean c(FileManagerEntity paramFileManagerEntity)
   {
-    boolean bool = true;
-    if (paramFileManagerEntity.nOpType != 0) {}
-    while ((paramFileManagerEntity.status != 1) && (paramFileManagerEntity.status != -1)) {
+    if (paramFileManagerEntity.nOpType != 0) {
       return false;
     }
-    if (!FileUtils.b(paramFileManagerEntity.getFilePath())) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+    if ((paramFileManagerEntity.status != 1) && (paramFileManagerEntity.status != -1)) {
+      return false;
     }
+    return FileUtils.fileExistsAndNotEmpty(paramFileManagerEntity.getFilePath()) ^ true;
   }
   
   protected FileManagerEntity a(ChatMessage paramChatMessage)
@@ -67,74 +77,98 @@ public class OfflineFileBubbleDownloadHandler
   
   protected CircleFileStateView a(BaseBubbleBuilder.ViewHolder paramViewHolder)
   {
-    if (paramViewHolder == null) {}
-    while (!(paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+    if (paramViewHolder == null) {
       return null;
     }
-    return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+    if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+    }
+    return null;
   }
   
   protected void a(View paramView, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage, int paramInt)
   {
-    if (paramChatMessage == null) {}
-    do
+    if (paramChatMessage == null) {
+      return;
+    }
+    paramView = new StringBuilder();
+    paramView.append("handleDownloadClick: type[");
+    paramView.append(paramInt);
+    paramView.append("]");
+    QLog.i("OfflineFileBubbleDownloadHandler", 1, paramView.toString());
+    if (paramInt == -1) {
+      return;
+    }
+    paramView = a(paramChatMessage);
+    if (paramView == null) {
+      return;
+    }
+    if (paramInt == 0)
     {
-      do
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A888", "0X800A888", 0, 0, "", "", "", "");
+      if (paramView.getCloudType() == 0)
       {
-        do
-        {
-          return;
-          QLog.i("OfflineFileBubbleDownloadHandler", 1, "handleDownloadClick: type[" + paramInt + "]");
-        } while (paramInt == -1);
-        paramView = a(paramChatMessage);
-      } while (paramView == null);
-      if (paramInt == 0)
-      {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A888", "0X800A888", 0, 0, "", "", "", "");
-        if (paramView.getCloudType() == 0)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramView.nSessionId);
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramView.nSessionId);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramView.nSessionId);
         return;
       }
-    } while (paramInt != 1);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A887", "0X800A887", 0, 0, "", "", "", "");
-    FileModel.a(paramView).a(false, this.jdField_a_of_type_AndroidContentContext, new OfflineFileBubbleDownloadHandler.1(this, paramView));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramView.nSessionId);
+      return;
+    }
+    if (paramInt == 1)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A887", "0X800A887", 0, 0, "", "", "", "");
+      FileModel.a(paramView).a(false, this.jdField_a_of_type_AndroidContentContext, new OfflineFileBubbleDownloadHandler.1(this, paramView));
+    }
   }
   
   protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, CircleFileStateView paramCircleFileStateView)
   {
-    if (paramViewHolder == null) {}
-    while (!(paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+    if (paramViewHolder == null) {
       return;
     }
-    ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramCircleFileStateView;
+    if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramCircleFileStateView;
+    }
   }
   
   protected boolean a(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
-    do
+    boolean bool2 = false;
+    if (paramChatMessage == null) {
+      return false;
+    }
+    paramChatMessage = a(paramChatMessage);
+    if (paramChatMessage == null) {
+      return false;
+    }
+    int i = FileManagerUtil.a(paramChatMessage.fileName);
+    if (i != 0)
     {
-      int i;
-      do
-      {
-        do
-        {
-          return false;
-          paramChatMessage = a(paramChatMessage);
-        } while (paramChatMessage == null);
-        i = FileManagerUtil.a(paramChatMessage.fileName);
-      } while ((i == 0) || (i == 2));
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubbleDownloadHandler", 1, "needShowDownloadIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "] fileName[" + paramChatMessage.fileName + "] uniseq[" + paramChatMessage.uniseq + "]");
+      if (i == 2) {
+        return false;
       }
-    } while (16 == paramChatMessage.status);
-    if ((paramChatMessage.nOpType == -1) && (paramChatMessage.status == -1)) {}
-    for (boolean bool2 = true;; bool2 = false)
-    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("needShowDownloadIcon: current file nOpType[");
+        localStringBuilder.append(paramChatMessage.nOpType);
+        localStringBuilder.append("] status[");
+        localStringBuilder.append(paramChatMessage.status);
+        localStringBuilder.append("] fileName[");
+        localStringBuilder.append(paramChatMessage.fileName);
+        localStringBuilder.append("] uniseq[");
+        localStringBuilder.append(paramChatMessage.uniseq);
+        localStringBuilder.append("]");
+        QLog.i("OfflineFileBubbleDownloadHandler", 1, localStringBuilder.toString());
+      }
+      if (16 == paramChatMessage.status) {
+        return false;
+      }
+      if ((paramChatMessage.nOpType == -1) && (paramChatMessage.status == -1)) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
       boolean bool1;
       if (paramChatMessage.nOpType != 0)
       {
@@ -173,38 +207,59 @@ public class OfflineFileBubbleDownloadHandler
       if (c(paramChatMessage)) {
         bool2 = true;
       }
-      if ((bool2) && (FileUtils.b(paramChatMessage.getFilePath()))) {
-        break;
+      if ((bool2) && (FileUtils.fileExistsAndNotEmpty(paramChatMessage.getFilePath()))) {
+        return false;
       }
-      return bool2;
     }
+    return bool2;
   }
   
   protected boolean b(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
-    do
+    boolean bool2 = false;
+    if (paramChatMessage == null) {
+      return false;
+    }
+    paramChatMessage = a(paramChatMessage);
+    if (paramChatMessage == null) {
+      return false;
+    }
+    int i = FileManagerUtil.a(paramChatMessage.fileName);
+    boolean bool1 = bool2;
+    if (i != 0)
     {
-      int i;
-      do
-      {
-        do
-        {
-          return false;
-          paramChatMessage = a(paramChatMessage);
-        } while (paramChatMessage == null);
-        i = FileManagerUtil.a(paramChatMessage.fileName);
-      } while ((i == 0) || (i == 2));
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubbleDownloadHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+      if (i == 2) {
+        return false;
       }
-    } while ((paramChatMessage.nOpType != 1) || ((paramChatMessage.status != 2) && (paramChatMessage.status != 18)));
-    return true;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("needShowPauseIcon: current file nOpType[");
+        localStringBuilder.append(paramChatMessage.nOpType);
+        localStringBuilder.append("] status[");
+        localStringBuilder.append(paramChatMessage.status);
+        localStringBuilder.append("]");
+        QLog.i("OfflineFileBubbleDownloadHandler", 1, localStringBuilder.toString());
+      }
+      bool1 = bool2;
+      if (paramChatMessage.nOpType == 1) {
+        if (paramChatMessage.status != 2)
+        {
+          bool1 = bool2;
+          if (paramChatMessage.status != 18) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.OfflineFileBubbleDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

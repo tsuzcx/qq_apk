@@ -12,20 +12,17 @@ class TroopTeamWorkFileSearchDialog$3
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramMotionEvent.getAction() == 1)
     {
-    }
-    for (;;)
-    {
-      return false;
       InputMethodUtil.b(paramView);
       this.a.d();
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.3
  * JD-Core Version:    0.7.0.1
  */

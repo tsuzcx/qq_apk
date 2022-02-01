@@ -13,19 +13,21 @@ class ForwardSdkBaseOption$6
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, HardCodeUtil.a(2131704831), 0).a();
-    }
-    while (1 != paramMessage.what) {
+    if (paramMessage.what == 0)
+    {
+      QQToast.a(this.a.a, HardCodeUtil.a(2131704907), 0).a();
       return;
     }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    if (1 == paramMessage.what)
+    {
+      this.a.a.setResult(-1);
+      this.a.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.6
  * JD-Core Version:    0.7.0.1
  */

@@ -39,38 +39,44 @@ public abstract class OnPluginInstallListener$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.pluginsdk.OnPluginInstallListener");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pluginsdk.OnPluginInstallListener");
-      onInstallBegin(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 4)
+          {
+            if (paramInt1 != 1598968902) {
+              return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+            }
+            paramParcel2.writeString("com.tencent.mobileqq.pluginsdk.OnPluginInstallListener");
+            return true;
+          }
+          paramParcel1.enforceInterface("com.tencent.mobileqq.pluginsdk.OnPluginInstallListener");
+          onInstallError(paramParcel1.readString(), paramParcel1.readInt());
+          paramParcel2.writeNoException();
+          return true;
+        }
+        paramParcel1.enforceInterface("com.tencent.mobileqq.pluginsdk.OnPluginInstallListener");
+        onInstallFinish(paramParcel1.readString());
+        paramParcel2.writeNoException();
+        return true;
+      }
       paramParcel1.enforceInterface("com.tencent.mobileqq.pluginsdk.OnPluginInstallListener");
       onInstallDownloadProgress(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pluginsdk.OnPluginInstallListener");
-      onInstallFinish(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
     }
     paramParcel1.enforceInterface("com.tencent.mobileqq.pluginsdk.OnPluginInstallListener");
-    onInstallError(paramParcel1.readString(), paramParcel1.readInt());
+    onInstallBegin(paramParcel1.readString());
     paramParcel2.writeNoException();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub
  * JD-Core Version:    0.7.0.1
  */

@@ -27,14 +27,15 @@ public final class CommSetRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.strRsp != null) {
-      paramJceOutputStream.write(this.strRsp, 1);
+    String str = this.strRsp;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.CommSetRsp
  * JD-Core Version:    0.7.0.1
  */

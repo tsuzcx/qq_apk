@@ -33,7 +33,7 @@ final class CopyOnWriteFileSystem$Compat21
         return null;
       }
       boolean bool = OsConstants.S_ISDIR(paramString1.st_mode);
-      paramString1 = new FileSystem.FileEntry(paramFileSystem, paramString2, paramString3, paramString1.st_size, paramString1.st_blocks * 512L, 1000L * paramString1.st_mtime, bool);
+      paramString1 = new FileSystem.FileEntry(paramFileSystem, paramString2, paramString3, paramString1.st_size, paramString1.st_blocks * 512L, paramString1.st_mtime * 1000L, bool);
       return paramString1;
     }
     catch (ErrnoException paramString1) {}
@@ -42,7 +42,7 @@ final class CopyOnWriteFileSystem$Compat21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.CopyOnWriteFileSystem.Compat21
  * JD-Core Version:    0.7.0.1
  */

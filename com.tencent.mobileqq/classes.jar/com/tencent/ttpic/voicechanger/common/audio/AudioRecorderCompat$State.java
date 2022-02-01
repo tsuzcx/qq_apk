@@ -16,20 +16,26 @@ public class AudioRecorderCompat$State
   
   private String getStateName(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    default: 
-      return "STATE_ERROR";
-    case 2: 
-      return "STATE_IDLE";
-    case 4: 
+      if (paramInt != 4)
+      {
+        if (paramInt != 8)
+        {
+          if (paramInt != 16)
+          {
+            if (paramInt != 32) {
+              return "STATE_ERROR";
+            }
+            return "STATE_STOPPED";
+          }
+          return "STATE_PAUSED";
+        }
+        return "STATE_STARTED";
+      }
       return "STATE_INITIALIZED";
-    case 8: 
-      return "STATE_STARTED";
-    case 16: 
-      return "STATE_PAUSED";
     }
-    return "STATE_STOPPED";
+    return "STATE_IDLE";
   }
   
   public boolean equalState(int... paramVarArgs)
@@ -51,6 +57,10 @@ public class AudioRecorderCompat$State
       return bool;
     }
     finally {}
+    for (;;)
+    {
+      throw paramVarArgs;
+    }
   }
   
   public int state()
@@ -69,14 +79,24 @@ public class AudioRecorderCompat$State
   
   public String toString()
   {
-    return "State[" + getStateName(this.state) + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("State[");
+    localStringBuilder.append(getStateName(this.state));
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void transfer(int paramInt)
   {
     try
     {
-      LogUtils.i(AudioRecorderCompat.TAG, "switch state: " + getStateName(this.state) + " -> " + getStateName(paramInt));
+      String str = AudioRecorderCompat.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("switch state: ");
+      localStringBuilder.append(getStateName(this.state));
+      localStringBuilder.append(" -> ");
+      localStringBuilder.append(getStateName(paramInt));
+      LogUtils.i(str, localStringBuilder.toString());
       this.state = paramInt;
       this.this$0.mCurrentState.notifyAll();
       return;
@@ -90,7 +110,7 @@ public class AudioRecorderCompat$State
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.AudioRecorderCompat.State
  * JD-Core Version:    0.7.0.1
  */

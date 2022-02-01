@@ -48,17 +48,17 @@ public class SendMessageHandler$SendMessageRunnable
         localStringBuilder.append(String.valueOf(this.e));
       }
     }
-    for (;;)
+    else
     {
-      localStringBuilder.append("}");
-      return localStringBuilder.toString();
       localStringBuilder.append(",status:RUNNING");
     }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable
  * JD-Core Version:    0.7.0.1
  */

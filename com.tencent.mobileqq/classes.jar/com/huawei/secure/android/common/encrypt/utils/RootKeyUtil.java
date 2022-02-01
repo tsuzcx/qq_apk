@@ -5,8 +5,8 @@ import android.os.Build.VERSION;
 
 public class RootKeyUtil
 {
-  private static final String TAG = RootKeyUtil.class.getSimpleName();
-  private byte[] S = null;
+  private static final String TAG = "RootKeyUtil";
+  private byte[] T = null;
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
@@ -19,11 +19,11 @@ public class RootKeyUtil
     if (Build.VERSION.SDK_INT < 26)
     {
       b.d(TAG, "initRootKey: sha1");
-      this.S = BaseKeyUtil.exportRootKey(paramString1, paramString2, paramString3, paramArrayOfByte, false);
+      this.T = BaseKeyUtil.exportRootKey(paramString1, paramString2, paramString3, paramArrayOfByte, false);
       return;
     }
     b.d(TAG, "initRootKey: sha256");
-    this.S = BaseKeyUtil.exportRootKey(paramString1, paramString2, paramString3, paramArrayOfByte, true);
+    this.T = BaseKeyUtil.exportRootKey(paramString1, paramString2, paramString3, paramArrayOfByte, true);
   }
   
   public static RootKeyUtil newInstance(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -42,17 +42,17 @@ public class RootKeyUtil
   
   public byte[] getRootKey()
   {
-    return (byte[])this.S.clone();
+    return (byte[])this.T.clone();
   }
   
   public String getRootKeyHex()
   {
-    return HexUtil.byteArray2HexStr(this.S);
+    return HexUtil.byteArray2HexStr(this.T);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.encrypt.utils.RootKeyUtil
  * JD-Core Version:    0.7.0.1
  */

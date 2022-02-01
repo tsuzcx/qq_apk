@@ -18,14 +18,16 @@ public class RichProto$RichProtoReq$GroupPttDownReq
     localStringBuilder.append(this.groupFileKey);
     localStringBuilder.append(" md5:");
     localStringBuilder.append(this.md5);
-    localStringBuilder.append(" voiceType:").append(this.voiceType);
-    localStringBuilder.append(" downType:").append(this.downType);
+    localStringBuilder.append(" voiceType:");
+    localStringBuilder.append(this.voiceType);
+    localStringBuilder.append(" downType:");
+    localStringBuilder.append(this.downType);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.GroupPttDownReq
  * JD-Core Version:    0.7.0.1
  */

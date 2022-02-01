@@ -13,19 +13,13 @@ import com.tencent.biz.AuthorizeConfig;
 import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.CustomWebChromeClient;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountH5AbilityPlugin;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.AIOOpenWebMonitor;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vas.URLInterceptManager;
 import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
+import com.tencent.mobileqq.webview.swift.injector.IAbsBaseWebViewActivityInjector;
+import com.tencent.mobileqq.webview.swift.utils.BaseOpenWebMonitor;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
@@ -49,36 +43,54 @@ class AbsBaseWebViewActivity$WebViewClientImpl
   
   protected WebResourceResponse a(WebView paramWebView, String paramString)
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    if (paramString.startsWith("mqqpa://resourceid/")) {
-      localObject1 = ((IPublicAccountH5AbilityPlugin)QRoute.api(IPublicAccountH5AbilityPlugin.class)).getWebResponse(paramString);
+    if ((AbsBaseWebViewActivity.access$000(this.b) != null) && (AbsBaseWebViewActivity.access$000(this.b).a(paramString))) {
+      return AbsBaseWebViewActivity.access$000(this.b).a(paramString);
     }
-    WebViewPluginEngine localWebViewPluginEngine;
-    do
+    WebViewPluginEngine localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
+    Object localObject2 = null;
+    StringBuilder localStringBuilder = null;
+    if (localWebViewPluginEngine == null) {
+      return null;
+    }
+    Object localObject1;
+    if (!TextUtils.isEmpty(paramString))
     {
-      return localObject1;
-      localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
-    } while (localWebViewPluginEngine == null);
-    Object localObject2;
-    if (!TextUtils.isEmpty(paramString)) {
       if (paramString.startsWith("https://jsbridge/"))
       {
         paramWebView = paramString.replace("https://jsbridge/", "jsbridge://");
-        localObject2 = paramWebView;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("WebLog_WebViewBase", 2, "doInterceptRequest: jsapi request with http(s), url = " + paramWebView);
-          localObject2 = paramWebView;
+      }
+      else
+      {
+        paramWebView = paramString;
+        if (paramString.startsWith("http://jsbridge/")) {
+          paramWebView = paramString.replace("http://jsbridge/", "jsbridge://");
         }
       }
-    }
-    for (;;)
-    {
-      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).startsWith("jsbridge:"))) {
-        break label261;
+      localObject1 = paramWebView;
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("doInterceptRequest: jsapi request with http(s), url = ");
+        paramString.append(paramWebView);
+        QLog.d("WebLog_WebViewBase", 2, paramString.toString());
+        localObject1 = paramWebView;
       }
-      this.b.mHandler.post(new AbsBaseWebViewActivity.WebViewClientImpl.1(this, localWebViewPluginEngine, (String)localObject2));
+    }
+    else
+    {
+      localObject1 = paramString;
+      if (QLog.isColorLevel())
+      {
+        paramWebView = new StringBuilder();
+        paramWebView.append("doInterceptRequest: default request, url = ");
+        paramWebView.append(paramString);
+        QLog.d("WebLog_WebViewBase", 2, paramWebView.toString());
+        localObject1 = paramString;
+      }
+    }
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).startsWith("jsbridge:")))
+    {
+      this.b.mHandler.post(new AbsBaseWebViewActivity.WebViewClientImpl.1(this, localWebViewPluginEngine, (String)localObject1));
       localObject1 = new WebResourceResponse("text/html", "utf-8", null);
       paramString = ((WebResourceResponse)localObject1).getResponseHeaders();
       paramWebView = paramString;
@@ -88,82 +100,64 @@ class AbsBaseWebViewActivity$WebViewClientImpl
       paramWebView.put("cache-control", "must-revalidate，no-store");
       ((WebResourceResponse)localObject1).setResponseHeaders(paramWebView);
       return localObject1;
-      paramWebView = paramString;
-      if (!paramString.startsWith("http://jsbridge/")) {
-        break;
-      }
-      paramWebView = paramString.replace("http://jsbridge/", "jsbridge://");
-      break;
-      localObject2 = paramString;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("WebLog_WebViewBase", 2, "doInterceptRequest: default request, url = " + paramString);
-        localObject2 = paramString;
-      }
     }
     for (;;)
     {
       try
       {
-        label261:
-        if (this.b.sonicClient != null)
-        {
-          paramWebView = this.b.sonicClient.getSession().onClientRequestResource((String)localObject2);
-          if (!(paramWebView instanceof WebResourceResponse)) {
-            break label412;
-          }
-          paramWebView = (WebResourceResponse)paramWebView;
+        if (this.b.sonicClient == null) {
+          break label436;
         }
-      }
-      catch (Exception paramString)
-      {
-        label338:
-        paramWebView = localObject3;
-        label349:
-        QLog.e("WebLog_WebViewBase", 1, "shouldInterceptRequest:resource intercept by sonic error -> " + paramString.getMessage());
-        continue;
-      }
-      for (;;)
-      {
+        paramString = this.b.sonicClient.getSession().onClientRequestResource((String)localObject1);
+        paramWebView = localObject2;
+        if (!(paramString instanceof WebResourceResponse)) {
+          break label383;
+        }
+        paramWebView = (WebResourceResponse)paramString;
         try
         {
           QLog.i("WebLog_WebViewBase", 1, "doInterceptRequest: resource intercept by sonic.");
-          localObject1 = paramWebView;
-          if (paramWebView != null) {
-            break;
-          }
         }
-        catch (Exception paramString)
-        {
-          break label349;
-          break label338;
-        }
+        catch (Exception paramString) {}
+        localStringBuilder = new StringBuilder();
+      }
+      catch (Exception paramString)
+      {
+        paramWebView = localStringBuilder;
+      }
+      localStringBuilder.append("shouldInterceptRequest:resource intercept by sonic error -> ");
+      localStringBuilder.append(paramString.getMessage());
+      QLog.e("WebLog_WebViewBase", 1, localStringBuilder.toString());
+      label383:
+      if (paramWebView == null) {
         try
         {
-          paramString = localWebViewPluginEngine.a((String)localObject2, 8L);
-          if (!(paramString instanceof WebResourceResponse)) {
-            continue;
+          paramString = localWebViewPluginEngine.a((String)localObject1, 8L);
+          if ((paramString instanceof WebResourceResponse))
+          {
+            paramString = (WebResourceResponse)paramString;
+            return paramString;
           }
-          paramString = (WebResourceResponse)paramString;
-          paramWebView = paramString;
-          return paramWebView;
         }
         catch (Exception paramString)
         {
           QLog.e("WebLog_WebViewBase", 1, new Object[] { "shouldInterceptRequest error:!", paramString.getMessage() });
-          return paramWebView;
         }
       }
-      paramWebView = null;
-      continue;
-      label412:
-      paramWebView = null;
+      return paramWebView;
+      label436:
+      paramString = null;
     }
   }
   
   public void onDetectedBlankScreen(String paramString, int paramInt)
   {
-    QLog.i("WebLog_WebViewBase", 1, "onDetectedBlankScreen, status: " + paramInt + ", url:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDetectedBlankScreen, status: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", url:");
+    localStringBuilder.append(paramString);
+    QLog.i("WebLog_WebViewBase", 1, localStringBuilder.toString());
     this.b.mStatistics.a(paramString, paramInt);
   }
   
@@ -171,22 +165,25 @@ class AbsBaseWebViewActivity$WebViewClientImpl
   {
     if ((!this.b.isDestroyed) && (!this.b.isFinishing()))
     {
-      QLog.d("WebLog_WebViewBase", 1, "onPageFinished:" + paramString);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPageFinished:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("WebLog_WebViewBase", 1, ((StringBuilder)localObject).toString());
       super.onPageFinished(paramWebView, paramString);
       this.b.onPageFinished(paramWebView, paramString);
       if (this.b.sonicClient != null) {
         this.b.sonicClient.getSession().onClientPageFinished(paramString);
       }
-      WebViewPluginEngine localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        localWebViewPluginEngine.a(paramString, 8589934594L, null);
+      localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if (localObject != null) {
+        ((WebViewPluginEngine)localObject).a(paramString, 8589934594L, null);
       }
       if ((Build.VERSION.SDK_INT >= 19) && (!this.b.isDestroyed) && (this.b.mChromeClient != null))
       {
         paramString = paramWebView.getTitle();
         this.b.mChromeClient.onReceivedTitle(paramWebView, paramString);
       }
-      AIOOpenWebMonitor.b(this.b.getIntent());
+      BaseOpenWebMonitor.b(this.b.getIntent());
       return;
     }
     QLog.e("WebLog_WebViewBase", 1, "call onPageFinished after destroy.");
@@ -197,32 +194,45 @@ class AbsBaseWebViewActivity$WebViewClientImpl
     JsInjector.getInstance().onPageStarted(paramWebView);
     if ((!this.b.isDestroyed) && (!this.b.isFinishing()))
     {
-      QLog.d("WebLog_WebViewBase", 1, "onPageStarted:" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageStarted:");
+      localStringBuilder.append(paramString);
+      QLog.d("WebLog_WebViewBase", 1, localStringBuilder.toString());
       super.onPageStarted(paramWebView, paramString, paramBitmap);
       this.b.onPageStarted(paramWebView, paramString, paramBitmap);
-      WebViewPluginEngine localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        localWebViewPluginEngine.a(paramString, 8589934593L, null);
+      paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
+      if (paramWebView != null) {
+        paramWebView.a(paramString, 8589934593L, null);
       }
-      this.b.onWebViewClientImplPageStarted(paramWebView, paramString, paramBitmap);
-      return;
     }
-    QLog.e("WebLog_WebViewBase", 1, "call onPageStarted after destroy.");
+    else
+    {
+      QLog.e("WebLog_WebViewBase", 1, "call onPageStarted after destroy.");
+    }
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     if ((!this.b.isDestroyed) && (!this.b.isFinishing()))
     {
-      QLog.e("WebLog_WebViewBase", 1, "onReceivedError:" + paramInt + ", desc=" + paramString1 + ", url=" + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceivedError:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", desc=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", url=");
+      localStringBuilder.append(paramString2);
+      QLog.e("WebLog_WebViewBase", 1, localStringBuilder.toString());
       this.b.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
       paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
       if (paramWebView != null) {
         paramWebView.a(paramString2, 8589934595L, paramInt);
       }
-      return;
     }
-    QLog.e("WebLog_WebViewBase", 1, "call onReceivedError after destroy.");
+    else
+    {
+      QLog.e("WebLog_WebViewBase", 1, "call onReceivedError after destroy.");
+    }
   }
   
   public void onReceivedHttpError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse)
@@ -231,9 +241,14 @@ class AbsBaseWebViewActivity$WebViewClientImpl
     {
       if ((paramWebView != null) && (paramWebResourceRequest != null) && (paramWebResourceResponse != null))
       {
-        QLog.e("WebLog_WebViewBase", 1, "onReceivedHttpError:" + paramWebResourceRequest.getUrl() + "Occur error, resp code=" + paramWebResourceResponse.getStatusCode());
-        String str = paramWebView.getUrl();
-        if ((str != null) && (AuthorizeConfig.a().a(str)))
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onReceivedHttpError:");
+        ((StringBuilder)localObject).append(paramWebResourceRequest.getUrl());
+        ((StringBuilder)localObject).append("Occur error, resp code=");
+        ((StringBuilder)localObject).append(paramWebResourceResponse.getStatusCode());
+        QLog.e("WebLog_WebViewBase", 1, ((StringBuilder)localObject).toString());
+        localObject = paramWebView.getUrl();
+        if ((localObject != null) && (AuthorizeConfig.a().a((String)localObject)))
         {
           paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
           if (paramWebView != null)
@@ -244,13 +259,14 @@ class AbsBaseWebViewActivity$WebViewClientImpl
             this.a.put("requestData", paramWebResourceRequest);
             this.a.put("responseData", paramWebResourceResponse);
             this.a.put("errorCode", Integer.valueOf(paramWebResourceResponse.getStatusCode()));
-            paramWebView.a(str, 64L, this.a);
+            paramWebView.a((String)localObject, 64L, this.a);
           }
         }
       }
-      return;
     }
-    QLog.e("WebLog_WebViewBase", 1, "call onReceivedHttpError after destroy.");
+    else {
+      QLog.e("WebLog_WebViewBase", 1, "call onReceivedHttpError after destroy.");
+    }
   }
   
   public void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
@@ -259,141 +275,134 @@ class AbsBaseWebViewActivity$WebViewClientImpl
     {
       SslCertificate localSslCertificate = paramSslError.getCertificate();
       String str = paramWebView.getUrl();
-      paramSslError = new StringBuilder().append("onReceivedSslError:").append(paramSslError.getPrimaryError()).append(", cert=");
-      if (localSslCertificate == null) {}
-      for (paramWebView = "null";; paramWebView = localSslCertificate.toString())
-      {
-        QLog.e("WebLog_WebViewBase", 1, paramWebView + ", pageUrl=" + Util.b(str, new String[0]));
-        paramSslErrorHandler.cancel();
-        return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceivedSslError:");
+      localStringBuilder.append(paramSslError.getPrimaryError());
+      localStringBuilder.append(", cert=");
+      if (localSslCertificate == null) {
+        paramWebView = "null";
+      } else {
+        paramWebView = localSslCertificate.toString();
       }
+      localStringBuilder.append(paramWebView);
+      localStringBuilder.append(", pageUrl=");
+      localStringBuilder.append(Util.b(str, new String[0]));
+      QLog.e("WebLog_WebViewBase", 1, localStringBuilder.toString());
+      paramSslErrorHandler.cancel();
+      return;
     }
     QLog.e("WebLog_WebViewBase", 1, "call onReceivedSslError after destroy.");
   }
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if ((this.b.isDestroyed) || (this.b.isFinishing()))
+    Object localObject2 = paramString;
+    if ((!this.b.isDestroyed) && (!this.b.isFinishing()))
     {
-      QLog.e("WebLog_WebViewBase", 1, "call shouldOverrideUrlLoading after destroy.");
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "shouldOverrideUrlLoading:" + Util.b(paramString, new String[0]));
-    }
-    String str = paramString;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (!paramString.startsWith("https://jsbridge/")) {
-        break label137;
-      }
-      str = paramString.replace("https://jsbridge/", "jsbridge://");
-    }
-    for (;;)
-    {
-      AIOOpenWebMonitor.b(this.b.getIntent(), str);
-      if ((!TextUtils.isEmpty(str)) && (!"about:blank;".equals(str)) && (!"about:blank".equals(str))) {
-        break;
-      }
-      return true;
-      label137:
-      str = paramString;
-      if (paramString.startsWith("http://jsbridge/")) {
-        str = paramString.replace("http://jsbridge/", "jsbridge://");
-      }
-    }
-    paramString = SwiftWebViewUtils.a(str);
-    Util.a("urlInterceptManager");
-    Object localObject;
-    if ((("http".equals(paramString)) || ("data".equals(paramString))) && ((this.b.getActivity() instanceof QQBrowserActivity)))
-    {
-      localObject = ((QQBrowserActivity)this.b.getActivity()).getCurrentWebViewFragment();
-      if ((localObject != null) && (((WebViewFragment)localObject).browserApp != null) && (((WebViewFragment)localObject).browserApp.a != null))
+      if (QLog.isColorLevel())
       {
-        localObject = ((WebViewFragment)localObject).browserApp.a.a(str);
-        if (localObject != null)
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("shouldOverrideUrlLoading:");
+        ((StringBuilder)localObject1).append(Util.b((String)localObject2, new String[0]));
+        QLog.d("WebLog_WebViewBase", 2, ((StringBuilder)localObject1).toString());
+      }
+      Object localObject1 = localObject2;
+      if (!TextUtils.isEmpty(paramString)) {
+        if (((String)localObject2).startsWith("https://jsbridge/"))
         {
-          paramWebView = new Intent(this.b.getActivity(), JumpActivity.class);
-          paramWebView.setData(Uri.parse((String)localObject));
-          paramWebView.putExtra("from", "webview");
-          this.b.startActivity(paramWebView);
-          return true;
+          localObject1 = ((String)localObject2).replace("https://jsbridge/", "jsbridge://");
+        }
+        else
+        {
+          localObject1 = localObject2;
+          if (((String)localObject2).startsWith("http://jsbridge/")) {
+            localObject1 = ((String)localObject2).replace("http://jsbridge/", "jsbridge://");
+          }
         }
       }
-      else if (QLog.isColorLevel())
+      BaseOpenWebMonitor.b(this.b.getIntent(), (String)localObject1);
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!"about:blank;".equals(localObject1)))
       {
-        QLog.e("WebLog_WebViewBase", 2, "URLInterceptManager = null");
+        if ("about:blank".equals(localObject1)) {
+          return true;
+        }
+        paramString = SwiftWebViewUtils.b((String)localObject1);
+        if ((("http".equals(paramString)) || ("data".equals(paramString))) && (!((String)localObject1).contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
+          CustomWebView.addContextLog(Util.b((String)localObject1, new String[0]));
+        }
+        try
+        {
+          bool = "http".equals(paramString);
+          if ((bool) || ("https".equals(paramString)))
+          {
+            localObject2 = paramWebView.getHitTestResult();
+            if ((localObject2 != null) && (((WebView.HitTestResult)localObject2).getType() == 0))
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("shouldOverrideUrlLoading detect 302, url: ");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.i("WebLog_WebViewBase", 1, ((StringBuilder)localObject2).toString());
+              this.b.mRedirect302Url = ((String)localObject1);
+              SwiftBrowserCookieMonster.d();
+              this.b.mStatistics.e((String)localObject1);
+            }
+          }
+          localObject2 = ((CustomWebView)paramWebView).getPluginEngine();
+          if ((localObject2 != null) && (((WebViewPluginEngine)localObject2).a((String)localObject1))) {
+            return true;
+          }
+          if (this.b.shouldOverrideUrlLoading(paramWebView, (String)localObject1)) {
+            return true;
+          }
+          if ((!"http".equals(paramString)) && (!"https".equals(paramString)) && (!"data".equals(paramString)) && (!"file".equals(paramString)))
+          {
+            paramString = Uri.parse((String)localObject1);
+            localObject1 = paramString.getScheme();
+            if ((!this.b.isResume()) || ((System.currentTimeMillis() - this.b.mLastTouchTime >= 1000L) && (!this.b.authConfig.a(paramWebView.getUrl(), (String)localObject1).booleanValue()))) {
+              break label601;
+            }
+            paramWebView = new Intent("android.intent.action.VIEW", paramString);
+            paramWebView.addFlags(268435456);
+          }
+        }
+        catch (RuntimeException paramWebView)
+        {
+          boolean bool;
+          paramString = QLog.getStackTraceString(paramWebView);
+          if (paramString.length() > 255) {
+            paramWebView = paramString.substring(0, 255);
+          } else {
+            paramWebView = paramString;
+          }
+          ReportController.b(null, "P_CliOper", "BizTechReport", "", "webview", "exception", 0, 1, 0, paramWebView, "", "", "");
+          QLog.e("WebLog_WebViewBase", 1, paramString);
+        }
       }
-    }
-    Util.b("urlInterceptManager");
-    if ((("http".equals(paramString)) || ("data".equals(paramString))) && (!str.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
-      CustomWebView.addContextLog(Util.b(str, new String[0]));
     }
     try
     {
-      if (("http".equals(paramString)) || ("https".equals(paramString)))
-      {
-        localObject = paramWebView.getHitTestResult();
-        if ((localObject != null) && (((WebView.HitTestResult)localObject).getType() == 0))
-        {
-          QLog.i("WebLog_WebViewBase", 1, "shouldOverrideUrlLoading detect 302, url: " + str);
-          this.b.mRedirect302Url = str;
-          SwiftBrowserCookieMonster.d();
-          this.b.mStatistics.e(str);
-        }
-      }
-      localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((localObject != null) && (((WebViewPluginEngine)localObject).a(str))) {
-        return true;
-      }
-      if (this.b.shouldOverrideUrlLoading(paramWebView, str)) {
-        return true;
-      }
-      if (("http".equals(paramString)) || ("https".equals(paramString)) || ("data".equals(paramString)) || ("file".equals(paramString)))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(str, 16L, null))) {
-          return true;
-        }
-      }
-      else
-      {
-        paramString = Uri.parse(str);
-        str = paramString.getScheme();
-        if ((this.b.isResume()) && ((System.currentTimeMillis() - this.b.mLastTouchTime < 1000L) || (this.b.authConfig.a(paramWebView.getUrl(), str).booleanValue())))
-        {
-          paramWebView = new Intent("android.intent.action.VIEW", paramString);
-          paramWebView.addFlags(268435456);
-        }
-      }
-      label646:
-      return false;
+      this.b.startActivity(paramWebView);
+      return true;
     }
-    catch (RuntimeException paramWebView)
+    catch (ActivityNotFoundException paramWebView) {}
+    if (localObject2 != null)
     {
-      try
-      {
-        this.b.startActivity(paramWebView);
+      bool = ((WebViewPluginEngine)localObject2).a((String)localObject1, 16L, null);
+      if (bool) {
         return true;
-        paramWebView = paramWebView;
-        paramString = QLog.getStackTraceString(paramWebView);
-        if (paramString.length() > 255) {}
-        for (paramWebView = paramString.substring(0, 255);; paramWebView = paramString)
-        {
-          ReportController.b(null, "P_CliOper", "BizTechReport", "", "webview", "exception", 0, 1, 0, paramWebView, "", "", "");
-          QLog.e("WebLog_WebViewBase", 1, paramString);
-          break;
-        }
-      }
-      catch (ActivityNotFoundException paramWebView)
-      {
-        break label646;
       }
     }
+    return false;
+    label601:
+    return true;
+    QLog.e("WebLog_WebViewBase", 1, "call shouldOverrideUrlLoading after destroy.");
+    return true;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewbase.AbsBaseWebViewActivity.WebViewClientImpl
  * JD-Core Version:    0.7.0.1
  */

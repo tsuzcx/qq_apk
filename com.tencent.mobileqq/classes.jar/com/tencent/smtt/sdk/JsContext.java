@@ -19,17 +19,18 @@ public final class JsContext
   
   public JsContext(JsVirtualMachine paramJsVirtualMachine)
   {
-    if (paramJsVirtualMachine == null) {
-      throw new IllegalArgumentException("The virtualMachine value can not be null");
+    if (paramJsVirtualMachine != null)
+    {
+      this.a = paramJsVirtualMachine;
+      this.b = this.a.a();
     }
-    this.a = paramJsVirtualMachine;
-    this.b = this.a.a();
     try
     {
       this.b.setPerContextData(this);
       return;
     }
     catch (AbstractMethodError paramJsVirtualMachine) {}
+    throw new IllegalArgumentException("The virtualMachine value can not be null");
   }
   
   public static JsContext current()
@@ -73,12 +74,12 @@ public final class JsContext
   
   public void evaluateScriptAsync(String paramString, ValueCallback<JsValue> paramValueCallback, URL paramURL)
   {
-    if (paramValueCallback == null) {}
-    for (paramValueCallback = null;; paramValueCallback = new JsContext.1(this, paramValueCallback))
-    {
-      this.b.evaluateScriptAsync(paramString, paramValueCallback, paramURL);
-      return;
+    if (paramValueCallback == null) {
+      paramValueCallback = null;
+    } else {
+      paramValueCallback = new JsContext.1(this, paramValueCallback);
     }
+    this.b.evaluateScriptAsync(paramString, paramValueCallback, paramURL);
   }
   
   public JsContext.ExceptionHandler exceptionHandler()
@@ -109,12 +110,18 @@ public final class JsContext
   public void setExceptionHandler(JsContext.ExceptionHandler paramExceptionHandler)
   {
     this.c = paramExceptionHandler;
+    IX5JsContext localIX5JsContext;
     if (paramExceptionHandler == null)
     {
-      this.b.setExceptionHandler(null);
-      return;
+      localIX5JsContext = this.b;
+      paramExceptionHandler = null;
     }
-    this.b.setExceptionHandler(new JsContext.2(this));
+    else
+    {
+      localIX5JsContext = this.b;
+      paramExceptionHandler = new JsContext.2(this);
+    }
+    localIX5JsContext.setExceptionHandler(paramExceptionHandler);
   }
   
   public void setName(String paramString)
@@ -140,7 +147,7 @@ public final class JsContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.JsContext
  * JD-Core Version:    0.7.0.1
  */

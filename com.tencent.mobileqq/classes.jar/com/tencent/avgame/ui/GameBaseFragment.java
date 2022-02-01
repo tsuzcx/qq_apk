@@ -1,15 +1,15 @@
 package com.tencent.avgame.ui;
 
 import android.view.KeyEvent;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
+import com.tencent.mobileqq.app.QBaseFragment;
 
 public class GameBaseFragment
-  extends ReportV4Fragment
+  extends QBaseFragment
 {
   public IAVGameRootContainer a()
   {
-    if ((getActivity() != null) && ((getActivity() instanceof IAVGameRootContainer))) {
-      return (IAVGameRootContainer)getActivity();
+    if ((getQBaseActivity() != null) && ((getQBaseActivity() instanceof IAVGameRootContainer))) {
+      return (IAVGameRootContainer)getQBaseActivity();
     }
     return null;
   }
@@ -35,7 +35,7 @@ public class GameBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.GameBaseFragment
  * JD-Core Version:    0.7.0.1
  */

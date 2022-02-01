@@ -26,8 +26,12 @@ class UrlBottomImageSpan$1
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadProgressed i:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = new StringBuilder();
+      paramURLDrawable.append("onLoadProgressed i:");
+      paramURLDrawable.append(paramInt);
+      QLog.i("UrlBottomImageSpan", 2, paramURLDrawable.toString());
     }
   }
   
@@ -39,14 +43,15 @@ class UrlBottomImageSpan$1
     paramURLDrawable = paramURLDrawable.getCallback();
     if ((paramURLDrawable != null) && ((paramURLDrawable instanceof View)))
     {
-      ((View)paramURLDrawable).invalidate();
-      ((View)paramURLDrawable).requestLayout();
+      paramURLDrawable = (View)paramURLDrawable;
+      paramURLDrawable.invalidate();
+      paramURLDrawable.requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.UrlBottomImageSpan.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package androidx.core.hardware.fingerprint;
 import android.hardware.fingerprint.FingerprintManager.AuthenticationCallback;
 import android.hardware.fingerprint.FingerprintManager.AuthenticationResult;
 
-final class FingerprintManagerCompat$1
+class FingerprintManagerCompat$1
   extends FingerprintManager.AuthenticationCallback
 {
   FingerprintManagerCompat$1(FingerprintManagerCompat.AuthenticationCallback paramAuthenticationCallback) {}
@@ -30,7 +30,7 @@ final class FingerprintManagerCompat$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.hardware.fingerprint.FingerprintManagerCompat.1
  * JD-Core Version:    0.7.0.1
  */

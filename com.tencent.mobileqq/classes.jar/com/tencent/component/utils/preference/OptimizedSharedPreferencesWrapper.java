@@ -34,10 +34,17 @@ class OptimizedSharedPreferencesWrapper
     if (TextUtils.isEmpty(paramString1)) {
       return paramString2;
     }
-    if (paramString2 == null) {
-      throw new RuntimeException("null key is not supported when contains key prefix " + paramString1);
+    if (paramString2 != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(paramString2);
+      return localStringBuilder.toString();
     }
-    return paramString1 + paramString2;
+    paramString2 = new StringBuilder();
+    paramString2.append("null key is not supported when contains key prefix ");
+    paramString2.append(paramString1);
+    throw new RuntimeException(paramString2.toString());
   }
   
   private static boolean isGeneratedKey(String paramString1, String paramString2)
@@ -47,28 +54,34 @@ class OptimizedSharedPreferencesWrapper
   
   private void notifyListeners(String paramString)
   {
-    Object localObject1 = null;
     synchronized (this.mListeners)
     {
+      Object localObject1;
       if (!this.mListeners.isEmpty())
       {
         localObject1 = new HashSet(this.mListeners.keySet());
-        if (localObject1 != null)
-        {
-          localObject1 = ((Collection)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            ??? = (SharedPreferences.OnSharedPreferenceChangeListener)((Iterator)localObject1).next();
-            if (??? != null) {
-              ((SharedPreferences.OnSharedPreferenceChangeListener)???).onSharedPreferenceChanged(this, paramString);
-            }
-          }
-        }
       }
       else
       {
         unregisterInnerListenerIfNeedLocked();
+        localObject1 = null;
       }
+      if (localObject1 != null)
+      {
+        localObject1 = ((Collection)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          ??? = (SharedPreferences.OnSharedPreferenceChangeListener)((Iterator)localObject1).next();
+          if (??? != null) {
+            ((SharedPreferences.OnSharedPreferenceChangeListener)???).onSharedPreferenceChanged(this, paramString);
+          }
+        }
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -77,10 +90,10 @@ class OptimizedSharedPreferencesWrapper
     if (TextUtils.isEmpty(paramString1)) {
       return paramString2;
     }
-    if ((TextUtils.isEmpty(paramString2)) || (!paramString2.startsWith(paramString1))) {
-      return null;
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith(paramString1))) {
+      return paramString2.substring(paramString1.length());
     }
-    return paramString2.substring(paramString1.length());
+    return null;
   }
   
   private void registerInnerListenerIfNeedLocked()
@@ -164,7 +177,7 @@ class OptimizedSharedPreferencesWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.utils.preference.OptimizedSharedPreferencesWrapper
  * JD-Core Version:    0.7.0.1
  */

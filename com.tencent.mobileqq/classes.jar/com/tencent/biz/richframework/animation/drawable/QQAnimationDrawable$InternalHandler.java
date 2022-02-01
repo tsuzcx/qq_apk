@@ -18,33 +18,46 @@ class QQAnimationDrawable$InternalHandler
   
   public void handleMessage(Message paramMessage)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("InternalHandler handleMessage msg.what:").append(paramMessage.what).append(" main:");
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (boolean bool = true;; bool = false)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("InternalHandler handleMessage msg.what:");
+    localStringBuilder.append(paramMessage.what);
+    localStringBuilder.append(" main:");
+    boolean bool;
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localStringBuilder.append(bool);
+    QLog.d("QQAnimationDrawable", 2, localStringBuilder.toString());
+    if ((paramMessage.obj instanceof Long))
     {
-      QLog.d("QQAnimationDrawable", 2, bool);
-      if (!(paramMessage.obj instanceof Long)) {
-        break label170;
-      }
-      QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj + " android.os.SystemClock.uptimeMillis():" + SystemClock.uptimeMillis());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("InternalHandler handleMessage msg.obj:");
+      localStringBuilder.append(paramMessage.obj);
+      localStringBuilder.append(" android.os.SystemClock.uptimeMillis():");
+      localStringBuilder.append(SystemClock.uptimeMillis());
+      QLog.d("QQAnimationDrawable", 2, localStringBuilder.toString());
       paramMessage = (Long)paramMessage.obj;
-      if (paramMessage.longValue() >= SystemClock.uptimeMillis()) {
-        break;
+      if (paramMessage.longValue() < SystemClock.uptimeMillis())
+      {
+        QLog.d("QQAnimationDrawable", 2, "time < android.os.SystemClock.uptimeMillis()");
+        this.a.scheduleSelf(this.b, SystemClock.uptimeMillis());
+        return;
       }
-      QLog.d("QQAnimationDrawable", 2, "time < android.os.SystemClock.uptimeMillis()");
-      this.a.scheduleSelf(this.b, SystemClock.uptimeMillis());
+      QLog.d("QQAnimationDrawable", 2, "time > android.os.SystemClock.uptimeMillis()");
+      this.a.scheduleSelf(this.b, paramMessage.longValue());
       return;
     }
-    QLog.d("QQAnimationDrawable", 2, "time > android.os.SystemClock.uptimeMillis()");
-    this.a.scheduleSelf(this.b, paramMessage.longValue());
-    return;
-    label170:
-    QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("InternalHandler handleMessage msg.obj:");
+    localStringBuilder.append(paramMessage.obj);
+    QLog.d("QQAnimationDrawable", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.animation.drawable.QQAnimationDrawable.InternalHandler
  * JD-Core Version:    0.7.0.1
  */

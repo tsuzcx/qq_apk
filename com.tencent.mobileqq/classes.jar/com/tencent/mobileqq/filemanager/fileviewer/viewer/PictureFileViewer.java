@@ -48,16 +48,16 @@ public class PictureFileViewer
     QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: PictureFileViewer initFileView");
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560964, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366938));
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery = ((DragGallery)this.jdField_a_of_type_AndroidViewView.findViewById(2131367677));
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131366128));
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560839, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366800));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery = ((DragGallery)this.jdField_a_of_type_AndroidViewView.findViewById(2131367431));
+      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131366044));
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerImageGalleryAdapter = new ImageGalleryAdapter(BaseApplicationImpl.getContext());
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerImageGalleryAdapter);
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.setOnNoBlankListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerImageGalleryAdapter);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.setSpacing(this.jdField_a_of_type_AndroidViewView.getResources().getDimensionPixelSize(2131297168));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372541));
-      this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366062));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.setSpacing(this.jdField_a_of_type_AndroidViewView.getResources().getDimensionPixelSize(2131297150));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372126));
+      this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365892));
       Rect localRect = a();
       if (localRect != null)
       {
@@ -99,29 +99,24 @@ public class PictureFileViewer
   
   public void a(boolean paramBoolean)
   {
-    int j = 0;
-    LinearLayout localLinearLayout;
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
-      if ((!paramBoolean) || (this.c)) {
-        break label46;
+      int j = 0;
+      int i;
+      if ((paramBoolean) && (!this.c)) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-      if (i == 0) {
-        break label51;
+      LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      if (i != 0) {
+        i = j;
+      } else {
+        i = 8;
       }
-    }
-    label46:
-    label51:
-    for (int i = j;; i = 8)
-    {
       localLinearLayout.setVisibility(i);
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-      i = 0;
-      break;
     }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public void b(View.OnClickListener paramOnClickListener)
@@ -131,19 +126,21 @@ public class PictureFileViewer
   
   public void b(boolean paramBoolean)
   {
-    if ((paramBoolean) && (!this.c)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      super.b(bool);
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      return;
+    boolean bool;
+    if ((paramBoolean) && (!this.c)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    super.b(bool);
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerImageGalleryAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerImageGalleryAdapter.notifyDataSetChanged();
+    ImageGalleryAdapter localImageGalleryAdapter = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerImageGalleryAdapter;
+    if (localImageGalleryAdapter != null) {
+      localImageGalleryAdapter.notifyDataSetChanged();
     }
   }
   
@@ -155,71 +152,77 @@ public class PictureFileViewer
   public void c(boolean paramBoolean)
   {
     ImageButton localImageButton = this.jdField_a_of_type_AndroidWidgetImageButton;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageButton.setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localImageButton.setVisibility(i);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.e();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.reset();
   }
   
   public void d(boolean paramBoolean)
   {
-    if (paramBoolean) {
-      if (this.jdField_a_of_type_ComTencentWidgetDragView != null) {
-        this.jdField_a_of_type_ComTencentWidgetDragView.setOriginRect(a());
+    DragView localDragView;
+    if (paramBoolean)
+    {
+      localDragView = this.jdField_a_of_type_ComTencentWidgetDragView;
+      if (localDragView != null) {
+        localDragView.setOriginRect(a());
       }
     }
-    while (this.jdField_a_of_type_ComTencentWidgetDragView == null) {
-      return;
+    else
+    {
+      localDragView = this.jdField_a_of_type_ComTencentWidgetDragView;
+      if (localDragView != null) {
+        localDragView.setOriginRect(null);
+      }
     }
-    this.jdField_a_of_type_ComTencentWidgetDragView.setOriginRect(null);
   }
   
   public void e(boolean paramBoolean)
   {
-    Rect localRect;
-    int i;
     if (this.jdField_a_of_type_ComTencentWidgetDragView != null)
     {
-      localRect = a();
+      Rect localRect = a();
       if (localRect != null)
       {
-        if (paramBoolean) {
-          break label101;
-        }
-        localRect.top -= ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-        localRect.bottom -= ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-        if ((LiuHaiUtils.c) && (LiuHaiUtils.jdField_a_of_type_Boolean))
+        int i;
+        if (!paramBoolean)
         {
-          i = LiuHaiUtils.b(this.jdField_a_of_type_AndroidAppActivity);
-          localRect.top += i;
+          localRect.top -= ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
+          localRect.bottom -= ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
+          if ((LiuHaiUtils.c) && (LiuHaiUtils.jdField_a_of_type_Boolean))
+          {
+            i = LiuHaiUtils.b(this.jdField_a_of_type_AndroidAppActivity);
+            localRect.top += i;
+            localRect.bottom += i;
+          }
         }
-      }
-    }
-    for (localRect.bottom = (i + localRect.bottom);; localRect.bottom -= i)
-    {
-      label101:
-      do
-      {
+        else
+        {
+          localRect.top += ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
+          localRect.bottom += ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
+          if ((LiuHaiUtils.c) && (LiuHaiUtils.jdField_a_of_type_Boolean))
+          {
+            i = LiuHaiUtils.b(this.jdField_a_of_type_AndroidAppActivity);
+            localRect.top -= i;
+            localRect.bottom -= i;
+          }
+        }
         this.jdField_a_of_type_ComTencentWidgetDragView.setOriginRect(localRect);
-        return;
-        localRect.top += ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-        localRect.bottom += ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-      } while ((!LiuHaiUtils.c) || (!LiuHaiUtils.jdField_a_of_type_Boolean));
-      i = LiuHaiUtils.b(this.jdField_a_of_type_AndroidAppActivity);
-      localRect.top -= i;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.PictureFileViewer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.activity.aio.panel;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 
 class PEPanel$ZuiAnimListenner
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+  extends D8SafeAnimatorListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
   PEPanel$ZuiAnimListenner(PEPanel paramPEPanel) {}
   
@@ -35,7 +36,7 @@ class PEPanel$ZuiAnimListenner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PEPanel.ZuiAnimListenner
  * JD-Core Version:    0.7.0.1
  */

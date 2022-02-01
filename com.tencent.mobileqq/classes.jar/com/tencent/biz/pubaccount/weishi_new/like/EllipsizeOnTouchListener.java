@@ -44,19 +44,19 @@ public class EllipsizeOnTouchListener
       paramView.performClick();
       return false;
     }
-    if (i == 1) {
-      paramMotionEvent[0].onClick(paramView);
-    }
-    for (;;)
+    if (i == 1)
     {
+      paramMotionEvent[0].onClick(paramView);
       return true;
-      Selection.setSelection(this.a, this.a.getSpanStart(paramMotionEvent[0]), this.a.getSpanEnd(paramMotionEvent[0]));
     }
+    paramView = this.a;
+    Selection.setSelection(paramView, paramView.getSpanStart(paramMotionEvent[0]), this.a.getSpanEnd(paramMotionEvent[0]));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.like.EllipsizeOnTouchListener
  * JD-Core Version:    0.7.0.1
  */

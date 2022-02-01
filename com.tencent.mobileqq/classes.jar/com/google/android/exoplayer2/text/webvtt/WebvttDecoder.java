@@ -30,25 +30,20 @@ public final class WebvttDecoder
   
   private static int getNextEvent(ParsableByteArray paramParsableByteArray)
   {
-    int j = 0;
     int i = -1;
-    if (i == -1)
+    int j = 0;
+    while (i == -1)
     {
       j = paramParsableByteArray.getPosition();
       String str = paramParsableByteArray.readLine();
       if (str == null) {
         i = 0;
-      }
-      for (;;)
-      {
-        break;
-        if ("STYLE".equals(str)) {
-          i = 2;
-        } else if ("NOTE".startsWith(str)) {
-          i = 1;
-        } else {
-          i = 3;
-        }
+      } else if ("STYLE".equals(str)) {
+        i = 2;
+      } else if ("NOTE".startsWith(str)) {
+        i = 1;
+      } else {
+        i = 3;
       }
     }
     paramParsableByteArray.setPosition(j);
@@ -80,13 +75,17 @@ public final class WebvttDecoder
       }
       else if (paramInt == 2)
       {
-        if (!paramArrayOfByte.isEmpty()) {
-          throw new SubtitleDecoderException("A style block was found after the first cue.");
+        if (paramArrayOfByte.isEmpty())
+        {
+          this.parsableWebvttData.readLine();
+          WebvttCssStyle localWebvttCssStyle = this.cssParser.parseBlock(this.parsableWebvttData);
+          if (localWebvttCssStyle != null) {
+            this.definedStyles.add(localWebvttCssStyle);
+          }
         }
-        this.parsableWebvttData.readLine();
-        WebvttCssStyle localWebvttCssStyle = this.cssParser.parseBlock(this.parsableWebvttData);
-        if (localWebvttCssStyle != null) {
-          this.definedStyles.add(localWebvttCssStyle);
+        else
+        {
+          throw new SubtitleDecoderException("A style block was found after the first cue.");
         }
       }
       else if ((paramInt == 3) && (this.cueParser.parseCue(this.parsableWebvttData, this.webvttCueBuilder, this.definedStyles)))
@@ -100,7 +99,7 @@ public final class WebvttDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.webvtt.WebvttDecoder
  * JD-Core Version:    0.7.0.1
  */

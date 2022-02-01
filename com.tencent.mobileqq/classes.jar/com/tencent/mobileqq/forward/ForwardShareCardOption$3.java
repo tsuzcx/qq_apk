@@ -12,37 +12,41 @@ class ForwardShareCardOption$3
 {
   ForwardShareCardOption$3(ForwardShareCardOption paramForwardShareCardOption) {}
   
-  public void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.a.z();
+    this.a.A();
     if (ForwardShareCardOption.a(this.a) != -1)
     {
-      if ((!paramBoolean) || (paramHashMap == null)) {
-        break label151;
+      if ((paramBoolean) && (paramHashMap != null))
+      {
+        String str = (String)paramHashMap.get("uin");
+        paramHashMap = (String)paramHashMap.get("url");
+        ForwardShareCardOption.a(this.a, paramHashMap);
+        ForwardShareCardOption.b(this.a, paramHashMap);
+        if (QLog.isColorLevel())
+        {
+          paramHashMap = new StringBuilder();
+          paramHashMap.append("mTroopVerifyLink=");
+          paramHashMap.append(ForwardShareCardOption.a(this.a));
+          paramHashMap.append(" mTroopNotNeedVefifyLink=");
+          paramHashMap.append(ForwardShareCardOption.b(this.a));
+          QLog.d("ForwardOption.ForwardShareCardOption", 2, paramHashMap.toString());
+        }
+        if ((str != null) && (str.equals(ForwardShareCardOption.c(this.a)))) {
+          ForwardShareCardOption.a(this.a);
+        }
       }
-      String str = (String)paramHashMap.get("uin");
-      paramHashMap = (String)paramHashMap.get("url");
-      ForwardShareCardOption.a(this.a, paramHashMap);
-      ForwardShareCardOption.b(this.a, paramHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
+      else
+      {
+        QQToast.a(this.a.a, 1, this.a.a.getString(2131692928), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
       }
-      if ((str != null) && (str.equals(ForwardShareCardOption.c(this.a)))) {
-        ForwardShareCardOption.a(this.a);
-      }
-    }
-    for (;;)
-    {
       ForwardShareCardOption.a(this.a, -1);
-      return;
-      label151:
-      QQToast.a(this.a.a, 1, this.a.a.getString(2131692968), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareCardOption.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,10 @@ class WSQQConnectAuthManager$1
   
   public void a(int paramInt)
   {
-    WSLog.g("WSQQConnectAuthManager", "getOpenIdAndAccessToken onPermission: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getOpenIdAndAccessToken onPermission: ");
+    localStringBuilder.append(paramInt);
+    WSLog.g("WSQQConnectAuthManager", localStringBuilder.toString());
     WSQQConnectAuthManager.a(this.a, false);
     switch (paramInt)
     {
@@ -25,7 +28,12 @@ class WSQQConnectAuthManager$1
   
   public void a(int paramInt, String paramString)
   {
-    WSLog.g("WSQQConnectAuthManager", "getOpenIdAndAccessToken onFailure: " + paramInt + " , " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getOpenIdAndAccessToken onFailure: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" , ");
+    localStringBuilder.append(paramString);
+    WSLog.g("WSQQConnectAuthManager", localStringBuilder.toString());
     WSQQConnectAuthManager.a(this.a, false);
     if (paramInt == 1) {
       WSQQConnectAuthManager.a(this.a);
@@ -37,7 +45,10 @@ class WSQQConnectAuthManager$1
     WSQQConnectAuthManager.a(this.a, false);
     if (paramJSONObject != null)
     {
-      WSLog.f("WSQQConnectAuthManager", "getOpenIdAndAccessToken onSuccess: " + paramJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getOpenIdAndAccessToken onSuccess: ");
+      localStringBuilder.append(paramJSONObject.toString());
+      WSLog.f("WSQQConnectAuthManager", localStringBuilder.toString());
       WSQQConnectAuthManager.a(this.a, paramJSONObject);
     }
   }
@@ -46,7 +57,7 @@ class WSQQConnectAuthManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSQQConnectAuthManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -43,16 +43,17 @@ final class MapCollections$KeySet
   {
     int i = this.a.colGetSize() - 1;
     int j = 0;
-    if (i >= 0)
+    while (i >= 0)
     {
       Object localObject = this.a.colGetEntry(i, 0);
-      if (localObject == null) {}
-      for (int k = 0;; k = localObject.hashCode())
-      {
-        j += k;
-        i -= 1;
-        break;
+      int k;
+      if (localObject == null) {
+        k = 0;
+      } else {
+        k = localObject.hashCode();
       }
+      j += k;
+      i -= 1;
     }
     return j;
   }
@@ -105,7 +106,7 @@ final class MapCollections$KeySet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.utils.struct.MapCollections.KeySet
  * JD-Core Version:    0.7.0.1
  */

@@ -16,26 +16,38 @@ public class MessageForDevShortVideo
   public String getSummary()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {
-      localObject = (QQAppInterface)localObject;
-    }
-    switch (this.videoFileStatus)
+    if ((localObject instanceof QQAppInterface))
     {
-    default: 
-      return null;
-    case 2003: 
-      return HardCodeUtil.a(2131706605);
-    case 1003: 
-      return ((QQAppInterface)localObject).getApp().getString(2131691367);
-    case 1005: 
-      return ((QQAppInterface)localObject).getApp().getString(2131691367);
+      localObject = (QQAppInterface)localObject;
+      int i = this.videoFileStatus;
+      if (i != 1002)
+      {
+        if (i != 1003)
+        {
+          if (i != 1005)
+          {
+            if (i == 2003) {
+              return HardCodeUtil.a(2131706627);
+            }
+          }
+          else {
+            return ((QQAppInterface)localObject).getApp().getString(2131691289);
+          }
+        }
+        else {
+          return ((QQAppInterface)localObject).getApp().getString(2131691289);
+        }
+      }
+      else {
+        return HardCodeUtil.a(2131706622);
+      }
     }
-    return HardCodeUtil.a(2131706600);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevShortVideo
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ public class PageAction
   implements Action<AppPageInfo>
 {
   private static final int GET_APP_PAGE_INFO = 1;
+  private static final int GET_WEB_VIEW_URL = 2;
   private int action = 1;
   private int flag;
   private IMiniAppContext miniAppContext;
@@ -67,6 +68,17 @@ public class PageAction
     return 0;
   }
   
+  public String getWebViewUrlForShare()
+  {
+    this.action = 1;
+    this.flag = 64;
+    AppPageInfo localAppPageInfo = (AppPageInfo)this.miniAppContext.performAction(this);
+    if (localAppPageInfo != null) {
+      return localAppPageInfo.webViewUrl;
+    }
+    return null;
+  }
+  
   public int getWindowHeight()
   {
     this.action = 1;
@@ -84,9 +96,7 @@ public class PageAction
     if (paramBaseRuntime == null) {
       return null;
     }
-    switch (this.action)
-    {
-    default: 
+    if (this.action != 1) {
       return null;
     }
     return paramBaseRuntime.getPageInfo(this.flag);
@@ -94,7 +104,7 @@ public class PageAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.action.PageAction
  * JD-Core Version:    0.7.0.1
  */

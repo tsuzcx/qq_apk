@@ -10,7 +10,11 @@ public class MsgProcessCommon
   public MsgProcessCommon(MessageRecord paramMessageRecord)
   {
     super(paramMessageRecord);
-    this.a = (this.a + "." + paramMessageRecord.getClass().getSimpleName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramMessageRecord.getClass().getSimpleName());
+    this.a = localStringBuilder.toString();
   }
   
   protected int a()
@@ -27,7 +31,7 @@ public class MsgProcessCommon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessCommon
  * JD-Core Version:    0.7.0.1
  */

@@ -6,14 +6,13 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.core.SystemEmotionPanelManager;
-import com.tencent.mobileqq.emoticonview.api.IPanelDependListener;
+import com.tencent.mobileqq.emoticonview.api.IEmoticonInfoService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
-import java.util.List;
 
 public class EmoticonPanelOnScrollListener
   implements View.OnTouchListener, ScrollVelometer.SpeedListener, AbsListView.OnScrollListener
@@ -45,9 +44,10 @@ public class EmoticonPanelOnScrollListener
   
   private boolean isFirstCompletelyVisible(ListView paramListView)
   {
+    int i = paramListView.getChildCount();
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (paramListView.getChildCount() > 0)
+    if (i > 0)
     {
       bool1 = bool2;
       if (paramListView.getFirstVisiblePosition() == 0)
@@ -77,8 +77,12 @@ public class EmoticonPanelOnScrollListener
         }
       }
       this.mLastState = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionPanelListView", 2, "onScrollStateChanged mLastState :" + this.mLastState);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onScrollStateChanged mLastState :");
+        localStringBuilder.append(this.mLastState);
+        QLog.d("EmotionPanelListView", 2, localStringBuilder.toString());
       }
     }
   }
@@ -87,29 +91,27 @@ public class EmoticonPanelOnScrollListener
   {
     if (paramAbsListView != null)
     {
-      int k = paramAbsListView.getChildCount();
+      int m = paramAbsListView.getChildCount();
       int i = 0;
-      while (i < k)
+      while (i < m)
       {
-        View localView1 = paramAbsListView.getChildAt(i);
-        if ((localView1 instanceof ViewGroup))
+        Object localObject = paramAbsListView.getChildAt(i);
+        if ((localObject instanceof ViewGroup))
         {
-          int m = ((ViewGroup)localView1).getChildCount();
-          int j = m - 1;
-          if (j >= 0)
+          localObject = (ViewGroup)localObject;
+          int k = ((ViewGroup)localObject).getChildCount() - 1;
+          int j = k;
+          while (j >= 0)
           {
-            View localView2 = ((ViewGroup)localView1).getChildAt(m - 1);
-            localView2.getLocationOnScreen(this.point);
-            this.point[0] = localView2.getLeft();
-            if ((paramBoolean) && (this.minAlphaLeft > 0) && (this.point[0] + localView2.getWidth() * 2.0F / 3.0F > this.minAlphaLeft) && (this.minAlphaTop > 0) && (this.point[1] + localView2.getWidth() - this.spacing > this.minAlphaTop)) {
-              updateViewAlpha(localView2);
+            View localView = ((ViewGroup)localObject).getChildAt(k);
+            localView.getLocationOnScreen(this.point);
+            this.point[0] = localView.getLeft();
+            if ((paramBoolean) && (this.minAlphaLeft > 0) && (this.point[0] + localView.getWidth() * 2.0F / 3.0F > this.minAlphaLeft) && (this.minAlphaTop > 0) && (this.point[1] + localView.getWidth() - this.spacing > this.minAlphaTop)) {
+              updateViewAlpha(localView);
+            } else {
+              localView.setAlpha(1.0F);
             }
-            for (;;)
-            {
-              j -= 1;
-              break;
-              localView2.setAlpha(1.0F);
-            }
+            j -= 1;
           }
         }
         i += 1;
@@ -121,11 +123,15 @@ public class EmoticonPanelOnScrollListener
   {
     if ((paramView instanceof URLImageView))
     {
-      int i = this.point[1] + paramView.getWidth() - this.spacing - this.minAlphaTop;
-      float f = paramView.getWidth() / 2.0F;
-      if (i < f)
+      int i = this.point[1];
+      int j = paramView.getWidth();
+      int k = this.spacing;
+      int m = this.minAlphaTop;
+      float f1 = paramView.getWidth() / 2.0F;
+      float f2 = i + j - k - m;
+      if (f2 < f1)
       {
-        paramView.setAlpha((f - i) * 1.0F / f);
+        paramView.setAlpha((f1 - f2) * 1.0F / f1);
         return;
       }
       paramView.setAlpha(0.0F);
@@ -141,20 +147,30 @@ public class EmoticonPanelOnScrollListener
   
   public void onCheckSpeed(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.pullAndFastScrollListener != null))
+    Object localObject;
+    if (paramBoolean)
     {
-      this.pullAndFastScrollListener.onPullUp();
-      this.mScrollVelometer.switchOn(false);
+      localObject = this.pullAndFastScrollListener;
+      if (localObject != null)
+      {
+        ((EmotionPanelListView.PullAndFastScrollListener)localObject).onPullUp();
+        this.mScrollVelometer.switchOn(false);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelListView", 2, "onCheckSpeed overSpeed :" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCheckSpeed overSpeed :");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("EmotionPanelListView", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.onScrollListener != null) {
-      this.onScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    AbsListView.OnScrollListener localOnScrollListener = this.onScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
     if ((isFirstCompletelyVisible(this.emotionPanelListView)) && (this.mLastState == 2) && (this.pullAndFastScrollListener != null)) {
       updateOnScrollStateChanged(0);
@@ -165,8 +181,9 @@ public class EmoticonPanelOnScrollListener
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.onScrollListener != null) {
-      this.onScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
+    AbsListView.OnScrollListener localOnScrollListener = this.onScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
     }
     updateOnScrollStateChanged(paramInt);
   }
@@ -178,30 +195,40 @@ public class EmoticonPanelOnScrollListener
     {
       this.downY = paramMotionEvent.getY();
       this.mScrollVelometer.switchOn(true);
-      if (this.pullAndFastScrollListener != null) {
-        this.isPanelOpen = this.pullAndFastScrollListener.isPanelOpen();
+      paramView = this.pullAndFastScrollListener;
+      if (paramView != null) {
+        this.isPanelOpen = paramView.isPanelOpen();
       }
     }
-    for (;;)
+    else if ((i == 1) && (this.isPanelOpen))
     {
-      return false;
-      if ((i == 1) && (this.isPanelOpen)) {
-        if ((isFirstCompletelyVisible(this.emotionPanelListView)) && (this.emotionPanelListView.getListViewScrollY() < this.mLastTop) && (this.pullAndFastScrollListener != null))
+      if ((isFirstCompletelyVisible(this.emotionPanelListView)) && (this.emotionPanelListView.getListViewScrollY() < this.mLastTop))
+      {
+        paramView = this.pullAndFastScrollListener;
+        if (paramView != null)
         {
-          this.pullAndFastScrollListener.onPullDown();
-          if (QLog.isColorLevel()) {
-            QLog.d("EmotionPanelListView", 2, "onTouch scroll top pull down");
+          paramView.onPullDown();
+          if (!QLog.isColorLevel()) {
+            break label168;
           }
+          QLog.d("EmotionPanelListView", 2, "onTouch scroll top pull down");
+          break label168;
         }
-        else if ((isFirstCompletelyVisible(this.emotionPanelListView)) && (paramMotionEvent.getY() > this.downY) && (this.pullAndFastScrollListener != null))
+      }
+      if ((isFirstCompletelyVisible(this.emotionPanelListView)) && (paramMotionEvent.getY() > this.downY))
+      {
+        paramView = this.pullAndFastScrollListener;
+        if (paramView != null)
         {
-          this.pullAndFastScrollListener.onPullDown();
+          paramView.onPullDown();
           if (QLog.isColorLevel()) {
             QLog.d("EmotionPanelListView", 2, "onTouch no scroll top pull down");
           }
         }
       }
     }
+    label168:
+    return false;
   }
   
   public void setDisUpdateViewAlpha(boolean paramBoolean)
@@ -211,54 +238,33 @@ public class EmoticonPanelOnScrollListener
   
   public void updateViewAlpha(AbsListView paramAbsListView)
   {
-    boolean bool = true;
-    if (this.mDisUpdateAlpha) {}
-    while ((!(paramAbsListView.getAdapter() instanceof SystemAndEmojiAdapter)) && ((SystemEmotionPanelManager.a().a() == null) || (!SystemEmotionPanelManager.a().a().isSmallEmotionDownloadedAdapter(paramAbsListView.getAdapter())))) {
+    if (this.mDisUpdateAlpha) {
       return;
     }
-    if (SystemEmotionPanelManager.a().a() != null)
+    if (((paramAbsListView.getAdapter() instanceof SystemAndEmojiAdapter)) || (((IEmoticonInfoService)QRoute.api(IEmoticonInfoService.class)).isSmallEmotionDownloadedAdapter(paramAbsListView.getAdapter())))
     {
-      int i = SystemEmotionPanelManager.a().a().getLastSelectedSecondTabIndex();
-      List localList = SystemEmotionPanelManager.a().a().getPanelDataList();
-      if ((i >= 0) && (localList != null) && (i < localList.size()))
+      boolean bool2 = false;
+      ImageButton localImageButton = ((IEmoticonInfoService)QRoute.api(IEmoticonInfoService.class)).getDeleteImageBtn(this.pullAndFastScrollListener);
+      boolean bool1 = bool2;
+      if (localImageButton != null)
       {
-        Object localObject2 = SystemEmotionPanelManager.a().a().getDeleteButtonFromCache(i);
-        Object localObject1 = localObject2;
-        if (localObject2 == null)
+        bool1 = bool2;
+        if (localImageButton.getVisibility() == 0)
         {
-          localObject1 = localObject2;
-          if (i - 1 >= 0) {
-            localObject1 = SystemEmotionPanelManager.a().a().getDeleteButtonFromCache(i - 1);
-          }
-        }
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject2 = localObject1;
-          if (i + 1 < localList.size()) {
-            localObject2 = SystemEmotionPanelManager.a().a().getDeleteButtonFromCache(i + 1);
-          }
-        }
-        if ((localObject2 != null) && (((ImageButton)localObject2).getVisibility() == 0))
-        {
-          localObject1 = new int[2];
-          ((ImageButton)localObject2).getLocationOnScreen((int[])localObject1);
-          this.minAlphaLeft = ((ImageButton)localObject2).getLeft();
-          this.minAlphaTop = localObject1[1];
+          int[] arrayOfInt = new int[2];
+          localImageButton.getLocationOnScreen(arrayOfInt);
+          this.minAlphaLeft = localImageButton.getLeft();
+          this.minAlphaTop = arrayOfInt[1];
+          bool1 = true;
         }
       }
-    }
-    for (;;)
-    {
-      updateSystemSmallEmojiAlpha(paramAbsListView, bool);
-      return;
-      bool = false;
+      updateSystemSmallEmojiAlpha(paramAbsListView, bool1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelOnScrollListener
  * JD-Core Version:    0.7.0.1
  */

@@ -45,7 +45,7 @@ public class WriteTogetherOidbHandlerImpl
   extends BusinessHandler
   implements IWriteTogetherOidbHandler
 {
-  public static final String CLASS_NAME = WriteTogetherOidbHandlerImpl.class.getName();
+  public static final String CLASS_NAME = "com.tencent.mobileqq.writetogether.api.impl.WriteTogetherOidbHandlerImpl";
   private static final String TAG = "WriteTogetherOidbHandler";
   
   public WriteTogetherOidbHandlerImpl(AppInterface paramAppInterface)
@@ -65,44 +65,43 @@ public class WriteTogetherOidbHandlerImpl
   
   private void fillCreateReqBody(oidb_cmd0xe89.ReqBody paramReqBody, CreateDocParam paramCreateDocParam, String paramString)
   {
+    long l;
     try
     {
       l = Long.parseLong(this.appRuntime.getAccount());
-      if (l == 10000L) {
-        return;
-      }
     }
     catch (Exception localException)
     {
-      long l;
-      for (;;)
-      {
-        QLog.e("WriteTogetherOidbHandler", 1, "parse long err, cause protocol does not support string uin", localException);
-        l = 10000L;
-      }
-      oidb_cmd0xe89.ReqCreatePad localReqCreatePad = new oidb_cmd0xe89.ReqCreatePad();
-      localReqCreatePad.uint64_uin.set(l);
-      localReqCreatePad.uint32_doc_type.set(0);
-      localReqCreatePad.uint32_src_type.set(0);
-      ArrayList localArrayList = new ArrayList();
-      oidb_cmd0xe89.Atext localAtext = new oidb_cmd0xe89.Atext();
-      localAtext.bytes_text.set(ByteStringMicro.copyFrom(paramCreateDocParam.d.getBytes()));
-      localAtext.bytes_attribs.set(ByteStringMicro.copyFrom(paramCreateDocParam.e.getBytes()));
-      localAtext.bytes_apool.set(ByteStringMicro.copyFrom(paramCreateDocParam.c.getBytes()));
-      localArrayList.add(localAtext);
-      localReqCreatePad.msg_atext.set(localArrayList);
-      paramReqBody.create_pad_req_info.set(localReqCreatePad);
-      try
-      {
-        l = Long.parseLong(paramString);
-        paramReqBody.uint64_group_code.set(l);
-        return;
-      }
-      catch (Exception paramReqBody)
-      {
-        QLog.e("WriteTogetherOidbHandler", 1, "cause protocol limit, group id can only be number");
-      }
+      QLog.e("WriteTogetherOidbHandler", 1, "parse long err, cause protocol does not support string uin", localException);
+      l = 10000L;
     }
+    if (l == 10000L) {
+      return;
+    }
+    oidb_cmd0xe89.ReqCreatePad localReqCreatePad = new oidb_cmd0xe89.ReqCreatePad();
+    localReqCreatePad.uint64_uin.set(l);
+    localReqCreatePad.uint32_doc_type.set(0);
+    localReqCreatePad.uint32_src_type.set(0);
+    ArrayList localArrayList = new ArrayList();
+    oidb_cmd0xe89.Atext localAtext = new oidb_cmd0xe89.Atext();
+    localAtext.bytes_text.set(ByteStringMicro.copyFrom(paramCreateDocParam.d.getBytes()));
+    localAtext.bytes_attribs.set(ByteStringMicro.copyFrom(paramCreateDocParam.e.getBytes()));
+    localAtext.bytes_apool.set(ByteStringMicro.copyFrom(paramCreateDocParam.c.getBytes()));
+    localArrayList.add(localAtext);
+    localReqCreatePad.msg_atext.set(localArrayList);
+    paramReqBody.create_pad_req_info.set(localReqCreatePad);
+    try
+    {
+      l = Long.parseLong(paramString);
+      paramReqBody.uint64_group_code.set(l);
+      return;
+    }
+    catch (Exception paramReqBody)
+    {
+      label196:
+      break label196;
+    }
+    QLog.e("WriteTogetherOidbHandler", 1, "cause protocol limit, group id can only be number");
   }
   
   private void fillOpenReqBody(oidb_cmd0xe89.ReqBody paramReqBody, String paramString1, String paramString2)
@@ -117,8 +116,10 @@ public class WriteTogetherOidbHandlerImpl
     }
     catch (Exception paramReqBody)
     {
-      QLog.e("WriteTogetherOidbHandler", 1, "cause protocol limit, group id can only be number");
+      label45:
+      break label45;
     }
+    QLog.e("WriteTogetherOidbHandler", 1, "cause protocol limit, group id can only be number");
   }
   
   private void fillSendReqBodyForCreateAndOpenDoc(oidb_0xe95.ReqBody paramReqBody, String paramString1, String paramString2)
@@ -147,7 +148,10 @@ public class WriteTogetherOidbHandlerImpl
   {
     paramToServiceMsg = new oidb_cmd0xe89.RspBody();
     int i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    QLog.d("WriteTogetherOidbHandler", 1, "handlePullDoc result: " + i);
+    paramFromServiceMsg = new StringBuilder();
+    paramFromServiceMsg.append("handlePullDoc result: ");
+    paramFromServiceMsg.append(i);
+    QLog.d("WriteTogetherOidbHandler", 1, paramFromServiceMsg.toString());
     if ((i == 0) && (paramToServiceMsg.rsp_get_change_list_info.has()))
     {
       paramToServiceMsg = ((oidb_cmd0xe89.RspGetChangeList)paramToServiceMsg.rsp_get_change_list_info.get()).bytes_rsp_json_buf.get().toStringUtf8();
@@ -159,26 +163,29 @@ public class WriteTogetherOidbHandlerImpl
   
   private void handleSendGrayTipResp(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    Object localObject = null;
     oidb_cmd0xe94.RspBody localRspBody = new oidb_cmd0xe94.RspBody();
     int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
     if (QLog.isColorLevel())
     {
-      paramFromServiceMsg = new StringBuilder().append("[handleSendGrayTipResp] result: ").append(i).append(", ret: ");
-      if (!localRspBody.uint32Return.has()) {
-        break label125;
+      paramObject = new StringBuilder();
+      paramObject.append("[handleSendGrayTipResp] result: ");
+      paramObject.append(i);
+      paramObject.append(", ret: ");
+      boolean bool = localRspBody.uint32Return.has();
+      paramFromServiceMsg = null;
+      if (bool) {
+        paramToServiceMsg = Integer.valueOf(localRspBody.uint32Return.get());
+      } else {
+        paramToServiceMsg = null;
       }
-    }
-    label125:
-    for (paramToServiceMsg = Integer.valueOf(localRspBody.uint32Return.get());; paramToServiceMsg = null)
-    {
-      paramFromServiceMsg = paramFromServiceMsg.append(paramToServiceMsg).append(", error: ");
-      paramToServiceMsg = localObject;
+      paramObject.append(paramToServiceMsg);
+      paramObject.append(", error: ");
+      paramToServiceMsg = paramFromServiceMsg;
       if (localRspBody.stringError.has()) {
         paramToServiceMsg = localRspBody.stringError.get();
       }
-      QLog.d("WriteTogetherOidbHandler", 2, paramToServiceMsg);
-      return;
+      paramObject.append(paramToServiceMsg);
+      QLog.d("WriteTogetherOidbHandler", 2, paramObject.toString());
     }
   }
   
@@ -186,8 +193,12 @@ public class WriteTogetherOidbHandlerImpl
   {
     oidb_0xe95.RspBody localRspBody = new oidb_0xe95.RspBody();
     int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    if (QLog.isColorLevel()) {
-      QLog.d("WriteTogetherOidbHandler", 2, "[handleSendMsgResp] result: " + i);
+    if (QLog.isColorLevel())
+    {
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("[handleSendMsgResp] result: ");
+      paramFromServiceMsg.append(i);
+      QLog.d("WriteTogetherOidbHandler", 2, paramFromServiceMsg.toString());
     }
     paramToServiceMsg = paramToServiceMsg.extraData.getStringArray("write_together_doc_info");
     if ((i == 0) && (localRspBody.msg_send_write_together_msg_rsp.has()))
@@ -196,8 +207,12 @@ public class WriteTogetherOidbHandlerImpl
       i = paramFromServiceMsg.int32_result.get();
       long l = paramFromServiceMsg.uint32_msg_seq.get();
       int j = paramFromServiceMsg.uint32_rand_num.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("WriteTogetherOidbHandler", 2, "[handleSendMsgResp] rspCode: " + i);
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("[handleSendMsgResp] rspCode: ");
+        paramFromServiceMsg.append(i);
+        QLog.d("WriteTogetherOidbHandler", 2, paramFromServiceMsg.toString());
       }
       notifyUI(4, true, new Object[] { paramToServiceMsg, Integer.valueOf(i), Long.valueOf(l), Integer.valueOf(j) });
       return;
@@ -207,31 +222,29 @@ public class WriteTogetherOidbHandlerImpl
   
   public void createDoc(CreateDocParam paramCreateDocParam, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WriteTogetherOidbHandler", 2, "[createDoc] send create doc, group id: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[createDoc] send create doc, group id: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("WriteTogetherOidbHandler", 2, ((StringBuilder)localObject).toString());
     }
-    oidb_cmd0xe89.ReqBody localReqBody = new oidb_cmd0xe89.ReqBody();
-    fillCreateReqBody(localReqBody, paramCreateDocParam, paramString);
-    paramCreateDocParam = buildCreateOpenPullMsg(localReqBody, 0, "OidbSvcTcp.0xe89_0");
+    Object localObject = new oidb_cmd0xe89.ReqBody();
+    fillCreateReqBody((oidb_cmd0xe89.ReqBody)localObject, paramCreateDocParam, paramString);
+    paramCreateDocParam = buildCreateOpenPullMsg((oidb_cmd0xe89.ReqBody)localObject, 0, "OidbSvcTcp.0xe89_0");
     paramCreateDocParam.extraData.putString("write_together_group_code", paramString);
     sendPbReq(paramCreateDocParam);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return WriteTogetherOidbObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramFromServiceMsg == null) || (paramObject == null)) {
-      QLog.e("WriteTogetherOidbHandler", 1, "[onReceive] params: res: " + paramFromServiceMsg + ". data: " + paramObject);
-    }
-    oidb_cmd0xe89.RspBody localRspBody;
-    int i;
-    do
+    if ((paramFromServiceMsg != null) && (paramObject != null))
     {
-      return;
       if ("OidbSvcTcp.0xe89_2".equals(paramToServiceMsg.getServiceCmd()))
       {
         handlePullDoc(paramToServiceMsg, paramFromServiceMsg, paramObject);
@@ -247,9 +260,12 @@ public class WriteTogetherOidbHandlerImpl
         handleSendGrayTipResp(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
-      localRspBody = new oidb_cmd0xe89.RspBody();
-      i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-      QLog.d("WriteTogetherOidbHandler", 4, "[onReceive] receive oidb package result: " + i);
+      oidb_cmd0xe89.RspBody localRspBody = new oidb_cmd0xe89.RspBody();
+      int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+      paramObject = new StringBuilder();
+      paramObject.append("[onReceive] receive oidb package result: ");
+      paramObject.append(i);
+      QLog.d("WriteTogetherOidbHandler", 4, paramObject.toString());
       if ("OidbSvcTcp.0xe89_0".equals(paramToServiceMsg.getServiceCmd()))
       {
         paramObject = new CreateDocParam();
@@ -266,25 +282,41 @@ public class WriteTogetherOidbHandlerImpl
         notifyUI(1, false, paramObject);
         return;
       }
-    } while (!"OidbSvcTcp.0xe89_1".equals(paramToServiceMsg.getServiceCmd()));
-    if ((i == 0) && (localRspBody.get_pad_content_rsp_info.has()))
-    {
-      notifyUI(2, true, WriteTogetherUtils.a((oidb_cmd0xe89.RspGetDocContent)localRspBody.get_pad_content_rsp_info.get()));
+      if ("OidbSvcTcp.0xe89_1".equals(paramToServiceMsg.getServiceCmd()))
+      {
+        if ((i == 0) && (localRspBody.get_pad_content_rsp_info.has()))
+        {
+          notifyUI(2, true, WriteTogetherUtils.a((oidb_cmd0xe89.RspGetDocContent)localRspBody.get_pad_content_rsp_info.get()));
+          return;
+        }
+        paramFromServiceMsg = paramToServiceMsg.extraData.getString("write_together_group_code");
+        paramToServiceMsg = paramToServiceMsg.extraData.getString("write_together_pad_id");
+        paramObject = new OpenDocParam();
+        paramObject.k = paramFromServiceMsg;
+        paramObject.f = paramToServiceMsg;
+        paramObject.h = i;
+        notifyUI(2, false, paramObject);
+      }
       return;
     }
-    paramFromServiceMsg = paramToServiceMsg.extraData.getString("write_together_group_code");
-    paramToServiceMsg = paramToServiceMsg.extraData.getString("write_together_pad_id");
-    paramObject = new OpenDocParam();
-    paramObject.k = paramFromServiceMsg;
-    paramObject.f = paramToServiceMsg;
-    paramObject.h = i;
-    notifyUI(2, false, paramObject);
+    paramToServiceMsg = new StringBuilder();
+    paramToServiceMsg.append("[onReceive] params: res: ");
+    paramToServiceMsg.append(paramFromServiceMsg);
+    paramToServiceMsg.append(". data: ");
+    paramToServiceMsg.append(paramObject);
+    QLog.e("WriteTogetherOidbHandler", 1, paramToServiceMsg.toString());
   }
   
   public void openDoc(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WriteTogetherOidbHandler", 2, "[openDoc] send open doc: " + paramString1 + ", group id: " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[openDoc] send open doc: ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", group id: ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("WriteTogetherOidbHandler", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new oidb_cmd0xe89.ReqBody();
     fillOpenReqBody((oidb_cmd0xe89.ReqBody)localObject, paramString1, paramString2);
@@ -296,20 +328,28 @@ public class WriteTogetherOidbHandlerImpl
   
   public void pullDoc(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WriteTogetherOidbHandler", 2, "send pull doc: " + paramString2 + ", from: " + paramInt1 + ", to: " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("send pull doc: ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(", from: ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", to: ");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("WriteTogetherOidbHandler", 2, ((StringBuilder)localObject).toString());
     }
-    oidb_cmd0xe89.ReqBody localReqBody = new oidb_cmd0xe89.ReqBody();
+    Object localObject = new oidb_cmd0xe89.ReqBody();
     paramString2 = new GetChangesetsReq(paramString2, paramInt1, paramInt2);
     Gson localGson = new Gson();
     try
     {
-      localReqBody.uint64_group_code.set(Long.parseLong(paramString1));
+      ((oidb_cmd0xe89.ReqBody)localObject).uint64_group_code.set(Long.parseLong(paramString1));
       paramString1 = localGson.toJson(paramString2);
       paramString2 = new oidb_cmd0xe89.ReqGetChangeList();
       paramString2.bytes_req_json_buf.set(ByteStringMicro.copyFrom(paramString1, "utf-8"));
-      localReqBody.req_get_change_list_info.set(paramString2);
-      sendPbReq(buildCreateOpenPullMsg(localReqBody, 2, "OidbSvcTcp.0xe89_2"));
+      ((oidb_cmd0xe89.ReqBody)localObject).req_get_change_list_info.set(paramString2);
+      sendPbReq(buildCreateOpenPullMsg((oidb_cmd0xe89.ReqBody)localObject, 2, "OidbSvcTcp.0xe89_2"));
       return;
     }
     catch (Exception paramString1)
@@ -355,7 +395,7 @@ public class WriteTogetherOidbHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.api.impl.WriteTogetherOidbHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,13 @@ class AppBrandLaunchManager$1
   
   public void run()
   {
-    AppBrandLaunchManager.access$100(this.this$0, AppBrandLaunchManager.access$000(this.this$0));
+    AppBrandLaunchManager localAppBrandLaunchManager = this.this$0;
+    AppBrandLaunchManager.access$100(localAppBrandLaunchManager, AppBrandLaunchManager.access$000(localAppBrandLaunchManager));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.1
  * JD-Core Version:    0.7.0.1
  */

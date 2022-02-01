@@ -14,28 +14,38 @@ class AutoLoginHelper$1
   {
     if (QLog.isColorLevel())
     {
-      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("OnGetStViaSMSVerifyLogin  userAccount = ");
+      paramArrayOfByte.append(paramString);
+      paramArrayOfByte.append(" ret=");
+      paramArrayOfByte.append(paramInt2);
+      QLog.d("AutoLoginHelper", 2, paramArrayOfByte.toString());
+      if (paramErrMsg != null)
+      {
+        paramString = new StringBuilder();
+        paramString.append("OnGetStViaSMSVerifyLogin  errMsg = ");
+        paramString.append(paramErrMsg.getMessage());
+        QLog.d("AutoLoginHelper", 2, paramString.toString());
       }
     }
-    if (paramInt2 == 0) {}
-    do
-    {
+    if (paramInt2 == 0) {
       return;
-      AutoLoginHelper.a(this.a);
-    } while (AutoLoginHelper.a(this.a) == null);
-    paramString = new Intent(AutoLoginHelper.a(this.a), LoginActivity.class);
-    paramString.putExtra("uin", AutoLoginHelper.a(this.a));
-    paramString.putExtra("tab_index", 0);
-    paramString.addFlags(131072);
-    AutoLoginHelper.a(this.a).startActivity(paramString);
-    AutoLoginHelper.a(this.a).finish();
+    }
+    this.a.h();
+    if (AutoLoginHelper.a(this.a) != null)
+    {
+      paramString = new Intent(AutoLoginHelper.a(this.a), LoginActivity.class);
+      paramString.putExtra("uin", AutoLoginHelper.a(this.a));
+      paramString.putExtra("tab_index", 0);
+      paramString.addFlags(131072);
+      AutoLoginHelper.a(this.a).startActivity(paramString);
+      AutoLoginHelper.a(this.a).finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoLoginHelper.1
  * JD-Core Version:    0.7.0.1
  */

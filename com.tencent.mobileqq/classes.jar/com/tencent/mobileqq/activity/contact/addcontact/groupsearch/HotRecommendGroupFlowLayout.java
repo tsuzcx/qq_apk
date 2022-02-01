@@ -25,7 +25,7 @@ public class HotRecommendGroupFlowLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a()
+  protected void a()
   {
     int j = getChildCount();
     int i = 0;
@@ -49,7 +49,7 @@ public class HotRecommendGroupFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.groupsearch.HotRecommendGroupFlowLayout
  * JD-Core Version:    0.7.0.1
  */

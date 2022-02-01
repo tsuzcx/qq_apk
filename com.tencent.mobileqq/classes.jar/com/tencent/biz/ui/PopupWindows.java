@@ -27,14 +27,14 @@ public class PopupWindows
   
   protected void a()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new IllegalStateException("setContentView was not called with a view to display.");
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
-    }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
+      Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      if (localDrawable == null) {
+        this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+      } else {
+        this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(localDrawable);
+      }
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
@@ -42,8 +42,8 @@ public class PopupWindows
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
       return;
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
+    throw new IllegalStateException("setContentView was not called with a view to display.");
   }
   
   public void a(PopupWindow.OnDismissListener paramOnDismissListener)
@@ -64,7 +64,7 @@ public class PopupWindows
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.PopupWindows
  * JD-Core Version:    0.7.0.1
  */

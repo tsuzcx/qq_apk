@@ -12,33 +12,30 @@ public class FriendSorter
   
   public static int a(String paramString1, String paramString2)
   {
+    int j = 0;
     int k = paramString2.charAt(0);
     int i;
-    if (((k >= 65) && (k <= 90)) || ((k >= 97) && (k <= 122)))
-    {
+    if (((k >= 65) && (k <= 90)) || ((k >= 97) && (k <= 122))) {
       i = 65536;
-      if (paramString1.charAt(0) < 'ÿ') {
-        break label89;
-      }
-    }
-    label89:
-    for (int j = 1;; j = 0)
-    {
-      return j | k << 8 | i | 0x0;
-      if ((k >= 48) && (k <= 57))
-      {
-        i = 262144;
-        break;
-      }
+    } else if ((k >= 48) && (k <= 57)) {
+      i = 262144;
+    } else {
       i = 131072;
-      break;
     }
+    if (paramString1.charAt(0) >= 'ÿ') {
+      j = 1;
+    }
+    return k << 8 | i | 0x0 | j;
   }
   
   public static String a(Friends paramFriends)
   {
     String str = paramFriends.getFriendNick();
-    return str + "-" + paramFriends.uin;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramFriends.uin);
+    return localStringBuilder.toString();
   }
   
   public static LinkedList<Groups> a(LinkedList<Groups> paramLinkedList, Groups paramGroups)
@@ -52,22 +49,19 @@ public class FriendSorter
       paramLinkedList.add(paramGroups);
       return paramLinkedList;
     }
-    int j = 0;
-    int i = paramLinkedList.size() - 1;
-    if (j <= i)
+    int i = 0;
+    int j = paramLinkedList.size() - 1;
+    while (i <= j)
     {
-      int k = (j + i) / 2;
+      int k = (i + j) / 2;
       Groups localGroups = (Groups)paramLinkedList.get(k);
       if (paramGroups.seqid > localGroups.seqid) {
-        j = k + 1;
-      }
-      for (;;)
-      {
-        break;
-        i = k - 1;
+        i = k + 1;
+      } else {
+        j = k - 1;
       }
     }
-    paramLinkedList.add(i + 1, paramGroups);
+    paramLinkedList.add(j + 1, paramGroups);
     return paramLinkedList;
   }
   
@@ -80,7 +74,7 @@ public class FriendSorter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.utils.FriendSorter
  * JD-Core Version:    0.7.0.1
  */

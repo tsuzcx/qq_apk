@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.vas.qqvaluecard.bean;
 
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -42,177 +41,218 @@ public class QQValueInfoItem
   
   public static QQValueInfoItem a(Object paramObject)
   {
-    int j = 0;
-    int i = 0;
     QQValueInfoItem localQQValueInfoItem = new QQValueInfoItem();
     localQQValueInfoItem.jdField_a_of_type_Boolean = false;
-    if ((paramObject instanceof qqvalue.UserQQValueInfo))
-    {
-      localQQValueInfoItem.jdField_b_of_type_Int = ((qqvalue.UserQQValueInfo)paramObject).level.get();
-      localQQValueInfoItem.jdField_a_of_type_Int = ((qqvalue.UserQQValueInfo)paramObject).score.get();
-      localQQValueInfoItem.jdField_c_of_type_Int = ((qqvalue.UserQQValueInfo)paramObject).trend.get();
-      localQQValueInfoItem.jdField_a_of_type_JavaLangString = ((qqvalue.UserQQValueInfo)paramObject).material_id.get();
-      localQQValueInfoItem.jdField_b_of_type_JavaLangString = ((qqvalue.UserQQValueInfo)paramObject).url.get();
-      localQQValueInfoItem.d = ((qqvalue.UserQQValueInfo)paramObject).on_off.get();
-      if (((qqvalue.UserQQValueInfo)paramObject).ext_info.has())
-      {
-        paramObject = ((qqvalue.UserQQValueInfo)paramObject).ext_info.get();
-        if (paramObject != null) {
-          if (i < paramObject.size())
-          {
-            if (!((qqvalue.UserQQValueInfo.ExtInfo)paramObject.get(i)).key.get().equals("use_static")) {
-              break label252;
-            }
-            localQQValueInfoItem.jdField_a_of_type_Boolean = ((qqvalue.UserQQValueInfo.ExtInfo)paramObject.get(i)).value.get().equals("1");
-          }
-        }
-      }
+    if ((paramObject instanceof qqvalue.UserQQValueInfo)) {
+      a((qqvalue.UserQQValueInfo)paramObject, localQQValueInfoItem);
+    } else if ((paramObject instanceof VaProfileGate.QQValueInfoItem)) {
+      a((VaProfileGate.QQValueInfoItem)paramObject, localQQValueInfoItem);
+    } else if ((paramObject instanceof MQQ.QQValueInfoItem)) {
+      a((MQQ.QQValueInfoItem)paramObject, localQQValueInfoItem);
     }
-    for (;;)
+    paramObject = (QQValueViewBusiness)QQVasUpdateBusiness.a(QQValueViewBusiness.class);
+    if (paramObject != null)
     {
-      paramObject = (QQValueViewBusiness)QQVasUpdateBusiness.a(QQValueViewBusiness.class);
-      if (paramObject != null) {
-        localQQValueInfoItem.jdField_c_of_type_JavaLangString = (paramObject.b(localQQValueInfoItem.jdField_a_of_type_JavaLangString) + "/qqvalue/level_" + localQQValueInfoItem.jdField_b_of_type_Int + "/");
-      }
-      return localQQValueInfoItem;
-      label252:
-      i += 1;
-      break;
-      if ((paramObject instanceof VaProfileGate.QQValueInfoItem))
-      {
-        localQQValueInfoItem.jdField_b_of_type_Int = ((VaProfileGate.QQValueInfoItem)paramObject).level.get();
-        localQQValueInfoItem.jdField_a_of_type_Int = ((VaProfileGate.QQValueInfoItem)paramObject).score.get();
-        localQQValueInfoItem.jdField_c_of_type_Int = ((VaProfileGate.QQValueInfoItem)paramObject).trend.get();
-        localQQValueInfoItem.jdField_a_of_type_JavaLangString = ((VaProfileGate.QQValueInfoItem)paramObject).material_id.get();
-        localQQValueInfoItem.jdField_b_of_type_JavaLangString = ((VaProfileGate.QQValueInfoItem)paramObject).url.get();
-        localQQValueInfoItem.d = ((VaProfileGate.QQValueInfoItem)paramObject).on_off.get();
-        if (((VaProfileGate.QQValueInfoItem)paramObject).qqvalue_ext_info.has())
-        {
-          paramObject = ((VaProfileGate.QQValueInfoItem)paramObject).qqvalue_ext_info.get();
-          if (paramObject != null)
-          {
-            i = j;
-            for (;;)
-            {
-              if (i >= paramObject.size()) {
-                break label447;
-              }
-              if (((VaProfileGate.QQValueExtInfo)paramObject.get(i)).key.get().equals("use_static"))
-              {
-                localQQValueInfoItem.jdField_a_of_type_Boolean = ((VaProfileGate.QQValueExtInfo)paramObject.get(i)).value.get().equals("1");
-                break;
-              }
-              i += 1;
-            }
-          }
-        }
-      }
-      else
-      {
-        label447:
-        if ((paramObject instanceof MQQ.QQValueInfoItem))
-        {
-          localQQValueInfoItem.jdField_b_of_type_Int = ((MQQ.QQValueInfoItem)paramObject).level;
-          localQQValueInfoItem.jdField_a_of_type_Int = ((MQQ.QQValueInfoItem)paramObject).score;
-          localQQValueInfoItem.jdField_c_of_type_Int = ((MQQ.QQValueInfoItem)paramObject).trend;
-          localQQValueInfoItem.jdField_a_of_type_JavaLangString = ((MQQ.QQValueInfoItem)paramObject).material_id;
-          localQQValueInfoItem.jdField_b_of_type_JavaLangString = ((MQQ.QQValueInfoItem)paramObject).url;
-          localQQValueInfoItem.d = ((MQQ.QQValueInfoItem)paramObject).on_off;
-          paramObject = ((MQQ.QQValueInfoItem)paramObject).qqvalue_ext_info;
-          if ((paramObject != null) && ("1".equals(paramObject.get("use_static")))) {
-            localQQValueInfoItem.jdField_a_of_type_Boolean = true;
-          }
-        }
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramObject.b(localQQValueInfoItem.jdField_a_of_type_JavaLangString));
+      localStringBuilder.append("/qqvalue/level_");
+      localStringBuilder.append(localQQValueInfoItem.jdField_b_of_type_Int);
+      localStringBuilder.append("/");
+      localQQValueInfoItem.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
     }
+    return localQQValueInfoItem;
   }
   
   public static QQValueInfoItem a(@NonNull String paramString)
   {
     Object localObject2 = BaseApplicationImpl.getApplication();
+    QQValueInfoItem localQQValueInfoItem = null;
     if (localObject2 == null) {
       return null;
     }
-    Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject1 == null) || (((QQAppInterface)localObject1).getCurrentUin() == null) || (!((QQAppInterface)localObject1).getCurrentUin().equals(paramString))) {
-      return null;
-    }
-    localObject1 = new QQValueInfoItem();
-    localObject2 = ((BaseApplicationImpl)localObject2).getSharedPreferences("sp_vip_qqvalue_info", 0);
-    ((QQValueInfoItem)localObject1).jdField_a_of_type_Int = ((SharedPreferences)localObject2).getInt("key_info_score" + paramString, 0);
-    ((QQValueInfoItem)localObject1).jdField_b_of_type_Int = ((SharedPreferences)localObject2).getInt("key_info_level" + paramString, 0);
-    ((QQValueInfoItem)localObject1).jdField_c_of_type_Int = ((SharedPreferences)localObject2).getInt("key_info_trend" + paramString, 0);
-    ((QQValueInfoItem)localObject1).jdField_a_of_type_JavaLangString = ((SharedPreferences)localObject2).getString("key_info_material_id" + paramString, "");
-    ((QQValueInfoItem)localObject1).jdField_b_of_type_JavaLangString = ((SharedPreferences)localObject2).getString("key_info_url" + paramString, "");
-    ((QQValueInfoItem)localObject1).d = ((SharedPreferences)localObject2).getInt("key_info_on_off" + paramString, 1);
-    if (((SharedPreferences)localObject2).getInt("key_info_static_show" + paramString, 0) == 1) {}
-    for (boolean bool = true;; bool = false)
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject1 = localQQValueInfoItem;
+    if (localQQAppInterface != null)
     {
-      ((QQValueInfoItem)localObject1).jdField_a_of_type_Boolean = bool;
-      paramString = (QQValueViewBusiness)QQVasUpdateBusiness.a(QQValueViewBusiness.class);
-      if (paramString != null) {
-        ((QQValueInfoItem)localObject1).jdField_c_of_type_JavaLangString = (paramString.b(((QQValueInfoItem)localObject1).jdField_a_of_type_JavaLangString) + "/qqvalue/level_" + ((QQValueInfoItem)localObject1).jdField_b_of_type_Int + "/");
+      localObject1 = localQQValueInfoItem;
+      if (localQQAppInterface.getCurrentUin() != null)
+      {
+        if (!localQQAppInterface.getCurrentUin().equals(paramString)) {
+          return null;
+        }
+        localQQValueInfoItem = new QQValueInfoItem();
+        boolean bool = false;
+        localObject1 = ((BaseApplicationImpl)localObject2).getSharedPreferences("sp_vip_qqvalue_info", 0);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("key_info_score");
+        ((StringBuilder)localObject2).append(paramString);
+        localQQValueInfoItem.jdField_a_of_type_Int = ((SharedPreferences)localObject1).getInt(((StringBuilder)localObject2).toString(), 0);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("key_info_level");
+        ((StringBuilder)localObject2).append(paramString);
+        localQQValueInfoItem.jdField_b_of_type_Int = ((SharedPreferences)localObject1).getInt(((StringBuilder)localObject2).toString(), 0);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("key_info_trend");
+        ((StringBuilder)localObject2).append(paramString);
+        localQQValueInfoItem.jdField_c_of_type_Int = ((SharedPreferences)localObject1).getInt(((StringBuilder)localObject2).toString(), 0);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("key_info_material_id");
+        ((StringBuilder)localObject2).append(paramString);
+        localQQValueInfoItem.jdField_a_of_type_JavaLangString = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), "");
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("key_info_url");
+        ((StringBuilder)localObject2).append(paramString);
+        localQQValueInfoItem.jdField_b_of_type_JavaLangString = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), "");
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("key_info_on_off");
+        ((StringBuilder)localObject2).append(paramString);
+        localQQValueInfoItem.d = ((SharedPreferences)localObject1).getInt(((StringBuilder)localObject2).toString(), 1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("key_info_static_show");
+        ((StringBuilder)localObject2).append(paramString);
+        if (((SharedPreferences)localObject1).getInt(((StringBuilder)localObject2).toString(), 0) == 1) {
+          bool = true;
+        }
+        localQQValueInfoItem.jdField_a_of_type_Boolean = bool;
+        paramString = (QQValueViewBusiness)QQVasUpdateBusiness.a(QQValueViewBusiness.class);
+        if (paramString != null)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(paramString.b(localQQValueInfoItem.jdField_a_of_type_JavaLangString));
+          ((StringBuilder)localObject1).append("/qqvalue/level_");
+          ((StringBuilder)localObject1).append(localQQValueInfoItem.jdField_b_of_type_Int);
+          ((StringBuilder)localObject1).append("/");
+          localQQValueInfoItem.jdField_c_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
+        }
+        localObject1 = localQQValueInfoItem;
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("get sp score:");
+          paramString.append(localQQValueInfoItem.jdField_a_of_type_Int);
+          paramString.append(" level = ");
+          paramString.append(localQQValueInfoItem.jdField_b_of_type_Int);
+          paramString.append(" trend = ");
+          paramString.append(localQQValueInfoItem.jdField_c_of_type_Int);
+          paramString.append("materialId = ");
+          paramString.append(localQQValueInfoItem.jdField_a_of_type_JavaLangString);
+          paramString.append("url");
+          paramString.append(localQQValueInfoItem.jdField_b_of_type_JavaLangString);
+          paramString.append("on_off");
+          paramString.append(localQQValueInfoItem.d);
+          QLog.d("QQValueInfoItem", 1, paramString.toString());
+          localObject1 = localQQValueInfoItem;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQValueInfoItem", 1, "get sp score:" + ((QQValueInfoItem)localObject1).jdField_a_of_type_Int + " level = " + ((QQValueInfoItem)localObject1).jdField_b_of_type_Int + " trend = " + ((QQValueInfoItem)localObject1).jdField_c_of_type_Int + "materialId = " + ((QQValueInfoItem)localObject1).jdField_a_of_type_JavaLangString + "url" + ((QQValueInfoItem)localObject1).jdField_b_of_type_JavaLangString + "on_off" + ((QQValueInfoItem)localObject1).d);
+    }
+    return localObject1;
+  }
+  
+  private static void a(MQQ.QQValueInfoItem paramQQValueInfoItem, QQValueInfoItem paramQQValueInfoItem1)
+  {
+    paramQQValueInfoItem1.jdField_b_of_type_Int = paramQQValueInfoItem.level;
+    paramQQValueInfoItem1.jdField_a_of_type_Int = paramQQValueInfoItem.score;
+    paramQQValueInfoItem1.jdField_c_of_type_Int = paramQQValueInfoItem.trend;
+    paramQQValueInfoItem1.jdField_a_of_type_JavaLangString = paramQQValueInfoItem.material_id;
+    paramQQValueInfoItem1.jdField_b_of_type_JavaLangString = paramQQValueInfoItem.url;
+    paramQQValueInfoItem1.d = paramQQValueInfoItem.on_off;
+    paramQQValueInfoItem = paramQQValueInfoItem.qqvalue_ext_info;
+    if ((paramQQValueInfoItem != null) && ("1".equals(paramQQValueInfoItem.get("use_static")))) {
+      paramQQValueInfoItem1.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  private static void a(VaProfileGate.QQValueInfoItem paramQQValueInfoItem, QQValueInfoItem paramQQValueInfoItem1)
+  {
+    paramQQValueInfoItem1.jdField_b_of_type_Int = paramQQValueInfoItem.level.get();
+    paramQQValueInfoItem1.jdField_a_of_type_Int = paramQQValueInfoItem.score.get();
+    paramQQValueInfoItem1.jdField_c_of_type_Int = paramQQValueInfoItem.trend.get();
+    paramQQValueInfoItem1.jdField_a_of_type_JavaLangString = paramQQValueInfoItem.material_id.get();
+    paramQQValueInfoItem1.jdField_b_of_type_JavaLangString = paramQQValueInfoItem.url.get();
+    paramQQValueInfoItem1.d = paramQQValueInfoItem.on_off.get();
+    if (paramQQValueInfoItem.qqvalue_ext_info.has())
+    {
+      paramQQValueInfoItem = paramQQValueInfoItem.qqvalue_ext_info.get();
+      if (paramQQValueInfoItem != null) {
+        return;
       }
-      return localObject1;
+      int i = 0;
+      while (i < paramQQValueInfoItem.size())
+      {
+        if (((VaProfileGate.QQValueExtInfo)paramQQValueInfoItem.get(i)).key.get().equals("use_static"))
+        {
+          paramQQValueInfoItem1.jdField_a_of_type_Boolean = ((VaProfileGate.QQValueExtInfo)paramQQValueInfoItem.get(i)).value.get().equals("1");
+          return;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private static void a(qqvalue.UserQQValueInfo paramUserQQValueInfo, QQValueInfoItem paramQQValueInfoItem)
+  {
+    paramQQValueInfoItem.jdField_b_of_type_Int = paramUserQQValueInfo.level.get();
+    paramQQValueInfoItem.jdField_a_of_type_Int = paramUserQQValueInfo.score.get();
+    paramQQValueInfoItem.jdField_c_of_type_Int = paramUserQQValueInfo.trend.get();
+    paramQQValueInfoItem.jdField_a_of_type_JavaLangString = paramUserQQValueInfo.material_id.get();
+    paramQQValueInfoItem.jdField_b_of_type_JavaLangString = paramUserQQValueInfo.url.get();
+    paramQQValueInfoItem.d = paramUserQQValueInfo.on_off.get();
+    if (paramUserQQValueInfo.ext_info.has())
+    {
+      paramUserQQValueInfo = paramUserQQValueInfo.ext_info.get();
+      if (paramUserQQValueInfo != null) {
+        return;
+      }
+      int i = 0;
+      while (i < paramUserQQValueInfo.size())
+      {
+        if (((qqvalue.UserQQValueInfo.ExtInfo)paramUserQQValueInfo.get(i)).key.get().equals("use_static"))
+        {
+          paramQQValueInfoItem.jdField_a_of_type_Boolean = ((qqvalue.UserQQValueInfo.ExtInfo)paramUserQQValueInfo.get(i)).value.get().equals("1");
+          return;
+        }
+        i += 1;
+      }
     }
   }
   
   public void a(@NonNull String paramString)
   {
-    Object localObject1 = BaseApplicationImpl.getApplication();
-    if (localObject1 == null) {}
-    do
-    {
-      return;
-      localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    } while ((localObject2 == null) || (((QQAppInterface)localObject2).getCurrentUin() == null) || (!((QQAppInterface)localObject2).getCurrentUin().equals(paramString)));
-    localObject1 = ((BaseApplicationImpl)localObject1).getSharedPreferences("sp_vip_qqvalue_info", 0);
-    Object localObject2 = "key_info_score" + paramString;
-    ((SharedPreferences)localObject1).edit().putInt((String)localObject2, this.jdField_a_of_type_Int);
-    localObject2 = "key_info_level" + paramString;
-    ((SharedPreferences)localObject1).edit().putInt((String)localObject2, this.jdField_b_of_type_Int);
-    localObject2 = "key_info_trend" + paramString;
-    ((SharedPreferences)localObject1).edit().putInt((String)localObject2, this.jdField_c_of_type_Int);
-    localObject2 = "key_info_material_id" + paramString;
-    ((SharedPreferences)localObject1).edit().putString((String)localObject2, this.jdField_a_of_type_JavaLangString);
-    localObject2 = "key_info_url" + paramString;
-    ((SharedPreferences)localObject1).edit().putString((String)localObject2, this.jdField_b_of_type_JavaLangString);
-    localObject2 = "key_info_on_off" + paramString;
-    ((SharedPreferences)localObject1).edit().putInt((String)localObject2, this.d);
-    paramString = "key_info_static_show" + paramString;
-    localObject2 = ((SharedPreferences)localObject1).edit();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ((SharedPreferences.Editor)localObject2).putInt(paramString, i);
-      ((SharedPreferences)localObject1).edit().commit();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQValueInfoItem", 1, "save sp score:" + this.jdField_a_of_type_Int + " level = " + this.jdField_b_of_type_Int + " trend = " + this.jdField_c_of_type_Int + "materialId = " + this.jdField_a_of_type_JavaLangString + "url" + this.jdField_b_of_type_JavaLangString + "on_off" + this.d);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean a(QQValueInfoItem paramQQValueInfoItem)
   {
-    if (paramQQValueInfoItem == null) {}
-    do
-    {
+    if (paramQQValueInfoItem == null) {
       return false;
-      if (this == paramQQValueInfoItem) {
-        return true;
-      }
-    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramQQValueInfoItem.jdField_a_of_type_JavaLangString)) || (this.d != paramQQValueInfoItem.d) || (this.jdField_a_of_type_Int != paramQQValueInfoItem.jdField_a_of_type_Int) || (this.jdField_c_of_type_Int != paramQQValueInfoItem.jdField_c_of_type_Int) || (!this.jdField_b_of_type_JavaLangString.equals(paramQQValueInfoItem.jdField_b_of_type_JavaLangString)) || (this.jdField_b_of_type_Int != paramQQValueInfoItem.jdField_b_of_type_Int) || (this.jdField_a_of_type_Boolean != paramQQValueInfoItem.jdField_a_of_type_Boolean));
-    return true;
+    }
+    if (this == paramQQValueInfoItem) {
+      return true;
+    }
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramQQValueInfoItem.jdField_a_of_type_JavaLangString)) {
+      return false;
+    }
+    if (this.d != paramQQValueInfoItem.d) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Int != paramQQValueInfoItem.jdField_a_of_type_Int) {
+      return false;
+    }
+    if (this.jdField_c_of_type_Int != paramQQValueInfoItem.jdField_c_of_type_Int) {
+      return false;
+    }
+    if (!this.jdField_b_of_type_JavaLangString.equals(paramQQValueInfoItem.jdField_b_of_type_JavaLangString)) {
+      return false;
+    }
+    if (this.jdField_b_of_type_Int != paramQQValueInfoItem.jdField_b_of_type_Int) {
+      return false;
+    }
+    return this.jdField_a_of_type_Boolean == paramQQValueInfoItem.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qqvaluecard.bean.QQValueInfoItem
  * JD-Core Version:    0.7.0.1
  */

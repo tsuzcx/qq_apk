@@ -15,15 +15,25 @@ class DataLineHandler$2
     if (paramIntent != null)
     {
       paramContext = paramIntent.getAction();
-      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")))) {
-        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a();
+      if (paramContext != null) {
+        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")))
+        {
+          paramIntent = new StringBuilder();
+          paramIntent.append("mqq.intent.action.EXIT_");
+          paramIntent.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName());
+          if ((!paramContext.equals(paramIntent.toString())) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {}
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a();
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.2
  * JD-Core Version:    0.7.0.1
  */

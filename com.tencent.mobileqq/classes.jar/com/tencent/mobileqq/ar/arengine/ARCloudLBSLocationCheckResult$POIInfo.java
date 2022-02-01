@@ -20,12 +20,24 @@ public class ARCloudLBSLocationCheckResult$POIInfo
   
   public String toString()
   {
-    return "POIInfo{latitude = " + this.jdField_a_of_type_Int + ", longitude = " + this.jdField_b_of_type_Int + ", name = " + this.jdField_a_of_type_JavaLangString + ", addr = " + this.jdField_b_of_type_JavaLangString + ", dist = " + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("POIInfo{latitude = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", longitude = ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", name = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", addr = ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", dist = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult.POIInfo
  * JD-Core Version:    0.7.0.1
  */

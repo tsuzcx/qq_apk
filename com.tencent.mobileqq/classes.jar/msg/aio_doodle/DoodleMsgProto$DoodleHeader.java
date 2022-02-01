@@ -25,13 +25,15 @@ public final class DoodleMsgProto$DoodleHeader
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 45, 53, 61, 69, 77, 85 }, new String[] { "uint32_Version", "tytes_doodle_md5", "uint32_time", "uint32_line_count", "float_line_width_max", "float_line_width_min", "float_comp_factor_max", "float_comp_factor_min", "float_draw_area_width", "float_draw_area_height" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F) }, DoodleHeader.class);
+    Float localFloat = Float.valueOf(0.0F);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 45, 53, 61, 69, 77, 85 }, new String[] { "uint32_Version", "tytes_doodle_md5", "uint32_time", "uint32_line_count", "float_line_width_max", "float_line_width_min", "float_comp_factor_max", "float_comp_factor_min", "float_draw_area_width", "float_draw_area_height" }, new Object[] { localInteger, localByteStringMicro, localInteger, localInteger, localFloat, localFloat, localFloat, localFloat, localFloat, localFloat }, DoodleHeader.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msg.aio_doodle.DoodleMsgProto.DoodleHeader
  * JD-Core Version:    0.7.0.1
  */

@@ -21,13 +21,16 @@ public class NearbyRedDotFaceController
   protected void a(String paramString)
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.b;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.b;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
+    int i = this.b;
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
     ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "nearby_reddot_face";
     paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-    paramString.setTag(URLDrawableDecodeHandler.a(this.b, this.b));
+    i = this.b;
+    paramString.setTag(URLDrawableDecodeHandler.a(i, i));
     paramString.setDecodeHandler(URLDrawableDecodeHandler.a);
     if (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)
     {
@@ -41,7 +44,7 @@ public class NearbyRedDotFaceController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyRedDotFaceController
  * JD-Core Version:    0.7.0.1
  */

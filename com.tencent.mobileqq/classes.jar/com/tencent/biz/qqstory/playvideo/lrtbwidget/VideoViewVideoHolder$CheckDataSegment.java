@@ -37,7 +37,8 @@ class VideoViewVideoHolder$CheckDataSegment
     if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.b())
     {
       SLog.b(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is a error data = %s", this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a());
-      VideoViewVideoHolder.b(this.a, this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a().errorCode);
+      paramJobContext = this.a;
+      VideoViewVideoHolder.b(paramJobContext, paramJobContext.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a().errorCode);
       VideoViewVideoHolder.a(this.a, false);
       SLog.d(this.a.jdField_a_of_type_JavaLangString, "isErrorData, hide loading view. subErrorCode=%d", new Object[] { Integer.valueOf(VideoViewVideoHolder.a(this.a)) });
       if (VideoViewVideoHolder.a(this.a) == 97000000)
@@ -77,7 +78,7 @@ class VideoViewVideoHolder$CheckDataSegment
     notifyResult(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.jdField_a_of_type_JavaLangString);
   }
   
-  public void onCancel()
+  protected void onCancel()
   {
     super.onCancel();
     SLog.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment onCancel");
@@ -85,7 +86,7 @@ class VideoViewVideoHolder$CheckDataSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.CheckDataSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -55,18 +55,16 @@ public class QQStoryPullToRefreshListView
   
   public void a(boolean paramBoolean)
   {
-    if (this.b == null) {
+    PullRefreshHeader localPullRefreshHeader = this.b;
+    if (localPullRefreshHeader == null) {
       return;
     }
     if (paramBoolean) {
-      this.b.a(0);
+      localPullRefreshHeader.a(0);
+    } else {
+      localPullRefreshHeader.a(1);
     }
-    for (;;)
-    {
-      postDelayed(new QQStoryPullToRefreshListView.1(this), 800L);
-      return;
-      this.b.a(1);
-    }
+    postDelayed(new QQStoryPullToRefreshListView.1(this), 800L);
   }
   
   protected void n()
@@ -83,22 +81,24 @@ public class QQStoryPullToRefreshListView
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    AbsListView.OnScrollListener localOnScrollListener = this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
-    if (paramInt1 == this.jdField_a_of_type_Int) {}
-    do
-    {
+    if (paramInt1 == this.jdField_a_of_type_Int) {
       return;
-      this.jdField_a_of_type_Int = paramInt1;
-    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.a());
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.b(true);
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    if (paramInt3 - (paramInt1 + paramInt2) <= this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.a()) {
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.b(true);
+    }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
+    AbsListView.OnScrollListener localOnScrollListener = this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -120,14 +120,12 @@ public class QQStoryPullToRefreshListView
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     this.b.a(0L);
-    if (!NetworkUtil.g(getContext().getApplicationContext())) {
+    if (!NetworkUtil.isNetworkAvailable(getContext().getApplicationContext())) {
       a(false);
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView$PullToRefreshListener.a();
     }
+    return true;
   }
   
   public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
@@ -141,27 +139,26 @@ public class QQStoryPullToRefreshListView
     s();
   }
   
-  public void reportScrollStateChange(int paramInt)
+  protected void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      if (paramInt == 0) {
+      if (paramInt == 0)
+      {
         DropFrameMonitor.a().a(this.jdField_a_of_type_JavaLangString, false);
+        return;
       }
+      DropFrameMonitor.a().a(this.jdField_a_of_type_JavaLangString);
     }
-    else {
-      return;
-    }
-    DropFrameMonitor.a().a(this.jdField_a_of_type_JavaLangString);
   }
   
   protected void s()
   {
-    this.b = ((PullRefreshHeader)LayoutInflater.from(super.getContext()).inflate(2131561906, this, false));
+    this.b = ((PullRefreshHeader)LayoutInflater.from(super.getContext()).inflate(2131561753, this, false));
     this.b.setTextColor(-1, -1, -1, -1, -1);
-    this.b.setHeaderBgDrawable(getResources().getDrawable(2130839540));
-    super.setOverScrollHeight(super.getResources().getDimensionPixelSize(2131298917));
+    this.b.setHeaderBgDrawable(getResources().getDrawable(2130839396));
+    super.setOverScrollHeight(super.getResources().getDimensionPixelSize(2131298921));
     super.setOverScrollHeader(this.b);
     super.setOverScrollListener(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetOverScrollViewForwardListener);
   }
@@ -188,7 +185,7 @@ public class QQStoryPullToRefreshListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView
  * JD-Core Version:    0.7.0.1
  */

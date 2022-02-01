@@ -18,39 +18,46 @@ public class TaskFlowEngine
   
   public TaskFlowEngine()
   {
-    try
+    for (;;)
     {
-      int j = ARDeviceInfo.b();
-      QLog.w("TaskFlow", 1, "create thread pool, cpuCores=" + j);
-      if (j > 0) {
-        i = j + 1;
+      try
+      {
+        i = ARDeviceInfo.b();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("create thread pool, cpuCores=");
+        localStringBuilder.append(i);
+        QLog.w("[cmshow]TaskFlow", 1, localStringBuilder.toString());
+        if (i > 0)
+        {
+          i += 1;
+          this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskTaskThreadPool = new TaskThreadPool("TaskFlowEngine", 2, i);
+          return;
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskTaskThreadPool = new TaskThreadPool("TaskFlowEngine", 2, i);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("TaskFlow", 1, "create thread pool error!", localException);
+      catch (Exception localException)
+      {
+        QLog.e("[cmshow]TaskFlow", 1, "create thread pool error!", localException);
+        return;
+      }
+      int i = 2;
     }
   }
   
   private void d(BaseTask paramBaseTask)
   {
-    if (paramBaseTask == null) {}
-    for (;;)
-    {
+    if (paramBaseTask == null) {
       return;
-      paramBaseTask.a(this);
-      if (!this.b.contains(paramBaseTask)) {
-        this.b.add(paramBaseTask);
-      }
-      paramBaseTask = paramBaseTask.a();
-      if ((paramBaseTask != null) && (paramBaseTask.size() > 0))
-      {
-        paramBaseTask = paramBaseTask.iterator();
-        while (paramBaseTask.hasNext()) {
-          d((BaseTask)paramBaseTask.next());
-        }
+    }
+    paramBaseTask.a(this);
+    if (!this.b.contains(paramBaseTask)) {
+      this.b.add(paramBaseTask);
+    }
+    paramBaseTask = paramBaseTask.a();
+    if ((paramBaseTask != null) && (paramBaseTask.size() > 0))
+    {
+      paramBaseTask = paramBaseTask.iterator();
+      while (paramBaseTask.hasNext()) {
+        d((BaseTask)paramBaseTask.next());
       }
     }
   }
@@ -61,52 +68,55 @@ public class TaskFlowEngine
       return;
     }
     List localList = ???.a();
-    if ((localList == null) || (localList.size() <= 0))
+    if ((localList != null) && (localList.size() > 0))
     {
-      ???.c();
-      return;
-    }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
-    do
-    {
-      if (!((Iterator)localObject2).hasNext()) {
-        break;
-      }
-    } while (((TaskFlowEngine.DependFlow)((Iterator)localObject2).next()).a != ???);
-    for (int i = 1;; i = 0) {
-      for (;;)
+      int j = 0;
+      Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+      do
       {
-        if (i == 0) {
-          localObject2 = new TaskFlowEngine.DependFlow(this, ???, localList);
+        i = j;
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
         }
+      } while (((TaskFlowEngine.DependFlow)((Iterator)localObject2).next()).a != ???);
+      int i = 1;
+      if (i == 0)
+      {
+        localObject2 = new TaskFlowEngine.DependFlow(this, ???, localList);
         synchronized (this.jdField_a_of_type_JavaUtilList)
         {
           this.jdField_a_of_type_JavaUtilList.add(localObject2);
-          ??? = localList.iterator();
-          if (!???.hasNext()) {
-            break;
-          }
-          e((BaseTask)???.next());
         }
       }
+      ??? = localObject1.iterator();
+      while (???.hasNext()) {
+        e((BaseTask)???.next());
+      }
+      return;
     }
+    ???.c();
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqApolloUtilsTaskBaseTask == null) || (this.jdField_a_of_type_ArrayOfComTencentMobileqqApolloUtilsTaskBaseTask.length <= 0)) {
-      return;
+    BaseTask[] arrayOfBaseTask = this.jdField_a_of_type_ArrayOfComTencentMobileqqApolloUtilsTaskBaseTask;
+    if (arrayOfBaseTask != null)
+    {
+      if (arrayOfBaseTask.length <= 0) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskTaskThreadPool.a(new TaskFlowEngine.1(this));
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskTaskThreadPool.a(new TaskFlowEngine.1(this));
   }
   
   public void a(BaseTask paramBaseTask)
   {
-    if (paramBaseTask == null) {}
-    while (!paramBaseTask.b()) {
+    if (paramBaseTask == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskTaskThreadPool.a(new TaskFlowEngine.2(this, paramBaseTask));
+    if (paramBaseTask.b()) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskTaskThreadPool.a(new TaskFlowEngine.2(this, paramBaseTask));
+    }
   }
   
   public final void a(BaseTask[] paramArrayOfBaseTask)
@@ -114,18 +124,16 @@ public class TaskFlowEngine
     this.jdField_a_of_type_JavaUtilList.clear();
     this.b.clear();
     this.jdField_a_of_type_ArrayOfComTencentMobileqqApolloUtilsTaskBaseTask = paramArrayOfBaseTask;
-    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqApolloUtilsTaskBaseTask == null) {}
-    for (;;)
-    {
+    paramArrayOfBaseTask = this.jdField_a_of_type_ArrayOfComTencentMobileqqApolloUtilsTaskBaseTask;
+    if (paramArrayOfBaseTask == null) {
       return;
-      paramArrayOfBaseTask = this.jdField_a_of_type_ArrayOfComTencentMobileqqApolloUtilsTaskBaseTask;
-      int j = paramArrayOfBaseTask.length;
-      int i = 0;
-      while (i < j)
-      {
-        d(paramArrayOfBaseTask[i]);
-        i += 1;
-      }
+    }
+    int j = paramArrayOfBaseTask.length;
+    int i = 0;
+    while (i < j)
+    {
+      d(paramArrayOfBaseTask[i]);
+      i += 1;
     }
   }
   
@@ -143,6 +151,11 @@ public class TaskFlowEngine
           localDependFlow.a();
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramBaseTask;
     }
   }
   
@@ -153,7 +166,7 @@ public class TaskFlowEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.TaskFlowEngine
  * JD-Core Version:    0.7.0.1
  */

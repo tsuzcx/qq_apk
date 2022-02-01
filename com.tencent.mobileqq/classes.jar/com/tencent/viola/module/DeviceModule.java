@@ -58,7 +58,8 @@ public class DeviceModule
     if (!TextUtils.isEmpty(paramString))
     {
       initBrightnessController();
-      if ((this.mBrightnessController != null) && (this.mBrightnessController.getOnBrightNessChangeListener() == null)) {
+      ViolaBrightnessController localViolaBrightnessController = this.mBrightnessController;
+      if ((localViolaBrightnessController != null) && (localViolaBrightnessController.getOnBrightNessChangeListener() == null)) {
         this.mBrightnessController.setOnBrightNessChangeListener(new DeviceModule.2(this, paramString));
       }
     }
@@ -79,8 +80,9 @@ public class DeviceModule
         this.mOrientationDetector.setVerticalAngle(this.mVerticalAngle);
         this.mHandler = new Handler();
       }
-      if (this.mOrientationDetector != null) {
-        this.mOrientationDetector.enable(true);
+      paramString = this.mOrientationDetector;
+      if (paramString != null) {
+        paramString.enable(true);
       }
     }
   }
@@ -99,73 +101,70 @@ public class DeviceModule
   @JSMethod
   public void getSystemBrightness(String paramString)
   {
-    JSONObject localJSONObject;
     if (!TextUtils.isEmpty(paramString))
     {
       initBrightnessController();
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("value", this.mBrightnessController.getScreenBrightness());
-      ViolaBridgeManager.getInstance().callbackJavascript(getViolaInstance().getInstanceId(), "device", "callback", paramString, localJSONObject, true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      JSONObject localJSONObject = new JSONObject();
+      try
       {
-        ViolaLogUtils.e("DeviceModule", "getSystemBrightness error:" + localException.getMessage());
+        localJSONObject.put("value", this.mBrightnessController.getScreenBrightness());
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSystemBrightness error:");
+        localStringBuilder.append(localException.getMessage());
+        ViolaLogUtils.e("DeviceModule", localStringBuilder.toString());
         localException.printStackTrace();
       }
+      ViolaBridgeManager.getInstance().callbackJavascript(getViolaInstance().getInstanceId(), "device", "callback", paramString, localJSONObject, true);
     }
   }
   
   @JSMethod(uiThread=false)
   public void getSystemVolume(String paramString)
   {
-    JSONObject localJSONObject;
     if (!TextUtils.isEmpty(paramString))
     {
       initAudioManager();
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("value", this.mAudioManager.getStreamVolume(3) / this.mMaxVolume);
-      ViolaBridgeManager.getInstance().callbackJavascript(getViolaInstance().getInstanceId(), "device", "callback", paramString, localJSONObject, true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      JSONObject localJSONObject = new JSONObject();
+      try
       {
-        ViolaLogUtils.e("DeviceModule", "getSystemVolume error:" + localException.getMessage());
+        localJSONObject.put("value", this.mAudioManager.getStreamVolume(3) / this.mMaxVolume);
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSystemVolume error:");
+        localStringBuilder.append(localException.getMessage());
+        ViolaLogUtils.e("DeviceModule", localStringBuilder.toString());
         localException.printStackTrace();
       }
+      ViolaBridgeManager.getInstance().callbackJavascript(getViolaInstance().getInstanceId(), "device", "callback", paramString, localJSONObject, true);
     }
   }
   
   public void onActivityDestroy()
   {
-    if (this.mOrientationDetector != null) {
-      this.mOrientationDetector.destroy();
+    Object localObject = this.mOrientationDetector;
+    if (localObject != null) {
+      ((OrientationDetector)localObject).destroy();
     }
-    if (this.mBrightnessController != null) {
-      this.mBrightnessController.doOnDestory();
+    localObject = this.mBrightnessController;
+    if (localObject != null) {
+      ((ViolaBrightnessController)localObject).doOnDestory();
     }
     if (this.mVolumeChangedObserver != null)
     {
-      if (getViolaInstance().getContext() == null) {
-        break label66;
+      if (getViolaInstance().getContext() != null)
+      {
+        getViolaInstance().getContext().getApplicationContext().getContentResolver().unregisterContentObserver(this.mVolumeChangedObserver);
+        return;
       }
-      getViolaInstance().getContext().getApplicationContext().getContentResolver().unregisterContentObserver(this.mVolumeChangedObserver);
+      if (ViolaEnvironment.getApplication() != null) {
+        ViolaEnvironment.getApplication().getContentResolver().unregisterContentObserver(this.mVolumeChangedObserver);
+      }
     }
-    label66:
-    while (ViolaEnvironment.getApplication() == null) {
-      return;
-    }
-    ViolaEnvironment.getApplication().getContentResolver().unregisterContentObserver(this.mVolumeChangedObserver);
   }
   
   @JSMethod
@@ -199,7 +198,7 @@ public class DeviceModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.module.DeviceModule
  * JD-Core Version:    0.7.0.1
  */

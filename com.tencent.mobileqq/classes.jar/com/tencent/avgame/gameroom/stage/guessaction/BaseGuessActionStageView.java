@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.avgame.data.FontStyleConfig;
 import com.tencent.avgame.gamelogic.ITopic;
 import com.tencent.avgame.gamelogic.data.Player;
 import com.tencent.avgame.gameroom.GameRoomViewLayoutParamsDef;
@@ -16,7 +17,6 @@ import com.tencent.avgame.gameroom.stage.IGameStagePresenter;
 import com.tencent.avgame.gameroom.stage.IGameStageView;
 import com.tencent.avgame.gameroom.stage.IGameStageView.SwitchTopicClickListener;
 import com.tencent.avgame.gameroom.stage.IStagePresenter;
-import com.tencent.avgame.gameroom.stage.util.FontStyleConfig;
 import com.tencent.avgame.session.AVGameUserInfo;
 import com.tencent.avgame.ui.AVGameText;
 import com.tencent.avgame.util.UiUtils;
@@ -82,55 +82,61 @@ public class BaseGuessActionStageView
   
   public void a(ITopic paramITopic)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseGuessActionStageView", 2, "onUpdateCurTopic topic = " + paramITopic);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onUpdateCurTopic topic = ");
+      ((StringBuilder)localObject).append(paramITopic);
+      QLog.d("BaseGuessActionStageView", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramITopic == null) {}
-    do
-    {
+    if (paramITopic == null) {
       return;
-      ReportController.b(null, "dc00898", "", "", "0X800B04D", "0X800B04D", 1, 0, "", "", "", "");
-      localObject = paramITopic.c();
-      if ((localObject == null) || (((String)localObject).length() <= 5)) {
-        break;
-      }
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800B04D", "0X800B04D", 1, 0, "", "", "", "");
+    Object localObject = paramITopic.c();
+    if ((localObject != null) && (((String)localObject).length() > 5)) {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.d());
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(new BaseGuessActionStageView.3(this, (String)localObject));
-    } while ((this.jdField_a_of_type_AndroidWidgetLinearLayout == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0));
-    Object localObject = paramITopic.a();
-    if ((localObject[0] != null) && (localObject[0].length() != 0) && (localObject[1] != null) && (localObject[1].length() != 0) && (localObject[2] != null) && (localObject[2].length() != 0))
+    } else {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.c());
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(new BaseGuessActionStageView.3(this, (String)localObject));
+    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if ((localObject != null) && (((LinearLayout)localObject).getVisibility() != 0))
     {
-      if (paramITopic.a() != 0L) {}
-      for (boolean bool = true;; bool = false)
+      localObject = paramITopic.a();
+      if ((localObject[0] != null) && (localObject[0].length() != 0) && (localObject[1] != null) && (localObject[1].length() != 0) && (localObject[2] != null) && (localObject[2].length() != 0))
       {
+        boolean bool;
+        if (paramITopic.a() != 0L) {
+          bool = true;
+        } else {
+          bool = false;
+        }
         this.jdField_b_of_type_Boolean = bool;
         this.jdField_a_of_type_ComTencentAvgameUiAVGameText.setAttribute("#FFFFFF", localObject[2]);
         this.jdField_a_of_type_ComTencentAvgameUiAVGameText.setText(localObject[0]);
         this.jdField_b_of_type_ComTencentAvgameUiAVGameText.setAttribute("#FFC000", "#FFFFFF");
         this.jdField_b_of_type_ComTencentAvgameUiAVGameText.setText(localObject[1]);
-        if (!this.jdField_b_of_type_Boolean) {
-          break label321;
+        if (this.jdField_b_of_type_Boolean)
+        {
+          ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+          ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+          ThreadManager.getUIHandlerV2().post(this.jdField_b_of_type_JavaLangRunnable);
+          ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1600L);
+          return;
         }
-        ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-        ThreadManager.getUIHandlerV2().post(this.jdField_b_of_type_JavaLangRunnable);
-        ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1600L);
+        ThreadManager.getUIHandlerV2().post(this.jdField_a_of_type_JavaLangRunnable);
         return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.c());
-        break;
       }
-      label321:
-      ThreadManager.getUIHandlerV2().post(this.jdField_a_of_type_JavaLangRunnable);
-      return;
+      ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+      ThreadManager.getUIHandlerV2().post(this.jdField_b_of_type_JavaLangRunnable);
     }
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    ThreadManager.getUIHandlerV2().post(this.jdField_b_of_type_JavaLangRunnable);
   }
   
   public void a(Player paramPlayer, AVGameUserInfo paramAVGameUserInfo)
   {
-    if ((GameRoomViewLayoutParamsDef.l <= 0) && (paramPlayer != null) && (paramAVGameUserInfo != null) && (paramAVGameUserInfo.hasCameraVideo()))
+    if ((GameRoomViewLayoutParamsDef.w <= 0) && (paramPlayer != null) && (paramAVGameUserInfo != null) && (paramAVGameUserInfo.hasCameraVideo()))
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
@@ -145,21 +151,32 @@ public class BaseGuessActionStageView
   
   public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseGuessActionStageView", 2, "onShowGameContent " + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    if (QLog.isColorLevel())
     {
-      setVisibility(i);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onShowGameContent ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("BaseGuessActionStageView", 2, localStringBuilder.toString());
     }
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
+    }
+    setVisibility(i);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseGuessActionStageView", 2, "onShowGameBottomWidget ,isPlayerSelf = " + paramBoolean1 + ",show = " + paramBoolean2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onShowGameBottomWidget ,isPlayerSelf = ");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(",show = ");
+      localStringBuilder.append(paramBoolean2);
+      QLog.d("BaseGuessActionStageView", 2, localStringBuilder.toString());
     }
     if (!paramBoolean2)
     {
@@ -199,8 +216,9 @@ public class BaseGuessActionStageView
   
   public void setTitleCenter(String paramString)
   {
-    if (this.c != null) {
-      this.c.setText(paramString);
+    TextView localTextView = this.c;
+    if (localTextView != null) {
+      localTextView.setText(paramString);
     }
   }
   
@@ -208,7 +226,7 @@ public class BaseGuessActionStageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guessaction.BaseGuessActionStageView
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ public class TroopMultiCardDrawer
   
   private void a(String paramString)
   {
-    if (((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).n(paramString)) {
+    if (((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).m(paramString)) {
       c(false);
     }
   }
@@ -43,15 +43,16 @@ public class TroopMultiCardDrawer
   
   protected View a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer = new TroopMultiCardDrawer.1(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b());
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer.a() == null) {}
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer = new TroopMultiCardDrawer.1(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b());
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer.a();
     return this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer.a();
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer.b();
+    MultiCardContainer localMultiCardContainer = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer;
+    if (localMultiCardContainer != null) {
+      localMultiCardContainer.b();
     }
     a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b());
   }
@@ -72,8 +73,9 @@ public class TroopMultiCardDrawer
     if (QLog.isColorLevel()) {
       QLog.d("intimate_relationship", 2, String.format("onDrawerStartOpen", new Object[0]));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer.a();
+    MultiCardContainer localMultiCardContainer = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer;
+    if (localMultiCardContainer != null) {
+      localMultiCardContainer.a();
     }
     m();
   }
@@ -84,23 +86,25 @@ public class TroopMultiCardDrawer
     if (QLog.isColorLevel()) {
       QLog.d("intimate_relationship", 2, String.format("onDrawerClosed", new Object[0]));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer.c();
+    MultiCardContainer localMultiCardContainer = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer;
+    if (localMultiCardContainer != null) {
+      localMultiCardContainer.c();
     }
   }
   
   public void k()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer != null)
+    MultiCardContainer localMultiCardContainer = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer;
+    if (localMultiCardContainer != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer.d();
+      localMultiCardContainer.d();
       this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContainer = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.TroopMultiCardDrawer
  * JD-Core Version:    0.7.0.1
  */

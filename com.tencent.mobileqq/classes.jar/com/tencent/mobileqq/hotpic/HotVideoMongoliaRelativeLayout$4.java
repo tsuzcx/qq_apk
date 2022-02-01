@@ -7,13 +7,14 @@ class HotVideoMongoliaRelativeLayout$4
   
   public void run()
   {
-    HotVideoMongoliaRelativeLayout.a(this.this$0, this.this$0.a, this.a);
+    HotVideoMongoliaRelativeLayout localHotVideoMongoliaRelativeLayout = this.this$0;
+    HotVideoMongoliaRelativeLayout.a(localHotVideoMongoliaRelativeLayout, localHotVideoMongoliaRelativeLayout.a, this.a);
     this.this$0.a = this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout.4
  * JD-Core Version:    0.7.0.1
  */

@@ -44,31 +44,20 @@ public class EmbeddedLivePlayerJsPlugin
   
   private void enterFullScreenMode(Activity paramActivity)
   {
-    int i;
     if ((paramActivity != null) && (!paramActivity.isFinishing()))
     {
-      i = paramActivity.getWindow().getDecorView().getSystemUiVisibility();
-      if (Build.VERSION.SDK_INT < 21) {
-        break label60;
+      int i = paramActivity.getWindow().getDecorView().getSystemUiVisibility();
+      if (Build.VERSION.SDK_INT >= 21) {
+        i = 5894;
+      } else if (Build.VERSION.SDK_INT >= 16) {
+        i = 1798;
       }
-      i = 5894;
-      if (Build.VERSION.SDK_INT < 19) {
-        break label75;
+      if (Build.VERSION.SDK_INT >= 19) {
+        i |= 0x800;
+      } else {
+        i |= 0x1;
       }
-      i |= 0x800;
-    }
-    for (;;)
-    {
       paramActivity.getWindow().getDecorView().setSystemUiVisibility(i);
-      return;
-      label60:
-      if (Build.VERSION.SDK_INT < 16) {
-        break;
-      }
-      i = 1798;
-      break;
-      label75:
-      i |= 0x1;
     }
   }
   
@@ -76,21 +65,22 @@ public class EmbeddedLivePlayerJsPlugin
   {
     Activity localActivity = this.mMiniAppContext.getAttachedActivity();
     WeakReference localWeakReference = new WeakReference(localActivity);
-    if (localActivity != null) {}
-    try
-    {
-      if (!localActivity.isFinishing())
+    if (localActivity != null) {
+      try
       {
-        if (Build.VERSION.SDK_INT >= 16) {
-          localActivity.getWindow().getDecorView().setSystemUiVisibility(1024);
+        if (!localActivity.isFinishing())
+        {
+          if (Build.VERSION.SDK_INT >= 16) {
+            localActivity.getWindow().getDecorView().setSystemUiVisibility(1024);
+          }
+          this.mMiniAppContext.performAction(new EmbeddedLivePlayerJsPlugin.4(this, localWeakReference));
+          return;
         }
-        this.mMiniAppContext.performAction(new EmbeddedLivePlayerJsPlugin.4(this, localWeakReference));
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QMLog.e("EmbeddedLivePlayerJsPlugin", "smallScreen: ", localException);
+      catch (Exception localException)
+      {
+        QMLog.e("EmbeddedLivePlayerJsPlugin", "smallScreen: ", localException);
+      }
     }
   }
   
@@ -109,19 +99,22 @@ public class EmbeddedLivePlayerJsPlugin
       {
         EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)((Iterator)localObject).next()).getValue();
         if (localEmbeddedWidgetClientHolder != null) {
-          switch (paramInt)
+          if (paramInt != 1)
           {
-          default: 
-            break;
-          case 1: 
+            if (paramInt != 2)
+            {
+              if (paramInt == 3)
+              {
+                localEmbeddedWidgetClientHolder.nativeDestroy();
+                ((Iterator)localObject).remove();
+              }
+            }
+            else {
+              localEmbeddedWidgetClientHolder.nativePause();
+            }
+          }
+          else {
             localEmbeddedWidgetClientHolder.nativeResume();
-            break;
-          case 2: 
-            localEmbeddedWidgetClientHolder.nativePause();
-            break;
-          case 3: 
-            localEmbeddedWidgetClientHolder.nativeDestroy();
-            ((Iterator)localObject).remove();
           }
         }
       }
@@ -199,34 +192,42 @@ public class EmbeddedLivePlayerJsPlugin
   @JsEvent({"setDisplayOrientation"})
   public void setDisplayOrientation(RequestEvent paramRequestEvent)
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      try
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
+      i = 0;
+      j = ((JSONObject)localObject).optInt("orientation", 0);
+      if (j != 90) {
+        break label115;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
-        int j = new JSONObject(paramRequestEvent.jsonParams).optInt("orientation", 0);
-        if (j == 90)
-        {
-          if (i != this.mMiniAppContext.getAttachedActivity().getRequestedOrientation())
-          {
-            QMLog.i("EmbeddedLivePlayerJsPlugin", "EVENT_SET_DISPLAY_ORIENTATION, setRequestedOrientation: " + j);
-            this.mMiniAppContext.getAttachedActivity().setRequestedOrientation(i);
-          }
-          paramRequestEvent.ok();
-          return;
-        }
+        Object localObject;
+        int i;
+        int j;
+        continue;
+        label115:
         if (j == -90) {
           i = 8;
         } else {
           i = 1;
         }
       }
-      catch (Throwable localThrowable)
-      {
-        paramRequestEvent.fail();
-        return;
-      }
     }
+    if (i != this.mMiniAppContext.getAttachedActivity().getRequestedOrientation())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("EVENT_SET_DISPLAY_ORIENTATION, setRequestedOrientation: ");
+      ((StringBuilder)localObject).append(j);
+      QMLog.i("EmbeddedLivePlayerJsPlugin", ((StringBuilder)localObject).toString());
+      this.mMiniAppContext.getAttachedActivity().setRequestedOrientation(i);
+    }
+    paramRequestEvent.ok();
+    return;
+    paramRequestEvent.fail();
   }
   
   @JsEvent({"showVirtualBottomNavigationBar"})
@@ -252,7 +253,7 @@ public class EmbeddedLivePlayerJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.EmbeddedLivePlayerJsPlugin
  * JD-Core Version:    0.7.0.1
  */

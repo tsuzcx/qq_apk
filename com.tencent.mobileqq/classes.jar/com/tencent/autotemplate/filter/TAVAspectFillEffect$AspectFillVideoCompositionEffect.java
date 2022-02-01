@@ -67,23 +67,27 @@ class TAVAspectFillEffect$AspectFillVideoCompositionEffect
   
   private TextureInfo getCacheTextureInfo(int paramInt1, int paramInt2)
   {
-    String str = paramInt1 + "_" + paramInt2;
-    TextureInfo localTextureInfo1 = null;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramInt1);
+    ((StringBuilder)localObject1).append("_");
+    ((StringBuilder)localObject1).append(paramInt2);
+    String str = ((StringBuilder)localObject1).toString();
     if (this.textureMap.containsKey(str)) {
-      localTextureInfo1 = (TextureInfo)this.textureMap.get(str);
+      localObject1 = (TextureInfo)this.textureMap.get(str);
+    } else {
+      localObject1 = null;
     }
-    TextureInfo localTextureInfo2 = localTextureInfo1;
-    if (localTextureInfo1 == null)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localTextureInfo2 = CIContext.newTextureInfo(paramInt1, paramInt2);
-      this.textureMap.put(str, localTextureInfo2);
+      localObject2 = CIContext.newTextureInfo(paramInt1, paramInt2);
+      this.textureMap.put(str, localObject2);
     }
-    return localTextureInfo2;
+    return localObject2;
   }
   
   private void prepareFilter(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
   {
-    float f = 0.0F;
     this.scaleTextureFilter.setRendererWidth((int)TAVAspectFillEffect.access$100(this.this$0).width);
     this.scaleTextureFilter.setRendererHeight((int)TAVAspectFillEffect.access$100(this.this$0).height);
     this.hGaosiBlurFilter.setRendererWidth((int)TAVAspectFillEffect.access$100(this.this$0).width);
@@ -94,52 +98,51 @@ class TAVAspectFillEffect$AspectFillVideoCompositionEffect
     this.mergeTextureFilter.setRendererHeight((int)TAVAspectFillEffect.access$100(this.this$0).height);
     if (paramBoolean)
     {
-      paramFloat3 = -(TAVAspectFillEffect.access$100(this.this$0).height / paramFloat4 * TAVAspectFillEffect.access$100(this.this$0).width - TAVAspectFillEffect.access$100(this.this$0).width) / 2.0F;
-      paramFloat1 = TAVAspectFillEffect.access$100(this.this$0).height / paramFloat2;
-      paramFloat2 = f;
+      paramFloat1 = -(TAVAspectFillEffect.access$100(this.this$0).height / paramFloat4 * TAVAspectFillEffect.access$100(this.this$0).width - TAVAspectFillEffect.access$100(this.this$0).width) / 2.0F;
+      paramFloat3 = TAVAspectFillEffect.access$100(this.this$0).height / paramFloat2;
+      paramFloat2 = 0.0F;
     }
-    for (;;)
+    else
     {
-      this.hGaosiBlurFilter.scale(paramFloat1, paramFloat3, paramFloat2);
-      return;
       paramFloat2 = -(TAVAspectFillEffect.access$100(this.this$0).width / paramFloat3 * TAVAspectFillEffect.access$100(this.this$0).height - TAVAspectFillEffect.access$100(this.this$0).height) / 2.0F;
-      paramFloat1 = TAVAspectFillEffect.access$100(this.this$0).width / paramFloat1;
-      paramFloat3 = 0.0F;
+      paramFloat3 = TAVAspectFillEffect.access$100(this.this$0).width / paramFloat1;
+      paramFloat1 = 0.0F;
     }
+    this.hGaosiBlurFilter.scale(paramFloat3, paramFloat1, paramFloat2);
   }
   
   public CIImage apply(TAVVideoEffect paramTAVVideoEffect, CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
-    float f4 = 0.0F;
     float f7 = paramCIImage.getSize().width;
     float f6 = paramCIImage.getSize().height;
     float f1 = TAVAspectFillEffect.access$100(this.this$0).width / TAVAspectFillEffect.access$100(this.this$0).height;
-    float f3 = f7 / f6;
-    if (f3 == f1) {
+    float f2 = f7 / f6;
+    if (f2 == f1) {
       return paramCIImage;
     }
-    float f2;
+    float f3 = 0.0F;
+    float f4;
     float f5;
-    if (f3 > f1)
+    if (f2 > f1)
     {
-      f2 = TAVAspectFillEffect.access$100(this.this$0).width;
-      f1 = f2 / f3;
-      f3 = (TAVAspectFillEffect.access$100(this.this$0).height - f1) / 2.0F;
-      f5 = (TAVAspectFillEffect.access$100(this.this$0).height - f1) / 2.0F / TAVAspectFillEffect.access$100(this.this$0).height;
-      prepareFilter(f7, f6, f2, f1, true);
-      f2 = 0.0F;
+      f1 = TAVAspectFillEffect.access$100(this.this$0).width;
+      f4 = f1 / f2;
+      f2 = (TAVAspectFillEffect.access$100(this.this$0).height - f4) / 2.0F;
+      f5 = (TAVAspectFillEffect.access$100(this.this$0).height - f4) / 2.0F / TAVAspectFillEffect.access$100(this.this$0).height;
+      prepareFilter(f7, f6, f1, f4, true);
+      f1 = 0.0F;
     }
-    for (;;)
+    else
     {
-      return applyFilter(paramRenderInfo, paramCIImage, f1 / f6, f2, f3, f4, f5);
-      f1 = TAVAspectFillEffect.access$100(this.this$0).height;
-      f3 = f1 * f3;
-      f2 = (TAVAspectFillEffect.access$100(this.this$0).width - f3) / 2.0F;
-      f4 = (TAVAspectFillEffect.access$100(this.this$0).width - f3) / 2.0F / TAVAspectFillEffect.access$100(this.this$0).width;
-      prepareFilter(f7, f6, f3, f1, false);
-      f3 = 0.0F;
+      f4 = TAVAspectFillEffect.access$100(this.this$0).height;
+      f2 = f4 * f2;
+      f1 = (TAVAspectFillEffect.access$100(this.this$0).width - f2) / 2.0F;
+      f3 = (TAVAspectFillEffect.access$100(this.this$0).width - f2) / 2.0F / TAVAspectFillEffect.access$100(this.this$0).width;
+      prepareFilter(f7, f6, f2, f4, false);
+      f2 = 0.0F;
       f5 = 0.0F;
     }
+    return applyFilter(paramRenderInfo, paramCIImage, f4 / f6, f1, f2, f3, f5);
   }
   
   public String getReportKey()
@@ -149,23 +152,28 @@ class TAVAspectFillEffect$AspectFillVideoCompositionEffect
   
   public void release()
   {
-    if (this.hGaosiBlurFilter != null) {
-      this.hGaosiBlurFilter.release();
+    Object localObject = this.hGaosiBlurFilter;
+    if (localObject != null) {
+      ((GaosiBlurFilter)localObject).release();
     }
-    if (this.vGaosiBlurFilter != null) {
-      this.vGaosiBlurFilter.release();
+    localObject = this.vGaosiBlurFilter;
+    if (localObject != null) {
+      ((GaosiBlurFilter)localObject).release();
     }
-    if (this.scaleTextureFilter != null) {
-      this.scaleTextureFilter.release();
+    localObject = this.scaleTextureFilter;
+    if (localObject != null) {
+      ((ScaleTextureFilter)localObject).release();
     }
-    if (this.mergeTextureFilter != null) {
-      this.mergeTextureFilter.release();
+    localObject = this.mergeTextureFilter;
+    if (localObject != null) {
+      ((MergeTextureFilter)localObject).release();
     }
-    if (this.textureMap != null)
+    localObject = this.textureMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.textureMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((TextureInfo)localIterator.next()).release();
+      localObject = ((HashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((TextureInfo)((Iterator)localObject).next()).release();
       }
       this.textureMap.clear();
     }

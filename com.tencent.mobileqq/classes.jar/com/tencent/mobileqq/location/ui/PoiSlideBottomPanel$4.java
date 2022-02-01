@@ -13,22 +13,32 @@ class PoiSlideBottomPanel$4
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
+    Object localObject = paramValueAnimator.getAnimatedValue();
+    if ((localObject instanceof Float))
     {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("PoiSlideBottomPanel", 2, "[panel] onAnimationUpdate: hide invoked. org: " + this.jdField_a_of_type_Float + " dest: " + this.jdField_a_of_type_Int + " value: " + this.jdField_a_of_type_AndroidViewView.getY());
+      paramValueAnimator = this.jdField_a_of_type_AndroidViewView;
+      localObject = (Float)localObject;
+      paramValueAnimator.setY(((Float)localObject).floatValue());
+      if (QLog.isColorLevel())
+      {
+        paramValueAnimator = new StringBuilder();
+        paramValueAnimator.append("[panel] onAnimationUpdate: hide invoked. org: ");
+        paramValueAnimator.append(this.jdField_a_of_type_Float);
+        paramValueAnimator.append(" dest: ");
+        paramValueAnimator.append(this.jdField_a_of_type_Int);
+        paramValueAnimator.append(" value: ");
+        paramValueAnimator.append(this.jdField_a_of_type_AndroidViewView.getY());
+        QLog.d("PoiSlideBottomPanel", 2, paramValueAnimator.toString());
       }
       if (PoiSlideBottomPanel.g(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel) != null) {
-        PoiSlideBottomPanel.h(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel).fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / this.jdField_a_of_type_Int);
+        PoiSlideBottomPanel.h(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel).fadeBackground(1.0F - ((Float)localObject).floatValue() / this.jdField_a_of_type_Int);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.PoiSlideBottomPanel.4
  * JD-Core Version:    0.7.0.1
  */

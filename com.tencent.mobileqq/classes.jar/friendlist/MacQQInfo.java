@@ -29,20 +29,23 @@ public final class MacQQInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.guid != null) {
-      paramJceOutputStream.write(this.guid, 0);
+    String str = this.guid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.deviceName != null) {
-      paramJceOutputStream.write(this.deviceName, 1);
+    str = this.deviceName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.operatingSystem != null) {
-      paramJceOutputStream.write(this.operatingSystem, 2);
+    str = this.operatingSystem;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.MacQQInfo
  * JD-Core Version:    0.7.0.1
  */

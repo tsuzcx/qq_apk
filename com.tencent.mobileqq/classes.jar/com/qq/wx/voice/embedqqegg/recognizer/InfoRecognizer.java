@@ -5,9 +5,9 @@ import java.io.ByteArrayOutputStream;
 
 public class InfoRecognizer
 {
-  protected static Context a = null;
-  protected static String b = null;
-  protected static String c = null;
+  protected static Context a;
+  protected static String b;
+  protected static String c;
   protected static d d = new d();
   protected static int e = 0;
   protected static boolean f = true;

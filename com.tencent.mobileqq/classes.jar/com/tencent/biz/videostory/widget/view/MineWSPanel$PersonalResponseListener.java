@@ -18,18 +18,18 @@ final class MineWSPanel$PersonalResponseListener
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, WEISHI.stGetPersonalPageRsp paramstGetPersonalPageRsp)
   {
     paramBaseRequest = (MineWSPanel)this.a.get();
-    if (paramBaseRequest == null) {}
-    do
-    {
+    if (paramBaseRequest == null) {
       return;
-      paramBaseRequest.a(paramstGetPersonalPageRsp, false);
-    } while (paramstGetPersonalPageRsp == null);
-    MineWSPanel.a(paramBaseRequest, paramstGetPersonalPageRsp.toByteArray());
+    }
+    paramBaseRequest.a(paramstGetPersonalPageRsp, false);
+    if (paramstGetPersonalPageRsp != null) {
+      MineWSPanel.a(paramBaseRequest, paramstGetPersonalPageRsp.toByteArray());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.MineWSPanel.PersonalResponseListener
  * JD-Core Version:    0.7.0.1
  */

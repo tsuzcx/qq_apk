@@ -22,13 +22,14 @@ public final class oidb_cmd0x97b$FollowCountInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 162 }, new String[] { "uint32_my_follow_count", "uint32_my_fans_count", "uint32_is_buluo_vip", "bytes_buluo_name", "uint32_buluo_id", "uint32_buluo_fans_count", "rpt_fans_detail_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null }, FollowCountInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 162 }, new String[] { "uint32_my_follow_count", "uint32_my_fans_count", "uint32_is_buluo_vip", "bytes_buluo_name", "uint32_buluo_id", "uint32_buluo_fans_count", "rpt_fans_detail_info" }, new Object[] { localInteger, localInteger, localInteger, localByteStringMicro, localInteger, localInteger, null }, FollowCountInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x97b.oidb_cmd0x97b.FollowCountInfo
  * JD-Core Version:    0.7.0.1
  */

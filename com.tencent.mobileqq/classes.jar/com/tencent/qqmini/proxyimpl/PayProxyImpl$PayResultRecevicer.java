@@ -24,116 +24,130 @@ class PayProxyImpl$PayResultRecevicer
   
   private void a(int paramInt, Bundle paramBundle, String paramString)
   {
-    localPayResponse = new PayProxy.PayResponse(this.b);
-    paramString = paramBundle.getString("result");
-    String str = paramBundle.getString("callbackSn");
-    j = -1;
-    int i = j;
-    if ((TextUtils.isEmpty(str)) || (JSONUtil.isJson(str))) {}
-    for (;;)
-    {
-      try
-      {
-        i = new JSONObject(str).optInt("seq", -1);
-        QLog.d(PayProxyImpl.a(this.b), 2, "onReceiveResult seq = " + i + " callbackSn=" + str + " result = " + paramString);
-        JSONObject localJSONObject1 = new JSONObject();
+    paramString = new PayProxy.PayResponse(this.b);
+    Object localObject1 = paramBundle.getString("result");
+    paramBundle = paramBundle.getString("callbackSn");
+    if (!TextUtils.isEmpty(paramBundle)) {
+      if (JSONUtil.isJson(paramBundle)) {
         try
         {
-          JSONObject localJSONObject2 = new JSONObject(paramString);
-          j = -1;
-          paramString = "";
-          paramBundle = null;
-          if (localJSONObject2 != null)
-          {
-            j = localJSONObject2.optInt("resultCode", -1);
-            paramString = localJSONObject2.optString("resultMsg", "");
-            paramBundle = localJSONObject2.optJSONObject("data");
-          }
-          QLog.d(PayProxyImpl.a(this.b), 1, "onReceiveResult seq = " + i + " callbackSn=" + str + " ret = " + j);
-          localJSONObject1.put("resultCode", j);
-          localPayResponse.setResultMsg(paramString);
-          if (j != 0) {
-            break label381;
-          }
-          localPayResponse.setResultCode(0);
-          localPayResponse.setPayState(0);
-          if ((paramInt == 9) && (paramBundle != null)) {
-            localJSONObject1.put("data", paramBundle);
-          }
-          localPayResponse.setExtendInfo(localJSONObject1.toString());
-          localPayResponse.setPayChannel(localJSONObject2.optInt("payChannel", -1));
+          i = new JSONObject(paramBundle).optInt("seq", -1);
         }
-        catch (Throwable paramBundle)
+        catch (JSONException localJSONException)
         {
-          for (;;)
-          {
-            QLog.e(PayProxyImpl.a(this.b), 1, paramBundle, new Object[0]);
-            localPayResponse.setResultCode(-1);
-            localPayResponse.setPayState(2);
-            continue;
-            localPayResponse.setResultCode(j);
-            localPayResponse.setPayState(2);
-          }
+          QLog.e(PayProxyImpl.a(this.b), 1, localJSONException, new Object[0]);
+          break label110;
         }
-        if (this.a != null) {
-          this.a.onPayCallBack(localPayResponse);
+      } else {
+        try
+        {
+          i = Integer.parseInt(paramBundle);
         }
-        return;
+        catch (NumberFormatException localNumberFormatException)
+        {
+          QLog.e(PayProxyImpl.a(this.b), 1, localNumberFormatException, new Object[0]);
+        }
       }
-      catch (JSONException paramBundle)
+    }
+    label110:
+    int i = -1;
+    Object localObject2 = PayProxyImpl.a(this.b);
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("onReceiveResult seq = ");
+    ((StringBuilder)localObject3).append(i);
+    ((StringBuilder)localObject3).append(" callbackSn=");
+    ((StringBuilder)localObject3).append(paramBundle);
+    ((StringBuilder)localObject3).append(" result = ");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
+    localObject2 = new JSONObject();
+    try
+    {
+      localObject1 = new JSONObject((String)localObject1);
+      int j = ((JSONObject)localObject1).optInt("resultCode", -1);
+      localObject3 = ((JSONObject)localObject1).optString("resultMsg", "");
+      JSONObject localJSONObject = ((JSONObject)localObject1).optJSONObject("data");
+      String str = PayProxyImpl.a(this.b);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceiveResult seq = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" callbackSn=");
+      localStringBuilder.append(paramBundle);
+      localStringBuilder.append(" ret = ");
+      localStringBuilder.append(j);
+      QLog.d(str, 1, localStringBuilder.toString());
+      ((JSONObject)localObject2).put("resultCode", j);
+      paramString.setResultMsg((String)localObject3);
+      if (j == 0)
       {
-        QLog.e(PayProxyImpl.a(this.b), 1, paramBundle, new Object[0]);
-        i = j;
-        continue;
+        paramString.setResultCode(0);
+        paramString.setPayState(0);
+        if ((paramInt == 9) && (localJSONObject != null)) {
+          ((JSONObject)localObject2).put("data", localJSONObject);
+        }
+        paramString.setExtendInfo(((JSONObject)localObject2).toString());
+        paramString.setPayChannel(((JSONObject)localObject1).optInt("payChannel", -1));
       }
-      try
+      else
       {
-        i = Integer.parseInt(str);
+        if (j == -1)
+        {
+          paramString.setResultCode(-1);
+          paramString.setPayState(2);
+        }
+        else
+        {
+          paramString.setResultCode(j);
+          paramString.setPayState(2);
+        }
+        paramString.setResultMsg((String)localObject3);
       }
-      catch (NumberFormatException paramBundle)
-      {
-        QLog.e(PayProxyImpl.a(this.b), 1, paramBundle, new Object[0]);
-        i = j;
-      }
-      continue;
-      label381:
-      if (j != -1) {
-        break;
-      }
-      localPayResponse.setResultCode(-1);
-      localPayResponse.setPayState(2);
-      localPayResponse.setResultMsg(paramString);
+    }
+    catch (Throwable paramBundle)
+    {
+      QLog.e(PayProxyImpl.a(this.b), 1, paramBundle, new Object[0]);
+      paramString.setResultCode(-1);
+      paramString.setPayState(2);
+    }
+    paramBundle = this.a;
+    if (paramBundle != null) {
+      paramBundle.onPayCallBack(paramString);
     }
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    QLog.d(PayProxyImpl.a(this.b), 2, "onReceiveResult resultCode = " + paramInt + " resultData = " + paramBundle);
-    switch (paramInt)
+    String str = PayProxyImpl.a(this.b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceiveResult resultCode = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" resultData = ");
+    localStringBuilder.append(paramBundle);
+    QLog.d(str, 2, localStringBuilder.toString());
+    if (paramInt != 6)
     {
-    case 8: 
-    case 10: 
-    case 11: 
-    case 12: 
-    case 13: 
-    default: 
-      return;
-    case 6: 
-      a(paramInt, paramBundle, "requestMidasPayment");
-      return;
-    case 9: 
-      a(paramInt, paramBundle, "requestPayment");
-      return;
-    case 7: 
+      if (paramInt != 7)
+      {
+        if (paramInt != 9)
+        {
+          if (paramInt != 14) {
+            return;
+          }
+          a(paramInt, paramBundle, "requestMidasMonthCardPay");
+          return;
+        }
+        a(paramInt, paramBundle, "requestPayment");
+        return;
+      }
       a(paramInt, paramBundle, "requestMidasGoodsPay");
       return;
     }
-    a(paramInt, paramBundle, "requestMidasMonthCardPay");
+    a(paramInt, paramBundle, "requestMidasPayment");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.PayProxyImpl.PayResultRecevicer
  * JD-Core Version:    0.7.0.1
  */

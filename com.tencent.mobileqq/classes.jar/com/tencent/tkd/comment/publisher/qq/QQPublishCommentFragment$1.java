@@ -7,12 +7,12 @@ class QQPublishCommentFragment$1
   
   public void run()
   {
-    QQPublishCommentFragment.access$100(this.this$0, 1);
+    QQPublishCommentFragment.access$000(this.this$0, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment.1
  * JD-Core Version:    0.7.0.1
  */

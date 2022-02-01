@@ -14,51 +14,59 @@ public class TroopInfoUtil
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    Object localObject = new String[27];
-    localObject[0] = "li";
-    localObject[1] = "del";
-    localObject[2] = "ins";
-    localObject[3] = "fieldset";
-    localObject[4] = "legend";
-    localObject[5] = "tr";
-    localObject[6] = "th";
-    localObject[7] = "caption";
-    localObject[8] = "thead";
-    localObject[9] = "tbody";
-    localObject[10] = "tfoot";
-    localObject[11] = "p";
-    localObject[12] = "h[1-6]";
-    localObject[13] = "dl";
-    localObject[14] = "dt";
-    localObject[15] = "dd";
-    localObject[16] = "ol";
-    localObject[17] = "ul";
-    localObject[18] = "dir";
-    localObject[19] = "address";
-    localObject[20] = "blockquote";
-    localObject[21] = "center";
-    localObject[22] = "hr";
-    localObject[23] = "pre";
-    localObject[24] = "form";
-    localObject[25] = "textarea";
-    localObject[26] = "table";
-    int j = localObject.length;
+    Object localObject1 = new String[27];
     int i = 0;
+    localObject1[0] = "li";
+    localObject1[1] = "del";
+    localObject1[2] = "ins";
+    localObject1[3] = "fieldset";
+    localObject1[4] = "legend";
+    localObject1[5] = "tr";
+    localObject1[6] = "th";
+    localObject1[7] = "caption";
+    localObject1[8] = "thead";
+    localObject1[9] = "tbody";
+    localObject1[10] = "tfoot";
+    localObject1[11] = "p";
+    localObject1[12] = "h[1-6]";
+    localObject1[13] = "dl";
+    localObject1[14] = "dt";
+    localObject1[15] = "dd";
+    localObject1[16] = "ol";
+    localObject1[17] = "ul";
+    localObject1[18] = "dir";
+    localObject1[19] = "address";
+    localObject1[20] = "blockquote";
+    localObject1[21] = "center";
+    localObject1[22] = "hr";
+    localObject1[23] = "pre";
+    localObject1[24] = "form";
+    localObject1[25] = "textarea";
+    localObject1[26] = "table";
+    int j = localObject1.length;
     while (i < j)
     {
-      Matcher localMatcher = Pattern.compile("<(\\s*" + localObject[i] + ")[^>]*>").matcher(paramString);
-      if (localMatcher.find()) {
-        paramString = localMatcher.replaceAll(" ");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("<(\\s*");
+      ((StringBuilder)localObject2).append(localObject1[i]);
+      ((StringBuilder)localObject2).append(")[^>]*>");
+      localObject2 = Pattern.compile(((StringBuilder)localObject2).toString()).matcher(paramString);
+      if (((Matcher)localObject2).find()) {
+        paramString = ((Matcher)localObject2).replaceAll(" ");
       }
-      localMatcher = Pattern.compile("</?(\\s*" + localObject[i] + ")[^>]*>").matcher(paramString);
-      if (localMatcher.find()) {
-        paramString = localMatcher.replaceAll("\n");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("</?(\\s*");
+      ((StringBuilder)localObject2).append(localObject1[i]);
+      ((StringBuilder)localObject2).append(")[^>]*>");
+      localObject2 = Pattern.compile(((StringBuilder)localObject2).toString()).matcher(paramString);
+      if (((Matcher)localObject2).find()) {
+        paramString = ((Matcher)localObject2).replaceAll("\n");
       }
       i += 1;
     }
-    localObject = Pattern.compile("<br>").matcher(paramString);
-    if (((Matcher)localObject).find()) {
-      paramString = ((Matcher)localObject).replaceAll("\n");
+    localObject1 = Pattern.compile("<br>").matcher(paramString);
+    if (((Matcher)localObject1).find()) {
+      paramString = ((Matcher)localObject1).replaceAll("\n");
     }
     return paramString.replaceAll("<[^>]*>", "").replaceAll("[(/>)<]", "");
   }
@@ -82,7 +90,7 @@ public class TroopInfoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.util.TroopInfoUtil
  * JD-Core Version:    0.7.0.1
  */

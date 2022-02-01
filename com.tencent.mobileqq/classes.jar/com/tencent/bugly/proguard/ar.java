@@ -1,6 +1,7 @@
 package com.tencent.bugly.proguard;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,17 +40,21 @@ public final class ar
   public final void a(j paramj)
   {
     paramj.a(this.a, 0);
-    if (this.b != null) {
-      paramj.a(this.b, 1);
+    Object localObject = this.b;
+    if (localObject != null) {
+      paramj.a((String)localObject, 1);
     }
-    if (this.c != null) {
-      paramj.a(this.c, 2);
+    localObject = this.c;
+    if (localObject != null) {
+      paramj.a((String)localObject, 2);
     }
-    if (this.d != null) {
-      paramj.a(this.d, 3);
+    localObject = this.d;
+    if (localObject != null) {
+      paramj.a((Collection)localObject, 3);
     }
-    if (this.e != null) {
-      paramj.a(this.e, 4);
+    localObject = this.e;
+    if (localObject != null) {
+      paramj.a((Map)localObject, 4);
     }
   }
   
@@ -57,7 +62,7 @@ public final class ar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.ar
  * JD-Core Version:    0.7.0.1
  */

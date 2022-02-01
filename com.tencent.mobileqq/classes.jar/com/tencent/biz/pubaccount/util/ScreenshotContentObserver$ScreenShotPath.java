@@ -6,13 +6,39 @@ import java.io.File;
 
 public final class ScreenshotContentObserver$ScreenShotPath
 {
-  public static final String a = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_PICTURES + File.separator + "Screenshots" + File.separator;
-  public static final String b = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "Screenshots" + File.separator;
-  public static final String c = Environment.getExternalStorageDirectory() + File.separator + HardCodeUtil.a(2131713540) + File.separator;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(Environment.DIRECTORY_PICTURES);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("Screenshots");
+    localStringBuilder.append(File.separator);
+    a = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(Environment.DIRECTORY_DCIM);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("Screenshots");
+    localStringBuilder.append(File.separator);
+    b = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(HardCodeUtil.a(2131713507));
+    localStringBuilder.append(File.separator);
+    c = localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ScreenshotContentObserver.ScreenShotPath
  * JD-Core Version:    0.7.0.1
  */

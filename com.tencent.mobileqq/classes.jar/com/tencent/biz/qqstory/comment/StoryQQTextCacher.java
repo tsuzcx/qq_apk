@@ -29,8 +29,9 @@ public class StoryQQTextCacher
   
   public static void a()
   {
-    if (jdField_a_of_type_AndroidSupportV4UtilLruCache != null) {
-      jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+    LruCache localLruCache = jdField_a_of_type_AndroidSupportV4UtilLruCache;
+    if (localLruCache != null) {
+      localLruCache.evictAll();
     }
   }
   
@@ -44,7 +45,10 @@ public class StoryQQTextCacher
     if (paramCommentEntry == null) {
       return;
     }
-    paramCommentEntry = paramCommentEntry.feedId + paramCommentEntry.replyTime;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramCommentEntry.feedId);
+    localStringBuilder.append(paramCommentEntry.replyTime);
+    paramCommentEntry = localStringBuilder.toString();
     if (jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry) == null)
     {
       jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(1));
@@ -63,7 +67,7 @@ public class StoryQQTextCacher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.StoryQQTextCacher
  * JD-Core Version:    0.7.0.1
  */

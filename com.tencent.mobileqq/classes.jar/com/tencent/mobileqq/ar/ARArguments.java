@@ -14,12 +14,16 @@ public class ARArguments
   
   public String toString()
   {
-    return "ARArguments{alreadyIsTorchbearer =" + this.alreadyIsTorchbearer + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARArguments{alreadyIsTorchbearer =");
+    localStringBuilder.append(this.alreadyIsTorchbearer);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARArguments
  * JD-Core Version:    0.7.0.1
  */

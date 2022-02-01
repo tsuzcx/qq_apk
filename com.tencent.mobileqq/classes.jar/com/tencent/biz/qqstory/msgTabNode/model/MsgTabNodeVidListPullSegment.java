@@ -65,7 +65,7 @@ public class MsgTabNodeVidListPullSegment
     if (paramMsgTabNodeInfo == null)
     {
       SLog.d("Q.qqstory.msgTab.jobPullVidList", "(0) runSegment() from: nodeInfo is null!");
-      AssertUtils.a("nodeInfo is null!", new Object[0]);
+      AssertUtils.fail("nodeInfo is null!", new Object[0]);
       notifyResult(new ArrayList());
       return;
     }
@@ -102,8 +102,12 @@ public class MsgTabNodeVidListPullSegment
     }
     if (paramJobContext != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "get succeed from db, info=" + paramMsgTabNodeInfo);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get succeed from db, info=");
+        localStringBuilder.append(paramMsgTabNodeInfo);
+        QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, localStringBuilder.toString());
       }
       SLog.b("Q.qqstory.msgTab.jobPullVidList", "(2) runSegment(), try decode cached rsp from DB");
       paramJobContext = MsgTabNodeVidListRequest.a(paramMsgTabNodeInfo, paramJobContext);
@@ -122,7 +126,8 @@ public class MsgTabNodeVidListPullSegment
       notifyResult(new ArrayList());
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayPageLoader$MsgTabGroupId != null) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayPageLoader$MsgTabGroupId.jdField_a_of_type_Boolean))
+    paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayPageLoader$MsgTabGroupId;
+    if ((paramJobContext != null) && (paramJobContext.jdField_a_of_type_Boolean))
     {
       SLog.b("Q.qqstory.msgTab.jobPullVidList", "(2) runSegment(), groupId is end, won't request anymore!");
       notifyResult(new ArrayList());
@@ -141,7 +146,7 @@ public class MsgTabNodeVidListPullSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVidListPullSegment
  * JD-Core Version:    0.7.0.1
  */

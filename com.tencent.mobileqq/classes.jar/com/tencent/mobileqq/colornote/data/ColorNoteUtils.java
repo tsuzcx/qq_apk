@@ -1,23 +1,24 @@
 package com.tencent.mobileqq.colornote.data;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.utils.VipComicUrlHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class ColorNoteUtils
 {
@@ -32,48 +33,43 @@ public class ColorNoteUtils
     a.add("unregistered service sub type");
     a.add("captcha.qq.com");
     a.add("oauth.youzan.com");
-    if (BaseApplicationImpl.getApplication() != null)
-    {
-      a.add("https://zb.vip.qq.com/sonic/funcall?_wv=16778243&asyncMode=3&_sonic_id=42898&_preload=1&from=call_process&_wwv=4");
-      a.add("https://ti.qq.com/sportslive/index?_wwv=128&_wv=2&inviteeUin");
-      c.add("https://zb.vip.qq.com/sonic/funcall?_wv=16778243&asyncMode=3&_sonic_id=42898&_preload=1&from=call_process&_wwv=4");
-      c.add("https://ti.qq.com/sportslive/index?_wwv=128&_wv=2&inviteeUin");
-    }
+    a.add("https://zb.vip.qq.com/v2/pages/funcallMall");
+    a.add("https://ti.qq.com/sportslive/index?_wwv=128&_wv=2&inviteeUin");
+    c.add("https://zb.vip.qq.com/v2/pages/funcallMall");
+    c.add("https://ti.qq.com/sportslive/index?_wwv=128&_wv=2&inviteeUin");
   }
   
   public static int a(int paramInt)
   {
-    return 0x7FFFFFFF & paramInt;
+    return paramInt & 0x7FFFFFFF;
   }
   
   public static int a(String paramString)
   {
-    int i = 0;
-    int j = 0;
-    if (StringUtil.a(paramString)) {}
-    for (;;)
+    if (StringUtil.a(paramString)) {
+      return 0;
+    }
+    paramString = Uri.parse(paramString);
+    int i = 1;
+    try
     {
+      paramString = paramString.getQueryParameter("_wwv");
+      if (StringUtil.a(paramString)) {
+        return 0;
+      }
+      long l = Long.parseLong(paramString);
+      if ((0x20000 & l) == 0L) {
+        i = 0;
+      }
+      int j = i;
+      if ((l & 0x10000) != 0L) {
+        j = i + 2;
+      }
       return j;
-      paramString = Uri.parse(paramString);
-      try
-      {
-        paramString = paramString.getQueryParameter("_wwv");
-        if (!StringUtil.a(paramString))
-        {
-          long l = Long.parseLong(paramString);
-          if ((0x20000 & l) != 0L) {
-            i = 1;
-          }
-          j = i;
-          if ((0x10000 & l) != 0L) {
-            return i + 2;
-          }
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("ColorNoteUtils", 1, "parse long error: ", paramString);
-      }
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ColorNoteUtils", 1, "parse long error: ", paramString);
     }
     return 0;
   }
@@ -83,7 +79,7 @@ public class ColorNoteUtils
     if (paramColorNote == null) {
       return null;
     }
-    String str = BaseApplicationImpl.getContext().getString(2131690993);
+    String str = MobileQQ.getContext().getString(2131690913);
     int i = paramColorNote.getServiceType();
     return new ColorNote.Builder().a(i | 0x80000000).a(paramColorNote.getSubType()).a(paramColorNote.getExtLong()).b(0).b(paramColorNote.getMainTitle()).c(str).d(paramColorNote.getPicUrl()).a(paramColorNote.getReserve()).a();
   }
@@ -92,7 +88,12 @@ public class ColorNoteUtils
   {
     StringBuilder localStringBuilder = new StringBuilder();
     StackTraceElement[] arrayOfStackTraceElement = new Throwable().getStackTrace();
-    localStringBuilder.append("").append(arrayOfStackTraceElement[2].getClassName()).append(".").append(arrayOfStackTraceElement[2].getMethodName()).append(": ").append(arrayOfStackTraceElement[2].getLineNumber());
+    localStringBuilder.append("");
+    localStringBuilder.append(arrayOfStackTraceElement[2].getClassName());
+    localStringBuilder.append(".");
+    localStringBuilder.append(arrayOfStackTraceElement[2].getMethodName());
+    localStringBuilder.append(": ");
+    localStringBuilder.append(arrayOfStackTraceElement[2].getLineNumber());
     return localStringBuilder.toString();
   }
   
@@ -101,7 +102,12 @@ public class ColorNoteUtils
     if (paramColorNote == null) {
       return "";
     }
-    return paramColorNote.getMainTitle() + ", " + paramColorNote.getSubTitle() + ". ";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramColorNote.getMainTitle());
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramColorNote.getSubTitle());
+    localStringBuilder.append(". ");
+    return localStringBuilder.toString();
   }
   
   public static String a(String paramString)
@@ -123,27 +129,28 @@ public class ColorNoteUtils
   
   public static String a(List<ColorNote> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return "";
+    if ((paramList != null) && (paramList.size() != 0))
+    {
+      Object localObject = new ArrayList(paramList);
+      paramList = new StringBuilder();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        paramList.append(a((ColorNote)((Iterator)localObject).next()));
+      }
+      return paramList.toString();
     }
-    Object localObject = new ArrayList(paramList);
-    paramList = new StringBuilder();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      paramList.append(a((ColorNote)((Iterator)localObject).next()));
-    }
-    return paramList.toString();
+    return "";
   }
   
   public static void a(Context paramContext)
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(paramContext, 2131755842);
-    localQQCustomDialog.setContentView(2131559084);
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(paramContext, 2131756189);
+    localQQCustomDialog.setContentView(2131558978);
     localQQCustomDialog.dismissMessage();
     ((RelativeLayout.LayoutParams)localQQCustomDialog.getTitleTextView().getLayoutParams()).bottomMargin = ViewUtils.a(26.0F);
     localQQCustomDialog.setCanceledOnTouchOutside(false);
-    localQQCustomDialog.setTitle(paramContext.getString(2131690985));
-    localQQCustomDialog.setNegativeButton(paramContext.getString(2131690984), new ColorNoteUtils.1(localQQCustomDialog, paramContext));
+    localQQCustomDialog.setTitle(paramContext.getString(2131690905));
+    localQQCustomDialog.setNegativeButton(paramContext.getString(2131690904), new ColorNoteUtils.1(localQQCustomDialog, paramContext));
     if (localQQCustomDialog.isShowing()) {
       localQQCustomDialog.dismiss();
     }
@@ -155,34 +162,26 @@ public class ColorNoteUtils
     AccessibilityUtil.a(paramContext, true);
   }
   
+  public static void a(Context paramContext, ColorNote paramColorNote)
+  {
+    Intent localIntent = new Intent(paramContext, ColorNoteSmallScreenService.class);
+    localIntent.putExtra("key_upcoming_notify", 2);
+    localIntent.putExtra("key_upcoming_color_note", paramColorNote);
+    paramContext.startService(localIntent);
+  }
+  
   public static void a(ColorNote paramColorNote)
   {
-    int j = 1;
-    int i;
-    if (!e(paramColorNote.mMainTitle))
+    boolean bool = e(paramColorNote.mMainTitle) ^ true;
+    if ((e(paramColorNote.mSubTitle) ^ true ^ bool))
     {
-      i = 1;
-      if (e(paramColorNote.mSubTitle)) {
-        break label48;
-      }
-    }
-    for (;;)
-    {
-      if ((j ^ i) != 0)
+      if (bool)
       {
-        if (i == 0) {
-          break label53;
-        }
         paramColorNote.mSubTitle = paramColorNote.mMainTitle;
+        return;
       }
-      return;
-      i = 0;
-      break;
-      label48:
-      j = 0;
+      paramColorNote.mMainTitle = paramColorNote.mSubTitle;
     }
-    label53:
-    paramColorNote.mMainTitle = paramColorNote.mSubTitle;
   }
   
   public static void a(String paramString1, String paramString2)
@@ -217,56 +216,38 @@ public class ColorNoteUtils
   
   public static boolean a(ColorNote paramColorNote1, ColorNote paramColorNote2)
   {
-    if ((paramColorNote1 == null) || (paramColorNote2 == null)) {
-      if ((paramColorNote1 != null) || (paramColorNote2 != null)) {}
+    if ((paramColorNote1 != null) && (paramColorNote2 != null)) {
+      return (paramColorNote1.mServiceType == paramColorNote2.getServiceType()) && (a(paramColorNote1.mSubType, paramColorNote2.getSubType())) && (a(paramColorNote1.mMainTitle, paramColorNote2.getMainTitle())) && (a(paramColorNote1.mSubTitle, paramColorNote2.getSubTitle()));
     }
-    while ((paramColorNote1.mServiceType == paramColorNote2.getServiceType()) && (a(paramColorNote1.mSubType, paramColorNote2.getSubType())) && (a(paramColorNote1.mMainTitle, paramColorNote2.getMainTitle())) && (a(paramColorNote1.mSubTitle, paramColorNote2.getSubTitle())))
-    {
-      return true;
-      return false;
-    }
-    return false;
+    return (paramColorNote1 == null) && (paramColorNote2 == null);
   }
   
   public static boolean a(String paramString)
   {
-    if ((a == null) || (a.size() == 0) || (StringUtil.a(paramString))) {}
-    for (;;)
+    Object localObject = a;
+    if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      return false;
+      if (StringUtil.a(paramString)) {
+        return false;
+      }
       int i = 0;
       while (i < a.size())
       {
-        String str = (String)a.get(i);
-        if ((str.length() <= paramString.length()) && (paramString.contains(str))) {
+        localObject = (String)a.get(i);
+        if ((((String)localObject).length() <= paramString.length()) && (paramString.contains((CharSequence)localObject))) {
           return true;
         }
         i += 1;
       }
     }
+    return false;
   }
   
   public static boolean a(String paramString1, String paramString2)
   {
-    int i;
-    if (!StringUtil.a(paramString1))
-    {
-      i = 1;
-      if (StringUtil.a(paramString2)) {
-        break label31;
-      }
-    }
-    label31:
-    for (int j = 1;; j = 0)
-    {
-      if ((i ^ j) == 0) {
-        break label36;
-      }
+    if ((StringUtil.a(paramString1) ^ true ^ StringUtil.a(paramString2) ^ true)) {
       return false;
-      i = 0;
-      break;
     }
-    label36:
     if (paramString1 == null) {
       return true;
     }
@@ -275,13 +256,16 @@ public class ColorNoteUtils
   
   public static boolean a(List<ColorNote> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      if (c((ColorNote)paramList.next())) {
-        return true;
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return false;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        if (c((ColorNote)paramList.next())) {
+          return true;
+        }
       }
     }
     return false;
@@ -292,38 +276,46 @@ public class ColorNoteUtils
     if ((paramList1 == null) && (paramList2 == null)) {
       return true;
     }
-    if ((paramList1 == null) || (paramList2 == null)) {
-      return false;
-    }
-    if (paramList1.size() != paramList2.size()) {
-      return false;
-    }
-    int j = paramList1.size();
-    int i = 0;
-    while (i < j)
+    if (paramList1 != null)
     {
-      if (!paramList2.contains((ColorNote)paramList1.get(i))) {
+      if (paramList2 == null) {
         return false;
       }
-      i += 1;
+      if (paramList1.size() != paramList2.size()) {
+        return false;
+      }
+      int j = paramList1.size();
+      int i = 0;
+      while (i < j)
+      {
+        if (!paramList2.contains((ColorNote)paramList1.get(i))) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
     }
-    return true;
+    return false;
   }
   
   public static int b(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 16908289)
     {
-    default: 
-      return 0;
-    case 17039360: 
-      return 1;
-    case 17104896: 
-      return 2;
-    case 16908289: 
-      return 3;
+      if (paramInt != 16908292)
+      {
+        if (paramInt != 17039360)
+        {
+          if (paramInt != 17104896) {
+            return 0;
+          }
+          return 2;
+        }
+        return 1;
+      }
+      return 4;
     }
-    return 4;
+    return 3;
   }
   
   public static ColorNote b(ColorNote paramColorNote)
@@ -352,19 +344,23 @@ public class ColorNoteUtils
   
   public static boolean b(ColorNote paramColorNote)
   {
-    if (paramColorNote == null) {}
-    while ((paramColorNote.getServiceType() & 0x80000000) == 0) {
+    boolean bool = false;
+    if (paramColorNote == null) {
       return false;
     }
-    return true;
+    if ((paramColorNote.getServiceType() & 0x80000000) != 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean b(String paramString)
   {
-    if ((b.size() == 0) || (StringUtil.a(paramString))) {}
-    for (;;)
+    if (b.size() != 0)
     {
-      return false;
+      if (StringUtil.a(paramString)) {
+        return false;
+      }
       int i = 0;
       while (i < b.size())
       {
@@ -375,6 +371,7 @@ public class ColorNoteUtils
         i += 1;
       }
     }
+    return false;
   }
   
   public static ColorNote c(ColorNote paramColorNote)
@@ -387,19 +384,28 @@ public class ColorNoteUtils
   
   public static boolean c(ColorNote paramColorNote)
   {
-    if (paramColorNote == null) {}
-    while ((!d(paramColorNote)) || ((paramColorNote.mExtLong & 1L) != 1L)) {
+    boolean bool2 = false;
+    if (paramColorNote == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (d(paramColorNote))
+    {
+      bool1 = bool2;
+      if ((paramColorNote.mExtLong & 1L) == 1L) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public static boolean c(String paramString)
   {
-    if ((c.size() == 0) || (StringUtil.a(paramString))) {}
-    for (;;)
+    if (c.size() != 0)
     {
-      return false;
+      if (StringUtil.a(paramString)) {
+        return false;
+      }
       int i = 0;
       while (i < c.size())
       {
@@ -410,6 +416,7 @@ public class ColorNoteUtils
         i += 1;
       }
     }
+    return false;
   }
   
   public static boolean d(ColorNote paramColorNote)
@@ -419,69 +426,45 @@ public class ColorNoteUtils
   
   public static boolean d(String paramString)
   {
-    boolean bool = true;
-    if (StringUtil.a(paramString)) {}
-    for (;;)
-    {
+    if (StringUtil.a(paramString)) {
       return false;
-      if (VipComicUrlHelper.a(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ColorNoteUtils", 2, "This is boodo url ,disable swipe.");
-        }
-        return true;
-      }
-      paramString = Uri.parse(paramString);
-      try
-      {
-        paramString = paramString.getQueryParameter("_wv");
-        if (StringUtil.a(paramString)) {
-          continue;
-        }
-        long l = Long.parseLong(paramString);
-        if ((l & 0x1000) != 0L) {}
-        for (;;)
-        {
-          return bool;
-          bool = false;
-        }
+    }
+    paramString = Uri.parse(paramString);
+    try
+    {
+      paramString = paramString.getQueryParameter("_wv");
+      if (StringUtil.a(paramString)) {
         return false;
       }
-      catch (Exception paramString)
-      {
-        QLog.e("ColorNoteUtils", 1, "parse long error: ", paramString);
-      }
+      long l = Long.parseLong(paramString);
+      return (l & 0x1000) != 0L;
     }
+    catch (Exception paramString)
+    {
+      QLog.e("ColorNoteUtils", 1, "parse long error: ", paramString);
+    }
+    return false;
   }
   
   public static boolean e(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (StringUtil.a(paramString))
-    {
-      bool1 = true;
-      return bool1;
+    if (StringUtil.a(paramString)) {
+      return true;
     }
     int i = 0;
-    for (;;)
+    while (i < paramString.length())
     {
-      if (i >= paramString.length()) {
-        break label43;
-      }
-      bool1 = bool2;
       if (!Character.isWhitespace(paramString.charAt(i))) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label43:
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.data.ColorNoteUtils
  * JD-Core Version:    0.7.0.1
  */

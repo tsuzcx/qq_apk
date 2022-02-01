@@ -47,12 +47,20 @@ public class LoveAchievementInfo
   
   public String toString()
   {
-    return "LoveAchievementInfo{totalCount=" + this.jdField_a_of_type_Int + ", completedCount=" + this.b + ", achievements=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LoveAchievementInfo{totalCount=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", completedCount=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", achievements=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.info.LoveAchievementInfo
  * JD-Core Version:    0.7.0.1
  */

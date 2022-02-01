@@ -24,15 +24,17 @@ public final class StatSvcStatSong$ReqBody
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 56, 64, 72 }, new String[] { "bool_need_convert", "bytes_song_id", "bytes_song_name", "uint32_song_type", "bytes_singer_name", "uint32_remaining_time", "uint32_source_type", "bool_pause_flag", "uint32_song_play_time" }, new Object[] { Boolean.valueOf(false), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0) }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 56, 64, 72 }, new String[] { "bool_need_convert", "bytes_song_id", "bytes_song_name", "uint32_song_type", "bytes_singer_name", "uint32_remaining_time", "uint32_source_type", "bool_pause_flag", "uint32_song_play_time" }, new Object[] { localBoolean, localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localInteger, localInteger, localBoolean, localInteger }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.statsvc.song.StatSvcStatSong.ReqBody
  * JD-Core Version:    0.7.0.1
  */

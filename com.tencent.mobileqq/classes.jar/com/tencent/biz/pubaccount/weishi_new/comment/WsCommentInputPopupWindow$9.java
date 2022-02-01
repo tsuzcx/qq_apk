@@ -12,18 +12,20 @@ class WsCommentInputPopupWindow$9
     WsCommentInputPopupWindow.a(this.this$0, true);
     WsCommentInputPopupWindow.a(this.this$0).setVisibility(0);
     WsCommentInputPopupWindow.b(this.this$0).setVisibility(8);
-    if (this.a == 2) {
+    int i = this.a;
+    if (i == 2)
+    {
       WsCommentInputPopupWindow.c(this.this$0).performClick();
-    }
-    while (this.a != 3) {
       return;
     }
-    WsCommentInputPopupWindow.d(this.this$0).performClick();
+    if (i == 3) {
+      WsCommentInputPopupWindow.d(this.this$0).performClick();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.9
  * JD-Core Version:    0.7.0.1
  */

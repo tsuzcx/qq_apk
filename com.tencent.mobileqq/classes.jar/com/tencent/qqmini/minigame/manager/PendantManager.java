@@ -70,23 +70,22 @@ public class PendantManager
       this.mDragImageView.setImageDrawable((Drawable)localObject);
       STATIC_PENDANT.postDelayed(new PendantManager.2(this, localMiniAppProxy, paramPendantAdInfo), 2000L);
     }
-    for (;;)
+    else
     {
-      localObject = new FrameLayout.LayoutParams(DisplayUtil.dip2px(this.mContext, 100.0F), DisplayUtil.dip2px(this.mContext, 100.0F));
-      ((FrameLayout.LayoutParams)localObject).leftMargin = DisplayUtil.dip2px(this.mContext, 29.0F);
-      ((FrameLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(this.mContext, 87.0F);
-      ((FrameLayout.LayoutParams)localObject).topMargin = DisplayUtil.dip2px(this.mContext, 0.0F);
-      ((FrameLayout.LayoutParams)localObject).bottomMargin = DisplayUtil.dip2px(this.mContext, 92.5F);
-      ((FrameLayout.LayoutParams)localObject).gravity = 8388661;
-      this.mGameContainer.addView(this.mDragImageView, (ViewGroup.LayoutParams)localObject);
-      bookFlashingIcon(paramPendantAdInfo, this.mDragImageView, this.mContext);
-      this.mDragImageView.setOnClickListener(new PendantManager.3(this, paramPendantAdInfo, localMiniAppProxy));
-      return;
       localObject = localMiniAppProxy.getDrawable(this.mContext, paramPendantAdInfo.getPictureUrl(), 0, 0, defaultDrawable);
       this.mDragImageView.setImageDrawable((Drawable)localObject);
       setExpoResult((Drawable)localObject);
       PendantDataManager.reportExposure("1");
     }
+    localObject = new FrameLayout.LayoutParams(DisplayUtil.dip2px(this.mContext, 100.0F), DisplayUtil.dip2px(this.mContext, 100.0F));
+    ((FrameLayout.LayoutParams)localObject).leftMargin = DisplayUtil.dip2px(this.mContext, 29.0F);
+    ((FrameLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(this.mContext, 87.0F);
+    ((FrameLayout.LayoutParams)localObject).topMargin = DisplayUtil.dip2px(this.mContext, 0.0F);
+    ((FrameLayout.LayoutParams)localObject).bottomMargin = DisplayUtil.dip2px(this.mContext, 92.5F);
+    ((FrameLayout.LayoutParams)localObject).gravity = 8388661;
+    this.mGameContainer.addView(this.mDragImageView, (ViewGroup.LayoutParams)localObject);
+    bookFlashingIcon(paramPendantAdInfo, this.mDragImageView, this.mContext);
+    this.mDragImageView.setOnClickListener(new PendantManager.3(this, paramPendantAdInfo, localMiniAppProxy));
   }
   
   public static void bookFlashingIcon(PendantAdInfo paramPendantAdInfo, DragImageView paramDragImageView, Activity paramActivity)
@@ -138,15 +137,20 @@ public class PendantManager
   {
     ActivityResultManager.g().addActivityResultListener(new PendantManager.6(paramDragImageView, paramPendantAdInfo, paramActivity, paramIMiniAppContext));
     paramDragImageView = new Bundle();
-    if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation == 2) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation == 2) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramPendantAdInfo = new StringBuilder();
+    paramPendantAdInfo.append("activity isLandscape= ");
+    paramPendantAdInfo.append(bool);
+    QMLog.d("PendantManager", paramPendantAdInfo.toString());
+    paramDragImageView.putBoolean("mini_game_orientation", bool);
+    paramPendantAdInfo = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+    if (paramPendantAdInfo == null)
     {
-      QMLog.d("PendantManager", "activity isLandscape= " + bool);
-      paramDragImageView.putBoolean("mini_game_orientation", bool);
-      paramPendantAdInfo = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      if (paramPendantAdInfo != null) {
-        break;
-      }
       QMLog.e("PendantManager", "channelProxy null");
       return;
     }
@@ -155,45 +159,48 @@ public class PendantManager
     }
     if (PendantDataManager.entranceStrategy == 1) {
       PendantDataManager.reportClick("2");
+    } else if (PendantDataManager.entranceStrategy == 0) {
+      PendantDataManager.reportClick("1");
     }
-    for (;;)
-    {
-      QMLog.i("PendantManager", "startTransparentBrowserActivity, url=" + paramString);
-      return;
-      if (PendantDataManager.entranceStrategy == 0) {
-        PendantDataManager.reportClick("1");
-      }
-    }
+    paramActivity = new StringBuilder();
+    paramActivity.append("startTransparentBrowserActivity, url=");
+    paramActivity.append(paramString);
+    QMLog.i("PendantManager", paramActivity.toString());
   }
   
   public boolean removePendantAd()
   {
-    if (this.mGameContainer == null) {
+    ViewGroup localViewGroup = this.mGameContainer;
+    if (localViewGroup == null) {
       return false;
     }
-    this.mGameContainer.post(new PendantManager.7(this));
+    localViewGroup.post(new PendantManager.7(this));
     return true;
   }
   
   public boolean showPendantAd(PendantAdInfo paramPendantAdInfo)
   {
-    if ((this.mContext == null) || (this.mGameContainer == null))
+    if (this.mContext != null)
     {
-      QMLog.e("PendantManager", "showDragAd fail");
-      return false;
+      ViewGroup localViewGroup = this.mGameContainer;
+      if (localViewGroup != null)
+      {
+        if (this.mDragImageView != null)
+        {
+          QMLog.e("PendantManager", "showPendantAd fail, already exist");
+          return false;
+        }
+        localViewGroup.post(new PendantManager.1(this, paramPendantAdInfo));
+        return true;
+      }
     }
-    if (this.mDragImageView != null)
-    {
-      QMLog.e("PendantManager", "showPendantAd fail, already exist");
-      return false;
-    }
-    this.mGameContainer.post(new PendantManager.1(this, paramPendantAdInfo));
-    return true;
+    QMLog.e("PendantManager", "showDragAd fail");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.PendantManager
  * JD-Core Version:    0.7.0.1
  */

@@ -94,7 +94,10 @@ public abstract class BusinessHandler
             if ((l > 100L) && (QLog.isColorLevel()))
             {
               localObject = new Exception("run too long!");
-              QLog.d("BusinessHandler", 2, "defaultObserver onUpdate cost:" + l, (Throwable)localObject);
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("defaultObserver onUpdate cost:");
+              localStringBuilder.append(l);
+              QLog.d("BusinessHandler", 2, localStringBuilder.toString(), (Throwable)localObject);
             }
           }
         }
@@ -128,42 +131,37 @@ public abstract class BusinessHandler
             dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (BusinessObserver)localObject, bgHandler);
           }
         }
+        return;
       }
       finally {}
     }
   }
   
-  public void notifyUI(ToServiceMsg paramToServiceMsg, int paramInt, boolean paramBoolean, Object paramObject)
+  public void notifyUI(ToServiceMsg arg1, int paramInt, boolean paramBoolean, Object paramObject)
   {
-    long l;
-    MqqHandler localMqqHandler;
-    if (paramToServiceMsg.extraData.containsKey(SEQ_KEY))
+    if (???.extraData.containsKey(SEQ_KEY))
     {
-      l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
+      long l = ???.extraData.getLong(SEQ_KEY);
       synchronized (this.uiObserverMap)
       {
-        paramToServiceMsg = (BusinessObserver)this.uiObserverMap.remove(Long.valueOf(l));
-        localMqqHandler = uiHandler;
-        if (paramToServiceMsg != null) {}
-      }
-    }
-    for (;;)
-    {
-      synchronized (this.bgObserverMap)
-      {
-        paramToServiceMsg = (BusinessObserver)this.bgObserverMap.remove(Long.valueOf(l));
-        localMqqHandler = bgHandler;
-        if (paramToServiceMsg != null)
+        ??? = (BusinessObserver)this.uiObserverMap.remove(Long.valueOf(l));
+        MqqHandler localMqqHandler = uiHandler;
+        ??? = (ToServiceMsg)???;
+        if (??? == null) {
+          synchronized (this.bgObserverMap)
+          {
+            ??? = (BusinessObserver)this.bgObserverMap.remove(Long.valueOf(l));
+            localMqqHandler = bgHandler;
+          }
+        }
+        if (??? != null)
         {
-          dispatchMessage(paramInt, paramBoolean, paramObject, false, paramToServiceMsg, localMqqHandler);
+          dispatchMessage(paramInt, paramBoolean, paramObject, false, ???, localMqqHandler);
           return;
-          paramToServiceMsg = finally;
-          throw paramToServiceMsg;
         }
       }
-      notifyUI(paramInt, paramBoolean, paramObject);
-      return;
     }
+    notifyUI(paramInt, paramBoolean, paramObject);
   }
   
   protected abstract Class<? extends BusinessObserver> observerClass();
@@ -172,7 +170,7 @@ public abstract class BusinessHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.BusinessHandler
  * JD-Core Version:    0.7.0.1
  */

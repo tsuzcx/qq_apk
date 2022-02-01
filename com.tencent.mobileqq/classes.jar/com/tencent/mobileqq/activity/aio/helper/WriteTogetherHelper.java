@@ -3,7 +3,6 @@ package com.tencent.mobileqq.activity.aio.helper;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.ActionMode.Callback;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -38,33 +37,24 @@ public class WriteTogetherHelper
   
   private String a()
   {
-    String str2 = "";
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {
-      str1 = str2;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if ((localObject == null) || (((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString == null)) {
+      localObject = "";
+    } else {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
     }
-    for (;;)
-    {
-      if (TextUtils.isEmpty(str1)) {}
-      return str1;
-      str1 = str2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
-      {
-        str1 = str2;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) {
-          str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        }
-      }
-    }
+    TextUtils.isEmpty((CharSequence)localObject);
+    return localObject;
   }
   
   public static void a(Context paramContext, BaseChatPie paramBaseChatPie, String paramString1, String paramString2, int paramInt)
   {
-    FragmentActivity localFragmentActivity = null;
     if (paramBaseChatPie != null) {
-      localFragmentActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+      paramBaseChatPie = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+    } else {
+      paramBaseChatPie = null;
     }
-    ((IWTStartup)QRoute.api(IWTStartup.class)).launchEditor(paramContext, localFragmentActivity, paramString1, paramString2, paramInt, 18005);
+    ((IWTStartup)QRoute.api(IWTStartup.class)).launchEditor(paramContext, paramBaseChatPie, paramString1, paramString2, paramInt, 18005);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, int paramInt)
@@ -81,11 +71,12 @@ public class WriteTogetherHelper
   
   private void c()
   {
-    if (this.jdField_a_of_type_AndroidViewActionMode$Callback != null) {}
-    while (Build.VERSION.SDK_INT < 23) {
+    if (this.jdField_a_of_type_AndroidViewActionMode$Callback != null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewActionMode$Callback = new WriteTogetherHelper.1(this);
+    if (Build.VERSION.SDK_INT >= 23) {
+      this.jdField_a_of_type_AndroidViewActionMode$Callback = new WriteTogetherHelper.1(this);
+    }
   }
   
   private void d()
@@ -103,31 +94,6 @@ public class WriteTogetherHelper
   public void a()
   {
     c();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (paramInt1 != 18005) {}
-    do
-    {
-      return;
-      if ((paramInt2 & 0x1) == 0) {
-        break;
-      }
-      if ((paramInt2 & 0x2) != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-      }
-      if ((paramInt2 & 0x4) != 0)
-      {
-        paramIntent = (FullScreenInputHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(24);
-        if (paramIntent != null) {
-          paramIntent.a(true);
-        }
-      }
-    } while ((paramInt2 & 0x8) == 0);
-    d();
-    return;
-    QLog.e("WriteTogetherHelper", 1, "[onActivityResult] failed code: " + paramInt2);
   }
   
   public void a(String paramString, int paramInt)
@@ -150,7 +116,7 @@ public class WriteTogetherHelper
   public void b(String paramString, int paramInt)
   {
     String str = a();
-    ((IWTStartup)QRoute.api(IWTStartup.class)).launchWriteTogetherEditor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString, paramInt, str, 18005);
+    ((IWTStartup)QRoute.api(IWTStartup.class)).launchWriteTogetherEditor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString, paramInt, str, 18005);
   }
   
   public String getTag()
@@ -160,23 +126,54 @@ public class WriteTogetherHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 0, 14 };
+    return new int[] { 0, 15 };
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 != 18005) {
+      return;
+    }
+    if ((paramInt2 & 0x1) != 0)
+    {
+      if ((paramInt2 & 0x2) != 0) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+      }
+      if ((paramInt2 & 0x4) != 0)
+      {
+        paramIntent = (FullScreenInputHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(24);
+        if (paramIntent != null) {
+          paramIntent.a(true);
+        }
+      }
+      if ((paramInt2 & 0x8) != 0) {
+        d();
+      }
+    }
+    else
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("[onActivityResult] failed code: ");
+      paramIntent.append(paramInt2);
+      QLog.e("WriteTogetherHelper", 1, paramIntent.toString());
+    }
   }
   
   public void onMoveToState(int paramInt)
   {
-    if (paramInt == 0) {
+    if (paramInt == 0)
+    {
       a();
-    }
-    while (paramInt != 14) {
       return;
     }
-    b();
+    if (paramInt == 15) {
+      b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.WriteTogetherHelper
  * JD-Core Version:    0.7.0.1
  */

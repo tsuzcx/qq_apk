@@ -23,13 +23,14 @@ public final class SubMsgType0x7$MsgBody$MpFileNotify
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 29, 32, 40, 48, 58 }, new String[] { "uint64_sessionid", "uint32_operate", "fixed32_ip", "uint32_port", "uint32_type", "uint32_power", "bytes_json" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, MpFileNotify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 29, 32, 40, 48, 58 }, new String[] { "uint64_sessionid", "uint32_operate", "fixed32_ip", "uint32_port", "uint32_type", "uint32_power", "bytes_json" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro }, MpFileNotify.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MpFileNotify
  * JD-Core Version:    0.7.0.1
  */

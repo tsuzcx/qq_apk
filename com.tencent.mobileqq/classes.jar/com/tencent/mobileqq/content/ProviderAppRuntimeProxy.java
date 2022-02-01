@@ -8,28 +8,20 @@ public class ProviderAppRuntimeProxy
 {
   SQLiteDatabase a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramAppRuntime != null)
+    if ((paramAppRuntime != null) && ((paramAppRuntime instanceof QQAppInterface)))
     {
-      localObject1 = localObject2;
-      if ((paramAppRuntime instanceof QQAppInterface))
-      {
-        paramAppRuntime = (QQAppInterface)paramAppRuntime;
-        if (!paramBoolean) {
-          break label41;
-        }
-        localObject1 = paramAppRuntime.getReadableDatabase(paramString);
+      paramAppRuntime = (QQAppInterface)paramAppRuntime;
+      if (paramBoolean) {
+        return paramAppRuntime.getReadableDatabase(paramString);
       }
+      return paramAppRuntime.getWritableDatabase(paramString);
     }
-    return localObject1;
-    label41:
-    return paramAppRuntime.getWritableDatabase(paramString);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.content.ProviderAppRuntimeProxy
  * JD-Core Version:    0.7.0.1
  */

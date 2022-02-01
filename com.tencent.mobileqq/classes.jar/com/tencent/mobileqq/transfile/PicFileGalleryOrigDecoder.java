@@ -21,44 +21,48 @@ public class PicFileGalleryOrigDecoder
   public File getFile(DownloadParams paramDownloadParams)
   {
     URL localURL = paramDownloadParams.url;
-    for (;;)
+    try
     {
+      localObject = localURL.getFile();
+      paramDownloadParams = (DownloadParams)localObject;
+      if (!FileUtils.fileExists((String)localObject)) {
+        paramDownloadParams = localURL.toURI().getPath();
+      }
+      paramDownloadParams = new File(paramDownloadParams);
+      return paramDownloadParams;
+    }
+    catch (NullPointerException paramDownloadParams)
+    {
+      Object localObject;
+      paramDownloadParams.printStackTrace();
+      return null;
       try
       {
-        paramDownloadParams = localURL.getFile();
-        if (!FileUtils.a(paramDownloadParams))
-        {
-          paramDownloadParams = localURL.toURI().getPath();
-          paramDownloadParams = new File(paramDownloadParams);
-          return paramDownloadParams;
-        }
+        paramDownloadParams = new File(localURL.toString().replaceFirst("filegalleryorigimage:", ""));
+        return paramDownloadParams;
       }
-      catch (URISyntaxException paramDownloadParams)
+      catch (Exception paramDownloadParams)
       {
-        try
+        if (QLog.isColorLevel())
         {
-          paramDownloadParams = new File(localURL.toString().replaceFirst("filegalleryorigimage:", ""));
-          return paramDownloadParams;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("LocaleFileDownloader getFile error url:");
+          ((StringBuilder)localObject).append(localURL);
+          QLog.e("URLDrawable_", 2, ((StringBuilder)localObject).toString(), paramDownloadParams);
         }
-        catch (Exception paramDownloadParams)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + localURL, paramDownloadParams);
-          }
-          return null;
-        }
-      }
-      catch (NullPointerException paramDownloadParams)
-      {
-        paramDownloadParams.printStackTrace();
         return null;
       }
+    }
+    catch (URISyntaxException paramDownloadParams)
+    {
+      label45:
+      break label45;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.PicFileGalleryOrigDecoder
  * JD-Core Version:    0.7.0.1
  */

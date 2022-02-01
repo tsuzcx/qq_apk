@@ -40,21 +40,17 @@ public class HuanjueEffect
   
   protected void afterDraw(TAVTextureInfo paramTAVTextureInfo)
   {
-    if (this.currFrameIndex == 0) {
+    int i = this.currFrameIndex;
+    if (i == 0) {
       cacheTexture(paramTAVTextureInfo);
+    } else if (i == 1) {
+      GLES20.glUniform4f(this.colorMaskHandle, 1.0F, 0.0F, 0.0F, 1.0F);
+    } else if (i == 4) {
+      GLES20.glUniform4f(this.colorMaskHandle, 0.0F, 0.0F, 1.0F, 0.0F);
     }
-    for (;;)
-    {
-      this.currFrameIndex += 1;
-      if (this.currFrameIndex > 8) {
-        this.currFrameIndex = 0;
-      }
-      return;
-      if (this.currFrameIndex == 1) {
-        GLES20.glUniform4f(this.colorMaskHandle, 1.0F, 0.0F, 0.0F, 1.0F);
-      } else if (this.currFrameIndex == 4) {
-        GLES20.glUniform4f(this.colorMaskHandle, 0.0F, 0.0F, 1.0F, 0.0F);
-      }
+    this.currFrameIndex += 1;
+    if (this.currFrameIndex > 8) {
+      this.currFrameIndex = 0;
     }
   }
   
@@ -99,17 +95,20 @@ public class HuanjueEffect
   
   public void release()
   {
-    if (this.cacheTextureFilter != null) {
-      this.cacheTextureFilter.release();
+    Object localObject = this.cacheTextureFilter;
+    if (localObject != null) {
+      ((CacheTextureFilter)localObject).release();
     }
-    if (this.cacheTexture[0] != 0)
+    localObject = this.cacheTexture;
+    if (localObject[0] != 0)
     {
-      GLES20.glDeleteTextures(1, this.cacheTexture, 0);
+      GLES20.glDeleteTextures(1, (int[])localObject, 0);
       this.cacheTexture[0] = 0;
     }
-    if (this.frameBuffer[0] != 0)
+    localObject = this.frameBuffer;
+    if (localObject[0] != 0)
     {
-      GLES20.glDeleteFramebuffers(1, this.frameBuffer, 0);
+      GLES20.glDeleteFramebuffers(1, (int[])localObject, 0);
       this.frameBuffer[0] = 0;
     }
     super.release();
@@ -117,7 +116,7 @@ public class HuanjueEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.taveffect.effects.HuanjueEffect
  * JD-Core Version:    0.7.0.1
  */

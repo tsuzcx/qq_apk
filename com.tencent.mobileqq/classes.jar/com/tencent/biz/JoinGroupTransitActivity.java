@@ -51,7 +51,7 @@ public class JoinGroupTransitActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
@@ -61,7 +61,7 @@ public class JoinGroupTransitActivity
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     this.jdField_a_of_type_ComTencentBizJoinGroupHandler.b();
@@ -76,7 +76,7 @@ public class JoinGroupTransitActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.JoinGroupTransitActivity
  * JD-Core Version:    0.7.0.1
  */

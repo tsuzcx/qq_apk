@@ -20,50 +20,56 @@ public class HwStatisticMgr
   
   public static void doReportConnection(int paramInt1, String paramString, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, List<EndPoint> paramList, long paramLong)
   {
-    HashMap localHashMap;
-    StringBuilder localStringBuilder;
-    if (sLastReportTime == -1L)
-    {
+    if (sLastReportTime == -1L) {
       sLastReportTime = SystemClock.uptimeMillis();
-      sLastReportTime = SystemClock.uptimeMillis();
-      localHashMap = new HashMap();
-      localHashMap.put("ConnCnt", String.valueOf(paramInt2));
-      localHashMap.put("ConnSuccCnt", String.valueOf(paramInt3));
-      localHashMap.put("ConnFailCnt", String.valueOf(paramInt4));
-      localHashMap.put("param_cost", String.valueOf(paramLong));
-      if (paramList.size() <= 0) {
-        break label274;
-      }
-      localStringBuilder = new StringBuilder();
-      paramInt2 = 0;
-      label103:
-      if (paramInt2 >= paramList.size()) {
-        break label261;
-      }
-      if (paramInt2 <= 0) {
-        break label255;
-      }
-      localStringBuilder.append(";");
-    }
-    label255:
-    while (paramInt2 <= 20)
-    {
-      EndPoint localEndPoint = (EndPoint)paramList.get(paramInt2);
-      if (localEndPoint != null) {
-        localStringBuilder.append(localEndPoint.connIndex + "_" + localEndPoint.ipIndex + "_" + localEndPoint.host + "_" + localEndPoint.port + "_" + localEndPoint.connResult + "_" + localEndPoint.cost);
-      }
-      paramInt2 += 1;
-      break label103;
-      if (SystemClock.uptimeMillis() - sLastReportTime >= 480000L) {
-        break;
-      }
+    } else if (SystemClock.uptimeMillis() - sLastReportTime < 480000L) {
       return;
     }
-    label261:
-    localHashMap.put("connDetail", localStringBuilder.toString());
-    label274:
+    sLastReportTime = SystemClock.uptimeMillis();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("ConnCnt", String.valueOf(paramInt2));
+    localHashMap.put("ConnSuccCnt", String.valueOf(paramInt3));
+    localHashMap.put("ConnFailCnt", String.valueOf(paramInt4));
+    localHashMap.put("param_cost", String.valueOf(paramLong));
+    if (paramList.size() > 0)
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      paramInt2 = 0;
+      while (paramInt2 < paramList.size())
+      {
+        if (paramInt2 > 0) {
+          localStringBuilder1.append(";");
+        } else {
+          if (paramInt2 > 20) {
+            break;
+          }
+        }
+        EndPoint localEndPoint = (EndPoint)paramList.get(paramInt2);
+        if (localEndPoint != null)
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append(localEndPoint.connIndex);
+          localStringBuilder2.append("_");
+          localStringBuilder2.append(localEndPoint.ipIndex);
+          localStringBuilder2.append("_");
+          localStringBuilder2.append(localEndPoint.host);
+          localStringBuilder2.append("_");
+          localStringBuilder2.append(localEndPoint.port);
+          localStringBuilder2.append("_");
+          localStringBuilder2.append(localEndPoint.connResult);
+          localStringBuilder2.append("_");
+          localStringBuilder2.append(localEndPoint.cost);
+          localStringBuilder1.append(localStringBuilder2.toString());
+        }
+        paramInt2 += 1;
+      }
+      localHashMap.put("connDetail", localStringBuilder1.toString());
+    }
     report(paramInt1, paramString, "actBDHChannel", paramBoolean, paramLong, 0L, localHashMap);
-    BdhLogUtil.LogEvent("HwStatisticMgr", "REPORT event= actBDHChannel value= " + localHashMap.toString());
+    paramString = new StringBuilder();
+    paramString.append("REPORT event= actBDHChannel value= ");
+    paramString.append(localHashMap.toString());
+    BdhLogUtil.LogEvent("HwStatisticMgr", paramString.toString());
   }
   
   public static void report(int paramInt, String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap)
@@ -92,7 +98,7 @@ public class HwStatisticMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.utils.HwStatisticMgr
  * JD-Core Version:    0.7.0.1
  */

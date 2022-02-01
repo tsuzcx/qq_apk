@@ -14,13 +14,13 @@ class FilePreviewActivity$2
   {
     this.a.setResult(0, new Intent());
     this.a.finish();
-    this.a.overridePendingTransition(2130771979, 2130771980);
+    this.a.overridePendingTransition(2130771991, 2130771992);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,11 @@ public final class au
       paramContext = paramContext.getDeviceId();
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label17:
+      break label17;
+    }
     return "0000000000";
   }
   
@@ -39,7 +43,11 @@ public final class au
       paramContext = paramContext.getSubscriberId();
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label17:
+      break label17;
+    }
     return "0000000000";
   }
   
@@ -50,19 +58,17 @@ public final class au
   
   public static String c(Context paramContext)
   {
+    Object localObject = null;
     try
     {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getMacAddress();
-        return paramContext;
+      WifiInfo localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      paramContext = localObject;
+      if (localWifiInfo != null) {
+        paramContext = localWifiInfo.getMacAddress();
       }
+      return paramContext;
     }
-    catch (Exception paramContext)
-    {
-      return null;
-    }
+    catch (Exception paramContext) {}
     return null;
   }
   
@@ -78,13 +84,17 @@ public final class au
       paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSimSerialNumber();
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label15:
+      break label15;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.au
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,19 @@ class TroopEssenceMsgManager$13
   {
     long l = System.currentTimeMillis();
     HashMap localHashMap = this.this$0.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopEssenceMsgManager", 2, "readEntity costTime" + (System.currentTimeMillis() - l));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("readEntity costTime");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      QLog.i("TroopEssenceMsgManager", 2, localStringBuilder.toString());
     }
     ThreadManager.getUIHandler().post(new TroopEssenceMsgManager.13.1(this, localHashMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.13
  * JD-Core Version:    0.7.0.1
  */

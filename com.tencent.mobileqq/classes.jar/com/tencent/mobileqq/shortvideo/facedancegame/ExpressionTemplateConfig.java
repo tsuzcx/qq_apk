@@ -17,81 +17,83 @@ public class ExpressionTemplateConfig
   {
     for (;;)
     {
-      ExpressionTemplateConfig localExpressionTemplateConfig;
       int i;
-      double d;
       try
       {
-        localExpressionTemplateConfig = new ExpressionTemplateConfig();
+        ExpressionTemplateConfig localExpressionTemplateConfig = new ExpressionTemplateConfig();
         paramString = new JSONObject(paramString);
         localExpressionTemplateConfig.expressionID = paramString.getString("expressionID");
-        localJSONArray = paramString.optJSONArray("expressionFeat");
+        JSONArray localJSONArray = paramString.optJSONArray("expressionFeat");
+        int j = 0;
+        double d;
         if (localJSONArray != null)
         {
-          float f = 0.0F;
           i = 0;
+          float f = 0.0F;
           if (i < localJSONArray.length())
           {
             d = localJSONArray.getDouble(i);
             if (i % 2 == 0)
             {
               f = (float)d;
+              break label283;
             }
-            else
-            {
-              PointF localPointF = new PointF(f, (float)d);
-              if (localExpressionTemplateConfig.expressionFeat == null) {
-                localExpressionTemplateConfig.expressionFeat = new ArrayList();
-              }
-              localExpressionTemplateConfig.expressionFeat.add(localPointF);
+            PointF localPointF = new PointF(f, (float)d);
+            if (localExpressionTemplateConfig.expressionFeat == null) {
+              localExpressionTemplateConfig.expressionFeat = new ArrayList();
             }
+            localExpressionTemplateConfig.expressionFeat.add(localPointF);
+            break label283;
           }
         }
+        localJSONArray = paramString.optJSONArray("expressionAngle");
+        int k;
+        if (localJSONArray != null)
+        {
+          k = localJSONArray.length();
+          i = 0;
+          if (i < k)
+          {
+            if (localExpressionTemplateConfig.expressionAngle == null) {
+              localExpressionTemplateConfig.expressionAngle = new float[k];
+            }
+            d = localJSONArray.getDouble(i);
+            localExpressionTemplateConfig.expressionAngle[i] = ((float)d);
+            i += 1;
+            continue;
+          }
+        }
+        paramString = paramString.optJSONArray("expressionWeight");
+        if (paramString != null)
+        {
+          k = paramString.length();
+          i = j;
+          if (i < k)
+          {
+            if (localExpressionTemplateConfig.expressionWeight == null) {
+              localExpressionTemplateConfig.expressionWeight = new double[k];
+            }
+            d = paramString.getDouble(i);
+            localExpressionTemplateConfig.expressionWeight[i] = d;
+            i += 1;
+            continue;
+          }
+        }
+        return localExpressionTemplateConfig;
       }
       catch (Exception paramString)
       {
         paramString.printStackTrace();
         return null;
       }
-      JSONArray localJSONArray = paramString.optJSONArray("expressionAngle");
-      int j;
-      if (localJSONArray != null)
-      {
-        j = localJSONArray.length();
-        i = 0;
-        while (i < j)
-        {
-          if (localExpressionTemplateConfig.expressionAngle == null) {
-            localExpressionTemplateConfig.expressionAngle = new float[j];
-          }
-          d = localJSONArray.getDouble(i);
-          localExpressionTemplateConfig.expressionAngle[i] = ((float)d);
-          i += 1;
-        }
-      }
-      paramString = paramString.optJSONArray("expressionWeight");
-      if (paramString != null)
-      {
-        j = paramString.length();
-        i = 0;
-        while (i < j)
-        {
-          if (localExpressionTemplateConfig.expressionWeight == null) {
-            localExpressionTemplateConfig.expressionWeight = new double[j];
-          }
-          d = paramString.getDouble(i);
-          localExpressionTemplateConfig.expressionWeight[i] = d;
-          i += 1;
-        }
-      }
-      return localExpressionTemplateConfig;
+      label283:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.facedancegame.ExpressionTemplateConfig
  * JD-Core Version:    0.7.0.1
  */

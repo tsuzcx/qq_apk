@@ -40,19 +40,21 @@ public final class stGetFeedCommentListV2Req
   {
     paramJceOutputStream.write(this.attach_info, 0);
     paramJceOutputStream.write(this.feed_id, 1);
-    if (this.commentId != null) {
-      paramJceOutputStream.write(this.commentId, 2);
+    String str = this.commentId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.reqFrom, 3);
-    if (this.replyId != null) {
-      paramJceOutputStream.write(this.replyId, 4);
+    str = this.replyId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.getRepyListByPage, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stGetFeedCommentListV2Req
  * JD-Core Version:    0.7.0.1
  */

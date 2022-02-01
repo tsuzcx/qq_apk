@@ -8,6 +8,7 @@ import com.tencent.biz.qqstory.album.tools.GeoHashUtils.Gps;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.channel.CmdTaskManger;
 import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import java.util.ArrayList;
@@ -25,25 +26,31 @@ public class CheckBlackGeoHashHandler
   
   public void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)) {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener.a(new ErrorMessage(-1, "CheckBlackGeoHashHandler no photo"), null);
-      }
-    }
-    List localList;
-    do
+    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+    if ((localObject1 != null) && (((HashMap)localObject1).size() != 0))
     {
-      return;
-      localList = StoryScanManager.a(this.jdField_a_of_type_JavaUtilHashMap);
-      if (localList.size() != 0) {
-        break;
+      localObject1 = StoryScanManager.a(this.jdField_a_of_type_JavaUtilHashMap);
+      if (((List)localObject1).size() == 0)
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener;
+        if (localObject1 != null)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("CheckBlackGeoHashHandler gps error ");
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilHashMap.toString());
+          ((CheckBlackGeoHashHandler.CheckBlackListener)localObject1).a(new ErrorMessage(-1, ((StringBuilder)localObject2).toString()), null);
+        }
+        return;
       }
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener == null);
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener.a(new ErrorMessage(-1, "CheckBlackGeoHashHandler gps error " + this.jdField_a_of_type_JavaUtilHashMap.toString()), null);
-    return;
-    CheckBlackPOIRequest localCheckBlackPOIRequest = new CheckBlackPOIRequest();
-    localCheckBlackPOIRequest.a(localList);
-    CmdTaskManger.a().a(localCheckBlackPOIRequest, this);
+      Object localObject2 = new CheckBlackPOIRequest();
+      ((CheckBlackPOIRequest)localObject2).a((List)localObject1);
+      CmdTaskManger.a().a((NetworkRequest)localObject2, this);
+      return;
+    }
+    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener;
+    if (localObject1 != null) {
+      ((CheckBlackGeoHashHandler.CheckBlackListener)localObject1).a(new ErrorMessage(-1, "CheckBlackGeoHashHandler no photo"), null);
+    }
   }
   
   public void a(CheckBlackGeoHashHandler.CheckBlackListener paramCheckBlackListener)
@@ -53,15 +60,8 @@ public class CheckBlackGeoHashHandler
   
   public void a(@NonNull CheckBlackPOIRequest paramCheckBlackPOIRequest, @Nullable CheckBlackPOIRequest.GetBlackListResponse paramGetBlackListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramGetBlackListResponse == null) || (paramErrorMessage.isFail())) {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener.a(paramErrorMessage, null);
-      }
-    }
-    label202:
-    do
+    if ((paramGetBlackListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      return;
       paramCheckBlackPOIRequest = new ArrayList();
       if ((paramGetBlackListResponse.a != null) && (paramGetBlackListResponse.a.size() > 0))
       {
@@ -69,7 +69,7 @@ public class CheckBlackGeoHashHandler
         for (;;)
         {
           if (!paramGetBlackListResponse.hasNext()) {
-            break label202;
+            break label186;
           }
           qqstory_struct.GpsMsg localGpsMsg1 = (qqstory_struct.GpsMsg)paramGetBlackListResponse.next();
           Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
@@ -87,8 +87,17 @@ public class CheckBlackGeoHashHandler
           }
         }
       }
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener == null);
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener.a(paramErrorMessage, paramCheckBlackPOIRequest);
+      label186:
+      paramGetBlackListResponse = this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener;
+      if (paramGetBlackListResponse != null) {
+        paramGetBlackListResponse.a(paramErrorMessage, paramCheckBlackPOIRequest);
+      }
+      return;
+    }
+    paramCheckBlackPOIRequest = this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkCheckBlackGeoHashHandler$CheckBlackListener;
+    if (paramCheckBlackPOIRequest != null) {
+      paramCheckBlackPOIRequest.a(paramErrorMessage, null);
+    }
   }
   
   public void a(@NonNull HashMap<String, GeoHashPhotoGroup> paramHashMap)
@@ -98,7 +107,7 @@ public class CheckBlackGeoHashHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.network.CheckBlackGeoHashHandler
  * JD-Core Version:    0.7.0.1
  */

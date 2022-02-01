@@ -2,9 +2,10 @@ package com.tencent.av.core;
 
 import android.content.Context;
 import com.tencent.av.mediacodec.AndroidCodec;
+import com.tencent.av.so.ResMgr;
+import com.tencent.av.utils.AVSoUtils;
 import com.tencent.avcore.jni.codec.HWCodecAbility;
 import com.tencent.avcore.util.AVSoProxy;
-import com.tencent.mobileqq.startup.step.AVSoUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,54 +19,126 @@ public class AVSoProxyImpl
     this.a = paramContext;
   }
   
+  public String getAVMediaEngineSoDir()
+  {
+    return ResMgr.d();
+  }
+  
+  public String getAVTraeSoDir()
+  {
+    return ResMgr.c();
+  }
+  
   public String getAndroidCodecInfo()
   {
-    String str = "";
-    Object localObject = AndroidCodec.checkSupportHWCodecAbility("AVSoProxyImpl", this.a);
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    Object localObject2 = AndroidCodec.checkSupportHWCodecAbility("AVSoProxyImpl", this.a);
+    Object localObject1 = "";
+    if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
     {
-      Iterator localIterator = ((ArrayList)localObject).iterator();
-      localObject = str;
-      if (!localIterator.hasNext()) {
-        break label540;
-      }
-      localObject = (HWCodecAbility)localIterator.next();
-      if ((((HWCodecAbility)localObject).codecType == 1) && (((HWCodecAbility)localObject).isHWCodec))
+      Iterator localIterator = ((ArrayList)localObject2).iterator();
+      for (;;)
       {
-        str = str + "HWAVCDEC=1;";
-        str = str + "HWAVCDEC_MAXW=" + ((HWCodecAbility)localObject).maxW + ";";
-        str = str + "HWAVCDEC_MAXH=" + ((HWCodecAbility)localObject).maxH + ";";
+        localObject2 = localObject1;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject2 = (HWCodecAbility)localIterator.next();
+        StringBuilder localStringBuilder;
+        if ((((HWCodecAbility)localObject2).codecType == 1) && (((HWCodecAbility)localObject2).isHWCodec))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWAVCDEC=1;");
+          localObject1 = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWAVCDEC_MAXW=");
+          localStringBuilder.append(((HWCodecAbility)localObject2).maxW);
+          localStringBuilder.append(";");
+          localObject1 = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWAVCDEC_MAXH=");
+          localStringBuilder.append(((HWCodecAbility)localObject2).maxH);
+          localStringBuilder.append(";");
+          localObject1 = localStringBuilder.toString();
+        }
+        else if ((((HWCodecAbility)localObject2).codecType == 2) && (((HWCodecAbility)localObject2).isHWCodec))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWAVCENC=1;");
+          localObject1 = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWAVCENC_MAXW=");
+          localStringBuilder.append(((HWCodecAbility)localObject2).maxW);
+          localStringBuilder.append(";");
+          localObject1 = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWAVCENC_MAXH=");
+          localStringBuilder.append(((HWCodecAbility)localObject2).maxH);
+          localStringBuilder.append(";");
+          localObject1 = localStringBuilder.toString();
+        }
+        else if ((((HWCodecAbility)localObject2).codecType == 4) && (((HWCodecAbility)localObject2).isHWCodec))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWHEVCDEC=1;");
+          localObject1 = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWHEVCDEC_MAXW=");
+          localStringBuilder.append(((HWCodecAbility)localObject2).maxW);
+          localStringBuilder.append(";");
+          localObject1 = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWHEVCDEC_MAXH=");
+          localStringBuilder.append(((HWCodecAbility)localObject2).maxH);
+          localStringBuilder.append(";");
+          localObject1 = localStringBuilder.toString();
+        }
+        else if ((((HWCodecAbility)localObject2).codecType == 8) && (((HWCodecAbility)localObject2).isHWCodec))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWHEVCENC=1;");
+          localObject1 = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWHEVCENC_MAXW=");
+          localStringBuilder.append(((HWCodecAbility)localObject2).maxW);
+          localStringBuilder.append(";");
+          localObject1 = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("HWHEVCENC_MAXH=");
+          localStringBuilder.append(((HWCodecAbility)localObject2).maxH);
+          localStringBuilder.append(";");
+          localObject1 = localStringBuilder.toString();
+        }
       }
     }
-    for (;;)
-    {
-      break;
-      if ((((HWCodecAbility)localObject).codecType == 2) && (((HWCodecAbility)localObject).isHWCodec))
-      {
-        str = str + "HWAVCENC=1;";
-        str = str + "HWAVCENC_MAXW=" + ((HWCodecAbility)localObject).maxW + ";";
-        str = str + "HWAVCENC_MAXH=" + ((HWCodecAbility)localObject).maxH + ";";
-      }
-      else if ((((HWCodecAbility)localObject).codecType == 4) && (((HWCodecAbility)localObject).isHWCodec))
-      {
-        str = str + "HWHEVCDEC=1;";
-        str = str + "HWHEVCDEC_MAXW=" + ((HWCodecAbility)localObject).maxW + ";";
-        str = str + "HWHEVCDEC_MAXH=" + ((HWCodecAbility)localObject).maxH + ";";
-      }
-      else if ((((HWCodecAbility)localObject).codecType == 8) && (((HWCodecAbility)localObject).isHWCodec))
-      {
-        str = str + "HWHEVCENC=1;";
-        str = str + "HWHEVCENC_MAXW=" + ((HWCodecAbility)localObject).maxW + ";";
-        str = str + "HWHEVCENC_MAXH=" + ((HWCodecAbility)localObject).maxH + ";";
-        continue;
-        str = "" + "HWAVCENC=0;";
-        str = str + "HWAVCDEC=0;";
-        str = str + "HWHEVCENC=0;";
-        localObject = str + "HWHEVCDEC=0;";
-        label540:
-        return localObject;
-      }
-    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append("HWAVCENC=0;");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("HWAVCDEC=0;");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("HWHEVCENC=0;");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("HWHEVCDEC=0;");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    return localObject2;
   }
   
   public Context getContext()
@@ -92,7 +165,7 @@ public class AVSoProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.core.AVSoProxyImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -36,45 +36,55 @@ public class MsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig
   
   public boolean a()
   {
-    boolean bool2 = false;
     long l = System.currentTimeMillis();
     boolean bool1;
-    if ((l >= this.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_Long))
-    {
+    if ((l >= this.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_Long)) {
       bool1 = true;
-      if ((!bool1) || (!this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
-        break label68;
-      }
-      bool1 = bool2;
-    }
-    label68:
-    for (;;)
-    {
-      SLog.a("Q.qqstory.config.takevideo", "isVariable=%b content=%s", Boolean.valueOf(bool1), toString());
-      return bool1;
+    } else {
       bool1 = false;
-      break;
     }
+    boolean bool2 = bool1;
+    if (bool1)
+    {
+      bool2 = bool1;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bool2 = bool1;
+        if (this.jdField_b_of_type_Boolean) {
+          bool2 = false;
+        }
+      }
+    }
+    SLog.a("Q.qqstory.config.takevideo", "isVariable=%b content=%s", Boolean.valueOf(bool2), toString());
+    return bool2;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("MsgTabTakeVideoNodeConfig=[");
-    localStringBuilder.append(" startTime:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" endTime:").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(" imageUrl:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" desc:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" jumpUrl:").append(this.c);
-    localStringBuilder.append(" contentId:").append(this.d);
-    localStringBuilder.append(" isOneTimeUse:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" hasClicked:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(" startTime:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" endTime:");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" imageUrl:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" desc:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" jumpUrl:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" contentId:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" isOneTimeUse:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" hasClicked:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig
  * JD-Core Version:    0.7.0.1
  */

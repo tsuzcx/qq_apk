@@ -13,7 +13,7 @@ public final class QQCircleMsgPaelem$EIM_Trans
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleMsgPaelem.EIM_Trans
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,12 @@ class MultiMsgUpProcessor$1
   
   public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiMsg_TAG", 2, "BDH.Upload fail  : result:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("BDH.Upload fail  : result:");
+      paramArrayOfByte.append(paramInt);
+      QLog.i("MultiMsg_TAG", 2, paramArrayOfByte.toString());
     }
     this.this$0.onError();
   }
@@ -31,26 +35,30 @@ class MultiMsgUpProcessor$1
     {
       paramHashMap.mergeFrom(paramArrayOfByte);
       MultiMsgUpProcessor.access$002(this.this$0, paramHashMap.bytes_msg_res_id.get().toByteArray());
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MultiMsg_TAG_opt", 2, "Multimsg upload file by BDH and onSuccess  " + new String(MultiMsgUpProcessor.access$000(this.this$0), "utf-8"));
+      if (QLog.isDevelopLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("Multimsg upload file by BDH and onSuccess  ");
+        paramArrayOfByte.append(new String(MultiMsgUpProcessor.access$000(this.this$0), "utf-8"));
+        QLog.i("MultiMsg_TAG_opt", 2, paramArrayOfByte.toString());
       }
-      paramArrayOfByte = new File(AbsDownloader.getFilePath(MultiMsgUpProcessor.access$100(this.this$0)));
-      if (paramArrayOfByte.exists()) {
-        paramArrayOfByte.delete();
-      }
-      this.this$0.onSuccess();
-      return;
     }
     catch (Exception paramArrayOfByte)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("MultiMsg_TAG_opt", 2, "Multimsg upload file by BDH and onSuccess but exception + " + paramArrayOfByte);
-        }
-        paramArrayOfByte.printStackTrace();
+        paramHashMap = new StringBuilder();
+        paramHashMap.append("Multimsg upload file by BDH and onSuccess but exception + ");
+        paramHashMap.append(paramArrayOfByte);
+        QLog.i("MultiMsg_TAG_opt", 2, paramHashMap.toString());
       }
+      paramArrayOfByte.printStackTrace();
     }
+    paramArrayOfByte = new File(AbsDownloader.getFilePath(MultiMsgUpProcessor.access$100(this.this$0)));
+    if (paramArrayOfByte.exists()) {
+      paramArrayOfByte.delete();
+    }
+    this.this$0.onSuccess();
   }
   
   public void onSwitch2BackupChannel() {}
@@ -61,7 +69,7 @@ class MultiMsgUpProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.MultiMsgUpProcessor.1
  * JD-Core Version:    0.7.0.1
  */

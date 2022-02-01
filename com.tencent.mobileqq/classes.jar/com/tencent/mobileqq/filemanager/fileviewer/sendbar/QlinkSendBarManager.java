@@ -7,10 +7,11 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.api.IFMDataCacheApi;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.widget.QFileCustomBottomBarManager;
 import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
+import com.tencent.mobileqq.qroute.QRoute;
 import cooperation.qlink.QQProxyForQlink;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,82 +35,82 @@ public class QlinkSendBarManager
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131377759));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131372347));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131377187));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131371932));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
   private void d()
   {
-    if ((this.jdField_a_of_type_AndroidOsBundle == null) || (!this.jdField_a_of_type_AndroidOsBundle.containsKey("qfile_search_param_exparams_qlink_state")))
+    if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("qfile_search_param_exparams_qlink_state")))
     {
-      a(null);
-      return;
-    }
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
-    Object localObject2 = FMDataCache.a();
-    ArrayList localArrayList = new ArrayList();
-    localObject2 = ((Set)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      localArrayList.add(((FileInfo)((Iterator)localObject2).next()).c());
-    }
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
-    localObject2 = new Intent();
-    if (222 == i)
-    {
-      ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
-      i = -1;
-    }
-    for (;;)
-    {
-      a(i, (Intent)localObject2);
-      return;
-      if ((333 == i) || (666 == i) || (3333 == i) || (6666 == i))
+      Object localObject1 = this.jdField_a_of_type_JavaLangString;
+      Object localObject2 = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles();
+      ArrayList localArrayList = new ArrayList();
+      localObject2 = ((Set)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        localArrayList.add(((FileInfo)((Iterator)localObject2).next()).c());
+      }
+      int i = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
+      localObject2 = new Intent();
+      int j = -1;
+      if (222 == i)
       {
         ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
+        i = j;
       }
-      else
+      else if ((333 != i) && (666 != i) && (3333 != i) && (6666 != i))
       {
-        if ((444 == i) || (555 == i))
+        boolean bool = true;
+        if ((444 != i) && (555 != i))
         {
-          if (444 == i) {}
-          for (boolean bool = true;; bool = false)
+          if ((777 != i) && (888 != i))
           {
-            ((Intent)localObject2).putExtra("_INIT_SEND_IOS_", bool);
-            ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
-            break;
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQProxyForQlink().a((String)localObject1, localArrayList);
+            ((Intent)localObject2).putExtra("_UIN_", (String)localObject1);
+            ((Intent)localObject2).putExtra("_SEND_QLINK_FILE_", true);
+            i = j;
           }
-        }
-        if ((777 == i) || (888 == i))
-        {
-          localObject1 = new Bundle();
-          ((Bundle)localObject1).putStringArrayList("string_filepaths", localArrayList);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQProxyForQlink();
-          QQProxyForQlink.a(this.jdField_a_of_type_AndroidContentContext, 16, (Bundle)localObject1);
-          i = -1;
+          else
+          {
+            localObject1 = new Bundle();
+            ((Bundle)localObject1).putStringArrayList("string_filepaths", localArrayList);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQProxyForQlink();
+            QQProxyForQlink.a(this.jdField_a_of_type_AndroidContentContext, 16, (Bundle)localObject1);
+            i = j;
+          }
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQProxyForQlink().a((String)localObject1, localArrayList);
-          ((Intent)localObject2).putExtra("_UIN_", (String)localObject1);
-          ((Intent)localObject2).putExtra("_SEND_QLINK_FILE_", true);
-          i = -1;
+          if (444 != i) {
+            bool = false;
+          }
+          ((Intent)localObject2).putExtra("_INIT_SEND_IOS_", bool);
+          ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
         }
       }
+      else
+      {
+        ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
+      }
+      a(i, (Intent)localObject2);
+      return;
     }
+    a(null);
   }
   
   public void a()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698339);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713738));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698404);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713691));
     TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (FMDataCache.b() > 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localTextView.setEnabled(bool);
-      return;
+    boolean bool;
+    if (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCount() > 0L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localTextView.setEnabled(bool);
   }
   
   public void a(Bundle paramBundle)
@@ -125,7 +126,7 @@ public class QlinkSendBarManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.sendbar.QlinkSendBarManager
  * JD-Core Version:    0.7.0.1
  */

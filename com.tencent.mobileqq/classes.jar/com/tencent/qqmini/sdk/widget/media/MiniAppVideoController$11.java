@@ -23,11 +23,15 @@ class MiniAppVideoController$11
     {
       paramAbsVideoPlayer = new JSONObject();
       paramAbsVideoPlayer.put("data", MiniAppVideoController.access$2800(this.this$0));
-      if (MiniAppVideoController.access$1400(this.this$0) != null) {
+      Object localObject = MiniAppVideoController.access$1400(this.this$0);
+      if (localObject != null) {
         MiniAppVideoController.access$1400(this.this$0).performAction(ServiceSubscribeEvent.obtain("onVideoSeeked", paramAbsVideoPlayer.toString(), MiniAppVideoController.access$3000(this.this$0)));
       }
       MiniAppVideoController.access$3100(this.this$0).evaluateSubscribeJS("onVideoSeeked", paramAbsVideoPlayer.toString(), MiniAppVideoController.access$3000(this.this$0));
-      QMLog.d("MiniAppVideoController", "evaluateSubcribeJS onVideoSeeked = " + paramAbsVideoPlayer.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("evaluateSubcribeJS onVideoSeeked = ");
+      ((StringBuilder)localObject).append(paramAbsVideoPlayer.toString());
+      QMLog.d("MiniAppVideoController", ((StringBuilder)localObject).toString());
       return;
     }
     catch (JSONException paramAbsVideoPlayer)
@@ -38,7 +42,7 @@ class MiniAppVideoController$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.MiniAppVideoController.11
  * JD-Core Version:    0.7.0.1
  */

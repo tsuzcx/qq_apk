@@ -12,8 +12,12 @@ class QWalletCommonJsPlugin$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletCommonJsPlugin", 2, "onReceive:" + paramIntent.getAction());
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("onReceive:");
+      paramContext.append(paramIntent.getAction());
+      QLog.d("QWalletCommonJsPlugin", 2, paramContext.toString());
     }
     if ("android.intent.action.USER_PRESENT".equals(paramIntent.getAction())) {
       this.this$0.mVideoJsPlugin.resumeOrPause(true, false);
@@ -22,7 +26,7 @@ class QWalletCommonJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

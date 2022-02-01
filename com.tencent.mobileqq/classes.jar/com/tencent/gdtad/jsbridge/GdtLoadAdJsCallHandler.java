@@ -2,7 +2,7 @@ package com.tencent.gdtad.jsbridge;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.gdtad.aditem.GdtAdLoader;
 import com.tencent.gdtad.aditem.GdtAdLoader.Listener;
 import com.tencent.gdtad.aditem.GdtAdLoader.Session;
@@ -29,52 +29,57 @@ class GdtLoadAdJsCallHandler
   
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    if (paramGdtAdWebPlugin != null) {}
-    for (Activity localActivity = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (localActivity == null); localActivity = null)
-    {
-      GdtLog.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error");
-      return true;
+    Object localObject1 = null;
+    Activity localActivity;
+    if (paramGdtAdWebPlugin != null) {
+      localActivity = paramGdtAdWebPlugin.a();
+    } else {
+      localActivity = null;
     }
-    try
-    {
-      Object localObject = new JSONObject(paramVarArgs[0]);
-      GdtLog.b("GdtLoadAdJsCallHandler", ((JSONObject)localObject).toString());
-      paramVarArgs = new GdtAdLoader.Session();
-      paramVarArgs.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), localObject)));
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramGdtAdWebPlugin);
-      localObject = new GdtAdLoader(paramVarArgs, new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener));
-      this.jdField_a_of_type_JavaUtilMap.put(localObject, paramString);
-      ((GdtAdLoader)localObject).a(new WeakReference(localActivity));
-      paramString = new ArrayList();
-      if ((paramVarArgs.a != null) && (!paramVarArgs.a.position_info.isEmpty()))
+    if ((paramGdtAdWebPlugin != null) && (localActivity != null)) {
+      try
       {
-        int i = 0;
-        while (i < paramVarArgs.a.position_info.size())
+        Object localObject2 = new JSONObject(paramVarArgs[0]);
+        GdtLog.b("GdtLoadAdJsCallHandler", ((JSONObject)localObject2).toString());
+        paramVarArgs = new GdtAdLoader.Session();
+        paramVarArgs.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), localObject2)));
+        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramGdtAdWebPlugin);
+        localObject2 = new GdtAdLoader(paramVarArgs, new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener));
+        this.jdField_a_of_type_JavaUtilMap.put(localObject2, paramString);
+        ((GdtAdLoader)localObject2).a(new WeakReference(localActivity));
+        paramString = new ArrayList();
+        if ((paramVarArgs.a != null) && (!paramVarArgs.a.position_info.isEmpty()))
         {
-          localObject = ((qq_ad_get.QQAdGet.PositionInfo)paramVarArgs.a.position_info.get(i)).pos_id.get();
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            paramString.add(localObject);
+          int i = 0;
+          while (i < paramVarArgs.a.position_info.size())
+          {
+            localObject2 = ((qq_ad_get.QQAdGet.PositionInfo)paramVarArgs.a.position_info.get(i)).pos_id.get();
+            if (TextUtils.isEmpty((CharSequence)localObject2)) {
+              paramString.add(localObject2);
+            }
+            i += 1;
           }
-          i += 1;
         }
+        paramString = localObject1;
+        if (paramGdtAdWebPlugin != null) {
+          paramString = paramGdtAdWebPlugin.a();
+        }
+        AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "loadAd", paramString);
+        return true;
       }
-      if (paramGdtAdWebPlugin == null) {}
+      catch (JSONException paramGdtAdWebPlugin)
+      {
+        GdtLog.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error", paramGdtAdWebPlugin);
+        return true;
+      }
     }
-    catch (JSONException paramGdtAdWebPlugin)
-    {
-      GdtLog.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error", paramGdtAdWebPlugin);
-      return true;
-    }
-    for (paramGdtAdWebPlugin = paramGdtAdWebPlugin.a();; paramGdtAdWebPlugin = null)
-    {
-      AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "loadAd", paramGdtAdWebPlugin);
-      return true;
-    }
+    GdtLog.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtLoadAdJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

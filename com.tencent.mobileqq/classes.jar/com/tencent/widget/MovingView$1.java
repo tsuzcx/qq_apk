@@ -15,37 +15,42 @@ class MovingView$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 1) {
-      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.jdField_b_of_type_Boolean)) {}
-    }
-    while (paramMessage.what != 2)
+    if (paramMessage.what == 1)
     {
-      return;
-      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+      if (this.a.jdField_a_of_type_Boolean)
       {
-        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-        int k = this.a.c;
-        int m = this.a.d;
-        this.a.c = i;
-        this.a.d = j;
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += i - k;
-        paramMessage = this.a;
-        paramMessage.jdField_b_of_type_Int += j - m;
-        this.a.invalidate();
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 40L);
+        if (this.a.jdField_b_of_type_Boolean) {
+          return;
+        }
+        if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+        {
+          int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
+          int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
+          int k = this.a.c;
+          int m = this.a.d;
+          paramMessage = this.a;
+          paramMessage.c = i;
+          paramMessage.d = j;
+          paramMessage.jdField_a_of_type_Int += i - k;
+          paramMessage = this.a;
+          paramMessage.jdField_b_of_type_Int += j - m;
+          this.a.invalidate();
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 40L);
+          return;
+        }
+        this.a.a();
         return;
       }
-      this.a.a();
       return;
     }
-    this.a.a();
+    if (paramMessage.what == 2) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.MovingView.1
  * JD-Core Version:    0.7.0.1
  */

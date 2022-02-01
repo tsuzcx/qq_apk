@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
 import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
 import com.tencent.mobileqq.filemanager.widget.QfileTabBarView.ScanParams;
 import java.util.ArrayList;
@@ -20,32 +19,27 @@ class QfileLocalFileDocTabView$1
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    if (this.this$0.a.e() != 8) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localObject1 = this.this$0.d.iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        FileCategoryUtil.a(bool, ((QfileTabBarView.ScanParams)((Iterator)localObject1).next()).a(), ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
-      }
+    boolean bool;
+    if (this.this$0.a.e() != 8) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    if (this.this$0.f) {}
-    for (Object localObject1 = FMSettings.a().a();; localObject1 = null)
+    Object localObject1 = this.this$0.d.iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      FileCategoryUtil.a(bool, ((QfileTabBarView.ScanParams)((Iterator)localObject1).next()).a(), ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
+    }
+    localObject1 = new HashMap();
+    Iterator localIterator = localHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      if (localObject1 != null) {
-        FileCategoryUtil.a(bool, (String)localObject1, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
+      Object localObject2 = (String)localIterator.next();
+      String str = QfileLocalFileDocTabView.a(this.this$0, (String)localObject2);
+      localObject2 = (List)localHashMap.get(localObject2);
+      if (!((HashMap)localObject1).containsKey(str)) {
+        ((HashMap)localObject1).put(str, new ArrayList());
       }
-      localObject1 = new HashMap();
-      Iterator localIterator = localHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (String)localIterator.next();
-        String str = QfileLocalFileDocTabView.a(this.this$0, (String)localObject2);
-        localObject2 = (List)localHashMap.get(localObject2);
-        if (!((HashMap)localObject1).containsKey(str)) {
-          ((HashMap)localObject1).put(str, new ArrayList());
-        }
-        ((List)((HashMap)localObject1).get(str)).addAll((Collection)localObject2);
-      }
+      ((List)((HashMap)localObject1).get(str)).addAll((Collection)localObject2);
     }
     FileCategoryUtil.a((Map)localObject1);
     QfileLocalFileDocTabView.a(this.this$0, new QfileLocalFileDocTabView.1.1(this, (HashMap)localObject1));
@@ -53,7 +47,7 @@ class QfileLocalFileDocTabView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView.1
  * JD-Core Version:    0.7.0.1
  */

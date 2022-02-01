@@ -16,21 +16,32 @@ class m$a
   
   public void run()
   {
-    ArrayList localArrayList = (ArrayList)this.a.a.sender.e.remove(Integer.valueOf(this.b));
-    if (localArrayList != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.NetConnTag", 2, "remove merged ssoseq list: " + localArrayList.toString() + " from SSO LoginMerge " + this.b);
+    Object localObject = (ArrayList)this.a.a.sender.e.remove(Integer.valueOf(this.b));
+    if (localObject != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("remove merged ssoseq list: ");
+        localStringBuilder.append(((ArrayList)localObject).toString());
+        localStringBuilder.append(" from SSO LoginMerge ");
+        localStringBuilder.append(this.b);
+        QLog.d("MSF.C.NetConnTag", 2, localStringBuilder.toString());
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    else if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SSO LoginMerge's ssoseq ");
+      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append("list has been removed by error code.");
+      QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject).toString());
     }
-    QLog.d("MSF.C.NetConnTag", 2, "SSO LoginMerge's ssoseq " + this.b + "list has been removed by error code.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.m.a
  * JD-Core Version:    0.7.0.1
  */

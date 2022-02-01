@@ -71,27 +71,23 @@ public final class PushComponent
   public final boolean a()
   {
     int i = this.jdField_d_of_type_Int;
-    if (528 > i) {}
-    while (3000528 < i) {
-      return false;
-    }
-    return true;
+    return (528 <= i) && (3000528 >= i);
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof PushComponent))
       {
         paramObject = (PushComponent)paramObject;
-        if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) || (this.jdField_c_of_type_Int != paramObject.jdField_c_of_type_Int) || (this.jdField_d_of_type_Int != paramObject.jdField_d_of_type_Int) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.e, paramObject.e)) || (this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean != paramObject.jdField_b_of_type_Boolean) || (this.jdField_c_of_type_Boolean != paramObject.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean != paramObject.jdField_d_of_type_Boolean) || (!Intrinsics.areEqual(this.jdField_a_of_type_ArrayOfByte, paramObject.jdField_a_of_type_ArrayOfByte))) {}
+        if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) && (this.jdField_c_of_type_Int == paramObject.jdField_c_of_type_Int) && (this.jdField_d_of_type_Int == paramObject.jdField_d_of_type_Int) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) && (Intrinsics.areEqual(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString)) && (Intrinsics.areEqual(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) && (Intrinsics.areEqual(this.e, paramObject.e)) && (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean == paramObject.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean == paramObject.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean == paramObject.jdField_d_of_type_Boolean) && (Intrinsics.areEqual(this.jdField_a_of_type_ArrayOfByte, paramObject.jdField_a_of_type_ArrayOfByte))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
@@ -102,12 +98,42 @@ public final class PushComponent
   @NotNull
   public String toString()
   {
-    return "PushComponent(mainBusinessId=" + this.jdField_a_of_type_Int + ", subBusinessId=" + this.jdField_b_of_type_Int + ", pushId=" + this.jdField_c_of_type_Int + ", notifyId=" + this.jdField_d_of_type_Int + ", title=" + this.jdField_a_of_type_JavaLangString + ", iconUrl=" + this.jdField_b_of_type_JavaLangString + ", contentText=" + this.jdField_c_of_type_JavaLangString + ", jumpScheme=" + this.jdField_d_of_type_JavaLangString + ", triggerInfo=" + this.e + ", isUrlJump=" + this.jdField_a_of_type_Boolean + ", isRevokePush=" + this.jdField_b_of_type_Boolean + ", needForegroundPush=" + this.jdField_c_of_type_Boolean + ", needBackgroundPush=" + this.jdField_d_of_type_Boolean + ", bytesExtData=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PushComponent(mainBusinessId=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", subBusinessId=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", pushId=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", notifyId=");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(", title=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", iconUrl=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", contentText=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", jumpScheme=");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(", triggerInfo=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", isUrlJump=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", isRevokePush=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", needForegroundPush=");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(", needBackgroundPush=");
+    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(", bytesExtData=");
+    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfByte));
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.PushComponent
  * JD-Core Version:    0.7.0.1
  */

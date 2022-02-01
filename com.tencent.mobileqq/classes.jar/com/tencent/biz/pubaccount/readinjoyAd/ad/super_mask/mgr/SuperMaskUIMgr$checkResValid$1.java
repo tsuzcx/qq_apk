@@ -26,19 +26,21 @@ final class SuperMaskUIMgr$checkResValid$1
       {
         localObject1 = SuperMaskDataMgr.a;
         localObject2 = SuperMaskDataMgr.a.a();
-        if (localObject2 == null) {
+        if (localObject2 != null) {
+          ((SuperMaskDataMgr)localObject1).a(SuperMaskExtKt.a((AdvertisementInfo)localObject2));
+        } else {
           throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo");
         }
-        ((SuperMaskDataMgr)localObject1).a(SuperMaskExtKt.a((AdvertisementInfo)localObject2));
       }
       if (SuperMaskDataMgr.a.a() == null)
       {
         localObject1 = SuperMaskDataMgr.a;
         localObject2 = SuperMaskDataMgr.a.a();
-        if (localObject2 == null) {
+        if (localObject2 != null) {
+          ((SuperMaskDataMgr)localObject1).a(SuperMaskExtKt.a((AdvertisementInfo)localObject2));
+        } else {
           throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo");
         }
-        ((SuperMaskDataMgr)localObject1).a(SuperMaskExtKt.a((AdvertisementInfo)localObject2));
       }
       Object localObject1 = new ResCheckStep(SuperMaskDataMgr.a.a(), SuperMaskDataMgr.a.a(), true, 2);
       boolean bool = SuperMaskStepUtil.a.a("[SHOW]", new SuperMaskStep[] { (SuperMaskStep)localObject1 });
@@ -50,7 +52,7 @@ final class SuperMaskUIMgr$checkResValid$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskUIMgr.checkResValid.1
  * JD-Core Version:    0.7.0.1
  */

@@ -34,10 +34,11 @@ public class SoftKeyboardObserver
     this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver$OnSoftKeyboardToggledListener = null;
     try
     {
-      if (Build.VERSION.SDK_INT >= 16) {
+      if (Build.VERSION.SDK_INT >= 16)
+      {
         this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -47,42 +48,36 @@ public class SoftKeyboardObserver
   
   public void onGlobalLayout()
   {
-    boolean bool = true;
     Rect localRect = new Rect();
-    for (;;)
+    boolean bool = true;
+    try
     {
-      try
+      this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+      int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      int j = localRect.bottom;
+      int k = localRect.top;
+      if (this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver$OnSoftKeyboardToggledListener != null)
       {
-        this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-        int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
-        int j = localRect.bottom;
-        int k = localRect.top;
-        if (this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver$OnSoftKeyboardToggledListener != null)
-        {
-          if (i - (j - k) < this.jdField_a_of_type_Int) {
-            break label113;
-          }
-          if (bool != this.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Boolean = bool;
-            this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver$OnSoftKeyboardToggledListener.a(bool, localRect.right, localRect.bottom);
-          }
+        if (i - (j - k) < this.jdField_a_of_type_Int) {
+          bool = false;
         }
-        return;
+        if (bool != this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_Boolean = bool;
+          this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver$OnSoftKeyboardToggledListener.a(bool, localRect.right, localRect.bottom);
+        }
       }
-      catch (NullPointerException localNullPointerException)
-      {
-        QLog.e("SoftKeyboardObserver", 1, "getWindowVisibleDisplayFrame error", localNullPointerException);
-        return;
-      }
-      label113:
-      bool = false;
+      return;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      QLog.e("SoftKeyboardObserver", 1, "getWindowVisibleDisplayFrame error", localNullPointerException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.SoftKeyboardObserver
  * JD-Core Version:    0.7.0.1
  */

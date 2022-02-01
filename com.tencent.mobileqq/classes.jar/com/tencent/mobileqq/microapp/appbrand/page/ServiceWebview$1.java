@@ -12,8 +12,9 @@ class ServiceWebview$1
   
   public void onReceiveValue(Object paramObject)
   {
-    if (this.val$listener != null) {
-      this.val$listener.a();
+    paramObject = this.val$listener;
+    if (paramObject != null) {
+      paramObject.a();
     }
     c.a(this.this$0, this.val$apkgInfo$5475ea27.a());
     if (QLog.isColorLevel()) {
@@ -23,7 +24,7 @@ class ServiceWebview$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview.1
  * JD-Core Version:    0.7.0.1
  */

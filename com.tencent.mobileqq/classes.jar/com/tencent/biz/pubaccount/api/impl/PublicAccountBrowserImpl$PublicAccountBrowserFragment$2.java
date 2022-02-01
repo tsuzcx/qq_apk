@@ -10,27 +10,26 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$2
   
   public Object a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 4) {
       return null;
     }
     if (PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a) != null)
     {
-      PublicAccountBrowserImpl.PublicAccountBrowserFragment.PublicAccountBrowserShareMenuHandler localPublicAccountBrowserShareMenuHandler = (PublicAccountBrowserImpl.PublicAccountBrowserFragment.PublicAccountBrowserShareMenuHandler)PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a).get();
-      if (localPublicAccountBrowserShareMenuHandler != null)
+      localObject = (PublicAccountBrowserImpl.PublicAccountBrowserFragment.PublicAccountBrowserShareMenuHandler)PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a).get();
+      if (localObject != null)
       {
-        localPublicAccountBrowserShareMenuHandler.a();
+        ((PublicAccountBrowserImpl.PublicAccountBrowserFragment.PublicAccountBrowserShareMenuHandler)localObject).C_();
         PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a).clear();
       }
     }
-    PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a, new SoftReference(new PublicAccountBrowserImpl.PublicAccountBrowserFragment.PublicAccountBrowserShareMenuHandler(this.a, null)));
+    Object localObject = this.a;
+    PublicAccountBrowserImpl.PublicAccountBrowserFragment.a((PublicAccountBrowserImpl.PublicAccountBrowserFragment)localObject, new SoftReference(new PublicAccountBrowserImpl.PublicAccountBrowserFragment.PublicAccountBrowserShareMenuHandler((PublicAccountBrowserImpl.PublicAccountBrowserFragment)localObject, null)));
     return PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a).get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl.PublicAccountBrowserFragment.2
  * JD-Core Version:    0.7.0.1
  */

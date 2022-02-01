@@ -3,7 +3,7 @@ package com.tencent.av.doodle;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import com.tencent.av.AVLog;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public abstract class DoodleItem
@@ -25,40 +25,53 @@ public abstract class DoodleItem
     this.jdField_b_of_type_Int = 12;
     this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = ("DoodleItem_" + getClass().getSimpleName() + "_" + AudioHelper.b());
-    if (AudioHelper.e()) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DoodleItem_");
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append("_");
+    localStringBuilder.append(AudioHelper.b());
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    if (AudioHelper.b()) {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, getClass().getSimpleName());
     }
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
-    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+    PointF localPointF = this.jdField_a_of_type_AndroidGraphicsPointF;
+    localPointF.x = paramFloat1;
+    localPointF.y = paramFloat2;
   }
   
   public abstract void a(long paramLong);
   
   public void a(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
   {
-    float f2 = 0.0F;
     int i = paramMySurfaceView.getWidth();
     int j = paramMySurfaceView.getHeight();
     int k = this.d;
     int m = this.c;
+    float f1;
     float f3;
-    if (i * k < j * m) {
-      f3 = i / m;
-    }
-    for (float f1 = (j - k * f3) / 2.0F;; f1 = 0.0F)
+    float f2;
+    if (i * k < j * m)
     {
-      if (paramCanvas != null)
-      {
-        paramCanvas.save();
-        paramCanvas.translate(f2, f1);
-        paramCanvas.scale(f3, f3);
-        b(paramCanvas, paramMySurfaceView, paramBoolean);
-      }
+      f1 = i / m;
+      f3 = (j - k * f1) / 2.0F;
+      f2 = 0.0F;
+    }
+    else
+    {
+      f1 = j / k;
+      f2 = (i - m * f1) / 2.0F;
+      f3 = 0.0F;
+    }
+    if (paramCanvas != null)
+    {
+      paramCanvas.save();
+      paramCanvas.translate(f2, f3);
+      paramCanvas.scale(f1, f1);
+      b(paramCanvas, paramMySurfaceView, paramBoolean);
       try
       {
         paramCanvas.restore();
@@ -68,8 +81,6 @@ public abstract class DoodleItem
       {
         AVLog.printErrorLog(this.jdField_a_of_type_JavaLangString, paramCanvas.getMessage());
       }
-      f3 = j / k;
-      f2 = (i - m * f3) / 2.0F;
     }
   }
   
@@ -77,17 +88,20 @@ public abstract class DoodleItem
   {
     float f1 = Math.abs(paramFloat1 - this.jdField_a_of_type_AndroidGraphicsPointF.x);
     float f2 = Math.abs(paramFloat2 - this.jdField_a_of_type_AndroidGraphicsPointF.y);
-    if ((f1 >= 8.0F) || (f2 >= 8.0F)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool)
-      {
-        b(paramFloat1, paramFloat2);
-        this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
-        this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
-      }
-      return bool;
+    boolean bool;
+    if ((f1 < 8.0F) && (f2 < 8.0F)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    if (bool)
+    {
+      b(paramFloat1, paramFloat2);
+      PointF localPointF = this.jdField_a_of_type_AndroidGraphicsPointF;
+      localPointF.x = paramFloat1;
+      localPointF.y = paramFloat2;
+    }
+    return bool;
   }
   
   public abstract void b(float paramFloat1, float paramFloat2);
@@ -98,12 +112,21 @@ public abstract class DoodleItem
   
   public String toString()
   {
-    return this.jdField_a_of_type_JavaLangString + ", mPenType[" + this.jdField_a_of_type_Int + "], mPoint[" + this.jdField_a_of_type_AndroidGraphicsPointF.x + "," + this.jdField_a_of_type_AndroidGraphicsPointF.y + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mPenType[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("], mPoint[");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsPointF.x);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsPointF.y);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.DoodleItem
  * JD-Core Version:    0.7.0.1
  */

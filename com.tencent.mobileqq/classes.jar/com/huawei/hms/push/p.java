@@ -1,110 +1,112 @@
 package com.huawei.hms.push;
 
-import android.annotation.TargetApi;
-import android.app.Notification.Builder;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.text.TextUtils;
-import com.huawei.hms.android.HwBuildEx.VERSION;
+import android.content.Intent;
 import com.huawei.hms.support.log.HMSLog;
 
 public class p
+  extends Thread
 {
-  private static int a(Context paramContext)
+  public Context a;
+  public k b;
+  
+  public p(Context paramContext, k paramk)
   {
-    int j = paramContext.getApplicationInfo().icon;
-    int i = j;
-    if (j == 0)
-    {
-      j = paramContext.getResources().getIdentifier("btn_star_big_on", "drawable", "android");
-      HMSLog.d("PushSelfShowLog", "icon is btn_star_big_on ");
-      i = j;
-      if (j == 0)
-      {
-        i = 17301651;
-        HMSLog.d("PushSelfShowLog", "icon is sym_def_app_icon ");
-      }
-    }
-    return i;
+    this.a = paramContext;
+    this.b = paramk;
   }
   
-  public static Bitmap a(Context paramContext, o paramo)
+  public static Intent a(Context paramContext, k paramk)
   {
-    if ((paramContext == null) || (paramo == null)) {
+    if (paramk == null) {
       return null;
     }
-    for (;;)
+    Intent localIntent1 = q.b(paramContext, paramk.d());
+    Intent localIntent2;
+    Object localObject;
+    if (paramk.n() != null)
     {
       try
       {
-        if (HwBuildEx.VERSION.EMUI_SDK_INT >= 11)
-        {
-          HMSLog.i("PushSelfShowLog", "huawei phone, and emui5.0, need not show large icon.");
-          return null;
+        localIntent2 = Intent.parseUri(paramk.n(), 0);
+        localIntent2.setSelector(null);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Intent.parseUri(msg.intentUri, 0), action:");
+        ((StringBuilder)localObject).append(localIntent2.getAction());
+        HMSLog.d("PushSelfShowLog", ((StringBuilder)localObject).toString());
+        boolean bool = q.a(paramContext, paramk.d(), localIntent2).booleanValue();
+        localObject = localIntent1;
+        if (!bool) {
+          return localObject;
         }
-      }
-      catch (PackageManager.NameNotFoundException paramContext)
-      {
-        HMSLog.e("PushSelfShowLog", "" + paramContext.toString(), paramContext);
-        return null;
-        if (!"com.huawei.android.pushagent".equals(paramo.i()))
-        {
-          HMSLog.i("PushSelfShowLog", "get left bitmap from " + paramo.i());
-          paramContext = ((BitmapDrawable)paramContext.getPackageManager().getApplicationIcon(paramo.i())).getBitmap();
-          return paramContext;
-        }
+        return localIntent2;
       }
       catch (Exception paramContext)
       {
-        HMSLog.e("PushSelfShowLog", "" + paramContext.toString(), paramContext);
-        return null;
+        paramk = new StringBuilder();
+        paramk.append("intentUri error,");
+        paramk.append(paramContext.toString());
+        HMSLog.w("PushSelfShowLog", paramk.toString());
+        return localIntent1;
       }
-      paramContext = null;
     }
-  }
-  
-  @TargetApi(23)
-  public static void a(Context paramContext, Notification.Builder paramBuilder, o paramo)
-  {
-    if ((paramContext == null) || (paramBuilder == null) || (paramo == null))
+    else
     {
-      HMSLog.e("PushSelfShowLog", "msg is null");
-      return;
-    }
-    paramBuilder.setSmallIcon(b(paramContext, paramo));
-  }
-  
-  private static int b(Context paramContext, o paramo)
-  {
-    int j = 0;
-    int i = 0;
-    if ((paramContext == null) || (paramo == null)) {
-      HMSLog.i("PushSelfShowLog", "enter getSmallIconId, context or msg is null");
-    }
-    do
-    {
-      return i;
-      i = j;
-      if (!TextUtils.isEmpty(paramo.x()))
+      localObject = localIntent1;
+      if (paramk.a() != null)
       {
-        paramo = paramo.x().split("/");
-        i = j;
-        if (paramo.length == 3) {
-          i = v.a(paramContext, paramo[1], paramo[2]);
+        localIntent2 = new Intent(paramk.a());
+        localObject = localIntent1;
+        if (q.a(paramContext, paramk.d(), localIntent2).booleanValue()) {
+          localObject = localIntent2;
         }
       }
-      j = i;
-      if (i == 0) {
-        j = v.a(paramContext, "com.huawei.messaging.default_notification_icon");
+      ((Intent)localObject).setPackage(paramk.d());
+    }
+    return localObject;
+  }
+  
+  public final boolean a(Context paramContext)
+  {
+    return q.c(paramContext, this.b.d());
+  }
+  
+  public final boolean b(Context paramContext)
+  {
+    if ("cosa".equals(this.b.i())) {
+      return a(paramContext);
+    }
+    return true;
+  }
+  
+  public final boolean b(Context paramContext, k paramk)
+  {
+    if (("cosa".equals(paramk.i())) && (a(paramContext, paramk) == null))
+    {
+      HMSLog.d("PushSelfShowLog", "launchCosaApp,intent == null");
+      return true;
+    }
+    return false;
+  }
+  
+  public void run()
+  {
+    HMSLog.i("PushSelfShowLog", "enter run()");
+    try
+    {
+      if (b(this.a))
+      {
+        if (b(this.a, this.b)) {
+          return;
+        }
+        o.a(this.a, this.b);
+        return;
       }
-      i = j;
-    } while (j != 0);
-    return a(paramContext);
+    }
+    catch (Exception localException)
+    {
+      HMSLog.e("PushSelfShowLog", localException.toString());
+    }
   }
 }
 

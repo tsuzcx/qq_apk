@@ -24,23 +24,22 @@ public class AIAttrProvider
   
   public Object getAvailableData(String paramString)
   {
-    if (this.aiDataSet == null) {}
-    do
-    {
+    ??? = this.aiDataSet;
+    if (??? == null) {
       return null;
-      paramString = this.aiDataSet.getAIData(paramString);
-    } while (paramString == null);
-    for (;;)
+    }
+    paramString = ((AIDataSet)???).getAIData(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    synchronized (paramString.getLock())
     {
-      synchronized (paramString.getLock())
-      {
-        if (paramString.getAttr() != null)
-        {
-          paramString = paramString.getAttr();
-          return paramString;
-        }
+      if (paramString.getAttr() != null) {
+        paramString = paramString.getAttr();
+      } else {
+        paramString = paramString.getLastAttr();
       }
-      paramString = paramString.getLastAttr();
+      return paramString;
     }
   }
   
@@ -51,39 +50,48 @@ public class AIAttrProvider
   
   public Object getRealtimeData(String paramString)
   {
-    ??? = null;
-    if (this.aiDataSet == null) {
-      if (paramString.equals(AEDetectorType.FACE.value)) {
-        ??? = this.mFaceAttr;
-      }
-    }
-    AIData localAIData;
-    do
+    ??? = this.aiDataSet;
+    if (??? == null)
     {
-      return ???;
-      localAIData = this.aiDataSet.getAIData(paramString);
-    } while (localAIData == null);
+      if (paramString.equals(AEDetectorType.FACE.value)) {
+        return this.mFaceAttr;
+      }
+      return null;
+    }
+    AIData localAIData = ((AIDataSet)???).getAIData(paramString);
+    if (localAIData == null) {
+      return null;
+    }
     synchronized (localAIData.getLock())
     {
       for (;;)
       {
         Object localObject2 = localAIData.getAttr();
-        if (localObject2 == null) {
-          try
-          {
-            localAIData.getLock().wait(500L);
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            Log.e("AIAttrProvider", paramString + "getRealtimeData failed : " + localInterruptedException.getMessage());
-          }
+        if (localObject2 != null) {
+          break;
+        }
+        try
+        {
+          localAIData.getLock().wait(500L);
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("getRealtimeData failed : ");
+          localStringBuilder.append(localInterruptedException.getMessage());
+          Log.e("AIAttrProvider", localStringBuilder.toString());
         }
       }
+      if ((localAIData.getAttr() == null) && (paramString.equals(AEDetectorType.FACE.value))) {
+        return this.mFaceAttr;
+      }
+      return localAIData.getAttr();
     }
-    if ((localAIData.getAttr() == null) && (paramString.equals(AEDetectorType.FACE.value))) {
-      return this.mFaceAttr;
+    for (;;)
+    {
+      throw paramString;
     }
-    return localAIData.getAttr();
   }
   
   public float[] getRotationMatrix()

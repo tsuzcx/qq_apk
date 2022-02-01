@@ -24,103 +24,136 @@ class FragmentLayoutInflaterFactory
   @Nullable
   public View onCreateView(@Nullable View paramView, @NonNull String paramString, @NonNull Context paramContext, @NonNull AttributeSet paramAttributeSet)
   {
-    Object localObject = null;
     if (FragmentContainerView.class.getName().equals(paramString)) {
       return new FragmentContainerView(paramContext, paramAttributeSet, this.mFragmentManager);
     }
-    if (!"fragment".equals(paramString)) {
+    boolean bool = "fragment".equals(paramString);
+    paramString = null;
+    if (!bool) {
       return null;
     }
-    paramString = paramAttributeSet.getAttributeValue(null, "class");
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.d);
-    String str1 = paramString;
-    if (paramString == null) {
-      str1 = localTypedArray.getString(R.styleable.a);
+    String str2 = paramAttributeSet.getAttributeValue(null, "class");
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Fragment);
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = localTypedArray.getString(R.styleable.Fragment_android_name);
     }
-    int k = localTypedArray.getResourceId(R.styleable.b, -1);
-    String str2 = localTypedArray.getString(R.styleable.c);
+    int k = localTypedArray.getResourceId(R.styleable.Fragment_android_id, -1);
+    str2 = localTypedArray.getString(R.styleable.Fragment_android_tag);
     localTypedArray.recycle();
-    if ((str1 == null) || (!FragmentFactory.isFragmentClass(paramContext.getClassLoader(), str1))) {
-      return null;
-    }
-    if (paramView != null) {}
-    for (int i = paramView.getId(); (i == -1) && (k == -1) && (str2 == null); i = 0) {
-      throw new IllegalArgumentException(paramAttributeSet.getPositionDescription() + ": Must specify unique android:id, android:tag, or have a parent with an id for " + str1);
-    }
-    paramString = localObject;
-    if (k != -1) {
-      paramString = this.mFragmentManager.findFragmentById(k);
-    }
-    paramView = paramString;
-    if (paramString == null)
+    if (str1 != null)
     {
-      paramView = paramString;
-      if (str2 != null) {
-        paramView = this.mFragmentManager.findFragmentByTag(str2);
+      if (!FragmentFactory.isFragmentClass(paramContext.getClassLoader(), str1)) {
+        return null;
       }
-    }
-    paramString = paramView;
-    if (paramView == null)
-    {
-      paramString = paramView;
-      if (i != -1) {
-        paramString = this.mFragmentManager.findFragmentById(i);
+      int i;
+      if (paramView != null) {
+        i = paramView.getId();
+      } else {
+        i = 0;
       }
-    }
-    if (FragmentManager.isLoggingEnabled(2)) {
-      Log.v("FragmentManager", "onCreateView: id=0x" + Integer.toHexString(k) + " fname=" + str1 + " existing=" + paramString);
-    }
-    int j;
-    if (paramString == null)
-    {
-      paramView = this.mFragmentManager.getFragmentFactory().instantiate(paramContext.getClassLoader(), str1);
-      paramView.mFromLayout = true;
-      if (k != 0)
+      if ((i == -1) && (k == -1) && (str2 == null))
       {
-        j = k;
-        paramView.mFragmentId = j;
-        paramView.mContainerId = i;
-        paramView.mTag = str2;
-        paramView.mInLayout = true;
-        paramView.mFragmentManager = this.mFragmentManager;
-        paramView.mHost = this.mFragmentManager.mHost;
-        paramView.onInflate(this.mFragmentManager.mHost.getContext(), paramAttributeSet, paramView.mSavedFragmentState);
-        this.mFragmentManager.addFragment(paramView);
-        this.mFragmentManager.moveToState(paramView);
-        label430:
-        if ((this.mFragmentManager.mCurState >= 1) || (!paramView.mFromLayout)) {
-          break label626;
-        }
-        this.mFragmentManager.moveToState(paramView, 1);
+        paramView = new StringBuilder();
+        paramView.append(paramAttributeSet.getPositionDescription());
+        paramView.append(": Must specify unique android:id, android:tag, or have a parent with an id for ");
+        paramView.append(str1);
+        throw new IllegalArgumentException(paramView.toString());
       }
-    }
-    for (;;)
-    {
-      if (paramView.mView != null) {
-        break label637;
+      if (k != -1) {
+        paramString = this.mFragmentManager.findFragmentById(k);
       }
-      throw new IllegalStateException("Fragment " + str1 + " did not create a view.");
-      j = i;
-      break;
-      if (paramString.mInLayout) {
-        throw new IllegalArgumentException(paramAttributeSet.getPositionDescription() + ": Duplicate id 0x" + Integer.toHexString(k) + ", tag " + str2 + ", or parent id 0x" + Integer.toHexString(i) + " with another fragment for " + str1);
-      }
-      paramString.mInLayout = true;
-      paramString.mHost = this.mFragmentManager.mHost;
-      paramString.onInflate(this.mFragmentManager.mHost.getContext(), paramAttributeSet, paramString.mSavedFragmentState);
       paramView = paramString;
-      break label430;
-      label626:
-      this.mFragmentManager.moveToState(paramView);
+      if (paramString == null)
+      {
+        paramView = paramString;
+        if (str2 != null) {
+          paramView = this.mFragmentManager.findFragmentByTag(str2);
+        }
+      }
+      paramString = paramView;
+      if (paramView == null)
+      {
+        paramString = paramView;
+        if (i != -1) {
+          paramString = this.mFragmentManager.findFragmentById(i);
+        }
+      }
+      if (FragmentManager.isLoggingEnabled(2))
+      {
+        paramView = new StringBuilder();
+        paramView.append("onCreateView: id=0x");
+        paramView.append(Integer.toHexString(k));
+        paramView.append(" fname=");
+        paramView.append(str1);
+        paramView.append(" existing=");
+        paramView.append(paramString);
+        Log.v("FragmentManager", paramView.toString());
+      }
+      if (paramString == null)
+      {
+        paramString = this.mFragmentManager.getFragmentFactory().instantiate(paramContext.getClassLoader(), str1);
+        paramString.mFromLayout = true;
+        int j;
+        if (k != 0) {
+          j = k;
+        } else {
+          j = i;
+        }
+        paramString.mFragmentId = j;
+        paramString.mContainerId = i;
+        paramString.mTag = str2;
+        paramString.mInLayout = true;
+        paramView = this.mFragmentManager;
+        paramString.mFragmentManager = paramView;
+        paramString.mHost = paramView.mHost;
+        paramString.onInflate(this.mFragmentManager.mHost.getContext(), paramAttributeSet, paramString.mSavedFragmentState);
+        this.mFragmentManager.addFragment(paramString);
+        this.mFragmentManager.moveToState(paramString);
+      }
+      else
+      {
+        if (paramString.mInLayout) {
+          break label634;
+        }
+        paramString.mInLayout = true;
+        paramString.mHost = this.mFragmentManager.mHost;
+        paramString.onInflate(this.mFragmentManager.mHost.getContext(), paramAttributeSet, paramString.mSavedFragmentState);
+      }
+      if ((this.mFragmentManager.mCurState < 1) && (paramString.mFromLayout)) {
+        this.mFragmentManager.moveToState(paramString, 1);
+      } else {
+        this.mFragmentManager.moveToState(paramString);
+      }
+      if (paramString.mView != null)
+      {
+        if (k != 0) {
+          paramString.mView.setId(k);
+        }
+        if (paramString.mView.getTag() == null) {
+          paramString.mView.setTag(str2);
+        }
+        return paramString.mView;
+      }
+      paramView = new StringBuilder();
+      paramView.append("Fragment ");
+      paramView.append(str1);
+      paramView.append(" did not create a view.");
+      throw new IllegalStateException(paramView.toString());
+      label634:
+      paramView = new StringBuilder();
+      paramView.append(paramAttributeSet.getPositionDescription());
+      paramView.append(": Duplicate id 0x");
+      paramView.append(Integer.toHexString(k));
+      paramView.append(", tag ");
+      paramView.append(str2);
+      paramView.append(", or parent id 0x");
+      paramView.append(Integer.toHexString(i));
+      paramView.append(" with another fragment for ");
+      paramView.append(str1);
+      throw new IllegalArgumentException(paramView.toString());
     }
-    label637:
-    if (k != 0) {
-      paramView.mView.setId(k);
-    }
-    if (paramView.mView.getTag() == null) {
-      paramView.mView.setTag(str2);
-    }
-    return paramView.mView;
+    return null;
   }
   
   @Nullable
@@ -131,7 +164,7 @@ class FragmentLayoutInflaterFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentLayoutInflaterFactory
  * JD-Core Version:    0.7.0.1
  */

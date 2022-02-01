@@ -30,7 +30,12 @@ public class NoBlockVInstanceAction
     {
       retryInit();
       addFailQueue(paramString1, paramString2);
-      ViolaLogUtils.d("Wormhole", "precondition fail, retry again, id: " + paramString1 + ", data: " + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("precondition fail, retry again, id: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", data: ");
+      localStringBuilder.append(paramString2);
+      ViolaLogUtils.d("Wormhole", localStringBuilder.toString());
       return;
     }
     if (i == 3)
@@ -44,7 +49,7 @@ public class NoBlockVInstanceAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.vinstance.NoBlockVInstanceAction
  * JD-Core Version:    0.7.0.1
  */

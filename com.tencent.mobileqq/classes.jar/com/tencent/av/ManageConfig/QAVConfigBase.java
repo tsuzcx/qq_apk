@@ -2,14 +2,13 @@ package com.tencent.av.ManageConfig;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 import org.json.JSONObject;
 
 public abstract class QAVConfigBase<T>
@@ -23,7 +22,10 @@ public abstract class QAVConfigBase<T>
   public QAVConfigBase(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = ("QAVConfig_" + this.jdField_a_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QAVConfig_");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   private static int a(String paramString)
@@ -33,7 +35,11 @@ public abstract class QAVConfigBase<T>
       int i = new JSONObject(paramString).optInt("task_id");
       return i;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label16:
+      break label16;
+    }
     return 0;
   }
   
@@ -41,81 +47,95 @@ public abstract class QAVConfigBase<T>
   static QConfItem a(String paramString, int paramInt, QConfItem[] paramArrayOfQConfItem)
   {
     Object localObject1 = null;
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0))
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = (QConfItem[])localObject1;
-      if (QLog.isColorLevel())
+      boolean bool = QLog.isDevelopLevel();
+      int k = 0;
+      int i;
+      if ((!bool) && (paramArrayOfQConfItem.length <= 1)) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      Object localObject2 = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      paramInt = QConfigManager.a().a(paramInt, ((AppInterface)localObject2).getCurrentAccountUin());
+      if (i != 0)
       {
-        QLog.i(paramString, 2, "getSuitableItem, confFiles is null or empty.");
-        paramArrayOfQConfItem = (QConfItem[])localObject1;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getSuitableItem, Version[");
+        ((StringBuilder)localObject1).append(paramInt);
+        ((StringBuilder)localObject1).append("], size[");
+        ((StringBuilder)localObject1).append(paramArrayOfQConfItem.length);
+        ((StringBuilder)localObject1).append("]");
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
-      return paramArrayOfQConfItem;
-    }
-    int i;
-    if ((QLog.isDevelopLevel()) || (paramArrayOfQConfItem.length > 1))
-    {
-      i = 1;
-      label47:
-      localObject1 = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      paramInt = QConfigManager.a().a(paramInt, ((AppInterface)localObject1).getCurrentAccountUin());
-      if (i == 0) {
-        break label341;
-      }
-    }
-    label139:
-    label338:
-    label341:
-    for (Object localObject2 = "getSuitableItem, Version[" + paramInt + "], size[" + paramArrayOfQConfItem.length + "]";; localObject2 = null)
-    {
-      localObject1 = paramArrayOfQConfItem[0];
-      Object localObject4 = localObject2;
-      Object localObject3 = localObject1;
-      int j;
+      localObject2 = paramArrayOfQConfItem[0];
+      Object localObject4 = localObject1;
+      Object localObject3 = localObject2;
       if (paramArrayOfQConfItem.length > 1)
       {
-        int k = paramArrayOfQConfItem.length;
-        paramInt = 0;
-        j = 0;
-        localObject4 = localObject2;
-        localObject3 = localObject1;
-        if (paramInt < k)
+        int m = paramArrayOfQConfItem.length;
+        int j = 0;
+        paramInt = k;
+        for (;;)
         {
-          localObject4 = paramArrayOfQConfItem[paramInt];
-          int m = a(((QConfItem)localObject4).jdField_a_of_type_JavaLangString);
+          localObject4 = localObject1;
           localObject3 = localObject2;
-          if (i != 0) {
-            localObject3 = (String)localObject2 + ", \nindex[" + j + "], taskId[" + ((QConfItem)localObject4).jdField_a_of_type_Int + "], task_id[" + m + "]";
+          if (paramInt >= m) {
+            break;
           }
-          if (m != ((QConfItem)localObject4).jdField_a_of_type_Int) {
-            break label338;
+          localObject4 = paramArrayOfQConfItem[paramInt];
+          k = a(((QConfItem)localObject4).jdField_a_of_type_JavaLangString);
+          localObject3 = localObject1;
+          if (i != 0)
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append((String)localObject1);
+            ((StringBuilder)localObject3).append(", \nindex[");
+            ((StringBuilder)localObject3).append(j);
+            ((StringBuilder)localObject3).append("], taskId[");
+            ((StringBuilder)localObject3).append(((QConfItem)localObject4).jdField_a_of_type_Int);
+            ((StringBuilder)localObject3).append("], task_id[");
+            ((StringBuilder)localObject3).append(k);
+            ((StringBuilder)localObject3).append("]");
+            localObject3 = ((StringBuilder)localObject3).toString();
           }
-          localObject1 = localObject4;
+          if (k == ((QConfItem)localObject4).jdField_a_of_type_Int) {
+            localObject2 = localObject4;
+          }
+          j += 1;
+          paramInt += 1;
+          localObject1 = localObject3;
         }
       }
-      for (;;)
+      if (i != 0)
       {
-        j += 1;
-        paramInt += 1;
-        localObject2 = localObject3;
-        break label139;
-        i = 0;
-        break label47;
-        paramArrayOfQConfItem = (QConfItem[])localObject3;
-        if (i == 0) {
-          break;
-        }
-        paramArrayOfQConfItem = (String)localObject4 + ", \nselect taskId[" + ((QConfItem)localObject3).jdField_a_of_type_Int;
-        QLog.w(paramString, 1, paramArrayOfQConfItem + "], content\n" + ((QConfItem)localObject3).jdField_a_of_type_JavaLangString);
-        return localObject3;
+        paramArrayOfQConfItem = new StringBuilder();
+        paramArrayOfQConfItem.append((String)localObject4);
+        paramArrayOfQConfItem.append(", \nselect taskId[");
+        paramArrayOfQConfItem.append(((QConfItem)localObject3).jdField_a_of_type_Int);
+        paramArrayOfQConfItem = paramArrayOfQConfItem.toString();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramArrayOfQConfItem);
+        ((StringBuilder)localObject1).append("], content\n");
+        ((StringBuilder)localObject1).append(((QConfItem)localObject3).jdField_a_of_type_JavaLangString);
+        QLog.w(paramString, 1, ((StringBuilder)localObject1).toString());
       }
+      return localObject3;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString, 2, "getSuitableItem, confFiles is null or empty.");
+    }
+    return null;
   }
   
   public int a()
   {
-    String str = "";
+    String str;
     if (isAccountRelated()) {
-      str = ((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
+      str = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getCurrentAccountUin();
+    } else {
+      str = "";
     }
     return QConfigManager.a().a(this.jdField_a_of_type_Int, str);
   }
@@ -158,8 +178,16 @@ public abstract class QAVConfigBase<T>
     }
     catch (Exception localException)
     {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onParsed, 配置解析异常, [\n" + paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString + "\n]", localException);
-      AudioHelper.c(this.jdField_a_of_type_JavaLangString + HardCodeUtil.a(2131708887));
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onParsed, 配置解析异常, [\n");
+      localStringBuilder.append(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("\n]");
+      QLog.w(str, 1, localStringBuilder.toString(), localException);
+      paramArrayOfQConfItem = new StringBuilder();
+      paramArrayOfQConfItem.append(this.jdField_a_of_type_JavaLangString);
+      paramArrayOfQConfItem.append("配置解析异常");
+      AudioHelper.c(paramArrayOfQConfItem.toString());
     }
     return migrateOldOrDefaultContent(type());
   }
@@ -169,7 +197,14 @@ public abstract class QAVConfigBase<T>
     if (QLog.isDevelopLevel())
     {
       int i = a();
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onReqFailed, failCode[" + paramInt + "], version[" + i + "]");
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed, failCode[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], version[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
   }
   
@@ -178,14 +213,24 @@ public abstract class QAVConfigBase<T>
     if (QLog.isDevelopLevel())
     {
       int i = a();
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onReqNoReceive, version[" + i + "]");
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqNoReceive, version[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
   }
   
   public void onUpdate(T paramT)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onUpdate, " + paramT);
+    if (QLog.isDevelopLevel())
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate, ");
+      localStringBuilder.append(paramT);
+      QLog.w(str, 1, localStringBuilder.toString());
     }
   }
   

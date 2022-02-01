@@ -49,9 +49,10 @@ public class ChannelCenter
   
   public static void b()
   {
-    if (jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter != null)
+    ChannelCenter localChannelCenter = jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter;
+    if (localChannelCenter != null)
     {
-      jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter.a();
+      localChannelCenter.a();
       jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter = null;
     }
   }
@@ -66,7 +67,10 @@ public class ChannelCenter
   {
     String str = String.format("0x%x_0x%x", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     paramArrayOfByte = a(paramArrayOfByte);
-    Log.i("ChannelCenter", "WebServiceSSO--start send cmd=" + paramInt1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WebServiceSSO--start send cmd=");
+    localStringBuilder.append(paramInt1);
+    Log.i("ChannelCenter", localStringBuilder.toString());
     try
     {
       this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO.a(str, paramArrayOfByte.toByteArray(), new ChannelCenter.1(this, paramInt1, paramIChannelListener));
@@ -83,23 +87,20 @@ public class ChannelCenter
   protected void a(boolean paramBoolean)
   {
     int i;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = 1400015341;
-      if (!paramBoolean) {
-        break label54;
-      }
-    }
-    label54:
-    for (int j = 7747;; j = 3256)
-    {
-      UserInfoMgr.a();
-      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO = new WebServiceSSO(i, j, String.valueOf(i), UserInfoMgr.a(), "", 0);
-      b(paramBoolean);
-      return;
+    } else {
       i = 1400005918;
-      break;
     }
+    int j;
+    if (paramBoolean) {
+      j = 7747;
+    } else {
+      j = 3256;
+    }
+    UserInfoMgr.a();
+    this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO = new WebServiceSSO(i, j, String.valueOf(i), UserInfoMgr.a(), "", 0);
+    b(paramBoolean);
   }
   
   public void b(boolean paramBoolean)
@@ -114,7 +115,7 @@ public class ChannelCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.ChannelCenter
  * JD-Core Version:    0.7.0.1
  */

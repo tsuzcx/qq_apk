@@ -85,9 +85,28 @@ public class HotPicData
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("hotpic:");
-    localStringBuffer.append(this.version).append(',').append(this.picIndex).append(",").append(this.tag).append(",").append(this.sourceType).append(",");
-    localStringBuffer.append(this.url).append(',').append(this.md5).append(',').append(this.width).append('x').append(this.height);
-    localStringBuffer.append(this.originalUrl).append(',').append(this.originalMD5).append(',').append(this.originalWidth).append('x').append(this.originalHeight);
+    localStringBuffer.append(this.version);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.picIndex);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.tag);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.sourceType);
+    localStringBuffer.append(",");
+    localStringBuffer.append(this.url);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.md5);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.width);
+    localStringBuffer.append('x');
+    localStringBuffer.append(this.height);
+    localStringBuffer.append(this.originalUrl);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.originalMD5);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.originalWidth);
+    localStringBuffer.append('x');
+    localStringBuffer.append(this.originalHeight);
     return localStringBuffer.toString();
   }
   
@@ -117,7 +136,7 @@ public class HotPicData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicData
  * JD-Core Version:    0.7.0.1
  */

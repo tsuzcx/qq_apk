@@ -6,13 +6,11 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.view.View;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.banner.Banner;
 import com.tencent.mobileqq.banner.BannerIconCollection;
 import com.tencent.mobileqq.banner.BannerManager;
+import com.tencent.mobileqq.banner.BannerTypeCollections;
 import com.tencent.mobileqq.banner.TipsBar;
 import com.tencent.mobileqq.banner.processor.BaseBannerProcessor;
 import com.tencent.mobileqq.banner.processor.IBannerLifecycle;
@@ -20,7 +18,6 @@ import com.tencent.mobileqq.banner.processor.IBannerOnUpdateBannerState;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.CustomHandler;
-import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
@@ -30,8 +27,14 @@ public class GeneralBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle, IBannerOnUpdateBannerState
 {
+  public static final int a;
   public volatile BBannerHelper.MessageToShowBanner a;
   public volatile BBannerHelper.MessageToShowBanner b;
+  
+  static
+  {
+    jdField_a_of_type_Int = BannerTypeCollections.L;
+  }
   
   public GeneralBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -42,90 +45,71 @@ public class GeneralBannerProcessor
   private void a(int paramInt)
   {
     int i = BannerManager.jdField_a_of_type_Int;
-    if (i < BannerManager.jdField_b_of_type_Int)
+    while (i < BannerManager.jdField_b_of_type_Int)
     {
       Banner localBanner = BannerManager.a().a(i);
-      if ((localBanner == null) || (localBanner.jdField_b_of_type_Int != 2)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if ((localBanner != null) && (localBanner.jdField_b_of_type_Int == 2)) {
         if (i != paramInt)
         {
           b(i, paramInt);
           localBanner.jdField_b_of_type_Int = 0;
         }
-        else if ((i == 40) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner != null) && (!this.b.equals(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner)))
+        else if ((i == jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner != null) && (!this.b.equals(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner)))
         {
           b(i, paramInt);
         }
       }
+      i += 1;
     }
   }
   
   private void a(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "hideGeneralBanner: " + paramMessage);
-    }
-    if (!(paramMessage.obj instanceof BBannerHelper.MessageToShowBanner)) {}
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hideGeneralBanner: ");
+      localStringBuilder.append(paramMessage);
+      QLog.d("Q.recent.banner", 2, localStringBuilder.toString());
+    }
+    if (!(paramMessage.obj instanceof BBannerHelper.MessageToShowBanner)) {
       return;
-      int i = ((BBannerHelper.MessageToShowBanner)paramMessage.obj).jdField_a_of_type_Int;
-    } while (!paramMessage.obj.equals(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner));
-    BannerManager.a().a(40, 0, paramMessage);
+    }
+    int i = ((BBannerHelper.MessageToShowBanner)paramMessage.obj).jdField_a_of_type_Int;
+    if (!paramMessage.obj.equals(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner)) {
+      return;
+    }
+    BannerManager.a().a(jdField_a_of_type_Int, 0, paramMessage);
   }
   
   private void a(BBannerHelper.MessageToShowBanner paramMessageToShowBanner)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "hideGeneralBannerInBInternal with: " + paramMessageToShowBanner);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hideGeneralBannerInBInternal with: ");
+      ((StringBuilder)localObject).append(paramMessageToShowBanner);
+      QLog.d("Q.recent.banner", 2, ((StringBuilder)localObject).toString());
     }
-    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1000);
-    localMessage.obj = paramMessageToShowBanner;
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    Object localObject = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1000);
+    ((Message)localObject).obj = paramMessageToShowBanner;
+    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
   }
   
   private void b(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "[notifyBannerIsOverride], type is " + paramInt1 + " / " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[notifyBannerIsOverride], type is ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" / ");
+      localStringBuilder.append(paramInt2);
+      QLog.d("Q.recent.banner", 2, localStringBuilder.toString());
     }
-    if ((paramInt1 == 40) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner != null)) {
+    if ((paramInt1 == jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner != null)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$IBannerInteract.onOverride();
     }
-    CmGameMainManager localCmGameMainManager;
-    do
-    {
-      do
-      {
-        return;
-      } while (paramInt1 != 38);
-      localCmGameMainManager = CmGameMainManager.a();
-    } while (localCmGameMainManager == null);
-    AppInterface localAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
-      if (localObject == null) {
-        break label175;
-      }
-      localAppInterface = (AppInterface)localObject;
-      if (localCmGameMainManager.a != null) {
-        break label145;
-      }
-    }
-    label145:
-    for (Object localObject = "-1";; localObject = localCmGameMainManager.a.gameId + "")
-    {
-      VipUtils.a(localAppInterface, "cmshow", "Apollo", "mutex_bar", 0, 0, new String[] { localObject });
-      return;
-      localObject = null;
-      break;
-    }
-    label175:
-    QLog.e("Q.recent.banner", 1, "[notifyBannerStateChange] app null");
   }
   
   private void b(Message paramMessage)
@@ -136,7 +120,7 @@ public class GeneralBannerProcessor
     int i = ((BBannerHelper.MessageToShowBanner)paramMessage.obj).jdField_a_of_type_Int;
     this.b = ((BBannerHelper.MessageToShowBanner)paramMessage.obj);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner = this.b;
-    BannerManager.a().a(40, 2, paramMessage);
+    BannerManager.a().a(jdField_a_of_type_Int, 2, paramMessage);
     b((BBannerHelper.MessageToShowBanner)paramMessage.obj);
   }
   
@@ -185,38 +169,47 @@ public class GeneralBannerProcessor
   
   public void a(AppRuntime paramAppRuntime)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "handleAccountChanged with: " + this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$IBannerInteract.isNeedAutoCloseWhenAccountChange())) {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
-    }
+    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public int b()
+  {
+    return jdField_a_of_type_Int;
   }
   
   public void b() {}
   
   public void b(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    if (QLog.isColorLevel())
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("handleAccountChanged with: ");
+      paramAppRuntime.append(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+      QLog.d("Q.recent.banner", 2, paramAppRuntime.toString());
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$IBannerInteract.isNeedAutoCloseWhenAccountChange())) {
+      a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    if ((paramMessage.what == 1000) || (paramMessage.what == 1134201)) {
-      a(paramMessage);
-    }
-    for (;;)
+    if ((paramMessage.what != 1000) && (paramMessage.what != 1134201))
     {
-      return true;
       if (paramMessage.what == 1134200) {
         b(paramMessage);
       }
     }
+    else {
+      a(paramMessage);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.GeneralBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

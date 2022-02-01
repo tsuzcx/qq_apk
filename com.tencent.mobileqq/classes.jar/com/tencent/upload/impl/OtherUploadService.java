@@ -20,7 +20,10 @@ public class OtherUploadService
     if (paramAbstractUploadTask == null) {
       return false;
     }
-    UploadLog.w("OtherUploadService", "cancel AbstractUploadTask flowId: " + paramAbstractUploadTask.flowId);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cancel AbstractUploadTask flowId: ");
+    localStringBuilder.append(paramAbstractUploadTask.flowId);
+    UploadLog.w("OtherUploadService", localStringBuilder.toString());
     this.mTaskManager.cancelTask(paramAbstractUploadTask);
     return true;
   }
@@ -42,14 +45,19 @@ public class OtherUploadService
   
   protected boolean upload(AbstractUploadTask paramAbstractUploadTask)
   {
-    UploadLog.w("OtherUploadService", "upload task flowId: " + paramAbstractUploadTask.flowId + " type:" + paramAbstractUploadTask.getClass().getSimpleName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("upload task flowId: ");
+    localStringBuilder.append(paramAbstractUploadTask.flowId);
+    localStringBuilder.append(" type:");
+    localStringBuilder.append(paramAbstractUploadTask.getClass().getSimpleName());
+    UploadLog.w("OtherUploadService", localStringBuilder.toString());
     this.mTaskManager.sendAsync(paramAbstractUploadTask);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.impl.OtherUploadService
  * JD-Core Version:    0.7.0.1
  */

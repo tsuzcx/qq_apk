@@ -11,45 +11,44 @@ public class TroopView$MyTroopObserver
 {
   protected TroopView$MyTroopObserver(TroopView paramTroopView) {}
   
-  public void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  protected void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
   {
     if (paramBoolean) {
       this.a.j();
     }
   }
   
-  public void onGetTroopInfoResult(boolean paramBoolean, String paramString)
+  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
       this.a.j();
     }
   }
   
-  public void onUpdateTroopList(boolean paramBoolean)
+  protected void onUpdateTroopList(boolean paramBoolean)
   {
     if (paramBoolean) {
       TroopView.a(this.a);
     }
     if (this.a.c)
     {
-      this.a.c = false;
-      if (!paramBoolean) {
-        break label79;
+      TroopView localTroopView = this.a;
+      localTroopView.c = false;
+      if (paramBoolean)
+      {
+        localTroopView.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+        this.a.a(101, 800L);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-      this.a.a(101, 800L);
+      else
+      {
+        localTroopView.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
+        this.a.b(2131719247);
+      }
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.postDelayed(new TroopView.MyTroopObserver.1(this), 1200L);
-      return;
-      label79:
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-      this.a.b(2131719529);
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.postDelayed(new TroopView.MyTroopObserver.1(this), 1200L);
   }
   
-  public void onUpdateTroopNickname(boolean paramBoolean)
+  protected void onUpdateTroopNickname(boolean paramBoolean)
   {
     if (paramBoolean) {
       this.a.j();
@@ -58,7 +57,7 @@ public class TroopView$MyTroopObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopObserver
  * JD-Core Version:    0.7.0.1
  */

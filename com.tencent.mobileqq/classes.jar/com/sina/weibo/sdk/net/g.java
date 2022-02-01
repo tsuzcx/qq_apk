@@ -18,11 +18,10 @@ public final class g
   
   public final String j()
   {
-    Object localObject;
     try
     {
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      localObject = new byte[1024];
+      Object localObject = new byte[1024];
       for (;;)
       {
         int i = this.r.read((byte[])localObject);
@@ -31,14 +30,15 @@ public final class g
         }
         localByteArrayOutputStream.write((byte[])localObject, 0, i);
       }
-      localObject = localIOException.toString();
+      localObject = localByteArrayOutputStream.toString();
+      localByteArrayOutputStream.close();
+      return localObject;
     }
-    catch (IOException localIOException)
+    catch (IOException localIOException) {}
+    for (;;)
     {
       throw localIOException;
     }
-    localIOException.close();
-    return localObject;
   }
 }
 

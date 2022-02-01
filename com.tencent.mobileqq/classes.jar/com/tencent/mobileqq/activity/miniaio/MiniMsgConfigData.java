@@ -22,46 +22,49 @@ public class MiniMsgConfigData
   
   public static MiniMsgConfigData a(QConfItem[] paramArrayOfQConfItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfQConfItem[0].a);
-    }
-    localMiniMsgConfigData = new MiniMsgConfigData();
-    try
+    if (QLog.isColorLevel())
     {
-      paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
-      int i;
-      label93:
-      int k;
-      if (paramArrayOfQConfItem.optInt("allSwitch") == 1)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parse.configData : ");
+      ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].a);
+      QLog.d("mini_msg_config", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new MiniMsgConfigData();
+    for (;;)
+    {
+      try
       {
-        bool = true;
-        localMiniMsgConfigData.jdField_a_of_type_Boolean = bool;
-        paramArrayOfQConfItem = paramArrayOfQConfItem.optJSONArray("business");
-        int j = paramArrayOfQConfItem.length();
-        i = 0;
-        if (i >= j) {
-          break label174;
-        }
-        JSONObject localJSONObject = (JSONObject)paramArrayOfQConfItem.get(i);
-        k = localJSONObject.optInt("id");
-        if (localJSONObject.optInt("switch") != 1) {
-          break label163;
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        if (paramArrayOfQConfItem.optInt("allSwitch") == 1)
+        {
+          bool = true;
+          ((MiniMsgConfigData)localObject).jdField_a_of_type_Boolean = bool;
+          paramArrayOfQConfItem = paramArrayOfQConfItem.optJSONArray("business");
+          int j = paramArrayOfQConfItem.length();
+          int i = 0;
+          if (i < j)
+          {
+            JSONObject localJSONObject = (JSONObject)paramArrayOfQConfItem.get(i);
+            int k = localJSONObject.optInt("id");
+            if (localJSONObject.optInt("switch") != 1) {
+              break label187;
+            }
+            bool = true;
+            ((MiniMsgConfigData)localObject).jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Boolean.valueOf(bool));
+            i += 1;
+            continue;
+          }
+          return localObject;
         }
       }
-      label163:
-      for (boolean bool = true;; bool = false)
+      catch (Exception paramArrayOfQConfItem)
       {
-        localMiniMsgConfigData.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Boolean.valueOf(bool));
-        i += 1;
-        break label93;
-        bool = false;
-        break;
+        paramArrayOfQConfItem.printStackTrace();
       }
-      return localMiniMsgConfigData;
-    }
-    catch (Exception paramArrayOfQConfItem)
-    {
-      paramArrayOfQConfItem.printStackTrace();
+      boolean bool = false;
+      continue;
+      label187:
+      bool = false;
     }
   }
   
@@ -89,7 +92,7 @@ public class MiniMsgConfigData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgConfigData
  * JD-Core Version:    0.7.0.1
  */

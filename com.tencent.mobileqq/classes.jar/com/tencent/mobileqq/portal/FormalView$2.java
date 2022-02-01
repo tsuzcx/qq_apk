@@ -18,7 +18,8 @@ class FormalView$2
     }
     float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
     int i = -(int)(FormalView.a(this.a) * f);
-    int j = -(int)((1.0F - f) * FormalView.b(this.a));
+    f = 1.0F - f;
+    int j = -(int)(FormalView.b(this.a) * f);
     ((RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams()).topMargin = j;
     paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
     paramValueAnimator.leftMargin = i;
@@ -27,13 +28,13 @@ class FormalView$2
     paramValueAnimator.rightMargin = i;
     FormalView.b(this.a).setLayoutParams(paramValueAnimator);
     paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
-    paramValueAnimator.topMargin = ((int)((1.0F - f) * FormalView.c(this.a)));
+    paramValueAnimator.topMargin = ((int)(f * FormalView.c(this.a)));
     FormalView.a(this.a).setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.FormalView.2
  * JD-Core Version:    0.7.0.1
  */

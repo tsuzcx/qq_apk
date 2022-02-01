@@ -2,12 +2,13 @@ package com.tencent.hippy.qq.update;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class UpdateSetting
 {
@@ -21,20 +22,21 @@ public class UpdateSetting
   
   public static UpdateSetting getInstance()
   {
-    if (INSTANCE == null) {}
-    try
-    {
-      if (INSTANCE == null) {
-        INSTANCE = new UpdateSetting();
+    if (INSTANCE == null) {
+      try
+      {
+        if (INSTANCE == null) {
+          INSTANCE = new UpdateSetting();
+        }
       }
-      return INSTANCE;
+      finally {}
     }
-    finally {}
+    return INSTANCE;
   }
   
   private void initSharedPreferences()
   {
-    this.mSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("hippyConfig", 4);
+    this.mSharedPreferences = MobileQQ.getContext().getSharedPreferences("hippyConfig", 4);
   }
   
   public Map<String, Integer> getAllModuleVersion()
@@ -43,15 +45,16 @@ public class UpdateSetting
       initSharedPreferences();
     }
     HashMap localHashMap = new HashMap();
-    if (this.mSharedPreferences != null)
+    Object localObject = this.mSharedPreferences;
+    if (localObject != null)
     {
-      Map localMap = this.mSharedPreferences.getAll();
-      Iterator localIterator = localMap.keySet().iterator();
+      localObject = ((SharedPreferences)localObject).getAll();
+      Iterator localIterator = ((Map)localObject).keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        if ((localMap.get(str) instanceof Integer)) {
-          localHashMap.put(str, (Integer)localMap.get(str));
+        if ((((Map)localObject).get(str) instanceof Integer)) {
+          localHashMap.put(str, (Integer)((Map)localObject).get(str));
         }
       }
     }
@@ -60,12 +63,13 @@ public class UpdateSetting
   
   public boolean getCDNUpdateFlag()
   {
-    boolean bool = false;
     if (this.mSharedPreferences == null) {
       initSharedPreferences();
     }
-    if (this.mSharedPreferences != null) {
-      bool = this.mSharedPreferences.getBoolean("cdnUpdate", false);
+    SharedPreferences localSharedPreferences = this.mSharedPreferences;
+    boolean bool = false;
+    if (localSharedPreferences != null) {
+      bool = localSharedPreferences.getBoolean("cdnUpdate", false);
     }
     return bool;
   }
@@ -75,18 +79,27 @@ public class UpdateSetting
     if (this.mSharedPreferences == null) {
       initSharedPreferences();
     }
-    if (this.mSharedPreferences != null) {}
-    for (int i = this.mSharedPreferences.getInt(paramString, -1);; i = -1)
-    {
-      if ((i != -1) && (!HippyQQFileUtil.getModuleIndex(paramString, i).exists()))
-      {
-        if (this.mSharedPreferences != null) {
-          this.mSharedPreferences.edit().putInt(paramString, -1);
-        }
-        return -1;
-      }
-      return i;
+    SharedPreferences localSharedPreferences = this.mSharedPreferences;
+    int i;
+    if (localSharedPreferences != null) {
+      i = localSharedPreferences.getInt(paramString, -1);
+    } else {
+      i = -1;
     }
+    int j = i;
+    if (i != -1)
+    {
+      j = i;
+      if (!HippyQQFileUtil.getModuleIndex(paramString, i).exists())
+      {
+        localSharedPreferences = this.mSharedPreferences;
+        if (localSharedPreferences != null) {
+          localSharedPreferences.edit().putInt(paramString, -1);
+        }
+        j = -1;
+      }
+    }
+    return j;
   }
   
   public boolean isModuleVersionFileExists(String paramString, int paramInt)
@@ -94,13 +107,20 @@ public class UpdateSetting
     if (this.mSharedPreferences == null) {
       initSharedPreferences();
     }
-    if (paramInt < 0) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramInt < 0) {
       return false;
-      paramString = HippyQQFileUtil.getModuleIndex(paramString, paramInt);
-    } while ((!paramString.exists()) || (paramString.length() <= 0L));
-    return true;
+    }
+    paramString = HippyQQFileUtil.getModuleIndex(paramString, paramInt);
+    boolean bool1 = bool2;
+    if (paramString.exists())
+    {
+      bool1 = bool2;
+      if (paramString.length() > 0L) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public void setCDNUpdateFlag(boolean paramBoolean)
@@ -108,8 +128,9 @@ public class UpdateSetting
     if (this.mSharedPreferences == null) {
       initSharedPreferences();
     }
-    if (this.mSharedPreferences != null) {
-      this.mSharedPreferences.edit().putBoolean("cdnUpdate", paramBoolean).apply();
+    SharedPreferences localSharedPreferences = this.mSharedPreferences;
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("cdnUpdate", paramBoolean).apply();
     }
   }
   
@@ -118,14 +139,15 @@ public class UpdateSetting
     if (this.mSharedPreferences == null) {
       initSharedPreferences();
     }
-    if (this.mSharedPreferences != null) {
-      this.mSharedPreferences.edit().putInt(paramString, paramInt).apply();
+    SharedPreferences localSharedPreferences = this.mSharedPreferences;
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt(paramString, paramInt).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.update.UpdateSetting
  * JD-Core Version:    0.7.0.1
  */

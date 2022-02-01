@@ -27,14 +27,15 @@ public final class GetPasswordReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.MQOS, 0);
-    if (this.MQVersion != null) {
-      paramJceOutputStream.write(this.MQVersion, 1);
+    String str = this.MQVersion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GetPasswordReq
  * JD-Core Version:    0.7.0.1
  */

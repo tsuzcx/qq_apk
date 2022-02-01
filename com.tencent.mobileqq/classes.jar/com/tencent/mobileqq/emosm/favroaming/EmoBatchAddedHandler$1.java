@@ -9,13 +9,14 @@ class EmoBatchAddedHandler$1
   
   public void a()
   {
-    this.a.a = true;
-    this.a.b = true;
+    EmoBatchAddedHandler localEmoBatchAddedHandler = this.a;
+    localEmoBatchAddedHandler.a = true;
+    localEmoBatchAddedHandler.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoBatchAddedHandler.1
  * JD-Core Version:    0.7.0.1
  */

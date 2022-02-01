@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
@@ -50,6 +49,7 @@ import javax.net.ssl.SSLHandshakeException;
 import javax.net.ssl.SSLKeyException;
 import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLProtocolException;
+import mqq.app.MobileQQ;
 import org.apache.http.ConnectionClosedException;
 import org.apache.http.MalformedChunkCodingException;
 import org.apache.http.NoHttpResponseException;
@@ -241,310 +241,309 @@ public class HttpCgiAsyncTask
     if (isCancelled()) {
       return localHashMap;
     }
-    long l3 = SystemClock.elapsedRealtime();
-    long l1 = 0L;
-    String str2 = MsfSdkUtils.insertMtype("yingyongbao", this.jdField_a_of_type_JavaLangString);
-    Object localObject = paramVarArgs[0].getString("appid_for_getting_config");
+    long l1 = SystemClock.elapsedRealtime();
+    String str3 = MsfSdkUtils.insertMtype("yingyongbao", this.jdField_a_of_type_JavaLangString);
+    String str1 = paramVarArgs[0].getString("appid_for_getting_config");
     try
     {
       bool = paramVarArgs[0].getBoolean("from_h5", false);
-      j = OpenConfig.a(CommonDataAdapter.a().a(), (String)localObject).a("Common_HttpRetryCount");
-      LogUtility.c("OpenConfig_agent", "config 1:Common_HttpRetryCount            config_value:" + j + "   appid:" + (String)localObject + "     url:" + str2);
-      if (j == 0)
-      {
-        j = 3;
-        LogUtility.c("OpenConfig_agent", "config 1:Common_HttpRetryCount            result_value:" + j + "   appid:" + (String)localObject + "     url:" + str2);
-        str3 = paramVarArgs[0].getString("downloadfile");
-        i = 0;
-        if (!isCancelled()) {
-          break label203;
-        }
-        return localHashMap;
-      }
     }
     catch (Exception localException)
     {
-      int j;
+      boolean bool;
+      label59:
       int i;
-      label203:
+      Object localObject1;
+      int j;
       int k;
-      long l2;
+      break label59;
+    }
+    bool = false;
+    i = OpenConfig.a(CommonDataAdapter.a().a(), str1).b("Common_HttpRetryCount");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("config 1:Common_HttpRetryCount            config_value:");
+    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append("   appid:");
+    ((StringBuilder)localObject1).append(str1);
+    ((StringBuilder)localObject1).append("     url:");
+    ((StringBuilder)localObject1).append(str3);
+    LogUtility.c("OpenConfig_agent", ((StringBuilder)localObject1).toString());
+    j = i;
+    if (i == 0) {
+      j = 3;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("config 1:Common_HttpRetryCount            result_value:");
+    ((StringBuilder)localObject1).append(j);
+    ((StringBuilder)localObject1).append("   appid:");
+    ((StringBuilder)localObject1).append(str1);
+    ((StringBuilder)localObject1).append("     url:");
+    ((StringBuilder)localObject1).append(str3);
+    LogUtility.c("OpenConfig_agent", ((StringBuilder)localObject1).toString());
+    str1 = paramVarArgs[0].getString("downloadfile");
+    for (i = 0;; i = k)
+    {
+      if (isCancelled()) {
+        return localHashMap;
+      }
+      k = i + 1;
+      long l5 = 0L;
+      label529:
+      label542:
       long l4;
-      label1352:
-      for (;;)
+      long l3;
+      try
       {
-        String str3;
-        boolean bool = false;
-        continue;
-        continue;
-        k = i + 1;
-        l2 = l1;
-        l4 = l1;
-        for (;;)
+        try
         {
+          localObject1 = this.jdField_a_of_type_JavaLangString;
           try
           {
-            localStatistic = a(this.jdField_a_of_type_JavaLangString, this.b, paramVarArgs[0]);
-            l2 = l1;
-            l4 = l1;
-            str1 = localStatistic.jdField_a_of_type_JavaLangString;
-            l2 = l1;
-            l4 = l1;
-            localObject = new JSONObject();
-            if (str3 == null) {
-              continue;
+            HttpBaseUtil.Statistic localStatistic = a((String)localObject1, this.b, paramVarArgs[0]);
+            String str2 = localStatistic.jdField_a_of_type_JavaLangString;
+            localObject1 = new JSONObject();
+            if (str1 != null)
+            {
+              ((JSONObject)localObject1).put("content", localStatistic.jdField_a_of_type_JavaIoInputStream);
             }
-            l2 = l1;
-            l4 = l1;
-            ((JSONObject)localObject).put("content", localStatistic.jdField_a_of_type_JavaIoInputStream);
-          }
-          catch (ConnectTimeoutException localConnectTimeoutException)
-          {
-            HttpBaseUtil.Statistic localStatistic;
-            String str1;
-            JSONObject localJSONObject2;
-            long l5;
-            localConnectTimeoutException.printStackTrace();
-            localHashMap.put("ResultType", Integer.valueOf(0));
-            localHashMap.put("ResultValue", localConnectTimeoutException);
-            i = -7;
-            l1 = SystemClock.elapsedRealtime();
-            l2 = 0L;
-            if (k < j) {
-              break label1352;
+            else if (bool)
+            {
+              str2 = HttpBaseUtil.a(str2);
+              ((JSONObject)localObject1).put("content", str2);
             }
-            l3 = 0L;
-            l4 = l1;
-            l1 = l3;
-            continue;
-            l2 = l1;
-            l4 = l1;
-            localJSONObject1 = HttpBaseUtil.a(str1);
-            continue;
-            l2 = l1;
-            l4 = l1;
-            localJSONObject1.put("httpdatamodified", localStatistic.jdField_a_of_type_Int);
-            continue;
-          }
-          catch (SocketTimeoutException localSocketTimeoutException)
-          {
-            localSocketTimeoutException.printStackTrace();
-            localHashMap.put("ResultType", Integer.valueOf(0));
-            localHashMap.put("ResultValue", localSocketTimeoutException);
-            i = -8;
-            l1 = SystemClock.elapsedRealtime();
-            continue;
-            i = -55;
-            continue;
-            l2 = l1;
-            l4 = l1;
+            else
+            {
+              localObject1 = HttpBaseUtil.a(str2);
+            }
+            Object localObject2 = new StringBuilder();
             try
             {
-              i = localSocketTimeoutException.getInt("ret");
+              ((StringBuilder)localObject2).append("response.isModified= ");
+              ((StringBuilder)localObject2).append(localStatistic.jdField_a_of_type_Int);
+              LogUtility.a("HttpCgiAsyncTask", ((StringBuilder)localObject2).toString());
+              i = localStatistic.jdField_a_of_type_Int;
+              if (i == 0) {
+                if (bool)
+                {
+                  localObject2 = new JSONObject();
+                  ((JSONObject)localObject2).put("httpdatamodified", localStatistic.jdField_a_of_type_Int);
+                  ((JSONObject)localObject1).put("extend", localObject2);
+                }
+                else
+                {
+                  ((JSONObject)localObject1).put("httpdatamodified", localStatistic.jdField_a_of_type_Int);
+                }
+              }
+              localHashMap.put("ResultType", Integer.valueOf(1));
+              localHashMap.put("ResultValue", localObject1);
+              i = -55;
+              if (bool)
+              {
+                localObject1 = Pattern.compile("\"(?:ret|resultCode)\"\\s*\\:\\s*(\\d+)").matcher(str2);
+                if (!((Matcher)localObject1).find()) {
+                  break label542;
+                }
+                i = Integer.parseInt(((Matcher)localObject1).group(1));
+              }
             }
-            catch (JSONException localJSONException2)
+            catch (SocketTimeoutException localSocketTimeoutException1)
             {
-              l2 = l1;
-              l4 = l1;
-              try
-              {
-                i = localSocketTimeoutException.getInt("resultCode");
-              }
-              catch (JSONException localJSONException1)
-              {
-                i = -55;
-              }
+              int m;
             }
-            continue;
-          }
-          catch (JSONException paramVarArgs)
-          {
-            paramVarArgs.printStackTrace();
-            localHashMap.put("ResultType", Integer.valueOf(0));
-            localHashMap.put("ResultValue", paramVarArgs);
-            l1 = 0L;
-            l2 = 0L;
-            i = -4;
-            l4 = l3;
-            continue;
-          }
-          catch (HttpBaseUtil.NetworkUnavailableException paramVarArgs)
-          {
-            paramVarArgs.printStackTrace();
-            localHashMap.put("ResultType", Integer.valueOf(0));
-            localHashMap.put("ResultValue", paramVarArgs);
-            return localHashMap;
+            catch (ConnectTimeoutException localConnectTimeoutException1) {}
           }
           catch (HttpBaseUtil.HttpStatusException paramVarArgs)
           {
-            paramVarArgs.printStackTrace();
-            localHashMap.put("ResultType", Integer.valueOf(0));
-            localHashMap.put("ResultValue", paramVarArgs);
-            try
-            {
-              i = Integer.parseInt(paramVarArgs.getMessage().replace("http status code error:", ""));
-              ReportManager.a().a(str2, l3, l2, 0L, i, CommonDataAdapter.a().a(), "1000002", null, this.jdField_a_of_type_Boolean);
-              return localHashMap;
-            }
-            catch (Exception paramVarArgs)
-            {
-              paramVarArgs.printStackTrace();
-              continue;
-            }
-          }
-          catch (IOException paramVarArgs)
-          {
-            paramVarArgs.printStackTrace();
-            localHashMap.put("ResultType", Integer.valueOf(0));
-            localHashMap.put("ResultValue", paramVarArgs);
-            i = a(paramVarArgs);
-            l1 = 0L;
             l2 = 0L;
-            l4 = l3;
-            continue;
           }
-          catch (Exception paramVarArgs)
+        }
+        catch (Exception paramVarArgs)
+        {
+          l2 = 0L;
+          if ((paramVarArgs instanceof HttpBaseUtil.NetworkUnavailableException))
           {
-            if (!(paramVarArgs instanceof HttpBaseUtil.NetworkUnavailableException)) {
-              continue;
-            }
             paramVarArgs.printStackTrace();
             localHashMap.put("ResultType", Integer.valueOf(0));
             localHashMap.put("ResultValue", paramVarArgs);
             return localHashMap;
-            if (!(paramVarArgs instanceof HttpBaseUtil.HttpStatusException)) {
-              continue;
-            }
+          }
+          if ((paramVarArgs instanceof HttpBaseUtil.HttpStatusException))
+          {
             paramVarArgs.printStackTrace();
             localHashMap.put("ResultType", Integer.valueOf(0));
             localHashMap.put("ResultValue", paramVarArgs);
             try
             {
               i = Integer.parseInt(paramVarArgs.getMessage().replace("http status code error:", ""));
-              ReportManager.a().a(str2, l3, l4, 0L, i, CommonDataAdapter.a().a(), "1000002", null, this.jdField_a_of_type_Boolean);
+              ReportManager.a().a(str3, l1, l2, 0L, i, CommonDataAdapter.a().a(), "1000002", null, this.jdField_a_of_type_Boolean);
               return localHashMap;
             }
             catch (Exception paramVarArgs)
             {
               paramVarArgs.printStackTrace();
-              continue;
+              return localHashMap;
             }
-            if (!(paramVarArgs instanceof IOException)) {
-              continue;
-            }
+          }
+          if ((paramVarArgs instanceof IOException))
+          {
             paramVarArgs.printStackTrace();
             localHashMap.put("ResultType", Integer.valueOf(0));
             localHashMap.put("ResultValue", paramVarArgs);
             i = a((IOException)paramVarArgs);
-            l1 = 0L;
-            l2 = 0L;
-            l4 = l3;
-            continue;
+          }
+          else
+          {
             paramVarArgs.printStackTrace();
             localHashMap.put("ResultType", Integer.valueOf(0));
             localHashMap.put("ResultValue", paramVarArgs);
-            i = -6;
+            l2 = l1;
             l1 = 0L;
-            l2 = 0L;
-            l4 = l3;
-            continue;
-          }
-          l2 = l1;
-          l4 = l1;
-          LogUtility.a("HttpCgiAsyncTask", "response.isModified= " + localStatistic.jdField_a_of_type_Int);
-          l2 = l1;
-          l4 = l1;
-          if (localStatistic.jdField_a_of_type_Int == 0)
-          {
-            if (!bool) {
-              continue;
-            }
-            l2 = l1;
-            l4 = l1;
-            localJSONObject2 = new JSONObject();
-            l2 = l1;
-            l4 = l1;
-            localJSONObject2.put("httpdatamodified", localStatistic.jdField_a_of_type_Int);
-            l2 = l1;
-            l4 = l1;
-            ((JSONObject)localObject).put("extend", localJSONObject2);
-          }
-          l2 = l1;
-          l4 = l1;
-          localHashMap.put("ResultType", Integer.valueOf(1));
-          l2 = l1;
-          l4 = l1;
-          localHashMap.put("ResultValue", localObject);
-          if (!bool) {
-            continue;
-          }
-          l2 = l1;
-          l4 = l1;
-          localObject = Pattern.compile("\"(?:ret|resultCode)\"\\s*\\:\\s*(\\d+)").matcher(str1);
-          l2 = l1;
-          l4 = l1;
-          if (!((Matcher)localObject).find()) {
-            continue;
-          }
-          l2 = l1;
-          l4 = l1;
-          i = Integer.parseInt(((Matcher)localObject).group(1));
-          l2 = l1;
-          l4 = l1;
-          l1 = localStatistic.jdField_a_of_type_Long;
-          l2 = l1;
-          l4 = l1;
-          l5 = localStatistic.b;
-          l2 = l5;
-          l4 = l3;
-          LogUtility.c("ReportManager", str2 + " | " + l4 + " | " + l1 + " | " + l2 + " | " + i);
-          l3 = 0L;
-          try
-          {
-            paramVarArgs = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
-            if (paramVarArgs != null) {
-              l3 = Long.valueOf(paramVarArgs.getUin()).longValue();
-            }
-          }
-          catch (Exception paramVarArgs)
-          {
-            JSONObject localJSONObject1;
-            paramVarArgs.printStackTrace();
-            l3 = 0L;
-            continue;
-            i = k;
-            l2 = 0L;
             l3 = l1;
-            l1 = l2;
+            i = -6;
           }
-          ReportManager.a().a(str2, l4, l1, l2, i, l3, "1000002", null, this.jdField_a_of_type_Boolean);
-          return localHashMap;
-          if (!bool) {
-            continue;
-          }
+        }
+        catch (IOException paramVarArgs)
+        {
+          paramVarArgs.printStackTrace();
+          localHashMap.put("ResultType", Integer.valueOf(0));
+          localHashMap.put("ResultValue", paramVarArgs);
+          i = a(paramVarArgs);
           l2 = l1;
-          l4 = l1;
-          str1 = HttpBaseUtil.a(str1);
-          l2 = l1;
-          l4 = l1;
-          ((JSONObject)localObject).put("content", str1);
+          l1 = 0L;
+          l3 = l1;
+        }
+        catch (HttpBaseUtil.HttpStatusException paramVarArgs)
+        {
+          label600:
+          l2 = 0L;
         }
       }
+      catch (HttpBaseUtil.NetworkUnavailableException paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        localHashMap.put("ResultType", Integer.valueOf(0));
+        localHashMap.put("ResultValue", paramVarArgs);
+        return localHashMap;
+      }
+      catch (JSONException paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        localHashMap.put("ResultType", Integer.valueOf(0));
+        localHashMap.put("ResultValue", paramVarArgs);
+        l2 = l1;
+        l1 = 0L;
+        l3 = l1;
+        i = -4;
+      }
+      catch (SocketTimeoutException localSocketTimeoutException2)
+      {
+        localSocketTimeoutException2.printStackTrace();
+        localHashMap.put("ResultType", Integer.valueOf(0));
+        localHashMap.put("ResultValue", localSocketTimeoutException2);
+        i = -8;
+        l1 = SystemClock.elapsedRealtime();
+      }
+      catch (ConnectTimeoutException localConnectTimeoutException2)
+      {
+        localConnectTimeoutException2.printStackTrace();
+        localHashMap.put("ResultType", Integer.valueOf(0));
+        localHashMap.put("ResultValue", localConnectTimeoutException2);
+        i = -7;
+        l1 = SystemClock.elapsedRealtime();
+      }
+      try
+      {
+        m = ((JSONObject)localObject1).getInt("ret");
+        i = m;
+      }
+      catch (JSONException localJSONException2)
+      {
+        break label529;
+      }
+      try
+      {
+        m = ((JSONObject)localObject1).getInt("resultCode");
+        i = m;
+      }
+      catch (JSONException localJSONException1)
+      {
+        break label542;
+      }
+      long l2 = localStatistic.jdField_a_of_type_Long;
+      try
+      {
+        l4 = localStatistic.b;
+        l3 = l2;
+        l2 = l1;
+        l1 = l4;
+      }
+      catch (Exception paramVarArgs)
+      {
+        break label600;
+      }
+      catch (HttpBaseUtil.HttpStatusException paramVarArgs) {}
+      for (;;)
+      {
+        paramVarArgs.printStackTrace();
+        localHashMap.put("ResultType", Integer.valueOf(0));
+        localHashMap.put("ResultValue", paramVarArgs);
+        try
+        {
+          i = Integer.parseInt(paramVarArgs.getMessage().replace("http status code error:", ""));
+          ReportManager.a().a(str3, l1, l2, 0L, i, CommonDataAdapter.a().a(), "1000002", null, this.jdField_a_of_type_Boolean);
+          return localHashMap;
+        }
+        catch (Exception paramVarArgs)
+        {
+          paramVarArgs.printStackTrace();
+          return localHashMap;
+        }
+        if (k < j) {
+          break;
+        }
+      }
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append(str3);
+      paramVarArgs.append(" | ");
+      paramVarArgs.append(l2);
+      paramVarArgs.append(" | ");
+      paramVarArgs.append(l3);
+      paramVarArgs.append(" | ");
+      paramVarArgs.append(l1);
+      paramVarArgs.append(" | ");
+      paramVarArgs.append(i);
+      LogUtility.c("ReportManager", paramVarArgs.toString());
+      try
+      {
+        paramVarArgs = MobileQQ.sMobileQQ.getFirstSimpleAccount();
+        l4 = l5;
+        if (paramVarArgs != null) {
+          l4 = Long.valueOf(paramVarArgs.getUin()).longValue();
+        }
+      }
+      catch (Exception paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        l4 = l5;
+      }
+      ReportManager.a().a(str3, l2, l3, l1, i, l4, "1000002", null, this.jdField_a_of_type_Boolean);
+      return localHashMap;
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      localHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.http.HttpCgiAsyncTask
  * JD-Core Version:    0.7.0.1
  */

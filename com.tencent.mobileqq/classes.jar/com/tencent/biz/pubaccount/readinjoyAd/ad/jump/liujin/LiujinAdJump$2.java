@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.jump.liujin;
 
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import org.json.JSONObject;
 
@@ -19,12 +20,24 @@ import org.json.JSONObject;
     this.downloadJumpUrl = paramAdvertisementInfo.mAdLandingPage;
     this.deepLinkUrl = paramAdvertisementInfo.mAdLandingPage;
     this.packageName = new JSONObject(paramAdvertisementInfo.mAdExt).optString("pkg_name");
+    try
+    {
+      paramAdvertisementInfo = paramAdvertisementInfo.mAdExtInfo;
+      if (!TextUtils.isEmpty(paramAdvertisementInfo))
+      {
+        paramAdvertisementInfo = new JSONObject(paramAdvertisementInfo);
+        this.wxAppId = paramAdvertisementInfo.optString("wxappid");
+        this.wxAppPath = paramAdvertisementInfo.optString("wechat_app_path");
+      }
+      return this;
+    }
+    catch (Throwable paramAdvertisementInfo) {}
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.jump.liujin.LiujinAdJump.2
  * JD-Core Version:    0.7.0.1
  */

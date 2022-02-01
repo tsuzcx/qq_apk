@@ -5,7 +5,6 @@ import android.os.Handler;
 import com.tencent.av.SessionMgr;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenDoubleVideoControlUI;
 import com.tencent.av.smallscreen.SmallScreenUtils;
 import com.tencent.av.wtogether.data.WatchTogetherInfo;
 import com.tencent.av.wtogether.util.WTogetherUtil;
@@ -16,12 +15,9 @@ import com.tencent.qphone.base.util.QLog;
 public class SmallScreenDavWTObserver
   extends WTogetherObserverImpl
 {
-  protected final SmallScreenDoubleVideoControlUI a;
-  
-  public SmallScreenDavWTObserver(SmallScreenDoubleVideoControlUI paramSmallScreenDoubleVideoControlUI)
+  public SmallScreenDavWTObserver(VideoAppInterface paramVideoAppInterface)
   {
-    super(paramSmallScreenDoubleVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenDoubleVideoControlUI = paramSmallScreenDoubleVideoControlUI;
+    super(paramVideoAppInterface);
   }
   
   private void a(String paramString)
@@ -30,20 +26,34 @@ public class SmallScreenDavWTObserver
     if (bool) {
       this.jdField_a_of_type_AndroidOsHandler.post(new SmallScreenDavWTObserver.2(this, paramString));
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("WTogether.ObserverImpl", 2, "startAlertDialog, isAppForeground[" + bool + "], msg[" + paramString + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startAlertDialog, isAppForeground[");
+      localStringBuilder.append(bool);
+      localStringBuilder.append("], msg[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.ObserverImpl", 2, localStringBuilder.toString());
     }
   }
   
   protected void a()
   {
-    a(BaseApplicationImpl.getContext().getString(2131695976));
+    a(BaseApplicationImpl.getContext().getString(2131695991));
   }
   
   protected void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WTogether.ObserverImpl", 2, "onShowTips, isDialog[" + paramBoolean + "], tip[" + paramString + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onShowTips, isDialog[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], tip[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.ObserverImpl", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
@@ -55,30 +65,39 @@ public class SmallScreenDavWTObserver
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("WTogether.ObserverImpl", 4, "changeUIMode, start[" + paramBoolean1 + "], isAdmin[" + paramBoolean2 + "], from[" + paramString + "]");
+    Object localObject;
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("changeUIMode, start[");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append("], isAdmin[");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      ((StringBuilder)localObject).append("], from[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether.ObserverImpl", 4, ((StringBuilder)localObject).toString());
     }
     if ((!paramBoolean2) && (paramBoolean1) && (WTogetherUtil.b()))
     {
       paramString = BaseApplicationImpl.getContext();
-      Object localObject = SessionMgr.a().a();
-      localObject = ((WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(15)).b((SessionInfo)localObject);
-      if (((WatchTogetherInfo)localObject).a) {
-        break label124;
+      localObject = SessionMgr.a().a();
+      localObject = ((WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(16)).b((SessionInfo)localObject);
+      if (!((WatchTogetherInfo)localObject).a)
+      {
+        ((WatchTogetherInfo)localObject).a = true;
+        a(paramString.getString(2131695998));
+        return;
       }
-      ((WatchTogetherInfo)localObject).a = true;
-      a(paramString.getString(2131695983));
+      if (QLog.isColorLevel()) {
+        QLog.i("WTogether", 2, "showNetTip, have shown. 3");
+      }
     }
-    label124:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("WTogether", 2, "showNetTip, have shown. 3");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.SmallScreenDavWTObserver
  * JD-Core Version:    0.7.0.1
  */

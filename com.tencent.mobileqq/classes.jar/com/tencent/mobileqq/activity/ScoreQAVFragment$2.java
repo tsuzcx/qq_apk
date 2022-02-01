@@ -11,24 +11,22 @@ class ScoreQAVFragment$2
   
   public void a(View paramView, int paramInt)
   {
-    paramView = (Button)paramView.findViewById(2131375221);
+    paramView = (Button)paramView.findViewById(2131374736);
     if (paramView.isSelected())
     {
       paramView.setSelected(false);
       this.a.a(paramInt);
-      if (this.a.a.size() != 0) {}
-    }
-    do
-    {
+      this.a.a.size();
       return;
-      paramView.setSelected(true);
-      this.a.a.add(Integer.valueOf(paramInt));
-    } while (this.a.a.size() <= 0);
+    }
+    paramView.setSelected(true);
+    this.a.a.add(Integer.valueOf(paramInt));
+    this.a.a.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ScoreQAVFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -47,6 +47,8 @@ public final class oidb_cmd0x83e$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -58,12 +60,12 @@ public final class oidb_cmd0x83e$ReqBody
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro11 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 64, 72, 82, 88, 98, 106, 114, 128, 138, 146, 154, 162, 170, 240, 250, 258, 266, 272, 282, 328, 336 }, new String[] { "uint64_uin", "uint32_operation", "uint64_feeds_id", "bytes_comment", "bytes_parent_id", "uint64_reply_uin", "rpt_bytes_comment_id", "resend_times", "bool_is_master", "msg_feeds_info", "enum_biu_src", "bytes_inner_uniq_id", "msg_pgc_submit_para", "rpt_second_level_comment_list", "uint32_op_new_comment_system", "bytes_comment_gif_url", "bytes_comment_gif_thumbnail_url", "bytes_comment_pic_type", "bytes_comment_id", "bytes_sub_comment_id", "enum_ugc_src", "pgc_param", "bytes_extra_json_params", "qa_req_param", "uint32_is_one_touch_biu", "bytes_req_seq", "uint32_comment_content_src", "uint32_comment_src" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), localByteStringMicro3, Integer.valueOf(0), Boolean.valueOf(false), null, Integer.valueOf(1), localByteStringMicro4, null, null, Integer.valueOf(0), localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, Integer.valueOf(0), null, localByteStringMicro10, null, Integer.valueOf(0), localByteStringMicro11, Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 64, 72, 82, 88, 98, 106, 114, 128, 138, 146, 154, 162, 170, 240, 250, 258, 266, 272, 282, 328, 336 }, new String[] { "uint64_uin", "uint32_operation", "uint64_feeds_id", "bytes_comment", "bytes_parent_id", "uint64_reply_uin", "rpt_bytes_comment_id", "resend_times", "bool_is_master", "msg_feeds_info", "enum_biu_src", "bytes_inner_uniq_id", "msg_pgc_submit_para", "rpt_second_level_comment_list", "uint32_op_new_comment_system", "bytes_comment_gif_url", "bytes_comment_gif_thumbnail_url", "bytes_comment_pic_type", "bytes_comment_id", "bytes_sub_comment_id", "enum_ugc_src", "pgc_param", "bytes_extra_json_params", "qa_req_param", "uint32_is_one_touch_biu", "bytes_req_seq", "uint32_comment_content_src", "uint32_comment_src" }, new Object[] { localLong, localInteger, localLong, localByteStringMicro1, localByteStringMicro2, localLong, localByteStringMicro3, localInteger, Boolean.valueOf(false), null, Integer.valueOf(1), localByteStringMicro4, null, null, localInteger, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localInteger, null, localByteStringMicro10, null, localInteger, localByteStringMicro11, localInteger, localInteger }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.ReqBody
  * JD-Core Version:    0.7.0.1
  */

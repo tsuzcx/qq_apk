@@ -11,10 +11,16 @@ class ColorNickManager$3
 {
   ColorNickManager$3(ColorNickManager paramColorNickManager) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public void onJsonComplete(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNick", 2, "emotion onJsonComplete id = " + paramEmoticonPackage.epId + " resultCode = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("emotion onJsonComplete id = ");
+      paramBundle.append(paramEmoticonPackage.epId);
+      paramBundle.append(" resultCode = ");
+      paramBundle.append(paramInt);
+      QLog.d("ColorNick", 2, paramBundle.toString());
     }
     if (this.a.a != null) {
       this.a.a.sendEmptyMessage(257);
@@ -23,7 +29,7 @@ class ColorNickManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickManager.3
  * JD-Core Version:    0.7.0.1
  */

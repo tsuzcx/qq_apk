@@ -31,8 +31,9 @@ public final class AlbumInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vPhotos != null) {
-      paramJceOutputStream.write(this.vPhotos, 0);
+    ArrayList localArrayList = this.vPhotos;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }

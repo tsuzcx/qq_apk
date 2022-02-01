@@ -23,66 +23,80 @@ public class ExtensionFactoryImplement
   {
     try
     {
-      if (paramClass.equals(QQStoryFriendSettingDelegate.class))
-      {
-        Object localObject = paramClass1.cast(new QQStoryFriendSettingDelegateExtension());
-        return localObject;
+      if (!paramClass.equals(QQStoryFriendSettingDelegate.class)) {
+        break label30;
       }
+      Object localObject = paramClass1.cast(new QQStoryFriendSettingDelegateExtension());
+      return localObject;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      SLog.e("ExtensionFactoryImplement", "parse int exception");
-      try
-      {
-        paramClass = (Class)a.get(paramClass);
-        if (paramClass != null)
-        {
-          if (KeepConstructor.class.isAssignableFrom(paramClass)) {
-            break label110;
-          }
-          throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
-        }
-      }
-      catch (Exception paramClass)
-      {
-        SLog.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
-      }
-      return NullableObjectFactoryImplement.a(paramClass1);
+      label23:
+      label30:
+      label103:
+      label117:
+      break label23;
     }
-    label110:
-    paramClass = NullableObjectFactoryImplement.a(paramClass, paramVarArgs);
-    return paramClass;
+    SLog.e("ExtensionFactoryImplement", "parse int exception");
+    try
+    {
+      paramClass = (Class)a.get(paramClass);
+      if (paramClass == null) {
+        break label117;
+      }
+      if (KeepConstructor.class.isAssignableFrom(paramClass)) {
+        return NullableObjectFactoryImplement.a(paramClass, paramVarArgs);
+      }
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append("createExtendableObject class ");
+      paramVarArgs.append(paramClass.getName());
+      paramVarArgs.append(" should have a KeepConstructor interface");
+      throw new IllegalArgumentException(paramVarArgs.toString());
+    }
+    catch (Exception paramClass)
+    {
+      break label103;
+    }
+    SLog.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
+    return NullableObjectFactoryImplement.a(paramClass1);
   }
   
   public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
   {
-    if (!KeepConstructor.class.isAssignableFrom(paramClass)) {
-      throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
-    }
+    if (KeepConstructor.class.isAssignableFrom(paramClass)) {}
     try
     {
       Class localClass = (Class)b.get(paramClass);
-      if (localClass != null)
-      {
-        if (KeepConstructor.class.isAssignableFrom(localClass)) {
-          break label124;
-        }
-        throw new IllegalArgumentException("createExtendableObject class " + localClass.getName() + " should have a KeepConstructor interface");
+      if (localClass == null) {
+        break label96;
       }
+      if (KeepConstructor.class.isAssignableFrom(localClass)) {
+        return NullableObjectFactoryImplement.a(localClass, paramVarArgs);
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createExtendableObject class ");
+      localStringBuilder.append(localClass.getName());
+      localStringBuilder.append(" should have a KeepConstructor interface");
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
     catch (Exception localException)
     {
-      SLog.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
+      label82:
+      label96:
+      break label82;
     }
+    SLog.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
     return NullableObjectFactoryImplement.a(paramClass, paramVarArgs);
-    label124:
-    Object localObject = NullableObjectFactoryImplement.a(localException, paramVarArgs);
-    return localObject;
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append("createExtendableObject class ");
+    paramVarArgs.append(paramClass.getName());
+    paramVarArgs.append(" should have a KeepConstructor interface");
+    throw new IllegalArgumentException(paramVarArgs.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.implement.ExtensionFactoryImplement
  * JD-Core Version:    0.7.0.1
  */

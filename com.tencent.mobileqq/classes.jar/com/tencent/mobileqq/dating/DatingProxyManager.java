@@ -20,8 +20,9 @@ public class DatingProxyManager
   
   public StrangerHdHeadUrlFetcher a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher;
+    ??? = this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher;
+    if (??? != null) {
+      return ???;
     }
     synchronized (this.b)
     {
@@ -35,8 +36,9 @@ public class DatingProxyManager
   
   public VoteEventMgr a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr;
+    ??? = this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr;
+    if (??? != null) {
+      return ???;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
@@ -50,20 +52,22 @@ public class DatingProxyManager
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr.b();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr;
+    if (localObject != null) {
+      ((VoteEventMgr)localObject).b();
     }
     this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher.a();
+      ((StrangerHdHeadUrlFetcher)localObject).a();
       this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingProxyManager
  * JD-Core Version:    0.7.0.1
  */

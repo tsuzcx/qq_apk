@@ -34,22 +34,30 @@ public class C2CShortcutBarConfProcessor
   @Nullable
   public C2CShortcutBarConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0))
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      QLog.d("C2CShortcutBarConfProcessor", 1, "C2CShortcutBarConfProcessor onParsed, confFiles is null empty");
-      return null;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("C2CShortcutBarConfProcessor onParsed, content:");
+        localStringBuilder.append(paramArrayOfQConfItem);
+        QLog.d("C2CShortcutBarConfProcessor", 2, localStringBuilder.toString());
+      }
+      return C2CShortcutBarConfBean.a(paramArrayOfQConfItem);
     }
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CShortcutBarConfProcessor", 2, "C2CShortcutBarConfProcessor onParsed, content:" + paramArrayOfQConfItem);
-    }
-    return C2CShortcutBarConfBean.a(paramArrayOfQConfItem);
+    QLog.d("C2CShortcutBarConfProcessor", 1, "C2CShortcutBarConfProcessor onParsed, confFiles is null empty");
+    return null;
   }
   
   public void a(C2CShortcutBarConfBean paramC2CShortcutBarConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CShortcutBarConfProcessor", 2, "onUpdate " + paramC2CShortcutBarConfBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramC2CShortcutBarConfBean.toString());
+      QLog.d("C2CShortcutBarConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -90,7 +98,7 @@ public class C2CShortcutBarConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarConfProcessor
  * JD-Core Version:    0.7.0.1
  */

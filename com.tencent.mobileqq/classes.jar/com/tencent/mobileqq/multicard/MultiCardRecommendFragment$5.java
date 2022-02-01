@@ -10,27 +10,42 @@ class MultiCardRecommendFragment$5
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return;
+          }
+          if (MultiCardRecommendFragment.a(this.a) != null) {
+            MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
+          }
+        }
+        else
+        {
+          MultiCardRecommendFragment.d(this.a);
+        }
+      }
+      else
+      {
+        paramMessage = this.a;
+        MultiCardRecommendFragment.a(paramMessage, MultiCardRecommendFragment.b(paramMessage));
+        MultiCardRecommendFragment.e(this.a);
+      }
     }
-    do
+    else
     {
-      return;
       MultiCardRecommendFragment.e(this.a);
       sendEmptyMessageDelayed(3, 500L);
-      return;
-      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
-      MultiCardRecommendFragment.e(this.a);
-      return;
-      MultiCardRecommendFragment.d(this.a);
-      return;
-    } while (MultiCardRecommendFragment.a(this.a) == null);
-    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardRecommendFragment.5
  * JD-Core Version:    0.7.0.1
  */

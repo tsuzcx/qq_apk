@@ -55,36 +55,38 @@ public class GetCloudStorageRequest
     try
     {
       ((CloudStorage.StGetUserCloudStorageRsp)localObject).mergeFrom(paramArrayOfByte);
-      if ((localObject == null) || (((CloudStorage.StGetUserCloudStorageRsp)localObject).KVDataList == null)) {
-        break label162;
-      }
-      localObject = ((CloudStorage.StGetUserCloudStorageRsp)localObject).KVDataList.get();
-      paramArrayOfByte = new JSONArray();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      if (((CloudStorage.StGetUserCloudStorageRsp)localObject).KVDataList != null)
       {
-        CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject).next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("key", localStKVData.key.get());
-        localJSONObject.put("value", localStKVData.value.get());
-        paramArrayOfByte.put(localJSONObject);
+        localObject = ((CloudStorage.StGetUserCloudStorageRsp)localObject).KVDataList.get();
+        paramArrayOfByte = new JSONArray();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject).next();
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("key", localStKVData.key.get());
+          localJSONObject.put("value", localStKVData.value.get());
+          paramArrayOfByte.put(localJSONObject);
+        }
+        paramJSONObject.put("KVDataList", paramArrayOfByte);
+        return paramJSONObject;
       }
-      paramJSONObject.put("KVDataList", paramArrayOfByte);
+      QMLog.d("GetCloudStorageRequest", "onResponse fail.rsp = null");
+      return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("GetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("GetCloudStorageRequest", paramJSONObject.toString());
     }
-    return paramJSONObject;
-    label162:
-    QMLog.d("GetCloudStorageRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetCloudStorageRequest
  * JD-Core Version:    0.7.0.1
  */

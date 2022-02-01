@@ -27,21 +27,18 @@ public final class JumpSchemeFactory
   {
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
     if (paramPushComponent.jdField_a_of_type_Boolean) {
-      paramPushComponent = (BaseJumpScheme)new FallbackJumpScheme();
+      return (BaseJumpScheme)new FallbackJumpScheme();
     }
-    BaseJumpScheme localBaseJumpScheme;
-    do
-    {
+    paramPushComponent = (BaseJumpScheme)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramPushComponent.jdField_a_of_type_Int));
+    if (paramPushComponent != null) {
       return paramPushComponent;
-      localBaseJumpScheme = (BaseJumpScheme)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramPushComponent.jdField_a_of_type_Int));
-      paramPushComponent = localBaseJumpScheme;
-    } while (localBaseJumpScheme != null);
+    }
     return (BaseJumpScheme)new DefaultJumpScheme();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.business.JumpSchemeFactory
  * JD-Core Version:    0.7.0.1
  */

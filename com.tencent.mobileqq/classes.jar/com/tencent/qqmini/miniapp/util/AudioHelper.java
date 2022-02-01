@@ -29,32 +29,40 @@ public class AudioHelper
   
   public static boolean isForbidByRubbishMeizu(int paramInt, Context paramContext)
   {
-    if ((!isRubbishMeizuPhone()) || (Build.VERSION.SDK_INT < 17)) {}
-    do
+    boolean bool2 = isRubbishMeizuPhone();
+    boolean bool1 = false;
+    if (bool2)
     {
-      return false;
+      if (Build.VERSION.SDK_INT < 17) {
+        return false;
+      }
       paramContext = paramContext.getSystemService("appops");
-    } while ((paramContext == null) || (!paramContext.getClass().getSimpleName().equals("AppOpsManager")));
-    try
-    {
-      Method localMethod = paramContext.getClass().getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
-      int i = OP_IN_ANDROID_SDK_API19[paramInt];
-      if (Build.VERSION.SDK_INT < 19) {
-        i = OP_IN_ANDROID_SDK_BEFORE_API19[paramInt];
+      if ((paramContext != null) && (paramContext.getClass().getSimpleName().equals("AppOpsManager"))) {
+        try
+        {
+          Method localMethod = paramContext.getClass().getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
+          int i = OP_IN_ANDROID_SDK_API19[paramInt];
+          if (Build.VERSION.SDK_INT < 19) {
+            i = OP_IN_ANDROID_SDK_BEFORE_API19[paramInt];
+          }
+          ApplicationInfo localApplicationInfo = AppLoaderFactory.g().getContext().getApplicationInfo();
+          paramInt = ((Integer)localMethod.invoke(paramContext, new Object[] { Integer.valueOf(i), Integer.valueOf(localApplicationInfo.uid), localApplicationInfo.packageName })).intValue();
+          paramContext = new StringBuilder();
+          paramContext.append("isForbidByRubbishMeizu(), result = ");
+          paramContext.append(paramInt);
+          QMLog.d("AudioHelper", paramContext.toString());
+          if (paramInt != 0) {
+            bool1 = true;
+          }
+          return bool1;
+        }
+        catch (Exception paramContext)
+        {
+          QMLog.e("AudioHelper", paramContext.toString());
+        }
       }
-      ApplicationInfo localApplicationInfo = AppLoaderFactory.g().getContext().getApplicationInfo();
-      paramInt = ((Integer)localMethod.invoke(paramContext, new Object[] { Integer.valueOf(i), Integer.valueOf(localApplicationInfo.uid), localApplicationInfo.packageName })).intValue();
-      QMLog.d("AudioHelper", "isForbidByRubbishMeizu(), result = " + paramInt);
-      if (paramInt != 0) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-      return false;
     }
-    catch (Exception paramContext)
-    {
-      QMLog.e("AudioHelper", paramContext.toString());
-    }
+    return false;
   }
   
   private static boolean isRubbishMeizuPhone()
@@ -64,7 +72,7 @@ public class AudioHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.AudioHelper
  * JD-Core Version:    0.7.0.1
  */

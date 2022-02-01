@@ -1,20 +1,31 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.hiboom.HiBoomManager;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.vas.font.api.IFontManagerService;
 
 class TextPreviewActivity$7
   implements Runnable
 {
-  TextPreviewActivity$7(TextPreviewActivity paramTextPreviewActivity, HiBoomManager paramHiBoomManager) {}
+  TextPreviewActivity$7(TextPreviewActivity paramTextPreviewActivity) {}
   
   public void run()
   {
-    this.a.a(this.this$0.g, true, false, true);
+    Drawable localDrawable = this.this$0.jdField_a_of_type_ComTencentMobileqqVasFontApiIFontManagerService.getFontNameDrawable(this.this$0.e);
+    if (localDrawable == null)
+    {
+      TextPreviewActivity.a(this.this$0.e, this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+      return;
+    }
+    Message localMessage = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(18);
+    localMessage.obj = localDrawable;
+    this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.7
  * JD-Core Version:    0.7.0.1
  */

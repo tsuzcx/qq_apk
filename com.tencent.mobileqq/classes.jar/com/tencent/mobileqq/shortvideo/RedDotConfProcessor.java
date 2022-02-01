@@ -28,8 +28,12 @@ public class RedDotConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       RedDotConfBean localRedDotConfBean = RedDotConfBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoAndHotPicRedDotConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("ShortVideoAndHotPicRedDotConfProcessor", 2, localStringBuilder.toString());
       }
       return localRedDotConfBean;
     }
@@ -38,37 +42,35 @@ public class RedDotConfProcessor
   
   public void a(RedDotConfBean paramRedDotConfBean)
   {
-    boolean bool2 = true;
     int i = paramRedDotConfBean.a;
     int j = paramRedDotConfBean.b;
     int k = paramRedDotConfBean.c;
     int m = paramRedDotConfBean.d;
     paramRedDotConfBean = a();
-    if (ShortVideoUtils.getHotPiCRedDotConfigVersion(paramRedDotConfBean) != j)
+    int n = ShortVideoUtils.getHotPiCRedDotConfigVersion(paramRedDotConfBean);
+    boolean bool2 = true;
+    boolean bool1;
+    if (n != j)
     {
       ShortVideoUtils.setHotPiCRedDotConfigVersion(paramRedDotConfBean, j);
-      if (i == 1)
-      {
+      if (i == 1) {
         bool1 = true;
-        ShortVideoUtils.setHotPicRedDotStatus(paramRedDotConfBean, bool1);
-        ShortVideoUtils.isHotPicConfiginitied = false;
+      } else {
+        bool1 = false;
       }
+      ShortVideoUtils.setHotPicRedDotStatus(paramRedDotConfBean, bool1);
+      ShortVideoUtils.isHotPicConfiginitied = false;
     }
-    else if (ShortVideoUtils.getPtvRedDotConfigVersion(paramRedDotConfBean) != m)
+    if (ShortVideoUtils.getPtvRedDotConfigVersion(paramRedDotConfBean) != m)
     {
       ShortVideoUtils.setPtvRedDotConfigVersion(paramRedDotConfBean, m);
-      if (k != 1) {
-        break label103;
+      if (k == 1) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
-    }
-    label103:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
       ShortVideoUtils.setPtvRedDotStatus(paramRedDotConfBean, bool1);
       ShortVideoUtils.isPtvConfiginitied = false;
-      return;
-      bool1 = false;
-      break;
     }
   }
   
@@ -94,8 +96,12 @@ public class RedDotConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoAndHotPicRedDotConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.d("ShortVideoAndHotPicRedDotConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -106,7 +112,7 @@ public class RedDotConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.RedDotConfProcessor
  * JD-Core Version:    0.7.0.1
  */

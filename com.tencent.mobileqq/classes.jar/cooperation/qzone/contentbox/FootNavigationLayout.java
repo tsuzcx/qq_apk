@@ -45,12 +45,12 @@ public class FootNavigationLayout
   
   private void init()
   {
-    LayoutInflater.from(getContext()).inflate(2131562557, this);
-    this.container = ((ViewGroup)findViewById(2131369450));
-    this.items = new ViewGroup[] { (ViewGroup)findViewById(2131367017), (ViewGroup)findViewById(2131377664), (ViewGroup)findViewById(2131379298) };
-    this.arrows = new ImageView[] { (ImageView)findViewById(2131367018), (ImageView)findViewById(2131377665), (ImageView)findViewById(2131379299) };
-    this.texts = new TextView[] { (TextView)findViewById(2131367019), (TextView)findViewById(2131377666), (TextView)findViewById(2131379300) };
-    this.dividers = new View[] { null, findViewById(2131365924), findViewById(2131365925) };
+    LayoutInflater.from(getContext()).inflate(2080636933, this);
+    this.container = ((ViewGroup)findViewById(2080571461));
+    this.items = new ViewGroup[] { (ViewGroup)findViewById(2080571448), (ViewGroup)findViewById(2080571505), (ViewGroup)findViewById(2080571520) };
+    this.arrows = new ImageView[] { (ImageView)findViewById(2080571449), (ImageView)findViewById(2080571506), (ImageView)findViewById(2080571521) };
+    this.texts = new TextView[] { (TextView)findViewById(2080571450), (TextView)findViewById(2080571507), (TextView)findViewById(2080571522) };
+    this.dividers = new View[] { null, findViewById(2080571439), findViewById(2080571440) };
   }
   
   public void setArrowVisible(int paramInt)
@@ -94,7 +94,7 @@ public class FootNavigationLayout
       {
         localObject2 = localObject1[i];
         if (localObject2 != null) {
-          localObject2.setBackgroundResource(2130848826);
+          localObject2.setBackgroundResource(2130848706);
         }
         i += 1;
       }
@@ -118,7 +118,7 @@ public class FootNavigationLayout
     {
       localObject2 = localObject1[i];
       if (localObject2 != null) {
-        localObject2.setBackgroundResource(2130848825);
+        localObject2.setBackgroundResource(2130848705);
       }
       i += 1;
     }
@@ -126,67 +126,60 @@ public class FootNavigationLayout
   
   public void updateData(ArrayList<BottomItem> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      setVisibility(8);
+      int i = 0;
+      while (i < 3)
+      {
+        ViewGroup localViewGroup = this.items[i];
+        TextView localTextView = this.texts[i];
+        View localView = this.dividers[i];
+        if (i >= paramArrayList.size())
+        {
+          if (localViewGroup != null) {
+            localViewGroup.setVisibility(8);
+          }
+          if (localView != null) {
+            localView.setVisibility(8);
+          }
+        }
+        else
+        {
+          BottomItem localBottomItem = (BottomItem)paramArrayList.get(i);
+          if ((localBottomItem != null) && (!TextUtils.isEmpty(localBottomItem.content)) && (!TextUtils.isEmpty(localBottomItem.content.trim())))
+          {
+            if (localViewGroup != null)
+            {
+              localViewGroup.setVisibility(0);
+              if (localTextView != null) {
+                localTextView.setText(localBottomItem.content);
+              }
+              localViewGroup.setOnClickListener(new FootNavigationLayout.1(this, localBottomItem, i));
+            }
+            if (localView != null) {
+              localView.setVisibility(0);
+            }
+          }
+          else
+          {
+            if (localViewGroup != null) {
+              localViewGroup.setVisibility(8);
+            }
+            if (localView != null) {
+              localView.setVisibility(8);
+            }
+          }
+        }
+        i += 1;
+      }
       return;
     }
-    int i = 0;
-    label20:
-    ViewGroup localViewGroup;
-    TextView localTextView;
-    View localView;
-    if (i < 3)
-    {
-      localViewGroup = this.items[i];
-      localTextView = this.texts[i];
-      localView = this.dividers[i];
-      if (i < paramArrayList.size()) {
-        break label85;
-      }
-      if (localViewGroup != null) {
-        localViewGroup.setVisibility(8);
-      }
-      if (localView != null) {
-        localView.setVisibility(8);
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label20;
-      break;
-      label85:
-      BottomItem localBottomItem = (BottomItem)paramArrayList.get(i);
-      if ((localBottomItem == null) || (TextUtils.isEmpty(localBottomItem.content)) || (TextUtils.isEmpty(localBottomItem.content.trim())))
-      {
-        if (localViewGroup != null) {
-          localViewGroup.setVisibility(8);
-        }
-        if (localView != null) {
-          localView.setVisibility(8);
-        }
-      }
-      else
-      {
-        if (localViewGroup != null)
-        {
-          localViewGroup.setVisibility(0);
-          if (localTextView != null) {
-            localTextView.setText(localBottomItem.content);
-          }
-          localViewGroup.setOnClickListener(new FootNavigationLayout.1(this, localBottomItem, i));
-        }
-        if (localView != null) {
-          localView.setVisibility(0);
-        }
-      }
-    }
+    setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.FootNavigationLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.sveffects;
 
+import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.util.AEQLog;
 
 public class SvEffectSdkInitor$QQLogger
   implements Logger
@@ -43,7 +43,7 @@ public class SvEffectSdkInitor$QQLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sveffects.SvEffectSdkInitor.QQLogger
  * JD-Core Version:    0.7.0.1
  */

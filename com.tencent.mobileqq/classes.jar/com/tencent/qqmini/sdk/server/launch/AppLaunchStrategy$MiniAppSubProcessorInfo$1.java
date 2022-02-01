@@ -12,13 +12,18 @@ class AppLaunchStrategy$MiniAppSubProcessorInfo$1
     if (this.this$1.isForeground) {
       return;
     }
-    QMLog.i("minisdk-start_LaunchManagerService", "recycle process=" + this.this$1.processName + " " + this.this$1.allMiniAppInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("recycle process=");
+    localStringBuilder.append(this.this$1.processName);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.this$1.allMiniAppInfo);
+    QMLog.i("minisdk-start_LaunchManagerService", localStringBuilder.toString());
     AppLaunchStrategy.access$000(this.this$1.this$0, this.this$1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.AppLaunchStrategy.MiniAppSubProcessorInfo.1
  * JD-Core Version:    0.7.0.1
  */

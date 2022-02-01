@@ -33,12 +33,11 @@ public class WXEmojiPageSharedObject
   
   public boolean checkArgs()
   {
-    if ((d.b(this.title)) || (d.b(this.iconUrl)))
-    {
-      Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, title or iconUrl is invalid");
-      return false;
+    if ((!d.b(this.title)) && (!d.b(this.iconUrl))) {
+      return true;
     }
-    return true;
+    Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, title or iconUrl is invalid");
+    return false;
   }
   
   public void serialize(Bundle paramBundle)
@@ -70,7 +69,7 @@ public class WXEmojiPageSharedObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXEmojiPageSharedObject
  * JD-Core Version:    0.7.0.1
  */

@@ -17,28 +17,37 @@ public class a
         b = Throwable.class.getDeclaredField("detailMessage");
       }
       b.setAccessible(true);
-      b.set(paramThrowable, paramString + " : " + paramThrowable.getMessage());
+      Field localField = b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" : ");
+      localStringBuilder.append(paramThrowable.getMessage());
+      localField.set(paramThrowable, localStringBuilder.toString());
       return;
     }
     catch (Exception paramThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("MSFCatchedExceptionReporter", 2, "addCatchedMsgTag failed : ", paramThrowable);
+      if (QLog.isColorLevel()) {
+        QLog.e("MSFCatchedExceptionReporter", 2, "addCatchedMsgTag failed : ", paramThrowable);
+      }
     }
   }
   
   public static void a(Throwable paramThrowable, String paramString1, String paramString2)
   {
-    if ((paramThrowable == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
+    if ((paramThrowable != null) && (paramString1 != null))
+    {
+      if (paramString2 == null) {
+        return;
+      }
+      a(paramThrowable, paramString1);
+      CrashReport.handleCatchException(Thread.currentThread(), paramThrowable, paramString2, null);
     }
-    a(paramThrowable, paramString1);
-    CrashReport.handleCatchException(Thread.currentThread(), paramThrowable, paramString2, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.b.a
  * JD-Core Version:    0.7.0.1
  */

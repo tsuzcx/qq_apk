@@ -13,7 +13,7 @@ public class BaselineTextView
     super(paramContext, paramAttributeSet);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     paramCanvas.translate(0.0F, getHeight() - getBaseline() - getPaddingBottom());
     super.onDraw(paramCanvas);
@@ -21,7 +21,7 @@ public class BaselineTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.BaselineTextView
  * JD-Core Version:    0.7.0.1
  */

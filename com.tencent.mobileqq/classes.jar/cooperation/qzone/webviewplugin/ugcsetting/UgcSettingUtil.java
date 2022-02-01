@@ -33,56 +33,62 @@ public class UgcSettingUtil
   
   public static String getPrivacyDescriptionForShuoShuo(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return "公开";
-    case 1: 
-      return "公开";
-    case 4: 
+      if (paramInt != 4)
+      {
+        if (paramInt != 16)
+        {
+          if (paramInt != 64)
+          {
+            if (paramInt != 128) {
+              return "公开";
+            }
+            return "指定人";
+          }
+          return "私密";
+        }
+        return "指定人";
+      }
       return "好友";
-    case 16: 
-      return "指定人";
-    case 64: 
-      return "私密";
     }
-    return "指定人";
+    return "公开";
   }
   
   public static String liveUgcSettingToJson(Bundle paramBundle)
   {
     if (paramBundle == null) {
-      localObject1 = "";
+      return "";
     }
-    Object localObject2;
-    do
-    {
-      return localObject1;
-      localObject2 = paramBundle.getString("key_setting_raw_json");
-      localObject1 = localObject2;
-    } while (!TextUtils.isEmpty((CharSequence)localObject2));
-    Object localObject1 = new JSONObject();
+    Object localObject = paramBundle.getString("key_setting_raw_json");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      return localObject;
+    }
+    localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject1).put("flag", paramBundle.getInt("permission_flag"));
-      localObject2 = paramBundle.getStringArrayList("uin_list");
+      ((JSONObject)localObject).put("flag", paramBundle.getInt("permission_flag"));
+      ArrayList localArrayList = paramBundle.getStringArrayList("uin_list");
       paramBundle = paramBundle.getStringArrayList("key_nicknames");
-      if ((localObject2 == null) || (((ArrayList)localObject2).isEmpty())) {
-        return ((JSONObject)localObject1).toString();
-      }
-      if ((paramBundle == null) || (paramBundle.size() != ((ArrayList)localObject2).size())) {
-        return ((JSONObject)localObject1).toString();
-      }
-      JSONObject localJSONObject = new JSONObject();
-      int j = ((ArrayList)localObject2).size();
-      int i = 0;
-      while (i < j)
+      if ((localArrayList != null) && (!localArrayList.isEmpty()))
       {
-        localJSONObject.put((String)((ArrayList)localObject2).get(i), paramBundle.get(i));
-        i += 1;
+        if ((paramBundle != null) && (paramBundle.size() == localArrayList.size()))
+        {
+          JSONObject localJSONObject = new JSONObject();
+          int j = localArrayList.size();
+          int i = 0;
+          while (i < j)
+          {
+            localJSONObject.put((String)localArrayList.get(i), paramBundle.get(i));
+            i += 1;
+          }
+          ((JSONObject)localObject).put("uinList", localJSONObject);
+          return ((JSONObject)localObject).toString();
+        }
+        return ((JSONObject)localObject).toString();
       }
-      ((JSONObject)localObject1).put("uinList", localJSONObject);
-      return ((JSONObject)localObject1).toString();
+      paramBundle = ((JSONObject)localObject).toString();
+      return paramBundle;
     }
     catch (Exception paramBundle) {}
     return "";
@@ -101,18 +107,36 @@ public class UgcSettingUtil
       i = paramString.getInt("id");
       switch (i)
       {
-      case 1: 
-        localBundle.putInt("permission_code", 1);
+      case 6: 
+        localBundle.putInt("permission_code", 512);
       }
     }
     catch (Exception paramBundle)
     {
-      label86:
+      Object localObject;
       Iterator localIterator;
       localBundle.putInt("permission_code", 1);
       localBundle.putString("key_parse_json_status", paramBundle.getMessage());
       paramBundle.printStackTrace();
+      return localBundle;
     }
+    localBundle.putInt("permission_code", 9999);
+    paramBundle = paramString.optString("question");
+    localObject = paramString.optString("answer");
+    localBundle.putString("key_question", paramBundle);
+    localBundle.putString("key_answer", (String)localObject);
+    break label410;
+    localBundle.putInt("permission_code", 128);
+    break label410;
+    localBundle.putInt("permission_code", 16);
+    break label410;
+    localBundle.putInt("permission_code", 64);
+    break label410;
+    localBundle.putInt("permission_code", 4);
+    break label410;
+    localBundle.putInt("permission_code", 1);
+    break label410;
+    label184:
     paramBundle = "";
     if (paramString.has("msg")) {
       paramBundle = paramString.optString("msg");
@@ -123,10 +147,9 @@ public class UgcSettingUtil
       paramBundle.append("除了 ");
     }
     paramString = paramString.getJSONObject("uinList");
-    Object localObject = new ArrayList();
+    localObject = new ArrayList();
     localIterator = paramString.keys();
-    for (int i = 1;; i = 0)
-    {
+    for (int i = 1;; i = 0) {
       if (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
@@ -134,45 +157,34 @@ public class UgcSettingUtil
         if (i == 0) {
           paramBundle.append("、");
         }
-        if (paramBundle.length() >= 15) {
-          continue;
+        if (paramBundle.length() < 15) {
+          paramBundle.append(paramString.getString(str));
         }
-        paramBundle.append(paramString.getString(str));
-        continue;
-        localBundle.putInt("permission_code", 4);
       }
-      label404:
-      do
+      else
       {
-        return localBundle;
-        localBundle.putInt("permission_code", 64);
-        break label404;
-        localBundle.putInt("permission_code", 16);
-        break label404;
-        localBundle.putInt("permission_code", 128);
-        break label404;
-        localBundle.putInt("permission_code", 9999);
-        paramBundle = paramString.optString("question");
-        localObject = paramString.optString("answer");
-        localBundle.putString("key_question", paramBundle);
-        localBundle.putString("key_answer", (String)localObject);
-        break label404;
-        localBundle.putInt("permission_code", 512);
-        break label404;
         paramString = paramBundle.toString();
         paramBundle = paramString;
-        if (paramString.length() > 15) {
-          paramBundle = paramString.substring(0, 15) + "...";
+        if (paramString.length() > 15)
+        {
+          paramBundle = new StringBuilder();
+          paramBundle.append(paramString.substring(0, 15));
+          paramBundle.append("...");
+          paramBundle = paramBundle.toString();
         }
         localBundle.putStringArrayList("uin_list", (ArrayList)localObject);
         localBundle.putString("key_nicknames", paramBundle);
         return localBundle;
-        break;
-        if (i == 3) {
-          break label86;
-        }
-      } while (i != 4);
-      break label86;
+        label410:
+        do
+        {
+          break;
+          if (i == 3) {
+            break label184;
+          }
+        } while (i != 4);
+        break label184;
+      }
     }
   }
   
@@ -214,8 +226,12 @@ public class UgcSettingUtil
         {
           paramString = localStringBuilder.toString();
           paramBundle = paramString;
-          if (paramString.length() > 15) {
-            paramBundle = paramString.substring(0, 15) + "...";
+          if (paramString.length() > 15)
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append(paramString.substring(0, 15));
+            paramBundle.append("...");
+            paramBundle = paramBundle.toString();
           }
           localBundle.putStringArrayList("uin_list", localArrayList);
           localBundle.putString("key_nicknames", paramBundle);
@@ -235,8 +251,6 @@ public class UgcSettingUtil
   
   public static String ugcSettingToJson(Bundle paramBundle)
   {
-    int i = 1;
-    int j = 0;
     if (paramBundle == null) {
       return "";
     }
@@ -244,68 +258,93 @@ public class UgcSettingUtil
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       return localObject;
     }
-    switch (paramBundle.getInt("permission_code", 1))
+    int i = 1;
+    int k = paramBundle.getInt("permission_code", 1);
+    int j = 0;
+    if (k != 1)
     {
-    default: 
+      if (k == 4) {
+        break label109;
+      }
+      if (k == 16) {
+        break label107;
+      }
+      if (k == 64) {
+        break label102;
+      }
+      if (k == 128) {
+        break label97;
+      }
+      if (k == 512) {
+        break label91;
+      }
+      if (k == 9999) {}
+    }
+    else
+    {
       i = 0;
+      break label109;
     }
-    for (;;)
+    i = 5;
+    break label109;
+    label91:
+    i = 6;
+    break label109;
+    label97:
+    i = 4;
+    break label109;
+    label102:
+    i = 2;
+    break label109;
+    label107:
+    i = 3;
+    label109:
+    localObject = new JSONObject();
+    try
     {
-      localObject = new JSONObject();
-      try
+      ((JSONObject)localObject).put("id", i);
+      if ((i != 3) && (i != 4))
       {
-        ((JSONObject)localObject).put("id", i);
-        if ((i == 3) || (i == 4))
+        if (i == 5)
         {
-          ArrayList localArrayList = paramBundle.getStringArrayList("uin_list");
-          paramBundle = paramBundle.getStringArrayList("key_nicknames");
-          if ((localArrayList == null) || (localArrayList.isEmpty())) {
-            return ((JSONObject)localObject).toString();
-          }
-          if ((paramBundle == null) || (paramBundle.size() != localArrayList.size())) {
-            return ((JSONObject)localObject).toString();
-          }
-          JSONObject localJSONObject = new JSONObject();
-          int k = localArrayList.size();
-          i = j;
-          while (i < k)
-          {
-            localJSONObject.put((String)localArrayList.get(i), paramBundle.get(i));
-            i += 1;
-          }
-          ((JSONObject)localObject).put("uinList", localJSONObject);
+          ((JSONObject)localObject).put("question", paramBundle.getString("key_question"));
+          ((JSONObject)localObject).put("answer", paramBundle.getString("key_answer"));
         }
-        for (;;)
-        {
-          return ((JSONObject)localObject).toString();
-          if (i == 5)
-          {
-            ((JSONObject)localObject).put("question", paramBundle.getString("key_question"));
-            ((JSONObject)localObject).put("answer", paramBundle.getString("key_answer"));
-          }
-        }
-        i = 0;
       }
-      catch (Exception paramBundle)
+      else
       {
-        return "";
+        ArrayList localArrayList = paramBundle.getStringArrayList("uin_list");
+        paramBundle = paramBundle.getStringArrayList("key_nicknames");
+        if ((localArrayList == null) || (localArrayList.isEmpty())) {
+          break label297;
+        }
+        if ((paramBundle == null) || (paramBundle.size() != localArrayList.size())) {
+          break label291;
+        }
+        JSONObject localJSONObject = new JSONObject();
+        k = localArrayList.size();
+        i = j;
+        while (i < k)
+        {
+          localJSONObject.put((String)localArrayList.get(i), paramBundle.get(i));
+          i += 1;
+        }
+        ((JSONObject)localObject).put("uinList", localJSONObject);
       }
-      continue;
-      i = 2;
-      continue;
-      i = 5;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 6;
+      return ((JSONObject)localObject).toString();
+      label291:
+      return ((JSONObject)localObject).toString();
+      label297:
+      paramBundle = ((JSONObject)localObject).toString();
+      return paramBundle;
     }
+    catch (Exception paramBundle) {}
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.ugcsetting.UgcSettingUtil
  * JD-Core Version:    0.7.0.1
  */

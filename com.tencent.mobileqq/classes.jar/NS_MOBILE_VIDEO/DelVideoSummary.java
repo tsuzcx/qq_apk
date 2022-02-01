@@ -29,18 +29,20 @@ public final class DelVideoSummary
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vid != null) {
-      paramJceOutputStream.write(this.vid, 0);
+    String str = this.vid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.ret, 1);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 2);
+    str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.DelVideoSummary
  * JD-Core Version:    0.7.0.1
  */

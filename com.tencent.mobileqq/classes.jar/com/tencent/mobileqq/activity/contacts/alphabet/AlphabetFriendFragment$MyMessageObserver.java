@@ -7,7 +7,7 @@ class AlphabetFriendFragment$MyMessageObserver
 {
   private AlphabetFriendFragment$MyMessageObserver(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void onUpdateFriendsList()
+  protected void onUpdateFriendsList()
   {
     if (AlphabetFriendFragment.b(this.a)) {
       AlphabetFriendFragment.a(this.a, 1400L, true);
@@ -16,7 +16,7 @@ class AlphabetFriendFragment$MyMessageObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment.MyMessageObserver
  * JD-Core Version:    0.7.0.1
  */

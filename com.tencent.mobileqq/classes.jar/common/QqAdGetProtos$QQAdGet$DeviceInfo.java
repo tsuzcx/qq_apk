@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class QqAdGetProtos$QQAdGet$DeviceInfo
   extends MessageMicro<DeviceInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 50, 56, 66, 74, 82, 88, 98, 106, 114, 120, 130, 138, 146, 154, 160, 168, 176, 186, 194, 202, 210, 218, 226, 232, 240, 248, 256 }, new String[] { "muid", "muid_type", "conn", "carrier_code", "os_ver", "qq_ver", "os_type", "client_ip", "ios_qidfa", "location", "is_wk_webview", "manufacturer", "device_brand_and_model", "qadid", "app_version_id", "imei", "idfa", "android_id", "mac", "is_googleplay_version", "device_orientation", "is_ios_review_state", "oaid", "taid_ticket", "md5_mac", "md5_android_id", "client_ipv4", "aid_ticket", "wx_api_ver", "wx_installed", "wx_ul", "origin_network_type" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), "", "", null, Boolean.valueOf(false), "", "", "", Integer.valueOf(0), "", "", "", "", Boolean.valueOf(false), Integer.valueOf(0), Boolean.valueOf(false), "", "", "", "", "", "", Long.valueOf(0L), Boolean.valueOf(false), Boolean.valueOf(false), Integer.valueOf(0) }, DeviceInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField aid_ticket = PBField.initString("");
   public final PBStringField android_id = PBField.initString("");
   public final PBUInt32Field app_version_id = PBField.initUInt32(0);
@@ -44,10 +44,17 @@ public final class QqAdGetProtos$QQAdGet$DeviceInfo
   public final PBUInt64Field wx_api_ver = PBField.initUInt64(0L);
   public final PBBoolField wx_installed = PBField.initBool(false);
   public final PBBoolField wx_ul = PBField.initBool(false);
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 50, 56, 66, 74, 82, 88, 98, 106, 114, 120, 130, 138, 146, 154, 160, 168, 176, 186, 194, 202, 210, 218, 226, 232, 240, 248, 256 }, new String[] { "muid", "muid_type", "conn", "carrier_code", "os_ver", "qq_ver", "os_type", "client_ip", "ios_qidfa", "location", "is_wk_webview", "manufacturer", "device_brand_and_model", "qadid", "app_version_id", "imei", "idfa", "android_id", "mac", "is_googleplay_version", "device_orientation", "is_ios_review_state", "oaid", "taid_ticket", "md5_mac", "md5_android_id", "client_ipv4", "aid_ticket", "wx_api_ver", "wx_installed", "wx_ul", "origin_network_type" }, new Object[] { "", localInteger, localInteger, localInteger, "", "", localInteger, "", "", null, localBoolean, "", "", "", localInteger, "", "", "", "", localBoolean, localInteger, localBoolean, "", "", "", "", "", "", Long.valueOf(0L), localBoolean, localBoolean, localInteger }, DeviceInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     common.QqAdGetProtos.QQAdGet.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

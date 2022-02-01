@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
 import com.huawei.hms.framework.common.Logger;
+import com.huawei.hms.framework.common.StringUtils;
 import com.huawei.hms.framework.network.restclient.hwhttp.plugin.BasePlugin;
 import com.huawei.hms.framework.network.restclient.hwhttp.plugin.PluginInterceptor;
 import java.io.IOException;
+import java.util.Locale;
 
 public class GrsManager
   implements BasePlugin
@@ -21,19 +23,20 @@ public class GrsManager
   @SuppressLint({"StaticFieldLeak"})
   private static volatile GrsManager instance;
   private GrsConfig grsConfig;
-  private e grsInterceptor;
+  private f grsInterceptor;
   
   public static GrsManager getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new GrsManager();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new GrsManager();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private String getServiceNameUrl(String paramString1, String paramString2)
@@ -48,74 +51,90 @@ public class GrsManager
   
   private String[] parseGRSSchema(String paramString)
   {
-    return paramString.substring(paramString.toLowerCase().indexOf("grs://") + "grs://".length()).split("/", 3);
+    return StringUtils.substring(paramString, paramString.toLowerCase(Locale.ENGLISH).indexOf("grs://") + 6).split("/", 3);
   }
   
   public PluginInterceptor getInterceptor()
   {
     if (this.grsInterceptor == null) {
-      this.grsInterceptor = new e();
+      this.grsInterceptor = new f();
     }
     return this.grsInterceptor;
   }
   
   public boolean initGrs(Context paramContext, GrsConfig paramGrsConfig)
   {
-    if ((this.grsConfig == null) || (!this.grsConfig.equal(paramGrsConfig)))
+    GrsConfig localGrsConfig = this.grsConfig;
+    if ((localGrsConfig == null) || (!localGrsConfig.equal(paramGrsConfig)))
     {
       this.grsConfig = paramGrsConfig;
-      paramGrsConfig = paramContext;
+      paramGrsConfig = null;
       if (paramContext != null) {
-        paramGrsConfig = paramContext.getApplicationContext();
+        paramContext = paramContext.getApplicationContext();
+      } else {
+        paramContext = null;
       }
-      if (this.grsConfig == null) {
-        break label58;
+      localGrsConfig = this.grsConfig;
+      if (localGrsConfig != null) {
+        paramGrsConfig = localGrsConfig.getGrsBaseInfo(paramContext);
       }
+      GrsApi.grsSdkInit(paramContext, paramGrsConfig);
     }
-    label58:
-    for (paramContext = this.grsConfig.getGrsBaseInfo(paramGrsConfig);; paramContext = null)
-    {
-      GrsApi.grsSdkInit(paramGrsConfig, paramContext);
-      return true;
-    }
+    return true;
   }
   
   protected String parseGrs(String paramString)
   {
-    String str = paramString;
+    Object localObject = paramString;
     if (paramString.endsWith("/")) {
-      str = paramString.substring(paramString.indexOf("grs://"), paramString.length() - 1);
+      localObject = StringUtils.substring(paramString, paramString.indexOf("grs://"), paramString.length() - 1);
     }
-    String[] arrayOfString = parseGRSSchema(str);
-    paramString = "";
+    String[] arrayOfString = parseGRSSchema((String)localObject);
     if (arrayOfString.length == 1) {
-      paramString = getServiceNameUrl(arrayOfString[0], "ROOT");
+      paramString = arrayOfString[0];
     }
-    while (TextUtils.isEmpty(paramString))
+    for (localObject = "ROOT";; localObject = arrayOfString[1])
     {
-      throw new IOException("can not get url, do grsUrl(serviceName or key) error?");
-      if (arrayOfString.length >= 2) {
-        paramString = getServiceNameUrl(arrayOfString[0], arrayOfString[1]);
-      } else {
-        Logger.i("GrsManager", "parseGrs params.length<1.");
+      paramString = getServiceNameUrl(paramString, (String)localObject);
+      break label84;
+      if (arrayOfString.length < 2) {
+        break;
       }
+      paramString = arrayOfString[0];
     }
-    str = paramString;
-    if (arrayOfString.length > 2)
+    Logger.i("GrsManager", "parseGrs params.length<1.");
+    paramString = "";
+    label84:
+    if (!TextUtils.isEmpty(paramString))
     {
-      if (paramString.endsWith("/")) {
-        str = paramString + arrayOfString[2];
+      localObject = paramString;
+      if (arrayOfString.length > 2)
+      {
+        if (paramString.endsWith("/"))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(arrayOfString[2]);
+          return ((StringBuilder)localObject).toString();
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("/");
+        ((StringBuilder)localObject).append(arrayOfString[2]);
+        localObject = ((StringBuilder)localObject).toString();
       }
+      return localObject;
     }
-    else {
-      return str;
+    paramString = new IOException("can not get url, do grsUrl(serviceName or key) error?");
+    for (;;)
+    {
+      throw paramString;
     }
-    return paramString + "/" + arrayOfString[2];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.GrsManager
  * JD-Core Version:    0.7.0.1
  */

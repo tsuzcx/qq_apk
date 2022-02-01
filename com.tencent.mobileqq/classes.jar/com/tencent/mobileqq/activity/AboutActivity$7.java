@@ -9,7 +9,7 @@ class AboutActivity$7
 {
   AboutActivity$7(AboutActivity paramAboutActivity) {}
   
-  public void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
     AboutActivity.a(this.a, paramUpgradeDetailWrapper);
     paramUpgradeDetailWrapper = this.a.app.getAboutConfig();
@@ -18,7 +18,7 @@ class AboutActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AboutActivity.7
  * JD-Core Version:    0.7.0.1
  */

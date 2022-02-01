@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.RIJItemViewType;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyOidbHelper;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.base.utils.api.IReadInJoyOidbHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
+import com.tencent.mobileqq.kandian.repo.common.api.IRIJItemViewTypeUtils;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -17,6 +17,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -34,7 +35,15 @@ import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 public class VideoPlayDianZanHandler
   extends BusinessHandler
 {
-  static final String a = "Q.pubaccount.video." + VideoPlayDianZanObserver.class.getSimpleName();
+  static final String a;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Q.pubaccount.video.");
+    localStringBuilder.append(VideoPlayDianZanObserver.class.getSimpleName());
+    a = localStringBuilder.toString();
+  }
   
   public VideoPlayDianZanHandler(AppInterface paramAppInterface)
   {
@@ -48,137 +57,166 @@ public class VideoPlayDianZanHandler
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    Object localObject = new oidb_cmd0x8c8.RspBody();
-    int k = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+    Object localObject1 = new oidb_cmd0x8c8.RspBody();
+    int k = ((IReadInJoyOidbHelper)QRoute.api(IReadInJoyOidbHelper.class)).parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject1);
     paramObject = new Bundle();
     paramToServiceMsg = "";
     if (k == 0)
     {
-      if ((((oidb_cmd0x8c8.RspBody)localObject).rpt_social_feeds_info.has()) && (((oidb_cmd0x8c8.RspBody)localObject).rpt_social_feeds_info.get() != null))
+      if ((((oidb_cmd0x8c8.RspBody)localObject1).rpt_social_feeds_info.has()) && (((oidb_cmd0x8c8.RspBody)localObject1).rpt_social_feeds_info.get() != null))
       {
-        localObject = ((oidb_cmd0x8c8.RspBody)localObject).rpt_social_feeds_info.get().iterator();
-        int i = 2;
-        paramFromServiceMsg = paramToServiceMsg;
-        j = i;
-        if (!((Iterator)localObject).hasNext()) {
-          break label311;
-        }
-        oidb_cmd0x8c8.FeedsInfo localFeedsInfo = (oidb_cmd0x8c8.FeedsInfo)((Iterator)localObject).next();
-        if ((localFeedsInfo.bytes_rowkey.has()) && (localFeedsInfo.bytes_rowkey.get() != null))
+        localObject1 = ((oidb_cmd0x8c8.RspBody)localObject1).rpt_social_feeds_info.get().iterator();
+        paramToServiceMsg = "";
+        i = 2;
+        while (((Iterator)localObject1).hasNext())
         {
-          paramFromServiceMsg = localFeedsInfo.bytes_rowkey.get().toStringUtf8();
-          label136:
-          if ((!localFeedsInfo.has()) || (localFeedsInfo.get() == null) || (!localFeedsInfo.msg_social_fees_info.has()) || (localFeedsInfo.msg_social_fees_info.get() == null)) {
-            break label288;
-          }
-          paramToServiceMsg = (oidb_cmd0x8c8.SocializeFeedsInfo)localFeedsInfo.msg_social_fees_info.get();
-          if (!paramToServiceMsg.uint32_myself_like_status.has()) {
-            break label273;
-          }
-          j = paramToServiceMsg.uint32_myself_like_status.get();
-          i = j;
-          if (QLog.isColorLevel())
+          Object localObject2 = (oidb_cmd0x8c8.FeedsInfo)((Iterator)localObject1).next();
+          if ((((oidb_cmd0x8c8.FeedsInfo)localObject2).bytes_rowkey.has()) && (((oidb_cmd0x8c8.FeedsInfo)localObject2).bytes_rowkey.get() != null))
           {
-            QLog.d(a, 2, "getFavoriteState，faviriteState为:" + j);
-            i = j;
+            paramFromServiceMsg = ((oidb_cmd0x8c8.FeedsInfo)localObject2).bytes_rowkey.get().toStringUtf8();
           }
-        }
-        label273:
-        label288:
-        for (;;)
-        {
+          else
+          {
+            paramFromServiceMsg = paramToServiceMsg;
+            if (QLog.isColorLevel())
+            {
+              QLog.e(a, 2, "getFavoriteState, 返回的articleId空");
+              paramFromServiceMsg = paramToServiceMsg;
+            }
+          }
           paramToServiceMsg = paramFromServiceMsg;
-          break;
-          paramFromServiceMsg = paramToServiceMsg;
-          if (!QLog.isColorLevel()) {
-            break label136;
-          }
-          QLog.e(a, 2, "getFavoriteState, 返回的articleId空");
-          paramFromServiceMsg = paramToServiceMsg;
-          break label136;
-          if (QLog.isColorLevel()) {
-            QLog.d(a, 2, "getFavoriteState，faviriteState为空");
+          if (((oidb_cmd0x8c8.FeedsInfo)localObject2).has())
+          {
+            paramToServiceMsg = paramFromServiceMsg;
+            if (((oidb_cmd0x8c8.FeedsInfo)localObject2).get() != null)
+            {
+              paramToServiceMsg = paramFromServiceMsg;
+              if (((oidb_cmd0x8c8.FeedsInfo)localObject2).msg_social_fees_info.has())
+              {
+                paramToServiceMsg = paramFromServiceMsg;
+                if (((oidb_cmd0x8c8.FeedsInfo)localObject2).msg_social_fees_info.get() != null)
+                {
+                  paramToServiceMsg = (oidb_cmd0x8c8.SocializeFeedsInfo)((oidb_cmd0x8c8.FeedsInfo)localObject2).msg_social_fees_info.get();
+                  if (paramToServiceMsg.uint32_myself_like_status.has())
+                  {
+                    int j = paramToServiceMsg.uint32_myself_like_status.get();
+                    i = j;
+                    paramToServiceMsg = paramFromServiceMsg;
+                    if (QLog.isColorLevel())
+                    {
+                      paramToServiceMsg = a;
+                      localObject2 = new StringBuilder();
+                      ((StringBuilder)localObject2).append("getFavoriteState，faviriteState为:");
+                      ((StringBuilder)localObject2).append(j);
+                      QLog.d(paramToServiceMsg, 2, ((StringBuilder)localObject2).toString());
+                      i = j;
+                      paramToServiceMsg = paramFromServiceMsg;
+                    }
+                  }
+                  else
+                  {
+                    paramToServiceMsg = paramFromServiceMsg;
+                    if (QLog.isColorLevel())
+                    {
+                      QLog.d(a, 2, "getFavoriteState，faviriteState为空");
+                      paramToServiceMsg = paramFromServiceMsg;
+                    }
+                  }
+                }
+              }
+            }
           }
         }
+        break label345;
       }
     }
     else if (QLog.isColorLevel()) {
       QLog.e(a, 2, "getFavoriteState, 返回直接出错了");
     }
-    int j = 2;
-    paramFromServiceMsg = paramToServiceMsg;
-    label311:
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "getFavoriteState articleId :" + paramFromServiceMsg + " faviriteState :" + j);
-    }
-    paramObject.putInt("VALUE_VIDEO_FAVORITE_STATE", j);
-    paramObject.putString("VALUE_VIDEO_ARTICLE_ID", paramFromServiceMsg);
-    if (k == 0) {}
-    for (boolean bool = true;; bool = false)
+    int i = 2;
+    label345:
+    if (QLog.isColorLevel())
     {
-      super.notifyUI(1, bool, paramObject);
-      return;
+      paramFromServiceMsg = a;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getFavoriteState articleId :");
+      ((StringBuilder)localObject1).append(paramToServiceMsg);
+      ((StringBuilder)localObject1).append(" faviriteState :");
+      ((StringBuilder)localObject1).append(i);
+      QLog.d(paramFromServiceMsg, 2, ((StringBuilder)localObject1).toString());
     }
+    paramObject.putInt("VALUE_VIDEO_FAVORITE_STATE", i);
+    paramObject.putString("VALUE_VIDEO_ARTICLE_ID", paramToServiceMsg);
+    boolean bool;
+    if (k == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    super.notifyUI(1, bool, paramObject);
   }
   
   private void a(boolean paramBoolean1, long paramLong, int paramInt, String paramString, boolean paramBoolean2)
   {
     oidb_cmd0x83e.ReqBody localReqBody = new oidb_cmd0x83e.ReqBody();
-    localReqBody.uint64_uin.set(Long.valueOf(ReadInJoyUtils.a()).longValue());
+    localReqBody.uint64_uin.set(Long.parseLong(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount()));
     if (paramBoolean1)
     {
       localReqBody.uint64_feeds_id.set(paramLong);
       localReqBody.msg_feeds_info = new oidb_cmd0x83e.FeedsInfo();
       localReqBody.msg_feeds_info.feeds_type.set(paramInt);
-      if (!paramBoolean2) {
-        break label114;
-      }
-      localReqBody.uint32_operation.set(2);
     }
-    for (;;)
+    else
     {
-      super.sendPbReq(super.makeOIDBPkg("OidbSvc.0x83e", 2110, 0, localReqBody.toByteArray()));
-      return;
       localReqBody.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(paramString));
-      break;
-      label114:
+    }
+    if (paramBoolean2) {
+      localReqBody.uint32_operation.set(2);
+    } else {
       localReqBody.uint32_operation.set(3);
     }
+    super.sendPbReq(super.makeOIDBPkg("OidbSvc.0x83e", 2110, 0, localReqBody.toByteArray()));
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool = true;
     paramToServiceMsg = new oidb_cmd0x83e.RspBody();
-    int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    int i = ((IReadInJoyOidbHelper)QRoute.api(IReadInJoyOidbHelper.class)).parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    boolean bool = true;
     if (i == 0)
     {
       QLog.d(a, 1, "handle0x83eUpvoteAction result OK");
       if (QLog.isColorLevel())
       {
-        if (paramToServiceMsg.uint64_feeds_id.has()) {
-          QLog.d(a, 2, "upvote feeds id:" + paramToServiceMsg.uint64_feeds_id.get());
+        if (paramToServiceMsg.uint64_feeds_id.has())
+        {
+          paramFromServiceMsg = a;
+          paramObject = new StringBuilder();
+          paramObject.append("upvote feeds id:");
+          paramObject.append(paramToServiceMsg.uint64_feeds_id.get());
+          QLog.d(paramFromServiceMsg, 2, paramObject.toString());
         }
         if (paramToServiceMsg.uint32_operation.has())
         {
           paramFromServiceMsg = a;
-          paramObject = new StringBuilder().append("upvote status:");
+          paramObject = new StringBuilder();
+          paramObject.append("upvote status:");
           if (paramToServiceMsg.uint32_operation.get() != 2) {
-            break label134;
+            bool = false;
           }
-          QLog.d(paramFromServiceMsg, 2, bool);
+          paramObject.append(bool);
+          QLog.d(paramFromServiceMsg, 2, paramObject.toString());
         }
       }
     }
-    label134:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        return;
-        bool = false;
-      }
+    else if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = a;
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("handle0x83eUpvoteAction result wrong:");
+      paramFromServiceMsg.append(i);
+      QLog.d(paramToServiceMsg, 1, paramFromServiceMsg.toString());
     }
-    QLog.d(a, 1, "handle0x83eUpvoteAction result wrong:" + i);
   }
   
   public void a(VideoInfo paramVideoInfo, boolean paramBoolean)
@@ -194,17 +232,17 @@ public class VideoPlayDianZanHandler
     a(false, -1L, -1, paramVideoInfo.g, paramBoolean);
   }
   
-  public void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean)
+  public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean)
   {
-    if (paramBaseArticleInfo == null) {
+    if (paramAbsBaseArticleInfo == null) {
       return;
     }
-    if (!RIJItemViewType.j(paramBaseArticleInfo))
+    if (!((IRIJItemViewTypeUtils)QRoute.api(IRIJItemViewTypeUtils.class)).isUgcVideoFeedsEmpty(paramAbsBaseArticleInfo))
     {
-      a(true, paramBaseArticleInfo.mFeedId, paramBaseArticleInfo.mFeedType, null, paramBoolean);
+      a(true, paramAbsBaseArticleInfo.mFeedId, paramAbsBaseArticleInfo.mFeedType, null, paramBoolean);
       return;
     }
-    a(false, -1L, -1, paramBaseArticleInfo.innerUniqueID, paramBoolean);
+    a(false, -1L, -1, paramAbsBaseArticleInfo.innerUniqueID, paramBoolean);
   }
   
   public Set<String> getCommandList()
@@ -218,7 +256,7 @@ public class VideoPlayDianZanHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return VideoPlayDianZanObserver.class;
   }
@@ -228,31 +266,39 @@ public class VideoPlayDianZanHandler
     if (QLog.isColorLevel()) {
       QLog.d(a, 2, "handleGetPlayCount onReceive");
     }
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {}
-    do
-    {
-      do
-      {
-        return;
-        try
-        {
-          if (!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x8c8")) {
-            break;
-          }
-          a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-          return;
-        }
-        catch (Exception paramToServiceMsg) {}
-      } while (!QLog.isColorLevel());
-      QLog.e(a, 2, "onReceive ERROR e=" + paramToServiceMsg.getMessage() + paramFromServiceMsg.getServiceCmd());
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
       return;
-    } while (!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x83e"));
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    try
+    {
+      if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x8c8"))
+      {
+        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x83e"))
+      {
+        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramObject = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onReceive ERROR e=");
+        localStringBuilder.append(paramToServiceMsg.getMessage());
+        localStringBuilder.append(paramFromServiceMsg.getServiceCmd());
+        QLog.e(paramObject, 2, localStringBuilder.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.VideoPlayDianZanHandler
  * JD-Core Version:    0.7.0.1
  */

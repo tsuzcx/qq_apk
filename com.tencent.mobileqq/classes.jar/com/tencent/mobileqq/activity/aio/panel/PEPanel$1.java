@@ -13,9 +13,7 @@ class PEPanel$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 0) {
       return false;
     }
     PEPanel.a(this.a).setVisibility(0);
@@ -27,7 +25,7 @@ class PEPanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PEPanel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,23 +15,31 @@ class TaskThreadPool$CustomThreadFactory
   TaskThreadPool$CustomThreadFactory(String paramString)
   {
     Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-    {
-      this.group = ((ThreadGroup)localObject);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localObject = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        localObject = "threadpool";
-      }
-      this.namePrefix = ((String)localObject + "-" + poolNumber.getAndIncrement() + "-thread-");
-      return;
+    if (localObject != null) {
+      localObject = ((SecurityManager)localObject).getThreadGroup();
+    } else {
+      localObject = Thread.currentThread().getThreadGroup();
     }
+    this.group = ((ThreadGroup)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localObject = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      localObject = "threadpool";
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("-");
+    localStringBuilder.append(poolNumber.getAndIncrement());
+    localStringBuilder.append("-thread-");
+    this.namePrefix = localStringBuilder.toString();
   }
   
   public Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = new Thread(this.group, paramRunnable, this.namePrefix + this.threadNumber.getAndIncrement(), 0L);
+    ThreadGroup localThreadGroup = this.group;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.namePrefix);
+    localStringBuilder.append(this.threadNumber.getAndIncrement());
+    paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
     }
@@ -43,7 +51,7 @@ class TaskThreadPool$CustomThreadFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.TaskThreadPool.CustomThreadFactory
  * JD-Core Version:    0.7.0.1
  */

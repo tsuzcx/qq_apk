@@ -20,15 +20,12 @@ public class GetTroopAssistantFeedIdListRequest
     try
     {
       localRspGroupStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new GetTroopAssistantFeedIdListRequest.GetTroopAssistantFeedIdListResponse(localRspGroupStoryFeedIdList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetTroopAssistantFeedIdListRequest.GetTroopAssistantFeedIdListResponse(localRspGroupStoryFeedIdList);
   }
   
   public String a()
@@ -36,7 +33,7 @@ public class GetTroopAssistantFeedIdListRequest
     return StoryApi.a("StoryGroupSvc.get_dynamic_group_feedid_list");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_group.ReqGroupStoryFeedIdList localReqGroupStoryFeedIdList = new qqstory_group.ReqGroupStoryFeedIdList();
     localReqGroupStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
@@ -45,7 +42,7 @@ public class GetTroopAssistantFeedIdListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest
  * JD-Core Version:    0.7.0.1
  */

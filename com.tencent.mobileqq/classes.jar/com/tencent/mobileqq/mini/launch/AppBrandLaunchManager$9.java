@@ -11,32 +11,30 @@ class AppBrandLaunchManager$9
   
   public void onUpdateResult(int paramInt)
   {
-    QLog.w("miniapp-process_AppBrandLaunchManager", 1, "updateBaseLib ret=" + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateBaseLib ret=");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.w("miniapp-process_AppBrandLaunchManager", 1, ((StringBuilder)localObject).toString());
     if (paramInt == 0) {
       return;
     }
     if (paramInt == 1)
     {
-      QLog.w("miniapp-process_AppBrandLaunchManager", 1, HardCodeUtil.a(2131700675));
+      QLog.w("miniapp-process_AppBrandLaunchManager", 1, HardCodeUtil.a(2131700816));
       return;
     }
-    String str = HardCodeUtil.a(2131700672);
+    localObject = HardCodeUtil.a(2131700813);
     if (paramInt == 1100) {
-      str = HardCodeUtil.a(2131700678);
+      localObject = HardCodeUtil.a(2131700819);
+    } else if (paramInt == 1101) {
+      localObject = HardCodeUtil.a(2131700822);
     }
-    for (;;)
-    {
-      QLog.w("miniapp-process_AppBrandLaunchManager", 1, str);
-      return;
-      if (paramInt == 1101) {
-        str = HardCodeUtil.a(2131700681);
-      }
-    }
+    QLog.w("miniapp-process_AppBrandLaunchManager", 1, (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.9
  * JD-Core Version:    0.7.0.1
  */

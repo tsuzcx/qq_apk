@@ -15,24 +15,30 @@ class EffectBeautyTools$MyHttpListener
   public void onResp(NetResp paramNetResp)
   {
     Object localObject = (EffectBeautyTools.SkinColorFilterDesc)paramNetResp.mReq.getUserData();
-    AVLog.printColorLog("EffectBeautyTools", "download file call back. file = " + ((EffectBeautyTools.SkinColorFilterDesc)localObject).a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("download file call back. file = ");
+    localStringBuilder.append(((EffectBeautyTools.SkinColorFilterDesc)localObject).a);
+    AVLog.printColorLog("EffectBeautyTools", localStringBuilder.toString());
     if (paramNetResp.mResult != 0)
     {
-      AVLog.printColorLog("EffectBeautyTools", "download file faild. errcode = " + paramNetResp.mErrCode);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("download file faild. errcode = ");
+      ((StringBuilder)localObject).append(paramNetResp.mErrCode);
+      AVLog.printColorLog("EffectBeautyTools", ((StringBuilder)localObject).toString());
       return;
     }
     if (!((EffectBeautyTools.SkinColorFilterDesc)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.mReq.mOutPath)))
     {
       AVLog.printColorLog("EffectBeautyTools", "download file faild : md5 is not match.");
-      FileUtils.e(paramNetResp.mReq.mOutPath);
+      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
       return;
     }
     AVLog.printColorLog("EffectBeautyTools", "download file successed.");
     try
     {
-      localObject = AVPathUtil.i();
-      FileUtils.a(paramNetResp.mReq.mOutPath, (String)localObject, false);
-      FileUtils.e(paramNetResp.mReq.mOutPath);
+      localObject = AVPathUtil.l();
+      FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, (String)localObject, false);
+      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
       return;
     }
     catch (IOException paramNetResp)
@@ -46,7 +52,7 @@ class EffectBeautyTools$MyHttpListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.EffectBeautyTools.MyHttpListener
  * JD-Core Version:    0.7.0.1
  */

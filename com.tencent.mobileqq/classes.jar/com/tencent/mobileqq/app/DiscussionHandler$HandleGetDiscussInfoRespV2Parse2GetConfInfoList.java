@@ -33,74 +33,83 @@ class DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList
   
   public HandleGetDiscussInfoRespV2Parse2GetConfInfoList a()
   {
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    Object localObject1 = new oidb_sso.OIDBSSOPkg();
     try
     {
-      localOIDBSSOPkg = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom(this.jdField_a_of_type_ArrayOfByte);
-      if ((!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
+      localObject1 = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject1).mergeFrom(this.jdField_a_of_type_ArrayOfByte);
+      if ((((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.has()) && (((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.get() == 0) && (((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.has()) && (((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.get() != null))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.contacttab.dscs", 2, "sso check fail " + localOIDBSSOPkg.uint32_result.get());
+        cmd0x58b.RspBody localRspBody = new cmd0x58b.RspBody();
+        try
+        {
+          localRspBody.mergeFrom(((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.get().toByteArray());
+          if (localRspBody.msg_cmd_error_code.uint32_code.get() != 0)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.jdField_a_of_type_JavaUtilHashMap.values());
+            this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
+            this.jdField_a_of_type_Boolean = true;
+            return this;
+          }
+          boolean bool = localRspBody.msg_get_multi_conf_info.has();
+          localObject2 = null;
+          if (bool) {
+            localObject1 = (cmd0x58b.GetMultiConfInfoRsp)localRspBody.msg_get_multi_conf_info.get();
+          } else {
+            localObject1 = null;
+          }
+          if (localObject1 != null)
+          {
+            if (((cmd0x58b.GetMultiConfInfoRsp)localObject1).msg_get_conf_info.has()) {
+              localObject2 = ((cmd0x58b.GetMultiConfInfoRsp)localObject1).msg_get_conf_info.get();
+            }
+            this.jdField_a_of_type_JavaUtilList = ((List)localObject2);
+          }
+          else
+          {
+            this.jdField_a_of_type_JavaUtilList = null;
+          }
+          this.jdField_a_of_type_Boolean = false;
+          return this;
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_Boolean = true;
-        return this;
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("rspBody merge fail ");
+            ((StringBuilder)localObject2).append(localInvalidProtocolBufferMicroException1.toString());
+            QLog.e("Q.contacttab.dscs", 2, ((StringBuilder)localObject2).toString());
+          }
+          this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
+          this.jdField_a_of_type_Boolean = true;
+          return this;
+        }
       }
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.contacttab.dscs", 2, "merge fail " + localInvalidProtocolBufferMicroException1.toString());
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("sso check fail ");
+        ((StringBuilder)localObject2).append(localInvalidProtocolBufferMicroException1.uint32_result.get());
+        QLog.e("Q.contacttab.dscs", 2, ((StringBuilder)localObject2).toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_Boolean = true;
       return this;
-    }
-    cmd0x58b.RspBody localRspBody = new cmd0x58b.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(localInvalidProtocolBufferMicroException1.bytes_bodybuffer.get().toByteArray());
-      if (localRspBody.msg_cmd_error_code.uint32_code.get() != 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.jdField_a_of_type_JavaUtilHashMap.values());
-        this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_Boolean = true;
-        return this;
-      }
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.contacttab.dscs", 2, "rspBody merge fail " + localInvalidProtocolBufferMicroException2.toString());
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("merge fail ");
+        ((StringBuilder)localObject2).append(localInvalidProtocolBufferMicroException2.toString());
+        QLog.e("Q.contacttab.dscs", 2, ((StringBuilder)localObject2).toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_Boolean = true;
-      return this;
     }
-    Object localObject;
-    if (localRspBody.msg_get_multi_conf_info.has())
-    {
-      localObject = (cmd0x58b.GetMultiConfInfoRsp)localRspBody.msg_get_multi_conf_info.get();
-      if (localObject == null) {
-        break label370;
-      }
-      if (!((cmd0x58b.GetMultiConfInfoRsp)localObject).msg_get_conf_info.has()) {
-        break label365;
-      }
-      localObject = ((cmd0x58b.GetMultiConfInfoRsp)localObject).msg_get_conf_info.get();
-    }
-    label348:
-    label365:
-    label370:
-    for (this.jdField_a_of_type_JavaUtilList = ((List)localObject);; this.jdField_a_of_type_JavaUtilList = null)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return this;
-      localObject = null;
-      break;
-      localObject = null;
-      break label348;
-    }
+    return this;
   }
   
   public List<cmd0x58b.GetConfInfoRsp> a()
@@ -115,7 +124,7 @@ class DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.DiscussionHandler.HandleGetDiscussInfoRespV2Parse2GetConfInfoList
  * JD-Core Version:    0.7.0.1
  */

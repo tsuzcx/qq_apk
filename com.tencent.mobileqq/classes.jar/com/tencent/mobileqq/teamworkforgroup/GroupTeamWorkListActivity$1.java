@@ -5,8 +5,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class GroupTeamWorkListActivity$1
@@ -16,7 +17,7 @@ class GroupTeamWorkListActivity$1
   
   public void onClick(View paramView)
   {
-    TeamWorkUtils.a(this.a.app, "0X800993E", String.valueOf(this.a.a));
+    ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportClickWithTroopType(this.a.app, "0X800993E", String.valueOf(this.a.a));
     PadInfo localPadInfo = (PadInfo)((CloudFileItemBuilder.CloudFileHolder)paramView.getTag()).a;
     Bundle localBundle = new Bundle();
     localBundle.putString("url", HtmlOffline.a(localPadInfo.pad_url, "_bid=2517"));
@@ -31,7 +32,7 @@ class GroupTeamWorkListActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.1
  * JD-Core Version:    0.7.0.1
  */

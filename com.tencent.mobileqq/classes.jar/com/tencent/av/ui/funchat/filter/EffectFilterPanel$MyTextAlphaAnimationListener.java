@@ -19,7 +19,12 @@ class EffectFilterPanel$MyTextAlphaAnimationListener
   public void onAnimationEnd(Animation paramAnimation)
   {
     View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    AVLog.printColorLog("EffectFilterPanel", "MyTextAlphaAnimationListener onAnimationEnd :" + localView + "|" + paramAnimation);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MyTextAlphaAnimationListener onAnimationEnd :");
+    localStringBuilder.append(localView);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramAnimation);
+    AVLog.printColorLog("EffectFilterPanel", localStringBuilder.toString());
     if (localView != null) {
       localView.setVisibility(8);
     }
@@ -31,7 +36,7 @@ class EffectFilterPanel$MyTextAlphaAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterPanel.MyTextAlphaAnimationListener
  * JD-Core Version:    0.7.0.1
  */

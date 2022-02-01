@@ -12,7 +12,7 @@ import java.nio.ByteBuffer;
 
 public class VideoFaceDetector
 {
-  private static final String TAG = VideoFaceDetector.class.getSimpleName();
+  private static final String TAG = "VideoFaceDetector";
   private long mNativeObjPtr;
   
   public static Bitmap getBitmap(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -65,7 +65,7 @@ public class VideoFaceDetector
   
   public boolean init()
   {
-    bool1 = true & FeatureManager.Features.FACE_DETECT.init();
+    boolean bool1 = FeatureManager.Features.FACE_DETECT.init() & true;
     AEOpenRenderConfig.checkStrictMode(bool1, "FACE_DETECT init failed");
     try
     {
@@ -74,11 +74,8 @@ public class VideoFaceDetector
     }
     catch (Error localError)
     {
-      for (;;)
-      {
-        bool1 = false;
-        localError.printStackTrace();
-      }
+      localError.printStackTrace();
+      bool1 = false;
     }
     AEOpenRenderConfig.checkStrictMode(bool1, "VideoFaceDetector nativeConstructor failed");
     return bool1;
@@ -97,7 +94,7 @@ public class VideoFaceDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.youtu.VideoFaceDetector
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,73 @@
 package com.huawei.agconnect.config.a;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.text.TextUtils;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import android.util.Log;
+import java.io.IOException;
+import java.io.InputStream;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class f
-  implements b
+  implements d
 {
-  private final Context a;
-  private final String b;
+  private final JSONObject a = a(paramInputStream);
   
-  f(Context paramContext, String paramString)
-  {
-    this.a = paramContext;
-    this.b = paramString;
-  }
+  f(InputStream paramInputStream) {}
   
-  private static String a(String paramString)
+  private JSONObject a(InputStream paramInputStream)
   {
+    if (paramInputStream != null) {}
     try
     {
-      paramString = "agc_" + c.a(a(paramString.getBytes("UTF-8")));
-      return paramString;
+      paramInputStream = new JSONObject(j.a(paramInputStream, "UTF-8"));
+      return paramInputStream;
     }
-    catch (UnsupportedEncodingException paramString)
+    catch (IOException paramInputStream)
     {
-      return "";
+      break label26;
     }
-    catch (NoSuchAlgorithmException paramString) {}
-    return "";
+    catch (JSONException paramInputStream)
+    {
+      label20:
+      break label20;
+    }
+    paramInputStream = "JSONException when reading the 'Config' from InputStream.";
+    break label29;
+    label26:
+    paramInputStream = "IOException when reading the 'Config' from InputStream.";
+    label29:
+    Log.e("InputStreamReader", paramInputStream);
+    return new JSONObject();
   }
   
-  private static byte[] a(byte[] paramArrayOfByte)
+  public String getString(String paramString1, String paramString2)
   {
-    return MessageDigest.getInstance("SHA-256").digest(paramArrayOfByte);
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    paramString1 = a(paramString1);
-    if (TextUtils.isEmpty(paramString1)) {}
-    int i;
-    do
-    {
+    if (paramString1.endsWith("/")) {
       return paramString2;
-      i = this.a.getResources().getIdentifier(paramString1, "string", this.b);
-    } while (i == 0);
+    }
+    String[] arrayOfString = paramString1.split("/");
     try
     {
-      paramString1 = this.a.getResources().getString(i);
-      return paramString1;
+      localObject = this.a;
+      int i = 1;
+      while (i < arrayOfString.length)
+      {
+        if (i == arrayOfString.length - 1) {
+          return ((JSONObject)localObject).get(arrayOfString[i]).toString();
+        }
+        localObject = ((JSONObject)localObject).getJSONObject(arrayOfString[i]);
+        i += 1;
+      }
     }
-    catch (Resources.NotFoundException paramString1) {}
+    catch (JSONException localJSONException)
+    {
+      Object localObject;
+      label74:
+      break label74;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("JSONException when reading 'path': ");
+    ((StringBuilder)localObject).append(paramString1);
+    Log.w("InputStreamReader", ((StringBuilder)localObject).toString());
     return paramString2;
   }
 }

@@ -50,6 +50,8 @@ public final class oidb_cmd0xbed$ArticleSummary
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -65,12 +67,12 @@ public final class oidb_cmd0xbed$ArticleSummary
     ByteStringMicro localByteStringMicro13 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro14 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro15 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 58, 66, 74, 82, 88, 98, 106, 114, 120, 128, 136, 144, 152, 162, 170, 178, 186, 194, 200, 210, 218, 224, 234, 242, 250, 256, 274, 80010 }, new String[] { "uint64_article_id", "bytes_rowkey", "uint32_is_ugc", "uint32_uptime", "uint32_feeds_type", "uint32_video_count", "bytes_article_title", "bytes_article_summary", "bytes_first_page_pic_url", "bytes_article_content_url", "uint64_time", "bytes_name", "bytes_icon", "bytes_uin", "uint32_comment_count", "uint64_recommend_time", "uint64_recommend_seq", "uint64_algorithm_id", "uint32_strategy_id", "bytes_recommend_reason", "msg_video_data", "rpt_article_tag_list", "msg_channel_info", "bytes_push_context", "uint32_play_count", "rpt_label_list", "bytes_ads_jump_url", "uint32_ads_jump_type", "bytes_video_subscript_txt", "bytes_video_subscript_color", "bytes_video_report_info", "uint32_article_style", "rpt_article_list", "bytes_business_info" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro9, null, null, null, localByteStringMicro10, Integer.valueOf(0), null, localByteStringMicro11, Integer.valueOf(0), localByteStringMicro12, localByteStringMicro13, localByteStringMicro14, Integer.valueOf(0), null, localByteStringMicro15 }, ArticleSummary.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 58, 66, 74, 82, 88, 98, 106, 114, 120, 128, 136, 144, 152, 162, 170, 178, 186, 194, 200, 210, 218, 224, 234, 242, 250, 256, 274, 80010 }, new String[] { "uint64_article_id", "bytes_rowkey", "uint32_is_ugc", "uint32_uptime", "uint32_feeds_type", "uint32_video_count", "bytes_article_title", "bytes_article_summary", "bytes_first_page_pic_url", "bytes_article_content_url", "uint64_time", "bytes_name", "bytes_icon", "bytes_uin", "uint32_comment_count", "uint64_recommend_time", "uint64_recommend_seq", "uint64_algorithm_id", "uint32_strategy_id", "bytes_recommend_reason", "msg_video_data", "rpt_article_tag_list", "msg_channel_info", "bytes_push_context", "uint32_play_count", "rpt_label_list", "bytes_ads_jump_url", "uint32_ads_jump_type", "bytes_video_subscript_txt", "bytes_video_subscript_color", "bytes_video_report_info", "uint32_article_style", "rpt_article_list", "bytes_business_info" }, new Object[] { localLong, localByteStringMicro1, localInteger, localInteger, localInteger, localInteger, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localLong, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localInteger, localLong, localLong, localLong, localInteger, localByteStringMicro9, null, null, null, localByteStringMicro10, localInteger, null, localByteStringMicro11, localInteger, localByteStringMicro12, localByteStringMicro13, localByteStringMicro14, localInteger, null, localByteStringMicro15 }, ArticleSummary.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.ArticleSummary
  * JD-Core Version:    0.7.0.1
  */

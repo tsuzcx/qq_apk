@@ -17,42 +17,34 @@ public class NetworkTimeoutInfo
   
   public static NetworkTimeoutInfo parse(JSONObject paramJSONObject)
   {
-    int j = 60000;
     NetworkTimeoutInfo localNetworkTimeoutInfo = new NetworkTimeoutInfo();
-    if (paramJSONObject == null)
-    {
+    int j = 60000;
+    int i;
+    if (paramJSONObject == null) {
       i = 60000;
-      localNetworkTimeoutInfo.request = i;
-      if (paramJSONObject != null) {
-        break label72;
-      }
-      i = 60000;
-      label30:
-      localNetworkTimeoutInfo.connectSocket = i;
-      if (paramJSONObject != null) {
-        break label84;
-      }
-      i = 60000;
-      label42:
-      localNetworkTimeoutInfo.uploadFile = i;
-      if (paramJSONObject != null) {
-        break label96;
-      }
-    }
-    label72:
-    label84:
-    label96:
-    for (int i = j;; i = paramJSONObject.optInt("downloadFile", 60000))
-    {
-      localNetworkTimeoutInfo.downloadFile = i;
-      return localNetworkTimeoutInfo;
+    } else {
       i = paramJSONObject.optInt("request", 60000);
-      break;
-      i = paramJSONObject.optInt("connectSocket", 60000);
-      break label30;
-      i = paramJSONObject.optInt("uploadFile", 60000);
-      break label42;
     }
+    localNetworkTimeoutInfo.request = i;
+    if (paramJSONObject == null) {
+      i = 60000;
+    } else {
+      i = paramJSONObject.optInt("connectSocket", 60000);
+    }
+    localNetworkTimeoutInfo.connectSocket = i;
+    if (paramJSONObject == null) {
+      i = 60000;
+    } else {
+      i = paramJSONObject.optInt("uploadFile", 60000);
+    }
+    localNetworkTimeoutInfo.uploadFile = i;
+    if (paramJSONObject == null) {
+      i = j;
+    } else {
+      i = paramJSONObject.optInt("downloadFile", 60000);
+    }
+    localNetworkTimeoutInfo.downloadFile = i;
+    return localNetworkTimeoutInfo;
   }
   
   public int describeContents()
@@ -62,7 +54,21 @@ public class NetworkTimeoutInfo
   
   public String toString()
   {
-    return "NetworkTimeoutInfo{request='" + this.request + '\'' + ", connectSocket='" + this.connectSocket + '\'' + ", uploadFile='" + this.uploadFile + '\'' + ", downloadFile='" + this.downloadFile + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NetworkTimeoutInfo{request='");
+    localStringBuilder.append(this.request);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", connectSocket='");
+    localStringBuilder.append(this.connectSocket);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uploadFile='");
+    localStringBuilder.append(this.uploadFile);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", downloadFile='");
+    localStringBuilder.append(this.downloadFile);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -75,7 +81,7 @@ public class NetworkTimeoutInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.NetworkTimeoutInfo
  * JD-Core Version:    0.7.0.1
  */

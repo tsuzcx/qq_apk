@@ -18,8 +18,16 @@ class SensorModule$CityListener
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onLocationFinish: errCode=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", info=");
+      ((StringBuilder)localObject).append(paramSosoLbsInfo);
+      ((StringBuilder)localObject).append(", isActive=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, ((StringBuilder)localObject).toString());
     }
     if (!this.jdField_a_of_type_Boolean) {
       return;
@@ -27,32 +35,33 @@ class SensorModule$CityListener
     this.jdField_a_of_type_Boolean = false;
     if (paramInt == 0)
     {
-      JSONObject localJSONObject = new JSONObject();
+      localObject = new JSONObject();
       try
       {
-        localJSONObject.put("nation", paramSosoLbsInfo.mLocation.nation);
-        localJSONObject.put("province", paramSosoLbsInfo.mLocation.province);
-        localJSONObject.put("city", paramSosoLbsInfo.mLocation.city);
-        localJSONObject.put("district", paramSosoLbsInfo.mLocation.district);
-        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, localJSONObject);
-        return;
+        ((JSONObject)localObject).put("nation", paramSosoLbsInfo.mLocation.nation);
+        ((JSONObject)localObject).put("province", paramSosoLbsInfo.mLocation.province);
+        ((JSONObject)localObject).put("city", paramSosoLbsInfo.mLocation.city);
+        ((JSONObject)localObject).put("district", paramSosoLbsInfo.mLocation.district);
       }
       catch (JSONException paramSosoLbsInfo)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("DoraemonOpenAPI.sensor", 2, paramSosoLbsInfo.getMessage(), paramSosoLbsInfo);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e("DoraemonOpenAPI.sensor", 2, paramSosoLbsInfo.getMessage(), paramSosoLbsInfo);
         }
       }
+      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, (JSONObject)localObject);
+      return;
     }
-    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, "error " + paramInt);
+    paramSosoLbsInfo = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("error ");
+    ((StringBuilder)localObject).append(paramInt);
+    DoraemonUtil.a(paramSosoLbsInfo, paramInt, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.SensorModule.CityListener
  * JD-Core Version:    0.7.0.1
  */

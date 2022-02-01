@@ -33,28 +33,32 @@ public class AdReqFreshManager
   
   public static AdReqFreshManager a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager == null) {
-        jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager = new AdReqFreshManager();
+    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager == null) {
+          jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager = new AdReqFreshManager();
+        }
       }
-      return jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager;
   }
   
   private static String a(Set<Long> paramSet)
   {
-    if ((paramSet == null) || (paramSet.size() == 0)) {
-      return "";
+    if ((paramSet != null) && (paramSet.size() != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      paramSet = paramSet.iterator();
+      while (paramSet.hasNext())
+      {
+        localStringBuilder.append((Long)paramSet.next());
+        localStringBuilder.append(",");
+      }
+      return localStringBuilder.deleteCharAt(localStringBuilder.length() - 1).toString();
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramSet = paramSet.iterator();
-    while (paramSet.hasNext()) {
-      localStringBuilder.append((Long)paramSet.next()).append(",");
-    }
-    return localStringBuilder.deleteCharAt(localStringBuilder.length() - 1).toString();
+    return "";
   }
   
   private static Map<Long, Long> a(String paramString)
@@ -74,67 +78,69 @@ public class AdReqFreshManager
   
   private void a()
   {
-    if (this.jdField_b_of_type_JavaUtilMap.isEmpty()) {}
-    for (;;)
-    {
+    if (this.jdField_b_of_type_JavaUtilMap.isEmpty()) {
       return;
-      long l = System.currentTimeMillis();
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
+    }
+    long l = System.currentTimeMillis();
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (l > ((Long)localEntry.getValue()).longValue() + this.jdField_a_of_type_Long)
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if (l > ((Long)localEntry.getValue()).longValue() + this.jdField_a_of_type_Long)
-        {
-          QLog.i("AdFreshManager", 3, "removeExpiredAd,adId:" + localEntry.getKey());
-          localIterator.remove();
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("removeExpiredAd,adId:");
+        localStringBuilder.append(localEntry.getKey());
+        QLog.i("AdFreshManager", 3, localStringBuilder.toString());
+        localIterator.remove();
       }
     }
   }
   
   private void b()
   {
-    if (this.jdField_b_of_type_JavaUtilMap.isEmpty()) {}
-    label139:
+    if (this.jdField_b_of_type_JavaUtilMap.isEmpty()) {
+      return;
+    }
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.entrySet().iterator();
     for (;;)
     {
-      return;
-      Iterator localIterator1 = this.jdField_b_of_type_JavaUtilMap.entrySet().iterator();
-      for (;;)
+      if (!localIterator.hasNext()) {
+        return;
+      }
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      Object localObject = jdField_a_of_type_JavaUtilMap.values().iterator();
+      if (((Iterator)localObject).hasNext())
       {
-        if (!localIterator1.hasNext()) {
-          break label139;
+        Map localMap = (Map)((Iterator)localObject).next();
+        if ((localMap == null) || (!localMap.containsKey(localEntry.getKey()))) {
+          break;
         }
-        Map.Entry localEntry = (Map.Entry)localIterator1.next();
-        Iterator localIterator2 = jdField_a_of_type_JavaUtilMap.values().iterator();
-        if (localIterator2.hasNext())
-        {
-          Map localMap = (Map)localIterator2.next();
-          if ((localMap == null) || (!localMap.containsKey(localEntry.getKey()))) {
-            break;
-          }
-          QLog.i("AdFreshManager", 3, "removeRepeatAd,adId:" + localEntry.getKey());
-          localIterator1.remove();
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("removeRepeatAd,adId:");
+        ((StringBuilder)localObject).append(localEntry.getKey());
+        QLog.i("AdFreshManager", 3, ((StringBuilder)localObject).toString());
+        localIterator.remove();
       }
     }
   }
   
   private void c()
   {
-    if (this.jdField_b_of_type_JavaUtilMap.size() <= this.jdField_a_of_type_Int) {}
-    for (;;)
-    {
+    if (this.jdField_b_of_type_JavaUtilMap.size() <= this.jdField_a_of_type_Int) {
       return;
-      ArrayList localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilMap.entrySet());
-      Collections.sort(localArrayList, new AdReqFreshManager.1(this));
-      int i = this.jdField_a_of_type_Int;
-      while (i < localArrayList.size())
-      {
-        QLog.i("AdFreshManager", 3, "removeRedundantAd,adId:" + ((Map.Entry)localArrayList.get(i)).getKey());
-        this.jdField_b_of_type_JavaUtilMap.remove(((Map.Entry)localArrayList.get(i)).getKey());
-        i += 1;
-      }
+    }
+    ArrayList localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilMap.entrySet());
+    Collections.sort(localArrayList, new AdReqFreshManager.1(this));
+    int i = this.jdField_a_of_type_Int;
+    while (i < localArrayList.size())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeRedundantAd,adId:");
+      localStringBuilder.append(((Map.Entry)localArrayList.get(i)).getKey());
+      QLog.i("AdFreshManager", 3, localStringBuilder.toString());
+      this.jdField_b_of_type_JavaUtilMap.remove(((Map.Entry)localArrayList.get(i)).getKey());
+      i += 1;
     }
   }
   
@@ -155,17 +161,17 @@ public class AdReqFreshManager
       a();
       b();
       c();
-      Set localSet = this.jdField_b_of_type_JavaUtilMap.keySet();
-      QLog.i("AdFreshManager", 3, "getRequestAdIds,result:" + a(localSet));
-      return localSet;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("AdFreshManager", 0, "getRequestAdIds,", localException);
-      }
+      QLog.e("AdFreshManager", 0, "getRequestAdIds,", localException);
     }
+    Set localSet = this.jdField_b_of_type_JavaUtilMap.keySet();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getRequestAdIds,result:");
+    localStringBuilder.append(a(localSet));
+    QLog.i("AdFreshManager", 3, localStringBuilder.toString());
+    return localSet;
   }
   
   public void a(Long paramLong)
@@ -173,45 +179,63 @@ public class AdReqFreshManager
     if (paramLong.longValue() == 0L) {
       return;
     }
-    Iterator localIterator = jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
+    Object localObject = jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Map localMap = (Map)localIterator.next();
+      Map localMap = (Map)((Iterator)localObject).next();
       if (localMap != null) {
         localMap.remove(paramLong);
       }
     }
-    QLog.i("AdFreshManager", 3, "removeAdFromAllScene,adId:" + paramLong);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("removeAdFromAllScene,adId:");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.i("AdFreshManager", 3, ((StringBuilder)localObject).toString());
   }
   
   public void a(String paramString)
   {
-    if (paramString == null) {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
     this.jdField_b_of_type_JavaUtilMap.putAll(a(paramString));
     a(paramString).clear();
-    QLog.i("AdFreshManager", 3, "flushSceneAds,scene:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("flushSceneAds,scene:");
+    localStringBuilder.append(paramString);
+    QLog.i("AdFreshManager", 3, localStringBuilder.toString());
   }
   
   public void a(String paramString, Long paramLong)
   {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
     a(paramString).put(paramLong, Long.valueOf(System.currentTimeMillis()));
-    QLog.i("AdFreshManager", 3, "addAdId,adId:" + paramLong);
+    paramString = new StringBuilder();
+    paramString.append("addAdId,adId:");
+    paramString.append(paramLong);
+    QLog.i("AdFreshManager", 3, paramString.toString());
   }
   
   public void a(String paramString, Set<Long> paramSet)
   {
-    if ((paramString == null) || (paramSet == null) || (paramSet.isEmpty())) {}
-    for (;;)
+    if ((!TextUtils.isEmpty(paramString)) && (paramSet != null))
     {
-      return;
+      if (paramSet.isEmpty()) {
+        return;
+      }
       long l = System.currentTimeMillis();
       paramSet = paramSet.iterator();
       while (paramSet.hasNext())
       {
         Long localLong = (Long)paramSet.next();
-        QLog.i("AdFreshManager", 3, "addAdIds,scene:" + paramString + ",adId:" + localLong);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addAdIds,scene:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(",adId:");
+        localStringBuilder.append(localLong);
+        QLog.i("AdFreshManager", 3, localStringBuilder.toString());
         a(paramString).put(localLong, Long.valueOf(l));
       }
     }
@@ -219,7 +243,7 @@ public class AdReqFreshManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.AdReqFreshManager
  * JD-Core Version:    0.7.0.1
  */

@@ -26,59 +26,68 @@ public class DeviceFileObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    if (paramObject == null) {
+      return;
+    }
+    switch (paramInt)
     {
-      do
+    default: 
+    case 105: 
+      paramObject = (Bundle)paramObject;
+      if (paramObject != null)
       {
-        do
-        {
-          Session localSession;
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  switch (paramInt)
-                  {
-                  default: 
-                    return;
-                  case 100: 
-                    paramObject = (Session)paramObject;
-                  }
-                } while (paramObject == null);
-                a(paramObject);
-                return;
-                paramObject = (Session)paramObject;
-              } while (paramObject == null);
-              b(paramObject);
-              return;
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length <= 1);
-            localSession = (Session)paramObject[0];
-          } while (localSession == null);
-          a(localSession, ((Float)paramObject[1]).floatValue());
-          return;
-          paramObject = (Session)paramObject;
-        } while (paramObject == null);
+        b(paramObject);
+        return;
+      }
+      break;
+    case 104: 
+      paramObject = (Bundle)paramObject;
+      if (paramObject != null)
+      {
+        a(paramObject);
+        return;
+      }
+      break;
+    case 103: 
+      paramObject = (Session)paramObject;
+      if (paramObject != null)
+      {
         a(paramObject, paramBoolean);
         return;
-        paramObject = (Bundle)paramObject;
-      } while (paramObject == null);
-      a(paramObject);
-      return;
-      paramObject = (Bundle)paramObject;
-    } while (paramObject == null);
-    b(paramObject);
+      }
+      break;
+    case 102: 
+      paramObject = (Object[])paramObject;
+      if (paramObject.length <= 1) {
+        return;
+      }
+      Session localSession = (Session)paramObject[0];
+      if (localSession != null)
+      {
+        a(localSession, ((Float)paramObject[1]).floatValue());
+        return;
+      }
+      break;
+    case 101: 
+      paramObject = (Session)paramObject;
+      if (paramObject != null)
+      {
+        b(paramObject);
+        return;
+      }
+      break;
+    case 100: 
+      paramObject = (Session)paramObject;
+      if (paramObject != null) {
+        a(paramObject);
+      }
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.file.DeviceFileObserver
  * JD-Core Version:    0.7.0.1
  */

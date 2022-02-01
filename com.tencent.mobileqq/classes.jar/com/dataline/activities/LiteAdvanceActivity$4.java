@@ -19,27 +19,24 @@ class LiteAdvanceActivity$4
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      return;
       StatisticAssist.a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getCurrentAccountUin(), "dl_ckclearmsg");
       paramView = (DataLineHandler)this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       paramView.a(32, true);
       paramView.e();
       this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getMessageFacade().a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.a).a();
       this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.getIntent().putExtra("clear_flag", true);
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.setResult(-1, this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.getIntent());
+      paramView = this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity;
+      paramView.setResult(-1, paramView.getIntent());
       this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.finish();
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteAdvanceActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -57,7 +57,11 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
       paramJSONObject = new JSONObject((String)paramJSONObject.get("param")).getString("file_id");
       return paramJSONObject;
     }
-    catch (JSONException paramJSONObject) {}
+    catch (JSONException paramJSONObject)
+    {
+      label24:
+      break label24;
+    }
     return null;
   }
   
@@ -95,7 +99,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.WeiyunNativeBusiness.WeiyunDownloadBussiness
  * JD-Core Version:    0.7.0.1
  */

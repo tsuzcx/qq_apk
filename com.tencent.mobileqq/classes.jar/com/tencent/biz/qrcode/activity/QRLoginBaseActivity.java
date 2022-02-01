@@ -8,10 +8,11 @@ import android.view.Window;
 import android.widget.ImageView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
+import mqq.app.AppRuntime;
 
 public abstract class QRLoginBaseActivity
   extends IphoneTitleBarActivity
@@ -29,23 +30,24 @@ public abstract class QRLoginBaseActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
     hideTitleBar();
-    this.b = ((ImageView)super.findViewById(2131370258));
-    this.b.setContentDescription(getText(2131690778));
+    this.b = ((ImageView)super.findViewById(2131369926));
+    this.b.setContentDescription(getText(2131690706));
     this.b.setOnClickListener(new QRLoginBaseActivity.1(this));
     return true;
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
-    int j = 0;
     super.doOnResume();
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    int j = 0;
     int i = j;
-    if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    if (!ThemeUtil.isNowThemeIsNight(localAppRuntime, false, null))
     {
       i = j;
       if (!ThemeUtil.isGoldenTheme()) {
@@ -71,31 +73,26 @@ public abstract class QRLoginBaseActivity
       getWindow().addFlags(67108864);
       if (this.mActNeedImmersive)
       {
-        int i = getResources().getColor(2131167091);
+        int i = getResources().getColor(2131167114);
         if (this.mSystemBarComp == null)
         {
           this.mSystemBarComp = new SystemBarCompact(this, true, i);
-          if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
-            break label103;
+          if (ThemeUtil.isDefaultOrDIYTheme(false)) {
+            this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838739));
+          } else {
+            this.mSystemBarComp.setStatusDrawable(null);
           }
-          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838979));
         }
       }
-    }
-    for (;;)
-    {
       if (!isInMultiWindow()) {
         ImmersiveUtils.clearCoverForStatus(getWindow(), this.isClearCoverLayer);
       }
-      return;
-      label103:
-      this.mSystemBarComp.setStatusDrawable(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginBaseActivity
  * JD-Core Version:    0.7.0.1
  */

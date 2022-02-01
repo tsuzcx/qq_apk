@@ -16,12 +16,26 @@ public class MiniAppInfoByLinkEntity
   
   public String toString()
   {
-    return "MiniAppInfoByLinkEntity{link='" + this.link + '\'' + "linkType='" + this.linkType + '\'' + "linkType='" + this.shareTicket + '\'' + ", timeStamp='" + this.timeStamp + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniAppInfoByLinkEntity{link='");
+    localStringBuilder.append(this.link);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("linkType='");
+    localStringBuilder.append(this.linkType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("linkType='");
+    localStringBuilder.append(this.shareTicket);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", timeStamp='");
+    localStringBuilder.append(this.timeStamp);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoByLinkEntity
  * JD-Core Version:    0.7.0.1
  */

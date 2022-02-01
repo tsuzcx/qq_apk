@@ -10,14 +10,14 @@ class StickerController$5
   
   public void run()
   {
-    StickerController.access$800(this.this$0, this.val$stickerContext);
-    StickerController.access$702(this.this$0, this.val$stickerContext);
+    StickerController.access$700(this.this$0, this.val$stickerContext);
+    this.this$0.stickerContext = this.val$stickerContext;
     this.val$countDownLatch.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.StickerController.5
  * JD-Core Version:    0.7.0.1
  */

@@ -38,16 +38,14 @@ public class FixedSizeVideoView
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView$OnTrimVDPlayCompelteListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView$OnTrimVDPlayCompelteListener.a(this, this.c, this.jdField_a_of_type_Int);
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView$OnTrimVDPlayCompelteListener;
+      if (paramMessage != null) {
+        paramMessage.a(this, this.c, this.jdField_a_of_type_Int);
       }
     }
+    return true;
   }
   
   public void pause()
@@ -108,7 +106,7 @@ public class FixedSizeVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView
  * JD-Core Version:    0.7.0.1
  */

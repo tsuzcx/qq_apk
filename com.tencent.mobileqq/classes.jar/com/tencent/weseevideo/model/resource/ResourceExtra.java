@@ -37,18 +37,18 @@ public final class ResourceExtra
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof ResourceExtra))
       {
         paramObject = (ResourceExtra)paramObject;
-        if (!Intrinsics.areEqual(this.threeDPath, paramObject.threeDPath)) {}
+        if (Intrinsics.areEqual(this.threeDPath, paramObject.threeDPath)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -69,12 +69,16 @@ public final class ResourceExtra
   @NotNull
   public String toString()
   {
-    return "ResourceExtra(threeDPath=" + this.threeDPath + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ResourceExtra(threeDPath=");
+    localStringBuilder.append(this.threeDPath);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.resource.ResourceExtra
  * JD-Core Version:    0.7.0.1
  */

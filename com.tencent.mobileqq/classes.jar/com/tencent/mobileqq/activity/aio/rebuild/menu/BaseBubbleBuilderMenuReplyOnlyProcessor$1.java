@@ -9,7 +9,7 @@ class BaseBubbleBuilderMenuReplyOnlyProcessor$1
 {
   BaseBubbleBuilderMenuReplyOnlyProcessor$1(BaseBubbleBuilderMenuReplyOnlyProcessor paramBaseBubbleBuilderMenuReplyOnlyProcessor, Intent paramIntent, Context paramContext) {}
   
-  public void a(Object paramObject)
+  public void onResult(Object paramObject)
   {
     if ((paramObject instanceof String))
     {
@@ -21,7 +21,7 @@ class BaseBubbleBuilderMenuReplyOnlyProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuReplyOnlyProcessor.1
  * JD-Core Version:    0.7.0.1
  */

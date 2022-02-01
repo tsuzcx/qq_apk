@@ -14,7 +14,11 @@ public class MD5
     while (i < paramArrayOfByte.length)
     {
       int j = paramArrayOfByte[i] + 256 & 0xFF;
-      str = str + hextable[(j >> 4 & 0xF)] + hextable[(j & 0xF)];
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(hextable[(j >> 4 & 0xF)]);
+      localStringBuilder.append(hextable[(j & 0xF)]);
+      str = localStringBuilder.toString();
       i += 1;
     }
     return str;
@@ -42,7 +46,7 @@ public class MD5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.util.MD5
  * JD-Core Version:    0.7.0.1
  */

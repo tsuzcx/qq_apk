@@ -32,9 +32,10 @@ public abstract class UploadedTexture
     if (this.jdField_b_of_type_AndroidGraphicsBitmap == null)
     {
       this.jdField_b_of_type_AndroidGraphicsBitmap = a();
-      if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
+      Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+      if (localBitmap != null)
       {
-        int i = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
+        int i = localBitmap.getWidth();
         int j = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
         if (this.jdField_e_of_type_Int == -1) {
           a(i, j);
@@ -59,36 +60,38 @@ public abstract class UploadedTexture
         }
         this.jdField_a_of_type_ArrayOfInt[0] = paramGLCanvas.a().a();
         paramGLCanvas.a(this);
-        if ((i == m) && (j == n)) {
+        if ((i == m) && (j == n))
+        {
           paramGLCanvas.a(this, localBitmap);
         }
-        for (;;)
+        else
         {
-          e();
-          a(paramGLCanvas);
-          this.jdField_b_of_type_Int = 1;
-          this.jdField_b_of_type_Boolean = true;
-          return;
           i = GLUtils.getInternalFormat(localBitmap);
           j = GLUtils.getType(localBitmap);
           paramGLCanvas.a(this, i, j);
           paramGLCanvas.a(this, 0, 0, localBitmap, i, j);
         }
-        this.jdField_b_of_type_Int = -1;
+        e();
+        a(paramGLCanvas);
+        this.jdField_b_of_type_Int = 1;
+        this.jdField_b_of_type_Boolean = true;
+        return;
       }
       finally
       {
         e();
       }
     }
+    this.jdField_b_of_type_Int = -1;
     throw new RuntimeException("Texture load fail, no bitmap");
   }
   
   private void e()
   {
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
+    Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    if (localBitmap != null)
     {
-      a(this.jdField_b_of_type_AndroidGraphicsBitmap);
+      a(localBitmap);
       this.jdField_b_of_type_AndroidGraphicsBitmap = null;
     }
   }
@@ -138,41 +141,45 @@ public abstract class UploadedTexture
   
   public void b(GLCanvas paramGLCanvas)
   {
-    if (!c()) {
+    if (!c())
+    {
       if (this.jdField_e_of_type_Boolean)
       {
         int i = k + 1;
         k = i;
-        if (i <= 100) {}
+        if (i > 100) {
+          return;
+        }
       }
+      c(paramGLCanvas);
+      return;
     }
-    do
+    if (!this.jdField_b_of_type_Boolean)
     {
-      for (;;)
-      {
-        return;
-        c(paramGLCanvas);
-        return;
-        if (!this.jdField_b_of_type_Boolean)
+      Object localObject = b();
+      if (localObject != null) {
+        try
         {
-          Bitmap localBitmap = b();
-          if (localBitmap != null) {
-            try
-            {
-              if (!localBitmap.isRecycled())
-              {
-                paramGLCanvas.a(this, 0, 0, localBitmap, GLUtils.getInternalFormat(localBitmap), GLUtils.getType(localBitmap));
-                e();
-                this.jdField_b_of_type_Boolean = true;
-                return;
-              }
-            }
-            catch (IllegalArgumentException paramGLCanvas) {}
+          if (!((Bitmap)localObject).isRecycled())
+          {
+            paramGLCanvas.a(this, 0, 0, (Bitmap)localObject, GLUtils.getInternalFormat((Bitmap)localObject), GLUtils.getType((Bitmap)localObject));
+            e();
+            this.jdField_b_of_type_Boolean = true;
+            return;
+          }
+        }
+        catch (IllegalArgumentException paramGLCanvas)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("WL_DEBUG updateContent e = ");
+            ((StringBuilder)localObject).append(paramGLCanvas);
+            QLog.e("UploadedTexture", 2, ((StringBuilder)localObject).toString());
           }
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("UploadedTexture", 2, "WL_DEBUG updateContent e = " + paramGLCanvas);
+    }
   }
   
   public boolean b()
@@ -203,7 +210,7 @@ public abstract class UploadedTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.texture.UploadedTexture
  * JD-Core Version:    0.7.0.1
  */

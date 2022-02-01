@@ -15,14 +15,17 @@ class DialogActivity$5
   {
     QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList conform to setting.");
     paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent("android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS", Uri.parse("package:" + this.a.getPackageName()));
+    paramDialogInterface = new StringBuilder();
+    paramDialogInterface.append("package:");
+    paramDialogInterface.append(this.a.getPackageName());
+    paramDialogInterface = new Intent("android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS", Uri.parse(paramDialogInterface.toString()));
     this.a.startActivity(paramDialogInterface);
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DialogActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class NearbyProfileDisplayPanel$26
-  implements NearbyLikeLimitManager.onDoVoteListener
+  implements DialogInterface.OnClickListener
 {
   NearbyProfileDisplayPanel$26(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c(paramBoolean);
-    this.a.t = paramBoolean;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.26
  * JD-Core Version:    0.7.0.1
  */

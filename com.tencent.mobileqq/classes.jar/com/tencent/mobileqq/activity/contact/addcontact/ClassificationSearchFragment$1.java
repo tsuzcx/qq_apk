@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
+import com.tencent.mobileqq.search.business.addcontact.model.SearchResult;
+
 class ClassificationSearchFragment$1
   implements Runnable
 {
@@ -7,25 +9,15 @@ class ClassificationSearchFragment$1
   
   public void run()
   {
-    ClassificationSearchFragment localClassificationSearchFragment;
-    if (this.a != null)
-    {
-      localClassificationSearchFragment = this.this$0;
-      if (this.a.a) {
-        break label30;
-      }
-    }
-    label30:
-    for (int i = 1;; i = 0)
-    {
-      ClassificationSearchFragment.a(localClassificationSearchFragment, i);
-      return;
+    SearchResult localSearchResult = this.a;
+    if (localSearchResult != null) {
+      ClassificationSearchFragment.a(this.this$0, localSearchResult.a ^ true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment.1
  * JD-Core Version:    0.7.0.1
  */

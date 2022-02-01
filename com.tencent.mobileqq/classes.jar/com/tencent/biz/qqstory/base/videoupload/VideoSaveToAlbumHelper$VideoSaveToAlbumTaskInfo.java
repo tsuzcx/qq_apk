@@ -26,13 +26,17 @@ public class VideoSaveToAlbumHelper$VideoSaveToAlbumTaskInfo
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.d = (QQStoryConstant.t + paramString1 + ".mp4");
+    paramString2 = new StringBuilder();
+    paramString2.append(QQStoryConstant.u);
+    paramString2.append(paramString1);
+    paramString2.append(".mp4");
+    this.d = paramString2.toString();
     this.e = PlayModeUtils.a(paramString1, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoSaveToAlbumHelper.VideoSaveToAlbumTaskInfo
  * JD-Core Version:    0.7.0.1
  */

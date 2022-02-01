@@ -26,12 +26,13 @@ public class SigTopicConfBean
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessSigtopicSigTopicConfBean$SigTopicConfig == null) || (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessSigtopicSigTopicConfBean$SigTopicConfig.a == null) || (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessSigtopicSigTopicConfBean$SigTopicConfig.a.size() <= 0);
+    SigTopicConfBean.SigTopicConfig localSigTopicConfig = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessSigtopicSigTopicConfBean$SigTopicConfig;
+    return (localSigTopicConfig == null) || (localSigTopicConfig.a == null) || (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessSigtopicSigTopicConfBean$SigTopicConfig.a.size() <= 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.sigtopic.SigTopicConfBean
  * JD-Core Version:    0.7.0.1
  */

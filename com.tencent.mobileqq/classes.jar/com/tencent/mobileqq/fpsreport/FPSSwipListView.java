@@ -29,8 +29,9 @@ public class FPSSwipListView
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.a();
+    FPSCalculator localFPSCalculator = this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
+    if (localFPSCalculator != null) {
+      localFPSCalculator.a();
     }
   }
   
@@ -42,16 +43,21 @@ public class FPSSwipListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null)) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.b();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramCanvas = this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
+      if (paramCanvas != null) {
+        paramCanvas.b();
+      }
     }
   }
   
-  public void reportScrollStateChange(int paramInt)
+  protected void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.a(paramInt);
+    FPSCalculator localFPSCalculator = this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
+    if (localFPSCalculator != null) {
+      localFPSCalculator.a(paramInt);
     }
   }
   
@@ -63,7 +69,7 @@ public class FPSSwipListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fpsreport.FPSSwipListView
  * JD-Core Version:    0.7.0.1
  */

@@ -24,16 +24,20 @@ public class BatchQueryAppInfoRequest
   
   public static INTERFACE.StBatchQueryAppInfoRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StBatchQueryAppInfoRsp localStBatchQueryAppInfoRsp = new INTERFACE.StBatchQueryAppInfoRsp();
+    Object localObject = new INTERFACE.StBatchQueryAppInfoRsp();
     try
     {
-      localStBatchQueryAppInfoRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStBatchQueryAppInfoRsp;
+      ((INTERFACE.StBatchQueryAppInfoRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BatchQueryAppInfoRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("BatchQueryAppInfoRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -46,7 +50,7 @@ public class BatchQueryAppInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.BatchQueryAppInfoRequest
  * JD-Core Version:    0.7.0.1
  */

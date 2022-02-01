@@ -89,42 +89,51 @@ public final class tAdvDesc
     paramJceOutputStream.write(this.type, 1);
     paramJceOutputStream.write(this.name, 2);
     paramJceOutputStream.write(this.resource_id, 3);
-    if (this.res_data != null) {
-      paramJceOutputStream.write(this.res_data, 4);
+    Object localObject = this.res_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.res_preprocess != null) {
-      paramJceOutputStream.write(this.res_preprocess, 5);
+    localObject = this.res_preprocess;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.pattern_id, 6);
-    if (this.pattern_logic != null) {
-      paramJceOutputStream.write(this.pattern_logic, 7);
+    localObject = this.pattern_logic;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.pattern_data != null) {
-      paramJceOutputStream.write(this.pattern_data, 8);
+    localObject = this.pattern_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.parent_id, 9);
-    if (this.res_traceinfo != null) {
-      paramJceOutputStream.write(this.res_traceinfo, 10);
+    localObject = this.res_traceinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.ret, 11);
-    if (this.s_ret_msg != null) {
-      paramJceOutputStream.write(this.s_ret_msg, 12);
+    localObject = this.s_ret_msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.s_cmd_info != null) {
-      paramJceOutputStream.write(this.s_cmd_info, 13);
+    localObject = this.s_cmd_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.expose_time, 14);
-    if (this.adv_config_info != null) {
-      paramJceOutputStream.write(this.adv_config_info, 15);
+    localObject = this.adv_config_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 15);
     }
-    if (this.adv_user_feed != null) {
-      paramJceOutputStream.write(this.adv_user_feed, 16);
+    localObject = this.adv_user_feed;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 16);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     BOSSStrategyCenter.tAdvDesc
  * JD-Core Version:    0.7.0.1
  */

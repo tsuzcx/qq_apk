@@ -19,8 +19,9 @@ public class RockDownloadPresenter
   
   private int a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene;
+    WSDownloadParams localWSDownloadParams = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
+    if (localWSDownloadParams != null) {
+      return localWSDownloadParams.mScene;
     }
     return 1;
   }
@@ -69,12 +70,18 @@ public class RockDownloadPresenter
     if (paramInt == 1)
     {
       RockDownloaderProxy.a(paramRockDownloadInfo, a(paramActivity, paramRockDownloadListenerWrapper));
-      WSLog.d("RockDownloader", "执行预下载Rock下载 " + paramRockDownloadInfo.toString());
+      paramActivity = new StringBuilder();
+      paramActivity.append("执行预下载Rock下载 ");
+      paramActivity.append(paramRockDownloadInfo.toString());
+      WSLog.d("RockDownloader", paramActivity.toString());
       return;
     }
     WeishiUtils.a(localWSDownloadParams.mScheme);
     RockDownloaderProxy.a(paramRockDownloadInfo, a(paramActivity, paramRockDownloadListenerWrapper));
-    WSLog.d("RockDownloader", "执行可call起安装Rock下载 " + paramRockDownloadInfo.toString());
+    paramActivity = new StringBuilder();
+    paramActivity.append("执行可call起安装Rock下载 ");
+    paramActivity.append(paramRockDownloadInfo.toString());
+    WSLog.d("RockDownloader", paramActivity.toString());
   }
   
   public boolean a(RockDownloadInfo paramRockDownloadInfo)
@@ -100,18 +107,24 @@ public class RockDownloadPresenter
     int i = WeishiDownloadUtil.b();
     if (bool)
     {
-      WSLog.d("RockDownloader", "rockdownload installSuccess,eventType = " + i);
+      paramRockDownloadInfo = new StringBuilder();
+      paramRockDownloadInfo.append("rockdownload installSuccess,eventType = ");
+      paramRockDownloadInfo.append(i);
+      WSLog.d("RockDownloader", paramRockDownloadInfo.toString());
       WSReportDc00898.a(paramInt, 1);
       WSPublicAccReport.getInstance().reportDownload(WeishiDownloadUtil.a(), i, 2, 1, 1, a());
       return bool;
     }
-    WSLog.d("RockDownloader", "rockdownload installFail,eventType = " + i);
+    paramRockDownloadInfo = new StringBuilder();
+    paramRockDownloadInfo.append("rockdownload installFail,eventType = ");
+    paramRockDownloadInfo.append(i);
+    WSLog.d("RockDownloader", paramRockDownloadInfo.toString());
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.download.RockDownloadPresenter
  * JD-Core Version:    0.7.0.1
  */

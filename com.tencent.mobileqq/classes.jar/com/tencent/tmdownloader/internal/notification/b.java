@@ -11,12 +11,18 @@ public class b
   
   public String toString()
   {
-    return this.b + "," + this.b + "," + this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.notification.b
  * JD-Core Version:    0.7.0.1
  */

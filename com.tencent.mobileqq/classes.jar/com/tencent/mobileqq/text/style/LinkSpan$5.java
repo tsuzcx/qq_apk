@@ -16,44 +16,63 @@ final class LinkSpan$5
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (this.jdField_a_of_type_Int == 2)
+      if (paramInt != 1)
       {
-        paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.jdField_a_of_type_JavaLangString)), this.jdField_a_of_type_AndroidContentContext.getString(2131693916));
-        paramView.putExtra("big_brother_source_key", this.b);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt == 4)
+            {
+              AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, true, this.jdField_a_of_type_JavaLangString, true);
+              LinkSpan.a("4", "1");
+            }
+          }
+          else
+          {
+            AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, false, this.jdField_a_of_type_JavaLangString, true);
+            LinkSpan.a("3", "1");
+          }
+        }
+        else
+        {
+          LinkSpan.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+          LinkSpan.b("0X800A00A", "0X800A00A");
+        }
       }
       else
       {
-        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-        paramView.putExtra("big_brother_source_key", this.b);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        LinkSpan.a("1", "2");
-        continue;
         ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
         LinkSpan.a("2", "1");
-        continue;
-        LinkSpan.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-        LinkSpan.b("0X800A00A", "0X800A00A");
-        continue;
-        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, false, this.jdField_a_of_type_JavaLangString, true);
-        LinkSpan.a("3", "1");
-        continue;
-        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, true, this.jdField_a_of_type_JavaLangString, true);
-        LinkSpan.a("4", "1");
       }
     }
+    else if (this.jdField_a_of_type_Int == 2)
+    {
+      paramView = new StringBuilder();
+      paramView.append("mailto:");
+      paramView.append(this.jdField_a_of_type_JavaLangString);
+      paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse(paramView.toString())), this.jdField_a_of_type_AndroidContentContext.getString(2131693872));
+      paramView.putExtra("big_brother_source_key", this.b);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    }
+    else
+    {
+      paramView = new StringBuilder();
+      paramView.append("tel:");
+      paramView.append(this.jdField_a_of_type_JavaLangString);
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse(paramView.toString()));
+      paramView.putExtra("big_brother_source_key", this.b);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      LinkSpan.a("1", "2");
+    }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.style.LinkSpan.5
  * JD-Core Version:    0.7.0.1
  */

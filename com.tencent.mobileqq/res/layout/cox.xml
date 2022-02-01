@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/on8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/oqc" android:background="@color/br" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/mun" android:background="@drawable/e6v" android:clickable="true" android:layout_width="260.0dip" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/ayq" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n5" android:text="什么是好友作品？" />
-        <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:id="@id/oob" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="0.0dip" android:maxWidth="182.0dip" android:text="好友作品来自在微视中授权的QQ、微信或通讯录好友。" />
-        <TextView android:textSize="@dimen/ayo" android:textColor="@color/al3" android:gravity="center" android:id="@id/oo4" android:background="@drawable/e76" android:layout_width="180.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/mp" android:layout_marginBottom="@dimen/n5" android:text="我知道了" />
-    </LinearLayout>
-</FrameLayout>
+    <FrameLayout android:background="@drawable/e89" android:layout_width="260.0dip" android:layout_height="wrap_content" android:layout_marginTop="130.0dip" android:layout_centerHorizontal="true">
+        <LinearLayout android:orientation="vertical" android:id="@id/oq6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.image.URLImageView android:id="@id/oq1" android:layout_width="fill_parent" android:layout_height="300.0dip" android:src="@drawable/d7y" android:scaleType="centerCrop" />
+            <TextView android:textSize="@dimen/ayn" android:textColor="@color/bp" android:layout_gravity="center_horizontal" android:id="@id/oqr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n2" android:layout_marginTop="@dimen/mw" android:layout_marginRight="@dimen/n2" />
+            <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/oq7" android:background="@drawable/e8_" android:layout_width="218.0dip" android:layout_height="37.0dip" android:layout_marginTop="@dimen/mw" android:layout_marginBottom="@dimen/n2">
+                <TextView android:textSize="@dimen/ayl" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/oqs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableLeft="@drawable/ijf" android:drawablePadding="@dimen/nd" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:layout_gravity="center|right|top" android:id="@id/oq2" android:padding="@dimen/nd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/iim" />
+    </FrameLayout>
+</RelativeLayout>

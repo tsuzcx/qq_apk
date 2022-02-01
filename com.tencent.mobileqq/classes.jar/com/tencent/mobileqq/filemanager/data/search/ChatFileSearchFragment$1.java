@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import com.tencent.mobileqq.search.base.engine.ISearchEngine;
 import mqq.os.MqqHandler;
 
 class ChatFileSearchFragment$1
@@ -21,7 +21,7 @@ class ChatFileSearchFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment.1
  * JD-Core Version:    0.7.0.1
  */

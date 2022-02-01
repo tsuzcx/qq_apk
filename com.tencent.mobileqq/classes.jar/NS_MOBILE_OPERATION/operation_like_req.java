@@ -26,15 +26,16 @@ public final class operation_like_req
   
   static
   {
-    cache_busi_param.put(Integer.valueOf(0), "");
+    Object localObject = Integer.valueOf(0);
+    cache_busi_param.put(localObject, "");
     cache_extern_param = new HashMap();
-    cache_extern_param.put(Integer.valueOf(0), "");
+    cache_extern_param.put(localObject, "");
     cache_bypass_param = new HashMap();
     cache_bypass_param.put("", "");
     cache_bypass_param_binary = new HashMap();
-    byte[] arrayOfByte = (byte[])new byte[1];
-    ((byte[])arrayOfByte)[0] = 0;
-    cache_bypass_param_binary.put("", arrayOfByte);
+    localObject = (byte[])new byte[1];
+    ((byte[])localObject)[0] = 0;
+    cache_bypass_param_binary.put("", localObject);
   }
   
   public operation_like_req() {}
@@ -70,32 +71,38 @@ public final class operation_like_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.curkey != null) {
-      paramJceOutputStream.write(this.curkey, 1);
+    Object localObject = this.curkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.unikey != null) {
-      paramJceOutputStream.write(this.unikey, 2);
+    localObject = this.unikey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.action, 3);
     paramJceOutputStream.write(this.appid, 4);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 5);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
     paramJceOutputStream.write(this.hostuin, 6);
-    if (this.extern_param != null) {
-      paramJceOutputStream.write(this.extern_param, 7);
+    localObject = this.extern_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
-    if (this.bypass_param != null) {
-      paramJceOutputStream.write(this.bypass_param, 8);
+    localObject = this.bypass_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
-    if (this.bypass_param_binary != null) {
-      paramJceOutputStream.write(this.bypass_param_binary, 9);
+    localObject = this.bypass_param_binary;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_like_req
  * JD-Core Version:    0.7.0.1
  */

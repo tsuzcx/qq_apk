@@ -11,15 +11,19 @@ class ProcessExitReceiver$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProcessExitReceiver", 2, "Kill process " + MobileQQ.getMobileQQ().getQQProcessName());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Kill process ");
+      localStringBuilder.append(MobileQQ.getMobileQQ().getQQProcessName());
+      QLog.d("ProcessExitReceiver", 2, localStringBuilder.toString());
     }
     Process.killProcess(Process.myPid());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ProcessExitReceiver.1
  * JD-Core Version:    0.7.0.1
  */

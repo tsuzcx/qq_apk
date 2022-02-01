@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app.message.messageclean;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.SVUtils;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.richmediavfs.RmVFSUtils;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -34,16 +34,18 @@ public class FileCleanManager
   
   private int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return 0;
-    case 1: 
-      return this.jdField_a_of_type_Int;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return 0;
+        }
+        return this.jdField_c_of_type_Int;
+      }
       return this.jdField_b_of_type_Int;
     }
-    return this.jdField_c_of_type_Int;
+    return this.jdField_a_of_type_Int;
   }
   
   private String a()
@@ -53,70 +55,70 @@ public class FileCleanManager
   
   private String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return "";
-    case 1: 
-      return this.jdField_a_of_type_JavaLangString;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return "";
+        }
+        return this.jdField_c_of_type_JavaLangString;
+      }
       return this.jdField_b_of_type_JavaLangString;
     }
-    return this.jdField_c_of_type_JavaLangString;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   private void a(String paramString, int paramInt)
   {
     paramString = new File(paramString);
-    File[] arrayOfFile;
     if (paramString.exists())
     {
-      arrayOfFile = paramString.listFiles();
-      if ((arrayOfFile != null) && (arrayOfFile.length != 0)) {
-        break label34;
-      }
-    }
-    label34:
-    File localFile;
-    for (;;)
-    {
-      return;
-      int j = arrayOfFile.length;
-      int i = 0;
-      while (i < j)
+      File[] arrayOfFile = paramString.listFiles();
+      if (arrayOfFile != null)
       {
-        localFile = arrayOfFile[i];
-        if (!localFile.isDirectory()) {
-          break label78;
+        if (arrayOfFile.length == 0) {
+          return;
         }
-        a(localFile.getAbsolutePath(), paramInt);
-        label71:
-        i += 1;
+        int j = arrayOfFile.length;
+        int i = 0;
+        while (i < j)
+        {
+          File localFile = arrayOfFile[i];
+          if (localFile.isDirectory())
+          {
+            a(localFile.getAbsolutePath(), paramInt);
+          }
+          else
+          {
+            int k = a(paramInt);
+            paramString = localFile.getAbsolutePath();
+            int m = paramString.length();
+            FileInfo localFileInfo = new FileInfo();
+            if (m > k) {
+              paramString = paramString.substring(k, m);
+            } else {
+              paramString = "";
+            }
+            localFileInfo.jdField_a_of_type_JavaLangString = paramString;
+            localFileInfo.jdField_a_of_type_Long = localFile.length();
+            localFileInfo.jdField_a_of_type_Int = paramInt;
+            localFileInfo.jdField_b_of_type_Int = 0;
+            paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+            if (paramString == null) {
+              break;
+            }
+            paramString.put(localFile.getName(), localFileInfo);
+          }
+          i += 1;
+        }
       }
-    }
-    label78:
-    int k = a(paramInt);
-    paramString = localFile.getAbsolutePath();
-    int m = paramString.length();
-    FileInfo localFileInfo = new FileInfo();
-    if (m > k) {}
-    for (paramString = paramString.substring(k, m);; paramString = "")
-    {
-      localFileInfo.jdField_a_of_type_JavaLangString = paramString;
-      localFileInfo.jdField_a_of_type_Long = localFile.length();
-      localFileInfo.jdField_a_of_type_Int = paramInt;
-      localFileInfo.jdField_b_of_type_Int = 0;
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localFile.getName(), localFileInfo);
-      break label71;
     }
   }
   
   private String b()
   {
-    return ShortVideoUtils.getShortVideoSaveDir();
+    return SVUtils.c();
   }
   
   private String c()
@@ -164,9 +166,10 @@ public class FileCleanManager
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localConcurrentHashMap != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      localConcurrentHashMap.clear();
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
     }
   }
@@ -198,27 +201,36 @@ public class FileCleanManager
   
   public void a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      if (localConcurrentHashMap != null) {
+        localConcurrentHashMap.remove(paramString);
+      }
     }
   }
   
   public void a(String paramString, FileInfo paramFileInfo)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramFileInfo != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramFileInfo);
+    if ((!TextUtils.isEmpty(paramString)) && (paramFileInfo != null))
+    {
+      ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      if (localConcurrentHashMap != null) {
+        localConcurrentHashMap.put(paramString, paramFileInfo);
+      }
     }
   }
   
   public void a(List<String> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
-        FileUtils.e((String)paramList.next());
+        FileUtils.deleteFile((String)paramList.next());
       }
     }
   }
@@ -236,7 +248,7 @@ public class FileCleanManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.messageclean.FileCleanManager
  * JD-Core Version:    0.7.0.1
  */

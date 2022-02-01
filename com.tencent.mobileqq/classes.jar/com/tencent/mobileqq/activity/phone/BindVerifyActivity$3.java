@@ -17,18 +17,19 @@ class BindVerifyActivity$3
     localIntent.putExtra("check_permission_result", "permission_granted");
     this.this$0.setResult(-1, localIntent);
     this.this$0.finish();
-    if (BindVerifyActivity.a(this.this$0) == 15) {
+    if (BindVerifyActivity.a(this.this$0) == 15)
+    {
       ReportController.b(this.this$0.app, "dc00898", "", "", "0X80077C7", "0X80077C7", 0, 0, "", "", "", "");
-    }
-    while (BindVerifyActivity.a(this.this$0) != 17) {
       return;
     }
-    ReportController.b(this.this$0.app, "dc00898", "", "", "0X80077CB", "0X80077CB", 0, 0, "", "", "", "");
+    if (BindVerifyActivity.a(this.this$0) == 17) {
+      ReportController.b(this.this$0.app, "dc00898", "", "", "0X80077CB", "0X80077CB", 0, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BindVerifyActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,17 @@ class BaseInterface$3
   
   public void run()
   {
-    String str = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('batchCallback',{guid:" + this.jdField_a_of_type_Long + ",'r':-2,'data':['" + this.jdField_a_of_type_JavaLangString + "']})};";
-    LogUtility.e("Response<callBatch>", str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('batchCallback',{guid:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(",'r':-2,'data':['");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("']})};");
+    localObject = ((StringBuilder)localObject).toString();
+    LogUtility.e("Response<callBatch>", (String)localObject);
     try
     {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl((String)localObject);
       return;
     }
     catch (Exception localException) {}
@@ -22,7 +28,7 @@ class BaseInterface$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.js.BaseInterface.3
  * JD-Core Version:    0.7.0.1
  */

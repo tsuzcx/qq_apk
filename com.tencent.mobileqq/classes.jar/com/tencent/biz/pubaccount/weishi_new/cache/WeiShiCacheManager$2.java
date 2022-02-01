@@ -11,23 +11,29 @@ class WeiShiCacheManager$2
   
   public void run()
   {
-    WSLog.b("CacheResponseLog", "getPushPreloadCacheData startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getPushPreloadCacheData startTime = ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append(", thread = ");
+    ((StringBuilder)localObject).append(Thread.currentThread());
+    WSLog.b("CacheResponseLog", ((StringBuilder)localObject).toString());
     if (!this.this$0.a())
     {
-      if (this.a == null) {
+      localObject = this.a;
+      if (localObject == null) {
         return;
       }
-      this.a.a(null);
+      ((IWeiShiCacheCallback)localObject).a(null);
       return;
     }
-    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = WeiShiCacheManager.a(this.this$0, 5);
+    localObject = WeiShiCacheManager.a(this.this$0, 5);
     this.this$0.a(13);
-    WeishiBusinessLooper.a().a(new WeiShiCacheManager.2.1(this, localstSimpleGetFeedListRsp));
+    WeishiBusinessLooper.a().a(new WeiShiCacheManager.2.1(this, (stSimpleGetFeedListRsp)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.2
  * JD-Core Version:    0.7.0.1
  */

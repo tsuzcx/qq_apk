@@ -12,35 +12,37 @@ class NativeAppBrandRuntime$2$8
   
   public void on(Map paramMap, BasicMessageChannel.Reply paramReply)
   {
-    paramReply = (Map)paramMap.get("data");
-    String str = paramReply.get("event").toString();
-    Object localObject = (Integer)paramReply.get("pageID");
-    paramMap = null;
-    if (paramReply.containsKey("dataForEvent")) {
-      paramMap = (Map)paramReply.get("dataForEvent");
+    paramMap = (Map)paramMap.get("data");
+    String str = paramMap.get("event").toString();
+    Integer localInteger = (Integer)paramMap.get("pageID");
+    if (paramMap.containsKey("dataForEvent")) {
+      paramReply = (Map)paramMap.get("dataForEvent");
+    } else {
+      paramReply = null;
     }
-    paramReply = (BasicMessageChannel.Reply)localObject;
-    if (localObject == null)
+    paramMap = localInteger;
+    if (localInteger == null)
     {
-      paramReply = (BasicMessageChannel.Reply)localObject;
-      if (paramMap != null)
+      paramMap = localInteger;
+      if (paramReply != null)
       {
-        paramReply = (BasicMessageChannel.Reply)localObject;
-        if (paramMap.containsKey("pageID")) {
-          paramReply = (Integer)paramMap.get("pageID");
+        paramMap = localInteger;
+        if (paramReply.containsKey("pageID")) {
+          paramMap = (Integer)paramReply.get("pageID");
         }
       }
     }
-    localObject = "null";
-    if (paramMap != null) {
-      localObject = new JSONObject(paramMap).toString();
+    if (paramReply != null) {
+      paramReply = new JSONObject(paramReply).toString();
+    } else {
+      paramReply = "null";
     }
-    NativeAppBrandRuntime.access$800(this.this$1.this$0).onWebViewEvent(str, (String)localObject, paramReply.intValue());
+    NativeAppBrandRuntime.access$800(this.this$1.this$0).onWebViewEvent(str, paramReply, paramMap.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.NativeAppBrandRuntime.2.8
  * JD-Core Version:    0.7.0.1
  */

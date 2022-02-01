@@ -1,20 +1,31 @@
 package com.tencent.mobileqq.transfile;
 
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MediaMessageObserver;
 import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.mobileqq.utils.LogTag;
 
 class ShortVideoUploadProcessor$4
-  extends MessageObserver
+  extends MediaMessageObserver
 {
   ShortVideoUploadProcessor$4(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
   public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, StatictisInfo paramStatictisInfo)
   {
-    this.this$0.logRichMediaEvent("sendMsgFinish", "success:" + paramBoolean);
-    LogTag.a(String.valueOf(this.this$0.mUiRequest.mUniseq), "message", "sendMsgFinish isSuccess:" + paramBoolean + ",mr = " + this.this$0.mUiRequest.mRec.toString());
-    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramStatictisInfo);
+    Object localObject = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("success:");
+    localStringBuilder.append(paramBoolean);
+    ((ShortVideoUploadProcessor)localObject).logRichMediaEvent("sendMsgFinish", localStringBuilder.toString());
+    paramLong = this.this$0.mUiRequest.mUniseq;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendMsgFinish isSuccess:");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(",mr = ");
+    ((StringBuilder)localObject).append(this.this$0.mUiRequest.mRec.toString());
+    LogTag.a(String.valueOf(paramLong), "message", ((StringBuilder)localObject).toString());
+    this.this$0.mProcessorReport.copyStatisInfo(this.this$0.mProcessorReport.mStepMsg, false, paramBoolean, paramStatictisInfo);
     if (paramBoolean)
     {
       this.this$0.onSuccess();
@@ -25,7 +36,7 @@ class ShortVideoUploadProcessor$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoUploadProcessor.4
  * JD-Core Version:    0.7.0.1
  */

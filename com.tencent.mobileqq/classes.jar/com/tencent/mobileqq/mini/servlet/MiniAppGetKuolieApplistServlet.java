@@ -7,13 +7,13 @@ import NS_MINI_INTERFACE.INTERFACE.StGetExpandAppListRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qqexpand.bean.feed.MiniAppRecommInfo;
+import com.tencent.mobileqq.qqexpand.bean.feed.MiniAppRecommInfo.MiniApp;
 import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -43,7 +43,12 @@ public class MiniAppGetKuolieApplistServlet
       MiniAppRecommInfo localMiniAppRecommInfo = new MiniAppRecommInfo();
       localMiniAppRecommInfo.headDesc = ((INTERFACE.StGetExpandAppListRsp)localObject).expandTitle.get();
       localMiniAppRecommInfo.cacheValidTime = (System.currentTimeMillis() / 1000L + ((INTERFACE.StGetExpandAppListRsp)localObject).cacheTime.get());
-      QLog.i("MiniAppGetKuolieApplistServlet", 1, "MiniAppKuolie StApiAppInfo cacheTime:" + ((INTERFACE.StGetExpandAppListRsp)localObject).cacheTime.get() + " itemSize:" + ((INTERFACE.StGetExpandAppListRsp)localObject).expandItemList.get().size());
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("MiniAppKuolie StApiAppInfo cacheTime:");
+      paramArrayOfByte.append(((INTERFACE.StGetExpandAppListRsp)localObject).cacheTime.get());
+      paramArrayOfByte.append(" itemSize:");
+      paramArrayOfByte.append(((INTERFACE.StGetExpandAppListRsp)localObject).expandItemList.get().size());
+      QLog.i("MiniAppGetKuolieApplistServlet", 1, paramArrayOfByte.toString());
       localObject = ((INTERFACE.StGetExpandAppListRsp)localObject).expandItemList.get().iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -58,25 +63,20 @@ public class MiniAppGetKuolieApplistServlet
             localMiniApp.jdField_a_of_type_ArrayOfByte = paramArrayOfByte.toByteArray();
             localMiniApp.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$StApiAppInfo = paramArrayOfByte;
             localMiniApp.jdField_a_of_type_JavaLangString = localMiniAppInfo.appId;
-            if (!TextUtils.isEmpty(localStExpandItem.icon.get()))
-            {
+            if (!TextUtils.isEmpty(localStExpandItem.icon.get())) {
               paramArrayOfByte = localStExpandItem.icon.get();
-              label253:
-              localMiniApp.c = paramArrayOfByte;
-              if (TextUtils.isEmpty(localStExpandItem.name.get())) {
-                break label326;
-              }
-            }
-            label326:
-            for (paramArrayOfByte = localStExpandItem.name.get();; paramArrayOfByte = localMiniAppInfo.name)
-            {
-              localMiniApp.b = paramArrayOfByte;
-              localMiniApp.jdField_a_of_type_Int = localStExpandItem.adId.get();
-              localMiniAppRecommInfo.appInfoList.add(localMiniApp);
-              break;
+            } else {
               paramArrayOfByte = localMiniAppInfo.iconUrl;
-              break label253;
             }
+            localMiniApp.c = paramArrayOfByte;
+            if (!TextUtils.isEmpty(localStExpandItem.name.get())) {
+              paramArrayOfByte = localStExpandItem.name.get();
+            } else {
+              paramArrayOfByte = localMiniAppInfo.name;
+            }
+            localMiniApp.b = paramArrayOfByte;
+            localMiniApp.jdField_a_of_type_Int = localStExpandItem.adId.get();
+            localMiniAppRecommInfo.appInfoList.add(localMiniApp);
           }
         }
       }
@@ -89,29 +89,16 @@ public class MiniAppGetKuolieApplistServlet
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
+    byte[] arrayOfByte1 = paramIntent.getByteArrayExtra("key_ext");
     int i = paramIntent.getIntExtra("key_index", -1);
-    Object localObject = null;
-    if (arrayOfByte != null) {
+    if (arrayOfByte1 != null)
+    {
       localObject = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte);
-      arrayOfByte = new GetKuolieApplistRequest((COMM.StCommonExt)localObject).encode(paramIntent, i, getTraceId());
-      localObject = arrayOfByte;
-      if (arrayOfByte == null) {
-        localObject = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte1);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetExpandAppList");
-      paramPacket.putSendData(WupUtil.a((byte[])localObject));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MiniAppGetKuolieApplistServlet", 2, "onSend. mergeFrom exception!");
@@ -119,11 +106,24 @@ public class MiniAppGetKuolieApplistServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    else
+    {
+      localObject = null;
+    }
+    byte[] arrayOfByte2 = new GetKuolieApplistRequest((COMM.StCommonExt)localObject).encode(paramIntent, i, getTraceId());
+    Object localObject = arrayOfByte2;
+    if (arrayOfByte2 == null) {
+      localObject = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetExpandAppList");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetKuolieApplistServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -39,50 +39,52 @@ class VideoListPageLoader$2
     }
     paramBatchGetFriendStoryFeedInfoRequest = new VideoListPageLoader.GetVideoListEvent(paramErrorMessage, VideoListPageLoader.a(this.a));
     paramBatchGetFriendStoryFeedInfoRequest.d = this.a.jdField_a_of_type_Boolean;
-    if ((??? == null) || (paramErrorMessage.isFail()) || (???.jdField_a_of_type_JavaUtilList.size() == 0))
+    if ((??? != null) && (!paramErrorMessage.isFail()) && (???.jdField_a_of_type_JavaUtilList.size() != 0))
     {
-      SLog.a("Q.qqstory.home.data:VideoListPageLoader", "get video list with home pb fail feedId:%s", VideoListPageLoader.a(this.a));
-      VideoListPageLoader.a(this.a, paramBatchGetFriendStoryFeedInfoRequest);
-      return;
+      ??? = (StoryHomeFeed)???.jdField_a_of_type_JavaUtilList.get(0);
+      if (!(??? instanceof VideoListHomeFeed))
+      {
+        paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(940001, HardCodeUtil.a(2131716059));
+        VideoListPageLoader.a(this.a, paramBatchGetFriendStoryFeedInfoRequest);
+        paramBatchGetFriendStoryFeedInfoRequest = new StringBuilder();
+        paramBatchGetFriendStoryFeedInfoRequest.append(???.a().toString());
+        paramBatchGetFriendStoryFeedInfoRequest.append(" is not a video feed");
+        AssertUtils.fail(paramBatchGetFriendStoryFeedInfoRequest.toString(), new Object[0]);
+        return;
+      }
+      ??? = (VideoListHomeFeed)???;
+      VideoListPageLoader.a(this.a, ???.a().mVideoNextCookie);
+      VideoListPageLoader.a(this.a, ???.a().mVideoPullType);
+      VideoListPageLoader.b(this.a, ???.a().mVideoSeq);
+      paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean = ???.a().mIsVideoEnd;
+      paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList = ???.a();
+      paramBatchGetFriendStoryFeedInfoRequest.c = true;
+      if ((!paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(VideoListPageLoader.b(this.a)))) {
+        paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean = true;
+      }
+      paramBatchGetFriendStoryFeedInfoRequest.b = ???.a().getOwner().getUnionId();
+      paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList = ((FeedManager)SuperManager.a(11)).a(VideoListPageLoader.a(this.a), paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList, paramBatchGetFriendStoryFeedInfoRequest.c);
+      paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo = new FeedVideoInfo(VideoListPageLoader.a(this.a), VideoListPageLoader.b(this.a), VideoListPageLoader.a(this.a), VideoListPageLoader.b(this.a), paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean);
+      ??? = new ArrayList(paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList.size());
+      paramErrorMessage = paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramErrorMessage.hasNext()) {
+        ???.add(((StoryVideoItem)paramErrorMessage.next()).mVid);
+      }
+      GetVidPollInfoHandler.a(???);
+      synchronized (this.a)
+      {
+        this.a.b = true;
+        VideoListPageLoader.a(this.a, paramBatchGetFriendStoryFeedInfoRequest);
+        return;
+      }
     }
-    ??? = (StoryHomeFeed)???.jdField_a_of_type_JavaUtilList.get(0);
-    if (!(??? instanceof VideoListHomeFeed))
-    {
-      paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(940001, HardCodeUtil.a(2131716136));
-      VideoListPageLoader.a(this.a, paramBatchGetFriendStoryFeedInfoRequest);
-      AssertUtils.a(???.a().toString() + " is not a video feed", new Object[0]);
-      return;
-    }
-    ??? = (VideoListHomeFeed)???;
-    VideoListPageLoader.a(this.a, ???.a().mVideoNextCookie);
-    VideoListPageLoader.a(this.a, ???.a().mVideoPullType);
-    VideoListPageLoader.b(this.a, ???.a().mVideoSeq);
-    paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean = ???.a().mIsVideoEnd;
-    paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList = ???.a();
-    paramBatchGetFriendStoryFeedInfoRequest.c = true;
-    if ((!paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(VideoListPageLoader.b(this.a)))) {
-      paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean = true;
-    }
-    paramBatchGetFriendStoryFeedInfoRequest.b = ???.a().getOwner().getUnionId();
-    paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList = ((FeedManager)SuperManager.a(11)).a(VideoListPageLoader.a(this.a), paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList, paramBatchGetFriendStoryFeedInfoRequest.c);
-    paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo = new FeedVideoInfo(VideoListPageLoader.a(this.a), VideoListPageLoader.b(this.a), VideoListPageLoader.a(this.a), VideoListPageLoader.b(this.a), paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean);
-    ??? = new ArrayList(paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList.size());
-    paramErrorMessage = paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramErrorMessage.hasNext()) {
-      ???.add(((StoryVideoItem)paramErrorMessage.next()).mVid);
-    }
-    GetVidPollInfoHandler.a(???);
-    synchronized (this.a)
-    {
-      this.a.b = true;
-      VideoListPageLoader.a(this.a, paramBatchGetFriendStoryFeedInfoRequest);
-      return;
-    }
+    SLog.a("Q.qqstory.home.data:VideoListPageLoader", "get video list with home pb fail feedId:%s", VideoListPageLoader.a(this.a));
+    VideoListPageLoader.a(this.a, paramBatchGetFriendStoryFeedInfoRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader.2
  * JD-Core Version:    0.7.0.1
  */

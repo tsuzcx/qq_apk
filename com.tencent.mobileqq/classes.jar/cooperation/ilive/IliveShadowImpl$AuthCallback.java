@@ -40,17 +40,19 @@ class IliveShadowImpl$AuthCallback
         this.jdField_a_of_type_Boolean = true;
         IliveShadowImpl.a(this.jdField_a_of_type_CooperationIliveIliveShadowImpl, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager, this.jdField_a_of_type_AndroidOsBundle, paramstAuth, this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback);
       }
-      return;
     }
-    if (IlivePluginManager.getInstance().getPluginCallback() != null) {
-      IlivePluginManager.getInstance().getPluginCallback().onPluginLoginFail(-1, "auth login fail");
+    else
+    {
+      if (IlivePluginManager.getInstance().getPluginCallback() != null) {
+        IlivePluginManager.getInstance().getPluginCallback().onPluginLoginFail(-1, "auth login fail");
+      }
+      QLog.e("IliveAuthShadowImpl", 1, "[enter] pluginManager auth fail!");
     }
-    QLog.e("IliveAuthShadowImpl", 1, "[enter] pluginManager auth fail!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IliveShadowImpl.AuthCallback
  * JD-Core Version:    0.7.0.1
  */

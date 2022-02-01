@@ -1,7 +1,7 @@
 package com.tencent.avgame.ipc;
 
 import android.content.Intent;
-import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.common.app.business.BaseAVGameAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
@@ -20,13 +20,18 @@ class AVGameClientQIPCModule$1
       paramEIPCResult.putExtra("action_key_room_id", this.jdField_a_of_type_JavaLangString);
       paramEIPCResult.putExtra("action_key_status", this.jdField_a_of_type_Int);
       AVGameClientQIPCModule.a(this.jdField_a_of_type_ComTencentAvgameIpcAVGameClientQIPCModule).getApp().sendBroadcast(paramEIPCResult);
-      QLog.d("AVGameClientQIPCModule", 2, "status change with broadcast " + this.jdField_a_of_type_Int + " " + this.jdField_a_of_type_JavaLangString);
+      paramEIPCResult = new StringBuilder();
+      paramEIPCResult.append("status change with broadcast ");
+      paramEIPCResult.append(this.jdField_a_of_type_Int);
+      paramEIPCResult.append(" ");
+      paramEIPCResult.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("AVGameClientQIPCModule", 2, paramEIPCResult.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ipc.AVGameClientQIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,19 @@ public final class iw
   
   public final byte[] a(String paramString)
   {
-    if ((nl.a(paramString)) || (!paramString.startsWith("tileOverlay")) || (this.a == null)) {
-      return null;
+    if ((!nl.a(paramString)) && (paramString.startsWith("tileOverlay")))
+    {
+      iy localiy = this.a;
+      if (localiy != null) {
+        return localiy.a(paramString);
+      }
     }
-    return this.a.a(paramString);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.iw
  * JD-Core Version:    0.7.0.1
  */

@@ -12,21 +12,11 @@ import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 public abstract class TroopFileGetFileCountObserver
   extends ProtoUtils.TroopProtocolObserver
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      a(false, false, 0, 0, 0);
-      return;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0x6d8.RspBody();
     }
-    paramBundle = new oidb_0x6d8.RspBody();
     try
     {
       paramBundle.mergeFrom(paramArrayOfByte);
@@ -38,19 +28,30 @@ public abstract class TroopFileGetFileCountObserver
         a(false, false, 0, 0, 0);
         return;
       }
+      paramArrayOfByte = (oidb_0x6d8.GetFileCountRspBody)paramBundle.group_file_cnt_rsp.get();
+      a(true, paramArrayOfByte.bool_file_too_many.get(), paramArrayOfByte.uint32_all_file_count.get(), paramArrayOfByte.uint32_limit_count.get(), paramInt);
+      return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      a(false, false, 0, 0, 0);
-      return;
+      label98:
+      break label98;
     }
-    paramArrayOfByte = (oidb_0x6d8.GetFileCountRspBody)paramBundle.group_file_cnt_rsp.get();
-    a(true, paramArrayOfByte.bool_file_too_many.get(), paramArrayOfByte.uint32_all_file_count.get(), paramArrayOfByte.uint32_limit_count.get(), paramInt);
+    a(false, false, 0, 0, 0);
+    return;
+    a(false, false, 0, 0, 0);
+  }
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3);
+  
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    a(paramInt, paramArrayOfByte, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.protocol.TroopFileGetFileCountObserver
  * JD-Core Version:    0.7.0.1
  */

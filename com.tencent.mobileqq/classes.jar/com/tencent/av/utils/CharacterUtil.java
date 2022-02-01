@@ -20,26 +20,22 @@ public class CharacterUtil
   
   public static int a(String paramString)
   {
-    int i = 0;
     int j = 0;
-    if ((paramString != null) && (j < paramString.length()))
+    int i = 0;
+    while ((paramString != null) && (j < paramString.length()))
     {
       if (a(paramString.charAt(j))) {
         i += 2;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
+      } else {
         i += 1;
       }
+      j += 1;
     }
     return i;
   }
   
   static long a(long paramLong1, long paramLong2)
   {
-    int i = 1;
     if (paramLong2 < 0L)
     {
       if (a(paramLong1, paramLong2) < 0) {
@@ -50,60 +46,58 @@ public class CharacterUtil
     if (paramLong1 >= 0L) {
       return paramLong1 / paramLong2;
     }
+    int i = 1;
     long l = (paramLong1 >>> 1) / paramLong2 << 1;
-    if (a(paramLong1 - l * paramLong2, paramLong2) >= 0) {}
-    for (;;)
-    {
-      return i + l;
+    if (a(paramLong1 - l * paramLong2, paramLong2) < 0) {
       i = 0;
     }
+    return l + i;
   }
   
   public static long a(String paramString)
   {
-    long l1 = 0L;
-    long l2;
+    long l = 0L;
     if (paramString == null)
     {
-      l2 = l1;
-      if (QLog.isColorLevel())
-      {
+      if (QLog.isColorLevel()) {
         QLog.e("CharacterUtil", 2, "the strind is null!");
-        l2 = l1;
       }
+      return 0L;
     }
-    do
+    if (paramString.length() == 0)
     {
-      return l2;
-      if (paramString.length() != 0) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.e("CharacterUtil", 2, "invalid string!");
       }
-      l2 = l1;
-    } while (!QLog.isColorLevel());
-    QLog.e("CharacterUtil", 2, "invalid string!");
-    return 0L;
+      return 0L;
+    }
     int i = 0;
-    for (;;)
+    while (i < paramString.length())
     {
-      l2 = l1;
-      if (i >= paramString.length()) {
-        break;
-      }
       int j = Character.digit(paramString.charAt(i), 10);
-      if (j == -1) {
+      if (j != -1)
+      {
+        if ((i > 18) && (a(l, j, 10)))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Too large for unsigned long: ");
+          localStringBuilder.append(paramString);
+          throw new NumberFormatException(localStringBuilder.toString());
+        }
+        l = l * 10 + j;
+        i += 1;
+      }
+      else
+      {
         throw new NumberFormatException(paramString);
       }
-      if ((i > 18) && (a(l1, j, 10))) {
-        throw new NumberFormatException("Too large for unsigned long: " + paramString);
-      }
-      l1 = l1 * 10 + j;
-      i += 1;
     }
+    return l;
   }
   
   public static String a(long paramLong)
   {
-    long l = paramLong & 0xFFFFFFFF;
+    long l = 0xFFFFFFFF & paramLong;
     if (paramLong == l) {
       return String.valueOf(l);
     }
@@ -132,16 +126,16 @@ public class CharacterUtil
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      int i = paramInt1;
-      int j = paramInt2;
-      paramInt2 = i;
-      for (i = j; paramInt2 < i; i = j)
+      int i = paramInt2;
+      paramInt2 = paramInt1;
+      while (paramInt2 < i)
       {
-        j = i;
+        int j = i;
         if (a(paramString.charAt(paramInt2))) {
           j = i - 1;
         }
         paramInt2 += 1;
+        i = j;
       }
       return paramString.substring(paramInt1, i);
     }
@@ -156,31 +150,27 @@ public class CharacterUtil
   
   private static boolean a(long paramLong, int paramInt1, int paramInt2)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
+    boolean bool = true;
     if (paramLong >= 0L)
     {
-      if (paramLong >= a) {
-        break label27;
+      long l = a;
+      if (paramLong < l) {
+        return false;
       }
-      bool1 = false;
+      if (paramLong > l) {
+        return true;
+      }
+      if (paramInt1 > 5) {
+        return true;
+      }
+      bool = false;
     }
-    label27:
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramLong > a);
-      bool1 = bool2;
-    } while (paramInt1 > 5);
-    return false;
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.CharacterUtil
  * JD-Core Version:    0.7.0.1
  */

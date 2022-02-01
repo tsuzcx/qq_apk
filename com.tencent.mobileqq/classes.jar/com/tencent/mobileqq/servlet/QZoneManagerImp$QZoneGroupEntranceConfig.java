@@ -20,7 +20,6 @@ public class QZoneManagerImp$QZoneGroupEntranceConfig
   
   public void a(String paramString)
   {
-    int i = 0;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_Boolean = false;
     if (TextUtils.isEmpty(paramString)) {
@@ -30,7 +29,9 @@ public class QZoneManagerImp$QZoneGroupEntranceConfig
     {
       paramString = new JSONObject(paramString);
       JSONArray localJSONArray = paramString.optJSONArray("troop_types");
-      if (localJSONArray != null) {
+      if (localJSONArray != null)
+      {
+        int i = 0;
         while (i < localJSONArray.length())
         {
           this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(localJSONArray.optLong(i)));
@@ -53,7 +54,7 @@ public class QZoneManagerImp$QZoneGroupEntranceConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneManagerImp.QZoneGroupEntranceConfig
  * JD-Core Version:    0.7.0.1
  */

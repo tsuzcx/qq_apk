@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.view;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class KandianAdPandentMask$KandianAdPandentView$5
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   KandianAdPandentMask$KandianAdPandentView$5(KandianAdPandentMask.KandianAdPandentView paramKandianAdPandentView) {}
   
@@ -21,7 +21,7 @@ class KandianAdPandentMask$KandianAdPandentView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.KandianAdPandentMask.KandianAdPandentView.5
  * JD-Core Version:    0.7.0.1
  */

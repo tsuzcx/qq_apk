@@ -59,14 +59,16 @@ public class KandianRoomSwitchService
   
   private static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    default: 
-      return "";
-    case 8: 
+      if (paramInt != 8)
+      {
+        if (paramInt != 9) {
+          return "";
+        }
+        return "access";
+      }
       return "qq_access";
-    case 9: 
-      return "access";
     }
     return "visitor";
   }
@@ -76,70 +78,75 @@ public class KandianRoomSwitchService
     this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger().i("RoomSwitchCgiService", String.format("roomList size = %d , switchRoomInfos size = %d", new Object[] { Integer.valueOf(paramList1.size()), Integer.valueOf(paramList2.size()) }), new Object[0]);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    int k = 0;
     Object localObject;
-    int j;
-    if (i < paramList1.size())
+    int k;
+    for (int j = 0; i < paramList1.size(); j = k)
     {
       localObject = ((SwitchRoomInfo)paramList1.get(i)).extData;
       if (((Bundle)localObject).getBoolean("read"))
       {
         localArrayList.add(paramList1.get(i));
-        j = i;
       }
-      for (;;)
+      else
       {
-        i += 1;
         k = j;
-        break;
-        j = k;
-        if (((Bundle)localObject).getBoolean("is_preload"))
-        {
-          j = k;
-          if (paramInt != 0)
-          {
-            localArrayList.add(paramList1.get(i));
-            j = i;
-          }
+        if (!((Bundle)localObject).getBoolean("is_preload")) {
+          break label166;
         }
+        k = j;
+        if (paramInt == 0) {
+          break label166;
+        }
+        localArrayList.add(paramList1.get(i));
       }
+      k = i;
+      label166:
+      i += 1;
     }
-    this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger().i("RoomSwitchCgiService", String.format("isReadIndex = %d", new Object[] { Integer.valueOf(k) }), new Object[0]);
+    this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger().i("RoomSwitchCgiService", String.format("isReadIndex = %d", new Object[] { Integer.valueOf(j) }), new Object[0]);
     i = 0;
-    if (i < paramList2.size())
+    while (i < paramList2.size())
     {
       localObject = (SwitchRoomInfo)paramList2.get(i);
-      j = 0;
-      label250:
-      if ((j > k) || (j >= paramList1.size())) {
-        break label461;
+      k = 0;
+      while ((k <= j) && (k < paramList1.size()))
+      {
+        if (a((SwitchRoomInfo)paramList1.get(k), (SwitchRoomInfo)localObject))
+        {
+          bool = true;
+          break label302;
+        }
+        k += 1;
       }
-      if (!a((SwitchRoomInfo)paramList1.get(j), (SwitchRoomInfo)localObject)) {}
-    }
-    label461:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger().i("RoomSwitchCgiService", "isDuplicate = " + bool, new Object[0]);
+      boolean bool = false;
+      label302:
+      LogInterface localLogInterface = this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isDuplicate = ");
+      localStringBuilder.append(bool);
+      localLogInterface.i("RoomSwitchCgiService", localStringBuilder.toString(), new Object[0]);
       if (!bool) {
         localArrayList.add(localObject);
       }
       i += 1;
-      break;
-      j += 1;
-      break label250;
-      if (paramInt == 0)
-      {
-        paramList1 = null;
-        if (k + 1 < localArrayList.size()) {
-          paramList1 = (SwitchRoomInfo)localArrayList.get(k + 1);
-        }
-        if (paramList1 != null) {
-          paramList1.extData.putBoolean("force_update", true);
-        }
-      }
-      this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger().i("RoomSwitchCgiService", "newList size = " + localArrayList.size(), new Object[0]);
-      return localArrayList;
     }
+    if (paramInt == 0)
+    {
+      paramList1 = null;
+      paramInt = j + 1;
+      if (paramInt < localArrayList.size()) {
+        paramList1 = (SwitchRoomInfo)localArrayList.get(paramInt);
+      }
+      if (paramList1 != null) {
+        paramList1.extData.putBoolean("force_update", true);
+      }
+    }
+    paramList1 = this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger();
+    paramList2 = new StringBuilder();
+    paramList2.append("newList size = ");
+    paramList2.append(localArrayList.size());
+    paramList1.i("RoomSwitchCgiService", paramList2.toString(), new Object[0]);
+    return localArrayList;
   }
   
   private JSONArray a(SwitchRoomInfo paramSwitchRoomInfo1, SwitchRoomInfo paramSwitchRoomInfo2)
@@ -189,21 +196,24 @@ public class KandianRoomSwitchService
       try
       {
         JSONArray localJSONArray = paramJSONObject.getJSONArray("content_list");
-        AegisHelper.b("content_list size = " + localJSONArray.length(), "RoomSwitchCgiService");
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("content_list size = ");
+        paramJSONObject.append(localJSONArray.length());
+        AegisHelper.b(paramJSONObject.toString(), "RoomSwitchCgiService");
         paramJSONObject = new ArrayList();
         i = 0;
         if (i < localJSONArray.length())
         {
           JSONObject localJSONObject = (JSONObject)localJSONArray.get(i);
           int j = localJSONObject.getInt("content_type");
-          String str1 = localJSONObject.getJSONObject("ext").getString("ab_token");
-          String str2 = localJSONObject.getString("cover_url");
-          localSwitchRoomInfo = new SwitchRoomInfo();
+          String str2 = localJSONObject.getJSONObject("ext").getString("ab_token");
+          String str1 = localJSONObject.getString("cover_url");
+          SwitchRoomInfo localSwitchRoomInfo = new SwitchRoomInfo();
           Object localObject = new Bundle();
           localSwitchRoomInfo.extData = ((Bundle)localObject);
-          localSwitchRoomInfo.logoUrl = str2;
+          localSwitchRoomInfo.logoUrl = str1;
           ((Bundle)localObject).putInt("content_type", j);
-          ((Bundle)localObject).putString("ab_token", str1);
+          ((Bundle)localObject).putString("ab_token", str2);
           if (RoomUtil.b(j))
           {
             localSwitchRoomInfo.roomId = localJSONObject.getLong("room_id");
@@ -225,22 +235,22 @@ public class KandianRoomSwitchService
             paramJSONObject.add(localSwitchRoomInfo);
           }
         }
+        else
+        {
+          localJSONArray = null;
+          if (paramJSONObject.size() == 0) {
+            throw new NullPointerException();
+          }
+          paramList = a(paramList, paramJSONObject, paramInt);
+          ThreadManager.getUIHandler().post(new KandianRoomSwitchService.2(this, paramIRoomList, paramList));
+          return;
+        }
       }
       catch (JSONException paramList)
       {
         paramList.printStackTrace();
         AegisHelper.a(paramList.getMessage(), "RoomSwitchCgiService");
         return;
-      }
-      SwitchRoomInfo localSwitchRoomInfo = null;
-      if (paramJSONObject.size() == 0) {
-        throw new NullPointerException();
-      }
-      for (;;)
-      {
-        ThreadManager.getUIHandler().post(new KandianRoomSwitchService.2(this, paramIRoomList, paramList));
-        return;
-        paramList = a(paramList, paramJSONObject, paramInt);
       }
       i += 1;
     }
@@ -283,32 +293,40 @@ public class KandianRoomSwitchService
   
   private static String b(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "";
-    case 0: 
-      return "no";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4) {
+              return "";
+            }
+            return "unknow";
+          }
+          return "3g";
+        }
+        return "2g";
+      }
       return "wifi";
-    case 2: 
-      return "2g";
-    case 3: 
-      return "3g";
     }
-    return "unknow";
+    return "no";
   }
   
   private static String c(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    default: 
-      return "";
-    case 8: 
+      if (paramInt != 8)
+      {
+        if (paramInt != 9) {
+          return "";
+        }
+        return "weixin";
+      }
       return "qq_open";
-    case 9: 
-      return "weixin";
     }
     return "visitor";
   }
@@ -334,127 +352,150 @@ public class KandianRoomSwitchService
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     StringBuilder localStringBuilder = new StringBuilder();
-    if (((HostProxyInterface)BizEngineMgr.getInstance().getLiveEngine().getService(HostProxyInterface.class)).getSdkInfoInterface().isTestEnv()) {}
-    for (paramContext = this.jdField_b_of_type_JavaLangString;; paramContext = this.jdField_a_of_type_JavaLangString)
-    {
-      this.jdField_d_of_type_JavaLangString = (paramContext + this.jdField_c_of_type_JavaLangString);
-      return;
+    if (((HostProxyInterface)BizEngineMgr.getInstance().getLiveEngine().getService(HostProxyInterface.class)).getSdkInfoInterface().isTestEnv()) {
+      paramContext = this.jdField_b_of_type_JavaLangString;
+    } else {
+      paramContext = this.jdField_a_of_type_JavaLangString;
     }
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    this.jdField_d_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public void onDestroy() {}
   
   public void queryRoomList(List<SwitchRoomInfo> paramList, int paramInt1, int paramInt2, RoomSwitchInterface.IRoomList paramIRoomList)
   {
-    int k = 5;
-    int j = 0;
-    this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger().i("RoomSwitchCgiService", "index = " + paramInt2, new Object[0]);
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject4 = "";
+    Object localObject1 = this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("index = ");
+    ((StringBuilder)localObject2).append(paramInt2);
+    ((LogInterface)localObject1).i("RoomSwitchCgiService", ((StringBuilder)localObject2).toString(), new Object[0]);
+    localObject1 = new JSONObject();
     SwitchRoomInfo localSwitchRoomInfo1 = a(paramList, paramInt2 - 1);
     SwitchRoomInfo localSwitchRoomInfo2 = a(paramList, paramInt2);
     a(paramList, paramInt2 + 1);
+    int j = 5;
     int i;
-    LoginResult localLoginResult;
-    LoginRequest localLoginRequest;
-    switch (paramInt1)
+    Object localObject5;
+    if (paramInt1 != 0)
     {
-    default: 
-      i = k;
-      AegisHelper.b(String.format("direction = %d, index = %d, count = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) }), "RoomSwitchCgiService");
-      localLoginResult = LoginManager.a.a();
-      localLoginRequest = LoginManager.a.a();
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 != 2) {}
+        while (localSwitchRoomInfo2 == null)
+        {
+          i = j;
+          break;
+        }
+        i = localSwitchRoomInfo2.extData.getInt("count");
+        localObject2 = this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger();
+        localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append("current roomid = ");
+        ((StringBuilder)localObject5).append(localSwitchRoomInfo2.roomId);
+        ((LogInterface)localObject2).i("RoomSwitchCgiService", ((StringBuilder)localObject5).toString(), new Object[0]);
+        localObject2 = this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger();
+        localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append("current vid = ");
+        ((StringBuilder)localObject5).append(localSwitchRoomInfo2.videoId);
+        ((LogInterface)localObject2).i("RoomSwitchCgiService", ((StringBuilder)localObject5).toString(), new Object[0]);
+      }
+      else
+      {
+        i = 0;
+      }
     }
+    else
+    {
+      i = j;
+      if (localSwitchRoomInfo2 != null)
+      {
+        i = j;
+        if (paramList.size() > 1)
+        {
+          localSwitchRoomInfo2.extData.putInt("watch_sec", 30);
+          i = j;
+        }
+      }
+    }
+    AegisHelper.b(String.format("direction = %d, index = %d, count = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) }), "RoomSwitchCgiService");
+    LoginResult localLoginResult = LoginManager.a.a();
+    LoginRequest localLoginRequest = LoginManager.a.a();
     for (;;)
     {
       try
       {
-        localJSONObject.put("apn", b(NetworkUtil.a(this.jdField_a_of_type_AndroidContentContext)));
-        localJSONObject.put("location", "");
-        localJSONObject.put("from_id", BusinessManager.a.a().jdField_d_of_type_JavaLangString);
-        if (DeviceUtils.a() == null) {
-          continue;
+        localObject2 = b(NetworkUtil.a(this.jdField_a_of_type_AndroidContentContext));
+        localObject5 = localObject1;
+        try
+        {
+          ((JSONObject)localObject5).put("apn", localObject2);
+          ((JSONObject)localObject5).put("location", "");
+          ((JSONObject)localObject5).put("from_id", BusinessManager.a.a().jdField_d_of_type_JavaLangString);
+          if (DeviceUtils.a() == null) {
+            break label850;
+          }
+          localObject2 = DeviceUtils.a();
+          ((JSONObject)localObject5).put("client_build", localObject2);
+          if (localLoginResult == null) {
+            paramInt2 = 0;
+          } else {
+            paramInt2 = localLoginResult.jdField_a_of_type_Int;
+          }
+          ((JSONObject)localObject5).put("token_type", a(paramInt2));
+          if (localLoginResult == null) {
+            localObject2 = "";
+          } else {
+            localObject2 = localLoginResult.jdField_b_of_type_JavaLangString;
+          }
+          ((JSONObject)localObject5).put("token", localObject2);
+          if (localLoginResult == null) {
+            paramInt2 = 0;
+          } else {
+            paramInt2 = localLoginResult.jdField_a_of_type_Int;
+          }
+          ((JSONObject)localObject5).put("app_id_type", c(paramInt2));
+          if (localLoginResult == null) {
+            localObject2 = "";
+          } else {
+            localObject2 = localLoginResult.jdField_a_of_type_JavaLangString;
+          }
+          ((JSONObject)localObject5).put("app_uid", localObject2);
+          ((JSONObject)localObject5).put("app_version", String.valueOf(DeviceUtils.a()));
+          if (localLoginRequest == null) {
+            localObject2 = localObject4;
+          } else {
+            localObject2 = Integer.valueOf(Integer.parseInt(localLoginRequest.appid));
+          }
+          ((JSONObject)localObject5).put("open_appId", localObject2);
+          ((JSONObject)localObject5).put("original_qq", Long.valueOf(BusinessManager.a.a().e));
+          if (paramInt1 == 0) {
+            ((JSONObject)localObject5).put("old_content_list", a(null, localSwitchRoomInfo2));
+          } else {
+            ((JSONObject)localObject5).put("old_content_list", a(localSwitchRoomInfo1, localSwitchRoomInfo2));
+          }
+          localObject2 = this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger();
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("count = ");
+          ((StringBuilder)localObject4).append(i);
+          ((LogInterface)localObject2).i("RoomSwitchCgiService", ((StringBuilder)localObject4).toString(), new Object[0]);
+          ((JSONObject)localObject5).put("count", i);
+          ((JSONObject)localObject5).put("device_id", DeviceUtils.a(this.jdField_a_of_type_AndroidContentContext));
         }
-        localObject = DeviceUtils.a();
-        localJSONObject.put("client_build", localObject);
-        if (localLoginResult != null) {
-          continue;
-        }
-        paramInt2 = 0;
-        localJSONObject.put("token_type", a(paramInt2));
-        if (localLoginResult != null) {
-          continue;
-        }
-        localObject = "";
-        localJSONObject.put("token", localObject);
-        if (localLoginResult != null) {
-          continue;
-        }
-        paramInt2 = j;
-        localJSONObject.put("app_id_type", c(paramInt2));
-        if (localLoginResult != null) {
-          continue;
-        }
-        localObject = "";
-        localJSONObject.put("app_uid", localObject);
-        localJSONObject.put("app_version", String.valueOf(DeviceUtils.a()));
-        if (localLoginRequest != null) {
-          continue;
-        }
-        localObject = "";
-        localJSONObject.put("open_appId", localObject);
-        localJSONObject.put("original_qq", Long.valueOf(BusinessManager.a.a().e));
-        if (paramInt1 != 0) {
-          continue;
-        }
-        localJSONObject.put("old_content_list", a(null, localSwitchRoomInfo2));
-        this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger().i("RoomSwitchCgiService", "count = " + i, new Object[0]);
-        localJSONObject.put("count", i);
-        localJSONObject.put("device_id", DeviceUtils.a(this.jdField_a_of_type_AndroidContentContext));
+        catch (JSONException localJSONException1) {}
+        localJSONException2.printStackTrace();
       }
-      catch (JSONException localJSONException)
-      {
-        Object localObject;
-        localJSONException.printStackTrace();
-        continue;
-      }
-      localObject = new HashMap();
-      ((Map)localObject).put("Referer", "https://kd.ilive.qq.com/" + BusinessManager.a.a().jdField_d_of_type_Int);
-      HttpsFactory.a().a(this.jdField_d_of_type_JavaLangString, (Map)localObject, localJSONObject, new KandianRoomSwitchService.1(this, paramList, paramInt1, paramIRoomList), CookieHelper.a());
+      catch (JSONException localJSONException2) {}
+      Object localObject3 = new HashMap();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("https://kd.ilive.qq.com/");
+      ((StringBuilder)localObject4).append(BusinessManager.a.a().jdField_d_of_type_Int);
+      ((Map)localObject3).put("Referer", ((StringBuilder)localObject4).toString());
+      HttpsFactory.a().a(this.jdField_d_of_type_JavaLangString, (Map)localObject3, (JSONObject)localObject1, new KandianRoomSwitchService.1(this, paramList, paramInt1, paramIRoomList), CookieHelper.a());
       return;
-      i = k;
-      if (localSwitchRoomInfo2 == null) {
-        break;
-      }
-      i = k;
-      if (paramList.size() <= 1) {
-        break;
-      }
-      localSwitchRoomInfo2.extData.putInt("watch_sec", 30);
-      i = k;
-      break;
-      i = 0;
-      break;
-      i = k;
-      if (localSwitchRoomInfo2 == null) {
-        break;
-      }
-      i = localSwitchRoomInfo2.extData.getInt("count");
-      this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger().i("RoomSwitchCgiService", "current roomid = " + localSwitchRoomInfo2.roomId, new Object[0]);
-      this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger().i("RoomSwitchCgiService", "current vid = " + localSwitchRoomInfo2.videoId, new Object[0]);
-      break;
-      localObject = "";
-      continue;
-      paramInt2 = localLoginResult.jdField_a_of_type_Int;
-      continue;
-      localObject = localLoginResult.jdField_b_of_type_JavaLangString;
-      continue;
-      paramInt2 = localLoginResult.jdField_a_of_type_Int;
-      continue;
-      localObject = localLoginResult.jdField_a_of_type_JavaLangString;
-      continue;
-      localObject = Integer.valueOf(Integer.parseInt(localLoginRequest.appid));
-      continue;
-      localJSONObject.put("old_content_list", a(localSwitchRoomInfo1, localSwitchRoomInfo2));
+      label850:
+      localObject3 = "";
     }
   }
   
@@ -465,7 +506,7 @@ public class KandianRoomSwitchService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.services.rommswitch.KandianRoomSwitchService
  * JD-Core Version:    0.7.0.1
  */

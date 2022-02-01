@@ -44,35 +44,38 @@ public class BottomVideoInfoWidget$DownloadStatusUpdateReceiver
       return;
     }
     boolean bool = PlayModeUtils.a(paramDownloadStatusChangeEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    switch (paramDownloadStatusChangeEvent.jdField_a_of_type_Int)
+    int i = paramDownloadStatusChangeEvent.jdField_a_of_type_Int;
+    if (i != 0)
     {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131701251), 0).a();
-      return;
-    case 2: 
-      if (bool) {}
-      for (paramBottomVideoInfoWidget = "2";; paramBottomVideoInfoWidget = "1")
+      if (i != 1)
       {
+        paramBottomVideoInfoWidget = "2";
+        if (i != 2)
+        {
+          if (i != 3) {
+            return;
+          }
+          if (!bool) {
+            paramBottomVideoInfoWidget = "1";
+          }
+          StoryReportor.a("play_video", "down_fail", 0, 0, new String[] { paramBottomVideoInfoWidget, "", "", paramDownloadStatusChangeEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+          QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131701392), 0).a();
+          return;
+        }
+        if (!bool) {
+          paramBottomVideoInfoWidget = "1";
+        }
         StoryReportor.a("play_video", "down_suc", 0, 0, new String[] { paramBottomVideoInfoWidget, "", "", paramDownloadStatusChangeEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-        QQToast.a(BaseApplicationImpl.getContext(), 2, StoryApi.a(2131699797), 0).a();
+        QQToast.a(BaseApplicationImpl.getContext(), 2, StoryApi.a(2131699938), 0).a();
         return;
       }
-    }
-    if (bool) {}
-    for (paramBottomVideoInfoWidget = "2";; paramBottomVideoInfoWidget = "1")
-    {
-      StoryReportor.a("play_video", "down_fail", 0, 0, new String[] { paramBottomVideoInfoWidget, "", "", paramDownloadStatusChangeEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131701252), 0).a();
-      return;
+      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131701391), 0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.DownloadStatusUpdateReceiver
  * JD-Core Version:    0.7.0.1
  */

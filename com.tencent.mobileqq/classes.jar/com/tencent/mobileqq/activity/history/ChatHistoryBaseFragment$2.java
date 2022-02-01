@@ -9,29 +9,35 @@ class ChatHistoryBaseFragment$2
   
   public void a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.a.k();
-      return;
-    case 3: 
-      this.a.l();
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return;
+            }
+            this.a.o();
+            return;
+          }
+          this.a.n();
+          return;
+        }
+        this.a.l();
+        return;
+      }
       this.a.m();
       return;
-    case 4: 
-      this.a.n();
-      return;
     }
-    this.a.o();
+    this.a.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

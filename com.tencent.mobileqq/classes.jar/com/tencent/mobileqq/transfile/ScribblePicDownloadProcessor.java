@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.scribble.ScribbleDownloader;
-import com.tencent.mobileqq.scribble.ScribbleMsgUtils;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.scribble.IScribbleDownloader;
+import com.tencent.mobileqq.scribble.IScribbleMsgUtils;
+import com.tencent.mobileqq.scribble.ScribbleMsgConstants;
 import com.tencent.mobileqq.scribble.ScribbleUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
-import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.dns.BaseInnerDns;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -25,9 +26,9 @@ public class ScribblePicDownloadProcessor
   private int mTotalRetryTime = 0;
   String url = "";
   
-  public ScribblePicDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
+  public ScribblePicDownloadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileControllerImpl, paramTransferRequest);
+    super(paramBaseTransFileController, paramTransferRequest);
   }
   
   private void spliteCombineFile()
@@ -35,39 +36,53 @@ public class ScribblePicDownloadProcessor
     if (this.mMsg == null) {
       return;
     }
-    String str = ScribbleUtils.a(this.mUiRequest.mOutFilePath);
-    if (str.equalsIgnoreCase(this.mMsg.combineFileMd5))
+    Object localObject1 = ScribbleUtils.a(this.mUiRequest.mOutFilePath);
+    if (((String)localObject1).equalsIgnoreCase(this.mMsg.combineFileMd5))
     {
-      if (this.mMsg != null) {
-        this.mMsg.mExistInfo.mCombineFileExist = true;
+      localObject1 = this.mMsg;
+      if (localObject1 != null) {
+        ((MessageForScribble)localObject1).mExistInfo.mCombineFileExist = true;
       }
-      int i = ScribbleMsgUtils.b(this.mMsg);
-      if (i == ScribbleMsgUtils.d)
+      int i = ((IScribbleMsgUtils)QRoute.api(IScribbleMsgUtils.class)).splitPureDataFromCombineFile(this.mMsg);
+      if (i == ScribbleMsgConstants.d)
       {
-        if (this.mMsg != null)
+        localObject1 = this.mMsg;
+        if (localObject1 != null)
         {
-          this.mMsg.mExistInfo.mDataFileExist = true;
+          ((MessageForScribble)localObject1).mExistInfo.mDataFileExist = true;
           this.mMsg.mExistInfo.mInit = true;
         }
         onSuccess();
         return;
       }
-      if (this.mMsg != null)
+      localObject1 = this.mMsg;
+      if (localObject1 != null)
       {
-        this.mMsg.mExistInfo.mDataFileExist = false;
+        ((MessageForScribble)localObject1).mExistInfo.mDataFileExist = false;
         this.mMsg.mExistInfo.mInit = true;
       }
-      setError(9303, getExpStackString(new Exception("SpliteCombineFile illegal result: " + i)));
+      localObject1 = this.mProcessorReport;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("SpliteCombineFile illegal result: ");
+      ((StringBuilder)localObject2).append(i);
+      ((ProcessorReport)localObject1).setError(9303, getExpStackString(new Exception(((StringBuilder)localObject2).toString())), null, null);
       onError();
       return;
     }
-    if (this.mMsg != null)
+    Object localObject2 = this.mMsg;
+    if (localObject2 != null)
     {
-      this.mMsg.mExistInfo.mDataFileExist = false;
+      ((MessageForScribble)localObject2).mExistInfo.mDataFileExist = false;
       this.mMsg.mExistInfo.mCombineFileExist = false;
       this.mMsg.mExistInfo.mInit = true;
     }
-    setError(9041, getExpStackString(new Exception("SpliteCombineFile illegal md5String: " + str + "  msg.combineFileMd5:  " + this.mMsg.combineFileMd5)));
+    localObject2 = this.mProcessorReport;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SpliteCombineFile illegal md5String: ");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("  msg.combineFileMd5:  ");
+    localStringBuilder.append(this.mMsg.combineFileMd5);
+    ((ProcessorReport)localObject2).setError(9041, getExpStackString(new Exception(localStringBuilder.toString())), null, null);
     onError();
   }
   
@@ -76,7 +91,7 @@ public class ScribblePicDownloadProcessor
     if (paramMessageForScribble != null)
     {
       paramMessageForScribble.prewrite();
-      this.app.getMessageFacade().a(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
+      ((IMessageFacade)this.app.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
     }
   }
   
@@ -89,98 +104,111 @@ public class ScribblePicDownloadProcessor
       this.mMsg = ((MessageForScribble)this.mUiRequest.mRec);
       this.url = this.mMsg.combineFileUrl;
     }
-    if ((this.mMsg == null) || (this.mMsg.combineFileUrl.equals("")) || (!this.mMsg.combineFileUrl.startsWith("http")))
+    Object localObject = this.mMsg;
+    if ((localObject != null) && (!((MessageForScribble)localObject).combineFileUrl.equals("")) && (this.mMsg.combineFileUrl.startsWith("http")))
     {
-      setError(9302, getExpStackString(new Exception("combineFileUrl illegal " + this.url)));
-      onError();
-      return -1;
+      this.mUiRequest.mOutFilePath = ((IScribbleMsgUtils)QRoute.api(IScribbleMsgUtils.class)).getScribbleCombineFile(this.mMsg);
+      if (TextUtils.isEmpty(this.mUiRequest.mOutFilePath))
+      {
+        localObject = this.mProcessorReport;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("combineFileMd5 illegal ");
+        localStringBuilder.append(this.mMsg.combineFileMd5);
+        ((ProcessorReport)localObject).setError(9302, getExpStackString(new Exception(localStringBuilder.toString())), null, null);
+        onError();
+        return -1;
+      }
+      return 0;
     }
-    this.mUiRequest.mOutFilePath = ScribbleMsgUtils.a(this.mMsg);
-    if (TextUtils.isEmpty(this.mUiRequest.mOutFilePath))
-    {
-      setError(9302, getExpStackString(new Exception("combineFileMd5 illegal " + this.mMsg.combineFileMd5)));
-      onError();
-      return -1;
-    }
-    return 0;
+    localObject = this.mProcessorReport;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("combineFileUrl illegal ");
+    localStringBuilder.append(this.url);
+    ((ProcessorReport)localObject).setError(9302, getExpStackString(new Exception(localStringBuilder.toString())), null, null);
+    onError();
+    return -1;
   }
   
   void onError()
   {
     super.onError();
-    if (this.mMsg != null) {
-      this.mMsg.fileDownloadStatus = 2;
+    Object localObject = this.mMsg;
+    if (localObject != null) {
+      ((MessageForScribble)localObject).fileDownloadStatus = 2;
     }
     updateMsg(this.mMsg);
     sendMessageToUpdate(2005);
-    ScribbleDownloader localScribbleDownloader = this.app.getScribbleDownloader();
-    if (localScribbleDownloader != null)
+    localObject = (IScribbleDownloader)this.app.getRuntimeService(IScribbleDownloader.class, "");
+    if (localObject != null)
     {
-      if (this.mMsg == null) {
-        break label90;
+      MessageForScribble localMessageForScribble = this.mMsg;
+      if (localMessageForScribble != null) {
+        ((IScribbleDownloader)localObject).removeDownloadedMsg(localMessageForScribble);
+      } else {
+        ((IScribbleDownloader)localObject).removeDownloadedMsg(null);
       }
-      localScribbleDownloader.a(this.mMsg);
     }
-    for (;;)
-    {
-      ReportController.b(this.app, "CliOper", "", "", "0X800945B", "0X800945B", 0, 0, "", "", "", "");
-      return;
-      label90:
-      localScribbleDownloader.a(null);
-    }
+    ReportController.b(this.app, "CliOper", "", "", "0X800945B", "0X800945B", 0, 0, "", "", "", "");
   }
   
   public void onResp(NetResp paramNetResp)
   {
     super.onResp(paramNetResp);
     this.mNetReq = null;
-    Object localObject = new StringBuilder().append(" result:");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" result:");
+    boolean bool;
+    if (paramNetResp.mResult == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((StringBuilder)localObject).append(bool);
+    logRichMediaEvent("onHttpResp", ((StringBuilder)localObject).toString());
+    localObject = this.mProcessorReport;
+    StepInfo localStepInfo = this.mProcessorReport.mStepTrans;
+    if (paramNetResp.mResult == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((ProcessorReport)localObject).copyStaticsInfoFromNetResp(localStepInfo, paramNetResp, bool);
+    this.mTotolLen = paramNetResp.mTotalFileLen;
+    if (this.mTotolLen <= 0L) {
+      this.mTotolLen = (paramNetResp.mTotalBlockLen + paramNetResp.mReq.mStartDownOffset);
+    }
+    this.mRecvLen += paramNetResp.mWrittenBlockLen;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("scribble download onResp resp.mResult = ");
+    ((StringBuilder)localObject).append(paramNetResp.mResult);
+    QLog.i("ScribblePicDownloadProcessor", 2, ((StringBuilder)localObject).toString());
     if (paramNetResp.mResult == 0)
     {
-      bool = true;
-      logRichMediaEvent("onHttpResp", bool);
-      localObject = this.mStepTrans;
-      if (paramNetResp.mResult != 0) {
-        break label177;
-      }
-    }
-    label177:
-    for (boolean bool = true;; bool = false)
-    {
-      copyStatisInfoFromNetResp((BaseTransProcessor.StepInfo)localObject, paramNetResp, bool);
-      this.mTotolLen = paramNetResp.mTotalFileLen;
-      if (this.mTotolLen <= 0L) {
-        this.mTotolLen = (paramNetResp.mTotalBlockLen + paramNetResp.mReq.mStartDownOffset);
-      }
-      this.mRecvLen += paramNetResp.mWrittenBlockLen;
-      QLog.i("ScribblePicDownloadProcessor", 2, "scribble download onResp resp.mResult = " + paramNetResp.mResult);
-      if (paramNetResp.mResult != 0) {
-        break label182;
-      }
-      if (this.mMsg != null) {
-        this.mMsg.mExistInfo.mCombineFileExist = true;
+      paramNetResp = this.mMsg;
+      if (paramNetResp != null) {
+        paramNetResp.mExistInfo.mCombineFileExist = true;
       }
       spliteCombineFile();
       return;
-      bool = false;
-      break;
     }
-    label182:
-    if (this.mMsg != null)
+    localObject = this.mMsg;
+    if (localObject != null)
     {
-      this.mMsg.mExistInfo.mCombineFileExist = false;
+      ((MessageForScribble)localObject).mExistInfo.mCombineFileExist = false;
       this.mMsg.mExistInfo.mDataFileExist = false;
       this.mMsg.mExistInfo.mInit = true;
     }
-    if (this.mTotalRetryTime < 5)
+    int i = this.mTotalRetryTime;
+    if (i < 5)
     {
-      this.mTotalRetryTime += 1;
-      if ((this.ipListFromInnerDns != null) && (!this.ipListFromInnerDns.isEmpty()) && (this.mIpIndex < this.ipListFromInnerDns.size()))
+      this.mTotalRetryTime = (i + 1);
+      localObject = this.ipListFromInnerDns;
+      if ((localObject != null) && (!((ArrayList)localObject).isEmpty()) && (this.mIpIndex < this.ipListFromInnerDns.size()))
       {
         QLog.e("ScribblePicDownloadProcessor", 2, "scribble download  retry by changeIp");
         clearReprotInfo();
-        paramNetResp = InnerDns.getHostFromUrl(this.url);
-        InnerDns.getInstance().reportBadIp(paramNetResp, (String)this.ipListFromInnerDns.get(this.mIpIndex), 1018);
+        paramNetResp = BaseInnerDns.getHostFromUrl(this.url);
+        BaseInnerDns.getInstance().reportBadIp(paramNetResp, (String)this.ipListFromInnerDns.get(this.mIpIndex), 1018);
         this.mIpIndex += 1;
         recieveFile();
         return;
@@ -201,37 +229,35 @@ public class ScribblePicDownloadProcessor
   void onSuccess()
   {
     super.onSuccess();
-    if (this.mMsg != null) {
-      this.mMsg.fileDownloadStatus = 1;
+    Object localObject = this.mMsg;
+    if (localObject != null) {
+      ((MessageForScribble)localObject).fileDownloadStatus = 1;
     }
     updateMsg(this.mMsg);
     sendMessageToUpdate(2003);
-    ScribbleDownloader localScribbleDownloader = this.app.getScribbleDownloader();
-    if (localScribbleDownloader != null)
+    localObject = (IScribbleDownloader)this.app.getRuntimeService(IScribbleDownloader.class, "");
+    if (localObject != null)
     {
-      if (this.mMsg == null) {
-        break label92;
+      MessageForScribble localMessageForScribble = this.mMsg;
+      if (localMessageForScribble != null) {
+        ((IScribbleDownloader)localObject).removeDownloadedMsg(localMessageForScribble);
+      } else {
+        ((IScribbleDownloader)localObject).removeDownloadedMsg(null);
       }
-      localScribbleDownloader.a(this.mMsg);
     }
-    for (;;)
-    {
-      ReportController.b(this.app, "CliOper", "", "", "0X800945C", "0X800945C", 0, 0, "", "", "", "");
-      return;
-      label92:
-      localScribbleDownloader.a(null);
-    }
+    ReportController.b(this.app, "CliOper", "", "", "0X800945C", "0X800945C", 0, 0, "", "", "", "");
   }
   
   void recieveFile()
   {
     QLog.i("ScribblePicDownloadProcessor", 2, "scribble download start ");
-    this.mStepTrans.logStartTime();
-    String str1 = this.url;
+    this.mProcessorReport.mStepTrans.logStartTime();
+    String str = this.url;
     sendMessageToUpdate(2001);
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mCallback = this;
-    localHttpNetReq.mReqUrl = str1;
+    localHttpNetReq.mReqUrl = str;
+    int j = 0;
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mOutPath = this.mUiRequest.mOutFilePath;
     localHttpNetReq.mMsgId = String.valueOf(this.mUiRequest.mUniseq);
@@ -240,38 +266,63 @@ public class ScribblePicDownloadProcessor
     localHttpNetReq.mStartDownOffset = 0L;
     localHttpNetReq.mIsNetChgAsError = true;
     localHttpNetReq.mCanPrintUrl = true;
-    String str2;
-    if ((this.ipListFromInnerDns != null) && (!this.ipListFromInnerDns.isEmpty()) && (this.mIpIndex < this.ipListFromInnerDns.size()))
+    Object localObject = this.ipListFromInnerDns;
+    int i = j;
+    if (localObject != null)
     {
-      str2 = (String)this.ipListFromInnerDns.get(this.mIpIndex);
-      str2 = InnerDns.replaceDomainWithIp(localHttpNetReq.mReqUrl, str2);
-      if ((str2 != null) && (!str2.equals(localHttpNetReq.mReqUrl))) {
-        localHttpNetReq.mReqUrl = str2;
+      i = j;
+      if (!((ArrayList)localObject).isEmpty())
+      {
+        i = j;
+        if (this.mIpIndex < this.ipListFromInnerDns.size())
+        {
+          localObject = (String)this.ipListFromInnerDns.get(this.mIpIndex);
+          localObject = BaseInnerDns.replaceDomainWithIp(localHttpNetReq.mReqUrl, (String)localObject);
+          i = j;
+          if (localObject != null)
+          {
+            i = j;
+            if (!((String)localObject).equals(localHttpNetReq.mReqUrl))
+            {
+              localHttpNetReq.mReqUrl = ((String)localObject);
+              i = 1;
+            }
+          }
+        }
       }
     }
-    for (int i = 1;; i = 0)
+    if (i != 0) {
+      ReportController.b(this.app, "CliOper", "", "", "0X800945D", "0X800945D", 0, 0, "", "", "", "");
+    } else {
+      ReportController.b(this.app, "CliOper", "", "", "0X800945E", "0X800945E", 0, 0, "", "", "", "");
+    }
+    localObject = TransFileUtil.getIpOrDomainFromURL(str);
+    if (QLog.isColorLevel())
     {
-      if (i != 0) {
-        ReportController.b(this.app, "CliOper", "", "", "0X800945D", "0X800945D", 0, 0, "", "", "", "");
-      }
-      for (;;)
-      {
-        str2 = TransFileUtil.getIpOrDomainFromURL(str1);
-        if (QLog.isColorLevel()) {
-          QLog.i("ScribblePicDownloadProcessor", 2, "httpDownRespDomain: " + str2 + "reqUrl : " + str1 + " " + localHttpNetReq.mReqUrl + " uuid:" + this.mUiRequest.mServerPath + " downOffset:" + localHttpNetReq.mStartDownOffset);
-        }
-        QLog.i("ScribblePicDownloadProcessor", 2, "index:" + this.mIpIndex + str1);
-        if (canDoNextStep()) {
-          break;
-        }
-        return;
-        ReportController.b(this.app, "CliOper", "", "", "0X800945E", "0X800945E", 0, 0, "", "", "", "");
-      }
-      this.mNetReq = localHttpNetReq;
-      setMtype();
-      this.mNetEngine.sendReq(localHttpNetReq);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("httpDownRespDomain: ");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("reqUrl : ");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(localHttpNetReq.mReqUrl);
+      localStringBuilder.append(" uuid:");
+      localStringBuilder.append(this.mUiRequest.mServerPath);
+      localStringBuilder.append(" downOffset:");
+      localStringBuilder.append(localHttpNetReq.mStartDownOffset);
+      QLog.i("ScribblePicDownloadProcessor", 2, localStringBuilder.toString());
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("index:");
+    ((StringBuilder)localObject).append(this.mIpIndex);
+    ((StringBuilder)localObject).append(str);
+    QLog.i("ScribblePicDownloadProcessor", 2, ((StringBuilder)localObject).toString());
+    if (!canDoNextStep()) {
       return;
     }
+    this.mNetReq = localHttpNetReq;
+    setMtype();
+    this.mNetEngine.sendReq(localHttpNetReq);
   }
   
   public int resume()
@@ -283,8 +334,8 @@ public class ScribblePicDownloadProcessor
     {
       this.mIsPause = false;
       this.mIsCancel = false;
-      this.errCode = 0;
-      this.errDesc = "";
+      this.mProcessorReport.errCode = 0;
+      this.mProcessorReport.errDesc = "";
       this.mController.mHandler.post(new ScribblePicDownloadProcessor.1(this));
     }
     return 0;
@@ -293,26 +344,32 @@ public class ScribblePicDownloadProcessor
   public void start()
   {
     super.start();
-    if (this.mMsg != null) {
-      this.mMsg.fileDownloadStatus = 3;
+    Object localObject = this.mMsg;
+    if (localObject != null) {
+      ((MessageForScribble)localObject).fileDownloadStatus = 3;
     }
-    String str;
-    if ((this.url != null) && (!this.url.startsWith("https")))
+    localObject = this.url;
+    if ((localObject != null) && (!((String)localObject).startsWith("https")))
     {
-      str = InnerDns.getHostFromUrl(this.url);
-      this.ipListFromInnerDns = InnerDns.getInstance().reqDnsForIpList(str, 1018);
+      localObject = BaseInnerDns.getHostFromUrl(this.url);
+      this.ipListFromInnerDns = BaseInnerDns.getInstance().reqDnsForIpList((String)localObject, 1018);
     }
-    if ((this.ipListFromInnerDns != null) && (!this.ipListFromInnerDns.isEmpty()))
+    localObject = this.ipListFromInnerDns;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
-      str = "ipListFromInnerDns : ";
       int i = 0;
+      localObject = "ipListFromInnerDns : ";
       while (i < this.ipListFromInnerDns.size())
       {
-        str = str + " " + (String)this.ipListFromInnerDns.get(i);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(" ");
+        localStringBuilder.append((String)this.ipListFromInnerDns.get(i));
+        localObject = localStringBuilder.toString();
         i += 1;
       }
       if (QLog.isColorLevel()) {
-        QLog.i("ScribblePicDownloadProcessor", 2, str);
+        QLog.i("ScribblePicDownloadProcessor", 2, (String)localObject);
       }
     }
     ReportController.b(this.app, "CliOper", "", "", "0X800945A", "0X800945A", 0, 0, "", "", "", "");
@@ -321,7 +378,7 @@ public class ScribblePicDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ScribblePicDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

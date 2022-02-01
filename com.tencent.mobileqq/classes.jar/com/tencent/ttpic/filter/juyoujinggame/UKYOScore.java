@@ -39,20 +39,30 @@ public class UKYOScore
   
   private void initAudioDefen()
   {
-    if ((this.mPlayerAudioDefen != null) || (this.mScoreSetting == null)) {}
-    for (;;)
+    if (this.mPlayerAudioDefen == null)
     {
-      return;
-      Object localObject = this.mScoreSetting.audiodefen;
+      Object localObject = this.mScoreSetting;
+      if (localObject == null) {
+        return;
+      }
+      localObject = ((ScoreItemSetting)localObject).audiodefen;
       String str = this.mScoreSetting.dataPath;
       if ((localObject != null) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(((StickerItem)localObject).id)) && (!TextUtils.isEmpty(((StickerItem)localObject).audio)))
       {
-        localObject = str + File.separator + ((StickerItem)localObject).id + File.separator + ((StickerItem)localObject).audio;
-        if (((String)localObject).startsWith("assets://")) {}
-        for (this.mPlayerAudioDefen = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), ((String)localObject).replace("assets://", ""), false); this.mPlayerAudioDefen != null; this.mPlayerAudioDefen = PlayerUtil.createPlayerFromUri(AEModule.getContext(), (String)localObject, false))
-        {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append(((StickerItem)localObject).id);
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append(((StickerItem)localObject).audio);
+        localObject = localStringBuilder.toString();
+        if (((String)localObject).startsWith("assets://")) {
+          this.mPlayerAudioDefen = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), ((String)localObject).replace("assets://", ""), false);
+        } else {
+          this.mPlayerAudioDefen = PlayerUtil.createPlayerFromUri(AEModule.getContext(), (String)localObject, false);
+        }
+        if (this.mPlayerAudioDefen != null) {
           TouchTriggerManager.getInstance().setMusicDuration(this.mPlayerAudioDefen.getDuration());
-          return;
         }
       }
     }
@@ -79,45 +89,52 @@ public class UKYOScore
   
   public Frame RenderProcess(Frame paramFrame)
   {
-    Frame localFrame;
-    if ((this.filter == null) || (this.mScoreStatus.size() == 0)) {
-      localFrame = paramFrame;
-    }
-    UKYOScoreFilter localUKYOScoreFilter;
-    do
+    Frame localFrame = paramFrame;
+    if (this.filter != null)
     {
-      do
+      if (this.mScoreStatus.size() == 0) {
+        return paramFrame;
+      }
+      UKYOScoreFilter localUKYOScoreFilter = (UKYOScoreFilter)this.filter;
+      localUKYOScoreFilter.setTriggered(true);
+      if (this.triggerCtrlItem != null)
       {
-        do
+        localFrame = paramFrame;
+        if (!this.triggerCtrlItem.isTriggered()) {}
+      }
+      else
+      {
+        localFrame = renderFilter(paramFrame, this.mScoreStatus, localUKYOScoreFilter);
+        paramFrame = localFrame;
+        if (this.mNeedShowCombo)
         {
-          return localFrame;
-          localUKYOScoreFilter = (UKYOScoreFilter)this.filter;
-          localUKYOScoreFilter.setTriggered(true);
-          if ((this.triggerCtrlItem != null) && (!this.triggerCtrlItem.isTriggered())) {
-            break;
-          }
-          localFrame = renderFilter(paramFrame, this.mScoreStatus, localUKYOScoreFilter);
           paramFrame = localFrame;
-          if (this.mNeedShowCombo)
+          if (this.mComboStatus.size() > 0) {
+            paramFrame = renderFilter(localFrame, this.mComboStatus, localUKYOScoreFilter);
+          }
+        }
+        UKYOScore.ScoreEffectStatus localScoreEffectStatus = this.mScoreEffectStaues;
+        localFrame = paramFrame;
+        if (localScoreEffectStatus != null)
+        {
+          localFrame = paramFrame;
+          if (localScoreEffectStatus.isAppear())
           {
-            paramFrame = localFrame;
-            if (this.mComboStatus.size() > 0) {
-              paramFrame = renderFilter(localFrame, this.mComboStatus, localUKYOScoreFilter);
+            this.mScoreEffectStaues.updateFrameIndex(this.mPtInfo.timestamp);
+            localFrame = paramFrame;
+            if (this.mScoreEffectStaues.isAppear())
+            {
+              localUKYOScoreFilter.setItem(this.mScoreEffectStaues.mStickerItem);
+              localUKYOScoreFilter.setImageID(this.mScoreEffectStaues.mImageID);
+              localUKYOScoreFilter.setForceFrameIndex(this.mScoreEffectStaues.mCurIndex);
+              localUKYOScoreFilter.updatePreview(this.mPtInfo);
+              localFrame = this.mRenderListener.RenderProcessForFilter(paramFrame, null, localUKYOScoreFilter);
             }
           }
-          localFrame = paramFrame;
-        } while (this.mScoreEffectStaues == null);
-        localFrame = paramFrame;
-      } while (!this.mScoreEffectStaues.isAppear());
-      this.mScoreEffectStaues.updateFrameIndex(this.mPtInfo.timestamp);
-      localFrame = paramFrame;
-    } while (!this.mScoreEffectStaues.isAppear());
-    localUKYOScoreFilter.setItem(this.mScoreEffectStaues.mStickerItem);
-    localUKYOScoreFilter.setImageID(this.mScoreEffectStaues.mImageID);
-    localUKYOScoreFilter.setForceFrameIndex(this.mScoreEffectStaues.mCurIndex);
-    localUKYOScoreFilter.updatePreview(this.mPtInfo);
-    return this.mRenderListener.RenderProcessForFilter(paramFrame, null, localUKYOScoreFilter);
-    return paramFrame;
+        }
+      }
+    }
+    return localFrame;
   }
   
   public void apply()
@@ -141,9 +158,10 @@ public class UKYOScore
   
   public void initComboItems(StickerItem paramStickerItem1, StickerItem paramStickerItem2, StickerItem paramStickerItem3)
   {
-    this.mComboItems[0] = paramStickerItem3;
-    this.mComboItems[1] = paramStickerItem2;
-    this.mComboItems[2] = paramStickerItem1;
+    StickerItem[] arrayOfStickerItem = this.mComboItems;
+    arrayOfStickerItem[0] = paramStickerItem3;
+    arrayOfStickerItem[1] = paramStickerItem2;
+    arrayOfStickerItem[2] = paramStickerItem1;
     paramStickerItem1 = new UKYOScore.ScoreStatus(this, paramStickerItem3);
     paramStickerItem1.updateImageID(paramStickerItem3.id);
     this.mComboStatus.add(paramStickerItem1);
@@ -152,16 +170,20 @@ public class UKYOScore
   
   public void initScoreEffect(StickerItem paramStickerItem)
   {
-    if ((paramStickerItem == null) || (paramStickerItem.id == null)) {
-      return;
+    if (paramStickerItem != null)
+    {
+      if (paramStickerItem.id == null) {
+        return;
+      }
+      this.mScoreEffectStaues = new UKYOScore.ScoreEffectStatus(this, paramStickerItem);
     }
-    this.mScoreEffectStaues = new UKYOScore.ScoreEffectStatus(this, paramStickerItem);
   }
   
   public void initScoreItems(StickerItem paramStickerItem1, StickerItem paramStickerItem2)
   {
-    this.mScoreItems[0] = paramStickerItem1;
-    this.mScoreItems[1] = paramStickerItem2;
+    StickerItem[] arrayOfStickerItem = this.mScoreItems;
+    arrayOfStickerItem[0] = paramStickerItem1;
+    arrayOfStickerItem[1] = paramStickerItem2;
     this.mScoreStatus.clear();
     this.mScoreStatus.add(new UKYOScore.ScoreStatus(this, this.mScoreItems[0]));
   }
@@ -181,8 +203,9 @@ public class UKYOScore
     if (this.mComboStatus.size() > 2) {
       this.mComboStatus.remove(2);
     }
-    if (this.mScoreEffectStaues != null) {
-      this.mScoreEffectStaues.reset();
+    UKYOScore.ScoreEffectStatus localScoreEffectStatus = this.mScoreEffectStaues;
+    if (localScoreEffectStatus != null) {
+      localScoreEffectStatus.reset();
     }
   }
   
@@ -200,29 +223,29 @@ public class UKYOScore
   
   public void updateCombo(int paramInt)
   {
-    boolean bool2 = true;
-    label107:
+    boolean bool1 = this.mIsPlaying;
+    boolean bool2 = false;
+    if ((bool1) && (paramInt <= 0)) {
+      bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    this.mNeedShowCombo = bool1;
+    if (paramInt > this.mMaxCombo) {
+      this.mMaxCombo = paramInt;
+    }
+    if ((paramInt > 9) && (this.mComboStatus.size() < 3)) {
+      this.mComboStatus.add(1, new UKYOScore.ScoreStatus(this, this.mComboItems[2]));
+    }
+    if ((paramInt < 10) && (this.mComboStatus.size() == 3)) {
+      this.mComboStatus.remove(1);
+    }
+    int i = paramInt;
+    paramInt = 1;
     Object localObject;
     StickerItem localStickerItem;
-    if ((!this.mIsPlaying) || (paramInt > 0))
+    while (paramInt < this.mComboStatus.size())
     {
-      bool1 = true;
-      this.mNeedShowCombo = bool1;
-      if (paramInt > this.mMaxCombo) {
-        this.mMaxCombo = paramInt;
-      }
-      if ((paramInt > 9) && (this.mComboStatus.size() < 3)) {
-        this.mComboStatus.add(1, new UKYOScore.ScoreStatus(this, this.mComboItems[2]));
-      }
-      if ((paramInt < 10) && (this.mComboStatus.size() == 3)) {
-        this.mComboStatus.remove(1);
-      }
-      int j = 1;
-      int i = paramInt;
-      paramInt = j;
-      if (paramInt >= this.mComboStatus.size()) {
-        break label244;
-      }
       localObject = (UKYOScore.ScoreStatus)this.mComboStatus.get(paramInt);
       ((UKYOScore.ScoreStatus)localObject).updateImageID(this.mScoreSetting.getScoreImageID(i % 10));
       i /= 10;
@@ -230,34 +253,24 @@ public class UKYOScore
       {
         localObject = ((UKYOScore.ScoreStatus)this.mComboStatus.get(paramInt)).mStickerItem.positionsUKYO;
         localStickerItem = ((UKYOScore.ScoreStatus)this.mComboStatus.get(paramInt)).mStickerItem;
-        if (this.mComboStatus.size() != 2) {
-          break label238;
+        if (this.mComboStatus.size() == 2) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
+        ((UKYOScorePositions)localObject).updateAnchor(localStickerItem, bool1, this.mIsPlaying);
       }
-    }
-    label238:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      ((UKYOScorePositions)localObject).updateAnchor(localStickerItem, bool1, this.mIsPlaying);
       paramInt += 1;
-      break label107;
-      bool1 = false;
-      break;
     }
-    label244:
     if (((UKYOScore.ScoreStatus)this.mComboStatus.get(0)).mStickerItem.positionsUKYO != null)
     {
       localObject = ((UKYOScore.ScoreStatus)this.mComboStatus.get(0)).mStickerItem.positionsUKYO;
       localStickerItem = ((UKYOScore.ScoreStatus)this.mComboStatus.get(0)).mStickerItem;
-      if (this.mComboStatus.size() != 2) {
-        break label328;
+      bool1 = bool2;
+      if (this.mComboStatus.size() == 2) {
+        bool1 = true;
       }
-    }
-    label328:
-    for (bool1 = bool2;; bool1 = false)
-    {
       ((UKYOScorePositions)localObject).updateAnchor(localStickerItem, bool1, this.mIsPlaying);
-      return;
     }
   }
   
@@ -266,10 +279,11 @@ public class UKYOScore
     if (!VideoPrefsUtil.getMaterialMute())
     {
       initAudioDefen();
-      if (this.mPlayerAudioDefen == null) {
+      PlayerUtil.Player localPlayer = this.mPlayerAudioDefen;
+      if (localPlayer == null) {
         return;
       }
-      PlayerUtil.startPlayer(this.mPlayerAudioDefen, paramBoolean);
+      PlayerUtil.startPlayer(localPlayer, paramBoolean);
       return;
     }
     PlayerUtil.stopPlayer(this.mPlayerAudioDefen);
@@ -282,10 +296,13 @@ public class UKYOScore
   
   public void updatePreview(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof PTDetectInfo))) {
-      return;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof PTDetectInfo)) {
+        return;
+      }
+      this.mPtInfo = ((PTDetectInfo)paramObject);
     }
-    this.mPtInfo = ((PTDetectInfo)paramObject);
   }
   
   public void updateScore(int paramInt)
@@ -293,41 +310,43 @@ public class UKYOScore
     if ((paramInt > 9) && (this.mScoreStatus.size() < 2)) {
       this.mScoreStatus.add(new UKYOScore.ScoreStatus(this, this.mScoreItems[1]));
     }
-    if ((paramInt > 0) && (paramInt % 5 == 0) && (this.mScoreEffectStaues != null) && (this.mScoreEffectStaues.mLastScore != paramInt))
+    Object localObject1;
+    if ((paramInt > 0) && (paramInt % 5 == 0))
     {
-      if (paramInt >= 10)
+      localObject1 = this.mScoreEffectStaues;
+      if ((localObject1 != null) && (((UKYOScore.ScoreEffectStatus)localObject1).mLastScore != paramInt))
       {
-        this.mScoreEffectStaues.mLastScore = paramInt;
-        this.mScoreEffectStaues.needAppear();
-      }
-      if (paramInt > 0) {
-        updatePlayerDefen(false);
-      }
-    }
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    if (paramInt < this.mScoreStatus.size())
-    {
-      Object localObject = (UKYOScore.ScoreStatus)this.mScoreStatus.get(paramInt);
-      ((UKYOScore.ScoreStatus)localObject).updateImageID(this.mScoreSetting.getScoreImageID(i % 10));
-      i /= 10;
-      UKYOScorePositions localUKYOScorePositions;
-      if (((UKYOScore.ScoreStatus)localObject).mStickerItem.positionsUKYO != null)
-      {
-        localUKYOScorePositions = ((UKYOScore.ScoreStatus)localObject).mStickerItem.positionsUKYO;
-        localObject = ((UKYOScore.ScoreStatus)localObject).mStickerItem;
-        if (this.mScoreStatus.size() != 1) {
-          break label210;
+        if (paramInt >= 10)
+        {
+          localObject1 = this.mScoreEffectStaues;
+          ((UKYOScore.ScoreEffectStatus)localObject1).mLastScore = paramInt;
+          ((UKYOScore.ScoreEffectStatus)localObject1).needAppear();
+        }
+        if (paramInt > 0) {
+          updatePlayerDefen(false);
         }
       }
-      label210:
-      for (boolean bool = true;; bool = false)
+    }
+    int i = paramInt;
+    paramInt = 0;
+    while (paramInt < this.mScoreStatus.size())
+    {
+      Object localObject2 = (UKYOScore.ScoreStatus)this.mScoreStatus.get(paramInt);
+      ((UKYOScore.ScoreStatus)localObject2).updateImageID(this.mScoreSetting.getScoreImageID(i % 10));
+      i /= 10;
+      if (((UKYOScore.ScoreStatus)localObject2).mStickerItem.positionsUKYO != null)
       {
-        localUKYOScorePositions.updateAnchor((StickerItem)localObject, bool, this.mIsPlaying);
-        paramInt += 1;
-        break;
+        localObject1 = ((UKYOScore.ScoreStatus)localObject2).mStickerItem.positionsUKYO;
+        localObject2 = ((UKYOScore.ScoreStatus)localObject2).mStickerItem;
+        boolean bool;
+        if (this.mScoreStatus.size() == 1) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        ((UKYOScorePositions)localObject1).updateAnchor((StickerItem)localObject2, bool, this.mIsPlaying);
       }
+      paramInt += 1;
     }
   }
   
@@ -341,7 +360,7 @@ public class UKYOScore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.juyoujinggame.UKYOScore
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public abstract class BaseUinTypeProcessor
+abstract class BaseUinTypeProcessor
   implements MessageProcessable
 {
   protected final QQAppInterface a;
@@ -31,25 +31,38 @@ public abstract class BaseUinTypeProcessor
   
   protected final void a()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b() + this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b());
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a());
+    localObject = ((StringBuilder)localObject).toString();
+    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b((String)localObject);
   }
   
   protected final void a(Message paramMessage, NotificationElement paramNotificationElement)
   {
-    String str;
     if (paramMessage.counter > 1)
     {
-      str = paramNotificationElement.c();
-      if (paramMessage.counter <= 100) {
-        break label68;
+      String str = paramNotificationElement.c();
+      if (paramMessage.counter > 100)
+      {
+        paramMessage = new StringBuilder();
+        paramMessage.append(str);
+        paramMessage.append(" (");
+        paramMessage.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694510));
+        paramMessage.append(")");
+        paramMessage = paramMessage.toString();
       }
-    }
-    label68:
-    for (paramMessage = str + " (" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694545) + ")";; paramMessage = str + " (" + paramMessage.counter + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694480) + ")")
-    {
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(" (");
+        localStringBuilder.append(paramMessage.counter);
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694445));
+        localStringBuilder.append(")");
+        paramMessage = localStringBuilder.toString();
+      }
       paramNotificationElement.c(paramMessage);
-      return;
     }
   }
   
@@ -65,7 +78,7 @@ public abstract class BaseUinTypeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.struct.BaseUinTypeProcessor
  * JD-Core Version:    0.7.0.1
  */

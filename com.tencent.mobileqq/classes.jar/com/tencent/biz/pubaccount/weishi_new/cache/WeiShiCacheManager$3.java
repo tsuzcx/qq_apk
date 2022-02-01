@@ -12,17 +12,22 @@ class WeiShiCacheManager$3
   
   public void run()
   {
-    WSLog.b("CacheResponseLog", "getCacheDataForFollow startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getCacheDataForFollow startTime = ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append(", thread = ");
+    ((StringBuilder)localObject).append(Thread.currentThread());
+    WSLog.b("CacheResponseLog", ((StringBuilder)localObject).toString());
     if (!this.this$0.a()) {
       return;
     }
-    stFollowFeedsRsp localstFollowFeedsRsp = (stFollowFeedsRsp)WeiShiCacheManager.a(this.this$0, new stFollowFeedsRsp(), 3);
-    WeishiBusinessLooper.a().a(new WeiShiCacheManager.3.1(this, localstFollowFeedsRsp));
+    localObject = (stFollowFeedsRsp)WeiShiCacheManager.a(this.this$0, new stFollowFeedsRsp(), 3);
+    WeishiBusinessLooper.a().a(new WeiShiCacheManager.3.1(this, (stFollowFeedsRsp)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.3
  * JD-Core Version:    0.7.0.1
  */

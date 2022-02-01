@@ -36,24 +36,28 @@ public class VoiceChangeToolbar
   private ArrayList<QavListItemBase.ItemInfo> getList()
   {
     VoiceChangeData.VoiceInfo[] arrayOfVoiceInfo = VoiceChangeData.a().a();
-    if (arrayOfVoiceInfo == null) {}
-    ArrayList localArrayList;
-    for (int i = 1;; i = arrayOfVoiceInfo.length + 1)
+    int i;
+    if (arrayOfVoiceInfo == null) {
+      i = 1;
+    } else {
+      i = arrayOfVoiceInfo.length + 1;
+    }
+    ArrayList localArrayList = new ArrayList(i);
+    Object localObject = new QavListItemBase.ItemInfo();
+    ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = "-1";
+    localArrayList.add(localObject);
+    if (arrayOfVoiceInfo != null)
     {
-      localArrayList = new ArrayList(i);
-      Object localObject = new QavListItemBase.ItemInfo();
-      ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = "-1";
-      localArrayList.add(localObject);
-      if (arrayOfVoiceInfo == null) {
-        break;
-      }
       i = 0;
       while (i < arrayOfVoiceInfo.length)
       {
         localObject = arrayOfVoiceInfo[i];
         QavListItemBase.ItemInfo localItemInfo = new QavListItemBase.ItemInfo();
         localItemInfo.jdField_a_of_type_Int = 2;
-        localItemInfo.jdField_a_of_type_JavaLangString = (((VoiceChangeData.VoiceInfo)localObject).jdField_a_of_type_Int + "");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((VoiceChangeData.VoiceInfo)localObject).jdField_a_of_type_Int);
+        localStringBuilder.append("");
+        localItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
         localItemInfo.c = ((VoiceChangeData.VoiceInfo)localObject).jdField_a_of_type_JavaLangString;
         localItemInfo.jdField_b_of_type_JavaLangString = ((VoiceChangeData.VoiceInfo)localObject).c;
         localItemInfo.jdField_b_of_type_Int = ((VoiceChangeData.VoiceInfo)localObject).jdField_b_of_type_Int;
@@ -69,20 +73,26 @@ public class VoiceChangeToolbar
   
   public static void setEffectConfigItem(long paramLong, String paramString)
   {
-    if ((mToolbarInstance == null) || (mToolbarInstance.isOutOfArray(paramString))) {
-      return;
+    Object localObject = mToolbarInstance;
+    if (localObject != null)
+    {
+      if (((VoiceChangeToolbar)localObject).isOutOfArray(paramString)) {
+        return;
+      }
+      mToolbarInstance.setSelectedItem(paramString);
+      localObject = new QavListItemBase.ItemInfo();
+      ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = paramString;
+      mToolbarInstance.mVoiceClickCallback.a(paramLong, (QavListItemBase.ItemInfo)localObject);
     }
-    mToolbarInstance.setSelectedItem(paramString);
-    QavListItemBase.ItemInfo localItemInfo = new QavListItemBase.ItemInfo();
-    localItemInfo.jdField_a_of_type_JavaLangString = paramString;
-    mToolbarInstance.mVoiceClickCallback.a(paramLong, localItemInfo);
   }
   
   private void updateEarbackBtn()
   {
-    int i = 2130842482;
-    if (this.mApp.a().a().aC) {
-      i = 2130842483;
+    int i;
+    if (this.mApp.a().a().ar) {
+      i = 2130842382;
+    } else {
+      i = 2130842381;
     }
     this.mEarbackBtn.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
@@ -92,10 +102,11 @@ public class VoiceChangeToolbar
     if (this.mUIInfo == null)
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
-      this.mUIInfo.d = 5;
-      this.mUIInfo.g = 2131559901;
-      this.mUIInfo.f = 2130842464;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131695913);
+      BaseToolbar.UIInfo localUIInfo = this.mUIInfo;
+      localUIInfo.d = 5;
+      localUIInfo.g = 2131559772;
+      localUIInfo.f = 2130842363;
+      localUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131695928);
     }
     return this.mUIInfo;
   }
@@ -107,10 +118,11 @@ public class VoiceChangeToolbar
   
   public boolean isOutOfArray(String paramString)
   {
-    if ((this.mListView == null) || (this.mAdapter == null) || (this.mItemInfo == null)) {}
-    for (;;)
+    if ((this.mListView != null) && (this.mAdapter != null))
     {
-      return true;
+      if (this.mItemInfo == null) {
+        return true;
+      }
       int i = 1;
       while (i < this.mItemInfo.size())
       {
@@ -120,48 +132,36 @@ public class VoiceChangeToolbar
         i += 1;
       }
     }
+    return true;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131364449)
     {
-    default: 
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    SessionInfo localSessionInfo = this.mApp.a().a();
-    boolean bool;
-    if (!this.mApp.a().a().aC)
-    {
-      bool = true;
-      label61:
-      localSessionInfo.aC = bool;
-      if (this.mApp.a().a().U != 0) {
-        this.mApp.a().c(this.mApp.a().a().aC);
+      this.mApp.a().a().ar ^= true;
+      if (this.mApp.a().a().ad != 0) {
+        this.mApp.a().c(this.mApp.a().a().ar);
       }
       updateEarbackBtn();
-      if (this.mApp.a().a().aC) {
-        break label162;
+      if (!this.mApp.a().a().ar)
+      {
+        TipsUtil.a(this.mApp, 1017);
+        VoiceChangeDataReport.a("0X8007EF4", "");
       }
-      TipsUtil.a(this.mApp, 1017);
-      VoiceChangeDataReport.a("0X8007EF4", "");
-    }
-    for (;;)
-    {
+      else
+      {
+        VoiceChangeDataReport.a("0X8007EF3", "");
+      }
       EffectSettingUi.a(this.mApp, -1010L);
-      break;
-      bool = false;
-      break label61;
-      label162:
-      VoiceChangeDataReport.a("0X8007EF3", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
     mToolbarInstance = this;
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131368580));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131368321));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mItemInfo = getList();
     this.mAdapter = new QAVPtvTemplateAdapter(this.mApp, paramAVActivity, this.mItemInfo, this.mListView);
@@ -169,8 +169,8 @@ public class VoiceChangeToolbar
     this.mAdapter.b(true);
     this.mAdapter.a(this.mVoiceClickCallback);
     this.mListView.setAdapter(this.mAdapter);
-    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364562));
-    this.mEarbackBtn.setTextSize(ViewUtils.e(AIOUtils.a(12.0F, paramAVActivity.getResources())));
+    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364449));
+    this.mEarbackBtn.setTextSize(ViewUtils.e(AIOUtils.b(12.0F, paramAVActivity.getResources())));
     this.mEarbackBtn.setOnClickListener(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.setMargins(QAVPtvTemplateAdapter.a(paramAVActivity.getResources(), this.mAdapter.a(), 0.1666667F), 0, 0, 0);
@@ -185,52 +185,75 @@ public class VoiceChangeToolbar
   
   protected void onShow(long paramLong, int paramInt, boolean paramBoolean)
   {
-    if ((this.mItemInfo == null) || (this.mItemInfo.size() == 1))
+    Object localObject = this.mItemInfo;
+    if ((localObject == null) || (((ArrayList)localObject).size() == 1))
     {
       this.mItemInfo = getList();
-      if ((this.mItemInfo != null) && (this.mItemInfo.size() > 1) && (this.mAdapter != null))
+      localObject = this.mItemInfo;
+      if ((localObject != null) && (((ArrayList)localObject).size() > 1))
       {
-        this.mAdapter.a(this.mItemInfo);
-        this.mAdapter.notifyDataSetChanged();
+        localObject = this.mAdapter;
+        if (localObject != null)
+        {
+          ((QAVPtvTemplateAdapter)localObject).a(this.mItemInfo);
+          this.mAdapter.notifyDataSetChanged();
+        }
       }
     }
-    setSelectedItem(this.mApp.a().a().U + "");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.mApp.a().a().ad);
+    ((StringBuilder)localObject).append("");
+    setSelectedItem(((StringBuilder)localObject).toString());
     updateEarbackBtn();
   }
   
   public void setSelectedItem(String paramString)
   {
-    if ((this.mListView == null) || (this.mAdapter == null) || (this.mItemInfo == null)) {
-      return;
-    }
-    int i = 1;
-    if (i < this.mItemInfo.size()) {
-      if (!((QavListItemBase.ItemInfo)this.mItemInfo.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {}
-    }
-    for (;;)
+    if ((this.mListView != null) && (this.mAdapter != null))
     {
-      setSelectedListViewItemAndShow(this.mListView, this.mAdapter, i);
-      return;
-      i += 1;
-      break;
-      i = -1;
+      if (this.mItemInfo == null) {
+        return;
+      }
+      int k = -1;
+      int i = 1;
+      int j;
+      for (;;)
+      {
+        j = k;
+        if (i >= this.mItemInfo.size()) {
+          break;
+        }
+        if (((QavListItemBase.ItemInfo)this.mItemInfo.get(i)).jdField_a_of_type_JavaLangString.equals(paramString))
+        {
+          j = i;
+          break;
+        }
+        i += 1;
+      }
+      setSelectedListViewItemAndShow(this.mListView, this.mAdapter, j);
     }
   }
   
   public void update(Object[] paramArrayOfObject)
   {
-    if ((this.mListView == null) || (this.mAdapter == null)) {
-      return;
+    if (this.mListView != null)
+    {
+      if (this.mAdapter == null) {
+        return;
+      }
+      this.mItemInfo = getList();
+      this.mAdapter.a(this.mItemInfo);
+      paramArrayOfObject = new StringBuilder();
+      paramArrayOfObject.append(this.mApp.a().a().ad);
+      paramArrayOfObject.append("");
+      setSelectedItem(paramArrayOfObject.toString());
+      this.mAdapter.notifyDataSetChanged();
     }
-    this.mItemInfo = getList();
-    this.mAdapter.a(this.mItemInfo);
-    setSelectedItem(this.mApp.a().a().U + "");
-    this.mAdapter.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VoiceChangeToolbar
  * JD-Core Version:    0.7.0.1
  */

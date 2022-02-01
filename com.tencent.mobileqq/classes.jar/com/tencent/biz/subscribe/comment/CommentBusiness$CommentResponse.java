@@ -11,12 +11,22 @@ class CommentBusiness$CommentResponse
   
   public String toString()
   {
-    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_NS_COMMCOMM$StCommonExt.attachInfo.get() + '\'' + ", hasResponse='" + this.b + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommentResponse{hasMore=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", attachInfo='");
+    localStringBuilder.append(this.jdField_a_of_type_NS_COMMCOMM$StCommonExt.attachInfo.get());
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", hasResponse='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentBusiness.CommentResponse
  * JD-Core Version:    0.7.0.1
  */

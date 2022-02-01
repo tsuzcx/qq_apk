@@ -41,24 +41,19 @@ public abstract class BatteryUsageItem
     StringBuilder localStringBuilder = ThreadTool.getReuseStringBuilder();
     StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
     int i = arrayOfStackTraceElement.length - 1;
-    if (i >= 0)
+    while (i >= 0)
     {
       String str = arrayOfStackTraceElement[i].toString();
       if (isAppStackFrame(str))
       {
-        if (localStringBuilder.length() != 0) {
-          break label61;
+        if (localStringBuilder.length() == 0) {
+          localStringBuilder.append("[");
+        } else {
+          localStringBuilder.append(",");
         }
-        localStringBuilder.append("[");
-      }
-      for (;;)
-      {
         localStringBuilder.append(str);
-        i -= 1;
-        break;
-        label61:
-        localStringBuilder.append(",");
       }
+      i -= 1;
     }
     if (localStringBuilder.length() > 0) {
       localStringBuilder.append("]");
@@ -81,17 +76,13 @@ public abstract class BatteryUsageItem
     arrayOfString = appIgnoreFrameDict;
     j = arrayOfString.length;
     i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label64;
-      }
       if (paramString.contains(arrayOfString[i])) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label64:
     return true;
   }
   
@@ -158,7 +149,7 @@ public abstract class BatteryUsageItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.BatteryUsageItem
  * JD-Core Version:    0.7.0.1
  */

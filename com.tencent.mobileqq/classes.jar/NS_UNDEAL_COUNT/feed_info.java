@@ -35,14 +35,15 @@ public final class feed_info
     paramJceOutputStream.write(this.uOrgFeedTime, 0);
     paramJceOutputStream.write(this.uFeedCTime, 1);
     paramJceOutputStream.write(this.uOrgFeedUin, 2);
-    if (this.strText != null) {
-      paramJceOutputStream.write(this.strText, 3);
+    String str = this.strText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.feed_info
  * JD-Core Version:    0.7.0.1
  */

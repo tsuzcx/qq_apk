@@ -10,7 +10,8 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.pic.api.ICompressOperator;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BinderWarpper;
 import com.tencent.util.WeakReferenceHandler;
@@ -34,11 +35,16 @@ public class RichmediaService
   
   static void a(int paramInt, Bundle paramBundle)
   {
-    LOG.a("RichmediaService", "sendICallBackRequest start . cmd = " + paramInt + ",data = " + paramBundle);
-    WeakReferenceHandler localWeakReferenceHandler = jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-    if (localWeakReferenceHandler != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendICallBackRequest start . cmd = ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(",data = ");
+    ((StringBuilder)localObject).append(paramBundle);
+    LOG.a("RichmediaService", ((StringBuilder)localObject).toString());
+    localObject = jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
+    if (localObject != null)
     {
-      localWeakReferenceHandler.post(new RichmediaService.1(paramInt, paramBundle));
+      ((Handler)localObject).post(new RichmediaService.1(paramInt, paramBundle));
       return;
     }
     LOG.a("RichmediaService", "sendICallBackRequest subHandler is null");
@@ -57,107 +63,154 @@ public class RichmediaService
     if (localObject != null)
     {
       localObject = ((RichmediaService)localObject).jdField_a_of_type_ComTencentMobileqqRichmediaICallBack;
-      if (localObject == null) {}
-    }
-    for (;;)
-    {
-      try
+      if (localObject != null)
       {
-        LOG.a("RichmediaService", "addPresendMgrHandlerToIntent cb.getData start . ");
-        localObject = ((ICallBack)localObject).a(16, null);
-      }
-      catch (RemoteException localRemoteException1)
-      {
-        BinderWarpper localBinderWarpper;
-        int i;
-        int j;
-        localObject = null;
-      }
-      try
-      {
-        LOG.a("RichmediaService", "addPresendMgrHandlerToIntent cb.getData finish. ");
-        if (localObject == null) {
-          break;
+        try
+        {
+          LOG.a("RichmediaService", "addPresendMgrHandlerToIntent cb.getData start . ");
+          localObject = ((ICallBack)localObject).a(16, null);
+          try
+          {
+            LOG.a("RichmediaService", "addPresendMgrHandlerToIntent cb.getData finish. ");
+          }
+          catch (RemoteException localRemoteException1) {}
+          localStringBuilder = new StringBuilder();
         }
-        ((Bundle)localObject).setClassLoader(RichmediaService.class.getClassLoader());
-        localBinderWarpper = (BinderWarpper)((Bundle)localObject).getParcelable("key_presend_mgr_handler");
-        if (localBinderWarpper == null) {
-          break;
+        catch (RemoteException localRemoteException2)
+        {
+          localObject = null;
         }
-        i = ((Bundle)localObject).getInt("PhotoConst.PHOTO_COUNT");
-        j = paramIntent.getIntExtra("PhotoConst.PHOTO_COUNT", -1);
-        LOG.a("RichmediaService", "presend req count = " + i + ", send count = " + j);
-        if (i == j) {
-          break label273;
-        }
-        paramIntent = new Bundle();
-        paramIntent.putInt("key_presend_cancel_type", 1022);
-        if (jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) {
-          jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
-        }
-        d(paramIntent);
-        bool = false;
+        StringBuilder localStringBuilder;
+        localStringBuilder.append("addPresendMgrHandlerToIntent cb.getData ipc fail, RemoteException : ");
+        localStringBuilder.append(localRemoteException2.getMessage());
+        LOG.a("RichmediaService", localStringBuilder.toString());
+        break label135;
       }
-      catch (RemoteException localRemoteException2)
-      {
-        break label213;
-        bool = false;
-        continue;
-      }
-      LOG.a("RichmediaService", "addPresendMgrHandlerToIntent.result = " + bool);
-      return bool;
-      label213:
-      LOG.a("RichmediaService", "addPresendMgrHandlerToIntent cb.getData ipc fail, RemoteException : " + localRemoteException1.getMessage());
-      continue;
       LOG.a("RichmediaService", "addPresendMgrHandlerToIntent service.mClientCallBack is null");
-      localObject = null;
-      continue;
-      LOG.a("RichmediaService", "addPresendMgrHandlerToIntent Richmedia Service is null");
-      localObject = null;
-      continue;
-      label273:
-      paramIntent.putExtra("presend_handler", localRemoteException1);
-      bool = true;
     }
+    else
+    {
+      LOG.a("RichmediaService", "addPresendMgrHandlerToIntent Richmedia Service is null");
+    }
+    localObject = null;
+    label135:
+    if (localObject != null)
+    {
+      ((Bundle)localObject).setClassLoader(RichmediaService.class.getClassLoader());
+      BinderWarpper localBinderWarpper = (BinderWarpper)((Bundle)localObject).getParcelable("key_presend_mgr_handler");
+      if (localBinderWarpper != null)
+      {
+        int i = ((Bundle)localObject).getInt("PhotoConst.PHOTO_COUNT");
+        int j = paramIntent.getIntExtra("PhotoConst.PHOTO_COUNT", -1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("presend req count = ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(", send count = ");
+        ((StringBuilder)localObject).append(j);
+        LOG.a("RichmediaService", ((StringBuilder)localObject).toString());
+        if (i != j)
+        {
+          paramIntent = new Bundle();
+          paramIntent.putInt("key_presend_cancel_type", 1022);
+          if (jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) {
+            jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
+          }
+          d(paramIntent);
+        }
+        else
+        {
+          paramIntent.putExtra("presend_handler", localBinderWarpper);
+          bool = true;
+          break label291;
+        }
+      }
+    }
+    boolean bool = false;
+    label291:
+    paramIntent = new StringBuilder();
+    paramIntent.append("addPresendMgrHandlerToIntent.result = ");
+    paramIntent.append(bool);
+    LOG.a("RichmediaService", paramIntent.toString());
+    return bool;
   }
   
   public static boolean a(CompressInfo paramCompressInfo)
   {
-    LOG.a("RichmediaService", "startCompress start . compressInfo.localUUID = " + paramCompressInfo.a + ",compressInfo.srcPath = " + paramCompressInfo.c);
-    Object localObject = jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService;
-    boolean bool = false;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startCompress start . compressInfo.localUUID = ");
+    ((StringBuilder)localObject).append(paramCompressInfo.a);
+    ((StringBuilder)localObject).append(",compressInfo.srcPath = ");
+    ((StringBuilder)localObject).append(paramCompressInfo.c);
+    LOG.a("RichmediaService", ((StringBuilder)localObject).toString());
+    localObject = jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService;
+    boolean bool = true;
+    StringBuilder localStringBuilder1;
     if (localObject != null)
     {
       localObject = ((RichmediaService)localObject).jdField_a_of_type_ComTencentMobileqqRichmediaICallBack;
-      if (localObject == null) {}
-    }
-    for (;;)
-    {
-      try
+      if (localObject != null)
       {
-        LOG.a("RichmediaService", "startCompress cb.compress start . compressInfo.localUUID = " + paramCompressInfo.a + ",compressInfo.srcPath = " + paramCompressInfo.c);
-        ((ICallBack)localObject).a(paramCompressInfo);
-        LOG.a("RichmediaService", "startCompress cb.compress finish. compressInfo.localUUID = " + paramCompressInfo.a + ",compressInfo.dstPath = " + paramCompressInfo.e);
-        if (bool)
+        try
         {
-          LOG.a("RichmediaService", "startCompress compressInMainProcess start . compressInfo.localUUID = " + paramCompressInfo.a + ",compressInfo.srcPath = " + paramCompressInfo.c);
-          CompressOperator.a(paramCompressInfo);
-          LOG.a("RichmediaService", "startCompress compressInMainProcess finish. compressInfo.localUUID = " + paramCompressInfo.a + ",compressInfo.dstPath = " + paramCompressInfo.e);
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("startCompress cb.compress start . compressInfo.localUUID = ");
+          localStringBuilder2.append(paramCompressInfo.a);
+          localStringBuilder2.append(",compressInfo.srcPath = ");
+          localStringBuilder2.append(paramCompressInfo.c);
+          LOG.a("RichmediaService", localStringBuilder2.toString());
+          ((ICallBack)localObject).a(paramCompressInfo);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("startCompress cb.compress finish. compressInfo.localUUID = ");
+          ((StringBuilder)localObject).append(paramCompressInfo.a);
+          ((StringBuilder)localObject).append(",compressInfo.dstPath = ");
+          ((StringBuilder)localObject).append(paramCompressInfo.e);
+          LOG.a("RichmediaService", ((StringBuilder)localObject).toString());
+          bool = false;
         }
-        return bool;
+        catch (RemoteException localRemoteException)
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("startCompress cb.compress ipc fail,compressInfo.localUUID = ");
+          localStringBuilder2.append(paramCompressInfo.a);
+          localStringBuilder2.append(",compress in main process, RemoteException : ");
+          localStringBuilder2.append(localRemoteException.getMessage());
+          LOG.a("RichmediaService", localStringBuilder2.toString());
+        }
       }
-      catch (RemoteException localRemoteException)
+      else
       {
-        LOG.a("RichmediaService", "startCompress cb.compress ipc fail,compressInfo.localUUID = " + paramCompressInfo.a + ",compress in main process, RemoteException : " + localRemoteException.getMessage());
-        bool = true;
-        continue;
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("startCompress service.mClientCallBack is null,compressInfo.localUUID = ");
+        localStringBuilder1.append(paramCompressInfo.a);
+        localStringBuilder1.append(",compress in main process");
+        LOG.a("RichmediaService", localStringBuilder1.toString());
       }
-      LOG.a("RichmediaService", "startCompress service.mClientCallBack is null,compressInfo.localUUID = " + paramCompressInfo.a + ",compress in main process");
-      bool = true;
-      continue;
-      LOG.a("RichmediaService", "startCompress Richmedia Service is null,compressInfo.localUUID = " + paramCompressInfo.a + ",compress in main process");
-      bool = true;
     }
+    else
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("startCompress Richmedia Service is null,compressInfo.localUUID = ");
+      localStringBuilder1.append(paramCompressInfo.a);
+      localStringBuilder1.append(",compress in main process");
+      LOG.a("RichmediaService", localStringBuilder1.toString());
+    }
+    if (bool)
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("startCompress compressInMainProcess start . compressInfo.localUUID = ");
+      localStringBuilder1.append(paramCompressInfo.a);
+      localStringBuilder1.append(",compressInfo.srcPath = ");
+      localStringBuilder1.append(paramCompressInfo.c);
+      LOG.a("RichmediaService", localStringBuilder1.toString());
+      ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(paramCompressInfo);
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("startCompress compressInMainProcess finish. compressInfo.localUUID = ");
+      localStringBuilder1.append(paramCompressInfo.a);
+      localStringBuilder1.append(",compressInfo.dstPath = ");
+      localStringBuilder1.append(paramCompressInfo.e);
+      LOG.a("RichmediaService", localStringBuilder1.toString());
+    }
+    return bool;
   }
   
   public static void b(Bundle paramBundle)
@@ -180,25 +233,35 @@ public class RichmediaService
   
   public boolean a(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    LOG.a("RichmediaService", "sendToClient,msgCode = " + paramInt1 + ",subCmd = " + paramInt2 + ",data = " + paramBundle);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendToClient,msgCode = ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(",subCmd = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(",data = ");
+    ((StringBuilder)localObject).append(paramBundle);
+    LOG.a("RichmediaService", ((StringBuilder)localObject).toString());
     if (this.b == null)
     {
       LOG.b("RichmediaService", "sendToClient failed. mClient is null");
       return false;
     }
-    Message localMessage = Message.obtain(null, paramInt1);
+    localObject = Message.obtain(null, paramInt1);
     if (paramBundle != null) {
       paramBundle.putInt("msg_sub_cmd", paramInt2);
     }
-    localMessage.setData(paramBundle);
+    ((Message)localObject).setData(paramBundle);
     try
     {
-      this.b.send(localMessage);
+      this.b.send((Message)localObject);
       return true;
     }
     catch (Exception paramBundle)
     {
-      LOG.b("RichmediaService", "sendToClient failed. e = " + paramBundle);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendToClient failed. e = ");
+      ((StringBuilder)localObject).append(paramBundle);
+      LOG.b("RichmediaService", ((StringBuilder)localObject).toString());
     }
     return false;
   }
@@ -246,7 +309,7 @@ public class RichmediaService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaService
  * JD-Core Version:    0.7.0.1
  */

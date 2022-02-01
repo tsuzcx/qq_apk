@@ -32,51 +32,71 @@ public class UnifiedTraceRouter
   
   public String a(String paramString)
   {
-    Object localObject = String.format("/system/bin/ping -i 0.2 -c 1 -s 0 -t %d -W 4 %s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), paramString });
+    Object localObject1 = String.format("/system/bin/ping -i 0.2 -c 1 -s 0 -t %d -W 4 %s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), paramString });
     long l = System.currentTimeMillis();
-    Process localProcess = Runtime.getRuntime().exec((String)localObject);
+    Process localProcess = Runtime.getRuntime().exec((String)localObject1);
     BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(localProcess.getInputStream()));
-    localObject = "";
+    localObject1 = "";
+    Object localObject2;
     for (;;)
     {
-      String str2 = localBufferedReader.readLine();
-      if (str2 == null) {
+      String str = localBufferedReader.readLine();
+      if (str == null) {
         break;
       }
-      String str1 = (String)localObject + str2 + "\n";
-      if (!str2.contains("From"))
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(str);
+      ((StringBuilder)localObject2).append("\n");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      if (!str.contains("From"))
       {
-        localObject = str1;
-        if (!str2.contains("from")) {}
+        localObject1 = localObject2;
+        if (!str.contains("from")) {}
       }
       else
       {
         this.jdField_a_of_type_Float = ((float)(System.currentTimeMillis() - l));
-        localObject = str1;
+        localObject1 = localObject2;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedTraceRouter", 2, "ping url = " + paramString + " result = " + (String)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("ping url = ");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(" result = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("UnifiedTraceRouter", 2, ((StringBuilder)localObject2).toString());
     }
     try
     {
       localProcess.destroy();
-      label190:
-      if (((String)localObject).equals("")) {
-        throw new IllegalArgumentException("ping result is empty");
-      }
-      if (this.jdField_b_of_type_Int == 1)
+      label219:
+      if (!((String)localObject1).equals(""))
       {
-        this.jdField_a_of_type_JavaLangString = c((String)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("UnifiedTraceRouter", 2, "final ip: " + this.jdField_a_of_type_JavaLangString);
+        if (this.jdField_b_of_type_Int == 1)
+        {
+          this.jdField_a_of_type_JavaLangString = c((String)localObject1);
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("final ip: ");
+            paramString.append(this.jdField_a_of_type_JavaLangString);
+            QLog.d("UnifiedTraceRouter", 2, paramString.toString());
+          }
         }
+        return localObject1;
       }
-      return localObject;
+      paramString = new IllegalArgumentException("ping result is empty");
+      for (;;)
+      {
+        throw paramString;
+      }
     }
     catch (Exception paramString)
     {
-      break label190;
+      break label219;
     }
   }
   
@@ -87,74 +107,71 @@ public class UnifiedTraceRouter
   
   public String b(String paramString)
   {
-    Object localObject2 = null;
     int i;
     int j;
-    Object localObject1;
     if (paramString.contains("From"))
     {
-      paramString = paramString.substring(paramString.indexOf("From") + 5);
-      if (paramString.contains("("))
+      String str = paramString.substring(paramString.indexOf("From") + 5);
+      if (str.contains("("))
       {
-        i = paramString.indexOf("(");
-        j = paramString.indexOf(")");
-        localObject1 = paramString;
+        i = str.indexOf("(");
+        j = str.indexOf(")");
+        paramString = str;
         if (i >= 0)
         {
-          localObject1 = paramString;
+          paramString = str;
           if (j >= 0) {
-            localObject1 = paramString.substring(i + 1, j);
+            return str.substring(i + 1, j);
           }
         }
       }
-    }
-    do
-    {
-      do
+      else
       {
-        return localObject1;
-        paramString = paramString.substring(0, paramString.indexOf("\n"));
-        if (paramString.contains(":")) {}
-        for (i = paramString.indexOf(":");; i = paramString.indexOf(" "))
-        {
-          localObject1 = paramString;
-          if (i <= 0) {
-            break;
-          }
-          return paramString.substring(0, i);
+        str = str.substring(0, str.indexOf("\n"));
+        if (str.contains(":")) {
+          i = str.indexOf(":");
+        } else {
+          i = str.indexOf(" ");
         }
-        i = paramString.indexOf("(");
-        j = paramString.indexOf(")");
-        localObject1 = localObject2;
-      } while (i < 0);
-      localObject1 = localObject2;
-    } while (j < 0);
-    return paramString.substring(i + 1, j);
+        paramString = str;
+        if (i > 0) {
+          return str.substring(0, i);
+        }
+      }
+    }
+    else
+    {
+      i = paramString.indexOf("(");
+      j = paramString.indexOf(")");
+      if ((i >= 0) && (j >= 0)) {
+        return paramString.substring(i + 1, j);
+      }
+      paramString = null;
+    }
+    return paramString;
   }
   
   public String c(String paramString)
   {
-    String str = "";
     if (paramString.contains("PING")) {
-      str = paramString.substring(paramString.indexOf("(") + 1, paramString.indexOf(")"));
+      return paramString.substring(paramString.indexOf("(") + 1, paramString.indexOf(")"));
     }
-    return str;
+    return "";
   }
   
   public String d(String paramString)
   {
-    String str = "";
     if (paramString.contains("time="))
     {
       paramString = paramString.substring(paramString.indexOf("time=") + 5);
-      str = paramString.substring(0, paramString.indexOf(" "));
+      return paramString.substring(0, paramString.indexOf(" "));
     }
-    return str;
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedTraceRouter
  * JD-Core Version:    0.7.0.1
  */

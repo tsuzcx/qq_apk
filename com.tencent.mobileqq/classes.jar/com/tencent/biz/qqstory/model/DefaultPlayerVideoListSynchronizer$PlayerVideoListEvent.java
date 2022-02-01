@@ -29,12 +29,39 @@ public class DefaultPlayerVideoListSynchronizer$PlayerVideoListEvent
   
   public String toString()
   {
-    return "PlayerVideoListEvent{context='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", label='" + this.jdField_c_of_type_JavaLangString + '\'' + ", topicId=" + this.jdField_a_of_type_Long + ", mStoryVideoItems=" + this.jdField_a_of_type_JavaUtilList + ", totalTime=" + this.jdField_b_of_type_Long + ", videoCount=" + this.jdField_a_of_type_Int + ", isFromCache=" + this.jdField_a_of_type_Boolean + ", isEnd=" + this.jdField_b_of_type_Boolean + ", interactStatus=" + this.jdField_c_of_type_Boolean + ", liveVideoInfo=" + this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLiveVideoEntry + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PlayerVideoListEvent{context='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uid='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", label='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", topicId=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", mStoryVideoItems=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(", totalTime=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", videoCount=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", isFromCache=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", isEnd=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", interactStatus=");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(", liveVideoInfo=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLiveVideoEntry);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent
  * JD-Core Version:    0.7.0.1
  */

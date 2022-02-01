@@ -23,9 +23,11 @@ public abstract class HeaderAndFooterAdapter<M, VH extends BaseViewHolder<M>>
   
   public int a()
   {
-    int i = 0;
+    int i;
     if (this.jdField_a_of_type_AndroidViewView != null) {
       i = 1;
+    } else {
+      i = 0;
     }
     int j = i;
     if (this.b != null) {
@@ -38,22 +40,18 @@ public abstract class HeaderAndFooterAdapter<M, VH extends BaseViewHolder<M>>
   {
     if (paramInt == 1024) {
       paramViewGroup = new BaseViewHolder(this.jdField_a_of_type_AndroidViewView);
+    } else if (paramInt == 1025) {
+      paramViewGroup = new BaseViewHolder(this.b);
+    } else {
+      paramViewGroup = b(paramViewGroup, paramInt);
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseAdapter$OnItemClickListener != null) {
-        paramViewGroup.itemView.setOnClickListener(new HeaderAndFooterAdapter.1(this, paramViewGroup));
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseAdapter$OnItemLongClickListener != null) {
-        paramViewGroup.itemView.setOnLongClickListener(new HeaderAndFooterAdapter.2(this, paramViewGroup));
-      }
-      return paramViewGroup;
-      if (paramInt == 1025) {
-        paramViewGroup = new BaseViewHolder(this.b);
-      } else {
-        paramViewGroup = b(paramViewGroup, paramInt);
-      }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseAdapter$OnItemClickListener != null) {
+      paramViewGroup.itemView.setOnClickListener(new HeaderAndFooterAdapter.1(this, paramViewGroup));
     }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseAdapter$OnItemLongClickListener != null) {
+      paramViewGroup.itemView.setOnLongClickListener(new HeaderAndFooterAdapter.2(this, paramViewGroup));
+    }
+    return paramViewGroup;
   }
   
   public void a(View paramView)
@@ -79,9 +77,8 @@ public abstract class HeaderAndFooterAdapter<M, VH extends BaseViewHolder<M>>
   
   public final void a(BaseViewHolder paramBaseViewHolder, int paramInt)
   {
-    switch (paramBaseViewHolder.getItemViewType())
-    {
-    default: 
+    int i = paramBaseViewHolder.getItemViewType();
+    if ((i != 1024) && (i != 1025)) {
       b(paramBaseViewHolder, paramInt);
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramBaseViewHolder, paramInt, getItemId(paramInt));
@@ -103,7 +100,7 @@ public abstract class HeaderAndFooterAdapter<M, VH extends BaseViewHolder<M>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.common.recyclerview.HeaderAndFooterAdapter
  * JD-Core Version:    0.7.0.1
  */

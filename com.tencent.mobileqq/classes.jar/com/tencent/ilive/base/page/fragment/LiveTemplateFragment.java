@@ -14,7 +14,6 @@ import com.tencent.ilive.base.bizmodule.BizModuleContext;
 import com.tencent.ilive.base.bizmodule.BizModulesFactory;
 import com.tencent.ilive.base.bizmodule.BootBizModules;
 import com.tencent.ilive.base.component.ComponentFactory;
-import com.tencent.ilive.base.event.PageEvent;
 import com.tencent.ilive.base.page.PageListener;
 import com.tencent.ilive.enginemanager.BizEngineMgr;
 import com.tencent.ilivesdk.domain.factory.LiveCaseFactory;
@@ -29,7 +28,6 @@ public abstract class LiveTemplateFragment
   protected ComponentFactory componentFactory = new ComponentFactory();
   public boolean isFragmentCreated = false;
   protected LiveCaseFactory liveCaseFactory = new LiveCaseFactory();
-  protected PageEvent pageEvent = new PageEvent();
   protected PageListener pageListener;
   
   public abstract BizModuleContext createBizModuleContext();
@@ -38,11 +36,20 @@ public abstract class LiveTemplateFragment
   
   public abstract void createBootBizModulesExtData();
   
+  protected void destroyRoomAuto()
+  {
+    BootBizModules localBootBizModules = this.bootBizModules;
+    if (localBootBizModules != null) {
+      localBootBizModules.onDestroy();
+    }
+  }
+  
   public void finish()
   {
     super.finish();
-    if (this.bootBizModules != null) {
-      this.bootBizModules.finish();
+    BootBizModules localBootBizModules = this.bootBizModules;
+    if (localBootBizModules != null) {
+      localBootBizModules.finish();
     }
   }
   
@@ -66,33 +73,33 @@ public abstract class LiveTemplateFragment
     return this.liveCaseFactory;
   }
   
-  protected PageEvent getPageEvent()
-  {
-    return this.pageEvent;
-  }
-  
   public void onActivityCreated(@Nullable Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
     Log.i("AudienceTime", "-- fragment onActivityCreated--");
-    if ((this.bootBizModules == null) || (BizEngineMgr.getInstance().getLiveEngine() == null))
+    if ((this.bootBizModules != null) && (BizEngineMgr.getInstance().getLiveEngine() != null))
     {
-      Log.e("LiveTemplateFragment", "bootBizModules == null,savedInstanceState=" + paramBundle);
-      getActivity().finish();
+      paramBundle = this.pageListener;
+      if (paramBundle != null) {
+        paramBundle.onFragmentCreated();
+      }
+      this.isFragmentCreated = true;
       return;
     }
-    if (this.pageListener != null) {
-      this.pageListener.onFragmentCreated();
-    }
-    this.isFragmentCreated = true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bootBizModules == null,savedInstanceState=");
+    localStringBuilder.append(paramBundle);
+    Log.e("LiveTemplateFragment", localStringBuilder.toString());
+    getActivity().finish();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, @Nullable Intent paramIntent) {}
   
   public boolean onBackPressed()
   {
-    if (this.bootBizModules != null) {
-      return this.bootBizModules.onBackPressed();
+    BootBizModules localBootBizModules = this.bootBizModules;
+    if (localBootBizModules != null) {
+      return localBootBizModules.onBackPressed();
     }
     return true;
   }
@@ -100,13 +107,14 @@ public abstract class LiveTemplateFragment
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (paramConfiguration.orientation == 1) {
+    if (paramConfiguration.orientation == 1)
+    {
       Log.d("LiveFragment", "onConfigurationChanged ORIENTATION_PORTRAIT");
-    }
-    while (paramConfiguration.orientation != 2) {
       return;
     }
-    Log.d("LiveFragment", "onConfigurationChanged ORIENTATION_LANDSCAPE");
+    if (paramConfiguration.orientation == 2) {
+      Log.d("LiveFragment", "onConfigurationChanged ORIENTATION_LANDSCAPE");
+    }
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
@@ -115,20 +123,24 @@ public abstract class LiveTemplateFragment
     Log.i("AudienceTime", "-- fragment oncreate--");
     this.componentFactory.onCreate(getLifecycle());
     this.bootBizModules = createBootBizModules();
-    if ((this.bootBizModules == null) || (BizEngineMgr.getInstance().getLiveEngine() == null))
+    if ((this.bootBizModules != null) && (BizEngineMgr.getInstance().getLiveEngine() != null))
     {
-      Log.e("LiveTemplateFragment", "bootBizModules == null,savedInstanceState=" + paramBundle);
-      getActivity().finish();
+      this.bootBizModules.setComponentFactory(getComponentFactory());
+      this.bootBizModules.setLiveCaseFactory(getLiveCaseFactory());
+      this.bootBizModules.bindActivityLifeCycleOwner(getActivity());
+      this.bootBizModules.bindLifeCycleOwner(this);
+      this.bizModuleContext = createBizModuleContext();
+      this.bootBizModules.setBizModuleContext(this.bizModuleContext);
+      createBootBizModulesExtData();
+      this.bootBizModules.onCreate(getContext());
+      Log.i("AudienceTime", "-- fragment onFragmentCreated--");
       return;
     }
-    this.bootBizModules.setComponentFactory(getComponentFactory());
-    this.bootBizModules.setLiveCaseFactory(getLiveCaseFactory());
-    this.bootBizModules.bindLifeCycleOwner(this);
-    this.bizModuleContext = createBizModuleContext();
-    this.bootBizModules.setBizModuleContext(this.bizModuleContext);
-    createBootBizModulesExtData();
-    this.bootBizModules.onCreate(getContext());
-    Log.i("AudienceTime", "-- fragment onFragmentCreated--");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bootBizModules == null,savedInstanceState=");
+    localStringBuilder.append(paramBundle);
+    Log.e("LiveTemplateFragment", localStringBuilder.toString());
+    getActivity().finish();
   }
   
   @Nullable
@@ -142,10 +154,7 @@ public abstract class LiveTemplateFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.componentFactory.onDestroy();
-    if (this.bootBizModules != null) {
-      this.bootBizModules.onDestroy();
-    }
+    destroyRoomAuto();
   }
   
   public void onDestroyView()
@@ -164,14 +173,15 @@ public abstract class LiveTemplateFragment
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    if (this.bootBizModules != null) {
-      this.bootBizModules.setUserVisibleHint(paramBoolean);
+    BootBizModules localBootBizModules = this.bootBizModules;
+    if (localBootBizModules != null) {
+      localBootBizModules.setUserVisibleHint(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.base.page.fragment.LiveTemplateFragment
  * JD-Core Version:    0.7.0.1
  */

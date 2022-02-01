@@ -25,27 +25,27 @@ public class TransferConfig$ExtendParamFloats
     {
       paramString = new JSONObject(paramString);
       JSONArray localJSONArray = paramString.optJSONArray("value");
-      if ((localJSONArray == null) || (localJSONArray.length() == 0))
+      if ((localJSONArray != null) && (localJSONArray.length() != 0))
       {
+        this.mValues = new float[localJSONArray.length()];
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          this.mValues[i] = ((float)localJSONArray.optDouble(i));
+          i += 1;
+        }
+        paramString = paramString.getString("rule");
+        if (!TextUtils.isEmpty(paramString))
+        {
+          this.mRule = new TransferConfig.ParamRule();
+          this.mRule.fromJSONObject(paramString);
+          return;
+        }
         this.mRule = null;
-        this.mValues = null;
-        return;
-      }
-      this.mValues = new float[localJSONArray.length()];
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        this.mValues[i] = ((float)localJSONArray.optDouble(i));
-        i += 1;
-      }
-      paramString = paramString.getString("rule");
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.mRule = new TransferConfig.ParamRule();
-        this.mRule.fromJSONObject(paramString);
         return;
       }
       this.mRule = null;
+      this.mValues = null;
       return;
     }
     catch (Exception paramString) {}
@@ -90,7 +90,7 @@ public class TransferConfig$ExtendParamFloats
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.videotransfer.TransferConfig.ExtendParamFloats
  * JD-Core Version:    0.7.0.1
  */

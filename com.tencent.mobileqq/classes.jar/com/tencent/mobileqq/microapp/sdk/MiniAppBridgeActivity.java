@@ -17,7 +17,7 @@ import com.tencent.mobileqq.startup.step.ProcessInfoUtil;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import cooperation.qwallet.plugin.FakeUrl;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -36,8 +36,12 @@ public class MiniAppBridgeActivity
   
   private void handleAbnormal(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppBridgeActivity", 2, "handleAbnormal:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleAbnormal:");
+      localStringBuilder.append(paramString);
+      QLog.d("MiniAppBridgeActivity", 2, localStringBuilder.toString());
     }
     if ((getActivity() != null) && (!getActivity().isFinishing()))
     {
@@ -49,8 +53,12 @@ public class MiniAppBridgeActivity
   private boolean isFromDebugConfig(LaunchParam paramLaunchParam)
   {
     paramLaunchParam = ApkgDebugConstants.getMiniAppConfig(paramLaunchParam.miniAppId, getActivity().app);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppBridgeActivity", 2, "isFromDebugConfig :" + paramLaunchParam);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isFromDebugConfig :");
+      localStringBuilder.append(paramLaunchParam);
+      QLog.d("MiniAppBridgeActivity", 2, localStringBuilder.toString());
     }
     if (paramLaunchParam != null)
     {
@@ -68,7 +76,7 @@ public class MiniAppBridgeActivity
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = new View(getActivity());
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -82,65 +90,67 @@ public class MiniAppBridgeActivity
   {
     super.onResume();
     this.launchParam = ((LaunchParam)getArguments().getSerializable("launch_param"));
-    if (this.launchParam == null) {
-      handleAbnormal("launchParam is null");
-    }
-    WeakReference localWeakReference;
-    MiniAppConfig localMiniAppConfig;
-    for (;;)
+    if (this.launchParam == null)
     {
+      handleAbnormal("launchParam is null");
       return;
-      ApkgConfigManager localApkgConfigManager = ManagerProxy.getApkgConfigManager(getActivity().app);
-      if (this.launchParam.scene == 1214)
+    }
+    Object localObject = ManagerProxy.getApkgConfigManager(getActivity().app);
+    if (this.launchParam.scene == 1214)
+    {
+      this.fromAppConfig = ((ApkgConfigManager)localObject).getConfig(this.launchParam.fromMiniAppId);
+      if (this.fromAppConfig == null)
       {
-        this.fromAppConfig = localApkgConfigManager.getConfig(this.launchParam.fromMiniAppId);
-        if (this.fromAppConfig == null)
-        {
-          handleAbnormal("fromAppConfig is null");
-          return;
-        }
-      }
-      if (!isFromDebugConfig(this.launchParam))
-      {
-        long l = ProcessInfoUtil.a("com.tencent.mobileqq:miniapp");
-        localWeakReference = new WeakReference(getActivity());
-        localMiniAppConfig = localApkgConfigManager.getConfig(this.launchParam);
-        if ((localMiniAppConfig == null) || (localMiniAppConfig.config == null) || (!new File(g.a(localMiniAppConfig.config)).exists()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MiniAppBridgeActivity", 2, "miniConfig config is null or folder not exist");
-          }
-          localApkgConfigManager.getNewestConfig(this.launchParam, 0, new MiniAppBridgeActivity.2(this, localWeakReference, l));
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniAppBridgeActivity", 2, "miniConfig config exist and valid:" + localMiniAppConfig);
-        }
-        if ((this.launchParam.scene == 1214) && (!ApkgConfigManager.isCanNavigate(localMiniAppConfig, this.fromAppConfig)))
-        {
-          handleAbnormal("not support navigate 2");
-          return;
-        }
-        if (l > 5000L) {
-          try
-          {
-            MiniAppController.startApp(getActivity(), wrapConfig(localMiniAppConfig), null);
-            getActivity().finish();
-            if (QLog.isColorLevel())
-            {
-              QLog.d("MiniAppBridgeActivity", 2, "miniapp process exist, launch directly");
-              return;
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            handleAbnormal("start miniapp error");
-            return;
-          }
-        }
+        handleAbnormal("fromAppConfig is null");
+        return;
       }
     }
+    if (isFromDebugConfig(this.launchParam)) {
+      return;
+    }
+    long l = ProcessInfoUtil.a("com.tencent.mobileqq:miniapp");
+    WeakReference localWeakReference = new WeakReference(getActivity());
+    MiniAppConfig localMiniAppConfig = ((ApkgConfigManager)localObject).getConfig(this.launchParam);
+    if ((localMiniAppConfig != null) && (localMiniAppConfig.config != null) && (new File(g.a(localMiniAppConfig.config)).exists()))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("miniConfig config exist and valid:");
+        ((StringBuilder)localObject).append(localMiniAppConfig);
+        QLog.d("MiniAppBridgeActivity", 2, ((StringBuilder)localObject).toString());
+      }
+      if ((this.launchParam.scene == 1214) && (!ApkgConfigManager.isCanNavigate(localMiniAppConfig, this.fromAppConfig)))
+      {
+        handleAbnormal("not support navigate 2");
+        return;
+      }
+      if (l <= 5000L) {}
+    }
+    try
+    {
+      MiniAppController.startApp(getActivity(), wrapConfig(localMiniAppConfig), null);
+      getActivity().finish();
+      if (!QLog.isColorLevel()) {
+        break label350;
+      }
+      QLog.d("MiniAppBridgeActivity", 2, "miniapp process exist, launch directly");
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      label285:
+      break label285;
+    }
+    handleAbnormal("start miniapp error");
+    return;
     ThreadManager.getUIHandler().postDelayed(new MiniAppBridgeActivity.3(this, localMiniAppConfig, localWeakReference), 100L);
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppBridgeActivity", 2, "miniConfig config is null or folder not exist");
+    }
+    ((ApkgConfigManager)localObject).getNewestConfig(this.launchParam, 0, new MiniAppBridgeActivity.2(this, localWeakReference, l));
+    label350:
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -170,7 +180,7 @@ public class MiniAppBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -19,13 +19,14 @@ public final class oidb_0x8c1$SelfCardInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint64_uin", "bytes_xml_msg", "int32_direction_flag", "int32_friend_flag" }, new Object[] { Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, SelfCardInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint64_uin", "bytes_xml_msg", "int32_direction_flag", "int32_friend_flag" }, new Object[] { Long.valueOf(0L), localByteStringMicro, localInteger, localInteger }, SelfCardInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8c1.oidb_0x8c1.SelfCardInfo
  * JD-Core Version:    0.7.0.1
  */

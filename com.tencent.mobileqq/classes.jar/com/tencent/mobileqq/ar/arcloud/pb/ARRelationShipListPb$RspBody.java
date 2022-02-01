@@ -21,13 +21,14 @@ public final class ARRelationShipListPb$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48 }, new String[] { "uint32_share_flag", "rpt_send_recv_share_list", "uint32_is_end", "bytes_rsp_page_cookies", "uint32_total_send_count", "uint32_total_recv_count" }, new Object[] { Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48 }, new String[] { "uint32_share_flag", "rpt_send_recv_share_list", "uint32_is_end", "bytes_rsp_page_cookies", "uint32_total_send_count", "uint32_total_recv_count" }, new Object[] { localInteger, null, localInteger, localByteStringMicro, localInteger, localInteger }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipListPb.RspBody
  * JD-Core Version:    0.7.0.1
  */

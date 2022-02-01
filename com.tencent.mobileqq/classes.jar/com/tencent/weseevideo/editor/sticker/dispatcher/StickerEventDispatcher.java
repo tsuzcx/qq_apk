@@ -45,7 +45,7 @@ public class StickerEventDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.dispatcher.StickerEventDispatcher
  * JD-Core Version:    0.7.0.1
  */

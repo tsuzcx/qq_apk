@@ -25,13 +25,16 @@ class HotSearchAdapter$HotSearchViewHolder$1
     }
     catch (Exception paramView)
     {
-      QLog.e("HotSearchAdapter", 1, "HotSearchAdapter, start miniApp exception: " + Log.getStackTraceString(paramView));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("HotSearchAdapter, start miniApp exception: ");
+      localStringBuilder.append(Log.getStackTraceString(paramView));
+      QLog.e("HotSearchAdapter", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.HotSearchAdapter.HotSearchViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

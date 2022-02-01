@@ -9,19 +9,20 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.service.message.MessageUtils;
+import com.tencent.mobileqq.ptt.IQQRecorderUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
+import com.tencent.mobileqq.transfile.TransFileUtil;
 import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.QQRecorder;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.Set;
+import mqq.app.AppRuntime;
 import tencent.im.cs.ptt_reserve.ptt_reserve.ReserveStruct;
 import tencent.im.msg.im_msg_body.GeneralFlags;
 
@@ -42,16 +43,21 @@ public class StreamDataManager
   
   public static int a(String paramString, short paramShort)
   {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    Object localObject = StreamMemoryPool.a();
+    if ((localObject != null) && (((HashMap)localObject).containsKey(paramString)))
     {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      paramString = (StreamFileInfo)((HashMap)localObject).get(paramString);
       if (paramString != null)
       {
         if (paramShort <= paramString.a().size()) {
           return ((StreamDataInfo)paramString.a().get(paramShort - 1)).a();
         }
-        QLog.w("StreamDataManager", 2, "getRecordedSize error shPackSeq: " + paramShort + "sfi.getStreamData().size(): " + paramString.a().size());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getRecordedSize error shPackSeq: ");
+        ((StringBuilder)localObject).append(paramShort);
+        ((StringBuilder)localObject).append("sfi.getStreamData().size(): ");
+        ((StringBuilder)localObject).append(paramString.a().size());
+        QLog.w("StreamDataManager", 2, ((StringBuilder)localObject).toString());
       }
     }
     return 0;
@@ -88,30 +94,6 @@ public class StreamDataManager
     return null;
   }
   
-  public static Map.Entry<String, StreamFileInfo> a(long paramLong1, long paramLong2)
-  {
-    Object localObject = StreamMemoryPool.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  try get random is:" + paramLong1 + ",msgSeq is:" + paramLong2);
-    }
-    if ((localObject != null) && (((HashMap)localObject).size() > 0))
-    {
-      localObject = ((HashMap)localObject).entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        StreamFileInfo localStreamFileInfo = (StreamFileInfo)localEntry.getValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  random is:" + MessageUtils.a((int)localStreamFileInfo.b) + ",msgSeq is:" + localStreamFileInfo.jdField_a_of_type_Long);
-        }
-        if ((MessageUtils.a((int)localStreamFileInfo.b) == paramLong1) && (paramLong2 == localStreamFileInfo.jdField_a_of_type_Long)) {
-          return localEntry;
-        }
-      }
-    }
-    return null;
-  }
-  
   public static short a(String paramString)
   {
     HashMap localHashMap = StreamMemoryPool.a();
@@ -127,13 +109,12 @@ public class StreamDataManager
   
   public static void a(QQAppInterface paramQQAppInterface, StreamInfo paramStreamInfo, StreamData paramStreamData, long paramLong1, long paramLong2, long paramLong3, long paramLong4, ptt_reserve.ReserveStruct paramReserveStruct)
   {
-    Object localObject2 = a(paramStreamInfo.iMsgId, 1);
+    Object localObject1 = a(paramStreamInfo.iMsgId, 1);
     long l1 = paramStreamInfo.lFromUIN;
     long l2 = paramStreamInfo.lToUIN;
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    if (localObject1 == null)
     {
-      localObject1 = BuddyTransfileProcessor.getTransferFilePath(String.valueOf(l2), null, 2, null);
+      localObject1 = TransFileUtil.getTransferFilePath(String.valueOf(l2), null, 2, null);
       int i = Utils.a(paramStreamInfo.pttFormat);
       localObject2 = MessageForPtt.getLocalFilePath(i, (String)localObject1);
       a(paramQQAppInterface, i, (String)localObject2, 1, paramStreamInfo.iMsgId);
@@ -142,27 +123,30 @@ public class StreamDataManager
       localObject1 = localObject2;
       if (QLog.isColorLevel())
       {
-        QLog.d("StreamDataManager", 2, "onReceiveStreamAction  key is:" + (String)localObject2 + ",msgSeq is:" + paramStreamInfo.msgSeq + ",random is:" + paramStreamInfo.random);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onReceiveStreamAction  key is:");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        ((StringBuilder)localObject1).append(",msgSeq is:");
+        ((StringBuilder)localObject1).append(paramStreamInfo.msgSeq);
+        ((StringBuilder)localObject1).append(",random is:");
+        ((StringBuilder)localObject1).append(paramStreamInfo.random);
+        QLog.d("StreamDataManager", 2, ((StringBuilder)localObject1).toString());
         localObject1 = localObject2;
       }
     }
-    localObject2 = new Bundle();
+    Object localObject2 = new Bundle();
     im_msg_body.GeneralFlags localGeneralFlags = new im_msg_body.GeneralFlags();
     try
     {
       localGeneralFlags.mergeFrom(paramReserveStruct.bytes_general_flags.get().toByteArray());
-      ((Bundle)localObject2).putInt("DiyTextId", localGeneralFlags.uint32_bubble_diy_text_id.get());
-      ((Bundle)localObject2).putInt("DiyPendantId", (int)paramLong4);
-      a(paramQQAppInterface, String.valueOf(l1), (String)localObject1, -1000L, paramStreamInfo, paramStreamData, paramLong1, paramLong2, paramLong3, (Bundle)localObject2);
-      return;
     }
     catch (InvalidProtocolBufferMicroException paramReserveStruct)
     {
-      for (;;)
-      {
-        QLog.e("StreamDataManager", 1, "pb merge failed.", paramReserveStruct);
-      }
+      QLog.e("StreamDataManager", 1, "pb merge failed.", paramReserveStruct);
     }
+    ((Bundle)localObject2).putInt("DiyTextId", localGeneralFlags.uint32_bubble_diy_text_id.get());
+    ((Bundle)localObject2).putInt("DiyPendantId", (int)paramLong4);
+    a(paramQQAppInterface, String.valueOf(l1), (String)localObject1, -1000L, paramStreamInfo, paramStreamData, paramLong1, paramLong2, paramLong3, (Bundle)localObject2);
   }
   
   public static void a(String paramString)
@@ -201,55 +185,43 @@ public class StreamDataManager
   
   public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong1, boolean paramBoolean, int paramInt1, int paramInt2, long paramLong2, Bundle paramBundle)
   {
-    short s1 = -1;
     Object localObject = StreamMemoryPool.a();
-    paramInt1 = QQRecorder.c(paramInt1);
-    short s2;
-    StreamDataInfo localStreamDataInfo;
+    paramInt1 = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).getPttRecordTime(paramInt1);
     if ((localObject != null) && (((HashMap)localObject).containsKey(paramString1)))
     {
       localObject = (StreamFileInfo)((HashMap)localObject).get(paramString1);
       ((StreamFileInfo)localObject).jdField_a_of_type_Boolean = paramBoolean;
       if (localObject != null)
       {
-        s2 = s1;
         if (((StreamFileInfo)localObject).a() == 0)
         {
           localObject = ((StreamFileInfo)localObject).a();
-          s2 = s1;
-          if (localObject != null)
+          if ((localObject != null) && (((List)localObject).size() > 0))
           {
-            s2 = s1;
-            if (((List)localObject).size() > 0)
+            localObject = ((List)localObject).iterator();
+            s = -1;
+            while (((Iterator)localObject).hasNext())
             {
-              localObject = ((List)localObject).iterator();
-              s2 = s1;
-              if (((Iterator)localObject).hasNext())
+              StreamDataInfo localStreamDataInfo = (StreamDataInfo)((Iterator)localObject).next();
+              if ((localStreamDataInfo.a() == localStreamDataInfo.a().length) && (!localStreamDataInfo.b()))
               {
-                localStreamDataInfo = (StreamDataInfo)((Iterator)localObject).next();
-                if ((localStreamDataInfo.a() == localStreamDataInfo.a().length) && (!localStreamDataInfo.b()))
-                {
-                  s1 = localStreamDataInfo.a();
-                  localStreamDataInfo.b(true);
-                }
+                s = localStreamDataInfo.a();
+                localStreamDataInfo.b(true);
+              }
+              else if ((!localStreamDataInfo.b()) && (localStreamDataInfo.a()))
+              {
+                s = localStreamDataInfo.a();
+                localStreamDataInfo.b(true);
               }
             }
+            break label200;
           }
         }
-      }
-    }
-    for (;;)
-    {
-      break;
-      if ((!localStreamDataInfo.b()) && (localStreamDataInfo.a()))
-      {
-        s1 = localStreamDataInfo.a();
-        localStreamDataInfo.b(true);
-        continue;
-        if ((s2 != -1) && (paramLong1 != 0L)) {
-          a(paramQQAppInterface, paramString2, paramString1, paramLong1, s2, paramInt1, paramInt2, paramLong2, paramBundle);
+        short s = -1;
+        label200:
+        if ((s != -1) && (paramLong1 != 0L)) {
+          a(paramQQAppInterface, paramString2, paramString1, paramLong1, s, paramInt1, paramInt2, paramLong2, paramBundle);
         }
-        return;
       }
     }
   }
@@ -278,34 +250,24 @@ public class StreamDataManager
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (!localHashMap.containsKey(paramString)))
-    {
-      paramQQAppInterface = new StreamFileInfo(paramQQAppInterface, paramInt1, paramString, paramInt2);
-      paramQQAppInterface.a(paramInt3);
-      try
-      {
-        localHashMap.put(paramString, paramQQAppInterface);
-        return true;
-      }
-      finally {}
-    }
-    return false;
-  }
-  
   private static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, long paramLong1, StreamInfo paramStreamInfo, StreamData paramStreamData, long paramLong2, long paramLong3, long paramLong4, Bundle paramBundle)
   {
     ITransFileController localITransFileController = (ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class);
-    if (!localITransFileController.containsProcessor(paramString1 + paramString2, paramLong1))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    if (!localITransFileController.containsProcessor(localStringBuilder.toString(), paramLong1))
     {
       if (paramQQAppInterface != null)
       {
         paramQQAppInterface = new BuddyTransfileProcessor(paramString1, paramString2, false, null, null, 2, -1, false, (TransFileControllerImpl)localITransFileController, paramLong1);
         paramQQAppInterface.setId(paramLong1);
         paramQQAppInterface.getFileMsg().filePath = paramString2;
-        paramString1 = paramString1 + paramString2 + paramLong1;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(paramLong1);
+        paramString1 = localStringBuilder.toString();
         paramQQAppInterface.setKey(paramString1);
         localITransFileController.addProcessor(paramString1, paramQQAppInterface);
         paramQQAppInterface.startReceiveOneStreamPack(paramStreamInfo, paramStreamData, paramLong2, paramLong3, paramLong4, paramBundle);
@@ -313,7 +275,11 @@ public class StreamDataManager
       }
       return false;
     }
-    paramQQAppInterface = (BuddyTransfileProcessor)localITransFileController.findProcessor(paramString1 + paramString2 + paramLong1);
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append(paramString1);
+    paramQQAppInterface.append(paramString2);
+    paramQQAppInterface.append(paramLong1);
+    paramQQAppInterface = (BuddyTransfileProcessor)localITransFileController.findProcessor(paramQQAppInterface.toString());
     if (paramQQAppInterface != null) {
       paramQQAppInterface.startReceiveOneStreamPack(paramStreamInfo, paramStreamData, paramLong2, paramLong3, paramLong4, paramBundle);
     }
@@ -330,8 +296,14 @@ public class StreamDataManager
         paramQQAppInterface = new BuddyTransfileProcessor(paramString1, paramString2, true, null, null, 2, -1, false, (TransFileControllerImpl)localITransFileController, paramLong1);
         paramQQAppInterface.setId(paramLong1);
         paramQQAppInterface.createStreamThreadPool();
-        paramQQAppInterface.setKey(paramString1 + paramLong1);
-        localITransFileController.addProcessor(paramString1 + paramLong1, paramQQAppInterface);
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString1);
+        paramString2.append(paramLong1);
+        paramQQAppInterface.setKey(paramString2.toString());
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString1);
+        paramString2.append(paramLong1);
+        localITransFileController.addProcessor(paramString2.toString(), paramQQAppInterface);
         paramQQAppInterface.startSendOneStreamPack(paramShort, false, paramInt1, paramInt2, paramLong2, paramBundle);
         return true;
       }
@@ -347,13 +319,12 @@ public class StreamDataManager
   public static boolean a(String paramString)
   {
     HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
-      try
-      {
-        localHashMap.remove(paramString);
-        return true;
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.jdField_a_of_type_Boolean;
       }
-      finally {}
     }
     return false;
   }
@@ -372,122 +343,130 @@ public class StreamDataManager
   public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt, short paramShort, boolean paramBoolean)
   {
     Object localObject1 = StreamMemoryPool.a();
+    int i = 0;
     if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramString)))
     {
       StreamFileInfo localStreamFileInfo = (StreamFileInfo)((HashMap)localObject1).get(paramString);
-      if (!paramBoolean) {}
-      try
-      {
-        localStreamFileInfo.a(paramArrayOfByte, paramInt);
-        if (localStreamFileInfo.a() == 0)
+      if (!paramBoolean) {
+        try
         {
-          paramString = localStreamFileInfo.a();
-          if (paramString.size() == 0)
+          localStreamFileInfo.a(paramArrayOfByte, paramInt);
+        }
+        catch (Exception paramString)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StreamDataManager", 2, "write fail", paramString);
+          }
+        }
+      }
+      Object localObject2;
+      if (localStreamFileInfo.a() == 0)
+      {
+        paramString = localStreamFileInfo.a();
+        if (paramString.size() == 0)
+        {
+          localObject1 = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
+          System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), 0, paramInt);
+          ((StreamDataInfo)localObject1).a(paramInt);
+          paramShort = localStreamFileInfo.b();
+          s = (short)(paramShort + 1);
+          ((StreamDataInfo)localObject1).a(paramShort);
+          paramString.add(localObject1);
+          localStreamFileInfo.b(s);
+          return true;
+        }
+        localObject1 = (StreamDataInfo)paramString.get(paramString.size() - 1);
+        localObject2 = ((StreamDataInfo)localObject1).a();
+        if (((StreamDataInfo)localObject1).a() < localObject2.length)
+        {
+          i = localObject2.length - ((StreamDataInfo)localObject1).a();
+          if (i >= paramInt)
           {
-            localObject1 = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
-            System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), 0, paramInt);
-            ((StreamDataInfo)localObject1).a(paramInt);
-            paramShort = localStreamFileInfo.b();
-            s = (short)(paramShort + 1);
-            ((StreamDataInfo)localObject1).a(paramShort);
-            paramString.add(localObject1);
-            localStreamFileInfo.b(s);
+            System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).a(), paramInt);
+            ((StreamDataInfo)localObject1).a(((StreamDataInfo)localObject1).a() + paramInt);
             return true;
           }
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          short s;
-          if (QLog.isColorLevel())
+          if (paramInt <= i)
           {
-            QLog.d("StreamDataManager", 2, "write fail", paramString);
-            continue;
-            localObject1 = (StreamDataInfo)paramString.get(paramString.size() - 1);
-            Object localObject2 = ((StreamDataInfo)localObject1).a();
-            int i;
-            if (((StreamDataInfo)localObject1).a() < localObject2.length)
+            System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).a(), paramInt);
+            ((StreamDataInfo)localObject1).a(((StreamDataInfo)localObject1).a() + paramInt);
+            return true;
+          }
+          System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).a(), i);
+          ((StreamDataInfo)localObject1).a(((StreamDataInfo)localObject1).a().length);
+          paramInt -= i;
+          localObject1 = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
+          System.arraycopy(paramArrayOfByte, i, ((StreamDataInfo)localObject1).a(), 0, paramInt);
+          ((StreamDataInfo)localObject1).a(paramInt);
+          paramShort = localStreamFileInfo.b();
+          s = (short)(paramShort + 1);
+          ((StreamDataInfo)localObject1).a(paramShort);
+          paramString.add(localObject1);
+          localStreamFileInfo.b(s);
+          return true;
+        }
+        localObject1 = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
+        System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), 0, paramInt);
+        ((StreamDataInfo)localObject1).a(paramInt);
+        paramShort = localStreamFileInfo.b();
+        short s = (short)(paramShort + 1);
+        ((StreamDataInfo)localObject1).a(paramShort);
+        paramString.add(localObject1);
+        localStreamFileInfo.b(s);
+        return true;
+      }
+      if (localStreamFileInfo.a() == 1)
+      {
+        localObject2 = localStreamFileInfo.a();
+        paramInt = paramArrayOfByte.length;
+        while (paramInt > 0)
+        {
+          if (((List)localObject2).size() == 0)
+          {
+            paramString = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
+            ((List)localObject2).add(paramString);
+          }
+          else
+          {
+            localObject1 = (StreamDataInfo)((List)localObject2).get(((List)localObject2).size() - 1);
+            paramString = (String)localObject1;
+            if (((StreamDataInfo)localObject1).a().length - ((StreamDataInfo)localObject1).a() <= 0)
             {
-              i = localObject2.length - ((StreamDataInfo)localObject1).a();
-              if (i >= paramInt)
-              {
-                System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).a(), paramInt);
-                ((StreamDataInfo)localObject1).a(((StreamDataInfo)localObject1).a() + paramInt);
-              }
-              else
-              {
-                if (paramInt <= i)
-                {
-                  System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).a(), paramInt);
-                  ((StreamDataInfo)localObject1).a(((StreamDataInfo)localObject1).a() + paramInt);
-                  return true;
-                }
-                System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).a(), i);
-                ((StreamDataInfo)localObject1).a(((StreamDataInfo)localObject1).a().length);
-                paramInt -= i;
-                localObject1 = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
-                System.arraycopy(paramArrayOfByte, i, ((StreamDataInfo)localObject1).a(), 0, paramInt);
-                ((StreamDataInfo)localObject1).a(paramInt);
-                paramShort = localStreamFileInfo.b();
-                s = (short)(paramShort + 1);
-                ((StreamDataInfo)localObject1).a(paramShort);
-                paramString.add(localObject1);
-                localStreamFileInfo.b(s);
-              }
-            }
-            else
-            {
-              localObject1 = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
-              System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), 0, paramInt);
-              ((StreamDataInfo)localObject1).a(paramInt);
-              paramShort = localStreamFileInfo.b();
-              s = (short)(paramShort + 1);
-              ((StreamDataInfo)localObject1).a(paramShort);
-              paramString.add(localObject1);
-              localStreamFileInfo.b(s);
-              continue;
-              if (localStreamFileInfo.a() == 1)
-              {
-                localObject2 = localStreamFileInfo.a();
-                paramInt = paramArrayOfByte.length;
-                i = 0;
-                if (paramInt > 0)
-                {
-                  if (((List)localObject2).size() == 0)
-                  {
-                    paramString = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
-                    ((List)localObject2).add(paramString);
-                  }
-                  for (;;)
-                  {
-                    int k = paramString.a().length - paramString.a();
-                    int j = k;
-                    if (k >= paramInt) {
-                      j = paramInt;
-                    }
-                    System.arraycopy(paramArrayOfByte, i, paramString.a(), paramString.a(), j);
-                    i += j;
-                    paramInt -= j;
-                    paramString.a(j + paramString.a());
-                    paramString.a(paramShort);
-                    break;
-                    localObject1 = (StreamDataInfo)((List)localObject2).get(((List)localObject2).size() - 1);
-                    paramString = (String)localObject1;
-                    if (((StreamDataInfo)localObject1).a().length - ((StreamDataInfo)localObject1).a() <= 0)
-                    {
-                      paramString = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
-                      ((List)localObject2).add(paramString);
-                    }
-                  }
-                }
-                localStreamFileInfo.b((short)(paramShort + 1));
-              }
+              paramString = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
+              ((List)localObject2).add(paramString);
             }
           }
+          int k = paramString.a().length - paramString.a();
+          int j = k;
+          if (k >= paramInt) {
+            j = paramInt;
+          }
+          System.arraycopy(paramArrayOfByte, i, paramString.a(), paramString.a(), j);
+          i += j;
+          paramInt -= j;
+          paramString.a(paramString.a() + j);
+          paramString.a(paramShort);
         }
+        localStreamFileInfo.b((short)(paramShort + 1));
       }
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(AppRuntime paramAppRuntime, int paramInt1, String paramString, int paramInt2, int paramInt3)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (!localHashMap.containsKey(paramString)))
+    {
+      paramAppRuntime = new StreamFileInfo(paramAppRuntime, paramInt1, paramString, paramInt2);
+      paramAppRuntime.a(paramInt3);
+      try
+      {
+        localHashMap.put(paramString, paramAppRuntime);
+        return true;
+      }
+      finally {}
     }
     return false;
   }
@@ -567,13 +546,11 @@ public class StreamDataManager
   
   public static boolean b(String paramString)
   {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    List localList = StreamMemoryPool.a();
+    if ((localList != null) && (!localList.contains(paramString)))
     {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.jdField_a_of_type_Boolean;
-      }
+      localList.add(paramString);
+      return true;
     }
     return false;
   }
@@ -581,21 +558,26 @@ public class StreamDataManager
   public static int c(String paramString)
   {
     HashMap localHashMap = StreamMemoryPool.a();
-    int i;
     if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
     {
       paramString = (StreamFileInfo)localHashMap.get(paramString);
       if (paramString != null)
       {
-        i = paramString.a().size();
-        if ((i < 1) || (((StreamDataInfo)paramString.a().get(i - 1)).b())) {
-          return i;
+        int j = paramString.a().size();
+        int i = j;
+        if (j >= 1)
+        {
+          paramString = paramString.a();
+          int k = j - 1;
+          i = j;
+          if (!((StreamDataInfo)paramString.get(k)).b()) {
+            i = k;
+          }
         }
-        return i - 1;
+        return i;
       }
     }
     return 0;
-    return i;
   }
   
   public static short c(String paramString)
@@ -626,17 +608,6 @@ public class StreamDataManager
   public static boolean c(String paramString)
   {
     List localList = StreamMemoryPool.a();
-    if ((localList != null) && (!localList.contains(paramString)))
-    {
-      localList.add(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean d(String paramString)
-  {
-    List localList = StreamMemoryPool.a();
     if ((localList != null) && (localList.contains(paramString)))
     {
       localList.remove(paramString);
@@ -645,7 +616,7 @@ public class StreamDataManager
     return false;
   }
   
-  public static boolean e(String paramString)
+  public static boolean d(String paramString)
   {
     List localList = StreamMemoryPool.a();
     return (localList != null) && (localList.contains(paramString));
@@ -653,7 +624,7 @@ public class StreamDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.streamtransfile.StreamDataManager
  * JD-Core Version:    0.7.0.1
  */

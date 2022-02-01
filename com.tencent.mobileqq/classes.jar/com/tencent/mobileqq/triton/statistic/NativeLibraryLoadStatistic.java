@@ -72,18 +72,18 @@ public final class NativeLibraryLoadStatistic
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof NativeLibraryLoadStatistic))
       {
         paramObject = (NativeLibraryLoadStatistic)paramObject;
-        if ((this.success != paramObject.success) || (!Intrinsics.areEqual(this.name, paramObject.name)) || (!Intrinsics.areEqual(this.file, paramObject.file)) || (this.isOptional != paramObject.isOptional) || (this.loadTimeMs != paramObject.loadTimeMs) || (!Intrinsics.areEqual(this.loadException, paramObject.loadException))) {}
+        if ((this.success == paramObject.success) && (Intrinsics.areEqual(this.name, paramObject.name)) && (Intrinsics.areEqual(this.file, paramObject.file)) && (this.isOptional == paramObject.isOptional) && (this.loadTimeMs == paramObject.loadTimeMs) && (Intrinsics.areEqual(this.loadException, paramObject.loadException))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @Nullable
@@ -127,12 +127,26 @@ public final class NativeLibraryLoadStatistic
   @NotNull
   public String toString()
   {
-    return "NativeLibraryLoadStatistic(success=" + this.success + ", name=" + this.name + ", file=" + this.file + ", isOptional=" + this.isOptional + ", loadTimeMs=" + this.loadTimeMs + ", loadException=" + this.loadException + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NativeLibraryLoadStatistic(success=");
+    localStringBuilder.append(this.success);
+    localStringBuilder.append(", name=");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(", file=");
+    localStringBuilder.append(this.file);
+    localStringBuilder.append(", isOptional=");
+    localStringBuilder.append(this.isOptional);
+    localStringBuilder.append(", loadTimeMs=");
+    localStringBuilder.append(this.loadTimeMs);
+    localStringBuilder.append(", loadException=");
+    localStringBuilder.append(this.loadException);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.statistic.NativeLibraryLoadStatistic
  * JD-Core Version:    0.7.0.1
  */

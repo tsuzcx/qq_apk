@@ -9,18 +9,20 @@ class TPReportManager$VodReportHandler
   
   public void handleReportEvent(int paramInt, @NonNull ITPReportProperties paramITPReportProperties)
   {
-    boolean bool = true;
+    boolean bool;
     if (paramInt > 30) {
       bool = false;
+    } else {
+      bool = true;
     }
-    TPReportManager.access$3800(this.this$0, paramITPReportProperties, paramInt, bool);
-    TPReportManager.access$4000(this.this$0, paramITPReportProperties, bool);
-    TPReportManager.access$3900(this.this$0, paramITPReportProperties);
+    TPReportManager.access$4000(this.this$0, paramITPReportProperties, paramInt, bool);
+    TPReportManager.access$4200(this.this$0, paramITPReportProperties, bool);
+    TPReportManager.access$4100(this.this$0, paramITPReportProperties);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager.VodReportHandler
  * JD-Core Version:    0.7.0.1
  */

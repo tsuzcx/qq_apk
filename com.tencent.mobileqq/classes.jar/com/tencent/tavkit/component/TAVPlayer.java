@@ -8,12 +8,14 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.player.IPlayer.PlayerListener;
+import com.tencent.tav.player.IPlayer.PlayerStatus;
 import com.tencent.tav.player.OnCompositionUpdateListener;
 import com.tencent.tav.player.Player;
 import com.tencent.tav.player.PlayerItem;
@@ -26,41 +28,88 @@ public class TAVPlayer
 {
   public static final int VIDEO_PLAYER_HEIGHT = 960;
   public static final int VIDEO_PLAYER_WIDTH = 540;
-  private final String TAG = "GameTemplatePlayer@" + Integer.toHexString(hashCode());
-  private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener = new TAVPlayer.4(this);
+  private final String TAG;
+  private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
   private AudioManager audioManager;
-  private boolean audioTracksMerge = true;
-  private int bgColor = -16777216;
+  private boolean audioTracksMerge;
+  private int bgColor;
   private OnCompositionUpdateListener compositionUpdateListener;
   private Context context;
-  private boolean isAllowInterrupt = true;
-  private boolean isAutoPlay = true;
-  private boolean isResetting = false;
-  private boolean loopPlay = false;
+  private boolean isAllowInterrupt;
+  private boolean isAutoPlay;
+  private boolean isResetting;
+  private boolean loopPlay;
   @Nullable
   private FrameLayout mPlayerLayout;
   private CMTimeRange playRange;
   private Player player;
   private IPlayer.PlayerListener playerListener;
-  private CMTime position = CMTime.CMTimeZero;
+  private CMTime position;
   private TAVPlayer.PostUpdateThread postUpdateThread;
-  private float rate = 1.0F;
+  private float rate;
   private Surface surface;
   private int surfaceHeight;
   private int surfaceWidth;
   private TAVComposition tavComposition;
-  private boolean videoTracksMerge = true;
-  private float volume = 1.0F;
+  private boolean videoTracksMerge;
+  private float volume;
   
-  public TAVPlayer() {}
+  public TAVPlayer()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GameTemplatePlayer@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.TAG = localStringBuilder.toString();
+    this.isAllowInterrupt = true;
+    this.isAutoPlay = true;
+    this.loopPlay = false;
+    this.volume = 1.0F;
+    this.position = CMTime.CMTimeZero;
+    this.videoTracksMerge = true;
+    this.audioTracksMerge = true;
+    this.rate = 1.0F;
+    this.bgColor = -16777216;
+    this.isResetting = false;
+    this.audioFocusChangeListener = new TAVPlayer.4(this);
+  }
   
   public TAVPlayer(Surface paramSurface, int paramInt1, int paramInt2)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GameTemplatePlayer@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.TAG = localStringBuilder.toString();
+    this.isAllowInterrupt = true;
+    this.isAutoPlay = true;
+    this.loopPlay = false;
+    this.volume = 1.0F;
+    this.position = CMTime.CMTimeZero;
+    this.videoTracksMerge = true;
+    this.audioTracksMerge = true;
+    this.rate = 1.0F;
+    this.bgColor = -16777216;
+    this.isResetting = false;
+    this.audioFocusChangeListener = new TAVPlayer.4(this);
     onSurfaceCreate(paramSurface, paramInt1, paramInt2);
   }
   
   public TAVPlayer(FrameLayout paramFrameLayout)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GameTemplatePlayer@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.TAG = localStringBuilder.toString();
+    this.isAllowInterrupt = true;
+    this.isAutoPlay = true;
+    this.loopPlay = false;
+    this.volume = 1.0F;
+    this.position = CMTime.CMTimeZero;
+    this.videoTracksMerge = true;
+    this.audioTracksMerge = true;
+    this.rate = 1.0F;
+    this.bgColor = -16777216;
+    this.isResetting = false;
+    this.audioFocusChangeListener = new TAVPlayer.4(this);
     this.context = paramFrameLayout.getContext();
     this.mPlayerLayout = paramFrameLayout;
     initContentView();
@@ -68,42 +117,58 @@ public class TAVPlayer
   
   private void abandonAudioFocus()
   {
-    if (this.audioManager == null) {
+    AudioManager localAudioManager = this.audioManager;
+    if (localAudioManager == null) {
       return;
     }
-    this.audioManager.abandonAudioFocus(this.audioFocusChangeListener);
+    localAudioManager.abandonAudioFocus(this.audioFocusChangeListener);
   }
   
   @NonNull
   private PlayerItem buildPlayerItem(TAVComposition paramTAVComposition)
   {
-    Logger.d(this.TAG, "buildPlayerItem() called with: tavComposition = [" + paramTAVComposition + "]");
+    Object localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("buildPlayerItem() called with: tavComposition = [");
+    localStringBuilder.append(paramTAVComposition);
+    localStringBuilder.append("]");
+    Logger.d((String)localObject, localStringBuilder.toString());
     paramTAVComposition = new TAVCompositionBuilder(paramTAVComposition);
     paramTAVComposition.setVideoTracksMerge(this.videoTracksMerge);
     paramTAVComposition.setAudioTracksMerge(this.audioTracksMerge);
     paramTAVComposition = paramTAVComposition.buildSource();
-    PlayerItem localPlayerItem = new PlayerItem(paramTAVComposition.getAsset());
-    localPlayerItem.setVideoComposition(paramTAVComposition.getVideoComposition());
-    localPlayerItem.setAudioMix(paramTAVComposition.getAudioMix());
-    return localPlayerItem;
+    localObject = new PlayerItem(paramTAVComposition.getAsset());
+    ((PlayerItem)localObject).setVideoComposition(paramTAVComposition.getVideoComposition());
+    ((PlayerItem)localObject).setAudioMix(paramTAVComposition.getAudioMix());
+    return localObject;
   }
   
   private void initContentView()
   {
-    if (this.mPlayerLayout == null) {
+    Object localObject = this.mPlayerLayout;
+    if (localObject == null) {
       return;
     }
-    this.mPlayerLayout.removeAllViews();
-    TextureView localTextureView = new TextureView(this.context);
-    localTextureView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    this.mPlayerLayout.addView(localTextureView);
-    localTextureView.setSurfaceTextureListener(new TAVPlayer.1(this));
+    ((FrameLayout)localObject).removeAllViews();
+    localObject = new TextureView(this.context);
+    ((TextureView)localObject).setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    this.mPlayerLayout.addView((View)localObject);
+    ((TextureView)localObject).setSurfaceTextureListener(new TAVPlayer.1(this));
   }
   
   @NonNull
   private Player newPlayer(PlayerItem paramPlayerItem, CMTime paramCMTime, boolean paramBoolean)
   {
-    Logger.d(this.TAG, "newPlayer() called with: playerItem = [" + paramPlayerItem + "], position = [" + paramCMTime + "], autoPlay = [" + paramBoolean + "]");
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("newPlayer() called with: playerItem = [");
+    localStringBuilder.append(paramPlayerItem);
+    localStringBuilder.append("], position = [");
+    localStringBuilder.append(paramCMTime);
+    localStringBuilder.append("], autoPlay = [");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    Logger.d(str, localStringBuilder.toString());
     Log.d(this.TAG, "newVersion, onSurfaceTextureAvailable: use surfaceTexture");
     paramPlayerItem = new Player(paramPlayerItem);
     paramPlayerItem.setPlayerListener(this.playerListener);
@@ -117,8 +182,9 @@ public class TAVPlayer
     if ((paramBoolean) && (requestAudioFocus())) {
       paramPlayerItem.play();
     }
-    if (this.compositionUpdateListener != null) {
-      this.compositionUpdateListener.onUpdated(paramPlayerItem, true);
+    paramCMTime = this.compositionUpdateListener;
+    if (paramCMTime != null) {
+      paramCMTime.onUpdated(paramPlayerItem, true);
     }
     this.isResetting = false;
     return paramPlayerItem;
@@ -126,133 +192,75 @@ public class TAVPlayer
   
   private boolean requestAudioFocus()
   {
-    if (this.context == null) {
+    Context localContext = this.context;
+    if (localContext == null) {
       return true;
     }
     if (this.audioManager == null) {
-      this.audioManager = ((AudioManager)this.context.getSystemService("audio"));
+      this.audioManager = ((AudioManager)localContext.getSystemService("audio"));
     }
-    if (this.audioManager.requestAudioFocus(this.audioFocusChangeListener, 3, 1) == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return this.audioManager.requestAudioFocus(this.audioFocusChangeListener, 3, 1) == 1;
   }
   
   private void setPlayerListener(IPlayer.PlayerListener paramPlayerListener)
   {
-    Logger.d(this.TAG, "setPlayerListener() called with: playerListener = [" + paramPlayerListener + "],player = " + this.player);
+    Object localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setPlayerListener() called with: playerListener = [");
+    localStringBuilder.append(paramPlayerListener);
+    localStringBuilder.append("],player = ");
+    localStringBuilder.append(this.player);
+    Logger.d((String)localObject, localStringBuilder.toString());
     this.playerListener = paramPlayerListener;
-    if (this.player != null) {
-      this.player.setPlayerListener(paramPlayerListener);
+    localObject = this.player;
+    if (localObject != null) {
+      ((Player)localObject).setPlayerListener(paramPlayerListener);
     }
   }
   
-  /* Error */
-  public com.tencent.tav.player.IPlayer.PlayerStatus getCurrentStatus()
+  public IPlayer.PlayerStatus getCurrentStatus()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   6: ifnonnull +11 -> 17
-    //   9: getstatic 341	com/tencent/tav/player/IPlayer$PlayerStatus:ERROR	Lcom/tencent/tav/player/IPlayer$PlayerStatus;
-    //   12: astore_1
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: aload_1
-    //   16: areturn
-    //   17: aload_0
-    //   18: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   21: invokevirtual 344	com/tencent/tav/player/Player:currentStatus	()Lcom/tencent/tav/player/IPlayer$PlayerStatus;
-    //   24: astore_1
-    //   25: goto -12 -> 13
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	TAVPlayer
-    //   12	13	1	localPlayerStatus	com.tencent.tav.player.IPlayer.PlayerStatus
-    //   28	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	13	28	finally
-    //   17	25	28	finally
+    try
+    {
+      if (this.player == null)
+      {
+        localPlayerStatus = IPlayer.PlayerStatus.ERROR;
+        return localPlayerStatus;
+      }
+      IPlayer.PlayerStatus localPlayerStatus = this.player.currentStatus();
+      return localPlayerStatus;
+    }
+    finally {}
   }
   
-  /* Error */
   public CMTime getDuration()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   6: ifnull +15 -> 21
-    //   9: aload_0
-    //   10: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   13: invokevirtual 349	com/tencent/tav/player/Player:duration	()Lcom/tencent/tav/coremedia/CMTime;
-    //   16: astore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: aload_1
-    //   20: areturn
-    //   21: getstatic 91	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
-    //   24: astore_1
-    //   25: goto -8 -> 17
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	TAVPlayer
-    //   16	9	1	localCMTime	CMTime
-    //   28	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	28	finally
-    //   21	25	28	finally
+    try
+    {
+      if (this.player != null)
+      {
+        localCMTime = this.player.duration();
+        return localCMTime;
+      }
+      CMTime localCMTime = CMTime.CMTimeZero;
+      return localCMTime;
+    }
+    finally {}
   }
   
-  /* Error */
   public CMTime getPosition()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   6: ifnull +15 -> 21
-    //   9: aload_0
-    //   10: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   13: invokevirtual 352	com/tencent/tav/player/Player:position	()Lcom/tencent/tav/coremedia/CMTime;
-    //   16: astore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: aload_1
-    //   20: areturn
-    //   21: getstatic 355	com/tencent/tav/coremedia/CMTime:CMTimeInvalid	Lcom/tencent/tav/coremedia/CMTime;
-    //   24: astore_1
-    //   25: goto -8 -> 17
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	TAVPlayer
-    //   16	9	1	localCMTime	CMTime
-    //   28	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	28	finally
-    //   21	25	28	finally
+    try
+    {
+      if (this.player != null)
+      {
+        localCMTime = this.player.position();
+        return localCMTime;
+      }
+      CMTime localCMTime = CMTime.CMTimeInvalid;
+      return localCMTime;
+    }
+    finally {}
   }
   
   public float getVolume()
@@ -269,39 +277,22 @@ public class TAVPlayer
     }
   }
   
-  /* Error */
   public boolean isPlaying()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   6: ifnull +15 -> 21
-    //   9: aload_0
-    //   10: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   13: invokevirtual 360	com/tencent/tav/player/Player:isPlaying	()Z
-    //   16: istore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: iload_1
-    //   20: ireturn
-    //   21: iconst_0
-    //   22: istore_1
-    //   23: goto -6 -> 17
-    //   26: astore_2
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_2
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	TAVPlayer
-    //   16	7	1	bool	boolean
-    //   26	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	26	finally
+    try
+    {
+      if (this.player != null)
+      {
+        boolean bool = this.player.isPlaying();
+        return bool;
+      }
+      return false;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isResetting()
@@ -319,7 +310,8 @@ public class TAVPlayer
   
   public void onSurfaceDestory()
   {
-    if ((this.player != null) && (!this.player.isReleased()))
+    Player localPlayer = this.player;
+    if ((localPlayer != null) && (!localPlayer.isReleased()))
     {
       this.position = this.player.position();
       this.player.release();
@@ -329,106 +321,56 @@ public class TAVPlayer
   
   public void onSurfaceSizeChanged(int paramInt1, int paramInt2)
   {
-    if (this.player != null) {
-      this.player.updateViewport(paramInt1, paramInt2);
+    Player localPlayer = this.player;
+    if (localPlayer != null) {
+      localPlayer.updateViewport(paramInt1, paramInt2);
     }
   }
   
-  /* Error */
   public void pause()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 78	com/tencent/tavkit/component/TAVPlayer:TAG	Ljava/lang/String;
-    //   6: new 55	java/lang/StringBuilder
-    //   9: dup
-    //   10: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   13: ldc_w 380
-    //   16: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: aload_0
-    //   20: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   23: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokestatic 164	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   32: aload_0
-    //   33: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   36: ifnull +17 -> 53
-    //   39: aload_0
-    //   40: invokespecial 382	com/tencent/tavkit/component/TAVPlayer:abandonAudioFocus	()V
-    //   43: aload_0
-    //   44: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   47: invokevirtual 384	com/tencent/tav/player/Player:pause	()V
-    //   50: aload_0
-    //   51: monitorexit
-    //   52: return
-    //   53: aload_0
-    //   54: iconst_0
-    //   55: putfield 82	com/tencent/tavkit/component/TAVPlayer:isAutoPlay	Z
-    //   58: goto -8 -> 50
-    //   61: astore_1
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload_1
-    //   65: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	66	0	this	TAVPlayer
-    //   61	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	50	61	finally
-    //   53	58	61	finally
+    try
+    {
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pause: player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
+      if (this.player != null)
+      {
+        abandonAudioFocus();
+        this.player.pause();
+      }
+      else
+      {
+        this.isAutoPlay = false;
+      }
+      return;
+    }
+    finally {}
   }
   
-  /* Error */
   public void play()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 78	com/tencent/tavkit/component/TAVPlayer:TAG	Ljava/lang/String;
-    //   6: new 55	java/lang/StringBuilder
-    //   9: dup
-    //   10: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   13: ldc_w 386
-    //   16: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: aload_0
-    //   20: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   23: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokestatic 164	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   32: aload_0
-    //   33: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   36: ifnull +20 -> 56
-    //   39: aload_0
-    //   40: invokespecial 307	com/tencent/tavkit/component/TAVPlayer:requestAudioFocus	()Z
-    //   43: ifeq +10 -> 53
-    //   46: aload_0
-    //   47: getfield 142	com/tencent/tavkit/component/TAVPlayer:player	Lcom/tencent/tav/player/Player;
-    //   50: invokevirtual 310	com/tencent/tav/player/Player:play	()V
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: return
-    //   56: aload_0
-    //   57: iconst_1
-    //   58: putfield 82	com/tencent/tavkit/component/TAVPlayer:isAutoPlay	Z
-    //   61: goto -8 -> 53
-    //   64: astore_1
-    //   65: aload_0
-    //   66: monitorexit
-    //   67: aload_1
-    //   68: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	69	0	this	TAVPlayer
-    //   64	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	53	64	finally
-    //   56	61	64	finally
+    try
+    {
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("play: player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
+      if (this.player != null)
+      {
+        if (requestAudioFocus()) {
+          this.player.play();
+        }
+      }
+      else {
+        this.isAutoPlay = true;
+      }
+      return;
+    }
+    finally {}
   }
   
   public void postUpdate(@NonNull TAVPlayer.ICompositionBuilder paramICompositionBuilder, boolean paramBoolean)
@@ -464,7 +406,11 @@ public class TAVPlayer
   {
     try
     {
-      Logger.d(this.TAG, "release: player = " + this.player);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("release: player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
       if (this.player != null)
       {
         this.position = this.player.position();
@@ -501,9 +447,16 @@ public class TAVPlayer
   
   public void seekToTime(CMTime paramCMTime)
   {
-    Logger.d(this.TAG, "seekToTime() called with: cmTime = [" + paramCMTime + "],player = " + this.player);
-    if (this.player != null) {
-      this.player.seekToTime(paramCMTime);
+    Object localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seekToTime() called with: cmTime = [");
+    localStringBuilder.append(paramCMTime);
+    localStringBuilder.append("],player = ");
+    localStringBuilder.append(this.player);
+    Logger.d((String)localObject, localStringBuilder.toString());
+    localObject = this.player;
+    if (localObject != null) {
+      ((Player)localObject).seekToTime(paramCMTime);
     }
   }
   
@@ -534,8 +487,9 @@ public class TAVPlayer
   public void setBgColor(int paramInt)
   {
     this.bgColor = paramInt;
-    if (this.player != null) {
-      this.player.setBgColor(paramInt);
+    Player localPlayer = this.player;
+    if (localPlayer != null) {
+      localPlayer.setBgColor(paramInt);
     }
   }
   
@@ -543,7 +497,13 @@ public class TAVPlayer
   {
     try
     {
-      Logger.d(this.TAG, "setLoopPlay() called with: loopPlay = [" + paramBoolean + "],player = " + this.player);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setLoopPlay() called with: loopPlay = [");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("],player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
       this.loopPlay = paramBoolean;
       if (this.player != null) {
         this.player.setLoop(paramBoolean);
@@ -561,7 +521,13 @@ public class TAVPlayer
   {
     try
     {
-      Logger.d(this.TAG, "setPlayRange() called with: playRange = [" + paramCMTimeRange + "],player = " + this.player);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPlayRange() called with: playRange = [");
+      localStringBuilder.append(paramCMTimeRange);
+      localStringBuilder.append("],player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
       this.playRange = paramCMTimeRange;
       if (this.player != null) {
         this.player.setPlayRange(paramCMTimeRange);
@@ -577,7 +543,13 @@ public class TAVPlayer
   
   public void setPlayerListener(TAVPlayer.PlayerListener paramPlayerListener)
   {
-    Logger.d(this.TAG, "setPlayerListener() called with: playerListener = [" + paramPlayerListener + "],player = " + this.player);
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setPlayerListener() called with: playerListener = [");
+    localStringBuilder.append(paramPlayerListener);
+    localStringBuilder.append("],player = ");
+    localStringBuilder.append(this.player);
+    Logger.d(str, localStringBuilder.toString());
     setPlayerListener(new TAVPlayer.2(this, paramPlayerListener));
   }
   
@@ -585,7 +557,13 @@ public class TAVPlayer
   {
     try
     {
-      Logger.d(this.TAG, "setLoopPlay() called with: loopPlay = [" + this.loopPlay + "],player = " + this.player);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setLoopPlay() called with: loopPlay = [");
+      localStringBuilder.append(this.loopPlay);
+      localStringBuilder.append("],player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
       this.rate = paramFloat;
       if (this.player != null) {
         this.player.setRate(paramFloat);
@@ -608,7 +586,13 @@ public class TAVPlayer
   {
     try
     {
-      Logger.d(this.TAG, "setVolume() called with: volume = [" + paramFloat + "],player = " + this.player);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setVolume() called with: volume = [");
+      localStringBuilder.append(paramFloat);
+      localStringBuilder.append("],player = ");
+      localStringBuilder.append(this.player);
+      Logger.d(str, localStringBuilder.toString());
       this.volume = paramFloat;
       if (this.player != null) {
         this.player.setVolume(paramFloat);
@@ -648,7 +632,16 @@ public class TAVPlayer
   
   public void updateComposition(TAVComposition paramTAVComposition, CMTime paramCMTime, boolean paramBoolean, OnCompositionUpdateListener paramOnCompositionUpdateListener)
   {
-    Logger.d(this.TAG, "updateComposition() called with: tavComposition = [" + paramTAVComposition + "], position = [" + paramCMTime + "], autoPlay = [" + paramBoolean + "]");
+    Object localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateComposition() called with: tavComposition = [");
+    localStringBuilder.append(paramTAVComposition);
+    localStringBuilder.append("], position = [");
+    localStringBuilder.append(paramCMTime);
+    localStringBuilder.append("], autoPlay = [");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    Logger.d((String)localObject, localStringBuilder.toString());
     this.tavComposition = paramTAVComposition;
     this.position = paramCMTime;
     this.compositionUpdateListener = paramOnCompositionUpdateListener;
@@ -664,20 +657,18 @@ public class TAVPlayer
       return;
     }
     paramTAVComposition = buildPlayerItem(paramTAVComposition);
-    if ((this.player == null) || (this.player.isReleased()))
+    localObject = this.player;
+    if ((localObject != null) && (!((Player)localObject).isReleased()))
     {
-      this.player = newPlayer(paramTAVComposition, paramCMTime, paramBoolean);
-      return;
-    }
-    Player localPlayer = this.player;
-    if (paramOnCompositionUpdateListener != null) {}
-    for (;;)
-    {
-      localPlayer.update(paramTAVComposition, paramCMTime, paramOnCompositionUpdateListener);
+      localObject = this.player;
+      if (paramOnCompositionUpdateListener == null) {
+        paramOnCompositionUpdateListener = new TAVPlayer.3(this, paramCMTime, paramBoolean);
+      }
+      ((Player)localObject).update(paramTAVComposition, paramCMTime, paramOnCompositionUpdateListener);
       this.compositionUpdateListener = null;
       return;
-      paramOnCompositionUpdateListener = new TAVPlayer.3(this, paramCMTime, paramBoolean);
     }
+    this.player = newPlayer(paramTAVComposition, paramCMTime, paramBoolean);
   }
   
   public void updateComposition(TAVComposition paramTAVComposition, boolean paramBoolean)
@@ -687,7 +678,7 @@ public class TAVPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVPlayer
  * JD-Core Version:    0.7.0.1
  */

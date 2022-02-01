@@ -8,12 +8,34 @@ public class QGReporter
   
   public static void reportEvent(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    if (sReporterInstance == null)
+    Object localObject = sReporterInstance;
+    if (localObject == null)
     {
-      Log.v("QG", "reportEvent. tag=" + paramString1 + ", mainAction=" + paramString2 + ", op_type=" + paramString3 + ", op_name=" + paramString4 + ", op_in=" + paramInt1 + ", op_result=" + paramInt2 + ", d1=" + paramString5 + ", d2=" + paramString6 + ", d3=" + paramString7 + ", d4=" + paramString8);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportEvent. tag=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", mainAction=");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(", op_type=");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append(", op_name=");
+      ((StringBuilder)localObject).append(paramString4);
+      ((StringBuilder)localObject).append(", op_in=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", op_result=");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(", d1=");
+      ((StringBuilder)localObject).append(paramString5);
+      ((StringBuilder)localObject).append(", d2=");
+      ((StringBuilder)localObject).append(paramString6);
+      ((StringBuilder)localObject).append(", d3=");
+      ((StringBuilder)localObject).append(paramString7);
+      ((StringBuilder)localObject).append(", d4=");
+      ((StringBuilder)localObject).append(paramString8);
+      Log.v("QG", ((StringBuilder)localObject).toString());
       return;
     }
-    sReporterInstance.reportEvent(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramString5, paramString6, paramString7, paramString8);
+    ((QGReporter.QGReporterImpl)localObject).reportEvent(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramString5, paramString6, paramString7, paramString8);
   }
   
   public static void setReporter(QGReporter.QGReporterImpl paramQGReporterImpl)
@@ -23,7 +45,7 @@ public class QGReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.sdk.QGReporter
  * JD-Core Version:    0.7.0.1
  */

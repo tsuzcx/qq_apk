@@ -50,31 +50,25 @@ public class GPUGuideFilterRecoverFilter
     checkGlError("fill uniform  imageWidth");
     paramInt1 = getAlignment16(paramInt2);
     paramInt2 = getAlignment16(paramInt3);
-    if (paramInt1 % 8 == 0)
-    {
+    if (paramInt1 % 8 == 0) {
       paramInt1 /= 8;
-      if (paramInt2 % 8 != 0) {
-        break label282;
-      }
-      paramInt2 /= 8;
-    }
-    for (;;)
-    {
-      GLES31.glDispatchCompute(paramInt1, paramInt2, 1);
-      checkGlError("glDispatchCompute");
-      GLES31.glMemoryBarrier(32);
-      checkGlError("glMemoryBarrier");
-      return;
+    } else {
       paramInt1 = paramInt1 / 8 + 1;
-      break;
-      label282:
+    }
+    if (paramInt2 % 8 == 0) {
+      paramInt2 /= 8;
+    } else {
       paramInt2 = paramInt2 / 8 + 1;
     }
+    GLES31.glDispatchCompute(paramInt1, paramInt2, 1);
+    checkGlError("glDispatchCompute");
+    GLES31.glMemoryBarrier(32);
+    checkGlError("glMemoryBarrier");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.computeShader.GPUGuideFilterRecoverFilter
  * JD-Core Version:    0.7.0.1
  */

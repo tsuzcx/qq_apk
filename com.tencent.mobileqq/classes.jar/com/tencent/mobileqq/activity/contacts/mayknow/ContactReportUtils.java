@@ -39,30 +39,44 @@ public class ContactReportUtils
   
   public static void a()
   {
-    if ((a.a()) && (a.a() > 0L) && (a.b() > 0L)) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((a.a()) && (a.a() > 0L) && (a.b() > 0L)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (bool) {
+      a.a(true);
+    }
+    if (QLog.isColorLevel())
     {
-      if (bool) {
-        a.a(true);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ContactReportUtils", 2, "flushReportRecommendExposeInterval " + bool);
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("flushReportRecommendExposeInterval ");
+      localStringBuilder.append(bool);
+      QLog.d("ContactReportUtils", 2, localStringBuilder.toString());
     }
   }
   
   public static void a(ContactReportUtils.ReportExposeIntervalConfig paramReportExposeIntervalConfig)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactReportUtils", 2, "setReportExposeIntervalConfig: " + paramReportExposeIntervalConfig);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setReportExposeIntervalConfig: ");
+      ((StringBuilder)localObject).append(paramReportExposeIntervalConfig);
+      QLog.d("ContactReportUtils", 2, ((StringBuilder)localObject).toString());
     }
     if (paramReportExposeIntervalConfig != null)
     {
-      Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       if (localObject != null)
       {
-        localObject = BaseApplicationImpl.getApplication().getSharedPreferences("com.tencent.mobileqq.ReportExposeInterval_" + ((QQAppInterface)localObject).getCurrentAccountUin(), 0).edit();
+        BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("com.tencent.mobileqq.ReportExposeInterval_");
+        localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
+        localObject = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).edit();
         ((SharedPreferences.Editor)localObject).putBoolean("ReportExposeInterval_enable", paramReportExposeIntervalConfig.jdField_a_of_type_Boolean);
         ((SharedPreferences.Editor)localObject).putLong("ReportExposeInterval_interval", paramReportExposeIntervalConfig.jdField_a_of_type_Long);
         ((SharedPreferences.Editor)localObject).apply();
@@ -79,58 +93,66 @@ public class ContactReportUtils
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt, ArrayList<String> paramArrayList, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactReportUtils", 2, "reportRecommendList: op_via = " + paramInt + ", " + paramArrayList);
-    }
-    if ((paramQQAppInterface == null) || (paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return;
-    }
-    Object localObject = new StringBuilder();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      String str = (String)paramArrayList.next();
-      if (!TextUtils.isEmpty(str)) {
-        ((StringBuilder)localObject).append(str).append(",");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("reportRecommendList: op_via = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(", ");
+      ((StringBuilder)localObject1).append(paramArrayList);
+      QLog.d("ContactReportUtils", 2, ((StringBuilder)localObject1).toString());
+    }
+    if ((paramQQAppInterface != null) && (paramArrayList != null))
+    {
+      if (paramArrayList.isEmpty()) {
+        return;
       }
-    }
-    localObject = ((StringBuilder)localObject).toString();
-    paramArrayList = (ArrayList<String>)localObject;
-    if (((String)localObject).length() > 0)
-    {
-      paramArrayList = (ArrayList<String>)localObject;
-      if (((String)localObject).endsWith(",")) {
-        paramArrayList = ((String)localObject).substring(0, ((String)localObject).length() - 1);
-      }
-    }
-    localObject = new JSONObject();
-    try
-    {
-      ((JSONObject)localObject).put("exp_uin", paramArrayList);
-      if (paramString1 == null)
+      localObject1 = new StringBuilder();
+      paramArrayList = paramArrayList.iterator();
+      Object localObject2;
+      while (paramArrayList.hasNext())
       {
-        paramArrayList = "";
-        if (paramString2 != null) {
-          break label261;
+        localObject2 = (String)paramArrayList.next();
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          ((StringBuilder)localObject1).append((String)localObject2);
+          ((StringBuilder)localObject1).append(",");
         }
-        paramString1 = "";
-        ReportController.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_update", paramInt, 0, paramArrayList, paramString1, ((JSONObject)localObject).toString(), "");
       }
-    }
-    catch (JSONException paramArrayList)
-    {
-      for (;;)
+      localObject1 = ((StringBuilder)localObject1).toString();
+      paramArrayList = (ArrayList<String>)localObject1;
+      if (((String)localObject1).length() > 0)
+      {
+        paramArrayList = (ArrayList<String>)localObject1;
+        if (((String)localObject1).endsWith(",")) {
+          paramArrayList = ((String)localObject1).substring(0, ((String)localObject1).length() - 1);
+        }
+      }
+      localObject1 = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject1).put("exp_uin", paramArrayList);
+      }
+      catch (JSONException paramArrayList)
       {
         if (QLog.isColorLevel())
         {
-          QLog.i("ContactReportUtils", 2, "reportRecommendList error: " + paramArrayList.getMessage());
-          continue;
-          paramArrayList = paramString1;
-          continue;
-          label261:
-          paramString1 = paramString2;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("reportRecommendList error: ");
+          ((StringBuilder)localObject2).append(paramArrayList.getMessage());
+          QLog.i("ContactReportUtils", 2, ((StringBuilder)localObject2).toString());
         }
       }
+      if (paramString1 == null) {
+        paramArrayList = "";
+      } else {
+        paramArrayList = paramString1;
+      }
+      if (paramString2 == null) {
+        paramString2 = "";
+      }
+      ReportController.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_update", paramInt, 0, paramArrayList, paramString2, ((JSONObject)localObject1).toString(), "");
     }
   }
   
@@ -141,70 +163,76 @@ public class ContactReportUtils
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt1, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<Integer> paramArrayList, ArrayList<byte[]> paramArrayList3, int paramInt2, String paramString, boolean paramBoolean)
   {
-    if ((paramArrayList1 == null) || (paramArrayList2 == null) || (paramArrayList == null) || (paramArrayList3 == null) || (paramArrayList1.isEmpty()) || (paramArrayList1.size() != paramArrayList2.size()) || (paramArrayList1.size() != paramArrayList.size()) || (paramArrayList1.size() != paramArrayList3.size())) {
-      return;
-    }
-    if (paramString == null) {
-      paramString = "";
+    StringBuilder localStringBuilder1;
+    StringBuilder localStringBuilder2;
+    StringBuilder localStringBuilder3;
+    StringBuilder localStringBuilder4;
+    int i;
+    if ((paramArrayList1 != null) && (paramArrayList2 != null) && (paramArrayList != null) && (paramArrayList3 != null) && (!paramArrayList1.isEmpty()) && (paramArrayList1.size() == paramArrayList2.size()) && (paramArrayList1.size() == paramArrayList.size()))
+    {
+      if (paramArrayList1.size() != paramArrayList3.size()) {
+        return;
+      }
+      if (paramString == null) {
+        paramString = "";
+      }
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder3 = new StringBuilder();
+      localStringBuilder4 = new StringBuilder();
+      i = 0;
     }
     for (;;)
     {
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      StringBuilder localStringBuilder3 = new StringBuilder();
-      StringBuilder localStringBuilder4 = new StringBuilder();
-      int i = 0;
-      for (;;)
+      if (i < paramArrayList1.size())
       {
-        if (i < paramArrayList1.size())
+        if (i > 0)
         {
-          if (i > 0)
-          {
-            localStringBuilder1.append(",");
-            localStringBuilder2.append(",");
-            localStringBuilder3.append(",");
-            localStringBuilder4.append(",");
-          }
-          localStringBuilder1.append((String)paramArrayList1.get(i));
-          localStringBuilder2.append((String)paramArrayList2.get(i));
-          localStringBuilder3.append(paramArrayList.get(i));
-          if ((paramArrayList3.get(i) == null) || (((byte[])paramArrayList3.get(i)).length <= 0)) {}
+          localStringBuilder1.append(",");
+          localStringBuilder2.append(",");
+          localStringBuilder3.append(",");
+          localStringBuilder4.append(",");
         }
+        localStringBuilder1.append((String)paramArrayList1.get(i));
+        localStringBuilder2.append((String)paramArrayList2.get(i));
+        localStringBuilder3.append(paramArrayList.get(i));
+        if ((paramArrayList3.get(i) == null) || (((byte[])paramArrayList3.get(i)).length <= 0)) {}
+      }
+      try
+      {
+        localStringBuilder4.append(new String((byte[])paramArrayList3.get(i)));
+        label248:
+        i += 1;
+        continue;
+        paramArrayList1 = new JSONObject();
         try
         {
-          localStringBuilder4.append(new String((byte[])paramArrayList3.get(i)));
-          label245:
-          i += 1;
-          continue;
-          paramArrayList1 = new JSONObject();
-          try
-          {
-            paramArrayList1.put("exp_uin", localStringBuilder1.toString());
-            paramArrayList1.put("exp_reason", localStringBuilder2.toString());
-            paramArrayList1.put("exp_position", localStringBuilder3.toString());
-            paramArrayList1.put("algh_id", localStringBuilder4.toString());
-            if (paramBoolean)
-            {
-              ReportController.a(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_exp", paramInt1, 0, String.valueOf(paramInt2), paramString, paramArrayList1.toString(), "");
-              return;
-            }
-          }
-          catch (JSONException paramArrayList2)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("ContactReportUtils", 2, "reportRecommend error: " + paramArrayList2.getMessage());
-              }
-            }
-            ReportController.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_exp", paramInt1, 0, String.valueOf(paramInt2), paramString, paramArrayList1.toString(), "");
-            return;
-          }
+          paramArrayList1.put("exp_uin", localStringBuilder1.toString());
+          paramArrayList1.put("exp_reason", localStringBuilder2.toString());
+          paramArrayList1.put("exp_position", localStringBuilder3.toString());
+          paramArrayList1.put("algh_id", localStringBuilder4.toString());
         }
-        catch (Throwable localThrowable)
+        catch (JSONException paramArrayList2)
         {
-          break label245;
+          if (QLog.isColorLevel())
+          {
+            paramArrayList = new StringBuilder();
+            paramArrayList.append("reportRecommend error: ");
+            paramArrayList.append(paramArrayList2.getMessage());
+            QLog.i("ContactReportUtils", 2, paramArrayList.toString());
+          }
         }
+        if (paramBoolean)
+        {
+          ReportController.a(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_exp", paramInt1, 0, String.valueOf(paramInt2), paramString, paramArrayList1.toString(), "");
+          return;
+        }
+        ReportController.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_exp", paramInt1, 0, String.valueOf(paramInt2), paramString, paramArrayList1.toString(), "");
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        break label248;
       }
     }
   }
@@ -232,94 +260,82 @@ public class ContactReportUtils
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, byte[] paramArrayOfByte, int paramInt4, String paramString4)
   {
     JSONObject localJSONObject = new JSONObject();
-    for (;;)
+    try
     {
-      try
+      localJSONObject.put("exp_reason", paramString3);
+      localJSONObject.put("exp_position", paramInt3);
+      if (paramArrayOfByte != null)
       {
-        localJSONObject.put("exp_reason", paramString3);
-        localJSONObject.put("exp_position", paramInt3);
-        String str = "";
-        paramString3 = str;
-        if (paramArrayOfByte != null)
-        {
-          paramInt3 = paramArrayOfByte.length;
-          paramString3 = str;
-          if (paramInt3 <= 0) {}
-        }
-      }
-      catch (JSONException paramString3)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("", 2, "reportRecommend error: " + paramString3.getMessage());
-        continue;
-        paramString3 = paramString4;
-        continue;
-      }
-      try
-      {
-        paramString3 = new String(paramArrayOfByte);
-        localJSONObject.put("algh_id", paramString3);
-        if (paramString4 == null)
-        {
-          paramString3 = "";
-          ReportController.b(paramQQAppInterface, "dc00898", "", paramString1, "frd_recom", paramString2, paramInt1, paramInt2, String.valueOf(paramInt4), paramString3, localJSONObject.toString(), "");
-          return;
-        }
-      }
-      catch (Throwable paramString3)
-      {
-        paramString3 = "";
+        paramInt3 = paramArrayOfByte.length;
+        if (paramInt3 <= 0) {}
       }
     }
+    catch (JSONException paramString3)
+    {
+      label58:
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("reportRecommend error: ");
+        paramArrayOfByte.append(paramString3.getMessage());
+        QLog.i("", 2, paramArrayOfByte.toString());
+      }
+    }
+    try
+    {
+      paramString3 = new String(paramArrayOfByte);
+    }
+    catch (Throwable paramString3)
+    {
+      break label58;
+    }
+    paramString3 = "";
+    localJSONObject.put("algh_id", paramString3);
+    if (paramString4 == null) {
+      paramString4 = "";
+    }
+    ReportController.b(paramQQAppInterface, "dc00898", "", paramString1, "frd_recom", paramString2, paramInt1, paramInt2, String.valueOf(paramInt4), paramString4, localJSONObject.toString(), "");
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, byte[] paramArrayOfByte, String paramString4, int paramInt4, String paramString5)
   {
     JSONObject localJSONObject = new JSONObject();
-    for (;;)
+    try
     {
-      try
+      localJSONObject.put("exp_reason", paramString3);
+      localJSONObject.put("exp_position", paramInt3);
+      if (paramArrayOfByte != null)
       {
-        localJSONObject.put("exp_reason", paramString3);
-        localJSONObject.put("exp_position", paramInt3);
-        String str = "";
-        paramString3 = str;
-        if (paramArrayOfByte != null)
-        {
-          paramInt3 = paramArrayOfByte.length;
-          paramString3 = str;
-          if (paramInt3 <= 0) {}
-        }
-      }
-      catch (JSONException paramString3)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("", 2, "reportRecommend error: " + paramString3.getMessage());
-        continue;
-        paramString3 = paramString5;
-        continue;
-      }
-      try
-      {
-        paramString3 = new String(paramArrayOfByte);
-        localJSONObject.put("algh_id", paramString3);
-        localJSONObject.put("item_tag", paramString4);
-        if (paramString5 == null)
-        {
-          paramString3 = "";
-          ReportController.b(paramQQAppInterface, "dc00898", "", paramString1, "frd_recom", paramString2, paramInt1, paramInt2, String.valueOf(paramInt4), paramString3, localJSONObject.toString(), "");
-          return;
-        }
-      }
-      catch (Throwable paramString3)
-      {
-        paramString3 = "";
+        paramInt3 = paramArrayOfByte.length;
+        if (paramInt3 <= 0) {}
       }
     }
+    catch (JSONException paramString3)
+    {
+      label58:
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("reportRecommend error: ");
+        paramArrayOfByte.append(paramString3.getMessage());
+        QLog.i("", 2, paramArrayOfByte.toString());
+      }
+    }
+    try
+    {
+      paramString3 = new String(paramArrayOfByte);
+    }
+    catch (Throwable paramString3)
+    {
+      break label58;
+    }
+    paramString3 = "";
+    localJSONObject.put("algh_id", paramString3);
+    localJSONObject.put("item_tag", paramString4);
+    if (paramString5 == null) {
+      paramString5 = "";
+    }
+    ReportController.b(paramQQAppInterface, "dc00898", "", paramString1, "frd_recom", paramString2, paramInt1, paramInt2, String.valueOf(paramInt4), paramString5, localJSONObject.toString(), "");
   }
   
   public static void b(QQAppInterface paramQQAppInterface, int paramInt1, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<Integer> paramArrayList, ArrayList<byte[]> paramArrayList3, int paramInt2, String paramString)
@@ -343,7 +359,7 @@ public class ContactReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.ContactReportUtils
  * JD-Core Version:    0.7.0.1
  */

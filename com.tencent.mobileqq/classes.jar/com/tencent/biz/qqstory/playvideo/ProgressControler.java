@@ -27,21 +27,21 @@ public class ProgressControler
   
   private void a(long paramLong)
   {
-    int i = 100;
-    int j;
-    if (this.b > 0L)
+    long l = this.b;
+    int i;
+    if (l > 0L)
     {
-      j = (int)paramLong * 100 / (int)this.b;
-      if (j <= 100) {}
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setProgress(0, i);
-      return;
+      int j = (int)paramLong * 100 / (int)l;
       i = j;
-      continue;
+      if (j > 100) {
+        i = 100;
+      }
+    }
+    else
+    {
       i = 0;
     }
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setProgress(0, i);
   }
   
   private void b()
@@ -59,14 +59,17 @@ public class ProgressControler
     this.jdField_a_of_type_Long = paramLong1;
     this.c = this.jdField_a_of_type_Long;
     this.b = paramLong2;
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    Object localObject = this.jdField_a_of_type_JavaUtilTimer;
+    if (localObject != null) {
+      ((Timer)localObject).cancel();
     }
-    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+    localObject = this.jdField_a_of_type_JavaUtilTimerTask;
+    if (localObject != null) {
+      ((TimerTask)localObject).cancel();
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
     }
     if (paramLong2 <= 0L)
     {
@@ -80,7 +83,7 @@ public class ProgressControler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.ProgressControler
  * JD-Core Version:    0.7.0.1
  */

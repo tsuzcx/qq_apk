@@ -13,11 +13,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader;
 import com.tencent.biz.pubaccount.weishi_new.recommend.WSGridBeaconReport;
 import com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
-import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import java.util.ArrayList;
 
 public class WeiShiNoticeView
@@ -47,22 +47,22 @@ public class WeiShiNoticeView
   
   private void a(int paramInt, String paramString)
   {
-    RoundImageView localRoundImageView;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)
     {
-      localRoundImageView = (RoundImageView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if (TextUtils.isEmpty(paramString)) {
-        break label78;
+      RoundImageView localRoundImageView = (RoundImageView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      if (!TextUtils.isEmpty(paramString))
+      {
+        Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846604);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("avatar");
+        localStringBuilder.append(paramInt);
+        WSPicLoader.a(localRoundImageView, paramString, localDrawable, localDrawable, localStringBuilder.toString());
       }
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846724);
-      WeishiUtils.a(localRoundImageView, paramString, localDrawable, localDrawable, "avatar" + paramInt);
-    }
-    for (;;)
-    {
+      else
+      {
+        localRoundImageView.setImageResource(2130846604);
+      }
       localRoundImageView.setVisibility(0);
-      return;
-      label78:
-      localRoundImageView.setImageResource(2130846724);
     }
   }
   
@@ -70,22 +70,22 @@ public class WeiShiNoticeView
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841881);
-      WeishiUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, paramString, localDrawable, localDrawable, "banner");
+      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841770);
+      WSPicLoader.a(this.jdField_a_of_type_AndroidWidgetImageView, paramString, localDrawable, localDrawable, "banner");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841881);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841770);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)findViewById(2131363207));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)findViewById(2131363146));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderColor(Color.parseColor("#c1c1c1"));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderWidth(1);
-    this.b = ((RoundImageView)findViewById(2131363208));
+    this.b = ((RoundImageView)findViewById(2131363147));
     this.b.setBorderColor(Color.parseColor("#c1c1c1"));
     this.b.setBorderWidth(1);
-    this.c = ((RoundImageView)findViewById(2131363209));
+    this.c = ((RoundImageView)findViewById(2131363148));
     this.c.setBorderColor(Color.parseColor("#c1c1c1"));
     this.c.setBorderWidth(1);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setVisibility(8);
@@ -94,16 +94,16 @@ public class WeiShiNoticeView
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.b);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.c);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372413));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372407));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371995));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371989));
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    int i = ScreenUtil.jdField_a_of_type_Int * 120 / 750;
+    int i = ScreenUtil.SCREEN_WIDTH * 120 / 750;
     if (i > 0)
     {
       localLayoutParams.height = i;
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380357));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379678));
   }
   
   public int a()
@@ -118,13 +118,13 @@ public class WeiShiNoticeView
   
   public void a(stNotificationRsp paramstNotificationRsp, String paramString)
   {
-    int i = 0;
     if (paramstNotificationRsp == null)
     {
       a();
       return;
     }
     this.jdField_a_of_type_Int = paramstNotificationRsp.type;
+    int i = 0;
     setVisibility(0);
     WSReportDc00898.a(6, this.jdField_a_of_type_Int, paramstNotificationRsp.cid);
     WSGridBeaconReport.a("gzh_exposure", this.jdField_a_of_type_Int, 0, paramstNotificationRsp.cid, paramstNotificationRsp.trace_id, paramString);
@@ -151,12 +151,21 @@ public class WeiShiNoticeView
       }
       i += 1;
     }
-    WSLog.a("813", "mAvatar1 :" + this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.getVisibility());
-    WSLog.a("813", "mAvatar2 :" + this.b.getVisibility());
-    WSLog.a("813", "mAvatar3 :" + this.c.getVisibility());
+    paramstNotificationRsp = new StringBuilder();
+    paramstNotificationRsp.append("mAvatar1 :");
+    paramstNotificationRsp.append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.getVisibility());
+    WSLog.a("813", paramstNotificationRsp.toString());
+    paramstNotificationRsp = new StringBuilder();
+    paramstNotificationRsp.append("mAvatar2 :");
+    paramstNotificationRsp.append(this.b.getVisibility());
+    WSLog.a("813", paramstNotificationRsp.toString());
+    paramstNotificationRsp = new StringBuilder();
+    paramstNotificationRsp.append("mAvatar3 :");
+    paramstNotificationRsp.append(this.c.getVisibility());
+    WSLog.a("813", paramstNotificationRsp.toString());
   }
   
-  public void onFinishInflate()
+  protected void onFinishInflate()
   {
     super.onFinishInflate();
     b();
@@ -164,7 +173,7 @@ public class WeiShiNoticeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.WeiShiNoticeView
  * JD-Core Version:    0.7.0.1
  */

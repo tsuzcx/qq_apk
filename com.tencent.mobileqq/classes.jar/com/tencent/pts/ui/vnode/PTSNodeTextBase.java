@@ -60,7 +60,22 @@ public abstract class PTSNodeTextBase<T extends TextView>
     if (PTSLog.isDebug())
     {
       paramTextPaint = new StringBuilder();
-      paramTextPaint.append("[getLineSpacing], ").append("lineSpacing = ").append(f2).append(" px, ").append("lineHeight = ").append(paramFloat1).append(" dp, ").append("fontSize = ").append(paramFloat2).append(" sp, ").append("lineHeightPx = ").append(f1).append(" px, ").append("fontSizePx = ").append(PTSDeviceUtil.dp2px(paramFloat2)).append(" px, ");
+      paramTextPaint.append("[getLineSpacing], ");
+      paramTextPaint.append("lineSpacing = ");
+      paramTextPaint.append(f2);
+      paramTextPaint.append(" px, ");
+      paramTextPaint.append("lineHeight = ");
+      paramTextPaint.append(paramFloat1);
+      paramTextPaint.append(" dp, ");
+      paramTextPaint.append("fontSize = ");
+      paramTextPaint.append(paramFloat2);
+      paramTextPaint.append(" sp, ");
+      paramTextPaint.append("lineHeightPx = ");
+      paramTextPaint.append(f1);
+      paramTextPaint.append(" px, ");
+      paramTextPaint.append("fontSizePx = ");
+      paramTextPaint.append(PTSDeviceUtil.dp2px(paramFloat2));
+      paramTextPaint.append(" px, ");
       PTSLog.i("PTSNodeTextBase", paramTextPaint.toString());
     }
     return f2;
@@ -70,10 +85,13 @@ public abstract class PTSNodeTextBase<T extends TextView>
   {
     float f2 = PTSDeviceUtil.getTextWidthOffsetPerLength();
     float f3 = paramInt;
-    if (paramInt > 0) {}
-    for (float f1 = 9.0F / paramInt;; f1 = 0.0F) {
-      return (f1 + f3) * (f2 * paramFloat);
+    float f1;
+    if (paramInt > 0) {
+      f1 = 9.0F / f3;
+    } else {
+      f1 = 0.0F;
     }
+    return f2 * paramFloat * (f3 + f1);
   }
   
   private void updatePtsOnPressColor()
@@ -84,46 +102,45 @@ public abstract class PTSNodeTextBase<T extends TextView>
     }
     int i = ((Integer)localObject).intValue();
     int j = this.textColor;
-    localObject = new int[0];
-    localObject = new ColorStateList(new int[][] { { 16842919 }, localObject }, new int[] { i, j });
+    localObject = new ColorStateList(new int[][] { { 16842919 }, new int[0] }, new int[] { i, j });
     ((TextView)getView()).setTextColor((ColorStateList)localObject);
   }
   
   @SuppressLint({"WrongConstant"})
   private void updateTextAlign(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    TextView localTextView;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      localTextView = (TextView)getView();
-      if (paramString.equalsIgnoreCase("left"))
-      {
-        localTextView.setGravity(19);
-        return;
-      }
-      if (paramString.equalsIgnoreCase("right"))
-      {
-        localTextView.setGravity(21);
-        return;
-      }
-      if (paramString.equalsIgnoreCase("center"))
-      {
-        localTextView.setGravity(17);
-        return;
-      }
-    } while ((!paramString.equalsIgnoreCase("justify")) || (Build.VERSION.SDK_INT < 26));
-    localTextView.setJustificationMode(1);
+    }
+    TextView localTextView = (TextView)getView();
+    if (paramString.equalsIgnoreCase("left"))
+    {
+      localTextView.setGravity(19);
+      return;
+    }
+    if (paramString.equalsIgnoreCase("right"))
+    {
+      localTextView.setGravity(21);
+      return;
+    }
+    if (paramString.equalsIgnoreCase("center"))
+    {
+      localTextView.setGravity(17);
+      return;
+    }
+    if ((paramString.equalsIgnoreCase("justify")) && (Build.VERSION.SDK_INT >= 26)) {
+      localTextView.setJustificationMode(1);
+    }
   }
   
-  protected void onParseValueFinished()
+  public void onParseValueFinished()
   {
-    int i = 0;
     super.onParseValueFinished();
     TextView localTextView = (TextView)getView();
     localTextView.setText(this.content);
-    localTextView.setTextSize(0, this.fontSizePx);
+    float f = this.fontSizePx;
+    int i = 0;
+    localTextView.setTextSize(0, f);
     localTextView.setTextColor(this.textColor);
     localTextView.setMaxLines(this.maxLines);
     localTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -134,25 +151,23 @@ public abstract class PTSNodeTextBase<T extends TextView>
     if (bool1)
     {
       localTypeface = Typeface.DEFAULT_BOLD;
-      if (bool2)
-      {
+      if (bool2) {
         i = 3;
-        localTextView.setTypeface(localTypeface, i);
+      } else {
+        i = 1;
       }
+      localTextView.setTypeface(localTypeface, i);
     }
-    for (;;)
+    else
     {
-      updateTextAlign(this.textAlign);
-      updatePtsOnPressColor();
-      return;
-      i = 1;
-      break;
       localTypeface = Typeface.DEFAULT;
       if (bool2) {
         i = 2;
       }
       localTextView.setTypeface(localTypeface, i);
     }
+    updateTextAlign(this.textAlign);
+    updatePtsOnPressColor();
   }
   
   public void resetAll()
@@ -224,7 +239,7 @@ public abstract class PTSNodeTextBase<T extends TextView>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeTextBase
  * JD-Core Version:    0.7.0.1
  */

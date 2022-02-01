@@ -32,43 +32,38 @@ class TavPlayerProxy$MyPlayerListener
   
   public void a(CMTime paramCMTime1, CMTime paramCMTime2)
   {
-    paramCMTime2 = null;
     try
     {
       paramCMTime1 = ObjConvector.a(paramCMTime1);
-      a("timeChange", "time", paramCMTime1);
-      return;
     }
     catch (JSONException paramCMTime1)
     {
-      for (;;)
-      {
-        paramCMTime1.printStackTrace();
-        paramCMTime1 = paramCMTime2;
-      }
+      paramCMTime1.printStackTrace();
+      paramCMTime1 = null;
     }
+    a("timeChange", "time", paramCMTime1);
   }
   
   public void a(IPlayer.PlayerStatus paramPlayerStatus, Player paramPlayer)
   {
-    switch (TavPlayerProxy.1.a[paramPlayerStatus.ordinal()])
+    int i = TavPlayerProxy.1.a[paramPlayerStatus.ordinal()];
+    if (i != 1)
     {
-    default: 
-      paramPlayerStatus = paramPlayerStatus.name();
+      if (i != 2) {
+        paramPlayerStatus = paramPlayerStatus.name();
+      } else {
+        paramPlayerStatus = "pause";
+      }
     }
-    for (;;)
-    {
-      a("stateChange", "state", paramPlayerStatus);
-      return;
+    else {
       paramPlayerStatus = "play";
-      continue;
-      paramPlayerStatus = "pause";
     }
+    a("stateChange", "state", paramPlayerStatus);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavPlayerProxy.MyPlayerListener
  * JD-Core Version:    0.7.0.1
  */

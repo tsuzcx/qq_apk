@@ -7,11 +7,10 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.config.business.BrowserOpenBean;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.pm.PackageUtil;
@@ -48,36 +47,45 @@ public final class BrowserUtilKt
   
   private static final List<String> a(Context paramContext)
   {
-    localList = (List)new ArrayList();
-    try
+    List localList = (List)new ArrayList();
+    for (;;)
     {
-      paramContext = paramContext.getPackageManager().queryIntentActivities(new Intent("android.intent.action.VIEW", Uri.parse("https://www.qq.com")), 65536);
-      Intrinsics.checkExpressionValueIsNotNull(paramContext, "queryIntentActivities");
-      Iterator localIterator = ((Iterable)paramContext).iterator();
-      if (localIterator.hasNext())
+      try
       {
-        ResolveInfo localResolveInfo = (ResolveInfo)localIterator.next();
-        if (localResolveInfo != null) {}
-        for (paramContext = localResolveInfo.activityInfo;; paramContext = null)
+        paramContext = paramContext.getPackageManager().queryIntentActivities(new Intent("android.intent.action.VIEW", Uri.parse("https://www.qq.com")), 65536);
+        Intrinsics.checkExpressionValueIsNotNull(paramContext, "queryIntentActivities");
+        Iterator localIterator = ((Iterable)paramContext).iterator();
+        if (localIterator.hasNext())
         {
-          if (paramContext != null)
+          Object localObject = (ResolveInfo)localIterator.next();
+          if (localObject != null)
           {
-            paramContext = localResolveInfo.activityInfo.processName;
+            paramContext = ((ResolveInfo)localObject).activityInfo;
+            if (paramContext == null) {
+              continue;
+            }
+            paramContext = ((ResolveInfo)localObject).activityInfo.processName;
             if (!TextUtils.isEmpty((CharSequence)paramContext))
             {
               Intrinsics.checkExpressionValueIsNotNull(paramContext, "pkgName");
               localList.add(paramContext);
             }
-            QLog.d("[BrowserOpt] BrowserUtil", 2, new Object[] { "systemLocalBrowsers: called. ", "pkgName: " + paramContext });
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("pkgName: ");
+            ((StringBuilder)localObject).append(paramContext);
+            QLog.d("[BrowserOpt] BrowserUtil", 2, new Object[] { "systemLocalBrowsers: called. ", ((StringBuilder)localObject).toString() });
           }
-          break;
+        }
+        else
+        {
+          return localList;
         }
       }
-      return localList;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("[BrowserOpt] BrowserUtil", 1, "systemLocalBrowsers failed", (Throwable)paramContext);
+      catch (Exception paramContext)
+      {
+        QLog.e("[BrowserOpt] BrowserUtil", 1, "systemLocalBrowsers failed", (Throwable)paramContext);
+      }
+      paramContext = null;
     }
   }
   
@@ -89,44 +97,52 @@ public final class BrowserUtilKt
     Set localSet = (Set)new LinkedHashSet();
     if (paramBrowserOpenBean != null)
     {
-      Object localObject1 = ((Iterable)paramBrowserOpenBean.a()).iterator();
-      Object localObject2;
-      while (((Iterator)localObject1).hasNext())
+      Object localObject = ((Iterable)paramBrowserOpenBean.a()).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject2 = (BrowserItem)((Iterator)localObject1).next();
-        localList.add(localObject2);
-        localSet.add(((BrowserItem)localObject2).e());
+        BrowserItem localBrowserItem = (BrowserItem)((Iterator)localObject).next();
+        localList.add(localBrowserItem);
+        localSet.add(localBrowserItem.e());
       }
       paramContext = ((Iterable)a(paramContext)).iterator();
-      for (;;)
+      while (paramContext.hasNext())
       {
-        if (paramContext.hasNext())
+        localObject = (String)paramContext.next();
+        boolean bool1;
+        try
         {
-          localObject1 = (String)paramContext.next();
-          try
-          {
-            bool1 = PackageUtil.a((Context)BaseApplication.context, (String)localObject1);
-            boolean bool2 = localSet.contains(localObject1);
-            boolean bool3 = paramBrowserOpenBean.b().contains(localObject1);
-            if ((bool1) && (!bool3) && (!bool2))
-            {
-              localObject2 = PackageUtil.a((Context)BaseApplication.context, (String)localObject1);
-              if (localObject2 != null) {
-                localList.add(new BrowserItem((String)localObject2, "", "", "", (String)localObject1, true));
-              }
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("[BrowserOpt] BrowserUtil", 2, new Object[] { "loadValidBrowserList: called. ", "topBrowsers: " + paramBrowserOpenBean.a() + "  " + "packageInstalled: " + bool1 + "  inBlackList: " + bool3 + " inTopBrowserList: " + bool2 });
-            }
+          bool1 = PackageUtil.a((Context)BaseApplication.context, (String)localObject);
+        }
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("topBrowsers: ");
+          localStringBuilder.append(paramBrowserOpenBean.a());
+          QLog.e("[BrowserOpt] BrowserUtil", 1, new Object[] { "convertToTopBrowserList: called. ", localStringBuilder.toString(), localException });
+          bool1 = false;
+        }
+        boolean bool2 = localSet.contains(localObject);
+        boolean bool3 = paramBrowserOpenBean.b().contains(localObject);
+        if ((bool1) && (!bool3) && (!bool2))
+        {
+          String str = PackageUtil.a((Context)BaseApplication.context, (String)localObject);
+          if (str != null) {
+            localList.add(new BrowserItem(str, "", "", "", (String)localObject, true));
           }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              QLog.e("[BrowserOpt] BrowserUtil", 1, new Object[] { "convertToTopBrowserList: called. ", "topBrowsers: " + paramBrowserOpenBean.a(), localException });
-              boolean bool1 = false;
-            }
-          }
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("topBrowsers: ");
+          ((StringBuilder)localObject).append(paramBrowserOpenBean.a());
+          ((StringBuilder)localObject).append("  ");
+          ((StringBuilder)localObject).append("packageInstalled: ");
+          ((StringBuilder)localObject).append(bool1);
+          ((StringBuilder)localObject).append("  inBlackList: ");
+          ((StringBuilder)localObject).append(bool3);
+          ((StringBuilder)localObject).append(" inTopBrowserList: ");
+          ((StringBuilder)localObject).append(bool2);
+          QLog.d("[BrowserOpt] BrowserUtil", 2, new Object[] { "loadValidBrowserList: called. ", ((StringBuilder)localObject).toString() });
         }
       }
     }
@@ -149,15 +165,23 @@ public final class BrowserUtilKt
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramString1, "downloadUrl");
     Intrinsics.checkParameterIsNotNull(paramString2, "targetUrl");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_open_with_qq_browser_", paramString2);
-    localBundle.putInt("_download_qqbrowser_business_", 1);
-    FileManagerUtil.a(paramContext, paramString1, localBundle);
+    try
+    {
+      paramString1 = new Intent();
+      paramString1.putExtra("url", "https://upage.imtt.qq.com/m_imtt/qq_download_middle_page/real/qq_download_middle_page.html");
+      paramString1.addFlags(268435456);
+      RouteUtils.a(paramContext, paramString1, "/base/browser");
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.e("[BrowserOpt] BrowserUtil", 2, "startActivity er:", paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.browser.BrowserUtilKt
  * JD-Core Version:    0.7.0.1
  */

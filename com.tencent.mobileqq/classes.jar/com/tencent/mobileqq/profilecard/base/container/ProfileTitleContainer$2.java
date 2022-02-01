@@ -18,9 +18,12 @@ class ProfileTitleContainer$2
       paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
       if (ProfileTitleContainer.access$500(this.this$0) == null)
       {
-        View localView = ProfileTitleContainer.access$700(this.this$0, ProfileTitleContainer.access$600(this.this$0), 5, 0, 5, 0);
-        if (localView != null) {
-          ProfileTitleContainer.access$502(this.this$0, new RedTouch(ProfileTitleContainer.access$800(this.this$0), localView).b(53).e(5).a());
+        Object localObject = this.this$0;
+        localObject = ProfileTitleContainer.access$700((ProfileTitleContainer)localObject, ProfileTitleContainer.access$600((ProfileTitleContainer)localObject), 5, 0, 5, 0);
+        if (localObject != null)
+        {
+          ProfileTitleContainer localProfileTitleContainer = this.this$0;
+          ProfileTitleContainer.access$502(localProfileTitleContainer, new RedTouch(ProfileTitleContainer.access$800(localProfileTitleContainer), (View)localObject).b(53).e(5).a());
         }
       }
       if (ProfileTitleContainer.access$500(this.this$0) != null) {
@@ -32,7 +35,7 @@ class ProfileTitleContainer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileTitleContainer.2
  * JD-Core Version:    0.7.0.1
  */

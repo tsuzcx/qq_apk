@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.NativeAd.adapter;
 
-import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;
+import androidx.viewpager.widget.ViewPager.PageTransformer;
 
 class VerticleViewPager$VerticalPageTransformer
   implements ViewPager.PageTransformer
@@ -19,7 +19,7 @@ class VerticleViewPager$VerticalPageTransformer
     {
       paramView.setAlpha(1.0F);
       paramView.setTranslationX(paramView.getWidth() * -paramFloat);
-      paramView.setTranslationY(paramView.getHeight() * paramFloat);
+      paramView.setTranslationY(paramFloat * paramView.getHeight());
       return;
     }
     paramView.setAlpha(0.0F);
@@ -27,7 +27,7 @@ class VerticleViewPager$VerticalPageTransformer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager.VerticalPageTransformer
  * JD-Core Version:    0.7.0.1
  */

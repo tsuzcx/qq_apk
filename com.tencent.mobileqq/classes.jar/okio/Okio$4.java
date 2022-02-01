@@ -29,25 +29,34 @@ final class Okio$4
       this.val$socket.close();
       return;
     }
-    catch (Exception localException)
-    {
-      Okio.logger.log(Level.WARNING, "Failed to close timed out socket " + this.val$socket, localException);
-      return;
-    }
     catch (AssertionError localAssertionError)
     {
       if (Okio.isAndroidGetsocknameError(localAssertionError))
       {
-        Okio.logger.log(Level.WARNING, "Failed to close timed out socket " + this.val$socket, localAssertionError);
+        localLogger = Okio.logger;
+        localLevel = Level.WARNING;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Failed to close timed out socket ");
+        localStringBuilder.append(this.val$socket);
+        localLogger.log(localLevel, localStringBuilder.toString(), localAssertionError);
         return;
       }
       throw localAssertionError;
+    }
+    catch (Exception localException)
+    {
+      Logger localLogger = Okio.logger;
+      Level localLevel = Level.WARNING;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed to close timed out socket ");
+      localStringBuilder.append(this.val$socket);
+      localLogger.log(localLevel, localStringBuilder.toString(), localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.Okio.4
  * JD-Core Version:    0.7.0.1
  */

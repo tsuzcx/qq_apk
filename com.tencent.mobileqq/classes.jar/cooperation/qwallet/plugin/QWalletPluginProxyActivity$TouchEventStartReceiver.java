@@ -21,26 +21,30 @@ public class QWalletPluginProxyActivity$TouchEventStartReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = (QWalletPluginProxyActivity)this.activityWeakReference.get();
-    if ((paramContext == null) || (paramContext.mRealActivity == null) || (paramIntent == null) || (paramContext.isFinishing()) || (paramContext.mIsStop)) {}
-    for (;;)
+    if ((paramContext != null) && (paramContext.mRealActivity != null) && (paramIntent != null) && (!paramContext.isFinishing()))
     {
-      return;
-      if (((paramContext.mRealActivity instanceof BasePluginActivity)) && ("action_touch_start".equals(paramIntent.getAction()))) {
+      if (paramContext.mIsStop) {
+        return;
+      }
+      if (!(paramContext.mRealActivity instanceof BasePluginActivity)) {
+        return;
+      }
+      if ("action_touch_start".equals(paramIntent.getAction())) {
         try
         {
           paramIntent = paramIntent.getStringExtra("url");
-          if (!TextUtils.isEmpty(paramIntent))
+          if (TextUtils.isEmpty(paramIntent)) {
+            return;
+          }
+          paramContext.mIsStartTouchEvent = true;
+          QWalletPluginProxyActivity.openUrl((BasePluginActivity)paramContext.mRealActivity, paramIntent);
+          if (paramContext.touchEventReceiver == null)
           {
-            paramContext.mIsStartTouchEvent = true;
-            QWalletPluginProxyActivity.openUrl((BasePluginActivity)paramContext.mRealActivity, paramIntent);
-            if (paramContext.touchEventReceiver == null)
-            {
-              paramContext.touchEventReceiver = new QWalletPluginProxyActivity.TouchEventReceiver(paramContext);
-              paramIntent = new IntentFilter();
-              paramIntent.addAction("action_touch_event");
-              paramContext.registerReceiver(paramContext.touchEventReceiver, paramIntent);
-              return;
-            }
+            paramContext.touchEventReceiver = new QWalletPluginProxyActivity.TouchEventReceiver(paramContext);
+            paramIntent = new IntentFilter();
+            paramIntent.addAction("action_touch_event");
+            paramContext.registerReceiver(paramContext.touchEventReceiver, paramIntent);
+            return;
           }
         }
         catch (Exception paramContext)
@@ -53,7 +57,7 @@ public class QWalletPluginProxyActivity$TouchEventStartReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPluginProxyActivity.TouchEventStartReceiver
  * JD-Core Version:    0.7.0.1
  */

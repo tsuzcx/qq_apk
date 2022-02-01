@@ -18,12 +18,12 @@ class AudioDecoderTrack$DecoderWrapper
       }
       return;
     }
-    catch (Exception localException) {}catch (Error localError) {}
+    catch (Exception|Error localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.AudioDecoderTrack.DecoderWrapper
  * JD-Core Version:    0.7.0.1
  */

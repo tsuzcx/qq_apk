@@ -37,7 +37,29 @@ public class IPSiteModel$Game
   
   public String toString()
   {
-    return "Game{cover='" + this.cover + '\'' + ", desc='" + this.desc + '\'' + ", id='" + this.id + '\'' + ", jumpUrl='" + this.jumpUrl + '\'' + ", name='" + this.name + '\'' + ", recommDesc='" + this.recommDesc + '\'' + ", gameRiches=" + this.gameRiches + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Game{cover='");
+    localStringBuilder.append(this.cover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", recommDesc='");
+    localStringBuilder.append(this.recommDesc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", gameRiches=");
+    localStringBuilder.append(this.gameRiches);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -53,7 +75,7 @@ public class IPSiteModel$Game
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Game
  * JD-Core Version:    0.7.0.1
  */

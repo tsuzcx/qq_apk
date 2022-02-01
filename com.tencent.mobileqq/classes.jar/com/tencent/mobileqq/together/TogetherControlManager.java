@@ -9,7 +9,7 @@ import android.support.v4.util.LruCache;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import com.tencent.av.camera.QavCameraUsage;
-import com.tencent.avgame.business.AvGameManager;
+import com.tencent.avgame.business.api.IAvGameManager;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
@@ -17,7 +17,6 @@ import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.intervideo.singtogether.SingTogetherParser;
@@ -28,17 +27,25 @@ import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 import com.tencent.mobileqq.listentogether.ListenTogetherUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.tianshu.data.TianShuAdPosItemData;
 import com.tencent.mobileqq.tianshu.data.TianShuGetAdvCallback;
 import com.tencent.mobileqq.tianshu.data.TianShuReportData;
 import com.tencent.mobileqq.together.delegate.TogetherDelegate;
-import com.tencent.mobileqq.troopinfo.TroopUnreadMsgInfo;
+import com.tencent.mobileqq.troop.api.observer.TroopMngObserver;
+import com.tencent.mobileqq.troop.api.observer.TroopPushObserver;
+import com.tencent.mobileqq.troop.unreadmsg.TroopUnreadMsgInfo;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.pb.TianShuAccess.AdItem;
+import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.pb.TianShuAccess.RspEntry;
 import cooperation.vip.tianshu.TianShuManager;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,7 +54,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import javax.annotation.Nullable;
+import mqq.app.AppRuntime;
 import mqq.manager.Manager;
 
 public class TogetherControlManager
@@ -56,10 +63,11 @@ public class TogetherControlManager
   SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private final LruCache<String, Long> jdField_a_of_type_AndroidSupportV4UtilLruCache;
   private SparseArray<TogetherDelegate> jdField_a_of_type_AndroidUtilSparseArray;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new TogetherControlManager.3(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new TogetherControlManager.4(this);
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final TroopBusinessObserver jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver = new TogetherControlManager.2(this);
   private TianShuGetAdvCallback jdField_a_of_type_ComTencentMobileqqTianshuDataTianShuGetAdvCallback = new TogetherControlManager.1(this);
+  private final TroopMngObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver = new TogetherControlManager.3(this);
+  private final TroopPushObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver = new TogetherControlManager.2(this);
   ArrayList<TogetherControlManager.EntryBannerInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   private final HashMap<String, TogetherSession> jdField_a_of_type_JavaUtilHashMap;
   private final Map<String, TogetherControlManager.CacheHolder> jdField_a_of_type_JavaUtilMap;
@@ -78,7 +86,8 @@ public class TogetherControlManager
     a(2, new TogetherWatchingDelegate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     a(4, new TogetherSingDelegate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     c();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplication.getContext().getSharedPreferences("togethers_sp", 0);
   }
@@ -91,16 +100,20 @@ public class TogetherControlManager
   private String a(String paramString)
   {
     if (Integer.parseInt(paramString) == 1) {
-      return HardCodeUtil.a(2131714888);
+      return HardCodeUtil.a(2131714818);
     }
-    return HardCodeUtil.a(2131714881) + ((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(Integer.parseInt(paramString))).a() + HardCodeUtil.a(2131714893);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131714811));
+    localStringBuilder.append(((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(Integer.parseInt(paramString))).a());
+    localStringBuilder.append(HardCodeUtil.a(2131714823));
+    return localStringBuilder.toString();
   }
   
   private String a(String paramString1, String paramString2, String[] paramArrayOfString)
   {
     if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString2) != null)
     {
-      if ((paramString1.equals(paramArrayOfString[2])) && (3 != ((TogetherSession)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).h) && (((TogetherSession)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).h != 0)) {
+      if ((paramString1.equals(paramArrayOfString[2])) && (3 != ((TogetherSession)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).jdField_h_of_type_Int) && (((TogetherSession)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).jdField_h_of_type_Int != 0)) {
         return a(paramArrayOfString[0]);
       }
       if ((paramString1.equals(paramArrayOfString[2])) && (2 == ((TogetherSession)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).i)) {
@@ -120,7 +133,7 @@ public class TogetherControlManager
     }
   }
   
-  private void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, TogetherSession> paramMap, @Nullable Bundle paramBundle)
+  private void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @javax.annotation.Nullable Map<String, TogetherSession> paramMap, @javax.annotation.Nullable Bundle paramBundle)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
@@ -136,17 +149,16 @@ public class TogetherControlManager
   private boolean a(int paramInt, Bundle paramBundle)
   {
     QLog.d("TogetherControlManager", 1, new Object[] { "checkParamsIsValid from=", Integer.valueOf(paramInt) });
-    if (paramInt == 10) {}
-    String str1;
-    String str2;
-    do
-    {
+    if (paramInt == 10) {
       return true;
-      paramInt = paramBundle.getInt("category_id", 0);
-      str1 = paramBundle.getString("video_id", "");
-      str2 = paramBundle.getString("title_name", "");
-      paramBundle = paramBundle.getString("room_cover", "");
-    } while ((paramInt != 0) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(paramBundle)));
+    }
+    paramInt = paramBundle.getInt("category_id", 0);
+    String str1 = paramBundle.getString("video_id", "");
+    String str2 = paramBundle.getString("title_name", "");
+    paramBundle = paramBundle.getString("room_cover", "");
+    if ((paramInt != 0) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(paramBundle))) {
+      return true;
+    }
     QLog.d("TogetherControlManager", 1, new Object[] { "onArkTogetherClick return invalid params videoId=", str1, " categoryId=", Integer.valueOf(paramInt), " titleName:", str2, " roomCover:", paramBundle });
     return false;
   }
@@ -169,8 +181,13 @@ public class TogetherControlManager
   private boolean a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3)
   {
     boolean bool = a(paramInt1, paramInt2, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherControlManager", 2, new Object[] { "join serviceType=", Integer.valueOf(paramInt1), " isOpen=" + bool });
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" isOpen=");
+      localStringBuilder.append(bool);
+      QLog.d("TogetherControlManager", 2, new Object[] { "join serviceType=", Integer.valueOf(paramInt1), localStringBuilder.toString() });
     }
     if (!bool)
     {
@@ -178,22 +195,67 @@ public class TogetherControlManager
       return false;
     }
     paramString = a(paramInt1, paramInt2, paramString);
-    if ((paramString == null) || (paramString.h == 3))
+    if ((paramString != null) && (paramString.jdField_h_of_type_Int != 3))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherControlManager", 2, new Object[] { "join serviceType=", Integer.valueOf(paramInt1), " session=", paramString });
+      if ((paramString.d != paramLong) && (paramLong != 0L))
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" session.identifyId=");
+          localStringBuilder.append(paramString.d);
+          localStringBuilder.append(" msg.identify=");
+          localStringBuilder.append(paramLong);
+          QLog.d("TogetherControlManager", 2, new Object[] { "join serviceType=", Integer.valueOf(paramInt1), localStringBuilder.toString() });
+        }
+        a(paramInt3, paramBaseActivity);
+        return false;
       }
-      return false;
+      return true;
     }
-    if ((paramString.d != paramLong) && (paramLong != 0L))
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherControlManager", 2, new Object[] { "join serviceType=", Integer.valueOf(paramInt1), " session=", paramString });
+    }
+    return false;
+  }
+  
+  private static boolean a(TianShuAccess.RspEntry paramRspEntry)
+  {
+    return (paramRspEntry == null) || (paramRspEntry.value == null) || (paramRspEntry.value.lst.size() == 0) || (paramRspEntry.value.lst.get(0) == null) || (((TianShuAccess.AdItem)paramRspEntry.value.lst.get(0)).argList == null) || (((TianShuAccess.AdItem)paramRspEntry.value.lst.get(0)).argList.get() == null);
+  }
+  
+  @org.jetbrains.annotations.Nullable
+  private static TianShuAccess.RspEntry b(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp, int paramInt)
+  {
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherControlManager", 2, new Object[] { "join serviceType=", Integer.valueOf(paramInt1), " session.identifyId=" + paramString.d + " msg.identify=" + paramLong });
+      if (paramGetAdsRsp == null) {
+        return null;
       }
-      a(paramInt3, paramBaseActivity);
-      return false;
+      if (paramGetAdsRsp.mapAds.has()) {
+        paramGetAdsRsp = paramGetAdsRsp.mapAds.get();
+      } else {
+        paramGetAdsRsp = null;
+      }
+      if (paramGetAdsRsp == null) {
+        return null;
+      }
+      HashMap localHashMap = new HashMap();
+      paramGetAdsRsp = paramGetAdsRsp.iterator();
+      while (paramGetAdsRsp.hasNext())
+      {
+        TianShuAccess.RspEntry localRspEntry = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
+        if ((localRspEntry != null) && (localRspEntry.key.has())) {
+          localHashMap.put(Integer.valueOf(localRspEntry.key.get()), localRspEntry);
+        }
+      }
+      paramGetAdsRsp = (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(paramInt));
+      if (a(paramGetAdsRsp)) {
+        return null;
+      }
+      return paramGetAdsRsp;
     }
-    return true;
+    return null;
   }
   
   private void b(TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
@@ -217,30 +279,27 @@ public class TogetherControlManager
       return 0;
     }
     int i = 0;
-    label18:
-    int j;
-    TogetherDelegate localTogetherDelegate;
-    if (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      j = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-      localTogetherDelegate = (TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if (localTogetherDelegate != null) {
-        break label64;
+      int j = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+      TogetherDelegate localTogetherDelegate = (TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if ((localTogetherDelegate != null) && (a(j, paramInt, paramString))) {
+        return localTogetherDelegate.a();
       }
-    }
-    label64:
-    while (!a(j, paramInt, paramString))
-    {
       i += 1;
-      break label18;
-      break;
     }
-    return localTogetherDelegate.a();
+    return 0;
   }
   
   public long a(int paramInt1, int paramInt2, long paramLong)
   {
-    Object localObject = paramInt1 + "_" + paramInt2 + "_" + paramLong;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = ((StringBuilder)localObject).toString();
     localObject = (Long)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localObject);
     if (localObject == null) {
       return 0L;
@@ -250,10 +309,18 @@ public class TogetherControlManager
   
   public TogetherControlManager.CacheHolder a(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    String str = paramInt1 + "-" + paramInt2 + "-" + paramString + "-" + paramInt3;
-    TogetherControlManager.CacheHolder localCacheHolder = (TogetherControlManager.CacheHolder)this.jdField_a_of_type_JavaUtilMap.get(str);
-    paramString = localCacheHolder;
-    if (localCacheHolder == null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(paramInt3);
+    String str = ((StringBuilder)localObject).toString();
+    localObject = (TogetherControlManager.CacheHolder)this.jdField_a_of_type_JavaUtilMap.get(str);
+    paramString = (String)localObject;
+    if (localObject == null)
     {
       paramString = new TogetherControlManager.CacheHolder();
       this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
@@ -271,12 +338,13 @@ public class TogetherControlManager
   
   public TogetherEntryData a(int paramInt)
   {
-    if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localConcurrentHashMap == null)
     {
       this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
       return null;
     }
-    return (TogetherEntryData)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    return (TogetherEntryData)localConcurrentHashMap.get(Integer.valueOf(paramInt));
   }
   
   public <T extends TogetherParser> T a(int paramInt)
@@ -291,7 +359,14 @@ public class TogetherControlManager
   
   public <T extends TogetherSession> T a(int paramInt1, int paramInt2, String paramString)
   {
-    paramString = (TogetherSession)this.jdField_a_of_type_JavaUtilHashMap.get(paramInt1 + "_" + paramInt2 + "_" + paramString);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    paramString = (TogetherSession)localHashMap.get(localStringBuilder.toString());
     if (paramString != null) {
       return paramString;
     }
@@ -301,17 +376,19 @@ public class TogetherControlManager
   public TroopUnreadMsgInfo a(String paramString)
   {
     Object localObject = BaseApplication.getContext().getSharedPreferences("togethers_sp", 0).getString(paramString, "");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
-    {
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
       return null;
-      localObject = ((String)localObject).split("_");
-    } while (localObject.length != 2);
-    TroopUnreadMsgInfo localTroopUnreadMsgInfo = new TroopUnreadMsgInfo();
-    localTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString = paramString;
-    localTroopUnreadMsgInfo.b = Integer.valueOf(localObject[0]).intValue();
-    localTroopUnreadMsgInfo.jdField_a_of_type_Int = Integer.valueOf(localObject[1]).intValue();
-    return localTroopUnreadMsgInfo;
+    }
+    localObject = ((String)localObject).split("_");
+    if (localObject.length == 2)
+    {
+      TroopUnreadMsgInfo localTroopUnreadMsgInfo = new TroopUnreadMsgInfo();
+      localTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString = paramString;
+      localTroopUnreadMsgInfo.b = Integer.valueOf(localObject[0]).intValue();
+      localTroopUnreadMsgInfo.jdField_a_of_type_Int = Integer.valueOf(localObject[1]).intValue();
+      return localTroopUnreadMsgInfo;
+    }
+    return null;
   }
   
   public String a(int paramInt)
@@ -323,16 +400,17 @@ public class TogetherControlManager
     return localTogetherDelegate.a();
   }
   
-  @Nullable
+  @javax.annotation.Nullable
   public HashMap<String, TogetherSession> a()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      return (HashMap)this.jdField_a_of_type_JavaUtilHashMap.clone();
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap != null) {
+      return (HashMap)localHashMap.clone();
     }
     return new HashMap();
   }
   
-  @Nullable
+  @javax.annotation.Nullable
   public HashMap<String, TogetherSession> a(int paramInt)
   {
     if (this.jdField_a_of_type_JavaUtilHashMap != null)
@@ -342,7 +420,10 @@ public class TogetherControlManager
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        if (str.contains(paramInt + "")) {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("");
+        if (str.contains(localStringBuilder.toString())) {
           localHashMap.put(str, this.jdField_a_of_type_JavaUtilHashMap.get(str));
         }
       }
@@ -363,13 +444,26 @@ public class TogetherControlManager
   
   public void a(int paramInt1, int paramInt2, String paramString, long paramLong)
   {
-    paramString = paramInt1 + "_" + paramInt2 + "_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
     this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, Long.valueOf(paramLong));
   }
   
   public void a(int paramInt1, int paramInt2, String paramString, TogetherSession paramTogetherSession)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramInt1 + "_" + paramInt2 + "_" + paramString, paramTogetherSession);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    localHashMap.put(localStringBuilder.toString(), paramTogetherSession);
   }
   
   public void a(int paramInt, BaseActivity paramBaseActivity)
@@ -386,102 +480,110 @@ public class TogetherControlManager
   {
     int m = 0;
     int k;
-    switch (paramInt)
+    Object localObject;
+    if (paramInt != 7)
     {
-    default: 
       k = m;
+    }
+    else if (paramSessionInfo.jdField_a_of_type_Int != 1)
+    {
+      k = m;
+      if (paramSessionInfo.jdField_a_of_type_Int != 0) {}
+    }
+    else
+    {
+      int i;
+      if (paramSessionInfo.jdField_a_of_type_Int == 1) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      int j = 0;
+      for (;;)
+      {
+        k = m;
+        if (j >= this.jdField_a_of_type_AndroidUtilSparseArray.size()) {
+          break;
+        }
+        k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(j);
+        boolean bool = a(k, i, paramSessionInfo.jdField_a_of_type_JavaLangString);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("TogetherWatch  isOpen=");
+        ((StringBuilder)localObject).append(bool);
+        ((StringBuilder)localObject).append(" service=");
+        ((StringBuilder)localObject).append(k);
+        QLog.d("TogetherControlManager", 1, ((StringBuilder)localObject).toString());
+        if (bool)
+        {
+          a(k, i, paramSessionInfo.jdField_a_of_type_JavaLangString, 1000);
+          k = m;
+          break;
+        }
+        j += 1;
+      }
     }
     while (k < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      TogetherDelegate localTogetherDelegate = (TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(k);
-      if (localTogetherDelegate != null) {
-        localTogetherDelegate.a(paramContext, paramSessionInfo, paramInt);
+      localObject = (TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(k);
+      if (localObject != null) {
+        ((TogetherDelegate)localObject).a(paramContext, paramSessionInfo, paramInt);
       }
       k += 1;
-      continue;
-      if (paramSessionInfo.jdField_a_of_type_Int != 1)
-      {
-        k = m;
-        if (paramSessionInfo.jdField_a_of_type_Int != 0) {
-          break;
-        }
-      }
-      else
-      {
-        int i;
-        label108:
-        int j;
-        if (paramSessionInfo.jdField_a_of_type_Int == 1)
-        {
-          i = 1;
-          j = 0;
-        }
-        for (;;)
-        {
-          k = m;
-          if (j >= this.jdField_a_of_type_AndroidUtilSparseArray.size()) {
-            break;
-          }
-          k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(j);
-          boolean bool = a(k, i, paramSessionInfo.jdField_a_of_type_JavaLangString);
-          QLog.d("TogetherControlManager", 1, "TogetherWatch  isOpen=" + bool + " service=" + k);
-          if (bool)
-          {
-            a(k, i, paramSessionInfo.jdField_a_of_type_JavaLangString, 1000);
-            k = m;
-            break;
-            i = 2;
-            break label108;
-          }
-          j += 1;
-        }
-      }
     }
   }
   
-  public void a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, @Nullable Bundle paramBundle)
+  public void a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, @javax.annotation.Nullable Bundle paramBundle)
   {
     TogetherDelegate localTogetherDelegate = (TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    if (localTogetherDelegate == null) {
-      throw new IllegalArgumentException("TogetherDelegate not register! serviceType: " + paramInt2);
-    }
-    if (paramInt2 == 2)
+    if (localTogetherDelegate != null)
     {
-      if (paramInt3 != 0) {
-        break label129;
+      if (paramInt2 == 2) {
+        if (paramInt3 == 0) {
+          a("video_tab", "clk_panelvideo", 0, paramString);
+        } else if (paramInt3 == 2) {
+          a("video_tab", "clk_setvideo", 0, paramString);
+        }
       }
-      a("video_tab", "clk_panelvideo", 0, paramString);
-    }
-    while (a(paramContext, paramInt2, paramString, paramInt3))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherControlManager", 2, new Object[] { "start serviceType=", Integer.valueOf(paramInt2), " fail because of other together business exist, from=", Integer.valueOf(paramInt3) });
+      if (a(paramContext, paramInt2, paramString, paramInt3))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherControlManager", 2, new Object[] { "start serviceType=", Integer.valueOf(paramInt2), " fail because of other together business exist, from=", Integer.valueOf(paramInt3) });
+        }
+        return;
       }
-      return;
-      label129:
-      if (paramInt3 == 2) {
-        a("video_tab", "clk_setvideo", 0, paramString);
+      a(paramInt2, paramInt1, paramString);
+      if (localTogetherDelegate.a(paramContext, paramString, paramInt1, paramInt3, true, a(), paramBundle))
+      {
+        ((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).a(paramContext, paramString, paramInt1, paramInt3, a(paramInt2), paramBundle);
+        a(paramContext, paramInt2, 1, paramInt3, a(), paramBundle);
+        return;
       }
-    }
-    a(paramInt2, paramInt1, paramString);
-    if (localTogetherDelegate.a(paramContext, paramString, paramInt1, paramInt3, true, a(), paramBundle))
-    {
-      ((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).a(paramContext, paramString, paramInt1, paramInt3, a(paramInt2), paramBundle);
-      a(paramContext, paramInt2, 1, paramInt3, a(), paramBundle);
+      paramString = localTogetherDelegate.a();
+      if (paramString != null)
+      {
+        paramString.show();
+        return;
+      }
+      paramContext = new QQCustomDialog(paramContext, 2131756189);
+      paramContext.setContentView(2131558978);
+      paramString = new StringBuilder();
+      paramString.append(HardCodeUtil.a(2131714796));
+      paramString.append(((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).a());
+      paramString.append(HardCodeUtil.a(2131714798));
+      paramContext.setTitle(paramString.toString());
+      paramString = new StringBuilder();
+      paramString.append(HardCodeUtil.a(2131714807));
+      paramString.append(((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).a());
+      paramString.append(HardCodeUtil.a(2131714816));
+      paramContext.setMessage(paramString.toString());
+      paramContext.setNegativeButton(HardCodeUtil.a(2131714808), new TogetherControlManager.5(this));
+      paramContext.show();
       return;
     }
-    paramString = localTogetherDelegate.a();
-    if (paramString != null)
-    {
-      paramString.show();
-      return;
-    }
-    paramContext = new QQCustomDialog(paramContext, 2131755842);
-    paramContext.setContentView(2131559084);
-    paramContext.setTitle(HardCodeUtil.a(2131714866) + ((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).a() + HardCodeUtil.a(2131714868));
-    paramContext.setMessage(HardCodeUtil.a(2131714877) + ((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).a() + HardCodeUtil.a(2131714886));
-    paramContext.setNegativeButton(HardCodeUtil.a(2131714878), new TogetherControlManager.4(this));
-    paramContext.show();
+    paramContext = new StringBuilder();
+    paramContext.append("TogetherDelegate not register! serviceType: ");
+    paramContext.append(paramInt2);
+    throw new IllegalArgumentException(paramContext.toString());
   }
   
   public void a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, Bundle paramBundle)
@@ -492,122 +594,119 @@ public class TogetherControlManager
     BaseActivity localBaseActivity;
     if (paramBaseActivity == null)
     {
-      paramBaseActivity = BaseActivity.sTopActivity;
-      localBaseActivity = paramBaseActivity;
-      if (paramBaseActivity != null) {
-        break label48;
-      }
-      QLog.d("TogetherControlManager", 1, "joinTogetherAndEnter return null activity");
-    }
-    label48:
-    label377:
-    int i;
-    label410:
-    label423:
-    label441:
-    boolean bool;
-    do
-    {
-      do
+      localBaseActivity = BaseActivity.sTopActivity;
+      if (localBaseActivity == null)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  localBaseActivity = paramBaseActivity;
-                } while (!a(localBaseActivity));
-                if (paramInt1 == 1)
-                {
-                  ListenTogetherUtils.a(localBaseActivity, paramInt2, paramString, 1, true, paramBundle.getString("song_id", ""));
-                  return;
-                }
-                if (paramInt1 != 2) {
-                  break label410;
-                }
-                if (paramInt2 != 2) {
-                  break;
-                }
-              } while (!QLog.isColorLevel());
-              QLog.d("TogetherControlManager", 2, new Object[] { "join serviceType=", Integer.valueOf(2), " sessionType is error" });
-              return;
-              a("video_tab", "clk_videoark", 0, paramString);
-            } while ((a(localBaseActivity, paramInt1, paramInt2, paramString, paramInt3, paramBundle)) || (!a(localBaseActivity, paramInt1, paramInt2, paramString, paramLong, 2131720633)));
-            paramBundle = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
-            paramBaseActivity = (WatchTogetherSession)a(paramInt1, paramInt2, paramString);
-          } while ((paramBundle == null) || (paramBaseActivity == null));
-          paramBundle = TogetherUtils.a(true, paramBundle.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), paramBundle.isAdmin(), paramBundle.troopowneruin, paramString, paramInt3);
-          switch (paramBaseActivity.j)
-          {
-          default: 
-            if (!a(localBaseActivity, 2, paramString, paramInt3)) {
-              break label377;
-            }
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("TogetherControlManager", 2, new Object[] { "start serviceType=", Integer.valueOf(2), " fail because of other together business exist, from=", Integer.valueOf(paramInt3) });
+        QLog.d("TogetherControlManager", 1, "joinTogetherAndEnter return null activity");
         return;
-        QQToast.a(localBaseActivity, 0, 2131693140, 0).a();
-        return;
-        a("video_tab", "clk_videoark_suc", 0, paramString);
-        b(localBaseActivity, paramString, 1, 2, paramInt3, paramBundle);
-        return;
-        a("video_tab", "clk_videoark_suc", 0, paramString);
-        TogetherUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseActivity.k, paramBaseActivity.h, null, paramBundle, 1);
-        return;
-      } while (paramInt1 != 4);
-      if (paramInt2 != 1) {
-        break;
       }
-      i = 1;
-      if (i == 0) {
-        break label565;
-      }
-      a("sing_tab", "clk_singark", 0, paramString);
-      if (!a(localBaseActivity, paramInt1, paramInt2, paramString, paramLong, 2131719434)) {
-        break label597;
-      }
-      i = -1;
-      paramBaseActivity = new Bundle();
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      bool = a(paramInt1, paramInt2, paramString);
-      if (paramInt2 != 1) {
-        break label599;
-      }
-      paramBaseActivity = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
-    } while (paramBaseActivity == null);
-    paramBaseActivity = TogetherUtils.a(bool, paramBaseActivity.isTroopOwner(paramBundle), paramBaseActivity.isAdmin(), paramBaseActivity.troopowneruin, paramString, paramInt3);
-    paramInt1 = paramInt2;
-    paramInt2 = paramInt3;
-    for (;;)
+    }
+    else
     {
-      b(localBaseActivity, paramString, paramInt1, 4, paramInt2, paramBaseActivity);
+      localBaseActivity = paramBaseActivity;
+    }
+    if (!a(localBaseActivity)) {
       return;
-      i = 0;
-      break label423;
-      label565:
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "c2c_AIO", "", "sing_tab", "clk_singark", 0, 1, paramString, "", "", "");
-      break label441;
-      label597:
-      break;
-      label599:
+    }
+    if (paramInt1 == 1)
+    {
+      ListenTogetherUtils.a(localBaseActivity, paramInt2, paramString, 1, true, paramBundle.getString("song_id", ""));
+      return;
+    }
+    if (paramInt1 == 2)
+    {
       if (paramInt2 == 2)
       {
-        paramInt2 = 9;
-        paramBaseActivity = TogetherUtils.a(bool, 9);
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherControlManager", 2, new Object[] { "join serviceType=", Integer.valueOf(2), " sessionType is error" });
+        }
+        return;
+      }
+      a("video_tab", "clk_videoark", 0, paramString);
+      if (a(localBaseActivity, paramInt1, paramInt2, paramString, paramInt3, paramBundle)) {
+        return;
+      }
+      if (!a(localBaseActivity, paramInt1, paramInt2, paramString, paramLong, 2131720348)) {
+        return;
+      }
+      paramBundle = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
+      paramBaseActivity = (WatchTogetherSession)a(paramInt1, paramInt2, paramString);
+      if (paramBundle != null)
+      {
+        if (paramBaseActivity == null) {
+          return;
+        }
+        paramBundle = TogetherUtils.a(true, paramBundle.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), paramBundle.isAdmin(), paramBundle.troopowneruin, paramString, paramInt3);
+        paramInt1 = paramBaseActivity.j;
+        if (paramInt1 != 0)
+        {
+          if (paramInt1 != 1)
+          {
+            if (a(localBaseActivity, 2, paramString, paramInt3))
+            {
+              if (!QLog.isColorLevel()) {
+                return;
+              }
+              QLog.d("TogetherControlManager", 2, new Object[] { "start serviceType=", Integer.valueOf(2), " fail because of other together business exist, from=", Integer.valueOf(paramInt3) });
+              return;
+            }
+            a("video_tab", "clk_videoark_suc", 0, paramString);
+            TogetherUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseActivity.k, paramBaseActivity.jdField_h_of_type_JavaLangString, null, paramBundle, 1);
+            return;
+          }
+          a("video_tab", "clk_videoark_suc", 0, paramString);
+          b(localBaseActivity, paramString, 1, 2, paramInt3, paramBundle);
+          return;
+        }
+        QQToast.a(localBaseActivity, 0, 2131693100, 0).a();
+      }
+    }
+    else if (paramInt1 == 4)
+    {
+      int i;
+      if (paramInt2 == 1) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
+        a("sing_tab", "clk_singark", 0, paramString);
+      } else {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "c2c_AIO", "", "sing_tab", "clk_singark", 0, 1, paramString, "", "", "");
+      }
+      paramBaseActivity = paramString;
+      if (!a(localBaseActivity, paramInt1, paramInt2, paramString, paramLong, 2131719152)) {
+        return;
+      }
+      paramBundle = new Bundle();
+      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      boolean bool1 = a(paramInt1, paramInt2, paramBaseActivity);
+      if (paramInt2 == 1)
+      {
+        paramBaseActivity = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramBaseActivity);
+        if (paramBaseActivity == null) {
+          return;
+        }
+        boolean bool2 = paramBaseActivity.isTroopOwner(str);
+        boolean bool3 = paramBaseActivity.isAdmin();
+        paramBaseActivity = paramBaseActivity.troopowneruin;
+        paramBaseActivity = TogetherUtils.a(bool1, bool2, bool3, paramBaseActivity, paramString, paramInt3);
+        paramInt1 = paramInt2;
+        paramInt2 = paramInt3;
+      }
+      else if (paramInt2 == 2)
+      {
+        paramBaseActivity = TogetherUtils.a(bool1, 9);
         paramInt1 = 2;
+        paramInt2 = 9;
       }
       else
       {
+        paramBaseActivity = paramBundle;
         paramInt1 = paramInt2;
-        paramInt2 = i;
+        paramInt2 = -1;
       }
+      b(localBaseActivity, paramString, paramInt1, 4, paramInt2, paramBaseActivity);
     }
   }
   
@@ -616,40 +715,40 @@ public class TogetherControlManager
     if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
       this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
     }
-    do
+    try
     {
-      try
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel())
+        QLog.d("TogetherControlManager", 2, new Object[] { "putFakePanelData, data.id=", Integer.valueOf(paramTogetherEntryData.b), "data.isGetFakeData=", Boolean.valueOf(paramTogetherEntryData.jdField_a_of_type_Boolean) });
+        if (paramTogetherEntryData.jdField_a_of_type_Boolean)
         {
-          QLog.d("TogetherControlManager", 2, new Object[] { "putFakePanelData, data.id=", Integer.valueOf(paramTogetherEntryData.b), "data.isGetFakeData=", Boolean.valueOf(paramTogetherEntryData.jdField_a_of_type_Boolean) });
-          if (paramTogetherEntryData.jdField_a_of_type_Boolean)
-          {
-            QLog.d("TogetherControlManager", 2, new Object[] { "putFakePanelData, data.numberOfPeople=", Integer.valueOf(paramTogetherEntryData.f) });
-            Iterator localIterator = paramTogetherEntryData.jdField_a_of_type_JavaUtilArrayList.iterator();
-            while (localIterator.hasNext()) {
-              QLog.d("TogetherControlManager", 2, new Object[] { "putFakePanelData, data.uin=", (String)localIterator.next() });
-            }
+          QLog.d("TogetherControlManager", 2, new Object[] { "putFakePanelData, data.numberOfPeople=", Integer.valueOf(paramTogetherEntryData.f) });
+          Iterator localIterator = paramTogetherEntryData.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (localIterator.hasNext()) {
+            QLog.d("TogetherControlManager", 2, new Object[] { "putFakePanelData, data.uin=", (String)localIterator.next() });
           }
         }
-        if (paramTogetherEntryData == null) {
-          continue;
-        }
       }
-      catch (Exception paramTogetherEntryData)
+      if ((paramTogetherEntryData != null) && (paramTogetherEntryData.jdField_a_of_type_JavaUtilArrayList != null) && (paramTogetherEntryData.jdField_a_of_type_JavaUtilArrayList.size() >= 5))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TogetherControlManager", 2, new Object[] { "putFakePanelData error", paramTogetherEntryData.getMessage() });
+        int i = paramTogetherEntryData.f;
+        if (i >= 150)
+        {
+          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramTogetherEntryData.b), paramTogetherEntryData);
+          return;
         }
-        return;
       }
-      if ((paramTogetherEntryData.jdField_a_of_type_JavaUtilArrayList != null) && (paramTogetherEntryData.jdField_a_of_type_JavaUtilArrayList.size() >= 5) && (paramTogetherEntryData.f >= 150)) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherControlManager", 2, "putFakePanelData error data");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("TogetherControlManager", 2, "putFakePanelData error data");
-    return;
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramTogetherEntryData.b), paramTogetherEntryData);
+      return;
+    }
+    catch (Exception paramTogetherEntryData)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherControlManager", 2, new Object[] { "putFakePanelData error", paramTogetherEntryData.getMessage() });
+      }
+    }
   }
   
   public void a(TogetherObserver paramTogetherObserver)
@@ -669,7 +768,12 @@ public class TogetherControlManager
   public void a(TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
     SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("togethers_sp", 0).edit();
-    localEditor.putString(paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, paramTroopUnreadMsgInfo.b + "_" + paramTroopUnreadMsgInfo.jdField_a_of_type_Int);
+    String str = paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramTroopUnreadMsgInfo.b);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramTroopUnreadMsgInfo.jdField_a_of_type_Int);
+    localEditor.putString(str, localStringBuilder.toString());
     localEditor.apply();
   }
   
@@ -695,7 +799,11 @@ public class TogetherControlManager
     localTianShuReportData.d = paramInt;
     localTianShuReportData.jdField_e_of_type_Int = 1;
     localTianShuReportData.g = paramString2;
-    localTianShuReportData.b = (paramString1 + "_" + l);
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("_");
+    paramString2.append(l);
+    localTianShuReportData.b = paramString2.toString();
     localTianShuReportData.jdField_a_of_type_Int = 1;
     localTianShuReportData.jdField_a_of_type_Long = l;
     localTianShuReportData.jdField_e_of_type_JavaLangString = "tianshu.156";
@@ -705,48 +813,47 @@ public class TogetherControlManager
   
   public void a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString3);
-    if (localTroopInfo == null) {
+    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString3);
+    if (localObject == null) {
       return;
     }
     int i = 2;
-    if (localTroopInfo.isAdmin()) {
+    if (((TroopInfo)localObject).isAdmin()) {
       i = 1;
     }
-    if (localTroopInfo.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) {
+    if (((TroopInfo)localObject).isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) {
       i = 0;
     }
-    for (;;)
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", paramString1, paramString2, 0, paramInt, paramString3, "", i + "", "");
-      return;
-    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i);
+    localStringBuilder.append("");
+    ReportController.b((AppRuntime)localObject, "dc00899", "Grp_AIO", "", paramString1, paramString2, 0, paramInt, paramString3, "", localStringBuilder.toString(), "");
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("TogetherControlManager", 1, new Object[] { "requestEntryBanner size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
       }
+      return;
     }
-    long l;
-    do
+    ArrayList localArrayList = new ArrayList();
+    TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
+    localTianShuAdPosItemData.jdField_a_of_type_Int = 236;
+    localTianShuAdPosItemData.b = 1;
+    localArrayList.add(localTianShuAdPosItemData);
+    TianShuManager.getInstance().requestAdv(localArrayList, this.jdField_a_of_type_ComTencentMobileqqTianshuDataTianShuGetAdvCallback);
+    if (paramBoolean)
     {
-      do
-      {
-        return;
-        ArrayList localArrayList = new ArrayList();
-        TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
-        localTianShuAdPosItemData.jdField_a_of_type_Int = 236;
-        localTianShuAdPosItemData.b = 1;
-        localArrayList.add(localTianShuAdPosItemData);
-        TianShuManager.getInstance().requestAdv(localArrayList, this.jdField_a_of_type_ComTencentMobileqqTianshuDataTianShuGetAdvCallback);
-      } while (!paramBoolean);
-      l = System.currentTimeMillis();
+      long l = System.currentTimeMillis();
       this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("banner_inter", l).commit();
-    } while (!QLog.isColorLevel());
-    QLog.d("TogetherControlManager", 1, new Object[] { "saveBannerInterval ", Long.valueOf(l) });
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherControlManager", 1, new Object[] { "saveBannerInterval ", Long.valueOf(l) });
+      }
+    }
   }
   
   public void a(boolean paramBoolean, TogetherSession paramTogetherSession, int paramInt, String paramString)
@@ -756,87 +863,92 @@ public class TogetherControlManager
   
   public boolean a(int paramInt1, int paramInt2, String paramString)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    case 3: 
-    default: 
-    case 1: 
-    case 2: 
-      do
+      if (paramInt1 != 2)
       {
-        do
-        {
-          return false;
-          return ((ListenTogetherManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).a(paramInt2, paramString);
-        } while (paramInt2 != 1);
+        if (paramInt1 == 4) {
+          return TogetherUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramInt2, 16777216);
+        }
+      }
+      else if (paramInt2 == 1)
+      {
         paramString = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramString);
-      } while ((paramString == null) || (!paramString.isWatchTogetherOpen()));
-      return true;
+        if ((paramString != null) && (paramString.isWatchTogetherOpen())) {
+          return true;
+        }
+      }
+      return false;
     }
-    return TogetherUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramInt2, 16777216);
+    return ((ListenTogetherManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).a(paramInt2, paramString);
   }
   
   public boolean a(Context paramContext, int paramInt1, String paramString, int paramInt2)
   {
+    Object localObject;
     if (paramInt1 != 1)
     {
       localObject = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (paramInt2 < 3) {}
-      for (paramInt2 = 1; ((ListenTogetherManager)localObject).a(paramInt2, paramString); paramInt2 = 2)
+      if (paramInt2 < 3) {
+        paramInt2 = 1;
+      } else {
+        paramInt2 = 2;
+      }
+      if (((ListenTogetherManager)localObject).a(paramInt2, paramString))
       {
-        QQToast.a(paramContext, 1, HardCodeUtil.a(2131714883), 0).a();
+        QQToast.a(paramContext, 1, HardCodeUtil.a(2131714813), 0).a();
         return true;
       }
       if (ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a())
       {
-        QQToast.a(paramContext, 1, HardCodeUtil.a(2131714876), 0).a();
+        QQToast.a(paramContext, 1, HardCodeUtil.a(2131714806), 0).a();
         return true;
       }
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isVideoChatting()) || (QavCameraUsage.b(paramContext)))
+    if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isVideoChatting()) && (!QavCameraUsage.b(paramContext)))
     {
-      QQToast.a(paramContext, 1, HardCodeUtil.a(2131714871), 1).a();
-      return true;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isPttRecordingOrPlaying())
-    {
-      QQToast.a(paramContext, 1, HardCodeUtil.a(2131714872), 1).a();
-      return true;
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isCallIdle())
-    {
-      QQToast.a(paramContext, 1, HardCodeUtil.a(2131714890), 1).a();
-      return true;
-    }
-    Object localObject = (AvGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.AV_GAME_MANAGER);
-    if ((localObject != null) && (((AvGameManager)localObject).a()))
-    {
-      QQToast.a(paramContext, 0, 2131690526, 1).a();
-      return true;
-    }
-    localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      String str = (String)((Iterator)localObject).next();
-      String[] arrayOfString = str.split("_");
-      if ((arrayOfString.length > 0) && (paramInt1 != Integer.parseInt(arrayOfString[0])))
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isPttRecordingOrPlaying())
       {
-        str = a(paramString, str, arrayOfString);
-        if (!TextUtils.isEmpty(str))
+        QQToast.a(paramContext, 1, HardCodeUtil.a(2131714802), 1).a();
+        return true;
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isCallIdle())
+      {
+        QQToast.a(paramContext, 1, HardCodeUtil.a(2131714820), 1).a();
+        return true;
+      }
+      localObject = (IAvGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IAvGameManager.class, "");
+      if ((localObject != null) && (((IAvGameManager)localObject).isAvGameRoomExist()))
+      {
+        QQToast.a(paramContext, 0, 2131690451, 1).a();
+        return true;
+      }
+      localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        String[] arrayOfString = str.split("_");
+        if ((arrayOfString.length > 0) && (paramInt1 != Integer.parseInt(arrayOfString[0])))
         {
-          QQToast.a(paramContext, 1, str, 0).a();
-          return true;
+          str = a(paramString, str, arrayOfString);
+          if (!TextUtils.isEmpty(str))
+          {
+            QQToast.a(paramContext, 1, str, 0).a();
+            return true;
+          }
         }
       }
+      return false;
     }
-    return false;
+    QQToast.a(paramContext, 1, HardCodeUtil.a(2131714801), 1).a();
+    return true;
   }
   
   public boolean a(BaseActivity paramBaseActivity)
   {
-    if (!NetworkUtil.g(paramBaseActivity))
+    if (!NetworkUtil.isNetworkAvailable(paramBaseActivity))
     {
-      QQToast.a(paramBaseActivity, 1, paramBaseActivity.getString(2131694678), 0).a();
+      QQToast.a(paramBaseActivity, 1, paramBaseActivity.getString(2131694647), 0).a();
       return false;
     }
     return true;
@@ -845,11 +957,17 @@ public class TogetherControlManager
   public boolean a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
   {
     boolean bool = a(paramInt1, paramInt2, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherControlManager", 2, new Object[] { "reopenTogetherBusinessWhenClose serviceType=", Integer.valueOf(paramInt1), " isOpen=" + bool });
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" isOpen=");
+      localStringBuilder.append(bool);
+      QLog.d("TogetherControlManager", 2, new Object[] { "reopenTogetherBusinessWhenClose serviceType=", Integer.valueOf(paramInt1), localStringBuilder.toString() });
     }
-    if (bool) {}
-    while (!a(paramInt3, paramBundle)) {
+    if (bool) {
+      return false;
+    }
+    if (!a(paramInt3, paramBundle)) {
       return false;
     }
     if (a(paramBaseActivity, paramInt1, paramString, paramInt3))
@@ -876,62 +994,81 @@ public class TogetherControlManager
   
   public void b()
   {
-    if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localConcurrentHashMap == null)
     {
       this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
       return;
     }
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    localConcurrentHashMap.clear();
   }
   
   public void b(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    this.jdField_a_of_type_JavaUtilMap.remove(paramInt1 + "-" + paramInt2 + "-" + paramString + "-" + paramInt3);
+    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramInt3);
+    localMap.remove(localStringBuilder.toString());
   }
   
-  public void b(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, @Nullable Bundle paramBundle)
+  public void b(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, @javax.annotation.Nullable Bundle paramBundle)
   {
     TogetherDelegate localTogetherDelegate = (TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    if (localTogetherDelegate == null) {
-      throw new IllegalArgumentException("TogetherDelegate not register! serviceType: " + paramInt2);
-    }
-    if (paramInt2 == 2)
+    if (localTogetherDelegate != null)
     {
-      if (paramInt3 != 0) {
-        break label129;
+      if (paramInt2 == 2) {
+        if (paramInt3 == 0) {
+          a("video_tab", "clk_panelvideo", 0, paramString);
+        } else if (paramInt3 == 2) {
+          a("video_tab", "clk_setvideo", 0, paramString);
+        }
       }
-      a("video_tab", "clk_panelvideo", 0, paramString);
-    }
-    while (a(paramContext, paramInt2, paramString, paramInt3))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherControlManager", 2, new Object[] { "start serviceType=", Integer.valueOf(paramInt2), " fail because of other together business exist, from=", Integer.valueOf(paramInt3) });
+      if (a(paramContext, paramInt2, paramString, paramInt3))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherControlManager", 2, new Object[] { "start serviceType=", Integer.valueOf(paramInt2), " fail because of other together business exist, from=", Integer.valueOf(paramInt3) });
+        }
+        return;
       }
-      return;
-      label129:
-      if (paramInt3 == 2) {
-        a("video_tab", "clk_setvideo", 0, paramString);
+      a(paramInt2, paramInt1, paramString);
+      if (localTogetherDelegate.a(paramContext, paramString, paramInt1, paramInt3, false, a(), paramBundle))
+      {
+        ((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).b(paramContext, paramString, paramInt1, paramInt3, a(paramInt2), paramBundle);
+        a(paramContext, paramInt2, 3, paramInt3, a(), paramBundle);
+        return;
       }
-    }
-    a(paramInt2, paramInt1, paramString);
-    if (localTogetherDelegate.a(paramContext, paramString, paramInt1, paramInt3, false, a(), paramBundle))
-    {
-      ((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).b(paramContext, paramString, paramInt1, paramInt3, a(paramInt2), paramBundle);
-      a(paramContext, paramInt2, 3, paramInt3, a(), paramBundle);
+      paramString = localTogetherDelegate.a();
+      if (paramString != null)
+      {
+        paramString.show();
+        return;
+      }
+      paramContext = new QQCustomDialog(paramContext, 2131756189);
+      paramContext.setContentView(2131558978);
+      paramString = new StringBuilder();
+      paramString.append(HardCodeUtil.a(2131714812));
+      paramString.append(((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).a());
+      paramString.append(HardCodeUtil.a(2131714800));
+      paramContext.setTitle(paramString.toString());
+      paramString = new StringBuilder();
+      paramString.append(HardCodeUtil.a(2131714797));
+      paramString.append(((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).a());
+      paramString.append(HardCodeUtil.a(2131714809));
+      paramContext.setMessage(paramString.toString());
+      paramContext.setNegativeButton(HardCodeUtil.a(2131714803), new TogetherControlManager.6(this));
+      paramContext.show();
       return;
     }
-    paramString = localTogetherDelegate.a();
-    if (paramString != null)
-    {
-      paramString.show();
-      return;
-    }
-    paramContext = new QQCustomDialog(paramContext, 2131755842);
-    paramContext.setContentView(2131559084);
-    paramContext.setTitle(HardCodeUtil.a(2131714882) + ((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).a() + HardCodeUtil.a(2131714870));
-    paramContext.setMessage(HardCodeUtil.a(2131714867) + ((TogetherDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2)).a() + HardCodeUtil.a(2131714879));
-    paramContext.setNegativeButton(HardCodeUtil.a(2131714873), new TogetherControlManager.5(this));
-    paramContext.show();
+    paramContext = new StringBuilder();
+    paramContext.append("TogetherDelegate not register! serviceType: ");
+    paramContext.append(paramInt2);
+    throw new IllegalArgumentException(paramContext.toString());
   }
   
   public void b(TogetherObserver paramTogetherObserver)
@@ -955,13 +1092,14 @@ public class TogetherControlManager
       }
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherControlManager
  * JD-Core Version:    0.7.0.1
  */

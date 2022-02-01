@@ -36,7 +36,11 @@ public class MsfWtloginHelper
   {
     this.subRemoteWtloginListener = paramIWtloginServiceCallbacker;
     this.processName = MsfSdkUtils.getProcessName(paramContext);
-    this.helperTag = (this.processName + "_" + helperSeq.incrementAndGet());
+    paramIWtloginServiceCallbacker = new StringBuilder();
+    paramIWtloginServiceCallbacker.append(this.processName);
+    paramIWtloginServiceCallbacker.append("_");
+    paramIWtloginServiceCallbacker.append(helperSeq.incrementAndGet());
+    this.helperTag = paramIWtloginServiceCallbacker.toString();
     this.localWtloginHelper = new WtloginHelper(paramContext);
     this.wtServiceBindListener = paramWtServiceBindListener;
     new a(this).start();
@@ -44,8 +48,9 @@ public class MsfWtloginHelper
   
   private void onWtloginServiceConnected()
   {
-    if (this.wtServiceBindListener != null) {
-      this.wtServiceBindListener.onBindFinished();
+    WtServiceBindListener localWtServiceBindListener = this.wtServiceBindListener;
+    if (localWtServiceBindListener != null) {
+      localWtServiceBindListener.onBindFinished();
     }
   }
   
@@ -146,32 +151,38 @@ public class MsfWtloginHelper
   
   public boolean bindWtLoginService(String paramString)
   {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     try
     {
-      ComponentName localComponentName = new ComponentName(BaseApplication.getContext().getPackageName(), paramString);
+      Object localObject = new ComponentName(BaseApplication.getContext().getPackageName(), paramString);
+      bool1 = bool2;
       Intent localIntent = new Intent();
-      localIntent.setComponent(localComponentName);
+      bool1 = bool2;
+      localIntent.setComponent((ComponentName)localObject);
+      bool1 = bool2;
       localIntent.putExtra("to_SenderProcessName", this.processName);
-      bool = BaseApplication.getContext().bindService(localIntent, this.conn, 1);
-      paramString.printStackTrace();
+      bool1 = bool2;
+      bool2 = BaseApplication.getContext().bindService(localIntent, this.conn, 1);
+      bool1 = bool2;
+      localObject = new StringBuilder();
+      bool1 = bool2;
+      ((StringBuilder)localObject).append(" bind ");
+      bool1 = bool2;
+      ((StringBuilder)localObject).append(paramString);
+      bool1 = bool2;
+      ((StringBuilder)localObject).append(" service finished ");
+      bool1 = bool2;
+      ((StringBuilder)localObject).append(bool2);
+      bool1 = bool2;
+      QLog.d("MsfWtloginHelper", 2, ((StringBuilder)localObject).toString());
+      return bool2;
     }
     catch (Exception paramString)
     {
-      try
-      {
-        QLog.d("MsfWtloginHelper", 2, " bind " + paramString + " service finished " + bool);
-        return bool;
-      }
-      catch (Exception paramString)
-      {
-        boolean bool;
-        break label96;
-      }
-      paramString = paramString;
-      bool = false;
+      paramString.printStackTrace();
     }
-    label96:
-    return bool;
+    return bool1;
   }
   
   public String getHelperTag()
@@ -206,13 +217,16 @@ public class MsfWtloginHelper
     }
     catch (Exception localException)
     {
-      QLog.d("MsfWtloginHelper", 2, " unbindService service error " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" unbindService service error ");
+      localStringBuilder.append(localException);
+      QLog.d("MsfWtloginHelper", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.wtlogin.MsfWtloginHelper
  * JD-Core Version:    0.7.0.1
  */

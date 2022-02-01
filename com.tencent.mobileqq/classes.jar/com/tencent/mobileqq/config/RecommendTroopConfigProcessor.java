@@ -25,14 +25,19 @@ public class RecommendTroopConfigProcessor
   @Nullable
   public RecommendTroopConfigProcessor.RecommendTroopConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0)) {
-      return null;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
+    {
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("RecommendTroopConfigProcessor onParsed, content:");
+        localStringBuilder.append(paramArrayOfQConfItem);
+        QLog.d("RecommendTroopConfigProcessor", 2, localStringBuilder.toString());
+      }
+      return RecommendTroopConfigProcessor.RecommendTroopConfigBean.a(paramArrayOfQConfItem);
     }
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor onParsed, content:" + paramArrayOfQConfItem);
-    }
-    return RecommendTroopConfigProcessor.RecommendTroopConfigBean.a(paramArrayOfQConfItem);
+    return null;
   }
   
   public void a(RecommendTroopConfigProcessor.RecommendTroopConfigBean paramRecommendTroopConfigBean)
@@ -72,7 +77,7 @@ public class RecommendTroopConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.RecommendTroopConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

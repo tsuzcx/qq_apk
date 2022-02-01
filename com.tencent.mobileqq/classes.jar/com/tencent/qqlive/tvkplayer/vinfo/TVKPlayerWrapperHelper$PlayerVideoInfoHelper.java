@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class TVKPlayerWrapperHelper$PlayerVideoInfoHelper
 {
-  private static Map<String, String> mGetVInfoKeyMap = null;
+  private static Map<String, String> mGetVInfoKeyMap;
   
   static
   {
@@ -34,30 +34,26 @@ public class TVKPlayerWrapperHelper$PlayerVideoInfoHelper
   
   static void configVideoInfoHEVCLevel(TVKPlayerVideoInfo paramTVKPlayerVideoInfo, String paramString, boolean paramBoolean)
   {
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      TVKPlayerUtils.dealHevcLv(paramTVKPlayerVideoInfo, paramString, paramBoolean);
-      return;
-    }
+    TVKPlayerUtils.dealHevcLv(paramTVKPlayerVideoInfo, paramString, paramBoolean ^ true);
   }
   
   static void configVideoInfoMapToExtralMap(TVKPlayerVideoInfo paramTVKPlayerVideoInfo)
   {
-    if (paramTVKPlayerVideoInfo == null) {}
-    Map localMap;
-    do
-    {
-      return;
-      localMap = paramTVKPlayerVideoInfo.getConfigMap();
-      paramTVKPlayerVideoInfo = paramTVKPlayerVideoInfo.getExtraRequestParamsMap();
-    } while ((localMap == null) || (localMap.isEmpty()));
     if (paramTVKPlayerVideoInfo == null) {
-      paramTVKPlayerVideoInfo = new HashMap();
+      return;
     }
-    for (;;)
+    Map localMap = paramTVKPlayerVideoInfo.getConfigMap();
+    Object localObject = paramTVKPlayerVideoInfo.getExtraRequestParamsMap();
+    if (localMap != null)
     {
-      Object localObject = new HashSet();
+      if (localMap.isEmpty()) {
+        return;
+      }
+      paramTVKPlayerVideoInfo = (TVKPlayerVideoInfo)localObject;
+      if (localObject == null) {
+        paramTVKPlayerVideoInfo = new HashMap();
+      }
+      localObject = new HashSet();
       ((Set)localObject).addAll(mGetVInfoKeyMap.keySet());
       ((Set)localObject).retainAll(localMap.keySet());
       localObject = ((Set)localObject).iterator();
@@ -66,7 +62,6 @@ public class TVKPlayerWrapperHelper$PlayerVideoInfoHelper
         String str = (String)((Iterator)localObject).next();
         paramTVKPlayerVideoInfo.put(mGetVInfoKeyMap.get(str), localMap.get(str));
       }
-      break;
     }
   }
   
@@ -107,12 +102,13 @@ public class TVKPlayerWrapperHelper$PlayerVideoInfoHelper
     int i = 0;
     while (i < m / 1024 + 1)
     {
-      int k = m - i * 1024;
+      int n = i * 1024;
+      int k = m - n;
       int j = k;
       if (k >= 1024) {
         j = 1024;
       }
-      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", paramString.substring(i * 1024, j + i * 1024));
+      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", paramString.substring(n, j + n));
       i += 1;
     }
   }
@@ -132,50 +128,52 @@ public class TVKPlayerWrapperHelper$PlayerVideoInfoHelper
   
   static void videoInfoConfigDefinition(TVKPlaybackParam paramTVKPlaybackParam, TVKPlaybackInfo paramTVKPlaybackInfo)
   {
-    if (paramTVKPlaybackParam == null) {}
-    label171:
-    label174:
-    for (;;)
-    {
+    if (paramTVKPlaybackParam == null) {
       return;
-      if ((paramTVKPlaybackInfo != null) && (paramTVKPlaybackParam.videoInfo() != null))
-      {
-        String str2 = (String)TVKMediaPlayerConfig.PlayerConfig.force_definition.getValue();
-        String str1 = str2;
-        if (str2 == null) {
-          str1 = "";
-        }
-        str2 = paramTVKPlaybackInfo.requestInfo().definition();
-        if ((!TextUtils.isEmpty(str1)) && (TVKUtils.defLevelCompare(str2, str1) > 0))
-        {
-          paramTVKPlaybackInfo.requestInfo().definition(str1);
-          paramTVKPlaybackParam.definition(str1);
-          return;
-        }
-        if (TextUtils.isEmpty(str2))
-        {
-          paramTVKPlaybackParam.definition(str2);
-          return;
-        }
-        if (paramTVKPlaybackParam.videoInfo().getPlayType() == 2)
-        {
-          i = 1;
-          if ((i == 0) && (paramTVKPlaybackParam.videoInfo().getPlayType() != 3)) {
-            break label171;
-          }
-        }
-        for (int i = 1;; i = 0)
-        {
-          if ((i == 0) || (!str2.equalsIgnoreCase("hd")) || (paramTVKPlaybackInfo.requestInfo().formatId() != 1)) {
-            break label174;
-          }
-          paramTVKPlaybackInfo.requestInfo().definition("mp4");
-          paramTVKPlaybackParam.definition("mp4");
-          return;
-          i = 0;
-          break;
-        }
-      }
+    }
+    if (paramTVKPlaybackInfo == null) {
+      return;
+    }
+    if (paramTVKPlaybackParam.videoInfo() == null) {
+      return;
+    }
+    String str2 = (String)TVKMediaPlayerConfig.PlayerConfig.force_definition.getValue();
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    str2 = paramTVKPlaybackInfo.requestInfo().definition();
+    if ((!TextUtils.isEmpty(str1)) && (TVKUtils.defLevelCompare(str2, str1) > 0))
+    {
+      paramTVKPlaybackInfo.requestInfo().definition(str1);
+      paramTVKPlaybackParam.definition(str1);
+      return;
+    }
+    if (TextUtils.isEmpty(str2))
+    {
+      paramTVKPlaybackParam.definition(str2);
+      return;
+    }
+    int i = paramTVKPlaybackParam.videoInfo().getPlayType();
+    int j = 0;
+    if (i == 2) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      i = j;
+      if (paramTVKPlaybackParam.videoInfo().getPlayType() != 3) {}
+    }
+    else
+    {
+      i = 1;
+    }
+    if ((i != 0) && (str2.equalsIgnoreCase("hd")) && (paramTVKPlaybackInfo.requestInfo().formatId() == 1))
+    {
+      paramTVKPlaybackInfo.requestInfo().definition("mp4");
+      paramTVKPlaybackParam.definition("mp4");
     }
   }
   
@@ -188,7 +186,7 @@ public class TVKPlayerWrapperHelper$PlayerVideoInfoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerWrapperHelper.PlayerVideoInfoHelper
  * JD-Core Version:    0.7.0.1
  */

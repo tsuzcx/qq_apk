@@ -29,30 +29,30 @@ public class MessageForWriteTogether
     }
     catch (Exception localException1)
     {
-      try
-      {
-        for (;;)
-        {
-          this.partCnt = Integer.valueOf(getExtInfoFromExtStr("write_together_part_cnt")).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.d("MessageForWriteTogether", 0, "[doParse] padId: " + this.padId + ", baseRev: " + this.baseRev + ", partCnt: " + this.partCnt);
-          }
-          this.isLongMsg = Boolean.parseBoolean(getExtInfoFromExtStr("write_together_long_msg"));
-          return;
-          localException1 = localException1;
-          this.baseRev = 0;
-          QLog.e("MessageForWriteTogether", 1, "[doParse] read from db, baseRev parse error.", localException1);
-        }
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          this.partCnt = 1;
-          QLog.e("MessageForWriteTogether", 1, "[doParse] read from db, partCnt parse error.", localException2);
-        }
-      }
+      this.baseRev = 0;
+      QLog.e("MessageForWriteTogether", 1, "[doParse] read from db, baseRev parse error.", localException1);
     }
+    try
+    {
+      this.partCnt = Integer.valueOf(getExtInfoFromExtStr("write_together_part_cnt")).intValue();
+    }
+    catch (Exception localException2)
+    {
+      this.partCnt = 1;
+      QLog.e("MessageForWriteTogether", 1, "[doParse] read from db, partCnt parse error.", localException2);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[doParse] padId: ");
+      localStringBuilder.append(this.padId);
+      localStringBuilder.append(", baseRev: ");
+      localStringBuilder.append(this.baseRev);
+      localStringBuilder.append(", partCnt: ");
+      localStringBuilder.append(this.partCnt);
+      QLog.d("MessageForWriteTogether", 0, localStringBuilder.toString());
+    }
+    this.isLongMsg = Boolean.parseBoolean(getExtInfoFromExtStr("write_together_long_msg"));
   }
   
   public boolean isFollowMessage()
@@ -62,7 +62,7 @@ public class MessageForWriteTogether
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForWriteTogether
  * JD-Core Version:    0.7.0.1
  */

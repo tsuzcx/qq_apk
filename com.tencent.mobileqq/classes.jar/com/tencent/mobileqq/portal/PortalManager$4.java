@@ -11,10 +11,16 @@ class PortalManager$4
 {
   PortalManager$4(PortalManager paramPortalManager) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead isSuccess = " + paramBoolean + ", mobileNumber = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateCustomHead isSuccess = ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", mobileNumber = ");
+      localStringBuilder.append(paramString);
+      QLog.d("PortalManagerhead", 2, localStringBuilder.toString());
     }
     if (this.a.a.containsKey(paramString)) {
       ThreadManager.getSubThreadHandler().post(new PortalManager.4.1(this, paramString, paramBoolean));
@@ -23,7 +29,7 @@ class PortalManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.4
  * JD-Core Version:    0.7.0.1
  */

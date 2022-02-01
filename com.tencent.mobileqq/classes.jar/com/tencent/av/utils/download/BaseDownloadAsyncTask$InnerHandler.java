@@ -9,9 +9,7 @@ class BaseDownloadAsyncTask$InnerHandler
   public void handleMessage(Message paramMessage)
   {
     BaseDownloadAsyncTask.HYAsyncTaskResult localHYAsyncTaskResult = (BaseDownloadAsyncTask.HYAsyncTaskResult)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     localHYAsyncTaskResult.jdField_a_of_type_ComTencentAvUtilsDownloadBaseDownloadAsyncTask.a(((DownloadParams[])localHYAsyncTaskResult.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
@@ -19,7 +17,7 @@ class BaseDownloadAsyncTask$InnerHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.download.BaseDownloadAsyncTask.InnerHandler
  * JD-Core Version:    0.7.0.1
  */

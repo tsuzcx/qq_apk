@@ -38,47 +38,49 @@ class BindGroupConfirmActivity$1
         if (this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog == null)
         {
           this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this.a);
-          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690723));
-          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690722, new Object[] { this.a.e }), this.a);
+          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690651));
+          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690650, new Object[] { this.a.e }), this.a);
           this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a);
         }
-        if (this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.isShowing()) {
+        if (!this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.isShowing()) {
+          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
+        }
+      }
+      else
+      {
+        int i = paramJSONObject.getInt("ret");
+        if ((i != 10071) && (paramJSONObject.getInt("ret") != 10000))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
+          }
+          paramJSONObject = paramJSONObject.getString("msg");
+          QQToast.a(CommonDataAdapter.a().a(), paramJSONObject, 0).a(this.a.getTitleBarHeight()).show();
           return;
         }
-        this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
-        return;
-      }
-      if ((paramJSONObject.getInt("ret") == 10071) || (paramJSONObject.getInt("ret") == 10000))
-      {
         if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.a, 230, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690726), this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690727), 2131690946, 2131694615, this.a, null);
+          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.a, 230, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690654), this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690655), 2131690874, 2131694583, this.a, null);
         }
         paramJSONObject = paramJSONObject.getString("msg");
         if (!TextUtils.isEmpty(paramJSONObject)) {
           this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramJSONObject);
         }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+        if (!this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
           return;
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-        return;
       }
     }
     catch (Exception paramJSONObject)
     {
       a(paramJSONObject);
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
-    }
-    paramJSONObject = paramJSONObject.getString("msg");
-    QQToast.a(CommonDataAdapter.a().a(), paramJSONObject, 0).a(this.a.getTitleBarHeight()).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ class ForwardPluginShareWebViewHelper$1$1
   
   public void run()
   {
-    if (NetworkUtil.a(BaseApplication.getContext()) != 0) {
-      QQToast.a(this.this$0.a.getApp(), 2, this.a, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299166));
+    if (NetworkUtil.getSystemNetwork(BaseApplication.getContext()) != 0) {
+      QQToast.a(this.this$0.a.getApp(), 2, this.a, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPluginShareWebViewHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

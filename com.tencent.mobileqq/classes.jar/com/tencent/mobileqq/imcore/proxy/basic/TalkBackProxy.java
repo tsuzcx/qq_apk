@@ -11,15 +11,16 @@ public class TalkBackProxy
   
   public static boolean a()
   {
-    if (a != null) {
-      return a.a();
+    TalkBackProxy.Proxy localProxy = a;
+    if (localProxy != null) {
+      return localProxy.a();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.basic.TalkBackProxy
  * JD-Core Version:    0.7.0.1
  */

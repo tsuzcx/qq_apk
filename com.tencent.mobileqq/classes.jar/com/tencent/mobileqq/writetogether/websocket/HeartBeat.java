@@ -33,16 +33,20 @@ public class HeartBeat
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgHeartBeatMsg == null)) {
-      return;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      HeartBeatMsg localHeartBeatMsg = this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgHeartBeatMsg;
+      if (localHeartBeatMsg == null) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketWriteTogetherWebSocketSender.a(localHeartBeatMsg);
+      ThreadManager.getSubThreadHandler().postDelayed(this, 30000L);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketWriteTogetherWebSocketSender.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgHeartBeatMsg);
-    ThreadManager.getSubThreadHandler().postDelayed(this, 30000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.HeartBeat
  * JD-Core Version:    0.7.0.1
  */

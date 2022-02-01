@@ -23,36 +23,34 @@ class OnlineStatusWeatherLocationListener$1
       }
       return;
     }
-    if ((paramPoiBean == null) || (paramPoiBean.adInfo == null))
+    if ((paramPoiBean != null) && (paramPoiBean.adInfo != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. adInfo is null ");
+      boolean bool = TextUtils.isEmpty(paramPoiBean.adInfo.city);
+      String str2 = "";
+      if (bool) {
+        str1 = "";
+      } else {
+        str1 = paramPoiBean.adInfo.city;
       }
-      localWeatherLocationCallback.a(404, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, "", "", OnlineStatusWeatherLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnlineStatusWeatherLocationListener), OnlineStatusWeatherLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnlineStatusWeatherLocationListener));
-      return;
-    }
-    String str1;
-    if (TextUtils.isEmpty(paramPoiBean.adInfo.city))
-    {
-      str1 = "";
       if (!TextUtils.isEmpty(paramPoiBean.adInfo.district)) {
-        break label213;
+        str2 = paramPoiBean.adInfo.district;
       }
-    }
-    label213:
-    for (String str2 = "";; str2 = paramPoiBean.adInfo.district)
-    {
-      str1 = str1 + str2;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str1);
+      localStringBuilder.append(str2);
+      String str1 = localStringBuilder.toString();
       localWeatherLocationCallback.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, paramPoiBean.adInfo.adcode, str1, OnlineStatusWeatherLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnlineStatusWeatherLocationListener), OnlineStatusWeatherLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnlineStatusWeatherLocationListener));
       return;
-      str1 = paramPoiBean.adInfo.city;
-      break;
     }
+    if (QLog.isColorLevel()) {
+      QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. adInfo is null ");
+    }
+    localWeatherLocationCallback.a(404, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, "", "", OnlineStatusWeatherLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnlineStatusWeatherLocationListener), OnlineStatusWeatherLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnlineStatusWeatherLocationListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.OnlineStatusWeatherLocationListener.1
  * JD-Core Version:    0.7.0.1
  */

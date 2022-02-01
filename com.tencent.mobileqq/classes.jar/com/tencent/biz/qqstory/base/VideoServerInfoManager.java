@@ -76,27 +76,24 @@ public class VideoServerInfoManager
     }
     d();
     SLog.d("Q.qqstory.publish:VideoServerInfoManager", "wait start");
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    try
     {
-      try
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         this.jdField_a_of_type_JavaLangObject.wait(30000L);
-        SLog.d("Q.qqstory.publish:VideoServerInfoManager", "wait end");
-        ??? = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo;
-        if (((VideoServerInfoManager.ServerInfo)???).a()) {
-          return ((VideoServerInfoManager.ServerInfo)???).a;
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          SLog.b("Q.qqstory.publish:VideoServerInfoManager", "wait exception", localInterruptedException);
-        }
       }
     }
-    SLog.d("Q.qqstory.publish:VideoServerInfoManager", "return auth key with invalidate");
-    return ((VideoServerInfoManager.ServerInfo)???).a;
+    catch (InterruptedException localInterruptedException)
+    {
+      SLog.b("Q.qqstory.publish:VideoServerInfoManager", "wait exception", localInterruptedException);
+      SLog.d("Q.qqstory.publish:VideoServerInfoManager", "wait end");
+      ??? = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo;
+      if (((VideoServerInfoManager.ServerInfo)???).a()) {
+        return ((VideoServerInfoManager.ServerInfo)???).a;
+      }
+      SLog.d("Q.qqstory.publish:VideoServerInfoManager", "return auth key with invalidate");
+      return ((VideoServerInfoManager.ServerInfo)???).a;
+    }
   }
   
   public String b()
@@ -124,7 +121,7 @@ public class VideoServerInfoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.VideoServerInfoManager
  * JD-Core Version:    0.7.0.1
  */

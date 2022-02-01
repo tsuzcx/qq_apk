@@ -59,40 +59,48 @@ public final class ReportLBSInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.request_id != null) {
-      paramJceOutputStream.write(this.request_id, 0);
+    String str = this.request_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.time, 1);
-    if (this.data_id != null) {
-      paramJceOutputStream.write(this.data_id, 2);
+    str = this.data_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.idx, 3);
     paramJceOutputStream.write(this.ref, 4);
-    if (this.ref_ver != null) {
-      paramJceOutputStream.write(this.ref_ver, 5);
+    str = this.ref_ver;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.iLat, 6);
     paramJceOutputStream.write(this.iLon, 7);
-    if (this.dev != null) {
-      paramJceOutputStream.write(this.dev, 8);
+    str = this.dev;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.os != null) {
-      paramJceOutputStream.write(this.os, 9);
+    str = this.os;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.os_ver != null) {
-      paramJceOutputStream.write(this.os_ver, 10);
+    str = this.os_ver;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.lang != null) {
-      paramJceOutputStream.write(this.lang, 11);
+    str = this.lang;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.other != null) {
-      paramJceOutputStream.write(this.other, 12);
+    str = this.other;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.ReportLBSInfo
  * JD-Core Version:    0.7.0.1
  */

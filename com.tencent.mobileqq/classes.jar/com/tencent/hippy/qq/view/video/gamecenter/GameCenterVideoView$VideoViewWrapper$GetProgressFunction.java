@@ -13,12 +13,13 @@ class GameCenterVideoView$VideoViewWrapper$GetProgressFunction
     if (paramPromise == null) {
       return;
     }
-    paramPromise.resolve(GameCenterVideoView.VideoViewWrapper.access$2000(this.this$1, this.this$1.getCurrentPostion()));
+    paramHippyArray = this.this$1;
+    paramPromise.resolve(GameCenterVideoView.VideoViewWrapper.access$2000(paramHippyArray, paramHippyArray.getCurrentPostion()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoView.VideoViewWrapper.GetProgressFunction
  * JD-Core Version:    0.7.0.1
  */

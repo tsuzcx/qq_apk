@@ -3,6 +3,7 @@ package com.tencent.mobileqq.ptt;
 import android.os.SystemClock;
 
 public class PttAudioDataManager
+  implements IPttAudioDataManager
 {
   public long a;
   protected int[] a;
@@ -16,9 +17,13 @@ public class PttAudioDataManager
   public int a(int paramInt)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    for (;;)
     {
-      if (paramInt < this.jdField_a_of_type_ArrayOfInt[i]) {
+      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      if (i >= arrayOfInt.length) {
+        break;
+      }
+      if (paramInt < arrayOfInt[i]) {
         return i;
       }
       i += 1;
@@ -33,20 +38,19 @@ public class PttAudioDataManager
   
   protected boolean a(long paramLong)
   {
-    if (this.jdField_a_of_type_Long == 0L) {
+    long l = this.jdField_a_of_type_Long;
+    if (l == 0L) {
       this.jdField_a_of_type_Long = paramLong;
+    } else if (paramLong - l < 75L) {
+      return false;
     }
-    while (paramLong - this.jdField_a_of_type_Long >= 75L)
-    {
-      this.jdField_a_of_type_Long = paramLong;
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_Long = paramLong;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.PttAudioDataManager
  * JD-Core Version:    0.7.0.1
  */

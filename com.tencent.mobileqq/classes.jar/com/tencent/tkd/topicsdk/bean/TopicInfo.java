@@ -1,5 +1,6 @@
 package com.tencent.tkd.topicsdk.bean;
 
+import .r8.java8methods.utility.Long.hashCode.IJ;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -77,8 +78,10 @@ public final class TopicInfo
     }
     catch (JSONException paramString)
     {
-      TLog.d("TopicInfo", "constructor input an invalid jsonObject string!");
+      label114:
+      break label114;
     }
+    TLog.d("TopicInfo", "constructor input an invalid jsonObject string!");
   }
   
   public int describeContents()
@@ -88,9 +91,10 @@ public final class TopicInfo
   
   public boolean equals(@Nullable Object paramObject)
   {
+    boolean bool3 = paramObject instanceof TopicInfo;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramObject instanceof TopicInfo))
+    if (bool3)
     {
       bool1 = bool2;
       if (this.topicId == ((TopicInfo)paramObject).topicId) {
@@ -140,7 +144,7 @@ public final class TopicInfo
   
   public int hashCode()
   {
-    return Long.hashCode(this.topicId);
+    return .r8.java8methods.utility.Long.hashCode.IJ.hashCode(this.topicId);
   }
   
   public final void setAllowSubmit(boolean paramBoolean)
@@ -203,7 +207,7 @@ public final class TopicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.TopicInfo
  * JD-Core Version:    0.7.0.1
  */

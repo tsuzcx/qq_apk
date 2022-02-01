@@ -12,21 +12,22 @@ class k$1
   public int a(View paramView1, View paramView2)
   {
     Integer localInteger = HippyViewGroupController.getViewZIndex(paramView1);
-    paramView1 = localInteger;
+    paramView1 = Integer.valueOf(0);
+    Object localObject = localInteger;
     if (localInteger == null) {
-      paramView1 = Integer.valueOf(0);
+      localObject = paramView1;
     }
     localInteger = HippyViewGroupController.getViewZIndex(paramView2);
     paramView2 = localInteger;
     if (localInteger == null) {
-      paramView2 = Integer.valueOf(0);
+      paramView2 = paramView1;
     }
-    return paramView1.intValue() - paramView2.intValue();
+    return ((Integer)localObject).intValue() - paramView2.intValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.k.1
  * JD-Core Version:    0.7.0.1
  */

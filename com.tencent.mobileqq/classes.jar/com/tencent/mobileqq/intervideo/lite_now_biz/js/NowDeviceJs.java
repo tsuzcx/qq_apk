@@ -42,21 +42,20 @@ public class NowDeviceJs
     try
     {
       localJSONObject.put("type", i);
-      this.customWebView.callJs(paramMap, new String[] { localJSONObject.toString() });
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("NowDeviceJs", 1, "getNetworkType error: " + localJSONException);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNetworkType error: ");
+      localStringBuilder.append(localJSONException);
+      QLog.e("NowDeviceJs", 1, localStringBuilder.toString());
     }
+    this.customWebView.callJs(paramMap, new String[] { localJSONObject.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.NowDeviceJs
  * JD-Core Version:    0.7.0.1
  */

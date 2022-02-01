@@ -12,14 +12,22 @@ class RegisterActivity$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, HardCodeUtil.a(2131713300) + HardCodeUtil.a(2131713321) + this.jdField_a_of_type_JavaLangString + HardCodeUtil.a(2131713299) + this.b + HardCodeUtil.a(2131713292));
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131713268));
+    localStringBuilder.append(HardCodeUtil.a(2131713289));
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(HardCodeUtil.a(2131713267));
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(HardCodeUtil.a(2131713260));
+    RegisterActivity.a(paramDialogInterface, localStringBuilder.toString());
     RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
     RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, 60000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterActivity.4
  * JD-Core Version:    0.7.0.1
  */

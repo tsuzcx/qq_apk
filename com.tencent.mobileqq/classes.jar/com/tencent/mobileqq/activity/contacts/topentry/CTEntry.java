@@ -21,38 +21,43 @@ public class CTEntry
   
   public boolean a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    boolean bool2;
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool1 = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    boolean bool2 = true;
+    boolean bool3 = bool1 ^ true;
+    bool1 = bool3;
+    if (bool3) {
+      bool1 = this.c;
+    }
+    if (bool1)
     {
-      bool2 = bool1;
-      if (bool1) {
-        bool2 = this.c;
-      }
-      if (!bool2) {
-        return bool2;
-      }
-      switch (this.jdField_a_of_type_Int)
+      int i = this.jdField_a_of_type_Int;
+      bool1 = bool2;
+      if (i != 1)
       {
-      default: 
-        if (this.jdField_a_of_type_Short == 0) {
-          break;
+        bool1 = bool2;
+        if (i != 2)
+        {
+          bool1 = bool2;
+          if (i != 3)
+          {
+            bool1 = bool2;
+            if (i != 4)
+            {
+              bool1 = bool2;
+              if (i != 5) {
+                return this.jdField_a_of_type_Short != 0;
+              }
+            }
+          }
         }
-      case 1: 
-      case 2: 
-      case 3: 
-      case 4: 
-      case 5: 
-        return true;
       }
     }
-    return false;
-    return bool2;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntry
  * JD-Core Version:    0.7.0.1
  */

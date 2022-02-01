@@ -20,65 +20,57 @@ public final class Exceptions
   {
     HashSet localHashSet = new HashSet();
     int i = 0;
+    Throwable localThrowable;
     for (;;)
     {
-      Throwable localThrowable = paramThrowable1;
-      if (paramThrowable1.getCause() != null)
-      {
-        if (i >= 25) {
-          return;
-        }
-        paramThrowable1 = paramThrowable1.getCause();
-        if (localHashSet.contains(paramThrowable1.getCause())) {
-          localThrowable = paramThrowable1;
-        }
+      localThrowable = paramThrowable1;
+      if (paramThrowable1.getCause() == null) {
+        break;
       }
-      else
+      if (i >= 25) {
+        return;
+      }
+      paramThrowable1 = paramThrowable1.getCause();
+      if (localHashSet.contains(paramThrowable1.getCause()))
       {
-        try
-        {
-          localThrowable.initCause(paramThrowable2);
-          return;
-        }
-        catch (Throwable paramThrowable1)
-        {
-          return;
-        }
+        localThrowable = paramThrowable1;
+        break;
       }
       localHashSet.add(paramThrowable1.getCause());
       i += 1;
     }
+    try
+    {
+      localThrowable.initCause(paramThrowable2);
+      return;
+    }
+    catch (Throwable paramThrowable1) {}
   }
   
   public static Throwable getFinalCause(Throwable paramThrowable)
   {
     int i = 0;
-    for (;;)
+    while (paramThrowable.getCause() != null)
     {
-      Object localObject = paramThrowable;
-      if (paramThrowable.getCause() != null)
-      {
-        if (i >= 25) {
-          localObject = new RuntimeException("Stack too deep to get final cause");
-        }
-      }
-      else {
-        return localObject;
+      if (i >= 25) {
+        return new RuntimeException("Stack too deep to get final cause");
       }
       paramThrowable = paramThrowable.getCause();
       i += 1;
     }
+    return paramThrowable;
   }
   
   public static RuntimeException propagate(Throwable paramThrowable)
   {
-    if ((paramThrowable instanceof RuntimeException)) {
-      throw ((RuntimeException)paramThrowable);
+    if (!(paramThrowable instanceof RuntimeException))
+    {
+      if ((paramThrowable instanceof Error)) {
+        throw ((Error)paramThrowable);
+      }
+      throw new RuntimeException(paramThrowable);
     }
-    if ((paramThrowable instanceof Error)) {
-      throw ((Error)paramThrowable);
-    }
-    throw new RuntimeException(paramThrowable);
+    throw ((RuntimeException)paramThrowable);
   }
   
   public static void throwIfAny(List<? extends Throwable> paramList)
@@ -88,13 +80,14 @@ public final class Exceptions
       if (paramList.size() == 1)
       {
         paramList = (Throwable)paramList.get(0);
-        if ((paramList instanceof RuntimeException)) {
-          throw ((RuntimeException)paramList);
+        if (!(paramList instanceof RuntimeException))
+        {
+          if ((paramList instanceof Error)) {
+            throw ((Error)paramList);
+          }
+          throw new RuntimeException(paramList);
         }
-        if ((paramList instanceof Error)) {
-          throw ((Error)paramList);
-        }
-        throw new RuntimeException(paramList);
+        throw ((RuntimeException)paramList);
       }
       throw new CompositeException("Multiple exceptions", paramList);
     }
@@ -102,24 +95,30 @@ public final class Exceptions
   
   public static void throwIfFatal(Throwable paramThrowable)
   {
-    if ((paramThrowable instanceof OnErrorNotImplementedException)) {
-      throw ((OnErrorNotImplementedException)paramThrowable);
-    }
-    if ((paramThrowable instanceof OnErrorFailedException)) {
+    if (!(paramThrowable instanceof OnErrorNotImplementedException))
+    {
+      if (!(paramThrowable instanceof OnErrorFailedException))
+      {
+        if (!(paramThrowable instanceof StackOverflowError))
+        {
+          if (!(paramThrowable instanceof VirtualMachineError))
+          {
+            if (!(paramThrowable instanceof ThreadDeath))
+            {
+              if (!(paramThrowable instanceof LinkageError)) {
+                return;
+              }
+              throw ((LinkageError)paramThrowable);
+            }
+            throw ((ThreadDeath)paramThrowable);
+          }
+          throw ((VirtualMachineError)paramThrowable);
+        }
+        throw ((StackOverflowError)paramThrowable);
+      }
       throw ((OnErrorFailedException)paramThrowable);
     }
-    if ((paramThrowable instanceof StackOverflowError)) {
-      throw ((StackOverflowError)paramThrowable);
-    }
-    if ((paramThrowable instanceof VirtualMachineError)) {
-      throw ((VirtualMachineError)paramThrowable);
-    }
-    if ((paramThrowable instanceof ThreadDeath)) {
-      throw ((ThreadDeath)paramThrowable);
-    }
-    if ((paramThrowable instanceof LinkageError)) {
-      throw ((LinkageError)paramThrowable);
-    }
+    throw ((OnErrorNotImplementedException)paramThrowable);
   }
   
   @Experimental
@@ -145,7 +144,7 @@ public final class Exceptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.exceptions.Exceptions
  * JD-Core Version:    0.7.0.1
  */

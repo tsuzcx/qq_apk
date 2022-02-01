@@ -48,17 +48,19 @@ public final class Visitor
     paramJceOutputStream.write(this.lUIN, 0);
     paramJceOutputStream.write(this.stFace, 1);
     paramJceOutputStream.write(this.iFaceID, 2);
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 3);
+    Object localObject = this.strNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.vecNick != null) {
-      paramJceOutputStream.write(this.vecNick, 4);
+    localObject = this.vecNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.Visitor
  * JD-Core Version:    0.7.0.1
  */

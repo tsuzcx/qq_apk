@@ -42,36 +42,39 @@ class DraggableGridView$GridListViewAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    Object localObject;
     if (getItemViewType(paramInt) == DraggableGridView.a())
     {
       if (paramView == null)
       {
-        localObject = (MeasureGridView)LayoutInflater.from(this.a.getContext()).inflate(2131560730, paramViewGroup, false);
+        localObject = (MeasureGridView)LayoutInflater.from(this.a.getContext()).inflate(2131560618, paramViewGroup, false);
         ((MeasureGridView)localObject).setClickable(false);
         ((MeasureGridView)localObject).setNumColumns(DraggableGridView.a(this.a));
         ((MeasureGridView)localObject).setAdapter(new DraggableGridView.GridViewAdapter(this.a, paramInt / 2));
         paramView = (View)localObject;
       }
-      for (;;)
+      else
       {
-        ((MeasureGridView)localObject).setTag(Integer.valueOf(paramInt / 2));
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
         localObject = (MeasureGridView)paramView;
         ((DraggableGridView.GridViewAdapter)((MeasureGridView)localObject).getAdapter()).a(paramInt / 2);
       }
+      ((MeasureGridView)localObject).setTag(Integer.valueOf(paramInt / 2));
     }
-    if (paramView == null) {
-      paramView = DraggableGridView.a(this.a).a(LayoutInflater.from(this.a.getContext()), paramInt / 2, paramViewGroup);
-    }
-    for (Object localObject = paramView;; localObject = paramView)
+    else
     {
-      if (DraggableGridView.a(this.a) != null) {
-        DraggableGridView.a(this.a).a(paramView, paramInt / 2);
+      localObject = paramView;
+      if (paramView == null) {
+        localObject = DraggableGridView.a(this.a).a(LayoutInflater.from(this.a.getContext()), paramInt / 2, paramViewGroup);
       }
       paramView = (View)localObject;
-      break;
+      if (DraggableGridView.a(this.a) != null)
+      {
+        DraggableGridView.a(this.a).a((View)localObject, paramInt / 2);
+        paramView = (View)localObject;
+      }
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public int getViewTypeCount()
@@ -81,7 +84,7 @@ class DraggableGridView$GridListViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DraggableGridView.GridListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

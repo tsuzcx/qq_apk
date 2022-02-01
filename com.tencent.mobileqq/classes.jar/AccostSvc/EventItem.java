@@ -33,14 +33,15 @@ public final class EventItem
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.eventType, 0);
-    if (this.eventData != null) {
-      paramJceOutputStream.write(this.eventData, 1);
+    byte[] arrayOfByte = this.eventData;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.EventItem
  * JD-Core Version:    0.7.0.1
  */

@@ -23,24 +23,29 @@ class LBSDetetor$LBSLocationListener
     {
       double d1 = paramSosoLbsInfo.mLocation.mLat02;
       double d2 = paramSosoLbsInfo.mLocation.mLon02;
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+      if (QLog.isColorLevel())
+      {
+        paramSosoLbsInfo = new StringBuilder();
+        paramSosoLbsInfo.append("onLocationUpdate() latitude=");
+        paramSosoLbsInfo.append(d1);
+        paramSosoLbsInfo.append(" longitude=");
+        paramSosoLbsInfo.append(d2);
+        QLog.d("LBSDetetor", 2, paramSosoLbsInfo.toString());
       }
       LBSDetetor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor, d1, d2, this.jdField_a_of_type_Int);
-    }
-    do
-    {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
-      }
-    } while ((LBSDetetor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor) == null) || (!LBSDetetor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor).hasMessages(this.jdField_a_of_type_Int)));
-    LBSDetetor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor, false, null, this.jdField_a_of_type_Int);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
+    }
+    if ((LBSDetetor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor) != null) && (LBSDetetor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor).hasMessages(this.jdField_a_of_type_Int))) {
+      LBSDetetor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor, false, null, this.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.LBSDetetor.LBSLocationListener
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import com.dataline.activities.PrinterActivity;
 import com.dataline.util.PrinterSessionAdapter;
@@ -61,7 +62,6 @@ public class PrinterHandler
   
   public int a()
   {
-    int i = 0;
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager();
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     if (DataLineMsgProxy.a((BaseProxyManager)localObject2, "mr_dataline_printer")) {
@@ -75,10 +75,14 @@ public class PrinterHandler
     ((EntityManager)localObject1).close();
     if (localObject2 != null)
     {
-      int j = ((List)localObject2).size();
-      i = 0;
-      while (i < ((List)localObject2).size())
+      int k = ((List)localObject2).size();
+      int i = 0;
+      for (;;)
       {
+        j = k;
+        if (i >= ((List)localObject2).size()) {
+          break;
+        }
         localObject1 = (PrinterItemMsgRecord)((List)localObject2).get(i);
         if (((PrinterItemMsgRecord)localObject1).status < 10) {
           ((PrinterItemMsgRecord)localObject1).status = 11;
@@ -86,9 +90,9 @@ public class PrinterHandler
         this.jdField_a_of_type_JavaUtilArrayList.add(0, localObject1);
         i += 1;
       }
-      i = j;
     }
-    return i;
+    int j = 0;
+    return j;
   }
   
   public void a()
@@ -98,98 +102,123 @@ public class PrinterHandler
   
   public void a(int paramInt, Session paramSession, double paramDouble, boolean paramBoolean)
   {
-    if (!DataLineHandler.a(paramSession, "printer")) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramInt)
-          {
-          default: 
-            return;
-          case 0: 
-            paramSession = (PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramSession.uSessionID));
-          }
-        } while (paramSession == null);
-        paramSession.status = 2;
-        paramSession.progress = (0.7D * paramDouble);
-        return;
-        l1 = this.jdField_a_of_type_Long + 1L;
-        this.jdField_a_of_type_Long = l1;
-        localObject = new PrinterItemMsgRecord(l1);
-        ((PrinterItemMsgRecord)localObject).uSessionID = paramSession.uSessionID;
-        if (QLog.isColorLevel()) {
-          QLog.d("dataline.Printer", 2, "获得printID=" + ((PrinterItemMsgRecord)localObject).uSessionID + ", path=" + paramSession.strFilePathSrc);
-        }
-        ((PrinterItemMsgRecord)localObject).filename = paramSession.strFilePathSrc;
-        ((PrinterItemMsgRecord)localObject).time = MessageCache.a();
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        b((PrinterItemMsgRecord)localObject);
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((PrinterItemMsgRecord)localObject).uSessionID), localObject);
-        return;
-        paramSession = (PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramSession.uSessionID));
-      } while (paramSession == null);
-      paramSession.status = 2;
-      paramSession.progress = ((float)(0.7D * paramDouble));
+    if (!DataLineHandler.a(paramSession, "printer")) {
       return;
-      paramSession = (PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramSession.uSessionID));
-    } while (paramSession == null);
-    long l2;
-    if (paramBoolean)
+    }
+    if (paramInt != 0)
     {
-      paramSession.progress = 0.699999988079071D;
-      paramSession.status = 2;
-      localObject = new Timer();
-      paramSession.mTimer_for_Print = ((Timer)localObject);
-      localObject = new PrinterHandler.2(this, paramSession.uSessionID, (Timer)localObject);
-      l2 = MessageCache.a();
-      if (l2 < paramSession.time) {
-        break label455;
+      if (paramInt != 1)
+      {
+        long l1;
+        Object localObject;
+        StringBuilder localStringBuilder;
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return;
+          }
+          l1 = this.jdField_a_of_type_Long + 1L;
+          this.jdField_a_of_type_Long = l1;
+          localObject = new PrinterItemMsgRecord(l1);
+          ((PrinterItemMsgRecord)localObject).uSessionID = paramSession.uSessionID;
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("获得printID=");
+            localStringBuilder.append(((PrinterItemMsgRecord)localObject).uSessionID);
+            localStringBuilder.append(", path=");
+            localStringBuilder.append(paramSession.strFilePathSrc);
+            QLog.d("dataline.Printer", 2, localStringBuilder.toString());
+          }
+          ((PrinterItemMsgRecord)localObject).filename = paramSession.strFilePathSrc;
+          ((PrinterItemMsgRecord)localObject).time = MessageCache.a();
+          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          b((PrinterItemMsgRecord)localObject);
+          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((PrinterItemMsgRecord)localObject).uSessionID), localObject);
+          return;
+        }
+        paramSession = (PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramSession.uSessionID));
+        if (paramSession != null)
+        {
+          if (paramBoolean)
+          {
+            paramSession.progress = 0.699999988079071D;
+            paramSession.status = 2;
+            localObject = new Timer();
+            paramSession.mTimer_for_Print = ((Timer)localObject);
+            localObject = new PrinterHandler.2(this, paramSession.uSessionID, (Timer)localObject);
+            long l2 = MessageCache.a();
+            if (l2 >= paramSession.time) {
+              l1 = l2 - paramSession.time;
+            } else {
+              l1 = l2;
+            }
+            l1 = Math.max(Math.min(l1, 1800L), 60L);
+            if (QLog.isDevelopLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("printID=");
+              localStringBuilder.append(paramSession.uSessionID);
+              localStringBuilder.append(", 当前时间[");
+              localStringBuilder.append(l2);
+              localStringBuilder.append("], 开始时间[");
+              localStringBuilder.append(paramSession.time);
+              localStringBuilder.append("], 超时时间[");
+              localStringBuilder.append(l1);
+              QLog.d("dataline.Printer", 4, localStringBuilder.toString());
+            }
+            paramSession.mTimer_for_Print.schedule((TimerTask)localObject, l1 * 1000L);
+            return;
+          }
+          paramSession.status = 12;
+          c(paramSession);
+        }
+      }
+      else
+      {
+        paramSession = (PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramSession.uSessionID));
+        if (paramSession != null)
+        {
+          paramSession.status = 2;
+          paramSession.progress = ((float)(paramDouble * 0.7D));
+        }
       }
     }
-    label455:
-    for (long l1 = l2 - paramSession.time;; l1 = l2)
+    else
     {
-      l1 = Math.max(Math.min(l1, 1800L), 60L);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("dataline.Printer", 4, "printID=" + paramSession.uSessionID + ", 当前时间[" + l2 + "], 开始时间[" + paramSession.time + "], 超时时间[" + l1);
+      paramSession = (PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramSession.uSessionID));
+      if (paramSession != null)
+      {
+        paramSession.status = 2;
+        paramSession.progress = (paramDouble * 0.7D);
       }
-      paramSession.mTimer_for_Print.schedule((TimerTask)localObject, l1 * 1000L);
-      return;
-      paramSession.status = 12;
-      c(paramSession);
-      return;
     }
   }
   
-  public void a(BaseActivity paramBaseActivity, String paramString)
+  public void a(Context paramContext, String paramString)
   {
     if (FileManagerUtil.a())
     {
-      if (FileUtils.a(paramString) > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize())
+      if (FileUtils.getFileSizes(paramString) > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize())
       {
-        FMDialogUtil.a(paramBaseActivity, 2131692609, 2131692614, new PrinterHandler.4(this, paramBaseActivity, paramString));
+        FMDialogUtil.a(paramContext, 2131692561, 2131692566, new PrinterHandler.4(this, paramContext, paramString));
         return;
       }
-      localIntent = new Intent(paramBaseActivity, PrinterActivity.class);
+      localIntent = new Intent(paramContext, PrinterActivity.class);
       localIntent.putExtra(AlbumConstants.h, 55);
       localArrayList = new ArrayList();
       localArrayList.add(paramString);
       localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-      paramBaseActivity.startActivity(localIntent);
+      paramContext.startActivity(localIntent);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
       return;
     }
-    Intent localIntent = new Intent(paramBaseActivity, PrinterActivity.class);
+    Intent localIntent = new Intent(paramContext, PrinterActivity.class);
     localIntent.putExtra(AlbumConstants.h, 55);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString);
     localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-    paramBaseActivity.startActivity(localIntent);
+    paramContext.startActivity(localIntent);
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
   }
   
@@ -209,99 +238,107 @@ public class PrinterHandler
   
   public void a(DataLineHandler paramDataLineHandler, msg_comm.Msg paramMsg, C2CType0x211_SubC2CType0x9.MsgBody paramMsgBody)
   {
-    boolean bool = false;
-    int j;
-    int i;
-    long l;
-    switch (paramMsgBody.uint32_CMD.get())
+    int i = paramMsgBody.uint32_CMD.get();
+    boolean bool = true;
+    if (i != 2)
     {
-    case 4: 
-    case 5: 
-    default: 
-    case 2: 
-      do
+      if (i != 3)
       {
-        return;
-        if (QLog.isDevelopLevel()) {
-          QLog.d("dataline.Printer", 4, "收到pc的打印机列表");
+        if (i != 6) {
+          return;
         }
-        paramMsg = (PrinterStatusHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.PRINTER_STATUS_HANDLER);
-        paramMsg.a(false);
-        paramMsgBody = (C2CType0x211_SubC2CType0x9.MsgBody.MsgPrinter)paramMsgBody.msg_printer.get();
-        if (paramMsgBody != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("dataline.Printer", 2, "收到pc的打印机列表, msgPrinter为空");
-      return;
-      this.jdField_a_of_type_JavaUtilList = paramMsgBody.rpt_string_printer.get();
-      this.b = paramMsgBody.rpt_msg_support_file_info.get();
-      if ((((RegisterProxySvcPackHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).a() != 0) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-        paramMsg.a(true);
-      }
-      paramDataLineHandler.a(12, false, null);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004022", "0X8004022", 0, 0, "", "", "", "");
-      return;
-    case 3: 
-      j = -1;
-      paramMsg = (C2CType0x211_SubC2CType0x9.MsgBody.MsgPrinter)paramMsgBody.msg_printer.get();
-      if (paramMsg == null)
-      {
-        i = j;
-        if (!QLog.isColorLevel()) {
-          break label581;
-        }
-        QLog.d("dataline.Printer", 2, "收到pc的打印结果, msgPrinter为空");
-        l = 0L;
-        i = j;
-      }
-      break;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("dataline.Printer", 2, "收到pc的打印结果, print_result = " + i + ", print_id = " + l);
-      }
-      new Intent().putExtra("sPrintResult", i);
-      if (i == 0) {
-        bool = true;
-      }
-      paramDataLineHandler.a(18, bool, Long.valueOf(l));
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004021", "0X8004021", (int)l, i, "", "", "", "");
-      return;
-      j = paramMsg.uint32_print_result.get();
-      paramMsg = paramMsg.rpt_uint64_session_id.get();
-      if ((paramMsg == null) || (paramMsg.size() == 0))
-      {
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("dataline.Printer", 2, "收到pc的打印结果, rpt_uint64_session_id为空. print_result = " + j);
-          l = 0L;
-          i = j;
-        }
-      }
-      else
-      {
-        l = ((Long)paramMsg.get(0)).longValue();
-        i = j;
-        continue;
         paramMsg = (C2CType0x211_SubC2CType0x9.MsgBody.MsgPrinter)paramMsgBody.msg_printer.get();
         if (paramMsg == null)
         {
-          if (!QLog.isColorLevel()) {
-            break;
+          if (QLog.isColorLevel()) {
+            QLog.d("dataline.Printer", 2, "收到pc的打印机结果, msgPrinter为空");
           }
-          QLog.d("dataline.Printer", 2, "收到pc的打印机结果, msgPrinter为空");
           return;
         }
         paramMsg = (C2CType0x211_SubC2CType0x9.MsgBody.HPPrinterStateInfo)paramMsg.hp_printer_state_info.get();
         paramDataLineHandler.notifyUI(19, true, new Object[] { Long.valueOf(paramMsg.uint64_printer_din.get()), paramMsg.str_printer_qr_pic_url.get(), paramMsg.str_printer_qr_open_url.get(), paramMsg.str_printer_tip_url.get() });
         return;
       }
-      label581:
-      l = 0L;
+      int j = -1;
+      long l2 = 0L;
+      paramMsg = (C2CType0x211_SubC2CType0x9.MsgBody.MsgPrinter)paramMsgBody.msg_printer.get();
+      long l1;
+      if (paramMsg == null)
+      {
+        i = j;
+        l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("dataline.Printer", 2, "收到pc的打印结果, msgPrinter为空");
+          i = j;
+          l1 = l2;
+        }
+      }
+      else
+      {
+        j = paramMsg.uint32_print_result.get();
+        paramMsg = paramMsg.rpt_uint64_session_id.get();
+        if ((paramMsg != null) && (paramMsg.size() != 0))
+        {
+          l1 = ((Long)paramMsg.get(0)).longValue();
+          i = j;
+        }
+        else
+        {
+          i = j;
+          l1 = l2;
+          if (QLog.isColorLevel())
+          {
+            paramMsg = new StringBuilder();
+            paramMsg.append("收到pc的打印结果, rpt_uint64_session_id为空. print_result = ");
+            paramMsg.append(j);
+            QLog.d("dataline.Printer", 2, paramMsg.toString());
+            l1 = l2;
+            i = j;
+          }
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramMsg = new StringBuilder();
+        paramMsg.append("收到pc的打印结果, print_result = ");
+        paramMsg.append(i);
+        paramMsg.append(", print_id = ");
+        paramMsg.append(l1);
+        QLog.d("dataline.Printer", 2, paramMsg.toString());
+      }
+      new Intent().putExtra("sPrintResult", i);
+      if (i != 0) {
+        bool = false;
+      }
+      paramDataLineHandler.a(18, bool, Long.valueOf(l1));
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004021", "0X8004021", (int)l1, i, "", "", "", "");
+      return;
     }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("dataline.Printer", 4, "收到pc的打印机列表");
+    }
+    paramMsg = (PrinterStatusHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.PRINTER_STATUS_HANDLER);
+    paramMsg.a(false);
+    paramMsgBody = (C2CType0x211_SubC2CType0x9.MsgBody.MsgPrinter)paramMsgBody.msg_printer.get();
+    if (paramMsgBody == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("dataline.Printer", 2, "收到pc的打印机列表, msgPrinter为空");
+      }
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList = paramMsgBody.rpt_string_printer.get();
+    this.b = paramMsgBody.rpt_msg_support_file_info.get();
+    if (((RegisterProxySvcPackHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).a() != 0)
+    {
+      paramMsgBody = this.jdField_a_of_type_JavaUtilList;
+      if ((paramMsgBody != null) && (paramMsgBody.size() > 0)) {
+        paramMsg.a(true);
+      }
+    }
+    paramDataLineHandler.a(12, false, null);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004022", "0X8004022", 0, 0, "", "", "", "");
   }
   
   public void a(PrinterItemMsgRecord paramPrinterItemMsgRecord)
@@ -319,78 +356,96 @@ public class PrinterHandler
   
   public void a(Long paramLong, boolean paramBoolean)
   {
-    PrinterItemMsgRecord localPrinterItemMsgRecord = (PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilHashMap.get(paramLong);
+    PrinterItemMsgRecord localPrinterItemMsgRecord2 = (PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilHashMap.get(paramLong);
+    PrinterItemMsgRecord localPrinterItemMsgRecord1 = localPrinterItemMsgRecord2;
     int i;
-    if (localPrinterItemMsgRecord == null)
+    if (localPrinterItemMsgRecord2 == null)
     {
       i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-      if (i >= 0) {
-        if (((PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uSessionID == paramLong.longValue()) {
-          localPrinterItemMsgRecord = (PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      for (;;)
+      {
+        localPrinterItemMsgRecord1 = localPrinterItemMsgRecord2;
+        if (i < 0) {
+          break;
         }
+        if (((PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uSessionID == paramLong.longValue())
+        {
+          localPrinterItemMsgRecord1 = (PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          break;
+        }
+        i -= 1;
       }
     }
-    for (;;)
+    if (localPrinterItemMsgRecord1 != null)
     {
-      if (localPrinterItemMsgRecord != null) {
-        if (!paramBoolean) {
-          break label136;
-        }
+      if (paramBoolean) {
+        i = 10;
+      } else {
+        i = 11;
       }
-      label136:
-      for (i = 10;; i = 11)
+      localPrinterItemMsgRecord1.status = i;
+      localPrinterItemMsgRecord1.progress = 1.0D;
+      if (localPrinterItemMsgRecord1.mTimer_for_Print != null)
       {
-        localPrinterItemMsgRecord.status = i;
-        localPrinterItemMsgRecord.progress = 1.0D;
-        if (localPrinterItemMsgRecord.mTimer_for_Print != null)
-        {
-          localPrinterItemMsgRecord.mTimer_for_Print.cancel();
-          localPrinterItemMsgRecord.mTimer_for_Print = null;
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramLong);
-        c(localPrinterItemMsgRecord);
-        return;
-        i -= 1;
-        break;
+        localPrinterItemMsgRecord1.mTimer_for_Print.cancel();
+        localPrinterItemMsgRecord1.mTimer_for_Print = null;
       }
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramLong);
+      c(localPrinterItemMsgRecord1);
     }
   }
   
   public String[] a()
   {
-    if ((((PrinterStatusHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.PRINTER_STATUS_HANDLER)).a()) && (this.b != null))
+    if (((PrinterStatusHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.PRINTER_STATUS_HANDLER)).a())
     {
-      String[] arrayOfString = new String[this.b.size()];
-      int i = this.b.size() - 1;
-      while (i >= 0)
+      localObject = this.b;
+      if (localObject != null)
       {
-        arrayOfString[i] = ("." + ((C2CType0x211_SubC2CType0x9.MsgBody.SupportFileInfo)this.b.get(i)).str_file_suffix.get());
-        i -= 1;
+        String[] arrayOfString = new String[((List)localObject).size()];
+        int i = this.b.size() - 1;
+        for (;;)
+        {
+          localObject = arrayOfString;
+          if (i < 0) {
+            break;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(".");
+          ((StringBuilder)localObject).append(((C2CType0x211_SubC2CType0x9.MsgBody.SupportFileInfo)this.b.get(i)).str_file_suffix.get());
+          arrayOfString[i] = ((StringBuilder)localObject).toString();
+          i -= 1;
+        }
       }
-      return arrayOfString;
     }
-    return null;
+    Object localObject = null;
+    return localObject;
   }
   
   public int b()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      for (;;)
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList.size() <= 5) || (((PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilArrayList.get(0)).status == 2)) {
-          return this.jdField_a_of_type_JavaUtilArrayList.size();
-        }
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      while ((this.jdField_a_of_type_JavaUtilArrayList.size() > 5) && (((PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilArrayList.get(0)).status != 2)) {
         this.jdField_a_of_type_JavaUtilArrayList.remove(0);
       }
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
     }
     int i = a();
     if (this.jdField_a_of_type_Long == 0L)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        this.jdField_a_of_type_Long = ((PrinterItemMsgRecord)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1)).msgId;
+      Object localObject;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        localObject = this.jdField_a_of_type_JavaUtilArrayList;
+        this.jdField_a_of_type_Long = ((PrinterItemMsgRecord)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1)).msgId;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("dataline.Printer", 2, "初始化PrinterItemMsgRecord的msgid为" + this.jdField_a_of_type_Long);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("初始化PrinterItemMsgRecord的msgid为");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+        QLog.d("dataline.Printer", 2, ((StringBuilder)localObject).toString());
       }
     }
     return i;
@@ -413,7 +468,7 @@ public class PrinterHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.PrinterHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.mobileqq.emosm.api.IEmoticonFromGroupDBManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingManagerService;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.net.URL;
@@ -19,12 +20,12 @@ class EmoticonFromGroupManager$5
   
   public void run()
   {
-    FavroamingDBManager localFavroamingDBManager = (FavroamingDBManager)EmoticonFromGroupManager.a(this.this$0).getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
-    FavroamingManager localFavroamingManager = (FavroamingManager)EmoticonFromGroupManager.a(this.this$0).getManager(QQManagerFactory.FAV_ROAMING_MANAGER);
+    IFavroamingDBManagerService localIFavroamingDBManagerService = (IFavroamingDBManagerService)EmoticonFromGroupManager.a(this.this$0).getRuntimeService(IFavroamingDBManagerService.class);
+    IFavroamingManagerService localIFavroamingManagerService = (IFavroamingManagerService)EmoticonFromGroupManager.a(this.this$0).getRuntimeService(IFavroamingManagerService.class);
     if (QLog.isColorLevel()) {
       QLog.i("EmoticonFromGroup_Manager", 2, "Call getEmoticonDataList from onUploadPic.");
     }
-    Object localObject1 = localFavroamingDBManager.a();
+    Object localObject1 = localIFavroamingDBManagerService.getEmoticonDataList();
     ArrayList localArrayList = new ArrayList(30);
     if (localObject1 != null)
     {
@@ -59,63 +60,64 @@ class EmoticonFromGroupManager$5
     }
     j = localArrayList.size();
     i = 0;
-    Object localObject2;
-    URLDrawable localURLDrawable;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      Object localObject2 = (EmoticonFromGroupEntity)this.a.get(i);
+      localObject1 = (CustomEmotionData)localArrayList.get(i);
+      URLDrawable localURLDrawable = (URLDrawable)this.this$0.a((EmoticonFromGroupEntity)localObject2, 1, -1, null);
+      if (localURLDrawable == null)
       {
-        localObject2 = (EmoticonFromGroupEntity)this.a.get(i);
-        localObject1 = (CustomEmotionData)localArrayList.get(i);
-        i += 1;
-        localURLDrawable = (URLDrawable)this.this$0.a((EmoticonFromGroupEntity)localObject2, 1, -1, null);
-        if (localURLDrawable == null)
-        {
-          QLog.e("EmoticonFromGroup_Manager", 1, "get drawable failed: " + localObject2);
-        }
-        else if (1 != localURLDrawable.getStatus())
-        {
-          EmoticonFromGroupManager.a(this.this$0).a.add(localURLDrawable);
-          localURLDrawable.setURLDrawableListener(new EmoticonFromGroupManager.5.1(this, localURLDrawable, (CustomEmotionData)localObject1, localFavroamingManager, localFavroamingDBManager));
-          localURLDrawable.startDownload();
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("get drawable failed: ");
+        ((StringBuilder)localObject1).append(localObject2);
+        QLog.e("EmoticonFromGroup_Manager", 1, ((StringBuilder)localObject1).toString());
       }
-    }
-    for (;;)
-    {
-      break;
-      localObject2 = this.this$0.a(localURLDrawable.getURL().toString());
-      if (this.this$0.a((String)localObject2)) {
-        return;
-      }
-      String str = EmoticonFromGroupManager.a(this.this$0, (String)localObject2);
-      if (!"".equals(str))
+      else if (1 != localURLDrawable.getStatus())
       {
-        ((CustomEmotionData)localObject1).emoPath = str;
-        ((CustomEmotionData)localObject1).md5 = ((String)localObject2);
-        if (!"".equals(str)) {
-          try
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("EmoticonFromGroup_Manager", 4, "normal upload emo " + (String)localObject2);
+        EmoticonFromGroupManager.a(this.this$0).getUploadDrawableList().add(localURLDrawable);
+        localURLDrawable.setURLDrawableListener(new EmoticonFromGroupManager.5.1(this, localURLDrawable, (CustomEmotionData)localObject1, localIFavroamingManagerService, localIFavroamingDBManagerService));
+        localURLDrawable.startDownload();
+      }
+      else
+      {
+        localObject2 = this.this$0.a(localURLDrawable.getURL().toString());
+        if (this.this$0.a((String)localObject2)) {
+          return;
+        }
+        String str = EmoticonFromGroupManager.a(this.this$0, (String)localObject2);
+        if (!"".equals(str))
+        {
+          ((CustomEmotionData)localObject1).emoPath = str;
+          ((CustomEmotionData)localObject1).md5 = ((String)localObject2);
+          if (!"".equals(str)) {
+            try
+            {
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("normal upload emo ");
+                localStringBuilder.append((String)localObject2);
+                QLog.i("EmoticonFromGroup_Manager", 4, localStringBuilder.toString());
+              }
+              localURLDrawable.saveTo(str);
+              localIFavroamingManagerService.syncUpload((CustomEmotionData)localObject1);
+              localIFavroamingDBManagerService.insertCustomEmotion((CustomEmotionData)localObject1);
             }
-            localURLDrawable.saveTo(str);
-            localFavroamingManager.d((CustomEmotionData)localObject1);
-            localFavroamingDBManager.c((CustomEmotionBase)localObject1);
-          }
-          catch (IOException localIOException)
-          {
-            localIOException.printStackTrace();
-            QLog.d("EmoticonFromGroup_Manager", 1, localIOException, new Object[0]);
+            catch (IOException localIOException)
+            {
+              localIOException.printStackTrace();
+              QLog.d("EmoticonFromGroup_Manager", 1, localIOException, new Object[0]);
+            }
           }
         }
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.5
  * JD-Core Version:    0.7.0.1
  */

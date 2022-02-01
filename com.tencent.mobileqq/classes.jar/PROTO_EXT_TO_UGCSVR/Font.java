@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class Font
   extends JceStruct
 {
-  static int cache_font_size = 0;
-  static int cache_hideFlag = 0;
+  static int cache_font_size;
+  static int cache_hideFlag;
   public int font_size = 0;
   public int hideFlag = 0;
   
@@ -34,7 +34,7 @@ public final class Font
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PROTO_EXT_TO_UGCSVR.Font
  * JD-Core Version:    0.7.0.1
  */

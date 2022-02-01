@@ -29,31 +29,44 @@ public class QZonePersonalizeH5Service
   
   private static Map<Integer, Long> getCTimeByUin(long paramLong)
   {
-    Map localMap = MapUtil.stringToMap(LocalMultiProcConfig.getString("CTIME_MAP" + paramLong, ""));
-    if (!localMap.containsKey(Integer.valueOf(0))) {
-      localMap.put(Integer.valueOf(0), Long.valueOf(0L));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("CTIME_MAP");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = MapUtil.stringToMap(LocalMultiProcConfig.getString(((StringBuilder)localObject).toString(), ""));
+    Integer localInteger = Integer.valueOf(0);
+    if (!((Map)localObject).containsKey(localInteger)) {
+      ((Map)localObject).put(localInteger, Long.valueOf(0L));
     }
-    return localMap;
+    return localObject;
   }
   
   public static void setCTime(Map<Integer, Long> paramMap, Long paramLong)
   {
-    LocalMultiProcConfig.putString("CTIME_MAP" + paramLong, MapUtil.mapToString(paramMap));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CTIME_MAP");
+    localStringBuilder.append(paramLong);
+    LocalMultiProcConfig.putString(localStringBuilder.toString(), MapUtil.mapToString(paramMap));
   }
   
   public static void updateCTime(Integer paramInteger, Long paramLong)
   {
     Map localMap = getCTime(paramLong);
     localMap.put(paramInteger, Long.valueOf(System.currentTimeMillis() / 1000L));
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePersonalizeH5Service", 2, "updateCTime: " + paramInteger + "timestamp: " + System.currentTimeMillis() / 1000L);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateCTime: ");
+      localStringBuilder.append(paramInteger);
+      localStringBuilder.append("timestamp: ");
+      localStringBuilder.append(System.currentTimeMillis() / 1000L);
+      QLog.d("QZonePersonalizeH5Service", 2, localStringBuilder.toString());
     }
     setCTime(localMap, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZonePersonalizeH5Service
  * JD-Core Version:    0.7.0.1
  */

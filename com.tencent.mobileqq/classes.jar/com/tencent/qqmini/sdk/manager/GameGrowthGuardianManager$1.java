@@ -10,14 +10,15 @@ final class GameGrowthGuardianManager$1
   
   public void run()
   {
-    this.val$miniAppInfo.gameAdsTotalTime = 0;
-    GameGrowthGuardianManager.access$000(this.val$context, this.val$miniAppInfo, 11);
+    MiniAppInfo localMiniAppInfo = this.val$miniAppInfo;
+    localMiniAppInfo.gameAdsTotalTime = 0;
+    GameGrowthGuardianManager.access$000(this.val$context, localMiniAppInfo, 11);
     GameGrowthGuardianManager.access$102(System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager.1
  * JD-Core Version:    0.7.0.1
  */

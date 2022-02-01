@@ -19,25 +19,21 @@ public class QQStoryShareGroupProfileActivity$VideoSortEventReceiver
     if (paramChangeVideoSortEvent.a == 1)
     {
       paramQQStoryShareGroupProfileActivity.g = true;
-      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.a();
-      paramQQStoryShareGroupProfileActivity.b(true);
-      paramChangeVideoSortEvent = paramQQStoryShareGroupProfileActivity.b;
-      if (!paramQQStoryShareGroupProfileActivity.g) {
-        break label82;
-      }
     }
-    label82:
-    for (paramQQStoryShareGroupProfileActivity = "1";; paramQQStoryShareGroupProfileActivity = "2")
+    else if (paramChangeVideoSortEvent.a == 0)
     {
-      StoryReportor.a("share_story", "clk_rank", 0, 0, new String[] { paramChangeVideoSortEvent, paramQQStoryShareGroupProfileActivity });
-      return;
-      if (paramChangeVideoSortEvent.a != 0) {
-        break;
-      }
       paramQQStoryShareGroupProfileActivity.g = false;
       paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean = false;
-      break;
     }
+    paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.a();
+    paramQQStoryShareGroupProfileActivity.b(true);
+    paramChangeVideoSortEvent = paramQQStoryShareGroupProfileActivity.b;
+    if (paramQQStoryShareGroupProfileActivity.g) {
+      paramQQStoryShareGroupProfileActivity = "1";
+    } else {
+      paramQQStoryShareGroupProfileActivity = "2";
+    }
+    StoryReportor.a("share_story", "clk_rank", 0, 0, new String[] { paramChangeVideoSortEvent, paramQQStoryShareGroupProfileActivity });
   }
   
   public Class acceptEventClass()
@@ -47,7 +43,7 @@ public class QQStoryShareGroupProfileActivity$VideoSortEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.VideoSortEventReceiver
  * JD-Core Version:    0.7.0.1
  */

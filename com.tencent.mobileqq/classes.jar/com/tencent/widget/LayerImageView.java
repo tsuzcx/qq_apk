@@ -53,7 +53,7 @@ public class LayerImageView
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -61,18 +61,21 @@ public class LayerImageView
   public void setBitmaps(Bitmap[] paramArrayOfBitmap, boolean paramBoolean)
   {
     int j = 0;
-    if ((paramBoolean) && (this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap != null))
+    if (paramBoolean)
     {
       LayerImageView.ChildBitmap[] arrayOfChildBitmap = this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap;
-      int k = arrayOfChildBitmap.length;
-      i = 0;
-      while (i < k)
+      if (arrayOfChildBitmap != null)
       {
-        LayerImageView.ChildBitmap localChildBitmap = arrayOfChildBitmap[i];
-        if (LayerImageView.ChildBitmap.a(localChildBitmap) != null) {
-          LayerImageView.ChildBitmap.a(localChildBitmap).recycle();
+        int k = arrayOfChildBitmap.length;
+        i = 0;
+        while (i < k)
+        {
+          LayerImageView.ChildBitmap localChildBitmap = arrayOfChildBitmap[i];
+          if (LayerImageView.ChildBitmap.a(localChildBitmap) != null) {
+            LayerImageView.ChildBitmap.a(localChildBitmap).recycle();
+          }
+          i += 1;
         }
-        i += 1;
       }
     }
     this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap = new LayerImageView.ChildBitmap[paramArrayOfBitmap.length];
@@ -97,8 +100,9 @@ public class LayerImageView
   
   public void setLayerBitmap(int paramInt, Bitmap paramBitmap, boolean paramBoolean)
   {
-    LayerImageView.ChildBitmap localChildBitmap = this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap[paramInt];
-    this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap[paramInt] = new LayerImageView.ChildBitmap(paramBitmap, this.jdField_a_of_type_Int, null);
+    LayerImageView.ChildBitmap[] arrayOfChildBitmap = this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap;
+    LayerImageView.ChildBitmap localChildBitmap = arrayOfChildBitmap[paramInt];
+    arrayOfChildBitmap[paramInt] = new LayerImageView.ChildBitmap(paramBitmap, this.jdField_a_of_type_Int, null);
     if ((paramBoolean) && (LayerImageView.ChildBitmap.a(localChildBitmap) != null)) {
       LayerImageView.ChildBitmap.a(localChildBitmap).recycle();
     }
@@ -112,16 +116,26 @@ public class LayerImageView
   
   public void setLayerPadding(Rect[] paramArrayOfRect)
   {
-    if (paramArrayOfRect.length != this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap.length) {
-      throw new IllegalArgumentException("padding must have the same size as input bitmaps");
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap.length)
+    if (paramArrayOfRect.length == this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap.length)
     {
-      LayerImageView.ChildBitmap.a(this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap[i], paramArrayOfRect[i]);
-      i += 1;
+      int i = 0;
+      for (;;)
+      {
+        LayerImageView.ChildBitmap[] arrayOfChildBitmap = this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap;
+        if (i >= arrayOfChildBitmap.length) {
+          break;
+        }
+        LayerImageView.ChildBitmap.a(arrayOfChildBitmap[i], paramArrayOfRect[i]);
+        i += 1;
+      }
+      b();
+      return;
     }
-    b();
+    paramArrayOfRect = new IllegalArgumentException("padding must have the same size as input bitmaps");
+    for (;;)
+    {
+      throw paramArrayOfRect;
+    }
   }
   
   public void setLayerVisibility(int paramInt1, int paramInt2)
@@ -137,7 +151,7 @@ public class LayerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.LayerImageView
  * JD-Core Version:    0.7.0.1
  */

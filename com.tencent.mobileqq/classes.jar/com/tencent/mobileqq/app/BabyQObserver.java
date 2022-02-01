@@ -15,29 +15,35 @@ public class BabyQObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return;
+            }
+            a(paramBoolean);
+            return;
+          }
+          b(paramBoolean, paramObject);
+          return;
+        }
+        a();
+        return;
+      }
       a(paramObject);
       return;
-    case 3: 
-      a();
-      return;
-    case 4: 
-      b(paramBoolean, paramObject);
-      return;
     }
-    a(paramBoolean);
+    a(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.BabyQObserver
  * JD-Core Version:    0.7.0.1
  */

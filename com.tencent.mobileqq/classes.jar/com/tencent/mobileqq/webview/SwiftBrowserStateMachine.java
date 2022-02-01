@@ -12,32 +12,70 @@ public class SwiftBrowserStateMachine
   public int a(Bundle paramBundle)
   {
     int j = this.a;
-    int i = -1;
-    switch (this.a)
+    int i;
+    if (j != 2)
     {
+      if (j != 4)
+      {
+        if (j != 8)
+        {
+          if (j != 16)
+          {
+            if (j != 32)
+            {
+              if (j != 64)
+              {
+                if (j != 128)
+                {
+                  if (j != 256)
+                  {
+                    if (j != 512) {
+                      i = -1;
+                    } else {
+                      i = j(paramBundle);
+                    }
+                  }
+                  else {
+                    i = i(paramBundle);
+                  }
+                }
+                else {
+                  i = h(paramBundle);
+                }
+              }
+              else {
+                i = g(paramBundle);
+              }
+            }
+            else {
+              i = f(paramBundle);
+            }
+          }
+          else {
+            i = e(paramBundle);
+          }
+        }
+        else {
+          i = d(paramBundle);
+        }
+      }
+      else {
+        i = c(paramBundle);
+      }
     }
-    for (;;)
-    {
-      QLog.i("WebLog_SwiftBrowserStateMachine", 1, "mCreateLoopScheduler.next:currentStep(" + j + "),nextStep(" + this.a + "), next action(" + i + ").");
-      return i;
+    else {
       i = b(paramBundle);
-      continue;
-      i = c(paramBundle);
-      continue;
-      i = d(paramBundle);
-      continue;
-      i = e(paramBundle);
-      continue;
-      i = f(paramBundle);
-      continue;
-      i = g(paramBundle);
-      continue;
-      i = h(paramBundle);
-      continue;
-      i = i(paramBundle);
-      continue;
-      i = j(paramBundle);
     }
+    paramBundle = new StringBuilder();
+    paramBundle.append("mCreateLoopScheduler.next:currentStep(");
+    paramBundle.append(j);
+    paramBundle.append("),nextStep(");
+    paramBundle.append(this.a);
+    paramBundle.append("), next action(");
+    paramBundle.append(i);
+    paramBundle.append(").");
+    QLog.i("WebLog_SwiftBrowserStateMachine", 1, paramBundle.toString());
+    return i;
   }
   
   public int b(Bundle paramBundle)
@@ -87,7 +125,7 @@ public class SwiftBrowserStateMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.SwiftBrowserStateMachine
  * JD-Core Version:    0.7.0.1
  */

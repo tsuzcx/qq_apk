@@ -18,225 +18,231 @@ class v$a
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    if (this.a == null)
+    Object localObject = this.a;
+    int m = 0;
+    int k = 0;
+    if (localObject == null)
     {
       this.a = new long[1];
       this.a[0] = paramLong;
       this.b = new long[1];
     }
     long l1;
-    int j;
-    Object localObject;
-    int i;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       l1 = 2L;
-      j = Arrays.binarySearch(this.a, paramLong);
-      localObject = new StringBuilder().append(paramLong).append(" is the ");
-      if (j >= 0) {
-        break label289;
-      }
-      i = -j - 1;
-      label77:
-      QLog.d("GuardManager", 2, i + "th of " + Arrays.toString(this.a));
-      if (j >= 0) {
-        break label845;
-      }
-      i = -j - 1;
-      if (i <= 0) {
-        break label929;
-      }
+    } else {
+      l1 = 1L;
     }
-    label918:
-    label929:
-    for (long l2 = paramLong - this.a[(i - 1)];; l2 = 9223372036854775807L)
+    int j = Arrays.binarySearch(this.a, paramLong);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" is the ");
+    int i;
+    if (j < 0) {
+      i = -j - 1;
+    } else {
+      i = j;
+    }
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("th of ");
+    ((StringBuilder)localObject).append(Arrays.toString(this.a));
+    QLog.d("GuardManager", 2, ((StringBuilder)localObject).toString());
+    long l2;
+    long[] arrayOfLong;
+    if (j < 0)
     {
-      if (i < this.a.length) {}
-      for (long l3 = this.a[i] - paramLong;; l3 = 9223372036854775807L)
+      i = -j - 1;
+      if (i > 0) {
+        l2 = paramLong - this.a[(i - 1)];
+      } else {
+        l2 = 9223372036854775807L;
+      }
+      localObject = this.a;
+      long l3;
+      if (i < localObject.length) {
+        l3 = localObject[i] - paramLong;
+      } else {
+        l3 = 9223372036854775807L;
+      }
+      if ((l2 > v.b() * 2L) && (l3 > v.b() * 2L))
       {
-        if ((l2 <= v.b() * 2L) || (l3 <= v.b() * 2L))
+        int n = this.a.length;
+        localObject = new ArrayList(n * 2);
+        j = 0;
+        while (j < i)
         {
-          if (l2 >= l3) {
-            break label918;
-          }
-          i -= 1;
+          ((ArrayList)localObject).add(Long.valueOf(this.a[j]));
+          ((ArrayList)localObject).add(Long.valueOf(this.b[j]));
+          j += 1;
         }
-        for (;;)
+        ((ArrayList)localObject).add(Long.valueOf(paramLong));
+        ((ArrayList)localObject).add(Long.valueOf(l1));
+        while (i < n)
         {
-          this.a[i] = (this.a[i] * this.b[i] + paramLong * l1);
-          localObject = this.b;
-          localObject[i] = (l1 + localObject[i]);
-          localObject = this.a;
-          localObject[i] /= this.b[i];
-          for (;;)
+          ((ArrayList)localObject).add(Long.valueOf(this.a[i]));
+          ((ArrayList)localObject).add(Long.valueOf(this.b[i]));
+          i += 1;
+        }
+        if (((ArrayList)localObject).size() > 56)
+        {
+          l1 = ((Long)((ArrayList)localObject).get(0)).longValue();
+          paramLong = ((Long)((ArrayList)localObject).get(1)).longValue();
+          m = ((ArrayList)localObject).size() / 2;
+          i = 1;
+          j = 0;
+          while (i < m)
           {
-            QLog.d("GuardManager", 2, Arrays.toString(this.a));
-            return;
-            l1 = 1L;
-            break;
-            label289:
-            i = j;
-            break label77;
-            int k = this.a.length;
-            localObject = new ArrayList(k * 2);
-            j = 0;
-            while (j < i)
+            n = i * 2;
+            long l4 = ((Long)((ArrayList)localObject).get(n)).longValue();
+            l3 = ((Long)((ArrayList)localObject).get(n + 1)).longValue();
+            if (l4 - l1 < v.b() * 3L)
             {
-              ((ArrayList)localObject).add(Long.valueOf(this.a[j]));
-              ((ArrayList)localObject).add(Long.valueOf(this.b[j]));
-              j += 1;
-            }
-            ((ArrayList)localObject).add(Long.valueOf(paramLong));
-            ((ArrayList)localObject).add(Long.valueOf(l1));
-            while (i < k)
-            {
-              ((ArrayList)localObject).add(Long.valueOf(this.a[i]));
-              ((ArrayList)localObject).add(Long.valueOf(this.b[i]));
-              i += 1;
-            }
-            if (((ArrayList)localObject).size() > 56)
-            {
-              l1 = ((Long)((ArrayList)localObject).get(0)).longValue();
-              paramLong = ((Long)((ArrayList)localObject).get(1)).longValue();
-              k = ((ArrayList)localObject).size() / 2;
-              i = 0;
-              j = 1;
-              if (j < k)
-              {
-                l3 = ((Long)((ArrayList)localObject).get(j * 2)).longValue();
-                long l4 = ((Long)((ArrayList)localObject).get(j * 2 + 1)).longValue();
-                if (l3 - l1 < v.b() * 3L)
-                {
-                  l2 = l4 + paramLong;
-                  paramLong = (l3 * l4 + l1 * paramLong) / l2;
-                  l1 = l2;
-                }
-                for (;;)
-                {
-                  j += 1;
-                  l2 = paramLong;
-                  paramLong = l1;
-                  l1 = l2;
-                  break;
-                  ((ArrayList)localObject).set(i * 2, Long.valueOf(l1));
-                  ((ArrayList)localObject).set(i * 2 + 1, Long.valueOf(paramLong));
-                  i += 1;
-                  l1 = l4;
-                  paramLong = l3;
-                }
-              }
-              ((ArrayList)localObject).set(i * 2, Long.valueOf(l1));
-              ((ArrayList)localObject).set(i * 2 + 1, Long.valueOf(paramLong));
-              j = i + 1;
-              this.a = new long[j];
-              this.b = new long[j];
-              i = 0;
-              while (i < j)
-              {
-                this.a[i] = ((Long)((ArrayList)localObject).get(i * 2)).longValue();
-                this.b[i] = ((Long)((ArrayList)localObject).get(i * 2 + 1)).longValue();
-                i += 1;
-              }
+              l2 = paramLong + l3;
+              l1 = (l1 * paramLong + l4 * l3) / l2;
+              paramLong = l2;
             }
             else
             {
-              j = ((ArrayList)localObject).size() / 2;
-              this.a = new long[j];
-              this.b = new long[j];
-              i = 0;
-              while (i < j)
-              {
-                this.a[i] = ((Long)((ArrayList)localObject).get(i * 2)).longValue();
-                this.b[i] = ((Long)((ArrayList)localObject).get(i * 2 + 1)).longValue();
-                i += 1;
-              }
-              continue;
-              label845:
-              this.a[j] = (this.a[j] * this.b[j] + paramLong * l1);
-              localObject = this.b;
-              localObject[j] = (l1 + localObject[j]);
-              localObject = this.a;
-              localObject[j] /= this.b[j];
+              n = j * 2;
+              ((ArrayList)localObject).set(n, Long.valueOf(l1));
+              ((ArrayList)localObject).set(n + 1, Long.valueOf(paramLong));
+              j += 1;
+              l1 = l4;
+              paramLong = l3;
             }
+            i += 1;
+          }
+          i = j * 2;
+          ((ArrayList)localObject).set(i, Long.valueOf(l1));
+          ((ArrayList)localObject).set(i + 1, Long.valueOf(paramLong));
+          j += 1;
+          this.a = new long[j];
+          this.b = new long[j];
+          i = k;
+          while (i < j)
+          {
+            arrayOfLong = this.a;
+            k = i * 2;
+            arrayOfLong[i] = ((Long)((ArrayList)localObject).get(k)).longValue();
+            this.b[i] = ((Long)((ArrayList)localObject).get(k + 1)).longValue();
+            i += 1;
           }
         }
+        j = ((ArrayList)localObject).size() / 2;
+        this.a = new long[j];
+        this.b = new long[j];
+        i = m;
+        while (i < j)
+        {
+          arrayOfLong = this.a;
+          k = i * 2;
+          arrayOfLong[i] = ((Long)((ArrayList)localObject).get(k)).longValue();
+          this.b[i] = ((Long)((ArrayList)localObject).get(k + 1)).longValue();
+          i += 1;
+        }
       }
+      j = i;
+      if (l2 < l3) {
+        j = i - 1;
+      }
+      localObject = this.a;
+      l2 = localObject[j];
+      arrayOfLong = this.b;
+      localObject[j] = (l2 * arrayOfLong[j] + paramLong * l1);
+      arrayOfLong[j] += l1;
+      localObject[j] /= arrayOfLong[j];
     }
+    else
+    {
+      localObject = this.a;
+      l2 = localObject[j];
+      arrayOfLong = this.b;
+      localObject[j] = (l2 * arrayOfLong[j] + paramLong * l1);
+      arrayOfLong[j] += l1;
+      localObject[j] /= arrayOfLong[j];
+    }
+    QLog.d("GuardManager", 2, Arrays.toString(this.a));
   }
   
   public void a(ObjectOutputStream paramObjectOutputStream, boolean paramBoolean)
   {
+    long[] arrayOfLong = this.a;
     int j = 0;
     int i;
-    if (this.a != null)
-    {
-      i = this.a.length;
-      if (!paramBoolean) {
-        break label68;
-      }
-      paramObjectOutputStream.writeLong(i);
+    if (arrayOfLong != null) {
+      i = arrayOfLong.length;
+    } else {
+      i = 0;
     }
-    for (;;)
+    if (paramBoolean) {
+      paramObjectOutputStream.writeLong(i);
+    } else {
+      paramObjectOutputStream.writeByte(i);
+    }
+    while (j < i)
     {
-      if (j >= i) {
-        return;
-      }
       paramObjectOutputStream.writeLong(this.a[j]);
       paramObjectOutputStream.writeLong(this.b[j]);
       j += 1;
-      continue;
-      i = 0;
-      break;
-      label68:
-      paramObjectOutputStream.writeByte(i);
     }
   }
   
   public boolean a(long paramLong)
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      int j = Arrays.binarySearch(this.a, paramLong);
+      int j = Arrays.binarySearch((long[])localObject, paramLong);
       int i = j;
       if (j < 0)
       {
-        j = -j - 1;
-        QLog.d("GuardManager", 2, paramLong + " is the " + j + "th of " + Arrays.toString(this.a) + ", range reaches [" + (paramLong - v.b()) + ", " + (v.b() + paramLong) + "]");
-        if ((j <= 0) || (paramLong - this.a[(j - 1)] > v.b())) {
-          break label197;
+        i = -j - 1;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramLong);
+        ((StringBuilder)localObject).append(" is the ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("th of ");
+        ((StringBuilder)localObject).append(Arrays.toString(this.a));
+        ((StringBuilder)localObject).append(", range reaches [");
+        ((StringBuilder)localObject).append(paramLong - v.b());
+        ((StringBuilder)localObject).append(", ");
+        ((StringBuilder)localObject).append(v.b() + paramLong);
+        ((StringBuilder)localObject).append("]");
+        QLog.d("GuardManager", 2, ((StringBuilder)localObject).toString());
+        if ((i > 0) && (paramLong - this.a[(i - 1)] <= v.b()))
+        {
+          i -= 1;
         }
-        i = j - 1;
+        else
+        {
+          localObject = this.a;
+          if ((i >= localObject.length) || (localObject[i] - paramLong > v.b())) {
+            i = -1;
+          }
+        }
       }
-      while (i >= 0)
+      if (i >= 0)
       {
         int m = this.a.length;
         paramLong = this.b[i];
         i = 0;
-        j = 0;
-        for (;;)
+        int k;
+        for (j = 0; i < m; j = k)
         {
-          if (i < m)
-          {
-            int k = j;
-            if (this.b[i] > paramLong) {
-              k = j + 1;
-            }
-            i += 1;
-            j = k;
-            continue;
-            label197:
-            if (j < this.a.length)
-            {
-              i = j;
-              if (this.a[j] - paramLong <= v.b()) {
-                break;
-              }
-            }
-            i = -1;
-            break;
+          k = j;
+          if (this.b[i] > paramLong) {
+            k = j + 1;
           }
+          i += 1;
         }
-        QLog.d("GuardManager", 2, "order: " + j + ", limit: " + v.c() + ", in " + Arrays.toString(this.b));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("order: ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(", limit: ");
+        ((StringBuilder)localObject).append(v.c());
+        ((StringBuilder)localObject).append(", in ");
+        ((StringBuilder)localObject).append(Arrays.toString(this.b));
+        QLog.d("GuardManager", 2, ((StringBuilder)localObject).toString());
         if (j < v.c()) {
           return true;
         }
@@ -247,7 +253,7 @@ class v$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.v.a
  * JD-Core Version:    0.7.0.1
  */

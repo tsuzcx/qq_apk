@@ -31,17 +31,24 @@ public class VasIPCModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasIPCModule", 2, "onCall action = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall action = ");
+      localStringBuilder.append(paramString);
+      QLog.d("VasIPCModule", 2, localStringBuilder.toString());
     }
     paramBundle.setClassLoader(BinderWarpper.class.getClassLoader());
-    QLog.e("VasIPCModule", 1, "onCall missing action = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCall missing action = ");
+    localStringBuilder.append(paramString);
+    QLog.e("VasIPCModule", 1, localStringBuilder.toString());
     return RemoteProxy.a(this, paramString, paramBundle, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.VasIPCModule
  * JD-Core Version:    0.7.0.1
  */

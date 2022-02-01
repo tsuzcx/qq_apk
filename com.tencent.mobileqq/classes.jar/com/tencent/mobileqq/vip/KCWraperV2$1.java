@@ -15,52 +15,60 @@ class KCWraperV2$1
   
   public void run()
   {
-    int i = 0;
     long l = IOUtil.getCRC32Value(this.jdField_a_of_type_JavaIoFile);
-    QLog.d(this.this$0.a(), 1, "tryLoad " + this.jdField_a_of_type_JavaIoFile.getName() + " crc32: " + Long.toHexString(l));
+    ??? = this.this$0.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tryLoad ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getName());
+    localStringBuilder.append(" crc32: ");
+    localStringBuilder.append(Long.toHexString(l));
+    QLog.d((String)???, 1, localStringBuilder.toString());
     QLog.flushLog();
-    for (;;)
+    synchronized (this.this$0.a)
     {
-      synchronized (this.this$0.a)
+      if (this.this$0.a.get()) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        KcSdkShellManager.getInstance().setLogPrint(new KCWraperV2.1.1(this));
+      }
+      KcSdkShellManager.getInstance().setTMSDKLogEnable(QLog.isColorLevel());
+      KcSdkShellManager.getInstance().setPhoneInfoBridge(new KCWraperV2.1.2(this));
+      boolean bool1;
+      if (TMSManager.a(this.jdField_a_of_type_AndroidContentContext))
       {
-        if (this.this$0.a.get()) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          KcSdkShellManager.getInstance().setLogPrint(new KCWraperV2.1.1(this));
-        }
-        KcSdkShellManager.getInstance().setTMSDKLogEnable(QLog.isColorLevel());
-        KcSdkShellManager.getInstance().setPhoneInfoBridge(new KCWraperV2.1.2(this));
-        if (TMSManager.a(this.jdField_a_of_type_AndroidContentContext))
+        boolean bool2 = KcSdkShellManager.getInstance().initInBaseProcess(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), "00047", "ck_shoujiqq_dfhdsuif5f6d_f4d89e");
+        QLog.e(this.this$0.a(), 1, "initInBaseProcess");
+        bool1 = bool2;
+        if (KcSdkShellManager.getInstance().getKingCardInterface() != null)
         {
-          boolean bool = KcSdkShellManager.getInstance().initInBaseProcess(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), "00047", "ck_shoujiqq_dfhdsuif5f6d_f4d89e");
-          QLog.e(this.this$0.a(), 1, "initInBaseProcess");
-          i = bool;
-          if (KcSdkShellManager.getInstance().getKingCardInterface() != null)
-          {
-            KcSdkShellManager.getInstance().getKingCardInterface().registerOnChangeListener(new KCWraperV2.KingCardListener());
-            i = bool;
-          }
-          if (i != 0) {
-            break label268;
-          }
-          QLog.e(this.this$0.a(), 1, "tryLoad failed");
-          KCWraper.a(false);
-          this.this$0.a.notify();
-          return;
+          KcSdkShellManager.getInstance().getKingCardInterface().registerOnChangeListener(new KCWraperV2.KingCardListener());
+          bool1 = bool2;
         }
       }
-      QLog.w(this.this$0.a(), 1, "only load in main process!");
-      continue;
-      label268:
-      this.this$0.a.set(true);
-      KCWraper.a(true);
+      else
+      {
+        QLog.w(this.this$0.a(), 1, "only load in main process!");
+        bool1 = false;
+      }
+      if (!bool1)
+      {
+        QLog.e(this.this$0.a(), 1, "tryLoad failed");
+        KCWraper.a(false);
+      }
+      else
+      {
+        this.this$0.a.set(true);
+        KCWraper.a(true);
+      }
+      this.this$0.a.notify();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -71,122 +71,118 @@ public class TofuManager
   private void a(String paramString, int paramInt)
   {
     List localList = a(paramString, paramInt);
-    if ((NetworkUtil.a()) && (a(paramString, localList))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (!bool) {
-        this.jdField_a_of_type_JavaUtilSet.remove(paramString);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("Tofu_TofuManager", 2, String.format("WHAT_PREPARE_PULL_TOFUDATA uin=%s reqSize=%d hasReq=%b", new Object[] { MobileQQ.getShortUinStr(paramString), Integer.valueOf(localList.size()), Boolean.valueOf(bool) }));
-      }
-      return;
+    boolean bool;
+    if ((NetworkUtil.isNetworkAvailable()) && (a(paramString, localList))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (!bool) {
+      this.jdField_a_of_type_JavaUtilSet.remove(paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Tofu_TofuManager", 2, String.format("WHAT_PREPARE_PULL_TOFUDATA uin=%s reqSize=%d hasReq=%b", new Object[] { MobileQQ.getShortUinStr(paramString), Integer.valueOf(localList.size()), Boolean.valueOf(bool) }));
     }
   }
   
   private void a(boolean paramBoolean, String paramString, List<oidb_0xe61.BeancurdCubeInfoResult> paramList)
   {
-    List localList;
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
-      localList = a(paramString);
-    }
-    try
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
     {
-      BeancurdManager localBeancurdManager = (BeancurdManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
-      a(paramList, new BeancurdCubeInfoResultComparator(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBeancurdManager, this.jdField_a_of_type_ComTencentMobileqqLyricUtilSingleton));
+      List localList = a(paramString);
+      try
+      {
+        BeancurdManager localBeancurdManager = (BeancurdManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
+        a(paramList, new BeancurdCubeInfoResultComparator(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBeancurdManager, this.jdField_a_of_type_ComTencentMobileqqLyricUtilSingleton));
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
       paramBoolean = a(paramString, paramList, localList);
       if (localList.size() > 0) {
         a(paramString, localList, paramBoolean);
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("Tofu_TofuManager", 2, String.format("WHAT_GET_PULLED_DATA frdUin=%s", new Object[] { MobileQQ.getShortUinStr(paramString) }));
-      }
-      this.jdField_a_of_type_JavaUtilSet.remove(paramString);
-      return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Tofu_TofuManager", 2, String.format("WHAT_GET_PULLED_DATA frdUin=%s", new Object[] { MobileQQ.getShortUinStr(paramString) }));
     }
+    this.jdField_a_of_type_JavaUtilSet.remove(paramString);
   }
   
   private boolean a(EntityManager paramEntityManager, Entity paramEntity)
   {
-    boolean bool = false;
-    if (paramEntityManager.isOpen()) {
+    boolean bool2 = paramEntityManager.isOpen();
+    boolean bool1 = false;
+    if (bool2)
+    {
       if (paramEntity.getStatus() == 1000)
       {
         paramEntityManager.persistOrReplace(paramEntity);
         if (paramEntity.getStatus() == 1001) {
-          bool = true;
+          bool1 = true;
         }
+        return bool1;
       }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return bool;
       if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002)) {
         return paramEntityManager.update(paramEntity);
       }
     }
-    QLog.d("Tofu_TofuManager", 2, "updateEntity em closed e=" + paramEntity.getTableName());
+    if (QLog.isColorLevel())
+    {
+      paramEntityManager = new StringBuilder();
+      paramEntityManager.append("updateEntity em closed e=");
+      paramEntityManager.append(paramEntity.getTableName());
+      QLog.d("Tofu_TofuManager", 2, paramEntityManager.toString());
+    }
     return false;
   }
   
   @NotNull
   protected List<TofuItem> a(String paramString)
   {
-    long l;
+    Object localObject2;
     synchronized (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache)
     {
       ??? = (List)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString);
-      if (??? != null) {
-        break label229;
-      }
-      l = System.currentTimeMillis();
-    }
-    for (;;)
-    {
-      try
+      Object localObject4 = ???;
+      if (??? == null)
       {
-        ??? = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(TofuItem.class, false, "frdUin=?", new String[] { paramString }, null, null, null, null);
-        ??? = ???;
-        ??? = ???;
-        if (??? == null) {
-          ??? = new ArrayList(TofuConst.a.length);
+        long l = System.currentTimeMillis();
+        int i = 0;
+        try
+        {
+          ??? = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(TofuItem.class, false, "frdUin=?", new String[] { paramString }, null, null, null, null);
+          ??? = ???;
         }
-        int i = localException.size();
-      }
-      catch (Exception localException)
-      {
+        catch (Exception localException)
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("readTofuItems exception + ");
+          ((StringBuilder)localObject4).append(localException.getMessage());
+          QLog.d("Tofu_TofuManager", 1, ((StringBuilder)localObject4).toString(), localException);
+        }
+        localObject2 = ???;
+        if (??? == null) {
+          localObject2 = new ArrayList(TofuConst.a.length);
+        }
         synchronized (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache)
         {
-          this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramString, ???);
+          this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramString, localObject2);
+          localObject4 = localObject2;
           if (QLog.isColorLevel())
           {
             paramString = MobileQQ.getShortUinStr(paramString);
-            if (??? == null)
-            {
-              i = 0;
-              QLog.i("Tofu_TofuManager", 2, String.format("readTofuItems %s size=%d cost=%dms", new Object[] { paramString, Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) }));
+            if (localObject2 != null) {
+              i = ((List)localObject2).size();
             }
-          }
-          else
-          {
-            return ???;
-            paramString = finally;
-            throw paramString;
-            localException = localException;
-            QLog.d("Tofu_TofuManager", 1, "readTofuItems exception + " + localException.getMessage(), localException);
+            QLog.i("Tofu_TofuManager", 2, String.format("readTofuItems %s size=%d cost=%dms", new Object[] { paramString, Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) }));
+            return localObject2;
           }
         }
       }
+      return localObject4;
     }
-    label229:
-    return ???;
   }
   
   @NotNull
@@ -215,54 +211,36 @@ public class TofuManager
   
   public void a(String paramString)
   {
-    int j = -1;
-    List localList;
     synchronized (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache)
     {
-      localList = (List)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.remove(paramString);
-    }
-    try
-    {
-      ??? = TableBuilder.getTableName(TofuItem.class);
-      i = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.delete((String)???, "frdUin=?", new String[] { paramString });
-      if (QLog.isColorLevel())
+      List localList = (List)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.remove(paramString);
+      int j = -1;
+      try
       {
-        if (localList == null) {
-          QLog.i("Tofu_TofuManager", 2, String.format("onDelFriend frdUin=%s delCacheItems=%d delDbCnt=%d", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(i) }));
-        }
+        ??? = TableBuilder.getTableName(TofuItem.class);
+        i = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.delete((String)???, "frdUin=?", new String[] { paramString });
       }
-      else
-      {
-        return;
-        paramString = finally;
-        throw paramString;
-      }
-    }
-    catch (InstantiationException localInstantiationException)
-    {
-      for (;;)
-      {
-        QLog.d("Tofu_TofuManager", 1, localInstantiationException.getMessage(), localInstantiationException);
-        i = -1;
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        QLog.d("Tofu_TofuManager", 1, localIllegalAccessException.getMessage(), localIllegalAccessException);
-        i = -1;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
       {
         QLog.d("Tofu_TofuManager", 1, localThrowable.getMessage(), localThrowable);
-        int i = -1;
-        continue;
-        j = localList.size();
       }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        QLog.d("Tofu_TofuManager", 1, localIllegalAccessException.getMessage(), localIllegalAccessException);
+      }
+      catch (InstantiationException localInstantiationException)
+      {
+        QLog.d("Tofu_TofuManager", 1, localInstantiationException.getMessage(), localInstantiationException);
+      }
+      int i = -1;
+      if (QLog.isColorLevel())
+      {
+        if (localList != null) {
+          j = localList.size();
+        }
+        QLog.i("Tofu_TofuManager", 2, String.format("onDelFriend frdUin=%s delCacheItems=%d delDbCnt=%d", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(i) }));
+      }
+      return;
     }
   }
   
@@ -270,20 +248,20 @@ public class TofuManager
   protected void a(String paramString, List<TofuItem> paramList, boolean paramBoolean)
   {
     // Byte code:
-    //   0: invokestatic 256	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 257	java/lang/System:currentTimeMillis	()J
     //   3: lstore 4
     //   5: aload_0
     //   6: getfield 83	com/tencent/mobileqq/tofumsg/TofuManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   9: invokevirtual 343	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   9: invokevirtual 344	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   12: astore 6
     //   14: aload 6
-    //   16: invokevirtual 348	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   16: invokevirtual 349	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   19: aload_2
     //   20: invokeinterface 95 1 0
     //   25: astore 7
     //   27: aload 7
     //   29: invokeinterface 101 1 0
-    //   34: ifeq +152 -> 186
+    //   34: ifeq +29 -> 63
     //   37: aload 7
     //   39: invokeinterface 105 1 0
     //   44: checkcast 107	com/tencent/mobileqq/tofumsg/TofuItem
@@ -292,130 +270,143 @@ public class TofuManager
     //   50: aload_0
     //   51: getfield 83	com/tencent/mobileqq/tofumsg/TofuManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   54: aload 8
-    //   56: invokespecial 350	com/tencent/mobileqq/tofumsg/TofuManager:a	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   56: invokespecial 351	com/tencent/mobileqq/tofumsg/TofuManager:a	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   59: pop
     //   60: goto -33 -> 27
-    //   63: astore 7
-    //   65: ldc 137
-    //   67: iconst_1
-    //   68: new 228	java/lang/StringBuilder
-    //   71: dup
-    //   72: invokespecial 229	java/lang/StringBuilder:<init>	()V
-    //   75: ldc_w 352
-    //   78: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: aload 7
-    //   83: invokevirtual 288	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   86: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: aload 7
-    //   94: invokestatic 291	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   97: aload 6
-    //   99: invokevirtual 355	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   102: iload_3
-    //   103: ifeq +25 -> 128
-    //   106: aload_0
-    //   107: getfield 31	com/tencent/mobileqq/tofumsg/TofuManager:jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache	Lcom/tencent/commonsdk/cache/QQLruCache;
-    //   110: astore 6
-    //   112: aload 6
-    //   114: monitorenter
-    //   115: aload_0
-    //   116: getfield 31	com/tencent/mobileqq/tofumsg/TofuManager:jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache	Lcom/tencent/commonsdk/cache/QQLruCache;
-    //   119: aload_1
-    //   120: aload_2
-    //   121: invokevirtual 276	com/tencent/commonsdk/cache/QQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   124: pop
-    //   125: aload 6
-    //   127: monitorexit
-    //   128: invokestatic 135	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   131: ifeq +54 -> 185
-    //   134: ldc 137
-    //   136: iconst_2
-    //   137: ldc_w 357
-    //   140: iconst_4
-    //   141: anewarray 4	java/lang/Object
-    //   144: dup
-    //   145: iconst_0
-    //   146: aload_1
-    //   147: aastore
-    //   148: dup
-    //   149: iconst_1
-    //   150: aload_2
-    //   151: invokeinterface 149 1 0
-    //   156: invokestatic 155	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   159: aastore
-    //   160: dup
-    //   161: iconst_2
-    //   162: invokestatic 256	java/lang/System:currentTimeMillis	()J
-    //   165: lload 4
-    //   167: lsub
-    //   168: invokestatic 283	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   171: aastore
-    //   172: dup
-    //   173: iconst_3
-    //   174: iload_3
-    //   175: invokestatic 160	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   178: aastore
-    //   179: invokestatic 166	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   182: invokestatic 170	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   185: return
-    //   186: aload 6
-    //   188: invokevirtual 360	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   191: aload 6
-    //   193: invokevirtual 355	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   196: goto -94 -> 102
-    //   199: astore_1
-    //   200: aload 6
-    //   202: invokevirtual 355	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   205: aload_1
-    //   206: athrow
-    //   207: astore_1
-    //   208: aload 6
-    //   210: monitorexit
-    //   211: aload_1
-    //   212: athrow
+    //   63: aload 6
+    //   65: invokevirtual 354	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   68: aload 6
+    //   70: invokevirtual 357	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   73: goto +54 -> 127
+    //   76: astore_1
+    //   77: goto +143 -> 220
+    //   80: astore 7
+    //   82: new 229	java/lang/StringBuilder
+    //   85: dup
+    //   86: invokespecial 230	java/lang/StringBuilder:<init>	()V
+    //   89: astore 8
+    //   91: aload 8
+    //   93: ldc_w 359
+    //   96: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   99: pop
+    //   100: aload 8
+    //   102: aload 7
+    //   104: invokevirtual 268	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   107: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: pop
+    //   111: ldc 138
+    //   113: iconst_1
+    //   114: aload 8
+    //   116: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   119: aload 7
+    //   121: invokestatic 271	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   124: goto -56 -> 68
+    //   127: iload_3
+    //   128: ifeq +34 -> 162
+    //   131: aload_0
+    //   132: getfield 31	com/tencent/mobileqq/tofumsg/TofuManager:jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache	Lcom/tencent/commonsdk/cache/QQLruCache;
+    //   135: astore 6
+    //   137: aload 6
+    //   139: monitorenter
+    //   140: aload_0
+    //   141: getfield 31	com/tencent/mobileqq/tofumsg/TofuManager:jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache	Lcom/tencent/commonsdk/cache/QQLruCache;
+    //   144: aload_1
+    //   145: aload_2
+    //   146: invokevirtual 285	com/tencent/commonsdk/cache/QQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   149: pop
+    //   150: aload 6
+    //   152: monitorexit
+    //   153: goto +9 -> 162
+    //   156: astore_1
+    //   157: aload 6
+    //   159: monitorexit
+    //   160: aload_1
+    //   161: athrow
+    //   162: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   165: ifeq +54 -> 219
+    //   168: ldc 138
+    //   170: iconst_2
+    //   171: ldc_w 361
+    //   174: iconst_4
+    //   175: anewarray 4	java/lang/Object
+    //   178: dup
+    //   179: iconst_0
+    //   180: aload_1
+    //   181: aastore
+    //   182: dup
+    //   183: iconst_1
+    //   184: aload_2
+    //   185: invokeinterface 150 1 0
+    //   190: invokestatic 156	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   193: aastore
+    //   194: dup
+    //   195: iconst_2
+    //   196: invokestatic 257	java/lang/System:currentTimeMillis	()J
+    //   199: lload 4
+    //   201: lsub
+    //   202: invokestatic 292	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   205: aastore
+    //   206: dup
+    //   207: iconst_3
+    //   208: iload_3
+    //   209: invokestatic 161	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   212: aastore
+    //   213: invokestatic 167	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   216: invokestatic 171	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   219: return
+    //   220: aload 6
+    //   222: invokevirtual 357	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   225: goto +5 -> 230
+    //   228: aload_1
+    //   229: athrow
+    //   230: goto -2 -> 228
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	213	0	this	TofuManager
-    //   0	213	1	paramString	String
-    //   0	213	2	paramList	List<TofuItem>
-    //   0	213	3	paramBoolean	boolean
-    //   3	163	4	l	long
+    //   0	233	0	this	TofuManager
+    //   0	233	1	paramString	String
+    //   0	233	2	paramList	List<TofuItem>
+    //   0	233	3	paramBoolean	boolean
+    //   3	197	4	l	long
+    //   12	209	6	localObject1	Object
     //   25	13	7	localIterator	Iterator
-    //   63	30	7	localException	Exception
-    //   47	8	8	localTofuItem	TofuItem
+    //   80	40	7	localException	Exception
+    //   47	68	8	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   19	27	63	java/lang/Exception
-    //   27	60	63	java/lang/Exception
-    //   186	191	63	java/lang/Exception
-    //   19	27	199	finally
-    //   27	60	199	finally
-    //   65	97	199	finally
-    //   186	191	199	finally
-    //   115	128	207	finally
-    //   208	211	207	finally
+    //   19	27	76	finally
+    //   27	60	76	finally
+    //   63	68	76	finally
+    //   82	124	76	finally
+    //   19	27	80	java/lang/Exception
+    //   27	60	80	java/lang/Exception
+    //   63	68	80	java/lang/Exception
+    //   140	153	156	finally
+    //   157	160	156	finally
   }
   
   protected void a(List<oidb_0xe61.BeancurdCubeInfoResult> paramList, Comparator paramComparator)
   {
-    if ((paramList == null) || (paramList.size() <= 1)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() <= 1) {
+        return;
+      }
+      Collections.sort(paramList, paramComparator);
     }
-    Collections.sort(paramList, paramComparator);
   }
   
   public boolean a(String paramString, int paramInt)
   {
     String str = MobileQQ.getShortUinStr(paramString);
-    if ((TextUtils.isEmpty(paramString)) || (paramString.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) || (this.jdField_a_of_type_JavaUtilSet.contains(paramString)))
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramString)))
     {
-      QLog.i("Tofu_TofuManager", 1, String.format("startCheckPullTofuData return. [%s, %d]", new Object[] { str, Integer.valueOf(paramInt) }));
-      return false;
+      QLog.i("Tofu_TofuManager", 1, String.format("startCheckPullTofuData [%s, %d]", new Object[] { str, Integer.valueOf(paramInt) }));
+      this.jdField_a_of_type_JavaUtilSet.add(paramString);
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, paramInt, 0, paramString).sendToTarget();
+      return true;
     }
-    QLog.i("Tofu_TofuManager", 1, String.format("startCheckPullTofuData [%s, %d]", new Object[] { str, Integer.valueOf(paramInt) }));
-    this.jdField_a_of_type_JavaUtilSet.add(paramString);
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, paramInt, 0, paramString).sendToTarget();
-    return true;
+    QLog.i("Tofu_TofuManager", 1, String.format("startCheckPullTofuData return. [%s, %d]", new Object[] { str, Integer.valueOf(paramInt) }));
+    return false;
   }
   
   protected boolean a(String paramString, List<TofuItem> paramList)
@@ -445,45 +436,39 @@ public class TofuManager
     while (localIterator.hasNext())
     {
       oidb_0xe61.BeancurdCubeInfoResult localBeancurdCubeInfoResult = (oidb_0xe61.BeancurdCubeInfoResult)localIterator.next();
-      if ((localBeancurdCubeInfoResult == null) || (!localBeancurdCubeInfoResult.beancurdCubeInfo.has()) || (localBeancurdCubeInfoResult.beancurdCubeInfo.get() == null) || (!localBeancurdCubeInfoResult.beancurdCubeInfo.uint64_busi_id.has())) {
-        break label183;
-      }
-      int i = TofuConst.b((int)((oidb_0xe61.BeancurdCubeInfo)localBeancurdCubeInfoResult.beancurdCubeInfo.get()).uint64_busi_id.get());
-      if (i != -1)
+      if ((localBeancurdCubeInfoResult != null) && (localBeancurdCubeInfoResult.beancurdCubeInfo.has()) && (localBeancurdCubeInfoResult.beancurdCubeInfo.get() != null) && (localBeancurdCubeInfoResult.beancurdCubeInfo.uint64_busi_id.has()))
       {
-        paramList = a(paramList1, i);
-        if (paramList != null) {
-          break label180;
+        int i = TofuConst.b((int)((oidb_0xe61.BeancurdCubeInfo)localBeancurdCubeInfoResult.beancurdCubeInfo.get()).uint64_busi_id.get());
+        if (i != -1)
+        {
+          TofuItem localTofuItem = a(paramList1, i);
+          paramList = localTofuItem;
+          if (localTofuItem == null)
+          {
+            bool = true;
+            paramList = new TofuItem(paramString, i);
+            paramList1.add(paramList);
+          }
+          ((TofuDataHandlerFactory)this.jdField_a_of_type_ComTencentMobileqqLyricUtilSingleton.get(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)).a(i).a(paramList, localBeancurdCubeInfoResult, l);
         }
-        paramList = new TofuItem(paramString, i);
-        paramList1.add(paramList);
-        bool = true;
-        label145:
-        ((TofuDataHandlerFactory)this.jdField_a_of_type_ComTencentMobileqqLyricUtilSingleton.get(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)).a(i).a(paramList, localBeancurdCubeInfoResult, l);
       }
     }
-    label180:
-    label183:
-    for (;;)
-    {
-      break;
-      return bool;
-      break label145;
-    }
+    return bool;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return false;
-    case 0: 
-      a((String)paramMessage.obj, paramMessage.arg1);
+      if (i != 1) {
+        return false;
+      }
+      paramMessage = (Object[])paramMessage.obj;
+      a(((Boolean)paramMessage[0]).booleanValue(), (String)paramMessage[1], (List)paramMessage[2]);
       return false;
     }
-    paramMessage = (Object[])paramMessage.obj;
-    a(((Boolean)paramMessage[0]).booleanValue(), (String)paramMessage[1], (List)paramMessage[2]);
+    a((String)paramMessage.obj, paramMessage.arg1);
     return false;
   }
   
@@ -497,7 +482,7 @@ public class TofuManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuManager
  * JD-Core Version:    0.7.0.1
  */

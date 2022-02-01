@@ -45,10 +45,10 @@ public class BlockJUnit4ClassRunner
   
   private Class<? extends Throwable> getExpectedException(Test paramTest)
   {
-    if ((paramTest == null) || (paramTest.expected() == Test.None.class)) {
-      return null;
+    if ((paramTest != null) && (paramTest.expected() != Test.None.class)) {
+      return paramTest.expected();
     }
-    return paramTest.expected();
+    return null;
   }
   
   private List<MethodRule> getMethodRules(Object paramObject)
@@ -168,12 +168,11 @@ public class BlockJUnit4ClassRunner
   
   protected Statement possiblyExpectingExceptions(FrameworkMethod paramFrameworkMethod, Object paramObject, Statement paramStatement)
   {
-    paramObject = (Test)paramFrameworkMethod.getAnnotation(Test.class);
-    paramFrameworkMethod = paramStatement;
-    if (expectsException(paramObject)) {
-      paramFrameworkMethod = new ExpectException(paramStatement, getExpectedException(paramObject));
+    paramFrameworkMethod = (Test)paramFrameworkMethod.getAnnotation(Test.class);
+    if (expectsException(paramFrameworkMethod)) {
+      return new ExpectException(paramStatement, getExpectedException(paramFrameworkMethod));
     }
-    return paramFrameworkMethod;
+    return paramStatement;
   }
   
   protected List<MethodRule> rules(Object paramObject)
@@ -223,8 +222,13 @@ public class BlockJUnit4ClassRunner
   
   protected void validateNoNonStaticInnerClass(List<Throwable> paramList)
   {
-    if (getTestClass().isANonStaticInnerClass()) {
-      paramList.add(new Exception("The inner class " + getTestClass().getName() + " is not static."));
+    if (getTestClass().isANonStaticInnerClass())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("The inner class ");
+      localStringBuilder.append(getTestClass().getName());
+      localStringBuilder.append(" is not static.");
+      paramList.add(new Exception(localStringBuilder.toString()));
     }
   }
   
@@ -277,7 +281,7 @@ public class BlockJUnit4ClassRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.runners.BlockJUnit4ClassRunner
  * JD-Core Version:    0.7.0.1
  */

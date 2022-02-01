@@ -23,53 +23,70 @@ public class ReportLogUtil$MiniAppTransHandler
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.commandId != 65) || (localFileMsg.fileType != 24)) {}
-    do
+    Object localObject = (FileMsg)paramMessage.obj;
+    if ((localObject != null) && (((FileMsg)localObject).commandId == 65))
     {
-      do
-      {
+      if (((FileMsg)localObject).fileType != 24) {
         return;
-        if ((paramMessage.what != 1007) && (paramMessage.what != 1003)) {
-          break;
+      }
+      if ((paramMessage.what != 1007) && (paramMessage.what != 1003))
+      {
+        if (paramMessage.what == 1005)
+        {
+          QLog.d("BDH", 2, "handleMessage  STATUS_SEND_ERROR");
+          paramMessage = this.uploadLogListener;
+          if (paramMessage != null) {
+            paramMessage.onFail("send error, code:1005");
+          }
         }
+        else
+        {
+          if (paramMessage.what == 1001)
+          {
+            QLog.d("BDH", 2, "handleMessage  STATUS_SEND_START");
+            return;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handleMessage  unkown:");
+          ((StringBuilder)localObject).append(paramMessage.what);
+          QLog.d("BDH", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+      else
+      {
         QLog.d("BDH", 2, "handleMessage  STATUS_UPLOAD_FINISHED");
         paramMessage = new Bdh_extinfo.UploadPicExtInfo();
         try
         {
-          paramMessage.mergeFrom(localFileMsg.bdhExtendInfo);
+          paramMessage.mergeFrom(((FileMsg)localObject).bdhExtendInfo);
           paramMessage = paramMessage.bytes_download_url.get().toStringUtf8();
           if (this.uploadLogListener != null) {
             this.uploadLogListener.onSuccess(paramMessage);
           }
-          QLog.d("BDH", 2, "handleMessage :" + paramMessage);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handleMessage :");
+          ((StringBuilder)localObject).append(paramMessage);
+          QLog.d("BDH", 2, ((StringBuilder)localObject).toString());
           return;
         }
         catch (Exception paramMessage)
         {
-          QLog.d("BDH", 2, "handleMessage " + paramMessage);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handleMessage ");
+          ((StringBuilder)localObject).append(paramMessage);
+          QLog.d("BDH", 2, ((StringBuilder)localObject).toString());
+          localObject = this.uploadLogListener;
+          if (localObject != null) {
+            ((ReportLogUtil.UploadLogListener)localObject).onFail(paramMessage.getMessage());
+          }
         }
-      } while (this.uploadLogListener == null);
-      this.uploadLogListener.onFail(paramMessage.getMessage());
-      return;
-      if (paramMessage.what != 1005) {
-        break;
       }
-      QLog.d("BDH", 2, "handleMessage  STATUS_SEND_ERROR");
-    } while (this.uploadLogListener == null);
-    this.uploadLogListener.onFail("send error, code:1005");
-    return;
-    if (paramMessage.what == 1001)
-    {
-      QLog.d("BDH", 2, "handleMessage  STATUS_SEND_START");
-      return;
     }
-    QLog.d("BDH", 2, "handleMessage  unkown:" + paramMessage.what);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.ReportLogUtil.MiniAppTransHandler
  * JD-Core Version:    0.7.0.1
  */

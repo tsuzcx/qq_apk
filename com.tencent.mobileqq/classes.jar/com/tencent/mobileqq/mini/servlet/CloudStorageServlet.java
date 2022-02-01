@@ -42,40 +42,43 @@ public class CloudStorageServlet
   
   private ProtoBufRequest getRequest(Intent paramIntent, Packet paramPacket)
   {
-    if (paramIntent != null) {}
-    for (String str = paramIntent.getStringExtra("app_id");; str = "")
-    {
-      if ("set_cloud_storage".equals(this.type))
-      {
-        paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.SetUserCloudStorage");
-        return new SetCloudStorageRequest((HashMap)paramIntent.getSerializableExtra("key_data"), str);
-      }
-      if ("get_cloud_storage".equals(this.type))
-      {
-        paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.GetUserCloudStorage");
-        return new GetCloudStorageRequest(paramIntent.getStringArrayExtra("key_data"), str);
-      }
-      if ("remove_cloud_storage".equals(this.type))
-      {
-        paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.RemoveUserCloudStorage");
-        return new RemoveCloudStorageRequest(paramIntent.getStringArrayExtra("key_data"), str);
-      }
-      if ("get_group_cloud_storage".equals(this.type))
-      {
-        paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.GetGroupCloudStorage");
-        return new GetGroupCloudStorageRequest(paramIntent.getStringArrayExtra("key_data"), paramIntent.getStringExtra("key_shareticket"), str);
-      }
-      if ("get_friend_cloud_storage".equals(this.type))
-      {
-        paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.GetFriendCloudStorage");
-        return new GetFriendCloudStorageRequest(paramIntent.getStringArrayExtra("key_data"), str);
-      }
-      return null;
+    String str;
+    if (paramIntent != null) {
+      str = paramIntent.getStringExtra("app_id");
+    } else {
+      str = "";
     }
+    if ("set_cloud_storage".equals(this.type))
+    {
+      paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.SetUserCloudStorage");
+      return new SetCloudStorageRequest((HashMap)paramIntent.getSerializableExtra("key_data"), str);
+    }
+    if ("get_cloud_storage".equals(this.type))
+    {
+      paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.GetUserCloudStorage");
+      return new GetCloudStorageRequest(paramIntent.getStringArrayExtra("key_data"), str);
+    }
+    if ("remove_cloud_storage".equals(this.type))
+    {
+      paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.RemoveUserCloudStorage");
+      return new RemoveCloudStorageRequest(paramIntent.getStringArrayExtra("key_data"), str);
+    }
+    if ("get_group_cloud_storage".equals(this.type))
+    {
+      paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.GetGroupCloudStorage");
+      return new GetGroupCloudStorageRequest(paramIntent.getStringArrayExtra("key_data"), paramIntent.getStringExtra("key_shareticket"), str);
+    }
+    if ("get_friend_cloud_storage".equals(this.type))
+    {
+      paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.GetFriendCloudStorage");
+      return new GetFriendCloudStorageRequest(paramIntent.getStringArrayExtra("key_data"), str);
+    }
+    return null;
   }
   
   private void putData(Bundle paramBundle, PROTOCAL.StQWebRsp paramStQWebRsp)
   {
+    Object localObject1;
     Object localObject2;
     JSONObject localJSONObject1;
     if ("get_cloud_storage".equals(this.type))
@@ -94,76 +97,68 @@ public class CloudStorageServlet
         paramStQWebRsp.put(localJSONObject1);
       }
       paramBundle.putString("key_reslut_data", paramStQWebRsp.toString());
-    }
-    while ((!"get_friend_cloud_storage".equals(this.type)) && (!"get_group_cloud_storage".equals(this.type))) {
       return;
     }
-    Object localObject1 = null;
-    if ("get_friend_cloud_storage".equals(this.type))
+    if (("get_friend_cloud_storage".equals(this.type)) || ("get_group_cloud_storage".equals(this.type)))
     {
-      localObject1 = new CloudStorage.StGetFriendCloudStorageRsp();
-      ((CloudStorage.StGetFriendCloudStorageRsp)localObject1).mergeFrom(paramStQWebRsp.busiBuff.get().toByteArray());
-      localObject1 = ((CloudStorage.StGetFriendCloudStorageRsp)localObject1).data.get();
-      label209:
-      if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-        break label503;
+      localObject1 = null;
+      if ("get_friend_cloud_storage".equals(this.type))
+      {
+        localObject1 = new CloudStorage.StGetFriendCloudStorageRsp();
+        ((CloudStorage.StGetFriendCloudStorageRsp)localObject1).mergeFrom(paramStQWebRsp.busiBuff.get().toByteArray());
+        localObject1 = ((CloudStorage.StGetFriendCloudStorageRsp)localObject1).data.get();
+      }
+      else if ("get_group_cloud_storage".equals(this.type))
+      {
+        localObject1 = new CloudStorage.StGetGroupCloudStorageRsp();
+        ((CloudStorage.StGetGroupCloudStorageRsp)localObject1).mergeFrom(paramStQWebRsp.busiBuff.get().toByteArray());
+        localObject1 = ((CloudStorage.StGetGroupCloudStorageRsp)localObject1).data.get();
+      }
+      if (localObject1 != null)
+      {
+        if (((List)localObject1).isEmpty()) {
+          return;
+        }
+        try
+        {
+          paramStQWebRsp = new JSONObject();
+          localObject2 = new JSONArray();
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            Object localObject3 = (CloudStorage.StUserGameData)((Iterator)localObject1).next();
+            localJSONObject1 = new JSONObject();
+            localJSONObject1.put("avatarUrl", ((CloudStorage.StUserGameData)localObject3).avatarUrl.get());
+            localJSONObject1.put("nickname", ((CloudStorage.StUserGameData)localObject3).nickname.get());
+            localJSONObject1.put("openid", ((CloudStorage.StUserGameData)localObject3).openid.get());
+            if ((((CloudStorage.StUserGameData)localObject3).KVDataList != null) && (((CloudStorage.StUserGameData)localObject3).KVDataList.size() > 0))
+            {
+              Object localObject4 = ((CloudStorage.StUserGameData)localObject3).KVDataList.get();
+              localObject3 = new JSONArray();
+              localObject4 = ((List)localObject4).iterator();
+              while (((Iterator)localObject4).hasNext())
+              {
+                CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject4).next();
+                JSONObject localJSONObject2 = new JSONObject();
+                localJSONObject2.put("key", localStKVData.key.get());
+                localJSONObject2.put("value", localStKVData.value.get());
+                ((JSONArray)localObject3).put(localJSONObject2);
+              }
+              localJSONObject1.put("KVDataList", localObject3);
+            }
+            ((JSONArray)localObject2).put(localJSONObject1);
+          }
+          paramStQWebRsp.put("data", localObject2);
+          paramBundle.putString("key_reslut_data", paramStQWebRsp.toString());
+          return;
+        }
+        catch (Throwable paramBundle)
+        {
+          paramBundle.printStackTrace();
+          QLog.d("[minigame] CloudStorageServlet", 1, "GET_FRIEND_CLOUD_STORAGE fail", paramBundle);
+        }
       }
     }
-    for (;;)
-    {
-      Object localObject3;
-      try
-      {
-        paramStQWebRsp = new JSONObject();
-        localObject2 = new JSONArray();
-        localObject1 = ((List)localObject1).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label526;
-        }
-        localObject3 = (CloudStorage.StUserGameData)((Iterator)localObject1).next();
-        localJSONObject1 = new JSONObject();
-        localJSONObject1.put("avatarUrl", ((CloudStorage.StUserGameData)localObject3).avatarUrl.get());
-        localJSONObject1.put("nickname", ((CloudStorage.StUserGameData)localObject3).nickname.get());
-        localJSONObject1.put("openid", ((CloudStorage.StUserGameData)localObject3).openid.get());
-        if ((((CloudStorage.StUserGameData)localObject3).KVDataList == null) || (((CloudStorage.StUserGameData)localObject3).KVDataList.size() <= 0)) {
-          break label515;
-        }
-        Object localObject4 = ((CloudStorage.StUserGameData)localObject3).KVDataList.get();
-        localObject3 = new JSONArray();
-        localObject4 = ((List)localObject4).iterator();
-        if (!((Iterator)localObject4).hasNext()) {
-          break label505;
-        }
-        CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject4).next();
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("key", localStKVData.key.get());
-        localJSONObject2.put("value", localStKVData.value.get());
-        ((JSONArray)localObject3).put(localJSONObject2);
-        continue;
-        if (!"get_group_cloud_storage".equals(this.type)) {
-          break label209;
-        }
-      }
-      catch (Throwable paramBundle)
-      {
-        paramBundle.printStackTrace();
-        QLog.d("[minigame] CloudStorageServlet", 1, "GET_FRIEND_CLOUD_STORAGE fail", paramBundle);
-        return;
-      }
-      localObject1 = new CloudStorage.StGetGroupCloudStorageRsp();
-      ((CloudStorage.StGetGroupCloudStorageRsp)localObject1).mergeFrom(paramStQWebRsp.busiBuff.get().toByteArray());
-      localObject1 = ((CloudStorage.StGetGroupCloudStorageRsp)localObject1).data.get();
-      break label209;
-      label503:
-      break;
-      label505:
-      localJSONObject1.put("KVDataList", localObject3);
-      label515:
-      ((JSONArray)localObject2).put(localJSONObject1);
-    }
-    label526:
-    paramStQWebRsp.put("data", localObject2);
-    paramBundle.putString("key_reslut_data", paramStQWebRsp.toString());
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -173,57 +168,69 @@ public class CloudStorageServlet
     {
       try
       {
-        localObject = paramIntent.getStringExtra("request_type");
-        QLog.i("[minigame] CloudStorageServlet", 1, "onReceive type:" + this.type + ", intent.type:" + (String)localObject);
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(this.type))) {
-          this.type = ((String)localObject);
+        localObject1 = paramIntent.getStringExtra("request_type");
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("onReceive type:");
+        ((StringBuilder)localObject3).append(this.type);
+        ((StringBuilder)localObject3).append(", intent.type:");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        QLog.i("[minigame] CloudStorageServlet", 1, ((StringBuilder)localObject3).toString());
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(this.type))) {
+          this.type = ((String)localObject1);
         }
-        if ((!"set_cloud_storage".equals(this.type)) && (!"remove_cloud_storage".equals(this.type))) {
-          continue;
+        boolean bool = "set_cloud_storage".equals(this.type);
+        if ((!bool) && (!"remove_cloud_storage".equals(this.type)))
+        {
+          bool = "get_cloud_storage".equals(this.type);
+          if ((bool) || ("get_friend_cloud_storage".equals(this.type)) || ("get_group_cloud_storage".equals(this.type)))
+          {
+            if ("get_friend_cloud_storage".equals(this.type))
+            {
+              i = 1019;
+            }
+            else
+            {
+              if (!"get_group_cloud_storage".equals(this.type)) {
+                break label394;
+              }
+              i = 1018;
+            }
+            localObject1 = new Bundle();
+            localObject3 = new PROTOCAL.StQWebRsp();
+            ((PROTOCAL.StQWebRsp)localObject3).mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
+            putData((Bundle)localObject1, (PROTOCAL.StQWebRsp)localObject3);
+            ((Bundle)localObject1).putInt("key_index", (int)((PROTOCAL.StQWebRsp)localObject3).Seq.get());
+            notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, MiniAppObserver.class);
+          }
         }
-        if (!"set_cloud_storage".equals(this.type)) {
-          continue;
+        else
+        {
+          if (!"set_cloud_storage".equals(this.type)) {
+            break label401;
+          }
+          i = 1015;
+          localObject1 = new Bundle();
+          localObject3 = new PROTOCAL.StQWebRsp();
+          ((PROTOCAL.StQWebRsp)localObject3).mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
+          ((Bundle)localObject1).putInt("key_index", (int)((PROTOCAL.StQWebRsp)localObject3).Seq.get());
+          notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, MiniAppObserver.class);
         }
-        i = 1015;
-        localObject = new Bundle();
-        localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
-        ((Bundle)localObject).putInt("key_index", (int)localStQWebRsp.Seq.get());
-        notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), (Bundle)localObject, MiniAppObserver.class);
       }
       catch (Throwable localThrowable)
       {
-        Object localObject;
-        PROTOCAL.StQWebRsp localStQWebRsp;
-        QLog.e("[minigame] CloudStorageServlet", 1, "onReceive error", localThrowable);
-        continue;
-        boolean bool = "get_group_cloud_storage".equals(this.type);
-        if (!bool) {
-          continue;
-        }
-        int i = 1018;
+        Object localObject1;
         continue;
       }
+      QLog.e("[minigame] CloudStorageServlet", 1, "onReceive error", (Throwable)localObject1);
       doReport(paramIntent, paramFromServiceMsg);
       return;
-      localObject = null;
+      Object localObject2 = null;
       continue;
+      label394:
+      int i = 1016;
+      continue;
+      label401:
       i = 1017;
-      continue;
-      if (("get_cloud_storage".equals(this.type)) || ("get_friend_cloud_storage".equals(this.type)) || ("get_group_cloud_storage".equals(this.type)))
-      {
-        i = 1016;
-        if (!"get_friend_cloud_storage".equals(this.type)) {
-          continue;
-        }
-        i = 1019;
-        localObject = new Bundle();
-        localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
-        putData((Bundle)localObject, localStQWebRsp);
-        ((Bundle)localObject).putInt("key_index", (int)localStQWebRsp.Seq.get());
-        notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), (Bundle)localObject, MiniAppObserver.class);
-      }
     }
   }
   
@@ -247,7 +254,7 @@ public class CloudStorageServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.CloudStorageServlet
  * JD-Core Version:    0.7.0.1
  */

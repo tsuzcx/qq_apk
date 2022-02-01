@@ -24,7 +24,8 @@ class PagerSnapHelper$1
   
   protected void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
   {
-    paramView = this.this$0.calculateDistanceToFinalSnap(this.this$0.mRecyclerView.getLayoutManager(), paramView);
+    paramState = this.this$0;
+    paramView = paramState.calculateDistanceToFinalSnap(paramState.mRecyclerView.getLayoutManager(), paramView);
     int i = paramView[0];
     int j = paramView[1];
     int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
@@ -35,7 +36,7 @@ class PagerSnapHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.PagerSnapHelper.1
  * JD-Core Version:    0.7.0.1
  */

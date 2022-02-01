@@ -19,6 +19,7 @@ import com.tencent.qqlive.module.videoreport.constants.ClickPolicy;
 import com.tencent.qqlive.module.videoreport.constants.EndExposurePolicy;
 import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
+import com.tencent.qqlive.module.videoreport.data.IDynamicParams;
 import com.tencent.qqlive.module.videoreport.data.IElementDynamicParams;
 import com.tencent.qqlive.module.videoreport.dtreport.api.DTConfig;
 import com.tencent.qqlive.module.videoreport.dtreport.api.PageSearchMode;
@@ -63,6 +64,8 @@ public abstract interface IVideoReport
   @Deprecated
   public abstract ReportPolicy getElementReportPolicy(Object paramObject);
   
+  public abstract PageInfo getPageInfo(View paramView);
+  
   @PageSearchMode
   public abstract Integer getPageSearchMode(Object paramObject);
   
@@ -77,12 +80,12 @@ public abstract interface IVideoReport
   public abstract void notifyViewDetach(View paramView1, View paramView2);
   
   @Nullable
-  public abstract Map<String, Object> pageInfoForView(View paramView);
+  public abstract Map<String, Object> pageInfoForView(String paramString, View paramView);
   
   public abstract void pageLogicDestroy(Object paramObject);
   
   @Nullable
-  public abstract Map<String, Object> paramsForView(View paramView);
+  public abstract Map<String, Object> paramsForView(String paramString, View paramView);
   
   public abstract void registerEventDynamicParams(IEventDynamicParams paramIEventDynamicParams);
   
@@ -99,11 +102,13 @@ public abstract interface IVideoReport
   
   public abstract void removePublicParam(String paramString);
   
-  public abstract void reportEvent(String paramString, Object paramObject, Map<String, ?> paramMap);
+  public abstract void reportCustomEvent(String paramString, Object paramObject, Map<String, ?> paramMap);
   
-  public abstract void reportEvent(String paramString, Map<String, ?> paramMap);
+  public abstract boolean reportEvent(String paramString, Object paramObject, Map<String, ?> paramMap);
   
-  public abstract void reportEventWithoutFormat(String paramString1, Map<String, Object> paramMap, String paramString2);
+  public abstract boolean reportEvent(String paramString, Map<String, ?> paramMap);
+  
+  public abstract boolean reportEventWithoutFormat(String paramString1, Map<String, Object> paramMap, String paramString2);
   
   public abstract void reportStdEvent(StdEventCode paramStdEventCode, IEventParamsBuilder paramIEventParamsBuilder);
   
@@ -125,6 +130,7 @@ public abstract interface IVideoReport
   
   public abstract void setElementClickPolicy(Object paramObject, ClickPolicy paramClickPolicy);
   
+  @Deprecated
   public abstract void setElementDynamicParams(Object paramObject, IElementDynamicParams paramIElementDynamicParams);
   
   public abstract void setElementEndExposePolicy(Object paramObject, EndExposurePolicy paramEndExposurePolicy);
@@ -152,6 +158,8 @@ public abstract interface IVideoReport
   
   public abstract void setEventAdditionalReport(IAdditionalReportListener paramIAdditionalReportListener);
   
+  public abstract void setEventDynamicParams(Object paramObject, @Nullable IDynamicParams paramIDynamicParams);
+  
   public abstract void setLogicParent(View paramView1, View paramView2);
   
   public abstract void setPageBodyContentRange(View paramView, int paramInt1, int paramInt2);
@@ -172,6 +180,7 @@ public abstract interface IVideoReport
   
   public abstract void setTestMode(boolean paramBoolean);
   
+  @Deprecated
   public abstract void setVideoReportConfig(@NonNull DTConfig paramDTConfig);
   
   public abstract void startNewSession(SessionChangeReason paramSessionChangeReason);
@@ -179,6 +188,10 @@ public abstract interface IVideoReport
   public abstract void startWithComponent(Application paramApplication, IVideoReportComponent paramIVideoReportComponent);
   
   public abstract void startWithConfiguration(Application paramApplication, Configuration paramConfiguration);
+  
+  public abstract void supportPlayerReport(boolean paramBoolean);
+  
+  public abstract void supportWebViewReport(boolean paramBoolean);
   
   public abstract void traverseExposure();
   
@@ -195,11 +208,11 @@ public abstract interface IVideoReport
   public abstract void updateVideoPlayerInfo(@NonNull Object paramObject, @NonNull VideoBaseEntity paramVideoBaseEntity);
   
   @Nullable
-  public abstract Map<String, Object> viewTreeParamsForView(View paramView);
+  public abstract Map<String, Object> viewTreeParamsForView(String paramString, View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inner.IVideoReport
  * JD-Core Version:    0.7.0.1
  */

@@ -19,18 +19,15 @@ final class PreviewPhotoPage$onCreateView$2
     paramView = (String)paramView;
     if (this.a.a().contains(paramView)) {
       this.a.a().remove(paramView);
-    }
-    for (;;)
-    {
-      PreviewPhotoPage.a(this.a);
-      return;
+    } else {
       this.a.a().add(paramView);
     }
+    PreviewPhotoPage.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.PreviewPhotoPage.onCreateView.2
  * JD-Core Version:    0.7.0.1
  */

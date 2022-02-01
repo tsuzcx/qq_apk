@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.emoticon;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.api.IEmojiManagerService;
 import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
@@ -15,30 +16,31 @@ class VasEmojiManager$1
   public void run()
   {
     Object localObject = this.this$0.a();
-    if ((!new File(VasEmojiManager.b(this.jdField_a_of_type_JavaLangString)).exists()) || (!((EmojiManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, true, false)))
+    boolean bool = new File(VasEmojiManagerContstant.getSavePath(this.jdField_a_of_type_JavaLangString)).exists();
+    int i = 1;
+    if ((!bool) || (!((IEmojiManagerService)localObject).isH5MagicFacePackageIntact(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, true, false)))
     {
-      localObject = (IVasQuickUpdateService)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+      localObject = (IVasQuickUpdateService)this.this$0.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
       if (localObject != null)
       {
-        EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
+        ((IEmojiManagerService)this.this$0.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IEmojiManagerService.class)).getEmojiListenerManager().notifyPackageStart(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
         ((IVasQuickUpdateService)localObject).downloadItem(1004L, this.jdField_a_of_type_JavaLangString, "VasEmojiManager");
+        break label121;
       }
     }
-    for (int i = 1;; i = 0)
+    i = 0;
+    label121:
+    if (i == 0)
     {
-      if (i == 0)
-      {
-        localObject = this.this$0.a();
-        ((EmojiManager)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
-        ((EmojiManager)localObject).a((Bundle)this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), null, false, 0, "nomatch", 0L, 0);
-      }
-      return;
+      localObject = this.this$0.a();
+      ((IEmojiManagerService)localObject).getStatusMap().remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
+      ((IEmojiManagerService)localObject).handleEmoticonPackageDownloaded((Bundle)this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), null, false, 0, "nomatch", 0L, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.VasEmojiManager.1
  * JD-Core Version:    0.7.0.1
  */

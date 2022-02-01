@@ -12,13 +12,13 @@ class DownloadDialogFragment$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     DownloadDialogFragment.a(this.a, 1);
-    DownloadDialogFragment.a(this.a.getActivity());
+    DownloadDialogFragment.a(this.a.getBaseActivity());
     ReportHelperKt.a("0X800B53C");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.DownloadDialogFragment.2
  * JD-Core Version:    0.7.0.1
  */

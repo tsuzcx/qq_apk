@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 public class StandardGifDecoder
   implements GifDecoder
 {
-  private static final String jdField_a_of_type_JavaLangString = StandardGifDecoder.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = "StandardGifDecoder";
   private int jdField_a_of_type_Int;
   @NotNull
   private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
@@ -52,248 +52,247 @@ public class StandardGifDecoder
   private int a(int paramInt1, int paramInt2, int paramInt3)
   {
     int i1 = paramInt1;
-    int i = 0;
-    int j = 0;
-    int k = 0;
+    int n = 0;
     int m = 0;
-    int i7;
+    int k = 0;
+    int j = 0;
+    byte[] arrayOfByte;
     int i6;
-    int i5;
     int i4;
     int i3;
-    for (int n = 0; (i1 < this.jdField_c_of_type_Int + paramInt1) && (i1 < this.jdField_d_of_type_ArrayOfByte.length) && (i1 < paramInt2); n = i2)
+    for (int i = 0; i1 < this.jdField_c_of_type_Int + paramInt1; i = i2)
     {
-      i2 = this.jdField_d_of_type_ArrayOfByte[i1];
-      i7 = this.jdField_b_of_type_ArrayOfInt[(i2 & 0xFF)];
-      i6 = i;
-      i5 = j;
+      arrayOfByte = this.jdField_d_of_type_ArrayOfByte;
+      if ((i1 >= arrayOfByte.length) || (i1 >= paramInt2)) {
+        break;
+      }
+      i2 = arrayOfByte[i1];
+      int i7 = this.jdField_b_of_type_ArrayOfInt[(i2 & 0xFF)];
+      i6 = n;
+      i5 = m;
       i4 = k;
-      i3 = m;
-      i2 = n;
+      i3 = j;
+      i2 = i;
       if (i7 != 0)
       {
-        i2 = n + (i7 >> 24 & 0xFF);
-        i3 = m + (i7 >> 16 & 0xFF);
+        i6 = n + (i7 >> 24 & 0xFF);
+        i5 = m + (i7 >> 16 & 0xFF);
         i4 = k + (i7 >> 8 & 0xFF);
-        i5 = j + (i7 & 0xFF);
-        i6 = i + 1;
+        i3 = j + (i7 & 0xFF);
+        i2 = i + 1;
       }
       i1 += 1;
-      i = i6;
-      j = i5;
+      n = i6;
+      m = i5;
       k = i4;
-      m = i3;
+      j = i3;
     }
-    int i2 = paramInt1 + paramInt3;
-    i1 = n;
-    n = m;
-    m = k;
-    k = j;
-    j = i;
-    i = i2;
-    while ((i < paramInt1 + paramInt3 + this.jdField_c_of_type_Int) && (i < this.jdField_d_of_type_ArrayOfByte.length) && (i < paramInt2))
+    int i5 = paramInt1 + paramInt3;
+    paramInt1 = i5;
+    int i2 = n;
+    while (paramInt1 < this.jdField_c_of_type_Int + i5)
     {
-      i2 = this.jdField_d_of_type_ArrayOfByte[i];
-      i7 = this.jdField_b_of_type_ArrayOfInt[(i2 & 0xFF)];
-      i6 = j;
-      i5 = k;
-      i4 = m;
-      i3 = n;
-      i2 = i1;
-      if (i7 != 0)
-      {
-        i2 = i1 + (i7 >> 24 & 0xFF);
-        i3 = n + (i7 >> 16 & 0xFF);
-        i4 = m + (i7 >> 8 & 0xFF);
-        i5 = k + (i7 & 0xFF);
-        i6 = j + 1;
+      arrayOfByte = this.jdField_d_of_type_ArrayOfByte;
+      if ((paramInt1 >= arrayOfByte.length) || (paramInt1 >= paramInt2)) {
+        break;
       }
-      i += 1;
-      j = i6;
-      k = i5;
-      m = i4;
-      n = i3;
-      i1 = i2;
+      paramInt3 = arrayOfByte[paramInt1];
+      i6 = this.jdField_b_of_type_ArrayOfInt[(paramInt3 & 0xFF)];
+      i4 = i2;
+      i3 = m;
+      i1 = k;
+      n = j;
+      paramInt3 = i;
+      if (i6 != 0)
+      {
+        i4 = i2 + (i6 >> 24 & 0xFF);
+        i3 = m + (i6 >> 16 & 0xFF);
+        i1 = k + (i6 >> 8 & 0xFF);
+        n = j + (i6 & 0xFF);
+        paramInt3 = i + 1;
+      }
+      paramInt1 += 1;
+      i2 = i4;
+      m = i3;
+      k = i1;
+      j = n;
+      i = paramInt3;
     }
-    if (j == 0) {
+    if (i == 0) {
       return 0;
     }
-    return i1 / j << 24 | n / j << 16 | m / j << 8 | k / j;
+    return i2 / i << 24 | m / i << 16 | k / i << 8 | j / i;
   }
   
   private int a(GifFrame paramGifFrame)
   {
-    if (paramGifFrame != null) {
-      this.jdField_a_of_type_JavaNioByteBuffer.position(paramGifFrame.h);
-    }
-    for (int i = paramGifFrame.jdField_c_of_type_Int * paramGifFrame.jdField_d_of_type_Int;; i = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_c_of_type_Int * this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_d_of_type_Int)
+    int i;
+    if (paramGifFrame != null)
     {
-      if ((this.jdField_d_of_type_ArrayOfByte == null) || (this.jdField_d_of_type_ArrayOfByte.length < i)) {
-        this.jdField_d_of_type_ArrayOfByte = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(i);
-      }
-      if (this.jdField_a_of_type_ArrayOfShort == null) {
-        this.jdField_a_of_type_ArrayOfShort = new short[4096];
-      }
-      if (this.jdField_b_of_type_ArrayOfByte == null) {
-        this.jdField_b_of_type_ArrayOfByte = new byte[4096];
-      }
-      if (this.jdField_c_of_type_ArrayOfByte == null) {
-        this.jdField_c_of_type_ArrayOfByte = new byte[4097];
-      }
-      return i;
+      this.jdField_a_of_type_JavaNioByteBuffer.position(paramGifFrame.h);
+      i = paramGifFrame.jdField_c_of_type_Int * paramGifFrame.jdField_d_of_type_Int;
     }
+    else
+    {
+      i = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_c_of_type_Int;
+      i = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_d_of_type_Int * i;
+    }
+    paramGifFrame = this.jdField_d_of_type_ArrayOfByte;
+    if ((paramGifFrame == null) || (paramGifFrame.length < i)) {
+      this.jdField_d_of_type_ArrayOfByte = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(i);
+    }
+    if (this.jdField_a_of_type_ArrayOfShort == null) {
+      this.jdField_a_of_type_ArrayOfShort = new short[4096];
+    }
+    if (this.jdField_b_of_type_ArrayOfByte == null) {
+      this.jdField_b_of_type_ArrayOfByte = new byte[4096];
+    }
+    if (this.jdField_c_of_type_ArrayOfByte == null) {
+      this.jdField_c_of_type_ArrayOfByte = new byte[4097];
+    }
+    return i;
   }
   
   private Bitmap a(GifFrame paramGifFrame1, GifFrame paramGifFrame2)
   {
     int[] arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
+    int i = 0;
     if (paramGifFrame2 == null)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      paramGifFrame2 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      if (paramGifFrame2 != null) {
+        this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(paramGifFrame2);
       }
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       Arrays.fill(arrayOfInt, 0);
     }
-    label66:
-    while (paramGifFrame2.e <= 0)
+    else if (paramGifFrame2.e > 0)
     {
-      c(paramGifFrame1);
-      if ((!paramGifFrame1.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Int == 1)) {
-        break;
-      }
-      b(paramGifFrame1);
-      if ((this.jdField_a_of_type_Boolean) && ((paramGifFrame1.e == 0) || (paramGifFrame1.e == 1)))
+      if (paramGifFrame2.e == 2)
       {
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-          this.jdField_a_of_type_AndroidGraphicsBitmap = b();
-        }
-        this.jdField_a_of_type_AndroidGraphicsBitmap.setPixels(arrayOfInt, 0, this.e, 0, 0, this.e, this.jdField_d_of_type_Int);
-      }
-      paramGifFrame1 = b();
-      paramGifFrame1.setPixels(arrayOfInt, 0, this.e, 0, 0, this.e, this.jdField_d_of_type_Int);
-      return paramGifFrame1;
-    }
-    int j;
-    if (paramGifFrame2.e == 2)
-    {
-      if (paramGifFrame1.jdField_b_of_type_Boolean) {
-        break label394;
-      }
-      j = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.h;
-      i = j;
-      if (paramGifFrame1.jdField_a_of_type_ArrayOfInt != null)
-      {
-        i = j;
-        if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.f != paramGifFrame1.f) {}
-      }
-    }
-    label394:
-    for (int i = 0;; i = 0)
-    {
-      int n = paramGifFrame2.jdField_d_of_type_Int / this.jdField_c_of_type_Int;
-      j = paramGifFrame2.jdField_b_of_type_Int / this.jdField_c_of_type_Int;
-      int i1 = paramGifFrame2.jdField_c_of_type_Int / this.jdField_c_of_type_Int;
-      int k = paramGifFrame2.jdField_a_of_type_Int / this.jdField_c_of_type_Int;
-      int m = j * this.e + k;
-      int i2 = this.e;
-      j = m;
-      while (j < m + n * i2)
-      {
-        k = j;
-        while (k < j + i1)
+        int j = i;
+        if (!paramGifFrame1.jdField_b_of_type_Boolean)
         {
-          arrayOfInt[k] = i;
-          k += 1;
+          j = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.h;
+          if ((paramGifFrame1.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.f == paramGifFrame1.f)) {
+            j = i;
+          }
         }
-        j += this.e;
+        int n = paramGifFrame2.jdField_d_of_type_Int / this.jdField_c_of_type_Int;
+        i = paramGifFrame2.jdField_b_of_type_Int / this.jdField_c_of_type_Int;
+        int i1 = paramGifFrame2.jdField_c_of_type_Int / this.jdField_c_of_type_Int;
+        int k = paramGifFrame2.jdField_a_of_type_Int / this.jdField_c_of_type_Int;
+        int i2 = this.e;
+        int m = i * i2 + k;
+        i = m;
+        while (i < n * i2 + m)
+        {
+          k = i;
+          while (k < i + i1)
+          {
+            arrayOfInt[k] = j;
+            k += 1;
+          }
+          i += this.e;
+        }
       }
-      break;
-      if (paramGifFrame2.e != 3) {
-        break;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+      if (paramGifFrame2.e == 3)
       {
-        Arrays.fill(arrayOfInt, 0);
-        break;
+        paramGifFrame2 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        if (paramGifFrame2 == null)
+        {
+          Arrays.fill(arrayOfInt, 0);
+        }
+        else
+        {
+          i = this.e;
+          paramGifFrame2.getPixels(arrayOfInt, 0, i, 0, 0, i, this.jdField_d_of_type_Int);
+        }
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap.getPixels(arrayOfInt, 0, this.e, 0, 0, this.e, this.jdField_d_of_type_Int);
-      break;
-      a(paramGifFrame1);
-      break label66;
     }
+    c(paramGifFrame1);
+    if ((!paramGifFrame1.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Int == 1)) {
+      a(paramGifFrame1);
+    } else {
+      b(paramGifFrame1);
+    }
+    if ((this.jdField_a_of_type_Boolean) && ((paramGifFrame1.e == 0) || (paramGifFrame1.e == 1)))
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = b();
+      }
+      paramGifFrame1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      i = this.e;
+      paramGifFrame1.setPixels(arrayOfInt, 0, i, 0, 0, i, this.jdField_d_of_type_Int);
+    }
+    paramGifFrame1 = b();
+    i = this.e;
+    paramGifFrame1.setPixels(arrayOfInt, 0, i, 0, 0, i, this.jdField_d_of_type_Int);
+    return paramGifFrame1;
   }
   
   private void a(GifFrame paramGifFrame)
   {
+    Object localObject = paramGifFrame;
     int[] arrayOfInt1 = this.jdField_c_of_type_ArrayOfInt;
-    int i4 = paramGifFrame.jdField_d_of_type_Int;
-    int i5 = paramGifFrame.jdField_b_of_type_Int;
-    int i6 = paramGifFrame.jdField_c_of_type_Int;
-    int i7 = paramGifFrame.jdField_a_of_type_Int;
-    int j;
-    int i8;
-    byte[] arrayOfByte;
-    int[] arrayOfInt2;
+    int i4 = ((GifFrame)localObject).jdField_d_of_type_Int;
+    int i5 = ((GifFrame)localObject).jdField_b_of_type_Int;
+    int i6 = ((GifFrame)localObject).jdField_c_of_type_Int;
+    int i7 = ((GifFrame)localObject).jdField_a_of_type_Int;
     int i;
-    int k;
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      j = 1;
-      i8 = this.e;
-      arrayOfByte = this.jdField_d_of_type_ArrayOfByte;
-      arrayOfInt2 = this.jdField_b_of_type_ArrayOfInt;
-      i = -1;
-      k = 0;
+    if (this.jdField_a_of_type_Int == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    for (;;)
+    int i8 = this.e;
+    localObject = this.jdField_d_of_type_ArrayOfByte;
+    int[] arrayOfInt2 = this.jdField_b_of_type_ArrayOfInt;
+    int j = 0;
+    int m = -1;
+    while (j < i4)
     {
-      if (k >= i4) {
-        break label219;
-      }
-      int i2 = (k + i5) * i8;
-      int i1 = i2 + i7;
+      int k = (j + i5) * i8;
+      int i1 = k + i7;
       int n = i1 + i6;
-      int m = n;
-      if (i2 + i8 < n) {
-        m = i2 + i8;
+      int i2 = k + i8;
+      k = n;
+      if (i2 < n) {
+        k = i2;
       }
-      n = paramGifFrame.jdField_c_of_type_Int;
-      n *= k;
-      label127:
-      if (i1 < m)
+      n = paramGifFrame.jdField_c_of_type_Int * j;
+      while (i1 < k)
       {
-        int i3 = arrayOfByte[n];
+        int i3 = localObject[n];
         int i9 = i3 & 0xFF;
-        i2 = i;
-        if (i9 != i)
+        i2 = m;
+        if (i9 != m)
         {
           i2 = arrayOfInt2[i9];
-          if (i2 == 0) {
-            break label203;
+          if (i2 != 0)
+          {
+            arrayOfInt1[i1] = i2;
+            i2 = m;
           }
-          arrayOfInt1[i1] = i2;
+          else
+          {
+            i2 = i3;
+          }
         }
-        for (i2 = i;; i2 = i3)
-        {
-          i1 += 1;
-          n += 1;
-          i = i2;
-          break label127;
-          j = 0;
-          break;
-        }
+        n += 1;
+        i1 += 1;
+        m = i2;
       }
-      label203:
-      k += 1;
+      j += 1;
     }
-    label219:
-    if (((this.jdField_a_of_type_JavaLangBoolean != null) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue())) || ((this.jdField_a_of_type_JavaLangBoolean == null) && (j != 0) && (i != -1))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
-      return;
+    paramGifFrame = this.jdField_a_of_type_JavaLangBoolean;
+    boolean bool;
+    if (((paramGifFrame != null) && (paramGifFrame.booleanValue())) || ((this.jdField_a_of_type_JavaLangBoolean == null) && (i != 0) && (m != -1))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
   }
   
   private int b()
@@ -303,179 +302,183 @@ public class StandardGifDecoder
   
   private Bitmap b()
   {
-    if ((this.jdField_a_of_type_JavaLangBoolean == null) || (this.jdField_a_of_type_JavaLangBoolean.booleanValue())) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = this.jdField_a_of_type_AndroidGraphicsBitmap$Config)
-    {
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(this.e, this.jdField_d_of_type_Int, (Bitmap.Config)localObject);
-      ((Bitmap)localObject).setHasAlpha(true);
-      return localObject;
+    Object localObject = this.jdField_a_of_type_JavaLangBoolean;
+    if ((localObject != null) && (!((Boolean)localObject).booleanValue())) {
+      localObject = this.jdField_a_of_type_AndroidGraphicsBitmap$Config;
+    } else {
+      localObject = Bitmap.Config.ARGB_8888;
     }
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(this.e, this.jdField_d_of_type_Int, (Bitmap.Config)localObject);
+    ((Bitmap)localObject).setHasAlpha(true);
+    return localObject;
   }
   
   private void b(GifFrame paramGifFrame)
   {
     int[] arrayOfInt1 = this.jdField_c_of_type_ArrayOfInt;
-    int i6 = paramGifFrame.jdField_d_of_type_Int / this.jdField_c_of_type_Int;
-    int i7 = paramGifFrame.jdField_b_of_type_Int / this.jdField_c_of_type_Int;
-    int i8 = paramGifFrame.jdField_c_of_type_Int / this.jdField_c_of_type_Int;
-    int i9 = paramGifFrame.jdField_a_of_type_Int / this.jdField_c_of_type_Int;
-    int k = 1;
-    int j = 8;
-    int m = 0;
-    int i3;
-    int i10;
-    int i11;
-    int i12;
-    byte[] arrayOfByte;
-    int[] arrayOfInt2;
-    Object localObject1;
+    int i3 = paramGifFrame.jdField_d_of_type_Int / this.jdField_c_of_type_Int;
+    int i2 = paramGifFrame.jdField_b_of_type_Int / this.jdField_c_of_type_Int;
+    int i = paramGifFrame.jdField_c_of_type_Int / this.jdField_c_of_type_Int;
+    int i11 = paramGifFrame.jdField_a_of_type_Int / this.jdField_c_of_type_Int;
+    int j = this.jdField_a_of_type_Int;
+    Boolean localBoolean = Boolean.valueOf(true);
     int i1;
-    label108:
-    int i;
-    int n;
-    int i2;
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      i3 = 1;
-      i10 = this.jdField_c_of_type_Int;
-      i11 = this.e;
-      i12 = this.jdField_d_of_type_Int;
-      arrayOfByte = this.jdField_d_of_type_ArrayOfByte;
-      arrayOfInt2 = this.jdField_b_of_type_ArrayOfInt;
-      localObject1 = this.jdField_a_of_type_JavaLangBoolean;
+    if (j == 0) {
+      i1 = 1;
+    } else {
       i1 = 0;
-      if (i1 >= i6) {
-        break label510;
-      }
-      if (!paramGifFrame.jdField_a_of_type_Boolean) {
-        break label545;
-      }
-      i = m;
-      n = j;
-      i2 = k;
-      if (m >= i6) {
-        i2 = k + 1;
-      }
-      switch (i2)
-      {
-      default: 
-        n = j;
-        i = m;
-        label178:
-        m = i + n;
-        j = n;
-        k = i2;
-      }
     }
-    for (;;)
+    int i12 = this.jdField_c_of_type_Int;
+    int i13 = this.e;
+    int i14 = this.jdField_d_of_type_Int;
+    byte[] arrayOfByte = this.jdField_d_of_type_ArrayOfByte;
+    int[] arrayOfInt2 = this.jdField_b_of_type_ArrayOfInt;
+    Object localObject1 = this.jdField_a_of_type_JavaLangBoolean;
+    int m = 0;
+    j = 0;
+    int n = 1;
+    int i5;
+    for (int k = 8; m < i3; k = i5)
     {
-      i += i7;
-      if (i10 == 1)
+      int i4;
+      int i6;
+      if (paramGifFrame.jdField_a_of_type_Boolean)
       {
-        i4 = 1;
-        label205:
-        if (i >= i12) {
-          break label501;
-        }
-        i5 = i * i11;
-        n = i5 + i9;
-        i2 = n + i8;
-        i = i2;
-        if (i5 + i11 < i2) {
-          i = i5 + i11;
-        }
-        i2 = i1 * i10 * paramGifFrame.jdField_c_of_type_Int;
-        if (i4 == 0) {
-          break label394;
-        }
-        localObject2 = localObject1;
-        label271:
-        localObject1 = localObject2;
-        if (n >= i) {
-          break label501;
-        }
-        i4 = arrayOfInt2[(arrayOfByte[i2] & 0xFF)];
-        if (i4 == 0) {
-          break label367;
-        }
-        arrayOfInt1[n] = i4;
-        localObject1 = localObject2;
-      }
-      for (;;)
-      {
-        i2 += i10;
-        n += 1;
-        localObject2 = localObject1;
-        break label271;
-        i3 = 0;
-        break;
-        i = 4;
-        n = j;
-        break label178;
-        i = 2;
-        n = 4;
-        break label178;
-        i = 1;
-        n = 2;
-        break label178;
-        i4 = 0;
-        break label205;
-        label367:
-        localObject1 = localObject2;
-        if (i3 != 0)
+        if (j >= i3)
         {
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = Boolean.valueOf(true);
-          }
-        }
-      }
-      label394:
-      int i4 = n;
-      int i5 = i2;
-      Object localObject2 = localObject1;
-      localObject1 = localObject2;
-      if (i4 < i)
-      {
-        int i13 = a(i5, (i - n) * i10 + i2, paramGifFrame.jdField_c_of_type_Int);
-        if (i13 != 0)
-        {
-          arrayOfInt1[i4] = i13;
-          localObject1 = localObject2;
-        }
-        for (;;)
-        {
-          i5 += i10;
-          i4 += 1;
-          localObject2 = localObject1;
-          break;
-          localObject1 = localObject2;
-          if (i3 != 0)
+          n += 1;
+          if (n != 2)
           {
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              localObject1 = Boolean.valueOf(true);
+            if (n != 3)
+            {
+              if (n == 4)
+              {
+                j = 1;
+                k = 2;
+              }
+            }
+            else
+            {
+              j = 2;
+              k = 4;
             }
           }
+          else {
+            j = 4;
+          }
         }
+        i4 = j + k;
+        i6 = j;
+        j = i4;
+        i4 = n;
+        i5 = k;
       }
-      label501:
-      i1 += 1;
-      break label108;
-      label510:
-      if (this.jdField_a_of_type_JavaLangBoolean == null) {
-        if (localObject1 != null) {
-          break label535;
-        }
-      }
-      label535:
-      for (boolean bool = false;; bool = ((Boolean)localObject1).booleanValue())
+      else
       {
-        this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
-        return;
+        i6 = m;
+        i5 = k;
+        i4 = n;
       }
-      label545:
-      i = i1;
+      k = i6 + i2;
+      if (i12 == 1) {
+        n = 1;
+      } else {
+        n = 0;
+      }
+      if (k < i14)
+      {
+        k *= i13;
+        i6 = k + i11;
+        int i7 = i6 + i;
+        int i8 = k + i13;
+        k = i7;
+        if (i8 < i7) {
+          k = i8;
+        }
+        i7 = m * i12 * paramGifFrame.jdField_c_of_type_Int;
+        if (n != 0) {
+          for (;;)
+          {
+            n = i;
+            localObject2 = localObject1;
+            if (i6 >= k) {
+              break;
+            }
+            n = arrayOfInt2[(arrayOfByte[i7] & 0xFF)];
+            if (n != 0)
+            {
+              arrayOfInt1[i6] = n;
+              localObject2 = localObject1;
+            }
+            else
+            {
+              localObject2 = localObject1;
+              if (i1 != 0)
+              {
+                localObject2 = localObject1;
+                if (localObject1 == null) {
+                  localObject2 = localBoolean;
+                }
+              }
+            }
+            i7 += i12;
+            i6 += 1;
+            localObject1 = localObject2;
+          }
+        }
+        i8 = i;
+        int i9 = i6;
+        n = i7;
+        i = k;
+        for (;;)
+        {
+          int i10 = n;
+          n = i;
+          localObject2 = localObject1;
+          i = i8;
+          if (i9 >= n) {
+            break;
+          }
+          i = a(i10, (k - i6) * i12 + i7, paramGifFrame.jdField_c_of_type_Int);
+          if (i != 0)
+          {
+            arrayOfInt1[i9] = i;
+            localObject2 = localObject1;
+          }
+          else
+          {
+            localObject2 = localObject1;
+            if (i1 != 0)
+            {
+              localObject2 = localObject1;
+              if (localObject1 == null) {
+                localObject2 = localBoolean;
+              }
+            }
+          }
+          i10 += i12;
+          i9 += 1;
+          i = n;
+          n = i10;
+          localObject1 = localObject2;
+        }
+      }
+      Object localObject2 = localObject1;
+      n = i;
+      i = n;
+      m += 1;
+      localObject1 = localObject2;
+      n = i4;
+    }
+    if (this.jdField_a_of_type_JavaLangBoolean == null)
+    {
+      boolean bool;
+      if (localObject1 == null) {
+        bool = false;
+      } else {
+        bool = ((Boolean)localObject1).booleanValue();
+      }
+      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
     }
   }
   
@@ -485,209 +488,201 @@ public class StandardGifDecoder
     if (i <= 0) {
       return i;
     }
-    this.jdField_a_of_type_JavaNioByteBuffer.get(this.jdField_a_of_type_ArrayOfByte, 0, Math.min(i, this.jdField_a_of_type_JavaNioByteBuffer.remaining()));
+    ByteBuffer localByteBuffer = this.jdField_a_of_type_JavaNioByteBuffer;
+    localByteBuffer.get(this.jdField_a_of_type_ArrayOfByte, 0, Math.min(i, localByteBuffer.remaining()));
     return i;
   }
   
   private void c(GifFrame paramGifFrame)
   {
-    int i13 = a(paramGifFrame);
-    paramGifFrame = this.jdField_d_of_type_ArrayOfByte;
-    short[] arrayOfShort = this.jdField_a_of_type_ArrayOfShort;
-    byte[] arrayOfByte1 = this.jdField_b_of_type_ArrayOfByte;
-    byte[] arrayOfByte2 = this.jdField_c_of_type_ArrayOfByte;
-    int i14 = b();
-    int i15 = 1 << i14;
-    int i4 = i14 + 1;
-    int i3 = (1 << i4) - 1;
-    int i = 0;
-    while (i < i15)
+    Object localObject1 = this;
+    int i18 = a(paramGifFrame);
+    byte[] arrayOfByte1 = ((StandardGifDecoder)localObject1).jdField_d_of_type_ArrayOfByte;
+    short[] arrayOfShort = ((StandardGifDecoder)localObject1).jdField_a_of_type_ArrayOfShort;
+    byte[] arrayOfByte2 = ((StandardGifDecoder)localObject1).jdField_b_of_type_ArrayOfByte;
+    Object localObject2 = ((StandardGifDecoder)localObject1).jdField_c_of_type_ArrayOfByte;
+    int j = b();
+    int i15 = 1 << j;
+    int i11 = i15 + 2;
+    int i3 = j + 1;
+    int i12 = (1 << i3) - 1;
+    int i9 = 0;
+    j = 0;
+    while (j < i15)
     {
-      arrayOfShort[i] = 0;
-      arrayOfByte1[i] = ((byte)i);
-      i += 1;
+      arrayOfShort[j] = 0;
+      arrayOfByte2[j] = ((byte)j);
+      j += 1;
     }
-    byte[] arrayOfByte3 = this.jdField_a_of_type_ArrayOfByte;
+    byte[] arrayOfByte3 = ((StandardGifDecoder)localObject1).jdField_a_of_type_ArrayOfByte;
+    int m = i3;
+    int n = i11;
+    int i4 = i12;
+    int k = 0;
+    int i8 = 0;
+    int i10 = 0;
     int i7 = 0;
-    int i1 = 0;
+    int i5 = 0;
+    int i1 = -1;
     int i2 = 0;
     int i6 = 0;
-    int m = -1;
-    i = 0;
-    int n = i15 + 2;
-    int k = 0;
-    int j = 0;
-    int i5 = 0;
+    j = i9;
+    i9 = i15;
+    paramGifFrame = (GifFrame)localObject1;
     for (;;)
     {
-      if (i < i13)
-      {
-        i8 = i2;
-        i2 = i1;
-        if (i1 != 0) {
-          break label166;
-        }
-        i2 = c();
-        if (i2 <= 0) {
-          this.jdField_b_of_type_Int = 3;
-        }
+      int i13 = i9;
+      if (k >= i18) {
+        break;
       }
-      else
+      i9 = i8;
+      if (i8 == 0)
       {
-        Arrays.fill(paramGifFrame, j, i13, (byte)0);
-        return;
+        i9 = c();
+        if (i9 <= 0)
+        {
+          paramGifFrame.jdField_b_of_type_Int = 3;
+          break;
+        }
+        i10 = 0;
       }
-      int i8 = 0;
-      label166:
-      i1 = arrayOfByte3[i8];
-      int i9 = i8 + 1;
-      i8 = i2 - 1;
-      int i10 = i3;
-      int i11 = i4;
-      i3 = i5 + 8;
-      i4 = i6 + ((i1 & 0xFF) << i5);
-      i2 = j;
-      j = n;
-      i1 = i;
-      i = m;
-      n = i2;
-      i6 = i7;
-      i2 = k;
+      i7 += ((arrayOfByte3[i10] & 0xFF) << i5);
+      int i16 = i10 + 1;
+      int i17 = i9 - 1;
+      i8 = i1;
+      i9 = i5 + 8;
+      i1 = m;
       m = j;
-      j = i11;
-      k = i10;
+      i5 = i13;
+      j = i8;
+      localObject1 = localObject2;
       for (;;)
       {
-        if (i3 >= j)
+        label249:
+        if (i9 < i1) {
+          break label651;
+        }
+        i8 = i7 & i4;
+        i7 >>= i1;
+        i9 -= i1;
+        if (i8 == i5)
         {
-          i5 = i4 & k;
-          i4 >>= j;
-          i3 -= j;
-          if (i5 == i15)
+          i1 = i3;
+          n = i11;
+          i4 = i12;
+          j = -1;
+        }
+        for (;;)
+        {
+          break label249;
+          if (i8 == i15 + 1)
           {
-            j = i14 + 1;
-            k = (1 << j) - 1;
-            m = i15 + 2;
-            i = -1;
+            i14 = i9;
+            i13 = i1;
+            i1 = j;
+            localObject2 = localObject1;
+            i9 = i5;
+            j = m;
+            i8 = i17;
+            i10 = i16;
+            i5 = i14;
+            m = i13;
+            break;
           }
-          else
+          if (j != -1) {
+            break label389;
+          }
+          arrayOfByte1[m] = arrayOfByte2[i8];
+          m += 1;
+          k += 1;
+          paramGifFrame = this;
+          j = i8;
+          i2 = j;
+        }
+        label389:
+        i10 = n;
+        if (i8 >= i10)
+        {
+          localObject1[i6] = ((byte)i2);
+          n = i6 + 1;
+          i2 = j;
+        }
+        else
+        {
+          i2 = i8;
+          n = i6;
+        }
+        while (i2 >= i5)
+        {
+          localObject1[n] = arrayOfByte2[i2];
+          n += 1;
+          i2 = arrayOfShort[i2];
+        }
+        i14 = arrayOfByte2[i2] & 0xFF;
+        int i = (byte)i14;
+        arrayOfByte1[m] = i;
+        for (;;)
+        {
+          m += 1;
+          i2 = k + 1;
+          if (n <= 0) {
+            break;
+          }
+          n -= 1;
+          arrayOfByte1[m] = localObject1[n];
+          k = i2;
+        }
+        k = i10;
+        i13 = i1;
+        i6 = i4;
+        if (i10 < 4096)
+        {
+          arrayOfShort[i10] = ((short)j);
+          arrayOfByte2[i10] = i;
+          j = i10 + 1;
+          k = j;
+          i13 = i1;
+          i6 = i4;
+          if ((j & i4) == 0)
           {
-            if (i5 == i15 + 1)
+            k = j;
+            i13 = i1;
+            i6 = i4;
+            if (j < 4096)
             {
-              i10 = i2;
-              i11 = k;
-              i2 = i9;
-              k = n;
-              n = i;
-              i = i1;
-              i9 = m;
-              m = j;
-              i1 = i8;
-              i5 = i3;
-              j = k;
-              i7 = i6;
-              i6 = i4;
-              k = i10;
-              i3 = i11;
-              i4 = m;
-              m = n;
-              n = i9;
-              break;
-            }
-            if (i == -1)
-            {
-              paramGifFrame[n] = arrayOfByte1[i5];
-              i1 += 1;
-              i = i5;
-              n += 1;
-              i2 = i5;
-            }
-            else
-            {
-              if (i5 >= m)
-              {
-                arrayOfByte2[i6] = ((byte)i2);
-                i2 = i6 + 1;
-                i7 = i;
-              }
-              for (;;)
-              {
-                if (i7 >= i15)
-                {
-                  arrayOfByte2[i2] = arrayOfByte1[i7];
-                  i2 += 1;
-                  i7 = arrayOfShort[i7];
-                }
-                else
-                {
-                  i11 = arrayOfByte1[i7] & 0xFF;
-                  paramGifFrame[n] = ((byte)i11);
-                  n += 1;
-                  i1 += 1;
-                  i6 = i2;
-                  while (i6 > 0)
-                  {
-                    i6 -= 1;
-                    paramGifFrame[n] = arrayOfByte2[i6];
-                    n += 1;
-                    i1 += 1;
-                  }
-                  i10 = k;
-                  i7 = j;
-                  i2 = m;
-                  if (m < 4096)
-                  {
-                    arrayOfShort[m] = ((short)i);
-                    arrayOfByte1[m] = ((byte)i11);
-                    i = m + 1;
-                    i10 = k;
-                    i7 = j;
-                    i2 = i;
-                    if ((i & k) == 0)
-                    {
-                      i10 = k;
-                      i7 = j;
-                      i2 = i;
-                      if (i < 4096)
-                      {
-                        i7 = j + 1;
-                        i10 = k + i;
-                        i2 = i;
-                      }
-                    }
-                  }
-                  i = i5;
-                  i5 = i11;
-                  k = i10;
-                  j = i7;
-                  m = i2;
-                  i2 = i5;
-                  break;
-                  i7 = i5;
-                  i2 = i6;
-                }
-              }
+              i13 = i1 + 1;
+              i6 = i4 + j;
+              k = j;
             }
           }
         }
+        i10 = i14;
+        j = i8;
+        i8 = k;
+        paramGifFrame = this;
+        i1 = i13;
+        k = i2;
+        i4 = i6;
+        i6 = n;
+        n = i8;
+        i2 = i10;
       }
-      i11 = i2;
-      i10 = i;
-      i = i1;
-      i7 = n;
-      int i12 = i4;
-      n = m;
-      i4 = j;
-      i5 = i3;
-      i1 = i8;
-      i3 = k;
-      i2 = i9;
-      j = i7;
-      i7 = i6;
-      i6 = i12;
-      k = i11;
-      m = i10;
+      label651:
+      i13 = i9;
+      i8 = m;
+      m = j;
+      int i14 = i1;
+      paramGifFrame = this;
+      localObject2 = localObject1;
+      i9 = i5;
+      j = i8;
+      i8 = i17;
+      i10 = i16;
+      i5 = i13;
+      i1 = m;
+      m = i14;
     }
+    Arrays.fill(arrayOfByte1, j, i18, (byte)0);
   }
   
   public int a()
@@ -697,16 +692,10 @@ public class StandardGifDecoder
   
   public int a(int paramInt)
   {
-    int j = -1;
-    int i = j;
-    if (paramInt >= 0)
-    {
-      i = j;
-      if (paramInt < this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_b_of_type_Int) {
-        i = ((GifFrame)this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_JavaUtilList.get(paramInt)).g;
-      }
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_b_of_type_Int)) {
+      return ((GifFrame)this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_JavaUtilList.get(paramInt)).g;
     }
-    return i;
+    return -1;
   }
   
   @Nullable
@@ -716,67 +705,80 @@ public class StandardGifDecoder
     {
       try
       {
+        Object localObject1;
+        Object localObject4;
         if ((this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_b_of_type_Int <= 0) || (this.jdField_a_of_type_Int < 0))
         {
-          if (Log.isLoggable(jdField_a_of_type_JavaLangString, 3)) {
-            Log.d(jdField_a_of_type_JavaLangString, "Unable to decode frame, frameCount=" + this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_b_of_type_Int + ", framePointer=" + this.jdField_a_of_type_Int);
+          if (Log.isLoggable(jdField_a_of_type_JavaLangString, 3))
+          {
+            localObject1 = jdField_a_of_type_JavaLangString;
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("Unable to decode frame, frameCount=");
+            ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_b_of_type_Int);
+            ((StringBuilder)localObject4).append(", framePointer=");
+            ((StringBuilder)localObject4).append(this.jdField_a_of_type_Int);
+            Log.d((String)localObject1, ((StringBuilder)localObject4).toString());
           }
           this.jdField_b_of_type_Int = 1;
         }
-        Object localObject1;
-        if ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 2))
+        if ((this.jdField_b_of_type_Int != 1) && (this.jdField_b_of_type_Int != 2))
         {
-          if (Log.isLoggable(jdField_a_of_type_JavaLangString, 3)) {
-            Log.d(jdField_a_of_type_JavaLangString, "Unable to decode frame, status=" + this.jdField_b_of_type_Int);
+          this.jdField_b_of_type_Int = 0;
+          if (this.jdField_a_of_type_ArrayOfByte == null) {
+            this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(255);
           }
-          localObject1 = null;
-          return localObject1;
-        }
-        this.jdField_b_of_type_Int = 0;
-        if (this.jdField_a_of_type_ArrayOfByte == null) {
-          this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(255);
-        }
-        GifFrame localGifFrame = (GifFrame)this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-        int i = this.jdField_a_of_type_Int - 1;
-        if (i >= 0)
-        {
-          localObject1 = (GifFrame)this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_JavaUtilList.get(i);
-          int[] arrayOfInt;
-          if (localGifFrame.jdField_a_of_type_ArrayOfInt != null)
+          GifFrame localGifFrame = (GifFrame)this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
+          int i = this.jdField_a_of_type_Int - 1;
+          if (i >= 0)
           {
-            arrayOfInt = localGifFrame.jdField_a_of_type_ArrayOfInt;
-            this.jdField_b_of_type_ArrayOfInt = arrayOfInt;
+            localObject1 = (GifFrame)this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_JavaUtilList.get(i);
+            if (localGifFrame.jdField_a_of_type_ArrayOfInt != null) {
+              localObject4 = localGifFrame.jdField_a_of_type_ArrayOfInt;
+            } else {
+              localObject4 = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ArrayOfInt;
+            }
+            this.jdField_b_of_type_ArrayOfInt = ((int[])localObject4);
             if (this.jdField_b_of_type_ArrayOfInt == null)
             {
-              if (Log.isLoggable(jdField_a_of_type_JavaLangString, 3)) {
-                Log.d(jdField_a_of_type_JavaLangString, "No valid color table found for frame #" + this.jdField_a_of_type_Int);
+              if (Log.isLoggable(jdField_a_of_type_JavaLangString, 3))
+              {
+                localObject1 = jdField_a_of_type_JavaLangString;
+                localObject4 = new StringBuilder();
+                ((StringBuilder)localObject4).append("No valid color table found for frame #");
+                ((StringBuilder)localObject4).append(this.jdField_a_of_type_Int);
+                Log.d((String)localObject1, ((StringBuilder)localObject4).toString());
               }
               this.jdField_b_of_type_Int = 1;
-              localObject1 = null;
+              return null;
             }
-          }
-          else
-          {
-            arrayOfInt = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ArrayOfInt;
-            continue;
-          }
-          if (localGifFrame.jdField_b_of_type_Boolean)
-          {
-            System.arraycopy(this.jdField_b_of_type_ArrayOfInt, 0, this.jdField_a_of_type_ArrayOfInt, 0, this.jdField_b_of_type_ArrayOfInt.length);
-            this.jdField_b_of_type_ArrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-            this.jdField_b_of_type_ArrayOfInt[localGifFrame.f] = 0;
-            if ((localGifFrame.e == 2) && (this.jdField_a_of_type_Int == 0)) {
-              this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+            if (localGifFrame.jdField_b_of_type_Boolean)
+            {
+              System.arraycopy(this.jdField_b_of_type_ArrayOfInt, 0, this.jdField_a_of_type_ArrayOfInt, 0, this.jdField_b_of_type_ArrayOfInt.length);
+              this.jdField_b_of_type_ArrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+              this.jdField_b_of_type_ArrayOfInt[localGifFrame.f] = 0;
+              if ((localGifFrame.e == 2) && (this.jdField_a_of_type_Int == 0)) {
+                this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+              }
             }
+            localObject1 = a(localGifFrame, (GifFrame)localObject1);
+            return localObject1;
           }
-          localObject1 = a(localGifFrame, (GifFrame)localObject1);
         }
         else
         {
-          Object localObject3 = null;
+          if (Log.isLoggable(jdField_a_of_type_JavaLangString, 3))
+          {
+            localObject1 = jdField_a_of_type_JavaLangString;
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("Unable to decode frame, status=");
+            ((StringBuilder)localObject4).append(this.jdField_b_of_type_Int);
+            Log.d((String)localObject1, ((StringBuilder)localObject4).toString());
+          }
+          return null;
         }
       }
       finally {}
+      Object localObject3 = null;
     }
   }
   
@@ -801,32 +803,44 @@ public class StandardGifDecoder
   
   public void a(@NotNull GifHeader paramGifHeader, @NotNull ByteBuffer paramByteBuffer, int paramInt)
   {
-    if (paramInt <= 0) {
+    if (paramInt > 0) {
       try
       {
-        throw new IllegalArgumentException("Sample size must be >=0, not: " + paramInt);
+        paramInt = Integer.highestOneBit(paramInt);
+        this.jdField_b_of_type_Int = 0;
+        this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader = paramGifHeader;
+        this.jdField_a_of_type_Int = -1;
+        this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer.asReadOnlyBuffer();
+        this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+        this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+        this.jdField_a_of_type_Boolean = false;
+        paramByteBuffer = paramGifHeader.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramByteBuffer.hasNext()) {
+          if (((GifFrame)paramByteBuffer.next()).e == 3) {
+            this.jdField_a_of_type_Boolean = true;
+          }
+        }
+        this.jdField_c_of_type_Int = paramInt;
+        this.e = (paramGifHeader.jdField_c_of_type_Int / paramInt);
+        this.jdField_d_of_type_Int = (paramGifHeader.jdField_d_of_type_Int / paramInt);
+        this.jdField_d_of_type_ArrayOfByte = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(paramGifHeader.jdField_c_of_type_Int * paramGifHeader.jdField_d_of_type_Int);
+        this.jdField_c_of_type_ArrayOfInt = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(this.e * this.jdField_d_of_type_Int);
+        return;
       }
-      finally {}
-    }
-    paramInt = Integer.highestOneBit(paramInt);
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader = paramGifHeader;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer.asReadOnlyBuffer();
-    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-    this.jdField_a_of_type_Boolean = false;
-    paramByteBuffer = paramGifHeader.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramByteBuffer.hasNext()) {
-      if (((GifFrame)paramByteBuffer.next()).e == 3) {
-        this.jdField_a_of_type_Boolean = true;
+      finally
+      {
+        break label209;
       }
     }
-    this.jdField_c_of_type_Int = paramInt;
-    this.e = (paramGifHeader.jdField_c_of_type_Int / paramInt);
-    this.jdField_d_of_type_Int = (paramGifHeader.jdField_d_of_type_Int / paramInt);
-    this.jdField_d_of_type_ArrayOfByte = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(paramGifHeader.jdField_c_of_type_Int * paramGifHeader.jdField_d_of_type_Int);
-    this.jdField_c_of_type_ArrayOfInt = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifDecoder$BitmapProvider.a(this.e * this.jdField_d_of_type_Int);
+    paramGifHeader = new StringBuilder();
+    paramGifHeader.append("Sample size must be >=0, not: ");
+    paramGifHeader.append(paramInt);
+    throw new IllegalArgumentException(paramGifHeader.toString());
+    for (;;)
+    {
+      label209:
+      throw paramGifHeader;
+    }
   }
   
   public void a(@NotNull GifHeader paramGifHeader, @NotNull byte[] paramArrayOfByte)
@@ -845,7 +859,7 @@ public class StandardGifDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.encodedecode.StandardGifDecoder
  * JD-Core Version:    0.7.0.1
  */

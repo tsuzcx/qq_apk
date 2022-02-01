@@ -30,36 +30,43 @@ class HomeFeedAllInfoPullSegment$2
     if (??? == null)
     {
       paramErrorMessage = new BatchGetFeedCommentRequest.BatchGetFeedCommentResp(paramErrorMessage);
-      synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment)
+    }
+    else
+    {
+      if (paramErrorMessage.isFail()) {
+        SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
+      }
+      CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
+      Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+      for (;;)
       {
-        HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, paramErrorMessage);
-        HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment).remove(paramBatchGetFeedCommentRequest);
-        HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult);
-        return;
+        paramErrorMessage = ???;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramErrorMessage = (BatchGetFeedCommentRequest.FeedCommentInfo)localIterator.next();
+        localCommentManager.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
+        if (paramErrorMessage.b == 1) {
+          paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localCommentManager.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
+        }
       }
     }
-    if (paramErrorMessage.isFail()) {
-      SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
+    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment)
+    {
+      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, paramErrorMessage);
+      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment).remove(paramBatchGetFeedCommentRequest);
+      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult);
+      return;
     }
-    CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
     for (;;)
     {
-      paramErrorMessage = ???;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramErrorMessage = (BatchGetFeedCommentRequest.FeedCommentInfo)localIterator.next();
-      localCommentManager.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
-      if (paramErrorMessage.b == 1) {
-        paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localCommentManager.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
-      }
+      throw paramBatchGetFeedCommentRequest;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedAllInfoPullSegment.2
  * JD-Core Version:    0.7.0.1
  */

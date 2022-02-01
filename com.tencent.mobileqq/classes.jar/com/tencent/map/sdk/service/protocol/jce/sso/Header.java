@@ -4,6 +4,7 @@ import com.qq.taf.jce.MapJceStruct;
 import com.tencent.map.sdk.a.i;
 import com.tencent.map.sdk.a.k;
 import com.tencent.map.sdk.a.l;
+import com.tencent.map.sdk.a.n;
 import com.tencent.map.sdk.a.o;
 
 public final class Header
@@ -29,16 +30,6 @@ public final class Header
   public String strToken = "";
   public String strUserNetType = "";
   public long uAccIp = 0L;
-  
-  static
-  {
-    if (!Header.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      b = bool;
-      return;
-    }
-  }
   
   public Header() {}
   
@@ -71,18 +62,20 @@ public final class Header
   
   public final Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (b) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (b) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
@@ -133,13 +126,11 @@ public final class Header
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      paramObject = (Header)paramObject;
-    } while ((!o.a(this.lCurrTime, paramObject.lCurrTime)) || (!o.a(this.stResult, paramObject.stResult)) || (!o.a(this.uAccIp, paramObject.uAccIp)) || (!o.a(this.strSessionId, paramObject.strSessionId)) || (!o.a(this.strLC, paramObject.strLC)) || (!o.a(this.strToken, paramObject.strToken)) || (!o.a(this.strFr, paramObject.strFr)) || (!o.a(this.strPf, paramObject.strPf)) || (!o.a(this.strImei, paramObject.strImei)) || (!o.a(this.strMobver, paramObject.strMobver)) || (!o.a(this.strNettp, paramObject.strNettp)) || (!o.a(this.strImsi, paramObject.strImsi)) || (!o.a(this.strOsVersion, paramObject.strOsVersion)) || (!o.a(this.strSoftVersion, paramObject.strSoftVersion)) || (!o.a(this.strOfflineVersion, paramObject.strOfflineVersion)) || (!o.a(this.strChannel, paramObject.strChannel)) || (!o.a(this.strMachineModel, paramObject.strMachineModel)) || (!o.a(this.strUserNetType, paramObject.strUserNetType)));
-    return true;
+    }
+    paramObject = (Header)paramObject;
+    return (o.a(this.lCurrTime, paramObject.lCurrTime)) && (o.a(this.stResult, paramObject.stResult)) && (o.a(this.uAccIp, paramObject.uAccIp)) && (o.a(this.strSessionId, paramObject.strSessionId)) && (o.a(this.strLC, paramObject.strLC)) && (o.a(this.strToken, paramObject.strToken)) && (o.a(this.strFr, paramObject.strFr)) && (o.a(this.strPf, paramObject.strPf)) && (o.a(this.strImei, paramObject.strImei)) && (o.a(this.strMobver, paramObject.strMobver)) && (o.a(this.strNettp, paramObject.strNettp)) && (o.a(this.strImsi, paramObject.strImsi)) && (o.a(this.strOsVersion, paramObject.strOsVersion)) && (o.a(this.strSoftVersion, paramObject.strSoftVersion)) && (o.a(this.strOfflineVersion, paramObject.strOfflineVersion)) && (o.a(this.strChannel, paramObject.strChannel)) && (o.a(this.strMachineModel, paramObject.strMachineModel)) && (o.a(this.strUserNetType, paramObject.strUserNetType));
   }
   
   public final int hashCode()
@@ -183,60 +174,76 @@ public final class Header
   public final void writeTo(l paraml)
   {
     paraml.a(this.lCurrTime, 0);
-    if (this.stResult != null) {
-      paraml.a(this.stResult, 1);
+    Object localObject = this.stResult;
+    if (localObject != null) {
+      paraml.a((n)localObject, 1);
     }
     paraml.a(this.uAccIp, 2);
-    if (this.strSessionId != null) {
-      paraml.a(this.strSessionId, 3);
+    localObject = this.strSessionId;
+    if (localObject != null) {
+      paraml.a((String)localObject, 3);
     }
-    if (this.strLC != null) {
-      paraml.a(this.strLC, 4);
+    localObject = this.strLC;
+    if (localObject != null) {
+      paraml.a((String)localObject, 4);
     }
-    if (this.strToken != null) {
-      paraml.a(this.strToken, 5);
+    localObject = this.strToken;
+    if (localObject != null) {
+      paraml.a((String)localObject, 5);
     }
-    if (this.strFr != null) {
-      paraml.a(this.strFr, 6);
+    localObject = this.strFr;
+    if (localObject != null) {
+      paraml.a((String)localObject, 6);
     }
-    if (this.strPf != null) {
-      paraml.a(this.strPf, 7);
+    localObject = this.strPf;
+    if (localObject != null) {
+      paraml.a((String)localObject, 7);
     }
-    if (this.strImei != null) {
-      paraml.a(this.strImei, 8);
+    localObject = this.strImei;
+    if (localObject != null) {
+      paraml.a((String)localObject, 8);
     }
-    if (this.strMobver != null) {
-      paraml.a(this.strMobver, 9);
+    localObject = this.strMobver;
+    if (localObject != null) {
+      paraml.a((String)localObject, 9);
     }
-    if (this.strNettp != null) {
-      paraml.a(this.strNettp, 10);
+    localObject = this.strNettp;
+    if (localObject != null) {
+      paraml.a((String)localObject, 10);
     }
-    if (this.strImsi != null) {
-      paraml.a(this.strImsi, 11);
+    localObject = this.strImsi;
+    if (localObject != null) {
+      paraml.a((String)localObject, 11);
     }
-    if (this.strOsVersion != null) {
-      paraml.a(this.strOsVersion, 12);
+    localObject = this.strOsVersion;
+    if (localObject != null) {
+      paraml.a((String)localObject, 12);
     }
-    if (this.strSoftVersion != null) {
-      paraml.a(this.strSoftVersion, 13);
+    localObject = this.strSoftVersion;
+    if (localObject != null) {
+      paraml.a((String)localObject, 13);
     }
-    if (this.strOfflineVersion != null) {
-      paraml.a(this.strOfflineVersion, 14);
+    localObject = this.strOfflineVersion;
+    if (localObject != null) {
+      paraml.a((String)localObject, 14);
     }
-    if (this.strChannel != null) {
-      paraml.a(this.strChannel, 15);
+    localObject = this.strChannel;
+    if (localObject != null) {
+      paraml.a((String)localObject, 15);
     }
-    if (this.strMachineModel != null) {
-      paraml.a(this.strMachineModel, 16);
+    localObject = this.strMachineModel;
+    if (localObject != null) {
+      paraml.a((String)localObject, 16);
     }
-    if (this.strUserNetType != null) {
-      paraml.a(this.strUserNetType, 17);
+    localObject = this.strUserNetType;
+    if (localObject != null) {
+      paraml.a((String)localObject, 17);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.jce.sso.Header
  * JD-Core Version:    0.7.0.1
  */

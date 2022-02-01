@@ -24,26 +24,39 @@ public class CustomLogBuilder
   
   private String a(Throwable paramThrowable, String paramString)
   {
-    String str2 = "generateThrowableString err";
-    String str1 = str2;
+    Object localObject2 = "generateThrowableString err";
+    Object localObject1 = localObject2;
     try
     {
       new ByteArrayOutputStream();
-      str1 = str2;
+      localObject1 = localObject2;
       paramString = b(paramThrowable, paramString);
-      str1 = paramString;
-      paramThrowable = paramString + a(paramThrowable.getStackTrace(), "");
+      localObject1 = paramString;
+      localObject2 = new StringBuilder();
+      localObject1 = paramString;
+      ((StringBuilder)localObject2).append(paramString);
+      localObject1 = paramString;
+      ((StringBuilder)localObject2).append(a(paramThrowable.getStackTrace(), ""));
+      localObject1 = paramString;
+      paramThrowable = ((StringBuilder)localObject2).toString();
       return paramThrowable;
     }
-    catch (IOException paramThrowable) {}
-    return str1;
+    catch (IOException paramThrowable)
+    {
+      label73:
+      break label73;
+    }
+    return localObject1;
   }
   
   private String b(Throwable paramThrowable, String paramString)
   {
-    paramString = new StringBuilder().append(paramString);
-    paramString.append(": ").append(paramThrowable.getMessage()).append("\n");
-    return paramString.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(": ");
+    localStringBuilder.append(paramThrowable.getMessage());
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
   
   public String a(StackTraceElement[] paramArrayOfStackTraceElement, String paramString)
@@ -56,13 +69,19 @@ public class CustomLogBuilder
       while (i < j)
       {
         StackTraceElement localStackTraceElement = paramArrayOfStackTraceElement[i];
-        localStringBuilder.append(paramString).append(localStackTraceElement).append("\n");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(localStackTraceElement);
+        localStringBuilder.append("\n");
         i += 1;
       }
       paramArrayOfStackTraceElement = localStringBuilder.toString();
       return paramArrayOfStackTraceElement;
     }
-    catch (Exception paramArrayOfStackTraceElement) {}
+    catch (Exception paramArrayOfStackTraceElement)
+    {
+      label64:
+      break label64;
+    }
     return "generateStackTraceString err";
   }
   
@@ -73,7 +92,7 @@ public class CustomLogBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.log.CustomLogBuilder
  * JD-Core Version:    0.7.0.1
  */

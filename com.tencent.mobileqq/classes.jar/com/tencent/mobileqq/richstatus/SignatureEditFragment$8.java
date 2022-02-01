@@ -2,7 +2,7 @@ package com.tencent.mobileqq.richstatus;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.webview.swift.WebViewKernel;
 
 class SignatureEditFragment$8
   implements DialogInterface.OnClickListener
@@ -11,14 +11,13 @@ class SignatureEditFragment$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    SignatureEditFragment.a(this.a).a(8589934618L, null);
     paramDialogInterface.dismiss();
-    SignatureManagerForTool.a().a(SignatureManagerForTool.a().b);
-    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureEditFragment.8
  * JD-Core Version:    0.7.0.1
  */

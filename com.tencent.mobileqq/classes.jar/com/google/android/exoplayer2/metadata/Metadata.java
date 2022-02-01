@@ -16,9 +16,13 @@ public final class Metadata
   {
     this.entries = new Metadata.Entry[paramParcel.readInt()];
     int i = 0;
-    while (i < this.entries.length)
+    for (;;)
     {
-      this.entries[i] = ((Metadata.Entry)paramParcel.readParcelable(Metadata.Entry.class.getClassLoader()));
+      Metadata.Entry[] arrayOfEntry = this.entries;
+      if (i >= arrayOfEntry.length) {
+        break;
+      }
+      arrayOfEntry[i] = ((Metadata.Entry)paramParcel.readParcelable(Metadata.Entry.class.getClassLoader()));
       i += 1;
     }
   }
@@ -53,11 +57,12 @@ public final class Metadata
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass()))
+    {
+      paramObject = (Metadata)paramObject;
+      return Arrays.equals(this.entries, paramObject.entries);
     }
-    paramObject = (Metadata)paramObject;
-    return Arrays.equals(this.entries, paramObject.entries);
+    return false;
   }
   
   public Metadata.Entry get(int paramInt)
@@ -90,7 +95,7 @@ public final class Metadata
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.Metadata
  * JD-Core Version:    0.7.0.1
  */

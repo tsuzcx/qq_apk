@@ -92,37 +92,24 @@ public class DownloadManagerInterceptor
       ThreadManager.excute(paramRunnable, 16, null, true);
       return;
     }
-    boolean bool3 = a(str);
-    boolean bool4 = paramDownloadInfo.f;
-    boolean bool1;
-    if (!paramDownloadInfo.g)
-    {
-      bool1 = true;
-      if (DownloadConfigProcessor.a().jdField_a_of_type_Boolean) {
-        break label213;
-      }
+    boolean bool1 = a(str);
+    boolean bool2 = paramDownloadInfo.f;
+    boolean bool3 = paramDownloadInfo.g ^ true;
+    boolean bool4 = DownloadConfigProcessor.a().jdField_a_of_type_Boolean ^ true;
+    if (QLog.isColorLevel()) {
+      QLog.d("[UniteDownload] DownloadManagerInterceptor", 2, new Object[] { "[check] uniteDownload: invoked. ", " inWhite: ", Boolean.valueOf(bool1), " isFromRockDownloader: ", Boolean.valueOf(bool2), " notUniteDownload: ", Boolean.valueOf(bool3), " disableUniteDownloadDialog: ", Boolean.valueOf(bool4) });
     }
-    label213:
-    for (boolean bool2 = true;; bool2 = false)
+    if ((!bool1) && (!bool2) && (!bool3) && (!bool4))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("[UniteDownload] DownloadManagerInterceptor", 2, new Object[] { "[check] uniteDownload: invoked. ", " inWhite: ", Boolean.valueOf(bool3), " isFromRockDownloader: ", Boolean.valueOf(bool4), " notUniteDownload: ", Boolean.valueOf(bool1), " disableUniteDownloadDialog: ", Boolean.valueOf(bool2) });
-      }
-      if ((!bool3) && (!bool4) && (!bool1) && (!bool2)) {
-        break label219;
-      }
-      c(paramDownloadInfo, paramRunnable);
+      b(paramDownloadInfo, paramRunnable);
       return;
-      bool1 = false;
-      break;
     }
-    label219:
-    b(paramDownloadInfo, paramRunnable);
+    c(paramDownloadInfo, paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.core.DownloadManagerInterceptor
  * JD-Core Version:    0.7.0.1
  */

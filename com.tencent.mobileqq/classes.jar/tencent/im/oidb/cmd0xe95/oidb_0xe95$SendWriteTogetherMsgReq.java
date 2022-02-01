@@ -24,7 +24,7 @@ public final class oidb_0xe95$SendWriteTogetherMsgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe95.oidb_0xe95.SendWriteTogetherMsgReq
  * JD-Core Version:    0.7.0.1
  */

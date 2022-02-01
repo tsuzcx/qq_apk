@@ -29,24 +29,32 @@ class CommentBusiness$9
     }
     if (CommentBusiness.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get()) != null)
     {
-      QLog.d(CommentBusiness.a(), 2, "getCommentSize:" + paramStGetCommentListRsp.vecComment.size() + ", attachInfo:" + paramStGetCommentListRsp.extInfo.attachInfo.get() + "isFinish：" + paramStGetCommentListRsp.isFinish.get());
+      paramBaseRequest = CommentBusiness.a();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getCommentSize:");
+      ((StringBuilder)localObject).append(paramStGetCommentListRsp.vecComment.size());
+      ((StringBuilder)localObject).append(", attachInfo:");
+      ((StringBuilder)localObject).append(paramStGetCommentListRsp.extInfo.attachInfo.get());
+      ((StringBuilder)localObject).append("isFinish：");
+      ((StringBuilder)localObject).append(paramStGetCommentListRsp.isFinish.get());
+      QLog.d(paramBaseRequest, 2, ((StringBuilder)localObject).toString());
       ((ArrayList)CommentBusiness.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get())).addAll(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness.a(paramStGetCommentListRsp.vecComment.get(), this.jdField_a_of_type_JavaLangString));
     }
     paramBaseRequest = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness;
-    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
+    Object localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
     COMM.StCommonExt localStCommonExt = paramStGetCommentListRsp.extInfo;
-    if (paramStGetCommentListRsp.isFinish.get() == 0) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      CommentBusiness.a(paramBaseRequest, str, localStCommonExt, paramBoolean, true);
-      StoryDispatcher.a().dispatch(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness.a(new Object[] { Integer.valueOf(9), Long.valueOf(paramLong), paramString, paramStGetCommentListRsp, Integer.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness.hashCode()), this.jdField_a_of_type_JavaLangString }));
-      return;
+    if (paramStGetCommentListRsp.isFinish.get() == 0) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
     }
+    CommentBusiness.a(paramBaseRequest, (String)localObject, localStCommonExt, paramBoolean, true);
+    StoryDispatcher.a().dispatch(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness.a(new Object[] { Integer.valueOf(9), Long.valueOf(paramLong), paramString, paramStGetCommentListRsp, Integer.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness.hashCode()), this.jdField_a_of_type_JavaLangString }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentBusiness.9
  * JD-Core Version:    0.7.0.1
  */

@@ -25,13 +25,14 @@ public final class nearfield_discuss$RespGetList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 64 }, new String[] { "msg_head", "rpt_msg_user_list", "uint32_session_id", "int32_update_interval", "bytes_cookie", "uint32_button_switch", "uint32_has_created", "uint64_creator" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, RespGetList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 64 }, new String[] { "msg_head", "rpt_msg_user_list", "uint32_session_id", "int32_update_interval", "bytes_cookie", "uint32_button_switch", "uint32_has_created", "uint64_creator" }, new Object[] { null, null, localInteger, localInteger, localByteStringMicro, localInteger, localInteger, Long.valueOf(0L) }, RespGetList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearfield_discuss.nearfield_discuss.RespGetList
  * JD-Core Version:    0.7.0.1
  */

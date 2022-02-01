@@ -24,6 +24,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.ExtractedText;
 import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterJNI;
 import io.flutter.embedding.engine.systemchannels.TextInputChannel;
@@ -83,21 +84,21 @@ class InputConnectionAdaptor
   @SuppressLint({"NewApi"})
   private boolean isSamsung()
   {
-    if ((this.mImm.getCurrentInputMethodSubtype() == null) || (Build.VERSION.SDK_INT < 21) || (!Build.MANUFACTURER.equals("samsung"))) {
-      return false;
+    if ((this.mImm.getCurrentInputMethodSubtype() != null) && (Build.VERSION.SDK_INT >= 21) && (Build.MANUFACTURER.equals("samsung"))) {
+      return Settings.Secure.getString(this.mFlutterView.getContext().getContentResolver(), "default_input_method").contains("Samsung");
     }
-    return Settings.Secure.getString(this.mFlutterView.getContext().getContentResolver(), "default_input_method").contains("Samsung");
+    return false;
   }
   
   private void updateEditingState()
   {
-    if (this.mBatchCount > 0) {}
-    InputConnectionAdaptor.TextEditingValue localTextEditingValue;
-    do
-    {
+    if (this.mBatchCount > 0) {
       return;
-      localTextEditingValue = new InputConnectionAdaptor.TextEditingValue(this, this.mEditable);
-    } while ((this.mRepeatCheckNeeded) && (localTextEditingValue.equals(this.mLastSentTextEditngValue)));
+    }
+    InputConnectionAdaptor.TextEditingValue localTextEditingValue = new InputConnectionAdaptor.TextEditingValue(this, this.mEditable);
+    if ((this.mRepeatCheckNeeded) && (localTextEditingValue.equals(this.mLastSentTextEditngValue))) {
+      return;
+    }
     this.mImm.updateSelection(this.mFlutterView, localTextEditingValue.selectionStart, localTextEditingValue.selectionEnd, localTextEditingValue.composingStart, localTextEditingValue.composingEnd);
     this.textInputChannel.updateEditingState(this.mClient, localTextEditingValue.text, localTextEditingValue.selectionStart, localTextEditingValue.selectionEnd, localTextEditingValue.composingStart, localTextEditingValue.composingEnd);
     this.mRepeatCheckNeeded = true;
@@ -192,7 +193,8 @@ class InputConnectionAdaptor
     }
     int i;
     int j;
-    Object localObject;
+    Object localObject2;
+    Object localObject1;
     if (paramInt == 16908320)
     {
       i = Selection.getSelectionStart(this.mEditable);
@@ -201,8 +203,11 @@ class InputConnectionAdaptor
       {
         paramInt = Math.min(i, j);
         i = Math.max(i, j);
-        localObject = this.mEditable.subSequence(paramInt, i);
-        ((ClipboardManager)this.mFlutterView.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("text label?", (CharSequence)localObject));
+        localObject2 = this.mEditable.subSequence(paramInt, i);
+        localObject1 = (ClipboardManager)this.mFlutterView.getContext().getSystemService("clipboard");
+        localObject2 = ClipData.newPlainText("text label?", (CharSequence)localObject2);
+        ClipboardMonitor.setPrimaryClip((ClipboardManager)localObject1, (ClipData)localObject2);
+        ((ClipboardManager)localObject1).setPrimaryClip((ClipData)localObject2);
         this.mEditable.delete(paramInt, i);
         setSelection(paramInt, paramInt);
       }
@@ -214,17 +219,22 @@ class InputConnectionAdaptor
       i = Selection.getSelectionEnd(this.mEditable);
       if (paramInt != i)
       {
-        localObject = this.mEditable.subSequence(Math.min(paramInt, i), Math.max(paramInt, i));
-        ((ClipboardManager)this.mFlutterView.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("text label?", (CharSequence)localObject));
+        localObject2 = this.mEditable.subSequence(Math.min(paramInt, i), Math.max(paramInt, i));
+        localObject1 = (ClipboardManager)this.mFlutterView.getContext().getSystemService("clipboard");
+        localObject2 = ClipData.newPlainText("text label?", (CharSequence)localObject2);
+        ClipboardMonitor.setPrimaryClip((ClipboardManager)localObject1, (ClipData)localObject2);
+        ((ClipboardManager)localObject1).setPrimaryClip((ClipData)localObject2);
       }
       return true;
     }
     if (paramInt == 16908322)
     {
-      localObject = ((ClipboardManager)this.mFlutterView.getContext().getSystemService("clipboard")).getPrimaryClip();
-      if (localObject != null)
+      localObject1 = (ClipboardManager)this.mFlutterView.getContext().getSystemService("clipboard");
+      ClipboardMonitor.getPrimaryClip((ClipboardManager)localObject1);
+      localObject1 = ((ClipboardManager)localObject1).getPrimaryClip();
+      if (localObject1 != null)
       {
-        localObject = ((ClipData)localObject).getItemAt(0).coerceToText(this.mFlutterView.getContext());
+        localObject1 = ((ClipData)localObject1).getItemAt(0).coerceToText(this.mFlutterView.getContext());
         i = Math.max(0, Selection.getSelectionStart(this.mEditable));
         j = Math.max(0, Selection.getSelectionEnd(this.mEditable));
         paramInt = Math.min(i, j);
@@ -232,8 +242,8 @@ class InputConnectionAdaptor
         if (paramInt != i) {
           this.mEditable.delete(paramInt, i);
         }
-        this.mEditable.insert(paramInt, (CharSequence)localObject);
-        paramInt = ((CharSequence)localObject).length() + paramInt;
+        this.mEditable.insert(paramInt, (CharSequence)localObject1);
+        paramInt += ((CharSequence)localObject1).length();
         setSelection(paramInt, paramInt);
       }
       return true;
@@ -244,30 +254,43 @@ class InputConnectionAdaptor
   public boolean performEditorAction(int paramInt)
   {
     markDirty();
-    if (paramInt != 7) {
-      switch (paramInt)
-      {
-      default: 
-        this.textInputChannel.done(this.mClient);
-      }
-    }
-    for (;;)
+    if (paramInt != 7)
     {
-      return true;
-      this.textInputChannel.next(this.mClient);
-      continue;
-      this.textInputChannel.send(this.mClient);
-      continue;
-      this.textInputChannel.search(this.mClient);
-      continue;
-      this.textInputChannel.go(this.mClient);
-      continue;
-      this.textInputChannel.newline(this.mClient);
-      continue;
+      if (paramInt != 0)
+      {
+        if (paramInt != 1)
+        {
+          if (paramInt != 2)
+          {
+            if (paramInt != 3)
+            {
+              if (paramInt != 4)
+              {
+                if (paramInt != 5)
+                {
+                  this.textInputChannel.done(this.mClient);
+                  return true;
+                }
+                this.textInputChannel.next(this.mClient);
+                return true;
+              }
+              this.textInputChannel.send(this.mClient);
+              return true;
+            }
+            this.textInputChannel.search(this.mClient);
+            return true;
+          }
+          this.textInputChannel.go(this.mClient);
+          return true;
+        }
+        this.textInputChannel.newline(this.mClient);
+        return true;
+      }
       this.textInputChannel.unspecifiedAction(this.mClient);
-      continue;
-      this.textInputChannel.previous(this.mClient);
+      return true;
     }
+    this.textInputChannel.previous(this.mClient);
+    return true;
   }
   
   public boolean performPrivateCommand(String paramString, Bundle paramBundle)
@@ -394,12 +417,14 @@ class InputConnectionAdaptor
   
   public boolean setComposingText(CharSequence paramCharSequence, int paramInt)
   {
-    if (paramCharSequence.length() == 0) {}
-    for (boolean bool = super.commitText(paramCharSequence, paramInt);; bool = super.setComposingText(paramCharSequence, paramInt))
-    {
-      markDirty();
-      return bool;
+    boolean bool;
+    if (paramCharSequence.length() == 0) {
+      bool = super.commitText(paramCharSequence, paramInt);
+    } else {
+      bool = super.setComposingText(paramCharSequence, paramInt);
     }
+    markDirty();
+    return bool;
   }
   
   public boolean setSelection(int paramInt1, int paramInt2)
@@ -412,7 +437,7 @@ class InputConnectionAdaptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.editing.InputConnectionAdaptor
  * JD-Core Version:    0.7.0.1
  */

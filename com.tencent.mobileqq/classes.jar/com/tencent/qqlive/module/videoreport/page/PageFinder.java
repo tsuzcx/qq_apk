@@ -28,14 +28,18 @@ public class PageFinder
   static PageInfo findExposurePage(View paramView)
   {
     SimpleTracer.begin("PagePageFinder.findExposurePage");
-    if ((paramView == null) || (paramView.getRootView() == null)) {
-      return null;
+    if (paramView != null)
+    {
+      if (paramView.getRootView() == null) {
+        return null;
+      }
+      PageFinder.PageExposureCallback localPageExposureCallback = new PageFinder.PageExposureCallback(getPageViewAndParents(paramView.getRootView().getContext()), null);
+      ExposureDetector.detect(paramView, false, null, localPageExposureCallback);
+      SimpleTracer.end("PagePageFinder.findExposurePage");
+      printPageLink(localPageExposureCallback.targetPageInfo);
+      return localPageExposureCallback.targetPageInfo;
     }
-    PageFinder.PageExposureCallback localPageExposureCallback = new PageFinder.PageExposureCallback(getPageViewAndParents(paramView.getRootView().getContext()), null);
-    ExposureDetector.detect(paramView, false, null, localPageExposureCallback);
-    SimpleTracer.end("PagePageFinder.findExposurePage");
-    printPageLink(localPageExposureCallback.targetPageInfo);
-    return localPageExposureCallback.targetPageInfo;
+    return null;
   }
   
   public static PageInfo findOwnerPage(View paramView)
@@ -114,54 +118,68 @@ public class PageFinder
   public static boolean isIgnorePageInOutEvent(PageInfo paramPageInfo)
   {
     paramPageInfo = DataBinder.getDataEntity(paramPageInfo.getPage());
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     if (paramPageInfo != null)
     {
       paramPageInfo = (Boolean)DataEntityOperator.getInnerParam(paramPageInfo, "page_report_ignore");
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("PageFinder", "isIgnorePageInOutEvent: ignoreReport=" + paramPageInfo);
+      if (VideoReportInner.getInstance().isDebugMode())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isIgnorePageInOutEvent: ignoreReport=");
+        localStringBuilder.append(paramPageInfo);
+        Log.d("PageFinder", localStringBuilder.toString());
       }
-      return (paramPageInfo != null) && (paramPageInfo.booleanValue());
+      bool1 = bool2;
+      if (paramPageInfo != null)
+      {
+        bool1 = bool2;
+        if (paramPageInfo.booleanValue()) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   public static boolean isPage(Object paramObject)
   {
-    if (paramObject == null) {}
-    while (TextUtils.isEmpty(DataEntityOperator.getPageId(DataBinder.getDataEntity(paramObject)))) {
+    if (paramObject == null) {
       return false;
     }
-    return true;
+    return TextUtils.isEmpty(DataEntityOperator.getPageId(DataBinder.getDataEntity(paramObject))) ^ true;
   }
   
   private static boolean isTerminatePage(@NonNull PageInfo paramPageInfo)
   {
-    if (!VideoReportInner.getInstance().getConfiguration().isEnablePageLink()) {}
-    Integer localInteger1;
-    do
-    {
+    if (!VideoReportInner.getInstance().getConfiguration().isEnablePageLink()) {
       return true;
-      Integer localInteger2 = VideoReportInner.getInstance().getPageSearchMode(paramPageInfo.getPage());
-      localInteger1 = localInteger2;
-      if (localInteger2 == null) {
-        localInteger1 = VideoReportInner.getInstance().getPageSearchMode(paramPageInfo.getPageView());
-      }
-    } while ((localInteger1 != null) && (1 == localInteger1.intValue()));
-    return false;
+    }
+    Integer localInteger2 = VideoReportInner.getInstance().getPageSearchMode(paramPageInfo.getPage());
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      localInteger1 = VideoReportInner.getInstance().getPageSearchMode(paramPageInfo.getPageView());
+    }
+    return (localInteger1 != null) && (1 == localInteger1.intValue());
   }
   
   private static void printPageLink(PageInfo paramPageInfo)
   {
-    if (paramPageInfo == null) {}
-    while (!VideoReport.isDebugMode()) {
+    if (paramPageInfo == null) {
       return;
     }
-    Log.i("PageFinder", "PageLink —— " + paramPageInfo);
+    if (VideoReport.isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PageLink —— ");
+      localStringBuilder.append(paramPageInfo);
+      Log.i("PageFinder", localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageFinder
  * JD-Core Version:    0.7.0.1
  */

@@ -59,14 +59,15 @@ public final class j
     paramJceOutputStream.write(this.b, 2);
     paramJceOutputStream.write(this.c, 3);
     paramJceOutputStream.write(this.d, 4);
-    if (this.e != null) {
-      paramJceOutputStream.write(this.e, 5);
+    ArrayList localArrayList = this.e;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.g.j
  * JD-Core Version:    0.7.0.1
  */

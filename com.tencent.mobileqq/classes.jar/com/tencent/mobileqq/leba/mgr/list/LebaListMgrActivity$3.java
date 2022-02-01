@@ -12,16 +12,19 @@ class LebaListMgrActivity$3
   public void a(boolean paramBoolean, Object paramObject)
   {
     QLog.i("IphoneTitleBarActivity", 4, "notifyLebaViewItemsReloaded");
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
-      return;
+    if (LebaListMgrActivity.a(this.a) != null)
+    {
+      if (!this.a.isResume()) {
+        return;
+      }
+      paramObject = LebaShowListManager.a().a();
+      this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, paramObject));
     }
-    paramObject = LebaShowListManager.a().a();
-    this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.mgr.list.LebaListMgrActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,9 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended.ad;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,231 +15,185 @@ public class AdEmoCfgProvider
 {
   public static volatile AdEmoCfg a;
   
-  /* Error */
-  public static AdEmoCfg a(android.content.Context paramContext, String paramString)
+  public static AdEmoCfg a(Context paramContext, String paramString)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore 5
-    //   6: ldc 2
-    //   8: monitorenter
-    //   9: aload 5
-    //   11: astore_3
-    //   12: aload_0
-    //   13: ifnull +10 -> 23
-    //   16: aload_1
-    //   17: ifnonnull +11 -> 28
-    //   20: aload 5
-    //   22: astore_3
-    //   23: ldc 2
-    //   25: monitorexit
-    //   26: aload_3
-    //   27: areturn
-    //   28: getstatic 16	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfgProvider:a	Lcom/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg;
-    //   31: ifnonnull +68 -> 99
-    //   34: aload_0
-    //   35: ldc 18
-    //   37: iconst_4
-    //   38: invokevirtual 24	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   41: new 26	java/lang/StringBuilder
-    //   44: dup
-    //   45: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   48: ldc 29
-    //   50: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: aload_1
-    //   54: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   60: aconst_null
-    //   61: invokeinterface 43 3 0
-    //   66: astore_1
-    //   67: aload_1
-    //   68: invokestatic 49	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   71: istore_2
-    //   72: aload 5
-    //   74: astore_3
-    //   75: iload_2
-    //   76: ifne -53 -> 23
-    //   79: new 51	org/json/JSONObject
-    //   82: dup
-    //   83: aload_1
-    //   84: invokespecial 54	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   87: astore_0
-    //   88: aload_0
-    //   89: ifnull +10 -> 99
-    //   92: aload_0
-    //   93: invokestatic 57	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfgProvider:a	(Lorg/json/JSONObject;)Lcom/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg;
-    //   96: putstatic 16	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfgProvider:a	Lcom/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg;
-    //   99: getstatic 16	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfgProvider:a	Lcom/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg;
-    //   102: astore_3
-    //   103: goto -80 -> 23
-    //   106: astore_0
-    //   107: ldc 59
-    //   109: iconst_2
-    //   110: new 26	java/lang/StringBuilder
-    //   113: dup
-    //   114: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   117: ldc 61
-    //   119: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: aload_1
-    //   123: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   129: aload_0
-    //   130: invokestatic 67	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   133: aload 4
-    //   135: astore_0
-    //   136: goto -48 -> 88
-    //   139: astore_0
-    //   140: ldc 2
-    //   142: monitorexit
-    //   143: aload_0
-    //   144: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	145	0	paramContext	android.content.Context
-    //   0	145	1	paramString	String
-    //   71	5	2	bool	boolean
-    //   11	92	3	localObject1	Object
-    //   1	133	4	localObject2	Object
-    //   4	69	5	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   79	88	106	java/lang/Exception
-    //   28	72	139	finally
-    //   79	88	139	finally
-    //   92	99	139	finally
-    //   99	103	139	finally
-    //   107	133	139	finally
+    if ((paramContext != null) && (paramString != null)) {
+      try
+      {
+        if (a == null)
+        {
+          paramContext = paramContext.getSharedPreferences("MOBILEQQ_RECOMMENDED_STICKER_CONFIG", 4);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("RECOMMENDED_STICKER_AD_CFG");
+          localStringBuilder.append(paramString);
+          paramString = paramContext.getString(localStringBuilder.toString(), null);
+          boolean bool = TextUtils.isEmpty(paramString);
+          if (bool) {
+            return null;
+          }
+          try
+          {
+            paramContext = new JSONObject(paramString);
+          }
+          catch (Exception paramContext)
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getAdEmoCfg has exception，cfgStr = ");
+            localStringBuilder.append(paramString);
+            QLog.e("AdEmoCfgProvider", 2, localStringBuilder.toString(), paramContext);
+            paramContext = null;
+          }
+          if (paramContext != null) {
+            a = a(paramContext);
+          }
+        }
+        paramContext = a;
+        return paramContext;
+      }
+      finally {}
+    }
+    return null;
   }
   
   /* Error */
   public static AdEmoCfg a(JSONObject paramJSONObject)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: iconst_0
-    //   3: istore 4
-    //   5: iconst_0
-    //   6: istore_2
-    //   7: new 71	java/util/ArrayList
-    //   10: dup
-    //   11: invokespecial 72	java/util/ArrayList:<init>	()V
-    //   14: astore 6
-    //   16: aload_0
-    //   17: ldc 74
-    //   19: invokevirtual 78	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   22: ifeq +164 -> 186
-    //   25: aload_0
-    //   26: ldc 74
-    //   28: invokevirtual 82	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   31: istore_1
-    //   32: iload_1
-    //   33: iconst_1
-    //   34: if_icmpne +78 -> 112
-    //   37: aload_0
-    //   38: ldc 84
-    //   40: invokevirtual 78	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   43: ifeq +138 -> 181
-    //   46: aload_0
-    //   47: ldc 84
-    //   49: invokevirtual 82	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   52: istore_1
-    //   53: aload_0
-    //   54: ldc 86
-    //   56: invokevirtual 78	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   59: ifeq +58 -> 117
-    //   62: aload_0
-    //   63: ldc 86
-    //   65: invokevirtual 90	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   68: astore 5
-    //   70: iload_2
-    //   71: aload 5
-    //   73: invokevirtual 96	org/json/JSONArray:length	()I
-    //   76: if_icmpge +41 -> 117
-    //   79: aload 5
-    //   81: iload_2
-    //   82: invokevirtual 100	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   85: invokestatic 103	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfgProvider:a	(Lorg/json/JSONObject;)Lcom/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdItem;
-    //   88: astore 7
-    //   90: aload 7
-    //   92: ifnull +13 -> 105
-    //   95: aload 6
-    //   97: aload 7
-    //   99: invokeinterface 109 2 0
-    //   104: pop
-    //   105: iload_2
-    //   106: iconst_1
-    //   107: iadd
-    //   108: istore_2
-    //   109: goto -39 -> 70
-    //   112: iconst_0
-    //   113: istore_3
-    //   114: goto -77 -> 37
-    //   117: new 111	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg
-    //   120: dup
-    //   121: iload_3
-    //   122: iload_1
-    //   123: aload 6
-    //   125: invokespecial 114	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg:<init>	(ZILjava/util/List;)V
-    //   128: areturn
-    //   129: astore 5
-    //   131: iconst_0
-    //   132: istore_1
-    //   133: iload 4
-    //   135: istore_3
-    //   136: ldc 59
-    //   138: iconst_2
-    //   139: new 26	java/lang/StringBuilder
-    //   142: dup
-    //   143: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   146: ldc 116
-    //   148: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   151: aload_0
-    //   152: invokevirtual 117	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   155: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   158: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   161: aload 5
-    //   163: invokestatic 67	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   166: goto -49 -> 117
-    //   169: astore 5
-    //   171: iconst_0
-    //   172: istore_1
-    //   173: goto -37 -> 136
-    //   176: astore 5
-    //   178: goto -42 -> 136
-    //   181: iconst_0
-    //   182: istore_1
-    //   183: goto -130 -> 53
-    //   186: iconst_0
-    //   187: istore_3
-    //   188: goto -151 -> 37
+    //   0: new 71	java/util/ArrayList
+    //   3: dup
+    //   4: invokespecial 72	java/util/ArrayList:<init>	()V
+    //   7: astore 7
+    //   9: iconst_0
+    //   10: istore_3
+    //   11: aload_0
+    //   12: ldc 74
+    //   14: invokevirtual 78	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   17: ifeq +21 -> 38
+    //   20: aload_0
+    //   21: ldc 74
+    //   23: invokevirtual 82	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   26: istore_1
+    //   27: iconst_1
+    //   28: istore 4
+    //   30: iload_1
+    //   31: iconst_1
+    //   32: if_icmpne +6 -> 38
+    //   35: goto +6 -> 41
+    //   38: iconst_0
+    //   39: istore 4
+    //   41: aload_0
+    //   42: ldc 84
+    //   44: invokevirtual 78	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   47: ifeq +13 -> 60
+    //   50: aload_0
+    //   51: ldc 84
+    //   53: invokevirtual 82	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   56: istore_1
+    //   57: goto +5 -> 62
+    //   60: iconst_0
+    //   61: istore_1
+    //   62: iload_1
+    //   63: istore_2
+    //   64: iload 4
+    //   66: istore 5
+    //   68: aload_0
+    //   69: ldc 86
+    //   71: invokevirtual 78	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   74: ifeq +124 -> 198
+    //   77: aload_0
+    //   78: ldc 86
+    //   80: invokevirtual 90	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   83: astore 6
+    //   85: iload_1
+    //   86: istore_2
+    //   87: iload 4
+    //   89: istore 5
+    //   91: iload_3
+    //   92: aload 6
+    //   94: invokevirtual 96	org/json/JSONArray:length	()I
+    //   97: if_icmpge +101 -> 198
+    //   100: aload 6
+    //   102: iload_3
+    //   103: invokevirtual 100	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   106: invokestatic 103	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfgProvider:a	(Lorg/json/JSONObject;)Lcom/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdItem;
+    //   109: astore 8
+    //   111: aload 8
+    //   113: ifnull +13 -> 126
+    //   116: aload 7
+    //   118: aload 8
+    //   120: invokeinterface 109 2 0
+    //   125: pop
+    //   126: iload_3
+    //   127: iconst_1
+    //   128: iadd
+    //   129: istore_3
+    //   130: goto -45 -> 85
+    //   133: astore 6
+    //   135: goto +17 -> 152
+    //   138: astore 6
+    //   140: iconst_0
+    //   141: istore_1
+    //   142: goto +10 -> 152
+    //   145: astore 6
+    //   147: iconst_0
+    //   148: istore_1
+    //   149: iconst_0
+    //   150: istore 4
+    //   152: new 26	java/lang/StringBuilder
+    //   155: dup
+    //   156: invokespecial 27	java/lang/StringBuilder:<init>	()V
+    //   159: astore 8
+    //   161: aload 8
+    //   163: ldc 111
+    //   165: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: pop
+    //   169: aload 8
+    //   171: aload_0
+    //   172: invokevirtual 112	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   175: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: pop
+    //   179: ldc 58
+    //   181: iconst_2
+    //   182: aload 8
+    //   184: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   187: aload 6
+    //   189: invokestatic 64	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   192: iload 4
+    //   194: istore 5
+    //   196: iload_1
+    //   197: istore_2
+    //   198: new 114	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg
+    //   201: dup
+    //   202: iload 5
+    //   204: iload_2
+    //   205: aload 7
+    //   207: invokespecial 117	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg:<init>	(ZILjava/util/List;)V
+    //   210: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	191	0	paramJSONObject	JSONObject
-    //   31	152	1	i	int
-    //   6	103	2	j	int
-    //   1	187	3	bool1	boolean
-    //   3	131	4	bool2	boolean
-    //   68	12	5	localJSONArray	JSONArray
-    //   129	33	5	localJSONException1	JSONException
-    //   169	1	5	localJSONException2	JSONException
-    //   176	1	5	localJSONException3	JSONException
-    //   14	110	6	localArrayList	ArrayList
-    //   88	10	7	localAdItem	AdItem
+    //   0	211	0	paramJSONObject	JSONObject
+    //   26	171	1	i	int
+    //   63	142	2	j	int
+    //   10	120	3	k	int
+    //   28	165	4	bool1	boolean
+    //   66	137	5	bool2	boolean
+    //   83	18	6	localJSONArray	JSONArray
+    //   133	1	6	localJSONException1	JSONException
+    //   138	1	6	localJSONException2	JSONException
+    //   145	43	6	localJSONException3	JSONException
+    //   7	199	7	localArrayList	ArrayList
+    //   109	74	8	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   16	32	129	org/json/JSONException
-    //   37	53	169	org/json/JSONException
-    //   53	70	176	org/json/JSONException
-    //   70	90	176	org/json/JSONException
-    //   95	105	176	org/json/JSONException
+    //   68	85	133	org/json/JSONException
+    //   91	111	133	org/json/JSONException
+    //   116	126	133	org/json/JSONException
+    //   41	57	138	org/json/JSONException
+    //   11	27	145	org/json/JSONException
   }
   
   public static AdItem a(JSONObject paramJSONObject)
   {
-    int j = 0;
     localArrayList1 = new ArrayList();
     localArrayList2 = new ArrayList();
     try
@@ -252,28 +210,29 @@ public class AdEmoCfgProvider
           i += 1;
         }
       }
+      Object localObject1;
       if (paramJSONObject.has("emos"))
       {
         localJSONArray = paramJSONObject.getJSONArray("emos");
-        i = j;
+        i = 0;
         while (i < localJSONArray.length())
         {
-          Object localObject = localJSONArray.getJSONObject(i);
-          String str1 = ((JSONObject)localObject).optString("imgUrl", "");
-          String str2 = ((JSONObject)localObject).optString("md5", "");
-          long l = ((JSONObject)localObject).optLong("fileSize", 0L);
-          j = ((JSONObject)localObject).optInt("width", 0);
-          int k = ((JSONObject)localObject).optInt("height", 0);
-          String str3 = ((JSONObject)localObject).optString("jumpUrl", "");
-          localObject = ((JSONObject)localObject).optString("desc", "");
+          Object localObject2 = localJSONArray.getJSONObject(i);
+          localObject1 = ((JSONObject)localObject2).optString("imgUrl", "");
+          String str1 = ((JSONObject)localObject2).optString("md5", "");
+          long l = ((JSONObject)localObject2).optLong("fileSize", 0L);
+          int j = ((JSONObject)localObject2).optInt("width", 0);
+          int k = ((JSONObject)localObject2).optInt("height", 0);
+          String str2 = ((JSONObject)localObject2).optString("jumpUrl", "");
+          localObject2 = ((JSONObject)localObject2).optString("desc", "");
           AdEmoItem localAdEmoItem = new AdEmoItem();
-          localAdEmoItem.jdField_a_of_type_JavaLangString = str1;
-          localAdEmoItem.jdField_b_of_type_JavaLangString = str2;
+          localAdEmoItem.jdField_a_of_type_JavaLangString = ((String)localObject1);
+          localAdEmoItem.jdField_b_of_type_JavaLangString = str1;
           localAdEmoItem.jdField_a_of_type_Long = Long.valueOf(l).longValue();
           localAdEmoItem.jdField_a_of_type_Int = j;
           localAdEmoItem.jdField_b_of_type_Int = k;
-          localAdEmoItem.c = str3;
-          localAdEmoItem.d = ((String)localObject);
+          localAdEmoItem.c = str2;
+          localAdEmoItem.d = ((String)localObject2);
           localArrayList2.add(localAdEmoItem);
           i += 1;
         }
@@ -282,90 +241,50 @@ public class AdEmoCfgProvider
     }
     catch (JSONException localJSONException)
     {
-      QLog.e("AdEmoCfgProvider", 2, "parseAdItemJson has exception， adObject = " + paramJSONObject.toString(), localJSONException);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parseAdItemJson has exception， adObject = ");
+      ((StringBuilder)localObject1).append(paramJSONObject.toString());
+      QLog.e("AdEmoCfgProvider", 2, ((StringBuilder)localObject1).toString(), localJSONException);
     }
   }
   
-  /* Error */
-  public static void a(android.content.Context paramContext, String paramString, JSONObject paramJSONObject)
+  public static void a(Context paramContext, String paramString, JSONObject paramJSONObject)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 196	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +39 -> 45
-    //   9: new 26	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 198
-    //   18: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: astore 4
-    //   23: aload_2
-    //   24: ifnonnull +85 -> 109
-    //   27: ldc 200
-    //   29: astore_3
-    //   30: ldc 59
-    //   32: iconst_2
-    //   33: aload 4
-    //   35: aload_3
-    //   36: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   45: aload_2
-    //   46: ifnull +59 -> 105
-    //   49: aload_2
-    //   50: invokestatic 57	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfgProvider:a	(Lorg/json/JSONObject;)Lcom/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg;
-    //   53: putstatic 16	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfgProvider:a	Lcom/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg;
-    //   56: aload_0
-    //   57: ifnull +48 -> 105
-    //   60: aload_0
-    //   61: ldc 18
-    //   63: iconst_4
-    //   64: invokevirtual 24	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   67: invokeinterface 207 1 0
-    //   72: new 26	java/lang/StringBuilder
-    //   75: dup
-    //   76: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   79: ldc 29
-    //   81: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: aload_1
-    //   85: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: aload_2
-    //   92: invokevirtual 117	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   95: invokeinterface 213 3 0
-    //   100: invokeinterface 216 1 0
-    //   105: ldc 2
-    //   107: monitorexit
-    //   108: return
-    //   109: aload_2
-    //   110: invokevirtual 117	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   113: astore_3
-    //   114: goto -84 -> 30
-    //   117: astore_0
-    //   118: ldc 2
-    //   120: monitorexit
-    //   121: aload_0
-    //   122: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	123	0	paramContext	android.content.Context
-    //   0	123	1	paramString	String
-    //   0	123	2	paramJSONObject	JSONObject
-    //   29	85	3	str	String
-    //   21	13	4	localStringBuilder	java.lang.StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   3	23	117	finally
-    //   30	45	117	finally
-    //   49	56	117	finally
-    //   60	105	117	finally
-    //   109	114	117	finally
+    try
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateCfgStr, cfgJsonObject = ");
+        if (paramJSONObject == null) {
+          localObject = "null";
+        } else {
+          localObject = paramJSONObject.toString();
+        }
+        localStringBuilder.append((String)localObject);
+        QLog.d("AdEmoCfgProvider", 2, localStringBuilder.toString());
+      }
+      if (paramJSONObject != null)
+      {
+        a = a(paramJSONObject);
+        if (paramContext != null)
+        {
+          paramContext = paramContext.getSharedPreferences("MOBILEQQ_RECOMMENDED_STICKER_CONFIG", 4).edit();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("RECOMMENDED_STICKER_AD_CFG");
+          ((StringBuilder)localObject).append(paramString);
+          paramContext.putString(((StringBuilder)localObject).toString(), paramJSONObject.toString()).apply();
+        }
+      }
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.ad.AdEmoCfgProvider
  * JD-Core Version:    0.7.0.1
  */

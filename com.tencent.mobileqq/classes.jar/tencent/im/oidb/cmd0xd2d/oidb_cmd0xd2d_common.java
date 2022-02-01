@@ -3,7 +3,7 @@ package tencent.im.oidb.cmd0xd2d;
 public final class oidb_cmd0xd2d_common {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xd2d.oidb_cmd0xd2d_common
  * JD-Core Version:    0.7.0.1
  */

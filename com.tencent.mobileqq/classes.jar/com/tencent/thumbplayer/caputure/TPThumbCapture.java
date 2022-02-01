@@ -30,7 +30,10 @@ public class TPThumbCapture
     }
     catch (Exception localException)
     {
-      TPLogUtil.e("TPThumbPlayer[TPThumbCapture.java]", "init: " + Log.getStackTraceString(localException));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init: ");
+      localStringBuilder.append(Log.getStackTraceString(localException));
+      TPLogUtil.e("TPThumbPlayer[TPThumbCapture.java]", localStringBuilder.toString());
     }
   }
   
@@ -45,63 +48,58 @@ public class TPThumbCapture
     }
     catch (Exception paramString)
     {
-      TPLogUtil.e("TPThumbPlayer[TPThumbCapture.java]", "init: " + Log.getStackTraceString(paramString));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init: ");
+      localStringBuilder.append(Log.getStackTraceString(paramString));
+      TPLogUtil.e("TPThumbPlayer[TPThumbCapture.java]", localStringBuilder.toString());
     }
   }
   
   public void generateImageAsyncAtTime(long paramLong, TPImageGeneratorParams paramTPImageGeneratorParams, TPCaptureCallBack paramTPCaptureCallBack)
   {
-    if (paramTPImageGeneratorParams == null) {
+    TPImageGeneratorParams localTPImageGeneratorParams = paramTPImageGeneratorParams;
+    if (paramTPImageGeneratorParams == null) {}
+    try
+    {
+      localTPImageGeneratorParams = new TPImageGeneratorParams();
+      localTPImageGeneratorParams.format = 37;
+      this.mOpaque += 1L;
+      this.mCallBackMap.put(Long.valueOf(this.mOpaque), paramTPCaptureCallBack);
       try
       {
-        paramTPImageGeneratorParams = new TPImageGeneratorParams();
-        paramTPImageGeneratorParams.format = 37;
-        for (;;)
-        {
-          this.mOpaque += 1L;
-          this.mCallBackMap.put(Long.valueOf(this.mOpaque), paramTPCaptureCallBack);
-          try
-          {
-            this.mImageGenerator.generateImageAsyncAtTime(paramLong, this.mOpaque, paramTPImageGeneratorParams);
-            return;
-          }
-          catch (Exception paramTPImageGeneratorParams)
-          {
-            for (;;)
-            {
-              TPLogUtil.e("TPThumbPlayer[TPThumbCapture.java]", "generateImageAsyncAtTime: " + Log.getStackTraceString(paramTPImageGeneratorParams));
-            }
-          }
-        }
+        this.mImageGenerator.generateImageAsyncAtTime(paramLong, this.mOpaque, localTPImageGeneratorParams);
       }
-      finally {}
+      catch (Exception paramTPImageGeneratorParams)
+      {
+        paramTPCaptureCallBack = new StringBuilder();
+        paramTPCaptureCallBack.append("generateImageAsyncAtTime: ");
+        paramTPCaptureCallBack.append(Log.getStackTraceString(paramTPImageGeneratorParams));
+        TPLogUtil.e("TPThumbPlayer[TPThumbCapture.java]", paramTPCaptureCallBack.toString());
+      }
+      return;
     }
+    finally {}
   }
   
   public void onImageGenerationCompleted(int paramInt, long paramLong1, long paramLong2, long paramLong3, TPVideoFrame paramTPVideoFrame)
   {
     TPCaptureCallBack localTPCaptureCallBack = (TPCaptureCallBack)this.mCallBackMap.get(Long.valueOf(paramLong3));
-    if (localTPCaptureCallBack != null)
-    {
-      if ((paramInt != 0) || (paramTPVideoFrame == null)) {
-        break label82;
+    if (localTPCaptureCallBack != null) {
+      if ((paramInt == 0) && (paramTPVideoFrame != null))
+      {
+        paramTPVideoFrame = TPCaptureUtils.frame2Bitmap(paramTPVideoFrame);
+        if (paramTPVideoFrame != null) {
+          localTPCaptureCallBack.onCaptureVideoSuccess(paramTPVideoFrame);
+        } else {
+          localTPCaptureCallBack.onCaptureVideoFailed(1000001);
+        }
       }
-      paramTPVideoFrame = TPCaptureUtils.frame2Bitmap(paramTPVideoFrame);
-      if (paramTPVideoFrame == null) {
-        break label70;
+      else
+      {
+        localTPCaptureCallBack.onCaptureVideoFailed(paramInt);
       }
-      localTPCaptureCallBack.onCaptureVideoSuccess(paramTPVideoFrame);
     }
-    for (;;)
-    {
-      this.mCallBackMap.remove(Long.valueOf(paramLong3));
-      return;
-      label70:
-      localTPCaptureCallBack.onCaptureVideoFailed(1000001);
-      continue;
-      label82:
-      localTPCaptureCallBack.onCaptureVideoFailed(paramInt);
-    }
+    this.mCallBackMap.remove(Long.valueOf(paramLong3));
   }
   
   public void release()
@@ -110,22 +108,21 @@ public class TPThumbCapture
     {
       this.mImageGenerator.cancelAllImageGenerations();
       this.mImageGenerator.unInit();
-      this.mCallBackMap.clear();
-      this.mImageGenerator = null;
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        TPLogUtil.e("TPThumbPlayer[TPThumbCapture.java]", "release: " + Log.getStackTraceString(localException));
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("release: ");
+      localStringBuilder.append(Log.getStackTraceString(localException));
+      TPLogUtil.e("TPThumbPlayer[TPThumbCapture.java]", localStringBuilder.toString());
     }
+    this.mCallBackMap.clear();
+    this.mImageGenerator = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.caputure.TPThumbCapture
  * JD-Core Version:    0.7.0.1
  */

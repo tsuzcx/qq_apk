@@ -12,7 +12,7 @@ public class QZoneFilePath
   public static final String AUDIO_SAVE_PATH;
   public static final String BACKUP_DIR;
   public static final String BEAUTY_IMG_PATH;
-  public static final String CACHE_DIR_FEEDS = VFSAssistantUtils.getSDKPrivatePath("qzone" + File.separator + "feeds");
+  public static final String CACHE_DIR_FEEDS;
   public static final String CACHE_DIR_FILE;
   public static final String CACHE_DIR_IMAGE;
   public static final String CACHE_DIR_IMAGE_SR;
@@ -38,29 +38,103 @@ public class QZoneFilePath
   static
   {
     DCIMDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath();
-    DCIM_CAMERA_PATH = DCIMDir + File.separator + "Camera";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(DCIMDir);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("Camera");
+    DCIM_CAMERA_PATH = localStringBuilder.toString();
     VGIF_SAVE = VFSAssistantUtils.getSDKPrivatePath("Tencent/Qzone/AlbumAutoVConvGif/");
     AUDIO_SAVE_PATH = VFSAssistantUtils.getSDKPrivatePath("Tencent/Qzone/VoiceMoodAudio/");
     JCE_DATA_DIR = VFSAssistantUtils.getSDKPrivatePath("jcedata/businessdata/");
-    THUMB_BASE_PATH = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "qzone" + File.separator + "thumbs" + File.separator);
-    VIDEO_COVER_TMP_CACHE_DIR = ROOT_QZONE_PATH + File.separator + "MaxVideo";
-    BEAUTY_IMG_PATH = ROOT_PATH + File.separator + "ix.jpg";
-    TRACE_FILE_PATH = ROOT_PATH + File.separator + "Tencent" + File.separator + "MobileQQ" + File.separator + "trace";
-    SERVER_DIR = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv";
-    TESTSERVER_PATH = SERVER_DIR + File.separator + "testserver";
-    BACKUP_DIR = ROOT_PATH + File.separator + "Tencent" + File.separator + "qzonebackup";
-    WNS_PATH = ROOT_PATH + File.separator + "Tencent" + File.separator + "wns";
-    CACHE_DYNAMIC_ALBUM = ROOT_PATH + File.separator + "Tencent/Qzone/qzonedynamicalbum/";
-    CACHE_DIR_IMAGE = VFSAssistantUtils.getSDKPrivatePath("qzone" + File.separator + "imageV2");
-    CACHE_DIR_VIDEO = VFSAssistantUtils.getSDKPrivatePath("qzone" + File.separator + "video");
-    CACHE_DIR_VIDEO_PLAY = VFSAssistantUtils.getSDKPrivatePath("qzone" + File.separator + "video_cache");
-    CACHE_DIR_IMAGE_SR = VFSAssistantUtils.getSDKPrivatePath("qzone" + File.separator + "image_sr");
-    CACHE_DIR_FILE = VFSAssistantUtils.getSDKPrivatePath("qzone" + File.separator + "file");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("qzone");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("thumbs");
+    localStringBuilder.append(File.separator);
+    THUMB_BASE_PATH = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ROOT_QZONE_PATH);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("MaxVideo");
+    VIDEO_COVER_TMP_CACHE_DIR = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ROOT_PATH);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("ix.jpg");
+    BEAUTY_IMG_PATH = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ROOT_PATH);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("Tencent");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("MobileQQ");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("trace");
+    TRACE_FILE_PATH = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append("/testEnv");
+    SERVER_DIR = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(SERVER_DIR);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("testserver");
+    TESTSERVER_PATH = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ROOT_PATH);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("Tencent");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("qzonebackup");
+    BACKUP_DIR = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ROOT_PATH);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("Tencent");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("wns");
+    WNS_PATH = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ROOT_PATH);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("Tencent/Qzone/qzonedynamicalbum/");
+    CACHE_DYNAMIC_ALBUM = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qzone");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("imageV2");
+    CACHE_DIR_IMAGE = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qzone");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("video");
+    CACHE_DIR_VIDEO = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qzone");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("video_cache");
+    CACHE_DIR_VIDEO_PLAY = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qzone");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("image_sr");
+    CACHE_DIR_IMAGE_SR = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qzone");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("file");
+    CACHE_DIR_FILE = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qzone");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("feeds");
+    CACHE_DIR_FEEDS = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.cache.QZoneFilePath
  * JD-Core Version:    0.7.0.1
  */

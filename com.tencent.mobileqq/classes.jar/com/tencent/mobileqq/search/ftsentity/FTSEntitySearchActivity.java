@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
+import com.tencent.mobileqq.search.base.activity.BaseSearchActivity;
+import com.tencent.mobileqq.search.base.fragment.BaseSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class FTSEntitySearchActivity
@@ -22,14 +22,14 @@ public class FTSEntitySearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  public BaseSearchFragment a()
+  protected BaseSearchFragment a()
   {
     return FTSEntitySearchFragment.a(d);
   }
   
-  public String a()
+  protected String a()
   {
-    return FTSEntitySearchUtils.b(this, this.a);
+    return FTSEntitySearchUtils.b(this, this.b);
   }
   
   @Override
@@ -41,7 +41,7 @@ public class FTSEntitySearchActivity
     return bool;
   }
   
-  public void doOnStart()
+  protected void doOnStart()
   {
     super.doOnStart();
     com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.a = true;
@@ -56,7 +56,7 @@ public class FTSEntitySearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity
  * JD-Core Version:    0.7.0.1
  */

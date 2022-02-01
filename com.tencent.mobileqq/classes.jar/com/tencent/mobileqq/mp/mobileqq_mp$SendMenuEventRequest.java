@@ -20,7 +20,7 @@ public final class mobileqq_mp$SendMenuEventRequest
   public static final int SM_CLICK = 2;
   public static final int UNKNOW = 0;
   public static final int URL = 2;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 41, 49, 56, 64, 72, 82, 90, 98, 106, 112, 122, 128, 136, 146, 154, 160, 168 }, new String[] { "uin", "key", "type", "is_need_lbs", "latitude", "longitude", "luin", "msg_id", "s_type", "url", "actionInfo", "scan_result", "media_id", "event_id", "versionInfo", "is_new_menu", "pictureCount", "lbsAddressLabel", "picture_Md5s", "scanType", "menu_type" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(1), Boolean.valueOf(false), Double.valueOf(0.0D), Double.valueOf(0.0D), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "", null, "", "", Integer.valueOf(1), "", Boolean.valueOf(false), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0) }, SendMenuEventRequest.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public mobileqq_mp.ActionInfo actionInfo = new mobileqq_mp.ActionInfo();
   public final PBEnumField event_id = PBField.initEnum(1);
   public final PBBoolField is_need_lbs = PBField.initBool(false);
@@ -42,10 +42,18 @@ public final class mobileqq_mp$SendMenuEventRequest
   public final PBUInt32Field uin = PBField.initUInt32(0);
   public final PBStringField url = PBField.initString("");
   public final PBStringField versionInfo = PBField.initString("");
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 41, 49, 56, 64, 72, 82, 90, 98, 106, 112, 122, 128, 136, 146, 154, 160, 168 }, new String[] { "uin", "key", "type", "is_need_lbs", "latitude", "longitude", "luin", "msg_id", "s_type", "url", "actionInfo", "scan_result", "media_id", "event_id", "versionInfo", "is_new_menu", "pictureCount", "lbsAddressLabel", "picture_Md5s", "scanType", "menu_type" }, new Object[] { localInteger1, "", localInteger2, localBoolean, Double.valueOf(0.0D), Double.valueOf(0.0D), Long.valueOf(0L), Long.valueOf(0L), localInteger1, "", null, "", "", localInteger2, "", localBoolean, localInteger1, "", "", localInteger1, localInteger1 }, SendMenuEventRequest.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventRequest
  * JD-Core Version:    0.7.0.1
  */

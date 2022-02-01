@@ -28,8 +28,12 @@ public class BitmapDecoder
   
   public static File a()
   {
-    if (SystemUtil.a()) {
-      return new File(AppConstants.SDCARD_PATH + "status_ic");
+    if (SystemUtil.a())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AppConstants.SDCARD_PATH);
+      localStringBuilder.append("status_ic");
+      return new File(localStringBuilder.toString());
     }
     return null;
   }
@@ -37,31 +41,36 @@ public class BitmapDecoder
   private boolean a(String paramString, File paramFile)
   {
     int i = HttpDownloadUtil.downloadData(null, paramString, paramFile);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.img", 2, "download " + paramString + "result " + i);
+    if (QLog.isColorLevel())
+    {
+      paramFile = new StringBuilder();
+      paramFile.append("download ");
+      paramFile.append(paramString);
+      paramFile.append("result ");
+      paramFile.append(i);
+      QLog.d("Q.richstatus.img", 2, paramFile.toString());
     }
     paramFile = StatisticCollector.getInstance(BaseApplication.getContext());
     HashMap localHashMap = new HashMap();
     localHashMap.put("result", String.valueOf(i));
     localHashMap.put("url", paramString);
-    if (i == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramFile.collectPerformance("", "RichStatusIcon", bool, 0L, 0L, localHashMap, "");
-      if (i != 0) {
-        break;
-      }
-      return true;
+    boolean bool;
+    if (i == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    return false;
+    paramFile.collectPerformance("", "RichStatusIcon", bool, 0L, 0L, localHashMap, "");
+    return i == 0;
   }
   
   public Bitmap a(String paramString)
   {
-    if (GlobalImageCache.a == null) {
-      return null;
-    }
-    return (Bitmap)GlobalImageCache.a.get(this.jdField_a_of_type_JavaLangString + paramString);
+    MQLruCache localMQLruCache = GlobalImageCache.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramString);
+    return (Bitmap)localMQLruCache.get(localStringBuilder.toString());
   }
   
   public Bitmap a(String paramString1, String paramString2, String paramString3)
@@ -74,8 +83,16 @@ public class BitmapDecoder
       }
       if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString1))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.img", 2, "decodeBitmap " + paramString1 + ", " + paramString2 + ", " + paramString3);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("decodeBitmap ");
+          localStringBuilder.append(paramString1);
+          localStringBuilder.append(", ");
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append(", ");
+          localStringBuilder.append(paramString3);
+          QLog.d("Q.richstatus.img", 2, localStringBuilder.toString());
         }
         this.jdField_a_of_type_JavaUtilHashSet.add(paramString1);
         new BitmapDecoder.Decoder(this, paramString1, paramString2, paramString3).execute((Void[])null);
@@ -91,7 +108,7 @@ public class BitmapDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.BitmapDecoder
  * JD-Core Version:    0.7.0.1
  */

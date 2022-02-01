@@ -13,7 +13,8 @@ public class QidianProfileUiInfo$ConfigInfo
   public boolean a;
   public int b;
   public String b;
-  public String c = "";
+  public int c;
+  public String c;
   public String d = "";
   public String e = "";
   public String f = "";
@@ -25,7 +26,9 @@ public class QidianProfileUiInfo$ConfigInfo
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
   }
   
   public QidianProfileUiInfo$ConfigInfo(mobileqq_qidian.ConfigInfo paramConfigInfo)
@@ -34,7 +37,9 @@ public class QidianProfileUiInfo$ConfigInfo
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
     if (paramConfigInfo.uint32_type.has()) {
       this.jdField_a_of_type_Int = paramConfigInfo.uint32_type.get();
     }
@@ -48,7 +53,7 @@ public class QidianProfileUiInfo$ConfigInfo
       this.jdField_b_of_type_JavaLangString = paramConfigInfo.str_content.get();
     }
     if (paramConfigInfo.str_action.has()) {
-      this.c = paramConfigInfo.str_action.get();
+      this.jdField_c_of_type_JavaLangString = paramConfigInfo.str_action.get();
     }
     if (paramConfigInfo.str_aaction.has()) {
       this.d = paramConfigInfo.str_aaction.get();
@@ -65,11 +70,14 @@ public class QidianProfileUiInfo$ConfigInfo
     if (paramConfigInfo.str_log.has()) {
       this.g = paramConfigInfo.str_log.get();
     }
+    if (paramConfigInfo.uint32_title_type.has()) {
+      this.jdField_c_of_type_Int = paramConfigInfo.uint32_title_type.get();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.data.QidianProfileUiInfo.ConfigInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -2,152 +2,75 @@ package com.tencent.mobileqq.ptt.preop;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class PttPreFlowController
 {
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   int[] jdField_a_of_type_ArrayOfInt = new int[2];
   long jdField_b_of_type_Long;
   int[] jdField_b_of_type_ArrayOfInt = new int[2];
   
-  public PttPreFlowController(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, long paramLong)
+  public PttPreFlowController(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, long paramLong)
   {
-    this.jdField_b_of_type_ArrayOfInt[0] = paramInt1;
-    this.jdField_b_of_type_ArrayOfInt[1] = paramInt2;
+    int[] arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
+    arrayOfInt[0] = paramInt1;
+    arrayOfInt[1] = paramInt2;
     this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     b();
   }
   
   private void b()
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0);
-    this.jdField_a_of_type_ArrayOfInt[0] = localSharedPreferences.getInt("avaliableflowxg", this.jdField_b_of_type_ArrayOfInt[0]);
-    this.jdField_a_of_type_ArrayOfInt[1] = localSharedPreferences.getInt("avaliableflowifi", this.jdField_b_of_type_ArrayOfInt[1]);
-    this.jdField_a_of_type_Long = localSharedPreferences.getLong("lastdaymillion", 0L);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PttPreSendManager", 4, "PttPreFlowController.loadCfg, lastDayMillion " + this.jdField_a_of_type_Long);
+    Object localObject = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PttPreSendSp_");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+    this.jdField_a_of_type_ArrayOfInt[0] = ((SharedPreferences)localObject).getInt("avaliableflowxg", this.jdField_b_of_type_ArrayOfInt[0]);
+    this.jdField_a_of_type_ArrayOfInt[1] = ((SharedPreferences)localObject).getInt("avaliableflowifi", this.jdField_b_of_type_ArrayOfInt[1]);
+    this.jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong("lastdaymillion", 0L);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PttPreFlowController.loadCfg, lastDayMillion ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      QLog.d("PttPreFlowController", 4, ((StringBuilder)localObject).toString());
     }
   }
   
   public void a()
   {
-    BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0).edit().putInt("avaliableflowxg", this.jdField_a_of_type_ArrayOfInt[0]).putInt("avaliableflowifi", this.jdField_a_of_type_ArrayOfInt[1]).commit();
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PttPreSendSp_");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().putInt("avaliableflowxg", this.jdField_a_of_type_ArrayOfInt[0]).putInt("avaliableflowifi", this.jdField_a_of_type_ArrayOfInt[1]).commit();
   }
   
   public void a(boolean paramBoolean, long paramLong)
   {
-    int i;
-    int[] arrayOfInt;
-    if (paramBoolean)
-    {
-      i = 1;
-      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      arrayOfInt[i] = ((int)(arrayOfInt[i] + paramLong));
-      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      if (this.jdField_a_of_type_ArrayOfInt[i] <= this.jdField_b_of_type_ArrayOfInt[i]) {
-        break label128;
-      }
-    }
-    label128:
-    for (int j = this.jdField_b_of_type_ArrayOfInt[i];; j = this.jdField_a_of_type_ArrayOfInt[i])
-    {
-      arrayOfInt[i] = j;
-      if (QLog.isColorLevel()) {
-        QLog.d("PttPreSendManager", 2, "doOnRealSend : guess hit, give back  " + paramLong + ", avaliableFlow " + this.jdField_a_of_type_ArrayOfInt[i] + ", iswifi " + paramBoolean);
-      }
-      return;
-      i = 0;
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean a(boolean paramBoolean)
   {
-    int i;
-    int j;
-    if (paramBoolean)
-    {
-      i = 1;
-      if (!paramBoolean) {
-        break label249;
-      }
-      j = 10000;
-      label14:
-      long l = System.currentTimeMillis();
-      if ((this.jdField_a_of_type_Long <= 0L) || (l <= this.jdField_a_of_type_Long) || (l - this.jdField_a_of_type_Long >= this.jdField_b_of_type_Long))
-      {
-        this.jdField_a_of_type_ArrayOfInt[0] = this.jdField_b_of_type_ArrayOfInt[0];
-        this.jdField_a_of_type_ArrayOfInt[1] = this.jdField_b_of_type_ArrayOfInt[1];
-        if (QLog.isColorLevel()) {
-          QLog.d("PttPreSendManager", 2, "check flow : refresh flow avalia， limitation xg: " + this.jdField_b_of_type_ArrayOfInt[0] + ", wifi: " + this.jdField_b_of_type_ArrayOfInt[1]);
-        }
-        this.jdField_a_of_type_Long = l;
-        BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0).edit().putLong("lastdaymillion", this.jdField_a_of_type_Long).commit();
-      }
-      if (this.jdField_a_of_type_ArrayOfInt[i] < j) {
-        break label256;
-      }
-    }
-    label256:
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PttPreSendManager", 2, "check flow : support ? " + bool + " iswifi : " + paramBoolean);
-      }
-      return bool;
-      i = 0;
-      break;
-      label249:
-      j = 4000;
-      break label14;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean a(boolean paramBoolean, long paramLong)
   {
-    boolean bool = true;
-    int i;
-    int[] arrayOfInt;
-    if (paramBoolean)
-    {
-      i = 1;
-      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      arrayOfInt[i] = ((int)(arrayOfInt[i] - paramLong));
-      if (this.jdField_a_of_type_ArrayOfInt[i] < 0) {
-        break label143;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PttPreSendManager", 2, "flow consume result : " + bool + " flow " + paramLong + ", avaliableFlow " + this.jdField_a_of_type_ArrayOfInt[i] + ", iswifi " + paramBoolean);
-      }
-      i = this.jdField_a_of_type_Int + 1;
-      this.jdField_a_of_type_Int = i;
-      if (i >= 3)
-      {
-        a();
-        this.jdField_a_of_type_Int = 0;
-      }
-      return bool;
-      i = 0;
-      break;
-      label143:
-      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      arrayOfInt[i] = ((int)(arrayOfInt[i] + paramLong));
-      bool = false;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.preop.PttPreFlowController
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.ftsmsg;
 
-import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.fts.data.msg.FTSMessage;
 import java.util.HashSet;
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class FTSMessageSearchEngine$FTSSearchResultItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.FTSSearchResultItem
  * JD-Core Version:    0.7.0.1
  */

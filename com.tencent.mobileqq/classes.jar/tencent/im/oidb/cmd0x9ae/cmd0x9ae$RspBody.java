@@ -19,13 +19,14 @@ public final class cmd0x9ae$RspBody
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42 }, new String[] { "bool_has_been_authenticated", "bool_need_auth_tips", "msg_auth_tips", "bytes_jwt", "msg_small_tips" }, new Object[] { Boolean.valueOf(false), Boolean.valueOf(false), null, localByteStringMicro, null }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42 }, new String[] { "bool_has_been_authenticated", "bool_need_auth_tips", "msg_auth_tips", "bytes_jwt", "msg_small_tips" }, new Object[] { localBoolean, localBoolean, null, localByteStringMicro, null }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody
  * JD-Core Version:    0.7.0.1
  */

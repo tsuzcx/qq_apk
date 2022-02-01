@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.api.IFMDataCacheApi;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.widget.QFileCustomBottomBarManager;
 import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class PrinterSendBarManager
   extends QFileCustomBottomBarManager
@@ -25,39 +26,52 @@ public class PrinterSendBarManager
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131377759));
-    this.b = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131372347));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131377187));
+    this.b = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131371932));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131692338) + this.jdField_a_of_type_AndroidContentContext.getString(2131692579) + FMDataCache.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131692580);
-    long l = FMDataCache.d();
-    String str = "";
-    if (l > 0L) {
-      str = this.jdField_a_of_type_AndroidContentContext.getString(2131692405) + FileUtil.a(l);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (FMDataCache.b() > 0L) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692266));
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692531));
+    ((StringBuilder)localObject1).append(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCount());
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692532));
+    Object localObject2 = ((StringBuilder)localObject1).toString();
+    long l = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedFileSize();
+    if (l > 0L)
     {
-      ((TextView)localObject).setEnabled(bool);
-      this.b.setText(str);
-      return;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692333));
+      ((StringBuilder)localObject1).append(FileUtil.a(l));
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
+    else
+    {
+      localObject1 = "";
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+    localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+    boolean bool;
+    if (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCount() > 0L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((TextView)localObject2).setEnabled(bool);
+    this.b.setText((CharSequence)localObject1);
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    if (this.jdField_a_of_type_Boolean) {}
+    boolean bool = this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.sendbar.PrinterSendBarManager
  * JD-Core Version:    0.7.0.1
  */

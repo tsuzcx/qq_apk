@@ -17,19 +17,18 @@ class HippyTKDRefreshHeader$13
   {
     if (paramBitmap != null)
     {
-      if (this.val$refreshResult == 2) {
+      if (this.val$refreshResult == 2)
+      {
         this.this$0.mPullDownToRefreshSucIcon = new BitmapDrawable(BaseApplicationImpl.getContext().getResources(), Bitmap.createScaledBitmap(paramBitmap, ImmersiveUtils.dpToPx(12.0F) * paramBitmap.getWidth() / paramBitmap.getHeight(), ImmersiveUtils.dpToPx(12.0F), true));
+        return;
       }
+      this.this$0.mPullDownToRefreshFailIcon = new BitmapDrawable(BaseApplicationImpl.getContext().getResources(), Bitmap.createScaledBitmap(paramBitmap, ImmersiveUtils.dpToPx(12.0F) * paramBitmap.getWidth() / paramBitmap.getHeight(), ImmersiveUtils.dpToPx(12.0F), true));
     }
-    else {
-      return;
-    }
-    this.this$0.mPullDownToRefreshFailIcon = new BitmapDrawable(BaseApplicationImpl.getContext().getResources(), Bitmap.createScaledBitmap(paramBitmap, ImmersiveUtils.dpToPx(12.0F) * paramBitmap.getWidth() / paramBitmap.getHeight(), ImmersiveUtils.dpToPx(12.0F), true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDRefreshHeader.13
  * JD-Core Version:    0.7.0.1
  */

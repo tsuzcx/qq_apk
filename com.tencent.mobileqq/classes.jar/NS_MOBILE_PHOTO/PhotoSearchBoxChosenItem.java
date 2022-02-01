@@ -31,14 +31,15 @@ public final class PhotoSearchBoxChosenItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.elems != null) {
-      paramJceOutputStream.write(this.elems, 0);
+    ArrayList localArrayList = this.elems;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.PhotoSearchBoxChosenItem
  * JD-Core Version:    0.7.0.1
  */

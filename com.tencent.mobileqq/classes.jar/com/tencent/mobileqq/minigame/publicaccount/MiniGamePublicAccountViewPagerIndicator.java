@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
 public class MiniGamePublicAccountViewPagerIndicator
   extends LinearLayout
@@ -49,43 +49,48 @@ public class MiniGamePublicAccountViewPagerIndicator
   
   public void onPageSelected(int paramInt)
   {
-    if (this.mViewPager == null) {}
-    label71:
-    do
+    Object localObject = this.mViewPager;
+    if (localObject == null) {
+      return;
+    }
+    if (((ViewPager)localObject).getAdapter() == null) {
+      return;
+    }
+    if (super.getChildCount() <= paramInt) {
+      return;
+    }
+    int i = 0;
+    while (i < super.getChildCount())
     {
-      do
+      localObject = (MiniGamePublicAccountViewPagerIndicator.IndicatorView)super.getChildAt(i);
+      if (localObject != null)
       {
-        return;
-      } while ((this.mViewPager.getAdapter() == null) || (super.getChildCount() <= paramInt));
-      int i = 0;
-      if (i < super.getChildCount())
-      {
-        MiniGamePublicAccountViewPagerIndicator.IndicatorView localIndicatorView = (MiniGamePublicAccountViewPagerIndicator.IndicatorView)super.getChildAt(i);
-        if (localIndicatorView != null) {
-          if (i != paramInt) {
-            break label71;
-          }
+        boolean bool;
+        if (i == paramInt) {
+          bool = true;
+        } else {
+          bool = false;
         }
-        for (boolean bool = true;; bool = false)
-        {
-          localIndicatorView.setSelected(bool);
-          i += 1;
-          break;
-        }
+        ((MiniGamePublicAccountViewPagerIndicator.IndicatorView)localObject).setSelected(bool);
       }
-    } while (this.onPageSelectedListener == null);
-    this.onPageSelectedListener.onPageSelected(paramInt);
+      i += 1;
+    }
+    localObject = this.onPageSelectedListener;
+    if (localObject != null) {
+      ((MiniGamePublicAccountViewPagerIndicator.OnPageSelectedListener)localObject).onPageSelected(paramInt);
+    }
   }
   
   public void refreshIndicator()
   {
-    if (this.mViewPager == null) {}
-    Object localObject;
-    do
-    {
+    Object localObject = this.mViewPager;
+    if (localObject == null) {
       return;
-      localObject = this.mViewPager.getAdapter();
-    } while (localObject == null);
+    }
+    localObject = ((ViewPager)localObject).getAdapter();
+    if (localObject == null) {
+      return;
+    }
     int k = ((PagerAdapter)localObject).getCount();
     if (k <= 1)
     {
@@ -99,36 +104,31 @@ public class MiniGamePublicAccountViewPagerIndicator
     if (j >= super.getChildCount()) {
       i = super.getChildCount() - 1;
     }
+    j = i;
     if (i < 0) {
-      i = 0;
+      j = 0;
     }
-    for (;;)
+    i = 0;
+    while (i < k)
     {
-      j = 0;
-      while (j < k)
+      super.addView(new MiniGamePublicAccountViewPagerIndicator.IndicatorView(getContext(), this.mConfig));
+      i += 1;
+    }
+    i = 0;
+    while (i < super.getChildCount())
+    {
+      localObject = (MiniGamePublicAccountViewPagerIndicator.IndicatorView)super.getChildAt(i);
+      if (localObject != null)
       {
-        super.addView(new MiniGamePublicAccountViewPagerIndicator.IndicatorView(getContext(), this.mConfig));
-        j += 1;
-      }
-      j = 0;
-      label114:
-      if (j < super.getChildCount())
-      {
-        localObject = (MiniGamePublicAccountViewPagerIndicator.IndicatorView)super.getChildAt(j);
-        if (localObject != null) {
-          if (j != i) {
-            break label159;
-          }
+        boolean bool;
+        if (i == j) {
+          bool = true;
+        } else {
+          bool = false;
         }
-      }
-      label159:
-      for (boolean bool = true;; bool = false)
-      {
         ((MiniGamePublicAccountViewPagerIndicator.IndicatorView)localObject).setSelected(bool);
-        j += 1;
-        break label114;
-        break;
       }
+      i += 1;
     }
   }
   
@@ -145,14 +145,15 @@ public class MiniGamePublicAccountViewPagerIndicator
   public void setViewPager(ViewPager paramViewPager)
   {
     this.mViewPager = paramViewPager;
-    if (this.mViewPager != null) {
-      this.mViewPager.setOnPageChangeListener(this);
+    paramViewPager = this.mViewPager;
+    if (paramViewPager != null) {
+      paramViewPager.setOnPageChangeListener(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountViewPagerIndicator
  * JD-Core Version:    0.7.0.1
  */

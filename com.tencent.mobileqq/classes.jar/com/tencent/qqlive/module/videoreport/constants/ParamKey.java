@@ -7,6 +7,7 @@ public class ParamKey
   public static final String ELEMENT_ID = "eid";
   public static final String ELEMENT_PARAMS = "element_params";
   public static final String ELEMENT_PATH = "element_path";
+  public static final String LAST_CLICK_ELE = "last_clck_ele";
   public static final String PAGE_PATH = "pg_path";
   public static final String PARENTS = "prnts";
   public static final String PG_ID = "pgid";
@@ -30,12 +31,13 @@ public class ParamKey
   public static final String REPORT_KEY_ROOT_REF_ELMT = "root_ref_elmt";
   public static final String REPORT_KEY_UI_VRSN = "ui_vrsn";
   public static final String REPORT_KEY_USID = "usid";
+  public static final String REPORT_KEY_USSN = "ussn";
   public static final String REPORT_KEY_US_STMP = "us_stmp";
   public static final String USER_DEFINE_KEY_VALUE = "udf_kv";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.constants.ParamKey
  * JD-Core Version:    0.7.0.1
  */

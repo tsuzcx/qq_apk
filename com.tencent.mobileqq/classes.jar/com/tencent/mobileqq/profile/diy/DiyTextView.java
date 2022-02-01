@@ -14,13 +14,14 @@ public class DiyTextView
     super(paramContext);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
     paramInt2 = getMeasuredHeight();
-    if (this.a != null) {
-      this.a.onMeasured(paramInt1, paramInt2);
+    VipProfileCardDiyActivity.OnMeasuredListener localOnMeasuredListener = this.a;
+    if (localOnMeasuredListener != null) {
+      localOnMeasuredListener.onMeasured(paramInt1, paramInt2);
     }
   }
   
@@ -31,7 +32,7 @@ public class DiyTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.diy.DiyTextView
  * JD-Core Version:    0.7.0.1
  */

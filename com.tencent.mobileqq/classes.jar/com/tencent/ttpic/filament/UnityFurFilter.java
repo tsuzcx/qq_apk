@@ -5,7 +5,7 @@ import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 public class UnityFurFilter
   extends UnityFurBaseFilter
 {
-  private static final String TAG = UnityFurFilter.class.getSimpleName();
+  private static final String TAG = "UnityFurFilter";
   
   public UnityFurFilter()
   {
@@ -14,7 +14,7 @@ public class UnityFurFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filament.UnityFurFilter
  * JD-Core Version:    0.7.0.1
  */

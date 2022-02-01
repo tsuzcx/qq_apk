@@ -17,10 +17,12 @@ public class AnimIconRedDot
   
   public int a()
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      return 3;
+    int j = this.jdField_a_of_type_Int;
+    int i = j;
+    if (j == 0) {
+      i = 3;
     }
-    return this.jdField_a_of_type_Int;
+    return i;
   }
   
   public String a()
@@ -70,7 +72,7 @@ public class AnimIconRedDot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.ui.AnimIconRedDot
  * JD-Core Version:    0.7.0.1
  */

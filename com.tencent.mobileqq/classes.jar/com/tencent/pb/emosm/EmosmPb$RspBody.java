@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class EmosmPb$RspBody
   extends MessageMicro<RspBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 138, 146, 154, 160 }, new String[] { "uint32_sub_cmd", "int32_result", "msg_subcmd0x1_rsp_deltab", "msg_subcmd0x2_rsp_fetchtab", "msg_subcmd0x3_rsp_fetchbq", "msg_subcmd0x5_recommend", "msg_subcmd0x6_collect_auth", "msg_subcmd0x7_rsp", "msg_subcmd0x8_rsp_addtab", "msg_subcmd0x9_rsp", "msg_subcmd0x10_rsp", "msg_subcmd0x11_rsp", "msg_subcmd0x12_rsp", "msg_subcmd0x13_rsp", "msg_subcmd0x14_rsp_fetchtab_mac", "msg_subcmd0x18_rsp", "msg_subcmd0x19_rsp", "uint32_business_id" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Integer.valueOf(0) }, RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field int32_result = PBField.initInt32(0);
   public EmosmPb.SubCmd0x10MoveOrderRsp msg_subcmd0x10_rsp = new EmosmPb.SubCmd0x10MoveOrderRsp();
   public EmosmPb.SubCmd0x11Rsp msg_subcmd0x11_rsp = new EmosmPb.SubCmd0x11Rsp();
@@ -28,10 +28,16 @@ public final class EmosmPb$RspBody
   public EmosmPb.SubCmd0x9BqAssocRsp msg_subcmd0x9_rsp = new EmosmPb.SubCmd0x9BqAssocRsp();
   public final PBUInt32Field uint32_business_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_sub_cmd = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 138, 146, 154, 160 }, new String[] { "uint32_sub_cmd", "int32_result", "msg_subcmd0x1_rsp_deltab", "msg_subcmd0x2_rsp_fetchtab", "msg_subcmd0x3_rsp_fetchbq", "msg_subcmd0x5_recommend", "msg_subcmd0x6_collect_auth", "msg_subcmd0x7_rsp", "msg_subcmd0x8_rsp_addtab", "msg_subcmd0x9_rsp", "msg_subcmd0x10_rsp", "msg_subcmd0x11_rsp", "msg_subcmd0x12_rsp", "msg_subcmd0x13_rsp", "msg_subcmd0x14_rsp_fetchtab_mac", "msg_subcmd0x18_rsp", "msg_subcmd0x19_rsp", "uint32_business_id" }, new Object[] { localInteger, localInteger, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, localInteger }, RspBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.emosm.EmosmPb.RspBody
  * JD-Core Version:    0.7.0.1
  */

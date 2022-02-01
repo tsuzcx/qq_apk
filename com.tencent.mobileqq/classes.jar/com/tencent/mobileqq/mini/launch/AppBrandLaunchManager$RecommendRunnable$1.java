@@ -26,16 +26,25 @@ class AppBrandLaunchManager$RecommendRunnable$1
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
     Object localObject1;
+    Object localObject2;
     if (paramJSONObject != null)
     {
       long l = paramJSONObject.optLong("retCode");
       localObject1 = paramJSONObject.optString("errMsg");
-      QLog.e("DesktopDataManager-Recommend", 1, "getRecommendAppList, retCode = " + l + ", errMsg = " + (String)localObject1);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getRecommendAppList, retCode = ");
+      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append(", errMsg = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.e("DesktopDataManager-Recommend", 1, ((StringBuilder)localObject2).toString());
     }
     if ((paramBoolean) && (paramJSONObject != null))
     {
       AppBrandLaunchManager.access$800(this.this$1.this$0).remove(AppBrandLaunchManager.RecommendRunnable.access$700(this.this$1));
-      QLog.e("DesktopDataManager-Recommend", 1, "getRecommendAppList suc : " + paramJSONObject.toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getRecommendAppList suc : ");
+      ((StringBuilder)localObject1).append(paramJSONObject.toString());
+      QLog.e("DesktopDataManager-Recommend", 1, ((StringBuilder)localObject1).toString());
       localObject1 = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject1 instanceof QQAppInterface)) {
         ((DesktopDataManager)((AppRuntime)localObject1).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).clearRecommendExposureList();
@@ -43,7 +52,7 @@ class AppBrandLaunchManager$RecommendRunnable$1
       paramJSONObject = (INTERFACE.StGetRecommendAppListRsp)paramJSONObject.opt("response");
       if (paramJSONObject != null)
       {
-        Object localObject2 = paramJSONObject.recommendModule.get();
+        localObject2 = paramJSONObject.recommendModule.get();
         localObject1 = MiniAppUtils.getAppInterface();
         if ((localObject2 != null) && (((List)localObject2).size() > 0))
         {
@@ -67,7 +76,7 @@ class AppBrandLaunchManager$RecommendRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.RecommendRunnable.1
  * JD-Core Version:    0.7.0.1
  */

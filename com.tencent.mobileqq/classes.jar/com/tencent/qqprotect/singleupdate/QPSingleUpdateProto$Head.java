@@ -62,15 +62,16 @@ public final class QPSingleUpdateProto$Head
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74, 85, 88, 101, 104, 114, 122, 130, 136, 144, 152, 160, 168, 176, 184 }, new String[] { "uint64_uin", "uint32_command", "uint32_seq", "uint32_version", "uint32_retry_times", "uint32_client_type", "uint32_pubno", "uint32_localid", "msg_login_sig", "uint32_client_ip", "uint32_client_port", "uint32_actual_ip", "uint32_qdun_ver", "bytes_phone_model", "bytes_phone_imei", "bytes_phone_num", "uint32_net_type", "uint32_timestamp", "uint32_subcmd", "uint32_result", "uint32_flag", "uint32_emulator_flag", "uint64_timestampnew" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, Head.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74, 85, 88, 101, 104, 114, 122, 130, 136, 144, 152, 160, 168, 176, 184 }, new String[] { "uint64_uin", "uint32_command", "uint32_seq", "uint32_version", "uint32_retry_times", "uint32_client_type", "uint32_pubno", "uint32_localid", "msg_login_sig", "uint32_client_ip", "uint32_client_port", "uint32_actual_ip", "uint32_qdun_ver", "bytes_phone_model", "bytes_phone_imei", "bytes_phone_num", "uint32_net_type", "uint32_timestamp", "uint32_subcmd", "uint32_result", "uint32_flag", "uint32_emulator_flag", "uint64_timestampnew" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, null, localInteger, localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, Long.valueOf(0L) }, Head.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPSingleUpdateProto.Head
  * JD-Core Version:    0.7.0.1
  */

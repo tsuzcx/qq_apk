@@ -66,25 +66,19 @@ public final class ActionSheetPrivacySelectAdapter
     Intrinsics.checkParameterIsNotNull(paramViewHolder, "holder");
     paramViewHolder = (ActionSheetPrivacySelectAdapter.PrivacyHolder)paramViewHolder;
     paramViewHolder.a().setText((CharSequence)((ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a());
-    if (paramInt == 0)
-    {
-      paramViewHolder.itemView.setBackgroundResource(2130837583);
-      if (((ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a() != this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileDisplaySettingItem.g()) {
-        break label127;
-      }
-      paramViewHolder.a().setVisibility(0);
+    if (paramInt == 0) {
+      paramViewHolder.itemView.setBackgroundResource(2130837670);
+    } else {
+      paramViewHolder.itemView.setBackgroundResource(2130837658);
     }
-    for (;;)
-    {
-      ActionSheetPrivacySelectAdapter.PrivacySelectActionSheetClickListener localPrivacySelectActionSheetClickListener = this.jdField_a_of_type_ComTencentMobileqqProfilesettingActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;
-      if (localPrivacySelectActionSheetClickListener != null) {
-        paramViewHolder.itemView.setOnClickListener((View.OnClickListener)new ActionSheetPrivacySelectAdapter.onBindViewHolder..inlined.let.lambda.1(localPrivacySelectActionSheetClickListener, this, paramViewHolder, paramInt));
-      }
-      return;
-      paramViewHolder.itemView.setBackgroundResource(2130837571);
-      break;
-      label127:
+    if (((ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a() == this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileDisplaySettingItem.g()) {
+      paramViewHolder.a().setVisibility(0);
+    } else {
       paramViewHolder.a().setVisibility(8);
+    }
+    ActionSheetPrivacySelectAdapter.PrivacySelectActionSheetClickListener localPrivacySelectActionSheetClickListener = this.jdField_a_of_type_ComTencentMobileqqProfilesettingActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;
+    if (localPrivacySelectActionSheetClickListener != null) {
+      paramViewHolder.itemView.setOnClickListener((View.OnClickListener)new ActionSheetPrivacySelectAdapter.onBindViewHolder..inlined.let.lambda.1(localPrivacySelectActionSheetClickListener, this, paramViewHolder, paramInt));
     }
   }
   
@@ -92,14 +86,14 @@ public final class ActionSheetPrivacySelectAdapter
   public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup paramViewGroup, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramViewGroup, "viewGroup");
-    paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561483, paramViewGroup, false);
+    paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561327, paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "mInflater.inflate(R.layo…w_item, viewGroup, false)");
     return (RecyclerView.ViewHolder)new ActionSheetPrivacySelectAdapter.PrivacyHolder(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ActionSheetPrivacySelectAdapter
  * JD-Core Version:    0.7.0.1
  */

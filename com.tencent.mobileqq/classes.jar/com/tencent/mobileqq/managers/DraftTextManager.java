@@ -7,12 +7,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.data.DraftTextInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -20,7 +17,7 @@ import java.util.List;
 public class DraftTextManager
 {
   private static LruCache<String, DraftTextInfo> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(10);
-  private static DraftTextManager jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager;
+  private static volatile DraftTextManager jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager;
   private static HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
   private static LruCache<String, DraftSummaryInfo> b = new LruCache(99);
   private Object jdField_a_of_type_JavaLangObject = new Object();
@@ -46,15 +43,22 @@ public class DraftTextManager
   
   public static DraftTextManager a(QQAppInterface paramQQAppInterface)
   {
-    if (paramQQAppInterface == null) {
-      throw new IllegalArgumentException("DraftTextManager this.app == null");
-    }
-    if (jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager == null)
+    if (paramQQAppInterface != null)
     {
-      jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager = new DraftTextManager();
-      a(paramQQAppInterface);
+      if (jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager == null) {
+        try
+        {
+          if (jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager == null)
+          {
+            jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager = new DraftTextManager();
+            a(paramQQAppInterface);
+          }
+        }
+        finally {}
+      }
+      return jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager;
     }
-    return jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager;
+    throw new IllegalArgumentException("DraftTextManager this.app == null");
   }
   
   private static String a(String paramString)
@@ -67,33 +71,69 @@ public class DraftTextManager
     return UinTypeUtil.a(paramString, paramInt);
   }
   
+  /* Error */
   private static List<DraftTextInfo> a(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    try
-    {
-      List localList = paramQQAppInterface.query(DraftTextInfo.class, new DraftTextInfo().getTableName(), false, null, null, null, null, null, null);
-      if (localList != null)
-      {
-        int i = localList.size();
-        if (i > 0) {
-          return localList;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        paramQQAppInterface.close();
-      }
-    }
-    finally
-    {
-      paramQQAppInterface.close();
-    }
-    return new ArrayList();
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 120	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   4: invokevirtual 126	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   7: astore_0
+    //   8: aload_0
+    //   9: ldc 41
+    //   11: new 41	com/tencent/mobileqq/data/DraftTextInfo
+    //   14: dup
+    //   15: invokespecial 127	com/tencent/mobileqq/data/DraftTextInfo:<init>	()V
+    //   18: invokevirtual 131	com/tencent/mobileqq/data/DraftTextInfo:getTableName	()Ljava/lang/String;
+    //   21: iconst_0
+    //   22: aconst_null
+    //   23: aconst_null
+    //   24: aconst_null
+    //   25: aconst_null
+    //   26: aconst_null
+    //   27: aconst_null
+    //   28: invokevirtual 137	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   31: astore_2
+    //   32: aload_2
+    //   33: ifnull +29 -> 62
+    //   36: aload_2
+    //   37: invokeinterface 143 1 0
+    //   42: istore_1
+    //   43: iload_1
+    //   44: ifle +18 -> 62
+    //   47: aload_0
+    //   48: invokevirtual 146	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   51: aload_2
+    //   52: areturn
+    //   53: astore_2
+    //   54: goto +20 -> 74
+    //   57: astore_2
+    //   58: aload_2
+    //   59: invokevirtual 149	java/lang/Exception:printStackTrace	()V
+    //   62: aload_0
+    //   63: invokevirtual 146	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   66: new 151	java/util/ArrayList
+    //   69: dup
+    //   70: invokespecial 152	java/util/ArrayList:<init>	()V
+    //   73: areturn
+    //   74: aload_0
+    //   75: invokevirtual 146	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   78: aload_2
+    //   79: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	80	0	paramQQAppInterface	QQAppInterface
+    //   42	2	1	i	int
+    //   31	21	2	localList	List
+    //   53	1	2	localObject	Object
+    //   57	22	2	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   8	32	53	finally
+    //   36	43	53	finally
+    //   58	62	53	finally
+    //   8	32	57	java/lang/Exception
+    //   36	43	57	java/lang/Exception
   }
   
   private static void a(QQAppInterface paramQQAppInterface)
@@ -115,83 +155,151 @@ public class DraftTextManager
   public DraftSummaryInfo a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
     String str = a(paramString, paramInt);
-    Object localObject1;
     if (!jdField_a_of_type_JavaUtilHashSet.contains(str)) {
-      localObject1 = null;
+      return null;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return localObject1;
-          localObject2 = (DraftSummaryInfo)b.get(str);
-          localObject1 = localObject2;
-        } while (localObject2 != null);
-        Object localObject2 = (DraftTextInfo)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(str);
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = a(paramQQAppInterface, paramString, paramInt);
-        }
-        paramQQAppInterface = a((DraftTextInfo)localObject1);
-        localObject1 = paramQQAppInterface;
-      } while (paramQQAppInterface == null);
-      localObject1 = paramQQAppInterface;
-    } while (TextUtils.isEmpty(paramQQAppInterface.getSummary()));
-    b.put(str, paramQQAppInterface);
+    Object localObject = (DraftSummaryInfo)b.get(str);
+    if (localObject != null) {
+      return localObject;
+    }
+    DraftTextInfo localDraftTextInfo = (DraftTextInfo)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(str);
+    localObject = localDraftTextInfo;
+    if (localDraftTextInfo == null) {
+      localObject = a(paramQQAppInterface, paramString, paramInt);
+    }
+    paramQQAppInterface = a((DraftTextInfo)localObject);
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.getSummary()))) {
+      b.put(str, paramQQAppInterface);
+    }
     return paramQQAppInterface;
   }
   
+  /* Error */
   public DraftTextInfo a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      try
-      {
-        paramString = paramQQAppInterface.query(DraftTextInfo.class, new DraftTextInfo().getTableName(), false, "uin=? AND type=?", new String[] { paramString, String.valueOf(paramInt) }, null, null, null, null);
-        if ((paramString != null) && (paramString.size() > 0))
-        {
-          paramString = (DraftTextInfo)paramString.get(0);
-          paramQQAppInterface.close();
-          return paramString;
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-          paramQQAppInterface.close();
-        }
-        paramQQAppInterface = finally;
-        throw paramQQAppInterface;
-      }
-      finally
-      {
-        paramQQAppInterface.close();
-      }
-      return new DraftTextInfo();
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 35	com/tencent/mobileqq/managers/DraftTextManager:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   4: astore 4
+    //   6: aload 4
+    //   8: monitorenter
+    //   9: aload_1
+    //   10: invokevirtual 120	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   13: invokevirtual 126	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   16: astore_1
+    //   17: aload_1
+    //   18: ldc 41
+    //   20: new 41	com/tencent/mobileqq/data/DraftTextInfo
+    //   23: dup
+    //   24: invokespecial 127	com/tencent/mobileqq/data/DraftTextInfo:<init>	()V
+    //   27: invokevirtual 131	com/tencent/mobileqq/data/DraftTextInfo:getTableName	()Ljava/lang/String;
+    //   30: iconst_0
+    //   31: ldc 197
+    //   33: iconst_2
+    //   34: anewarray 199	java/lang/String
+    //   37: dup
+    //   38: iconst_0
+    //   39: aload_2
+    //   40: aastore
+    //   41: dup
+    //   42: iconst_1
+    //   43: iload_3
+    //   44: invokestatic 203	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   47: aastore
+    //   48: aconst_null
+    //   49: aconst_null
+    //   50: aconst_null
+    //   51: aconst_null
+    //   52: invokevirtual 137	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   55: astore_2
+    //   56: aload_2
+    //   57: ifnull +32 -> 89
+    //   60: aload_2
+    //   61: invokeinterface 143 1 0
+    //   66: ifle +23 -> 89
+    //   69: aload_2
+    //   70: iconst_0
+    //   71: invokeinterface 206 2 0
+    //   76: checkcast 41	com/tencent/mobileqq/data/DraftTextInfo
+    //   79: astore_2
+    //   80: aload_1
+    //   81: invokevirtual 146	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   84: aload 4
+    //   86: monitorexit
+    //   87: aload_2
+    //   88: areturn
+    //   89: aload_1
+    //   90: invokevirtual 146	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   93: goto +15 -> 108
+    //   96: astore_2
+    //   97: goto +22 -> 119
+    //   100: astore_2
+    //   101: aload_2
+    //   102: invokevirtual 149	java/lang/Exception:printStackTrace	()V
+    //   105: goto -16 -> 89
+    //   108: aload 4
+    //   110: monitorexit
+    //   111: new 41	com/tencent/mobileqq/data/DraftTextInfo
+    //   114: dup
+    //   115: invokespecial 127	com/tencent/mobileqq/data/DraftTextInfo:<init>	()V
+    //   118: areturn
+    //   119: aload_1
+    //   120: invokevirtual 146	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   123: aload_2
+    //   124: athrow
+    //   125: astore_1
+    //   126: aload 4
+    //   128: monitorexit
+    //   129: goto +5 -> 134
+    //   132: aload_1
+    //   133: athrow
+    //   134: goto -2 -> 132
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	137	0	this	DraftTextManager
+    //   0	137	1	paramQQAppInterface	QQAppInterface
+    //   0	137	2	paramString	String
+    //   0	137	3	paramInt	int
+    //   4	123	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   17	56	96	finally
+    //   60	80	96	finally
+    //   101	105	96	finally
+    //   17	56	100	java/lang/Exception
+    //   60	80	100	java/lang/Exception
+    //   9	17	125	finally
+    //   80	87	125	finally
+    //   89	93	125	finally
+    //   108	111	125	finally
+    //   119	125	125	finally
+    //   126	129	125	finally
   }
   
   public String a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DraftTextManger", 4, "Get draft text| uin=" + paramString + " draftList=" + jdField_a_of_type_JavaUtilHashSet + " cache=" + jdField_a_of_type_AndroidSupportV4UtilLruCache);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Get draft text| uin=");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" draftList=");
+      ((StringBuilder)localObject).append(jdField_a_of_type_JavaUtilHashSet);
+      ((StringBuilder)localObject).append(" cache=");
+      ((StringBuilder)localObject).append(jdField_a_of_type_AndroidSupportV4UtilLruCache);
+      QLog.d("DraftTextManger", 4, ((StringBuilder)localObject).toString());
     }
-    String str = a(paramString, paramInt);
-    if (!jdField_a_of_type_JavaUtilHashSet.contains(str)) {
+    Object localObject = a(paramString, paramInt);
+    if (!jdField_a_of_type_JavaUtilHashSet.contains(localObject)) {
       return null;
     }
-    DraftTextInfo localDraftTextInfo = (DraftTextInfo)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(str);
+    DraftTextInfo localDraftTextInfo = (DraftTextInfo)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localObject);
     if (localDraftTextInfo != null) {
       return localDraftTextInfo.text;
     }
     paramQQAppInterface = a(paramQQAppInterface, paramString, paramInt);
     if ((paramQQAppInterface != null) && (!StringUtil.a(paramQQAppInterface.text))) {
-      jdField_a_of_type_AndroidSupportV4UtilLruCache.put(str, paramQQAppInterface);
+      jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localObject, paramQQAppInterface);
     }
     if (paramQQAppInterface != null) {
       return paramQQAppInterface.text;
@@ -213,7 +321,7 @@ public class DraftTextManager
     // Byte code:
     //   0: invokestatic 212	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +11 -> 14
-    //   6: ldc 214
+    //   6: ldc 230
     //   8: iconst_2
     //   9: ldc 250
     //   11: invokestatic 237	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -309,10 +417,12 @@ public class DraftTextManager
   
   public DraftTextInfo b(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    DraftTextInfo localDraftTextInfo = null;
     String str = a(paramString, paramInt);
+    DraftTextInfo localDraftTextInfo;
     if (jdField_a_of_type_JavaUtilHashSet.contains(str)) {
       localDraftTextInfo = (DraftTextInfo)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(str);
+    } else {
+      localDraftTextInfo = null;
     }
     Object localObject = localDraftTextInfo;
     if (localDraftTextInfo == null)
@@ -334,7 +444,7 @@ public class DraftTextManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.DraftTextManager
  * JD-Core Version:    0.7.0.1
  */

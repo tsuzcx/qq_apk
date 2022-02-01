@@ -41,7 +41,7 @@ public class MoscoFilter
     ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/maplered_curve.png", 33986));
     ((BaseFilter)localObject2).setNextFilter((BaseFilter)localObject1, null);
     localObject2 = this.mAlphaFilter;
-    this.mAlphaFilter.setAdjustParam(0.0F);
+    ((BaseFilter)localObject2).setAdjustParam(0.0F);
     ((BaseFilter)localObject1).setNextFilter((BaseFilter)localObject2, new int[] { 0 });
     super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
@@ -53,7 +53,7 @@ public class MoscoFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.MoscoFilter
  * JD-Core Version:    0.7.0.1
  */

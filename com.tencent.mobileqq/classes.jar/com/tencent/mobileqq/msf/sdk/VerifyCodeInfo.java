@@ -63,23 +63,26 @@ public class VerifyCodeInfo
   
   public static void putVerifyCodeInfo(ToServiceMsg paramToServiceMsg, VerifyCodeInfo paramVerifyCodeInfo)
   {
-    if ((paramToServiceMsg == null) || (paramVerifyCodeInfo == null)) {
-      return;
+    if (paramToServiceMsg != null)
+    {
+      if (paramVerifyCodeInfo == null) {
+        return;
+      }
+      paramToServiceMsg.addAttribute("resp_verify_image", paramVerifyCodeInfo.verifyimage);
+      paramToServiceMsg.addAttribute("resp_verify_msg", paramVerifyCodeInfo.verifyNote);
+      paramToServiceMsg.addAttribute("resp_verify_svrSeq", Integer.valueOf(paramVerifyCodeInfo.svrSeqNo));
+      paramToServiceMsg.addAttribute("resp_verify_picSid", paramVerifyCodeInfo.vpicSid);
+      paramToServiceMsg.addAttribute("resp_verify_wupSeq", Integer.valueOf(paramVerifyCodeInfo.wupSeq));
+      paramToServiceMsg.addAttribute("resp_verify_ssoSeq", Integer.valueOf(paramVerifyCodeInfo.ssoSeq));
+      paramToServiceMsg.addAttribute("resp_verify_uin", paramToServiceMsg.getUin());
+      paramToServiceMsg.addAttribute("resp_verify_url", paramVerifyCodeInfo.verifyurl);
+      paramToServiceMsg.addAttribute("resp_verify_appseq", Integer.valueOf(paramToServiceMsg.getAppSeq()));
     }
-    paramToServiceMsg.addAttribute("resp_verify_image", paramVerifyCodeInfo.verifyimage);
-    paramToServiceMsg.addAttribute("resp_verify_msg", paramVerifyCodeInfo.verifyNote);
-    paramToServiceMsg.addAttribute("resp_verify_svrSeq", Integer.valueOf(paramVerifyCodeInfo.svrSeqNo));
-    paramToServiceMsg.addAttribute("resp_verify_picSid", paramVerifyCodeInfo.vpicSid);
-    paramToServiceMsg.addAttribute("resp_verify_wupSeq", Integer.valueOf(paramVerifyCodeInfo.wupSeq));
-    paramToServiceMsg.addAttribute("resp_verify_ssoSeq", Integer.valueOf(paramVerifyCodeInfo.ssoSeq));
-    paramToServiceMsg.addAttribute("resp_verify_uin", paramToServiceMsg.getUin());
-    paramToServiceMsg.addAttribute("resp_verify_url", paramVerifyCodeInfo.verifyurl);
-    paramToServiceMsg.addAttribute("resp_verify_appseq", Integer.valueOf(paramToServiceMsg.getAppSeq()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.VerifyCodeInfo
  * JD-Core Version:    0.7.0.1
  */

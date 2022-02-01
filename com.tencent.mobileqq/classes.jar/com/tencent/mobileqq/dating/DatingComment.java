@@ -35,47 +35,44 @@ public class DatingComment
   
   public static DatingComment a(appoint_define.DateComment paramDateComment)
   {
-    if ((paramDateComment == null) || (TextUtils.isEmpty(paramDateComment.str_comment_id.get()))) {
-      return null;
-    }
-    DatingComment localDatingComment = new DatingComment();
-    localDatingComment.jdField_a_of_type_JavaLangString = paramDateComment.str_comment_id.get();
-    localDatingComment.jdField_b_of_type_JavaLangString = DatingUtil.a((appoint_define.AppointID)paramDateComment.msg_appoint_id.get());
-    localDatingComment.jdField_a_of_type_Long = paramDateComment.uint32_time.get();
-    appoint_define.RichText localRichText;
-    int i;
-    if (paramDateComment.msg_content.has())
+    Object localObject2 = null;
+    if (paramDateComment != null)
     {
-      localRichText = (appoint_define.RichText)paramDateComment.msg_content.get();
-      localDatingComment.c = a(localRichText);
+      if (TextUtils.isEmpty(paramDateComment.str_comment_id.get())) {
+        return null;
+      }
+      DatingComment localDatingComment = new DatingComment();
+      localDatingComment.jdField_a_of_type_JavaLangString = paramDateComment.str_comment_id.get();
+      localDatingComment.jdField_b_of_type_JavaLangString = DatingUtil.a((appoint_define.AppointID)paramDateComment.msg_appoint_id.get());
+      localDatingComment.jdField_a_of_type_Long = paramDateComment.uint32_time.get();
+      if (paramDateComment.msg_content.has()) {
+        localObject1 = (appoint_define.RichText)paramDateComment.msg_content.get();
+      } else {
+        localObject1 = null;
+      }
+      localDatingComment.c = a((appoint_define.RichText)localObject1);
       localDatingComment.jdField_a_of_type_ComTencentMobileqqDatingDatingStranger = DatingStranger.a((appoint_define.StrangerInfo)paramDateComment.msg_publisher_info.get());
-      if (!paramDateComment.uint32_flag.has()) {
-        break label220;
+      int i;
+      if (paramDateComment.uint32_flag.has()) {
+        i = paramDateComment.uint32_flag.get();
+      } else {
+        i = 0;
       }
-      i = paramDateComment.uint32_flag.get();
-      label131:
       localDatingComment.jdField_a_of_type_Int = i;
-      if (!paramDateComment.msg_reply_info.has()) {
-        break label225;
+      Object localObject1 = localObject2;
+      if (paramDateComment.msg_reply_info.has()) {
+        localObject1 = (appoint_define.ReplyInfo)paramDateComment.msg_reply_info.get();
       }
-    }
-    label220:
-    label225:
-    for (paramDateComment = (appoint_define.ReplyInfo)paramDateComment.msg_reply_info.get();; paramDateComment = null)
-    {
-      if (paramDateComment != null)
+      if (localObject1 != null)
       {
-        localDatingComment.d = paramDateComment.str_comment_id.get();
-        localDatingComment.jdField_b_of_type_ComTencentMobileqqDatingDatingStranger = DatingStranger.a((appoint_define.StrangerInfo)paramDateComment.msg_stranger_info.get());
+        localDatingComment.d = ((appoint_define.ReplyInfo)localObject1).str_comment_id.get();
+        localDatingComment.jdField_b_of_type_ComTencentMobileqqDatingDatingStranger = DatingStranger.a((appoint_define.StrangerInfo)((appoint_define.ReplyInfo)localObject1).msg_stranger_info.get());
       }
       localDatingComment.f = DatingUtil.a(localDatingComment.jdField_a_of_type_Long, true);
       localDatingComment.e = DatingUtil.a(localDatingComment.jdField_a_of_type_Long, false);
       return localDatingComment;
-      localRichText = null;
-      break;
-      i = 0;
-      break label131;
     }
+    return null;
   }
   
   public static DatingComment a(JSONObject paramJSONObject)
@@ -95,33 +92,26 @@ public class DatingComment
     }
     catch (JSONException localJSONException1)
     {
-      try
-      {
-        for (;;)
-        {
-          localDatingComment.d = paramJSONObject.getString("replyId");
-          try
-          {
-            localDatingComment.jdField_b_of_type_ComTencentMobileqqDatingDatingStranger = DatingStranger.a(paramJSONObject.getJSONObject("replyer"));
-            return localDatingComment;
-          }
-          catch (JSONException paramJSONObject)
-          {
-            paramJSONObject.printStackTrace();
-            return localDatingComment;
-          }
-          localJSONException1 = localJSONException1;
-          localJSONException1.printStackTrace();
-        }
-      }
-      catch (JSONException localJSONException2)
-      {
-        for (;;)
-        {
-          localJSONException2.printStackTrace();
-        }
-      }
+      localJSONException1.printStackTrace();
     }
+    try
+    {
+      localDatingComment.d = paramJSONObject.getString("replyId");
+    }
+    catch (JSONException localJSONException2)
+    {
+      localJSONException2.printStackTrace();
+    }
+    try
+    {
+      localDatingComment.jdField_b_of_type_ComTencentMobileqqDatingDatingStranger = DatingStranger.a(paramJSONObject.getJSONObject("replyer"));
+      return localDatingComment;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return localDatingComment;
   }
   
   public static String a(appoint_define.RichText paramRichText)
@@ -129,82 +119,80 @@ public class DatingComment
     if (paramRichText == null) {
       return "";
     }
-    if (paramRichText.rpt_msg_elems.has()) {}
-    for (paramRichText = paramRichText.rpt_msg_elems.get(); (paramRichText == null) || (paramRichText.isEmpty()); paramRichText = null) {
-      return "";
+    if (paramRichText.rpt_msg_elems.has()) {
+      paramRichText = paramRichText.rpt_msg_elems.get();
+    } else {
+      paramRichText = null;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramRichText.iterator();
-    label135:
-    label187:
-    label190:
-    label192:
-    label195:
-    while (localIterator.hasNext())
+    if (paramRichText != null)
     {
-      appoint_define.Elem localElem = (appoint_define.Elem)localIterator.next();
-      if (localElem != null)
+      if (paramRichText.isEmpty()) {
+        return "";
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      Iterator localIterator = paramRichText.iterator();
+      while (localIterator.hasNext())
       {
-        if (localElem.str_content.has())
+        appoint_define.Elem localElem = (appoint_define.Elem)localIterator.next();
+        if (localElem != null)
         {
-          paramRichText = localElem.str_content.get();
-          label106:
+          if (localElem.str_content.has()) {
+            paramRichText = localElem.str_content.get();
+          } else {
+            paramRichText = "";
+          }
           localStringBuilder.append(paramRichText);
-          if (!localElem.msg_face_info.has()) {
-            break label187;
+          if (localElem.msg_face_info.has()) {
+            paramRichText = (appoint_define.Face)localElem.msg_face_info.get();
+          } else {
+            paramRichText = null;
           }
-          paramRichText = (appoint_define.Face)localElem.msg_face_info.get();
-          if (paramRichText == null) {
-            break label190;
+          if (paramRichText != null)
+          {
+            int i;
+            if (paramRichText.uint32_index.has()) {
+              i = paramRichText.uint32_index.get();
+            } else {
+              i = -1;
+            }
+            if (i >= 0)
+            {
+              localStringBuilder.append('\024');
+              localStringBuilder.append((char)QQSysFaceUtil.convertToLocal(i));
+            }
           }
-          if (!paramRichText.uint32_index.has()) {
-            break label192;
-          }
-        }
-        for (int i = paramRichText.uint32_index.get();; i = -1)
-        {
-          if (i < 0) {
-            break label195;
-          }
-          localStringBuilder.append('\024');
-          localStringBuilder.append((char)QQSysFaceUtil.convertToLocal(i));
-          break;
-          paramRichText = "";
-          break label106;
-          paramRichText = null;
-          break label135;
-          break;
         }
       }
+      return localStringBuilder.toString();
     }
-    return localStringBuilder.toString();
+    return "";
   }
   
   public static String a(List<DatingComment> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return "";
-    }
-    JSONArray localJSONArray = new JSONArray();
-    paramList = paramList.iterator();
-    int i = 0;
-    if (paramList.hasNext())
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      JSONObject localJSONObject = a((DatingComment)paramList.next());
-      if (localJSONObject == null) {
-        break label83;
-      }
-      localJSONArray.put(localJSONObject);
-      i += 1;
+      JSONArray localJSONArray = new JSONArray();
+      int i = 0;
+      paramList = paramList.iterator();
+      int j;
+      do
+      {
+        if (!paramList.hasNext()) {
+          break;
+        }
+        JSONObject localJSONObject = a((DatingComment)paramList.next());
+        j = i;
+        if (localJSONObject != null)
+        {
+          localJSONArray.put(localJSONObject);
+          j = i + 1;
+        }
+        i = j;
+      } while (j < 20);
+      return localJSONArray.toString();
     }
-    label83:
-    for (;;)
-    {
-      if (i >= 20) {
-        return localJSONArray.toString();
-      }
-      break;
-    }
+    return "";
   }
   
   public static JSONObject a(DatingComment paramDatingComment)
@@ -234,10 +222,11 @@ public class DatingComment
   
   public static void a(List<DatingComment> paramList, String paramString)
   {
-    if ((paramList == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
       try
       {
         paramString = new JSONArray(paramString);
@@ -262,19 +251,33 @@ public class DatingComment
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    boolean bool2 = false;
+    if (paramObject == null) {
+      return false;
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if (paramObject.getClass() != getClass()) {
+      return false;
+    }
+    paramObject = (DatingComment)paramObject;
+    boolean bool1;
+    if ((this.jdField_a_of_type_JavaLangString != null) || (paramObject.jdField_a_of_type_JavaLangString != null))
     {
-      do
+      String str = this.jdField_a_of_type_JavaLangString;
+      bool1 = bool2;
+      if (str != null)
       {
-        return false;
-        if (paramObject == this) {
-          return true;
-        }
-      } while (paramObject.getClass() != getClass());
-      paramObject = (DatingComment)paramObject;
-    } while (((this.jdField_a_of_type_JavaLangString != null) || (paramObject.jdField_a_of_type_JavaLangString != null)) && ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString))));
-    return true;
+        bool1 = bool2;
+        if (!str.equals(paramObject.jdField_a_of_type_JavaLangString)) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -288,13 +291,30 @@ public class DatingComment
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_b_of_type_JavaLangString).append(",").append(this.c).append(",").append(this.jdField_a_of_type_Long).append(",").append(this.d).append(",").append(this.jdField_a_of_type_ComTencentMobileqqDatingDatingStranger).append(",").append(this.jdField_b_of_type_ComTencentMobileqqDatingDatingStranger).append(",").append(this.jdField_a_of_type_Int).append(",").append("]");
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDatingDatingStranger);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqDatingDatingStranger);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingComment
  * JD-Core Version:    0.7.0.1
  */

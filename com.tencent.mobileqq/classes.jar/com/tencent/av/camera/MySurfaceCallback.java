@@ -9,7 +9,7 @@ public class MySurfaceCallback
   extends CameraCallback
   implements SurfaceTexture.OnFrameAvailableListener
 {
-  public MySurfaceCallback(AndroidCamera paramAndroidCamera, AndroidCamera.CameraPreviewCallback paramCameraPreviewCallback)
+  public MySurfaceCallback(AndroidCamera paramAndroidCamera, CameraPreviewCallback paramCameraPreviewCallback)
   {
     super(paramAndroidCamera, paramCameraPreviewCallback);
   }
@@ -21,8 +21,15 @@ public class MySurfaceCallback
     if (paramSurfaceTexture != null) {
       paramSurfaceTexture.setOnFrameAvailableListener(this);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("SurfaceTag", 2, "setPreviewCallback, seq[" + paramLong + "], surfaceTexture[" + paramSurfaceTexture + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPreviewCallback, seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("], surfaceTexture[");
+      localStringBuilder.append(paramSurfaceTexture);
+      localStringBuilder.append("]");
+      QLog.i("SurfaceTag", 2, localStringBuilder.toString());
     }
   }
   
@@ -33,34 +40,27 @@ public class MySurfaceCallback
     int i = AndroidCamera.a;
     int j = AndroidCamera.b;
     this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.a(this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.a, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int, AndroidCamera.d, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Boolean, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.c, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.d, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.b, 0, i, j);
-    CameraFrame localCameraFrame;
-    long l;
-    int k;
-    int m;
-    int n;
-    if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera$CameraPreviewCallback != null)
+    if (this.jdField_a_of_type_ComTencentAvCameraCameraPreviewCallback != null)
     {
-      localCameraFrame = CameraFrame.a();
-      l = this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.j;
-      k = AndroidCamera.c;
-      m = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.a;
-      n = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.b;
-      if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int != 1) {
-        break label171;
+      CameraFrame localCameraFrame = CameraFrame.a();
+      long l = this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.j;
+      int k = AndroidCamera.c;
+      int m = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.a;
+      int n = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.b;
+      boolean bool;
+      if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int == 1) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label171:
-    for (boolean bool = true;; bool = false)
-    {
       localCameraFrame.a(l, paramSurfaceTexture, i, j, k, m, n, bool, AndroidCamera.d, System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentAvCameraAndroidCamera$CameraPreviewCallback.a(localCameraFrame);
-      return;
+      this.jdField_a_of_type_ComTencentAvCameraCameraPreviewCallback.onPreviewData(localCameraFrame);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.camera.MySurfaceCallback
  * JD-Core Version:    0.7.0.1
  */

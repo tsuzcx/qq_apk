@@ -27,22 +27,27 @@ class OfflinePlugin$3
       }
       catch (JSONException paramString)
       {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + paramString);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("OfflinePlugin, batchCheckUpdate, JSONException :");
+          ((StringBuilder)localObject).append(paramString);
+          QLog.d("OfflinePluginQQ", 2, ((StringBuilder)localObject).toString());
+        }
         return;
       }
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 121;
-    localMessage.obj = new Object[] { this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener, paramString };
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    Object localObject = Message.obtain();
+    ((Message)localObject).what = 121;
+    ((Message)localObject).obj = new Object[] { this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener, paramString };
+    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
   }
   
   public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,14 @@ class KidModeAdvanceSettingFragment$7
   {
     KidModeAdvanceSettingFragment.b(this.a, true);
     KidModeAdvanceSettingFragment.a(this.a).setEnabled(true);
-    KidModeAdvanceSettingFragment.a(this.a, KidModeAdvanceSettingFragment.a(this.a), false, KidModeAdvanceSettingFragment.a(this.a));
-    PhoneUnityManager.a(this.a.getActivity(), KidModeAdvanceSettingFragment.a(this.a), StudyModeManager.b(), 2002);
+    paramDialogInterface = this.a;
+    KidModeAdvanceSettingFragment.a(paramDialogInterface, KidModeAdvanceSettingFragment.a(paramDialogInterface), false, KidModeAdvanceSettingFragment.a(this.a));
+    PhoneUnityManager.a(this.a.getBaseActivity(), KidModeAdvanceSettingFragment.a(this.a), StudyModeManager.b(), 2002);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment.7
  * JD-Core Version:    0.7.0.1
  */

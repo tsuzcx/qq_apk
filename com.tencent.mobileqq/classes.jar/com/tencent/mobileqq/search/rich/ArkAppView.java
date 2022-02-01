@@ -7,8 +7,10 @@ import com.tencent.ark.ArkTextureView;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
 import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.ark.api.IArkEnvironment;
+import com.tencent.mobileqq.ark.multiproc.ArkMultiProcUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppView
@@ -20,7 +22,7 @@ public class ArkAppView
   public ArkAppView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ArkAppCenter.b(true);
+    ArkMultiProcUtil.a();
     ArkAppDataReport.a();
   }
   
@@ -45,8 +47,9 @@ public class ArkAppView
   
   public void onFirstPaint()
   {
-    if (this.a != null) {
-      this.a.c();
+    ArkAppView.ArkAppViewEvent localArkAppViewEvent = this.a;
+    if (localArkAppViewEvent != null) {
+      localArkAppViewEvent.c();
     }
   }
   
@@ -58,29 +61,34 @@ public class ArkAppView
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "onLoadFailed");
     }
-    ArkViewModel localArkViewModel = this.mViewImpl.getViewModel();
-    if (localArkViewModel == null) {}
-    do
-    {
+    Object localObject = this.mViewImpl.getViewModel();
+    if (localObject == null) {
       return;
-      if ((localArkViewModel.GetAppScriptType() == 2) && (!ArkAppCenter.d()))
-      {
-        QLog.e(TAG, 2, "onLoadFailed.ARKAPP_TYPE_RELOAD");
-        onLoading();
-        return;
-      }
-      setVisibility(8);
-    } while (this.a == null);
-    this.a.a(paramString, paramInt, paramBoolean);
+    }
+    if ((((ArkViewModel)localObject).GetAppScriptType() == 2) && (!((IArkEnvironment)QRoute.api(IArkEnvironment.class)).isJSCLibExist()))
+    {
+      QLog.e(TAG, 2, "onLoadFailed.ARKAPP_TYPE_RELOAD");
+      onLoading();
+      return;
+    }
+    setVisibility(8);
+    localObject = this.a;
+    if (localObject != null) {
+      ((ArkAppView.ArkAppViewEvent)localObject).a(paramString, paramInt, paramBoolean);
+    }
   }
   
   @TargetApi(14)
   public void onLoadState(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TAG, 2, "attachArkView onLoadFinish state=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("attachArkView onLoadFinish state=");
+      localStringBuilder.append(paramInt);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (paramInt == 1) {}
   }
   
   public void onLoadSuccess()
@@ -89,8 +97,9 @@ public class ArkAppView
       QLog.d(TAG, 2, "onLoadSuccess");
     }
     super.onLoadSuccess();
-    if (this.a != null) {
-      this.a.a();
+    ArkAppView.ArkAppViewEvent localArkAppViewEvent = this.a;
+    if (localArkAppViewEvent != null) {
+      localArkAppViewEvent.a();
     }
   }
   
@@ -100,14 +109,15 @@ public class ArkAppView
       QLog.d(TAG, 2, "onLoading");
     }
     setVisibility(8);
-    if (this.a != null) {
-      this.a.b();
+    ArkAppView.ArkAppViewEvent localArkAppViewEvent = this.a;
+    if (localArkAppViewEvent != null) {
+      localArkAppViewEvent.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkAppView
  * JD-Core Version:    0.7.0.1
  */

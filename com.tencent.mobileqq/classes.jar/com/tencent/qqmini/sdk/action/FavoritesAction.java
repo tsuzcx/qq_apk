@@ -32,32 +32,29 @@ public class FavoritesAction
   private void handleAddFavorites(BaseRuntime paramBaseRuntime, ShareState paramShareState)
   {
     JSONObject localJSONObject = new JSONObject();
-    for (;;)
+    try
     {
-      try
-      {
-        if (paramShareState.launchFrom != 1) {
-          continue;
-        }
+      int i = paramShareState.launchFrom;
+      if (i == 1) {
         localJSONObject.put("fromFavoritesButton", 1);
-        if ((!paramBaseRuntime.isMiniGame()) && (getCurrPageUrl(paramBaseRuntime) != null)) {
-          localJSONObject.put("webviewUrl", getCurrPageUrl(paramBaseRuntime));
-        }
+      } else {
+        localJSONObject.put("fromFavoritesButton", 0);
       }
-      catch (JSONException paramShareState)
-      {
-        QMLog.e("Action", "on add favorite click exception ", paramShareState);
-        continue;
-        QMLog.e("Action", "on add favorite click exception mGameJsPluginEngine == null");
+      if ((!paramBaseRuntime.isMiniGame()) && (getCurrPageUrl(paramBaseRuntime) != null)) {
+        localJSONObject.put("webviewUrl", getCurrPageUrl(paramBaseRuntime));
       }
-      paramShareState = paramBaseRuntime.getJsService();
-      if (paramShareState == null) {
-        continue;
-      }
+    }
+    catch (JSONException paramShareState)
+    {
+      QMLog.e("Action", "on add favorite click exception ", paramShareState);
+    }
+    paramShareState = paramBaseRuntime.getJsService();
+    if (paramShareState != null)
+    {
       paramShareState.evaluateSubscribeJS("onAddToFavorites", localJSONObject.toString(), getCurrPageId(paramBaseRuntime));
       return;
-      localJSONObject.put("fromFavoritesButton", 0);
     }
+    QMLog.e("Action", "on add favorite click exception mGameJsPluginEngine == null");
   }
   
   public static FavoritesAction obtain(int paramInt)
@@ -76,29 +73,34 @@ public class FavoritesAction
   public Boolean perform(BaseRuntime paramBaseRuntime)
   {
     ShareState localShareState = paramBaseRuntime.getShareState();
+    Boolean localBoolean = Boolean.valueOf(false);
     if (localShareState == null)
     {
-      QMLog.e("Action", "Failed to perform " + this + ". shareState is null");
-      return Boolean.valueOf(false);
+      paramBaseRuntime = new StringBuilder();
+      paramBaseRuntime.append("Failed to perform ");
+      paramBaseRuntime.append(this);
+      paramBaseRuntime.append(". shareState is null");
+      QMLog.e("Action", paramBaseRuntime.toString());
+      return localBoolean;
     }
     if (paramBaseRuntime.getPage() == null)
     {
-      QMLog.e("Action", "Failed to perform " + this + ". page is null");
-      return Boolean.valueOf(false);
+      paramBaseRuntime = new StringBuilder();
+      paramBaseRuntime.append("Failed to perform ");
+      paramBaseRuntime.append(this);
+      paramBaseRuntime.append(". page is null");
+      QMLog.e("Action", paramBaseRuntime.toString());
+      return localBoolean;
     }
-    switch (this.what)
-    {
-    }
-    for (;;)
-    {
-      return Boolean.valueOf(true);
+    if (this.what == 1) {
       handleAddFavorites(paramBaseRuntime, localShareState);
     }
+    return Boolean.valueOf(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.action.FavoritesAction
  * JD-Core Version:    0.7.0.1
  */

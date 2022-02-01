@@ -98,8 +98,9 @@ public final class MobileContactsNotFriendInfo
   {
     paramJceOutputStream.write(this.bindingDate, 0);
     paramJceOutputStream.write(this.isRecommend, 1);
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 2);
+    Object localObject = this.nickname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.contactsInfoEncrypt, 3);
     paramJceOutputStream.write(this.MobileNoMask, 4);
@@ -109,12 +110,14 @@ public final class MobileContactsNotFriendInfo
     paramJceOutputStream.write(this.detalStatusFlag, 8);
     paramJceOutputStream.write(this.iTermType, 9);
     paramJceOutputStream.write(this.eNetworkType, 10);
-    if (this.strTermDesc != null) {
-      paramJceOutputStream.write(this.strTermDesc, 11);
+    localObject = this.strTermDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.uAbiFlag, 12);
-    if (this.personalSign != null) {
-      paramJceOutputStream.write(this.personalSign, 13);
+    localObject = this.personalSign;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 13);
     }
     paramJceOutputStream.write(this.isUpdateSign, 14);
     paramJceOutputStream.write(this.richTime, 15);
@@ -127,7 +130,7 @@ public final class MobileContactsNotFriendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.MobileContactsNotFriendInfo
  * JD-Core Version:    0.7.0.1
  */

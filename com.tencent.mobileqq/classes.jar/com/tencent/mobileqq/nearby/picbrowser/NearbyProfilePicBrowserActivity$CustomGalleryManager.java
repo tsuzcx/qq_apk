@@ -6,6 +6,8 @@ import com.tencent.common.galleryactivity.AbstractGalleryScene;
 import com.tencent.common.galleryactivity.AbstractImageListModel;
 import com.tencent.common.galleryactivity.AbstractImageListScene;
 import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.mobileqq.picbrowser.PicBrowserActivity;
+import com.tencent.mobileqq.picbrowser.PicBrowserModel;
 
 class NearbyProfilePicBrowserActivity$CustomGalleryManager
   extends GalleryManager
@@ -24,8 +26,9 @@ class NearbyProfilePicBrowserActivity$CustomGalleryManager
   
   public AbstractImageListModel a(Activity paramActivity)
   {
-    paramActivity = new PicBrowserModel(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
+    paramActivity = this.a;
+    paramActivity = new PicBrowserModel(paramActivity, NearbyProfilePicBrowserActivity.access$000(paramActivity));
+    paramActivity.a(NearbyProfilePicBrowserActivity.access$100(this.a));
     return paramActivity;
   }
   
@@ -36,7 +39,7 @@ class NearbyProfilePicBrowserActivity$CustomGalleryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity.CustomGalleryManager
  * JD-Core Version:    0.7.0.1
  */

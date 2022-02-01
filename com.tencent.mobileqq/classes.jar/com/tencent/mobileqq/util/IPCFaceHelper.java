@@ -7,7 +7,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.avatar.api.IQQAvatarHandlerService;
 import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcServiceUtils;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
@@ -96,20 +96,17 @@ public class IPCFaceHelper
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 1)
     {
-    }
-    for (;;)
-    {
-      return false;
       paramMessage.what = 4139;
-      ConnectNearbyProcService.a(paramMessage);
+      ConnectNearbyProcServiceUtils.a(paramMessage);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.IPCFaceHelper
  * JD-Core Version:    0.7.0.1
  */

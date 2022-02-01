@@ -15,34 +15,33 @@ class AbsListView$CheckForLongPress
   public void run()
   {
     int i = this.this$0.mMotionPosition;
-    View localView = this.this$0.getChildAt(i - this.this$0.mFirstPosition);
-    long l;
-    if (localView != null)
+    Object localObject = this.this$0;
+    localObject = ((AbsListView)localObject).getChildAt(i - ((AbsListView)localObject).mFirstPosition);
+    if (localObject != null)
     {
       i = this.this$0.mMotionPosition;
-      l = this.this$0.mAdapter.getItemId(this.this$0.mMotionPosition);
-      if ((!sameWindow()) || (this.this$0.mDataChanged)) {
-        break label126;
+      long l = this.this$0.mAdapter.getItemId(this.this$0.mMotionPosition);
+      boolean bool;
+      if ((sameWindow()) && (!this.this$0.mDataChanged)) {
+        bool = this.this$0.performLongPress((View)localObject, i, l);
+      } else {
+        bool = false;
       }
-    }
-    label126:
-    for (boolean bool = this.this$0.performLongPress(localView, i, l);; bool = false)
-    {
       if (bool)
       {
-        this.this$0.mTouchMode = -1;
-        this.this$0.setPressed(false);
-        localView.setPressed(false);
+        AbsListView localAbsListView = this.this$0;
+        localAbsListView.mTouchMode = -1;
+        localAbsListView.setPressed(false);
+        ((View)localObject).setPressed(false);
         return;
       }
       this.this$0.mTouchMode = 2;
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AbsListView.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

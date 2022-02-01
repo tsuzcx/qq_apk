@@ -59,36 +59,37 @@ public final class ReporterMachine
   public final void addResultObj(@NotNull ResultObject paramResultObject, @Nullable IReporter.ReportResultCallback paramReportResultCallback, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramResultObject, "resultObject");
+    int i = 0;
     try
     {
-      i = paramResultObject.getParams().getInt("plugin");
-      if ((paramBoolean) && ((!PluginController.INSTANCE.whetherPluginSampling(i)) || (!PluginController.INSTANCE.canCollect(i)))) {
-        return;
-      }
+      int j = paramResultObject.getParams().getInt("plugin");
+      i = j;
     }
     catch (Throwable localThrowable)
     {
-      int i;
-      for (;;)
-      {
-        Logger.INSTANCE.e(new String[] { "QAPM_base_ReporterMachine", localThrowable + ": resultObject lose plugin" });
-        i = 0;
-      }
-      PluginController.INSTANCE.addPluginReportNum(i);
-      if ((paramResultObject.isRealTime()) && (NetworkWatcher.INSTANCE.isWifiAvailable())) {
-        try
-        {
-          reportOnce(paramResultObject, paramReportResultCallback);
-          return;
-        }
-        catch (Exception paramResultObject)
-        {
-          Logger.INSTANCE.exception("QAPM_base_ReporterMachine", (Throwable)paramResultObject);
-          return;
-        }
-      }
-      handler.post((Runnable)new StoreRecordDataRunnable(paramResultObject));
+      Logger localLogger = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localThrowable);
+      localStringBuilder.append(": resultObject lose plugin");
+      localLogger.e(new String[] { "QAPM_base_ReporterMachine", localStringBuilder.toString() });
     }
+    if ((paramBoolean) && ((!PluginController.INSTANCE.whetherPluginSampling(i)) || (!PluginController.INSTANCE.canCollect(i)))) {
+      return;
+    }
+    PluginController.INSTANCE.addPluginReportNum(i);
+    if ((paramResultObject.isRealTime()) && (NetworkWatcher.INSTANCE.isWifiAvailable())) {
+      try
+      {
+        reportOnce(paramResultObject, paramReportResultCallback);
+        return;
+      }
+      catch (Exception paramResultObject)
+      {
+        Logger.INSTANCE.exception("QAPM_base_ReporterMachine", (Throwable)paramResultObject);
+        return;
+      }
+    }
+    handler.post((Runnable)new StoreRecordDataRunnable(paramResultObject));
   }
   
   @NotNull
@@ -107,34 +108,34 @@ public final class ReporterMachine
   {
     Intrinsics.checkParameterIsNotNull(paramResultObject, "resultObject");
     int i = paramResultObject.getParams().getInt("plugin");
-    if (((PluginCombination.Companion.isAusterityPlugin(i)) && (PluginController.INSTANCE.getAusterityReportNum() > SDKConfig.Companion.getMAX_AUSTERITY_REPORT_NUM())) || ((PluginCombination.Companion.isLoosePlugin(i)) && (PluginController.INSTANCE.getLooseReportNum() > SDKConfig.Companion.getMAX_LOOSE_REPORT_NUM()))) {}
-    do
+    if (((PluginCombination.Companion.isAusterityPlugin(i)) && (PluginController.INSTANCE.getAusterityReportNum() > SDKConfig.Companion.getMAX_AUSTERITY_REPORT_NUM())) || ((PluginCombination.Companion.isLoosePlugin(i)) && (PluginController.INSTANCE.getLooseReportNum() > SDKConfig.Companion.getMAX_LOOSE_REPORT_NUM()))) {
+      return;
+    }
+    Iterator localIterator = BaseInfo.pubJson.keys();
+    Intrinsics.checkExpressionValueIsNotNull(localIterator, "BaseInfo.pubJson.keys()");
+    while (localIterator.hasNext())
     {
-      do
-      {
-        return;
-        Iterator localIterator = BaseInfo.pubJson.keys();
-        Intrinsics.checkExpressionValueIsNotNull(localIterator, "BaseInfo.pubJson.keys()");
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          paramResultObject.getParams().put(str, BaseInfo.pubJson.get(str));
-        }
-        AbProviderSingleton.INSTANCE.addAbToParams(paramResultObject.getParams());
-        uploadProxy.report((BaseJsonObject)paramResultObject, (IReporter.ReportResultCallback)new ReporterMachine.reportOnce.1(paramReportResultCallback));
-        if (PluginCombination.Companion.isLoosePlugin(i))
-        {
-          paramResultObject = PluginController.INSTANCE;
-          paramResultObject.setLooseReportNum(paramResultObject.getLooseReportNum() + 1);
-          if (paramResultObject.getLooseReportNum() % 5 == 0) {
-            BaseInfo.editor.putInt("count_today_loose_reported", PluginController.INSTANCE.getLooseReportNum()).apply();
-          }
-        }
-      } while (!PluginCombination.Companion.isAusterityPlugin(i));
+      String str = (String)localIterator.next();
+      paramResultObject.getParams().put(str, BaseInfo.pubJson.get(str));
+    }
+    AbProviderSingleton.INSTANCE.addAbToParams(paramResultObject.getParams());
+    uploadProxy.report((BaseJsonObject)paramResultObject, (IReporter.ReportResultCallback)new ReporterMachine.reportOnce.1(paramReportResultCallback));
+    if (PluginCombination.Companion.isLoosePlugin(i))
+    {
+      paramResultObject = PluginController.INSTANCE;
+      paramResultObject.setLooseReportNum(paramResultObject.getLooseReportNum() + 1);
+      if (paramResultObject.getLooseReportNum() % 5 == 0) {
+        BaseInfo.editor.putInt("count_today_loose_reported", PluginController.INSTANCE.getLooseReportNum()).apply();
+      }
+    }
+    if (PluginCombination.Companion.isAusterityPlugin(i))
+    {
       paramResultObject = PluginController.INSTANCE;
       paramResultObject.setAusterityReportNum(paramResultObject.getAusterityReportNum() + 1);
-    } while (paramResultObject.getAusterityReportNum() % 10 != 0);
-    BaseInfo.editor.putInt("count_today_austerity_reported", PluginController.INSTANCE.getAusterityReportNum()).apply();
+      if (paramResultObject.getAusterityReportNum() % 10 == 0) {
+        BaseInfo.editor.putInt("count_today_austerity_reported", PluginController.INSTANCE.getAusterityReportNum()).apply();
+      }
+    }
   }
   
   public final void setUploadProxy(@NotNull IReporter paramIReporter)
@@ -178,7 +179,7 @@ public final class ReporterMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.ReporterMachine
  * JD-Core Version:    0.7.0.1
  */

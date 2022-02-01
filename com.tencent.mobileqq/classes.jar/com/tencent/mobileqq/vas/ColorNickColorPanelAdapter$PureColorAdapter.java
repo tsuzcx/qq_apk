@@ -47,40 +47,42 @@ public class ColorNickColorPanelAdapter$PureColorAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    boolean bool = false;
+    View localView = paramView;
     if (paramView == null) {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562048, paramViewGroup, false);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561881, paramViewGroup, false);
     }
-    for (;;)
+    paramView = (ColorSelectView)localView.findViewById(2131364837);
+    ImageView localImageView = (ImageView)localView.findViewById(2131364835);
+    if (paramInt == 0)
     {
-      ColorSelectView localColorSelectView = (ColorSelectView)paramView.findViewById(2131364953);
-      ImageView localImageView = (ImageView)paramView.findViewById(2131364951);
-      if (paramInt == 0)
-      {
-        localColorSelectView.setVisibility(8);
-        localImageView.setVisibility(0);
-        if (this.jdField_a_of_type_Int == paramInt) {}
-        for (int i = 2130847436;; i = 2130847435)
-        {
-          localImageView.setImageResource(i);
-          EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-          return paramView;
-        }
+      paramView.setVisibility(8);
+      localImageView.setVisibility(0);
+      int i;
+      if (this.jdField_a_of_type_Int == paramInt) {
+        i = 2130847305;
+      } else {
+        i = 2130847304;
       }
-      localColorSelectView.setVisibility(0);
-      localImageView.setVisibility(8);
-      localColorSelectView.setColor(jdField_a_of_type_ArrayOfInt[paramInt]);
-      if (this.jdField_a_of_type_Int == paramInt) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localColorSelectView.setSelect(bool);
-        break;
-      }
+      localImageView.setImageResource(i);
     }
+    else
+    {
+      paramView.setVisibility(0);
+      localImageView.setVisibility(8);
+      paramView.setColor(jdField_a_of_type_ArrayOfInt[paramInt]);
+      if (this.jdField_a_of_type_Int == paramInt) {
+        bool = true;
+      }
+      paramView.setSelect(bool);
+    }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickColorPanelAdapter.PureColorAdapter
  * JD-Core Version:    0.7.0.1
  */

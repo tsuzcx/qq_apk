@@ -12,115 +12,118 @@ class ADVideoAppDownloadManager$4
   public void run()
   {
     ADVideoAppDownloadData localADVideoAppDownloadData = ADVideoAppDownloadManager.a(this.this$0);
-    if (localADVideoAppDownloadData == null) {}
-    int k;
-    do
+    if (localADVideoAppDownloadData == null) {
+      return;
+    }
+    int j = localADVideoAppDownloadData.jdField_a_of_type_Int;
+    if (AdDownloadUtil.a(localADVideoAppDownloadData))
     {
-      int j;
-      int i;
-      do
+      localADVideoAppDownloadData.jdField_a_of_type_Int = 1;
+      localObject = this.this$0;
+      ((ADVideoAppDownloadManager)localObject).a(ADVideoAppDownloadManager.a((ADVideoAppDownloadManager)localObject, localADVideoAppDownloadData, 100), localADVideoAppDownloadData.jdField_a_of_type_Int);
+      return;
+    }
+    Object localObject = localADVideoAppDownloadData.c;
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      this.this$0.a(null, 0);
+      return;
+    }
+    localObject = DownloadManagerV2.a().a((String)localObject);
+    if (localObject != null)
+    {
+      int i = (int)((float)((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen / (float)((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen * 100.0F);
+      if ((j != 5) && (j != 0))
       {
-        return;
-        j = localADVideoAppDownloadData.jdField_a_of_type_Int;
-        if (AdDownloadUtil.a(localADVideoAppDownloadData))
+        if ((j == 4) || (j == 3))
         {
-          localADVideoAppDownloadData.jdField_a_of_type_Int = 1;
-          this.this$0.a(ADVideoAppDownloadManager.a(this.this$0, localADVideoAppDownloadData, 100), localADVideoAppDownloadData.jdField_a_of_type_Int);
-          return;
-        }
-        localObject = localADVideoAppDownloadData.c;
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          this.this$0.a(null, 0);
-          return;
-        }
-        localObject = DownloadManagerV2.a().a((String)localObject);
-        if (localObject == null) {
-          break;
-        }
-        i = (int)((float)((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen / (float)((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen * 100.0F);
-        if ((j == 5) || (j == 0))
-        {
-          j = ((TMAssistantDownloadTaskInfo)localObject).mState;
-          if ((j == 2) || (j == 1)) {
-            localADVideoAppDownloadData.jdField_a_of_type_Int = 3;
+          int k = ((TMAssistantDownloadTaskInfo)localObject).mState;
+          if ((j == 3) && (k == 3))
+          {
+            this.this$0.b(localADVideoAppDownloadData);
+            localObject = new DownloadInfo();
+            ((DownloadInfo)localObject).e = localADVideoAppDownloadData.d;
+            ((DownloadInfo)localObject).f = i;
+            ((DownloadInfo)localObject).c = localADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
+            this.this$0.a((DownloadInfo)localObject, 4);
+            return;
           }
-          for (;;)
+          if ((j == 4) && (k == 2))
+          {
+            localObject = new DownloadInfo();
+            ((DownloadInfo)localObject).c = localADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
+            ((DownloadInfo)localObject).e = localADVideoAppDownloadData.d;
+            ((DownloadInfo)localObject).f = i;
+            this.this$0.a((DownloadInfo)localObject, 3);
+            return;
+          }
+          if ((j == 4) && (k == 3))
           {
             localObject = new DownloadInfo();
             ((DownloadInfo)localObject).e = localADVideoAppDownloadData.d;
             ((DownloadInfo)localObject).f = i;
             ((DownloadInfo)localObject).c = localADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
+            this.this$0.a((DownloadInfo)localObject, 4);
+            return;
+          }
+          if ((j == 4) && (k == 1))
+          {
+            localObject = new DownloadInfo();
+            ((DownloadInfo)localObject).c = localADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
+            ((DownloadInfo)localObject).e = localADVideoAppDownloadData.d;
+            ((DownloadInfo)localObject).f = i;
+            this.this$0.a((DownloadInfo)localObject, 3);
+            return;
+          }
+          if (k == 4)
+          {
+            localObject = new DownloadInfo();
+            ((DownloadInfo)localObject).c = localADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
+            ((DownloadInfo)localObject).e = localADVideoAppDownloadData.d;
+            ((DownloadInfo)localObject).f = 100;
             ADVideoAppDownloadManager.a(this.this$0).a = true;
             ADVideoAppDownloadManager.a(this.this$0).a();
-            if (ADVideoAppDownloadManager.a(this.this$0) != null) {
-              ADVideoAppDownloadManager.a(this.this$0).b = i;
-            }
-            this.this$0.a((DownloadInfo)localObject, localADVideoAppDownloadData.jdField_a_of_type_Int);
-            return;
-            if (j == 3) {
-              localADVideoAppDownloadData.jdField_a_of_type_Int = 4;
-            } else if (j == 4) {
-              localADVideoAppDownloadData.jdField_a_of_type_Int = 5;
-            } else {
-              localADVideoAppDownloadData.jdField_a_of_type_Int = 0;
-            }
+            this.this$0.a((DownloadInfo)localObject, 5);
           }
         }
-      } while ((j != 4) && (j != 3));
-      k = ((TMAssistantDownloadTaskInfo)localObject).mState;
-      if ((j == 3) && (k == 3))
+      }
+      else
       {
-        this.this$0.b(localADVideoAppDownloadData);
+        j = ((TMAssistantDownloadTaskInfo)localObject).mState;
+        if ((j != 2) && (j != 1))
+        {
+          if (j == 3) {
+            localADVideoAppDownloadData.jdField_a_of_type_Int = 4;
+          } else if (j == 4) {
+            localADVideoAppDownloadData.jdField_a_of_type_Int = 5;
+          } else {
+            localADVideoAppDownloadData.jdField_a_of_type_Int = 0;
+          }
+        }
+        else {
+          localADVideoAppDownloadData.jdField_a_of_type_Int = 3;
+        }
         localObject = new DownloadInfo();
         ((DownloadInfo)localObject).e = localADVideoAppDownloadData.d;
         ((DownloadInfo)localObject).f = i;
         ((DownloadInfo)localObject).c = localADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
-        this.this$0.a((DownloadInfo)localObject, 4);
-        return;
+        ADVideoAppDownloadManager.a(this.this$0).a = true;
+        ADVideoAppDownloadManager.a(this.this$0).a();
+        if (ADVideoAppDownloadManager.a(this.this$0) != null) {
+          ADVideoAppDownloadManager.a(this.this$0).b = i;
+        }
+        this.this$0.a((DownloadInfo)localObject, localADVideoAppDownloadData.jdField_a_of_type_Int);
       }
-      if ((j == 4) && (k == 2))
-      {
-        localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).c = localADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
-        ((DownloadInfo)localObject).e = localADVideoAppDownloadData.d;
-        ((DownloadInfo)localObject).f = i;
-        this.this$0.a((DownloadInfo)localObject, 3);
-        return;
-      }
-      if ((j == 4) && (k == 3))
-      {
-        localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).e = localADVideoAppDownloadData.d;
-        ((DownloadInfo)localObject).f = i;
-        ((DownloadInfo)localObject).c = localADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
-        this.this$0.a((DownloadInfo)localObject, 4);
-        return;
-      }
-      if ((j == 4) && (k == 1))
-      {
-        localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).c = localADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
-        ((DownloadInfo)localObject).e = localADVideoAppDownloadData.d;
-        ((DownloadInfo)localObject).f = i;
-        this.this$0.a((DownloadInfo)localObject, 3);
-        return;
-      }
-    } while (k != 4);
-    Object localObject = new DownloadInfo();
-    ((DownloadInfo)localObject).c = localADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
-    ((DownloadInfo)localObject).e = localADVideoAppDownloadData.d;
-    ((DownloadInfo)localObject).f = 100;
-    ADVideoAppDownloadManager.a(this.this$0).a = true;
-    ADVideoAppDownloadManager.a(this.this$0).a();
-    this.this$0.a((DownloadInfo)localObject, 5);
-    return;
-    this.this$0.a(null, 0);
+    }
+    else
+    {
+      this.this$0.a(null, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadManager.4
  * JD-Core Version:    0.7.0.1
  */

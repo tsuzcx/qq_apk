@@ -13,10 +13,12 @@ public class a
   
   public a(HttpEntity paramHttpEntity)
   {
-    if (paramHttpEntity == null) {
-      throw new IllegalArgumentException("Missing wrapped entity");
+    if (paramHttpEntity != null)
+    {
+      this.a = paramHttpEntity;
+      return;
     }
-    this.a = paramHttpEntity;
+    throw new IllegalArgumentException("Missing wrapped entity");
   }
   
   public void consumeContent()
@@ -26,8 +28,9 @@ public class a
   
   public InputStream getContent()
   {
-    if (this.b != null) {
-      return this.b;
+    com.tencent.qapmsdk.impl.instrumentation.b.a locala = this.b;
+    if (locala != null) {
+      return locala;
     }
     this.b = new com.tencent.qapmsdk.impl.instrumentation.b.a(this.a.getContent(), true);
     return this.b;
@@ -70,7 +73,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.a.a
  * JD-Core Version:    0.7.0.1
  */

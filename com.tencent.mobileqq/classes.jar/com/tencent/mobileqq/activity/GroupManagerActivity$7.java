@@ -18,99 +18,108 @@ class GroupManagerActivity$7
     if (paramInt1 == paramInt2) {
       return;
     }
-    int j = this.a.jdField_a_of_type_JavaUtilList.size();
-    this.a.jdField_a_of_type_ArrayOfByte = new byte[j];
-    this.a.b = new byte[j];
+    int m = this.a.jdField_a_of_type_JavaUtilList.size();
+    Object localObject = this.a;
+    ((GroupManagerActivity)localObject).jdField_a_of_type_ArrayOfByte = new byte[m];
+    ((GroupManagerActivity)localObject).b = new byte[m];
+    int k = 0;
     int i = 0;
-    while (i < j)
+    while (i < m)
     {
       this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(i)).group_id);
       i += 1;
     }
+    int j;
     if (paramInt2 < paramInt1)
     {
-      i = j - 1;
-      if (i >= 0)
+      j = m - 1;
+      for (;;)
       {
-        if ((paramInt2 < i) && (i <= paramInt1)) {
-          this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[(i - 1)];
-        }
-        for (;;)
-        {
-          i -= 1;
+        i = k;
+        if (j < 0) {
           break;
-          if (i == paramInt2) {
-            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
-          } else {
-            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
-          }
         }
+        if ((paramInt2 < j) && (j <= paramInt1)) {
+          this.a.b[j] = this.a.jdField_a_of_type_ArrayOfByte[(j - 1)];
+        } else if (j == paramInt2) {
+          this.a.b[j] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
+        } else {
+          this.a.b[j] = this.a.jdField_a_of_type_ArrayOfByte[j];
+        }
+        j -= 1;
       }
     }
-    else if (paramInt1 < paramInt2)
+    i = k;
+    if (paramInt1 < paramInt2)
     {
-      i = 0;
-      if (i < j)
+      j = 0;
+      for (;;)
       {
-        if ((i < paramInt1) || (paramInt2 < i)) {
-          this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
-        }
-        for (;;)
-        {
-          i += 1;
+        i = k;
+        if (j >= m) {
           break;
-          if (i == paramInt2) {
-            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
+        }
+        if ((j >= paramInt1) && (paramInt2 >= j))
+        {
+          if (j == paramInt2) {
+            this.a.b[j] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
           } else {
-            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[(i + 1)];
+            this.a.b[j] = this.a.jdField_a_of_type_ArrayOfByte[(j + 1)];
           }
         }
+        else {
+          this.a.b[j] = this.a.jdField_a_of_type_ArrayOfByte[j];
+        }
+        j += 1;
       }
     }
-    i = 0;
-    while (i < j)
+    while (i < m)
     {
       this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)i);
       i += 1;
     }
-    Groups localGroups;
     if (paramInt2 < paramInt1)
     {
-      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
-      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
-      GroupManagerActivity.a(this.a).notifyDataSetChanged();
-      if (QLog.isColorLevel())
-      {
-        QLog.d("GroupManagerActivity", 2, "DragSortListView.DropListener onDrop groupIdList = " + Arrays.toString(this.a.b));
-        QLog.d("GroupManagerActivity", 2, "DragSortListView.DropListener onDrop sortIdList = " + Arrays.toString(this.a.jdField_a_of_type_ArrayOfByte));
-      }
-      GroupManagerActivity.a(this.a, this.a.a(this.a.b, this.a.jdField_a_of_type_ArrayOfByte));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "SortFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-      }
-      if (!GroupManagerActivity.a(this.a)) {
-        break label586;
-      }
-      this.a.a(2131693139);
+      localObject = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
+      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localObject);
     }
-    for (;;)
+    else if (paramInt1 < paramInt2)
     {
-      ReportController.b(this.a.app, "CliOper", "", "", "category", "Move_category", 0, 0, "", "", "", "");
-      return;
-      if (paramInt1 >= paramInt2) {
-        break;
-      }
-      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
-      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
-      break;
-      label586:
+      localObject = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
+      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localObject);
+    }
+    GroupManagerActivity.a(this.a).notifyDataSetChanged();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DragSortListView.DropListener onDrop groupIdList = ");
+      ((StringBuilder)localObject).append(Arrays.toString(this.a.b));
+      QLog.d("GroupManagerActivity", 2, ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DragSortListView.DropListener onDrop sortIdList = ");
+      ((StringBuilder)localObject).append(Arrays.toString(this.a.jdField_a_of_type_ArrayOfByte));
+      QLog.d("GroupManagerActivity", 2, ((StringBuilder)localObject).toString());
+    }
+    localObject = this.a;
+    GroupManagerActivity.a((GroupManagerActivity)localObject, ((GroupManagerActivity)localObject).a(((GroupManagerActivity)localObject).b, this.a.jdField_a_of_type_ArrayOfByte));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SortFriendGroup needShowDialog = ");
+      ((StringBuilder)localObject).append(GroupManagerActivity.a(this.a));
+      QLog.d("GroupManagerActivity", 2, ((StringBuilder)localObject).toString());
+    }
+    if (GroupManagerActivity.a(this.a)) {
+      this.a.a(2131693099);
+    } else {
       this.a.a();
     }
+    ReportController.b(this.a.app, "CliOper", "", "", "category", "Move_category", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GroupManagerActivity.7
  * JD-Core Version:    0.7.0.1
  */

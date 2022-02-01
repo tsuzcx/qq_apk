@@ -15,7 +15,6 @@ class QQUiModule$5
   
   public void run()
   {
-    int k = 0;
     if (QQUiModule.access$100(this.this$0) != null)
     {
       if (QQUiModule.access$100(this.this$0).isShowing()) {
@@ -47,12 +46,14 @@ class QQUiModule$5
         }
         localObject3 = ((JSONObject)localObject1).optJSONArray("items");
         int m = ((JSONObject)localObject1).optInt("selected", -1);
-        QQUiModule.access$402(this.this$0, false);
-        String str = ((JSONObject)localObject1).optString("close");
-        if (!TextUtils.isEmpty(str))
+        Object localObject4 = this.this$0;
+        int k = 0;
+        QQUiModule.access$402((QQUiModule)localObject4, false);
+        localObject4 = ((JSONObject)localObject1).optString("close");
+        if (!TextUtils.isEmpty((CharSequence)localObject4))
         {
           QQUiModule.access$402(this.this$0, true);
-          ((ActionSheet)localObject2).addButton(str, 3);
+          ((ActionSheet)localObject2).addButton((CharSequence)localObject4, 3);
           i = 1;
           j = i;
           if (localObject3 != null)
@@ -69,20 +70,20 @@ class QQUiModule$5
                 {
                   j = 0;
                   if (j >= n) {
-                    break label467;
+                    break label487;
                   }
-                  str = ((JSONArray)localObject3).getString(j);
+                  localObject4 = ((JSONArray)localObject3).getString(j);
                   if (j != m) {
-                    break label461;
+                    break label481;
                   }
                   bool = true;
-                  ((ActionSheet)localObject2).addRadioButton(str, bool);
+                  ((ActionSheet)localObject2).addRadioButton((CharSequence)localObject4, bool);
                   j += 1;
                   continue;
                 }
               }
               if (j >= n) {
-                break label467;
+                break label487;
               }
               ((ActionSheet)localObject2).addButton(((JSONArray)localObject3).getString(j));
               j += 1;
@@ -107,22 +108,25 @@ class QQUiModule$5
       }
       catch (Exception localException)
       {
-        QLog.e("QQUiModule", 2, "showActionSheet error:" + localException.getMessage());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("showActionSheet error:");
+        ((StringBuilder)localObject2).append(localException.getMessage());
+        QLog.e("QQUiModule", 2, ((StringBuilder)localObject2).toString());
         return;
       }
       int i = 0;
       continue;
-      label461:
+      label481:
       boolean bool = false;
       continue;
-      label467:
+      label487:
       int j = i + n;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQUiModule.5
  * JD-Core Version:    0.7.0.1
  */

@@ -66,29 +66,30 @@ public class FollowImageTextView
   private void a()
   {
     boolean bool2 = this.jdField_a_of_type_Boolean;
-    boolean bool1;
-    if (this.jdField_a_of_type_Int < 2)
-    {
+    if (this.jdField_a_of_type_Int < 2) {
       bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label95;
-      }
+    } else {
+      bool1 = false;
+    }
+    this.jdField_a_of_type_Boolean = bool1;
+    if (this.jdField_a_of_type_Boolean)
+    {
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$FirstTextView.setMaxLines(1);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$FirstTextView.setEllipsize(TextUtils.TruncateAt.END);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$FirstTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      if (((this.jdField_a_of_type_Boolean ^ bool2)) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$OnTextLineChangeListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$OnTextLineChangeListener.a(1);
-      }
-      return;
-      bool1 = false;
-      break;
-      label95:
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$FirstTextView.setMaxLines(this.jdField_a_of_type_Int - 1);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$FirstTextView.setEllipsize(null);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$FirstTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    boolean bool1 = this.jdField_a_of_type_Boolean;
+    if (((bool2 ^ bool1)) && (bool1))
+    {
+      FollowImageTextView.OnTextLineChangeListener localOnTextLineChangeListener = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$OnTextLineChangeListener;
+      if (localOnTextLineChangeListener != null) {
+        localOnTextLineChangeListener.a(1);
+      }
     }
   }
   
@@ -100,7 +101,7 @@ public class FollowImageTextView
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$FirstTextView = new FollowImageTextView.FirstTextView(this, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$FirstTextView.setId(2131374311);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$FirstTextView.setId(2131373867);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$FirstTextView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$FirstTextView);
     this.jdField_b_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
@@ -109,7 +110,7 @@ public class FollowImageTextView
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     addView(this.jdField_b_of_type_AndroidWidgetLinearLayout);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131374312);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131373868);
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -118,7 +119,8 @@ public class FollowImageTextView
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 16;
-    localLayoutParams.leftMargin = ((int)(paramContext.getResources().getDisplayMetrics().density * this.jdField_b_of_type_Int + 0.5F));
+    float f = paramContext.getResources().getDisplayMetrics().density;
+    localLayoutParams.leftMargin = ((int)(this.jdField_b_of_type_Int * f + 0.5F));
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
@@ -233,7 +235,7 @@ public class FollowImageTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.FollowImageTextView
  * JD-Core Version:    0.7.0.1
  */

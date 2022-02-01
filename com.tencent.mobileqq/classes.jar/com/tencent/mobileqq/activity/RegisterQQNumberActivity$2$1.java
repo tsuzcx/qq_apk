@@ -7,12 +7,12 @@ class RegisterQQNumberActivity$2$1
   
   public void run()
   {
-    this.a.a.notifyToast(2131716956, 1);
+    this.a.a.notifyToast(2131716609, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterQQNumberActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

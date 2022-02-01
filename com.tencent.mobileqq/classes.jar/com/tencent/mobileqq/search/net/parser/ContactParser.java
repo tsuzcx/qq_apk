@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.search.net.parser;
 
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
+import addcontacts.AccountSearchPb.hotwordrecord;
+import addcontacts.AccountSearchPb.record;
+import com.tencent.mobileqq.search.base.util.SearchStatisticsConstants;
+import com.tencent.mobileqq.search.business.addcontact.model.SearchResult;
+import com.tencent.mobileqq.search.business.group.model.GroupNetSearchModelPeopleItem;
 import com.tencent.mobileqq.search.model.GroupNetSearchModelPeople;
-import com.tencent.mobileqq.search.model.GroupNetSearchModelPeopleItem;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.util.SearchStatisticsConstants;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
 import java.util.List;
 
 public class ContactParser
@@ -31,7 +31,7 @@ public class ContactParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.net.parser.ContactParser
  * JD-Core Version:    0.7.0.1
  */

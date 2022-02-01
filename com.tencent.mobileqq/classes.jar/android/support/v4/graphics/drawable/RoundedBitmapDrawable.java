@@ -68,17 +68,19 @@ public abstract class RoundedBitmapDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    Bitmap localBitmap = this.mBitmap;
-    if (localBitmap == null) {
+    Object localObject = this.mBitmap;
+    if (localObject == null) {
       return;
     }
     updateDstRect();
     if (this.mPaint.getShader() == null)
     {
-      paramCanvas.drawBitmap(localBitmap, null, this.mDstRect, this.mPaint);
+      paramCanvas.drawBitmap((Bitmap)localObject, null, this.mDstRect, this.mPaint);
       return;
     }
-    paramCanvas.drawRoundRect(this.mDstRectF, this.mCornerRadius, this.mCornerRadius, this.mPaint);
+    localObject = this.mDstRectF;
+    float f = this.mCornerRadius;
+    paramCanvas.drawRoundRect((RectF)localObject, f, f, this.mPaint);
   }
   
   public int getAlpha()
@@ -118,14 +120,33 @@ public abstract class RoundedBitmapDrawable
   
   public int getOpacity()
   {
-    if ((this.mGravity != 119) || (this.mIsCircular)) {}
-    Bitmap localBitmap;
-    do
+    int k = this.mGravity;
+    int j = -3;
+    int i = j;
+    if (k == 119)
     {
-      return -3;
-      localBitmap = this.mBitmap;
-    } while ((localBitmap == null) || (localBitmap.hasAlpha()) || (this.mPaint.getAlpha() < 255) || (isGreaterThanZero(this.mCornerRadius)));
-    return -1;
+      if (this.mIsCircular) {
+        return -3;
+      }
+      Bitmap localBitmap = this.mBitmap;
+      i = j;
+      if (localBitmap != null)
+      {
+        i = j;
+        if (!localBitmap.hasAlpha())
+        {
+          i = j;
+          if (this.mPaint.getAlpha() >= 255)
+          {
+            if (isGreaterThanZero(this.mCornerRadius)) {
+              return -3;
+            }
+            i = -1;
+          }
+        }
+      }
+    }
+    return i;
   }
   
   public final Paint getPaint()
@@ -205,14 +226,11 @@ public abstract class RoundedBitmapDrawable
     this.mIsCircular = false;
     if (isGreaterThanZero(paramFloat)) {
       this.mPaint.setShader(this.mBitmapShader);
-    }
-    for (;;)
-    {
-      this.mCornerRadius = paramFloat;
-      invalidateSelf();
-      return;
+    } else {
       this.mPaint.setShader(null);
     }
+    this.mCornerRadius = paramFloat;
+    invalidateSelf();
   }
   
   public void setDither(boolean paramBoolean)
@@ -272,19 +290,20 @@ public abstract class RoundedBitmapDrawable
   {
     if (this.mApplyGravity)
     {
-      if (!this.mIsCircular) {
-        break label220;
+      if (this.mIsCircular)
+      {
+        int i = Math.min(this.mBitmapWidth, this.mBitmapHeight);
+        gravityCompatApply(this.mGravity, i, i, getBounds(), this.mDstRect);
+        i = Math.min(this.mDstRect.width(), this.mDstRect.height());
+        int j = Math.max(0, (this.mDstRect.width() - i) / 2);
+        int k = Math.max(0, (this.mDstRect.height() - i) / 2);
+        this.mDstRect.inset(j, k);
+        this.mCornerRadius = (i * 0.5F);
       }
-      int i = Math.min(this.mBitmapWidth, this.mBitmapHeight);
-      gravityCompatApply(this.mGravity, i, i, getBounds(), this.mDstRect);
-      i = Math.min(this.mDstRect.width(), this.mDstRect.height());
-      int j = Math.max(0, (this.mDstRect.width() - i) / 2);
-      int k = Math.max(0, (this.mDstRect.height() - i) / 2);
-      this.mDstRect.inset(j, k);
-      this.mCornerRadius = (i * 0.5F);
-    }
-    for (;;)
-    {
+      else
+      {
+        gravityCompatApply(this.mGravity, this.mBitmapWidth, this.mBitmapHeight, getBounds(), this.mDstRect);
+      }
       this.mDstRectF.set(this.mDstRect);
       if (this.mBitmapShader != null)
       {
@@ -294,9 +313,6 @@ public abstract class RoundedBitmapDrawable
         this.mPaint.setShader(this.mBitmapShader);
       }
       this.mApplyGravity = false;
-      return;
-      label220:
-      gravityCompatApply(this.mGravity, this.mBitmapWidth, this.mBitmapHeight, getBounds(), this.mDstRect);
     }
   }
 }

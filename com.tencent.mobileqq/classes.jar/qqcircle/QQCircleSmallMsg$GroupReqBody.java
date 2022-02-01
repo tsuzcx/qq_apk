@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class QQCircleSmallMsg$GroupReqBody
   extends MessageMicro<GroupReqBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 56, 64, 72 }, new String[] { "opt_uint64_group_code", "rpt_uint64_memberuins", "opt_uint32_offline", "msg_inst_ctrl", "comm_gray_tips_info", "opt_sysdb_flag", "uint64_feature_id", "opt_push_mode" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), null, null, Integer.valueOf(0), Long.valueOf(0L), Boolean.valueOf(false) }, GroupReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public QQCircleSmallMsg.CommGrayTipsInfo comm_gray_tips_info = new QQCircleSmallMsg.CommGrayTipsInfo();
   public QQCircleMsgPaelem.InstCtrl msg_inst_ctrl = new QQCircleMsgPaelem.InstCtrl();
   public final PBBoolField opt_push_mode = PBField.initBool(false);
@@ -20,10 +20,17 @@ public final class QQCircleSmallMsg$GroupReqBody
   public final PBUInt64Field opt_uint64_group_code = PBField.initUInt64(0L);
   public final PBRepeatField<Long> rpt_uint64_memberuins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt64Field uint64_feature_id = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 56, 64, 72 }, new String[] { "opt_uint64_group_code", "rpt_uint64_memberuins", "opt_uint32_offline", "msg_inst_ctrl", "comm_gray_tips_info", "opt_sysdb_flag", "uint64_feature_id", "opt_push_mode" }, new Object[] { localLong, localLong, localInteger, null, null, localInteger, localLong, Boolean.valueOf(false) }, GroupReqBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleSmallMsg.GroupReqBody
  * JD-Core Version:    0.7.0.1
  */

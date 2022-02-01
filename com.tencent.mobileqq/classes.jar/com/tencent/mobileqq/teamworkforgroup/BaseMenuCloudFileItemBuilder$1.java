@@ -12,29 +12,21 @@ class BaseMenuCloudFileItemBuilder$1
   
   public void onClick(View paramView)
   {
-    ICloudFile localICloudFile;
     if (Utils.a("tag_swip_icon_menu_item", paramView.getTag()))
     {
-      localICloudFile = (ICloudFile)paramView.getTag(-10);
-      if (paramView.getId() != 2131364860) {
-        break label47;
-      }
-      BaseMenuCloudFileItemBuilder.a(this.a, localICloudFile);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label47:
-      if (BaseMenuCloudFileItemBuilder.a(this.a) != null) {
+      ICloudFile localICloudFile = (ICloudFile)paramView.getTag(-10);
+      if (paramView.getId() == 2131364746) {
+        BaseMenuCloudFileItemBuilder.a(this.a, localICloudFile);
+      } else if (BaseMenuCloudFileItemBuilder.a(this.a) != null) {
         BaseMenuCloudFileItemBuilder.a(this.a).a(paramView.getId(), localICloudFile);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.BaseMenuCloudFileItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

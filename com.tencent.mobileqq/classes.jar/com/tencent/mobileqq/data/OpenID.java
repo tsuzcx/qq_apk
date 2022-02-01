@@ -12,12 +12,17 @@ public class OpenID
   
   public String toString()
   {
-    return "appid = " + this.appID + "; openid = " + this.openID;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appid = ");
+    localStringBuilder.append(this.appID);
+    localStringBuilder.append("; openid = ");
+    localStringBuilder.append(this.openID);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.OpenID
  * JD-Core Version:    0.7.0.1
  */

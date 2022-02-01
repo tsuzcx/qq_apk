@@ -28,56 +28,60 @@ public class TruncateAttr
   
   static TruncateAttr parseTruncate(JSONObject paramJSONObject)
   {
-    Object localObject = null;
-    TruncateAttr localTruncateAttr;
-    int i;
     if (paramJSONObject != null)
     {
-      localObject = paramJSONObject.optString("text", "");
+      Object localObject = paramJSONObject.optString("text", "");
       String str = paramJSONObject.optString("href", "");
-      localTruncateAttr = new TruncateAttr();
+      TruncateAttr localTruncateAttr = new TruncateAttr();
       localTruncateAttr.text = ((String)localObject);
       localTruncateAttr.href = str;
-      i = -12541697;
-    }
-    try
-    {
-      localObject = paramJSONObject.optString("color");
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        i = Color.parseColor((String)localObject);
-      }
-      localTruncateAttr.color = i;
-      int j = Utils.dp2px(16.0D);
-      localObject = paramJSONObject.optString("font-size");
-      i = j;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      int i = -12541697;
+      try
       {
-        localObject = CssStyle.getSize((String)localObject);
-        i = j;
-        if (localObject != null) {
-          i = Integer.parseInt(String.valueOf(localObject));
+        localObject = paramJSONObject.optString("color");
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          i = Color.parseColor((String)localObject);
         }
+        localTruncateAttr.color = i;
+        int j = Utils.dp2px(16.0D);
+        localObject = paramJSONObject.optString("font-size");
+        i = j;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = CssStyle.getSize((String)localObject);
+          i = j;
+          if (localObject != null) {
+            i = Integer.parseInt(String.valueOf(localObject));
+          }
+        }
+        localTruncateAttr.fontSize = i;
+        localObject = paramJSONObject.optString("font-weight");
+        paramJSONObject = localTruncateAttr;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          return paramJSONObject;
+        }
+        localTruncateAttr.fontWeight = ((String)localObject);
+        return localTruncateAttr;
       }
-      localTruncateAttr.fontSize = i;
-      paramJSONObject = paramJSONObject.optString("font-weight");
-      localObject = localTruncateAttr;
-      if (!TextUtils.isEmpty(paramJSONObject))
+      catch (Exception paramJSONObject)
       {
-        localTruncateAttr.fontWeight = paramJSONObject;
-        localObject = localTruncateAttr;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseTruncate error! msg=");
+        ((StringBuilder)localObject).append(paramJSONObject);
+        LogUtil.QLog.e("TruncateAttr", 1, ((StringBuilder)localObject).toString());
+        return localTruncateAttr;
       }
-      return localObject;
     }
-    catch (Exception paramJSONObject)
+    else
     {
-      LogUtil.QLog.e("TruncateAttr", 1, "parseTruncate error! msg=" + paramJSONObject);
+      paramJSONObject = null;
     }
-    return localTruncateAttr;
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.TruncateAttr
  * JD-Core Version:    0.7.0.1
  */

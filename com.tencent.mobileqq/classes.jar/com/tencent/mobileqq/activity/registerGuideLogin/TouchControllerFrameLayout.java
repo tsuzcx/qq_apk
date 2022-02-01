@@ -51,7 +51,7 @@ public class TouchControllerFrameLayout
   
   public static boolean a(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
+    boolean bool2 = false;
     if (paramView == null) {
       return false;
     }
@@ -63,12 +63,23 @@ public class TouchControllerFrameLayout
     int m = paramMotionEvent[1];
     int n = paramView.getMeasuredWidth();
     int i1 = paramView.getMeasuredHeight();
-    if ((i >= m) && (i <= i1 + m) && (j >= k) && (j <= n + k)) {}
-    for (;;)
+    boolean bool1 = bool2;
+    if (i >= m)
     {
-      return bool;
-      bool = false;
+      bool1 = bool2;
+      if (i <= i1 + m)
+      {
+        bool1 = bool2;
+        if (j >= k)
+        {
+          bool1 = bool2;
+          if (j <= n + k) {
+            bool1 = true;
+          }
+        }
+      }
     }
+    return bool1;
   }
   
   public float a(float paramFloat)
@@ -89,16 +100,16 @@ public class TouchControllerFrameLayout
     {
       scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
       invalidate();
+      return;
     }
-    do
+    if (this.b)
     {
-      do
-      {
-        return;
-      } while (!this.b);
       this.b = false;
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginTouchControllerFrameLayout$CustomTouchListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginTouchControllerFrameLayout$CustomTouchListener.a();
+      TouchControllerFrameLayout.CustomTouchListener localCustomTouchListener = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginTouchControllerFrameLayout$CustomTouchListener;
+      if (localCustomTouchListener != null) {
+        localCustomTouchListener.a();
+      }
+    }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -107,65 +118,71 @@ public class TouchControllerFrameLayout
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     float f1 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      this.c = false;
-      this.jdField_a_of_type_Float = f1;
-      QLog.d("TouchControllerFrameLayout", 1, new Object[] { "dispatchTouchEvent ACTION_DOWN mPreY=", Float.valueOf(this.jdField_a_of_type_Float) });
-      super.dispatchTouchEvent(paramMotionEvent);
-      return true;
-      if (this.jdField_a_of_type_Float == -3.402824E+038F)
-      {
-        this.jdField_a_of_type_Float = f1;
-        return super.dispatchTouchEvent(paramMotionEvent);
-      }
-      float f2 = -(f1 - this.jdField_a_of_type_Float);
-      float f3 = a(f2);
-      if ((this.jdField_a_of_type_Boolean) && (f3 != 0.0F)) {
-        scrollBy(0, (int)f3);
-      }
-      for (;;)
-      {
-        if (Math.abs(f2) > 5.0F) {
-          this.c = true;
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return false;
+          }
         }
-        this.jdField_a_of_type_Float = f1;
-        return true;
-        if (f3 > 0.0F) {
-          scrollBy(0, (int)f3);
+        else
+        {
+          float f2 = this.jdField_a_of_type_Float;
+          if (f2 == -3.402824E+038F)
+          {
+            this.jdField_a_of_type_Float = f1;
+            return super.dispatchTouchEvent(paramMotionEvent);
+          }
+          f2 = -(f1 - f2);
+          float f3 = a(f2);
+          if ((this.jdField_a_of_type_Boolean) && (f3 != 0.0F)) {
+            scrollBy(0, (int)f3);
+          } else if (f3 > 0.0F) {
+            scrollBy(0, (int)f3);
+          }
+          if (Math.abs(f2) > 5.0F) {
+            this.c = true;
+          }
+          this.jdField_a_of_type_Float = f1;
+          return true;
         }
       }
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_Float = -3.402824E+038F;
-      int i = -getScrollY();
-      if (-getScrollY() < this.jdField_a_of_type_Int) {}
-      for (boolean bool = true;; bool = false)
+      i = -getScrollY();
+      boolean bool;
+      if (-getScrollY() < this.jdField_a_of_type_Int) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      QLog.d("TouchControllerFrameLayout", 1, new Object[] { "dispatchTouchEvent ACTION_UP -getScrollY()=", Integer.valueOf(i), ", toUp=", Boolean.valueOf(bool) });
+      if (this.c)
       {
-        QLog.d("TouchControllerFrameLayout", 1, new Object[] { "dispatchTouchEvent ACTION_UP -getScrollY()=", Integer.valueOf(i), ", toUp=", Boolean.valueOf(bool) });
-        if (!this.c) {
-          break label308;
-        }
         paramMotionEvent.setAction(3);
         super.dispatchTouchEvent(paramMotionEvent);
-        if (-getScrollY() >= this.jdField_a_of_type_Int) {
-          break label314;
+        if (-getScrollY() < this.jdField_a_of_type_Int)
+        {
+          a(0);
+          return false;
         }
-        a(0);
-        break;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginTouchControllerFrameLayout$CustomTouchListener != null)
+        {
+          this.b = true;
+          a(-getHeight());
+        }
+        return false;
       }
-      label308:
       return super.dispatchTouchEvent(paramMotionEvent);
-      label314:
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginTouchControllerFrameLayout$CustomTouchListener != null)
-      {
-        this.b = true;
-        a(-getHeight());
-      }
     }
+    this.c = false;
+    this.jdField_a_of_type_Float = f1;
+    QLog.d("TouchControllerFrameLayout", 1, new Object[] { "dispatchTouchEvent ACTION_DOWN mPreY=", Float.valueOf(this.jdField_a_of_type_Float) });
+    super.dispatchTouchEvent(paramMotionEvent);
+    return true;
   }
   
   public void setCustomTouchListener(TouchControllerFrameLayout.CustomTouchListener paramCustomTouchListener)
@@ -186,7 +203,7 @@ public class TouchControllerFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.TouchControllerFrameLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -16,25 +16,32 @@ class ReceiptMessageDetailFragment$4
     if (QLog.isColorLevel()) {
       QLog.d("ReceiptMessageDetailFragment", 2, "mSendReadReportRequestRunnable");
     }
-    switch (ReceiptMessageDetailFragment.a(this.this$0).a)
+    int i = ReceiptMessageDetailFragment.a(this.this$0).a;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 3000) {
+          return;
+        }
+        ReceiptMessageDetailFragment.d(this.this$0);
+        return;
+      }
       ReceiptMessageDetailFragment.c(this.this$0);
-      return;
-    case 3000: 
-      ReceiptMessageDetailFragment.d(this.this$0);
       return;
     }
     ReceiptMessageDetailFragment.a(this.this$0).addObserver(ReceiptMessageDetailFragment.a(this.this$0), false);
     QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c");
-    ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getMsgHandler().a(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getCurrentAccountUin()), ReceiptMessageDetailFragment.a(this.this$0), MessageUtils.a(ReceiptMessageDetailFragment.b(this.this$0))));
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment1 = this.this$0;
+    MessageHandler localMessageHandler = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment1).getMsgHandler();
+    long l = ReceiptMessageDetailFragment.a(this.this$0);
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment2 = this.this$0;
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment1, localMessageHandler.a(l, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment2, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment2).getCurrentAccountUin()), ReceiptMessageDetailFragment.a(this.this$0), MessageUtils.a(ReceiptMessageDetailFragment.b(this.this$0))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.4
  * JD-Core Version:    0.7.0.1
  */

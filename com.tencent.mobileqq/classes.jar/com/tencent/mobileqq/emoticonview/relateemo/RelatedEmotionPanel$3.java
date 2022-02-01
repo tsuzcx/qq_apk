@@ -29,13 +29,18 @@ class RelatedEmotionPanel$3
     if ((!paramRecyclerView.canScrollVertically(1)) && (RelatedEmotionPanel.access$200(this.this$0) == 1) && (!RelatedEmotionPanel.access$300(this.this$0)) && (RelatedEmotionPanel.access$400(this.this$0).getData() != null))
     {
       RelatedEmotionPanel.access$302(this.this$0, true);
-      ReportController.b(RelatedEmotionPanel.access$100(this.this$0), "dc00898", "", this.this$0.mCurFriendUin, "0X800B156", "0X800B156", 0, 0, RelatedEmotionPanel.access$400(this.this$0).getData().size() + "", "", "", "");
+      paramRecyclerView = RelatedEmotionPanel.access$100(this.this$0);
+      String str = this.this$0.mCurFriendUin;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(RelatedEmotionPanel.access$400(this.this$0).getData().size());
+      localStringBuilder.append("");
+      ReportController.b(paramRecyclerView, "dc00898", "", str, "0X800B156", "0X800B156", 0, 0, localStringBuilder.toString(), "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel.3
  * JD-Core Version:    0.7.0.1
  */

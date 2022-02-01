@@ -63,73 +63,76 @@ public class StatServiceImpl
   
   static int a(Context paramContext, boolean paramBoolean, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
-    int i2 = 1;
     long l1 = System.currentTimeMillis();
-    if ((paramBoolean) && (l1 - i >= StatConfig.getSessionTimoutMillis())) {}
-    for (int i1 = 1;; i1 = 0)
+    int i1;
+    if ((paramBoolean) && (l1 - i >= StatConfig.getSessionTimoutMillis())) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    i = l1;
+    if (j == 0L) {
+      j = StatCommonHelper.getTomorrowStartMilliseconds();
+    }
+    if (l1 >= j)
     {
-      i = l1;
-      if (j == 0L) {
-        j = StatCommonHelper.getTomorrowStartMilliseconds();
+      j = StatCommonHelper.getTomorrowStartMilliseconds();
+      if (af.a(paramContext).b(paramContext).getUserType() != 1) {
+        af.a(paramContext).b(paramContext).setUserType(1);
       }
-      if (l1 >= j)
+      StatConfig.b(0);
+      a = 0;
+      k = StatCommonHelper.getDateString(0);
+      i1 = 1;
+    }
+    Object localObject = k;
+    if (StatCommonHelper.isSpecifyReportedValid(paramStatSpecifyReportedInfo))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramStatSpecifyReportedInfo.getAppKey());
+      ((StringBuilder)localObject).append(k);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    if (!p.containsKey(localObject)) {
+      i1 = 1;
+    }
+    if (i1 != 0)
+    {
+      if (!StatCommonHelper.isSpecifyReportedValid(paramStatSpecifyReportedInfo))
       {
-        j = StatCommonHelper.getTomorrowStartMilliseconds();
-        if (af.a(paramContext).b(paramContext).getUserType() != 1) {
-          af.a(paramContext).b(paramContext).setUserType(1);
-        }
-        StatConfig.b(0);
-        a = 0;
-        k = StatCommonHelper.getDateString(0);
-        i1 = 1;
-      }
-      String str = k;
-      if (StatCommonHelper.isSpecifyReportedValid(paramStatSpecifyReportedInfo)) {
-        str = paramStatSpecifyReportedInfo.getAppKey() + k;
-      }
-      if (!p.containsKey(str)) {
-        i1 = i2;
-      }
-      for (;;)
-      {
-        if (i1 != 0)
+        if (StatConfig.c() < StatConfig.getMaxDaySessionNumbers())
         {
-          if (StatCommonHelper.isSpecifyReportedValid(paramStatSpecifyReportedInfo)) {
-            break label226;
-          }
-          if (StatConfig.c() >= StatConfig.getMaxDaySessionNumbers()) {
-            break label215;
-          }
           StatCommonHelper.checkFirstTimeActivate(paramContext);
           a(paramContext, null);
         }
-        for (;;)
+        else
         {
-          p.put(str, Long.valueOf(1L));
-          paramBoolean = s;
-          s = false;
-          return l;
-          label215:
           q.e("Exceed StatConfig.getMaxDaySessionNumbers().");
-          continue;
-          label226:
-          a(paramContext, paramStatSpecifyReportedInfo);
         }
       }
+      else {
+        a(paramContext, paramStatSpecifyReportedInfo);
+      }
+      p.put(localObject, Long.valueOf(1L));
     }
+    paramBoolean = s;
+    s = false;
+    return l;
   }
   
   static void a(Context paramContext)
   {
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return;
-      try
+    }
+    try
+    {
+      paramContext = paramContext.getApplicationContext();
+      if (d == null)
       {
-        paramContext = paramContext.getApplicationContext();
-        if ((d != null) || (!b(paramContext))) {
-          continue;
+        boolean bool = b(paramContext);
+        if (!bool) {
+          return;
         }
         t = paramContext;
         HandlerThread localHandlerThread = new HandlerThread("StatService");
@@ -139,16 +142,21 @@ public class StatServiceImpl
         h = System.currentTimeMillis() + StatConfig.i;
         d.post(new j(paramContext));
       }
-      finally {}
+      return;
     }
+    finally {}
   }
   
   static void a(Context paramContext, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
     if (c(paramContext) != null)
     {
-      if (StatConfig.isDebugEnable()) {
-        q.d("start new session, specifyReport:" + paramStatSpecifyReportedInfo);
+      if (StatConfig.isDebugEnable())
+      {
+        StatLogger localStatLogger = q;
+        StringBuilder localStringBuilder = new StringBuilder("start new session, specifyReport:");
+        localStringBuilder.append(paramStatSpecifyReportedInfo);
+        localStatLogger.d(localStringBuilder.toString());
       }
       if ((paramStatSpecifyReportedInfo == null) || (l == 0)) {
         l = StatCommonHelper.getNextSessionID();
@@ -185,7 +193,8 @@ public class StatServiceImpl
     try
     {
       JSONObject localJSONObject2 = new JSONObject();
-      if (StatConfig.b.d != 0) {
+      int i1 = StatConfig.b.d;
+      if (i1 != 0) {
         localJSONObject2.put("v", StatConfig.b.d);
       }
       localJSONObject1.put(Integer.toString(StatConfig.b.a), localJSONObject2);
@@ -218,70 +227,61 @@ public class StatServiceImpl
   
   static boolean b(Context paramContext)
   {
-    boolean bool2 = false;
     long l1 = StatPreferences.getLong(paramContext, StatConfig.c, 0L);
     long l2 = StatCommonHelper.getSDKLongVersion("2.4.2");
-    boolean bool1 = true;
+    boolean bool2 = false;
+    Object localObject;
+    boolean bool1;
     if (l2 <= l1)
     {
-      q.error("MTA is disable for current version:" + l2 + ",wakeup version:" + l1);
+      localObject = q;
+      StringBuilder localStringBuilder = new StringBuilder("MTA is disable for current version:");
+      localStringBuilder.append(l2);
+      localStringBuilder.append(",wakeup version:");
+      localStringBuilder.append(l1);
+      ((StatLogger)localObject).error(localStringBuilder.toString());
       bool1 = false;
+    }
+    else
+    {
+      bool1 = true;
     }
     l1 = StatPreferences.getLong(paramContext, StatConfig.d, 0L);
     if (l1 > System.currentTimeMillis())
     {
-      q.error("MTA is disable for current time:" + System.currentTimeMillis() + ",wakeup time:" + l1);
+      paramContext = q;
+      localObject = new StringBuilder("MTA is disable for current time:");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      ((StringBuilder)localObject).append(",wakeup time:");
+      ((StringBuilder)localObject).append(l1);
+      paramContext.error(((StringBuilder)localObject).toString());
       bool1 = bool2;
     }
-    for (;;)
-    {
-      StatConfig.setEnableStatService(bool1);
-      return bool1;
-    }
+    StatConfig.setEnableStatService(bool1);
+    return bool1;
   }
   
-  /* Error */
   static Handler c(Context paramContext)
   {
-    // Byte code:
-    //   0: getstatic 231	com/tencent/acstat/StatServiceImpl:d	Landroid/os/Handler;
-    //   3: ifnonnull +21 -> 24
-    //   6: ldc 2
-    //   8: monitorenter
-    //   9: getstatic 231	com/tencent/acstat/StatServiceImpl:d	Landroid/os/Handler;
-    //   12: astore_1
-    //   13: aload_1
-    //   14: ifnonnull +7 -> 21
-    //   17: aload_0
-    //   18: invokestatic 390	com/tencent/acstat/StatServiceImpl:a	(Landroid/content/Context;)V
-    //   21: ldc 2
-    //   23: monitorexit
-    //   24: getstatic 231	com/tencent/acstat/StatServiceImpl:d	Landroid/os/Handler;
-    //   27: areturn
-    //   28: astore_0
-    //   29: getstatic 93	com/tencent/acstat/StatServiceImpl:q	Lcom/tencent/acstat/common/StatLogger;
-    //   32: aload_0
-    //   33: invokevirtual 392	com/tencent/acstat/common/StatLogger:error	(Ljava/lang/Throwable;)V
-    //   36: iconst_0
-    //   37: invokestatic 388	com/tencent/acstat/StatConfig:setEnableStatService	(Z)V
-    //   40: goto -19 -> 21
-    //   43: astore_0
-    //   44: ldc 2
-    //   46: monitorexit
-    //   47: aload_0
-    //   48: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	49	0	paramContext	Context
-    //   12	2	1	localHandler	Handler
-    // Exception table:
-    //   from	to	target	type
-    //   17	21	28	java/lang/Throwable
-    //   9	13	43	finally
-    //   17	21	43	finally
-    //   21	24	43	finally
-    //   29	40	43	finally
-    //   44	47	43	finally
+    if (d == null) {
+      try
+      {
+        Handler localHandler = d;
+        if (localHandler == null) {
+          try
+          {
+            a(paramContext);
+          }
+          catch (Throwable paramContext)
+          {
+            q.error(paramContext);
+            StatConfig.setEnableStatService(false);
+          }
+        }
+      }
+      finally {}
+    }
+    return d;
   }
   
   static void c()
@@ -292,26 +292,36 @@ public class StatServiceImpl
   
   public static void commitEvents(Context paramContext, int paramInt)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      if (StatConfig.isDebugEnable()) {
-        q.i("commitEvents, maxNumber=" + paramInt);
-      }
-      paramContext = getContext(paramContext);
-      if (paramContext == null)
+    }
+    if (StatConfig.isDebugEnable())
+    {
+      localObject = q;
+      StringBuilder localStringBuilder = new StringBuilder("commitEvents, maxNumber=");
+      localStringBuilder.append(paramInt);
+      ((StatLogger)localObject).i(localStringBuilder.toString());
+    }
+    paramContext = getContext(paramContext);
+    if (paramContext == null) {
+      paramContext = q;
+    }
+    for (Object localObject = "The Context of StatService.commitEvents() can not be null!";; localObject = "The maxNumber of StatService.commitEvents() should be -1 or bigger than 0.")
+    {
+      paramContext.error(localObject);
+      return;
+      if ((paramInt >= -1) && (paramInt != 0))
       {
-        q.error("The Context of StatService.commitEvents() can not be null!");
+        if (!NetworkManager.getInstance(paramContext).isNetworkAvailable()) {
+          return;
+        }
+        if (c(paramContext) != null) {
+          d.post(new p(paramContext, paramInt));
+        }
         return;
       }
-      if ((paramInt < -1) || (paramInt == 0))
-      {
-        q.error("The maxNumber of StatService.commitEvents() should be -1 or bigger than 0.");
-        return;
-      }
-    } while ((!NetworkManager.getInstance(paramContext).isNetworkAvailable()) || (c(paramContext) == null));
-    d.post(new p(paramContext, paramInt));
+      paramContext = q;
+    }
   }
   
   static void d()
@@ -323,7 +333,7 @@ public class StatServiceImpl
   
   static void d(Context paramContext)
   {
-    c = System.currentTimeMillis() + 60000 * StatConfig.getSendPeriodMinutes();
+    c = System.currentTimeMillis() + StatConfig.getSendPeriodMinutes() * 60000;
     StatPreferences.putLong(paramContext, "last_period_ts", c);
     commitEvents(paramContext, -1);
   }
@@ -353,8 +363,10 @@ public class StatServiceImpl
   
   public static void flushDataToDB(Context paramContext)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    while (StatConfig.m <= 0) {
+    if (!StatConfig.isEnableStatService()) {
+      return;
+    }
+    if (StatConfig.m <= 0) {
       return;
     }
     paramContext = getContext(paramContext);
@@ -391,22 +403,23 @@ public class StatServiceImpl
   
   public static void onLowMemory(Context paramContext)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    while (c(getContext(paramContext)) == null) {
+    if (!StatConfig.isEnableStatService()) {
       return;
     }
-    d.post(new z(paramContext));
+    if (c(getContext(paramContext)) != null) {
+      d.post(new z(paramContext));
+    }
   }
   
   public static void onStop(Context paramContext, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-    } while (c(paramContext) == null);
-    d.post(new y(paramContext));
+    }
+    paramContext = getContext(paramContext);
+    if (c(paramContext) != null) {
+      d.post(new y(paramContext));
+    }
   }
   
   public static void removeActionListener(StatActionListener paramStatActionListener)
@@ -416,19 +429,19 @@ public class StatServiceImpl
   
   public static void reportQQ(Context paramContext, String paramString, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-      if (paramContext == null)
-      {
-        q.error("context is null in reportQQ()");
-        return;
-      }
-      StatConfig.f = paramString;
-    } while (c(paramContext) == null);
-    d.post(new w(paramString, paramContext, paramStatSpecifyReportedInfo));
+    }
+    paramContext = getContext(paramContext);
+    if (paramContext == null)
+    {
+      q.error("context is null in reportQQ()");
+      return;
+    }
+    StatConfig.f = paramString;
+    if (c(paramContext) != null) {
+      d.post(new w(paramString, paramContext, paramStatSpecifyReportedInfo));
+    }
   }
   
   public static void setCommonKeyValueForKVEvent(String paramString, Properties paramProperties)
@@ -455,85 +468,98 @@ public class StatServiceImpl
   
   public static void setEnvAttributes(Context paramContext, Map<String, String> paramMap)
   {
-    if ((paramMap == null) || (paramMap.size() > 512))
-    {
-      q.error("The map in setEnvAttributes can't be null or its size can't exceed 512.");
-      return;
+    if ((paramMap != null) && (paramMap.size() <= 512)) {
+      try
+      {
+        com.tencent.acstat.common.a.a(paramContext, paramMap);
+        return;
+      }
+      catch (JSONException paramContext)
+      {
+        q.e(paramContext);
+        return;
+      }
     }
-    try
-    {
-      com.tencent.acstat.common.a.a(paramContext, paramMap);
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      q.e(paramContext);
-    }
+    q.error("The map in setEnvAttributes can't be null or its size can't exceed 512.");
   }
   
   public static void startNewSession(Context paramContext, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-      if (paramContext == null)
-      {
-        q.error("The Context of StatService.startNewSession() can not be null!");
-        return;
-      }
-    } while (c(paramContext) == null);
-    d.post(new v(paramContext, paramStatSpecifyReportedInfo));
+    }
+    paramContext = getContext(paramContext);
+    if (paramContext == null)
+    {
+      q.error("The Context of StatService.startNewSession() can not be null!");
+      return;
+    }
+    if (c(paramContext) != null) {
+      d.post(new v(paramContext, paramStatSpecifyReportedInfo));
+    }
   }
   
   public static boolean startStatService(Context paramContext, String paramString1, String paramString2, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
-    for (;;)
+    try
     {
-      try
+      if (!StatConfig.isEnableStatService())
       {
-        if (!StatConfig.isEnableStatService())
-        {
-          q.error("MTA StatService is disable.");
-          return false;
-        }
-        if (!StatConfig.isDebugEnable()) {
-          break label198;
-        }
-        q.d("MTA SDK version, current: " + "2.4.2" + " ,required: " + paramString2);
-      }
-      catch (Throwable paramContext)
-      {
-        q.e(paramContext);
+        q.error("MTA StatService is disable.");
         return false;
       }
-      q.error("Context or mtaSdkVersion in StatService.startStatService() is null, please check it!");
+      if (!StatConfig.isDebugEnable()) {
+        break label230;
+      }
+      StatLogger localStatLogger = q;
+      StringBuilder localStringBuilder = new StringBuilder("MTA SDK version, current: ");
+      localStringBuilder.append("2.4.2");
+      localStringBuilder.append(" ,required: ");
+      localStringBuilder.append(paramString2);
+      localStatLogger.d(localStringBuilder.toString());
+    }
+    catch (Throwable paramContext)
+    {
+      q.e(paramContext);
+      return false;
+    }
+    if (StatCommonHelper.getSDKLongVersion("2.4.2") < StatCommonHelper.getSDKLongVersion(paramString2))
+    {
+      paramContext = new StringBuilder("MTA SDK version conflicted, current: ");
+      paramContext.append("2.4.2");
+      paramContext.append(",required: ");
+      paramContext.append(paramString2);
+      paramContext = paramContext.toString();
+      paramString1 = new StringBuilder();
+      paramString1.append(paramContext);
+      paramString1.append(". please delete the current SDK and download the latest one. official website: http://mta.qq.com/ or http://mta.oa.com/");
+      paramContext = paramString1.toString();
+      q.error(paramContext);
       StatConfig.setEnableStatService(false);
       return false;
-      label198:
-      do
-      {
-        if (StatCommonHelper.getSDKLongVersion("2.4.2") < StatCommonHelper.getSDKLongVersion(paramString2))
-        {
-          paramContext = "MTA SDK version conflicted, current: " + "2.4.2" + ",required: " + paramString2;
-          paramContext = paramContext + ". please delete the current SDK and download the latest one. official website: http://mta.qq.com/ or http://mta.oa.com/";
-          q.error(paramContext);
-          StatConfig.setEnableStatService(false);
-          return false;
-        }
-        if (paramString1 != null) {
-          StatConfig.setAppKey(paramContext, paramString1);
-        }
-        if (c(paramContext) != null) {
-          d.post(new x(paramContext, paramStatSpecifyReportedInfo));
-        }
-        return true;
-        if (paramContext == null) {
-          break;
-        }
-      } while (paramString2 != null);
     }
+    if (paramString1 != null) {
+      StatConfig.setAppKey(paramContext, paramString1);
+    }
+    if (c(paramContext) != null)
+    {
+      d.post(new x(paramContext, paramStatSpecifyReportedInfo));
+      break label241;
+      for (;;)
+      {
+        q.error("Context or mtaSdkVersion in StatService.startStatService() is null, please check it!");
+        StatConfig.setEnableStatService(false);
+        return false;
+        label230:
+        if (paramContext != null) {
+          if (paramString2 != null) {
+            break;
+          }
+        }
+      }
+    }
+    label241:
+    return true;
   }
   
   public static void stopSession()
@@ -543,170 +569,176 @@ public class StatServiceImpl
   
   public static void trackBeginPage(Context paramContext, String paramString, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-      if ((paramContext == null) || (paramString == null) || (paramString.length() == 0))
-      {
-        q.error("The Context or pageName of StatService.trackBeginPage() can not be null or empty!");
-        return;
-      }
+    }
+    paramContext = getContext(paramContext);
+    if ((paramContext != null) && (paramString != null) && (paramString.length() != 0))
+    {
       paramString = new String(paramString);
-    } while (c(paramContext) == null);
-    d.post(new t(paramString, paramContext, paramStatSpecifyReportedInfo));
+      if (c(paramContext) != null) {
+        d.post(new t(paramString, paramContext, paramStatSpecifyReportedInfo));
+      }
+      return;
+    }
+    q.error("The Context or pageName of StatService.trackBeginPage() can not be null or empty!");
   }
   
   public static void trackCustomBeginEvent(Context paramContext, String paramString, StatSpecifyReportedInfo paramStatSpecifyReportedInfo, String... paramVarArgs)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-      if (paramContext == null)
-      {
-        q.error("The Context of StatService.trackCustomBeginEvent() can not be null!");
-        return;
-      }
-      paramStatSpecifyReportedInfo = new c(paramString, paramVarArgs, null);
-    } while (c(paramContext) == null);
-    d.post(new l(paramString, paramStatSpecifyReportedInfo));
+    }
+    paramContext = getContext(paramContext);
+    if (paramContext == null)
+    {
+      q.error("The Context of StatService.trackCustomBeginEvent() can not be null!");
+      return;
+    }
+    paramStatSpecifyReportedInfo = new c(paramString, paramVarArgs, null);
+    if (c(paramContext) != null) {
+      d.post(new l(paramString, paramStatSpecifyReportedInfo));
+    }
   }
   
   public static void trackCustomBeginKVEvent(Context paramContext, String paramString, Properties paramProperties, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-      if (paramContext == null)
-      {
-        q.error("The Context of StatService.trackCustomBeginEvent() can not be null!");
-        return;
-      }
-      paramProperties = new c(paramString, null, paramProperties);
-    } while (c(paramContext) == null);
-    d.post(new n(paramString, paramProperties));
+    }
+    paramContext = getContext(paramContext);
+    if (paramContext == null)
+    {
+      q.error("The Context of StatService.trackCustomBeginEvent() can not be null!");
+      return;
+    }
+    paramProperties = new c(paramString, null, paramProperties);
+    if (c(paramContext) != null) {
+      d.post(new n(paramString, paramProperties));
+    }
   }
   
   public static void trackCustomEndEvent(Context paramContext, String paramString, StatSpecifyReportedInfo paramStatSpecifyReportedInfo, String... paramVarArgs)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-      if (paramContext == null)
-      {
-        q.error("The Context of StatService.trackCustomEndEvent() can not be null!");
-        return;
-      }
-      paramVarArgs = new c(paramString, paramVarArgs, null);
-    } while (c(paramContext) == null);
-    d.post(new m(paramString, paramVarArgs, paramContext, paramStatSpecifyReportedInfo));
+    }
+    paramContext = getContext(paramContext);
+    if (paramContext == null)
+    {
+      q.error("The Context of StatService.trackCustomEndEvent() can not be null!");
+      return;
+    }
+    paramVarArgs = new c(paramString, paramVarArgs, null);
+    if (c(paramContext) != null) {
+      d.post(new m(paramString, paramVarArgs, paramContext, paramStatSpecifyReportedInfo));
+    }
   }
   
   public static void trackCustomEndKVEvent(Context paramContext, String paramString, Properties paramProperties, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-      if (paramContext == null)
-      {
-        q.error("The Context of StatService.trackCustomEndEvent() can not be null!");
-        return;
-      }
-      paramProperties = new c(paramString, null, paramProperties);
-    } while (c(paramContext) == null);
-    d.post(new o(paramString, paramProperties, paramContext, paramStatSpecifyReportedInfo));
+    }
+    paramContext = getContext(paramContext);
+    if (paramContext == null)
+    {
+      q.error("The Context of StatService.trackCustomEndEvent() can not be null!");
+      return;
+    }
+    paramProperties = new c(paramString, null, paramProperties);
+    if (c(paramContext) != null) {
+      d.post(new o(paramString, paramProperties, paramContext, paramStatSpecifyReportedInfo));
+    }
   }
   
   public static void trackCustomEvent(Context paramContext, String paramString, StatSpecifyReportedInfo paramStatSpecifyReportedInfo, String... paramVarArgs)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-      if (paramContext == null)
-      {
-        q.error("The Context of StatService.trackCustomEvent() can not be null!");
-        return;
+    }
+    paramContext = getContext(paramContext);
+    if (paramContext == null) {
+      paramContext = q;
+    }
+    for (paramString = "The Context of StatService.trackCustomEvent() can not be null!";; paramString = "The event_id of StatService.trackCustomEvent() can not be null or empty.")
+    {
+      paramContext.error(paramString);
+      return;
+      if (!a(paramString)) {
+        break;
       }
-      if (a(paramString))
-      {
-        q.error("The event_id of StatService.trackCustomEvent() can not be null or empty.");
-        return;
-      }
-      paramString = new c(paramString, paramVarArgs, null);
-    } while (c(paramContext) == null);
-    d.post(new aa(paramContext, paramStatSpecifyReportedInfo, paramString));
+      paramContext = q;
+    }
+    paramString = new c(paramString, paramVarArgs, null);
+    if (c(paramContext) != null) {
+      d.post(new aa(paramContext, paramStatSpecifyReportedInfo, paramString));
+    }
   }
   
   public static void trackCustomKVEvent(Context paramContext, String paramString, Properties paramProperties, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-      if (paramContext == null)
-      {
-        q.error("The Context of StatService.trackCustomEvent() can not be null!");
-        return;
+    }
+    paramContext = getContext(paramContext);
+    if (paramContext == null) {
+      paramContext = q;
+    }
+    for (paramString = "The Context of StatService.trackCustomEvent() can not be null!";; paramString = "The event_id of StatService.trackCustomEvent() can not be null or empty.")
+    {
+      paramContext.error(paramString);
+      return;
+      if (!a(paramString)) {
+        break;
       }
-      if (a(paramString))
-      {
-        q.error("The event_id of StatService.trackCustomEvent() can not be null or empty.");
-        return;
-      }
-      paramString = new c(paramString, null, paramProperties);
-    } while (c(paramContext) == null);
-    d.post(new k(paramContext, paramStatSpecifyReportedInfo, paramString));
+      paramContext = q;
+    }
+    paramString = new c(paramString, null, paramProperties);
+    if (c(paramContext) != null) {
+      d.post(new k(paramContext, paramStatSpecifyReportedInfo, paramString));
+    }
   }
   
   public static void trackCustomKVTimeIntervalEvent(Context paramContext, String paramString, Properties paramProperties, int paramInt, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-      if (paramContext == null)
-      {
-        q.error("The Context of StatService.trackCustomEndEvent() can not be null!");
-        return;
+    }
+    paramContext = getContext(paramContext);
+    if (paramContext == null) {
+      paramContext = q;
+    }
+    for (paramString = "The Context of StatService.trackCustomEndEvent() can not be null!";; paramString = "The event_id of StatService.trackCustomEndEvent() can not be null or empty.")
+    {
+      paramContext.error(paramString);
+      return;
+      if (!a(paramString)) {
+        break;
       }
-      if (a(paramString))
-      {
-        q.error("The event_id of StatService.trackCustomEndEvent() can not be null or empty.");
-        return;
-      }
-      paramString = new c(paramString, null, paramProperties);
-    } while (c(paramContext) == null);
-    d.post(new r(paramContext, paramStatSpecifyReportedInfo, paramString, paramInt));
+      paramContext = q;
+    }
+    paramString = new c(paramString, null, paramProperties);
+    if (c(paramContext) != null) {
+      d.post(new r(paramContext, paramStatSpecifyReportedInfo, paramString, paramInt));
+    }
   }
   
   public static void trackEndPage(Context paramContext, String paramString, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
   {
-    if (!StatConfig.isEnableStatService()) {}
-    do
-    {
+    if (!StatConfig.isEnableStatService()) {
       return;
-      paramContext = getContext(paramContext);
-      if ((paramContext == null) || (paramString == null) || (paramString.length() == 0))
-      {
-        q.error("The Context or pageName of StatService.trackEndPage() can not be null or empty!");
-        return;
-      }
+    }
+    paramContext = getContext(paramContext);
+    if ((paramContext != null) && (paramString != null) && (paramString.length() != 0))
+    {
       paramString = new String(paramString);
-    } while (c(paramContext) == null);
-    d.post(new u(paramContext, paramString, paramStatSpecifyReportedInfo));
+      if (c(paramContext) != null) {
+        d.post(new u(paramContext, paramString, paramStatSpecifyReportedInfo));
+      }
+      return;
+    }
+    q.error("The Context or pageName of StatService.trackEndPage() can not be null or empty!");
   }
 }
 

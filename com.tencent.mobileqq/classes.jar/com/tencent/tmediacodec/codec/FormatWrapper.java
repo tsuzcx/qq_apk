@@ -87,19 +87,26 @@ public final class FormatWrapper
   
   public static void dumpCsdArray(ArrayList<byte[]> paramArrayList)
   {
-    if (paramArrayList == null) {}
-    while (!LogUtils.isLogEnable()) {
+    if (paramArrayList == null) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramArrayList.size())
+    if (LogUtils.isLogEnable())
     {
-      localStringBuilder.append(configCsdArray(TUtils.CSD_INDEX_ARRAY[i], (byte[])paramArrayList.get(i)));
-      localStringBuilder.append("\n");
-      i += 1;
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        localStringBuilder1.append(configCsdArray(TUtils.CSD_INDEX_ARRAY[i], (byte[])paramArrayList.get(i)));
+        localStringBuilder1.append("\n");
+        i += 1;
+      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("csdData size:");
+      localStringBuilder2.append(paramArrayList.size());
+      localStringBuilder2.append("    ");
+      localStringBuilder2.append(localStringBuilder1.toString());
+      LogUtils.d("FormatWrapper", localStringBuilder2.toString());
     }
-    LogUtils.d("FormatWrapper", "csdData size:" + paramArrayList.size() + "    " + localStringBuilder.toString());
   }
   
   public static int getInteger(@NonNull MediaFormat paramMediaFormat, @NonNull String paramString)
@@ -121,17 +128,13 @@ public final class FormatWrapper
       return false;
     }
     int i = 0;
-    for (;;)
+    while (i < this.initializationData.size())
     {
-      if (i >= this.initializationData.size()) {
-        break label64;
-      }
       if (!((byte[])this.initializationData.get(i)).equals(paramFormatWrapper.initializationData.get(i))) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label64:
     return true;
   }
   
@@ -147,7 +150,7 @@ public final class FormatWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.codec.FormatWrapper
  * JD-Core Version:    0.7.0.1
  */

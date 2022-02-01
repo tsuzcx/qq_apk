@@ -15,32 +15,26 @@ class QQStoryLoadingView$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    int i = paramMessage.what;
+    if ((i != 0) && (i != 4) && (i != 8)) {
       return;
     }
     Object localObject = paramMessage.obj;
     String str;
     if (paramMessage.what == 8) {
       str = "GONE";
+    } else if (paramMessage.what == 0) {
+      str = "VISIBLE";
+    } else {
+      str = "INVISIBLE";
     }
-    for (;;)
-    {
-      SLog.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
-      this.a.setVisibility(paramMessage.what);
-      return;
-      if (paramMessage.what == 0) {
-        str = "VISIBLE";
-      } else {
-        str = "INVISIBLE";
-      }
-    }
+    SLog.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
+    this.a.setVisibility(paramMessage.what);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.QQStoryLoadingView.1
  * JD-Core Version:    0.7.0.1
  */

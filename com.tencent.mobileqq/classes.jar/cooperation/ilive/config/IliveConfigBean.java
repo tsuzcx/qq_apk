@@ -73,66 +73,92 @@ public class IliveConfigBean
       localJSONObject.put("mWatchPluginMd5", paramIliveConfigBean.b);
       localJSONObject.put("mAnchorPluginUrl", paramIliveConfigBean.c);
       localJSONObject.put("mAnchorPluginMd5", paramIliveConfigBean.d);
-      return localJSONObject.toString();
     }
     catch (JSONException paramIliveConfigBean)
     {
-      for (;;)
-      {
-        paramIliveConfigBean.printStackTrace();
-      }
+      paramIliveConfigBean.printStackTrace();
     }
+    return localJSONObject.toString();
   }
   
   public static boolean a()
   {
     Object localObject = IliveDbManager.getIliveConfigBean(1);
-    int i = -1;
+    int i;
+    int j;
     if ((localObject != null) && (!((IliveConfigBean)localObject).jdField_a_of_type_Boolean))
     {
-      int j = i;
-      try
+      i = -1;
+      j = i;
+    }
+    try
+    {
+      localObject = Pattern.compile("\\d+").matcher(((IliveConfigBean)localObject).jdField_a_of_type_JavaLangString);
+      for (;;)
       {
-        localObject = Pattern.compile("\\d+").matcher(((IliveConfigBean)localObject).jdField_a_of_type_JavaLangString);
-        int k;
-        for (;;)
-        {
-          j = i;
-          k = i;
-          if (!((Matcher)localObject).find()) {
-            break;
-          }
-          j = i;
-          i = Integer.parseInt(((Matcher)localObject).group());
+        k = i;
+        j = i;
+        if (!((Matcher)localObject).find()) {
+          break;
         }
-        return true;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("IliveConfigBean", 1, "check need Preload error ");
-        k = j;
-        QLog.e("IliveConfigBean", 1, "number" + k);
-        if (k < 145) {
-          return false;
-        }
+        j = i;
+        i = Integer.parseInt(((Matcher)localObject).group());
       }
     }
+    catch (Exception localException)
+    {
+      int k;
+      label57:
+      break label57;
+    }
+    QLog.e("IliveConfigBean", 1, "check need Preload error ");
+    k = j;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("number");
+    ((StringBuilder)localObject).append(k);
+    QLog.e("IliveConfigBean", 1, ((StringBuilder)localObject).toString());
+    if (k < 145) {
+      return false;
+    }
+    return true;
   }
   
   private String d()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return IlivePluginDownloadManager.a() + File.separator + "plugin_watch_manager_" + this.jdField_a_of_type_JavaLangString.hashCode() + ".zip";
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(IlivePluginDownloadManager.a());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("plugin_watch_manager_");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString.hashCode());
+      localStringBuilder.append(".zip");
+      return localStringBuilder.toString();
     }
-    return IlivePluginDownloadManager.a() + File.separator + "plugin_watch_manager.zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(IlivePluginDownloadManager.a());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("plugin_watch_manager.zip");
+    return localStringBuilder.toString();
   }
   
   private String e()
   {
-    if (!TextUtils.isEmpty(this.c)) {
-      return IlivePluginDownloadManager.a() + File.separator + "plugin_anchor_manager_" + this.c.hashCode() + ".zip";
+    if (!TextUtils.isEmpty(this.c))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(IlivePluginDownloadManager.a());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("plugin_anchor_manager_");
+      localStringBuilder.append(this.c.hashCode());
+      localStringBuilder.append(".zip");
+      return localStringBuilder.toString();
     }
-    return IlivePluginDownloadManager.a() + File.separator + "plugin_anchor_manager.zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(IlivePluginDownloadManager.a());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("plugin_anchor_manager.zip");
+    return localStringBuilder.toString();
   }
   
   public String a()
@@ -162,12 +188,19 @@ public class IliveConfigBean
   @NonNull
   public String toString()
   {
-    return "mIsUseAnchor = " + this.jdField_a_of_type_Boolean + " mWatchPluginMd5 =  " + this.b + " , mAnchorPluginMd5 = " + this.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mIsUseAnchor = ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" mWatchPluginMd5 =  ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" , mAnchorPluginMd5 = ");
+    localStringBuilder.append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.config.IliveConfigBean
  * JD-Core Version:    0.7.0.1
  */

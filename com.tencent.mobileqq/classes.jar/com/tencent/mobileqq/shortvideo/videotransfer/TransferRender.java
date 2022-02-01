@@ -33,133 +33,141 @@ public class TransferRender
   
   private void checkState(long paramLong)
   {
-    if ((paramLong < 0L) || (this.mTransferData == null) || (this.mTransFilterList == null))
+    if (paramLong >= 0L)
     {
-      this.mState = 0;
-      this.mStartTimeMs = -1L;
-      this.mEndTimeMs = -1L;
-      return;
-    }
-    Object localObject = this.mTransferData.getPositions();
-    if ((localObject == null) || (((ArrayList)localObject).size() == 0))
-    {
-      this.mState = 0;
-      this.mStartTimeMs = -1L;
-      this.mEndTimeMs = -1L;
-      return;
-    }
-    if (paramLong == 0L) {
-      resetExtendParam();
-    }
-    Long localLong;
-    long l2;
-    if (this.mSpeedRate > 0.0F)
-    {
-      l1 = getDuration();
-      localObject = ((ArrayList)localObject).iterator();
-      i = -1;
-      while (((Iterator)localObject).hasNext())
+      Object localObject = this.mTransferData;
+      if ((localObject != null) && (this.mTransFilterList != null))
       {
-        localLong = (Long)((Iterator)localObject).next();
-        l2 = localLong.longValue() + l1;
-        int j = i + 1;
-        if (TRANSFER_BUFFER_TIME + paramLong < localLong.longValue())
+        localObject = ((TransferData)localObject).getPositions();
+        if ((localObject != null) && (((ArrayList)localObject).size() != 0))
         {
+          if (paramLong == 0L) {
+            resetExtendParam();
+          }
+          Long localLong;
+          long l2;
+          int j;
+          if (this.mSpeedRate > 0.0F)
+          {
+            l1 = getDuration();
+            localObject = ((ArrayList)localObject).iterator();
+            i = -1;
+            while (((Iterator)localObject).hasNext())
+            {
+              localLong = (Long)((Iterator)localObject).next();
+              l2 = localLong.longValue() + l1;
+              j = i + 1;
+              if (paramLong + TRANSFER_BUFFER_TIME < localLong.longValue())
+              {
+                this.mState = 0;
+                this.mStartTimeMs = -1L;
+                this.mEndTimeMs = -1L;
+                return;
+              }
+              i = j;
+              if (paramLong + TRANSFER_BUFFER_TIME >= localLong.longValue())
+              {
+                if (paramLong < localLong.longValue())
+                {
+                  this.mState = 1;
+                  this.mStartTimeMs = localLong.longValue();
+                  this.mEndTimeMs = l2;
+                  return;
+                }
+                if (paramLong > l2)
+                {
+                  i = j;
+                }
+                else
+                {
+                  i = this.mState;
+                  if (i == 0)
+                  {
+                    this.mState = 1;
+                    this.mStartTimeMs = localLong.longValue();
+                    this.mEndTimeMs = l2;
+                    return;
+                  }
+                  if (i == 1)
+                  {
+                    this.mState = 2;
+                    this.mStartTimeMs = localLong.longValue();
+                    this.mEndTimeMs = l2;
+                    fillCommonFloats(j);
+                    this.mNTransIndex = j;
+                    return;
+                  }
+                  this.mStartTimeMs = localLong.longValue();
+                  this.mEndTimeMs = l2;
+                  fillCommonFloats(j);
+                  this.mNTransIndex = j;
+                  return;
+                }
+              }
+            }
+            this.mState = 0;
+            this.mStartTimeMs = -1L;
+            this.mEndTimeMs = -1L;
+            return;
+          }
+          long l1 = getDuration();
+          int i = ((ArrayList)localObject).size() - 1;
+          while (i >= 0)
+          {
+            localLong = Long.valueOf(((Long)((ArrayList)localObject).get(i)).longValue() - this.mTransferData.getReverseShift());
+            l2 = localLong.longValue() + l1;
+            if (paramLong - TRANSFER_BUFFER_TIME > localLong.longValue())
+            {
+              this.mState = 0;
+              this.mStartTimeMs = -1L;
+              this.mEndTimeMs = -1L;
+              return;
+            }
+            if (paramLong - TRANSFER_BUFFER_TIME <= localLong.longValue())
+            {
+              if (paramLong > localLong.longValue())
+              {
+                this.mState = 1;
+                this.mStartTimeMs = localLong.longValue();
+                this.mEndTimeMs = l2;
+                return;
+              }
+              if (paramLong >= l2)
+              {
+                j = this.mState;
+                if (j == 0)
+                {
+                  this.mState = 1;
+                  this.mStartTimeMs = localLong.longValue();
+                  this.mEndTimeMs = l2;
+                  return;
+                }
+                if (j == 1)
+                {
+                  this.mState = 2;
+                  this.mStartTimeMs = localLong.longValue();
+                  this.mEndTimeMs = l2;
+                  fillCommonFloats(i);
+                  return;
+                }
+                this.mStartTimeMs = localLong.longValue();
+                this.mEndTimeMs = l2;
+                fillCommonFloats(i);
+                return;
+              }
+            }
+            i -= 1;
+          }
           this.mState = 0;
           this.mStartTimeMs = -1L;
           this.mEndTimeMs = -1L;
           return;
         }
-        i = j;
-        if (TRANSFER_BUFFER_TIME + paramLong >= localLong.longValue())
-        {
-          if (paramLong < localLong.longValue())
-          {
-            this.mState = 1;
-            this.mStartTimeMs = localLong.longValue();
-            this.mEndTimeMs = l2;
-            return;
-          }
-          i = j;
-          if (paramLong <= l2)
-          {
-            if (this.mState == 0)
-            {
-              this.mState = 1;
-              this.mStartTimeMs = localLong.longValue();
-              this.mEndTimeMs = l2;
-              return;
-            }
-            if (this.mState == 1)
-            {
-              this.mState = 2;
-              this.mStartTimeMs = localLong.longValue();
-              this.mEndTimeMs = l2;
-              fillCommonFloats(j);
-              this.mNTransIndex = j;
-              return;
-            }
-            this.mStartTimeMs = localLong.longValue();
-            this.mEndTimeMs = l2;
-            fillCommonFloats(j);
-            this.mNTransIndex = j;
-            return;
-          }
-        }
-      }
-      this.mState = 0;
-      this.mStartTimeMs = -1L;
-      this.mEndTimeMs = -1L;
-      return;
-    }
-    long l1 = getDuration();
-    int i = ((ArrayList)localObject).size() - 1;
-    while (i >= 0)
-    {
-      localLong = Long.valueOf(((Long)((ArrayList)localObject).get(i)).longValue() - this.mTransferData.getReverseShift());
-      l2 = localLong.longValue() + l1;
-      if (paramLong - TRANSFER_BUFFER_TIME > localLong.longValue())
-      {
         this.mState = 0;
         this.mStartTimeMs = -1L;
         this.mEndTimeMs = -1L;
         return;
       }
-      if (paramLong - TRANSFER_BUFFER_TIME <= localLong.longValue())
-      {
-        if (paramLong > localLong.longValue())
-        {
-          this.mState = 1;
-          this.mStartTimeMs = localLong.longValue();
-          this.mEndTimeMs = l2;
-          return;
-        }
-        if (paramLong >= l2) {}
-      }
-      else
-      {
-        i -= 1;
-        continue;
-      }
-      if (this.mState == 0)
-      {
-        this.mState = 1;
-        this.mStartTimeMs = localLong.longValue();
-        this.mEndTimeMs = l2;
-        return;
-      }
-      if (this.mState == 1)
-      {
-        this.mState = 2;
-        this.mStartTimeMs = localLong.longValue();
-        this.mEndTimeMs = l2;
-        fillCommonFloats(i);
-        return;
-      }
-      this.mStartTimeMs = localLong.longValue();
-      this.mEndTimeMs = l2;
-      fillCommonFloats(i);
-      return;
     }
     this.mState = 0;
     this.mStartTimeMs = -1L;
@@ -180,28 +188,30 @@ public class TransferRender
   
   private void fillCommonFloats(int paramInt)
   {
-    this.mCommonFloats[0] = 0.0F;
-    this.mCommonFloats[1] = 0.0F;
-    this.mCommonFloats[2] = 0.0F;
-    this.mCommonFloats[3] = 0.0F;
-    if (this.mTransferData == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.mTransferData.mConfigData == null);
-      if (this.mTransferData.mConfigData.mCommonFloat1 != null) {
-        this.mCommonFloats[0] = getExtentParamValue(this.mTransferData.mConfigData.mCommonFloat1, 0, paramInt);
-      }
-      if (this.mTransferData.mConfigData.mCommonFloat2 != null) {
-        this.mCommonFloats[1] = getExtentParamValue(this.mTransferData.mConfigData.mCommonFloat2, 1, paramInt);
-      }
-      if (this.mTransferData.mConfigData.mCommonFloat3 != null) {
-        this.mCommonFloats[2] = getExtentParamValue(this.mTransferData.mConfigData.mCommonFloat3, 2, paramInt);
-      }
-    } while (this.mTransferData.mConfigData.mCommonFloat4 == null);
-    this.mCommonFloats[3] = getExtentParamValue(this.mTransferData.mConfigData.mCommonFloat3, 3, paramInt);
+    Object localObject = this.mCommonFloats;
+    localObject[0] = 0.0F;
+    localObject[1] = 0.0F;
+    localObject[2] = 0.0F;
+    localObject[3] = 0.0F;
+    localObject = this.mTransferData;
+    if (localObject == null) {
+      return;
+    }
+    if (((TransferData)localObject).mConfigData == null) {
+      return;
+    }
+    if (this.mTransferData.mConfigData.mCommonFloat1 != null) {
+      this.mCommonFloats[0] = getExtentParamValue(this.mTransferData.mConfigData.mCommonFloat1, 0, paramInt);
+    }
+    if (this.mTransferData.mConfigData.mCommonFloat2 != null) {
+      this.mCommonFloats[1] = getExtentParamValue(this.mTransferData.mConfigData.mCommonFloat2, 1, paramInt);
+    }
+    if (this.mTransferData.mConfigData.mCommonFloat3 != null) {
+      this.mCommonFloats[2] = getExtentParamValue(this.mTransferData.mConfigData.mCommonFloat3, 2, paramInt);
+    }
+    if (this.mTransferData.mConfigData.mCommonFloat4 != null) {
+      this.mCommonFloats[3] = getExtentParamValue(this.mTransferData.mConfigData.mCommonFloat3, 3, paramInt);
+    }
   }
   
   private long getDuration()
@@ -218,106 +228,121 @@ public class TransferRender
   
   private int getExtendParamPosition(TransferConfig.ParamRule paramParamRule, int paramInt1, int paramInt2)
   {
-    if (paramParamRule == null) {}
-    do
-    {
+    if (paramParamRule == null) {
       return 0;
-      if (paramParamRule.mMode == 2) {
-        return (paramParamRule.mStartPos + paramInt1) % paramInt2;
-      }
-    } while ((paramParamRule.mMode == 0) || (paramParamRule.mMode == 4) || (paramParamRule.mMode == 3) || (paramParamRule.mMode != 1));
+    }
+    if (paramParamRule.mMode == 2) {
+      return (paramParamRule.mStartPos + paramInt1) % paramInt2;
+    }
+    if (paramParamRule.mMode == 0) {
+      return 0;
+    }
+    if (paramParamRule.mMode == 4) {
+      return 0;
+    }
+    if (paramParamRule.mMode == 3) {
+      return 0;
+    }
+    paramInt1 = paramParamRule.mMode;
     return 0;
   }
   
   private float getExtentParamValue(TransferConfig.ExtendParamFloats paramExtendParamFloats, int paramInt1, int paramInt2)
   {
-    if (paramExtendParamFloats == null) {}
-    while ((paramInt1 < 0) || (paramInt1 >= this.mCommonFloatParamPos.length) || (paramExtendParamFloats.mValues == null) || (paramExtendParamFloats.mValues.length == 0)) {
+    if (paramExtendParamFloats == null) {
       return 0.0F;
     }
-    if (paramExtendParamFloats.mRule == null)
+    if (paramInt1 >= 0)
     {
-      this.mCommonFloatParamPos[paramInt1] = paramInt2;
-      if (this.mCommonFloatParamPos[paramInt1] < 0) {
-        this.mCommonFloatParamPos[paramInt1] = 0;
+      if (paramInt1 >= this.mCommonFloatParamPos.length) {
+        return 0.0F;
       }
-      for (;;)
+      if (paramExtendParamFloats.mValues != null)
       {
+        if (paramExtendParamFloats.mValues.length == 0) {
+          return 0.0F;
+        }
+        if (paramExtendParamFloats.mRule == null)
+        {
+          int[] arrayOfInt = this.mCommonFloatParamPos;
+          arrayOfInt[paramInt1] = paramInt2;
+          if (arrayOfInt[paramInt1] < 0) {
+            arrayOfInt[paramInt1] = 0;
+          } else {
+            arrayOfInt[paramInt1] %= paramExtendParamFloats.mValues.length;
+          }
+          return paramExtendParamFloats.mValues[this.mCommonFloatParamPos[paramInt1]];
+        }
+        if (paramExtendParamFloats.mRule.mLevel == 0) {
+          this.mCommonFloatParamPos[paramInt1] = getExtendParamPosition(paramExtendParamFloats.mRule, paramInt2, paramExtendParamFloats.mValues.length);
+        } else if (paramExtendParamFloats.mRule.mLevel == 1) {
+          this.mCommonFloatParamPos[paramInt1] = nextExtendParamPosition(paramExtendParamFloats.mRule, this.mCommonFloatParamPos[paramInt1], paramExtendParamFloats.mValues.length);
+        }
         return paramExtendParamFloats.mValues[this.mCommonFloatParamPos[paramInt1]];
-        this.mCommonFloatParamPos[paramInt1] %= paramExtendParamFloats.mValues.length;
       }
     }
-    if (paramExtendParamFloats.mRule.mLevel == 0) {
-      this.mCommonFloatParamPos[paramInt1] = getExtendParamPosition(paramExtendParamFloats.mRule, paramInt2, paramExtendParamFloats.mValues.length);
-    }
-    for (;;)
-    {
-      return paramExtendParamFloats.mValues[this.mCommonFloatParamPos[paramInt1]];
-      if (paramExtendParamFloats.mRule.mLevel == 1) {
-        this.mCommonFloatParamPos[paramInt1] = nextExtendParamPosition(paramExtendParamFloats.mRule, this.mCommonFloatParamPos[paramInt1], paramExtendParamFloats.mValues.length);
-      }
-    }
+    return 0.0F;
   }
   
   private void initTransFilterList(List<HashMap<String, String>> paramList, int paramInt, boolean paramBoolean)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      this.mTransFilterList.add(new TransferInstFilter("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nvarying highp vec2 textureCoordinate;\nvoid main()\n{\ngl_Position = uMVPMatrix * position;\ntextureCoordinate = (uTextureMatrix * inputTextureCoordinate).xy;\n}", "precision highp float;\n\nvarying highp vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform vec2 inputImageTextureSize;\nuniform vec2 inputImageTexture2Size;\nuniform vec2 timeRange; //start, duration\nuniform float time;\n\nvoid main() {\n    gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}\n"));
+      int i = 0;
+      while (i < paramList.size())
+      {
+        Object localObject2 = (String)((HashMap)paramList.get(i)).get("vsh");
+        String str = (String)((HashMap)paramList.get(i)).get("fsh");
+        Object localObject1 = localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          localObject1 = "uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nvarying highp vec2 textureCoordinate;\nvoid main()\n{\ngl_Position = uMVPMatrix * position;\ntextureCoordinate = (uTextureMatrix * inputTextureCoordinate).xy;\n}";
+        }
+        localObject2 = str;
+        if (TextUtils.isEmpty(str)) {
+          localObject2 = "precision highp float;\n\nvarying highp vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform vec2 inputImageTextureSize;\nuniform vec2 inputImageTexture2Size;\nuniform vec2 timeRange; //start, duration\nuniform float time;\n\nvoid main() {\n    gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}\n";
+        }
+        localObject1 = new TransferInstFilter((String)localObject1, (String)localObject2);
+        ((TransferInstFilter)localObject1).setShaderID(paramInt);
+        ((TransferInstFilter)localObject1).init();
+        ((TransferInstFilter)localObject1).onOutputSizeChanged(this.mLastWidth, this.mLastHeight);
+        if (paramBoolean) {
+          this.mLevelEffectTransFilterList.add(localObject1);
+        } else {
+          this.mTransFilterList.add(localObject1);
+        }
+        i += 1;
+      }
       return;
     }
-    int i = 0;
-    label38:
-    Object localObject1;
-    if (i < paramList.size())
-    {
-      Object localObject2 = (String)((HashMap)paramList.get(i)).get("vsh");
-      String str = (String)((HashMap)paramList.get(i)).get("fsh");
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = "uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nvarying highp vec2 textureCoordinate;\nvoid main()\n{\ngl_Position = uMVPMatrix * position;\ntextureCoordinate = (uTextureMatrix * inputTextureCoordinate).xy;\n}";
-      }
-      localObject2 = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject2 = "precision highp float;\n\nvarying highp vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform vec2 inputImageTextureSize;\nuniform vec2 inputImageTexture2Size;\nuniform vec2 timeRange; //start, duration\nuniform float time;\n\nvoid main() {\n    gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}\n";
-      }
-      localObject1 = new TransferInstFilter((String)localObject1, (String)localObject2);
-      ((TransferInstFilter)localObject1).setShaderID(paramInt);
-      ((TransferInstFilter)localObject1).init();
-      ((TransferInstFilter)localObject1).onOutputSizeChanged(this.mLastWidth, this.mLastHeight);
-      if (!paramBoolean) {
-        break label185;
-      }
-      this.mLevelEffectTransFilterList.add(localObject1);
-    }
-    for (;;)
-    {
-      i += 1;
-      break label38;
-      break;
-      label185:
-      this.mTransFilterList.add(localObject1);
-    }
+    this.mTransFilterList.add(new TransferInstFilter("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nvarying highp vec2 textureCoordinate;\nvoid main()\n{\ngl_Position = uMVPMatrix * position;\ntextureCoordinate = (uTextureMatrix * inputTextureCoordinate).xy;\n}", "precision highp float;\n\nvarying highp vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform vec2 inputImageTextureSize;\nuniform vec2 inputImageTexture2Size;\nuniform vec2 timeRange; //start, duration\nuniform float time;\n\nvoid main() {\n    gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}\n"));
   }
   
   private int nextExtendParamPosition(TransferConfig.ParamRule paramParamRule, int paramInt1, int paramInt2)
   {
-    if (paramParamRule == null) {}
-    do
+    if (paramParamRule == null) {
+      return 0;
+    }
+    if (paramInt1 < 0) {
+      return paramParamRule.mStartPos;
+    }
+    if (paramParamRule.mMode == 2)
     {
-      do
-      {
+      paramInt1 += 1;
+      if (paramInt1 >= paramInt2) {
         return 0;
-        if (paramInt1 < 0) {
-          return paramParamRule.mStartPos;
-        }
-        if (paramParamRule.mMode != 2) {
-          break;
-        }
-        paramInt1 += 1;
-      } while (paramInt1 >= paramInt2);
+      }
       return paramInt1;
-    } while ((paramParamRule.mMode == 0) || (paramParamRule.mMode == 4) || (paramParamRule.mMode == 3) || (paramParamRule.mMode != 1));
+    }
+    if (paramParamRule.mMode == 0) {
+      return 0;
+    }
+    if (paramParamRule.mMode == 4) {
+      return 0;
+    }
+    if (paramParamRule.mMode == 3) {
+      return 0;
+    }
+    paramInt1 = paramParamRule.mMode;
     return 0;
   }
   
@@ -331,45 +356,59 @@ public class TransferRender
     if (this.mLevelEffectTransFilterList == null) {
       this.mLevelEffectTransFilterList = new ArrayList();
     }
-    if (this.mTransferData != null) {
-      initTransFilterList(this.mTransferData.mConfigData.shaderList, this.mTransferData.mConfigData.mID, this.mTransferData.mConfigData.mLevelEffectShader);
+    Object localObject = this.mTransferData;
+    if (localObject != null) {
+      initTransFilterList(((TransferData)localObject).mConfigData.shaderList, this.mTransferData.mConfigData.mID, this.mTransferData.mConfigData.mLevelEffectShader);
     }
-    if (SLog.isEnable()) {
-      SLog.d("TransferRender", "reCreateTransFilter , mTransferData : " + this.mTransferData + " mTransFilterList.size :" + this.mTransFilterList.size() + " mLevelEffectTransFilterList.size : " + this.mLevelEffectTransFilterList.size());
+    if (SLog.isEnable())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reCreateTransFilter , mTransferData : ");
+      ((StringBuilder)localObject).append(this.mTransferData);
+      ((StringBuilder)localObject).append(" mTransFilterList.size :");
+      ((StringBuilder)localObject).append(this.mTransFilterList.size());
+      ((StringBuilder)localObject).append(" mLevelEffectTransFilterList.size : ");
+      ((StringBuilder)localObject).append(this.mLevelEffectTransFilterList.size());
+      SLog.d("TransferRender", ((StringBuilder)localObject).toString());
     }
   }
   
   private void resetExtendParam()
   {
-    this.mCommonFloats[0] = 0.0F;
-    this.mCommonFloats[1] = 0.0F;
-    this.mCommonFloats[2] = 0.0F;
-    this.mCommonFloats[3] = 0.0F;
-    this.mCommonFloatParamPos[0] = -1;
-    this.mCommonFloatParamPos[1] = -1;
-    this.mCommonFloatParamPos[2] = -1;
-    this.mCommonFloatParamPos[3] = -1;
+    Object localObject = this.mCommonFloats;
+    localObject[0] = 0.0F;
+    localObject[1] = 0.0F;
+    localObject[2] = 0.0F;
+    localObject[3] = 0.0F;
+    localObject = this.mCommonFloatParamPos;
+    localObject[0] = -1;
+    localObject[1] = -1;
+    localObject[2] = -1;
+    localObject[3] = -1;
   }
   
   public void destroy()
   {
-    if (this.mTransFilterList != null)
+    Object localObject = this.mTransFilterList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mTransFilterList.iterator();
-      while (localIterator.hasNext()) {
-        ((TransferInstFilter)localIterator.next()).destroy();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((TransferInstFilter)((Iterator)localObject).next()).destroy();
       }
       this.mTransFilterList.clear();
       this.mTransFilterList = null;
     }
-    if (this.mCacheFilter != null)
+    localObject = this.mCacheFilter;
+    if (localObject != null)
     {
-      this.mCacheFilter.destroy();
+      ((GPUBaseFilter)localObject).destroy();
       this.mCacheFilter = null;
     }
-    if (this.mCacheFBO != null)
+    localObject = this.mCacheFBO;
+    if (localObject != null)
     {
-      this.mCacheFBO.destroy();
+      ((RenderBuffer)localObject).destroy();
       this.mCacheFBO = null;
     }
     this.mLastWidth = 0;
@@ -385,11 +424,13 @@ public class TransferRender
   {
     this.mLastHeight = paramInt2;
     this.mLastWidth = paramInt1;
-    if ((this.mCacheFBO == null) || (this.mCacheFBO.getWidth() != paramInt1) || (this.mCacheFBO.getHeight() != paramInt2))
+    RenderBuffer localRenderBuffer = this.mCacheFBO;
+    if ((localRenderBuffer == null) || (localRenderBuffer.getWidth() != paramInt1) || (this.mCacheFBO.getHeight() != paramInt2))
     {
-      if (this.mCacheFBO != null)
+      localRenderBuffer = this.mCacheFBO;
+      if (localRenderBuffer != null)
       {
-        this.mCacheFBO.destroy();
+        localRenderBuffer.destroy();
         this.mCacheFBO = null;
       }
       this.mCacheFBO = new RenderBuffer(paramInt1, paramInt2, 33984);
@@ -400,10 +441,13 @@ public class TransferRender
   public int process(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
   {
     checkState(paramLong);
-    if (this.mState == 0) {
+    int j = this.mState;
+    if (j == 0) {
       return -1;
     }
-    if (this.mState == 1)
+    int i = 1;
+    Object localObject1;
+    if (j == 1)
     {
       if (this.mCacheFilter == null)
       {
@@ -411,90 +455,112 @@ public class TransferRender
         this.mCacheFilter.init();
         this.mCacheFilter.onOutputSizeChanged(this.mLastWidth, this.mLastHeight);
       }
-      if ((this.mCacheFBO != null) && (this.mCacheFilter != null))
+      localObject1 = this.mCacheFBO;
+      if ((localObject1 != null) && (this.mCacheFilter != null))
       {
-        this.mCacheFBO.bind();
+        ((RenderBuffer)localObject1).bind();
         this.mCacheFilter.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
         this.mCacheFBO.unbind();
       }
     }
-    label261:
-    label545:
-    label561:
-    for (;;)
+    else if (this.mCacheFBO != null)
     {
-      return -1;
-      if (this.mCacheFBO != null)
+      localObject1 = this.mLevelEffectTransFilterList;
+      long l1;
+      long l2;
+      int k;
+      int m;
+      Object localObject2;
+      boolean bool;
+      if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
       {
-        Object localObject;
-        boolean bool;
-        int j;
-        int i;
-        if ((this.mLevelEffectTransFilterList != null) && (!this.mLevelEffectTransFilterList.isEmpty()))
+        l1 = this.mNTransIndex;
+        l2 = this.mLevelEffectTransFilterList.size();
+        localObject1 = (TransferInstFilter)this.mLevelEffectTransFilterList.get((int)(l1 % l2));
+        if (this.mSpeedRate > 0.0F)
         {
-          long l1 = this.mNTransIndex;
-          long l2 = this.mLevelEffectTransFilterList.size();
-          localObject = (TransferInstFilter)this.mLevelEffectTransFilterList.get((int)(l1 % l2));
-          if (this.mSpeedRate > 0.0F)
-          {
-            ((TransferInstFilter)localObject).updateData((int)this.mStartTimeMs, (int)this.mEndTimeMs, (int)paramLong, this.mCommonFloats[0], this.mCommonFloats[1], this.mCommonFloats[2], this.mCommonFloats[3]);
-            ((TransferInstFilter)localObject).setInputTextureID(paramInt);
-            bool = ((TransferInstFilter)localObject).drawTexture(paramInt, this.mCacheFBO.getTexId(), paramArrayOfFloat1, paramArrayOfFloat2);
-            j = ((TransferInstFilter)localObject).getOutputTextureID();
-            if (!bool) {
-              break label329;
-            }
-            paramInt = 1;
-            i = paramInt;
-            paramInt = j;
-          }
+          j = (int)this.mStartTimeMs;
+          k = (int)this.mEndTimeMs;
+          m = (int)paramLong;
+          localObject2 = this.mCommonFloats;
+          ((TransferInstFilter)localObject1).updateData(j, k, m, localObject2[0], localObject2[1], localObject2[2], localObject2[3]);
         }
-        for (;;)
+        else
         {
-          if (i == 0) {
-            break label561;
-          }
-          return paramInt;
-          ((TransferInstFilter)localObject).updateData((int)this.mEndTimeMs, (int)this.mStartTimeMs, (int)(this.mStartTimeMs + this.mEndTimeMs - paramLong), this.mCommonFloats[0], this.mCommonFloats[1], this.mCommonFloats[2], this.mCommonFloats[3]);
-          break;
-          label329:
+          l1 = this.mEndTimeMs;
+          j = (int)l1;
+          l2 = this.mStartTimeMs;
+          k = (int)l2;
+          m = (int)(l2 + l1 - paramLong);
+          localObject2 = this.mCommonFloats;
+          ((TransferInstFilter)localObject1).updateData(j, k, m, localObject2[0], localObject2[1], localObject2[2], localObject2[3]);
+        }
+        ((TransferInstFilter)localObject1).setInputTextureID(paramInt);
+        bool = ((TransferInstFilter)localObject1).drawTexture(paramInt, this.mCacheFBO.getTexId(), paramArrayOfFloat1, paramArrayOfFloat2);
+        j = ((TransferInstFilter)localObject1).getOutputTextureID();
+        if (bool) {
+          paramInt = i;
+        } else {
           paramInt = 0;
-          break label261;
-          if ((this.mTransFilterList != null) && (!this.mTransFilterList.isEmpty()))
+        }
+        i = j;
+      }
+      else
+      {
+        localObject1 = this.mTransFilterList;
+        if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
+        {
+          localObject1 = this.mTransFilterList.iterator();
+          i = paramInt;
+          j = 1;
+          while (((Iterator)localObject1).hasNext())
           {
-            localObject = this.mTransFilterList.iterator();
-            j = paramInt;
-            i = 1;
-            if (((Iterator)localObject).hasNext())
+            localObject2 = (TransferInstFilter)((Iterator)localObject1).next();
+            int n;
+            float[] arrayOfFloat;
+            if (this.mSpeedRate > 0.0F)
             {
-              TransferInstFilter localTransferInstFilter = (TransferInstFilter)((Iterator)localObject).next();
-              if (this.mSpeedRate > 0.0F)
-              {
-                localTransferInstFilter.updateData((int)this.mStartTimeMs, (int)this.mEndTimeMs, (int)paramLong, this.mCommonFloats[0], this.mCommonFloats[1], this.mCommonFloats[2], this.mCommonFloats[3]);
-                label443:
-                localTransferInstFilter.setInputTextureID(j);
-                bool = localTransferInstFilter.drawTexture(paramInt, this.mCacheFBO.getTexId(), paramArrayOfFloat1, paramArrayOfFloat2);
-                j = localTransferInstFilter.getOutputTextureID();
-                if ((i == 0) || (!bool)) {
-                  break label545;
-                }
-              }
-              for (i = 1;; i = 0)
-              {
-                break;
-                localTransferInstFilter.updateData((int)this.mEndTimeMs, (int)this.mStartTimeMs, (int)(this.mStartTimeMs + this.mEndTimeMs - paramLong), this.mCommonFloats[0], this.mCommonFloats[1], this.mCommonFloats[2], this.mCommonFloats[3]);
-                break label443;
-              }
+              k = (int)this.mStartTimeMs;
+              m = (int)this.mEndTimeMs;
+              n = (int)paramLong;
+              arrayOfFloat = this.mCommonFloats;
+              ((TransferInstFilter)localObject2).updateData(k, m, n, arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], arrayOfFloat[3]);
             }
-            paramInt = j;
+            else
+            {
+              l1 = this.mEndTimeMs;
+              k = (int)l1;
+              l2 = this.mStartTimeMs;
+              m = (int)l2;
+              n = (int)(l2 + l1 - paramLong);
+              arrayOfFloat = this.mCommonFloats;
+              ((TransferInstFilter)localObject2).updateData(k, m, n, arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], arrayOfFloat[3]);
+            }
+            ((TransferInstFilter)localObject2).setInputTextureID(i);
+            bool = ((TransferInstFilter)localObject2).drawTexture(paramInt, this.mCacheFBO.getTexId(), paramArrayOfFloat1, paramArrayOfFloat2);
+            k = ((TransferInstFilter)localObject2).getOutputTextureID();
+            if ((j != 0) && (bool)) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            j = i;
+            i = k;
           }
-          else
-          {
-            i = 1;
-          }
+          paramInt = j;
+        }
+        else
+        {
+          j = 1;
+          i = paramInt;
+          paramInt = j;
         }
       }
+      if (paramInt != 0) {
+        return i;
+      }
     }
+    return -1;
   }
   
   public void setSpeedRate(float paramFloat)
@@ -510,7 +576,7 @@ public class TransferRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.videotransfer.TransferRender
  * JD-Core Version:    0.7.0.1
  */

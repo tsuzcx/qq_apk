@@ -14,11 +14,14 @@ import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.business.group.model.SearchResultGroupModelImpl;
+import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
 import com.tencent.mobileqq.search.util.ReportUtil;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.mobilereport.MobileReportManager;
 import java.net.URLEncoder;
 import java.util.List;
 
@@ -35,6 +38,7 @@ public class GroupBaseNetSearchModel
   public boolean b;
   String c;
   public boolean c;
+  public int d;
   public String d;
   public String e;
   private String f;
@@ -49,8 +53,12 @@ public class GroupBaseNetSearchModel
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_b_of_type_Long = paramLong2;
     this.jdField_b_of_type_JavaLangString = paramString3;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "GroupBaseNetSearchModel ,moreUrl = " + paramString3);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("GroupBaseNetSearchModel ,moreUrl = ");
+      paramString1.append(paramString3);
+      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, paramString1.toString());
     }
     this.jdField_c_of_type_JavaLangString = paramString4;
     this.jdField_b_of_type_JavaUtilList = paramList1;
@@ -58,7 +66,7 @@ public class GroupBaseNetSearchModel
     this.jdField_b_of_type_Boolean = paramBoolean2;
     this.jdField_c_of_type_Boolean = paramBoolean3;
     this.e = paramString6;
-    this.d = paramString5;
+    this.jdField_d_of_type_JavaLangString = paramString5;
   }
   
   public int a()
@@ -68,25 +76,38 @@ public class GroupBaseNetSearchModel
   
   public String a()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "";
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return this.jdField_a_of_type_JavaLangString;
+    return str1;
   }
   
   public List<ISearchResultModel> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "getResultList." + this.jdField_a_of_type_JavaUtilList);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getResultList.");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, localStringBuilder.toString());
     }
     return this.jdField_a_of_type_JavaUtilList;
   }
   
+  public void a()
+  {
+    if (this.jdField_a_of_type_Long == 1106L)
+    {
+      MobileReportManager.getInstance().reportAction("more", "4", "platform898", "7", "1", 102, 1, System.currentTimeMillis());
+      UniteSearchReportController.a(null, 0, this.jdField_d_of_type_Int, "0X800BAC7", 0, 0, null, null);
+    }
+  }
+  
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Long == 1002L) && (!this.jdField_b_of_type_JavaLangString.isEmpty())) {
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "&sourceext=" + paramInt);
-    }
+    this.jdField_d_of_type_Int = paramInt;
   }
   
   public void a(long paramLong)
@@ -96,9 +117,19 @@ public class GroupBaseNetSearchModel
   
   public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "onMoreAction. searchKey=" + this.f + " groupName=" + this.jdField_a_of_type_JavaLangString + " groupMask=" + this.jdField_a_of_type_Long);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onMoreAction. searchKey=");
+      ((StringBuilder)localObject).append(this.f);
+      ((StringBuilder)localObject).append(" groupName=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(" groupMask=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, ((StringBuilder)localObject).toString());
     }
+    a();
     if (this.jdField_a_of_type_Long == 1002L) {
       ReportUtil.a(this.jdField_a_of_type_JavaUtilList, this.f);
     }
@@ -108,42 +139,55 @@ public class GroupBaseNetSearchModel
       ((Intent)localObject).putExtra("search_keyword", this.f);
       ((Intent)localObject).putExtra("key_refer", 1005);
       PublicFragmentActivity.a(paramView.getContext(), (Intent)localObject, ((IMiniAppService)QRoute.api(IMiniAppService.class)).getMiniAppSearchFragmentClass());
-    }
-    do
-    {
       return;
-      ActiveEntitySearchActivity.jdField_b_of_type_Boolean = true;
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        break;
-      }
+    }
+    ActiveEntitySearchActivity.jdField_b_of_type_Boolean = true;
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    {
       localObject = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), this.jdField_b_of_type_JavaLangString);
       if (localObject != null)
       {
         ((JumpAction)localObject).a();
         return;
       }
-    } while ((!this.jdField_b_of_type_JavaLangString.startsWith("http://")) && (!this.jdField_b_of_type_JavaLangString.startsWith("https://")));
-    long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
-    long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
-    Object localObject = this.jdField_b_of_type_JavaLangString + "&keyword=" + URLEncoder.encode(this.f) + "&gpstype=1&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
-    if (QLog.isColorLevel()) {}
-    try
-    {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "onMoreAction,moreUrl = " + this.jdField_b_of_type_JavaLangString + ",dstUrl = " + XorCipher.a((String)localObject));
-      paramView = paramView.getContext();
-      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("url", (String)localObject);
-      paramView.startActivity(localIntent);
-      return;
-    }
-    catch (XorCipherException localXorCipherException)
-    {
-      for (;;)
+      if ((this.jdField_b_of_type_JavaLangString.startsWith("http://")) || (this.jdField_b_of_type_JavaLangString.startsWith("https://")))
       {
-        localXorCipherException.printStackTrace();
+        long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
+        long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append("&keyword=");
+        ((StringBuilder)localObject).append(URLEncoder.encode(this.f));
+        ((StringBuilder)localObject).append("&gpstype=1&lon=");
+        ((StringBuilder)localObject).append(Long.valueOf(l2));
+        ((StringBuilder)localObject).append("&lat=");
+        ((StringBuilder)localObject).append(Long.valueOf(l1));
+        localObject = ((StringBuilder)localObject).toString();
+        if (QLog.isColorLevel()) {
+          try
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("onMoreAction,moreUrl = ");
+            localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+            localStringBuilder.append(",dstUrl = ");
+            localStringBuilder.append(XorCipher.a((String)localObject));
+            QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, localStringBuilder.toString());
+          }
+          catch (XorCipherException localXorCipherException)
+          {
+            localXorCipherException.printStackTrace();
+          }
+        }
+        paramView = paramView.getContext();
+        Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
+        localIntent.putExtra("url", (String)localObject);
+        paramView.startActivity(localIntent);
       }
     }
-    ActiveEntitySearchActivity.a(paramView.getContext(), this.f, this.jdField_a_of_type_JavaLangString, new long[] { this.jdField_a_of_type_Long });
+    else
+    {
+      ActiveEntitySearchActivity.a(paramView.getContext(), this.f, this.jdField_a_of_type_JavaLangString, new long[] { this.jdField_a_of_type_Long });
+    }
   }
   
   public void a(List<ISearchResultModel> paramList)
@@ -158,31 +202,51 @@ public class GroupBaseNetSearchModel
   
   public String b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "getKeyword." + this.f);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getKeyword.");
+      localStringBuilder.append(this.f);
+      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, localStringBuilder.toString());
     }
     return this.f;
   }
   
+  public void b(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Long == 1002L) && (!this.jdField_b_of_type_JavaLangString.isEmpty()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append("&sourceext=");
+      localStringBuilder.append(paramInt);
+      this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    }
+  }
+  
   public String c()
   {
-    if (this.jdField_c_of_type_JavaLangString == null) {
-      return HardCodeUtil.a(2131705364);
+    String str2 = this.jdField_c_of_type_JavaLangString;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = HardCodeUtil.a(2131705438);
     }
-    return this.jdField_c_of_type_JavaLangString;
+    return str1;
   }
   
   public String d()
   {
-    if (this.jdField_b_of_type_JavaLangString == null) {
-      return "";
+    String str2 = this.jdField_b_of_type_JavaLangString;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return this.jdField_b_of_type_JavaLangString;
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupBaseNetSearchModel
  * JD-Core Version:    0.7.0.1
  */

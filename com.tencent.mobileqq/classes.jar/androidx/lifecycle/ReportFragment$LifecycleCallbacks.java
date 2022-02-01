@@ -5,10 +5,17 @@ import android.app.Application.ActivityLifecycleCallbacks;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+@RequiresApi(29)
 class ReportFragment$LifecycleCallbacks
   implements Application.ActivityLifecycleCallbacks
 {
+  static void registerIn(Activity paramActivity)
+  {
+    paramActivity.registerActivityLifecycleCallbacks(new LifecycleCallbacks());
+  }
+  
   public void onActivityCreated(@NonNull Activity paramActivity, @Nullable Bundle paramBundle) {}
   
   public void onActivityDestroyed(@NonNull Activity paramActivity) {}
@@ -55,7 +62,7 @@ class ReportFragment$LifecycleCallbacks
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.ReportFragment.LifecycleCallbacks
  * JD-Core Version:    0.7.0.1
  */

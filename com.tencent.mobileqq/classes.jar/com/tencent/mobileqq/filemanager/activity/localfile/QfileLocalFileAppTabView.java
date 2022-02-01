@@ -9,7 +9,6 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.IReportVer51;
 import com.tencent.mobileqq.filemanager.widget.QfileTabBarView.ScanParams;
 import com.tencent.qphone.base.util.QLog;
@@ -47,7 +46,7 @@ public class QfileLocalFileAppTabView
     }
     else
     {
-      localObject = HardCodeUtil.a(2131709651);
+      localObject = HardCodeUtil.a(2131692367);
     }
     if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject)) {
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject, new ArrayList());
@@ -56,7 +55,7 @@ public class QfileLocalFileAppTabView
     if (((List)localObject).contains(paramFileInfo) == true) {
       return;
     }
-    int j = FileManagerUtil.a((List)localObject, paramFileInfo.b());
+    int j = a((List)localObject, paramFileInfo.b());
     int i = j;
     if (j < 0) {
       i = 0;
@@ -68,9 +67,9 @@ public class QfileLocalFileAppTabView
   {
     this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
     if (this.f) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(HardCodeUtil.a(2131709647), new ArrayList());
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(HardCodeUtil.a(2131692289), new ArrayList());
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(HardCodeUtil.a(2131709660), new ArrayList());
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(HardCodeUtil.a(2131692367), new ArrayList());
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this);
     this.jdField_a_of_type_JavaLangRunnable = new QfileLocalFileAppTabView.2(this);
     ThreadManagerV2.excute(this.jdField_a_of_type_JavaLangRunnable, 64, null, true);
@@ -88,10 +87,11 @@ public class QfileLocalFileAppTabView
   
   public void a(Set<FileInfo> paramSet)
   {
-    if ((paramSet == null) || (paramSet.size() == 0)) {}
-    for (;;)
+    if (paramSet != null)
     {
-      return;
+      if (paramSet.size() == 0) {
+        return;
+      }
       paramSet = paramSet.iterator();
       while (paramSet.hasNext()) {
         b((FileInfo)paramSet.next());
@@ -145,25 +145,19 @@ public class QfileLocalFileAppTabView
   {
     super.j();
     setEditbarButton(false, false, true, true, false);
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.k())
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
-        break label50;
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.k()) {
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().P();
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().U();
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().P();
     }
-    for (;;)
-    {
-      o();
-      return;
-      label50:
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().U();
-    }
+    o();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView
  * JD-Core Version:    0.7.0.1
  */

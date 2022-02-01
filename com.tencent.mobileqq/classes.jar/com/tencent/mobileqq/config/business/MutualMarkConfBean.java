@@ -52,19 +52,21 @@ public class MutualMarkConfBean
   
   public static MutualMarkConfBean a(String paramString)
   {
-    int i = 0;
     MutualMarkConfBean localMutualMarkConfBean = new MutualMarkConfBean();
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.d("MutualMarkConfBean", 1, "parse content: " + paramString);
+    Object localObject1;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parse content: ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("MutualMarkConfBean", 1, ((StringBuilder)localObject1).toString());
     }
     for (;;)
     {
-      JSONObject localJSONObject;
-      Object localObject;
-      int j;
+      int i;
       try
       {
-        localJSONObject = new JSONObject(paramString);
+        JSONObject localJSONObject = new JSONObject(paramString);
         if (localJSONObject.has("IRResource"))
         {
           paramString = localJSONObject.optJSONObject("IRResource");
@@ -76,100 +78,108 @@ public class MutualMarkConfBean
             localMutualMarkConfBean.e = paramString.optString("emojieggSettingUrl");
           }
         }
-        if (localJSONObject.has("sort"))
-        {
+        if (localJSONObject.has("sort")) {
           paramString = localJSONObject.getJSONArray("sort");
-          if (localJSONObject.has("aio_left_sort"))
+        } else {
+          paramString = new JSONArray("[7, 12, 8, 6, 4, 1, 2, 3, 5]");
+        }
+        if (localJSONObject.has("aio_left_sort")) {
+          localObject1 = localJSONObject.getJSONArray("aio_left_sort");
+        } else {
+          localObject1 = new JSONArray("[7, 12, 4, 5, 8, 6]");
+        }
+        if (localJSONObject.has("aio_right_sort")) {
+          localObject2 = localJSONObject.getJSONArray("aio_right_sort");
+        } else {
+          localObject2 = new JSONArray("[1, 2, 3]");
+        }
+        a(paramString, localMutualMarkConfBean.jdField_b_of_type_JavaUtilArrayList);
+        a((JSONArray)localObject1, localMutualMarkConfBean.jdField_c_of_type_JavaUtilArrayList);
+        a((JSONArray)localObject2, localMutualMarkConfBean.jdField_d_of_type_JavaUtilArrayList);
+        if (localJSONObject.has("IRType"))
+        {
+          paramString = localJSONObject.optJSONArray("IRType");
+          i = 0;
+          if (i < paramString.length())
           {
-            localObject = localJSONObject.getJSONArray("aio_left_sort");
-            if (!localJSONObject.has("aio_right_sort")) {
-              continue;
+            localObject1 = MutualMarkConfigIRType.a(paramString.getJSONObject(i));
+            if (localObject1 == null) {
+              break label595;
             }
-            localJSONArray = localJSONObject.getJSONArray("aio_right_sort");
-            a(paramString, localMutualMarkConfBean.jdField_b_of_type_JavaUtilArrayList);
-            a((JSONArray)localObject, localMutualMarkConfBean.jdField_c_of_type_JavaUtilArrayList);
-            a(localJSONArray, localMutualMarkConfBean.jdField_d_of_type_JavaUtilArrayList);
-            if (!localJSONObject.has("IRType")) {
-              break label463;
+            if (localMutualMarkConfBean.jdField_d_of_type_JavaUtilArrayList.contains(Long.valueOf(((MutualMarkConfigIRType)localObject1).jdField_a_of_type_Long)))
+            {
+              ((MutualMarkConfigIRType)localObject1).jdField_a_of_type_Boolean = true;
+              ((MutualMarkConfigIRType)localObject1).b = localMutualMarkConfBean.jdField_d_of_type_JavaUtilArrayList.indexOf(Long.valueOf(((MutualMarkConfigIRType)localObject1).jdField_a_of_type_Long));
             }
-            paramString = localJSONObject.optJSONArray("IRType");
-            if (i >= paramString.length()) {
-              break label463;
+            else
+            {
+              j = localMutualMarkConfBean.jdField_c_of_type_JavaUtilArrayList.indexOf(Long.valueOf(((MutualMarkConfigIRType)localObject1).jdField_a_of_type_Long));
+              if (j >= 0) {
+                ((MutualMarkConfigIRType)localObject1).b = j;
+              }
             }
-            localObject = MutualMarkConfigIRType.a(paramString.getJSONObject(i));
-            if (localObject == null) {
-              break label499;
-            }
-            if (!localMutualMarkConfBean.jdField_d_of_type_JavaUtilArrayList.contains(Long.valueOf(((MutualMarkConfigIRType)localObject).jdField_a_of_type_Long))) {
-              break label435;
-            }
-            ((MutualMarkConfigIRType)localObject).jdField_a_of_type_Boolean = true;
-            ((MutualMarkConfigIRType)localObject).b = localMutualMarkConfBean.jdField_d_of_type_JavaUtilArrayList.indexOf(Long.valueOf(((MutualMarkConfigIRType)localObject).jdField_a_of_type_Long));
-            j = localMutualMarkConfBean.jdField_b_of_type_JavaUtilArrayList.indexOf(Long.valueOf(((MutualMarkConfigIRType)localObject).jdField_a_of_type_Long));
+            int j = localMutualMarkConfBean.jdField_b_of_type_JavaUtilArrayList.indexOf(Long.valueOf(((MutualMarkConfigIRType)localObject1).jdField_a_of_type_Long));
             if (j >= 0) {
-              ((MutualMarkConfigIRType)localObject).jdField_a_of_type_Int = j;
+              ((MutualMarkConfigIRType)localObject1).jdField_a_of_type_Int = j;
             }
-            localMutualMarkConfBean.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((MutualMarkConfigIRType)localObject).jdField_a_of_type_Long), localObject);
-            localMutualMarkConfBean.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(((MutualMarkConfigIRType)localObject).jdField_a_of_type_Long));
-            break label499;
+            localMutualMarkConfBean.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((MutualMarkConfigIRType)localObject1).jdField_a_of_type_Long), localObject1);
+            localMutualMarkConfBean.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(((MutualMarkConfigIRType)localObject1).jdField_a_of_type_Long));
+            break label595;
           }
         }
-        else
-        {
-          paramString = new JSONArray("[7, 12, 8, 6, 4, 1, 2, 3, 5]");
-          continue;
+        if (!localJSONObject.has("resourceDomain")) {
+          break label592;
         }
-        localObject = new JSONArray("[7, 12, 4, 5, 8, 6]");
-        continue;
-        JSONArray localJSONArray = new JSONArray("[1, 2, 3]");
-        continue;
+        localMutualMarkConfBean.f = new String(Base64Util.decode(localJSONObject.optString("resourceDomain"), 0));
         return localMutualMarkConfBean;
       }
       catch (JSONException paramString)
       {
-        QLog.e("MutualMarkConfBean", 1, "parse error->" + paramString.toString());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("parse error->");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        QLog.e("MutualMarkConfBean", 1, ((StringBuilder)localObject1).toString());
+        return localMutualMarkConfBean;
       }
-      label435:
-      label463:
-      do
-      {
-        j = localMutualMarkConfBean.jdField_c_of_type_JavaUtilArrayList.indexOf(Long.valueOf(((MutualMarkConfigIRType)localObject).jdField_a_of_type_Long));
-        if (j < 0) {
-          break;
-        }
-        ((MutualMarkConfigIRType)localObject).b = j;
-        break;
-      } while (!localJSONObject.has("resourceDomain"));
-      localMutualMarkConfBean.f = new String(Base64Util.decode(localJSONObject.optString("resourceDomain"), 0));
+      localObject1 = new RuntimeException("524 manager content null：");
+      ((RuntimeException)localObject1).fillInStackTrace();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("parse content may null: ");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(", bean:");
+      ((StringBuilder)localObject2).append(localMutualMarkConfBean);
+      ((StringBuilder)localObject2).append("，stack = ");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.d("MutualMarkConfBean", 1, ((StringBuilder)localObject2).toString());
+      label592:
       return localMutualMarkConfBean;
-      label499:
+      label595:
       i += 1;
     }
   }
   
   private static void a(JSONArray paramJSONArray, ArrayList<Long> paramArrayList)
   {
-    if (paramJSONArray == null) {}
-    for (;;)
-    {
+    if (paramJSONArray == null) {
       return;
-      int i = 0;
-      while (i < paramJSONArray.length())
-      {
-        paramArrayList.add(Long.valueOf(paramJSONArray.optLong(i)));
-        i += 1;
-      }
+    }
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      paramArrayList.add(Long.valueOf(paramJSONArray.optLong(i)));
+      i += 1;
     }
   }
   
   public int a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject = ((HashMap)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
         if ((!TextUtils.isEmpty(((MutualMarkConfigIRType)localEntry.getValue()).jdField_a_of_type_JavaLangString)) && (((MutualMarkConfigIRType)localEntry.getValue()).jdField_a_of_type_JavaLangString.equals(paramString))) {
           return (int)((MutualMarkConfigIRType)localEntry.getValue()).jdField_a_of_type_Long;
         }
@@ -242,10 +252,45 @@ public class MutualMarkConfBean
     }
     return false;
   }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MutualMarkConfBean{iRResourcePath='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iRResourcePathMd5='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iRResourceC2cIntimateUrl='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iRResourceIntimateListUrl='");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iRResourceEmojiEggSettingUrl='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iRTypes=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilHashMap);
+    localStringBuilder.append(", iRTypesSortForShowReactivePage=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(", iRTypesSortForNormal=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList);
+    localStringBuilder.append(", iRTypesSortForAIOTitleLeft1=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaUtilArrayList);
+    localStringBuilder.append(", iRTypesSortForAIOTitleLeft2=");
+    localStringBuilder.append(this.jdField_d_of_type_JavaUtilArrayList);
+    localStringBuilder.append(", resourceDomain='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MutualMarkConfBean
  * JD-Core Version:    0.7.0.1
  */

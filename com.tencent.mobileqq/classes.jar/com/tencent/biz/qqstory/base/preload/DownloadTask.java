@@ -61,38 +61,43 @@ public class DownloadTask
   private static DownloadTask a(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
     DownloadTask localDownloadTask = new DownloadTask();
-    StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(paramString1);
-    if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine()))
+    Object localObject = ((StoryManager)SuperManager.a(5)).a(paramString1);
+    if ((localObject != null) && (((StoryVideoItem)localObject).isMine()))
     {
-      localDownloadTask.jdField_e_of_type_JavaLangString = FileCacheUtils.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, false, false);
-      localDownloadTask.jdField_f_of_type_JavaLangString = FileCacheUtils.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, true, false);
-      localDownloadTask.jdField_b_of_type_Int = 0;
-      localDownloadTask.jdField_b_of_type_JavaLangString = paramString1;
-      localDownloadTask.jdField_a_of_type_Int = paramInt;
-      localDownloadTask.jdField_a_of_type_JavaLangString = a(paramString1, paramInt);
-      if (!paramBoolean) {
-        break label159;
-      }
+      localDownloadTask.jdField_e_of_type_JavaLangString = FileCacheUtils.a(paramString1, ((StoryVideoItem)localObject).mCreateTime, paramInt, false, false);
+      localDownloadTask.jdField_f_of_type_JavaLangString = FileCacheUtils.a(paramString1, ((StoryVideoItem)localObject).mCreateTime, paramInt, true, false);
     }
-    label159:
-    for (paramString1 = "";; paramString1 = paramString2)
+    else
     {
-      localDownloadTask.jdField_c_of_type_JavaLangString = paramString1;
-      if (paramBoolean) {
-        paramString2 = "";
-      }
-      localDownloadTask.jdField_d_of_type_JavaLangString = paramString2;
-      localDownloadTask.jdField_c_of_type_Boolean = paramBoolean;
-      return localDownloadTask;
       localDownloadTask.jdField_e_of_type_JavaLangString = FileCacheUtils.a(paramString1, paramInt, false, false);
       localDownloadTask.jdField_f_of_type_JavaLangString = FileCacheUtils.a(paramString1, paramInt, true, false);
-      break;
     }
+    localDownloadTask.jdField_b_of_type_Int = 0;
+    localDownloadTask.jdField_b_of_type_JavaLangString = paramString1;
+    localDownloadTask.jdField_a_of_type_Int = paramInt;
+    localDownloadTask.jdField_a_of_type_JavaLangString = a(paramString1, paramInt);
+    localObject = "";
+    if (paramBoolean) {
+      paramString1 = "";
+    } else {
+      paramString1 = paramString2;
+    }
+    localDownloadTask.jdField_c_of_type_JavaLangString = paramString1;
+    if (paramBoolean) {
+      paramString2 = (String)localObject;
+    }
+    localDownloadTask.jdField_d_of_type_JavaLangString = paramString2;
+    localDownloadTask.jdField_c_of_type_Boolean = paramBoolean;
+    return localDownloadTask;
   }
   
   public static String a(String paramString, int paramInt)
   {
-    return paramInt + "_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public boolean equals(Object paramObject)
@@ -109,12 +114,30 @@ public class DownloadTask
   
   public String toString()
   {
-    return "DownloadTask{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", fileType=" + QQStoryConstant.a(this.jdField_a_of_type_Int) + ", status=" + this.jdField_b_of_type_Int + ", downloadUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", localPath='" + this.jdField_e_of_type_JavaLangString + '\'' + ", localTmpPath='" + this.jdField_f_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DownloadTask{vid='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fileType=");
+    localStringBuilder.append(QQStoryConstant.a(this.jdField_a_of_type_Int));
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", downloadUrl='");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", localPath='");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", localTmpPath='");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

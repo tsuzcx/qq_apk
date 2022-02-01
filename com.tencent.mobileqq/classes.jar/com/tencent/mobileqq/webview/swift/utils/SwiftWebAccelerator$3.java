@@ -13,13 +13,17 @@ class SwiftWebAccelerator$3
   {
     SwiftWebAccelerator.TbsAccelerator.b();
     SwiftBrowserStatistics.Y = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment on sub thread, cost " + SwiftBrowserStatistics.Y + "ms.");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initX5Environment on sub thread, cost ");
+    localStringBuilder.append(SwiftBrowserStatistics.Y);
+    localStringBuilder.append("ms.");
+    QLog.i("WebLog_SwiftWebAccelerator", 1, localStringBuilder.toString());
     this.this$0.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.3
  * JD-Core Version:    0.7.0.1
  */

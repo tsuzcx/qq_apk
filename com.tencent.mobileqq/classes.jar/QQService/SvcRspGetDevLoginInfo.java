@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SvcRspGetDevLoginInfo
   extends JceStruct
@@ -21,16 +22,6 @@ public final class SvcRspGetDevLoginInfo
   public ArrayList<SvcDevLoginInfo> vecAuthLoginDevInfo = null;
   public ArrayList<SvcDevLoginInfo> vecCurrentLoginDevInfo = null;
   public ArrayList<SvcDevLoginInfo> vecHistoryLoginDevInfo = null;
-  
-  static
-  {
-    if (!SvcRspGetDevLoginInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   public SvcRspGetDevLoginInfo() {}
   
@@ -52,18 +43,17 @@ public final class SvcRspGetDevLoginInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -92,13 +82,40 @@ public final class SvcRspGetDevLoginInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (SvcRspGetDevLoginInfo)paramObject;
-    } while ((!JceUtil.equals(this.iResult, paramObject.iResult)) || (!JceUtil.equals(this.strResult, paramObject.strResult)) || (!JceUtil.equals(this.iNextItemIndex, paramObject.iNextItemIndex)) || (!JceUtil.equals(this.iTotalItemCount, paramObject.iTotalItemCount)) || (!JceUtil.equals(this.vecCurrentLoginDevInfo, paramObject.vecCurrentLoginDevInfo)) || (!JceUtil.equals(this.vecHistoryLoginDevInfo, paramObject.vecHistoryLoginDevInfo)) || (!JceUtil.equals(this.vecAuthLoginDevInfo, paramObject.vecAuthLoginDevInfo)));
-    return true;
+    }
+    paramObject = (SvcRspGetDevLoginInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.iResult, paramObject.iResult))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.strResult, paramObject.strResult))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.iNextItemIndex, paramObject.iNextItemIndex))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.iTotalItemCount, paramObject.iTotalItemCount))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.vecCurrentLoginDevInfo, paramObject.vecCurrentLoginDevInfo))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.vecHistoryLoginDevInfo, paramObject.vecHistoryLoginDevInfo))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.vecAuthLoginDevInfo, paramObject.vecAuthLoginDevInfo)) {
+                  bool1 = true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -152,25 +169,29 @@ public final class SvcRspGetDevLoginInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iResult, 0);
-    if (this.strResult != null) {
-      paramJceOutputStream.write(this.strResult, 1);
+    Object localObject = this.strResult;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.iNextItemIndex, 2);
     paramJceOutputStream.write(this.iTotalItemCount, 3);
-    if (this.vecCurrentLoginDevInfo != null) {
-      paramJceOutputStream.write(this.vecCurrentLoginDevInfo, 4);
+    localObject = this.vecCurrentLoginDevInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.vecHistoryLoginDevInfo != null) {
-      paramJceOutputStream.write(this.vecHistoryLoginDevInfo, 5);
+    localObject = this.vecHistoryLoginDevInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.vecAuthLoginDevInfo != null) {
-      paramJceOutputStream.write(this.vecAuthLoginDevInfo, 6);
+    localObject = this.vecAuthLoginDevInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.SvcRspGetDevLoginInfo
  * JD-Core Version:    0.7.0.1
  */

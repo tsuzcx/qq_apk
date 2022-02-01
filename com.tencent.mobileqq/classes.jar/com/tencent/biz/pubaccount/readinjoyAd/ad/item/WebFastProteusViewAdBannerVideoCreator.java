@@ -3,33 +3,27 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.item;
 import android.view.View;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInjoyImageView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInjoyTextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerVideoItemData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.FastWeqAdUtils;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.video.FastWebVideoPlayManager;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.biz.pubaccount.util.ReadinJoyActionUtil;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.kandian.biz.fastweb.entity.BaseItemViewHolder;
+import com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyImageView;
+import com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyTextView;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.BaseData;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.widget.AbsListView;
 
 public class WebFastProteusViewAdBannerVideoCreator
   extends WebFastBaseProteusAdCreator
 {
-  public static long a;
+  public static long a = -2147483648L;
   public static GdtHandler.Params a;
-  public static boolean a;
+  public static boolean a = false;
   private int jdField_a_of_type_Int = 0;
   WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder = null;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_Long = -2147483648L;
-  }
   
   public static void a(boolean paramBoolean)
   {
@@ -54,37 +48,36 @@ public class WebFastProteusViewAdBannerVideoCreator
   
   private void i()
   {
-    if ((this.jdField_a_of_type_Int == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder instanceof WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)))
+    if ((this.jdField_a_of_type_Int == 1) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder instanceof WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)))
     {
-      if (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder) != null) {
-        WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder).setVisibility(8);
+      if (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder) != null) {
+        WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder).setVisibility(8);
       }
-      if (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder) != null) {
-        WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder).setVisibility(8);
+      if (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder) != null) {
+        WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder).setVisibility(8);
       }
     }
   }
   
   private void j()
   {
-    if ((this.jdField_a_of_type_Int == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder instanceof WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)))
+    if ((this.jdField_a_of_type_Int == 1) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder instanceof WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)))
     {
-      if (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder) != null) {
-        WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder).setVisibility(0);
+      if (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder) != null) {
+        WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder).setVisibility(0);
       }
-      if (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder) != null) {
-        WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder).setVisibility(0);
+      if (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder) != null) {
+        WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a((WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder).setVisibility(0);
       }
     }
   }
   
   public int a(BaseData paramBaseData)
   {
-    int i = -1;
     if ((paramBaseData instanceof ProteusBannerVideoItemData)) {
-      i = FastWeqAdUtils.a((ProteusBannerVideoItemData)paramBaseData);
+      return FastWeqAdUtils.a((ProteusBannerVideoItemData)paramBaseData);
     }
-    return i;
+    return -1;
   }
   
   protected BaseItemViewHolder a(View paramView, BaseData paramBaseData)
@@ -103,13 +96,11 @@ public class WebFastProteusViewAdBannerVideoCreator
   
   public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData == null) {
       return;
     }
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.u;
-    switch (paramInt)
-    {
-    default: 
+    int i = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData.x;
+    if (paramInt != 0) {
       return;
     }
     paramInt = paramAbsListView.getFirstVisiblePosition();
@@ -126,20 +117,21 @@ public class WebFastProteusViewAdBannerVideoCreator
   
   public boolean a(BaseData paramBaseData)
   {
-    if ((paramBaseData != null) && (paramBaseData.s == 17)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
-      }
-      return bool;
+    boolean bool;
+    if ((paramBaseData != null) && (paramBaseData.u == 17)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (bool) {
+      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData = paramBaseData;
+    }
+    return bool;
   }
   
   public void b()
   {
     super.b();
-    ReadinJoyActionUtil.a(2, jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params, jdField_a_of_type_Long);
     jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
     jdField_a_of_type_Long = -2147483648L;
     FastWebVideoPlayManager.a.b();
@@ -154,47 +146,51 @@ public class WebFastProteusViewAdBannerVideoCreator
   
   public void d()
   {
-    
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder != null) && (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder) != null))
+    f();
+    WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder localProteusItemViewHolder = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder;
+    if ((localProteusItemViewHolder != null) && (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(localProteusItemViewHolder) != null))
     {
       FastWebVideoPlayManager.a.d();
       WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder).a();
       WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder, null);
-      ReadInJoyAdLog.a("VideoPlayerWrapper_AD", "bottomView create - item:  onDestroy");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoPlayerWrapper_AD", "bottomView create - item:  onDestroy");
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder = null;
     }
   }
   
   public void e()
   {
-    
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder != null) && (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder) != null))
+    f();
+    WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder localProteusItemViewHolder = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder;
+    if ((localProteusItemViewHolder != null) && (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(localProteusItemViewHolder) != null))
     {
       FastWebVideoPlayManager.a.d();
       WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder).a();
       WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder, null);
-      ReadInJoyAdLog.a("VideoPlayerWrapper_AD", "bottomView create - item:  onFinishPage");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoPlayerWrapper_AD", "bottomView create - item:  onFinishPage");
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder = null;
     }
   }
   
   public void g()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder != null) && (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder) != null)) {
+    WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder localProteusItemViewHolder = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder;
+    if ((localProteusItemViewHolder != null) && (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(localProteusItemViewHolder) != null)) {
       WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder).a(false);
     }
   }
   
   public void h()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder != null) && (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder) != null)) {
+    WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder localProteusItemViewHolder = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder;
+    if ((localProteusItemViewHolder != null) && (WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(localProteusItemViewHolder) != null)) {
       WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.item.WebFastProteusViewAdBannerVideoCreator
  * JD-Core Version:    0.7.0.1
  */

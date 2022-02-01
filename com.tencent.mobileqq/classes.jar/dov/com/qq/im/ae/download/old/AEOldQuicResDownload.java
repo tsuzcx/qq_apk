@@ -17,13 +17,18 @@ import java.util.List;
 public class AEOldQuicResDownload
   implements AEOldShortVideoResStatus.ISVConfig
 {
-  private static final String jdField_a_of_type_JavaLangString = Environment.getDataDirectory() + "/data/" + BaseApplicationImpl.sApplication.getBaseContext().getPackageName() + "/app_lib/quic/";
-  public static boolean a;
+  private static final String jdField_a_of_type_JavaLangString;
+  public static boolean a = false;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   static
   {
-    jdField_a_of_type_Boolean = false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getDataDirectory());
+    localStringBuilder.append("/data/");
+    localStringBuilder.append(BaseApplicationImpl.sApplication.getBaseContext().getPackageName());
+    localStringBuilder.append("/app_lib/quic/");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public AEOldQuicResDownload(QQAppInterface paramQQAppInterface)
@@ -43,7 +48,7 @@ public class AEOldQuicResDownload
   
   private boolean a()
   {
-    boolean bool = NetworkUtil.h(null);
+    boolean bool = NetworkUtil.isWifiConnected(null);
     if (bool)
     {
       VideoEnvironment.LogDownLoad("AEOldQuicResDownload", "QUIC配置下载中...", null);
@@ -51,7 +56,7 @@ public class AEOldQuicResDownload
       AEOldShortVideoResManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
       return bool;
     }
-    VideoEnvironment.LogDownLoad("AEOldQuicResDownload", HardCodeUtil.a(2131711213), null);
+    VideoEnvironment.LogDownLoad("AEOldQuicResDownload", HardCodeUtil.a(2131711189), null);
     return bool;
   }
   
@@ -64,7 +69,11 @@ public class AEOldQuicResDownload
   
   public static String b()
   {
-    return jdField_a_of_type_JavaLangString + "backup" + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("backup");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   public static String c()
@@ -74,41 +83,58 @@ public class AEOldQuicResDownload
   
   public void a(int paramInt1, int paramInt2)
   {
-    VideoEnvironment.LogDownLoad("AEOldQuicResDownload", "onConfigResult | result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onConfigResult | result=");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(",serverError=");
+    ((StringBuilder)localObject).append(paramInt2);
+    VideoEnvironment.LogDownLoad("AEOldQuicResDownload", ((StringBuilder)localObject).toString(), null);
+    if ((paramInt1 != 1) && (paramInt1 != 0))
     {
-      if (paramInt2 != 0) {
-        VideoEnvironment.LogDownLoad("AEOldQuicResDownload", "onConfigResult| uncompress config error=" + paramInt2, null);
-      }
-      for (;;)
-      {
-        return;
-        ArrayList localArrayList = new ArrayList(1);
-        paramInt1 = AEOldShortVideoResManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
-        if (paramInt1 != 0) {
-          break;
-        }
-        VideoEnvironment.LogDownLoad("AEOldQuicResDownload", "onConfigResult| check config success...", null);
-        Iterator localIterator = localArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          AEOldShortVideoResManager.SVConfigItem localSVConfigItem = (AEOldShortVideoResManager.SVConfigItem)localIterator.next();
-          if (localSVConfigItem.name.startsWith("msf_quic_lib"))
-          {
-            VideoEnvironment.LogDownLoad("AEOldQuicResDownload", "onConfigResult| name=" + localSVConfigItem.name + " url=" + localSVConfigItem.armv7a_url, null);
-            AEOldShortVideoResManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
-          }
-        }
-      }
-      VideoEnvironment.LogDownLoad("AEOldQuicResDownload", "onConfigResult| check config error=" + paramInt1, null);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onConfigResult| result= RESULT_FAILED error=");
+      ((StringBuilder)localObject).append(paramInt2);
+      VideoEnvironment.LogDownLoad("AEOldQuicResDownload", ((StringBuilder)localObject).toString(), null);
       return;
     }
-    VideoEnvironment.LogDownLoad("AEOldQuicResDownload", "onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
+    if (paramInt2 != 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onConfigResult| uncompress config error=");
+      ((StringBuilder)localObject).append(paramInt2);
+      VideoEnvironment.LogDownLoad("AEOldQuicResDownload", ((StringBuilder)localObject).toString(), null);
+      return;
+    }
+    localObject = new ArrayList(1);
+    paramInt1 = AEOldShortVideoResManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject);
+    if (paramInt1 == 0)
+    {
+      VideoEnvironment.LogDownLoad("AEOldQuicResDownload", "onConfigResult| check config success...", null);
+      Iterator localIterator = ((List)localObject).iterator();
+      while (localIterator.hasNext())
+      {
+        AEOldShortVideoResManager.SVConfigItem localSVConfigItem = (AEOldShortVideoResManager.SVConfigItem)localIterator.next();
+        if (localSVConfigItem.name.startsWith("msf_quic_lib"))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onConfigResult| name=");
+          localStringBuilder.append(localSVConfigItem.name);
+          localStringBuilder.append(" url=");
+          localStringBuilder.append(localSVConfigItem.armv7a_url);
+          VideoEnvironment.LogDownLoad("AEOldQuicResDownload", localStringBuilder.toString(), null);
+          AEOldShortVideoResManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject);
+        }
+      }
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onConfigResult| check config error=");
+    ((StringBuilder)localObject).append(paramInt1);
+    VideoEnvironment.LogDownLoad("AEOldQuicResDownload", ((StringBuilder)localObject).toString(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldQuicResDownload
  * JD-Core Version:    0.7.0.1
  */

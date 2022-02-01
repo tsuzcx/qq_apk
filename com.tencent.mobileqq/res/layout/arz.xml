@@ -5,15 +5,15 @@
     <LinearLayout android:orientation="horizontal" android:paddingLeft="32.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <FrameLayout android:id="@id/bdv" android:layout_width="81.0dip" android:layout_height="fill_parent">
             <com.tencent.mobileqq.app.utils.NumberWheelView android:layout_gravity="left" android:id="@id/bdz" android:layout_width="25.0dip" android:layout_height="fill_parent" android:layout_marginBottom="-11.0dip" />
-            <TextView android:textAppearance="?android:textAppearanceMedium" android:textSize="@dimen/ayp" android:textColor="@color/skin_color_button_common_white" android:layout_gravity="center|left" android:id="@id/be0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:text="@string/qmt" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textSize="@dimen/ayp" android:textColor="@color/ai2" android:layout_gravity="center|left" android:id="@id/be0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:text="@string/qmt" />
         </FrameLayout>
         <FrameLayout android:id="@id/d9g" android:layout_width="81.0dip" android:layout_height="fill_parent">
             <com.tencent.mobileqq.app.utils.NumberWheelView android:layout_gravity="left" android:id="@id/d9k" android:layout_width="25.0dip" android:layout_height="fill_parent" android:layout_marginBottom="-11.0dip" />
-            <TextView android:textAppearance="?android:textAppearanceMedium" android:textSize="@dimen/ayp" android:textColor="@color/skin_color_button_common_white" android:layout_gravity="center|left" android:id="@id/d9l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:text="@string/qms" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textSize="@dimen/ayp" android:textColor="@color/ai2" android:layout_gravity="center|left" android:id="@id/d9l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:text="@string/qms" />
         </FrameLayout>
         <FrameLayout android:id="@id/ey4" android:layout_width="81.0dip" android:layout_height="fill_parent">
             <com.tencent.mobileqq.app.utils.NumberWheelView android:layout_gravity="left" android:id="@id/ey7" android:layout_width="25.0dip" android:layout_height="fill_parent" android:layout_marginBottom="-11.0dip" />
-            <TextView android:textAppearance="?android:textAppearanceMedium" android:textSize="@dimen/ayp" android:textColor="@color/skin_color_button_common_white" android:layout_gravity="center|left" android:id="@id/ey8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:text="@string/qmu" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textSize="@dimen/ayp" android:textColor="@color/ai2" android:layout_gravity="center|left" android:id="@id/ey8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:text="@string/qmu" />
         </FrameLayout>
         <TextView android:textAppearance="?android:textAppearanceMedium" android:textSize="@dimen/ayp" android:textColor="@color/skin_gray6" android:gravity="end" android:layout_gravity="center_vertical" android:id="@id/bxc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
     </LinearLayout>

@@ -21,15 +21,16 @@ public class CameraProxy$CameraPreviewObservable
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    if (this.a == null) {
+    Handler localHandler = this.a;
+    if (localHandler == null) {
       return;
     }
-    this.a.post(new CameraProxy.CameraPreviewObservable.1(this, paramInt, paramVarArgs));
+    localHandler.post(new CameraProxy.CameraPreviewObservable.1(this, paramInt, paramVarArgs));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable
  * JD-Core Version:    0.7.0.1
  */

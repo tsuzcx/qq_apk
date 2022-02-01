@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.gamecenter.data.GameMsgQuickReplyInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
@@ -43,46 +43,38 @@ public class GameMsgQuickReplayAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView;
-    Object localObject;
+    GameMsgQuickReplayAdapter.ViewHolder localViewHolder;
     if (paramView == null)
     {
-      paramView = new GameMsgQuickReplayAdapter.ViewHolder();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559266, paramViewGroup, false);
-      paramView.a = ((TextView)localView.findViewById(2131378033));
-      localView.setTag(paramView);
-      localObject = a(paramInt);
-      boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-      if (!bool) {
-        break label151;
-      }
-      paramView.a.setTextColor(Color.parseColor("#ffffff"));
-      label83:
-      if (!bool) {
-        break label166;
-      }
-      localView.setBackgroundDrawable(localView.getResources().getDrawable(2130838748));
+      localViewHolder = new GameMsgQuickReplayAdapter.ViewHolder();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559140, paramViewGroup, false);
+      localViewHolder.a = ((TextView)paramView.findViewById(2131377458));
+      paramView.setTag(localViewHolder);
     }
-    for (;;)
+    else
     {
-      paramView.a.setText(((GameMsgQuickReplyInfo)localObject).a);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (GameMsgQuickReplayAdapter.ViewHolder)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label151:
-      paramView.a.setTextColor(Color.parseColor("#1C1D1E"));
-      break label83;
-      label166:
-      localView.setBackgroundDrawable(localView.getResources().getDrawable(2130838747));
+      localViewHolder = (GameMsgQuickReplayAdapter.ViewHolder)paramView.getTag();
     }
+    GameMsgQuickReplyInfo localGameMsgQuickReplyInfo = a(paramInt);
+    boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
+    if (bool) {
+      localViewHolder.a.setTextColor(Color.parseColor("#ffffff"));
+    } else {
+      localViewHolder.a.setTextColor(Color.parseColor("#1C1D1E"));
+    }
+    if (bool) {
+      paramView.setBackgroundDrawable(paramView.getResources().getDrawable(2130838593));
+    } else {
+      paramView.setBackgroundDrawable(paramView.getResources().getDrawable(2130838592));
+    }
+    localViewHolder.a.setText(localGameMsgQuickReplyInfo.a);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.adapter.GameMsgQuickReplayAdapter
  * JD-Core Version:    0.7.0.1
  */

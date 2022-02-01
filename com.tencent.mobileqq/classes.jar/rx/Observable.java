@@ -670,19 +670,21 @@ public class Observable<T>
   
   public static Observable<Integer> range(int paramInt1, int paramInt2)
   {
-    if (paramInt2 < 0) {
-      throw new IllegalArgumentException("Count can not be negative");
-    }
-    if (paramInt2 == 0) {
-      return empty();
-    }
-    if (paramInt1 > 2147483647 - paramInt2 + 1) {
+    if (paramInt2 >= 0)
+    {
+      if (paramInt2 == 0) {
+        return empty();
+      }
+      if (paramInt1 <= 2147483647 - paramInt2 + 1)
+      {
+        if (paramInt2 == 1) {
+          return just(Integer.valueOf(paramInt1));
+        }
+        return create(new OnSubscribeRange(paramInt1, paramInt2 - 1 + paramInt1));
+      }
       throw new IllegalArgumentException("start + count can not exceed Integer.MAX_VALUE");
     }
-    if (paramInt2 == 1) {
-      return just(Integer.valueOf(paramInt1));
-    }
-    return create(new OnSubscribeRange(paramInt1, paramInt2 - 1 + paramInt1));
+    throw new IllegalArgumentException("Count can not be negative");
   }
   
   public static Observable<Integer> range(int paramInt1, int paramInt2, Scheduler paramScheduler)
@@ -702,39 +704,45 @@ public class Observable<T>
   
   private static <T> Subscription subscribe(Subscriber<? super T> paramSubscriber, Observable<T> paramObservable)
   {
-    if (paramSubscriber == null) {
-      throw new IllegalArgumentException("observer can not be null");
-    }
-    if (paramObservable.onSubscribe == null) {
+    if (paramSubscriber != null)
+    {
+      if (paramObservable.onSubscribe != null)
+      {
+        paramSubscriber.onStart();
+        Object localObject = paramSubscriber;
+        if (!(paramSubscriber instanceof SafeSubscriber)) {
+          localObject = new SafeSubscriber(paramSubscriber);
+        }
+        try
+        {
+          hook.onSubscribeStart(paramObservable, paramObservable.onSubscribe).call(localObject);
+          paramSubscriber = hook.onSubscribeReturn((Subscription)localObject);
+          return paramSubscriber;
+        }
+        catch (Throwable paramSubscriber)
+        {
+          Exceptions.throwIfFatal(paramSubscriber);
+          try
+          {
+            ((Subscriber)localObject).onError(hook.onSubscribeError(paramSubscriber));
+            return Subscriptions.unsubscribed();
+          }
+          catch (Throwable paramObservable)
+          {
+            Exceptions.throwIfFatal(paramObservable);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("Error occurred attempting to subscribe [");
+            ((StringBuilder)localObject).append(paramSubscriber.getMessage());
+            ((StringBuilder)localObject).append("] and then again while trying to pass to onError.");
+            paramSubscriber = new RuntimeException(((StringBuilder)localObject).toString(), paramObservable);
+            hook.onSubscribeError(paramSubscriber);
+            throw paramSubscriber;
+          }
+        }
+      }
       throw new IllegalStateException("onSubscribe function can not be null.");
     }
-    paramSubscriber.onStart();
-    Object localObject = paramSubscriber;
-    if (!(paramSubscriber instanceof SafeSubscriber)) {
-      localObject = new SafeSubscriber(paramSubscriber);
-    }
-    try
-    {
-      hook.onSubscribeStart(paramObservable, paramObservable.onSubscribe).call(localObject);
-      paramSubscriber = hook.onSubscribeReturn((Subscription)localObject);
-      return paramSubscriber;
-    }
-    catch (Throwable paramSubscriber)
-    {
-      Exceptions.throwIfFatal(paramSubscriber);
-      try
-      {
-        ((Subscriber)localObject).onError(hook.onSubscribeError(paramSubscriber));
-        return Subscriptions.unsubscribed();
-      }
-      catch (Throwable paramObservable)
-      {
-        Exceptions.throwIfFatal(paramObservable);
-        paramSubscriber = new RuntimeException("Error occurred attempting to subscribe [" + paramSubscriber.getMessage() + "] and then again while trying to pass to onError.", paramObservable);
-        hook.onSubscribeError(paramSubscriber);
-        throw paramSubscriber;
-      }
-    }
+    throw new IllegalArgumentException("observer can not be null");
   }
   
   public static <T> Observable<T> switchOnNext(Observable<? extends Observable<? extends T>> paramObservable)
@@ -968,10 +976,13 @@ public class Observable<T>
   @Experimental
   public final <R> Observable<R> concatMapEager(Func1<? super T, ? extends Observable<? extends R>> paramFunc1, int paramInt)
   {
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("capacityHint > 0 required but it was " + paramInt);
+    if (paramInt >= 1) {
+      return lift(new OperatorEagerConcatMap(paramFunc1, paramInt));
     }
-    return lift(new OperatorEagerConcatMap(paramFunc1, paramInt));
+    paramFunc1 = new StringBuilder();
+    paramFunc1.append("capacityHint > 0 required but it was ");
+    paramFunc1.append(paramInt);
+    throw new IllegalArgumentException(paramFunc1.toString());
   }
   
   public final <R> Observable<R> concatMapIterable(Func1<? super T, ? extends Iterable<? extends R>> paramFunc1)
@@ -1052,10 +1063,10 @@ public class Observable<T>
   @Experimental
   public final <U> Observable<T> delaySubscription(Observable<U> paramObservable)
   {
-    if (paramObservable == null) {
-      throw new NullPointerException();
+    if (paramObservable != null) {
+      return create(new OnSubscribeDelaySubscriptionOther(this, paramObservable));
     }
-    return create(new OnSubscribeDelaySubscriptionOther(this, paramObservable));
+    throw new NullPointerException();
   }
   
   public final <U> Observable<T> delaySubscription(Func0<? extends Observable<U>> paramFunc0)
@@ -1491,10 +1502,10 @@ public class Observable<T>
   
   public final <R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> paramFunc1, int paramInt, long paramLong, TimeUnit paramTimeUnit, Scheduler paramScheduler)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("bufferSize < 0");
+    if (paramInt >= 0) {
+      return OperatorReplay.multicastSelector(new Observable.18(this, paramInt, paramLong, paramTimeUnit, paramScheduler), paramFunc1);
     }
-    return OperatorReplay.multicastSelector(new Observable.18(this, paramInt, paramLong, paramTimeUnit, paramScheduler), paramFunc1);
+    throw new IllegalArgumentException("bufferSize < 0");
   }
   
   public final <R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> paramFunc1, int paramInt, Scheduler paramScheduler)
@@ -1534,10 +1545,10 @@ public class Observable<T>
   
   public final ConnectableObservable<T> replay(int paramInt, long paramLong, TimeUnit paramTimeUnit, Scheduler paramScheduler)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("bufferSize < 0");
+    if (paramInt >= 0) {
+      return OperatorReplay.create(this, paramLong, paramTimeUnit, paramScheduler, paramInt);
     }
-    return OperatorReplay.create(this, paramLong, paramTimeUnit, paramScheduler, paramInt);
+    throw new IllegalArgumentException("bufferSize < 0");
   }
   
   public final ConnectableObservable<T> replay(int paramInt, Scheduler paramScheduler)
@@ -1755,35 +1766,38 @@ public class Observable<T>
   
   public final Subscription subscribe(Action1<? super T> paramAction1)
   {
-    if (paramAction1 == null) {
-      throw new IllegalArgumentException("onNext can not be null");
+    if (paramAction1 != null) {
+      return subscribe(new Observable.27(this, paramAction1));
     }
-    return subscribe(new Observable.27(this, paramAction1));
+    throw new IllegalArgumentException("onNext can not be null");
   }
   
   public final Subscription subscribe(Action1<? super T> paramAction1, Action1<Throwable> paramAction11)
   {
-    if (paramAction1 == null) {
-      throw new IllegalArgumentException("onNext can not be null");
-    }
-    if (paramAction11 == null) {
+    if (paramAction1 != null)
+    {
+      if (paramAction11 != null) {
+        return subscribe(new Observable.28(this, paramAction11, paramAction1));
+      }
       throw new IllegalArgumentException("onError can not be null");
     }
-    return subscribe(new Observable.28(this, paramAction11, paramAction1));
+    throw new IllegalArgumentException("onNext can not be null");
   }
   
   public final Subscription subscribe(Action1<? super T> paramAction1, Action1<Throwable> paramAction11, Action0 paramAction0)
   {
-    if (paramAction1 == null) {
-      throw new IllegalArgumentException("onNext can not be null");
-    }
-    if (paramAction11 == null) {
+    if (paramAction1 != null)
+    {
+      if (paramAction11 != null)
+      {
+        if (paramAction0 != null) {
+          return subscribe(new Observable.29(this, paramAction0, paramAction11, paramAction1));
+        }
+        throw new IllegalArgumentException("onComplete can not be null");
+      }
       throw new IllegalArgumentException("onError can not be null");
     }
-    if (paramAction0 == null) {
-      throw new IllegalArgumentException("onComplete can not be null");
-    }
-    return subscribe(new Observable.29(this, paramAction0, paramAction11, paramAction1));
+    throw new IllegalArgumentException("onNext can not be null");
   }
   
   public final Observable<T> subscribeOn(Scheduler paramScheduler)
@@ -1968,10 +1982,10 @@ public class Observable<T>
   
   public final <U, V> Observable<T> timeout(Func0<? extends Observable<U>> paramFunc0, Func1<? super T, ? extends Observable<V>> paramFunc1, Observable<? extends T> paramObservable)
   {
-    if (paramFunc1 == null) {
-      throw new NullPointerException("timeoutSelector is null");
+    if (paramFunc1 != null) {
+      return lift(new OperatorTimeoutWithSelector(paramFunc0, paramFunc1, paramObservable));
     }
-    return lift(new OperatorTimeoutWithSelector(paramFunc0, paramFunc1, paramObservable));
+    throw new NullPointerException("timeoutSelector is null");
   }
   
   public final <V> Observable<T> timeout(Func1<? super T, ? extends Observable<V>> paramFunc1)
@@ -2093,7 +2107,11 @@ public class Observable<T>
       catch (Throwable paramSubscriber)
       {
         Exceptions.throwIfFatal(paramSubscriber);
-        paramSubscriber = new RuntimeException("Error occurred attempting to subscribe [" + localThrowable.getMessage() + "] and then again while trying to pass to onError.", paramSubscriber);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Error occurred attempting to subscribe [");
+        localStringBuilder.append(localThrowable.getMessage());
+        localStringBuilder.append("] and then again while trying to pass to onError.");
+        paramSubscriber = new RuntimeException(localStringBuilder.toString(), paramSubscriber);
         hook.onSubscribeError(paramSubscriber);
         throw paramSubscriber;
       }
@@ -2112,13 +2130,20 @@ public class Observable<T>
   
   public final Observable<Observable<T>> window(int paramInt1, int paramInt2)
   {
-    if (paramInt1 <= 0) {
-      throw new IllegalArgumentException("count > 0 required but it was " + paramInt1);
+    if (paramInt1 > 0)
+    {
+      if (paramInt2 > 0) {
+        return lift(new OperatorWindowWithSize(paramInt1, paramInt2));
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("skip > 0 required but it was ");
+      localStringBuilder.append(paramInt2);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    if (paramInt2 <= 0) {
-      throw new IllegalArgumentException("skip > 0 required but it was " + paramInt2);
-    }
-    return lift(new OperatorWindowWithSize(paramInt1, paramInt2));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("count > 0 required but it was ");
+    localStringBuilder.append(paramInt1);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public final Observable<Observable<T>> window(long paramLong1, long paramLong2, TimeUnit paramTimeUnit)
@@ -2189,7 +2214,7 @@ public class Observable<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.Observable
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,18 @@ class CameraProxy$2
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((paramInt == 1) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy$CameraAutoFocusCallBack != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy$CameraAutoFocusCallBack.onAutoFocusCallback(paramBoolean, true);
+    if (paramInt == 1)
+    {
+      CameraProxy.CameraAutoFocusCallBack localCameraAutoFocusCallBack = this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy$CameraAutoFocusCallBack;
+      if (localCameraAutoFocusCallBack != null) {
+        localCameraAutoFocusCallBack.a(paramBoolean, true);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.2
  * JD-Core Version:    0.7.0.1
  */

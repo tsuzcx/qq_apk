@@ -13,48 +13,45 @@ public class TencentDocAIOPlusPanelEntryConfigBean
   
   public static TencentDocAIOPlusPanelEntryConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    boolean bool = true;
     if (QLog.isColorLevel()) {
       QLog.d("TencentDocAIOPlusPanelEntryConfigBean", 2, "AIO_TENCENTDOC_ENTRY_CONFIG handleAioPlusPenalTencentDocEntryCofig");
     }
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0))
-    {
-      paramArrayOfQConfItem = null;
-      return paramArrayOfQConfItem;
+    TencentDocAIOPlusPanelEntryConfigBean localTencentDocAIOPlusPanelEntryConfigBean;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
+      localTencentDocAIOPlusPanelEntryConfigBean = new TencentDocAIOPlusPanelEntryConfigBean();
     }
-    TencentDocAIOPlusPanelEntryConfigBean localTencentDocAIOPlusPanelEntryConfigBean = new TencentDocAIOPlusPanelEntryConfigBean();
     for (;;)
     {
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
-        paramArrayOfQConfItem = localTencentDocAIOPlusPanelEntryConfigBean;
-        if (!localJSONObject.has("tencentDocAioSendEntry")) {
-          break;
-        }
-        localJSONObject = localJSONObject.getJSONObject("tencentDocAioSendEntry");
-        if (localJSONObject.has("aioSendDocSwitch"))
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        if (paramArrayOfQConfItem.has("tencentDocAioSendEntry"))
         {
-          if (localJSONObject.getInt("aioSendDocSwitch") == 1) {
+          paramArrayOfQConfItem = paramArrayOfQConfItem.getJSONObject("tencentDocAioSendEntry");
+          if (paramArrayOfQConfItem.has("aioSendDocSwitch"))
+          {
+            int i = paramArrayOfQConfItem.getInt("aioSendDocSwitch");
+            bool = true;
+            if (i != 1) {
+              break label125;
+            }
             localTencentDocAIOPlusPanelEntryConfigBean.jdField_a_of_type_Boolean = bool;
           }
-        }
-        else
-        {
-          paramArrayOfQConfItem = localTencentDocAIOPlusPanelEntryConfigBean;
-          if (!localJSONObject.has("webDocSelectorUrl")) {
-            break;
+          if (paramArrayOfQConfItem.has("webDocSelectorUrl"))
+          {
+            localTencentDocAIOPlusPanelEntryConfigBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.getString("webDocSelectorUrl");
+            return localTencentDocAIOPlusPanelEntryConfigBean;
           }
-          localTencentDocAIOPlusPanelEntryConfigBean.jdField_a_of_type_JavaLangString = localJSONObject.getString("webDocSelectorUrl");
-          return localTencentDocAIOPlusPanelEntryConfigBean;
         }
       }
       catch (JSONException paramArrayOfQConfItem)
       {
         paramArrayOfQConfItem.printStackTrace();
-        return localTencentDocAIOPlusPanelEntryConfigBean;
       }
-      bool = false;
+      return localTencentDocAIOPlusPanelEntryConfigBean;
+      return null;
+      label125:
+      boolean bool = false;
     }
   }
   
@@ -73,7 +70,7 @@ public class TencentDocAIOPlusPanelEntryConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocAIOPlusPanelEntryConfigBean
  * JD-Core Version:    0.7.0.1
  */

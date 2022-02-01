@@ -43,20 +43,25 @@ class SVHwEncoder$HwEncode$HwTimeTool
   
   void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_Int < 3))
+    long[] arrayOfLong;
+    if (paramBoolean)
     {
-      arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
       i1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i1 + 1);
+      if (i1 < 3)
+      {
+        arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+        this.jdField_a_of_type_Int = (i1 + 1);
+        arrayOfLong[i1] = System.currentTimeMillis();
+        return;
+      }
+    }
+    int i1 = this.jdField_b_of_type_Int;
+    if (i1 < 3)
+    {
+      arrayOfLong = this.jdField_b_of_type_ArrayOfLong;
+      this.jdField_b_of_type_Int = (i1 + 1);
       arrayOfLong[i1] = System.currentTimeMillis();
     }
-    while (this.jdField_b_of_type_Int >= 3) {
-      return;
-    }
-    long[] arrayOfLong = this.jdField_b_of_type_ArrayOfLong;
-    int i1 = this.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Int = (i1 + 1);
-    arrayOfLong[i1] = System.currentTimeMillis();
   }
   
   long b()
@@ -69,29 +74,72 @@ class SVHwEncoder$HwEncode$HwTimeTool
   
   void b(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_c_of_type_Int < 3))
+    Object localObject1;
+    long l1;
+    Object localObject2;
+    int i2;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int] = (System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int]);
-      this.jdField_c_of_type_Int += 1;
-      if (this.jdField_c_of_type_Int == 3)
+      i1 = this.jdField_c_of_type_Int;
+      if (i1 < 3)
       {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "videoEncodeTime:cnt20=" + this.jdField_a_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_a_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_a_of_type_ArrayOfLong[2]);
-        this.jdField_a_of_type_ArrayOfLong[0] = ((this.jdField_a_of_type_ArrayOfLong[0] + this.jdField_a_of_type_ArrayOfLong[1] + this.jdField_a_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "videoEncodeTime:timeout=" + this.jdField_a_of_type_ArrayOfLong[0]);
+        localObject1 = this.jdField_a_of_type_ArrayOfLong;
+        l1 = System.currentTimeMillis();
+        localObject2 = this.jdField_a_of_type_ArrayOfLong;
+        i2 = this.jdField_c_of_type_Int;
+        localObject1[i1] = (l1 - localObject2[i2]);
+        this.jdField_c_of_type_Int = (i2 + 1);
+        if (this.jdField_c_of_type_Int != 3) {
+          return;
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("videoEncodeTime:cnt20=");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ArrayOfLong[0]);
+        ((StringBuilder)localObject2).append(" cnt1=");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ArrayOfLong[1]);
+        ((StringBuilder)localObject2).append(" cnt2");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ArrayOfLong[2]);
+        ((SVHwEncoder)localObject1).a("hw_video_time_used_msg", ((StringBuilder)localObject2).toString());
+        localObject1 = this.jdField_a_of_type_ArrayOfLong;
+        localObject1[0] = ((localObject1[0] + localObject1[1] + localObject1[2]) / 3L * 1000L / 2L);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("videoEncodeTime:timeout=");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ArrayOfLong[0]);
+        ((SVHwEncoder)localObject1).a("hw_video_time_used_msg", ((StringBuilder)localObject2).toString());
+        return;
       }
     }
-    do
+    int i1 = this.jdField_d_of_type_Int;
+    if (i1 < 3)
     {
-      do
+      localObject1 = this.jdField_b_of_type_ArrayOfLong;
+      l1 = System.currentTimeMillis();
+      localObject2 = this.jdField_b_of_type_ArrayOfLong;
+      i2 = this.jdField_d_of_type_Int;
+      localObject1[i1] = (l1 - localObject2[i2]);
+      this.jdField_d_of_type_Int = (i2 + 1);
+      if (this.jdField_d_of_type_Int == 3)
       {
-        return;
-      } while (this.jdField_d_of_type_Int >= 3);
-      this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int] = (System.currentTimeMillis() - this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int]);
-      this.jdField_d_of_type_Int += 1;
-    } while (this.jdField_d_of_type_Int != 3);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "audioEncodeTime:cnt20=" + this.jdField_b_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_b_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_b_of_type_ArrayOfLong[2]);
-    this.jdField_b_of_type_ArrayOfLong[0] = ((this.jdField_b_of_type_ArrayOfLong[0] + this.jdField_b_of_type_ArrayOfLong[1] + this.jdField_b_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "audioEncodeTime:timeout=" + this.jdField_b_of_type_ArrayOfLong[0]);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("audioEncodeTime:cnt20=");
+        ((StringBuilder)localObject2).append(this.jdField_b_of_type_ArrayOfLong[0]);
+        ((StringBuilder)localObject2).append(" cnt1=");
+        ((StringBuilder)localObject2).append(this.jdField_b_of_type_ArrayOfLong[1]);
+        ((StringBuilder)localObject2).append(" cnt2");
+        ((StringBuilder)localObject2).append(this.jdField_b_of_type_ArrayOfLong[2]);
+        ((SVHwEncoder)localObject1).a("hw_video_time_used_msg", ((StringBuilder)localObject2).toString());
+        localObject1 = this.jdField_b_of_type_ArrayOfLong;
+        localObject1[0] = ((localObject1[0] + localObject1[1] + localObject1[2]) / 3L * 1000L / 2L);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("audioEncodeTime:timeout=");
+        ((StringBuilder)localObject2).append(this.jdField_b_of_type_ArrayOfLong[0]);
+        ((SVHwEncoder)localObject1).a("hw_video_time_used_msg", ((StringBuilder)localObject2).toString());
+      }
+    }
   }
   
   long c()
@@ -114,44 +162,83 @@ class SVHwEncoder$HwEncode$HwTimeTool
         this.q = l1;
       }
     }
-    do
+    else
     {
-      return;
       if (l1 > this.t) {
         this.t = l1;
       }
-    } while (l1 >= this.s);
-    this.s = l1;
+      if (l1 < this.s) {
+        this.s = l1;
+      }
+    }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mThumbGen=").append(this.l).append(" ");
-    localStringBuilder.append("mThumbGenFunc=").append(this.m).append(" ");
-    localStringBuilder.append("mMuxerCreate=").append(this.n).append(" ");
-    localStringBuilder.append("mMuxerAdd=").append(this.o).append(" ");
-    localStringBuilder.append("mMuxerStart=").append(this.p).append(" ");
-    localStringBuilder.append("mWriteVideoMax=").append(this.r).append(" ");
-    localStringBuilder.append("mWriteVideoMIn=").append(this.q).append(" ");
-    localStringBuilder.append("mWriteAudioMax=").append(this.t).append(" ");
-    localStringBuilder.append("mWriteAudioMIn=").append(this.s).append(" ");
-    localStringBuilder.append("vConfig=").append(this.jdField_b_of_type_Long).append(" ");
-    localStringBuilder.append("vInit=").append(this.jdField_c_of_type_Long).append(" ");
-    localStringBuilder.append("vStart=").append(this.jdField_d_of_type_Long).append(" ");
-    localStringBuilder.append("vStop=").append(this.e).append(" ");
-    localStringBuilder.append("vRelease=").append(this.f).append(" ");
-    localStringBuilder.append("aConfig=").append(this.g).append(" ");
-    localStringBuilder.append("aInit=").append(this.h).append(" ");
-    localStringBuilder.append("aStart=").append(this.i).append(" ");
-    localStringBuilder.append("aStop=").append(this.j).append(" ");
-    localStringBuilder.append("aRelease=").append(this.k).append(" ");
+    localStringBuilder.append("mThumbGen=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("mThumbGenFunc=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("mMuxerCreate=");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("mMuxerAdd=");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("mMuxerStart=");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("mWriteVideoMax=");
+    localStringBuilder.append(this.r);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("mWriteVideoMIn=");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("mWriteAudioMax=");
+    localStringBuilder.append(this.t);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("mWriteAudioMIn=");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("vConfig=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("vInit=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("vStart=");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("vStop=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("vRelease=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("aConfig=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("aInit=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("aStart=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("aStop=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("aRelease=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(" ");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode.HwTimeTool
  * JD-Core Version:    0.7.0.1
  */

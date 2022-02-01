@@ -17,13 +17,14 @@ class QavDoubleVideoSharpnessMangaer$QavClickableSpan
   
   public void onClick(View paramView)
   {
-    if (this.a == null) {}
-    do
-    {
+    paramView = this.a;
+    if (paramView == null) {
       return;
-      paramView = (QavDoubleVideoSharpnessMangaer)this.a.get();
-    } while (paramView == null);
-    paramView.d();
+    }
+    paramView = (QavDoubleVideoSharpnessMangaer)paramView.get();
+    if (paramView != null) {
+      paramView.d();
+    }
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -35,7 +36,7 @@ class QavDoubleVideoSharpnessMangaer$QavClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavDoubleVideoSharpnessMangaer.QavClickableSpan
  * JD-Core Version:    0.7.0.1
  */

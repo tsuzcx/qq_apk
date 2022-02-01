@@ -6,16 +6,16 @@ import java.util.ArrayList;
 
 public class b
 {
-  private int a;
-  private HippyRootView b;
-  private HippyMap c;
-  private ArrayList<a> d;
+  private final int a;
+  private final HippyRootView b;
+  private final ArrayList<a> c;
+  private HippyMap d;
   
   public b(int paramInt, HippyRootView paramHippyRootView)
   {
     this.a = paramInt;
     this.b = paramHippyRootView;
-    this.d = new ArrayList();
+    this.c = new ArrayList();
   }
   
   public int a()
@@ -25,13 +25,13 @@ public class b
   
   public void a(HippyMap paramHippyMap)
   {
-    this.c = paramHippyMap;
+    this.d = paramHippyMap;
   }
   
   public void a(a parama)
   {
-    if (!this.d.contains(parama)) {
-      this.d.add(parama);
+    if (!this.c.contains(parama)) {
+      this.c.add(parama);
     }
   }
   
@@ -42,17 +42,17 @@ public class b
   
   public HippyMap c()
   {
-    return this.c;
+    return this.d;
   }
   
   public ArrayList<a> d()
   {
-    return this.d;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.animation.b
  * JD-Core Version:    0.7.0.1
  */

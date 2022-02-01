@@ -29,8 +29,9 @@ public class Photo
   {
     this.width = paramPhoto.width;
     this.height = paramPhoto.height;
-    if (this.texture != -20000) {
-      RendererUtils.clearTexture(this.texture);
+    int i = this.texture;
+    if (i != -20000) {
+      RendererUtils.clearTexture(i);
     }
     this.texture = RendererUtils.createTexture();
     GLES20.glActiveTexture(33984);
@@ -47,8 +48,9 @@ public class Photo
   {
     this.width = paramPhoto.width;
     this.height = paramPhoto.height;
-    if (this.texture != -20000) {
-      RendererUtils.clearTexture(this.texture);
+    int i = this.texture;
+    if (i != -20000) {
+      RendererUtils.clearTexture(i);
     }
     paramPhoto = paramPhoto.save();
     this.texture = RendererUtils.createTexture(paramPhoto);
@@ -123,19 +125,22 @@ public class Photo
   
   public void clear()
   {
-    if (this.texture != -20000)
+    int i = this.texture;
+    if (i != -20000)
     {
-      RendererUtils.clearTexture(this.texture);
+      RendererUtils.clearTexture(i);
       this.texture = -20000;
     }
   }
   
   public void copy(Photo paramPhoto)
   {
-    if (this.texture == paramPhoto.texture()) {
-      throw new IllegalArgumentException();
+    if (this.texture != paramPhoto.texture())
+    {
+      copyFBO(paramPhoto);
+      return;
     }
-    copyFBO(paramPhoto);
+    throw new IllegalArgumentException();
   }
   
   public int height()
@@ -169,19 +174,13 @@ public class Photo
       Bitmap localBitmap = RendererUtils.saveTexture(i, this.width, this.height);
       localObject = localBitmap;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        localOutOfMemoryError.printStackTrace();
-      }
+      localOutOfMemoryError.printStackTrace();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
     if (DeviceAttrs.getInstance().gpuProcessNeedBackTexture) {
       RendererUtils.clearTexture(i);
@@ -243,7 +242,7 @@ public class Photo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.view.Photo
  * JD-Core Version:    0.7.0.1
  */

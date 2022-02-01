@@ -18,19 +18,34 @@ public class GapDataCollector$RefreshData
     this.c = paramLong3;
     this.d = paramLong4;
     this.e = paramLong5;
-    this.f = ((0.9D + paramDouble));
+    this.f = ((paramDouble + 0.9D));
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
   }
   
   public String toString()
   {
-    return "70% :  " + this.c + " --------- 80% : " + this.b + " --------- 90% : " + this.jdField_a_of_type_Long + " --------- min : " + this.d + " --------- max : " + this.e + " --------- num : " + this.jdField_a_of_type_Int + "--------arr" + this.jdField_a_of_type_ArrayOfLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("70% :  ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" --------- 80% : ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" --------- 90% : ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" --------- min : ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" --------- max : ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" --------- num : ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("--------arr");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfLong);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.GapDataCollector.RefreshData
  * JD-Core Version:    0.7.0.1
  */

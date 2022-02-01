@@ -13,20 +13,21 @@ public class Elf64Header
     this.bigEndian = paramBoolean;
     this.parser = paramElfParser;
     ByteBuffer localByteBuffer = ByteBuffer.allocate(8);
-    if (paramBoolean) {}
-    for (ByteOrder localByteOrder = ByteOrder.BIG_ENDIAN;; localByteOrder = ByteOrder.LITTLE_ENDIAN)
-    {
-      localByteBuffer.order(localByteOrder);
-      this.type = paramElfParser.readHalf(localByteBuffer, 16L);
-      this.phoff = paramElfParser.readLong(localByteBuffer, 32L);
-      this.shoff = paramElfParser.readLong(localByteBuffer, 40L);
-      this.phentsize = paramElfParser.readHalf(localByteBuffer, 54L);
-      this.phnum = paramElfParser.readHalf(localByteBuffer, 56L);
-      this.shentsize = paramElfParser.readHalf(localByteBuffer, 58L);
-      this.shnum = paramElfParser.readHalf(localByteBuffer, 60L);
-      this.shstrndx = paramElfParser.readHalf(localByteBuffer, 62L);
-      return;
+    ByteOrder localByteOrder;
+    if (paramBoolean) {
+      localByteOrder = ByteOrder.BIG_ENDIAN;
+    } else {
+      localByteOrder = ByteOrder.LITTLE_ENDIAN;
     }
+    localByteBuffer.order(localByteOrder);
+    this.type = paramElfParser.readHalf(localByteBuffer, 16L);
+    this.phoff = paramElfParser.readLong(localByteBuffer, 32L);
+    this.shoff = paramElfParser.readLong(localByteBuffer, 40L);
+    this.phentsize = paramElfParser.readHalf(localByteBuffer, 54L);
+    this.phnum = paramElfParser.readHalf(localByteBuffer, 56L);
+    this.shentsize = paramElfParser.readHalf(localByteBuffer, 58L);
+    this.shnum = paramElfParser.readHalf(localByteBuffer, 60L);
+    this.shstrndx = paramElfParser.readHalf(localByteBuffer, 62L);
   }
   
   public Elf.DynamicStructure getDynamicStructure(long paramLong, int paramInt)
@@ -46,7 +47,7 @@ public class Elf64Header
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.extra.relinker.elf.Elf64Header
  * JD-Core Version:    0.7.0.1
  */

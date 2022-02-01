@@ -24,11 +24,13 @@ public class InputSurface
   
   public InputSurface(Surface paramSurface)
   {
-    if (paramSurface == null) {
-      throw new NullPointerException();
+    if (paramSurface != null)
+    {
+      this.mSurface = paramSurface;
+      eglSetup();
+      return;
     }
-    this.mSurface = paramSurface;
-    eglSetup();
+    throw new NullPointerException();
   }
   
   void checkEglError(String paramString)
@@ -39,49 +41,65 @@ public class InputSurface
       if (j == 12288) {
         break;
       }
-      Log.e("InputSurface", paramString + ": EGL error: 0x" + Integer.toHexString(j));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": EGL error: 0x");
+      localStringBuilder.append(Integer.toHexString(j));
+      Log.e("InputSurface", localStringBuilder.toString());
     }
-    if (i != 0) {
-      throw new RuntimeException("EGL error encountered (see log)");
+    if (i == 0) {
+      return;
+    }
+    paramString = new RuntimeException("EGL error encountered (see log)");
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
   void eglSetup()
   {
     this.mEGLDisplay = EGL14.eglGetDisplay(0);
-    if (this.mEGLDisplay == EGL14.EGL_NO_DISPLAY) {
-      throw new RuntimeException("unable to get EGL14 display");
-    }
-    Object localObject = new int[2];
-    if (!EGL14.eglInitialize(this.mEGLDisplay, (int[])localObject, 0, (int[])localObject, 1))
+    if (this.mEGLDisplay != EGL14.EGL_NO_DISPLAY)
     {
+      Object localObject = new int[2];
+      if (EGL14.eglInitialize(this.mEGLDisplay, (int[])localObject, 0, (int[])localObject, 1))
+      {
+        localObject = new EGLConfig[1];
+        int[] arrayOfInt = new int[1];
+        EGLDisplay localEGLDisplay = this.mEGLDisplay;
+        int i = localObject.length;
+        if (EGL14.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12352, 4, 12610, 1, 12344 }, 0, (EGLConfig[])localObject, 0, i, arrayOfInt, 0))
+        {
+          this.mEGLContext = EGL14.eglCreateContext(this.mEGLDisplay, localObject[0], EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
+          checkEglError("eglCreateContext");
+          if (this.mEGLContext != null)
+          {
+            this.mEGLSurface = EGL14.eglCreateWindowSurface(this.mEGLDisplay, localObject[0], this.mSurface, new int[] { 12344 }, 0);
+            checkEglError("eglCreateWindowSurface");
+            if (this.mEGLSurface != null) {
+              return;
+            }
+            throw new RuntimeException("surface was null");
+          }
+          throw new RuntimeException("null context");
+        }
+        throw new RuntimeException("unable to find RGB888+recordable ES2 EGL config");
+      }
       this.mEGLDisplay = null;
       throw new RuntimeException("unable to initialize EGL14");
     }
-    localObject = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    EGLDisplay localEGLDisplay = this.mEGLDisplay;
-    int i = localObject.length;
-    if (!EGL14.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12352, 4, 12610, 1, 12344 }, 0, (EGLConfig[])localObject, 0, i, arrayOfInt, 0)) {
-      throw new RuntimeException("unable to find RGB888+recordable ES2 EGL config");
-    }
-    this.mEGLContext = EGL14.eglCreateContext(this.mEGLDisplay, localObject[0], EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
-    checkEglError("eglCreateContext");
-    if (this.mEGLContext == null) {
-      throw new RuntimeException("null context");
-    }
-    this.mEGLSurface = EGL14.eglCreateWindowSurface(this.mEGLDisplay, localObject[0], this.mSurface, new int[] { 12344 }, 0);
-    checkEglError("eglCreateWindowSurface");
-    if (this.mEGLSurface == null) {
-      throw new RuntimeException("surface was null");
-    }
+    throw new RuntimeException("unable to get EGL14 display");
   }
   
   public void makeCurrent()
   {
-    if (!EGL14.eglMakeCurrent(this.mEGLDisplay, this.mEGLSurface, this.mEGLSurface, this.mEGLContext)) {
-      throw new RuntimeException("eglMakeCurrent failed");
+    EGLDisplay localEGLDisplay = this.mEGLDisplay;
+    EGLSurface localEGLSurface = this.mEGLSurface;
+    if (EGL14.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.mEGLContext)) {
+      return;
     }
+    throw new RuntimeException("eglMakeCurrent failed");
   }
   
   public void release()
@@ -115,7 +133,7 @@ public class InputSurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmedia.videocompress.mediacodec.InputSurface
  * JD-Core Version:    0.7.0.1
  */

@@ -75,95 +75,97 @@ public class BlockAdPlugin
   
   private void createAdBlockView(BlockAdInfo paramBlockAdInfo, String paramString, RequestEvent paramRequestEvent, Bundle paramBundle)
   {
-    if (((AdProxy)ProxyManager.get(AdProxy.class) == null) || (paramBlockAdInfo == null)) {
-      QMLog.i("BlockAdPlugin", "start create, null");
-    }
-    do
+    if (((AdProxy)ProxyManager.get(AdProxy.class) != null) && (paramBlockAdInfo != null))
     {
-      return;
       paramString = ((AdProxy)ProxyManager.get(AdProxy.class)).createBlockAdView(this.mMiniAppContext.getAttachedActivity(), paramString, paramBlockAdInfo.getAdUnitId(), paramBlockAdInfo.getLeft(), paramBlockAdInfo.getTop(), paramBlockAdInfo.getSize(), paramBlockAdInfo.getOri(), paramBlockAdInfo.getCompId(), new BlockAdPlugin.2(this, paramRequestEvent, paramBlockAdInfo), paramBundle);
-    } while (paramString == null);
-    try
-    {
-      paramString.loadAD();
-      this.mBlockAdViewMap.put(Integer.valueOf(paramBlockAdInfo.getCompId()), paramString);
-      this.mBlockAdInfoMap.put(Integer.valueOf(paramBlockAdInfo.getCompId()), paramBlockAdInfo);
+      if (paramString != null) {
+        try
+        {
+          paramString.loadAD();
+          this.mBlockAdViewMap.put(Integer.valueOf(paramBlockAdInfo.getCompId()), paramString);
+          this.mBlockAdInfoMap.put(Integer.valueOf(paramBlockAdInfo.getCompId()), paramBlockAdInfo);
+          return;
+        }
+        catch (Throwable paramBlockAdInfo)
+        {
+          QMLog.i("BlockAdPlugin", "loadAd error", paramBlockAdInfo);
+        }
+      }
       return;
     }
-    catch (Throwable paramBlockAdInfo)
-    {
-      QMLog.i("BlockAdPlugin", "loadAd error", paramBlockAdInfo);
-    }
+    QMLog.i("BlockAdPlugin", "start create, null");
   }
   
   private void destroyBlockAd(int paramInt)
   {
-    for (;;)
+    try
     {
-      try
+      if ((this.mBlockAdViewMap != null) && (this.mBlockAdViewMap.get(Integer.valueOf(paramInt)) != null) && (((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).getView() != null))
       {
-        if ((this.mBlockAdViewMap == null) || (this.mBlockAdViewMap.get(Integer.valueOf(paramInt)) == null) || (((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).getView() == null))
+        if ((this.mBlockAdInfoMap != null) && (this.mBlockAdInfoMap.get(Integer.valueOf(paramInt)) != null))
         {
-          QMLog.e("BlockAdPlugin", "showBannerAd error, view is null");
+          AdProxy.AbsBlockAdView localAbsBlockAdView = (AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt));
+          ViewGroup localViewGroup = (ViewGroup)this.mMiniAppContext.getAttachedActivity().getWindow().getDecorView();
+          if (localViewGroup == null)
+          {
+            QMLog.e("BlockAdPlugin", "showBlockAd, root view is null");
+            return;
+          }
+          localViewGroup.removeView(localAbsBlockAdView.getView());
+          this.mBlockAdInfoMap.remove(Integer.valueOf(paramInt));
+          this.mBlockAdViewMap.remove(Integer.valueOf(paramInt));
+          localAbsBlockAdView.clearBlockAdAnimation(localAbsBlockAdView);
           return;
         }
-        if ((this.mBlockAdInfoMap == null) || (this.mBlockAdInfoMap.get(Integer.valueOf(paramInt)) == null))
-        {
-          QMLog.e("BlockAdPlugin", "showBannerAd error, data is null");
-          continue;
-        }
-        localAbsBlockAdView = (AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt));
+        QMLog.e("BlockAdPlugin", "showBannerAd error, data is null");
+        return;
       }
-      finally {}
-      AdProxy.AbsBlockAdView localAbsBlockAdView;
-      ViewGroup localViewGroup = (ViewGroup)this.mMiniAppContext.getAttachedActivity().getWindow().getDecorView();
-      if (localViewGroup == null)
-      {
-        QMLog.e("BlockAdPlugin", "showBlockAd, root view is null");
-      }
-      else
-      {
-        localViewGroup.removeView(localAbsBlockAdView.getView());
-        this.mBlockAdInfoMap.remove(Integer.valueOf(paramInt));
-        this.mBlockAdViewMap.remove(Integer.valueOf(paramInt));
-        localAbsBlockAdView.clearBlockAdAnimation(localAbsBlockAdView);
-      }
+      QMLog.e("BlockAdPlugin", "showBannerAd error, view is null");
+      return;
     }
+    finally {}
   }
   
   private int gameDpTopx(float paramFloat)
   {
-    return Math.round(this.mGameDensity * paramFloat);
+    return Math.round(paramFloat * this.mGameDensity);
   }
   
   private boolean handleBlockAdType(int paramInt1, int paramInt2, BlockAdInfo paramBlockAdInfo, boolean paramBoolean)
   {
-    switch (paramInt1)
+    boolean bool;
+    if (paramInt1 != 1)
     {
-    default: 
-      return paramBoolean;
-    case 1: 
-      if (paramBlockAdInfo.getLeft() != paramInt2) {}
-      for (bool = true;; bool = false)
+      if (paramInt1 != 2) {
+        return paramBoolean;
+      }
+      if (paramBlockAdInfo.getTop() != paramInt2) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
+      }
+      bool = paramBoolean;
+      if (paramBoolean)
       {
-        paramBoolean = bool;
-        if (!bool) {
-          break;
-        }
-        paramBlockAdInfo.setLeft(paramInt2);
-        return bool;
+        paramBlockAdInfo.setTop(paramInt2);
+        return paramBoolean;
       }
     }
-    if (paramBlockAdInfo.getTop() != paramInt2) {}
-    for (boolean bool = true;; bool = false)
+    else
     {
-      paramBoolean = bool;
-      if (!bool) {
-        break;
+      if (paramBlockAdInfo.getLeft() != paramInt2) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
       }
-      paramBlockAdInfo.setTop(paramInt2);
-      return bool;
+      bool = paramBoolean;
+      if (paramBoolean)
+      {
+        paramBlockAdInfo.setLeft(paramInt2);
+        bool = paramBoolean;
+      }
     }
+    return bool;
   }
   
   private void informJs(RequestEvent paramRequestEvent, JSONObject paramJSONObject, String paramString)
@@ -171,260 +173,317 @@ public class BlockAdPlugin
     paramRequestEvent.jsService.evaluateSubscribeJS(paramString, paramJSONObject.toString(), 0);
   }
   
+  /* Error */
   private BlockAdInfo parseBlockAdInfoFromJson(String paramString)
   {
-    int n = -1;
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        int m;
-        int k;
-        int j;
-        int i;
-        label103:
-        Object localObject1;
-        try
-        {
-          localObject2 = new JSONObject(paramString);
-          str1 = ((JSONObject)localObject2).getString("adUnitId");
-        }
-        catch (Exception localException1)
-        {
-          String str1;
-          String str2;
-          boolean bool;
-          int i1;
-          j = -1;
-          k = -1;
-          i = -1;
-          localObject2 = "";
-          m = -1;
-          QMLog.i("BlockAdPlugin", "parseBannerAdPosInfoFromJson error " + paramString, localException1);
-          localObject1 = localObject2;
-          continue;
-        }
-        try
-        {
-          m = ((JSONObject)localObject2).getJSONObject("style").getInt("left");
-        }
-        catch (Exception localException2)
-        {
-          j = -1;
-          k = -1;
-          i = -1;
-          m = -1;
-          localObject2 = localObject1;
-          localObject1 = localException2;
-          continue;
-        }
-        try
-        {
-          k = ((JSONObject)localObject2).getJSONObject("style").getInt("top");
-        }
-        catch (Exception localException3)
-        {
-          j = -1;
-          i = -1;
-          k = -1;
-          localObject2 = localObject1;
-          localObject1 = localException3;
-          continue;
-        }
-        try
-        {
-          j = ((JSONObject)localObject2).optInt("size", 1);
-        }
-        catch (Exception localException4)
-        {
-          i = -1;
-          j = -1;
-          localObject2 = localObject1;
-          localObject1 = localException4;
-          continue;
-        }
-        for (;;)
-        {
-          try
-          {
-            str2 = ((JSONObject)localObject2).optString("orientation", "landscape");
-            bool = "landscape".equals(str2);
-            if (bool) {
-              i = 90;
-            }
-          }
-          catch (Exception localException5)
-          {
-            i = -1;
-            localObject2 = localObject1;
-            localObject1 = localException5;
-            break label198;
-            break label103;
-          }
-          try
-          {
-            i1 = ((JSONObject)localObject2).getInt("compId");
-            n = i1;
-            if ((TextUtils.isEmpty(str1)) || (m < 0) || (k < 0) || (n < 0) || (i < 0)) {
-              break;
-            }
-            return new BlockAdInfo(str1, m, k, j, i, n);
-          }
-          catch (Exception localException6)
-          {
-            localObject2 = localObject1;
-            localObject1 = localException6;
-            break label198;
-            i = -1;
-          }
-        }
-      }
-      bool = "vertical".equals(str2);
-      if (!bool) {
-        break label320;
-      }
-      i = 0;
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: invokestatic 277	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifeq +5 -> 9
+    //   7: aconst_null
+    //   8: areturn
+    //   9: ldc_w 279
+    //   12: astore 9
+    //   14: aload 9
+    //   16: astore 10
+    //   18: new 258	org/json/JSONObject
+    //   21: dup
+    //   22: aload_1
+    //   23: invokespecial 282	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   26: astore 11
+    //   28: aload 9
+    //   30: astore 10
+    //   32: aload 11
+    //   34: ldc_w 284
+    //   37: invokevirtual 288	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   40: astore 9
+    //   42: aload 9
+    //   44: astore 10
+    //   46: aload 11
+    //   48: ldc_w 290
+    //   51: invokevirtual 294	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   54: ldc_w 296
+    //   57: invokevirtual 300	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   60: istore_3
+    //   61: aload 11
+    //   63: ldc_w 290
+    //   66: invokevirtual 294	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   69: ldc_w 302
+    //   72: invokevirtual 300	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   75: istore 4
+    //   77: aload 11
+    //   79: ldc_w 304
+    //   82: iconst_1
+    //   83: invokevirtual 308	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   86: istore 5
+    //   88: aload 11
+    //   90: ldc_w 310
+    //   93: ldc 27
+    //   95: invokevirtual 314	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   98: astore 10
+    //   100: ldc 27
+    //   102: aload 10
+    //   104: invokevirtual 320	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   107: ifeq +9 -> 116
+    //   110: bipush 90
+    //   112: istore_2
+    //   113: goto +24 -> 137
+    //   116: ldc 30
+    //   118: aload 10
+    //   120: invokevirtual 320	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   123: istore 8
+    //   125: iload 8
+    //   127: ifeq +8 -> 135
+    //   130: iconst_0
+    //   131: istore_2
+    //   132: goto +5 -> 137
+    //   135: iconst_m1
+    //   136: istore_2
+    //   137: aload 11
+    //   139: ldc_w 322
+    //   142: invokevirtual 300	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   145: istore 7
+    //   147: iload 4
+    //   149: istore 6
+    //   151: iload 7
+    //   153: istore 4
+    //   155: iload_2
+    //   156: istore 7
+    //   158: iload 5
+    //   160: istore_2
+    //   161: iload 7
+    //   163: istore 5
+    //   165: iload 4
+    //   167: istore 7
+    //   169: goto +100 -> 269
+    //   172: astore 10
+    //   174: goto +41 -> 215
+    //   177: astore 10
+    //   179: goto +34 -> 213
+    //   182: astore 10
+    //   184: goto +26 -> 210
+    //   187: astore 10
+    //   189: iconst_m1
+    //   190: istore 4
+    //   192: goto +18 -> 210
+    //   195: astore 11
+    //   197: iconst_m1
+    //   198: istore 4
+    //   200: iconst_m1
+    //   201: istore_3
+    //   202: aload 10
+    //   204: astore 9
+    //   206: aload 11
+    //   208: astore 10
+    //   210: iconst_m1
+    //   211: istore 5
+    //   213: iconst_m1
+    //   214: istore_2
+    //   215: new 324	java/lang/StringBuilder
+    //   218: dup
+    //   219: invokespecial 325	java/lang/StringBuilder:<init>	()V
+    //   222: astore 11
+    //   224: aload 11
+    //   226: ldc_w 327
+    //   229: invokevirtual 331	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   232: pop
+    //   233: aload 11
+    //   235: aload_1
+    //   236: invokevirtual 331	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: ldc 33
+    //   242: aload 11
+    //   244: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   247: aload 10
+    //   249: invokestatic 190	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   252: iload 5
+    //   254: istore 6
+    //   256: iconst_m1
+    //   257: istore 7
+    //   259: iload_2
+    //   260: istore 5
+    //   262: iload 6
+    //   264: istore_2
+    //   265: iload 4
+    //   267: istore 6
+    //   269: aload 9
+    //   271: invokestatic 277	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   274: ifne +42 -> 316
+    //   277: iload_3
+    //   278: iflt +38 -> 316
+    //   281: iload 6
+    //   283: iflt +33 -> 316
+    //   286: iload 7
+    //   288: iflt +28 -> 316
+    //   291: iload 5
+    //   293: ifge +5 -> 298
+    //   296: aconst_null
+    //   297: areturn
+    //   298: new 138	com/tencent/qqmini/minigame/model/BlockAdInfo
+    //   301: dup
+    //   302: aload 9
+    //   304: iload_3
+    //   305: iload 6
+    //   307: iload_2
+    //   308: iload 5
+    //   310: iload 7
+    //   312: invokespecial 335	com/tencent/qqmini/minigame/model/BlockAdInfo:<init>	(Ljava/lang/String;IIIII)V
+    //   315: areturn
+    //   316: aconst_null
+    //   317: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	318	0	this	BlockAdPlugin
+    //   0	318	1	paramString	String
+    //   112	196	2	i	int
+    //   60	245	3	j	int
+    //   75	191	4	k	int
+    //   86	223	5	m	int
+    //   149	157	6	n	int
+    //   145	166	7	i1	int
+    //   123	3	8	bool	boolean
+    //   12	291	9	localObject1	Object
+    //   16	103	10	localObject2	Object
+    //   172	1	10	localException1	java.lang.Exception
+    //   177	1	10	localException2	java.lang.Exception
+    //   182	1	10	localException3	java.lang.Exception
+    //   187	16	10	localException4	java.lang.Exception
+    //   208	40	10	localObject3	Object
+    //   26	112	11	localJSONObject	JSONObject
+    //   195	12	11	localException5	java.lang.Exception
+    //   222	21	11	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   137	147	172	java/lang/Exception
+    //   88	110	177	java/lang/Exception
+    //   116	125	177	java/lang/Exception
+    //   77	88	182	java/lang/Exception
+    //   61	77	187	java/lang/Exception
+    //   18	28	195	java/lang/Exception
+    //   32	42	195	java/lang/Exception
+    //   46	61	195	java/lang/Exception
   }
   
   private void reportBlockAd(String paramString)
   {
-    QMLog.i("BlockAdPlugin", "reportBlockAd reportUrl = " + paramString);
-    if ((TextUtils.isEmpty(paramString)) || (!URLUtil.isNetworkUrl(paramString))) {
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reportBlockAd reportUrl = ");
+    localStringBuilder.append(paramString);
+    QMLog.i("BlockAdPlugin", localStringBuilder.toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!URLUtil.isNetworkUrl(paramString)) {
+        return;
+      }
+      ThreadManager.executeOnNetworkIOThreadPool(new BlockAdPlugin.7(this, paramString));
     }
-    ThreadManager.executeOnNetworkIOThreadPool(new BlockAdPlugin.7(this, paramString));
   }
   
   private boolean showBlockAd(int paramInt)
   {
-    for (;;)
+    try
     {
-      BlockAdInfo localBlockAdInfo;
-      View localView;
-      ViewGroup localViewGroup;
-      try
+      if ((this.mBlockAdViewMap != null) && (this.mBlockAdViewMap.get(Integer.valueOf(paramInt)) != null) && (((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).getView() != null))
       {
-        if ((this.mBlockAdViewMap == null) || (this.mBlockAdViewMap.get(Integer.valueOf(paramInt)) == null) || (((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).getView() == null))
+        if ((this.mBlockAdInfoMap != null) && (this.mBlockAdInfoMap.get(Integer.valueOf(paramInt)) != null))
         {
-          QMLog.e("BlockAdPlugin", "showBannerAd error, view is null");
-          bool = false;
-          return bool;
-        }
-        if ((this.mBlockAdInfoMap == null) || (this.mBlockAdInfoMap.get(Integer.valueOf(paramInt)) == null))
-        {
-          QMLog.e("BlockAdPlugin", "showBannerAd error, data is null");
-          bool = false;
-          continue;
-        }
-        Object localObject1 = (AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt));
-        localBlockAdInfo = (BlockAdInfo)this.mBlockAdInfoMap.get(Integer.valueOf(paramInt));
-        localView = ((AdProxy.AbsBlockAdView)localObject1).getView();
-        if (localView == null)
-        {
-          bool = false;
-          continue;
-        }
-        localView.setVisibility(0);
-        if (localView.getParent() != null)
-        {
-          bool = true;
-          continue;
-        }
-        localViewGroup = (ViewGroup)this.mMiniAppContext.getAttachedActivity().getWindow().getDecorView();
-        if ((localViewGroup instanceof FrameLayout))
-        {
-          localObject3 = new FrameLayout.LayoutParams(-2, -2);
-          ((FrameLayout.LayoutParams)localObject3).leftMargin = gameDpTopx(localBlockAdInfo.getLeft());
-          ((FrameLayout.LayoutParams)localObject3).topMargin = gameDpTopx(localBlockAdInfo.getTop());
-          localViewGroup.addView(localView, (ViewGroup.LayoutParams)localObject3);
+          Object localObject1 = (AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt));
+          BlockAdInfo localBlockAdInfo = (BlockAdInfo)this.mBlockAdInfoMap.get(Integer.valueOf(paramInt));
+          View localView = ((AdProxy.AbsBlockAdView)localObject1).getView();
+          if (localView == null) {
+            return false;
+          }
+          localView.setVisibility(0);
+          Object localObject3 = localView.getParent();
+          if (localObject3 != null) {
+            return true;
+          }
+          localObject3 = (ViewGroup)this.mMiniAppContext.getAttachedActivity().getWindow().getDecorView();
+          Object localObject4;
+          if ((localObject3 instanceof FrameLayout))
+          {
+            localObject4 = new FrameLayout.LayoutParams(-2, -2);
+            ((FrameLayout.LayoutParams)localObject4).leftMargin = gameDpTopx(localBlockAdInfo.getLeft());
+            ((FrameLayout.LayoutParams)localObject4).topMargin = gameDpTopx(localBlockAdInfo.getTop());
+            ((ViewGroup)localObject3).addView(localView, (ViewGroup.LayoutParams)localObject4);
+          }
+          else if ((localObject3 instanceof RelativeLayout))
+          {
+            localObject4 = new RelativeLayout.LayoutParams(-2, -2);
+            ((RelativeLayout.LayoutParams)localObject4).leftMargin = gameDpTopx(localBlockAdInfo.getLeft());
+            ((RelativeLayout.LayoutParams)localObject4).topMargin = gameDpTopx(localBlockAdInfo.getTop());
+            ((ViewGroup)localObject3).addView(localView, (ViewGroup.LayoutParams)localObject4);
+          }
           ((AdProxy.AbsBlockAdView)localObject1).showBlockAdAnimation((AdProxy.AbsBlockAdView)localObject1);
           localObject1 = ((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).getReportUrl();
-          if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0)) {
-            break label367;
+          if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
+          {
+            localObject1 = ((ArrayList)localObject1).iterator();
+            while (((Iterator)localObject1).hasNext()) {
+              reportBlockAd((String)((Iterator)localObject1).next());
+            }
           }
-          localObject1 = ((ArrayList)localObject1).iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break label367;
-          }
-          reportBlockAd((String)((Iterator)localObject1).next());
-          continue;
+          return true;
         }
-        if (!(localViewGroup instanceof RelativeLayout)) {
-          continue;
-        }
+        QMLog.e("BlockAdPlugin", "showBannerAd error, data is null");
+        return false;
       }
-      finally {}
-      Object localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject3).leftMargin = gameDpTopx(localBlockAdInfo.getLeft());
-      ((RelativeLayout.LayoutParams)localObject3).topMargin = gameDpTopx(localBlockAdInfo.getTop());
-      localViewGroup.addView(localView, (ViewGroup.LayoutParams)localObject3);
-      continue;
-      label367:
-      boolean bool = true;
+      QMLog.e("BlockAdPlugin", "showBannerAd error, view is null");
+      return false;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   private boolean updateBlockAd(int paramInt)
   {
-    for (;;)
+    try
     {
-      try
+      if ((this.mBlockAdViewMap != null) && (this.mBlockAdViewMap.get(Integer.valueOf(paramInt)) != null) && (((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).getView() != null))
       {
-        if ((this.mBlockAdViewMap == null) || (this.mBlockAdViewMap.get(Integer.valueOf(paramInt)) == null) || (((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).getView() == null))
+        if ((this.mBlockAdInfoMap != null) && (this.mBlockAdInfoMap.get(Integer.valueOf(paramInt)) != null))
         {
-          QMLog.e("BlockAdPlugin", "showBannerAd error, view is null");
-          bool = false;
-          return bool;
+          if ((ViewGroup)this.mMiniAppContext.getAttachedActivity().getWindow().getDecorView() == null)
+          {
+            QMLog.e("BlockAdPlugin", "showBlockAd, root view is null");
+            return false;
+          }
+          BlockAdInfo localBlockAdInfo = (BlockAdInfo)this.mBlockAdInfoMap.get(Integer.valueOf(paramInt));
+          if (localBlockAdInfo == null) {
+            return false;
+          }
+          Object localObject2 = (AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt));
+          View localView = ((AdProxy.AbsBlockAdView)localObject2).updateAdInfo(localBlockAdInfo.getLeft(), localBlockAdInfo.getTop());
+          if (localView == null) {
+            return false;
+          }
+          ((AdProxy.AbsBlockAdView)localObject2).showBlockAdAnimation((AdProxy.AbsBlockAdView)localObject2);
+          if ((localView.getLayoutParams() instanceof FrameLayout.LayoutParams))
+          {
+            localObject2 = (FrameLayout.LayoutParams)localView.getLayoutParams();
+            ((FrameLayout.LayoutParams)localObject2).leftMargin = gameDpTopx(localBlockAdInfo.getLeft());
+            ((FrameLayout.LayoutParams)localObject2).topMargin = gameDpTopx(localBlockAdInfo.getTop());
+            localView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          }
+          else if ((localView.getLayoutParams() instanceof RelativeLayout.LayoutParams))
+          {
+            localObject2 = (RelativeLayout.LayoutParams)localView.getLayoutParams();
+            ((RelativeLayout.LayoutParams)localObject2).leftMargin = gameDpTopx(localBlockAdInfo.getLeft());
+            ((RelativeLayout.LayoutParams)localObject2).topMargin = gameDpTopx(localBlockAdInfo.getTop());
+            localView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          }
+          return true;
         }
-        if ((this.mBlockAdInfoMap == null) || (this.mBlockAdInfoMap.get(Integer.valueOf(paramInt)) == null))
-        {
-          QMLog.e("BlockAdPlugin", "showBannerAd error, data is null");
-          bool = false;
-          continue;
-        }
-        if ((ViewGroup)this.mMiniAppContext.getAttachedActivity().getWindow().getDecorView() == null)
-        {
-          QMLog.e("BlockAdPlugin", "showBlockAd, root view is null");
-          bool = false;
-          continue;
-        }
-        BlockAdInfo localBlockAdInfo = (BlockAdInfo)this.mBlockAdInfoMap.get(Integer.valueOf(paramInt));
-        if (localBlockAdInfo == null)
-        {
-          bool = false;
-          continue;
-        }
-        Object localObject2 = (AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt));
-        View localView = ((AdProxy.AbsBlockAdView)localObject2).updateAdInfo(localBlockAdInfo.getLeft(), localBlockAdInfo.getTop());
-        if (localView == null)
-        {
-          bool = false;
-          continue;
-        }
-        ((AdProxy.AbsBlockAdView)localObject2).showBlockAdAnimation((AdProxy.AbsBlockAdView)localObject2);
-        if ((localView.getLayoutParams() instanceof FrameLayout.LayoutParams))
-        {
-          localObject2 = (FrameLayout.LayoutParams)localView.getLayoutParams();
-          ((FrameLayout.LayoutParams)localObject2).leftMargin = gameDpTopx(localBlockAdInfo.getLeft());
-          ((FrameLayout.LayoutParams)localObject2).topMargin = gameDpTopx(localBlockAdInfo.getTop());
-          localView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        }
-        else if ((localView.getLayoutParams() instanceof RelativeLayout.LayoutParams))
-        {
-          localObject2 = (RelativeLayout.LayoutParams)localView.getLayoutParams();
-          ((RelativeLayout.LayoutParams)localObject2).leftMargin = gameDpTopx(localBlockAdInfo.getLeft());
-          ((RelativeLayout.LayoutParams)localObject2).topMargin = gameDpTopx(localBlockAdInfo.getTop());
-          localView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        }
+        QMLog.e("BlockAdPlugin", "showBannerAd error, data is null");
+        return false;
       }
-      finally {}
-      boolean bool = true;
+      QMLog.e("BlockAdPlugin", "showBannerAd error, view is null");
+      return false;
     }
+    finally {}
   }
   
   @JsEvent({"createBlockAd"})
@@ -436,22 +495,14 @@ public class BlockAdPlugin
       QMLog.i("BlockAdPlugin", "handle createBlockAd event, req == null");
       return "";
     }
-    int i = -1;
     try
     {
-      int j = new JSONObject(paramRequestEvent.jsonParams).getInt("compId");
-      i = j;
+      i = new JSONObject(paramRequestEvent.jsonParams).getInt("compId");
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QMLog.i("BlockAdPlugin", "handle createBlockAd,", localJSONException);
-      }
-      localObject3 = this.mMiniAppInfo;
-      if (localObject3 == null) {
-        break label421;
-      }
+      QMLog.i("BlockAdPlugin", "handle createBlockAd,", localJSONException);
+      i = -1;
     }
     BlockAdInfo localBlockAdInfo = parseBlockAdInfoFromJson(paramRequestEvent.jsonParams);
     if (localBlockAdInfo == null)
@@ -459,185 +510,114 @@ public class BlockAdPlugin
       blockErrorStateCallbackDelay(paramRequestEvent, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), i, 300);
       return "";
     }
+    Object localObject4 = this.mMiniAppInfo;
+    Object localObject1;
+    Object localObject2;
     Object localObject3;
     String str1;
-    label165:
-    String str2;
-    Object localObject2;
-    if (((MiniAppInfo)localObject3).launchParam != null) {
-      if (((MiniAppInfo)localObject3).launchParam.entryPath != null)
-      {
-        localObject1 = ((MiniAppInfo)localObject3).launchParam.entryPath;
-        if (((MiniAppInfo)localObject3).launchParam == null) {
-          break label400;
-        }
-        str1 = ((MiniAppInfo)localObject3).launchParam.reportData;
-        str2 = String.valueOf(((MiniAppInfo)localObject3).launchParam.scene);
-        localObject2 = localObject1;
-      }
-    }
-    for (Object localObject1 = str2;; localObject1 = "")
+    if ((localObject4 != null) && (((MiniAppInfo)localObject4).launchParam != null))
     {
-      label206:
-      Object localObject4;
-      String str3;
-      Bundle localBundle;
-      if ((localObject3 != null) && (((MiniAppInfo)localObject3).via != null))
-      {
-        str2 = ((MiniAppInfo)localObject3).via;
-        localObject3 = this.mApkgInfo.appId;
-        i = 1;
-        localObject4 = this.mMiniAppContext.getAttachedActivity();
-        if (localObject4 != null)
-        {
-          i = MiniAppEnv.g().getContext().getResources().getConfiguration().orientation;
-          initActivitySize((Activity)localObject4);
-        }
-        str3 = LoginManager.getInstance().getAccount();
-        localObject4 = AdUtil.getSpAdGdtCookie(13);
-        localBundle = new Bundle();
-        localBundle.putString(AdProxy.KEY_ACCOUNT, str3);
-        localBundle.putInt(AdProxy.KEY_AD_TYPE, 13);
-        str3 = AdProxy.KEY_ORIENTATION;
-        if (i != 2) {
-          break label416;
-        }
-      }
-      label400:
-      label416:
-      for (i = 90;; i = 0)
-      {
-        localBundle.putInt(str3, i);
-        localBundle.putString(AdProxy.KEY_GDT_COOKIE, (String)localObject4);
-        localBundle.putString(AdProxy.KEY_ENTRY_PATH, (String)localObject2);
-        localBundle.putString(AdProxy.KEY_REPORT_DATA, str1);
-        localBundle.putString(AdProxy.KEY_REFER, (String)localObject1);
-        localBundle.putString(AdProxy.KEY_VIA, str2);
-        AppBrandTask.runTaskOnUiThread(new BlockAdPlugin.1(this, localBlockAdInfo, (String)localObject3, paramRequestEvent, localBundle));
-        return "";
+      if (((MiniAppInfo)localObject4).launchParam.entryPath != null) {
+        localObject1 = ((MiniAppInfo)localObject4).launchParam.entryPath;
+      } else {
         localObject1 = "";
-        break;
-        str1 = "";
-        break label165;
-        str2 = "";
-        break label206;
       }
-      label421:
-      str1 = "";
-      localObject2 = "";
+      if (((MiniAppInfo)localObject4).launchParam != null) {
+        localObject2 = ((MiniAppInfo)localObject4).launchParam.reportData;
+      } else {
+        localObject2 = "";
+      }
+      localObject3 = String.valueOf(((MiniAppInfo)localObject4).launchParam.scene);
     }
+    else
+    {
+      str1 = "";
+      localObject1 = str1;
+      localObject3 = localObject1;
+      localObject2 = localObject1;
+      localObject1 = str1;
+    }
+    if ((localObject4 != null) && (((MiniAppInfo)localObject4).via != null)) {
+      str1 = ((MiniAppInfo)localObject4).via;
+    } else {
+      str1 = "";
+    }
+    localObject4 = this.mApkgInfo.appId;
+    int i = 1;
+    Object localObject5 = this.mMiniAppContext.getAttachedActivity();
+    if (localObject5 != null)
+    {
+      i = MiniAppEnv.g().getContext().getResources().getConfiguration().orientation;
+      initActivitySize((Activity)localObject5);
+    }
+    String str2 = LoginManager.getInstance().getAccount();
+    localObject5 = AdUtil.getSpAdGdtCookie(13);
+    Bundle localBundle = new Bundle();
+    localBundle.putString(AdProxy.KEY_ACCOUNT, str2);
+    localBundle.putInt(AdProxy.KEY_AD_TYPE, 13);
+    str2 = AdProxy.KEY_ORIENTATION;
+    if (i == 2) {
+      i = 90;
+    } else {
+      i = 0;
+    }
+    localBundle.putInt(str2, i);
+    localBundle.putString(AdProxy.KEY_GDT_COOKIE, (String)localObject5);
+    localBundle.putString(AdProxy.KEY_ENTRY_PATH, (String)localObject1);
+    localBundle.putString(AdProxy.KEY_REPORT_DATA, (String)localObject2);
+    localBundle.putString(AdProxy.KEY_REFER, (String)localObject3);
+    localBundle.putString(AdProxy.KEY_VIA, str1);
+    AppBrandTask.runTaskOnUiThread(new BlockAdPlugin.1(this, localBlockAdInfo, (String)localObject4, paramRequestEvent, localBundle));
+    return "";
   }
   
-  /* Error */
   public boolean hideBlockAd(int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 57	com/tencent/qqmini/minigame/plugins/BlockAdPlugin:mBlockAdViewMap	Ljava/util/HashMap;
-    //   6: ifnull +37 -> 43
-    //   9: aload_0
-    //   10: getfield 57	com/tencent/qqmini/minigame/plugins/BlockAdPlugin:mBlockAdViewMap	Ljava/util/HashMap;
-    //   13: iload_1
-    //   14: invokestatic 186	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   17: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   20: ifnull +23 -> 43
-    //   23: aload_0
-    //   24: getfield 57	com/tencent/qqmini/minigame/plugins/BlockAdPlugin:mBlockAdViewMap	Ljava/util/HashMap;
-    //   27: iload_1
-    //   28: invokestatic 186	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   31: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   34: checkcast 177	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView
-    //   37: invokevirtual 202	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:getView	()Landroid/view/View;
-    //   40: ifnonnull +16 -> 56
-    //   43: ldc 33
-    //   45: ldc 204
-    //   47: invokestatic 207	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   50: iconst_0
-    //   51: istore_2
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: iload_2
-    //   55: ireturn
-    //   56: aload_0
-    //   57: getfield 59	com/tencent/qqmini/minigame/plugins/BlockAdPlugin:mBlockAdInfoMap	Ljava/util/HashMap;
-    //   60: ifnull +17 -> 77
-    //   63: aload_0
-    //   64: getfield 59	com/tencent/qqmini/minigame/plugins/BlockAdPlugin:mBlockAdInfoMap	Ljava/util/HashMap;
-    //   67: iload_1
-    //   68: invokestatic 186	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   71: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   74: ifnonnull +15 -> 89
-    //   77: ldc 33
-    //   79: ldc 209
-    //   81: invokestatic 207	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   84: iconst_0
-    //   85: istore_2
-    //   86: goto -34 -> 52
-    //   89: aload_0
-    //   90: getfield 57	com/tencent/qqmini/minigame/plugins/BlockAdPlugin:mBlockAdViewMap	Ljava/util/HashMap;
-    //   93: iload_1
-    //   94: invokestatic 186	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   97: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   100: checkcast 177	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView
-    //   103: astore_3
-    //   104: aload_3
-    //   105: invokevirtual 202	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:getView	()Landroid/view/View;
-    //   108: astore 4
-    //   110: aload 4
-    //   112: ifnonnull +8 -> 120
-    //   115: iconst_0
-    //   116: istore_2
-    //   117: goto -65 -> 52
-    //   120: aload 4
-    //   122: bipush 8
-    //   124: invokevirtual 360	android/view/View:setVisibility	(I)V
-    //   127: aload_3
-    //   128: aload_3
-    //   129: invokevirtual 235	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:clearBlockAdAnimation	(Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView;)V
-    //   132: iconst_1
-    //   133: istore_2
-    //   134: goto -82 -> 52
-    //   137: astore_3
-    //   138: aload_0
-    //   139: monitorexit
-    //   140: aload_3
-    //   141: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	142	0	this	BlockAdPlugin
-    //   0	142	1	paramInt	int
-    //   51	83	2	bool	boolean
-    //   103	26	3	localAbsBlockAdView	AdProxy.AbsBlockAdView
-    //   137	4	3	localObject	Object
-    //   108	13	4	localView	View
-    // Exception table:
-    //   from	to	target	type
-    //   2	43	137	finally
-    //   43	50	137	finally
-    //   56	77	137	finally
-    //   77	84	137	finally
-    //   89	110	137	finally
-    //   120	132	137	finally
+    try
+    {
+      if ((this.mBlockAdViewMap != null) && (this.mBlockAdViewMap.get(Integer.valueOf(paramInt)) != null) && (((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).getView() != null))
+      {
+        if ((this.mBlockAdInfoMap != null) && (this.mBlockAdInfoMap.get(Integer.valueOf(paramInt)) != null))
+        {
+          AdProxy.AbsBlockAdView localAbsBlockAdView = (AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt));
+          View localView = localAbsBlockAdView.getView();
+          if (localView == null) {
+            return false;
+          }
+          localView.setVisibility(8);
+          localAbsBlockAdView.clearBlockAdAnimation(localAbsBlockAdView);
+          return true;
+        }
+        QMLog.e("BlockAdPlugin", "showBannerAd error, data is null");
+        return false;
+      }
+      QMLog.e("BlockAdPlugin", "showBannerAd error, view is null");
+      return false;
+    }
+    finally {}
   }
   
   public void initActivitySize(Activity paramActivity)
   {
-    if (this.mGameDensity > 0.0F) {}
-    do
-    {
+    if (this.mGameDensity > 0.0F) {
       return;
-      DisplayMetrics localDisplayMetrics = paramActivity.getResources().getDisplayMetrics();
-      if (Build.VERSION.SDK_INT >= 17)
-      {
-        localDisplayMetrics = new DisplayMetrics();
-        ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getRealMetrics(localDisplayMetrics);
-      }
-      this.mGameDensity = localDisplayMetrics.density;
-      QMLog.i("BlockAdPlugin", "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + ViewUtils.getDensity());
-    } while (this.mGameDensity != -1.0F);
-    this.mGameDensity = ViewUtils.getDensity();
+    }
+    DisplayMetrics localDisplayMetrics = paramActivity.getResources().getDisplayMetrics();
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      localDisplayMetrics = new DisplayMetrics();
+      ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getRealMetrics(localDisplayMetrics);
+    }
+    this.mGameDensity = localDisplayMetrics.density;
+    paramActivity = new StringBuilder();
+    paramActivity.append("density = ");
+    paramActivity.append(localDisplayMetrics.density);
+    paramActivity.append(", ViewUtils.density = ");
+    paramActivity.append(ViewUtils.getDensity());
+    QMLog.i("BlockAdPlugin", paramActivity.toString());
+    if (this.mGameDensity == -1.0F) {
+      this.mGameDensity = ViewUtils.getDensity();
+    }
   }
   
   @JsEvent({"operateBlockAd"})
@@ -646,37 +626,38 @@ public class BlockAdPlugin
     QMLog.i("BlockAdPlugin", "receive operateBlockAd event");
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      str = localJSONObject.getString("type");
-      i = localJSONObject.getInt("compId");
-      QMLog.i("BlockAdPlugin", "handle operateBlockAd type = " + str);
-      if ("show".equals(str)) {
+      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+      String str = ((JSONObject)localObject).getString("type");
+      int i = ((JSONObject)localObject).getInt("compId");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handle operateBlockAd type = ");
+      ((StringBuilder)localObject).append(str);
+      QMLog.i("BlockAdPlugin", ((StringBuilder)localObject).toString());
+      if ("show".equals(str))
+      {
         AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.3(this, i, paramRequestEvent), 300L);
       }
-      for (;;)
+      else if ("hide".equals(str))
       {
-        return "";
-        if (!"hide".equals(str)) {
-          break;
-        }
         AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.4(this, i), 300L);
+      }
+      else if ("destroy".equals(str))
+      {
+        AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.5(this, i), 300L);
+      }
+      else
+      {
+        paramRequestEvent = new StringBuilder();
+        paramRequestEvent.append("handle operateBlockAd not define type = ");
+        paramRequestEvent.append(str);
+        QMLog.i("BlockAdPlugin", paramRequestEvent.toString());
       }
     }
     catch (JSONException paramRequestEvent)
     {
-      for (;;)
-      {
-        String str;
-        int i;
-        QMLog.i("BlockAdPlugin", "handle operateBlockAd parse json error", paramRequestEvent);
-        continue;
-        if ("destroy".equals(str)) {
-          AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.5(this, i), 300L);
-        } else {
-          QMLog.i("BlockAdPlugin", "handle operateBlockAd not define type = " + str);
-        }
-      }
+      QMLog.i("BlockAdPlugin", "handle operateBlockAd parse json error", paramRequestEvent);
     }
+    return "";
   }
   
   @JsEvent({"updateBlockAdSize"})
@@ -687,49 +668,50 @@ public class BlockAdPlugin
     {
       try
       {
-        localObject = new JSONObject(paramRequestEvent.jsonParams);
-        k = ((JSONObject)localObject).getInt("compId");
-        if (!((JSONObject)localObject).has("left")) {
-          continue;
+        Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+        int k = ((JSONObject)localObject).getInt("compId");
+        if (((JSONObject)localObject).has("left"))
+        {
+          i = ((JSONObject)localObject).getInt("left");
+          j = 1;
         }
-        i = ((JSONObject)localObject).getInt("left");
-        j = 1;
+        else
+        {
+          if (!((JSONObject)localObject).has("top")) {
+            break label159;
+          }
+          j = 2;
+          i = ((JSONObject)localObject).getInt("top");
+        }
+        if (j != -1)
+        {
+          localObject = (BlockAdInfo)this.mBlockAdInfoMap.get(Integer.valueOf(k));
+          if (localObject != null)
+          {
+            if (!handleBlockAdType(j, i, (BlockAdInfo)localObject, true))
+            {
+              QMLog.e("BlockAdPlugin", "updateBlockAd no need to resize");
+              return "";
+            }
+            callbackUpdateSuccess(paramRequestEvent, k, (BlockAdInfo)localObject);
+            return "";
+          }
+        }
       }
       catch (JSONException paramRequestEvent)
       {
-        Object localObject;
-        int k;
         QMLog.i("BlockAdPlugin", "handle updateBlockAdSize parse json error", paramRequestEvent);
-        continue;
-        int i = -1;
-        int j = -1;
-        continue;
       }
-      if (j == -1) {
-        continue;
-      }
-      localObject = (BlockAdInfo)this.mBlockAdInfoMap.get(Integer.valueOf(k));
-      if (localObject == null) {
-        continue;
-      }
-      if (handleBlockAdType(j, i, (BlockAdInfo)localObject, true)) {
-        continue;
-      }
-      QMLog.e("BlockAdPlugin", "updateBlockAd no need to resize");
       return "";
-      if (!((JSONObject)localObject).has("top")) {
-        continue;
-      }
-      i = ((JSONObject)localObject).getInt("top");
-      j = 2;
+      label159:
+      int i = -1;
+      int j = -1;
     }
-    callbackUpdateSuccess(paramRequestEvent, k, (BlockAdInfo)localObject);
-    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.BlockAdPlugin
  * JD-Core Version:    0.7.0.1
  */

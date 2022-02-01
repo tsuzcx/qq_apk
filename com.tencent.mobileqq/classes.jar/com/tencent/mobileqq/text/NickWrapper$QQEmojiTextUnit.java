@@ -21,15 +21,19 @@ class NickWrapper$QQEmojiTextUnit
   float a(@NonNull Paint paramPaint)
   {
     float f = this.a.getDrawable().getBounds().width();
-    if (QLog.isColorLevel()) {
-      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
+    if (QLog.isColorLevel())
+    {
+      paramPaint = new StringBuilder();
+      paramPaint.append("getWidth normal span width ");
+      paramPaint.append(f);
+      QLog.d("NickWrapper", 2, paramPaint.toString());
     }
     return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.NickWrapper.QQEmojiTextUnit
  * JD-Core Version:    0.7.0.1
  */

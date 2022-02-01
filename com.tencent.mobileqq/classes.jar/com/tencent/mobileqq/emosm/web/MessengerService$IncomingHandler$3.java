@@ -29,12 +29,11 @@ class MessengerService$IncomingHandler$3
           this.jdField_a_of_type_AndroidOsBundle.putString("br", ((BubbleDiyEntity)paramObject.get(0)).bottomRightId);
         }
       }
-      for (;;)
+      else
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-        return;
         this.jdField_a_of_type_AndroidOsBundle.putString("diyText", "");
       }
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
       return;
     }
     catch (Exception paramObject)
@@ -47,7 +46,7 @@ class MessengerService$IncomingHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.3
  * JD-Core Version:    0.7.0.1
  */

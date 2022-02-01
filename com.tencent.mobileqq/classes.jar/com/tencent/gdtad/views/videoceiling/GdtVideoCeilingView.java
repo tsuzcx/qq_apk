@@ -8,17 +8,17 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
+import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasView;
 import com.tencent.ad.tangram.util.AdAppDeeplinkLauncher;
 import com.tencent.ad.tangram.util.AdAppDeeplinkLauncher.Params;
 import com.tencent.ad.tangram.util.AdAppDeeplinkLauncher.Result;
 import com.tencent.ad.tangram.util.AdAppUtil;
+import com.tencent.ad.tangram.views.canvas.framework.AdCanvasView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.gdtad.aditem.GdtAd;
@@ -87,55 +87,58 @@ public class GdtVideoCeilingView
       return;
     }
     boolean bool;
-    label76:
-    label80:
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (paramInt1 < paramInt2)
-    {
+    if (paramInt1 < paramInt2) {
       bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("GdtVideoCeilingView", 0, "updateLayout width " + paramInt1 + " height " + paramInt2 + " Portrait " + bool);
-      }
-      if (!bool) {
-        break label238;
-      }
-      paramInt1 = (int)(paramInt1 * 0.5625D);
-      if (paramInt1 <= 0) {
-        break label243;
-      }
-      this.jdField_a_of_type_Int = paramInt1;
-      if (QLog.isColorLevel()) {
-        QLog.d("GdtVideoCeilingView", 0, "videoView height " + this.jdField_a_of_type_Int);
-      }
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.getLayoutParams();
-      localLayoutParams.height = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setLayoutParams(localLayoutParams);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.height = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      if (paramInt2 <= 0) {
-        break label250;
-      }
-    }
-    for (;;)
-    {
-      this.b = paramInt2;
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.getLayoutParams();
-      localLayoutParams.topMargin = this.jdField_a_of_type_Int;
-      localLayoutParams.height = (this.b - this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setLayoutParams(localLayoutParams);
-      return;
+    } else {
       bool = false;
-      break;
-      label238:
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateLayout width ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" height ");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(" Portrait ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("GdtVideoCeilingView", 0, ((StringBuilder)localObject).toString());
+    }
+    if (bool)
+    {
+      double d = paramInt1;
+      Double.isNaN(d);
+      paramInt1 = (int)(d * 0.5625D);
+    }
+    else
+    {
       paramInt1 = paramInt2;
-      break label76;
-      label243:
+    }
+    if (paramInt1 <= 0) {
       paramInt1 = 607;
-      break label80;
-      label250:
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("videoView height ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      QLog.d("GdtVideoCeilingView", 0, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).height = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).height = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (paramInt2 <= 0) {
       paramInt2 = 1920;
     }
+    this.b = paramInt2;
+    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.getLayoutParams();
+    paramInt1 = this.jdField_a_of_type_Int;
+    ((RelativeLayout.LayoutParams)localObject).topMargin = paramInt1;
+    ((RelativeLayout.LayoutParams)localObject).height = (this.b - paramInt1);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
   
   private void a(RelativeLayout.LayoutParams paramLayoutParams, GdtVideoCeilingLandView paramGdtVideoCeilingLandView, boolean paramBoolean)
@@ -143,19 +146,23 @@ public class GdtVideoCeilingView
     if (paramGdtVideoCeilingLandView == null) {
       return;
     }
-    if (paramGdtVideoCeilingLandView.jdField_a_of_type_Int == 0) {}
-    for (paramLayoutParams.height = (this.b - this.jdField_a_of_type_Int);; paramLayoutParams.height = this.b)
+    if (paramGdtVideoCeilingLandView.jdField_a_of_type_Int == 0) {
+      paramLayoutParams.height = (this.b - this.jdField_a_of_type_Int);
+    } else {
+      paramLayoutParams.height = this.b;
+    }
+    paramGdtVideoCeilingLandView.jdField_a_of_type_Boolean = false;
+    paramGdtVideoCeilingLandView.setLayoutParams(paramLayoutParams);
+    if (paramBoolean)
     {
-      paramGdtVideoCeilingLandView.jdField_a_of_type_Boolean = false;
-      paramGdtVideoCeilingLandView.setLayoutParams(paramLayoutParams);
-      if ((paramBoolean) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.d();
+      paramLayoutParams = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
+      if ((paramLayoutParams != null) && (paramLayoutParams.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b();
       }
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      return;
+    }
+    paramLayoutParams = this.jdField_a_of_type_AndroidViewView;
+    if (paramLayoutParams != null) {
+      paramLayoutParams.setVisibility(4);
     }
   }
   
@@ -166,27 +173,27 @@ public class GdtVideoCeilingView
   
   private void g()
   {
-    inflate(getContext(), 2131559320, this);
+    inflate(getContext(), 2131559198, this);
     i();
     h();
   }
   
   private void h()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131381417);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView = ((GdtVideoCeilingLandView)findViewById(2131367765));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131380675);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView = ((GdtVideoCeilingLandView)findViewById(2131367524));
     this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setGdtVideoCeilingListeners(this, this.jdField_a_of_type_ComTencentBizUiTouchWebView);
   }
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView = ((GdtVideoCommonView)findViewById(2131381229));
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView = ((GdtVideoCommonView)findViewById(2131380485));
     this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setOnVideoFullScreen(this);
   }
   
   private void j()
   {
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar = ((GdtVideoCeilingTitleBar)findViewById(2131381858));
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar = ((GdtVideoCeilingTitleBar)findViewById(2131381070));
     this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar.setOnBtnClickListener(this);
     this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar.b();
   }
@@ -194,7 +201,7 @@ public class GdtVideoCeilingView
   private void k()
   {
     AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131381861));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131381073));
     this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(getContext());
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
     this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder = new GdtVideoCeilingView.1(this, getContext(), a(), a(), localAppInterface);
@@ -204,23 +211,27 @@ public class GdtVideoCeilingView
   
   private void l()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData == null)
+    GdtVideoCeilingData localGdtVideoCeilingData = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData;
+    if (localGdtVideoCeilingData == null)
     {
       GdtLog.d("GdtVideoCeilingView", "doAppOpen data==null");
       return;
     }
-    switch (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getStyle())
+    int i = localGdtVideoCeilingData.getStyle();
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      GdtLog.d("GdtVideoCeilingView", "doAppOpen should not go here");
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        n();
+        return;
+      }
       m();
       return;
     }
-    n();
+    GdtLog.d("GdtVideoCeilingView", "doAppOpen should not go here");
   }
   
   private void m()
@@ -228,13 +239,16 @@ public class GdtVideoCeilingView
     Object localObject = new Bundle();
     ((Bundle)localObject).putString("big_brother_source_key", "biz_src_ads");
     localObject = AdAppUtil.launch(getContext(), this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getAd().getAppPackageName(), (Bundle)localObject);
-    StringBuilder localStringBuilder = new StringBuilder().append("doOpenMain result ");
-    if (localObject != null) {}
-    for (boolean bool = ((AdError)localObject).isSuccess();; bool = false)
-    {
-      GdtLog.a("GdtVideoCeilingView", bool);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doOpenMain result ");
+    boolean bool;
+    if (localObject != null) {
+      bool = ((AdError)localObject).isSuccess();
+    } else {
+      bool = false;
     }
+    localStringBuilder.append(bool);
+    GdtLog.a("GdtVideoCeilingView", localStringBuilder.toString());
   }
   
   private void n()
@@ -242,38 +256,42 @@ public class GdtVideoCeilingView
     Object localObject2 = new Bundle();
     ((Bundle)localObject2).putString("big_brother_source_key", "biz_src_ads");
     AdAppDeeplinkLauncher.Params localParams = new AdAppDeeplinkLauncher.Params();
-    Object localObject1;
-    if ((this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData != null) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getAd() != null))
-    {
+    Object localObject1 = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData;
+    if ((localObject1 != null) && (((GdtVideoCeilingData)localObject1).getAd() != null)) {
       localObject1 = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getAd().getAppDeeplink();
-      localParams.deeplink = ((String)localObject1);
-      localParams.addflags = 268435456;
-      localParams.extrasForIntent = ((Bundle)localObject2);
-      localObject1 = AdAppDeeplinkLauncher.launch(a(), localParams);
-      if ((localObject1 != null) && (((AdAppDeeplinkLauncher.Result)localObject1).isSuccess()) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData != null))
+    } else {
+      localObject1 = null;
+    }
+    localParams.deeplink = ((String)localObject1);
+    localParams.addflags = 268435456;
+    localParams.extrasForIntent = ((Bundle)localObject2);
+    localObject1 = AdAppDeeplinkLauncher.launch(a(), localParams);
+    if ((localObject1 != null) && (((AdAppDeeplinkLauncher.Result)localObject1).isSuccess()))
+    {
+      localObject2 = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData;
+      if (localObject2 != null)
       {
-        GdtTraceReporter.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getAd(), 246);
+        GdtTraceReporter.a(((GdtVideoCeilingData)localObject2).getAd(), 246);
         GdtTraceReporter.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getAd(), 290);
       }
-      localObject2 = new StringBuilder().append("doOpenDeepLink result ");
-      if (localObject1 == null) {
-        break label171;
-      }
     }
-    label171:
-    for (boolean bool = ((AdAppDeeplinkLauncher.Result)localObject1).isSuccess();; bool = false)
-    {
-      GdtLog.a("GdtVideoCeilingView", bool);
-      return;
-      localObject1 = null;
-      break;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("doOpenDeepLink result ");
+    boolean bool;
+    if (localObject1 != null) {
+      bool = ((AdAppDeeplinkLauncher.Result)localObject1).isSuccess();
+    } else {
+      bool = false;
     }
+    ((StringBuilder)localObject2).append(bool);
+    GdtLog.a("GdtVideoCeilingView", ((StringBuilder)localObject2).toString());
   }
   
   public long a()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) {
-      return this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a();
+    GdtVideoCommonView localGdtVideoCommonView = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
+    if (localGdtVideoCommonView != null) {
+      return localGdtVideoCommonView.a();
     }
     return 0L;
   }
@@ -285,32 +303,34 @@ public class GdtVideoCeilingView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a()) {}
-    for (paramInt = 1;; paramInt = 2)
-    {
-      this.c = paramInt;
-      return;
+    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a()) {
+      paramInt = 1;
+    } else {
+      paramInt = 2;
     }
+    this.c = paramInt;
   }
   
   public void a(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder.a(paramBundle);
+    GdtWebViewBuilder localGdtWebViewBuilder = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder;
+    if (localGdtWebViewBuilder != null) {
+      localGdtWebViewBuilder.a(paramBundle);
     }
   }
   
   public void a(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131363334)
     {
-    default: 
-      return;
-    case 2131363402: 
-      a();
+      if (i != 2131372123) {
+        return;
+      }
+      l();
       return;
     }
-    l();
+    a();
   }
   
   public void a(GdtVideoCeilingLandView paramGdtVideoCeilingLandView, int paramInt, boolean paramBoolean)
@@ -329,62 +349,78 @@ public class GdtVideoCeilingView
   
   public boolean a()
   {
-    boolean bool = true;
     GdtLog.a("GdtVideoCeilingView", "----back click");
-    String str = "";
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b())
+    boolean bool2 = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b();
+    boolean bool1 = true;
+    Object localObject;
+    if (bool2)
     {
       a();
-      str = " videoView.isFullScreen() result = true";
+      localObject = " videoView.isFullScreen() result = true";
     }
-    for (;;)
+    else
     {
-      GdtLog.a("GdtVideoCeilingView", "----back return " + bool + str);
-      return bool;
-      if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.jdField_a_of_type_ComTencentBizUiTouchWebView.canGoBack()))
+      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+      if ((localObject != null) && (((TouchWebView)localObject).canGoBack()))
       {
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.goBack();
-        str = " webView.goBack() result = true";
+        localObject = " webView.goBack() result = true";
       }
       else if (a() != null)
       {
         a().finish();
         a().overridePendingTransition(17432576, 17432577);
-        str = " getActivity().finish() result = true";
+        localObject = " getActivity().finish() result = true";
       }
       else
       {
-        bool = false;
+        bool1 = false;
+        localObject = "";
       }
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("----back return ");
+    localStringBuilder.append(bool1);
+    localStringBuilder.append((String)localObject);
+    GdtLog.a("GdtVideoCeilingView", localStringBuilder.toString());
+    return bool1;
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) && (!this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b())) {
+    GdtVideoCommonView localGdtVideoCommonView = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
+    if ((localGdtVideoCommonView != null) && (!localGdtVideoCommonView.b())) {
       this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setisFullScreen(true, 0);
     }
   }
   
   public void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.g();
-    }
-    d(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.jdField_a_of_type_Int);
-    int i = (int)(paramInt + 0.5F) + this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.getTop();
-    if (i > this.jdField_a_of_type_Int) {
-      paramInt = this.jdField_a_of_type_Int;
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView != null)
     {
-      GdtLog.b("GdtVideoCeilingView", "onDrag newTop " + paramInt);
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.getLayoutParams();
-      localLayoutParams.topMargin = paramInt;
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setLayoutParams(localLayoutParams);
+      if (this.jdField_a_of_type_AndroidViewView == null) {
+        return;
+      }
+      Object localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
+      if (localObject != null) {
+        ((GdtVideoCommonView)localObject).e();
+      }
+      d(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.jdField_a_of_type_Int);
+      paramInt = (int)(paramInt + 0.5F);
+      paramInt = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.getTop() + paramInt;
+      int i = this.jdField_a_of_type_Int;
+      if (paramInt > i) {
+        paramInt = i;
+      } else if (paramInt < 0) {
+        paramInt = 0;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDrag newTop ");
+      ((StringBuilder)localObject).append(paramInt);
+      GdtLog.b("GdtVideoCeilingView", ((StringBuilder)localObject).toString());
+      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).topMargin = paramInt;
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       try
       {
         if (this.jdField_a_of_type_Int == 0) {
@@ -400,124 +436,132 @@ public class GdtVideoCeilingView
       catch (Exception localException)
       {
         localException.printStackTrace();
-        return;
-      }
-      paramInt = i;
-      if (i < 0) {
-        paramInt = 0;
       }
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.j();
+    Object localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
+    if (localObject != null) {
+      ((GdtVideoCommonView)localObject).h();
     }
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder.c();
+    localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder;
+    if (localObject != null) {
+      ((GdtWebViewBuilder)localObject).c();
     }
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.c();
+    localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView;
+    if (localObject != null) {
+      ((GdtVideoCeilingLandView)localObject).c();
     }
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+    localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    if (localObject != null)
     {
-      ViewParent localViewParent = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent();
-      if ((localViewParent != null) && ((localViewParent instanceof ViewGroup))) {
-        ((ViewGroup)localViewParent).removeAllViewsInLayout();
+      localObject = ((TouchWebView)localObject).getParent();
+      if ((localObject != null) && ((localObject instanceof ViewGroup))) {
+        ((ViewGroup)localObject).removeAllViewsInLayout();
       }
     }
   }
   
   public void c(int paramInt)
   {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView == null)
+    Object localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView;
+    if (localObject == null)
     {
       GdtLog.d("GdtVideoCeilingView", "onEnd  view null ");
       return;
     }
-    int j = (int)(this.jdField_a_of_type_Int * 0.2F);
-    int k = this.jdField_a_of_type_Int;
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.getLayoutParams();
-    int i = localLayoutParams.topMargin;
-    if (paramInt == 0) {
-      if (i <= k - j)
+    int i = this.jdField_a_of_type_Int;
+    int j = (int)(i * 0.2F);
+    localObject = (RelativeLayout.LayoutParams)((GdtVideoCeilingLandView)localObject).getLayoutParams();
+    int k = ((RelativeLayout.LayoutParams)localObject).topMargin;
+    boolean bool = true;
+    if (paramInt == 0)
+    {
+      if (k <= i - j)
       {
         this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.jdField_a_of_type_Int = 2;
-        paramInt = -i;
-        bool1 = bool2;
-      }
-    }
-    while (Math.abs(paramInt) > 0)
-    {
-      a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView, paramInt, bool1);
-      return;
-      paramInt = this.jdField_a_of_type_Int;
-      if (this.c == 1) {}
-      for (;;)
-      {
-        paramInt -= i;
-        break;
-        bool1 = false;
-      }
-      if (i >= j)
-      {
-        this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.jdField_a_of_type_Int = 0;
-        paramInt = this.jdField_a_of_type_Int - i;
-        bool1 = true;
       }
       else
       {
-        paramInt = -i;
-        bool1 = bool2;
+        i = this.jdField_a_of_type_Int - k;
+        paramInt = i;
+        if (this.c != 1) {
+          break label128;
+        }
+        paramInt = i;
+        break label131;
       }
     }
-    a(localLayoutParams, this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView, bool1);
+    else if (k >= j)
+    {
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.jdField_a_of_type_Int = 0;
+      paramInt = this.jdField_a_of_type_Int - k;
+      break label131;
+    }
+    paramInt = -k;
+    label128:
+    bool = false;
+    label131:
+    if (Math.abs(paramInt) > 0)
+    {
+      a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView, paramInt, bool);
+      return;
+    }
+    a((RelativeLayout.LayoutParams)localObject, this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView, bool);
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.h();
+    Object localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
+    if (localObject != null) {
+      ((GdtVideoCommonView)localObject).f();
     }
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder.a();
+    localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder;
+    if (localObject != null) {
+      ((GdtWebViewBuilder)localObject).a();
     }
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.a();
+    localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView;
+    if (localObject != null) {
+      ((GdtVideoCeilingLandView)localObject).a();
     }
   }
   
   protected void d(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView != null) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) && (paramInt == 0))
+    Object localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView;
+    if ((localObject != null) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) && (paramInt == 0))
     {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.getLayoutParams();
-      localLayoutParams.topMargin = this.jdField_a_of_type_Int;
-      if (localLayoutParams.height != this.b)
+      localObject = (RelativeLayout.LayoutParams)((GdtVideoCeilingLandView)localObject).getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).topMargin = this.jdField_a_of_type_Int;
+      paramInt = ((RelativeLayout.LayoutParams)localObject).height;
+      int i = this.b;
+      if (paramInt != i)
       {
-        localLayoutParams.height = this.b;
-        this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setLayoutParams(localLayoutParams);
+        ((RelativeLayout.LayoutParams)localObject).height = i;
+        this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.f();
+    Object localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
+    if (localObject != null) {
+      ((GdtVideoCommonView)localObject).d();
     }
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder.b();
+    localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder;
+    if (localObject != null) {
+      ((GdtWebViewBuilder)localObject).b();
     }
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.b();
+    localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView;
+    if (localObject != null) {
+      ((GdtVideoCeilingLandView)localObject).b();
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean) {
@@ -527,42 +571,48 @@ public class GdtVideoCeilingView
   
   public void setData(GdtVideoCeilingData paramGdtVideoCeilingData)
   {
-    if ((paramGdtVideoCeilingData == null) || (!paramGdtVideoCeilingData.isValid()) || (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView == null)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData = paramGdtVideoCeilingData;
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setData(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getVideoData(), null);
-    AdCanvasView localAdCanvasView = (AdCanvasView)findViewById(2131372130);
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getStyle() == 4)
+    if ((paramGdtVideoCeilingData != null) && (paramGdtVideoCeilingData.isValid()))
     {
-      if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar != null) {
-        this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar.setVisibility(8);
+      Object localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
+      if (localObject == null) {
+        return;
       }
-      findViewById(2131377832).setVisibility(8);
-      if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData = paramGdtVideoCeilingData;
+      ((GdtVideoCommonView)localObject).setData(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getVideoData());
+      localObject = (AdCanvasView)findViewById(2131371712);
+      if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getStyle() == 4)
+      {
+        paramGdtVideoCeilingData = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar;
+        if (paramGdtVideoCeilingData != null) {
+          paramGdtVideoCeilingData.setVisibility(8);
+        }
+        findViewById(2131377258).setVisibility(8);
+        paramGdtVideoCeilingData = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+        if (paramGdtVideoCeilingData != null) {
+          paramGdtVideoCeilingData.setVisibility(8);
+        }
+        ((AdCanvasView)localObject).setVisibility(0);
+        GdtUIUtils.a((FrameLayout)localObject);
+        ((AdCanvasView)localObject).setData(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getCanvasData());
+        this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setGdtVideoCeilingNativeListeners(this, (AdCanvasView)localObject);
+        return;
       }
-      localAdCanvasView.setVisibility(0);
-      GdtUIUtils.a(localAdCanvasView);
-      localAdCanvasView.setData(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getCanvasData());
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setGdtVideoCeilingNativeListeners(this, localAdCanvasView);
-      return;
+      j();
+      k();
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar.setVisibility(0);
+      findViewById(2131377258).setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      ((AdCanvasView)localObject).setVisibility(8);
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getWebUrl());
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar.setAppName(paramGdtVideoCeilingData.getAd().getAppName());
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar.setStyle(paramGdtVideoCeilingData.getStyle());
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar.a();
     }
-    j();
-    k();
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar.setVisibility(0);
-    findViewById(2131377832).setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    localAdCanvasView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingData.getWebUrl());
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar.setAppName(paramGdtVideoCeilingData.getAd().getAppName());
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar.setStyle(paramGdtVideoCeilingData.getStyle());
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView
  * JD-Core Version:    0.7.0.1
  */

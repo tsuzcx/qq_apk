@@ -75,8 +75,13 @@ public class SerialStepExecutor
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a())
     {
       this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a();
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        SLog.e("Q.qqstory.home.SerialStepExecutor", "error step:" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a() + ",return null result");
+      if (this.jdField_a_of_type_JavaLangObject == null)
+      {
+        paramErrorMessage = new StringBuilder();
+        paramErrorMessage.append("error step:");
+        paramErrorMessage.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a());
+        paramErrorMessage.append(",return null result");
+        SLog.e("Q.qqstory.home.SerialStepExecutor", paramErrorMessage.toString());
       }
       e();
       return;
@@ -89,8 +94,13 @@ public class SerialStepExecutor
     try
     {
       this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a();
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        SLog.e("Q.qqstory.home.SerialStepExecutor", "done step:" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a() + ",return null result");
+      if (this.jdField_a_of_type_JavaLangObject == null)
+      {
+        paramString = new StringBuilder();
+        paramString.append("done step:");
+        paramString.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a());
+        paramString.append(",return null result");
+        SLog.e("Q.qqstory.home.SerialStepExecutor", paramString.toString());
       }
       e();
       return;
@@ -123,7 +133,7 @@ public class SerialStepExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SerialStepExecutor
  * JD-Core Version:    0.7.0.1
  */

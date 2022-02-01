@@ -17,25 +17,39 @@ class GdtVideoCommonView$9
   
   public void onNetMobile2Wifi(String paramString)
   {
-    QLog.i("GdtVideoCommonView", 1, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("INetInfoHandler onNetMobile2Wifi() ssid=");
+    localStringBuilder.append(paramString);
+    QLog.i("GdtVideoCommonView", 1, localStringBuilder.toString());
     GdtVideoCommonView.a(this.a, 1);
   }
   
   public void onNetNone2Mobile(String paramString)
   {
-    QLog.i("GdtVideoCommonView", 1, "INetInfoHandler onNetNone2Mobile() apn=" + paramString + " onNetWifi2None " + GdtVideoCommonView.c(this.a));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("INetInfoHandler onNetNone2Mobile() apn=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" onNetWifi2None ");
+    localStringBuilder.append(GdtVideoCommonView.c(this.a));
+    QLog.i("GdtVideoCommonView", 1, localStringBuilder.toString());
     GdtVideoCommonView.a(this.a, 2);
   }
   
   public void onNetNone2Wifi(String paramString)
   {
-    QLog.i("GdtVideoCommonView", 1, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("INetInfoHandler onNetNone2Wifi() ssid=");
+    localStringBuilder.append(paramString);
+    QLog.i("GdtVideoCommonView", 1, localStringBuilder.toString());
     GdtVideoCommonView.a(this.a, 1);
   }
   
   public void onNetWifi2Mobile(String paramString)
   {
-    QLog.i("GdtVideoCommonView", 1, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("INetInfoHandler onNetWifi2Mobile() apn=");
+    localStringBuilder.append(paramString);
+    QLog.i("GdtVideoCommonView", 1, localStringBuilder.toString());
     GdtVideoCommonView.a(this.a, 2);
     if ((this.a.a) && (this.a.a()))
     {
@@ -53,7 +67,7 @@ class GdtVideoCommonView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.9
  * JD-Core Version:    0.7.0.1
  */

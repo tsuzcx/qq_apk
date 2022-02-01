@@ -11,17 +11,16 @@ final class QbSdk$5
     {
       TbsLog.i("QbSdk", "onDownloadFinish needDownloadDecoupleCore is true", true);
       TbsDownloader.a = true;
-    }
-    do
-    {
       return;
-      TbsLog.i("QbSdk", "onDownloadFinish needDownloadDecoupleCore is false", true);
-      TbsDownloader.a = false;
-      if ((paramInt != 100) || (QbSdk.c() != null)) {
-        QbSdk.c().onDownloadFinish(paramInt);
-      }
-    } while (QbSdk.d() == null);
-    QbSdk.d().onDownloadFinish(paramInt);
+    }
+    TbsLog.i("QbSdk", "onDownloadFinish needDownloadDecoupleCore is false", true);
+    TbsDownloader.a = false;
+    if (QbSdk.c() != null) {
+      QbSdk.c().onDownloadFinish(paramInt);
+    }
+    if (QbSdk.d() != null) {
+      QbSdk.d().onDownloadFinish(paramInt);
+    }
   }
   
   public void onDownloadProgress(int paramInt)
@@ -36,25 +35,25 @@ final class QbSdk$5
   
   public void onInstallFinish(int paramInt)
   {
-    if ((paramInt != 200) && (paramInt == 220)) {}
+    if (paramInt != 200) {}
+    boolean bool = false;
     QbSdk.setTBSInstallingStatus(false);
     TbsDownloader.a = false;
-    if (TbsDownloader.startDecoupleCoreIfNeeded()) {}
-    for (TbsDownloader.a = true;; TbsDownloader.a = false)
-    {
-      if (QbSdk.c() != null) {
-        QbSdk.c().onInstallFinish(paramInt);
-      }
-      if (QbSdk.d() != null) {
-        QbSdk.d().onInstallFinish(paramInt);
-      }
-      return;
+    if (TbsDownloader.startDecoupleCoreIfNeeded()) {
+      bool = true;
+    }
+    TbsDownloader.a = bool;
+    if (QbSdk.c() != null) {
+      QbSdk.c().onInstallFinish(paramInt);
+    }
+    if (QbSdk.d() != null) {
+      QbSdk.d().onInstallFinish(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.QbSdk.5
  * JD-Core Version:    0.7.0.1
  */

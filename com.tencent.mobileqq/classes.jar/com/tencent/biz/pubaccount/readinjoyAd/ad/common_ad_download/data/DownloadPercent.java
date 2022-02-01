@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.data;
 
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/data/DownloadPercent;", "", "(Ljava/lang/String;I)V", "PERCENT_1", "PERCENT_10", "PERCENT_25", "PERCENT_50", "PERCENT_75", "PERCENT_90", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/data/DownloadPercent;", "", "(Ljava/lang/String;I)V", "PERCENT_1", "PERCENT_10", "PERCENT_25", "PERCENT_50", "PERCENT_75", "PERCENT_90", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 public enum DownloadPercent
 {
   static
@@ -26,7 +26,7 @@ public enum DownloadPercent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.data.DownloadPercent
  * JD-Core Version:    0.7.0.1
  */

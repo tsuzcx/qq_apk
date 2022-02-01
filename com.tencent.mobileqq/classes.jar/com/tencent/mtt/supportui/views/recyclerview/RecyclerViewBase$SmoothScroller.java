@@ -55,9 +55,13 @@ public abstract class RecyclerViewBase$SmoothScroller
   
   protected void normalize(PointF paramPointF)
   {
-    double d = Math.sqrt(paramPointF.x * paramPointF.x + paramPointF.y * paramPointF.y);
-    paramPointF.x = ((float)(paramPointF.x / d));
-    paramPointF.y = ((float)(paramPointF.y / d));
+    double d1 = Math.sqrt(paramPointF.x * paramPointF.x + paramPointF.y * paramPointF.y);
+    double d2 = paramPointF.x;
+    Double.isNaN(d2);
+    paramPointF.x = ((float)(d2 / d1));
+    d2 = paramPointF.y;
+    Double.isNaN(d2);
+    paramPointF.y = ((float)(d2 / d1));
   }
   
   void onAnimation(int paramInt1, int paramInt2)
@@ -66,25 +70,23 @@ public abstract class RecyclerViewBase$SmoothScroller
       stop();
     }
     this.mPendingInitialRun = false;
-    if (this.mTargetView != null)
-    {
-      if (getChildPosition(this.mTargetView) != this.mTargetPosition) {
-        break label117;
-      }
-      onTargetFound(this.mTargetView, this.mRecyclerView.mState, this.mRecyclingAction);
-      this.mRecyclingAction.runInNecessary(this.mRecyclerView);
-      stop();
-    }
-    for (;;)
-    {
-      if (this.mRunning)
+    View localView = this.mTargetView;
+    if (localView != null) {
+      if (getChildPosition(localView) == this.mTargetPosition)
       {
-        onSeekTargetStep(paramInt1, paramInt2, this.mRecyclerView.mState, this.mRecyclingAction);
+        onTargetFound(this.mTargetView, this.mRecyclerView.mState, this.mRecyclingAction);
         this.mRecyclingAction.runInNecessary(this.mRecyclerView);
+        stop();
       }
-      return;
-      label117:
-      this.mTargetView = null;
+      else
+      {
+        this.mTargetView = null;
+      }
+    }
+    if (this.mRunning)
+    {
+      onSeekTargetStep(paramInt1, paramInt2, this.mRecyclerView.mState, this.mRecyclingAction);
+      this.mRecyclingAction.runInNecessary(this.mRecyclerView);
     }
   }
   
@@ -112,15 +114,17 @@ public abstract class RecyclerViewBase$SmoothScroller
   {
     this.mRecyclerView = paramRecyclerViewBase;
     this.mLayoutManager = paramLayoutManager;
-    if (this.mTargetPosition == -2147483648) {
-      throw new IllegalArgumentException("Invalid target position");
+    if (this.mTargetPosition != -2147483648)
+    {
+      this.mRecyclerView.mState.mTargetPosition = this.mTargetPosition;
+      this.mRunning = true;
+      this.mPendingInitialRun = true;
+      this.mTargetView = findViewByPosition(getTargetPosition());
+      onStart();
+      this.mRecyclerView.mViewFlinger.postOnAnimation();
+      return;
     }
-    this.mRecyclerView.mState.mTargetPosition = this.mTargetPosition;
-    this.mRunning = true;
-    this.mPendingInitialRun = true;
-    this.mTargetView = findViewByPosition(getTargetPosition());
-    onStart();
-    this.mRecyclerView.mViewFlinger.postOnAnimation();
+    throw new IllegalArgumentException("Invalid target position");
   }
   
   protected final void stop()
@@ -141,7 +145,7 @@ public abstract class RecyclerViewBase$SmoothScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.SmoothScroller
  * JD-Core Version:    0.7.0.1
  */

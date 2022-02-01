@@ -11,11 +11,12 @@ class LuxuryGiftController$3
   public void onEnd()
   {
     this.this$0.setPrePareState(false);
-    if (LuxuryGiftController.access$700(this.this$0) == null) {}
-    while (LuxuryGiftController.access$700(this.this$0).giftType == 101) {
+    if (LuxuryGiftController.access$700(this.this$0) == null) {
       return;
     }
-    LuxuryGiftController.access$800(this.this$0);
+    if (LuxuryGiftController.access$700(this.this$0).giftType != 101) {
+      LuxuryGiftController.access$800(this.this$0);
+    }
   }
   
   public void onError(int paramInt)
@@ -25,7 +26,7 @@ class LuxuryGiftController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.LuxuryGiftController.3
  * JD-Core Version:    0.7.0.1
  */

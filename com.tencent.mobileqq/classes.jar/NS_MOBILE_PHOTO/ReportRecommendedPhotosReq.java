@@ -28,14 +28,15 @@ public final class ReportRecommendedPhotosReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.recommend_photos != null) {
-      paramJceOutputStream.write(this.recommend_photos, 1);
+    RecommendPhotos localRecommendPhotos = this.recommend_photos;
+    if (localRecommendPhotos != null) {
+      paramJceOutputStream.write(localRecommendPhotos, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.ReportRecommendedPhotosReq
  * JD-Core Version:    0.7.0.1
  */

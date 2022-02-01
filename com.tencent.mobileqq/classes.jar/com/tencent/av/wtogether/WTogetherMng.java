@@ -16,6 +16,7 @@ import com.tencent.av.core.JniSimpleInfoMng;
 import com.tencent.av.opengl.effects.TipsInfo;
 import com.tencent.av.smallscreen.SmallScreenDialogActivity;
 import com.tencent.av.utils.AVUtil;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.wtogether.data.ChooseFileInfo;
 import com.tencent.av.wtogether.data.ReqComResult;
 import com.tencent.av.wtogether.data.ReqVideoAction;
@@ -32,7 +33,6 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
@@ -58,100 +58,126 @@ public class WTogetherMng
   
   private SessionInfo a(int paramInt, long paramLong1, long paramLong2, String paramString)
   {
-    Object localObject = null;
-    if (paramInt == 2) {
-      paramInt = 3;
-    }
-    for (paramString = String.valueOf(paramLong2);; paramString = null)
+    if (paramInt == 2)
     {
-      String str = SessionMgr.a(paramInt, paramString, new int[0]);
-      paramString = SessionMgr.a().a();
-      if (!TextUtils.equals(paramString.jdField_c_of_type_JavaLangString, str)) {
-        paramString = localObject;
-      }
-      for (;;)
-      {
-        if ((paramString != null) && (paramString.b() != paramLong1) && (QLog.isColorLevel())) {
-          QLog.i("WTogether.Mng", 2, "getSessionInfo, [" + paramString.b() + "," + paramLong1 + "]");
-        }
-        return paramString;
-      }
+      paramInt = 3;
+      paramString = String.valueOf(paramLong2);
+    }
+    else
+    {
+      paramString = null;
       paramInt = 0;
     }
+    String str = SessionMgr.a(paramInt, paramString, new int[0]);
+    Object localObject = SessionMgr.a().a();
+    paramString = (String)localObject;
+    if (!TextUtils.equals(((SessionInfo)localObject).jdField_b_of_type_JavaLangString, str)) {
+      paramString = null;
+    }
+    if ((paramString != null) && (paramString.b() != paramLong1) && (QLog.isColorLevel()))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getSessionInfo, [");
+      ((StringBuilder)localObject).append(paramString.b());
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether.Mng", 2, ((StringBuilder)localObject).toString());
+    }
+    return paramString;
   }
   
   private WatchTogetherInfo a(int paramInt, long paramLong)
   {
+    Object localObject2 = null;
     try
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      Object localObject1;
+      long l;
+      do
       {
-        WatchTogetherInfo localWatchTogetherInfo = (WatchTogetherInfo)((Map.Entry)localIterator.next()).getValue();
-        if ((localWatchTogetherInfo != null) && (localWatchTogetherInfo.b() == paramInt))
+        do
         {
-          long l = localWatchTogetherInfo.a();
-          if (l == paramLong) {
-            return localWatchTogetherInfo;
+          localObject1 = localObject2;
+          if (!localIterator.hasNext()) {
+            break;
           }
-        }
-      }
+          localObject1 = (WatchTogetherInfo)((Map.Entry)localIterator.next()).getValue();
+        } while ((localObject1 == null) || (((WatchTogetherInfo)localObject1).b() != paramInt));
+        l = ((WatchTogetherInfo)localObject1).a();
+      } while (l != paramLong);
+      return localObject1;
     }
-    catch (Throwable localThrowable)
-    {
-      return null;
-    }
+    catch (Throwable localThrowable) {}
     return null;
   }
   
   private WatchTogetherInfo a(int paramInt, long paramLong1, long paramLong2, String paramString)
   {
-    if (TextUtils.equals(String.valueOf(paramLong2), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()))
+    boolean bool = TextUtils.equals(String.valueOf(paramLong2), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+    StringBuilder localStringBuilder = null;
+    if (bool)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, paramString + ", self receive start push. [roomType: " + paramInt + ", roomId: " + paramLong1 + "]");
-      }
-      localObject = null;
-      return localObject;
-    }
-    Object localObject = a(paramInt, paramLong1, paramLong2, paramString);
-    if ((localObject == null) || (((SessionInfo)localObject).f()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, paramString + ", session is illegal. [roomType: " + paramInt + ", roomId: " + paramLong1 + "]");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(", self receive start push. [roomType: ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(", roomId: ");
+        localStringBuilder.append(paramLong1);
+        localStringBuilder.append("]");
+        QLog.i("WTogether.Mng", 2, localStringBuilder.toString());
       }
       return null;
     }
-    WTInfoFromPush localWTInfoFromPush = new WTInfoFromPush(paramInt, paramLong1, paramLong2, paramString);
-    paramString = b((SessionInfo)localObject);
-    if (paramString == null) {
-      paramString = a((SessionInfo)localObject);
-    }
-    for (;;)
+    Object localObject = a(paramInt, paramLong1, paramLong2, paramString);
+    if ((localObject != null) && (!((SessionInfo)localObject).e()))
     {
-      localObject = paramString;
-      if (paramString == null) {
-        break;
+      WTInfoFromPush localWTInfoFromPush = new WTInfoFromPush(paramInt, paramLong1, paramLong2, paramString);
+      paramString = b((SessionInfo)localObject);
+      if (paramString == null)
+      {
+        paramString = a((SessionInfo)localObject);
       }
-      paramString.a(1, "getWatchTogetherInfoForPush");
-      paramString.a(paramInt, paramLong1);
-      return paramString;
-      if (a(localWTInfoFromPush))
+      else if (a(localWTInfoFromPush))
       {
         localObject = paramString.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-        if ((localObject != null) && (((WTogetherRoom)localObject).a() == 1) && (((WTogetherRoom)localObject).b() == 1)) {
-          paramString.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush = localWTInfoFromPush;
-        }
-        for (;;)
+        if ((localObject != null) && (((WTogetherRoom)localObject).a() == 1) && (((WTogetherRoom)localObject).b() == 1))
         {
-          paramString = null;
-          break;
-          if (localObject != null) {
+          paramString.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush = localWTInfoFromPush;
+          paramString = localStringBuilder;
+        }
+        else
+        {
+          paramString = localStringBuilder;
+          if (localObject != null)
+          {
             a(localWTInfoFromPush);
+            paramString = localStringBuilder;
           }
         }
       }
+      if (paramString != null)
+      {
+        paramString.a(1, "getWatchTogetherInfoForPush");
+        paramString.a(paramInt, paramLong1);
+      }
+      return paramString;
     }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", session is illegal. [roomType: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", roomId: ");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.Mng", 2, localStringBuilder.toString());
+    }
+    return null;
   }
   
   private WatchTogetherInfo a(int paramInt, String paramString, boolean paramBoolean)
@@ -178,134 +204,168 @@ public class WTogetherMng
   private void a(int paramInt, long paramLong1, long paramLong2)
   {
     Object localObject = a(paramInt, paramLong1, paramLong2, "onReceiveStartPush");
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((WatchTogetherInfo)localObject).a();
+    }
     if (localObject == null)
     {
-      localObject = null;
-      if (localObject != null) {
-        break label81;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "onReceiveStartPush, illegal. [roomType: " + paramInt + ", roomId: " + paramLong1 + "]");
-      }
-    }
-    label81:
-    do
-    {
-      return;
-      localObject = ((WatchTogetherInfo)localObject).a();
-      break;
-      if (((WTogetherRoom)localObject).a() == 0)
+      if (QLog.isColorLevel())
       {
-        ((WTogetherRoom)localObject).a(String.valueOf(paramLong2));
-        b(a(paramInt, paramLong1));
-        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onReceiveStartPush, illegal. [roomType: ");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(", roomId: ");
+        ((StringBuilder)localObject).append(paramLong1);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("WTogether.Mng", 2, ((StringBuilder)localObject).toString());
       }
-    } while (!TextUtils.equals(((WTogetherRoom)localObject).jdField_b_of_type_JavaLangString, String.valueOf(paramLong2)));
-    a((WTogetherRoom)localObject, 6);
+      return;
+    }
+    if (((WTogetherRoom)localObject).a() == 0)
+    {
+      ((WTogetherRoom)localObject).a(String.valueOf(paramLong2));
+      b(a(paramInt, paramLong1));
+      return;
+    }
+    if (TextUtils.equals(((WTogetherRoom)localObject).jdField_b_of_type_JavaLangString, String.valueOf(paramLong2))) {
+      a((WTogetherRoom)localObject, 6);
+    }
   }
   
   private void a(int paramInt1, long paramLong1, long paramLong2, long paramLong3, int paramInt2)
   {
-    Object localObject2 = null;
-    Object localObject3 = null;
-    Object localObject1 = null;
     WatchTogetherInfo localWatchTogetherInfo = a(paramInt1, paramLong1);
     if ((localWatchTogetherInfo != null) && (!TextUtils.equals(String.valueOf(paramLong2), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()))) {
       a(localWatchTogetherInfo.a(), paramInt2);
     }
-    if ((paramInt2 == 2) || (paramInt2 == 3)) {
-      if (localWatchTogetherInfo == null) {
-        b((WTogetherRoom)localObject1, 2131695972);
-      }
-    }
-    do
+    Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = null;
+    if ((paramInt2 != 2) && (paramInt2 != 3))
     {
-      return;
-      localObject1 = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-      break;
       if (paramInt2 == 4)
       {
-        if (localWatchTogetherInfo == null) {}
-        for (localObject1 = localObject2;; localObject1 = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
-        {
-          b((WTogetherRoom)localObject1, 2131695970);
-          return;
+        if (localWatchTogetherInfo != null) {
+          localObject1 = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
         }
+        b((WTogetherRoom)localObject1, 2131695985);
+        return;
       }
-    } while (paramInt2 != 1);
-    if (localWatchTogetherInfo == null) {}
-    for (localObject1 = localObject3;; localObject1 = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
+      if (paramInt2 == 1)
+      {
+        if (localWatchTogetherInfo == null) {
+          localObject1 = localObject2;
+        } else {
+          localObject1 = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+        }
+        b((WTogetherRoom)localObject1, 2131696004);
+      }
+    }
+    else
     {
-      b((WTogetherRoom)localObject1, 2131695989);
-      return;
+      if (localWatchTogetherInfo == null) {
+        localObject1 = localObject3;
+      } else {
+        localObject1 = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+      }
+      b((WTogetherRoom)localObject1, 2131695987);
     }
   }
   
   private void a(int paramInt, long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("WTogether.Mng", 4, "onReceiveUserEnterOrLeave, [roomType: " + paramInt + ", roomId: " + paramLong1 + ", operator: " + paramLong2 + ", seq: " + paramLong3 + ", enter: " + paramBoolean + "]");
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceiveUserEnterOrLeave, [roomType: ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", roomId: ");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append(", operator: ");
+      ((StringBuilder)localObject).append(paramLong2);
+      ((StringBuilder)localObject).append(", seq: ");
+      ((StringBuilder)localObject).append(paramLong3);
+      ((StringBuilder)localObject).append(", enter: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether.Mng", 4, ((StringBuilder)localObject).toString());
     }
-    ReqComResult localReqComResult = new ReqComResult(paramInt, paramLong1);
-    localReqComResult.jdField_a_of_type_Boolean = paramBoolean;
-    localReqComResult.jdField_a_of_type_JavaLangString = String.valueOf(paramLong2);
-    WTogetherHandler localWTogetherHandler = (WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e);
+    Object localObject = new ReqComResult(paramInt, paramLong1);
+    ((ReqComResult)localObject).jdField_a_of_type_Boolean = paramBoolean;
+    ((ReqComResult)localObject).jdField_a_of_type_JavaLangString = String.valueOf(paramLong2);
+    WTogetherHandler localWTogetherHandler = (WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString);
     if (localWTogetherHandler != null) {
-      localWTogetherHandler.notifyUI(10, localReqComResult.jdField_a_of_type_Boolean, localReqComResult);
+      localWTogetherHandler.notifyUI(10, ((ReqComResult)localObject).jdField_a_of_type_Boolean, localObject);
     }
   }
   
   private void a(long paramLong, String paramString)
   {
+    Object localObject;
     if (!this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(5))
     {
-      Message localMessage = Message.obtain();
-      localMessage.what = 5;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessageDelayed(localMessage, paramLong);
+      localObject = Message.obtain();
+      ((Message)localObject).what = 5;
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessageDelayed((Message)localObject, paramLong);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("WTogether.Mng", 2, "tryEnterRoomLater, from[" + paramString + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tryEnterRoomLater, from[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether.Mng", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   private void a(ReqComResult paramReqComResult, WatchTogetherInfo paramWatchTogetherInfo, WTogetherRoom paramWTogetherRoom, String paramString)
   {
-    if ((paramReqComResult == null) || (paramWatchTogetherInfo == null) || (paramWTogetherRoom == null)) {}
-    for (;;)
+    if ((paramReqComResult != null) && (paramWatchTogetherInfo != null))
     {
-      return;
+      if (paramWTogetherRoom == null) {
+        return;
+      }
       if ((!paramReqComResult.jdField_a_of_type_Boolean) && (paramReqComResult.jdField_b_of_type_Int == 1009)) {
         a(paramWatchTogetherInfo, 7, "checkError");
+      } else if ((!paramReqComResult.jdField_a_of_type_Boolean) && (paramReqComResult.jdField_b_of_type_Int == 1007)) {
+        a(paramWatchTogetherInfo, 5, "checkError");
       }
-      while ((!paramReqComResult.jdField_a_of_type_Boolean) && (QLog.isColorLevel()))
+      if ((!paramReqComResult.jdField_a_of_type_Boolean) && (QLog.isColorLevel()))
       {
-        QLog.i("WTogether.Mng", 2, "checkError, errCode[" + paramReqComResult.jdField_b_of_type_Int + "], from[" + paramString + "]");
-        return;
-        if ((!paramReqComResult.jdField_a_of_type_Boolean) && (paramReqComResult.jdField_b_of_type_Int == 1007)) {
-          a(paramWatchTogetherInfo, 5, "checkError");
-        }
+        paramWatchTogetherInfo = new StringBuilder();
+        paramWatchTogetherInfo.append("checkError, errCode[");
+        paramWatchTogetherInfo.append(paramReqComResult.jdField_b_of_type_Int);
+        paramWatchTogetherInfo.append("], from[");
+        paramWatchTogetherInfo.append(paramString);
+        paramWatchTogetherInfo.append("]");
+        QLog.i("WTogether.Mng", 2, paramWatchTogetherInfo.toString());
       }
     }
   }
   
   private void a(WTInfoFromPush paramWTInfoFromPush)
   {
-    if (paramWTInfoFromPush == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramWTInfoFromPush = a(paramWTInfoFromPush.jdField_a_of_type_Int, paramWTInfoFromPush.jdField_a_of_type_Long, paramWTInfoFromPush.jdField_b_of_type_Long, "dealForRoomIdConflict");
-        } while (paramWTInfoFromPush == null);
-        paramWTInfoFromPush = b(paramWTInfoFromPush);
-      } while ((paramWTInfoFromPush == null) || (paramWTInfoFromPush.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom == null));
-      a(paramWTInfoFromPush, 6, "dealForRoomIdConflict");
-      a(BaseApplicationImpl.getContext().getString(2131695998), 100L);
-    } while (!QLog.isColorLevel());
-    QLog.i("WTogether.Mng", 2, "dealForRoomIdConflict");
+    if (paramWTInfoFromPush == null) {
+      return;
+    }
+    paramWTInfoFromPush = a(paramWTInfoFromPush.jdField_a_of_type_Int, paramWTInfoFromPush.jdField_a_of_type_Long, paramWTInfoFromPush.jdField_b_of_type_Long, "dealForRoomIdConflict");
+    if (paramWTInfoFromPush == null) {
+      return;
+    }
+    paramWTInfoFromPush = b(paramWTInfoFromPush);
+    if (paramWTInfoFromPush == null) {
+      return;
+    }
+    if (paramWTInfoFromPush.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom == null) {
+      return;
+    }
+    a(paramWTInfoFromPush, 6, "dealForRoomIdConflict");
+    a(BaseApplicationImpl.getContext().getString(2131696013), 100L);
+    if (QLog.isColorLevel()) {
+      QLog.i("WTogether.Mng", 2, "dealForRoomIdConflict");
+    }
   }
   
   private void a(WTogetherPlayInfo paramWTogetherPlayInfo, String paramString)
@@ -313,137 +373,165 @@ public class WTogetherMng
     if ((paramWTogetherPlayInfo != null) && (paramWTogetherPlayInfo.jdField_a_of_type_ArrayOfBoolean[2] == 0))
     {
       paramWTogetherPlayInfo.jdField_a_of_type_ArrayOfBoolean[2] = true;
-      b(BaseApplicationImpl.getContext().getString(2131695986), true);
+      b(BaseApplicationImpl.getContext().getString(2131696001), true);
       AVUtil.a("0X800B8B6", 0, 0, "", "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "showResourceExpire, from[" + paramString + "]");
+      if (QLog.isColorLevel())
+      {
+        paramWTogetherPlayInfo = new StringBuilder();
+        paramWTogetherPlayInfo.append("showResourceExpire, from[");
+        paramWTogetherPlayInfo.append(paramString);
+        paramWTogetherPlayInfo.append("]");
+        QLog.i("WTogether.Mng", 2, paramWTogetherPlayInfo.toString());
       }
     }
   }
   
   private void a(WTogetherPlayInfo paramWTogetherPlayInfo, boolean paramBoolean, String paramString)
   {
-    boolean[] arrayOfBoolean;
-    int i;
-    BaseApplication localBaseApplication;
-    String str;
-    int j;
     if ((paramWTogetherPlayInfo != null) && (paramWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo != null) && (paramWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.jdField_b_of_type_Int == 1) && (paramWTogetherPlayInfo.jdField_b_of_type_Int <= 3600))
     {
-      arrayOfBoolean = paramWTogetherPlayInfo.jdField_a_of_type_ArrayOfBoolean;
-      i = paramWTogetherPlayInfo.jdField_b_of_type_Int;
-      localBaseApplication = BaseApplicationImpl.getContext();
-      str = "";
-      paramWTogetherPlayInfo = str;
-      if (i <= 0) {
-        break label366;
+      Object localObject = paramWTogetherPlayInfo.jdField_a_of_type_ArrayOfBoolean;
+      int i = paramWTogetherPlayInfo.jdField_b_of_type_Int;
+      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+      if (i > 0)
+      {
+        int j;
+        if (i <= 900)
+        {
+          if (localObject[0] == 0)
+          {
+            if (paramBoolean)
+            {
+              j = i / 60;
+              if (j != 0)
+              {
+                paramWTogetherPlayInfo = new StringBuilder();
+                paramWTogetherPlayInfo.append(j);
+                paramWTogetherPlayInfo.append("分钟");
+                paramWTogetherPlayInfo = paramWTogetherPlayInfo.toString();
+              }
+              else
+              {
+                paramWTogetherPlayInfo = new StringBuilder();
+                paramWTogetherPlayInfo.append(i % 60);
+                paramWTogetherPlayInfo.append("秒");
+                paramWTogetherPlayInfo = paramWTogetherPlayInfo.toString();
+              }
+              paramWTogetherPlayInfo = localBaseApplication.getString(2131696002, new Object[] { paramWTogetherPlayInfo });
+            }
+            else
+            {
+              paramWTogetherPlayInfo = localBaseApplication.getString(2131696002, new Object[] { "15分钟" });
+            }
+            localObject[0] = 1;
+            break label289;
+          }
+        }
+        else if (localObject[1] == 0)
+        {
+          if (paramBoolean)
+          {
+            j = i / 60;
+            paramWTogetherPlayInfo = new StringBuilder();
+            paramWTogetherPlayInfo.append(j);
+            paramWTogetherPlayInfo.append("分钟");
+            paramWTogetherPlayInfo = localBaseApplication.getString(2131696002, new Object[] { paramWTogetherPlayInfo.toString() });
+          }
+          else
+          {
+            paramWTogetherPlayInfo = localBaseApplication.getString(2131696002, new Object[] { "1小时" });
+          }
+          localObject[1] = 1;
+          break label289;
+        }
       }
-      if (i > 900) {
-        break label303;
-      }
-      paramWTogetherPlayInfo = str;
-      if (arrayOfBoolean[0] != 0) {
-        break label366;
-      }
-      if (!paramBoolean) {
-        break label281;
-      }
-      j = i / 60;
-      if (j == 0) {
-        break label253;
-      }
-      paramWTogetherPlayInfo = j + "分钟";
-    }
-    label281:
-    for (paramWTogetherPlayInfo = localBaseApplication.getString(2131695987, new Object[] { paramWTogetherPlayInfo });; paramWTogetherPlayInfo = localBaseApplication.getString(2131695987, new Object[] { "15分钟" }))
-    {
-      arrayOfBoolean[0] = true;
+      paramWTogetherPlayInfo = "";
+      label289:
       if (!TextUtils.isEmpty(paramWTogetherPlayInfo))
       {
         b(paramWTogetherPlayInfo, false);
-        AVUtil.a("0X800B8B5", 0, 0, i / 60 + "", "", "", "");
-        if (QLog.isColorLevel()) {
-          QLog.i("WTogether.Mng", 2, "showPayedResourceLeftTimeIfNeed, from[" + paramString + "], leftTime[" + i + "], tip[" + paramWTogetherPlayInfo + "]");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(i / 60);
+        ((StringBuilder)localObject).append("");
+        AVUtil.a("0X800B8B5", 0, 0, ((StringBuilder)localObject).toString(), "", "", "");
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("showPayedResourceLeftTimeIfNeed, from[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("], leftTime[");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append("], tip[");
+          ((StringBuilder)localObject).append(paramWTogetherPlayInfo);
+          ((StringBuilder)localObject).append("]");
+          QLog.i("WTogether.Mng", 2, ((StringBuilder)localObject).toString());
         }
       }
-      return;
-      label253:
-      paramWTogetherPlayInfo = i % 60 + "秒";
-      break;
-    }
-    label303:
-    paramWTogetherPlayInfo = str;
-    if (arrayOfBoolean[1] == 0)
-    {
-      if (!paramBoolean) {
-        break label369;
-      }
-      j = i / 60;
-    }
-    label366:
-    label369:
-    for (paramWTogetherPlayInfo = localBaseApplication.getString(2131695987, new Object[] { j + "分钟" });; paramWTogetherPlayInfo = localBaseApplication.getString(2131695987, new Object[] { "1小时" }))
-    {
-      arrayOfBoolean[1] = true;
-      break;
     }
   }
   
   private void a(WTogetherRoom paramWTogetherRoom)
   {
-    if (paramWTogetherRoom == null) {}
-    for (WTogetherPlayInfo localWTogetherPlayInfo = null; (localWTogetherPlayInfo == null) || (!localWTogetherPlayInfo.b()) || (paramWTogetherRoom.a() != 3); localWTogetherPlayInfo = paramWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo)
+    Object localObject;
+    if (paramWTogetherRoom == null) {
+      localObject = null;
+    } else {
+      localObject = paramWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo;
+    }
+    if ((localObject != null) && (((WTogetherPlayInfo)localObject).b()) && (paramWTogetherRoom.a() == 3))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "onMsgOnChangeFile, illegal param, room[" + paramWTogetherRoom + "]");
-      }
+      paramWTogetherRoom = new WTReqUrlResult(paramWTogetherRoom.jdField_a_of_type_Int, paramWTogetherRoom.jdField_b_of_type_Long, 0, ((WTogetherPlayInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo, 1, true);
+      paramWTogetherRoom.jdField_a_of_type_JavaLangString = ((WTogetherPlayInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.jdField_b_of_type_JavaLangString;
+      paramWTogetherRoom.jdField_b_of_type_JavaLangString = ((WTogetherPlayInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.jdField_c_of_type_JavaLangString;
+      paramWTogetherRoom.jdField_c_of_type_Boolean = true;
+      paramWTogetherRoom.d = 0;
+      paramWTogetherRoom.jdField_c_of_type_JavaLangString = null;
+      a(paramWTogetherRoom);
+      ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).notifyUI(1, true, paramWTogetherRoom);
       return;
     }
-    paramWTogetherRoom = new WTReqUrlResult(paramWTogetherRoom.jdField_a_of_type_Int, paramWTogetherRoom.jdField_b_of_type_Long, 0, localWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo, 1, true);
-    paramWTogetherRoom.jdField_a_of_type_JavaLangString = localWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.jdField_b_of_type_JavaLangString;
-    paramWTogetherRoom.jdField_b_of_type_JavaLangString = localWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.jdField_c_of_type_JavaLangString;
-    paramWTogetherRoom.jdField_c_of_type_Boolean = true;
-    paramWTogetherRoom.d = 0;
-    paramWTogetherRoom.jdField_c_of_type_JavaLangString = null;
-    a(paramWTogetherRoom);
-    ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).notifyUI(1, true, paramWTogetherRoom);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onMsgOnChangeFile, illegal param, room[");
+      ((StringBuilder)localObject).append(paramWTogetherRoom);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether.Mng", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   private void a(WTogetherRoom paramWTogetherRoom, WTogetherCommon.RoomInfo paramRoomInfo, String paramString)
   {
-    long l = 200L;
-    if ((paramRoomInfo == null) || (paramWTogetherRoom == null)) {}
-    for (;;)
+    if (paramRoomInfo != null)
     {
-      return;
-      boolean bool = paramWTogetherRoom.a(paramRoomInfo, paramString);
+      if (paramWTogetherRoom == null) {
+        return;
+      }
+      boolean bool1 = paramWTogetherRoom.a(paramRoomInfo, paramString);
       paramRoomInfo = paramWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo;
       if (paramRoomInfo != null)
       {
-        a(paramRoomInfo, bool, paramString);
-        if (!paramRoomInfo.a()) {
-          break label143;
-        }
-        if (!bool) {
-          break label117;
-        }
-        paramWTogetherRoom.a(3, 3, paramString);
-        a(paramRoomInfo, paramString);
-      }
-      label143:
-      while ((bool) && (QLog.isColorLevel()))
-      {
-        QLog.i("WTogether.Mng", 2, "updateRoomInfo, from[" + paramString + "], room[" + paramWTogetherRoom + "]");
-        return;
-        label117:
-        if ("onSyncPlayInfo".equalsIgnoreCase(paramString))
+        a(paramRoomInfo, bool1, paramString);
+        if (paramRoomInfo.a())
         {
-          paramWTogetherRoom.a(4, 3, paramString);
-          a(paramRoomInfo, paramString);
-          continue;
-          if (paramRoomInfo.b())
+          if (bool1)
           {
-            if (bool)
+            paramWTogetherRoom.a(3, 3, paramString);
+            a(paramRoomInfo, paramString);
+          }
+          else if ("onSyncPlayInfo".equalsIgnoreCase(paramString))
+          {
+            paramWTogetherRoom.a(4, 3, paramString);
+            a(paramRoomInfo, paramString);
+          }
+        }
+        else
+        {
+          boolean bool2 = paramRoomInfo.b();
+          long l = 200L;
+          if (bool2)
+          {
+            if (bool1)
             {
               paramWTogetherRoom.a(3, 2, paramString);
               paramRoomInfo = Message.obtain();
@@ -464,25 +552,46 @@ public class WTogetherMng
           {
             paramWTogetherRoom.a(3, 1, paramString);
             paramWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_c_of_type_Int = ((int)AudioHelper.b());
-            ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).a(paramWTogetherRoom.jdField_a_of_type_Int, paramWTogetherRoom.jdField_b_of_type_Long, paramWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_c_of_type_Int, paramWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo, true, 0);
+            ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).a(paramWTogetherRoom.jdField_a_of_type_Int, paramWTogetherRoom.jdField_b_of_type_Long, paramWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_c_of_type_Int, paramWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo, true, 0);
           }
-          else if (bool)
+          else if (bool1)
           {
             paramWTogetherRoom.a(3, 3, paramString);
-            a(BaseApplicationImpl.getApplication().getString(2131695969), 200L);
+            a(BaseApplicationImpl.getApplication().getString(2131695984), 200L);
           }
         }
+      }
+      if ((bool1) && (QLog.isColorLevel()))
+      {
+        paramRoomInfo = new StringBuilder();
+        paramRoomInfo.append("updateRoomInfo, from[");
+        paramRoomInfo.append(paramString);
+        paramRoomInfo.append("], room[");
+        paramRoomInfo.append(paramWTogetherRoom);
+        paramRoomInfo.append("]");
+        QLog.i("WTogether.Mng", 2, paramRoomInfo.toString());
       }
     }
   }
   
   private void a(WatchTogetherInfo paramWatchTogetherInfo, int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WTogether.Mng", 2, "quitWatchTogether, reason[" + paramInt + "], from[" + paramString + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("quitWatchTogether, reason[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], from[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.Mng", 2, localStringBuilder.toString());
     }
-    if (paramWatchTogetherInfo == null) {}
-    for (paramString = null; paramString == null; paramString = paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
+    if (paramWatchTogetherInfo == null) {
+      paramString = null;
+    } else {
+      paramString = paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+    }
+    if (paramString == null)
     {
       d(paramWatchTogetherInfo);
       return;
@@ -499,40 +608,48 @@ public class WTogetherMng
   private void a(WatchTogetherInfo paramWatchTogetherInfo, String paramString)
   {
     Object localObject2 = null;
-    if (paramWatchTogetherInfo == null) {}
-    for (Object localObject1 = null; (localObject1 == null) || (!((WTogetherRoom)localObject1).e()); localObject1 = paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom) {
-      return;
+    Object localObject1;
+    if (paramWatchTogetherInfo == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
     }
-    if (paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo != null) {
-      if (paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_b_of_type_Int == 0)
+    if (localObject1 != null)
+    {
+      if (!((WTogetherRoom)localObject1).e()) {
+        return;
+      }
+      if (paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo != null)
       {
-        paramWatchTogetherInfo.jdField_c_of_type_Int = 4;
-        label51:
-        if (((WTogetherRoom)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo != null) {
-          break label166;
+        if (paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_b_of_type_Int == 0) {
+          paramWatchTogetherInfo.jdField_c_of_type_Int = 4;
+        } else if (paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_b_of_type_Int == 1) {
+          paramWatchTogetherInfo.jdField_c_of_type_Int = 3;
+        } else {
+          paramWatchTogetherInfo.jdField_c_of_type_Int = 0;
         }
       }
-    }
-    label166:
-    for (localObject1 = localObject2;; localObject1 = ((WTogetherRoom)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo)
-    {
+      else {
+        paramWatchTogetherInfo.jdField_c_of_type_Int = 0;
+      }
+      if (((WTogetherRoom)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo == null) {
+        localObject1 = localObject2;
+      } else {
+        localObject1 = ((WTogetherRoom)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo;
+      }
       if ((localObject1 != null) && (((WTFileInfo)localObject1).jdField_a_of_type_Int == 0)) {
         ((WTFileInfo)localObject1).d = paramWatchTogetherInfo.jdField_c_of_type_Int;
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("WTogether.Mng", 2, "updateWTFileInfoVideoSrcTypeExtra, from[" + paramString + "], videoSrcTypeExtra[" + paramWatchTogetherInfo.jdField_c_of_type_Int + "]");
-      return;
-      if (paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_b_of_type_Int == 1)
+      if (QLog.isColorLevel())
       {
-        paramWatchTogetherInfo.jdField_c_of_type_Int = 3;
-        break label51;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("updateWTFileInfoVideoSrcTypeExtra, from[");
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append("], videoSrcTypeExtra[");
+        ((StringBuilder)localObject1).append(paramWatchTogetherInfo.jdField_c_of_type_Int);
+        ((StringBuilder)localObject1).append("]");
+        QLog.i("WTogether.Mng", 2, ((StringBuilder)localObject1).toString());
       }
-      paramWatchTogetherInfo.jdField_c_of_type_Int = 0;
-      break label51;
-      paramWatchTogetherInfo.jdField_c_of_type_Int = 0;
-      break label51;
     }
   }
   
@@ -541,8 +658,13 @@ public class WTogetherMng
     if (!this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(1))
     {
       this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1, 10000L);
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "startSync, from[" + paramString + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("startSync, from[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]");
+        QLog.i("WTogether.Mng", 2, localStringBuilder.toString());
       }
     }
   }
@@ -568,72 +690,83 @@ public class WTogetherMng
     long l2 = paramPushMsg.operate_uin.get();
     long l3 = paramPushMsg.seq.get();
     int j = paramPushMsg.action_type.get();
-    if (QLog.isDevelopLevel()) {
-      QLog.i("WTogether.Mng", 4, "onQavPushMsg, [roomType: " + i + ", roomId: " + l1 + ", operator: " + l2 + ", action: " + j + ", seq: " + l3 + "]");
-    }
-    switch (j)
+    if (QLog.isDevelopLevel())
     {
-    default: 
-      return;
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      a(i, l1, l2, l3, j);
-      return;
-    case 6: 
-      a(i, l1, l2);
-      return;
-    case 7: 
-      b(i, l1, l2);
-      return;
-    case 8: 
-      c(i, l1, l2);
-      return;
-    case 9: 
-    case 10: 
-      if (j == 9) {}
-      for (boolean bool = true;; bool = false)
+      paramPushMsg = new StringBuilder();
+      paramPushMsg.append("onQavPushMsg, [roomType: ");
+      paramPushMsg.append(i);
+      paramPushMsg.append(", roomId: ");
+      paramPushMsg.append(l1);
+      paramPushMsg.append(", operator: ");
+      paramPushMsg.append(l2);
+      paramPushMsg.append(", action: ");
+      paramPushMsg.append(j);
+      paramPushMsg.append(", seq: ");
+      paramPushMsg.append(l3);
+      paramPushMsg.append("]");
+      QLog.i("WTogether.Mng", 4, paramPushMsg.toString());
+    }
+    if (j != 100)
+    {
+      switch (j)
       {
+      default: 
+        return;
+      case 9: 
+      case 10: 
+        boolean bool;
+        if (j == 9) {
+          bool = true;
+        } else {
+          bool = false;
+        }
         a(i, l1, l2, l3, bool);
         return;
+      case 8: 
+        c(i, l1, l2);
+        return;
+      case 7: 
+        b(i, l1, l2);
+        return;
+      case 6: 
+        a(i, l1, l2);
+        return;
       }
+      a(i, l1, l2, l3, j);
+      return;
     }
     d(i, l1, l2);
   }
   
   private boolean a(SessionInfo paramSessionInfo, ChooseFileInfo paramChooseFileInfo, long[] paramArrayOfLong)
   {
-    if ((paramChooseFileInfo == null) || (paramSessionInfo == null))
+    if ((paramChooseFileInfo != null) && (paramSessionInfo != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "startWatchTogether, illegal param.");
-      }
-      return false;
-    }
-    WatchTogetherInfo localWatchTogetherInfo = a(paramSessionInfo);
-    if (localWatchTogetherInfo != null) {
-      localWatchTogetherInfo.a(paramSessionInfo, true);
-    }
-    for (paramSessionInfo = localWatchTogetherInfo.a();; paramSessionInfo = null)
-    {
-      if (paramSessionInfo == null)
+      WatchTogetherInfo localWatchTogetherInfo = a(paramSessionInfo);
+      WTogetherRoom localWTogetherRoom = null;
+      if (localWatchTogetherInfo != null)
       {
-        if (!QLog.isColorLevel()) {
-          break;
+        localWatchTogetherInfo.a(paramSessionInfo, true);
+        localWTogetherRoom = localWatchTogetherInfo.a();
+      }
+      if (localWTogetherRoom == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("WTogether.Mng", 2, "startWatchTogether, not valid to create room.");
         }
-        QLog.i("WTogether.Mng", 2, "startWatchTogether, not valid to create room.");
         return false;
       }
-      int i = paramSessionInfo.a();
+      int i = localWTogetherRoom.a();
       if (i != 0)
       {
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel())
+        {
+          paramSessionInfo = new StringBuilder();
+          paramSessionInfo.append("startWatchTogether, illegal state, roomState[");
+          paramSessionInfo.append(i);
+          paramSessionInfo.append("]");
+          QLog.i("WTogether.Mng", 2, paramSessionInfo.toString());
         }
-        QLog.i("WTogether.Mng", 2, "startWatchTogether, illegal state, roomState[" + i + "]");
         return false;
       }
       localWatchTogetherInfo.jdField_b_of_type_Int = 0;
@@ -641,65 +774,121 @@ public class WTogetherMng
       e(localWatchTogetherInfo);
       localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = paramChooseFileInfo;
       localWatchTogetherInfo.a(1, "startWatchTogether");
-      paramSessionInfo.a(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      paramSessionInfo.a(1, 1, "startWatchTogether");
+      localWTogetherRoom.a(localWTogetherRoom.jdField_a_of_type_JavaLangString);
+      localWTogetherRoom.a(1, 1, "startWatchTogether");
       a(true);
-      ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).a(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_b_of_type_Long, paramChooseFileInfo, paramArrayOfLong, 0);
+      ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).a(localWTogetherRoom.jdField_a_of_type_Int, localWTogetherRoom.jdField_b_of_type_Long, paramChooseFileInfo, paramArrayOfLong, 0);
       this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(7);
       this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(7, 30000L);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("WTogether.Mng", 4, "startWatchTogether, room[" + paramSessionInfo + "]");
+      if (QLog.isDevelopLevel())
+      {
+        paramSessionInfo = new StringBuilder();
+        paramSessionInfo.append("startWatchTogether, room[");
+        paramSessionInfo.append(localWTogetherRoom);
+        paramSessionInfo.append("]");
+        QLog.i("WTogether.Mng", 4, paramSessionInfo.toString());
       }
       return true;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("WTogether.Mng", 2, "startWatchTogether, illegal param.");
+    }
+    return false;
   }
   
   private boolean a(WTInfoFromPush paramWTInfoFromPush)
   {
-    if (paramWTInfoFromPush == null) {}
-    SessionInfo localSessionInfo;
-    WatchTogetherInfo localWatchTogetherInfo;
-    WTogetherRoom localWTogetherRoom;
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          localSessionInfo = a(paramWTInfoFromPush.jdField_a_of_type_Int, paramWTInfoFromPush.jdField_a_of_type_Long, paramWTInfoFromPush.jdField_b_of_type_Long, paramWTInfoFromPush.jdField_a_of_type_JavaLangString);
-        } while (localSessionInfo == null);
-        localWatchTogetherInfo = b(localSessionInfo);
-      } while (localWatchTogetherInfo == null);
-      localWTogetherRoom = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-    } while ((localWTogetherRoom == null) || (localWTogetherRoom.a() == 0));
-    long l1 = localWatchTogetherInfo.a();
-    int i = localWatchTogetherInfo.b();
-    long l2 = localSessionInfo.b();
-    if ((localWTogetherRoom.e()) && (l1 == l2) && (l1 != 0L) && ((l1 != paramWTInfoFromPush.jdField_a_of_type_Long) || (i != paramWTInfoFromPush.jdField_a_of_type_Int))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if ((QLog.isColorLevel()) && (bool)) {
-        QLog.i("WTogether.Mng", 2, "checkRoomIdConflict, error. come[" + paramWTInfoFromPush.jdField_a_of_type_Int + "," + paramWTInfoFromPush.jdField_a_of_type_Long + "," + paramWTInfoFromPush.jdField_b_of_type_Long + "], cur[" + i + "," + l1 + "," + localWTogetherRoom.jdField_b_of_type_JavaLangString + "]");
-      }
-      return bool;
+    boolean bool2 = false;
+    boolean bool3 = false;
+    if (paramWTInfoFromPush == null) {
+      return false;
     }
+    Object localObject = a(paramWTInfoFromPush.jdField_a_of_type_Int, paramWTInfoFromPush.jdField_a_of_type_Long, paramWTInfoFromPush.jdField_b_of_type_Long, paramWTInfoFromPush.jdField_a_of_type_JavaLangString);
+    if (localObject == null) {
+      return false;
+    }
+    WatchTogetherInfo localWatchTogetherInfo = b((SessionInfo)localObject);
+    if (localWatchTogetherInfo == null) {
+      return false;
+    }
+    WTogetherRoom localWTogetherRoom = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+    if (localWTogetherRoom != null)
+    {
+      if (localWTogetherRoom.a() == 0) {
+        return false;
+      }
+      long l1 = localWatchTogetherInfo.a();
+      int i = localWatchTogetherInfo.b();
+      long l2 = ((SessionInfo)localObject).b();
+      boolean bool1 = bool3;
+      if (localWTogetherRoom.e())
+      {
+        bool1 = bool3;
+        if (l1 == l2)
+        {
+          bool1 = bool3;
+          if (l1 != 0L) {
+            if (l1 == paramWTInfoFromPush.jdField_a_of_type_Long)
+            {
+              bool1 = bool3;
+              if (i == paramWTInfoFromPush.jdField_a_of_type_Int) {}
+            }
+            else
+            {
+              bool1 = true;
+            }
+          }
+        }
+      }
+      bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        bool2 = bool1;
+        if (bool1)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("checkRoomIdConflict, error. come[");
+          ((StringBuilder)localObject).append(paramWTInfoFromPush.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(paramWTInfoFromPush.jdField_a_of_type_Long);
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(paramWTInfoFromPush.jdField_b_of_type_Long);
+          ((StringBuilder)localObject).append("], cur[");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(l1);
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(localWTogetherRoom.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject).append("]");
+          QLog.i("WTogether.Mng", 2, ((StringBuilder)localObject).toString());
+          bool2 = bool1;
+        }
+      }
+    }
+    return bool2;
   }
   
   private void b()
   {
     Object localObject = SessionMgr.a().a();
-    if ((localObject == null) || (((SessionInfo)localObject).f())) {}
-    for (;;)
+    if (localObject != null)
     {
-      return;
-      localObject = b((SessionInfo)localObject);
-      if (localObject == null) {}
-      for (localObject = null; (localObject != null) && (((WTogetherRoom)localObject).a() == 4); localObject = ((WatchTogetherInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
-      {
-        ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).a(((WTogetherRoom)localObject).jdField_a_of_type_Int, ((WTogetherRoom)localObject).jdField_b_of_type_Long, ((WTogetherRoom)localObject).jdField_a_of_type_Long, ((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1, 10000L);
+      if (((SessionInfo)localObject).e()) {
         return;
+      }
+      localObject = b((SessionInfo)localObject);
+      if (localObject == null) {
+        localObject = null;
+      } else {
+        localObject = ((WatchTogetherInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+      }
+      if (localObject != null)
+      {
+        if (((WTogetherRoom)localObject).a() != 4) {
+          return;
+        }
+        ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).a(((WTogetherRoom)localObject).jdField_a_of_type_Int, ((WTogetherRoom)localObject).jdField_b_of_type_Long, ((WTogetherRoom)localObject).jdField_a_of_type_Long, ((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
+        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1, 10000L);
       }
     }
   }
@@ -707,8 +896,13 @@ public class WTogetherMng
   private void b(int paramInt, long paramLong1, long paramLong2)
   {
     Object localObject = a(paramInt, paramLong1);
-    if (localObject == null) {}
-    for (WTogetherRoom localWTogetherRoom = null; localWTogetherRoom == null; localWTogetherRoom = ((WatchTogetherInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom) {
+    WTogetherRoom localWTogetherRoom;
+    if (localObject == null) {
+      localWTogetherRoom = null;
+    } else {
+      localWTogetherRoom = ((WatchTogetherInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+    }
+    if (localWTogetherRoom == null) {
       return;
     }
     ((WatchTogetherInfo)localObject).jdField_b_of_type_Int = 2;
@@ -720,15 +914,20 @@ public class WTogetherMng
     localWTogetherRoom.a(5, 1, "onReceiveClosePush");
     localObject = new ReqComResult(localWTogetherRoom.jdField_a_of_type_Int, localWTogetherRoom.jdField_b_of_type_Long);
     b((ReqComResult)localObject);
-    ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).notifyUI(8, ((ReqComResult)localObject).jdField_a_of_type_Boolean, localObject);
-    b(localWTogetherRoom, 2131695973);
+    ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).notifyUI(8, ((ReqComResult)localObject).jdField_a_of_type_Boolean, localObject);
+    b(localWTogetherRoom, 2131695988);
   }
   
   private void b(int paramInt, String paramString)
   {
     paramString = a(paramInt, paramString, false);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("WTogether.Mng", 4, "onMsgClearInfo, info[" + paramString + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMsgClearInfo, info[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.Mng", 4, localStringBuilder.toString());
     }
     if (paramString == null) {
       return;
@@ -749,28 +948,27 @@ public class WTogetherMng
     if (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(1))
     {
       this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1);
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "stopSync, from[" + paramString + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("stopSync, from[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]");
+        QLog.i("WTogether.Mng", 2, localStringBuilder.toString());
       }
     }
   }
   
   private void b(String paramString, boolean paramBoolean)
   {
-    ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).notifyUI(11, paramBoolean, paramString);
+    ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).notifyUI(11, paramBoolean, paramString);
   }
   
   private void c(int paramInt, long paramLong1, long paramLong2)
   {
     Object localObject = a(paramInt, paramLong1, paramLong2, "onReceiveChangeFilePush");
-    if ((localObject == null) || (!((WatchTogetherInfo)localObject).a())) {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "onReceiveChangeFilePush, illegal. [roomType: " + paramInt + ", roomId: " + paramLong1 + "]");
-      }
-    }
-    do
+    if ((localObject != null) && (((WatchTogetherInfo)localObject).a()))
     {
-      return;
       localObject = ((WatchTogetherInfo)localObject).a();
       if ((localObject != null) && (((WTogetherRoom)localObject).a() == 0))
       {
@@ -778,19 +976,40 @@ public class WTogetherMng
         b(a(paramInt, paramLong1));
         return;
       }
-    } while ((localObject == null) || (!TextUtils.equals(((WTogetherRoom)localObject).jdField_b_of_type_JavaLangString, String.valueOf(paramLong2))));
-    a((WTogetherRoom)localObject, 8);
-    b((WTogetherRoom)localObject, 2131695968);
+      if ((localObject != null) && (TextUtils.equals(((WTogetherRoom)localObject).jdField_b_of_type_JavaLangString, String.valueOf(paramLong2))))
+      {
+        a((WTogetherRoom)localObject, 8);
+        b((WTogetherRoom)localObject, 2131695983);
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceiveChangeFilePush, illegal. [roomType: ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", roomId: ");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether.Mng", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   private void c(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WTogether.Mng", 2, "updateAVSDKWTogetherFlag, flag[" + paramInt + "], from[" + paramString + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateAVSDKWTogetherFlag, flag[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], from[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.Mng", 2, localStringBuilder.toString());
     }
     paramString = VideoController.a().a();
     if (paramString != null) {
-      paramString.a(SessionMgr.a().a().d, paramInt, true);
+      paramString.a(SessionMgr.a().a().jdField_c_of_type_JavaLangString, paramInt, true);
     }
   }
   
@@ -800,97 +1019,109 @@ public class WTogetherMng
       QLog.i("WTogether.Mng", 4, "onReceiveSecurityInfo");
     }
     WatchTogetherInfo localWatchTogetherInfo = a(paramInt, paramLong1);
-    if (localWatchTogetherInfo == null) {}
-    for (Object localObject = null; localObject == null; localObject = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom) {
+    Object localObject;
+    if (localWatchTogetherInfo == null) {
+      localObject = null;
+    } else {
+      localObject = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+    }
+    if (localObject == null) {
       return;
     }
     localWatchTogetherInfo.jdField_b_of_type_Int = 8;
-    if (((WTogetherRoom)localObject).e()) {
+    if (((WTogetherRoom)localObject).e())
+    {
       a(localWatchTogetherInfo);
     }
-    for (;;)
+    else
     {
-      VideoController.a().jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10007) });
-      return;
       ((WTogetherRoom)localObject).a(5, 1, "onReceiveClosePush");
       localObject = new ReqComResult(((WTogetherRoom)localObject).jdField_a_of_type_Int, ((WTogetherRoom)localObject).jdField_b_of_type_Long);
       b((ReqComResult)localObject);
-      ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).notifyUI(8, ((ReqComResult)localObject).jdField_a_of_type_Boolean, localObject);
+      ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).notifyUI(8, ((ReqComResult)localObject).jdField_a_of_type_Boolean, localObject);
     }
+    VideoController.a().jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10007) });
   }
   
   private void d(WatchTogetherInfo paramWatchTogetherInfo)
   {
-    int i = 1;
     if (paramWatchTogetherInfo == null) {
       return;
     }
-    String str = paramWatchTogetherInfo.jdField_b_of_type_JavaLangString;
-    ??? = SessionMgr.a().c(str);
-    if ((??? == null) || (((SessionInfo)???).f())) {}
-    for (;;)
+    Object localObject1 = paramWatchTogetherInfo.jdField_b_of_type_JavaLangString;
+    ??? = SessionMgr.a().c((String)localObject1);
+    int i;
+    if ((??? != null) && (!((SessionInfo)???).e()))
     {
+      if ((paramWatchTogetherInfo.a() != 0L) && (((SessionInfo)???).b() != paramWatchTogetherInfo.a()))
+      {
+        paramWatchTogetherInfo.a((SessionInfo)???, true);
+        i = 2;
+        break label127;
+      }
       synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-        i = 0;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("WTogether.Mng", 2, "clearInfo, ret[" + i + "], info[" + paramWatchTogetherInfo + "]");
-        return;
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject1);
+        i = 1;
       }
-      if ((paramWatchTogetherInfo.a() == 0L) || (((SessionInfo)???).b() == paramWatchTogetherInfo.a())) {
-        synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-        }
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject1);
+      i = 0;
+      label127:
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("clearInfo, ret[");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("], info[");
+        ((StringBuilder)localObject1).append(paramWatchTogetherInfo);
+        ((StringBuilder)localObject1).append("]");
+        QLog.i("WTogether.Mng", 2, ((StringBuilder)localObject1).toString());
       }
-      paramWatchTogetherInfo.a((SessionInfo)???, true);
-      i = 2;
+      return;
     }
   }
   
   private void e(WatchTogetherInfo paramWatchTogetherInfo)
   {
-    boolean bool2 = true;
-    if (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(6)) {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(6);
-    }
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(6))
     {
-      if (paramWatchTogetherInfo != null) {
-        if (paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush != null)
-        {
-          bool1 = bool2;
-          paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush = null;
-        }
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(6);
+      bool = true;
+    }
+    else
+    {
+      bool = false;
+    }
+    if (paramWatchTogetherInfo != null)
+    {
+      if (paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush != null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("WTogether.Mng", 2, "clearConflictInfo, hasConflict[" + bool1 + "]");
-        }
-        return;
-        bool1 = false;
-        break;
-      }
+      paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush = null;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramWatchTogetherInfo = new StringBuilder();
+      paramWatchTogetherInfo.append("clearConflictInfo, hasConflict[");
+      paramWatchTogetherInfo.append(bool);
+      paramWatchTogetherInfo.append("]");
+      QLog.i("WTogether.Mng", 2, paramWatchTogetherInfo.toString());
     }
   }
   
   public WTogetherPlayInfo a(SessionInfo paramSessionInfo)
   {
-    Object localObject = null;
-    WatchTogetherInfo localWatchTogetherInfo = b(paramSessionInfo);
-    paramSessionInfo = localObject;
-    if (localWatchTogetherInfo != null)
-    {
-      paramSessionInfo = localObject;
-      if (localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom != null) {
-        paramSessionInfo = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo;
-      }
+    paramSessionInfo = b(paramSessionInfo);
+    if ((paramSessionInfo != null) && (paramSessionInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom != null)) {
+      return paramSessionInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo;
     }
-    return paramSessionInfo;
+    return null;
   }
   
   public WatchTogetherInfo a(SessionInfo paramSessionInfo)
@@ -898,16 +1129,25 @@ public class WTogetherMng
     if (paramSessionInfo == null) {
       return null;
     }
-    return a(paramSessionInfo.f(), paramSessionInfo.b(), true);
+    return a(paramSessionInfo.b(), paramSessionInfo.a(), true);
   }
   
-  public void a() {}
+  protected void a() {}
   
   public void a(int paramInt, String paramString)
   {
     WatchTogetherInfo localWatchTogetherInfo = a(paramInt, paramString, false);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("WTogether.Mng", 4, "clearForClose, [relationType: " + paramInt + ", relationId: " + paramString + ", info: " + localWatchTogetherInfo + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearForClose, [relationType: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", relationId: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", info: ");
+      localStringBuilder.append(localWatchTogetherInfo);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.Mng", 4, localStringBuilder.toString());
     }
     e(localWatchTogetherInfo);
     a(localWatchTogetherInfo, 3, "clearForClose");
@@ -916,18 +1156,24 @@ public class WTogetherMng
   public void a(int paramInt1, String paramString, int paramInt2)
   {
     boolean bool = true;
-    if (paramInt2 == 1) {}
-    for (;;)
-    {
-      WatchTogetherInfo localWatchTogetherInfo = a(paramInt1, paramString, bool);
-      if (localWatchTogetherInfo != null) {
-        localWatchTogetherInfo.a(paramInt2, "updateFlg");
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("WTogether.Mng", 4, "updateFlag, [relationType: " + paramInt1 + ", relationId: " + paramString + ", flag: " + paramInt2 + "]");
-      }
-      return;
+    if (paramInt2 != 1) {
       bool = false;
+    }
+    Object localObject = a(paramInt1, paramString, bool);
+    if (localObject != null) {
+      ((WatchTogetherInfo)localObject).a(paramInt2, "updateFlg");
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateFlag, [relationType: ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", relationId: ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", flag: ");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether.Mng", 4, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -936,27 +1182,12 @@ public class WTogetherMng
     WatchTogetherInfo localWatchTogetherInfo = a(paramInt, paramString, true);
     if (localWatchTogetherInfo != null)
     {
-      if (paramInt != 3) {
-        break label151;
+      if (paramInt == 3)
+      {
+        localWatchTogetherInfo.jdField_a_of_type_JavaUtilArrayList.clear();
+        localWatchTogetherInfo.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(AVUtil.a(paramString)));
       }
-      localWatchTogetherInfo.jdField_a_of_type_JavaUtilArrayList.clear();
-      localWatchTogetherInfo.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(AVUtil.a(paramString)));
-    }
-    for (;;)
-    {
-      localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = paramChooseFileInfo;
-      if (paramChooseFileInfo != null) {
-        localWatchTogetherInfo.a(1, "updateChooseFile");
-      }
-      if (paramChooseFileInfo != null) {
-        AVUtil.a("0X800B62A", paramChooseFileInfo.a(), 0, paramChooseFileInfo.d(), paramChooseFileInfo.c(), paramChooseFileInfo.a(), paramChooseFileInfo.b());
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("WTogether.Mng", 4, "updateChooseFile, [relationType: " + paramInt + ", relationId: " + paramString + ", file: " + paramChooseFileInfo + "]");
-      }
-      return;
-      label151:
-      if ((paramArrayOfLong != null) && (paramArrayOfLong.length > 0))
+      else if ((paramArrayOfLong != null) && (paramArrayOfLong.length > 0))
       {
         localWatchTogetherInfo.jdField_a_of_type_JavaUtilArrayList.clear();
         int j = paramArrayOfLong.length;
@@ -968,207 +1199,252 @@ public class WTogetherMng
           i += 1;
         }
       }
+      localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = paramChooseFileInfo;
+      if (paramChooseFileInfo != null) {
+        localWatchTogetherInfo.a(1, "updateChooseFile");
+      }
+      if (paramChooseFileInfo != null) {
+        AVUtil.a("0X800B62A", paramChooseFileInfo.a(), 0, paramChooseFileInfo.d(), paramChooseFileInfo.c(), paramChooseFileInfo.a(), paramChooseFileInfo.b());
+      }
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramArrayOfLong = new StringBuilder();
+      paramArrayOfLong.append("updateChooseFile, [relationType: ");
+      paramArrayOfLong.append(paramInt);
+      paramArrayOfLong.append(", relationId: ");
+      paramArrayOfLong.append(paramString);
+      paramArrayOfLong.append(", file: ");
+      paramArrayOfLong.append(paramChooseFileInfo);
+      paramArrayOfLong.append("]");
+      QLog.i("WTogether.Mng", 4, paramArrayOfLong.toString());
     }
   }
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((paramInt != 4) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "onReceivePushMsg, param illegal.");
-      }
-    }
-    do
+    if ((paramInt == 4) && (paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      return;
       int j = 0;
       WTogetherCommon.PushMsg localPushMsg = new WTogetherCommon.PushMsg();
+      int i;
       try
       {
         localPushMsg.mergeFrom(paramArrayOfByte);
         i = 1;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          i = j;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("WTogether.Mng", 2, "onReceivePushMsg", paramArrayOfByte);
-            i = j;
-          }
-        }
-      }
       catch (Throwable paramArrayOfByte)
       {
-        for (;;)
+        i = j;
+        if (QLog.isColorLevel())
         {
-          int i = j;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("WTogether.Mng", 2, "onReceivePushMsg", paramArrayOfByte);
-            i = j;
-          }
+          QLog.i("WTogether.Mng", 2, "onReceivePushMsg", paramArrayOfByte);
+          i = j;
         }
       }
-    } while (i == 0);
-    paramArrayOfByte = Message.obtain();
-    paramArrayOfByte.what = 4;
-    paramArrayOfByte.arg1 = paramInt;
-    paramArrayOfByte.obj = localPushMsg;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(paramArrayOfByte);
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("WTogether.Mng", 2, "onReceivePushMsg", paramArrayOfByte);
+          i = j;
+        }
+      }
+      if (i != 0)
+      {
+        paramArrayOfByte = Message.obtain();
+        paramArrayOfByte.what = 4;
+        paramArrayOfByte.arg1 = paramInt;
+        paramArrayOfByte.obj = localPushMsg;
+        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(paramArrayOfByte);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("WTogether.Mng", 2, "onReceivePushMsg, param illegal.");
+    }
   }
   
   public void a(SessionInfo paramSessionInfo)
   {
-    if (paramSessionInfo == null) {
+    if (paramSessionInfo == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("WTogether.Mng", 2, "onConnected, session is null.");
       }
-    }
-    for (;;)
-    {
       return;
-      WatchTogetherInfo localWatchTogetherInfo = b(paramSessionInfo);
-      if ((localWatchTogetherInfo == null) || (localWatchTogetherInfo.a() == 0))
+    }
+    WatchTogetherInfo localWatchTogetherInfo = b(paramSessionInfo);
+    if ((localWatchTogetherInfo != null) && (localWatchTogetherInfo.a() != 0))
+    {
+      localWatchTogetherInfo.a(paramSessionInfo, true);
+      Object localObject = localWatchTogetherInfo.a();
+      if (localObject == null)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("WTogether.Mng", 2, "onConnected, no info or flag is 0.");
+          QLog.i("WTogether.Mng", 2, "onConnected, not valid to create room.");
         }
+        return;
       }
-      else
+      int i = ((WTogetherRoom)localObject).a();
+      if ((i == 0) && (localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo != null))
       {
-        localWatchTogetherInfo.a(paramSessionInfo, true);
-        Object localObject = localWatchTogetherInfo.a();
-        if (localObject == null)
+        if (!WTogetherUtil.a(paramSessionInfo.jdField_c_of_type_JavaLangString))
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("WTogether.Mng", 2, "onConnected, not valid to create room.");
-          }
+          a(BaseApplicationImpl.getContext().getString(2131696005), 0L);
+          d(localWatchTogetherInfo);
+        }
+        else if ((localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.d == 1) && (!WTogetherUtil.b(paramSessionInfo.jdField_c_of_type_JavaLangString)))
+        {
+          b(BaseApplicationImpl.getContext().getString(2131696006), true);
+          AVUtil.a("0X800B8B7", 0, 0, "", "", "", "");
+          d(localWatchTogetherInfo);
         }
         else
         {
-          int i = ((WTogetherRoom)localObject).a();
-          if ((i == 0) && (localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo != null)) {
-            if (!WTogetherUtil.a(paramSessionInfo.d))
-            {
-              a(BaseApplicationImpl.getContext().getString(2131695990), 0L);
-              d(localWatchTogetherInfo);
-            }
-          }
-          while (QLog.isDevelopLevel())
-          {
-            QLog.i("WTogether.Mng", 4, "onConnected, roomState[" + i + "], room[" + localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom + "]");
-            return;
-            if ((localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.d == 1) && (!WTogetherUtil.b(paramSessionInfo.d)))
-            {
-              b(BaseApplicationImpl.getContext().getString(2131695991), true);
-              AVUtil.a("0X800B8B7", 0, 0, "", "", "", "");
-              d(localWatchTogetherInfo);
-            }
-            else
-            {
-              localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-              ((WTogetherRealNameVideoProcessHelper)localObject).b(new WTogetherMng.1(this, paramSessionInfo, localWatchTogetherInfo, (WTogetherRealNameVideoProcessHelper)localObject));
-              continue;
-              if (i == 0) {
-                b(localWatchTogetherInfo);
-              }
-            }
-          }
+          localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+          ((WTogetherRealNameVideoProcessHelper)localObject).b(new WTogetherMng.1(this, paramSessionInfo, localWatchTogetherInfo, (WTogetherRealNameVideoProcessHelper)localObject));
         }
       }
+      else if (i == 0) {
+        b(localWatchTogetherInfo);
+      }
+      if (QLog.isDevelopLevel())
+      {
+        paramSessionInfo = new StringBuilder();
+        paramSessionInfo.append("onConnected, roomState[");
+        paramSessionInfo.append(i);
+        paramSessionInfo.append("], room[");
+        paramSessionInfo.append(localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom);
+        paramSessionInfo.append("]");
+        QLog.i("WTogether.Mng", 4, paramSessionInfo.toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("WTogether.Mng", 2, "onConnected, no info or flag is 0.");
     }
   }
   
   public void a(SessionInfo paramSessionInfo, int paramInt, Intent paramIntent)
   {
-    Object localObject = null;
     int i = -1;
+    Object localObject2 = null;
+    Object localObject1;
     if ((paramInt == 4660) && (paramIntent != null))
     {
       paramIntent.setExtrasClassLoader(ChooseFileInfo.class.getClassLoader());
-      localObject = (ChooseFileInfo)paramIntent.getParcelableExtra("ChooseFileInfo");
+      localObject1 = (ChooseFileInfo)paramIntent.getParcelableExtra("ChooseFileInfo");
       paramInt = paramIntent.getIntExtra("watch_together_uinType", -1);
-      String str = paramIntent.getStringExtra("watch_together_uin");
-      paramIntent = (Intent)localObject;
-      localObject = str;
+      localObject2 = paramIntent.getStringExtra("watch_together_uin");
+      paramIntent = (Intent)localObject1;
+      localObject1 = localObject2;
     }
-    for (;;)
+    else
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("WTogether.Mng", 4, "onActivityResult, uinType[" + paramInt + "], uin[" + (String)localObject + "], choose[" + paramIntent + "]");
-      }
-      if ((paramIntent != null) && (paramSessionInfo != null) && (paramSessionInfo.j == paramInt) && (TextUtils.equals((CharSequence)localObject, paramSessionInfo.d)))
+      localObject1 = null;
+      paramIntent = (Intent)localObject2;
+      paramInt = i;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onActivityResult, uinType[");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append("], uin[");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("], choose[");
+      ((StringBuilder)localObject2).append(paramIntent);
+      ((StringBuilder)localObject2).append("]");
+      QLog.i("WTogether.Mng", 4, ((StringBuilder)localObject2).toString());
+    }
+    if ((paramIntent != null) && (paramSessionInfo != null) && (paramSessionInfo.k == paramInt) && (TextUtils.equals((CharSequence)localObject1, paramSessionInfo.jdField_c_of_type_JavaLangString)))
+    {
+      if ((paramIntent.d == 1) && (!WTogetherUtil.b(paramSessionInfo.jdField_c_of_type_JavaLangString)))
       {
-        if ((paramIntent.d == 1) && (!WTogetherUtil.b(paramSessionInfo.d)))
-        {
-          b(BaseApplicationImpl.getContext().getString(2131695991), true);
-          AVUtil.a("0X800B8B7", 0, 0, "", "", "", "");
-        }
-      }
-      else {
+        b(BaseApplicationImpl.getContext().getString(2131696006), true);
+        AVUtil.a("0X800B8B7", 0, 0, "", "", "", "");
         return;
       }
-      localObject = b(paramSessionInfo);
-      if ((localObject != null) && (((WatchTogetherInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom != null) && (((WatchTogetherInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom.d()))
+      localObject1 = b(paramSessionInfo);
+      if ((localObject1 != null) && (((WatchTogetherInfo)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom != null) && (((WatchTogetherInfo)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom.d()))
       {
         a(paramSessionInfo, paramIntent);
         return;
       }
-      a(paramSessionInfo, paramIntent, new long[] { AVUtil.a(paramSessionInfo.d) });
-      return;
-      paramIntent = null;
-      paramInt = i;
+      a(paramSessionInfo, paramIntent, new long[] { AVUtil.a(paramSessionInfo.jdField_c_of_type_JavaLangString) });
     }
   }
   
   public void a(SessionInfo paramSessionInfo, WTSyncPlayInfo paramWTSyncPlayInfo)
   {
     paramSessionInfo = b(paramSessionInfo);
-    if (paramSessionInfo == null) {}
-    for (paramSessionInfo = null; (paramSessionInfo == null) || (paramSessionInfo.c()) || (!paramSessionInfo.d()); paramSessionInfo = paramSessionInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom) {
-      return;
+    if (paramSessionInfo == null) {
+      paramSessionInfo = null;
+    } else {
+      paramSessionInfo = paramSessionInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
     }
-    paramSessionInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a(paramWTSyncPlayInfo);
-    a("syncPlayInfo");
+    if ((paramSessionInfo != null) && (!paramSessionInfo.c()))
+    {
+      if (!paramSessionInfo.d()) {
+        return;
+      }
+      paramSessionInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a(paramWTSyncPlayInfo);
+      a("syncPlayInfo");
+    }
   }
   
   public void a(SessionInfo paramSessionInfo, WTVideoInfo paramWTVideoInfo, boolean paramBoolean)
   {
-    WTogetherPlayInfo localWTogetherPlayInfo = null;
-    Object localObject = b(paramSessionInfo);
-    if (localObject == null)
-    {
-      localObject = null;
-      if (localObject != null) {
-        localWTogetherPlayInfo = ((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo;
-      }
-      if ((localWTogetherPlayInfo != null) && (localWTogetherPlayInfo.a(paramWTVideoInfo))) {
-        if (!paramBoolean) {
-          break label148;
-        }
-      }
+    Object localObject1 = b(paramSessionInfo);
+    Object localObject2 = null;
+    if (localObject1 == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = ((WatchTogetherInfo)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
     }
-    label148:
-    for (int i = 2;; i = 3)
+    if (localObject1 != null) {
+      localObject2 = ((WTogetherRoom)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo;
+    }
+    if ((localObject2 != null) && (((WTogetherPlayInfo)localObject2).a(paramWTVideoInfo)))
     {
-      ((WTogetherRoom)localObject).a(4, i, "onStartPlayResult");
-      a("updatePlayResult");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("WTogether.Mng", 4, "updatePlayResult, videoInfo[" + paramWTVideoInfo + "], room[" + localObject + "], session[" + paramSessionInfo + "], success[" + paramBoolean + "]");
+      int i;
+      if (paramBoolean) {
+        i = 2;
+      } else {
+        i = 3;
       }
-      return;
-      localObject = ((WatchTogetherInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-      break;
+      ((WTogetherRoom)localObject1).a(4, i, "onStartPlayResult");
+    }
+    a("updatePlayResult");
+    if (QLog.isDevelopLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("updatePlayResult, videoInfo[");
+      ((StringBuilder)localObject2).append(paramWTVideoInfo);
+      ((StringBuilder)localObject2).append("], room[");
+      ((StringBuilder)localObject2).append(localObject1);
+      ((StringBuilder)localObject2).append("], session[");
+      ((StringBuilder)localObject2).append(paramSessionInfo);
+      ((StringBuilder)localObject2).append("], success[");
+      ((StringBuilder)localObject2).append(paramBoolean);
+      ((StringBuilder)localObject2).append("]");
+      QLog.i("WTogether.Mng", 4, ((StringBuilder)localObject2).toString());
     }
   }
   
   public void a(SessionInfo paramSessionInfo, boolean paramBoolean)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("WTogether.Mng", 4, "onSwitchTerminalSuccess, isSelfSwitchTerminal[" + paramBoolean + "], session[" + paramSessionInfo + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSwitchTerminalSuccess, isSelfSwitchTerminal[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], session[");
+      localStringBuilder.append(paramSessionInfo);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.Mng", 4, localStringBuilder.toString());
     }
   }
   
@@ -1176,23 +1452,19 @@ public class WTogetherMng
   {
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(8);
     WatchTogetherInfo localWatchTogetherInfo = a(paramReqComResult.jdField_a_of_type_Int, paramReqComResult.jdField_a_of_type_Long);
-    WTogetherRoom localWTogetherRoom;
-    if (localWatchTogetherInfo == null)
-    {
-      localWTogetherRoom = null;
-      if ((localWTogetherRoom != null) && (localWTogetherRoom.a() == 5)) {
-        break label52;
-      }
+    Object localObject;
+    if (localWatchTogetherInfo == null) {
+      localObject = null;
+    } else {
+      localObject = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
     }
-    label52:
-    int i;
-    do
+    if (localObject != null)
     {
-      return;
-      localWTogetherRoom = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-      break;
-      i = localWatchTogetherInfo.jdField_b_of_type_Int;
-      localWTogetherRoom.b("onCloseWTogether");
+      if (((WTogetherRoom)localObject).a() != 5) {
+        return;
+      }
+      int i = localWatchTogetherInfo.jdField_b_of_type_Int;
+      ((WTogetherRoom)localObject).b("onCloseWTogether");
       d(localWatchTogetherInfo);
       c(0, "onCloseWTogether");
       a(localWatchTogetherInfo, true);
@@ -1200,236 +1472,313 @@ public class WTogetherMng
         a(200L, "onCloseWTogether");
       }
       WTDataReportUtil.b();
-    } while (!QLog.isDevelopLevel());
-    QLog.i("WTogether.Mng", 4, "onCloseWTogether, result[" + paramReqComResult + "], quitReason[" + i + "]");
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onCloseWTogether, result[");
+        ((StringBuilder)localObject).append(paramReqComResult);
+        ((StringBuilder)localObject).append("], quitReason[");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("WTogether.Mng", 4, ((StringBuilder)localObject).toString());
+      }
+    }
   }
   
   void a(ReqComResult paramReqComResult, long paramLong, WTogetherCommon.RoomInfo paramRoomInfo)
   {
     WatchTogetherInfo localWatchTogetherInfo = a(paramReqComResult.jdField_a_of_type_Int, paramReqComResult.jdField_a_of_type_Long);
-    Object localObject;
-    if (localWatchTogetherInfo == null)
-    {
-      localObject = null;
-      if ((localObject != null) && (!((WTogetherRoom)localObject).c()) && (((WTogetherRoom)localObject).d())) {
-        break label92;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "onSyncPlayInfo, room[" + localObject + "]");
-      }
+    WTogetherRoom localWTogetherRoom;
+    if (localWatchTogetherInfo == null) {
+      localWTogetherRoom = null;
+    } else {
+      localWTogetherRoom = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
     }
-    label92:
-    do
+    if ((localWTogetherRoom != null) && (!localWTogetherRoom.c()) && (localWTogetherRoom.d()))
     {
-      return;
-      localObject = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-      break;
       if ((paramReqComResult.jdField_a_of_type_Boolean) && (paramRoomInfo != null)) {
-        a((WTogetherRoom)localObject, paramRoomInfo, "onSyncPlayInfo");
+        a(localWTogetherRoom, paramRoomInfo, "onSyncPlayInfo");
       }
-    } while (paramReqComResult.jdField_a_of_type_Boolean);
-    a(paramReqComResult, localWatchTogetherInfo, (WTogetherRoom)localObject, "onSyncPlayInfo");
+      if (!paramReqComResult.jdField_a_of_type_Boolean) {
+        a(paramReqComResult, localWatchTogetherInfo, localWTogetherRoom, "onSyncPlayInfo");
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramReqComResult = new StringBuilder();
+      paramReqComResult.append("onSyncPlayInfo, room[");
+      paramReqComResult.append(localWTogetherRoom);
+      paramReqComResult.append("]");
+      QLog.i("WTogether.Mng", 2, paramReqComResult.toString());
+    }
   }
   
   void a(ReqComResult paramReqComResult, ChooseFileInfo paramChooseFileInfo, WTogetherCommon.RoomInfo paramRoomInfo)
   {
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(7);
     WatchTogetherInfo localWatchTogetherInfo = a(paramReqComResult.jdField_a_of_type_Int, paramReqComResult.jdField_a_of_type_Long);
-    if ((localWatchTogetherInfo == null) || (paramChooseFileInfo == null) || (!paramChooseFileInfo.equals(localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "onStartWTogether, info[" + localWatchTogetherInfo + "]");
-      }
-    }
-    Object localObject;
-    do
+    if ((localWatchTogetherInfo != null) && (paramChooseFileInfo != null) && (paramChooseFileInfo.equals(localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo)))
     {
-      return;
-      localObject = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-      if ((localObject != null) && (((WTogetherRoom)localObject).e()) && (((WTogetherRoom)localObject).a() == 1)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("WTogether.Mng", 2, "onStartWTogether, room[" + localObject + "]");
-    return;
-    if ((paramReqComResult.jdField_a_of_type_Boolean) && (paramRoomInfo != null))
-    {
-      ((WTogetherRoom)localObject).a(1, 2, "onStartWTogether");
-      a((WTogetherRoom)localObject, paramRoomInfo, "onStartWTogether");
-      if (a(localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush)) {
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(6, 200L);
-      }
-      if (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_a_of_type_Int == 0)
+      Object localObject = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+      if ((localObject != null) && (((WTogetherRoom)localObject).e()) && (((WTogetherRoom)localObject).a() == 1))
       {
-        AVUtil.a("0X800B62D", paramChooseFileInfo.a(), 0, "", paramChooseFileInfo.c(), paramChooseFileInfo.a(), paramChooseFileInfo.b());
-        label247:
-        WTDataReportUtil.a();
-        a(localWatchTogetherInfo, "onStartWTogether");
+        if ((paramReqComResult.jdField_a_of_type_Boolean) && (paramRoomInfo != null))
+        {
+          ((WTogetherRoom)localObject).a(1, 2, "onStartWTogether");
+          a((WTogetherRoom)localObject, paramRoomInfo, "onStartWTogether");
+          if (a(localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush)) {
+            this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(6, 200L);
+          }
+          if (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_a_of_type_Int == 0)
+          {
+            AVUtil.a("0X800B62D", paramChooseFileInfo.a(), 0, "", paramChooseFileInfo.c(), paramChooseFileInfo.a(), paramChooseFileInfo.b());
+          }
+          else if (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo != null)
+          {
+            WTVideoInfo localWTVideoInfo = ((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo;
+            int i = paramChooseFileInfo.a();
+            paramRoomInfo = paramChooseFileInfo.c();
+            localObject = localWTVideoInfo.jdField_a_of_type_JavaLangString;
+            if (localWTVideoInfo.b()) {
+              paramChooseFileInfo = localWTVideoInfo.d;
+            } else {
+              paramChooseFileInfo = localWTVideoInfo.jdField_b_of_type_JavaLangString;
+            }
+            AVUtil.a("0X800B62D", i, 0, "", paramRoomInfo, (String)localObject, paramChooseFileInfo);
+          }
+          WTDataReportUtil.a();
+          a(localWatchTogetherInfo, "onStartWTogether");
+        }
+        else
+        {
+          localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = null;
+          localWatchTogetherInfo.a(0, "onStartWTogether");
+          ((WTogetherRoom)localObject).b("onStartWTogether");
+          a(localWatchTogetherInfo, true);
+          if (paramReqComResult.jdField_b_of_type_Int == 1019) {
+            a(200L, "onStartWTogether");
+          }
+        }
+        if (paramReqComResult.jdField_a_of_type_Boolean) {
+          c(1, "onStartWTogether");
+        }
+        if (QLog.isDevelopLevel())
+        {
+          paramChooseFileInfo = new StringBuilder();
+          paramChooseFileInfo.append("onStartWTogether, result[");
+          paramChooseFileInfo.append(paramReqComResult);
+          paramChooseFileInfo.append("]");
+          QLog.i("WTogether.Mng", 4, paramChooseFileInfo.toString());
+        }
+        return;
       }
-    }
-    for (;;)
-    {
-      if (paramReqComResult.jdField_a_of_type_Boolean) {
-        c(1, "onStartWTogether");
-      }
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.i("WTogether.Mng", 4, "onStartWTogether, result[" + paramReqComResult + "]");
-      return;
-      if (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo == null) {
-        break label247;
-      }
-      WTVideoInfo localWTVideoInfo = ((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo;
-      int i = paramChooseFileInfo.a();
-      paramRoomInfo = paramChooseFileInfo.c();
-      localObject = localWTVideoInfo.jdField_a_of_type_JavaLangString;
-      if (localWTVideoInfo.b()) {}
-      for (paramChooseFileInfo = localWTVideoInfo.d;; paramChooseFileInfo = localWTVideoInfo.jdField_b_of_type_JavaLangString)
+      if (QLog.isColorLevel())
       {
-        AVUtil.a("0X800B62D", i, 0, "", paramRoomInfo, (String)localObject, paramChooseFileInfo);
-        break;
+        paramReqComResult = new StringBuilder();
+        paramReqComResult.append("onStartWTogether, room[");
+        paramReqComResult.append(localObject);
+        paramReqComResult.append("]");
+        QLog.i("WTogether.Mng", 2, paramReqComResult.toString());
       }
-      localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = null;
-      localWatchTogetherInfo.a(0, "onStartWTogether");
-      ((WTogetherRoom)localObject).b("onStartWTogether");
-      a(localWatchTogetherInfo, true);
-      if (paramReqComResult.jdField_b_of_type_Int == 1019) {
-        a(200L, "onStartWTogether");
-      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramReqComResult = new StringBuilder();
+      paramReqComResult.append("onStartWTogether, info[");
+      paramReqComResult.append(localWatchTogetherInfo);
+      paramReqComResult.append("]");
+      QLog.i("WTogether.Mng", 2, paramReqComResult.toString());
     }
   }
   
   void a(ReqComResult paramReqComResult, ReqVideoAction paramReqVideoAction, WTogetherCommon.RoomInfo paramRoomInfo)
   {
     WatchTogetherInfo localWatchTogetherInfo = a(paramReqComResult.jdField_a_of_type_Int, paramReqComResult.jdField_a_of_type_Long);
-    if (localWatchTogetherInfo == null)
-    {
+    if (localWatchTogetherInfo == null) {
       paramReqVideoAction = null;
-      if ((paramReqVideoAction != null) && (paramReqVideoAction.e()) && (!paramReqVideoAction.c()) && (paramReqVideoAction.d())) {
-        break label93;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "onChangeVideoStatus, room[" + paramReqVideoAction + "]");
-      }
-    }
-    label93:
-    do
-    {
-      return;
+    } else {
       paramReqVideoAction = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-      break;
+    }
+    if ((paramReqVideoAction != null) && (paramReqVideoAction.e()) && (!paramReqVideoAction.c()) && (paramReqVideoAction.d()))
+    {
       if ((paramReqComResult.jdField_a_of_type_Boolean) && (paramRoomInfo != null)) {
         a(paramReqVideoAction, paramRoomInfo, "onChangeVideoStatus");
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("WTogether.Mng", 4, "onChangeVideoStatus, result[" + paramReqComResult + "]");
+      if (QLog.isDevelopLevel())
+      {
+        paramRoomInfo = new StringBuilder();
+        paramRoomInfo.append("onChangeVideoStatus, result[");
+        paramRoomInfo.append(paramReqComResult);
+        paramRoomInfo.append("]");
+        QLog.i("WTogether.Mng", 4, paramRoomInfo.toString());
       }
-    } while (paramReqComResult.jdField_a_of_type_Boolean);
-    a(paramReqComResult, localWatchTogetherInfo, paramReqVideoAction, "onChangeVideoStatus");
+      if (!paramReqComResult.jdField_a_of_type_Boolean) {
+        a(paramReqComResult, localWatchTogetherInfo, paramReqVideoAction, "onChangeVideoStatus");
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramReqComResult = new StringBuilder();
+      paramReqComResult.append("onChangeVideoStatus, room[");
+      paramReqComResult.append(paramReqVideoAction);
+      paramReqComResult.append("]");
+      QLog.i("WTogether.Mng", 2, paramReqComResult.toString());
+    }
   }
   
   void a(ReqComResult paramReqComResult, WTogetherCommon.RoomInfo paramRoomInfo)
   {
     WatchTogetherInfo localWatchTogetherInfo = a(paramReqComResult.jdField_a_of_type_Int, paramReqComResult.jdField_a_of_type_Long);
     WTogetherRoom localWTogetherRoom;
-    if (localWatchTogetherInfo == null)
-    {
+    if (localWatchTogetherInfo == null) {
       localWTogetherRoom = null;
-      if (localWTogetherRoom != null) {
-        break label35;
-      }
-    }
-    label35:
-    do
-    {
-      return;
+    } else {
       localWTogetherRoom = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-      break;
-      if ((paramReqComResult.jdField_a_of_type_Boolean) && (paramRoomInfo != null)) {
-        a(localWTogetherRoom, paramRoomInfo, "onGetRoomInfo");
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("WTogether.Mng", 4, "onGetRoomInfo, room[" + localWTogetherRoom + "], result[" + paramReqComResult + "]");
-      }
-    } while (paramReqComResult.jdField_a_of_type_Boolean);
-    a(paramReqComResult, localWatchTogetherInfo, localWTogetherRoom, "onGetRoomInfo");
+    }
+    if (localWTogetherRoom == null) {
+      return;
+    }
+    if ((paramReqComResult.jdField_a_of_type_Boolean) && (paramRoomInfo != null)) {
+      a(localWTogetherRoom, paramRoomInfo, "onGetRoomInfo");
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramRoomInfo = new StringBuilder();
+      paramRoomInfo.append("onGetRoomInfo, room[");
+      paramRoomInfo.append(localWTogetherRoom);
+      paramRoomInfo.append("], result[");
+      paramRoomInfo.append(paramReqComResult);
+      paramRoomInfo.append("]");
+      QLog.i("WTogether.Mng", 4, paramRoomInfo.toString());
+    }
+    if (!paramReqComResult.jdField_a_of_type_Boolean) {
+      a(paramReqComResult, localWatchTogetherInfo, localWTogetherRoom, "onGetRoomInfo");
+    }
   }
   
   void a(WTReqUrlResult paramWTReqUrlResult)
   {
     Object localObject = a(paramWTReqUrlResult.jdField_a_of_type_Int, paramWTReqUrlResult.jdField_a_of_type_Long);
-    if (localObject == null) {}
-    for (localObject = null; (localObject == null) || (((WTogetherRoom)localObject).a() != 3) || (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo == null) || (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo == null) || (!((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.equals(paramWTReqUrlResult.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo)); localObject = ((WatchTogetherInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "onRequestUrl, room[" + localObject + "]");
-      }
-      return;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((WatchTogetherInfo)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
     }
-    if ((paramWTReqUrlResult.jdField_c_of_type_Boolean) && (!TextUtils.isEmpty(paramWTReqUrlResult.jdField_a_of_type_JavaLangString)))
+    if ((localObject != null) && (((WTogetherRoom)localObject).a() == 3) && (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo != null) && (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo != null) && (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.equals(paramWTReqUrlResult.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo)))
     {
-      if (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo == null) {
-        ((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo = new WTVideoInfo(((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_a_of_type_Int, ((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_a_of_type_JavaLangString, paramWTReqUrlResult.jdField_a_of_type_JavaLangString, paramWTReqUrlResult.jdField_b_of_type_JavaLangString, null, null, null, 0, null, 0L);
+      if ((paramWTReqUrlResult.jdField_c_of_type_Boolean) && (!TextUtils.isEmpty(paramWTReqUrlResult.jdField_a_of_type_JavaLangString)))
+      {
+        if (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo == null) {
+          ((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo = new WTVideoInfo(((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_a_of_type_Int, ((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_a_of_type_JavaLangString, paramWTReqUrlResult.jdField_a_of_type_JavaLangString, paramWTReqUrlResult.jdField_b_of_type_JavaLangString, null, null, null, 0, null, 0L);
+        }
+        ((WTogetherRoom)localObject).a(4, 0, "onRequestUrl");
       }
-      ((WTogetherRoom)localObject).a(4, 0, "onRequestUrl");
-    }
-    for (;;)
-    {
+      else
+      {
+        ((WTogetherRoom)localObject).a(3, 3, "onRequestUrl");
+      }
       StringBuilder localStringBuilder = new StringBuilder("content:");
-      localStringBuilder.append("roomid=").append(paramWTReqUrlResult.jdField_a_of_type_Long).append("|");
+      localStringBuilder.append("roomid=");
+      localStringBuilder.append(paramWTReqUrlResult.jdField_a_of_type_Long);
+      localStringBuilder.append("|");
       if ((((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo != null) && (((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo != null))
       {
-        localStringBuilder.append("file_id=").append(((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_c_of_type_JavaLangString).append("|");
-        localStringBuilder.append("file_uuid=").append(((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_b_of_type_JavaLangString);
+        localStringBuilder.append("file_id=");
+        localStringBuilder.append(((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_c_of_type_JavaLangString);
+        localStringBuilder.append("|");
+        localStringBuilder.append("file_uuid=");
+        localStringBuilder.append(((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.jdField_b_of_type_JavaLangString);
       }
-      if (!QLog.isDevelopLevel()) {
-        break;
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onRequestUrl, result[");
+        ((StringBuilder)localObject).append(paramWTReqUrlResult);
+        ((StringBuilder)localObject).append("] \n");
+        ((StringBuilder)localObject).append(localStringBuilder.toString());
+        QLog.i("WTogether.Mng", 4, ((StringBuilder)localObject).toString());
       }
-      QLog.i("WTogether.Mng", 4, "onRequestUrl, result[" + paramWTReqUrlResult + "] \n" + localStringBuilder.toString());
       return;
-      ((WTogetherRoom)localObject).a(3, 3, "onRequestUrl");
+    }
+    if (QLog.isColorLevel())
+    {
+      paramWTReqUrlResult = new StringBuilder();
+      paramWTReqUrlResult.append("onRequestUrl, room[");
+      paramWTReqUrlResult.append(localObject);
+      paramWTReqUrlResult.append("]");
+      QLog.i("WTogether.Mng", 2, paramWTReqUrlResult.toString());
     }
   }
   
   public void a(WTogetherRoom paramWTogetherRoom, int paramInt)
   {
-    if (paramWTogetherRoom == null) {}
-    do
-    {
+    if (paramWTogetherRoom == null) {
       return;
-      ReqVideoAction localReqVideoAction = new ReqVideoAction(paramWTogetherRoom.jdField_a_of_type_Long, paramInt, paramWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo);
-      ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).a(paramWTogetherRoom.jdField_a_of_type_Int, paramWTogetherRoom.jdField_b_of_type_Long, localReqVideoAction);
-    } while (!QLog.isDevelopLevel());
-    QLog.i("WTogether.Mng", 4, "queryRoomInfo, room[" + paramWTogetherRoom + "], action[" + paramInt + "]");
+    }
+    Object localObject = new ReqVideoAction(paramWTogetherRoom.jdField_a_of_type_Long, paramInt, paramWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo);
+    ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).a(paramWTogetherRoom.jdField_a_of_type_Int, paramWTogetherRoom.jdField_b_of_type_Long, (ReqVideoAction)localObject);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("queryRoomInfo, room[");
+      ((StringBuilder)localObject).append(paramWTogetherRoom);
+      ((StringBuilder)localObject).append("], action[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether.Mng", 4, ((StringBuilder)localObject).toString());
+    }
   }
   
   public void a(WatchTogetherInfo paramWatchTogetherInfo)
   {
     b("closeWTogetherMode");
-    if (paramWatchTogetherInfo == null) {}
-    for (Object localObject = null; (localObject == null) || (!((WTogetherRoom)localObject).e()) || (!((WTogetherRoom)localObject).d()); localObject = paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
+    WTogetherRoom localWTogetherRoom;
+    if (paramWatchTogetherInfo == null) {
+      localWTogetherRoom = null;
+    } else {
+      localWTogetherRoom = paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+    }
+    if ((localWTogetherRoom != null) && (localWTogetherRoom.e()) && (localWTogetherRoom.d()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "closeWTogetherMode, room[" + localObject + "]");
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("closeWTogetherMode, room[");
+        localStringBuilder.append(localWTogetherRoom);
+        localStringBuilder.append("]");
+        QLog.i("WTogether.Mng", 4, localStringBuilder.toString());
       }
+      WTDataReportUtil.a(localWTogetherRoom.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo, "closeWTogetherMode");
+      paramWatchTogetherInfo.a(false, "closeWTogetherMode");
+      localWTogetherRoom.a(5, 1, "closeWTogetherMode");
+      ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).a(localWTogetherRoom.jdField_a_of_type_Int, localWTogetherRoom.jdField_b_of_type_Long, 0);
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(8);
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(8, 30000L);
       return;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("WTogether.Mng", 4, "closeWTogetherMode, room[" + localObject + "]");
+    if (QLog.isColorLevel())
+    {
+      paramWatchTogetherInfo = new StringBuilder();
+      paramWatchTogetherInfo.append("closeWTogetherMode, room[");
+      paramWatchTogetherInfo.append(localWTogetherRoom);
+      paramWatchTogetherInfo.append("]");
+      QLog.i("WTogether.Mng", 2, paramWatchTogetherInfo.toString());
     }
-    WTDataReportUtil.a(((WTogetherRoom)localObject).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo, "closeWTogetherMode");
-    paramWatchTogetherInfo.a(false, "closeWTogetherMode");
-    ((WTogetherRoom)localObject).a(5, 1, "closeWTogetherMode");
-    ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).a(((WTogetherRoom)localObject).jdField_a_of_type_Int, ((WTogetherRoom)localObject).jdField_b_of_type_Long, 0);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(8);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(8, 30000L);
   }
   
   protected void a(WatchTogetherInfo paramWatchTogetherInfo, boolean paramBoolean)
   {
     long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.i("WTogether.Mng", 2, "onExitWTMode, isAdmin[" + paramBoolean + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onExitWTMode, isAdmin[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.Mng", 2, localStringBuilder.toString());
     }
     e(paramWatchTogetherInfo);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(9008), Long.valueOf(l), Boolean.valueOf(false) });
@@ -1439,8 +1788,15 @@ public class WTogetherMng
   protected void a(boolean paramBoolean)
   {
     long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.i("WTogether.Mng", 2, "onEnterWTMode, isAdmin[" + paramBoolean + "], seq[" + l + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEnterWTMode, isAdmin[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.Mng", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(9008), Long.valueOf(l), Boolean.valueOf(true) });
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new WTogetherMng.3(this, l));
@@ -1449,149 +1805,202 @@ public class WTogetherMng
   
   public boolean a(int paramInt, String paramString)
   {
+    boolean bool2 = false;
     paramString = a(paramInt, paramString, false);
-    if (paramString != null) {
-      return paramString.a() == 1;
+    boolean bool1 = bool2;
+    if (paramString != null)
+    {
+      bool1 = bool2;
+      if (paramString.a() == 1) {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
   
   public boolean a(SessionInfo paramSessionInfo)
   {
-    boolean bool2 = false;
     paramSessionInfo = b(paramSessionInfo);
-    if (paramSessionInfo == null) {}
-    for (paramSessionInfo = null;; paramSessionInfo = paramSessionInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
-    {
-      boolean bool1 = bool2;
-      if (paramSessionInfo != null)
-      {
-        bool1 = bool2;
-        if (paramSessionInfo.a() != 0) {
-          bool1 = true;
-        }
-      }
-      return bool1;
+    if (paramSessionInfo == null) {
+      paramSessionInfo = null;
+    } else {
+      paramSessionInfo = paramSessionInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
     }
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramSessionInfo != null)
+    {
+      bool1 = bool2;
+      if (paramSessionInfo.a() != 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public boolean a(SessionInfo paramSessionInfo, ChooseFileInfo paramChooseFileInfo)
   {
     WatchTogetherInfo localWatchTogetherInfo = a(paramSessionInfo);
-    if (localWatchTogetherInfo != null) {
-      localWatchTogetherInfo.a(paramSessionInfo, false);
-    }
-    for (paramSessionInfo = localWatchTogetherInfo.a();; paramSessionInfo = null)
+    if (localWatchTogetherInfo != null)
     {
-      if ((paramSessionInfo == null) || (!paramSessionInfo.e()) || (!paramSessionInfo.d()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("WTogether.Mng", 2, "changeFile, not valid to change file. room[" + paramSessionInfo + "]");
-        }
-        return false;
-      }
+      localWatchTogetherInfo.a(paramSessionInfo, false);
+      paramSessionInfo = localWatchTogetherInfo.a();
+    }
+    else
+    {
+      paramSessionInfo = null;
+    }
+    if ((paramSessionInfo != null) && (paramSessionInfo.e()) && (paramSessionInfo.d()))
+    {
       WTDataReportUtil.a(paramSessionInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo, "changeFile");
       localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = paramChooseFileInfo;
       localWatchTogetherInfo.a(true, "changeFile");
       paramSessionInfo.a(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).a(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_b_of_type_Long, paramSessionInfo.jdField_a_of_type_Long, paramChooseFileInfo);
+      ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).a(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_b_of_type_Long, paramSessionInfo.jdField_a_of_type_Long, paramChooseFileInfo);
       return true;
     }
+    if (QLog.isColorLevel())
+    {
+      paramChooseFileInfo = new StringBuilder();
+      paramChooseFileInfo.append("changeFile, not valid to change file. room[");
+      paramChooseFileInfo.append(paramSessionInfo);
+      paramChooseFileInfo.append("]");
+      QLog.i("WTogether.Mng", 2, paramChooseFileInfo.toString());
+    }
+    return false;
   }
   
   public boolean a(SessionInfo paramSessionInfo, ReqVideoAction paramReqVideoAction)
   {
     WatchTogetherInfo localWatchTogetherInfo = b(paramSessionInfo);
-    if (localWatchTogetherInfo == null) {}
-    for (paramSessionInfo = null; (paramSessionInfo == null) || ((paramSessionInfo.a() != 4) && ((paramSessionInfo.a() != 3) || (paramSessionInfo.b() != 3))) || (paramReqVideoAction == null) || (!paramSessionInfo.e()) || (localWatchTogetherInfo.b()); paramSessionInfo = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
+    if (localWatchTogetherInfo == null) {
+      paramSessionInfo = null;
+    } else {
+      paramSessionInfo = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+    }
+    if ((paramSessionInfo != null) && ((paramSessionInfo.a() == 4) || ((paramSessionInfo.a() == 3) && (paramSessionInfo.b() == 3))) && (paramReqVideoAction != null) && (paramSessionInfo.e()) && (!localWatchTogetherInfo.b()))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("WTogether.Mng", 4, "changeVideoStatus, illegal param or no room. info[" + localWatchTogetherInfo + "]");
+      if (paramReqVideoAction.jdField_a_of_type_Int == 4) {
+        a(BaseApplicationImpl.getContext().getString(2131695986, new Object[] { String.valueOf(paramReqVideoAction.jdField_a_of_type_Float) }), 0L);
       }
-      return false;
+      paramReqVideoAction.jdField_a_of_type_Long = paramSessionInfo.a();
+      ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).a(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_b_of_type_Long, paramReqVideoAction, 0);
+      return true;
     }
-    if (paramReqVideoAction.jdField_a_of_type_Int == 4) {
-      a(BaseApplicationImpl.getContext().getString(2131695971, new Object[] { String.valueOf(paramReqVideoAction.jdField_a_of_type_Float) }), 0L);
+    if (QLog.isDevelopLevel())
+    {
+      paramSessionInfo = new StringBuilder();
+      paramSessionInfo.append("changeVideoStatus, illegal param or no room. info[");
+      paramSessionInfo.append(localWatchTogetherInfo);
+      paramSessionInfo.append("]");
+      QLog.i("WTogether.Mng", 4, paramSessionInfo.toString());
     }
-    paramReqVideoAction.jdField_a_of_type_Long = paramSessionInfo.a();
-    ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).a(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_b_of_type_Long, paramReqVideoAction, 0);
-    return true;
+    return false;
   }
   
   boolean a(ReqComResult paramReqComResult, long paramLong, int paramInt)
   {
-    boolean bool1 = true;
-    boolean bool3 = false;
     boolean bool2 = false;
-    if ((paramReqComResult == null) || (paramReqComResult.jdField_b_of_type_Int == 1009))
+    boolean bool3 = false;
+    if (paramReqComResult != null)
     {
-      bool2 = false;
-      return bool2;
-    }
-    WatchTogetherInfo localWatchTogetherInfo = a(paramReqComResult.jdField_a_of_type_Int, paramReqComResult.jdField_a_of_type_Long);
-    WTogetherRoom localWTogetherRoom;
-    if (localWatchTogetherInfo == null)
-    {
-      localWTogetherRoom = null;
+      if (paramReqComResult.jdField_b_of_type_Int == 1009) {
+        return false;
+      }
+      WatchTogetherInfo localWatchTogetherInfo = a(paramReqComResult.jdField_a_of_type_Int, paramReqComResult.jdField_a_of_type_Long);
+      Object localObject;
+      if (localWatchTogetherInfo == null) {
+        localObject = null;
+      } else {
+        localObject = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+      }
+      boolean bool1;
       switch (paramInt)
       {
       default: 
-        label51:
-        if ((localWTogetherRoom == null) || (localWTogetherRoom.a() != 4) || (paramLong != localWTogetherRoom.b())) {
-          break;
+        bool1 = bool3;
+        if (localObject == null) {
+          break label263;
         }
-      }
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (!QLog.isDevelopLevel()) {
+        bool1 = bool3;
+        if (((WTogetherRoom)localObject).a() != 4) {
+          break label263;
+        }
+        bool1 = bool3;
+        if (paramLong != ((WTogetherRoom)localObject).b()) {
+          break label263;
+        }
+      case 10: 
+        if ((goto 150) && (localObject != null))
+        {
+          bool1 = bool3;
+          if (((WTogetherRoom)localObject).a() != 6) {
+            break label263;
+          }
+        }
         break;
       }
-      QLog.i("WTogether.Mng", 4, "checkForRetry, {result: " + paramReqComResult + ", seq: " + paramLong + ", action: " + paramInt + "}");
-      return bool1;
-      localWTogetherRoom = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-      break label51;
-      if ((localWTogetherRoom == null) || (localWTogetherRoom.a() != 1))
+      do
       {
-        bool1 = false;
-        continue;
-        if (localWTogetherRoom != null)
-        {
-          bool1 = bool2;
-          if (localWTogetherRoom.a() != 5) {}
-        }
-        else
+        for (;;)
         {
           bool1 = true;
-        }
-        continue;
-        if ((localWTogetherRoom == null) || (localWTogetherRoom.a() != 2))
-        {
-          bool1 = false;
+          break;
+          bool1 = bool3;
+          if (localObject == null) {
+            break;
+          }
+          bool1 = bool3;
+          if (((WTogetherRoom)localObject).a() != 2) {
+            break;
+          }
           continue;
-          if (localWTogetherRoom != null)
+          bool1 = bool3;
+          if (localObject == null) {
+            break;
+          }
+          bool1 = bool3;
+          if (!((WTogetherRoom)localObject).d()) {
+            break;
+          }
+          bool1 = bool3;
+          if (!localWatchTogetherInfo.b()) {
+            break;
+          }
+          if ((goto 150) && (localObject != null))
           {
             bool1 = bool3;
-            if (localWTogetherRoom.a() != 6) {}
-          }
-          else
-          {
-            bool1 = true;
-          }
-          continue;
-          if ((localWTogetherRoom == null) || (!localWTogetherRoom.d()) || (!localWatchTogetherInfo.b()))
-          {
-            bool1 = false;
-            continue;
-            bool1 = false;
+            if (((WTogetherRoom)localObject).a() != 5) {
+              break;
+            }
           }
         }
+        bool1 = bool3;
+        if (localObject == null) {
+          break;
+        }
+        bool1 = bool3;
+      } while (((WTogetherRoom)localObject).a() == 1);
+      label263:
+      bool2 = bool1;
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("checkForRetry, {result: ");
+        ((StringBuilder)localObject).append(paramReqComResult);
+        ((StringBuilder)localObject).append(", seq: ");
+        ((StringBuilder)localObject).append(paramLong);
+        ((StringBuilder)localObject).append(", action: ");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("}");
+        QLog.i("WTogether.Mng", 4, ((StringBuilder)localObject).toString());
+        bool2 = bool1;
       }
     }
+    return bool2;
   }
   
-  public boolean a(String paramString)
+  protected boolean a(String paramString)
   {
     return false;
   }
@@ -1601,7 +2010,7 @@ public class WTogetherMng
     if (paramSessionInfo == null) {
       return null;
     }
-    return a(paramSessionInfo.f(), paramSessionInfo.b(), false);
+    return a(paramSessionInfo.b(), paramSessionInfo.a(), false);
   }
   
   public void b(SessionInfo paramSessionInfo)
@@ -1610,76 +2019,91 @@ public class WTogetherMng
       QLog.i("WTogether.Mng", 2, "checkAndQuit");
     }
     a(b(paramSessionInfo), 6, "checkAndQuit");
-    a(BaseApplicationImpl.getContext().getString(2131695998), 100L);
+    a(BaseApplicationImpl.getContext().getString(2131696013), 100L);
   }
   
   void b(ReqComResult paramReqComResult)
   {
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(10);
     WatchTogetherInfo localWatchTogetherInfo = a(paramReqComResult.jdField_a_of_type_Int, paramReqComResult.jdField_a_of_type_Long);
-    WTogetherRoom localWTogetherRoom;
-    if (localWatchTogetherInfo == null)
-    {
-      localWTogetherRoom = null;
-      if (localWTogetherRoom != null) {
-        break label44;
-      }
+    Object localObject;
+    if (localWatchTogetherInfo == null) {
+      localObject = null;
+    } else {
+      localObject = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
     }
-    label44:
-    int i;
-    do
-    {
+    if (localObject == null) {
       return;
-      localWTogetherRoom = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-      break;
-      i = localWatchTogetherInfo.jdField_b_of_type_Int;
-      localWTogetherRoom.b("onQuitRoom");
-      d(localWatchTogetherInfo);
-      c(0, "onQuitRoom");
-      a(localWatchTogetherInfo, false);
-      if (i == 5) {
-        a(200L, "onQuitRoom");
-      }
-      WTDataReportUtil.b();
-    } while (!QLog.isDevelopLevel());
-    QLog.i("WTogether.Mng", 4, "onQuitRoom, result[" + paramReqComResult + "], quitReason[" + i + "]");
+    }
+    int i = localWatchTogetherInfo.jdField_b_of_type_Int;
+    ((WTogetherRoom)localObject).b("onQuitRoom");
+    d(localWatchTogetherInfo);
+    c(0, "onQuitRoom");
+    a(localWatchTogetherInfo, false);
+    if (i == 5) {
+      a(200L, "onQuitRoom");
+    }
+    WTDataReportUtil.b();
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onQuitRoom, result[");
+      ((StringBuilder)localObject).append(paramReqComResult);
+      ((StringBuilder)localObject).append("], quitReason[");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether.Mng", 4, ((StringBuilder)localObject).toString());
+    }
   }
   
   void b(ReqComResult paramReqComResult, ChooseFileInfo paramChooseFileInfo, WTogetherCommon.RoomInfo paramRoomInfo)
   {
     WatchTogetherInfo localWatchTogetherInfo = a(paramReqComResult.jdField_a_of_type_Int, paramReqComResult.jdField_a_of_type_Long);
-    if ((localWatchTogetherInfo == null) || (paramChooseFileInfo == null) || (!paramChooseFileInfo.equals(localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "onChangeVideoFile, info[" + localWatchTogetherInfo + "]");
-      }
-    }
-    do
+    if ((localWatchTogetherInfo != null) && (paramChooseFileInfo != null) && (paramChooseFileInfo.equals(localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo)))
     {
-      return;
       paramChooseFileInfo = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-      if ((paramChooseFileInfo != null) && (paramChooseFileInfo.e()) && (!paramChooseFileInfo.c()) && (paramChooseFileInfo.d())) {
-        break;
+      if ((paramChooseFileInfo != null) && (paramChooseFileInfo.e()) && (!paramChooseFileInfo.c()) && (paramChooseFileInfo.d()))
+      {
+        localWatchTogetherInfo.a(false, "onChangeVideoFile");
+        if ((paramReqComResult.jdField_a_of_type_Boolean) && (paramRoomInfo != null))
+        {
+          a(paramChooseFileInfo, paramRoomInfo, "onChangeVideoFile");
+          a(localWatchTogetherInfo, "onChangeVideoFile");
+        }
+        else
+        {
+          localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = null;
+        }
+        if (QLog.isDevelopLevel())
+        {
+          paramRoomInfo = new StringBuilder();
+          paramRoomInfo.append("onChangeVideoFile, result[");
+          paramRoomInfo.append(paramReqComResult);
+          paramRoomInfo.append("]");
+          QLog.i("WTogether.Mng", 4, paramRoomInfo.toString());
+        }
+        if (!paramReqComResult.jdField_a_of_type_Boolean) {
+          a(paramReqComResult, localWatchTogetherInfo, paramChooseFileInfo, "onChangeVideoFile");
+        }
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("WTogether.Mng", 2, "onChangeVideoFile, room[" + paramChooseFileInfo + "]");
-    return;
-    localWatchTogetherInfo.a(false, "onChangeVideoFile");
-    if ((paramReqComResult.jdField_a_of_type_Boolean) && (paramRoomInfo != null))
-    {
-      a(paramChooseFileInfo, paramRoomInfo, "onChangeVideoFile");
-      a(localWatchTogetherInfo, "onChangeVideoFile");
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("WTogether.Mng", 4, "onChangeVideoFile, result[" + paramReqComResult + "]");
+      if (QLog.isColorLevel())
+      {
+        paramReqComResult = new StringBuilder();
+        paramReqComResult.append("onChangeVideoFile, room[");
+        paramReqComResult.append(paramChooseFileInfo);
+        paramReqComResult.append("]");
+        QLog.i("WTogether.Mng", 2, paramReqComResult.toString());
       }
-      if (paramReqComResult.jdField_a_of_type_Boolean) {
-        break;
-      }
-      a(paramReqComResult, localWatchTogetherInfo, paramChooseFileInfo, "onChangeVideoFile");
       return;
-      localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = null;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramReqComResult = new StringBuilder();
+      paramReqComResult.append("onChangeVideoFile, info[");
+      paramReqComResult.append(localWatchTogetherInfo);
+      paramReqComResult.append("]");
+      QLog.i("WTogether.Mng", 2, paramReqComResult.toString());
     }
   }
   
@@ -1687,69 +2111,97 @@ public class WTogetherMng
   {
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(9);
     WatchTogetherInfo localWatchTogetherInfo = a(paramReqComResult.jdField_a_of_type_Int, paramReqComResult.jdField_a_of_type_Long);
-    if (localWatchTogetherInfo == null) {}
-    for (Object localObject = null; (localObject == null) || (((WTogetherRoom)localObject).a() != 2); localObject = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
+    WTogetherRoom localWTogetherRoom;
+    if (localWatchTogetherInfo == null) {
+      localWTogetherRoom = null;
+    } else {
+      localWTogetherRoom = localWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+    }
+    if ((localWTogetherRoom != null) && (localWTogetherRoom.a() == 2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "onEnterRoom, room[" + localObject + "]");
+      if ((paramReqComResult.jdField_a_of_type_Boolean) && (paramRoomInfo != null))
+      {
+        localWTogetherRoom.a(2, 2, "onEnterRoom");
+        a(localWTogetherRoom, paramRoomInfo, "onEnterRoom");
+        WTDataReportUtil.a();
       }
-      return;
-    }
-    if ((paramReqComResult.jdField_a_of_type_Boolean) && (paramRoomInfo != null))
-    {
-      ((WTogetherRoom)localObject).a(2, 2, "onEnterRoom");
-      a((WTogetherRoom)localObject, paramRoomInfo, "onEnterRoom");
-      WTDataReportUtil.a();
-    }
-    for (;;)
-    {
+      else
+      {
+        localWTogetherRoom.b("onEnterRoom");
+      }
       if (paramReqComResult.jdField_a_of_type_Boolean) {
         c(1, "onEnterRoom");
       }
       if (!paramReqComResult.jdField_a_of_type_Boolean) {
         a(localWatchTogetherInfo, false);
       }
-      if (!QLog.isDevelopLevel()) {
-        break;
+      if (QLog.isDevelopLevel())
+      {
+        paramRoomInfo = new StringBuilder();
+        paramRoomInfo.append("onEnterRoom, result[");
+        paramRoomInfo.append(paramReqComResult);
+        paramRoomInfo.append("]");
+        QLog.i("WTogether.Mng", 4, paramRoomInfo.toString());
       }
-      QLog.i("WTogether.Mng", 4, "onEnterRoom, result[" + paramReqComResult + "]");
       return;
-      ((WTogetherRoom)localObject).b("onEnterRoom");
+    }
+    if (QLog.isColorLevel())
+    {
+      paramReqComResult = new StringBuilder();
+      paramReqComResult.append("onEnterRoom, room[");
+      paramReqComResult.append(localWTogetherRoom);
+      paramReqComResult.append("]");
+      QLog.i("WTogether.Mng", 2, paramReqComResult.toString());
     }
   }
   
   public void b(WatchTogetherInfo paramWatchTogetherInfo)
   {
-    if (paramWatchTogetherInfo == null) {}
-    for (Object localObject = null; (localObject == null) || (((WTogetherRoom)localObject).a() != 0) || (((WTogetherRoom)localObject).e()); localObject = paramWatchTogetherInfo.a())
+    WTogetherRoom localWTogetherRoom;
+    if (paramWatchTogetherInfo == null) {
+      localWTogetherRoom = null;
+    } else {
+      localWTogetherRoom = paramWatchTogetherInfo.a();
+    }
+    if ((localWTogetherRoom != null) && (localWTogetherRoom.a() == 0) && (!localWTogetherRoom.e()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "enterRoom, room[" + localObject + "]");
+      if (!WTogetherUtil.a())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("WTogether.Mng", 2, "enterRoom, not support.");
+        }
+        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(11);
+        return;
       }
+      paramWatchTogetherInfo.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(5);
+      e(paramWatchTogetherInfo);
+      localWTogetherRoom.a(2, 1, "enterRoom");
+      a(false);
+      ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).c(localWTogetherRoom.jdField_a_of_type_Int, localWTogetherRoom.jdField_b_of_type_Long, 0);
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(9);
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(9, 30000L);
       return;
     }
-    if (!WTogetherUtil.a())
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogether.Mng", 2, "enterRoom, not support.");
-      }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(11);
-      return;
+      paramWatchTogetherInfo = new StringBuilder();
+      paramWatchTogetherInfo.append("enterRoom, room[");
+      paramWatchTogetherInfo.append(localWTogetherRoom);
+      paramWatchTogetherInfo.append("]");
+      QLog.i("WTogether.Mng", 2, paramWatchTogetherInfo.toString());
     }
-    paramWatchTogetherInfo.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(5);
-    e(paramWatchTogetherInfo);
-    ((WTogetherRoom)localObject).a(2, 1, "enterRoom");
-    a(false);
-    ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).c(((WTogetherRoom)localObject).jdField_a_of_type_Int, ((WTogetherRoom)localObject).jdField_b_of_type_Long, 0);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(9);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(9, 30000L);
   }
   
   public void c(SessionInfo paramSessionInfo)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("WTogether.Mng", 4, "onPeerSwitchTerminal, session[" + paramSessionInfo + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPeerSwitchTerminal, session[");
+      localStringBuilder.append(paramSessionInfo);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.Mng", 4, localStringBuilder.toString());
     }
     a(b(paramSessionInfo), 4, "onPeerSwitchTerminal");
   }
@@ -1757,17 +2209,24 @@ public class WTogetherMng
   public void c(WatchTogetherInfo paramWatchTogetherInfo)
   {
     b("quitRoom");
-    if ((paramWatchTogetherInfo == null) || (!paramWatchTogetherInfo.a())) {}
-    do
+    if (paramWatchTogetherInfo != null)
     {
-      return;
+      if (!paramWatchTogetherInfo.a()) {
+        return;
+      }
       paramWatchTogetherInfo = paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-    } while ((paramWatchTogetherInfo == null) || (paramWatchTogetherInfo.e()) || (!paramWatchTogetherInfo.d()));
-    WTDataReportUtil.a(paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo, "quitRoom");
-    paramWatchTogetherInfo.a(6, 1, "quitRoom");
-    ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.e)).b(paramWatchTogetherInfo.jdField_a_of_type_Int, paramWatchTogetherInfo.jdField_b_of_type_Long, 0);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(10);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(10, 30000L);
+      if ((paramWatchTogetherInfo != null) && (!paramWatchTogetherInfo.e()))
+      {
+        if (!paramWatchTogetherInfo.d()) {
+          return;
+        }
+        WTDataReportUtil.a(paramWatchTogetherInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo, "quitRoom");
+        paramWatchTogetherInfo.a(6, 1, "quitRoom");
+        ((WTogetherHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString)).b(paramWatchTogetherInfo.jdField_a_of_type_Int, paramWatchTogetherInfo.jdField_b_of_type_Long, 0);
+        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(10);
+        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(10, 30000L);
+      }
+    }
   }
   
   public void d(SessionInfo paramSessionInfo)
@@ -1781,134 +2240,160 @@ public class WTogetherMng
   
   public boolean handleMessage(Message paramMessage)
   {
-    Object localObject2 = null;
+    int i = paramMessage.what;
     Object localObject3 = null;
     Object localObject1 = null;
-    switch (paramMessage.what)
+    Object localObject2 = null;
+    switch (i)
     {
     default: 
-    case 2: 
-    case 1: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-      do
+      return true;
+    case 11: 
+      try
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return true;
-                } while (!(paramMessage.obj instanceof String));
-                b(paramMessage.arg1, (String)paramMessage.obj);
-                return true;
-                b();
-                return true;
-              } while (!(paramMessage.obj instanceof WTogetherRoom));
-              a((WTogetherRoom)paramMessage.obj);
-              return true;
-            } while (!(paramMessage.obj instanceof WTogetherCommon.PushMsg));
-            a((WTogetherCommon.PushMsg)paramMessage.obj);
-            return true;
-            if (QLog.isColorLevel()) {
-              QLog.i("WTogether.Mng", 2, "MSG_TRY_ENTER_ROOM");
-            }
-            paramMessage = SessionMgr.a().a();
-          } while ((paramMessage.f()) || (!paramMessage.l()));
-          localObject2 = a(paramMessage);
-          if (localObject2 != null) {
-            ((WatchTogetherInfo)localObject2).a(paramMessage, true);
-          }
-          if (localObject2 == null) {}
-          for (paramMessage = (Message)localObject1; (paramMessage == null) || (paramMessage.a() != 0); paramMessage = ((WatchTogetherInfo)localObject2).a())
-          {
-            QLog.i("WTogether.Mng", 2, "MSG_TRY_ENTER_ROOM, error, room[" + paramMessage + "]");
-            return true;
-          }
-          b((WatchTogetherInfo)localObject2);
-          return true;
-          paramMessage = SessionMgr.a().a();
-        } while ((paramMessage.f()) || (!paramMessage.l()));
-        paramMessage = b(paramMessage);
-      } while (paramMessage == null);
+        paramMessage = BaseApplicationImpl.getContext();
+        localObject1 = paramMessage.getString(2131696016);
+        localObject2 = new Intent(paramMessage, SmallScreenDialogActivity.class);
+        ((Intent)localObject2).putExtra("tag_model", 1);
+        ((Intent)localObject2).putExtra("tag_style", 1);
+        ((Intent)localObject2).putExtra("tag_msg", (String)localObject1);
+        paramMessage.startActivity((Intent)localObject2);
+        return true;
+      }
+      catch (Throwable paramMessage)
+      {
+        QLog.i("WTogether.Mng", 2, "MSG_SHOW_NOT_SUPPORT", paramMessage);
+        return true;
+      }
+    case 10: 
+      paramMessage = b(SessionMgr.a().a());
+      if (paramMessage == null) {
+        paramMessage = (Message)localObject2;
+      } else {
+        paramMessage = paramMessage.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+      }
+      if ((paramMessage == null) || (paramMessage.a() != 6) || (paramMessage.b() != 1)) {
+        break label747;
+      }
+      paramMessage = new ReqComResult(paramMessage.jdField_a_of_type_Int, paramMessage.jdField_b_of_type_Long);
+      paramMessage.jdField_a_of_type_Boolean = false;
+      paramMessage.jdField_b_of_type_Int = -1000;
+      b(paramMessage);
+      return true;
+    case 9: 
+      paramMessage = b(SessionMgr.a().a());
+      if (paramMessage == null) {
+        paramMessage = null;
+      } else {
+        paramMessage = paramMessage.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+      }
+      if ((paramMessage == null) || (paramMessage.a() != 2) || (paramMessage.b() != 1)) {
+        break label747;
+      }
+      paramMessage = new ReqComResult(paramMessage.jdField_a_of_type_Int, paramMessage.jdField_b_of_type_Long);
+      paramMessage.jdField_a_of_type_Boolean = false;
+      paramMessage.jdField_b_of_type_Int = -1000;
+      b(paramMessage, null);
+      return true;
+    case 8: 
+      paramMessage = b(SessionMgr.a().a());
+      if (paramMessage == null) {
+        paramMessage = localObject3;
+      } else {
+        paramMessage = paramMessage.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+      }
+      if ((paramMessage == null) || (paramMessage.a() != 5) || (paramMessage.b() != 1)) {
+        break label747;
+      }
+      paramMessage = new ReqComResult(paramMessage.jdField_a_of_type_Int, paramMessage.jdField_b_of_type_Long);
+      paramMessage.jdField_a_of_type_Boolean = false;
+      paramMessage.jdField_b_of_type_Int = -1000;
+      a(paramMessage);
+      return true;
+    case 7: 
+      localObject1 = b(SessionMgr.a().a());
+      if (localObject1 == null) {
+        paramMessage = null;
+      } else {
+        paramMessage = ((WatchTogetherInfo)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+      }
+      if ((paramMessage == null) || (paramMessage.a() != 1) || (paramMessage.b() != 1)) {
+        break label747;
+      }
+      paramMessage = new ReqComResult(paramMessage.jdField_a_of_type_Int, paramMessage.jdField_b_of_type_Long);
+      paramMessage.jdField_a_of_type_Boolean = false;
+      paramMessage.jdField_b_of_type_Int = -1000;
+      a(paramMessage, ((WatchTogetherInfo)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo, null);
+      return true;
+    case 6: 
+      paramMessage = SessionMgr.a().a();
+      if ((paramMessage.e()) || (!paramMessage.j())) {
+        break label747;
+      }
+      paramMessage = b(paramMessage);
+      if (paramMessage == null) {
+        break label747;
+      }
       if (a(paramMessage.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush)) {
         a(paramMessage.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush);
       }
       paramMessage.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush = null;
       return true;
-    case 7: 
-      localObject1 = b(SessionMgr.a().a());
-      if (localObject1 == null) {}
-      for (paramMessage = null; (paramMessage != null) && (paramMessage.a() == 1) && (paramMessage.b() == 1); paramMessage = ((WatchTogetherInfo)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
+    case 5: 
+      if (QLog.isColorLevel()) {
+        QLog.i("WTogether.Mng", 2, "MSG_TRY_ENTER_ROOM");
+      }
+      paramMessage = SessionMgr.a().a();
+      if ((paramMessage.e()) || (!paramMessage.j())) {
+        break label747;
+      }
+      localObject2 = a(paramMessage);
+      if (localObject2 != null) {
+        ((WatchTogetherInfo)localObject2).a(paramMessage, true);
+      }
+      if (localObject2 == null) {
+        paramMessage = (Message)localObject1;
+      } else {
+        paramMessage = ((WatchTogetherInfo)localObject2).a();
+      }
+      if ((paramMessage != null) && (paramMessage.a() == 0))
       {
-        paramMessage = new ReqComResult(paramMessage.jdField_a_of_type_Int, paramMessage.jdField_b_of_type_Long);
-        paramMessage.jdField_a_of_type_Boolean = false;
-        paramMessage.jdField_b_of_type_Int = -1000;
-        a(paramMessage, ((WatchTogetherInfo)localObject1).jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo, null);
+        b((WatchTogetherInfo)localObject2);
         return true;
       }
-    case 8: 
-      paramMessage = b(SessionMgr.a().a());
-      if (paramMessage == null) {}
-      for (paramMessage = (Message)localObject2; (paramMessage != null) && (paramMessage.a() == 5) && (paramMessage.b() == 1); paramMessage = paramMessage.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
-      {
-        paramMessage = new ReqComResult(paramMessage.jdField_a_of_type_Int, paramMessage.jdField_b_of_type_Long);
-        paramMessage.jdField_a_of_type_Boolean = false;
-        paramMessage.jdField_b_of_type_Int = -1000;
-        a(paramMessage);
-        return true;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("MSG_TRY_ENTER_ROOM, error, room[");
+      ((StringBuilder)localObject1).append(paramMessage);
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("WTogether.Mng", 2, ((StringBuilder)localObject1).toString());
+      return true;
+    case 4: 
+      if (!(paramMessage.obj instanceof WTogetherCommon.PushMsg)) {
+        break label747;
       }
-    case 9: 
-      paramMessage = b(SessionMgr.a().a());
-      if (paramMessage == null) {}
-      for (paramMessage = null; (paramMessage != null) && (paramMessage.a() == 2) && (paramMessage.b() == 1); paramMessage = paramMessage.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
-      {
-        paramMessage = new ReqComResult(paramMessage.jdField_a_of_type_Int, paramMessage.jdField_b_of_type_Long);
-        paramMessage.jdField_a_of_type_Boolean = false;
-        paramMessage.jdField_b_of_type_Int = -1000;
-        b(paramMessage, null);
-        return true;
+      a((WTogetherCommon.PushMsg)paramMessage.obj);
+      return true;
+    case 3: 
+      if (!(paramMessage.obj instanceof WTogetherRoom)) {
+        break label747;
       }
-    case 10: 
-      paramMessage = b(SessionMgr.a().a());
-      if (paramMessage == null) {}
-      for (paramMessage = localObject3; (paramMessage != null) && (paramMessage.a() == 6) && (paramMessage.b() == 1); paramMessage = paramMessage.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom)
-      {
-        paramMessage = new ReqComResult(paramMessage.jdField_a_of_type_Int, paramMessage.jdField_b_of_type_Long);
-        paramMessage.jdField_a_of_type_Boolean = false;
-        paramMessage.jdField_b_of_type_Int = -1000;
-        b(paramMessage);
-        return true;
+      a((WTogetherRoom)paramMessage.obj);
+      return true;
+    case 2: 
+      if (!(paramMessage.obj instanceof String)) {
+        break label747;
       }
-    }
-    try
-    {
-      paramMessage = BaseApplicationImpl.getContext();
-      localObject1 = paramMessage.getString(2131696001);
-      localObject2 = new Intent(paramMessage, SmallScreenDialogActivity.class);
-      ((Intent)localObject2).putExtra("tag_model", 1);
-      ((Intent)localObject2).putExtra("tag_style", 1);
-      ((Intent)localObject2).putExtra("tag_msg", (String)localObject1);
-      paramMessage.startActivity((Intent)localObject2);
+      b(paramMessage.arg1, (String)paramMessage.obj);
       return true;
     }
-    catch (Throwable paramMessage)
-    {
-      QLog.i("WTogether.Mng", 2, "MSG_SHOW_NOT_SUPPORT", paramMessage);
-    }
+    b();
+    label747:
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.WTogetherMng
  * JD-Core Version:    0.7.0.1
  */

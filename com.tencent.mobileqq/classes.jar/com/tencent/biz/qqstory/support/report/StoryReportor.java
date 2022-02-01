@@ -7,6 +7,7 @@ import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.aelight.camera.entry.api.AECameraEntry;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.boundaries.StoryApi;
 import com.tencent.biz.qqstory.model.item.IFeedOwner;
@@ -28,6 +29,7 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.editor.params.EditVideoParams;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -37,12 +39,6 @@ import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.qq.im.ae.entry.AECameraEntry;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -61,10 +57,9 @@ public class StoryReportor
   
   static
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a(2131699761);
+    jdField_a_of_type_JavaLangString = StoryApi.a(2131699902);
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(EditVideoActivity.class, Integer.valueOf(1));
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryMainActivity.class, Integer.valueOf(3));
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(StoryDetailActivity.class, Integer.valueOf(4));
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryMemoriesActivity.class, Integer.valueOf(5));
@@ -72,26 +67,31 @@ public class StoryReportor
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryShareGroupProfileActivity.class, Integer.valueOf(11));
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(TroopStoryMainActivity.class, Integer.valueOf(12));
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryWatcherListActivity.class, Integer.valueOf(13));
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(LocalVideoSelectActivity.class, Integer.valueOf(17));
   }
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
+    int i = 1;
+    if (paramInt != 1)
     {
-    case 5: 
-    default: 
-      return 6;
-    case 1: 
-      return 1;
-    case 2: 
-      return 3;
-    case 3: 
-      return 5;
-    case 4: 
-      return 4;
+      i = 3;
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 6) {
+              return 6;
+            }
+            return 2;
+          }
+          return 4;
+        }
+        return 5;
+      }
     }
-    return 2;
+    return i;
   }
   
   @Deprecated
@@ -100,61 +100,76 @@ public class StoryReportor
     if (paramIFeedOwner == null) {
       return 4;
     }
-    switch (paramIFeedOwner.getRelationType())
+    int i = paramIFeedOwner.getRelationType();
+    if (i != 0)
     {
-    default: 
-      return 4;
-    case 0: 
-      return 1;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return 4;
+        }
+        return 3;
+      }
       return 2;
     }
-    return 3;
+    return 1;
   }
   
   public static int a(FeedItem paramFeedItem)
   {
-    int i = 3;
     if (paramFeedItem == null) {
       return 0;
     }
-    switch (paramFeedItem.type)
+    int k = paramFeedItem.type;
+    int i = 7;
+    int j;
+    if (k != 1)
     {
-    case 4: 
-    default: 
-      return 1;
-    case 1: 
+      j = 6;
+      if (k != 2)
+      {
+        if (k == 3) {
+          return i;
+        }
+        if (k != 5)
+        {
+          if (k != 6)
+          {
+            if (k != 7) {
+              return 1;
+            }
+            return 11;
+          }
+          return 10;
+        }
+        return 9;
+      }
+      paramFeedItem = (ShareGroupItem)paramFeedItem.getOwner();
+      if (paramFeedItem.getRelationType() != 2) {}
+    }
+    do
+    {
+      return 3;
+      if (paramFeedItem.isPublic()) {
+        i = j;
+      } else {
+        i = 5;
+      }
+      return i;
       paramFeedItem = (QQUserUIItem)paramFeedItem.getOwner();
-      if (TextUtils.equals(QQStoryContext.a().b(), paramFeedItem.uid)) {
+      boolean bool = TextUtils.equals(QQStoryContext.a().b(), paramFeedItem.uid);
+      i = 4;
+      if (bool) {
         return 4;
       }
       if (paramFeedItem.getRelationType() == 0) {
-        return 1;
-      }
-      if (paramFeedItem.getRelationType() == 2) {
-        return 3;
-      }
-      if (paramFeedItem.isSubscribe()) {
-        return 2;
-      }
-      return 4;
-    case 2: 
-      paramFeedItem = (ShareGroupItem)paramFeedItem.getOwner();
-      if (paramFeedItem.getRelationType() == 2) {
-        return i;
-      }
-      if (paramFeedItem.isPublic()) {}
-      for (i = 6;; i = 5) {
         break;
       }
-    case 3: 
-      return 7;
-    case 5: 
-      return 9;
-    case 6: 
-      return 10;
+    } while (paramFeedItem.getRelationType() == 2);
+    if (paramFeedItem.isSubscribe()) {
+      i = 2;
     }
-    return 11;
+    return i;
   }
   
   public static int a(Class<? extends QQStoryBaseActivity> paramClass, int paramInt)
@@ -168,16 +183,17 @@ public class StoryReportor
   
   public static int a(@Nullable String paramString, VideoListFeedItem paramVideoListFeedItem)
   {
-    MsgTabNodeInfo localMsgTabNodeInfo = null;
     if (!TextUtils.isEmpty(paramString)) {
-      localMsgTabNodeInfo = MsgTabStoryManager.a(QQStoryContext.a()).a(paramString);
+      paramString = MsgTabStoryManager.a(QQStoryContext.a()).a(paramString);
+    } else {
+      paramString = null;
     }
-    if (localMsgTabNodeInfo != null)
+    if (paramString != null)
     {
-      if (localMsgTabNodeInfo.a == 12) {
+      if (paramString.a == 12) {
         return 12;
       }
-      if (localMsgTabNodeInfo.a == 13) {
+      if (paramString.a == 13) {
         return 13;
       }
     }
@@ -186,59 +202,69 @@ public class StoryReportor
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 10: 
-      return "1";
-    case 11: 
-      return "3";
-    case 210: 
-      return "2";
-    case 211: 
-      return "4";
-    case 220: 
-      return "2";
-    case 221: 
-      return "4";
-    case 23: 
-      return "2";
-    case 12: 
-      return "5";
-    case 222: 
-      return "6";
+    String str2 = "4";
+    if (paramInt != 23) {
+      if (paramInt != 4444)
+      {
+        if (paramInt != 210)
+        {
+          str1 = str2;
+          if (paramInt == 211) {
+            return str1;
+          }
+        }
+      }
+      else
+      {
+        switch (paramInt)
+        {
+        default: 
+          str1 = str2;
+          switch (paramInt)
+          {
+          default: 
+            return "";
+          case 222: 
+            return "6";
+          }
+        case 12: 
+          return "5";
+        case 11: 
+          return "3";
+        }
+        return "1";
+      }
     }
-    return "5";
+    String str1 = "2";
+    return str1;
   }
   
   @NonNull
   public static String a(int paramInt, String... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
-      return "";
+    if ((paramVarArgs != null) && (paramVarArgs.length > paramInt)) {
+      return paramVarArgs[paramInt];
     }
-    return paramVarArgs[paramInt];
+    return "";
   }
   
   public static String a(Context paramContext)
   {
-    int i = 4;
-    int j = NetworkUtil.a(paramContext);
-    if (j == 1) {}
-    for (;;)
-    {
-      return "" + i;
-      if (j == 2) {
-        i = 1;
-      } else if (j == 3) {
-        i = 2;
-      } else if (j == 4) {
-        i = 3;
-      } else {
-        i = 5;
-      }
+    int j = NetworkUtil.getSystemNetwork(paramContext);
+    int i = 3;
+    if (j == 1) {
+      i = 4;
+    } else if (j == 2) {
+      i = 1;
+    } else if (j == 3) {
+      i = 2;
+    } else if (j != 4) {
+      i = 5;
     }
+    paramContext = new StringBuilder();
+    paramContext.append("");
+    paramContext.append(i);
+    return paramContext.toString();
   }
   
   public static String a(StoryVideoItem paramStoryVideoItem)
@@ -253,17 +279,15 @@ public class StoryReportor
     int i;
     if (paramStoryVideoItem.mPollResult != -1) {
       i = 1;
+    } else {
+      i = 0;
     }
-    while (bool) {
-      if (i != 0)
-      {
+    if (bool)
+    {
+      if (i != 0) {
         return "2";
-        i = 0;
       }
-      else
-      {
-        return "1";
-      }
+      return "1";
     }
     if (i != 0) {
       return "4";
@@ -296,56 +320,43 @@ public class StoryReportor
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
   {
-    int i;
-    if ((paramActivity instanceof QIMCameraCaptureActivity))
-    {
-      i = b(paramActivity.getIntent().getIntExtra("edit_video_type", 10002));
-      if ((i == 10002) || (i == 10000)) {
-        a("video_shoot_new", paramString1, i, 0, new String[] { paramString2, paramString3 });
-      }
+    int i = paramActivity.getIntent().getIntExtra("capture_operation_in", -1);
+    if ((i == 10002) || (i == 10000)) {
+      a("video_edit_new", paramString1, i, 0, new String[] { paramString2, paramString3 });
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!(paramActivity instanceof EditVideoActivity)) && (!(paramActivity instanceof EditPicActivity)));
-      i = paramActivity.getIntent().getIntExtra("capture_operation_in", -1);
-    } while ((i != 10002) && (i != 10000));
-    a("video_edit_new", paramString1, i, 0, new String[] { paramString2, paramString3 });
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, MessageForStructing paramMessageForStructing, String paramString)
   {
-    if (paramMessageForStructing == null) {}
-    do
+    if (paramMessageForStructing == null) {
+      return;
+    }
+    AbsStructMsg localAbsStructMsg = paramMessageForStructing.structingMsg;
+    if (localAbsStructMsg != null)
     {
-      do
-      {
-        AbsStructMsg localAbsStructMsg;
-        do
-        {
-          return;
-          localAbsStructMsg = paramMessageForStructing.structingMsg;
-        } while ((localAbsStructMsg == null) || (TextUtils.isEmpty(localAbsStructMsg.mMsg_A_ActionData)));
-        paramContext = JumpParser.a(paramQQAppInterface, paramContext, localAbsStructMsg.mMsg_A_ActionData);
-      } while (paramContext == null);
+      if (TextUtils.isEmpty(localAbsStructMsg.mMsg_A_ActionData)) {
+        return;
+      }
+      paramContext = JumpParser.a(paramQQAppInterface, paramContext, localAbsStructMsg.mMsg_A_ActionData);
+      if (paramContext == null) {
+        return;
+      }
       paramQQAppInterface = paramContext.b("usertype");
       paramContext = paramContext.b("unionid");
-    } while ((TextUtils.isEmpty(paramQQAppInterface)) || (TextUtils.isEmpty(paramContext)));
+      if ((TextUtils.isEmpty(paramQQAppInterface)) || (TextUtils.isEmpty(paramContext))) {}
+    }
     try
     {
       i = Integer.parseInt(paramQQAppInterface);
-      a("share_uin_obj", paramString, TroopUtils.b(paramMessageForStructing.istroop), i, new String[] { paramContext });
-      return;
     }
     catch (NumberFormatException paramQQAppInterface)
     {
-      for (;;)
-      {
-        int i = 0;
-      }
+      int i;
+      label83:
+      break label83;
     }
+    i = 0;
+    a("share_uin_obj", paramString, TroopUtils.a(paramMessageForStructing.istroop), i, new String[] { paramContext });
   }
   
   public static void a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean, String... paramVarArgs)
@@ -363,7 +374,10 @@ public class StoryReportor
         localHashMap.put("op_r2", a(1, paramVarArgs));
         localHashMap.put("op_r3", a(2, paramVarArgs));
         localHashMap.put("op_r4", a(3, paramVarArgs));
-        paramString = "video_shoot_new_" + paramString;
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append("video_shoot_new_");
+        paramVarArgs.append(paramString);
+        paramString = paramVarArgs.toString();
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, paramString, true, 0L, 0L, localHashMap, null);
       }
     }
@@ -401,26 +415,24 @@ public class StoryReportor
     if (paramIntent == null) {
       return;
     }
-    int i;
+    int i = -1;
     if (paramIntent != null)
     {
-      EditVideoParams localEditVideoParams = (EditVideoParams)paramIntent.getParcelableExtra(EditVideoParams.class.getName());
-      if (localEditVideoParams != null) {
-        i = localEditVideoParams.a("extra_ablum_type", -1);
+      localObject = (EditVideoParams)paramIntent.getParcelableExtra(EditVideoParams.class.getName());
+      if (localObject != null) {
+        i = ((EditVideoParams)localObject).a("extra_ablum_type", -1);
+      } else {
+        i = paramIntent.getIntExtra("extra_ablum_type", -1);
       }
     }
-    for (;;)
-    {
-      i = a(i);
-      paramIntent = new String[paramVarArgs.length + 1];
-      paramIntent[0] = (i + "");
-      System.arraycopy(paramVarArgs, 0, paramIntent, 1, paramVarArgs.length);
-      a(paramString1, paramString2, 0, 0, paramIntent);
-      return;
-      i = paramIntent.getIntExtra("extra_ablum_type", -1);
-      continue;
-      i = -1;
-    }
+    i = a(i);
+    paramIntent = new String[paramVarArgs.length + 1];
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("");
+    paramIntent[0] = ((StringBuilder)localObject).toString();
+    System.arraycopy(paramVarArgs, 0, paramIntent, 1, paramVarArgs.length);
+    a(paramString1, paramString2, 0, 0, paramIntent);
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String... paramVarArgs)
@@ -445,11 +457,14 @@ public class StoryReportor
     HashMap localHashMap = new HashMap();
     if (paramVarArgs != null)
     {
-      int i = 0;
-      while (i < paramVarArgs.length)
+      int j;
+      for (int i = 0; i < paramVarArgs.length; i = j)
       {
-        localHashMap.put("op_r" + (i + 1), paramVarArgs[i]);
-        i += 1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("op_r");
+        j = i + 1;
+        localStringBuilder.append(j);
+        localHashMap.put(localStringBuilder.toString(), paramVarArgs[i]);
       }
     }
     if (QLog.isColorLevel()) {
@@ -470,12 +485,28 @@ public class StoryReportor
   private static void a(Map<String, String> paramMap, String paramString1, String paramString2)
   {
     Iterator localIterator = paramMap.entrySet().iterator();
-    for (paramMap = "事件Code : " + paramString2 + "   上报内容 ----------  \n"; localIterator.hasNext(); paramMap = paramMap + "\n")
+    paramMap = new StringBuilder();
+    paramMap.append("事件Code : ");
+    paramMap.append(paramString2);
+    paramMap.append("   上报内容 ----------  \n");
+    for (paramMap = paramMap.toString(); localIterator.hasNext(); paramMap = paramString2.toString())
     {
       paramString2 = (Map.Entry)localIterator.next();
-      paramMap = paramMap + (String)paramString2.getKey();
-      paramMap = paramMap + "   :   ";
-      paramMap = paramMap + (String)paramString2.getValue();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMap);
+      localStringBuilder.append((String)paramString2.getKey());
+      paramMap = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMap);
+      localStringBuilder.append("   :   ");
+      paramMap = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMap);
+      localStringBuilder.append((String)paramString2.getValue());
+      paramMap = localStringBuilder.toString();
+      paramString2 = new StringBuilder();
+      paramString2.append(paramMap);
+      paramString2.append("\n");
     }
     if (QLog.isColorLevel()) {
       QLog.d(paramString1, 2, paramMap);
@@ -489,91 +520,94 @@ public class StoryReportor
   
   public static int b(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 10005)
     {
-    default: 
-      return 0;
-    case 10012: 
-      return 2;
-    case 10013: 
-    case 10017: 
-      return 3;
-    case 10001: 
-      return 4;
-    case 10000: 
-      return 5;
+      if (paramInt != 10017) {
+        if (paramInt != 10012) {
+          if (paramInt == 10013) {
+            break label64;
+          }
+        }
+      }
+      switch (paramInt)
+      {
+      default: 
+        return 0;
+      case 10001: 
+        return 4;
+      case 10000: 
+        return 5;
+        return 2;
+        label64:
+        return 3;
+      }
     }
     return 1;
   }
   
   public static int b(FeedItem paramFeedItem)
   {
+    int j = 0;
     if (paramFeedItem == null) {
       return 0;
     }
-    int i;
-    switch (paramFeedItem.type)
-    {
-    case 4: 
-    default: 
-      return 0;
-    case 1: 
-    case 3: 
-    case 5: 
-      if (paramFeedItem.getOwner().isMe()) {}
-      for (i = 1;; i = 2) {
-        return i;
-      }
-    }
-    paramFeedItem = (ShareGroupItem)paramFeedItem.getOwner();
-    if (paramFeedItem.isOwner())
-    {
-      i = 1;
-      if (i != 1) {
-        break label110;
-      }
-      i = 3;
-    }
-    for (;;)
-    {
-      return i;
-      if (paramFeedItem.isSubscribe())
+    int k = paramFeedItem.type;
+    int i = 2;
+    if (k != 1) {
+      if (k != 2)
       {
-        i = 2;
-        break;
+        if ((k != 3) && (k != 5)) {
+          return 0;
+        }
       }
-      i = 3;
-      break;
-      label110:
-      if (i == 2) {
-        i = 4;
-      } else if (i == 3) {
-        i = 5;
-      } else {
-        i = 0;
+      else
+      {
+        paramFeedItem = (ShareGroupItem)paramFeedItem.getOwner();
+        if (paramFeedItem.isOwner()) {
+          i = 1;
+        } else if (paramFeedItem.isSubscribe()) {
+          i = 2;
+        } else {
+          i = 3;
+        }
+        if (i == 1) {
+          return 3;
+        }
+        if (i == 2) {
+          return 4;
+        }
+        if (i == 3) {
+          j = 5;
+        }
+        return j;
       }
     }
+    if (paramFeedItem.getOwner().isMe()) {
+      i = 1;
+    }
+    return i;
   }
   
   public static String b(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 3: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return "";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 9) {
+              return "";
+            }
+            return "9";
+          }
+          return "4";
+        }
+        return "2";
+      }
       return "1";
-    case 2: 
-      return "2";
-    case 4: 
-      return "4";
-    case 9: 
-      return "9";
     }
     return "0";
   }
@@ -593,7 +627,10 @@ public class StoryReportor
       localHashMap.put("op_r2", a(1, paramVarArgs));
       localHashMap.put("op_r3", a(2, paramVarArgs));
       localHashMap.put("op_r4", a(3, paramVarArgs));
-      paramString = "video_edit_new_" + paramString;
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append("video_edit_new_");
+      paramVarArgs.append(paramString);
+      paramString = paramVarArgs.toString();
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, paramString, true, 0L, 0L, localHashMap, null);
     }
   }
@@ -634,7 +671,7 @@ public class StoryReportor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.support.report.StoryReportor
  * JD-Core Version:    0.7.0.1
  */

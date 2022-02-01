@@ -14,39 +14,48 @@ import java.nio.FloatBuffer;
 public class FrameBufferCenterTexture
 {
   private static int jdField_a_of_type_Int = -1;
-  private static FrameBufferCenterTexture jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture = null;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = null;
-  boolean jdField_a_of_type_Boolean = true;
+  private static FrameBufferCenterTexture jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  boolean jdField_a_of_type_Boolean;
   private int b = 0;
   private int c = 0;
-  private int d = jdField_a_of_type_Int;
-  private int e = jdField_a_of_type_Int;
-  private int f = jdField_a_of_type_Int;
-  private int g = jdField_a_of_type_Int;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
+  
+  private FrameBufferCenterTexture()
+  {
+    int i = jdField_a_of_type_Int;
+    this.d = i;
+    this.e = i;
+    this.f = i;
+    this.g = i;
+    this.jdField_a_of_type_JavaNioFloatBuffer = null;
+    this.jdField_a_of_type_Boolean = true;
+  }
   
   private int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = this.d;
-    if (this.d == jdField_a_of_type_Int)
+    int j = this.d;
+    int i = j;
+    if (j == jdField_a_of_type_Int)
     {
       int[] arrayOfInt = new int[1];
       GLES20.glGenFramebuffers(1, arrayOfInt, 0);
       i = arrayOfInt[0];
     }
-    for (;;)
-    {
-      GLES20.glBindFramebuffer(36160, i);
-      GLES20.glBindTexture(3553, paramInt3);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
-      GLES20.glBindTexture(3553, 0);
-      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt3, 0);
-      GLES20.glBindFramebuffer(36160, 0);
-      return i;
-    }
+    GLES20.glBindFramebuffer(36160, i);
+    GLES20.glBindTexture(3553, paramInt3);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+    GLES20.glBindTexture(3553, 0);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt3, 0);
+    GLES20.glBindFramebuffer(36160, 0);
+    return i;
   }
   
   public static FrameBufferCenterTexture a()
@@ -59,27 +68,25 @@ public class FrameBufferCenterTexture
   
   private int b(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = this.f;
-    if (this.f == jdField_a_of_type_Int)
+    int j = this.f;
+    int i = j;
+    if (j == jdField_a_of_type_Int)
     {
       int[] arrayOfInt = new int[1];
       GLES20.glGenFramebuffers(1, arrayOfInt, 0);
       i = arrayOfInt[0];
     }
-    for (;;)
-    {
-      GLES20.glBindFramebuffer(36160, i);
-      GLES20.glBindTexture(3553, paramInt3);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
-      GLES20.glBindTexture(3553, 0);
-      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt3, 0);
-      GLES20.glBindFramebuffer(36160, 0);
-      return i;
-    }
+    GLES20.glBindFramebuffer(36160, i);
+    GLES20.glBindTexture(3553, paramInt3);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+    GLES20.glBindTexture(3553, 0);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt3, 0);
+    GLES20.glBindFramebuffer(36160, 0);
+    return i;
   }
   
   private void b()
@@ -88,14 +95,14 @@ public class FrameBufferCenterTexture
       return;
     }
     float[] arrayOfFloat = new float[8];
-    arrayOfFloat[0] = (-0.5F + 0.0F);
-    arrayOfFloat[1] = (-0.5F + 0.0F);
-    arrayOfFloat[2] = (0.5F + 0.0F);
-    arrayOfFloat[3] = (-0.5F + 0.0F);
-    arrayOfFloat[4] = (-0.5F + 0.0F);
-    arrayOfFloat[5] = (0.5F + 0.0F);
-    arrayOfFloat[6] = (0.5F + 0.0F);
-    arrayOfFloat[7] = (0.5F + 0.0F);
+    arrayOfFloat[0] = -0.5F;
+    arrayOfFloat[1] = -0.5F;
+    arrayOfFloat[2] = 0.5F;
+    arrayOfFloat[3] = -0.5F;
+    arrayOfFloat[4] = -0.5F;
+    arrayOfFloat[5] = 0.5F;
+    arrayOfFloat[6] = 0.5F;
+    arrayOfFloat[7] = 0.5F;
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
     localByteBuffer.order(ByteOrder.nativeOrder());
     this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
@@ -127,15 +134,17 @@ public class FrameBufferCenterTexture
   
   public void a()
   {
-    if (this.d != jdField_a_of_type_Int)
+    int i = this.d;
+    if (i != jdField_a_of_type_Int)
     {
-      GLES20.glDeleteFramebuffers(2, new int[] { this.d, this.f }, 0);
+      GLES20.glDeleteFramebuffers(2, new int[] { i, this.f }, 0);
       GLES20.glDeleteTextures(2, new int[] { this.e, this.g }, 0);
     }
-    this.d = jdField_a_of_type_Int;
-    this.e = jdField_a_of_type_Int;
-    this.f = jdField_a_of_type_Int;
-    this.g = jdField_a_of_type_Int;
+    i = jdField_a_of_type_Int;
+    this.d = i;
+    this.e = i;
+    this.f = i;
+    this.g = i;
   }
   
   public void a(GLCanvas paramGLCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -153,9 +162,11 @@ public class FrameBufferCenterTexture
   
   public void a(GLCanvas paramGLCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat, int paramInt8, int paramInt9)
   {
-    if ((this.b != paramInt1 * 2) || (this.d == jdField_a_of_type_Int))
+    int i = this.b;
+    int j = paramInt1 * 2;
+    if ((i != j) || (this.d == jdField_a_of_type_Int))
     {
-      this.b = (paramInt1 * 2);
+      this.b = j;
       this.c = (paramInt2 * 2);
       d();
       c();
@@ -168,8 +179,12 @@ public class FrameBufferCenterTexture
     TextureProgram localTextureProgram = TextureProgramFactory.a(2);
     ShaderParameter[] arrayOfShaderParameter = localTextureProgram.a();
     GLES20.glUseProgram(localTextureProgram.a());
-    GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, paramInt1);
-    GLES20.glUniform1f(localTextureProgram.a()[8].jdField_a_of_type_Int, paramInt2);
+    i = localTextureProgram.a()[7].jdField_a_of_type_Int;
+    float f1 = paramInt1;
+    GLES20.glUniform1f(i, f1);
+    i = localTextureProgram.a()[8].jdField_a_of_type_Int;
+    float f2 = paramInt2;
+    GLES20.glUniform1f(i, f2);
     GLES20.glUniformMatrix4fv(localTextureProgram.a()[9].jdField_a_of_type_Int, 1, false, paramArrayOfFloat, 0);
     GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, paramInt8);
     GLES20.glUniform1i(localTextureProgram.a()[11].jdField_a_of_type_Int, paramInt9);
@@ -197,8 +212,8 @@ public class FrameBufferCenterTexture
     localTextureProgram = TextureProgramFactory.a(3);
     arrayOfShaderParameter = localTextureProgram.a();
     GLES20.glUseProgram(localTextureProgram.a());
-    GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, paramInt1);
-    GLES20.glUniform1f(localTextureProgram.a()[8].jdField_a_of_type_Int, paramInt2);
+    GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, f1);
+    GLES20.glUniform1f(localTextureProgram.a()[8].jdField_a_of_type_Int, f2);
     GLES20.glUniformMatrix4fv(localTextureProgram.a()[9].jdField_a_of_type_Int, 1, false, paramArrayOfFloat, 0);
     GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, paramInt8);
     GLES20.glUniform1i(localTextureProgram.a()[11].jdField_a_of_type_Int, paramInt9);
@@ -220,7 +235,7 @@ public class FrameBufferCenterTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.texture.FrameBufferCenterTexture
  * JD-Core Version:    0.7.0.1
  */

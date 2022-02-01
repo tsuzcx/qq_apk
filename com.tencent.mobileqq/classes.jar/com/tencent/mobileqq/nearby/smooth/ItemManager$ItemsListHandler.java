@@ -8,9 +8,7 @@ class ItemManager$ItemsListHandler
 {
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     ((ItemManager)paramMessage.obj).a();
@@ -18,7 +16,7 @@ class ItemManager$ItemsListHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemManager.ItemsListHandler
  * JD-Core Version:    0.7.0.1
  */

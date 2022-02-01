@@ -12,12 +12,12 @@ import android.os.Looper;
 import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.aelight.camera.api.IQIMCameraCapture;
 import com.tencent.av.gaudio.GaInviteLockActivity;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.VideoInviteActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -45,12 +45,13 @@ import com.tencent.mobileqq.minigame.ui.GameActivity4;
 import com.tencent.mobileqq.minigame.ui.GameActivity5;
 import com.tencent.mobileqq.minigame.ui.GameActivity6;
 import com.tencent.mobileqq.minigame.ui.InternalGameActivity;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.proxyimpl.MiniSdkUtil;
 import com.tencent.util.URLUtil;
-import dov.com.qq.im.QIMCameraCaptureActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -123,18 +124,25 @@ public class MiniAppController
             {
               localObject = ((ActivityManager.RunningTaskInfo)localObject).topActivity.getClassName();
               QLog.d("MiniAppController", 1, new Object[] { "checkIfCameraPreviewingOrAVConversationOrMiniAppForeground ", localObject });
-              if ((QIMCameraCaptureActivity.class.getName().equals(localObject)) || ("com.android.camera.CaptureCameraActivity".equals(localObject))) {
-                break label195;
+              if ((!((IQIMCameraCapture)QRoute.api(IQIMCameraCapture.class)).getQIMCameraCaptureActivityClass().getName().equals(localObject)) && (!"com.android.camera.CaptureCameraActivity".equals(localObject)))
+              {
+                if ((!AVActivity.class.getName().equals(localObject)) && (!VideoInviteActivity.class.getName().equals(localObject)) && (!GaInviteLockActivity.class.getName().equals(localObject)))
+                {
+                  if (MINI_PROGRAM_ACTIVITY_SET.contains(localObject)) {
+                    return 1;
+                  }
+                  boolean bool = MINI_GAME_ACTIVITY_SET.contains(localObject);
+                  if (bool) {
+                    return 2;
+                  }
+                }
+                else
+                {
+                  return 4;
+                }
               }
-              if ((AVActivity.class.getName().equals(localObject)) || (VideoInviteActivity.class.getName().equals(localObject)) || (GaInviteLockActivity.class.getName().equals(localObject))) {
-                break label197;
-              }
-              if (MINI_PROGRAM_ACTIVITY_SET.contains(localObject)) {
-                return 1;
-              }
-              boolean bool = MINI_GAME_ACTIVITY_SET.contains(localObject);
-              if (bool) {
-                return 2;
+              else {
+                return 3;
               }
             }
           }
@@ -144,13 +152,8 @@ public class MiniAppController
       {
         QLog.e("MiniAppController", 1, "checkIfCameraPreviewingOrAVConversationOrMiniAppForeground", paramContext);
       }
-    } else {
-      return 0;
     }
-    label195:
-    return 3;
-    label197:
-    return 4;
+    return 0;
   }
   
   private static void checkMiniAppEntityDB()
@@ -160,14 +163,15 @@ public class MiniAppController
   
   public static MiniAppController getInstance()
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new MiniAppController();
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new MiniAppController();
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   private static int getNextSeq()
@@ -203,17 +207,19 @@ public class MiniAppController
       return true;
     }
     paramString = URLUtil.a(paramString);
-    if (paramString.containsKey("scene")) {}
-    for (paramString = (String)paramString.get("scene"); !TextUtils.isEmpty(paramString); paramString = null)
+    if (paramString.containsKey("scene")) {
+      paramString = (String)paramString.get("scene");
+    } else {
+      paramString = null;
+    }
+    if (!TextUtils.isEmpty(paramString))
     {
       paramLaunchParam = arkBattleScenes.iterator();
-      do
-      {
-        if (!paramLaunchParam.hasNext()) {
-          break;
+      while (paramLaunchParam.hasNext()) {
+        if (String.valueOf((Integer)paramLaunchParam.next()).equals(paramString)) {
+          return true;
         }
-      } while (!String.valueOf((Integer)paramLaunchParam.next()).equals(paramString));
-      return true;
+      }
     }
     return false;
   }
@@ -230,17 +236,20 @@ public class MiniAppController
     MiniAppConfig localMiniAppConfig = new MiniAppConfig(paramMiniAppInfo);
     localMiniAppConfig.launchParam = paramLaunchParam;
     localMiniAppConfig.launchParam.miniAppId = paramMiniAppInfo.appId;
-    if (TextUtils.isEmpty(localMiniAppConfig.launchParam.reportData)) {
+    if (TextUtils.isEmpty(localMiniAppConfig.launchParam.reportData))
+    {
       localMiniAppConfig.launchParam.reportData = paramMiniAppInfo.reportData;
     }
-    for (;;)
+    else if (!TextUtils.isEmpty(paramMiniAppInfo.reportData))
     {
-      startApp(paramActivity, localMiniAppConfig, null);
-      return;
-      if (!TextUtils.isEmpty(paramMiniAppInfo.reportData)) {
-        localMiniAppConfig.launchParam.reportData = (localMiniAppConfig.launchParam.reportData + "&" + paramMiniAppInfo.reportData);
-      }
+      paramLaunchParam = localMiniAppConfig.launchParam;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localMiniAppConfig.launchParam.reportData);
+      localStringBuilder.append("&");
+      localStringBuilder.append(paramMiniAppInfo.reportData);
+      paramLaunchParam.reportData = localStringBuilder.toString();
     }
+    startApp(paramActivity, localMiniAppConfig, null);
   }
   
   private static void launchMiniAppByLink(Context paramContext, String paramString, int paramInt, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
@@ -257,11 +266,12 @@ public class MiniAppController
     localIntent.putExtra("public_fragment_window_feature", 1);
     if (paramContext != null)
     {
-      if (!(paramContext instanceof Activity)) {
+      boolean bool = paramContext instanceof Activity;
+      if (!bool) {
         localIntent.addFlags(402653184);
       }
       PublicFragmentActivity.Launcher.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
-      if ((paramContext instanceof Activity)) {
+      if (bool) {
         ((Activity)paramContext).overridePendingTransition(0, 0);
       }
     }
@@ -280,11 +290,12 @@ public class MiniAppController
     localIntent.putExtra("public_fragment_window_feature", 1);
     if (paramContext != null)
     {
-      if (!(paramContext instanceof Activity)) {
+      boolean bool = paramContext instanceof Activity;
+      if (!bool) {
         localIntent.addFlags(268435456);
       }
       PublicFragmentActivity.Launcher.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
-      if ((paramContext instanceof Activity)) {
+      if (bool) {
         ((Activity)paramContext).overridePendingTransition(0, 0);
       }
     }
@@ -310,15 +321,22 @@ public class MiniAppController
   
   private static void reportShareInfo(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppController", 2, "reportShareInfo appId=" + paramString1 + "pagePath=" + paramString2);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportShareInfo appId=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("pagePath=");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("MiniAppController", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("miniAppId", paramString1);
-      localJSONObject.put("page", paramString2);
-      VACDReportUtil.a(localJSONObject.toString(), "MiniAppStat", "MiniAppShareReport", null, null, 0, null);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("miniAppId", paramString1);
+      ((JSONObject)localObject).put("page", paramString2);
+      VACDReportUtil.a(((JSONObject)localObject).toString(), "MiniAppStat", "MiniAppShareReport", null, null, 0, null);
       return;
     }
     catch (Throwable paramString1) {}
@@ -332,46 +350,75 @@ public class MiniAppController
   
   public static void startAppByAppid(Context paramContext, String paramString1, String paramString2, String paramString3, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    QLog.i("MiniAppController", 1, "startAppByAppid appid:" + paramString1 + " entryPath:" + paramString2 + " envVersion:" + paramString3 + "  param:" + paramLaunchParam);
-    if (BaseActivity.sTopActivity != null) {
-      QLog.d("MiniAppController", 1, "cur Activity:" + BaseActivity.sTopActivity.getActivityName() + "  class :" + BaseActivity.sTopActivity.getLocalClassName());
-    }
-    if (!NetworkUtil.g(paramContext)) {
-      AppBrandTask.runTaskOnUiThread(new MiniAppController.2(paramContext));
-    }
-    do
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startAppByAppid appid:");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(" entryPath:");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(" envVersion:");
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append("  param:");
+    ((StringBuilder)localObject).append(paramLaunchParam);
+    QLog.i("MiniAppController", 1, ((StringBuilder)localObject).toString());
+    if (BaseActivity.sTopActivity != null)
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cur Activity:");
+      ((StringBuilder)localObject).append(BaseActivity.sTopActivity.getActivityName());
+      ((StringBuilder)localObject).append("  class :");
+      ((StringBuilder)localObject).append(BaseActivity.sTopActivity.getLocalClassName());
+      QLog.d("MiniAppController", 1, ((StringBuilder)localObject).toString());
+    }
+    if (!NetworkUtil.isNetworkAvailable(paramContext))
+    {
+      AppBrandTask.runTaskOnUiThread(new MiniAppController.2(paramContext));
       return;
-      if (TextUtils.isEmpty(paramString1))
-      {
-        AppBrandTask.runTaskOnUiThread(new MiniAppController.3(paramContext));
-        return;
-      }
-      paramLaunchParam.timestamp = System.currentTimeMillis();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("mini_appid", paramString1);
-      localIntent.putExtra("mini_entryPath", paramString2);
-      localIntent.putExtra("mini_envVersion", paramString3);
-      localIntent.putExtra("mini_launch_param", paramLaunchParam);
-      if (!(paramContext instanceof Activity)) {
-        localIntent.addFlags(402653184);
-      }
-      if (paramMiniAppLaunchListener != null) {
-        localIntent.putExtra("mini_receiver", new MiniAppController.4(new Handler(Looper.getMainLooper()), paramMiniAppLaunchListener));
-      }
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      PublicFragmentActivity.Launcher.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
-    } while (!(paramContext instanceof Activity));
-    ((Activity)paramContext).overridePendingTransition(0, 0);
+    }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      AppBrandTask.runTaskOnUiThread(new MiniAppController.3(paramContext));
+      return;
+    }
+    paramLaunchParam.timestamp = System.currentTimeMillis();
+    localObject = new Intent();
+    ((Intent)localObject).putExtra("mini_appid", paramString1);
+    ((Intent)localObject).putExtra("mini_entryPath", paramString2);
+    ((Intent)localObject).putExtra("mini_envVersion", paramString3);
+    ((Intent)localObject).putExtra("mini_launch_param", paramLaunchParam);
+    boolean bool = paramContext instanceof Activity;
+    if (!bool) {
+      ((Intent)localObject).addFlags(402653184);
+    }
+    if (paramMiniAppLaunchListener != null) {
+      ((Intent)localObject).putExtra("mini_receiver", new MiniAppController.4(new Handler(Looper.getMainLooper()), paramMiniAppLaunchListener));
+    }
+    ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
+    PublicFragmentActivity.Launcher.a(paramContext, (Intent)localObject, PublicTransFragmentActivity.class, PreloadingFragment.class);
+    if (bool) {
+      ((Activity)paramContext).overridePendingTransition(0, 0);
+    }
   }
   
   public static void startAppByLink(Context paramContext, String paramString, int paramInt, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    QLog.i("MiniAppController", 1, "startAppByLink link:" + paramString + " linkType:" + paramInt + "  param:" + paramLaunchParam);
-    if (BaseActivity.sTopActivity != null) {
-      QLog.d("MiniAppController", 1, "cur Activity:" + BaseActivity.sTopActivity.getActivityName() + "  class :" + BaseActivity.sTopActivity.getLocalClassName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startAppByLink link:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" linkType:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("  param:");
+    localStringBuilder.append(paramLaunchParam);
+    QLog.i("MiniAppController", 1, localStringBuilder.toString());
+    if (BaseActivity.sTopActivity != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cur Activity:");
+      localStringBuilder.append(BaseActivity.sTopActivity.getActivityName());
+      localStringBuilder.append("  class :");
+      localStringBuilder.append(BaseActivity.sTopActivity.getLocalClassName());
+      QLog.d("MiniAppController", 1, localStringBuilder.toString());
     }
-    if (!NetworkUtil.g(paramContext))
+    if (!NetworkUtil.isNetworkAvailable(paramContext))
     {
       AppBrandTask.runTaskOnUiThread(new MiniAppController.6(paramContext));
       return;
@@ -379,7 +426,12 @@ public class MiniAppController
     int i = checkIfCameraPreviewingOrAVConversationOrMiniAppForeground(paramContext);
     if ((isArkBattleUrl(paramString, paramLaunchParam)) && (i != 0))
     {
-      QLog.e("MiniAppController", 1, "startAppByLink prohibit battle mini game open from ark, link:" + paramString + " check result " + i);
+      paramContext = new StringBuilder();
+      paramContext.append("startAppByLink prohibit battle mini game open from ark, link:");
+      paramContext.append(paramString);
+      paramContext.append(" check result ");
+      paramContext.append(i);
+      QLog.e("MiniAppController", 1, paramContext.toString());
       MiniProgramLpReportDC04239.reportByQQ("ark", "ark_battle", "fail", String.valueOf(i), "", "", "");
       return;
     }
@@ -402,31 +454,31 @@ public class MiniAppController
   public void notifyResultListener(int paramInt1, int paramInt2, Intent paramIntent)
   {
     QLog.d("MiniAppController", 1, new Object[] { "notifyResultListener requestCode:", Integer.valueOf(paramInt1), " resultCode:", Integer.valueOf(paramInt2) });
-    if ((this.activityResultListenerList == null) || (this.activityResultListenerList.size() == 0))
-    {
-      QLog.e("MiniAppController", 1, "activityResultListenerList == null || activityResultListenerList.size() == 0");
-      return;
-    }
-    try
-    {
-      synchronized (this.activityResultListenerList)
+    ??? = this.activityResultListenerList;
+    if ((??? != null) && (???.size() != 0)) {
+      try
       {
-        Iterator localIterator = this.activityResultListenerList.iterator();
-        while (localIterator.hasNext())
+        synchronized (this.activityResultListenerList)
         {
-          MiniAppController.ActivityResultListener localActivityResultListener = (MiniAppController.ActivityResultListener)localIterator.next();
-          if (localActivityResultListener.doOnActivityResult(paramInt1, paramInt2, paramIntent))
+          Iterator localIterator = this.activityResultListenerList.iterator();
+          while (localIterator.hasNext())
           {
-            QLog.d("MiniAppController", 1, new Object[] { "triggerListener", localActivityResultListener });
-            return;
+            MiniAppController.ActivityResultListener localActivityResultListener = (MiniAppController.ActivityResultListener)localIterator.next();
+            if (localActivityResultListener.doOnActivityResult(paramInt1, paramInt2, paramIntent))
+            {
+              QLog.d("MiniAppController", 1, new Object[] { "triggerListener", localActivityResultListener });
+              return;
+            }
           }
+          return;
         }
+        QLog.e("MiniAppController", 1, "activityResultListenerList == null || activityResultListenerList.size() == 0");
       }
-    }
-    catch (Throwable paramIntent)
-    {
-      QLog.e("MiniAppController", 1, paramIntent, new Object[0]);
-      return;
+      catch (Throwable paramIntent)
+      {
+        QLog.e("MiniAppController", 1, paramIntent, new Object[0]);
+        return;
+      }
     }
   }
   
@@ -435,14 +487,16 @@ public class MiniAppController
     synchronized (this.outJsPluginList)
     {
       this.outJsPluginList.clear();
-      if (this.activityResultListenerList == null) {}
-    }
-    synchronized (this.activityResultListenerList)
-    {
-      this.activityResultListenerList.clear();
+      ??? = this.activityResultListenerList;
+      if (??? != null) {
+        try
+        {
+          this.activityResultListenerList.clear();
+          return;
+        }
+        finally {}
+      }
       return;
-      localObject2 = finally;
-      throw localObject2;
     }
   }
   
@@ -501,16 +555,17 @@ public class MiniAppController
   public void unRegisterActivityResultListener()
   {
     QLog.d("MiniAppController", 1, "unRegisterActivityResultListener");
-    if (this.activityResultListenerList != null)
+    ArrayList localArrayList = this.activityResultListenerList;
+    if (localArrayList != null)
     {
-      this.activityResultListenerList.clear();
+      localArrayList.clear();
       this.activityResultListenerList = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppController
  * JD-Core Version:    0.7.0.1
  */

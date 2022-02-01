@@ -46,8 +46,13 @@ final class SystemProduct$Companion$isDalvikVm$2
         localObject1 = null;
       }
       localObject1 = (Integer)localObject1;
-      if (localObject1 != null) {}
-      for (int i = ((Number)localObject1).intValue(); i != 0; i = 0)
+      int i;
+      if (localObject1 != null) {
+        i = ((Number)localObject1).intValue();
+      } else {
+        i = 0;
+      }
+      if (i != 0)
       {
         Logger.INSTANCE.d(new String[] { "QAPM_common_SystemProduct", "Dalvik Mode" });
         return true;
@@ -59,7 +64,7 @@ final class SystemProduct$Companion$isDalvikVm$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.SystemProduct.Companion.isDalvikVm.2
  * JD-Core Version:    0.7.0.1
  */

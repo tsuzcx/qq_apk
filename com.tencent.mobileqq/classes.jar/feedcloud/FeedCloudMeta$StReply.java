@@ -28,13 +28,14 @@ public final class FeedCloudMeta$StReply
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 58, 64, 72, 82, 88 }, new String[] { "id", "postUser", "createTime", "content", "targetUser", "busiData", "likeInfo", "typeFlag", "modifyflag", "atUinList", "typeFlag2" }, new Object[] { "", null, Long.valueOf(0L), "", null, localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0) }, StReply.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 58, 64, 72, 82, 88 }, new String[] { "id", "postUser", "createTime", "content", "targetUser", "busiData", "likeInfo", "typeFlag", "modifyflag", "atUinList", "typeFlag2" }, new Object[] { "", null, Long.valueOf(0L), "", null, localByteStringMicro, null, localInteger, localInteger, "", localInteger }, StReply.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StReply
  * JD-Core Version:    0.7.0.1
  */

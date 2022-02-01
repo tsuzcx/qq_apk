@@ -54,7 +54,7 @@ public class PayResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     cooperation.qwallet.open.openpay.PayResponse
  * JD-Core Version:    0.7.0.1
  */

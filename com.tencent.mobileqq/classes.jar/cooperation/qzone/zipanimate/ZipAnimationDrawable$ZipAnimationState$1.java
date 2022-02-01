@@ -11,14 +11,15 @@ class ZipAnimationDrawable$ZipAnimationState$1
   {
     if (!this.this$1.aniResLoaded)
     {
-      this.this$1.aniResLoaded = paramBoolean;
-      this.this$1.this$0.uiHandler.post(new ZipAnimationDrawable.ZipAnimationState.1.1(this));
+      ZipAnimationDrawable.ZipAnimationState localZipAnimationState = this.this$1;
+      localZipAnimationState.aniResLoaded = paramBoolean;
+      localZipAnimationState.this$0.uiHandler.post(new ZipAnimationDrawable.ZipAnimationState.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.zipanimate.ZipAnimationDrawable.ZipAnimationState.1
  * JD-Core Version:    0.7.0.1
  */

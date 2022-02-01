@@ -36,15 +36,16 @@ public class JubaoIPCServer
   
   public static JubaoIPCServer a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer == null) {
-        jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer = new JubaoIPCServer("JubaoIPCServer");
+    if (jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer == null) {
+          jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer = new JubaoIPCServer("JubaoIPCServer");
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer;
   }
   
   public ArrayList<ChatMessage> a()
@@ -55,11 +56,12 @@ public class JubaoIPCServer
   public void a()
   {
     EIPCResult localEIPCResult = new EIPCResult();
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("receive_success", false);
-    localEIPCResult.data = localBundle;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putBoolean("receive_success", false);
+    localEIPCResult.data = ((Bundle)localObject);
+    localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null) {
+      ((ArrayList)localObject).clear();
     }
     callbackResult(this.jdField_b_of_type_Int, localEIPCResult);
   }
@@ -84,8 +86,14 @@ public class JubaoIPCServer
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JubaoIPCServer", 2, "jubaoIpcServer onCall= " + paramString + ",callbackId = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("jubaoIpcServer onCall= ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",callbackId = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("JubaoIPCServer", 2, localStringBuilder.toString());
     }
     this.jdField_b_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("jubao_chat_uin");
@@ -108,15 +116,16 @@ public class JubaoIPCServer
     EIPCResult localEIPCResult = new EIPCResult();
     paramBundle.putBoolean("receive_success", paramBoolean);
     localEIPCResult.data = paramBundle;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    paramBundle = this.jdField_a_of_type_JavaUtilArrayList;
+    if (paramBundle != null) {
+      paramBundle.clear();
     }
     callbackResult(this.jdField_b_of_type_Int, localEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jubao.JubaoIPCServer
  * JD-Core Version:    0.7.0.1
  */

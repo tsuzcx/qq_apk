@@ -3,9 +3,7 @@ package com.tencent.tkd.topicsdk.imagecompress.engine;
 import android.graphics.Bitmap;
 import com.tencent.tkd.topicsdk.imagecompress.InputStreamProvider;
 import com.tencent.tkd.topicsdk.imagecompress.encodedecode.StandardGifDecoder;
-import java.io.Closeable;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -15,7 +13,6 @@ import kotlin.Pair;
 import kotlin.Unit;
 import kotlin.collections.CollectionsKt;
 import kotlin.collections.IntIterator;
-import kotlin.io.CloseableKt;
 import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 
@@ -42,73 +39,65 @@ public final class GifEngine
     Object localObject2 = (Iterable)RangesKt.until(0, j);
     Object localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
-    label103:
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = ((Iterator)localObject2).next();
-      if (((Number)localObject3).intValue() % i == 0) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        if (paramInt == 0) {
-          break label103;
-        }
+      if (((Number)localObject3).intValue() % i == 0) {
+        paramInt = 1;
+      } else {
+        paramInt = 0;
+      }
+      if (paramInt != 0) {
         ((Collection)localObject1).add(localObject3);
-        break;
       }
     }
     localObject1 = (Iterable)localObject1;
-    localObject2 = (Collection)new ArrayList();
-    Object localObject3 = ((Iterable)localObject1).iterator();
-    if (((Iterator)localObject3).hasNext())
+    Object localObject3 = (Collection)new ArrayList();
+    Object localObject4 = ((Iterable)localObject1).iterator();
+    while (((Iterator)localObject4).hasNext())
     {
-      paramInt = ((Number)((Iterator)localObject3).next()).intValue();
+      paramInt = ((Number)((Iterator)localObject4).next()).intValue();
       paramStandardGifDecoder.a();
+      localObject2 = null;
       localObject1 = (Bitmap)null;
-      if (paramInt % i != 0) {
-        break label539;
+      if (paramInt % i == 0) {
+        localObject1 = paramStandardGifDecoder.a();
       }
-      localObject1 = paramStandardGifDecoder.a();
+      if (localObject1 != null) {
+        localObject2 = new Pair(localObject1, Integer.valueOf(paramInt));
+      }
+      if (localObject2 != null) {
+        ((Collection)localObject3).add(localObject2);
+      }
     }
-    label539:
-    for (;;)
+    localObject1 = (List)localObject3;
+    localObject3 = (Iterable)RangesKt.until(0, j);
+    localObject2 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject3, 10));
+    localObject3 = ((Iterable)localObject3).iterator();
+    while (((Iterator)localObject3).hasNext()) {
+      ((Collection)localObject2).add(Integer.valueOf(paramStandardGifDecoder.a(((IntIterator)localObject3).nextInt())));
+    }
+    paramStandardGifDecoder = (List)localObject2;
+    localObject2 = (Iterable)localObject1;
+    localObject1 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      if (localObject1 != null) {}
-      for (localObject1 = new Pair(localObject1, Integer.valueOf(paramInt));; localObject1 = null)
+      localObject4 = (Pair)((Iterator)localObject2).next();
+      localObject3 = GifEngineKt.a((Bitmap)((Pair)localObject4).getFirst(), paramFloat);
+      Object localObject5 = (Iterable)RangesKt.until(((Number)((Pair)localObject4).getSecond()).intValue(), Math.min(j, ((Number)((Pair)localObject4).getSecond()).intValue() + i));
+      localObject4 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject5, 10));
+      localObject5 = ((Iterable)localObject5).iterator();
+      paramInt = 0;
+      while (((Iterator)localObject5).hasNext())
       {
-        if (localObject1 != null) {
-          ((Collection)localObject2).add(localObject1);
-        }
-        break;
+        paramInt += ((Number)paramStandardGifDecoder.get(((IntIterator)localObject5).nextInt())).intValue();
+        ((Collection)localObject4).add(Unit.INSTANCE);
       }
-      localObject1 = (List)localObject2;
-      localObject3 = (Iterable)RangesKt.until(0, j);
-      localObject2 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject3, 10));
-      localObject3 = ((Iterable)localObject3).iterator();
-      while (((Iterator)localObject3).hasNext()) {
-        ((Collection)localObject2).add(Integer.valueOf(paramStandardGifDecoder.a(((IntIterator)localObject3).nextInt())));
-      }
-      paramStandardGifDecoder = (List)localObject2;
-      localObject2 = (Iterable)localObject1;
-      localObject1 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject2, 10));
-      localObject2 = ((Iterable)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Object localObject4 = (Pair)((Iterator)localObject2).next();
-        localObject3 = GifEngineKt.a((Bitmap)((Pair)localObject4).getFirst(), paramFloat);
-        Object localObject5 = (Iterable)RangesKt.until(((Number)((Pair)localObject4).getSecond()).intValue(), Math.min(j, ((Number)((Pair)localObject4).getSecond()).intValue() + i));
-        localObject4 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject5, 10));
-        localObject5 = ((Iterable)localObject5).iterator();
-        int k;
-        for (paramInt = 0; ((Iterator)localObject5).hasNext(); paramInt = k + paramInt)
-        {
-          k = ((Number)paramStandardGifDecoder.get(((IntIterator)localObject5).nextInt())).intValue();
-          ((Collection)localObject4).add(Unit.INSTANCE);
-        }
-        localObject4 = (List)localObject4;
-        ((Collection)localObject1).add(new GifEngine.Frame((Bitmap)localObject3, paramInt));
-      }
-      return (List)localObject1;
+      localObject4 = (List)localObject4;
+      ((Collection)localObject1).add(new GifEngine.Frame((Bitmap)localObject3, paramInt));
     }
+    return (List)localObject1;
   }
   
   /* Error */
@@ -158,137 +147,225 @@ public final class GifEngine
     //   81: iconst_1
     //   82: ldc 220
     //   84: invokespecial 222	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:a	(Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/StandardGifDecoder;IF)Ljava/util/List;
-    //   87: astore 5
+    //   87: astore 6
     //   89: new 224	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder
     //   92: dup
     //   93: invokespecial 225	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:<init>	()V
-    //   96: astore_2
-    //   97: aconst_null
-    //   98: checkcast 227	[B
-    //   101: astore_1
-    //   102: new 229	java/io/ByteArrayOutputStream
-    //   105: dup
-    //   106: invokespecial 230	java/io/ByteArrayOutputStream:<init>	()V
-    //   109: checkcast 232	java/io/Closeable
-    //   112: astore_3
-    //   113: aconst_null
-    //   114: checkcast 171	java/lang/Throwable
-    //   117: astore_1
-    //   118: aload_3
-    //   119: checkcast 229	java/io/ByteArrayOutputStream
-    //   122: astore 4
-    //   124: aload_2
-    //   125: aload 4
-    //   127: checkcast 234	java/io/OutputStream
-    //   130: invokevirtual 237	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(Ljava/io/OutputStream;)Z
-    //   133: pop
-    //   134: aload_2
-    //   135: iconst_0
-    //   136: invokevirtual 240	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:b	(I)V
-    //   139: aload 5
-    //   141: checkcast 69	java/lang/Iterable
-    //   144: invokeinterface 78 1 0
-    //   149: astore 5
-    //   151: aload 5
-    //   153: invokeinterface 84 1 0
-    //   158: ifeq +45 -> 203
-    //   161: aload 5
-    //   163: invokeinterface 88 1 0
-    //   168: checkcast 163	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame
-    //   171: astore 6
-    //   173: aload_2
-    //   174: aload 6
-    //   176: invokevirtual 241	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:a	()I
-    //   179: invokevirtual 243	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(I)V
-    //   182: aload_2
-    //   183: aload 6
-    //   185: invokevirtual 244	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:a	()Landroid/graphics/Bitmap;
-    //   188: invokevirtual 247	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(Landroid/graphics/Bitmap;)Z
-    //   191: pop
-    //   192: aload 6
-    //   194: invokevirtual 244	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:a	()Landroid/graphics/Bitmap;
-    //   197: invokevirtual 250	android/graphics/Bitmap:recycle	()V
-    //   200: goto -49 -> 151
-    //   203: aload_2
-    //   204: invokevirtual 252	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	()Z
-    //   207: pop
-    //   208: aload 4
-    //   210: invokevirtual 255	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   213: astore_2
-    //   214: getstatic 161	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   217: astore 4
-    //   219: aload_3
-    //   220: aload_1
-    //   221: invokestatic 261	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   224: aload_2
-    //   225: areturn
-    //   226: astore_1
-    //   227: aload_1
-    //   228: athrow
-    //   229: astore_2
-    //   230: aload_3
-    //   231: aload_1
-    //   232: invokestatic 261	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   235: aload_2
-    //   236: athrow
-    //   237: astore_2
-    //   238: goto -8 -> 230
+    //   96: astore 4
+    //   98: aconst_null
+    //   99: checkcast 227	[B
+    //   102: astore_1
+    //   103: new 229	java/io/ByteArrayOutputStream
+    //   106: dup
+    //   107: invokespecial 230	java/io/ByteArrayOutputStream:<init>	()V
+    //   110: checkcast 232	java/io/Closeable
+    //   113: astore_3
+    //   114: aconst_null
+    //   115: checkcast 171	java/lang/Throwable
+    //   118: astore_2
+    //   119: aload_2
+    //   120: astore_1
+    //   121: aload_3
+    //   122: checkcast 229	java/io/ByteArrayOutputStream
+    //   125: astore 5
+    //   127: aload_2
+    //   128: astore_1
+    //   129: aload 4
+    //   131: aload 5
+    //   133: checkcast 234	java/io/OutputStream
+    //   136: invokevirtual 237	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(Ljava/io/OutputStream;)Z
+    //   139: pop
+    //   140: aload_2
+    //   141: astore_1
+    //   142: aload 4
+    //   144: iconst_0
+    //   145: invokevirtual 240	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:b	(I)V
+    //   148: aload_2
+    //   149: astore_1
+    //   150: aload 6
+    //   152: checkcast 69	java/lang/Iterable
+    //   155: invokeinterface 78 1 0
+    //   160: astore 6
+    //   162: aload_2
+    //   163: astore_1
+    //   164: aload 6
+    //   166: invokeinterface 84 1 0
+    //   171: ifeq +55 -> 226
+    //   174: aload_2
+    //   175: astore_1
+    //   176: aload 6
+    //   178: invokeinterface 88 1 0
+    //   183: checkcast 163	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame
+    //   186: astore 7
+    //   188: aload_2
+    //   189: astore_1
+    //   190: aload 4
+    //   192: aload 7
+    //   194: invokevirtual 241	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:a	()I
+    //   197: invokevirtual 243	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(I)V
+    //   200: aload_2
+    //   201: astore_1
+    //   202: aload 4
+    //   204: aload 7
+    //   206: invokevirtual 244	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:a	()Landroid/graphics/Bitmap;
+    //   209: invokevirtual 247	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(Landroid/graphics/Bitmap;)Z
+    //   212: pop
+    //   213: aload_2
+    //   214: astore_1
+    //   215: aload 7
+    //   217: invokevirtual 244	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:a	()Landroid/graphics/Bitmap;
+    //   220: invokevirtual 250	android/graphics/Bitmap:recycle	()V
+    //   223: goto -61 -> 162
+    //   226: aload_2
+    //   227: astore_1
+    //   228: aload 4
+    //   230: invokevirtual 252	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	()Z
+    //   233: pop
+    //   234: aload_2
+    //   235: astore_1
+    //   236: aload 5
+    //   238: invokevirtual 255	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   241: astore 4
+    //   243: aload_2
+    //   244: astore_1
+    //   245: getstatic 161	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   248: astore 5
+    //   250: aload_3
+    //   251: aload_2
+    //   252: invokestatic 261	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   255: aload 4
+    //   257: areturn
+    //   258: astore_2
+    //   259: goto +8 -> 267
+    //   262: astore_2
+    //   263: aload_2
+    //   264: astore_1
+    //   265: aload_2
+    //   266: athrow
+    //   267: aload_3
+    //   268: aload_1
+    //   269: invokestatic 261	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   272: goto +5 -> 277
+    //   275: aload_2
+    //   276: athrow
+    //   277: goto -2 -> 275
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	241	0	this	GifEngine
-    //   19	202	1	localObject1	Object
-    //   226	6	1	localThrowable	Throwable
-    //   47	178	2	localObject2	Object
-    //   229	7	2	localObject3	Object
-    //   237	1	2	localObject4	Object
-    //   55	176	3	localObject5	Object
-    //   122	96	4	localObject6	Object
-    //   87	75	5	localObject7	Object
-    //   171	22	6	localFrame	GifEngine.Frame
+    //   0	280	0	this	GifEngine
+    //   19	250	1	localObject1	Object
+    //   47	205	2	localObject2	Object
+    //   258	1	2	localObject3	Object
+    //   262	14	2	localThrowable	java.lang.Throwable
+    //   55	213	3	localObject4	Object
+    //   96	160	4	localObject5	Object
+    //   125	124	5	localObject6	Object
+    //   87	90	6	localObject7	Object
+    //   186	30	7	localFrame	GifEngine.Frame
     // Exception table:
     //   from	to	target	type
-    //   118	151	226	java/lang/Throwable
-    //   151	200	226	java/lang/Throwable
-    //   203	219	226	java/lang/Throwable
-    //   227	229	229	finally
-    //   118	151	237	finally
-    //   151	200	237	finally
-    //   203	219	237	finally
+    //   121	127	258	finally
+    //   129	140	258	finally
+    //   142	148	258	finally
+    //   150	162	258	finally
+    //   164	174	258	finally
+    //   176	188	258	finally
+    //   190	200	258	finally
+    //   202	213	258	finally
+    //   215	223	258	finally
+    //   228	234	258	finally
+    //   236	243	258	finally
+    //   245	250	258	finally
+    //   265	267	258	finally
+    //   121	127	262	java/lang/Throwable
+    //   129	140	262	java/lang/Throwable
+    //   142	148	262	java/lang/Throwable
+    //   150	162	262	java/lang/Throwable
+    //   164	174	262	java/lang/Throwable
+    //   176	188	262	java/lang/Throwable
+    //   190	200	262	java/lang/Throwable
+    //   202	213	262	java/lang/Throwable
+    //   215	223	262	java/lang/Throwable
+    //   228	234	262	java/lang/Throwable
+    //   236	243	262	java/lang/Throwable
+    //   245	250	262	java/lang/Throwable
   }
   
+  /* Error */
   @NotNull
   public File a()
   {
-    Object localObject2 = a();
-    Throwable localThrowable2;
-    if (localObject2 != null)
-    {
-      localCloseable = (Closeable)new FileOutputStream(this.jdField_a_of_type_JavaIoFile);
-      localThrowable2 = (Throwable)null;
-      localThrowable1 = localThrowable2;
-    }
-    try
-    {
-      ((FileOutputStream)localCloseable).write((byte[])localObject2);
-      localThrowable1 = localThrowable2;
-      localObject2 = Unit.INSTANCE;
-      return this.jdField_a_of_type_JavaIoFile;
-    }
-    catch (Throwable localThrowable3)
-    {
-      localThrowable1 = localThrowable3;
-      throw localThrowable3;
-    }
-    finally
-    {
-      CloseableKt.closeFinally(localCloseable, localThrowable1);
-    }
-    return new File(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a());
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 264	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:a	()[B
+    //   4: astore 4
+    //   6: aload 4
+    //   8: ifnull +67 -> 75
+    //   11: new 266	java/io/FileOutputStream
+    //   14: dup
+    //   15: aload_0
+    //   16: getfield 53	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   19: invokespecial 269	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   22: checkcast 232	java/io/Closeable
+    //   25: astore_3
+    //   26: aconst_null
+    //   27: checkcast 171	java/lang/Throwable
+    //   30: astore_2
+    //   31: aload_2
+    //   32: astore_1
+    //   33: aload_3
+    //   34: checkcast 266	java/io/FileOutputStream
+    //   37: aload 4
+    //   39: invokevirtual 273	java/io/FileOutputStream:write	([B)V
+    //   42: aload_2
+    //   43: astore_1
+    //   44: getstatic 161	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   47: astore 4
+    //   49: aload_3
+    //   50: aload_2
+    //   51: invokestatic 261	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   54: aload_0
+    //   55: getfield 53	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   58: areturn
+    //   59: astore_2
+    //   60: goto +8 -> 68
+    //   63: astore_2
+    //   64: aload_2
+    //   65: astore_1
+    //   66: aload_2
+    //   67: athrow
+    //   68: aload_3
+    //   69: aload_1
+    //   70: invokestatic 261	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   73: aload_2
+    //   74: athrow
+    //   75: new 173	java/io/File
+    //   78: dup
+    //   79: aload_0
+    //   80: getfield 51	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider	Lcom/tencent/tkd/topicsdk/imagecompress/InputStreamProvider;
+    //   83: invokeinterface 178 1 0
+    //   88: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;)V
+    //   91: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	92	0	this	GifEngine
+    //   32	38	1	localThrowable1	java.lang.Throwable
+    //   30	21	2	localThrowable2	java.lang.Throwable
+    //   59	1	2	localObject1	Object
+    //   63	11	2	localThrowable3	java.lang.Throwable
+    //   25	44	3	localCloseable	java.io.Closeable
+    //   4	44	4	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   33	42	59	finally
+    //   44	49	59	finally
+    //   66	68	59	finally
+    //   33	42	63	java/lang/Throwable
+    //   44	49	63	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.engine.GifEngine
  * JD-Core Version:    0.7.0.1
  */

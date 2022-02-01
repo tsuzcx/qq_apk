@@ -5,9 +5,9 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.MobileQQ;
 
 public class FreeTypeLib
 {
@@ -17,29 +17,34 @@ public class FreeTypeLib
   {
     if (this.a == null)
     {
-      DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
-      this.a = new int[] { localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels };
+      Object localObject = MobileQQ.sMobileQQ;
+      localObject = MobileQQ.getContext().getResources().getDisplayMetrics();
+      this.a = new int[] { ((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels };
     }
     return this.a;
   }
   
   public void a()
   {
-    int i = 1;
     int[] arrayOfInt = a();
     int j = (int)DeviceInfoUtil.c();
     int k = Runtime.getRuntime().availableProcessors();
     int m = (int)(DeviceInfoUtil.a() / 1024L);
-    FastColorFontLog.a("FreeTypeLib", "......cpuFrequency:" + j + "   maxMemory:" + m);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("......cpuFrequency:");
+    localStringBuilder.append(j);
+    localStringBuilder.append("   maxMemory:");
+    localStringBuilder.append(m);
+    FastColorFontLog.a("FreeTypeLib", localStringBuilder.toString());
     int n = arrayOfInt[0];
     int i1 = arrayOfInt[1];
-    if (Build.VERSION.SDK_INT < 19) {}
-    for (;;)
-    {
-      initRender(n, i1, i, Build.VERSION.SDK_INT, Build.VERSION.RELEASE, Build.BRAND, Build.MODEL, k, j, m);
-      return;
+    int i;
+    if (Build.VERSION.SDK_INT < 19) {
+      i = 1;
+    } else {
       i = 0;
     }
+    initRender(n, i1, i, Build.VERSION.SDK_INT, Build.VERSION.RELEASE, Build.BRAND, Build.MODEL, k, j, m);
   }
   
   public native int[] calculateExpressionSize(int paramInt1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, int[] paramArrayOfInt5, int[] paramArrayOfInt6, int[] paramArrayOfInt7, int[] paramArrayOfInt8, int paramInt2, int paramInt3, int paramInt4, long paramLong);
@@ -76,7 +81,7 @@ public class FreeTypeLib
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.Vas.ColorFont.FreeTypeLib
  * JD-Core Version:    0.7.0.1
  */

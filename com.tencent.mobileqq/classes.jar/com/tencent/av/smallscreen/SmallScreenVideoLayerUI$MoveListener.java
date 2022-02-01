@@ -23,17 +23,21 @@ class SmallScreenVideoLayerUI$MoveListener
     PointF localPointF = paramMoveGestureDetector.a();
     int i = (int)localPointF.x;
     int j = (int)localPointF.y;
-    if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.t == 0) {
+    if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.t == 0)
+    {
       this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a[0].a(i, j, true);
-    }
-    while ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.t != 1) || ((SmallScreenVideoLayerUI.e(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) != 0) && (SmallScreenVideoLayerUI.f(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) != 0))) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.d(i, j);
-    this.c = ((int)paramMoveGestureDetector.a());
-    this.d = ((int)paramMoveGestureDetector.b());
-    SmallScreenVideoLayerUI.a(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI, this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(this.e, this.jdField_a_of_type_Int, this.b, this.c, this.d));
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.o(SmallScreenVideoLayerUI.g(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI));
+    if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.t == 1) && ((SmallScreenVideoLayerUI.e(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) == 0) || (SmallScreenVideoLayerUI.f(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) == 0)))
+    {
+      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.d(i, j);
+      this.c = ((int)paramMoveGestureDetector.a());
+      this.d = ((int)paramMoveGestureDetector.b());
+      paramMoveGestureDetector = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI;
+      SmallScreenVideoLayerUI.a(paramMoveGestureDetector, paramMoveGestureDetector.a(this.e, this.jdField_a_of_type_Int, this.b, this.c, this.d));
+      paramMoveGestureDetector = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI;
+      paramMoveGestureDetector.o(SmallScreenVideoLayerUI.g(paramMoveGestureDetector));
+    }
   }
   
   public boolean a(MoveGestureDetector paramMoveGestureDetector)
@@ -44,13 +48,14 @@ class SmallScreenVideoLayerUI$MoveListener
     paramMoveGestureDetector = paramMoveGestureDetector.a();
     int i = (int)paramMoveGestureDetector.x;
     int j = (int)paramMoveGestureDetector.y;
-    if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.t == 0) {
+    if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.t == 0)
+    {
       this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a[0].a(i, j, false);
-    }
-    while ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.t != 1) || ((SmallScreenVideoLayerUI.c(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) != 0) && (SmallScreenVideoLayerUI.d(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) != 0))) {
       return true;
     }
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.d(i, j);
+    if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.t == 1) && ((SmallScreenVideoLayerUI.c(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) == 0) || (SmallScreenVideoLayerUI.d(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) == 0))) {
+      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.d(i, j);
+    }
     return true;
   }
   
@@ -62,25 +67,23 @@ class SmallScreenVideoLayerUI$MoveListener
     if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.t == 0)
     {
       paramMoveGestureDetector = paramMoveGestureDetector.a();
-      i = (int)paramMoveGestureDetector.x;
-      j = (int)paramMoveGestureDetector.y;
+      int i = (int)paramMoveGestureDetector.x;
+      int j = (int)paramMoveGestureDetector.y;
       this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a[0].a(i, j, false);
-    }
-    while ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.t != 1) || ((SmallScreenVideoLayerUI.a(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) != 0) && (SmallScreenVideoLayerUI.b(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) != 0)))
-    {
-      int i;
-      int j;
       return true;
     }
-    this.jdField_a_of_type_Int = ((int)paramMoveGestureDetector.a());
-    this.b = ((int)paramMoveGestureDetector.b());
-    this.e = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.i();
+    if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.t == 1) && ((SmallScreenVideoLayerUI.a(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) == 0) || (SmallScreenVideoLayerUI.b(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI) == 0)))
+    {
+      this.jdField_a_of_type_Int = ((int)paramMoveGestureDetector.a());
+      this.b = ((int)paramMoveGestureDetector.b());
+      this.e = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.i();
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoLayerUI.MoveListener
  * JD-Core Version:    0.7.0.1
  */

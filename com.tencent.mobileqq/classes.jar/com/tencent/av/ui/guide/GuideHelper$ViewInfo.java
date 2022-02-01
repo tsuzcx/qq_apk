@@ -21,42 +21,46 @@ class GuideHelper$ViewInfo
   
   public void a(boolean paramBoolean)
   {
-    QLog.w("GuideHelper", 1, "show[" + paramBoolean + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("show[");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append("]");
+    QLog.w("GuideHelper", 1, ((StringBuilder)localObject).toString());
     int i;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = 0;
-      if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
+    } else {
+      i = 8;
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if (localObject != null) {
+      if (paramBoolean)
       {
-        if (!paramBoolean) {
-          break label113;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
+        ((LottieDrawable)localObject).pauseAnimation();
         this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
       }
+      else
+      {
+        ((LottieDrawable)localObject).pauseAnimation();
+      }
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidViewViewStub != null) {
-        this.jdField_a_of_type_AndroidViewViewStub.setVisibility(i);
-      }
-      if (this.b != null) {
-        this.b.setVisibility(i);
-      }
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(i);
-      }
-      return;
-      i = 8;
-      break;
-      label113:
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
+    localObject = this.jdField_a_of_type_AndroidViewViewStub;
+    if (localObject != null) {
+      ((ViewStub)localObject).setVisibility(i);
+    }
+    localObject = this.b;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(i);
+    }
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.guide.GuideHelper.ViewInfo
  * JD-Core Version:    0.7.0.1
  */

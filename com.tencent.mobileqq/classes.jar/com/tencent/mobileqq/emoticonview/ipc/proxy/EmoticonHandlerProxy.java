@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.emoticonview.ipc.proxy;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.EmoticonHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
@@ -31,220 +30,227 @@ public class EmoticonHandlerProxy
   private static final String PARSEINT = "parseInt";
   public static final String TAG = "EmoticonHandlerProxy";
   
-  public EmoticonHandlerProxy(QQAppInterface paramQQAppInterface)
+  public EmoticonHandlerProxy(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    super(paramQQAppInterface, BusinessHandlerFactory.HANDLER_EMOSM);
+    super(paramBaseQQAppInterface, EmoticonHandler.a);
   }
   
   public static EIPCResult checkMatch(AppRuntime paramAppRuntime, String paramString, Bundle paramBundle, int paramInt)
   {
     if ("emoticonhandler_recommendEmoticonInfo".equals(paramString)) {
-      return onGetRecommendEmoticonInfo((QQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
+      return onGetRecommendEmoticonInfo((BaseQQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
     }
     if ("emoticonhandler_smallyellowemoitonrequest".equals(paramString)) {
-      return onGetCommonUsedSmallYellowEmoitonRequest((QQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
+      return onGetCommonUsedSmallYellowEmoitonRequest((BaseQQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
     }
     if ("emoticonhandler_reportaddemoticonpkg".equals(paramString)) {
-      return onReportAddEmoticonPkg((QQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
+      return onReportAddEmoticonPkg((BaseQQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
     }
     if ("emoticonhandler_fetchemoticonrecommend".equals(paramString)) {
-      return onFetchEmoticonRecommend((QQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
+      return onFetchEmoticonRecommend((BaseQQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
     }
     if ("emoticonhandler_fetchipsiteinfoex".equals(paramString)) {
-      return onFetchEmoticonIPSiteInformationEx((QQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
+      return onFetchEmoticonIPSiteInformationEx((BaseQQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
     }
     if ("emoticonhandler_savekandianrecommendemoticon".equals(paramString)) {
-      return onSaveKandianRecommendEmoticon((QQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
+      return onSaveKandianRecommendEmoticon((BaseQQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
     }
     if ("emoticonhandler_reportemoticonorder".equals(paramString)) {
-      return onReportEmoticonOrder((QQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
+      return onReportEmoticonOrder((BaseQQAppInterface)paramAppRuntime, paramString, paramBundle, paramInt);
     }
     return null;
   }
   
-  public static EIPCResult onFetchEmoticonIPSiteInformationEx(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onFetchEmoticonIPSiteInformationEx(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    ((EmoticonHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).a(paramBundle.getString("epId"), paramBundle.getBoolean("ignoreRichInfo"));
+    ((EmoticonHandler)paramBaseQQAppInterface.getBusinessHandler(EmoticonHandler.a)).a(paramBundle.getString("epId"), paramBundle.getBoolean("ignoreRichInfo"));
     return EIPCResult.createSuccessResult(null);
   }
   
-  public static EIPCResult onFetchEmoticonRecommend(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onFetchEmoticonRecommend(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    ((EmoticonHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).b(paramBundle.getInt("parseInt"));
+    ((EmoticonHandler)paramBaseQQAppInterface.getBusinessHandler(EmoticonHandler.a)).b(paramBundle.getInt("parseInt"));
     return EIPCResult.createSuccessResult(null);
   }
   
-  public static EIPCResult onGetCommonUsedSmallYellowEmoitonRequest(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onGetCommonUsedSmallYellowEmoitonRequest(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    ((EmoticonHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).b();
+    ((EmoticonHandler)paramBaseQQAppInterface.getBusinessHandler(EmoticonHandler.a)).b();
     return EIPCResult.createSuccessResult(null);
   }
   
-  public static EIPCResult onGetRecommendEmoticonInfo(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onGetRecommendEmoticonInfo(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    ((EmoticonHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).a();
+    ((EmoticonHandler)paramBaseQQAppInterface.getBusinessHandler(EmoticonHandler.a)).a();
     return EIPCResult.createSuccessResult(null);
   }
   
-  public static EIPCResult onReportAddEmoticonPkg(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onReportAddEmoticonPkg(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    ((EmoticonHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).a(paramBundle.getString("epId"), paramBundle.getInt("businessType"));
+    ((EmoticonHandler)paramBaseQQAppInterface.getBusinessHandler(EmoticonHandler.a)).a(paramBundle.getString("epId"), paramBundle.getInt("businessType"));
     return EIPCResult.createSuccessResult(null);
   }
   
-  public static EIPCResult onReportEmoticonOrder(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onReportEmoticonOrder(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    ((EmoticonHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).a(paramBundle.getStringArrayList("param_list_locallist"), paramBundle.getBoolean("param_shouldreverse"), paramBundle.getInt("param_businesstype"));
+    ((EmoticonHandler)paramBaseQQAppInterface.getBusinessHandler(EmoticonHandler.a)).a(paramBundle.getStringArrayList("param_list_locallist"), paramBundle.getBoolean("param_shouldreverse"), paramBundle.getInt("param_businesstype"));
     return EIPCResult.createSuccessResult(null);
   }
   
-  public static EIPCResult onSaveKandianRecommendEmoticon(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onSaveKandianRecommendEmoticon(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    ((EmoticonHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).c();
+    ((EmoticonHandler)paramBaseQQAppInterface.getBusinessHandler(EmoticonHandler.a)).c();
     return EIPCResult.createSuccessResult(null);
   }
   
   public void fetchEmoticonIPSiteInformationEx(String paramString, boolean paramBoolean)
   {
-    if (this.businessHandler != null) {
-      ((EmoticonHandler)this.businessHandler).a(paramString, paramBoolean);
-    }
-    do
+    if (this.businessHandler != null)
     {
+      ((EmoticonHandler)this.businessHandler).a(paramString, paramBoolean);
       return;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("epId", paramString);
-      localBundle.putBoolean("ignoreRichInfo", paramBoolean);
-      paramString = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_fetchipsiteinfoex", localBundle);
-      if ((paramString == null) || (!paramString.isSuccess())) {
-        break;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("epId", paramString);
+    localBundle.putBoolean("ignoreRichInfo", paramBoolean);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_fetchipsiteinfoex", localBundle);
+    if ((paramString != null) && (paramString.isSuccess()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonHandlerProxy", 4, "fetchEmoticonIPSiteInformationEx suc.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("EmoticonHandlerProxy", 4, "fetchEmoticonIPSiteInformationEx suc.");
-    return;
-    QLog.e("EmoticonHandlerProxy", 4, "fetchEmoticonIPSiteInformationEx fail.");
+    }
+    else {
+      QLog.e("EmoticonHandlerProxy", 4, "fetchEmoticonIPSiteInformationEx fail.");
+    }
   }
   
   public void fetchEmoticonRecommend(int paramInt)
   {
-    if (this.businessHandler != null) {
-      ((EmoticonHandler)this.businessHandler).b(paramInt);
-    }
-    do
+    if (this.businessHandler != null)
     {
+      ((EmoticonHandler)this.businessHandler).b(paramInt);
       return;
-      Object localObject = new Bundle();
-      ((Bundle)localObject).putInt("parseInt", paramInt);
-      localObject = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_fetchemoticonrecommend", (Bundle)localObject);
-      if ((localObject == null) || (!((EIPCResult)localObject).isSuccess())) {
-        break;
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("parseInt", paramInt);
+    localObject = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_fetchemoticonrecommend", (Bundle)localObject);
+    if ((localObject != null) && (((EIPCResult)localObject).isSuccess()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonHandlerProxy", 4, "fetchEmoticonRecommend suc.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("EmoticonHandlerProxy", 4, "fetchEmoticonRecommend suc.");
-    return;
-    QLog.e("EmoticonHandlerProxy", 4, "fetchEmoticonRecommend fail.");
+    }
+    else {
+      QLog.e("EmoticonHandlerProxy", 4, "fetchEmoticonRecommend fail.");
+    }
   }
   
   public void getCommonUsedSmallYellowEmoitonRequest()
   {
-    if (this.businessHandler != null) {
-      ((EmoticonHandler)this.businessHandler).b();
-    }
-    do
+    if (this.businessHandler != null)
     {
+      ((EmoticonHandler)this.businessHandler).b();
       return;
-      EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_smallyellowemoitonrequest", null);
-      if ((localEIPCResult == null) || (!localEIPCResult.isSuccess())) {
-        break;
+    }
+    EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_smallyellowemoitonrequest", null);
+    if ((localEIPCResult != null) && (localEIPCResult.isSuccess()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonHandlerProxy", 4, "getCommonUsedSmallYellowEmoitonRequest suc.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("EmoticonHandlerProxy", 4, "getCommonUsedSmallYellowEmoitonRequest suc.");
-    return;
-    QLog.e("EmoticonHandlerProxy", 4, "getCommonUsedSmallYellowEmoitonRequest fail.");
+    }
+    else {
+      QLog.e("EmoticonHandlerProxy", 4, "getCommonUsedSmallYellowEmoitonRequest fail.");
+    }
   }
   
   public void getRecommendEmoticonInfo()
   {
-    if (this.businessHandler != null) {
-      ((EmoticonHandler)this.businessHandler).a();
-    }
-    do
+    if (this.businessHandler != null)
     {
+      ((EmoticonHandler)this.businessHandler).a();
       return;
-      EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_recommendEmoticonInfo", null);
-      if ((localEIPCResult == null) || (!localEIPCResult.isSuccess())) {
-        break;
+    }
+    EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_recommendEmoticonInfo", null);
+    if ((localEIPCResult != null) && (localEIPCResult.isSuccess()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonHandlerProxy", 4, "getRecommendEmoticonInfo suc.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("EmoticonHandlerProxy", 4, "getRecommendEmoticonInfo suc.");
-    return;
-    QLog.e("EmoticonHandlerProxy", 4, "getRecommendEmoticonInfo fail.");
+    }
+    else {
+      QLog.e("EmoticonHandlerProxy", 4, "getRecommendEmoticonInfo fail.");
+    }
   }
   
   public void reportAddEmoticonPkg(String paramString, int paramInt)
   {
-    if (this.businessHandler != null) {
-      ((EmoticonHandler)this.businessHandler).a(paramString, paramInt);
-    }
-    do
+    if (this.businessHandler != null)
     {
+      ((EmoticonHandler)this.businessHandler).a(paramString, paramInt);
       return;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("epId", paramString);
-      localBundle.putInt("businessType", paramInt);
-      paramString = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_reportaddemoticonpkg", localBundle);
-      if ((paramString == null) || (!paramString.isSuccess())) {
-        break;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("epId", paramString);
+    localBundle.putInt("businessType", paramInt);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_reportaddemoticonpkg", localBundle);
+    if ((paramString != null) && (paramString.isSuccess()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonHandlerProxy", 4, "reportAddEmoticonPkg suc.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("EmoticonHandlerProxy", 4, "reportAddEmoticonPkg suc.");
-    return;
-    QLog.e("EmoticonHandlerProxy", 4, "reportAddEmoticonPkg fail.");
+    }
+    else {
+      QLog.e("EmoticonHandlerProxy", 4, "reportAddEmoticonPkg fail.");
+    }
   }
   
   public void reportEmoticonOrder(List<String> paramList, boolean paramBoolean, int paramInt)
   {
-    if (this.businessHandler != null) {
-      ((EmoticonHandler)this.businessHandler).a(paramList, paramBoolean, paramInt);
-    }
-    do
+    if (this.businessHandler != null)
     {
+      ((EmoticonHandler)this.businessHandler).a(paramList, paramBoolean, paramInt);
       return;
-      Bundle localBundle = new Bundle();
-      localBundle.putStringArrayList("param_list_locallist", new ArrayList(paramList));
-      localBundle.putBoolean("param_shouldreverse", paramBoolean);
-      localBundle.putInt("param_businesstype", paramInt);
-      paramList = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_reportemoticonorder", localBundle);
-      if ((paramList == null) || (!paramList.isSuccess())) {
-        break;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("param_list_locallist", new ArrayList(paramList));
+    localBundle.putBoolean("param_shouldreverse", paramBoolean);
+    localBundle.putInt("param_businesstype", paramInt);
+    paramList = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_reportemoticonorder", localBundle);
+    if ((paramList != null) && (paramList.isSuccess()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonHandlerProxy", 4, "reportEmoticonOrder suc.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("EmoticonHandlerProxy", 4, "reportEmoticonOrder suc.");
-    return;
-    QLog.e("EmoticonHandlerProxy", 4, "reportEmoticonOrder fail.");
+    }
+    else {
+      QLog.e("EmoticonHandlerProxy", 4, "reportEmoticonOrder fail.");
+    }
   }
   
   public void saveKandianRecommendEmoticon()
   {
-    if (this.businessHandler != null) {
-      ((EmoticonHandler)this.businessHandler).c();
-    }
-    do
+    if (this.businessHandler != null)
     {
+      ((EmoticonHandler)this.businessHandler).c();
       return;
-      EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_savekandianrecommendemoticon", null);
-      if ((localEIPCResult == null) || (!localEIPCResult.isSuccess())) {
-        break;
+    }
+    EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "emoticonhandler_savekandianrecommendemoticon", null);
+    if ((localEIPCResult != null) && (localEIPCResult.isSuccess()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonHandlerProxy", 4, "saveKandianRecommendEmoticon suc.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("EmoticonHandlerProxy", 4, "saveKandianRecommendEmoticon suc.");
-    return;
-    QLog.e("EmoticonHandlerProxy", 4, "saveKandianRecommendEmoticon fail.");
+    }
+    else {
+      QLog.e("EmoticonHandlerProxy", 4, "saveKandianRecommendEmoticon fail.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonHandlerProxy
  * JD-Core Version:    0.7.0.1
  */

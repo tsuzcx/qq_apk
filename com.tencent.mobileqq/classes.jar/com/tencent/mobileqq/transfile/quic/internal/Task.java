@@ -37,21 +37,24 @@ public class Task<T>
     this.headers = paramMap;
     this.netListener = paramT;
     this.report = new QuicNetReport();
-    this.report.channel = paramString1;
-    this.report.tempPath = getTempPath(paramString4, paramString3, paramString2);
-    this.report.savePath = paramString3;
-    this.report.id = QuicDownloadRunnable.getTaskID(this.report.tempPath);
-    this.report.errCode = 0;
-    this.report.httpStatus = 0;
-    this.report.url = paramString2;
-    this.report.startTime = System.currentTimeMillis();
+    paramITaskHandler = this.report;
+    paramITaskHandler.channel = paramString1;
+    paramITaskHandler.tempPath = getTempPath(paramString4, paramString3, paramString2);
+    paramITaskHandler = this.report;
+    paramITaskHandler.savePath = paramString3;
+    paramITaskHandler.id = QuicDownloadRunnable.getTaskID(paramITaskHandler.tempPath);
+    paramITaskHandler = this.report;
+    paramITaskHandler.errCode = 0;
+    paramITaskHandler.httpStatus = 0;
+    paramITaskHandler.url = paramString2;
+    paramITaskHandler.startTime = System.currentTimeMillis();
   }
   
   private void copyFile(String paramString)
   {
     paramString = new File(paramString);
-    boolean bool = FileUtils.a(paramString, new File(this.report.savePath), true);
-    FileUtils.a(paramString);
+    boolean bool = FileUtils.copyFile(paramString, new File(this.report.savePath), true);
+    FileUtils.deleteFile(paramString);
     if (bool)
     {
       paramString = Message.obtain();
@@ -69,26 +72,41 @@ public class Task<T>
     if ((paramString1 != null) && (paramString1.length() > 0)) {
       return paramString1;
     }
-    return paramString2 + "." + MD5.toMD5(paramString3) + ".tmp";
+    paramString1 = new StringBuilder();
+    paramString1.append(paramString2);
+    paramString1.append(".");
+    paramString1.append(MD5.toMD5(paramString3));
+    paramString1.append(".tmp");
+    return paramString1.toString();
   }
   
   void handleException(int paramInt1, int paramInt2)
   {
-    QLog.e("quic", 4, this.report.id + " handleException code " + paramInt1 + " failed " + paramInt2 + " running " + this.running);
-    if (this.handler == null) {}
-    while (!this.running) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.report.id);
+    ((StringBuilder)localObject).append(" handleException code ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" failed ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(" running ");
+    ((StringBuilder)localObject).append(this.running);
+    QLog.e("quic", 4, ((StringBuilder)localObject).toString());
+    if (this.handler == null) {
+      return;
+    }
+    if (!this.running) {
       return;
     }
     this.report.errCode = paramInt1;
-    if (NetworkUtil.a()) {}
-    for (this.report.failReason = paramInt2;; this.report.failReason = 6)
-    {
-      Message localMessage = Message.obtain();
-      localMessage.what = 8;
-      localMessage.obj = this;
-      this.handler.handleMessage(localMessage);
-      return;
+    if (NetworkUtil.isNetworkAvailable()) {
+      this.report.failReason = paramInt2;
+    } else {
+      this.report.failReason = 6;
     }
+    localObject = Message.obtain();
+    ((Message)localObject).what = 8;
+    ((Message)localObject).obj = this;
+    this.handler.handleMessage((Message)localObject);
   }
   
   void handleFinish(String paramString)
@@ -106,73 +124,99 @@ public class Task<T>
     if (localFile.exists())
     {
       localFile.delete();
-      FileUtils.a(this.report.tempPath);
+      FileUtils.createFile(this.report.tempPath);
       return;
     }
     localFile = localFile.getParentFile();
     if ((localFile != null) && (!localFile.exists())) {
-      FileUtils.b(localFile.getAbsolutePath());
+      FileUtils.createDirectory(localFile.getAbsolutePath());
     }
-    FileUtils.a(this.report.tempPath);
+    FileUtils.createFile(this.report.tempPath);
   }
   
   protected void parseStateLine(String paramString)
   {
+    boolean bool = paramString.startsWith("HTTP/1.");
     int j = 9;
     int i;
-    if (paramString.startsWith("HTTP/1."))
+    if (bool)
     {
-      if ((paramString.length() < 9) || (paramString.charAt(8) != ' ')) {
-        throw new ProtocolException("Unexpected status line: " + paramString);
-      }
-      i = paramString.charAt(7) - '0';
-      if (i == 0)
+      if ((paramString.length() >= 9) && (paramString.charAt(8) == ' '))
       {
-        i = j;
-        if (QLog.isColorLevel())
+        i = paramString.charAt(7) - '0';
+        if (i == 0)
         {
-          QLog.d("quic", 4, "HTTP/1.0");
           i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("quic", 4, "HTTP/1.0");
+            i = j;
+          }
         }
-      }
-    }
-    while (paramString.length() < i + 3)
-    {
-      throw new ProtocolException("Unexpected status line: " + paramString);
-      if (i == 1)
-      {
-        i = j;
-        if (QLog.isColorLevel())
+        else if (i == 1)
         {
-          QLog.d("quic", 4, "HTTP/1.1");
           i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("quic", 4, "HTTP/1.1");
+            i = j;
+          }
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Unexpected status line: ");
+          localStringBuilder.append(paramString);
+          throw new ProtocolException(localStringBuilder.toString());
         }
       }
       else
       {
-        throw new ProtocolException("Unexpected status line: " + paramString);
-        if (paramString.startsWith("ICY ")) {
-          i = 4;
-        } else {
-          throw new ProtocolException("Unexpected status line: " + paramString);
-        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Unexpected status line: ");
+        localStringBuilder.append(paramString);
+        throw new ProtocolException(localStringBuilder.toString());
       }
     }
+    else
+    {
+      if (!paramString.startsWith("ICY ")) {
+        break label298;
+      }
+      i = 4;
+    }
+    j = paramString.length();
+    int k = i + 3;
+    if (j >= k) {}
     try
     {
-      i = Integer.parseInt(paramString.substring(i, i + 3));
+      i = Integer.parseInt(paramString.substring(i, k));
       this.report.httpStatus = i;
       return;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      throw new ProtocolException("Unexpected status line: " + paramString);
+      label222:
+      break label222;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unexpected status line: ");
+    localStringBuilder.append(paramString);
+    throw new ProtocolException(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unexpected status line: ");
+    localStringBuilder.append(paramString);
+    throw new ProtocolException(localStringBuilder.toString());
+    label298:
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unexpected status line: ");
+    localStringBuilder.append(paramString);
+    throw new ProtocolException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.quic.internal.Task
  * JD-Core Version:    0.7.0.1
  */

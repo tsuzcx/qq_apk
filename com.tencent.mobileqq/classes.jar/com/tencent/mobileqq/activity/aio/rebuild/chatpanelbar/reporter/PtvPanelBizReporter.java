@@ -32,6 +32,7 @@ public class PtvPanelBizReporter
       ShortVideoUtils.setPtvRedDotStatus(paramIChatPanelBarData.a().getCurrentUin(), false);
       ReportController.b(paramIChatPanelBarData.a(), "dc00898", "", "", "0X8009367", "0X8009367", 1, 0, "", "", "", "");
       paramIChatPanelBarData.a().a(false);
+      return;
     }
   }
   
@@ -39,7 +40,7 @@ public class PtvPanelBizReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.reporter.PtvPanelBizReporter
  * JD-Core Version:    0.7.0.1
  */

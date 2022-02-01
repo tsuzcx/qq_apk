@@ -17,27 +17,30 @@ class MiniCustomDialog$CustomDialogItemOnClickListener
   
   public void onClick(View paramView)
   {
-    if (this.this$0.onArrayItemClick != null) {
-      this.this$0.onArrayItemClick.onClick(this.this$0, this.this$0.customWhichToCallBack(this.i));
+    if (this.this$0.onArrayItemClick != null)
+    {
+      DialogInterface.OnClickListener localOnClickListener = this.this$0.onArrayItemClick;
+      MiniCustomDialog localMiniCustomDialog = this.this$0;
+      localOnClickListener.onClick(localMiniCustomDialog, localMiniCustomDialog.customWhichToCallBack(this.i));
     }
     try
     {
       if (this.this$0.isShowing()) {
         this.this$0.dismiss();
       }
-      label54:
+      label55:
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
     catch (Exception localException)
     {
-      break label54;
+      break label55;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.MiniCustomDialog.CustomDialogItemOnClickListener
  * JD-Core Version:    0.7.0.1
  */

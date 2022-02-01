@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class INTERFACE$StJudgeTimingReq
   extends MessageMicro<StJudgeTimingReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72, 82, 90, 96, 106, 114 }, new String[] { "extInfo", "appid", "factType", "duration", "reportTime", "afterCertify", "appType", "scene", "totalTime", "launchId", "via", "AdsTotalTime", "hostExtInfo", "sourceID" }, new Object[] { null, "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), "", "" }, StJudgeTimingReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field AdsTotalTime = PBField.initInt32(0);
   public final PBInt32Field afterCertify = PBField.initInt32(0);
   public final PBInt32Field appType = PBField.initInt32(0);
@@ -26,10 +26,16 @@ public final class INTERFACE$StJudgeTimingReq
   public final PBStringField sourceID = PBField.initString("");
   public final PBInt32Field totalTime = PBField.initInt32(0);
   public final PBStringField via = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72, 82, 90, 96, 106, 114 }, new String[] { "extInfo", "appid", "factType", "duration", "reportTime", "afterCertify", "appType", "scene", "totalTime", "launchId", "via", "AdsTotalTime", "hostExtInfo", "sourceID" }, new Object[] { null, "", localInteger, localInteger, Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, "", "", localInteger, "", "" }, StJudgeTimingReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_INTERFACE.INTERFACE.StJudgeTimingReq
  * JD-Core Version:    0.7.0.1
  */

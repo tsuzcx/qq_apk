@@ -28,65 +28,69 @@ public class TaskFlowEngine
   
   public TaskFlowEngine()
   {
-    try
+    for (;;)
     {
-      int i = DeviceInfoUtil.getNumberOfCPUCores();
-      if (DeviceInfoUtil.getPerfLevel() == 3) {
-        i = WnsConfig.getConfig("qqminiapp", "mini_app_low_level_device_thread_count", 2);
+      try
+      {
+        i = DeviceInfoUtil.getNumberOfCPUCores();
+        if (DeviceInfoUtil.getPerfLevel() == 3) {
+          i = WnsConfig.getConfig("qqminiapp", "mini_app_low_level_device_thread_count", 2);
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("create thread pool, poolSize=");
+        int j = i + 1;
+        localStringBuilder.append(j);
+        QMLog.w("TaskFlow", localStringBuilder.toString());
+        if (i > 0)
+        {
+          i = j;
+          this.mTaskThreadPool = new TaskThreadPool("TaskFlowEngine", 2, i);
+          return;
+        }
       }
-      QMLog.w("TaskFlow", "create thread pool, poolSize=" + (i + 1));
-      if (i > 0) {
-        j = i + 1;
+      catch (Exception localException)
+      {
+        QMLog.e("TaskFlow", "create thread pool error!", localException);
+        return;
       }
-      this.mTaskThreadPool = new TaskThreadPool("TaskFlowEngine", 2, j);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QMLog.e("TaskFlow", "create thread pool error!", localException);
+      int i = 2;
     }
   }
   
   private void initCallback(BaseTask paramBaseTask)
   {
-    if (paramBaseTask == null) {}
-    for (;;)
-    {
+    if (paramBaseTask == null) {
       return;
-      paramBaseTask.setCallback(this);
-      if (!this.mAllTasks.contains(paramBaseTask)) {
-        this.mAllTasks.add(paramBaseTask);
-      }
-      paramBaseTask = paramBaseTask.getDependTasks();
-      if ((paramBaseTask != null) && (paramBaseTask.size() > 0))
-      {
-        paramBaseTask = paramBaseTask.iterator();
-        while (paramBaseTask.hasNext()) {
-          initCallback((BaseTask)paramBaseTask.next());
-        }
+    }
+    paramBaseTask.setCallback(this);
+    if (!this.mAllTasks.contains(paramBaseTask)) {
+      this.mAllTasks.add(paramBaseTask);
+    }
+    paramBaseTask = paramBaseTask.getDependTasks();
+    if ((paramBaseTask != null) && (paramBaseTask.size() > 0))
+    {
+      paramBaseTask = paramBaseTask.iterator();
+      while (paramBaseTask.hasNext()) {
+        initCallback((BaseTask)paramBaseTask.next());
       }
     }
   }
   
   public boolean checkAllTaskIsDone()
   {
-    if (this.mTasks == null) {
+    BaseTask[] arrayOfBaseTask = this.mTasks;
+    if (arrayOfBaseTask == null) {
       return false;
     }
-    BaseTask[] arrayOfBaseTask = this.mTasks;
     int j = arrayOfBaseTask.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label40;
-      }
       if (!arrayOfBaseTask[i].isDone()) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label40:
     return true;
   }
   
@@ -96,35 +100,33 @@ public class TaskFlowEngine
       return;
     }
     List localList = ???.getDependTasks();
-    if ((localList == null) || (localList.size() <= 0))
+    if ((localList != null) && (localList.size() > 0))
     {
-      ???.run();
-      return;
-    }
-    Object localObject2 = this.mFlows.iterator();
-    do
-    {
-      if (!((Iterator)localObject2).hasNext()) {
-        break;
-      }
-    } while (((TaskFlowEngine.DependFlow)((Iterator)localObject2).next()).mTask != ???);
-    for (int i = 1;; i = 0) {
-      for (;;)
+      int j = 0;
+      Object localObject2 = this.mFlows.iterator();
+      do
       {
-        if (i == 0) {
-          localObject2 = new TaskFlowEngine.DependFlow(this, ???, localList);
+        i = j;
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
         }
+      } while (((TaskFlowEngine.DependFlow)((Iterator)localObject2).next()).mTask != ???);
+      int i = 1;
+      if (i == 0)
+      {
+        localObject2 = new TaskFlowEngine.DependFlow(this, ???, localList);
         synchronized (this.mFlows)
         {
           this.mFlows.add(localObject2);
-          ??? = localList.iterator();
-          if (!???.hasNext()) {
-            break;
-          }
-          executeTask((BaseTask)???.next());
         }
       }
+      ??? = localObject1.iterator();
+      while (???.hasNext()) {
+        executeTask((BaseTask)???.next());
+      }
+      return;
     }
+    ???.run();
   }
   
   public int getStatus()
@@ -141,18 +143,16 @@ public class TaskFlowEngine
   {
     this.mAllTasks.clear();
     this.mTasks = paramArrayOfBaseTask;
-    if (this.mTasks == null) {}
-    for (;;)
-    {
+    paramArrayOfBaseTask = this.mTasks;
+    if (paramArrayOfBaseTask == null) {
       return;
-      paramArrayOfBaseTask = this.mTasks;
-      int j = paramArrayOfBaseTask.length;
-      int i = 0;
-      while (i < j)
-      {
-        initCallback(paramArrayOfBaseTask[i]);
-        i += 1;
-      }
+    }
+    int j = paramArrayOfBaseTask.length;
+    int i = 0;
+    while (i < j)
+    {
+      initCallback(paramArrayOfBaseTask[i]);
+      i += 1;
     }
   }
   
@@ -170,23 +170,25 @@ public class TaskFlowEngine
   
   public void onTaskDone(BaseTask paramBaseTask)
   {
-    if (isPause()) {}
-    while (!paramBaseTask.isSucceed()) {
+    if (isPause()) {
       return;
     }
-    this.mTaskThreadPool.addExecuteTask(new TaskFlowEngine.3(this, paramBaseTask));
+    if (paramBaseTask.isSucceed()) {
+      this.mTaskThreadPool.addExecuteTask(new TaskFlowEngine.3(this, paramBaseTask));
+    }
   }
   
   public void onTaskEnd(BaseTask paramBaseTask)
   {
-    if (paramBaseTask == null) {}
-    do
-    {
+    if (paramBaseTask == null) {
       return;
-      if (checkAllTaskIsDone()) {
-        setStatus(5);
-      }
-    } while (isPause());
+    }
+    if (checkAllTaskIsDone()) {
+      setStatus(5);
+    }
+    if (isPause()) {
+      return;
+    }
     onTaskDone(paramBaseTask);
   }
   
@@ -196,20 +198,18 @@ public class TaskFlowEngine
     setStatus(3);
   }
   
-  public void resetTaskAndDepends(BaseTask paramBaseTask)
+  protected void resetTaskAndDepends(BaseTask paramBaseTask)
   {
-    if (paramBaseTask == null) {}
-    for (;;)
-    {
+    if (paramBaseTask == null) {
       return;
-      paramBaseTask.reset();
-      Iterator localIterator = this.mAllTasks.iterator();
-      while (localIterator.hasNext())
-      {
-        BaseTask localBaseTask = (BaseTask)localIterator.next();
-        if (localBaseTask.isDependTo(paramBaseTask)) {
-          localBaseTask.reset();
-        }
+    }
+    paramBaseTask.reset();
+    Iterator localIterator = this.mAllTasks.iterator();
+    while (localIterator.hasNext())
+    {
+      BaseTask localBaseTask = (BaseTask)localIterator.next();
+      if (localBaseTask.isDependTo(paramBaseTask)) {
+        localBaseTask.reset();
       }
     }
   }
@@ -217,18 +217,25 @@ public class TaskFlowEngine
   public void resume()
   {
     QMLog.i("TaskFlow", "resume");
-    if ((this.mTasks == null) || (this.mTasks.length <= 0)) {
-      return;
+    BaseTask[] arrayOfBaseTask = this.mTasks;
+    if (arrayOfBaseTask != null)
+    {
+      if (arrayOfBaseTask.length <= 0) {
+        return;
+      }
+      setStatus(2);
+      this.mTaskThreadPool.addExecuteTask(new TaskFlowEngine.2(this));
     }
-    setStatus(2);
-    this.mTaskThreadPool.addExecuteTask(new TaskFlowEngine.2(this));
   }
   
   public void setStatus(int paramInt)
   {
     try
     {
-      QMLog.i("TaskFlow", "setStatus " + paramInt);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setStatus ");
+      localStringBuilder.append(paramInt);
+      QMLog.i("TaskFlow", localStringBuilder.toString());
       this.mStatus = paramInt;
       return;
     }
@@ -241,11 +248,15 @@ public class TaskFlowEngine
   
   public void start()
   {
-    if ((this.mTasks == null) || (this.mTasks.length <= 0)) {
-      return;
+    BaseTask[] arrayOfBaseTask = this.mTasks;
+    if (arrayOfBaseTask != null)
+    {
+      if (arrayOfBaseTask.length <= 0) {
+        return;
+      }
+      setStatus(2);
+      this.mTaskThreadPool.addExecuteTask(new TaskFlowEngine.1(this));
     }
-    setStatus(2);
-    this.mTaskThreadPool.addExecuteTask(new TaskFlowEngine.1(this));
   }
   
   protected void updateFlow(BaseTask paramBaseTask)
@@ -260,12 +271,17 @@ public class TaskFlowEngine
           localDependFlow.onDependCompleted();
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramBaseTask;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.TaskFlowEngine
  * JD-Core Version:    0.7.0.1
  */

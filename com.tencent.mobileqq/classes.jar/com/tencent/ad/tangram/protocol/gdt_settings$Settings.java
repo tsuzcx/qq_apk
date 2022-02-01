@@ -5,11 +5,10 @@ public final class gdt_settings$Settings
   public int intervalMillis = 0;
   public gdt_settings.Settings.SettingsForAnalysis settingsForAnalysis = new gdt_settings.Settings.SettingsForAnalysis();
   public gdt_settings.Settings.SettingsForAppPreOrder settingsForAppPreOrder = new gdt_settings.Settings.SettingsForAppPreOrder();
-  public gdt_settings.Settings.SettingsForExposure settingsForExposure = new gdt_settings.Settings.SettingsForExposure();
+  public gdt_settings.Settings.SettingsForDeviceInfo settingsForDeviceInfo = new gdt_settings.Settings.SettingsForDeviceInfo();
+  public gdt_experiment_settings.SettingsForJointExperiment[] settingsForJointExperiment;
   public gdt_settings.Settings.SettingsForQzone settingsForQzone = new gdt_settings.Settings.SettingsForQzone();
   public gdt_settings.Settings.SettingsForSdkMsg settingsForSdkMsg = new gdt_settings.Settings.SettingsForSdkMsg();
-  public gdt_settings.Settings.SettingsForUUID settingsForUUID = new gdt_settings.Settings.SettingsForUUID();
-  public gdt_settings.Settings.SettingsForVideoReward settingsForVideoReward = new gdt_settings.Settings.SettingsForVideoReward();
   public gdt_settings.Settings.SettingsForWebView settingsForWebView = new gdt_settings.Settings.SettingsForWebView();
   public String timeExpiredMillis;
   public String urlForSettings;

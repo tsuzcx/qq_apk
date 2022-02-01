@@ -4,6 +4,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.statistics.ReportTask;
 import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
 public class TroopUsingTimeReport
   extends BaseUsingTimeReport
@@ -20,36 +21,38 @@ public class TroopUsingTimeReport
   
   public UsingTimeReportManager a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null) {
       return null;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null) {
+    localObject = (QQAppInterface)((WeakReference)localObject).get();
+    if (localObject == null) {
       return null;
     }
-    return (UsingTimeReportManager)localQQAppInterface.getManager(QQManagerFactory.USING_TIME_REPORT_MANAGER);
+    return (UsingTimeReportManager)((QQAppInterface)localObject).getManager(QQManagerFactory.USING_TIME_REPORT_MANAGER);
   }
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    do
-    {
-      return;
-      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localObject == null);
-    ReportTask localReportTask = new ReportTask((QQAppInterface)localObject).a("dc00899").b(this.jdField_a_of_type_JavaLangString).c(this.b).d(this.c);
-    if (this.d != null) {}
-    for (Object localObject = this.d;; localObject = "")
-    {
-      localReportTask.a(new String[] { localObject, String.valueOf(paramLong) }).a();
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null) {
       return;
     }
+    localObject = (QQAppInterface)((WeakReference)localObject).get();
+    if (localObject == null) {
+      return;
+    }
+    ReportTask localReportTask = new ReportTask((AppRuntime)localObject).a("dc00899").b(this.jdField_a_of_type_JavaLangString).c(this.b).d(this.c);
+    localObject = this.d;
+    if (localObject == null) {
+      localObject = "";
+    }
+    localReportTask.a(new String[] { localObject, String.valueOf(paramLong) }).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopUsingTimeReport
  * JD-Core Version:    0.7.0.1
  */

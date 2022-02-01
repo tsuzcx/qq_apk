@@ -17,11 +17,12 @@ class ScriptCThunker
   
   void thunkBindAllocation(Allocation paramAllocation, int paramInt)
   {
-    android.renderscript.Allocation localAllocation = null;
     if (paramAllocation != null) {
-      localAllocation = ((AllocationThunker)paramAllocation).mN;
+      paramAllocation = ((AllocationThunker)paramAllocation).mN;
+    } else {
+      paramAllocation = null;
     }
-    bindAllocation(localAllocation, paramInt);
+    bindAllocation(paramAllocation, paramInt);
   }
   
   Script.FieldID thunkCreateFieldID(int paramInt, Element paramElement)
@@ -32,69 +33,71 @@ class ScriptCThunker
   Script.KernelID thunkCreateKernelID(int paramInt1, int paramInt2, Element paramElement1, Element paramElement2)
   {
     android.renderscript.Element localElement = null;
-    if (paramElement1 != null) {}
-    for (paramElement1 = ((ElementThunker)paramElement1).mN;; paramElement1 = null)
-    {
-      if (paramElement2 != null) {
-        localElement = ((ElementThunker)paramElement2).mN;
-      }
-      return createKernelID(paramInt1, paramInt2, paramElement1, localElement);
+    if (paramElement1 != null) {
+      paramElement1 = ((ElementThunker)paramElement1).mN;
+    } else {
+      paramElement1 = null;
     }
+    if (paramElement2 != null) {
+      localElement = ((ElementThunker)paramElement2).mN;
+    }
+    return createKernelID(paramInt1, paramInt2, paramElement1, localElement);
   }
   
   void thunkForEach(int paramInt, Allocation paramAllocation1, Allocation paramAllocation2, FieldPacker paramFieldPacker)
   {
     android.renderscript.FieldPacker localFieldPacker = null;
-    if (paramAllocation1 != null) {}
-    for (paramAllocation1 = ((AllocationThunker)paramAllocation1).mN;; paramAllocation1 = null)
-    {
-      if (paramAllocation2 != null) {}
-      for (paramAllocation2 = ((AllocationThunker)paramAllocation2).mN;; paramAllocation2 = null)
-      {
-        if (paramFieldPacker != null) {
-          localFieldPacker = new android.renderscript.FieldPacker(paramFieldPacker.getData());
-        }
-        forEach(paramInt, paramAllocation1, paramAllocation2, localFieldPacker);
-        return;
-      }
+    if (paramAllocation1 != null) {
+      paramAllocation1 = ((AllocationThunker)paramAllocation1).mN;
+    } else {
+      paramAllocation1 = null;
     }
+    if (paramAllocation2 != null) {
+      paramAllocation2 = ((AllocationThunker)paramAllocation2).mN;
+    } else {
+      paramAllocation2 = null;
+    }
+    if (paramFieldPacker != null) {
+      localFieldPacker = new android.renderscript.FieldPacker(paramFieldPacker.getData());
+    }
+    forEach(paramInt, paramAllocation1, paramAllocation2, localFieldPacker);
   }
   
   void thunkForEach(int paramInt, Allocation paramAllocation1, Allocation paramAllocation2, FieldPacker paramFieldPacker, Script.LaunchOptions paramLaunchOptions)
   {
-    Object localObject = null;
-    android.renderscript.Script.LaunchOptions localLaunchOptions2;
+    android.renderscript.FieldPacker localFieldPacker = null;
     if (paramLaunchOptions != null)
     {
-      localLaunchOptions2 = new android.renderscript.Script.LaunchOptions();
+      android.renderscript.Script.LaunchOptions localLaunchOptions = new android.renderscript.Script.LaunchOptions();
       if (paramLaunchOptions.getXEnd() > 0) {
-        localLaunchOptions2.setX(paramLaunchOptions.getXStart(), paramLaunchOptions.getXEnd());
+        localLaunchOptions.setX(paramLaunchOptions.getXStart(), paramLaunchOptions.getXEnd());
       }
       if (paramLaunchOptions.getYEnd() > 0) {
-        localLaunchOptions2.setY(paramLaunchOptions.getYStart(), paramLaunchOptions.getYEnd());
+        localLaunchOptions.setY(paramLaunchOptions.getYStart(), paramLaunchOptions.getYEnd());
       }
-      localLaunchOptions1 = localLaunchOptions2;
       if (paramLaunchOptions.getZEnd() > 0) {
-        localLaunchOptions2.setZ(paramLaunchOptions.getZStart(), paramLaunchOptions.getZEnd());
+        localLaunchOptions.setZ(paramLaunchOptions.getZStart(), paramLaunchOptions.getZEnd());
       }
+      paramLaunchOptions = localLaunchOptions;
     }
-    for (android.renderscript.Script.LaunchOptions localLaunchOptions1 = localLaunchOptions2;; localLaunchOptions1 = null)
+    else
     {
-      if (paramAllocation1 != null) {}
-      for (paramAllocation1 = ((AllocationThunker)paramAllocation1).mN;; paramAllocation1 = null)
-      {
-        if (paramAllocation2 != null) {}
-        for (paramAllocation2 = ((AllocationThunker)paramAllocation2).mN;; paramAllocation2 = null)
-        {
-          paramLaunchOptions = localObject;
-          if (paramFieldPacker != null) {
-            paramLaunchOptions = new android.renderscript.FieldPacker(paramFieldPacker.getData());
-          }
-          forEach(paramInt, paramAllocation1, paramAllocation2, paramLaunchOptions, localLaunchOptions1);
-          return;
-        }
-      }
+      paramLaunchOptions = null;
     }
+    if (paramAllocation1 != null) {
+      paramAllocation1 = ((AllocationThunker)paramAllocation1).mN;
+    } else {
+      paramAllocation1 = null;
+    }
+    if (paramAllocation2 != null) {
+      paramAllocation2 = ((AllocationThunker)paramAllocation2).mN;
+    } else {
+      paramAllocation2 = null;
+    }
+    if (paramFieldPacker != null) {
+      localFieldPacker = new android.renderscript.FieldPacker(paramFieldPacker.getData());
+    }
+    forEach(paramInt, paramAllocation1, paramAllocation2, localFieldPacker, paramLaunchOptions);
   }
   
   void thunkInvoke(int paramInt)
@@ -159,7 +162,7 @@ class ScriptCThunker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.ScriptCThunker
  * JD-Core Version:    0.7.0.1
  */

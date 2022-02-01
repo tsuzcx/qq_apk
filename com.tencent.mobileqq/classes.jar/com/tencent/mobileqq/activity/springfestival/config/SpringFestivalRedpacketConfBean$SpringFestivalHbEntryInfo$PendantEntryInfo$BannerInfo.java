@@ -17,12 +17,31 @@ public class SpringFestivalRedpacketConfBean$SpringFestivalHbEntryInfo$PendantEn
   
   public String toString()
   {
-    return "BannerInfo{bannerTime=" + this.bannerTime + ", soonTime=" + this.soonTime + ", bannerUrl='" + this.bannerUrl + '\'' + ", previewActivityUrl='" + this.previewActivityUrl + '\'' + ", status=" + this.status + ", bannerHeight=" + this.bannerHeight + ", popUpBgUrl='" + this.popUpBgUrl + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BannerInfo{bannerTime=");
+    localStringBuilder.append(this.bannerTime);
+    localStringBuilder.append(", soonTime=");
+    localStringBuilder.append(this.soonTime);
+    localStringBuilder.append(", bannerUrl='");
+    localStringBuilder.append(this.bannerUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", previewActivityUrl='");
+    localStringBuilder.append(this.previewActivityUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.status);
+    localStringBuilder.append(", bannerHeight=");
+    localStringBuilder.append(this.bannerHeight);
+    localStringBuilder.append(", popUpBgUrl='");
+    localStringBuilder.append(this.popUpBgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo
  * JD-Core Version:    0.7.0.1
  */

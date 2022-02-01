@@ -21,35 +21,34 @@ public class RFApplication
   
   public static Class getDelegateImpl(Class paramClass)
   {
-    if (mClassImplMap != null) {
-      return (Class)mClassImplMap.get(paramClass);
+    ConcurrentHashMap localConcurrentHashMap = mClassImplMap;
+    if (localConcurrentHashMap != null) {
+      return (Class)localConcurrentHashMap.get(paramClass);
     }
     return null;
   }
   
   public static IApplicationDelegate getInstance()
   {
-    if (sApplicationDelegate == null) {}
-    try
-    {
-      if (sApplicationDelegateClass != null) {
-        sApplicationDelegate = (IApplicationDelegate)sApplicationDelegateClass.newInstance();
+    if (sApplicationDelegate == null) {
+      try
+      {
+        if (sApplicationDelegateClass != null) {
+          sApplicationDelegate = (IApplicationDelegate)sApplicationDelegateClass.newInstance();
+        }
       }
-      return sApplicationDelegate;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
+    return sApplicationDelegate;
   }
   
   public static boolean isDebug()
   {
-    boolean bool = false;
     ApplicationInfo localApplicationInfo = null;
+    boolean bool = false;
     try
     {
       if (getApplication() != null) {
@@ -75,7 +74,7 @@ public class RFApplication
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.delegate.impl.RFApplication
  * JD-Core Version:    0.7.0.1
  */

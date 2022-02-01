@@ -21,36 +21,46 @@ class TroopGiftAnimationController$ToAllGiftAnimationEndListener
   public void a()
   {
     this.c = NetConnInfoCenter.getServerTimeMillis();
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_giftTroopGiftAnimationController", 2, "animation frame end. requestState:" + this.jdField_a_of_type_Int);
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(3000L);
-      continue;
-      long l = this.c - this.b;
-      if (l >= 2000L)
+      if (i != 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
+        if (i != 2)
+        {
+          if (i == 3) {
+            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(3000L);
+          }
+        }
+        else
+        {
+          long l = this.c - this.b;
+          if (l >= 2000L) {
+            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
+          } else {
+            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(2000L - l);
+          }
+        }
       }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(2000L - l);
-        continue;
+      else {
         this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(3000L);
       }
+    }
+    else {
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("animation frame end. requestState:");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.i(".troop.send_giftTroopGiftAnimationController", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.ToAllGiftAnimationEndListener
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import com.sina.weibo.sdk.api.ImageObject;
 import com.sina.weibo.sdk.api.MultiImageObject;
 import com.sina.weibo.sdk.api.TextObject;
 import com.sina.weibo.sdk.api.VideoSourceObject;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
+import mqq.app.MobileQQ;
 import mqq.util.WeakReference;
 
 public class WBShareHelper
@@ -67,72 +69,70 @@ public class WBShareHelper
     //   17: invokestatic 95	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
     //   20: aload_2
     //   21: areturn
-    //   22: astore_2
-    //   23: aconst_null
-    //   24: astore_1
-    //   25: aload_1
-    //   26: astore_0
-    //   27: ldc 18
-    //   29: iconst_1
-    //   30: ldc 97
-    //   32: aload_2
-    //   33: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   36: aload_1
-    //   37: invokestatic 95	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
-    //   40: aconst_null
-    //   41: areturn
-    //   42: astore_2
-    //   43: aconst_null
-    //   44: astore_1
-    //   45: aload_1
-    //   46: astore_0
-    //   47: ldc 18
-    //   49: iconst_1
-    //   50: ldc 103
-    //   52: aload_2
-    //   53: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   56: aload_1
-    //   57: invokestatic 95	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
-    //   60: aconst_null
-    //   61: areturn
-    //   62: astore_0
-    //   63: aconst_null
-    //   64: astore_2
-    //   65: aload_0
-    //   66: astore_1
-    //   67: aload_2
-    //   68: invokestatic 95	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
-    //   71: aload_1
-    //   72: athrow
-    //   73: astore_1
-    //   74: aload_0
-    //   75: astore_2
-    //   76: goto -9 -> 67
-    //   79: astore_2
-    //   80: goto -35 -> 45
-    //   83: astore_2
-    //   84: goto -59 -> 25
+    //   22: astore_1
+    //   23: goto +57 -> 80
+    //   26: astore_2
+    //   27: goto +16 -> 43
+    //   30: astore_2
+    //   31: goto +32 -> 63
+    //   34: astore_1
+    //   35: aconst_null
+    //   36: astore_0
+    //   37: goto +43 -> 80
+    //   40: astore_2
+    //   41: aconst_null
+    //   42: astore_1
+    //   43: aload_1
+    //   44: astore_0
+    //   45: ldc 18
+    //   47: iconst_1
+    //   48: ldc 97
+    //   50: aload_2
+    //   51: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   54: aload_1
+    //   55: invokestatic 95	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
+    //   58: aconst_null
+    //   59: areturn
+    //   60: astore_2
+    //   61: aconst_null
+    //   62: astore_1
+    //   63: aload_1
+    //   64: astore_0
+    //   65: ldc 18
+    //   67: iconst_1
+    //   68: ldc 103
+    //   70: aload_2
+    //   71: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   74: aload_1
+    //   75: invokestatic 95	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
+    //   78: aconst_null
+    //   79: areturn
+    //   80: aload_0
+    //   81: invokestatic 95	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
+    //   84: aload_1
+    //   85: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	87	0	paramString	String
-    //   8	64	1	localObject1	Object
-    //   73	1	1	localObject2	Object
+    //   0	86	0	paramString	String
+    //   8	9	1	localFileInputStream	java.io.FileInputStream
+    //   22	1	1	localObject1	Object
+    //   34	1	1	localObject2	Object
+    //   42	43	1	localCloseable	java.io.Closeable
     //   15	6	2	localBitmap	Bitmap
-    //   22	11	2	localException1	Exception
-    //   42	11	2	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   64	12	2	localObject3	Object
-    //   79	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   83	1	2	localException2	Exception
+    //   26	1	2	localOutOfMemoryError1	OutOfMemoryError
+    //   30	1	2	localException1	Exception
+    //   40	11	2	localOutOfMemoryError2	OutOfMemoryError
+    //   60	11	2	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   0	9	22	java/lang/Exception
-    //   0	9	42	java/lang/OutOfMemoryError
-    //   0	9	62	finally
-    //   11	16	73	finally
-    //   27	36	73	finally
-    //   47	56	73	finally
-    //   11	16	79	java/lang/OutOfMemoryError
-    //   11	16	83	java/lang/Exception
+    //   11	16	22	finally
+    //   45	54	22	finally
+    //   65	74	22	finally
+    //   11	16	26	java/lang/OutOfMemoryError
+    //   11	16	30	java/lang/Exception
+    //   0	9	34	finally
+    //   0	9	40	java/lang/OutOfMemoryError
+    //   0	9	60	java/lang/Exception
   }
   
   private IWBAPI a(Activity paramActivity)
@@ -178,304 +178,202 @@ public class WBShareHelper
   
   public static boolean a(Activity paramActivity)
   {
-    if ((paramActivity == null) || (paramActivity.getIntent() == null))
-    {
-      QLog.e("WBShareHelper", 1, "useWBSdkShare null == activity || activity.getIntent() == null");
-      return false;
+    if ((paramActivity != null) && (paramActivity.getIntent() != null)) {
+      return paramActivity.getIntent().getBooleanExtra("use_wei_bo_sdk", false);
     }
-    return paramActivity.getIntent().getBooleanExtra("use_wei_bo_sdk", false);
+    QLog.e("WBShareHelper", 1, "useWBSdkShare null == activity || activity.getIntent() == null");
+    return false;
   }
   
   private boolean a(Activity paramActivity, WeiboMultiMessage paramWeiboMultiMessage)
   {
     if ("com.tencent.mobileqq".equals(Common.r())) {
       a(paramActivity, paramWeiboMultiMessage);
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       WBQIPCClient.a(new WBShareHelper.1(this, paramActivity, paramWeiboMultiMessage));
     }
+    return true;
   }
   
   public static boolean a(Intent paramIntent, int paramInt)
   {
-    boolean bool = true;
+    boolean bool2 = false;
     QLog.d("WBShareHelper", 1, new Object[] { "isWeiBoShare requestCode=", Integer.valueOf(paramInt) });
-    if (10001 != paramInt) {}
-    while (paramIntent == null) {
+    if (10001 != paramInt) {
+      return false;
+    }
+    if (paramIntent == null) {
       return false;
     }
     paramIntent = paramIntent.getExtras();
-    if ((paramIntent != null) && (paramIntent.containsKey("_weibo_resp_errcode"))) {}
-    for (;;)
+    boolean bool1 = bool2;
+    if (paramIntent != null)
     {
-      return bool;
-      bool = false;
+      bool1 = bool2;
+      if (paramIntent.containsKey("_weibo_resp_errcode")) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   /* Error */
   private static byte[] a(Bitmap paramBitmap)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: new 249	java/io/ByteArrayOutputStream
-    //   6: dup
-    //   7: invokespecial 250	java/io/ByteArrayOutputStream:<init>	()V
-    //   10: astore_2
-    //   11: aload_2
-    //   12: astore_1
-    //   13: aload_0
-    //   14: getstatic 256	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   17: bipush 85
-    //   19: aload_2
-    //   20: invokevirtual 260	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   23: pop
-    //   24: aload_2
-    //   25: astore_1
-    //   26: aload_2
-    //   27: invokevirtual 264	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   30: astore_0
-    //   31: aload_0
-    //   32: astore_1
-    //   33: aload_2
-    //   34: ifnull +9 -> 43
-    //   37: aload_2
-    //   38: invokevirtual 267	java/io/ByteArrayOutputStream:close	()V
-    //   41: aload_0
-    //   42: astore_1
-    //   43: aload_1
-    //   44: areturn
-    //   45: astore_1
-    //   46: ldc 18
-    //   48: iconst_1
-    //   49: ldc 97
-    //   51: aload_1
-    //   52: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   55: aload_0
-    //   56: areturn
-    //   57: astore_3
-    //   58: aconst_null
-    //   59: astore_0
-    //   60: aload_0
-    //   61: astore_1
-    //   62: ldc 18
-    //   64: iconst_1
-    //   65: ldc 97
-    //   67: aload_3
-    //   68: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   71: aload 4
-    //   73: astore_1
-    //   74: aload_0
-    //   75: ifnull -32 -> 43
+    //   0: new 249	java/io/ByteArrayOutputStream
+    //   3: dup
+    //   4: invokespecial 250	java/io/ByteArrayOutputStream:<init>	()V
+    //   7: astore_2
+    //   8: aload_2
+    //   9: astore_1
+    //   10: aload_0
+    //   11: getstatic 256	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   14: bipush 85
+    //   16: aload_2
+    //   17: invokevirtual 260	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   20: pop
+    //   21: aload_2
+    //   22: astore_1
+    //   23: aload_2
+    //   24: invokevirtual 264	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   27: astore_0
+    //   28: aload_2
+    //   29: invokevirtual 267	java/io/ByteArrayOutputStream:close	()V
+    //   32: aload_0
+    //   33: areturn
+    //   34: astore_1
+    //   35: ldc 18
+    //   37: iconst_1
+    //   38: ldc 103
+    //   40: aload_1
+    //   41: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   44: aload_0
+    //   45: areturn
+    //   46: astore_0
+    //   47: goto +53 -> 100
+    //   50: astore_1
+    //   51: aload_2
+    //   52: astore_0
+    //   53: aload_1
+    //   54: astore_2
+    //   55: goto +12 -> 67
+    //   58: astore_0
+    //   59: aconst_null
+    //   60: astore_1
+    //   61: goto +39 -> 100
+    //   64: astore_2
+    //   65: aconst_null
+    //   66: astore_0
+    //   67: aload_0
+    //   68: astore_1
+    //   69: ldc 18
+    //   71: iconst_1
+    //   72: ldc 103
+    //   74: aload_2
+    //   75: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   78: aload_0
-    //   79: invokevirtual 267	java/io/ByteArrayOutputStream:close	()V
-    //   82: aconst_null
-    //   83: areturn
-    //   84: astore_0
-    //   85: ldc 18
-    //   87: iconst_1
-    //   88: ldc 97
-    //   90: aload_0
-    //   91: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   94: aconst_null
-    //   95: areturn
-    //   96: astore_0
-    //   97: aconst_null
-    //   98: astore_1
-    //   99: aload_1
-    //   100: ifnull +7 -> 107
-    //   103: aload_1
-    //   104: invokevirtual 267	java/io/ByteArrayOutputStream:close	()V
-    //   107: aload_0
-    //   108: athrow
-    //   109: astore_1
-    //   110: ldc 18
-    //   112: iconst_1
-    //   113: ldc 97
-    //   115: aload_1
-    //   116: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   119: goto -12 -> 107
-    //   122: astore_0
-    //   123: goto -24 -> 99
-    //   126: astore_3
-    //   127: aload_2
-    //   128: astore_0
-    //   129: goto -69 -> 60
+    //   79: ifnull +19 -> 98
+    //   82: aload_0
+    //   83: invokevirtual 267	java/io/ByteArrayOutputStream:close	()V
+    //   86: aconst_null
+    //   87: areturn
+    //   88: astore_0
+    //   89: ldc 18
+    //   91: iconst_1
+    //   92: ldc 103
+    //   94: aload_0
+    //   95: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   98: aconst_null
+    //   99: areturn
+    //   100: aload_1
+    //   101: ifnull +20 -> 121
+    //   104: aload_1
+    //   105: invokevirtual 267	java/io/ByteArrayOutputStream:close	()V
+    //   108: goto +13 -> 121
+    //   111: astore_1
+    //   112: ldc 18
+    //   114: iconst_1
+    //   115: ldc 103
+    //   117: aload_1
+    //   118: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   121: aload_0
+    //   122: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	132	0	paramBitmap	Bitmap
-    //   12	32	1	localObject1	Object
-    //   45	7	1	localIOException1	java.io.IOException
-    //   61	43	1	localObject2	Object
-    //   109	7	1	localIOException2	java.io.IOException
-    //   10	118	2	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   57	11	3	localException1	Exception
-    //   126	1	3	localException2	Exception
-    //   1	71	4	localObject3	Object
+    //   0	123	0	paramBitmap	Bitmap
+    //   9	14	1	localObject1	Object
+    //   34	7	1	localIOException1	java.io.IOException
+    //   50	4	1	localException1	Exception
+    //   60	45	1	localBitmap	Bitmap
+    //   111	7	1	localIOException2	java.io.IOException
+    //   7	48	2	localObject2	Object
+    //   64	11	2	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   37	41	45	java/io/IOException
-    //   3	11	57	java/lang/Exception
-    //   78	82	84	java/io/IOException
-    //   3	11	96	finally
-    //   103	107	109	java/io/IOException
-    //   13	24	122	finally
-    //   26	31	122	finally
-    //   62	71	122	finally
-    //   13	24	126	java/lang/Exception
-    //   26	31	126	java/lang/Exception
+    //   28	32	34	java/io/IOException
+    //   10	21	46	finally
+    //   23	28	46	finally
+    //   69	78	46	finally
+    //   10	21	50	java/lang/Exception
+    //   23	28	50	java/lang/Exception
+    //   0	8	58	finally
+    //   0	8	64	java/lang/Exception
+    //   82	86	88	java/io/IOException
+    //   104	108	111	java/io/IOException
   }
   
   private boolean b(Activity paramActivity)
   {
-    boolean bool = true;
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
-    {
-      QLog.d("WBShareHelper", 1, "shareImage activity == null || activity.isFinishing()");
-      ForwardSdkUtil.a(paramActivity, "UI 已经销毁");
-      bool = false;
+    if ((paramActivity != null) && (!paramActivity.isFinishing())) {
+      return true;
     }
-    return bool;
+    QLog.d("WBShareHelper", 1, "shareImage activity == null || activity.isFinishing()");
+    ForwardSdkUtil.a(MobileQQ.sMobileQQ, "UI 已经销毁");
+    return false;
   }
   
-  /* Error */
   private boolean c(Activity paramActivity, String paramString)
   {
-    // Byte code:
-    //   0: new 281	com/sina/weibo/sdk/api/ImageObject
-    //   3: dup
-    //   4: invokespecial 282	com/sina/weibo/sdk/api/ImageObject:<init>	()V
-    //   7: astore_3
-    //   8: aload_2
-    //   9: invokestatic 284	com/tencent/mobileqq/wbapi/WBShareHelper:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   12: astore_2
-    //   13: aload_2
-    //   14: ifnonnull +21 -> 35
-    //   17: ldc 18
-    //   19: iconst_1
-    //   20: ldc_w 286
-    //   23: invokestatic 26	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   26: aload_1
-    //   27: ldc_w 288
-    //   30: invokestatic 277	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Landroid/content/Context;Ljava/lang/String;)V
-    //   33: iconst_0
-    //   34: ireturn
-    //   35: aload_3
-    //   36: aload_2
-    //   37: invokevirtual 292	com/sina/weibo/sdk/api/ImageObject:setImageData	(Landroid/graphics/Bitmap;)V
-    //   40: aload_3
-    //   41: getfield 296	com/sina/weibo/sdk/api/ImageObject:imageData	[B
-    //   44: ifnull +88 -> 132
-    //   47: aload_3
-    //   48: getfield 296	com/sina/weibo/sdk/api/ImageObject:imageData	[B
-    //   51: arraylength
-    //   52: ldc_w 297
-    //   55: if_icmplt +77 -> 132
-    //   58: aload_1
-    //   59: ldc_w 299
-    //   62: invokestatic 277	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Landroid/content/Context;Ljava/lang/String;)V
-    //   65: ldc 18
-    //   67: iconst_1
-    //   68: iconst_4
-    //   69: anewarray 4	java/lang/Object
-    //   72: dup
-    //   73: iconst_0
-    //   74: ldc_w 301
-    //   77: aastore
-    //   78: dup
-    //   79: iconst_1
-    //   80: aload_2
-    //   81: invokestatic 303	com/tencent/mobileqq/wbapi/WBShareHelper:a	(Landroid/graphics/Bitmap;)I
-    //   84: invokestatic 230	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   87: aastore
-    //   88: dup
-    //   89: iconst_2
-    //   90: ldc_w 305
-    //   93: aastore
-    //   94: dup
-    //   95: iconst_3
-    //   96: aload_3
-    //   97: getfield 296	com/sina/weibo/sdk/api/ImageObject:imageData	[B
-    //   100: arraylength
-    //   101: invokestatic 230	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   104: aastore
-    //   105: invokestatic 232	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   108: aload_0
-    //   109: aload_2
-    //   110: invokevirtual 308	com/tencent/mobileqq/wbapi/WBShareHelper:a	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
-    //   113: astore_2
-    //   114: aload_3
-    //   115: aload_2
-    //   116: invokevirtual 292	com/sina/weibo/sdk/api/ImageObject:setImageData	(Landroid/graphics/Bitmap;)V
-    //   119: goto -79 -> 40
-    //   122: astore_2
-    //   123: ldc 18
-    //   125: iconst_1
-    //   126: ldc 97
-    //   128: aload_2
-    //   129: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   132: aload_3
-    //   133: getfield 296	com/sina/weibo/sdk/api/ImageObject:imageData	[B
-    //   136: ifnonnull +60 -> 196
-    //   139: ldc_w 310
-    //   142: astore_2
-    //   143: ldc 18
-    //   145: iconst_1
-    //   146: iconst_2
-    //   147: anewarray 4	java/lang/Object
-    //   150: dup
-    //   151: iconst_0
-    //   152: ldc_w 312
-    //   155: aastore
-    //   156: dup
-    //   157: iconst_1
-    //   158: aload_2
-    //   159: aastore
-    //   160: invokestatic 232	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   163: new 314	com/sina/weibo/sdk/api/WeiboMultiMessage
-    //   166: dup
-    //   167: invokespecial 315	com/sina/weibo/sdk/api/WeiboMultiMessage:<init>	()V
-    //   170: astore_2
-    //   171: aload_2
-    //   172: aload_3
-    //   173: putfield 319	com/sina/weibo/sdk/api/WeiboMultiMessage:imageObject	Lcom/sina/weibo/sdk/api/ImageObject;
-    //   176: aload_0
-    //   177: aload_1
-    //   178: aload_2
-    //   179: invokespecial 321	com/tencent/mobileqq/wbapi/WBShareHelper:a	(Landroid/app/Activity;Lcom/sina/weibo/sdk/api/WeiboMultiMessage;)Z
-    //   182: ireturn
-    //   183: astore_2
-    //   184: ldc 18
-    //   186: iconst_1
-    //   187: ldc 103
-    //   189: aload_2
-    //   190: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   193: goto -61 -> 132
-    //   196: aload_3
-    //   197: getfield 296	com/sina/weibo/sdk/api/ImageObject:imageData	[B
-    //   200: arraylength
-    //   201: invokestatic 230	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   204: astore_2
-    //   205: goto -62 -> 143
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	208	0	this	WBShareHelper
-    //   0	208	1	paramActivity	Activity
-    //   0	208	2	paramString	String
-    //   7	190	3	localImageObject	com.sina.weibo.sdk.api.ImageObject
-    // Exception table:
-    //   from	to	target	type
-    //   8	13	122	java/lang/Exception
-    //   17	33	122	java/lang/Exception
-    //   35	40	122	java/lang/Exception
-    //   40	119	122	java/lang/Exception
-    //   8	13	183	java/lang/OutOfMemoryError
-    //   17	33	183	java/lang/OutOfMemoryError
-    //   35	40	183	java/lang/OutOfMemoryError
-    //   40	119	183	java/lang/OutOfMemoryError
+    ImageObject localImageObject = new ImageObject();
+    try
+    {
+      paramString = a(paramString);
+      if (paramString == null)
+      {
+        QLog.d("WBShareHelper", 1, "shareSingleBitmap text is empty");
+        ForwardSdkUtil.a(paramActivity, "图片为空，禁止分享");
+        return false;
+      }
+      localImageObject.setImageData(paramString);
+      while ((localImageObject.imageData != null) && (localImageObject.imageData.length >= 630784))
+      {
+        ForwardSdkUtil.a(paramActivity, "图片太大，请业务压缩");
+        QLog.d("WBShareHelper", 1, new Object[] { "shareSingleBitmap compress getBitmapSize=", Integer.valueOf(a(paramString)), ", arr=", Integer.valueOf(localImageObject.imageData.length) });
+        paramString = a(paramString);
+        localImageObject.setImageData(paramString);
+      }
+      if (localImageObject.imageData != null) {
+        break label159;
+      }
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      QLog.e("WBShareHelper", 1, "OutOfMemoryError", paramString);
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("WBShareHelper", 1, "Exception", paramString);
+    }
+    paramString = "null";
+    break label168;
+    label159:
+    paramString = Integer.valueOf(localImageObject.imageData.length);
+    label168:
+    QLog.d("WBShareHelper", 1, new Object[] { "shareSingleBitmap arr=", paramString });
+    paramString = new WeiboMultiMessage();
+    paramString.imageObject = localImageObject;
+    return a(paramActivity, paramString);
   }
   
   public Bitmap a(Bitmap paramBitmap)
@@ -515,27 +413,27 @@ public class WBShareHelper
     if (!b(paramActivity)) {
       return false;
     }
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      QLog.d("WBShareHelper", 1, "shareVideo invalid params");
-      ForwardSdkUtil.a(paramActivity, "参数不合法，禁止分享");
-      return false;
+      if (!a(paramActivity).isWBAppSupportMultipleImage())
+      {
+        QLog.d("WBShareHelper", 1, "shareVideo not support Multi Image");
+        ForwardSdkUtil.a(paramActivity, "版本较低，不支持视频分享");
+        return false;
+      }
+      QLog.d("WBShareHelper", 1, new Object[] { "shareUrl text=", paramString1, ", videoPath=", paramString2 });
+      WeiboMultiMessage localWeiboMultiMessage = new WeiboMultiMessage();
+      TextObject localTextObject = new TextObject();
+      localTextObject.text = paramString1;
+      localWeiboMultiMessage.textObject = localTextObject;
+      paramString1 = new VideoSourceObject();
+      paramString1.videoPath = Uri.fromFile(new File(paramString2));
+      localWeiboMultiMessage.videoSourceObject = paramString1;
+      return a(paramActivity, localWeiboMultiMessage);
     }
-    if (!a(paramActivity).isWBAppSupportMultipleImage())
-    {
-      QLog.d("WBShareHelper", 1, "shareVideo not support Multi Image");
-      ForwardSdkUtil.a(paramActivity, "版本较低，不支持视频分享");
-      return false;
-    }
-    QLog.d("WBShareHelper", 1, new Object[] { "shareUrl text=", paramString1, ", videoPath=", paramString2 });
-    WeiboMultiMessage localWeiboMultiMessage = new WeiboMultiMessage();
-    TextObject localTextObject = new TextObject();
-    localTextObject.text = paramString1;
-    localWeiboMultiMessage.textObject = localTextObject;
-    paramString1 = new VideoSourceObject();
-    paramString1.videoPath = Uri.fromFile(new File(paramString2));
-    localWeiboMultiMessage.videoSourceObject = paramString1;
-    return a(paramActivity, localWeiboMultiMessage);
+    QLog.d("WBShareHelper", 1, "shareVideo invalid params");
+    ForwardSdkUtil.a(paramActivity, "参数不合法，禁止分享");
+    return false;
   }
   
   public boolean a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, Bitmap paramBitmap)
@@ -595,45 +493,48 @@ public class WBShareHelper
     if (!b(paramActivity)) {
       return false;
     }
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayList == null) || (paramArrayList.isEmpty()))
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      QLog.d("WBShareHelper", 1, "shareMultImage invalid params");
-      ForwardSdkUtil.a(paramActivity, "参数不合法，禁止分享");
-      return false;
+      if (!a(paramActivity).isWBAppSupportMultipleImage())
+      {
+        QLog.d("WBShareHelper", 1, "shareMultImage not support Multi Image");
+        ForwardSdkUtil.a(paramActivity, "版本较低，不支持多图分享");
+        return false;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shareMultImage imageUrls.size=");
+      ((StringBuilder)localObject).append(paramArrayList.size());
+      QLog.d("WBShareHelper", 1, ((StringBuilder)localObject).toString());
+      localObject = new WeiboMultiMessage();
+      TextObject localTextObject = new TextObject();
+      localTextObject.text = paramString;
+      ((WeiboMultiMessage)localObject).textObject = localTextObject;
+      paramString = new MultiImageObject();
+      paramString.imageList = paramArrayList;
+      ((WeiboMultiMessage)localObject).multiImageObject = paramString;
+      return a(paramActivity, (WeiboMultiMessage)localObject);
     }
-    if (!a(paramActivity).isWBAppSupportMultipleImage())
-    {
-      QLog.d("WBShareHelper", 1, "shareMultImage not support Multi Image");
-      ForwardSdkUtil.a(paramActivity, "版本较低，不支持多图分享");
-      return false;
-    }
-    QLog.d("WBShareHelper", 1, "shareMultImage imageUrls.size=" + paramArrayList.size());
-    WeiboMultiMessage localWeiboMultiMessage = new WeiboMultiMessage();
-    TextObject localTextObject = new TextObject();
-    localTextObject.text = paramString;
-    localWeiboMultiMessage.textObject = localTextObject;
-    paramString = new MultiImageObject();
-    paramString.imageList = paramArrayList;
-    localWeiboMultiMessage.multiImageObject = paramString;
-    return a(paramActivity, localWeiboMultiMessage);
+    QLog.d("WBShareHelper", 1, "shareMultImage invalid params");
+    ForwardSdkUtil.a(paramActivity, "参数不合法，禁止分享");
+    return false;
   }
   
   public boolean a(Activity paramActivity, String paramString, String[] paramArrayOfString)
   {
     int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
+    if ((paramArrayOfString != null) && (paramArrayOfString.length != 0))
     {
-      QLog.d("WBShareHelper", 1, "null == imageUrls || imageUrls.length == 0");
-      return false;
+      ArrayList localArrayList = new ArrayList();
+      int j = paramArrayOfString.length;
+      while (i < j)
+      {
+        localArrayList.add(Uri.fromFile(new File(paramArrayOfString[i])));
+        i += 1;
+      }
+      return a(paramActivity, paramString, localArrayList);
     }
-    ArrayList localArrayList = new ArrayList();
-    int j = paramArrayOfString.length;
-    while (i < j)
-    {
-      localArrayList.add(Uri.fromFile(new File(paramArrayOfString[i])));
-      i += 1;
-    }
-    return a(paramActivity, paramString, localArrayList);
+    QLog.d("WBShareHelper", 1, "null == imageUrls || imageUrls.length == 0");
+    return false;
   }
   
   public boolean b(Activity paramActivity, String paramString)
@@ -656,7 +557,7 @@ public class WBShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wbapi.WBShareHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -54,7 +54,10 @@ public class TencentDocFormKeyWordsProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TencentDocFormKeyWordsProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:");
+    localStringBuilder.append(paramInt);
+    QLog.d("TencentDocFormKeyWordsProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -64,7 +67,7 @@ public class TencentDocFormKeyWordsProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocFormKeyWordsProcessor
  * JD-Core Version:    0.7.0.1
  */

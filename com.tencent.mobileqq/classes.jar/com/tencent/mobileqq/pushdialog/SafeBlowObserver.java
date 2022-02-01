@@ -8,17 +8,20 @@ public class SafeBlowObserver
 {
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 3838) {
       return;
     }
-    QLog.d("SafeBlowObserver", 1, "onUpdate: isSuccess = " + paramBoolean + ", data = " + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onUpdate: isSuccess = ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", data = ");
+    localStringBuilder.append(paramObject);
+    QLog.d("SafeBlowObserver", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.SafeBlowObserver
  * JD-Core Version:    0.7.0.1
  */

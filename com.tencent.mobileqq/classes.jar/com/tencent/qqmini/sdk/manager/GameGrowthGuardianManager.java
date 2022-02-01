@@ -15,10 +15,8 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.qqmini.sdk.launcher.model.EntryModel;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.report.MiniProgramReportHelper;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -56,75 +54,57 @@ public class GameGrowthGuardianManager
   {
     ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
     long l = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-    if (paramString1 != null) {
-      if (paramMiniAppInfo.via == null) {
-        break label90;
-      }
-    }
-    label90:
-    for (String str = paramMiniAppInfo.via;; str = "")
-    {
-      localChannelProxy.judgeTiming(paramString2, paramInt2, paramInt3, paramInt1, l, paramInt4, paramString1, 0, str, paramMiniAppInfo.gameAdsTotalTime, previousExtInfo, paramMiniAppInfo.customInfo, paramString3, new GameGrowthGuardianManager.2(paramMiniAppInfo, paramContext, paramInt1));
-      return;
+    String str = "";
+    if (paramString1 == null) {
       paramString1 = "";
-      break;
     }
+    if (paramMiniAppInfo.via != null) {
+      str = paramMiniAppInfo.via;
+    }
+    localChannelProxy.judgeTiming(paramString2, paramInt2, paramInt3, paramInt1, l, paramInt4, paramString1, 0, str, paramMiniAppInfo.gameAdsTotalTime, previousExtInfo, paramMiniAppInfo.customInfo, paramString3, new GameGrowthGuardianManager.2(paramMiniAppInfo, paramContext, paramInt1));
   }
   
   private static boolean enableHeartBeatAppIdWhiteList(MiniAppInfo paramMiniAppInfo)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
-    if (paramMiniAppInfo != null)
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appId != null) && (!TextUtils.isEmpty(ENABLE_HEART_BEAT_APPID_WHITELIST)))
     {
-      bool1 = bool2;
-      if (paramMiniAppInfo.appId != null)
+      String[] arrayOfString = ENABLE_HEART_BEAT_APPID_WHITELIST.split(",");
+      if (arrayOfString != null)
       {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(ENABLE_HEART_BEAT_APPID_WHITELIST))
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
         {
-          arrayOfString = ENABLE_HEART_BEAT_APPID_WHITELIST.split(",");
-          bool1 = bool2;
-          if (arrayOfString != null)
-          {
-            j = arrayOfString.length;
-            i = 0;
+          String str = arrayOfString[i];
+          if (paramMiniAppInfo.appId.equals(str)) {
+            return true;
           }
+          i += 1;
         }
       }
     }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        String str = arrayOfString[i];
-        if (paramMiniAppInfo.appId.equals(str)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
-    }
+    return false;
   }
   
   private static boolean enableHeartBeatCheck(MiniAppInfo paramMiniAppInfo)
   {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     if (paramMiniAppInfo != null)
     {
-      if (paramMiniAppInfo.isEngineTypeMiniGame()) {}
-      while ((!paramMiniAppInfo.isEngineTypeMiniGame()) && (enableHeartBeatForMiniApp(paramMiniAppInfo))) {
+      if (paramMiniAppInfo.isEngineTypeMiniGame()) {
         return true;
       }
-      return false;
+      bool1 = bool2;
+      if (!paramMiniAppInfo.isEngineTypeMiniGame())
+      {
+        bool1 = bool2;
+        if (enableHeartBeatForMiniApp(paramMiniAppInfo)) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   private static boolean enableHeartBeatForMiniApp(MiniAppInfo paramMiniAppInfo)
@@ -146,151 +126,74 @@ public class GameGrowthGuardianManager
       if (isFromQQXMAN(i, str)) {
         return true;
       }
-      if ((enableHeartBeatSceneWhiteList(i)) || (enableHeartBeatAppIdWhiteList(paramMiniAppInfo))) {
-        break label89;
+      if (enableHeartBeatSceneWhiteList(i)) {
+        return true;
+      }
+      if (enableHeartBeatAppIdWhiteList(paramMiniAppInfo)) {
+        return true;
       }
       boolean bool = enableHeartBeatViaWhiteList(str);
-      if (bool) {
-        break label89;
+      if (!bool) {
+        break label92;
       }
+      return true;
     }
     catch (Exception paramMiniAppInfo)
     {
-      for (;;)
-      {
-        QMLog.e("GameGrowthGuardianManager", "enableHeartBeatForLaunchScene", paramMiniAppInfo);
-      }
+      label84:
+      break label84;
     }
+    QMLog.e("GameGrowthGuardianManager", "enableHeartBeatForLaunchScene", paramMiniAppInfo);
+    label92:
     return false;
-    label89:
-    return true;
   }
   
   private static boolean enableHeartBeatSceneWhiteList(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
     if (!TextUtils.isEmpty(ENABLE_HEART_BEAT_SCENE_WHITELIST))
     {
-      arrayOfString = ENABLE_HEART_BEAT_SCENE_WHITELIST.split(",");
-      bool1 = bool2;
+      String[] arrayOfString = ENABLE_HEART_BEAT_SCENE_WHITELIST.split(",");
       if (arrayOfString != null)
       {
-        j = arrayOfString.length;
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        if (paramInt == Integer.parseInt(arrayOfString[i])) {
-          bool1 = true;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (paramInt == Integer.parseInt(arrayOfString[i])) {
+            return true;
+          }
+          i += 1;
         }
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   private static boolean enableHeartBeatViaWhiteList(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
     if (!TextUtils.isEmpty(ENABLE_HEART_BEAT_VIA_WHITELIST))
     {
-      arrayOfString = ENABLE_HEART_BEAT_VIA_WHITELIST.split(",");
-      bool1 = bool2;
+      String[] arrayOfString = ENABLE_HEART_BEAT_VIA_WHITELIST.split(",");
       if (arrayOfString != null)
       {
-        j = arrayOfString.length;
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        String str = arrayOfString[i];
-        if ((str != null) && (str.equals(paramString))) {
-          bool1 = true;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = arrayOfString[i];
+          if ((str != null) && (str.equals(paramString))) {
+            return true;
+          }
+          i += 1;
         }
       }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   private static void execute(Context paramContext, MiniAppInfo paramMiniAppInfo, @GameGrowthGuardianManager.JudgeTimingRequestFactType int paramInt)
   {
-    if ((paramContext == null) || (paramMiniAppInfo == null)) {}
-    do
-    {
-      return;
-      if ((!isForeground) && ((paramInt == 11) || (paramInt == 12)))
-      {
-        QMLog.e("GameGrowthGuardianManager", "not in foreground, not allowed to send begin or heartbeat protocol");
-        return;
-      }
-    } while (!enableHeartBeatCheck(paramMiniAppInfo));
-    String str4 = MiniProgramReportHelper.launchIdForMiniAppConfig(paramMiniAppInfo);
-    String str1;
-    int i;
-    label70:
-    int j;
-    if (paramMiniAppInfo.appId != null)
-    {
-      str1 = paramMiniAppInfo.appId;
-      if (!paramMiniAppInfo.isEngineTypeMiniGame()) {
-        break label165;
-      }
-      i = 1;
-      if (paramMiniAppInfo.launchParam == null) {
-        break label170;
-      }
-      j = paramMiniAppInfo.launchParam.scene;
-      label86:
-      if (paramInt != 11) {
-        break label176;
-      }
-    }
-    label165:
-    label170:
-    label176:
-    for (int k = 0;; k = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - beginExecuteMillis))
-    {
-      EntryModel localEntryModel = paramMiniAppInfo.launchParam.entryModel;
-      String str3 = "";
-      String str2 = str3;
-      if (localEntryModel != null)
-      {
-        str2 = str3;
-        if (localEntryModel.type == 1) {
-          str2 = String.valueOf(localEntryModel.uin);
-        }
-      }
-      doJuddgeTiming(paramContext, paramMiniAppInfo, paramInt, str4, str1, i, j, k, str2);
-      return;
-      str1 = "";
-      break;
-      i = 0;
-      break label70;
-      j = 0;
-      break label86;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static void executeBegin(Context paramContext, MiniAppInfo paramMiniAppInfo)
@@ -308,8 +211,9 @@ public class GameGrowthGuardianManager
       ThreadManager.getUIHandler().removeCallbacks(heartBeatRunnable);
       heartBeatRunnable = null;
     }
-    if (sOnStopCallback != null) {
-      sOnStopCallback.onStop();
+    paramContext = sOnStopCallback;
+    if (paramContext != null) {
+      paramContext.onStop();
     }
   }
   
@@ -325,29 +229,25 @@ public class GameGrowthGuardianManager
   
   private static void reportInstructionExecuteResult(MiniAppInfo paramMiniAppInfo, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp, INTERFACE.GuardInstruction paramGuardInstruction)
   {
-    if ((paramMiniAppInfo == null) || (paramStJudgeTimingRsp == null)) {
-      return;
-    }
-    ChannelProxy localChannelProxy;
-    String str;
-    int i;
-    if ((paramGuardInstruction != null) && (paramGuardInstruction.type.get() == 7))
+    if (paramMiniAppInfo != null)
     {
-      paramStJudgeTimingRsp = paramStJudgeTimingRsp.loginTraceId.get();
-      localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      str = paramMiniAppInfo.appId;
-      i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-      if (paramGuardInstruction == null) {
-        break label103;
+      if (paramStJudgeTimingRsp == null) {
+        return;
       }
-    }
-    label103:
-    for (paramMiniAppInfo = paramGuardInstruction.ruleName.get();; paramMiniAppInfo = "")
-    {
+      if ((paramGuardInstruction != null) && (paramGuardInstruction.type.get() == 7)) {
+        paramStJudgeTimingRsp = paramStJudgeTimingRsp.loginTraceId.get();
+      } else {
+        paramStJudgeTimingRsp = paramStJudgeTimingRsp.timingTraceId.get();
+      }
+      ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+      String str = paramMiniAppInfo.appId;
+      int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+      if (paramGuardInstruction != null) {
+        paramMiniAppInfo = paramGuardInstruction.ruleName.get();
+      } else {
+        paramMiniAppInfo = "";
+      }
       localChannelProxy.ReportExecute(str, i, paramStJudgeTimingRsp, paramMiniAppInfo, new GameGrowthGuardianManager.3());
-      return;
-      paramStJudgeTimingRsp = paramStJudgeTimingRsp.timingTraceId.get();
-      break;
     }
   }
   
@@ -427,7 +327,7 @@ public class GameGrowthGuardianManager
     localStJudgeTimingRsp.loginInstructions.add((MessageMicro)localObject);
     localStJudgeTimingRsp.loginTraceId.set(UUID.randomUUID().toString());
     localStJudgeTimingRsp.nextDuration.set(120);
-    if ((localStJudgeTimingRsp != null) && (!localStJudgeTimingRsp.loginInstructions.isEmpty()))
+    if (!localStJudgeTimingRsp.loginInstructions.isEmpty())
     {
       localObject = localStJudgeTimingRsp.loginInstructions.get().iterator();
       while (((Iterator)localObject).hasNext()) {
@@ -459,7 +359,7 @@ public class GameGrowthGuardianManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager
  * JD-Core Version:    0.7.0.1
  */

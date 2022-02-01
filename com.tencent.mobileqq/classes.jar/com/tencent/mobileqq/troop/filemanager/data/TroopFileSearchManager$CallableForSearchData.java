@@ -24,23 +24,32 @@ public class TroopFileSearchManager$CallableForSearchData
   
   public List<IContactSearchable> a()
   {
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     ArrayList localArrayList = new ArrayList();
-    if (IContactSearchable.E == this.jdField_a_of_type_Long)
+    long l2 = IContactSearchable.E;
+    long l3 = this.jdField_a_of_type_Long;
+    Object localObject;
+    if (l2 == l3)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchManager.a = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchManager;
+      ((TroopFileSearchManager)localObject).a = ((TroopFileSearchManager)localObject).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l3, true);
       localArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchManager.a);
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchManager.b = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchManager;
+      ((TroopFileSearchManager)localObject).b = ((TroopFileSearchManager)localObject).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "CallableForSearchData time = " + (System.currentTimeMillis() - l));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("CallableForSearchData time = ");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l1);
+      QLog.d("zivonchen", 2, ((StringBuilder)localObject).toString());
     }
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.TroopFileSearchManager.CallableForSearchData
  * JD-Core Version:    0.7.0.1
  */

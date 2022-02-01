@@ -17,20 +17,18 @@ public class TypedArrayWarpper
   
   public boolean getBoolean(int paramInt, boolean paramBoolean)
   {
-    boolean bool = paramBoolean;
     if (paramInt >= 0) {
-      bool = this.a.getBoolean(paramInt, paramBoolean);
+      return this.a.getBoolean(paramInt, paramBoolean);
     }
-    return bool;
+    return paramBoolean;
   }
   
   public int getColor(int paramInt1, int paramInt2)
   {
-    int i = paramInt2;
     if (paramInt1 >= 0) {
-      i = this.a.getColor(paramInt1, paramInt2);
+      return this.a.getColor(paramInt1, paramInt2);
     }
-    return i;
+    return paramInt2;
   }
   
   public ColorStateList getColorStateList(int paramInt)
@@ -43,29 +41,26 @@ public class TypedArrayWarpper
   
   public float getDimension(int paramInt, float paramFloat)
   {
-    float f = paramFloat;
     if (paramInt >= 0) {
-      f = this.a.getDimension(paramInt, paramFloat);
+      return this.a.getDimension(paramInt, paramFloat);
     }
-    return f;
+    return paramFloat;
   }
   
   public int getDimensionPixelOffset(int paramInt1, int paramInt2)
   {
-    int i = paramInt2;
     if (paramInt1 >= 0) {
-      i = this.a.getDimensionPixelOffset(paramInt1, paramInt2);
+      return this.a.getDimensionPixelOffset(paramInt1, paramInt2);
     }
-    return i;
+    return paramInt2;
   }
   
   public int getDimensionPixelSize(int paramInt1, int paramInt2)
   {
-    int i = paramInt2;
     if (paramInt1 >= 0) {
-      i = this.a.getDimensionPixelSize(paramInt1, paramInt2);
+      return this.a.getDimensionPixelSize(paramInt1, paramInt2);
     }
-    return i;
+    return paramInt2;
   }
   
   public Drawable getDrawable(int paramInt)
@@ -78,20 +73,18 @@ public class TypedArrayWarpper
   
   public float getFloat(int paramInt, float paramFloat)
   {
-    float f = paramFloat;
     if (paramInt >= 0) {
-      f = this.a.getFloat(paramInt, paramFloat);
+      return this.a.getFloat(paramInt, paramFloat);
     }
-    return f;
+    return paramFloat;
   }
   
   public float getFraction(int paramInt1, int paramInt2, int paramInt3, float paramFloat)
   {
-    float f = paramFloat;
     if (paramInt1 >= 0) {
-      f = this.a.getFraction(paramInt1, paramInt2, paramInt3, paramFloat);
+      return this.a.getFraction(paramInt1, paramInt2, paramInt3, paramFloat);
     }
-    return f;
+    return paramFloat;
   }
   
   public int getIndex(int paramInt)
@@ -106,29 +99,26 @@ public class TypedArrayWarpper
   
   public int getInt(int paramInt1, int paramInt2)
   {
-    int i = paramInt2;
     if (paramInt1 >= 0) {
-      i = this.a.getInt(paramInt1, paramInt2);
+      return this.a.getInt(paramInt1, paramInt2);
     }
-    return i;
+    return paramInt2;
   }
   
   public int getInteger(int paramInt1, int paramInt2)
   {
-    int i = paramInt2;
     if (paramInt1 >= 0) {
-      i = this.a.getInteger(paramInt1, paramInt2);
+      return this.a.getInteger(paramInt1, paramInt2);
     }
-    return i;
+    return paramInt2;
   }
   
   public int getLayoutDimension(int paramInt1, int paramInt2)
   {
-    int i = paramInt2;
     if (paramInt1 >= 0) {
-      i = this.a.getLayoutDimension(paramInt1, paramInt2);
+      return this.a.getLayoutDimension(paramInt1, paramInt2);
     }
-    return i;
+    return paramInt2;
   }
   
   public int getLayoutDimension(int paramInt, String paramString)
@@ -151,11 +141,10 @@ public class TypedArrayWarpper
   
   public int getResourceId(int paramInt1, int paramInt2)
   {
-    int i = paramInt2;
     if (paramInt1 >= 0) {
-      i = this.a.getResourceId(paramInt1, paramInt2);
+      return this.a.getResourceId(paramInt1, paramInt2);
     }
-    return i;
+    return paramInt2;
   }
   
   public Resources getResources()
@@ -233,7 +222,7 @@ public class TypedArrayWarpper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.TypedArrayWarpper
  * JD-Core Version:    0.7.0.1
  */

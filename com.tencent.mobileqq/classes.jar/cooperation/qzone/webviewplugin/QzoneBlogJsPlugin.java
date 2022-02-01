@@ -21,25 +21,35 @@ public class QzoneBlogJsPlugin
     paramArrayOfString = new Bundle();
     paramArrayOfString.putString("cmd", "writeBlogSuccess");
     paramWebViewPlugin.putExtras(paramArrayOfString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneBlogJsPlugin", 2, "handleWriteBlog actionString: " + paramWebViewPlugin.getAction());
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfString = new StringBuilder();
+      paramArrayOfString.append("handleWriteBlog actionString: ");
+      paramArrayOfString.append(paramWebViewPlugin.getAction());
+      QLog.d("QzoneBlogJsPlugin", 2, paramArrayOfString.toString());
     }
     QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), paramWebViewPlugin);
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!paramString2.equals("Qzone")) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {}
-    while (!paramString3.equalsIgnoreCase("writeBlogSuccess")) {
-      return false;
+    if ((paramString2.equals("Qzone")) && (this.parentPlugin != null))
+    {
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if (paramString3.equalsIgnoreCase("writeBlogSuccess"))
+      {
+        handleWriteBlog(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
+        return true;
+      }
     }
-    handleWriteBlog(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneBlogJsPlugin
  * JD-Core Version:    0.7.0.1
  */

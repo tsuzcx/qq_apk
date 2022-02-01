@@ -7,7 +7,7 @@ import android.util.TypedValue;
 
 public class PixelUtil
 {
-  static DisplayMetrics sMetrics = null;
+  static DisplayMetrics sMetrics;
   
   public static float dp2px(double paramDouble)
   {
@@ -44,7 +44,7 @@ public class PixelUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.PixelUtil
  * JD-Core Version:    0.7.0.1
  */

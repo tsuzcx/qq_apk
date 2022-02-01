@@ -7,17 +7,21 @@ public class WLog
 {
   private static String a(String paramString)
   {
-    String str = paramString;
+    Object localObject = paramString;
     try
     {
       if (!TextUtils.isEmpty(paramString))
       {
-        str = paramString;
-        if (!paramString.startsWith("##@")) {
-          str = "##@" + paramString;
+        localObject = paramString;
+        if (!paramString.startsWith("##@"))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("##@");
+          ((StringBuilder)localObject).append(paramString);
+          localObject = ((StringBuilder)localObject).toString();
         }
       }
-      return str;
+      return localObject;
     }
     catch (Throwable localThrowable) {}
     return paramString;
@@ -28,29 +32,14 @@ public class WLog
     QLog.e(paramString1, 1, a(paramString2));
   }
   
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, a(paramString2), paramThrowable);
-  }
-  
   public static void b(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, a(paramString2));
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.d(paramString1, 1, a(paramString2), paramThrowable);
-  }
-  
-  public static void c(String paramString1, String paramString2)
   {
     QLog.d(paramString1, 1, a(paramString2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.util.WLog
  * JD-Core Version:    0.7.0.1
  */

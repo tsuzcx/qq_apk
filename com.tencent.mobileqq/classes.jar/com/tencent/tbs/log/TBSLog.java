@@ -23,11 +23,15 @@ public final class TBSLog
   
   public static void addPrinter(LogPrinter paramLogPrinter)
   {
-    if (!checkInitialize()) {}
-    while ((paramLogPrinter == null) || (sLogPrinters.contains(paramLogPrinter))) {
+    if (!checkInitialize()) {
       return;
     }
-    sLogPrinters.add(paramLogPrinter);
+    if (paramLogPrinter == null) {
+      return;
+    }
+    if (!sLogPrinters.contains(paramLogPrinter)) {
+      sLogPrinters.add(paramLogPrinter);
+    }
   }
   
   private static boolean checkInitialize()
@@ -146,11 +150,11 @@ public final class TBSLog
   
   public static void initialize(Context paramContext, String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    File localFile = null;
     try
     {
       if (!sInitialized.booleanValue())
       {
+        Object localObject = null;
         sLogger = new TBSLog.TBSLogger(null);
         sLogPrinters = new ArrayList();
         sLogPrinters.add(createFilePrinter(paramContext, paramLong1, paramLong2));
@@ -158,18 +162,25 @@ public final class TBSLog
           sLogPrinters.add(new DefaultPrinter());
         }
         if ("mounted".equals(Environment.getExternalStorageState())) {
-          localFile = paramContext.getExternalFilesDir(paramString);
+          localObject = paramContext.getExternalFilesDir(paramString);
         }
-        if (localFile != null) {}
-        for (sLogPath = localFile.getAbsolutePath();; sLogPath = paramContext.getFilesDir() + File.separator + paramString)
+        if (localObject != null)
         {
-          sLogLevel = LogLevel.ALL;
-          sLogOpen = true;
-          sInitialized = Boolean.valueOf(true);
-          return;
+          sLogPath = ((File)localObject).getAbsolutePath();
         }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramContext.getFilesDir());
+          ((StringBuilder)localObject).append(File.separator);
+          ((StringBuilder)localObject).append(paramString);
+          sLogPath = ((StringBuilder)localObject).toString();
+        }
+        sLogLevel = LogLevel.ALL;
+        sLogOpen = true;
+        sInitialized = Boolean.valueOf(true);
+        return;
       }
-      return;
     }
     catch (Exception paramContext)
     {
@@ -205,8 +216,10 @@ public final class TBSLog
   
   public static void removePrinter(LogPrinter paramLogPrinter)
   {
-    if (!checkInitialize()) {}
-    while (paramLogPrinter == null) {
+    if (!checkInitialize()) {
+      return;
+    }
+    if (paramLogPrinter == null) {
       return;
     }
     sLogPrinters.remove(paramLogPrinter);
@@ -258,7 +271,7 @@ public final class TBSLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.log.TBSLog
  * JD-Core Version:    0.7.0.1
  */

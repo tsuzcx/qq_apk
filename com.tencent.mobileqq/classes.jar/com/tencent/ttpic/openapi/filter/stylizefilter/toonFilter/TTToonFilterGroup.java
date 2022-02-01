@@ -41,11 +41,14 @@ public class TTToonFilterGroup
   
   public void updateLutPaths(Map<String, String> paramMap)
   {
-    if ((paramMap == null) || (paramMap.size() <= 0)) {
-      return;
+    if (paramMap != null)
+    {
+      if (paramMap.size() <= 0) {
+        return;
+      }
+      this.mTTLookupFilter.updateLutPaths(paramMap);
+      this.mTTToonEdgeFilter.updateLutPaths(paramMap);
     }
-    this.mTTLookupFilter.updateLutPaths(paramMap);
-    this.mTTToonEdgeFilter.updateLutPaths(paramMap);
   }
   
   public void updateMateriaPaths(Map<String, String> paramMap)
@@ -59,7 +62,7 @@ public class TTToonFilterGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.stylizefilter.toonFilter.TTToonFilterGroup
  * JD-Core Version:    0.7.0.1
  */

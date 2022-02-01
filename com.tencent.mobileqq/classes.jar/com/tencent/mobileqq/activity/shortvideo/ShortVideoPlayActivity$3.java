@@ -10,19 +10,20 @@ class ShortVideoPlayActivity$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    if (this.a.mMediaPlayer != null)
     {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
+      if (this.a.mPlayState == 2) {
+        this.a.resume();
       }
-      this.a.a(this.a.e);
+      paramDialogInterface = this.a;
+      paramDialogInterface.play(paramDialogInterface.mCurrentPosition);
     }
-    com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.a = true;
+    com.tencent.mobileqq.shortvideo.SVBusiUtil.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.3
  * JD-Core Version:    0.7.0.1
  */

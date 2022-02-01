@@ -30,7 +30,6 @@ public final class ViewKt
   
   public static final int d(@NotNull View paramView)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramView, "$this$verticalMargin");
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
     Object localObject = localLayoutParams;
@@ -38,20 +37,23 @@ public final class ViewKt
       localObject = null;
     }
     localObject = (ViewGroup.MarginLayoutParams)localObject;
-    if (localObject != null) {}
-    for (int i = ((ViewGroup.MarginLayoutParams)localObject).topMargin;; i = 0)
-    {
-      localObject = paramView.getLayoutParams();
-      paramView = (View)localObject;
-      if (!(localObject instanceof ViewGroup.MarginLayoutParams)) {
-        paramView = null;
-      }
-      paramView = (ViewGroup.MarginLayoutParams)paramView;
-      if (paramView != null) {
-        j = paramView.bottomMargin;
-      }
-      return i + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = ((ViewGroup.MarginLayoutParams)localObject).topMargin;
+    } else {
+      i = 0;
     }
+    localObject = paramView.getLayoutParams();
+    paramView = (View)localObject;
+    if (!(localObject instanceof ViewGroup.MarginLayoutParams)) {
+      paramView = null;
+    }
+    paramView = (ViewGroup.MarginLayoutParams)paramView;
+    if (paramView != null) {
+      j = paramView.bottomMargin;
+    }
+    return i + j;
   }
   
   public static final int e(@NotNull View paramView)
@@ -68,7 +70,7 @@ public final class ViewKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.ViewKt
  * JD-Core Version:    0.7.0.1
  */

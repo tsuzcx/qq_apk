@@ -25,10 +25,15 @@ public class PreCacheJsPlugin
   @JsEvent({"getBackgroundFetchData"})
   public void getBackgroundFetchData(RequestEvent paramRequestEvent)
   {
-    QMLog.d("PreCacheJsPlugin", "call getBackgroundFetchData callbackId:" + paramRequestEvent.callbackId + " PackageToolVersion:" + this.mApkgInfo.mAppConfigInfo.packageToolVersion);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("call getBackgroundFetchData callbackId:");
+    ((StringBuilder)localObject).append(paramRequestEvent.callbackId);
+    ((StringBuilder)localObject).append(" PackageToolVersion:");
+    ((StringBuilder)localObject).append(this.mApkgInfo.mAppConfigInfo.packageToolVersion);
+    QMLog.d("PreCacheJsPlugin", ((StringBuilder)localObject).toString());
     try
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams).optString("fetchType");
+      localObject = new JSONObject(paramRequestEvent.jsonParams).optString("fetchType");
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = PreCacheManager.g().getPreFetchAppCacheData(this.mApkgInfo.mMiniAppInfo, (String)localObject);
@@ -47,27 +52,30 @@ public class PreCacheJsPlugin
         paramRequestEvent.fail("缓存数据不存在");
         return;
       }
+      paramRequestEvent.fail("");
+      return;
     }
     catch (Throwable localThrowable)
     {
       QMLog.e("PreCacheJsPlugin", "", localThrowable);
       paramRequestEvent.fail("");
-      return;
     }
-    paramRequestEvent.fail("");
   }
   
   @JsEvent({"getBackgroundFetchToken"})
   public void getBackgroundFetchToken(RequestEvent paramRequestEvent)
   {
-    QMLog.d("PreCacheJsPlugin", "call getBackgroundFetchToken callbackId:" + paramRequestEvent.callbackId);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("call getBackgroundFetchToken callbackId:");
+    ((StringBuilder)localObject).append(paramRequestEvent.callbackId);
+    QMLog.d("PreCacheJsPlugin", ((StringBuilder)localObject).toString());
     try
     {
-      String str = PreCacheManager.g().getBackgroundFetchToken(this.mApkgInfo.mMiniAppInfo);
-      if (!TextUtils.isEmpty(str))
+      localObject = PreCacheManager.g().getBackgroundFetchToken(this.mApkgInfo.mMiniAppInfo);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("token", str);
+        localJSONObject.put("token", localObject);
         paramRequestEvent.ok(localJSONObject);
         return;
       }
@@ -84,13 +92,16 @@ public class PreCacheJsPlugin
   @JsEvent({"setBackgroundFetchToken"})
   public void setBackgroundFetchToken(RequestEvent paramRequestEvent)
   {
-    QMLog.d("PreCacheJsPlugin", "call setBackgroundFetchToken callbackId:" + paramRequestEvent.callbackId);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("call setBackgroundFetchToken callbackId:");
+    ((StringBuilder)localObject).append(paramRequestEvent.callbackId);
+    QMLog.d("PreCacheJsPlugin", ((StringBuilder)localObject).toString());
     try
     {
-      String str = new JSONObject(paramRequestEvent.jsonParams).optString("token");
-      if (!TextUtils.isEmpty(str))
+      localObject = new JSONObject(paramRequestEvent.jsonParams).optString("token");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        PreCacheManager.g().setBackgroundFetchToken(this.mApkgInfo.mMiniAppInfo, str);
+        PreCacheManager.g().setBackgroundFetchToken(this.mApkgInfo.mMiniAppInfo, (String)localObject);
         paramRequestEvent.ok();
         return;
       }
@@ -106,7 +117,7 @@ public class PreCacheJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PreCacheJsPlugin
  * JD-Core Version:    0.7.0.1
  */

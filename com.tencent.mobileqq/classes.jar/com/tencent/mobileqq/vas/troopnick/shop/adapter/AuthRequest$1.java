@@ -8,30 +8,27 @@ class AuthRequest$1
 {
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    AuthRequest.AuthListener localAuthListener;
-    if (this.a != null)
+    AuthRequest.AuthListener localAuthListener = this.a;
+    if (localAuthListener != null)
     {
-      if (!(paramObject instanceof UniCheckRsp)) {
-        break label50;
+      boolean bool = paramObject instanceof UniCheckRsp;
+      paramBoolean = false;
+      if (bool)
+      {
+        paramObject = (UniCheckRsp)paramObject;
+        if (paramObject.ret == 0) {
+          paramBoolean = true;
+        }
+        localAuthListener.a(paramBoolean, paramObject);
+        return;
       }
-      localAuthListener = this.a;
-      if (((UniCheckRsp)paramObject).ret != 0) {
-        break label45;
-      }
+      localAuthListener.a(false, null);
     }
-    label45:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localAuthListener.a(paramBoolean, (UniCheckRsp)paramObject);
-      return;
-    }
-    label50:
-    this.a.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.adapter.AuthRequest.1
  * JD-Core Version:    0.7.0.1
  */

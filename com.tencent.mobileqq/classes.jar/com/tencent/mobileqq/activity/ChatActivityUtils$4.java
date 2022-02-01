@@ -11,8 +11,9 @@ final class ChatActivityUtils$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a();
+    ChatActivityUtils.StartVideoListener localStartVideoListener = this.a;
+    if (localStartVideoListener != null) {
+      localStartVideoListener.a();
     }
     DataReport.e(true, false);
     paramDialogInterface.dismiss();
@@ -21,7 +22,7 @@ final class ChatActivityUtils$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityUtils.4
  * JD-Core Version:    0.7.0.1
  */

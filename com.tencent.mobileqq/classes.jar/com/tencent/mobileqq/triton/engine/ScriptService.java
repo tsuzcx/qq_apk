@@ -61,7 +61,11 @@ public final class ScriptService
     this.mEngine.createTTApp();
     this.mStartLatch.countDown();
     this.mEngine.getJsRuntimeLoader().initJsRuntime();
-    Logger.i$default("ScriptService", "injectJS BaseLib cost time:" + (SystemClock.uptimeMillis() - l) + "ms", null, 4, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("injectJS BaseLib cost time:");
+    localStringBuilder.append(SystemClock.uptimeMillis() - l);
+    localStringBuilder.append("ms");
+    Logger.i$default("ScriptService", localStringBuilder.toString(), null, 4, null);
   }
   
   private final void onVSync(long paramLong)
@@ -70,23 +74,23 @@ public final class ScriptService
     SystemClock.uptimeMillis();
     Object localObject = this.accumulatedFramesHolder;
     ((ValueHolder)localObject).setValue(Long.valueOf(((Number)((ValueHolder)localObject).getValue()).longValue() + 1L));
-    if (this.mEngine.getRenderContext() != null) {}
-    for (localObject = this.mEngine.getRenderContext().getTouchEventManager();; localObject = null)
-    {
-      if (localObject != null) {
-        ((TouchProviderBridge)localObject).flushTouchEvents();
-      }
-      JNICaller.TTEngine.nativeOnVSync(this.mEngine, paramLong);
-      paramLong = JNICaller.TTEngine.nativeGetCurrentFrameDrawCallCount(this.mEngine);
-      this.currentDrawCallsHolder.setValue(Long.valueOf(paramLong));
-      localObject = this.accumulatedDrawCallsHolder;
-      ((ValueHolder)localObject).setValue(Long.valueOf(((Number)((ValueHolder)localObject).getValue()).longValue() + paramLong));
-      JNICaller.TTEngine.nativeCanvasPresent(this.mEngine);
-      this.mFrameCallback.onFrameEnd();
-      this.mVSyncsSinceLastLiveLog += 1;
-      this.mDrawCallsSinceLastLiveLog += (int)paramLong;
-      return;
+    if (this.mEngine.getRenderContext() != null) {
+      localObject = this.mEngine.getRenderContext().getTouchEventManager();
+    } else {
+      localObject = null;
     }
+    if (localObject != null) {
+      ((TouchProviderBridge)localObject).flushTouchEvents();
+    }
+    JNICaller.TTEngine.nativeOnVSync(this.mEngine, paramLong);
+    paramLong = JNICaller.TTEngine.nativeGetCurrentFrameDrawCallCount(this.mEngine);
+    this.currentDrawCallsHolder.setValue(Long.valueOf(paramLong));
+    localObject = this.accumulatedDrawCallsHolder;
+    ((ValueHolder)localObject).setValue(Long.valueOf(((Number)((ValueHolder)localObject).getValue()).longValue() + paramLong));
+    JNICaller.TTEngine.nativeCanvasPresent(this.mEngine);
+    this.mFrameCallback.onFrameEnd();
+    this.mVSyncsSinceLastLiveLog += 1;
+    this.mDrawCallsSinceLastLiveLog += (int)paramLong;
   }
   
   private final void printLiveLog()
@@ -94,19 +98,27 @@ public final class ScriptService
     try
     {
       i = this.mEngine.getProcessedMessageCount();
-      Logger.i$default("ScriptService", "JSThread liveLog in 5s Frame=[" + this.mVSyncsSinceLastLiveLog + "] DrawCall=[" + this.mDrawCallsSinceLastLiveLog + "] Message=[" + (i - this.mLastLiveLogProcessedMessages) + ']', null, 4, null);
-      this.mVSyncsSinceLastLiveLog = 0;
-      this.mDrawCallsSinceLastLiveLog = 0;
-      this.mLastLiveLogProcessedMessages = i;
-      return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        int i = this.mEngine.getProcessedMessageCount();
-      }
+      int i;
+      label11:
+      StringBuilder localStringBuilder;
+      break label11;
     }
+    i = this.mEngine.getProcessedMessageCount();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JSThread liveLog in 5s Frame=[");
+    localStringBuilder.append(this.mVSyncsSinceLastLiveLog);
+    localStringBuilder.append("] DrawCall=[");
+    localStringBuilder.append(this.mDrawCallsSinceLastLiveLog);
+    localStringBuilder.append("] Message=[");
+    localStringBuilder.append(i - this.mLastLiveLogProcessedMessages);
+    localStringBuilder.append(']');
+    Logger.i$default("ScriptService", localStringBuilder.toString(), null, 4, null);
+    this.mVSyncsSinceLastLiveLog = 0;
+    this.mDrawCallsSinceLastLiveLog = 0;
+    this.mLastLiveLogProcessedMessages = i;
   }
   
   public final void awaitStart()
@@ -122,9 +134,17 @@ public final class ScriptService
         if (this.mStartLatch.getCount() == 0L) {
           continue;
         }
-        Logger.w$default("ScriptService", "awaitStart cost too long!!! " + (SystemClock.uptimeMillis() - l) + "ms", null, 4, null);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("awaitStart cost too long!!! ");
+        localStringBuilder.append(SystemClock.uptimeMillis() - l);
+        localStringBuilder.append("ms");
+        Logger.w$default("ScriptService", localStringBuilder.toString(), null, 4, null);
         continue;
-        Logger.i$default("ScriptService", "awaitStartCostTime:" + (SystemClock.uptimeMillis() - l) + "ms", null, 4, null);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("awaitStartCostTime:");
+        localStringBuilder.append(SystemClock.uptimeMillis() - l);
+        localStringBuilder.append("ms");
+        Logger.i$default("ScriptService", localStringBuilder.toString(), null, 4, null);
         return;
       }
       catch (InterruptedException localInterruptedException)
@@ -136,7 +156,8 @@ public final class ScriptService
   
   public final boolean isJSThread()
   {
-    return (this.mJSThread != null) && (this.mJSThread.isJSThread());
+    JSThread localJSThread = this.mJSThread;
+    return (localJSThread != null) && (localJSThread.isJSThread());
   }
   
   public final void onDestroy()
@@ -192,7 +213,7 @@ public final class ScriptService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.ScriptService
  * JD-Core Version:    0.7.0.1
  */

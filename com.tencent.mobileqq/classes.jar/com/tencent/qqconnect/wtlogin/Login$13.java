@@ -1,22 +1,21 @@
 package com.tencent.qqconnect.wtlogin;
 
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class Login$13
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   Login$13(Login paramLogin) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.this$0.isFinishing()) {
-      this.this$0.c.setClickable(true);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.13
  * JD-Core Version:    0.7.0.1
  */

@@ -21,47 +21,45 @@ public class ShakeWindowElemDecoder
   private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean)
   {
     Object localObject = paramList.iterator();
-    do
+    while (((Iterator)localObject).hasNext())
     {
-      if (!((Iterator)localObject).hasNext()) {
-        break;
-      }
       paramList = (im_msg_body.Elem)((Iterator)localObject).next();
-    } while (!paramList.shake_window.has());
-    for (;;)
-    {
-      if (paramList == null) {
-        return;
+      if (paramList.shake_window.has()) {
+        break label44;
       }
-      if (QLog.isColorLevel()) {
-        paramStringBuilder.append("elemType:ShakeWindow;\n");
-      }
-      paramList = (im_msg_body.ShakeWindow)paramList.shake_window.get();
-      localObject = (MessageForShakeWindow)MessageRecordFactory.a(-2020);
-      ((MessageForShakeWindow)localObject).msgtype = -2020;
-      ((MessageForShakeWindow)localObject).msg = "[Shake Window]";
-      ShakeWindowMsg localShakeWindowMsg = new ShakeWindowMsg();
-      localShakeWindowMsg.mType = paramList.uint32_type.get();
-      localShakeWindowMsg.mReserve = paramList.uint32_reserve.get();
-      if (paramBoolean) {}
-      for (int i = 2;; i = 1)
-      {
-        localShakeWindowMsg.onlineFlag = i;
-        localShakeWindowMsg.shake = true;
-        ((MessageForShakeWindow)localObject).msgData = localShakeWindowMsg.getBytes();
-        if (((MessageForShakeWindow)localObject).msgData != null) {
-          break label186;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        paramStringBuilder.append("c2cMsgContent.data:null;\n");
-        return;
-      }
-      label186:
-      paramList1.add(localObject);
+    }
+    paramList = null;
+    label44:
+    if (paramList == null) {
       return;
-      paramList = null;
+    }
+    if (QLog.isColorLevel()) {
+      paramStringBuilder.append("elemType:ShakeWindow;\n");
+    }
+    paramList = (im_msg_body.ShakeWindow)paramList.shake_window.get();
+    localObject = (MessageForShakeWindow)MessageRecordFactory.a(-2020);
+    ((MessageForShakeWindow)localObject).msgtype = -2020;
+    ((MessageForShakeWindow)localObject).msg = "[Shake Window]";
+    ShakeWindowMsg localShakeWindowMsg = new ShakeWindowMsg();
+    localShakeWindowMsg.mType = paramList.uint32_type.get();
+    localShakeWindowMsg.mReserve = paramList.uint32_reserve.get();
+    int i;
+    if (paramBoolean) {
+      i = 2;
+    } else {
+      i = 1;
+    }
+    localShakeWindowMsg.onlineFlag = i;
+    localShakeWindowMsg.shake = true;
+    ((MessageForShakeWindow)localObject).msgData = localShakeWindowMsg.getBytes();
+    if (((MessageForShakeWindow)localObject).msgData == null)
+    {
+      if (QLog.isColorLevel()) {
+        paramStringBuilder.append("c2cMsgContent.data:null;\n");
+      }
+    }
+    else {
+      paramList1.add(localObject);
     }
   }
   
@@ -83,7 +81,7 @@ public class ShakeWindowElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.ShakeWindowElemDecoder
  * JD-Core Version:    0.7.0.1
  */

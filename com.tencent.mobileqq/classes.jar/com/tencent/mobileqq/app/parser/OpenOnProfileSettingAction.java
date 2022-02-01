@@ -4,10 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.qphone.base.util.QLog;
 
 public class OpenOnProfileSettingAction
-  extends JumpActionBase
+  extends JumpAction
 {
   public OpenOnProfileSettingAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
@@ -18,18 +19,21 @@ public class OpenOnProfileSettingAction
   {
     try
     {
-      boolean bool = f();
+      boolean bool = b();
       return bool;
     }
     catch (Exception localException)
     {
-      QLog.e("OpenOnProfileSettingAction", 1, "doAction error: " + localException.getMessage());
-      a("OpenOnProfileSettingAction");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doAction error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("OpenOnProfileSettingAction", 1, localStringBuilder.toString());
+      b_("OpenOnProfileSettingAction");
     }
     return false;
   }
   
-  public boolean f()
+  public boolean b()
   {
     Intent localIntent = new Intent(this.a, InterestSwitchEditActivity.class);
     localIntent.setFlags(67108864);
@@ -39,7 +43,7 @@ public class OpenOnProfileSettingAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.OpenOnProfileSettingAction
  * JD-Core Version:    0.7.0.1
  */

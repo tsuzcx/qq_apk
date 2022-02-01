@@ -33,10 +33,10 @@ public class CrashReport
 {
   public static final int MODULE_ID = 1003;
   private static boolean a = false;
-  private static CrashStrategyBean b = null;
-  private static f c = null;
-  private static CrashHandleListener d = null;
-  private static t e = null;
+  private static CrashStrategyBean b;
+  private static f c;
+  private static CrashHandleListener d;
+  private static t e;
   private static CrashReport f = new CrashReport();
   private static boolean g = false;
   private static boolean h = false;
@@ -49,22 +49,29 @@ public class CrashReport
   
   public static void addSoFiles(Context paramContext, List<SoFile> paramList)
   {
-    if (paramContext == null) {
+    if (paramContext == null)
+    {
       x.d("addSoFiles args context should not be null", new Object[0]);
-    }
-    while ((paramList == null) || (paramList.size() == 0)) {
       return;
     }
-    paramContext = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
-    HashMap localHashMap = new HashMap(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      SoFile localSoFile = (SoFile)paramList.next();
-      PlugInBean localPlugInBean = new PlugInBean(localSoFile.fileName, localSoFile.arch, localSoFile.sha1);
-      localHashMap.put("sosha1_" + localSoFile.sha1, localPlugInBean);
+      if (paramList.size() == 0) {
+        return;
+      }
+      paramContext = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
+      HashMap localHashMap = new HashMap(paramList.size());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        SoFile localSoFile = (SoFile)paramList.next();
+        PlugInBean localPlugInBean = new PlugInBean(localSoFile.fileName, localSoFile.arch, localSoFile.sha1);
+        StringBuilder localStringBuilder = new StringBuilder("sosha1_");
+        localStringBuilder.append(localSoFile.sha1);
+        localHashMap.put(localStringBuilder.toString(), localPlugInBean);
+      }
+      paramContext.b(localHashMap);
     }
-    paramContext.b(localHashMap);
   }
   
   public static void clearSDKTotalConsume(Context paramContext)
@@ -159,10 +166,12 @@ public class CrashReport
   
   public static String getUserData(Context paramContext, String paramString)
   {
-    if (paramContext == null) {
+    if (paramContext == null)
+    {
       x.d("getUserDataValue args context should not be null", new Object[0]);
+      return null;
     }
-    while (z.a(paramString)) {
+    if (z.a(paramString)) {
       return null;
     }
     return com.tencent.bugly.crashreport.common.info.a.a(paramContext).i(paramString);
@@ -190,14 +199,13 @@ public class CrashReport
   
   public static boolean handleCatchException(Thread paramThread, Throwable paramThrowable, String paramString, byte[] paramArrayOfByte)
   {
-    boolean bool = false;
     c localc = c.a();
     if (localc != null)
     {
       localc.a(paramThread, paramThrowable, false, paramString, paramArrayOfByte, false);
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public static void initCrashReport(Context paramContext)
@@ -212,8 +220,10 @@ public class CrashReport
   
   public static void initCrashReport(Context paramContext, CrashHandleListener paramCrashHandleListener, UploadHandleListener paramUploadHandleListener, boolean paramBoolean, CrashStrategyBean paramCrashStrategyBean, long paramLong)
   {
-    if (paramContext == null) {}
-    while (a) {
+    if (paramContext == null) {
+      return;
+    }
+    if (a) {
       return;
     }
     x.b = "eup";
@@ -271,7 +281,11 @@ public class CrashReport
         }
         if (k < 3)
         {
-          paramUploadHandleListener = paramUploadHandleListener + "." + com.tencent.bugly.crashreport.common.info.a.a(paramContext).y;
+          paramCrashStrategyBean = new StringBuilder();
+          paramCrashStrategyBean.append(paramUploadHandleListener);
+          paramCrashStrategyBean.append(".");
+          paramCrashStrategyBean.append(com.tencent.bugly.crashreport.common.info.a.a(paramContext).y);
+          paramUploadHandleListener = paramCrashStrategyBean.toString();
           com.tencent.bugly.crashreport.common.info.a.a(paramContext).m = paramUploadHandleListener;
           x.a("rqdp{ RQD version: %s }", new Object[] { paramUploadHandleListener });
         }
@@ -312,38 +326,39 @@ public class CrashReport
   @SuppressLint({"SdCardPath"})
   public static void initNativeCrashReport(Context paramContext, String paramString, boolean paramBoolean, List<File> paramList, File paramFile, long paramLong)
   {
-    if (!a) {}
-    do
-    {
+    if (!a) {
       return;
-      Object localObject = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
-      if (paramFile != null)
-      {
-        String str = paramFile.getAbsolutePath();
-        if (!z.a(str)) {
-          ((com.tencent.bugly.crashreport.common.info.a)localObject).p = str;
-        }
+    }
+    Object localObject = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
+    if (paramFile != null)
+    {
+      String str = paramFile.getAbsolutePath();
+      if (!z.a(str)) {
+        ((com.tencent.bugly.crashreport.common.info.a)localObject).p = str;
       }
-      if (paramFile != null)
-      {
-        localObject = paramList;
-        if (paramList == null) {
-          localObject = new ArrayList();
-        }
-        ((List)localObject).add(paramFile);
+    }
+    if (paramFile != null)
+    {
+      localObject = paramList;
+      if (paramList == null) {
+        localObject = new ArrayList();
       }
-      paramList = NativeCrashHandler.getInstance();
-      if ((paramList != null) && (!z.a(paramString))) {
-        paramList.setDumpFilePath(paramString);
-      }
-      paramContext = NativeExceptionHandlerRqdImp.getInstance(paramContext);
-      paramContext.setTombDir(paramString);
-      NativeExceptionUpload.setmHandler(paramContext);
-      paramContext = c.a();
-    } while (paramContext == null);
-    paramContext.e();
-    paramContext.a(paramLong);
-    paramContext.l();
+      ((List)localObject).add(paramFile);
+    }
+    paramList = NativeCrashHandler.getInstance();
+    if ((paramList != null) && (!z.a(paramString))) {
+      paramList.setDumpFilePath(paramString);
+    }
+    paramContext = NativeExceptionHandlerRqdImp.getInstance(paramContext);
+    paramContext.setTombDir(paramString);
+    NativeExceptionUpload.setmHandler(paramContext);
+    paramContext = c.a();
+    if (paramContext != null)
+    {
+      paramContext.e();
+      paramContext.a(paramLong);
+      paramContext.l();
+    }
   }
   
   public static boolean needUploadCrash(Context paramContext)
@@ -391,7 +406,10 @@ public class CrashReport
     }
     if (!paramString1.matches("[a-zA-Z[0-9]]+"))
     {
-      x.d("putUploadRequestData args key should match [a-zA-Z[0-9]_]+  {" + paramString1 + "}", new Object[0]);
+      paramContext = new StringBuilder("putUploadRequestData args key should match [a-zA-Z[0-9]_]+  {");
+      paramContext.append(paramString1);
+      paramContext.append("}");
+      x.d(paramContext.toString(), new Object[0]);
       return;
     }
     String str = paramString2;
@@ -428,7 +446,10 @@ public class CrashReport
     }
     if (!paramString1.matches("[a-zA-Z[0-9]_]+"))
     {
-      x.d("putUserData args key should match [a-zA-Z[0-9]_]+  {" + paramString1 + "}", new Object[0]);
+      paramContext = new StringBuilder("putUserData args key should match [a-zA-Z[0-9]_]+  {");
+      paramContext.append(paramString1);
+      paramContext.append("}");
+      x.d(paramContext.toString(), new Object[0]);
       return;
     }
     String str = paramString2;
@@ -469,10 +490,12 @@ public class CrashReport
   
   public static String removeUserData(Context paramContext, String paramString)
   {
-    if (paramContext == null) {
+    if (paramContext == null)
+    {
       x.d("removeUserData args context should not be null", new Object[0]);
+      return null;
     }
-    while (z.a(paramString)) {
+    if (z.a(paramString)) {
       return null;
     }
     x.b("[param] remove user data: %s", new Object[] { paramString });
@@ -487,21 +510,21 @@ public class CrashReport
   
   public static void setAppChannel(Context paramContext, String paramString)
   {
-    if (paramContext == null) {
-      Log.w(x.b, "setAppChannel args context should not be null");
-    }
-    do
+    if (paramContext == null)
     {
+      Log.w(x.b, "setAppChannel args context should not be null");
       return;
-      if (paramString == null)
-      {
-        Log.w(x.b, "App channel is null, will not set");
-        return;
-      }
-      com.tencent.bugly.crashreport.common.info.a.a(paramContext).o = paramString;
-      paramContext = NativeCrashHandler.getInstance();
-    } while (paramContext == null);
-    paramContext.setNativeAppChannel(paramString);
+    }
+    if (paramString == null)
+    {
+      Log.w(x.b, "App channel is null, will not set");
+      return;
+    }
+    com.tencent.bugly.crashreport.common.info.a.a(paramContext).o = paramString;
+    paramContext = NativeCrashHandler.getInstance();
+    if (paramContext != null) {
+      paramContext.setNativeAppChannel(paramString);
+    }
   }
   
   public static void setCountryName(Context paramContext, String paramString)
@@ -516,21 +539,24 @@ public class CrashReport
       Log.w(x.b, "Can not set App package because bugly is disable.");
       return;
     }
-    Log.i(x.b, "Set crash stack filter: " + paramString);
+    String str = x.b;
+    StringBuilder localStringBuilder = new StringBuilder("Set crash stack filter: ");
+    localStringBuilder.append(paramString);
+    Log.i(str, localStringBuilder.toString());
     c.n = paramString;
   }
   
   public static void setCrashHandler(CrashHandleListener paramCrashHandleListener)
   {
-    if (paramCrashHandleListener == null) {}
-    do
-    {
+    if (paramCrashHandleListener == null) {
       return;
-      d = paramCrashHandleListener;
-      c = new CrashReport.1(paramCrashHandleListener);
-      paramCrashHandleListener = c.a();
-    } while (paramCrashHandleListener == null);
-    paramCrashHandleListener.a(c);
+    }
+    d = paramCrashHandleListener;
+    c = new CrashReport.1(paramCrashHandleListener);
+    paramCrashHandleListener = c.a();
+    if (paramCrashHandleListener != null) {
+      paramCrashHandleListener.a(c);
+    }
   }
   
   public static void setCrashRegularFilter(String paramString)
@@ -540,7 +566,10 @@ public class CrashReport
       Log.w(x.b, "Can not set App package because bugly is disable.");
       return;
     }
-    Log.i(x.b, "Set crash stack filter: " + paramString);
+    String str = x.b;
+    StringBuilder localStringBuilder = new StringBuilder("Set crash stack filter: ");
+    localStringBuilder.append(paramString);
+    Log.i(str, localStringBuilder.toString());
     c.o = paramString;
   }
   
@@ -549,14 +578,13 @@ public class CrashReport
     c localc = c.a();
     if (localc != null)
     {
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         localc.c();
+        return;
       }
+      localc.b();
     }
-    else {
-      return;
-    }
-    localc.b();
   }
   
   public static void setDatabaseCloseAfterUse(boolean paramBoolean)
@@ -590,13 +618,10 @@ public class CrashReport
     }
     if (paramBoolean) {
       x.c("This is a development device.", new Object[0]);
-    }
-    for (;;)
-    {
-      com.tencent.bugly.crashreport.common.info.a.a(paramContext).A = paramBoolean;
-      return;
+    } else {
       x.c("This is not a development device.", new Object[0]);
     }
+    com.tencent.bugly.crashreport.common.info.a.a(paramContext).A = paramBoolean;
   }
   
   public static void setLogAble(boolean paramBoolean1, boolean paramBoolean2)
@@ -658,35 +683,42 @@ public class CrashReport
   
   public static void setSOFile(Context paramContext, List<SoFile> paramList)
   {
-    if (paramContext == null) {
+    if (paramContext == null)
+    {
       x.d("setSOFile args context should not be null", new Object[0]);
-    }
-    while ((paramList == null) || (paramList.size() == 0)) {
       return;
     }
-    paramContext = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
-    HashMap localHashMap = new HashMap(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      SoFile localSoFile = (SoFile)paramList.next();
-      PlugInBean localPlugInBean = new PlugInBean(localSoFile.fileName, localSoFile.arch, localSoFile.sha1);
-      localHashMap.put("sosha1_" + localSoFile.sha1, localPlugInBean);
+      if (paramList.size() == 0) {
+        return;
+      }
+      paramContext = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
+      HashMap localHashMap = new HashMap(paramList.size());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        SoFile localSoFile = (SoFile)paramList.next();
+        PlugInBean localPlugInBean = new PlugInBean(localSoFile.fileName, localSoFile.arch, localSoFile.sha1);
+        StringBuilder localStringBuilder = new StringBuilder("sosha1_");
+        localStringBuilder.append(localSoFile.sha1);
+        localHashMap.put(localStringBuilder.toString(), localPlugInBean);
+      }
+      paramContext.a(localHashMap);
     }
-    paramContext.a(localHashMap);
   }
   
   public static void setServerUrl(String paramString)
   {
-    if ((z.a(paramString)) || (!z.c(paramString)))
+    if ((!z.a(paramString)) && (z.c(paramString)))
     {
-      x.d("URL is invalid.", new Object[0]);
+      i = true;
+      com.tencent.bugly.crashreport.common.strategy.a.a(paramString);
+      StrategyBean.b = paramString;
+      StrategyBean.c = paramString;
       return;
     }
-    i = true;
-    com.tencent.bugly.crashreport.common.strategy.a.a(paramString);
-    StrategyBean.b = paramString;
-    StrategyBean.c = paramString;
+    x.d("URL is invalid.", new Object[0]);
   }
   
   public static void setThreadPoolService(ScheduledExecutorService paramScheduledExecutorService)
@@ -698,28 +730,27 @@ public class CrashReport
   
   public static void setUserId(Context paramContext, String paramString)
   {
-    if (paramString == null) {}
-    do
+    if (paramString == null) {
+      return;
+    }
+    String str = paramString;
+    if (paramString.length() > 100)
     {
-      String str;
-      do
-      {
-        return;
-        str = paramString;
-        if (paramString.length() > 100)
-        {
-          str = paramString.substring(0, 100);
-          x.d("userId %s length is over limit %d substring to %s", new Object[] { paramString, Integer.valueOf(100), str });
-        }
-      } while (str.equals(com.tencent.bugly.crashreport.common.info.a.a(paramContext).f()));
-      com.tencent.bugly.crashreport.common.info.a.a(paramContext).b(str);
-      x.b("[user] set userId : %s", new Object[] { str });
-      paramContext = NativeCrashHandler.getInstance();
-      if (paramContext != null) {
-        paramContext.setNativeUserId(str);
-      }
-    } while (!com.tencent.bugly.crashreport.biz.b.a);
-    com.tencent.bugly.crashreport.biz.b.a();
+      str = paramString.substring(0, 100);
+      x.d("userId %s length is over limit %d substring to %s", new Object[] { paramString, Integer.valueOf(100), str });
+    }
+    if (str.equals(com.tencent.bugly.crashreport.common.info.a.a(paramContext).f())) {
+      return;
+    }
+    com.tencent.bugly.crashreport.common.info.a.a(paramContext).b(str);
+    x.b("[user] set userId : %s", new Object[] { str });
+    paramContext = NativeCrashHandler.getInstance();
+    if (paramContext != null) {
+      paramContext.setNativeUserId(str);
+    }
+    if (com.tencent.bugly.crashreport.biz.b.a) {
+      com.tencent.bugly.crashreport.biz.b.a();
+    }
   }
   
   public static void setUserInfoEnable(boolean paramBoolean)
@@ -769,39 +800,39 @@ public class CrashReport
     c localc = c.a(1003, paramContext, com.tencent.bugly.b.c, null, c, null);
     localc.c();
     localc.a(true);
-    if (b != null)
+    CrashStrategyBean localCrashStrategyBean = b;
+    if (localCrashStrategyBean != null)
     {
-      localc.a(b.getCallBackType());
+      localc.a(localCrashStrategyBean.getCallBackType());
       localc.a(b.getCloseErrorCallback());
     }
-    if ((paramBuglyStrategy == null) || (paramBuglyStrategy.isEnableANRCrashMonitor())) {
-      localc.f();
-    }
-    for (;;)
+    if ((paramBuglyStrategy != null) && (!paramBuglyStrategy.isEnableANRCrashMonitor()))
     {
-      d.a(paramContext);
-      u.a().a = e;
-      return;
       x.a("[crash] Closed ANR monitor!", new Object[0]);
       localc.g();
     }
+    else
+    {
+      localc.f();
+    }
+    d.a(paramContext);
+    u.a().a = e;
   }
   
   public void onServerStrategyChanged(StrategyBean paramStrategyBean)
   {
-    if (paramStrategyBean == null) {}
-    c localc;
-    do
-    {
+    if (paramStrategyBean == null) {
       return;
-      localc = c.a();
-    } while (localc == null);
-    localc.a(paramStrategyBean);
+    }
+    c localc = c.a();
+    if (localc != null) {
+      localc.a(paramStrategyBean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.feedback.eup.CrashReport
  * JD-Core Version:    0.7.0.1
  */

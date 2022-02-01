@@ -53,39 +53,40 @@ public final class Id3Decoder
   
   private static ApicFrame decodeApicFrame(ParsableByteArray paramParsableByteArray, int paramInt1, int paramInt2)
   {
-    int i = 2;
-    int j = paramParsableByteArray.readUnsignedByte();
-    String str2 = getCharsetName(j);
-    byte[] arrayOfByte = new byte[paramInt1 - 1];
-    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt1 - 1);
-    String str1;
+    int i = paramParsableByteArray.readUnsignedByte();
+    String str = getCharsetName(i);
+    paramInt1 -= 1;
+    byte[] arrayOfByte = new byte[paramInt1];
+    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt1);
+    Object localObject;
     if (paramInt2 == 2)
     {
-      str1 = "image/" + Util.toLowerInvariant(new String(arrayOfByte, 0, 3, "ISO-8859-1"));
-      paramInt1 = i;
-      paramParsableByteArray = str1;
-      if (str1.equals("image/jpg"))
-      {
+      paramParsableByteArray = new StringBuilder();
+      paramParsableByteArray.append("image/");
+      paramParsableByteArray.append(Util.toLowerInvariant(new String(arrayOfByte, 0, 3, "ISO-8859-1")));
+      localObject = paramParsableByteArray.toString();
+      paramParsableByteArray = (ParsableByteArray)localObject;
+      if (((String)localObject).equals("image/jpg")) {
         paramParsableByteArray = "image/jpeg";
-        paramInt1 = i;
       }
+      paramInt1 = 2;
     }
-    for (;;)
+    else
     {
-      paramInt2 = arrayOfByte[(paramInt1 + 1)];
-      paramInt1 += 2;
-      i = indexOfEos(arrayOfByte, paramInt1, j);
-      return new ApicFrame(paramParsableByteArray, new String(arrayOfByte, paramInt1, i - paramInt1, str2), paramInt2 & 0xFF, copyOfRangeIfValid(arrayOfByte, delimiterLength(j) + i, arrayOfByte.length));
-      paramInt2 = indexOfZeroByte(arrayOfByte, 0);
-      str1 = Util.toLowerInvariant(new String(arrayOfByte, 0, paramInt2, "ISO-8859-1"));
-      paramInt1 = paramInt2;
-      paramParsableByteArray = str1;
-      if (str1.indexOf('/') == -1)
+      paramInt1 = indexOfZeroByte(arrayOfByte, 0);
+      paramParsableByteArray = Util.toLowerInvariant(new String(arrayOfByte, 0, paramInt1, "ISO-8859-1"));
+      if (paramParsableByteArray.indexOf('/') == -1)
       {
-        paramParsableByteArray = "image/" + str1;
-        paramInt1 = paramInt2;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("image/");
+        ((StringBuilder)localObject).append(paramParsableByteArray);
+        paramParsableByteArray = ((StringBuilder)localObject).toString();
       }
     }
+    paramInt2 = arrayOfByte[(paramInt1 + 1)];
+    paramInt1 += 2;
+    int j = indexOfEos(arrayOfByte, paramInt1, i);
+    return new ApicFrame(paramParsableByteArray, new String(arrayOfByte, paramInt1, j - paramInt1, str), paramInt2 & 0xFF, copyOfRangeIfValid(arrayOfByte, j + delimiterLength(i), arrayOfByte.length));
   }
   
   private static BinaryFrame decodeBinaryFrame(ParsableByteArray paramParsableByteArray, int paramInt, String paramString)
@@ -103,14 +104,12 @@ public final class Id3Decoder
     paramParsableByteArray.setPosition(j + 1);
     j = paramParsableByteArray.readInt();
     int k = paramParsableByteArray.readInt();
-    long l2 = paramParsableByteArray.readUnsignedInt();
-    long l1 = l2;
-    if (l2 == 4294967295L) {
+    long l1 = paramParsableByteArray.readUnsignedInt();
+    if (l1 == 4294967295L) {
       l1 = -1L;
     }
-    long l3 = paramParsableByteArray.readUnsignedInt();
-    l2 = l3;
-    if (l3 == 4294967295L) {
+    long l2 = paramParsableByteArray.readUnsignedInt();
+    if (l2 == 4294967295L) {
       l2 = -1L;
     }
     ArrayList localArrayList = new ArrayList();
@@ -132,32 +131,29 @@ public final class Id3Decoder
     int i = indexOfZeroByte(paramParsableByteArray.data, j);
     String str = new String(paramParsableByteArray.data, j, i - j, "ISO-8859-1");
     paramParsableByteArray.setPosition(i + 1);
-    i = paramParsableByteArray.readUnsignedByte();
+    int k = paramParsableByteArray.readUnsignedByte();
+    i = 0;
     boolean bool1;
-    if ((i & 0x2) != 0)
-    {
+    if ((k & 0x2) != 0) {
       bool1 = true;
-      if ((i & 0x1) == 0) {
-        break label161;
-      }
-    }
-    String[] arrayOfString;
-    label161:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      int k = paramParsableByteArray.readUnsignedByte();
-      arrayOfString = new String[k];
-      i = 0;
-      while (i < k)
-      {
-        int m = paramParsableByteArray.getPosition();
-        int n = indexOfZeroByte(paramParsableByteArray.data, m);
-        arrayOfString[i] = new String(paramParsableByteArray.data, m, n - m, "ISO-8859-1");
-        paramParsableByteArray.setPosition(n + 1);
-        i += 1;
-      }
+    } else {
       bool1 = false;
-      break;
+    }
+    boolean bool2;
+    if ((k & 0x1) != 0) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    k = paramParsableByteArray.readUnsignedByte();
+    String[] arrayOfString = new String[k];
+    while (i < k)
+    {
+      int m = paramParsableByteArray.getPosition();
+      int n = indexOfZeroByte(paramParsableByteArray.data, m);
+      arrayOfString[i] = new String(paramParsableByteArray.data, m, n - m, "ISO-8859-1");
+      paramParsableByteArray.setPosition(n + 1);
+      i += 1;
     }
     ArrayList localArrayList = new ArrayList();
     while (paramParsableByteArray.getPosition() < j + paramInt1)
@@ -182,8 +178,9 @@ public final class Id3Decoder
     Object localObject = new byte[3];
     paramParsableByteArray.readBytes((byte[])localObject, 0, 3);
     localObject = new String((byte[])localObject, 0, 3);
-    byte[] arrayOfByte = new byte[paramInt - 4];
-    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt - 4);
+    paramInt -= 4;
+    byte[] arrayOfByte = new byte[paramInt];
+    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt);
     paramInt = indexOfEos(arrayOfByte, 0, i);
     paramParsableByteArray = new String(arrayOfByte, 0, paramInt, str);
     paramInt += delimiterLength(i);
@@ -192,251 +189,228 @@ public final class Id3Decoder
   
   private static Id3Frame decodeFrame(int paramInt1, ParsableByteArray paramParsableByteArray, boolean paramBoolean, int paramInt2, Id3Decoder.FramePredicate paramFramePredicate)
   {
-    int i5 = paramParsableByteArray.readUnsignedByte();
-    int i6 = paramParsableByteArray.readUnsignedByte();
-    int i7 = paramParsableByteArray.readUnsignedByte();
-    int i2;
-    if (paramInt1 >= 3)
+    i5 = paramParsableByteArray.readUnsignedByte();
+    i6 = paramParsableByteArray.readUnsignedByte();
+    i7 = paramParsableByteArray.readUnsignedByte();
+    if (paramInt1 >= 3) {
+      i1 = paramParsableByteArray.readUnsignedByte();
+    } else {
+      i1 = 0;
+    }
+    int j;
+    int i;
+    if (paramInt1 == 4)
     {
-      i2 = paramParsableByteArray.readUnsignedByte();
-      if (paramInt1 != 4) {
-        break label152;
-      }
       j = paramParsableByteArray.readUnsignedIntToInt();
       i = j;
       if (!paramBoolean) {
-        i = j & 0xFF | (j >> 8 & 0xFF) << 7 | (j >> 16 & 0xFF) << 14 | (j >> 24 & 0xFF) << 21;
-      }
-      label95:
-      if (paramInt1 < 3) {
-        break label175;
+        i = (j >> 24 & 0xFF) << 21 | j & 0xFF | (j >> 8 & 0xFF) << 7 | (j >> 16 & 0xFF) << 14;
       }
     }
-    label152:
-    label175:
-    for (int i3 = paramParsableByteArray.readUnsignedShort();; i3 = 0)
+    int i2;
+    for (;;)
     {
-      if ((i5 != 0) || (i6 != 0) || (i7 != 0) || (i2 != 0) || (i != 0) || (i3 != 0)) {
-        break label181;
+      i2 = i;
+      break;
+      if (paramInt1 == 3) {
+        i = paramParsableByteArray.readUnsignedIntToInt();
+      } else {
+        i = paramParsableByteArray.readUnsignedInt24();
       }
+    }
+    if (paramInt1 >= 3) {
+      i = paramParsableByteArray.readUnsignedShort();
+    } else {
+      i = 0;
+    }
+    if ((i5 == 0) && (i6 == 0) && (i7 == 0) && (i1 == 0) && (i2 == 0) && (i == 0))
+    {
       paramParsableByteArray.setPosition(paramParsableByteArray.limit());
       return null;
-      i2 = 0;
-      break;
-      if (paramInt1 == 3)
-      {
-        i = paramParsableByteArray.readUnsignedIntToInt();
-        break label95;
-      }
-      i = paramParsableByteArray.readUnsignedInt24();
-      break label95;
     }
-    label181:
-    int i8 = paramParsableByteArray.getPosition() + i;
-    if (i8 > paramParsableByteArray.limit())
+    int i4 = paramParsableByteArray.getPosition() + i2;
+    if (i4 > paramParsableByteArray.limit())
     {
       Log.w("Id3Decoder", "Frame size exceeds remaining tag data");
       paramParsableByteArray.setPosition(paramParsableByteArray.limit());
       return null;
     }
-    if ((paramFramePredicate != null) && (!paramFramePredicate.evaluate(paramInt1, i5, i6, i7, i2)))
+    if ((paramFramePredicate != null) && (!paramFramePredicate.evaluate(paramInt1, i5, i6, i7, i1)))
     {
-      paramParsableByteArray.setPosition(i8);
+      paramParsableByteArray.setPosition(i4);
       return null;
     }
-    int i1 = 0;
-    int n = 0;
-    int i4 = 0;
-    int k = 0;
-    int m = 0;
-    if (paramInt1 == 3) {
-      if ((i3 & 0x80) != 0)
-      {
-        j = 1;
-        if ((i3 & 0x40) == 0) {
-          break label343;
-        }
-        n = 1;
-        label292:
-        if ((i3 & 0x20) == 0) {
-          break label349;
-        }
+    int n = i;
+    int m;
+    int k;
+    int i3;
+    if (paramInt1 == 3)
+    {
+      if ((n & 0x80) != 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if ((n & 0x40) != 0) {
         m = 1;
-        label303:
-        i1 = j;
-        k = j;
-      }
-    }
-    for (;;)
-    {
-      if ((i1 != 0) || (n != 0))
-      {
-        Log.w("Id3Decoder", "Skipping unsupported compressed or encrypted frame");
-        paramParsableByteArray.setPosition(i8);
-        return null;
-        j = 0;
-        break;
-        label343:
-        n = 0;
-        break label292;
-        label349:
+      } else {
         m = 0;
-        break label303;
-        if (paramInt1 == 4)
-        {
-          if ((i3 & 0x40) != 0)
-          {
-            k = 1;
-            label371:
-            if ((i3 & 0x8) == 0) {
-              break label441;
+      }
+      if ((n & 0x20) != 0) {
+        k = 1;
+      } else {
+        k = 0;
+      }
+      n = i;
+      i3 = 0;
+      j = i;
+      i = i3;
+    }
+    else if (paramInt1 == 4)
+    {
+      if ((n & 0x40) != 0) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      if ((n & 0x8) != 0) {
+        k = 1;
+      } else {
+        k = 0;
+      }
+      if ((n & 0x4) != 0) {
+        m = 1;
+      } else {
+        m = 0;
+      }
+      if ((n & 0x2) != 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if ((n & 0x1) != 0) {
+        n = 1;
+      } else {
+        n = 0;
+      }
+      i3 = n;
+      n = k;
+      k = j;
+      j = i3;
+    }
+    else
+    {
+      k = 0;
+      j = 0;
+      m = 0;
+      i = 0;
+      n = 0;
+    }
+    if ((n == 0) && (m == 0))
+    {
+      m = i2;
+      if (k != 0)
+      {
+        m = i2 - 1;
+        paramParsableByteArray.skipBytes(1);
+      }
+      k = m;
+      if (j != 0)
+      {
+        k = m - 4;
+        paramParsableByteArray.skipBytes(4);
+      }
+      j = k;
+      if (i != 0) {
+        j = removeUnsynchronization(paramParsableByteArray, k);
+      }
+      if ((i5 != 84) || (i6 != 88) || (i7 != 88) || ((paramInt1 != 2) && (i1 != 88))) {}
+    }
+    try
+    {
+      paramFramePredicate = decodeTxxxFrame(paramParsableByteArray, j);
+    }
+    catch (UnsupportedEncodingException paramFramePredicate)
+    {
+      label822:
+      StringBuilder localStringBuilder;
+      label900:
+      break label900;
+    }
+    finally
+    {
+      for (;;)
+      {
+        continue;
+        if ((i5 == 87) && (i6 == 88) && (i7 == 88)) {
+          if (paramInt1 != 2) {
+            if (i1 == 88)
+            {
+              continue;
+              if ((i5 != 71) || (i6 != 69) || (i7 != 79) || ((i1 != 66) && (paramInt1 != 2))) {
+                if (paramInt1 == 2 ? (i5 != 80) && (i6 != 73) && (i7 != 67) : (i5 != 65) || (i6 != 80) || (i7 != 73) || (i1 != 67)) {
+                  if ((i5 == 67) && (i6 == 79) && (i7 == 77)) {
+                    if (i1 != 77) {
+                      if (paramInt1 != 2) {}
+                    }
+                  }
+                }
+              }
             }
-            j = 1;
-            label382:
-            if ((i3 & 0x4) == 0) {
-              break label447;
-            }
-            n = 1;
-            label392:
-            if ((i3 & 0x2) == 0) {
-              break label453;
-            }
-            i1 = 1;
-            label402:
-            if ((i3 & 0x1) == 0) {
-              break label459;
-            }
-          }
-          label441:
-          label447:
-          label453:
-          label459:
-          for (m = 1;; m = 0)
-          {
-            i3 = m;
-            m = k;
-            k = i3;
-            i4 = i1;
-            i1 = j;
-            break;
-            k = 0;
-            break label371;
-            j = 0;
-            break label382;
-            n = 0;
-            break label392;
-            i1 = 0;
-            break label402;
           }
         }
       }
     }
-    int j = i;
-    if (m != 0)
+    if (i5 == 84)
     {
-      j = i - 1;
-      paramParsableByteArray.skipBytes(1);
-    }
-    int i = j;
-    if (k != 0)
-    {
-      i = j - 4;
-      paramParsableByteArray.skipBytes(4);
-    }
-    j = i;
-    if (i4 != 0) {
-      j = removeUnsynchronization(paramParsableByteArray, i);
-    }
-    if ((i5 == 84) && (i6 == 88) && (i7 == 88) && ((paramInt1 == 2) || (i2 == 88))) {}
-    for (;;)
-    {
-      try
-      {
-        paramFramePredicate = decodeTxxxFrame(paramParsableByteArray, j);
-        if (paramFramePredicate == null) {
-          Log.w("Id3Decoder", "Failed to decode frame: id=" + getFrameId(paramInt1, i5, i6, i7, i2) + ", frameSize=" + j);
-        }
-        return paramFramePredicate;
-      }
-      catch (UnsupportedEncodingException paramFramePredicate)
-      {
-        label654:
-        label665:
-        label734:
-        label745:
-        Log.w("Id3Decoder", "Unsupported character encoding");
-        return null;
-      }
-      finally
-      {
-        paramParsableByteArray.setPosition(i8);
-      }
-      if (i5 != 84) {
-        break;
-      }
-      paramFramePredicate = decodeTextInformationFrame(paramParsableByteArray, j, getFrameId(paramInt1, i5, i6, i7, i2));
-      continue;
+      paramFramePredicate = decodeTextInformationFrame(paramParsableByteArray, j, getFrameId(paramInt1, i5, i6, i7, i1));
+      break label822;
       paramFramePredicate = decodeWxxxFrame(paramParsableByteArray, j);
-      continue;
+      break label822;
       if (i5 == 87)
       {
-        paramFramePredicate = decodeUrlLinkFrame(paramParsableByteArray, j, getFrameId(paramInt1, i5, i6, i7, i2));
+        paramFramePredicate = decodeUrlLinkFrame(paramParsableByteArray, j, getFrameId(paramInt1, i5, i6, i7, i1));
       }
       else
       {
-        if ((i5 != 80) || (i6 != 82) || (i7 != 73) || (i2 != 86)) {
-          break label945;
+        if ((i5 != 80) || (i6 != 82) || (i7 != 73) || (i1 != 86)) {
+          break label989;
         }
         paramFramePredicate = decodePrivFrame(paramParsableByteArray, j);
-        continue;
+        break label822;
         paramFramePredicate = decodeGeobFrame(paramParsableByteArray, j);
-        continue;
+        break label822;
         paramFramePredicate = decodeApicFrame(paramParsableByteArray, j, paramInt1);
-      }
-    }
-    for (;;)
-    {
-      label757:
-      paramFramePredicate = decodeCommentFrame(paramParsableByteArray, j);
-      break;
-      label945:
-      do
-      {
-        do
-        {
-          if ((i5 == 67) && (i6 == 72) && (i7 == 65) && (i2 == 80))
-          {
-            paramFramePredicate = decodeChapterFrame(paramParsableByteArray, j, paramInt1, paramBoolean, paramInt2, paramFramePredicate);
-            break;
-          }
-          if ((i5 == 67) && (i6 == 84) && (i7 == 79) && (i2 == 67))
-          {
-            paramFramePredicate = decodeChapterTOCFrame(paramParsableByteArray, j, paramInt1, paramBoolean, paramInt2, paramFramePredicate);
-            break;
-          }
-          paramFramePredicate = decodeBinaryFrame(paramParsableByteArray, j, getFrameId(paramInt1, i5, i6, i7, i2));
-          break;
-          if ((i5 != 87) || (i6 != 88) || (i7 != 88)) {
-            break label665;
-          }
-          if (paramInt1 == 2) {
-            break label654;
-          }
-          if (i2 != 88) {
-            break label665;
-          }
-          break label654;
-          if ((i5 == 71) && (i6 == 69) && (i7 == 79) && ((i2 == 66) || (paramInt1 == 2))) {
-            break label734;
-          }
-          if (paramInt1 == 2 ? (i5 == 80) || (i6 == 73) || (i7 == 67) : (i5 == 65) && (i6 == 80) && (i7 == 73) && (i2 == 67)) {
-            break label745;
-          }
-        } while ((i5 != 67) || (i6 != 79) || (i7 != 77));
-        if (i2 == 77) {
-          break label757;
+        break label822;
+        paramFramePredicate = decodeCommentFrame(paramParsableByteArray, j);
+        break label822;
+        if ((i5 == 67) && (i6 == 72) && (i7 == 65) && (i1 == 80)) {
+          paramFramePredicate = decodeChapterFrame(paramParsableByteArray, j, paramInt1, paramBoolean, paramInt2, paramFramePredicate);
+        } else if ((i5 == 67) && (i6 == 84) && (i7 == 79) && (i1 == 67)) {
+          paramFramePredicate = decodeChapterTOCFrame(paramParsableByteArray, j, paramInt1, paramBoolean, paramInt2, paramFramePredicate);
+        } else {
+          paramFramePredicate = decodeBinaryFrame(paramParsableByteArray, j, getFrameId(paramInt1, i5, i6, i7, i1));
         }
-      } while (paramInt1 != 2);
+      }
+      if (paramFramePredicate == null)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Failed to decode frame: id=");
+        localStringBuilder.append(getFrameId(paramInt1, i5, i6, i7, i1));
+        localStringBuilder.append(", frameSize=");
+        localStringBuilder.append(j);
+        Log.w("Id3Decoder", localStringBuilder.toString());
+      }
+      paramParsableByteArray.setPosition(i4);
+      return paramFramePredicate;
+      Log.w("Id3Decoder", "Unsupported character encoding");
+      paramParsableByteArray.setPosition(i4);
+      return null;
+      paramParsableByteArray.setPosition(i4);
+      throw paramFramePredicate;
+      Log.w("Id3Decoder", "Skipping unsupported compressed or encrypted frame");
+      paramParsableByteArray.setPosition(i4);
+      return null;
     }
   }
   
@@ -444,8 +418,9 @@ public final class Id3Decoder
   {
     int i = paramParsableByteArray.readUnsignedByte();
     String str1 = getCharsetName(i);
-    byte[] arrayOfByte = new byte[paramInt - 1];
-    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt - 1);
+    paramInt -= 1;
+    byte[] arrayOfByte = new byte[paramInt];
+    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt);
     paramInt = indexOfZeroByte(arrayOfByte, 0);
     paramParsableByteArray = new String(arrayOfByte, 0, paramInt, "ISO-8859-1");
     paramInt += 1;
@@ -453,7 +428,7 @@ public final class Id3Decoder
     String str2 = decodeStringIfValid(arrayOfByte, paramInt, j, str1);
     paramInt = j + delimiterLength(i);
     j = indexOfEos(arrayOfByte, paramInt, i);
-    return new GeobFrame(paramParsableByteArray, str2, decodeStringIfValid(arrayOfByte, paramInt, j, str1), copyOfRangeIfValid(arrayOfByte, delimiterLength(i) + j, arrayOfByte.length));
+    return new GeobFrame(paramParsableByteArray, str2, decodeStringIfValid(arrayOfByte, paramInt, j, str1), copyOfRangeIfValid(arrayOfByte, j + delimiterLength(i), arrayOfByte.length));
   }
   
   private static Id3Decoder.Id3Header decodeHeader(ParsableByteArray paramParsableByteArray)
@@ -466,79 +441,84 @@ public final class Id3Decoder
     int i = paramParsableByteArray.readUnsignedInt24();
     if (i != ID3_TAG)
     {
-      Log.w("Id3Decoder", "Unexpected first three bytes of ID3 tag header: " + i);
+      paramParsableByteArray = new StringBuilder();
+      paramParsableByteArray.append("Unexpected first three bytes of ID3 tag header: ");
+      paramParsableByteArray.append(i);
+      Log.w("Id3Decoder", paramParsableByteArray.toString());
       return null;
     }
     int m = paramParsableByteArray.readUnsignedByte();
+    boolean bool = true;
     paramParsableByteArray.skipBytes(1);
     int n = paramParsableByteArray.readUnsignedByte();
-    i = paramParsableByteArray.readSynchSafeInt();
+    int k = paramParsableByteArray.readSynchSafeInt();
     int j;
     if (m == 2)
     {
-      if ((n & 0x40) != 0) {}
-      for (j = 1; j != 0; j = 0)
+      if ((n & 0x40) != 0) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      i = k;
+      if (j != 0)
       {
         Log.w("Id3Decoder", "Skipped ID3 tag with majorVersion=2 and undefined compression scheme");
         return null;
       }
-      if ((m >= 4) || ((n & 0x80) == 0)) {
-        break label298;
-      }
     }
-    label264:
-    label298:
-    for (boolean bool = true;; bool = false)
+    else if (m == 3)
     {
-      return new Id3Decoder.Id3Header(m, bool, i);
-      int k;
-      if (m == 3)
-      {
-        if ((n & 0x40) != 0) {}
-        for (k = 1;; k = 0)
-        {
-          j = i;
-          if (k != 0)
-          {
-            j = paramParsableByteArray.readInt();
-            paramParsableByteArray.skipBytes(j);
-            j = i - (j + 4);
-          }
-          i = j;
-          break;
-        }
+      if ((n & 0x40) != 0) {
+        j = 1;
+      } else {
+        j = 0;
       }
-      if (m == 4)
+      i = k;
+      if (j != 0)
       {
-        if ((n & 0x40) != 0)
-        {
-          k = 1;
-          label213:
-          j = i;
-          if (k != 0)
-          {
-            j = paramParsableByteArray.readSynchSafeInt();
-            paramParsableByteArray.skipBytes(j - 4);
-            j = i - j;
-          }
-          if ((n & 0x10) == 0) {
-            break label264;
-          }
-        }
-        for (k = 1;; k = 0)
-        {
-          i = j;
-          if (k != 0) {
-            i = j - 10;
-          }
-          break;
-          k = 0;
-          break label213;
-        }
+        i = paramParsableByteArray.readInt();
+        paramParsableByteArray.skipBytes(i);
+        i = k - (i + 4);
       }
-      Log.w("Id3Decoder", "Skipped ID3 tag with unsupported majorVersion=" + m);
-      return null;
     }
+    else
+    {
+      if (m != 4) {
+        break label278;
+      }
+      if ((n & 0x40) != 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      j = k;
+      if (i != 0)
+      {
+        i = paramParsableByteArray.readSynchSafeInt();
+        paramParsableByteArray.skipBytes(i - 4);
+        j = k - i;
+      }
+      if ((n & 0x10) != 0) {
+        k = 1;
+      } else {
+        k = 0;
+      }
+      i = j;
+      if (k != 0) {
+        i = j - 10;
+      }
+    }
+    if ((m >= 4) || ((n & 0x80) == 0)) {
+      bool = false;
+    }
+    return new Id3Decoder.Id3Header(m, bool, i);
+    label278:
+    paramParsableByteArray = new StringBuilder();
+    paramParsableByteArray.append("Skipped ID3 tag with unsupported majorVersion=");
+    paramParsableByteArray.append(m);
+    Log.w("Id3Decoder", paramParsableByteArray.toString());
+    return null;
   }
   
   private static PrivFrame decodePrivFrame(ParsableByteArray paramParsableByteArray, int paramInt)
@@ -551,10 +531,10 @@ public final class Id3Decoder
   
   private static String decodeStringIfValid(byte[] paramArrayOfByte, int paramInt1, int paramInt2, String paramString)
   {
-    if ((paramInt2 <= paramInt1) || (paramInt2 > paramArrayOfByte.length)) {
-      return "";
+    if ((paramInt2 > paramInt1) && (paramInt2 <= paramArrayOfByte.length)) {
+      return new String(paramArrayOfByte, paramInt1, paramInt2 - paramInt1, paramString);
     }
-    return new String(paramArrayOfByte, paramInt1, paramInt2 - paramInt1, paramString);
+    return "";
   }
   
   private static TextInformationFrame decodeTextInformationFrame(ParsableByteArray paramParsableByteArray, int paramInt, String paramString)
@@ -564,8 +544,9 @@ public final class Id3Decoder
     }
     int i = paramParsableByteArray.readUnsignedByte();
     String str = getCharsetName(i);
-    byte[] arrayOfByte = new byte[paramInt - 1];
-    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt - 1);
+    paramInt -= 1;
+    byte[] arrayOfByte = new byte[paramInt];
+    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt);
     return new TextInformationFrame(paramString, null, new String(arrayOfByte, 0, indexOfEos(arrayOfByte, 0, i), str));
   }
   
@@ -576,8 +557,9 @@ public final class Id3Decoder
     }
     int i = paramParsableByteArray.readUnsignedByte();
     String str = getCharsetName(i);
-    byte[] arrayOfByte = new byte[paramInt - 1];
-    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt - 1);
+    paramInt -= 1;
+    byte[] arrayOfByte = new byte[paramInt];
+    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt);
     paramInt = indexOfEos(arrayOfByte, 0, i);
     paramParsableByteArray = new String(arrayOfByte, 0, paramInt, str);
     paramInt += delimiterLength(i);
@@ -598,36 +580,41 @@ public final class Id3Decoder
     }
     int i = paramParsableByteArray.readUnsignedByte();
     String str = getCharsetName(i);
-    byte[] arrayOfByte = new byte[paramInt - 1];
-    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt - 1);
+    paramInt -= 1;
+    byte[] arrayOfByte = new byte[paramInt];
+    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt);
     paramInt = indexOfEos(arrayOfByte, 0, i);
     paramParsableByteArray = new String(arrayOfByte, 0, paramInt, str);
-    paramInt = delimiterLength(i) + paramInt;
+    paramInt += delimiterLength(i);
     return new UrlLinkFrame("WXXX", paramParsableByteArray, decodeStringIfValid(arrayOfByte, paramInt, indexOfZeroByte(arrayOfByte, paramInt), "ISO-8859-1"));
   }
   
   private static int delimiterLength(int paramInt)
   {
-    if ((paramInt == 0) || (paramInt == 3)) {
-      return 1;
+    if ((paramInt != 0) && (paramInt != 3)) {
+      return 2;
     }
-    return 2;
+    return 1;
   }
   
   private static String getCharsetName(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "ISO-8859-1";
-    case 0: 
-      return "ISO-8859-1";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return "ISO-8859-1";
+          }
+          return "UTF-8";
+        }
+        return "UTF-16BE";
+      }
       return "UTF-16";
-    case 2: 
-      return "UTF-16BE";
     }
-    return "UTF-8";
+    return "ISO-8859-1";
   }
   
   private static String getFrameId(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -644,21 +631,19 @@ public final class Id3Decoder
     if (paramInt2 != 0)
     {
       paramInt1 = i;
-      if (paramInt2 != 3) {}
-    }
-    else
-    {
-      return i;
-    }
-    do
-    {
-      paramInt1 = indexOfZeroByte(paramArrayOfByte, paramInt1 + 1);
-      if (paramInt1 >= paramArrayOfByte.length - 1) {
-        break;
+      if (paramInt2 == 3) {
+        return i;
       }
-    } while ((paramInt1 % 2 != 0) || (paramArrayOfByte[(paramInt1 + 1)] != 0));
-    return paramInt1;
-    return paramArrayOfByte.length;
+      while (paramInt1 < paramArrayOfByte.length - 1)
+      {
+        if ((paramInt1 % 2 == 0) && (paramArrayOfByte[(paramInt1 + 1)] == 0)) {
+          return paramInt1;
+        }
+        paramInt1 = indexOfZeroByte(paramArrayOfByte, paramInt1 + 1);
+      }
+      return paramArrayOfByte.length;
+    }
+    return i;
   }
   
   private static int indexOfZeroByte(byte[] paramArrayOfByte, int paramInt)
@@ -677,135 +662,142 @@ public final class Id3Decoder
   {
     byte[] arrayOfByte = paramParsableByteArray.data;
     int j = paramParsableByteArray.getPosition();
-    int i = paramInt;
-    paramInt = j;
-    while (paramInt + 1 < i)
+    for (;;)
     {
-      j = i;
-      if ((arrayOfByte[paramInt] & 0xFF) == 255)
+      int k = j + 1;
+      if (k >= paramInt) {
+        break;
+      }
+      int i = paramInt;
+      if ((arrayOfByte[j] & 0xFF) == 255)
       {
-        j = i;
-        if (arrayOfByte[(paramInt + 1)] == 0)
+        i = paramInt;
+        if (arrayOfByte[k] == 0)
         {
-          System.arraycopy(arrayOfByte, paramInt + 2, arrayOfByte, paramInt + 1, i - paramInt - 2);
-          j = i - 1;
+          System.arraycopy(arrayOfByte, j + 2, arrayOfByte, k, paramInt - j - 2);
+          i = paramInt - 1;
         }
       }
-      paramInt += 1;
-      i = j;
+      j = k;
+      paramInt = i;
     }
-    return i;
+    return paramInt;
   }
   
   private static boolean validateFrames(ParsableByteArray paramParsableByteArray, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int m = paramParsableByteArray.getPosition();
-    label364:
-    label373:
+    int n = paramParsableByteArray.getPosition();
+    try
+    {
+      for (;;)
+      {
+        int i = paramParsableByteArray.bytesLeft();
+        int m = 1;
+        if (i < paramInt2) {
+          break;
+        }
+        long l1;
+        if (paramInt1 >= 3)
+        {
+          i = paramParsableByteArray.readInt();
+          l1 = paramParsableByteArray.readUnsignedInt();
+          k = paramParsableByteArray.readUnsignedShort();
+        }
+        else
+        {
+          i = paramParsableByteArray.readUnsignedInt24();
+          j = paramParsableByteArray.readUnsignedInt24();
+          l1 = j;
+          k = 0;
+        }
+        if ((i == 0) && (l1 == 0L) && (k == 0))
+        {
+          paramParsableByteArray.setPosition(n);
+          return true;
+        }
+        long l2 = l1;
+        if (paramInt1 == 4)
+        {
+          l2 = l1;
+          if (!paramBoolean)
+          {
+            if ((0x808080 & l1) != 0L)
+            {
+              paramParsableByteArray.setPosition(n);
+              return false;
+            }
+            l2 = (l1 >> 24 & 0xFF) << 21 | l1 & 0xFF | (l1 >> 8 & 0xFF) << 7 | (l1 >> 16 & 0xFF) << 14;
+          }
+        }
+        if (paramInt1 == 4)
+        {
+          if ((k & 0x40) != 0) {
+            j = 1;
+          } else {
+            j = 0;
+          }
+          i = j;
+          if ((k & 0x1) == 0) {}
+        }
+        else
+        {
+          for (;;)
+          {
+            k = 1;
+            i = j;
+            j = k;
+            break label266;
+            if (paramInt1 != 3) {
+              break;
+            }
+            if ((k & 0x20) != 0) {
+              j = 1;
+            } else {
+              j = 0;
+            }
+            i = j;
+            if ((k & 0x80) == 0) {
+              break label263;
+            }
+          }
+          i = 0;
+        }
+        label263:
+        int j = 0;
+        label266:
+        if (i != 0) {
+          i = m;
+        } else {
+          i = 0;
+        }
+        int k = i;
+        if (j != 0) {
+          k = i + 4;
+        }
+        if (l2 < k)
+        {
+          paramParsableByteArray.setPosition(n);
+          return false;
+        }
+        i = paramParsableByteArray.bytesLeft();
+        if (i < l2)
+        {
+          paramParsableByteArray.setPosition(n);
+          return false;
+        }
+        i = (int)l2;
+        paramParsableByteArray.skipBytes(i);
+      }
+      paramParsableByteArray.setPosition(n);
+      return true;
+    }
+    finally
+    {
+      paramParsableByteArray.setPosition(n);
+    }
     for (;;)
     {
-      try
-      {
-        if (paramParsableByteArray.bytesLeft() >= paramInt2)
-        {
-          if (paramInt1 >= 3)
-          {
-            i = paramParsableByteArray.readInt();
-            l = paramParsableByteArray.readUnsignedInt();
-            j = paramParsableByteArray.readUnsignedShort();
-            if ((i == 0) && (l == 0L) && (j == 0)) {
-              return true;
-            }
-          }
-          else
-          {
-            i = paramParsableByteArray.readUnsignedInt24();
-            j = paramParsableByteArray.readUnsignedInt24();
-            l = j;
-            j = 0;
-            continue;
-          }
-          if ((paramInt1 != 4) || (paramBoolean)) {
-            break label373;
-          }
-          if ((0x808080 & l) != 0L) {
-            return false;
-          }
-          long l = (l >> 24 & 0xFF) << 21 | 0xFF & l | (l >> 8 & 0xFF) << 7 | (l >> 16 & 0xFF) << 14;
-          int k;
-          if (paramInt1 == 4)
-          {
-            if ((j & 0x40) != 0)
-            {
-              i = 1;
-              if ((j & 0x1) != 0)
-              {
-                j = 1;
-                k = j;
-                j = i;
-                i = k;
-                k = 0;
-                if (j != 0) {
-                  k = 1;
-                }
-                j = k;
-                if (i != 0) {
-                  j = k + 4;
-                }
-                if (l >= j) {
-                  continue;
-                }
-                return false;
-              }
-            }
-            else
-            {
-              i = 0;
-              continue;
-            }
-            j = 0;
-            continue;
-          }
-          else
-          {
-            if (paramInt1 != 3) {
-              break label364;
-            }
-            if ((j & 0x20) != 0)
-            {
-              i = 1;
-              if ((j & 0x80) != 0)
-              {
-                j = 1;
-                k = i;
-                i = j;
-                j = k;
-              }
-            }
-            else
-            {
-              i = 0;
-              continue;
-            }
-            j = 0;
-            continue;
-          }
-          i = paramParsableByteArray.bytesLeft();
-          if (i < l) {
-            return false;
-          }
-          i = (int)l;
-          paramParsableByteArray.skipBytes(i);
-          continue;
-        }
-      }
-      finally
-      {
-        paramParsableByteArray.setPosition(m);
-      }
-      return true;
-      int j = 0;
-      int i = 0;
+      throw localObject;
     }
   }
   
@@ -817,55 +809,52 @@ public final class Id3Decoder
   
   public Metadata decode(byte[] paramArrayOfByte, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramArrayOfByte = new ParsableByteArray(paramArrayOfByte, paramInt);
-    Id3Decoder.Id3Header localId3Header = decodeHeader(paramArrayOfByte);
-    if (localId3Header == null) {
+    Object localObject = new ArrayList();
+    ParsableByteArray localParsableByteArray = new ParsableByteArray(paramArrayOfByte, paramInt);
+    paramArrayOfByte = decodeHeader(localParsableByteArray);
+    if (paramArrayOfByte == null) {
       return null;
     }
-    int j = paramArrayOfByte.getPosition();
-    boolean bool;
-    if (Id3Decoder.Id3Header.access$000(localId3Header) == 2)
-    {
+    int j = localParsableByteArray.getPosition();
+    if (Id3Decoder.Id3Header.access$000(paramArrayOfByte) == 2) {
       paramInt = 6;
-      int i = Id3Decoder.Id3Header.access$100(localId3Header);
-      if (Id3Decoder.Id3Header.access$200(localId3Header)) {
-        i = removeUnsynchronization(paramArrayOfByte, Id3Decoder.Id3Header.access$100(localId3Header));
-      }
-      paramArrayOfByte.setLimit(i + j);
-      if (validateFrames(paramArrayOfByte, Id3Decoder.Id3Header.access$000(localId3Header), paramInt, false)) {
-        break label210;
-      }
-      if ((Id3Decoder.Id3Header.access$000(localId3Header) != 4) || (!validateFrames(paramArrayOfByte, 4, paramInt, true))) {
-        break label168;
-      }
-      bool = true;
+    } else {
+      paramInt = 10;
     }
-    for (;;)
-    {
-      if (paramArrayOfByte.bytesLeft() >= paramInt)
+    int i = Id3Decoder.Id3Header.access$100(paramArrayOfByte);
+    if (Id3Decoder.Id3Header.access$200(paramArrayOfByte)) {
+      i = removeUnsynchronization(localParsableByteArray, Id3Decoder.Id3Header.access$100(paramArrayOfByte));
+    }
+    localParsableByteArray.setLimit(j + i);
+    i = Id3Decoder.Id3Header.access$000(paramArrayOfByte);
+    boolean bool = false;
+    if (!validateFrames(localParsableByteArray, i, paramInt, false)) {
+      if ((Id3Decoder.Id3Header.access$000(paramArrayOfByte) == 4) && (validateFrames(localParsableByteArray, 4, paramInt, true)))
       {
-        Id3Frame localId3Frame = decodeFrame(Id3Decoder.Id3Header.access$000(localId3Header), paramArrayOfByte, bool, paramInt, this.framePredicate);
-        if (localId3Frame == null) {
-          continue;
-        }
-        localArrayList.add(localId3Frame);
-        continue;
-        paramInt = 10;
-        break;
-        label168:
-        Log.w("Id3Decoder", "Failed to validate ID3 tag with majorVersion=" + Id3Decoder.Id3Header.access$000(localId3Header));
+        bool = true;
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Failed to validate ID3 tag with majorVersion=");
+        ((StringBuilder)localObject).append(Id3Decoder.Id3Header.access$000(paramArrayOfByte));
+        Log.w("Id3Decoder", ((StringBuilder)localObject).toString());
         return null;
       }
-      return new Metadata(localArrayList);
-      label210:
-      bool = false;
     }
+    while (localParsableByteArray.bytesLeft() >= paramInt)
+    {
+      Id3Frame localId3Frame = decodeFrame(Id3Decoder.Id3Header.access$000(paramArrayOfByte), localParsableByteArray, bool, paramInt, this.framePredicate);
+      if (localId3Frame != null) {
+        ((List)localObject).add(localId3Frame);
+      }
+    }
+    return new Metadata((List)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.Id3Decoder
  * JD-Core Version:    0.7.0.1
  */

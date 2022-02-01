@@ -5,9 +5,9 @@ import android.content.res.Resources;
 import android.media.AudioRecord;
 import android.media.MediaPlayer;
 import android.os.Handler;
-import android.os.Message;
 import android.os.Process;
 import android.text.TextUtils;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import com.tencent.qqmini.miniapp.R.string;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
@@ -21,7 +21,7 @@ import java.io.IOException;
 public class LameMp3EncodeThread
   extends Thread
 {
-  public static final String TAG = LameMp3EncodeThread.class.getName();
+  public static final String TAG = "com.tencent.qqmini.miniapp.audiorecorder.LameMp3EncodeThread";
   private boolean isPause = false;
   private boolean isRecording = false;
   private String mAudioFileFormat = "mp3";
@@ -54,296 +54,282 @@ public class LameMp3EncodeThread
   public static File createSDFile(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return null;
     }
-    File localFile;
-    do
+    paramString = new File(paramString);
+    if (!paramString.exists())
     {
-      return paramString;
-      localFile = new File(paramString);
-      paramString = localFile;
-    } while (localFile.exists());
-    if (localFile.isDirectory())
-    {
-      localFile.mkdirs();
-      return localFile;
+      if (paramString.isDirectory())
+      {
+        paramString.mkdirs();
+        return paramString;
+      }
+      paramString.createNewFile();
     }
-    localFile.createNewFile();
-    return localFile;
+    return paramString;
   }
   
   private int encodeAndSave(int paramInt1, short[] paramArrayOfShort, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt2, FileOutputStream paramFileOutputStream, AudioRecord paramAudioRecord, boolean paramBoolean)
   {
-    byte[] arrayOfByte;
-    for (;;)
-    {
-      arrayOfByte = paramArrayOfByte2;
-      i = paramInt2;
-      if (!this.isRecording) {
-        break label120;
-      }
-      if (!this.isPause) {
-        break;
-      }
-      if (!paramBoolean) {
-        paramBoolean = true;
-      }
-    }
-    boolean bool = paramBoolean;
-    if (paramBoolean) {
-      bool = false;
-    }
-    i = paramAudioRecord.read(paramArrayOfShort, 0, paramInt1);
-    this.mVoiceLevel = getVoiceSize(i, paramArrayOfShort);
-    if (i < 0)
-    {
-      arrayOfByte = paramArrayOfByte2;
-      i = paramInt2;
-      if (this.mMainHandler != null)
-      {
-        this.mMainHandler.sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_error)));
-        i = paramInt2;
-        arrayOfByte = paramArrayOfByte2;
-      }
-      label120:
-      if (arrayOfByte != null) {
-        if (i != 0) {
-          break label627;
-        }
-      }
-    }
-    label617:
-    label627:
-    for (paramBoolean = true;; paramBoolean = false)
+    boolean bool1;
+    Object localObject;
+    int i;
+    do
     {
       for (;;)
       {
-        for (;;)
+        boolean bool2 = this.isRecording;
+        bool1 = false;
+        localObject = paramArrayOfByte2;
+        i = paramInt2;
+        if (!bool2) {
+          break label596;
+        }
+        if (!this.isPause) {
+          break;
+        }
+        if (!paramBoolean) {
+          paramBoolean = true;
+        }
+      }
+      if (paramBoolean) {
+        paramBoolean = false;
+      }
+      i = paramAudioRecord.read(paramArrayOfShort, 0, paramInt1);
+      this.mVoiceLevel = getVoiceSize(i, paramArrayOfShort);
+      if (i < 0)
+      {
+        paramArrayOfShort = this.mMainHandler;
+        localObject = paramArrayOfByte2;
+        i = paramInt2;
+        if (paramArrayOfShort == null) {
+          break;
+        }
+        paramArrayOfShort.sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_error)));
+        localObject = paramArrayOfByte2;
+        i = paramInt2;
+        break;
+      }
+    } while (i == 0);
+    for (;;)
+    {
+      int j = LameMp3Native.jniEncode(paramArrayOfShort, paramArrayOfShort, i, paramArrayOfByte1);
+      if (j < 0)
+      {
+        paramArrayOfShort = this.mMainHandler;
+        localObject = paramArrayOfByte2;
+        i = paramInt2;
+        if (paramArrayOfShort == null) {
+          break;
+        }
+        paramArrayOfShort.sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_encode_error)));
+        localObject = paramArrayOfByte2;
+        i = paramInt2;
+        break;
+      }
+      if (j != 0) {}
+      for (;;)
+      {
+        try
         {
-          onFrameRecord(arrayOfByte, paramBoolean);
-          return i;
-          paramBoolean = bool;
-          if (i == 0) {
-            break;
-          }
-          i = LameMp3Native.jniEncode(paramArrayOfShort, paramArrayOfShort, i, paramArrayOfByte1);
-          if (i < 0)
+          paramFileOutputStream.write(paramArrayOfByte1, 0, j);
+          if (this.mCallbackFrameSize > 0)
           {
-            arrayOfByte = paramArrayOfByte2;
-            i = paramInt2;
-            if (this.mMainHandler == null) {
-              break label120;
-            }
-            this.mMainHandler.sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_encode_error)));
-            arrayOfByte = paramArrayOfByte2;
-            i = paramInt2;
-            break label120;
-          }
-          paramBoolean = bool;
-          if (i == 0) {
-            break;
-          }
-          try
-          {
-            paramFileOutputStream.write(paramArrayOfByte1, 0, i);
-            paramBoolean = bool;
-            if (this.mCallbackFrameSize <= 0) {
-              break;
-            }
-            arrayOfByte = paramArrayOfByte2;
+            localObject = paramArrayOfByte2;
             if (paramArrayOfByte2 != null)
             {
               onFrameRecord(paramArrayOfByte2, false);
-              arrayOfByte = null;
+              localObject = null;
             }
-            k = 0;
-            j = paramInt2;
-            i += paramInt2;
-            paramArrayOfByte2 = arrayOfByte;
-            paramInt2 = j;
+            paramArrayOfByte2 = (byte[])localObject;
+            n = 0;
+            i = paramInt2;
+            paramInt2 = j + paramInt2;
+            j = i;
+            localObject = paramArrayOfByte2;
           }
-          catch (Throwable paramArrayOfShort)
-          {
-            for (;;)
-            {
-              int j;
-              int m;
-              continue;
-              i = paramInt2;
-              paramInt2 = k;
-              int k = i;
-              i = m;
-            }
-          }
-        }
-        j = paramInt2;
-        arrayOfByte = paramArrayOfByte2;
-        try
-        {
-          if (i >= this.mCallbackFrameSize)
-          {
-            j = paramInt2;
-            arrayOfByte = paramArrayOfByte2;
-            paramArrayOfByte2 = new byte[this.mCallbackFrameSize];
-            if (paramInt2 > 0)
-            {
-              j = paramInt2;
-              arrayOfByte = paramArrayOfByte2;
-              System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte2, 0, paramInt2);
-              j = paramInt2;
-              arrayOfByte = paramArrayOfByte2;
-              m = this.mCallbackFrameSize - paramInt2;
-              j = paramInt2;
-              arrayOfByte = paramArrayOfByte2;
-              System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, paramInt2, m);
-              j = 0;
-              paramInt2 = k + m;
-              k = j;
-            }
-            for (;;)
-            {
-              j = k;
-              arrayOfByte = paramArrayOfByte2;
-              m = i - this.mCallbackFrameSize;
-              j = k;
-              arrayOfByte = paramArrayOfByte2;
-              if (m < this.mCallbackFrameSize) {
-                break label637;
-              }
-              j = k;
-              arrayOfByte = paramArrayOfByte2;
-              onFrameRecord(paramArrayOfByte2, false);
-              paramArrayOfByte2 = null;
-              i = paramInt2;
-              paramInt2 = k;
-              k = i;
-              i = m;
-              break;
-              j = paramInt2;
-              arrayOfByte = paramArrayOfByte2;
-              System.arraycopy(paramArrayOfByte1, k, paramArrayOfByte2, 0, this.mCallbackFrameSize);
-              j = paramInt2;
-              arrayOfByte = paramArrayOfByte2;
-              m = this.mCallbackFrameSize + k;
-              k = paramInt2;
-              paramInt2 = m;
-            }
-          }
-          if (i <= 0) {
-            break label617;
-          }
-          j = paramInt2;
-          arrayOfByte = paramArrayOfByte2;
-          System.arraycopy(paramArrayOfByte1, k, paramArrayOfByte3, paramInt2, i - paramInt2);
-          paramInt2 = i;
-          paramBoolean = bool;
         }
         catch (Throwable paramArrayOfShort)
         {
-          paramInt2 = j;
-          paramArrayOfByte2 = arrayOfByte;
+          int n;
+          continue;
         }
+        try
+        {
+          if (paramInt2 >= this.mCallbackFrameSize)
+          {
+            j = i;
+            localObject = paramArrayOfByte2;
+            byte[] arrayOfByte = new byte[this.mCallbackFrameSize];
+            int k;
+            int m;
+            if (i > 0)
+            {
+              j = i;
+              localObject = arrayOfByte;
+              System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, 0, i);
+              j = i;
+              localObject = arrayOfByte;
+              k = this.mCallbackFrameSize - i;
+              j = i;
+              localObject = arrayOfByte;
+              System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, i, k);
+              k = n + k;
+              m = 0;
+            }
+            else
+            {
+              j = i;
+              localObject = arrayOfByte;
+              System.arraycopy(paramArrayOfByte1, n, arrayOfByte, 0, this.mCallbackFrameSize);
+              j = i;
+              localObject = arrayOfByte;
+              k = n + this.mCallbackFrameSize;
+              m = i;
+            }
+            j = m;
+            localObject = arrayOfByte;
+            int i1 = paramInt2 - this.mCallbackFrameSize;
+            n = k;
+            paramInt2 = i1;
+            i = m;
+            paramArrayOfByte2 = arrayOfByte;
+            j = m;
+            localObject = arrayOfByte;
+            if (i1 >= this.mCallbackFrameSize)
+            {
+              j = m;
+              localObject = arrayOfByte;
+              onFrameRecord(arrayOfByte, false);
+              paramArrayOfByte2 = null;
+              n = k;
+              paramInt2 = i1;
+              i = m;
+            }
+          }
+          else if (paramInt2 > 0)
+          {
+            j = i;
+            localObject = paramArrayOfByte2;
+            System.arraycopy(paramArrayOfByte1, n, paramArrayOfByte3, i, paramInt2 - i);
+          }
+          else
+          {
+            paramInt2 = 0;
+          }
+        }
+        catch (Throwable paramArrayOfShort) {}
       }
-      arrayOfByte = paramArrayOfByte2;
+      paramInt2 = j;
+      paramArrayOfByte2 = (byte[])localObject;
+      break label542;
+      continue;
+      label542:
+      paramArrayOfShort = this.mMainHandler;
+      localObject = paramArrayOfByte2;
       i = paramInt2;
-      if (this.mMainHandler == null) {
-        break label120;
+      if (paramArrayOfShort == null) {
+        break;
       }
-      this.mMainHandler.sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_write_file_error)));
-      arrayOfByte = paramArrayOfByte2;
+      paramArrayOfShort.sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_write_file_error)));
+      localObject = paramArrayOfByte2;
       i = paramInt2;
-      break label120;
-      paramInt2 = 0;
-      paramBoolean = bool;
       break;
     }
+    label596:
+    if (localObject != null)
+    {
+      paramBoolean = bool1;
+      if (i == 0) {
+        paramBoolean = true;
+      }
+      onFrameRecord((byte[])localObject, paramBoolean);
+    }
+    return i;
   }
   
   private FileOutputStream getFileOutputStream()
   {
     try
     {
-      FileOutputStream localFileOutputStream1 = new FileOutputStream(createSDFile(this.mRecordFilPath));
-      if (localFileOutputStream1 == null)
-      {
-        QMLog.e(TAG, "output is null!");
-        if (this.mMainHandler != null) {
-          this.mMainHandler.sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_input_null)));
-        }
-        return null;
-      }
+      localObject = new FileOutputStream(createSDFile(this.mRecordFilPath));
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      while (this.mMainHandler == null) {}
-      this.mMainHandler.sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_mk_file_error)));
-      return null;
+      Object localObject;
+      break label100;
     }
     catch (IOException localIOException)
     {
-      FileOutputStream localFileOutputStream2;
-      for (;;)
-      {
-        if (this.mMainHandler != null) {
-          this.mMainHandler.sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_wr_file_error)));
-        }
-        localFileOutputStream2 = null;
-      }
-      return localFileOutputStream2;
+      label18:
+      label100:
+      break label18;
     }
+    localObject = this.mMainHandler;
+    if (localObject != null) {
+      ((Handler)localObject).sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_wr_file_error)));
+    }
+    localObject = null;
+    if (localObject == null)
+    {
+      QMLog.e(TAG, "output is null!");
+      localObject = this.mMainHandler;
+      if (localObject != null) {
+        ((Handler)localObject).sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_input_null)));
+      }
+      return null;
+    }
+    return localObject;
+    localObject = this.mMainHandler;
+    if (localObject != null) {
+      ((Handler)localObject).sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_mk_file_error)));
+    }
+    return null;
   }
   
   private void loadLameMp3So()
   {
     this.mNativeLoaded = MiniAppSoLoader.g().isLameMp3SoLoaded();
-    QMLog.e("[miniapp]-LameMp3Native", "mNativeLoaded : " + this.mNativeLoaded);
-    if (!this.mNativeLoaded) {}
-    try
-    {
-      this.mNativeLoaded = MiniAppSoLoader.g().loadLameMp3So();
-      if (this.mNativeLoaded) {}
-    }
-    catch (Throwable localThrowable1)
-    {
-      for (;;)
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("mNativeLoaded : ");
+    localStringBuilder1.append(this.mNativeLoaded);
+    QMLog.e("[miniapp]-LameMp3Native", localStringBuilder1.toString());
+    StringBuilder localStringBuilder2;
+    if (!this.mNativeLoaded) {
+      try
       {
-        try
-        {
-          System.loadLibrary("mini_lamemp3");
-          this.mNativeLoaded = true;
-          QMLog.i("[miniapp]-LameMp3Native", "load so exception, load local libmini_lamemp3.so success!");
-          return;
-        }
-        catch (Throwable localThrowable2)
-        {
-          this.mNativeLoaded = false;
-          QMLog.i("[miniapp]-LameMp3Native", "load so exception, fail to load local libmini_lamemp3.so:" + this.mNativeLoaded, localThrowable2);
-        }
-        localThrowable1 = localThrowable1;
-        QMLog.e("[miniapp]-LameMp3Native", "load so exception, fail to load network libmini_lamemp3.so:" + this.mNativeLoaded, localThrowable1);
+        this.mNativeLoaded = MiniAppSoLoader.g().loadLameMp3So();
+      }
+      catch (Throwable localThrowable1)
+      {
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("load so exception, fail to load network libmini_lamemp3.so:");
+        localStringBuilder2.append(this.mNativeLoaded);
+        QMLog.e("[miniapp]-LameMp3Native", localStringBuilder2.toString(), localThrowable1);
+      }
+    }
+    if (!this.mNativeLoaded) {
+      try
+      {
+        System.loadLibrary("mini_lamemp3");
+        this.mNativeLoaded = true;
+        QMLog.i("[miniapp]-LameMp3Native", "load so exception, load local libmini_lamemp3.so success!");
+        return;
+      }
+      catch (Throwable localThrowable2)
+      {
+        this.mNativeLoaded = false;
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("load so exception, fail to load local libmini_lamemp3.so:");
+        localStringBuilder2.append(this.mNativeLoaded);
+        QMLog.i("[miniapp]-LameMp3Native", localStringBuilder2.toString(), localThrowable2);
       }
     }
   }
   
   private void onFrameRecord(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    Message localMessage;
-    if ((this.mMainHandler != null) && (paramArrayOfByte != null))
-    {
-      localMessage = Message.obtain();
-      localMessage.obj = paramArrayOfByte;
-      localMessage.what = 6;
-      if (!paramBoolean) {
-        break label52;
-      }
-    }
-    label52:
-    for (int i = 1;; i = 0)
-    {
-      localMessage.arg1 = i;
-      this.mMainHandler.sendMessage(localMessage);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   /* Error */
@@ -351,14 +337,14 @@ public class LameMp3EncodeThread
   {
     // Byte code:
     //   0: aload 8
-    //   2: invokevirtual 302	android/media/AudioRecord:startRecording	()V
+    //   2: invokevirtual 290	android/media/AudioRecord:startRecording	()V
     //   5: aload_0
-    //   6: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   6: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   9: ifnull +12 -> 21
     //   12: aload_0
-    //   13: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   13: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   16: iconst_1
-    //   17: invokevirtual 306	android/os/Handler:sendEmptyMessage	(I)Z
+    //   17: invokevirtual 294	android/os/Handler:sendEmptyMessage	(I)Z
     //   20: pop
     //   21: aload_0
     //   22: iload_1
@@ -370,7 +356,7 @@ public class LameMp3EncodeThread
     //   31: aload 7
     //   33: aload 8
     //   35: iconst_0
-    //   36: invokespecial 308	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:encodeAndSave	(I[S[B[B[BILjava/io/FileOutputStream;Landroid/media/AudioRecord;Z)I
+    //   36: invokespecial 296	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:encodeAndSave	(I[S[B[B[BILjava/io/FileOutputStream;Landroid/media/AudioRecord;Z)I
     //   39: istore_1
     //   40: iload_1
     //   41: ifle +22 -> 63
@@ -382,166 +368,171 @@ public class LameMp3EncodeThread
     //   51: aload_2
     //   52: iconst_0
     //   53: iload_1
-    //   54: invokestatic 200	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   54: invokestatic 194	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   57: aload_0
     //   58: aload_2
     //   59: iconst_1
-    //   60: invokespecial 177	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:onFrameRecord	([BZ)V
+    //   60: invokespecial 188	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:onFrameRecord	([BZ)V
     //   63: aload_3
-    //   64: invokestatic 312	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Native:jniFlush	([B)I
+    //   64: invokestatic 300	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Native:jniFlush	([B)I
     //   67: istore_1
     //   68: iload_1
     //   69: ifge +36 -> 105
     //   72: aload_0
-    //   73: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   73: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   76: ifnull +29 -> 105
     //   79: aload_0
-    //   80: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
-    //   83: invokestatic 50	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
-    //   86: invokevirtual 54	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getContext	()Landroid/content/Context;
-    //   89: invokevirtual 60	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   92: getstatic 186	com/tencent/qqmini/miniapp/R$string:mini_sdk_record_encode_error	I
-    //   95: invokevirtual 71	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   98: invokestatic 167	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
-    //   101: invokevirtual 173	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   80: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   83: invokestatic 44	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
+    //   86: invokevirtual 48	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getContext	()Landroid/content/Context;
+    //   89: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   92: getstatic 176	com/tencent/qqmini/miniapp/R$string:mini_sdk_record_encode_error	I
+    //   95: invokevirtual 65	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   98: invokestatic 161	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
+    //   101: invokevirtual 167	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   104: pop
     //   105: iload_1
-    //   106: ifeq +11 -> 117
+    //   106: ifeq +50 -> 156
     //   109: aload 7
     //   111: aload_3
     //   112: iconst_0
     //   113: iload_1
-    //   114: invokevirtual 192	java/io/FileOutputStream:write	([BII)V
-    //   117: aload 7
-    //   119: invokevirtual 315	java/io/FileOutputStream:close	()V
-    //   122: aload 8
-    //   124: invokevirtual 318	android/media/AudioRecord:stop	()V
-    //   127: aload 8
-    //   129: invokevirtual 321	android/media/AudioRecord:release	()V
-    //   132: invokestatic 324	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Native:jniClose	()V
-    //   135: aload_0
-    //   136: iconst_0
-    //   137: putfield 94	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:isRecording	Z
-    //   140: aload_0
-    //   141: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
-    //   144: ifnull +24 -> 168
-    //   147: aload_0
-    //   148: getfield 104	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mp3Player	Lcom/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder;
-    //   151: invokevirtual 328	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder:getRecordDuration	()J
-    //   154: lconst_1
-    //   155: lcmp
-    //   156: ifle +154 -> 310
-    //   159: aload_0
-    //   160: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
-    //   163: iconst_5
-    //   164: invokevirtual 306	android/os/Handler:sendEmptyMessage	(I)Z
-    //   167: pop
-    //   168: return
-    //   169: astore_2
-    //   170: aload_0
-    //   171: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
-    //   174: ifnull +29 -> 203
-    //   177: aload_0
-    //   178: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
-    //   181: invokestatic 50	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
-    //   184: invokevirtual 54	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getContext	()Landroid/content/Context;
-    //   187: invokevirtual 60	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   190: getstatic 331	com/tencent/qqmini/miniapp/R$string:mini_sdk_record_init_error	I
-    //   193: invokevirtual 71	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   196: invokestatic 167	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
-    //   199: invokevirtual 173	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
-    //   202: pop
-    //   203: invokestatic 324	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Native:jniClose	()V
-    //   206: aload_0
-    //   207: iconst_0
-    //   208: putfield 94	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:isRecording	Z
-    //   211: return
-    //   212: astore_2
-    //   213: aload_0
-    //   214: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
-    //   217: ifnull -100 -> 117
-    //   220: aload_0
-    //   221: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
-    //   224: invokestatic 50	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
-    //   227: invokevirtual 54	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getContext	()Landroid/content/Context;
-    //   230: invokevirtual 60	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   233: getstatic 203	com/tencent/qqmini/miniapp/R$string:mini_sdk_record_write_file_error	I
-    //   236: invokevirtual 71	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   239: invokestatic 167	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
-    //   242: invokevirtual 173	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
-    //   245: pop
-    //   246: goto -129 -> 117
-    //   249: astore_2
-    //   250: aload 8
-    //   252: invokevirtual 318	android/media/AudioRecord:stop	()V
-    //   255: aload 8
-    //   257: invokevirtual 321	android/media/AudioRecord:release	()V
-    //   260: aload_2
-    //   261: athrow
-    //   262: astore_2
-    //   263: invokestatic 324	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Native:jniClose	()V
-    //   266: aload_0
-    //   267: iconst_0
-    //   268: putfield 94	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:isRecording	Z
-    //   271: aload_2
-    //   272: athrow
-    //   273: astore_2
-    //   274: aload_0
-    //   275: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
-    //   278: ifnull -156 -> 122
-    //   281: aload_0
-    //   282: getfield 106	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
-    //   285: invokestatic 50	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
-    //   288: invokevirtual 54	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getContext	()Landroid/content/Context;
-    //   291: invokevirtual 60	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   294: getstatic 334	com/tencent/qqmini/miniapp/R$string:mini_sdk_record_close_error	I
-    //   297: invokevirtual 71	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   300: invokestatic 167	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
-    //   303: invokevirtual 173	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
-    //   306: pop
-    //   307: goto -185 -> 122
-    //   310: new 128	java/io/File
-    //   313: dup
-    //   314: aload_0
-    //   315: getfield 211	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mRecordFilPath	Ljava/lang/String;
-    //   318: invokespecial 129	java/io/File:<init>	(Ljava/lang/String;)V
-    //   321: astore_2
-    //   322: aload_2
-    //   323: invokevirtual 133	java/io/File:exists	()Z
-    //   326: ifeq -158 -> 168
-    //   329: aload_2
-    //   330: invokevirtual 337	java/io/File:delete	()Z
-    //   333: pop
-    //   334: return
+    //   114: invokevirtual 182	java/io/FileOutputStream:write	([BII)V
+    //   117: goto +39 -> 156
+    //   120: aload_0
+    //   121: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   124: ifnull +32 -> 156
+    //   127: aload_0
+    //   128: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   131: invokestatic 44	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
+    //   134: invokevirtual 48	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getContext	()Landroid/content/Context;
+    //   137: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   140: getstatic 197	com/tencent/qqmini/miniapp/R$string:mini_sdk_record_write_file_error	I
+    //   143: invokevirtual 65	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   146: invokestatic 161	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
+    //   149: invokevirtual 167	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   152: pop
+    //   153: goto +3 -> 156
+    //   156: aload 7
+    //   158: invokevirtual 303	java/io/FileOutputStream:close	()V
+    //   161: goto +36 -> 197
+    //   164: aload_0
+    //   165: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   168: ifnull +29 -> 197
+    //   171: aload_0
+    //   172: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   175: invokestatic 44	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
+    //   178: invokevirtual 48	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getContext	()Landroid/content/Context;
+    //   181: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   184: getstatic 306	com/tencent/qqmini/miniapp/R$string:mini_sdk_record_close_error	I
+    //   187: invokevirtual 65	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   190: invokestatic 161	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
+    //   193: invokevirtual 167	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   196: pop
+    //   197: aload 8
+    //   199: invokevirtual 309	android/media/AudioRecord:stop	()V
+    //   202: aload 8
+    //   204: invokevirtual 312	android/media/AudioRecord:release	()V
+    //   207: invokestatic 315	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Native:jniClose	()V
+    //   210: aload_0
+    //   211: iconst_0
+    //   212: putfield 88	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:isRecording	Z
+    //   215: aload_0
+    //   216: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   219: ifnull +49 -> 268
+    //   222: aload_0
+    //   223: getfield 98	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mp3Player	Lcom/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder;
+    //   226: invokevirtual 319	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder:getRecordDuration	()J
+    //   229: lconst_1
+    //   230: lcmp
+    //   231: ifle +13 -> 244
+    //   234: aload_0
+    //   235: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   238: iconst_5
+    //   239: invokevirtual 294	android/os/Handler:sendEmptyMessage	(I)Z
+    //   242: pop
+    //   243: return
+    //   244: new 122	java/io/File
+    //   247: dup
+    //   248: aload_0
+    //   249: getfield 205	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mRecordFilPath	Ljava/lang/String;
+    //   252: invokespecial 123	java/io/File:<init>	(Ljava/lang/String;)V
+    //   255: astore_2
+    //   256: aload_2
+    //   257: invokevirtual 127	java/io/File:exists	()Z
+    //   260: ifeq +8 -> 268
+    //   263: aload_2
+    //   264: invokevirtual 322	java/io/File:delete	()Z
+    //   267: pop
+    //   268: return
+    //   269: astore_2
+    //   270: aload 8
+    //   272: invokevirtual 309	android/media/AudioRecord:stop	()V
+    //   275: aload 8
+    //   277: invokevirtual 312	android/media/AudioRecord:release	()V
+    //   280: aload_2
+    //   281: athrow
+    //   282: aload_0
+    //   283: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   286: ifnull +29 -> 315
+    //   289: aload_0
+    //   290: getfield 100	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
+    //   293: invokestatic 44	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:g	()Lcom/tencent/qqmini/sdk/launcher/AppLoaderFactory;
+    //   296: invokevirtual 48	com/tencent/qqmini/sdk/launcher/AppLoaderFactory:getContext	()Landroid/content/Context;
+    //   299: invokevirtual 54	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   302: getstatic 325	com/tencent/qqmini/miniapp/R$string:mini_sdk_record_init_error	I
+    //   305: invokevirtual 65	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   308: invokestatic 161	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
+    //   311: invokevirtual 167	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   314: pop
+    //   315: invokestatic 315	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Native:jniClose	()V
+    //   318: aload_0
+    //   319: iconst_0
+    //   320: putfield 88	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:isRecording	Z
+    //   323: return
+    //   324: invokestatic 315	com/tencent/qqmini/miniapp/audiorecorder/LameMp3Native:jniClose	()V
+    //   327: aload_0
+    //   328: iconst_0
+    //   329: putfield 88	com/tencent/qqmini/miniapp/audiorecorder/LameMp3EncodeThread:isRecording	Z
+    //   332: aload_2
+    //   333: athrow
+    //   334: astore_2
+    //   335: goto -53 -> 282
+    //   338: astore_2
+    //   339: goto -219 -> 120
+    //   342: astore_2
+    //   343: goto -179 -> 164
+    //   346: astore_2
+    //   347: goto -23 -> 324
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	335	0	this	LameMp3EncodeThread
-    //   0	335	1	paramInt1	int
-    //   0	335	2	paramArrayOfShort	short[]
-    //   0	335	3	paramArrayOfByte1	byte[]
-    //   0	335	4	paramArrayOfByte2	byte[]
-    //   0	335	5	paramArrayOfByte3	byte[]
-    //   0	335	6	paramInt2	int
-    //   0	335	7	paramFileOutputStream	FileOutputStream
-    //   0	335	8	paramAudioRecord	AudioRecord
+    //   0	350	0	this	LameMp3EncodeThread
+    //   0	350	1	paramInt1	int
+    //   0	350	2	paramArrayOfShort	short[]
+    //   0	350	3	paramArrayOfByte1	byte[]
+    //   0	350	4	paramArrayOfByte2	byte[]
+    //   0	350	5	paramArrayOfByte3	byte[]
+    //   0	350	6	paramInt2	int
+    //   0	350	7	paramFileOutputStream	FileOutputStream
+    //   0	350	8	paramAudioRecord	AudioRecord
     // Exception table:
     //   from	to	target	type
-    //   0	5	169	java/lang/IllegalStateException
-    //   109	117	212	java/lang/Throwable
-    //   5	21	249	finally
-    //   21	40	249	finally
-    //   44	63	249	finally
-    //   63	68	249	finally
-    //   72	105	249	finally
-    //   109	117	249	finally
-    //   117	122	249	finally
-    //   213	246	249	finally
-    //   274	307	249	finally
-    //   0	5	262	finally
-    //   122	132	262	finally
-    //   170	203	262	finally
-    //   250	262	262	finally
-    //   117	122	273	java/lang/Throwable
+    //   5	21	269	finally
+    //   21	40	269	finally
+    //   44	63	269	finally
+    //   63	68	269	finally
+    //   72	105	269	finally
+    //   109	117	269	finally
+    //   120	153	269	finally
+    //   156	161	269	finally
+    //   164	197	269	finally
+    //   0	5	334	java/lang/IllegalStateException
+    //   109	117	338	java/lang/Throwable
+    //   156	161	342	java/lang/Throwable
+    //   0	5	346	finally
+    //   197	207	346	finally
+    //   270	282	346	finally
+    //   282	315	346	finally
   }
   
   public int getAudioSource()
@@ -562,7 +553,7 @@ public class LameMp3EncodeThread
   public MediaPlayer getMediaPlayer()
   {
     if (this.mMediaPlayer == null) {
-      this.mMediaPlayer = new MediaPlayer();
+      this.mMediaPlayer = new ReportMediaPlayer();
     }
     return this.mMediaPlayer;
   }
@@ -584,7 +575,7 @@ public class LameMp3EncodeThread
   
   public void getPlayTime()
   {
-    if (this.mMediaPlayer != null) {}
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
   }
   
   public int getQuality()
@@ -617,10 +608,17 @@ public class LameMp3EncodeThread
       {
         while (i < paramArrayOfShort.length)
         {
-          l += paramArrayOfShort[i] * paramArrayOfShort[i];
+          int j = paramArrayOfShort[i];
+          int k = paramArrayOfShort[i];
+          l += j * k;
           i += 1;
         }
-        paramInt = (int)(Math.log10(l / paramInt) * 10.0D) / 10;
+        double d1 = l;
+        double d2 = paramInt;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        d1 /= d2;
+        paramInt = (int)(Math.log10(d1) * 10.0D) / 10;
         return paramInt - 1;
       }
       catch (Exception paramArrayOfShort)
@@ -660,7 +658,7 @@ public class LameMp3EncodeThread
       return false;
     }
     if (this.mMediaPlayer == null) {
-      this.mMediaPlayer = new MediaPlayer();
+      this.mMediaPlayer = new ReportMediaPlayer();
     }
     try
     {
@@ -682,7 +680,8 @@ public class LameMp3EncodeThread
   
   public boolean playPause()
   {
-    if ((this.mMediaPlayer != null) && (this.mMediaPlayer.isPlaying()))
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if ((localMediaPlayer != null) && (localMediaPlayer.isPlaying()))
     {
       this.mMediaPlayer.pause();
       return true;
@@ -692,9 +691,10 @@ public class LameMp3EncodeThread
   
   public boolean playResume()
   {
-    if (this.mMediaPlayer != null)
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null)
     {
-      this.mMediaPlayer.start();
+      localMediaPlayer.start();
       return true;
     }
     return false;
@@ -707,50 +707,52 @@ public class LameMp3EncodeThread
   
   public void run()
   {
-    if (this.isRecording) {
-      QMLog.w(TAG, "record thread is allready running!");
-    }
-    int i;
-    byte[] arrayOfByte;
-    FileOutputStream localFileOutputStream;
-    do
+    if (this.isRecording)
     {
-      do
-      {
-        do
-        {
-          return;
-          if (TextUtils.isEmpty(this.mRecordFilPath))
-          {
-            QMLog.e(TAG, "run(), record file is null");
-            return;
-          }
-          if (this.mNativeLoaded) {
-            break;
-          }
-        } while (this.mMainHandler == null);
-        this.mMainHandler.sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_so_unload)));
-        return;
-        Process.setThreadPriority(-19);
-        i = AudioRecord.getMinBufferSize(this.mInSampleRate, 16, 2);
-        if (i >= 0) {
-          break;
-        }
-      } while (this.mMainHandler == null);
-      this.mMainHandler.sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_samplerate_error)));
+      QMLog.w(TAG, "record thread is allready running!");
       return;
-      arrayOfByte = null;
-      if (this.mCallbackFrameSize > 0) {
-        arrayOfByte = new byte[this.mCallbackFrameSize];
+    }
+    if (TextUtils.isEmpty(this.mRecordFilPath))
+    {
+      QMLog.e(TAG, "run(), record file is null");
+      return;
+    }
+    if (!this.mNativeLoaded)
+    {
+      localObject = this.mMainHandler;
+      if (localObject != null) {
+        ((Handler)localObject).sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_so_unload)));
       }
-      localFileOutputStream = getFileOutputStream();
-    } while (localFileOutputStream == null);
-    LameMp3Native.jniInit(this.mInSampleRate, this.mOutChannel, this.mInSampleRate, this.mOutBitRate, this.mQuality);
+      return;
+    }
+    Process.setThreadPriority(-19);
+    int i = AudioRecord.getMinBufferSize(this.mInSampleRate, 16, 2);
+    if (i < 0)
+    {
+      localObject = this.mMainHandler;
+      if (localObject != null) {
+        ((Handler)localObject).sendMessage(LameMp3Recorder.generateRecordErrMsg(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_sdk_record_samplerate_error)));
+      }
+      return;
+    }
+    Object localObject = null;
+    int j = this.mCallbackFrameSize;
+    if (j > 0) {
+      localObject = new byte[j];
+    }
+    FileOutputStream localFileOutputStream = getFileOutputStream();
+    if (localFileOutputStream == null) {
+      return;
+    }
+    j = this.mInSampleRate;
+    LameMp3Native.jniInit(j, this.mOutChannel, j, this.mOutBitRate, this.mQuality);
     this.isRecording = true;
     this.isPause = false;
     AudioRecord localAudioRecord = new AudioRecord(this.mAudioSource, this.mInSampleRate, 16, this.mEncodingPcmFormat, i * 2);
     short[] arrayOfShort = new short[this.mInSampleRate * 2 * 1 * 5];
-    startRecording(i, arrayOfShort, new byte[(int)(7200.0D + arrayOfShort.length * 1.25D)], null, arrayOfByte, 0, localFileOutputStream, localAudioRecord);
+    double d = arrayOfShort.length;
+    Double.isNaN(d);
+    startRecording(i, arrayOfShort, new byte[(int)(d * 1.25D + 7200.0D)], null, (byte[])localObject, 0, localFileOutputStream, localAudioRecord);
   }
   
   public void setAudioSource(int paramInt)
@@ -760,42 +762,24 @@ public class LameMp3EncodeThread
   
   public void setAudioSource(String paramString)
   {
-    int j = 1;
-    int i;
-    if (TextUtils.isEmpty(paramString)) {
-      i = j;
-    }
-    for (;;)
+    boolean bool = TextUtils.isEmpty(paramString);
+    int i = 1;
+    if (!bool)
     {
-      setAudioSource(i);
-      return;
       paramString = paramString.toLowerCase();
-      if ("auto".equals(paramString))
-      {
+      if ("auto".equals(paramString)) {
         i = 0;
-      }
-      else
-      {
-        i = j;
-        if (!"mic".equals(paramString)) {
-          if ("camcorder".equals(paramString))
-          {
-            i = 5;
-          }
-          else if ("voice_communication".equals(paramString))
-          {
-            i = 7;
-          }
-          else
-          {
-            i = j;
-            if ("voice_recognition".equals(paramString)) {
-              i = 6;
-            }
-          }
+      } else if (!"mic".equals(paramString)) {
+        if ("camcorder".equals(paramString)) {
+          i = 5;
+        } else if ("voice_communication".equals(paramString)) {
+          i = 7;
+        } else if ("voice_recognition".equals(paramString)) {
+          i = 6;
         }
       }
     }
+    setAudioSource(i);
   }
   
   public void setCallbackFrameSize(int paramInt)
@@ -870,9 +854,10 @@ public class LameMp3EncodeThread
   
   public boolean stopPlay()
   {
-    if (this.mMediaPlayer != null)
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null)
     {
-      this.mMediaPlayer.stop();
+      localMediaPlayer.stop();
       this.mMediaPlayer.release();
       this.mMediaPlayer = null;
       return true;
@@ -882,7 +867,7 @@ public class LameMp3EncodeThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.audiorecorder.LameMp3EncodeThread
  * JD-Core Version:    0.7.0.1
  */

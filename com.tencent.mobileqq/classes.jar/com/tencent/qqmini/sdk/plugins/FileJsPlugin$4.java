@@ -18,16 +18,22 @@ class FileJsPlugin$4
     long l = System.currentTimeMillis();
     try
     {
-      String str1 = new JSONObject(this.val$req.jsonParams).optString("path");
-      String str2 = ((MiniAppFileManager)FileJsPlugin.access$800(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(str1);
-      if ((TextUtils.isEmpty(str2)) || (!new File(str2).exists()))
+      String str = new JSONObject(this.val$req.jsonParams).optString("path");
+      Object localObject = ((MiniAppFileManager)FileJsPlugin.access$800(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(str);
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (new File((String)localObject).exists()))
       {
-        FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, str2);
-        return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "no such file or directory \"" + str1 + "\"");
+        FileJsPlugin.access$900(this.this$0, this.val$req.event, true, this.val$startMS, l, (String)localObject);
+        return FileJsPlugin.access$1100(this.this$0, this.val$req, null);
       }
-      FileJsPlugin.access$900(this.this$0, this.val$req.event, true, this.val$startMS, l, str2);
-      str1 = FileJsPlugin.access$1100(this.this$0, this.val$req, null);
-      return str1;
+      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, (String)localObject);
+      localObject = this.this$0;
+      RequestEvent localRequestEvent = this.val$req;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("no such file or directory \"");
+      localStringBuilder.append(str);
+      localStringBuilder.append("\"");
+      str = FileJsPlugin.access$1000((FileJsPlugin)localObject, localRequestEvent, null, localStringBuilder.toString());
+      return str;
     }
     catch (JSONException localJSONException)
     {
@@ -38,7 +44,7 @@ class FileJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FileJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

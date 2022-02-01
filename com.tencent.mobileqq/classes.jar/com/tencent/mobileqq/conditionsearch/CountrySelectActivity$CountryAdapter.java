@@ -19,20 +19,21 @@ class CountrySelectActivity$CountryAdapter
   
   public int a()
   {
-    return 2131559667;
+    return 2131559545;
   }
   
   public void a(View paramView, int paramInt)
   {
     paramView = (TextView)paramView;
     Object localObject = getItem(paramInt);
-    if ((localObject instanceof CountrySelectActivity.DividerItem)) {
+    if ((localObject instanceof CountrySelectActivity.DividerItem))
+    {
       paramView.setText(((CountrySelectActivity.DividerItem)localObject).jdField_a_of_type_JavaLangString);
-    }
-    while (!(localObject instanceof BaseAddress)) {
       return;
     }
-    paramView.setText(((BaseAddress)localObject).pinyinFirst);
+    if ((localObject instanceof BaseAddress)) {
+      paramView.setText(((BaseAddress)localObject).pinyinFirst);
+    }
   }
   
   public boolean a(int paramInt)
@@ -65,58 +66,57 @@ class CountrySelectActivity$CountryAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView;
     if (getItemViewType(paramInt) == 0)
     {
-      if (paramView != null) {
-        break label308;
+      localView = paramView;
+      if (paramView == null) {
+        localView = this.a.getLayoutInflater().inflate(a(), null);
       }
-      paramView = this.a.getLayoutInflater().inflate(a(), null);
+      ((TextView)localView).setText(((CountrySelectActivity.DividerItem)getItem(paramInt)).jdField_a_of_type_JavaLangString);
+      paramView = localView;
     }
-    label292:
-    label302:
-    label308:
-    for (;;)
+    else
     {
-      ((TextView)paramView).setText(((CountrySelectActivity.DividerItem)getItem(paramInt)).jdField_a_of_type_JavaLangString);
-      for (;;)
+      localView = paramView;
+      if (paramView == null)
       {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
+        localView = this.a.getLayoutInflater().inflate(2131559546, null);
+        paramView = new CountrySelectActivity.ViewHolder(null);
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365275));
+        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364607));
+        localView.findViewById(2131365274).setVisibility(8);
+        localView.setTag(paramView);
+        localView.setOnClickListener(this.a);
+      }
+      CountrySelectActivity.ViewHolder localViewHolder = (CountrySelectActivity.ViewHolder)localView.getTag();
+      BaseAddress localBaseAddress = (BaseAddress)getItem(paramInt);
+      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localBaseAddress.name);
+      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_JavaLangString.equals(localBaseAddress.code))) {
+        localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      } else {
+        localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+      localViewHolder.jdField_a_of_type_JavaLangString = localBaseAddress.code;
+      paramView = localView;
+      if (CountrySelectActivity.jdField_a_of_type_Boolean) {
+        if (localViewHolder.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)
         {
-          localView = this.a.getLayoutInflater().inflate(2131559668, null);
-          paramView = new CountrySelectActivity.ViewHolder(null);
-          paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365410));
-          paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364720));
-          localView.findViewById(2131365409).setVisibility(8);
-          localView.setTag(paramView);
-          localView.setOnClickListener(this.a);
-        }
-        paramView = (CountrySelectActivity.ViewHolder)localView.getTag();
-        BaseAddress localBaseAddress = (BaseAddress)getItem(paramInt);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localBaseAddress.name);
-        if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_JavaLangString.equals(localBaseAddress.code))) {
-          paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-        for (;;)
-        {
-          paramView.jdField_a_of_type_JavaLangString = localBaseAddress.code;
-          if (!CountrySelectActivity.jdField_a_of_type_Boolean) {
-            break label302;
-          }
-          if (paramView.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
-            break label292;
-          }
-          localView.setContentDescription(localBaseAddress.name + HardCodeUtil.a(2131702648));
+          paramView = new StringBuilder();
+          paramView.append(localBaseAddress.name);
+          paramView.append(HardCodeUtil.a(2131702781));
+          localView.setContentDescription(paramView.toString());
           paramView = localView;
-          break;
-          paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         }
-        localView.setContentDescription(localBaseAddress.name);
-        paramView = localView;
+        else
+        {
+          localView.setContentDescription(localBaseAddress.name);
+          paramView = localView;
+        }
       }
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public int getViewTypeCount()
@@ -126,7 +126,7 @@ class CountrySelectActivity$CountryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.CountrySelectActivity.CountryAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -19,276 +19,302 @@ public class ReverseGeocode
     //   0: new 27	com/tencent/mobileqq/utils/ReverseGeocode$Proxy
     //   3: dup
     //   4: invokespecial 28	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:<init>	()V
-    //   7: astore 5
-    //   9: aload_0
-    //   10: invokevirtual 34	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   13: getstatic 18	com/tencent/mobileqq/utils/ReverseGeocode:a	Landroid/net/Uri;
-    //   16: aconst_null
-    //   17: aconst_null
-    //   18: aconst_null
-    //   19: aconst_null
-    //   20: invokevirtual 40	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   23: astore_1
-    //   24: aload_1
-    //   25: astore_0
-    //   26: aload_1
-    //   27: invokeinterface 46 1 0
-    //   32: pop
-    //   33: aload_1
-    //   34: astore_0
-    //   35: aload_1
-    //   36: aload_1
-    //   37: ldc 48
-    //   39: invokeinterface 52 2 0
-    //   44: invokeinterface 56 2 0
-    //   49: astore_2
-    //   50: aload_2
-    //   51: ifnull +286 -> 337
-    //   54: aload_1
-    //   55: astore_0
-    //   56: aload_2
-    //   57: invokevirtual 62	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   60: astore_2
-    //   61: aload_1
-    //   62: astore_0
-    //   63: aload_1
-    //   64: aload_1
-    //   65: ldc 64
-    //   67: invokeinterface 52 2 0
-    //   72: invokeinterface 56 2 0
-    //   77: astore 6
-    //   79: aload_1
-    //   80: astore_0
-    //   81: aload_1
-    //   82: aload_1
-    //   83: ldc 66
+    //   7: astore 6
+    //   9: aconst_null
+    //   10: astore_2
+    //   11: aconst_null
+    //   12: astore_1
+    //   13: aload_0
+    //   14: invokevirtual 34	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   17: getstatic 18	com/tencent/mobileqq/utils/ReverseGeocode:a	Landroid/net/Uri;
+    //   20: aconst_null
+    //   21: aconst_null
+    //   22: aconst_null
+    //   23: aconst_null
+    //   24: invokevirtual 40	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   27: astore_0
+    //   28: aload_0
+    //   29: astore_1
+    //   30: aload_0
+    //   31: astore_2
+    //   32: aload_0
+    //   33: invokeinterface 46 1 0
+    //   38: pop
+    //   39: aload_0
+    //   40: astore_1
+    //   41: aload_0
+    //   42: astore_2
+    //   43: aload_0
+    //   44: aload_0
+    //   45: ldc 48
+    //   47: invokeinterface 52 2 0
+    //   52: invokeinterface 56 2 0
+    //   57: astore 4
+    //   59: aload 4
+    //   61: astore_3
+    //   62: aload 4
+    //   64: ifnull +13 -> 77
+    //   67: aload_0
+    //   68: astore_1
+    //   69: aload_0
+    //   70: astore_2
+    //   71: aload 4
+    //   73: invokevirtual 62	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   76: astore_3
+    //   77: aload_0
+    //   78: astore_1
+    //   79: aload_0
+    //   80: astore_2
+    //   81: aload_0
+    //   82: aload_0
+    //   83: ldc 64
     //   85: invokeinterface 52 2 0
     //   90: invokeinterface 56 2 0
-    //   95: astore 4
-    //   97: aload 4
-    //   99: astore_3
-    //   100: aload 4
-    //   102: ifnull +11 -> 113
-    //   105: aload_1
-    //   106: astore_0
-    //   107: aload 4
-    //   109: invokevirtual 62	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   112: astore_3
-    //   113: aload_1
-    //   114: astore_0
-    //   115: aload_1
-    //   116: invokeinterface 69 1 0
-    //   121: aload_2
-    //   122: ifnull +61 -> 183
-    //   125: aload_1
-    //   126: astore_0
-    //   127: aload_2
-    //   128: invokevirtual 73	java/lang/String:length	()I
-    //   131: ifle +52 -> 183
-    //   134: aload_1
-    //   135: astore_0
-    //   136: aload 6
-    //   138: invokestatic 79	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   141: invokevirtual 82	java/lang/Integer:intValue	()I
-    //   144: ifle +39 -> 183
-    //   147: aload_1
-    //   148: astore_0
-    //   149: aload 5
-    //   151: aload_2
-    //   152: putfield 85	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   155: aload_1
-    //   156: astore_0
-    //   157: aload 5
-    //   159: aload 6
-    //   161: invokestatic 79	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   164: invokevirtual 82	java/lang/Integer:intValue	()I
-    //   167: putfield 88	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_Int	I
-    //   170: aload_1
-    //   171: ifnull +9 -> 180
-    //   174: aload_1
-    //   175: invokeinterface 69 1 0
-    //   180: aload 5
-    //   182: areturn
+    //   95: astore 7
+    //   97: aload_0
+    //   98: astore_1
+    //   99: aload_0
+    //   100: astore_2
+    //   101: aload_0
+    //   102: aload_0
+    //   103: ldc 66
+    //   105: invokeinterface 52 2 0
+    //   110: invokeinterface 56 2 0
+    //   115: astore 5
+    //   117: aload 5
+    //   119: astore 4
+    //   121: aload 5
+    //   123: ifnull +14 -> 137
+    //   126: aload_0
+    //   127: astore_1
+    //   128: aload_0
+    //   129: astore_2
+    //   130: aload 5
+    //   132: invokevirtual 62	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   135: astore 4
+    //   137: aload_0
+    //   138: astore_1
+    //   139: aload_0
+    //   140: astore_2
+    //   141: aload_0
+    //   142: invokeinterface 69 1 0
+    //   147: aload_3
+    //   148: ifnull +59 -> 207
+    //   151: aload_0
+    //   152: astore_1
+    //   153: aload_0
+    //   154: astore_2
+    //   155: aload_3
+    //   156: invokevirtual 73	java/lang/String:length	()I
+    //   159: ifle +48 -> 207
+    //   162: aload_0
+    //   163: astore_1
+    //   164: aload_0
+    //   165: astore_2
+    //   166: aload 7
+    //   168: invokestatic 79	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   171: invokevirtual 82	java/lang/Integer:intValue	()I
+    //   174: ifle +33 -> 207
+    //   177: aload_0
+    //   178: astore_1
+    //   179: aload_0
+    //   180: astore_2
+    //   181: aload 6
     //   183: aload_3
-    //   184: ifnull +55 -> 239
-    //   187: aload_1
-    //   188: astore_0
-    //   189: aload_3
-    //   190: ldc 90
-    //   192: invokevirtual 94	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   195: ifeq +44 -> 239
-    //   198: aload_1
-    //   199: astore_0
-    //   200: aload 5
-    //   202: ldc 96
-    //   204: putfield 85	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   207: aload_1
-    //   208: astore_0
-    //   209: aload 5
-    //   211: bipush 80
-    //   213: putfield 88	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_Int	I
-    //   216: goto -46 -> 170
-    //   219: astore_2
-    //   220: aload_1
-    //   221: astore_0
-    //   222: aload_2
-    //   223: invokevirtual 99	java/lang/Exception:printStackTrace	()V
-    //   226: aload_1
-    //   227: ifnull +9 -> 236
-    //   230: aload_1
-    //   231: invokeinterface 69 1 0
-    //   236: aload 5
-    //   238: areturn
-    //   239: aload_3
-    //   240: ifnull +49 -> 289
-    //   243: aload_1
-    //   244: astore_0
-    //   245: aload_3
-    //   246: ldc 101
-    //   248: invokevirtual 94	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   251: ifeq +38 -> 289
-    //   254: aload_1
-    //   255: astore_0
-    //   256: aload 5
-    //   258: ldc 103
-    //   260: putfield 85	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   263: aload_1
-    //   264: astore_0
-    //   265: aload 5
-    //   267: bipush 80
-    //   269: putfield 88	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_Int	I
-    //   272: goto -102 -> 170
-    //   275: astore_1
-    //   276: aload_0
-    //   277: ifnull +9 -> 286
-    //   280: aload_0
-    //   281: invokeinterface 69 1 0
-    //   286: aload 5
-    //   288: areturn
-    //   289: aload_3
-    //   290: ifnull -120 -> 170
-    //   293: aload_1
-    //   294: astore_0
-    //   295: aload_3
-    //   296: ldc 105
-    //   298: invokevirtual 94	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   301: ifeq -131 -> 170
-    //   304: aload_1
-    //   305: astore_0
-    //   306: aload 5
-    //   308: ldc 103
-    //   310: putfield 85	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   313: aload_1
-    //   314: astore_0
-    //   315: aload 5
-    //   317: bipush 80
-    //   319: putfield 88	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_Int	I
-    //   322: goto -152 -> 170
-    //   325: astore_0
-    //   326: aconst_null
-    //   327: astore_0
-    //   328: goto -52 -> 276
-    //   331: astore_2
-    //   332: aconst_null
-    //   333: astore_1
-    //   334: goto -114 -> 220
-    //   337: goto -276 -> 61
+    //   184: putfield 85	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   187: aload_0
+    //   188: astore_1
+    //   189: aload_0
+    //   190: astore_2
+    //   191: aload 6
+    //   193: aload 7
+    //   195: invokestatic 79	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   198: invokevirtual 82	java/lang/Integer:intValue	()I
+    //   201: putfield 88	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_Int	I
+    //   204: goto +132 -> 336
+    //   207: aload 4
+    //   209: ifnull +42 -> 251
+    //   212: aload_0
+    //   213: astore_1
+    //   214: aload_0
+    //   215: astore_2
+    //   216: aload 4
+    //   218: ldc 90
+    //   220: invokevirtual 94	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   223: ifeq +28 -> 251
+    //   226: aload_0
+    //   227: astore_1
+    //   228: aload_0
+    //   229: astore_2
+    //   230: aload 6
+    //   232: ldc 96
+    //   234: putfield 85	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   237: aload_0
+    //   238: astore_1
+    //   239: aload_0
+    //   240: astore_2
+    //   241: aload 6
+    //   243: bipush 80
+    //   245: putfield 88	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_Int	I
+    //   248: goto +88 -> 336
+    //   251: aload 4
+    //   253: ifnull +42 -> 295
+    //   256: aload_0
+    //   257: astore_1
+    //   258: aload_0
+    //   259: astore_2
+    //   260: aload 4
+    //   262: ldc 98
+    //   264: invokevirtual 94	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   267: ifeq +28 -> 295
+    //   270: aload_0
+    //   271: astore_1
+    //   272: aload_0
+    //   273: astore_2
+    //   274: aload 6
+    //   276: ldc 100
+    //   278: putfield 85	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   281: aload_0
+    //   282: astore_1
+    //   283: aload_0
+    //   284: astore_2
+    //   285: aload 6
+    //   287: bipush 80
+    //   289: putfield 88	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_Int	I
+    //   292: goto +44 -> 336
+    //   295: aload 4
+    //   297: ifnull +39 -> 336
+    //   300: aload_0
+    //   301: astore_1
+    //   302: aload_0
+    //   303: astore_2
+    //   304: aload 4
+    //   306: ldc 102
+    //   308: invokevirtual 94	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   311: ifeq +25 -> 336
+    //   314: aload_0
+    //   315: astore_1
+    //   316: aload_0
+    //   317: astore_2
+    //   318: aload 6
+    //   320: ldc 100
+    //   322: putfield 85	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   325: aload_0
+    //   326: astore_1
+    //   327: aload_0
+    //   328: astore_2
+    //   329: aload 6
+    //   331: bipush 80
+    //   333: putfield 88	com/tencent/mobileqq/utils/ReverseGeocode$Proxy:jdField_a_of_type_Int	I
+    //   336: aload_0
+    //   337: ifnull +9 -> 346
+    //   340: aload_0
+    //   341: invokeinterface 69 1 0
+    //   346: aload 6
+    //   348: areturn
+    //   349: goto +23 -> 372
+    //   352: astore_0
+    //   353: aload_1
+    //   354: astore_2
+    //   355: aload_0
+    //   356: invokevirtual 105	java/lang/Exception:printStackTrace	()V
+    //   359: aload_1
+    //   360: ifnull +9 -> 369
+    //   363: aload_1
+    //   364: invokeinterface 69 1 0
+    //   369: aload 6
+    //   371: areturn
+    //   372: aload_2
+    //   373: ifnull +9 -> 382
+    //   376: aload_2
+    //   377: invokeinterface 69 1 0
+    //   382: aload 6
+    //   384: areturn
+    //   385: astore_0
+    //   386: goto -37 -> 349
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	340	0	paramContext	Context
-    //   23	241	1	localCursor	android.database.Cursor
-    //   275	39	1	localObject1	Object
-    //   333	1	1	localObject2	Object
-    //   49	103	2	str1	String
-    //   219	4	2	localException1	java.lang.Exception
-    //   331	1	2	localException2	java.lang.Exception
-    //   99	197	3	str2	String
-    //   95	13	4	str3	String
-    //   7	309	5	localProxy	ReverseGeocode.Proxy
-    //   77	83	6	str4	String
+    //   0	389	0	paramContext	Context
+    //   12	352	1	localContext	Context
+    //   10	367	2	localObject1	Object
+    //   61	123	3	localObject2	Object
+    //   57	248	4	localObject3	Object
+    //   115	16	5	str1	String
+    //   7	376	6	localProxy	ReverseGeocode.Proxy
+    //   95	99	7	str2	String
     // Exception table:
     //   from	to	target	type
-    //   26	33	219	java/lang/Exception
-    //   35	50	219	java/lang/Exception
-    //   56	61	219	java/lang/Exception
-    //   63	79	219	java/lang/Exception
-    //   81	97	219	java/lang/Exception
-    //   107	113	219	java/lang/Exception
-    //   115	121	219	java/lang/Exception
-    //   127	134	219	java/lang/Exception
-    //   136	147	219	java/lang/Exception
-    //   149	155	219	java/lang/Exception
-    //   157	170	219	java/lang/Exception
-    //   189	198	219	java/lang/Exception
-    //   200	207	219	java/lang/Exception
-    //   209	216	219	java/lang/Exception
-    //   245	254	219	java/lang/Exception
-    //   256	263	219	java/lang/Exception
-    //   265	272	219	java/lang/Exception
-    //   295	304	219	java/lang/Exception
-    //   306	313	219	java/lang/Exception
-    //   315	322	219	java/lang/Exception
-    //   26	33	275	finally
-    //   35	50	275	finally
-    //   56	61	275	finally
-    //   63	79	275	finally
-    //   81	97	275	finally
-    //   107	113	275	finally
-    //   115	121	275	finally
-    //   127	134	275	finally
-    //   136	147	275	finally
-    //   149	155	275	finally
-    //   157	170	275	finally
-    //   189	198	275	finally
-    //   200	207	275	finally
-    //   209	216	275	finally
-    //   222	226	275	finally
-    //   245	254	275	finally
-    //   256	263	275	finally
-    //   265	272	275	finally
-    //   295	304	275	finally
-    //   306	313	275	finally
-    //   315	322	275	finally
-    //   9	24	325	finally
-    //   9	24	331	java/lang/Exception
+    //   13	28	352	java/lang/Exception
+    //   32	39	352	java/lang/Exception
+    //   43	59	352	java/lang/Exception
+    //   71	77	352	java/lang/Exception
+    //   81	97	352	java/lang/Exception
+    //   101	117	352	java/lang/Exception
+    //   130	137	352	java/lang/Exception
+    //   141	147	352	java/lang/Exception
+    //   155	162	352	java/lang/Exception
+    //   166	177	352	java/lang/Exception
+    //   181	187	352	java/lang/Exception
+    //   191	204	352	java/lang/Exception
+    //   216	226	352	java/lang/Exception
+    //   230	237	352	java/lang/Exception
+    //   241	248	352	java/lang/Exception
+    //   260	270	352	java/lang/Exception
+    //   274	281	352	java/lang/Exception
+    //   285	292	352	java/lang/Exception
+    //   304	314	352	java/lang/Exception
+    //   318	325	352	java/lang/Exception
+    //   329	336	352	java/lang/Exception
+    //   13	28	385	finally
+    //   32	39	385	finally
+    //   43	59	385	finally
+    //   71	77	385	finally
+    //   81	97	385	finally
+    //   101	117	385	finally
+    //   130	137	385	finally
+    //   141	147	385	finally
+    //   155	162	385	finally
+    //   166	177	385	finally
+    //   181	187	385	finally
+    //   191	204	385	finally
+    //   216	226	385	finally
+    //   230	237	385	finally
+    //   241	248	385	finally
+    //   260	270	385	finally
+    //   274	281	385	finally
+    //   285	292	385	finally
+    //   304	314	385	finally
+    //   318	325	385	finally
+    //   329	336	385	finally
+    //   355	359	385	finally
   }
   
   private static String a(Context paramContext)
   {
-    String str2 = "";
-    String str1;
+    String str;
     int i;
     if (paramContext == null)
     {
-      str1 = Proxy.getDefaultHost();
+      str = Proxy.getDefaultHost();
       i = Proxy.getDefaultPort();
     }
-    for (;;)
+    else
     {
-      paramContext = str2;
-      if (str1 != null)
-      {
-        paramContext = str2;
-        if (str1.trim().length() > 0) {
-          paramContext = str1 + ":" + i;
-        }
-      }
-      return paramContext;
       if (!AppNetConnInfo.isMobileConn()) {
-        break;
+        break label143;
       }
-      str1 = Proxy.getHost(paramContext);
+      str = Proxy.getHost(paramContext);
       int j = Proxy.getPort(paramContext);
-      if ((str1 != null) && (str1.trim().length() != 0))
+      if ((str != null) && (str.trim().length() != 0))
       {
         i = j;
         if (j > 0) {}
       }
       else
       {
-        str1 = Proxy.getDefaultHost();
+        str = Proxy.getDefaultHost();
         j = Proxy.getDefaultPort();
-        if ((str1 != null) && (str1.trim().length() != 0))
+        if ((str != null) && (str.trim().length() != 0))
         {
           i = j;
           if (j > 0) {}
@@ -296,11 +322,21 @@ public class ReverseGeocode
         else
         {
           paramContext = a(paramContext);
-          str1 = paramContext.jdField_a_of_type_JavaLangString;
+          str = paramContext.jdField_a_of_type_JavaLangString;
           i = paramContext.jdField_a_of_type_Int;
         }
       }
     }
+    if ((str != null) && (str.trim().length() > 0))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(str);
+      paramContext.append(":");
+      paramContext.append(i);
+      return paramContext.toString();
+    }
+    return "";
+    label143:
     return null;
   }
   
@@ -308,279 +344,289 @@ public class ReverseGeocode
   public static String a(Context paramContext, double paramDouble1, double paramDouble2, int paramInt, HttpClient paramHttpClient)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 8
-    //   3: new 121	java/lang/StringBuilder
-    //   6: dup
-    //   7: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   10: ldc 155
-    //   12: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: dload_1
-    //   16: invokevirtual 158	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
-    //   19: ldc 160
-    //   21: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: dload_3
-    //   25: invokevirtual 158	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
-    //   28: ldc 162
-    //   30: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   36: astore 6
-    //   38: new 164	org/apache/http/params/BasicHttpParams
-    //   41: dup
-    //   42: invokespecial 165	org/apache/http/params/BasicHttpParams:<init>	()V
-    //   45: astore 7
-    //   47: aload 7
-    //   49: ldc2_w 166
-    //   52: invokestatic 173	org/apache/http/conn/params/ConnManagerParams:setTimeout	(Lorg/apache/http/params/HttpParams;J)V
-    //   55: aload 7
-    //   57: new 175	org/apache/http/conn/params/ConnPerRouteBean
-    //   60: dup
-    //   61: bipush 10
-    //   63: invokespecial 178	org/apache/http/conn/params/ConnPerRouteBean:<init>	(I)V
-    //   66: invokestatic 182	org/apache/http/conn/params/ConnManagerParams:setMaxConnectionsPerRoute	(Lorg/apache/http/params/HttpParams;Lorg/apache/http/conn/params/ConnPerRoute;)V
-    //   69: aload 7
-    //   71: bipush 10
-    //   73: invokestatic 186	org/apache/http/conn/params/ConnManagerParams:setMaxTotalConnections	(Lorg/apache/http/params/HttpParams;I)V
-    //   76: aload 7
-    //   78: sipush 10000
-    //   81: invokestatic 191	org/apache/http/params/HttpConnectionParams:setConnectionTimeout	(Lorg/apache/http/params/HttpParams;I)V
-    //   84: aload 7
-    //   86: sipush 20000
-    //   89: invokestatic 194	org/apache/http/params/HttpConnectionParams:setSoTimeout	(Lorg/apache/http/params/HttpParams;I)V
-    //   92: aload 7
-    //   94: iconst_1
-    //   95: invokestatic 198	org/apache/http/params/HttpConnectionParams:setTcpNoDelay	(Lorg/apache/http/params/HttpParams;Z)V
-    //   98: aload 7
-    //   100: sipush 8192
-    //   103: invokestatic 201	org/apache/http/params/HttpConnectionParams:setSocketBufferSize	(Lorg/apache/http/params/HttpParams;I)V
-    //   106: aload 7
-    //   108: getstatic 207	org/apache/http/HttpVersion:HTTP_1_1	Lorg/apache/http/HttpVersion;
-    //   111: invokestatic 213	org/apache/http/params/HttpProtocolParams:setVersion	(Lorg/apache/http/params/HttpParams;Lorg/apache/http/ProtocolVersion;)V
-    //   114: aload 7
-    //   116: ldc 215
-    //   118: invokestatic 219	org/apache/http/params/HttpProtocolParams:setUserAgent	(Lorg/apache/http/params/HttpParams;Ljava/lang/String;)V
-    //   121: new 221	org/apache/http/impl/client/DefaultHttpClient
-    //   124: dup
-    //   125: aload 7
-    //   127: invokespecial 224	org/apache/http/impl/client/DefaultHttpClient:<init>	(Lorg/apache/http/params/HttpParams;)V
-    //   130: astore 7
-    //   132: aload_0
-    //   133: aload 7
-    //   135: invokestatic 227	com/tencent/mobileqq/utils/ReverseGeocode:a	(Landroid/content/Context;Lorg/apache/http/client/HttpClient;)V
-    //   138: new 229	java/io/InputStreamReader
-    //   141: dup
-    //   142: aload 7
-    //   144: new 231	org/apache/http/client/methods/HttpGet
-    //   147: dup
-    //   148: aload 6
-    //   150: invokespecial 234	org/apache/http/client/methods/HttpGet:<init>	(Ljava/lang/String;)V
-    //   153: invokeinterface 240 2 0
-    //   158: invokeinterface 246 1 0
-    //   163: invokeinterface 252 1 0
-    //   168: invokespecial 255	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   171: astore 6
-    //   173: new 257	java/io/BufferedReader
-    //   176: dup
-    //   177: aload 6
-    //   179: invokespecial 260	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   182: astore 11
-    //   184: ldc 108
-    //   186: astore_0
-    //   187: aload 6
-    //   189: astore 7
-    //   191: aload 11
-    //   193: astore 8
-    //   195: aload 11
-    //   197: invokevirtual 263	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   200: astore 9
-    //   202: aload 9
-    //   204: ifnull +38 -> 242
-    //   207: aload 6
-    //   209: astore 7
-    //   211: aload 11
-    //   213: astore 8
-    //   215: new 121	java/lang/StringBuilder
-    //   218: dup
-    //   219: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   222: aload_0
-    //   223: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   226: aload 9
-    //   228: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   231: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   234: astore 9
-    //   236: aload 9
-    //   238: astore_0
-    //   239: goto -52 -> 187
-    //   242: aload 6
-    //   244: ifnull +8 -> 252
-    //   247: aload 6
-    //   249: invokevirtual 264	java/io/InputStreamReader:close	()V
-    //   252: aload_0
-    //   253: astore 7
-    //   255: aload 11
-    //   257: ifnull +11 -> 268
-    //   260: aload 11
-    //   262: invokevirtual 265	java/io/BufferedReader:close	()V
-    //   265: aload_0
-    //   266: astore 7
-    //   268: new 267	org/json/JSONObject
-    //   271: dup
-    //   272: aload 7
-    //   274: invokespecial 268	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   277: ldc_w 270
-    //   280: invokevirtual 274	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   283: astore_0
-    //   284: aload_0
-    //   285: iconst_0
-    //   286: invokevirtual 280	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
-    //   289: astore 7
-    //   291: ldc 108
-    //   293: astore 6
-    //   295: aload 6
-    //   297: astore_0
-    //   298: aload 7
-    //   300: ifnull +12 -> 312
-    //   303: aload 7
-    //   305: ldc_w 282
-    //   308: invokevirtual 285	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   311: astore_0
-    //   312: aload_0
-    //   313: ldc_w 286
-    //   316: invokestatic 290	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   319: invokevirtual 293	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   322: istore 5
-    //   324: aload_0
-    //   325: astore 6
-    //   327: iload 5
-    //   329: iflt +15 -> 344
-    //   332: aload_0
-    //   333: iconst_0
-    //   334: iload 5
-    //   336: invokevirtual 297	java/lang/String:substring	(II)Ljava/lang/String;
-    //   339: invokevirtual 119	java/lang/String:trim	()Ljava/lang/String;
-    //   342: astore 6
-    //   344: aload 6
-    //   346: areturn
-    //   347: astore 6
+    //   0: ldc 148
+    //   2: astore 9
+    //   4: new 133	java/lang/StringBuilder
+    //   7: dup
+    //   8: invokespecial 134	java/lang/StringBuilder:<init>	()V
+    //   11: astore 6
+    //   13: aload 6
+    //   15: ldc 155
+    //   17: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: pop
+    //   21: aload 6
+    //   23: dload_1
+    //   24: invokevirtual 158	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
+    //   27: pop
+    //   28: aload 6
+    //   30: ldc 160
+    //   32: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: pop
+    //   36: aload 6
+    //   38: dload_3
+    //   39: invokevirtual 158	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
+    //   42: pop
+    //   43: aload 6
+    //   45: ldc 162
+    //   47: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: pop
+    //   51: aload 6
+    //   53: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: astore 8
+    //   58: new 164	org/apache/http/params/BasicHttpParams
+    //   61: dup
+    //   62: invokespecial 165	org/apache/http/params/BasicHttpParams:<init>	()V
+    //   65: astore 6
+    //   67: aload 6
+    //   69: ldc2_w 166
+    //   72: invokestatic 173	org/apache/http/conn/params/ConnManagerParams:setTimeout	(Lorg/apache/http/params/HttpParams;J)V
+    //   75: aload 6
+    //   77: new 175	org/apache/http/conn/params/ConnPerRouteBean
+    //   80: dup
+    //   81: bipush 10
+    //   83: invokespecial 178	org/apache/http/conn/params/ConnPerRouteBean:<init>	(I)V
+    //   86: invokestatic 182	org/apache/http/conn/params/ConnManagerParams:setMaxConnectionsPerRoute	(Lorg/apache/http/params/HttpParams;Lorg/apache/http/conn/params/ConnPerRoute;)V
+    //   89: aload 6
+    //   91: bipush 10
+    //   93: invokestatic 186	org/apache/http/conn/params/ConnManagerParams:setMaxTotalConnections	(Lorg/apache/http/params/HttpParams;I)V
+    //   96: aload 6
+    //   98: sipush 10000
+    //   101: invokestatic 191	org/apache/http/params/HttpConnectionParams:setConnectionTimeout	(Lorg/apache/http/params/HttpParams;I)V
+    //   104: aload 6
+    //   106: sipush 20000
+    //   109: invokestatic 194	org/apache/http/params/HttpConnectionParams:setSoTimeout	(Lorg/apache/http/params/HttpParams;I)V
+    //   112: aload 6
+    //   114: iconst_1
+    //   115: invokestatic 198	org/apache/http/params/HttpConnectionParams:setTcpNoDelay	(Lorg/apache/http/params/HttpParams;Z)V
+    //   118: aload 6
+    //   120: sipush 8192
+    //   123: invokestatic 201	org/apache/http/params/HttpConnectionParams:setSocketBufferSize	(Lorg/apache/http/params/HttpParams;I)V
+    //   126: aload 6
+    //   128: getstatic 207	org/apache/http/HttpVersion:HTTP_1_1	Lorg/apache/http/HttpVersion;
+    //   131: invokestatic 213	org/apache/http/params/HttpProtocolParams:setVersion	(Lorg/apache/http/params/HttpParams;Lorg/apache/http/ProtocolVersion;)V
+    //   134: aload 6
+    //   136: ldc 215
+    //   138: invokestatic 219	org/apache/http/params/HttpProtocolParams:setUserAgent	(Lorg/apache/http/params/HttpParams;Ljava/lang/String;)V
+    //   141: new 221	org/apache/http/impl/client/DefaultHttpClient
+    //   144: dup
+    //   145: aload 6
+    //   147: invokespecial 224	org/apache/http/impl/client/DefaultHttpClient:<init>	(Lorg/apache/http/params/HttpParams;)V
+    //   150: astore 10
+    //   152: aload_0
+    //   153: aload 10
+    //   155: invokestatic 227	com/tencent/mobileqq/utils/ReverseGeocode:a	(Landroid/content/Context;Lorg/apache/http/client/HttpClient;)V
+    //   158: aconst_null
+    //   159: astore 6
+    //   161: aconst_null
+    //   162: astore 7
+    //   164: new 229	java/io/InputStreamReader
+    //   167: dup
+    //   168: aload 10
+    //   170: new 231	org/apache/http/client/methods/HttpGet
+    //   173: dup
+    //   174: aload 8
+    //   176: invokespecial 234	org/apache/http/client/methods/HttpGet:<init>	(Ljava/lang/String;)V
+    //   179: invokeinterface 240 2 0
+    //   184: invokeinterface 246 1 0
+    //   189: invokeinterface 252 1 0
+    //   194: invokespecial 255	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   197: astore_0
+    //   198: new 257	java/io/BufferedReader
+    //   201: dup
+    //   202: aload_0
+    //   203: invokespecial 260	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   206: astore 7
+    //   208: ldc 148
+    //   210: astore 6
+    //   212: aload 7
+    //   214: invokevirtual 263	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   217: astore 8
+    //   219: aload 8
+    //   221: ifnull +42 -> 263
+    //   224: new 133	java/lang/StringBuilder
+    //   227: dup
+    //   228: invokespecial 134	java/lang/StringBuilder:<init>	()V
+    //   231: astore 10
+    //   233: aload 10
+    //   235: aload 6
+    //   237: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   240: pop
+    //   241: aload 10
+    //   243: aload 8
+    //   245: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: pop
+    //   249: aload 10
+    //   251: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   254: astore 8
+    //   256: aload 8
+    //   258: astore 6
+    //   260: goto -48 -> 212
+    //   263: aload_0
+    //   264: invokevirtual 264	java/io/InputStreamReader:close	()V
+    //   267: aload 7
+    //   269: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   272: goto +122 -> 394
+    //   275: astore_0
+    //   276: aload_0
+    //   277: invokevirtual 266	java/io/IOException:printStackTrace	()V
+    //   280: goto +114 -> 394
+    //   283: astore 6
+    //   285: goto +205 -> 490
+    //   288: astore 10
+    //   290: aload 6
+    //   292: astore 8
+    //   294: aload 7
+    //   296: astore 6
+    //   298: aload 8
+    //   300: astore 7
+    //   302: aload 10
+    //   304: astore 8
+    //   306: goto +51 -> 357
+    //   309: astore 6
+    //   311: aconst_null
+    //   312: astore 7
+    //   314: goto +176 -> 490
+    //   317: astore 6
+    //   319: goto +23 -> 342
+    //   322: astore 8
+    //   324: aconst_null
+    //   325: astore 7
+    //   327: aload 6
+    //   329: astore_0
+    //   330: aload 8
+    //   332: astore 6
+    //   334: goto +156 -> 490
+    //   337: astore 6
+    //   339: aload 7
+    //   341: astore_0
+    //   342: aconst_null
+    //   343: astore 10
+    //   345: ldc 148
+    //   347: astore 7
     //   349: aload 6
-    //   351: invokevirtual 298	java/io/IOException:printStackTrace	()V
-    //   354: aload_0
-    //   355: astore 7
-    //   357: goto -89 -> 268
-    //   360: astore 9
-    //   362: aconst_null
-    //   363: astore 10
-    //   365: aconst_null
-    //   366: astore 6
-    //   368: ldc 108
-    //   370: astore_0
-    //   371: aload 10
-    //   373: astore 7
-    //   375: aload 6
-    //   377: astore 8
-    //   379: aload 9
-    //   381: invokevirtual 298	java/io/IOException:printStackTrace	()V
-    //   384: aload 10
-    //   386: ifnull +8 -> 394
-    //   389: aload 10
-    //   391: invokevirtual 264	java/io/InputStreamReader:close	()V
-    //   394: aload_0
-    //   395: astore 7
-    //   397: aload 6
-    //   399: ifnull -131 -> 268
-    //   402: aload 6
-    //   404: invokevirtual 265	java/io/BufferedReader:close	()V
-    //   407: aload_0
-    //   408: astore 7
-    //   410: goto -142 -> 268
-    //   413: astore 6
-    //   415: aload 6
-    //   417: invokevirtual 298	java/io/IOException:printStackTrace	()V
-    //   420: aload_0
-    //   421: astore 7
-    //   423: goto -155 -> 268
-    //   426: astore_0
-    //   427: aconst_null
-    //   428: astore 6
-    //   430: aload 6
-    //   432: ifnull +8 -> 440
-    //   435: aload 6
-    //   437: invokevirtual 264	java/io/InputStreamReader:close	()V
-    //   440: aload 8
-    //   442: ifnull +8 -> 450
-    //   445: aload 8
-    //   447: invokevirtual 265	java/io/BufferedReader:close	()V
-    //   450: aload_0
-    //   451: athrow
-    //   452: astore 6
-    //   454: aload 6
-    //   456: invokevirtual 298	java/io/IOException:printStackTrace	()V
-    //   459: goto -9 -> 450
-    //   462: astore_0
-    //   463: ldc 108
-    //   465: areturn
-    //   466: astore_0
-    //   467: aload_0
-    //   468: invokevirtual 299	org/json/JSONException:printStackTrace	()V
-    //   471: aload 6
-    //   473: astore_0
-    //   474: goto -162 -> 312
-    //   477: astore_0
-    //   478: goto -48 -> 430
-    //   481: astore_0
-    //   482: aload 7
-    //   484: astore 6
-    //   486: goto -56 -> 430
-    //   489: astore 9
-    //   491: aconst_null
-    //   492: astore 7
-    //   494: ldc 108
-    //   496: astore_0
-    //   497: aload 6
-    //   499: astore 10
+    //   351: astore 8
+    //   353: aload 10
+    //   355: astore 6
+    //   357: aload 8
+    //   359: invokevirtual 266	java/io/IOException:printStackTrace	()V
+    //   362: aload_0
+    //   363: ifnull +10 -> 373
+    //   366: aload_0
+    //   367: invokevirtual 264	java/io/InputStreamReader:close	()V
+    //   370: goto +3 -> 373
+    //   373: aload 6
+    //   375: ifnull +15 -> 390
+    //   378: aload 6
+    //   380: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   383: goto +7 -> 390
+    //   386: aload_0
+    //   387: invokevirtual 266	java/io/IOException:printStackTrace	()V
+    //   390: aload 7
+    //   392: astore 6
+    //   394: new 268	org/json/JSONObject
+    //   397: dup
+    //   398: aload 6
+    //   400: invokespecial 269	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   403: ldc_w 271
+    //   406: invokevirtual 275	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   409: astore_0
+    //   410: aload_0
+    //   411: iconst_0
+    //   412: invokevirtual 281	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   415: astore 6
+    //   417: aload 9
+    //   419: astore_0
+    //   420: aload 6
+    //   422: ifnull +23 -> 445
+    //   425: aload 6
+    //   427: ldc_w 283
+    //   430: invokevirtual 286	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   433: astore_0
+    //   434: goto +11 -> 445
+    //   437: astore_0
+    //   438: aload_0
+    //   439: invokevirtual 287	org/json/JSONException:printStackTrace	()V
+    //   442: aload 9
+    //   444: astore_0
+    //   445: aload_0
+    //   446: ldc_w 288
+    //   449: invokestatic 292	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   452: invokevirtual 295	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   455: istore 5
+    //   457: aload_0
+    //   458: astore 6
+    //   460: iload 5
+    //   462: iflt +15 -> 477
+    //   465: aload_0
+    //   466: iconst_0
+    //   467: iload 5
+    //   469: invokevirtual 299	java/lang/String:substring	(II)Ljava/lang/String;
+    //   472: invokevirtual 129	java/lang/String:trim	()Ljava/lang/String;
+    //   475: astore 6
+    //   477: aload 6
+    //   479: areturn
+    //   480: astore 8
+    //   482: aload 6
+    //   484: astore 7
+    //   486: aload 8
+    //   488: astore 6
+    //   490: aload_0
+    //   491: ifnull +10 -> 501
+    //   494: aload_0
+    //   495: invokevirtual 264	java/io/InputStreamReader:close	()V
+    //   498: goto +3 -> 501
     //   501: aload 7
-    //   503: astore 6
-    //   505: goto -134 -> 371
-    //   508: astore 9
-    //   510: aload 6
-    //   512: astore 10
-    //   514: aload 11
-    //   516: astore 6
-    //   518: goto -147 -> 371
+    //   503: ifnull +15 -> 518
+    //   506: aload 7
+    //   508: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   511: goto +7 -> 518
+    //   514: aload_0
+    //   515: invokevirtual 266	java/io/IOException:printStackTrace	()V
+    //   518: goto +6 -> 524
+    //   521: aload 6
+    //   523: athrow
+    //   524: goto -3 -> 521
+    //   527: astore_0
+    //   528: ldc 148
+    //   530: areturn
+    //   531: astore_0
+    //   532: goto -146 -> 386
+    //   535: astore_0
+    //   536: goto -22 -> 514
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	521	0	paramContext	Context
-    //   0	521	1	paramDouble1	double
-    //   0	521	3	paramDouble2	double
-    //   0	521	5	paramInt	int
-    //   0	521	6	paramHttpClient	HttpClient
-    //   45	457	7	localObject1	Object
-    //   1	445	8	localObject2	Object
-    //   200	37	9	str	String
-    //   360	20	9	localIOException1	java.io.IOException
-    //   489	1	9	localIOException2	java.io.IOException
-    //   508	1	9	localIOException3	java.io.IOException
-    //   363	150	10	localHttpClient	HttpClient
-    //   182	333	11	localBufferedReader	java.io.BufferedReader
+    //   0	539	0	paramContext	Context
+    //   0	539	1	paramDouble1	double
+    //   0	539	3	paramDouble2	double
+    //   0	539	5	paramInt	int
+    //   0	539	6	paramHttpClient	HttpClient
+    //   162	345	7	localObject1	Object
+    //   56	249	8	localObject2	Object
+    //   322	9	8	localObject3	Object
+    //   351	7	8	localHttpClient	HttpClient
+    //   480	7	8	localObject4	Object
+    //   2	441	9	str	String
+    //   150	100	10	localObject5	Object
+    //   288	15	10	localIOException	java.io.IOException
+    //   343	11	10	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   247	252	347	java/io/IOException
-    //   260	265	347	java/io/IOException
-    //   138	173	360	java/io/IOException
-    //   389	394	413	java/io/IOException
-    //   402	407	413	java/io/IOException
-    //   138	173	426	finally
-    //   435	440	452	java/io/IOException
-    //   445	450	452	java/io/IOException
-    //   268	284	462	org/json/JSONException
-    //   303	312	466	org/json/JSONException
-    //   173	184	477	finally
-    //   195	202	481	finally
-    //   215	236	481	finally
-    //   379	384	481	finally
-    //   173	184	489	java/io/IOException
-    //   195	202	508	java/io/IOException
-    //   215	236	508	java/io/IOException
+    //   263	272	275	java/io/IOException
+    //   212	219	283	finally
+    //   224	256	283	finally
+    //   212	219	288	java/io/IOException
+    //   224	256	288	java/io/IOException
+    //   198	208	309	finally
+    //   198	208	317	java/io/IOException
+    //   164	198	322	finally
+    //   164	198	337	java/io/IOException
+    //   425	434	437	org/json/JSONException
+    //   357	362	480	finally
+    //   394	410	527	org/json/JSONException
+    //   366	370	531	java/io/IOException
+    //   378	383	531	java/io/IOException
+    //   494	498	535	java/io/IOException
+    //   506	511	535	java/io/IOException
   }
   
   public static void a(Context paramContext, HttpClient paramHttpClient)
@@ -600,7 +646,7 @@ public class ReverseGeocode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ReverseGeocode
  * JD-Core Version:    0.7.0.1
  */

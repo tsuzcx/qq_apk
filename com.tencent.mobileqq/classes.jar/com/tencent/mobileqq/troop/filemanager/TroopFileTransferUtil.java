@@ -12,21 +12,20 @@ public class TroopFileTransferUtil
 {
   public static int a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        do
-        {
-          return 0;
-        } while (!paramString.startsWith("H_"));
-        i = paramString.indexOf("_");
-      } while (i == -1);
-      j = paramString.lastIndexOf("_");
-    } while (i == j);
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    if (!paramString.startsWith("H_")) {
+      return 0;
+    }
+    int i = paramString.indexOf("_");
+    if (i == -1) {
+      return 0;
+    }
+    int j = paramString.lastIndexOf("_");
+    if (i == j) {
+      return 0;
+    }
     paramString = paramString.substring(j);
     try
     {
@@ -53,73 +52,80 @@ public class TroopFileTransferUtil
   
   public static TroopFileTransferUtil.HostInfo a(String paramString)
   {
-    int i = 1;
     TroopFileTransferUtil.HostInfo localHostInfo = new TroopFileTransferUtil.HostInfo();
     if (TextUtils.isEmpty(paramString)) {
       return localHostInfo;
     }
-    for (;;)
+    String str1 = null;
+    String str2;
+    label271:
+    label278:
+    do
     {
-      try
+      for (;;)
       {
-        int j = paramString.indexOf("://");
-        if (j == -1)
+        try
         {
-          j = 0;
-          String str1 = paramString.substring(j);
-          int m = str1.indexOf("/");
-          int k = m;
+          i = paramString.indexOf("://");
+          if (i != -1) {
+            break label271;
+          }
+          i = 0;
+          str2 = paramString.substring(i);
+          k = str2.indexOf("/");
+          int j = k;
+          if (-1 == k) {
+            j = str2.length() - 1;
+          }
+          k = paramString.indexOf("&bHost=");
+          if (-1 == k) {
+            break label278;
+          }
+          int m = paramString.indexOf("&bPort=", k);
           if (-1 == m) {
-            k = str1.length() - 1;
+            break label278;
           }
-          m = paramString.indexOf("&bHost=");
-          if (-1 == m)
-          {
-            i = 0;
-            str1 = null;
-            str2 = str1;
-            if (str1 == null) {
-              str2 = paramString.substring(j, k + j);
-            }
-            if (str2 == null) {
-              break;
-            }
-            j = str2.indexOf(":");
-            if (j < 0) {
-              continue;
-            }
-            paramString = str2.substring(0, j);
-            str1 = str2.substring(j + 1);
-            localHostInfo.jdField_a_of_type_JavaLangString = paramString;
-            localHostInfo.jdField_a_of_type_Int = Integer.valueOf(str1).intValue();
-            if (i == 0) {
-              break;
-            }
-            localHostInfo.b = 1;
-            return localHostInfo;
+          str1 = paramString.substring(k + 7, m);
+          str2 = paramString.substring(m + 7);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str1);
+          localStringBuilder.append(":");
+          localStringBuilder.append(str2);
+          str1 = localStringBuilder.toString();
+          k = 1;
+          str2 = str1;
+          if (str1 != null) {
+            break;
           }
-          int n = paramString.indexOf("&bPort=", m);
-          if (-1 == n)
-          {
-            i = 0;
-            str1 = null;
-            continue;
-          }
-          str1 = paramString.substring("&bHost=".length() + m, n);
-          String str2 = paramString.substring("&bPort=".length() + n);
-          str1 = str1 + ":" + str2;
-          continue;
+          str2 = paramString.substring(i, j + i);
+        }
+        catch (Exception paramString)
+        {
+          return localHostInfo;
+        }
+        int i = str2.indexOf(":");
+        if (i >= 0)
+        {
+          paramString = str2.substring(0, i);
+          str1 = str2.substring(i + 1);
+          localHostInfo.jdField_a_of_type_JavaLangString = paramString;
+          localHostInfo.jdField_a_of_type_Int = Integer.valueOf(str1).intValue();
+        }
+        else
+        {
           localHostInfo.jdField_a_of_type_JavaLangString = str2;
           localHostInfo.jdField_a_of_type_Int = 0;
-          continue;
         }
-        j += 3;
-      }
-      catch (Exception paramString)
-      {
+        if (k != 0) {
+          localHostInfo.b = 1;
+        }
         return localHostInfo;
+        i += 3;
+        continue;
+        int k = 0;
       }
-    }
+    } while (str2 != null);
+    return localHostInfo;
   }
   
   public static TroopFileManager a(long paramLong)
@@ -141,19 +147,22 @@ public class TroopFileTransferUtil
     }
     if (AppNetConnInfo.isMobileConn())
     {
-      switch (AppNetConnInfo.getMobileInfo())
+      int i = AppNetConnInfo.getMobileInfo();
+      if (i != -1)
       {
-      default: 
-        return "unkonw";
-      case -1: 
-        return "none";
-      case 0: 
-      case 1: 
+        if ((i != 0) && (i != 1))
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              return "unkonw";
+            }
+            return "4g";
+          }
+          return "3g";
+        }
         return "2g";
-      case 2: 
-        return "3g";
       }
-      return "4g";
     }
     return "none";
   }
@@ -166,26 +175,29 @@ public class TroopFileTransferUtil
     if (paramString.startsWith("/")) {
       return paramString.substring(1);
     }
-    return "/" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static int b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          return 0;
-          i = paramString.indexOf("User-ReturnCode=[");
-        } while (i == -1);
-        paramString = paramString.substring("User-ReturnCode=[".length() + i);
-      } while (TextUtils.isEmpty(paramString));
-      i = paramString.indexOf("]");
-    } while (i == -1);
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    int i = paramString.indexOf("User-ReturnCode=[");
+    if (i == -1) {
+      return 0;
+    }
+    paramString = paramString.substring(i + 17);
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    i = paramString.indexOf("]");
+    if (i == -1) {
+      return 0;
+    }
     paramString = paramString.substring(0, i);
     try
     {
@@ -198,21 +210,20 @@ public class TroopFileTransferUtil
   
   public static int c(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        do
-        {
-          return 0;
-        } while (!paramString.startsWith("H_"));
-        i = paramString.indexOf("_");
-      } while (i == -1);
-      j = paramString.lastIndexOf("_");
-    } while (i == j);
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    if (!paramString.startsWith("H_")) {
+      return 0;
+    }
+    int i = paramString.indexOf("_");
+    if (i == -1) {
+      return 0;
+    }
+    int j = paramString.lastIndexOf("_");
+    if (i == j) {
+      return 0;
+    }
     paramString = paramString.substring(i, j - 1);
     try
     {
@@ -225,7 +236,7 @@ public class TroopFileTransferUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil
  * JD-Core Version:    0.7.0.1
  */

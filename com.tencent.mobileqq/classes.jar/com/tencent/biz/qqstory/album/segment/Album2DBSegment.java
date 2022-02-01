@@ -16,11 +16,6 @@ public class Album2DBSegment
 {
   private ScanInfo a;
   
-  public Album2DBSegment(ScanInfo paramScanInfo)
-  {
-    this.a = paramScanInfo;
-  }
-  
   protected void a(JobContext paramJobContext, List<StoryAlbum> paramList)
   {
     int i = 1;
@@ -32,7 +27,7 @@ public class Album2DBSegment
     }
     paramJobContext = paramList.iterator();
     while (paramJobContext.hasNext()) {
-      ((StoryAlbum)paramJobContext.next()).a(this.a);
+      ((StoryAlbum)paramJobContext.next()).a(this.a.toString());
     }
     StoryScanManager.a(paramList);
     StoryScanManager localStoryScanManager = (StoryScanManager)SuperManager.a(30);
@@ -43,23 +38,28 @@ public class Album2DBSegment
       paramJobContext = paramList;
       if (paramList.size() > localStoryAlbumConfig.a())
       {
-        SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "we scan album=" + paramList.size() + " ,but we only need " + localStoryAlbumConfig.a());
+        paramJobContext = new StringBuilder();
+        paramJobContext.append("we scan album=");
+        paramJobContext.append(paramList.size());
+        paramJobContext.append(" ,but we only need ");
+        paramJobContext.append(localStoryAlbumConfig.a());
+        SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", paramJobContext.toString());
         paramJobContext = paramList.subList(0, localStoryAlbumConfig.a());
       }
     }
     if (localStoryScanManager.a(paramJobContext, this.a.a()))
     {
       long l2;
-      for (long l1 = ((StoryAlbum)paramJobContext.get(0)).e(); i < paramJobContext.size(); l1 = l2)
+      for (long l1 = ((StoryAlbum)paramJobContext.get(0)).d(); i < paramJobContext.size(); l1 = l2)
       {
-        long l3 = ((StoryAlbum)paramJobContext.get(i)).e();
+        long l3 = ((StoryAlbum)paramJobContext.get(i)).d();
         l2 = l1;
         if (l3 > l1) {
           l2 = l3;
         }
         i += 1;
       }
-      this.a.a(((StoryAlbum)paramJobContext.get(0)).e());
+      this.a.a(((StoryAlbum)paramJobContext.get(0)).d());
       notifyResult(paramJobContext);
       return;
     }
@@ -68,7 +68,7 @@ public class Album2DBSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.segment.Album2DBSegment
  * JD-Core Version:    0.7.0.1
  */

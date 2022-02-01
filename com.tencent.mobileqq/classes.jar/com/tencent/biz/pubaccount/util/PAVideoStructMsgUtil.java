@@ -1,9 +1,11 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.kandian.repo.common.constant.ReadInJoyConstants;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
@@ -13,7 +15,6 @@ import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -73,75 +74,104 @@ public class PAVideoStructMsgUtil
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    String str3 = ReadInJoyConstants.k;
-    String str1 = str3;
-    if (paramBoolean) {}
-    try
-    {
-      str1 = URLDecoder.decode(ReadInJoyHelper.d(), "utf-8");
-      return str1 + Base64Util.encodeToString(paramString.getBytes(), 2);
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
+    Object localObject3 = ReadInJoyConstants.k;
+    Object localObject1 = localObject3;
+    Object localObject2;
+    if (paramBoolean) {
+      try
+      {
+        localObject1 = URLDecoder.decode(((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getPersonalHomePageWebUrl(), "utf-8");
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
         QLog.e("PAVideoStructMsgUtil", 1, "getJumpURL4WebSubscribeAccount error,", localUnsupportedEncodingException);
-        String str2 = str3;
+        localObject2 = localObject3;
       }
     }
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(localObject2);
+    ((StringBuilder)localObject3).append(Base64Util.encodeToString(paramString.getBytes(), 2));
+    return ((StringBuilder)localObject3).toString();
   }
   
   public static void a(StructMsgForGeneralShare paramStructMsgForGeneralShare)
   {
-    if (paramStructMsgForGeneralShare == null) {}
-    do
-    {
+    if (paramStructMsgForGeneralShare == null) {
       return;
-      Iterator localIterator = paramStructMsgForGeneralShare.iterator();
-      while (localIterator.hasNext())
+    }
+    Object localObject1 = paramStructMsgForGeneralShare.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (AbsStructMsgElement)((Iterator)localObject1).next();
+      if ((localObject2 instanceof StructMsgItemLayout5))
       {
-        Object localObject1 = (AbsStructMsgElement)localIterator.next();
-        if ((localObject1 instanceof StructMsgItemLayout5))
+        localObject2 = ((StructMsgItemLayout5)localObject2).a.iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          localObject1 = ((StructMsgItemLayout5)localObject1).a.iterator();
-          while (((Iterator)localObject1).hasNext())
+          Object localObject3 = (AbsStructMsgElement)((Iterator)localObject2).next();
+          Object localObject4;
+          Object localObject5;
+          if ((localObject3 instanceof StructMsgItemVideo))
           {
-            Object localObject2 = (AbsStructMsgElement)((Iterator)localObject1).next();
-            if ((localObject2 instanceof StructMsgItemVideo))
+            localObject3 = (StructMsgItemVideo)localObject3;
+            if (((StructMsgItemVideo)localObject3).a())
             {
-              localObject2 = (StructMsgItemVideo)localObject2;
-              if (((StructMsgItemVideo)localObject2).a())
-              {
-                ((StructMsgItemVideo)localObject2).ag = null;
-                ((StructMsgItemVideo)localObject2).ad = null;
-                ((StructMsgItemVideo)localObject2).o = 0;
-                if (QLog.isColorLevel()) {
-                  QLog.d("PAVideoStructMsgUtil", 2, "simplifyForForward: summary = null");
-                }
-                ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X800682F", "0X800682F", 0, 0, ((StructMsgItemVideo)localObject2).ae, "" + ((StructMsgItemVideo)localObject2).v, "" + ((StructMsgItemVideo)localObject2).a.msgId, "");
-              }
-            }
-            else if ((localObject2 instanceof StructMsgItemTitle))
-            {
-              localObject2 = (StructMsgItemTitle)localObject2;
-              String str = ((StructMsgItemTitle)localObject2).b();
-              int i = str.length();
+              ((StructMsgItemVideo)localObject3).ag = null;
+              ((StructMsgItemVideo)localObject3).ad = null;
+              ((StructMsgItemVideo)localObject3).o = 0;
               if (QLog.isColorLevel()) {
-                QLog.d("PAVideoStructMsgUtil", 2, "simplifyForForward: title = " + ((StructMsgItemTitle)localObject2).b() + ", length=" + i);
+                QLog.d("PAVideoStructMsgUtil", 2, "simplifyForForward: summary = null");
               }
-              if (i > 15)
+              localObject4 = ((StructMsgItemVideo)localObject3).ae;
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append("");
+              ((StringBuilder)localObject5).append(((StructMsgItemVideo)localObject3).v);
+              localObject5 = ((StringBuilder)localObject5).toString();
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("");
+              localStringBuilder.append(((StructMsgItemVideo)localObject3).a.msgId);
+              ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X800682F", "0X800682F", 0, 0, (String)localObject4, (String)localObject5, localStringBuilder.toString(), "");
+            }
+          }
+          else if ((localObject3 instanceof StructMsgItemTitle))
+          {
+            localObject3 = (StructMsgItemTitle)localObject3;
+            localObject4 = ((StructMsgItemTitle)localObject3).b();
+            int i = ((String)localObject4).length();
+            if (QLog.isColorLevel())
+            {
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append("simplifyForForward: title = ");
+              ((StringBuilder)localObject5).append(((StructMsgItemTitle)localObject3).b());
+              ((StringBuilder)localObject5).append(", length=");
+              ((StringBuilder)localObject5).append(i);
+              QLog.d("PAVideoStructMsgUtil", 2, ((StringBuilder)localObject5).toString());
+            }
+            if (i > 15)
+            {
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append(((String)localObject4).substring(0, 15));
+              ((StringBuilder)localObject5).append("...");
+              ((StructMsgItemTitle)localObject3).a(((StringBuilder)localObject5).toString());
+              if (QLog.isColorLevel())
               {
-                ((StructMsgItemTitle)localObject2).a(str.substring(0, 15) + "...");
-                if (QLog.isColorLevel()) {
-                  QLog.d("PAVideoStructMsgUtil", 2, "simplifyForForward: after reduce title length, title = " + ((StructMsgItemTitle)localObject2).b());
-                }
+                localObject4 = new StringBuilder();
+                ((StringBuilder)localObject4).append("simplifyForForward: after reduce title length, title = ");
+                ((StringBuilder)localObject4).append(((StructMsgItemTitle)localObject3).b());
+                QLog.d("PAVideoStructMsgUtil", 2, ((StringBuilder)localObject4).toString());
               }
             }
           }
         }
       }
-    } while ((TextUtils.isEmpty(paramStructMsgForGeneralShare.mMsgBrief)) || (paramStructMsgForGeneralShare.mMsgBrief.length() <= 15));
-    paramStructMsgForGeneralShare.mMsgBrief = (paramStructMsgForGeneralShare.mMsgBrief.substring(0, 15) + "...");
+    }
+    if ((!TextUtils.isEmpty(paramStructMsgForGeneralShare.mMsgBrief)) && (paramStructMsgForGeneralShare.mMsgBrief.length() > 15))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramStructMsgForGeneralShare.mMsgBrief.substring(0, 15));
+      ((StringBuilder)localObject1).append("...");
+      paramStructMsgForGeneralShare.mMsgBrief = ((StringBuilder)localObject1).toString();
+    }
   }
   
   public static boolean a(int paramInt)
@@ -151,26 +181,31 @@ public class PAVideoStructMsgUtil
   
   public static boolean a(AbsStructMsg paramAbsStructMsg)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
+    boolean bool3 = false;
+    boolean bool1 = false;
+    boolean bool2 = bool3;
     if (paramAbsStructMsg != null)
     {
-      bool1 = bool2;
+      bool2 = bool3;
       if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
       {
         paramAbsStructMsg = ((StructMsgForGeneralShare)paramAbsStructMsg).iterator();
-        bool1 = false;
-        if (paramAbsStructMsg.hasNext())
+        for (;;)
         {
-          Object localObject = (AbsStructMsgElement)paramAbsStructMsg.next();
-          if (!(localObject instanceof StructMsgItemLayout5)) {
-            break label110;
+          bool2 = bool1;
+          if (!paramAbsStructMsg.hasNext()) {
+            return bool2;
           }
-          localObject = ((StructMsgItemLayout5)localObject).a.iterator();
-          while (((Iterator)localObject).hasNext())
+          Object localObject = (AbsStructMsgElement)paramAbsStructMsg.next();
+          if ((localObject instanceof StructMsgItemLayout5))
           {
-            AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
-            if ((localAbsStructMsgElement instanceof StructMsgItemVideo)) {
+            localObject = ((StructMsgItemLayout5)localObject).a.iterator();
+            if (((Iterator)localObject).hasNext())
+            {
+              AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
+              if (!(localAbsStructMsgElement instanceof StructMsgItemVideo)) {
+                break;
+              }
               if (((StructMsgItemVideo)localAbsStructMsgElement).a()) {
                 bool1 = true;
               }
@@ -179,17 +214,12 @@ public class PAVideoStructMsgUtil
         }
       }
     }
-    label110:
-    for (;;)
-    {
-      break;
-      return bool1;
-    }
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PAVideoStructMsgUtil
  * JD-Core Version:    0.7.0.1
  */

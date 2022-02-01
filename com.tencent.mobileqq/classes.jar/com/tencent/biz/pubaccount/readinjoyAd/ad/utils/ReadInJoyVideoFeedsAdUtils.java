@@ -1,8 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.utils;
 
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdEntityConvertService;
+import com.tencent.mobileqq.kandian.biz.ad.entity.VideoAdInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class ReadInJoyVideoFeedsAdUtils
 {
@@ -11,12 +12,12 @@ public class ReadInJoyVideoFeedsAdUtils
     if (paramVideoAdInfo == null) {
       return null;
     }
-    return NativeAdUtils.a(paramVideoAdInfo, Integer.valueOf(5), Integer.valueOf(3));
+    return ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoAdInfo, Integer.valueOf(5), Integer.valueOf(3));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyVideoFeedsAdUtils
  * JD-Core Version:    0.7.0.1
  */

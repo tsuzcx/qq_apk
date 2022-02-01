@@ -7,9 +7,9 @@ import android.content.Context;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -35,20 +35,22 @@ public class BubbleController
   
   public List<FontBubble> a(QQAppInterface paramQQAppInterface, BubbleRecommendRsp paramBubbleRecommendRsp)
   {
-    int j = 0;
     paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramQQAppInterface.getAccount());
-    int i;
+    int i = 0;
+    int j;
     if (paramQQAppInterface == null)
     {
       QLog.e("FontBubbleManager", 1, "BubbleController no ExtensionInfo");
-      i = 0;
+      j = 0;
     }
-    for (;;)
+    else
     {
-      paramQQAppInterface = new ArrayList();
-      if (paramBubbleRecommendRsp.vItems == null) {
-        break;
-      }
+      i = (int)paramQQAppInterface.uVipFont;
+      j = paramQQAppInterface.vipFontType;
+    }
+    paramQQAppInterface = new ArrayList();
+    if (paramBubbleRecommendRsp.vItems != null)
+    {
       paramBubbleRecommendRsp = paramBubbleRecommendRsp.vItems.iterator();
       while (paramBubbleRecommendRsp.hasNext())
       {
@@ -68,20 +70,18 @@ public class BubbleController
         localFontBubble.panelType = 4;
         paramQQAppInterface.add(localFontBubble);
       }
-      i = (int)paramQQAppInterface.uVipFont;
-      j = paramQQAppInterface.vipFontType;
     }
     return paramQQAppInterface;
   }
   
-  public void a(SVIPHandler paramSVIPHandler)
+  public void a(ISVIPHandler paramISVIPHandler)
   {
-    paramSVIPHandler.e();
+    paramISVIPHandler.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.BubbleController
  * JD-Core Version:    0.7.0.1
  */

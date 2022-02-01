@@ -20,8 +20,16 @@ class SplashDialogWrapper$LaunchCompletedObserver
   {
     paramContext = paramIntent.getStringExtra("plugin_apk");
     paramIntent = paramIntent.getStringExtra("plugin_name");
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "LaunchCompletedObserver.onReceive: " + paramContext + ", " + paramIntent + ", " + SplashDialogWrapper.access$000(this.this$0));
+    if (DebugHelper.sDebug)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("LaunchCompletedObserver.onReceive: ");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramIntent);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(SplashDialogWrapper.access$000(this.this$0));
+      DebugHelper.log("plugin_tag", localStringBuilder.toString());
     }
     if ((this.mPluginID.equalsIgnoreCase(paramContext)) && ((SplashDialogWrapper.access$000(this.this$0)) || (paramIntent != null))) {
       this.this$0.dismiss();
@@ -30,7 +38,7 @@ class SplashDialogWrapper$LaunchCompletedObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.SplashDialogWrapper.LaunchCompletedObserver
  * JD-Core Version:    0.7.0.1
  */

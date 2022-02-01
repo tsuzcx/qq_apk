@@ -44,32 +44,48 @@ public class LocationPoiDataFromMapHelper
   
   public boolean a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch next: mKeyWord = " + this.jdField_a_of_type_JavaLangString + " latLng = " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", page = " + this.jdField_a_of_type_Int + ", isSearching = " + this.b + ", hasMore = " + this.jdField_a_of_type_Boolean);
-    }
-    if ((this.b) || (!this.jdField_a_of_type_Boolean)) {
-      return false;
-    }
-    this.b = true;
-    TencentSearch localTencentSearch = new TencentSearch(BaseApplication.getContext());
-    Object localObject2 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCityName(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    Object localObject1;
+    if (QLog.isDevelopLevel())
     {
-      localObject1 = localObject2;
-      if (((String)localObject2).lastIndexOf("市") == ((String)localObject2).length() - 1) {
-        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[venue][poi-data] fetch next: mKeyWord = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(" latLng = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+      ((StringBuilder)localObject1).append(", page = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(", isSearching = ");
+      ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(", hasMore = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      QLog.i("LocationPoiDataFromMapHelper", 4, ((StringBuilder)localObject1).toString());
+    }
+    if (!this.b)
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        return false;
       }
-    }
-    localObject2 = new LocationPoiDataFromMapHelper.1(this);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localTencentSearch.geo2address(new Geo2AddressParam(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).getPoi(true).setPoiOptions(new Geo2AddressParam.PoiOptions().setPolicy(1).setPageSize(20).setPageIndex(this.jdField_a_of_type_Int)), (HttpResponseListener)localObject2);
-    }
-    for (;;)
-    {
-      return true;
+      this.b = true;
+      TencentSearch localTencentSearch = new TencentSearch(BaseApplication.getContext());
+      Object localObject2 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCityName(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject1 = localObject2;
+        if (((String)localObject2).lastIndexOf("市") == ((String)localObject2).length() - 1) {
+          localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
+        }
+      }
+      localObject2 = new LocationPoiDataFromMapHelper.1(this);
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        localTencentSearch.geo2address(new Geo2AddressParam(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).getPoi(true).setPoiOptions(new Geo2AddressParam.PoiOptions().setPolicy(1).setPageSize(20).setPageIndex(this.jdField_a_of_type_Int)), (HttpResponseListener)localObject2);
+        return true;
+      }
       localTencentSearch.suggestion(new SuggestionParam(this.jdField_a_of_type_JavaLangString, (String)localObject1).location(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).policy(SuggestionParam.Policy.DEF).pageSize(20).pageIndex(this.jdField_a_of_type_Int), (HttpResponseListener)localObject2);
+      return true;
     }
+    return false;
   }
   
   public boolean b()
@@ -79,7 +95,7 @@ public class LocationPoiDataFromMapHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper
  * JD-Core Version:    0.7.0.1
  */

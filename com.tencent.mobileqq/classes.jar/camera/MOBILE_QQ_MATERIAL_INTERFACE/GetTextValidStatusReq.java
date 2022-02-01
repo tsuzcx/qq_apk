@@ -23,14 +23,15 @@ public final class GetTextValidStatusReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.EmoText != null) {
-      paramJceOutputStream.write(this.EmoText, 0);
+    String str = this.EmoText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetTextValidStatusReq
  * JD-Core Version:    0.7.0.1
  */

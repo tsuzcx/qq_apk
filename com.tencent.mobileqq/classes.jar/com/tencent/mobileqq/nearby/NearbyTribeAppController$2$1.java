@@ -13,12 +13,12 @@ class NearbyTribeAppController$2$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131707390), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299166));
+    QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131707415), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299168));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyTribeAppController.2.1
  * JD-Core Version:    0.7.0.1
  */

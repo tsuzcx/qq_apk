@@ -12,7 +12,7 @@ public final class QQCircleInvite$VerifyCircleWorldReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleInvite.VerifyCircleWorldReq
  * JD-Core Version:    0.7.0.1
  */

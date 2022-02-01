@@ -17,12 +17,12 @@ public class QQMusicPlayReport
   
   public static void b(boolean paramBoolean, int paramInt)
   {
-    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, NetworkUtil.b(null), paramInt), 5, null, false);
+    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, NetworkUtil.getNetworkType(null), paramInt), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayReport
  * JD-Core Version:    0.7.0.1
  */

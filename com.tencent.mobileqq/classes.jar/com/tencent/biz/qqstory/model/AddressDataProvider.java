@@ -26,25 +26,12 @@ public class AddressDataProvider
   public AddressDataProvider()
   {
     BaseApplicationImpl localBaseApplicationImpl = QQStoryContext.a().a();
-    if (localBaseApplicationImpl == null) {
-      throw new IllegalArgumentException("Context should not be null");
+    if (localBaseApplicationImpl != null)
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplicationImpl.getSharedPreferences("poi_filter_perferences", 0);
+      return;
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplicationImpl.getSharedPreferences("poi_filter_perferences", 0);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("longitude", 0);
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("time", 0L);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("country", "");
+    throw new IllegalArgumentException("Context should not be null");
   }
   
   protected void a(int paramInt1, int paramInt2)
@@ -93,37 +80,12 @@ public class AddressDataProvider
   
   public boolean a(AddressDataProvider.AddressInfo paramAddressInfo)
   {
-    return (paramAddressInfo != null) && (!TextUtils.isEmpty(paramAddressInfo.a)) && (!HardCodeUtil.a(2131699958).equals(paramAddressInfo.a));
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("latitude", 0);
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("province", "");
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("city", "");
-  }
-  
-  public String d()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("district", "");
-  }
-  
-  public String e()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("street", "");
+    return (paramAddressInfo != null) && (!TextUtils.isEmpty(paramAddressInfo.a)) && (!HardCodeUtil.a(2131700099).equals(paramAddressInfo.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.AddressDataProvider
  * JD-Core Version:    0.7.0.1
  */

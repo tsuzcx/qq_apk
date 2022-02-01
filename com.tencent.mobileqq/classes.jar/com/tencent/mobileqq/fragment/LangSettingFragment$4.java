@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.fragment;
 
-import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
 import com.tencent.mobileqq.activity.aio.helper.HiddenChatHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.LocaleManager;
 
 class LangSettingFragment$4
@@ -12,14 +12,14 @@ class LangSettingFragment$4
   
   public void run()
   {
-    LocaleManager.c(this.this$0.getActivity());
-    this.this$0.getActivity().finish();
-    HiddenChatHelper.b(this.this$0.getActivity(), GeneralSettingActivity.class);
+    LocaleManager.c(this.this$0.getBaseActivity());
+    this.this$0.getBaseActivity().finish();
+    HiddenChatHelper.b(this.this$0.getBaseActivity(), GeneralSettingActivity.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LangSettingFragment.4
  * JD-Core Version:    0.7.0.1
  */

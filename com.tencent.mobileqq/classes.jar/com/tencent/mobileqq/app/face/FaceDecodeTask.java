@@ -44,74 +44,70 @@ public abstract class FaceDecodeTask
     if (QLog.isColorLevel()) {
       QLog.i("Q.qqhead.FaceDecodeTask", 2, "closeFaceDecodeThread");
     }
-    for (;;)
+    int i;
+    synchronized (initlock)
     {
-      int i;
-      synchronized (initlock)
+      if (sPendingResultList != null) {
+        sPendingResultList.clear();
+      }
+      if (handler != null) {
+        handler.removeMessages(EVENT_TASK_COMPLETED);
+      }
+      if (mDecodeRunnables != null)
       {
-        if (sPendingResultList != null) {
-          sPendingResultList.clear();
-        }
-        if (handler != null) {
-          handler.removeMessages(EVENT_TASK_COMPLETED);
-        }
-        if (mDecodeRunnables != null)
+        i = 0;
+        if (i < mDecodeRunnables.length)
         {
-          i = 0;
-          if (i < mDecodeRunnables.length)
-          {
-            if (mDecodeRunnables[i] != null) {
-              mDecodeRunnables[i].close();
-            }
-          }
-          else
-          {
-            mDecodeRunnables = null;
-            mDecodeThreads = null;
+          if (mDecodeRunnables[i] != null) {
+            mDecodeRunnables[i].close();
           }
         }
         else
         {
-          if (mDecodeQueue != null) {}
+          mDecodeRunnables = null;
+          mDecodeThreads = null;
+        }
+      }
+      else
+      {
+        if (mDecodeQueue != null) {
           synchronized (mDecodeQueue)
           {
             mDecodeQueue.clear();
             mDecodeQueue.notifyAll();
-            mDecodeQueue = null;
-            mainLooper = null;
-            handler = null;
-            return;
           }
         }
+        mDecodeQueue = null;
+        mainLooper = null;
+        handler = null;
+        return;
       }
-      i += 1;
     }
   }
   
   public static void execute(FaceDecodeTask paramFaceDecodeTask)
   {
-    if ((paramFaceDecodeTask == null) || (paramFaceDecodeTask.isExpired()))
+    if ((paramFaceDecodeTask != null) && (!paramFaceDecodeTask.isExpired()))
     {
-      if (QLog.isColorLevel())
+      initFaceDecodeThread();
+      synchronized (mDecodeQueue)
       {
-        ??? = new StringBuilder().append("execute, decodeTaskInfo is expired, type=");
-        if (paramFaceDecodeTask == null) {
-          break label57;
-        }
-      }
-      label57:
-      for (paramFaceDecodeTask = paramFaceDecodeTask.getClass().getSimpleName();; paramFaceDecodeTask = "")
-      {
-        QLog.w("Q.qqhead.FaceDecodeTask", 2, paramFaceDecodeTask);
+        mDecodeQueue.add(paramFaceDecodeTask);
+        mDecodeQueue.notify();
         return;
       }
     }
-    initFaceDecodeThread();
-    synchronized (mDecodeQueue)
+    if (QLog.isColorLevel())
     {
-      mDecodeQueue.add(paramFaceDecodeTask);
-      mDecodeQueue.notify();
-      return;
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("execute, decodeTaskInfo is expired, type=");
+      if (paramFaceDecodeTask != null) {
+        paramFaceDecodeTask = paramFaceDecodeTask.getClass().getSimpleName();
+      } else {
+        paramFaceDecodeTask = "";
+      }
+      ((StringBuilder)???).append(paramFaceDecodeTask);
+      QLog.w("Q.qqhead.FaceDecodeTask", 2, ((StringBuilder)???).toString());
     }
   }
   
@@ -135,88 +131,102 @@ public abstract class FaceDecodeTask
   {
     FaceDecodeTask.FaceDecodeThreadInfo localFaceDecodeThreadInfo = new FaceDecodeTask.FaceDecodeThreadInfo();
     int i = Runtime.getRuntime().availableProcessors();
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.FaceDecodeTask", 2, "processor count:" + i);
-    }
-    if (i >= 4) {}
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("processor count:");
+      localStringBuilder.append(i);
+      QLog.i("Q.qqhead.FaceDecodeTask", 2, localStringBuilder.toString());
+    }
+    if (i >= 4) {
       return localFaceDecodeThreadInfo;
-      localFaceDecodeThreadInfo.maxThreadCount = (i + 1);
-    } while (i > 2);
-    localFaceDecodeThreadInfo.priority = 10;
+    }
+    localFaceDecodeThreadInfo.maxThreadCount = (i + 1);
+    if (i <= 2) {
+      localFaceDecodeThreadInfo.priority = 10;
+    }
     return localFaceDecodeThreadInfo;
   }
   
   private static void initFaceDecodeThread()
   {
-    if (mDecodeThreads == null) {
-      for (;;)
+    if (mDecodeThreads == null) {}
+    for (;;)
+    {
+      synchronized (initlock)
       {
-        synchronized (initlock)
+        if (mDecodeThreads == null)
         {
-          if (mDecodeThreads == null)
+          initHandler();
+          Object localObject2 = BaseApplication.processName;
+          initFaceDecodeThreadInfo();
+          if (mThreadInfo.maxThreadCount != -2147483648) {
+            MAX_THREAD_COUNT = mThreadInfo.maxThreadCount;
+          }
+          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("com.tencent.mobileqq"))) {
+            MAX_THREAD_COUNT = 2;
+          }
+          mDecodeQueue = new ArrayList();
+          mDecodeThreads = new Thread[MAX_THREAD_COUNT];
+          mDecodeRunnables = new FaceDecodeTask.FaceDecodeRunnable[MAX_THREAD_COUNT];
+          int i = 0;
+          try
           {
-            initHandler();
-            String str = BaseApplication.processName;
-            initFaceDecodeThreadInfo();
-            if (mThreadInfo.maxThreadCount != -2147483648) {
-              MAX_THREAD_COUNT = mThreadInfo.maxThreadCount;
-            }
-            if ((!TextUtils.isEmpty(str)) && (str.equals("com.tencent.mobileqq"))) {
-              MAX_THREAD_COUNT = 2;
-            }
-            mDecodeQueue = new ArrayList();
-            mDecodeThreads = new Thread[MAX_THREAD_COUNT];
-            mDecodeRunnables = new FaceDecodeTask.FaceDecodeRunnable[MAX_THREAD_COUNT];
-            int i = 0;
-            try
+            if (i < mDecodeThreads.length)
             {
-              if (i < mDecodeThreads.length)
-              {
-                mDecodeRunnables[i] = new FaceDecodeTask.FaceDecodeRunnable(null);
-                mDecodeThreads[i] = ThreadManager.newFreeThread(mDecodeRunnables[i], "FaceDecodeThread", 5);
-                if (ThreadOptimizer.a().c()) {
-                  mDecodeThreads[i].setPriority(1);
-                }
-                if (mDecodeThreads[i].getState() != Thread.State.NEW) {
-                  break label238;
-                }
-                mDecodeThreads[i].start();
-                bool = true;
-                if (QLog.isColorLevel()) {
-                  QLog.i("Q.qqhead.FaceDecodeTask", 2, "initFaceDecodeThread, thread isStatusNew=" + bool);
-                }
-                i += 1;
-                continue;
+              mDecodeRunnables[i] = new FaceDecodeTask.FaceDecodeRunnable(null);
+              mDecodeThreads[i] = ThreadManager.newFreeThread(mDecodeRunnables[i], "FaceDecodeThread", 5);
+              if (ThreadOptimizer.a().c()) {
+                mDecodeThreads[i].setPriority(1);
               }
-            }
-            catch (Throwable localThrowable)
-            {
-              QLog.e("Q.qqhead.FaceDecodeTask", 1, "initFaceDecodeThread", localThrowable);
-              return;
+              if (mDecodeThreads[i].getState() != Thread.State.NEW) {
+                break label248;
+              }
+              mDecodeThreads[i].start();
+              bool = true;
+              if (QLog.isColorLevel())
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("initFaceDecodeThread, thread isStatusNew=");
+                ((StringBuilder)localObject2).append(bool);
+                QLog.i("Q.qqhead.FaceDecodeTask", 2, ((StringBuilder)localObject2).toString());
+              }
+              i += 1;
+              continue;
             }
           }
-          return;
+          catch (Throwable localThrowable)
+          {
+            QLog.e("Q.qqhead.FaceDecodeTask", 1, "initFaceDecodeThread", localThrowable);
+            return;
+          }
         }
-        label238:
-        boolean bool = false;
+        return;
       }
+      return;
+      label248:
+      boolean bool = false;
     }
   }
   
   private static void initFaceDecodeThreadInfo()
   {
-    if (TextUtils.isEmpty(BaseApplication.processName)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(BaseApplication.processName)) {
       return;
-      if (BaseApplication.processName.equals("com.tencent.mobileqq:tool")) {}
-      for (mThreadInfo = getNearbyFaceDecodeThreadInfo(); QLog.isColorLevel(); mThreadInfo = new FaceDecodeTask.FaceDecodeThreadInfo())
-      {
-        QLog.i("Q.qqhead.FaceDecodeTask", 2, "initFaceDecodeThreadInfo, maxThreadCount=" + mThreadInfo.maxThreadCount + ",priority=" + mThreadInfo.priority);
-        return;
-      }
+    }
+    if (BaseApplication.processName.equals("com.tencent.mobileqq:tool")) {
+      mThreadInfo = getNearbyFaceDecodeThreadInfo();
+    } else {
+      mThreadInfo = new FaceDecodeTask.FaceDecodeThreadInfo();
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initFaceDecodeThreadInfo, maxThreadCount=");
+      localStringBuilder.append(mThreadInfo.maxThreadCount);
+      localStringBuilder.append(",priority=");
+      localStringBuilder.append(mThreadInfo.priority);
+      QLog.i("Q.qqhead.FaceDecodeTask", 2, localStringBuilder.toString());
     }
   }
   
@@ -232,7 +242,7 @@ public abstract class FaceDecodeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecodeTask
  * JD-Core Version:    0.7.0.1
  */

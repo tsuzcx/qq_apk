@@ -41,23 +41,16 @@ public class TroopLuckyCharacterProcessor
   public void onGetProfileDetailResponse(Bundle paramBundle, boolean paramBoolean, oidb_0x5eb.UdcUinData paramUdcUinData)
   {
     boolean bool = paramUdcUinData.uint32_troop_lucky_character_switch.has();
-    if (bool) {
-      if (paramUdcUinData.uint32_troop_lucky_character_switch.get() == 0) {
-        paramBoolean = true;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopLuckyCharacterProcessor", 2, String.format("handleGetProfileInfoForLogin hasLuckyCharacterSwitch=%s luckyCharacterSwitch=%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) }));
-      }
-      if ((this.appRuntime instanceof QQAppInterface)) {
-        TroopLuckyCharacterUtil.a((QQAppInterface)this.appRuntime, paramBoolean);
-      }
-      return;
+    if ((bool) && (paramUdcUinData.uint32_troop_lucky_character_switch.get() != 0)) {
       paramBoolean = false;
-      continue;
+    } else {
       paramBoolean = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopLuckyCharacterProcessor", 2, String.format("handleGetProfileInfoForLogin hasLuckyCharacterSwitch=%s luckyCharacterSwitch=%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) }));
+    }
+    if ((this.appRuntime instanceof QQAppInterface)) {
+      TroopLuckyCharacterUtil.a((QQAppInterface)this.appRuntime, paramBoolean);
     }
   }
   
@@ -68,26 +61,24 @@ public class TroopLuckyCharacterProcessor
       if (QLog.isColorLevel()) {
         QLog.d("TroopLuckyCharacterProcessor", 2, "get apollo head update push.");
       }
-      if (ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get() != 0) {
-        break label88;
+      boolean bool;
+      if (ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get() == 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label88:
-    for (boolean bool = true;; bool = false)
-    {
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.BaseMessageProcessor", 2, new Object[] { "c2c online push, field id: 42495, changed troopLuckyCharacterSwitch: ", Boolean.valueOf(bool) });
       }
       if ((this.appRuntime instanceof QQAppInterface)) {
         TroopLuckyCharacterUtil.a((QQAppInterface)this.appRuntime, bool);
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.processor.TroopLuckyCharacterProcessor
  * JD-Core Version:    0.7.0.1
  */

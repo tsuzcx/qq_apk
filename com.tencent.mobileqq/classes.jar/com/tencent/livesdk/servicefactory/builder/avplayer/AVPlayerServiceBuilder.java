@@ -1,6 +1,7 @@
 package com.tencent.livesdk.servicefactory.builder.avplayer;
 
 import com.tencent.falco.base.libapi.ServiceBaseInterface;
+import com.tencent.falco.utils.PreloadUtil;
 import com.tencent.ilivesdk.avplayerbuilderservice.AVPlayerBuilderService;
 import com.tencent.ilivesdk.avplayerbuilderservice_interface.AVPlayerBuilderServiceInterface;
 import com.tencent.ilivesdk.avpreloadservice_interface.AVPreloadServiceInterface;
@@ -13,6 +14,9 @@ public class AVPlayerServiceBuilder
 {
   private void initPreloadAdapter(AVPlayerBuilderServiceInterface paramAVPlayerBuilderServiceInterface, ServiceAccessor paramServiceAccessor)
   {
+    if (!PreloadUtil.a()) {
+      return;
+    }
     paramAVPlayerBuilderServiceInterface.setPlayerPreloadAdapter(new AVPlayerServiceBuilder.3(this, paramAVPlayerBuilderServiceInterface, (AVPreloadServiceInterface)paramServiceAccessor.getService(AVPreloadServiceInterface.class)));
   }
   
@@ -27,7 +31,7 @@ public class AVPlayerServiceBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.avplayer.AVPlayerServiceBuilder
  * JD-Core Version:    0.7.0.1
  */

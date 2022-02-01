@@ -18,13 +18,15 @@ class UpdateLoginAction$2
     }
     catch (Exception paramDialogInterface)
     {
-      QLog.e("UpdateLoginAction", 1, "showUpdateDialog, setNegativeButton click error : ", null);
+      label7:
+      break label7;
     }
+    QLog.e("UpdateLoginAction", 1, "showUpdateDialog, setNegativeButton click error : ", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.UpdateLoginAction.2
  * JD-Core Version:    0.7.0.1
  */

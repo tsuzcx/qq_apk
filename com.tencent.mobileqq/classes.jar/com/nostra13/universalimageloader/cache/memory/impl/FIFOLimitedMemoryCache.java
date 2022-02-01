@@ -24,12 +24,12 @@ public class FIFOLimitedMemoryCache
     super.clear();
   }
   
-  public Reference<Bitmap> createReference(Bitmap paramBitmap)
+  protected Reference<Bitmap> createReference(Bitmap paramBitmap)
   {
     return new WeakReference(paramBitmap);
   }
   
-  public int getSize(Bitmap paramBitmap)
+  protected int getSize(Bitmap paramBitmap)
   {
     return paramBitmap.getRowBytes() * paramBitmap.getHeight();
   }
@@ -53,14 +53,14 @@ public class FIFOLimitedMemoryCache
     return super.remove(paramString);
   }
   
-  public Bitmap removeNext()
+  protected Bitmap removeNext()
   {
     return (Bitmap)this.queue.remove(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.cache.memory.impl.FIFOLimitedMemoryCache
  * JD-Core Version:    0.7.0.1
  */

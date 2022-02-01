@@ -23,26 +23,20 @@ public class MsgTabStoryUtil
   public static MsgTabNodeInfo a(@NonNull List<MsgTabNodeInfo> paramList1, @NonNull List<MsgTabNodeInfo> paramList2, @NonNull String paramString)
   {
     paramList2.clear();
-    MsgTabNodeInfo localMsgTabNodeInfo = null;
     Iterator localIterator = paramList1.iterator();
-    paramList1 = localMsgTabNodeInfo;
-    if (localIterator.hasNext())
+    label16:
+    MsgTabNodeInfo localMsgTabNodeInfo;
+    for (paramList1 = null; localIterator.hasNext(); paramList1 = localMsgTabNodeInfo)
     {
       localMsgTabNodeInfo = (MsgTabNodeInfo)localIterator.next();
       if (a(localMsgTabNodeInfo)) {
         paramList2.add(localMsgTabNodeInfo);
       }
       if ((paramList1 != null) || (!TextUtils.equals(paramString, localMsgTabNodeInfo.jdField_a_of_type_JavaLangString))) {
-        break label76;
+        break label16;
       }
-      paramList1 = localMsgTabNodeInfo;
     }
-    label76:
-    for (;;)
-    {
-      break;
-      return paramList1;
-    }
+    return paramList1;
   }
   
   public static boolean a()
@@ -57,7 +51,7 @@ public class MsgTabStoryUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.util.MsgTabStoryUtil
  * JD-Core Version:    0.7.0.1
  */

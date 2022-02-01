@@ -20,57 +20,77 @@ public class AVPlayerNetworkReceiver
   public AVPlayerNetworkReceiver(Context paramContext)
   {
     paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-    if (paramContext == null) {}
-    for (int i = -1;; i = paramContext.getType())
-    {
-      lastType = i;
-      return;
+    int i;
+    if (paramContext == null) {
+      i = -1;
+    } else {
+      i = paramContext.getType();
     }
+    lastType = i;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    while (!paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE")) {
+    if (paramIntent == null) {
       return;
     }
-    paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-    if (paramContext == null) {}
-    for (int j = -1;; j = paramContext.getType())
+    if (paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE"))
     {
-      Log.i("AVPlayerNetworkReceiver", "cur type: " + j + " last type: " + lastType + " cur hash code" + hashCode());
-      if (lastType != j) {
-        break;
+      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      int j;
+      if (paramContext == null) {
+        j = -1;
+      } else {
+        j = paramContext.getType();
       }
-      Log.e("AVPlayerNetworkReceiver", "same type, ignore!");
-      lastType = j;
-      Log.e("AVPlayerNetworkReceiver", "Last Type: " + lastType);
-      return;
-    }
-    int i;
-    switch (j)
-    {
-    default: 
-      i = 100;
-    }
-    for (;;)
-    {
-      paramContext = this.onNetworkCallbackSet.iterator();
-      while (paramContext.hasNext())
+      paramContext = new StringBuilder();
+      paramContext.append("cur type: ");
+      paramContext.append(j);
+      paramContext.append(" last type: ");
+      paramContext.append(lastType);
+      paramContext.append(" cur hash code");
+      paramContext.append(hashCode());
+      Log.i("AVPlayerNetworkReceiver", paramContext.toString());
+      if (lastType == j)
       {
-        paramIntent = (AVPlayerNetworkReceiver.OnNetworkCallback)paramContext.next();
-        if (paramIntent != null) {
-          paramIntent.handleNetwork(i);
+        Log.e("AVPlayerNetworkReceiver", "same type, ignore!");
+      }
+      else
+      {
+        int i = 100;
+        if (j != -1)
+        {
+          if (j != 0)
+          {
+            if (j == 1)
+            {
+              Log.e("AVPlayerNetworkReceiver", "wifi avaiable!");
+              i = 101;
+            }
+          }
+          else
+          {
+            Log.e("AVPlayerNetworkReceiver", "3G/4G avaiable!");
+            i = 102;
+          }
+        }
+        else {
+          Log.e("AVPlayerNetworkReceiver", "network not avaiable!");
+        }
+        paramContext = this.onNetworkCallbackSet.iterator();
+        while (paramContext.hasNext())
+        {
+          paramIntent = (AVPlayerNetworkReceiver.OnNetworkCallback)paramContext.next();
+          if (paramIntent != null) {
+            paramIntent.handleNetwork(i);
+          }
         }
       }
-      Log.e("AVPlayerNetworkReceiver", "network not avaiable!");
-      i = 100;
-      continue;
-      Log.e("AVPlayerNetworkReceiver", "3G/4G avaiable!");
-      i = 102;
-      continue;
-      Log.e("AVPlayerNetworkReceiver", "wifi avaiable!");
-      i = 101;
+      lastType = j;
+      paramContext = new StringBuilder();
+      paramContext.append("Last Type: ");
+      paramContext.append(lastType);
+      Log.e("AVPlayerNetworkReceiver", paramContext.toString());
     }
   }
   
@@ -86,7 +106,7 @@ public class AVPlayerNetworkReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.network.AVPlayerNetworkReceiver
  * JD-Core Version:    0.7.0.1
  */

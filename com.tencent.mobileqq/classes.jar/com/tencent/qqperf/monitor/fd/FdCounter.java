@@ -23,36 +23,49 @@ public class FdCounter
     int i = 0;
     if (localIterator.hasNext())
     {
-      localObject = (Map.Entry)localIterator.next();
-      if (i < 20) {}
-    }
-    else
-    {
-      return localStringBuilder.toString();
-    }
-    localStringBuilder.append("fd: ").append((String)((Map.Entry)localObject).getValue()).append(" ").append("(").append("count: ").append(((FdNode)((Map.Entry)localObject).getKey()).jdField_a_of_type_Int).append(")").append("\n");
-    Object localObject = new ArrayList(((FdNode)((Map.Entry)localObject).getKey()).jdField_a_of_type_JavaUtilHashMap.values());
-    Collections.sort((List)localObject);
-    localObject = ((List)localObject).iterator();
-    int j = 0;
-    for (;;)
-    {
-      FdNode localFdNode;
-      if (((Iterator)localObject).hasNext())
+      Object localObject = (Map.Entry)localIterator.next();
+      if (i < 20)
       {
-        localFdNode = (FdNode)((Iterator)localObject).next();
-        if (j >= 5) {
-          localStringBuilder.append("\t\t").append("…").append("\n");
+        int k = i + 1;
+        localStringBuilder.append("fd: ");
+        localStringBuilder.append((String)((Map.Entry)localObject).getValue());
+        localStringBuilder.append(" ");
+        localStringBuilder.append("(");
+        localStringBuilder.append("count: ");
+        localStringBuilder.append(((FdNode)((Map.Entry)localObject).getKey()).jdField_a_of_type_Int);
+        localStringBuilder.append(")");
+        localStringBuilder.append("\n");
+        localObject = new ArrayList(((FdNode)((Map.Entry)localObject).getKey()).jdField_a_of_type_JavaUtilHashMap.values());
+        Collections.sort((List)localObject);
+        localObject = ((List)localObject).iterator();
+        int j = 0;
+        for (;;)
+        {
+          i = k;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          FdNode localFdNode = (FdNode)((Iterator)localObject).next();
+          if (j >= 5)
+          {
+            localStringBuilder.append("\t\t");
+            localStringBuilder.append("…");
+            localStringBuilder.append("\n");
+            i = k;
+            break;
+          }
+          j += 1;
+          localStringBuilder.append("\t\t");
+          localStringBuilder.append(localFdNode.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append("(");
+          localStringBuilder.append("count: ");
+          localStringBuilder.append(localFdNode.jdField_a_of_type_Int);
+          localStringBuilder.append(")");
+          localStringBuilder.append("\n");
         }
       }
-      else
-      {
-        i += 1;
-        break;
-      }
-      j += 1;
-      localStringBuilder.append("\t\t").append(localFdNode.jdField_a_of_type_JavaLangString).append("(").append("count: ").append(localFdNode.jdField_a_of_type_Int).append(")").append("\n");
     }
+    return localStringBuilder.toString();
   }
   
   private void a(FdTrie paramFdTrie)
@@ -70,7 +83,14 @@ public class FdCounter
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      localStringBuilder.append("fd: ").append((String)localEntry.getKey()).append(" ").append("(").append("count: ").append(localEntry.getValue()).append(")").append("\n");
+      localStringBuilder.append("fd: ");
+      localStringBuilder.append((String)localEntry.getKey());
+      localStringBuilder.append(" ");
+      localStringBuilder.append("(");
+      localStringBuilder.append("count: ");
+      localStringBuilder.append(localEntry.getValue());
+      localStringBuilder.append(")");
+      localStringBuilder.append("\n");
     }
     return localStringBuilder.toString();
   }
@@ -107,9 +127,7 @@ public class FdCounter
       else
       {
         Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        Map localMap = this.jdField_a_of_type_JavaUtilMap;
-        int i = localInteger.intValue();
-        localMap.put(localObject, Integer.valueOf(localFdNode.jdField_a_of_type_Int + i));
+        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(localInteger.intValue() + localFdNode.jdField_a_of_type_Int));
       }
     }
   }
@@ -117,12 +135,15 @@ public class FdCounter
   public String a(FdTrie paramFdTrie)
   {
     a(paramFdTrie);
-    return a() + b();
+    paramFdTrie = new StringBuilder();
+    paramFdTrie.append(a());
+    paramFdTrie.append(b());
+    return paramFdTrie.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.fd.FdCounter
  * JD-Core Version:    0.7.0.1
  */

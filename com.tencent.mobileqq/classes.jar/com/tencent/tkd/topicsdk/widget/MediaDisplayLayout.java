@@ -54,7 +54,7 @@ public final class MediaDisplayLayout
     super(paramContext, paramAttributeSet);
     this.jdField_b_of_type_Int = DisplayUtils.a.a(paramContext, 26.0F);
     this.jdField_c_of_type_Int = ((DisplayUtils.a.a(paramContext) - this.jdField_b_of_type_Int) / 3);
-    LayoutInflater.from(paramContext).inflate(R.layout.E, (ViewGroup)this, true);
+    LayoutInflater.from(paramContext).inflate(R.layout.C, (ViewGroup)this, true);
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter = new MediaDisplayLayout.MediaDisplayGridAdapter(this);
     a();
   }
@@ -62,7 +62,7 @@ public final class MediaDisplayLayout
   @SuppressLint({"ClickableViewAccessibility"})
   private final void a()
   {
-    GridView localGridView = (GridView)findViewById(R.id.ad);
+    GridView localGridView = (GridView)findViewById(R.id.O);
     Intrinsics.checkExpressionValueIsNotNull(localGridView, "it");
     localGridView.setAdapter((ListAdapter)this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter);
     localGridView.setOnTouchListener((View.OnTouchListener)new MediaDisplayLayout.initGridView..inlined.also.lambda.1(this));
@@ -70,13 +70,7 @@ public final class MediaDisplayLayout
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public final MediaDisplayLayout.MediaDisplayGridAdapter a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter;
+    return this.jdField_c_of_type_Int;
   }
   
   @NotNull
@@ -102,11 +96,6 @@ public final class MediaDisplayLayout
     return this.jdField_a_of_type_Boolean;
   }
   
-  public final int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
   @Nullable
   public final Function1<Integer, Unit> b()
   {
@@ -119,9 +108,16 @@ public final class MediaDisplayLayout
     return this.jdField_c_of_type_KotlinJvmFunctionsFunction1;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec((int)(Math.ceil(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter.getCount() / 3) * (this.jdField_c_of_type_Int + 2)), 1073741824));
+    double d1 = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter.getCount();
+    double d2 = 3;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    d1 = Math.ceil(d1 / d2);
+    d2 = this.jdField_c_of_type_Int + 2;
+    Double.isNaN(d2);
+    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec((int)(d1 * d2), 1073741824));
   }
   
   public final void setDisplayItems(@NotNull ArrayList<DisplayItem> paramArrayList)
@@ -163,7 +159,7 @@ public final class MediaDisplayLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.MediaDisplayLayout
  * JD-Core Version:    0.7.0.1
  */

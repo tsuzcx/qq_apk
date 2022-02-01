@@ -87,32 +87,31 @@ public class FaceData
         QLog.d("FaceFuntion", 2, new Object[] { "[Data come back]人脸信息 quanstate:", Integer.valueOf(localFaceData.quanstate), " targetuin:", Long.valueOf(localFaceData.targetuin), " targetnick:", localFaceData.targetnick, " groupid:", localFaceData.groupid, " targetGroupid:", localFaceData.targetGroupid });
       }
       localFaceData.recommend_infos = new ArrayList();
-      long l = -1L;
-      paramLong = l;
       if (localFaceData.quanstate == 5)
       {
-        paramLong = l;
-        if (localFaceData.targetuin != 0L)
+        paramLong = localFaceData.targetuin;
+        if (paramLong != 0L)
         {
-          localFaceData.recommend_infos.add(new FaceRecommendInfo(localFaceData.targetuin, localFaceData.targetnick, ""));
+          localFaceData.recommend_infos.add(new FaceRecommendInfo(paramLong, localFaceData.targetnick, ""));
           paramLong = localFaceData.targetuin;
           localFaceData.targetuin = 0L;
           localFaceData.targetnick = "";
+          break label362;
         }
       }
+      paramLong = -1L;
+      label362:
       int i = 0;
-      if (i < paramstFaceItem.recommend_infos.size())
+      while (i < paramstFaceItem.recommend_infos.size())
       {
-        if ((((FaceRecommendInfo)paramstFaceItem.recommend_infos.get(i)).uin == 0L) || (((FaceRecommendInfo)paramstFaceItem.recommend_infos.get(i)).uin == paramLong)) {}
-        for (;;)
+        if ((((FaceRecommendInfo)paramstFaceItem.recommend_infos.get(i)).uin != 0L) && (((FaceRecommendInfo)paramstFaceItem.recommend_infos.get(i)).uin != paramLong))
         {
-          i += 1;
-          break;
           if (QLog.isColorLevel()) {
             QLog.d("FaceFuntion", 2, new Object[] { "[Data come back]推荐人脸 i:", Integer.valueOf(i), " uin:", Long.valueOf(((FaceRecommendInfo)paramstFaceItem.recommend_infos.get(i)).uin), " nick:", ((FaceRecommendInfo)paramstFaceItem.recommend_infos.get(i)).nick, " groupid:", ((FaceRecommendInfo)paramstFaceItem.recommend_infos.get(i)).groupid });
           }
           localFaceData.recommend_infos.add(paramstFaceItem.recommend_infos.get(i));
         }
+        i += 1;
       }
     }
     return localFaceData;
@@ -168,12 +167,65 @@ public class FaceData
   
   public String toString()
   {
-    return "FaceData{album_id='" + this.album_id + '\'' + ", photo_id='" + this.photo_id + '\'' + ", owner_uin=" + this.owner_uin + ", x=" + this.x + ", y=" + this.y + ", w=" + this.w + ", h=" + this.h + ", quanstate=" + this.quanstate + ", opertime=" + this.opertime + ", faceid='" + this.faceid + '\'' + ", quanid='" + this.quanid + '\'' + ", targetuin=" + this.targetuin + ", targetnick='" + this.targetnick + '\'' + ", writeruin=" + this.writeruin + ", writernick='" + this.writernick + '\'' + ", bitmap=" + this.bitmap + ", faceUrl='" + this.faceUrl + '\'' + ", isFromSystem=" + this.isFromSystem + ", groupid='" + this.groupid + '\'' + ", recommend_infos=" + this.recommend_infos + ", targetGroupid='" + this.targetGroupid + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FaceData{album_id='");
+    localStringBuilder.append(this.album_id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", photo_id='");
+    localStringBuilder.append(this.photo_id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", owner_uin=");
+    localStringBuilder.append(this.owner_uin);
+    localStringBuilder.append(", x=");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", y=");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(", w=");
+    localStringBuilder.append(this.w);
+    localStringBuilder.append(", h=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", quanstate=");
+    localStringBuilder.append(this.quanstate);
+    localStringBuilder.append(", opertime=");
+    localStringBuilder.append(this.opertime);
+    localStringBuilder.append(", faceid='");
+    localStringBuilder.append(this.faceid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", quanid='");
+    localStringBuilder.append(this.quanid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", targetuin=");
+    localStringBuilder.append(this.targetuin);
+    localStringBuilder.append(", targetnick='");
+    localStringBuilder.append(this.targetnick);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", writeruin=");
+    localStringBuilder.append(this.writeruin);
+    localStringBuilder.append(", writernick='");
+    localStringBuilder.append(this.writernick);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bitmap=");
+    localStringBuilder.append(this.bitmap);
+    localStringBuilder.append(", faceUrl='");
+    localStringBuilder.append(this.faceUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isFromSystem=");
+    localStringBuilder.append(this.isFromSystem);
+    localStringBuilder.append(", groupid='");
+    localStringBuilder.append(this.groupid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", recommend_infos=");
+    localStringBuilder.append(this.recommend_infos);
+    localStringBuilder.append(", targetGroupid='");
+    localStringBuilder.append(this.targetGroupid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.FaceData
  * JD-Core Version:    0.7.0.1
  */

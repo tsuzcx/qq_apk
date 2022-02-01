@@ -24,60 +24,57 @@ public class WriteTogetherElemDecoder
 {
   private MessageForWriteTogether a(im_msg_body.Elem paramElem, MessageRecord paramMessageRecord)
   {
-    boolean bool1 = true;
     MessageForWriteTogether localMessageForWriteTogether = new MessageForWriteTogether();
     MessageRecord.copyMessageRecordBaseField(localMessageForWriteTogether, paramMessageRecord);
-    hummer_commelem.MsgElemInfo_servtype35 localMsgElemInfo_servtype35;
-    if (paramElem.common_elem.bytes_pb_elem.has()) {
-      localMsgElemInfo_servtype35 = new hummer_commelem.MsgElemInfo_servtype35();
-    }
-    try
+    if (paramElem.common_elem.bytes_pb_elem.has())
     {
-      localMsgElemInfo_servtype35.mergeFrom(paramElem.common_elem.bytes_pb_elem.get().toByteArray());
-      if (!localMsgElemInfo_servtype35.bytes_global_padid.has()) {}
+      hummer_commelem.MsgElemInfo_servtype35 localMsgElemInfo_servtype35 = new hummer_commelem.MsgElemInfo_servtype35();
+      try
+      {
+        localMsgElemInfo_servtype35.mergeFrom(paramElem.common_elem.bytes_pb_elem.get().toByteArray());
+      }
+      catch (InvalidProtocolBufferMicroException paramElem)
+      {
+        paramElem.printStackTrace();
+      }
+      localMsgElemInfo_servtype35.bytes_global_padid.has();
       paramElem = localMsgElemInfo_servtype35.bytes_token.get().toStringUtf8();
       String str = localMsgElemInfo_servtype35.bytes_global_padid.get().toStringUtf8();
       int i = localMsgElemInfo_servtype35.uint32_get_rev.get();
       int j = localMsgElemInfo_servtype35.uint32_his_edit_uin_num.get();
-      bool2 = false;
+      boolean bool2 = false;
+      boolean bool1;
       if ((paramMessageRecord instanceof MessageForLongTextMsg))
       {
         paramMessageRecord = (MessageForLongTextMsg)paramMessageRecord;
         paramMessageRecord.parse();
-        if ((paramMessageRecord.sb == null) || (paramMessageRecord.sb.length() < 6000)) {
-          break label236;
-        }
-        a(localMessageForWriteTogether, paramElem, str, i, bool1, j);
-        return localMessageForWriteTogether;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramElem)
-    {
-      for (;;)
-      {
-        boolean bool2;
-        paramElem.printStackTrace();
-        continue;
         bool1 = bool2;
+        if (paramMessageRecord.sb != null)
+        {
+          bool1 = bool2;
+          if (paramMessageRecord.sb.length() >= 6000) {
+            bool1 = true;
+          }
+        }
+      }
+      else
+      {
         if ((paramMessageRecord instanceof MessageForText))
         {
           paramMessageRecord = (MessageForText)paramMessageRecord;
           paramMessageRecord.parse();
-          bool1 = bool2;
-          if (paramMessageRecord.sb != null)
+          if ((paramMessageRecord.sb != null) && (paramMessageRecord.sb.length() >= 6000))
           {
-            bool1 = bool2;
-            if (paramMessageRecord.sb.length() >= 6000)
-            {
-              bool1 = true;
-              continue;
-              label236:
-              bool1 = false;
-            }
+            bool1 = true;
+            break label219;
           }
         }
+        bool1 = false;
       }
+      label219:
+      a(localMessageForWriteTogether, paramElem, str, i, bool1, j);
     }
+    return localMessageForWriteTogether;
   }
   
   private void a(MessageForWriteTogether paramMessageForWriteTogether, String paramString1, String paramString2, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -97,22 +94,30 @@ public class WriteTogetherElemDecoder
   
   private boolean a(im_msg_body.Elem paramElem, List<MessageRecord> paramList)
   {
-    if ((paramElem == null) || (paramList == null) || (paramList.size() == 0))
+    if ((paramElem != null) && (paramList != null) && (paramList.size() != 0))
     {
-      QLog.e("WriteTogetherElemDecode", 1, "[decodeWriteTogetherMsg] elem: " + paramElem + ", message: " + paramList);
-      return false;
-    }
-    if ((QLog.isColorLevel()) && (paramList.size() != 1))
-    {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
+      if ((QLog.isColorLevel()) && (paramList.size() != 1))
       {
-        MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-        QLog.d("WriteTogetherElemDecode", 1, "[decodeWriteTogetherMsg] " + localMessageRecord.toString());
+        localObject = paramList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[decodeWriteTogetherMsg] ");
+          localStringBuilder.append(localMessageRecord.toString());
+          QLog.d("WriteTogetherElemDecode", 1, localStringBuilder.toString());
+        }
       }
+      paramList.set(0, a(paramElem, (MessageRecord)paramList.get(0)));
+      return true;
     }
-    paramList.set(0, a(paramElem, (MessageRecord)paramList.get(0)));
-    return true;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[decodeWriteTogetherMsg] elem: ");
+    ((StringBuilder)localObject).append(paramElem);
+    ((StringBuilder)localObject).append(", message: ");
+    ((StringBuilder)localObject).append(paramList);
+    QLog.e("WriteTogetherElemDecode", 1, ((StringBuilder)localObject).toString());
+    return false;
   }
   
   public int a()
@@ -143,7 +148,7 @@ public class WriteTogetherElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.WriteTogetherElemDecoder
  * JD-Core Version:    0.7.0.1
  */

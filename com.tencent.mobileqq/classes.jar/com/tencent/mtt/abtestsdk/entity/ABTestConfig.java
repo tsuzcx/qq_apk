@@ -1,6 +1,7 @@
 package com.tencent.mtt.abtestsdk.entity;
 
-import android.text.TextUtils;
+import android.content.res.Resources.NotFoundException;
+import android.support.annotation.XmlRes;
 import com.tencent.mtt.abtestsdk.utils.ABTestLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,16 +12,17 @@ public class ABTestConfig
 {
   public static final String ENV_DEBUG = "DEBUG";
   public static final String ENV_RELEASE = "RELEASE";
-  public static final String GUID = "guid";
-  public static final String GUID_DEV = "guid_dev";
-  private static final String TAG = "ABTestConfig";
-  private String appId;
-  private String appKey;
+  private static final int XML_DEFAULT_RESOURCE = -1;
+  protected String appId = "";
+  protected String appKey = "";
+  private List<ABTestConfig.ClientType> clientTypeList = new ArrayList();
+  protected boolean isDiskCache = true;
   private List<String> layerCodes = new ArrayList();
+  protected String mCurEnv = "RELEASE";
   private Map<String, String> mCustomProfiles = new HashMap();
-  private String mEnv = "DEBUG";
-  private String mGuid = "guid_dev";
-  private String sceneId;
+  protected String mGuid = "";
+  private List<String> sceneIds = new ArrayList();
+  private int xmlDefaultResource = -1;
   
   public String getAppId()
   {
@@ -32,14 +34,44 @@ public class ABTestConfig
     return this.appKey;
   }
   
-  public Map<String, String> getCustomTag()
+  public List<ABTestConfig.ClientType> getClientTypeList()
+  {
+    if (this.clientTypeList.isEmpty()) {
+      this.clientTypeList.add(ABTestConfig.ClientType.ABClient);
+    }
+    return this.clientTypeList;
+  }
+  
+  public String getCurEnv()
+  {
+    return this.mCurEnv;
+  }
+  
+  public Map<String, String> getCustomProfiles()
   {
     return this.mCustomProfiles;
   }
   
-  public String getEnv()
+  public String getExperimentUrl()
   {
-    return this.mEnv;
+    if ("DEBUG".equals(this.mCurEnv)) {
+      return "https://tdata.ab.qq.com/wabt/get_gray_policy";
+    }
+    if ("1505".equals(this.appId)) {
+      return "https://qqdata.ab.qq.com/wabt/get_gray_policy";
+    }
+    return "https://data.ab.qq.com/wabt/get_gray_policy";
+  }
+  
+  public String getFeatureUrl()
+  {
+    if ("DEBUG".equals(this.mCurEnv)) {
+      return "https://tdata.ab.qq.com/wabt/get_feature_policy";
+    }
+    if ("1505".equals(this.appId)) {
+      return "https://qqdata.ab.qq.com/wabt/get_feature_policy";
+    }
+    return "https://data.ab.qq.com/wabt/get_feature_policy";
   }
   
   public String getGuid()
@@ -52,23 +84,31 @@ public class ABTestConfig
     return this.layerCodes;
   }
   
-  public String getRequestUrl()
+  public String getRemoteConfigUrl()
   {
-    String str;
-    if ("DEBUG".equals(this.mEnv)) {
-      str = "https://qbad.sparta.html5.qq.com/wabt/get_gray_policy_response";
+    if ("DEBUG".equals(this.mCurEnv)) {
+      return "http://configserver.tab.sparta.html5.qq.com/trpc.tab.rconfigserver.RemoteConfigServer/GetRemoteConfig";
     }
-    do
-    {
-      return str;
-      str = "https://casestudy.html5.qq.com/wabt/get_gray_policy_response";
-    } while (!"505".equals(this.appId));
-    return "https://505.ab.qq.com/wabt/get_gray_policy_response";
+    return "https://config.ab.qq.com/trpc.tab.rconfigserver.RemoteConfigServer/GetRemoteConfig";
   }
   
-  public String getSceneId()
+  public List<String> getSceneIds()
   {
-    return this.sceneId;
+    return this.sceneIds;
+  }
+  
+  public int getXmlDefaultResource()
+  {
+    int i = this.xmlDefaultResource;
+    if (i != -1) {
+      return i;
+    }
+    throw new Resources.NotFoundException();
+  }
+  
+  public boolean isDiskCache()
+  {
+    return this.isDiskCache;
   }
   
   public void removeCustomProfiles(String paramString)
@@ -78,7 +118,11 @@ public class ABTestConfig
       this.mCustomProfiles.remove(paramString);
       return;
     }
-    ABTestLog.error("remove profiles error. [" + paramString + "]is not exist.", new Object[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("remove profiles error. [");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]is not exist.");
+    ABTestLog.error(localStringBuilder.toString(), new Object[0]);
   }
   
   public void setAppId(String paramString)
@@ -91,33 +135,24 @@ public class ABTestConfig
     this.appKey = paramString;
   }
   
-  public void setBrand(String paramString)
+  public void setClientTypeList(List<ABTestConfig.ClientType> paramList)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    this.mCustomProfiles.put("brand", paramString);
+    this.clientTypeList = paramList;
   }
   
-  public void setCity(String paramString)
+  public void setCurEnv(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    this.mCustomProfiles.put("city", paramString);
+    this.mCurEnv = paramString;
   }
   
-  public void setCustomProfiles(String paramString1, String paramString2)
+  public void setCustomProfiles(Map<String, String> paramMap)
   {
-    this.mCustomProfiles.put(paramString1, paramString2);
+    this.mCustomProfiles = paramMap;
   }
   
-  public void setEnv(String paramString)
+  public void setDiskCache(boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals("DEBUG")) || (!paramString.equals("RELEASE"))) {
-      this.mEnv = "DEBUG";
-    }
-    this.mEnv = paramString;
+    this.isDiskCache = paramBoolean;
   }
   
   public void setGuid(String paramString)
@@ -130,62 +165,19 @@ public class ABTestConfig
     this.layerCodes = paramList;
   }
   
-  public void setModel(String paramString)
+  public void setSceneIds(List<String> paramList)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    this.mCustomProfiles.put("model", paramString);
+    this.sceneIds = paramList;
   }
   
-  public void setPlatform(String paramString)
+  public void setXmlDefaultResource(@XmlRes int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!TextUtils.equals(paramString, "ios")) || (!TextUtils.equals(paramString, "android"))) {
-      return;
-    }
-    this.mCustomProfiles.put("platform", paramString);
-  }
-  
-  public void setPlatformVersion(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    this.mCustomProfiles.put("platform_version", paramString);
-  }
-  
-  public void setProvince(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    this.mCustomProfiles.put("province", paramString);
-  }
-  
-  public void setResolutionRatio(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    this.mCustomProfiles.put("resolution_ratio", paramString);
-  }
-  
-  public void setSceneId(String paramString)
-  {
-    this.sceneId = paramString;
-  }
-  
-  public void setSex(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (!TextUtils.equals(paramString, "male")) || (!TextUtils.equals(paramString, "female"))) {
-      return;
-    }
-    this.mCustomProfiles.put("sex", paramString);
+    this.xmlDefaultResource = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.entity.ABTestConfig
  * JD-Core Version:    0.7.0.1
  */

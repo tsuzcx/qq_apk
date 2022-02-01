@@ -10,8 +10,10 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qcircle.api.IQCircleConfigApi;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
 import com.tencent.mobileqq.qcircle.api.constant.QCircleAlphaUserReportDataBuilder;
+import com.tencent.mobileqq.qcircle.api.global.QCircleHostGlobalInfo;
 import com.tencent.mobileqq.qroute.QRoute;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,15 +26,18 @@ public abstract class QCircleBaseRequest
   
   private String getGwRpTransfer(PROTOCAL.StQWebRsp paramStQWebRsp)
   {
-    if ((paramStQWebRsp == null) || (paramStQWebRsp.Extinfo.isEmpty())) {
-      return null;
-    }
-    paramStQWebRsp = paramStQWebRsp.Extinfo.get().iterator();
-    while (paramStQWebRsp.hasNext())
+    if (paramStQWebRsp != null)
     {
-      COMM.Entry localEntry = (COMM.Entry)paramStQWebRsp.next();
-      if ((localEntry != null) && ("gwRPTransfer".equals(localEntry.key.get()))) {
-        return localEntry.value.get();
+      if (paramStQWebRsp.Extinfo.isEmpty()) {
+        return null;
+      }
+      paramStQWebRsp = paramStQWebRsp.Extinfo.get().iterator();
+      while (paramStQWebRsp.hasNext())
+      {
+        COMM.Entry localEntry = (COMM.Entry)paramStQWebRsp.next();
+        if ((localEntry != null) && ("gwRPTransfer".equals(localEntry.key.get()))) {
+          return localEntry.value.get();
+        }
       }
     }
     return null;
@@ -73,29 +78,30 @@ public abstract class QCircleBaseRequest
     return null;
   }
   
-  public byte[] getRequestWrapper(ByteStringMicro paramByteStringMicro)
+  protected byte[] getRequestWrapper(ByteStringMicro paramByteStringMicro)
   {
     PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
     try
     {
       localStQWebReq.mergeFrom(super.getRequestWrapper(paramByteStringMicro));
-      paramByteStringMicro = new COMM.Entry();
-      paramByteStringMicro.key.set("fc-appid");
-      paramByteStringMicro.value.set("92");
-      localStQWebReq.Extinfo.add(paramByteStringMicro);
-      paramByteStringMicro = new COMM.Entry();
-      paramByteStringMicro.key.set("sw-plugin-qua");
-      paramByteStringMicro.value.set(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).getPluginQUA());
-      localStQWebReq.Extinfo.add(paramByteStringMicro);
-      return localStQWebReq.toByteArray();
     }
     catch (InvalidProtocolBufferMicroException paramByteStringMicro)
     {
-      for (;;)
-      {
-        paramByteStringMicro.printStackTrace();
-      }
+      paramByteStringMicro.printStackTrace();
     }
+    paramByteStringMicro = new COMM.Entry();
+    paramByteStringMicro.key.set("fc-appid");
+    paramByteStringMicro.value.set("92");
+    localStQWebReq.Extinfo.add(paramByteStringMicro);
+    paramByteStringMicro = new COMM.Entry();
+    paramByteStringMicro.key.set("sw-plugin-qua");
+    paramByteStringMicro.value.set(((IQCircleConfigApi)QRoute.api(IQCircleConfigApi.class)).getPluginQUA());
+    localStQWebReq.Extinfo.add(paramByteStringMicro);
+    paramByteStringMicro = new COMM.Entry();
+    paramByteStringMicro.key.set("environment_id");
+    paramByteStringMicro.value.set(QCircleHostGlobalInfo.getCurMsfServerId());
+    localStQWebReq.Extinfo.add(paramByteStringMicro);
+    return localStQWebReq.toByteArray();
   }
   
   protected String getRetCode()
@@ -126,20 +132,23 @@ public abstract class QCircleBaseRequest
   public void reportCmdSuccessRate(PROTOCAL.StQWebRsp paramStQWebRsp)
   {
     long l;
-    if (getSsoResultCode() == 1000) {
-      l = paramStQWebRsp.retCode.get();
-    }
-    for (String str = paramStQWebRsp.errMsg.get().toStringUtf8();; str = getSsoFailMsg())
+    String str;
+    if (getSsoResultCode() == 1000)
     {
-      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportCmdSuccessRateEvent(new QCircleAlphaUserReportDataBuilder().setCmd(getCmdName()).setSvrRetCode(String.valueOf(l)).setRetCode(getRetCode()).setInfo(getInfo()).setMsg(str).setTimeCost(getNetworkTimeCost()).setUrl(getUrl()).setRate(getRate()).setType(getType()).setRefer(getRefer()).setAttachInfo(getAttachInfo()).setExtraInfo(getTraceId()).setCount(getCount()).setState(getState()).setFeedId(getFeedId()).setUser(getUser()).setExtras(getExtras()).setGwRpTransfer(getGwRpTransfer(paramStQWebRsp)));
-      return;
-      l = getSsoResultCode();
+      l = paramStQWebRsp.retCode.get();
+      str = paramStQWebRsp.errMsg.get().toStringUtf8();
     }
+    else
+    {
+      l = getSsoResultCode();
+      str = getSsoFailMsg();
+    }
+    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportCmdSuccessRateEvent(new QCircleAlphaUserReportDataBuilder().setCmd(getCmdName()).setSvrRetCode(String.valueOf(l)).setRetCode(getRetCode()).setInfo(getInfo()).setMsg(str).setTimeCost(getNetworkTimeCost()).setUrl(getUrl()).setRate(getRate()).setType(getType()).setRefer(getRefer()).setAttachInfo(getAttachInfo()).setExtraInfo(getTraceId()).setCount(getCount()).setState(getState()).setFeedId(getFeedId()).setUser(getUser()).setExtras(getExtras()).setGwRpTransfer(getGwRpTransfer(paramStQWebRsp)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.requests.QCircleBaseRequest
  * JD-Core Version:    0.7.0.1
  */

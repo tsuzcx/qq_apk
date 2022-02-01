@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class readUserInfoRsp
   extends JceStruct
@@ -46,13 +47,15 @@ public final class readUserInfoRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.itemlist != null) {
-      paramJceOutputStream.write(this.itemlist, 0);
+    Object localObject = this.itemlist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.index, 1);
     paramJceOutputStream.write(this.listend, 2);
-    if (this.urlprefix != null) {
-      paramJceOutputStream.write(this.urlprefix, 3);
+    localObject = this.urlprefix;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.itemid, 4);
     paramJceOutputStream.write(this.flag, 5);
@@ -60,7 +63,7 @@ public final class readUserInfoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ProfileLogic.QC.readUserInfoRsp
  * JD-Core Version:    0.7.0.1
  */

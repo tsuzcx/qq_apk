@@ -14,7 +14,10 @@ class QFlutterContainerDelegate$2
   
   public void a(LaunchResult paramLaunchResult)
   {
-    QLog.d("QFlutterContainerDelegate", 1, "launch onResult, " + paramLaunchResult);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("launch onResult, ");
+    localStringBuilder.append(paramLaunchResult);
+    QLog.d("QFlutterContainerDelegate", 1, localStringBuilder.toString());
     QFlutterContainerDelegate.a(this.a).a(paramLaunchResult);
     QFlutterContainerDelegate.a(this.a, paramLaunchResult);
     if (paramLaunchResult.a())
@@ -30,15 +33,17 @@ class QFlutterContainerDelegate$2
           QFlutterContainerDelegate.d(this.a);
         }
       }
-      return;
     }
-    QQToast.a(QFlutterContainerDelegate.a(this.a).a(), 1, 2131693846, 1).a();
-    QFlutterContainerDelegate.a(this.a).a().finish();
+    else
+    {
+      QQToast.a(QFlutterContainerDelegate.a(this.a).getContext(), 1, 2131693799, 1).a();
+      QFlutterContainerDelegate.a(this.a).a().finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.QFlutterContainerDelegate.2
  * JD-Core Version:    0.7.0.1
  */

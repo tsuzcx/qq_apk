@@ -24,10 +24,11 @@ public class SmartOpAssembler
       a(paramOperation);
       return;
     }
-    paramOperation.jdField_a_of_type_Int = (i + 1);
+    i += 1;
+    paramOperation.jdField_a_of_type_Int = i;
     paramOperation.b = (paramString.split("\n", -1).length - 1);
     a(paramOperation);
-    paramOperation.jdField_a_of_type_Int = (paramString.length() - (i + 1));
+    paramOperation.jdField_a_of_type_Int = (paramString.length() - i);
     paramOperation.b = 0;
     a(paramOperation);
   }
@@ -72,8 +73,10 @@ public class SmartOpAssembler
   
   public void a(Operation paramOperation)
   {
-    if (paramOperation.jdField_a_of_type_Char == 0) {}
-    while (paramOperation.jdField_a_of_type_Int == 0) {
+    if (paramOperation.jdField_a_of_type_Char == 0) {
+      return;
+    }
+    if (paramOperation.jdField_a_of_type_Int == 0) {
       return;
     }
     if (paramOperation.jdField_a_of_type_Char == '-')
@@ -84,26 +87,22 @@ public class SmartOpAssembler
       this.jdField_a_of_type_ComTencentMobileqqEasysync2MergingOpAssembler.a(paramOperation);
       this.jdField_a_of_type_Int -= paramOperation.jdField_a_of_type_Int;
     }
-    for (;;)
+    else if (paramOperation.jdField_a_of_type_Char == '+')
     {
-      this.jdField_a_of_type_Char = paramOperation.jdField_a_of_type_Char;
-      return;
-      if (paramOperation.jdField_a_of_type_Char == '+')
-      {
-        if (this.jdField_a_of_type_Char == '=') {
-          b();
-        }
-        this.b.a(paramOperation);
-        this.jdField_a_of_type_Int += paramOperation.jdField_a_of_type_Int;
+      if (this.jdField_a_of_type_Char == '=') {
+        b();
       }
-      else if (paramOperation.jdField_a_of_type_Char == '=')
-      {
-        if (this.jdField_a_of_type_Char != '=') {
-          d();
-        }
-        this.c.a(paramOperation);
-      }
+      this.b.a(paramOperation);
+      this.jdField_a_of_type_Int += paramOperation.jdField_a_of_type_Int;
     }
+    else if (paramOperation.jdField_a_of_type_Char == '=')
+    {
+      if (this.jdField_a_of_type_Char != '=') {
+        d();
+      }
+      this.c.a(paramOperation);
+    }
+    this.jdField_a_of_type_Char = paramOperation.jdField_a_of_type_Char;
   }
   
   public void c()
@@ -111,7 +110,8 @@ public class SmartOpAssembler
     this.jdField_a_of_type_ComTencentMobileqqEasysync2MergingOpAssembler.c();
     this.b.c();
     this.c.c();
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
+    StringBuilder localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+    localStringBuilder.delete(0, localStringBuilder.length());
     this.jdField_a_of_type_Int = 0;
   }
   
@@ -125,7 +125,7 @@ public class SmartOpAssembler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.SmartOpAssembler
  * JD-Core Version:    0.7.0.1
  */

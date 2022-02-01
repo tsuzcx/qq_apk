@@ -35,14 +35,15 @@ public final class ConfigurationService$ReqGetConfig
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56, 64, 72, 82, 90, 96, 104, 808, 818, 826, 832 }, new String[] { "seq_list", "device_info", "str_info", "province", "city", "adcode", "int32_lat", "int32_lon", "carrier", "phone_nos", "bind_phone_no", "carriers", "req_debug_msg", "is_page_req", "cookies", "cookies_new", "version" }, new Object[] { null, null, "", "", "", Long.valueOf(0L), Integer.valueOf(900000000), Integer.valueOf(900000000), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, ReqGetConfig.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56, 64, 72, 82, 90, 96, 104, 808, 818, 826, 832 }, new String[] { "seq_list", "device_info", "str_info", "province", "city", "adcode", "int32_lat", "int32_lon", "carrier", "phone_nos", "bind_phone_no", "carriers", "req_debug_msg", "is_page_req", "cookies", "cookies_new", "version" }, new Object[] { null, null, "", "", "", Long.valueOf(0L), Integer.valueOf(900000000), Integer.valueOf(900000000), localInteger, "", "", localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localInteger }, ReqGetConfig.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ReqGetConfig
  * JD-Core Version:    0.7.0.1
  */

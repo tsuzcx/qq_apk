@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
-import com.tencent.mobileqq.core.QQEmotionPanelManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.widget.ProgressButton;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.widget.XPanelContainer;
 
 public class EmotionDownloadOrInvalidAdapter
   extends EmotionDownloadOrUpdateAdapter
@@ -21,28 +21,30 @@ public class EmotionDownloadOrInvalidAdapter
 {
   public static final String TAG = "EmotionDownloadOrInvalidAdapter";
   protected int contentHight;
+  protected IPanelInteractionListener interactionListener;
   
-  public EmotionDownloadOrInvalidAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, EmoticonCallback paramEmoticonCallback, int paramInt4)
+  public EmotionDownloadOrInvalidAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, IPanelInteractionListener paramIPanelInteractionListener, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, EmoticonCallback paramEmoticonCallback, int paramInt4)
   {
     super(paramIEmoticonMainPanelApp, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramEmoticonCallback, paramInt4);
     this.isUpdatePanel = false;
+    this.interactionListener = paramIPanelInteractionListener;
   }
   
   private void initContentHeight()
   {
-    if ((this.contentHight == 0) && (QQEmotionPanelManager.a().a() != null))
-    {
-      if (getCurrentListView() == null) {
-        break label71;
+    if ((this.contentHight == 0) && (this.interactionListener != null)) {
+      if (getCurrentListView() != null)
+      {
+        this.contentHight = getCurrentListView().getHeight();
+        if (this.contentHight == 0) {
+          this.contentHight = (XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131296966));
+        }
       }
-      this.contentHight = getCurrentListView().getHeight();
-      if (this.contentHight == 0) {
-        this.contentHight = (QQEmotionPanelManager.a().a().getExternalPanelheight() - (int)this.mContext.getResources().getDimension(2131296984));
+      else
+      {
+        this.contentHight = (XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131296966));
       }
     }
-    return;
-    label71:
-    this.contentHight = (QQEmotionPanelManager.a().a().getExternalPanelheight() - (int)this.mContext.getResources().getDimension(2131296984));
   }
   
   public int getCount()
@@ -57,58 +59,76 @@ public class EmotionDownloadOrInvalidAdapter
   
   public View getEmotionView(BaseEmotionAdapter.ViewHolder paramViewHolder, int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramViewGroup = new StringBuilder();
+      paramViewGroup.append("getEmotionView position = ");
+      paramViewGroup.append(paramInt);
+      QLog.d("EmotionDownloadOrInvalidAdapter", 2, paramViewGroup.toString());
     }
     this.holder = ((EmotionDownloadOrUpdateAdapter.EmotionDownloadOrUpdateViewHolder)paramViewHolder);
     if (paramView == null)
     {
       initContentHeight();
-      paramViewHolder = EmotionPanelViewPool.getInstance().getView(this.panelType);
-      paramView = new AbsListView.LayoutParams(-1, this.contentHight);
-      if (paramViewHolder == null)
+      paramView = EmotionPanelViewPool.getInstance().getView(this.panelType);
+      paramViewGroup = new AbsListView.LayoutParams(-1, this.contentHight);
+      if (paramView == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt + ";view form inflater");
-        }
-        paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561740, null);
-        paramViewHolder.setLayoutParams(paramView);
-        this.holder.cover = ((URLImageView)paramViewHolder.findViewById(2131365419));
-        this.holder.name = ((TextView)paramViewHolder.findViewById(2131365521));
-        this.holder.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365519));
-        recycleView(this.panelType, paramViewHolder);
-        paramViewHolder.setTag(this.holder);
-      }
-    }
-    for (;;)
-    {
-      updateDownloadUI(this.holder);
-      if (QQEmotionPanelManager.a().a() != null)
-      {
-        paramInt = QQEmotionPanelManager.a().a().getExternalPanelheight() - (int)this.mContext.getResources().getDimension(2131296984);
-        if (paramInt != this.contentHight)
+        if (QLog.isColorLevel())
         {
-          this.contentHight = paramInt;
-          paramView = (AbsListView.LayoutParams)paramViewHolder.getLayoutParams();
-          if (paramView != null)
-          {
-            paramView.height = this.contentHight;
-            paramViewHolder.setLayoutParams(paramView);
-          }
+          paramViewHolder = new StringBuilder();
+          paramViewHolder.append("getEmotionView position = ");
+          paramViewHolder.append(paramInt);
+          paramViewHolder.append(";view form inflater");
+          QLog.d("EmotionDownloadOrInvalidAdapter", 2, paramViewHolder.toString());
+        }
+        paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561589, null);
+      }
+      else
+      {
+        paramViewHolder = paramView;
+        if (QLog.isColorLevel())
+        {
+          paramViewHolder = new StringBuilder();
+          paramViewHolder.append("getEmotionView position = ");
+          paramViewHolder.append(paramInt);
+          paramViewHolder.append(";view form cache");
+          QLog.d("EmotionDownloadOrInvalidAdapter", 2, paramViewHolder.toString());
+          paramViewHolder = paramView;
         }
       }
-      return paramViewHolder;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt + ";view form cache");
-      }
-      break;
+      paramViewHolder.setLayoutParams(paramViewGroup);
+      this.holder.cover = ((URLImageView)paramViewHolder.findViewById(2131365284));
+      this.holder.name = ((TextView)paramViewHolder.findViewById(2131365367));
+      this.holder.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365365));
+      recycleView(this.panelType, paramViewHolder);
+      paramViewHolder.setTag(this.holder);
+    }
+    else
+    {
       paramViewHolder = paramView;
     }
+    updateDownloadUI(this.holder);
+    if (this.interactionListener != null)
+    {
+      paramInt = XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131296966);
+      if (paramInt != this.contentHight)
+      {
+        this.contentHight = paramInt;
+        paramView = (AbsListView.LayoutParams)paramViewHolder.getLayoutParams();
+        if (paramView != null)
+        {
+          paramView.height = this.contentHight;
+          paramViewHolder.setLayoutParams(paramView);
+        }
+      }
+    }
+    return paramViewHolder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionDownloadOrInvalidAdapter
  * JD-Core Version:    0.7.0.1
  */

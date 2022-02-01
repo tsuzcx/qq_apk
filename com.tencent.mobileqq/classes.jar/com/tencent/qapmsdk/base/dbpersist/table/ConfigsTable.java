@@ -94,121 +94,165 @@ public final class ConfigsTable
     //   42: invokevirtual 160	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   45: astore_1
     //   46: aload_1
-    //   47: ifnull +174 -> 221
+    //   47: ifnull +231 -> 278
     //   50: aload_1
     //   51: checkcast 162	java/io/Closeable
     //   54: astore 8
     //   56: aconst_null
     //   57: checkcast 148	java/lang/Throwable
-    //   60: astore_1
-    //   61: aload 8
-    //   63: checkcast 164	android/database/Cursor
-    //   66: astore_2
-    //   67: aload_2
-    //   68: invokeinterface 168 1 0
-    //   73: ifle +150 -> 223
-    //   76: aload_2
-    //   77: invokeinterface 172 1 0
-    //   82: pop
-    //   83: aload_2
-    //   84: invokeinterface 175 1 0
-    //   89: ifne +134 -> 223
+    //   60: astore_2
+    //   61: aload_2
+    //   62: astore_1
+    //   63: aload 8
+    //   65: checkcast 164	android/database/Cursor
+    //   68: astore 9
+    //   70: aload_2
+    //   71: astore_1
+    //   72: aload 9
+    //   74: invokeinterface 168 1 0
+    //   79: ifle +154 -> 233
+    //   82: aload_2
+    //   83: astore_1
+    //   84: aload 9
+    //   86: invokeinterface 172 1 0
+    //   91: pop
     //   92: aload_2
-    //   93: aload_2
-    //   94: ldc 43
-    //   96: invokeinterface 179 2 0
-    //   101: invokeinterface 183 2 0
-    //   106: istore 4
-    //   108: aload_2
-    //   109: aload_2
-    //   110: ldc 52
+    //   93: astore_1
+    //   94: aload 9
+    //   96: invokeinterface 175 1 0
+    //   101: ifne +132 -> 233
+    //   104: aload_2
+    //   105: astore_1
+    //   106: aload 9
+    //   108: aload 9
+    //   110: ldc 43
     //   112: invokeinterface 179 2 0
     //   117: invokeinterface 183 2 0
-    //   122: istore 5
+    //   122: istore 4
     //   124: aload_2
-    //   125: aload_2
-    //   126: ldc 40
-    //   128: invokeinterface 179 2 0
-    //   133: invokeinterface 183 2 0
-    //   138: istore 6
-    //   140: aload_2
-    //   141: aload_2
-    //   142: ldc 34
-    //   144: invokeinterface 179 2 0
-    //   149: invokeinterface 187 2 0
-    //   154: fstore_3
-    //   155: aload_2
-    //   156: aload_2
-    //   157: ldc 49
-    //   159: invokeinterface 179 2 0
-    //   164: invokeinterface 183 2 0
-    //   169: istore 7
-    //   171: getstatic 193	com/tencent/qapmsdk/base/monitorplugin/PluginController:INSTANCE	Lcom/tencent/qapmsdk/base/monitorplugin/PluginController;
-    //   174: iload 4
-    //   176: iload 5
-    //   178: iload 6
-    //   180: fload_3
-    //   181: iload 7
-    //   183: invokevirtual 197	com/tencent/qapmsdk/base/monitorplugin/PluginController:resetPlugin	(IIIFI)V
-    //   186: aload_2
-    //   187: invokeinterface 200 1 0
-    //   192: pop
-    //   193: goto -110 -> 83
-    //   196: astore_1
-    //   197: aload_1
-    //   198: athrow
-    //   199: astore_2
-    //   200: aload 8
-    //   202: aload_1
-    //   203: invokestatic 206	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   206: aload_2
-    //   207: athrow
-    //   208: astore_1
-    //   209: getstatic 211	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   212: ldc 64
-    //   214: aload_1
-    //   215: checkcast 148	java/lang/Throwable
-    //   218: invokevirtual 215	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   221: aconst_null
-    //   222: areturn
-    //   223: getstatic 220	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   226: astore_2
-    //   227: aload 8
-    //   229: aload_1
-    //   230: invokestatic 206	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   233: aconst_null
-    //   234: areturn
-    //   235: astore_2
-    //   236: goto -36 -> 200
+    //   125: astore_1
+    //   126: aload 9
+    //   128: aload 9
+    //   130: ldc 52
+    //   132: invokeinterface 179 2 0
+    //   137: invokeinterface 183 2 0
+    //   142: istore 5
+    //   144: aload_2
+    //   145: astore_1
+    //   146: aload 9
+    //   148: aload 9
+    //   150: ldc 40
+    //   152: invokeinterface 179 2 0
+    //   157: invokeinterface 183 2 0
+    //   162: istore 6
+    //   164: aload_2
+    //   165: astore_1
+    //   166: aload 9
+    //   168: aload 9
+    //   170: ldc 34
+    //   172: invokeinterface 179 2 0
+    //   177: invokeinterface 187 2 0
+    //   182: fstore_3
+    //   183: aload_2
+    //   184: astore_1
+    //   185: aload 9
+    //   187: aload 9
+    //   189: ldc 49
+    //   191: invokeinterface 179 2 0
+    //   196: invokeinterface 183 2 0
+    //   201: istore 7
+    //   203: aload_2
+    //   204: astore_1
+    //   205: getstatic 193	com/tencent/qapmsdk/base/monitorplugin/PluginController:INSTANCE	Lcom/tencent/qapmsdk/base/monitorplugin/PluginController;
+    //   208: iload 4
+    //   210: iload 5
+    //   212: iload 6
+    //   214: fload_3
+    //   215: iload 7
+    //   217: invokevirtual 197	com/tencent/qapmsdk/base/monitorplugin/PluginController:resetPlugin	(IIIFI)V
+    //   220: aload_2
+    //   221: astore_1
+    //   222: aload 9
+    //   224: invokeinterface 200 1 0
+    //   229: pop
+    //   230: goto -138 -> 92
+    //   233: aload_2
+    //   234: astore_1
+    //   235: getstatic 205	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   238: astore 9
+    //   240: aload 8
+    //   242: aload_2
+    //   243: invokestatic 211	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   246: aconst_null
+    //   247: areturn
+    //   248: astore_2
+    //   249: goto +8 -> 257
+    //   252: astore_2
+    //   253: aload_2
+    //   254: astore_1
+    //   255: aload_2
+    //   256: athrow
+    //   257: aload 8
+    //   259: aload_1
+    //   260: invokestatic 211	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   263: aload_2
+    //   264: athrow
+    //   265: astore_1
+    //   266: getstatic 216	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   269: ldc 64
+    //   271: aload_1
+    //   272: checkcast 148	java/lang/Throwable
+    //   275: invokevirtual 220	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   278: aconst_null
+    //   279: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	239	0	this	ConfigsTable
-    //   0	239	1	paramSQLiteDatabase	SQLiteDatabase
-    //   0	239	2	paramFunction0	Function0<? extends java.lang.Object>
-    //   154	27	3	f	float
-    //   106	69	4	i	int
-    //   122	55	5	j	int
-    //   138	41	6	k	int
-    //   169	13	7	m	int
-    //   54	174	8	localCloseable	java.io.Closeable
+    //   0	280	0	this	ConfigsTable
+    //   0	280	1	paramSQLiteDatabase	SQLiteDatabase
+    //   0	280	2	paramFunction0	Function0<? extends java.lang.Object>
+    //   182	33	3	f	float
+    //   122	87	4	i	int
+    //   142	69	5	j	int
+    //   162	51	6	k	int
+    //   201	15	7	m	int
+    //   54	204	8	localCloseable	java.io.Closeable
+    //   68	171	9	localObject	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   61	83	196	java/lang/Throwable
-    //   83	193	196	java/lang/Throwable
-    //   223	227	196	java/lang/Throwable
-    //   197	199	199	finally
-    //   12	46	208	java/lang/Exception
-    //   50	61	208	java/lang/Exception
-    //   200	208	208	java/lang/Exception
-    //   227	233	208	java/lang/Exception
-    //   61	83	235	finally
-    //   83	193	235	finally
-    //   223	227	235	finally
+    //   63	70	248	finally
+    //   72	82	248	finally
+    //   84	92	248	finally
+    //   94	104	248	finally
+    //   106	124	248	finally
+    //   126	144	248	finally
+    //   146	164	248	finally
+    //   166	183	248	finally
+    //   185	203	248	finally
+    //   205	220	248	finally
+    //   222	230	248	finally
+    //   235	240	248	finally
+    //   255	257	248	finally
+    //   63	70	252	java/lang/Throwable
+    //   72	82	252	java/lang/Throwable
+    //   84	92	252	java/lang/Throwable
+    //   94	104	252	java/lang/Throwable
+    //   106	124	252	java/lang/Throwable
+    //   126	144	252	java/lang/Throwable
+    //   146	164	252	java/lang/Throwable
+    //   166	183	252	java/lang/Throwable
+    //   185	203	252	java/lang/Throwable
+    //   205	220	252	java/lang/Throwable
+    //   222	230	252	java/lang/Throwable
+    //   235	240	252	java/lang/Throwable
+    //   12	46	265	java/lang/Exception
+    //   50	61	265	java/lang/Exception
+    //   240	246	265	java/lang/Exception
+    //   257	265	265	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.dbpersist.table.ConfigsTable
  * JD-Core Version:    0.7.0.1
  */

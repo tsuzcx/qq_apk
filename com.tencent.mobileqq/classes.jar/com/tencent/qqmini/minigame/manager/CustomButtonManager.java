@@ -73,22 +73,26 @@ public class CustomButtonManager
   
   public boolean destroyCustomButton(long paramLong)
   {
-    if (this.mCustomButtonList.get(Long.valueOf(paramLong)) != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mGameContainer.post(new CustomButtonManager.2(this, paramLong));
-      return bool;
+    boolean bool;
+    if (this.mCustomButtonList.get(Long.valueOf(paramLong)) != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mGameContainer.post(new CustomButtonManager.2(this, paramLong));
+    return bool;
   }
   
   public boolean setCustomButtonVisible(long paramLong, boolean paramBoolean)
   {
-    if (this.mCustomButtonList.get(Long.valueOf(paramLong)) != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mGameContainer.post(new CustomButtonManager.1(this, paramLong, paramBoolean));
-      return bool;
+    boolean bool;
+    if (this.mCustomButtonList.get(Long.valueOf(paramLong)) != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mGameContainer.post(new CustomButtonManager.1(this, paramLong, paramBoolean));
+    return bool;
   }
   
   public boolean updateCustomButton(JSONObject paramJSONObject, View.OnClickListener paramOnClickListener)
@@ -103,7 +107,7 @@ public class CustomButtonManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.CustomButtonManager
  * JD-Core Version:    0.7.0.1
  */

@@ -17,57 +17,85 @@ class ARResourceDownload$1
   
   public void onResp(NetResp paramNetResp)
   {
-    if (paramNetResp.mResult == 3)
+    int i = paramNetResp.mResult;
+    boolean bool2 = true;
+    if (i == 3)
     {
-      QLog.i("AREngine_ARResourceDownload", 1, "Download init. url = " + ((HttpNetReq)paramNetResp.mReq).mReqUrl);
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("Download init. url = ");
+      ((StringBuilder)???).append(((HttpNetReq)paramNetResp.mReq).mReqUrl);
+      QLog.i("AREngine_ARResourceDownload", 1, ((StringBuilder)???).toString());
       return;
     }
+    label343:
     synchronized (ARResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload))
     {
-      int i;
       if (ARResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload) != null)
       {
         i = 0;
         if (i < ARResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload).size())
         {
           if (!((ARResourceDownload.DownloadInfo)ARResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo.jdField_a_of_type_JavaLangString)) {
-            break label268;
+            break label343;
           }
           ARResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload).remove(i);
         }
       }
+      boolean bool1;
       if (paramNetResp.mResult == 0)
       {
         ??? = new File(((HttpNetReq)paramNetResp.mReq).mOutPath);
         String str = PortalUtils.a(((File)???).getAbsolutePath());
-        if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo.b))) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo.jdField_a_of_type_Int != 1))
+        if (!TextUtils.isEmpty(str))
         {
-          QLog.i("AREngine_ARResourceDownload", 1, "Download end. MD5 check error. url = " + ((HttpNetReq)paramNetResp.mReq).mReqUrl + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$ARResourceDownloadCallback.a(false, this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo);
-          return;
-          label268:
-          i += 1;
+          bool1 = bool2;
+          if (str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo.b)) {}
+        }
+        else
+        {
+          bool1 = bool2;
+          if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo.jdField_a_of_type_Int != 1)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("Download end. MD5 check error. url = ");
+            localStringBuilder.append(((HttpNetReq)paramNetResp.mReq).mReqUrl);
+            localStringBuilder.append(", fileName = ");
+            localStringBuilder.append(((File)???).getAbsolutePath());
+            localStringBuilder.append(", fileMD5 = ");
+            localStringBuilder.append(str);
+            QLog.i("AREngine_ARResourceDownload", 1, localStringBuilder.toString());
+            this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$ARResourceDownloadCallback.a(false, this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo);
+          }
         }
       }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$ARResourceDownloadCallback.a(bool, this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo);
+      else
+      {
+        bool1 = false;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$ARResourceDownloadCallback.a(bool1, this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo);
       return;
     }
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARResourceDownload", 2, "onUpdateProgeress. url = " + ((HttpNetReq)paramNetReq).mReqUrl + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateProgeress. url = ");
+      localStringBuilder.append(((HttpNetReq)paramNetReq).mReqUrl);
+      localStringBuilder.append(", total size = ");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append(", cur downloaded size = ");
+      localStringBuilder.append(paramLong1);
+      QLog.d("AREngine_ARResourceDownload", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$ARResourceDownloadCallback.a(paramLong1, paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARResourceDownload.1
  * JD-Core Version:    0.7.0.1
  */

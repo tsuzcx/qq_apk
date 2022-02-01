@@ -45,84 +45,34 @@ public class PreloadDownloaderManager
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a((PreloadQueue)this.jdField_a_of_type_JavaUtilList.get(0));
   }
   
-  /* Error */
   public void a(int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 24	com/tencent/biz/qqstory/base/preload/PreloadDownloaderManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   6: iload_1
-    //   7: invokeinterface 59 2 0
-    //   12: checkcast 61	com/tencent/biz/qqstory/base/preload/PreloadQueue
-    //   15: astore_3
-    //   16: aload_3
-    //   17: ifnonnull +30 -> 47
-    //   20: ldc 67
-    //   22: new 69	java/lang/StringBuilder
-    //   25: dup
-    //   26: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   29: ldc 72
-    //   31: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: iload_1
-    //   35: invokevirtual 79	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 89	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   44: aload_0
-    //   45: monitorexit
-    //   46: return
-    //   47: aload_0
-    //   48: getfield 29	com/tencent/biz/qqstory/base/preload/PreloadDownloaderManager:jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader	Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;
-    //   51: invokevirtual 92	com/tencent/biz/qqstory/base/preload/PreloadDownloader:a	()I
-    //   54: istore_2
-    //   55: aload_0
-    //   56: getfield 29	com/tencent/biz/qqstory/base/preload/PreloadDownloaderManager:jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader	Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;
-    //   59: invokevirtual 95	com/tencent/biz/qqstory/base/preload/PreloadDownloader:a	()Lcom/tencent/biz/qqstory/base/preload/DownloadTask;
-    //   62: astore 4
-    //   64: aload_3
-    //   65: invokevirtual 98	com/tencent/biz/qqstory/base/preload/PreloadQueue:clearAllTask	()V
-    //   68: ldc 67
-    //   70: new 69	java/lang/StringBuilder
-    //   73: dup
-    //   74: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   77: ldc 100
-    //   79: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: iload_1
-    //   83: invokevirtual 79	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   86: ldc 102
-    //   88: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: iload_2
-    //   92: invokevirtual 79	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   95: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   98: invokestatic 105	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   101: iload_2
-    //   102: iload_1
-    //   103: if_icmpne -59 -> 44
-    //   106: aload_0
-    //   107: getfield 29	com/tencent/biz/qqstory/base/preload/PreloadDownloaderManager:jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader	Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;
-    //   110: aload 4
-    //   112: invokevirtual 108	com/tencent/biz/qqstory/base/preload/PreloadDownloader:a	(Lcom/tencent/biz/qqstory/base/preload/DownloadTask;)V
-    //   115: goto -71 -> 44
-    //   118: astore_3
-    //   119: aload_0
-    //   120: monitorexit
-    //   121: aload_3
-    //   122: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	123	0	this	PreloadDownloaderManager
-    //   0	123	1	paramInt	int
-    //   54	50	2	i	int
-    //   15	50	3	localPreloadQueue	PreloadQueue
-    //   118	4	3	localObject	Object
-    //   62	49	4	localDownloadTask	DownloadTask
-    // Exception table:
-    //   from	to	target	type
-    //   2	16	118	finally
-    //   20	44	118	finally
-    //   47	101	118	finally
-    //   106	115	118	finally
+    try
+    {
+      Object localObject3 = (PreloadQueue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (localObject3 == null)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("cannot find queue , id = ");
+        ((StringBuilder)localObject1).append(paramInt);
+        SLog.d("Q.qqstory.download.preload.PreloadDownloaderManager", ((StringBuilder)localObject1).toString());
+        return;
+      }
+      int i = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a();
+      Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a();
+      ((PreloadQueue)localObject3).clearAllTask();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("try to stop queue ");
+      ((StringBuilder)localObject3).append(paramInt);
+      ((StringBuilder)localObject3).append(" , current queue id is ");
+      ((StringBuilder)localObject3).append(i);
+      SLog.b("Q.qqstory.download.preload.PreloadDownloaderManager", ((StringBuilder)localObject3).toString());
+      if (i == paramInt) {
+        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a((DownloadTask)localObject1);
+      }
+      return;
+    }
+    finally {}
   }
   
   public void a(long paramLong)
@@ -138,38 +88,38 @@ public class PreloadDownloaderManager
   
   public void a(List<DownloadTask> paramList, int paramInt, boolean paramBoolean)
   {
-    if (paramList == null) {}
-    PreloadQueue localPreloadQueue;
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      try
-      {
-        SLog.d("Q.qqstory.download.preload.PreloadDownloaderManager", "setPreloadTaskList , id = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramList.size()) });
-        localPreloadQueue = (PreloadQueue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        if (localPreloadQueue == null) {
-          SLog.d("Q.qqstory.download.preload.PreloadDownloaderManager", "cannot find queue , id = " + paramInt);
-        }
-      }
-      finally {}
     }
-    DownloadTask localDownloadTask2 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a();
-    if (paramList.size() == 0) {}
-    for (DownloadTask localDownloadTask1 = null;; localDownloadTask1 = (DownloadTask)paramList.get(0))
+    try
     {
+      SLog.d("Q.qqstory.download.preload.PreloadDownloaderManager", "setPreloadTaskList , id = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramList.size()) });
+      PreloadQueue localPreloadQueue = (PreloadQueue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (localPreloadQueue == null)
+      {
+        paramList = new StringBuilder();
+        paramList.append("cannot find queue , id = ");
+        paramList.append(paramInt);
+        SLog.d("Q.qqstory.download.preload.PreloadDownloaderManager", paramList.toString());
+        return;
+      }
+      DownloadTask localDownloadTask2 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a();
+      DownloadTask localDownloadTask1;
+      if (paramList.size() == 0) {
+        localDownloadTask1 = null;
+      } else {
+        localDownloadTask1 = (DownloadTask)paramList.get(0);
+      }
       localPreloadQueue.clearAllTask();
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         localPreloadQueue.addTask((DownloadTask)paramList.next(), false);
       }
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a() > paramInt)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localPreloadQueue);
-      paramBoolean = true;
-    }
-    for (;;)
-    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a() > paramInt)
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localPreloadQueue);
+        paramBoolean = true;
+      }
       boolean bool = paramBoolean;
       if (localDownloadTask2 != null)
       {
@@ -182,11 +132,15 @@ public class PreloadDownloaderManager
           }
         }
       }
-      if (!bool) {
-        break;
+      if (bool) {
+        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localDownloadTask2);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localDownloadTask2);
-      break;
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramList;
     }
   }
   
@@ -212,7 +166,7 @@ public class PreloadDownloaderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager
  * JD-Core Version:    0.7.0.1
  */

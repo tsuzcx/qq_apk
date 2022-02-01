@@ -36,122 +36,126 @@ public class PortalManager$reportRunnable
   
   public void run()
   {
-    if ((this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat == null) || (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size() <= 0)) {
-      return;
-    }
-    int i = 0;
-    label20:
-    Object localObject1;
-    Object localObject2;
-    int j;
-    label171:
-    int k;
-    if (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
+    Object localObject1 = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+    if (localObject1 != null)
     {
-      localObject1 = new ArrayList(100);
-      localObject2 = new LongSparseArray(60);
-      int m = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(i);
-      Object localObject3 = ((ArrayList)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(m)).iterator();
-      while (((Iterator)localObject3).hasNext())
+      if (((SparseArrayCompat)localObject1).size() <= 0) {
+        return;
+      }
+      int i = 0;
+      while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
       {
-        Long localLong = (Long)((Iterator)localObject3).next();
-        if (this.jdField_a_of_type_Int == 1) {}
-        for (j = 1000;; j = 60000)
+        localObject1 = new ArrayList(100);
+        Object localObject2 = new LongSparseArray(60);
+        int m = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(i);
+        Object localObject3 = ((ArrayList)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(m)).iterator();
+        boolean bool1;
+        long l1;
+        for (;;)
         {
-          l = localLong.longValue() / j * j;
-          if (((LongSparseArray)localObject2).a(l) == null) {
-            break label171;
+          boolean bool2 = ((Iterator)localObject3).hasNext();
+          bool1 = true;
+          if (!bool2) {
+            break;
           }
-          ((LongSparseArray)localObject2).a(l, Integer.valueOf(((Integer)((LongSparseArray)localObject2).a(l)).intValue() + 1));
-          break;
+          Long localLong = (Long)((Iterator)localObject3).next();
+          if (this.jdField_a_of_type_Int == 1) {
+            j = 1000;
+          } else {
+            j = 60000;
+          }
+          l1 = localLong.longValue();
+          long l2 = j;
+          l1 = l1 / l2 * l2;
+          if (((LongSparseArray)localObject2).a(l1) != null) {
+            ((LongSparseArray)localObject2).a(l1, Integer.valueOf(((Integer)((LongSparseArray)localObject2).a(l1)).intValue() + 1));
+          } else {
+            ((LongSparseArray)localObject2).a(l1, Integer.valueOf(1));
+          }
         }
-        ((LongSparseArray)localObject2).a(l, Integer.valueOf(1));
-      }
-      k = 0;
-      j = 0;
-      while (k < ((LongSparseArray)localObject2).a())
-      {
-        localObject3 = new RedPacketServlet.BrashReportItem();
-        l = ((LongSparseArray)localObject2).a(k);
-        ((RedPacketServlet.BrashReportItem)localObject3).time = l;
-        ((RedPacketServlet.BrashReportItem)localObject3).count = ((int)((Integer)((LongSparseArray)localObject2).a(l)).intValue());
-        ((ArrayList)localObject1).add(localObject3);
-        j += ((RedPacketServlet.BrashReportItem)localObject3).count;
-        k += 1;
-      }
-      localObject2 = PortalManager.a(this.this$0);
-      if (this.jdField_a_of_type_Int != 1) {
-        break label510;
-      }
-      k = 1;
-      label284:
-      localObject2 = ((Handler)localObject2).obtainMessage(14, m, k, localObject1);
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        localObject3 = new Bundle();
-        if (this.b > 0) {
-          ((Bundle)localObject3).putInt("k_e_ctr", this.b);
+        int k = 0;
+        int j = 0;
+        while (k < ((LongSparseArray)localObject2).a())
+        {
+          localObject3 = new RedPacketServlet.BrashReportItem();
+          l1 = ((LongSparseArray)localObject2).a(k);
+          ((RedPacketServlet.BrashReportItem)localObject3).time = l1;
+          ((RedPacketServlet.BrashReportItem)localObject3).count = ((int)((Integer)((LongSparseArray)localObject2).a(l1)).intValue());
+          ((ArrayList)localObject1).add(localObject3);
+          j += ((RedPacketServlet.BrashReportItem)localObject3).count;
+          k += 1;
         }
-        if (this.c > 0) {
-          ((Bundle)localObject3).putInt("k_h_ctr", this.c);
+        localObject2 = PortalManager.a(this.this$0);
+        if (this.jdField_a_of_type_Int == 1) {
+          k = 1;
+        } else {
+          k = 0;
         }
-        if (this.d > 0) {
-          ((Bundle)localObject3).putInt("k_c_ctr", this.d);
+        localObject2 = ((Handler)localObject2).obtainMessage(14, m, k, localObject1);
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          localObject3 = new Bundle();
+          k = this.b;
+          if (k > 0) {
+            ((Bundle)localObject3).putInt("k_e_ctr", k);
+          }
+          k = this.c;
+          if (k > 0) {
+            ((Bundle)localObject3).putInt("k_h_ctr", k);
+          }
+          k = this.d;
+          if (k > 0) {
+            ((Bundle)localObject3).putInt("k_c_ctr", k);
+          }
+          ((Bundle)localObject3).putLong("k_s_time", this.jdField_a_of_type_Long);
+          ((Message)localObject2).setData((Bundle)localObject3);
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("reportRunnable ");
+            ((StringBuilder)localObject3).append(this.b);
+            ((StringBuilder)localObject3).append(", ");
+            ((StringBuilder)localObject3).append(this.c);
+            ((StringBuilder)localObject3).append(", ");
+            ((StringBuilder)localObject3).append(this.d);
+            ((StringBuilder)localObject3).append(", ");
+            ((StringBuilder)localObject3).append(j);
+            QLog.d("PortalManager", 2, ((StringBuilder)localObject3).toString());
+          }
         }
-        ((Bundle)localObject3).putLong("k_s_time", this.jdField_a_of_type_Long);
-        ((Message)localObject2).setData((Bundle)localObject3);
-        if (QLog.isColorLevel()) {
-          QLog.d("PortalManager", 2, "reportRunnable " + this.b + ", " + this.c + ", " + this.d + ", " + j);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          localObject3 = PortalManager.a(this.this$0);
+          j = ((Message)localObject2).arg1;
+          if (((Message)localObject2).arg2 != 1) {
+            bool1 = false;
+          }
+          RedPacketServlet.a((AppRuntime)localObject3, j, (ArrayList)localObject1, bool1, ((Message)localObject2).getData());
         }
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label521;
-      }
-      localObject3 = PortalManager.a(this.this$0);
-      j = ((Message)localObject2).arg1;
-      if (((Message)localObject2).arg2 != 1) {
-        break label515;
-      }
-      bool = true;
-      RedPacketServlet.a((AppRuntime)localObject3, j, (ArrayList)localObject1, bool, ((Message)localObject2).getData());
-    }
-    label510:
-    while (PortalManager.a(this.this$0)) {
-      for (;;)
-      {
+        else if (!PortalManager.a(this.this$0))
+        {
+          if (this.jdField_a_of_type_Int == 1) {
+            l1 = PortalManager.b;
+          } else {
+            l1 = PortalManager.c;
+          }
+          j = (int)l1;
+          localObject1 = PortalManager.a(this.this$0);
+          if (j <= 0) {
+            l1 = 0L;
+          } else {
+            l1 = new Random().nextInt(j);
+          }
+          ((Handler)localObject1).sendMessageDelayed((Message)localObject2, l1);
+        }
         i += 1;
-        break label20;
-        break;
-        k = 0;
-        break label284;
-        boolean bool = false;
       }
-    }
-    label515:
-    label521:
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      l = PortalManager.b;
-      label544:
-      j = (int)l;
-      localObject1 = PortalManager.a(this.this$0);
-      if (j > 0) {
-        break label585;
-      }
-    }
-    label585:
-    for (long l = 0L;; l = new Random().nextInt(j))
-    {
-      ((Handler)localObject1).sendMessageDelayed((Message)localObject2, l);
-      break;
-      l = PortalManager.c;
-      break label544;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.reportRunnable
  * JD-Core Version:    0.7.0.1
  */

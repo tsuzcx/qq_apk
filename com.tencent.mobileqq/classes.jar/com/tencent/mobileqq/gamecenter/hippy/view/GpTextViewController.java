@@ -28,12 +28,12 @@ public class GpTextViewController
     return super.createView(paramHippyRootView, paramInt, paramHippyEngineContext, paramString, paramHippyMap);
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return null;
   }
   
-  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     return new TextHeaderView(paramContext);
   }
@@ -45,16 +45,15 @@ public class GpTextViewController
       paramTextHeaderView.a(paramHippyArray);
       paramTextHeaderView.d();
     }
-    for (;;)
+    else if ("destory".equals(paramString))
     {
-      super.dispatchFunction(paramTextHeaderView, paramString, paramHippyArray);
-      return;
-      if ("destory".equals(paramString)) {
-        paramTextHeaderView.c();
-      } else if ("resume".equals(paramString)) {
-        paramTextHeaderView.a();
-      }
+      paramTextHeaderView.c();
     }
+    else if ("resume".equals(paramString))
+    {
+      paramTextHeaderView.a();
+    }
+    super.dispatchFunction(paramTextHeaderView, paramString, paramHippyArray);
   }
   
   public void onAfterUpdateProps(TextHeaderView paramTextHeaderView)
@@ -77,7 +76,7 @@ public class GpTextViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.hippy.view.GpTextViewController
  * JD-Core Version:    0.7.0.1
  */

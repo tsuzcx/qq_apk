@@ -8,7 +8,8 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import com.tencent.av.utils.UITools;
+import com.tencent.av.utils.api.IUIToolsApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 
 public class MetaballView
@@ -76,103 +77,161 @@ public class MetaballView
   {
     this.jdField_b_of_type_Float = a();
     this.jdField_b_of_type_Int = b();
-    float f1 = 1.3F * this.jdField_b_of_type_Float;
+    float f1 = this.jdField_b_of_type_Float * 1.3F;
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16395392);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     MetaballView.Circle localCircle = new MetaballView.Circle(this, null);
-    localCircle.jdField_a_of_type_ArrayOfFloat = new float[] { this.jdField_b_of_type_Float + this.jdField_b_of_type_Int, f1 };
-    localCircle.jdField_a_of_type_Float = (this.jdField_b_of_type_Float / 4.0F * 3.0F);
+    float f2 = this.jdField_b_of_type_Float;
+    localCircle.jdField_a_of_type_ArrayOfFloat = new float[] { this.jdField_b_of_type_Int + f2, f1 };
+    localCircle.jdField_a_of_type_Float = (f2 / 4.0F * 3.0F);
     this.jdField_a_of_type_JavaUtilArrayList.add(localCircle);
     int n = 1;
     while (n < 2)
     {
       localCircle = new MetaballView.Circle(this, null);
-      localCircle.jdField_a_of_type_ArrayOfFloat = new float[] { (this.jdField_b_of_type_Float * 2.0F + this.jdField_b_of_type_Int) * n, f1 };
-      localCircle.jdField_a_of_type_Float = this.jdField_b_of_type_Float;
+      f2 = this.jdField_b_of_type_Float;
+      localCircle.jdField_a_of_type_ArrayOfFloat = new float[] { (2.0F * f2 + this.jdField_b_of_type_Int) * n, f1 };
+      localCircle.jdField_a_of_type_Float = f2;
       this.jdField_a_of_type_JavaUtilArrayList.add(localCircle);
       n += 1;
     }
-    this.jdField_d_of_type_Float = ((this.jdField_b_of_type_Float * 2.0F + this.jdField_b_of_type_Int) * 2.0F - this.jdField_b_of_type_Float * 2.0F);
+    f1 = this.jdField_b_of_type_Float;
+    this.jdField_d_of_type_Float = ((f1 * 2.0F + this.jdField_b_of_type_Int) * 2.0F - f1 * 2.0F);
   }
   
   private void a(float paramFloat1, float paramFloat2, float[] paramArrayOfFloat)
   {
-    paramArrayOfFloat[0] = ((float)(Math.cos(paramFloat1) * paramFloat2));
-    paramArrayOfFloat[1] = ((float)(Math.sin(paramFloat1) * paramFloat2));
+    double d2 = paramFloat1;
+    double d3 = Math.cos(d2);
+    double d1 = paramFloat2;
+    Double.isNaN(d1);
+    paramArrayOfFloat[0] = ((float)(d3 * d1));
+    d2 = Math.sin(d2);
+    Double.isNaN(d1);
+    paramArrayOfFloat[1] = ((float)(d2 * d1));
   }
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    Object localObject = (MetaballView.Circle)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2);
-    MetaballView.Circle localCircle = (MetaballView.Circle)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-    float f4 = a(((MetaballView.Circle)localObject).jdField_a_of_type_ArrayOfFloat, localCircle.jdField_a_of_type_ArrayOfFloat);
-    float f3 = ((MetaballView.Circle)localObject).jdField_a_of_type_Float;
-    float f1 = localCircle.jdField_a_of_type_Float;
+    Object localObject1 = (MetaballView.Circle)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2);
+    Object localObject2 = (MetaballView.Circle)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
+    float f4 = a(((MetaballView.Circle)localObject1).jdField_a_of_type_ArrayOfFloat, ((MetaballView.Circle)localObject2).jdField_a_of_type_ArrayOfFloat);
+    float f3 = ((MetaballView.Circle)localObject1).jdField_a_of_type_Float;
+    float f1 = ((MetaballView.Circle)localObject2).jdField_a_of_type_Float;
     if (f4 > paramFloat3)
     {
-      paramCanvas.drawCircle(localCircle.jdField_a_of_type_ArrayOfFloat[0], localCircle.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if ((f3 != 0.0F) && (f1 != 0.0F)) {
-        break label147;
+      paramCanvas.drawCircle(localObject2.jdField_a_of_type_ArrayOfFloat[0], localObject2.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    else
+    {
+      f1 *= ((1.0F - f4 / paramFloat3) * 0.3F + 1.0F);
+      paramCanvas.drawCircle(localObject2.jdField_a_of_type_ArrayOfFloat[0], localObject2.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    float f2 = 0.0F;
+    if (f3 != 0.0F)
+    {
+      if (f1 == 0.0F) {
+        return;
       }
-    }
-    label147:
-    while ((f4 > paramFloat3) || (f4 <= Math.abs(f3 - f1)))
-    {
-      return;
-      f1 *= (1.0F + 0.3F * (1.0F - f4 / paramFloat3));
-      paramCanvas.drawCircle(localCircle.jdField_a_of_type_ArrayOfFloat[0], localCircle.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-      break;
-    }
-    float f2;
-    if (f4 < f3 + f1) {
-      f2 = (float)Math.acos((f3 * f3 + f4 * f4 - f1 * f1) / (2.0F * f3 * f4));
-    }
-    for (paramFloat3 = (float)Math.acos((f1 * f1 + f4 * f4 - f3 * f3) / (2.0F * f1 * f4));; paramFloat3 = 0.0F)
-    {
-      float f7 = (float)Math.atan2(localCircle.jdField_a_of_type_ArrayOfFloat[1] - localObject.jdField_a_of_type_ArrayOfFloat[1], localCircle.jdField_a_of_type_ArrayOfFloat[0] - localObject.jdField_a_of_type_ArrayOfFloat[0]);
-      float f8 = (float)Math.acos((f3 - f1) / f4);
-      float f5 = f7 + f2 + (f8 - f2) * paramFloat1;
-      f2 = f7 - f2 - (f8 - f2) * paramFloat1;
-      float f6 = (float)(f7 + 3.141592653589793D - paramFloat3 - (3.141592653589793D - paramFloat3 - f8) * paramFloat1);
-      double d1 = f7;
-      double d2 = paramFloat3;
-      paramFloat3 = (float)((3.141592653589793D - paramFloat3 - f8) * paramFloat1 + (d1 - 3.141592653589793D + d2));
-      a(f5, f3, this.jdField_a_of_type_ArrayOfFloat);
-      a(f2, f3, this.jdField_b_of_type_ArrayOfFloat);
-      a(f6, f1, this.jdField_c_of_type_ArrayOfFloat);
-      a(paramFloat3, f1, this.jdField_d_of_type_ArrayOfFloat);
-      this.jdField_e_of_type_ArrayOfFloat[0] = (this.jdField_a_of_type_ArrayOfFloat[0] + localObject.jdField_a_of_type_ArrayOfFloat[0]);
-      this.jdField_e_of_type_ArrayOfFloat[1] = (this.jdField_a_of_type_ArrayOfFloat[1] + localObject.jdField_a_of_type_ArrayOfFloat[1]);
-      this.f[0] = (this.jdField_b_of_type_ArrayOfFloat[0] + localObject.jdField_a_of_type_ArrayOfFloat[0]);
-      float[] arrayOfFloat = this.f;
-      f7 = this.jdField_b_of_type_ArrayOfFloat[1];
-      arrayOfFloat[1] = (localObject.jdField_a_of_type_ArrayOfFloat[1] + f7);
-      this.g[0] = (this.jdField_c_of_type_ArrayOfFloat[0] + localCircle.jdField_a_of_type_ArrayOfFloat[0]);
-      this.g[1] = (this.jdField_c_of_type_ArrayOfFloat[1] + localCircle.jdField_a_of_type_ArrayOfFloat[1]);
-      this.h[0] = (this.jdField_d_of_type_ArrayOfFloat[0] + localCircle.jdField_a_of_type_ArrayOfFloat[0]);
-      localObject = this.h;
-      f7 = this.jdField_d_of_type_ArrayOfFloat[1];
-      localObject[1] = (localCircle.jdField_a_of_type_ArrayOfFloat[1] + f7);
-      this.i[0] = (this.jdField_e_of_type_ArrayOfFloat[0] - this.g[0]);
-      this.i[1] = (this.jdField_e_of_type_ArrayOfFloat[1] - this.g[1]);
-      paramFloat1 = Math.min(paramFloat1 * paramFloat2, a(this.i) / (f3 + f1)) * Math.min(1.0F, f4 * 2.0F / (f3 + f1));
-      paramFloat2 = f3 * paramFloat1;
-      paramFloat1 *= f1;
-      a(f5 - 1.570796F, paramFloat2, this.j);
-      a(f6 + 1.570796F, paramFloat1, this.k);
-      a(paramFloat3 - 1.570796F, paramFloat1, this.l);
-      a(f2 + 1.570796F, paramFloat2, this.m);
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_e_of_type_ArrayOfFloat[0], this.jdField_e_of_type_ArrayOfFloat[1]);
-      this.jdField_a_of_type_AndroidGraphicsPath.cubicTo(this.jdField_e_of_type_ArrayOfFloat[0] + this.j[0], this.jdField_e_of_type_ArrayOfFloat[1] + this.j[1], this.g[0] + this.k[0], this.g[1] + this.k[1], this.g[0], this.g[1]);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.h[0], this.h[1]);
-      this.jdField_a_of_type_AndroidGraphicsPath.cubicTo(this.h[0] + this.l[0], this.h[1] + this.l[1], this.f[0] + this.m[0], this.f[1] + this.m[1], this.f[0], this.f[1]);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_e_of_type_ArrayOfFloat[0], this.jdField_e_of_type_ArrayOfFloat[1]);
-      this.jdField_a_of_type_AndroidGraphicsPath.close();
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-      f2 = 0.0F;
+      if (f4 <= paramFloat3)
+      {
+        float f6 = f3 - f1;
+        if (f4 <= Math.abs(f6)) {
+          return;
+        }
+        float f5 = f3 + f1;
+        if (f4 < f5)
+        {
+          paramFloat3 = f3 * f3;
+          f7 = f4 * f4;
+          f8 = f1 * f1;
+          f2 = (float)Math.acos((paramFloat3 + f7 - f8) / (f3 * 2.0F * f4));
+          paramFloat3 = (float)Math.acos((f8 + f7 - paramFloat3) / (f1 * 2.0F * f4));
+        }
+        else
+        {
+          paramFloat3 = 0.0F;
+        }
+        float f7 = (float)Math.atan2(localObject2.jdField_a_of_type_ArrayOfFloat[1] - localObject1.jdField_a_of_type_ArrayOfFloat[1], localObject2.jdField_a_of_type_ArrayOfFloat[0] - localObject1.jdField_a_of_type_ArrayOfFloat[0]);
+        float f8 = (float)Math.acos(f6 / f4);
+        float f9 = (f8 - f2) * paramFloat1;
+        f6 = f7 + f2 + f9;
+        f2 = f7 - f2 - f9;
+        double d1 = f7;
+        Double.isNaN(d1);
+        double d2 = paramFloat3;
+        Double.isNaN(d2);
+        Double.isNaN(d2);
+        double d3 = f8;
+        Double.isNaN(d3);
+        double d4 = paramFloat1;
+        Double.isNaN(d4);
+        d3 = (3.141592653589793D - d2 - d3) * d4;
+        paramFloat3 = (float)(d1 + 3.141592653589793D - d2 - d3);
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        f7 = (float)(d1 - 3.141592653589793D + d2 + d3);
+        a(f6, f3, this.jdField_a_of_type_ArrayOfFloat);
+        a(f2, f3, this.jdField_b_of_type_ArrayOfFloat);
+        a(paramFloat3, f1, this.jdField_c_of_type_ArrayOfFloat);
+        a(f7, f1, this.jdField_d_of_type_ArrayOfFloat);
+        this.jdField_e_of_type_ArrayOfFloat[0] = (this.jdField_a_of_type_ArrayOfFloat[0] + localObject1.jdField_a_of_type_ArrayOfFloat[0]);
+        this.jdField_e_of_type_ArrayOfFloat[1] = (this.jdField_a_of_type_ArrayOfFloat[1] + localObject1.jdField_a_of_type_ArrayOfFloat[1]);
+        this.f[0] = (this.jdField_b_of_type_ArrayOfFloat[0] + localObject1.jdField_a_of_type_ArrayOfFloat[0]);
+        this.f[1] = (this.jdField_b_of_type_ArrayOfFloat[1] + localObject1.jdField_a_of_type_ArrayOfFloat[1]);
+        this.g[0] = (this.jdField_c_of_type_ArrayOfFloat[0] + localObject2.jdField_a_of_type_ArrayOfFloat[0]);
+        this.g[1] = (this.jdField_c_of_type_ArrayOfFloat[1] + localObject2.jdField_a_of_type_ArrayOfFloat[1]);
+        this.h[0] = (this.jdField_d_of_type_ArrayOfFloat[0] + localObject2.jdField_a_of_type_ArrayOfFloat[0]);
+        this.h[1] = (this.jdField_d_of_type_ArrayOfFloat[1] + localObject2.jdField_a_of_type_ArrayOfFloat[1]);
+        localObject1 = this.i;
+        localObject2 = this.jdField_e_of_type_ArrayOfFloat;
+        f8 = localObject2[0];
+        float[] arrayOfFloat = this.g;
+        localObject1[0] = (f8 - arrayOfFloat[0]);
+        localObject2[1] -= arrayOfFloat[1];
+        paramFloat1 = Math.min(paramFloat1 * paramFloat2, a((float[])localObject1) / f5) * Math.min(1.0F, 2.0F * f4 / f5);
+        paramFloat2 = f3 * paramFloat1;
+        paramFloat1 = f1 * paramFloat1;
+        a(f6 - 1.570796F, paramFloat2, this.j);
+        a(paramFloat3 + 1.570796F, paramFloat1, this.k);
+        a(f7 - 1.570796F, paramFloat1, this.l);
+        a(f2 + 1.570796F, paramFloat2, this.m);
+        this.jdField_a_of_type_AndroidGraphicsPath.reset();
+        localObject1 = this.jdField_a_of_type_AndroidGraphicsPath;
+        localObject2 = this.jdField_e_of_type_ArrayOfFloat;
+        ((Path)localObject1).moveTo(localObject2[0], localObject2[1]);
+        localObject1 = this.jdField_a_of_type_AndroidGraphicsPath;
+        localObject2 = this.jdField_e_of_type_ArrayOfFloat;
+        paramFloat1 = localObject2[0];
+        arrayOfFloat = this.j;
+        paramFloat2 = arrayOfFloat[0];
+        paramFloat3 = localObject2[1];
+        f1 = arrayOfFloat[1];
+        localObject2 = this.g;
+        f2 = localObject2[0];
+        arrayOfFloat = this.k;
+        ((Path)localObject1).cubicTo(paramFloat2 + paramFloat1, paramFloat3 + f1, arrayOfFloat[0] + f2, localObject2[1] + arrayOfFloat[1], localObject2[0], localObject2[1]);
+        localObject1 = this.jdField_a_of_type_AndroidGraphicsPath;
+        localObject2 = this.h;
+        ((Path)localObject1).lineTo(localObject2[0], localObject2[1]);
+        localObject1 = this.jdField_a_of_type_AndroidGraphicsPath;
+        localObject2 = this.h;
+        paramFloat1 = localObject2[0];
+        arrayOfFloat = this.l;
+        paramFloat2 = arrayOfFloat[0];
+        paramFloat3 = localObject2[1];
+        f1 = arrayOfFloat[1];
+        localObject2 = this.f;
+        f2 = localObject2[0];
+        arrayOfFloat = this.m;
+        ((Path)localObject1).cubicTo(paramFloat2 + paramFloat1, paramFloat3 + f1, arrayOfFloat[0] + f2, localObject2[1] + arrayOfFloat[1], localObject2[0], localObject2[1]);
+        localObject1 = this.jdField_a_of_type_AndroidGraphicsPath;
+        localObject2 = this.jdField_e_of_type_ArrayOfFloat;
+        ((Path)localObject1).lineTo(localObject2[0], localObject2[1]);
+        this.jdField_a_of_type_AndroidGraphicsPath.close();
+        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
     }
   }
   
@@ -194,17 +253,17 @@ public class MetaballView
   
   protected int a()
   {
-    return (int)UITools.a(getContext(), 10.0F);
+    return (int)((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(getContext(), 10.0F);
   }
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt) {}
   
   protected int b()
   {
-    return (int)UITools.a(getContext(), 20.0F);
+    return (int)((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(getContext(), 20.0F);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (getVisibility() == 0) {
@@ -212,7 +271,7 @@ public class MetaballView
     }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     if (getVisibility() == 0) {
       b();
@@ -220,13 +279,15 @@ public class MetaballView
     super.onDetachedFromWindow();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    int n = 1;
     super.onDraw(paramCanvas);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetMetaballView$Circle = ((MetaballView.Circle)this.jdField_a_of_type_JavaUtilArrayList.get(0));
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetMetaballView$Circle.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_d_of_type_Float * this.jdField_e_of_type_Float + this.jdField_b_of_type_Float);
-    paramCanvas.drawCircle(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetMetaballView$Circle.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetMetaballView$Circle.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetMetaballView$Circle.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    float f1 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetMetaballView$Circle.jdField_a_of_type_ArrayOfFloat[0];
+    float[] arrayOfFloat = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetMetaballView$Circle.jdField_a_of_type_ArrayOfFloat;
+    int n = 1;
+    paramCanvas.drawCircle(f1, arrayOfFloat[1], this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetMetaballView$Circle.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
     int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
     while (n < i1)
     {
@@ -235,16 +296,20 @@ public class MetaballView
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(resolveSizeAndState((int)((this.jdField_b_of_type_Float * 2.0F + this.jdField_b_of_type_Int) * 2.0F), paramInt1, 0), resolveSizeAndState((int)(this.jdField_b_of_type_Float * 2.0F * 1.4F), paramInt2, 0));
   }
   
-  public void onVisibilityChanged(View paramView, int paramInt)
+  protected void onVisibilityChanged(View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    if ((paramInt == 0) && (getVisibility() == 0)) {}
-    for (paramInt = 1; paramInt == 0; paramInt = 0)
+    if ((paramInt == 0) && (getVisibility() == 0)) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
+    }
+    if (paramInt == 0)
     {
       b();
       return;
@@ -255,18 +320,19 @@ public class MetaballView
   public void setPaintMode(int paramInt)
   {
     Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-    if (paramInt == 0) {}
-    for (Paint.Style localStyle = Paint.Style.STROKE;; localStyle = Paint.Style.FILL)
-    {
-      localPaint.setStyle(localStyle);
-      invalidate();
-      return;
+    Paint.Style localStyle;
+    if (paramInt == 0) {
+      localStyle = Paint.Style.STROKE;
+    } else {
+      localStyle = Paint.Style.FILL;
     }
+    localPaint.setStyle(localStyle);
+    invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.MetaballView
  * JD-Core Version:    0.7.0.1
  */

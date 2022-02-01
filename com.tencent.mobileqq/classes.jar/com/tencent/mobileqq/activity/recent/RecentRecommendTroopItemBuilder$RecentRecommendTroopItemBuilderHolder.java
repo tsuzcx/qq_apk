@@ -11,8 +11,8 @@ import com.tencent.mobileqq.activity.recent.data.RecentItemRecommendTroopData;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.recommend.data.RecentRecommendTroopItem;
+import com.tencent.mobileqq.troop.recommend.data.RecommendTroopItem;
 import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
 import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -40,105 +40,121 @@ public class RecentRecommendTroopItemBuilder$RecentRecommendTroopItemBuilderHold
   public void a(RecentItemRecommendTroopData paramRecentItemRecommendTroopData, RecentFaceDecoder paramRecentFaceDecoder)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemRecommendTroopData = paramRecentItemRecommendTroopData;
-    if (paramRecentItemRecommendTroopData.mUser != null) {}
-    label534:
-    label546:
-    for (boolean bool = paramRecentItemRecommendTroopData.mUser.uin.equals("sp_uin_for_title");; bool = true)
+    boolean bool;
+    if (paramRecentItemRecommendTroopData.mUser != null) {
+      bool = paramRecentItemRecommendTroopData.mUser.uin.equals("sp_uin_for_title");
+    } else {
+      bool = true;
+    }
+    if (bool)
     {
-      if (bool)
-      {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        if (AppSetting.d)
-        {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getText() + " " + this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.a());
-          this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setContentDescription(this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getText());
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.a());
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setContentDescription(HardCodeUtil.a(2131713165));
-        }
-        return;
-      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    }
+    else
+    {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       if (paramRecentItemRecommendTroopData.mUser != null)
       {
         this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentItemRecommendTroopData.mUser.displayName);
-        QLog.d("RecentRecommendTroopItemBuilder", 2, "bindData data.mUser.displayName: " + paramRecentItemRecommendTroopData.mUser.displayName);
-        QLog.i("RecentAdapter", 2, "faceDecoder getFaceDrawable uin: " + paramRecentItemRecommendTroopData.mUser.uin);
-        if (paramRecentFaceDecoder == null)
-        {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("bindData data.mUser.displayName: ");
+        ((StringBuilder)localObject).append(paramRecentItemRecommendTroopData.mUser.displayName);
+        QLog.d("RecentRecommendTroopItemBuilder", 2, ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("faceDecoder getFaceDrawable uin: ");
+        ((StringBuilder)localObject).append(paramRecentItemRecommendTroopData.mUser.uin);
+        QLog.i("RecentAdapter", 2, ((StringBuilder)localObject).toString());
+        if (paramRecentFaceDecoder == null) {
           paramRecentFaceDecoder = null;
-          label243:
-          this.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageDrawable(paramRecentFaceDecoder);
-          if (!(paramRecentItemRecommendTroopData.mUser.extraInfo instanceof RecentRecommendTroopItem)) {
-            break label632;
-          }
-        }
-      }
-      label323:
-      label456:
-      label620:
-      label632:
-      for (paramRecentFaceDecoder = (RecentRecommendTroopItem)paramRecentItemRecommendTroopData.mUser.extraInfo;; paramRecentFaceDecoder = null)
-      {
-        if (paramRecentFaceDecoder == null)
-        {
-          QLog.d("RecentRecommendTroopIte", 1, "bindData, troopItem == null");
-          return;
+        } else {
           paramRecentFaceDecoder = paramRecentFaceDecoder.a(paramRecentItemRecommendTroopData);
-          break label243;
         }
-        if (paramRecentFaceDecoder.activity > 0)
+        this.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageDrawable(paramRecentFaceDecoder);
+        if ((paramRecentItemRecommendTroopData.mUser.extraInfo instanceof RecentRecommendTroopItem))
         {
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout.setVisibility(0);
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout.setHotLevel(paramRecentFaceDecoder.activity);
-          ArrayList localArrayList = GroupViewAdapter.a((RecentRecommendTroopItem)paramRecentItemRecommendTroopData.mUser.extraInfo);
-          if ((localArrayList == null) || (localArrayList.size() <= 0)) {
-            break label534;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setVisibility(0);
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setLabelType(1);
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.a(localArrayList);
-          label377:
-          if (!paramRecentFaceDecoder.isJoined()) {
-            break label546;
-          }
-          this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-          this.jdField_a_of_type_AndroidWidgetButton.setText(2131699385);
-          this.jdField_a_of_type_AndroidWidgetButton.setMinWidth(ViewUtils.a(60.0F));
-          this.jdField_a_of_type_AndroidWidgetButton.setMinWidth(ViewUtils.a(29.0F));
-          this.jdField_a_of_type_AndroidWidgetButton.setPadding(0, this.jdField_a_of_type_AndroidWidgetButton.getPaddingTop(), 0, this.jdField_a_of_type_AndroidWidgetButton.getPaddingBottom());
-          this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(null);
-          if (TextUtils.isEmpty(paramRecentFaceDecoder.intro)) {
-            break label620;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.setText(new QQText(paramRecentFaceDecoder.intro, 11, 16));
-        }
-        for (;;)
-        {
-          QLog.d("", 2, "bindData data.mUser.displayName: " + paramRecentItemRecommendTroopData.mUser.displayName);
-          break;
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout.setVisibility(8);
-          break label323;
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setVisibility(8);
-          break label377;
-          this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          this.jdField_a_of_type_AndroidWidgetButton.setText(2131699383);
-          this.jdField_a_of_type_AndroidWidgetButton.setMinWidth(0);
-          this.jdField_a_of_type_AndroidWidgetButton.setMinHeight(0);
-          int i = ViewUtils.a(16.0F);
-          this.jdField_a_of_type_AndroidWidgetButton.setPadding(i, this.jdField_a_of_type_AndroidWidgetButton.getPaddingTop(), i, this.jdField_a_of_type_AndroidWidgetButton.getPaddingBottom());
-          this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839458);
-          break label456;
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.setText("");
+          paramRecentFaceDecoder = (RecentRecommendTroopItem)paramRecentItemRecommendTroopData.mUser.extraInfo;
+          break label229;
         }
       }
+      paramRecentFaceDecoder = null;
+      label229:
+      if (paramRecentFaceDecoder == null)
+      {
+        QLog.d("RecentRecommendTroopIte", 1, "bindData, troopItem == null");
+        return;
+      }
+      if (paramRecentFaceDecoder.activity > 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout.setHotLevel(paramRecentFaceDecoder.activity);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout.setVisibility(8);
+      }
+      Object localObject = GroupViewAdapter.a((RecentRecommendTroopItem)paramRecentItemRecommendTroopData.mUser.extraInfo);
+      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setLabelType(1);
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.a((ArrayList)localObject);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setVisibility(8);
+      }
+      if (paramRecentFaceDecoder.isJoined())
+      {
+        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131699490);
+        this.jdField_a_of_type_AndroidWidgetButton.setMinWidth(ViewUtils.a(60.0F));
+        this.jdField_a_of_type_AndroidWidgetButton.setMinWidth(ViewUtils.a(29.0F));
+        localObject = this.jdField_a_of_type_AndroidWidgetButton;
+        ((Button)localObject).setPadding(0, ((Button)localObject).getPaddingTop(), 0, this.jdField_a_of_type_AndroidWidgetButton.getPaddingBottom());
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(null);
+      }
+      else
+      {
+        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131699488);
+        this.jdField_a_of_type_AndroidWidgetButton.setMinWidth(0);
+        this.jdField_a_of_type_AndroidWidgetButton.setMinHeight(0);
+        int i = ViewUtils.a(16.0F);
+        localObject = this.jdField_a_of_type_AndroidWidgetButton;
+        ((Button)localObject).setPadding(i, ((Button)localObject).getPaddingTop(), i, this.jdField_a_of_type_AndroidWidgetButton.getPaddingBottom());
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839314);
+      }
+      if (!TextUtils.isEmpty(paramRecentFaceDecoder.intro)) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.setText(new QQText(paramRecentFaceDecoder.intro, 11, 16));
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.setText("");
+      }
+      paramRecentFaceDecoder = new StringBuilder();
+      paramRecentFaceDecoder.append("bindData data.mUser.displayName: ");
+      paramRecentFaceDecoder.append(paramRecentItemRecommendTroopData.mUser.displayName);
+      QLog.d("", 2, paramRecentFaceDecoder.toString());
+    }
+    if (AppSetting.d)
+    {
+      paramRecentItemRecommendTroopData = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      paramRecentFaceDecoder = new StringBuilder();
+      paramRecentFaceDecoder.append(this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getText());
+      paramRecentFaceDecoder.append(" ");
+      paramRecentFaceDecoder.append(this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.a());
+      paramRecentItemRecommendTroopData.setContentDescription(paramRecentFaceDecoder.toString());
+      paramRecentItemRecommendTroopData = this.jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+      paramRecentItemRecommendTroopData.setContentDescription(paramRecentItemRecommendTroopData.getText());
+      paramRecentItemRecommendTroopData = this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
+      paramRecentItemRecommendTroopData.setContentDescription(paramRecentItemRecommendTroopData.a());
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setContentDescription(HardCodeUtil.a(2131713140));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentRecommendTroopItemBuilder.RecentRecommendTroopItemBuilderHolder
  * JD-Core Version:    0.7.0.1
  */

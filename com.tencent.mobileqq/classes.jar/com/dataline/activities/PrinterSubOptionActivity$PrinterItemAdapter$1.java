@@ -17,32 +17,28 @@ class PrinterSubOptionActivity$PrinterItemAdapter$1
   
   public void onClick(View paramView)
   {
-    Object localObject = (TextView)paramView.findViewById(2131364472);
-    PrinterSubOptionActivity.CloudPrinter localCloudPrinter;
+    Object localObject = (TextView)paramView.findViewById(2131364362);
     if (localObject != null)
     {
-      localCloudPrinter = (PrinterSubOptionActivity.CloudPrinter)this.a.a.b.get(((Integer)((TextView)localObject).getTag()).intValue());
-      if (localCloudPrinter.jdField_a_of_type_Long == 0L) {
-        break label150;
+      PrinterSubOptionActivity.CloudPrinter localCloudPrinter = (PrinterSubOptionActivity.CloudPrinter)this.a.a.b.get(((Integer)((TextView)localObject).getTag()).intValue());
+      if (localCloudPrinter.jdField_a_of_type_Long != 0L) {
+        localObject = this.a.a.a.a.a(localCloudPrinter.jdField_a_of_type_Long);
+      } else {
+        localObject = this.a.a.a.a.b(localCloudPrinter.jdField_a_of_type_JavaLangString);
       }
-    }
-    label150:
-    for (localObject = this.a.a.a.a.a(localCloudPrinter.jdField_a_of_type_Long);; localObject = this.a.a.a.a.b(localCloudPrinter.jdField_a_of_type_JavaLangString))
-    {
       this.a.a.a.a.a = ((PrinterEntity)localObject);
       localObject = new Intent();
       ((Intent)localObject).putExtra("sPrinterName", localCloudPrinter.jdField_a_of_type_JavaLangString);
       ((Intent)localObject).putExtra("sPrintDin", localCloudPrinter.jdField_a_of_type_Long);
       this.a.a.setResult(-1, (Intent)localObject);
       this.a.a.finish();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.PrinterSubOptionActivity.PrinterItemAdapter.1
  * JD-Core Version:    0.7.0.1
  */

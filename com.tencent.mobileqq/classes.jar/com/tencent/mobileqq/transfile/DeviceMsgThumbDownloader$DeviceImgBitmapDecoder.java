@@ -17,38 +17,33 @@ class DeviceMsgThumbDownloader$DeviceImgBitmapDecoder
   public Bitmap getBitmap(URL paramURL)
   {
     LocalMediaInfo localLocalMediaInfo = this.this$0.parseUrl(paramURL);
-    if (localLocalMediaInfo == null) {}
-    for (;;)
-    {
+    if (localLocalMediaInfo == null) {
       return null;
-      paramURL = new BitmapFactory.Options();
-      paramURL.inDensity = 160;
-      paramURL.inTargetDensity = 160;
-      paramURL.inScreenDensity = 160;
-      try
-      {
-        paramURL = BitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
-        if (paramURL == null) {
-          continue;
-        }
-        return ThumbnailUtils.extractThumbnail(paramURL, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbHeight, 2);
-      }
-      catch (OutOfMemoryError paramURL)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("VIdeoThumbDownloader", 2, "DeviceImgBitmapDecoder getBitmap", paramURL);
-          }
-          paramURL = null;
-        }
-      }
     }
+    paramURL = new BitmapFactory.Options();
+    paramURL.inDensity = 160;
+    paramURL.inTargetDensity = 160;
+    paramURL.inScreenDensity = 160;
+    try
+    {
+      paramURL = BitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
+    }
+    catch (OutOfMemoryError paramURL)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("VIdeoThumbDownloader", 2, "DeviceImgBitmapDecoder getBitmap", paramURL);
+      }
+      paramURL = null;
+    }
+    if (paramURL != null) {
+      return ThumbnailUtils.extractThumbnail(paramURL, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbHeight, 2);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader.DeviceImgBitmapDecoder
  * JD-Core Version:    0.7.0.1
  */

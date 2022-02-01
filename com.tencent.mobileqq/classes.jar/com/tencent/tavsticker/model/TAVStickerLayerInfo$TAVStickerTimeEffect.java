@@ -36,27 +36,45 @@ public class TAVStickerLayerInfo$TAVStickerTimeEffect
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("TAVStickerTimeEffect {sourceVideoTimeRange : ");
-    if (this.sourceVideoTimeRange != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVStickerTimeEffect {sourceVideoTimeRange : ");
+    Object localObject = this.sourceVideoTimeRange;
+    String str = "null";
+    if (localObject != null)
     {
-      str = "start : " + this.sourceVideoTimeRange.getStartUs() + ", duration : " + this.sourceVideoTimeRange.getDurationUs();
-      localStringBuilder = localStringBuilder.append(str).append(", timeRange : ");
-      if (this.timeRange == null) {
-        break label152;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start : ");
+      ((StringBuilder)localObject).append(this.sourceVideoTimeRange.getStartUs());
+      ((StringBuilder)localObject).append(", duration : ");
+      ((StringBuilder)localObject).append(this.sourceVideoTimeRange.getDurationUs());
+      localObject = ((StringBuilder)localObject).toString();
     }
-    label152:
-    for (String str = "start : " + this.timeRange.getStartUs() + ", duration : " + this.timeRange.getDurationUs();; str = "null")
+    else
     {
-      return str + ", reversed : " + this.reversed + "}";
-      str = "null";
-      break;
+      localObject = "null";
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", timeRange : ");
+    localObject = str;
+    if (this.timeRange != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start : ");
+      ((StringBuilder)localObject).append(this.timeRange.getStartUs());
+      ((StringBuilder)localObject).append(", duration : ");
+      ((StringBuilder)localObject).append(this.timeRange.getDurationUs());
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", reversed : ");
+    localStringBuilder.append(this.reversed);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerLayerInfo.TAVStickerTimeEffect
  * JD-Core Version:    0.7.0.1
  */

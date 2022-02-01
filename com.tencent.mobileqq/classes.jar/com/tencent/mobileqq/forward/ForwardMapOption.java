@@ -34,7 +34,7 @@ public class ForwardMapOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.h))) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
+      if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.h))) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -49,7 +49,7 @@ public class ForwardMapOption
     if (paramDrawable == null) {
       return;
     }
-    paramDrawable.setBounds(0, 0, (int)(264.0F * this.jdField_a_of_type_Float), (int)(138.0F * this.jdField_a_of_type_Float));
+    paramDrawable.setBounds(0, 0, (int)(this.jdField_a_of_type_Float * 264.0F), (int)(this.jdField_a_of_type_Float * 138.0F));
   }
   
   protected void a(QQCustomDialog paramQQCustomDialog)
@@ -57,7 +57,7 @@ public class ForwardMapOption
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwwardMapOption", 2, "updateImageView:setDefaultDialogPreviewImage");
     }
-    a(ForwardOptionUtils.a(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839754), this.jdField_a_of_type_Float), false, 0);
+    a(ForwardOptionUtils.a(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839611), this.jdField_a_of_type_Float), false, 0);
   }
   
   protected void c()
@@ -70,24 +70,23 @@ public class ForwardMapOption
   {
     boolean bool1 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromFavorite", false);
     boolean bool2 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isFromFavorites", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("forward", 2, "ForwardMapOption realForwardTo isFromFavorite=" + bool1 + "isFromFav=" + bool2);
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    if ((bool1) || (bool2))
+    if (QLog.isColorLevel())
     {
-      ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ForwardMapOption realForwardTo isFromFavorite=");
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append("isFromFav=");
+      ((StringBuilder)localObject).append(bool2);
+      QLog.d("forward", 2, ((StringBuilder)localObject).toString());
     }
-    for (;;)
+    Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
+    ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
+    if ((!bool1) && (!bool2))
     {
-      return true;
       if (this.f)
       {
-        this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-        this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
+        this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+        this.jdField_a_of_type_AndroidAppActivity.setResult(-1, (Intent)localObject);
         this.jdField_a_of_type_AndroidAppActivity.finish();
       }
       else
@@ -95,11 +94,18 @@ public class ForwardMapOption
         super.c();
       }
     }
+    else
+    {
+      ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, (Intent)localObject, null);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, (Intent)localObject);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMapOption
  * JD-Core Version:    0.7.0.1
  */

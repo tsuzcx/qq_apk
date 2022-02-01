@@ -57,10 +57,10 @@ public class ETLayout
   
   public static CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    int j = 0;
     if (paramCharSequence == null) {
       return "";
     }
+    int j = 0;
     int i = paramInt1;
     if (paramInt1 < 0) {
       i = 0;
@@ -86,59 +86,69 @@ public class ETLayout
   private String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if ((this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine == null) || (this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine.length == 0)) {
-      return null;
-    }
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      return null;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
+    Object localObject1 = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    if (localObject1 != null)
     {
-      Object localObject = ((ETParagraph)localIterator.next()).a();
-      if (localObject == null) {
+      if (localObject1.length == 0) {
         return null;
       }
-      localObject = ((ArrayList)localObject).iterator();
-      int j = i;
-      for (;;)
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+      if (localObject1 != null)
       {
-        i = j;
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-        ETFragment localETFragment = (ETFragment)((Iterator)localObject).next();
-        if (localETFragment == null) {
+        if (((ArrayList)localObject1).size() == 0) {
           return null;
         }
-        String str = localETFragment.a();
-        if (str != null)
+        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        int i = 0;
+        if (((Iterator)localObject1).hasNext())
         {
-          localETFragment.a(j);
-          j += str.length();
-          localStringBuilder.append(str);
+          Object localObject2 = ((ETParagraph)((Iterator)localObject1).next()).a();
+          if (localObject2 == null) {
+            return null;
+          }
+          localObject2 = ((ArrayList)localObject2).iterator();
+          int j = i;
+          for (;;)
+          {
+            i = j;
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+            ETFragment localETFragment = (ETFragment)((Iterator)localObject2).next();
+            if (localETFragment == null) {
+              return null;
+            }
+            String str = localETFragment.a();
+            if (str != null)
+            {
+              localETFragment.a(j);
+              j += str.length();
+              localStringBuilder.append(str);
+            }
+          }
         }
+        return localStringBuilder.toString();
       }
     }
-    return localStringBuilder.toString();
+    return null;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null) {
+      ((ArrayList)localObject).clear();
     }
-    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null))
+    localObject = this.jdField_a_of_type_JavaLangCharSequence;
+    if ((localObject != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null))
     {
-      if ((this.jdField_a_of_type_JavaLangCharSequence instanceof Spanned)) {
+      if ((localObject instanceof Spanned))
+      {
         b();
+        return;
       }
+      a(((CharSequence)localObject).toString(), 0, this.jdField_a_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
     }
-    else {
-      return;
-    }
-    a(this.jdField_a_of_type_JavaLangCharSequence.toString(), 0, this.jdField_a_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
   }
   
   private void a(int paramInt1, int paramInt2, CharacterStyle paramCharacterStyle)
@@ -174,11 +184,11 @@ public class ETLayout
     while (i < m)
     {
       localObject1 = (ETParagraph)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      k = ((ETParagraph)localObject1).a(paramETEngine, paramInt, j, k);
-      j = ((ETParagraph)localObject1).a();
+      j = ((ETParagraph)localObject1).a(paramETEngine, paramInt, k, j);
+      k = ((ETParagraph)localObject1).a();
       i += 1;
     }
-    k += 1;
+    k = j + 1;
     this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine = new ETTextLine[k];
     paramInt = 0;
     while (paramInt < k)
@@ -250,7 +260,8 @@ public class ETLayout
   
   private Object[] a()
   {
-    if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)) {
+    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+    if ((localArrayList != null) && (localArrayList.size() > 0)) {
       return this.jdField_b_of_type_JavaUtilArrayList.toArray();
     }
     return null;
@@ -258,11 +269,11 @@ public class ETLayout
   
   private int b()
   {
-    if ((this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine == null) || (this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine.length == 0)) {
-      return 0;
+    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    if ((arrayOfETTextLine != null) && (arrayOfETTextLine.length != 0)) {
+      return arrayOfETTextLine[(arrayOfETTextLine.length - 1)].b();
     }
-    int i = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine.length;
-    return this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[(i - 1)].b();
+    return 0;
   }
   
   private void b()
@@ -271,7 +282,7 @@ public class ETLayout
     Object localObject = (Spanned)this.jdField_a_of_type_JavaLangCharSequence;
     CharacterStyle[] arrayOfCharacterStyle = (CharacterStyle[])((Spanned)localObject).getSpans(0, ((Spanned)localObject).length(), CharacterStyle.class);
     ETLayout.ETRange[] arrayOfETRange = new ETLayout.ETRange[arrayOfCharacterStyle.length];
-    if ((arrayOfETRange == null) || (arrayOfETRange.length == 0))
+    if (arrayOfETRange.length == 0)
     {
       a(this.jdField_a_of_type_JavaLangCharSequence.toString(), 0, this.jdField_a_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
       return;
@@ -286,43 +297,29 @@ public class ETLayout
       i += 1;
     }
     Arrays.sort(arrayOfETRange, new ETLayout.ETComparator());
-    i = 0;
     int j = 0;
-    label176:
-    int m;
-    int k;
-    if (i < arrayOfCharacterStyle.length)
+    i = 0;
+    while (i < arrayOfCharacterStyle.length)
     {
-      m = arrayOfETRange[i].jdField_a_of_type_Int;
-      k = arrayOfETRange[i].jdField_b_of_type_Int;
+      int m = arrayOfETRange[i].jdField_a_of_type_Int;
+      int k = arrayOfETRange[i].jdField_b_of_type_Int;
       if (m - j > 0) {
         a(a(this.jdField_a_of_type_JavaLangCharSequence, j, m).toString(), j, m, this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
       }
-      if (k - m > 0)
-      {
-        if (!(arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof ClickableSpan)) {
-          break label390;
+      if (k - m > 0) {
+        if ((arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof ClickableSpan))
+        {
+          j = m;
+          if (m > 0)
+          {
+            j = m;
+            if (this.jdField_a_of_type_JavaLangCharSequence.charAt(m - 1) == ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).getSysEmotcationHead()) {
+              j = m + 1;
+            }
+          }
+          a(a(this.jdField_a_of_type_JavaLangCharSequence, j, k).toString(), j, k, this.jdField_b_of_type_ComEtrumpMixlayoutETFont, true);
         }
-        if ((m <= 0) || (this.jdField_a_of_type_JavaLangCharSequence.charAt(m - 1) != ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).getSysEmotcationHead())) {
-          break label635;
-        }
-      }
-    }
-    label390:
-    label635:
-    for (j = m + 1;; j = m)
-    {
-      a(a(this.jdField_a_of_type_JavaLangCharSequence, j, k).toString(), j, k, this.jdField_b_of_type_ComEtrumpMixlayoutETFont, true);
-      for (;;)
-      {
-        if ((i == arrayOfCharacterStyle.length - 1) && (k < this.jdField_a_of_type_JavaLangCharSequence.length())) {
-          a(a(this.jdField_a_of_type_JavaLangCharSequence, k, this.jdField_a_of_type_JavaLangCharSequence.length()).toString(), k, this.jdField_a_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
-        }
-        i += 1;
-        j = k;
-        break label176;
-        break;
-        if (((IETFontAdapter)QRoute.api(IETFontAdapter.class)).isInstanceOfEmoticonSpan(arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle))
+        else if (((IETFontAdapter)QRoute.api(IETFontAdapter.class)).isInstanceOfEmoticonSpan(arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle))
         {
           localObject = arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle;
           this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
@@ -344,13 +341,21 @@ public class ETLayout
           a((CharacterStyle)localObject, this.jdField_b_of_type_JavaUtilArrayList.indexOf(localObject), m, k, false);
         }
       }
+      if ((i == arrayOfCharacterStyle.length - 1) && (k < this.jdField_a_of_type_JavaLangCharSequence.length()))
+      {
+        localObject = this.jdField_a_of_type_JavaLangCharSequence;
+        a(a((CharSequence)localObject, k, ((CharSequence)localObject).length()).toString(), k, this.jdField_a_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
+      }
+      i += 1;
+      j = k;
     }
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine != null) {
-      return this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine.length;
+    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    if (arrayOfETTextLine != null) {
+      return arrayOfETTextLine.length;
     }
     return 0;
   }
@@ -362,8 +367,7 @@ public class ETLayout
     while (i < j)
     {
       ETTextLine localETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[i];
-      int k = localETTextLine.d();
-      if (paramInt < localETTextLine.a() + k) {
+      if (paramInt < localETTextLine.d() + localETTextLine.a()) {
         return i;
       }
       i += 1;
@@ -373,44 +377,48 @@ public class ETLayout
   
   int a(int paramInt1, int paramInt2)
   {
-    int j = a(paramInt2);
-    int k = this.jdField_c_of_type_JavaUtilArrayList.size();
-    int i = k - 1;
+    int k = a(paramInt2);
+    int m = this.jdField_c_of_type_JavaUtilArrayList.size();
+    int i = m - 1;
     paramInt2 = 0;
-    if (paramInt2 < k)
+    while (paramInt2 < m)
     {
       ETTextRange localETTextRange = (ETTextRange)this.jdField_c_of_type_JavaUtilArrayList.get(paramInt2);
-      if (localETTextRange.jdField_a_of_type_Int == j)
+      int j;
+      if (localETTextRange.jdField_a_of_type_Int == k)
       {
-        if (paramInt1 > localETTextRange.jdField_a_of_type_AndroidGraphicsRect.right) {
-          break label87;
+        if (paramInt1 <= localETTextRange.jdField_a_of_type_AndroidGraphicsRect.right) {
+          return paramInt2;
         }
-        return paramInt2;
+        j = paramInt2;
       }
-      if (localETTextRange.jdField_a_of_type_Int <= j) {}
-    }
-    else
-    {
-      return i + 1;
-    }
-    for (;;)
-    {
+      else
+      {
+        j = i;
+        if (localETTextRange.jdField_a_of_type_Int > k) {
+          break;
+        }
+      }
       paramInt2 += 1;
-      break;
-      label87:
-      i = paramInt2;
+      i = j;
     }
+    return i + 1;
   }
   
   Rect a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine.length)) {
-      return null;
+    if (paramInt >= 0)
+    {
+      Object localObject = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+      if (paramInt < localObject.length)
+      {
+        localObject = localObject[paramInt];
+        paramInt = ((ETTextLine)localObject).c();
+        int i = ((ETTextLine)localObject).d();
+        return new Rect(paramInt, i, this.jdField_b_of_type_Int + paramInt, ((ETTextLine)localObject).a() + i);
+      }
     }
-    ETTextLine localETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[paramInt];
-    paramInt = localETTextLine.c();
-    int i = localETTextLine.d();
-    return new Rect(paramInt, i, this.jdField_b_of_type_Int + paramInt, i + localETTextLine.a());
+    return null;
   }
   
   public CharacterStyle a(int paramInt1, int paramInt2)
@@ -419,21 +427,21 @@ public class ETLayout
     Rect localRect = new Rect(0, 0, 0, 0);
     ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
     int j = arrayOfETTextLine.length;
-    if (i < j)
+    while (i < j)
     {
       Object localObject = arrayOfETTextLine[i];
       localRect.left = ((ETTextLine)localObject).c();
       localRect.top = ((ETTextLine)localObject).d();
       localRect.right = (localRect.left + ((ETTextLine)localObject).b());
       localRect.bottom = (localRect.top + ((ETTextLine)localObject).a());
-      if (!localRect.contains(paramInt1, paramInt2)) {}
-      do
+      if (localRect.contains(paramInt1, paramInt2))
       {
-        i += 1;
-        break;
         localObject = ((ETTextLine)localObject).a(paramInt1);
-      } while (localObject == null);
-      return ((ETFragment)localObject).a();
+        if (localObject != null) {
+          return ((ETFragment)localObject).a();
+        }
+      }
+      i += 1;
     }
     return null;
   }
@@ -448,37 +456,33 @@ public class ETLayout
     int k = a();
     ETSegment[] arrayOfETSegment = a(paramETEngine);
     Object[] arrayOfObject = a();
-    int i;
     if (!paramBoolean)
     {
       this.d = -1;
-      if (this.jdField_b_of_type_JavaUtilArrayList != null) {
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (i < this.jdField_b_of_type_JavaUtilArrayList.size())
+      if (this.jdField_b_of_type_JavaUtilArrayList != null)
       {
-        CharacterStyle localCharacterStyle = (CharacterStyle)this.jdField_b_of_type_JavaUtilArrayList.get(i);
-        if (((IETFontAdapter)QRoute.api(IETFontAdapter.class)).isInstanceOfSignatureActionSpan(localCharacterStyle)) {
-          this.d = i;
+        int i = 0;
+        while (i < this.jdField_b_of_type_JavaUtilArrayList.size())
+        {
+          CharacterStyle localCharacterStyle = (CharacterStyle)this.jdField_b_of_type_JavaUtilArrayList.get(i);
+          if (((IETFontAdapter)QRoute.api(IETFontAdapter.class)).isInstanceOfSignatureActionSpan(localCharacterStyle))
+          {
+            this.d = i;
+            break;
+          }
+          i += 1;
         }
       }
-      else
-      {
-        return (ETDecoration)ETDecoration.createDecoration(paramETEngine, str, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, j, k, arrayOfETSegment, arrayOfObject, this.jdField_c_of_type_Boolean, this.f, this.jdField_a_of_type_ComEtrumpMixlayoutETFont, paramBoolean);
-      }
-      i += 1;
     }
+    return (ETDecoration)ETDecoration.createDecoration(paramETEngine, str, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, j, k, arrayOfETSegment, arrayOfObject, this.jdField_c_of_type_Boolean, this.f, this.jdField_a_of_type_ComEtrumpMixlayoutETFont, paramBoolean);
   }
   
   ETTextRange a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_c_of_type_JavaUtilArrayList.size())) {
-      return null;
+    if ((paramInt >= 0) && (paramInt < this.jdField_c_of_type_JavaUtilArrayList.size())) {
+      return (ETTextRange)this.jdField_c_of_type_JavaUtilArrayList.get(paramInt);
     }
-    return (ETTextRange)this.jdField_c_of_type_JavaUtilArrayList.get(paramInt);
+    return null;
   }
   
   public void a(int paramInt)
@@ -488,187 +492,169 @@ public class ETLayout
   
   public final void a(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine == null) {}
-    for (;;)
-    {
+    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    if (arrayOfETTextLine == null) {
       return;
-      ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
-      int k = arrayOfETTextLine.length;
-      int j = 0;
-      int i = paramInt2;
-      paramInt2 = j;
-      while (paramInt2 < k)
-      {
-        ETTextLine localETTextLine = arrayOfETTextLine[paramInt2];
-        localETTextLine.a(paramCanvas, paramInt1, i);
-        i += localETTextLine.a();
-        paramInt2 += 1;
-      }
+    }
+    int k = arrayOfETTextLine.length;
+    int j = 0;
+    int i = paramInt2;
+    paramInt2 = j;
+    while (paramInt2 < k)
+    {
+      ETTextLine localETTextLine = arrayOfETTextLine[paramInt2];
+      localETTextLine.a(paramCanvas, paramInt1, i);
+      i += localETTextLine.a();
+      paramInt2 += 1;
     }
   }
   
   public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    int j = 2048;
     if (paramCanvas == null) {
       return;
     }
     paramCanvas.save();
     paramCanvas.translate(paramInt1, paramInt2);
-    int n;
-    int i;
     if (paramBitmap != null)
     {
-      n = paramBitmap.getWidth();
-      i = paramBitmap.getHeight();
-      if (Build.VERSION.SDK_INT < 14) {
-        break label234;
+      int m = paramBitmap.getWidth();
+      int i = paramBitmap.getHeight();
+      paramInt1 = Build.VERSION.SDK_INT;
+      paramInt2 = 2048;
+      if (paramInt1 >= 14)
+      {
+        paramInt2 = paramCanvas.getMaximumBitmapHeight();
+        paramInt1 = paramCanvas.getMaximumBitmapWidth();
       }
-      paramInt1 = paramCanvas.getMaximumBitmapHeight();
-    }
-    for (paramInt2 = paramCanvas.getMaximumBitmapWidth();; paramInt2 = j)
-    {
-      if ((n <= paramInt2) && (i <= paramInt1)) {
+      else
+      {
+        paramInt1 = 2048;
+      }
+      if ((m <= paramInt1) && (i <= paramInt2))
+      {
         paramCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
       }
-      for (;;)
+      else
       {
-        paramCanvas.restore();
-        return;
         Rect localRect = new Rect(0, 0, 0, 0);
         while (i > 0)
         {
-          int k;
-          if (i >= paramInt1)
-          {
-            k = paramInt1;
-            localRect.left = 0;
-            localRect.bottom += k;
-            j = n;
-            label136:
-            if (j <= 0) {
-              break label211;
-            }
-            if (j < paramInt2) {
-              break label204;
-            }
+          int j;
+          if (i >= paramInt2) {
+            j = paramInt2;
+          } else {
+            j = i;
           }
-          label204:
-          for (int m = paramInt2;; m = j)
+          int n = i - j;
+          localRect.left = 0;
+          localRect.bottom += j;
+          i = m;
+          while (i > 0)
           {
-            j -= m;
-            localRect.right += m;
+            int k;
+            if (i >= paramInt1) {
+              k = paramInt1;
+            } else {
+              k = i;
+            }
+            i -= k;
+            localRect.right += k;
             paramCanvas.drawBitmap(paramBitmap, localRect, localRect, null);
-            localRect.left = (m + localRect.left);
-            break label136;
-            k = i;
-            break;
+            localRect.left += k;
           }
-          label211:
-          localRect.top = (k + localRect.top);
-          i -= k;
+          localRect.top += j;
+          i = n;
         }
       }
-      label234:
-      paramInt1 = 2048;
     }
+    paramCanvas.restore();
   }
   
   @TargetApi(14)
   public final void a(ETEngine paramETEngine, Bitmap paramBitmap, ETDecoration paramETDecoration, boolean paramBoolean)
   {
-    if ((paramETEngine == null) || (paramBitmap == null))
+    ETDecoration localETDecoration = paramETDecoration;
+    if (paramETEngine != null)
     {
-      break label8;
-      break label8;
-    }
-    label8:
-    int n;
-    int j;
-    int i;
-    Object localObject1;
-    int k;
-    label174:
-    for (;;)
-    {
-      return;
+      if (paramBitmap == null) {
+        return;
+      }
       if ((this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0))
       {
-        n = paramBitmap.getHeight();
-        if ((paramETDecoration == null) || (2 != paramETDecoration.getDecorationType())) {
-          break label176;
-        }
-        j = 0;
-        i = 0;
-        if (paramBoolean)
+        int n = paramBitmap.getHeight();
+        int j;
+        int i;
+        int i1;
+        int k;
+        if ((localETDecoration != null) && (2 == paramETDecoration.getDecorationType()))
         {
-          paramETDecoration.drawScene(paramBitmap, 0, 0, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-          return;
-        }
-        localObject1 = paramETDecoration.mMargins;
-        if (localObject1 != null)
-        {
-          j = ((Rect)localObject1).left;
-          i = ((Rect)localObject1).top;
-        }
-        paramETDecoration.drawBackground(paramBitmap, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-        if (this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine == null) {
-          break;
-        }
-        paramETDecoration = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
-        int i1 = paramETDecoration.length;
-        int m = 0;
-        k = i;
-        i = m;
-        for (;;)
-        {
-          if (i >= i1) {
-            break label174;
+          if (paramBoolean)
+          {
+            localETDecoration.drawScene(paramBitmap, 0, 0, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+            return;
           }
-          localObject1 = paramETDecoration[i];
-          ((ETTextLine)localObject1).a(paramETEngine, paramBitmap, null, j, k);
-          k += ((ETTextLine)localObject1).a();
-          if (k >= n) {
-            break;
+          paramETDecoration = localETDecoration.mMargins;
+          if (paramETDecoration != null)
+          {
+            j = paramETDecoration.left;
+            i = paramETDecoration.top;
           }
-          i += 1;
-        }
-      }
-    }
-    label176:
-    if (!paramBoolean) {
-      paramETDecoration = null;
-    }
-    for (;;)
-    {
-      if ((paramETDecoration != null) && (1 == paramETDecoration.getDecorationType())) {
-        paramETDecoration.drawBackground(paramBitmap, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-      }
-      if (this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine != null)
-      {
-        j = 0;
-        localObject1 = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
-        k = localObject1.length;
-        i = 0;
-      }
-      for (;;)
-      {
-        if (i < k)
-        {
-          Object localObject2 = localObject1[i];
-          localObject2.a(paramETEngine, paramBitmap, paramETDecoration, 0, j);
-          j += localObject2.a();
-          if (j < n) {}
+          else
+          {
+            i = 0;
+            j = 0;
+          }
+          localETDecoration.drawBackground(paramBitmap, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+          paramETDecoration = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+          if (paramETDecoration != null)
+          {
+            i1 = paramETDecoration.length;
+            int m = 0;
+            k = i;
+            i = m;
+          }
         }
         else
         {
-          if ((paramETDecoration == null) || (1 != paramETDecoration.getDecorationType())) {
-            break;
+          while (i < i1)
+          {
+            localETDecoration = paramETDecoration[i];
+            localETDecoration.a(paramETEngine, paramBitmap, null, j, k);
+            k += localETDecoration.a();
+            if (k >= n) {
+              return;
+            }
+            i += 1;
+            continue;
+            if (!paramBoolean) {
+              localETDecoration = null;
+            }
+            if ((localETDecoration != null) && (1 == localETDecoration.getDecorationType())) {
+              localETDecoration.drawBackground(paramBitmap, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+            }
+            paramETDecoration = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+            if (paramETDecoration != null)
+            {
+              k = paramETDecoration.length;
+              i = 0;
+              j = 0;
+              while (i < k)
+              {
+                Object localObject = paramETDecoration[i];
+                localObject.a(paramETEngine, paramBitmap, localETDecoration, 0, j);
+                j += localObject.a();
+                if (j >= n) {
+                  break;
+                }
+                i += 1;
+              }
+            }
+            if ((localETDecoration != null) && (1 == localETDecoration.getDecorationType())) {
+              localETDecoration.drawForeground(paramBitmap, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+            }
           }
-          paramETDecoration.drawForeground(paramBitmap, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-          return;
         }
-        i += 1;
       }
     }
   }
@@ -681,69 +667,84 @@ public class ETLayout
     this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
     this.jdField_a_of_type_ComEtrumpMixlayoutETFont = paramETFont;
     this.jdField_a_of_type_Boolean = true;
-    if ((this.jdField_b_of_type_ComEtrumpMixlayoutETFont != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null))
+    paramCharSequence = this.jdField_b_of_type_ComEtrumpMixlayoutETFont;
+    if (paramCharSequence != null)
     {
-      this.jdField_b_of_type_ComEtrumpMixlayoutETFont.copy(this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-      this.jdField_b_of_type_ComEtrumpMixlayoutETFont.setColor(paramInt2);
+      paramETFont = this.jdField_a_of_type_ComEtrumpMixlayoutETFont;
+      if (paramETFont != null)
+      {
+        paramCharSequence.copy(paramETFont);
+        this.jdField_b_of_type_ComEtrumpMixlayoutETFont.setColor(paramInt2);
+      }
     }
     a();
-    if (this.jdField_a_of_type_Boolean) {
+    paramBoolean = this.jdField_a_of_type_Boolean;
+    paramInt2 = 0;
+    if (paramBoolean) {
       return false;
     }
     a(paramETEngine, paramInt1);
-    if (this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine == null) {
-      throw new Exception("measure textLines fail");
-    }
-    int j = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine.length;
-    paramInt2 = 0;
-    paramInt3 = 0;
-    paramInt1 = 0;
-    int k;
-    if (paramInt2 < j)
+    paramETEngine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    if (paramETEngine != null)
     {
-      int i = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[paramInt2].b();
-      k = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[paramInt2].a();
-      if (i <= paramInt1) {
-        break label254;
+      int k = paramETEngine.length;
+      paramInt3 = 0;
+      int i = 0;
+      paramInt1 = paramInt2;
+      paramInt2 = i;
+      while (paramInt1 < k)
+      {
+        int j = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[paramInt1].b();
+        int m = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[paramInt1].a();
+        i = paramInt3;
+        if (j > paramInt3) {
+          i = j;
+        }
+        paramInt2 += m;
+        paramInt1 += 1;
+        paramInt3 = i;
       }
-      paramInt1 = i;
+      this.jdField_b_of_type_Int = paramInt3;
+      this.jdField_c_of_type_Int = paramInt2;
+      if ((this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0))
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        return true;
+      }
+      paramETEngine = new StringBuilder();
+      paramETEngine.append("mesure fail mWidth=");
+      paramETEngine.append(this.jdField_b_of_type_Int);
+      paramETEngine.append(",mHeight");
+      paramETEngine.append(this.jdField_c_of_type_Int);
+      throw new Exception(paramETEngine.toString());
     }
-    label254:
+    paramETEngine = new Exception("measure textLines fail");
     for (;;)
     {
-      paramInt3 += k;
-      paramInt2 += 1;
-      break;
-      this.jdField_b_of_type_Int = paramInt1;
-      this.jdField_c_of_type_Int = paramInt3;
-      if ((this.jdField_b_of_type_Int <= 0) || (this.jdField_c_of_type_Int <= 0)) {
-        throw new Exception("mesure fail mWidth=" + this.jdField_b_of_type_Int + ",mHeight" + this.jdField_c_of_type_Int);
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      return true;
+      throw paramETEngine;
     }
   }
   
   public ETSegment[] a(ETEngine paramETEngine)
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine == null) {
+    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    if (arrayOfETTextLine == null) {
       return null;
     }
-    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
-    int i1 = arrayOfETTextLine.length;
-    int k = 0;
+    int n = arrayOfETTextLine.length;
     int j = 0;
+    int m = 0;
     int i = 0;
-    while (k < i1)
+    while (j < n)
     {
-      ETTextLine localETTextLine = arrayOfETTextLine[k];
+      ETTextLine localETTextLine = arrayOfETTextLine[j];
       Object localObject1 = localETTextLine.a();
       if (localObject1 == null) {
         return null;
       }
       localObject1 = ((ArrayList)localObject1).iterator();
-      int m = 0;
+      int k = 0;
       while (((Iterator)localObject1).hasNext())
       {
         ETFragment localETFragment = (ETFragment)((Iterator)localObject1).next();
@@ -760,20 +761,19 @@ public class ETLayout
         localETSegment.x = 0;
         localETSegment.y = 0;
         Object localObject2 = localETFragment.a();
-        int n = i;
         int i2;
         if (localObject2 != null)
         {
           localETSegment.textLength = ((String)localObject2).length();
-          localETSegment.textOffset = i;
+          localETSegment.textOffset = m;
           localETSegment.type = 0;
-          n = i + ((String)localObject2).length();
-          i = localETTextLine.a();
+          m += ((String)localObject2).length();
+          i1 = localETTextLine.a();
           i2 = localETFragment.d();
           int i3 = localETTextLine.e();
           int i4 = localETFragment.a(paramETEngine);
-          localETSegment.x = m;
-          localETSegment.y = (i - i2 + j - (i3 - i4));
+          localETSegment.x = k;
+          localETSegment.y = (i1 - i2 + i - (i3 - i4));
         }
         localObject2 = localETFragment.b();
         if (localObject2 != null)
@@ -781,51 +781,51 @@ public class ETLayout
           localETSegment.textLength = 1;
           localETSegment.type = 1;
           localETSegment.codePoint = a(((String)localObject2).charAt(0), ((String)localObject2).charAt(1));
-          i = localETTextLine.a();
+          i1 = localETTextLine.a();
           i2 = localETFragment.d();
-          localETSegment.x = m;
-          localETSegment.y = (i - i2 + j);
+          localETSegment.x = k;
+          localETSegment.y = (i1 - i2 + i);
         }
-        i = localETFragment.b();
-        if (i > -1)
+        int i1 = localETFragment.b();
+        if (i1 > -1)
         {
           localETSegment.type = 2;
-          localETSegment.codePoint = i;
-          i = localETTextLine.a();
+          localETSegment.codePoint = i1;
+          i1 = localETTextLine.a();
           i2 = localETFragment.d();
-          localETSegment.x = m;
-          localETSegment.y = (i - i2 + j);
+          localETSegment.x = k;
+          localETSegment.y = (i1 - i2 + i);
           localObject2 = localETFragment.b();
-          a(m, localETSegment.y, (CharacterStyle)localObject2);
+          a(k, localETSegment.y, (CharacterStyle)localObject2);
         }
         localETSegment.textSize = localETFragment.a();
         localETSegment.lineNum = localETFragment.e();
         localArrayList.add(localETSegment);
-        m = localETFragment.c() + m;
-        i = n;
+        k += localETFragment.c();
       }
-      m = localETTextLine.a();
-      k += 1;
-      j += m;
+      i += localETTextLine.a();
+      j += 1;
     }
     return (ETSegment[])localArrayList.toArray(new ETSegment[localArrayList.size()]);
   }
   
   public ETTextRange[] a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine == null) || (paramInt >= this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine.length)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    if ((localObject != null) && (paramInt < localObject.length))
     {
-      ETTextRange localETTextRange = (ETTextRange)localIterator.next();
-      if (localETTextRange.jdField_a_of_type_Int == paramInt) {
-        localArrayList.add(localETTextRange);
+      localObject = new ArrayList();
+      Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        ETTextRange localETTextRange = (ETTextRange)localIterator.next();
+        if (localETTextRange.jdField_a_of_type_Int == paramInt) {
+          ((ArrayList)localObject).add(localETTextRange);
+        }
       }
+      return (ETTextRange[])((ArrayList)localObject).toArray(new ETTextRange[0]);
     }
-    return (ETTextRange[])localArrayList.toArray(new ETTextRange[0]);
+    return null;
   }
   
   public int b(int paramInt1, int paramInt2)
@@ -834,52 +834,51 @@ public class ETLayout
     Rect localRect = new Rect(0, 0, 0, 0);
     ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
     int j = arrayOfETTextLine.length;
-    if (i < j)
+    while (i < j)
     {
       Object localObject = arrayOfETTextLine[i];
       localRect.left = ((ETTextLine)localObject).c();
       localRect.top = ((ETTextLine)localObject).d();
       localRect.right = (localRect.left + ((ETTextLine)localObject).b());
       localRect.bottom = (localRect.top + ((ETTextLine)localObject).a());
-      if (!localRect.contains(paramInt1, paramInt2)) {}
-      do
+      if (localRect.contains(paramInt1, paramInt2))
       {
-        i += 1;
-        break;
         localObject = ((ETTextLine)localObject).a(paramInt1);
-      } while (localObject == null);
-      return ((ETFragment)localObject).a().b();
+        if (localObject != null) {
+          return ((ETFragment)localObject).a().b();
+        }
+      }
+      i += 1;
     }
     return -1;
   }
   
   public void b(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    if ((this.d > -1) && (this.d < this.jdField_b_of_type_JavaUtilArrayList.size())) {
+    int i = this.d;
+    if ((i > -1) && (i < this.jdField_b_of_type_JavaUtilArrayList.size())) {
       a(paramCanvas);
     }
-    if (this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine == null) {}
-    for (;;)
-    {
+    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    if (arrayOfETTextLine == null) {
       return;
-      ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
-      int k = arrayOfETTextLine.length;
-      int j = 0;
-      int i = paramInt2;
-      paramInt2 = j;
-      while (paramInt2 < k)
-      {
-        ETTextLine localETTextLine = arrayOfETTextLine[paramInt2];
-        localETTextLine.b(paramCanvas, paramInt1, i);
-        i += localETTextLine.a();
-        paramInt2 += 1;
-      }
+    }
+    int k = arrayOfETTextLine.length;
+    int j = 0;
+    i = paramInt2;
+    paramInt2 = j;
+    while (paramInt2 < k)
+    {
+      ETTextLine localETTextLine = arrayOfETTextLine[paramInt2];
+      localETTextLine.b(paramCanvas, paramInt1, i);
+      i += localETTextLine.a();
+      paramInt2 += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.ETLayout
  * JD-Core Version:    0.7.0.1
  */

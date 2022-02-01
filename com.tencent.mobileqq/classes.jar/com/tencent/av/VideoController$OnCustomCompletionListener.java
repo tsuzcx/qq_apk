@@ -11,12 +11,15 @@ public abstract class VideoController$OnCustomCompletionListener
   
   public String toString()
   {
-    return "Custom." + this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Custom.");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.OnCustomCompletionListener
  * JD-Core Version:    0.7.0.1
  */

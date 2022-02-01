@@ -125,27 +125,25 @@ public class IjkMediaMeta
     localIjkMediaMeta.mDurationUS = localIjkMediaMeta.getLong("duration_us");
     localIjkMediaMeta.mStartUS = localIjkMediaMeta.getLong("start_us");
     localIjkMediaMeta.mBitrate = localIjkMediaMeta.getLong("bitrate");
-    int k = localIjkMediaMeta.getInt("video", -1);
-    int m = localIjkMediaMeta.getInt("audio", -1);
+    int i = -1;
+    int j = localIjkMediaMeta.getInt("video", -1);
+    int k = localIjkMediaMeta.getInt("audio", -1);
     localIjkMediaMeta.getInt("timedtext", -1);
     paramBundle = localIjkMediaMeta.getParcelableArrayList("streams");
     if (paramBundle == null) {
       return localIjkMediaMeta;
     }
     paramBundle = paramBundle.iterator();
-    int i = -1;
     while (paramBundle.hasNext())
     {
       Bundle localBundle = (Bundle)paramBundle.next();
-      int j = i + 1;
-      i = j;
+      i += 1;
       if (localBundle != null)
       {
-        IjkMediaMeta.IjkStreamMeta localIjkStreamMeta = new IjkMediaMeta.IjkStreamMeta(j);
+        IjkMediaMeta.IjkStreamMeta localIjkStreamMeta = new IjkMediaMeta.IjkStreamMeta(i);
         localIjkStreamMeta.mMeta = localBundle;
         localIjkStreamMeta.mType = localIjkStreamMeta.getString("type");
         localIjkStreamMeta.mLanguage = localIjkStreamMeta.getString("language");
-        i = j;
         if (!TextUtils.isEmpty(localIjkStreamMeta.mType))
         {
           localIjkStreamMeta.mCodecName = localIjkStreamMeta.getString("codec_name");
@@ -162,24 +160,19 @@ public class IjkMediaMeta
             localIjkStreamMeta.mTbrDen = localIjkStreamMeta.getInt("tbr_den");
             localIjkStreamMeta.mSarNum = localIjkStreamMeta.getInt("sar_num");
             localIjkStreamMeta.mSarDen = localIjkStreamMeta.getInt("sar_den");
-            if (k == j) {
+            if (j == i) {
               localIjkMediaMeta.mVideoStream = localIjkStreamMeta;
             }
           }
-          for (;;)
+          else if (localIjkStreamMeta.mType.equalsIgnoreCase("audio"))
           {
-            localIjkMediaMeta.mStreams.add(localIjkStreamMeta);
-            i = j;
-            break;
-            if (localIjkStreamMeta.mType.equalsIgnoreCase("audio"))
-            {
-              localIjkStreamMeta.mSampleRate = localIjkStreamMeta.getInt("sample_rate");
-              localIjkStreamMeta.mChannelLayout = localIjkStreamMeta.getLong("channel_layout");
-              if (m == j) {
-                localIjkMediaMeta.mAudioStream = localIjkStreamMeta;
-              }
+            localIjkStreamMeta.mSampleRate = localIjkStreamMeta.getInt("sample_rate");
+            localIjkStreamMeta.mChannelLayout = localIjkStreamMeta.getLong("channel_layout");
+            if (k == i) {
+              localIjkMediaMeta.mAudioStream = localIjkStreamMeta;
             }
           }
+          localIjkMediaMeta.mStreams.add(localIjkStreamMeta);
         }
       }
     }
@@ -246,7 +239,7 @@ public class IjkMediaMeta
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.IjkMediaMeta
  * JD-Core Version:    0.7.0.1
  */

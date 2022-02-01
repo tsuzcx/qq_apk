@@ -15,23 +15,26 @@ final class StructMsgClickHandler$1
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt == 1) {
+        ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+      }
     }
-    for (;;)
+    else
     {
-      StructMsgClickHandler.a().dismiss();
-      return;
-      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+      paramView = new StringBuilder();
+      paramView.append("tel:");
+      paramView.append(this.jdField_a_of_type_JavaLangString);
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse(paramView.toString()));
       this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      continue;
-      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
     }
+    StructMsgClickHandler.a().dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgClickHandler.1
  * JD-Core Version:    0.7.0.1
  */

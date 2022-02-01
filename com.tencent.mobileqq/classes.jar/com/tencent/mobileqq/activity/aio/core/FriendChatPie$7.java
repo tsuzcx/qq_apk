@@ -1,26 +1,24 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import android.os.Bundle;
-import android.os.Message;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.tips.FriendHotTipsBar;
+import com.tencent.mobileqq.servlet.ReduFriendObserver;
 
 class FriendChatPie$7
-  implements Runnable
+  extends ReduFriendObserver
 {
   FriendChatPie$7(FriendChatPie paramFriendChatPie) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Message localMessage = this.this$0.a.obtainMessage(42);
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("showRedDot", false);
-    localMessage.setData(localBundle);
-    this.this$0.a.sendMessage(localMessage);
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.7
  * JD-Core Version:    0.7.0.1
  */

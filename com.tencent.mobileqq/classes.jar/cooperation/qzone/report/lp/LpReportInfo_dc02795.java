@@ -26,19 +26,30 @@ public class LpReportInfo_dc02795
   
   public String getSimpleInfo()
   {
-    String str = "dc02795";
-    if (this.reportInfo != null) {
-      str = "dc02795" + ": task_type=" + this.reportInfo.optString("task_type") + ", task_time:" + this.reportInfo.optString("task_time") + ", media_num:" + this.reportInfo.optString("media_num");
+    JSONObject localJSONObject = this.reportInfo;
+    Object localObject = "dc02795";
+    if (localJSONObject != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dc02795");
+      ((StringBuilder)localObject).append(": task_type=");
+      ((StringBuilder)localObject).append(this.reportInfo.optString("task_type"));
+      ((StringBuilder)localObject).append(", task_time:");
+      ((StringBuilder)localObject).append(this.reportInfo.optString("task_time"));
+      ((StringBuilder)localObject).append(", media_num:");
+      ((StringBuilder)localObject).append(this.reportInfo.optString("media_num"));
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return str;
+    return localObject;
   }
   
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    if (this.reportInfo != null)
+    JSONObject localJSONObject = this.reportInfo;
+    if (localJSONObject != null)
     {
-      localHashMap.put("uin", this.reportInfo.optString("uin"));
+      localHashMap.put("uin", localJSONObject.optString("uin"));
       localHashMap.put("model", this.reportInfo.optString("model"));
       localHashMap.put("qua", this.reportInfo.optString("qua"));
       localHashMap.put("task_type", this.reportInfo.optString("task_type"));
@@ -62,7 +73,7 @@ public class LpReportInfo_dc02795
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc02795
  * JD-Core Version:    0.7.0.1
  */

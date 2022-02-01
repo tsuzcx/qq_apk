@@ -10,8 +10,8 @@ import java.lang.ref.WeakReference;
 
 public class CallStatusClient
 {
-  private static volatile CallStatusClient jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient = null;
-  private static final String jdField_a_of_type_JavaLangString = CallStatusClient.class.getSimpleName();
+  private static volatile CallStatusClient jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient;
+  private static final String jdField_a_of_type_JavaLangString = "CallStatusClient";
   private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = null;
   private IQQServiceForAV jdField_a_of_type_ComTencentAvServiceIQQServiceForAV = null;
   private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
@@ -19,15 +19,16 @@ public class CallStatusClient
   
   public static CallStatusClient a()
   {
-    if (jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient == null) {
-        jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient = new CallStatusClient();
+    if (jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient == null) {
+          jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient = new CallStatusClient();
+        }
       }
-      return jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient;
   }
   
   public void a()
@@ -42,13 +43,13 @@ public class CallStatusClient
   
   public boolean a()
   {
-    boolean bool = false;
     try
     {
-      if (this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null) {
-        bool = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.e();
+      if (this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null)
+      {
+        boolean bool = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.e();
+        return bool;
       }
-      return bool;
     }
     catch (Exception localException)
     {
@@ -59,46 +60,55 @@ public class CallStatusClient
   
   public void b()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+    if (!this.jdField_a_of_type_Boolean)
     {
-      Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localContext != null)
+      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, "bindQQServiceForAV");
+        localObject = (Context)((WeakReference)localObject).get();
+        if (localObject != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(jdField_a_of_type_JavaLangString, 2, "bindQQServiceForAV");
+          }
+          if (this.jdField_a_of_type_AndroidContentServiceConnection == null) {
+            this.jdField_a_of_type_AndroidContentServiceConnection = new CallStatusClient.1(this);
+          }
+          ((Context)localObject).bindService(new Intent((Context)localObject, QQServiceForAV.class), this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+          this.jdField_a_of_type_Boolean = true;
         }
-        if (this.jdField_a_of_type_AndroidContentServiceConnection == null) {
-          this.jdField_a_of_type_AndroidContentServiceConnection = new CallStatusClient.1(this);
-        }
-        localContext.bindService(new Intent(localContext, QQServiceForAV.class), this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-        this.jdField_a_of_type_Boolean = true;
       }
     }
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+    if (this.jdField_a_of_type_Boolean)
     {
-      Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localContext != null)
+      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, "unbindQQServiceForAV");
-        }
-        if (this.jdField_a_of_type_AndroidContentServiceConnection != null)
+        localObject = (Context)((WeakReference)localObject).get();
+        if (localObject != null)
         {
-          localContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-          this.jdField_a_of_type_AndroidContentServiceConnection = null;
+          if (QLog.isColorLevel()) {
+            QLog.i(jdField_a_of_type_JavaLangString, 2, "unbindQQServiceForAV");
+          }
+          ServiceConnection localServiceConnection = this.jdField_a_of_type_AndroidContentServiceConnection;
+          if (localServiceConnection != null)
+          {
+            ((Context)localObject).unbindService(localServiceConnection);
+            this.jdField_a_of_type_AndroidContentServiceConnection = null;
+          }
+          this.jdField_a_of_type_Boolean = false;
         }
-        this.jdField_a_of_type_Boolean = false;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.util.CallStatusClient
  * JD-Core Version:    0.7.0.1
  */

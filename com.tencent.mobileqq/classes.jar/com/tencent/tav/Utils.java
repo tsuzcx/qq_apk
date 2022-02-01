@@ -16,16 +16,20 @@ public class Utils
   
   public static String getPhoneName()
   {
-    String str = Build.MANUFACTURER.toUpperCase() + " " + Build.MODEL;
-    if (TextUtils.isEmpty(str)) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER.toUpperCase());
+    ((StringBuilder)localObject).append(" ");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    localObject = ((StringBuilder)localObject).toString();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
       return "";
     }
-    return str.replace(" ", "_").replace("+", "").replace("(t)", "");
+    return ((String)localObject).replace(" ", "_").replace("+", "").replace("(t)", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.tav.Utils
  * JD-Core Version:    0.7.0.1
  */

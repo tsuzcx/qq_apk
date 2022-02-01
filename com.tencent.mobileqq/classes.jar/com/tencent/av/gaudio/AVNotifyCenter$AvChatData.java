@@ -1,6 +1,6 @@
 package com.tencent.av.gaudio;
 
-public class AVNotifyCenter$AvChatData
+class AVNotifyCenter$AvChatData
 {
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long = 0L;
@@ -17,17 +17,37 @@ public class AVNotifyCenter$AvChatData
   
   AVNotifyCenter$AvChatData(AVNotifyCenter paramAVNotifyCenter, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = ("AvChatData_" + paramString + "_" + paramLong);
+    paramAVNotifyCenter = new StringBuilder();
+    paramAVNotifyCenter.append("AvChatData_");
+    paramAVNotifyCenter.append(paramString);
+    paramAVNotifyCenter.append("_");
+    paramAVNotifyCenter.append(paramLong);
+    this.jdField_a_of_type_JavaLangString = paramAVNotifyCenter.toString();
   }
   
   public String toString()
   {
-    return this.jdField_a_of_type_JavaLangString + ", mRelationId[" + this.jdField_a_of_type_Long + "], mRelationType[" + this.jdField_c_of_type_Int + "], mUinType[" + this.jdField_b_of_type_Int + "], mPeerUin[" + this.jdField_b_of_type_JavaLangString + "], mIsChating[" + this.d + "], mIsWaitting[" + this.jdField_c_of_type_Boolean + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mRelationId[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("], mRelationType[");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("], mUinType[");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("], mPeerUin[");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("], mIsChating[");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("], mIsWaitting[");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.AVNotifyCenter.AvChatData
  * JD-Core Version:    0.7.0.1
  */

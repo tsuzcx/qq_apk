@@ -22,12 +22,20 @@ public class PoiCache$PoiItem
   @NonNull
   public String toString()
   {
-    return "PoiItem{latLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", poiList=" + this.jdField_a_of_type_JavaUtilList + ", adInfo=" + this.jdField_a_of_type_ComTencentLbssearchHttpresponseAdInfo + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PoiItem{latLng=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    localStringBuilder.append(", poiList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(", adInfo=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentLbssearchHttpresponseAdInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.PoiCache.PoiItem
  * JD-Core Version:    0.7.0.1
  */

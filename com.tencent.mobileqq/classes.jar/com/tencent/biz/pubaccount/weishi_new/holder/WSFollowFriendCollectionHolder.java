@@ -4,7 +4,6 @@ import UserGrowth.stFeed;
 import UserGrowth.stFriendFeed;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,8 +19,8 @@ import com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSFollowFriendFeedA
 import com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSFollowFriendFeedHolder;
 import com.tencent.biz.pubaccount.weishi_new.report.WSFollowBeaconReport;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageOpenParams;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSFriendFeedDataManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.pull2refresh.BaseViewHolder;
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class WSFollowFriendCollectionHolder
   
   private WSFollowFriendCollectionHolder(ViewGroup paramViewGroup, WSFollowAdapter paramWSFollowAdapter)
   {
-    super(paramViewGroup, 2131560526);
+    super(paramViewGroup, 2131560413);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter = paramWSFollowAdapter;
     c();
   }
@@ -50,23 +49,23 @@ public class WSFollowFriendCollectionHolder
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131368051));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)a(2131376728));
-    TextView localTextView1 = (TextView)a(2131382043);
-    TextView localTextView2 = (TextView)a(2131382044);
-    ImageView localImageView = (ImageView)a(2131382014);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)getView(2131367803));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)getView(2131376226));
+    TextView localTextView1 = (TextView)getView(2131381246);
+    TextView localTextView2 = (TextView)getView(2131381247);
+    ImageView localImageView = (ImageView)getView(2131381219);
     localTextView1.setVisibility(0);
     localImageView.setVisibility(0);
     localTextView1.setOnClickListener(this);
     localImageView.setOnClickListener(this);
-    localTextView2.setText(2131720710);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(a(), 0, false);
+    localTextView2.setText(2131720434);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter = new WSFollowFriendFeedAdapter(a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter = new WSFollowFriendFeedAdapter(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new WSItemDecoration());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter.a(new WSFollowFriendCollectionHolder.1(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter.setOnItemClickListener(new WSFollowFriendCollectionHolder.1(this));
   }
   
   public RecyclerView a()
@@ -76,55 +75,60 @@ public class WSFollowFriendCollectionHolder
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) {}
-    for (;;)
-    {
+    Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+    if (localObject == null) {
       return;
-      int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
-      int k = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
-      int i = j;
-      while (i <= k - j)
-      {
-        RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
-        if ((localViewHolder instanceof BaseViewHolder)) {
-          this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter.a((BaseViewHolder)localViewHolder);
-        }
-        i += 1;
+    }
+    int j = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
+    int k = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
+    int i = j;
+    while (i <= k - j)
+    {
+      localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
+      if ((localObject instanceof BaseViewHolder)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter.a((BaseViewHolder)localObject);
       }
+      i += 1;
     }
   }
   
   public void a(stFeed paramstFeed)
   {
-    if (paramstFeed == null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
-    do
+    if (paramstFeed == null)
     {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       return;
-      this.jdField_a_of_type_UserGrowthStFeed = paramstFeed;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      paramstFeed = paramstFeed.friendFeed;
-      List localList = WSFriendItemDataUtil.a(paramstFeed);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter.a(localList);
-    } while (paramstFeed == null);
-    WSFriendFeedDataManager.a().a(paramstFeed.attachInfo);
+    }
+    this.jdField_a_of_type_UserGrowthStFeed = paramstFeed;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    paramstFeed = paramstFeed.friendFeed;
+    List localList = WSFriendItemDataUtil.a(paramstFeed);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter.fillList(localList);
+    if (paramstFeed != null) {
+      WSFriendFeedDataManager.a().a(paramstFeed.attachInfo);
+    }
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter == null)) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+    if (localObject != null)
     {
-      return;
-      int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter == null) {
+        return;
+      }
+      int i = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
       int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
-      if ((i >= 0) && (j < this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter.b().size())) {
+      if (i >= 0)
+      {
+        if (j >= this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter.getDataList().size()) {
+          return;
+        }
         while (i <= j)
         {
-          RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
-          if ((localViewHolder instanceof WSFollowFriendFeedHolder)) {
-            ((WSFollowFriendFeedHolder)localViewHolder).b();
+          localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
+          if ((localObject instanceof WSFollowFriendFeedHolder)) {
+            ((WSFollowFriendFeedHolder)localObject).b();
           }
           i += 1;
         }
@@ -132,36 +136,36 @@ public class WSFollowFriendCollectionHolder
     }
   }
   
-  public void h()
-  {
-    super.h();
-  }
-  
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131381219)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      WSVerticalPageFragment.a(a(), "friend_feed", "friend", null, 0);
-      WSFollowBeaconReport.b();
-      continue;
-      WSTipsInfoDialog localWSTipsInfoDialog = new WSTipsInfoDialog(a());
-      if ((this.jdField_a_of_type_UserGrowthStFeed != null) && (this.jdField_a_of_type_UserGrowthStFeed.friendFeed != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStFeed.friendFeed.dialogTips))) {
-        localWSTipsInfoDialog.a(this.jdField_a_of_type_UserGrowthStFeed.friendFeed.dialogTips);
+      if (i != 2131381246) {
+        return;
       }
-      localWSTipsInfoDialog.show();
-      WSFollowBeaconReport.a();
-      WSFollowBeaconReport.d();
+      WSVerticalPageFragment.a(new WSVerticalPageOpenParams(getContext(), "friend_feed", "friend"));
+      WSFollowBeaconReport.b();
+      return;
     }
+    paramView = new WSTipsInfoDialog(getContext());
+    stFeed localstFeed = this.jdField_a_of_type_UserGrowthStFeed;
+    if ((localstFeed != null) && (localstFeed.friendFeed != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStFeed.friendFeed.dialogTips))) {
+      paramView.a(this.jdField_a_of_type_UserGrowthStFeed.friendFeed.dialogTips);
+    }
+    paramView.show();
+    WSFollowBeaconReport.a();
+    WSFollowBeaconReport.d();
+  }
+  
+  public void onViewDetachedFromWindow()
+  {
+    super.onViewDetachedFromWindow();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.holder.WSFollowFriendCollectionHolder
  * JD-Core Version:    0.7.0.1
  */

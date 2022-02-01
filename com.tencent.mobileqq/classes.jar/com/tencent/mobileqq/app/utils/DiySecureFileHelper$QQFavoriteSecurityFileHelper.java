@@ -28,18 +28,23 @@ public class DiySecureFileHelper$QQFavoriteSecurityFileHelper
   public boolean doMigrate(File paramFile)
   {
     QLog.d("ISecurityFileHelper", 1, "Move QQFavorite file start");
-    File localFile = new File(AppConstants.SDCARD_IMG_FAVORITE);
-    if ((localFile.exists()) && (paramFile.isDirectory()))
+    Object localObject = new File(AppConstants.SDCARD_IMG_FAVORITE);
+    if ((((File)localObject).exists()) && (paramFile.isDirectory()))
     {
-      paramFile = DiySecureFileHelper.a(localFile);
+      paramFile = DiySecureFileHelper.a((File)localObject);
       int j = paramFile.length;
       int i = 0;
       while (i < j)
       {
-        localFile = paramFile[i];
-        String str = localFile.getName();
-        if ((str.length() > 4) && (str.matches("[0-9]{5}.*"))) {
-          FileUtils.a(localFile.getAbsolutePath(), AppConstants.SDCARD_IMG_FAVORITE + DiySecureFileHelper.a(str));
+        String str = paramFile[i];
+        localObject = str.getName();
+        if ((((String)localObject).length() > 4) && (((String)localObject).matches("[0-9]{5}.*")))
+        {
+          str = str.getAbsolutePath();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(AppConstants.SDCARD_IMG_FAVORITE);
+          localStringBuilder.append(DiySecureFileHelper.a((String)localObject));
+          FileUtils.quickMove(str, localStringBuilder.toString());
         }
         i += 1;
       }
@@ -78,7 +83,7 @@ public class DiySecureFileHelper$QQFavoriteSecurityFileHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.DiySecureFileHelper.QQFavoriteSecurityFileHelper
  * JD-Core Version:    0.7.0.1
  */

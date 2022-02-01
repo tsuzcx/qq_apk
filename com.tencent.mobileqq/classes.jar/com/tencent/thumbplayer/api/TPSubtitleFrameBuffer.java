@@ -1,8 +1,12 @@
 package com.tencent.thumbplayer.api;
 
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapSubtitleFormat;
+
 public class TPSubtitleFrameBuffer
 {
+  @TPNativeKeyMap.MapSubtitleFormat(-1)
   public static final int TP_PLAYER_SUBTITLE_OUTPUT_FORMAT_NONE = -1;
+  @TPNativeKeyMap.MapSubtitleFormat(26)
   public static final int TP_PLAYER_SUBTITLE_OUTPUT_FORMAT_RGBA = 26;
   public byte[][] data;
   public int dstHeight;
@@ -73,7 +77,7 @@ public class TPSubtitleFrameBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPSubtitleFrameBuffer
  * JD-Core Version:    0.7.0.1
  */

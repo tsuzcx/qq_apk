@@ -11,7 +11,7 @@ import com.tencent.mobileqq.activity.aio.coreui.msglist.bubblebghandlerexecutor.
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.bubble.BubbleInfo;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.theme.SkinEngine;
 
 public class GameMsgBubbleBgExecutor
@@ -31,29 +31,24 @@ public class GameMsgBubbleBgExecutor
   {
     paramBoolean = paramChatMessage.isSend();
     paramChatMessage = SkinEngine.getInstances();
-    Object localObject;
-    if (paramBoolean)
-    {
-      paramInt1 = 2130850409;
-      paramChatMessage = paramChatMessage.getDefaultThemeDrawable(paramInt1);
-      localObject = SkinEngine.getInstances();
-      if (!paramBoolean) {
-        break label111;
-      }
+    if (paramBoolean) {
+      paramInt1 = 2130850336;
+    } else {
+      paramInt1 = 2130850160;
     }
-    label111:
-    for (paramInt1 = 2130850408;; paramInt1 = 2130850232)
-    {
-      localObject = ((SkinEngine)localObject).getDefaultThemeDrawable(paramInt1);
-      StateListDrawable localStateListDrawable = new StateListDrawable();
-      localStateListDrawable.addState(new int[] { 16842919 }, paramChatMessage);
-      localStateListDrawable.addState(new int[] { 16842910 }, (Drawable)localObject);
-      paramViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localStateListDrawable);
-      paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = new BubbleInfo(0);
-      return;
-      paramInt1 = 2130850233;
-      break;
+    paramChatMessage = paramChatMessage.getDefaultThemeDrawable(paramInt1);
+    Object localObject = SkinEngine.getInstances();
+    if (paramBoolean) {
+      paramInt1 = 2130850335;
+    } else {
+      paramInt1 = 2130850159;
     }
+    localObject = ((SkinEngine)localObject).getDefaultThemeDrawable(paramInt1);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramChatMessage);
+    localStateListDrawable.addState(new int[] { 16842910 }, (Drawable)localObject);
+    paramViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localStateListDrawable);
+    paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = new BubbleInfo(0);
   }
   
   public boolean a(int paramInt, ChatMessage paramChatMessage)
@@ -63,7 +58,7 @@ public class GameMsgBubbleBgExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.bubblebghandlerexecutor.GameMsgBubbleBgExecutor
  * JD-Core Version:    0.7.0.1
  */

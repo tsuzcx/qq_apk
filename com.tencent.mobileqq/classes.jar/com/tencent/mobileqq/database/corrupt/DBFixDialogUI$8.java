@@ -7,18 +7,24 @@ class DBFixDialogUI$8
   
   public void run()
   {
-    if (this.a == DBFixLoadingDialog.d) {
+    if (this.a == DBFixLoadingDialog.d)
+    {
       DBFixDialogUI.c(this.this$0);
-    }
-    while (this.a != DBFixLoadingDialog.e) {
       return;
     }
-    DBFixDialogUI.d(this.this$0);
+    if (this.a == DBFixLoadingDialog.e)
+    {
+      DBFixDialogUI.d(this.this$0);
+      return;
+    }
+    if (this.a == DBFixLoadingDialog.f) {
+      DBFixDialogUI.e(this.this$0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogUI.8
  * JD-Core Version:    0.7.0.1
  */

@@ -10,18 +10,18 @@ import android.os.Handler;
 import com.tencent.av.audioprocess.AudioProcess;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.callback.AVGameUIEventCallback;
-import com.tencent.avgame.gamelogic.gameres.AvGameMusicPlayer;
+import com.tencent.avgame.config.AvGameConfigUtil;
+import com.tencent.avgame.config.data.AvGameConfBean;
 import com.tencent.avgame.ipc.AVGameUtilService;
+import com.tencent.avgame.qav.audio.AvGameMusicPlayer;
+import com.tencent.avgame.report.AVGamePerfReporter;
 import com.tencent.avgame.session.AVGameSession;
 import com.tencent.avgame.session.AVGameSessionManager;
 import com.tencent.avgame.ui.AVGameHandler;
-import com.tencent.avgame.util.AVGamePerfReporter;
-import com.tencent.avgame.util.AVGameUtils;
-import com.tencent.avgame.util.AvGameConfBean;
+import com.tencent.avgame.util.AVGameUtil;
 import com.tencent.avgame.util.CostTraceUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.qav.QavDef.MultiParams;
 import com.tencent.qav.QavSDK;
 import com.tencent.qav.channel.VideoChannelImpl;
@@ -41,12 +41,13 @@ import mqq.manager.PushManager;
 import mqq.util.WeakReference;
 
 public class AVGameBusinessCtrl
+  extends IAVGameBusinessCtrl
 {
-  private static volatile AVGameBusinessCtrl jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl = null;
+  private static volatile AVGameBusinessCtrl jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl;
   private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new AVGameBusinessCtrl.1(this);
-  private AVGameBusinessCtrl.IOnEnterRoom jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl$IOnEnterRoom;
   private AVGameCameraAssistant jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant;
-  private AVGameMediaPlayerCtrl jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl;
+  private IAVGameBusinessCtrl.IOnEnterRoom jdField_a_of_type_ComTencentAvgameQavIAVGameBusinessCtrl$IOnEnterRoom;
+  private IAVGameMediaPlayerCtrl jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl;
   private MultiOperatorImplForGame jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame;
   private AVGameSessionManager jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager;
   private QavMultiObserver jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver = new AVGameBusinessCtrl.2(this);
@@ -62,22 +63,27 @@ public class AVGameBusinessCtrl
     AVGamePerfReporter.a().a("param_QAVInit");
     CostTraceUtil.a().b("AVGameBusinessCtrlInit");
     AVLog.d("AVGameBusinessCtrl", "AVGameBusinessCtrl create and init.");
-    Object localObject3 = BaseApplicationImpl.getApplication().getQQProcessName();
-    QLog.i("AVGameBusinessCtrl", 1, "init, [" + (String)localObject3 + "]");
-    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject1 = null;
-    if ((localObject2 instanceof AVGameAppInterface)) {
-      localObject1 = (AVGameAppInterface)localObject2;
+    Object localObject2 = BaseApplicationImpl.getApplication().getQQProcessName();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("init, [");
+    ((StringBuilder)localObject1).append((String)localObject2);
+    ((StringBuilder)localObject1).append("]");
+    QLog.i("AVGameBusinessCtrl", 1, ((StringBuilder)localObject1).toString());
+    Object localObject3 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject3 instanceof AVGameAppInterface)) {
+      localObject1 = (AVGameAppInterface)localObject3;
+    } else {
+      localObject1 = null;
     }
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(localObject1);
-    ((PushManager)((AppRuntime)localObject2).getManager(5)).registProxyMessagePush(AppSetting.a(), (String)localObject3, "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c", "VideoCCSvc.Adaptation", "OnlinePush.ReqPush" });
+    ((PushManager)((AppRuntime)localObject3).getManager(5)).registProxyMessagePush(AppSetting.a(), (String)localObject2, "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c", "VideoCCSvc.Adaptation", "OnlinePush.ReqPush" });
     AVLog.a(new AVLogImpl());
     localObject1 = VideoChannelImpl.a();
-    ((VideoChannelImpl)localObject1).a((AppRuntime)localObject2);
+    ((VideoChannelImpl)localObject1).a((AppRuntime)localObject3);
     ((VideoChannelImpl)localObject1).a(new AVGameBusinessCtrl.3(this));
-    long l = ((AppRuntime)localObject2).getLongAccountUin();
+    long l = ((AppRuntime)localObject3).getLongAccountUin();
     localObject2 = BaseApplicationImpl.getApplication().getApplicationContext();
-    localObject3 = new QavCtrlForGame((Context)localObject2, new MultiOperatorImplForGame((Context)localObject2, l, (VideoChannelInterface)localObject1, ((AvGameConfBean)QConfigManager.a().a(642)).b(l)));
+    localObject3 = new QavCtrlForGame((Context)localObject2, new MultiOperatorImplForGame((Context)localObject2, l, (VideoChannelInterface)localObject1, AvGameConfigUtil.a().b(l)));
     QavSDK localQavSDK = QavSDK.a();
     localQavSDK.a((QavCtrl)localObject3);
     localQavSDK.a((Context)localObject2, l, (VideoChannelInterface)localObject1);
@@ -120,8 +126,13 @@ public class AVGameBusinessCtrl
   
   private void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt1, long paramLong3, int paramInt2)
   {
-    paramInt2 = 2;
-    AVLog.c("AVGameBusinessCtrl", "onMemberShareInOrOut, shareIn[" + paramBoolean + "], userUin[" + paramLong1 + "]");
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("onMemberShareInOrOut, shareIn[");
+    ((StringBuilder)???).append(paramBoolean);
+    ((StringBuilder)???).append("], userUin[");
+    ((StringBuilder)???).append(paramLong1);
+    ((StringBuilder)???).append("]");
+    AVLog.c("AVGameBusinessCtrl", ((StringBuilder)???).toString());
     ??? = AVGameSession.a(paramInt1, paramLong2);
     ??? = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a((String)???);
     if (??? == null)
@@ -129,63 +140,67 @@ public class AVGameBusinessCtrl
       AVLog.a("AVGameBusinessCtrl", "onMemberShareInOrOut failed, session is null.");
       return;
     }
-    if (paramBoolean) {}
-    for (paramInt1 = paramInt2;; paramInt1 = 0)
+    if (paramBoolean) {
+      paramInt1 = 2;
+    } else {
+      paramInt1 = 0;
+    }
+    boolean bool = ((AVGameSession)???).b(paramLong1, paramBoolean, paramInt1);
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("onMemberShareInOrOut, updateUserSubVideoStatus result[");
+    ((StringBuilder)???).append(bool);
+    ((StringBuilder)???).append("]");
+    AVLog.c("AVGameBusinessCtrl", ((StringBuilder)???).toString());
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      boolean bool = ((AVGameSession)???).b(paramLong1, paramBoolean, paramInt1);
-      AVLog.c("AVGameBusinessCtrl", "onMemberShareInOrOut, updateUserSubVideoStatus result[" + bool + "]");
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        WeakReference localWeakReference;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localWeakReference = (WeakReference)localIterator.next();
-        } while ((localWeakReference == null) || (localWeakReference.get() == null));
-        ((AVGameUIEventCallback)localWeakReference.get()).b(paramBoolean, paramLong1, 2);
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+          ((AVGameUIEventCallback)localWeakReference.get()).b(paramBoolean, paramLong1, 2);
+        }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   public static AVGameBusinessCtrl b()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl == null) {
-        jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl = new AVGameBusinessCtrl();
+    if (jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl == null) {
+          jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl = new AVGameBusinessCtrl();
+        }
       }
-      return jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl;
   }
   
   private void b(int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    QLog.d("AVGameBusinessCtrl", 1, String.format("switchAudioRoute route=%s isHeadsetPlugged=%s isBluetoothOn=%s subType = %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(d()), Boolean.valueOf(f()), Integer.valueOf(paramInt2) }));
+    boolean bool = false;
+    QLog.d("AVGameBusinessCtrl", 1, String.format("switchAudioRoute route=%s isHeadsetPlugged=%s isBluetoothOn=%s subType = %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(d()), Boolean.valueOf(g()), Integer.valueOf(paramInt2) }));
     IMultiOperator localIMultiOperator = QavSDK.a().a();
     if (localIMultiOperator != null) {
       localIMultiOperator.b(paramInt1);
     }
     AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-    if (localAVGameSession != null) {
-      if (paramInt1 != 1) {
-        break label116;
-      }
-    }
-    for (;;)
+    if (localAVGameSession != null)
     {
-      localAVGameSession.d = bool;
-      if (localIMultiOperator != null) {
-        c(localIMultiOperator.a(), paramInt2);
+      if (paramInt1 == 1) {
+        bool = true;
       }
-      return;
-      label116:
-      bool = false;
+      localAVGameSession.d = bool;
+    }
+    if (localIMultiOperator != null) {
+      c(localIMultiOperator.a(), paramInt2);
     }
   }
   
@@ -200,44 +215,40 @@ public class AVGameBusinessCtrl
   private void c(int paramInt)
   {
     int j = 3;
+    boolean bool2 = d();
+    boolean bool1 = false;
+    boolean bool3 = g();
     int i = 2;
-    boolean bool = true;
-    QLog.d("AVGameBusinessCtrl", 1, String.format("switchAudioRoute isHeadsetPlugged=%s isBluetoothOn=%s current = %d", new Object[] { Boolean.valueOf(d()), Boolean.valueOf(f()), Integer.valueOf(paramInt) }));
+    QLog.d("AVGameBusinessCtrl", 1, String.format("switchAudioRoute isHeadsetPlugged=%s isBluetoothOn=%s current = %d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(paramInt) }));
     IMultiOperator localIMultiOperator = QavSDK.a().a();
-    AVGameSession localAVGameSession;
     if (localIMultiOperator != null)
     {
-      if ((paramInt == 0) || (!d())) {
-        break label125;
+      if ((paramInt != 0) && (d()))
+      {
+        localIMultiOperator.b(0);
+        i = 0;
+        paramInt = j;
       }
-      localIMultiOperator.b(0);
-      i = 0;
-      paramInt = j;
-      localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-      if (localAVGameSession != null) {
-        if (i != 1) {
-          break label165;
-        }
-      }
-    }
-    for (;;)
-    {
-      localAVGameSession.d = bool;
-      c(localIMultiOperator.a(), paramInt);
-      return;
-      label125:
-      if ((paramInt != 2) && (f()))
+      else if ((paramInt != 2) && (g()))
       {
         localIMultiOperator.b(2);
         paramInt = 0;
-        break;
       }
-      localIMultiOperator.b(1);
-      paramInt = 0;
-      i = 1;
-      break;
-      label165:
-      bool = false;
+      else
+      {
+        localIMultiOperator.b(1);
+        paramInt = 0;
+        i = 1;
+      }
+      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+      if (localAVGameSession != null)
+      {
+        if (i == 1) {
+          bool1 = true;
+        }
+        localAVGameSession.d = bool1;
+      }
+      c(localIMultiOperator.a(), paramInt);
     }
   }
   
@@ -265,222 +276,260 @@ public class AVGameBusinessCtrl
   private void f()
   {
     int i = 2;
-    boolean bool = true;
-    QLog.d("AVGameBusinessCtrl", 1, String.format("switchAudioRoute isHeadsetPlugged=%s isBluetoothOn=%s", new Object[] { Boolean.valueOf(d()), Boolean.valueOf(f()) }));
+    boolean bool2 = d();
+    boolean bool1 = false;
+    QLog.d("AVGameBusinessCtrl", 1, String.format("switchAudioRoute isHeadsetPlugged=%s isBluetoothOn=%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(g()) }));
     IMultiOperator localIMultiOperator = QavSDK.a().a();
-    AVGameSession localAVGameSession;
     if (localIMultiOperator != null)
     {
-      if (!d()) {
-        break label104;
+      if (d())
+      {
+        localIMultiOperator.b(0);
+        i = 0;
       }
-      localIMultiOperator.b(0);
-      i = 0;
-      localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-      if (localAVGameSession != null) {
-        if (i != 1) {
-          break label133;
-        }
-      }
-    }
-    for (;;)
-    {
-      localAVGameSession.d = bool;
-      c(localIMultiOperator.a(), -1);
-      return;
-      label104:
-      if (f())
+      else if (g())
       {
         localIMultiOperator.b(2);
-        break;
-      }
-      localIMultiOperator.b(1);
-      i = 1;
-      break;
-      label133:
-      bool = false;
-    }
-  }
-  
-  private boolean f()
-  {
-    Object localObject = BluetoothAdapter.getDefaultAdapter();
-    int i;
-    int j;
-    int k;
-    if (((BluetoothAdapter)localObject).isEnabled())
-    {
-      i = ((BluetoothAdapter)localObject).getProfileConnectionState(2);
-      j = ((BluetoothAdapter)localObject).getProfileConnectionState(1);
-      k = ((BluetoothAdapter)localObject).getProfileConnectionState(3);
-      if (i != 2) {}
-    }
-    for (;;)
-    {
-      localObject = (AudioManager)BaseApplicationImpl.getContext().getSystemService("audio");
-      if ((i != -1) || (((AudioManager)localObject).isBluetoothA2dpOn()))
-      {
-        return true;
-        i = j;
-        if (j == 2) {
-          continue;
-        }
-        if (k == 2) {
-          i = k;
-        }
       }
       else
       {
-        return false;
+        localIMultiOperator.b(1);
+        i = 1;
       }
-      i = -1;
+      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+      if (localAVGameSession != null)
+      {
+        if (i == 1) {
+          bool1 = true;
+        }
+        localAVGameSession.d = bool1;
+      }
+      c(localIMultiOperator.a(), -1);
     }
   }
   
   private void g()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl == null)
+    if (this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl == null)
     {
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl = new AVGameMediaPlayerCtrl();
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl.e();
+      this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl = new AVGameMediaPlayerCtrl();
+      this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl.e();
     }
+  }
+  
+  private boolean g()
+  {
+    Object localObject = BluetoothAdapter.getDefaultAdapter();
+    boolean bool2 = ((BluetoothAdapter)localObject).isEnabled();
+    boolean bool1 = true;
+    if (bool2)
+    {
+      i = ((BluetoothAdapter)localObject).getProfileConnectionState(2);
+      int j = ((BluetoothAdapter)localObject).getProfileConnectionState(1);
+      int k = ((BluetoothAdapter)localObject).getProfileConnectionState(3);
+      if (i == 2) {
+        break label71;
+      }
+      if (j == 2)
+      {
+        i = j;
+        break label71;
+      }
+      if (k == 2)
+      {
+        i = k;
+        break label71;
+      }
+    }
+    int i = -1;
+    label71:
+    localObject = (AudioManager)BaseApplicationImpl.getContext().getSystemService("audio");
+    if (i == -1)
+    {
+      if (((AudioManager)localObject).isBluetoothA2dpOn()) {
+        return true;
+      }
+      bool1 = false;
+    }
+    return bool1;
   }
   
   public int a()
   {
-    if ((!b()) || (!a())) {
-      return 0;
+    if ((b()) && (a())) {
+      return this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a();
     }
-    return this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a();
+    return 0;
   }
   
-  public int a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, AVGameBusinessCtrl.IOnEnterRoom paramIOnEnterRoom)
+  public int a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, IAVGameBusinessCtrl.IOnEnterRoom paramIOnEnterRoom)
   {
     if (!b()) {
       return -1;
     }
     AVGamePerfReporter.a().a("param_QAVEnterRoom");
-    AVLog.d("AVGameBusinessCtrl", "enterRoom. businessRoomId[" + paramString + "], onEnterRoom[" + paramIOnEnterRoom + "], sourceType[" + paramInt2 + "], svrRecordFlag[" + paramInt1 + "] tid=" + Thread.currentThread().getId());
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof AVGameAppInterface)) {}
-    for (localObject = ((AVGameAppInterface)localObject).getCurrentAccountUin();; localObject = "")
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("enterRoom. businessRoomId[");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("], onEnterRoom[");
+    ((StringBuilder)localObject).append(paramIOnEnterRoom);
+    ((StringBuilder)localObject).append("], sourceType[");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append("], svrRecordFlag[");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("] tid=");
+    ((StringBuilder)localObject).append(Thread.currentThread().getId());
+    AVLog.d("AVGameBusinessCtrl", ((StringBuilder)localObject).toString());
+    localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof AVGameAppInterface)) {
+      localObject = ((AVGameAppInterface)localObject).getCurrentAccountUin();
+    } else {
+      localObject = "";
+    }
+    if (AVGameUtil.a((String)localObject) == 0L)
     {
-      if (AVGameUtils.a((String)localObject) == 0L)
-      {
-        AVLog.a("AVGameBusinessCtrl", "enterRoom failed. selfUin[" + (String)localObject + "] is illegal.");
-        return -1;
-      }
-      int i = AVGameUtils.a(paramString);
-      if (i == 0)
-      {
-        AVLog.a("AVGameBusinessCtrl", "enterRoom failed. invalid args. [" + paramString + "]");
-        return -1;
-      }
-      paramString = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-      if (paramString != null)
-      {
-        AVLog.a("AVGameBusinessCtrl", "enterRoom failed. a call already exist. relation id(or peer uin) = " + paramString.jdField_a_of_type_Long + ", sessionId = " + paramString.jdField_a_of_type_JavaLangString);
-        return -1;
-      }
-      paramString = AVGameSession.a(11, i);
-      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a(paramString);
-      if (localAVGameSession != null)
-      {
-        AVLog.a("AVGameBusinessCtrl", "enterRoom failed. a call already exist. relation id = " + localAVGameSession.jdField_a_of_type_Long + ", sessionId = " + localAVGameSession.jdField_a_of_type_JavaLangString);
-        return -1;
-      }
-      paramString = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a(1, paramString, true);
-      if (paramString == null)
-      {
-        AVLog.a("AVGameBusinessCtrl", "enterRoom failed. create session fail");
-        return -1;
-      }
-      paramString.jdField_b_of_type_Int = 11;
-      paramString.jdField_a_of_type_Long = i;
-      paramString.jdField_b_of_type_Boolean = false;
-      paramString.c = true;
-      paramString.a(1);
-      paramString.jdField_b_of_type_Long = AVGameUtils.a((String)localObject);
-      localObject = new QavDef.MultiParams();
-      ((QavDef.MultiParams)localObject).jdField_a_of_type_Int = 11;
-      ((QavDef.MultiParams)localObject).jdField_b_of_type_Int = 14;
-      ((QavDef.MultiParams)localObject).c = 1;
-      ((QavDef.MultiParams)localObject).d = i;
-      ((QavDef.MultiParams)localObject).jdField_a_of_type_JavaLangString = "";
-      ((QavDef.MultiParams)localObject).jdField_a_of_type_Long = paramString.jdField_b_of_type_Long;
-      ((QavDef.MultiParams)localObject).e = paramInt2;
-      ((QavDef.MultiParams)localObject).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      ((QavDef.MultiParams)localObject).f = paramInt1;
-      paramInt1 = this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a((QavDef.MultiParams)localObject);
-      if (paramInt1 == 0)
-      {
-        this.jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl$IOnEnterRoom = paramIOnEnterRoom;
-        return paramInt1;
-      }
-      AVLog.a("AVGameBusinessCtrl", "enterRoom failed. retCode = " + paramInt1);
-      this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.b(this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a().jdField_a_of_type_JavaLangString);
+      paramString = new StringBuilder();
+      paramString.append("enterRoom failed. selfUin[");
+      paramString.append((String)localObject);
+      paramString.append("] is illegal.");
+      AVLog.a("AVGameBusinessCtrl", paramString.toString());
+      return -1;
+    }
+    int i = AVGameUtil.a(paramString);
+    if (i == 0)
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("enterRoom failed. invalid args. [");
+      paramArrayOfByte.append(paramString);
+      paramArrayOfByte.append("]");
+      AVLog.a("AVGameBusinessCtrl", paramArrayOfByte.toString());
+      return -1;
+    }
+    paramString = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+    if (paramString != null)
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("enterRoom failed. a call already exist. relation id(or peer uin) = ");
+      paramArrayOfByte.append(paramString.jdField_a_of_type_Long);
+      paramArrayOfByte.append(", sessionId = ");
+      paramArrayOfByte.append(paramString.jdField_a_of_type_JavaLangString);
+      AVLog.a("AVGameBusinessCtrl", paramArrayOfByte.toString());
+      return -1;
+    }
+    long l = i;
+    String str = AVGameSession.a(11, l);
+    paramString = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a(str);
+    if (paramString != null)
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("enterRoom failed. a call already exist. relation id = ");
+      paramArrayOfByte.append(paramString.jdField_a_of_type_Long);
+      paramArrayOfByte.append(", sessionId = ");
+      paramArrayOfByte.append(paramString.jdField_a_of_type_JavaLangString);
+      AVLog.a("AVGameBusinessCtrl", paramArrayOfByte.toString());
+      return -1;
+    }
+    paramString = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a(1, str, true);
+    if (paramString == null)
+    {
+      AVLog.a("AVGameBusinessCtrl", "enterRoom failed. create session fail");
+      return -1;
+    }
+    paramString.jdField_b_of_type_Int = 11;
+    paramString.jdField_a_of_type_Long = l;
+    paramString.jdField_b_of_type_Boolean = false;
+    paramString.c = true;
+    paramString.a(1);
+    paramString.jdField_b_of_type_Long = AVGameUtil.a((String)localObject);
+    localObject = new QavDef.MultiParams();
+    ((QavDef.MultiParams)localObject).jdField_a_of_type_Int = 11;
+    ((QavDef.MultiParams)localObject).jdField_b_of_type_Int = 14;
+    ((QavDef.MultiParams)localObject).c = 1;
+    ((QavDef.MultiParams)localObject).d = i;
+    ((QavDef.MultiParams)localObject).jdField_a_of_type_JavaLangString = "";
+    ((QavDef.MultiParams)localObject).jdField_a_of_type_Long = paramString.jdField_b_of_type_Long;
+    ((QavDef.MultiParams)localObject).e = paramInt2;
+    ((QavDef.MultiParams)localObject).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    ((QavDef.MultiParams)localObject).f = paramInt1;
+    paramInt1 = this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a((QavDef.MultiParams)localObject);
+    if (paramInt1 == 0)
+    {
+      this.jdField_a_of_type_ComTencentAvgameQavIAVGameBusinessCtrl$IOnEnterRoom = paramIOnEnterRoom;
       return paramInt1;
     }
+    paramString = new StringBuilder();
+    paramString.append("enterRoom failed. retCode = ");
+    paramString.append(paramInt1);
+    AVLog.a("AVGameBusinessCtrl", paramString.toString());
+    paramString = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager;
+    paramString.b(paramString.a().jdField_a_of_type_JavaLangString);
+    return paramInt1;
   }
   
   public AVGameCameraAssistant a()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant == null) {}
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant == null) {
-        this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant = new AVGameCameraAssistant(this, (AVGameAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get());
+    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant == null) {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant == null) {
+          this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant = new AVGameCameraAssistant(this, (AVGameAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get());
+        }
       }
-      if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant == null) {
-        QLog.i("AVGameBusinessCtrl", 1, "getCameraAssistant, assistant is null.");
-      }
-      return this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant;
+      finally {}
     }
-    finally {}
+    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant == null) {
+      QLog.i("AVGameBusinessCtrl", 1, "getCameraAssistant, assistant is null.");
+    }
+    return this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant;
   }
   
-  public AVGameMediaPlayerCtrl a()
+  public IAVGameMediaPlayerCtrl a()
   {
-    return this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl;
+    return this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl;
   }
   
   public AVGameSession a()
   {
-    if ((!b()) || (this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager == null)) {
-      return null;
+    if (b())
+    {
+      AVGameSessionManager localAVGameSessionManager = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager;
+      if (localAVGameSessionManager != null) {
+        return localAVGameSessionManager.a();
+      }
     }
-    return this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+    return null;
   }
   
   public String a()
   {
-    if ((!b()) || (!a())) {
-      return null;
+    if ((b()) && (a())) {
+      return this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a();
     }
-    return this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a();
+    return null;
   }
   
   public void a(int paramInt)
   {
-    boolean bool = true;
-    if ((!b()) || (!a())) {
-      return;
-    }
-    AVLog.c("AVGameBusinessCtrl", "setAudioRoute route = " + paramInt);
-    this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.b(paramInt);
-    AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-    if (localAVGameSession != null) {
-      if (paramInt != 1) {
-        break label78;
-      }
-    }
-    for (;;)
+    if (b())
     {
-      localAVGameSession.d = bool;
+      if (!a()) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setAudioRoute route = ");
+      ((StringBuilder)localObject).append(paramInt);
+      AVLog.c("AVGameBusinessCtrl", ((StringBuilder)localObject).toString());
+      this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.b(paramInt);
+      localObject = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+      if (localObject != null)
+      {
+        boolean bool = true;
+        if (paramInt != 1) {
+          bool = false;
+        }
+        ((AVGameSession)localObject).d = bool;
+      }
       c(paramInt, 0);
-      return;
-      label78:
-      bool = false;
     }
   }
   
@@ -504,8 +553,13 @@ public class AVGameBusinessCtrl
           return;
         }
       }
+      this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramAVGameUIEventCallback));
+      return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramAVGameUIEventCallback));
+    for (;;)
+    {
+      throw paramAVGameUIEventCallback;
+    }
   }
   
   public void a(boolean paramBoolean)
@@ -520,6 +574,11 @@ public class AVGameBusinessCtrl
           ((AVGameUIEventCallback)localWeakReference.get()).b(paramBoolean, -1L, 2);
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -545,39 +604,56 @@ public class AVGameBusinessCtrl
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
       this.jdField_a_of_type_JavaUtilArrayList.clear();
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant != null)
+        {
+          this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant.c();
+          this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant = null;
+        }
+        return;
+      }
+      finally {}
     }
   }
   
   public void b(int paramInt)
   {
     AVGameSession localAVGameSession = a();
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameBusinessCtrl", 2, "goOnStage, from[" + paramInt + "], session[" + localAVGameSession + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("goOnStage, from[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], session[");
+      ((StringBuilder)localObject).append(localAVGameSession);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AVGameBusinessCtrl", 2, ((StringBuilder)localObject).toString());
     }
     if (localAVGameSession == null) {
       return;
     }
-    if (paramInt == 2) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (paramInt == 2) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localAVGameSession.g = bool;
+    if (SecurityPolicyChecker.a().b()) {
+      localAVGameSession.g = true;
+    }
+    Object localObject = a();
+    if (localObject != null) {
+      ((AVGameCameraAssistant)localObject).a("goOnStage");
+    }
+    localObject = QavSDK.a().a();
+    if ((localObject instanceof MultiOperatorImplForGame))
     {
-      localAVGameSession.g = bool;
-      if (SecurityPolicyChecker.a().b()) {
-        localAVGameSession.g = true;
-      }
-      Object localObject = a();
-      if (localObject != null) {
-        ((AVGameCameraAssistant)localObject).a("goOnStage");
-      }
-      localObject = QavSDK.a().a();
-      if (!(localObject instanceof MultiOperatorImplForGame)) {
-        break;
-      }
       localAVGameSession.b(1);
-      if (((MultiOperatorImplForGame)localObject).a()) {
-        break;
+      if (!((MultiOperatorImplForGame)localObject).a()) {
+        this.jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver.a(false, localAVGameSession.jdField_a_of_type_Long, localAVGameSession.jdField_b_of_type_Int);
       }
-      this.jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver.a(false, localAVGameSession.jdField_a_of_type_Long, localAVGameSession.jdField_b_of_type_Int);
-      return;
     }
   }
   
@@ -598,17 +674,23 @@ public class AVGameBusinessCtrl
           return;
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramAVGameUIEventCallback;
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null))
+    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
       long l = Long.valueOf(((AVGameAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get()).getCurrentAccountUin()).longValue();
-      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-      if (localAVGameSession != null) {
-        a(paramBoolean, l, localAVGameSession.jdField_a_of_type_Long, localAVGameSession.jdField_b_of_type_Int, 0L, 0);
+      localObject = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+      if (localObject != null) {
+        a(paramBoolean, l, ((AVGameSession)localObject).jdField_a_of_type_Long, ((AVGameSession)localObject).jdField_b_of_type_Int, 0L, 0);
       }
     }
   }
@@ -616,39 +698,40 @@ public class AVGameBusinessCtrl
   public void c()
   {
     AVGameSession localAVGameSession = a();
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameBusinessCtrl", 2, "goOffStage, session[" + localAVGameSession + "]");
-    }
-    if (localAVGameSession == null) {}
-    IMultiOperator localIMultiOperator;
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        localAVGameSession.g = false;
-        localIMultiOperator = QavSDK.a().a();
-      } while (!(localIMultiOperator instanceof MultiOperatorImplForGame));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("goOffStage, session[");
+      ((StringBuilder)localObject).append(localAVGameSession);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AVGameBusinessCtrl", 2, ((StringBuilder)localObject).toString());
+    }
+    if (localAVGameSession == null) {
+      return;
+    }
+    localAVGameSession.g = false;
+    Object localObject = QavSDK.a().a();
+    if ((localObject instanceof MultiOperatorImplForGame))
+    {
       localAVGameSession.b(4);
-    } while (((MultiOperatorImplForGame)localIMultiOperator).b());
-    this.jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver.b(false, localAVGameSession.jdField_a_of_type_Long, localAVGameSession.jdField_b_of_type_Int);
+      if (!((MultiOperatorImplForGame)localObject).b()) {
+        this.jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver.b(false, localAVGameSession.jdField_a_of_type_Long, localAVGameSession.jdField_b_of_type_Int);
+      }
+    }
   }
   
   public void c(boolean paramBoolean)
   {
-    if ((!b()) || (!a())) {}
-    AVGameSession localAVGameSession;
-    do
+    if (b())
     {
-      return;
+      if (!a()) {
+        return;
+      }
       this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a(paramBoolean);
-      localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-    } while (localAVGameSession == null);
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localAVGameSession.e = paramBoolean;
-      return;
+      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+      if (localAVGameSession != null) {
+        localAVGameSession.e = (paramBoolean ^ true);
+      }
     }
   }
   
@@ -661,48 +744,50 @@ public class AVGameBusinessCtrl
     if (localObject1 != null) {
       AVGameUtilService.b(((AVGameAppInterface)localObject1).getApp());
     }
-    StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager != null)
-    {
-      localObject1 = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-      localStringBuilder = new StringBuilder().append("exitRoom, session[");
-      if (localObject1 != null) {
-        break label190;
-      }
+    localObject1 = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager;
+    if (localObject1 != null) {
+      localObject1 = ((AVGameSessionManager)localObject1).a();
+    } else {
+      localObject1 = null;
     }
-    label190:
-    for (Object localObject2 = null;; localObject2 = ((AVGameSession)localObject1).jdField_a_of_type_JavaLangString)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exitRoom, session[");
+    if (localObject1 == null) {
+      localObject2 = null;
+    } else {
+      localObject2 = ((AVGameSession)localObject1).jdField_a_of_type_JavaLangString;
+    }
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append("] tid=");
+    localStringBuilder.append(Thread.currentThread().getId());
+    AVLog.a("AVGameBusinessCtrl", localStringBuilder.toString());
+    Object localObject2 = this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl;
+    if (localObject2 != null)
     {
-      AVLog.a("AVGameBusinessCtrl", (String)localObject2 + "] tid=" + Thread.currentThread().getId());
-      if (this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl != null)
-      {
-        this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl.h();
-        this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl = null;
-      }
-      CallingStateMonitor.a().b();
-      if (QavSDK.a().a() != null) {
-        QavSDK.a().a().a(-1L, true, false);
-      }
-      AvGameMusicPlayer.b();
-      if (Build.VERSION.SDK_INT >= 16) {
-        AudioProcess.a();
-      }
-      localObject2 = a();
-      if (localObject2 != null) {
-        ((AVGameCameraAssistant)localObject2).b((AVGameSession)localObject1);
-      }
-      if (localObject1 != null) {
-        break label198;
-      }
+      ((IAVGameMediaPlayerCtrl)localObject2).h();
+      this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl = null;
+    }
+    CallingStateMonitor.a().b();
+    if (QavSDK.a().a() != null) {
+      QavSDK.a().a().a(-1L, true, false);
+    }
+    AvGameMusicPlayer.b();
+    if (Build.VERSION.SDK_INT >= 16) {
+      AudioProcess.a();
+    }
+    localObject2 = a();
+    if (localObject2 != null) {
+      ((AVGameCameraAssistant)localObject2).b((AVGameSession)localObject1);
+    }
+    if (localObject1 == null)
+    {
       AVLog.a("AVGameBusinessCtrl", "exitRoom failed. session == null.");
       return false;
-      localObject1 = null;
-      break;
     }
-    label198:
     ((AVGameSession)localObject1).a(3);
-    if (this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager != null) {
-      this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.b(this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a().jdField_a_of_type_JavaLangString);
+    localObject2 = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager;
+    if (localObject2 != null) {
+      ((AVGameSessionManager)localObject2).b(((AVGameSessionManager)localObject2).a().jdField_a_of_type_JavaLangString);
     }
     AVLog.d("AVGameBusinessCtrl", "exitRoom mSessionManager has clear");
     this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.e();
@@ -714,19 +799,16 @@ public class AVGameBusinessCtrl
   
   public void d(boolean paramBoolean)
   {
-    if ((!b()) || (!a())) {}
-    AVGameSession localAVGameSession;
-    do
+    if (b())
     {
-      return;
+      if (!a()) {
+        return;
+      }
       this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.b(paramBoolean);
-      localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-    } while (localAVGameSession == null);
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localAVGameSession.f = paramBoolean;
-      return;
+      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+      if (localAVGameSession != null) {
+        localAVGameSession.f = (paramBoolean ^ true);
+      }
     }
   }
   
@@ -742,7 +824,7 @@ public class AVGameBusinessCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.AVGameBusinessCtrl
  * JD-Core Version:    0.7.0.1
  */

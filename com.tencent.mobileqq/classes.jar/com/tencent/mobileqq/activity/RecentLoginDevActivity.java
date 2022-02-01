@@ -49,98 +49,77 @@ public class RecentLoginDevActivity
   {
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      str = getResources().getString(2131694414);
+      str = getResources().getString(2131694379);
     }
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-    paramString1 = getString(2131694407, new Object[] { str });
+    paramString1 = getString(2131694372, new Object[] { str });
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setMainTitle(paramString1);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(getResources().getString(2131694406), 3);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690800);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(getResources().getString(2131694371), 3);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690728);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(new RecentLoginDevActivity.3(this, paramString2, paramArrayList, paramInt));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
   }
   
   private void a(List<SvcDevLoginInfo> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
-    int j;
-    int i;
-    SvcDevLoginInfo localSvcDevLoginInfo;
-    for (;;)
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      return;
       this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      j = paramList.size();
-      i = 0;
+      int j = paramList.size();
+      int i = 0;
       while (i < j)
       {
-        localSvcDevLoginInfo = (SvcDevLoginInfo)paramList.get(i);
-        if (localSvcDevLoginInfo != null) {
-          break label76;
+        SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramList.get(i);
+        if (localSvcDevLoginInfo != null)
+        {
+          View localView = getLayoutInflater().inflate(2131559321, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+          RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131369090);
+          ((ImageView)localView.findViewById(2131368486)).setVisibility(0);
+          if (j == 1) {
+            localRelativeLayout.setBackgroundResource(2130839433);
+          } else if (i == 0) {
+            localRelativeLayout.setBackgroundResource(2130839449);
+          } else if (i == j - 1) {
+            localRelativeLayout.setBackgroundResource(2130839440);
+          } else {
+            localRelativeLayout.setBackgroundResource(2130839443);
+          }
+          ((TextView)localView.findViewById(2131369677)).setVisibility(8);
+          Object localObject = (TextView)localView.findViewById(2131371697);
+          TextView localTextView = (TextView)localView.findViewById(2131368773);
+          if (TextUtils.isEmpty(localSvcDevLoginInfo.strDeviceName)) {
+            ((TextView)localObject).setText(2131694379);
+          } else {
+            ((TextView)localObject).setText(localSvcDevLoginInfo.strDeviceName);
+          }
+          localObject = new StringBuffer();
+          if (localSvcDevLoginInfo.iLoginTime > 0L) {
+            ((StringBuffer)localObject).append(TimeFormatterUtils.a(localSvcDevLoginInfo.iLoginTime * 1000L, "MM-dd  HH:mm"));
+          }
+          if (!TextUtils.isEmpty(localSvcDevLoginInfo.strLoginLocation))
+          {
+            ((StringBuffer)localObject).append(" ");
+            ((StringBuffer)localObject).append(localSvcDevLoginInfo.strLoginLocation);
+          }
+          if (!TextUtils.isEmpty(localSvcDevLoginInfo.strDeviceTypeInfo))
+          {
+            ((StringBuffer)localObject).append(" ");
+            ((StringBuffer)localObject).append(localSvcDevLoginInfo.strDeviceTypeInfo);
+          }
+          if (((StringBuffer)localObject).length() > 0) {
+            localTextView.setText(((StringBuffer)localObject).toString());
+          }
+          localRelativeLayout.setClickable(true);
+          localRelativeLayout.setTag(localSvcDevLoginInfo);
+          localRelativeLayout.setOnClickListener(new RecentLoginDevActivity.2(this, localRelativeLayout, i));
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
         }
         i += 1;
       }
+      return;
     }
-    label76:
-    View localView = getLayoutInflater().inflate(2131559447, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131369361);
-    ((ImageView)localView.findViewById(2131368754)).setVisibility(0);
-    label130:
-    Object localObject;
-    TextView localTextView;
-    if (j == 1)
-    {
-      localRelativeLayout.setBackgroundResource(2130839575);
-      ((TextView)localView.findViewById(2131369992)).setVisibility(8);
-      localObject = (TextView)localView.findViewById(2131372115);
-      localTextView = (TextView)localView.findViewById(2131369051);
-      if (!TextUtils.isEmpty(localSvcDevLoginInfo.strDeviceName)) {
-        break label386;
-      }
-      ((TextView)localObject).setText(2131694414);
-    }
-    for (;;)
-    {
-      localObject = new StringBuffer();
-      if (localSvcDevLoginInfo.iLoginTime > 0L) {
-        ((StringBuffer)localObject).append(TimeFormatterUtils.a(localSvcDevLoginInfo.iLoginTime * 1000L, "MM-dd  HH:mm"));
-      }
-      if (!TextUtils.isEmpty(localSvcDevLoginInfo.strLoginLocation))
-      {
-        ((StringBuffer)localObject).append(" ");
-        ((StringBuffer)localObject).append(localSvcDevLoginInfo.strLoginLocation);
-      }
-      if (!TextUtils.isEmpty(localSvcDevLoginInfo.strDeviceTypeInfo))
-      {
-        ((StringBuffer)localObject).append(" ");
-        ((StringBuffer)localObject).append(localSvcDevLoginInfo.strDeviceTypeInfo);
-      }
-      if (((StringBuffer)localObject).length() > 0) {
-        localTextView.setText(((StringBuffer)localObject).toString());
-      }
-      localRelativeLayout.setClickable(true);
-      localRelativeLayout.setTag(localSvcDevLoginInfo);
-      localRelativeLayout.setOnClickListener(new RecentLoginDevActivity.2(this, localRelativeLayout, i));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
-      break;
-      if (i == 0)
-      {
-        localRelativeLayout.setBackgroundResource(2130839591);
-        break label130;
-      }
-      if (i == j - 1)
-      {
-        localRelativeLayout.setBackgroundResource(2130839582);
-        break label130;
-      }
-      localRelativeLayout.setBackgroundResource(2130839585);
-      break label130;
-      label386:
-      ((TextView)localObject).setText(localSvcDevLoginInfo.strDeviceName);
-    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
   }
   
   private void b()
@@ -164,44 +143,47 @@ public class RecentLoginDevActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131561190);
-    setTitle(2131694413);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368442));
+    super.setContentView(2131561053);
+    setTitle(2131694378);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368192));
     try
     {
       this.jdField_a_of_type_JavaLangString = getPackageManager().getPackageInfo(getPackageName(), 0).packageName;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "packName = " + this.jdField_a_of_type_JavaLangString);
-      }
-      addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onCreate begin to getRecentLoginDevList");
-      }
-      bool = EquipmentLockImpl.a().b(this.app, this.jdField_a_of_type_JavaLangString, 0L);
-      if (bool)
-      {
-        a();
-        return;
-      }
     }
     catch (PackageManager.NameNotFoundException paramBundle)
     {
-      boolean bool;
-      do
-      {
-        for (;;)
-        {
-          paramBundle.printStackTrace();
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onCreate getRecentLoginDevList failed ret=" + bool);
+      paramBundle.printStackTrace();
+    }
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("packName = ");
+      paramBundle.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, paramBundle.toString());
+    }
+    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onCreate begin to getRecentLoginDevList");
+    }
+    boolean bool = EquipmentLockImpl.a().b(this.app, this.jdField_a_of_type_JavaLangString, 0L);
+    if (bool)
+    {
+      a();
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onCreate getRecentLoginDevList failed ret=");
+      paramBundle.append(bool);
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, paramBundle.toString());
     }
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     b();
@@ -210,7 +192,7 @@ public class RecentLoginDevActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RecentLoginDevActivity
  * JD-Core Version:    0.7.0.1
  */

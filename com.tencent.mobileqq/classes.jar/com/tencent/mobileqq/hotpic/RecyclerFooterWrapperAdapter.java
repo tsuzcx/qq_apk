@@ -41,26 +41,24 @@ public class RecyclerFooterWrapperAdapter
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface != null) && (paramInt == getItemCount() - 1)) {
       this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface.a(paramViewHolder, paramInt);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
+    } else {
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt);
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface != null) && (2147483647 == paramInt)) {
-      return this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface.a(paramViewGroup, paramInt);
+    HotPicFooterInterface localHotPicFooterInterface = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface;
+    if ((localHotPicFooterInterface != null) && (2147483647 == paramInt)) {
+      return localHotPicFooterInterface.a(paramViewGroup, paramInt);
     }
     return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.RecyclerFooterWrapperAdapter
  * JD-Core Version:    0.7.0.1
  */

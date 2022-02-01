@@ -25,8 +25,8 @@ import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -129,11 +129,11 @@ public class LocalVideoPushSegment
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mRequestWidth = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 74.0F);
     localURLDrawableOptions.mRequestHeight = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 100.0F);
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
+    localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
     paramString.setTag(URLDrawableDecodeHandler.b(UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 74.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 100.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 3.0F)));
-    paramString.setDecodeHandler(URLDrawableDecodeHandler.j);
+    paramString.setDecodeHandler(URLDrawableDecodeHandler.i);
     paramImageView.setImageDrawable(paramString);
   }
   
@@ -155,10 +155,13 @@ public class LocalVideoPushSegment
   
   private void a(LocalMediaInfo paramLocalMediaInfo, LocalVideoPushSegment.OnLoadThumbBitmapListener paramOnLoadThumbBitmapListener)
   {
-    if ((paramLocalMediaInfo == null) || (paramOnLoadThumbBitmapListener == null)) {
-      return;
+    if (paramLocalMediaInfo != null)
+    {
+      if (paramOnLoadThumbBitmapListener == null) {
+        return;
+      }
+      ThreadManager.getSubThreadHandler().post(new LocalVideoPushSegment.5(this, paramLocalMediaInfo, paramOnLoadThumbBitmapListener));
     }
-    ThreadManager.getSubThreadHandler().post(new LocalVideoPushSegment.5(this, paramLocalMediaInfo, paramOnLoadThumbBitmapListener));
   }
   
   private void f()
@@ -222,6 +225,12 @@ public class LocalVideoPushSegment
     a(null, 4);
   }
   
+  protected void M_()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    f();
+  }
+  
   public int a()
   {
     if (this.e == 4) {
@@ -235,64 +244,62 @@ public class LocalVideoPushSegment
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder == null) {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = paramBaseViewHolder;
     }
-    paramBaseViewHolder = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131375013);
-    paramViewGroup = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131375012);
-    Button localButton = (Button)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131375014);
-    ThumbSlideShowView localThumbSlideShowView = (ThumbSlideShowView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131375010);
-    ImageView localImageView1 = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131375009);
-    ImageView localImageView2 = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131375011);
-    if (this.e == 1)
+    paramBaseViewHolder = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131374544);
+    paramViewGroup = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131374543);
+    Button localButton = (Button)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131374545);
+    ThumbSlideShowView localThumbSlideShowView = (ThumbSlideShowView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131374541);
+    ImageView localImageView1 = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131374540);
+    ImageView localImageView2 = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131374542);
+    paramInt = this.e;
+    if (paramInt == 1)
     {
-      paramBaseViewHolder.setText(HardCodeUtil.a(2131706322));
+      paramBaseViewHolder.setText(HardCodeUtil.a(2131706373));
       paramViewGroup.setText("用音乐MV智能记录你的回忆");
-      localButton.setText(HardCodeUtil.a(2131706330));
+      localButton.setText(HardCodeUtil.a(2131706381));
       localThumbSlideShowView.setVisibility(8);
       localThumbSlideShowView.a();
       localImageView2.setVisibility(0);
       a(localImageView2, "https://pub.idqqimg.com/pc/misc/files/20181016/d91be2ee357b436ab11546ac5cff21bc.jpg");
     }
-    for (;;)
+    else if (paramInt == 2)
     {
-      localButton.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder);
-      localImageView1.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder);
-      localThumbSlideShowView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder);
-      localImageView2.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a == null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(new LocalVideoPushSegment.4(this));
-      }
-      if (this.e != 4) {
-        StoryReportor.a("home_page", "exp_smartalbum", 0, 0, new String[] { a(this.e) });
-      }
-      return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a();
-      if (this.e == 2)
-      {
-        paramBaseViewHolder.setText(String.format(HardCodeUtil.a(2131706320), new Object[] { Integer.valueOf(this.f) }));
-        paramViewGroup.setText(HardCodeUtil.a(2131706319));
-        localButton.setText(HardCodeUtil.a(2131706323));
-        localThumbSlideShowView.setVisibility(0);
-        localThumbSlideShowView.a(this.jdField_a_of_type_JavaUtilArrayList);
-        localImageView2.setVisibility(8);
-      }
-      else if (this.e == 3)
-      {
-        paramBaseViewHolder.setText(String.format(HardCodeUtil.a(2131706329), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
-        paramViewGroup.setText(HardCodeUtil.a(2131706328));
-        localButton.setText(HardCodeUtil.a(2131706327));
-        localThumbSlideShowView.setVisibility(8);
-        localThumbSlideShowView.a();
-        if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          localImageView2.setVisibility(0);
-          a((LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0), new LocalVideoPushSegment.3(this, localImageView2));
-        }
-      }
-      else if (this.e != 4) {}
+      paramBaseViewHolder.setText(String.format(HardCodeUtil.a(2131706371), new Object[] { Integer.valueOf(this.f) }));
+      paramViewGroup.setText(HardCodeUtil.a(2131706370));
+      localButton.setText(HardCodeUtil.a(2131706374));
+      localThumbSlideShowView.setVisibility(0);
+      localThumbSlideShowView.a(this.jdField_a_of_type_JavaUtilArrayList);
+      localImageView2.setVisibility(8);
     }
+    else if (paramInt == 3)
+    {
+      paramBaseViewHolder.setText(String.format(HardCodeUtil.a(2131706380), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
+      paramViewGroup.setText(HardCodeUtil.a(2131706379));
+      localButton.setText(HardCodeUtil.a(2131706378));
+      localThumbSlideShowView.setVisibility(8);
+      localThumbSlideShowView.a();
+      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      {
+        localImageView2.setVisibility(0);
+        a((LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0), new LocalVideoPushSegment.3(this, localImageView2));
+      }
+    }
+    localButton.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder);
+    localImageView1.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder);
+    localThumbSlideShowView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder);
+    localImageView2.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a == null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(new LocalVideoPushSegment.4(this));
+    }
+    paramInt = this.e;
+    if (paramInt != 4) {
+      StoryReportor.a("home_page", "exp_smartalbum", 0, 0, new String[] { a(paramInt) });
+    }
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561842, paramViewGroup, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561693, paramViewGroup, false));
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
   }
   
@@ -320,45 +327,40 @@ public class LocalVideoPushSegment
     {
       c(true);
       SLog.a("Q.qqstory.home.LocalVideoPushSegment", "refreshViewByData, count has changed, state = %s", Integer.valueOf(paramInt));
-    }
-    do
-    {
       return;
-      if (j == 0)
-      {
-        SLog.b("Q.qqstory.home.LocalVideoPushSegment", "refreshViewByData, count == 0");
-        return;
-      }
-      paramList = a(0);
-    } while ((paramList == null) || (!a(paramList)));
-    a(0, paramList, a());
-    SLog.b("Q.qqstory.home.LocalVideoPushSegment", "refreshViewByData, isOnScreen bindView");
+    }
+    if (j == 0)
+    {
+      SLog.b("Q.qqstory.home.LocalVideoPushSegment", "refreshViewByData, count == 0");
+      return;
+    }
+    paramList = a(0);
+    if ((paramList != null) && (a(paramList)))
+    {
+      a(0, paramList, a());
+      SLog.b("Q.qqstory.home.LocalVideoPushSegment", "refreshViewByData, isOnScreen bindView");
+    }
   }
   
-  public void c() {}
+  protected void c() {}
   
   public void d()
   {
     super.d();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
+    if (localObject != null)
     {
-      ThumbSlideShowView localThumbSlideShowView = (ThumbSlideShowView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131375010);
-      if (localThumbSlideShowView != null) {
-        localThumbSlideShowView.a();
+      localObject = (ThumbSlideShowView)((BaseViewHolder)localObject).a(2131374541);
+      if (localObject != null) {
+        ((ThumbSlideShowView)localObject).a();
       }
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = null;
     }
   }
-  
-  public void e()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    f();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment
  * JD-Core Version:    0.7.0.1
  */

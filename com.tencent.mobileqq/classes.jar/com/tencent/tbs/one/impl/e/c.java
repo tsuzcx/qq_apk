@@ -46,22 +46,20 @@ public final class c
         com.tencent.tbs.one.impl.a.f.a("do dexopt for component %s,entryClass=%s,installDir=%s", new Object[] { str, localObject, localFile });
         com.tencent.tbs.one.impl.c.a.c.a(this.h, (File)localObject, localFile.getAbsolutePath(), localFile.getAbsolutePath(), null, false, null, false);
       }
-      f.f(this.g);
-      super.a(parame);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        com.tencent.tbs.one.impl.a.f.c("exception occured in dex2oat,exception=%s", new Object[] { Log.getStackTraceString(localThrowable) });
-      }
+      com.tencent.tbs.one.impl.a.f.c("exception occured in dex2oat,exception=%s", new Object[] { Log.getStackTraceString(localThrowable) });
     }
+    f.f(this.g);
+    super.a(parame);
   }
   
-  public final void a(Exception paramException)
+  protected final void a(Exception paramException)
   {
-    a(311, "Failed to wait for component installation lock " + this.g, paramException);
+    StringBuilder localStringBuilder = new StringBuilder("Failed to wait for component installation lock ");
+    localStringBuilder.append(this.g);
+    a(311, localStringBuilder.toString(), paramException);
   }
   
   public final void b()
@@ -70,7 +68,7 @@ public final class c
     this.f.b();
   }
   
-  public final void c()
+  protected final void c()
   {
     File localFile = this.g;
     if (f.g(localFile))
@@ -82,19 +80,16 @@ public final class c
       }
       f.e(localFile);
     }
-    for (;;)
+    else if (localFile.exists())
     {
-      this.f.a(new c.1(this));
-      return;
-      if (localFile.exists()) {
-        com.tencent.tbs.one.impl.a.c.c(localFile);
-      }
+      com.tencent.tbs.one.impl.a.c.c(localFile);
     }
+    this.f.a(new c.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.c
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,19 @@ class SavedStateRegistry$1
   
   public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
-    if (paramEvent == Lifecycle.Event.ON_START) {
+    if (paramEvent == Lifecycle.Event.ON_START)
+    {
       this.this$0.mAllowingSavingState = true;
-    }
-    while (paramEvent != Lifecycle.Event.ON_STOP) {
       return;
     }
-    this.this$0.mAllowingSavingState = false;
+    if (paramEvent == Lifecycle.Event.ON_STOP) {
+      this.this$0.mAllowingSavingState = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.savedstate.SavedStateRegistry.1
  * JD-Core Version:    0.7.0.1
  */

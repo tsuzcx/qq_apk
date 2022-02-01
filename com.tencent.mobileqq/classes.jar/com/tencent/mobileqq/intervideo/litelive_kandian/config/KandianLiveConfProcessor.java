@@ -3,7 +3,7 @@ package com.tencent.mobileqq.intervideo.litelive_kandian.config;
 import android.support.annotation.NonNull;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.config.business.qvip.BaseQVipConfigProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.BaseQVipConfigProcessor;
 import com.tencent.qphone.base.util.QLog;
 
 public class KandianLiveConfProcessor
@@ -21,16 +21,20 @@ public class KandianLiveConfProcessor
     if (paramArrayOfQConfItem != null) {
       try
       {
+        Object localObject;
         if (paramArrayOfQConfItem.length > 0)
         {
           int j = paramArrayOfQConfItem.length;
           int i = 0;
           while (i < j)
           {
-            Object localObject = paramArrayOfQConfItem[i];
+            localObject = paramArrayOfQConfItem[i];
             if (localObject != null)
             {
-              QLog.e("KandianLiveConfProcessor", 1, "=======onParsed content = " + ((QConfItem)localObject).a);
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("=======onParsed content = ");
+              localStringBuilder.append(((QConfItem)localObject).a);
+              QLog.e("KandianLiveConfProcessor", 1, localStringBuilder.toString());
               localObject = KandianLiveCfgBean.a(((QConfItem)localObject).a);
               if (localObject != null) {
                 return localObject;
@@ -44,7 +48,10 @@ public class KandianLiveConfProcessor
       catch (Throwable paramArrayOfQConfItem)
       {
         paramArrayOfQConfItem.printStackTrace();
-        QLog.e("KandianLiveConfProcessor", 1, "onParsed Exception = " + paramArrayOfQConfItem.getMessage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onParsed Exception = ");
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem.getMessage());
+        QLog.e("KandianLiveConfProcessor", 1, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -73,7 +80,7 @@ public class KandianLiveConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.config.KandianLiveConfProcessor
  * JD-Core Version:    0.7.0.1
  */

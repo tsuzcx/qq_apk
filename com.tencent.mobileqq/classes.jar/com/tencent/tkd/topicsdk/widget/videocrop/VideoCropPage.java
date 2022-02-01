@@ -75,7 +75,10 @@ public final class VideoCropPage
   {
     if (TopicSDKHelperKt.a())
     {
-      TopicSDKHelperKt.a("video play error: " + paramString, true, null, 4, null);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("video play error: ");
+      localStringBuilder.append(paramString);
+      TopicSDKHelperKt.a(localStringBuilder.toString(), true, null, 4, null);
       return;
     }
     paramString = a();
@@ -84,33 +87,32 @@ public final class VideoCropPage
       paramString = paramString.getResources();
       if (paramString != null)
       {
-        paramString = paramString.getString(R.string.aA);
-        if (paramString == null) {}
+        paramString = paramString.getString(R.string.ap);
+        if (paramString != null) {
+          break label75;
+        }
       }
     }
-    for (;;)
-    {
-      TopicSDKHelperKt.a(paramString, false, null, 6, null);
-      return;
-      paramString = "视频播放错误";
-    }
+    paramString = "视频播放错误";
+    label75:
+    TopicSDKHelperKt.a(paramString, false, null, 6, null);
   }
   
   private final void b(View paramView)
   {
-    View localView = paramView.findViewById(R.id.an);
+    View localView = paramView.findViewById(R.id.Y);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.iv_close)");
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView);
-    localView = paramView.findViewById(R.id.bD);
+    localView = paramView.findViewById(R.id.aZ);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.tv_finish)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
-    localView = paramView.findViewById(R.id.cb);
+    localView = paramView.findViewById(R.id.bv);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.video_view)");
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFixedSizeVideoView = ((FixedSizeVideoView)localView);
-    localView = paramView.findViewById(R.id.ca);
+    localView = paramView.findViewById(R.id.bu);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.video_select_bar)");
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoFrameSelectBar = ((VideoFrameSelectBar)localView);
-    paramView = paramView.findViewById(R.id.bB);
+    paramView = paramView.findViewById(R.id.aX);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "view.findViewById(R.id.tv_duration)");
     this.b = ((TextView)paramView);
   }
@@ -121,34 +123,33 @@ public final class VideoCropPage
     if (localObject != null)
     {
       localObject = ((Bundle)localObject).getString("video_path");
-      if (localObject != null) {
-        if (((CharSequence)localObject).length() != 0) {
-          break label109;
-        }
-      }
+      if (localObject != null) {}
     }
-    label109:
-    for (int i = 1;; i = 0)
+    else
     {
-      if (i != 0)
-      {
-        TLog.d("VideoCropPage", "videoPath is empty.");
-        a("videoPath is empty.");
-        Activity localActivity = a();
-        if (localActivity != null) {
-          localActivity.finish();
-        }
-      }
-      this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropPresenter = new VideoCropPresenter((String)localObject);
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropPresenter;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("presenter");
-      }
-      ((VideoCropPresenter)localObject).a((VideoCropContract.IView)this);
-      return;
       localObject = "";
-      break;
     }
+    int i;
+    if (((CharSequence)localObject).length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      TLog.d("VideoCropPage", "videoPath is empty.");
+      a("videoPath is empty.");
+      Activity localActivity = a();
+      if (localActivity != null) {
+        localActivity.finish();
+      }
+    }
+    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropPresenter = new VideoCropPresenter((String)localObject);
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropPresenter;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("presenter");
+    }
+    ((VideoCropPresenter)localObject).a((VideoCropContract.IView)this);
   }
   
   private final void g()
@@ -195,7 +196,7 @@ public final class VideoCropPage
       if (localCommonProgressDialog == null) {
         Intrinsics.throwUninitializedPropertyAccessException("videoCropDialog");
       }
-      localObject = ((Activity)localObject).getResources().getString(R.string.aB);
+      localObject = ((Activity)localObject).getResources().getString(R.string.aq);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "resources.getString(R.st…ideo_processing_and_wait)");
       localCommonProgressDialog.a((String)localObject);
       localCommonProgressDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
@@ -246,7 +247,12 @@ public final class VideoCropPage
       Intrinsics.throwUninitializedPropertyAccessException("videoBar");
     }
     int j = (int)((VideoFrameSelectBar)localObject).b();
-    TLog.b("VideoCropPage", "mStartTime=" + i + ", mEndTime=" + j);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mStartTime=");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(", mEndTime=");
+    ((StringBuilder)localObject).append(j);
+    TLog.b("VideoCropPage", ((StringBuilder)localObject).toString());
     localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFixedSizeVideoView;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("videoView");
@@ -264,60 +270,46 @@ public final class VideoCropPage
   {
     Object localObject = a();
     int i;
-    int j;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = ((Bundle)localObject).getInt("min_video_length");
-      localObject = a();
-      if (localObject == null) {
-        break label136;
-      }
-      j = ((Bundle)localObject).getInt("max_video_length");
-      label34:
-      if (!new IntRange(0, this.jdField_a_of_type_Int).contains(i)) {
-        break label141;
-      }
-      label53:
-      if (!new IntRange(i, this.jdField_a_of_type_Int).contains(j)) {
-        break label146;
-      }
+    } else {
+      i = 0;
     }
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropPresenter;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("presenter");
-      }
-      ((VideoCropPresenter)localObject).a(i);
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropPresenter;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("presenter");
-      }
-      ((VideoCropPresenter)localObject).b(j);
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoFrameSelectBar;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("videoBar");
-      }
-      ((VideoFrameSelectBar)localObject).setVideoLimitRange(i, j);
-      return;
-      i = 0;
-      break;
-      label136:
+    localObject = a();
+    int j;
+    if (localObject != null) {
+      j = ((Bundle)localObject).getInt("max_video_length");
+    } else {
       j = 0;
-      break label34;
-      label141:
+    }
+    if (!new IntRange(0, this.jdField_a_of_type_Int).contains(i)) {
       i = 0;
-      break label53;
-      label146:
+    }
+    if (!new IntRange(i, this.jdField_a_of_type_Int).contains(j)) {
       j = this.jdField_a_of_type_Int;
     }
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropPresenter;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("presenter");
+    }
+    ((VideoCropPresenter)localObject).a(i);
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropPresenter;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("presenter");
+    }
+    ((VideoCropPresenter)localObject).b(j);
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoFrameSelectBar;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("videoBar");
+    }
+    ((VideoFrameSelectBar)localObject).setVideoLimitRange(i, j);
   }
   
   @Nullable
   public View a(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
-    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.m, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.l, paramViewGroup, false);
     f();
     Intrinsics.checkExpressionValueIsNotNull(paramLayoutInflater, "view");
     a(paramLayoutInflater);
@@ -345,7 +337,7 @@ public final class VideoCropPage
     if (localObject1 != null)
     {
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "activity ?: return");
-      String str = ((Activity)localObject1).getString(R.string.av);
+      String str = ((Activity)localObject1).getString(R.string.al);
       if (!TextUtils.isEmpty((CharSequence)str))
       {
         localObject1 = this.b;
@@ -355,7 +347,9 @@ public final class VideoCropPage
         Object localObject2 = StringCompanionObject.INSTANCE;
         Intrinsics.checkExpressionValueIsNotNull(str, "textFormatter");
         localObject2 = new Object[1];
-        localObject2[0] = Integer.valueOf((int)(paramFloat / 1000 + 0.5D));
+        double d = paramFloat / 1000;
+        Double.isNaN(d);
+        localObject2[0] = Integer.valueOf((int)(d + 0.5D));
         str = String.format(str, Arrays.copyOf((Object[])localObject2, localObject2.length));
         Intrinsics.checkExpressionValueIsNotNull(str, "java.lang.String.format(format, *args)");
         ((TextView)localObject1).setText((CharSequence)str);
@@ -376,55 +370,58 @@ public final class VideoCropPage
       Intrinsics.throwUninitializedPropertyAccessException("presenter");
     }
     int j = ((VideoCropPresenter)localObject1).b();
-    if ((paramInt != i) && (paramInt != j)) {}
-    Object localObject2;
-    boolean bool2;
-    label250:
-    do
-    {
+    if ((paramInt != i) && (paramInt != j)) {
       return;
-      localObject1 = a();
+    }
+    localObject1 = a();
+    if (localObject1 != null)
+    {
+      localObject1 = ((Activity)localObject1).getResources();
       if (localObject1 != null)
       {
-        localObject1 = ((Activity)localObject1).getResources();
-        if (localObject1 != null)
-        {
-          localObject1 = ((Resources)localObject1).getString(R.string.ay, new Object[] { Integer.valueOf(i / 1000) });
-          if (localObject1 != null)
-          {
-            localObject2 = a();
-            if (localObject2 == null) {
-              break label250;
-            }
-            localObject2 = ((Activity)localObject2).getResources();
-            if (localObject2 == null) {
-              break label250;
-            }
-            localObject2 = ((Resources)localObject2).getString(R.string.ax, new Object[] { Integer.valueOf(j / 1000) });
-            if (localObject2 == null) {
-              break label250;
-            }
-          }
+        localObject1 = ((Resources)localObject1).getString(R.string.ao, new Object[] { Integer.valueOf(i / 1000) });
+        if (localObject1 != null) {
+          break label156;
         }
       }
-      for (;;)
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("最少选择");
+    ((StringBuilder)localObject1).append(i / 1000);
+    ((StringBuilder)localObject1).append("s哦");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    label156:
+    Object localObject2 = a();
+    if (localObject2 != null)
+    {
+      localObject2 = ((Activity)localObject2).getResources();
+      if (localObject2 != null)
       {
-        boolean bool1 = StorageManager.a.a("sp_has_show_min_limit", false);
-        bool2 = StorageManager.a.a("sp_has_show_max_limit", false);
-        if ((paramInt != i) || (bool1)) {
-          break label285;
+        localObject2 = ((Resources)localObject2).getString(R.string.an, new Object[] { Integer.valueOf(j / 1000) });
+        if (localObject2 != null) {
+          break label257;
         }
-        TopicSDKHelperKt.a((String)localObject1, true, null, 4, null);
-        StorageManager.a.a("sp_has_show_min_limit", true);
-        return;
-        localObject1 = "最少选择" + i / 1000 + "s哦";
-        break;
-        localObject2 = "最多选择" + j / 1000 + "s哦";
       }
-    } while ((paramInt != j) || (bool2));
-    label285:
-    TopicSDKHelperKt.a((String)localObject2, true, null, 4, null);
-    StorageManager.a.a("sp_has_show_max_limit", true);
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("最多选择");
+    ((StringBuilder)localObject2).append(j / 1000);
+    ((StringBuilder)localObject2).append("s哦");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    label257:
+    boolean bool1 = StorageManager.a.a("sp_has_show_min_limit", false);
+    boolean bool2 = StorageManager.a.a("sp_has_show_max_limit", false);
+    if ((paramInt == i) && (!bool1))
+    {
+      TopicSDKHelperKt.a((String)localObject1, true, null, 4, null);
+      StorageManager.a.a("sp_has_show_min_limit", true);
+      return;
+    }
+    if ((paramInt == j) && (!bool2))
+    {
+      TopicSDKHelperKt.a((String)localObject2, true, null, 4, null);
+      StorageManager.a.a("sp_has_show_max_limit", true);
+    }
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -467,29 +464,29 @@ public final class VideoCropPage
         Intrinsics.throwUninitializedPropertyAccessException("videoCropDialog");
       }
       localCommonProgressDialog.show();
-    }
-    do
-    {
       return;
-      localCommonProgressDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
-      if (localCommonProgressDialog == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("videoCropDialog");
-      }
-    } while (!localCommonProgressDialog.isShowing());
+    }
     CommonProgressDialog localCommonProgressDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
     if (localCommonProgressDialog == null) {
       Intrinsics.throwUninitializedPropertyAccessException("videoCropDialog");
     }
-    localCommonProgressDialog.dismiss();
+    if (localCommonProgressDialog.isShowing())
+    {
+      localCommonProgressDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
+      if (localCommonProgressDialog == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("videoCropDialog");
+      }
+      localCommonProgressDialog.dismiss();
+    }
   }
   
-  public void aI_()
+  public void aV_()
   {
     Object localObject = a();
     if (localObject != null)
     {
       Intrinsics.checkExpressionValueIsNotNull(localObject, "it");
-      localObject = ((Activity)localObject).getResources().getString(R.string.an);
+      localObject = ((Activity)localObject).getResources().getString(R.string.ae);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "it.resources.getString(R…g.tips_video_crop_failed)");
       TopicSDKHelperKt.a((String)localObject, false, null, 6, null);
     }
@@ -503,12 +500,13 @@ public final class VideoCropPage
       Intrinsics.throwUninitializedPropertyAccessException("presenter");
     }
     int i;
-    if (((CharSequence)((VideoCropPresenter)localObject).a()).length() > 0)
-    {
+    if (((CharSequence)((VideoCropPresenter)localObject).a()).length() > 0) {
       i = 1;
-      if (i == 0) {
-        break label81;
-      }
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
       localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFixedSizeVideoView;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("videoView");
@@ -518,26 +516,22 @@ public final class VideoCropPage
         Intrinsics.throwUninitializedPropertyAccessException("presenter");
       }
       ((FixedSizeVideoView)localObject).setVideoPath(localVideoCropPresenter.a());
-    }
-    label81:
-    do
-    {
       return;
-      i = 0;
-      break;
-      localObject = a();
-    } while (localObject == null);
-    ((Activity)localObject).finish();
+    }
+    localObject = a();
+    if (localObject != null) {
+      ((Activity)localObject).finish();
+    }
   }
   
-  public boolean c()
+  public boolean f()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPage
  * JD-Core Version:    0.7.0.1
  */

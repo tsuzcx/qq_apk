@@ -5,10 +5,12 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/BaseReportEvent;", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/IEvent;", "()V", "element", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventElement;", "getElement", "()Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventElement;", "setElement", "(Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventElement;)V", "eventKey", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventKey;", "getEventKey", "()Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventKey;", "setEventKey", "(Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventKey;)V", "pageId", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventPage;", "getPageId", "()Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventPage;", "setPageId", "(Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventPage;)V", "topicsdk-framework_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/BaseReportEvent;", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/IEvent;", "()V", "business", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventBusiness;", "getBusiness", "()Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventBusiness;", "setBusiness", "(Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventBusiness;)V", "element", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventElement;", "getElement", "()Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventElement;", "setElement", "(Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventElement;)V", "eventKey", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventKey;", "getEventKey", "()Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventKey;", "setEventKey", "(Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventKey;)V", "pageId", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventPage;", "getPageId", "()Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventPage;", "setPageId", "(Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/ReportEventPage;)V", "topicsdk-framework_release"}, k=1, mv={1, 1, 16})
 public class BaseReportEvent
   implements IEvent
 {
+  @NotNull
+  private ReportEventBusiness jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventBusiness = ReportEventBusiness.BUSINESS_PUBLISHER;
   @NotNull
   private ReportEventElement jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventElement = ReportEventElement.ELEMENT_INVALID;
   @NotNull
@@ -34,6 +36,12 @@ public class BaseReportEvent
     return this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventPage;
   }
   
+  public final void a(@NotNull ReportEventBusiness paramReportEventBusiness)
+  {
+    Intrinsics.checkParameterIsNotNull(paramReportEventBusiness, "<set-?>");
+    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventBusiness = paramReportEventBusiness;
+  }
+  
   public final void a(@NotNull ReportEventElement paramReportEventElement)
   {
     Intrinsics.checkParameterIsNotNull(paramReportEventElement, "<set-?>");
@@ -54,7 +62,7 @@ public class BaseReportEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.eventdispatch.report.BaseReportEvent
  * JD-Core Version:    0.7.0.1
  */

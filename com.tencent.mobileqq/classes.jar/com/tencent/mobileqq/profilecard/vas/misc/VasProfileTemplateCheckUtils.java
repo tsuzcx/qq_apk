@@ -4,9 +4,12 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
 import com.tencent.mobileqq.profile.view.ProfileTemplateException;
+import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.template.ITemplateManager;
+import com.tencent.mobileqq.profilecard.template.ProfileCardTemplate;
+import com.tencent.mobileqq.profilecard.template.ProfileTemplateApi;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -19,137 +22,72 @@ public class VasProfileTemplateCheckUtils
 {
   private static final String TAG = "ProfileTemplateCheckUtils";
   
-  public static void checkCurrentUseTemplate(ProfileCardInfo paramProfileCardInfo)
+  private static boolean attrIsNotEmpty(String paramString1, Object paramObject, String paramString2)
   {
-    long l5 = ProfileCardTemplate.jdField_a_of_type_Long;
-    long l4 = 0L;
+    return (paramObject != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2));
+  }
+  
+  public static void checkCurrentUseTemplate(IComponentCenter paramIComponentCenter, ProfileCardInfo paramProfileCardInfo)
+  {
+    long l5 = ProfileCardTemplate.DEFAULT_PROFILE_CARD_STYLE_ID;
+    long l4 = paramProfileCardInfo.card.lCurrentStyleId;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("checkCurrentUseTemplate curStyleId=");
+    ((StringBuilder)localObject1).append(l4);
+    QLog.d("ProfileTemplateCheckUtils", 2, ((StringBuilder)localObject1).toString());
+    boolean bool = SimpleUIUtil.a();
+    long l2 = 0L;
+    Object localObject3 = null;
     Object localObject2 = null;
-    long l2 = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId;
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileTemplateCheckUtils", 2, String.format("checkCurrentUseTemplate curStyleId=%s", new Object[] { Long.valueOf(l2) }));
-    }
-    Object localObject1;
-    long l3;
     long l1;
-    if (SimpleUIUtil.a())
+    long l3;
+    if (bool)
     {
-      localObject1 = localObject2;
-      l3 = l4;
+      QLog.d("ProfileTemplateCheckUtils", 2, "checkCurrentUseTemplate simple mode");
       l1 = l5;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ProfileTemplateCheckUtils", 2, "checkCurrentUseTemplate simple mode");
-        l1 = l5;
-        l3 = l4;
-        localObject1 = localObject2;
-      }
+      l3 = l2;
+      localObject1 = localObject3;
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileTemplateCheckUtils", 2, String.format("checkCurrentUseTemplate useStyleId=%s useTemplateVersion=%s", new Object[] { Long.valueOf(l1), Long.valueOf(l3) }));
-      }
-      paramProfileCardInfo.jdField_a_of_type_Long = l1;
-      paramProfileCardInfo.b = l3;
-      paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = ((ProfileCardTemplate)localObject1);
-      return;
-      if ((l2 == ProfileCardTemplate.b) || (l2 == ProfileCardTemplate.c) || (l2 == ProfileCardTemplate.d))
+      if (checkTemplateValid(l4, paramProfileCardInfo)) {}
+      for (paramIComponentCenter = paramProfileCardInfo.currentTemplate;; paramIComponentCenter = localObject2)
       {
-        localObject1 = localObject2;
-        l3 = l4;
-        l1 = l5;
-        if (checkGameTemplateValid(paramProfileCardInfo))
+        l1 = l4;
+        l3 = l2;
+        localObject1 = paramIComponentCenter;
+        break;
+        if (l4 == ProfileCardTemplate.PROFILE_CARD_STYLE_SHOPPING)
         {
-          localObject1 = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate;
-          l1 = l2;
-          l3 = l4;
+          l1 = ProfileCardTemplate.DEFAULT_PROFILE_CARD_STYLE_ID;
+          l3 = l2;
+          localObject1 = localObject3;
+          break;
         }
-      }
-      else if (l2 == ProfileCardTemplate.e)
-      {
-        localObject1 = localObject2;
-        l3 = l4;
         l1 = l5;
-        if (checkPhotoTemplateValid(paramProfileCardInfo))
-        {
-          localObject1 = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate;
-          l1 = l2;
-          l3 = l4;
+        l3 = l2;
+        localObject1 = localObject3;
+        if (!ProfileTemplateApi.isDiyTemplateStyleID(l4)) {
+          break;
         }
-      }
-      else if (l2 == ProfileCardTemplate.f)
-      {
-        localObject1 = localObject2;
-        l3 = l4;
         l1 = l5;
-        if (checkTagTemplateValid(paramProfileCardInfo))
-        {
-          localObject1 = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate;
-          l1 = l2;
-          l3 = l4;
+        l3 = l2;
+        localObject1 = localObject3;
+        if (!VasProfileTemplatePreloadHelper.INSTANCE.initDiyData(paramProfileCardInfo)) {
+          break;
         }
-      }
-      else if (l2 == ProfileCardTemplate.g)
-      {
-        localObject1 = localObject2;
-        l3 = l4;
-        l1 = l5;
-        if (checkSimpleTemplateValid(paramProfileCardInfo))
-        {
-          localObject1 = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate;
-          l1 = l2;
-          l3 = l4;
-        }
-      }
-      else if (l2 == ProfileCardTemplate.h)
-      {
-        l1 = ProfileCardTemplate.jdField_a_of_type_Long;
-        localObject1 = localObject2;
-        l3 = l4;
-      }
-      else if ((l2 == ProfileCardTemplate.i) || (l2 == ProfileCardTemplate.j))
-      {
-        localObject1 = localObject2;
-        l3 = l4;
-        l1 = l5;
-        if (checkWZRYTemplateValid(paramProfileCardInfo))
-        {
-          localObject1 = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate;
-          l1 = l2;
-          l3 = l4;
-        }
-      }
-      else if (l2 == ProfileCardTemplate.k)
-      {
-        localObject1 = localObject2;
-        l3 = l4;
-        l1 = l5;
-        if (checkQVipV5TemplateValid(paramProfileCardInfo))
-        {
-          localObject1 = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate;
-          l1 = l2;
-          l3 = l4;
-        }
-      }
-      else
-      {
-        localObject1 = localObject2;
-        l3 = l4;
-        l1 = l5;
-        if (ProfileCardTemplate.a(l2))
-        {
-          localObject1 = localObject2;
-          l3 = l4;
-          l1 = l5;
-          if (VasProfileTemplatePreloadHelper.INSTANCE.initDiyData(paramProfileCardInfo))
-          {
-            l3 = ProfileCardTemplate.a(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard);
-            l1 = l2;
-            localObject1 = localObject2;
-          }
-        }
+        l2 = ProfileTemplateApi.getTemplateManager(paramIComponentCenter).getDiyTemplateVersion(paramProfileCardInfo.card);
       }
     }
+    paramIComponentCenter = new StringBuilder();
+    paramIComponentCenter.append("checkCurrentUseTemplate useStyleId=");
+    paramIComponentCenter.append(l1);
+    paramIComponentCenter.append(" useTemplateVersion=");
+    paramIComponentCenter.append(l3);
+    QLog.d("ProfileTemplateCheckUtils", 2, paramIComponentCenter.toString());
+    paramProfileCardInfo.curUseStyleId = l1;
+    paramProfileCardInfo.curUseTemplateVersion = l3;
+    paramProfileCardInfo.currentTemplate = ((ProfileCardTemplate)localObject1);
   }
   
   private static boolean checkGameTemplateValid(ProfileCardInfo paramProfileCardInfo)
@@ -232,77 +170,53 @@ public class VasProfileTemplateCheckUtils
   
   private static void checkTemplateValid(ProfileCardInfo paramProfileCardInfo, HashMap<String, String> paramHashMap)
   {
-    paramProfileCardInfo = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-    if ((paramProfileCardInfo == null) || (paramProfileCardInfo.size() <= 0)) {
-      throw new ProfileTemplateException("template templateAttr is null");
+    paramProfileCardInfo = paramProfileCardInfo.currentTemplate.templateAttr;
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.size() > 0))
+    {
+      paramHashMap.put("commonBottomBtnBackground", "drawable");
+      paramHashMap.put("commonBottomBtnTextColor", "color");
+      paramHashMap.put("commonItemTitleColor", "color");
+      paramHashMap.put("commonItemContentColor", "color");
+      paramHashMap.put("commonItemContentLinkColor", "color");
+      paramHashMap.put("commonItemTopBorderBackground", "drawable");
+      paramHashMap.put("commonItemBottomBorderBackground", "drawable");
+      paramHashMap.put("commonItemBorderBackground", "drawable");
+      paramHashMap.put("commonItemMoreSrc", "drawable");
+      paramHashMap.put("commonQrCodeSrc", "drawable");
+      paramHashMap.put("commonMaskBackground", "color");
+      Iterator localIterator = paramHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (Map.Entry)localIterator.next();
+        paramHashMap = (String)((Map.Entry)localObject).getKey();
+        localObject = (String)((Map.Entry)localObject).getValue();
+        if (!checkVaildAttr(paramHashMap, paramProfileCardInfo.get(paramHashMap), ((String)localObject).split(","), false))
+        {
+          paramProfileCardInfo = new StringBuilder();
+          paramProfileCardInfo.append("template attr ");
+          paramProfileCardInfo.append(paramHashMap);
+          paramProfileCardInfo.append(" type is not ");
+          paramProfileCardInfo.append((String)localObject);
+          throw new ProfileTemplateException(paramProfileCardInfo.toString());
+        }
+      }
+      return;
     }
-    paramHashMap.put("commonBottomBtnBackground", "drawable");
-    paramHashMap.put("commonBottomBtnTextColor", "color");
-    paramHashMap.put("commonItemTitleColor", "color");
-    paramHashMap.put("commonItemContentColor", "color");
-    paramHashMap.put("commonItemContentLinkColor", "color");
-    paramHashMap.put("commonItemTopBorderBackground", "drawable");
-    paramHashMap.put("commonItemBottomBorderBackground", "drawable");
-    paramHashMap.put("commonItemBorderBackground", "drawable");
-    paramHashMap.put("commonItemMoreSrc", "drawable");
-    paramHashMap.put("commonQrCodeSrc", "drawable");
-    paramHashMap.put("commonMaskBackground", "color");
-    paramHashMap = paramHashMap.entrySet().iterator();
-    label376:
-    label379:
+    paramProfileCardInfo = new ProfileTemplateException("template templateAttr is null");
     for (;;)
     {
-      Object localObject1;
-      String str1;
-      Object localObject2;
-      int i;
-      String str2;
-      if (paramHashMap.hasNext())
-      {
-        localObject1 = (Map.Entry)paramHashMap.next();
-        str1 = (String)((Map.Entry)localObject1).getKey();
-        localObject1 = (String)((Map.Entry)localObject1).getValue();
-        localObject2 = paramProfileCardInfo.get(str1);
-        String[] arrayOfString = ((String)localObject1).split(",");
-        int j = arrayOfString.length;
-        i = 0;
-        if (i >= j) {
-          break label376;
-        }
-        str2 = arrayOfString[i];
-        if ((localObject2 != null) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-          if ((str2.equalsIgnoreCase("color")) && (((localObject2 instanceof ColorStateList)) || ((localObject2 instanceof String)))) {
-            i = 1;
-          }
-        }
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          break label379;
-        }
-        throw new ProfileTemplateException("template attr " + str1 + " type is not " + (String)localObject1);
-        if ((str2.equalsIgnoreCase("drawable")) && ((localObject2 instanceof Drawable)))
-        {
-          i = 1;
-        }
-        else if ((str2.equalsIgnoreCase("string")) && ((localObject2 instanceof String)) && (!TextUtils.isEmpty((String)localObject2)))
-        {
-          i = 1;
-        }
-        else
-        {
-          i += 1;
-          break;
-          return;
-          i = 0;
-        }
-      }
+      throw paramProfileCardInfo;
     }
+  }
+  
+  private static boolean checkTemplateValid(long paramLong, ProfileCardInfo paramProfileCardInfo)
+  {
+    return (isValidGameTemplate(paramLong, paramProfileCardInfo)) || (isValidPhotoTemplate(paramLong, paramProfileCardInfo)) || (isValidTagTemplate(paramLong, paramProfileCardInfo)) || (isValidSimpleTemplate(paramLong, paramProfileCardInfo)) || (isValidWZRYTemplate(paramLong, paramProfileCardInfo)) || (isValidQVipV5Template(paramLong, paramProfileCardInfo));
   }
   
   private static boolean checkTemplateValidWithResult(ProfileCardInfo paramProfileCardInfo, HashMap<String, String> paramHashMap)
   {
+    boolean bool;
     try
     {
       checkTemplateValid(paramProfileCardInfo, paramHashMap);
@@ -310,16 +224,28 @@ public class VasProfileTemplateCheckUtils
     }
     catch (Exception paramProfileCardInfo)
     {
-      for (;;)
-      {
-        QLog.e("ProfileTemplateCheckUtils", 1, "checkShopTemplateValid fail.", paramProfileCardInfo);
-        boolean bool = false;
-      }
+      QLog.e("ProfileTemplateCheckUtils", 1, "checkShopTemplateValid fail.", paramProfileCardInfo);
+      bool = false;
     }
     if (QLog.isColorLevel()) {
       QLog.d("ProfileTemplateCheckUtils", 2, String.format("checkTemplateValidWithResult valid=%s", new Object[] { Boolean.valueOf(bool) }));
     }
     return bool;
+  }
+  
+  private static boolean checkVaildAttr(String paramString, Object paramObject, String[] paramArrayOfString, boolean paramBoolean)
+  {
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = paramArrayOfString[i];
+      if ((attrIsNotEmpty(paramString, paramObject, str)) && ((isAttrValidColor(paramObject, str)) || (isAttrValidDrawable(paramObject, str)) || (isAttrValidString(paramObject, str)))) {
+        return true;
+      }
+      i += 1;
+    }
+    return paramBoolean;
   }
   
   private static boolean checkWZRYTemplateValid(ProfileCardInfo paramProfileCardInfo)
@@ -329,10 +255,55 @@ public class VasProfileTemplateCheckUtils
     }
     return checkTemplateValidWithResult(paramProfileCardInfo, new HashMap());
   }
+  
+  private static boolean isAttrValidColor(Object paramObject, String paramString)
+  {
+    return (paramString.equalsIgnoreCase("color")) && (((paramObject instanceof ColorStateList)) || ((paramObject instanceof String)));
+  }
+  
+  private static boolean isAttrValidDrawable(Object paramObject, String paramString)
+  {
+    return (paramString.equalsIgnoreCase("drawable")) && ((paramObject instanceof Drawable));
+  }
+  
+  private static boolean isAttrValidString(Object paramObject, String paramString)
+  {
+    return (paramString.equalsIgnoreCase("string")) && ((paramObject instanceof String)) && (!TextUtils.isEmpty((String)paramObject));
+  }
+  
+  private static boolean isValidGameTemplate(long paramLong, ProfileCardInfo paramProfileCardInfo)
+  {
+    return ((paramLong == ProfileCardTemplate.PROFILE_CARD_STYLE_FRESH) || (paramLong == ProfileCardTemplate.PROFILE_CARD_STYLE_JANYUE) || (paramLong == ProfileCardTemplate.PROFILE_CARD_STYLE_GAME)) && (checkGameTemplateValid(paramProfileCardInfo));
+  }
+  
+  private static boolean isValidPhotoTemplate(long paramLong, ProfileCardInfo paramProfileCardInfo)
+  {
+    return (paramLong == ProfileCardTemplate.PROFILE_CARD_STYLE_SOCIAL) && (checkPhotoTemplateValid(paramProfileCardInfo));
+  }
+  
+  private static boolean isValidQVipV5Template(long paramLong, ProfileCardInfo paramProfileCardInfo)
+  {
+    return (paramLong == ProfileCardTemplate.PROFILE_CARD_STYLE_NEW_V800) && (checkQVipV5TemplateValid(paramProfileCardInfo));
+  }
+  
+  private static boolean isValidSimpleTemplate(long paramLong, ProfileCardInfo paramProfileCardInfo)
+  {
+    return (paramLong == ProfileCardTemplate.PROFILE_CARD_STYLE_SIMPLE) && (checkSimpleTemplateValid(paramProfileCardInfo));
+  }
+  
+  private static boolean isValidTagTemplate(long paramLong, ProfileCardInfo paramProfileCardInfo)
+  {
+    return (paramLong == ProfileCardTemplate.PROFILE_CARD_STYLE_TAG) && (checkTagTemplateValid(paramProfileCardInfo));
+  }
+  
+  private static boolean isValidWZRYTemplate(long paramLong, ProfileCardInfo paramProfileCardInfo)
+  {
+    return ((paramLong == ProfileCardTemplate.PROFILE_CARD_STYLE_WZRY_STATIC) || (paramLong == ProfileCardTemplate.PROFILE_CARD_STYLE_WZRY_DYNAMIC)) && (checkWZRYTemplateValid(paramProfileCardInfo));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.misc.VasProfileTemplateCheckUtils
  * JD-Core Version:    0.7.0.1
  */

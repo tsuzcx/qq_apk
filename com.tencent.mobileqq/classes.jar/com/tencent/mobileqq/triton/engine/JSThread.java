@@ -18,7 +18,10 @@ public class JSThread
     this.mTritonEngine = paramTTEngine;
     this.mListener = paramIListener;
     setPriority(10);
-    setName("JSThread_" + getId());
+    paramTTEngine = new StringBuilder();
+    paramTTEngine.append("JSThread_");
+    paramTTEngine.append(getId());
+    setName(paramTTEngine.toString());
   }
   
   public boolean isJSThread()
@@ -43,11 +46,16 @@ public class JSThread
   public void run()
   {
     this.jsThreadId = getId();
-    Logger.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") run start");
-    if (this.mListener == null) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("JSThread (tid:");
+    ((StringBuilder)localObject).append(this.jsThreadId);
+    ((StringBuilder)localObject).append(") run start");
+    Logger.e("JSThread", ((StringBuilder)localObject).toString());
+    localObject = this.mListener;
+    if (localObject == null) {
       return;
     }
-    this.mListener.onPrepare();
+    ((JSThread.IListener)localObject).onPrepare();
     try
     {
       while (!this.mQuitThread)
@@ -55,14 +63,30 @@ public class JSThread
         JNICaller.RenderContext.nUpdateRenderContext(this.mTritonEngine.getRenderContext(), this.mTritonEngine.getNativeTTAppHandle());
         JNICaller.TTEngine.runLoop(this.mTritonEngine, true);
         JNICaller.TTEngine.runLoop(this.mTritonEngine, false);
-        Logger.i("JSThread", "JSThread (tid: " + this.jsThreadId + ") runLoop is interrupted loopQuit=" + this.mQuitThread);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("JSThread (tid: ");
+        ((StringBuilder)localObject).append(this.jsThreadId);
+        ((StringBuilder)localObject).append(") runLoop is interrupted loopQuit=");
+        ((StringBuilder)localObject).append(this.mQuitThread);
+        Logger.i("JSThread", ((StringBuilder)localObject).toString());
       }
+      StringBuilder localStringBuilder2;
+      StringBuilder localStringBuilder1;
       return;
     }
     catch (Exception localException)
     {
-      Logger.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") run error " + localException.getMessage());
-      Logger.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") run exit");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("JSThread (tid:");
+      localStringBuilder2.append(this.jsThreadId);
+      localStringBuilder2.append(") run error ");
+      localStringBuilder2.append(localException.getMessage());
+      Logger.e("JSThread", localStringBuilder2.toString());
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("JSThread (tid:");
+      localStringBuilder1.append(this.jsThreadId);
+      localStringBuilder1.append(") run exit");
+      Logger.e("JSThread", localStringBuilder1.toString());
       this.mListener.onExit();
     }
   }
@@ -70,13 +94,17 @@ public class JSThread
   public void shutdown()
   {
     this.mQuitThread = true;
-    Logger.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") shutdown");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JSThread (tid:");
+    localStringBuilder.append(this.jsThreadId);
+    localStringBuilder.append(") shutdown");
+    Logger.e("JSThread", localStringBuilder.toString());
     JNICaller.TTEngine.interruptLoop(this.mTritonEngine);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.JSThread
  * JD-Core Version:    0.7.0.1
  */

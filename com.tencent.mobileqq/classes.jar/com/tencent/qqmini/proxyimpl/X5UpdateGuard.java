@@ -32,14 +32,15 @@ public class X5UpdateGuard
   
   public static X5UpdateGuard a()
   {
-    if (jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard == null) {
-        jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard = new X5UpdateGuard();
+    if (jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard == null) {
+      synchronized (jdField_a_of_type_ArrayOfByte)
+      {
+        if (jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard == null) {
+          jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard = new X5UpdateGuard();
+        }
       }
-      return jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard;
     }
+    return jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard;
   }
   
   private void a()
@@ -50,7 +51,7 @@ public class X5UpdateGuard
       if ((this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$LoadingDialog != null) && (this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$LoadingDialog.isShowing())) {
         this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$LoadingDialog.dismiss();
       }
-      QQToast.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getAttachedActivity(), HardCodeUtil.a(2131705914), 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getAttachedActivity(), HardCodeUtil.a(2131705966), 0).a();
       this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext = null;
       return;
     }
@@ -70,11 +71,11 @@ public class X5UpdateGuard
       }
       if (this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog == null)
       {
-        this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog = new X5UpdateGuard.PermissionDialog(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getAttachedActivity(), 2131755842);
-        this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog.setTitle(HardCodeUtil.a(2131705912));
-        this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog.setMessage(HardCodeUtil.a(2131705910));
-        this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog.setNegativeButton(HardCodeUtil.a(2131705908), new X5UpdateGuard.7(this));
-        this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog.setPositiveButton(HardCodeUtil.a(2131705911), new X5UpdateGuard.8(this));
+        this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog = new X5UpdateGuard.PermissionDialog(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getAttachedActivity(), 2131756189);
+        this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog.setTitle(HardCodeUtil.a(2131705964));
+        this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog.setMessage(HardCodeUtil.a(2131705962));
+        this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog.setNegativeButton(HardCodeUtil.a(2131705960), new X5UpdateGuard.7(this));
+        this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog.setPositiveButton(HardCodeUtil.a(2131705963), new X5UpdateGuard.8(this));
         this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog.setCanceledOnTouchOutside(false);
       }
       if (!this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard$PermissionDialog.isShowing()) {
@@ -91,50 +92,69 @@ public class X5UpdateGuard
   
   public void a(IMiniAppContext paramIMiniAppContext)
   {
-    if (paramIMiniAppContext == null) {}
-    int j;
-    int k;
-    do
-    {
+    if (paramIMiniAppContext == null) {
       return;
-      j = QbSdk.getTbsVersion(paramIMiniAppContext.getContext());
-      k = QbSdk.getTmpDirTbsVersion(paramIMiniAppContext.getContext());
-      QLog.d("minisdk_X5UpdateGuard", 1, "getTbsVersion=" + j + " tmpDirTbsVersion=" + k);
-    } while ((j > 0) || (k > 0) || (paramIMiniAppContext.getAttachedActivity() == null));
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext = paramIMiniAppContext;
-    X5UpdateGuard.PermissionDialog localPermissionDialog = new X5UpdateGuard.PermissionDialog(paramIMiniAppContext.getAttachedActivity(), 2131755842);
-    localPermissionDialog.setTitle("小程序运行异常");
-    localPermissionDialog.setMessage("升级浏览器组件之后可正常运行小程序，确定要升级么？");
-    localPermissionDialog.setNegativeButton("取消", new X5UpdateGuard.2(this));
-    localPermissionDialog.setPositiveButton("确定", new X5UpdateGuard.3(this, paramIMiniAppContext));
-    localPermissionDialog.setCanceledOnTouchOutside(true);
-    localPermissionDialog.show();
+    }
+    int j = QbSdk.getTbsVersion(paramIMiniAppContext.getContext());
+    int k = QbSdk.getTmpDirTbsVersion(paramIMiniAppContext.getContext());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getTbsVersion=");
+    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(" tmpDirTbsVersion=");
+    ((StringBuilder)localObject).append(k);
+    QLog.d("minisdk_X5UpdateGuard", 1, ((StringBuilder)localObject).toString());
+    if (j <= 0)
+    {
+      if (k > 0) {
+        return;
+      }
+      if (paramIMiniAppContext.getAttachedActivity() == null) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext = paramIMiniAppContext;
+      localObject = new X5UpdateGuard.PermissionDialog(paramIMiniAppContext.getAttachedActivity(), 2131756189);
+      ((X5UpdateGuard.PermissionDialog)localObject).setTitle("小程序运行异常");
+      ((X5UpdateGuard.PermissionDialog)localObject).setMessage("升级浏览器组件之后可正常运行小程序，确定要升级么？");
+      ((X5UpdateGuard.PermissionDialog)localObject).setNegativeButton("取消", new X5UpdateGuard.2(this));
+      ((X5UpdateGuard.PermissionDialog)localObject).setPositiveButton("确定", new X5UpdateGuard.3(this, paramIMiniAppContext));
+      ((X5UpdateGuard.PermissionDialog)localObject).setCanceledOnTouchOutside(true);
+      ((X5UpdateGuard.PermissionDialog)localObject).show();
+    }
   }
   
   public void onDownloadFinish(int paramInt)
   {
-    QLog.d("minisdk_X5UpdateGuard", 1, "Tbs onDownloadFinish result=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Tbs onDownloadFinish result=");
+    localStringBuilder.append(paramInt);
+    QLog.d("minisdk_X5UpdateGuard", 1, localStringBuilder.toString());
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     AppBrandTask.runTaskOnUiThread(new X5UpdateGuard.4(this, paramInt));
   }
   
   public void onDownloadProgress(int paramInt)
   {
-    QLog.d("minisdk_X5UpdateGuard", 1, "Tbs install onDownloadProgress=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Tbs install onDownloadProgress=");
+    localStringBuilder.append(paramInt);
+    QLog.d("minisdk_X5UpdateGuard", 1, localStringBuilder.toString());
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     AppBrandTask.runTaskOnUiThread(new X5UpdateGuard.6(this, paramInt));
   }
   
   public void onInstallFinish(int paramInt)
   {
-    QLog.d("minisdk_X5UpdateGuard", 1, "Tbs onInstallFinish result=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Tbs onInstallFinish result=");
+    localStringBuilder.append(paramInt);
+    QLog.d("minisdk_X5UpdateGuard", 1, localStringBuilder.toString());
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     AppBrandTask.runTaskOnUiThread(new X5UpdateGuard.5(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.X5UpdateGuard
  * JD-Core Version:    0.7.0.1
  */

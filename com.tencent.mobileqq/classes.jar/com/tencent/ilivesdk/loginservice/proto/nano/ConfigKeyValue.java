@@ -29,72 +29,85 @@ public final class ConfigKeyValue
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 10: 
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
-      if (this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem == null) {}
-      KeyValueItem[] arrayOfKeyValueItem;
-      for (i = 0;; i = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem.length)
+      if (i != 10)
       {
-        arrayOfKeyValueItem = new KeyValueItem[j + i];
-        j = i;
-        if (i != 0)
+        if (i != 18)
         {
-          System.arraycopy(this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem, 0, arrayOfKeyValueItem, 0, i);
-          j = i;
+          if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+            return this;
+          }
         }
-        while (j < arrayOfKeyValueItem.length - 1)
+        else
         {
+          int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
+          KeyValueItem[] arrayOfKeyValueItem = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem;
+          if (arrayOfKeyValueItem == null) {
+            i = 0;
+          } else {
+            i = arrayOfKeyValueItem.length;
+          }
+          arrayOfKeyValueItem = new KeyValueItem[j + i];
+          j = i;
+          if (i != 0)
+          {
+            System.arraycopy(this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem, 0, arrayOfKeyValueItem, 0, i);
+            j = i;
+          }
+          while (j < arrayOfKeyValueItem.length - 1)
+          {
+            arrayOfKeyValueItem[j] = new KeyValueItem();
+            paramCodedInputByteBufferNano.readMessage(arrayOfKeyValueItem[j]);
+            paramCodedInputByteBufferNano.readTag();
+            j += 1;
+          }
           arrayOfKeyValueItem[j] = new KeyValueItem();
           paramCodedInputByteBufferNano.readMessage(arrayOfKeyValueItem[j]);
-          paramCodedInputByteBufferNano.readTag();
-          j += 1;
+          this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem = arrayOfKeyValueItem;
         }
       }
-      arrayOfKeyValueItem[j] = new KeyValueItem();
-      paramCodedInputByteBufferNano.readMessage(arrayOfKeyValueItem[j]);
-      this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem = arrayOfKeyValueItem;
+      else {
+        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
     int i = j;
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
       i = j + CodedOutputByteBufferNano.computeStringSize(1, this.jdField_a_of_type_JavaLangString);
     }
-    j = i;
-    if (this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem != null)
+    Object localObject = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem;
+    int k = i;
+    if (localObject != null)
     {
-      j = i;
-      if (this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem.length > 0)
+      k = i;
+      if (localObject.length > 0)
       {
         j = 0;
-        while (j < this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem.length)
+        for (;;)
         {
-          KeyValueItem localKeyValueItem = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem[j];
-          int k = i;
-          if (localKeyValueItem != null) {
-            k = i + CodedOutputByteBufferNano.computeMessageSize(2, localKeyValueItem);
+          localObject = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem;
+          k = i;
+          if (j >= localObject.length) {
+            break;
+          }
+          localObject = localObject[j];
+          k = i;
+          if (localObject != null) {
+            k = i + CodedOutputByteBufferNano.computeMessageSize(2, (MessageNano)localObject);
           }
           j += 1;
           i = k;
         }
-        j = i;
       }
     }
-    return j;
+    return k;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -102,14 +115,19 @@ public final class ConfigKeyValue
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
       paramCodedOutputByteBufferNano.writeString(1, this.jdField_a_of_type_JavaLangString);
     }
-    if ((this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem != null) && (this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem.length > 0))
+    Object localObject = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem;
+    if ((localObject != null) && (localObject.length > 0))
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem.length)
+      for (;;)
       {
-        KeyValueItem localKeyValueItem = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem[i];
-        if (localKeyValueItem != null) {
-          paramCodedOutputByteBufferNano.writeMessage(2, localKeyValueItem);
+        localObject = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeMessage(2, (MessageNano)localObject);
         }
         i += 1;
       }
@@ -119,7 +137,7 @@ public final class ConfigKeyValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.proto.nano.ConfigKeyValue
  * JD-Core Version:    0.7.0.1
  */

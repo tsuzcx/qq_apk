@@ -16,24 +16,37 @@ public class BasePicItemBuilder$DrawURL
   public BasePicItemBuilder$DrawURL(MessageForPic paramMessageForPic)
   {
     paramMessageForPic.checkType();
+    Object localObject;
     if (((paramMessageForPic.imageType == 3) || (paramMessageForPic.imageType == 2000)) && (BasePicItemBuilder.h))
     {
       this.jdField_a_of_type_Boolean = true;
-      URL localURL = URLDrawableHelper.getURL(paramMessageForPic, 1, null);
-      if (AbsDownloader.getFile(localURL.toString()) != null)
+      localObject = URLDrawableHelper.getURL(paramMessageForPic, 1, null);
+      if (AbsDownloader.getFile(((URL)localObject).toString()) != null)
       {
-        this.jdField_a_of_type_JavaNetURL = localURL;
+        this.jdField_a_of_type_JavaNetURL = ((URL)localObject);
         this.b = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("PicItemBuilder", 2, "getThumbDrawable,using GIF_BIG,uniseq:" + paramMessageForPic.uniseq + " url:" + this.jdField_a_of_type_JavaNetURL);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getThumbDrawable,using GIF_BIG,uniseq:");
+          ((StringBuilder)localObject).append(paramMessageForPic.uniseq);
+          ((StringBuilder)localObject).append(" url:");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaNetURL);
+          QLog.d("PicItemBuilder", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
     if (this.jdField_a_of_type_JavaNetURL == null)
     {
       this.jdField_a_of_type_JavaNetURL = URLDrawableHelper.getURL(paramMessageForPic, 65537, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicItemBuilder", 2, "getThumbDrawable,using thumb,uniseq:" + paramMessageForPic.uniseq + " url:" + this.jdField_a_of_type_JavaNetURL);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getThumbDrawable,using thumb,uniseq:");
+        ((StringBuilder)localObject).append(paramMessageForPic.uniseq);
+        ((StringBuilder)localObject).append(" url:");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaNetURL);
+        QLog.d("PicItemBuilder", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -41,15 +54,16 @@ public class BasePicItemBuilder$DrawURL
   @NonNull
   public String toString()
   {
-    if (this.jdField_a_of_type_JavaNetURL != null) {
-      return this.jdField_a_of_type_JavaNetURL.toString();
+    URL localURL = this.jdField_a_of_type_JavaNetURL;
+    if (localURL != null) {
+      return localURL.toString();
     }
     return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.BasePicItemBuilder.DrawURL
  * JD-Core Version:    0.7.0.1
  */

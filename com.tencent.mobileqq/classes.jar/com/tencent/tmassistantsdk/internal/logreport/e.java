@@ -5,7 +5,7 @@ import com.tencent.tmassistantbase.network.NetworkMonitorReceiver;
 
 public class e
 {
-  protected static e a = null;
+  protected static e a;
   private static final Class<?>[] b = { b.class };
   private final INetworkChangedObserver c = new f(this);
   
@@ -33,26 +33,20 @@ public class e
     Class[] arrayOfClass = b;
     int j = arrayOfClass.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      Class localClass = arrayOfClass[i];
+      try
       {
-        Class localClass = arrayOfClass[i];
-        try
-        {
-          if (localClass.equals(b.class)) {
-            b.g().a();
-          }
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-          }
+        if (localClass.equals(b.class)) {
+          b.g().a();
         }
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      i += 1;
     }
     NetworkMonitorReceiver.getInstance().removeNetworkChangedObserver(this.c);
   }
@@ -62,32 +56,26 @@ public class e
     Class[] arrayOfClass = b;
     int j = arrayOfClass.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      Class localClass = arrayOfClass[i];
+      try
       {
-        Class localClass = arrayOfClass[i];
-        try
-        {
-          if (localClass.equals(b.class)) {
-            b.g().b();
-          }
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-          }
+        if (localClass.equals(b.class)) {
+          b.g().b();
         }
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.logreport.e
  * JD-Core Version:    0.7.0.1
  */

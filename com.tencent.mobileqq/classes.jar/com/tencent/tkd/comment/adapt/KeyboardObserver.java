@@ -40,8 +40,9 @@ class KeyboardObserver
     if (paramBoolean != this.isKeyboardShowing)
     {
       this.isKeyboardShowing = paramBoolean;
-      if (this.listener != null) {
-        this.listener.onVisibilityChange(paramBoolean);
+      OnKeyboardChangeListener localOnKeyboardChangeListener = this.listener;
+      if (localOnKeyboardChangeListener != null) {
+        localOnKeyboardChangeListener.onVisibilityChange(paramBoolean);
       }
     }
   }
@@ -55,8 +56,9 @@ class KeyboardObserver
       {
         this.panelHeight = i;
         this.sp.edit().putInt("keyPanelHeight", i).apply();
-        if (this.listener != null) {
-          this.listener.onPanelHeightChange(i);
+        OnKeyboardChangeListener localOnKeyboardChangeListener = this.listener;
+        if (localOnKeyboardChangeListener != null) {
+          localOnKeyboardChangeListener.onPanelHeightChange(i);
         }
       }
     }
@@ -73,18 +75,26 @@ class KeyboardObserver
     int i = paramView.getHeight();
     Object localObject = new int[2];
     paramView.getLocationOnScreen((int[])localObject);
-    return i + localObject[1];
+    return localObject[1] + i;
   }
   
   private int getPanelHeight()
   {
-    if (this.keyboardHeight < MIN_PANEL_HEIGHT) {
-      return MIN_PANEL_HEIGHT;
+    int i = this.keyboardHeight;
+    int j = MIN_PANEL_HEIGHT;
+    if (i < j) {
+      return j;
     }
-    if (this.keyboardHeight > MAX_PANEL_HEIGHT) {
-      return MAX_PANEL_HEIGHT;
+    j = MAX_PANEL_HEIGHT;
+    if (i > j) {
+      return j;
     }
-    return this.keyboardHeight;
+    return i;
+  }
+  
+  static boolean judgeKeyboardShowingByBottom(int paramInt)
+  {
+    return paramInt < SCREEN_HEIGHT - THRESHOLD;
   }
   
   int getDefaultPanelHeight()
@@ -96,30 +106,35 @@ class KeyboardObserver
   {
     int i = getBottomOnScreen(this.vTarget);
     boolean bool;
-    if (i < SCREEN_HEIGHT - THRESHOLD)
+    if (judgeKeyboardShowingByBottom(i))
     {
       bool = true;
       this.minBottom = i;
     }
-    for (;;)
+    else
     {
-      if ((this.minBottom > 0) && (this.maxBottom > 0)) {
-        this.keyboardHeight = (this.maxBottom - this.minBottom);
-      }
-      dispatchPanelHeightChange(bool);
-      dispatchKeyboardVisibilityChange(bool);
-      return;
       bool = false;
       this.maxBottom = i;
     }
+    i = this.minBottom;
+    if (i > 0)
+    {
+      int j = this.maxBottom;
+      if (j > 0) {
+        this.keyboardHeight = (j - i);
+      }
+    }
+    dispatchPanelHeightChange(bool);
+    dispatchKeyboardVisibilityChange(bool);
   }
   
   void setTarget(View paramView, OnKeyboardChangeListener paramOnKeyboardChangeListener)
   {
     if (paramView == null)
     {
-      if (this.vTarget != null) {
-        this.vTarget.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      paramView = this.vTarget;
+      if (paramView != null) {
+        paramView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
       }
       this.listener = null;
       this.sp = null;
@@ -133,7 +148,7 @@ class KeyboardObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.adapt.KeyboardObserver
  * JD-Core Version:    0.7.0.1
  */

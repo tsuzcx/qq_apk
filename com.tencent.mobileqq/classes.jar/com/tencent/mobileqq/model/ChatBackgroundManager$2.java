@@ -19,14 +19,17 @@ class ChatBackgroundManager$2
     if (QLog.isColorLevel())
     {
       QLog.d("ThemeDownloadTrace", 2, "bgin to report chat bg info");
-      QLog.d("ThemeDownloadTrace", 2, "initCurrChatBgNameForReport is:" + ChatBackgroundManager.c);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initCurrChatBgNameForReport is:");
+      localStringBuilder.append(ChatBackgroundManager.c);
+      QLog.d("ThemeDownloadTrace", 2, localStringBuilder.toString());
     }
     ChatBackgroundManager.a.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.model.ChatBackgroundManager.2
  * JD-Core Version:    0.7.0.1
  */

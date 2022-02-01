@@ -22,7 +22,11 @@ public class ShortVideoMsgTailHelper
   
   public static String a(Context paramContext, int paramInt)
   {
-    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getString("short_video_msg_tail_jumping_url_" + paramInt, "");
+    paramContext = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("short_video_msg_tail_jumping_url_");
+    localStringBuilder.append(paramInt);
+    return paramContext.getString(localStringBuilder.toString(), "");
   }
   
   public static void a(Context paramContext, int paramInt)
@@ -52,7 +56,7 @@ public class ShortVideoMsgTailHelper
     try
     {
       if (!QLog.isColorLevel()) {
-        break label300;
+        return;
       }
       QLog.i("ShortVideoMsgTailHelper", 2, "updateShortVideoMsgTailConfig, configs == null");
       return;
@@ -60,72 +64,81 @@ public class ShortVideoMsgTailHelper
     catch (JSONException paramContext)
     {
       QLog.e("ShortVideoMsgTailHelper", 1, paramContext.toString(), paramContext);
-      return;
     }
     paramList = paramList.iterator();
     for (;;)
     {
-      Object localObject;
-      int j;
-      SharedPreferences.Editor localEditor;
-      int i;
       if (paramList.hasNext())
       {
-        localObject = (String)paramList.next();
-        if (QLog.isColorLevel()) {
-          QLog.i("ShortVideoMsgTailHelper", 2, "updateShortVideoMsgTailConfig, config=" + (String)localObject);
+        Object localObject1 = (String)paramList.next();
+        Object localObject2;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("updateShortVideoMsgTailConfig, config=");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QLog.i("ShortVideoMsgTailHelper", 2, ((StringBuilder)localObject2).toString());
         }
-        localObject = new JSONArray((String)localObject);
-        j = ((JSONArray)localObject).length();
+        localObject1 = new JSONArray((String)localObject1);
+        int j = ((JSONArray)localObject1).length();
         if (j > 0)
         {
-          localEditor = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).edit();
-          i = 0;
-        }
-      }
-      else
-      {
-        while (i < j)
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-          int k = localJSONObject.getInt("type");
-          if (k != 0) {
-            if (!"1".equals(localJSONObject.optString("isShow"))) {
-              break label294;
-            }
-          }
-          label294:
-          for (boolean bool = true;; bool = false)
+          int i = 0;
+          localObject2 = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).edit();
+          while (i < j)
           {
-            localEditor.putBoolean("short_video_msg_tail_is_show_" + k, bool);
-            localEditor.putString("short_video_msg_tail_wording_" + k, localJSONObject.optString("wording"));
-            localEditor.putString("short_video_msg_tail_jumping_url_" + k, localJSONObject.optString("jumpUrl"));
-            localEditor.apply();
-            break;
-            QLog.i("ShortVideoMsgTailHelper", 1, "type == 0");
-            break;
+            JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(i);
+            int k = localJSONObject.getInt("type");
+            if (k != 0)
+            {
+              boolean bool = "1".equals(localJSONObject.optString("isShow"));
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("short_video_msg_tail_is_show_");
+              localStringBuilder.append(k);
+              ((SharedPreferences.Editor)localObject2).putBoolean(localStringBuilder.toString(), bool);
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("short_video_msg_tail_wording_");
+              localStringBuilder.append(k);
+              ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), localJSONObject.optString("wording"));
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("short_video_msg_tail_jumping_url_");
+              localStringBuilder.append(k);
+              ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), localJSONObject.optString("jumpUrl"));
+              ((SharedPreferences.Editor)localObject2).apply();
+            }
+            else
+            {
+              QLog.i("ShortVideoMsgTailHelper", 1, "type == 0");
+            }
+            i += 1;
           }
-          label300:
-          return;
-          i += 1;
         }
       }
+      else {}
     }
   }
   
   public static boolean a(Context paramContext, int paramInt)
   {
-    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getBoolean("short_video_msg_tail_is_show_" + paramInt, false);
+    paramContext = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("short_video_msg_tail_is_show_");
+    localStringBuilder.append(paramInt);
+    return paramContext.getBoolean(localStringBuilder.toString(), false);
   }
   
   public static String b(Context paramContext, int paramInt)
   {
-    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getString("short_video_msg_tail_wording_" + paramInt, "");
+    paramContext = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("short_video_msg_tail_wording_");
+    localStringBuilder.append(paramInt);
+    return paramContext.getString(localStringBuilder.toString(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoMsgTailHelper
  * JD-Core Version:    0.7.0.1
  */

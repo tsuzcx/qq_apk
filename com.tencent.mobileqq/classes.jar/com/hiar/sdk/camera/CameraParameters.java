@@ -12,17 +12,13 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Landroid.hardware.Camera.Size;>;
 
 public class CameraParameters
 {
-  private static Method a = null;
-  private static Method b = null;
+  private static Method a;
+  private static Method b;
   
-  static
-  {
-    a();
-  }
+  static {}
   
   public static int a(List<Integer> paramList)
   {
@@ -37,72 +33,70 @@ public class CameraParameters
   
   public static Camera.Size a(List<Camera.Size> paramList, int paramInt1, int paramInt2)
   {
+    Object localObject1 = null;
     if (paramList == null) {
       return null;
     }
-    Object localObject1 = paramList.iterator();
-    Object localObject2;
-    while (((Iterator)localObject1).hasNext())
+    Object localObject2 = paramList.iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject2 = (Camera.Size)((Iterator)localObject1).next();
-      if ((((Camera.Size)localObject2).width == paramInt1) && (((Camera.Size)localObject2).height == paramInt2)) {
-        return localObject2;
+      localObject3 = (Camera.Size)((Iterator)localObject2).next();
+      if ((((Camera.Size)localObject3).width == paramInt1) && (((Camera.Size)localObject3).height == paramInt2)) {
+        return localObject3;
       }
     }
-    double d3 = paramInt1 / paramInt2;
-    localObject1 = null;
-    double d1 = 1.7976931348623157E+308D;
-    Iterator localIterator = paramList.iterator();
-    double d2;
-    if (localIterator.hasNext())
+    double d1 = paramInt1;
+    double d2 = paramInt2;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    double d5 = d1 / d2;
+    Object localObject3 = paramList.iterator();
+    double d4 = 1.7976931348623157E+308D;
+    d1 = 1.7976931348623157E+308D;
+    while (((Iterator)localObject3).hasNext())
     {
-      localObject2 = (Camera.Size)localIterator.next();
+      localObject2 = (Camera.Size)((Iterator)localObject3).next();
+      double d3;
       if (((paramInt1 > paramInt2) && (((Camera.Size)localObject2).width > ((Camera.Size)localObject2).height)) || ((paramInt1 < paramInt2) && (((Camera.Size)localObject2).width < ((Camera.Size)localObject2).height)))
       {
-        d2 = ((Camera.Size)localObject2).width / ((Camera.Size)localObject2).height;
-        label152:
-        if (Math.abs(d2 - d3) > 0.05D) {
-          break label218;
-        }
-        if (Math.abs(((Camera.Size)localObject2).height - paramInt2) >= d1) {
-          break label307;
-        }
+        d2 = ((Camera.Size)localObject2).width;
+        d3 = ((Camera.Size)localObject2).height;
+        Double.isNaN(d2);
+        Double.isNaN(d3);
+      }
+      else
+      {
+        d2 = ((Camera.Size)localObject2).height;
+        d3 = ((Camera.Size)localObject2).width;
+        Double.isNaN(d2);
+        Double.isNaN(d3);
+      }
+      if ((Math.abs(d2 / d3 - d5) <= 0.05D) && (Math.abs(((Camera.Size)localObject2).height - paramInt2) < d1))
+      {
         d1 = Math.abs(((Camera.Size)localObject2).height - paramInt2);
         localObject1 = localObject2;
       }
     }
-    label301:
-    label307:
-    for (;;)
+    localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      break;
-      d2 = ((Camera.Size)localObject2).height / ((Camera.Size)localObject2).width;
-      break label152;
-      label218:
-      break;
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        d1 = 1.7976931348623157E+308D;
-        localIterator = paramList.iterator();
-        localObject2 = localObject1;
-        if (localIterator.hasNext())
-        {
-          paramList = (Camera.Size)localIterator.next();
-          if (Math.abs(paramList.height - paramInt2) >= d1) {
-            break label301;
-          }
-          d1 = Math.abs(paramList.height - paramInt2);
-        }
-      }
+      localObject3 = paramList.iterator();
+      d1 = d4;
       for (;;)
       {
-        localObject1 = paramList;
-        break;
-        return localObject2;
-        paramList = (List<Camera.Size>)localObject1;
+        localObject2 = localObject1;
+        if (!((Iterator)localObject3).hasNext()) {
+          break;
+        }
+        paramList = (Camera.Size)((Iterator)localObject3).next();
+        if (Math.abs(paramList.height - paramInt2) < d1)
+        {
+          d1 = Math.abs(paramList.height - paramInt2);
+          localObject1 = paramList;
+        }
       }
     }
+    return localObject2;
   }
   
   private static void a()
@@ -110,48 +104,51 @@ public class CameraParameters
     try
     {
       b = Camera.Parameters.class.getMethod("getSupportedPreviewSizes", (Class[])null);
-      try
-      {
-        label14:
-        a = Camera.Parameters.class.getMethod("getSupportedPreviewFormats", (Class[])null);
-        return;
-      }
-      catch (NoSuchMethodException localNoSuchMethodException1) {}
     }
-    catch (NoSuchMethodException localNoSuchMethodException2)
+    catch (NoSuchMethodException localNoSuchMethodException1)
     {
-      break label14;
+      for (;;)
+      {
+        try
+        {
+          a = Camera.Parameters.class.getMethod("getSupportedPreviewFormats", (Class[])null);
+          return;
+        }
+        catch (NoSuchMethodException localNoSuchMethodException2) {}
+        localNoSuchMethodException1 = localNoSuchMethodException1;
+      }
     }
   }
   
   public static void a(Camera.Parameters paramParameters)
   {
-    String str = null;
-    try
+    for (String str = "continuous-video";; str = null)
     {
-      List localList = paramParameters.getSupportedFocusModes();
-      if ((localList.contains("continuous-video")) && (ScanEntranceDPC.a().b)) {
-        str = "continuous-video";
-      }
-      for (;;)
+      try
       {
+        List localList = paramParameters.getSupportedFocusModes();
+        boolean bool = localList.contains("continuous-video");
+        if ((!bool) || (!ScanEntranceDPC.a().b))
+        {
+          if (!localList.contains("auto")) {
+            continue;
+          }
+          str = "auto";
+        }
         if (QLog.isColorLevel()) {
           QLog.d("CameraParameters", 2, String.format("setDefaultFocusMode focusMode=%s", new Object[] { str }));
         }
-        if (TextUtils.isEmpty(str)) {
-          break;
-        }
-        paramParameters.setFocusMode(str);
-        return;
-        if (localList.contains("auto")) {
-          str = "auto";
+        if (!TextUtils.isEmpty(str))
+        {
+          paramParameters.setFocusMode(str);
+          return;
         }
       }
+      catch (RuntimeException paramParameters)
+      {
+        paramParameters.printStackTrace();
+      }
       return;
-    }
-    catch (RuntimeException paramParameters)
-    {
-      paramParameters.printStackTrace();
     }
   }
   
@@ -176,128 +173,109 @@ public class CameraParameters
   public static void a(Camera paramCamera, int paramInt1, int paramInt2, int paramInt3)
   {
     Camera.Parameters localParameters = paramCamera.getParameters();
-    if (b != null) {}
-    try
-    {
-      Object localObject1 = b.invoke(localParameters, (Object[])null);
-      List localList;
-      Object localObject3;
-      if ((localObject1 instanceof List))
+    Object localObject1 = b;
+    if (localObject1 != null) {
+      try
       {
-        localList = (List)localObject1;
-        localObject1 = new ArrayList();
-        localObject3 = localList.iterator();
-        while (((Iterator)localObject3).hasNext())
+        localObject1 = ((Method)localObject1).invoke(localParameters, (Object[])null);
+        if ((localObject1 instanceof List))
         {
-          Camera.Size localSize2 = (Camera.Size)((Iterator)localObject3).next();
-          if (((localSize2.width != 980) || (localSize2.height != 800) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || ((!"GT-I9220".equalsIgnoreCase(Build.MODEL)) && (!"GT-N7000".equalsIgnoreCase(Build.MODEL)))) && (((localSize2.width == 1184) && (localSize2.height == 666)) || (((localSize2.width != 704) || (localSize2.height != 576) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || (!"GT-I9300".equalsIgnoreCase(Build.MODEL))) && ((localSize2.width != 800) || (localSize2.height != 450) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || (!"GT-I9100".equalsIgnoreCase(Build.MODEL)))))) {
-            ((List)localObject1).add(localSize2);
-          }
-        }
-      }
-      Object localObject2;
-      Camera.Size localSize1;
-      label515:
-      for (;;) {}
-    }
-    catch (IllegalArgumentException localIllegalArgumentException1)
-    {
-      localIllegalArgumentException1.printStackTrace();
-      for (;;)
-      {
-        if (a == null) {
-          break label515;
-        }
-        try
-        {
-          localObject2 = (List)a.invoke(localParameters, (Object[])null);
-          if (localObject2 != null)
+          List localList = (List)localObject1;
+          localObject1 = new ArrayList();
+          Object localObject3 = localList.iterator();
+          Camera.Size localSize;
+          for (;;)
           {
-            paramInt1 = a((List)localObject2);
-            if (paramInt1 != -1) {
-              localParameters.setPreviewFormat(paramInt1);
+            boolean bool = ((Iterator)localObject3).hasNext();
+            if (!bool) {
+              break;
+            }
+            localSize = (Camera.Size)((Iterator)localObject3).next();
+            if (((localSize.width != 980) || (localSize.height != 800) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || ((!"GT-I9220".equalsIgnoreCase(Build.MODEL)) && (!"GT-N7000".equalsIgnoreCase(Build.MODEL)))) && (((localSize.width == 1184) && (localSize.height == 666)) || (((localSize.width != 704) || (localSize.height != 576) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || (!"GT-I9300".equalsIgnoreCase(Build.MODEL))) && ((localSize.width != 800) || (localSize.height != 450) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || (!"GT-I9100".equalsIgnoreCase(Build.MODEL)))))) {
+              ((List)localObject1).add(localSize);
             }
           }
-        }
-        catch (IllegalArgumentException localIllegalArgumentException2)
-        {
-          for (;;)
+          localObject3 = localParameters.getPreviewSize();
+          if (("samsung".equalsIgnoreCase(Build.MANUFACTURER)) && ("GT-I9008L".equalsIgnoreCase(Build.MODEL)))
           {
-            localIllegalArgumentException2.printStackTrace();
+            localObject1 = localObject3;
           }
-        }
-        catch (IllegalAccessException localIllegalAccessException2)
-        {
-          for (;;)
+          else if ((paramInt1 != 0) && (paramInt2 != 0))
           {
-            localIllegalAccessException2.printStackTrace();
+            localSize = a(localList, paramInt1, paramInt2);
+            localObject1 = localSize;
+            if (localSize == null) {
+              localObject1 = a(localList, 640, 480);
+            }
           }
-        }
-        catch (InvocationTargetException localInvocationTargetException2)
-        {
-          for (;;)
+          else
           {
-            localInvocationTargetException2.printStackTrace();
+            localObject1 = a((List)localObject1, 1280, 720);
           }
-        }
-        try
-        {
-          a(localParameters, paramInt3);
-          a(localParameters);
-          paramCamera.setParameters(localParameters);
-          return;
-        }
-        catch (RuntimeException paramCamera)
-        {
-          paramCamera.printStackTrace();
-          return;
-        }
-        localObject3 = localParameters.getPreviewSize();
-        if ((!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || (!"GT-I9008L".equalsIgnoreCase(Build.MODEL))) {
-          break;
-        }
-        localObject2 = localObject3;
-        if ((localObject2 != null) && ((((Camera.Size)localObject2).height != ((Camera.Size)localObject3).height) || (((Camera.Size)localObject2).width != ((Camera.Size)localObject3).width))) {
-          localParameters.setPreviewSize(((Camera.Size)localObject2).width, ((Camera.Size)localObject2).height);
+          if ((localObject1 != null) && ((((Camera.Size)localObject1).height != ((Camera.Size)localObject3).height) || (((Camera.Size)localObject1).width != ((Camera.Size)localObject3).width))) {
+            localParameters.setPreviewSize(((Camera.Size)localObject1).width, ((Camera.Size)localObject1).height);
+          }
         }
       }
-    }
-    catch (IllegalAccessException localIllegalAccessException1)
-    {
-      for (;;)
-      {
-        localIllegalAccessException1.printStackTrace();
-        continue;
-        if ((paramInt1 != 0) && (paramInt2 != 0))
-        {
-          localSize1 = a(localList, paramInt1, paramInt2);
-          if (localSize1 != null) {
-            break;
-          }
-          localSize1 = a(localList, 640, 480);
-        }
-        else
-        {
-          localSize1 = a(localSize1, 1280, 720);
-        }
-      }
-    }
-    catch (InvocationTargetException localInvocationTargetException1)
-    {
-      for (;;)
+      catch (InvocationTargetException localInvocationTargetException1)
       {
         localInvocationTargetException1.printStackTrace();
-        continue;
-        if (localParameters.getPreviewFormat() != 17) {
-          localParameters.setPreviewFormat(17);
-        }
       }
+      catch (IllegalAccessException localIllegalAccessException1)
+      {
+        localIllegalAccessException1.printStackTrace();
+      }
+      catch (IllegalArgumentException localIllegalArgumentException1)
+      {
+        localIllegalArgumentException1.printStackTrace();
+      }
+    }
+    Object localObject2 = a;
+    if (localObject2 != null) {
+      try
+      {
+        localObject2 = (List)((Method)localObject2).invoke(localParameters, (Object[])null);
+        if (localObject2 == null) {
+          break label540;
+        }
+        paramInt1 = a((List)localObject2);
+        if (paramInt1 == -1) {
+          break label540;
+        }
+        localParameters.setPreviewFormat(paramInt1);
+      }
+      catch (InvocationTargetException localInvocationTargetException2)
+      {
+        localInvocationTargetException2.printStackTrace();
+      }
+      catch (IllegalAccessException localIllegalAccessException2)
+      {
+        localIllegalAccessException2.printStackTrace();
+      }
+      catch (IllegalArgumentException localIllegalArgumentException2)
+      {
+        localIllegalArgumentException2.printStackTrace();
+      }
+    } else if (localParameters.getPreviewFormat() != 17) {
+      localParameters.setPreviewFormat(17);
+    }
+    try
+    {
+      label540:
+      a(localParameters, paramInt3);
+      a(localParameters);
+      paramCamera.setParameters(localParameters);
+      return;
+    }
+    catch (RuntimeException paramCamera)
+    {
+      paramCamera.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.hiar.sdk.camera.CameraParameters
  * JD-Core Version:    0.7.0.1
  */

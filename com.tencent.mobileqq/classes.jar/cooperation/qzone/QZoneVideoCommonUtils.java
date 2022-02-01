@@ -5,17 +5,15 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.text.TextUtils;
+import com.tencent.aelight.camera.util.api.ICaptureUtil;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
-import com.tencent.mobileqq.shortvideo.mediacodec.ShortVideoCodec;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQZoneVideoCommonUtilsProxy;
 import com.tencent.qzonehub.api.utils.IQzoneHardwareRestriction;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.cache.CacheManager;
 import cooperation.qzone.util.CpuUtils;
 import cooperation.qzone.util.PerfTracer;
-import mqq.app.MobileQQ;
 
 public class QZoneVideoCommonUtils
 {
@@ -40,32 +38,46 @@ public class QZoneVideoCommonUtils
     }
     QZoneVideoCommonUtils.VideoSupport localVideoSupport1 = getRecordSupport();
     QZoneVideoCommonUtils.VideoSupport localVideoSupport2 = getTrimSupport();
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneVideoCommonUtils", 2, "support record=" + localVideoSupport1.isAvailable() + ", support trim=" + localVideoSupport2.isAvailable());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("support record=");
+      localStringBuilder.append(localVideoSupport1.isAvailable());
+      localStringBuilder.append(", support trim=");
+      localStringBuilder.append(localVideoSupport2.isAvailable());
+      QLog.d("QZoneVideoCommonUtils", 2, localStringBuilder.toString());
     }
     if ((!localVideoSupport1.isAvailable()) && (!localVideoSupport2.isAvailable()))
     {
-      if (localVideoSupport1.isShowTip()) {}
-      for (paramString = localVideoSupport1.getTip();; paramString = null)
-      {
-        if (paramString != null)
-        {
-          paramBundle = paramString;
-          if (paramString.length() != 0) {}
-        }
-        else
-        {
-          paramBundle = paramActivity.getString(2131718011);
-        }
-        if (paramonForwardVideoActivityFailedListener != null) {
-          paramonForwardVideoActivityFailedListener.onFail(paramActivity, paramBundle);
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.w("QZoneVideoCommonUtils", 2, "qzone video is not supported, recordSupport tips=" + localVideoSupport1.getTip() + ",trimSupport tips=" + localVideoSupport2.getTip() + ",show tips=" + paramBundle);
-        return;
+      if (localVideoSupport1.isShowTip()) {
+        paramString = localVideoSupport1.getTip();
+      } else {
+        paramString = null;
       }
+      if (paramString != null)
+      {
+        paramBundle = paramString;
+        if (paramString.length() != 0) {}
+      }
+      else
+      {
+        paramBundle = paramActivity.getString(2131717670);
+      }
+      if (paramonForwardVideoActivityFailedListener != null) {
+        paramonForwardVideoActivityFailedListener.onFail(paramActivity, paramBundle);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramActivity = new StringBuilder();
+        paramActivity.append("qzone video is not supported, recordSupport tips=");
+        paramActivity.append(localVideoSupport1.getTip());
+        paramActivity.append(",trimSupport tips=");
+        paramActivity.append(localVideoSupport2.getTip());
+        paramActivity.append(",show tips=");
+        paramActivity.append(paramBundle);
+        QLog.w("QZoneVideoCommonUtils", 2, paramActivity.toString());
+      }
+      return;
     }
     installVideoActivityForOther(paramLong, paramActivity, false, false, paramString, paramBundle);
     PerfTracer.traceEnd("Video_component_pre_launch");
@@ -81,33 +93,47 @@ public class QZoneVideoCommonUtils
     }
     QZoneVideoCommonUtils.VideoSupport localVideoSupport1 = getRecordSupport();
     QZoneVideoCommonUtils.VideoSupport localVideoSupport2 = getTrimSupport();
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneVideoCommonUtils", 2, "support record=" + localVideoSupport1.isAvailable() + ", support trim=" + localVideoSupport2.isAvailable());
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("support record=");
+      ((StringBuilder)localObject).append(localVideoSupport1.isAvailable());
+      ((StringBuilder)localObject).append(", support trim=");
+      ((StringBuilder)localObject).append(localVideoSupport2.isAvailable());
+      QLog.d("QZoneVideoCommonUtils", 2, ((StringBuilder)localObject).toString());
     }
     if ((!localVideoSupport1.isAvailable()) && (!localVideoSupport2.isAvailable()))
     {
-      if (localVideoSupport1.isShowTip()) {}
-      for (paramString = localVideoSupport1.getTip();; paramString = null)
-      {
-        String str;
-        if (paramString != null)
-        {
-          str = paramString;
-          if (paramString.length() != 0) {}
-        }
-        else
-        {
-          str = paramActivity.getString(2131718011);
-        }
-        if (paramonForwardVideoActivityFailedListener != null) {
-          paramonForwardVideoActivityFailedListener.onFail(paramActivity, str);
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.w("QZoneVideoCommonUtils", 2, "qzone video is not supported, recordSupport tips=" + localVideoSupport1.getTip() + ",trimSupport tips=" + localVideoSupport2.getTip() + ",show tips=" + str);
-        return;
+      if (localVideoSupport1.isShowTip()) {
+        paramString = localVideoSupport1.getTip();
+      } else {
+        paramString = null;
       }
+      if (paramString != null)
+      {
+        localObject = paramString;
+        if (paramString.length() != 0) {}
+      }
+      else
+      {
+        localObject = paramActivity.getString(2131717670);
+      }
+      if (paramonForwardVideoActivityFailedListener != null) {
+        paramonForwardVideoActivityFailedListener.onFail(paramActivity, (String)localObject);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramActivity = new StringBuilder();
+        paramActivity.append("qzone video is not supported, recordSupport tips=");
+        paramActivity.append(localVideoSupport1.getTip());
+        paramActivity.append(",trimSupport tips=");
+        paramActivity.append(localVideoSupport2.getTip());
+        paramActivity.append(",show tips=");
+        paramActivity.append((String)localObject);
+        QLog.w("QZoneVideoCommonUtils", 2, paramActivity.toString());
+      }
+      return;
     }
     installVideoActivity(paramLong, paramActivity, localVideoSupport1.isAvailable(), localVideoSupport2.isAvailable(), paramString);
     PerfTracer.traceEnd("Video_component_pre_launch");
@@ -115,10 +141,7 @@ public class QZoneVideoCommonUtils
   
   public static void forwardToQCircleEdit(Activity paramActivity, Bundle paramBundle)
   {
-    Intent localIntent = new Intent(paramActivity.getApplicationContext(), QZoneVideoDownloadActivity.class);
-    localIntent.putExtras(paramBundle);
-    localIntent.putExtra("from_qcircle", true);
-    paramActivity.startActivity(localIntent);
+    ((IQZoneVideoCommonUtilsProxy)QRoute.api(IQZoneVideoCommonUtilsProxy.class)).forwardToQCircleEdit(paramActivity, paramBundle);
   }
   
   private static void getCpuFamily()
@@ -162,8 +185,9 @@ public class QZoneVideoCommonUtils
   
   public static QZoneVideoCommonUtils.VideoSupport getRecordSupport()
   {
+    Object localObject = QzoneConfig.getInstance();
     int j = -1;
-    if (QzoneConfig.getInstance().getConfig("MiniVideo", "SupportMiniVideo", -1) == 0)
+    if (((QzoneConfig)localObject).getConfig("MiniVideo", "SupportMiniVideo", -1) == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.i("QZoneVideoCommonUtils", 2, "getRecordSupport() severBlackList");
@@ -171,8 +195,12 @@ public class QZoneVideoCommonUtils
       return QZoneVideoCommonUtils.VideoSupport.BlackListBanned;
     }
     int i = QzoneConfig.getInstance().getConfig("TrimVideo", "NeedLocalBlackList", 1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneVideoCommonUtils", 2, "Build.Model=" + Build.MODEL);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Build.Model=");
+      ((StringBuilder)localObject).append(Build.MODEL);
+      QLog.d("QZoneVideoCommonUtils", 2, ((StringBuilder)localObject).toString());
     }
     if ((i > 0) && ("GN9000L|ASUS_T00F|H30-T00".contains(Build.MODEL)))
     {
@@ -186,15 +214,6 @@ public class QZoneVideoCommonUtils
       if (QLog.isColorLevel()) {
         QLog.i("QZoneVideoCommonUtils", 2, "getRecordSupport() severWhiteList");
       }
-      i = QzoneConfig.getInstance().getConfig("MiniVideo", "MinSdkVersion", 21);
-      j = Build.VERSION.SDK_INT;
-      if (j < i)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QZoneVideoCommonUtils", 2, "getRecordSupport() localSdkVersion=" + j + " serverSdkVersion=" + i);
-        }
-        return QZoneVideoCommonUtils.VideoSupport.OSVersionBanned;
-      }
     }
     else
     {
@@ -204,59 +223,106 @@ public class QZoneVideoCommonUtils
       if (mCpuFeature < 0L) {
         mCpuFeature = CpuUtils.getCpuProperty();
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneVideoCommonUtils", 2, "getRecordSupport() mCpuFamily=" + mCpuFamily + " mCpuFeature=" + mCpuFeature);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getRecordSupport() mCpuFamily=");
+        ((StringBuilder)localObject).append(mCpuFamily);
+        ((StringBuilder)localObject).append(" mCpuFeature=");
+        ((StringBuilder)localObject).append(mCpuFeature);
+        QLog.i("QZoneVideoCommonUtils", 2, ((StringBuilder)localObject).toString());
       }
       int k = QzoneConfig.getInstance().getConfig("MiniVideo", "SupportedCpuFamily", 2);
-      if (mCpuFamily >= 0) {}
-      for (i = 1 << mCpuFamily; (i & k) == 0; i = 1)
+      i = mCpuFamily;
+      if (i >= 0) {
+        i = 1 << i;
+      } else {
+        i = 1;
+      }
+      if ((i & k) == 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("QZoneVideoCommonUtils", 2, "getRecordSupport() serverCpuFamily=" + k + " mCpuFamily=" + mCpuFamily);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getRecordSupport() serverCpuFamily=");
+          ((StringBuilder)localObject).append(k);
+          ((StringBuilder)localObject).append(" mCpuFamily=");
+          ((StringBuilder)localObject).append(mCpuFamily);
+          QLog.i("QZoneVideoCommonUtils", 2, ((StringBuilder)localObject).toString());
         }
         return QZoneVideoCommonUtils.VideoSupport.OrderSetBanned;
       }
-      Object localObject = QzoneConfig.getInstance().getConfig("MiniVideo", "RequiredCpuFeatures", "#101##").split("#", -1);
-      if (mCpuFamily >= localObject.length) {
-        if (QLog.isColorLevel()) {
-          QLog.i("QZoneVideoCommonUtils", 2, "getRecordSupport() mCpuFamily=" + mCpuFamily + " serverCpuFeatureList.length=" + localObject.length);
+      localObject = QzoneConfig.getInstance().getConfig("MiniVideo", "RequiredCpuFeatures", "#101##").split("#", -1);
+      i = mCpuFamily;
+      StringBuilder localStringBuilder;
+      if (i >= localObject.length)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getRecordSupport() mCpuFamily=");
+          localStringBuilder.append(mCpuFamily);
+          localStringBuilder.append(" serverCpuFeatureList.length=");
+          localStringBuilder.append(localObject.length);
+          QLog.i("QZoneVideoCommonUtils", 2, localStringBuilder.toString());
         }
       }
-      label441:
-      label628:
-      for (;;)
+      else
       {
-        if (!((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(0, 1))
+        localObject = localObject[i];
+        i = ((String)localObject).length() - 1;
+        while (i >= 0)
         {
-          return QZoneVideoCommonUtils.VideoSupport.HardwareLimited;
-          localObject = localObject[mCpuFamily];
-          i = ((String)localObject).length() - 1;
-        }
-        for (;;)
-        {
-          if (i < 0) {
-            break label628;
-          }
           j += 1;
           if (j > 63)
           {
             if (!QLog.isColorLevel()) {
-              break label441;
+              break;
             }
-            QLog.i("QZoneVideoCommonUtils", 2, "getRecordSupport() longValueIndex>63  serverFeature=" + (String)localObject + " mCpuFeature=" + mCpuFeature);
-            break label441;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getRecordSupport() longValueIndex>63  serverFeature=");
+            localStringBuilder.append((String)localObject);
+            localStringBuilder.append(" mCpuFeature=");
+            localStringBuilder.append(mCpuFeature);
+            QLog.i("QZoneVideoCommonUtils", 2, localStringBuilder.toString());
             break;
           }
           if ((((String)localObject).charAt(i) == '1') && ((mCpuFeature & 1L << j) == 0L))
           {
-            if (QLog.isColorLevel()) {
-              QLog.i("QZoneVideoCommonUtils", 2, "getRecordSupport() cpuFeature unsatisfied. bitIndex=" + i + " serverFeature=" + (String)localObject + " mCpuFeature=" + mCpuFeature);
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("getRecordSupport() cpuFeature unsatisfied. bitIndex=");
+              localStringBuilder.append(i);
+              localStringBuilder.append(" serverFeature=");
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append(" mCpuFeature=");
+              localStringBuilder.append(mCpuFeature);
+              QLog.i("QZoneVideoCommonUtils", 2, localStringBuilder.toString());
             }
             return QZoneVideoCommonUtils.VideoSupport.OrderSetBanned;
           }
           i -= 1;
         }
       }
+      if (!((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(0, 1)) {
+        return QZoneVideoCommonUtils.VideoSupport.HardwareLimited;
+      }
+    }
+    i = QzoneConfig.getInstance().getConfig("MiniVideo", "MinSdkVersion", 21);
+    j = Build.VERSION.SDK_INT;
+    if (j < i)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getRecordSupport() localSdkVersion=");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(" serverSdkVersion=");
+        ((StringBuilder)localObject).append(i);
+        QLog.i("QZoneVideoCommonUtils", 2, ((StringBuilder)localObject).toString());
+      }
+      return QZoneVideoCommonUtils.VideoSupport.OSVersionBanned;
     }
     if (!CacheManager.isExternalAvailable())
     {
@@ -268,12 +334,18 @@ public class QZoneVideoCommonUtils
     long l = getFreeSpace();
     if (l < 62914560L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneVideoCommonUtils", 2, "getRecordSupport() sdCardFreeSpace=" + l + " STORAGE_LIMIT=" + 62914560L);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getRecordSupport() sdCardFreeSpace=");
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(" STORAGE_LIMIT=");
+        ((StringBuilder)localObject).append(62914560L);
+        QLog.i("QZoneVideoCommonUtils", 2, ((StringBuilder)localObject).toString());
       }
       return QZoneVideoCommonUtils.VideoSupport.ExternalSpaceBanned;
     }
-    if (!CaptureUtil.a())
+    if (!((ICaptureUtil)QRoute.api(ICaptureUtil.class)).supportCapture())
     {
       if (QLog.isColorLevel()) {
         QLog.i("QZoneVideoCommonUtils", 2, "CaptureUtil.supportCapture is false");
@@ -285,54 +357,18 @@ public class QZoneVideoCommonUtils
   
   public static QZoneVideoCommonUtils.VideoSupport getTrimHWSupport()
   {
-    int i = 1;
-    if (QzoneConfig.getInstance().getConfig("MiniVideo", "videoTrimEnableHw", 1) != 1) {
-      return QZoneVideoCommonUtils.VideoSupport.BlackListBanned;
-    }
-    if (QzoneConfig.getInstance().getConfig("TrimVideo", "SupportTrimVideoHW", -1) == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneVideoCommonUtils", 2, "getTrimHWSupport() severBlackList");
-      }
-      return QZoneVideoCommonUtils.VideoSupport.BlackListBanned;
-    }
-    int j = QzoneConfig.getInstance().getConfig("TrimVideo", "NeedLocalBlackList", 1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneVideoCommonUtils", 2, "Build.Model=" + Build.MODEL);
-    }
-    if ((j > 0) && ("GT-N7100|".contains(Build.MODEL)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneVideoCommonUtils", 2, "getTrimHWSupport() localBlackList");
-      }
-      return QZoneVideoCommonUtils.VideoSupport.BlackListBanned;
-    }
-    j = QzoneConfig.getInstance().getConfig("TrimVideo", "MinSdkVersionHw", 18);
-    int k = Build.VERSION.SDK_INT;
-    if (k < j)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneVideoCommonUtils", 2, "getTrimHWSupport() localSdkVersion=" + k + " serverSdkVersion=" + j);
-      }
-      return QZoneVideoCommonUtils.VideoSupport.OSVersionBanned;
-    }
-    j = ShortVideoCodec.checkSupportMediaCodecFeature(MobileQQ.getContext());
-    if (((j & 0x1) > 0) && ((j & 0x2) > 0)) {}
-    while (i == 0)
-    {
-      return QZoneVideoCommonUtils.VideoSupport.CodecFeatureBanned;
-      i = 0;
-    }
-    return QZoneVideoCommonUtils.VideoSupport.Available;
+    return ((IQZoneVideoCommonUtilsProxy)QRoute.api(IQZoneVideoCommonUtilsProxy.class)).getTrimHWSupport();
   }
   
   public static QZoneVideoCommonUtils.VideoSupport getTrimSupport()
   {
-    QZoneVideoCommonUtils.VideoSupport localVideoSupport = getTrimHWSupport();
-    if (localVideoSupport.isAvailable()) {
-      return localVideoSupport;
+    Object localObject = getTrimHWSupport();
+    if (((QZoneVideoCommonUtils.VideoSupport)localObject).isAvailable()) {
+      return localObject;
     }
-    if (QzoneConfig.getInstance().getConfig("TrimVideo", "SupportTrimVideo", -1) == 0)
+    localObject = QzoneConfig.getInstance();
+    int j = -1;
+    if (((QzoneConfig)localObject).getConfig("TrimVideo", "SupportTrimVideo", -1) == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.i("QZoneVideoCommonUtils", 2, "getTrimSupport() severBlackList");
@@ -340,8 +376,12 @@ public class QZoneVideoCommonUtils
       return QZoneVideoCommonUtils.VideoSupport.BlackListBanned;
     }
     int i = QzoneConfig.getInstance().getConfig("TrimVideo", "NeedLocalBlackList", 1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneVideoCommonUtils", 2, "Build.Model=" + Build.MODEL);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Build.Model=");
+      ((StringBuilder)localObject).append(Build.MODEL);
+      QLog.d("QZoneVideoCommonUtils", 2, ((StringBuilder)localObject).toString());
     }
     if ((i > 0) && ("M032|ASUS_T00F".contains(Build.MODEL)))
     {
@@ -350,20 +390,10 @@ public class QZoneVideoCommonUtils
       }
       return QZoneVideoCommonUtils.VideoSupport.BlackListBanned;
     }
-    int j;
     if (QzoneConfig.getInstance().getConfig("TrimVideo", "IgnoreLocalJudge", -1) == 1)
     {
       if (QLog.isColorLevel()) {
         QLog.i("QZoneVideoCommonUtils", 2, "getTrimSupport() severWhiteList");
-      }
-      i = QzoneConfig.getInstance().getConfig("TrimVideo", "MinSdkVersion", 14);
-      j = Build.VERSION.SDK_INT;
-      if (j < i)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QZoneVideoCommonUtils", 2, "getTrimSupport() localSdkVersion=" + j + " serverSdkVersion=" + i);
-        }
-        return QZoneVideoCommonUtils.VideoSupport.OSVersionBanned;
       }
     }
     else
@@ -371,76 +401,117 @@ public class QZoneVideoCommonUtils
       if (mCpuFamily < 0) {
         getCpuFamily();
       }
-      if (mCpuFeature < 0L) {}
-      for (;;)
+      if (mCpuFeature >= 0L) {}
+    }
+    try
+    {
+      mCpuFeature = CpuUtils.getCpuProperty();
+    }
+    catch (Exception localException)
+    {
+      label204:
+      int k;
+      StringBuilder localStringBuilder;
+      long l;
+      break label204;
+    }
+    return QZoneVideoCommonUtils.VideoSupport.OrderSetBanned;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getTrimSupport() mCpuFamily=");
+      ((StringBuilder)localObject).append(mCpuFamily);
+      ((StringBuilder)localObject).append(" mCpuFeature=");
+      ((StringBuilder)localObject).append(mCpuFeature);
+      QLog.i("QZoneVideoCommonUtils", 2, ((StringBuilder)localObject).toString());
+    }
+    k = QzoneConfig.getInstance().getConfig("TrimVideo", "SupportedCpuFamily", 2);
+    i = mCpuFamily;
+    if (i < 0) {
+      i = 0;
+    }
+    if ((1 << i & k) == 0)
+    {
+      if (QLog.isColorLevel())
       {
-        try
-        {
-          mCpuFeature = CpuUtils.getCpuProperty();
-          if (QLog.isColorLevel()) {
-            QLog.i("QZoneVideoCommonUtils", 2, "getTrimSupport() mCpuFamily=" + mCpuFamily + " mCpuFeature=" + mCpuFeature);
-          }
-          j = QzoneConfig.getInstance().getConfig("TrimVideo", "SupportedCpuFamily", 2);
-          if (mCpuFamily >= 0)
-          {
-            i = mCpuFamily;
-            if ((1 << i & j) != 0) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("QZoneVideoCommonUtils", 2, "getTrimSupport() serverCpuFamily=" + j + " mCpuFamily=" + mCpuFamily);
-            }
-            return QZoneVideoCommonUtils.VideoSupport.OrderSetBanned;
-          }
-        }
-        catch (Exception localException)
-        {
-          return QZoneVideoCommonUtils.VideoSupport.OrderSetBanned;
-        }
-        i = 0;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getTrimSupport() serverCpuFamily=");
+        ((StringBuilder)localObject).append(k);
+        ((StringBuilder)localObject).append(" mCpuFamily=");
+        ((StringBuilder)localObject).append(mCpuFamily);
+        QLog.i("QZoneVideoCommonUtils", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = QzoneConfig.getInstance().getConfig("TrimVideo", "RequiredCpuFeatures", "#101##").split("#", -1);
-      if (mCpuFamily >= localObject.length) {
-        if (QLog.isColorLevel()) {
-          QLog.i("QZoneVideoCommonUtils", 2, "getTrimSupport() mCpuFamily=" + mCpuFamily + " serverCpuFeatureList.length=" + localObject.length);
-        }
-      }
-      label654:
-      for (;;)
+      return QZoneVideoCommonUtils.VideoSupport.OrderSetBanned;
+    }
+    localObject = QzoneConfig.getInstance().getConfig("TrimVideo", "RequiredCpuFeatures", "#101##").split("#", -1);
+    i = mCpuFamily;
+    if (i >= localObject.length)
+    {
+      if (QLog.isColorLevel())
       {
-        label465:
-        if (!((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(0, 1))
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getTrimSupport() mCpuFamily=");
+        localStringBuilder.append(mCpuFamily);
+        localStringBuilder.append(" serverCpuFeatureList.length=");
+        localStringBuilder.append(localObject.length);
+        QLog.i("QZoneVideoCommonUtils", 2, localStringBuilder.toString());
+      }
+    }
+    else
+    {
+      localObject = localObject[i];
+      i = ((String)localObject).length() - 1;
+      while (i >= 0)
+      {
+        j += 1;
+        if (j > 63)
         {
-          return QZoneVideoCommonUtils.VideoSupport.HardwareLimited;
-          localObject = localObject[mCpuFamily];
-          i = ((String)localObject).length() - 1;
-          j = -1;
-        }
-        for (;;)
-        {
-          if (i < 0) {
-            break label654;
-          }
-          j += 1;
-          if (j > 63)
-          {
-            if (!QLog.isColorLevel()) {
-              break label465;
-            }
-            QLog.i("QZoneVideoCommonUtils", 2, "getTrimSupport() longValueIndex>63  serverFeature=" + (String)localObject + " mCpuFeature=" + mCpuFeature);
-            break label465;
+          if (!QLog.isColorLevel()) {
             break;
           }
-          if ((((String)localObject).charAt(i) == '1') && ((mCpuFeature & 1L << j) == 0L))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("QZoneVideoCommonUtils", 2, "getTrimSupport() cpuFeature unsatisfied. bitIndex=" + i + " serverFeature=" + (String)localObject + " mCpuFeature=" + mCpuFeature);
-            }
-            return QZoneVideoCommonUtils.VideoSupport.OrderSetBanned;
-          }
-          i -= 1;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getTrimSupport() longValueIndex>63  serverFeature=");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(" mCpuFeature=");
+          localStringBuilder.append(mCpuFeature);
+          QLog.i("QZoneVideoCommonUtils", 2, localStringBuilder.toString());
+          break;
         }
+        if ((((String)localObject).charAt(i) == '1') && ((mCpuFeature & 1L << j) == 0L))
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getTrimSupport() cpuFeature unsatisfied. bitIndex=");
+            localStringBuilder.append(i);
+            localStringBuilder.append(" serverFeature=");
+            localStringBuilder.append((String)localObject);
+            localStringBuilder.append(" mCpuFeature=");
+            localStringBuilder.append(mCpuFeature);
+            QLog.i("QZoneVideoCommonUtils", 2, localStringBuilder.toString());
+          }
+          return QZoneVideoCommonUtils.VideoSupport.OrderSetBanned;
+        }
+        i -= 1;
       }
+    }
+    if (!((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(0, 1)) {
+      return QZoneVideoCommonUtils.VideoSupport.HardwareLimited;
+    }
+    i = QzoneConfig.getInstance().getConfig("TrimVideo", "MinSdkVersion", 14);
+    j = Build.VERSION.SDK_INT;
+    if (j < i)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getTrimSupport() localSdkVersion=");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(" serverSdkVersion=");
+        ((StringBuilder)localObject).append(i);
+        QLog.i("QZoneVideoCommonUtils", 2, ((StringBuilder)localObject).toString());
+      }
+      return QZoneVideoCommonUtils.VideoSupport.OSVersionBanned;
     }
     if (!CacheManager.isExternalAvailable())
     {
@@ -449,11 +520,17 @@ public class QZoneVideoCommonUtils
       }
       return QZoneVideoCommonUtils.VideoSupport.NoExternalBanned;
     }
-    long l = getFreeSpace();
+    l = getFreeSpace();
     if (l < 62914560L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneVideoCommonUtils", 2, "getTrimSupport() sdCardFreeSpace=" + l + " STORAGE_LIMIT=" + 62914560L);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getTrimSupport() sdCardFreeSpace=");
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(" STORAGE_LIMIT=");
+        ((StringBuilder)localObject).append(62914560L);
+        QLog.i("QZoneVideoCommonUtils", 2, ((StringBuilder)localObject).toString());
       }
       return QZoneVideoCommonUtils.VideoSupport.ExternalSpaceBanned;
     }
@@ -462,113 +539,34 @@ public class QZoneVideoCommonUtils
   
   public static void gotoRecordPreview(Activity paramActivity, int paramInt, String paramString, long paramLong, Bundle paramBundle)
   {
-    Intent localIntent = new Intent(paramActivity.getApplicationContext(), QZoneVideoDownloadActivity.class);
-    localIntent.putExtra("video_type", paramInt);
-    localIntent.putExtra("file_send_path", paramString);
-    localIntent.putExtra("preview_video", true);
-    localIntent.putExtra("start_time", 0);
-    localIntent.putExtra("end_time", paramLong);
-    localIntent.putExtra("encode_video_params", paramBundle);
-    localIntent.putExtra("video_refer", "QZonePublishMoodTabActivity");
-    paramActivity.startActivity(localIntent);
+    ((IQZoneVideoCommonUtilsProxy)QRoute.api(IQZoneVideoCommonUtilsProxy.class)).gotoRecordPreview(paramActivity, paramInt, paramString, paramLong, paramBundle);
   }
   
   public static void installVideoActivity(long paramLong, Activity paramActivity, boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneVideoCommonUtils", 2, "installVideoActivity");
-    }
-    Intent localIntent = new Intent(paramActivity.getApplicationContext(), QZoneVideoDownloadActivity.class);
-    localIntent.putExtra("support_record", paramBoolean1);
-    localIntent.putExtra("support_trim", paramBoolean2);
-    localIntent.putExtra("uin", String.valueOf(paramLong));
-    localIntent.putExtra("flow_camera_capture_mode", false);
-    localIntent.putExtra("entry_source", 9);
-    if (!TextUtils.isEmpty(paramString)) {
-      localIntent.putExtra("video_refer", paramString);
-    }
-    paramActivity.startActivity(localIntent);
+    ((IQZoneVideoCommonUtilsProxy)QRoute.api(IQZoneVideoCommonUtilsProxy.class)).installVideoActivity(paramLong, paramActivity, paramBoolean1, paramBoolean2, paramString);
   }
   
   public static void installVideoActivity(long paramLong, Activity paramActivity, boolean paramBoolean1, boolean paramBoolean2, String paramString1, boolean paramBoolean3, boolean paramBoolean4, String paramString2, boolean paramBoolean5, String paramString3, String paramString4, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneVideoCommonUtils", 2, "installVideoActivity");
-    }
-    Intent localIntent = new Intent(paramActivity.getApplicationContext(), QZoneVideoDownloadActivity.class);
-    if (paramIntent != null) {
-      localIntent.putExtras(paramIntent);
-    }
-    localIntent.putExtra("support_record", paramBoolean1);
-    localIntent.putExtra("support_trim", paramBoolean2);
-    localIntent.putExtra("uin", String.valueOf(paramLong));
-    localIntent.putExtra("is_qzone_vip", paramBoolean3);
-    localIntent.putExtra("enable_edit_video", paramBoolean4);
-    localIntent.putExtra("topicId", paramString2);
-    localIntent.putExtra("enterPtu", paramBoolean5);
-    if (!TextUtils.isEmpty(paramString3))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneVideoCommonUtils", 2, "callback:" + paramString3 + " id:" + paramString4);
-      }
-      localIntent.putExtra("callback", paramString3);
-      localIntent.putExtra("dongxiao_id", paramString4);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      localIntent.putExtra("video_refer", paramString1);
-    }
-    paramActivity.startActivity(localIntent);
+    ((IQZoneVideoCommonUtilsProxy)QRoute.api(IQZoneVideoCommonUtilsProxy.class)).installVideoActivity(paramLong, paramActivity, paramBoolean1, paramBoolean2, paramString1, paramBoolean3, paramBoolean4, paramString2, paramBoolean5, paramString3, paramString4, paramIntent);
   }
   
   public static void installVideoActivity(Activity paramActivity, String paramString1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, String paramString2, String paramString3, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneVideoCommonUtils", 2, "installVideoActivity");
-    }
-    Intent localIntent = new Intent(paramActivity.getApplicationContext(), QZoneVideoDownloadActivity.class);
-    if (paramIntent != null) {
-      localIntent.putExtras(paramIntent);
-    }
-    localIntent.putExtra("support_record", getRecordSupport().isAvailable());
-    localIntent.putExtra("support_trim", getTrimSupport().isAvailable());
-    localIntent.putExtra("uin", "0");
-    localIntent.putExtra("is_qzone_vip", paramBoolean1);
-    localIntent.putExtra("enable_edit_video", true);
-    localIntent.putExtra("enterPtu", true);
-    localIntent.putExtra("enable_local_button", paramBoolean6);
-    localIntent.putExtra("enable_edit_button", paramBoolean3);
-    localIntent.putExtra("callback", "qzoneOpenDongXiao");
-    localIntent.putExtra("dongxiao_id", paramString2);
-    localIntent.putExtra("enable_priv_list", false);
-    localIntent.putExtra("enable_input_text", paramBoolean2);
-    if (paramBoolean2) {
-      localIntent.putExtra("enable_sync_qzone", paramBoolean4);
-    }
-    localIntent.putExtra("enable_origin_video", paramBoolean5);
-    localIntent.putExtra("confirm_text", paramString3);
-    if (!TextUtils.isEmpty(paramString1)) {
-      localIntent.putExtra("video_refer", paramString1);
-    }
-    paramActivity.startActivity(localIntent);
+    boolean bool1 = getRecordSupport().isAvailable();
+    boolean bool2 = getTrimSupport().isAvailable();
+    ((IQZoneVideoCommonUtilsProxy)QRoute.api(IQZoneVideoCommonUtilsProxy.class)).installVideoActivity(bool1, bool2, paramActivity, paramString1, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramBoolean6, paramString2, paramString3, paramIntent);
   }
   
   public static void installVideoActivityForOther(long paramLong, Activity paramActivity, boolean paramBoolean1, boolean paramBoolean2, String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneVideoCommonUtils", 2, "installVideoActivityForEditVideo");
-    }
-    Intent localIntent = new Intent(paramActivity.getApplicationContext(), QZoneVideoDownloadActivity.class);
-    localIntent.putExtra("uin", String.valueOf(paramLong));
-    if (!TextUtils.isEmpty(paramString)) {
-      localIntent.putExtra("video_refer", paramString);
-    }
-    localIntent.putExtras(paramBundle);
-    paramActivity.startActivity(localIntent);
+    ((IQZoneVideoCommonUtilsProxy)QRoute.api(IQZoneVideoCommonUtilsProxy.class)).installVideoActivityForOther(paramLong, paramActivity, paramBoolean1, paramBoolean2, paramString, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneVideoCommonUtils
  * JD-Core Version:    0.7.0.1
  */

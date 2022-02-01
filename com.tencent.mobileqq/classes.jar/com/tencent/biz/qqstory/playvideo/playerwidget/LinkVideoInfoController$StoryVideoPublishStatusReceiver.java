@@ -17,10 +17,13 @@ public class LinkVideoInfoController$StoryVideoPublishStatusReceiver
   
   public void a(@NonNull LinkVideoInfoController paramLinkVideoInfoController, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if ((LinkVideoInfoController.a(paramLinkVideoInfoController) == null) || (paramStoryVideoPublishStatusEvent.a == null) || (!TextUtils.equals(LinkVideoInfoController.a(paramLinkVideoInfoController).a, paramStoryVideoPublishStatusEvent.a.mVid))) {
-      return;
+    if ((LinkVideoInfoController.a(paramLinkVideoInfoController) != null) && (paramStoryVideoPublishStatusEvent.a != null))
+    {
+      if (!TextUtils.equals(LinkVideoInfoController.a(paramLinkVideoInfoController).a, paramStoryVideoPublishStatusEvent.a.mVid)) {
+        return;
+      }
+      paramLinkVideoInfoController.a.i();
     }
-    paramLinkVideoInfoController.a.i();
   }
   
   public Class acceptEventClass()
@@ -30,7 +33,7 @@ public class LinkVideoInfoController$StoryVideoPublishStatusReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.LinkVideoInfoController.StoryVideoPublishStatusReceiver
  * JD-Core Version:    0.7.0.1
  */

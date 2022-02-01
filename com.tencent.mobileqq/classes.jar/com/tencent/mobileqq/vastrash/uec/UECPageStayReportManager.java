@@ -14,18 +14,16 @@ import mqq.app.AppRuntime;
 
 public class UECPageStayReportManager
 {
-  public static long a;
+  public static long a = 3L;
   private final ArrayList<QQStayTimeInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  static
-  {
-    jdField_a_of_type_Long = 3L;
-  }
-  
   private long a()
   {
-    QLog.i("UECPageStayReportManager", 1, "UECReportTimeLongTask time = " + jdField_a_of_type_Long);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UECReportTimeLongTask time = ");
+    localStringBuilder.append(jdField_a_of_type_Long);
+    QLog.i("UECPageStayReportManager", 1, localStringBuilder.toString());
     return jdField_a_of_type_Long * 1000L;
   }
   
@@ -36,21 +34,25 @@ public class UECPageStayReportManager
   
   public static void a(UECPageStayTimeReport.ReportItem paramReportItem)
   {
-    if (!a()) {
-      QLog.e("UECPageStayReportManager", 1, "startReport switch close");
-    }
-    do
+    if (!a())
     {
+      QLog.e("UECPageStayReportManager", 1, "startReport switch close");
       return;
-      QQStayTimeInfo localQQStayTimeInfo = new QQStayTimeInfo();
-      localQQStayTimeInfo.enter_time = paramReportItem.jdField_a_of_type_Long;
-      localQQStayTimeInfo.page_info = paramReportItem.jdField_a_of_type_JavaLangString;
-      localQQStayTimeInfo.page_info_ext = paramReportItem.jdField_b_of_type_JavaLangString;
-      localQQStayTimeInfo.report_time = paramReportItem.jdField_b_of_type_Long;
-      localQQStayTimeInfo.stay_time = paramReportItem.a();
-      a().a(localQQStayTimeInfo);
-    } while (!QLog.isColorLevel());
-    QLog.e("UECPageStayReportManager", 2, "startReport:  = " + paramReportItem.toString());
+    }
+    Object localObject = new QQStayTimeInfo();
+    ((QQStayTimeInfo)localObject).enter_time = paramReportItem.jdField_a_of_type_Long;
+    ((QQStayTimeInfo)localObject).page_info = paramReportItem.jdField_a_of_type_JavaLangString;
+    ((QQStayTimeInfo)localObject).page_info_ext = paramReportItem.jdField_b_of_type_JavaLangString;
+    ((QQStayTimeInfo)localObject).report_time = paramReportItem.jdField_b_of_type_Long;
+    ((QQStayTimeInfo)localObject).stay_time = paramReportItem.a();
+    a().a((QQStayTimeInfo)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startReport:  = ");
+      ((StringBuilder)localObject).append(paramReportItem.toString());
+      QLog.e("UECPageStayReportManager", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   private void a(ArrayList<QQStayTimeInfo> paramArrayList)
@@ -65,34 +67,50 @@ public class UECPageStayReportManager
   
   private static boolean a()
   {
-    return QzoneConfig.getInstance().getConfig("K_QQ_VAS", "SK_QQ_VAS_BusinessStayTimeReportSwitch", 1) == 1;
+    boolean bool = false;
+    try
+    {
+      if (BaseApplicationImpl.getApplication().getRuntime() == null) {
+        return false;
+      }
+      int i = QzoneConfig.getInstance().getConfig("K_QQ_VAS", "SK_QQ_VAS_BusinessStayTimeReportSwitch", 1);
+      if (i == 1) {
+        bool = true;
+      }
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return false;
   }
   
   private void b(ArrayList<QQStayTimeInfo> paramArrayList) {}
   
   public void a(QQStayTimeInfo paramQQStayTimeInfo)
   {
-    do
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramQQStayTimeInfo);
+      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramQQStayTimeInfo);
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.d("UECPageStayReportManager", 4, "start report!!!");
-          }
-          ThreadManager.post(new UECPageStayReportManager.1(this), 2, null, true);
-          return;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("UECPageStayReportManager", 4, "start report!!!");
         }
+        ThreadManager.post(new UECPageStayReportManager.1(this), 2, null, true);
+        return;
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("UECPageStayReportManager", 4, "wait to report...");
+      if (QLog.isDevelopLevel()) {
+        QLog.d("UECPageStayReportManager", 4, "wait to report...");
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.uec.UECPageStayReportManager
  * JD-Core Version:    0.7.0.1
  */

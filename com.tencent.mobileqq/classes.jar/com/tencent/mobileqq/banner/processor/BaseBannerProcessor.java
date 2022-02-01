@@ -12,8 +12,8 @@ import mqq.os.MqqHandler;
 public class BaseBannerProcessor
   implements IBannerProcessor
 {
-  public QBaseActivity a;
-  public MqqHandler a;
+  protected QBaseActivity a;
+  protected MqqHandler a;
   
   public BaseBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -34,10 +34,11 @@ public class BaseBannerProcessor
   
   public void a(Message paramMessage, long paramLong, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+    MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+    if (localMqqHandler != null)
     {
       if (paramBoolean) {
-        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(paramMessage.what);
+        localMqqHandler.removeMessages(paramMessage.what);
       }
       this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramMessage, paramLong);
     }
@@ -45,11 +46,16 @@ public class BaseBannerProcessor
   
   public void a(Banner paramBanner, Message paramMessage) {}
   
-  public void a(AppRuntime paramAppRuntime) {}
+  public int b()
+  {
+    return 0;
+  }
+  
+  public void b(AppRuntime paramAppRuntime) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.banner.processor.BaseBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

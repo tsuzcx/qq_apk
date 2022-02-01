@@ -1,3 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.avgame.gameroom.festivalstage.FestvialStageView android:id="@id/mh2" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:id="@id/d8" android:background="#fff5f5f5" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:gravity="center" android:id="@id/d4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+    <com.tencent.biz.widgets.ElasticHorScrView android:id="@id/iih" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.5dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="22.0dip">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <GridView android:id="@id/cx3" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:horizontalSpacing="10.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="75.0dip" android:numColumns="1" />
+        </LinearLayout>
+    </com.tencent.biz.widgets.ElasticHorScrView>
+    <View android:id="@id/gf3" android:background="@drawable/dm2" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <com.tencent.biz.widgets.ElasticHorScrView android:id="@id/iii" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.5dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="28.0dip">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <GridView android:id="@id/cx4" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:horizontalSpacing="10.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="75.0dip" android:numColumns="1" />
+        </LinearLayout>
+    </com.tencent.biz.widgets.ElasticHorScrView>
+    <TextView android:textSize="21.0sp" android:textColor="#ff0079ff" android:gravity="center" android:id="@id/action_sheet_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" />
+</LinearLayout>

@@ -10,24 +10,21 @@ public class DeviceProfileManager$DPCConfigInfo
   
   public Object clone()
   {
+    Object localObject;
     try
     {
       DPCConfigInfo localDPCConfigInfo = (DPCConfigInfo)super.clone();
-      if (localDPCConfigInfo == null) {
-        return this;
-      }
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      Object localObject;
-      for (;;)
-      {
-        localCloneNotSupportedException.printStackTrace();
-        localObject = null;
-      }
-      localObject.featureValue = this.featureValue;
-      return localObject;
+      localCloneNotSupportedException.printStackTrace();
+      localObject = null;
     }
+    if (localObject == null) {
+      return this;
+    }
+    localObject.featureValue = this.featureValue;
+    return localObject;
   }
   
   public String toString()
@@ -40,7 +37,7 @@ public class DeviceProfileManager$DPCConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dpc.DeviceProfileManager.DPCConfigInfo
  * JD-Core Version:    0.7.0.1
  */

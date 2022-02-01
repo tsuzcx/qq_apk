@@ -11,21 +11,23 @@ class MsgTabVideoPreloaderDataProvider$1
   public void a()
   {
     QLog.e("MsgTabVideoPreloaderDataProvider", 1, new Object[] { "pull video info failed, vidList=", this.jdField_a_of_type_JavaUtilList });
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener.a(null, new Error());
+    MsgTabVideoPreloaderDataProvider.DataProviderListener localDataProviderListener = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener;
+    if (localDataProviderListener != null) {
+      localDataProviderListener.a(null, new Error());
     }
   }
   
   public void a(ArrayList<StoryVideoItem> paramArrayList)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener.a(null, paramArrayList);
+    MsgTabVideoPreloaderDataProvider.DataProviderListener localDataProviderListener = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener;
+    if (localDataProviderListener != null) {
+      localDataProviderListener.a(null, paramArrayList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider.1
  * JD-Core Version:    0.7.0.1
  */

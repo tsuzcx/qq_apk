@@ -14,8 +14,8 @@ class SearchWordHistoryEntryModel$2$3
     this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(this.b);
     if (this.jdField_a_of_type_ArrayOfInt[1] > this.b[1])
     {
-      View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131363046);
-      View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131363033);
+      View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131362993);
+      View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131362981);
       localView1.setVisibility(8);
       localView2.setVisibility(0);
     }
@@ -23,7 +23,7 @@ class SearchWordHistoryEntryModel$2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.SearchWordHistoryEntryModel.2.3
  * JD-Core Version:    0.7.0.1
  */

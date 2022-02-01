@@ -10,17 +10,19 @@ class GdtInterstitialNotifyReg$3
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_OrgJsonJSONObject != null) && (!JSONObject.NULL.equals(this.jdField_a_of_type_OrgJsonJSONObject)) && (((GdtInterstitialFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a() != null) && (((GdtInterstitialFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a != null)) {
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (this.jdField_a_of_type_OrgJsonJSONObject != null) && (!JSONObject.NULL.equals(this.jdField_a_of_type_OrgJsonJSONObject)) && (((GdtInterstitialFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a() != null) && (((GdtInterstitialFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a != null)) {
       ((GdtInterstitialFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a.a = this.jdField_a_of_type_OrgJsonJSONObject.toString();
     }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+    localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       ((GdtInterstitialFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialNotifyReg.3
  * JD-Core Version:    0.7.0.1
  */

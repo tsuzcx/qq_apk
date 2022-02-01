@@ -5,10 +5,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.business.qfile.IExcitingC2CDownloadConfig;
-import com.tencent.mobileqq.config.business.qfile.IExcitingC2CUploadConfig;
-import com.tencent.mobileqq.config.business.qfile.IExcitingGroupDownloadConfig;
-import com.tencent.mobileqq.config.business.qfile.IExcitingGroupUploadConfig;
+import com.tencent.mobileqq.config.business.qfile.IConfigMgr;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingC2CDownloadConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingC2CUploadConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingGroupDownloadConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingGroupUploadConfigBean;
 import com.tencent.mobileqq.config.business.qfile.QFileAppStorePromoteConfigBean;
 import com.tencent.mobileqq.config.business.qfile.QFileAppStorePromoteDialogConfigBean;
 import com.tencent.mobileqq.config.business.qfile.QFileDatalineConfigBean;
@@ -19,26 +20,25 @@ import com.tencent.mobileqq.config.business.qfile.QFileExcitingGroupDownloadConf
 import com.tencent.mobileqq.config.business.qfile.QFileExcitingGroupUploadConfigBean;
 import com.tencent.mobileqq.config.business.qfile.QFileFileReaderConfigBean;
 import com.tencent.mobileqq.config.business.qfile.QfileFileAssistantTipsConfigBean;
+import com.tencent.mobileqq.filebrowser.IFileBrowserService;
 import com.tencent.mobileqq.filemanager.api.IFileAssistantTipsConfig;
-import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
+import com.tencent.mobileqq.filemanager.api.IQFileConfigManager;
 import com.tencent.mobileqq.filemanager.api.util.QStorage;
 import com.tencent.mobileqq.filemanager.data.DownloadFileConfig;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
-import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 
 public class QFileConfigManager
-  implements Manager
+  implements IConfigMgr
 {
-  private static QFileConfigManager jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileConfigManager = null;
   private int jdField_a_of_type_Int = 0;
-  private IExcitingC2CDownloadConfig jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingC2CDownloadConfig;
-  private IExcitingC2CUploadConfig jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingC2CUploadConfig;
-  private IExcitingGroupDownloadConfig jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingGroupDownloadConfig;
-  private IExcitingGroupUploadConfig jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingGroupUploadConfig;
+  private IQFileExcitingC2CDownloadConfigBean jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingC2CDownloadConfigBean;
+  private IQFileExcitingC2CUploadConfigBean jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingC2CUploadConfigBean;
+  private IQFileExcitingGroupDownloadConfigBean jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingGroupDownloadConfigBean;
+  private IQFileExcitingGroupUploadConfigBean jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingGroupUploadConfigBean;
   private QFileAppStorePromoteConfigBean jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileAppStorePromoteConfigBean;
   private QFileAppStorePromoteDialogConfigBean jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileAppStorePromoteDialogConfigBean;
   private QFileDatalineConfigBean jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileDatalineConfigBean;
@@ -65,109 +65,201 @@ public class QFileConfigManager
   private boolean n = false;
   private boolean o = false;
   
-  public static QFileConfigManager a()
+  public QFileConfigManager(AppRuntime paramAppRuntime)
   {
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileConfigManager == null)
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    d();
+  }
+  
+  public static QFileConfigManager a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime != null) {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("QFileConfigManager", 1, "[QFileConfigManager-getInstance] create");
-        }
-        jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileConfigManager = new QFileConfigManager();
+        paramAppRuntime = (QFileConfigManager)((IQFileConfigManager)paramAppRuntime.getRuntimeService(IQFileConfigManager.class, "all")).getQFileConfigManager();
+        return paramAppRuntime;
       }
-      QFileConfigManager localQFileConfigManager = jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileConfigManager;
-      return localQFileConfigManager;
+      finally
+      {
+        break label46;
+      }
     }
-    finally {}
+    throw new NullPointerException("app is null!");
+    label46:
+    throw paramAppRuntime;
   }
   
   private void c(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.i("QFileConfigManager", 1, "loadYYBPromoteActionConfig: load download config. " + paramString);
+    if (TextUtils.isEmpty(paramString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadYYBPromoteActionConfig: load download config. ");
+      localStringBuilder.append(paramString);
+      QLog.i("QFileConfigManager", 1, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileAppStorePromoteConfigBean = ((QFileAppStorePromoteConfigBean)QStorage.a(paramString, QFileAppStorePromoteConfigBean.class));
   }
   
+  private void d()
+  {
+    l();
+    e();
+    r();
+    f();
+    m();
+    n();
+    o();
+    p();
+    q();
+    g();
+    h();
+    i();
+    s();
+    j();
+    c();
+  }
+  
   private void d(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.i("QFileConfigManager", 1, "loadYYBPromoteDialogConfig: load download config. " + paramString);
+    if (TextUtils.isEmpty(paramString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadYYBPromoteDialogConfig: load download config. ");
+      localStringBuilder.append(paramString);
+      QLog.i("QFileConfigManager", 1, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileAppStorePromoteDialogConfigBean = ((QFileAppStorePromoteDialogConfigBean)QStorage.a(paramString, QFileAppStorePromoteDialogConfigBean.class));
   }
   
   private void e()
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("file_config_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0);
-    this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("troop_video_preivew", false);
-    this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean("troop_video_preivew_for_svip", false);
-    this.c = localSharedPreferences.getBoolean("troop_video_preivew_for_yearsvip", false);
-    QLog.i("QFileConfigManager", 1, "initTroopFileVideoPreviewConfig: load common config. enableTroopVidePreview[" + this.jdField_a_of_type_Boolean + "] enableTroopVidePreviewForSVIP[" + this.jdField_b_of_type_Boolean + "] enableTroopVidePreviewForYearSVIP[" + this.c + "]");
+    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+    this.jdField_a_of_type_Boolean = ((SharedPreferences)localObject).getBoolean("troop_video_preivew", false);
+    this.jdField_b_of_type_Boolean = ((SharedPreferences)localObject).getBoolean("troop_video_preivew_for_svip", false);
+    this.c = ((SharedPreferences)localObject).getBoolean("troop_video_preivew_for_yearsvip", false);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initTroopFileVideoPreviewConfig: load common config. enableTroopVidePreview[");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append("] enableTroopVidePreviewForSVIP[");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+    ((StringBuilder)localObject).append("] enableTroopVidePreviewForYearSVIP[");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append("]");
+    QLog.i("QFileConfigManager", 1, ((StringBuilder)localObject).toString());
   }
   
   private void e(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.i("QFileConfigManager", 1, "loadFileReaderConfig: load download config. " + paramString);
+    if (TextUtils.isEmpty(paramString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadFileReaderConfig: load download config. ");
+      localStringBuilder.append(paramString);
+      QLog.i("QFileConfigManager", 1, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileFileReaderConfigBean = ((QFileFileReaderConfigBean)QStorage.a(paramString, QFileFileReaderConfigBean.class));
-    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).setCheckShowTbsReaderBarByLocalTbsViewManager(this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileFileReaderConfigBean.jdField_a_of_type_Boolean);
+    ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).setCheckShowTbsReaderBar(this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileFileReaderConfigBean.isShowReaderBar);
   }
   
   private void f()
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("file_config_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0);
-    this.g = localSharedPreferences.getBoolean("ipv6_all_switch", false);
-    this.h = localSharedPreferences.getBoolean("ipv6_c2c_switch", false);
-    this.i = localSharedPreferences.getBoolean("ipv6_group_switch", false);
-    this.j = localSharedPreferences.getBoolean("ipv6_disc_switch", false);
-    this.k = localSharedPreferences.getBoolean("ipv6_dataline_switch", false);
-    this.jdField_a_of_type_Int = localSharedPreferences.getInt("ipv6_strategy", 0);
-    QLog.i("QFileConfigManager", 1, "initFileIPv6Config: load config. enableFileIPv6[" + this.g + "] enableC2CIPv6[" + this.h + "] enableGroupIPv6[" + this.i + "] enableDiscIPv6[" + this.j + "] enableDatalineIPv6[" + this.k + "] strategy[" + this.jdField_a_of_type_Int + "]");
+    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+    this.g = ((SharedPreferences)localObject).getBoolean("ipv6_all_switch", false);
+    this.h = ((SharedPreferences)localObject).getBoolean("ipv6_c2c_switch", false);
+    this.i = ((SharedPreferences)localObject).getBoolean("ipv6_group_switch", false);
+    this.j = ((SharedPreferences)localObject).getBoolean("ipv6_disc_switch", false);
+    this.k = ((SharedPreferences)localObject).getBoolean("ipv6_dataline_switch", false);
+    this.jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt("ipv6_strategy", 0);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initFileIPv6Config: load config. enableFileIPv6[");
+    ((StringBuilder)localObject).append(this.g);
+    ((StringBuilder)localObject).append("] enableC2CIPv6[");
+    ((StringBuilder)localObject).append(this.h);
+    ((StringBuilder)localObject).append("] enableGroupIPv6[");
+    ((StringBuilder)localObject).append(this.i);
+    ((StringBuilder)localObject).append("] enableDiscIPv6[");
+    ((StringBuilder)localObject).append(this.j);
+    ((StringBuilder)localObject).append("] enableDatalineIPv6[");
+    ((StringBuilder)localObject).append(this.k);
+    ((StringBuilder)localObject).append("] strategy[");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append("]");
+    QLog.i("QFileConfigManager", 1, ((StringBuilder)localObject).toString());
   }
   
   private void f(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.i("QFileConfigManager", 1, "loadDatalineConfig: load dataline config. " + paramString);
+    if (TextUtils.isEmpty(paramString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadDatalineConfig: load dataline config. ");
+      localStringBuilder.append(paramString);
+      QLog.i("QFileConfigManager", 1, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileDatalineConfigBean = ((QFileDatalineConfigBean)QStorage.a(paramString, QFileDatalineConfigBean.class));
   }
   
   private void g()
   {
-    c(this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("file_config_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getString("yyb_promote_action_key", "{}"));
+    Context localContext = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    c(localContext.getSharedPreferences(localStringBuilder.toString(), 0).getString("yyb_promote_action_key", "{}"));
   }
   
   private void g(String paramString)
   {
-    QFileDownloadConfigBean localQFileDownloadConfigBean = (QFileDownloadConfigBean)QStorage.a(paramString, QFileDownloadConfigBean.class);
-    if (localQFileDownloadConfigBean != null)
+    Object localObject = (QFileDownloadConfigBean)QStorage.a(paramString, QFileDownloadConfigBean.class);
+    if (localObject != null)
     {
       k();
       this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashMap.putAll(localQFileDownloadConfigBean.jdField_a_of_type_JavaUtilHashMap);
+      this.jdField_a_of_type_JavaUtilHashMap.putAll(((QFileDownloadConfigBean)localObject).jdField_a_of_type_JavaUtilHashMap);
     }
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.i("QFileConfigManager", 1, "loadFileDownloadConfig: load download config. " + paramString);
+    if (TextUtils.isEmpty(paramString))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("loadFileDownloadConfig: load download config. ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("QFileConfigManager", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   private void h()
   {
-    d(this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("file_config_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getString("yyb_promote_dialog_key", "{}"));
+    Context localContext = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    d(localContext.getSharedPreferences(localStringBuilder.toString(), 0).getString("yyb_promote_dialog_key", "{}"));
   }
   
   private void i()
   {
-    e(this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("file_config_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getString("file_reader_key", "{}"));
+    Context localContext = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    e(localContext.getSharedPreferences(localStringBuilder.toString(), 0).getString("file_reader_key", "{}"));
   }
   
   private void j()
   {
-    f(this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("file_config_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getString("file_dataline_key", "{}"));
+    Context localContext = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    f(localContext.getSharedPreferences(localStringBuilder.toString(), 0).getString("file_dataline_key", "{}"));
   }
   
   private void k()
@@ -182,66 +274,130 @@ public class QFileConfigManager
     if (this.jdField_a_of_type_JavaUtilHashMap == null) {
       this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     }
-    String str = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("file_config_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getString("qfile_file_auto_download", "{}");
-    QLog.i("QFileConfigManager", 1, "initFileDownloadConfig: load download config [" + str + "]");
-    g(str);
+    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString("qfile_file_auto_download", "{}");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initFileDownloadConfig: load download config [");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("]");
+    QLog.i("QFileConfigManager", 1, localStringBuilder.toString());
+    g((String)localObject);
   }
   
   private void m()
   {
-    String str = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("c2cfile_excitingupload_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getString("qfile_c2cfile_excitingupload", "{}");
-    QLog.i("QFileConfigManager", 1, "load Exciting-C2C-Upload Config [" + str + "]");
-    QFileExcitingC2CUploadConfigBean localQFileExcitingC2CUploadConfigBean = new QFileExcitingC2CUploadConfigBean();
-    localQFileExcitingC2CUploadConfigBean.a(str);
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingC2CUploadConfig = localQFileExcitingC2CUploadConfigBean;
+    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("c2cfile_excitingupload_");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    localObject1 = ((Context)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0).getString("qfile_c2cfile_excitingupload", "{}");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("load Exciting-C2C-Upload Config [");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("]");
+    QLog.i("QFileConfigManager", 1, ((StringBuilder)localObject2).toString());
+    localObject2 = new QFileExcitingC2CUploadConfigBean();
+    ((QFileExcitingC2CUploadConfigBean)localObject2).a((String)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingC2CUploadConfigBean = ((IQFileExcitingC2CUploadConfigBean)localObject2);
   }
   
   private void n()
   {
-    String str = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("c2cfile_excitingdownload_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getString("qfile_c2cfile_excitingdownload", "{}");
-    QLog.i("QFileConfigManager", 1, "load Exciting-C2C-Download Config [" + str + "]");
-    QFileExcitingC2CDownloadConfigBean localQFileExcitingC2CDownloadConfigBean = new QFileExcitingC2CDownloadConfigBean();
-    localQFileExcitingC2CDownloadConfigBean.a(str);
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingC2CDownloadConfig = localQFileExcitingC2CDownloadConfigBean;
+    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("c2cfile_excitingdownload_");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    localObject1 = ((Context)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0).getString("qfile_c2cfile_excitingdownload", "{}");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("load Exciting-C2C-Download Config [");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("]");
+    QLog.i("QFileConfigManager", 1, ((StringBuilder)localObject2).toString());
+    localObject2 = new QFileExcitingC2CDownloadConfigBean();
+    ((QFileExcitingC2CDownloadConfigBean)localObject2).a((String)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingC2CDownloadConfigBean = ((IQFileExcitingC2CDownloadConfigBean)localObject2);
   }
   
   private void o()
   {
-    String str = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("groupfile_excitingupload_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getString("qfile_groupfile_excitingupload", "{}");
-    QLog.i("QFileConfigManager", 1, "load Exciting-Group-Upload Config [" + str + "]");
-    QFileExcitingGroupUploadConfigBean localQFileExcitingGroupUploadConfigBean = new QFileExcitingGroupUploadConfigBean();
-    localQFileExcitingGroupUploadConfigBean.a(str);
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingGroupUploadConfig = localQFileExcitingGroupUploadConfigBean;
+    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("groupfile_excitingupload_");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    localObject1 = ((Context)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0).getString("qfile_groupfile_excitingupload", "{}");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("load Exciting-Group-Upload Config [");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("]");
+    QLog.i("QFileConfigManager", 1, ((StringBuilder)localObject2).toString());
+    localObject2 = new QFileExcitingGroupUploadConfigBean();
+    ((QFileExcitingGroupUploadConfigBean)localObject2).a((String)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingGroupUploadConfigBean = ((IQFileExcitingGroupUploadConfigBean)localObject2);
   }
   
   private void p()
   {
-    String str = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("groupfile_excitingdownload_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getString("qfile_groupfile_excitingdownload", "{}");
-    QLog.i("QFileConfigManager", 1, "load Exciting-Group-Download Config [" + str + "]");
-    QFileExcitingGroupDownloadConfigBean localQFileExcitingGroupDownloadConfigBean = new QFileExcitingGroupDownloadConfigBean();
-    localQFileExcitingGroupDownloadConfigBean.a(str);
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingGroupDownloadConfig = localQFileExcitingGroupDownloadConfigBean;
+    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("groupfile_excitingdownload_");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    localObject1 = ((Context)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0).getString("qfile_groupfile_excitingdownload", "{}");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("load Exciting-Group-Download Config [");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("]");
+    QLog.i("QFileConfigManager", 1, ((StringBuilder)localObject2).toString());
+    localObject2 = new QFileExcitingGroupDownloadConfigBean();
+    ((QFileExcitingGroupDownloadConfigBean)localObject2).a((String)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingGroupDownloadConfigBean = ((IQFileExcitingGroupDownloadConfigBean)localObject2);
   }
   
   private void q()
   {
-    String str = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("qfile_file_assistant_tips" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getString("qfile_file_assistant_tips", "{}");
-    QLog.i("QFileConfigManager", 1, "load QFILE_CONFIG_FILE_ASSISTANT_TIPS Config [" + str + "]");
-    QfileFileAssistantTipsConfigBean localQfileFileAssistantTipsConfigBean = new QfileFileAssistantTipsConfigBean();
-    localQfileFileAssistantTipsConfigBean.a(str);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiIFileAssistantTipsConfig = localQfileFileAssistantTipsConfigBean;
+    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("qfile_file_assistant_tips");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    localObject1 = ((Context)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0).getString("qfile_file_assistant_tips", "{}");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("load QFILE_CONFIG_FILE_ASSISTANT_TIPS Config [");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("]");
+    QLog.i("QFileConfigManager", 1, ((StringBuilder)localObject2).toString());
+    localObject2 = new QfileFileAssistantTipsConfigBean();
+    ((QfileFileAssistantTipsConfigBean)localObject2).a((String)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiIFileAssistantTipsConfig = ((IFileAssistantTipsConfig)localObject2);
   }
   
   private void r()
   {
-    this.d = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("file_config_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getBoolean("enable_file_media_platform", false);
-    QLog.i("QFileConfigManager", 1, "initMediaPlatformConfig: load common config. enableFileMediaPlatform[" + this.d + "]");
+    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    this.d = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("enable_file_media_platform", false);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initMediaPlatformConfig: load common config. enableFileMediaPlatform[");
+    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append("]");
+    QLog.i("QFileConfigManager", 1, ((StringBuilder)localObject).toString());
   }
   
   private void s()
   {
-    this.l = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getSharedPreferences("file_config_" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), 0).getBoolean("apkcheck_enable_switch", false);
-    QLog.i("QFileConfigManager", 1, "initMMApkFileCheckConfig: load apkcheckconfig. enable[" + this.l + "]");
+    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    this.l = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("apkcheck_enable_switch", false);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initMMApkFileCheckConfig: load apkcheckconfig. enable[");
+    ((StringBuilder)localObject).append(this.l);
+    ((StringBuilder)localObject).append("]");
+    QLog.i("QFileConfigManager", 1, ((StringBuilder)localObject).toString());
   }
   
   public int a()
@@ -249,24 +405,24 @@ public class QFileConfigManager
     return this.jdField_a_of_type_Int;
   }
   
-  public IExcitingC2CDownloadConfig a()
+  public IQFileExcitingC2CDownloadConfigBean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingC2CDownloadConfig;
+    return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingC2CDownloadConfigBean;
   }
   
-  public IExcitingC2CUploadConfig a()
+  public IQFileExcitingC2CUploadConfigBean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingC2CUploadConfig;
+    return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingC2CUploadConfigBean;
   }
   
-  public IExcitingGroupDownloadConfig a()
+  public IQFileExcitingGroupDownloadConfigBean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingGroupDownloadConfig;
+    return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingGroupDownloadConfigBean;
   }
   
-  public IExcitingGroupUploadConfig a()
+  public IQFileExcitingGroupUploadConfigBean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingGroupUploadConfig;
+    return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingGroupUploadConfigBean;
   }
   
   public QFileAppStorePromoteConfigBean a()
@@ -320,28 +476,9 @@ public class QFileConfigManager
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public AppRuntime a()
-  {
-    return this.jdField_a_of_type_MqqAppAppRuntime;
-  }
-  
   public void a()
   {
-    l();
-    e();
-    r();
-    f();
-    m();
-    n();
-    o();
-    p();
-    q();
-    g();
-    h();
-    i();
-    s();
-    j();
-    d();
+    ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).setCheckShowTbsReaderBar(this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileFileReaderConfigBean.isShowReaderBar);
   }
   
   public void a(int paramInt)
@@ -354,24 +491,24 @@ public class QFileConfigManager
     ThreadManager.getUIHandler().post(new QFileConfigManager.2(this, paramBundle));
   }
   
-  public void a(IExcitingC2CDownloadConfig paramIExcitingC2CDownloadConfig)
+  public void a(IQFileExcitingC2CDownloadConfigBean paramIQFileExcitingC2CDownloadConfigBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingC2CDownloadConfig = paramIExcitingC2CDownloadConfig;
+    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingC2CDownloadConfigBean = paramIQFileExcitingC2CDownloadConfigBean;
   }
   
-  public void a(IExcitingC2CUploadConfig paramIExcitingC2CUploadConfig)
+  public void a(IQFileExcitingC2CUploadConfigBean paramIQFileExcitingC2CUploadConfigBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingC2CUploadConfig = paramIExcitingC2CUploadConfig;
+    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingC2CUploadConfigBean = paramIQFileExcitingC2CUploadConfigBean;
   }
   
-  public void a(IExcitingGroupDownloadConfig paramIExcitingGroupDownloadConfig)
+  public void a(IQFileExcitingGroupDownloadConfigBean paramIQFileExcitingGroupDownloadConfigBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingGroupDownloadConfig = paramIExcitingGroupDownloadConfig;
+    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingGroupDownloadConfigBean = paramIQFileExcitingGroupDownloadConfigBean;
   }
   
-  public void a(IExcitingGroupUploadConfig paramIExcitingGroupUploadConfig)
+  public void a(IQFileExcitingGroupUploadConfigBean paramIQFileExcitingGroupUploadConfigBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIExcitingGroupUploadConfig = paramIExcitingGroupUploadConfig;
+    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileExcitingGroupUploadConfigBean = paramIQFileExcitingGroupUploadConfigBean;
   }
   
   public void a(QFileAppStorePromoteConfigBean paramQFileAppStorePromoteConfigBean)
@@ -400,7 +537,7 @@ public class QFileConfigManager
     if (paramQFileFileReaderConfigBean != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileFileReaderConfigBean = paramQFileFileReaderConfigBean;
-      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).setCheckShowTbsReaderBarByLocalTbsViewManager(this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileFileReaderConfigBean.jdField_a_of_type_Boolean);
+      ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).setCheckShowTbsReaderBar(this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileFileReaderConfigBean.isShowReaderBar);
     }
   }
   
@@ -417,11 +554,6 @@ public class QFileConfigManager
   public void a(HashMap<String, DownloadFileConfig> paramHashMap)
   {
     ThreadManager.getUIHandler().post(new QFileConfigManager.1(this, paramHashMap));
-  }
-  
-  public void a(AppRuntime paramAppRuntime)
-  {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
   }
   
   public void a(boolean paramBoolean)
@@ -444,10 +576,7 @@ public class QFileConfigManager
     return this.jdField_b_of_type_JavaLangString;
   }
   
-  public void b()
-  {
-    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).setCheckShowTbsReaderBarByLocalTbsViewManager(this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileQFileFileReaderConfigBean.jdField_a_of_type_Boolean);
-  }
+  public void b() {}
   
   public void b(Bundle paramBundle)
   {
@@ -469,7 +598,12 @@ public class QFileConfigManager
     return this.jdField_b_of_type_Boolean;
   }
   
-  public void c() {}
+  public void c()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_JavaLangString = "3636666661";
+    }
+  }
   
   public void c(boolean paramBoolean)
   {
@@ -479,13 +613,6 @@ public class QFileConfigManager
   public boolean c()
   {
     return this.c;
-  }
-  
-  public void d()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = "3636666661";
-    }
   }
   
   public void d(boolean paramBoolean)
@@ -501,7 +628,10 @@ public class QFileConfigManager
   public void e(boolean paramBoolean)
   {
     this.l = paramBoolean;
-    QLog.i("QFileConfigManager", 1, "set apkcheckConfig enable:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("set apkcheckConfig enable:");
+    localStringBuilder.append(paramBoolean);
+    QLog.i("QFileConfigManager", 1, localStringBuilder.toString());
   }
   
   public boolean e()
@@ -566,12 +696,10 @@ public class QFileConfigManager
   {
     return this.n;
   }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileConfigManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,59 +14,80 @@ public class Pcm2AmrWrapper
   private int jdField_b_of_type_Int = 1;
   private long jdField_b_of_type_Long;
   private byte[] jdField_b_of_type_ArrayOfByte;
-  private int jdField_c_of_type_Int = 0;
+  private int jdField_c_of_type_Int;
   private byte[] jdField_c_of_type_ArrayOfByte = new byte[320];
-  private int jdField_d_of_type_Int = 0;
-  private byte[] jdField_d_of_type_ArrayOfByte = new byte[10240];
+  private int jdField_d_of_type_Int;
+  private byte[] jdField_d_of_type_ArrayOfByte;
   
   public Pcm2AmrWrapper(Context paramContext, int paramInt)
   {
-    if (!jdField_a_of_type_Boolean) {}
-    try
+    boolean bool2 = false;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_ArrayOfByte = new byte[10240];
+    this.jdField_d_of_type_Int = 0;
+    if (!jdField_a_of_type_Boolean)
     {
-      bool = SoLoadUtilNew.loadSoByName(paramContext, "amrnb");
-      if (bool)
+      boolean bool1;
+      StringBuilder localStringBuilder;
+      try
       {
-        jdField_a_of_type_Boolean = true;
-        this.jdField_b_of_type_Int = paramInt;
-        this.jdField_a_of_type_Int = Amr2PcmWrapper.a(paramInt);
-        this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-        this.jdField_a_of_type_Long = AmrInputStreamWrapper.CreateEncoder();
-        this.jdField_b_of_type_Long = AmrInputStreamWrapper.GsmAmrEncoderNew(this.jdField_a_of_type_Long);
-        AmrInputStreamWrapper.GsmAmrEncoderInitialize(this.jdField_b_of_type_Long);
-        return;
+        bool1 = SoLoadUtilNew.loadSoByName(paramContext, "amrnb");
       }
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
+      catch (Throwable paramContext)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("Pcm2AmrWrapper", 2, "libamrnb.so load failed, exception info : " + QLog.getStackTraceString(paramContext));
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("libamrnb.so load failed, exception info : ");
+          localStringBuilder.append(QLog.getStackTraceString(paramContext));
+          QLog.e("Pcm2AmrWrapper", 2, localStringBuilder.toString());
+          bool1 = bool2;
         }
-        boolean bool = false;
-        continue;
+      }
+      if (bool1) {
+        jdField_a_of_type_Boolean = true;
+      } else {
         try
         {
           System.loadLibrary("amrnb");
           jdField_a_of_type_Boolean = true;
         }
-        catch (UnsatisfiedLinkError paramContext) {}
-        if (QLog.isColorLevel()) {
-          QLog.e("Pcm2AmrWrapper", 2, "libamrnb.so load system way failed, exception info : " + QLog.getStackTraceString(paramContext));
+        catch (UnsatisfiedLinkError paramContext)
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("libamrnb.so load system way failed, exception info : ");
+            localStringBuilder.append(QLog.getStackTraceString(paramContext));
+            QLog.e("Pcm2AmrWrapper", 2, localStringBuilder.toString());
+          }
         }
       }
     }
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_Int = Amr2PcmWrapper.a(paramInt);
+    this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
+    this.jdField_a_of_type_Long = AmrInputStreamWrapper.CreateEncoder();
+    this.jdField_b_of_type_Long = AmrInputStreamWrapper.GsmAmrEncoderNew(this.jdField_a_of_type_Long);
+    AmrInputStreamWrapper.GsmAmrEncoderInitialize(this.jdField_b_of_type_Long);
   }
   
   private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_b_of_type_Long == 0L)) {
-      throw new IllegalStateException("not open");
+    long l1 = this.jdField_a_of_type_Long;
+    if (l1 != 0L)
+    {
+      long l2 = this.jdField_b_of_type_Long;
+      if (l2 != 0L)
+      {
+        if (AmrInputStreamWrapper.GsmAmrEncoderEncode(l1, l2, this.jdField_b_of_type_Int, paramArrayOfByte1, 0, paramArrayOfByte2, 0) < 0) {
+          b();
+        }
+        return;
+      }
     }
-    if (AmrInputStreamWrapper.GsmAmrEncoderEncode(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, paramArrayOfByte1, 0, paramArrayOfByte2, 0) < 0) {
-      b();
-    }
+    throw new IllegalStateException("not open");
   }
   
   /* Error */
@@ -74,57 +95,57 @@ public class Pcm2AmrWrapper
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 68	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
+    //   1: getfield 106	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
     //   4: lconst_0
     //   5: lcmp
     //   6: ifeq +14 -> 20
     //   9: aload_0
-    //   10: getfield 62	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_a_of_type_Long	J
+    //   10: getfield 100	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_a_of_type_Long	J
     //   13: aload_0
-    //   14: getfield 68	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
-    //   17: invokestatic 126	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderCleanup	(JJ)V
+    //   14: getfield 106	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
+    //   17: invokestatic 127	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderCleanup	(JJ)V
     //   20: aload_0
-    //   21: getfield 68	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
+    //   21: getfield 106	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
     //   24: lconst_0
     //   25: lcmp
     //   26: ifeq +14 -> 40
     //   29: aload_0
-    //   30: getfield 62	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_a_of_type_Long	J
+    //   30: getfield 100	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_a_of_type_Long	J
     //   33: aload_0
-    //   34: getfield 68	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
-    //   37: invokestatic 129	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderDelete	(JJ)V
+    //   34: getfield 106	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
+    //   37: invokestatic 130	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderDelete	(JJ)V
     //   40: aload_0
     //   41: lconst_0
-    //   42: putfield 68	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
+    //   42: putfield 106	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
     //   45: aload_0
-    //   46: invokevirtual 122	com/tencent/mobileqq/utils/Pcm2AmrWrapper:b	()V
+    //   46: invokevirtual 117	com/tencent/mobileqq/utils/Pcm2AmrWrapper:b	()V
     //   49: return
     //   50: astore_1
     //   51: aload_0
     //   52: lconst_0
-    //   53: putfield 68	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
+    //   53: putfield 106	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
     //   56: aload_1
     //   57: athrow
     //   58: astore_1
     //   59: aload_0
-    //   60: getfield 68	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
+    //   60: getfield 106	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
     //   63: lconst_0
     //   64: lcmp
     //   65: ifeq +14 -> 79
     //   68: aload_0
-    //   69: getfield 62	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_a_of_type_Long	J
+    //   69: getfield 100	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_a_of_type_Long	J
     //   72: aload_0
-    //   73: getfield 68	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
-    //   76: invokestatic 129	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderDelete	(JJ)V
+    //   73: getfield 106	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
+    //   76: invokestatic 130	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderDelete	(JJ)V
     //   79: aload_0
     //   80: lconst_0
-    //   81: putfield 68	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
+    //   81: putfield 106	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
     //   84: aload_1
     //   85: athrow
     //   86: astore_1
     //   87: aload_0
     //   88: lconst_0
-    //   89: putfield 68	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
+    //   89: putfield 106	com/tencent/mobileqq/utils/Pcm2AmrWrapper:jdField_b_of_type_Long	J
     //   92: aload_1
     //   93: athrow
     // Local variable table:
@@ -142,24 +163,27 @@ public class Pcm2AmrWrapper
   
   public byte[] a(byte[] paramArrayOfByte, int paramInt)
   {
-    if (this.jdField_c_of_type_Int + paramInt > 10240) {
-      this.jdField_d_of_type_ArrayOfByte = new byte[this.jdField_c_of_type_Int + paramInt];
+    int i = this.jdField_c_of_type_Int;
+    if (paramInt + i > 10240) {
+      this.jdField_d_of_type_ArrayOfByte = new byte[i + paramInt];
     }
-    if (this.jdField_c_of_type_Int + paramInt < 320)
+    i = this.jdField_c_of_type_Int;
+    if (paramInt + i < 320)
     {
-      System.arraycopy(paramArrayOfByte, 0, this.jdField_c_of_type_ArrayOfByte, this.jdField_c_of_type_Int, paramInt);
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_c_of_type_ArrayOfByte, i, paramInt);
       return null;
     }
-    System.arraycopy(this.jdField_c_of_type_ArrayOfByte, 0, this.jdField_d_of_type_ArrayOfByte, 0, this.jdField_c_of_type_Int);
+    System.arraycopy(this.jdField_c_of_type_ArrayOfByte, 0, this.jdField_d_of_type_ArrayOfByte, 0, i);
     System.arraycopy(paramArrayOfByte, 0, this.jdField_d_of_type_ArrayOfByte, this.jdField_c_of_type_Int, paramInt);
-    this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int + paramInt);
-    paramInt = this.jdField_d_of_type_Int % 320;
-    this.jdField_c_of_type_Int = paramInt;
-    if (paramInt != 0) {
-      System.arraycopy(this.jdField_d_of_type_ArrayOfByte, this.jdField_d_of_type_Int - paramInt, this.jdField_c_of_type_ArrayOfByte, 0, paramInt);
+    this.jdField_d_of_type_Int = (paramInt + this.jdField_c_of_type_Int);
+    paramInt = this.jdField_d_of_type_Int;
+    i = paramInt % 320;
+    this.jdField_c_of_type_Int = i;
+    if (i != 0) {
+      System.arraycopy(this.jdField_d_of_type_ArrayOfByte, paramInt - i, this.jdField_c_of_type_ArrayOfByte, 0, i);
     }
     paramArrayOfByte = new byte[this.jdField_d_of_type_Int / 320 * this.jdField_a_of_type_Int];
-    int i = 0;
+    i = 0;
     paramInt = 0;
     while (this.jdField_d_of_type_Int >= 320)
     {
@@ -167,7 +191,8 @@ public class Pcm2AmrWrapper
       try
       {
         a(this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte);
-        System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte, i, this.jdField_b_of_type_ArrayOfByte.length);
+        arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+        System.arraycopy(arrayOfByte, 0, paramArrayOfByte, i, arrayOfByte.length);
         i += this.jdField_b_of_type_ArrayOfByte.length;
         paramInt += 320;
         this.jdField_d_of_type_Int -= 320;
@@ -196,7 +221,7 @@ public class Pcm2AmrWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.Pcm2AmrWrapper
  * JD-Core Version:    0.7.0.1
  */

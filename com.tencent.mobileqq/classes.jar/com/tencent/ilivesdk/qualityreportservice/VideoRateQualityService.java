@@ -22,8 +22,9 @@ public class VideoRateQualityService
   public VideoRateQualityService(QualityReportServiceAdapter paramQualityReportServiceAdapter)
   {
     this.mAdapter = paramQualityReportServiceAdapter;
-    if (this.mAdapter != null) {
-      this.mHttp = this.mAdapter.getHttpInterface();
+    paramQualityReportServiceAdapter = this.mAdapter;
+    if (paramQualityReportServiceAdapter != null) {
+      this.mHttp = paramQualityReportServiceAdapter.getHttpInterface();
     }
   }
   
@@ -48,16 +49,28 @@ public class VideoRateQualityService
       localStringBuilder.append((String)localEntry.getValue());
     }
     paramMap = localStringBuilder.toString();
-    Log.d("VideoRateQualityService", "url=" + paramMap);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("url=");
+    localStringBuilder.append(paramMap);
+    Log.d("VideoRateQualityService", localStringBuilder.toString());
     return paramMap;
   }
   
   private Map<String, String> putCommonParam(long paramLong1, long paramLong2, long paramLong3)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("s_room_id", "" + paramLong1);
-    localHashMap.put("s_anchor_uid", "" + paramLong2);
-    localHashMap.put("s_uid", "" + paramLong3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong1);
+    localHashMap.put("s_room_id", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong2);
+    localHashMap.put("s_anchor_uid", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong3);
+    localHashMap.put("s_uid", localStringBuilder.toString());
     return localHashMap;
   }
   
@@ -65,7 +78,10 @@ public class VideoRateQualityService
   {
     if ((this.mHttp != null) && (!TextUtils.isEmpty(paramString)))
     {
-      Log.d("VideoRateQualityService", "send " + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("send ");
+      localStringBuilder.append(paramString);
+      Log.d("VideoRateQualityService", localStringBuilder.toString());
       this.mHttp.get(paramString, new VideoRateQualityService.1(this));
     }
   }
@@ -171,7 +187,7 @@ public class VideoRateQualityService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.qualityreportservice.VideoRateQualityService
  * JD-Core Version:    0.7.0.1
  */

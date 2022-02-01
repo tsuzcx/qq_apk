@@ -89,6 +89,10 @@ public class ct
       }
       return false;
     }
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   public boolean bc()
@@ -98,22 +102,29 @@ public class ct
   
   public boolean bd()
   {
-    if ((((bl)getData()).R() != null) && (((bl)getData()).R().v != 0))
+    d locald = ((bl)getData()).R();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (locald != null)
     {
-      if ((((bl)getData()).x(11)) || (((bl)getData()).x(12))) {
-        ((bl)getData()).R().B = "";
+      bool1 = bool2;
+      if (((bl)getData()).R().v != 0)
+      {
+        if ((((bl)getData()).x(11)) || (((bl)getData()).x(12))) {
+          ((bl)getData()).R().B = "";
+        }
+        ((bl)getData()).R().v = 0;
+        ((bl)getData()).R().y = "";
+        ((bl)getData()).R().A = null;
+        ((bl)getData()).R().w = null;
+        ((bl)getData()).R().E = "";
+        ((bl)getData()).R().isBestWiFi = false;
+        ((bl)getData()).R().X = "";
+        this.il = "";
+        bool1 = true;
       }
-      ((bl)getData()).R().v = 0;
-      ((bl)getData()).R().y = "";
-      ((bl)getData()).R().A = null;
-      ((bl)getData()).R().w = null;
-      ((bl)getData()).R().E = "";
-      ((bl)getData()).R().isBestWiFi = false;
-      ((bl)getData()).R().X = "";
-      this.il = "";
-      return true;
     }
-    return false;
+    return bool1;
   }
   
   public boolean c(long paramLong)
@@ -142,12 +153,29 @@ public class ct
   
   public String toString()
   {
-    return "ExtraWifiCloudInfo{, ap='" + af().toString() + '\'' + ", mBssidList=" + be() + ", mCacheTime=" + this.ik + ", mWifiUid='" + this.il + '\'' + ", mCloudInfoState=" + this.im + ", data='" + ((bl)getData()).toString() + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExtraWifiCloudInfo{, ap='");
+    localStringBuilder.append(af().toString());
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mBssidList=");
+    localStringBuilder.append(be());
+    localStringBuilder.append(", mCacheTime=");
+    localStringBuilder.append(this.ik);
+    localStringBuilder.append(", mWifiUid='");
+    localStringBuilder.append(this.il);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mCloudInfoState=");
+    localStringBuilder.append(this.im);
+    localStringBuilder.append(", data='");
+    localStringBuilder.append(((bl)getData()).toString());
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ct
  * JD-Core Version:    0.7.0.1
  */

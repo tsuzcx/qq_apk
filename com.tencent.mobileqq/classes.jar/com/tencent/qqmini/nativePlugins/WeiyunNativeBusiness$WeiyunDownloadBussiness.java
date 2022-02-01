@@ -18,8 +18,9 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
   {
     jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getQQProcessName();
     this.jdField_a_of_type_ComTencentQqminiNativePluginsWeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule = WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule.a();
-    if (this.jdField_a_of_type_ComTencentQqminiNativePluginsWeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule != null) {
-      this.jdField_a_of_type_ComTencentQqminiNativePluginsWeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule.a(paramIMiniAppContext);
+    WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule localWeiyunDownloadClientQIPCModule = this.jdField_a_of_type_ComTencentQqminiNativePluginsWeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule;
+    if (localWeiyunDownloadClientQIPCModule != null) {
+      localWeiyunDownloadClientQIPCModule.a(paramIMiniAppContext);
     }
   }
   
@@ -87,7 +88,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.WeiyunNativeBusiness.WeiyunDownloadBussiness
  * JD-Core Version:    0.7.0.1
  */

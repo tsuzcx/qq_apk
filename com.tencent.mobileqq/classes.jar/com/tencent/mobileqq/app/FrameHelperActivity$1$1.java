@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 import com.tencent.mobileqq.statistics.ReportController;
+import mqq.app.AppRuntime;
 
 class FrameHelperActivity$1$1
   implements Runnable
@@ -12,11 +12,12 @@ class FrameHelperActivity$1$1
   
   public void run()
   {
-    if ((this.a.a.getActivity() == null) || (this.a.a.getActivity().app == null)) {}
-    for (;;)
+    if (this.a.a.a() != null)
     {
-      return;
-      Object localObject = (LocalRedTouchManager)this.a.a.getActivity().app.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+      if (this.a.a.a().getAppRuntime() == null) {
+        return;
+      }
+      Object localObject = (LocalRedTouchManager)this.a.a.a().getAppRuntime().getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
       RedTouchItem localRedTouchItem1 = ((LocalRedTouchManager)localObject).a(10015);
       RedTouchItem localRedTouchItem2 = ((LocalRedTouchManager)localObject).a(10016);
       RedTouchItem localRedTouchItem3 = ((LocalRedTouchManager)localObject).a(-7);
@@ -24,18 +25,24 @@ class FrameHelperActivity$1$1
       {
         int i = ((LocalRedTouchManager)localObject).a();
         localObject = null;
-        switch (i)
-        {
+        if (i != 3) {
+          if (i != 4) {
+            if (i != 5) {
+              break label143;
+            }
+          }
         }
-        while (localObject != null)
+        for (;;)
         {
-          ReportController.b(this.a.a.getActivity().app, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
-          return;
-          localObject = "0X80073B1";
+          localObject = "0X80073B7";
           continue;
           localObject = "0X80073B3";
           continue;
-          localObject = "0X80073B7";
+          localObject = "0X80073B1";
+        }
+        label143:
+        if (localObject != null) {
+          ReportController.b(this.a.a.a().getAppRuntime(), "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
         }
       }
     }
@@ -43,7 +50,7 @@ class FrameHelperActivity$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

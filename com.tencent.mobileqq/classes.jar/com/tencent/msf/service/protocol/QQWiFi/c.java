@@ -18,7 +18,13 @@ public final class c
   
   public String toString()
   {
-    return "NearbyAvailWiFiInfoRsp [msg=" + this.a + "][ status=" + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NearbyAvailWiFiInfoRsp [msg=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("][ status=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -29,7 +35,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.QQWiFi.c
  * JD-Core Version:    0.7.0.1
  */

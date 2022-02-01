@@ -18,28 +18,32 @@ class Leba$MyStudyModeChangeListener
     this.a = new WeakReference(paramLeba);
   }
   
-  public void a(boolean paramBoolean)
+  public void onChange(boolean paramBoolean)
   {
-    if (this.a == null) {}
-    Leba localLeba;
-    do
-    {
-      return;
-      localLeba = (Leba)this.a.get();
-    } while (localLeba == null);
-    QLog.i("LebaFrame", 1, "StudyModeChange onChange " + paramBoolean);
-    ((ILebaHelperService)localLeba.a.getRuntimeService(ILebaHelperService.class, "multi")).checkModleAndRefesh();
-    if (Looper.myLooper() != Looper.getMainLooper())
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new Leba.MyStudyModeChangeListener.1(this, localLeba));
+    Object localObject = this.a;
+    if (localObject == null) {
       return;
     }
-    localLeba.m();
+    localObject = (Leba)((WeakReference)localObject).get();
+    if (localObject == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StudyModeChange onChange ");
+    localStringBuilder.append(paramBoolean);
+    QLog.i("LebaFrame", 1, localStringBuilder.toString());
+    ((ILebaHelperService)((Leba)localObject).a.getRuntimeService(ILebaHelperService.class, "multi")).checkModleAndRefesh();
+    if (Looper.myLooper() != Looper.getMainLooper())
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new Leba.MyStudyModeChangeListener.1(this, (Leba)localObject));
+      return;
+    }
+    ((Leba)localObject).m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.Leba.MyStudyModeChangeListener
  * JD-Core Version:    0.7.0.1
  */

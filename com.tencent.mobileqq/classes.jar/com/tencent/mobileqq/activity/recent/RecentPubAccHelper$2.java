@@ -18,26 +18,30 @@ class RecentPubAccHelper$2
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccHelper", 2, "unfollow isSuccess:" + String.valueOf(paramBoolean) + ", uin: " + this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("unfollow isSuccess:");
+      ((StringBuilder)localObject).append(String.valueOf(paramBoolean));
+      ((StringBuilder)localObject).append(", uin: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
+      QLog.d("RecentPubAccHelper", 2, ((StringBuilder)localObject).toString());
     }
     if (!paramBoolean)
     {
-      RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, 2131695222);
+      RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, 2131695217);
       return;
     }
-    for (;;)
+    try
     {
-      try
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        localObject = new mobileqq_mp.UnFollowResponse();
+        ((mobileqq_mp.UnFollowResponse)localObject).mergeFrom(paramBundle);
+        if (((mobileqq_mp.RetInfo)((mobileqq_mp.UnFollowResponse)localObject).ret_info.get()).ret_code.get() == 0)
         {
-          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-          localUnFollowResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() != 0) {
-            continue;
-          }
           if (QLog.isColorLevel()) {
             QLog.d("RecentPubAccHelper", 2, "unfollow success");
           }
@@ -46,20 +50,23 @@ class RecentPubAccHelper$2
           ((TroopBindPublicAccountMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
           RecentPubAccHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         }
+        else
+        {
+          RecentPubAccHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, 2131695217);
+        }
       }
-      catch (Exception paramBundle)
-      {
-        continue;
-      }
-      RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper);
-      return;
-      RecentPubAccHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, 2131695222);
     }
+    catch (Exception paramBundle)
+    {
+      label219:
+      break label219;
+    }
+    RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentPubAccHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ public final class OpenGameBox$StScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trpc.cmshow.game.OpenGameBox.StScene
  * JD-Core Version:    0.7.0.1
  */

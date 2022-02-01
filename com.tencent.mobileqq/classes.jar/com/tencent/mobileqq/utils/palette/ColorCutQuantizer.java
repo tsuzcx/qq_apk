@@ -27,6 +27,7 @@ final class ColorCutQuantizer
     this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsPalettePalette$Filter = paramArrayOfFilter;
     paramArrayOfFilter = new int[32768];
     this.b = paramArrayOfFilter;
+    int n = 0;
     int i = 0;
     while (i < paramArrayOfInt.length)
     {
@@ -123,14 +124,24 @@ final class ColorCutQuantizer
   
   static void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = paramInt2;
-    switch (paramInt1)
+    if (paramInt1 != -3)
     {
-    }
-    for (;;)
-    {
-      return;
+      int i = paramInt2;
       int j;
+      if (paramInt1 != -2)
+      {
+        if (paramInt1 != -1) {
+          return;
+        }
+        while (paramInt2 <= paramInt3)
+        {
+          paramInt1 = paramArrayOfInt[paramInt2];
+          i = c(paramInt1);
+          j = b(paramInt1);
+          paramArrayOfInt[paramInt2] = (a(paramInt1) | i << 10 | j << 5);
+          paramInt2 += 1;
+        }
+      }
       while (i <= paramInt3)
       {
         paramInt1 = paramArrayOfInt[i];
@@ -138,14 +149,6 @@ final class ColorCutQuantizer
         j = a(paramInt1);
         paramArrayOfInt[i] = (c(paramInt1) | paramInt2 << 10 | j << 5);
         i += 1;
-      }
-      while (paramInt2 <= paramInt3)
-      {
-        paramInt1 = paramArrayOfInt[paramInt2];
-        i = c(paramInt1);
-        j = b(paramInt1);
-        paramArrayOfInt[paramInt2] = (a(paramInt1) | i << 10 | j << 5);
-        paramInt2 += 1;
       }
     }
   }
@@ -159,33 +162,20 @@ final class ColorCutQuantizer
   
   private boolean a(int paramInt, float[] paramArrayOfFloat)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsPalettePalette$Filter != null)
+    Palette.Filter[] arrayOfFilter = this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsPalettePalette$Filter;
+    if ((arrayOfFilter != null) && (arrayOfFilter.length > 0))
     {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsPalettePalette$Filter.length > 0)
-      {
-        j = this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsPalettePalette$Filter.length;
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      int j = arrayOfFilter.length;
+      int i = 0;
+      while (i < j)
       {
         if (!this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsPalettePalette$Filter[i].a(paramInt, paramArrayOfFloat)) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   private boolean a(Palette.Swatch paramSwatch)
@@ -202,12 +192,10 @@ final class ColorCutQuantizer
   {
     if (paramInt3 > paramInt2) {
       paramInt1 <<= paramInt3 - paramInt2;
-    }
-    for (;;)
-    {
-      return paramInt1 & (1 << paramInt3) - 1;
+    } else {
       paramInt1 >>= paramInt2 - paramInt3;
     }
+    return paramInt1 & (1 << paramInt3) - 1;
   }
   
   static int c(int paramInt)
@@ -217,7 +205,9 @@ final class ColorCutQuantizer
   
   private static int d(int paramInt)
   {
-    return b(Color.red(paramInt), 8, 5) << 10 | b(Color.green(paramInt), 8, 5) << 5 | b(Color.blue(paramInt), 8, 5);
+    int i = b(Color.red(paramInt), 8, 5);
+    int j = b(Color.green(paramInt), 8, 5);
+    return b(Color.blue(paramInt), 8, 5) | i << 10 | j << 5;
   }
   
   private static int e(int paramInt)
@@ -232,7 +222,7 @@ final class ColorCutQuantizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.ColorCutQuantizer
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,29 @@ class PhoneStatusMonitor$3
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhoneStatusMonitor", 2, "checkEndCallTask, calling[" + PhoneStatusMonitor.a(this.this$0) + "], tillEnd[" + PhoneStatusMonitor.a(this.this$0).get() + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkEndCallTask, calling[");
+      localStringBuilder.append(PhoneStatusMonitor.a(this.this$0));
+      localStringBuilder.append("], tillEnd[");
+      localStringBuilder.append(PhoneStatusMonitor.a(this.this$0).get());
+      localStringBuilder.append("]");
+      QLog.i("PhoneStatusMonitor", 2, localStringBuilder.toString());
     }
-    if (!PhoneStatusMonitor.a(this.this$0)) {
+    if (!PhoneStatusMonitor.a(this.this$0))
+    {
       this.this$0.d();
-    }
-    while (!PhoneStatusMonitor.a(this.this$0).get()) {
       return;
     }
-    this.this$0.c();
+    if (PhoneStatusMonitor.a(this.this$0).get()) {
+      this.this$0.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.PhoneStatusMonitor.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ class NearbyPeopleProfileActivity$9
   public void onAnimationEnd(Animation paramAnimation)
   {
     paramAnimation = this.a;
-    paramAnimation.k += 1;
-    if (NearbyPeopleProfileActivity.a(this.a) != null) {
-      NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
+    paramAnimation.mEnterEidtTimes += 1;
+    if (NearbyPeopleProfileActivity.access$400(this.a) != null) {
+      NearbyPeopleProfileActivity.access$400(this.a).a(NearbyPeopleProfileActivity.access$300(this.a));
     }
   }
   
@@ -23,7 +23,7 @@ class NearbyPeopleProfileActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.9
  * JD-Core Version:    0.7.0.1
  */

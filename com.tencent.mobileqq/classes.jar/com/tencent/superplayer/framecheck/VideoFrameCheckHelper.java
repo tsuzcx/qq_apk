@@ -16,27 +16,23 @@ public class VideoFrameCheckHelper
   
   private void stopTaskWhenTextureViewNotAvailable()
   {
-    if (this.mOnVideoFrameCheckListener != null)
+    FrameComparePipeLine.OnVideoFrameCheckListener localOnVideoFrameCheckListener = this.mOnVideoFrameCheckListener;
+    if (localOnVideoFrameCheckListener != null)
     {
-      if (this.mTextureView != null) {
-        break label32;
-      }
-      this.mOnVideoFrameCheckListener.onVideoFrameCheckResult(4);
-    }
-    for (;;)
-    {
-      this.mPipeLine.stop();
-      return;
-      label32:
-      if (!this.mTextureView.isAvailable()) {
+      TextureView localTextureView = this.mTextureView;
+      if (localTextureView == null) {
+        localOnVideoFrameCheckListener.onVideoFrameCheckResult(4);
+      } else if (!localTextureView.isAvailable()) {
         this.mOnVideoFrameCheckListener.onVideoFrameCheckResult(5);
       }
     }
+    this.mPipeLine.stop();
   }
   
   public Bitmap doCapture(int paramInt1, int paramInt2)
   {
-    if ((this.mTextureView != null) && (this.mTextureView.isAvailable()))
+    TextureView localTextureView = this.mTextureView;
+    if ((localTextureView != null) && (localTextureView.isAvailable()))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
         return this.mTextureView.getBitmap();
@@ -65,19 +61,15 @@ public class VideoFrameCheckHelper
   
   public void onPlayerStart()
   {
-    if (this.mTextureView == null) {
+    TextureView localTextureView = this.mTextureView;
+    if (localTextureView == null) {
       LogUtil.e("VideoFrameCheckHelper", "onPlayerStart but mTextureView is null");
+    } else if (!localTextureView.isAvailable()) {
+      LogUtil.e("VideoFrameCheckHelper", "onPlayerStart but mTextureView is not available");
     }
-    for (;;)
-    {
-      this.mPipeLine.addTask(new VideoFrameCaptureTask(this));
-      this.mPipeLine.addTask(new VideoFrameCaptureTask(this, true));
-      this.mPipeLine.start();
-      return;
-      if (!this.mTextureView.isAvailable()) {
-        LogUtil.e("VideoFrameCheckHelper", "onPlayerStart but mTextureView is not available");
-      }
-    }
+    this.mPipeLine.addTask(new VideoFrameCaptureTask(this));
+    this.mPipeLine.addTask(new VideoFrameCaptureTask(this, true));
+    this.mPipeLine.start();
   }
   
   public void onPlayerStop()
@@ -110,7 +102,7 @@ public class VideoFrameCheckHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.framecheck.VideoFrameCheckHelper
  * JD-Core Version:    0.7.0.1
  */

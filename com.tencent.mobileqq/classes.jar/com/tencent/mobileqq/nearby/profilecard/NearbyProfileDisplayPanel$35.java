@@ -1,25 +1,21 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class NearbyProfileDisplayPanel$35
   implements Runnable
 {
-  NearbyProfileDisplayPanel$35(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  NearbyProfileDisplayPanel$35(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, int paramInt) {}
   
   public void run()
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("COM_TENCENT_MOBILEQQ_NEARBY_PROFILE_ONRESUME");
-    localIntent.setPackage("com.tencent.mobileqq");
-    BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+    ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "CliOper", "", "", NearbyProfileDisplayPanel.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], NearbyProfileDisplayPanel.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], 0, 0, "", "", "", "");
+    ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.35
  * JD-Core Version:    0.7.0.1
  */

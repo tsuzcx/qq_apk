@@ -44,7 +44,7 @@ public class BottomVideoInfoWidget$GenShareThumbReceiver
       return;
     }
     SLog.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
-    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131701250), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131701390), 0).a();
   }
   
   public Class acceptEventClass()
@@ -54,7 +54,7 @@ public class BottomVideoInfoWidget$GenShareThumbReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.GenShareThumbReceiver
  * JD-Core Version:    0.7.0.1
  */

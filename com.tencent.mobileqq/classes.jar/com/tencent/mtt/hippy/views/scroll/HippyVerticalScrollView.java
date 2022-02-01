@@ -43,20 +43,8 @@ public class HippyVerticalScrollView
   
   private void setParentScrollableIfNeed(boolean paramBoolean)
   {
-    boolean bool = true;
-    ViewParent localViewParent;
-    if ((canScrollVertically(-1)) || (canScrollVertically(1)))
-    {
-      localViewParent = getParent();
-      if (paramBoolean) {
-        break label37;
-      }
-    }
-    label37:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localViewParent.requestDisallowInterceptTouchEvent(paramBoolean);
-      return;
+    if ((canScrollVertically(-1)) || (canScrollVertically(1))) {
+      getParent().requestDisallowInterceptTouchEvent(paramBoolean ^ true);
     }
   }
   
@@ -64,12 +52,14 @@ public class HippyVerticalScrollView
   {
     int k = getHeight();
     int m = getScrollY();
-    int i = 0;
+    int i;
     if (k != 0) {
       i = m / k;
+    } else {
+      i = 0;
     }
     int j = i;
-    if (m + paramInt > i * k + k / 2) {
+    if (paramInt + m > i * k + k / 2) {
       j = i + 1;
     }
     smoothScrollTo(getScrollX(), j * k);
@@ -100,20 +90,17 @@ public class HippyVerticalScrollView
     }
     if (this.mPagingEnabled) {
       smoothScrollToPage(paramInt);
+    } else {
+      super.fling(paramInt);
     }
-    HippyVerticalScrollView.2 local2;
-    for (;;)
+    if (this.mMomentumScrollBeginEventEnable) {
+      HippyScrollViewEventHelper.emitScrollMomentumBeginEvent(this);
+    }
+    HippyVerticalScrollView.2 local2 = new HippyVerticalScrollView.2(this);
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      if (this.mMomentumScrollBeginEventEnable) {
-        HippyScrollViewEventHelper.emitScrollMomentumBeginEvent(this);
-      }
-      local2 = new HippyVerticalScrollView.2(this);
-      if (Build.VERSION.SDK_INT < 16) {
-        break;
-      }
       postOnAnimationDelayed(local2, 20L);
       return;
-      super.fling(paramInt);
     }
     getHandler().postDelayed(local2, 20L);
   }
@@ -125,59 +112,65 @@ public class HippyVerticalScrollView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.mScrollEnabled) {}
-    while (!super.onInterceptTouchEvent(paramMotionEvent)) {
+    if (!this.mScrollEnabled) {
       return false;
     }
-    if (this.mScrollBeginDragEventEnable) {
-      HippyScrollViewEventHelper.emitScrollBeginDragEvent(this);
+    if (super.onInterceptTouchEvent(paramMotionEvent))
+    {
+      if (this.mScrollBeginDragEventEnable) {
+        HippyScrollViewEventHelper.emitScrollBeginDragEvent(this);
+      }
+      this.mDragging = true;
+      return true;
     }
-    this.mDragging = true;
-    return true;
+    return false;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     scrollTo(getScrollX(), getScrollY());
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    long l;
-    if (this.mHippyOnScrollHelper.onScrollChanged(paramInt1, paramInt2)) {
+    if (this.mHippyOnScrollHelper.onScrollChanged(paramInt1, paramInt2))
+    {
       if (this.mScrollEventEnable)
       {
-        l = System.currentTimeMillis();
+        long l = System.currentTimeMillis();
         paramInt1 = Math.abs(paramInt2 - this.mLastY);
-        if ((this.mScrollMinOffset <= 0) || (paramInt1 < this.mScrollMinOffset)) {
-          break label73;
+        paramInt3 = this.mScrollMinOffset;
+        if ((paramInt3 > 0) && (paramInt1 >= paramInt3))
+        {
+          this.mLastY = paramInt2;
         }
-        this.mLastY = paramInt2;
-      }
-    }
-    for (;;)
-    {
-      HippyScrollViewEventHelper.emitScrollEvent(this);
-      this.mDoneFlinging = false;
-      label73:
-      do
-      {
+        else
+        {
+          if ((this.mScrollMinOffset != 0) || (l - this.mLastScrollEventTimeStamp < this.mScrollEventThrottle)) {
+            break label101;
+          }
+          this.mLastScrollEventTimeStamp = l;
+        }
+        HippyScrollViewEventHelper.emitScrollEvent(this);
+        break label102;
+        label101:
         return;
-      } while ((this.mScrollMinOffset != 0) || (l - this.mLastScrollEventTimeStamp < this.mScrollEventThrottle));
-      this.mLastScrollEventTimeStamp = l;
+      }
+      label102:
+      this.mDoneFlinging = false;
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool1 = false;
     int i = paramMotionEvent.getAction() & 0xFF;
+    boolean bool1 = false;
     if ((i == 0) && (!this.mDragging))
     {
       this.mDragging = true;
@@ -186,25 +179,23 @@ public class HippyVerticalScrollView
       }
       setParentScrollableIfNeed(false);
     }
-    for (;;)
+    else if ((i == 1) && (this.mDragging))
     {
-      if (this.mScrollEnabled) {
-        bool1 = super.onTouchEvent(paramMotionEvent);
+      if (this.mScrollEndDragEventEnable) {
+        HippyScrollViewEventHelper.emitScrollEndDragEvent(this);
       }
-      boolean bool2 = bool1;
-      if (this.mGestureDispatcher != null) {
-        bool2 = bool1 | this.mGestureDispatcher.handleTouchEvent(paramMotionEvent);
-      }
-      return bool2;
-      if ((i == 1) && (this.mDragging))
-      {
-        if (this.mScrollEndDragEventEnable) {
-          HippyScrollViewEventHelper.emitScrollEndDragEvent(this);
-        }
-        setParentScrollableIfNeed(true);
-        this.mDragging = false;
-      }
+      setParentScrollableIfNeed(true);
+      this.mDragging = false;
     }
+    if (this.mScrollEnabled) {
+      bool1 = super.onTouchEvent(paramMotionEvent);
+    }
+    NativeGestureDispatcher localNativeGestureDispatcher = this.mGestureDispatcher;
+    boolean bool2 = bool1;
+    if (localNativeGestureDispatcher != null) {
+      bool2 = bool1 | localNativeGestureDispatcher.handleTouchEvent(paramMotionEvent);
+    }
+    return bool2;
   }
   
   public void setContentOffset4Reuse(HippyMap paramHippyMap)
@@ -279,7 +270,7 @@ public class HippyVerticalScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.scroll.HippyVerticalScrollView
  * JD-Core Version:    0.7.0.1
  */

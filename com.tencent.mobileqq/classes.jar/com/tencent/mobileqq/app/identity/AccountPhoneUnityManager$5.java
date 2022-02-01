@@ -1,41 +1,38 @@
 package com.tencent.mobileqq.app.identity;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.banner.BannerManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 class AccountPhoneUnityManager$5
   implements View.OnClickListener
 {
-  AccountPhoneUnityManager$5(AccountPhoneUnityManager paramAccountPhoneUnityManager, boolean paramBoolean, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  AccountPhoneUnityManager$5(AccountPhoneUnityManager paramAccountPhoneUnityManager, Activity paramActivity, boolean paramBoolean, AppRuntime paramAppRuntime) {}
   
   public void onClick(View paramView)
   {
-    AccountPhoneUnityManager.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountPhoneUnityManager).dismiss();
-    if (this.jdField_a_of_type_Boolean)
+    if (System.currentTimeMillis() - AccountPhoneUnityManager.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountPhoneUnityManager) >= 1000L)
     {
-      AccountManageActivity.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      AccountPhoneUnityManager.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountPhoneUnityManager, System.currentTimeMillis());
+      QRoute.startUri(this.jdField_a_of_type_AndroidAppActivity, "/base/phoneUnityBindInfo");
+      String str;
+      if (this.jdField_a_of_type_Boolean) {
+        str = "0X800B3E7";
+      } else {
+        str = "0X800B3E4";
+      }
+      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
     }
-    BannerManager.a().a(2, 2, null);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "0X800B3E8";; str = "0X800B3E5")
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      break;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountPhoneUnityManager.5
  * JD-Core Version:    0.7.0.1
  */

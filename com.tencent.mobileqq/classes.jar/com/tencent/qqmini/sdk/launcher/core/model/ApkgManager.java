@@ -12,26 +12,36 @@ public class ApkgManager
   
   public static String getApkgFolderPath(MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId))) {
-      return "";
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    {
+      if (paramMiniAppInfo.verType == 3)
+      {
+        localStringBuilder = new StringBuilder(getPkgRoot(paramMiniAppInfo));
+        localStringBuilder.append(MD5Utils.toMD5(paramMiniAppInfo.appId));
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramMiniAppInfo.versionId);
+        return localStringBuilder.toString();
+      }
+      StringBuilder localStringBuilder = new StringBuilder(getPkgRoot(paramMiniAppInfo));
+      localStringBuilder.append(paramMiniAppInfo.appId);
+      localStringBuilder.append("_debug");
+      return localStringBuilder.toString();
     }
-    if (paramMiniAppInfo.verType == 3) {
-      return getPkgRoot(paramMiniAppInfo) + MD5Utils.toMD5(paramMiniAppInfo.appId) + "_" + paramMiniAppInfo.versionId;
-    }
-    return getPkgRoot(paramMiniAppInfo) + paramMiniAppInfo.appId + "_debug";
+    return "";
   }
   
   public static ApkgManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new ApkgManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new ApkgManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static String getPkgRoot(MiniAppInfo paramMiniAppInfo)
@@ -47,7 +57,7 @@ public class ApkgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.model.ApkgManager
  * JD-Core Version:    0.7.0.1
  */

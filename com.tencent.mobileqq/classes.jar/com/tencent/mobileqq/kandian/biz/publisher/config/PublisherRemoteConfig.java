@@ -13,7 +13,12 @@ public final class PublisherRemoteConfig
 {
   public boolean a()
   {
-    return Aladdin.getConfig(421).getIntegerFromString("switch_select_cover_on", 0) == 1;
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(421);
+    boolean bool = false;
+    if (localAladdinConfig.getIntegerFromString("switch_select_cover_on", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   @NotNull
@@ -26,7 +31,7 @@ public final class PublisherRemoteConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.config.PublisherRemoteConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -70,24 +70,18 @@ public class MutiPickerView
     Field[] arrayOfField = NumberPicker.class.getDeclaredFields();
     int j = arrayOfField.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      Field localField;
-      if (i < j)
+      Field localField = arrayOfField[i];
+      if (localField.getName().equals("mSelectionDivider"))
       {
-        localField = arrayOfField[i];
-        if (localField.getName().equals("mSelectionDivider")) {
-          localField.setAccessible(true);
-        }
-      }
-      else
-      {
+        localField.setAccessible(true);
         try
         {
           localField.set(paramNumberPicker, new ColorDrawable(ColorUtils.parseColor("#3CB371")));
           return;
         }
-        catch (IllegalArgumentException paramNumberPicker)
+        catch (IllegalAccessException paramNumberPicker)
         {
           paramNumberPicker.printStackTrace();
           return;
@@ -97,7 +91,7 @@ public class MutiPickerView
           paramNumberPicker.printStackTrace();
           return;
         }
-        catch (IllegalAccessException paramNumberPicker)
+        catch (IllegalArgumentException paramNumberPicker)
         {
           paramNumberPicker.printStackTrace();
           return;
@@ -121,42 +115,47 @@ public class MutiPickerView
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.mOnConfirmListener != null) {
-      this.mOnConfirmListener.onValCancel();
+    paramDialogInterface = this.mOnConfirmListener;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.onValCancel();
     }
   }
   
   public void onClick(View paramView)
   {
+    MutiPickerView.OnConfirmListener localOnConfirmListener;
     if (paramView.getId() == R.id.muti_tv_cancel)
     {
-      if (this.mOnConfirmListener != null) {
-        this.mOnConfirmListener.onValCancel();
+      localOnConfirmListener = this.mOnConfirmListener;
+      if (localOnConfirmListener != null) {
+        localOnConfirmListener.onValCancel();
       }
       dismissDlg();
     }
-    for (;;)
+    else if (paramView.getId() == R.id.muti_tv_confirm)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() == R.id.muti_tv_confirm)
-      {
-        if (this.mOnConfirmListener != null) {
-          this.mOnConfirmListener.onValConfirm(this.mResult);
-        }
-        dismissDlg();
+      localOnConfirmListener = this.mOnConfirmListener;
+      if (localOnConfirmListener != null) {
+        localOnConfirmListener.onValConfirm(this.mResult);
       }
+      dismissDlg();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setCurrentIndex(int[] paramArrayOfInt)
   {
-    if ((this.mNumberPicker == null) || (this.mNumberPicker.size() == 0)) {}
-    for (;;)
+    ArrayList localArrayList = this.mNumberPicker;
+    if (localArrayList != null)
     {
-      return;
-      if ((paramArrayOfInt != null) && (paramArrayOfInt.length == this.mNumberPicker.size()))
+      if (localArrayList.size() == 0) {
+        return;
+      }
+      if (paramArrayOfInt != null)
       {
+        if (paramArrayOfInt.length != this.mNumberPicker.size()) {
+          return;
+        }
         this.mResult = paramArrayOfInt;
         int i = 0;
         while (i < this.mNumberPicker.size())
@@ -170,20 +169,28 @@ public class MutiPickerView
   
   public void setDisplayedValues(int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
+    if (paramArrayOfString != null)
     {
-      do
-      {
+      if (paramArrayOfString.length == 0) {
         return;
-      } while ((this.mNumberPicker == null) || (paramInt1 >= this.mNumberPicker.size()));
-      NumberPicker localNumberPicker = (NumberPicker)this.mNumberPicker.get(paramInt1);
-      localNumberPicker.setDisplayedValues(null);
-      localNumberPicker.setMaxValue(paramArrayOfString.length - 1);
-      localNumberPicker.setDisplayedValues(paramArrayOfString);
-      localNumberPicker.setValue(paramInt2);
-    } while ((paramInt1 >= this.mResult.length) || (paramInt1 < 0));
-    this.mResult[paramInt1] = paramInt2;
+      }
+      Object localObject = this.mNumberPicker;
+      if (localObject != null)
+      {
+        if (paramInt1 >= ((ArrayList)localObject).size()) {
+          return;
+        }
+        localObject = (NumberPicker)this.mNumberPicker.get(paramInt1);
+        ((NumberPicker)localObject).setDisplayedValues(null);
+        ((NumberPicker)localObject).setMaxValue(paramArrayOfString.length - 1);
+        ((NumberPicker)localObject).setDisplayedValues(paramArrayOfString);
+        ((NumberPicker)localObject).setValue(paramInt2);
+        paramArrayOfString = this.mResult;
+        if ((paramInt1 < paramArrayOfString.length) && (paramInt1 >= 0)) {
+          paramArrayOfString[paramInt1] = paramInt2;
+        }
+      }
+    }
   }
   
   public void setDisplayedValues(String[][] paramArrayOfString)
@@ -198,27 +205,28 @@ public class MutiPickerView
     {
       this.mResult = new int[paramArrayOfString.length];
       int i = 0;
-      if (i < paramArrayOfString.length)
+      while (i < paramArrayOfString.length)
       {
-        if (Build.VERSION.SDK_INT >= 16) {}
-        for (Object localObject = new MiniNumberPicker(getContext());; localObject = new NumberPicker(getContext()))
-        {
-          if (paramArrayOfString[i].length > 0)
-          {
-            ((NumberPicker)localObject).setDisplayedValues(paramArrayOfString[i]);
-            ((NumberPicker)localObject).setMinValue(0);
-            ((NumberPicker)localObject).setMaxValue(paramArrayOfString[i].length - 1);
-          }
-          ((NumberPicker)localObject).setOnValueChangedListener(new MutiPickerView.MutiOnValueChangeListener(this, i));
-          setNumpickerDiverColor((NumberPicker)localObject);
-          this.mNumberPicker.add(localObject);
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2);
-          localLayoutParams.weight = 1.0F;
-          localLayoutParams.setMargins(10, 10, 10, 10);
-          this.mMutiPickerContainer.addView((View)localObject, localLayoutParams);
-          i += 1;
-          break;
+        Object localObject;
+        if (Build.VERSION.SDK_INT >= 16) {
+          localObject = new MiniNumberPicker(getContext());
+        } else {
+          localObject = new NumberPicker(getContext());
         }
+        if (paramArrayOfString[i].length > 0)
+        {
+          ((NumberPicker)localObject).setDisplayedValues(paramArrayOfString[i]);
+          ((NumberPicker)localObject).setMinValue(0);
+          ((NumberPicker)localObject).setMaxValue(paramArrayOfString[i].length - 1);
+        }
+        ((NumberPicker)localObject).setOnValueChangedListener(new MutiPickerView.MutiOnValueChangeListener(this, i));
+        setNumpickerDiverColor((NumberPicker)localObject);
+        this.mNumberPicker.add(localObject);
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2);
+        localLayoutParams.weight = 1.0F;
+        localLayoutParams.setMargins(10, 10, 10, 10);
+        this.mMutiPickerContainer.addView((View)localObject, localLayoutParams);
+        i += 1;
       }
     }
   }
@@ -230,7 +238,7 @@ public class MutiPickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.MutiPickerView
  * JD-Core Version:    0.7.0.1
  */

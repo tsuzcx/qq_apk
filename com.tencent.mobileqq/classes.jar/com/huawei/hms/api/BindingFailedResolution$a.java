@@ -1,27 +1,26 @@
 package com.huawei.hms.api;
 
-import android.content.Context;
-import com.huawei.hms.ui.AbstractPromptDialog;
-import com.huawei.hms.utils.HMSPackageManager;
-import com.huawei.hms.utils.ResourceLoaderUtil;
-import com.huawei.hms.utils.Util;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 class BindingFailedResolution$a
-  extends AbstractPromptDialog
+  implements Handler.Callback
 {
-  public String onGetMessageString(Context paramContext)
-  {
-    return ResourceLoaderUtil.getString("hms_bindfaildlg_message", new Object[] { Util.getAppName(paramContext, null), Util.getAppName(paramContext, HMSPackageManager.getInstance(paramContext).getHMSPackageName()) });
-  }
+  BindingFailedResolution$a(BindingFailedResolution paramBindingFailedResolution) {}
   
-  public String onGetPositiveButtonString(Context paramContext)
+  public boolean handleMessage(Message paramMessage)
   {
-    return ResourceLoaderUtil.getString("hms_confirm");
+    if ((paramMessage != null) && (paramMessage.what == 3))
+    {
+      BindingFailedResolution.a(this.a, 8);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.BindingFailedResolution.a
  * JD-Core Version:    0.7.0.1
  */

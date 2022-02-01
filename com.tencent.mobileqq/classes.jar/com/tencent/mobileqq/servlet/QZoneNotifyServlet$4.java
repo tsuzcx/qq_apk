@@ -12,25 +12,29 @@ final class QZoneNotifyServlet$4
 {
   public void run()
   {
-    if ((Build.VERSION.SDK_INT < 23) || (BaseApplication.getContext() == null) || (BaseApplication.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0)) {
-      try
-      {
-        QZoneNotifyServlet.a(System.currentTimeMillis());
-        ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(QZoneNotifyServlet.a());
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "locate exception " + localException);
-        return;
-      }
+    if ((Build.VERSION.SDK_INT >= 23) && (BaseApplication.getContext() != null) && (BaseApplication.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
+    {
+      QZLog.w("QZLog", "定位有版本或权限限制");
+      return;
     }
-    QZLog.w("QZLog", "定位有版本或权限限制");
+    try
+    {
+      QZoneNotifyServlet.a(System.currentTimeMillis());
+      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(QZoneNotifyServlet.a());
+      return;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("locate exception ");
+      localStringBuilder.append(localException);
+      QLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet.4
  * JD-Core Version:    0.7.0.1
  */

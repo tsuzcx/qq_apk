@@ -18,25 +18,26 @@ public class ScaleKeyframeAnimation
   
   public ScaleXY getValue(Keyframe<ScaleXY> paramKeyframe, float paramFloat)
   {
-    if ((paramKeyframe.startValue == null) || (paramKeyframe.endValue == null)) {
-      throw new IllegalStateException("Missing values for keyframe.");
-    }
-    ScaleXY localScaleXY1 = (ScaleXY)paramKeyframe.startValue;
-    ScaleXY localScaleXY2 = (ScaleXY)paramKeyframe.endValue;
-    if (this.valueCallback != null)
+    if ((paramKeyframe.startValue != null) && (paramKeyframe.endValue != null))
     {
-      paramKeyframe = (ScaleXY)this.valueCallback.getValueInternal(paramKeyframe.startFrame, paramKeyframe.endFrame.floatValue(), localScaleXY1, localScaleXY2, paramFloat, getLinearCurrentKeyframeProgress(), getProgress());
-      if (paramKeyframe != null) {
-        return paramKeyframe;
+      ScaleXY localScaleXY1 = (ScaleXY)paramKeyframe.startValue;
+      ScaleXY localScaleXY2 = (ScaleXY)paramKeyframe.endValue;
+      if (this.valueCallback != null)
+      {
+        paramKeyframe = (ScaleXY)this.valueCallback.getValueInternal(paramKeyframe.startFrame, paramKeyframe.endFrame.floatValue(), localScaleXY1, localScaleXY2, paramFloat, getLinearCurrentKeyframeProgress(), getProgress());
+        if (paramKeyframe != null) {
+          return paramKeyframe;
+        }
       }
+      this.scaleXY.set(MiscUtils.lerp(localScaleXY1.getScaleX(), localScaleXY2.getScaleX(), paramFloat), MiscUtils.lerp(localScaleXY1.getScaleY(), localScaleXY2.getScaleY(), paramFloat));
+      return this.scaleXY;
     }
-    this.scaleXY.set(MiscUtils.lerp(localScaleXY1.getScaleX(), localScaleXY2.getScaleX(), paramFloat), MiscUtils.lerp(localScaleXY1.getScaleY(), localScaleXY2.getScaleY(), paramFloat));
-    return this.scaleXY;
+    throw new IllegalStateException("Missing values for keyframe.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.ScaleKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

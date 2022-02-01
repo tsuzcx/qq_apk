@@ -11,7 +11,11 @@ final class TbsDownloader$1
   
   public void a(String paramString)
   {
-    Log.e("TBSEmergency", "Execute command [1000](" + paramString + "), force tbs downloader request");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Execute command [1000](");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("), force tbs downloader request");
+    Log.e("TBSEmergency", localStringBuilder.toString());
     paramString = this.a.mPreferences.edit();
     paramString.putLong("last_check", 0L);
     paramString.apply();
@@ -20,7 +24,7 @@ final class TbsDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloader.1
  * JD-Core Version:    0.7.0.1
  */

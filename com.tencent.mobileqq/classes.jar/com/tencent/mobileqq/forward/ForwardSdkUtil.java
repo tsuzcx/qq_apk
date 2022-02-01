@@ -21,13 +21,15 @@ public class ForwardSdkUtil
     }
     catch (IOException paramCloseable)
     {
-      QLog.e("ForwardSdkUtil", 1, " requestShareMessage net error");
+      label12:
+      break label12;
     }
+    QLog.e("ForwardSdkUtil", 1, " requestShareMessage net error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkUtil
  * JD-Core Version:    0.7.0.1
  */

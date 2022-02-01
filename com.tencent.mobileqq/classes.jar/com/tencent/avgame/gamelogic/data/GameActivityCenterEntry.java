@@ -16,7 +16,7 @@ public class GameActivityCenterEntry
   
   public boolean a()
   {
-    return !TextUtils.isEmpty(this.b);
+    return TextUtils.isEmpty(this.b) ^ true;
   }
   
   public boolean b()
@@ -26,12 +26,20 @@ public class GameActivityCenterEntry
   
   public String toString()
   {
-    return "{redPoint: " + this.jdField_a_of_type_Int + ", iconUrl: " + this.jdField_a_of_type_JavaLangString + ", jumpUrl: " + this.b + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{redPoint: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", iconUrl: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", jumpUrl: ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.GameActivityCenterEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -15,24 +15,51 @@ public class AnimationUtils
 {
   public static float a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0)) {}
-    do
+    float f2 = 1.0F;
+    float f1 = f2;
+    if (paramInt1 > 0)
     {
-      do
+      f1 = f2;
+      if (paramInt2 > 0)
       {
-        return 1.0F;
-        if ((paramInt1 >= paramInt3) && (paramInt2 >= paramInt4 * paramInt1 / paramInt3)) {
-          return paramInt3 / paramInt1;
+        f1 = f2;
+        if (paramInt3 > 0)
+        {
+          if (paramInt4 <= 0) {
+            return 1.0F;
+          }
+          if ((paramInt1 >= paramInt3) && (paramInt2 >= paramInt4 * paramInt1 / paramInt3)) {}
+          for (;;)
+          {
+            return paramInt3 / paramInt1;
+            if ((paramInt1 < paramInt3) && (paramInt2 >= paramInt4)) {
+              return 1.0F;
+            }
+            if ((paramInt1 < paramInt3) || (paramInt2 >= paramInt4 * paramInt1 / paramInt3))
+            {
+              if ((paramInt1 > paramInt3) || (paramInt2 > paramInt4)) {
+                break;
+              }
+              f1 = f2;
+              if (paramInt1 >= paramInt3) {
+                break label146;
+              }
+              f1 = f2;
+              if (paramInt1 <= paramInt3 / 2) {
+                break label146;
+              }
+              f1 = f2;
+              if (paramInt4 <= paramInt3 / paramInt1 * paramInt2) {
+                break label146;
+              }
+            }
+          }
+          f1 = Math.min(paramInt4 / paramInt2, paramInt3 / paramInt1);
         }
-      } while ((paramInt1 < paramInt3) && (paramInt2 >= paramInt4));
-      if ((paramInt1 >= paramInt3) && (paramInt2 < paramInt4 * paramInt1 / paramInt3)) {
-        return paramInt3 / paramInt1;
       }
-      if ((paramInt1 > paramInt3) || (paramInt2 > paramInt4)) {
-        return Math.min(paramInt4 / paramInt2, paramInt3 / paramInt1);
-      }
-    } while ((paramInt1 >= paramInt3) || (paramInt1 <= paramInt3 / 2) || (paramInt4 <= paramInt3 / paramInt1 * paramInt2));
-    return paramInt3 / paramInt1;
+    }
+    label146:
+    return f1;
   }
   
   public static Rect a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Object paramObject)
@@ -42,51 +69,44 @@ public class AnimationUtils
   
   public static Rect a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, Object paramObject)
   {
-    float f = Gallery.a(paramInt1, paramInt2, paramInt3, paramInt4, paramObject);
+    float f = Gallery.getAIOImageScale(paramInt1, paramInt2, paramInt3, paramInt4);
     int i;
-    label67:
-    label79:
-    Rect localRect;
-    if (paramInt2 >= paramInt1 * 3)
-    {
+    if (paramInt2 >= paramInt1 * 3) {
       i = 1;
-      if ((i == 0) || ((paramInt1 <= paramInt3) && (paramInt2 <= paramInt4)) || ((paramInt1 < URLDrawableHelper.AIO_IMAGE_MAX_SIZE) && (paramInt2 < URLDrawableHelper.AIO_IMAGE_MAX_SIZE))) {
-        break label119;
-      }
-      f = Math.min(paramInt3 / paramInt1, Gallery.c);
-      i = 49;
-      if ((paramBoolean) || (f <= 1.0F)) {
-        break label126;
-      }
-      localRect = new Rect(0, 0, paramInt1, paramInt2);
-      if (i != 49) {
-        break label143;
-      }
-      localRect.offset((paramInt3 - paramInt1) / 2, 0);
+    } else {
+      i = 0;
     }
-    label119:
-    label126:
-    do
+    if ((i != 0) && ((paramInt1 > paramInt3) || (paramInt2 > paramInt4)) && ((paramInt1 >= URLDrawableHelper.AIO_IMAGE_MAX_SIZE) || (paramInt2 >= URLDrawableHelper.AIO_IMAGE_MAX_SIZE)))
     {
-      do
+      f = Math.min(paramInt3 / paramInt1, Gallery.MAX_SCALE_DEFAULT);
+      i = 49;
+    }
+    else
+    {
+      i = 17;
+    }
+    if ((paramBoolean) || (f <= 1.0F))
+    {
+      paramInt1 = (int)(paramInt1 * f);
+      paramInt2 = (int)(paramInt2 * f);
+    }
+    Rect localRect = new Rect(0, 0, paramInt1, paramInt2);
+    if (i == 49)
+    {
+      localRect.offset((paramInt3 - paramInt1) / 2, 0);
+      return localRect;
+    }
+    if (i == 17)
+    {
+      localRect.offset((paramInt3 - paramInt1) / 2, (paramInt4 - paramInt2) / 2);
+      if ((paramObject != null) && ((paramObject instanceof AIOImageData)))
       {
-        do
-        {
-          return localRect;
-          i = 0;
-          break;
-          i = 17;
-          break label67;
-          paramInt1 = (int)(paramInt1 * f);
-          paramInt2 = (int)(paramInt2 * f);
-          break label79;
-        } while (i != 17);
-        localRect.offset((paramInt3 - paramInt1) / 2, (paramInt4 - paramInt2) / 2);
-      } while ((paramObject == null) || (!(paramObject instanceof AIOImageData)));
-      paramObject = (AIOImageData)paramObject;
-    } while ((paramObject.i == null) || (paramObject.i.length() == 0) || (paramObject.i.equals("null")));
-    label143:
-    localRect.offset(0, (int)(-15.0F * BaseApplicationImpl.sApplication.getResources().getDisplayMetrics().density * f));
+        paramObject = (AIOImageData)paramObject;
+        if ((paramObject.i != null) && (paramObject.i.length() != 0) && (!paramObject.i.equals("null"))) {
+          localRect.offset(0, (int)(BaseApplicationImpl.sApplication.getResources().getDisplayMetrics().density * -15.0F * f));
+        }
+      }
+    }
     return localRect;
   }
   
@@ -103,24 +123,38 @@ public class AnimationUtils
     int j = paramView.getHeight();
     ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
     Point localPoint = new Point();
-    if ((i > 0) && (j > 0))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i > 0)
     {
-      Rect localRect = paramRect;
-      if (paramRect == null)
+      bool1 = bool2;
+      if (j > 0)
       {
-        localRect = new Rect();
-        localRect.set(0, 0, i, j);
+        Rect localRect = paramRect;
+        if (paramRect == null)
+        {
+          localRect = new Rect();
+          localRect.set(0, 0, i, j);
+        }
+        localPoint.set(-paramView.getScrollX(), -paramView.getScrollY());
+        localRect.offset((i - localRect.width()) / 2, (j - localRect.height()) / 2);
+        if (localViewGroup != null)
+        {
+          bool1 = bool2;
+          if (!localViewGroup.getChildVisibleRect(paramView, localRect, localPoint)) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
       }
-      localPoint.set(-paramView.getScrollX(), -paramView.getScrollY());
-      localRect.offset((i - localRect.width()) / 2, (j - localRect.height()) / 2);
-      return (localViewGroup == null) || (localViewGroup.getChildVisibleRect(paramView, localRect, localPoint));
     }
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AnimationUtils
  * JD-Core Version:    0.7.0.1
  */

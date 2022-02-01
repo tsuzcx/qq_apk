@@ -18,49 +18,55 @@ final class ChannelMappingAudioProcessor
   
   public boolean configure(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!Arrays.equals(this.pendingOutputChannels, this.outputChannels)) {}
-    for (int k = 1;; k = 0)
+    int k = Arrays.equals(this.pendingOutputChannels, this.outputChannels) ^ true;
+    this.outputChannels = this.pendingOutputChannels;
+    if (this.outputChannels == null)
     {
-      this.outputChannels = this.pendingOutputChannels;
-      if (this.outputChannels != null) {
-        break;
-      }
       this.active = false;
       return k;
     }
-    if (paramInt3 != 2) {
-      throw new AudioProcessor.UnhandledFormatException(paramInt1, paramInt2, paramInt3);
-    }
-    if ((k == 0) && (this.sampleRateHz == paramInt1) && (this.channelCount == paramInt2)) {
-      return false;
-    }
-    this.sampleRateHz = paramInt1;
-    this.channelCount = paramInt2;
-    if (paramInt2 != this.outputChannels.length) {}
-    int i;
-    for (k = 1;; k = 0)
+    if (paramInt3 == 2)
     {
+      if ((k == 0) && (this.sampleRateHz == paramInt1) && (this.channelCount == paramInt2)) {
+        return false;
+      }
+      this.sampleRateHz = paramInt1;
+      this.channelCount = paramInt2;
+      if (paramInt2 != this.outputChannels.length) {
+        k = 1;
+      } else {
+        k = 0;
+      }
       this.active = k;
-      i = 0;
-      if (i >= this.outputChannels.length) {
-        break label198;
-      }
-      j = this.outputChannels[i];
-      if (j < paramInt2) {
-        break;
+      int i = 0;
+      for (;;)
+      {
+        localObject = this.outputChannels;
+        if (i >= localObject.length) {
+          break label181;
+        }
+        int j = localObject[i];
+        if (j >= paramInt2) {
+          break;
+        }
+        k = this.active;
+        if (j != i) {
+          j = 1;
+        } else {
+          j = 0;
+        }
+        this.active = (j | k);
+        i += 1;
       }
       throw new AudioProcessor.UnhandledFormatException(paramInt1, paramInt2, paramInt3);
+      label181:
+      return true;
     }
-    k = this.active;
-    if (j != i) {}
-    for (int j = 1;; j = 0)
+    Object localObject = new AudioProcessor.UnhandledFormatException(paramInt1, paramInt2, paramInt3);
+    for (;;)
     {
-      this.active = (j | k);
-      i += 1;
-      break;
+      throw ((Throwable)localObject);
     }
-    label198:
-    return true;
   }
   
   public void flush()
@@ -78,10 +84,11 @@ final class ChannelMappingAudioProcessor
   
   public int getOutputChannelCount()
   {
-    if (this.outputChannels == null) {
+    int[] arrayOfInt = this.outputChannels;
+    if (arrayOfInt == null) {
       return this.channelCount;
     }
-    return this.outputChannels.length;
+    return arrayOfInt.length;
   }
   
   public int getOutputEncoding()
@@ -116,25 +123,21 @@ final class ChannelMappingAudioProcessor
     int j = (k - i) / (this.channelCount * 2) * this.outputChannels.length * 2;
     if (this.buffer.capacity() < j) {
       this.buffer = ByteBuffer.allocateDirect(j).order(ByteOrder.nativeOrder());
+    } else {
+      this.buffer.clear();
     }
     while (i < k)
     {
       int[] arrayOfInt = this.outputChannels;
       int m = arrayOfInt.length;
       j = 0;
-      for (;;)
+      while (j < m)
       {
-        if (j < m)
-        {
-          int n = arrayOfInt[j];
-          this.buffer.putShort(paramByteBuffer.getShort(n * 2 + i));
-          j += 1;
-          continue;
-          this.buffer.clear();
-          break;
-        }
+        int n = arrayOfInt[j];
+        this.buffer.putShort(paramByteBuffer.getShort(n * 2 + i));
+        j += 1;
       }
-      i = this.channelCount * 2 + i;
+      i += this.channelCount * 2;
     }
     paramByteBuffer.position(k);
     this.buffer.flip();
@@ -158,7 +161,7 @@ final class ChannelMappingAudioProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.ChannelMappingAudioProcessor
  * JD-Core Version:    0.7.0.1
  */

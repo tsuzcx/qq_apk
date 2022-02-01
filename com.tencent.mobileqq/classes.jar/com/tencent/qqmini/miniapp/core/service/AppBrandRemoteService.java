@@ -44,26 +44,48 @@ public class AppBrandRemoteService
   public void evaluateCallbackJs(int paramInt, String paramString)
   {
     paramString = String.format("WeixinJSBridge.invokeCallbackHandler(%d, %s)", new Object[] { Integer.valueOf(paramInt), paramString });
-    QMLog.d("AppBrandRemoteService", "evaluateCallbackJs 2: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("evaluateCallbackJs 2: ");
+    localStringBuilder.append(paramString);
+    QMLog.d("AppBrandRemoteService", localStringBuilder.toString());
     evaluateJs(paramString, null);
   }
   
   public void evaluateJs(String paramString, ValueCallback paramValueCallback)
   {
-    QMLog.d("AppBrandRemoteService", "evaluateJs 2: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("evaluateJs 2: ");
+    localStringBuilder.append(paramString);
+    QMLog.d("AppBrandRemoteService", localStringBuilder.toString());
     this.appBrandWebSocket.evaluateJs(paramString, paramValueCallback);
   }
   
   public void evaluateJs(String paramString1, ValueCallback paramValueCallback, String paramString2)
   {
-    QMLog.d("AppBrandRemoteService", "evaluateJs 1: " + paramString1);
+    paramString2 = new StringBuilder();
+    paramString2.append("evaluateJs 1: ");
+    paramString2.append(paramString1);
+    QMLog.d("AppBrandRemoteService", paramString2.toString());
     evaluateJs(paramString1, paramValueCallback);
   }
   
   public void evaluateSubscribeJS(String paramString1, String paramString2, int paramInt)
   {
-    QMLog.d("AppBrandRemoteService", "evaluateSubscribeJS  eventName=" + paramString1);
-    evaluateJs("WeixinJSBridge.subscribeHandler(\"" + paramString1 + "\"," + paramString2 + "," + paramInt + "," + 0 + ")", null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("evaluateSubscribeJS  eventName=");
+    localStringBuilder.append(paramString1);
+    QMLog.d("AppBrandRemoteService", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("\",");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",");
+    localStringBuilder.append(0);
+    localStringBuilder.append(")");
+    evaluateJs(localStringBuilder.toString(), null);
   }
   
   public int getStatus()
@@ -86,15 +108,29 @@ public class AppBrandRemoteService
     String str1 = LoginManager.getInstance().getAccount();
     String str2 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getA2();
     this.appBrandWebSocket = new AppBrandWebSocket(paramIMiniAppContext, mThreadHandler, this);
-    paramIMiniAppContext = paramString3 + "?appId=" + paramString1 + "&roomId=" + paramString2 + "&uin=" + str1 + "&bytesSig=" + str2;
+    paramIMiniAppContext = new StringBuilder();
+    paramIMiniAppContext.append(paramString3);
+    paramIMiniAppContext.append("?appId=");
+    paramIMiniAppContext.append(paramString1);
+    paramIMiniAppContext.append("&roomId=");
+    paramIMiniAppContext.append(paramString2);
+    paramIMiniAppContext.append("&uin=");
+    paramIMiniAppContext.append(str1);
+    paramIMiniAppContext.append("&bytesSig=");
+    paramIMiniAppContext.append(str2);
+    paramIMiniAppContext = paramIMiniAppContext.toString();
     this.appBrandWebSocket.connect(paramIMiniAppContext);
-    QMLog.d("AppBrandRemoteService", " connect: " + paramIMiniAppContext);
+    paramString1 = new StringBuilder();
+    paramString1.append(" connect: ");
+    paramString1.append(paramIMiniAppContext);
+    QMLog.d("AppBrandRemoteService", paramString1.toString());
   }
   
   public void sendDomEvent(String paramString, int paramInt)
   {
-    if (this.appBrandWebSocket != null) {
-      this.appBrandWebSocket.sendDomEvent(paramString, paramInt);
+    AppBrandWebSocket localAppBrandWebSocket = this.appBrandWebSocket;
+    if (localAppBrandWebSocket != null) {
+      localAppBrandWebSocket.sendDomEvent(paramString, paramInt);
     }
   }
   
@@ -108,14 +144,15 @@ public class AppBrandRemoteService
   public void setAppBrandEventInterface(ServiceEventListener paramServiceEventListener)
   {
     QMLog.d("AppBrandRemoteService", "setAppBrandEventInterface");
-    if (this.appBrandWebSocket != null) {
-      this.appBrandWebSocket.setServiceEventListener(paramServiceEventListener);
+    AppBrandWebSocket localAppBrandWebSocket = this.appBrandWebSocket;
+    if (localAppBrandWebSocket != null) {
+      localAppBrandWebSocket.setServiceEventListener(paramServiceEventListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppBrandRemoteService
  * JD-Core Version:    0.7.0.1
  */

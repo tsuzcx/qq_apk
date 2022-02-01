@@ -33,13 +33,14 @@ public final class QQCircleFeedBase$StPolyLike
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64, 72, 80, 90, 98, 106, 114, 122, 130 }, new String[] { "polyLikeID", "polyName", "polySource", "polyIconUrl", "count", "polyUnderPicUrl", "polyPreviewSource", "articleType", "price", "clicked", "busiData", "fullScreenURL", "fullScreenURLAND", "polyTxtColor", "polyUnderColor", "dynamicPicURL" }, new Object[] { "", "", "", "", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), localByteStringMicro, "", "", "", "", "" }, StPolyLike.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64, 72, 80, 90, 98, 106, 114, 122, 130 }, new String[] { "polyLikeID", "polyName", "polySource", "polyIconUrl", "count", "polyUnderPicUrl", "polyPreviewSource", "articleType", "price", "clicked", "busiData", "fullScreenURL", "fullScreenURLAND", "polyTxtColor", "polyUnderColor", "dynamicPicURL" }, new Object[] { "", "", "", "", localInteger, "", "", localInteger, localInteger, Boolean.valueOf(false), localByteStringMicro, "", "", "", "", "" }, StPolyLike.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleFeedBase.StPolyLike
  * JD-Core Version:    0.7.0.1
  */

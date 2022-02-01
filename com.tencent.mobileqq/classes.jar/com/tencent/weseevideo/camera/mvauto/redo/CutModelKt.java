@@ -68,18 +68,18 @@ public final class CutModelKt
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof CutModelKt))
       {
         paramObject = (CutModelKt)paramObject;
-        if ((!Intrinsics.areEqual(this.uuid, paramObject.uuid)) || (!Intrinsics.areEqual(this.resource, paramObject.resource)) || (!Intrinsics.areEqual(this.videoConfiguration, paramObject.videoConfiguration)) || (!Intrinsics.areEqual(this.audioConfiguration, paramObject.audioConfiguration))) {}
+        if ((Intrinsics.areEqual(this.uuid, paramObject.uuid)) && (Intrinsics.areEqual(this.resource, paramObject.resource)) && (Intrinsics.areEqual(this.videoConfiguration, paramObject.videoConfiguration)) && (Intrinsics.areEqual(this.audioConfiguration, paramObject.audioConfiguration))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @Nullable
@@ -108,49 +108,54 @@ public final class CutModelKt
   
   public int hashCode()
   {
-    int m = 0;
     Object localObject = this.uuid;
+    int m = 0;
     int i;
-    int j;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = localObject.hashCode();
-      localObject = this.resource;
-      if (localObject == null) {
-        break label95;
-      }
-      j = localObject.hashCode();
-      label37:
-      localObject = this.videoConfiguration;
-      if (localObject == null) {
-        break label100;
-      }
-    }
-    label95:
-    label100:
-    for (int k = localObject.hashCode();; k = 0)
-    {
-      localObject = this.audioConfiguration;
-      if (localObject != null) {
-        m = localObject.hashCode();
-      }
-      return (k + (j + i * 31) * 31) * 31 + m;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label37;
     }
+    localObject = this.resource;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.videoConfiguration;
+    int k;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    } else {
+      k = 0;
+    }
+    localObject = this.audioConfiguration;
+    if (localObject != null) {
+      m = localObject.hashCode();
+    }
+    return ((i * 31 + j) * 31 + k) * 31 + m;
   }
   
   @NotNull
   public String toString()
   {
-    return "CutModelKt(uuid=" + this.uuid + ", resource=" + this.resource + ", videoConfiguration=" + this.videoConfiguration + ", audioConfiguration=" + this.audioConfiguration + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CutModelKt(uuid=");
+    localStringBuilder.append(this.uuid);
+    localStringBuilder.append(", resource=");
+    localStringBuilder.append(this.resource);
+    localStringBuilder.append(", videoConfiguration=");
+    localStringBuilder.append(this.videoConfiguration);
+    localStringBuilder.append(", audioConfiguration=");
+    localStringBuilder.append(this.audioConfiguration);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.CutModelKt
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.mobileqq.picbrowser.PicBrowserActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class TeamWorkPicBrowserActivity
@@ -26,7 +26,7 @@ public class TeamWorkPicBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkPicBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

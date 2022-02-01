@@ -19,7 +19,6 @@ public final class dc
   
   public static int a(Context paramContext, String paramString)
   {
-    int j = -407;
     try
     {
       paramContext = paramContext.getPackageManager().getApplicationInfo(paramString, 128);
@@ -30,13 +29,13 @@ public final class dc
         return -408;
       }
       int i = paramContext.metaData.getInt("halley_appid", 0);
-      j = i;
       if (i <= 0) {
         return -408;
       }
+      return i;
     }
     catch (PackageManager.NameNotFoundException paramContext) {}
-    return j;
+    return -407;
   }
   
   public static dc.a a(int paramInt, Context paramContext, String paramString1, String paramString2)
@@ -52,6 +51,7 @@ public final class dc
         paramContext = new dc.a(paramInt, paramString1, paramContext.enabled, paramContext.exported, paramContext.processName, paramContext.metaData);
         return paramContext;
       }
+      return null;
     }
     catch (PackageManager.NameNotFoundException paramContext) {}
     return null;
@@ -69,21 +69,19 @@ public final class dc
   
   public static String a(int paramInt)
   {
-    String str = "";
     if (paramInt == 2) {
-      str = "2g";
+      return "2g";
     }
-    do
-    {
-      return str;
-      if (paramInt == 3) {
-        return "3g";
-      }
-      if (paramInt == 4) {
-        return "4g";
-      }
-    } while (paramInt != 1);
-    return "wifi";
+    if (paramInt == 3) {
+      return "3g";
+    }
+    if (paramInt == 4) {
+      return "4g";
+    }
+    if (paramInt == 1) {
+      return "wifi";
+    }
+    return "";
   }
   
   public static String a(Context paramContext)
@@ -109,17 +107,25 @@ public final class dc
   
   private static String a(boolean paramBoolean)
   {
-    Object localObject2 = new StringBuilder("HalleyServicePreferences_").append(ac.c());
-    if (ac.b()) {}
-    for (Object localObject1 = "_test";; localObject1 = "")
-    {
-      localObject2 = (String)localObject1;
-      localObject1 = localObject2;
-      if (paramBoolean) {
-        localObject1 = (String)localObject2 + "_" + ac.g();
-      }
-      return localObject1;
+    Object localObject2 = new StringBuilder("HalleyServicePreferences_");
+    ((StringBuilder)localObject2).append(ac.c());
+    if (ac.b()) {
+      localObject1 = "_test";
+    } else {
+      localObject1 = "";
     }
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject1 = localObject2;
+    if (paramBoolean)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("_");
+      ((StringBuilder)localObject1).append(ac.g());
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    return localObject1;
   }
   
   public static void a(String paramString)
@@ -155,7 +161,7 @@ public final class dc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.dc
  * JD-Core Version:    0.7.0.1
  */

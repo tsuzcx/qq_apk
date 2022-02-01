@@ -23,15 +23,12 @@ public class GetDiscoverBannerVideoRequest
     try
     {
       localRspBannerVideoList.mergeFrom(paramArrayOfByte);
-      return new GetDiscoverBannerVideoResponse(localRspBannerVideoList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetDiscoverBannerVideoResponse(localRspBannerVideoList);
   }
   
   public String a()
@@ -39,7 +36,7 @@ public class GetDiscoverBannerVideoRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqBannerVideoList localReqBannerVideoList = new qqstory_service.ReqBannerVideoList();
     localReqBannerVideoList.banner_id.set(ByteStringMicro.copyFromUtf8(this.b));
@@ -49,7 +46,7 @@ public class GetDiscoverBannerVideoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetDiscoverBannerVideoRequest
  * JD-Core Version:    0.7.0.1
  */

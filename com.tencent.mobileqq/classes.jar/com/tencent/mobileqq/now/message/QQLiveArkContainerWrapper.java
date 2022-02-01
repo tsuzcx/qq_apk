@@ -7,7 +7,7 @@ public class QQLiveArkContainerWrapper
 {
   public void doOnEvent(int paramInt) {}
   
-  public void f()
+  public void e()
   {
     this.a = false;
     super.doOnEvent(2);
@@ -15,7 +15,7 @@ public class QQLiveArkContainerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.QQLiveArkContainerWrapper
  * JD-Core Version:    0.7.0.1
  */

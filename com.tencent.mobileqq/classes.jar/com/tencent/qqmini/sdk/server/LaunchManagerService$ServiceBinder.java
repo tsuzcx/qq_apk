@@ -20,43 +20,73 @@ public class LaunchManagerService$ServiceBinder
   {
     if (paramMiniAppInfo == null)
     {
-      QMLog.w("minisdk-start_LaunchManagerService", "handleAppLifecycle lifecycle:" + paramInt + " process:" + paramString + " miniAppInfo is null");
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("handleAppLifecycle lifecycle:");
+      paramMiniAppInfo.append(paramInt);
+      paramMiniAppInfo.append(" process:");
+      paramMiniAppInfo.append(paramString);
+      paramMiniAppInfo.append(" miniAppInfo is null");
+      QMLog.w("minisdk-start_LaunchManagerService", paramMiniAppInfo.toString());
       return;
     }
-    QMLog.i("minisdk-start_LaunchManagerService", "handleAppLifecycle lifecycle:" + paramInt + " process:" + paramString + " miniAppInfo:" + paramMiniAppInfo);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      try
-      {
-        this.this$0.onAppStart(paramString, paramMiniAppInfo, paramBundle);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        QMLog.e("minisdk-start_LaunchManagerService", "onAppLifecycle() called with: lifecycle = [" + paramInt + "], processName = [" + paramString + "], miniAppInfo = [" + paramMiniAppInfo + "], bundle = [" + paramBundle + "]");
-        if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-          ThreadPools.getComputationThreadPool().execute(new LaunchManagerService.ServiceBinder.1(this, localThrowable));
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("handleAppLifecycle lifecycle:");
+    localStringBuilder1.append(paramInt);
+    localStringBuilder1.append(" process:");
+    localStringBuilder1.append(paramString);
+    localStringBuilder1.append(" miniAppInfo:");
+    localStringBuilder1.append(paramMiniAppInfo);
+    QMLog.i("minisdk-start_LaunchManagerService", localStringBuilder1.toString());
+    if (paramInt != 1) {
+      if (paramInt != 2) {
+        if (paramInt != 3) {
+          if (paramInt != 4) {
+            return;
+          }
         }
-        throw new RuntimeException(localThrowable);
       }
-    case 4: 
+    }
+    try
+    {
       this.this$0.onAppStop(paramString, paramMiniAppInfo, paramBundle);
       return;
-    case 2: 
-      this.this$0.onAppForeground(paramString, paramMiniAppInfo, paramBundle);
-      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("onAppLifecycle() called with: lifecycle = [");
+      localStringBuilder2.append(paramInt);
+      localStringBuilder2.append("], processName = [");
+      localStringBuilder2.append(paramString);
+      localStringBuilder2.append("], miniAppInfo = [");
+      localStringBuilder2.append(paramMiniAppInfo);
+      localStringBuilder2.append("], bundle = [");
+      localStringBuilder2.append(paramBundle);
+      localStringBuilder2.append("]");
+      QMLog.e("minisdk-start_LaunchManagerService", localStringBuilder2.toString());
+      if (!((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
+        break label310;
+      }
+      ThreadPools.getComputationThreadPool().execute(new LaunchManagerService.ServiceBinder.1(this, localThrowable));
+      throw new RuntimeException(localThrowable);
     }
     this.this$0.onAppBackground(paramString, paramMiniAppInfo, paramBundle);
+    return;
+    this.this$0.onAppForeground(paramString, paramMiniAppInfo, paramBundle);
+    return;
+    this.this$0.onAppStart(paramString, paramMiniAppInfo, paramBundle);
   }
   
   public void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo) {}
   
   public Bundle requestAync(String paramString1, String paramString2, Bundle paramBundle)
   {
-    QMLog.i("minisdk-start_LaunchManagerService", "requestAync cmd:" + paramString1 + " process:" + paramString2);
+    paramBundle = new StringBuilder();
+    paramBundle.append("requestAync cmd:");
+    paramBundle.append(paramString1);
+    paramBundle.append(" process:");
+    paramBundle.append(paramString2);
+    QMLog.i("minisdk-start_LaunchManagerService", paramBundle.toString());
     try
     {
       if ("query_mini_process".equals(paramString1))
@@ -81,19 +111,22 @@ public class LaunchManagerService$ServiceBinder
       if ("cmd_notify_runtime_info".equals(paramString1))
       {
         this.this$0.onRecvCommand(paramString1, paramString2, paramBundle);
-        if (paramMiniCmdCallback == null) {
-          return;
+        if (paramMiniCmdCallback != null) {
+          paramMiniCmdCallback.onCmdResult(true, new Bundle());
         }
-        paramMiniCmdCallback.onCmdResult(true, new Bundle());
-        return;
       }
-      if ("cmd_notify_runtime_lifecycle".equals(paramString1))
+      else
       {
-        this.this$0.onRecvCommand(paramString1, paramString2, paramBundle);
-        if (paramMiniCmdCallback == null) {
+        if ("cmd_notify_runtime_lifecycle".equals(paramString1))
+        {
+          this.this$0.onRecvCommand(paramString1, paramString2, paramBundle);
+          if (paramMiniCmdCallback == null) {
+            return;
+          }
+          paramMiniCmdCallback.onCmdResult(true, new Bundle());
           return;
         }
-        paramMiniCmdCallback.onCmdResult(true, new Bundle());
+        MiniAppCmdServlet.g().onMiniAppCmd(paramString1, paramBundle, paramMiniCmdCallback);
         return;
       }
     }
@@ -102,7 +135,7 @@ public class LaunchManagerService$ServiceBinder
       QMLog.e("minisdk-start_LaunchManagerService", "sendCmd exception!", paramString1);
       return;
     }
-    MiniAppCmdServlet.g().onMiniAppCmd(paramString1, paramBundle, paramMiniCmdCallback);
+    return;
   }
   
   public void startMiniApp(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
@@ -122,7 +155,7 @@ public class LaunchManagerService$ServiceBinder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.LaunchManagerService.ServiceBinder
  * JD-Core Version:    0.7.0.1
  */

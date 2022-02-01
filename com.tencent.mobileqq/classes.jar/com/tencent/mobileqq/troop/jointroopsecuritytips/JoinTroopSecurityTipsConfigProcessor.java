@@ -12,7 +12,10 @@ public class JoinTroopSecurityTipsConfigProcessor
   @NonNull
   public JoinTroopSecurityTipsConfig a(int paramInt)
   {
-    QLog.d("JoinTroopSecurityTipsConfigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("JoinTroopSecurityTipsConfigProcessor", 2, localStringBuilder.toString());
     return new JoinTroopSecurityTipsConfig();
   }
   
@@ -52,7 +55,10 @@ public class JoinTroopSecurityTipsConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("JoinTroopSecurityTipsConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("JoinTroopSecurityTipsConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -62,7 +68,7 @@ public class JoinTroopSecurityTipsConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jointroopsecuritytips.JoinTroopSecurityTipsConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

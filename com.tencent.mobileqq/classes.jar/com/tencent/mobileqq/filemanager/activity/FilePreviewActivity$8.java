@@ -19,7 +19,6 @@ class FilePreviewActivity$8
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    String str = null;
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_Boolean)
     {
       super.onPageFinished(paramWebView, paramString);
@@ -28,38 +27,61 @@ class FilePreviewActivity$8
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_Boolean = true;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean) {
+    Object localObject1 = null;
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean;
+    Object localObject2 = "javascript:qpreview.onClientResponse('showFileList', {})";
+    if (bool)
+    {
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Int == 0)
       {
-        str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getInitString(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, null);
-        QLog.i("<FileAssistant>FilePreviewActivity", 1, "finish load run javascript![" + str + "]");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str);
-        str = "javascript:qpreview.onClientResponse('showFileList', {})";
-        QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('showFileList', {})");
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity;
+        localObject1 = ((FilePreviewActivity)localObject1).getInitString(((FilePreviewActivity)localObject1).g, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, null);
       }
-    }
-    for (;;)
-    {
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "mWebView.loadUrl(" + str + ")");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_Boolean = true;
-      super.onPageFinished(paramWebView, paramString);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Int == 1)
+      else if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Int == 1)
       {
-        str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getInitString(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c);
-        break;
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity;
+        localObject1 = ((FilePreviewActivity)localObject1).getInitString(((FilePreviewActivity)localObject1).g, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c);
       }
-      if (!QLog.isDevelopLevel()) {
-        break;
+      else
+      {
+        if (QLog.isDevelopLevel()) {
+          break label264;
+        }
       }
-      throw new NullPointerException(HardCodeUtil.a(2131704593));
-      str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getInitString(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, null);
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "finish load run javascript![" + str + "]");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str);
-      str = "javascript:qpreview.onClientResponse('addMorePage',{})";
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('addMorePage',{})");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("finish load run javascript![");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("]");
+      QLog.i("<FileAssistant>FilePreviewActivity", 1, localStringBuilder.toString());
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl((String)localObject1);
+      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('showFileList', {})");
+      localObject1 = localObject2;
+      break label395;
+      label264:
+      throw new NullPointerException(HardCodeUtil.a(2131704673));
     }
+    else
+    {
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity;
+      localObject1 = ((FilePreviewActivity)localObject1).getInitString(((FilePreviewActivity)localObject1).g, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, null);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("finish load run javascript![");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("]");
+      QLog.i("<FileAssistant>FilePreviewActivity", 1, ((StringBuilder)localObject2).toString());
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl((String)localObject1);
+      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('addMorePage',{})");
+      localObject1 = "javascript:qpreview.onClientResponse('addMorePage',{})";
+    }
+    label395:
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("mWebView.loadUrl(");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(")");
+    QLog.i("<FileAssistant>FilePreviewActivity", 1, ((StringBuilder)localObject2).toString());
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl((String)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_Boolean = true;
+    super.onPageFinished(paramWebView, paramString);
   }
   
   @Override
@@ -75,61 +97,71 @@ class FilePreviewActivity$8
     {
       try
       {
-        String str = URLDecoder.decode(paramString, "UTF-8");
-        paramString = str;
+        localObject = URLDecoder.decode(paramString, "UTF-8");
+        paramString = (String)localObject;
       }
       catch (Exception localException)
       {
+        Object localObject;
         boolean bool;
-        long l;
         continue;
       }
       try
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("<FileAssistant>FilePreviewActivity", 1, "URLDecoder.decode, url:" + paramString);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("URLDecoder.decode, url:");
+          ((StringBuilder)localObject).append(paramString);
+          QLog.i("<FileAssistant>FilePreviewActivity", 1, ((StringBuilder)localObject).toString());
         }
         bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.a(paramWebView, paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$JSInterface);
-        if (!bool) {
-          continue;
+        if (bool) {
+          return true;
         }
       }
       catch (Exception paramWebView)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("parseUrl error,exception:");
+          ((StringBuilder)localObject).append(paramWebView.toString());
+          QLog.e("<FileAssistant>FilePreviewActivity", 2, ((StringBuilder)localObject).toString());
         }
-        QLog.e("<FileAssistant>FilePreviewActivity", 2, "parseUrl error,exception:" + paramWebView.toString());
-        if ((paramString != null) && (!"".equals(paramString)) && (!"about:blank;".equals(paramString)) && (!"about:blank".equals(paramString))) {
-          continue;
+        if ((paramString != null) && (!"".equals(paramString)) && (!"about:blank;".equals(paramString)) && (!"about:blank".equals(paramString)))
+        {
+          long l = System.currentTimeMillis();
+          if (l - this.jdField_a_of_type_Long < 1500L) {
+            return true;
+          }
+          this.jdField_a_of_type_Long = l;
+          paramWebView = new StringBuilder();
+          paramWebView.append("start load new[");
+          paramWebView.append(paramString);
+          paramWebView.append("]");
+          QLog.i("<FileAssistant>FilePreviewActivity", 1, paramWebView.toString());
+          paramWebView = FilePreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity, paramString);
+          try
+          {
+            URLDecoder.decode(paramWebView, "UTF-8");
+            return true;
+          }
+          catch (UnsupportedEncodingException paramWebView)
+          {
+            paramWebView.printStackTrace();
+            return true;
+          }
         }
         QLog.e("<FileAssistant>FilePreviewActivity", 1, "request url is null,or about:blank! return");
         return true;
-        l = System.currentTimeMillis();
-        if (l - this.jdField_a_of_type_Long < 1500L) {
-          continue;
-        }
-        this.jdField_a_of_type_Long = l;
-        QLog.i("<FileAssistant>FilePreviewActivity", 1, "start load new[" + paramString + "]");
-        paramWebView = FilePreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity, paramString);
-        try
-        {
-          URLDecoder.decode(paramWebView, "UTF-8");
-          return true;
-        }
-        catch (UnsupportedEncodingException paramWebView)
-        {
-          paramWebView.printStackTrace();
-          return true;
-        }
       }
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.8
  * JD-Core Version:    0.7.0.1
  */

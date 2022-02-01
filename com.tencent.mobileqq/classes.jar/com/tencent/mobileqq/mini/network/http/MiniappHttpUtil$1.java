@@ -18,7 +18,10 @@ final class MiniappHttpUtil$1
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    QLog.e("MiniappHttpUtil", 1, "httpConnect err url:" + this.val$url, paramIOException);
+    paramCall = new StringBuilder();
+    paramCall.append("httpConnect err url:");
+    paramCall.append(this.val$url);
+    QLog.e("MiniappHttpUtil", 1, paramCall.toString(), paramIOException);
     if ("Canceled".equals(paramIOException.getLocalizedMessage()))
     {
       this.canceled = true;
@@ -50,7 +53,7 @@ final class MiniappHttpUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.network.http.MiniappHttpUtil.1
  * JD-Core Version:    0.7.0.1
  */

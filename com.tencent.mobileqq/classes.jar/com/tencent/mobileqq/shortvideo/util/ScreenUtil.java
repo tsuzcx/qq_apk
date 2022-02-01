@@ -47,82 +47,76 @@ public class ScreenUtil
   public static boolean checkDeviceHasNavigationBar(Context paramContext)
   {
     if ((Build.MANUFACTURER.contains("Xiaomi")) && ((Build.MODEL.contains("MIX 2S")) || (Build.MODEL.contains("MI 8")) || (Build.MODEL.contains("MI 9")) || (Build.MODEL.contains("MIX 2")) || (Build.MODEL.contains("MIX 3")) || (Build.MODEL.contains("Redmi K20 Pro"))) && (Build.VERSION.SDK_INT >= 21)) {
-      if (Settings.Global.getInt(BaseApplication.getContext().getContentResolver(), "force_fsg_nav_bar", 0) != 0) {}
+      return Settings.Global.getInt(BaseApplication.getContext().getContentResolver(), "force_fsg_nav_bar", 0) == 0;
     }
-    boolean bool1;
-    boolean bool2;
-    do
-    {
-      do
-      {
-        return true;
-        return false;
-        if (Build.VERSION.SDK_INT < 17) {
-          break;
-        }
-      } while (getInstantScreenHeight(paramContext) != getRealHeight(paramContext));
-      return false;
-      bool1 = ViewConfiguration.get(paramContext).hasPermanentMenuKey();
-      bool2 = KeyCharacterMap.deviceHasKey(4);
-    } while ((!bool1) && (!bool2));
-    return false;
+    if (Build.VERSION.SDK_INT >= 17) {
+      return getInstantScreenHeight(paramContext) != getRealHeight(paramContext);
+    }
+    boolean bool1 = ViewConfiguration.get(paramContext).hasPermanentMenuKey();
+    boolean bool2 = KeyCharacterMap.deviceHasKey(4);
+    return (!bool1) && (!bool2);
   }
   
   public static boolean checkNavigationBarShow(Context paramContext)
   {
-    boolean bool2;
-    for (;;)
+    boolean bool1 = false;
+    int i;
+    label156:
+    do
     {
+      Object localObject;
       try
       {
-        Resources localResources = paramContext.getResources();
-        i = localResources.getIdentifier("config_showNavigationBar", "bool", "android");
-        if (i <= 0) {
-          continue;
+        localObject = paramContext.getResources();
+        i = ((Resources)localObject).getIdentifier("config_showNavigationBar", "bool", "android");
+        boolean bool2;
+        if (i > 0)
+        {
+          bool2 = ((Resources)localObject).getBoolean(i);
+          bool1 = bool2;
         }
-        bool1 = localResources.getBoolean(i);
-      }
-      catch (Exception paramContext)
-      {
-        int i;
-        boolean bool1 = false;
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
-          return bool2;
+        else
+        {
+          bool1 = false;
         }
-        QLog.e("ScreenUtil", 2, "checkNavigationBarShow error: " + paramContext.toString());
+        try
+        {
+          i = Build.VERSION.SDK_INT;
+          if (i < 21) {
+            i = Settings.System.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
+          } else {
+            i = Settings.Global.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
+          }
+        }
+        catch (Exception paramContext)
+        {
+          break label156;
+        }
+        if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI"))
+        {
+          paramContext = Class.forName("android.os.SystemProperties");
+          paramContext = (String)paramContext.getMethod("get", new Class[] { String.class }).invoke(paramContext, new Object[] { "qemu.hw.mainkeys" });
+          if ("1".equals(paramContext)) {
+            return false;
+          }
+          bool2 = "0".equals(paramContext);
+          if (bool2) {
+            return true;
+          }
+        }
         return bool1;
-        return bool1;
-        bool1 = false;
-        continue;
-        if (i != 1) {
-          continue;
-        }
-        bool2 = false;
-      }
-      try
-      {
-        if (Build.VERSION.SDK_INT < 21) {
-          i = Settings.System.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
-        } else {
-          i = Settings.Global.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
-        }
       }
       catch (Exception paramContext) {}
-    }
-    if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI"))
-    {
-      paramContext = Class.forName("android.os.SystemProperties");
-      paramContext = (String)paramContext.getMethod("get", new Class[] { String.class }).invoke(paramContext, new Object[] { "qemu.hw.mainkeys" });
-      if ("1".equals(paramContext)) {
-        return false;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("checkNavigationBarShow error: ");
+        ((StringBuilder)localObject).append(paramContext.toString());
+        QLog.e("ScreenUtil", 2, ((StringBuilder)localObject).toString());
       }
-      bool2 = "0".equals(paramContext);
-      if (bool2) {
-        return true;
-      }
-    }
-    return bool2;
+      return bool1;
+    } while (i != 1);
+    return false;
   }
   
   public static int dip2px(float paramFloat)
@@ -130,10 +124,14 @@ public class ScreenUtil
     if (DENSITY == 0.0F) {
       DENSITY = context.getResources().getDisplayMetrics().density;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenUtil", 2, "[@] ScreenUtil.dip2px DENSITY = " + DENSITY);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[@] ScreenUtil.dip2px DENSITY = ");
+      localStringBuilder.append(DENSITY);
+      QLog.d("ScreenUtil", 2, localStringBuilder.toString());
     }
-    return (int)(DENSITY * paramFloat + 0.5F);
+    return (int)(paramFloat * DENSITY + 0.5F);
   }
   
   public static float getDensity()
@@ -148,15 +146,17 @@ public class ScreenUtil
   public static int getInstantScreenHeight(Context paramContext)
   {
     paramContext = (WindowManager)paramContext.getSystemService("window");
-    Point localPoint;
     if (Build.VERSION.SDK_INT >= 13)
     {
-      localPoint = new Point();
+      Point localPoint = new Point();
       paramContext.getDefaultDisplay().getSize(localPoint);
+      SCREEN_HIGHT = localPoint.y;
     }
-    for (SCREEN_HIGHT = localPoint.y;; SCREEN_HIGHT = paramContext.getDefaultDisplay().getHeight()) {
-      return SCREEN_HIGHT;
+    else
+    {
+      SCREEN_HIGHT = paramContext.getDefaultDisplay().getHeight();
     }
+    return SCREEN_HIGHT;
   }
   
   public static int getInstantScreenWidth(Context paramContext)
@@ -184,40 +184,42 @@ public class ScreenUtil
     paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     try
     {
+      int i;
       if (Build.VERSION.SDK_INT >= 17)
       {
         paramContext.getRealMetrics((DisplayMetrics)localObject);
-        return ((DisplayMetrics)localObject).heightPixels;
+        i = ((DisplayMetrics)localObject).heightPixels;
       }
-      localObject = Display.class.getMethod("getRawHeight", new Class[0]);
-      try
+      else
       {
-        int i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
-        return i;
+        localObject = Display.class.getMethod("getRawHeight", new Class[0]);
+        try
+        {
+          i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
+        }
+        catch (InvocationTargetException paramContext)
+        {
+          SLog.e("ScreenUtil", paramContext.getMessage());
+          return -1;
+        }
+        catch (IllegalAccessException paramContext)
+        {
+          SLog.e("ScreenUtil", paramContext.getMessage());
+          return -1;
+        }
+        catch (IllegalArgumentException paramContext)
+        {
+          SLog.e("ScreenUtil", paramContext.getMessage());
+          return -1;
+        }
       }
-      catch (IllegalArgumentException paramContext)
-      {
-        SLog.e("ScreenUtil", paramContext.getMessage());
-        return -1;
-      }
-      catch (IllegalAccessException paramContext)
-      {
-        SLog.e("ScreenUtil", paramContext.getMessage());
-        return -1;
-      }
-      catch (InvocationTargetException paramContext)
-      {
-        SLog.e("ScreenUtil", paramContext.getMessage());
-      }
+      return i;
     }
     catch (NoSuchMethodException paramContext)
     {
-      for (;;)
-      {
-        SLog.e("ScreenUtil", paramContext.getMessage());
-      }
+      SLog.e("ScreenUtil", paramContext.getMessage());
+      return -1;
     }
-    return -1;
   }
   
   public static int getRealWidth(Context paramContext)
@@ -226,75 +228,80 @@ public class ScreenUtil
     paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     try
     {
+      int i;
       if (Build.VERSION.SDK_INT >= 17)
       {
         paramContext.getRealMetrics((DisplayMetrics)localObject);
-        return ((DisplayMetrics)localObject).widthPixels;
+        i = ((DisplayMetrics)localObject).widthPixels;
       }
-      localObject = Display.class.getMethod("getRawWidth", new Class[0]);
-      try
+      else
       {
-        int i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
-        return i;
+        localObject = Display.class.getMethod("getRawWidth", new Class[0]);
+        try
+        {
+          i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
+        }
+        catch (InvocationTargetException paramContext)
+        {
+          SLog.e("ScreenUtil", paramContext.getMessage());
+          return -1;
+        }
+        catch (IllegalAccessException paramContext)
+        {
+          SLog.e("ScreenUtil", paramContext.getMessage());
+          return -1;
+        }
+        catch (IllegalArgumentException paramContext)
+        {
+          SLog.e("ScreenUtil", paramContext.getMessage());
+          return -1;
+        }
       }
-      catch (IllegalArgumentException paramContext)
-      {
-        SLog.e("ScreenUtil", paramContext.getMessage());
-        return -1;
-      }
-      catch (IllegalAccessException paramContext)
-      {
-        SLog.e("ScreenUtil", paramContext.getMessage());
-        return -1;
-      }
-      catch (InvocationTargetException paramContext)
-      {
-        SLog.e("ScreenUtil", paramContext.getMessage());
-      }
+      return i;
     }
     catch (NoSuchMethodException paramContext)
     {
-      for (;;)
-      {
-        SLog.f("ScreenUtil", paramContext.getMessage());
-      }
+      SLog.f("ScreenUtil", paramContext.getMessage());
+      return -1;
     }
-    return -1;
   }
   
   public static boolean isNavigationBarExist(Activity paramActivity)
   {
-    if (paramActivity == null) {}
-    for (;;)
-    {
+    if (paramActivity == null) {
       return false;
-      ViewGroup localViewGroup = (ViewGroup)paramActivity.getWindow().getDecorView();
-      int i = 0;
-      while (i < localViewGroup.getChildCount())
-      {
-        int j = localViewGroup.getChildAt(i).getId();
-        if ((j != -1) && ("navigationBarBackground".equals(paramActivity.getResources().getResourceEntryName(j)))) {
-          return true;
-        }
-        i += 1;
-      }
     }
+    ViewGroup localViewGroup = (ViewGroup)paramActivity.getWindow().getDecorView();
+    int i = 0;
+    while (i < localViewGroup.getChildCount())
+    {
+      int j = localViewGroup.getChildAt(i).getId();
+      if ((j != -1) && ("navigationBarBackground".equals(paramActivity.getResources().getResourceEntryName(j)))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   public static void updateCache()
   {
-    WindowManager localWindowManager = (WindowManager)context.getSystemService("window");
-    SCREEN_WIDTH = localWindowManager.getDefaultDisplay().getWidth();
-    SCREEN_HIGHT = localWindowManager.getDefaultDisplay().getHeight();
+    Object localObject = (WindowManager)context.getSystemService("window");
+    SCREEN_WIDTH = ((WindowManager)localObject).getDefaultDisplay().getWidth();
+    SCREEN_HIGHT = ((WindowManager)localObject).getDefaultDisplay().getHeight();
     DENSITY = context.getResources().getDisplayMetrics().density;
-    if (QLog.isColorLevel()) {
-      QLog.d("systemDpiChanged", 2, "mofity width:" + SCREEN_WIDTH);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mofity width:");
+      ((StringBuilder)localObject).append(SCREEN_WIDTH);
+      QLog.d("systemDpiChanged", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.ScreenUtil
  * JD-Core Version:    0.7.0.1
  */

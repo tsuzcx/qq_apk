@@ -27,11 +27,12 @@ class RelativeLiveFeedsAdapter$2
           RelativeLiveFeedsAdapter.a(this.a, true);
           paramRecyclerView.invalidateSpanAssignments();
         }
-        if (arrayOfInt[0] > 2) {
+        if (arrayOfInt[0] > 2)
+        {
           RelativeLiveFeedsAdapter.a(this.a, false);
+          return;
         }
       }
-      return;
     }
     catch (Exception paramRecyclerView)
     {
@@ -44,7 +45,7 @@ class RelativeLiveFeedsAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.RelativeLiveFeedsAdapter.2
  * JD-Core Version:    0.7.0.1
  */

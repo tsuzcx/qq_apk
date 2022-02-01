@@ -9,6 +9,7 @@ import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.impl.QZoneHelperProxyImpl;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
@@ -28,48 +29,51 @@ public class QZoneRedPocketGiftJsPlugin
   
   private void handleSendRedPocketGift(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      long l;
-      String str1;
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
       try
       {
         paramVarArgs = new JSONObject(paramVarArgs[0]);
-        l = paramVarArgs.optLong("uin");
-        str1 = paramVarArgs.optString("payKey");
-        localObject = paramVarArgs.optString("nickName");
+        long l = paramVarArgs.optLong("uin");
+        String str1 = paramVarArgs.optString("payKey");
+        Object localObject = paramVarArgs.optString("nickName");
         this.sendRedPocketGiftCallback = paramVarArgs.optString("callback");
         if (l == 0L)
         {
-          QLog.e("QZoneRedPocketGiftJsPlugin", 1, "uin error , uin " + l);
+          paramWebViewPlugin = new StringBuilder();
+          paramWebViewPlugin.append("uin error , uin ");
+          paramWebViewPlugin.append(l);
+          QLog.e("QZoneRedPocketGiftJsPlugin", 1, paramWebViewPlugin.toString());
           return;
         }
         if (TextUtils.isEmpty(str1))
         {
-          QLog.e("QZoneRedPocketGiftJsPlugin", 1, "payKey error , paykey = " + str1);
+          paramWebViewPlugin = new StringBuilder();
+          paramWebViewPlugin.append("payKey error , paykey = ");
+          paramWebViewPlugin.append(str1);
+          QLog.e("QZoneRedPocketGiftJsPlugin", 1, paramWebViewPlugin.toString());
           return;
         }
+        if (TextUtils.isEmpty(this.sendRedPocketGiftCallback))
+        {
+          QLog.e("QZoneRedPocketGiftJsPlugin", 1, "callback is empty.");
+          return;
+        }
+        paramVarArgs = (String[])localObject;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          paramVarArgs = String.valueOf(l);
+        }
+        RemoteHandleManager.getInstance().getSender().setRedKeyData(l, str1);
+        localObject = QZoneHelper.UserInfo.getInstance();
+        String str2 = ((TicketManager)paramPluginRuntime.a().getManager(2)).getSkey(paramPluginRuntime.a().getAccount());
+        int i = QZoneHelperProxyImpl.generateRequestCode(paramWebViewPlugin, paramPluginRuntime, 8);
+        QZoneHelper.forwardToRedPocket(paramPluginRuntime.a(), (QZoneHelper.UserInfo)localObject, str2, l, paramVarArgs, str1, i);
+        return;
       }
       catch (Exception paramWebViewPlugin)
       {
-        onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712271), -1);
+        onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712246), -1);
         QLog.e("QZoneRedPocketGiftJsPlugin", 1, paramWebViewPlugin.getMessage());
-        return;
       }
-      if (TextUtils.isEmpty(this.sendRedPocketGiftCallback))
-      {
-        QLog.e("QZoneRedPocketGiftJsPlugin", 1, "callback is empty.");
-        return;
-      }
-      paramVarArgs = (String[])localObject;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramVarArgs = String.valueOf(l);
-      }
-      RemoteHandleManager.getInstance().getSender().setRedKeyData(l, str1);
-      Object localObject = QZoneHelper.UserInfo.getInstance();
-      String str2 = ((TicketManager)paramPluginRuntime.a().getManager(2)).getSkey(paramPluginRuntime.a().getAccount());
-      int i = QZoneHelper.generateRequestCode(paramWebViewPlugin, paramPluginRuntime, 8);
-      QZoneHelper.forwardToRedPocket(paramPluginRuntime.a(), (QZoneHelper.UserInfo)localObject, str2, l, paramVarArgs, str1, i);
     }
   }
   
@@ -80,28 +84,32 @@ public class QZoneRedPocketGiftJsPlugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!"Qzone".equals(paramString2)) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {}
-    while (!"sendRedPocketGift".equals(paramString3)) {
-      return false;
+    if (("Qzone".equals(paramString2)) && (this.parentPlugin != null))
+    {
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if ("sendRedPocketGift".equals(paramString3))
+      {
+        RemoteHandleManager.getInstance().addWebEventListener(this);
+        handleSendRedPocketGift(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
+        return true;
+      }
     }
-    RemoteHandleManager.getInstance().addWebEventListener(this);
-    handleSendRedPocketGift(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
-    return true;
+    return false;
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    switch (paramByte)
-    {
-    default: 
+    if (paramByte != 8) {
       return;
     }
     if ((paramInt == -1) && (paramIntent != null))
     {
-      onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712269), 0);
+      onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712244), 0);
       return;
     }
-    onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712272), -1);
+    onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712247), -1);
   }
   
   public void onDestroy()
@@ -111,59 +119,57 @@ public class QZoneRedPocketGiftJsPlugin
   
   protected void onJSCallBack(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    JSONObject localJSONObject;
     if (this.parentPlugin != null)
     {
       if (TextUtils.isEmpty(paramString1))
       {
         paramInt = -1;
-        paramString3 = HardCodeUtil.a(2131712270);
+        paramString3 = HardCodeUtil.a(2131712245);
       }
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("code", paramInt);
-      localJSONObject.put("data", paramString2);
-      localJSONObject.put("message", paramString3);
-      this.parentPlugin.callJs(paramString1, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception paramString2)
-    {
-      for (;;)
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("code", paramInt);
+        localJSONObject.put("data", paramString2);
+        localJSONObject.put("message", paramString3);
+      }
+      catch (Exception paramString2)
       {
         paramString2.printStackTrace();
       }
+      this.parentPlugin.callJs(paramString1, new String[] { localJSONObject.toString() });
     }
   }
   
   public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
-    do
+    if (paramBundle != null)
     {
-      do
-      {
+      if (!paramBundle.containsKey("data")) {
         return;
-        if (paramBundle.getBundle("data") != null) {
-          break;
+      }
+      if (paramBundle.getBundle("data") == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QZoneRedPocketGiftJsPlugin", 2, "call js function,bundle is empty");
         }
-      } while (!QLog.isColorLevel());
-      QLog.e("QZoneRedPocketGiftJsPlugin", 2, "call js function,bundle is empty");
-      return;
-    } while (!"cmd.qzoneSendRedPocketGift".equals(paramString));
-    if (TextUtils.isEmpty(this.sendRedPocketGiftCallback))
-    {
-      onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712268), -1);
-      return;
+        return;
+      }
+      if ("cmd.qzoneSendRedPocketGift".equals(paramString))
+      {
+        if (TextUtils.isEmpty(this.sendRedPocketGiftCallback))
+        {
+          onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712243), -1);
+          return;
+        }
+        onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712248), 0);
+      }
     }
-    onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712273), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneRedPocketGiftJsPlugin
  * JD-Core Version:    0.7.0.1
  */

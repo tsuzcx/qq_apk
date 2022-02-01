@@ -19,37 +19,36 @@ class VideoEncoderCore$AudioEncodeHandler
   
   public void handleMessage(Message paramMessage)
   {
-    if (this.a != null) {}
-    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
-    {
-      switch (paramMessage.what)
-      {
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while (localVideoEncoderCore == null);
-        paramMessage = (Object[])paramMessage.obj;
-        try
-        {
-          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-        }
-      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
-      VideoEncoderCore.a(localVideoEncoderCore).a(3);
+    Object localObject = this.a;
+    if (localObject != null) {
+      localObject = (VideoEncoderCore)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
+    }
+    if (paramMessage.what != 1) {
       return;
+    }
+    if (localObject != null)
+    {
+      paramMessage = (Object[])paramMessage.obj;
+      try
+      {
+        VideoEncoderCore.a((VideoEncoderCore)localObject, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
+        if (VideoEncoderCore.a((VideoEncoderCore)localObject) != null) {
+          VideoEncoderCore.a((VideoEncoderCore)localObject).a(3);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore.AudioEncodeHandler
  * JD-Core Version:    0.7.0.1
  */

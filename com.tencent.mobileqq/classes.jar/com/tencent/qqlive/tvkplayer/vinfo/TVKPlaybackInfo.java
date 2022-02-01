@@ -93,12 +93,14 @@ public class TVKPlaybackInfo
   
   boolean isHDR10()
   {
-    return (this.mNetVideoInfo != null) && (this.mNetVideoInfo.getCurDefinition() != null) && (this.mNetVideoInfo.getCurDefinition().getDefn().equals("hdr10")) && (this.mNetVideoInfo.getCurDefinition().getVideoCodec() == 3);
+    TVKNetVideoInfo localTVKNetVideoInfo = this.mNetVideoInfo;
+    return (localTVKNetVideoInfo != null) && (localTVKNetVideoInfo.getCurDefinition() != null) && (this.mNetVideoInfo.getCurDefinition().getDefn().equals("hdr10")) && (this.mNetVideoInfo.getCurDefinition().getVideoCodec() == 3);
   }
   
   boolean isHevc()
   {
-    return (this.mNetVideoInfo != null) && (this.mNetVideoInfo.isHevc());
+    TVKNetVideoInfo localTVKNetVideoInfo = this.mNetVideoInfo;
+    return (localTVKNetVideoInfo != null) && (localTVKNetVideoInfo.isHevc());
   }
   
   boolean isPrePlay()
@@ -228,7 +230,7 @@ public class TVKPlaybackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKPlaybackInfo
  * JD-Core Version:    0.7.0.1
  */

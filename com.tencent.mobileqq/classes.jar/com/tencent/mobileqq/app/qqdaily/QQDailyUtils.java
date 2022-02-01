@@ -34,35 +34,39 @@ public class QQDailyUtils
   
   private static long a()
   {
-    long l = System.currentTimeMillis() / 1000L;
-    if ((jdField_a_of_type_Long != 0L) && (86400L + jdField_a_of_type_Long > l)) {
-      return jdField_a_of_type_Long;
+    long l1 = System.currentTimeMillis() / 1000L;
+    long l2 = jdField_a_of_type_Long;
+    if ((l2 != 0L) && (86400L + l2 > l1)) {
+      return l2;
     }
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.set(11, 0);
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    l = localCalendar.getTimeInMillis() / 1000L;
-    jdField_a_of_type_Long = l;
-    return l;
+    l1 = localCalendar.getTimeInMillis() / 1000L;
+    jdField_a_of_type_Long = l1;
+    return l1;
   }
   
   public static String a(String paramString)
   {
-    String str = "{" + paramString + "}";
-    paramString = "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("}");
+    paramString = localStringBuilder.toString();
     try
     {
-      str = new JSONObject(str).get("metaData").toString();
-      paramString = str;
+      paramString = new JSONObject(paramString).get("metaData").toString();
+      return paramString;
     }
-    catch (Exception localException)
+    catch (Exception paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQDailyUtils", 2, localException, new Object[0]);
+      if (QLog.isColorLevel()) {
+        QLog.e("QQDailyUtils", 2, paramString, new Object[0]);
+      }
     }
-    return paramString;
     return "";
   }
   
@@ -73,26 +77,53 @@ public class QQDailyUtils
   
   public static boolean a(Map<String, String> paramMap)
   {
-    if ((paramMap == null) || (paramMap.size() == 0))
+    boolean bool2 = false;
+    if ((paramMap != null) && (paramMap.size() != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQDailyUtils", 2, "param is null");
+      String str1 = (String)paramMap.get("appname");
+      String str2 = (String)paramMap.get("appview");
+      String str3 = (String)paramMap.get("appversion");
+      paramMap = (String)paramMap.get("metaData");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("appName: ");
+        localStringBuilder.append(str1);
+        localStringBuilder.append("\nappView: ");
+        localStringBuilder.append(str2);
+        localStringBuilder.append("\nappVersion: ");
+        localStringBuilder.append(str3);
+        localStringBuilder.append("\nmetaData: ");
+        localStringBuilder.append(paramMap);
+        QLog.d("QQDailyUtils", 2, localStringBuilder.toString());
       }
-      return false;
+      boolean bool1 = bool2;
+      if (!TextUtils.isEmpty(str1))
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(str2))
+        {
+          bool1 = bool2;
+          if (!TextUtils.isEmpty(str3))
+          {
+            bool1 = bool2;
+            if (!TextUtils.isEmpty(paramMap)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+      return bool1;
     }
-    String str1 = (String)paramMap.get("appname");
-    String str2 = (String)paramMap.get("appview");
-    String str3 = (String)paramMap.get("appversion");
-    paramMap = (String)paramMap.get("metaData");
     if (QLog.isColorLevel()) {
-      QLog.d("QQDailyUtils", 2, "appName: " + str1 + "\nappView: " + str2 + "\nappVersion: " + str3 + "\nmetaData: " + paramMap);
+      QLog.d("QQDailyUtils", 2, "param is null");
     }
-    return (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)) && (!TextUtils.isEmpty(paramMap));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.qqdaily.QQDailyUtils
  * JD-Core Version:    0.7.0.1
  */

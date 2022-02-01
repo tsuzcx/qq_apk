@@ -61,22 +61,27 @@ public final class SvcDevLoginInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iAppId, 0);
-    if (this.vecGuid != null) {
-      paramJceOutputStream.write(this.vecGuid, 1);
+    Object localObject = this.vecGuid;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 1);
     }
     paramJceOutputStream.write(this.iLoginTime, 2);
     paramJceOutputStream.write(this.iLoginPlatform, 3);
-    if (this.strLoginLocation != null) {
-      paramJceOutputStream.write(this.strLoginLocation, 4);
+    localObject = this.strLoginLocation;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.strDeviceName != null) {
-      paramJceOutputStream.write(this.strDeviceName, 5);
+    localObject = this.strDeviceName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.strDeviceTypeInfo != null) {
-      paramJceOutputStream.write(this.strDeviceTypeInfo, 6);
+    localObject = this.strDeviceTypeInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.stDeviceItemDes != null) {
-      paramJceOutputStream.write(this.stDeviceItemDes, 7);
+    localObject = this.stDeviceItemDes;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
     paramJceOutputStream.write(this.iTerType, 8);
     paramJceOutputStream.write(this.iProductType, 9);
@@ -85,7 +90,7 @@ public final class SvcDevLoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.SvcDevLoginInfo
  * JD-Core Version:    0.7.0.1
  */

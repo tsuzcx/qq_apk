@@ -2,9 +2,29 @@ package com.tencent.biz.qcircleshadow.lib;
 
 public class QCircleHostConstants$_AEEditorConstants
 {
+  public static String AE_PHOTO_PICKER_TAB_ALBUM()
+  {
+    return "album";
+  }
+  
+  public static String AE_PHOTO_PICKER_TAB_CAMERA()
+  {
+    return "camera";
+  }
+  
   public static int GENERATE_ERROR_NODATA()
   {
     return -2;
+  }
+  
+  public static String KEY_AE_EDITOR_FROM_PHOTO_PICKER_TAB()
+  {
+    return "key_ae_editor_from_photo_picker_tab";
+  }
+  
+  public static String KEY_AE_PHOTO_PICKER_TAB()
+  {
+    return "tab";
   }
   
   public static String KEY_AE_VIDEO_MISSION_ID()
@@ -39,7 +59,7 @@ public class QCircleHostConstants$_AEEditorConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostConstants._AEEditorConstants
  * JD-Core Version:    0.7.0.1
  */

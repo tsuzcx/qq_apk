@@ -17,10 +17,9 @@ public class cy
   
   public void a(long paramLong, DogFood paramDogFood)
   {
-    Dog localDog;
     synchronized (jB)
     {
-      localDog = (Dog)jB.get(Long.valueOf(paramLong));
+      Dog localDog = (Dog)jB.get(Long.valueOf(paramLong));
       if (localDog == null) {
         return;
       }
@@ -30,13 +29,18 @@ public class cy
           return;
         }
       }
+      localDog.fD.add(paramDogFood);
+      return;
     }
-    localDog.fD.add(paramDogFood);
+    for (;;)
+    {
+      throw paramDogFood;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.cy
  * JD-Core Version:    0.7.0.1
  */

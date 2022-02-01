@@ -31,14 +31,17 @@ final class EvilReportUtil$1
     }
     catch (Throwable paramCall)
     {
-      QLog.d("QCircleEvilReport", 1, "response is failed" + paramCall);
+      paramResponse = new StringBuilder();
+      paramResponse.append("response is failed");
+      paramResponse.append(paramCall);
+      QLog.d("QCircleEvilReport", 1, paramResponse.toString());
       paramCall.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.EvilReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

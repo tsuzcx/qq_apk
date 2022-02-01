@@ -10,7 +10,7 @@ class AIOPictureView$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.a.mContext);
+    DialogUtil.a(this.a.a);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -20,7 +20,7 @@ class AIOPictureView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOPictureView.2
  * JD-Core Version:    0.7.0.1
  */

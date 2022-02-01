@@ -59,29 +59,33 @@ public final class cell_corner_adv
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.gif_info != null) {
-      paramJceOutputStream.write(this.gif_info, 0);
+    Object localObject = this.gif_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.feedback_info != null) {
-      paramJceOutputStream.write(this.feedback_info, 1);
+    localObject = this.feedback_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.adv_info != null) {
-      paramJceOutputStream.write(this.adv_info, 2);
+    localObject = this.adv_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
     paramJceOutputStream.write(this.feedback_appear_time, 3);
     paramJceOutputStream.write(this.adv_appear_time, 4);
     paramJceOutputStream.write(this.adv_hold_time, 5);
     paramJceOutputStream.write(this.min_video_time, 6);
     paramJceOutputStream.write(this.actiontype, 7);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 8);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.show_corner_adv, 9);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_corner_adv
  * JD-Core Version:    0.7.0.1
  */

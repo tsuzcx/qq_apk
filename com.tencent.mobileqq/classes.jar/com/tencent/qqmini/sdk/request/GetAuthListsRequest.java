@@ -40,25 +40,29 @@ public class GetAuthListsRequest
     if (paramArrayOfByte == null) {
       return null;
     }
-    if (paramArrayOfByte != null) {
-      try
-      {
-        paramJSONObject.put("authList", paramArrayOfByte);
-        return paramJSONObject;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        QMLog.d("GetAuthListsRequest", "onResponse fail." + paramArrayOfByte);
-        return null;
-      }
+    if (paramArrayOfByte != null) {}
+    try
+    {
+      paramJSONObject.put("authList", paramArrayOfByte);
+      return paramJSONObject;
+    }
+    catch (Exception paramJSONObject)
+    {
+      break label29;
     }
     QMLog.d("GetAuthListsRequest", "onResponse fail.data = null");
+    return null;
+    label29:
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("onResponse fail.");
+    paramArrayOfByte.append(paramJSONObject);
+    QMLog.d("GetAuthListsRequest", paramArrayOfByte.toString());
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetAuthListsRequest
  * JD-Core Version:    0.7.0.1
  */

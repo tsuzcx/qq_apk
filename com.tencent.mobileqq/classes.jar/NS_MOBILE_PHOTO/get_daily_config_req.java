@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class get_daily_config_req
   extends JceStruct
 {
-  static int cache_confid = 0;
+  static int cache_confid;
   static daily_recommend_status cache_recommend_status = new daily_recommend_status();
   public int confid = 0;
   public daily_recommend_status recommend_status = null;
@@ -42,15 +42,16 @@ public final class get_daily_config_req
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.confid, 1);
-    if (this.recommend_status != null) {
-      paramJceOutputStream.write(this.recommend_status, 2);
+    daily_recommend_status localdaily_recommend_status = this.recommend_status;
+    if (localdaily_recommend_status != null) {
+      paramJceOutputStream.write(localdaily_recommend_status, 2);
     }
     paramJceOutputStream.write(this.remind_upload_on, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_daily_config_req
  * JD-Core Version:    0.7.0.1
  */

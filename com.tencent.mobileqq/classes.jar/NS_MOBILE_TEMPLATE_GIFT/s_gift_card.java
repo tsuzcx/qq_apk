@@ -65,54 +65,68 @@ public final class s_gift_card
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.pic_baseurl != null) {
-      paramJceOutputStream.write(this.pic_baseurl, 0);
+    String str = this.pic_baseurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.pic_background != null) {
-      paramJceOutputStream.write(this.pic_background, 1);
+    str = this.pic_background;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.pic_65 != null) {
-      paramJceOutputStream.write(this.pic_65, 2);
+    str = this.pic_65;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.pic_100 != null) {
-      paramJceOutputStream.write(this.pic_100, 3);
+    str = this.pic_100;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.pic_big != null) {
-      paramJceOutputStream.write(this.pic_big, 4);
+    str = this.pic_big;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.btn_reply, 5);
-    if (this.btn_pic_reply != null) {
-      paramJceOutputStream.write(this.btn_pic_reply, 6);
+    str = this.btn_pic_reply;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.btn_pic_1 != null) {
-      paramJceOutputStream.write(this.btn_pic_1, 7);
+    str = this.btn_pic_1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.btn_link_1 != null) {
-      paramJceOutputStream.write(this.btn_link_1, 8);
+    str = this.btn_link_1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.btn_pic_2 != null) {
-      paramJceOutputStream.write(this.btn_pic_2, 9);
+    str = this.btn_pic_2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.btn_link_2 != null) {
-      paramJceOutputStream.write(this.btn_link_2, 10);
+    str = this.btn_link_2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.word_name != null) {
-      paramJceOutputStream.write(this.word_name, 11);
+    str = this.word_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.word_desc != null) {
-      paramJceOutputStream.write(this.word_desc, 12);
+    str = this.word_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
-    if (this.word_msg != null) {
-      paramJceOutputStream.write(this.word_msg, 13);
+    str = this.word_msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
-    if (this.card_url != null) {
-      paramJceOutputStream.write(this.card_url, 14);
+    str = this.card_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.s_gift_card
  * JD-Core Version:    0.7.0.1
  */

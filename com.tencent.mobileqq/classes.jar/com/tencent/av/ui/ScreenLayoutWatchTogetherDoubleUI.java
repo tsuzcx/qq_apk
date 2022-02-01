@@ -7,7 +7,6 @@ import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ARZimuTask;
 import com.tencent.qphone.base.util.QLog;
 
 public class ScreenLayoutWatchTogetherDoubleUI
@@ -31,70 +30,77 @@ public class ScreenLayoutWatchTogetherDoubleUI
     if (this.jdField_a_of_type_AndroidContentContext == null) {
       return;
     }
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299264);
-    if (paramInt4 != 0) {}
-    for (paramInt3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299265);; paramInt3 = i)
-    {
-      int k = (paramInt1 - i * 2) / 4;
-      int j = paramInt2 - k - paramInt3 - paramInt4;
-      paramInt3 = paramInt2 - paramInt3 - paramInt4;
-      if (paramBoolean)
-      {
-        paramInt1 = paramArrayOfGLVideoView[1].b().left;
-        paramInt2 = paramArrayOfGLVideoView[1].b().right;
-        paramArrayOfGLVideoView[1].b(paramInt1, j, paramInt2, paramInt3);
-        if (!paramBoolean) {
-          break label320;
-        }
-        paramInt2 = paramArrayOfGLVideoView[2].b().left;
-        paramInt1 = paramArrayOfGLVideoView[2].b().right;
-        label139:
-        paramArrayOfGLVideoView[2].b(paramInt2, j, paramInt1, paramInt3);
-        if (!paramBoolean) {
-          break label329;
-        }
-        paramInt1 = paramArrayOfGLVideoView[3].b().left;
-        paramInt2 = paramArrayOfGLVideoView[3].b().right;
-        label178:
-        paramArrayOfGLVideoView[3].b(paramInt1, j, paramInt2, paramInt3);
-        if (!paramBoolean) {
-          break label338;
-        }
-        paramInt2 = paramArrayOfGLVideoView[4].b().left;
-        paramInt1 = paramArrayOfGLVideoView[4].b().right;
-      }
-      for (;;)
-      {
-        paramArrayOfGLVideoView[4].b(paramInt2, j, paramInt1, paramInt3);
-        paramArrayOfGLVideoView[1].d(-15197410);
-        paramArrayOfGLVideoView[2].d(-15197410);
-        paramArrayOfGLVideoView[3].d(-15197410);
-        paramArrayOfGLVideoView[4].d(-15197410);
-        paramArrayOfGLVideoView[1].a(2, 3, 3, 3);
-        paramArrayOfGLVideoView[2].a(2, 3, 2, 3);
-        paramArrayOfGLVideoView[3].a(2, 3, 2, 3);
-        paramArrayOfGLVideoView[4].a(3, 3, 2, 3);
-        return;
-        paramInt2 = paramInt1 - i;
-        paramInt1 = paramInt1 - k - i;
-        break;
-        label320:
-        paramInt2 = paramInt1 - k;
-        break label139;
-        label329:
-        paramInt1 = paramInt2 - k;
-        break label178;
-        label338:
-        paramInt2 = paramInt1 - k;
-      }
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299267);
+    if (paramInt4 != 0) {
+      paramInt3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299268);
+    } else {
+      paramInt3 = i;
     }
+    int k = (paramInt1 - i * 2) / 4;
+    int j = paramInt2 - k - paramInt3 - paramInt4;
+    paramInt3 = paramInt2 - paramInt3 - paramInt4;
+    if (paramBoolean)
+    {
+      paramInt1 = paramArrayOfGLVideoView[1].b().left;
+      paramInt2 = paramArrayOfGLVideoView[1].b().right;
+    }
+    else
+    {
+      paramInt2 = paramInt1 - i;
+      paramInt1 = paramInt1 - k - i;
+    }
+    paramArrayOfGLVideoView[1].b(paramInt1, j, paramInt2, paramInt3);
+    if (paramBoolean)
+    {
+      paramInt1 = paramArrayOfGLVideoView[2].b().left;
+      paramInt2 = paramArrayOfGLVideoView[2].b().right;
+    }
+    else
+    {
+      paramInt2 = paramInt1;
+      paramInt1 -= k;
+    }
+    paramArrayOfGLVideoView[2].b(paramInt1, j, paramInt2, paramInt3);
+    if (paramBoolean)
+    {
+      paramInt1 = paramArrayOfGLVideoView[3].b().left;
+      paramInt2 = paramArrayOfGLVideoView[3].b().right;
+    }
+    else
+    {
+      paramInt2 = paramInt1;
+      paramInt1 -= k;
+    }
+    paramArrayOfGLVideoView[3].b(paramInt1, j, paramInt2, paramInt3);
+    if (paramBoolean)
+    {
+      paramInt1 = paramArrayOfGLVideoView[4].b().left;
+      paramInt2 = paramArrayOfGLVideoView[4].b().right;
+    }
+    else
+    {
+      paramInt2 = paramInt1;
+      paramInt1 -= k;
+    }
+    paramArrayOfGLVideoView[4].b(paramInt1, j, paramInt2, paramInt3);
+    paramArrayOfGLVideoView[1].d(-15197410);
+    paramArrayOfGLVideoView[2].d(-15197410);
+    paramArrayOfGLVideoView[3].d(-15197410);
+    paramArrayOfGLVideoView[4].d(-15197410);
+    paramArrayOfGLVideoView[1].a(2, 3, 3, 3);
+    paramArrayOfGLVideoView[2].a(2, 3, 2, 3);
+    paramArrayOfGLVideoView[3].a(2, 3, 2, 3);
+    paramArrayOfGLVideoView[4].a(3, 3, 2, 3);
   }
   
   public void a(GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    int n = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenLayoutSmallUIOrigin", 2, "setSmallVideoViewLayout position: " + paramInt1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setSmallVideoViewLayout position: ");
+      localStringBuilder.append(paramInt1);
+      QLog.d("ScreenLayoutSmallUIOrigin", 2, localStringBuilder.toString());
     }
     if (this.jdField_a_of_type_AndroidContentContext == null)
     {
@@ -103,65 +109,72 @@ public class ScreenLayoutWatchTogetherDoubleUI
       }
       return;
     }
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299269);
     this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299266);
-    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299263);
-    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299264);
-    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299265);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299267);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299268);
     int m;
     int k;
     int i;
-    int j;
     if (this.jdField_a_of_type_AndroidViewDisplay.getRotation() % 2 == 0)
     {
-      m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297978);
-      k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297975);
-      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297976);
-      j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297977);
-      if (paramInt5 != 0) {
-        break label450;
-      }
-      j = i;
+      m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297972);
+      k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297969);
+      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297970);
+      j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297971);
     }
-    label450:
-    for (;;)
+    else
     {
-      switch (paramInt1)
+      m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297969);
+      k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297972);
+      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297971);
+      j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297970);
+    }
+    int n = j;
+    if (paramInt5 == 0) {
+      n = i;
+    }
+    int i1 = 0;
+    int j = i;
+    if (paramInt1 != 1)
+    {
+      if (paramInt1 != 2)
       {
-      default: 
-        paramInt2 = 0;
-        paramInt3 = 0;
-        i = 0;
-        paramInt1 = n;
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 4)
+          {
+            paramInt2 = 0;
+            paramInt3 = 0;
+            i = 0;
+            paramInt1 = i1;
+            break label384;
+          }
+          paramInt1 = i + m;
+          paramInt2 = paramInt3 - k - n - paramInt5;
+        }
+        else
+        {
+          i = paramInt2 - m - i;
+          paramInt2 = paramInt3 - k - n - paramInt5;
+          paramInt3 = paramInt2 + k;
+          paramInt1 = i + m;
+          break label384;
+        }
       }
-      for (;;)
-      {
-        paramArrayOfGLVideoView[1].b(i, paramInt3, paramInt2, paramInt1);
-        ARZimuTask.a("setSmallVideoViewLayout " + m + "|" + k);
-        return;
-        m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297975);
-        k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297978);
-        i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297977);
-        j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297976);
-        break;
-        paramInt2 = i + m;
-        paramInt3 = j + paramInt4;
-        paramInt1 = paramInt3 + k;
-        continue;
-        i = paramInt2 - m - i;
-        paramInt2 = i + m;
-        paramInt3 = j + paramInt4;
-        paramInt1 = paramInt3 + k;
-        continue;
-        paramInt2 = i + m;
-        paramInt3 = paramInt3 - k - j - paramInt5;
-        paramInt1 = paramInt3 + k;
-        continue;
-        i = paramInt2 - m - i;
-        paramInt3 = paramInt3 - k - j - paramInt5;
-        paramInt2 = i + m;
-        paramInt1 = paramInt3 + k;
+      else {
+        j = paramInt2 - m - i;
       }
     }
+    else
+    {
+      paramInt1 = j + m;
+      paramInt2 = n + paramInt4;
+      i = j;
+    }
+    paramInt3 = paramInt2 + k;
+    label384:
+    paramArrayOfGLVideoView[1].b(i, paramInt2, paramInt1, paramInt3);
   }
   
   public void a(GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
@@ -178,7 +191,7 @@ public class ScreenLayoutWatchTogetherDoubleUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ScreenLayoutWatchTogetherDoubleUI
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,9 @@ public abstract class GameActivityLifeCycleListener
   
   public Activity a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localWeakReference != null) {
+      return (Activity)localWeakReference.get();
     }
     return null;
   }
@@ -23,36 +24,47 @@ public abstract class GameActivityLifeCycleListener
   
   public void a(int paramInt, Activity paramActivity)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() != paramActivity)) {
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference == null) || (localWeakReference.get() != paramActivity)) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      a();
-      return;
-    case 0: 
-      b();
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 5)
+              {
+                a();
+                return;
+              }
+              a();
+              return;
+            }
+            f();
+            return;
+          }
+          e();
+          return;
+        }
+        d();
+        return;
+      }
       c();
       return;
-    case 2: 
-      d();
-      return;
-    case 3: 
-      e();
-      return;
-    case 4: 
-      f();
-      return;
     }
-    a();
+    b();
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == -1);
+    int i = this.jdField_a_of_type_Int;
+    return (i == 5) || (i == -1);
   }
   
   public void b()
@@ -82,7 +94,7 @@ public abstract class GameActivityLifeCycleListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.listener.GameActivityLifeCycleListener
  * JD-Core Version:    0.7.0.1
  */

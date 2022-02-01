@@ -16,15 +16,16 @@ class MsgBackupTransportFragment$4
     MsgBackupManager.a().d();
     if (this.a.a)
     {
-      this.a.g();
+      this.a.h();
       return;
     }
-    this.a.a(this.a.getActivity());
+    paramDialogInterface = this.a;
+    paramDialogInterface.a(paramDialogInterface.getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment.4
  * JD-Core Version:    0.7.0.1
  */

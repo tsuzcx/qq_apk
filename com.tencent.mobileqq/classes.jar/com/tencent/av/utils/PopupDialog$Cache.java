@@ -4,19 +4,24 @@ import android.content.DialogInterface.OnClickListener;
 
 class PopupDialog$Cache
 {
-  static PopupDialog jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
+  static PopupDialog jdField_a_of_type_ComTencentAvUtilsPopupDialog;
   int jdField_a_of_type_Int;
   DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
   String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int;
   DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener;
   String jdField_b_of_type_JavaLangString;
   int c;
+  
+  PopupDialog$Cache()
+  {
+    this.a = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.PopupDialog.Cache
  * JD-Core Version:    0.7.0.1
  */

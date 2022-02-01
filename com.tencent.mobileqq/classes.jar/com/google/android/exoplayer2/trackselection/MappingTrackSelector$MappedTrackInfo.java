@@ -31,14 +31,13 @@ public final class MappingTrackSelector$MappedTrackInfo
   
   public int getAdaptiveSupport(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int j = 0;
     int m = this.trackGroups[paramInt1].get(paramInt2).length;
     int[] arrayOfInt = new int[m];
     int i = 0;
-    while (i < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
       int n = getTrackFormatSupport(paramInt1, paramInt2, i);
-      int k;
       if (n != 4)
       {
         k = j;
@@ -54,41 +53,32 @@ public final class MappingTrackSelector$MappedTrackInfo
         k = j + 1;
       }
       i += 1;
-      j = k;
     }
     return getAdaptiveSupport(paramInt1, paramInt2, Arrays.copyOf(arrayOfInt, j));
   }
   
   public int getAdaptiveSupport(int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
+    int k = 0;
     Object localObject = null;
-    int m = 0;
+    boolean bool = false;
     int j = 0;
     int i = 16;
-    int k = 0;
-    while (m < paramArrayOfInt.length)
+    while (k < paramArrayOfInt.length)
     {
-      int n = paramArrayOfInt[m];
-      String str = this.trackGroups[paramInt1].get(paramInt2).getFormat(n).sampleMimeType;
-      if (k == 0)
-      {
+      int m = paramArrayOfInt[k];
+      String str = this.trackGroups[paramInt1].get(paramInt2).getFormat(m).sampleMimeType;
+      if (j == 0) {
         localObject = str;
-        i = Math.min(i, this.formatSupport[paramInt1][paramInt2][m] & 0x18);
-        m += 1;
-        k += 1;
+      } else {
+        bool |= Util.areEqual(localObject, str) ^ true;
       }
-      else
-      {
-        if (!Util.areEqual(localObject, str)) {}
-        for (n = 1;; n = 0)
-        {
-          j = n | j;
-          break;
-        }
-      }
+      i = Math.min(i, this.formatSupport[paramInt1][paramInt2][k] & 0x18);
+      k += 1;
+      j += 1;
     }
     paramInt2 = i;
-    if (j != 0) {
+    if (bool) {
       paramInt2 = Math.min(i, this.mixedMimeTypeAdaptiveSupport[paramInt1]);
     }
     return paramInt2;
@@ -99,30 +89,29 @@ public final class MappingTrackSelector$MappedTrackInfo
     int[][] arrayOfInt = this.formatSupport[paramInt];
     int i = 0;
     paramInt = 0;
-    for (;;)
+    while (i < arrayOfInt.length)
     {
-      int j = paramInt;
-      if (i < arrayOfInt.length)
+      int j = 0;
+      while (j < arrayOfInt[i].length)
       {
-        j = 0;
-        if (j >= arrayOfInt[i].length) {
-          break label91;
-        }
-        switch (arrayOfInt[i][j] & 0x7)
+        int k = arrayOfInt[i][j] & 0x7;
+        if (k != 3)
         {
+          if (k != 4) {
+            k = 1;
+          } else {
+            return 3;
+          }
         }
-      }
-      for (int k = 1;; k = 2)
-      {
+        else {
+          k = 2;
+        }
         paramInt = Math.max(paramInt, k);
         j += 1;
-        break;
-        j = 3;
-        return j;
       }
-      label91:
       i += 1;
     }
+    return paramInt;
   }
   
   public int getTrackFormatSupport(int paramInt1, int paramInt2, int paramInt3)
@@ -157,7 +146,7 @@ public final class MappingTrackSelector$MappedTrackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.MappingTrackSelector.MappedTrackInfo
  * JD-Core Version:    0.7.0.1
  */

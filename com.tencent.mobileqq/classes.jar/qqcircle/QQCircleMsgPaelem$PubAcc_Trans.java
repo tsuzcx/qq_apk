@@ -22,14 +22,15 @@ public final class QQCircleMsgPaelem$PubAcc_Trans
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 56 }, new String[] { "uint32_lock_display", "uint32_ignore_pc_active", "str_long_msg_wording", "uint64_bitmap", "str_apn_info", "uint32_apn_info_type", "uint32_count_unread" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0) }, PubAcc_Trans.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 56 }, new String[] { "uint32_lock_display", "uint32_ignore_pc_active", "str_long_msg_wording", "uint64_bitmap", "str_apn_info", "uint32_apn_info_type", "uint32_count_unread" }, new Object[] { localInteger, localInteger, localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2, localInteger, localInteger }, PubAcc_Trans.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleMsgPaelem.PubAcc_Trans
  * JD-Core Version:    0.7.0.1
  */

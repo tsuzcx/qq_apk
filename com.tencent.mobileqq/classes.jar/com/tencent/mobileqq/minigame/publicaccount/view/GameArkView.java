@@ -17,8 +17,8 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
 import com.tencent.mobileqq.minigame.publicaccount.model.QQGameMsgInfo;
+import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 
@@ -42,44 +42,58 @@ public class GameArkView
   public GameArkView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(getContext()).inflate(2063859712, this);
-    this.arkViewContainer = findViewById(2063794193);
-    this.arkView = ((ArkView)findViewById(2063794192));
-    try
+    LayoutInflater.from(getContext()).inflate(2030305281, this);
+    this.arkViewContainer = findViewById(2030239764);
+    this.arkView = ((ArkView)findViewById(2030239763));
+    for (;;)
     {
-      paramContext = getResources().getDisplayMetrics();
-      if (QLog.isColorLevel()) {
-        if (" density= " + paramContext == null) {
-          break label184;
-        }
-      }
-      label184:
-      for (float f = paramContext.density;; f = -1.0F)
+      try
       {
-        QLog.d("GameArkView", 4, new Object[] { Float.valueOf(f) });
+        paramContext = getResources().getDisplayMetrics();
+        if (QLog.isColorLevel())
+        {
+          paramAttributeSet = new StringBuilder();
+          paramAttributeSet.append(" density= ");
+          paramAttributeSet.append(paramContext);
+          if (paramAttributeSet.toString() == null) {
+            break label235;
+          }
+          f = paramContext.density;
+          QLog.d("GameArkView", 4, new Object[] { Float.valueOf(f) });
+        }
         f = FontSettingManager.systemMetrics.density;
         if (paramContext != null)
         {
           f = Math.min(f, paramContext.density);
-          if (QLog.isColorLevel()) {
-            QLog.d("GameArkView", 4, "min density= " + f);
+          if (QLog.isColorLevel())
+          {
+            paramContext = new StringBuilder();
+            paramContext.append("min density= ");
+            paramContext.append(f);
+            QLog.d("GameArkView", 4, paramContext.toString());
           }
           this.arkView.setScaleDensity(f);
+          return;
         }
-        return;
+      }
+      catch (Throwable paramContext)
+      {
+        paramAttributeSet = new StringBuilder();
+        paramAttributeSet.append("set ark density fail:");
+        paramAttributeSet.append(paramContext.getMessage());
+        QLog.d("GameArkView", 4, paramAttributeSet.toString());
       }
       return;
-    }
-    catch (Throwable paramContext)
-    {
-      QLog.d("GameArkView", 4, "set ark density fail:" + paramContext.getMessage());
+      label235:
+      float f = -1.0F;
     }
   }
   
   public void destory()
   {
-    if (this.arkView != null) {
-      this.arkView.onDestroy();
+    ArkView localArkView = this.arkView;
+    if (localArkView != null) {
+      localArkView.onDestroy();
     }
   }
   
@@ -141,27 +155,57 @@ public class GameArkView
   
   public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameArkView", 1, "onLoadFailed state=" + paramInt1 + "|errCode=" + paramInt2 + "|errMsg=" + paramString + "|canRetry=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onLoadFailed state=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("|errCode=");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append("|errMsg=");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("|canRetry=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("GameArkView", 1, ((StringBuilder)localObject).toString());
     }
-    GameArkView.LoadGameArkCallback localLoadGameArkCallback = (GameArkView.LoadGameArkCallback)this.mLoadCallbackRef.get();
-    if (localLoadGameArkCallback != null) {
-      localLoadGameArkCallback.onLoadFinish(paramInt1, this.mPosition);
+    Object localObject = (GameArkView.LoadGameArkCallback)this.mLoadCallbackRef.get();
+    if (localObject != null) {
+      ((GameArkView.LoadGameArkCallback)localObject).onLoadFinish(paramInt1, this.mPosition);
     }
-    QQGameHelper.a(this.mPubType).d("76918").c("207984").a(2, this.mGameMsgInfo.advId).b(this.mGameMsgInfo.gameAppId).a(18, this.mGameMsgInfo.arkAppName).a(19, paramInt1 + "").a(20, paramInt2 + "").a(21, paramString).a(22, paramBoolean + "").a();
+    localObject = GamePubAccountHelper.a(this.mPubType).d("76918").c("207984").a(2, this.mGameMsgInfo.advId).b(this.mGameMsgInfo.gameAppId).a(18, this.mGameMsgInfo.arkAppName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("");
+    localObject = ((WadlReportBuilder)localObject).a(19, localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("");
+    paramString = ((WadlReportBuilder)localObject).a(20, localStringBuilder.toString()).a(21, paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append("");
+    paramString.a(22, ((StringBuilder)localObject).toString()).a();
   }
   
   public void onLoadState(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameArkView", 1, "onLoadState state=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onLoadState state=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("GameArkView", 1, ((StringBuilder)localObject).toString());
     }
-    GameArkView.LoadGameArkCallback localLoadGameArkCallback = (GameArkView.LoadGameArkCallback)this.mLoadCallbackRef.get();
-    if (localLoadGameArkCallback != null) {
-      localLoadGameArkCallback.onLoadFinish(paramInt, this.mPosition);
+    Object localObject = (GameArkView.LoadGameArkCallback)this.mLoadCallbackRef.get();
+    if (localObject != null) {
+      ((GameArkView.LoadGameArkCallback)localObject).onLoadFinish(paramInt, this.mPosition);
     }
     ThreadManagerV2.getUIHandlerV2().postDelayed(new GameArkView.1(this), 500L);
-    QQGameHelper.a(this.mPubType).d("76918").c("207984").a(2, this.mGameMsgInfo.advId).b(this.mGameMsgInfo.gameAppId).a(18, this.mGameMsgInfo.arkAppName).a(29, paramInt + "").a();
+    localObject = GamePubAccountHelper.a(this.mPubType).d("76918").c("207984").a(2, this.mGameMsgInfo.advId).b(this.mGameMsgInfo.gameAppId).a(18, this.mGameMsgInfo.arkAppName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    ((WadlReportBuilder)localObject).a(29, localStringBuilder.toString()).a();
   }
   
   public void onPause()
@@ -202,7 +246,7 @@ public class GameArkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.view.GameArkView
  * JD-Core Version:    0.7.0.1
  */

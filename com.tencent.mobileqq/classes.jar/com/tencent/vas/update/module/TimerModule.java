@@ -25,8 +25,12 @@ public class TimerModule
   
   private void sendTimerTask(@NonNull TimerModule.TimerTaskParams paramTimerTaskParams)
   {
-    VasUpdateWrapper.getLog().i("VasUpdate_TimerModule", "send timer task = " + paramTimerTaskParams.toString());
-    Object localObject = new TimerModule.TaskRunnable(this, paramTimerTaskParams);
+    Object localObject = VasUpdateWrapper.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("send timer task = ");
+    localStringBuilder.append(paramTimerTaskParams.toString());
+    ((IVasLog)localObject).i("VasUpdate_TimerModule", localStringBuilder.toString());
+    localObject = new TimerModule.TaskRunnable(this, paramTimerTaskParams);
     localObject = ThreadManager.getInstance().postDelay(2, (Runnable)localObject, paramTimerTaskParams.mDelay);
     this.mTimerMap.put(Integer.valueOf(paramTimerTaskParams.mType), localObject);
   }
@@ -47,14 +51,18 @@ public class TimerModule
   {
     if (this.mTimerMap.containsKey(Integer.valueOf(paramInt)))
     {
-      VasUpdateWrapper.getLog().i("VasUpdate_TimerModule", "setTimer repeat type = " + paramInt);
+      localObject = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setTimer repeat type = ");
+      localStringBuilder.append(paramInt);
+      ((IVasLog)localObject).i("VasUpdate_TimerModule", localStringBuilder.toString());
       return;
     }
-    TimerModule.TimerTaskParams localTimerTaskParams = new TimerModule.TimerTaskParams(this, null);
-    localTimerTaskParams.mType = paramInt;
-    localTimerTaskParams.mDelay = paramLong;
-    localTimerTaskParams.mIsLoop = paramBoolean;
-    sendTimerTask(localTimerTaskParams);
+    Object localObject = new TimerModule.TimerTaskParams(this, null);
+    ((TimerModule.TimerTaskParams)localObject).mType = paramInt;
+    ((TimerModule.TimerTaskParams)localObject).mDelay = paramLong;
+    ((TimerModule.TimerTaskParams)localObject).mIsLoop = paramBoolean;
+    sendTimerTask((TimerModule.TimerTaskParams)localObject);
   }
   
   public void stopTimer(int paramInt)
@@ -69,7 +77,7 @@ public class TimerModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.module.TimerModule
  * JD-Core Version:    0.7.0.1
  */

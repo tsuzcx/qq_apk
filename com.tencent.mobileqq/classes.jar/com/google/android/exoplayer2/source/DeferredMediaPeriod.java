@@ -28,7 +28,8 @@ public final class DeferredMediaPeriod
   
   public boolean continueLoading(long paramLong)
   {
-    return (this.mediaPeriod != null) && (this.mediaPeriod.continueLoading(paramLong));
+    MediaPeriod localMediaPeriod = this.mediaPeriod;
+    return (localMediaPeriod != null) && (localMediaPeriod.continueLoading(paramLong));
   }
   
   public void createPeriod()
@@ -78,14 +79,17 @@ public final class DeferredMediaPeriod
     }
     catch (IOException localIOException)
     {
-      if (this.listener == null) {
-        throw localIOException;
-      }
-      if (!this.notifiedPrepareError)
+      DeferredMediaPeriod.PrepareErrorListener localPrepareErrorListener = this.listener;
+      if (localPrepareErrorListener != null)
       {
-        this.notifiedPrepareError = true;
-        this.listener.onPrepareError(localIOException);
+        if (!this.notifiedPrepareError)
+        {
+          this.notifiedPrepareError = true;
+          localPrepareErrorListener.onPrepareError(localIOException);
+        }
+        return;
       }
+      throw localIOException;
     }
   }
   
@@ -103,8 +107,9 @@ public final class DeferredMediaPeriod
   {
     this.callback = paramCallback;
     this.preparePositionUs = paramLong;
-    if (this.mediaPeriod != null) {
-      this.mediaPeriod.prepare(this, paramLong);
+    paramCallback = this.mediaPeriod;
+    if (paramCallback != null) {
+      paramCallback.prepare(this, paramLong);
     }
   }
   
@@ -120,8 +125,9 @@ public final class DeferredMediaPeriod
   
   public void releasePeriod()
   {
-    if (this.mediaPeriod != null) {
-      this.mediaSource.releasePeriod(this.mediaPeriod);
+    MediaPeriod localMediaPeriod = this.mediaPeriod;
+    if (localMediaPeriod != null) {
+      this.mediaSource.releasePeriod(localMediaPeriod);
     }
   }
   
@@ -142,7 +148,7 @@ public final class DeferredMediaPeriod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.DeferredMediaPeriod
  * JD-Core Version:    0.7.0.1
  */

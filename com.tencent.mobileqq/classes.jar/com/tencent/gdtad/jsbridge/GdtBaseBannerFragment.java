@@ -19,7 +19,7 @@ import com.tencent.gdtad.log.GdtLog;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,19 +38,19 @@ abstract class GdtBaseBannerFragment
   
   public static void a(Activity paramActivity, JSONObject paramJSONObject, Class<? extends GdtBaseBannerFragment> paramClass)
   {
-    if ((paramActivity == null) || (paramJSONObject == null))
+    if ((paramActivity != null) && (paramJSONObject != null))
     {
-      GdtLog.b("GdtBaseBannerFragment", "start error");
+      GdtLog.b("GdtBaseBannerFragment", "start");
+      Bundle localBundle = new Bundle();
+      localBundle.putString("params", paramJSONObject.toString());
+      paramJSONObject = new Intent();
+      paramJSONObject.putExtra("public_fragment_window_feature", 1);
+      paramJSONObject.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+      paramJSONObject.putExtras(localBundle);
+      PublicFragmentActivity.Launcher.a(paramActivity, paramJSONObject, PublicFragmentActivityForTool.class, paramClass);
       return;
     }
-    GdtLog.b("GdtBaseBannerFragment", "start");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("params", paramJSONObject.toString());
-    paramJSONObject = new Intent();
-    paramJSONObject.putExtra("public_fragment_window_feature", 1);
-    paramJSONObject.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-    paramJSONObject.putExtras(localBundle);
-    PublicFragmentActivity.Launcher.a(paramActivity, paramJSONObject, PublicFragmentActivityForTool.class, paramClass);
+    GdtLog.b("GdtBaseBannerFragment", "start error");
   }
   
   protected abstract GdtAd a();
@@ -90,64 +90,58 @@ abstract class GdtBaseBannerFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = null;
-    if (getArguments() == null) {
+    if (getArguments() == null)
+    {
       paramLayoutInflater = null;
     }
-    for (;;)
+    else
     {
-      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
-      paramViewGroup = getArguments().getString("params");
+      paramLayoutInflater = getArguments().getString("params");
       try
       {
-        Object localObject = new JSONObject(paramViewGroup);
-        paramBundle = ((JSONObject)localObject).getJSONObject("requestParams");
-        localObject = ((JSONObject)localObject).getJSONObject("clickParams");
-        boolean bool1 = ((JSONObject)localObject).getBoolean("reportForClick");
-        boolean bool2 = ((JSONObject)localObject).getBoolean("appAutoDownload");
-        boolean bool3 = ((JSONObject)localObject).optBoolean("videoCeilingSupported", false);
-        paramBundle = (qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), paramBundle));
-        localObject = new GdtHandler.Params();
-        ((GdtHandler.Params)localObject).c = 1;
-        ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getActivity());
-        ((GdtHandler.Params)localObject).jdField_a_of_type_Boolean = bool1;
-        ((GdtHandler.Params)localObject).jdField_b_of_type_Boolean = bool2;
-        ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
-        if (bool3) {
-          paramLayoutInflater = GdtVideoCeilingFragmentForJS.class;
-        }
-        ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangClass = paramLayoutInflater;
-        ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
-        a(paramViewGroup, paramBundle, (GdtHandler.Params)localObject);
+        paramBundle = new JSONObject(paramLayoutInflater);
+        paramViewGroup = paramBundle.getJSONObject("requestParams");
+        paramBundle = paramBundle.getJSONObject("clickParams");
+        boolean bool1 = paramBundle.getBoolean("reportForClick");
+        boolean bool2 = paramBundle.getBoolean("appAutoDownload");
+        paramBundle.optBoolean("videoCeilingSupported", false);
+        paramViewGroup = (qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), paramViewGroup));
+        paramBundle = new GdtHandler.Params();
+        paramBundle.c = 1;
+        paramBundle.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getBaseActivity());
+        paramBundle.jdField_a_of_type_Boolean = bool1;
+        paramBundle.jdField_b_of_type_Boolean = bool2;
+        paramBundle.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
+        paramBundle.jdField_a_of_type_AndroidOsBundle = new Bundle();
+        paramBundle.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", "biz_src_miniapp");
+        a(paramLayoutInflater, paramViewGroup, paramBundle);
       }
       catch (JSONException paramLayoutInflater)
       {
-        for (;;)
-        {
-          GdtLog.d("GdtBaseBannerFragment", "createParams error", paramLayoutInflater);
-        }
+        GdtLog.d("GdtBaseBannerFragment", "createParams error", paramLayoutInflater);
       }
-      paramLayoutInflater = new Button(getActivity());
+      paramLayoutInflater = new Button(getBaseActivity());
       paramLayoutInflater.setText("load");
       paramLayoutInflater.setOnClickListener(new GdtBaseBannerFragment.1(this));
-      paramViewGroup = new Button(getActivity());
+      paramViewGroup = new Button(getBaseActivity());
       paramViewGroup.setText("show");
       paramViewGroup.setOnClickListener(new GdtBaseBannerFragment.2(this));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getActivity());
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getBaseActivity());
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#DBDBDB"));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramLayoutInflater);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramViewGroup);
-      paramLayoutInflater = new ScrollView(getActivity());
+      paramLayoutInflater = new ScrollView(getBaseActivity());
       paramLayoutInflater.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(getActivity());
+      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(getBaseActivity());
     }
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.unregister(getActivity());
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.unregister(getBaseActivity());
     super.onDestroy();
   }
   
@@ -163,7 +157,7 @@ abstract class GdtBaseBannerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtBaseBannerFragment
  * JD-Core Version:    0.7.0.1
  */

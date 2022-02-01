@@ -38,37 +38,42 @@ public class FriendChooser$GridViewAdapter
     if (paramView == null)
     {
       localObject = new FriendChooser.ViewHolder();
-      paramView = this.a.getLayoutInflater().inflate(2131559402, null);
-      ((FriendChooser.ViewHolder)localObject).a = ((ImageView)paramView.findViewById(2131366520));
+      paramView = this.a.getLayoutInflater().inflate(2131559277, null);
+      ((FriendChooser.ViewHolder)localObject).a = ((ImageView)paramView.findViewById(2131366401));
       paramView.setTag(localObject);
     }
-    while (localFriend == null)
+    else
     {
-      QLog.e("qqBaseActivity", 1, new Object[] { "FriendChooser rr == nul pos=", Integer.valueOf(paramInt) });
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
       localObject = (FriendChooser.ViewHolder)paramView.getTag();
     }
-    if ((localFriend.d == null) || ("".equals(localFriend.d))) {
-      localFriend.d = QZonePortraitData.a(this.a.a(), localFriend.a);
-    }
-    Bitmap localBitmap = ImageLoader.a().a(localFriend.d);
-    if (localBitmap == null)
+    if (localFriend == null)
     {
-      ((FriendChooser.ViewHolder)localObject).a.setImageResource(2130840452);
-      localObject = ((FriendChooser.ViewHolder)localObject).a;
-      ImageLoader.a().a(localFriend.d, new FriendChooser.GridViewAdapter.1(this, (ImageView)localObject));
+      QLog.e("qqBaseActivity", 1, new Object[] { "FriendChooser rr == nul pos=", Integer.valueOf(paramInt) });
     }
-    for (;;)
+    else
     {
-      break;
-      ((FriendChooser.ViewHolder)localObject).a.setImageBitmap(localBitmap);
+      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
+        localFriend.d = QZonePortraitData.a(this.a.a(), localFriend.a);
+      }
+      Bitmap localBitmap = ImageLoader.a().a(localFriend.d);
+      if (localBitmap == null)
+      {
+        ((FriendChooser.ViewHolder)localObject).a.setImageResource(2130840321);
+        localObject = ((FriendChooser.ViewHolder)localObject).a;
+        ImageLoader.a().a(localFriend.d, new FriendChooser.GridViewAdapter.1(this, (ImageView)localObject));
+      }
+      else
+      {
+        ((FriendChooser.ViewHolder)localObject).a.setImageBitmap(localBitmap);
+      }
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.FriendChooser.GridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

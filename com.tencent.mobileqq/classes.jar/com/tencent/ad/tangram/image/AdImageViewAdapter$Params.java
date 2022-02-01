@@ -17,7 +17,15 @@ public class AdImageViewAdapter$Params
   
   public boolean isValid()
   {
-    return (this.context != null) && (this.context.get() != null) && (!TextUtils.isEmpty(this.url)) && (this.callback != null) && (this.callback.get() != null);
+    WeakReference localWeakReference = this.context;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (!TextUtils.isEmpty(this.url)))
+    {
+      localWeakReference = this.callback;
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

@@ -12,23 +12,16 @@ class OrderMediaMsgSessionQueue$1
   public void a(long paramLong)
   {
     Iterator localIterator = OrderMediaMsgSessionQueue.a(this.a).iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
+    for (boolean bool = false; localIterator.hasNext(); bool = true)
     {
+      label14:
       OrderMediaMsgItem localOrderMediaMsgItem = (OrderMediaMsgItem)localIterator.next();
       if ((paramLong != localOrderMediaMsgItem.jdField_a_of_type_Long) || (!OrderMediaMsgSessionQueue.a(this.a).a(localOrderMediaMsgItem.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))) {
-        break label114;
+        break label14;
       }
       this.a.a(paramLong);
-      bool = true;
     }
-    label114:
-    for (;;)
-    {
-      break;
-      QLog.d(OrderMediaMsgSessionQueue.a, 1, new Object[] { "notifyCheckStatus uniseq:", Long.valueOf(paramLong), ", invalid:", Boolean.valueOf(bool) });
-      return;
-    }
+    QLog.d(OrderMediaMsgSessionQueue.a, 1, new Object[] { "notifyCheckStatus uniseq:", Long.valueOf(paramLong), ", invalid:", Boolean.valueOf(bool) });
   }
   
   public void a(long paramLong, int paramInt)
@@ -39,7 +32,7 @@ class OrderMediaMsgSessionQueue$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgSessionQueue.1
  * JD-Core Version:    0.7.0.1
  */

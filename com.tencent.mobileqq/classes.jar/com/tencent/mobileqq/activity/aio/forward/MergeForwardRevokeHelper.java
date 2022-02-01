@@ -33,19 +33,28 @@ public class MergeForwardRevokeHelper
   
   private boolean a(List<MessageRecord> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MergeForwardRevokeHelper", 2, "containCurMsg  mOriginUniSeq:" + this.jdField_a_of_type_Long);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("containCurMsg  mOriginUniSeq:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      QLog.d("MergeForwardRevokeHelper", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramList != null) && (paramList.size() > 0))
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("MergeForwardRevokeHelper", 2, "containCurMsg  mr.uniseq:" + localMessageRecord.uniseq);
+        localObject = (MessageRecord)paramList.next();
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("containCurMsg  mr.uniseq:");
+          localStringBuilder.append(((MessageRecord)localObject).uniseq);
+          QLog.d("MergeForwardRevokeHelper", 2, localStringBuilder.toString());
         }
-        if (localMessageRecord.uniseq == this.jdField_a_of_type_Long) {
+        if (((MessageRecord)localObject).uniseq == this.jdField_a_of_type_Long) {
           return true;
         }
       }
@@ -55,19 +64,21 @@ public class MergeForwardRevokeHelper
   
   private void d(BaseActivity paramBaseActivity)
   {
-    ViewGroup localViewGroup = (ViewGroup)paramBaseActivity.getWindow().getDecorView();
+    Object localObject = (ViewGroup)paramBaseActivity.getWindow().getDecorView();
     ImageView localImageView = new ImageView(paramBaseActivity);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localImageView.setImageResource(2130845374);
+    localImageView.setImageResource(2130845247);
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    localViewGroup.addView(localImageView, localLayoutParams);
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    ((ViewGroup)localObject).addView(localImageView, localLayoutParams);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localObject != null) {
+      ((QQCustomDialog)localObject).dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramBaseActivity, 230).setMessage(HardCodeUtil.a(2131706564)).setPositiveButton(paramBaseActivity.getString(2131693935), new MergeForwardRevokeHelper.1(this, paramBaseActivity));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramBaseActivity, 230).setMessage(HardCodeUtil.a(2131706590)).setPositiveButton(paramBaseActivity.getString(2131693890), new MergeForwardRevokeHelper.1(this, paramBaseActivity));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper$OnRevokeListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper$OnRevokeListener.a();
+    paramBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper$OnRevokeListener;
+    if (paramBaseActivity != null) {
+      paramBaseActivity.a();
     }
   }
   
@@ -104,7 +115,8 @@ public class MergeForwardRevokeHelper
     if (paramBaseActivity.getAppInterface() != null) {
       paramBaseActivity.getAppInterface().removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper$RevokeMessageObserver);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+    paramBaseActivity = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if ((paramBaseActivity != null) && (paramBaseActivity.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
@@ -117,7 +129,7 @@ public class MergeForwardRevokeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.forward.MergeForwardRevokeHelper
  * JD-Core Version:    0.7.0.1
  */

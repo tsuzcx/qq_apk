@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.magicface;
 
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import com.tencent.av.business.manager.pendant.ItemBase;
 
 public class FaceItem
-  extends EffectConfigBase.ItemBase
+  extends ItemBase
 {
   private String attr;
   private String compress_res_md5;
@@ -23,6 +23,7 @@ public class FaceItem
   private String text;
   private String type = "";
   private boolean usable;
+  private String version;
   private int vip_level;
   public String[] voice_text;
   private long voiceexpired;
@@ -37,7 +38,7 @@ public class FaceItem
     return this.desc;
   }
   
-  public String getIconurl()
+  public String getIconUrl()
   {
     return this.icon_url;
   }
@@ -62,7 +63,7 @@ public class FaceItem
     return this.predownload;
   }
   
-  public String getResurl()
+  public String getResUrl()
   {
     return this.res_url;
   }
@@ -77,6 +78,11 @@ public class FaceItem
     return this.type;
   }
   
+  public String getVersion()
+  {
+    return this.version;
+  }
+  
   public int getVipLevel()
   {
     return this.vip_level;
@@ -84,15 +90,11 @@ public class FaceItem
   
   public String getVoiceName()
   {
-    if ((this.voice_text != null) && (this.voice_text.length > 0)) {
-      return this.voice_text[0];
+    String[] arrayOfString = this.voice_text;
+    if ((arrayOfString != null) && (arrayOfString.length > 0)) {
+      return arrayOfString[0];
     }
     return null;
-  }
-  
-  public boolean isInCreative()
-  {
-    return this.type.equalsIgnoreCase("creativecop");
   }
   
   public boolean isInteract()
@@ -118,9 +120,89 @@ public class FaceItem
     return this.usable;
   }
   
+  public void setAttr(String paramString)
+  {
+    this.attr = paramString;
+  }
+  
+  public void setCompressResMd5(String paramString)
+  {
+    this.compress_res_md5 = paramString;
+  }
+  
+  public void setCompressResUrl(String paramString)
+  {
+    this.compress_res_url = paramString;
+  }
+  
   public void setDesc(String paramString)
   {
     this.desc = paramString;
+  }
+  
+  public void setIconUrl(String paramString)
+  {
+    this.icon_url = paramString;
+  }
+  
+  public void setId(String paramString)
+  {
+    this.id = paramString;
+  }
+  
+  public void setIsInteract(boolean paramBoolean)
+  {
+    this.is_interact = paramBoolean;
+  }
+  
+  public void setIsshow(boolean paramBoolean)
+  {
+    this.isshow = paramBoolean;
+  }
+  
+  public void setLastPositionIndex(int paramInt)
+  {
+    this.lastPositionIndex = paramInt;
+  }
+  
+  public void setPeerdeconame1(String paramString)
+  {
+    this.peerdeconame1 = paramString;
+  }
+  
+  public void setPlatform(int paramInt)
+  {
+    this.platform = paramInt;
+  }
+  
+  public void setPredownload(boolean paramBoolean)
+  {
+    this.predownload = paramBoolean;
+  }
+  
+  public void setResMd5(String paramString)
+  {
+    this.res_md5 = paramString;
+  }
+  
+  public void setResUrl(String paramString)
+  {
+    this.res_url = paramString;
+  }
+  
+  public void setSelfdeconame1(String paramString)
+  {
+    this.selfdeconame1 = paramString;
+  }
+  
+  public void setText(String paramString)
+  {
+    this.text = paramString;
+  }
+  
+  public void setType(String paramString)
+  {
+    this.type = paramString;
   }
   
   public void setUsable(boolean paramBoolean)
@@ -128,29 +210,94 @@ public class FaceItem
     this.usable = paramBoolean;
   }
   
+  public void setVersion(String paramString)
+  {
+    this.version = paramString;
+  }
+  
+  public void setVipLevel(int paramInt)
+  {
+    this.vip_level = paramInt;
+  }
+  
+  public void setVoiceText(String[] paramArrayOfString)
+  {
+    this.voice_text = paramArrayOfString;
+  }
+  
+  public void setVoiceexpired(long paramLong)
+  {
+    this.voiceexpired = paramLong;
+  }
+  
   public String toString()
   {
-    String str1 = "";
-    String str2 = str1;
-    if (this.voice_text != null)
+    String[] arrayOfString = this.voice_text;
+    Object localObject1 = "";
+    Object localObject2 = localObject1;
+    if (arrayOfString != null)
     {
       int i = 0;
       for (;;)
       {
-        str2 = str1;
+        localObject2 = localObject1;
         if (i >= this.voice_text.length) {
           break;
         }
-        str1 = str1 + this.voice_text[i] + "|";
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(this.voice_text[i]);
+        ((StringBuilder)localObject2).append("|");
+        localObject1 = ((StringBuilder)localObject2).toString();
         i += 1;
       }
     }
-    return "FaceItem{id = " + this.id + ", vip_level = " + this.vip_level + ", text = " + this.text + ", predownload = " + this.predownload + ", res_url = " + this.res_url + ", res_md5 = " + this.res_md5 + ", icon_url = " + this.icon_url + ", peerdeconame1 = " + this.peerdeconame1 + ", selfdeconame1 = " + this.selfdeconame1 + ", type = " + this.type + ", attr = " + this.attr + ", is_interact = " + this.is_interact + ", platform = " + this.platform + ", usable = " + this.usable + ", isshow = " + this.isshow + ", voiceexpired = " + this.voiceexpired + ", desc = " + this.desc + ", voice_text = " + str2 + ", isDownloading = " + this.isDownloading + '}';
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("FaceItem{id = ");
+    ((StringBuilder)localObject1).append(this.id);
+    ((StringBuilder)localObject1).append(", vip_level = ");
+    ((StringBuilder)localObject1).append(this.vip_level);
+    ((StringBuilder)localObject1).append(", text = ");
+    ((StringBuilder)localObject1).append(this.text);
+    ((StringBuilder)localObject1).append(", predownload = ");
+    ((StringBuilder)localObject1).append(this.predownload);
+    ((StringBuilder)localObject1).append(", res_url = ");
+    ((StringBuilder)localObject1).append(this.res_url);
+    ((StringBuilder)localObject1).append(", res_md5 = ");
+    ((StringBuilder)localObject1).append(this.res_md5);
+    ((StringBuilder)localObject1).append(", icon_url = ");
+    ((StringBuilder)localObject1).append(this.icon_url);
+    ((StringBuilder)localObject1).append(", peerdeconame1 = ");
+    ((StringBuilder)localObject1).append(this.peerdeconame1);
+    ((StringBuilder)localObject1).append(", selfdeconame1 = ");
+    ((StringBuilder)localObject1).append(this.selfdeconame1);
+    ((StringBuilder)localObject1).append(", type = ");
+    ((StringBuilder)localObject1).append(this.type);
+    ((StringBuilder)localObject1).append(", attr = ");
+    ((StringBuilder)localObject1).append(this.attr);
+    ((StringBuilder)localObject1).append(", is_interact = ");
+    ((StringBuilder)localObject1).append(this.is_interact);
+    ((StringBuilder)localObject1).append(", platform = ");
+    ((StringBuilder)localObject1).append(this.platform);
+    ((StringBuilder)localObject1).append(", usable = ");
+    ((StringBuilder)localObject1).append(this.usable);
+    ((StringBuilder)localObject1).append(", isshow = ");
+    ((StringBuilder)localObject1).append(this.isshow);
+    ((StringBuilder)localObject1).append(", voiceexpired = ");
+    ((StringBuilder)localObject1).append(this.voiceexpired);
+    ((StringBuilder)localObject1).append(", desc = ");
+    ((StringBuilder)localObject1).append(this.desc);
+    ((StringBuilder)localObject1).append(", voice_text = ");
+    ((StringBuilder)localObject1).append((String)localObject2);
+    ((StringBuilder)localObject1).append(", isDownloading = ");
+    ((StringBuilder)localObject1).append(this.isDownloading);
+    ((StringBuilder)localObject1).append('}');
+    return ((StringBuilder)localObject1).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.FaceItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,12 @@
+package com.tencent.mobileqq.qqexpand.plugin.preload;
+
+public abstract interface IBackgroundListener
+{
+  public abstract void c();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+ * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.preload.IBackgroundListener
+ * JD-Core Version:    0.7.0.1
+ */

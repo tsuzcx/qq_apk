@@ -15,8 +15,6 @@ public class EditItemInfoFactory
     a.put("img", Integer.valueOf(1));
     a.put("video", Integer.valueOf(2));
     a.put("voice", Integer.valueOf(3));
-    a.put("recite", Integer.valueOf(4));
-    a.put("calculation", Integer.valueOf(7));
   }
   
   public static EditItemInfoBase a(String paramString)
@@ -45,31 +43,35 @@ public class EditItemInfoFactory
       if (localObject == null) {
         return null;
       }
-      switch (((Integer)localObject).intValue())
+      int i = ((Integer)localObject).intValue();
+      if (i != 0)
       {
-      case 0: 
-        paramJSONObject = new TextInfo(paramJSONObject);
-        return paramJSONObject;
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              return null;
+            }
+            return new AudioInfo(paramJSONObject);
+          }
+          return new VideoInfo(paramJSONObject);
+        }
+        return new ImageInfo(paramJSONObject);
       }
+      paramJSONObject = new TextInfo(paramJSONObject);
+      return paramJSONObject;
     }
     catch (Exception paramJSONObject)
     {
       paramJSONObject.printStackTrace();
-      break label142;
-      return new ImageInfo(paramJSONObject);
-      return new VideoInfo(paramJSONObject);
-      return new AudioInfo(paramJSONObject);
-      return new HWReciteInfo(paramJSONObject);
-      paramJSONObject = new ArithmeticInfo(paramJSONObject);
-      return paramJSONObject;
     }
-    label142:
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoFactory
  * JD-Core Version:    0.7.0.1
  */

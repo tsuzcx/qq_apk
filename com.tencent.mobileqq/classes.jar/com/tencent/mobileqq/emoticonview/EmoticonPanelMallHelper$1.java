@@ -10,7 +10,7 @@ class EmoticonPanelMallHelper$1
   
   public void run()
   {
-    this.this$0.mPanelController.syncInitPanelDataList(this.val$hasBigEmotion);
+    ((EmoticonPanelController)this.this$0.mPanelController).syncInitPanelDataList(this.val$hasBigEmotion);
     if (this.val$callback != null) {
       ThreadManager.getUIHandler().post(new EmoticonPanelMallHelper.1.1(this));
     }
@@ -18,7 +18,7 @@ class EmoticonPanelMallHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.1
  * JD-Core Version:    0.7.0.1
  */

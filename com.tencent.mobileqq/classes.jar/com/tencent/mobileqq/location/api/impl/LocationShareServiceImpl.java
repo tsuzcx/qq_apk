@@ -7,6 +7,8 @@ import com.tencent.mobileqq.location.callback.IShareLocationCallback;
 import com.tencent.mobileqq.location.data.LocationRoom.RoomKey;
 import com.tencent.mobileqq.location.data.TroopLbsSharePushInfo;
 import com.tencent.mobileqq.location.net.LocationHandler;
+import com.tencent.mobileqq.location.net.LocationShareLocationManager;
+import com.tencent.mobileqq.location.net.LocationShareRoomManager;
 import com.tencent.mobileqq.location.net.RoomOperateHandler;
 import com.tencent.mobileqq.location.net.RoomQueryHandler;
 import com.tencent.mobileqq.location.net.TroopLocationPushDecoder;
@@ -34,22 +36,34 @@ public class LocationShareServiceImpl
   
   private static void onDecodeC2cLbsUserQuitRoom(AppRuntime paramAppRuntime, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareServiceImpl", 2, new Object[] { "onDecodeC2cLbsUserQuitRoom: invoked. ", " operateUin = [" + paramLong1 + "], sessionUin = [" + paramLong2 + "]" });
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" operateUin = [");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("], sessionUin = [");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("]");
+      QLog.d("LocationShareServiceImpl", 2, new Object[] { "onDecodeC2cLbsUserQuitRoom: invoked. ", localStringBuilder.toString() });
     }
     if (paramLong1 == paramAppRuntime.getLongAccountUin()) {
-      LocationHandler.a().a(new LocationRoom.RoomKey(0, String.valueOf(paramLong2)), false);
+      LocationShareLocationManager.a().a(new LocationRoom.RoomKey(0, String.valueOf(paramLong2)), false);
     }
   }
   
   public void addErrorShareStateCallback(IShareLocationCallback paramIShareLocationCallback)
   {
-    synchronized (this.shareLocationCallbacks)
+    try
     {
       if (!this.shareLocationCallbacks.contains(paramIShareLocationCallback)) {
         this.shareLocationCallbacks.add(paramIShareLocationCallback);
       }
       return;
+    }
+    finally
+    {
+      paramIShareLocationCallback = finally;
+      throw paramIShareLocationCallback;
     }
   }
   
@@ -60,7 +74,7 @@ public class LocationShareServiceImpl
   
   public boolean isCurrentUserSharing()
   {
-    return LocationHandler.a().b();
+    return LocationShareLocationManager.a().a();
   }
   
   public boolean isSessionSharingLocation(int paramInt, String paramString)
@@ -75,7 +89,7 @@ public class LocationShareServiceImpl
   
   public void notifyStateError(int paramInt, String paramString, boolean paramBoolean)
   {
-    synchronized (this.shareLocationCallbacks)
+    try
     {
       Iterator localIterator = this.shareLocationCallbacks.iterator();
       while (localIterator.hasNext())
@@ -86,12 +100,18 @@ public class LocationShareServiceImpl
           QLog.d("LocationShareServiceImpl", 2, new Object[] { "[callback] notifyStateError: invoked. ", " callback: ", localIShareLocationCallback.getClass() });
         }
       }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
   public void notifyStateNormalClose(int paramInt, long paramLong)
   {
-    synchronized (this.shareLocationCallbacks)
+    try
     {
       Iterator localIterator = this.shareLocationCallbacks.iterator();
       while (localIterator.hasNext())
@@ -102,12 +122,18 @@ public class LocationShareServiceImpl
           QLog.d("LocationShareServiceImpl", 2, new Object[] { "[callback] notifyStateNormalClose: invoked. ", " callback: ", localIShareLocationCallback.getClass() });
         }
       }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
   public void notifyUserSwitchPhone(int paramInt, long paramLong)
   {
-    synchronized (this.shareLocationCallbacks)
+    try
     {
       Iterator localIterator = this.shareLocationCallbacks.iterator();
       while (localIterator.hasNext())
@@ -118,6 +144,12 @@ public class LocationShareServiceImpl
           QLog.d("LocationShareServiceImpl", 2, new Object[] { "[callback] notifyUserSwitchPhone: invoked. ", " callback: ", localIShareLocationCallback.getClass() });
         }
       }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -138,18 +170,15 @@ public class LocationShareServiceImpl
     if (paramArrayOfByte != null) {}
     for (;;)
     {
-      long l;
-      int i;
       int j;
       try
       {
         localMsgBody.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = LocationHandler.a();
-        byte[] arrayOfByte = localMsgBody.bytes_ext_info.get().toByteArray();
+        paramArrayOfByte = localMsgBody.bytes_ext_info.get().toByteArray();
         qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
-        localPushExtInfo.mergeFrom(arrayOfByte);
-        l = localPushExtInfo.peer_uin.get();
-        i = localPushExtInfo.client_type.get();
+        localPushExtInfo.mergeFrom(paramArrayOfByte);
+        long l = localPushExtInfo.peer_uin.get();
+        int i = localPushExtInfo.client_type.get();
         j = localMsgBody.uint32_msg_type.get();
         if (QLog.isColorLevel()) {
           QLog.d("LocationShareServiceImpl", 2, new Object[] { "processC2C: invoked. ", " optType: ", Integer.valueOf(j) });
@@ -157,39 +186,33 @@ public class LocationShareServiceImpl
         if (j != 4) {
           break label313;
         }
-        paramArrayOfByte.notifyUI(5, true, new Object[] { Integer.valueOf(0), String.valueOf(l) });
+        LocationHandler.a().notifyUI(5, true, new Object[] { Integer.valueOf(0), String.valueOf(l) });
         ((ILocationShareService)localAppRuntime.getRuntimeService(ILocationShareService.class, "")).notifyStateNormalClose(0, l);
         LocationProtoUtil.a(localAppRuntime, 0, String.valueOf(l), false);
-        paramArrayOfByte.notifyUI(4, true, new Object[] { localMsgBody });
+        continue;
+        if (j == 5)
+        {
+          LocationHandler.a().notifyUI(6, true, new Object[] { Integer.valueOf(0), String.valueOf(l), Integer.valueOf(i) });
+          ((ILocationShareService)localAppRuntime.getRuntimeService(ILocationShareService.class, "")).notifyUserSwitchPhone(0, l);
+        }
+        else if (j == 3)
+        {
+          onDecodeC2cLbsUserQuitRoom(localAppRuntime, localMsgBody.uint64_oper_uin.get(), l);
+          continue;
+          LocationProtoUtil.a(localAppRuntime, 0, String.valueOf(l), true);
+        }
+        LocationHandler.a().notifyUI(4, true, new Object[] { localMsgBody });
         return;
       }
       catch (Exception paramArrayOfByte)
       {
-        label202:
         QLog.e("LocationShareServiceImpl", 1, "processC2C: failed. ", paramArrayOfByte);
-        return;
       }
-      LocationProtoUtil.a(localAppRuntime, 0, String.valueOf(l), true);
-      continue;
+      return;
       label313:
-      do
-      {
-        if (j == 5)
-        {
-          paramArrayOfByte.notifyUI(6, true, new Object[] { Integer.valueOf(0), String.valueOf(l), Integer.valueOf(i) });
-          ((ILocationShareService)localAppRuntime.getRuntimeService(ILocationShareService.class, "")).notifyUserSwitchPhone(0, l);
-          break;
-        }
-        if (j != 3) {
-          break;
-        }
-        onDecodeC2cLbsUserQuitRoom(localAppRuntime, localMsgBody.uint64_oper_uin.get(), l);
-        break;
-        return;
-        if (j == 1) {
-          break label202;
-        }
-      } while (j != 2);
+      if (j != 1) {
+        if (j != 2) {}
+      }
     }
   }
   
@@ -200,10 +223,15 @@ public class LocationShareServiceImpl
   
   public void removeErrorShareStateCallback(IShareLocationCallback paramIShareLocationCallback)
   {
-    synchronized (this.shareLocationCallbacks)
+    try
     {
       this.shareLocationCallbacks.remove(paramIShareLocationCallback);
       return;
+    }
+    finally
+    {
+      paramIShareLocationCallback = finally;
+      throw paramIShareLocationCallback;
     }
   }
   
@@ -212,25 +240,25 @@ public class LocationShareServiceImpl
     LocationHandler.a().b(paramOnUpdateUserLocationListener);
   }
   
-  public void requestOperateShareState(int paramInt1, int paramInt2, String paramString)
+  public void requestOperateRoom(int paramInt1, int paramInt2, String paramString)
   {
-    LocationHandler.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomOperateHandler.a(paramInt1, paramInt2, paramString);
+    LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomOperateHandler.a(paramInt1, paramInt2, paramString);
   }
   
-  public void requestUpdateShareState(int paramInt, String paramString)
+  public void requestQueryRoom(int paramInt, String paramString)
   {
-    LocationHandler.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomQueryHandler.a(paramInt, paramString);
+    LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomQueryHandler.a(paramInt, paramString);
   }
   
   public void stopLocationSharing(int paramInt, String paramString, boolean paramBoolean)
   {
     paramString = new LocationRoom.RoomKey(paramInt, paramString);
-    LocationHandler.a().a(paramString, paramBoolean);
+    LocationShareLocationManager.a().a(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.api.impl.LocationShareServiceImpl
  * JD-Core Version:    0.7.0.1
  */

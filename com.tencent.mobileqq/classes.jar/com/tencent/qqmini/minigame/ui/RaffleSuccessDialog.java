@@ -74,52 +74,53 @@ public class RaffleSuccessDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (this.isHorizontal) {}
-    for (paramBundle = LayoutInflater.from(this.context).inflate(R.layout.mini_sdk_raffle_success_dialog_landscape, null);; paramBundle = LayoutInflater.from(this.context).inflate(R.layout.mini_sdk_raffle_success_dialog, null))
-    {
-      setCancelable(false);
-      if (getWindow() != null)
-      {
-        getWindow().requestFeature(1);
-        getWindow().setBackgroundDrawableResource(17170445);
-      }
-      this.prizeLayout = ((RelativeLayout)paramBundle.findViewById(R.id.mini_sdk_raffle_success_prize_layout));
-      this.prizeLayout.setVisibility(0);
-      ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_logo_image)).setImageDrawable(this.logoDrawable);
-      ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_wishing_image)).setImageDrawable(this.wishingDrawable);
-      ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_prize_image)).setImageDrawable(this.prizeDrawable);
-      this.receiveButton = ((Button)paramBundle.findViewById(R.id.mini_sdk_raffle_success_receive_button));
-      this.receiveButton.setOnClickListener(new RaffleSuccessDialog.1(this));
-      ImageView localImageView = (ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_close_button);
-      localImageView.setOnClickListener(new RaffleSuccessDialog.2(this, localImageView));
-      this.afterReceiveLayout = ((RelativeLayout)paramBundle.findViewById(R.id.mini_sdk_raffle_success_after_receive_layout));
-      this.afterReceiveLayout.setVisibility(4);
-      ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_after_receive_image)).setImageDrawable(this.afterReceiveDrawable);
-      localImageView = (ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_go_back_main_image);
-      localImageView.setImageDrawable(this.goBackMainButtonDrawable);
-      localImageView.setOnClickListener(new RaffleSuccessDialog.3(this));
-      ((TextView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_again_text)).setOnClickListener(new RaffleSuccessDialog.4(this));
-      setContentView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
-      return;
+    if (this.isHorizontal) {
+      paramBundle = LayoutInflater.from(this.context).inflate(R.layout.mini_sdk_raffle_success_dialog_landscape, null);
+    } else {
+      paramBundle = LayoutInflater.from(this.context).inflate(R.layout.mini_sdk_raffle_success_dialog, null);
     }
+    setCancelable(false);
+    if (getWindow() != null)
+    {
+      getWindow().requestFeature(1);
+      getWindow().setBackgroundDrawableResource(17170445);
+    }
+    this.prizeLayout = ((RelativeLayout)paramBundle.findViewById(R.id.mini_sdk_raffle_success_prize_layout));
+    this.prizeLayout.setVisibility(0);
+    ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_logo_image)).setImageDrawable(this.logoDrawable);
+    ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_wishing_image)).setImageDrawable(this.wishingDrawable);
+    ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_prize_image)).setImageDrawable(this.prizeDrawable);
+    this.receiveButton = ((Button)paramBundle.findViewById(R.id.mini_sdk_raffle_success_receive_button));
+    this.receiveButton.setOnClickListener(new RaffleSuccessDialog.1(this));
+    ImageView localImageView = (ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_close_button);
+    localImageView.setOnClickListener(new RaffleSuccessDialog.2(this, localImageView));
+    this.afterReceiveLayout = ((RelativeLayout)paramBundle.findViewById(R.id.mini_sdk_raffle_success_after_receive_layout));
+    this.afterReceiveLayout.setVisibility(4);
+    ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_after_receive_image)).setImageDrawable(this.afterReceiveDrawable);
+    localImageView = (ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_go_back_main_image);
+    localImageView.setImageDrawable(this.goBackMainButtonDrawable);
+    localImageView.setOnClickListener(new RaffleSuccessDialog.3(this));
+    ((TextView)paramBundle.findViewById(R.id.mini_sdk_raffle_success_again_text)).setOnClickListener(new RaffleSuccessDialog.4(this));
+    setContentView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
   }
   
   public boolean setDrawable(Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, Drawable paramDrawable4, Drawable paramDrawable5)
   {
-    if ((paramDrawable3 == null) || (paramDrawable4 == null)) {
-      return false;
+    if ((paramDrawable3 != null) && (paramDrawable4 != null))
+    {
+      this.logoDrawable = paramDrawable1;
+      this.wishingDrawable = paramDrawable2;
+      this.prizeDrawable = paramDrawable3;
+      this.afterReceiveDrawable = paramDrawable4;
+      this.goBackMainButtonDrawable = paramDrawable5;
+      return true;
     }
-    this.logoDrawable = paramDrawable1;
-    this.wishingDrawable = paramDrawable2;
-    this.prizeDrawable = paramDrawable3;
-    this.afterReceiveDrawable = paramDrawable4;
-    this.goBackMainButtonDrawable = paramDrawable5;
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.RaffleSuccessDialog
  * JD-Core Version:    0.7.0.1
  */

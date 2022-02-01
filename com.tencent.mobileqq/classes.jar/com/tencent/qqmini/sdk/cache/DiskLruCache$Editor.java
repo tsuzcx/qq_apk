@@ -7,8 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 
 public final class DiskLruCache$Editor
 {
@@ -20,12 +18,12 @@ public final class DiskLruCache$Editor
   private DiskLruCache$Editor(DiskLruCache paramDiskLruCache, DiskLruCache.Entry paramEntry)
   {
     this.entry = paramEntry;
-    if (DiskLruCache.Entry.access$600(paramEntry)) {}
-    for (paramDiskLruCache = null;; paramDiskLruCache = new boolean[DiskLruCache.access$1800(paramDiskLruCache)])
-    {
-      this.written = paramDiskLruCache;
-      return;
+    if (DiskLruCache.Entry.access$600(paramEntry)) {
+      paramDiskLruCache = null;
+    } else {
+      paramDiskLruCache = new boolean[DiskLruCache.access$1800(paramDiskLruCache)];
     }
+    this.written = paramDiskLruCache;
   }
   
   public void abort()
@@ -51,12 +49,11 @@ public final class DiskLruCache$Editor
       DiskLruCache.access$2200(this.this$0, this, false);
       this.this$0.remove(DiskLruCache.Entry.access$1100(this.entry));
     }
-    for (;;)
+    else
     {
-      this.committed = true;
-      return;
       DiskLruCache.access$2200(this.this$0, this, true);
     }
+    this.committed = true;
   }
   
   public String getString(int paramInt)
@@ -72,86 +69,130 @@ public final class DiskLruCache$Editor
   {
     synchronized (this.this$0)
     {
-      if (DiskLruCache.Entry.access$700(this.entry) != this) {
-        throw new IllegalStateException();
+      if (DiskLruCache.Entry.access$700(this.entry) == this) {
+        if (!DiskLruCache.Entry.access$600(this.entry)) {
+          return null;
+        }
       }
-    }
-    if (!DiskLruCache.Entry.access$600(this.entry)) {
+      try
+      {
+        FileInputStream localFileInputStream = new FileInputStream(this.entry.getCleanFile(paramInt));
+        return localFileInputStream;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        label52:
+        break label52;
+      }
       return null;
+      throw new IllegalStateException();
     }
-    try
-    {
-      FileInputStream localFileInputStream = new FileInputStream(this.entry.getCleanFile(paramInt));
-      return localFileInputStream;
-    }
-    catch (FileNotFoundException localFileNotFoundException) {}
-    return null;
   }
   
   public OutputStream newOutputStream(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= DiskLruCache.access$1800(this.this$0))) {
-      throw new IllegalArgumentException("Expected index " + paramInt + " to be greater than 0 and less than the maximum value count of " + DiskLruCache.access$1800(this.this$0));
-    }
-    synchronized (this.this$0)
+    if ((paramInt >= 0) && (paramInt < DiskLruCache.access$1800(this.this$0)))
     {
-      if (DiskLruCache.Entry.access$700(this.entry) != this) {
-        throw new IllegalStateException();
-      }
-    }
-    if (!DiskLruCache.Entry.access$600(this.entry)) {
-      this.written[paramInt] = true;
-    }
-    File localFile = this.entry.getDirtyFile(paramInt);
-    try
-    {
-      Object localObject2 = new FileOutputStream(localFile);
-      localObject2 = new DiskLruCache.Editor.FaultHidingOutputStream(this, (OutputStream)localObject2, null);
-      return localObject2;
-    }
-    catch (FileNotFoundException localFileNotFoundException1)
-    {
-      for (;;)
+      synchronized (this.this$0)
       {
+        File localFile;
+        if (DiskLruCache.Entry.access$700(this.entry) == this)
+        {
+          if (!DiskLruCache.Entry.access$600(this.entry)) {
+            this.written[paramInt] = true;
+          }
+          localFile = this.entry.getDirtyFile(paramInt);
+        }
+        try
+        {
+          localObject1 = new FileOutputStream(localFile);
+        }
+        catch (FileNotFoundException localFileNotFoundException1)
+        {
+          Object localObject1;
+          label73:
+          break label73;
+        }
         DiskLruCache.access$1900(this.this$0).mkdirs();
         try
         {
-          FileOutputStream localFileOutputStream = new FileOutputStream(localFile);
+          localObject1 = new FileOutputStream(localFile);
+          localObject1 = new DiskLruCache.Editor.FaultHidingOutputStream(this, (OutputStream)localObject1, null);
+          return localObject1;
         }
         catch (FileNotFoundException localFileNotFoundException2)
         {
-          OutputStream localOutputStream = DiskLruCache.access$2000();
-          return localOutputStream;
+          label109:
+          StringBuilder localStringBuilder;
+          break label109;
         }
+        localObject1 = DiskLruCache.access$2000();
+        return localObject1;
+        throw new IllegalStateException();
       }
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Expected index ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" to be greater than 0 and less than the maximum value count of ");
+      localStringBuilder.append(DiskLruCache.access$1800(this.this$0));
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
   }
   
+  /* Error */
   public void set(int paramInt, String paramString)
   {
-    try
-    {
-      OutputStreamWriter localOutputStreamWriter = new OutputStreamWriter(newOutputStream(paramInt), DiskLruCacheUtil.UTF_8);
-      DiskLruCacheUtil.closeQuietly(localOutputStreamWriter);
-    }
-    finally
-    {
-      try
-      {
-        localOutputStreamWriter.write(paramString);
-        DiskLruCacheUtil.closeQuietly(localOutputStreamWriter);
-        return;
-      }
-      finally {}
-      paramString = finally;
-      localOutputStreamWriter = null;
-    }
-    throw paramString;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: new 151	java/io/OutputStreamWriter
+    //   6: dup
+    //   7: aload_0
+    //   8: iload_1
+    //   9: invokevirtual 153	com/tencent/qqmini/sdk/cache/DiskLruCache$Editor:newOutputStream	(I)Ljava/io/OutputStream;
+    //   12: getstatic 159	com/tencent/qqmini/sdk/cache/DiskLruCacheUtil:UTF_8	Ljava/nio/charset/Charset;
+    //   15: invokespecial 162	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/nio/charset/Charset;)V
+    //   18: astore_3
+    //   19: aload_3
+    //   20: aload_2
+    //   21: invokevirtual 167	java/io/Writer:write	(Ljava/lang/String;)V
+    //   24: aload_3
+    //   25: invokestatic 171	com/tencent/qqmini/sdk/cache/DiskLruCacheUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   28: return
+    //   29: astore 4
+    //   31: aload_3
+    //   32: astore_2
+    //   33: aload 4
+    //   35: astore_3
+    //   36: goto +7 -> 43
+    //   39: astore_3
+    //   40: aload 4
+    //   42: astore_2
+    //   43: aload_2
+    //   44: invokestatic 171	com/tencent/qqmini/sdk/cache/DiskLruCacheUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   47: aload_3
+    //   48: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	49	0	this	Editor
+    //   0	49	1	paramInt	int
+    //   0	49	2	paramString	String
+    //   18	18	3	localObject1	Object
+    //   39	9	3	localObject2	Object
+    //   1	1	4	localObject3	Object
+    //   29	12	4	localObject4	Object
+    // Exception table:
+    //   from	to	target	type
+    //   19	24	29	finally
+    //   3	19	39	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.cache.DiskLruCache.Editor
  * JD-Core Version:    0.7.0.1
  */

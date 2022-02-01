@@ -14,10 +14,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.common.app.BaseProtocolCoder;
-import com.tencent.mobileqq.activity.recent.msgbox.FilterMsgBoxUtil;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxService;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.net.utils.MsfPullConfigUtil;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.msf.service.protocol.push.SvcReqRegister;
 import com.tencent.msf.service.protocol.push.SvcRespRegister;
@@ -25,7 +27,6 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
 import mqq.app.Constants.Key;
 import mqq.app.MobileQQ;
 
@@ -45,23 +46,29 @@ public class RegisterProxySvcPackService
     localSvcRequestRegisterNew.cDisgroupMsgFilter = 1;
     localSvcRequestRegisterNew.ulRequestOptional = l;
     localSvcRequestRegisterNew.cSubCmd = 0;
-    localSvcRequestRegisterNew.ulLastFilterListTime = FilterMsgBoxUtil.a();
+    localSvcRequestRegisterNew.ulLastFilterListTime = ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getUpdateTime();
     if (i == 3)
     {
       localSvcRequestRegisterNew.cOptGroupMsgFlag = 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("SvcRequestRegisterNew", 2, "Type = " + i + ", req.cOptGroupMsgFlag = " + localSvcRequestRegisterNew.cOptGroupMsgFlag);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Type = ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(", req.cOptGroupMsgFlag = ");
+        localStringBuilder.append(localSvcRequestRegisterNew.cOptGroupMsgFlag);
+        QLog.d("SvcRequestRegisterNew", 2, localStringBuilder.toString());
       }
     }
-    if ((0x10 & l) == 16L) {
+    if ((l & 0x10) == 16L) {
       localSvcRequestRegisterNew.regist = a();
     }
-    if ((0x40 & l) == 64L)
+    if ((l & 0x40) == 64L)
     {
       localSvcRequestRegisterNew.c2cmsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a();
       paramUniPacket.put("req_PbOffMsg", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a());
     }
-    if (((0x4 & l) == 4L) || ((0x80 & l) == 128L))
+    if (((l & 0x4) == 4L) || ((l & 0x80) == 128L))
     {
       localSvcRequestRegisterNew.groupmsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(i);
       if (localSvcRequestRegisterNew.groupmsg == null)
@@ -70,34 +77,46 @@ public class RegisterProxySvcPackService
         localSvcRequestRegisterNew.ulRequestOptional &= 0xFFFFFF7F;
       }
     }
-    if (((0x8 & l) == 8L) || ((l & 0x100) == 256L))
-    {
-      if (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("RegPrxySvc.infoLogin")) {
-        break label452;
-      }
-      localSvcRequestRegisterNew.disgroupmsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a();
-    }
-    for (;;)
-    {
-      if (i == 1) {
-        localSvcRequestRegisterNew.cGroupMask = 2;
-      }
-      localSvcRequestRegisterNew.uEndSeq = j;
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxySvcPackService", 2, "requestMsgRegister , type = " + i + " isGetPassword = " + bool);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SvcRequestRegisterNew", 2, "cDisgroupMsgFilter:" + localSvcRequestRegisterNew.cDisgroupMsgFilter + ",NoticeEndSeq:" + j + " , ulRequestOptional : " + localSvcRequestRegisterNew.ulRequestOptional);
-      }
-      return localSvcRequestRegisterNew;
-      label452:
-      localSvcRequestRegisterNew.confmsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(i);
-      if (localSvcRequestRegisterNew.confmsg == null)
+    if (((l & 0x8) == 8L) || ((l & 0x100) == 256L)) {
+      if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("RegPrxySvc.infoLogin"))
       {
-        localSvcRequestRegisterNew.ulRequestOptional &= 0xFFFFFFF7;
-        localSvcRequestRegisterNew.ulRequestOptional &= 0xFFFFFEFF;
+        localSvcRequestRegisterNew.disgroupmsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a();
+      }
+      else
+      {
+        localSvcRequestRegisterNew.confmsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(i);
+        if (localSvcRequestRegisterNew.confmsg == null)
+        {
+          localSvcRequestRegisterNew.ulRequestOptional &= 0xFFFFFFF7;
+          localSvcRequestRegisterNew.ulRequestOptional &= 0xFFFFFEFF;
+        }
       }
     }
+    if (i == 1) {
+      localSvcRequestRegisterNew.cGroupMask = 2;
+    }
+    localSvcRequestRegisterNew.uEndSeq = j;
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("requestMsgRegister , type = ");
+      paramToServiceMsg.append(i);
+      paramToServiceMsg.append(" isGetPassword = ");
+      paramToServiceMsg.append(bool);
+      QLog.d("RegisterProxySvcPackService", 2, paramToServiceMsg.toString());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("cDisgroupMsgFilter:");
+      paramToServiceMsg.append(localSvcRequestRegisterNew.cDisgroupMsgFilter);
+      paramToServiceMsg.append(",NoticeEndSeq:");
+      paramToServiceMsg.append(j);
+      paramToServiceMsg.append(" , ulRequestOptional : ");
+      paramToServiceMsg.append(localSvcRequestRegisterNew.ulRequestOptional);
+      QLog.d("SvcRequestRegisterNew", 2, paramToServiceMsg.toString());
+    }
+    return localSvcRequestRegisterNew;
   }
   
   private SvcReqRegister a()
@@ -106,33 +125,45 @@ public class RegisterProxySvcPackService
     localSvcReqRegister.lUin = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     localSvcReqRegister.lBid = 7L;
     localSvcReqRegister.cConnType = 0;
-    AppRuntime.Status localStatus = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineStatus();
-    switch (RegisterProxySvcPackService.1.a[localStatus.ordinal()])
+    Object localObject = ((IOnlineStatusService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IOnlineStatusService.class)).getOnlineStatus();
+    int i = RegisterProxySvcPackService.1.a[localObject.ordinal()];
+    if (i != 1)
     {
-    default: 
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurLoginStatus()) {
-        break;
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i == 4) {
+            localSvcReqRegister.iStatus = 41;
+          }
+        }
+        else {
+          localSvcReqRegister.iStatus = 31;
+        }
+      }
+      else {
+        localSvcReqRegister.iStatus = 21;
       }
     }
-    for (int i = 1;; i = 0)
-    {
-      localSvcReqRegister.bKikPC = ((byte)i);
-      localSvcReqRegister.bKikWeak = 0;
-      localSvcReqRegister.timeStamp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong(Constants.Key.SvcRegister_timeStamp.toString(), 0L);
-      localSvcReqRegister.iLargeSeq = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).getInt("GetFrdListReq_seq", 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.contacts.", 2, " makeSvcReqRegisterPkg " + localSvcReqRegister.iStatus + ", " + localSvcReqRegister.bKikPC + ", " + localSvcReqRegister.timeStamp);
-      }
-      return localSvcReqRegister;
+    else {
       localSvcReqRegister.iStatus = 11;
-      break;
-      localSvcReqRegister.iStatus = 21;
-      break;
-      localSvcReqRegister.iStatus = 31;
-      break;
-      localSvcReqRegister.iStatus = 41;
-      break;
     }
+    localSvcReqRegister.bKikPC = ((byte)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurLoginStatus());
+    localSvcReqRegister.bKikWeak = 0;
+    localSvcReqRegister.timeStamp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong(Constants.Key.SvcRegister_timeStamp.toString(), 0L);
+    localSvcReqRegister.iLargeSeq = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).getInt("GetFrdListReq_seq", 0);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" makeSvcReqRegisterPkg ");
+      ((StringBuilder)localObject).append(localSvcReqRegister.iStatus);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(localSvcReqRegister.bKikPC);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(localSvcReqRegister.timeStamp);
+      QLog.d("Q.contacts.", 2, ((StringBuilder)localObject).toString());
+    }
+    return localSvcReqRegister;
   }
   
   private Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -154,17 +185,32 @@ public class RegisterProxySvcPackService
     long l1 = paramToServiceMsg.extraData.getLong("requestOptional");
     int i = paramToServiceMsg.extraData.getInt("type");
     int j = paramToServiceMsg.extraData.getInt("endSeq");
+    long l2 = paramToServiceMsg.extraData.getLong("ulReportFlag");
     paramToServiceMsg = new SvcRequestRegisterNew();
     paramToServiceMsg.ulRequestOptional = l1;
     paramToServiceMsg.cDisgroupMsgFilter = 1;
     paramToServiceMsg.uEndSeq = j;
-    paramToServiceMsg.ulLastFilterListTime = FilterMsgBoxUtil.a();
-    long l2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().c();
+    paramToServiceMsg.ulLastFilterListTime = ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getUpdateTime();
+    paramToServiceMsg.ulReportFlag = l2;
+    l2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().c();
     if (l2 > 0L) {
       paramToServiceMsg.ulSyncTime = l2;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterProxySvcPackService", 2, "requestNewRegister , type = " + i + " ,ulRequestOptional = " + paramToServiceMsg.ulRequestOptional + " ,cDisgroupMsgFilter = " + paramToServiceMsg.cDisgroupMsgFilter + " ,NoticeEndSeq = " + paramToServiceMsg.uEndSeq + " ,ulSyncTime = " + paramToServiceMsg.ulSyncTime);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("requestNewRegister , type = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ,ulRequestOptional = ");
+      localStringBuilder.append(paramToServiceMsg.ulRequestOptional);
+      localStringBuilder.append(" ,cDisgroupMsgFilter = ");
+      localStringBuilder.append(paramToServiceMsg.cDisgroupMsgFilter);
+      localStringBuilder.append(" ,NoticeEndSeq = ");
+      localStringBuilder.append(paramToServiceMsg.uEndSeq);
+      localStringBuilder.append(" ,ulSyncTime = ");
+      localStringBuilder.append(paramToServiceMsg.ulSyncTime);
+      QLog.d("RegisterProxySvcPackService", 2, localStringBuilder.toString());
     }
     if (i == 1) {
       paramToServiceMsg.cGroupMask = 2;
@@ -172,11 +218,17 @@ public class RegisterProxySvcPackService
     if (i == 3)
     {
       paramToServiceMsg.cOptGroupMsgFlag = 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("SvcRequestRegisterNew", 2, "Type = " + i + ", req.cOptGroupMsgFlag = " + paramToServiceMsg.cOptGroupMsgFlag);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Type = ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(", req.cOptGroupMsgFlag = ");
+        localStringBuilder.append(paramToServiceMsg.cOptGroupMsgFlag);
+        QLog.d("SvcRequestRegisterNew", 2, localStringBuilder.toString());
       }
     }
-    if ((0x10 & l1) == 16L) {
+    if ((l1 & 0x10) == 16L) {
       paramToServiceMsg.regist = a();
     }
     if ((l1 & 0x40) == 64L)
@@ -194,16 +246,16 @@ public class RegisterProxySvcPackService
     if (QLog.isColorLevel()) {
       QLog.d("RegisterProxySvcPackService", 2, "decodeSvcResponseIpwdStat() ");
     }
-    paramToServiceMsg = paramFromServiceMsg.getWupBuffer();
-    paramFromServiceMsg = (RespondHeader)decodePacket(paramToServiceMsg, "RespondHeader", new RespondHeader());
-    paramToServiceMsg = (RespondQueryIPwdStat)decodePacket(paramToServiceMsg, "RespondQueryIPwdStat", new RespondQueryIPwdStat());
-    if (paramFromServiceMsg == null) {
-      paramToServiceMsg = null;
+    paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+    paramToServiceMsg = (RespondHeader)decodePacket(paramFromServiceMsg, "RespondHeader", new RespondHeader());
+    paramFromServiceMsg = (RespondQueryIPwdStat)decodePacket(paramFromServiceMsg, "RespondQueryIPwdStat", new RespondQueryIPwdStat());
+    if (paramToServiceMsg == null) {
+      return null;
     }
-    while (paramFromServiceMsg.result == 0) {
-      return paramToServiceMsg;
+    if (paramToServiceMsg.result != 0) {
+      return null;
     }
-    return null;
+    return paramFromServiceMsg;
   }
   
   private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -218,20 +270,26 @@ public class RegisterProxySvcPackService
   
   private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    SvcRespRegister localSvcRespRegister = null;
     if ((paramToServiceMsg.extraData.getLong("requestOptional", 0L) & 0x10) == 16L) {
-      localSvcRespRegister = (SvcRespRegister)decodePacket(paramFromServiceMsg.getWupBuffer(), "SvcRespRegister", new SvcRespRegister());
+      paramToServiceMsg = (SvcRespRegister)decodePacket(paramFromServiceMsg.getWupBuffer(), "SvcRespRegister", new SvcRespRegister());
+    } else {
+      paramToServiceMsg = null;
     }
-    if (localSvcRespRegister != null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyInfoNew resp.strResult =" + localSvcRespRegister.strResult);
+    if (paramToServiceMsg != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeRegisterProxyInfoNew resp.strResult =");
+        paramFromServiceMsg.append(paramToServiceMsg.strResult);
+        QLog.i("RegisterProxySvcPackService", 2, paramFromServiceMsg.toString());
+        return paramToServiceMsg;
       }
     }
-    while (!QLog.isColorLevel()) {
-      return localSvcRespRegister;
+    else if (QLog.isColorLevel()) {
+      QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyTroopMsg null");
     }
-    QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyTroopMsg null");
-    return localSvcRespRegister;
+    return paramToServiceMsg;
   }
   
   private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -245,73 +303,89 @@ public class RegisterProxySvcPackService
   private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     paramToServiceMsg = (SvcResponsePullGroupMsgSeq)decodePacket(paramFromServiceMsg.getWupBuffer(), "resp_PullGroupMsgSeq", new SvcResponsePullGroupMsgSeq());
-    if (paramToServiceMsg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyTroopSeq cReplyCode = " + paramToServiceMsg.cReplyCode);
+    if (paramToServiceMsg != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeRegisterProxyTroopSeq cReplyCode = ");
+        paramFromServiceMsg.append(paramToServiceMsg.cReplyCode);
+        QLog.i("RegisterProxySvcPackService", 2, paramFromServiceMsg.toString());
+        return paramToServiceMsg;
       }
     }
-    while (!QLog.isColorLevel()) {
-      return paramToServiceMsg;
+    else if (QLog.isColorLevel()) {
+      QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyTroopSeq null");
     }
-    QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyTroopSeq null");
     return paramToServiceMsg;
   }
   
   private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    boolean bool = true;
     paramUniPacket.setServantName("RegPrxySvc");
     SvcRequestRegisterNew localSvcRequestRegisterNew = b(paramToServiceMsg, paramUniPacket);
     paramUniPacket.put("req_OffMsg", localSvcRequestRegisterNew);
     paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
-    if (localSvcRequestRegisterNew.ulRequestOptional == 0L) {
-      bool = false;
-    }
-    return bool;
+    return localSvcRequestRegisterNew.ulRequestOptional != 0L;
   }
   
   private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     paramToServiceMsg = (RegisterPushNotice)decodePacket(paramFromServiceMsg.getWupBuffer(), "RegisterPushNotice", new RegisterPushNotice());
-    if (paramToServiceMsg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyTroopSeq cReplyCode = " + paramToServiceMsg.ulTimeOutFlag);
+    if (paramToServiceMsg != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeRegisterProxyTroopSeq cReplyCode = ");
+        paramFromServiceMsg.append(paramToServiceMsg.ulTimeOutFlag);
+        QLog.i("RegisterProxySvcPackService", 2, paramFromServiceMsg.toString());
+        return paramToServiceMsg;
       }
     }
-    while (!QLog.isColorLevel()) {
-      return paramToServiceMsg;
+    else if (QLog.isColorLevel()) {
+      QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyTroopSeq null");
     }
-    QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyTroopSeq null");
     return paramToServiceMsg;
   }
   
   private Object f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     paramToServiceMsg = (SvcResponsePullDisMsgSeq)decodePacket(paramFromServiceMsg.getWupBuffer(), "resp_PullDisMsgSeq", new SvcResponsePullDisMsgSeq());
-    if (paramToServiceMsg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyDisMsg cReplyCode = " + paramToServiceMsg.cReplyCode);
+    if (paramToServiceMsg != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeRegisterProxyDisMsg cReplyCode = ");
+        paramFromServiceMsg.append(paramToServiceMsg.cReplyCode);
+        QLog.i("RegisterProxySvcPackService", 2, paramFromServiceMsg.toString());
+        return paramToServiceMsg;
       }
     }
-    while (!QLog.isColorLevel()) {
-      return paramToServiceMsg;
+    else if (QLog.isColorLevel()) {
+      QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyDisMsg null");
     }
-    QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyDisMsg null");
     return paramToServiceMsg;
   }
   
   private Object g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     paramToServiceMsg = (SvcResponsePullDisGroupSeq)decodePacket(paramFromServiceMsg.getWupBuffer(), "resp_PullDisGroupSeq", new SvcResponsePullDisGroupSeq());
-    if (paramToServiceMsg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyDisGroupSeq cReplyCode = " + paramToServiceMsg.cReplyCode);
+    if (paramToServiceMsg != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeRegisterProxyDisGroupSeq cReplyCode = ");
+        paramFromServiceMsg.append(paramToServiceMsg.cReplyCode);
+        QLog.i("RegisterProxySvcPackService", 2, paramFromServiceMsg.toString());
+        return paramToServiceMsg;
       }
     }
-    while (!QLog.isColorLevel()) {
-      return paramToServiceMsg;
+    else if (QLog.isColorLevel()) {
+      QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyDisGroupSeq null");
     }
-    QLog.i("RegisterProxySvcPackService", 2, "decodeRegisterProxyDisGroupSeq null");
     return paramToServiceMsg;
   }
   
@@ -327,36 +401,37 @@ public class RegisterProxySvcPackService
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ("RegPrxySvc.infoAndroid".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {}
-    do
-    {
-      do
-      {
-        return null;
-        if ("RegPrxySvc.PushParam".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-          return a(paramToServiceMsg, paramFromServiceMsg);
-        }
-      } while ("RegPrxySvc.PbGetMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()));
-      if ("RegPrxySvc.GetMsgV2".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-        return h(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if ("RegPrxySvc.PullGroupMsgSeq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-        return d(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if ("RegPrxySvc.PullDisMsgSeq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-        return f(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if ("RegPrxySvc.PullDisGroupSeq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-        return g(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if ("RegPrxySvc.infoLogin".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-        return c(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if ("RegPrxySvc.NoticeEnd".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-        return e(paramToServiceMsg, paramFromServiceMsg);
-      }
-    } while (!"RegPrxySvc.QueryIpwdStat".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()));
-    return b(paramToServiceMsg, paramFromServiceMsg);
+    if ("RegPrxySvc.infoAndroid".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      return null;
+    }
+    if ("RegPrxySvc.PushParam".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      return a(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("RegPrxySvc.PbGetMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      return null;
+    }
+    if ("RegPrxySvc.GetMsgV2".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      return h(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("RegPrxySvc.PullGroupMsgSeq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      return d(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("RegPrxySvc.PullDisMsgSeq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      return f(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("RegPrxySvc.PullDisGroupSeq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      return g(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("RegPrxySvc.infoLogin".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      return c(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("RegPrxySvc.NoticeEnd".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      return e(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("RegPrxySvc.QueryIpwdStat".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      return b(paramToServiceMsg, paramFromServiceMsg);
+    }
+    return null;
   }
   
   public boolean encodeReqMsg(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -381,7 +456,7 @@ public class RegisterProxySvcPackService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.RegisterProxySvcPack.RegisterProxySvcPackService
  * JD-Core Version:    0.7.0.1
  */

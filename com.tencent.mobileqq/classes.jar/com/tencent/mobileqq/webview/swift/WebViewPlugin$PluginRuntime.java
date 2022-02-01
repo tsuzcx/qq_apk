@@ -3,6 +3,7 @@ package com.tencent.mobileqq.webview.swift;
 import android.app.Activity;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebViewProviderInterface;
 import java.lang.ref.WeakReference;
 import mqq.app.AppRuntime;
 
@@ -30,8 +31,9 @@ public class WebViewPlugin$PluginRuntime
   
   public CustomWebView a()
   {
-    if (this.a != null) {
-      return (CustomWebView)this.a.get();
+    WeakReference localWeakReference = this.a;
+    if (localWeakReference != null) {
+      return (CustomWebView)localWeakReference.get();
     }
     return null;
   }
@@ -44,16 +46,27 @@ public class WebViewPlugin$PluginRuntime
   
   public WebUiBaseInterface a(Activity paramActivity)
   {
-    if (this.d != null) {
-      return (WebUiBaseInterface)this.d.get();
+    paramActivity = this.d;
+    if (paramActivity != null) {
+      return (WebUiBaseInterface)paramActivity.get();
     }
     return null;
   }
   
   public WebViewProvider a()
   {
-    if (this.e != null) {
-      return (WebViewProvider)this.e.get();
+    WeakReference localWeakReference = this.e;
+    if (localWeakReference != null) {
+      return (WebViewProvider)localWeakReference.get();
+    }
+    return null;
+  }
+  
+  public WebUiUtils.WebViewProviderInterface a()
+  {
+    WeakReference localWeakReference = this.d;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && ((this.d.get() instanceof WebUiUtils.WebViewProviderInterface))) {
+      return (WebUiUtils.WebViewProviderInterface)this.d.get();
     }
     return null;
   }
@@ -81,7 +94,7 @@ public class WebViewPlugin$PluginRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime
  * JD-Core Version:    0.7.0.1
  */

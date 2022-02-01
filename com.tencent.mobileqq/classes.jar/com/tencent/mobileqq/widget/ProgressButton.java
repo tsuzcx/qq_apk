@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.support.annotation.ColorInt;
@@ -45,43 +46,45 @@ public class ProgressButton
   private void a()
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    int i = getResources().getColorStateList(2131167068).getDefaultColor();
-    if (this.jdField_b_of_type_Int == -1)
+    int i = getResources().getColorStateList(2131167091).getDefaultColor();
+    int j = this.jdField_b_of_type_Int;
+    if (j == -1)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(j);
   }
   
   public ClipDrawable a(@ColorInt int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable != null) {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
+    if (localObject != null) {
+      return localObject;
     }
     float f = ViewUtils.a(50.0F);
-    ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
-    localShapeDrawable.getPaint().setColor(paramInt);
-    return new ClipDrawable(localShapeDrawable, 8388611, 1);
+    localObject = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
+    ((ShapeDrawable)localObject).getPaint().setColor(paramInt);
+    return new ClipDrawable((Drawable)localObject, 8388611, 1);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable != null)
+    ClipDrawable localClipDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
+    if (localClipDrawable != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setBounds(0, 0, getWidth(), getHeight());
+      localClipDrawable.setBounds(0, 0, getWidth(), getHeight());
       this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel((int)(10000 / this.jdField_a_of_type_Int * this.jdField_b_of_type_Float));
       this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.draw(paramCanvas);
     }
-    for (;;)
+    else
     {
-      super.onDraw(paramCanvas);
-      return;
       if (this.jdField_a_of_type_Float == 0.0F) {
         this.jdField_a_of_type_Float = (getWidth() / this.jdField_a_of_type_Int);
       }
       paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, this.jdField_a_of_type_Float * this.jdField_b_of_type_Float, getHeight()), 5.0F, 5.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
+    super.onDraw(paramCanvas);
   }
   
   public void setMacProgress(int paramInt)
@@ -108,7 +111,7 @@ public class ProgressButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProgressButton
  * JD-Core Version:    0.7.0.1
  */

@@ -28,15 +28,20 @@ final class MiniAppLauncher$1
         localMiniAppConfig.launchParam.shareTicket = paramJSONObject;
         MainPageFragment.launch(BaseActivity.sTopActivity, localMiniAppConfig, localMiniAppInfo.verType);
       }
-      return;
     }
-    AppBrandTask.runTaskOnUiThread(new MiniAppLauncher.1.1(this, paramJSONObject));
-    QLog.e("MiniAppLauncher", 1, "jumpToDetailPage: launch failed with url " + this.val$url);
+    else
+    {
+      AppBrandTask.runTaskOnUiThread(new MiniAppLauncher.1.1(this, paramJSONObject));
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("jumpToDetailPage: launch failed with url ");
+      paramJSONObject.append(this.val$url);
+      QLog.e("MiniAppLauncher", 1, paramJSONObject.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppLauncher.1
  * JD-Core Version:    0.7.0.1
  */

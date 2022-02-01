@@ -66,53 +66,67 @@ public final class LunarWidgetInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.animal, 0);
-    if (this.lunar_m != null) {
-      paramJceOutputStream.write(this.lunar_m, 1);
+    String str = this.lunar_m;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.lunar_d != null) {
-      paramJceOutputStream.write(this.lunar_d, 2);
+    str = this.lunar_d;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.lunar_ex != null) {
-      paramJceOutputStream.write(this.lunar_ex, 3);
+    str = this.lunar_ex;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.solar != null) {
-      paramJceOutputStream.write(this.solar, 4);
+    str = this.solar;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.week != null) {
-      paramJceOutputStream.write(this.week, 5);
+    str = this.week;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.yi != null) {
-      paramJceOutputStream.write(this.yi, 6);
+    str = this.yi;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.ji != null) {
-      paramJceOutputStream.write(this.ji, 7);
+    str = this.ji;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.chong != null) {
-      paramJceOutputStream.write(this.chong, 8);
+    str = this.chong;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.sha != null) {
-      paramJceOutputStream.write(this.sha, 9);
+    str = this.sha;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.cheng != null) {
-      paramJceOutputStream.write(this.cheng, 10);
+    str = this.cheng;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.zhengchong != null) {
-      paramJceOutputStream.write(this.zhengchong, 11);
+    str = this.zhengchong;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.taishen != null) {
-      paramJceOutputStream.write(this.taishen, 12);
+    str = this.taishen;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
-    if (this.yiex != null) {
-      paramJceOutputStream.write(this.yiex, 13);
+    str = this.yiex;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
-    if (this.jiex != null) {
-      paramJceOutputStream.write(this.jiex, 14);
+    str = this.jiex;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_WIDGET.LunarWidgetInfo
  * JD-Core Version:    0.7.0.1
  */

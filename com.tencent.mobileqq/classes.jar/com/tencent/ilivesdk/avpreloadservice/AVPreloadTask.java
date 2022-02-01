@@ -30,7 +30,7 @@ public class AVPreloadTask
   private boolean jdField_d_of_type_Boolean;
   private int jdField_e_of_type_Int;
   private long jdField_e_of_type_Long;
-  private int jdField_f_of_type_Int = 15;
+  private int jdField_f_of_type_Int = 60;
   private long jdField_f_of_type_Long;
   private int jdField_g_of_type_Int;
   private long jdField_g_of_type_Long;
@@ -38,6 +38,7 @@ public class AVPreloadTask
   private long i;
   private long j;
   private long k;
+  private long l = 0L;
   
   public int a()
   {
@@ -46,7 +47,8 @@ public class AVPreloadTask
   
   public int a(AVPreloadTask paramAVPreloadTask)
   {
-    return paramAVPreloadTask.jdField_a_of_type_Int - paramAVPreloadTask.jdField_a_of_type_Int;
+    int m = paramAVPreloadTask.jdField_a_of_type_Int;
+    return m - m;
   }
   
   public long a()
@@ -74,10 +76,15 @@ public class AVPreloadTask
   
   public void a()
   {
-    Log.d("AVPreload|PreloadTask", hashCode() + " clear--isBitmapUsed=" + this.jdField_d_of_type_Boolean);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(hashCode());
+    ((StringBuilder)localObject).append(" clear--isBitmapUsed=");
+    ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+    Log.d("AVPreload|PreloadTask", ((StringBuilder)localObject).toString());
     if (!this.jdField_d_of_type_Boolean)
     {
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+      localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
         this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
         Log.d("AVPreload|PreloadTask", "clear--preFirstFrameBitmap.recycle()");
@@ -98,6 +105,17 @@ public class AVPreloadTask
   
   public void a(Bitmap paramBitmap)
   {
+    if (!this.jdField_d_of_type_Boolean)
+    {
+      Log.d("AVPreload|PreloadTask", "clear--setPreFirstFrameBitmap.recycle()");
+      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        Log.d("AVPreload|PreloadTask", "clear--setPreFirstFrameBitmap finished");
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
@@ -138,10 +156,12 @@ public class AVPreloadTask
   
   public String b()
   {
-    if (this.jdField_b_of_type_JavaLangString == null) {
-      return "";
+    String str2 = this.jdField_b_of_type_JavaLangString;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return this.jdField_b_of_type_JavaLangString;
+    return str1;
   }
   
   public void b(int paramInt)
@@ -336,10 +356,20 @@ public class AVPreloadTask
   {
     this.jdField_b_of_type_Long = paramLong;
   }
+  
+  public long l()
+  {
+    return this.l;
+  }
+  
+  public void l(long paramLong)
+  {
+    this.l = paramLong;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadTask
  * JD-Core Version:    0.7.0.1
  */

@@ -98,20 +98,20 @@ public class WatchTogetherMediaPlayCtrl
   
   private int a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return 0;
-      paramString = paramString.split("x");
-    } while ((paramString == null) || (paramString.length != 2));
-    try
-    {
-      int i = Math.min(Integer.valueOf(paramString[0]).intValue(), Integer.valueOf(paramString[1]).intValue());
-      return i;
     }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
+    paramString = paramString.split("x");
+    if ((paramString != null) && (paramString.length == 2)) {
+      try
+      {
+        int i = Math.min(Integer.valueOf(paramString[0]).intValue(), Integer.valueOf(paramString[1]).intValue());
+        return i;
+      }
+      catch (NumberFormatException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return 0;
   }
@@ -137,14 +137,14 @@ public class WatchTogetherMediaPlayCtrl
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    int i = 1;
-    QLog.d("WatchTogetherMediaPlayCtrl", 1, "seekTo expectPositionMs:=" + paramInt + ",sync:=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seekTo expectPositionMs:=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",sync:=");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("WatchTogetherMediaPlayCtrl", 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.removeMessages(260);
-    WatchTogetherMediaPlayCtrl.CustomHandler localCustomHandler = this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler;
-    if (paramBoolean) {
-      i = 0;
-    }
-    localCustomHandler.obtainMessage(260, i, 0, Integer.valueOf(paramInt)).sendToTarget();
+    this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.obtainMessage(260, paramBoolean ^ true, 0, Integer.valueOf(paramInt)).sendToTarget();
   }
   
   private void b(int paramInt, boolean paramBoolean)
@@ -155,26 +155,27 @@ public class WatchTogetherMediaPlayCtrl
       this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.stop();
       this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.reset();
     }
-    if (this.jdField_a_of_type_AndroidViewSurface != null)
+    Object localObject1 = this.jdField_a_of_type_AndroidViewSurface;
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_AndroidViewSurface.release();
+      ((Surface)localObject1).release();
       this.jdField_a_of_type_AndroidViewSurface = null;
     }
     n();
-    Object localObject = new SuperPlayerAudioInfo();
-    ((SuperPlayerAudioInfo)localObject).setAudioSampleRateHZ(48000);
-    ((SuperPlayerAudioInfo)localObject).setAudioChannelLayout(4L);
-    SuperPlayerVideoInfo localSuperPlayerVideoInfo = WTogetherUtil.a(this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo);
+    Object localObject2 = new SuperPlayerAudioInfo();
+    ((SuperPlayerAudioInfo)localObject2).setAudioSampleRateHZ(48000);
+    ((SuperPlayerAudioInfo)localObject2).setAudioChannelLayout(4L);
+    localObject1 = WTogetherUtil.a(this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo);
     SuperPlayerOption localSuperPlayerOption = SuperPlayerOption.obtain();
     localSuperPlayerOption.enableCodecReuse = false;
     localSuperPlayerOption.isPrePlay = false;
     localSuperPlayerOption.enableAudioFrameOutput = true;
-    localSuperPlayerOption.audioFrameOutputOption = ((SuperPlayerAudioInfo)localObject);
-    localObject = a();
+    localSuperPlayerOption.audioFrameOutputOption = ((SuperPlayerAudioInfo)localObject2);
+    localObject2 = a();
     this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherVideoDecodeHelper.a());
-    ((ISuperPlayer)localObject).setSurface(this.jdField_a_of_type_AndroidViewSurface);
-    ((ISuperPlayer)localObject).setOutputMute(true);
-    ((ISuperPlayer)localObject).openMediaPlayer(BaseApplicationImpl.getContext(), localSuperPlayerVideoInfo, paramInt, localSuperPlayerOption);
+    ((ISuperPlayer)localObject2).setSurface(this.jdField_a_of_type_AndroidViewSurface);
+    ((ISuperPlayer)localObject2).setOutputMute(true);
+    ((ISuperPlayer)localObject2).openMediaPlayer(BaseApplicationImpl.getContext(), (SuperPlayerVideoInfo)localObject1, paramInt, localSuperPlayerOption);
     if (!paramBoolean) {
       k();
     }
@@ -192,69 +193,69 @@ public class WatchTogetherMediaPlayCtrl
   
   private void j()
   {
-    int j = -1;
-    if ((this.jdField_c_of_type_Int != 2) && (this.jdField_c_of_type_Int != 1)) {}
-    TPProgramInfo[] arrayOfTPProgramInfo;
-    do
-    {
+    int i = this.jdField_c_of_type_Int;
+    if ((i != 2) && (i != 1)) {
       return;
-      arrayOfTPProgramInfo = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getProgramInfo();
-    } while (arrayOfTPProgramInfo == null);
-    int m = 2147483647;
-    int i1 = -2147483648;
-    int i3 = arrayOfTPProgramInfo.length;
-    int n = 0;
-    int k = 0;
-    int i = -1;
-    int i2;
-    if (n < i3)
-    {
-      i2 = a(arrayOfTPProgramInfo[n].resolution) - 720;
-      if ((i2 >= 0) && (i2 < m))
-      {
-        m = k;
-        i = j;
-        j = i2;
-      }
     }
-    for (;;)
+    TPProgramInfo[] arrayOfTPProgramInfo = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getProgramInfo();
+    if (arrayOfTPProgramInfo == null) {
+      return;
+    }
+    int i7 = arrayOfTPProgramInfo.length;
+    int j = -1;
+    int i1 = 0;
+    int k = -1;
+    int n = 2147483647;
+    int m = -2147483648;
+    i = 0;
+    while (i1 < i7)
     {
-      i2 = n + 1;
-      k += 1;
-      n = m;
-      m = j;
-      j = i;
-      i = n;
-      n = i2;
-      break;
-      if ((i2 < 0) && (i2 > i1))
+      int i6 = a(arrayOfTPProgramInfo[i1].resolution) - 720;
+      int i3;
+      int i4;
+      int i2;
+      int i5;
+      if ((i6 >= 0) && (i6 < n))
       {
-        i1 = i2;
-        j = m;
+        i3 = i;
+        i4 = i6;
         i2 = k;
-        m = i;
-        i = i2;
-        continue;
-        if (i >= 0) {}
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.selectProgram(i, 0L);
-          return;
-          if (j >= 0) {
-            i = j;
-          } else {
-            i = 0;
-          }
-        }
+        i5 = m;
       }
       else
       {
-        i2 = i;
-        i = j;
-        j = m;
-        m = i2;
+        i2 = k;
+        i3 = j;
+        i4 = n;
+        i5 = m;
+        if (i6 < 0)
+        {
+          i2 = k;
+          i3 = j;
+          i4 = n;
+          i5 = m;
+          if (i6 > m)
+          {
+            i2 = i;
+            i5 = i6;
+            i4 = n;
+            i3 = j;
+          }
+        }
       }
+      i += 1;
+      i1 += 1;
+      k = i2;
+      j = i3;
+      n = i4;
+      m = i5;
     }
+    if (j >= 0) {
+      k = j;
+    } else if (k < 0) {
+      k = 0;
+    }
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.selectProgram(k, 0L);
   }
   
   private void k()
@@ -324,14 +325,16 @@ public class WatchTogetherMediaPlayCtrl
     this.jdField_a_of_type_Long = -1L;
     this.jdField_a_of_type_ComTencentAvWtogetherCallbackVideoSink = null;
     this.jdField_a_of_type_ComTencentAvWtogetherCallbackAudioSink = null;
-    if (this.jdField_a_of_type_AndroidViewSurface != null)
+    Object localObject = this.jdField_a_of_type_AndroidViewSurface;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewSurface.release();
+      ((Surface)localObject).release();
       this.jdField_a_of_type_AndroidViewSurface = null;
     }
-    if (this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherVideoDecodeHelper != null)
+    localObject = this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherVideoDecodeHelper;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherVideoDecodeHelper.c();
+      ((WatchTogetherVideoDecodeHelper)localObject).c();
       this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherVideoDecodeHelper = null;
     }
     this.jdField_c_of_type_Boolean = false;
@@ -366,8 +369,9 @@ public class WatchTogetherMediaPlayCtrl
   
   public WTFileInfo a()
   {
-    if (this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo != null) {
-      return this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo;
+    WTogetherPlayInfo localWTogetherPlayInfo = this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo;
+    if (localWTogetherPlayInfo != null) {
+      return localWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo;
     }
     return null;
   }
@@ -396,7 +400,10 @@ public class WatchTogetherMediaPlayCtrl
   
   public void a(float paramFloat)
   {
-    QLog.d("WatchTogetherMediaPlayCtrl", 1, "setPlaySpeedRatio ratio:=" + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setPlaySpeedRatio ratio:=");
+    localStringBuilder.append(paramFloat);
+    QLog.d("WatchTogetherMediaPlayCtrl", 1, localStringBuilder.toString());
     this.jdField_a_of_type_Float = paramFloat;
     this.jdField_c_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.removeMessages(289);
@@ -410,7 +417,10 @@ public class WatchTogetherMediaPlayCtrl
   
   public void a(VideoSink paramVideoSink)
   {
-    QLog.d("WatchTogetherMediaPlayCtrl", 1, "setVideoSink Thread.currentThread()):=" + Thread.currentThread());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setVideoSink Thread.currentThread()):=");
+    localStringBuilder.append(Thread.currentThread());
+    QLog.d("WatchTogetherMediaPlayCtrl", 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.post(new WatchTogetherMediaPlayCtrl.1(this, paramVideoSink));
   }
   
@@ -429,18 +439,21 @@ public class WatchTogetherMediaPlayCtrl
   
   public void a(WTogetherPlayInfo paramWTogetherPlayInfo, int paramInt)
   {
-    QLog.d("WatchTogetherMediaPlayCtrl", 1, "play videoInfo:=" + paramWTogetherPlayInfo.toString(), new Throwable("call play"));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("play videoInfo:=");
+    ((StringBuilder)localObject).append(paramWTogetherPlayInfo.toString());
+    QLog.d("WatchTogetherMediaPlayCtrl", 1, ((StringBuilder)localObject).toString(), new Throwable("call play"));
     if (!l())
     {
       QLog.d("WatchTogetherMediaPlayCtrl", 1, "play video interval-time short");
       return;
     }
-    WTVideoInfo localWTVideoInfo = paramWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo;
+    localObject = paramWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo;
     this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherPlayInfo = paramWTogetherPlayInfo;
-    this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo = localWTVideoInfo;
-    this.jdField_c_of_type_Int = localWTVideoInfo.jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = localWTVideoInfo.jdField_b_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = localWTVideoInfo.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo = ((WTVideoInfo)localObject);
+    this.jdField_c_of_type_Int = ((WTVideoInfo)localObject).jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = ((WTVideoInfo)localObject).jdField_b_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = ((WTVideoInfo)localObject).jdField_a_of_type_JavaLangString;
     this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.obtainMessage(257, paramInt, 0, this.jdField_b_of_type_JavaLangString).sendToTarget();
   }
   
@@ -451,7 +464,12 @@ public class WatchTogetherMediaPlayCtrl
   
   public void a(String paramString, VideoSink paramVideoSink)
   {
-    QLog.d("WatchTogetherMediaPlayCtrl", 1, "removeVideoSink Thread.currentThread()):=" + Thread.currentThread() + ",from:=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("removeVideoSink Thread.currentThread()):=");
+    localStringBuilder.append(Thread.currentThread());
+    localStringBuilder.append(",from:=");
+    localStringBuilder.append(paramString);
+    QLog.d("WatchTogetherMediaPlayCtrl", 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.post(new WatchTogetherMediaPlayCtrl.2(this, paramVideoSink));
   }
   
@@ -464,19 +482,34 @@ public class WatchTogetherMediaPlayCtrl
   {
     if (this.jdField_d_of_type_Boolean != paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WatchTogetherMediaPlayCtrl", 2, "updateAdminFlag, [" + this.jdField_d_of_type_Boolean + "-->" + paramBoolean + "], from[" + paramString + "]");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateAdminFlag, [");
+        ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+        ((StringBuilder)localObject).append("-->");
+        ((StringBuilder)localObject).append(paramBoolean);
+        ((StringBuilder)localObject).append("], from[");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("WatchTogetherMediaPlayCtrl", 2, ((StringBuilder)localObject).toString());
       }
       this.jdField_d_of_type_Boolean = paramBoolean;
     }
-    if (this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMngHelper != null) {
-      this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMngHelper.a(paramBoolean, paramString);
+    Object localObject = this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMngHelper;
+    if (localObject != null) {
+      ((WTogetherMngHelper)localObject).a(paramBoolean, paramString);
     }
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    QLog.d("WatchTogetherMediaPlayCtrl", 1, "setWatchTogetherEnable enable:=" + paramBoolean1 + ",admin:=" + paramBoolean2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setWatchTogetherEnable enable:=");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(",admin:=");
+    localStringBuilder.append(paramBoolean2);
+    QLog.d("WatchTogetherMediaPlayCtrl", 1, localStringBuilder.toString());
     if (this.f == paramBoolean1) {
       return;
     }
@@ -489,17 +522,13 @@ public class WatchTogetherMediaPlayCtrl
       }
       a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMngHelper);
     }
-    for (;;)
+    else if (!paramBoolean1)
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherAudioDecodeHelper.a(paramBoolean1);
-      d();
-      return;
-      if (!paramBoolean1)
-      {
-        b(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMngHelper);
-        this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMngHelper = null;
-      }
+      b(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMngHelper);
+      this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMngHelper = null;
     }
+    this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherAudioDecodeHelper.a(paramBoolean1);
+    d();
   }
   
   public boolean a()
@@ -509,10 +538,11 @@ public class WatchTogetherMediaPlayCtrl
   
   public int b()
   {
-    if (this.jdField_a_of_type_Int == 7) {
+    int i = this.jdField_a_of_type_Int;
+    if (i == 7) {
       return (int)a() + 50;
     }
-    if (this.jdField_a_of_type_Int == 10) {
+    if (i == 10) {
       return this.jdField_e_of_type_Int - 50;
     }
     return 0;
@@ -531,18 +561,17 @@ public class WatchTogetherMediaPlayCtrl
   
   public void b(WatchTogetherMediaPlayerStatusCallback paramWatchTogetherMediaPlayerStatusCallback)
   {
-    if (paramWatchTogetherMediaPlayerStatusCallback == null) {}
-    WeakReference localWeakReference;
-    do
-    {
+    if (paramWatchTogetherMediaPlayerStatusCallback == null) {
       return;
-      Iterator localIterator;
-      while (!localIterator.hasNext()) {
-        localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    }
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (paramWatchTogetherMediaPlayerStatusCallback == localWeakReference.get())) {
+        this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
       }
-      localWeakReference = (WeakReference)localIterator.next();
-    } while ((localWeakReference == null) || (paramWatchTogetherMediaPlayerStatusCallback != localWeakReference.get()));
-    this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
+    }
   }
   
   public boolean b()
@@ -552,15 +581,19 @@ public class WatchTogetherMediaPlayCtrl
   
   public void c()
   {
-    QLog.d("WatchTogetherMediaPlayCtrl", 1, "resumePlay mCurrentState:=" + this.jdField_a_of_type_Int, new Throwable("call resumePlay"));
-    if ((this.jdField_a_of_type_Int == 9) || (this.jdField_a_of_type_Int == 10))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("resumePlay mCurrentState:=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    QLog.d("WatchTogetherMediaPlayCtrl", 1, localStringBuilder.toString(), new Throwable("call resumePlay"));
+    int i = this.jdField_a_of_type_Int;
+    if ((i != 9) && (i != 10))
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.removeMessages(257);
-      this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.obtainMessage(257, 0, 0, this.jdField_b_of_type_JavaLangString).sendToTarget();
+      this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.removeMessages(258);
+      this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.obtainMessage(258).sendToTarget();
       return;
     }
-    this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.removeMessages(258);
-    this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.obtainMessage(258).sendToTarget();
+    this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.removeMessages(257);
+    this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.obtainMessage(257, 0, 0, this.jdField_b_of_type_JavaLangString).sendToTarget();
   }
   
   public boolean c()
@@ -570,8 +603,9 @@ public class WatchTogetherMediaPlayCtrl
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10005), Boolean.valueOf(this.f), Boolean.valueOf(this.jdField_d_of_type_Boolean) });
+    VideoAppInterface localVideoAppInterface = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    if (localVideoAppInterface != null) {
+      localVideoAppInterface.a(new Object[] { Integer.valueOf(10005), Boolean.valueOf(this.f), Boolean.valueOf(this.jdField_d_of_type_Boolean) });
     }
   }
   
@@ -582,14 +616,13 @@ public class WatchTogetherMediaPlayCtrl
   
   public void e()
   {
-    if (this.jdField_a_of_type_Int == 5) {}
-    int i;
-    do
-    {
+    if (this.jdField_a_of_type_Int == 5) {
       return;
-      i = b();
-    } while (this.jdField_a_of_type_Int != 7);
-    a(i, false);
+    }
+    int i = b();
+    if (this.jdField_a_of_type_Int == 7) {
+      a(i, false);
+    }
   }
   
   public boolean e()
@@ -604,7 +637,8 @@ public class WatchTogetherMediaPlayCtrl
   
   public boolean f()
   {
-    return (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo != null) && ((this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.jdField_a_of_type_Int == 4));
+    WTVideoInfo localWTVideoInfo = this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo;
+    return (localWTVideoInfo != null) && ((localWTVideoInfo.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.jdField_a_of_type_Int == 4));
   }
   
   public void g()
@@ -616,7 +650,8 @@ public class WatchTogetherMediaPlayCtrl
   
   public boolean g()
   {
-    return (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo != null) && (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.jdField_a_of_type_Int == 0);
+    WTVideoInfo localWTVideoInfo = this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo;
+    return (localWTVideoInfo != null) && (localWTVideoInfo.jdField_a_of_type_Int == 0);
   }
   
   public void h()
@@ -669,7 +704,10 @@ public class WatchTogetherMediaPlayCtrl
   
   public void onCompletion(ISuperPlayer paramISuperPlayer)
   {
-    QLog.d("WatchTogetherMediaPlayCtrl", 1, "onCompletion url:=" + this.jdField_a_of_type_JavaLangString);
+    paramISuperPlayer = new StringBuilder();
+    paramISuperPlayer.append("onCompletion url:=");
+    paramISuperPlayer.append(this.jdField_a_of_type_JavaLangString);
+    QLog.d("WatchTogetherMediaPlayCtrl", 1, paramISuperPlayer.toString());
     this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.post(new WatchTogetherMediaPlayCtrl.9(this));
   }
   
@@ -677,7 +715,16 @@ public class WatchTogetherMediaPlayCtrl
   
   public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    QLog.e("WatchTogetherMediaPlayCtrl", 1, "PlayerCaptureProxy onError: module = " + paramInt1 + ", errorType = " + paramInt2 + ", errorCode = " + paramInt3 + ", extraInfo = " + paramString);
+    paramISuperPlayer = new StringBuilder();
+    paramISuperPlayer.append("PlayerCaptureProxy onError: module = ");
+    paramISuperPlayer.append(paramInt1);
+    paramISuperPlayer.append(", errorType = ");
+    paramISuperPlayer.append(paramInt2);
+    paramISuperPlayer.append(", errorCode = ");
+    paramISuperPlayer.append(paramInt3);
+    paramISuperPlayer.append(", extraInfo = ");
+    paramISuperPlayer.append(paramString);
+    QLog.e("WatchTogetherMediaPlayCtrl", 1, paramISuperPlayer.toString());
     this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.post(new WatchTogetherMediaPlayCtrl.6(this, paramInt1, paramInt2, paramInt3, paramString));
     return false;
   }
@@ -693,14 +740,17 @@ public class WatchTogetherMediaPlayCtrl
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      QLog.d("WatchTogetherMediaPlayCtrl", 1, "onProgressChanged progress:=" + paramInt);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onProgressChanged progress:=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("WatchTogetherMediaPlayCtrl", 1, ((StringBuilder)localObject).toString());
       paramInt = (int)(paramSeekBar.getProgress() / (paramSeekBar.getMax() * 1.0F) * (float)this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs());
       paramSeekBar = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
       while (paramSeekBar.hasNext())
       {
-        WeakReference localWeakReference = (WeakReference)paramSeekBar.next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null) && (!(localWeakReference.get() instanceof WTogetherMngHelper))) {
-          ((WatchTogetherMediaPlayerStatusCallback)localWeakReference.get()).a(paramInt, (int)this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs());
+        localObject = (WeakReference)paramSeekBar.next();
+        if ((localObject != null) && (((WeakReference)localObject).get() != null) && (!(((WeakReference)localObject).get() instanceof WTogetherMngHelper))) {
+          ((WatchTogetherMediaPlayerStatusCallback)((WeakReference)localObject).get()).a(paramInt, (int)this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs());
         }
       }
     }
@@ -708,7 +758,10 @@ public class WatchTogetherMediaPlayCtrl
   
   public void onSeekComplete(ISuperPlayer paramISuperPlayer)
   {
-    QLog.d("WatchTogetherMediaPlayCtrl", 1, "onSeekComplete currentTimeMills:=" + paramISuperPlayer.getCurrentPositionMs());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSeekComplete currentTimeMills:=");
+    localStringBuilder.append(paramISuperPlayer.getCurrentPositionMs());
+    QLog.d("WatchTogetherMediaPlayCtrl", 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.post(new WatchTogetherMediaPlayCtrl.8(this));
   }
   
@@ -721,25 +774,22 @@ public class WatchTogetherMediaPlayCtrl
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
     QLog.d("WatchTogetherMediaPlayCtrl", 1, "onStopTrackingTouch ");
-    int i;
     if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
     {
-      i = (int)(paramSeekBar.getProgress() / (paramSeekBar.getMax() * 1.0F) * (float)this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs());
+      int i = (int)(paramSeekBar.getProgress() / (paramSeekBar.getMax() * 1.0F) * (float)this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs());
       QLog.d("WatchTogetherMediaPlayCtrl", 1, String.format("seek onStopTrackingTouch seekBar progress:%d, position:%d", new Object[] { Integer.valueOf(paramSeekBar.getProgress()), Integer.valueOf(i) }));
-      if (this.jdField_a_of_type_Int == 10) {
-        break label102;
+      if (this.jdField_a_of_type_Int != 10)
+      {
+        b(i);
       }
-      b(i);
+      else
+      {
+        this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.removeMessages(257);
+        this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.obtainMessage(257, i, 0, this.jdField_b_of_type_JavaLangString).sendToTarget();
+      }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
-      return;
-      label102:
-      this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.removeMessages(257);
-      this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl$CustomHandler.obtainMessage(257, i, 0, this.jdField_b_of_type_JavaLangString).sendToTarget();
-    }
+    this.jdField_a_of_type_Boolean = false;
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
   
   public void onTVideoNetInfoUpdate(ISuperPlayer paramISuperPlayer, TVideoNetInfo paramTVideoNetInfo) {}
@@ -758,7 +808,7 @@ public class WatchTogetherMediaPlayCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl
  * JD-Core Version:    0.7.0.1
  */

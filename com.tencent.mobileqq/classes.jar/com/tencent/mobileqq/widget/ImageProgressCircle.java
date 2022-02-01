@@ -50,25 +50,22 @@ public class ImageProgressCircle
   {
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130848977);
-      int i = (int)(paramContext.getResources().getDisplayMetrics().density * 12.0F);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(i);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(Typeface.DEFAULT_BOLD);
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297221);
-      this.jdField_a_of_type_Int = (this.jdField_c_of_type_Int / 2);
-      this.jdField_b_of_type_Int = (this.jdField_c_of_type_Int / 2);
-      return;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130847153);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        localOutOfMemoryError.printStackTrace();
-      }
+      localOutOfMemoryError.printStackTrace();
     }
+    int i = (int)(paramContext.getResources().getDisplayMetrics().density * 12.0F);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(i);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(Typeface.DEFAULT_BOLD);
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297210);
+    i = this.jdField_c_of_type_Int;
+    this.jdField_a_of_type_Int = (i / 2);
+    this.jdField_b_of_type_Int = (i / 2);
   }
   
   public String a()
@@ -76,16 +73,14 @@ public class ImageProgressCircle
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    int i;
-    int j;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
     {
       paramCanvas.save();
       paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
-      i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
+      int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
+      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
       if (!this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
@@ -96,32 +91,57 @@ public class ImageProgressCircle
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
       if (this.jdField_c_of_type_Boolean)
       {
-        if (this.d < 10) {
-          break label189;
+        String str;
+        double d1;
+        double d2;
+        float f;
+        if (this.d >= 10)
+        {
+          str = this.jdField_a_of_type_JavaLangString;
+          d1 = this.jdField_a_of_type_Int;
+          d2 = i;
+          Double.isNaN(d2);
+          Double.isNaN(d1);
+          f = (float)(d1 - d2 * 0.66D);
+          d1 = this.jdField_b_of_type_Int;
+          d2 = j;
+          Double.isNaN(d2);
+          Double.isNaN(d1);
+          paramCanvas.drawText(str, f, (float)(d1 + d2 * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
         }
-        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, (float)(this.jdField_a_of_type_Int - i * 0.66D), (float)(this.jdField_b_of_type_Int + j * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
+        else
+        {
+          str = this.jdField_a_of_type_JavaLangString;
+          d1 = this.jdField_a_of_type_Int;
+          d2 = i;
+          Double.isNaN(d2);
+          Double.isNaN(d1);
+          f = (float)(d1 - d2 * 0.25D);
+          d1 = this.jdField_b_of_type_Int;
+          d2 = j;
+          Double.isNaN(d2);
+          Double.isNaN(d1);
+          paramCanvas.drawText(str, f, (float)(d1 + d2 * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
+        }
       }
-    }
-    for (;;)
-    {
       paramCanvas.restore();
-      postInvalidate();
-      return;
-      label189:
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, (float)(this.jdField_a_of_type_Int - i * 0.25D), (float)(this.jdField_b_of_type_Int + j * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
+    postInvalidate();
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    int i;
     if (paramInt3 - paramInt1 == 0)
     {
-      layout(paramInt1 - this.jdField_c_of_type_Int / 2, paramInt2, this.jdField_c_of_type_Int / 2 + paramInt3, paramInt4);
+      i = this.jdField_c_of_type_Int;
+      layout(paramInt1 - i / 2, paramInt2, paramInt3 + i / 2, paramInt4);
       return;
     }
     if (paramInt4 - paramInt2 == 0)
     {
-      layout(paramInt1, paramInt2 - this.jdField_c_of_type_Int / 2, paramInt3, this.jdField_c_of_type_Int / 2 + paramInt4);
+      i = this.jdField_c_of_type_Int;
+      layout(paramInt1, paramInt2 - i / 2, paramInt3, paramInt4 + i / 2);
       return;
     }
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -129,26 +149,25 @@ public class ImageProgressCircle
   
   public void setProgress(int paramInt)
   {
-    int i = 99;
     if (paramInt >= 100) {
       this.jdField_a_of_type_Boolean = false;
     }
-    paramInt = paramInt * 100 / 85;
-    if (paramInt > 99) {
-      paramInt = i;
+    int i = paramInt * 100 / 85;
+    paramInt = i;
+    if (i > 99) {
+      paramInt = 99;
     }
-    for (;;)
-    {
-      this.d = paramInt;
-      this.jdField_a_of_type_JavaLangString = (this.d + "%");
-      postInvalidate();
-      return;
-    }
+    this.d = paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("%");
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageProgressCircle
  * JD-Core Version:    0.7.0.1
  */

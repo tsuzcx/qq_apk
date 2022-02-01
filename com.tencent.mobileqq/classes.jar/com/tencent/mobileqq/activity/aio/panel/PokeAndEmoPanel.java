@@ -3,7 +3,6 @@ package com.tencent.mobileqq.activity.aio.panel;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.PokePanel;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class PokeAndEmoPanel
   extends RelativeLayout
-  implements ViewPager.OnPageChangeListener, View.OnClickListener
+  implements View.OnClickListener, ViewPager.OnPageChangeListener
 {
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
@@ -59,7 +59,7 @@ public class PokeAndEmoPanel
   public ImageView a(int paramInt1, int paramInt2, String paramString)
   {
     ImageButton localImageButton = new ImageButton(getContext());
-    localImageButton.setLayoutParams(new LinearLayout.LayoutParams(AIOUtils.a(50.0F, getResources()), -1));
+    localImageButton.setLayoutParams(new LinearLayout.LayoutParams(AIOUtils.b(50.0F, getResources()), -1));
     localImageButton.setId(paramInt1);
     localImageButton.setImageResource(paramInt2);
     StateListDrawable localStateListDrawable = new StateListDrawable();
@@ -76,8 +76,9 @@ public class PokeAndEmoPanel
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.d();
+    PokePanel localPokePanel = this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel;
+    if (localPokePanel != null) {
+      localPokePanel.d();
     }
   }
   
@@ -85,19 +86,19 @@ public class PokeAndEmoPanel
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131372830));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131372409));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378869));
-    this.jdField_b_of_type_AndroidViewView = a(2131378851, 2130838301, getContext().getString(2131698482));
-    this.jdField_a_of_type_AndroidViewView = a(2131378850, 2130838302, getContext().getString(2131698481));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378258));
+    this.jdField_b_of_type_AndroidViewView = a(2131378240, 2130838126, getContext().getString(2131698548));
+    this.jdField_a_of_type_AndroidViewView = a(2131378239, 2130838127, getContext().getString(2131698547));
     if (AppSetting.d)
     {
-      this.jdField_b_of_type_AndroidViewView.setContentDescription(HardCodeUtil.a(2131708304));
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(HardCodeUtil.a(2131708305));
+      this.jdField_b_of_type_AndroidViewView.setContentDescription(HardCodeUtil.a(2131708313));
+      this.jdField_a_of_type_AndroidViewView.setContentDescription(HardCodeUtil.a(2131708314));
     }
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel = ((PokePanel)View.inflate(getContext(), 2131558668, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel = ((PokePanel)View.inflate(getContext(), 2131558566, null));
     String str = PokeItemHelper.a(paramBaseChatPie.a());
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.a(paramBaseChatPie, paramSessionInfo, str);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.a(str);
@@ -123,26 +124,9 @@ public class PokeAndEmoPanel
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
         paramSessionInfo.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel);
       }
-      paramBaseChatPie = new PokeEmoPageAdapter(getContext(), paramSessionInfo);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(paramBaseChatPie);
-      if (paramSessionInfo.size() <= 1) {
-        break label587;
-      }
-      this.jdField_b_of_type_Int = PokeItemHelper.jdField_a_of_type_Int;
-      if (this.jdField_b_of_type_Int == -1) {
-        this.jdField_b_of_type_Int = ((this.jdField_a_of_type_Int + 1) % 2);
-      }
-      if ((this.jdField_a_of_type_Int != 1) || (this.jdField_b_of_type_Int != 0)) {
-        break label573;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a();
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeAndEmoPanel", 2, String.format(" init..entryType = %d,viewType = %d,currentIndex = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.jdField_b_of_type_Int) }));
-      }
-      return;
       this.jdField_a_of_type_Int = 0;
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_b_of_type_AndroidViewView);
@@ -150,19 +134,32 @@ public class PokeAndEmoPanel
       paramSessionInfo.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel);
       this.jdField_a_of_type_AndroidViewView.setSelected(true);
       this.jdField_b_of_type_AndroidViewView.setSelected(false);
-      if ((j != 1) && (PokeItemHelper.b)) {
-        break;
+      if ((j == 1) || (!PokeItemHelper.b))
+      {
+        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+        paramSessionInfo.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel);
       }
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      paramSessionInfo.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel);
-      break;
-      label573:
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.jdField_b_of_type_Int);
-      continue;
-      label587:
-      if (this.jdField_a_of_type_Int == 1) {
+    }
+    paramBaseChatPie = new PokeEmoPageAdapter(getContext(), paramSessionInfo);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(paramBaseChatPie);
+    if (paramSessionInfo.size() > 1)
+    {
+      this.jdField_b_of_type_Int = PokeItemHelper.jdField_a_of_type_Int;
+      if (this.jdField_b_of_type_Int == -1) {
+        this.jdField_b_of_type_Int = ((this.jdField_a_of_type_Int + 1) % 2);
+      }
+      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_b_of_type_Int == 0)) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a();
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.jdField_b_of_type_Int);
       }
+    }
+    else if (this.jdField_a_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeAndEmoPanel", 2, String.format(" init..entryType = %d,viewType = %d,currentIndex = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.jdField_b_of_type_Int) }));
     }
   }
   
@@ -183,20 +180,20 @@ public class PokeAndEmoPanel
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.jdField_a_of_type_Int, true);
-      paramView.setSelected(true);
-      this.jdField_b_of_type_AndroidViewView.setSelected(false);
-      continue;
+    default: 
+      break;
+    case 2131378240: 
       int i = this.jdField_a_of_type_Int;
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem((i + 1) % 2, true);
       paramView.setSelected(true);
       this.jdField_a_of_type_AndroidViewView.setSelected(false);
+      break;
+    case 2131378239: 
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.jdField_a_of_type_Int, true);
+      paramView.setSelected(true);
+      this.jdField_b_of_type_AndroidViewView.setSelected(false);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -216,11 +213,8 @@ public class PokeAndEmoPanel
       this.jdField_a_of_type_AndroidViewView.setSelected(true);
       this.jdField_b_of_type_AndroidViewView.setSelected(false);
     }
-    for (;;)
+    else
     {
-      this.jdField_b_of_type_Int = paramInt;
-      PokeItemHelper.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-      return;
       this.jdField_b_of_type_AndroidViewView.setSelected(true);
       this.jdField_a_of_type_AndroidViewView.setSelected(false);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a();
@@ -228,11 +222,13 @@ public class PokeAndEmoPanel
         QLog.d("PokeAndEmoPanel", 2, String.format(" onPageSelected i = %d", new Object[] { Integer.valueOf(paramInt) }));
       }
     }
+    this.jdField_b_of_type_Int = paramInt;
+    PokeItemHelper.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PokeAndEmoPanel
  * JD-Core Version:    0.7.0.1
  */

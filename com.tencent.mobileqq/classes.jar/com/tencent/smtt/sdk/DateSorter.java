@@ -11,7 +11,7 @@ public class DateSorter
   
   static
   {
-    if (a()) {}
+    a();
   }
   
   public DateSorter(Context paramContext)
@@ -27,17 +27,8 @@ public class DateSorter
   
   private static boolean a()
   {
-    boolean bool2 = false;
     x localx = x.a();
-    boolean bool1 = bool2;
-    if (localx != null)
-    {
-      bool1 = bool2;
-      if (localx.b()) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (localx != null) && (localx.b());
   }
   
   public long getBoundary(int paramInt)
@@ -69,7 +60,7 @@ public class DateSorter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.DateSorter
  * JD-Core Version:    0.7.0.1
  */

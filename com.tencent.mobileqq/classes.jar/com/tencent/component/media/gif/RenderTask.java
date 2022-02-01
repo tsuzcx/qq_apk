@@ -26,95 +26,96 @@ class RenderTask
   
   private void reportCostsTime(boolean paramBoolean, long paramLong, NewGifDrawable paramNewGifDrawable)
   {
-    HashMap localHashMap = new HashMap();
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      localHashMap.put("is_gif_playing", String.valueOf(i));
-      localHashMap.put("first_frame_render_cost", String.valueOf(paramLong));
-      localHashMap.put("networkstate", String.valueOf(ImageManagerEnv.g().getNetWorkState()));
-      if (!paramBoolean) {
-        break label141;
-      }
-      ImageManagerEnv.g().reportImageTimeCostMTA("gifPlayingReportNew", "performance", "gif_play_first_frame_cost", (int)paramLong);
-      ImageManagerEnv.getLogger().d("gifPlayingReport", new Object[] { "gif_play time:" + paramLong });
-      localHashMap.put("gif_play_first_frame_cost", String.valueOf(paramLong));
-    }
-    for (;;)
-    {
-      ImageManagerEnv.g().statisticCollectorReport("gifPlayingReportNew", localHashMap);
-      return;
-      i = 0;
-      break;
-      label141:
-      ImageManagerEnv.g().reportImageTimeCostMTA("gifPlayingReportNew", "performance", "normal_Play_first_frame_cost", (int)paramLong);
-      ImageManagerEnv.getLogger().d("gifPlayingReport", new Object[] { "normal_Play time:" + paramLong });
-      localHashMap.put("normal_Play_first_frame_cost", String.valueOf(paramLong));
-      localHashMap.put("n_frameCount", String.valueOf(paramNewGifDrawable.getNumberOfFrames()));
-      localHashMap.put("n_size", String.valueOf(paramNewGifDrawable.getAllocationByteCount()));
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void reportFailCount(int paramInt, NewGifDrawable paramNewGifDrawable)
   {
-    if ((paramNewGifDrawable == null) || (paramNewGifDrawable.getNumberOfFrames() == 0)) {
-      return;
+    if (paramNewGifDrawable != null)
+    {
+      if (paramNewGifDrawable.getNumberOfFrames() == 0) {
+        return;
+      }
+      HashMap localHashMap = new HashMap();
+      ImageManagerEnv.g().reportImageTimeCostMTA("gifPlayingFailCountReport", "performance", "gif_play_fail_count", paramInt);
+      ImageManagerEnv.g().reportImageTimeCostMTA("gifPlayingFailCountReport", "performance", "gif_play_frame_count", paramNewGifDrawable.getNumberOfFrames());
+      localHashMap.put("f_networkstate", String.valueOf(ImageManagerEnv.g().getNetWorkState()));
+      localHashMap.put("gif_play_fail_count", String.valueOf(paramInt));
+      localHashMap.put("f_frame_count", String.valueOf(paramNewGifDrawable.getNumberOfFrames()));
+      if (paramNewGifDrawable.getNumberOfFrames() != 0)
+      {
+        double d1 = paramInt;
+        Double.isNaN(d1);
+        double d2 = paramNewGifDrawable.getNumberOfFrames();
+        Double.isNaN(d2);
+        localHashMap.put("fail_frame", String.valueOf(d1 * 1.0D / d2));
+      }
+      ImageManagerEnv.g().statisticCollectorReport("gifPlayingFailCountReport", localHashMap);
     }
-    HashMap localHashMap = new HashMap();
-    ImageManagerEnv.g().reportImageTimeCostMTA("gifPlayingFailCountReport", "performance", "gif_play_fail_count", paramInt);
-    ImageManagerEnv.g().reportImageTimeCostMTA("gifPlayingFailCountReport", "performance", "gif_play_frame_count", paramNewGifDrawable.getNumberOfFrames());
-    localHashMap.put("f_networkstate", String.valueOf(ImageManagerEnv.g().getNetWorkState()));
-    localHashMap.put("gif_play_fail_count", String.valueOf(paramInt));
-    localHashMap.put("f_frame_count", String.valueOf(paramNewGifDrawable.getNumberOfFrames()));
-    if (paramNewGifDrawable.getNumberOfFrames() != 0) {
-      localHashMap.put("fail_frame", String.valueOf(paramInt * 1.0D / paramNewGifDrawable.getNumberOfFrames()));
-    }
-    ImageManagerEnv.g().statisticCollectorReport("gifPlayingFailCountReport", localHashMap);
   }
   
   public void doWork()
   {
     for (;;)
     {
-      Long localLong1;
+      long l2;
       try
       {
+        Object localObject1;
+        Object localObject3;
+        Object localObject4;
         if (this.mGifDrawable.getCurrentModel() == 4)
         {
-          ImageManagerEnv.getLogger().d("NewGifDrawable", new Object[] { "doWork | ====mCurrentIndex:" + this.mGifDrawable.getCurrentFrameIndex() + " mGifDrawable.isEndDownload:" + this.mGifDrawable.isEndDownload + " mHashcode:" + this.mGifDrawable.mHashcode });
-          NewGifDecoder.GifFrame localGifFrame1 = this.mGifDrawable.mGifDecoder.nextForGifPlay(this.mGifDrawable.mBuffer, this.mGifDrawable.isEndDownload);
-          long l2;
+          localObject1 = ImageManagerEnv.getLogger();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("doWork | ====mCurrentIndex:");
+          ((StringBuilder)localObject3).append(this.mGifDrawable.getCurrentFrameIndex());
+          ((StringBuilder)localObject3).append(" mGifDrawable.isEndDownload:");
+          ((StringBuilder)localObject3).append(this.mGifDrawable.isEndDownload);
+          ((StringBuilder)localObject3).append(" mHashcode:");
+          ((StringBuilder)localObject3).append(this.mGifDrawable.mHashcode);
+          ((ILog)localObject1).d("NewGifDrawable", new Object[] { ((StringBuilder)localObject3).toString() });
+          localObject1 = this.mGifDrawable.mGifDecoder.nextForGifPlay(this.mGifDrawable.mBuffer, this.mGifDrawable.isEndDownload);
           if (!this.mReported)
           {
-            localLong1 = (Long)ImageTaskBuilder.stampMap.remove(this.mGifDrawable.getUrl());
-            Long localLong2 = (Long)ImageTaskBuilder.stampMap2.remove(this.mGifDrawable.getUrl());
-            if (localLong1 != null)
+            localObject3 = (Long)ImageTaskBuilder.stampMap.remove(this.mGifDrawable.getUrl());
+            localObject4 = (Long)ImageTaskBuilder.stampMap2.remove(this.mGifDrawable.getUrl());
+            if (localObject3 != null)
             {
-              l1 = localLong1.longValue();
+              l1 = ((Long)localObject3).longValue();
               l2 = System.currentTimeMillis() - l1;
-              if (localLong2 == null) {
-                break label761;
+              if (localObject4 == null) {
+                break label843;
               }
-              l1 = System.currentTimeMillis() - localLong2.longValue();
-              ImageManagerEnv.getLogger().d("NewGifDrawable", new Object[] { "1 first_frame_render_cost2: " + l1 });
-              ImageManagerEnv.getLogger().d("NewGifDrawable", new Object[] { "1 first_frame_render_cost: " + l2 });
+              l1 = System.currentTimeMillis() - ((Long)localObject4).longValue();
+              localObject3 = ImageManagerEnv.getLogger();
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append("1 first_frame_render_cost2: ");
+              ((StringBuilder)localObject4).append(l1);
+              ((ILog)localObject3).d("NewGifDrawable", new Object[] { ((StringBuilder)localObject4).toString() });
+              localObject3 = ImageManagerEnv.getLogger();
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append("1 first_frame_render_cost: ");
+              ((StringBuilder)localObject4).append(l2);
+              ((ILog)localObject3).d("NewGifDrawable", new Object[] { ((StringBuilder)localObject4).toString() });
               if (l1 == 0L) {
-                continue;
+                break label848;
               }
               reportCostsTime(true, l1, this.mGifDrawable);
               this.mReported = true;
             }
           }
-          ImageManagerEnv.getLogger().d("NewGifDrawable", new Object[] { "doWork | ====invalidationDelay:" + localGifFrame1.delay });
-          if ((localGifFrame1 != null) && (localGifFrame1.delay == -1L))
+          localObject3 = ImageManagerEnv.getLogger();
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("doWork | ====invalidationDelay:");
+          ((StringBuilder)localObject4).append(((NewGifDecoder.GifFrame)localObject1).delay);
+          ((ILog)localObject3).d("NewGifDrawable", new Object[] { ((StringBuilder)localObject4).toString() });
+          if ((localObject1 != null) && (((NewGifDecoder.GifFrame)localObject1).delay == -1L))
           {
             if (this.startCollectFailCount) {
               this.failCount += 1;
             }
             return;
-            l1 = l2;
-            continue;
           }
           if (!this.startCollectFailCount) {
             this.startCollectFailCount = true;
@@ -125,47 +126,56 @@ class RenderTask
             reportFailCount(this.failCount, this.mGifDrawable);
           }
           this.mGifDrawable.mIsRenderingTriggeredOnDraw = true;
-          this.mGifDrawable.mBuffer = localGifFrame1.image;
-          this.invalidationDelay = localGifFrame1.delay;
-          if (this.invalidationDelay < 0L) {
-            break label740;
+          this.mGifDrawable.mBuffer = ((NewGifDecoder.GifFrame)localObject1).image;
+          this.invalidationDelay = ((NewGifDecoder.GifFrame)localObject1).delay;
+        }
+        else
+        {
+          this.mGifDrawable.mIsRenderingTriggeredOnDraw = true;
+          localObject1 = this.mGifDrawable.mGifDecoder.next(this.mGifDrawable.mBuffer);
+          if (!this.mReported)
+          {
+            localObject3 = (Long)ImageTaskBuilder.stampMap.remove(this.mGifDrawable.getUrl());
+            if (localObject3 != null)
+            {
+              l1 = ((Long)localObject3).longValue();
+              l1 = System.currentTimeMillis() - l1;
+              localObject3 = ImageManagerEnv.getLogger();
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append("2 first_frame_render_cost: ");
+              ((StringBuilder)localObject4).append(l1);
+              ((ILog)localObject3).d("NewGifDrawable", new Object[] { ((StringBuilder)localObject4).toString() });
+              reportCostsTime(false, l1, this.mGifDrawable);
+              this.mReported = true;
+            }
           }
+          this.mGifDrawable.mBuffer = ((NewGifDecoder.GifFrame)localObject1).image;
+          this.invalidationDelay = ((NewGifDecoder.GifFrame)localObject1).delay;
+          this.mCurrentIndex = ((this.mCurrentIndex + 1) % this.mGifDrawable.getNumberOfFrames());
+        }
+        if (this.invalidationDelay >= 0L)
+        {
           this.mGifDrawable.mNextFrameRenderTime = (SystemClock.uptimeMillis() + this.invalidationDelay);
           if ((!this.mGifDrawable.mListeners.isEmpty()) && (this.mGifDrawable.getCurrentFrameIndex() == this.mGifDrawable.getNumberOfFrames() - 1)) {
             this.mGifDrawable.scheduleSelf(this.mNotifyListenersTask, this.mGifDrawable.mNextFrameRenderTime);
           }
-          if ((!this.mGifDrawable.isVisible()) || (this.mGifDrawable.mInvalidationHandler.hasMessages(0)) || (this.mGifDrawable.getCallback() == null)) {
-            continue;
-          }
-          this.mGifDrawable.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
-          continue;
         }
-        this.mGifDrawable.mIsRenderingTriggeredOnDraw = true;
+        else
+        {
+          this.mGifDrawable.mNextFrameRenderTime = -9223372036854775808L;
+          this.mGifDrawable.mIsRunning = false;
+        }
+        if ((this.mGifDrawable.isVisible()) && (!this.mGifDrawable.mInvalidationHandler.hasMessages(0)) && (this.mGifDrawable.getCallback() != null)) {
+          this.mGifDrawable.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+        }
+        return;
       }
       finally {}
-      NewGifDecoder.GifFrame localGifFrame2 = this.mGifDrawable.mGifDecoder.next(this.mGifDrawable.mBuffer);
-      if (!this.mReported)
-      {
-        localLong1 = (Long)ImageTaskBuilder.stampMap.remove(this.mGifDrawable.getUrl());
-        if (localLong1 != null)
-        {
-          l1 = localLong1.longValue();
-          l1 = System.currentTimeMillis() - l1;
-          ImageManagerEnv.getLogger().d("NewGifDrawable", new Object[] { "2 first_frame_render_cost: " + l1 });
-          reportCostsTime(false, l1, this.mGifDrawable);
-          this.mReported = true;
-        }
-      }
-      this.mGifDrawable.mBuffer = localGifFrame2.image;
-      this.invalidationDelay = localGifFrame2.delay;
-      this.mCurrentIndex = ((this.mCurrentIndex + 1) % this.mGifDrawable.getNumberOfFrames());
-      continue;
-      label740:
-      this.mGifDrawable.mNextFrameRenderTime = -9223372036854775808L;
-      this.mGifDrawable.mIsRunning = false;
-      continue;
-      label761:
+      label843:
       long l1 = 0L;
+      continue;
+      label848:
+      l1 = l2;
     }
   }
   
@@ -178,7 +188,7 @@ class RenderTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.gif.RenderTask
  * JD-Core Version:    0.7.0.1
  */

@@ -17,24 +17,23 @@ class ConfigClearableEditText$2
     paramCharSequence = this.a.getText().toString();
     if (this.a.isFocused())
     {
-      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
-        this.a.setClearButtonVisible(false);
+      if ((paramCharSequence != null) && (paramCharSequence.length() != 0))
+      {
+        if ((!ConfigClearableEditText.b(this.a)) && (!ConfigClearableEditText.c(this.a)))
+        {
+          this.a.setClearButtonVisible(false);
+          return;
+        }
+        this.a.setClearButtonVisible(true);
+        return;
       }
+      this.a.setClearButtonVisible(false);
     }
-    else {
-      return;
-    }
-    if ((ConfigClearableEditText.b(this.a)) || (ConfigClearableEditText.c(this.a)))
-    {
-      this.a.setClearButtonVisible(true);
-      return;
-    }
-    this.a.setClearButtonVisible(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ConfigClearableEditText.2
  * JD-Core Version:    0.7.0.1
  */

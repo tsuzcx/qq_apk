@@ -7,21 +7,19 @@ class SubscriptFeedsActivity$14$2
   
   public void run()
   {
+    Object localObject = SubscriptFeedsActivity.a(this.a.a);
     boolean bool = true;
-    SubscriptFeedsActivity.a(this.a.a).b = true;
-    SubscriptFeedsActivity localSubscriptFeedsActivity = this.a.a;
-    if (SubscriptFeedsActivity.a(this.a.a).g == 1) {}
-    for (;;)
-    {
-      SubscriptFeedsActivity.a(localSubscriptFeedsActivity, false, bool, false);
-      return;
+    ((SubscriptFeedsAdapter)localObject).b = true;
+    localObject = this.a.a;
+    if (SubscriptFeedsActivity.a(this.a.a).g != 1) {
       bool = false;
     }
+    SubscriptFeedsActivity.a((SubscriptFeedsActivity)localObject, false, bool, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.2
  * JD-Core Version:    0.7.0.1
  */

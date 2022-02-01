@@ -20,22 +20,31 @@ final class TdsReaderGlobal$NetEngineListener4Request
   
   public void onResp(NetResp paramNetResp)
   {
-    if ((paramNetResp.mHttpCode == 200) || (paramNetResp.mHttpCode == 206)) {}
-    for (String str = new String(paramNetResp.mRespData);; str = null)
-    {
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(paramNetResp.mHttpCode, str);
-      }
-      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + paramNetResp.mHttpCode + ", rsp=" + str);
-      return;
+    String str;
+    if ((paramNetResp.mHttpCode != 200) && (paramNetResp.mHttpCode != 206)) {
+      str = null;
+    } else {
+      str = new String(paramNetResp.mRespData);
     }
+    Object localObject = this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
+    if (localObject != null) {
+      ((IHostInterface.IHttpListener)localObject).onResponse(paramNetResp.mHttpCode, str);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onResp url:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(", status=");
+    ((StringBuilder)localObject).append(paramNetResp.mHttpCode);
+    ((StringBuilder)localObject).append(", rsp=");
+    ((StringBuilder)localObject).append(str);
+    Log.i("TdsReaderView_", ((StringBuilder)localObject).toString());
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal.NetEngineListener4Request
  * JD-Core Version:    0.7.0.1
  */

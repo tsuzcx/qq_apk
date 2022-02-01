@@ -14,26 +14,23 @@ class AIOEntryPlugin$2
   
   public void run()
   {
-    if ((AIOEntryPlugin.g(this.this$0).getAttachedActivity() instanceof GameActivity1)) {
+    if ((AIOEntryPlugin.g(this.this$0).getAttachedActivity() instanceof GameActivity1))
+    {
       ((GameActivity1)AIOEntryPlugin.h(this.this$0).getAttachedActivity()).hideMiniAIOEntrance();
     }
-    for (;;)
+    else if ((AIOEntryPlugin.i(this.this$0).getMiniAppInfo() != null) && (AIOEntryPlugin.j(this.this$0).getMiniAppInfo().isEngineTypeMiniApp()) && ((AIOEntryPlugin.k(this.this$0) instanceof BaseRuntime)))
     {
-      this.a.ok();
-      return;
-      if ((AIOEntryPlugin.i(this.this$0).getMiniAppInfo() != null) && (AIOEntryPlugin.j(this.this$0).getMiniAppInfo().isEngineTypeMiniApp()) && ((AIOEntryPlugin.k(this.this$0) instanceof BaseRuntime)))
-      {
-        IPage localIPage = ((BaseRuntime)AIOEntryPlugin.l(this.this$0)).getPage();
-        if (localIPage != null) {
-          localIPage.setMiniAIOEntranceVisible(false, null);
-        }
+      IPage localIPage = ((BaseRuntime)AIOEntryPlugin.l(this.this$0)).getPage();
+      if (localIPage != null) {
+        localIPage.setMiniAIOEntranceVisible(false, null);
       }
     }
+    this.a.ok();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AIOEntryPlugin.2
  * JD-Core Version:    0.7.0.1
  */

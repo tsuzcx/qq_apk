@@ -15,36 +15,37 @@ import android.support.v4.util.ArrayMap;
 import android.support.v4.util.ArraySet;
 import android.support.v4.util.SparseArrayCompat;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.bigbrother.TeleScreen;
+import com.tencent.mobileqq.bigbrother.TeleScreenConfig.Config;
 import com.tencent.mobileqq.bigbrother.WeakOuterRefRunnable;
+import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class JefsClass
   extends IATHandler
 {
   @Nullable
   private static IJefsClassInjectInterface jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface;
-  private static JefsClass jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass;
+  private static JefsClass jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass = new JefsClass();
   private static final Set<String> jdField_a_of_type_JavaUtilSet = new ArraySet();
   private static final Set<String> b;
   private static final Set<String> c;
   private int jdField_a_of_type_Int;
   private final SparseArrayCompat<Runnable> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private JefsClass.PolicyConfig jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$PolicyConfig;
   private JefsClass.TeleScreenReceiver jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$TeleScreenReceiver;
   private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new JefsClass.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
   
   static
   {
@@ -54,81 +55,76 @@ public class JefsClass
       if (JefsClassInjectUtil.a.size() > 0) {
         jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface = (IJefsClassInjectInterface)((Class)JefsClassInjectUtil.a.get(0)).newInstance();
       }
-      jdField_a_of_type_JavaUtilSet.add("android.settings.ACCESSIBILITY_SETTINGS");
-      if (Build.VERSION.SDK_INT >= 26) {
-        jdField_a_of_type_JavaUtilSet.add("android.settings.APP_NOTIFICATION_SETTINGS");
-      }
-      jdField_a_of_type_JavaUtilSet.add("android.settings.APPLICATION_DETAILS_SETTINGS");
-      jdField_a_of_type_JavaUtilSet.add("android.settings.BLUETOOTH_SETTINGS");
-      jdField_a_of_type_JavaUtilSet.add("android.settings.DATA_ROAMING_SETTINGS");
-      jdField_a_of_type_JavaUtilSet.add("android.settings.DATE_SETTINGS");
-      jdField_a_of_type_JavaUtilSet.add("android.settings.INTERNAL_STORAGE_SETTINGS");
-      jdField_a_of_type_JavaUtilSet.add("android.settings.MEMORY_CARD_SETTINGS");
-      jdField_a_of_type_JavaUtilSet.add("android.settings.LOCALE_SETTINGS");
-      jdField_a_of_type_JavaUtilSet.add("android.settings.LOCATION_SOURCE_SETTINGS");
-      if (Build.VERSION.SDK_INT >= 24) {
-        jdField_a_of_type_JavaUtilSet.add("android.settings.MANAGE_DEFAULT_APPS_SETTINGS");
-      }
-      if (Build.VERSION.SDK_INT >= 23) {
-        jdField_a_of_type_JavaUtilSet.add("android.settings.action.MANAGE_OVERLAY_PERMISSION");
-      }
-      if (Build.VERSION.SDK_INT >= 19) {
-        jdField_a_of_type_JavaUtilSet.add("android.settings.NFC_PAYMENT_SETTINGS");
-      }
-      if (Build.VERSION.SDK_INT >= 16) {
-        jdField_a_of_type_JavaUtilSet.add("android.settings.NFC_SETTINGS");
-      }
-      jdField_a_of_type_JavaUtilSet.add("android.settings.NFCSHARING_SETTINGS");
-      jdField_a_of_type_JavaUtilSet.add("android.settings.SETTINGS");
-      jdField_a_of_type_JavaUtilSet.add("android.settings.WIFI_SETTINGS");
-      jdField_a_of_type_JavaUtilSet.add("android.settings.WIRELESS_SETTINGS");
-      if (Build.VERSION.SDK_INT >= 23) {
-        jdField_a_of_type_JavaUtilSet.add("android.settings.action.MANAGE_WRITE_SETTINGS");
-      }
-      jdField_a_of_type_JavaUtilSet.add("android.media.action.IMAGE_CAPTURE");
-      jdField_a_of_type_JavaUtilSet.add("android.intent.action.PICK");
-      jdField_a_of_type_JavaUtilSet.add("android.intent.action.CALL");
-      jdField_a_of_type_JavaUtilSet.add("android.intent.action.DIAL");
-      jdField_a_of_type_JavaUtilSet.add("android.intent.action.CALL_BUTTON");
-      jdField_a_of_type_JavaUtilSet.add("android.intent.action.SENDTO");
-      jdField_a_of_type_JavaUtilSet.add("android.intent.action.GET_CONTENT");
-      jdField_a_of_type_JavaUtilSet.add("android.intent.action.RINGTONE_PICKER");
-      if (Build.VERSION.SDK_INT >= 19) {
-        jdField_a_of_type_JavaUtilSet.add("android.nfc.cardemulation.action.ACTION_CHANGE_DEFAULT");
-      }
-      jdField_a_of_type_JavaUtilSet.add("android.content.pm.CONFIRM_ACCESS_APPCATONS");
-      jdField_a_of_type_JavaUtilSet.add("com.meizu.safe.security.SHOW_APPSEC");
-      jdField_a_of_type_JavaUtilSet.add("miui.intent.action.APP_PERM_EDITOR");
-      jdField_a_of_type_JavaUtilSet.add("android.intent.action.INSERT_OR_EDIT");
-      jdField_a_of_type_JavaUtilSet.add("android.intent.action.INSERT");
-      if (Build.VERSION.SDK_INT >= 16) {
-        jdField_a_of_type_JavaUtilSet.add("android.service.wallpaper.CHANGE_LIVE_WALLPAPER");
-      }
-      b = new ArraySet();
-      b.add(MobileQQ.getContext().getPackageName());
-      b.add("com.android.settings");
-      b.add("com.miui.securitycenter");
-      b.add("com.miui.system");
-      b.add("com.zui.safecenter");
-      b.add("com.android.mms");
-      b.add("com.sonymobile.cta");
-      b.add("com.huawei.systemmanager");
-      b.add("com.sec.android.app.capabilitymanager");
-      b.add("com.coloros.safecenter");
-      c = new ArraySet();
-      c.add("com.tencent.mm");
-      c.add("com.tencent.mtt");
-      c.add("com.tencent.qzone.capaoptools");
-      jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass = new JefsClass();
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("TeleScreen|JefsClass", 1, "JefsClassInjectUtil static statement: ", localException);
-      }
+      QLog.e("TeleScreen|JefsClass", 1, "JefsClassInjectUtil static statement: ", localException);
     }
+    jdField_a_of_type_JavaUtilSet.add("android.settings.ACCESSIBILITY_SETTINGS");
+    if (Build.VERSION.SDK_INT >= 26) {
+      jdField_a_of_type_JavaUtilSet.add("android.settings.APP_NOTIFICATION_SETTINGS");
+    }
+    jdField_a_of_type_JavaUtilSet.add("android.settings.APPLICATION_DETAILS_SETTINGS");
+    jdField_a_of_type_JavaUtilSet.add("android.settings.BLUETOOTH_SETTINGS");
+    jdField_a_of_type_JavaUtilSet.add("android.settings.DATA_ROAMING_SETTINGS");
+    jdField_a_of_type_JavaUtilSet.add("android.settings.DATE_SETTINGS");
+    jdField_a_of_type_JavaUtilSet.add("android.settings.INTERNAL_STORAGE_SETTINGS");
+    jdField_a_of_type_JavaUtilSet.add("android.settings.MEMORY_CARD_SETTINGS");
+    jdField_a_of_type_JavaUtilSet.add("android.settings.LOCALE_SETTINGS");
+    jdField_a_of_type_JavaUtilSet.add("android.settings.LOCATION_SOURCE_SETTINGS");
+    if (Build.VERSION.SDK_INT >= 24) {
+      jdField_a_of_type_JavaUtilSet.add("android.settings.MANAGE_DEFAULT_APPS_SETTINGS");
+    }
+    if (Build.VERSION.SDK_INT >= 23) {
+      jdField_a_of_type_JavaUtilSet.add("android.settings.action.MANAGE_OVERLAY_PERMISSION");
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      jdField_a_of_type_JavaUtilSet.add("android.settings.NFC_PAYMENT_SETTINGS");
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      jdField_a_of_type_JavaUtilSet.add("android.settings.NFC_SETTINGS");
+    }
+    jdField_a_of_type_JavaUtilSet.add("android.settings.NFCSHARING_SETTINGS");
+    jdField_a_of_type_JavaUtilSet.add("android.settings.SETTINGS");
+    jdField_a_of_type_JavaUtilSet.add("android.settings.WIFI_SETTINGS");
+    jdField_a_of_type_JavaUtilSet.add("android.settings.WIRELESS_SETTINGS");
+    if (Build.VERSION.SDK_INT >= 23) {
+      jdField_a_of_type_JavaUtilSet.add("android.settings.action.MANAGE_WRITE_SETTINGS");
+    }
+    jdField_a_of_type_JavaUtilSet.add("android.media.action.IMAGE_CAPTURE");
+    jdField_a_of_type_JavaUtilSet.add("android.intent.action.PICK");
+    jdField_a_of_type_JavaUtilSet.add("android.intent.action.CALL");
+    jdField_a_of_type_JavaUtilSet.add("android.intent.action.DIAL");
+    jdField_a_of_type_JavaUtilSet.add("android.intent.action.CALL_BUTTON");
+    jdField_a_of_type_JavaUtilSet.add("android.intent.action.SENDTO");
+    jdField_a_of_type_JavaUtilSet.add("android.intent.action.GET_CONTENT");
+    jdField_a_of_type_JavaUtilSet.add("android.intent.action.RINGTONE_PICKER");
+    if (Build.VERSION.SDK_INT >= 19) {
+      jdField_a_of_type_JavaUtilSet.add("android.nfc.cardemulation.action.ACTION_CHANGE_DEFAULT");
+    }
+    jdField_a_of_type_JavaUtilSet.add("android.content.pm.CONFIRM_ACCESS_APPCATONS");
+    jdField_a_of_type_JavaUtilSet.add("com.meizu.safe.security.SHOW_APPSEC");
+    jdField_a_of_type_JavaUtilSet.add("miui.intent.action.APP_PERM_EDITOR");
+    jdField_a_of_type_JavaUtilSet.add("android.intent.action.INSERT_OR_EDIT");
+    jdField_a_of_type_JavaUtilSet.add("android.intent.action.INSERT");
+    if (Build.VERSION.SDK_INT >= 16) {
+      jdField_a_of_type_JavaUtilSet.add("android.service.wallpaper.CHANGE_LIVE_WALLPAPER");
+    }
+    b = new ArraySet();
+    b.add(MobileQQ.getContext().getPackageName());
+    b.add("com.android.settings");
+    b.add("com.miui.securitycenter");
+    b.add("com.miui.system");
+    b.add("com.zui.safecenter");
+    b.add("com.android.mms");
+    b.add("com.sonymobile.cta");
+    b.add("com.huawei.systemmanager");
+    b.add("com.sec.android.app.capabilitymanager");
+    b.add("com.coloros.safecenter");
+    c = new ArraySet();
+    c.add("com.tencent.mm");
+    c.add("com.tencent.mtt");
+    c.add("com.tencent.qzone.capaoptools");
   }
   
   private int a(Runnable paramRunnable)
@@ -142,6 +138,10 @@ public class JefsClass
       int i = this.jdField_a_of_type_Int;
       this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(i, paramRunnable);
       return i;
+    }
+    for (;;)
+    {
+      throw paramRunnable;
     }
   }
   
@@ -165,97 +165,52 @@ public class JefsClass
     return localArrayMap;
   }
   
-  public static JefsClass.PolicyConfig a(JSONObject paramJSONObject)
-  {
-    JefsClass.PolicyConfig localPolicyConfig = new JefsClass.PolicyConfig();
-    if (paramJSONObject == null) {
-      return localPolicyConfig;
-    }
-    label203:
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = paramJSONObject.optJSONArray("packages");
-        String str;
-        if (localObject1 != null)
-        {
-          j = ((JSONArray)localObject1).length();
-          i = 0;
-          if (i < j)
-          {
-            str = ((JSONArray)localObject1).getString(i);
-            if (str == null) {
-              break label203;
-            }
-            localPolicyConfig.jdField_a_of_type_JavaUtilSet.add(str);
-            break label203;
-          }
-        }
-        paramJSONObject = paramJSONObject.optJSONArray("policy");
-        if (paramJSONObject == null) {
-          break;
-        }
-        int j = paramJSONObject.length();
-        int i = 0;
-        if (i >= j) {
-          break;
-        }
-        Object localObject2 = paramJSONObject.getJSONObject(i);
-        if (localObject2 != null)
-        {
-          localObject1 = ((JSONObject)localObject2).optString("package");
-          str = ((JSONObject)localObject2).optString("schema");
-          localObject2 = ((JSONObject)localObject2).optString("action");
-          JefsClass.Policy localPolicy = new JefsClass.Policy();
-          localPolicy.a = ((String)localObject1);
-          localPolicy.b = str.toLowerCase();
-          localPolicy.c = ((String)localObject2).toLowerCase();
-          localPolicyConfig.jdField_a_of_type_JavaUtilList.add(localPolicy);
-        }
-        i += 1;
-        continue;
-        i += 1;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        QLog.d("TeleScreen|JefsClass", 1, paramJSONObject, new Object[0]);
-        return localPolicyConfig;
-      }
-    }
-  }
-  
   private static String a(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeleScreen|JefsClass", 2, "getSourceId() called with: context = [" + paramContext + "], intent = [" + paramIntent + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getSourceId() called with: context = [");
+      ((StringBuilder)localObject).append(paramContext);
+      ((StringBuilder)localObject).append("], intent = [");
+      ((StringBuilder)localObject).append(paramIntent);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("TeleScreen|JefsClass", 2, ((StringBuilder)localObject).toString());
     }
-    Intent localIntent = null;
+    Object localObject = null;
     if (paramIntent.hasExtra("big_brother_source_key"))
     {
       paramIntent = paramIntent.getStringExtra("big_brother_source_key");
-      localIntent = paramIntent;
+      localObject = paramIntent;
       if (QLog.isColorLevel())
       {
-        QLog.d("TeleScreen|JefsClass", 2, "getSourceId() src = [" + paramIntent + "], from intent");
-        localIntent = paramIntent;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getSourceId() src = [");
+        ((StringBuilder)localObject).append(paramIntent);
+        ((StringBuilder)localObject).append("], from intent");
+        QLog.d("TeleScreen|JefsClass", 2, ((StringBuilder)localObject).toString());
+        localObject = paramIntent;
       }
     }
-    paramIntent = localIntent;
-    if (localIntent == null)
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
     {
-      paramIntent = localIntent;
+      paramIntent = (Intent)localObject;
       if ((paramContext instanceof Activity))
       {
         paramContext = ((Activity)paramContext).getIntent();
-        paramIntent = localIntent;
+        paramIntent = (Intent)localObject;
         if (paramContext != null)
         {
           paramContext = paramContext.getStringExtra("big_brother_source_key");
           paramIntent = paramContext;
           if (QLog.isColorLevel())
           {
-            QLog.d("TeleScreen|JefsClass", 2, "getSourceId() src = [" + paramContext + "], from Activity");
+            paramIntent = new StringBuilder();
+            paramIntent.append("getSourceId() src = [");
+            paramIntent.append(paramContext);
+            paramIntent.append("], from Activity");
+            QLog.d("TeleScreen|JefsClass", 2, paramIntent.toString());
             paramIntent = paramContext;
           }
         }
@@ -266,44 +221,65 @@ public class JefsClass
   
   private static String a(Context paramContext, Intent paramIntent, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeleScreen|JefsClass", 2, "getRefId() called with: context = [" + paramContext + "], intent = [" + paramIntent + "], source = [" + paramString + "]");
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getRefId() called with: context = [");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("], intent = [");
+      localStringBuilder.append(paramIntent);
+      localStringBuilder.append("], source = [");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.d("TeleScreen|JefsClass", 2, localStringBuilder.toString());
     }
     if ("biz_src_ads".equals(paramString))
     {
       if ((paramIntent != null) && (paramIntent.getStringExtra("big_brother_ref_source_key") != null))
       {
         paramContext = paramIntent.getStringExtra("big_brother_ref_source_key");
-        paramIntent = paramContext;
         if (QLog.isColorLevel())
         {
-          QLog.d("TeleScreen|JefsClass", 2, "getRefId() refId = [" + paramContext + "], from intent");
-          paramIntent = paramContext;
+          paramIntent = new StringBuilder();
+          paramIntent.append("getRefId() refId = [");
+          paramIntent.append(paramContext);
+          paramIntent.append("], from intent");
+          QLog.d("TeleScreen|JefsClass", 2, paramIntent.toString());
         }
-        return paramIntent;
+        return paramContext;
       }
       if ((paramContext instanceof Activity))
       {
         paramContext = ((Activity)paramContext).getIntent();
         if (paramContext != null)
         {
-          paramString = paramContext.getStringExtra("big_brother_source_key");
-          String str = paramContext.getStringExtra("big_brother_ref_source_key");
-          if (str != null) {}
-          for (paramContext = str;; paramContext = paramString)
-          {
-            paramIntent = paramContext;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("TeleScreen|JefsClass", 2, "getRefId() Activity Source = [" + paramString + "], refId = [" + str + "]");
-            return paramContext;
+          paramIntent = paramContext.getStringExtra("big_brother_source_key");
+          paramString = paramContext.getStringExtra("big_brother_ref_source_key");
+          if (paramString != null) {
+            paramContext = paramString;
+          } else {
+            paramContext = paramIntent;
           }
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getRefId() Activity Source = [");
+            localStringBuilder.append(paramIntent);
+            localStringBuilder.append("], refId = [");
+            localStringBuilder.append(paramString);
+            localStringBuilder.append("]");
+            QLog.d("TeleScreen|JefsClass", 2, localStringBuilder.toString());
+          }
+          return paramContext;
         }
       }
       else
       {
-        QLog.i("TeleScreen|JefsClass", 1, "getRefId: context is not Activity " + paramContext);
+        paramIntent = new StringBuilder();
+        paramIntent.append("getRefId: context is not Activity ");
+        paramIntent.append(paramContext);
+        QLog.i("TeleScreen|JefsClass", 1, paramIntent.toString());
       }
     }
     return null;
@@ -335,550 +311,293 @@ public class JefsClass
     String str2 = paramIntent.getPackage();
     String str3 = a(paramContext, paramIntent);
     String str1 = a(paramContext, paramIntent, str3);
-    if (QLog.isColorLevel()) {
-      QLog.d("TeleScreen|JefsClass", 2, "src " + str3 + ", ref " + str1);
-    }
-    if ((jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface == null) || (!jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface.a()))
+    if (QLog.isColorLevel())
     {
-      a(paramCancelableRunnable);
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("src ");
+      ((StringBuilder)localObject).append(str3);
+      ((StringBuilder)localObject).append(", ref ");
+      ((StringBuilder)localObject).append(str1);
+      QLog.d("TeleScreen|JefsClass", 2, ((StringBuilder)localObject).toString());
     }
-    if (b.contains(str2))
+    Object localObject = jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface;
+    if ((localObject != null) && (((IJefsClassInjectInterface)localObject).a()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|JefsClass", 2, "skip package: " + str2 + ", sourceId: " + str3 + ", refId = " + str1);
+      if (b.contains(str2))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("skip package: ");
+          paramContext.append(str2);
+          paramContext.append(", sourceId: ");
+          paramContext.append(str3);
+          paramContext.append(", refId = ");
+          paramContext.append(str1);
+          QLog.d("TeleScreen|JefsClass", 2, paramContext.toString());
+        }
+        a(paramCancelableRunnable);
+        return;
       }
-      a(paramCancelableRunnable);
-      return;
-    }
-    str1 = str2;
-    if (TextUtils.isEmpty(str2))
-    {
-      localObject = paramIntent.getComponent();
       str1 = str2;
-      if (localObject != null)
+      if (TextUtils.isEmpty(str2))
       {
-        str2 = ((ComponentName)localObject).getPackageName();
+        localObject = paramIntent.getComponent();
         str1 = str2;
-        if (b.contains(str2))
+        if (localObject != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("TeleScreen|JefsClass", 2, "skip package: " + str2 + ", sourceId: " + str3);
+          str2 = ((ComponentName)localObject).getPackageName();
+          str1 = str2;
+          if (b.contains(str2))
+          {
+            if (QLog.isColorLevel())
+            {
+              paramContext = new StringBuilder();
+              paramContext.append("skip package: ");
+              paramContext.append(str2);
+              paramContext.append(", sourceId: ");
+              paramContext.append(str3);
+              QLog.d("TeleScreen|JefsClass", 2, paramContext.toString());
+            }
+            a(paramCancelableRunnable);
+            return;
           }
-          a(paramCancelableRunnable);
-          return;
         }
       }
-    }
-    str2 = paramIntent.getAction();
-    if (jdField_a_of_type_JavaUtilSet.contains(str2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|JefsClass", 2, "skip action: " + str2);
+      str2 = paramIntent.getAction();
+      if (jdField_a_of_type_JavaUtilSet.contains(str2))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("skip action: ");
+          paramContext.append(str2);
+          QLog.d("TeleScreen|JefsClass", 2, paramContext.toString());
+        }
+        a(paramCancelableRunnable);
+        return;
       }
-      a(paramCancelableRunnable);
-      return;
-    }
-    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if ((localObject != null) && (!((AppRuntime)localObject).isLogin()))
-    {
-      QLog.i("TeleScreen|JefsClass", 1, "haven't login ");
-      a(paramCancelableRunnable);
-      return;
-    }
-    if ((localObject != null) && (jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface != null)) {
-      jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface.a(((AppRuntime)localObject).getAccount(), paramIntent);
-    }
-    localObject = paramIntent.getData();
-    if ((localObject != null) && (((Uri)localObject).getScheme() != null) && (((((Uri)localObject).getScheme().startsWith("tencent")) && ("tauth.qq.com".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().startsWith("qwallet")) && ("open_pay".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().equals("tmast")) && ("sdk_wake".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().equals("tmast")) && ("spaceclean".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().equals("https")) && ("ssl.ptlogin2.qq.com".equals(((Uri)localObject).getAuthority())) && ("/jump".equals(((Uri)localObject).getPath())))))
-    {
-      a(paramCancelableRunnable);
-      return;
-    }
-    paramContext = paramContext.getPackageManager().queryIntentActivities(paramIntent, 65536);
-    if ((paramContext == null) || (paramContext.size() == 0))
-    {
-      QLog.i("TeleScreen|JefsClass", 1, "no matching app: " + paramIntent.getDataString());
-      a(paramCancelableRunnable);
-      return;
-    }
-    if (paramContext.size() == 1)
-    {
-      localObject = ((ResolveInfo)paramContext.get(0)).activityInfo;
+      localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if ((localObject != null) && (!((AppRuntime)localObject).isLogin()))
+      {
+        QLog.i("TeleScreen|JefsClass", 1, "haven't login ");
+        a(paramCancelableRunnable);
+        return;
+      }
       if (localObject != null)
       {
-        if (b.contains(((ActivityInfo)localObject).packageName))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TeleScreen|JefsClass", 2, "skip package: " + ((ActivityInfo)localObject).packageName + ", sourceId: " + str3);
-          }
-          a(paramCancelableRunnable);
-          return;
-        }
-        if (("com.tencent.android.qqdownloader".equals(((ActivityInfo)localObject).packageName)) && ("com.live.push.PushActivity".equals(((ActivityInfo)localObject).name)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TeleScreen|JefsClass", 2, "wake up yyb");
-          }
-          a(paramCancelableRunnable);
-          return;
+        IJefsClassInjectInterface localIJefsClassInjectInterface = jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface;
+        if (localIJefsClassInjectInterface != null) {
+          localIJefsClassInjectInterface.a(((AppRuntime)localObject).getAccount(), paramIntent);
         }
       }
+      localObject = paramIntent.getData();
+      if ((localObject != null) && (((Uri)localObject).getScheme() != null) && (((((Uri)localObject).getScheme().startsWith("tencent")) && ("tauth.qq.com".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().startsWith("qwallet")) && ("open_pay".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().equals("tmast")) && ("sdk_wake".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().equals("tmast")) && ("spaceclean".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().equals("https")) && ("ssl.ptlogin2.qq.com".equals(((Uri)localObject).getAuthority())) && ("/jump".equals(((Uri)localObject).getPath())))))
+      {
+        a(paramCancelableRunnable);
+        return;
+      }
+      localObject = paramContext.getPackageManager().queryIntentActivities(paramIntent, 65536);
+      if ((localObject != null) && (((List)localObject).size() != 0))
+      {
+        if (((List)localObject).size() == 1)
+        {
+          paramContext = ((ResolveInfo)((List)localObject).get(0)).activityInfo;
+          if (paramContext != null)
+          {
+            if (b.contains(paramContext.packageName))
+            {
+              if (QLog.isColorLevel())
+              {
+                paramIntent = new StringBuilder();
+                paramIntent.append("skip package: ");
+                paramIntent.append(paramContext.packageName);
+                paramIntent.append(", sourceId: ");
+                paramIntent.append(str3);
+                QLog.d("TeleScreen|JefsClass", 2, paramIntent.toString());
+              }
+              a(paramCancelableRunnable);
+              return;
+            }
+            if (("com.tencent.android.qqdownloader".equals(paramContext.packageName)) && ("com.live.push.PushActivity".equals(paramContext.name)))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("TeleScreen|JefsClass", 2, "wake up yyb");
+              }
+              a(paramCancelableRunnable);
+              return;
+            }
+          }
+        }
+        paramInterceptor.a(str1, paramIntent.getDataString(), str2, (List)localObject, paramCancelableRunnable);
+        return;
+      }
+      paramContext = new StringBuilder();
+      paramContext.append("no matching app: ");
+      paramContext.append(paramIntent.getDataString());
+      QLog.i("TeleScreen|JefsClass", 1, paramContext.toString());
+      a(paramCancelableRunnable);
+      return;
     }
-    paramInterceptor.a(str1, paramIntent.getDataString(), str2, paramContext, paramCancelableRunnable);
+    a(paramCancelableRunnable);
   }
   
-  /* Error */
   private void a(Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, String paramString4, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable, int paramInt)
   {
-    // Byte code:
-    //   0: ldc 33
-    //   2: iconst_1
-    //   3: ldc_w 557
-    //   6: invokestatic 378	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   9: aload_1
-    //   10: aload_2
-    //   11: invokestatic 415	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Landroid/content/Intent;)Ljava/lang/String;
-    //   14: astore 12
-    //   16: aload_1
-    //   17: aload_2
-    //   18: aload 12
-    //   20: invokestatic 417	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;)Ljava/lang/String;
-    //   23: astore 13
-    //   25: invokestatic 313	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   28: ifeq +49 -> 77
-    //   31: ldc 33
-    //   33: iconst_2
-    //   34: ldc_w 559
-    //   37: bipush 6
-    //   39: anewarray 301	java/lang/Object
-    //   42: dup
-    //   43: iconst_0
-    //   44: aload 12
-    //   46: aastore
-    //   47: dup
-    //   48: iconst_1
-    //   49: aload 13
-    //   51: aastore
-    //   52: dup
-    //   53: iconst_2
-    //   54: aload_3
-    //   55: aastore
-    //   56: dup
-    //   57: iconst_3
-    //   58: aload 4
-    //   60: aastore
-    //   61: dup
-    //   62: iconst_4
-    //   63: aload 5
-    //   65: aastore
-    //   66: dup
-    //   67: iconst_5
-    //   68: aload 6
-    //   70: aastore
-    //   71: invokestatic 563	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   74: invokestatic 41	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   77: aload 8
-    //   79: aload 12
-    //   81: invokevirtual 568	com/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable:a	(Ljava/lang/String;)V
-    //   84: invokestatic 573	com/tencent/mobileqq/config/QConfigManager:a	()Lcom/tencent/mobileqq/config/QConfigManager;
-    //   87: sipush 416
-    //   90: invokevirtual 575	com/tencent/mobileqq/config/QConfigManager:a	(I)Ljava/lang/Object;
-    //   93: checkcast 577	com/tencent/mobileqq/bigbrother/TeleScreenConfig$Config
-    //   96: astore 11
-    //   98: aload 11
-    //   100: getfield 578	com/tencent/mobileqq/bigbrother/TeleScreenConfig$Config:jdField_a_of_type_Boolean	Z
-    //   103: ifeq +180 -> 283
-    //   106: aload 11
-    //   108: aload 12
-    //   110: aload 5
-    //   112: invokevirtual 581	com/tencent/mobileqq/bigbrother/TeleScreenConfig$Config:a	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   115: ifne +168 -> 283
-    //   118: aload 7
-    //   120: invokestatic 584	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/util/List;)Z
-    //   123: ifne +160 -> 283
-    //   126: aload 12
-    //   128: aload 4
-    //   130: invokestatic 585	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   133: ifne +150 -> 283
-    //   136: iconst_1
-    //   137: istore 10
-    //   139: iload 10
-    //   141: ifeq +148 -> 289
-    //   144: aload 8
-    //   146: astore 11
-    //   148: iload 10
-    //   150: ifne +561 -> 711
-    //   153: ldc 33
-    //   155: iconst_1
-    //   156: ldc_w 587
-    //   159: invokestatic 378	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   162: aload_0
-    //   163: aload 8
-    //   165: invokespecial 391	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/Runnable;)V
-    //   168: iconst_0
-    //   169: istore 9
-    //   171: aload_2
-    //   172: ldc_w 589
-    //   175: iconst_1
-    //   176: invokevirtual 593	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-    //   179: pop
-    //   180: new 595	java/lang/ref/WeakReference
-    //   183: dup
-    //   184: aload_1
-    //   185: invokespecial 598	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   188: astore 8
-    //   190: ldc_w 600
-    //   193: aload 6
-    //   195: invokevirtual 365	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   198: ifeq +97 -> 295
-    //   201: ldc_w 602
-    //   204: aload_2
-    //   205: invokevirtual 605	android/content/Intent:getType	()Ljava/lang/String;
-    //   208: invokevirtual 608	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   211: ifne +13 -> 224
-    //   214: aload_2
-    //   215: ldc_w 610
-    //   218: invokevirtual 340	android/content/Intent:hasExtra	(Ljava/lang/String;)Z
-    //   221: ifeq +74 -> 295
-    //   224: invokestatic 313	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   227: ifeq +12 -> 239
-    //   230: ldc 33
-    //   232: iconst_2
-    //   233: ldc_w 612
-    //   236: invokestatic 41	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   239: new 614	com/tencent/mobileqq/haoliyou/JefsClass$7
-    //   242: dup
-    //   243: aload_0
-    //   244: aload_2
-    //   245: aload 11
-    //   247: aload 8
-    //   249: aload 12
-    //   251: aload 13
-    //   253: invokespecial 617	com/tencent/mobileqq/haoliyou/JefsClass$7:<init>	(Lcom/tencent/mobileqq/haoliyou/JefsClass;Landroid/content/Intent;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;Ljava/lang/ref/WeakReference;Ljava/lang/String;Ljava/lang/String;)V
-    //   256: bipush 64
-    //   258: aconst_null
-    //   259: iconst_1
-    //   260: invokestatic 623	com/tencent/mobileqq/app/ThreadManagerV2:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   263: return
-    //   264: astore_1
-    //   265: ldc 33
-    //   267: iconst_1
-    //   268: aload_1
-    //   269: iconst_0
-    //   270: anewarray 301	java/lang/Object
-    //   273: invokestatic 625	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   276: aload_0
-    //   277: aload 8
-    //   279: invokespecial 391	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/Runnable;)V
-    //   282: return
-    //   283: iconst_0
-    //   284: istore 10
-    //   286: goto -147 -> 139
-    //   289: aconst_null
-    //   290: astore 11
-    //   292: goto -144 -> 148
-    //   295: aload 5
-    //   297: ifnull +98 -> 395
-    //   300: aload 5
-    //   302: ldc_w 627
-    //   305: invokevirtual 485	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   308: ifne +14 -> 322
-    //   311: aload 5
-    //   313: ldc_w 629
-    //   316: invokevirtual 485	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   319: ifeq +76 -> 395
-    //   322: ldc_w 602
-    //   325: aload_2
-    //   326: ldc_w 631
-    //   329: invokevirtual 343	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   332: invokevirtual 365	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   335: ifeq +37 -> 372
-    //   338: aload_0
-    //   339: aload_1
-    //   340: aload 12
-    //   342: aload 13
-    //   344: aconst_null
-    //   345: aload 5
-    //   347: aload 11
-    //   349: invokespecial 634	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
-    //   352: return
-    //   353: astore_1
-    //   354: ldc 33
-    //   356: iconst_1
-    //   357: aload_1
-    //   358: iconst_0
-    //   359: anewarray 301	java/lang/Object
-    //   362: invokestatic 625	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   365: aload_0
-    //   366: aload 11
-    //   368: invokespecial 391	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/Runnable;)V
-    //   371: return
-    //   372: aload_0
-    //   373: aload_1
-    //   374: aload 12
-    //   376: aload 13
-    //   378: aload 4
-    //   380: aload_3
-    //   381: aload 5
-    //   383: aload 6
-    //   385: aload 7
-    //   387: aload 11
-    //   389: iload 9
-    //   391: invokespecial 637	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
-    //   394: return
-    //   395: aload 5
-    //   397: ifnull +98 -> 495
-    //   400: aload 5
-    //   402: ldc_w 639
-    //   405: invokevirtual 485	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   408: ifeq +87 -> 495
-    //   411: aload_0
-    //   412: aload 5
-    //   414: ldc_w 639
-    //   417: invokevirtual 640	java/lang/String:length	()I
-    //   420: invokevirtual 643	java/lang/String:substring	(I)Ljava/lang/String;
-    //   423: invokespecial 645	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/String;)Landroid/support/v4/util/ArrayMap;
-    //   426: astore_2
-    //   427: ldc_w 602
-    //   430: invokestatic 650	java/net/URLEncoder:encode	(Ljava/lang/String;)Ljava/lang/String;
-    //   433: aload_2
-    //   434: ldc_w 652
-    //   437: invokevirtual 655	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   440: invokevirtual 365	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   443: ifeq +29 -> 472
-    //   446: aload_0
-    //   447: aload_1
-    //   448: aload 12
-    //   450: aload 13
-    //   452: aconst_null
-    //   453: aload_2
-    //   454: ldc_w 657
-    //   457: invokevirtual 655	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   460: checkcast 229	java/lang/String
-    //   463: invokestatic 662	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
-    //   466: aload 11
-    //   468: invokespecial 634	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
-    //   471: return
-    //   472: aload_0
-    //   473: aload_1
-    //   474: aload 12
-    //   476: aload 13
-    //   478: aload 4
-    //   480: aload_3
-    //   481: aload 5
-    //   483: aload 6
-    //   485: aload 7
-    //   487: aload 11
-    //   489: iload 9
-    //   491: invokespecial 637	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
-    //   494: return
-    //   495: aload 5
-    //   497: ifnull +132 -> 629
-    //   500: aload 5
-    //   502: ldc_w 664
-    //   505: invokevirtual 485	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   508: ifeq +121 -> 629
-    //   511: aload 5
-    //   513: ldc_w 666
-    //   516: invokevirtual 670	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   519: istore 10
-    //   521: iload 10
-    //   523: iflt +83 -> 606
-    //   526: aload_0
-    //   527: aload 5
-    //   529: iload 10
-    //   531: invokevirtual 643	java/lang/String:substring	(I)Ljava/lang/String;
-    //   534: invokespecial 645	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/String;)Landroid/support/v4/util/ArrayMap;
-    //   537: astore_2
-    //   538: ldc_w 602
-    //   541: invokestatic 650	java/net/URLEncoder:encode	(Ljava/lang/String;)Ljava/lang/String;
-    //   544: aload_2
-    //   545: ldc_w 652
-    //   548: invokevirtual 655	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   551: invokevirtual 365	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   554: ifeq +29 -> 583
-    //   557: aload_0
-    //   558: aload_1
-    //   559: aload 12
-    //   561: aload 13
-    //   563: aconst_null
-    //   564: aload_2
-    //   565: ldc_w 657
-    //   568: invokevirtual 655	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   571: checkcast 229	java/lang/String
-    //   574: invokestatic 662	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
-    //   577: aload 11
-    //   579: invokespecial 634	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
-    //   582: return
-    //   583: aload_0
-    //   584: aload_1
-    //   585: aload 12
-    //   587: aload 13
-    //   589: aload 4
-    //   591: aload_3
-    //   592: aload 5
-    //   594: aload 6
-    //   596: aload 7
-    //   598: aload 11
-    //   600: iload 9
-    //   602: invokespecial 637	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
-    //   605: return
-    //   606: aload_0
-    //   607: aload_1
-    //   608: aload 12
-    //   610: aload 13
-    //   612: aload 4
-    //   614: aload_3
-    //   615: aload 5
-    //   617: aload 6
-    //   619: aload 7
-    //   621: aload 11
-    //   623: iload 9
-    //   625: invokespecial 637	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
-    //   628: return
-    //   629: aload 5
-    //   631: ifnull +57 -> 688
-    //   634: aload 5
-    //   636: ldc_w 672
-    //   639: invokevirtual 485	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   642: ifeq +46 -> 688
-    //   645: aload_2
-    //   646: ldc_w 673
-    //   649: invokevirtual 343	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   652: astore_3
-    //   653: aconst_null
-    //   654: astore_2
-    //   655: aload_3
-    //   656: ifnonnull +18 -> 674
-    //   659: aload 5
-    //   661: invokestatic 677	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   664: ldc_w 679
-    //   667: invokevirtual 682	android/net/Uri:getQueryParameter	(Ljava/lang/String;)Ljava/lang/String;
-    //   670: invokestatic 662	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
-    //   673: astore_2
-    //   674: aload_0
-    //   675: aload_1
-    //   676: aload 12
-    //   678: aload 13
-    //   680: aload_3
-    //   681: aload_2
-    //   682: aload 11
-    //   684: invokespecial 634	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
-    //   687: return
-    //   688: aload_0
-    //   689: aload_1
-    //   690: aload 12
-    //   692: aload 13
-    //   694: aload 4
-    //   696: aload_3
-    //   697: aload 5
-    //   699: aload 6
-    //   701: aload 7
-    //   703: aload 11
-    //   705: iload 9
-    //   707: invokespecial 637	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
-    //   710: return
-    //   711: goto -540 -> 171
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	714	0	this	JefsClass
-    //   0	714	1	paramContext	Context
-    //   0	714	2	paramIntent	Intent
-    //   0	714	3	paramString1	String
-    //   0	714	4	paramString2	String
-    //   0	714	5	paramString3	String
-    //   0	714	6	paramString4	String
-    //   0	714	7	paramList	List<ResolveInfo>
-    //   0	714	8	paramCancelableRunnable	JefsClass.CancelableRunnable
-    //   0	714	9	paramInt	int
-    //   137	393	10	i	int
-    //   96	608	11	localObject	Object
-    //   14	677	12	str1	String
-    //   23	670	13	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   84	98	264	java/lang/Throwable
-    //   180	224	353	java/lang/Throwable
-    //   224	239	353	java/lang/Throwable
-    //   239	263	353	java/lang/Throwable
-    //   300	322	353	java/lang/Throwable
-    //   322	352	353	java/lang/Throwable
-    //   372	394	353	java/lang/Throwable
-    //   400	471	353	java/lang/Throwable
-    //   472	494	353	java/lang/Throwable
-    //   500	521	353	java/lang/Throwable
-    //   526	582	353	java/lang/Throwable
-    //   583	605	353	java/lang/Throwable
-    //   606	628	353	java/lang/Throwable
-    //   634	653	353	java/lang/Throwable
-    //   659	674	353	java/lang/Throwable
-    //   674	687	353	java/lang/Throwable
-    //   688	710	353	java/lang/Throwable
+    QLog.i("TeleScreen|JefsClass", 1, "checkAndDoAsyn: ");
+    String str1 = a(paramContext, paramIntent);
+    String str2 = a(paramContext, paramIntent, str1);
+    if (QLog.isColorLevel()) {
+      QLog.d("TeleScreen|JefsClass", 2, String.format("src: %s, ref: %s, url: %s, packageName: %s, scheme: %s, action: %s", new Object[] { str1, str2, paramString1, paramString2, paramString3, paramString4 }));
+    }
+    paramCancelableRunnable.a(str1);
+    try
+    {
+      Object localObject1 = (TeleScreenConfig.Config)QConfigManager.a().a(416);
+      int i;
+      if ((((TeleScreenConfig.Config)localObject1).a) && (!((TeleScreenConfig.Config)localObject1).a(str1, paramString3)) && (!a(paramList)) && (!a(str1, paramString2))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      Object localObject2 = null;
+      if (i != 0) {
+        localObject1 = paramCancelableRunnable;
+      } else {
+        localObject1 = null;
+      }
+      if (i == 0)
+      {
+        QLog.i("TeleScreen|JefsClass", 1, "report async");
+        a(paramCancelableRunnable);
+        paramInt = 0;
+      }
+      paramIntent.putExtra("keyIsDownLoad", true);
+      try
+      {
+        paramCancelableRunnable = new WeakReference(paramContext);
+        boolean bool = "android.intent.action.VIEW".equals(paramString4);
+        if ((bool) && (("application/vnd.android.package-archive".equalsIgnoreCase(paramIntent.getType())) || (paramIntent.hasExtra("yyb_install_url"))))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TeleScreen|JefsClass", 2, "install");
+          }
+          ThreadManagerV2.excute(new JefsClass.7(this, paramIntent, (JefsClass.CancelableRunnable)localObject1, paramCancelableRunnable, str1, str2), 64, null, true);
+          return;
+        }
+        if ((paramString3 != null) && ((paramString3.startsWith("http://")) || (paramString3.startsWith("https://")))) {
+          if ("application/vnd.android.package-archive".equals(paramIntent.getStringExtra("mimetype")))
+          {
+            a(paramContext, str1, str2, null, paramString3, (Runnable)localObject1);
+            return;
+          }
+        }
+        try
+        {
+          a(paramContext, str1, str2, paramString2, paramString1, paramString3, paramString4, paramList, (JefsClass.CancelableRunnable)localObject1, paramInt);
+          return;
+        }
+        catch (Throwable paramContext) {}
+        if ((paramString3 != null) && (paramString3.startsWith("mttbrowser://")))
+        {
+          paramIntent = a(paramString3.substring(13));
+          if (URLEncoder.encode("application/vnd.android.package-archive").equals(paramIntent.get("downloadmimetype")))
+          {
+            a(paramContext, str1, str2, null, URLDecoder.decode((String)paramIntent.get("downloadurl")), (Runnable)localObject1);
+            return;
+          }
+          a(paramContext, str1, str2, paramString2, paramString1, paramString3, paramString4, paramList, (JefsClass.CancelableRunnable)localObject1, paramInt);
+          return;
+        }
+        if ((paramString3 != null) && (paramString3.startsWith("tencentfile://")))
+        {
+          i = paramString3.indexOf(",url=");
+          if (i >= 0)
+          {
+            paramIntent = a(paramString3.substring(i));
+            if (URLEncoder.encode("application/vnd.android.package-archive").equals(paramIntent.get("downloadmimetype")))
+            {
+              a(paramContext, str1, str2, null, URLDecoder.decode((String)paramIntent.get("downloadurl")), (Runnable)localObject1);
+              return;
+            }
+            a(paramContext, str1, str2, paramString2, paramString1, paramString3, paramString4, paramList, (JefsClass.CancelableRunnable)localObject1, paramInt);
+            return;
+          }
+          a(paramContext, str1, str2, paramString2, paramString1, paramString3, paramString4, paramList, (JefsClass.CancelableRunnable)localObject1, paramInt);
+          return;
+        }
+        paramCancelableRunnable = (JefsClass.CancelableRunnable)localObject1;
+        if ((paramString3 != null) && (paramString3.startsWith("tmast://")))
+        {
+          paramString1 = paramIntent.getStringExtra("packageName");
+          paramIntent = localObject2;
+          if (paramString1 == null) {
+            paramIntent = URLDecoder.decode(Uri.parse(paramString3).getQueryParameter("downl_url"));
+          }
+          a(paramContext, str1, str2, paramString1, paramIntent, paramCancelableRunnable);
+          return;
+        }
+        a(paramContext, str1, str2, paramString2, paramString1, paramString3, paramString4, paramList, paramCancelableRunnable, paramInt);
+        return;
+      }
+      catch (Throwable paramContext) {}
+      QLog.e("TeleScreen|JefsClass", 1, paramContext, new Object[0]);
+      a((Runnable)localObject1);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.e("TeleScreen|JefsClass", 1, paramContext, new Object[0]);
+      a(paramCancelableRunnable);
+    }
   }
   
   private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, Runnable paramRunnable)
   {
-    String str;
-    Object localObject;
     if (TextUtils.isEmpty(paramString1))
     {
-      str = paramContext.getClass().getName();
-      if (paramString3 == null) {
-        break label73;
-      }
-      localObject = paramString3;
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str, (String)localObject);
-      localObject = new WeakReference(paramContext);
-      if (jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface != null) {
-        break;
-      }
-      return;
-      label73:
-      if (paramString4 == null) {
-        localObject = "";
+      localObject2 = paramContext.getClass().getName();
+      if (paramString3 != null) {
+        localObject1 = paramString3;
+      } else if (paramString4 == null) {
+        localObject1 = "";
       } else {
-        localObject = paramString4;
+        localObject1 = paramString4;
       }
+      ReportController.b(null, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", (String)localObject2, (String)localObject1);
     }
-    jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface.a(paramContext, paramString1, paramString3, paramString4, paramString2, new JefsClass.4(this, paramRunnable, (WeakReference)localObject, paramString1));
+    Object localObject1 = new WeakReference(paramContext);
+    Object localObject2 = jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface;
+    if (localObject2 == null) {
+      return;
+    }
+    ((IJefsClassInjectInterface)localObject2).a(paramContext, paramString1, paramString3, paramString4, paramString2, new JefsClass.4(this, paramRunnable, (WeakReference)localObject1, paramString1));
   }
   
   private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable, int paramInt)
   {
-    String str;
-    Object localObject;
     if (TextUtils.isEmpty(paramString1))
     {
-      str = paramContext.getClass().getName();
-      if (paramString3 == null) {
-        break label73;
-      }
-      localObject = paramString3;
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str, (String)localObject);
-      localObject = new WeakReference(paramContext);
-      if (jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface != null) {
-        break;
-      }
-      return;
-      label73:
-      if (paramString5 != null) {
-        localObject = paramString5;
+      localObject2 = paramContext.getClass().getName();
+      if (paramString3 != null) {
+        localObject1 = paramString3;
+      } else if (paramString5 != null) {
+        localObject1 = paramString5;
       } else if (paramString6 != null) {
-        localObject = paramString6;
+        localObject1 = paramString6;
       } else if (paramString4 == null) {
-        localObject = "";
+        localObject1 = "";
       } else {
-        localObject = paramString4;
+        localObject1 = paramString4;
       }
+      ReportController.b(null, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", (String)localObject2, (String)localObject1);
     }
-    jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface.a(paramContext, paramString1, paramString4, paramString3, paramString5, paramString6, paramList, paramString2, new JefsClass.5(this, (WeakReference)localObject, paramCancelableRunnable, paramInt, paramString1));
+    Object localObject1 = new WeakReference(paramContext);
+    Object localObject2 = jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface;
+    if (localObject2 == null) {
+      return;
+    }
+    ((IJefsClassInjectInterface)localObject2).a(paramContext, paramString1, paramString4, paramString3, paramString5, paramString6, paramList, paramString2, new JefsClass.5(this, (WeakReference)localObject1, paramCancelableRunnable, paramInt, paramString1));
   }
   
   private void a(Runnable paramRunnable)
@@ -915,32 +634,33 @@ public class JefsClass
   
   private void b(int paramInt1, int paramInt2)
   {
-    for (int i = 1;; i = 0) {
+    for (;;)
+    {
       synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
       {
         if (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.indexOfKey(paramInt1) >= 0)
         {
+          i = 1;
           this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.delete(paramInt1);
           if (i != 0)
           {
             paramInt1 = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size();
-            if (paramInt1 > 0) {}
-          }
-          try
-          {
-            MobileQQ.context.unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$TeleScreenReceiver);
-            TeleScreen.a().a(paramInt2, -1);
-            return;
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              QLog.e("TeleScreen|JefsClass", 1, localThrowable, new Object[0]);
+            if (paramInt1 <= 0) {
+              try
+              {
+                MobileQQ.context.unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$TeleScreenReceiver);
+              }
+              catch (Throwable localThrowable)
+              {
+                QLog.e("TeleScreen|JefsClass", 1, localThrowable, new Object[0]);
+              }
             }
           }
+          TeleScreen.a().a(paramInt2, -1);
+          return;
         }
       }
+      int i = 0;
     }
   }
   
@@ -951,8 +671,19 @@ public class JefsClass
   
   public JefsClass.Cancelable a(Context paramContext, Intent paramIntent, String paramString, WeakOuterRefRunnable paramWeakOuterRefRunnable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeleScreen|JefsClass", 2, "checkAndDoAsyn() called with: context = [" + paramContext + "], intent = [" + paramIntent + "], url = [" + paramString + "], todo = [" + paramWeakOuterRefRunnable + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkAndDoAsyn() called with: context = [");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("], intent = [");
+      localStringBuilder.append(paramIntent);
+      localStringBuilder.append("], url = [");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], todo = [");
+      localStringBuilder.append(paramWeakOuterRefRunnable);
+      localStringBuilder.append("]");
+      QLog.d("TeleScreen|JefsClass", 2, localStringBuilder.toString());
     }
     int i = paramIntent.getIntExtra("key_callback_id", 0);
     paramWeakOuterRefRunnable.b(i);
@@ -986,21 +717,6 @@ public class JefsClass
     getInstance().b(paramActivity, paramIntent, paramRunnable);
   }
   
-  public void a(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$PolicyConfig = a(paramJSONObject);
-      return;
-    }
-    finally
-    {
-      paramJSONObject = finally;
-      throw paramJSONObject;
-    }
-  }
-  
   public void b(int paramInt1, String paramString, int paramInt2)
   {
     if ("com.tencent.mobileqq".equals(paramString))
@@ -1028,7 +744,7 @@ public class JefsClass
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass
  * JD-Core Version:    0.7.0.1
  */

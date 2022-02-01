@@ -13,43 +13,50 @@ public class TroopFeedParserHelper$CommonFeedParser
   public TroopFeedItem a(JSONObject paramJSONObject)
   {
     TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {}
-    for (;;)
-    {
+    if (localTroopFeedItem == null) {
       return null;
-      localTroopFeedItem.type = 99;
-      try
+    }
+    localTroopFeedItem.type = 99;
+    try
+    {
+      localTroopFeedItem.linkUrl = paramJSONObject.optString("open_url");
+      if (paramJSONObject.has("app_id"))
       {
-        localTroopFeedItem.linkUrl = paramJSONObject.optString("open_url");
-        if (paramJSONObject.has("app_id"))
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(paramJSONObject.getLong("app_id"));
+        localTroopFeedItem.ex_1 = localStringBuilder.toString();
+        if ((!QQStoryManager.i()) && (localTroopFeedItem.isStoryType()))
         {
-          localTroopFeedItem.ex_1 = ("" + paramJSONObject.getLong("app_id"));
-          if ((!QQStoryManager.i()) && (localTroopFeedItem.isStoryType()))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("TroopFeedParserHelperQ.qqstory.tag_api_limit", 2, "当前系统api：" + Build.VERSION.SDK_INT + ",低于14");
-            return null;
+          if (!QLog.isColorLevel()) {
+            break label178;
           }
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append("当前系统api：");
+          paramJSONObject.append(Build.VERSION.SDK_INT);
+          paramJSONObject.append(",低于14");
+          QLog.d("TroopFeedParserHelperQ.qqstory.tag_api_limit", 2, paramJSONObject.toString());
+          return null;
         }
       }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
-      }
+      paramJSONObject = paramJSONObject.getJSONObject("content");
+      localTroopFeedItem.content = paramJSONObject.getString("body");
+      localTroopFeedItem.title = paramJSONObject.getString("title");
+      localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
+      return localTroopFeedItem;
     }
-    paramJSONObject = paramJSONObject.getJSONObject("content");
-    localTroopFeedItem.content = paramJSONObject.getString("body");
-    localTroopFeedItem.title = paramJSONObject.getString("title");
-    localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
-    return localTroopFeedItem;
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      return null;
+    }
+    label178:
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedParserHelper.CommonFeedParser
  * JD-Core Version:    0.7.0.1
  */

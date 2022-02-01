@@ -23,21 +23,25 @@ class JalphaTextureView$1
   
   public void onVideoDecodeError(int paramInt)
   {
-    Logger.e(JalphaTextureView.access$000(this.this$0), "========= onVideoDecodeError errorCode = " + paramInt);
-    switch (paramInt)
+    String str = JalphaTextureView.access$000(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("========= onVideoDecodeError errorCode = ");
+    localStringBuilder.append(paramInt);
+    Logger.e(str, localStringBuilder.toString());
+    if (paramInt != -101)
     {
-    default: 
-      return;
-    case -3: 
-    case -2: 
-    case -1: 
-      JalphaTextureView.access$102(this.this$0, 0);
-      JalphaTextureView.access$202(this.this$0, 0);
-      JalphaTextureView.access$902(this.this$0, null);
-      this.this$0.onPause();
-      JalphaTextureView.access$1100(this.this$0, -1);
-      return;
-    case -5: 
+      if (paramInt != -5)
+      {
+        if ((paramInt != -3) && (paramInt != -2) && (paramInt != -1)) {
+          return;
+        }
+        JalphaTextureView.access$102(this.this$0, 0);
+        JalphaTextureView.access$202(this.this$0, 0);
+        JalphaTextureView.access$902(this.this$0, null);
+        this.this$0.onPause();
+        JalphaTextureView.access$1100(this.this$0, -1);
+        return;
+      }
       JalphaTextureView.access$102(this.this$0, 0);
       JalphaTextureView.access$202(this.this$0, 0);
       this.this$0.onPause();
@@ -69,26 +73,34 @@ class JalphaTextureView$1
   @RequiresApi(api=16)
   public void onVideoFormat(MediaFormat paramMediaFormat)
   {
-    int j = 0;
-    int i = j;
-    if (paramMediaFormat != null)
-    {
-      i = j;
-      if (paramMediaFormat.containsKey("frame-rate")) {
-        i = paramMediaFormat.getInteger("frame-rate");
-      }
+    int i;
+    if ((paramMediaFormat != null) && (paramMediaFormat.containsKey("frame-rate"))) {
+      i = paramMediaFormat.getInteger("frame-rate");
+    } else {
+      i = 0;
     }
-    j = i;
+    int j = i;
     if (i <= 0) {
       j = 25;
     }
     JalphaTextureView.access$602(this.this$0, 1000000 / j);
-    Logger.v(JalphaTextureView.access$000(this.this$0), "mFrame Time  = " + JalphaTextureView.access$600(this.this$0));
+    paramMediaFormat = JalphaTextureView.access$000(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mFrame Time  = ");
+    localStringBuilder.append(JalphaTextureView.access$600(this.this$0));
+    Logger.v(paramMediaFormat, localStringBuilder.toString());
   }
   
   public void onVideoSize(int paramInt1, int paramInt2)
   {
-    Logger.e(JalphaTextureView.access$000(this.this$0), "onVideoSize() called with: width = [" + paramInt1 + "], height = [" + paramInt2 + "]");
+    String str = JalphaTextureView.access$000(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onVideoSize() called with: width = [");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("], height = [");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("]");
+    Logger.e(str, localStringBuilder.toString());
     JalphaTextureView.access$102(this.this$0, paramInt1);
     JalphaTextureView.access$202(this.this$0, paramInt2);
     JalphaTextureView.access$400(this.this$0).post(new JalphaTextureView.1.1(this));
@@ -97,7 +109,7 @@ class JalphaTextureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jalpha.videoplayer.view.JalphaTextureView.1
  * JD-Core Version:    0.7.0.1
  */

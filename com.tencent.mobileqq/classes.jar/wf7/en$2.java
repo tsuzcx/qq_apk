@@ -18,9 +18,7 @@ class en$2
   
   public void handleMessage(Message arg1)
   {
-    switch (???.what)
-    {
-    default: 
+    if (???.what != 1) {
       return;
     }
     try
@@ -38,19 +36,18 @@ class en$2
             en.c(this.nS).put(Integer.valueOf(locala.ob), locala);
           }
         }
+        en.b(this.nS).clear();
+        en.d(this.nS).submit(localb);
+        return;
       }
-      en.b(this.nS).clear();
-    }
-    catch (Exception ???)
-    {
       return;
     }
-    en.d(this.nS).submit(localRunnable);
+    catch (Exception ???) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.en.2
  * JD-Core Version:    0.7.0.1
  */

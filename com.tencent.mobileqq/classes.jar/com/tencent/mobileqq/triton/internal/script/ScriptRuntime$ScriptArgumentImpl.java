@@ -28,15 +28,15 @@ final class ScriptRuntime$ScriptArgumentImpl
   public ScriptRuntime$ScriptArgumentImpl(String paramString, @NotNull int paramInt1, int paramInt2)
   {
     int i;
-    if (i != 0) {}
-    for (paramString = (ScriptTask)new ScriptRuntime.ScriptTaskImpl(paramString, paramString.getType(), i);; paramString = null)
-    {
-      this.scriptTask = paramString;
-      this.rawParams = paramInt1;
-      this.callbackId = paramInt2;
-      this.params$delegate = LazyKt.lazy((Function0)new ScriptRuntime.ScriptArgumentImpl.params.2(paramInt1));
-      return;
+    if (i != 0) {
+      paramString = (ScriptTask)new ScriptRuntime.ScriptTaskImpl(paramString, paramString.getType(), i);
+    } else {
+      paramString = null;
     }
+    this.scriptTask = paramString;
+    this.rawParams = paramInt1;
+    this.callbackId = paramInt2;
+    this.params$delegate = LazyKt.lazy((Function0)new ScriptRuntime.ScriptArgumentImpl.params.2(paramInt1));
   }
   
   public boolean callback(@Nullable String paramString)
@@ -123,7 +123,7 @@ final class ScriptRuntime$ScriptArgumentImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.ScriptRuntime.ScriptArgumentImpl
  * JD-Core Version:    0.7.0.1
  */

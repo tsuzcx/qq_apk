@@ -17,33 +17,44 @@ class DiyPendantFetcher$4
   
   public void run()
   {
-    if (AvatarPendantUtil.a(String.valueOf(this.jdField_a_of_type_Int))) {
-      if (this.jdField_a_of_type_Int == 1) {}
-    }
-    AppRuntime localAppRuntime;
-    do
+    StringBuilder localStringBuilder;
+    if (AvatarPendantUtil.a(String.valueOf(this.jdField_a_of_type_Int)))
     {
-      try
+      if (this.jdField_a_of_type_Int != 1)
       {
-        ((FontInfo)this.this$0.b.get(Integer.valueOf(this.jdField_a_of_type_Int))).a = Typeface.createFromFile(this.jdField_a_of_type_JavaLangString);
-        this.this$0.d();
-        return;
-      }
-      catch (RuntimeException localRuntimeException)
-      {
-        for (;;)
+        try
         {
-          QLog.e("DiyPendantFetcher", 1, "Typeface createFromFile Exception path:" + this.jdField_a_of_type_JavaLangString + "  Message:" + localRuntimeException.getMessage());
+          ((FontInfo)this.this$0.b.get(Integer.valueOf(this.jdField_a_of_type_Int))).a = Typeface.createFromFile(this.jdField_a_of_type_JavaLangString);
         }
+        catch (RuntimeException localRuntimeException)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Typeface createFromFile Exception path:");
+          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append("  Message:");
+          localStringBuilder.append(localRuntimeException.getMessage());
+          QLog.e("DiyPendantFetcher", 1, localStringBuilder.toString());
+        }
+        this.this$0.d();
       }
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(localAppRuntime instanceof QQAppInterface));
-    ((IVasQuickUpdateService)localAppRuntime.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(4L, "faceAddon.stickerFont.android." + this.jdField_a_of_type_Int, "DiyPendantFetcher");
+    }
+    else
+    {
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = (IVasQuickUpdateService)((AppRuntime)localObject).getRuntimeService(IVasQuickUpdateService.class, "");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("faceAddon.stickerFont.android.");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        ((IVasQuickUpdateService)localObject).downloadItem(4L, localStringBuilder.toString(), "DiyPendantFetcher");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher.4
  * JD-Core Version:    0.7.0.1
  */

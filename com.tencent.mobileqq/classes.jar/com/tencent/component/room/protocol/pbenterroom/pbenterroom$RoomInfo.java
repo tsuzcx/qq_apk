@@ -34,14 +34,15 @@ public final class pbenterroom$RoomInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 56, 66, 74, 82, 90, 98, 104, 112, 120, 130, 136, 144 }, new String[] { "roomid", "logo", "name", "subroomid", "room_labels", "room_type", "room_status", "full_logo", "announcement", "share_url", "share_title", "share_desc", "short_no", "total_num", "goods_flag", "program_id", "gift_flag", "report_flag" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), "", localByteStringMicro1, localByteStringMicro2, "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) }, RoomInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 56, 66, 74, 82, 90, 98, 104, 112, 120, 130, 136, 144 }, new String[] { "roomid", "logo", "name", "subroomid", "room_labels", "room_type", "room_status", "full_logo", "announcement", "share_url", "share_title", "share_desc", "short_no", "total_num", "goods_flag", "program_id", "gift_flag", "report_flag" }, new Object[] { localInteger, localInteger, "", localInteger, null, localInteger, localInteger, "", localByteStringMicro1, localByteStringMicro2, "", "", localInteger, localInteger, localInteger, "", localInteger, localInteger }, RoomInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.room.protocol.pbenterroom.pbenterroom.RoomInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ final class Elf32_Phdr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.so.Elf32_Phdr
  * JD-Core Version:    0.7.0.1
  */

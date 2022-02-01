@@ -34,31 +34,32 @@ public class IPConfigStrategy$IPConfig
   
   public void initFailCount(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    IPInfo localIPInfo;
-    int j;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      Iterator localIterator;
-      while (!localIterator.hasNext())
-      {
-        localIterator = this.ipInfos.iterator();
-        i = -1;
+    }
+    int i = -1;
+    Iterator localIterator = this.ipInfos.iterator();
+    while (localIterator.hasNext())
+    {
+      IPInfo localIPInfo = (IPInfo)localIterator.next();
+      int j = i + 1;
+      i = j;
+      if (paramString.endsWith(localIPInfo.ip)) {
+        this.failCount = j;
       }
-      localIPInfo = (IPInfo)localIterator.next();
-      j = i + 1;
-      int i = j;
-    } while (!paramString.endsWith(localIPInfo.ip));
-    this.failCount = j;
+    }
   }
   
   public void initStrarIndex()
   {
-    if ((this.ipInfos == null) || (this.ipInfos.size() <= 0)) {
-      return;
+    ArrayList localArrayList = this.ipInfos;
+    if (localArrayList != null)
+    {
+      if (localArrayList.size() <= 0) {
+        return;
+      }
+      this.failCount = (Math.abs(new Random(System.currentTimeMillis()).nextInt()) % this.ipInfos.size());
     }
-    this.failCount = (Math.abs(new Random(System.currentTimeMillis()).nextInt()) % this.ipInfos.size());
   }
   
   public void setFailCount(int paramInt)
@@ -68,7 +69,7 @@ public class IPConfigStrategy$IPConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.strategy.IPConfigStrategy.IPConfig
  * JD-Core Version:    0.7.0.1
  */

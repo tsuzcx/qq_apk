@@ -31,8 +31,9 @@ public enum AdQQReminderManager
   
   public AdQQReminderAdapter getAdapter()
   {
-    if (this.adapter != null) {
-      return (AdQQReminderAdapter)this.adapter.get();
+    WeakReference localWeakReference = this.adapter;
+    if (localWeakReference != null) {
+      return (AdQQReminderAdapter)localWeakReference.get();
     }
     return null;
   }
@@ -93,14 +94,15 @@ public enum AdQQReminderManager
   public boolean swichOnQQReminder()
   {
     AdQQReminderAdapter localAdQQReminderAdapter = getAdapter();
-    if (localAdQQReminderAdapter == null) {
-      AdLog.e("AdQQReminderManager", "swichOnQQReminder error, adapter is null");
-    }
-    do
+    if (localAdQQReminderAdapter == null)
     {
+      AdLog.e("AdQQReminderManager", "swichOnQQReminder error, adapter is null");
       return false;
-      AdLog.i("AdQQReminderManager", String.format("swichOnQQReminder processSwichOnQQReminder:%b", new Object[] { Boolean.valueOf(this.processSwichOnQQReminder) }));
-    } while (this.processSwichOnQQReminder);
+    }
+    AdLog.i("AdQQReminderManager", String.format("swichOnQQReminder processSwichOnQQReminder:%b", new Object[] { Boolean.valueOf(this.processSwichOnQQReminder) }));
+    if (this.processSwichOnQQReminder) {
+      return false;
+    }
     this.processSwichOnQQReminder = true;
     localAdQQReminderAdapter.swichOnQQReminder();
     return true;

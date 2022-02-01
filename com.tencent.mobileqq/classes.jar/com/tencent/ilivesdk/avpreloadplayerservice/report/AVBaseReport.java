@@ -22,29 +22,37 @@ public abstract class AVBaseReport
   
   private String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("_dc=");
-    localStringBuilder.append(Math.random());
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    if (localIterator.hasNext())
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("_dc=");
+    ((StringBuilder)localObject2).append(Math.random());
+    Object localObject3 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    while (((Iterator)localObject3).hasNext())
     {
-      localObject = (Map.Entry)localIterator.next();
-      localStringBuilder.append("&");
-      localStringBuilder.append((String)((Map.Entry)localObject).getKey());
-      localStringBuilder.append("=");
-      if (((Map.Entry)localObject).getValue() == null) {}
-      for (localObject = " ";; localObject = (String)((Map.Entry)localObject).getValue())
-      {
-        localStringBuilder.append((String)localObject);
-        break;
+      localObject1 = (Map.Entry)((Iterator)localObject3).next();
+      ((StringBuilder)localObject2).append("&");
+      ((StringBuilder)localObject2).append((String)((Map.Entry)localObject1).getKey());
+      ((StringBuilder)localObject2).append("=");
+      if (((Map.Entry)localObject1).getValue() == null) {
+        localObject1 = " ";
+      } else {
+        localObject1 = (String)((Map.Entry)localObject1).getValue();
       }
+      ((StringBuilder)localObject2).append((String)localObject1);
     }
-    Object localObject = localStringBuilder.toString();
-    localObject = "https://h.trace.qq.com/kv?" + (String)localObject;
-    if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface != null) {
-      this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.d("AVReport", "AVReport | send=" + (String)localObject, new Object[0]);
+    Object localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("https://h.trace.qq.com/kv?");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
+    if (localObject2 != null)
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("AVReport | send=");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((LogInterface)localObject2).d("AVReport", ((StringBuilder)localObject3).toString(), new Object[0]);
     }
-    return localObject;
+    return localObject1;
   }
   
   public abstract void a();
@@ -69,7 +77,7 @@ public abstract class AVBaseReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadplayerservice.report.AVBaseReport
  * JD-Core Version:    0.7.0.1
  */

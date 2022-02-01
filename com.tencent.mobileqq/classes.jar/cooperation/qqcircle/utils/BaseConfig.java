@@ -8,10 +8,10 @@ import mqq.app.MobileQQ;
 
 public class BaseConfig
 {
-  public static int densityDpi;
+  public static int densityDpi = 0;
   public static String device_info;
-  public static boolean isAccessibilityEnable;
-  private static boolean isAppFeedReport;
+  public static boolean isAccessibilityEnable = false;
+  private static boolean isAppFeedReport = true;
   public static final boolean isPrintPicLog = false;
   public static final boolean isUserDebug = false;
   private static int mAppFeedTime = 1000;
@@ -21,16 +21,24 @@ public class BaseConfig
   
   static
   {
-    isAppFeedReport = true;
-    isAccessibilityEnable = false;
-    Object localObject = MobileQQ.sMobileQQ.getApplicationContext().getResources().getDisplayMetrics();
-    mDensity = ((DisplayMetrics)localObject).density;
-    screenWidth = ((DisplayMetrics)localObject).widthPixels;
-    screenHeight = ((DisplayMetrics)localObject).heightPixels;
-    densityDpi = ((DisplayMetrics)localObject).densityDpi;
-    localObject = "screen_width=" + screenWidth;
-    String str = "screen_height=" + screenHeight;
-    device_info = (String)localObject + "&" + str;
+    Object localObject1 = MobileQQ.sMobileQQ.getApplicationContext().getResources().getDisplayMetrics();
+    mDensity = ((DisplayMetrics)localObject1).density;
+    screenWidth = ((DisplayMetrics)localObject1).widthPixels;
+    screenHeight = ((DisplayMetrics)localObject1).heightPixels;
+    densityDpi = ((DisplayMetrics)localObject1).densityDpi;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("screen_width=");
+    ((StringBuilder)localObject1).append(screenWidth);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("screen_height=");
+    ((StringBuilder)localObject2).append(screenHeight);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("&");
+    localStringBuilder.append((String)localObject2);
+    device_info = localStringBuilder.toString();
   }
   
   public static float getDensity()
@@ -85,7 +93,7 @@ public class BaseConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.utils.BaseConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,10 @@ class AdvertisementVideoPreloadManager$2$1
   
   public void onInstalledFailed(int paramInt)
   {
-    AdvertisementVideoPreloadManager.c("installSDK onInstalledFailed arg0=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("installSDK onInstalledFailed arg0=");
+    localStringBuilder.append(paramInt);
+    AdvertisementVideoPreloadManager.c(localStringBuilder.toString());
   }
   
   public void onInstalledSuccessed()
@@ -22,7 +25,7 @@ class AdvertisementVideoPreloadManager$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.2.1
  * JD-Core Version:    0.7.0.1
  */

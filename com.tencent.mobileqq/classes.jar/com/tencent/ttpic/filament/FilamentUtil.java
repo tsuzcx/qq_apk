@@ -137,31 +137,20 @@ public class FilamentUtil
         paramList = new Range(0.0F, 1.0F);
         if (localAnimojiExpressionJava.shapeRange != null) {
           paramList = localAnimojiExpressionJava.shapeRange;
+        } else if (defaultExpressionList.containsKey(localAnimojiExpressionJava.shapeName)) {
+          paramList = (Range)defaultExpressionList.get(localAnimojiExpressionJava.shapeName);
         }
-        for (;;)
+        if (localAnimojiExpressionJava.shapeName.toLowerCase().equals("upgradeoneeyeblinkthreshold"))
         {
-          if (localAnimojiExpressionJava.shapeName.toLowerCase().equals("upgradeoneeyeblinkthreshold"))
-          {
-            float f2 = paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkLeft")).intValue()];
-            float f3 = paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkRight")).intValue()];
-            if ((f2 >= 0.95D) && (f3 < paramList.min))
-            {
-              paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkRight")).intValue()] = 0.0F;
-              break;
-              if (!defaultExpressionList.containsKey(localAnimojiExpressionJava.shapeName)) {
-                continue;
-              }
-              paramList = (Range)defaultExpressionList.get(localAnimojiExpressionJava.shapeName);
-              continue;
-            }
-            if ((f3 < 0.95D) || (f2 >= paramList.min)) {
-              break;
-            }
+          float f2 = paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkLeft")).intValue()];
+          float f3 = paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkRight")).intValue()];
+          if ((f2 >= 0.95D) && (f3 < paramList.min)) {
+            paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkRight")).intValue()] = 0.0F;
+          } else if ((f3 >= 0.95D) && (f2 < paramList.min)) {
             paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkLeft")).intValue()] = 0.0F;
-            break;
           }
         }
-        if (localAnimojiExpressionJava.shapeName.toLowerCase().equals("disablemouthsmilewhenmouthpucker"))
+        else if (localAnimojiExpressionJava.shapeName.toLowerCase().equals("disablemouthsmilewhenmouthpucker"))
         {
           if (paramArrayOfFloat1[((Integer)expName2Index.get("mouthPucker")).intValue()] > paramList.min)
           {
@@ -190,7 +179,8 @@ public class FilamentUtil
             adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("eyeBlinkRight")).intValue(), paramList.min, paramList.max);
           }
         }
-        else if (expName2Index.containsKey(localAnimojiExpressionJava.shapeName)) {
+        else if (expName2Index.containsKey(localAnimojiExpressionJava.shapeName))
+        {
           adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get(localAnimojiExpressionJava.shapeName)).intValue(), paramList.min, paramList.max);
         }
       }
@@ -204,42 +194,46 @@ public class FilamentUtil
   
   private static void adjustValue(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2)
   {
-    if (paramArrayOfFloat[paramInt] <= paramFloat1) {
-      paramArrayOfFloat[paramInt] = 0.0F;
-    }
-    do
+    if (paramArrayOfFloat[paramInt] <= paramFloat1)
     {
+      paramArrayOfFloat[paramInt] = 0.0F;
       return;
-      if (paramArrayOfFloat[paramInt] >= paramFloat2)
-      {
-        paramArrayOfFloat[paramInt] = 1.0F;
-        return;
-      }
-    } while (paramFloat2 <= paramFloat1);
-    paramArrayOfFloat[paramInt] = ((paramArrayOfFloat[paramInt] - paramFloat1) / (paramFloat2 - paramFloat1));
+    }
+    if (paramArrayOfFloat[paramInt] >= paramFloat2)
+    {
+      paramArrayOfFloat[paramInt] = 1.0F;
+      return;
+    }
+    if (paramFloat2 > paramFloat1) {
+      paramArrayOfFloat[paramInt] = ((paramArrayOfFloat[paramInt] - paramFloat1) / (paramFloat2 - paramFloat1));
+    }
   }
   
   private static float blendAlpha(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((paramArrayOfFloat1 == null) || (paramArrayOfFloat2 == null)) {}
-    float f;
-    do
+    if (paramArrayOfFloat1 != null)
     {
-      return paramFloat1;
-      f = mdist(paramArrayOfFloat1, paramArrayOfFloat2);
+      if (paramArrayOfFloat2 == null) {
+        return paramFloat1;
+      }
+      float f = mdist(paramArrayOfFloat1, paramArrayOfFloat2);
       if (f > paramFloat2) {
         return 1.0F;
       }
-    } while (f <= paramFloat3);
-    return Math.max(0.7F, paramFloat1);
+      if (f > paramFloat3) {
+        return Math.max(0.7F, paramFloat1);
+      }
+    }
+    return paramFloat1;
   }
   
   public static boolean checkNeedRender(List<FaceStatus> paramList, List<GLBItemJava> paramList1)
   {
-    if ((paramList == null) || (paramList1 == null)) {}
-    for (;;)
+    if (paramList != null)
     {
-      return false;
+      if (paramList1 == null) {
+        return false;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -265,6 +259,7 @@ public class FilamentUtil
         i += 1;
       }
     }
+    return false;
   }
   
   private static float[] convertMatrixToEulerZXY(float[] paramArrayOfFloat)
@@ -294,7 +289,7 @@ public class FilamentUtil
     float f2 = paramArrayOfFloat1[8];
     float f3 = paramArrayOfFloat1[9];
     float f4 = paramArrayOfFloat1[10];
-    float f1 = (f6 * f4 - f7 * f3) * f8 + (f7 * f2 - f5 * f4) * f9 + f10 * (f5 * f3 - f6 * f2);
+    float f1 = (f6 * f4 - f7 * f3) * f8 + (f7 * f2 - f5 * f4) * f9 + (f5 * f3 - f6 * f2) * f10;
     f8 = lengthVector3(f8, f9, f10);
     f5 = lengthVector3(f5, f6, f7);
     f2 = lengthVector3(f2, f3, f4);
@@ -334,11 +329,19 @@ public class FilamentUtil
       paramArrayOfFloat4[14] /= paramArrayOfFloat2[2];
     }
     getRotationQuaternionFromMatrix2(paramArrayOfFloat4, paramArrayOfFloat3);
-    double d = Math.sqrt(paramArrayOfFloat3[0] * paramArrayOfFloat3[0] + paramArrayOfFloat3[1] * paramArrayOfFloat3[1] + paramArrayOfFloat3[2] * paramArrayOfFloat3[2] + paramArrayOfFloat3[3] * paramArrayOfFloat3[3]);
-    paramArrayOfFloat3[0] = ((float)(paramArrayOfFloat3[0] / d));
-    paramArrayOfFloat3[1] = ((float)(paramArrayOfFloat3[1] / d));
-    paramArrayOfFloat3[2] = ((float)(paramArrayOfFloat3[2] / d));
-    paramArrayOfFloat3[3] = ((float)(paramArrayOfFloat3[3] / d));
+    double d1 = Math.sqrt(paramArrayOfFloat3[0] * paramArrayOfFloat3[0] + paramArrayOfFloat3[1] * paramArrayOfFloat3[1] + paramArrayOfFloat3[2] * paramArrayOfFloat3[2] + paramArrayOfFloat3[3] * paramArrayOfFloat3[3]);
+    double d2 = paramArrayOfFloat3[0];
+    Double.isNaN(d2);
+    paramArrayOfFloat3[0] = ((float)(d2 / d1));
+    d2 = paramArrayOfFloat3[1];
+    Double.isNaN(d2);
+    paramArrayOfFloat3[1] = ((float)(d2 / d1));
+    d2 = paramArrayOfFloat3[2];
+    Double.isNaN(d2);
+    paramArrayOfFloat3[2] = ((float)(d2 / d1));
+    d2 = paramArrayOfFloat3[3];
+    Double.isNaN(d2);
+    paramArrayOfFloat3[3] = ((float)(d2 / d1));
   }
   
   private static InputStream fetchInputStream(String paramString)
@@ -348,13 +351,21 @@ public class FilamentUtil
       if (FileUtils.exists(paramString)) {
         return new FileInputStream(paramString);
       }
-      InputStream localInputStream = AEModule.getContext().getAssets().open(paramString);
-      return localInputStream;
+      localObject = AEModule.getContext().getAssets().open(paramString);
+      return localObject;
     }
     catch (Exception localException)
     {
-      Log.d(TAG, "tryFetchInputStream: Fail to load " + paramString);
+      Object localObject;
+      label29:
+      StringBuilder localStringBuilder;
+      break label29;
     }
+    localObject = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tryFetchInputStream: Fail to load ");
+    localStringBuilder.append(paramString);
+    Log.d((String)localObject, localStringBuilder.toString());
     return null;
   }
   
@@ -536,67 +547,61 @@ public class FilamentUtil
   
   public static float[] getBlendFloatArray(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat)
   {
-    if ((paramArrayOfFloat1 == null) || (paramArrayOfFloat2 == null)) {
-      return paramArrayOfFloat2;
-    }
-    float[] arrayOfFloat = new float[paramArrayOfFloat2.length];
-    if (isAllZero(paramArrayOfFloat1)) {
-      paramFloat = 1.0F;
-    }
-    Iterator localIterator = expName2Index.entrySet().iterator();
-    if (localIterator.hasNext())
+    if (paramArrayOfFloat1 != null)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      int i = ((Integer)localEntry.getValue()).intValue();
-      if (smoothExpression.contains(localEntry.getKey())) {
-        arrayOfFloat[i] = (paramArrayOfFloat2[i] * paramFloat + (1.0F - paramFloat) * paramArrayOfFloat1[i]);
+      if (paramArrayOfFloat2 == null) {
+        return paramArrayOfFloat2;
       }
-      for (;;)
+      float[] arrayOfFloat = new float[paramArrayOfFloat2.length];
+      if (isAllZero(paramArrayOfFloat1)) {
+        paramFloat = 1.0F;
+      }
+      Iterator localIterator = expName2Index.entrySet().iterator();
+      while (localIterator.hasNext())
       {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        int i = ((Integer)localEntry.getValue()).intValue();
+        if (smoothExpression.contains(localEntry.getKey())) {
+          arrayOfFloat[i] = (paramArrayOfFloat2[i] * paramFloat + (1.0F - paramFloat) * paramArrayOfFloat1[i]);
+        } else {
+          arrayOfFloat[i] = paramArrayOfFloat2[i];
+        }
         paramArrayOfFloat1[i] = arrayOfFloat[i];
-        break;
-        arrayOfFloat[i] = paramArrayOfFloat2[i];
       }
+      return arrayOfFloat;
     }
-    return arrayOfFloat;
+    return paramArrayOfFloat2;
   }
   
   public static float[] getBlendFloatArrayThres(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((paramArrayOfFloat1 == null) || (paramArrayOfFloat2 == null)) {
-      return paramArrayOfFloat2;
-    }
-    float[] arrayOfFloat = new float[paramArrayOfFloat2.length];
-    if (isAllZero(paramArrayOfFloat1)) {
-      paramFloat1 = 1.0F;
-    }
-    int i = 0;
-    float f1;
-    if (i < arrayOfFloat.length)
+    if (paramArrayOfFloat1 != null)
     {
-      f1 = Math.abs(paramArrayOfFloat1[i] - paramArrayOfFloat2[i]);
-      if (f1 > paramFloat2) {
-        f1 = 1.0F;
+      if (paramArrayOfFloat2 == null) {
+        return paramArrayOfFloat2;
       }
-    }
-    for (;;)
-    {
-      float f2 = paramArrayOfFloat2[i];
-      arrayOfFloat[i] = ((1.0F - f1) * paramArrayOfFloat1[i] + f2 * f1);
-      paramArrayOfFloat1[i] = arrayOfFloat[i];
-      i += 1;
-      break;
-      if (f1 > paramFloat3)
+      float[] arrayOfFloat = new float[paramArrayOfFloat2.length];
+      if (isAllZero(paramArrayOfFloat1)) {
+        paramFloat1 = 1.0F;
+      }
+      int i = 0;
+      while (i < arrayOfFloat.length)
       {
-        f1 = Math.max(0.7F, paramFloat1);
-        continue;
-        return arrayOfFloat;
+        float f = Math.abs(paramArrayOfFloat1[i] - paramArrayOfFloat2[i]);
+        if (f > paramFloat2) {
+          f = 1.0F;
+        } else if (f > paramFloat3) {
+          f = Math.max(0.7F, paramFloat1);
+        } else {
+          f = paramFloat1;
+        }
+        arrayOfFloat[i] = (paramArrayOfFloat2[i] * f + (1.0F - f) * paramArrayOfFloat1[i]);
+        paramArrayOfFloat1[i] = arrayOfFloat[i];
+        i += 1;
       }
-      else
-      {
-        f1 = paramFloat1;
-      }
+      return arrayOfFloat;
     }
+    return paramArrayOfFloat2;
   }
   
   public static float[] getBlendTransform(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3, float[] paramArrayOfFloat4, float[] paramArrayOfFloat5, int[] paramArrayOfInt, float paramFloat)
@@ -614,7 +619,9 @@ public class FilamentUtil
       if (paramArrayOfInt[i] == 1) {
         paramArrayOfFloat1[i] = (-paramArrayOfFloat1[i]);
       }
-      paramArrayOfFloat1[i] = ((float)(paramArrayOfFloat1[i] * 180.0F / 3.141592653589793D));
+      double d = paramArrayOfFloat1[i] * 180.0F;
+      Double.isNaN(d);
+      paramArrayOfFloat1[i] = ((float)(d / 3.141592653589793D));
       i += 1;
     }
     paramArrayOfFloat2 = new float[16];
@@ -638,7 +645,9 @@ public class FilamentUtil
       if (paramArrayOfInt[i] == 1) {
         paramArrayOfFloat1[i] = (-paramArrayOfFloat1[i]);
       }
-      paramArrayOfFloat1[i] = ((float)(paramArrayOfFloat1[i] * 180.0F / 3.141592653589793D));
+      double d = paramArrayOfFloat1[i] * 180.0F;
+      Double.isNaN(d);
+      paramArrayOfFloat1[i] = ((float)(d / 3.141592653589793D));
       i += 1;
     }
     Matrix.rotateM(arrayOfFloat2, 0, arrayOfFloat1, 0, paramArrayOfFloat1[0], 0.0F, 0.0F, 1.0F);
@@ -683,54 +692,55 @@ public class FilamentUtil
   
   public static void getRotationQuaternionFromMatrix(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    int i = 1;
+    int i = 0;
     float f1 = paramArrayOfFloat1[0] + paramArrayOfFloat1[5] + paramArrayOfFloat1[10];
     if (f1 > 0.0F)
     {
       f1 = (float)Math.sqrt(f1 + 1.0F);
-      paramArrayOfFloat2[3] = (0.5F * f1);
+      paramArrayOfFloat2[3] = (f1 * 0.5F);
       f1 = 0.5F / f1;
       paramArrayOfFloat2[0] = ((paramArrayOfFloat1[9] - paramArrayOfFloat1[6]) * f1);
       paramArrayOfFloat2[1] = ((paramArrayOfFloat1[2] - paramArrayOfFloat1[8]) * f1);
       paramArrayOfFloat2[2] = ((paramArrayOfFloat1[4] - paramArrayOfFloat1[1]) * f1);
       return;
     }
-    if (paramArrayOfFloat1[5] > paramArrayOfFloat1[0]) {}
-    for (;;)
-    {
-      int j = i;
-      if (paramArrayOfFloat1[10] > paramArrayOfFloat1[(i * 4 + i)]) {
-        j = 2;
-      }
-      int[] arrayOfInt = new int[3];
-      int[] tmp126_124 = arrayOfInt;
-      tmp126_124[0] = 1;
-      int[] tmp130_126 = tmp126_124;
-      tmp130_126[1] = 2;
-      int[] tmp134_130 = tmp130_126;
-      tmp134_130[2] = 0;
-      tmp134_130;
-      i = arrayOfInt[j];
-      int k = arrayOfInt[i];
-      float f2 = (float)Math.sqrt(paramArrayOfFloat1[(j * 4 + j)] - (paramArrayOfFloat1[(i * 4 + i)] + paramArrayOfFloat1[(k * 4 + k)]) + 1.0F);
-      paramArrayOfFloat2[j] = (0.5F * f2);
-      f1 = f2;
-      if (f2 != 0.0F) {
-        f1 = 0.5F / f2;
-      }
-      paramArrayOfFloat2[3] = ((paramArrayOfFloat1[(k * 4 + i)] - paramArrayOfFloat1[(i * 4 + k)]) * f1);
-      paramArrayOfFloat2[i] = ((paramArrayOfFloat1[(i * 4 + j)] + paramArrayOfFloat1[(j * 4 + i)]) * f1);
-      f2 = paramArrayOfFloat1[(k * 4 + j)];
-      paramArrayOfFloat2[k] = ((paramArrayOfFloat1[(j * 4 + k)] + f2) * f1);
-      return;
-      i = 0;
+    if (paramArrayOfFloat1[5] > paramArrayOfFloat1[0]) {
+      i = 1;
     }
+    int j = i;
+    if (paramArrayOfFloat1[10] > paramArrayOfFloat1[(i * 4 + i)]) {
+      j = 2;
+    }
+    int[] arrayOfInt = new int[3];
+    int[] tmp129_127 = arrayOfInt;
+    tmp129_127[0] = 1;
+    int[] tmp133_129 = tmp129_127;
+    tmp133_129[1] = 2;
+    int[] tmp137_133 = tmp133_129;
+    tmp137_133[2] = 0;
+    tmp137_133;
+    i = arrayOfInt[j];
+    int k = arrayOfInt[i];
+    int m = j * 4;
+    f1 = paramArrayOfFloat1[(m + j)];
+    int n = i * 4;
+    float f2 = paramArrayOfFloat1[(n + i)];
+    int i1 = k * 4;
+    f2 = (float)Math.sqrt(f1 - (f2 + paramArrayOfFloat1[(i1 + k)]) + 1.0F);
+    paramArrayOfFloat2[j] = (f2 * 0.5F);
+    f1 = f2;
+    if (f2 != 0.0F) {
+      f1 = 0.5F / f2;
+    }
+    paramArrayOfFloat2[3] = ((paramArrayOfFloat1[(i + i1)] - paramArrayOfFloat1[(k + n)]) * f1);
+    paramArrayOfFloat2[i] = ((paramArrayOfFloat1[(n + j)] + paramArrayOfFloat1[(i + m)]) * f1);
+    paramArrayOfFloat2[k] = ((paramArrayOfFloat1[(j + i1)] + paramArrayOfFloat1[(m + k)]) * f1);
   }
   
   public static void getRotationQuaternionFromMatrix2(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    int j = 1;
     float[] arrayOfFloat = new float[16];
+    int j = 0;
     int i = 0;
     while (i < 16)
     {
@@ -741,39 +751,42 @@ public class FilamentUtil
     if (f1 > 0.0F)
     {
       f1 = (float)Math.sqrt(f1 + 1.0F);
-      paramArrayOfFloat2[3] = (0.5F * f1);
+      paramArrayOfFloat2[3] = (f1 * 0.5F);
       f1 = 0.5F / f1;
       paramArrayOfFloat2[0] = ((arrayOfFloat[9] - arrayOfFloat[6]) * f1);
       paramArrayOfFloat2[1] = ((arrayOfFloat[2] - arrayOfFloat[8]) * f1);
       paramArrayOfFloat2[2] = ((arrayOfFloat[4] - arrayOfFloat[1]) * f1);
       return;
     }
-    if (arrayOfFloat[5] > arrayOfFloat[0]) {}
-    for (i = j;; i = 0)
-    {
-      j = i;
-      if (arrayOfFloat[10] > arrayOfFloat[(i * 4 + i)]) {
-        j = 2;
-      }
-      paramArrayOfFloat1 = new int[3];
-      paramArrayOfFloat1[0] = 1;
-      paramArrayOfFloat1[1] = 2;
-      paramArrayOfFloat1[2] = 0;
-      paramArrayOfFloat1;
-      i = paramArrayOfFloat1[j];
-      int k = paramArrayOfFloat1[i];
-      float f2 = (float)Math.sqrt(arrayOfFloat[(j * 4 + j)] - (arrayOfFloat[(i * 4 + i)] + arrayOfFloat[(k * 4 + k)]) + 1.0F);
-      paramArrayOfFloat2[j] = (0.5F * f2);
-      f1 = f2;
-      if (f2 != 0.0F) {
-        f1 = 0.5F / f2;
-      }
-      paramArrayOfFloat2[3] = ((arrayOfFloat[(k * 4 + i)] - arrayOfFloat[(i * 4 + k)]) * f1);
-      paramArrayOfFloat2[i] = ((arrayOfFloat[(i * 4 + j)] + arrayOfFloat[(j * 4 + i)]) * f1);
-      f2 = arrayOfFloat[(k * 4 + j)];
-      paramArrayOfFloat2[k] = ((arrayOfFloat[(j * 4 + k)] + f2) * f1);
-      return;
+    i = j;
+    if (arrayOfFloat[5] > arrayOfFloat[0]) {
+      i = 1;
     }
+    j = i;
+    if (arrayOfFloat[10] > arrayOfFloat[(i * 4 + i)]) {
+      j = 2;
+    }
+    paramArrayOfFloat1 = new int[3];
+    paramArrayOfFloat1[0] = 1;
+    paramArrayOfFloat1[1] = 2;
+    paramArrayOfFloat1[2] = 0;
+    paramArrayOfFloat1;
+    i = paramArrayOfFloat1[j];
+    int k = paramArrayOfFloat1[i];
+    int m = j * 4;
+    f1 = arrayOfFloat[(m + j)];
+    int n = i * 4;
+    float f2 = arrayOfFloat[(n + i)];
+    int i1 = k * 4;
+    f2 = (float)Math.sqrt(f1 - (f2 + arrayOfFloat[(i1 + k)]) + 1.0F);
+    paramArrayOfFloat2[j] = (f2 * 0.5F);
+    f1 = f2;
+    if (f2 != 0.0F) {
+      f1 = 0.5F / f2;
+    }
+    paramArrayOfFloat2[3] = ((arrayOfFloat[(i + i1)] - arrayOfFloat[(k + n)]) * f1);
+    paramArrayOfFloat2[i] = ((arrayOfFloat[(n + j)] + arrayOfFloat[(i + m)]) * f1);
+    paramArrayOfFloat2[k] = ((arrayOfFloat[(j + i1)] + arrayOfFloat[(m + k)]) * f1);
   }
   
   public static float[] getTransformMatrix(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3, int[] paramArrayOfInt)
@@ -800,10 +813,11 @@ public class FilamentUtil
   
   public static boolean isValidTransform(float[] paramArrayOfFloat)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 16)) {}
-    for (;;)
+    if (paramArrayOfFloat != null)
     {
-      return false;
+      if (paramArrayOfFloat.length < 16) {
+        return false;
+      }
       int j = paramArrayOfFloat.length;
       int i = 0;
       while (i < j)
@@ -814,6 +828,7 @@ public class FilamentUtil
         i += 1;
       }
     }
+    return false;
   }
   
   public static float lengthVector3(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -823,63 +838,83 @@ public class FilamentUtil
   
   public static float[] lglt2xyz(float paramFloat1, float paramFloat2)
   {
-    paramFloat1 = paramFloat1 * 3.141593F / 180.0F;
-    float f2 = -paramFloat2 * 3.141593F / 180.0F;
-    paramFloat2 = (float)Math.cos(f2);
-    float f1 = (float)Math.sin(paramFloat1);
-    f2 = (float)Math.sin(f2);
-    paramFloat1 = (float)Math.cos(paramFloat1);
-    return new float[] { Math.round(f1 * paramFloat2 * 100.0F) / 100.0F, Math.round(f2 * 100.0F) / 100.0F, Math.round(paramFloat1 * paramFloat2 * 100.0F) / 100.0F };
+    float f1 = paramFloat1 * 3.141593F / 180.0F;
+    double d1 = -paramFloat2 * 3.141593F / 180.0F;
+    paramFloat1 = (float)Math.cos(d1);
+    double d2 = f1;
+    paramFloat2 = (float)Math.sin(d2);
+    f1 = (float)Math.sin(d1);
+    float f2 = (float)Math.cos(d2);
+    return new float[] { Math.round(paramFloat2 * paramFloat1 * 100.0F) / 100.0F, Math.round(f1 * 100.0F) / 100.0F, Math.round(paramFloat1 * f2 * 100.0F) / 100.0F };
   }
   
   public static byte[] loadAndTryDecryptGlb(String paramString1, String paramString2, String paramString3)
   {
     int i = 0;
-    byte[] arrayOfByte = new byte[0];
-    if ((paramString1 == null) || (paramString1.isEmpty())) {
-      return arrayOfByte;
-    }
-    for (;;)
+    localObject1 = new byte[0];
+    if (paramString1 != null)
     {
+      if (paramString1.isEmpty()) {
+        return localObject1;
+      }
       try
       {
-        String str1 = FileUtils.getRealDirPath(paramString1);
-        String str2 = FileUtils.getFileName(paramString1);
-        paramString2 = str1 + "/" + str2 + paramString2;
-        str1 = str1 + "/" + str2 + paramString3;
+        Object localObject2 = FileUtils.getRealDirPath(paramString1);
+        String str = FileUtils.getFileName(paramString1);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append("/");
+        localStringBuilder.append(str);
+        localStringBuilder.append(paramString2);
+        paramString2 = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append("/");
+        localStringBuilder.append(str);
+        localStringBuilder.append(paramString3);
+        localObject2 = localStringBuilder.toString();
         paramString3 = fetchInputStream(paramString2);
         paramString2 = paramString3;
         if (paramString3 == null)
         {
-          paramString2 = fetchInputStream(str1);
+          paramString2 = fetchInputStream((String)localObject2);
           i = 1;
         }
         if (paramString2 == null) {
-          break;
+          return localObject1;
         }
         if (i != 0) {}
-        paramString3 = FileUtils.loadByteArray(paramString2);
-      }
-      catch (Exception paramString1)
-      {
         try
         {
           paramString3 = getEncryptBytes(paramString2, getEncryptLength(paramString2));
           paramString3 = mergeBytes(VideoTemplateParser.decryptListener.decrypt(paramString3), getRemainedBytes(paramString2));
-          Log.d(TAG, "loadAndTryDecryptGlb: output decrypted bytes" + paramString1);
+          localObject1 = TAG;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("loadAndTryDecryptGlb: output decrypted bytes");
+          ((StringBuilder)localObject2).append(paramString1);
+          Log.d((String)localObject1, ((StringBuilder)localObject2).toString());
           paramString1 = paramString3;
+          break label278;
+          paramString3 = FileUtils.loadByteArray(paramString2);
+          localObject1 = TAG;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("loadAndTryDecryptGlb: output raw bytes");
+          ((StringBuilder)localObject2).append(paramString1);
+          Log.d((String)localObject1, ((StringBuilder)localObject2).toString());
+          paramString1 = paramString3;
+          label278:
           return paramString1;
         }
         finally
         {
           IOUtils.closeQuietly(paramString2);
         }
-        paramString1 = paramString1;
-        paramString1.printStackTrace();
-        return arrayOfByte;
+        return localObject1;
       }
-      Log.d(TAG, "loadAndTryDecryptGlb: output raw bytes" + paramString1);
-      paramString1 = paramString3;
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+      }
     }
   }
   
@@ -891,23 +926,18 @@ public class FilamentUtil
   
   private static float mdist(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    float f2;
-    if ((paramArrayOfFloat1 == null) || (paramArrayOfFloat2 == null) || (paramArrayOfFloat1.length != paramArrayOfFloat2.length))
+    if ((paramArrayOfFloat1 != null) && (paramArrayOfFloat2 != null) && (paramArrayOfFloat1.length == paramArrayOfFloat2.length))
     {
-      f2 = 1.0F;
-      return f2;
-    }
-    float f1 = 0.0F;
-    int i = 0;
-    for (;;)
-    {
-      f2 = f1;
-      if (i >= paramArrayOfFloat1.length) {
-        break;
+      float f = 0.0F;
+      int i = 0;
+      while (i < paramArrayOfFloat1.length)
+      {
+        f += Math.abs(paramArrayOfFloat1[i] - paramArrayOfFloat2[i]);
+        i += 1;
       }
-      f1 += Math.abs(paramArrayOfFloat1[i] - paramArrayOfFloat2[i]);
-      i += 1;
+      return f;
     }
+    return 1.0F;
   }
   
   private static byte[] mergeBytes(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -924,24 +954,25 @@ public class FilamentUtil
     float f2 = paramArrayOfFloat1[1];
     float f3 = paramArrayOfFloat1[2];
     float f4 = paramArrayOfFloat1[3];
-    threeaxisrot((f1 * f2 - f4 * f3) * -2.0F, f4 * f4 - f1 * f1 + f2 * f2 - f3 * f3, 2.0F * (f2 * f3 + f4 * f1), (f1 * f3 - f4 * f2) * -2.0F, f4 * f4 - f1 * f1 - f2 * f2 + f3 * f3, paramArrayOfFloat2);
+    float f5 = f4 * f4 - f1 * f1;
+    float f6 = f2 * f2;
+    float f7 = f3 * f3;
+    threeaxisrot((f1 * f2 - f4 * f3) * -2.0F, f5 + f6 - f7, (f2 * f3 + f4 * f1) * 2.0F, (f1 * f3 - f4 * f2) * -2.0F, f5 - f6 + f7, paramArrayOfFloat2);
   }
   
   public static void seperateGlbs(List<GLBItemJava> paramList1, List<GLBItemJava> paramList2, List<GLBItemJava> paramList3)
   {
-    if (paramList1 == null) {}
-    for (;;)
-    {
+    if (paramList1 == null) {
       return;
-      paramList1 = paramList1.iterator();
-      while (paramList1.hasNext())
-      {
-        GLBItemJava localGLBItemJava = (GLBItemJava)paramList1.next();
-        if (localGLBItemJava.positionType == FilamentUtil.PositionType.DYNAMIC.value) {
-          paramList2.add(localGLBItemJava);
-        } else {
-          paramList3.add(localGLBItemJava);
-        }
+    }
+    paramList1 = paramList1.iterator();
+    while (paramList1.hasNext())
+    {
+      GLBItemJava localGLBItemJava = (GLBItemJava)paramList1.next();
+      if (localGLBItemJava.positionType == FilamentUtil.PositionType.DYNAMIC.value) {
+        paramList2.add(localGLBItemJava);
+      } else {
+        paramList3.add(localGLBItemJava);
       }
     }
   }
@@ -950,19 +981,17 @@ public class FilamentUtil
   {
     float[] arrayOfFloat = new float[paramNodeItemJava.expressionOrderList.size()];
     int i = 0;
-    if (i < paramNodeItemJava.expressionConfigList.size())
+    while (i < paramNodeItemJava.expressionConfigList.size())
     {
       Integer localInteger1 = (Integer)expName2Index.get(((AnimojiExpressionJava)paramNodeItemJava.expressionConfigList.get(i)).shapeName);
-      if (localInteger1 == null) {}
-      for (;;)
+      if (localInteger1 != null)
       {
-        i += 1;
-        break;
         Integer localInteger2 = (Integer)paramNodeItemJava.expressionOrderList.get(((AnimojiExpressionJava)paramNodeItemJava.expressionConfigList.get(i)).controlledName);
         if (localInteger2 != null) {
           arrayOfFloat[localInteger2.intValue()] = paramArrayOfFloat[localInteger1.intValue()];
         }
       }
+      i += 1;
     }
     paramFilamentJNI.setMorphWeights(paramNodeItemJava.name, arrayOfFloat, paramInt1, paramInt2);
   }
@@ -971,19 +1000,17 @@ public class FilamentUtil
   {
     float[] arrayOfFloat = new float[paramNodeItemJava.expressionConfigList.size()];
     int i = 0;
-    if (i < paramNodeItemJava.expressionConfigList.size())
+    while (i < paramNodeItemJava.expressionConfigList.size())
     {
       Integer localInteger1 = (Integer)expName2Index.get(((AnimojiExpressionJava)paramNodeItemJava.expressionConfigList.get(i)).shapeName);
-      if (localInteger1 == null) {}
-      for (;;)
+      if (localInteger1 != null)
       {
-        i += 1;
-        break;
         Integer localInteger2 = (Integer)paramNodeItemJava.expressionOrderList.get(((AnimojiExpressionJava)paramNodeItemJava.expressionConfigList.get(i)).controlledName);
         if (localInteger2 != null) {
           arrayOfFloat[localInteger2.intValue()] = paramArrayOfFloat[localInteger1.intValue()];
         }
       }
+      i += 1;
     }
     paramFilamentAsset.setMorphWeights(paramNodeItemJava.name, arrayOfFloat);
   }
@@ -999,16 +1026,13 @@ public class FilamentUtil
   {
     float[] arrayOfFloat = new float[4];
     int i = 0;
-    if (i < Math.min(paramNodeItemJava.expressionConfigList.size(), 4))
+    while (i < Math.min(paramNodeItemJava.expressionConfigList.size(), 4))
     {
       Integer localInteger = (Integer)expName2Index.get(((AnimojiExpressionJava)paramNodeItemJava.expressionConfigList.get(i)).shapeName);
-      if (localInteger == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if (localInteger != null) {
         arrayOfFloat[i] = paramArrayOfFloat[localInteger.intValue()];
       }
+      i += 1;
     }
     paramRenderableManager.setMorphWeights(paramRenderableManager.getInstance(paramFilamentAsset.getEntity(paramNodeItemJava.name)), arrayOfFloat);
   }
@@ -1017,63 +1041,72 @@ public class FilamentUtil
   {
     float[] arrayOfFloat = new float[paramNodeItemJava.expressionConfigList.size()];
     int i = 0;
-    if (i < paramNodeItemJava.expressionConfigList.size())
+    while (i < paramNodeItemJava.expressionConfigList.size())
     {
       Integer localInteger1 = (Integer)expName2Index.get(((AnimojiExpressionJava)paramNodeItemJava.expressionConfigList.get(i)).shapeName);
-      if (localInteger1 == null) {}
-      for (;;)
+      if (localInteger1 != null)
       {
-        i += 1;
-        break;
         Integer localInteger2 = (Integer)paramNodeItemJava.expressionOrderList.get(((AnimojiExpressionJava)paramNodeItemJava.expressionConfigList.get(i)).controlledName);
         if (localInteger2 != null) {
           arrayOfFloat[localInteger2.intValue()] = paramArrayOfFloat[localInteger1.intValue()];
         }
       }
+      i += 1;
     }
     paramFilamentAsset.updateMorphWeights(paramNodeItemJava.name, arrayOfFloat);
   }
   
   public static float[] xyz2lglt(float paramFloat1, float paramFloat2, float paramFloat3)
   {
+    float f2 = 0.0F;
     if (paramFloat3 == 0.0F)
     {
-      if (paramFloat1 > 0.0F) {}
-      for (f2 = 90.0F;; f2 = -90.0F) {
-        return new float[] { f2, -(float)Math.asin(paramFloat2) / 3.141593F * 180.0F };
+      if (paramFloat1 > 0.0F) {
+        paramFloat1 = 90.0F;
+      } else {
+        paramFloat1 = -90.0F;
       }
     }
-    float f2 = (float)Math.atan(paramFloat1 / paramFloat3) / 3.141593F * 180.0F;
-    float f1;
-    if ((paramFloat1 > 0.0F) && (f2 < 0.0F)) {
-      f1 = f2 + 180.0F;
-    }
-    for (;;)
+    else
     {
-      f2 = f1;
-      if (Math.abs(paramFloat1 - 0.0D) > 0.0001D) {
-        break;
-      }
-      f2 = f1;
-      if (Math.abs(paramFloat3 - 0.0D) > 0.0001D) {
-        break;
-      }
-      f2 = 0.0F;
-      break;
-      f1 = f2;
-      if (paramFloat1 < 0.0F)
+      float f3 = (float)Math.atan(paramFloat1 / paramFloat3) / 3.141593F * 180.0F;
+      float f1;
+      if ((paramFloat1 > 0.0F) && (f3 < 0.0F))
       {
-        f1 = f2;
-        if (f2 > 0.0F) {
-          f1 = f2 - 180.0F;
+        f1 = f3 + 180.0F;
+      }
+      else
+      {
+        f1 = f3;
+        if (paramFloat1 < 0.0F)
+        {
+          f1 = f3;
+          if (f3 > 0.0F) {
+            f1 = f3 - 180.0F;
+          }
         }
       }
+      double d = paramFloat1;
+      Double.isNaN(d);
+      if (Math.abs(d - 0.0D) <= 0.0001D)
+      {
+        d = paramFloat3;
+        Double.isNaN(d);
+        if (Math.abs(d - 0.0D) <= 0.0001D)
+        {
+          paramFloat1 = f2;
+          break label151;
+        }
+      }
+      paramFloat1 = f1;
     }
+    label151:
+    return new float[] { paramFloat1, -(float)Math.asin(paramFloat2) / 3.141593F * 180.0F };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filament.FilamentUtil
  * JD-Core Version:    0.7.0.1
  */

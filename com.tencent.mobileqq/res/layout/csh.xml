@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/auf"
+<com.qqfav.audiopanel.QfavAudioPanel android:orientation="vertical" android:id="@id/a0n" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/n_v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/refresh_arrow" android:scaleType="fitCenter" android:contentDescription="@string/image" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/nom" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="8.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
-    <TextView android:textColor="@color/skin_over_header" android:id="@id/oel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqh" android:layout_centerInParent="true" />
-</LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.qqfav.audiopanel.QfavAudioPanelViewPager android:id="@id/fho" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/mgg" android:background="@drawable/skin_panel_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.activity.aio.audiopanel.PttTextTransitionAnim android:id="@id/ntr" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="8.0dip" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/mgf" android:background="@drawable/skin_aio_audio_panel_record_start_bg" android:layout_width="122.0dip" android:layout_height="122.0dip" android:layout_marginTop="38.0dip" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/fhm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/ay1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_aio_audio_panel_indicate_panel" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/fhl" android:layout_width="fill_parent" android:layout_height="20.0dip">
+            <TextView android:textSize="13.0sp" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center" android:id="@id/i3t" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="18.0dip" android:layout_marginRight="18.0dip" android:text="@string/qlo" />
+        </LinearLayout>
+    </LinearLayout>
+</com.qqfav.audiopanel.QfavAudioPanel>

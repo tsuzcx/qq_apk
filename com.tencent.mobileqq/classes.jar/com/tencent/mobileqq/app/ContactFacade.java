@@ -18,26 +18,28 @@ public class ContactFacade
   
   public FetchBuddyAndTroopNameHelper a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper == null) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper == null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper = new FetchBuddyAndTroopNameHelper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper == null) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper == null) {
+          this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper = new FetchBuddyAndTroopNameHelper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
       }
-      return this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper;
     }
+    return this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper;
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper.a();
+    FetchBuddyAndTroopNameHelper localFetchBuddyAndTroopNameHelper = this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper;
+    if (localFetchBuddyAndTroopNameHelper != null) {
+      localFetchBuddyAndTroopNameHelper.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ContactFacade
  * JD-Core Version:    0.7.0.1
  */

@@ -17,19 +17,19 @@ class FloatWindowModule$5
   
   public void onChanged(@Nullable KickedOutEvent paramKickedOutEvent)
   {
-    if ((FloatWindowModule.access$000(this.this$0) != null) && (FloatWindowModule.access$000(this.this$0).isReallyShow()))
+    if ((this.this$0.floatWindowComponent != null) && (this.this$0.floatWindowComponent.isReallyShow()))
     {
       this.this$0.getLog().i("FloatWindowModule", "onKickedOut", new Object[0]);
       ((ToastInterface)this.this$0.getRoomEngine().getService(ToastInterface.class)).showToast("你已被管理员踢出房间", 1);
-      FloatWindowModule.access$000(this.this$0).dismiss(5);
-      FloatWindowModule.access$900(this.this$0, FloatWindowModule.FWCloseType.TYPE_KICK_OUT);
+      this.this$0.floatWindowComponent.dismiss(5);
+      FloatWindowModule.access$800(this.this$0, FloatWindowModule.FWCloseType.TYPE_KICK_OUT);
       this.this$0.getEvent().post(new RoomCloseEvent((short)4));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.FloatWindowModule.5
  * JD-Core Version:    0.7.0.1
  */

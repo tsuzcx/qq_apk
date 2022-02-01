@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class GMEAVEngineWalper
 {
-  static GMEAVEngineWalper jdField_a_of_type_CooperationGmersdk_warperGMEAVEngineWalper = null;
+  static GMEAVEngineWalper jdField_a_of_type_CooperationGmersdk_warperGMEAVEngineWalper;
   private static String b = "GMEAVEngineWalper";
   int jdField_a_of_type_Int = 0;
   Context jdField_a_of_type_AndroidContentContext;
@@ -42,7 +42,14 @@ public class GMEAVEngineWalper
   public void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     QLog.e("Begin:TMGProformanceHelper", 1, TMGProformanceHelper.a());
-    QLog.e("AVEngineWalper", 1, "InitSDKEngine() strAppid=" + paramString2 + ", strUin=" + paramString1 + ", strAccountType=" + paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("InitSDKEngine() strAppid=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(", strUin=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", strAccountType=");
+    localStringBuilder.append(paramString3);
+    QLog.e("AVEngineWalper", 1, localStringBuilder.toString());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaLangString = paramString2;
     GMEAVManager.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$RoomInfoListener);
@@ -63,7 +70,10 @@ public class GMEAVEngineWalper
   
   public void a(String paramString)
   {
-    QLog.e("AVEngineWalper", 1, "ExitRoom!!!, strRoomID" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExitRoom!!!, strRoomID");
+    localStringBuilder.append(paramString);
+    QLog.e("AVEngineWalper", 1, localStringBuilder.toString());
     GMEAVManager.a(this.jdField_a_of_type_AndroidContentContext).a();
   }
   
@@ -76,9 +86,15 @@ public class GMEAVEngineWalper
   {
     if (GMEAVManager.a(this.jdField_a_of_type_AndroidContentContext).a() == paramBoolean)
     {
-      QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + 0);
-      if (this.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler != null) {
-        this.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.a(paramBoolean, 0);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("StartOpenSpeaker.OnComplete. bOpen = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", result = ");
+      ((StringBuilder)localObject).append(0);
+      QLog.d("AVEngineWalper", 1, ((StringBuilder)localObject).toString());
+      localObject = this.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler;
+      if (localObject != null) {
+        ((AVEngineEventHandler)localObject).a(paramBoolean, 0);
       }
       return;
     }
@@ -94,9 +110,15 @@ public class GMEAVEngineWalper
   {
     if (GMEAVManager.a(this.jdField_a_of_type_AndroidContentContext).b() == paramBoolean)
     {
-      QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + 0);
-      if (this.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler != null) {
-        this.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.b(paramBoolean, 0);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("StartOpenSpeaker.OnComplete. bOpen = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", result = ");
+      ((StringBuilder)localObject).append(0);
+      QLog.d("AVEngineWalper", 1, ((StringBuilder)localObject).toString());
+      localObject = this.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler;
+      if (localObject != null) {
+        ((AVEngineEventHandler)localObject).b(paramBoolean, 0);
       }
       return;
     }
@@ -105,7 +127,7 @@ public class GMEAVEngineWalper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.gmersdk_warper.GMEAVEngineWalper
  * JD-Core Version:    0.7.0.1
  */

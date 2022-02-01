@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.KandianPopupWindow.OnComplainListener;
 
@@ -23,14 +23,14 @@ final class JumpAdUtils$2
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("key_from_type", 3);
-      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData);
-      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData);
+      ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchReadInJoyUninterestComplainFragmentForResult((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.JumpAdUtils.2
  * JD-Core Version:    0.7.0.1
  */

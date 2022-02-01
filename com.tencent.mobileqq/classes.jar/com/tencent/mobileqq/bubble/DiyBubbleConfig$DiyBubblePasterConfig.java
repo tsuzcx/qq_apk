@@ -29,167 +29,172 @@ public final class DiyBubbleConfig$DiyBubblePasterConfig
     this.jdField_c_of_type_JavaLangString = "";
   }
   
+  private int a(VipBubbleDrawable paramVipBubbleDrawable, Rect paramRect, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_a_of_type_JavaLangString.endsWith("L")) {
+      paramInt3 = this.jdField_a_of_type_ArrayOfInt[0] + paramInt2;
+    } else if (this.jdField_a_of_type_JavaLangString.endsWith("R")) {
+      paramInt3 = this.jdField_a_of_type_ArrayOfInt[0] + this.jdField_a_of_type_ArrayOfInt[2] + paramRect.width() - paramInt1 - paramInt2;
+    }
+    paramInt2 = paramInt3;
+    if (paramVipBubbleDrawable.b)
+    {
+      paramInt2 = paramInt3;
+      if (!this.jdField_a_of_type_Boolean) {
+        paramInt2 = paramRect.width() - paramInt3 - paramInt1;
+      }
+    }
+    return paramInt2;
+  }
+  
   public static DiyBubbleConfig a(JSONObject paramJSONObject)
   {
     Object localObject = paramJSONObject.optString("type");
-    if (("diy_chartlet".equalsIgnoreCase((String)localObject)) || ("static".equalsIgnoreCase((String)localObject)))
+    if ((!"diy_chartlet".equalsIgnoreCase((String)localObject)) && (!"static".equalsIgnoreCase((String)localObject)))
     {
-      DiyBubblePasterConfig localDiyBubblePasterConfig = new DiyBubblePasterConfig();
-      localDiyBubblePasterConfig.jdField_b_of_type_JavaLangString = ((String)localObject);
-      localObject = BaseApplicationImpl.getApplication().getApplicationContext();
-      localDiyBubblePasterConfig.jdField_a_of_type_JavaLangString = paramJSONObject.optString("align").toUpperCase();
-      if (paramJSONObject.has("rect"))
-      {
-        JSONArray localJSONArray = paramJSONObject.optJSONArray("rect");
-        localDiyBubblePasterConfig.jdField_a_of_type_ArrayOfInt = new int[4];
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          localDiyBubblePasterConfig.jdField_a_of_type_ArrayOfInt[i] = DisplayUtil.a((Context)localObject, localJSONArray.optInt(i) / 2);
-          i += 1;
-        }
-      }
-      localDiyBubblePasterConfig.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("mirror", true);
-      if (QLog.isColorLevel()) {
-        QLog.d("DiyBubbleConfig", 2, "Resolve DiyBubblePasterConfig json->" + paramJSONObject);
-      }
-      return localDiyBubblePasterConfig;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("error! paster type: ");
+      paramJSONObject.append((String)localObject);
+      QLog.e("DiyBubbleConfig", 1, paramJSONObject.toString());
+      return null;
     }
-    QLog.e("DiyBubbleConfig", 1, "error! paster type: " + (String)localObject);
-    return null;
+    DiyBubblePasterConfig localDiyBubblePasterConfig = new DiyBubblePasterConfig();
+    localDiyBubblePasterConfig.jdField_b_of_type_JavaLangString = ((String)localObject);
+    localObject = BaseApplicationImpl.getApplication().getApplicationContext();
+    localDiyBubblePasterConfig.jdField_a_of_type_JavaLangString = paramJSONObject.optString("align").toUpperCase();
+    if (paramJSONObject.has("rect"))
+    {
+      JSONArray localJSONArray = paramJSONObject.optJSONArray("rect");
+      localDiyBubblePasterConfig.jdField_a_of_type_ArrayOfInt = new int[4];
+      int i = 0;
+      while (i < localJSONArray.length())
+      {
+        localDiyBubblePasterConfig.jdField_a_of_type_ArrayOfInt[i] = DisplayUtil.a((Context)localObject, localJSONArray.optInt(i) / 2);
+        i += 1;
+      }
+    }
+    localDiyBubblePasterConfig.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("mirror", true);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Resolve DiyBubblePasterConfig json->");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.d("DiyBubbleConfig", 2, ((StringBuilder)localObject).toString());
+    }
+    return localDiyBubblePasterConfig;
   }
   
   @TargetApi(11)
   public Rect a(VipBubbleDrawable paramVipBubbleDrawable, Canvas paramCanvas)
   {
-    int i1 = 0;
     paramCanvas = paramVipBubbleDrawable.getBounds();
     Resources localResources = BaseApplicationImpl.getContext().getResources();
     if (jdField_b_of_type_Int == -1) {
-      jdField_b_of_type_Int = AIOUtils.a(48.0F, localResources);
+      jdField_b_of_type_Int = AIOUtils.b(48.0F, localResources);
     }
     int j = this.jdField_a_of_type_ArrayOfInt[3];
     int i = this.jdField_a_of_type_ArrayOfInt[2];
-    int m;
-    int n;
-    int k;
-    if (paramCanvas.height() >= jdField_b_of_type_Int)
+    int k = paramCanvas.height();
+    int m = jdField_b_of_type_Int;
+    int i1 = 0;
+    if (k >= m)
     {
-      AIOUtils.a(10.0F, localResources);
-      AIOUtils.a(9.0F, localResources);
-      m = 0;
-      n = 0;
-      k = j;
-      j = n;
+      AIOUtils.b(10.0F, localResources);
+      AIOUtils.b(9.0F, localResources);
     }
-    for (;;)
+    else
     {
-      if (this.jdField_a_of_type_JavaLangString.startsWith("T")) {
-        n = m + this.jdField_a_of_type_ArrayOfInt[1];
-      }
-      for (;;)
+      m = AIOUtils.b(10.0F, localResources);
+      k = AIOUtils.b(7.0F, localResources);
+      if ("static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString))
       {
-        label111:
-        if (this.jdField_a_of_type_JavaLangString.endsWith("L")) {
-          m = this.jdField_a_of_type_ArrayOfInt[0] + j;
-        }
-        for (;;)
-        {
-          j = m;
-          if (paramVipBubbleDrawable.b)
-          {
-            j = m;
-            if (!this.jdField_a_of_type_Boolean) {
-              j = paramCanvas.width() - m - i;
-            }
-          }
-          return new Rect(j, n, i + j, k + n);
-          n = AIOUtils.a(10.0F, localResources);
-          m = AIOUtils.a(7.0F, localResources);
-          if ("static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString))
-          {
-            m = -AIOUtils.a(2.0F, localResources);
-            k = j;
-            j = 0;
-            break;
-          }
-          k = j;
-          if (j <= m * 2) {
-            break label407;
-          }
-          m *= 2;
-          j = this.jdField_a_of_type_ArrayOfInt[2] * m / this.jdField_a_of_type_ArrayOfInt[3];
-          i = j;
-          k = m;
-          if (j >= n * 2) {
-            break label407;
-          }
-          int i2 = j / 2;
-          k = m;
-          i = j;
-          j = n - i2;
-          m = 0;
-          break;
-          if (!this.jdField_a_of_type_JavaLangString.startsWith("B")) {
-            break label401;
-          }
-          n = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height() - k - m;
-          break label111;
-          m = i1;
-          if (this.jdField_a_of_type_JavaLangString.endsWith("R")) {
-            m = this.jdField_a_of_type_ArrayOfInt[0] + this.jdField_a_of_type_ArrayOfInt[2] + paramCanvas.width() - i - j;
-          }
-        }
-        label401:
-        n = 0;
+        m = -AIOUtils.b(2.0F, localResources);
+        k = i;
+        i = j;
+        j = k;
+        k = m;
+        break label226;
       }
-      label407:
-      m = 0;
-      j = 0;
+      k *= 2;
+      if (j > k)
+      {
+        i = this.jdField_a_of_type_ArrayOfInt[2] * k / this.jdField_a_of_type_ArrayOfInt[3];
+        if (i < m * 2)
+        {
+          n = i / 2;
+          j = k;
+          k = i;
+          m -= n;
+          n = 0;
+          break label240;
+        }
+        j = i;
+        i = k;
+        break label223;
+      }
     }
+    k = j;
+    j = i;
+    i = k;
+    label223:
+    k = 0;
+    label226:
+    m = 0;
+    int n = k;
+    k = j;
+    j = i;
+    label240:
+    if (this.jdField_a_of_type_JavaLangString.startsWith("T"))
+    {
+      i = this.jdField_a_of_type_ArrayOfInt[1] + n;
+    }
+    else
+    {
+      i = i1;
+      if (this.jdField_a_of_type_JavaLangString.startsWith("B")) {
+        i = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height() - j - n;
+      }
+    }
+    m = a(paramVipBubbleDrawable, paramCanvas, k, m, 0);
+    return new Rect(m, i, k + m, j + i);
   }
   
   public void a(VipBubbleDrawable paramVipBubbleDrawable, Canvas paramCanvas)
   {
-    if ((paramCanvas == null) || (paramVipBubbleDrawable == null)) {}
-    for (;;)
+    if (paramCanvas != null)
     {
-      return;
+      if (paramVipBubbleDrawable == null) {
+        return;
+      }
       Bitmap localBitmap;
       if ("diy_chartlet".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {
         localBitmap = BubbleDiyFetcher.a().b(paramVipBubbleDrawable, this);
-      }
-      while (localBitmap != null)
-      {
-        int i = paramCanvas.save();
-        if ((paramVipBubbleDrawable.b) && (this.jdField_a_of_type_Boolean)) {
-          paramCanvas.scale(-1.0F, 1.0F, paramVipBubbleDrawable.getBounds().centerX(), paramVipBubbleDrawable.getBounds().centerY());
-        }
-        Paint localPaint = new Paint();
-        paramVipBubbleDrawable = a(paramVipBubbleDrawable, paramCanvas);
-        if (paramCanvas.getHeight() < jdField_b_of_type_Int) {
-          paramCanvas.drawBitmap(localBitmap, null, paramVipBubbleDrawable, localPaint);
-        }
-        for (;;)
-        {
-          paramCanvas.restoreToCount(i);
-          return;
-          if (!"static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {
-            break label166;
-          }
-          localBitmap = BubbleDiyFetcher.a().a(paramVipBubbleDrawable, this);
-          break;
-          paramCanvas.drawBitmap(localBitmap, paramVipBubbleDrawable.left, paramVipBubbleDrawable.top, localPaint);
-        }
-        label166:
+      } else if ("static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {
+        localBitmap = BubbleDiyFetcher.a().a(paramVipBubbleDrawable, this);
+      } else {
         localBitmap = null;
       }
+      if (localBitmap == null) {
+        return;
+      }
+      int i = paramCanvas.save();
+      if ((paramVipBubbleDrawable.b) && (this.jdField_a_of_type_Boolean)) {
+        paramCanvas.scale(-1.0F, 1.0F, paramVipBubbleDrawable.getBounds().centerX(), paramVipBubbleDrawable.getBounds().centerY());
+      }
+      Paint localPaint = new Paint();
+      paramVipBubbleDrawable = a(paramVipBubbleDrawable, paramCanvas);
+      if (paramCanvas.getHeight() < jdField_b_of_type_Int) {
+        paramCanvas.drawBitmap(localBitmap, null, paramVipBubbleDrawable, localPaint);
+      } else {
+        paramCanvas.drawBitmap(localBitmap, paramVipBubbleDrawable.left, paramVipBubbleDrawable.top, localPaint);
+      }
+      paramCanvas.restoreToCount(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.DiyBubbleConfig.DiyBubblePasterConfig
  * JD-Core Version:    0.7.0.1
  */

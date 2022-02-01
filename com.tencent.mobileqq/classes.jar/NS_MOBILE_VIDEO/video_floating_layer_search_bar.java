@@ -32,23 +32,27 @@ public final class video_floating_layer_search_bar
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.hot_word != null) {
-      paramJceOutputStream.write(this.hot_word, 0);
+    String str = this.hot_word;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.hot_word_jump_url != null) {
-      paramJceOutputStream.write(this.hot_word_jump_url, 1);
+    str = this.hot_word_jump_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.video_play_history_description != null) {
-      paramJceOutputStream.write(this.video_play_history_description, 3);
+    str = this.video_play_history_description;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.history_jump_url != null) {
-      paramJceOutputStream.write(this.history_jump_url, 4);
+    str = this.history_jump_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.video_floating_layer_search_bar
  * JD-Core Version:    0.7.0.1
  */

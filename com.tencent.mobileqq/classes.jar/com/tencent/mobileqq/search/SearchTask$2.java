@@ -14,59 +14,50 @@ class SearchTask$2
   {
     Object localObject = SearchTask.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask).subList(this.jdField_a_of_type_Int, this.b);
     ArrayList localArrayList = new ArrayList();
-    ISearchable localISearchable;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
-      if (((Iterator)localObject).hasNext())
+      ISearchable localISearchable;
+      while (((Iterator)localObject).hasNext())
       {
         localISearchable = (ISearchable)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.isCancelled()) {
-          break label141;
+        if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.isCancelled()) {
+          break;
         }
-      }
-      if (!SearchTask.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask).equals(SearchTask.b(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask))) {
-        localObject = localArrayList.iterator();
-      }
-    }
-    for (;;)
-    {
-      if (((Iterator)localObject).hasNext())
-      {
-        localISearchable = (ISearchable)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.isCancelled()) {}
-      }
-      else
-      {
-        return localArrayList;
-        label141:
         localISearchable.a(SearchTask.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask));
-        if (localISearchable.c() == -9223372036854775808L) {
-          break;
-        }
-        int i = localArrayList.indexOf(localISearchable);
-        if (-1 == i)
+        if (localISearchable.c() != -9223372036854775808L)
         {
-          localArrayList.add(localISearchable);
-          break;
+          int i = localArrayList.indexOf(localISearchable);
+          if (-1 == i) {
+            localArrayList.add(localISearchable);
+          } else if (((ISearchable)localArrayList.get(i)).c() < localISearchable.c()) {
+            localArrayList.set(i, localISearchable);
+          }
         }
-        if (((ISearchable)localArrayList.get(i)).c() >= localISearchable.c()) {
-          break;
-        }
-        localArrayList.set(i, localISearchable);
-        break;
       }
-      long l = localISearchable.c();
-      localISearchable.a(SearchTask.b(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask));
-      if (localISearchable.c() == -9223372036854775808L) {
-        localISearchable.a(l);
+      if (!SearchTask.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask).equals(SearchTask.b(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask)))
+      {
+        localObject = localArrayList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localISearchable = (ISearchable)((Iterator)localObject).next();
+          if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.isCancelled()) {
+            return localArrayList;
+          }
+          long l = localISearchable.c();
+          localISearchable.a(SearchTask.b(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask));
+          if (localISearchable.c() == -9223372036854775808L) {
+            localISearchable.a(l);
+          }
+        }
       }
     }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.SearchTask.2
  * JD-Core Version:    0.7.0.1
  */

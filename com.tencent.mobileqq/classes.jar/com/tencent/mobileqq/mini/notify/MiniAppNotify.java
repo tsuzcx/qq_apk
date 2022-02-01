@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class MiniAppNotify
 {
   static final String TAG = "MiniAppNotify";
-  public static MiniAppNotify g = null;
+  public static MiniAppNotify g;
   private ConcurrentLinkedQueue<MiniAppNotify.IMiniAppNotifyListener> listenerList = new ConcurrentLinkedQueue();
   
   static
@@ -19,10 +19,21 @@ public class MiniAppNotify
   
   public void notify(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong)
   {
-    QLog.d("MiniAppNotify", 1, "appid:" + paramString1 + " scene:" + paramInt + " via:" + paramString2 + " event:" + paramString3 + " timestamp:" + paramLong);
-    Iterator localIterator = this.listenerList.iterator();
-    while (localIterator.hasNext()) {
-      ((MiniAppNotify.IMiniAppNotifyListener)localIterator.next()).onNotify(paramString1, paramInt, paramString2, paramString3, paramLong);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("appid:");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(" scene:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" via:");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(" event:");
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append(" timestamp:");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.d("MiniAppNotify", 1, ((StringBuilder)localObject).toString());
+    localObject = this.listenerList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((MiniAppNotify.IMiniAppNotifyListener)((Iterator)localObject).next()).onNotify(paramString1, paramInt, paramString2, paramString3, paramLong);
     }
   }
   
@@ -38,7 +49,7 @@ public class MiniAppNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.notify.MiniAppNotify
  * JD-Core Version:    0.7.0.1
  */

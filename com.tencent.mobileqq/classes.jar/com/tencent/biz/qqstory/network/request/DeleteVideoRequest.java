@@ -42,7 +42,7 @@ public class DeleteVideoRequest
     return b;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqDeleteVideo localReqDeleteVideo = new qqstory_service.ReqDeleteVideo();
     ArrayList localArrayList = new ArrayList();
@@ -53,12 +53,17 @@ public class DeleteVideoRequest
   
   public String toString()
   {
-    return "DeleteVideoRequest{vid='" + this.a + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeleteVideoRequest{vid='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.DeleteVideoRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,16 @@ class AVNotifyCenter$1
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      AVNotifyCenter.a(this.this$0, new PhoneStatusMonitor(this.this$0.a.getApp(), null));
+    if (this.this$0.a != null)
+    {
+      AVNotifyCenter localAVNotifyCenter = this.this$0;
+      AVNotifyCenter.a(localAVNotifyCenter, new PhoneStatusMonitor(localAVNotifyCenter.a.getApp(), new AVNotifyCenter.1.1(this)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.AVNotifyCenter.1
  * JD-Core Version:    0.7.0.1
  */

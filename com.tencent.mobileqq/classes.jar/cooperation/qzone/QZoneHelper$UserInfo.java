@@ -1,11 +1,11 @@
 package cooperation.qzone;
 
-import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class QZoneHelper$UserInfo
 {
-  private static UserInfo userInfo = null;
+  private static UserInfo userInfo;
   public String nickname = null;
   public String qzone_uin = null;
   
@@ -14,14 +14,15 @@ public class QZoneHelper$UserInfo
     if (userInfo == null) {
       userInfo = new UserInfo();
     }
-    userInfo.qzone_uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    userInfo.nickname = null;
-    return userInfo;
+    userInfo.qzone_uin = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+    UserInfo localUserInfo = userInfo;
+    localUserInfo.nickname = null;
+    return localUserInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.UserInfo
  * JD-Core Version:    0.7.0.1
  */

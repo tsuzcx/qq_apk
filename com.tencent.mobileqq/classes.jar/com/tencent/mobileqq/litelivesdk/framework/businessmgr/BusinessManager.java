@@ -2,6 +2,7 @@ package com.tencent.mobileqq.litelivesdk.framework.businessmgr;
 
 import android.text.TextUtils;
 import com.tencent.ilive.EnterRoomConfig;
+import com.tencent.ilive.audiencepages.room.pagelogic.AudienceMultiRoomActivityLogic;
 import com.tencent.mobileqq.litelivesdk.api.IBusinessExpireObserver;
 import com.tencent.mobileqq.litelivesdk.api.business.BusinessConfig;
 import com.tencent.mobileqq.utils.StringUtil;
@@ -28,10 +29,12 @@ public class BusinessManager
   
   public long a()
   {
-    if (this.jdField_a_of_type_Long <= 0L) {
-      return System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    long l1 = l2;
+    if (l2 <= 0L) {
+      l1 = System.currentTimeMillis();
     }
-    return this.jdField_a_of_type_Long;
+    return l1;
   }
   
   public EnterRoomConfig a()
@@ -41,24 +44,39 @@ public class BusinessManager
   
   public IBusinessExpireObserver a(String paramString)
   {
-    QLog.e("LiveBusinessManager", 1, "getBusinessExpireObserver appid = " + paramString + " isContainKey = " + this.jdField_a_of_type_JavaUtilMap.containsKey(paramString));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getBusinessExpireObserver appid = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" isContainKey = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap.containsKey(paramString));
+    QLog.e("LiveBusinessManager", 1, localStringBuilder.toString());
     return (IBusinessExpireObserver)this.jdField_a_of_type_JavaUtilMap.get(paramString);
   }
   
   public BusinessConfig a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig != null) {
-      QLog.e("LiveBusinessManager", 1, "getActiveBizConfig appid " + this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getActiveBizConfig appid ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.jdField_a_of_type_JavaLangString);
+      QLog.e("LiveBusinessManager", 1, localStringBuilder.toString());
     }
     return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig;
   }
   
   public String a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig == null) || (StringUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.e))) {
-      return "";
+    BusinessConfig localBusinessConfig = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig;
+    if ((localBusinessConfig != null) && (!StringUtil.a(localBusinessConfig.e))) {
+      return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.e;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.e;
+    return "";
+  }
+  
+  public void a()
+  {
+    AudienceMultiRoomActivityLogic.a().c();
   }
   
   public void a(long paramLong)
@@ -80,33 +98,47 @@ public class BusinessManager
   
   public void a(BusinessConfig paramBusinessConfig)
   {
-    if (paramBusinessConfig != null) {
-      QLog.e("LiveBusinessManager", 1, "updateActivieBizInfo appid " + paramBusinessConfig.jdField_a_of_type_JavaLangString);
+    if (paramBusinessConfig != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateActivieBizInfo appid ");
+      localStringBuilder.append(paramBusinessConfig.jdField_a_of_type_JavaLangString);
+      QLog.e("LiveBusinessManager", 1, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig = paramBusinessConfig;
   }
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig == null) || (StringUtil.a(paramString))) {
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig != null)
+    {
+      if (StringUtil.a(paramString)) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.d = paramString;
     }
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.d = paramString;
   }
   
   public void a(String paramString, IBusinessExpireObserver paramIBusinessExpireObserver)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("registerBusinessExpireObserver appid = ").append(paramString).append(" observer == null : ");
-    if (paramIBusinessExpireObserver == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.e("LiveBusinessManager", 1, bool + " isContainKey = " + this.jdField_a_of_type_JavaUtilMap.containsKey(paramString));
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      }
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramIBusinessExpireObserver);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("registerBusinessExpireObserver appid = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" observer == null : ");
+    boolean bool;
+    if (paramIBusinessExpireObserver == null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localStringBuilder.append(bool);
+    localStringBuilder.append(" isContainKey = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap.containsKey(paramString));
+    QLog.e("LiveBusinessManager", 1, localStringBuilder.toString());
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramIBusinessExpireObserver);
   }
   
   public void a(boolean paramBoolean)
@@ -121,10 +153,11 @@ public class BusinessManager
   
   public String b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig == null) || (StringUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.d))) {
-      return "";
+    BusinessConfig localBusinessConfig = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig;
+    if ((localBusinessConfig != null) && (!StringUtil.a(localBusinessConfig.d))) {
+      return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.d;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.d;
+    return "";
   }
   
   public void b(String paramString)
@@ -137,7 +170,8 @@ public class BusinessManager
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig != null) && ("1014".equals(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.jdField_a_of_type_JavaLangString));
+    BusinessConfig localBusinessConfig = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig;
+    return (localBusinessConfig != null) && ("1014".equals(localBusinessConfig.jdField_a_of_type_JavaLangString));
   }
   
   public String c()
@@ -147,12 +181,18 @@ public class BusinessManager
   
   public boolean c()
   {
+    BusinessConfig localBusinessConfig = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig;
+    return (localBusinessConfig != null) && ("1037".equals(localBusinessConfig.jdField_a_of_type_JavaLangString));
+  }
+  
+  public boolean d()
+  {
     return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.framework.businessmgr.BusinessManager
  * JD-Core Version:    0.7.0.1
  */

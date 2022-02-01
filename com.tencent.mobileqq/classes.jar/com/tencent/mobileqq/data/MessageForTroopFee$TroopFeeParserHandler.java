@@ -23,13 +23,14 @@ class MessageForTroopFee$TroopFeeParserHandler
   public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
     paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_JavaLangString.equals("title")) {
+    if (this.jdField_a_of_type_JavaLangString.equals("title"))
+    {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.title = paramArrayOfChar;
-    }
-    while (!this.jdField_a_of_type_JavaLangString.equals("summary")) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.summary = paramArrayOfChar;
+    if (this.jdField_a_of_type_JavaLangString.equals("summary")) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.summary = paramArrayOfChar;
+    }
   }
   
   public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
@@ -38,27 +39,26 @@ class MessageForTroopFee$TroopFeeParserHandler
     {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.actionUrl = paramAttributes.getValue("url");
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.brief = paramAttributes.getValue("brief");
-    }
-    do
-    {
       return;
-      if (paramString3.equals("title"))
-      {
-        this.jdField_a_of_type_JavaLangString = "title";
-        return;
-      }
-      if (paramString3.equals("summary"))
-      {
-        this.jdField_a_of_type_JavaLangString = "summary";
-        return;
-      }
-    } while (!paramString3.equals("source"));
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.source = paramAttributes.getValue("name");
+    }
+    if (paramString3.equals("title"))
+    {
+      this.jdField_a_of_type_JavaLangString = "title";
+      return;
+    }
+    if (paramString3.equals("summary"))
+    {
+      this.jdField_a_of_type_JavaLangString = "summary";
+      return;
+    }
+    if (paramString3.equals("source")) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.source = paramAttributes.getValue("name");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopFee.TroopFeeParserHandler
  * JD-Core Version:    0.7.0.1
  */

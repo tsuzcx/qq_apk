@@ -14,26 +14,25 @@ public class PTSDeviceUtil
   private static int densityDpi;
   private static int screenHeightPx;
   private static int screenWidthPx;
-  private static float textHeightOffsetPerLine = 0.0F;
-  private static float textWidthOffsetPerLength = 0.0F;
+  private static float textHeightOffsetPerLine;
+  private static float textWidthOffsetPerLength;
   
-  static
-  {
-    init();
-  }
+  static {}
   
   public static float dp2px(float paramFloat)
   {
-    return density * paramFloat;
+    return paramFloat * density;
   }
   
   public static int dp2pxInt(float paramFloat)
   {
-    if (paramFloat > 0.0F) {
-      return (int)(density * paramFloat + 0.5F);
-    }
-    if (paramFloat < 0.0F) {
-      return (int)(density * paramFloat - 0.5F);
+    if (paramFloat > 0.0F) {}
+    for (paramFloat = paramFloat * density + 0.5F;; paramFloat = paramFloat * density - 0.5F)
+    {
+      return (int)paramFloat;
+      if (paramFloat >= 0.0F) {
+        break;
+      }
     }
     return 0;
   }
@@ -80,14 +79,23 @@ public class PTSDeviceUtil
   
   private static void init()
   {
-    DisplayMetrics localDisplayMetrics = Resources.getSystem().getDisplayMetrics();
-    if (localDisplayMetrics != null)
+    Object localObject = Resources.getSystem().getDisplayMetrics();
+    if (localObject != null)
     {
-      density = localDisplayMetrics.density;
-      densityDpi = localDisplayMetrics.densityDpi;
-      screenWidthPx = localDisplayMetrics.widthPixels;
-      screenHeightPx = localDisplayMetrics.heightPixels;
-      PTSLog.i("PTSDeviceUtil", "[init] density = " + density + ", densityDpi = " + densityDpi + ", screenWidthPx = " + screenWidthPx + ", screenHeightPx = " + screenHeightPx);
+      density = ((DisplayMetrics)localObject).density;
+      densityDpi = ((DisplayMetrics)localObject).densityDpi;
+      screenWidthPx = ((DisplayMetrics)localObject).widthPixels;
+      screenHeightPx = ((DisplayMetrics)localObject).heightPixels;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[init] density = ");
+      ((StringBuilder)localObject).append(density);
+      ((StringBuilder)localObject).append(", densityDpi = ");
+      ((StringBuilder)localObject).append(densityDpi);
+      ((StringBuilder)localObject).append(", screenWidthPx = ");
+      ((StringBuilder)localObject).append(screenWidthPx);
+      ((StringBuilder)localObject).append(", screenHeightPx = ");
+      ((StringBuilder)localObject).append(screenHeightPx);
+      PTSLog.i("PTSDeviceUtil", ((StringBuilder)localObject).toString());
       return;
     }
     PTSLog.i("PTSDeviceUtil", "[init] displayMetrics is null.");
@@ -95,25 +103,37 @@ public class PTSDeviceUtil
   
   public static void init(Context paramContext)
   {
-    if ((paramContext == null) || (paramContext.getResources() == null)) {
-      init();
-    }
-    do
+    if ((paramContext != null) && (paramContext.getResources() != null))
     {
-      return;
       paramContext = paramContext.getResources().getDisplayMetrics();
-    } while (paramContext == null);
-    density = paramContext.density;
-    densityDpi = paramContext.densityDpi;
-    screenWidthPx = paramContext.widthPixels;
-    screenHeightPx = paramContext.heightPixels;
-    PTSLog.i("PTSDeviceUtil", "[init] density = " + density + ", densityDpi = " + densityDpi + ", screenWidthPx = " + screenWidthPx + ", screenHeightPx = " + screenHeightPx);
+      if (paramContext != null)
+      {
+        density = paramContext.density;
+        densityDpi = paramContext.densityDpi;
+        screenWidthPx = paramContext.widthPixels;
+        screenHeightPx = paramContext.heightPixels;
+        paramContext = new StringBuilder();
+        paramContext.append("[init] density = ");
+        paramContext.append(density);
+        paramContext.append(", densityDpi = ");
+        paramContext.append(densityDpi);
+        paramContext.append(", screenWidthPx = ");
+        paramContext.append(screenWidthPx);
+        paramContext.append(", screenHeightPx = ");
+        paramContext.append(screenHeightPx);
+        PTSLog.i("PTSDeviceUtil", paramContext.toString());
+      }
+      return;
+    }
+    init();
   }
   
   public static boolean isVisibleOnScreen(View paramView)
   {
-    if (paramView == null) {}
-    while (!paramView.isShown()) {
+    if (paramView == null) {
+      return false;
+    }
+    if (!paramView.isShown()) {
       return false;
     }
     Rect localRect = new Rect();
@@ -123,31 +143,35 @@ public class PTSDeviceUtil
   
   public static float px2dp(float paramFloat)
   {
-    float f = 0.0F;
-    if (density != 0.0F) {
-      f = paramFloat / density;
+    float f = density;
+    if (f != 0.0F) {
+      return paramFloat / f;
     }
-    return f;
+    return 0.0F;
   }
   
   public static int px2dpInt(float paramFloat)
   {
-    if (paramFloat > 0.0F) {
-      return (int)(paramFloat / density + 0.5F);
-    }
-    if (paramFloat < 0.0F) {
-      return (int)(paramFloat / density - 0.5F);
+    if (paramFloat > 0.0F) {}
+    for (paramFloat = paramFloat / density + 0.5F;; paramFloat = paramFloat / density - 0.5F)
+    {
+      return (int)paramFloat;
+      if (paramFloat >= 0.0F) {
+        break;
+      }
     }
     return 0;
   }
   
   public static int rp2pxInt(float paramFloat)
   {
-    if (paramFloat > 0.0F) {
-      return (int)(screenWidthPx / 750.0F * paramFloat + 0.5F);
-    }
-    if (paramFloat < 0.0F) {
-      return (int)(screenWidthPx / 750.0F * paramFloat - 0.5F);
+    if (paramFloat > 0.0F) {}
+    for (paramFloat = screenWidthPx / 750.0F * paramFloat + 0.5F;; paramFloat = screenWidthPx / 750.0F * paramFloat - 0.5F)
+    {
+      return (int)paramFloat;
+      if (paramFloat >= 0.0F) {
+        break;
+      }
     }
     return 0;
   }
@@ -164,7 +188,7 @@ public class PTSDeviceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.utils.PTSDeviceUtil
  * JD-Core Version:    0.7.0.1
  */

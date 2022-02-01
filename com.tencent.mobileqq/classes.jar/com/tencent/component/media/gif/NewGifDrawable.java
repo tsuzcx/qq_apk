@@ -78,7 +78,7 @@ public class NewGifDrawable
   ScheduledFuture<?> mSchedule;
   private final Rect mSrcRect;
   private long mStartTimeStamp;
-  private NewGifDrawable.StopRunnable mStopTask = new NewGifDrawable.StopRunnable(this, null);
+  private NewGifDrawable.StopRunnable mStopTask;
   private int mTaskType;
   private ColorStateList mTint;
   private PorterDuffColorFilter mTintFilter;
@@ -125,38 +125,44 @@ public class NewGifDrawable
   
   private NewGifDrawable(NewGifDecoder paramNewGifDecoder, NewGifDrawable paramNewGifDrawable, ScheduledThreadPoolExecutor paramScheduledThreadPoolExecutor, boolean paramBoolean, int paramInt1, int paramInt2, NewGifDecoder.Options paramOptions)
   {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    this.mStopTask = new NewGifDrawable.StopRunnable(this, null);
     this.mIsRenderingTriggeredOnDraw = paramBoolean;
-    if (paramScheduledThreadPoolExecutor != null)
+    if (paramScheduledThreadPoolExecutor == null) {
+      paramScheduledThreadPoolExecutor = GifRenderingExecutor.getInstance();
+    }
+    this.mExecutor = paramScheduledThreadPoolExecutor;
+    this.mHashcode = paramInt2;
+    this.mGifDecoder = paramNewGifDecoder;
+    if (paramInt1 == 1)
     {
-      this.mExecutor = paramScheduledThreadPoolExecutor;
-      this.mHashcode = paramInt2;
-      this.mGifDecoder = paramNewGifDecoder;
-      if (paramInt1 != 1) {
-        break label492;
-      }
       this.mGifDecoder.setLoopCount(0);
       setCurrentModel(paramInt1);
-      label181:
-      if ((paramNewGifDecoder instanceof SharpPNewGifDecoder)) {
-        this.mIsSharpp = true;
-      }
-      if ((!ImageManagerEnv.g().isPreferNewGifDecodeTask()) || (this.mIsSharpp) || (isSupportGifPlaying())) {
-        break label511;
-      }
+    }
+    else
+    {
+      this.mGifDecoder.setLoopCount(1);
+      setCurrentModel(paramInt1);
+    }
+    if ((paramNewGifDecoder instanceof SharpPNewGifDecoder)) {
+      this.mIsSharpp = true;
+    }
+    if ((ImageManagerEnv.g().isPreferNewGifDecodeTask()) && (!this.mIsSharpp) && (!isSupportGifPlaying()))
+    {
       this.mRenderTask = new PrepareAndRenderTask(this);
       this.mTaskType = 2;
-      label233:
-      paramNewGifDecoder = localObject2;
-      if (paramNewGifDrawable != null)
-      {
-        paramScheduledThreadPoolExecutor = paramNewGifDrawable.mLock4Bmp;
-        paramNewGifDecoder = localObject1;
-      }
     }
-    for (;;)
+    else
     {
-      label492:
-      label511:
+      this.mRenderTask = new RenderTask(this);
+      this.mTaskType = 1;
+    }
+    paramNewGifDecoder = localObject2;
+    if (paramNewGifDrawable != null)
+    {
+      paramScheduledThreadPoolExecutor = paramNewGifDrawable.mLock4Bmp;
+      paramNewGifDecoder = localObject1;
       try
       {
         if (!paramNewGifDrawable.mGifDecoder.isRecycled())
@@ -173,56 +179,47 @@ public class NewGifDrawable
             }
           }
         }
-        if (paramNewGifDecoder != null) {
-          break label565;
-        }
-        paramNewGifDrawable = Bitmap.Config.ARGB_8888;
+      }
+      finally {}
+    }
+    if (paramNewGifDecoder == null)
+    {
+      paramNewGifDrawable = Bitmap.Config.ARGB_8888;
+      paramNewGifDecoder = paramNewGifDrawable;
+      if (ImageManagerEnv.g().isGifSupport565())
+      {
         paramNewGifDecoder = paramNewGifDrawable;
-        if (ImageManagerEnv.g().isGifSupport565())
+        if (!isSupportGifPlaying())
         {
           paramNewGifDecoder = paramNewGifDrawable;
-          if (!isSupportGifPlaying())
-          {
-            paramNewGifDecoder = paramNewGifDrawable;
-            if (!this.mIsSharpp)
+          if (!this.mIsSharpp) {
+            if ((paramOptions != null) && (paramOptions.inPreferredConfig == Bitmap.Config.ARGB_8888))
             {
-              if ((paramOptions == null) || (paramOptions.inPreferredConfig != Bitmap.Config.ARGB_8888)) {
-                break label536;
-              }
               ImageManagerLog.w("NewGifDrawable", "prefer to decode as 8888");
               paramNewGifDecoder = paramNewGifDrawable;
             }
+            else
+            {
+              paramNewGifDecoder = this.mGifDecoder.getAcceptableConfig();
+            }
           }
         }
-        this.mBuffer = Bitmap.createBitmap(this.mGifDecoder.getWidth(), this.mGifDecoder.getHeight(), paramNewGifDecoder);
-        if (paramNewGifDecoder != Bitmap.Config.ARGB_8888) {
-          break label549;
-        }
-        this.mBuffer.eraseColor(0);
-        this.mSrcRect = new Rect(0, 0, this.mGifDecoder.getWidth(), this.mGifDecoder.getHeight());
-        this.mInvalidationHandler = new InvalidationHandler(this);
-        if (!isSupportGifPlaying()) {
-          reset();
-        }
-        return;
       }
-      finally {}
-      paramScheduledThreadPoolExecutor = GifRenderingExecutor.getInstance();
-      break;
-      this.mGifDecoder.setLoopCount(1);
-      setCurrentModel(paramInt1);
-      break label181;
-      this.mRenderTask = new RenderTask(this);
-      this.mTaskType = 1;
-      break label233;
-      label536:
-      paramNewGifDecoder = this.mGifDecoder.getAcceptableConfig();
-      continue;
-      label549:
-      this.mBuffer.eraseColor(Color.parseColor("#DFDFDF"));
-      continue;
-      label565:
+      this.mBuffer = Bitmap.createBitmap(this.mGifDecoder.getWidth(), this.mGifDecoder.getHeight(), paramNewGifDecoder);
+      if (paramNewGifDecoder == Bitmap.Config.ARGB_8888) {
+        this.mBuffer.eraseColor(0);
+      } else {
+        this.mBuffer.eraseColor(Color.parseColor("#DFDFDF"));
+      }
+    }
+    else
+    {
       this.mBuffer = paramNewGifDecoder;
+    }
+    this.mSrcRect = new Rect(0, 0, this.mGifDecoder.getWidth(), this.mGifDecoder.getHeight());
+    this.mInvalidationHandler = new InvalidationHandler(this);
+    if (!isSupportGifPlaying()) {
+      reset();
     }
   }
   
@@ -311,127 +308,49 @@ public class NewGifDrawable
       paramResources = new NewGifDrawable(paramResources, paramInt);
       return paramResources;
     }
-    catch (IOException paramResources) {}
+    catch (IOException paramResources)
+    {
+      label12:
+      break label12;
+    }
     return null;
   }
   
-  /* Error */
   private void endFrameRateStat()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 221	com/tencent/component/media/gif/NewGifDrawable:isSupportGifPlaying	()Z
-    //   6: ifne +12 -> 18
-    //   9: aload_0
-    //   10: getfield 214	com/tencent/component/media/gif/NewGifDrawable:mIsSharpp	Z
-    //   13: istore_1
-    //   14: iload_1
-    //   15: ifeq +6 -> 21
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: return
-    //   21: invokestatic 383	java/lang/System:currentTimeMillis	()J
-    //   24: aload_0
-    //   25: getfield 368	com/tencent/component/media/gif/NewGifDrawable:mStartTimeStamp	J
-    //   28: lsub
-    //   29: lstore_2
-    //   30: aload_0
-    //   31: getfield 228	com/tencent/component/media/gif/NewGifDrawable:mRenderTask	Lcom/tencent/component/media/gif/RenderTask;
-    //   34: invokevirtual 386	com/tencent/component/media/gif/RenderTask:getFrameDelay	()J
-    //   37: lstore 4
-    //   39: aload_0
-    //   40: getfield 388	com/tencent/component/media/gif/NewGifDrawable:mFrameRateReported	Z
-    //   43: ifne +126 -> 169
-    //   46: aload_0
-    //   47: getfield 370	com/tencent/component/media/gif/NewGifDrawable:mDrawCounts	J
-    //   50: lconst_0
-    //   51: lcmp
-    //   52: ifle +117 -> 169
-    //   55: lload_2
-    //   56: ldc2_w 389
-    //   59: lcmp
-    //   60: ifle +109 -> 169
-    //   63: lload 4
-    //   65: lconst_0
-    //   66: lcmp
-    //   67: ifle +102 -> 169
-    //   70: aload_0
-    //   71: aload_0
-    //   72: getfield 370	com/tencent/component/media/gif/NewGifDrawable:mDrawCounts	J
-    //   75: ldc2_w 391
-    //   78: lmul
-    //   79: lload_2
-    //   80: ldiv
-    //   81: l2f
-    //   82: putfield 394	com/tencent/component/media/gif/NewGifDrawable:mFrameRate	F
-    //   85: aload_0
-    //   86: getfield 396	com/tencent/component/media/gif/NewGifDrawable:mMaxFrameRate	F
-    //   89: fconst_0
-    //   90: fcmpl
-    //   91: ifne +14 -> 105
-    //   94: aload_0
-    //   95: ldc2_w 391
-    //   98: lload 4
-    //   100: ldiv
-    //   101: l2f
-    //   102: putfield 396	com/tencent/component/media/gif/NewGifDrawable:mMaxFrameRate	F
-    //   105: ldc 26
-    //   107: new 398	java/lang/StringBuilder
-    //   110: dup
-    //   111: invokespecial 399	java/lang/StringBuilder:<init>	()V
-    //   114: ldc_w 401
-    //   117: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   120: aload_0
-    //   121: getfield 394	com/tencent/component/media/gif/NewGifDrawable:mFrameRate	F
-    //   124: invokevirtual 408	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   127: ldc_w 410
-    //   130: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: aload_0
-    //   134: getfield 396	com/tencent/component/media/gif/NewGifDrawable:mMaxFrameRate	F
-    //   137: invokevirtual 408	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   140: invokevirtual 413	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   143: invokestatic 416	com/tencent/component/media/utils/ImageManagerLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   146: invokestatic 182	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   149: aload_0
-    //   150: getfield 230	com/tencent/component/media/gif/NewGifDrawable:mTaskType	I
-    //   153: aload_0
-    //   154: getfield 394	com/tencent/component/media/gif/NewGifDrawable:mFrameRate	F
-    //   157: aload_0
-    //   158: getfield 396	com/tencent/component/media/gif/NewGifDrawable:mMaxFrameRate	F
-    //   161: invokevirtual 420	com/tencent/component/media/ImageManagerEnv:reportGifFrameRate	(IFF)V
-    //   164: aload_0
-    //   165: iconst_1
-    //   166: putfield 388	com/tencent/component/media/gif/NewGifDrawable:mFrameRateReported	Z
-    //   169: aload_0
-    //   170: lconst_0
-    //   171: putfield 368	com/tencent/component/media/gif/NewGifDrawable:mStartTimeStamp	J
-    //   174: goto -156 -> 18
-    //   177: astore 6
-    //   179: aload_0
-    //   180: monitorexit
-    //   181: aload 6
-    //   183: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	184	0	this	NewGifDrawable
-    //   13	2	1	bool	boolean
-    //   29	51	2	l1	long
-    //   37	62	4	l2	long
-    //   177	5	6	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	177	finally
-    //   21	55	177	finally
-    //   70	105	177	finally
-    //   105	169	177	finally
-    //   169	174	177	finally
+    try
+    {
+      if ((!isSupportGifPlaying()) && (!this.mIsSharpp))
+      {
+        long l1 = System.currentTimeMillis() - this.mStartTimeStamp;
+        long l2 = this.mRenderTask.getFrameDelay();
+        if ((!this.mFrameRateReported) && (this.mDrawCounts > 0L) && (l1 > 2000L) && (l2 > 0L))
+        {
+          this.mFrameRate = ((float)(this.mDrawCounts * 1000L / l1));
+          if (this.mMaxFrameRate == 0.0F) {
+            this.mMaxFrameRate = ((float)(1000L / l2));
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("frameRate:");
+          localStringBuilder.append(this.mFrameRate);
+          localStringBuilder.append(",maxFrameRate:");
+          localStringBuilder.append(this.mMaxFrameRate);
+          ImageManagerLog.i("NewGifDrawable", localStringBuilder.toString());
+          ImageManagerEnv.g().reportGifFrameRate(this.mTaskType, this.mFrameRate, this.mMaxFrameRate);
+          this.mFrameRateReported = true;
+        }
+        this.mStartTimeStamp = 0L;
+        return;
+      }
+      return;
+    }
+    finally {}
   }
   
   private boolean isSupportGifPlaying()
   {
-    return (this.mCurrentModel == 4) || (this.mCurrentModel == 3);
+    int i = this.mCurrentModel;
+    return (i == 4) || (i == 3);
   }
   
   private void shutdown()
@@ -442,72 +361,44 @@ public class NewGifDrawable
     this.mGifDecoder.recycle();
   }
   
-  /* Error */
   private void startFrameRateStat()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 221	com/tencent/component/media/gif/NewGifDrawable:isSupportGifPlaying	()Z
-    //   6: ifne +12 -> 18
-    //   9: aload_0
-    //   10: getfield 214	com/tencent/component/media/gif/NewGifDrawable:mIsSharpp	Z
-    //   13: istore_1
-    //   14: iload_1
-    //   15: ifeq +6 -> 21
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: return
-    //   21: aload_0
-    //   22: invokestatic 383	java/lang/System:currentTimeMillis	()J
-    //   25: putfield 368	com/tencent/component/media/gif/NewGifDrawable:mStartTimeStamp	J
-    //   28: aload_0
-    //   29: lconst_0
-    //   30: putfield 370	com/tencent/component/media/gif/NewGifDrawable:mDrawCounts	J
-    //   33: goto -15 -> 18
-    //   36: astore_2
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_2
-    //   40: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	41	0	this	NewGifDrawable
-    //   13	2	1	bool	boolean
-    //   36	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	36	finally
-    //   21	33	36	finally
+    try
+    {
+      if ((!isSupportGifPlaying()) && (!this.mIsSharpp))
+      {
+        this.mStartTimeStamp = System.currentTimeMillis();
+        this.mDrawCounts = 0L;
+        return;
+      }
+      return;
+    }
+    finally {}
   }
   
   private PorterDuffColorFilter updateTintFilter(ColorStateList paramColorStateList, PorterDuff.Mode paramMode)
   {
-    if ((paramColorStateList == null) || (paramMode == null)) {
-      return null;
+    if ((paramColorStateList != null) && (paramMode != null)) {
+      return new PorterDuffColorFilter(paramColorStateList.getColorForState(getState(), 0), paramMode);
     }
-    return new PorterDuffColorFilter(paramColorStateList.getColorForState(getState(), 0), paramMode);
+    return null;
   }
   
   private void waitForPendingRenderTask()
   {
-    if (this.mSchedule != null) {}
+    ScheduledFuture localScheduledFuture = this.mSchedule;
+    if (localScheduledFuture != null) {}
     try
     {
-      this.mSchedule.get();
+      localScheduledFuture.get();
       this.mRenderTask.waitFinish();
-      label24:
+      label23:
       this.mInvalidationHandler.removeMessages(0);
       return;
     }
-    catch (ExecutionException localExecutionException)
+    catch (InterruptedException|ExecutionException localInterruptedException)
     {
-      break label24;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label24;
+      break label23;
     }
   }
   
@@ -540,18 +431,15 @@ public class NewGifDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    int i = 1;
     addDrawCount();
+    int i = 1;
     handlePlayCallBack(1);
-    if ((this.mTintFilter != null) && (this.mPaint.getColorFilter() == null))
-    {
+    if ((this.mTintFilter != null) && (this.mPaint.getColorFilter() == null)) {
       this.mPaint.setColorFilter(this.mTintFilter);
-      if (this.mPaint.getShader() != null) {
-        break label203;
-      }
+    } else {
+      i = 0;
     }
-    for (;;)
-    {
+    if (this.mPaint.getShader() == null) {
       synchronized (this.mLock4Bmp)
       {
         if (!this.mBuffer.isRecycled())
@@ -559,23 +447,24 @@ public class NewGifDrawable
           handlePlayCallBack(2);
           paramCanvas.drawBitmap(this.mBuffer, this.mSrcRect, this.mDstRect, this.mPaint);
         }
-        if (i != 0) {
-          this.mPaint.setColorFilter(null);
-        }
-        if ((this.mIsRenderingTriggeredOnDraw) && (this.mIsRunning) && (this.mNextFrameRenderTime != -9223372036854775808L))
-        {
-          long l = Math.max(0L, this.mNextFrameRenderTime - SystemClock.uptimeMillis());
-          this.mNextFrameRenderTime = -9223372036854775808L;
-          this.mExecutor.remove(this.mRenderTask);
-          this.mSchedule = this.mExecutor.schedule(this.mRenderTask, l, TimeUnit.MILLISECONDS);
-        }
-        handlePlayCallBack(3);
-        return;
-        i = 0;
       }
-      label203:
-      paramCanvas.drawRect(this.mDstRect, this.mPaint);
     }
+    paramCanvas.drawRect(this.mDstRect, this.mPaint);
+    if (i != 0) {
+      this.mPaint.setColorFilter(null);
+    }
+    if ((this.mIsRenderingTriggeredOnDraw) && (this.mIsRunning))
+    {
+      long l = this.mNextFrameRenderTime;
+      if (l != -9223372036854775808L)
+      {
+        l = Math.max(0L, l - SystemClock.uptimeMillis());
+        this.mNextFrameRenderTime = -9223372036854775808L;
+        this.mExecutor.remove(this.mRenderTask);
+        this.mSchedule = this.mExecutor.schedule(this.mRenderTask, l, TimeUnit.MILLISECONDS);
+      }
+    }
+    handlePlayCallBack(3);
   }
   
   public void finalize()
@@ -597,10 +486,13 @@ public class NewGifDrawable
   public long getAllocationByteCount()
   {
     long l = this.mGifDecoder.getAllocationByteCount();
+    int i;
     if (Build.VERSION.SDK_INT >= 19) {
-      return l + this.mBuffer.getAllocationByteCount();
+      i = this.mBuffer.getAllocationByteCount();
+    } else {
+      i = this.mBuffer.getRowBytes() * this.mBuffer.getHeight();
     }
-    return l + this.mBuffer.getRowBytes() * this.mBuffer.getHeight();
+    return l + i;
   }
   
   public int getAlpha()
@@ -610,8 +502,9 @@ public class NewGifDrawable
   
   public Bitmap.Config getBitmapConfig()
   {
-    if (this.mBuffer != null) {
-      return this.mBuffer.getConfig();
+    Bitmap localBitmap = this.mBuffer;
+    if (localBitmap != null) {
+      return localBitmap.getConfig();
     }
     return this.mGifDecoder.getAcceptableConfig();
   }
@@ -677,15 +570,15 @@ public class NewGifDrawable
   
   public Bitmap getFrame(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IndexOutOfBoundsException("Frame index is not positive");
+    if (paramInt >= 0) {
+      synchronized (this.mLock4Bmp)
+      {
+        this.mBuffer = this.mGifDecoder.seekToFrame(paramInt, this.mBuffer);
+        Bitmap localBitmap = getCurrentFrame();
+        return localBitmap;
+      }
     }
-    synchronized (this.mLock4Bmp)
-    {
-      this.mBuffer = this.mGifDecoder.seekToFrame(paramInt, this.mBuffer);
-      Bitmap localBitmap = getCurrentFrame();
-      return localBitmap;
-    }
+    throw new IndexOutOfBoundsException("Frame index is not positive");
   }
   
   public int getFrameByteCount()
@@ -715,18 +608,22 @@ public class NewGifDrawable
   
   public int getIntrinsicHeight()
   {
-    if (this.sHeight == 0) {
-      return this.mGifDecoder.getHeight();
+    int j = this.sHeight;
+    int i = j;
+    if (j == 0) {
+      i = this.mGifDecoder.getHeight();
     }
-    return this.sHeight;
+    return i;
   }
   
   public int getIntrinsicWidth()
   {
-    if (this.sWidth == 0) {
-      return this.mGifDecoder.getWidth();
+    int j = this.sWidth;
+    int i = j;
+    if (j == 0) {
+      i = this.mGifDecoder.getWidth();
     }
-    return this.sWidth;
+    return i;
   }
   
   public int getLoopCount()
@@ -761,17 +658,18 @@ public class NewGifDrawable
   
   public int getPixel(int paramInt1, int paramInt2)
   {
-    if (paramInt1 >= this.mGifDecoder.getWidth()) {
-      throw new IllegalArgumentException("x must be < width");
-    }
-    if (paramInt2 >= this.mGifDecoder.getHeight()) {
+    if (paramInt1 < this.mGifDecoder.getWidth())
+    {
+      if (paramInt2 < this.mGifDecoder.getHeight()) {
+        synchronized (this.mLock4Bmp)
+        {
+          this.mBuffer.getPixel(paramInt1, paramInt2);
+          return 0;
+        }
+      }
       throw new IllegalArgumentException("y must be < height");
     }
-    synchronized (this.mLock4Bmp)
-    {
-      this.mBuffer.getPixel(paramInt1, paramInt2);
-      return 0;
-    }
+    throw new IllegalArgumentException("x must be < width");
   }
   
   public void getPixels(int[] paramArrayOfInt)
@@ -785,8 +683,9 @@ public class NewGifDrawable
   
   public float getSpeedFactor()
   {
-    if (this.mFactor > 0.0F) {
-      return this.mFactor;
+    float f = this.mFactor;
+    if (f > 0.0F) {
+      return f;
     }
     return 1.0F;
   }
@@ -824,7 +723,7 @@ public class NewGifDrawable
       if (((paramInt == 1) || (paramInt == 0)) && ((this.curPlayCount == 0) || (k == 0)) && (i == 0)) {
         this.gifPlayListener.onGifStartPlay(this);
       }
-      if (((paramInt == 2) || (paramInt == 0)) && (i < 0) && (i < j - 1) && ((this.curPlayCount < k) || (k == 0))) {
+      if (((paramInt == 2) || (paramInt == 0)) && (i > 0) && (i < j - 1) && ((this.curPlayCount < k) || (k == 0))) {
         this.gifPlayListener.onGifPlaying(this);
       }
       if (((paramInt == 3) || (paramInt == 0)) && (i == j - 1) && ((this.curPlayCount == k) || (k == 0)))
@@ -853,43 +752,18 @@ public class NewGifDrawable
     return this.mIsRunning;
   }
   
-  /* Error */
   public boolean isRecycled()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 202	com/tencent/component/media/gif/NewGifDrawable:mGifDecoder	Lcom/tencent/component/media/gif/NewGifDecoder;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnonnull +9 -> 17
-    //   11: iconst_1
-    //   12: istore_1
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: iload_1
-    //   16: ireturn
-    //   17: aload_0
-    //   18: getfield 202	com/tencent/component/media/gif/NewGifDrawable:mGifDecoder	Lcom/tencent/component/media/gif/NewGifDecoder;
-    //   21: invokeinterface 233 1 0
-    //   26: istore_1
-    //   27: goto -14 -> 13
-    //   30: astore_2
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: aload_2
-    //   34: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	35	0	this	NewGifDrawable
-    //   12	15	1	bool	boolean
-    //   6	2	2	localNewGifDecoder	NewGifDecoder
-    //   30	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	30	finally
-    //   17	27	30	finally
+    try
+    {
+      NewGifDecoder localNewGifDecoder = this.mGifDecoder;
+      if (localNewGifDecoder == null) {
+        return true;
+      }
+      boolean bool = this.mGifDecoder.isRecycled();
+      return bool;
+    }
+    finally {}
   }
   
   public boolean isRunning()
@@ -899,7 +773,14 @@ public class NewGifDrawable
   
   public boolean isStateful()
   {
-    return (super.isStateful()) || ((this.mTint != null) && (this.mTint.isStateful()));
+    if (!super.isStateful())
+    {
+      ColorStateList localColorStateList = this.mTint;
+      if ((localColorStateList == null) || (!localColorStateList.isStateful())) {
+        return false;
+      }
+    }
+    return true;
   }
   
   protected void onBoundsChange(Rect paramRect)
@@ -909,10 +790,15 @@ public class NewGifDrawable
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    if ((this.mTint != null) && (this.mTintMode != null))
+    paramArrayOfInt = this.mTint;
+    if (paramArrayOfInt != null)
     {
-      this.mTintFilter = updateTintFilter(this.mTint, this.mTintMode);
-      return true;
+      PorterDuff.Mode localMode = this.mTintMode;
+      if (localMode != null)
+      {
+        this.mTintFilter = updateTintFilter(paramArrayOfInt, localMode);
+        return true;
+      }
     }
     return false;
   }
@@ -922,51 +808,20 @@ public class NewGifDrawable
     stop();
   }
   
-  /* Error */
   public void recycle()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 243	com/tencent/component/media/gif/NewGifDrawable:shutdown	()V
-    //   6: invokestatic 182	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   9: invokevirtual 712	com/tencent/component/media/ImageManagerEnv:isNeedRecycle	()Z
-    //   12: ifeq +19 -> 31
-    //   15: aload_0
-    //   16: getfield 172	com/tencent/component/media/gif/NewGifDrawable:mLock4Bmp	Ljava/lang/Object;
-    //   19: astore_1
-    //   20: aload_1
-    //   21: monitorenter
-    //   22: aload_0
-    //   23: getfield 245	com/tencent/component/media/gif/NewGifDrawable:mBuffer	Landroid/graphics/Bitmap;
-    //   26: invokevirtual 713	android/graphics/Bitmap:recycle	()V
-    //   29: aload_1
-    //   30: monitorexit
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: return
-    //   34: astore_2
-    //   35: aload_1
-    //   36: monitorexit
-    //   37: aload_2
-    //   38: athrow
-    //   39: astore_1
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: aload_1
-    //   43: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	44	0	this	NewGifDrawable
-    //   39	4	1	localObject2	Object
-    //   34	4	2	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   22	31	34	finally
-    //   35	37	34	finally
-    //   2	22	39	finally
-    //   37	39	39	finally
+    try
+    {
+      shutdown();
+      if (ImageManagerEnv.g().isNeedRecycle()) {
+        synchronized (this.mLock4Bmp)
+        {
+          this.mBuffer.recycle();
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
   public void recycleForGifPlay()
@@ -992,102 +847,75 @@ public class NewGifDrawable
     return this.mListeners.remove(paramAnimationListener);
   }
   
-  /* Error */
   public void reset()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 363	com/tencent/component/media/gif/NewGifDrawable:mIsResetting	Z
-    //   6: ifeq +14 -> 20
-    //   9: ldc 26
-    //   11: ldc_w 731
-    //   14: invokestatic 272	com/tencent/component/media/utils/ImageManagerLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: return
-    //   20: aload_0
-    //   21: invokespecial 733	com/tencent/component/media/gif/NewGifDrawable:endFrameRateStat	()V
-    //   24: aload_0
-    //   25: iconst_1
-    //   26: putfield 363	com/tencent/component/media/gif/NewGifDrawable:mIsResetting	Z
-    //   29: aload_0
-    //   30: iconst_0
-    //   31: putfield 572	com/tencent/component/media/gif/NewGifDrawable:curPlayCount	I
-    //   34: aload_0
-    //   35: iconst_0
-    //   36: putfield 134	com/tencent/component/media/gif/NewGifDrawable:mIsRunning	Z
-    //   39: aload_0
-    //   40: getfield 191	com/tencent/component/media/gif/NewGifDrawable:mCtrlHandler	Landroid/os/Handler;
-    //   43: new 735	com/tencent/component/media/gif/NewGifDrawable$1
-    //   46: dup
-    //   47: aload_0
-    //   48: invokespecial 736	com/tencent/component/media/gif/NewGifDrawable$1:<init>	(Lcom/tencent/component/media/gif/NewGifDrawable;)V
-    //   51: invokevirtual 739	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   54: pop
-    //   55: goto -38 -> 17
-    //   58: astore_1
-    //   59: aload_0
-    //   60: monitorexit
-    //   61: aload_1
-    //   62: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	63	0	this	NewGifDrawable
-    //   58	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	58	finally
-    //   20	55	58	finally
+    try
+    {
+      if (this.mIsResetting)
+      {
+        ImageManagerLog.w("NewGifDrawable", "it is resetting");
+        return;
+      }
+      endFrameRateStat();
+      this.mIsResetting = true;
+      this.curPlayCount = 0;
+      this.mIsRunning = false;
+      this.mCtrlHandler.post(new NewGifDrawable.1(this));
+      return;
+    }
+    finally {}
   }
   
   public void seekTo(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("Position is not positive");
+    if (paramInt >= 0)
+    {
+      this.mExecutor.execute(new NewGifDrawable.2(this, this, paramInt));
+      return;
     }
-    this.mExecutor.execute(new NewGifDrawable.2(this, this, paramInt));
+    throw new IllegalArgumentException("Position is not positive");
   }
   
   public void seekToFrame(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IndexOutOfBoundsException("Frame index is not positive");
+    if (paramInt >= 0)
+    {
+      this.mExecutor.execute(new NewGifDrawable.3(this, this, paramInt));
+      return;
     }
-    this.mExecutor.execute(new NewGifDrawable.3(this, this, paramInt));
+    throw new IndexOutOfBoundsException("Frame index is not positive");
   }
   
   public Bitmap seekToFrameAndGet(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IndexOutOfBoundsException("Frame index is not positive");
-    }
-    synchronized (this.mLock4Bmp)
-    {
-      this.mBuffer = this.mGifDecoder.seekToFrame(paramInt, this.mBuffer);
-      Bitmap localBitmap = getCurrentFrame();
-      if (!this.mInvalidationHandler.hasMessages(0)) {
-        this.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+    if (paramInt >= 0) {
+      synchronized (this.mLock4Bmp)
+      {
+        this.mBuffer = this.mGifDecoder.seekToFrame(paramInt, this.mBuffer);
+        Bitmap localBitmap = getCurrentFrame();
+        if (!this.mInvalidationHandler.hasMessages(0)) {
+          this.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+        }
+        return localBitmap;
       }
-      return localBitmap;
     }
+    throw new IndexOutOfBoundsException("Frame index is not positive");
   }
   
   public Bitmap seekToPositionAndGet(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("Position is not positive");
-    }
-    synchronized (this.mLock4Bmp)
-    {
-      this.mBuffer = this.mGifDecoder.seekToTime(paramInt, this.mBuffer);
-      Bitmap localBitmap = getCurrentFrame();
-      if (!this.mInvalidationHandler.hasMessages(0)) {
-        this.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+    if (paramInt >= 0) {
+      synchronized (this.mLock4Bmp)
+      {
+        this.mBuffer = this.mGifDecoder.seekToTime(paramInt, this.mBuffer);
+        Bitmap localBitmap = getCurrentFrame();
+        if (!this.mInvalidationHandler.hasMessages(0)) {
+          this.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+        }
+        return localBitmap;
       }
-      return localBitmap;
     }
+    throw new IllegalArgumentException("Position is not positive");
   }
   
   public void setAlpha(int paramInt)
@@ -1194,13 +1022,14 @@ public class NewGifDrawable
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
     paramBoolean2 = super.setVisible(paramBoolean1, paramBoolean2);
-    if (paramBoolean1) {
+    if (paramBoolean1)
+    {
       start();
-    }
-    while (!paramBoolean2) {
       return paramBoolean2;
     }
-    stop();
+    if (paramBoolean2) {
+      stop();
+    }
     return paramBoolean2;
   }
   
@@ -1215,13 +1044,10 @@ public class NewGifDrawable
     long l = this.mGifDecoder.start();
     if (isSupportGifPlaying()) {
       startAnimation(0L);
-    }
-    for (;;)
-    {
-      startFrameRateStat();
-      return;
+    } else {
       startAnimation(l);
     }
+    startFrameRateStat();
   }
   
   void startAnimation(long paramLong)
@@ -1263,7 +1089,7 @@ public class NewGifDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.gif.NewGifDrawable
  * JD-Core Version:    0.7.0.1
  */

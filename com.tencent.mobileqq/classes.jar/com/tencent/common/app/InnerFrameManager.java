@@ -10,7 +10,7 @@ import android.view.ViewStub;
 import android.view.ViewStub.OnInflateListener;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ViewFlipper;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -21,7 +21,7 @@ public class InnerFrameManager
 {
   public Activity a;
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = null;
   private Set<InnerFrame> jdField_a_of_type_JavaUtilSet = new HashSet();
   private boolean jdField_a_of_type_Boolean = false;
   
@@ -81,31 +81,30 @@ public class InnerFrameManager
     }
     ((InnerFrame)getChildAt(getDisplayedChild())).c();
     getChildAt(paramInt).setVisibility(0);
-    if (paramBoolean) {
-      if (getDisplayedChild() != 0)
-      {
-        if (getDisplayedChild() >= paramInt) {
-          break label135;
+    if (paramBoolean)
+    {
+      if (getDisplayedChild() != 0) {
+        if (getDisplayedChild() < paramInt)
+        {
+          setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772078);
+          setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772079);
         }
-        setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772056);
-        setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772057);
+        else
+        {
+          setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772072);
+          setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772073);
+        }
       }
     }
-    for (;;)
+    else
     {
-      setDisplayedChild(paramInt);
-      ((InnerFrame)getChildAt(paramInt)).b(this.jdField_a_of_type_AndroidOsBundle);
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
-      }
+      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772147);
+      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772147);
+    }
+    setDisplayedChild(paramInt);
+    ((InnerFrame)getChildAt(paramInt)).b(this.jdField_a_of_type_AndroidOsBundle);
+    if (this.jdField_a_of_type_Boolean) {
       ((InnerFrame)getChildAt(paramInt)).a();
-      return;
-      label135:
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772050);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772051);
-      continue;
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772121);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772121);
     }
   }
   
@@ -149,22 +148,22 @@ public class InnerFrameManager
     this.jdField_a_of_type_JavaUtilSet.add(paramViewStub);
     paramViewStub.setActivity(this.jdField_a_of_type_AndroidAppActivity);
     paramViewStub.setInnerFrameManager(this);
-    paramViewStub.setAppIntf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramViewStub.setAppIntf(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
     paramViewStub.a(this.jdField_a_of_type_AndroidOsBundle);
   }
   
-  public void setAppIntf(QQAppInterface paramQQAppInterface)
+  public void setAppIntf(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
     while (localIterator.hasNext()) {
-      ((InnerFrame)localIterator.next()).setAppIntf(paramQQAppInterface);
+      ((InnerFrame)localIterator.next()).setAppIntf(paramBaseQQAppInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.InnerFrameManager
  * JD-Core Version:    0.7.0.1
  */

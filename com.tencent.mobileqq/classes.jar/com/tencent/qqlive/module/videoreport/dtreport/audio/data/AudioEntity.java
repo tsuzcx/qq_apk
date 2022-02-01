@@ -26,15 +26,19 @@ public class AudioEntity
   @Nullable
   public Object getPageObject()
   {
-    if (this.weakPage == null) {
+    WeakReference localWeakReference = this.weakPage;
+    if (localWeakReference == null) {
       return null;
     }
-    return this.weakPage.get();
+    return localWeakReference.get();
   }
   
   public String getPlayType()
   {
-    return this.playType + "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.playType);
+    localStringBuilder.append("");
+    return localStringBuilder.toString();
   }
   
   public String toString()
@@ -43,29 +47,34 @@ public class AudioEntity
       return super.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("AudioInfo:").append("contentId:").append(this.contentId).append("\n").append("playType:").append(this.playType).append("\n");
-    Object localObject;
-    if (this.weakPage == null)
-    {
+    localStringBuilder.append("AudioInfo:");
+    localStringBuilder.append("contentId:");
+    localStringBuilder.append(this.contentId);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("playType:");
+    localStringBuilder.append(this.playType);
+    localStringBuilder.append("\n");
+    Object localObject = this.weakPage;
+    if (localObject == null) {
       localObject = "null";
-      if (localObject == null) {
-        break label102;
-      }
+    } else {
+      localObject = ((WeakReference)localObject).get();
+    }
+    if (localObject != null)
+    {
       localStringBuilder.append(localObject.toString());
     }
-    for (;;)
+    else
     {
-      return localStringBuilder.toString();
-      localObject = this.weakPage.get();
-      break;
-      label102:
-      localStringBuilder.append("page is null").append("\n");
+      localStringBuilder.append("page is null");
+      localStringBuilder.append("\n");
     }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.audio.data.AudioEntity
  * JD-Core Version:    0.7.0.1
  */

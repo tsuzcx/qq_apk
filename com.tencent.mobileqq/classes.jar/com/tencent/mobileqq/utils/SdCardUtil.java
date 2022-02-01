@@ -6,7 +6,6 @@ import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.StatFs;
 import android.os.storage.StorageManager;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -31,7 +30,7 @@ public class SdCardUtil
         localObject = new StatFs((String)localObject);
         long l2 = ((StatFs)localObject).getBlockSize();
         int i = ((StatFs)localObject).getAvailableBlocks();
-        l1 = i * l2 + l1;
+        l1 += i * l2;
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
@@ -41,65 +40,140 @@ public class SdCardUtil
     return l1;
   }
   
+  /* Error */
   public static long getAvailableInternalMemorySize()
   {
-    l1 = 0L;
-    try
-    {
-      StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
-      l2 = localStatFs.getBlockSize();
-      int i = localStatFs.getAvailableBlocks();
-      l2 *= i;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException1)
-    {
-      long l3;
-      label116:
-      l1 = 0L;
-      localIllegalArgumentException1.printStackTrace();
-      return l1;
-    }
-    try
-    {
-      QLog.d("SdCardUtil", 1, "SpaceInfo ava: " + l2);
-    }
-    catch (IllegalArgumentException localIllegalArgumentException2)
-    {
-      l1 = l2;
-      break label130;
-    }
-    try
-    {
-      l3 = ((Long)Class.forName("android.os.SystemProperties").getMethod("getLong", new Class[] { String.class, Long.TYPE }).invoke(null, new Object[] { "sys.memory.threshold.low", Long.valueOf(0L) })).longValue();
-      l1 = l3;
-    }
-    catch (Exception localException)
-    {
-      break label116;
-    }
-    l1 = Math.min(l2, l1);
-    return l2 - l1;
+    // Byte code:
+    //   0: lconst_0
+    //   1: lstore_1
+    //   2: new 52	android/os/StatFs
+    //   5: dup
+    //   6: invokestatic 75	android/os/Environment:getDataDirectory	()Ljava/io/File;
+    //   9: invokevirtual 81	java/io/File:getPath	()Ljava/lang/String;
+    //   12: invokespecial 55	android/os/StatFs:<init>	(Ljava/lang/String;)V
+    //   15: astore 7
+    //   17: aload 7
+    //   19: invokevirtual 59	android/os/StatFs:getBlockSize	()I
+    //   22: i2l
+    //   23: lstore_3
+    //   24: aload 7
+    //   26: invokevirtual 62	android/os/StatFs:getAvailableBlocks	()I
+    //   29: istore_0
+    //   30: iload_0
+    //   31: i2l
+    //   32: lload_3
+    //   33: lmul
+    //   34: lstore_3
+    //   35: new 83	java/lang/StringBuilder
+    //   38: dup
+    //   39: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   42: astore 7
+    //   44: aload 7
+    //   46: ldc 86
+    //   48: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: pop
+    //   52: aload 7
+    //   54: lload_3
+    //   55: invokevirtual 93	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   58: pop
+    //   59: ldc 10
+    //   61: iconst_1
+    //   62: aload 7
+    //   64: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   70: ldc 104
+    //   72: invokestatic 110	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   75: ldc 112
+    //   77: iconst_2
+    //   78: anewarray 106	java/lang/Class
+    //   81: dup
+    //   82: iconst_0
+    //   83: ldc 14
+    //   85: aastore
+    //   86: dup
+    //   87: iconst_1
+    //   88: getstatic 118	java/lang/Long:TYPE	Ljava/lang/Class;
+    //   91: aastore
+    //   92: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   95: aconst_null
+    //   96: iconst_2
+    //   97: anewarray 4	java/lang/Object
+    //   100: dup
+    //   101: iconst_0
+    //   102: ldc 124
+    //   104: aastore
+    //   105: dup
+    //   106: iconst_1
+    //   107: lconst_0
+    //   108: invokestatic 128	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   111: aastore
+    //   112: invokevirtual 134	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   115: checkcast 114	java/lang/Long
+    //   118: invokevirtual 137	java/lang/Long:longValue	()J
+    //   121: lstore 5
+    //   123: lload 5
+    //   125: lstore_1
+    //   126: lload_3
+    //   127: lload_1
+    //   128: invokestatic 143	java/lang/Math:min	(JJ)J
+    //   131: lstore_1
+    //   132: lload_3
+    //   133: lload_1
+    //   134: lsub
+    //   135: lreturn
+    //   136: astore 7
+    //   138: lload_3
+    //   139: lstore_1
+    //   140: goto +7 -> 147
+    //   143: astore 7
+    //   145: lconst_0
+    //   146: lstore_1
+    //   147: aload 7
+    //   149: invokevirtual 65	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   152: lload_1
+    //   153: lreturn
+    //   154: astore 7
+    //   156: goto -30 -> 126
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   29	2	0	i	int
+    //   1	152	1	l1	long
+    //   23	116	3	l2	long
+    //   121	3	5	l3	long
+    //   15	48	7	localObject	Object
+    //   136	1	7	localIllegalArgumentException1	IllegalArgumentException
+    //   143	5	7	localIllegalArgumentException2	IllegalArgumentException
+    //   154	1	7	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   35	70	136	java/lang/IllegalArgumentException
+    //   70	123	136	java/lang/IllegalArgumentException
+    //   126	132	136	java/lang/IllegalArgumentException
+    //   2	30	143	java/lang/IllegalArgumentException
+    //   70	123	154	java/lang/Exception
   }
   
   private static List<String> getExternalStorages(Context paramContext)
   {
+    int i = 1;
     paramContext = getStoragePathList(paramContext, true);
     if ((isExternalStorageEmulated()) && (!isSpecialModel()))
     {
       Iterator localIterator = paramContext.iterator();
       while (localIterator.hasNext()) {
-        if (((String)localIterator.next()).toLowerCase().contains("emulated")) {
+        if (((String)localIterator.next()).toLowerCase().contains("emulated"))
+        {
           localIterator.remove();
+          break label67;
         }
       }
-    }
-    for (int i = 1;; i = 0)
-    {
+      i = 0;
+      label67:
       if (i == 0) {
         paramContext.remove(Environment.getExternalStorageDirectory().getAbsolutePath());
       }
-      return paramContext;
     }
+    return paramContext;
   }
   
   public static String getSdCardDirectory()
@@ -118,201 +192,259 @@ public class SdCardUtil
     //   3: dup
     //   4: invokespecial 187	java/util/ArrayList:<init>	()V
     //   7: astore_3
-    //   8: aconst_null
-    //   9: astore_0
-    //   10: invokestatic 190	com/tencent/mobileqq/utils/SdCardUtil:hasStorageCard	()Z
-    //   13: ifeq +20 -> 33
-    //   16: invokestatic 168	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   19: invokevirtual 171	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   22: astore_1
-    //   23: aload_1
-    //   24: ifnull +9 -> 33
-    //   27: aload_3
-    //   28: aload_1
-    //   29: invokevirtual 193	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   32: pop
-    //   33: new 195	java/io/BufferedReader
-    //   36: dup
-    //   37: new 197	java/io/FileReader
-    //   40: dup
-    //   41: ldc 199
-    //   43: invokespecial 200	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   46: invokespecial 203	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   49: astore_1
+    //   8: invokestatic 190	com/tencent/mobileqq/utils/SdCardUtil:hasStorageCard	()Z
+    //   11: ifeq +20 -> 31
+    //   14: invokestatic 168	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   17: invokevirtual 171	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   20: astore_0
+    //   21: aload_0
+    //   22: ifnull +9 -> 31
+    //   25: aload_3
+    //   26: aload_0
+    //   27: invokevirtual 193	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   30: pop
+    //   31: new 195	java/io/BufferedReader
+    //   34: dup
+    //   35: new 197	java/io/FileReader
+    //   38: dup
+    //   39: ldc 199
+    //   41: invokespecial 200	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   44: invokespecial 203	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   47: astore_1
+    //   48: aload_1
+    //   49: astore_0
     //   50: aload_1
     //   51: invokevirtual 206	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   54: astore_0
-    //   55: aload_0
-    //   56: ifnull +187 -> 243
-    //   59: aload_0
-    //   60: ldc 208
-    //   62: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   65: ifne +30 -> 95
-    //   68: aload_0
-    //   69: ldc 210
-    //   71: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   74: ifne +21 -> 95
-    //   77: aload_0
-    //   78: ldc 212
-    //   80: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   83: ifne +12 -> 95
-    //   86: aload_0
-    //   87: ldc 214
-    //   89: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   92: ifeq -42 -> 50
-    //   95: aload_0
-    //   96: ldc 216
-    //   98: invokevirtual 220	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   101: astore_2
-    //   102: aload_2
-    //   103: iconst_1
-    //   104: aaload
-    //   105: invokestatic 168	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   108: invokevirtual 81	java/io/File:getPath	()Ljava/lang/String;
-    //   111: invokevirtual 223	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   114: ifeq +43 -> 157
-    //   117: aload_3
-    //   118: aload_2
-    //   119: iconst_1
-    //   120: aaload
-    //   121: invokestatic 227	com/tencent/mobileqq/utils/SdCardUtil:includedInList	(Ljava/util/ArrayList;Ljava/lang/String;)Z
-    //   124: ifne -74 -> 50
-    //   127: aload_3
-    //   128: aload_2
-    //   129: iconst_1
-    //   130: aaload
-    //   131: invokevirtual 193	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   134: pop
-    //   135: goto -85 -> 50
-    //   138: astore_2
-    //   139: aload_1
-    //   140: astore_0
-    //   141: aload_2
-    //   142: astore_1
-    //   143: aload_1
-    //   144: invokevirtual 228	java/lang/Exception:printStackTrace	()V
-    //   147: aload_0
-    //   148: ifnull +7 -> 155
-    //   151: aload_0
-    //   152: invokevirtual 231	java/io/BufferedReader:close	()V
-    //   155: aload_3
-    //   156: areturn
-    //   157: aload_0
-    //   158: ldc 233
-    //   160: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   163: ifeq -113 -> 50
-    //   166: aload_0
-    //   167: ldc 235
-    //   169: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   172: ifne -122 -> 50
-    //   175: aload_0
-    //   176: ldc 237
-    //   178: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   181: ifne -131 -> 50
-    //   184: aload_0
-    //   185: ldc 239
-    //   187: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   190: ifne -140 -> 50
-    //   193: aload_0
-    //   194: ldc 241
+    //   54: astore_2
+    //   55: aload_2
+    //   56: ifnull +195 -> 251
+    //   59: aload_1
+    //   60: astore_0
+    //   61: aload_2
+    //   62: ldc 208
+    //   64: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   67: ifne +36 -> 103
+    //   70: aload_1
+    //   71: astore_0
+    //   72: aload_2
+    //   73: ldc 210
+    //   75: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   78: ifne +25 -> 103
+    //   81: aload_1
+    //   82: astore_0
+    //   83: aload_2
+    //   84: ldc 212
+    //   86: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   89: ifne +14 -> 103
+    //   92: aload_1
+    //   93: astore_0
+    //   94: aload_2
+    //   95: ldc 214
+    //   97: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   100: ifeq -52 -> 48
+    //   103: aload_1
+    //   104: astore_0
+    //   105: aload_2
+    //   106: ldc 216
+    //   108: invokevirtual 220	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   111: astore 4
+    //   113: aload_1
+    //   114: astore_0
+    //   115: aload 4
+    //   117: iconst_1
+    //   118: aaload
+    //   119: invokestatic 168	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   122: invokevirtual 81	java/io/File:getPath	()Ljava/lang/String;
+    //   125: invokevirtual 223	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   128: ifeq +30 -> 158
+    //   131: aload_1
+    //   132: astore_0
+    //   133: aload_3
+    //   134: aload 4
+    //   136: iconst_1
+    //   137: aaload
+    //   138: invokestatic 227	com/tencent/mobileqq/utils/SdCardUtil:includedInList	(Ljava/util/ArrayList;Ljava/lang/String;)Z
+    //   141: ifne -93 -> 48
+    //   144: aload_1
+    //   145: astore_0
+    //   146: aload_3
+    //   147: aload 4
+    //   149: iconst_1
+    //   150: aaload
+    //   151: invokevirtual 193	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   154: pop
+    //   155: goto -107 -> 48
+    //   158: aload_1
+    //   159: astore_0
+    //   160: aload_2
+    //   161: ldc 229
+    //   163: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   166: ifeq -118 -> 48
+    //   169: aload_1
+    //   170: astore_0
+    //   171: aload_2
+    //   172: ldc 231
+    //   174: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   177: ifne -129 -> 48
+    //   180: aload_1
+    //   181: astore_0
+    //   182: aload_2
+    //   183: ldc 233
+    //   185: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   188: ifne -140 -> 48
+    //   191: aload_1
+    //   192: astore_0
+    //   193: aload_2
+    //   194: ldc 235
     //   196: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   199: ifne -149 -> 50
-    //   202: aload_0
-    //   203: ldc 243
-    //   205: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   208: ifne -158 -> 50
-    //   211: aload_3
-    //   212: aload_2
-    //   213: iconst_1
-    //   214: aaload
-    //   215: invokestatic 227	com/tencent/mobileqq/utils/SdCardUtil:includedInList	(Ljava/util/ArrayList;Ljava/lang/String;)Z
-    //   218: ifne -168 -> 50
-    //   221: aload_3
-    //   222: aload_2
-    //   223: iconst_1
-    //   224: aaload
-    //   225: invokevirtual 193	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   228: pop
-    //   229: goto -179 -> 50
-    //   232: astore_0
-    //   233: aload_1
-    //   234: ifnull +7 -> 241
+    //   199: ifne -151 -> 48
+    //   202: aload_1
+    //   203: astore_0
+    //   204: aload_2
+    //   205: ldc 237
+    //   207: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   210: ifne -162 -> 48
+    //   213: aload_1
+    //   214: astore_0
+    //   215: aload_2
+    //   216: ldc 239
+    //   218: invokevirtual 162	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   221: ifne -173 -> 48
+    //   224: aload_1
+    //   225: astore_0
+    //   226: aload_3
+    //   227: aload 4
+    //   229: iconst_1
+    //   230: aaload
+    //   231: invokestatic 227	com/tencent/mobileqq/utils/SdCardUtil:includedInList	(Ljava/util/ArrayList;Ljava/lang/String;)Z
+    //   234: ifne -186 -> 48
     //   237: aload_1
-    //   238: invokevirtual 231	java/io/BufferedReader:close	()V
-    //   241: aload_0
-    //   242: athrow
-    //   243: aload_3
-    //   244: invokestatic 247	com/tencent/mobileqq/utils/SdCardUtil:trimLastSlash	(Ljava/util/ArrayList;)V
-    //   247: aload_1
-    //   248: ifnull -93 -> 155
+    //   238: astore_0
+    //   239: aload_3
+    //   240: aload 4
+    //   242: iconst_1
+    //   243: aaload
+    //   244: invokevirtual 193	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   247: pop
+    //   248: goto -200 -> 48
     //   251: aload_1
-    //   252: invokevirtual 231	java/io/BufferedReader:close	()V
-    //   255: aload_3
-    //   256: areturn
-    //   257: astore_0
-    //   258: aload_0
-    //   259: invokevirtual 248	java/io/IOException:printStackTrace	()V
-    //   262: aload_3
-    //   263: areturn
-    //   264: astore_0
-    //   265: aload_0
-    //   266: invokevirtual 248	java/io/IOException:printStackTrace	()V
-    //   269: aload_3
-    //   270: areturn
-    //   271: astore_1
-    //   272: aload_1
-    //   273: invokevirtual 248	java/io/IOException:printStackTrace	()V
-    //   276: goto -35 -> 241
-    //   279: astore_0
-    //   280: aconst_null
-    //   281: astore_1
-    //   282: goto -49 -> 233
-    //   285: astore_2
-    //   286: aload_0
-    //   287: astore_1
-    //   288: aload_2
-    //   289: astore_0
-    //   290: goto -57 -> 233
-    //   293: astore_1
-    //   294: goto -151 -> 143
+    //   252: astore_0
+    //   253: aload_3
+    //   254: invokestatic 243	com/tencent/mobileqq/utils/SdCardUtil:trimLastSlash	(Ljava/util/ArrayList;)V
+    //   257: aload_1
+    //   258: invokevirtual 246	java/io/BufferedReader:close	()V
+    //   261: aload_3
+    //   262: areturn
+    //   263: astore_0
+    //   264: aload_0
+    //   265: invokevirtual 247	java/io/IOException:printStackTrace	()V
+    //   268: aload_3
+    //   269: areturn
+    //   270: astore_2
+    //   271: goto +12 -> 283
+    //   274: astore_0
+    //   275: aconst_null
+    //   276: astore_1
+    //   277: goto +34 -> 311
+    //   280: astore_2
+    //   281: aconst_null
+    //   282: astore_1
+    //   283: aload_1
+    //   284: astore_0
+    //   285: aload_2
+    //   286: invokevirtual 248	java/lang/Exception:printStackTrace	()V
+    //   289: aload_1
+    //   290: ifnull +14 -> 304
+    //   293: aload_1
+    //   294: invokevirtual 246	java/io/BufferedReader:close	()V
+    //   297: aload_3
+    //   298: areturn
+    //   299: astore_0
+    //   300: aload_0
+    //   301: invokevirtual 247	java/io/IOException:printStackTrace	()V
+    //   304: aload_3
+    //   305: areturn
+    //   306: astore_2
+    //   307: aload_0
+    //   308: astore_1
+    //   309: aload_2
+    //   310: astore_0
+    //   311: aload_1
+    //   312: ifnull +15 -> 327
+    //   315: aload_1
+    //   316: invokevirtual 246	java/io/BufferedReader:close	()V
+    //   319: goto +8 -> 327
+    //   322: astore_1
+    //   323: aload_1
+    //   324: invokevirtual 247	java/io/IOException:printStackTrace	()V
+    //   327: goto +5 -> 332
+    //   330: aload_0
+    //   331: athrow
+    //   332: goto -2 -> 330
     // Local variable table:
     //   start	length	slot	name	signature
-    //   9	194	0	localObject1	Object
-    //   232	10	0	localObject2	Object
-    //   257	2	0	localIOException1	IOException
-    //   264	2	0	localIOException2	IOException
-    //   279	8	0	localObject3	Object
-    //   289	1	0	localObject4	Object
-    //   22	230	1	localObject5	Object
-    //   271	2	1	localIOException3	IOException
-    //   281	7	1	localObject6	Object
-    //   293	1	1	localException1	Exception
-    //   101	28	2	arrayOfString	String[]
-    //   138	85	2	localException2	Exception
-    //   285	4	2	localObject7	Object
-    //   7	263	3	localArrayList	ArrayList
+    //   20	233	0	localObject1	Object
+    //   263	2	0	localIOException1	IOException
+    //   274	1	0	localObject2	Object
+    //   284	1	0	localObject3	Object
+    //   299	9	0	localIOException2	IOException
+    //   310	21	0	localObject4	Object
+    //   47	269	1	localObject5	Object
+    //   322	2	1	localIOException3	IOException
+    //   54	162	2	str	String
+    //   270	1	2	localException1	Exception
+    //   280	6	2	localException2	Exception
+    //   306	4	2	localObject6	Object
+    //   7	298	3	localArrayList	ArrayList
+    //   111	130	4	arrayOfString	String[]
     // Exception table:
     //   from	to	target	type
-    //   50	55	138	java/lang/Exception
-    //   59	95	138	java/lang/Exception
-    //   95	135	138	java/lang/Exception
-    //   157	229	138	java/lang/Exception
-    //   243	247	138	java/lang/Exception
-    //   50	55	232	finally
-    //   59	95	232	finally
-    //   95	135	232	finally
-    //   157	229	232	finally
-    //   243	247	232	finally
-    //   251	255	257	java/io/IOException
-    //   151	155	264	java/io/IOException
-    //   237	241	271	java/io/IOException
-    //   10	23	279	finally
-    //   27	33	279	finally
-    //   33	50	279	finally
-    //   143	147	285	finally
-    //   10	23	293	java/lang/Exception
-    //   27	33	293	java/lang/Exception
-    //   33	50	293	java/lang/Exception
+    //   257	261	263	java/io/IOException
+    //   50	55	270	java/lang/Exception
+    //   61	70	270	java/lang/Exception
+    //   72	81	270	java/lang/Exception
+    //   83	92	270	java/lang/Exception
+    //   94	103	270	java/lang/Exception
+    //   105	113	270	java/lang/Exception
+    //   115	131	270	java/lang/Exception
+    //   133	144	270	java/lang/Exception
+    //   146	155	270	java/lang/Exception
+    //   160	169	270	java/lang/Exception
+    //   171	180	270	java/lang/Exception
+    //   182	191	270	java/lang/Exception
+    //   193	202	270	java/lang/Exception
+    //   204	213	270	java/lang/Exception
+    //   215	224	270	java/lang/Exception
+    //   226	237	270	java/lang/Exception
+    //   239	248	270	java/lang/Exception
+    //   253	257	270	java/lang/Exception
+    //   8	21	274	finally
+    //   25	31	274	finally
+    //   31	48	274	finally
+    //   8	21	280	java/lang/Exception
+    //   25	31	280	java/lang/Exception
+    //   31	48	280	java/lang/Exception
+    //   293	297	299	java/io/IOException
+    //   50	55	306	finally
+    //   61	70	306	finally
+    //   72	81	306	finally
+    //   83	92	306	finally
+    //   94	103	306	finally
+    //   105	113	306	finally
+    //   115	131	306	finally
+    //   133	144	306	finally
+    //   146	155	306	finally
+    //   160	169	306	finally
+    //   171	180	306	finally
+    //   182	191	306	finally
+    //   193	202	306	finally
+    //   204	213	306	finally
+    //   215	224	306	finally
+    //   226	237	306	finally
+    //   239	248	306	finally
+    //   253	257	306	finally
+    //   285	289	306	finally
+    //   315	319	322	java/io/IOException
   }
   
   public static List<String> getStoragePathList(Context paramContext, boolean paramBoolean)
@@ -321,25 +453,21 @@ public class SdCardUtil
       return getStorageDirectories();
     }
     ArrayList localArrayList = new ArrayList();
-    for (;;)
+    try
     {
-      int i;
-      try
+      paramContext = (StorageManager)paramContext.getSystemService("storage");
+      Object[] arrayOfObject = (Object[])paramContext.getClass().getMethod("getVolumeList", new Class[0]).invoke(paramContext, new Object[0]);
+      if ((arrayOfObject != null) && (arrayOfObject.length > 0))
       {
-        paramContext = (StorageManager)paramContext.getSystemService("storage");
-        Object[] arrayOfObject = (Object[])paramContext.getClass().getMethod("getVolumeList", new Class[0]).invoke(paramContext, new Object[0]);
-        if ((arrayOfObject != null) && (arrayOfObject.length > 0))
+        Method localMethod1 = arrayOfObject[0].getClass().getDeclaredMethod("getPath", new Class[0]);
+        Method localMethod2 = paramContext.getClass().getMethod("getVolumeState", new Class[] { String.class });
+        int j = arrayOfObject.length;
+        int i = 0;
+        while (i < j)
         {
-          Method localMethod1 = arrayOfObject[0].getClass().getDeclaredMethod("getPath", new Class[0]);
-          Method localMethod2 = paramContext.getClass().getMethod("getVolumeState", new Class[] { String.class });
-          int j = arrayOfObject.length;
-          i = 0;
-          if (i < j)
+          String str1 = (String)localMethod1.invoke(arrayOfObject[i], new Object[0]);
+          if (str1 != null)
           {
-            String str1 = (String)localMethod1.invoke(arrayOfObject[i], new Object[0]);
-            if (str1 == null) {
-              break label246;
-            }
             String str2 = (String)localMethod2.invoke(paramContext, new Object[] { str1 });
             if ((paramBoolean) && ("mounted".equals(str2))) {
               localArrayList.add(str1);
@@ -347,17 +475,16 @@ public class SdCardUtil
               localArrayList.add(str1);
             }
           }
+          i += 1;
         }
       }
-      catch (Throwable paramContext)
-      {
-        paramContext.printStackTrace();
-        return getStorageDirectories();
-      }
       return localArrayList;
-      label246:
-      i += 1;
     }
+    catch (Throwable paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return getStorageDirectories();
   }
   
   public static long getTotalExternalMemorySize(Context paramContext)
@@ -372,7 +499,7 @@ public class SdCardUtil
         localObject = new StatFs((String)localObject);
         long l2 = ((StatFs)localObject).getBlockSize();
         int i = ((StatFs)localObject).getBlockCount();
-        l1 = i * l2 + l1;
+        l1 += i * l2;
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
@@ -391,7 +518,11 @@ public class SdCardUtil
       int i = localStatFs.getBlockCount();
       return i * l;
     }
-    catch (IllegalArgumentException localIllegalArgumentException) {}
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      label30:
+      break label30;
+    }
     return 0L;
   }
   
@@ -402,45 +533,47 @@ public class SdCardUtil
       boolean bool = Environment.getExternalStorageState().equals("mounted");
       return bool;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label12:
+      break label12;
+    }
     return false;
   }
   
   static boolean includedInList(ArrayList<String> paramArrayList, String paramString)
   {
-    boolean bool2 = false;
     paramArrayList = paramArrayList.iterator();
+    boolean bool1;
     do
     {
-      boolean bool1 = bool2;
-      String str1;
-      if (paramArrayList.hasNext())
-      {
-        str1 = (String)paramArrayList.next();
-        if (paramString.equals(str1)) {
-          bool1 = true;
-        }
+      boolean bool3 = paramArrayList.hasNext();
+      bool1 = false;
+      boolean bool2 = false;
+      if (!bool3) {
+        break;
       }
-      else
-      {
-        return bool1;
+      String str1 = (String)paramArrayList.next();
+      if (paramString.equals(str1)) {
+        return true;
       }
       try
       {
         str1 = new File(str1).getCanonicalPath();
         String str2 = new File(paramString).getCanonicalPath();
-        if ((str1 == null) || (str2 == null)) {
-          break;
+        bool1 = bool2;
+        if (str1 != null)
+        {
+          bool1 = bool2;
+          if (str2 != null) {
+            bool1 = str1.equals(str2);
+          }
         }
-        bool1 = str1.equals(str2);
       }
       catch (IOException localIOException)
       {
-        for (;;)
-        {
-          localIOException.printStackTrace();
-          bool1 = false;
-        }
+        localIOException.printStackTrace();
+        bool1 = bool2;
       }
     } while (!bool1);
     return bool1;
@@ -464,23 +597,20 @@ public class SdCardUtil
   
   private static boolean isSpecialModel()
   {
-    boolean bool2 = false;
     String str = Build.MODEL;
     int i = 0;
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (i < SPECIAL_MODEL.length)
-      {
-        if ((str != null) && (str.contains(SPECIAL_MODEL[i]))) {
-          bool1 = true;
-        }
+      String[] arrayOfString = SPECIAL_MODEL;
+      if (i >= arrayOfString.length) {
+        break;
       }
-      else {
-        return bool1;
+      if ((str != null) && (str.contains(arrayOfString[i]))) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public static boolean sdCardExists()
@@ -490,10 +620,11 @@ public class SdCardUtil
   
   static void trimLastSlash(ArrayList<String> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {}
-    for (;;)
+    if (paramArrayList != null)
     {
-      return;
+      if (paramArrayList.size() <= 0) {
+        return;
+      }
       int i = 0;
       while (i < paramArrayList.size())
       {
@@ -507,7 +638,7 @@ public class SdCardUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SdCardUtil
  * JD-Core Version:    0.7.0.1
  */

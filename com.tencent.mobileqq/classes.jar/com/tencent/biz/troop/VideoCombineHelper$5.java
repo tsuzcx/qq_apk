@@ -14,8 +14,14 @@ class VideoCombineHelper$5
   {
     if (QLog.isColorLevel())
     {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("splitAudio end : isSuccess = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d(".troop.VideoCombineHelper", 2, localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("splitAudioTime: ");
+      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a);
+      QLog.d(".troop.trace_video_combine", 2, localStringBuilder.toString());
       this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a = System.currentTimeMillis();
     }
     if (!paramBoolean) {
@@ -25,7 +31,7 @@ class VideoCombineHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.5
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,14 @@ public class RLog
   
   private static String format(String paramString1, String paramString2, String paramString3)
   {
-    return "[" + paramString1 + "] [" + paramString2 + "] " + paramString3;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("] [");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("] ");
+    localStringBuilder.append(paramString3);
+    return localStringBuilder.toString();
   }
   
   private static StringBuilder getLogMsg(Object... paramVarArgs)
@@ -46,7 +53,7 @@ public class RLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.codegenmeta.utils.RLog
  * JD-Core Version:    0.7.0.1
  */

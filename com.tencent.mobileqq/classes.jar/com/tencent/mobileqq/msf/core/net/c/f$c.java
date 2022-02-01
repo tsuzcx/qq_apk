@@ -24,29 +24,41 @@ class f$c
   
   public String a()
   {
-    if ((this.a == null) || (this.a.length == 0)) {
-      return "";
-    }
+    Object localObject = this.a;
     String str1 = "";
-    String[] arrayOfString = this.a;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    if (localObject != null)
     {
-      String str2 = arrayOfString[i];
-      str1 = str1 + str2 + "\r\n";
-      i += 1;
+      if (localObject.length == 0) {
+        return "";
+      }
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str2 = localObject[i];
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(str2);
+        localStringBuilder.append("\r\n");
+        str1 = localStringBuilder.toString();
+        i += 1;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append("\r\n");
+      return ((StringBuilder)localObject).toString();
     }
-    return str1 + "\r\n";
+    return "";
   }
   
   public String b()
   {
-    if ((this.a == null) || (this.a.length == 0)) {}
-    for (;;)
+    String[] arrayOfString = this.a;
+    if (arrayOfString != null)
     {
-      return "";
-      String[] arrayOfString = this.a;
+      if (arrayOfString.length == 0) {
+        return "";
+      }
       int m = arrayOfString.length;
       int i = 0;
       while (i < m)
@@ -61,21 +73,23 @@ class f$c
             j = str.length();
           }
           if ((n != -1) && (j > n)) {
-            return str.substring("gateway=".length() + n, j);
+            return str.substring(n + 8, j);
           }
         }
         i += 1;
       }
     }
+    return "";
   }
   
   public String c()
   {
-    if ((this.a == null) || (this.a.length == 0)) {}
-    for (;;)
+    String[] arrayOfString = this.a;
+    if (arrayOfString != null)
     {
-      return "";
-      String[] arrayOfString = this.a;
+      if (arrayOfString.length == 0) {
+        return "";
+      }
       int m = arrayOfString.length;
       int i = 0;
       while (i < m)
@@ -90,97 +104,89 @@ class f$c
             j = str.length();
           }
           if ((n != -1) && (j > n)) {
-            return str.substring("md5=".length() + n, j);
+            return str.substring(n + 4, j);
           }
         }
         i += 1;
       }
     }
+    return "";
   }
   
   public String d()
   {
-    if ((this.a == null) || (this.a.length == 0)) {
-      return this.b;
-    }
     String[] arrayOfString = this.a;
-    int j = arrayOfString.length;
-    Object localObject1 = "";
-    int i = 0;
-    while (i < j)
+    if ((arrayOfString != null) && (arrayOfString.length != 0))
     {
-      String str = arrayOfString[i];
-      Object localObject2;
-      if (str.startsWith("Set-Cookie:"))
+      int j = arrayOfString.length;
+      int i = 0;
+      for (Object localObject1 = ""; i < j; localObject1 = localObject2)
       {
-        localObject2 = localObject1;
-        if (str.contains("md5=")) {}
+        String str = arrayOfString[i];
+        if (str.startsWith("Set-Cookie:"))
+        {
+          localObject2 = localObject1;
+          if (str.contains("md5=")) {}
+        }
+        else if (str.startsWith("Cookie:"))
+        {
+          localObject2 = localObject1;
+          if (str.contains("md5=")) {}
+        }
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(str);
+          ((StringBuilder)localObject2).append("\r\n");
+          localObject2 = ((StringBuilder)localObject2).toString();
+        }
+        i += 1;
       }
-      else if (str.startsWith("Cookie:"))
-      {
-        localObject2 = localObject1;
-        if (str.contains("md5=")) {}
-      }
-      else
-      {
-        localObject2 = (String)localObject1 + str + "\r\n";
-      }
-      i += 1;
-      localObject1 = localObject2;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("\r\n");
+      return ((StringBuilder)localObject2).toString();
     }
-    return (String)localObject1 + "\r\n";
+    return this.b;
   }
   
   public int e()
   {
-    int k = -1;
-    int j = k;
-    if (this.a != null)
-    {
-      j = k;
-      if (this.a.length <= 0) {}
-    }
+    String[] arrayOfString = this.a;
+    if ((arrayOfString != null) && (arrayOfString.length > 0)) {}
     try
     {
-      String[] arrayOfString = this.a;
-      int m = arrayOfString.length;
+      int j = arrayOfString.length;
       int i = 0;
-      for (;;)
+      while (i < j)
       {
-        j = k;
-        if (i < m)
+        String str = arrayOfString[i];
+        if (str.startsWith("Content-Length:"))
         {
-          String str = arrayOfString[i];
-          if (str.startsWith("Content-Length:")) {
-            j = Integer.parseInt(str.substring("Content-Length:".length(), str.length()).trim());
-          }
-        }
-        else
-        {
-          return j;
+          i = Integer.parseInt(str.substring(15, str.length()).trim());
+          return i;
         }
         i += 1;
       }
       return -1;
     }
     catch (Exception localException) {}
+    return -1;
   }
   
   public boolean f()
   {
-    if ((this.a == null) || (this.a.length <= 0)) {}
-    label64:
-    for (;;)
+    String[] arrayOfString = this.a;
+    if (arrayOfString != null)
     {
-      return false;
-      String[] arrayOfString = this.a;
+      if (arrayOfString.length <= 0) {
+        return false;
+      }
       int j = arrayOfString.length;
       int i = 0;
-      for (;;)
+      while (i < j)
       {
-        if (i >= j) {
-          break label64;
-        }
         String str = arrayOfString[i];
         if (str.startsWith("HTTP/1."))
         {
@@ -192,6 +198,7 @@ class f$c
         i += 1;
       }
     }
+    return false;
   }
   
   public boolean g()
@@ -201,7 +208,7 @@ class f$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.c.f.c
  * JD-Core Version:    0.7.0.1
  */

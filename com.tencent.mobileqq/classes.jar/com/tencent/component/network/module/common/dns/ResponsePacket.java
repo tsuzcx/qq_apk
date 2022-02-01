@@ -35,17 +35,34 @@ public class ResponsePacket
   
   private void check(int paramInt)
   {
-    String str = Integer.toBinaryString(paramInt);
-    if (str.length() < 4) {
-      throw new Exception("exception cause [FBS - " + str + "]");
+    Object localObject = Integer.toBinaryString(paramInt);
+    if (((String)localObject).length() >= 4)
+    {
+      localObject = ((String)localObject).substring(((String)localObject).length() - 4);
+      if (!((String)localObject).equals("0011"))
+      {
+        if (((String)localObject).equals("0000")) {
+          return;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("exception cause [RCODE - ");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("][HOST - ");
+        localStringBuilder.append(this.host);
+        localStringBuilder.append("]");
+        throw new Exception(localStringBuilder.toString());
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Unable to resolve host \"");
+      ((StringBuilder)localObject).append(this.host);
+      ((StringBuilder)localObject).append("\": No address associated with hostname");
+      throw new UnknownHostException(((StringBuilder)localObject).toString());
     }
-    str = str.substring(str.length() - 4);
-    if (str.equals("0011")) {
-      throw new UnknownHostException("Unable to resolve host \"" + this.host + "\": No address associated with hostname");
-    }
-    if (!str.equals("0000")) {
-      throw new Exception("exception cause [RCODE - " + str + "][HOST - " + this.host + "]");
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exception cause [FBS - ");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("]");
+    throw new Exception(localStringBuilder.toString());
   }
   
   private void initHeader()
@@ -53,9 +70,13 @@ public class ResponsePacket
     this.reqId = this.in.readU16();
     this.flags = this.in.readU16();
     int i = 0;
-    while (i < this.counts.length)
+    for (;;)
     {
-      this.counts[i] = this.in.readU16();
+      int[] arrayOfInt = this.counts;
+      if (i >= arrayOfInt.length) {
+        break;
+      }
+      arrayOfInt[i] = this.in.readU16();
       i += 1;
     }
   }
@@ -71,7 +92,7 @@ public class ResponsePacket
       {
         k = this.counts[i];
         if (k <= 0) {
-          break label223;
+          break label227;
         }
         this.sections[i] = new ArrayList(k);
       }
@@ -106,66 +127,77 @@ public class ResponsePacket
             this.sections[i].add(localAnswerRecord);
           }
         }
+        j += 1;
       }
       else
       {
         i += 1;
         break;
         return;
-        label223:
+        label227:
         j = 0;
-        continue;
       }
-      j += 1;
     }
   }
   
   private String retrieveName()
   {
-    if (this.nameBuilder.length() > 0) {
-      this.nameBuilder.delete(0, this.nameBuilder.length());
+    StringBuilder localStringBuilder;
+    if (this.nameBuilder.length() > 0)
+    {
+      localStringBuilder = this.nameBuilder;
+      localStringBuilder.delete(0, localStringBuilder.length());
     }
     int j = 0;
     int i = 0;
-    while (i == 0)
+    while (j == 0)
     {
       int k = this.in.readU8();
-      switch (k & 0xC0)
+      int m = k & 0xC0;
+      if (m != 0)
       {
-      default: 
-        throw new WireParseException("bad label type");
-      case 0: 
-        if (k == 0)
+        if (m == 192)
         {
-          i = 1;
+          m = this.in.readU8() + ((k & 0xFFFFFF3F) << 8);
+          if (m < this.in.current() - 2)
+          {
+            k = i;
+            if (i == 0)
+            {
+              this.in.save();
+              k = 1;
+            }
+            this.in.jump(m);
+            i = k;
+          }
+          else
+          {
+            throw new WireParseException("bad compression");
+          }
         }
         else
         {
-          this.in.readByteArray(this.label, 0, k);
-          this.nameBuilder.append(ByteBase.byteString(this.label, k));
-          this.nameBuilder.append(".");
+          throw new WireParseException("bad label type");
         }
-        break;
-      case 192: 
-        int m = ((k & 0xFFFFFF3F) << 8) + this.in.readU8();
-        if (m >= this.in.current() - 2) {
-          throw new WireParseException("bad compression");
-        }
-        k = j;
-        if (j == 0)
-        {
-          this.in.save();
-          k = 1;
-        }
-        this.in.jump(m);
-        j = k;
+      }
+      else if (k == 0)
+      {
+        j = 1;
+      }
+      else
+      {
+        this.in.readByteArray(this.label, 0, k);
+        this.nameBuilder.append(ByteBase.byteString(this.label, k));
+        this.nameBuilder.append(".");
       }
     }
-    if (j != 0) {
+    if (i != 0) {
       this.in.restore();
     }
-    if (this.nameBuilder.length() > 0) {
-      this.nameBuilder.deleteCharAt(this.nameBuilder.length() - 1);
+    if (this.nameBuilder.length() > 0)
+    {
+      localStringBuilder = this.nameBuilder;
+      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
     }
     return this.nameBuilder.toString();
   }
@@ -173,7 +205,7 @@ public class ResponsePacket
   private void setExpireTime(long paramLong)
   {
     if ((this.expireTime == 0L) && (paramLong > 0L)) {
-      this.expireTime = (System.currentTimeMillis() + 1000L * paramLong);
+      this.expireTime = (System.currentTimeMillis() + paramLong * 1000L);
     }
   }
   
@@ -184,34 +216,28 @@ public class ResponsePacket
   
   public InetAddress[] getByAddress()
   {
-    if ((this.sections[1] != null) && (this.sections[1].size() > 0))
+    Object localObject1 = this.sections;
+    if ((localObject1[1] != null) && (localObject1[1].size() > 0))
     {
-      ArrayList localArrayList = new ArrayList();
+      localObject1 = new ArrayList();
       int i = 0;
-      for (;;)
+      while (i < this.sections[1].size())
       {
-        if (i >= this.sections[1].size()) {
-          break label120;
-        }
-        Object localObject = (AnswerRecord)this.sections[1].get(i);
+        Object localObject2 = (AnswerRecord)this.sections[1].get(i);
         try
         {
-          localObject = InetAddress.getByAddress(((AnswerRecord)localObject).domain, ((AnswerRecord)localObject).ip);
-          if ((localObject != null) && (((InetAddress)localObject).getHostName() != null) && (!((InetAddress)localObject).getHostName().equals(((InetAddress)localObject).getHostAddress()))) {
-            localArrayList.add(localObject);
+          localObject2 = InetAddress.getByAddress(((AnswerRecord)localObject2).domain, ((AnswerRecord)localObject2).ip);
+          if ((localObject2 != null) && (((InetAddress)localObject2).getHostName() != null) && (!((InetAddress)localObject2).getHostName().equals(((InetAddress)localObject2).getHostAddress()))) {
+            ((ArrayList)localObject1).add(localObject2);
           }
         }
         catch (UnknownHostException localUnknownHostException)
         {
-          for (;;)
-          {
-            QDLog.e("ResponsePacket", "getByAddress>>>", localUnknownHostException);
-          }
+          QDLog.e("ResponsePacket", "getByAddress>>>", localUnknownHostException);
         }
         i += 1;
       }
-      label120:
-      return (InetAddress[])localArrayList.toArray(new InetAddress[localArrayList.size()]);
+      return (InetAddress[])((ArrayList)localObject1).toArray(new InetAddress[((ArrayList)localObject1).size()]);
     }
     return null;
   }
@@ -228,7 +254,7 @@ public class ResponsePacket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.common.dns.ResponsePacket
  * JD-Core Version:    0.7.0.1
  */

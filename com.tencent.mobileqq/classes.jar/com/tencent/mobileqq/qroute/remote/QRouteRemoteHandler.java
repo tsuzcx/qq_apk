@@ -26,27 +26,48 @@ public class QRouteRemoteHandler
   {
     if (paramQRemoteResult != null)
     {
-      if ((paramQRemoteResult.code != 0) || (paramQRemoteResult.data == null))
+      if ((paramQRemoteResult.code == 0) && (paramQRemoteResult.data != null))
       {
-        paramString = new StringBuilder().append("Call ").append(this.clazz.getName()).append("$").append(paramString).append(" fail, code=").append(paramQRemoteResult.code).append(" data=");
-        if (paramQRemoteResult.data == null) {}
-        for (boolean bool = true;; bool = false)
-        {
-          paramString = bool;
-          QRoute.logger.warning("QRouteRemoteHandler", paramString, paramQRemoteResult.throwable);
-          throw new IllegalStateException(paramString, paramQRemoteResult.throwable);
+        localObject = paramQRemoteResult.data.getString("resultType");
+        if (localObject != null) {
+          return RemoteProxyUtil.getBundleParameter(paramQRemoteResult.data, (String)localObject, "result");
         }
-      }
-      String str = paramQRemoteResult.data.getString("resultType");
-      if (str == null)
-      {
-        paramString = "Call " + this.clazz.getName() + "$" + paramString + " fail, resultType is null";
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Call ");
+        ((StringBuilder)localObject).append(this.clazz.getName());
+        ((StringBuilder)localObject).append("$");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" fail, resultType is null");
+        paramString = ((StringBuilder)localObject).toString();
         QRoute.logger.warning("QRouteRemoteHandler", paramString);
         throw new IllegalStateException(paramString, paramQRemoteResult.throwable);
       }
-      return RemoteProxyUtil.getBundleParameter(paramQRemoteResult.data, str, "result");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Call ");
+      ((StringBuilder)localObject).append(this.clazz.getName());
+      ((StringBuilder)localObject).append("$");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" fail, code=");
+      ((StringBuilder)localObject).append(paramQRemoteResult.code);
+      ((StringBuilder)localObject).append(" data=");
+      boolean bool;
+      if (paramQRemoteResult.data == null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)localObject).append(bool);
+      paramString = ((StringBuilder)localObject).toString();
+      QRoute.logger.warning("QRouteRemoteHandler", paramString, paramQRemoteResult.throwable);
+      throw new IllegalStateException(paramString, paramQRemoteResult.throwable);
     }
-    paramString = "callAPISync before init, " + this.clazz.getName() + "$" + paramString + " fail, result is null";
+    paramQRemoteResult = new StringBuilder();
+    paramQRemoteResult.append("callAPISync before init, ");
+    paramQRemoteResult.append(this.clazz.getName());
+    paramQRemoteResult.append("$");
+    paramQRemoteResult.append(paramString);
+    paramQRemoteResult.append(" fail, result is null");
+    paramString = paramQRemoteResult.toString();
     QRoute.logger.warning("QRouteRemoteHandler", paramString);
     throw new IllegalStateException(paramString);
   }
@@ -56,22 +77,34 @@ public class QRouteRemoteHandler
     if (QRoute.getConfig().isForceCheck()) {
       RemoteProxyUtil.checkCurrentThread(this.clazz, paramMethod);
     }
-    paramObject = new Bundle();
-    paramObject.setClassLoader(getClass().getClassLoader());
+    Object localObject = new Bundle();
+    ((Bundle)localObject).setClassLoader(getClass().getClassLoader());
     RemoteProxyUtil.checkMethodAndParameter(paramMethod, true, paramArrayOfObject);
-    RemoteProxyUtil.setMethodAndParameter(paramMethod, paramArrayOfObject, paramObject);
+    RemoteProxyUtil.setMethodAndParameter(paramMethod, paramArrayOfObject, (Bundle)localObject);
     long l = System.currentTimeMillis();
-    paramArrayOfObject = "callApi$" + this.clazz.getName() + "$" + paramMethod.getName();
-    paramObject = QRemoteProxy.callServerSync(paramArrayOfObject, paramObject);
-    if (QRoute.logger.isColorLevel()) {
-      QRoute.logger.debug("QRouteRemoteHandler", "action=" + paramArrayOfObject + " cost=" + (System.currentTimeMillis() - l));
+    paramObject = new StringBuilder();
+    paramObject.append("callApi$");
+    paramObject.append(this.clazz.getName());
+    paramObject.append("$");
+    paramObject.append(paramMethod.getName());
+    paramObject = paramObject.toString();
+    paramArrayOfObject = QRemoteProxy.callServerSync(paramObject, (Bundle)localObject);
+    if (QRoute.logger.isColorLevel())
+    {
+      localObject = QRoute.logger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("action=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(" cost=");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      ((ILogger)localObject).debug("QRouteRemoteHandler", localStringBuilder.toString());
     }
-    return checkResult(paramMethod.getName(), paramObject);
+    return checkResult(paramMethod.getName(), paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.remote.QRouteRemoteHandler
  * JD-Core Version:    0.7.0.1
  */

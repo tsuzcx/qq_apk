@@ -24,7 +24,7 @@ public final class Oidb_0x5cf$SuccessRead
   public static final int UINT32_UN_READ_COUNT2_FIELD_NUMBER = 9;
   public static final int UINT32_UN_READ_COUNT_FIELD_NUMBER = 6;
   public static final int UINT64_UPDATETIME_FIELD_NUMBER = 8;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 13, 16, 24, 34, 42, 48, 58, 64, 72, 80, 88, 96 }, new String[] { "fixed32_sequence", "uint32_over", "uint32_totle", "rpt_msg_undecide", "rpt_msg_decided", "uint32_un_read_count", "rpt_msg_all", "uint64_updatetime", "uint32_un_read_count2", "uint32_first_update", "uint32_unread_undecide_num", "rpt_uint64_unread_undecide_uin" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null, Integer.valueOf(0), null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, SuccessRead.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBFixed32Field fixed32_sequence = PBField.initFixed32(0);
   public final PBRepeatMessageField<Oidb_0x5cf.All> rpt_msg_all = PBField.initRepeatMessage(Oidb_0x5cf.All.class);
   public final PBRepeatMessageField<Oidb_0x5cf.Decided> rpt_msg_decided = PBField.initRepeatMessage(Oidb_0x5cf.Decided.class);
@@ -37,10 +37,17 @@ public final class Oidb_0x5cf$SuccessRead
   public final PBUInt32Field uint32_un_read_count2 = PBField.initUInt32(0);
   public final PBUInt32Field uint32_unread_undecide_num = PBField.initUInt32(0);
   public final PBUInt64Field uint64_updatetime = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 13, 16, 24, 34, 42, 48, 58, 64, 72, 80, 88, 96 }, new String[] { "fixed32_sequence", "uint32_over", "uint32_totle", "rpt_msg_undecide", "rpt_msg_decided", "uint32_un_read_count", "rpt_msg_all", "uint64_updatetime", "uint32_un_read_count2", "uint32_first_update", "uint32_unread_undecide_num", "rpt_uint64_unread_undecide_uin" }, new Object[] { localInteger, localInteger, localInteger, null, null, localInteger, null, localLong, localInteger, localInteger, localInteger, localLong }, SuccessRead.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5cf.Oidb_0x5cf.SuccessRead
  * JD-Core Version:    0.7.0.1
  */

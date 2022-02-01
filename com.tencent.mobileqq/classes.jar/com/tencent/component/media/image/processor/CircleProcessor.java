@@ -35,34 +35,39 @@ public class CircleProcessor
     try
     {
       paramDrawable = ImageManager.getInstance().getBitmap(i, i, Bitmap.Config.ARGB_8888);
-      if (Build.VERSION.SDK_INT >= 12) {
-        paramDrawable.getBitmap().setHasAlpha(true);
-      }
-      Canvas localCanvas = new Canvas(paramDrawable.getBitmap());
-      RectF localRectF = new RectF(0.0F, 0.0F, i, i);
-      Path localPath = new Path();
-      Paint localPaint = new Paint();
-      i = Math.min(localCanvas.getWidth(), localCanvas.getHeight());
-      localPath.addCircle(localCanvas.getWidth() / 2, localCanvas.getHeight() / 2, i / 2, Path.Direction.CW);
-      localPaint.setAntiAlias(true);
-      localCanvas.drawPath(localPath, localPaint);
-      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-      localCanvas.drawBitmap(localBitmapReference.getBitmap(), null, localRectF, localPaint);
-      localBitmapReference.release();
-      return new BitmapRefDrawable(paramDrawable);
     }
     catch (OutOfMemoryError paramDrawable)
     {
-      for (;;)
-      {
-        paramDrawable = BitmapReference.getBitmapReference(Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_4444));
-      }
+      label45:
+      Canvas localCanvas;
+      float f;
+      RectF localRectF;
+      Path localPath;
+      Paint localPaint;
+      break label45;
     }
+    paramDrawable = BitmapReference.getBitmapReference(Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_4444));
+    if (Build.VERSION.SDK_INT >= 12) {
+      paramDrawable.getBitmap().setHasAlpha(true);
+    }
+    localCanvas = new Canvas(paramDrawable.getBitmap());
+    f = i;
+    localRectF = new RectF(0.0F, 0.0F, f, f);
+    localPath = new Path();
+    localPaint = new Paint();
+    i = Math.min(localCanvas.getWidth(), localCanvas.getHeight());
+    localPath.addCircle(localCanvas.getWidth() / 2, localCanvas.getHeight() / 2, i / 2, Path.Direction.CW);
+    localPaint.setAntiAlias(true);
+    localCanvas.drawPath(localPath, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    localCanvas.drawBitmap(localBitmapReference.getBitmap(), null, localRectF, localPaint);
+    localBitmapReference.release();
+    return new BitmapRefDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.processor.CircleProcessor
  * JD-Core Version:    0.7.0.1
  */

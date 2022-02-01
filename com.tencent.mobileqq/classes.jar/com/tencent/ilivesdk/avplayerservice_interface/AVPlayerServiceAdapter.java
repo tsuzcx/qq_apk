@@ -9,6 +9,7 @@ import com.tencent.falco.base.libapi.login.LoginServiceInterface;
 import com.tencent.falco.base.libapi.network.NetworkStateInterface;
 import com.tencent.falco.base.libapi.toast.ToastInterface;
 import com.tencent.ilivesdk.avmediaservice_interface.AVMediaServiceInterface;
+import com.tencent.ilivesdk.avmediaservice_interface.MediaPlayerInterface;
 
 public abstract interface AVPlayerServiceAdapter
 {
@@ -28,6 +29,8 @@ public abstract interface AVPlayerServiceAdapter
   
   public abstract LogInterface getLogger();
   
+  public abstract MediaPlayerInterface getMediaPlayerInterface();
+  
   public abstract NetworkStateInterface getNetWorkState();
   
   public abstract String getNickName();
@@ -37,10 +40,12 @@ public abstract interface AVPlayerServiceAdapter
   public abstract int getRoomType();
   
   public abstract ToastInterface getToast();
+  
+  public abstract boolean isHoldPlayerLog();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice_interface.AVPlayerServiceAdapter
  * JD-Core Version:    0.7.0.1
  */

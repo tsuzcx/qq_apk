@@ -11,7 +11,7 @@ class ConversationHongBaoV2$1
   
   public void run()
   {
-    FrameHelperActivity.b(true);
+    FrameHelperActivity.a(true);
     if (QLog.isColorLevel()) {
       QLog.d("2021_UI_ConversationHongBaoV2", 2, "mTouchReleaseRunable  do Run");
     }
@@ -25,28 +25,32 @@ class ConversationHongBaoV2$1
         this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.springBackTo(-this.this$0.d);
       }
     }
-    for (;;)
+    else
     {
-      if (!this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.n) {
-        this.this$0.b(false);
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      int i = ConversationHongBaoV2.a(this.this$0).a();
-      int j = ConversationHongBaoV2.a(this.this$0).getVisibility();
-      QLog.d("2021_UI_ConversationHongBaoV2", 2, " [dddd] mTouchReleaseRunable mProgressViewRed alpha = " + i + ",visibility = " + j);
-      return;
       this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.setSpringbackOffset(0);
       if (this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.getScrollY() != 0) {
         this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.springBackTo(0);
       }
     }
+    if (!this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.n) {
+      this.this$0.b(false);
+    }
+    if (QLog.isColorLevel())
+    {
+      int i = ConversationHongBaoV2.a(this.this$0).a();
+      int j = ConversationHongBaoV2.a(this.this$0).getVisibility();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" [dddd] mTouchReleaseRunable mProgressViewRed alpha = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(",visibility = ");
+      localStringBuilder.append(j);
+      QLog.d("2021_UI_ConversationHongBaoV2", 2, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.1
  * JD-Core Version:    0.7.0.1
  */

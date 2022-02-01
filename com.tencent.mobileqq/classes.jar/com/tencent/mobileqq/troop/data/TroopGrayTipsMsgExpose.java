@@ -14,37 +14,47 @@ public class TroopGrayTipsMsgExpose
 {
   private void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip)
   {
-    if ((paramQQAppInterface == null) || (paramMessageForUniteGrayTip == null)) {
-      return;
+    if (paramQQAppInterface != null)
+    {
+      if (paramMessageForUniteGrayTip == null) {
+        return;
+      }
+      if ((paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.b == 131090)) {
+        TroopEssenceUtil.b(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
+      }
+      TroopEssenceReportUtil.a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
     }
-    if ((paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.b == 131090)) {
-      TroopEssenceUtil.b(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
-    }
-    TroopEssenceReportUtil.a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
   }
   
   private void b(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip)
   {
-    if ((paramQQAppInterface == null) || (paramMessageForUniteGrayTip == null)) {}
-    while ((paramMessageForUniteGrayTip.tipParam == null) || (paramMessageForUniteGrayTip.tipParam.b != 131091)) {
-      return;
+    if (paramQQAppInterface != null)
+    {
+      if (paramMessageForUniteGrayTip == null) {
+        return;
+      }
+      if ((paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.b == 131091)) {
+        TroopShortcutBarUtil.a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
+      }
     }
-    TroopShortcutBarUtil.a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
   }
   
   public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord == null) || (!(paramMessageRecord instanceof MessageForUniteGrayTip))) {
-      return;
+    if (paramMessageRecord != null)
+    {
+      if (!(paramMessageRecord instanceof MessageForUniteGrayTip)) {
+        return;
+      }
+      paramMessageRecord = (MessageForUniteGrayTip)paramMessageRecord;
+      a(paramQQAppInterface, paramMessageRecord);
+      b(paramQQAppInterface, paramMessageRecord);
     }
-    paramMessageRecord = (MessageForUniteGrayTip)paramMessageRecord;
-    a(paramQQAppInterface, paramMessageRecord);
-    b(paramQQAppInterface, paramMessageRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopGrayTipsMsgExpose
  * JD-Core Version:    0.7.0.1
  */

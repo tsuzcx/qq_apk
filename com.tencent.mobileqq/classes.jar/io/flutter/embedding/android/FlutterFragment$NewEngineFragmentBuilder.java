@@ -67,27 +67,23 @@ public class FlutterFragment$NewEngineFragmentBuilder
     localBundle.putString("initial_route", this.initialRoute);
     localBundle.putString("app_bundle_path", this.appBundlePath);
     localBundle.putString("dart_entrypoint", this.dartEntrypoint);
-    if (this.shellArgs != null) {
-      localBundle.putStringArray("initialization_args", this.shellArgs.toArray());
+    Object localObject = this.shellArgs;
+    if (localObject != null) {
+      localBundle.putStringArray("initialization_args", ((FlutterShellArgs)localObject).toArray());
     }
-    if (this.renderMode != null)
-    {
-      localObject = this.renderMode;
-      localBundle.putString("flutterview_render_mode", ((RenderMode)localObject).name());
-      if (this.transparencyMode == null) {
-        break label128;
-      }
-    }
-    label128:
-    for (Object localObject = this.transparencyMode;; localObject = TransparencyMode.transparent)
-    {
-      localBundle.putString("flutterview_transparency_mode", ((TransparencyMode)localObject).name());
-      localBundle.putBoolean("should_attach_engine_to_activity", this.shouldAttachEngineToActivity);
-      localBundle.putBoolean("destroy_engine_with_fragment", true);
-      return localBundle;
+    localObject = this.renderMode;
+    if (localObject == null) {
       localObject = RenderMode.surface;
-      break;
     }
+    localBundle.putString("flutterview_render_mode", ((RenderMode)localObject).name());
+    localObject = this.transparencyMode;
+    if (localObject == null) {
+      localObject = TransparencyMode.transparent;
+    }
+    localBundle.putString("flutterview_transparency_mode", ((TransparencyMode)localObject).name());
+    localBundle.putBoolean("should_attach_engine_to_activity", this.shouldAttachEngineToActivity);
+    localBundle.putBoolean("destroy_engine_with_fragment", true);
+    return localBundle;
   }
   
   @NonNull
@@ -134,7 +130,7 @@ public class FlutterFragment$NewEngineFragmentBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragment.NewEngineFragmentBuilder
  * JD-Core Version:    0.7.0.1
  */

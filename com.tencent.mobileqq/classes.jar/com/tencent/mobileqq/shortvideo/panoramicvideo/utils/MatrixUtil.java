@@ -16,18 +16,21 @@ public class MatrixUtil
   
   public static void updateProjection(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float[] paramArrayOfFloat)
   {
-    switch (paramInt5)
+    if (paramInt5 != 1)
     {
-    default: 
-      throw new RuntimeException("Adjusting Mode not found!");
-    case 1: 
-      updateProjectionFill(paramArrayOfFloat);
-      return;
-    case 3: 
-      updateProjectionFit(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfFloat);
+      if (paramInt5 != 2)
+      {
+        if (paramInt5 == 3)
+        {
+          updateProjectionFit(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfFloat);
+          return;
+        }
+        throw new RuntimeException("Adjusting Mode not found!");
+      }
+      updateProjectionCrop(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfFloat);
       return;
     }
-    updateProjectionCrop(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfFloat);
+    updateProjectionFill(paramArrayOfFloat);
   }
   
   public static void updateProjectionCrop(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float[] paramArrayOfFloat)
@@ -61,7 +64,7 @@ public class MatrixUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.utils.MatrixUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.search.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.search.SearchInfoInterface;
+import com.tencent.mobileqq.app.BaseFragment;
+import com.tencent.mobileqq.search.base.api.SearchInfoInterface;
 import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.XListView;
 import java.util.List;
 
 public class AssociateSearchWordsFragment
-  extends ReportV4Fragment
+  extends BaseFragment
 {
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new AssociateSearchWordsFragment.1(this);
   public View.OnTouchListener a;
@@ -59,30 +58,30 @@ public class AssociateSearchWordsFragment
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(localSearchAssociatedWordAdapter);
       localSearchAssociatedWordAdapter.a(paramList);
     }
-    for (;;)
+    else
     {
-      paramList = getActivity();
-      if ((paramList instanceof SearchInfoInterface)) {
-        SearchUtils.a("sub_result", "exp_auto", new String[] { ((SearchInfoInterface)paramList).a(), "", "", "" });
-      }
-      return;
       ((AssociateSearchWordsFragment.SearchAssociatedWordAdapter)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
+    }
+    paramList = getBaseActivity();
+    if ((paramList instanceof SearchInfoInterface)) {
+      SearchUtils.a("sub_result", "exp_auto", new String[] { ((SearchInfoInterface)paramList).a(), "", "", "" });
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559924, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramLayoutInflater.findViewById(2131377627));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559794, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramLayoutInflater.findViewById(2131377067));
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    paramViewGroup = this.jdField_a_of_type_JavaUtilList;
+    if (paramViewGroup != null)
     {
-      b(this.jdField_a_of_type_JavaUtilList);
+      b(paramViewGroup);
       this.jdField_a_of_type_JavaUtilList = null;
     }
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -94,7 +93,7 @@ public class AssociateSearchWordsFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment
  * JD-Core Version:    0.7.0.1
  */

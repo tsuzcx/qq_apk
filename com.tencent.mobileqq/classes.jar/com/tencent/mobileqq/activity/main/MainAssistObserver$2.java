@@ -23,37 +23,42 @@ class MainAssistObserver$2
   public void run()
   {
     Object localObject = this.this$0.a;
-    if (localObject != null) {}
-    for (QQAppInterface localQQAppInterface = ((SplashActivity)localObject).app; (localObject == null) || (localQQAppInterface == null); localQQAppInterface = null) {
-      return;
+    QQAppInterface localQQAppInterface;
+    if (localObject != null) {
+      localQQAppInterface = ((SplashActivity)localObject).app;
+    } else {
+      localQQAppInterface = null;
     }
-    try
+    if (localObject != null)
     {
-      AIOPanelUtiles.a(localQQAppInterface);
-      MultiMsgManager.a().a(localQQAppInterface);
-      localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
-      int i = ((DisplayMetrics)localObject).widthPixels;
-      int j = ((DisplayMetrics)localObject).heightPixels;
-      localObject = GlobalImageCache.a;
-      float f = MagnifierSDK.a().a().a;
-      ((MQLruCache)localObject).setLargeSize((int)(j * i * 4 * f));
+      if (localQQAppInterface == null) {
+        return;
+      }
+      try
+      {
+        AIOPanelUtiles.a(localQQAppInterface);
+        MultiMsgManager.a().a(localQQAppInterface);
+        localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
+        int i = ((DisplayMetrics)localObject).widthPixels;
+        int j = ((DisplayMetrics)localObject).heightPixels;
+        GlobalImageCache.a.setLargeSize((int)(MagnifierSDK.a().a().a * (i * j * 4)));
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("notifyWindowShowed e=");
+        localStringBuilder.append(localException);
+        QLog.d("MainAssistObserver", 4, localStringBuilder.toString());
+      }
       localQQAppInterface.setTalkbackSwitch();
       QQToast.a();
       QQAppInterface.getBatteryStats().a();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("MainAssistObserver", 4, "notifyWindowShowed e=" + localException);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.2
  * JD-Core Version:    0.7.0.1
  */

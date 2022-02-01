@@ -14,50 +14,56 @@ class FloatWindowController$8
   {
     paramContext = paramIntent.getAction();
     paramIntent = paramIntent.getStringExtra("process_name");
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowController", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive action: ");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("  process_name:");
+      localStringBuilder.append(paramIntent);
+      QLog.d("FloatWindowController", 2, localStringBuilder.toString());
     }
     int i;
-    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
-    {
+    if ((paramIntent != null) && (paramIntent.contains("openSdk"))) {
       i = 1;
-      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
-        break label120;
-      }
+    } else {
+      i = 0;
+    }
+    if ("mqq.intent.action.QQ_BACKGROUND".equals(paramContext))
+    {
       if ((paramIntent != null) && (paramIntent.equals("com.tencent.mobileqq")))
       {
         this.a.a(false);
-        this.a.a = false;
-        FloatWindowController.a(this.a, false);
+        paramContext = this.a;
+        paramContext.a = false;
+        FloatWindowController.a(paramContext, false);
       }
     }
-    label120:
-    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
+    else if ("mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
     {
-      return;
-      i = 0;
-      break;
-    }
-    if (i == 0)
-    {
-      this.a.a = true;
-      this.a.a(true);
+      if (i == 0)
+      {
+        paramContext = this.a;
+        paramContext.a = true;
+        paramContext.a(true);
+        FloatWindowController.a(this.a, false);
+        return;
+      }
+      if (FloatWindowController.b(this.a))
+      {
+        FloatWindowController.a(this.a, true);
+        return;
+      }
+      paramContext = this.a;
+      paramContext.a = true;
+      FloatWindowController.a(paramContext).a = true;
       FloatWindowController.a(this.a, false);
-      return;
     }
-    if (FloatWindowController.b(this.a))
-    {
-      FloatWindowController.a(this.a, true);
-      return;
-    }
-    this.a.a = true;
-    FloatWindowController.a(this.a).a = true;
-    FloatWindowController.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.floatwindow.FloatWindowController.8
  * JD-Core Version:    0.7.0.1
  */

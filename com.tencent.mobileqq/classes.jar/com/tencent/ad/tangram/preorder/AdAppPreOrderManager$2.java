@@ -11,10 +11,11 @@ class AdAppPreOrderManager$2
   public void run()
   {
     Object localObject = AdAppPreOrderManager.access$1400(this.this$0, this.val$url);
-    if ((localObject == null) || (((List)localObject).isEmpty())) {}
-    for (;;)
+    if (localObject != null)
     {
-      return;
+      if (((List)localObject).isEmpty()) {
+        return;
+      }
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {

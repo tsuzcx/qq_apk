@@ -39,19 +39,28 @@ public final class Insets
   
   @NonNull
   @RequiresApi(api=29)
-  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-  public static Insets wrap(@NonNull android.graphics.Insets paramInsets)
+  public static Insets toCompatInsets(@NonNull android.graphics.Insets paramInsets)
   {
     return of(paramInsets.left, paramInsets.top, paramInsets.right, paramInsets.bottom);
   }
   
+  @Deprecated
+  @NonNull
+  @RequiresApi(api=29)
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+  public static Insets wrap(@NonNull android.graphics.Insets paramInsets)
+  {
+    return toCompatInsets(paramInsets);
+  }
+  
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (Insets)paramObject;
@@ -64,7 +73,8 @@ public final class Insets
       if (this.right != paramObject.right) {
         return false;
       }
-    } while (this.top == paramObject.top);
+      return this.top == paramObject.top;
+    }
     return false;
   }
   
@@ -73,14 +83,31 @@ public final class Insets
     return ((this.left * 31 + this.top) * 31 + this.right) * 31 + this.bottom;
   }
   
+  @NonNull
+  @RequiresApi(api=29)
+  public android.graphics.Insets toPlatformInsets()
+  {
+    return android.graphics.Insets.of(this.left, this.top, this.right, this.bottom);
+  }
+  
   public String toString()
   {
-    return "Insets{left=" + this.left + ", top=" + this.top + ", right=" + this.right + ", bottom=" + this.bottom + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Insets{left=");
+    localStringBuilder.append(this.left);
+    localStringBuilder.append(", top=");
+    localStringBuilder.append(this.top);
+    localStringBuilder.append(", right=");
+    localStringBuilder.append(this.right);
+    localStringBuilder.append(", bottom=");
+    localStringBuilder.append(this.bottom);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.graphics.Insets
  * JD-Core Version:    0.7.0.1
  */

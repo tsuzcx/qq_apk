@@ -33,29 +33,29 @@ public class AppHeartBeatSpUtils
   
   public static void saveSessionLastHeartBeat(String paramString1, String paramString2)
   {
-    for (;;)
+    try
     {
-      try
+      Map localMap = getLastHeartBeatMap();
+      Object localObject = localMap;
+      if (localMap == null) {
+        localObject = new HashMap();
+      }
+      if (TextUtils.isEmpty(paramString2))
       {
-        Map localMap = getLastHeartBeatMap();
-        Object localObject = localMap;
-        if (localMap == null) {
-          localObject = new HashMap();
+        boolean bool = ((Map)localObject).containsKey(paramString1);
+        if (!bool) {
+          return;
         }
-        if (TextUtils.isEmpty(paramString2))
-        {
-          boolean bool = ((Map)localObject).containsKey(paramString1);
-          if (!bool) {
-            return;
-          }
-          ((Map)localObject).remove(paramString1);
-          saveSessionLastHeartBeat((Map)localObject);
-          continue;
-        }
+        ((Map)localObject).remove(paramString1);
+      }
+      else
+      {
         ((Map)localObject).put(paramString1, paramString2);
       }
-      finally {}
+      saveSessionLastHeartBeat((Map)localObject);
+      return;
     }
+    finally {}
   }
   
   public static void saveSessionLastHeartBeat(Map<String, Object> paramMap)
@@ -74,7 +74,7 @@ public class AppHeartBeatSpUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.time.app.AppHeartBeatSpUtils
  * JD-Core Version:    0.7.0.1
  */

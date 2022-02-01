@@ -1,6 +1,7 @@
 package com.tencent.wifisdk;
 
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.SparseArray;
 import wf7.hl;
 
@@ -61,54 +62,21 @@ public class TMSDKCustomConfig
     }
   }
   
-  /* Error */
   public void onCustomReport(int paramInt1, int paramInt2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 35	com/tencent/wifisdk/TMSDKCustomConfig:qh	Lcom/tencent/wifisdk/TMSDKCustomConfig$ICustomReporter;
-    //   6: ifnull +12 -> 18
-    //   9: aload_0
-    //   10: getfield 37	com/tencent/wifisdk/TMSDKCustomConfig:qi	Landroid/util/SparseArray;
-    //   13: astore_3
-    //   14: aload_3
-    //   15: ifnonnull +6 -> 21
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: return
-    //   21: aload_0
-    //   22: getfield 37	com/tencent/wifisdk/TMSDKCustomConfig:qi	Landroid/util/SparseArray;
-    //   25: iload_1
-    //   26: invokevirtual 59	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   29: checkcast 61	java/lang/String
-    //   32: astore_3
-    //   33: aload_3
-    //   34: invokestatic 67	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   37: ifne -19 -> 18
-    //   40: aload_0
-    //   41: getfield 35	com/tencent/wifisdk/TMSDKCustomConfig:qh	Lcom/tencent/wifisdk/TMSDKCustomConfig$ICustomReporter;
-    //   44: aload_3
-    //   45: iload_2
-    //   46: invokeinterface 73 3 0
-    //   51: goto -33 -> 18
-    //   54: astore_3
-    //   55: aload_0
-    //   56: monitorexit
-    //   57: aload_3
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	TMSDKCustomConfig
-    //   0	59	1	paramInt1	int
-    //   0	59	2	paramInt2	int
-    //   13	32	3	localObject1	Object
-    //   54	4	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	54	finally
-    //   21	51	54	finally
+    try
+    {
+      if ((this.qh != null) && (this.qi != null))
+      {
+        String str = (String)this.qi.get(paramInt1);
+        if (!TextUtils.isEmpty(str)) {
+          this.qh.reportAction(str, paramInt2);
+        }
+        return;
+      }
+      return;
+    }
+    finally {}
   }
   
   public TMSDKCustomConfig setConnectingView(Drawable paramDrawable, int paramInt)
@@ -218,7 +186,7 @@ public class TMSDKCustomConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.wifisdk.TMSDKCustomConfig
  * JD-Core Version:    0.7.0.1
  */

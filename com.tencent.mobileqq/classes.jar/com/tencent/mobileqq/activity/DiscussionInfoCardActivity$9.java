@@ -18,17 +18,22 @@ class DiscussionInfoCardActivity$9
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    }
-    label424:
-    do
-    {
-      do
+      if (i != 16711681)
       {
-        do
+        if (i != 16)
         {
-          return;
+          if (i != 17) {
+            return;
+          }
+          if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing())) {
+            DiscussionInfoCardActivity.a(this.a).dismiss();
+          }
+        }
+        else
+        {
           if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
             DiscussionInfoCardActivity.a(this.a).dismiss();
           }
@@ -36,50 +41,65 @@ class DiscussionInfoCardActivity$9
           paramMessage.putExtra("isNeedFinish", true);
           this.a.setResult(-1, paramMessage);
           this.a.finish();
-          return;
-        } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
-        DiscussionInfoCardActivity.a(this.a).dismiss();
-        return;
-        if (DiscussionInfoCardActivity.a(this.a) == 3000)
+        }
+      }
+      else if (DiscussionInfoCardActivity.a(this.a) == 0)
+      {
+        paramMessage = (String)paramMessage.obj;
+        if ((DiscussionInfoCardActivity.a(this.a) != null) && (paramMessage != null) && (DiscussionInfoCardActivity.a(this.a).equals(paramMessage))) {
+          this.a.finish();
+        }
+      }
+    }
+    else
+    {
+      if (DiscussionInfoCardActivity.a(this.a) == 3000) {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null)
         {
-          if (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) {
-            DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
-          }
+          localObject = this.a;
+          DiscussionInfoCardActivity.a((DiscussionInfoCardActivity)localObject, DiscussionInfoCardActivity.b((DiscussionInfoCardActivity)localObject));
         }
         else
         {
-          paramMessage = (ArrayList)paramMessage.obj;
-          int i = paramMessage.size();
-          DiscussionInfoCardActivity.a(this.a).setText(HardCodeUtil.a(2131703374) + i + HardCodeUtil.a(2131703375));
-          DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.b(this.a), DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a));
-          DiscussionInfoCardActivity.a(this.a, paramMessage);
-          if (DiscussionInfoCardActivity.a(this.a) != null) {
-            break label424;
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setText(this.a.getString(2131694343));
+          if (AppSetting.d)
+          {
+            localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(HardCodeUtil.a(2131703512));
+            localStringBuilder.append(this.a.getString(2131694343));
+            localStringBuilder.append(HardCodeUtil.a(2131703504));
+            ((FollowImageTextView)localObject).setContentDescription(localStringBuilder.toString());
           }
-          DiscussionInfoCardActivity.a(this.a, new DiscussionInfoCardActivity.ListAdapter(this.a));
-          DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
         }
-        for (;;)
-        {
-          removeMessages(0);
-          return;
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setText(this.a.getString(2131694378));
-          if (!AppSetting.d) {
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setContentDescription(HardCodeUtil.a(2131703380) + this.a.getString(2131694378) + HardCodeUtil.a(2131703372));
-          break;
-          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-        }
-      } while (DiscussionInfoCardActivity.a(this.a) != 0);
-      paramMessage = (String)paramMessage.obj;
-    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (paramMessage == null) || (!DiscussionInfoCardActivity.a(this.a).equals(paramMessage)));
-    this.a.finish();
+      }
+      paramMessage = (ArrayList)paramMessage.obj;
+      i = paramMessage.size();
+      Object localObject = DiscussionInfoCardActivity.a(this.a);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131703506));
+      localStringBuilder.append(i);
+      localStringBuilder.append(HardCodeUtil.a(2131703507));
+      ((TextView)localObject).setText(localStringBuilder.toString());
+      DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.b(this.a), DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a));
+      DiscussionInfoCardActivity.a(this.a, paramMessage);
+      if (DiscussionInfoCardActivity.a(this.a) == null)
+      {
+        paramMessage = this.a;
+        DiscussionInfoCardActivity.a(paramMessage, new DiscussionInfoCardActivity.ListAdapter(paramMessage));
+        DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
+      }
+      else
+      {
+        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+      }
+      removeMessages(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.9
  * JD-Core Version:    0.7.0.1
  */

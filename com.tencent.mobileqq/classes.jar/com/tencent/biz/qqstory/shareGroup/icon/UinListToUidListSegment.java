@@ -24,7 +24,15 @@ public class UinListToUidListSegment
 {
   private String a = "story.icon.UinListToUidListSegment";
   
-  public UinListToUidListSegment(String paramString) {}
+  public UinListToUidListSegment(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    this.a = localStringBuilder.toString();
+  }
   
   private List<String> a(@NonNull List<String> paramList)
   {
@@ -55,53 +63,58 @@ public class UinListToUidListSegment
   
   public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent == null) || (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList == null))
+    if ((paramUpdateUserInfoEvent != null) && (!paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null))
     {
-      IconLog.b(this.a, "convert user info fail, event=%s", paramUpdateUserInfoEvent);
-      if (paramUpdateUserInfoEvent == null) {}
-      for (paramUpdateUserInfoEvent = new ErrorMessage(-1, "event is null");; paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage)
-      {
-        notifyError(paramUpdateUserInfoEvent);
-        return;
+      IconLog.b(this.a, "convert user info success");
+      ArrayList localArrayList = new ArrayList();
+      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramUpdateUserInfoEvent.hasNext()) {
+        localArrayList.add(((QQUserUIItem)paramUpdateUserInfoEvent.next()).uid);
       }
+      a(localArrayList);
+      return;
     }
-    IconLog.b(this.a, "convert user info success");
-    ArrayList localArrayList = new ArrayList();
-    paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramUpdateUserInfoEvent.hasNext()) {
-      localArrayList.add(((QQUserUIItem)paramUpdateUserInfoEvent.next()).uid);
+    IconLog.b(this.a, "convert user info fail, event=%s", paramUpdateUserInfoEvent);
+    if (paramUpdateUserInfoEvent == null) {
+      paramUpdateUserInfoEvent = new ErrorMessage(-1, "event is null");
+    } else {
+      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
     }
-    a(localArrayList);
+    notifyError(paramUpdateUserInfoEvent);
   }
   
   protected void a(JobContext paramJobContext, List<String> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      notifyError(new ErrorMessage(-1, "uinList should not be empty"));
+      paramJobContext = Collections.unmodifiableList(paramList);
+      paramList = a(paramJobContext);
+      if (paramList != null)
+      {
+        IconLog.a(this.a, "getUnionIdListFromCache ok");
+        a(paramList);
+        return;
+      }
+      IconLog.a(this.a, "fireGetUnionIdListFromServer");
+      b(paramJobContext);
       return;
     }
-    paramJobContext = Collections.unmodifiableList(paramList);
-    paramList = a(paramJobContext);
-    if (paramList != null)
-    {
-      IconLog.a(this.a, "getUnionIdListFromCache ok");
-      a(paramList);
-      return;
-    }
-    IconLog.a(this.a, "fireGetUnionIdListFromServer");
-    b(paramJobContext);
+    notifyError(new ErrorMessage(-1, "uinList should not be empty"));
   }
   
   protected void a(List<String> paramList)
   {
-    IconLog.a(this.a, "notifyResult union id list : " + new JSONArray(paramList));
+    String str = this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyResult union id list : ");
+    localStringBuilder.append(new JSONArray(paramList));
+    IconLog.a(str, localStringBuilder.toString());
     super.notifyResult(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.icon.UinListToUidListSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -28,16 +28,17 @@ public final class EGLHelper
   
   public EGLHelper()
   {
-    Object localObject3 = EGLContext.getEGL();
-    Object localObject1 = localObject3;
-    if (!(localObject3 instanceof EGL10)) {
+    Object localObject1 = EGLContext.getEGL();
+    boolean bool = localObject1 instanceof EGL10;
+    Object localObject2 = null;
+    if (!bool) {
       localObject1 = null;
     }
     this.egl = ((EGL10)localObject1);
-    localObject3 = this.egl;
+    EGL10 localEGL10 = this.egl;
     localObject1 = localObject2;
-    if (localObject3 != null) {
-      localObject1 = ((EGL10)localObject3).eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+    if (localEGL10 != null) {
+      localObject1 = localEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
     }
     this.eglDisplay = ((EGLDisplay)localObject1);
     this.red = 8;
@@ -52,20 +53,23 @@ public final class EGLHelper
   private final void makeCurrent()
   {
     Object localObject1 = this.egl;
-    if (localObject1 != null) {
-      ((EGL10)localObject1).eglMakeCurrent(this.eglDisplay, this.eglSurface, this.eglSurface, this.eglContext);
+    if (localObject1 != null)
+    {
+      localObject2 = this.eglDisplay;
+      EGLSurface localEGLSurface = this.eglSurface;
+      ((EGL10)localObject1).eglMakeCurrent((EGLDisplay)localObject2, localEGLSurface, localEGLSurface, this.eglContext);
     }
     localObject1 = this.eglContext;
-    if (localObject1 != null) {}
-    for (localObject1 = ((EGLContext)localObject1).getGL();; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (!(localObject1 instanceof GL10)) {
-        localObject2 = null;
-      }
-      this.gl = ((GL10)localObject2);
-      return;
+    if (localObject1 != null) {
+      localObject1 = ((EGLContext)localObject1).getGL();
+    } else {
+      localObject1 = null;
     }
+    Object localObject2 = localObject1;
+    if (!(localObject1 instanceof GL10)) {
+      localObject2 = null;
+    }
+    this.gl = ((GL10)localObject2);
   }
   
   public final void config(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
@@ -92,47 +96,44 @@ public final class EGLHelper
   
   public final boolean eglInit(int paramInt1, int paramInt2)
   {
-    int[] arrayOfInt2;
-    if (this.egl != null)
+    Object localObject1 = this.egl;
+    if (localObject1 != null)
     {
-      arrayOfInt1 = new int[13];
-      arrayOfInt1[0] = 12324;
-      arrayOfInt1[1] = this.red;
-      arrayOfInt1[2] = 12323;
-      arrayOfInt1[3] = this.green;
-      arrayOfInt1[4] = 12322;
-      arrayOfInt1[5] = this.blue;
-      arrayOfInt1[6] = 12321;
-      arrayOfInt1[7] = this.alpha;
-      arrayOfInt1[8] = 12325;
-      arrayOfInt1[9] = this.depth;
-      arrayOfInt1[10] = 12352;
-      arrayOfInt1[11] = this.renderType;
-      arrayOfInt1[12] = 12344;
-      arrayOfInt2 = new int[2];
-      this.egl.eglInitialize(this.eglDisplay, arrayOfInt2);
-      arrayOfInt2 = new int[1];
-      this.egl.eglChooseConfig(this.eglDisplay, arrayOfInt1, null, 0, arrayOfInt2);
-      if (arrayOfInt2[0] == 0) {
+      int[] arrayOfInt = new int[13];
+      arrayOfInt[0] = 12324;
+      arrayOfInt[1] = this.red;
+      arrayOfInt[2] = 12323;
+      arrayOfInt[3] = this.green;
+      arrayOfInt[4] = 12322;
+      arrayOfInt[5] = this.blue;
+      arrayOfInt[6] = 12321;
+      arrayOfInt[7] = this.alpha;
+      arrayOfInt[8] = 12325;
+      arrayOfInt[9] = this.depth;
+      arrayOfInt[10] = 12352;
+      arrayOfInt[11] = this.renderType;
+      arrayOfInt[12] = 12344;
+      Object localObject2 = new int[2];
+      ((EGL10)localObject1).eglInitialize(this.eglDisplay, (int[])localObject2);
+      localObject1 = new int[1];
+      this.egl.eglChooseConfig(this.eglDisplay, arrayOfInt, null, 0, (int[])localObject1);
+      if (localObject1[0] == 0) {
         return false;
       }
+      localObject2 = new EGLConfig[localObject1[0]];
+      this.egl.eglChooseConfig(this.eglDisplay, arrayOfInt, (EGLConfig[])localObject2, localObject1[0], (int[])localObject1);
+      arrayOfInt = localObject2[0];
+      this.eglSurface = this.egl.eglCreatePbufferSurface(this.eglDisplay, arrayOfInt, new int[] { 12375, paramInt1, 12374, paramInt2, 12344 });
+      this.eglContext = this.egl.eglCreateContext(this.eglDisplay, arrayOfInt, this.shareContext, new int[] { 12440, 2, 12344 });
+      makeCurrent();
+      return true;
     }
-    else
-    {
-      return false;
-    }
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[arrayOfInt2[0]];
-    this.egl.eglChooseConfig(this.eglDisplay, arrayOfInt1, arrayOfEGLConfig, arrayOfInt2[0], arrayOfInt2);
-    int[] arrayOfInt1 = arrayOfEGLConfig[0];
-    this.eglSurface = this.egl.eglCreatePbufferSurface(this.eglDisplay, arrayOfInt1, new int[] { 12375, paramInt1, 12374, paramInt2, 12344 });
-    this.eglContext = this.egl.eglCreateContext(this.eglDisplay, arrayOfInt1, this.shareContext, new int[] { 12440, 2, 12344 });
-    makeCurrent();
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.egl.EGLHelper
  * JD-Core Version:    0.7.0.1
  */

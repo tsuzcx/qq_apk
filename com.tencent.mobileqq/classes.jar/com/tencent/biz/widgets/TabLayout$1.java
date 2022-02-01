@@ -13,7 +13,11 @@ class TabLayout$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    System.out.println("value = " + f);
+    paramValueAnimator = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("value = ");
+    localStringBuilder.append(f);
+    paramValueAnimator.println(localStringBuilder.toString());
     int i = 0;
     while (i < this.jdField_a_of_type_Int - this.b)
     {
@@ -28,7 +32,7 @@ class TabLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout.1
  * JD-Core Version:    0.7.0.1
  */

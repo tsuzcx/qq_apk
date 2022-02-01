@@ -16,20 +16,21 @@ class DefaultDrmSession$PostResponseHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      DefaultDrmSession.access$100(this.this$0, paramMessage.obj);
+      if (i != 1) {
+        return;
+      }
+      DefaultDrmSession.access$200(this.this$0, paramMessage.obj);
       return;
     }
-    DefaultDrmSession.access$200(this.this$0, paramMessage.obj);
+    DefaultDrmSession.access$100(this.this$0, paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.DefaultDrmSession.PostResponseHandler
  * JD-Core Version:    0.7.0.1
  */

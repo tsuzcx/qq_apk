@@ -16,29 +16,29 @@ import mqq.manager.TicketManager;
 public class GetDonateFriends
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    boolean bool = false;
-    Object localObject = this.a.a.getApplication().getApplicationContext().getSharedPreferences(this.a.a.getCurrentAccountUin(), 0);
+    Object localObject = this.mAutomator.a.getApplication().getApplicationContext().getSharedPreferences(this.mAutomator.a.getCurrentAccountUin(), 0);
     long l = ((SharedPreferences)localObject).getLong("sp_vip_info_request_time", 0L);
     int i = ((SharedPreferences)localObject).getInt("sp_vip_info_update_freq", 10);
     localObject = ((SharedPreferences)localObject).getString("sp_vip_info_current_version", "");
-    if (!QUA.getQUA3().equalsIgnoreCase((String)localObject)) {
-      bool = true;
-    }
-    QLog.e("Ilive", 1, " isVersionChange = " + bool);
+    boolean bool = QUA.getQUA3().equalsIgnoreCase((String)localObject) ^ true;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" isVersionChange = ");
+    ((StringBuilder)localObject).append(bool);
+    QLog.e("Ilive", 1, ((StringBuilder)localObject).toString());
     if ((NetConnInfoCenter.getServerTime() - l > i * 60) || (bool))
     {
-      localObject = this.a.a.getCurrentAccountUin();
-      String str = ((TicketManager)this.a.a.getManager(2)).getSkey((String)localObject);
-      ((VipInfoHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a(str, (String)localObject);
+      localObject = this.mAutomator.a.getCurrentAccountUin();
+      String str = ((TicketManager)this.mAutomator.a.getManager(2)).getSkey((String)localObject);
+      ((VipInfoHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a(str, (String)localObject);
     }
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetDonateFriends
  * JD-Core Version:    0.7.0.1
  */

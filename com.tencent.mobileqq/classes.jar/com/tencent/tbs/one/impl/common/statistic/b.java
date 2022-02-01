@@ -28,14 +28,15 @@ public final class b
   
   public static b a()
   {
-    if (i == null) {}
-    synchronized (g)
-    {
-      if (i == null) {
-        i = new b();
+    if (i == null) {
+      synchronized (g)
+      {
+        if (i == null) {
+          i = new b();
+        }
       }
-      return i;
     }
+    return i;
   }
   
   public static void a(Runnable paramRunnable)
@@ -45,7 +46,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.common.statistic.b
  * JD-Core Version:    0.7.0.1
  */

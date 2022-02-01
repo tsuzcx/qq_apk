@@ -54,14 +54,22 @@ public class AppCenterReporter
   
   public static void a(int paramInt, String paramString)
   {
-    LogUtility.b("AppCenterReporter", "[report] type=" + paramInt + "\ndata=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[report] type=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("\ndata=");
+    localStringBuilder.append(paramString);
+    LogUtility.b("AppCenterReporter", localStringBuilder.toString());
     SDKReportManager2.getInstance().postReport(paramInt, paramString);
   }
   
   public static void a(ReportDataBuilder paramReportDataBuilder)
   {
     paramReportDataBuilder = paramReportDataBuilder.a();
-    LogUtility.b("AppCenterReporter", "[reportExposure] type=3002\ndata=" + paramReportDataBuilder);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[reportExposure] type=3002\ndata=");
+    localStringBuilder.append(paramReportDataBuilder);
+    LogUtility.b("AppCenterReporter", localStringBuilder.toString());
     SDKReportManager2.getInstance().postReport(3002, paramReportDataBuilder);
   }
   
@@ -83,13 +91,21 @@ public class AppCenterReporter
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     paramString1 = a(paramString1, paramString2, paramString3, paramString4, paramString5);
-    LogUtility.b("AppCenterReporter", "[reportNormalExposure] type=3001\ndata=" + paramString1);
+    paramString2 = new StringBuilder();
+    paramString2.append("[reportNormalExposure] type=3001\ndata=");
+    paramString2.append(paramString1);
+    LogUtility.b("AppCenterReporter", paramString2.toString());
     SDKReportManager2.getInstance().postReport(3001, paramString1);
   }
   
   public static void a(String paramString, boolean paramBoolean)
   {
-    LogUtility.b("AppCenterReporter", ">notifyInstallFinish " + paramString + "|" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">notifyInstallFinish ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramBoolean);
+    LogUtility.b("AppCenterReporter", localStringBuilder.toString());
     ThreadManager.excute(new AppCenterReporter.6(paramString, paramBoolean), 16, null, true);
   }
   
@@ -103,17 +119,25 @@ public class AppCenterReporter
     }
     catch (Throwable paramString)
     {
-      label77:
-      break label77;
+      StringBuilder localStringBuilder;
+      break label85;
     }
-    LogUtility.b("AppCenterReporter", "[getInstalledAppFileSize]" + paramString + ": NOT INSTALLED!");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getInstalledAppFileSize]");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(": NOT INSTALLED!");
+    LogUtility.b("AppCenterReporter", localStringBuilder.toString());
+    label85:
     return 0L;
   }
   
   public static void b(ReportDataBuilder paramReportDataBuilder)
   {
     paramReportDataBuilder = paramReportDataBuilder.a();
-    LogUtility.b("AppCenterReporter", "[reportClick] type=3003\ndata=" + paramReportDataBuilder);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[reportClick] type=3003\ndata=");
+    localStringBuilder.append(paramReportDataBuilder);
+    LogUtility.b("AppCenterReporter", localStringBuilder.toString());
     SDKReportManager2.getInstance().postReport(3003, paramReportDataBuilder);
   }
   
@@ -124,8 +148,17 @@ public class AppCenterReporter
   
   public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    paramString1 = a(paramString1, paramString2, paramString3, paramString4, paramString5) + "|" + ReportDataBuilder.a().d() + "|" + "200";
-    LogUtility.b("AppCenterReporter", "[reportClick] type=3003\ndata=" + paramString1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramString1, paramString2, paramString3, paramString4, paramString5));
+    localStringBuilder.append("|");
+    localStringBuilder.append(ReportDataBuilder.a().d());
+    localStringBuilder.append("|");
+    localStringBuilder.append("200");
+    paramString1 = localStringBuilder.toString();
+    paramString2 = new StringBuilder();
+    paramString2.append("[reportClick] type=3003\ndata=");
+    paramString2.append(paramString1);
+    LogUtility.b("AppCenterReporter", paramString2.toString());
     SDKReportManager2.getInstance().postReport(3003, paramString1);
   }
   
@@ -153,99 +186,120 @@ public class AppCenterReporter
   
   public static void d(DownloadInfo paramDownloadInfo)
   {
-    LogUtility.b("AppCenterReporter", ">tryInitMonitorTask info:" + paramDownloadInfo);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(">tryInitMonitorTask info:");
+    ((StringBuilder)localObject).append(paramDownloadInfo);
+    LogUtility.b("AppCenterReporter", ((StringBuilder)localObject).toString());
     if (paramDownloadInfo == null) {
       return;
     }
-    MonitorTask localMonitorTask = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    LogUtility.b("AppCenterReporter", ">tryInitMonitorTask info=" + paramDownloadInfo);
-    if (localMonitorTask == null) {}
-    for (paramDownloadInfo = a(paramDownloadInfo);; paramDownloadInfo = localMonitorTask)
+    localObject = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">tryInitMonitorTask info=");
+    localStringBuilder.append(paramDownloadInfo);
+    LogUtility.b("AppCenterReporter", localStringBuilder.toString());
+    if (localObject == null)
     {
-      ReplaceMonitor.get().addTask(paramDownloadInfo);
-      return;
-      if (TextUtils.isEmpty(localMonitorTask.filePath)) {
-        localMonitorTask.filePath = paramDownloadInfo.l;
-      }
-      LogUtility.b("AppCenterReporter", ">tryInitMonitorTask 已有task2:" + localMonitorTask);
+      paramDownloadInfo = a(paramDownloadInfo);
     }
+    else
+    {
+      if (TextUtils.isEmpty(((MonitorTask)localObject).filePath)) {
+        ((MonitorTask)localObject).filePath = paramDownloadInfo.l;
+      }
+      paramDownloadInfo = new StringBuilder();
+      paramDownloadInfo.append(">tryInitMonitorTask 已有task2:");
+      paramDownloadInfo.append(localObject);
+      LogUtility.b("AppCenterReporter", paramDownloadInfo.toString());
+      paramDownloadInfo = (DownloadInfo)localObject;
+    }
+    ReplaceMonitor.get().addTask(paramDownloadInfo);
   }
   
   public static void e(DownloadInfo paramDownloadInfo)
   {
-    LogUtility.b("AppCenterReporter", ">downloadSuccCheck info:" + paramDownloadInfo);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(">downloadSuccCheck info:");
+    ((StringBuilder)localObject).append(paramDownloadInfo);
+    LogUtility.b("AppCenterReporter", ((StringBuilder)localObject).toString());
     if (paramDownloadInfo == null) {
       return;
     }
-    MonitorTask localMonitorTask2 = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    MonitorTask localMonitorTask1;
-    if (localMonitorTask2 == null)
+    MonitorTask localMonitorTask = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    if (localMonitorTask == null)
     {
-      localMonitorTask1 = a(paramDownloadInfo);
-      ReplaceMonitor.get().addTask(localMonitorTask1);
+      localObject = a(paramDownloadInfo);
+      ReplaceMonitor.get().addTask((MonitorTask)localObject);
     }
-    for (;;)
+    else
     {
-      LogUtility.b("AppCenterReporter", ">downloadSuccCheck task:" + localMonitorTask1);
-      if (localMonitorTask1 == null) {
-        break;
-      }
-      ReplaceMonitor.get().execSync(localMonitorTask1, MonitorStep.DOWNLOADING);
-      return;
-      localMonitorTask1 = localMonitorTask2;
-      if (TextUtils.isEmpty(localMonitorTask2.filePath))
+      localObject = localMonitorTask;
+      if (TextUtils.isEmpty(localMonitorTask.filePath))
       {
-        localMonitorTask2.filePath = paramDownloadInfo.l;
-        localMonitorTask1 = localMonitorTask2;
+        localMonitorTask.filePath = paramDownloadInfo.l;
+        localObject = localMonitorTask;
       }
+    }
+    paramDownloadInfo = new StringBuilder();
+    paramDownloadInfo.append(">downloadSuccCheck task:");
+    paramDownloadInfo.append(localObject);
+    LogUtility.b("AppCenterReporter", paramDownloadInfo.toString());
+    if (localObject != null) {
+      ReplaceMonitor.get().execSync((MonitorTask)localObject, MonitorStep.DOWNLOADING);
     }
   }
   
   public static void f(DownloadInfo paramDownloadInfo)
   {
-    LogUtility.b("AppCenterReporter", ">deleteCheck info:" + paramDownloadInfo);
-    if (paramDownloadInfo == null) {}
-    do
-    {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">deleteCheck info:");
+    localStringBuilder.append(paramDownloadInfo);
+    LogUtility.b("AppCenterReporter", localStringBuilder.toString());
+    if (paramDownloadInfo == null) {
       return;
-      paramDownloadInfo = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    } while (paramDownloadInfo == null);
-    ReplaceMonitor.get().deleteTask(paramDownloadInfo);
+    }
+    paramDownloadInfo = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    if (paramDownloadInfo != null) {
+      ReplaceMonitor.get().deleteTask(paramDownloadInfo);
+    }
   }
   
   public static void g(DownloadInfo paramDownloadInfo)
   {
-    LogUtility.b("AppCenterReporter", ">installStartCheck ,info:" + paramDownloadInfo);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(">installStartCheck ,info:");
+    ((StringBuilder)localObject).append(paramDownloadInfo);
+    LogUtility.b("AppCenterReporter", ((StringBuilder)localObject).toString());
     if (paramDownloadInfo == null) {
       return;
     }
-    MonitorTask localMonitorTask2 = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    MonitorTask localMonitorTask1;
-    if (localMonitorTask2 == null)
+    MonitorTask localMonitorTask = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    if (localMonitorTask == null)
     {
-      localMonitorTask1 = a(paramDownloadInfo);
-      ReplaceMonitor.get().addTask(localMonitorTask1);
+      localObject = a(paramDownloadInfo);
+      ReplaceMonitor.get().addTask((MonitorTask)localObject);
     }
-    for (;;)
+    else
     {
-      LogUtility.b("AppCenterReporter", ">installStartCheck task:" + localMonitorTask1);
-      if (localMonitorTask1 == null) {
-        break;
-      }
-      ReplaceMonitor.get().execSync(localMonitorTask1, MonitorStep.BEFORE_INSTALL);
-      return;
-      localMonitorTask1 = localMonitorTask2;
-      if (TextUtils.isEmpty(localMonitorTask2.filePath))
+      localObject = localMonitorTask;
+      if (TextUtils.isEmpty(localMonitorTask.filePath))
       {
-        localMonitorTask2.filePath = paramDownloadInfo.l;
-        localMonitorTask1 = localMonitorTask2;
+        localMonitorTask.filePath = paramDownloadInfo.l;
+        localObject = localMonitorTask;
       }
+    }
+    paramDownloadInfo = new StringBuilder();
+    paramDownloadInfo.append(">installStartCheck task:");
+    paramDownloadInfo.append(localObject);
+    LogUtility.b("AppCenterReporter", paramDownloadInfo.toString());
+    if (localObject != null) {
+      ReplaceMonitor.get().execSync((MonitorTask)localObject, MonitorStep.BEFORE_INSTALL);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.report.AppCenterReporter
  * JD-Core Version:    0.7.0.1
  */

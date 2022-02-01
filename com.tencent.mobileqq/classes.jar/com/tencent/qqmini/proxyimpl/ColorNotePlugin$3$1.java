@@ -2,7 +2,7 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.colornote.ColorNoteController;
+import com.tencent.mobileqq.colornote.api.IColorNoteController;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -19,7 +19,7 @@ class ColorNotePlugin$3$1
     try
     {
       paramDialogInterface.dismiss();
-      this.a.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.e();
+      this.a.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.insertColorNote();
       if (ColorNotePlugin.a(this.a.this$0))
       {
         paramDialogInterface = new ColorNotePlugin.3.1.1(this);
@@ -35,13 +35,16 @@ class ColorNotePlugin$3$1
     }
     catch (Exception paramDialogInterface)
     {
-      QLog.e("ColorNotePlugin", 1, "show modalView error." + paramDialogInterface);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("show modalView error.");
+      localStringBuilder.append(paramDialogInterface);
+      QLog.e("ColorNotePlugin", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ColorNotePlugin.3.1
  * JD-Core Version:    0.7.0.1
  */

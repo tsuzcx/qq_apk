@@ -48,13 +48,14 @@ public class WSReportDC898Base
   
   public Map<String, String> a()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b))) {
-      return null;
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)))
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("play_scene", this.jdField_a_of_type_JavaLangString);
+      localHashMap.put("sop_name", this.b);
+      return localHashMap;
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("play_scene", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("sop_name", this.b);
-    return localHashMap;
+    return null;
   }
   
   public void a()
@@ -64,9 +65,11 @@ public class WSReportDC898Base
   
   public void a(int paramInt)
   {
-    String str = "";
+    String str;
     if (!a(paramInt)) {
       str = a();
+    } else {
+      str = "";
     }
     a(WSReportDc00898.a(paramInt, true), 0, 0, 0L, 0L, str);
   }
@@ -96,14 +99,16 @@ public class WSReportDC898Base
   public void a(Map<String, String> paramMap)
   {
     Map localMap = a();
-    if (localMap != null) {
-      localMap.putAll(paramMap);
-    }
-    for (paramMap = new Gson().toJson(localMap);; paramMap = new Gson().toJson(paramMap))
+    if (localMap != null)
     {
-      b("video_play", 0, 0, 0L, 0L, paramMap);
-      return;
+      localMap.putAll(paramMap);
+      paramMap = new Gson().toJson(localMap);
     }
+    else
+    {
+      paramMap = new Gson().toJson(paramMap);
+    }
+    b("video_play", 0, 0, 0L, 0L, paramMap);
   }
   
   public void b()
@@ -113,9 +118,11 @@ public class WSReportDC898Base
   
   public void b(int paramInt)
   {
-    String str = "";
+    String str;
     if (!a(paramInt)) {
       str = a();
+    } else {
+      str = "";
     }
     a(WSReportDc00898.a(paramInt, false), 0, 0, 0L, 0L, str);
   }
@@ -148,13 +155,16 @@ public class WSReportDC898Base
   public void c(String paramString, int paramInt1, int paramInt2)
   {
     Map localMap = a();
-    String str = "";
     if (localMap != null)
     {
       localMap.put("url", paramString);
-      str = new Gson().toJson(localMap);
+      paramString = new Gson().toJson(localMap);
     }
-    b("blockpage_exp", paramInt1, 0, 0L, paramInt2, str);
+    else
+    {
+      paramString = "";
+    }
+    b("blockpage_exp", paramInt1, 0, 0L, paramInt2, paramString);
   }
   
   public void d()
@@ -166,12 +176,13 @@ public class WSReportDC898Base
   {
     String str2 = a();
     a("videoplay_title_clk", 0, 0, 0L, 0L, str2);
-    if (WeishiGuideUtils.a(BaseApplicationImpl.sApplication)) {}
-    for (String str1 = "videoplay_title_clk_ws";; str1 = "videoplay_title_dl_ws")
-    {
-      a(str1, 0, 0, 0L, 0L, str2);
-      return;
+    String str1;
+    if (WeishiGuideUtils.a(BaseApplicationImpl.sApplication)) {
+      str1 = "videoplay_title_clk_ws";
+    } else {
+      str1 = "videoplay_title_dl_ws";
     }
+    a(str1, 0, 0, 0L, 0L, str2);
   }
   
   public void f()
@@ -181,7 +192,7 @@ public class WSReportDC898Base
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.dc898.WSReportDC898Base
  * JD-Core Version:    0.7.0.1
  */

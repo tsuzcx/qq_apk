@@ -14,9 +14,15 @@ public abstract class BasicCollector$ArrayHelper
     }
     catch (NumberFormatException paramObject)
     {
-      return Template.NO_FETCHER_FOUND;
+      break label16;
     }
-    catch (ArrayIndexOutOfBoundsException paramObject) {}
+    catch (ArrayIndexOutOfBoundsException paramObject)
+    {
+      label12:
+      label16:
+      break label12;
+    }
+    return Template.NO_FETCHER_FOUND;
     return Template.NO_FETCHER_FOUND;
   }
   

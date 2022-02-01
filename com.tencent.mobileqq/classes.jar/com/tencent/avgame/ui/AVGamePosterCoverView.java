@@ -41,7 +41,9 @@ public class AVGamePosterCoverView
     this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, 0.0F);
     this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Int, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(new RectF(0.0F, 0.0F, this.b, this.b), -90.0F, -90.0F);
+    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    int i = this.b;
+    localPath.arcTo(new RectF(0.0F, 0.0F, i, i), -90.0F, -90.0F);
     this.jdField_a_of_type_AndroidGraphicsPath.close();
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
@@ -61,7 +63,10 @@ public class AVGamePosterCoverView
     this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, getHeight() - this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, getHeight());
     this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Int, getHeight());
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(new RectF(0.0F, getHeight() - this.b, this.b, getHeight()), 90.0F, 90.0F);
+    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    int i = getHeight();
+    int j = this.b;
+    localPath.arcTo(new RectF(0.0F, i - j, j, getHeight()), 90.0F, 90.0F);
     this.jdField_a_of_type_AndroidGraphicsPath.close();
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
@@ -93,7 +98,7 @@ public class AVGamePosterCoverView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGamePosterCoverView
  * JD-Core Version:    0.7.0.1
  */

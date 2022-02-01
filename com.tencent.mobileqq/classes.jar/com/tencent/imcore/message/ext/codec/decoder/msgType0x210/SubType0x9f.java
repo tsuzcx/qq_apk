@@ -15,78 +15,83 @@ import org.jetbrains.annotations.Nullable;
 import tencent.im.s2c.msgtype0x210.submsgtype0x9f.MsgBody;
 
 public class SubType0x9f
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   @Nullable
   private static MessageRecord a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    MsgBody localMsgBody = new MsgBody();
+    Object localObject = new MsgBody();
     MessageForQQWalletTips localMessageForQQWalletTips = (MessageForQQWalletTips)MessageRecordFactory.a(-2029);
-    for (;;)
+    try
     {
-      int j;
-      String str;
-      try
+      ((MsgBody)localObject).mergeFrom(paramMsgType0x210.vProtobuf);
+      int i = ((MsgBody)localObject).sint32_sessiontype.get();
+      if (i != 3)
       {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        j = 0;
-        str = "";
-        paramMsgType0x210 = str;
-        i = j;
-        switch (localMsgBody.sint32_sessiontype.get())
+        if (i != 4)
         {
-        case 5: 
-          localMessageForQQWalletTips.senderUin = (localMsgBody.uint64_sender_uin.get() + "");
-          localMessageForQQWalletTips.reciverUin = (localMsgBody.uint64_receiver_uin.get() + "");
-          localMessageForQQWalletTips.senderContent = localMsgBody.bytes_sender_rich_content.get().toStringUtf8();
-          localMessageForQQWalletTips.reciverContent = localMsgBody.bytes_receiver_rich_content.get().toStringUtf8();
-          localMessageForQQWalletTips.authKey = localMsgBody.bytes_authkey.get().toStringUtf8();
-          str = paramQQAppInterface.getCurrentAccountUin();
-          if (paramQQAppInterface.getCurrentAccountUin().equals(localMessageForQQWalletTips.senderUin))
+          if (i != 6)
           {
-            paramQQAppInterface = localMessageForQQWalletTips.reciverUin;
-            localMessageForQQWalletTips.init(str, paramQQAppInterface, paramMsgType0x210, "[QQWallet Tips]", paramMsgInfo.getUMsgTime(), -2029, i, paramMsgInfo.getShMsgSeq());
-            localMessageForQQWalletTips.isread = true;
-            localMessageForQQWalletTips.shmsgseq = paramMsgInfo.shMsgSeq;
-            localMessageForQQWalletTips.msgUid = paramMsgInfo.lMsgUid;
-            localMessageForQQWalletTips.getBytes();
-            localMessageForQQWalletTips.onReceiveGrapTips();
-            return localMessageForQQWalletTips;
+            paramMsgType0x210 = "";
+            i = 0;
           }
-        case 3: 
-          i = 1000;
-          paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_uin.get());
-          break;
-        case 4: 
+          else
+          {
+            paramMsgType0x210 = "";
+            i = 1001;
+          }
+        }
+        else
+        {
+          paramMsgType0x210 = String.valueOf(((MsgBody)localObject).uint64_group_uin.get());
           i = 1004;
-          paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_uin.get());
-          continue;
-          paramQQAppInterface = localMessageForQQWalletTips.senderUin;
-          break;
-        default: 
-          paramMsgType0x210 = str;
         }
       }
-      catch (Exception paramQQAppInterface)
+      else
       {
-        paramQQAppInterface.printStackTrace();
-        return localMessageForQQWalletTips;
+        paramMsgType0x210 = String.valueOf(((MsgBody)localObject).uint64_group_uin.get());
+        i = 1000;
       }
-      int i = j;
-      continue;
-      i = 1001;
-      paramMsgType0x210 = str;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((MsgBody)localObject).uint64_sender_uin.get());
+      localStringBuilder.append("");
+      localMessageForQQWalletTips.senderUin = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((MsgBody)localObject).uint64_receiver_uin.get());
+      localStringBuilder.append("");
+      localMessageForQQWalletTips.reciverUin = localStringBuilder.toString();
+      localMessageForQQWalletTips.senderContent = ((MsgBody)localObject).bytes_sender_rich_content.get().toStringUtf8();
+      localMessageForQQWalletTips.reciverContent = ((MsgBody)localObject).bytes_receiver_rich_content.get().toStringUtf8();
+      localMessageForQQWalletTips.authKey = ((MsgBody)localObject).bytes_authkey.get().toStringUtf8();
+      localObject = paramQQAppInterface.getCurrentAccountUin();
+      if (paramQQAppInterface.getCurrentAccountUin().equals(localMessageForQQWalletTips.senderUin)) {
+        paramQQAppInterface = localMessageForQQWalletTips.reciverUin;
+      } else {
+        paramQQAppInterface = localMessageForQQWalletTips.senderUin;
+      }
+      localMessageForQQWalletTips.init((String)localObject, paramQQAppInterface, paramMsgType0x210, "[QQWallet Tips]", paramMsgInfo.getUMsgTime(), -2029, i, paramMsgInfo.getShMsgSeq());
+      localMessageForQQWalletTips.isread = true;
+      localMessageForQQWalletTips.shmsgseq = paramMsgInfo.shMsgSeq;
+      localMessageForQQWalletTips.msgUid = paramMsgInfo.lMsgUid;
+      localMessageForQQWalletTips.getBytes();
+      localMessageForQQWalletTips.onReceiveGrapTips();
+      return localMessageForQQWalletTips;
     }
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+    }
+    return localMessageForQQWalletTips;
   }
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    return a(paramOnLinePushMessageProcessor.a(), paramMsgInfo, paramMsgType0x210);
+    return a((QQAppInterface)paramOnLinePushMessageProcessor.a(), paramMsgInfo, paramMsgType0x210);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x9f
  * JD-Core Version:    0.7.0.1
  */

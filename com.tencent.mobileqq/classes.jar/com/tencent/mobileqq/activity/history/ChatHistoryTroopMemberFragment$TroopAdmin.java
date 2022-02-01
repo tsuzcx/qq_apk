@@ -33,8 +33,9 @@ public class ChatHistoryTroopMemberFragment$TroopAdmin
     if ((paramObject instanceof TroopAdmin))
     {
       paramObject = (TroopAdmin)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      String str = this.jdField_a_of_type_JavaLangString;
+      if (str != null) {
+        return str.equals(paramObject.jdField_a_of_type_JavaLangString);
       }
     }
     return false;
@@ -50,7 +51,7 @@ public class ChatHistoryTroopMemberFragment$TroopAdmin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.TroopAdmin
  * JD-Core Version:    0.7.0.1
  */

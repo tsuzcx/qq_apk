@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#00000000" android:endColor="#59000000" android:angle="-90.0" />
-</shape>
+    <item android:state_window_focused="false" android:drawable="@android:color/transparent" />
+    <item android:state_focused="true" android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/ftn" />
+    <item android:state_focused="true" android:state_enabled="false" android:drawable="@drawable/ftn" />
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/abt" />
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/abt" />
+    <item android:state_focused="true" android:drawable="@drawable/frz" />
+</selector>

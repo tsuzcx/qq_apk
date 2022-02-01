@@ -15,87 +15,84 @@ public class SniSSLSocketFactory$HostNameSetter
   private SniSSLSocketFactory$HostNameSetter(Class<?> paramClass, Method paramMethod)
   {
     this.cls = new WeakReference(paramClass);
-    if (paramMethod == null) {}
-    for (paramClass = null;; paramClass = new WeakReference(paramMethod))
-    {
-      this.setter = paramClass;
-      return;
+    if (paramMethod == null) {
+      paramClass = null;
+    } else {
+      paramClass = new WeakReference(paramMethod);
     }
+    this.setter = paramClass;
   }
   
   private static Method init(Class<?> paramClass)
   {
-    Object localObject = null;
     try
     {
-      Method localMethod = paramClass.getMethod("setHostname", new Class[] { String.class });
-      localObject = localMethod;
-    }
-    catch (SecurityException localSecurityException)
-    {
-      for (;;)
-      {
-        initFail(localSecurityException);
-      }
+      Method localMethod1 = paramClass.getMethod("setHostname", new Class[] { String.class });
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      for (;;)
-      {
-        initFail(localNoSuchMethodException);
-      }
+      initFail(localNoSuchMethodException);
     }
-    CURRENT.set(new HostNameSetter(paramClass, localObject));
-    return localObject;
+    catch (SecurityException localSecurityException)
+    {
+      initFail(localSecurityException);
+    }
+    Method localMethod2 = null;
+    CURRENT.set(new HostNameSetter(paramClass, localMethod2));
+    return localMethod2;
   }
   
   private static void initFail(Exception paramException) {}
   
   private Method reuse(Class<?> paramClass)
   {
+    Object localObject = this.cls.get();
     int j = 1;
     int i;
-    Method localMethod;
-    if (this.cls.get() != paramClass)
-    {
+    if (localObject != paramClass) {
       i = 1;
-      if (i == 0) {
-        break label33;
-      }
-      localMethod = init(paramClass);
-    }
-    for (;;)
-    {
-      return localMethod;
+    } else {
       i = 0;
-      break;
-      label33:
-      if (this.setter == null) {}
-      for (i = 1; i != 0; i = 0) {
-        return null;
-      }
-      localMethod = (Method)this.setter.get();
-      if (localMethod == null) {}
-      for (i = j; i != 0; i = 0) {
-        return init(paramClass);
-      }
     }
+    if (i != 0) {
+      return init(paramClass);
+    }
+    if (this.setter == null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return null;
+    }
+    localObject = (Method)this.setter.get();
+    if (localObject == null) {
+      i = j;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      localObject = init(paramClass);
+    }
+    return localObject;
   }
   
   public static void setServerNameIndication(String paramString, SSLSocket paramSSLSocket)
   {
     Object localObject = paramSSLSocket.getClass();
     HostNameSetter localHostNameSetter = (HostNameSetter)CURRENT.get();
-    if (localHostNameSetter == null) {}
-    for (localObject = init((Class)localObject);; localObject = localHostNameSetter.reuse((Class)localObject))
-    {
-      if (localObject != null) {}
+    if (localHostNameSetter == null) {
+      localObject = init((Class)localObject);
+    } else {
+      localObject = localHostNameSetter.reuse((Class)localObject);
+    }
+    if (localObject != null) {
       try
       {
         ((Method)localObject).invoke(paramSSLSocket, new Object[] { paramString });
         return;
       }
-      catch (IllegalArgumentException paramString)
+      catch (InvocationTargetException paramString)
       {
         setServerNameIndicationFail(paramString);
         return;
@@ -105,7 +102,7 @@ public class SniSSLSocketFactory$HostNameSetter
         setServerNameIndicationFail(paramString);
         return;
       }
-      catch (InvocationTargetException paramString)
+      catch (IllegalArgumentException paramString)
       {
         setServerNameIndicationFail(paramString);
       }
@@ -116,7 +113,7 @@ public class SniSSLSocketFactory$HostNameSetter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.utils.http.base.SniSSLSocketFactory.HostNameSetter
  * JD-Core Version:    0.7.0.1
  */

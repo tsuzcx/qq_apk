@@ -3,7 +3,11 @@ package com.tencent.mobileqq.qassistant.audio;
 import androidx.annotation.Nullable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qassistant.core.AssistantUtils;
-import com.tencent.mobileqq.qassistant.data.VoiceAssiatantRespInfo.ConfirmSendInfo;
+import com.tencent.mobileqq.qassistant.data.ConfirmSendInfo;
+import com.tencent.mobileqq.qassistant.data.VoiceBean;
+import com.tencent.mobileqq.qassistant.data.VoiceEncodeResult;
+import com.tencent.mobileqq.qassistant.data.VoicePttInfo;
+import com.tencent.mobileqq.qassistant.listener.IAudio2TextResultCallBack;
 import com.tencent.mobileqq.qassistant.listener.IRecordEventListener;
 import com.tencent.mobileqq.qassistant.listener.IRecordStreamListener;
 import com.tencent.mobileqq.qassistant.listener.IVoiceMessageListener;
@@ -22,6 +26,7 @@ public class AudioNewController
   protected volatile AudioUploadThread a;
   protected volatile VoiceBeanProcessor a;
   protected volatile VoiceCacheHolder a;
+  private IAudio2TextResultCallBack a;
   protected IVoiceVadListener a;
   protected volatile RecordParams.RecorderParam a;
   protected AtomicLong a;
@@ -40,22 +45,25 @@ public class AudioNewController
   
   protected int a(byte[] paramArrayOfByte)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder == null) || (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor == null)) {
-      return 2000;
+    if ((this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder != null) && (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor != null))
+    {
+      VoiceBean localVoiceBean = new VoiceBean(AssistantUtils.a());
+      VoiceTimeTraceUtil.a().a(localVoiceBean);
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor.a(paramArrayOfByte);
+      VoiceTimeTraceUtil.a().b(localVoiceBean);
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceVadListener;
+      if (localObject != null) {
+        ((IVoiceVadListener)localObject).a(bool);
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor.a(paramArrayOfByte);
+      localVoiceBean.a(((VoiceEncodeResult)localObject).jdField_a_of_type_ArrayOfByte, bool, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get(), paramArrayOfByte.length);
+      VoiceTimeTraceUtil.a().c(localVoiceBean);
+      AtomicLong localAtomicLong = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong;
+      localAtomicLong.set(localAtomicLong.get() + paramArrayOfByte.length);
+      this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a(paramArrayOfByte, localVoiceBean);
+      return ((VoiceEncodeResult)localObject).jdField_a_of_type_Int;
     }
-    VoiceBean localVoiceBean = new VoiceBean(AssistantUtils.a());
-    VoiceTimeTraceUtil.a().a(localVoiceBean);
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor.a(paramArrayOfByte);
-    VoiceTimeTraceUtil.a().b(localVoiceBean);
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceVadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceVadListener.a(bool);
-    }
-    VoiceEncodeResult localVoiceEncodeResult = this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor.a(paramArrayOfByte);
-    localVoiceBean.a(localVoiceEncodeResult.jdField_a_of_type_ArrayOfByte, bool, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get(), paramArrayOfByte.length);
-    VoiceTimeTraceUtil.a().c(localVoiceBean);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() + paramArrayOfByte.length);
-    this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a(paramArrayOfByte, localVoiceBean);
-    return localVoiceEncodeResult.jdField_a_of_type_Int;
+    return 2000;
   }
   
   public VoicePttInfo a()
@@ -83,6 +91,7 @@ public class AudioNewController
       if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioUploadThread != null)
       {
         AssistantUtils.a("AudioNewController", "quit voice transfer thread");
+        this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioUploadThread.a(null);
         this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioUploadThread.a();
         this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioUploadThread = null;
       }
@@ -103,14 +112,17 @@ public class AudioNewController
     finally {}
   }
   
-  protected void a(int paramInt)
+  public void a(int paramInt)
   {
     try
     {
       if ((a()) || (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewRecorder != null)) {
         c();
       }
-      AssistantUtils.a("AudioNewController", "invoked assistant recorder, type:" + paramInt);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("invoked assistant recorder, type:");
+      localStringBuilder.append(paramInt);
+      AssistantUtils.a("AudioNewController", localStringBuilder.toString());
       this.jdField_a_of_type_Int = paramInt;
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(0L);
@@ -119,6 +131,7 @@ public class AudioNewController
       if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioUploadThread == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioUploadThread = new AudioUploadThread(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder);
+        this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioUploadThread.a(this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIAudio2TextResultCallBack);
         this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioUploadThread.start();
       }
       if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor == null) {
@@ -130,6 +143,11 @@ public class AudioNewController
       return;
     }
     finally {}
+  }
+  
+  public void a(IAudio2TextResultCallBack paramIAudio2TextResultCallBack)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIAudio2TextResultCallBack = paramIAudio2TextResultCallBack;
   }
   
   public void a(IVoiceVadListener paramIVoiceVadListener)
@@ -150,9 +168,9 @@ public class AudioNewController
   
   public void a(@Nullable Object paramObject)
   {
-    if ((paramObject instanceof VoiceAssiatantRespInfo.ConfirmSendInfo))
+    if ((paramObject instanceof ConfirmSendInfo))
     {
-      paramObject = (VoiceAssiatantRespInfo.ConfirmSendInfo)paramObject;
+      paramObject = (ConfirmSendInfo)paramObject;
       this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a(paramObject);
     }
     AssistantUtils.a("AudioNewController", "message on finish, invoke session");
@@ -162,8 +180,9 @@ public class AudioNewController
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewRecorder != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewRecorder.a.get();
+    AudioNewRecorder localAudioNewRecorder = this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewRecorder;
+    if (localAudioNewRecorder != null) {
+      return localAudioNewRecorder.a.get();
     }
     return false;
   }
@@ -250,7 +269,7 @@ public class AudioNewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.AudioNewController
  * JD-Core Version:    0.7.0.1
  */

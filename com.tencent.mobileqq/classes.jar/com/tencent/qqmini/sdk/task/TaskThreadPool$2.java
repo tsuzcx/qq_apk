@@ -13,10 +13,11 @@ class TaskThreadPool$2
   {
     try
     {
-      if (TaskThreadPool.access$100(this.this$0)) {
+      if (TaskThreadPool.access$100(this.this$0))
+      {
         TaskThreadPool.access$200(this.this$0).execute((Runnable)TaskThreadPool.access$000(this.this$0).poll());
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -26,7 +27,7 @@ class TaskThreadPool$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.TaskThreadPool.2
  * JD-Core Version:    0.7.0.1
  */

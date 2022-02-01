@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0sp" android:textColor="@color/al3" android:id="@id/l8f" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</FrameLayout>

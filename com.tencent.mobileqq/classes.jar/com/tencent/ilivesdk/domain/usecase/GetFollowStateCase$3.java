@@ -12,12 +12,24 @@ class GetFollowStateCase$3
   
   public void onQueryFollowFail(String paramString)
   {
-    GetFollowStateCase.access$300(this.this$0).e("AudAnchorInfoModule", "onQueryFollowFail:" + paramString, new Object[0]);
+    LogInterface localLogInterface = GetFollowStateCase.access$300(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onQueryFollowFail:");
+    localStringBuilder.append(paramString);
+    localLogInterface.e("AudAnchorInfoModule", localStringBuilder.toString(), new Object[0]);
   }
   
   public void onQueryFollowSuccess(QueryFollowRspModel paramQueryFollowRspModel)
   {
-    GetFollowStateCase.access$300(this.this$0).i("AudAnchorInfoModule", "onFollowUserSuccess targetUid:" + this.val$targetUid.toString() + " isFollow:" + paramQueryFollowRspModel.isFans + " ret:" + paramQueryFollowRspModel.ret, new Object[0]);
+    LogInterface localLogInterface = GetFollowStateCase.access$300(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onFollowUserSuccess targetUid:");
+    localStringBuilder.append(this.val$targetUid.toString());
+    localStringBuilder.append(" isFollow:");
+    localStringBuilder.append(paramQueryFollowRspModel.isFans);
+    localStringBuilder.append(" ret:");
+    localStringBuilder.append(paramQueryFollowRspModel.ret);
+    localLogInterface.i("AudAnchorInfoModule", localStringBuilder.toString(), new Object[0]);
     if (paramQueryFollowRspModel.ret != 0) {
       return;
     }
@@ -26,7 +38,7 @@ class GetFollowStateCase$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.domain.usecase.GetFollowStateCase.3
  * JD-Core Version:    0.7.0.1
  */

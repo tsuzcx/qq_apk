@@ -12,7 +12,8 @@ class FontSettingActivity$3
   
   public void onClick(View paramView)
   {
-    if (FontSettingManager.setCustomDensity(this.a, FontSettingActivity.a(this.a), true)) {
+    FontSettingActivity localFontSettingActivity = this.a;
+    if (FontSettingManager.setCustomDensity(localFontSettingActivity, FontSettingActivity.a(localFontSettingActivity), true)) {
       FontSettingManager.killProcess();
     }
     this.a.finish();
@@ -21,7 +22,7 @@ class FontSettingActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FontSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

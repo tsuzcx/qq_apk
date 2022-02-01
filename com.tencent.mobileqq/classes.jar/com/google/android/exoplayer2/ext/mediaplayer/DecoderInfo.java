@@ -18,11 +18,11 @@ public class DecoderInfo
   
   private String type2Str(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "unknown";
-    case 1: 
+      if (paramInt != 1) {
+        return "unknown";
+      }
       return "adec";
     }
     return "vdec";
@@ -30,12 +30,18 @@ public class DecoderInfo
   
   public String toString()
   {
-    return type2Str(this.decoderType) + ": " + this.decoderName + "," + this.initializationDurationMs;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(type2Str(this.decoderType));
+    localStringBuilder.append(": ");
+    localStringBuilder.append(this.decoderName);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.initializationDurationMs);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ext.mediaplayer.DecoderInfo
  * JD-Core Version:    0.7.0.1
  */

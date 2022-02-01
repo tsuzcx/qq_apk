@@ -18,17 +18,21 @@ public class SPlayerImageGenerator
   
   public void generateImageAsyncAtTime(long paramLong, ISPlayerImageGenerator.ImageGeneratorParams paramImageGeneratorParams, ISPlayerImageGenerator.Listener paramListener)
   {
-    TPImageGeneratorParams localTPImageGeneratorParams = null;
     if (paramImageGeneratorParams != null)
     {
-      localTPImageGeneratorParams = new TPImageGeneratorParams();
+      TPImageGeneratorParams localTPImageGeneratorParams = new TPImageGeneratorParams();
       localTPImageGeneratorParams.width = paramImageGeneratorParams.width;
       localTPImageGeneratorParams.height = paramImageGeneratorParams.height;
       localTPImageGeneratorParams.format = 37;
       localTPImageGeneratorParams.requestedTimeMsToleranceAfter = paramImageGeneratorParams.requestedTimeMsToleranceAfter;
       localTPImageGeneratorParams.requestedTimeMsToleranceBefore = paramImageGeneratorParams.requestedTimeMsToleranceBefore;
+      paramImageGeneratorParams = localTPImageGeneratorParams;
     }
-    this.mTPThumbCapture.generateImageAsyncAtTime(paramLong, localTPImageGeneratorParams, new SPlayerImageGenerator.1(this, paramListener));
+    else
+    {
+      paramImageGeneratorParams = null;
+    }
+    this.mTPThumbCapture.generateImageAsyncAtTime(paramLong, paramImageGeneratorParams, new SPlayerImageGenerator.1(this, paramListener));
   }
   
   public void release()
@@ -39,7 +43,7 @@ public class SPlayerImageGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.capture.SPlayerImageGenerator
  * JD-Core Version:    0.7.0.1
  */

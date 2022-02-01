@@ -21,12 +21,15 @@ public class ViewUtils$InputMethodShowHelper
     if (paramViewUtils != null)
     {
       this.jdField_a_of_type_AndroidViewView = paramViewUtils.getChildAt(0);
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      paramViewUtils = this.jdField_a_of_type_AndroidViewView;
+      if (paramViewUtils != null) {
+        paramViewUtils.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
       }
-      return;
     }
-    Log.e("ViewUtils", "获取android.R.id.content为空！！！！");
+    else
+    {
+      Log.e("ViewUtils", "获取android.R.id.content为空！！！！");
+    }
   }
   
   private int a()
@@ -42,25 +45,21 @@ public class ViewUtils$InputMethodShowHelper
     if (i != this.jdField_a_of_type_Int)
     {
       int j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
-      if (j - i <= j / 4) {
-        break label49;
+      if (j - i > j / 4) {
+        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsUiViewUtils$OnInputMethodChangeListener.a(true);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsUiViewUtils$OnInputMethodChangeListener.a(false);
       }
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsUiViewUtils$OnInputMethodChangeListener.a(true);
-    }
-    for (;;)
-    {
       this.jdField_a_of_type_Int = i;
-      return;
-      label49:
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsUiViewUtils$OnInputMethodChangeListener.a(false);
     }
   }
   
   public void a(Activity paramActivity)
   {
     this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    paramActivity = this.jdField_a_of_type_AndroidViewView;
+    if (paramActivity != null) {
+      paramActivity.getViewTreeObserver().removeOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
     }
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsUiViewUtils$OnInputMethodChangeListener = null;
   }
@@ -72,7 +71,7 @@ public class ViewUtils$InputMethodShowHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.ui.ViewUtils.InputMethodShowHelper
  * JD-Core Version:    0.7.0.1
  */

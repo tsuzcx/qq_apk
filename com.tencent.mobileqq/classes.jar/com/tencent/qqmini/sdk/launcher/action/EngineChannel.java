@@ -37,19 +37,19 @@ public class EngineChannel
   
   public EngineChannel()
   {
-    if (channelHandler == null) {}
-    try
-    {
-      if (channelHandler == null)
+    if (channelHandler == null) {
+      try
       {
-        HandlerThread localHandlerThread = new HandlerThread("EngineChannelThread");
-        localHandlerThread.start();
-        channelHandler = new EngineChannel.EngineChannelHandler(localHandlerThread.getLooper());
+        if (channelHandler == null)
+        {
+          HandlerThread localHandlerThread = new HandlerThread("EngineChannelThread");
+          localHandlerThread.start();
+          channelHandler = new EngineChannel.EngineChannelHandler(localHandlerThread.getLooper());
+        }
       }
-      this.mResultReceiver = new EngineChannel.MyReceiver(this, channelHandler);
-      return;
+      finally {}
     }
-    finally {}
+    this.mResultReceiver = new EngineChannel.MyReceiver(this, channelHandler);
   }
   
   private EngineChannel(ResultReceiver paramResultReceiver)
@@ -64,8 +64,9 @@ public class EngineChannel
   
   public void send(int paramInt, Bundle paramBundle)
   {
-    if (this.mResultReceiver != null) {
-      this.mResultReceiver.send(paramInt, paramBundle);
+    ResultReceiver localResultReceiver = this.mResultReceiver;
+    if (localResultReceiver != null) {
+      localResultReceiver.send(paramInt, paramBundle);
     }
   }
   
@@ -81,7 +82,11 @@ public class EngineChannel
   
   public String toString()
   {
-    return "EngineChannel{channelName=" + this.mChannelName + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EngineChannel{channelName=");
+    localStringBuilder.append(this.mChannelName);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -92,7 +97,7 @@ public class EngineChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.action.EngineChannel
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,10 @@ public class PTSLog
     if (sDoNotLog) {
       return;
     }
-    if (sPTSLogger != null)
+    PTSLogger localPTSLogger = sPTSLogger;
+    if (localPTSLogger != null)
     {
-      sPTSLogger.d(paramString1, paramString2);
+      localPTSLogger.d(paramString1, paramString2);
       return;
     }
     Log.d(paramString1, paramString2);
@@ -25,9 +26,10 @@ public class PTSLog
     if (sDoNotLog) {
       return;
     }
-    if (sPTSLogger != null)
+    PTSLogger localPTSLogger = sPTSLogger;
+    if (localPTSLogger != null)
     {
-      sPTSLogger.e(paramString1, paramString2);
+      localPTSLogger.e(paramString1, paramString2);
       return;
     }
     Log.e(paramString1, paramString2);
@@ -38,9 +40,10 @@ public class PTSLog
     if (sDoNotLog) {
       return;
     }
-    if (sPTSLogger != null)
+    PTSLogger localPTSLogger = sPTSLogger;
+    if (localPTSLogger != null)
     {
-      sPTSLogger.e(paramString1, paramString2, paramThrowable);
+      localPTSLogger.e(paramString1, paramString2, paramThrowable);
       return;
     }
     Log.e(paramString1, paramString2, paramThrowable);
@@ -51,9 +54,10 @@ public class PTSLog
     if (sDoNotLog) {
       return;
     }
-    if (sPTSLogger != null)
+    PTSLogger localPTSLogger = sPTSLogger;
+    if (localPTSLogger != null)
     {
-      sPTSLogger.i(paramString1, paramString2);
+      localPTSLogger.i(paramString1, paramString2);
       return;
     }
     Log.i(paramString1, paramString2);
@@ -61,16 +65,18 @@ public class PTSLog
   
   public static boolean isColorLevel()
   {
-    if (sPTSLogger != null) {
-      return sPTSLogger.isColorLevel();
+    PTSLogger localPTSLogger = sPTSLogger;
+    if (localPTSLogger != null) {
+      return localPTSLogger.isColorLevel();
     }
     return false;
   }
   
   public static boolean isDebug()
   {
-    if (sPTSLogger != null) {
-      return sPTSLogger.isDebug();
+    PTSLogger localPTSLogger = sPTSLogger;
+    if (localPTSLogger != null) {
+      return localPTSLogger.isDebug();
     }
     return false;
   }
@@ -85,9 +91,10 @@ public class PTSLog
     if (sDoNotLog) {
       return;
     }
-    if (sPTSLogger != null)
+    PTSLogger localPTSLogger = sPTSLogger;
+    if (localPTSLogger != null)
     {
-      sPTSLogger.w(paramString1, paramString2);
+      localPTSLogger.w(paramString1, paramString2);
       return;
     }
     Log.w(paramString1, paramString2);
@@ -98,9 +105,10 @@ public class PTSLog
     if (sDoNotLog) {
       return;
     }
-    if (sPTSLogger != null)
+    PTSLogger localPTSLogger = sPTSLogger;
+    if (localPTSLogger != null)
     {
-      sPTSLogger.w(paramString1, paramString2, paramThrowable);
+      localPTSLogger.w(paramString1, paramString2, paramThrowable);
       return;
     }
     Log.w(paramString1, paramString2, paramThrowable);
@@ -108,7 +116,7 @@ public class PTSLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.utils.PTSLog
  * JD-Core Version:    0.7.0.1
  */

@@ -8,25 +8,25 @@ import java.util.List;
 public class ChatLayoutListenerController
   implements IChatLayoutListenerController
 {
-  public static int a;
+  public static int a = 1;
   public static int b = 2;
   public static int c = 3;
   private HashMap<Integer, List<IChatLayoutListener>> a;
   
-  static
-  {
-    jdField_a_of_type_Int = 1;
-  }
-  
   public void a(int paramInt, IChatLayoutListener.ChatLayoutListenerInfo paramChatLayoutListenerInfo)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.isEmpty())) {}
-    for (;;)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      return;
-      Object localObject = (List)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-      if ((localObject != null) && (!((List)localObject).isEmpty()))
+      if (((HashMap)localObject).isEmpty()) {
+        return;
+      }
+      localObject = (List)this.a.get(Integer.valueOf(paramInt));
+      if (localObject != null)
       {
+        if (((List)localObject).isEmpty()) {
+          return;
+        }
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
           ((IChatLayoutListener)((Iterator)localObject).next()).a(paramInt, paramChatLayoutListenerInfo);
@@ -37,34 +37,41 @@ public class ChatLayoutListenerController
   
   public void a(int paramInt, IChatLayoutListener paramIChatLayoutListener)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.a == null) {
+      this.a = new HashMap();
     }
-    List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    List localList = (List)this.a.get(Integer.valueOf(paramInt));
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new ArrayList();
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
+      this.a.put(Integer.valueOf(paramInt), localObject);
     }
     ((List)localObject).add(paramIChatLayoutListener);
   }
   
   public void b(int paramInt, IChatLayoutListener paramIChatLayoutListener)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.isEmpty())) {}
-    List localList;
-    do
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      return;
-      localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    } while ((localList == null) || (localList.isEmpty()));
-    localList.remove(paramIChatLayoutListener);
+      if (((HashMap)localObject).isEmpty()) {
+        return;
+      }
+      localObject = (List)this.a.get(Integer.valueOf(paramInt));
+      if (localObject != null)
+      {
+        if (((List)localObject).isEmpty()) {
+          return;
+        }
+        ((List)localObject).remove(paramIChatLayoutListener);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.ChatLayoutListenerController
  * JD-Core Version:    0.7.0.1
  */

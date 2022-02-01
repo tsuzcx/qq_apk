@@ -16,13 +16,17 @@ class CommonTabFragment$1
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonTabFragment", 2, "startLocation finish" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startLocation finish");
+      localStringBuilder.append(System.currentTimeMillis());
+      QLog.d("CommonTabFragment", 2, localStringBuilder.toString());
     }
     if (paramInt != 0)
     {
-      QQToast.a(this.a.a, 1, HardCodeUtil.a(2131702302), 1).a();
-      this.a.e();
+      QQToast.a(this.a.a, 1, HardCodeUtil.a(2131702434), 1).a();
+      this.a.c();
       return;
     }
     this.a.a(paramSosoLbsInfo);
@@ -30,7 +34,7 @@ class CommonTabFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.CommonTabFragment.1
  * JD-Core Version:    0.7.0.1
  */

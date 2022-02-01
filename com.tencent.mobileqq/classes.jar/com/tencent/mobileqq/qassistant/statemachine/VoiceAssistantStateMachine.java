@@ -2,11 +2,11 @@ package com.tencent.mobileqq.qassistant.statemachine;
 
 import android.os.Message;
 import com.tencent.mobileqq.qassistant.audio.AudioNewController;
-import com.tencent.mobileqq.qassistant.audio.VoicePttInfo;
 import com.tencent.mobileqq.qassistant.core.AssistantPanelManager;
 import com.tencent.mobileqq.qassistant.core.AssistantUtils;
 import com.tencent.mobileqq.qassistant.core.VoiceMainPresenter;
-import com.tencent.mobileqq.qassistant.data.VoiceAssiatantRespInfo.ConfirmSendInfo;
+import com.tencent.mobileqq.qassistant.data.ConfirmSendInfo;
+import com.tencent.mobileqq.qassistant.data.VoicePttInfo;
 import com.tencent.mobileqq.qassistant.listener.IPanelEventListener;
 import com.tencent.mobileqq.qassistant.listener.IVoiceCommandListener;
 import com.tencent.mobileqq.qassistant.listener.IVoiceMessageListener;
@@ -21,7 +21,7 @@ public class VoiceAssistantStateMachine
   private VoiceMainPresenter jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceMainPresenter;
   private IPanelEventListener jdField_a_of_type_ComTencentMobileqqQassistantListenerIPanelEventListener;
   private IVoiceCommandListener jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener;
-  private IVoiceMessageListener jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener;
+  private volatile IVoiceMessageListener jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener;
   private CommandRecognizeState jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState;
   private InitState jdField_a_of_type_ComTencentMobileqqQassistantStatemachineInitState;
   private QuitState jdField_a_of_type_ComTencentMobileqqQassistantStatemachineQuitState;
@@ -53,14 +53,6 @@ public class VoiceAssistantStateMachine
     b(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineInitState);
   }
   
-  public VoicePttInfo a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState != null) && (this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState.a() != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState.a().a();
-    }
-    return null;
-  }
-  
   public AssistantPanelManager a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreAssistantPanelManager == null) {
@@ -74,6 +66,15 @@ public class VoiceAssistantStateMachine
     return this.jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceMainPresenter;
   }
   
+  public VoicePttInfo a()
+  {
+    CommandRecognizeState localCommandRecognizeState = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState;
+    if ((localCommandRecognizeState != null) && (localCommandRecognizeState.a() != null)) {
+      return this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState.a().a();
+    }
+    return null;
+  }
+  
   public IPanelEventListener a()
   {
     return this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIPanelEventListener;
@@ -84,11 +85,12 @@ public class VoiceAssistantStateMachine
     return this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener;
   }
   
-  public void a(VoiceAssiatantRespInfo.ConfirmSendInfo paramConfirmSendInfo)
+  public void a(ConfirmSendInfo paramConfirmSendInfo)
   {
     b(4, paramConfirmSendInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener.e();
+    paramConfirmSendInfo = this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener;
+    if (paramConfirmSendInfo != null) {
+      paramConfirmSendInfo.e();
     }
   }
   
@@ -104,106 +106,133 @@ public class VoiceAssistantStateMachine
   
   public void a(IVoiceVadListener paramIVoiceVadListener)
   {
-    if ((paramIVoiceVadListener != null) && (this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState != null) && (this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState.a() != null))
+    if (paramIVoiceVadListener != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState.a().a(paramIVoiceVadListener);
-      this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState.a();
-      return;
+      CommandRecognizeState localCommandRecognizeState = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState;
+      if ((localCommandRecognizeState != null) && (localCommandRecognizeState.a() != null))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState.a().a(paramIVoiceVadListener);
+        this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState.a();
+        return;
+      }
     }
     this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener = null;
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreAssistantPanelManager != null) && (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreAssistantPanelManager.a());
+    AssistantPanelManager localAssistantPanelManager = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreAssistantPanelManager;
+    return (localAssistantPanelManager != null) && (localAssistantPanelManager.a());
   }
   
   public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {}
-    try
-    {
-      QLog.d("VoiceAssistantStateMachine", 2, "doSendMessage what = " + paramInt + ", currentState = " + a());
-      a(paramInt);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (QLog.isColorLevel()) {
+      try
       {
-        QLog.d("VoiceAssistantStateMachine", 2, "doSendMessage exception = " + localException.getMessage());
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("doSendMessage what = ");
+        localStringBuilder1.append(paramInt);
+        localStringBuilder1.append(", currentState = ");
+        localStringBuilder1.append(a());
+        QLog.d("VoiceAssistantStateMachine", 2, localStringBuilder1.toString());
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("doSendMessage exception = ");
+        localStringBuilder2.append(localException.getMessage());
+        QLog.d("VoiceAssistantStateMachine", 2, localStringBuilder2.toString());
       }
     }
+    a(paramInt);
   }
   
   public void b(int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener != null) {}
-    switch (paramInt)
+    if (this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener != null)
     {
-    default: 
-      AssistantUtils.a("VoiceAssistantStateMachine", "onVoiceMessageCallBack status error = " + paramInt);
-      return;
-    case 1: 
-      AudioUtil.b(2131230733, false);
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              paramObject = new StringBuilder();
+              paramObject.append("onVoiceMessageCallBack status error = ");
+              paramObject.append(paramInt);
+              AssistantUtils.a("VoiceAssistantStateMachine", paramObject.toString());
+              return;
+            }
+            this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener.a(paramObject);
+            AudioUtil.b(2131230736, false);
+            return;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener.f();
+          AudioUtil.b(2131230736, false);
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener.e();
+        AudioUtil.b(2131230736, false);
+        return;
+      }
+      AudioUtil.b(2131230737, false);
       this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener.d();
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener.e();
-      AudioUtil.b(2131230732, false);
-      return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener.f();
-      AudioUtil.b(2131230732, false);
-      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceMessageListener.a(paramObject);
-    AudioUtil.b(2131230732, false);
   }
   
   protected void b(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 4)
     {
-    }
-    for (;;)
-    {
-      super.b(paramMessage);
-      return;
       c(5);
       a(paramMessage);
     }
+    super.b(paramMessage);
   }
   
   public void c(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceAssistantStateMachine", 2, "transitionToState type = " + paramInt);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("transitionToState type = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("VoiceAssistantStateMachine", 2, localStringBuilder.toString());
     }
     switch (paramInt)
     {
     default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("VoiceAssistantStateMachine", 2, "transitionToState exception type = " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("transitionToState exception type = ");
+        localStringBuilder.append(paramInt);
+        QLog.d("VoiceAssistantStateMachine", 2, localStringBuilder.toString());
+        return;
       }
-      return;
-    case 1: 
-      a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineInitState);
-      return;
-    case 2: 
-      a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineWakeListenerState);
-      return;
-    case 3: 
-      a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineShowVoicePanelState);
-      return;
-    case 4: 
-      a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState);
+      break;
+    case 6: 
+      a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineQuitState);
       return;
     case 5: 
       a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineQuitVoicePanelState);
       return;
+    case 4: 
+      a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineCommandRecognizeState);
+      return;
+    case 3: 
+      a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineShowVoicePanelState);
+      return;
+    case 2: 
+      a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineWakeListenerState);
+      return;
+    case 1: 
+      a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineInitState);
     }
-    a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineQuitState);
   }
   
   public void e()
@@ -213,31 +242,35 @@ public class VoiceAssistantStateMachine
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreAssistantPanelManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantCoreAssistantPanelManager.a();
+    AssistantPanelManager localAssistantPanelManager = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreAssistantPanelManager;
+    if (localAssistantPanelManager != null) {
+      localAssistantPanelManager.a();
     }
   }
   
   public void g()
   {
     b(2, null);
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener.c();
+    IVoiceCommandListener localIVoiceCommandListener = this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener;
+    if (localIVoiceCommandListener != null) {
+      localIVoiceCommandListener.c();
     }
   }
   
   public void h()
   {
     b(1, null);
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener.d();
+    IVoiceCommandListener localIVoiceCommandListener = this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener;
+    if (localIVoiceCommandListener != null) {
+      localIVoiceCommandListener.d();
     }
   }
   
   public void i()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener.g();
+    IVoiceCommandListener localIVoiceCommandListener = this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIVoiceCommandListener;
+    if (localIVoiceCommandListener != null) {
+      localIVoiceCommandListener.g();
     }
   }
   
@@ -255,7 +288,7 @@ public class VoiceAssistantStateMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.VoiceAssistantStateMachine
  * JD-Core Version:    0.7.0.1
  */

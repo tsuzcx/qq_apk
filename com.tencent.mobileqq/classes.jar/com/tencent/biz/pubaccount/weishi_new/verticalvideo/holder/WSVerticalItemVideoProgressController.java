@@ -24,7 +24,8 @@ public class WSVerticalItemVideoProgressController
     super(paramContext);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder = paramWSVerticalVideoHolder;
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout = paramWSVerticalVideoRelativeLayout;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder.a != null)) {
+    paramContext = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder;
+    if ((paramContext != null) && (paramContext.a != null)) {
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder.a.a();
     }
   }
@@ -38,12 +39,13 @@ public class WSVerticalItemVideoProgressController
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout.setDispatchTouchEventListener(new WSVerticalItemVideoProgressController.2(this, local1));
   }
   
-  public void a() {}
+  protected void a() {}
   
   public void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.setProgress(paramFloat);
+    WSPlayerControlBar localWSPlayerControlBar = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
+    if (localWSPlayerControlBar != null) {
+      localWSPlayerControlBar.setProgress(paramFloat);
     }
   }
   
@@ -52,52 +54,55 @@ public class WSVerticalItemVideoProgressController
     return this.jdField_a_of_type_Boolean;
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560158;
+    return 2131560043;
   }
   
-  public void b()
+  protected void b()
   {
     a(0.0F);
   }
   
-  public void c()
+  protected void c()
   {
     h();
   }
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar = ((WSPlayerControlBar)a(2131381548));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar = ((WSPlayerControlBar)a(2131380784));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.setSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
     i();
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.a();
+    WSPlayerControlBar localWSPlayerControlBar = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
+    if (localWSPlayerControlBar != null) {
+      localWSPlayerControlBar.a();
     }
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.b();
+    WSPlayerControlBar localWSPlayerControlBar = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
+    if (localWSPlayerControlBar != null) {
+      localWSPlayerControlBar.b();
     }
   }
   
   public void h()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.c();
+    WSPlayerControlBar localWSPlayerControlBar = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
+    if (localWSPlayerControlBar != null) {
+      localWSPlayerControlBar.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoProgressController
  * JD-Core Version:    0.7.0.1
  */

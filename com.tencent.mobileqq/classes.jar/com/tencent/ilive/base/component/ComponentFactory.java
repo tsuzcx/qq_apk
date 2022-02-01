@@ -23,13 +23,14 @@ public class ComponentFactory
   
   public void addConfig(ComponentConfig paramComponentConfig, RoomEngine paramRoomEngine)
   {
-    Object localObject2 = BizEngineMgr.getInstance().getLiveEngine().getServiceAccessor();
-    ServiceAccessor localServiceAccessor = BizEngineMgr.getInstance().getUserEngine().getServiceAccessor();
-    Object localObject1 = null;
+    Object localObject1 = BizEngineMgr.getInstance().getLiveEngine().getServiceAccessor();
+    Object localObject2 = BizEngineMgr.getInstance().getUserEngine().getServiceAccessor();
     if (paramRoomEngine != null) {
-      localObject1 = paramRoomEngine.getServiceAccessor();
+      paramRoomEngine = paramRoomEngine.getServiceAccessor();
+    } else {
+      paramRoomEngine = null;
     }
-    paramRoomEngine = new ServiceAccessorConfig((ServiceAccessor)localObject2, localServiceAccessor, (ServiceAccessor)localObject1);
+    paramRoomEngine = new ServiceAccessorConfig((ServiceAccessor)localObject1, (ServiceAccessor)localObject2, paramRoomEngine);
     if (paramComponentConfig.get().size() > 0)
     {
       localObject1 = paramComponentConfig.get().keySet().iterator();
@@ -74,7 +75,7 @@ public class ComponentFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.base.component.ComponentFactory
  * JD-Core Version:    0.7.0.1
  */

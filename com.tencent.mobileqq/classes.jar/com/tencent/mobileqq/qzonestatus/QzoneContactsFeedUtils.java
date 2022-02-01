@@ -47,116 +47,110 @@ public class QzoneContactsFeedUtils
   
   public static String a(String paramString)
   {
-    if ("".equals(paramString)) {}
-    int j;
-    int i;
-    do
-    {
+    if ("".equals(paramString)) {
       return null;
-      int k = paramString.indexOf("uin:");
-      j = paramString.indexOf(",");
-      i = 0;
-      if (k != -1) {
-        i = k + 4;
-      }
-    } while ((i == 0) || (j == -1));
-    return paramString.substring(i, j);
+    }
+    int k = paramString.indexOf("uin:");
+    int j = paramString.indexOf(",");
+    int i = 0;
+    if (k != -1) {
+      i = k + 4;
+    }
+    if ((i != 0) && (j != -1)) {
+      return paramString.substring(i, j);
+    }
+    return null;
   }
   
   public static String a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {
-      localObject = null;
-    }
-    Matcher localMatcher;
-    do
+    if ((!TextUtils.isEmpty(paramString)) && (paramQQAppInterface != null))
     {
-      return localObject;
-      localMatcher = a.matcher(paramString);
-      localObject = paramString;
-    } while (!localMatcher.find());
-    String str2 = localMatcher.group();
-    String str3 = a(str2);
-    String str1 = "";
-    Object localObject = str1;
-    if (!TextUtils.isEmpty(str3))
-    {
-      FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      localObject = str1;
-      if (localFriendsManager != null)
+      Matcher localMatcher = a.matcher(paramString);
+      String str1 = paramString;
+      while (localMatcher.find())
       {
-        localObject = localFriendsManager.e(str3);
-        if (localObject == null) {
-          break label154;
+        String str2 = localMatcher.group();
+        String str3 = a(str2);
+        Object localObject = "";
+        paramString = (String)localObject;
+        if (!TextUtils.isEmpty(str3))
+        {
+          FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+          paramString = (String)localObject;
+          if (localFriendsManager != null)
+          {
+            paramString = localFriendsManager.e(str3);
+            if (paramString != null) {
+              localObject = paramString.getFriendNickWithAlias();
+            }
+            paramString = (String)localObject;
+            if (TextUtils.isEmpty((CharSequence)localObject)) {
+              paramString = b(str2);
+            }
+          }
+        }
+        if (!TextUtils.isEmpty(paramString))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("@");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(" ");
+          str1 = str1.replace(str2, ((StringBuilder)localObject).toString());
         }
       }
+      return str1;
     }
-    label152:
-    label154:
-    for (localObject = ((Friends)localObject).getFriendNickWithAlias();; localObject = "")
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        localObject = b(str2);
-      }
-      for (;;)
-      {
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label152;
-        }
-        paramString = paramString.replace(str2, "@" + (String)localObject + " ");
-        break;
-      }
-      break;
-    }
+    return null;
   }
   
   public static ArrayList<Long> a(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (paramQQAppInterface == null) {
+    Object localObject1 = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    paramQQAppInterface = null;
+    if (localObject1 == null) {
       return null;
     }
-    Object localObject = paramQQAppInterface.c();
-    if (localObject != null)
+    Object localObject2 = ((FriendsManager)localObject1).c();
+    if (localObject2 != null)
     {
-      paramQQAppInterface = new ArrayList(((List)localObject).size());
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject1 = new ArrayList(((List)localObject2).size());
+      localObject2 = ((List)localObject2).iterator();
+      for (;;)
       {
-        Friends localFriends = (Friends)((Iterator)localObject).next();
-        if ((localFriends != null) && (Friends.isValidUin(localFriends.uin))) {
-          paramQQAppInterface.add(Long.valueOf(Long.parseLong(localFriends.uin)));
+        paramQQAppInterface = (QQAppInterface)localObject1;
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
+        }
+        paramQQAppInterface = (Friends)((Iterator)localObject2).next();
+        if ((paramQQAppInterface != null) && (Friends.isValidUin(paramQQAppInterface.uin))) {
+          ((ArrayList)localObject1).add(Long.valueOf(Long.parseLong(paramQQAppInterface.uin)));
         }
       }
     }
-    for (;;)
-    {
-      return paramQQAppInterface;
-      paramQQAppInterface = null;
-    }
+    return paramQQAppInterface;
   }
   
   public static String b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int j;
-    int i;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      int k = paramString.indexOf(",nick:");
-      j = paramString.indexOf("}");
-      i = 0;
-      if (k != -1) {
-        i = k + 6;
-      }
-    } while ((j == -1) || (i == 0));
-    return paramString.substring(i, j);
+    }
+    int k = paramString.indexOf(",nick:");
+    int j = paramString.indexOf("}");
+    int i = 0;
+    if (k != -1) {
+      i = k + 6;
+    }
+    if ((j != -1) && (i != 0)) {
+      return paramString.substring(i, j);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzonestatus.QzoneContactsFeedUtils
  * JD-Core Version:    0.7.0.1
  */

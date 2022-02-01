@@ -74,74 +74,75 @@ public class DefaultHttpAdapter
   
   HttpURLConnection createConnection(HippyHttpRequest paramHippyHttpRequest)
   {
-    if (TextUtils.isEmpty(paramHippyHttpRequest.getUrl())) {
-      throw new RuntimeException("url is null");
+    if (!TextUtils.isEmpty(paramHippyHttpRequest.getUrl()))
+    {
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)toURL(paramHippyHttpRequest.getUrl()).openConnection();
+      if (TextUtils.isEmpty(paramHippyHttpRequest.getMethod())) {
+        paramHippyHttpRequest.setMethod("GET");
+      }
+      localHttpURLConnection.setRequestMethod(paramHippyHttpRequest.getMethod());
+      localHttpURLConnection.setUseCaches(paramHippyHttpRequest.isUseCaches());
+      localHttpURLConnection.setInstanceFollowRedirects(paramHippyHttpRequest.isInstanceFollowRedirects());
+      localHttpURLConnection.setConnectTimeout(paramHippyHttpRequest.getConnectTimeout());
+      localHttpURLConnection.setReadTimeout(paramHippyHttpRequest.getReadTimeout());
+      if ((paramHippyHttpRequest.getMethod().equalsIgnoreCase("POST")) || (paramHippyHttpRequest.getMethod().equalsIgnoreCase("PUT")) || (paramHippyHttpRequest.getMethod().equalsIgnoreCase("PATCH"))) {
+        localHttpURLConnection.setDoOutput(true);
+      }
+      return localHttpURLConnection;
     }
-    HttpURLConnection localHttpURLConnection = (HttpURLConnection)toURL(paramHippyHttpRequest.getUrl()).openConnection();
-    if (TextUtils.isEmpty(paramHippyHttpRequest.getMethod())) {
-      paramHippyHttpRequest.setMethod("GET");
-    }
-    localHttpURLConnection.setRequestMethod(paramHippyHttpRequest.getMethod());
-    localHttpURLConnection.setUseCaches(paramHippyHttpRequest.isUseCaches());
-    localHttpURLConnection.setInstanceFollowRedirects(paramHippyHttpRequest.isInstanceFollowRedirects());
-    localHttpURLConnection.setConnectTimeout(paramHippyHttpRequest.getConnectTimeout());
-    localHttpURLConnection.setReadTimeout(paramHippyHttpRequest.getReadTimeout());
-    if ((paramHippyHttpRequest.getMethod().equalsIgnoreCase("POST")) || (paramHippyHttpRequest.getMethod().equalsIgnoreCase("PUT")) || (paramHippyHttpRequest.getMethod().equalsIgnoreCase("PATCH"))) {
-      localHttpURLConnection.setDoOutput(true);
-    }
-    return localHttpURLConnection;
+    throw new RuntimeException("url is null");
   }
   
   HippyHttpResponse createResponse(HttpURLConnection paramHttpURLConnection)
   {
-    Object localObject5 = null;
     HippyHttpResponse localHippyHttpResponse = new HippyHttpResponse();
     parseResponseHeaders(paramHttpURLConnection, localHippyHttpResponse);
-    int i = 0;
+    Object localObject4 = null;
+    int i;
+    Object localObject1;
     try
     {
-      localObject1 = paramHttpURLConnection.getInputStream();
-      if (i == 0)
-      {
-        localObject3 = localObject5;
-        if (paramHttpURLConnection.getResponseCode() < 400) {
-          break label50;
-        }
-      }
+      InputStream localInputStream = paramHttpURLConnection.getInputStream();
+      i = 0;
     }
     catch (IOException localIOException)
     {
+      localIOException.printStackTrace();
+      i = 1;
+      localObject1 = null;
+    }
+    Object localObject2;
+    Object localObject3;
+    if (i == 0)
+    {
+      localObject2 = localObject4;
+      if (paramHttpURLConnection.getResponseCode() < 400) {}
+    }
+    else
+    {
       try
       {
-        Object localObject1;
-        Object localObject3 = paramHttpURLConnection.getErrorStream();
-        label50:
-        if (i != 0) {
-          localObject1 = localObject3;
-        }
-        localHippyHttpResponse.setInputStream((InputStream)localObject1);
-        localHippyHttpResponse.setErrorStream((InputStream)localObject3);
-        localHippyHttpResponse.setResponseMessage(paramHttpURLConnection.getResponseMessage());
-        return localHippyHttpResponse;
-        localIOException = localIOException;
-        localIOException.printStackTrace();
-        i = 1;
-        Object localObject2 = null;
+        localObject2 = paramHttpURLConnection.getErrorStream();
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          localException.printStackTrace();
-          Object localObject4 = localObject5;
-        }
+        localException.printStackTrace();
+        localObject3 = localObject4;
       }
     }
+    if (i != 0) {
+      localObject1 = localObject3;
+    }
+    localHippyHttpResponse.setInputStream(localObject1);
+    localHippyHttpResponse.setErrorStream(localObject3);
+    localHippyHttpResponse.setResponseMessage(paramHttpURLConnection.getResponseMessage());
+    return localHippyHttpResponse;
   }
   
   public void destroyIfNeed()
   {
-    if ((this.mExecutorService != null) && (!this.mExecutorService.isShutdown()))
+    ExecutorService localExecutorService = this.mExecutorService;
+    if ((localExecutorService != null) && (!localExecutorService.isShutdown()))
     {
       this.mExecutorService.shutdown();
       this.mExecutorService = null;
@@ -186,7 +187,10 @@ public class DefaultHttpAdapter
     if (TextUtils.isEmpty(paramHippyHttpRequest.getBody())) {
       return;
     }
-    paramHttpURLConnection.setRequestProperty("Content-Length", paramHippyHttpRequest.getBody().getBytes().length + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramHippyHttpRequest.getBody().getBytes().length);
+    localStringBuilder.append("");
+    paramHttpURLConnection.setRequestProperty("Content-Length", localStringBuilder.toString());
     paramHttpURLConnection = new DataOutputStream(paramHttpURLConnection.getOutputStream());
     paramHttpURLConnection.write(paramHippyHttpRequest.getBody().getBytes());
     paramHttpURLConnection.flush();
@@ -209,7 +213,7 @@ public class DefaultHttpAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.http.DefaultHttpAdapter
  * JD-Core Version:    0.7.0.1
  */

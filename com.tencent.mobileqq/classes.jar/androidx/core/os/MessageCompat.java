@@ -13,41 +13,33 @@ public final class MessageCompat
   @SuppressLint({"NewApi"})
   public static boolean isAsynchronous(@NonNull Message paramMessage)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (Build.VERSION.SDK_INT >= 22) {
-      bool1 = paramMessage.isAsynchronous();
+      return paramMessage.isAsynchronous();
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!sTryIsAsynchronous);
-      bool1 = bool2;
-    } while (Build.VERSION.SDK_INT < 16);
+    if ((sTryIsAsynchronous) && (Build.VERSION.SDK_INT >= 16)) {}
     try
     {
-      bool1 = paramMessage.isAsynchronous();
-      return bool1;
+      boolean bool = paramMessage.isAsynchronous();
+      return bool;
     }
     catch (NoSuchMethodError paramMessage)
     {
-      sTryIsAsynchronous = false;
+      label34:
+      break label34;
     }
+    sTryIsAsynchronous = false;
     return false;
   }
   
   @SuppressLint({"NewApi"})
   public static void setAsynchronous(@NonNull Message paramMessage, boolean paramBoolean)
   {
-    if (Build.VERSION.SDK_INT >= 22) {
+    if (Build.VERSION.SDK_INT >= 22)
+    {
       paramMessage.setAsynchronous(paramBoolean);
-    }
-    while ((!sTrySetAsynchronous) || (Build.VERSION.SDK_INT < 16)) {
       return;
     }
+    if ((sTrySetAsynchronous) && (Build.VERSION.SDK_INT >= 16)) {}
     try
     {
       paramMessage.setAsynchronous(paramBoolean);
@@ -55,13 +47,15 @@ public final class MessageCompat
     }
     catch (NoSuchMethodError paramMessage)
     {
-      sTrySetAsynchronous = false;
+      label34:
+      break label34;
     }
+    sTrySetAsynchronous = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.os.MessageCompat
  * JD-Core Version:    0.7.0.1
  */

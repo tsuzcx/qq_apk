@@ -14,7 +14,7 @@ class MiniAppFileManager$1
     String str = MiniAppFileManager.access$000(this.this$0, 2);
     try
     {
-      MiniAppFileManager.access$100(this.this$0).set(FileUtils.b(str));
+      MiniAppFileManager.access$100(this.this$0).set(FileUtils.getFileOrFolderSize(str));
       label23:
       MiniAppFileManager.access$200(this.this$0).countDown();
       return;
@@ -27,7 +27,7 @@ class MiniAppFileManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager.1
  * JD-Core Version:    0.7.0.1
  */

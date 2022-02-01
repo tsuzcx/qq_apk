@@ -17,27 +17,24 @@ class SignatureAdapter$3
     int i = this.a.getInt("dynamicType");
     String str1 = this.a.getString("tplId");
     String str2 = this.a.getString("fileName");
-    Object localObject = null;
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      if (localObject != null)
-      {
-        localObject = new File((String)localObject);
-        if (DownloaderFactory.a(new File(SignatureTemplateConfig.a(str1, str2)), (File)localObject, true)) {
-          SignatureAdapter.a(this.this$0).a().sendEmptyMessage(10003);
-        }
-      }
-      return;
+    Object localObject;
+    if (i != 16) {
+      localObject = null;
+    } else {
       localObject = SignatureTemplateConfig.a(str1, "dynamic_aio");
+    }
+    if (localObject != null)
+    {
+      localObject = new File((String)localObject);
+      if (DownloaderFactory.a(new File(SignatureTemplateConfig.a(str1, str2)), (File)localObject, true)) {
+        SignatureAdapter.a(this.this$0).a().sendEmptyMessage(10003);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.SignatureAdapter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -56,23 +56,26 @@ public class ExtensionRichStatus
         }
       }
     }
-    if ((this.a != null) || ((paramExtensionInfo.richTime > 0L) && (bool1))) {
-      return;
-    }
-    if (paramExtensionInfo.richTime > 0L)
+    if (this.a == null)
     {
-      this.a = RichStatus.parseStatus(paramExtensionInfo.richBuffer);
-      this.a.time = paramExtensionInfo.richTime;
-      return;
+      if ((paramExtensionInfo.richTime > 0L) && (bool1)) {
+        return;
+      }
+      if (paramExtensionInfo.richTime > 0L)
+      {
+        this.a = RichStatus.parseStatus(paramExtensionInfo.richBuffer);
+        this.a.time = paramExtensionInfo.richTime;
+        return;
+      }
+      this.a = new RichStatus(null);
     }
-    this.a = new RichStatus(null);
   }
   
   public void b(ExtensionInfo paramExtensionInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.ExtensionRichStatus
  * JD-Core Version:    0.7.0.1
  */

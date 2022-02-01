@@ -1,56 +1,50 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.msf.service.protocol.security.CustomSigContent;
-import com.tencent.msf.service.protocol.security.RespondCustomSig;
-import com.tencent.open.agent.report.ReportCenter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.observer.AccountObserver;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.qphone.base.util.QLog;
 
 class MessageHandler$14
-  extends AccountObserver
+  extends FriendListObserver
 {
-  MessageHandler$14(MessageHandler paramMessageHandler, String paramString) {}
+  MessageHandler$14(MessageHandler paramMessageHandler) {}
   
-  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((paramBoolean) && (paramHashMap != null))
+    if (QLog.isColorLevel())
     {
-      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap == null) || (paramHashMap.SigList == null)) {
-        return;
-      }
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
-      {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
-          localOpenID.openID = ((String)localObject);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().persistOrReplace(localOpenID);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache.a(this.jdField_a_of_type_JavaLangString, localOpenID);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.notifyUI(1, true, localOpenID);
-        }
-        i += 1;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateAnswerAddedFriend isSuccess = ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", uin = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", flag = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("Q.msg.MessageHandler", 2, localStringBuilder.toString());
     }
-    if (paramBoolean) {}
-    for (paramHashMap = "0";; paramHashMap = "1")
+    if (paramBoolean) {
+      this.a.a.getMessageFacade().k();
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel())
     {
-      ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", this.jdField_a_of_type_JavaLangString, "41", "19", paramHashMap, "", "", "4", false);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateFriendList isSuccess = ");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(", isComplete = ");
+      localStringBuilder.append(paramBoolean2);
+      QLog.d("Q.msg.MessageHandler", 2, localStringBuilder.toString());
+    }
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a.getMessageFacade().k();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.14
  * JD-Core Version:    0.7.0.1
  */

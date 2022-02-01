@@ -63,25 +63,29 @@ class VoIPProxyImpl$2
   {
     if (VoIPProxyImpl.a(this.a) != null)
     {
-      ArrayList localArrayList = null;
+      Object localObject = null;
       if (paramList != null)
       {
-        localArrayList = new ArrayList();
+        ArrayList localArrayList = new ArrayList();
         paramList = paramList.iterator();
-        while (paramList.hasNext())
+        for (;;)
         {
-          QavDef.MultiUserInfo localMultiUserInfo = (QavDef.MultiUserInfo)paramList.next();
-          if (localMultiUserInfo != null)
+          localObject = localArrayList;
+          if (!paramList.hasNext()) {
+            break;
+          }
+          localObject = (QavDef.MultiUserInfo)paramList.next();
+          if (localObject != null)
           {
-            VoIPProxy.MultiUserInfo localMultiUserInfo1 = new VoIPProxy.MultiUserInfo();
-            localMultiUserInfo1.mMicOn = localMultiUserInfo.mMicOn;
-            localMultiUserInfo1.mOpenId = localMultiUserInfo.mOpenId;
-            localMultiUserInfo1.mUin = localMultiUserInfo.mUin;
-            localArrayList.add(localMultiUserInfo1);
+            VoIPProxy.MultiUserInfo localMultiUserInfo = new VoIPProxy.MultiUserInfo();
+            localMultiUserInfo.mMicOn = ((QavDef.MultiUserInfo)localObject).mMicOn;
+            localMultiUserInfo.mOpenId = ((QavDef.MultiUserInfo)localObject).mOpenId;
+            localMultiUserInfo.mUin = ((QavDef.MultiUserInfo)localObject).mUin;
+            localArrayList.add(localMultiUserInfo);
           }
         }
       }
-      VoIPProxyImpl.a(this.a).onUserUpdate(localArrayList);
+      VoIPProxyImpl.a(this.a).onUserUpdate((List)localObject);
     }
   }
   
@@ -119,7 +123,7 @@ class VoIPProxyImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VoIPProxyImpl.2
  * JD-Core Version:    0.7.0.1
  */

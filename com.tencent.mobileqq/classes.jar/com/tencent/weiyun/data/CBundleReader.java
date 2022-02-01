@@ -22,10 +22,12 @@ public final class CBundleReader
   public static String getHexString(long paramLong, String paramString)
   {
     paramString = getByteArray(paramLong, paramString);
-    if (paramString == null) {}
-    for (paramString = new byte[0];; paramString = Arrays.copyOf(paramString, paramString.length)) {
-      return Utils.bytes2HexStr(paramString);
+    if (paramString == null) {
+      paramString = new byte[0];
+    } else {
+      paramString = Arrays.copyOf(paramString, paramString.length);
     }
+    return Utils.bytes2HexStr(paramString);
   }
   
   public static native int getInt(long paramLong, String paramString, int paramInt);
@@ -37,10 +39,12 @@ public final class CBundleReader
   public static String getString(long paramLong, String paramString)
   {
     paramString = getByteArray(paramLong, paramString);
-    if (paramString == null) {}
-    for (paramString = new byte[0];; paramString = Arrays.copyOf(paramString, paramString.length)) {
-      return new String(paramString);
+    if (paramString == null) {
+      paramString = new byte[0];
+    } else {
+      paramString = Arrays.copyOf(paramString, paramString.length);
     }
+    return new String(paramString);
   }
   
   private static native Object[] getStringArray(long paramLong, String paramString);
@@ -69,7 +73,7 @@ public final class CBundleReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.data.CBundleReader
  * JD-Core Version:    0.7.0.1
  */

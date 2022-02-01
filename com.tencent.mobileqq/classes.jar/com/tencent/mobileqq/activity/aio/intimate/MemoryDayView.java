@@ -46,21 +46,24 @@ public class MemoryDayView
   
   private int a(String paramString, float paramFloat, int paramInt)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     int j = 0;
-    Paint localPaint;
-    if (!TextUtils.isEmpty(paramString))
+    int i;
+    if (!bool)
     {
-      localPaint = new Paint();
+      Paint localPaint = new Paint();
       localPaint.setTextSize(TypedValue.applyDimension(2, paramFloat, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+      i = (int)localPaint.measureText(paramString, 0, paramString.length());
     }
-    for (int i = (int)localPaint.measureText(paramString, 0, paramString.length());; i = 0)
+    else
     {
-      paramString = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
-      if (paramString != null) {
-        j = paramString.getDefaultDisplay().getWidth();
-      }
-      return j - paramInt - i;
+      i = 0;
     }
+    paramString = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    if (paramString != null) {
+      j = paramString.getDefaultDisplay().getWidth();
+    }
+    return j - paramInt - i;
   }
   
   public static void a(Context paramContext, String paramString)
@@ -70,15 +73,18 @@ public class MemoryDayView
       QLog.e("intimate_relationship", 2, "jumph5Url strUrl Empty");
       return;
     }
-    if ((paramString.toLowerCase().startsWith("http://")) || (paramString.toLowerCase().startsWith("https://")))
+    if ((!paramString.toLowerCase().startsWith("http://")) && (!paramString.toLowerCase().startsWith("https://")))
     {
-      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramString);
-      localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131706551));
-      paramContext.startActivity(localIntent);
+      paramContext = new StringBuilder();
+      paramContext.append("jumph5Url strUrl unRecognized ");
+      paramContext.append(paramString);
+      QLog.e("intimate_relationship", 2, paramContext.toString());
       return;
     }
-    QLog.e("intimate_relationship", 2, "jumph5Url strUrl unRecognized " + paramString);
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131706577));
+    paramContext.startActivity(localIntent);
   }
   
   public LinearLayout a()
@@ -88,8 +94,9 @@ public class MemoryDayView
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (localLinearLayout != null) {
+      localLinearLayout.removeAllViews();
     }
     this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView$OnItemClick = null;
@@ -98,15 +105,15 @@ public class MemoryDayView
   
   public void a(Context paramContext, ArrayList<IntimateInfo.MemoryDayInfo> paramArrayList)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    Object localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      ArrayList localArrayList = new ArrayList();
-      Object localObject;
+      ((LinearLayout)localObject1).removeAllViews();
+      localObject1 = new ArrayList();
+      Object localObject2;
       if ((paramArrayList != null) && (paramArrayList.size() > 0))
       {
-        localObject = new Date(NetConnInfoCenter.getServerTimeMillis());
+        localObject2 = new Date(NetConnInfoCenter.getServerTimeMillis());
         paramArrayList = paramArrayList.iterator();
         while (paramArrayList.hasNext())
         {
@@ -114,31 +121,30 @@ public class MemoryDayView
           if ((localMemoryDayInfo != null) && (localMemoryDayInfo.date != 0L))
           {
             Date localDate = new Date(localMemoryDayInfo.date);
-            if ((((Date)localObject).getDay() == localDate.getDay()) && (((Date)localObject).getMonth() == localDate.getMonth()) && (((Date)localObject).getYear() == localDate.getYear())) {
-              localArrayList.add(localMemoryDayInfo);
+            if ((((Date)localObject2).getDay() == localDate.getDay()) && (((Date)localObject2).getMonth() == localDate.getMonth()) && (((Date)localObject2).getYear() == localDate.getYear())) {
+              ((ArrayList)localObject1).add(localMemoryDayInfo);
             }
           }
         }
       }
-      if ((localArrayList != null) && (localArrayList.size() > 0)) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      }
-      while (i < localArrayList.size())
+      if (((ArrayList)localObject1).size() > 0)
       {
-        paramArrayList = (IntimateInfo.MemoryDayInfo)localArrayList.get(i);
-        localObject = new MemoryDayView.MemoryDayItem(this, paramContext);
-        if (localObject != null)
+        paramArrayList = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+        int i = 0;
+        paramArrayList.setVisibility(0);
+        while (i < ((ArrayList)localObject1).size())
         {
-          ((MemoryDayView.MemoryDayItem)localObject).a(paramArrayList);
-          ((MemoryDayView.MemoryDayItem)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView$OnItemClick);
-          if (((MemoryDayView.MemoryDayItem)localObject).a() != null) {
-            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((MemoryDayView.MemoryDayItem)localObject).a());
+          paramArrayList = (IntimateInfo.MemoryDayInfo)((ArrayList)localObject1).get(i);
+          localObject2 = new MemoryDayView.MemoryDayItem(this, paramContext);
+          ((MemoryDayView.MemoryDayItem)localObject2).a(paramArrayList);
+          ((MemoryDayView.MemoryDayItem)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView$OnItemClick);
+          if (((MemoryDayView.MemoryDayItem)localObject2).a() != null) {
+            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((MemoryDayView.MemoryDayItem)localObject2).a());
           }
+          i += 1;
         }
-        i += 1;
-        continue;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
   }
   
@@ -149,7 +155,7 @@ public class MemoryDayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.MemoryDayView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,15 @@ final class URLDrawable$1
   
   public Thread newThread(Runnable paramRunnable)
   {
-    return new Thread(paramRunnable, "URLDrawable #" + this.mCount.getAndIncrement());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("URLDrawable #");
+    localStringBuilder.append(this.mCount.getAndIncrement());
+    return new Thread(paramRunnable, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.URLDrawable.1
  * JD-Core Version:    0.7.0.1
  */

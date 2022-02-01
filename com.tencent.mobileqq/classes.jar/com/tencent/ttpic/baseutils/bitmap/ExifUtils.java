@@ -16,17 +16,22 @@ public class ExifUtils
   
   public static int exchange(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 0: 
-    default: 
-      return 1;
-    case 180: 
-      return 3;
-    case 90: 
+      if (paramInt != 90)
+      {
+        if (paramInt != 180)
+        {
+          if (paramInt != 270) {
+            return 1;
+          }
+          return 8;
+        }
+        return 3;
+      }
       return 6;
     }
-    return 8;
+    return 1;
   }
   
   public static double getExifAltitude(String paramString)
@@ -77,42 +82,38 @@ public class ExifUtils
     if (paramString == null) {
       return null;
     }
-    double[] arrayOfDouble;
     try
     {
-      arrayOfDouble = new double[2];
+      double[] arrayOfDouble = new double[2];
       Object localObject = new ExifInterface(paramString);
       paramString = ((ExifInterface)localObject).getAttribute("GPSLatitude");
       String str1 = ((ExifInterface)localObject).getAttribute("GPSLatitudeRef");
       String str2 = ((ExifInterface)localObject).getAttribute("GPSLongitude");
       localObject = ((ExifInterface)localObject).getAttribute("GPSLongitudeRef");
-      if (!TextUtils.isEmpty(paramString))
-      {
-        if (!"S".equals(str1)) {
-          break label121;
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (!bool) {
+        if ("S".equals(str1)) {
+          arrayOfDouble[0] = (getGpsCoord(paramString.split(",")) * -1.0D);
+        } else {
+          arrayOfDouble[0] = getGpsCoord(paramString.split(","));
         }
-        arrayOfDouble[0] = (getGpsCoord(paramString.split(",")) * -1.0D);
       }
-      while (!TextUtils.isEmpty(str2)) {
+      if (!TextUtils.isEmpty(str2))
+      {
         if ("W".equals(localObject))
         {
           arrayOfDouble[1] = (getGpsCoord(str2.split(",")) * -1.0D);
-          break;
-          label121:
-          arrayOfDouble[0] = getGpsCoord(paramString.split(","));
+          return arrayOfDouble;
         }
-        else
-        {
-          arrayOfDouble[1] = getGpsCoord(str2.split(","));
-        }
+        arrayOfDouble[1] = getGpsCoord(str2.split(","));
       }
+      return arrayOfDouble;
     }
     catch (Exception paramString)
     {
       LogUtils.e(paramString);
-      return null;
     }
-    return arrayOfDouble;
+    return null;
   }
   
   private static double getGpsCoord(String[] paramArrayOfString)
@@ -121,171 +122,161 @@ public class ExifUtils
     if (paramArrayOfString == null) {
       return 0.0D;
     }
-    double d1;
-    double d2;
-    label34:
-    double d4;
-    if (paramArrayOfString.length > 0)
-    {
+    if (paramArrayOfString.length > 0) {
       d1 = gpsValue2Num(paramArrayOfString[0]);
-      if (paramArrayOfString.length <= 1) {
-        break label196;
-      }
+    } else {
+      d1 = 0.0D;
+    }
+    if (paramArrayOfString.length > 1) {
       d2 = gpsValue2Num(paramArrayOfString[1]);
-      if (paramArrayOfString.length > 2) {
-        d3 = gpsValue2Num(paramArrayOfString[2]);
-      }
-      double d5 = (d1 - Math.floor(d1)) * 60.0D + d2;
-      d4 = Math.floor(d1);
-      d2 = (d5 - Math.floor(d5)) * 60.0D + d3;
-      d1 = Math.floor(d5);
-      if (d2 < 60.0D) {
-        break label210;
-      }
-      d3 = Math.floor(d2 / 60.0D);
-      d2 -= Math.floor(d2 / 60.0D) * 60.0D;
-      d1 += d3;
+    } else {
+      d2 = 0.0D;
     }
-    label196:
-    label210:
-    for (;;)
+    if (paramArrayOfString.length > 2) {
+      d3 = gpsValue2Num(paramArrayOfString[2]);
+    }
+    d2 += (d1 - Math.floor(d1)) * 60.0D;
+    double d5 = Math.floor(d1);
+    d3 += (d2 - Math.floor(d2)) * 60.0D;
+    double d4 = Math.floor(d2);
+    double d2 = d3;
+    double d1 = d4;
+    if (d3 >= 60.0D)
     {
-      if (d1 >= 60.0D)
-      {
-        d3 = Math.floor(d1 / 60.0D) + d4;
-        d4 = d1 - Math.floor(d1 / 60.0D) * 60.0D;
-        d1 = d3;
-        d3 = d4;
-      }
-      for (;;)
-      {
-        d3 /= 60.0D;
-        return d2 / 3600.0D + (d3 + d1);
-        d1 = 0.0D;
-        break;
-        d2 = 0.0D;
-        break label34;
-        d3 = d1;
-        d1 = d4;
-      }
+      d2 = d3 / 60.0D;
+      d1 = d4 + Math.floor(d2);
+      d2 = d3 - Math.floor(d2) * 60.0D;
     }
+    d4 = d5;
+    d3 = d1;
+    if (d1 >= 60.0D)
+    {
+      d3 = d1 / 60.0D;
+      d4 = d5 + Math.floor(d3);
+      d3 = d1 - Math.floor(d3) * 60.0D;
+    }
+    return d4 + d3 / 60.0D + d2 / 3600.0D;
   }
   
   public static int getOrientation(InputStream paramInputStream)
   {
-    boolean bool = true;
-    if (paramInputStream == null) {}
-    byte[] arrayOfByte;
-    int k;
-    int j;
-    do
-    {
-      do
-      {
-        return 0;
-        arrayOfByte = new byte[8];
-        do
-        {
-          if ((!read(paramInputStream, arrayOfByte, 2)) || ((arrayOfByte[0] & 0xFF) != 255)) {
-            break;
-          }
-          k = arrayOfByte[1] & 0xFF;
-        } while ((k == 255) || (k == 216) || (k == 1));
-      } while ((k == 217) || (k == 218) || (!read(paramInputStream, arrayOfByte, 2)));
-      i = pack(arrayOfByte, 0, 2, false);
-      if (i < 2)
-      {
-        LogUtils.e("CameraExif", "Invalid length");
-        return 0;
-      }
-      j = i - 2;
-      i = j;
-      if (k != 225) {
-        break;
-      }
-      i = j;
-      if (j < 6) {
-        break;
-      }
-    } while (!read(paramInputStream, arrayOfByte, 6));
-    j -= 6;
-    int i = j;
-    if (pack(arrayOfByte, 0, 4, false) == 1165519206)
-    {
-      i = j;
-      if (pack(arrayOfByte, 4, 2, false) != 0) {}
-    }
-    for (i = j;; i = 0)
-    {
-      for (;;)
-      {
-        if (i <= 8) {
-          break label437;
-        }
-        arrayOfByte = new byte[i];
-        if (!read(paramInputStream, arrayOfByte, i)) {
-          break;
-        }
-        j = pack(arrayOfByte, 0, 4, false);
-        if ((j != 1229531648) && (j != 1296891946))
-        {
-          LogUtils.e("CameraExif", "Invalid byte order");
-          return 0;
-          long l = i;
-          try
-          {
-            paramInputStream.skip(l);
-          }
-          catch (IOException paramInputStream)
-          {
-            return 0;
-          }
-        }
-      }
-      if (j == 1229531648) {}
-      for (;;)
-      {
-        k = pack(arrayOfByte, 4, 4, bool) + 2;
-        if ((k >= 10) && (k <= i)) {
-          break;
-        }
-        LogUtils.e("CameraExif", "Invalid offset");
-        return 0;
-        bool = false;
-      }
-      j = 0 + k;
-      int m = pack(arrayOfByte, j - 2, 2, bool);
-      k = i - k;
-      i = m;
-      while ((i > 0) && (k >= 12))
-      {
-        if (pack(arrayOfByte, j, 2, bool) == 274)
-        {
-          switch (pack(arrayOfByte, j + 8, 2, bool))
-          {
-          case 1: 
-          case 2: 
-          case 4: 
-          case 5: 
-          case 7: 
-          default: 
-            LogUtils.i("CameraExif", "Unsupported orientation");
-            return 0;
-          case 3: 
-            return 180;
-          case 6: 
-            return 90;
-          }
-          return 270;
-        }
-        k -= 12;
-        j += 12;
-        i -= 1;
-      }
-      label437:
-      LogUtils.i("CameraExif", "Orientation not found");
+    if (paramInputStream == null) {
       return 0;
     }
+    byte[] arrayOfByte = new byte[8];
+    for (;;)
+    {
+      if ((!read(paramInputStream, arrayOfByte, 2)) || ((arrayOfByte[0] & 0xFF) != 255)) {
+        break label203;
+      }
+      int i = arrayOfByte[1] & 0xFF;
+      int j;
+      long l;
+      if ((i != 255) && (i != 216) && (i != 1)) {
+        if (i != 217)
+        {
+          if (i == 218) {
+            return 0;
+          }
+          if (!read(paramInputStream, arrayOfByte, 2)) {
+            return 0;
+          }
+          j = pack(arrayOfByte, 0, 2, false);
+          if (j < 2)
+          {
+            LogUtils.e("CameraExif", "Invalid length");
+            return 0;
+          }
+          j -= 2;
+          if ((i == 225) && (j >= 6))
+          {
+            if (!read(paramInputStream, arrayOfByte, 6)) {
+              return 0;
+            }
+            i = j - 6;
+            j = i;
+            if (pack(arrayOfByte, 0, 4, false) == 1165519206)
+            {
+              j = i;
+              if (pack(arrayOfByte, 4, 2, false) == 0) {
+                break label205;
+              }
+            }
+          }
+          l = j;
+        }
+      }
+      boolean bool;
+      int k;
+      try
+      {
+        paramInputStream.skip(l);
+      }
+      catch (IOException paramInputStream) {}
+    }
+    return 0;
+    label203:
+    i = 0;
+    label205:
+    if (i > 8)
+    {
+      arrayOfByte = new byte[i];
+      if (!read(paramInputStream, arrayOfByte, i)) {
+        return 0;
+      }
+      j = pack(arrayOfByte, 0, 4, false);
+      if ((j != 1229531648) && (j != 1296891946))
+      {
+        LogUtils.e("CameraExif", "Invalid byte order");
+        return 0;
+      }
+      if (j == 1229531648) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      j = pack(arrayOfByte, 4, 4, bool) + 2;
+      if ((j >= 10) && (j <= i))
+      {
+        k = j + 0;
+        j = i - j;
+        i = pack(arrayOfByte, k - 2, 2, bool);
+      }
+      while ((i > 0) && (j >= 12))
+      {
+        if (pack(arrayOfByte, k, 2, bool) == 274)
+        {
+          i = pack(arrayOfByte, k + 8, 2, bool);
+          if (i != 1)
+          {
+            if (i != 3)
+            {
+              if (i != 6)
+              {
+                if (i != 8)
+                {
+                  LogUtils.i("CameraExif", "Unsupported orientation");
+                  return 0;
+                }
+                return 270;
+              }
+              return 90;
+            }
+            return 180;
+          }
+          return 0;
+        }
+        k += 12;
+        j -= 12;
+        i -= 1;
+        continue;
+        LogUtils.e("CameraExif", "Invalid offset");
+        return 0;
+      }
+    }
+    LogUtils.i("CameraExif", "Orientation not found");
+    return 0;
+    return 0;
   }
   
   public static int getOrientation(byte[] paramArrayOfByte)
@@ -295,130 +286,144 @@ public class ExifUtils
     }
     int i = 0;
     int j;
+    int k;
     int m;
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          k = i;
-          if (i + 3 >= paramArrayOfByte.length) {
-            break label426;
-          }
-          j = i + 1;
-          if ((paramArrayOfByte[i] & 0xFF) != 255) {
-            break label433;
-          }
-          m = paramArrayOfByte[j] & 0xFF;
-          if (m != 255) {
-            break;
-          }
-          i = j;
-        }
-        j += 1;
-        i = j;
-      } while (m == 216);
-      i = j;
-    } while (m == 1);
-    int k = j;
-    if (m != 217) {
-      if (m == 218) {
-        i = 0;
-      }
-    }
     for (;;)
     {
-      if (i > 8)
+      j = i;
+      if (i + 3 >= paramArrayOfByte.length) {
+        break;
+      }
+      k = i + 1;
+      j = k;
+      if ((paramArrayOfByte[i] & 0xFF) != 255) {
+        break;
+      }
+      m = paramArrayOfByte[k] & 0xFF;
+      if (m == 255)
       {
-        k = pack(paramArrayOfByte, j, 4, false);
-        if ((k != 1229531648) && (k != 1296891946))
-        {
-          LogUtils.e("CameraExif", "Invalid byte order");
-          return 0;
-          i = pack(paramArrayOfByte, j, 2, false);
-          if ((i < 2) || (j + i > paramArrayOfByte.length))
+        i = k;
+      }
+      else
+      {
+        k += 1;
+        i = k;
+        if (m != 216) {
+          if (m == 1)
           {
+            i = k;
+          }
+          else
+          {
+            j = k;
+            if (m == 217) {
+              break;
+            }
+            if (m == 218)
+            {
+              j = k;
+              break;
+            }
+            int n = pack(paramArrayOfByte, k, 2, false);
+            if (n >= 2)
+            {
+              i = k + n;
+              if (i <= paramArrayOfByte.length)
+              {
+                if ((m == 225) && (n >= 8) && (pack(paramArrayOfByte, k + 2, 4, false) == 1165519206) && (pack(paramArrayOfByte, k + 6, 2, false) == 0))
+                {
+                  j = k + 8;
+                  i = n - 8;
+                  break label209;
+                }
+                continue;
+              }
+            }
             LogUtils.e("CameraExif", "Invalid length");
             return 0;
           }
-          if ((m == 225) && (i >= 8) && (pack(paramArrayOfByte, j + 2, 4, false) == 1165519206) && (pack(paramArrayOfByte, j + 6, 2, false) == 0))
-          {
-            j += 8;
-            i -= 8;
-            continue;
-          }
-          i = j + i;
-          break;
-        }
-        if (k == 1229531648) {}
-        for (boolean bool = true;; bool = false)
-        {
-          k = pack(paramArrayOfByte, j + 4, 4, bool) + 2;
-          if ((k >= 10) && (k <= i)) {
-            break;
-          }
-          LogUtils.e("CameraExif", "Invalid offset");
-          return 0;
-        }
-        j += k;
-        m = pack(paramArrayOfByte, j - 2, 2, bool);
-        i -= k;
-        k = j;
-        j = i;
-        i = m;
-        while ((i > 0) && (j >= 12))
-        {
-          if (pack(paramArrayOfByte, k, 2, bool) == 274)
-          {
-            switch (pack(paramArrayOfByte, k + 8, 2, bool))
-            {
-            case 1: 
-            case 2: 
-            case 4: 
-            case 5: 
-            case 7: 
-            default: 
-              LogUtils.i("CameraExif", "Unsupported orientation");
-              return 0;
-            case 3: 
-              return 180;
-            case 6: 
-              return 90;
-            }
-            return 270;
-          }
-          k += 12;
-          j -= 12;
-          i -= 1;
         }
       }
-      LogUtils.i("CameraExif", "Orientation not found");
-      return 0;
-      label426:
-      i = 0;
-      j = k;
-      continue;
-      label433:
-      i = 0;
     }
+    i = 0;
+    label209:
+    if (i > 8)
+    {
+      k = pack(paramArrayOfByte, j, 4, false);
+      if ((k != 1229531648) && (k != 1296891946))
+      {
+        LogUtils.e("CameraExif", "Invalid byte order");
+        return 0;
+      }
+      boolean bool;
+      if (k == 1229531648) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      m = pack(paramArrayOfByte, j + 4, 4, bool) + 2;
+      if ((m >= 10) && (m <= i))
+      {
+        k = j + m;
+        j = i - m;
+        i = pack(paramArrayOfByte, k - 2, 2, bool);
+      }
+      while ((i > 0) && (j >= 12))
+      {
+        if (pack(paramArrayOfByte, k, 2, bool) == 274)
+        {
+          i = pack(paramArrayOfByte, k + 8, 2, bool);
+          if (i != 1)
+          {
+            if (i != 3)
+            {
+              if (i != 6)
+              {
+                if (i != 8)
+                {
+                  LogUtils.i("CameraExif", "Unsupported orientation");
+                  return 0;
+                }
+                return 270;
+              }
+              return 90;
+            }
+            return 180;
+          }
+          return 0;
+        }
+        k += 12;
+        j -= 12;
+        i -= 1;
+        continue;
+        LogUtils.e("CameraExif", "Invalid offset");
+        return 0;
+      }
+    }
+    LogUtils.i("CameraExif", "Orientation not found");
+    return 0;
   }
   
   private static double gpsValue2Num(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return 0.0D;
+    }
+    paramString = paramString.split("/");
+    if (paramString != null)
     {
-      do
-      {
+      if (paramString.length <= 0) {
         return 0.0D;
-        paramString = paramString.split("/");
-      } while ((paramString == null) || (paramString.length <= 0));
+      }
       if (paramString.length == 1) {
         return Double.valueOf(paramString[0]).doubleValue();
       }
-    } while (Math.abs(Double.valueOf(paramString[1]).doubleValue()) < 0.0001D);
-    return Double.valueOf(paramString[0]).doubleValue() / Double.valueOf(paramString[1]).doubleValue();
+      if (Math.abs(Double.valueOf(paramString[1]).doubleValue()) < 0.0001D) {
+        return 0.0D;
+      }
+      return Double.valueOf(paramString[0]).doubleValue() / Double.valueOf(paramString[1]).doubleValue();
+    }
+    return 0.0D;
   }
   
   public static void incExifData(String paramString, int paramInt)
@@ -426,49 +431,49 @@ public class ExifUtils
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        ExifInterface localExifInterface = new ExifInterface(paramString);
-        SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
-        String str = localExifInterface.getAttribute("DateTime");
-        if (!TextUtils.isEmpty(str))
-        {
-          l = localSimpleDateFormat.parse(str).getTime();
-          paramString = localSimpleDateFormat.format(Long.valueOf(l + paramInt * 1000));
-          localExifInterface.setAttribute("DateTime", paramString);
-          localExifInterface.saveAttributes();
-          LogUtils.d("ExifUtils", "date written %s", new Object[] { paramString });
-          return;
-        }
+      ExifInterface localExifInterface = new ExifInterface(paramString);
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
+      String str = localExifInterface.getAttribute("DateTime");
+      long l;
+      if (!TextUtils.isEmpty(str)) {
+        l = localSimpleDateFormat.parse(str).getTime();
+      } else {
+        l = new File(paramString).lastModified();
       }
-      catch (Exception paramString)
-      {
-        LogUtils.e(paramString);
-        return;
-      }
-      long l = new File(paramString).lastModified();
+      paramString = localSimpleDateFormat.format(Long.valueOf(l + paramInt * 1000));
+      localExifInterface.setAttribute("DateTime", paramString);
+      localExifInterface.saveAttributes();
+      LogUtils.d("ExifUtils", "date written %s", new Object[] { paramString });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      LogUtils.e(paramString);
     }
   }
   
   private static int pack(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int j = 1;
-    int i = paramInt1;
+    int i;
     if (paramBoolean)
     {
-      i = paramInt1 + (paramInt2 - 1);
-      j = -1;
+      paramInt1 += paramInt2 - 1;
+      i = -1;
     }
-    paramInt1 = 0;
+    else
+    {
+      i = 1;
+    }
+    int j = 0;
     while (paramInt2 > 0)
     {
-      paramInt1 = paramInt1 << 8 | paramArrayOfByte[i] & 0xFF;
-      i += j;
+      j = paramArrayOfByte[paramInt1] & 0xFF | j << 8;
+      paramInt1 += i;
       paramInt2 -= 1;
     }
-    return paramInt1;
+    return j;
   }
   
   private static boolean read(InputStream paramInputStream, byte[] paramArrayOfByte, int paramInt)
@@ -492,142 +497,157 @@ public class ExifUtils
       return 0;
     }
     int i = 0;
+    int k;
+    boolean bool;
     int j;
     int m;
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          k = i;
-          if (i + 3 >= paramArrayOfByte.length) {
-            break label453;
-          }
-          j = i + 1;
-          if ((paramArrayOfByte[i] & 0xFF) != 255) {
-            break label461;
-          }
-          m = paramArrayOfByte[j] & 0xFF;
-          if (m != 255) {
-            break;
-          }
-          i = j;
-        }
-        j += 1;
-        i = j;
-      } while (m == 216);
-      i = j;
-    } while (m == 1);
-    int k = j;
-    if (m != 217) {
-      if (m == 218) {
-        i = 0;
-      }
-    }
     for (;;)
     {
-      if (i > 8)
+      k = paramArrayOfByte.length;
+      bool = true;
+      j = i;
+      if (i + 3 >= k) {
+        break;
+      }
+      k = i + 1;
+      j = k;
+      if ((paramArrayOfByte[i] & 0xFF) != 255) {
+        break;
+      }
+      m = paramArrayOfByte[k] & 0xFF;
+      if (m == 255)
       {
-        k = pack(paramArrayOfByte, j, 4, false);
-        if ((k != 1229531648) && (k != 1296891946))
-        {
-          LogUtils.e("CameraExif", "Invalid byte order");
-          return 0;
-          i = pack(paramArrayOfByte, j, 2, false);
-          if ((i < 2) || (j + i > paramArrayOfByte.length))
+        i = k;
+      }
+      else
+      {
+        k += 1;
+        i = k;
+        if (m != 216) {
+          if (m == 1)
           {
+            i = k;
+          }
+          else
+          {
+            j = k;
+            if (m == 217) {
+              break;
+            }
+            if (m == 218)
+            {
+              j = k;
+              break;
+            }
+            int n = pack(paramArrayOfByte, k, 2, false);
+            if (n >= 2)
+            {
+              i = k + n;
+              if (i <= paramArrayOfByte.length)
+              {
+                if ((m == 225) && (n >= 8) && (pack(paramArrayOfByte, k + 2, 4, false) == 1165519206) && (pack(paramArrayOfByte, k + 6, 2, false) == 0))
+                {
+                  j = k + 8;
+                  i = n - 8;
+                  break label231;
+                }
+                continue;
+              }
+            }
             LogUtils.e("CameraExif", "Invalid length");
             return 0;
           }
-          if ((m == 225) && (i >= 8) && (pack(paramArrayOfByte, j + 2, 4, false) == 1165519206) && (pack(paramArrayOfByte, j + 6, 2, false) == 0))
-          {
-            j += 8;
-            i -= 8;
-            continue;
-          }
-          i = j + i;
-          break;
-        }
-        if (k == 1229531648) {}
-        for (boolean bool = true;; bool = false)
-        {
-          k = pack(paramArrayOfByte, j + 4, 4, bool) + 2;
-          if ((k >= 10) && (k <= i)) {
-            break;
-          }
-          LogUtils.e("CameraExif", "Invalid offset");
-          return 0;
-        }
-        j += k;
-        m = pack(paramArrayOfByte, j - 2, 2, bool);
-        k = i - k;
-        i = j;
-        j = m;
-        while ((j > 0) && (k >= 12))
-        {
-          if (pack(paramArrayOfByte, i, 2, bool) == 274)
-          {
-            switch (paramInt)
-            {
-            default: 
-              paramInt = 0;
-            }
-            for (;;)
-            {
-              write(paramArrayOfByte, i + 8, paramInt, 2, bool);
-              LogUtils.i("CameraExif", "Unsupported orientation");
-              return 0;
-              paramInt = 0;
-              continue;
-              paramInt = 3;
-              continue;
-              paramInt = 6;
-              continue;
-              paramInt = 8;
-            }
-          }
-          i += 12;
-          k -= 12;
-          j -= 1;
         }
       }
-      LogUtils.i("CameraExif", "Orientation not found");
-      return 0;
-      label453:
-      i = 0;
-      j = k;
-      continue;
-      label461:
-      i = 0;
     }
+    i = 0;
+    label231:
+    if (i > 8)
+    {
+      k = pack(paramArrayOfByte, j, 4, false);
+      if ((k != 1229531648) && (k != 1296891946))
+      {
+        LogUtils.e("CameraExif", "Invalid byte order");
+        return 0;
+      }
+      if (k != 1229531648) {
+        bool = false;
+      }
+      k = pack(paramArrayOfByte, j + 4, 4, bool) + 2;
+      if ((k >= 10) && (k <= i))
+      {
+        m = j + k;
+        k = i - k;
+        j = pack(paramArrayOfByte, m - 2, 2, bool);
+        i = m;
+      }
+      while ((j > 0) && (k >= 12))
+      {
+        if (pack(paramArrayOfByte, i, 2, bool) == 274)
+        {
+          if (paramInt != 0)
+          {
+            if (paramInt == 90) {
+              break label404;
+            }
+            if (paramInt == 180) {
+              break label399;
+            }
+            if (paramInt == 270) {}
+          }
+          else
+          {
+            paramInt = 0;
+            break label407;
+          }
+          paramInt = 8;
+          break label407;
+          paramInt = 3;
+          break label407;
+          paramInt = 6;
+          write(paramArrayOfByte, i + 8, paramInt, 2, bool);
+          LogUtils.i("CameraExif", "Unsupported orientation");
+          return 0;
+        }
+        i += 12;
+        k -= 12;
+        j -= 1;
+        continue;
+        LogUtils.e("CameraExif", "Invalid offset");
+        return 0;
+      }
+    }
+    label399:
+    label404:
+    label407:
+    LogUtils.i("CameraExif", "Orientation not found");
+    return 0;
   }
   
   private static void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    int k = 1;
-    int i = paramInt1;
-    int m = paramInt2;
-    int j = paramInt3;
+    int i;
     if (paramBoolean)
     {
-      i = paramInt1 + (paramInt3 - 1);
-      k = -1;
-      j = paramInt3;
-      m = paramInt2;
+      paramInt1 += paramInt3 - 1;
+      i = -1;
     }
-    while (j > 0)
+    else
     {
-      paramArrayOfByte[i] = ((byte)(m & 0xFF));
-      m >>= 8;
-      i += k;
-      j -= 1;
+      i = 1;
+    }
+    while (paramInt3 > 0)
+    {
+      paramArrayOfByte[paramInt1] = ((byte)(paramInt2 & 0xFF));
+      paramInt2 >>= 8;
+      paramInt1 += i;
+      paramInt3 -= 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.bitmap.ExifUtils
  * JD-Core Version:    0.7.0.1
  */

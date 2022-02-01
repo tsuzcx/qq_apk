@@ -32,32 +32,32 @@ public class NearbyTroops
   
   public static View a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    return a(paramContext, paramViewGroup, paramInt, 2131563040);
+    return a(paramContext, paramViewGroup, paramInt, 2131562863);
   }
   
   public static View a(Context paramContext, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
   {
     paramContext = LayoutInflater.from(paramContext).inflate(paramInt2, paramViewGroup, false);
     paramViewGroup = new NearbyTroops.CustomViewHolder();
-    paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379915));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379987));
-    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379856));
-    paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramContext.findViewById(2131379944));
+    paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379244));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379316));
+    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379185));
+    paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramContext.findViewById(2131379273));
     paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setLabelType(paramInt1);
-    paramViewGroup.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramContext.findViewById(2131379945));
+    paramViewGroup.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramContext.findViewById(2131379274));
     paramViewGroup.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setLabelType(2);
-    paramViewGroup.e = ((TextView)paramContext.findViewById(2131365911));
+    paramViewGroup.e = ((TextView)paramContext.findViewById(2131365749));
     paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setDistanceTextView(paramViewGroup.e);
-    paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379888));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379848));
-    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379810));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramContext.findViewById(2131377270));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramContext.findViewById(2131369890));
+    paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379217));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379177));
+    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379139));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramContext.findViewById(2131376729));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramContext.findViewById(2131369575));
     paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(null);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131369361));
-    paramViewGroup.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131378756));
-    paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379855));
-    paramViewGroup.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131370380);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131369090));
+    paramViewGroup.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131378150));
+    paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379184));
+    paramViewGroup.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131370041);
     paramViewGroup.jdField_d_of_type_Int = paramInt1;
     paramContext.setTag(paramViewGroup);
     return paramContext;
@@ -83,7 +83,7 @@ public class NearbyTroops
     NearbyTroops.CustomViewHolder localCustomViewHolder = (NearbyTroops.CustomViewHolder)paramView.getTag();
     localCustomViewHolder.jdField_a_of_type_JavaLangString = String.valueOf(paramGroupInfo.lCode);
     localCustomViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramGroupInfo.strName);
-    localCustomViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131167040));
+    localCustomViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131167063));
     Object localObject1;
     Object localObject2;
     int i;
@@ -100,6 +100,7 @@ public class NearbyTroops
         }
       }
     }
+    int j = 0;
     if ((paramBoolean1) || (paramBoolean3)) {
       localCustomViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     }
@@ -109,123 +110,140 @@ public class NearbyTroops
     localCustomViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     if (TextUtils.isEmpty(paramGroupInfo.strIntro))
     {
-      localCustomViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(2131696129);
-      localCustomViewHolder.jdField_a_of_type_NearbyGroupGroupInfo = paramGroupInfo;
-      if ((paramGroupInfo.labels != null) && (paramGroupInfo.labels.size() != 0)) {
-        break label718;
+      localCustomViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(2131696146);
+    }
+    else
+    {
+      i = paramContext.getResources().getDisplayMetrics().widthPixels;
+      if (localCustomViewHolder.jdField_b_of_type_Int == 1) {
+        i -= AIOUtils.b(110.0F, paramContext.getResources());
+      } else {
+        i = (i - AIOUtils.b(137.0F, paramContext.getResources())) * 2;
       }
+      localObject1 = HttpUtil.unEscape(HttpUtil.removeHtmlTags(paramGroupInfo.strIntro));
+      TextUtils.ellipsize((CharSequence)localObject1, localCustomViewHolder.jdField_c_of_type_AndroidWidgetTextView.getPaint(), i, TextUtils.TruncateAt.END, false, new NearbyTroops.1(localCustomViewHolder, (String)localObject1));
+    }
+    localCustomViewHolder.jdField_a_of_type_NearbyGroupGroupInfo = paramGroupInfo;
+    if ((paramGroupInfo.labels != null) && (paramGroupInfo.labels.size() != 0))
+    {
+      if ((!a(paramContext, localCustomViewHolder, paramGroupInfo)) && (QLog.isColorLevel()))
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("fillTroopLabels failed:");
+        paramContext.append(paramGroupInfo.strName);
+        QLog.e("NearbyTroops", 2, paramContext.toString());
+      }
+    }
+    else
+    {
       if ((localCustomViewHolder.jdField_a_of_type_JavaUtilArrayList == null) || (localCustomViewHolder.jdField_a_of_type_JavaUtilArrayList.size() == 0))
       {
         localObject1 = new ArrayList(1);
-        ((ArrayList)localObject1).add(new GroupLabel(paramGroupInfo.iMemberCnt + "", new NearbyGroup.Color(175L, 195L, 213L), 1L, new NearbyGroup.Color(190L, 206L, 220L)));
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramGroupInfo.iMemberCnt);
+        ((StringBuilder)localObject2).append("");
+        ((ArrayList)localObject1).add(new GroupLabel(((StringBuilder)localObject2).toString(), new NearbyGroup.Color(175L, 195L, 213L), 1L, new NearbyGroup.Color(190L, 206L, 220L)));
         localCustomViewHolder.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
       }
-      ((GroupLabel)localCustomViewHolder.jdField_a_of_type_JavaUtilArrayList.get(0)).strWording = (paramGroupInfo.iMemberCnt + "");
+      localObject1 = (GroupLabel)localCustomViewHolder.jdField_a_of_type_JavaUtilArrayList.get(0);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramGroupInfo.iMemberCnt);
+      ((StringBuilder)localObject2).append("");
+      ((GroupLabel)localObject1).strWording = ((StringBuilder)localObject2).toString();
       paramGroupInfo.labels = localCustomViewHolder.jdField_a_of_type_JavaUtilArrayList;
       a(paramContext, localCustomViewHolder, paramGroupInfo);
-      if ((paramGroupInfo.dwGroupFlagExt & 0x800) == 0L) {
-        break label812;
+    }
+    if ((paramGroupInfo.dwGroupFlagExt & 0x800) != 0L)
+    {
+      if (paramGroupInfo.dwCertType == 2L)
+      {
+        localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843985);
       }
-      if (paramGroupInfo.dwCertType != 2L) {
-        break label767;
+      else if (paramGroupInfo.dwCertType == 1L)
+      {
+        localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843985);
       }
-      localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844081);
-      label435:
-      if ((paramGroupInfo.dwExtFlag & 1L) == 0L) {
-        break label825;
+      else
+      {
+        localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
-      localCustomViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130842698);
+    }
+    else {
+      localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    if ((paramGroupInfo.dwExtFlag & 1L) != 0L)
+    {
+      localCustomViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130842597);
       localCustomViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    label718:
-    for (;;)
+    else
     {
-      label466:
-      if (a)
-      {
-        localObject1 = "" + paramGroupInfo.strName;
-        paramContext = paramGroupInfo.iMemberCnt + HardCodeUtil.a(2131707393);
-        if (paramGroupInfo.labels == null) {
-          break label907;
-        }
-        localObject2 = new StringBuffer();
-        int j = paramGroupInfo.labels.size();
-        i = 0;
-        for (;;)
-        {
-          if (i < j)
-          {
-            GroupLabel localGroupLabel = (GroupLabel)paramGroupInfo.labels.get(i);
-            if ((localGroupLabel != null) && (!TextUtils.isEmpty(localGroupLabel.strWording))) {
-              ((StringBuffer)localObject2).append(localGroupLabel.strWording).append(" ");
-            }
-            i += 1;
-            continue;
-            i = paramContext.getResources().getDisplayMetrics().widthPixels;
-            if (localCustomViewHolder.jdField_b_of_type_Int == 1) {
-              i -= AIOUtils.a(110.0F, paramContext.getResources());
-            }
-            for (;;)
-            {
-              localObject1 = HttpUtil.unEscape(HttpUtil.removeHtmlTags(paramGroupInfo.strIntro));
-              TextUtils.ellipsize((CharSequence)localObject1, localCustomViewHolder.jdField_c_of_type_AndroidWidgetTextView.getPaint(), i, TextUtils.TruncateAt.END, false, new NearbyTroops.1(localCustomViewHolder, (String)localObject1));
-              break;
-              i = (i - AIOUtils.a(137.0F, paramContext.getResources())) * 2;
-            }
-            if ((a(paramContext, localCustomViewHolder, paramGroupInfo)) || (!QLog.isColorLevel())) {
-              break;
-            }
-            QLog.e("NearbyTroops", 2, "fillTroopLabels failed:" + paramGroupInfo.strName);
-            break;
-            label767:
-            if (paramGroupInfo.dwCertType == 1L)
-            {
-              localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-              localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844081);
-              break label435;
-            }
-            localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-            break label435;
-            localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-            break label435;
-            localCustomViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-            break label466;
-          }
-        }
-        if (((StringBuffer)localObject2).length() <= 0) {
-          break label907;
-        }
-        paramContext = ((StringBuffer)localObject2).toString();
-      }
+      localCustomViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    label907:
-    for (;;)
+    if (a)
     {
-      label812:
-      label825:
+      paramContext = new StringBuilder();
+      paramContext.append("");
+      paramContext.append(paramGroupInfo.strName);
+      localObject2 = paramContext.toString();
+      paramContext = new StringBuilder();
+      paramContext.append(paramGroupInfo.iMemberCnt);
+      paramContext.append(HardCodeUtil.a(2131707418));
+      localObject1 = paramContext.toString();
+      paramContext = (Context)localObject1;
+      if (paramGroupInfo.labels != null)
+      {
+        StringBuffer localStringBuffer = new StringBuffer();
+        int k = paramGroupInfo.labels.size();
+        i = j;
+        while (i < k)
+        {
+          paramContext = (GroupLabel)paramGroupInfo.labels.get(i);
+          if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.strWording)))
+          {
+            localStringBuffer.append(paramContext.strWording);
+            localStringBuffer.append(" ");
+          }
+          i += 1;
+        }
+        paramContext = (Context)localObject1;
+        if (localStringBuffer.length() > 0) {
+          paramContext = localStringBuffer.toString();
+        }
+      }
       localCustomViewHolder.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(paramContext);
-      paramContext = (String)localObject1 + paramContext;
-      paramView.setContentDescription(paramContext + paramGroupInfo.strIntro);
-      return;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append(paramContext);
+      paramContext = ((StringBuilder)localObject1).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramContext);
+      ((StringBuilder)localObject1).append(paramGroupInfo.strIntro);
+      paramView.setContentDescription(((StringBuilder)localObject1).toString());
     }
   }
   
   protected static boolean a(Context paramContext, NearbyTroops.CustomViewHolder paramCustomViewHolder, GroupInfo paramGroupInfo)
   {
-    if ((paramContext == null) || (paramCustomViewHolder == null) || (paramGroupInfo == null) || (paramGroupInfo.labels == null) || (paramGroupInfo.labels.size() == 0)) {
-      return false;
+    if ((paramContext != null) && (paramCustomViewHolder != null) && (paramGroupInfo != null) && (paramGroupInfo.labels != null))
+    {
+      if (paramGroupInfo.labels.size() == 0) {
+        return false;
+      }
+      paramCustomViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramCustomViewHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setVisibility(0);
+      paramContext = paramGroupInfo.labels;
+      paramCustomViewHolder.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.a(paramContext);
+      return paramCustomViewHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.a(paramContext);
     }
-    paramCustomViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramCustomViewHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setVisibility(0);
-    paramContext = paramGroupInfo.labels;
-    paramCustomViewHolder.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.a(paramContext);
-    return paramCustomViewHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.a(paramContext);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.NearbyTroops
  * JD-Core Version:    0.7.0.1
  */

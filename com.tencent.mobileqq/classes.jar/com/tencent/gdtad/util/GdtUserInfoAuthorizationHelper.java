@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.Window;
 import android.widget.Toast;
+import com.tencent.gdtad.inject.GdtThirdProcessorProxy;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AuthorizationDialog;
 import com.tencent.widget.AuthorizationItem;
@@ -15,35 +16,30 @@ import java.util.List;
 
 public class GdtUserInfoAuthorizationHelper
 {
+  public GdtThirdProcessorProxy a = new GdtThirdProcessorProxy();
+  
   private GdtUserInfoAuthorizationHelper.UserInfoEntity a(String paramString1, String paramString2, String paramString3, List<AuthorizationItem.ItemType> paramList)
   {
-    if (paramList.contains(AuthorizationItem.a))
-    {
-      if (!paramList.contains(AuthorizationItem.b)) {
-        break label57;
-      }
-      label26:
-      if (!paramList.contains(AuthorizationItem.c)) {
-        break label63;
-      }
-    }
-    for (;;)
-    {
-      return new GdtUserInfoAuthorizationHelper.UserInfoEntity(paramString1, paramString2, paramString3, null);
+    if (!paramList.contains(AuthorizationItem.a)) {
       paramString1 = "";
-      break;
-      label57:
+    }
+    if (!paramList.contains(AuthorizationItem.b)) {
       paramString2 = "";
-      break label26;
-      label63:
+    }
+    if (!paramList.contains(AuthorizationItem.c)) {
       paramString3 = "";
     }
+    return new GdtUserInfoAuthorizationHelper.UserInfoEntity(paramString1, paramString2, paramString3, null);
   }
   
   private void a(Activity paramActivity, boolean paramBoolean, GdtUserInfoAuthorizationHelper.UserInfoEntity paramUserInfoEntity, GdtUserInfoAuthorizationHelper.UserInfoCallback paramUserInfoCallback, List<AuthorizationItem.ItemType> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult: entity -> " + paramUserInfoEntity);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleInfoResult: entity -> ");
+      localStringBuilder.append(paramUserInfoEntity);
+      QLog.d("GdtUserInfoAuthorizationHelper", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
@@ -57,26 +53,30 @@ public class GdtUserInfoAuthorizationHelper
           paramUserInfoEntity.a = 0;
           paramUserInfoCallback.a(paramUserInfoEntity);
         }
-        return;
       }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult show authorize dialog to authorize user info");
+        }
+        paramActivity = new AuthorizationDialog(paramActivity, paramUserInfoEntity, paramUserInfoCallback, paramList);
+        paramUserInfoEntity = paramActivity.getWindow();
+        if (paramUserInfoEntity != null) {
+          paramUserInfoEntity.setWindowAnimations(2131755012);
+        }
+        paramActivity.show();
+      }
+    }
+    else
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult show authorize dialog to authorize user info");
+        QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult get result fail");
       }
-      paramActivity = new AuthorizationDialog(paramActivity, paramUserInfoEntity, paramUserInfoCallback, paramList);
-      paramUserInfoEntity = paramActivity.getWindow();
-      if (paramUserInfoEntity != null) {
-        paramUserInfoEntity.setWindowAnimations(2131755014);
+      if (paramUserInfoCallback != null) {
+        paramUserInfoCallback.a(GdtUserInfoAuthorizationHelper.UserInfoEntity.a());
       }
-      paramActivity.show();
-      return;
+      Toast.makeText(paramActivity, paramActivity.getString(2131690232), 0).show();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult get result fail");
-    }
-    if (paramUserInfoCallback != null) {
-      paramUserInfoCallback.a(GdtUserInfoAuthorizationHelper.UserInfoEntity.a());
-    }
-    Toast.makeText(paramActivity, paramActivity.getString(2131690311), 0).show();
   }
   
   private boolean a(Context paramContext, List<AuthorizationItem.ItemType> paramList)
@@ -97,7 +97,7 @@ public class GdtUserInfoAuthorizationHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtUserInfoAuthorizationHelper
  * JD-Core Version:    0.7.0.1
  */

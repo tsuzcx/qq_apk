@@ -52,13 +52,7 @@ public class TroopFileManager
   
   static
   {
-    if (!TroopFileManager.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      jdField_a_of_type_JavaUtilMap = new HashMap();
-      return;
-    }
+    jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
   public TroopFileManager(QQAppInterface paramQQAppInterface, long paramLong)
@@ -133,8 +127,13 @@ public class TroopFileManager
         ((TroopFileManager)localIterator.next()).c();
       }
       jdField_a_of_type_JavaUtilMap.clear();
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void c()
@@ -156,40 +155,22 @@ public class TroopFileManager
     return this.jdField_b_of_type_Int;
   }
   
-  /* Error */
   public TroopFileInfo a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 52	com/tencent/mobileqq/troop/utils/TroopFileManager:c	Ljava/util/Map;
-    //   6: ifnull +21 -> 27
-    //   9: aload_0
-    //   10: getfield 52	com/tencent/mobileqq/troop/utils/TroopFileManager:c	Ljava/util/Map;
-    //   13: aload_1
-    //   14: invokeinterface 186 2 0
-    //   19: checkcast 128	com/tencent/mobileqq/troop/data/TroopFileInfo
-    //   22: astore_1
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: aload_1
-    //   26: areturn
-    //   27: aconst_null
-    //   28: astore_1
-    //   29: goto -6 -> 23
-    //   32: astore_1
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: aload_1
-    //   36: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	37	0	this	TroopFileManager
-    //   0	37	1	paramString	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	23	32	finally
+    try
+    {
+      if (this.c != null)
+      {
+        paramString = (TroopFileInfo)this.c.get(paramString);
+        return paramString;
+      }
+      return null;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
   
   public TroopFileInfo a(String paramString, long paramLong, int paramInt)
@@ -215,44 +196,33 @@ public class TroopFileManager
   public TroopFileInfo a(String paramString1, String paramString2, long paramLong, int paramInt)
   {
     if (paramString1 == null) {
-      paramString1 = null;
+      return null;
     }
     for (;;)
     {
-      return paramString1;
-      Object localObject1;
-      label34:
       try
       {
-        localObject1 = TroopFileTransferUtil.a(paramString1);
-        if (localObject1 == null) {
-          break label271;
-        }
-        if (((String)localObject1).length() != 0) {
-          break label268;
-        }
-      }
-      finally {}
-      Object localObject2 = (TroopFileInfo)this.c.get(paramString1);
-      if (localObject2 != null)
-      {
-        this.jdField_b_of_type_JavaUtilMap.put(((TroopFileInfo)localObject2).jdField_a_of_type_JavaUtilUUID, localObject2);
-        paramString1 = (String)localObject2;
-      }
-      else
-      {
-        localObject1 = (TroopFileInfo)this.c.get(localObject1);
-        if (localObject1 != null)
+        Object localObject2 = TroopFileTransferUtil.a(paramString1);
+        if (localObject2 != null)
         {
-          this.jdField_b_of_type_JavaUtilMap.put(((TroopFileInfo)localObject1).jdField_a_of_type_JavaUtilUUID, localObject1);
-          paramString1 = (String)localObject1;
-        }
-        else
-        {
-          label268:
-          label271:
-          while (paramInt != 0)
+          localObject1 = localObject2;
+          if (((String)localObject2).length() != 0)
           {
+            localObject2 = (TroopFileInfo)this.c.get(paramString1);
+            if (localObject2 != null)
+            {
+              this.jdField_b_of_type_JavaUtilMap.put(((TroopFileInfo)localObject2).jdField_a_of_type_JavaUtilUUID, localObject2);
+              return localObject2;
+            }
+            localObject1 = (TroopFileInfo)this.c.get(localObject1);
+            if (localObject1 != null)
+            {
+              this.jdField_b_of_type_JavaUtilMap.put(((TroopFileInfo)localObject1).jdField_a_of_type_JavaUtilUUID, localObject1);
+              return localObject1;
+            }
+            if (paramInt == 0) {
+              return null;
+            }
             localObject1 = new TroopFileInfo();
             localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(paramString1);
             if (localObject2 != null) {
@@ -265,22 +235,20 @@ public class TroopFileManager
             ((TroopFileInfo)localObject1).c = paramString2;
             ((TroopFileInfo)localObject1).jdField_a_of_type_Long = paramLong;
             ((TroopFileInfo)localObject1).jdField_a_of_type_Int = paramInt;
-            if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-            for (paramString2 = "/";; paramString2 = this.jdField_a_of_type_JavaLangString)
-            {
-              ((TroopFileInfo)localObject1).g = paramString2;
-              this.jdField_b_of_type_JavaUtilMap.put(((TroopFileInfo)localObject1).jdField_a_of_type_JavaUtilUUID, localObject1);
-              this.c.put(paramString1, localObject1);
-              paramString1 = (String)localObject1;
-              break;
+            if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+              paramString2 = "/";
+            } else {
+              paramString2 = this.jdField_a_of_type_JavaLangString;
             }
-            break label34;
-            localObject1 = "0";
-            break label34;
+            ((TroopFileInfo)localObject1).g = paramString2;
+            this.jdField_b_of_type_JavaUtilMap.put(((TroopFileInfo)localObject1).jdField_a_of_type_JavaUtilUUID, localObject1);
+            this.c.put(paramString1, localObject1);
+            return localObject1;
           }
-          paramString1 = null;
         }
       }
+      finally {}
+      Object localObject1 = "0";
     }
   }
   
@@ -320,75 +288,32 @@ public class TroopFileManager
     }
   }
   
-  /* Error */
   public final void a(TroopFileInfo paramTroopFileInfo)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +92 -> 95
-    //   6: getstatic 289	com/tencent/mobileqq/troop/filemanager/TroopFileTransferUtil$Log:jdField_a_of_type_Int	I
-    //   9: istore_2
-    //   10: new 291	java/lang/StringBuilder
-    //   13: dup
-    //   14: invokespecial 292	java/lang/StringBuilder:<init>	()V
-    //   17: ldc_w 294
-    //   20: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: astore 4
-    //   25: aload_1
-    //   26: getfield 133	com/tencent/mobileqq/troop/data/TroopFileInfo:jdField_a_of_type_JavaUtilUUID	Ljava/util/UUID;
-    //   29: ifnull +69 -> 98
-    //   32: aload_1
-    //   33: getfield 133	com/tencent/mobileqq/troop/data/TroopFileInfo:jdField_a_of_type_JavaUtilUUID	Ljava/util/UUID;
-    //   36: invokevirtual 302	java/util/UUID:toString	()Ljava/lang/String;
-    //   39: astore_3
-    //   40: ldc_w 304
-    //   43: iload_2
-    //   44: aload 4
-    //   46: aload_3
-    //   47: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: ldc_w 306
-    //   53: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: invokevirtual 307	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: invokestatic 310	com/tencent/mobileqq/troop/filemanager/TroopFileTransferUtil$Log:c	(Ljava/lang/String;ILjava/lang/String;)V
-    //   62: aload_0
-    //   63: getfield 52	com/tencent/mobileqq/troop/utils/TroopFileManager:c	Ljava/util/Map;
-    //   66: aload_1
-    //   67: getfield 144	com/tencent/mobileqq/troop/data/TroopFileInfo:b	Ljava/lang/String;
-    //   70: invokeinterface 313 2 0
-    //   75: pop
-    //   76: aload_0
-    //   77: getfield 50	com/tencent/mobileqq/troop/utils/TroopFileManager:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
-    //   80: aload_1
-    //   81: getfield 133	com/tencent/mobileqq/troop/data/TroopFileInfo:jdField_a_of_type_JavaUtilUUID	Ljava/util/UUID;
-    //   84: invokeinterface 313 2 0
-    //   89: pop
-    //   90: aload_0
-    //   91: aload_1
-    //   92: invokevirtual 315	com/tencent/mobileqq/troop/utils/TroopFileManager:c	(Lcom/tencent/mobileqq/troop/data/TroopFileInfo;)V
-    //   95: aload_0
-    //   96: monitorexit
-    //   97: return
-    //   98: ldc_w 317
-    //   101: astore_3
-    //   102: goto -62 -> 40
-    //   105: astore_1
-    //   106: aload_0
-    //   107: monitorexit
-    //   108: aload_1
-    //   109: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	110	0	this	TroopFileManager
-    //   0	110	1	paramTroopFileInfo	TroopFileInfo
-    //   9	35	2	i	int
-    //   39	63	3	str	String
-    //   23	22	4	localStringBuilder	java.lang.StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   6	40	105	finally
-    //   40	95	105	finally
+    if (paramTroopFileInfo != null) {}
+    for (;;)
+    {
+      try
+      {
+        int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        if (paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID == null) {
+          break label118;
+        }
+        str = paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID.toString();
+        localStringBuilder.append(str);
+        localStringBuilder.append("] doDelete2");
+        TroopFileTransferUtil.Log.c("TroopFileManager", i, localStringBuilder.toString());
+        this.c.remove(paramTroopFileInfo.b);
+        this.jdField_b_of_type_JavaUtilMap.remove(paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID);
+        c(paramTroopFileInfo);
+      }
+      finally {}
+      return;
+      label118:
+      String str = "null";
+    }
   }
   
   public void a(TroopFileInfo paramTroopFileInfo, int paramInt)
@@ -398,27 +323,36 @@ public class TroopFileManager
   
   public final void a(TroopFileInfo paramTroopFileInfo, int paramInt1, int paramInt2)
   {
-    if (paramTroopFileInfo != null) {}
-    for (;;)
-    {
+    if (paramTroopFileInfo != null) {
       try
       {
-        UUID localUUID = paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID;
-        if (localUUID == null) {
-          return;
-        }
-        TroopFileTransferUtil.Log.c("TroopFileManager", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID.toString() + "] delete. mFileId:" + paramTroopFileInfo.b + " mParentId:" + paramTroopFileInfo.g + " uint32_bus_id:" + paramTroopFileInfo.jdField_a_of_type_Int);
-        if ((paramTroopFileInfo.b == null) || (paramTroopFileInfo.g == null) || ("".equals(paramTroopFileInfo.b)) || ("".equals(paramTroopFileInfo.g)))
+        if (paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID != null)
         {
+          int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[");
+          localStringBuilder.append(paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID.toString());
+          localStringBuilder.append("] delete. mFileId:");
+          localStringBuilder.append(paramTroopFileInfo.b);
+          localStringBuilder.append(" mParentId:");
+          localStringBuilder.append(paramTroopFileInfo.g);
+          localStringBuilder.append(" uint32_bus_id:");
+          localStringBuilder.append(paramTroopFileInfo.jdField_a_of_type_Int);
+          TroopFileTransferUtil.Log.c("TroopFileManager", i, localStringBuilder.toString());
+          if ((paramTroopFileInfo.b != null) && (paramTroopFileInfo.g != null) && (!"".equals(paramTroopFileInfo.b)) && (!"".equals(paramTroopFileInfo.g)))
+          {
+            i = paramTroopFileInfo.jdField_a_of_type_Int;
+            if (i == 0) {
+              return;
+            }
+            TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, paramTroopFileInfo.jdField_a_of_type_Int, paramTroopFileInfo.b, paramTroopFileInfo.g, paramInt1, paramInt2, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileDeleteFileObserver);
+            return;
+          }
           b(paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID);
-          continue;
-        }
-        if (paramTroopFileInfo.jdField_a_of_type_Int == 0) {
-          continue;
+          return;
         }
       }
       finally {}
-      TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, paramTroopFileInfo.jdField_a_of_type_Int, paramTroopFileInfo.b, paramTroopFileInfo.g, paramInt1, paramInt2, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileDeleteFileObserver);
     }
   }
   
@@ -434,18 +368,23 @@ public class TroopFileManager
   {
     try
     {
-      TroopFileTransferUtil.Log.c("TroopFileManager", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "doUploadDelete: filePath:" + paramString);
+      int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doUploadDelete: filePath:");
+      localStringBuilder.append(paramString);
+      TroopFileTransferUtil.Log.c("TroopFileManager", i, localStringBuilder.toString());
       paramString = (TroopFileInfo)this.c.remove(paramString);
       if ((!jdField_a_of_type_Boolean) && (paramString == null)) {
         throw new AssertionError();
       }
+      if (paramString != null)
+      {
+        this.jdField_b_of_type_JavaUtilMap.remove(paramString.jdField_a_of_type_JavaUtilUUID);
+        c(paramString);
+      }
+      return;
     }
     finally {}
-    if (paramString != null)
-    {
-      this.jdField_b_of_type_JavaUtilMap.remove(paramString.jdField_a_of_type_JavaUtilUUID);
-      c(paramString);
-    }
   }
   
   public void a(String paramString, TroopFileInfo paramTroopFileInfo)
@@ -477,135 +416,85 @@ public class TroopFileManager
   
   public final void a(UUID paramUUID)
   {
-    if (paramUUID == null) {}
-    for (;;)
-    {
+    if (paramUUID == null) {
       return;
-      try
+    }
+    try
+    {
+      paramUUID = (TroopFileInfo)this.jdField_b_of_type_JavaUtilMap.get(paramUUID);
+      if ((paramUUID != null) && (paramUUID.jdField_a_of_type_Boolean))
       {
-        paramUUID = (TroopFileInfo)this.jdField_b_of_type_JavaUtilMap.get(paramUUID);
-        if ((paramUUID == null) || (!paramUUID.jdField_a_of_type_Boolean)) {
-          continue;
-        }
         paramUUID.jdField_a_of_type_Boolean = false;
         d(paramUUID);
       }
-      finally {}
+      return;
     }
+    finally {}
   }
   
   public final boolean a(int paramInt, String paramString, long paramLong)
   {
     try
     {
-      TroopFileManager.FileManagerStatus localFileManagerStatus = (TroopFileManager.FileManagerStatus)this.d.get(paramString + paramLong);
-      if (localFileManagerStatus == null)
+      Object localObject1 = this.d;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(paramLong);
+      localObject2 = (TroopFileManager.FileManagerStatus)((Map)localObject1).get(((StringBuilder)localObject2).toString());
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        localFileManagerStatus = new TroopFileManager.FileManagerStatus(this, paramLong);
-        this.d.put(paramString + paramLong, localFileManagerStatus);
+        localObject1 = new TroopFileManager.FileManagerStatus(this, paramLong);
+        localObject2 = this.d;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(paramLong);
+        ((Map)localObject2).put(localStringBuilder.toString(), localObject1);
       }
-      for (;;)
-      {
-        long l1 = System.currentTimeMillis();
-        long l2 = localFileManagerStatus.jdField_a_of_type_Long;
-        l1 -= l2;
-        if ((0L < l1) && (l1 < paramInt * 1000L)) {}
-        for (boolean bool = false;; bool = true)
-        {
-          return bool;
-          localFileManagerStatus.jdField_a_of_type_Long = System.currentTimeMillis();
-          TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, localFileManagerStatus.jdField_a_of_type_Int, 1, 20, 3, 1, paramString, localFileManagerStatus.c, paramLong, 0, localFileManagerStatus.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileGetFileListObserver);
-        }
+      long l1 = System.currentTimeMillis();
+      long l2 = ((TroopFileManager.FileManagerStatus)localObject1).jdField_a_of_type_Long;
+      l1 -= l2;
+      if ((0L < l1) && (l1 < paramInt * 1000L)) {
+        return false;
       }
+      ((TroopFileManager.FileManagerStatus)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
+      TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, ((TroopFileManager.FileManagerStatus)localObject1).jdField_a_of_type_Int, 1, 20, 3, 1, paramString, ((TroopFileManager.FileManagerStatus)localObject1).c, paramLong, 0, ((TroopFileManager.FileManagerStatus)localObject1).jdField_a_of_type_ComTencentMobileqqPbByteStringMicro, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileGetFileListObserver);
+      return true;
     }
     finally {}
   }
   
-  /* Error */
   public final boolean a(TroopFileInfo paramTroopFileInfo)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: getfield 232	com/tencent/mobileqq/troop/data/TroopFileInfo:jdField_a_of_type_Int	I
-    //   6: ifeq +14 -> 20
-    //   9: aload_1
-    //   10: getfield 144	com/tencent/mobileqq/troop/data/TroopFileInfo:b	Ljava/lang/String;
-    //   13: astore 4
-    //   15: aload 4
-    //   17: ifnonnull +9 -> 26
-    //   20: iconst_0
-    //   21: istore_3
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: iload_3
-    //   25: ireturn
-    //   26: getstatic 289	com/tencent/mobileqq/troop/filemanager/TroopFileTransferUtil$Log:jdField_a_of_type_Int	I
-    //   29: istore_2
-    //   30: new 291	java/lang/StringBuilder
-    //   33: dup
-    //   34: invokespecial 292	java/lang/StringBuilder:<init>	()V
-    //   37: ldc_w 294
-    //   40: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: astore 5
-    //   45: aload_1
-    //   46: getfield 133	com/tencent/mobileqq/troop/data/TroopFileInfo:jdField_a_of_type_JavaUtilUUID	Ljava/util/UUID;
-    //   49: ifnull +73 -> 122
-    //   52: aload_1
-    //   53: getfield 133	com/tencent/mobileqq/troop/data/TroopFileInfo:jdField_a_of_type_JavaUtilUUID	Ljava/util/UUID;
-    //   56: invokevirtual 302	java/util/UUID:toString	()Ljava/lang/String;
-    //   59: astore 4
-    //   61: ldc_w 304
-    //   64: iload_2
-    //   65: aload 5
-    //   67: aload 4
-    //   69: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: ldc_w 409
-    //   75: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: aload_1
-    //   79: getfield 144	com/tencent/mobileqq/troop/data/TroopFileInfo:b	Ljava/lang/String;
-    //   82: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: invokevirtual 307	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   88: invokestatic 310	com/tencent/mobileqq/troop/filemanager/TroopFileTransferUtil$Log:c	(Ljava/lang/String;ILjava/lang/String;)V
-    //   91: aload_0
-    //   92: getfield 99	com/tencent/mobileqq/troop/utils/TroopFileManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   95: aload_0
-    //   96: getfield 97	com/tencent/mobileqq/troop/utils/TroopFileManager:jdField_a_of_type_Long	J
-    //   99: aload_1
-    //   100: aload_0
-    //   101: getfield 90	com/tencent/mobileqq/troop/utils/TroopFileManager:jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqTransFileObserver	Lcom/tencent/biz/troop/file/protocol/TroopFileReqTransFileObserver;
-    //   104: invokestatic 412	com/tencent/biz/troop/file/TroopFileProtocol:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JLcom/tencent/mobileqq/troop/data/TroopFileInfo;Lcom/tencent/biz/troop/file/protocol/TroopFileReqTransFileObserver;)V
-    //   107: aload_0
-    //   108: aload_0
-    //   109: getfield 413	com/tencent/mobileqq/troop/utils/TroopFileManager:jdField_a_of_type_Int	I
-    //   112: iconst_1
-    //   113: iadd
-    //   114: putfield 413	com/tencent/mobileqq/troop/utils/TroopFileManager:jdField_a_of_type_Int	I
-    //   117: iconst_1
-    //   118: istore_3
-    //   119: goto -97 -> 22
-    //   122: ldc_w 317
-    //   125: astore 4
-    //   127: goto -66 -> 61
-    //   130: astore_1
-    //   131: aload_0
-    //   132: monitorexit
-    //   133: aload_1
-    //   134: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	135	0	this	TroopFileManager
-    //   0	135	1	paramTroopFileInfo	TroopFileInfo
-    //   29	36	2	i	int
-    //   21	98	3	bool	boolean
-    //   13	113	4	str	String
-    //   43	23	5	localStringBuilder	java.lang.StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   2	15	130	finally
-    //   26	61	130	finally
-    //   61	117	130	finally
+    for (;;)
+    {
+      try
+      {
+        if ((paramTroopFileInfo.jdField_a_of_type_Int != 0) && (paramTroopFileInfo.b != null))
+        {
+          int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[");
+          if (paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID != null)
+          {
+            str = paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID.toString();
+            localStringBuilder.append(str);
+            localStringBuilder.append("] transFile. mFileId:");
+            localStringBuilder.append(paramTroopFileInfo.b);
+            TroopFileTransferUtil.Log.c("TroopFileManager", i, localStringBuilder.toString());
+            TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, paramTroopFileInfo, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqTransFileObserver);
+            this.jdField_a_of_type_Int += 1;
+            return true;
+          }
+        }
+        else
+        {
+          return false;
+        }
+      }
+      finally {}
+      String str = "null";
+    }
   }
   
   public boolean a(TroopFileObserver paramTroopFileObserver)
@@ -617,9 +506,13 @@ public class TroopFileManager
   {
     try
     {
-      TroopFileManager.FileManagerStatus localFileManagerStatus = (TroopFileManager.FileManagerStatus)this.d.get(paramString + paramLong);
-      paramString = localFileManagerStatus;
-      if (localFileManagerStatus == null) {
+      Object localObject = this.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(paramLong);
+      localObject = (TroopFileManager.FileManagerStatus)((Map)localObject).get(localStringBuilder.toString());
+      paramString = (String)localObject;
+      if (localObject == null) {
         paramString = new TroopFileManager.FileManagerStatus(this, paramLong);
       }
       boolean bool = paramString.jdField_a_of_type_Boolean;
@@ -630,33 +523,27 @@ public class TroopFileManager
   
   public TroopFileInfo b(String paramString)
   {
-    if (paramString == null)
-    {
-      paramString = null;
-      return paramString;
+    if (paramString == null) {
+      return null;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        TroopFileInfo localTroopFileInfo = new TroopFileInfo();
-        localTroopFileInfo.jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
-        localTroopFileInfo.i = paramString;
-        paramString = new File(paramString);
-        localTroopFileInfo.jdField_a_of_type_Long = paramString.length();
-        localTroopFileInfo.c = paramString.getName();
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          paramString = "/";
-          localTroopFileInfo.g = paramString;
-          this.jdField_b_of_type_JavaUtilMap.put(localTroopFileInfo.jdField_a_of_type_JavaUtilUUID, localTroopFileInfo);
-          paramString = localTroopFileInfo;
-          break;
-        }
+      TroopFileInfo localTroopFileInfo = new TroopFileInfo();
+      localTroopFileInfo.jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
+      localTroopFileInfo.i = paramString;
+      paramString = new File(paramString);
+      localTroopFileInfo.jdField_a_of_type_Long = paramString.length();
+      localTroopFileInfo.c = paramString.getName();
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        paramString = "/";
+      } else {
+        paramString = this.jdField_a_of_type_JavaLangString;
       }
-      finally {}
-      paramString = this.jdField_a_of_type_JavaLangString;
+      localTroopFileInfo.g = paramString;
+      this.jdField_b_of_type_JavaUtilMap.put(localTroopFileInfo.jdField_a_of_type_JavaUtilUUID, localTroopFileInfo);
+      return localTroopFileInfo;
     }
+    finally {}
   }
   
   public TroopFileInfo b(String paramString1, String paramString2, long paramLong, int paramInt)
@@ -689,8 +576,13 @@ public class TroopFileManager
       while (localIterator.hasNext()) {
         ((TroopFileInfo)localIterator.next()).jdField_a_of_type_Boolean = false;
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public final void b(TroopFileInfo paramTroopFileInfo)
@@ -711,119 +603,80 @@ public class TroopFileManager
   {
     try
     {
-      TroopFileTransferUtil.Log.c("TroopFileManager", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "doTroopFileDelete: filePath:" + paramString);
+      int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doTroopFileDelete: filePath:");
+      localStringBuilder.append(paramString);
+      TroopFileTransferUtil.Log.c("TroopFileManager", i, localStringBuilder.toString());
       paramString = (TroopFileInfo)this.c.remove(paramString);
       if ((!jdField_a_of_type_Boolean) && (paramString == null)) {
         throw new AssertionError();
       }
+      if (paramString != null)
+      {
+        this.jdField_b_of_type_JavaUtilMap.remove(paramString.jdField_a_of_type_JavaUtilUUID);
+        c(paramString);
+      }
+      return;
     }
     finally {}
-    if (paramString != null)
-    {
-      this.jdField_b_of_type_JavaUtilMap.remove(paramString.jdField_a_of_type_JavaUtilUUID);
-      c(paramString);
-    }
   }
   
-  /* Error */
   public final void b(UUID paramUUID)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 289	com/tencent/mobileqq/troop/filemanager/TroopFileTransferUtil$Log:jdField_a_of_type_Int	I
-    //   5: istore_2
-    //   6: new 291	java/lang/StringBuilder
-    //   9: dup
-    //   10: invokespecial 292	java/lang/StringBuilder:<init>	()V
-    //   13: ldc_w 294
-    //   16: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: astore 4
-    //   21: aload_1
-    //   22: ifnull +51 -> 73
-    //   25: aload_1
-    //   26: invokevirtual 302	java/util/UUID:toString	()Ljava/lang/String;
-    //   29: astore_3
-    //   30: ldc_w 304
-    //   33: iload_2
-    //   34: aload 4
-    //   36: aload_3
-    //   37: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: ldc_w 437
-    //   43: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 307	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 310	com/tencent/mobileqq/troop/filemanager/TroopFileTransferUtil$Log:c	(Ljava/lang/String;ILjava/lang/String;)V
-    //   52: aload_0
-    //   53: getfield 50	com/tencent/mobileqq/troop/utils/TroopFileManager:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
-    //   56: aload_1
-    //   57: invokeinterface 313 2 0
-    //   62: checkcast 128	com/tencent/mobileqq/troop/data/TroopFileInfo
-    //   65: astore_1
-    //   66: aload_1
-    //   67: ifnonnull +13 -> 80
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: return
-    //   73: ldc_w 317
-    //   76: astore_3
-    //   77: goto -47 -> 30
-    //   80: aload_0
-    //   81: aload_1
-    //   82: invokevirtual 315	com/tencent/mobileqq/troop/utils/TroopFileManager:c	(Lcom/tencent/mobileqq/troop/data/TroopFileInfo;)V
-    //   85: aload_0
-    //   86: getfield 52	com/tencent/mobileqq/troop/utils/TroopFileManager:c	Ljava/util/Map;
-    //   89: aload_1
-    //   90: getfield 144	com/tencent/mobileqq/troop/data/TroopFileInfo:b	Ljava/lang/String;
-    //   93: invokeinterface 313 2 0
-    //   98: pop
-    //   99: goto -29 -> 70
-    //   102: astore_1
-    //   103: aload_0
-    //   104: monitorexit
-    //   105: aload_1
-    //   106: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	107	0	this	TroopFileManager
-    //   0	107	1	paramUUID	UUID
-    //   5	29	2	i	int
-    //   29	48	3	str	String
-    //   19	16	4	localStringBuilder	java.lang.StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   2	21	102	finally
-    //   25	30	102	finally
-    //   30	66	102	finally
-    //   80	99	102	finally
+    for (;;)
+    {
+      try
+      {
+        int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        if (paramUUID != null)
+        {
+          str = paramUUID.toString();
+          localStringBuilder.append(str);
+          localStringBuilder.append("] doDelete");
+          TroopFileTransferUtil.Log.c("TroopFileManager", i, localStringBuilder.toString());
+          paramUUID = (TroopFileInfo)this.jdField_b_of_type_JavaUtilMap.remove(paramUUID);
+          if (paramUUID == null) {
+            return;
+          }
+          c(paramUUID);
+          this.c.remove(paramUUID.b);
+          return;
+        }
+      }
+      finally {}
+      String str = "null";
+    }
   }
   
   public final boolean b(String paramString, long paramLong)
   {
     try
     {
-      TroopFileManager.FileManagerStatus localFileManagerStatus = (TroopFileManager.FileManagerStatus)this.d.get(paramString + paramLong);
-      if (localFileManagerStatus == null)
+      Object localObject1 = this.d;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(paramLong);
+      localObject2 = (TroopFileManager.FileManagerStatus)((Map)localObject1).get(((StringBuilder)localObject2).toString());
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        localFileManagerStatus = new TroopFileManager.FileManagerStatus(this, paramLong);
-        this.d.put(paramString + paramLong, localFileManagerStatus);
+        localObject1 = new TroopFileManager.FileManagerStatus(this, paramLong);
+        localObject2 = this.d;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(paramLong);
+        ((Map)localObject2).put(localStringBuilder.toString(), localObject1);
       }
-      for (;;)
+      if ((!((TroopFileManager.FileManagerStatus)localObject1).jdField_a_of_type_Boolean) && (!((TroopFileManager.FileManagerStatus)localObject1).jdField_b_of_type_Boolean))
       {
-        if (!localFileManagerStatus.jdField_a_of_type_Boolean)
-        {
-          bool = localFileManagerStatus.jdField_b_of_type_Boolean;
-          if (!bool) {
-            break label108;
-          }
-        }
-        for (boolean bool = false;; bool = true)
-        {
-          return bool;
-          label108:
-          TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, localFileManagerStatus.jdField_a_of_type_Int, 3, 20, 3, 1, paramString, localFileManagerStatus.c, paramLong, localFileManagerStatus.jdField_b_of_type_Int, localFileManagerStatus.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileGetFileListObserver);
-          localFileManagerStatus.jdField_b_of_type_Boolean = true;
-        }
+        TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, ((TroopFileManager.FileManagerStatus)localObject1).jdField_a_of_type_Int, 3, 20, 3, 1, paramString, ((TroopFileManager.FileManagerStatus)localObject1).c, paramLong, ((TroopFileManager.FileManagerStatus)localObject1).jdField_b_of_type_Int, ((TroopFileManager.FileManagerStatus)localObject1).jdField_a_of_type_ComTencentMobileqqPbByteStringMicro, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileGetFileListObserver);
+        ((TroopFileManager.FileManagerStatus)localObject1).jdField_b_of_type_Boolean = true;
+        return true;
       }
+      return false;
     }
     finally {}
   }
@@ -900,7 +753,7 @@ public class TroopFileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileManager
  * JD-Core Version:    0.7.0.1
  */

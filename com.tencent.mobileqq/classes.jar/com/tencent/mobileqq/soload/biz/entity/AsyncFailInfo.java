@@ -2,25 +2,29 @@ package com.tencent.mobileqq.soload.biz.entity;
 
 public class AsyncFailInfo
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c = 0;
-  
-  public AsyncFailInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-  }
+  public int lastFailCode = 0;
+  public long lastFailTime = 0L;
+  public int lastSubFailCode;
+  public int netType = 0;
   
   public String toString()
   {
-    return "FailInfo{lastFCode=" + this.jdField_a_of_type_Int + ", lastSubFCode=" + this.b + ", netType=" + this.c + ", lastFTime=" + this.jdField_a_of_type_Long + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FailInfo{lastFCode=");
+    localStringBuilder.append(this.lastFailCode);
+    localStringBuilder.append(", lastSubFCode=");
+    localStringBuilder.append(this.lastSubFailCode);
+    localStringBuilder.append(", netType=");
+    localStringBuilder.append(this.netType);
+    localStringBuilder.append(", lastFTime=");
+    localStringBuilder.append(this.lastFailTime);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.biz.entity.AsyncFailInfo
  * JD-Core Version:    0.7.0.1
  */

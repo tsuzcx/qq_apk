@@ -11,8 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troop.utils.BizTroopUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 
 final class TroopAvatarWallEditActivity$Indicator
 {
@@ -26,8 +26,8 @@ final class TroopAvatarWallEditActivity$Indicator
   {
     this.jdField_a_of_type_AndroidContentContext = paramLinearLayout.getContext();
     this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources(), Color.parseColor("#66ffffff"), this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843954));
-    this.b = TroopUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources(), Color.parseColor("#ffffffff"), this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843954));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BizTroopUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), Color.parseColor("#66ffffff"), this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843874));
+    this.b = BizTroopUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), Color.parseColor("#ffffffff"), this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843874));
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
@@ -41,26 +41,24 @@ final class TroopAvatarWallEditActivity$Indicator
   void a(int paramInt)
   {
     int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    if ((paramInt < 0) || (paramInt >= j)) {
-      return;
-    }
-    int i = 0;
-    label20:
-    View localView;
-    if (i < j)
+    if (paramInt >= 0)
     {
-      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if (paramInt != i) {
-        break label60;
+      if (paramInt >= j) {
+        return;
       }
-    }
-    label60:
-    for (Drawable localDrawable = this.b;; localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
-    {
-      localView.setBackgroundDrawable(localDrawable);
-      i += 1;
-      break label20;
-      break;
+      int i = 0;
+      while (i < j)
+      {
+        View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        Drawable localDrawable;
+        if (paramInt == i) {
+          localDrawable = this.b;
+        } else {
+          localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        }
+        localView.setBackgroundDrawable(localDrawable);
+        i += 1;
+      }
     }
   }
   
@@ -82,7 +80,7 @@ final class TroopAvatarWallEditActivity$Indicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.Indicator
  * JD-Core Version:    0.7.0.1
  */

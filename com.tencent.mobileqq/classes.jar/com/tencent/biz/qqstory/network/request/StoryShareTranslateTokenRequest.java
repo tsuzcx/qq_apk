@@ -25,17 +25,14 @@ public class StoryShareTranslateTokenRequest
     try
     {
       localRspTranslateToken.mergeFrom(paramArrayOfByte);
-      return new StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse(localRspTranslateToken);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqstory.share.trans.req", 2, "decode failed", paramArrayOfByte);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.qqstory.share.trans.req", 2, "decode failed", paramArrayOfByte);
       }
     }
+    return new StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse(localRspTranslateToken);
   }
   
   public String a()
@@ -43,7 +40,7 @@ public class StoryShareTranslateTokenRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqTranslateToken localReqTranslateToken = new qqstory_service.ReqTranslateToken();
     localReqTranslateToken.src_buffer.set(ByteStringMicro.copyFromUtf8(this.b));
@@ -56,12 +53,22 @@ public class StoryShareTranslateTokenRequest
   
   public String toString()
   {
-    return "StoryShareTranslateTokenRequest{feedId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", srcBuffer='" + this.b + '\'' + ", type=" + this.jdField_c_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StoryShareTranslateTokenRequest{feedId='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", srcBuffer='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest
  * JD-Core Version:    0.7.0.1
  */

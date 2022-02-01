@@ -5,12 +5,12 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.qshadow.constant.Constant;
+import com.tencent.mobileqq.qshadow.constant.QShadowConstant;
+import com.tencent.mobileqq.qshadow.interfaces.IPluginOpenListener;
 import com.tencent.mobileqq.qshadow.utils.PluginIdUtil;
 import com.tencent.mobileqq.qshadow.utils.QShadowRepository;
 import com.tencent.shadow.core.common.Logger;
 import com.tencent.shadow.core.common.LoggerFactory;
-import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.tencent.shadow.dynamic.host.ShadowTag;
 import java.io.File;
 import java.io.IOException;
@@ -54,49 +54,76 @@ public class QShadow
   
   public Map<String, PluginBaseInfo> getQShadowBuildInPlugins()
   {
-    int i = 0;
     HashMap localHashMap = new HashMap();
     for (;;)
     {
       try
       {
-        String[] arrayOfString = QShadowRepository.getStringFromStream(this.mContext.getAssets().open("qshadow-plugins" + File.separator + "plugins")).split(",");
-        int j = arrayOfString.length;
+        Object localObject1 = this.mContext.getAssets();
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("qshadow-plugins");
+        localStringBuilder1.append(File.separator);
+        localStringBuilder1.append("plugins");
+        localObject1 = QShadowRepository.getStringFromStream(((AssetManager)localObject1).open(localStringBuilder1.toString())).split(",");
+        int j = localObject1.length;
+        i = 0;
         if (i < j)
         {
-          String str = arrayOfString[i];
-          Object localObject = Constant.getAssetRootPath(str) + File.separator + "config.json";
-          try
-          {
-            InputStream localInputStream = this.mContext.getAssets().open((String)localObject);
-            localObject = new PluginBaseInfo();
-            ((PluginBaseInfo)localObject).mID = PluginIdUtil.convertQShadowId2QPluginId(str);
-            ((PluginBaseInfo)localObject).mMD5 = QShadowRepository.getUuidFromStream(localInputStream);
-            ((PluginBaseInfo)localObject).mUpdateType = 1;
-            ((PluginBaseInfo)localObject).mInstallType = 0;
-            localHashMap.put(((PluginBaseInfo)localObject).mID, localObject);
-          }
-          catch (IOException localIOException2)
-          {
-            this.mLogger.warn("plugin " + str + " not found in asset " + (String)localObject);
-          }
-        }
-        else
-        {
-          return localHashMap;
+          localStringBuilder1 = localObject1[i];
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(QShadowConstant.getAssetRootPath(localStringBuilder1));
+          ((StringBuilder)localObject2).append(File.separator);
+          ((StringBuilder)localObject2).append("config.json");
+          localObject2 = ((StringBuilder)localObject2).toString();
         }
       }
-      catch (IOException localIOException1)
+      catch (Exception localException)
       {
-        localIOException1.printStackTrace();
+        StringBuilder localStringBuilder1;
+        int i;
+        Object localObject2;
+        Object localObject3;
+        StringBuilder localStringBuilder2;
+        this.mLogger.error("plugin_tag 获取本地插件asset列表失败", localException);
       }
+      try
+      {
+        localObject3 = this.mContext.getAssets().open((String)localObject2);
+        localObject2 = new PluginBaseInfo();
+        ((PluginBaseInfo)localObject2).mID = PluginIdUtil.convertQShadowId2QPluginId(localStringBuilder1);
+        ((PluginBaseInfo)localObject2).mMD5 = QShadowRepository.getUuidFromStream((InputStream)localObject3);
+        ((PluginBaseInfo)localObject2).mUpdateType = 1;
+        ((PluginBaseInfo)localObject2).mInstallType = 0;
+        localHashMap.put(((PluginBaseInfo)localObject2).mID, localObject2);
+      }
+      catch (IOException localIOException)
+      {
+        continue;
+      }
+      localObject3 = this.mLogger;
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("plugin ");
+      localStringBuilder2.append(localStringBuilder1);
+      localStringBuilder2.append(" not found in asset ");
+      localStringBuilder2.append((String)localObject2);
+      ((Logger)localObject3).warn(localStringBuilder2.toString());
       i += 1;
     }
+    return localHashMap;
   }
   
   public void init(Context paramContext)
   {
     this.mContext = paramContext.getApplicationContext();
+    paramContext = new StringBuilder();
+    paramContext.append(this.mContext.getFilesDir().getAbsolutePath());
+    paramContext.append(File.separator);
+    paramContext.append("qshadow-plugins");
+    paramContext.append(File.separator);
+    paramContext = new File(paramContext.toString());
+    if (!paramContext.exists()) {
+      paramContext.mkdirs();
+    }
   }
   
   public boolean installPlugin(String paramString)
@@ -124,16 +151,16 @@ public class QShadow
     this.mPluginManagerMap.put(PluginIdUtil.getGroupId(paramString), paramDefaultPluginManager);
   }
   
-  public void startActivity(String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
+  public void startActivity(String paramString1, String paramString2, Bundle paramBundle, IPluginOpenListener paramIPluginOpenListener)
   {
     paramString2 = wrapperBundle(paramBundle, paramString1, paramString2);
-    getPluginManager(paramString1).enter(this.mContext, 1003L, paramString2, paramEnterCallback);
+    getPluginManager(paramString1).enter(this.mContext, 1003L, paramString2, paramIPluginOpenListener);
   }
   
-  public void startService(String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
+  public void startService(String paramString1, String paramString2, Bundle paramBundle, IPluginOpenListener paramIPluginOpenListener)
   {
     paramString2 = wrapperBundle(paramBundle, paramString1, paramString2);
-    getPluginManager(paramString1).enter(this.mContext, 1004L, paramString2, paramEnterCallback);
+    getPluginManager(paramString1).enter(this.mContext, 1004L, paramString2, paramIPluginOpenListener);
   }
   
   public boolean uninstallPlugin(String paramString)
@@ -143,7 +170,7 @@ public class QShadow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qshadow.core.QShadow
  * JD-Core Version:    0.7.0.1
  */

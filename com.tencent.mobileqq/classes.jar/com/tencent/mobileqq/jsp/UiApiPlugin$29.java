@@ -1,46 +1,65 @@
 package com.tencent.mobileqq.jsp;
 
-import android.app.Activity;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.search.util.SearchUtils.GenerateGifWithTextCallback;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.mobileqq.utils.BaseImageUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.MD5;
 import org.json.JSONObject;
 
 class UiApiPlugin$29
-  extends DownloadListener
+  implements SearchUtils.GenerateGifWithTextCallback
 {
-  UiApiPlugin$29(UiApiPlugin paramUiApiPlugin, String paramString, JSONObject paramJSONObject) {}
+  UiApiPlugin$29(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a(String paramString)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
+    if (paramString == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
       return;
     }
-    if (paramDownloadTask.a == 0)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      paramDownloadTask = AbsDownloader.getFilePath(this.jdField_a_of_type_JavaLangString);
-      if (new File(paramDownloadTask).exists())
+      arrayOfByte = FileUtils.readFile(paramString);
+      if (arrayOfByte == null) {
+        break label155;
+      }
+      localJSONObject.put("code", 0);
+      localStringBuilder = new StringBuilder("data:");
+      if (!BaseImageUtil.b(paramString)) {
+        break label201;
+      }
+      str = "image/gif;";
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, paramDownloadTask, 0);
-        return;
+        byte[] arrayOfByte;
+        StringBuilder localStringBuilder;
+        continue;
+        String str = "image/jpg;";
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
+    localStringBuilder.append(str);
+    localStringBuilder.append("base64,");
+    localStringBuilder.append(Base64Util.encodeToString(arrayOfByte, 0));
+    localJSONObject.put("imgData", localStringBuilder);
+    localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
+    localJSONObject.put("imagePath", paramString);
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+    return;
+    label155:
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.29
  * JD-Core Version:    0.7.0.1
  */

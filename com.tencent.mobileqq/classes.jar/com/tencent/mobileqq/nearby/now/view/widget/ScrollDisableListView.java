@@ -27,15 +27,14 @@ public class ScrollDisableListView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
     int i = paramMotionEvent.getActionMasked() & 0xFF;
     if (i == 0)
     {
       this.a = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-      bool = super.dispatchTouchEvent(paramMotionEvent);
+      return super.dispatchTouchEvent(paramMotionEvent);
     }
-    while (i == 2) {
-      return bool;
+    if (i == 2) {
+      return true;
     }
     if ((i == 1) || (i == 3))
     {
@@ -53,7 +52,7 @@ public class ScrollDisableListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.ScrollDisableListView
  * JD-Core Version:    0.7.0.1
  */

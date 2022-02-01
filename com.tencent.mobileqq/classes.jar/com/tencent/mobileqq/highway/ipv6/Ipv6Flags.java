@@ -20,22 +20,22 @@ public class Ipv6Flags
   
   public boolean isIpv6BDHFirst()
   {
-    BdhLogUtil.LogEvent("E", "Ipv6Config.isIpv6BDHFirst, mBdhStrategy = " + this.mBdhStrategy);
-    if (this.mBdhStrategy == 2) {}
-    do
-    {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Ipv6Config.isIpv6BDHFirst, mBdhStrategy = ");
+    localStringBuilder.append(this.mBdhStrategy);
+    BdhLogUtil.LogEvent("E", localStringBuilder.toString());
+    if (this.mBdhStrategy == 2) {
       return true;
-      if (this.mRMDownStrategy != 3) {
-        break;
-      }
-    } while (MsfServiceSdk.get().getConnectedIPFamily() == 2);
-    return false;
+    }
+    if (this.mRMDownStrategy == 3) {
+      return MsfServiceSdk.get().getConnectedIPFamily() == 2;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.ipv6.Ipv6Flags
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,10 @@ public class JsonHttpResponseHandler
 {
   protected Object a(String paramString)
   {
-    Object localObject = null;
     String str = paramString.trim();
-    if (!str.startsWith("{"))
-    {
-      paramString = localObject;
-      if (!str.startsWith("[")) {}
-    }
-    else
-    {
+    if ((!str.startsWith("{")) && (!str.startsWith("["))) {
+      paramString = null;
+    } else {
       paramString = new JSONTokener(str).nextValue();
     }
     if (paramString == null) {
@@ -41,7 +36,10 @@ public class JsonHttpResponseHandler
       a(paramInt, paramArrayOfHeader, (JSONArray)paramObject);
       return;
     }
-    a(new JSONException("Unexpected type " + paramObject.getClass().getName()), (JSONObject)null);
+    paramArrayOfHeader = new StringBuilder();
+    paramArrayOfHeader.append("Unexpected type ");
+    paramArrayOfHeader.append(paramObject.getClass().getName());
+    a(new JSONException(paramArrayOfHeader.toString()), (JSONObject)null);
   }
   
   public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray) {}
@@ -50,9 +48,8 @@ public class JsonHttpResponseHandler
   
   protected void a(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what != 100)
     {
-    default: 
       super.a(paramMessage);
       return;
     }
@@ -83,31 +80,31 @@ public class JsonHttpResponseHandler
   
   protected void c(Throwable paramThrowable, String paramString)
   {
-    if (paramString != null)
+    if (paramString != null) {}
+    try
     {
-      try
+      Object localObject = a(paramString);
+      if ((localObject instanceof JSONObject))
       {
-        Object localObject = a(paramString);
-        if ((localObject instanceof JSONObject))
-        {
-          a(paramThrowable, (JSONObject)localObject);
-          return;
-        }
-        if ((localObject instanceof JSONArray))
-        {
-          a(paramThrowable, (JSONArray)localObject);
-          return;
-        }
+        a(paramThrowable, (JSONObject)localObject);
+        return;
       }
-      catch (JSONException localJSONException)
+      if ((localObject instanceof JSONArray))
       {
-        a(paramThrowable, paramString);
+        a(paramThrowable, (JSONArray)localObject);
         return;
       }
       a(paramThrowable, paramString);
       return;
     }
+    catch (JSONException localJSONException)
+    {
+      break label59;
+    }
     a(paramThrowable, "");
+    return;
+    label59:
+    a(paramThrowable, paramString);
   }
 }
 

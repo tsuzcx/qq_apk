@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.biz.qqstory.utils.UIUtils;
@@ -17,6 +16,7 @@ import com.tencent.mobileqq.activity.aio.helper.TogetherControlHelper;
 import com.tencent.mobileqq.activity.aio.tips.StudyRoomTipBarHelper;
 import com.tencent.mobileqq.activity.aio.tips.TipsBarTask;
 import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -41,7 +41,7 @@ public class IliveGroupTipsBarHelper
   public IliveGroupTipsBarHelper(HelperProvider paramHelperProvider, TroopChatPie paramTroopChatPie)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
-    this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar = new IliveGroupTipsBar(paramTroopChatPie, paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramTroopChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar = new IliveGroupTipsBar(paramTroopChatPie, paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBarHelper$IliveHandler = new IliveGroupTipsBarHelper.IliveHandler(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a());
     paramHelperProvider.a(this);
   }
@@ -50,7 +50,8 @@ public class IliveGroupTipsBarHelper
   {
     if (this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar == null)
     {
-      this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar = new IliveGroupTipsBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+      TroopChatPie localTroopChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
+      this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar = new IliveGroupTipsBar(localTroopChatPie, localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a(this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar);
       }
@@ -66,11 +67,18 @@ public class IliveGroupTipsBarHelper
   
   private void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {
-      return;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
+    if ((localObject != null) && (((TroopChatPie)localObject).a() != null))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("helper saveGroupInfo isLive = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.i("IliveGroupTipsBarHelper", 1, ((StringBuilder)localObject).toString());
+      ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().getManager(QQManagerFactory.TROOP_MANAGER)).b(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)).setIsTroopLive(paramBoolean);
     }
-    QLog.i("IliveGroupTipsBarHelper", 1, "helper saveGroupInfo isLive = " + paramBoolean);
-    ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().getManager(QQManagerFactory.TROOP_MANAGER)).b(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)).setIsTroopLive(paramBoolean);
   }
   
   private void b(IliveGroupTipsManager paramIliveGroupTipsManager)
@@ -80,17 +88,20 @@ public class IliveGroupTipsBarHelper
   
   private void b(Object[] paramArrayOfObject)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject[0] == null) || (!(paramArrayOfObject[0] instanceof Integer))) {}
-    do
+    if ((paramArrayOfObject != null) && (paramArrayOfObject[0] != null))
     {
-      do
-      {
+      if (!(paramArrayOfObject[0] instanceof Integer)) {
         return;
-      } while (6 != ((Integer)paramArrayOfObject[0]).intValue());
-      paramArrayOfObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844120);
+      }
+      if (6 != ((Integer)paramArrayOfObject[0]).intValue()) {
+        return;
+      }
+      paramArrayOfObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844024);
       paramArrayOfObject.setBounds(0, 0, UIUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidContentContext, 10.0F), UIUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidContentContext, 10.0F));
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().setImageDrawable(paramArrayOfObject);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().setImageDrawable(paramArrayOfObject);
+      }
+    }
   }
   
   private void c()
@@ -117,26 +128,29 @@ public class IliveGroupTipsBarHelper
   
   private void c(Object[] paramArrayOfObject)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject[0] == null) || (!(paramArrayOfObject[0] instanceof Integer))) {}
-    do
+    if ((paramArrayOfObject != null) && (paramArrayOfObject[0] != null))
     {
-      do
-      {
+      if (!(paramArrayOfObject[0] instanceof Integer)) {
         return;
-      } while (6 != ((Integer)paramArrayOfObject[0]).intValue());
+      }
+      if (6 != ((Integer)paramArrayOfObject[0]).intValue()) {
+        return;
+      }
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().setVisibility(0);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.b() != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.b().setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.c() == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.c().setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.c() != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.c().setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
+      }
+    }
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.bB();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.aF();
   }
   
   private void d(IliveGroupTipsManager paramIliveGroupTipsManager)
@@ -149,32 +163,41 @@ public class IliveGroupTipsBarHelper
   private void e()
   {
     QLog.i("IliveGroupTipsBarHelper", 1, "removeGetGroupData");
-    if (this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBarHelper$IliveHandler != null) {
-      this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBarHelper$IliveHandler.removeCallbacksAndMessages(null);
+    IliveGroupTipsBarHelper.IliveHandler localIliveHandler = this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBarHelper$IliveHandler;
+    if (localIliveHandler != null) {
+      localIliveHandler.removeCallbacksAndMessages(null);
     }
   }
   
   private void f()
   {
-    if ((IliveGroupTipsManager.a()) && (this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity != null) && (this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity.jdField_a_of_type_Int >= 5))
+    if (IliveGroupTipsManager.a())
     {
-      QLog.i("IliveGroupTipsBarHelper", 1, "start delayGetGroupData time = " + this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBarHelper$IliveHandler.hasMessages(1)) {
-        this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBarHelper$IliveHandler.removeMessages(1);
+      Object localObject = this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity;
+      if ((localObject != null) && (((IliveGroupTipsEntity)localObject).jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity.jdField_a_of_type_Int >= 5))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("start delayGetGroupData time = ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity.jdField_a_of_type_Int);
+        QLog.i("IliveGroupTipsBarHelper", 1, ((StringBuilder)localObject).toString());
+        if (this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBarHelper$IliveHandler.hasMessages(1)) {
+          this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBarHelper$IliveHandler.removeMessages(1);
+        }
+        this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity.e = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        localObject = Message.obtain();
+        IliveGroupTipsEntity localIliveGroupTipsEntity = this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity;
+        ((Message)localObject).obj = localIliveGroupTipsEntity;
+        ((Message)localObject).what = 1;
+        this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBarHelper$IliveHandler.sendMessageDelayed((Message)localObject, localIliveGroupTipsEntity.jdField_a_of_type_Int * 1000);
       }
-      this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity.e = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      Message localMessage = Message.obtain();
-      localMessage.obj = this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity;
-      localMessage.what = 1;
-      this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBarHelper$IliveHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity.jdField_a_of_type_Int * 1000);
     }
   }
   
   public String a(boolean paramBoolean)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131689960);
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131689875);
     if (paramBoolean) {
-      str = HardCodeUtil.a(2131693732);
+      str = HardCodeUtil.a(2131693685);
     }
     return str;
   }
@@ -187,26 +210,33 @@ public class IliveGroupTipsBarHelper
   
   public void a(int paramInt, Object[] paramArrayOfObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a(paramArrayOfObject);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return;
+        }
+        b(paramArrayOfObject);
+        return;
+      }
       c(paramArrayOfObject);
       return;
     }
-    b(paramArrayOfObject);
+    a(paramArrayOfObject);
   }
   
   public void a(TipsBarTask paramTipsBarTask)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IliveGroupTipsBarHelper", 2, "onOtherTipsHide tip=" + paramTipsBarTask);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onOtherTipsHide tip=");
+      ((StringBuilder)localObject).append(paramTipsBarTask);
+      QLog.d("IliveGroupTipsBarHelper", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar != null) && (this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar != paramTipsBarTask))
+    Object localObject = this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar;
+    if ((localObject != null) && (localObject != paramTipsBarTask))
     {
       if (QLog.isColorLevel()) {
         QLog.d("IliveGroupTipsBarHelper", 2, "onOtherTipsHide tip not equal IliveGroupTipsBar");
@@ -218,36 +248,44 @@ public class IliveGroupTipsBarHelper
   
   public void a(Object[] paramArrayOfObject)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject[0] == null) || (!(paramArrayOfObject[0] instanceof Integer))) {}
-    while ((6 != ((Integer)paramArrayOfObject[0]).intValue()) || (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) < 500L)) {
-      return;
-    }
-    if (a()) {
-      c();
-    }
-    for (;;)
+    if ((paramArrayOfObject != null) && (paramArrayOfObject[0] != null))
     {
+      if (!(paramArrayOfObject[0] instanceof Integer)) {
+        return;
+      }
+      if (6 != ((Integer)paramArrayOfObject[0]).intValue()) {
+        return;
+      }
+      if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) < 500L) {
+        return;
+      }
+      if (a()) {
+        c();
+      } else {
+        b();
+      }
       d();
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      return;
-      b();
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("IliveGroupTipsBarHelper", 2, "tipManager is null or together is null");
       }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a() != this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar) {
       return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("IliveGroupTipsBarHelper", 2, "curTip is liveGroupTips");
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a() == this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("IliveGroupTipsBarHelper", 2, "curTip is liveGroupTips");
+      }
+      return true;
     }
-    return true;
+    return false;
   }
   
   public void b()
@@ -256,7 +294,16 @@ public class IliveGroupTipsBarHelper
     boolean bool2 = ((TogetherControlHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a(43)).c();
     boolean bool3 = ((StudyRoomTipBarHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a(75)).d();
     boolean bool4 = d();
-    QLog.i("IliveGroup", 1, "isListenTogetherTime = " + bool1 + " isTogetherTime = " + bool2 + " showStudyRoomTime = " + bool3 + " isLiveTime = " + bool4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isListenTogetherTime = ");
+    localStringBuilder.append(bool1);
+    localStringBuilder.append(" isTogetherTime = ");
+    localStringBuilder.append(bool2);
+    localStringBuilder.append(" showStudyRoomTime = ");
+    localStringBuilder.append(bool3);
+    localStringBuilder.append(" isLiveTime = ");
+    localStringBuilder.append(bool4);
+    QLog.i("IliveGroup", 1, localStringBuilder.toString());
     if ((bool4) && ((bool1) || (bool2) || (bool3))) {
       c();
     }
@@ -267,25 +314,24 @@ public class IliveGroupTipsBarHelper
     if (QLog.isColorLevel()) {
       QLog.d("IliveGroupTipsBarHelper", 2, "showTip");
     }
-    if (!d()) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("IliveGroupTipsBarHelper", 2, "tipManager is null");
+    if (!d()) {
       return false;
-      TipsBarTask localTipsBarTask = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a();
-      if ((localTipsBarTask == null) || (localTipsBarTask == this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar)) {
-        break;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("IliveGroupTipsBarHelper", 2, "tipManager is null");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("IliveGroupTipsBarHelper", 2, "currTip is other");
-    return false;
+      return false;
+    }
+    TipsBarTask localTipsBarTask = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a();
+    if ((localTipsBarTask != null) && (localTipsBarTask != this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("IliveGroupTipsBarHelper", 2, "currTip is other");
+      }
+      return false;
+    }
     c();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a(this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar, new Object[0]);
     this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar.a(this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity);
@@ -299,29 +345,31 @@ public class IliveGroupTipsBarHelper
     if (QLog.isColorLevel()) {
       QLog.d("IliveGroupTipsBarHelper", 2, "dismiss liveGroupTips");
     }
-    if ((this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("IliveGroupTipsBarHelper", 2, "tipManager is null or liveGroupTips is null");
-      }
-    }
-    TipsBarTask localTipsBarTask;
-    do
+    if ((this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() != null))
     {
+      TipsBarTask localTipsBarTask = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a();
+      if ((localTipsBarTask != null) && (localTipsBarTask == this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("IliveGroupTipsBarHelper", 2, "currTip is liveGroupTips");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a();
+        d();
+        e();
+        return true;
+      }
       return false;
-      localTipsBarTask = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a();
-    } while ((localTipsBarTask == null) || (localTipsBarTask != this.jdField_a_of_type_CooperationIliveGroupIliveGroupTipsBar));
-    if (QLog.isColorLevel()) {
-      QLog.d("IliveGroupTipsBarHelper", 2, "currTip is liveGroupTips");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a();
-    d();
-    e();
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("IliveGroupTipsBarHelper", 2, "tipManager is null or liveGroupTips is null");
+    }
+    return false;
   }
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity != null) && (this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity.jdField_a_of_type_Boolean);
+    IliveGroupTipsEntity localIliveGroupTipsEntity = this.jdField_a_of_type_CooperationIliveGroupEntityIliveGroupTipsEntity;
+    return (localIliveGroupTipsEntity != null) && (localIliveGroupTipsEntity.jdField_a_of_type_Boolean);
   }
   
   public String getTag()
@@ -331,42 +379,45 @@ public class IliveGroupTipsBarHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 9, 10, 6, 14 };
+    return new int[] { 4, 10, 11, 7, 15 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    QLog.e("IliveGroupTipsBarHelper", 1, "onMoveToState state = " + paramInt);
-    IliveGroupTipsManager localIliveGroupTipsManager = (IliveGroupTipsManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().getManager(QQManagerFactory.ILIVE_GROUP_TIPS_MANAGER);
-    switch (paramInt)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onMoveToState state = ");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.e("IliveGroupTipsBarHelper", 1, ((StringBuilder)localObject).toString());
+    localObject = (IliveGroupTipsManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().getManager(QQManagerFactory.ILIVE_GROUP_TIPS_MANAGER);
+    if (paramInt != 4)
     {
-    case 5: 
-    case 7: 
-    case 8: 
-    case 11: 
-    case 12: 
-    case 13: 
-    default: 
-      return;
-    case 4: 
-      a(localIliveGroupTipsManager);
-      return;
-    case 9: 
-      a();
-      return;
-    case 6: 
-      c(localIliveGroupTipsManager);
-      return;
-    case 10: 
-      b(localIliveGroupTipsManager);
+      if (paramInt != 7)
+      {
+        if (paramInt != 15)
+        {
+          if (paramInt != 10)
+          {
+            if (paramInt != 11) {
+              return;
+            }
+            b((IliveGroupTipsManager)localObject);
+            return;
+          }
+          a();
+          return;
+        }
+        d((IliveGroupTipsManager)localObject);
+        return;
+      }
+      c((IliveGroupTipsManager)localObject);
       return;
     }
-    d(localIliveGroupTipsManager);
+    a((IliveGroupTipsManager)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.group.IliveGroupTipsBarHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -48,255 +48,6 @@ public class PkgTools
     APN_TYPE_UNIWAP = "uniwap";
   }
   
-  public static void DWord2Byte(byte[] paramArrayOfByte, int paramInt, long paramLong)
-  {
-    paramArrayOfByte[paramInt] = ((byte)(int)(paramLong >> 24));
-    paramArrayOfByte[(paramInt + 1)] = ((byte)(int)(paramLong >> 16));
-    paramArrayOfByte[(paramInt + 2)] = ((byte)(int)(paramLong >> 8));
-    paramArrayOfByte[(paramInt + 3)] = ((byte)(int)paramLong);
-  }
-  
-  public static void DWordTo2Bytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    paramArrayOfByte[paramInt1] = ((byte)(paramInt2 >> 8));
-    paramArrayOfByte[(paramInt1 + 1)] = ((byte)paramInt2);
-  }
-  
-  public static String Decodecgi(String paramString)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramString == null) {
-      return "";
-    }
-    paramString = paramString.toCharArray();
-    int j = paramString.length;
-    if (j == 0) {
-      return "";
-    }
-    int i = 0;
-    while (i < j)
-    {
-      if (paramString[i] == '%')
-      {
-        String str = String.valueOf(paramString, i + 1, 2);
-        try
-        {
-          int k = Integer.parseInt(str, 16);
-          c = (char)k;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            char c = ' ';
-          }
-        }
-        localStringBuffer.append(c);
-        i += 3;
-        continue;
-      }
-      localStringBuffer.append(paramString[i]);
-      i += 1;
-    }
-    return localStringBuffer.toString();
-  }
-  
-  public static String Encodecgi(String paramString)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramString == null) {
-      return "";
-    }
-    paramString = paramString.toCharArray();
-    int j = paramString.length;
-    if (j == 0) {
-      return "";
-    }
-    int i = 0;
-    if (i < j)
-    {
-      if ((paramString[i] == ' ') || (paramString[i] == '&') || (paramString[i] == ',') || (paramString[i] == '\r') || (paramString[i] == '\t') || (paramString[i] == '\n') || (paramString[i] == '%') || (paramString[i] == '=')) {
-        localStringBuffer.append(toUrlCode(paramString[i]));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (paramString[i] == '\024') {
-          localStringBuffer.append(toUrlCode(paramString[i]));
-        } else if ((i > 0) && (paramString[(i - 1)] == '\024')) {
-          localStringBuffer.append(toUrlCode(paramString[i]));
-        } else {
-          localStringBuffer.append(paramString[i]);
-        }
-      }
-    }
-    return localStringBuffer.toString();
-  }
-  
-  public static String GetLastParaVal(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return "";
-    }
-    paramString1 = paramString1 + "=";
-    int m = paramString1.length();
-    if (paramString2.length() == 0) {
-      return "";
-    }
-    if (m == 0) {
-      return "";
-    }
-    int j = paramString2.indexOf(paramString1);
-    if (j == -1) {
-      return "";
-    }
-    for (;;)
-    {
-      int i;
-      if (i != -1)
-      {
-        int k = paramString2.indexOf(paramString1, i + 1);
-        j = i;
-        i = k;
-      }
-      else
-      {
-        i = paramString2.indexOf('&', j);
-        if (i == -1) {
-          return paramString2.substring(j + m);
-        }
-        return paramString2.substring(j + m, i);
-        i = j;
-      }
-    }
-  }
-  
-  public static int GetMultiPara(String[] paramArrayOfString, String paramString)
-  {
-    int j = 1;
-    int i = 1;
-    if ((paramArrayOfString == null) || (paramString == null)) {
-      i = -1;
-    }
-    int k;
-    do
-    {
-      return i;
-      if (paramString.length() >= 2560) {
-        return -1;
-      }
-      k = paramString.indexOf(',');
-      if (k == -1)
-      {
-        paramArrayOfString[0] = paramString;
-        return 1;
-      }
-      paramArrayOfString[0] = paramString.substring(0, k);
-    } while (1 == paramArrayOfString.length);
-    for (paramString = paramString.substring(k + 1);; paramString = paramString.substring(k + 1))
-    {
-      k = paramString.indexOf(',');
-      if (k == -1) {
-        break label121;
-      }
-      paramArrayOfString[j] = paramString.substring(0, k);
-      j += 1;
-      i = j;
-      if (j == paramArrayOfString.length) {
-        break;
-      }
-    }
-    label121:
-    paramArrayOfString[j] = paramString;
-    return j + 1;
-  }
-  
-  public static String GetParaVal(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString1.length() == 0) || (paramString2.length() == 0)) {
-      return "";
-    }
-    int i = paramString1.length();
-    int j = paramString2.indexOf(paramString1 + "=");
-    int k = paramString2.indexOf("&" + paramString1 + "=");
-    boolean bool = paramString2.startsWith(paramString1 + "=");
-    if (j != -1) {
-      i = i + j + 1;
-    }
-    for (;;)
-    {
-      j = paramString2.indexOf('&', i);
-      if (j != -1) {
-        break label172;
-      }
-      return paramString2.substring(i);
-      if (k != -1)
-      {
-        i = i + (k + 1) + 1;
-      }
-      else
-      {
-        if (!bool) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    return "";
-    label172:
-    return paramString2.substring(i, j);
-  }
-  
-  public static Vector GetParas(String paramString)
-  {
-    Vector localVector = new Vector();
-    if (paramString == null) {
-      return localVector;
-    }
-    int i = paramString.indexOf('&');
-    if (i == -1)
-    {
-      localVector.addElement(paramString);
-      return localVector;
-    }
-    localVector.addElement(paramString.substring(0, i));
-    for (paramString = paramString.substring(i + 1);; paramString = paramString.substring(i + 1))
-    {
-      i = paramString.indexOf('&');
-      if (i == -1) {
-        break;
-      }
-      localVector.addElement(paramString.substring(0, i));
-    }
-    localVector.addElement(paramString);
-    return localVector;
-  }
-  
-  public static byte[] Unicode2Byte(String paramString)
-  {
-    int i = 0;
-    int k = paramString.length();
-    byte[] arrayOfByte = new byte[k << 1];
-    int j = 0;
-    while (i < k)
-    {
-      int m = paramString.charAt(i);
-      int n = j + 1;
-      arrayOfByte[j] = ((byte)(m >> 8));
-      j = n + 1;
-      arrayOfByte[n] = ((byte)(m & 0xFF));
-      i += 1;
-    }
-    return arrayOfByte;
-  }
-  
-  public static void Word2Byte(byte[] paramArrayOfByte, int paramInt, short paramShort)
-  {
-    paramArrayOfByte[paramInt] = ((byte)(paramShort >> 8));
-    paramArrayOfByte[(paramInt + 1)] = ((byte)paramShort);
-  }
-  
   public static Long ascByteToLong(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     StringBuffer localStringBuffer = new StringBuffer();
@@ -323,26 +74,33 @@ public class PkgTools
   
   public static String byte2Unicode(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if ((paramInt1 + paramInt2 > paramArrayOfByte.length) || (paramInt2 % 2 != 0)) {
-      throw new IllegalArgumentException();
-    }
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = paramInt1;
-    while (i < paramInt2 / 2 + paramInt1)
+    if ((paramInt1 + paramInt2 <= paramArrayOfByte.length) && (paramInt2 % 2 == 0))
     {
-      localStringBuffer.append((char)(paramArrayOfByte[((i - paramInt1) * 2 + paramInt1)] << 8 | paramArrayOfByte[((i - paramInt1) * 2 + paramInt1 + 1)] & 0xFF));
-      i += 1;
+      StringBuffer localStringBuffer = new StringBuffer();
+      int i = paramInt1;
+      while (i < paramInt2 / 2 + paramInt1)
+      {
+        int j = (i - paramInt1) * 2 + paramInt1;
+        int k = paramArrayOfByte[j];
+        localStringBuffer.append((char)(paramArrayOfByte[(j + 1)] & 0xFF | k << 8));
+        i += 1;
+      }
+      return localStringBuffer.toString();
     }
-    return localStringBuffer.toString();
+    paramArrayOfByte = new IllegalArgumentException();
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   public static String[] byteArray2StringArray(byte[] paramArrayOfByte)
   {
     ArrayList localArrayList = new ArrayList();
     DataInputStream localDataInputStream = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte));
-    try
+    for (;;)
     {
-      for (;;)
+      try
       {
         if (localDataInputStream.available() > 0)
         {
@@ -350,103 +108,100 @@ public class PkgTools
           if (i > localDataInputStream.available()) {
             return null;
           }
-          byte[] arrayOfByte = new byte[i];
+          arrayOfByte = new byte[i];
           localDataInputStream.read(arrayOfByte);
-          try
-          {
-            paramArrayOfByte = new String(arrayOfByte, "utf-8");
-            localArrayList.add(paramArrayOfByte);
-          }
-          catch (UnsupportedEncodingException paramArrayOfByte)
-          {
-            for (;;)
-            {
-              paramArrayOfByte = new String(arrayOfByte);
-            }
-          }
         }
       }
-      paramArrayOfByte = (String[])localArrayList.toArray(new String[localArrayList.size()]);
-      return paramArrayOfByte;
+      catch (IOException paramArrayOfByte)
+      {
+        byte[] arrayOfByte;
+        return null;
+      }
+      try
+      {
+        paramArrayOfByte = new String(arrayOfByte, "utf-8");
+      }
+      catch (UnsupportedEncodingException paramArrayOfByte)
+      {
+        continue;
+      }
+      paramArrayOfByte = new String(arrayOfByte);
+      localArrayList.add(paramArrayOfByte);
     }
-    catch (IOException paramArrayOfByte) {}
-    return null;
+    paramArrayOfByte = (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    return paramArrayOfByte;
   }
   
   public static int bytesToInt(byte[] paramArrayOfByte, int paramInt)
   {
-    return paramArrayOfByte[paramInt] & 0xFF | (paramArrayOfByte[(paramInt + 1)] & 0xFF) << 8 | (paramArrayOfByte[(paramInt + 2)] & 0xFF) << 16 | (paramArrayOfByte[(paramInt + 3)] & 0xFF) << 24;
+    int i = paramArrayOfByte[paramInt];
+    int j = paramArrayOfByte[(paramInt + 1)];
+    int k = paramArrayOfByte[(paramInt + 2)];
+    return (paramArrayOfByte[(paramInt + 3)] & 0xFF) << 24 | i & 0xFF | (j & 0xFF) << 8 | (k & 0xFF) << 16;
   }
   
   public static byte[] convertUnicode2UTF8Byte(String paramString)
   {
-    int k = 0;
-    if (paramString == null)
-    {
-      paramString = null;
-      return paramString;
+    if (paramString == null) {
+      return null;
     }
     int n = paramString.length();
-    byte[] arrayOfByte2 = new byte[n << 2];
+    byte[] arrayOfByte = new byte[n << 2];
+    int m = 0;
     int j = 0;
-    int i = 0;
-    label28:
-    int i1;
-    int m;
-    if (j < n)
+    for (int k = 0; j < n; k = i)
     {
-      i1 = paramString.charAt(j);
+      int i1 = paramString.charAt(j);
       if (i1 < 128)
       {
-        m = i + 1;
-        arrayOfByte2[i] = ((byte)i1);
-        i = m;
+        arrayOfByte[k] = ((byte)i1);
+        i = k + 1;
       }
-    }
-    for (;;)
-    {
-      j += 1;
-      break label28;
-      if (i1 < 2048)
+      else
       {
-        m = i + 1;
-        arrayOfByte2[i] = ((byte)(i1 >> 6 & 0x1F | 0xC0));
-        i = m + 1;
-        arrayOfByte2[m] = ((byte)(i1 & 0x3F | 0x80));
-      }
-      else if (i1 < 65536)
-      {
-        m = i + 1;
-        arrayOfByte2[i] = ((byte)(i1 >> 12 & 0xF | 0xE0));
-        int i2 = m + 1;
-        arrayOfByte2[m] = ((byte)(i1 >> 6 & 0x3F | 0x80));
-        i = i2 + 1;
-        arrayOfByte2[i2] = ((byte)(i1 & 0x3F | 0x80));
-      }
-      else if (i1 < 2097152)
-      {
-        m = i + 1;
-        arrayOfByte2[i] = ((byte)(i1 >> 18 & 0x7 | 0xF0));
-        i = m + 1;
-        arrayOfByte2[m] = ((byte)(i1 >> 12 & 0x3F | 0x80));
-        m = i + 1;
-        arrayOfByte2[i] = ((byte)(i1 >> 6 & 0x3F | 0x80));
-        i = m + 1;
-        arrayOfByte2[m] = ((byte)(i1 & 0x3F | 0x80));
-        continue;
-        byte[] arrayOfByte1 = new byte[i];
-        j = k;
-        for (;;)
+        int i2;
+        if (i1 < 2048)
         {
-          paramString = arrayOfByte1;
-          if (j >= i) {
-            break;
+          i2 = k + 1;
+          arrayOfByte[k] = ((byte)(i1 >> 6 & 0x1F | 0xC0));
+          i = i2 + 1;
+          arrayOfByte[i2] = ((byte)(i1 & 0x3F | 0x80));
+        }
+        else if (i1 < 65536)
+        {
+          i = k + 1;
+          arrayOfByte[k] = ((byte)(i1 >> 12 & 0xF | 0xE0));
+          k = i + 1;
+          arrayOfByte[i] = ((byte)(i1 >> 6 & 0x3F | 0x80));
+          arrayOfByte[k] = ((byte)(i1 & 0x3F | 0x80));
+          i = k + 1;
+        }
+        else
+        {
+          i = k;
+          if (i1 < 2097152)
+          {
+            i = k + 1;
+            arrayOfByte[k] = ((byte)(i1 >> 18 & 0x7 | 0xF0));
+            k = i + 1;
+            arrayOfByte[i] = ((byte)(i1 >> 12 & 0x3F | 0x80));
+            i2 = k + 1;
+            arrayOfByte[k] = ((byte)(i1 >> 6 & 0x3F | 0x80));
+            i = i2 + 1;
+            arrayOfByte[i2] = ((byte)(i1 & 0x3F | 0x80));
           }
-          arrayOfByte1[j] = arrayOfByte2[j];
-          j += 1;
         }
       }
+      j += 1;
     }
+    paramString = new byte[k];
+    int i = m;
+    while (i < k)
+    {
+      paramString[i] = arrayOfByte[i];
+      i += 1;
+    }
+    return paramString;
   }
   
   public static void copyData(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2)
@@ -459,37 +214,89 @@ public class PkgTools
     System.arraycopy(paramArrayOfByte2, paramInt2, paramArrayOfByte1, paramInt1, paramInt3);
   }
   
+  public static void dWord2Byte(byte[] paramArrayOfByte, int paramInt, long paramLong)
+  {
+    paramArrayOfByte[paramInt] = ((byte)(int)(paramLong >> 24));
+    paramArrayOfByte[(paramInt + 1)] = ((byte)(int)(paramLong >> 16));
+    paramArrayOfByte[(paramInt + 2)] = ((byte)(int)(paramLong >> 8));
+    paramArrayOfByte[(paramInt + 3)] = ((byte)(int)paramLong);
+  }
+  
+  public static void dWordTo2Bytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    paramArrayOfByte[paramInt1] = ((byte)(paramInt2 >> 8));
+    paramArrayOfByte[(paramInt1 + 1)] = ((byte)paramInt2);
+  }
+  
   public static String dealString(String paramString)
   {
     if (paramString == null) {
       return null;
     }
-    try
+    for (;;)
     {
-      paramString = paramString.getBytes("utf-8");
-      i = 0;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      for (;;)
+      int i;
+      try
       {
-        int i;
-        paramString = null;
-        continue;
-        i += 1;
+        paramString = paramString.getBytes("utf-8");
+        i = 0;
+        if (i < paramString.length)
+        {
+          if (paramString[i] == 13) {
+            paramString[i] = 32;
+          }
+        }
+        else
+        {
+          paramString = new String(paramString, "utf-8");
+          return paramString;
+        }
       }
-    }
-    if (i < paramString.length)
-    {
-      if (paramString[i] == 13) {
-        paramString[i] = 32;
+      catch (UnsupportedEncodingException paramString)
+      {
+        return null;
       }
+      i += 1;
     }
-    else
+  }
+  
+  public static String decodeCgi(String paramString)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (paramString == null) {
+      return "";
+    }
+    paramString = paramString.toCharArray();
+    int j = paramString.length;
+    if (j == 0) {
+      return "";
+    }
+    int i = 0;
+    while (i < j)
     {
-      paramString = new String(paramString, "utf-8");
-      return paramString;
+      String str;
+      if (paramString[i] == '%') {
+        str = String.valueOf(paramString, i + 1, 2);
+      }
+      try
+      {
+        int k = Integer.parseInt(str, 16);
+        c = (char)k;
+      }
+      catch (Exception localException)
+      {
+        char c;
+        label72:
+        break label72;
+      }
+      c = ' ';
+      localStringBuffer.append(c);
+      i += 3;
+      continue;
+      localStringBuffer.append(paramString[i]);
+      i += 1;
     }
+    return localStringBuffer.toString();
   }
   
   public static String deleteReturn(String paramString)
@@ -509,239 +316,340 @@ public class PkgTools
     return paramString.toString();
   }
   
+  public static String encodeCgi(String paramString)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (paramString == null) {
+      return "";
+    }
+    paramString = paramString.toCharArray();
+    int j = paramString.length;
+    if (j == 0) {
+      return "";
+    }
+    int i = 0;
+    while (i < j)
+    {
+      if ((paramString[i] != ' ') && (paramString[i] != '&') && (paramString[i] != ',') && (paramString[i] != '\r') && (paramString[i] != '\t') && (paramString[i] != '\n') && (paramString[i] != '%') && (paramString[i] != '='))
+      {
+        if (paramString[i] == '\024') {
+          localStringBuffer.append(toUrlCode(paramString[i]));
+        } else if ((i > 0) && (paramString[(i - 1)] == '\024')) {
+          localStringBuffer.append(toUrlCode(paramString[i]));
+        } else {
+          localStringBuffer.append(paramString[i]);
+        }
+      }
+      else {
+        localStringBuffer.append(toUrlCode(paramString[i]));
+      }
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
   public static boolean equals(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if ((paramArrayOfByte1 == null) && (paramArrayOfByte2 == null)) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramArrayOfByte1 != null)
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (paramArrayOfByte1 == null);
-        bool1 = bool2;
-      } while (paramArrayOfByte2 == null);
-      bool1 = bool2;
-    } while (paramArrayOfByte1.length != paramArrayOfByte2.length);
-    return memcmp(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte1.length);
+      if (paramArrayOfByte2 == null) {
+        return false;
+      }
+      if (paramArrayOfByte1.length != paramArrayOfByte2.length) {
+        return false;
+      }
+      return memcmp(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte1.length);
+    }
+    return false;
   }
   
   public static boolean equalsIgnoreCase(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString1.length() != paramString2.length())) {}
-    int i;
-    char[] arrayOfChar1;
-    char[] arrayOfChar2;
-    do
+    if ((paramString1 != null) && (paramString2 != null))
     {
-      return false;
-      i = paramString1.length();
-      arrayOfChar1 = paramString1.toCharArray();
-      arrayOfChar2 = paramString2.toCharArray();
-    } while ((0 > paramString1.length() - i) || (0 > paramString2.length() - i));
-    int j = 0;
-    int k = 0;
-    for (;;)
-    {
-      if (i <= 0) {
-        return true;
+      if (paramString1.length() != paramString2.length()) {
+        return false;
       }
-      char c2 = arrayOfChar1[j];
-      char c1 = arrayOfChar2[k];
-      if (c2 != c1)
+      int j = paramString1.length();
+      char[] arrayOfChar1 = paramString1.toCharArray();
+      char[] arrayOfChar2 = paramString2.toCharArray();
+      long l1 = 0;
+      long l2 = paramString1.length();
+      long l3 = j;
+      if (l1 <= l2 - l3)
       {
-        c2 = Character.toUpperCase(c2);
-        c1 = Character.toUpperCase(c1);
-        if ((c2 != c1) && (Character.toLowerCase(c2) != Character.toLowerCase(c1))) {
-          break;
+        if (l1 > paramString2.length() - l3) {
+          return false;
+        }
+        int k = 0;
+        int i = 0;
+        for (;;)
+        {
+          if (j <= 0) {
+            return true;
+          }
+          char c2 = arrayOfChar1[k];
+          char c1 = arrayOfChar2[i];
+          if (c2 != c1)
+          {
+            c2 = Character.toUpperCase(c2);
+            c1 = Character.toUpperCase(c1);
+            if ((c2 != c1) && (Character.toLowerCase(c2) != Character.toLowerCase(c1))) {
+              return false;
+            }
+          }
+          k += 1;
+          j -= 1;
+          i += 1;
         }
       }
-      k += 1;
-      j += 1;
-      i -= 1;
     }
+    return false;
   }
   
   /* Error */
   public static String getApnType(android.content.Context paramContext)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 328	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   4: getstatic 43	com/tencent/mobileqq/utils/httputils/PkgTools:PREFERRED_APN_URI	Landroid/net/Uri;
-    //   7: aconst_null
-    //   8: aconst_null
-    //   9: aconst_null
-    //   10: aconst_null
-    //   11: invokevirtual 334	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   14: astore_1
-    //   15: aload_1
-    //   16: ifnonnull +17 -> 33
-    //   19: aload_1
-    //   20: ifnull +9 -> 29
-    //   23: aload_1
-    //   24: invokeinterface 339 1 0
-    //   29: ldc_w 341
-    //   32: areturn
-    //   33: aload_1
-    //   34: invokeinterface 345 1 0
-    //   39: pop
-    //   40: aload_1
-    //   41: aload_1
-    //   42: ldc_w 347
-    //   45: invokeinterface 350 2 0
-    //   50: invokeinterface 353 2 0
-    //   55: invokevirtual 355	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   58: astore_0
-    //   59: aload_0
-    //   60: getstatic 47	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CTNET	Ljava/lang/String;
-    //   63: invokevirtual 167	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   66: ifeq +23 -> 89
-    //   69: getstatic 47	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CTNET	Ljava/lang/String;
-    //   72: astore_0
-    //   73: aload_0
-    //   74: astore_2
-    //   75: aload_1
-    //   76: ifnull +11 -> 87
-    //   79: aload_1
-    //   80: invokeinterface 339 1 0
-    //   85: aload_0
-    //   86: astore_2
-    //   87: aload_2
-    //   88: areturn
-    //   89: aload_0
-    //   90: getstatic 51	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CTWAP	Ljava/lang/String;
-    //   93: invokevirtual 167	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   96: ifeq +10 -> 106
-    //   99: getstatic 51	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CTWAP	Ljava/lang/String;
-    //   102: astore_0
-    //   103: goto -30 -> 73
-    //   106: aload_0
-    //   107: getstatic 55	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CMNET	Ljava/lang/String;
-    //   110: invokevirtual 167	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   113: ifeq +10 -> 123
-    //   116: getstatic 55	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CMNET	Ljava/lang/String;
-    //   119: astore_0
-    //   120: goto -47 -> 73
-    //   123: aload_0
-    //   124: getstatic 59	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CMWAP	Ljava/lang/String;
-    //   127: invokevirtual 167	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   130: ifeq +10 -> 140
-    //   133: getstatic 59	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CMWAP	Ljava/lang/String;
-    //   136: astore_0
-    //   137: goto -64 -> 73
-    //   140: aload_0
-    //   141: getstatic 63	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_UNINET	Ljava/lang/String;
-    //   144: invokevirtual 167	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   147: ifeq +10 -> 157
-    //   150: getstatic 63	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_UNINET	Ljava/lang/String;
-    //   153: astore_0
-    //   154: goto -81 -> 73
-    //   157: aload_0
-    //   158: getstatic 67	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_UNIWAP	Ljava/lang/String;
-    //   161: invokevirtual 167	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   164: ifeq +62 -> 226
-    //   167: getstatic 67	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_UNIWAP	Ljava/lang/String;
-    //   170: astore_0
-    //   171: goto -98 -> 73
-    //   174: astore_0
-    //   175: aconst_null
-    //   176: astore_0
-    //   177: aload_0
-    //   178: ifnull +41 -> 219
-    //   181: aload_0
-    //   182: invokeinterface 339 1 0
-    //   187: ldc_w 341
-    //   190: astore_2
-    //   191: goto -104 -> 87
-    //   194: astore_0
-    //   195: aconst_null
-    //   196: astore_1
-    //   197: aload_1
-    //   198: ifnull +9 -> 207
-    //   201: aload_1
-    //   202: invokeinterface 339 1 0
-    //   207: aload_0
-    //   208: athrow
-    //   209: astore_0
-    //   210: goto -13 -> 197
-    //   213: astore_0
-    //   214: aload_1
+    //   0: ldc_w 273
+    //   3: astore_1
+    //   4: aconst_null
+    //   5: astore_2
+    //   6: aconst_null
+    //   7: astore 4
+    //   9: aload_0
+    //   10: invokevirtual 279	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   13: getstatic 43	com/tencent/mobileqq/utils/httputils/PkgTools:PREFERRED_APN_URI	Landroid/net/Uri;
+    //   16: aconst_null
+    //   17: aconst_null
+    //   18: aconst_null
+    //   19: aconst_null
+    //   20: invokevirtual 285	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   23: astore_3
+    //   24: aload_3
+    //   25: ifnonnull +17 -> 42
+    //   28: aload_3
+    //   29: ifnull +9 -> 38
+    //   32: aload_3
+    //   33: invokeinterface 290 1 0
+    //   38: ldc_w 273
+    //   41: areturn
+    //   42: aload_3
+    //   43: astore 4
+    //   45: aload_3
+    //   46: astore_2
+    //   47: aload_3
+    //   48: invokeinterface 294 1 0
+    //   53: pop
+    //   54: aload_3
+    //   55: astore 4
+    //   57: aload_3
+    //   58: astore_2
+    //   59: aload_3
+    //   60: aload_3
+    //   61: ldc_w 296
+    //   64: invokeinterface 300 2 0
+    //   69: invokeinterface 304 2 0
+    //   74: invokevirtual 306	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   77: astore 5
+    //   79: aload_3
+    //   80: astore 4
+    //   82: aload_3
+    //   83: astore_2
+    //   84: aload 5
+    //   86: getstatic 47	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CTNET	Ljava/lang/String;
+    //   89: invokevirtual 310	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   92: ifeq +15 -> 107
+    //   95: aload_3
+    //   96: astore 4
+    //   98: aload_3
+    //   99: astore_2
+    //   100: getstatic 47	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CTNET	Ljava/lang/String;
+    //   103: astore_0
+    //   104: goto +196 -> 300
+    //   107: aload_3
+    //   108: astore 4
+    //   110: aload_3
+    //   111: astore_2
+    //   112: aload 5
+    //   114: getstatic 51	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CTWAP	Ljava/lang/String;
+    //   117: invokevirtual 310	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   120: ifeq +15 -> 135
+    //   123: aload_3
+    //   124: astore 4
+    //   126: aload_3
+    //   127: astore_2
+    //   128: getstatic 51	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CTWAP	Ljava/lang/String;
+    //   131: astore_0
+    //   132: goto +168 -> 300
+    //   135: aload_3
+    //   136: astore 4
+    //   138: aload_3
+    //   139: astore_2
+    //   140: aload 5
+    //   142: getstatic 55	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CMNET	Ljava/lang/String;
+    //   145: invokevirtual 310	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   148: ifeq +15 -> 163
+    //   151: aload_3
+    //   152: astore 4
+    //   154: aload_3
+    //   155: astore_2
+    //   156: getstatic 55	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CMNET	Ljava/lang/String;
+    //   159: astore_0
+    //   160: goto +140 -> 300
+    //   163: aload_3
+    //   164: astore 4
+    //   166: aload_3
+    //   167: astore_2
+    //   168: aload 5
+    //   170: getstatic 59	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CMWAP	Ljava/lang/String;
+    //   173: invokevirtual 310	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   176: ifeq +15 -> 191
+    //   179: aload_3
+    //   180: astore 4
+    //   182: aload_3
+    //   183: astore_2
+    //   184: getstatic 59	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CMWAP	Ljava/lang/String;
+    //   187: astore_0
+    //   188: goto +112 -> 300
+    //   191: aload_3
+    //   192: astore 4
+    //   194: aload_3
+    //   195: astore_2
+    //   196: aload 5
+    //   198: getstatic 63	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_UNINET	Ljava/lang/String;
+    //   201: invokevirtual 310	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   204: ifeq +15 -> 219
+    //   207: aload_3
+    //   208: astore 4
+    //   210: aload_3
+    //   211: astore_2
+    //   212: getstatic 63	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_UNINET	Ljava/lang/String;
     //   215: astore_0
-    //   216: goto -39 -> 177
-    //   219: ldc_w 341
-    //   222: astore_2
-    //   223: goto -136 -> 87
-    //   226: ldc_w 341
-    //   229: astore_0
-    //   230: goto -157 -> 73
+    //   216: goto +84 -> 300
+    //   219: aload_1
+    //   220: astore_0
+    //   221: aload_3
+    //   222: astore 4
+    //   224: aload_3
+    //   225: astore_2
+    //   226: aload 5
+    //   228: getstatic 67	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_UNIWAP	Ljava/lang/String;
+    //   231: invokevirtual 310	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   234: ifeq +15 -> 249
+    //   237: aload_3
+    //   238: astore 4
+    //   240: aload_3
+    //   241: astore_2
+    //   242: getstatic 67	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_UNIWAP	Ljava/lang/String;
+    //   245: astore_0
+    //   246: goto +54 -> 300
+    //   249: aload_0
+    //   250: astore 4
+    //   252: aload_3
+    //   253: ifnull +40 -> 293
+    //   256: aload_3
+    //   257: astore_2
+    //   258: aload_2
+    //   259: invokeinterface 290 1 0
+    //   264: aload_0
+    //   265: areturn
+    //   266: astore_0
+    //   267: aload 4
+    //   269: ifnull +10 -> 279
+    //   272: aload 4
+    //   274: invokeinterface 290 1 0
+    //   279: aload_0
+    //   280: athrow
+    //   281: aload_1
+    //   282: astore 4
+    //   284: aload_2
+    //   285: ifnull +8 -> 293
+    //   288: aload_1
+    //   289: astore_0
+    //   290: goto -32 -> 258
+    //   293: aload 4
+    //   295: areturn
+    //   296: astore_0
+    //   297: goto -16 -> 281
+    //   300: goto -51 -> 249
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	233	0	paramContext	android.content.Context
-    //   14	201	1	localCursor	android.database.Cursor
-    //   74	149	2	localObject	Object
+    //   0	303	0	paramContext	android.content.Context
+    //   3	286	1	str1	String
+    //   5	280	2	localObject1	Object
+    //   23	234	3	localCursor	android.database.Cursor
+    //   7	287	4	localObject2	Object
+    //   77	150	5	str2	String
     // Exception table:
     //   from	to	target	type
-    //   0	15	174	java/lang/Exception
-    //   0	15	194	finally
-    //   33	73	209	finally
-    //   89	103	209	finally
-    //   106	120	209	finally
-    //   123	137	209	finally
-    //   140	154	209	finally
-    //   157	171	209	finally
-    //   33	73	213	java/lang/Exception
-    //   89	103	213	java/lang/Exception
-    //   106	120	213	java/lang/Exception
-    //   123	137	213	java/lang/Exception
-    //   140	154	213	java/lang/Exception
-    //   157	171	213	java/lang/Exception
+    //   9	24	266	finally
+    //   47	54	266	finally
+    //   59	79	266	finally
+    //   84	95	266	finally
+    //   100	104	266	finally
+    //   112	123	266	finally
+    //   128	132	266	finally
+    //   140	151	266	finally
+    //   156	160	266	finally
+    //   168	179	266	finally
+    //   184	188	266	finally
+    //   196	207	266	finally
+    //   212	216	266	finally
+    //   226	237	266	finally
+    //   242	246	266	finally
+    //   9	24	296	java/lang/Exception
+    //   47	54	296	java/lang/Exception
+    //   59	79	296	java/lang/Exception
+    //   84	95	296	java/lang/Exception
+    //   100	104	296	java/lang/Exception
+    //   112	123	296	java/lang/Exception
+    //   128	132	296	java/lang/Exception
+    //   140	151	296	java/lang/Exception
+    //   156	160	296	java/lang/Exception
+    //   168	179	296	java/lang/Exception
+    //   184	188	296	java/lang/Exception
+    //   196	207	296	java/lang/Exception
+    //   212	216	296	java/lang/Exception
+    //   226	237	296	java/lang/Exception
+    //   242	246	296	java/lang/Exception
   }
   
   public static String getApnType(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
+    if (paramString == null) {
+      return "nomatch";
+    }
+    try
+    {
+      if (paramString.startsWith(APN_TYPE_CTNET)) {
+        paramString = APN_TYPE_CTNET;
+      } else if (paramString.startsWith(APN_TYPE_CTWAP)) {
+        paramString = APN_TYPE_CTWAP;
+      } else if (paramString.startsWith(APN_TYPE_CMNET)) {
+        paramString = APN_TYPE_CMNET;
+      } else if (paramString.startsWith(APN_TYPE_CMWAP)) {
+        paramString = APN_TYPE_CMWAP;
+      } else if (paramString.startsWith(APN_TYPE_UNINET)) {
+        paramString = APN_TYPE_UNINET;
+      } else if (paramString.startsWith(APN_TYPE_UNIWAP)) {
+        paramString = APN_TYPE_UNIWAP;
+      } else if (paramString.startsWith(APN_TYPE_3GNET)) {
+        paramString = APN_TYPE_3GNET;
+      } else if (paramString.startsWith(APN_TYPE_3GWAP)) {
+        paramString = APN_TYPE_3GWAP;
+      } else {
+        return "nomatch";
+      }
+    }
+    catch (Exception paramString)
     {
       return "nomatch";
-      try
-      {
-        if (paramString.startsWith(APN_TYPE_CTNET)) {
-          return APN_TYPE_CTNET;
-        }
-        if (paramString.startsWith(APN_TYPE_CTWAP)) {
-          return APN_TYPE_CTWAP;
-        }
-        if (paramString.startsWith(APN_TYPE_CMNET)) {
-          return APN_TYPE_CMNET;
-        }
-        if (paramString.startsWith(APN_TYPE_CMWAP)) {
-          return APN_TYPE_CMWAP;
-        }
-        if (paramString.startsWith(APN_TYPE_UNINET)) {
-          return APN_TYPE_UNINET;
-        }
-        if (paramString.startsWith(APN_TYPE_UNIWAP)) {
-          return APN_TYPE_UNIWAP;
-        }
-        if (paramString.startsWith(APN_TYPE_3GNET)) {
-          return APN_TYPE_3GNET;
-        }
-        if (paramString.startsWith(APN_TYPE_3GWAP))
-        {
-          paramString = APN_TYPE_3GWAP;
-          return paramString;
-        }
-      }
-      catch (Exception paramString) {}
     }
-    return "nomatch";
+    return paramString;
   }
   
   public static void getBytesData(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2)
@@ -755,36 +663,88 @@ public class PkgTools
     return (HttpURLConnection)new URL(paramString1).openConnection(paramString2);
   }
   
+  @Deprecated
   public static HttpURLConnection getConnectionWithXOnlineHost(String paramString1, String paramString2, int paramInt)
   {
-    int i = "http://".length();
-    int j = paramString1.indexOf('/', i);
+    int i = paramString1.indexOf('/', 7);
+    String str;
     Object localObject;
-    if (j < 0)
+    if (i < 0)
     {
-      paramString1 = paramString1.substring(i);
-      localObject = "";
-      if (paramInt == 80) {
-        break label125;
-      }
+      paramString1 = paramString1.substring(7);
+      str = "";
     }
-    label125:
-    for (paramString2 = new URL("http://" + paramString2 + ":" + paramInt + (String)localObject);; paramString2 = new URL("http://" + paramString2 + (String)localObject))
+    else
     {
-      paramString2 = (HttpURLConnection)paramString2.openConnection();
-      paramString2.setRequestProperty("X-Online-Host", paramString1);
-      return paramString2;
-      localObject = paramString1.substring(i, j);
-      String str = paramString1.substring(j);
+      localObject = paramString1.substring(7, i);
+      str = paramString1.substring(i);
       paramString1 = (String)localObject;
-      localObject = str;
-      break;
     }
+    if (paramInt != 80)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("http://");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(str);
+      paramString2 = new URL(((StringBuilder)localObject).toString());
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("http://");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(str);
+      paramString2 = new URL(((StringBuilder)localObject).toString());
+    }
+    paramString2 = (HttpURLConnection)paramString2.openConnection();
+    paramString2.setRequestProperty("X-Online-Host", paramString1);
+    return paramString2;
   }
   
   public static short getHShortData(byte[] paramArrayOfByte, int paramInt)
   {
-    return (short)(((paramArrayOfByte[paramInt] & 0xFF) << 0) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 8));
+    int i = paramArrayOfByte[paramInt];
+    return (short)(((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 8) + ((i & 0xFF) << 0));
+  }
+  
+  public static String getLastParaVal(String paramString1, String paramString2)
+  {
+    if (paramString1 != null)
+    {
+      if (paramString2 == null) {
+        return "";
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("=");
+      paramString1 = localStringBuilder.toString();
+      int m = paramString1.length();
+      if (paramString2.length() == 0) {
+        return "";
+      }
+      if (m == 0) {
+        return "";
+      }
+      int i = paramString2.indexOf(paramString1);
+      if (i == -1) {
+        return "";
+      }
+      int j = i;
+      while (i != -1)
+      {
+        int k = paramString2.indexOf(paramString1, i + 1);
+        j = i;
+        i = k;
+      }
+      i = paramString2.indexOf('&', j);
+      if (i == -1) {
+        return paramString2.substring(j + m);
+      }
+      return paramString2.substring(j + m, i);
+    }
+    return "";
   }
   
   public static long getLittleIndianData(byte[] paramArrayOfByte, int paramInt)
@@ -803,6 +763,118 @@ public class PkgTools
   public static long getLongLongData(byte[] paramArrayOfByte, int paramInt)
   {
     return ((paramArrayOfByte[(paramInt + 4)] & 0xFF) << 56) + ((paramArrayOfByte[(paramInt + 5)] & 0xFF) << 48) + ((paramArrayOfByte[(paramInt + 6)] & 0xFF) << 40) + ((paramArrayOfByte[(paramInt + 7)] & 0xFF) << 32) + ((paramArrayOfByte[paramInt] & 0xFF) << 24) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16) + ((paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8) + (paramArrayOfByte[(paramInt + 3)] & 0xFF);
+  }
+  
+  public static int getMultiPara(String[] paramArrayOfString, String paramString)
+  {
+    if (paramArrayOfString != null)
+    {
+      if (paramString == null) {
+        return -1;
+      }
+      if (paramString.length() >= 2560) {
+        return -1;
+      }
+      int i = paramString.indexOf(',');
+      if (i == -1)
+      {
+        paramArrayOfString[0] = paramString;
+        return 1;
+      }
+      paramArrayOfString[0] = paramString.substring(0, i);
+      if (1 == paramArrayOfString.length) {
+        return 1;
+      }
+      paramString = paramString.substring(i + 1);
+      i = 1;
+      for (;;)
+      {
+        int j = paramString.indexOf(',');
+        if (j == -1) {
+          break;
+        }
+        paramArrayOfString[i] = paramString.substring(0, j);
+        i += 1;
+        if (i == paramArrayOfString.length) {
+          return i;
+        }
+        paramString = paramString.substring(j + 1);
+      }
+      paramArrayOfString[i] = paramString;
+      return i + 1;
+    }
+    return -1;
+  }
+  
+  public static String getParaVal(String paramString1, String paramString2)
+  {
+    if ((paramString1 != null) && (paramString2 != null) && (paramString1.length() != 0))
+    {
+      if (paramString2.length() == 0) {
+        return "";
+      }
+      int i = paramString1.length();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("=");
+      int j = paramString2.indexOf(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("&");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("=");
+      int k = paramString2.indexOf(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("=");
+      boolean bool = paramString2.startsWith(localStringBuilder.toString());
+      if (j != -1)
+      {
+        i = j + i + 1;
+      }
+      else if (k != -1)
+      {
+        i = k + 1 + i + 1;
+      }
+      else
+      {
+        if (!bool) {
+          break label213;
+        }
+        i += 1;
+      }
+      j = paramString2.indexOf('&', i);
+      if (j == -1) {
+        return paramString2.substring(i);
+      }
+      return paramString2.substring(i, j);
+    }
+    label213:
+    return "";
+  }
+  
+  public static Vector getParas(String paramString)
+  {
+    Vector localVector = new Vector();
+    if (paramString == null) {
+      return localVector;
+    }
+    int i = paramString.indexOf('&');
+    if (i == -1)
+    {
+      localVector.addElement(paramString);
+      return localVector;
+    }
+    localVector.addElement(paramString.substring(0, i));
+    for (paramString = paramString.substring(i + 1);; paramString = paramString.substring(i + 1))
+    {
+      i = paramString.indexOf('&');
+      if (i == -1) {
+        break;
+      }
+      localVector.addElement(paramString.substring(0, i));
+    }
+    localVector.addElement(paramString);
+    return localVector;
   }
   
   public static short getShortData(byte[] paramArrayOfByte, int paramInt)
@@ -830,46 +902,50 @@ public class PkgTools
     }
     int i = paramString.length();
     paramString = paramString.toUpperCase();
-    if ((i % 2 != 0) || (i == 0)) {
-      return null;
-    }
-    int k = i / 2;
-    byte[] arrayOfByte = new byte[k];
-    i = 0;
-    if (i < k)
+    if (i % 2 == 0)
     {
-      int j = paramString.charAt(i * 2);
-      int m = paramString.charAt(i * 2 + 1);
-      if ((j >= 48) && (j <= 57))
-      {
-        j = (j - 48 << 4) + 0;
-        label84:
-        if ((m < 48) || (m > 57)) {
-          break label148;
-        }
-        j += m - 48;
-      }
-      for (;;)
-      {
-        arrayOfByte[i] = ((byte)j);
-        i += 1;
-        break;
-        if ((j >= 65) && (j <= 70))
-        {
-          j = (j - 65 + 10 << 4) + 0;
-          break label84;
-        }
+      if (i == 0) {
         return null;
-        label148:
-        if ((m < 65) || (m > 70)) {
-          break label176;
-        }
-        j += m - 65 + 10;
       }
-      label176:
-      return null;
+      int m = i / 2;
+      byte[] arrayOfByte = new byte[m];
+      i = 0;
+      while (i < m)
+      {
+        int k = i * 2;
+        int j = paramString.charAt(k);
+        k = paramString.charAt(k + 1);
+        if ((j >= 48) && (j <= 57)) {
+          j -= 48;
+        }
+        for (;;)
+        {
+          break;
+          if ((j < 65) || (j > 70)) {
+            break label170;
+          }
+          j = j - 65 + 10;
+        }
+        if ((k >= 48) && (k <= 57)) {
+          k -= 48;
+        }
+        for (;;)
+        {
+          break;
+          if ((k < 65) || (k > 70)) {
+            break label170;
+          }
+          k = k - 65 + 10;
+        }
+        arrayOfByte[i] = ((byte)((j << 4) + 0 + k));
+        i += 1;
+        continue;
+        label170:
+        return null;
+      }
+      return arrayOfByte;
     }
-    return arrayOfByte;
+    return null;
   }
   
   public static String int2IP(long paramLong)
@@ -944,7 +1020,7 @@ public class PkgTools
       int j = arrayOfByte[2];
       int k = arrayOfByte[1];
       int m = arrayOfByte[0];
-      return m << 24 & 0xFF000000 | i & 0xFF | j << 8 & 0xFF00 | k << 16 & 0xFF0000;
+      return i & 0xFF | j << 8 & 0xFF00 | k << 16 & 0xFF0000 | m << 24 & 0xFF000000;
     }
     catch (Exception paramString)
     {
@@ -955,53 +1031,61 @@ public class PkgTools
   
   public static int isNext(String paramString)
   {
-    int j = 0;
     paramString = paramString.toCharArray();
     int m = paramString.length;
-    int k = 0;
-    for (;;)
+    int j = 0;
+    int i;
+    for (int k = 0; j < m; k = i)
     {
-      int i = j;
-      if (k < m)
+      i = k;
+      if (paramString[j] == '下')
       {
-        i = j;
-        if (paramString[k] == '下')
+        int n = j + 2;
+        i = k;
+        if (n <= m)
         {
-          i = j;
-          if (k + 2 <= m) {
-            switch (paramString[(k + 1)])
+          i = paramString[(j + 1)];
+          if (i != 19968)
+          {
+            if (i != 31456)
             {
-            default: 
-              i = j;
+              if (i != 39029) {
+                i = k;
+              } else {
+                i = 3;
+              }
+            }
+            else {
+              i = 1;
+            }
+          }
+          else
+          {
+            i = k;
+            if (j + 3 <= m)
+            {
+              i = paramString[n];
+              if (i != 31456)
+              {
+                if (i != 39029) {
+                  i = k;
+                } else {
+                  i = 4;
+                }
+              }
+              else {
+                i = 2;
+              }
             }
           }
         }
       }
-      while (i > 0)
-      {
+      if (i > 0) {
         return i;
-        i = 3;
-        continue;
-        i = 1;
-        continue;
-        i = j;
-        if (k + 3 <= m) {
-          switch (paramString[(k + 2)])
-          {
-          default: 
-            i = j;
-            break;
-          case '章': 
-            i = 2;
-            break;
-          case '页': 
-            i = 4;
-          }
-        }
       }
-      k += 1;
-      j = i;
+      j += 1;
     }
+    return k;
   }
   
   public static void littleIndianDw2Byte(byte[] paramArrayOfByte, int paramInt, long paramLong)
@@ -1014,18 +1098,21 @@ public class PkgTools
   
   public static void longToAscString(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, String paramString)
   {
-    int i = 0;
     try
     {
-      byte[] arrayOfByte1 = new byte[paramInt2];
-      byte[] arrayOfByte2 = (paramLong + "").getBytes(paramString);
-      while (i < arrayOfByte1.length)
+      byte[] arrayOfByte = new byte[paramInt2];
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString().getBytes(paramString);
+      int i = 0;
+      while (i < arrayOfByte.length)
       {
-        arrayOfByte1[i] = " ".getBytes(paramString)[0];
+        arrayOfByte[i] = " ".getBytes(paramString)[0];
         i += 1;
       }
-      copyData(arrayOfByte1, paramInt2 - arrayOfByte2.length, arrayOfByte2, arrayOfByte2.length);
-      copyData(paramArrayOfByte, paramInt1, arrayOfByte1, arrayOfByte1.length);
+      copyData(arrayOfByte, paramInt2 - localObject.length, (byte[])localObject, localObject.length);
+      copyData(paramArrayOfByte, paramInt1, arrayOfByte, arrayOfByte.length);
       return;
     }
     catch (Exception paramArrayOfByte) {}
@@ -1033,26 +1120,28 @@ public class PkgTools
   
   public static boolean memcmp(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    boolean bool = false;
-    if ((paramArrayOfByte1 == null) && (paramArrayOfByte2 == null)) {}
-    do
-    {
+    if ((paramArrayOfByte1 == null) && (paramArrayOfByte2 == null)) {
       return true;
-      if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+    }
+    if (paramArrayOfByte1 != null)
+    {
+      if (paramArrayOfByte2 == null) {
         return false;
       }
-    } while (paramArrayOfByte1 == paramArrayOfByte2);
-    int i = 0;
-    if ((i < paramArrayOfByte1.length) && (i < paramArrayOfByte2.length) && (i < paramInt)) {
-      if (paramArrayOfByte1[i] == paramArrayOfByte2[i]) {}
+      if (paramArrayOfByte1 == paramArrayOfByte2) {
+        return true;
+      }
+      int i = 0;
+      while ((i < paramArrayOfByte1.length) && (i < paramArrayOfByte2.length) && (i < paramInt))
+      {
+        if (paramArrayOfByte1[i] != paramArrayOfByte2[i]) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
     }
-    for (;;)
-    {
-      return bool;
-      i += 1;
-      break;
-      bool = true;
-    }
+    return false;
   }
   
   public static String readUCS2(InputStream paramInputStream)
@@ -1071,16 +1160,18 @@ public class PkgTools
     }
     int j = paramString2.length();
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(paramString1.substring(paramInt, i)).append(paramString3).append(replace(paramString1, i + j, paramString2, paramString3));
+    localStringBuffer.append(paramString1.substring(paramInt, i));
+    localStringBuffer.append(paramString3);
+    localStringBuffer.append(replace(paramString1, i + j, paramString2, paramString3));
     return localStringBuffer.toString();
   }
   
   public static String replace(String paramString1, String paramString2, String paramString3)
   {
-    int j = 0;
     int k = paramString2.length();
     int m = paramString3.length();
     StringBuffer localStringBuffer = new StringBuffer(paramString1);
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -1089,8 +1180,9 @@ public class PkgTools
         break;
       }
       j = n + k;
-      localStringBuffer.delete(n + i, j + i);
-      localStringBuffer.insert(n + i, paramString3);
+      n += i;
+      localStringBuffer.delete(n, j + i);
+      localStringBuffer.insert(n, paramString3);
       i += m - k;
     }
     return localStringBuffer.toString();
@@ -1099,13 +1191,20 @@ public class PkgTools
   public static String short2Port(byte[] paramArrayOfByte)
   {
     getShortData(paramArrayOfByte, 0);
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length != 2)) {
-      return "";
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length != 2) {
+        return "";
+      }
+      byte[] arrayOfByte = new byte[4];
+      copyData(arrayOfByte, 2, paramArrayOfByte, 2);
+      long l = getLongData(arrayOfByte, 0);
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append(l);
+      paramArrayOfByte.append("");
+      return paramArrayOfByte.toString();
     }
-    byte[] arrayOfByte = new byte[4];
-    copyData(arrayOfByte, 2, paramArrayOfByte, 2);
-    long l = getLongData(arrayOfByte, 0);
-    return l + "";
+    return "";
   }
   
   public static byte[] shortToHL(short paramShort)
@@ -1116,8 +1215,8 @@ public class PkgTools
   
   public static String[] split(String paramString1, String paramString2)
   {
-    int j = 0;
     Vector localVector = new Vector();
+    int j = 0;
     int k;
     for (int i = 0;; i = paramString2.length() + k)
     {
@@ -1146,57 +1245,60 @@ public class PkgTools
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
     int i = 0;
-    try
+    for (;;)
     {
-      for (;;)
+      try
       {
         int j = paramArrayOfString.length;
-        if (i < j) {
-          try
-          {
-            byte[] arrayOfByte1 = paramArrayOfString[i].getBytes("utf-8");
-            localDataOutputStream.writeInt(arrayOfByte1.length);
-            localDataOutputStream.write(arrayOfByte1);
-            i += 1;
-          }
-          catch (UnsupportedEncodingException localUnsupportedEncodingException)
-          {
-            for (;;)
-            {
-              byte[] arrayOfByte2 = paramArrayOfString[i].getBytes();
-            }
-          }
+        if (i >= j) {
+          break;
         }
       }
-      localDataOutputStream.flush();
-      paramArrayOfString = localByteArrayOutputStream.toByteArray();
-      localDataOutputStream.close();
-      localByteArrayOutputStream.close();
-      return paramArrayOfString;
+      catch (IOException paramArrayOfString)
+      {
+        byte[] arrayOfByte;
+        return null;
+      }
+      try
+      {
+        arrayOfByte = paramArrayOfString[i].getBytes("utf-8");
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        continue;
+      }
+      arrayOfByte = paramArrayOfString[i].getBytes();
+      localDataOutputStream.writeInt(arrayOfByte.length);
+      localDataOutputStream.write(arrayOfByte);
+      i += 1;
     }
-    catch (IOException paramArrayOfString) {}
-    return null;
+    localDataOutputStream.flush();
+    paramArrayOfString = localByteArrayOutputStream.toByteArray();
+    localDataOutputStream.close();
+    localByteArrayOutputStream.close();
+    return paramArrayOfString;
   }
   
   public static String toHexStr(byte paramByte)
   {
-    int i = (paramByte & 0xF0) >>> 4;
-    paramByte &= 0xF;
-    char c1;
-    if (i > 9)
-    {
-      c1 = (char)(i - 10 + 65);
-      if (paramByte <= 9) {
-        break label77;
-      }
+    int j = (paramByte & 0xF0) >>> 4;
+    int i = paramByte & 0xF;
+    if (j > 9) {
+      paramByte = j - 10 + 65;
+    } else {
+      paramByte = j + 48;
     }
-    label77:
-    for (char c2 = (char)(paramByte - 10 + 65);; c2 = (char)(paramByte + 48))
-    {
-      return String.valueOf(c1) + String.valueOf(c2);
-      c1 = (char)(i + 48);
-      break;
+    char c1 = (char)paramByte;
+    if (i > 9) {
+      paramByte = i - 10 + 65;
+    } else {
+      paramByte = i + 48;
     }
+    char c2 = (char)paramByte;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(c1));
+    localStringBuilder.append(String.valueOf(c2));
+    return localStringBuilder.toString();
   }
   
   public static String toHexStr(byte[] paramArrayOfByte)
@@ -1206,29 +1308,26 @@ public class PkgTools
     }
     StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length * 2);
     int i = 0;
-    if (i < paramArrayOfByte.length)
+    while (i < paramArrayOfByte.length)
     {
       int k = paramArrayOfByte[i];
       int j = (k & 0xF0) >>> 4;
       k &= 0xF;
-      char c1;
-      if (j > 9)
-      {
-        c1 = (char)(j - 10 + 65);
-        label66:
-        if (k <= 9) {
-          break label111;
-        }
+      if (j > 9) {
+        j = j - 10 + 65;
+      } else {
+        j += 48;
       }
-      label111:
-      for (char c2 = (char)(k - 10 + 65);; c2 = (char)(k + 48))
-      {
-        localStringBuffer.append(c1).append(c2);
-        i += 1;
-        break;
-        c1 = (char)(j + 48);
-        break label66;
+      char c1 = (char)j;
+      if (k > 9) {
+        j = k - 10 + 65;
+      } else {
+        j = k + 48;
       }
+      char c2 = (char)j;
+      localStringBuffer.append(c1);
+      localStringBuffer.append(c2);
+      i += 1;
     }
     return localStringBuffer.toString();
   }
@@ -1236,10 +1335,17 @@ public class PkgTools
   public static String toUrlCode(char paramChar)
   {
     String str = Integer.toHexString(paramChar);
-    if (str.length() == 1) {
-      return "%0" + str;
+    if (str.length() == 1)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("%0");
+      localStringBuilder.append(str);
+      return localStringBuilder.toString();
     }
-    return "%" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("%");
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
   
   public static String trim(String paramString)
@@ -1277,9 +1383,9 @@ public class PkgTools
   
   public static byte[] u2b(String paramString)
   {
-    int i = 0;
     int k = paramString.length();
     byte[] arrayOfByte = new byte[k << 1];
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -1293,209 +1399,208 @@ public class PkgTools
     return arrayOfByte;
   }
   
+  public static byte[] unicode2Byte(String paramString)
+  {
+    int k = paramString.length();
+    byte[] arrayOfByte = new byte[k << 1];
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      int m = paramString.charAt(i);
+      int n = j + 1;
+      arrayOfByte[j] = ((byte)(m >> 8));
+      j = n + 1;
+      arrayOfByte[n] = ((byte)(m & 0xFF));
+      i += 1;
+    }
+    return arrayOfByte;
+  }
+  
   /* Error */
   public static String utf8Byte2String(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 6
+    //   1: astore 5
     //   3: aconst_null
-    //   4: astore 5
+    //   4: astore 6
     //   6: aconst_null
-    //   7: astore_3
-    //   8: ldc 92
-    //   10: astore 4
-    //   12: iload_2
-    //   13: iconst_2
-    //   14: iadd
-    //   15: newarray byte
-    //   17: astore 7
-    //   19: aload 7
-    //   21: iconst_0
-    //   22: iload_2
-    //   23: bipush 8
-    //   25: ishr
+    //   7: astore 4
+    //   9: iload_2
+    //   10: iconst_2
+    //   11: iadd
+    //   12: newarray byte
+    //   14: astore_3
+    //   15: aload_3
+    //   16: iconst_0
+    //   17: iload_2
+    //   18: bipush 8
+    //   20: ishr
+    //   21: i2b
+    //   22: bastore
+    //   23: aload_3
+    //   24: iconst_1
+    //   25: iload_2
     //   26: i2b
     //   27: bastore
-    //   28: aload 7
-    //   30: iconst_1
-    //   31: iload_2
-    //   32: i2b
-    //   33: bastore
-    //   34: aload_0
-    //   35: iload_1
-    //   36: aload 7
-    //   38: iconst_2
-    //   39: iload_2
-    //   40: invokestatic 289	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   43: new 238	java/io/ByteArrayInputStream
-    //   46: dup
-    //   47: aload 7
-    //   49: invokespecial 241	java/io/ByteArrayInputStream:<init>	([B)V
-    //   52: astore_0
-    //   53: new 236	java/io/DataInputStream
-    //   56: dup
-    //   57: aload_0
-    //   58: invokespecial 244	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   61: astore_3
-    //   62: aload_3
-    //   63: invokevirtual 546	java/io/DataInputStream:readUTF	()Ljava/lang/String;
-    //   66: astore 5
-    //   68: aload 5
-    //   70: astore 4
-    //   72: aload_3
-    //   73: ifnull +7 -> 80
-    //   76: aload_3
-    //   77: invokevirtual 547	java/io/DataInputStream:close	()V
-    //   80: aload 4
-    //   82: astore_3
-    //   83: aload_0
-    //   84: ifnull +10 -> 94
-    //   87: aload_0
-    //   88: invokevirtual 548	java/io/ByteArrayInputStream:close	()V
-    //   91: aload 4
+    //   28: aload_0
+    //   29: iload_1
+    //   30: aload_3
+    //   31: iconst_2
+    //   32: iload_2
+    //   33: invokestatic 211	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   36: new 152	java/io/ByteArrayInputStream
+    //   39: dup
+    //   40: aload_3
+    //   41: invokespecial 155	java/io/ByteArrayInputStream:<init>	([B)V
+    //   44: astore_0
+    //   45: new 150	java/io/DataInputStream
+    //   48: dup
+    //   49: aload_0
+    //   50: invokespecial 158	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   53: astore_3
+    //   54: aload_3
+    //   55: invokevirtual 547	java/io/DataInputStream:readUTF	()Ljava/lang/String;
+    //   58: astore 4
+    //   60: aload_3
+    //   61: invokevirtual 548	java/io/DataInputStream:close	()V
+    //   64: aload_0
+    //   65: invokevirtual 549	java/io/ByteArrayInputStream:close	()V
+    //   68: aload 4
+    //   70: areturn
+    //   71: astore 5
+    //   73: aload_3
+    //   74: astore 4
+    //   76: aload_0
+    //   77: astore_3
+    //   78: aload 5
+    //   80: astore_0
+    //   81: goto +34 -> 115
+    //   84: goto +59 -> 143
+    //   87: goto +83 -> 170
+    //   90: astore 5
+    //   92: aload_0
     //   93: astore_3
-    //   94: aload_3
-    //   95: areturn
+    //   94: aload 5
     //   96: astore_0
-    //   97: aconst_null
-    //   98: astore 5
-    //   100: aload_3
-    //   101: astore_0
-    //   102: aload 5
-    //   104: astore_3
-    //   105: aload_3
-    //   106: ifnull +7 -> 113
-    //   109: aload_3
-    //   110: invokevirtual 547	java/io/DataInputStream:close	()V
-    //   113: aload 4
-    //   115: astore_3
-    //   116: aload_0
-    //   117: ifnull -23 -> 94
-    //   120: aload_0
-    //   121: invokevirtual 548	java/io/ByteArrayInputStream:close	()V
-    //   124: ldc 92
-    //   126: areturn
-    //   127: astore_0
-    //   128: ldc 92
-    //   130: areturn
-    //   131: astore_0
-    //   132: aconst_null
-    //   133: astore_0
-    //   134: aload 6
-    //   136: astore_3
-    //   137: aload_3
-    //   138: ifnull +7 -> 145
-    //   141: aload_3
-    //   142: invokevirtual 547	java/io/DataInputStream:close	()V
-    //   145: aload 4
-    //   147: astore_3
-    //   148: aload_0
-    //   149: ifnull -55 -> 94
-    //   152: aload_0
-    //   153: invokevirtual 548	java/io/ByteArrayInputStream:close	()V
-    //   156: ldc 92
-    //   158: areturn
-    //   159: astore_0
-    //   160: ldc 92
-    //   162: areturn
-    //   163: astore_3
-    //   164: aconst_null
-    //   165: astore_0
-    //   166: aload 5
-    //   168: astore 4
-    //   170: aload 4
-    //   172: ifnull +8 -> 180
-    //   175: aload 4
-    //   177: invokevirtual 547	java/io/DataInputStream:close	()V
-    //   180: aload_0
-    //   181: ifnull +7 -> 188
-    //   184: aload_0
-    //   185: invokevirtual 548	java/io/ByteArrayInputStream:close	()V
-    //   188: aload_3
-    //   189: athrow
-    //   190: astore_3
-    //   191: goto -111 -> 80
-    //   194: astore_0
-    //   195: aload 4
-    //   197: areturn
-    //   198: astore_3
-    //   199: goto -86 -> 113
-    //   202: astore_3
-    //   203: goto -58 -> 145
-    //   206: astore 4
-    //   208: goto -28 -> 180
-    //   211: astore_0
-    //   212: goto -24 -> 188
-    //   215: astore_3
-    //   216: aload 5
-    //   218: astore 4
-    //   220: goto -50 -> 170
-    //   223: astore 5
-    //   225: aload_3
-    //   226: astore 4
-    //   228: aload 5
+    //   97: goto +18 -> 115
+    //   100: aload 5
+    //   102: astore_3
+    //   103: goto +40 -> 143
+    //   106: aload 6
+    //   108: astore_3
+    //   109: goto +61 -> 170
+    //   112: astore_0
+    //   113: aconst_null
+    //   114: astore_3
+    //   115: aload 4
+    //   117: ifnull +11 -> 128
+    //   120: aload 4
+    //   122: invokevirtual 548	java/io/DataInputStream:close	()V
+    //   125: goto +3 -> 128
+    //   128: aload_3
+    //   129: ifnull +7 -> 136
+    //   132: aload_3
+    //   133: invokevirtual 549	java/io/ByteArrayInputStream:close	()V
+    //   136: aload_0
+    //   137: athrow
+    //   138: aconst_null
+    //   139: astore_0
+    //   140: aload 5
+    //   142: astore_3
+    //   143: aload_3
+    //   144: ifnull +10 -> 154
+    //   147: aload_3
+    //   148: invokevirtual 548	java/io/DataInputStream:close	()V
+    //   151: goto +3 -> 154
+    //   154: aload_0
+    //   155: ifnull +33 -> 188
+    //   158: aload_0
+    //   159: invokevirtual 549	java/io/ByteArrayInputStream:close	()V
+    //   162: goto +26 -> 188
+    //   165: aconst_null
+    //   166: astore_0
+    //   167: aload 6
+    //   169: astore_3
+    //   170: aload_3
+    //   171: ifnull +10 -> 181
+    //   174: aload_3
+    //   175: invokevirtual 548	java/io/DataInputStream:close	()V
+    //   178: goto +3 -> 181
+    //   181: aload_0
+    //   182: ifnull +6 -> 188
+    //   185: goto -27 -> 158
+    //   188: ldc 113
+    //   190: areturn
+    //   191: astore_0
+    //   192: goto -27 -> 165
+    //   195: astore_0
+    //   196: goto -58 -> 138
+    //   199: astore_3
+    //   200: goto -94 -> 106
+    //   203: astore_3
+    //   204: goto -104 -> 100
+    //   207: astore 4
+    //   209: goto -122 -> 87
+    //   212: astore 4
+    //   214: goto -130 -> 84
+    //   217: astore_3
+    //   218: goto -154 -> 64
+    //   221: astore_0
+    //   222: aload 4
+    //   224: areturn
+    //   225: astore 4
+    //   227: goto -99 -> 128
     //   230: astore_3
-    //   231: goto -61 -> 170
+    //   231: goto -95 -> 136
     //   234: astore_3
-    //   235: aload 6
-    //   237: astore_3
-    //   238: goto -101 -> 137
-    //   241: astore 5
-    //   243: goto -106 -> 137
-    //   246: astore_3
-    //   247: aconst_null
-    //   248: astore_3
-    //   249: goto -144 -> 105
-    //   252: astore 5
-    //   254: goto -149 -> 105
+    //   235: goto -81 -> 154
+    //   238: astore_0
+    //   239: goto -51 -> 188
+    //   242: astore_3
+    //   243: goto -62 -> 181
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	257	0	paramArrayOfByte	byte[]
-    //   0	257	1	paramInt1	int
-    //   0	257	2	paramInt2	int
-    //   7	141	3	localObject1	Object
-    //   163	26	3	localObject2	Object
-    //   190	1	3	localIOException1	IOException
-    //   198	1	3	localIOException2	IOException
-    //   202	1	3	localIOException3	IOException
-    //   215	11	3	localObject3	Object
-    //   230	1	3	localObject4	Object
-    //   234	1	3	localException1	Exception
-    //   237	1	3	localObject5	Object
-    //   246	1	3	localIOException4	IOException
-    //   248	1	3	localObject6	Object
-    //   10	186	4	str1	String
-    //   206	1	4	localIOException5	IOException
-    //   218	9	4	localObject7	Object
-    //   4	213	5	str2	String
-    //   223	6	5	localObject8	Object
-    //   241	1	5	localException2	Exception
-    //   252	1	5	localIOException6	IOException
-    //   1	235	6	localObject9	Object
-    //   17	31	7	arrayOfByte	byte[]
+    //   0	246	0	paramArrayOfByte	byte[]
+    //   0	246	1	paramInt1	int
+    //   0	246	2	paramInt2	int
+    //   14	161	3	localObject1	Object
+    //   199	1	3	localIOException1	IOException
+    //   203	1	3	localException1	Exception
+    //   217	1	3	localIOException2	IOException
+    //   230	1	3	localIOException3	IOException
+    //   234	1	3	localIOException4	IOException
+    //   242	1	3	localIOException5	IOException
+    //   7	114	4	localObject2	Object
+    //   207	1	4	localIOException6	IOException
+    //   212	11	4	localException2	Exception
+    //   225	1	4	localIOException7	IOException
+    //   1	1	5	localObject3	Object
+    //   71	8	5	localObject4	Object
+    //   90	51	5	localObject5	Object
+    //   4	164	6	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   12	19	96	java/io/IOException
-    //   34	53	96	java/io/IOException
-    //   120	124	127	java/io/IOException
-    //   12	19	131	java/lang/Exception
-    //   34	53	131	java/lang/Exception
-    //   152	156	159	java/io/IOException
-    //   12	19	163	finally
-    //   34	53	163	finally
-    //   76	80	190	java/io/IOException
-    //   87	91	194	java/io/IOException
-    //   109	113	198	java/io/IOException
-    //   141	145	202	java/io/IOException
-    //   175	180	206	java/io/IOException
-    //   184	188	211	java/io/IOException
-    //   53	62	215	finally
-    //   62	68	223	finally
-    //   53	62	234	java/lang/Exception
-    //   62	68	241	java/lang/Exception
-    //   53	62	246	java/io/IOException
-    //   62	68	252	java/io/IOException
+    //   54	60	71	finally
+    //   45	54	90	finally
+    //   9	15	112	finally
+    //   28	45	112	finally
+    //   9	15	191	java/io/IOException
+    //   28	45	191	java/io/IOException
+    //   9	15	195	java/lang/Exception
+    //   28	45	195	java/lang/Exception
+    //   45	54	199	java/io/IOException
+    //   45	54	203	java/lang/Exception
+    //   54	60	207	java/io/IOException
+    //   54	60	212	java/lang/Exception
+    //   60	64	217	java/io/IOException
+    //   64	68	221	java/io/IOException
+    //   120	125	225	java/io/IOException
+    //   132	136	230	java/io/IOException
+    //   147	151	234	java/io/IOException
+    //   158	162	238	java/io/IOException
+    //   174	178	242	java/io/IOException
   }
   
   public static byte[] vectorString2byteArray(List paramList)
@@ -1510,17 +1615,23 @@ public class PkgTools
     return stringArray2byteArray(arrayOfString);
   }
   
+  public static void word2Byte(byte[] paramArrayOfByte, int paramInt, short paramShort)
+  {
+    paramArrayOfByte[paramInt] = ((byte)(paramShort >> 8));
+    paramArrayOfByte[(paramInt + 1)] = ((byte)paramShort);
+  }
+  
   public static void writeUCS2(String paramString, OutputStream paramOutputStream)
   {
     paramOutputStream = new DataOutputStream(paramOutputStream);
-    paramString = Unicode2Byte(paramString);
+    paramString = unicode2Byte(paramString);
     paramOutputStream.writeShort(paramString.length);
     paramOutputStream.write(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.httputils.PkgTools
  * JD-Core Version:    0.7.0.1
  */

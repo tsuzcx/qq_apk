@@ -26,12 +26,24 @@ class VasWebviewJsPluginV2$SubscriberMethod
   
   public String toString()
   {
-    return "SubscriberMethod{method=" + this.method + ", threadMode=" + this.threadMode + ", scheme='" + this.scheme + '\'' + ", args='" + this.args + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SubscriberMethod{method=");
+    localStringBuilder.append(this.method);
+    localStringBuilder.append(", threadMode=");
+    localStringBuilder.append(this.threadMode);
+    localStringBuilder.append(", scheme='");
+    localStringBuilder.append(this.scheme);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", args='");
+    localStringBuilder.append(this.args);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPluginV2.SubscriberMethod
  * JD-Core Version:    0.7.0.1
  */

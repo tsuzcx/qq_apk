@@ -5,16 +5,18 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
-import com.tencent.mobileqq.search.model.GroupSearchModelLocalContact;
+import com.tencent.mobileqq.search.base.presenter.IFacePresenter;
+import com.tencent.mobileqq.search.base.util.SearchViewUtils;
+import com.tencent.mobileqq.search.base.view.ISearchResultGroupView;
+import com.tencent.mobileqq.search.base.view.ISearchResultView;
+import com.tencent.mobileqq.search.business.contact.presenter.ContactSearchResultPresenter;
+import com.tencent.mobileqq.search.business.contact.view.ContactSearchResultGroupView;
+import com.tencent.mobileqq.search.business.contact.view.ContactSearchResultView;
+import com.tencent.mobileqq.search.business.group.model.GroupSearchModelLocalContact;
 import com.tencent.mobileqq.search.model.IModel;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
 import com.tencent.mobileqq.search.model.ISearchResultPositionModel;
-import com.tencent.mobileqq.search.util.SearchViewUtils;
-import com.tencent.mobileqq.search.view.ContactSearchResultGroupView;
-import com.tencent.mobileqq.search.view.ContactSearchResultView;
-import com.tencent.mobileqq.search.view.ISearchResultGroupView;
-import com.tencent.mobileqq.search.view.ISearchResultView;
 import com.tencent.mobileqq.troop.blocktroop.TroopBlockUtils;
 import java.util.List;
 
@@ -33,66 +35,67 @@ public class ContactSearchResultGroupPresenter
   
   public void a(IModel paramIModel, ISearchResultGroupView paramISearchResultGroupView)
   {
-    paramIModel = (ISearchResultGroupModel)paramIModel;
-    LinearLayout localLinearLayout = ((ContactSearchResultGroupView)paramISearchResultGroupView).a();
+    ISearchResultGroupModel localISearchResultGroupModel = (ISearchResultGroupModel)paramIModel;
+    paramIModel = (ContactSearchResultGroupView)paramISearchResultGroupView;
+    LinearLayout localLinearLayout = paramIModel.a();
     if (localLinearLayout != null)
     {
-      List localList = paramIModel.a();
+      List localList = localISearchResultGroupModel.a();
       if (localList != null)
       {
         localLinearLayout.removeAllViews();
-        int k = Math.min(localList.size(), paramIModel.a());
+        int k = Math.min(localList.size(), localISearchResultGroupModel.a());
         int i = 0;
-        if (i < k)
+        while (i < k)
         {
           ISearchResultModel localISearchResultModel = (ISearchResultModel)localList.get(i);
-          View localView = LayoutInflater.from(paramISearchResultGroupView.a().getContext()).inflate(2131562973, null);
+          View localView = LayoutInflater.from(paramISearchResultGroupView.a().getContext()).inflate(2131562792, null);
           ContactSearchResultView localContactSearchResultView = new ContactSearchResultView(localView);
-          localView.setTag(2131381651, localISearchResultModel);
-          localView.setTag(2131381656, localContactSearchResultView);
-          localView.setTag(2131381652, Integer.valueOf(i));
-          localView.setTag(2131381650, Integer.valueOf(localList.size()));
-          localView.setTag(2131381653, this.a);
-          TroopBlockUtils.a(localView, 1, localISearchResultModel.b(), 2);
+          localView.setTag(2131380884, localISearchResultModel);
+          localView.setTag(2131380889, localContactSearchResultView);
+          localView.setTag(2131380885, Integer.valueOf(i));
+          localView.setTag(2131380883, Integer.valueOf(localList.size()));
+          localView.setTag(2131380886, this.a);
+          TroopBlockUtils.a(localView, 1, localISearchResultModel.a(), 2);
           SearchViewUtils.a(localISearchResultModel, k, i);
-          int m = localISearchResultModel.a();
-          int n = localISearchResultModel.b();
-          if ((localISearchResultModel instanceof ISearchResultPositionModel)) {}
-          for (int j = ((ISearchResultPositionModel)localISearchResultModel).u;; j = 0)
-          {
-            SearchViewUtils.a(m, n, localView, j);
-            localLinearLayout.addView(localView);
-            this.a.a(localISearchResultModel, localContactSearchResultView);
-            i += 1;
-            break;
+          int m = localISearchResultModel.b();
+          int n = localISearchResultModel.f_();
+          int j;
+          if ((localISearchResultModel instanceof ISearchResultPositionModel)) {
+            j = ((ISearchResultPositionModel)localISearchResultModel).u;
+          } else {
+            j = 0;
           }
+          SearchViewUtils.a(m, n, localView, j);
+          localLinearLayout.addView(localView);
+          this.a.a(localISearchResultModel, localContactSearchResultView);
+          i += 1;
         }
       }
     }
     if (paramISearchResultGroupView.b() != null) {
       paramISearchResultGroupView.b().setVisibility(8);
     }
-    if ((paramIModel instanceof GroupSearchModelLocalContact))
+    if ((localISearchResultGroupModel instanceof GroupSearchModelLocalContact))
     {
-      paramIModel = ((GroupSearchModelLocalContact)paramIModel).a();
-      paramISearchResultGroupView = ((ContactSearchResultGroupView)paramISearchResultGroupView).a();
-      if (paramISearchResultGroupView != null)
+      paramISearchResultGroupView = ((GroupSearchModelLocalContact)localISearchResultGroupModel).a();
+      paramIModel = paramIModel.a();
+      if (paramIModel != null)
       {
-        if (paramIModel == null) {
-          break label339;
+        if (paramISearchResultGroupView != null)
+        {
+          paramIModel.a().setVisibility(0);
+          this.a.a(paramISearchResultGroupView, paramIModel);
+          return;
         }
-        paramISearchResultGroupView.a().setVisibility(0);
-        this.a.a(paramIModel, paramISearchResultGroupView);
+        paramIModel.a().setVisibility(8);
       }
     }
-    return;
-    label339:
-    paramISearchResultGroupView.a().setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.ContactSearchResultGroupPresenter
  * JD-Core Version:    0.7.0.1
  */

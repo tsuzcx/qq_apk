@@ -12,8 +12,7 @@ public class StrokeNativeProcessor
     paramRect.left = arrayOfInt[0];
     paramRect.top = arrayOfInt[1];
     paramRect.right = (arrayOfInt[0] + arrayOfInt[2]);
-    paramInt1 = arrayOfInt[1];
-    paramRect.bottom = (arrayOfInt[3] + paramInt1);
+    paramRect.bottom = (arrayOfInt[1] + arrayOfInt[3]);
     return paramBitmap;
   }
   
@@ -21,7 +20,7 @@ public class StrokeNativeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.microrapid.opencv.StrokeNativeProcessor
  * JD-Core Version:    0.7.0.1
  */

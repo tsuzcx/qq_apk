@@ -64,12 +64,14 @@ public class FlutterTextureView
   
   private void disconnectSurfaceFromRenderer()
   {
-    if (this.flutterRenderer != null)
+    Object localObject = this.flutterRenderer;
+    if (localObject != null)
     {
-      this.flutterRenderer.stopRenderingToSurface();
-      if (this.renderSurface != null)
+      ((FlutterRenderer)localObject).stopRenderingToSurface();
+      localObject = this.renderSurface;
+      if (localObject != null)
       {
-        this.renderSurface.release();
+        ((Surface)localObject).release();
         this.renderSurface = null;
       }
       return;
@@ -134,7 +136,7 @@ public class FlutterTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterTextureView
  * JD-Core Version:    0.7.0.1
  */

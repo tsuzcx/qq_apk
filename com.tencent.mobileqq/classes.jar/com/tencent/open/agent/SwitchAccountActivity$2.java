@@ -1,47 +1,27 @@
 package com.tencent.open.agent;
 
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SwitchAccountActivity$2
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  protected GestureDetector.SimpleOnGestureListener a;
-  protected GestureDetector a;
-  View jdField_a_of_type_AndroidViewView;
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  SwitchAccountActivity$2(SwitchAccountActivity paramSwitchAccountActivity) {}
   
-  SwitchAccountActivity$2(SwitchAccountActivity paramSwitchAccountActivity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new SwitchAccountActivity.2.1(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "action = " + i);
+    View localView = (View)paramView.getParent().getParent();
+    if ((localView != null) && (localView.getTag() != null)) {
+      SwitchAccountActivity.access$400(this.a, (String)localView.getTag());
     }
-    if (i == 0)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a == true) {
-        this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = false;
-      }
-    }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.SwitchAccountActivity.2
  * JD-Core Version:    0.7.0.1
  */

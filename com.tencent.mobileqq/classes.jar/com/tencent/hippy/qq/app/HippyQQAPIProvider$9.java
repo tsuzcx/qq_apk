@@ -1,6 +1,6 @@
 package com.tencent.hippy.qq.app;
 
-import com.tencent.hippy.qq.module.QQDataModule;
+import com.tencent.hippy.qq.module.QQPatchModule;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.common.Provider;
 import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase;
@@ -12,12 +12,12 @@ class HippyQQAPIProvider$9
   
   public HippyNativeModuleBase get()
   {
-    return new QQDataModule(this.val$context);
+    return new QQPatchModule(this.val$context);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.app.HippyQQAPIProvider.9
  * JD-Core Version:    0.7.0.1
  */

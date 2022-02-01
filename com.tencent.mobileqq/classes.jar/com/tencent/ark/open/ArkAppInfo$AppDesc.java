@@ -4,7 +4,6 @@ public class ArkAppInfo$AppDesc
 {
   public String desc;
   public String iconPath;
-  public boolean isTempApp;
   public String name;
   public String version;
   public String view;

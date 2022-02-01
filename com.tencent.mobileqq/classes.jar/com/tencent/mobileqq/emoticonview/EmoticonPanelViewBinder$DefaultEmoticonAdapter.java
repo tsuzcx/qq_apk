@@ -24,7 +24,7 @@ class EmoticonPanelViewBinder$DefaultEmoticonAdapter
   
   public void bindView(int paramInt, RelativeLayout paramRelativeLayout, ViewGroup paramViewGroup)
   {
-    ImageView localImageView = (ImageView)paramRelativeLayout.findViewById(2131378813);
+    ImageView localImageView = (ImageView)paramRelativeLayout.findViewById(2131378202);
     localImageView.setVisibility(0);
     localImageView.setTag(Boolean.valueOf(false));
     EmoticonInfo localEmoticonInfo = getItem(paramInt);
@@ -33,73 +33,69 @@ class EmoticonPanelViewBinder$DefaultEmoticonAdapter
     {
       paramViewGroup = (SystemAndEmojiEmoticonInfo)localEmoticonInfo;
       paramInt = paramViewGroup.code;
-      if (paramViewGroup.emotionType != 1) {
-        break label256;
-      }
-      if ((paramInt >= 0) && (paramInt < EmotcationConstants.SYS_EMOTICON_SYMBOL.length))
+      if (paramViewGroup.emotionType == 1)
       {
-        String str = EmotcationConstants.SYS_EMOTICON_SYMBOL[paramInt];
-        paramViewGroup = str;
-        if (str != null)
+        if ((paramInt >= 0) && (paramInt < EmotcationConstants.SYS_EMOTICON_SYMBOL.length))
         {
+          String str = EmotcationConstants.SYS_EMOTICON_SYMBOL[paramInt];
           paramViewGroup = str;
-          if (str.startsWith("/"))
+          if (str != null)
           {
             paramViewGroup = str;
-            if (str.length() > 1) {
-              paramViewGroup = str.substring(1);
+            if (str.startsWith("/"))
+            {
+              paramViewGroup = str;
+              if (str.length() > 1) {
+                paramViewGroup = str.substring(1);
+              }
             }
           }
+          if (paramViewGroup != null) {
+            paramRelativeLayout.setContentDescription(paramViewGroup);
+          }
         }
-        if (paramViewGroup != null) {
-          paramRelativeLayout.setContentDescription(paramViewGroup);
-        }
+      }
+      else if (paramViewGroup.emotionType == 2) {
+        paramRelativeLayout.setContentDescription(EmotcationConstants.getEmojiDesc(paramInt));
       }
     }
-    label255:
-    do
+    paramViewGroup = (RelativeLayout.LayoutParams)localImageView.getLayoutParams();
+    float f = this.this$0.context.getResources().getDisplayMetrics().density;
+    if (localEmoticonInfo != null)
     {
-      break label255;
-      paramViewGroup = (RelativeLayout.LayoutParams)localImageView.getLayoutParams();
-      float f = this.this$0.context.getResources().getDisplayMetrics().density;
-      if (localEmoticonInfo == null) {
-        break;
-      }
       if ((localEmoticonInfo.type == 1) || (localEmoticonInfo.type == 2) || (localEmoticonInfo.type == 7))
       {
-        paramViewGroup.width = this.classicEmoticonSize;
-        paramViewGroup.height = this.classicEmoticonSize;
+        paramInt = this.classicEmoticonSize;
+        paramViewGroup.width = paramInt;
+        paramViewGroup.height = paramInt;
       }
       if (localEmoticonInfo.type != -1)
       {
         paramRelativeLayout = localEmoticonInfo.getDrawable(this.this$0.context, f);
         if (paramRelativeLayout != null) {
           localImageView.setImageDrawable(paramRelativeLayout);
-        }
-        for (;;)
-        {
-          localImageView.setBackgroundDrawable(null);
-          return;
-          if (paramViewGroup.emotionType != 2) {
-            break;
-          }
-          paramRelativeLayout.setContentDescription(EmotcationConstants.getEmojiDesc(paramInt));
-          break;
+        } else {
           localImageView.setVisibility(4);
         }
+        localImageView.setBackgroundDrawable(null);
+        return;
       }
-    } while (!"delete".equals(localEmoticonInfo.action));
-    label256:
-    localImageView.setImageResource(2130850933);
-    paramRelativeLayout.setContentDescription(this.this$0.context.getString(2131719703));
-    return;
-    localImageView.setImageDrawable(null);
-    localImageView.setVisibility(4);
+      if ("delete".equals(localEmoticonInfo.action))
+      {
+        localImageView.setImageResource(2130850873);
+        paramRelativeLayout.setContentDescription(this.this$0.context.getString(2131719424));
+      }
+    }
+    else
+    {
+      localImageView.setImageDrawable(null);
+      localImageView.setVisibility(4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelViewBinder.DefaultEmoticonAdapter
  * JD-Core Version:    0.7.0.1
  */

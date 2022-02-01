@@ -57,11 +57,14 @@ public class Configuration
       while (i >= 0)
       {
         Configuration.ProcessInfo localProcessInfo = (Configuration.ProcessInfo)this.processInfoList.get(i);
-        Intent localIntent = new Intent();
-        localIntent.setClassName(paramContext.getPackageName(), localProcessInfo.uiClass.getName());
-        if (localPackageManager.resolveActivity(localIntent, 0) == null)
+        Object localObject = new Intent();
+        ((Intent)localObject).setClassName(paramContext.getPackageName(), localProcessInfo.uiClass.getName());
+        if (localPackageManager.resolveActivity((Intent)localObject, 0) == null)
         {
-          QMLog.e("Configuration", "Not registered manifest. uiClass:" + localProcessInfo.uiClass.getName());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Not registered manifest. uiClass:");
+          ((StringBuilder)localObject).append(localProcessInfo.uiClass.getName());
+          QMLog.e("Configuration", ((StringBuilder)localObject).toString());
           this.processInfoList.remove(i);
         }
         i -= 1;
@@ -89,45 +92,37 @@ public class Configuration
     this.dexLoaderEnable = ((Boolean)Reflect.on("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").get("DEXLOADER_ENABLED")).booleanValue();
     this.dexConfig = ((String)Reflect.on("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").get("DEX_CONFIG"));
     Iterator localIterator = ((List)Reflect.on("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").get("MINI_PROCESS_LIST")).iterator();
-    label86:
-    Object localObject1;
-    Configuration.ProcessInfo localProcessInfo;
-    Object localObject2;
     while (localIterator.hasNext())
     {
-      localObject1 = localIterator.next();
+      Object localObject1 = localIterator.next();
       if ((localObject1 instanceof Map))
       {
         localObject1 = (Map)localObject1;
-        localProcessInfo = new Configuration.ProcessInfo();
-        localProcessInfo.name = (paramContext + ":" + ((Map)localObject1).get("name").toString());
+        Configuration.ProcessInfo localProcessInfo = new Configuration.ProcessInfo();
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramContext);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append(((Map)localObject1).get("name").toString());
+        localProcessInfo.name = ((StringBuilder)localObject2).toString();
         localObject2 = ((Map)localObject1).get("processType").toString();
-        if (!"MINI_GAME".equals(localObject2)) {
-          break label308;
+        if ("MINI_GAME".equals(localObject2)) {
+          localProcessInfo.processType = ProcessType.MINI_GAME;
+        } else if ("MINI_APP".equals(localObject2)) {
+          localProcessInfo.processType = ProcessType.MINI_APP;
+        } else if ("MINI_INTERNAL".equals(localObject2)) {
+          localProcessInfo.processType = ProcessType.MINI_INTERNAL;
         }
-        localProcessInfo.processType = ProcessType.MINI_GAME;
-      }
-    }
-    for (;;)
-    {
-      if (((Map)localObject1).get("internalUI") != null)
-      {
-        localObject2 = findClass(((Map)localObject1).get("internalUI").toString());
-        if ((localObject2 != null) && (Activity.class.isAssignableFrom((Class)localObject2))) {
-          localProcessInfo.internalUIClass = ((Class)localObject2);
+        if (((Map)localObject1).get("internalUI") != null)
+        {
+          localObject2 = findClass(((Map)localObject1).get("internalUI").toString());
+          if ((localObject2 != null) && (Activity.class.isAssignableFrom((Class)localObject2))) {
+            localProcessInfo.internalUIClass = ((Class)localObject2);
+          }
         }
-      }
-      localProcessInfo.supportRuntimeType = ((Integer)((Map)localObject1).get("supportRuntimeType")).intValue();
-      localProcessInfo.uiClass = ((Class)((Map)localObject1).get("ui"));
-      localProcessInfo.receiverClass = ((Class)((Map)localObject1).get("receiver"));
-      this.processInfoList.add(localProcessInfo);
-      break label86;
-      break;
-      label308:
-      if ("MINI_APP".equals(localObject2)) {
-        localProcessInfo.processType = ProcessType.MINI_APP;
-      } else if ("MINI_INTERNAL".equals(localObject2)) {
-        localProcessInfo.processType = ProcessType.MINI_INTERNAL;
+        localProcessInfo.supportRuntimeType = ((Integer)((Map)localObject1).get("supportRuntimeType")).intValue();
+        localProcessInfo.uiClass = ((Class)((Map)localObject1).get("ui"));
+        localProcessInfo.receiverClass = ((Class)((Map)localObject1).get("receiver"));
+        this.processInfoList.add(localProcessInfo);
       }
     }
   }
@@ -141,12 +136,30 @@ public class Configuration
     this.dexLoaderEnable = true;
     this.dexConfig = "";
     paramContext = paramContext.getPackageName();
-    addProcessInfo(paramContext + ":mini1", findClass("com.tencent.qqmini.sdk.ui.MiniActivity1"), null, findClass("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver1"), ProcessType.MINI_GAME, 4);
-    addProcessInfo(paramContext + ":mini2", findClass("com.tencent.qqmini.sdk.ui.MiniActivity2"), null, findClass("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver2"), ProcessType.MINI_GAME, 4);
-    addProcessInfo(paramContext + ":mini3", findClass("com.tencent.qqmini.sdk.ui.MiniActivity3"), null, findClass("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver3"), ProcessType.MINI_GAME, 4);
-    addProcessInfo(paramContext + ":mini4", findClass("com.tencent.qqmini.sdk.ui.MiniActivity4"), null, findClass("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver4"), ProcessType.MINI_APP, 1);
-    addProcessInfo(paramContext + ":mini5", findClass("com.tencent.qqmini.sdk.ui.MiniActivity5"), null, findClass("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver5"), ProcessType.MINI_APP, 1);
-    addProcessInfo(paramContext + ":mini_internal", findClass("com.tencent.qqmini.sdk.ui.InternalMiniActivity"), null, findClass("com.tencent.qqmini.sdk.receiver.InternalAppBrandMainReceiver"), ProcessType.MINI_INTERNAL, 1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(":mini1");
+    addProcessInfo(localStringBuilder.toString(), findClass("com.tencent.qqmini.sdk.ui.MiniActivity1"), null, findClass("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver1"), ProcessType.MINI_GAME, 4);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(":mini2");
+    addProcessInfo(localStringBuilder.toString(), findClass("com.tencent.qqmini.sdk.ui.MiniActivity2"), null, findClass("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver2"), ProcessType.MINI_GAME, 4);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(":mini3");
+    addProcessInfo(localStringBuilder.toString(), findClass("com.tencent.qqmini.sdk.ui.MiniActivity3"), null, findClass("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver3"), ProcessType.MINI_GAME, 4);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(":mini4");
+    addProcessInfo(localStringBuilder.toString(), findClass("com.tencent.qqmini.sdk.ui.MiniActivity4"), null, findClass("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver4"), ProcessType.MINI_APP, 1);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(":mini5");
+    addProcessInfo(localStringBuilder.toString(), findClass("com.tencent.qqmini.sdk.ui.MiniActivity5"), null, findClass("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver5"), ProcessType.MINI_APP, 1);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(":mini_internal");
+    addProcessInfo(localStringBuilder.toString(), findClass("com.tencent.qqmini.sdk.ui.InternalMiniActivity"), null, findClass("com.tencent.qqmini.sdk.receiver.InternalAppBrandMainReceiver"), ProcessType.MINI_INTERNAL, 1);
   }
   
   private boolean isCustomConfigurationExist()
@@ -156,7 +169,7 @@ public class Configuration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.Configuration
  * JD-Core Version:    0.7.0.1
  */

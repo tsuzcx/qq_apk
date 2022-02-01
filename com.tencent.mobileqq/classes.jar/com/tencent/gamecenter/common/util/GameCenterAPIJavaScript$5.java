@@ -14,7 +14,13 @@ class GameCenterAPIJavaScript$5
     if (localVideoViewInfo != null)
     {
       localVideoViewInfo.a = paramBoolean;
-      this.a.callJs(localVideoViewInfo.e + "(" + localVideoViewInfo.a() + ");");
+      GameCenterAPIJavaScript localGameCenterAPIJavaScript = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localVideoViewInfo.e);
+      localStringBuilder.append("(");
+      localStringBuilder.append(localVideoViewInfo.a());
+      localStringBuilder.append(");");
+      localGameCenterAPIJavaScript.callJs(localStringBuilder.toString());
     }
   }
   
@@ -24,52 +30,82 @@ class GameCenterAPIJavaScript$5
     if (localVideoViewInfo != null)
     {
       localVideoViewInfo.c = paramBoolean;
-      this.a.callJs(localVideoViewInfo.d + "(" + localVideoViewInfo.a() + ");");
+      GameCenterAPIJavaScript localGameCenterAPIJavaScript = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localVideoViewInfo.d);
+      localStringBuilder.append("(");
+      localStringBuilder.append(localVideoViewInfo.a());
+      localStringBuilder.append(");");
+      localGameCenterAPIJavaScript.callJs(localStringBuilder.toString());
     }
   }
   
   public void onVideoStatusChanged(int paramInt1, int paramInt2)
   {
     GameCenterAPIJavaScript.VideoViewInfo localVideoViewInfo;
+    GameCenterAPIJavaScript localGameCenterAPIJavaScript;
+    StringBuilder localStringBuilder;
     if (paramInt1 == 3)
     {
       localVideoViewInfo = (GameCenterAPIJavaScript.VideoViewInfo)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-      if (localVideoViewInfo != null) {
-        this.a.callJs(localVideoViewInfo.g + "(" + localVideoViewInfo.a() + ");");
+      if (localVideoViewInfo != null)
+      {
+        localGameCenterAPIJavaScript = this.a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localVideoViewInfo.g);
+        localStringBuilder.append("(");
+        localStringBuilder.append(localVideoViewInfo.a());
+        localStringBuilder.append(");");
+        localGameCenterAPIJavaScript.callJs(localStringBuilder.toString());
       }
     }
-    do
+    else if (paramInt1 == 5)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (paramInt1 != 5) {
-              break;
-            }
-            localVideoViewInfo = (GameCenterAPIJavaScript.VideoViewInfo)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-          } while (localVideoViewInfo == null);
-          this.a.callJs(localVideoViewInfo.f + "(" + localVideoViewInfo.a() + ");");
-          return;
-          if (paramInt1 != 7) {
-            break;
-          }
-          localVideoViewInfo = (GameCenterAPIJavaScript.VideoViewInfo)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-        } while (localVideoViewInfo == null);
-        this.a.callJs(localVideoViewInfo.h + "(" + localVideoViewInfo.a() + ");");
-        return;
-      } while (paramInt1 != 0);
       localVideoViewInfo = (GameCenterAPIJavaScript.VideoViewInfo)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-    } while (localVideoViewInfo == null);
-    this.a.callJs(localVideoViewInfo.i + "(" + localVideoViewInfo.a() + ");");
+      if (localVideoViewInfo != null)
+      {
+        localGameCenterAPIJavaScript = this.a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localVideoViewInfo.f);
+        localStringBuilder.append("(");
+        localStringBuilder.append(localVideoViewInfo.a());
+        localStringBuilder.append(");");
+        localGameCenterAPIJavaScript.callJs(localStringBuilder.toString());
+      }
+    }
+    else if (paramInt1 == 7)
+    {
+      localVideoViewInfo = (GameCenterAPIJavaScript.VideoViewInfo)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+      if (localVideoViewInfo != null)
+      {
+        localGameCenterAPIJavaScript = this.a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localVideoViewInfo.h);
+        localStringBuilder.append("(");
+        localStringBuilder.append(localVideoViewInfo.a());
+        localStringBuilder.append(");");
+        localGameCenterAPIJavaScript.callJs(localStringBuilder.toString());
+      }
+    }
+    else if (paramInt1 == 0)
+    {
+      localVideoViewInfo = (GameCenterAPIJavaScript.VideoViewInfo)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+      if (localVideoViewInfo != null)
+      {
+        localGameCenterAPIJavaScript = this.a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localVideoViewInfo.i);
+        localStringBuilder.append("(");
+        localStringBuilder.append(localVideoViewInfo.a());
+        localStringBuilder.append(");");
+        localGameCenterAPIJavaScript.callJs(localStringBuilder.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GameCenterAPIJavaScript.5
  * JD-Core Version:    0.7.0.1
  */

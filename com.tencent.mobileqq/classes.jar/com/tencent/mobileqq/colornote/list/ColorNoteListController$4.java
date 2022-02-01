@@ -12,15 +12,16 @@ class ColorNoteListController$4
   
   public void a(View paramView)
   {
-    ColorNoteListController.a(this.a, ColorNoteListController.a(this.a).inflate());
+    paramView = this.a;
+    ColorNoteListController.a(paramView, ColorNoteListController.a(paramView).inflate());
     ColorNoteListController.a(this.a).setOnClickListener(new ColorNoteListController.4.1(this));
-    ((TextView)ColorNoteListController.a(this.a).findViewById(2131365828)).setOnClickListener(new ColorNoteListController.4.2(this));
+    ((TextView)ColorNoteListController.a(this.a).findViewById(2131365665)).setOnClickListener(new ColorNoteListController.4.2(this));
     ReportController.b(null, "dc00898", "", "", "0X800A8AD", "0X800A8AD", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.ColorNoteListController.4
  * JD-Core Version:    0.7.0.1
  */

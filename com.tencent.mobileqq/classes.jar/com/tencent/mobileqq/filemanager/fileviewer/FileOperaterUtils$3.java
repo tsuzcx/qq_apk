@@ -16,7 +16,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 final class FileOperaterUtils$3
   implements View.OnClickListener
 {
-  FileOperaterUtils$3(FileManagerEntity paramFileManagerEntity, Activity paramActivity, IFileBrowser paramIFileBrowser) {}
+  FileOperaterUtils$3(FileManagerEntity paramFileManagerEntity, Activity paramActivity) {}
   
   public void onClick(View paramView)
   {
@@ -31,22 +31,19 @@ final class FileOperaterUtils$3
       localFileAssistantReportData.d = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType);
       FileManagerReporter.a(localQQAppInterface.getCurrentAccountUin(), localFileAssistantReportData);
       QFileUtils.b(localQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(2);
-      }
-      label113:
+      label96:
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
     catch (Exception localException)
     {
-      break label113;
+      break label96;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils.3
  * JD-Core Version:    0.7.0.1
  */

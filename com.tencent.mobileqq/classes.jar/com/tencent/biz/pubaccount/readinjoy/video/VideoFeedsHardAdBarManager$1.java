@@ -15,29 +15,38 @@ class VideoFeedsHardAdBarManager$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsHardAdBarManager", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
-    }
-    switch (paramMessage.what)
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mUIHandler handleMessage() msg.what = ");
+      localStringBuilder.append(paramMessage.what);
+      QLog.d("Q.pubaccount.video.feeds.VideoFeedsHardAdBarManager", 2, localStringBuilder.toString());
     }
-    for (;;)
+    int i = paramMessage.what;
+    if (i != 4)
     {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.d();
-      return;
+      if (i != 6)
+      {
+        if (i != 7)
+        {
+          if (i == 8) {
+            this.a.b();
+          }
+          super.handleMessage(paramMessage);
+          return;
+        }
+        this.a.a(paramMessage);
+        return;
+      }
       this.a.a();
       return;
-      this.a.a(paramMessage);
-      return;
-      this.a.b();
     }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHardAdBarManager.1
  * JD-Core Version:    0.7.0.1
  */

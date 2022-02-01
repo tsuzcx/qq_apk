@@ -92,11 +92,7 @@ class RecommendBannerContentAdaper
   
   public void a(RecommendBannerContentAdaper.ViewHolder paramViewHolder, int paramInt)
   {
-    if (paramViewHolder == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
+    if (paramViewHolder != null) {
       if ((paramViewHolder.itemView instanceof RecommendBannerEntryItemView))
       {
         ((RecommendBannerEntryItemView)paramViewHolder.itemView).setEntry(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry);
@@ -116,6 +112,7 @@ class RecommendBannerContentAdaper
         }
       }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public void a(boolean paramBoolean)
@@ -151,7 +148,7 @@ class RecommendBannerContentAdaper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerContentAdaper
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public class StateScroller
   
   private static float a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return (paramFloat2 - paramFloat1) * paramFloat3 + paramFloat1;
+    return paramFloat1 + (paramFloat2 - paramFloat1) * paramFloat3;
   }
   
   public float a()
@@ -48,14 +48,15 @@ public class StateScroller
     if (this.jdField_a_of_type_Boolean) {
       return false;
     }
-    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-    if (l >= this.jdField_b_of_type_Long)
+    long l1 = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+    long l2 = this.jdField_b_of_type_Long;
+    if (l1 >= l2)
     {
       this.jdField_a_of_type_Boolean = true;
       this.c = this.jdField_b_of_type_Float;
       return false;
     }
-    float f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation((float)l / (float)this.jdField_b_of_type_Long);
+    float f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation((float)l1 / (float)l2);
     this.c = a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f);
     return true;
   }
@@ -67,7 +68,7 @@ public class StateScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.animation.StateScroller
  * JD-Core Version:    0.7.0.1
  */

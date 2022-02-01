@@ -39,22 +39,25 @@ public final class s_user
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 1);
+    String str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.timestamp, 2);
     paramJceOutputStream.write(this.from, 3);
-    if (this.uinkey != null) {
-      paramJceOutputStream.write(this.uinkey, 4);
+    str = this.uinkey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.logo != null) {
-      paramJceOutputStream.write(this.logo, 5);
+    str = this.logo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.s_user
  * JD-Core Version:    0.7.0.1
  */

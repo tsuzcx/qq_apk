@@ -29,23 +29,21 @@ public class LowEndPerfBean
   
   public static LowEndPerfBean a(String paramString)
   {
-    if (paramString == null)
-    {
-      paramString = null;
-      return paramString;
+    if (paramString == null) {
+      return null;
     }
     for (;;)
     {
       try
       {
         LowEndPerfBean localLowEndPerfBean = new LowEndPerfBean();
-        Object localObject = new JSONObject(paramString);
-        localLowEndPerfBean.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("userratio_new", "0.0f|0.0f|0.0f|0.0f");
-        localLowEndPerfBean.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("extralsteps_new", "-1");
-        localLowEndPerfBean.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("predownloadwhitelist_new", "-1");
-        localLowEndPerfBean.e = ((JSONObject)localObject).optBoolean("useapm_new", false);
-        localLowEndPerfBean.h = ((JSONObject)localObject).optBoolean("suspendWhiteListOnly", true);
-        paramString = Float.valueOf(Float.parseFloat(((JSONObject)localObject).optString("suspend_user_ratio", "0.0f")));
+        Object localObject1 = new JSONObject(paramString);
+        localLowEndPerfBean.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("userratio_new", "0.0f|0.0f|0.0f|0.0f");
+        localLowEndPerfBean.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("extralsteps_new", "-1");
+        localLowEndPerfBean.jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("predownloadwhitelist_new", "-1");
+        localLowEndPerfBean.e = ((JSONObject)localObject1).optBoolean("useapm_new", false);
+        localLowEndPerfBean.h = ((JSONObject)localObject1).optBoolean("suspendWhiteListOnly", true);
+        paramString = Float.valueOf(Float.parseFloat(((JSONObject)localObject1).optString("suspend_user_ratio", "0.0f")));
         if (paramString != null)
         {
           if (paramString.floatValue() > Math.random())
@@ -56,52 +54,67 @@ public class LowEndPerfBean
         }
         else
         {
-          localObject = Float.valueOf(Float.parseFloat(((JSONObject)localObject).optString("fake_suspend_user_ratio", "0.0f")));
-          if (localObject != null)
+          localObject1 = Float.valueOf(Float.parseFloat(((JSONObject)localObject1).optString("fake_suspend_user_ratio", "0.0f")));
+          if (localObject1 != null)
           {
-            if (((Float)localObject).floatValue() <= Math.random()) {
-              break label472;
+            if (((Float)localObject1).floatValue() <= Math.random()) {
+              break label531;
             }
             bool = true;
             localLowEndPerfBean.g = bool;
           }
           if (!localLowEndPerfBean.jdField_a_of_type_JavaLangString.isEmpty())
           {
-            String[] arrayOfString = localLowEndPerfBean.jdField_a_of_type_JavaLangString.split("\\|");
-            if (arrayOfString.length == 4)
+            Object localObject2 = localLowEndPerfBean.jdField_a_of_type_JavaLangString.split("\\|");
+            if (localObject2.length == 4)
             {
-              float f1 = Float.parseFloat(arrayOfString[0]);
-              float f2 = Float.parseFloat(arrayOfString[1]);
-              float f3 = Float.parseFloat(arrayOfString[2]);
-              float f4 = Float.parseFloat(arrayOfString[3]);
+              float f1 = Float.parseFloat(localObject2[0]);
+              float f2 = Float.parseFloat(localObject2[1]);
+              float f3 = Float.parseFloat(localObject2[2]);
+              float f4 = Float.parseFloat(localObject2[3]);
               if (f1 <= Math.random()) {
-                break label478;
+                break label537;
               }
               bool = true;
               localLowEndPerfBean.jdField_a_of_type_Boolean = bool;
               if (f2 <= Math.random()) {
-                break label484;
+                break label543;
               }
               bool = true;
               localLowEndPerfBean.jdField_b_of_type_Boolean = bool;
               if (f3 <= Math.random()) {
-                break label490;
+                break label549;
               }
               bool = true;
               localLowEndPerfBean.jdField_c_of_type_Boolean = bool;
               if (f4 <= Math.random()) {
-                break label496;
+                break label555;
               }
               bool = true;
               localLowEndPerfBean.d = bool;
-              QLog.d("Perf", 1, "disable_preload_user_ratio = " + f1 + ",disable_predownload_user_ratio = " + f2 + ",disable_gettroop_user_ratio = " + f3 + ",enable_auto_user_ratio = " + f4 + ",suspend_user_ratio = " + paramString + ",fake_suspend_user_ratio = " + localObject);
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("disable_preload_user_ratio = ");
+              ((StringBuilder)localObject2).append(f1);
+              ((StringBuilder)localObject2).append(",disable_predownload_user_ratio = ");
+              ((StringBuilder)localObject2).append(f2);
+              ((StringBuilder)localObject2).append(",disable_gettroop_user_ratio = ");
+              ((StringBuilder)localObject2).append(f3);
+              ((StringBuilder)localObject2).append(",enable_auto_user_ratio = ");
+              ((StringBuilder)localObject2).append(f4);
+              ((StringBuilder)localObject2).append(",suspend_user_ratio = ");
+              ((StringBuilder)localObject2).append(paramString);
+              ((StringBuilder)localObject2).append(",fake_suspend_user_ratio = ");
+              ((StringBuilder)localObject2).append(localObject1);
+              QLog.d("Perf", 1, ((StringBuilder)localObject2).toString());
             }
           }
-          paramString = localLowEndPerfBean;
-          if (!QLog.isColorLevel()) {
-            break;
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("confBean = ");
+            paramString.append(localLowEndPerfBean.toString());
+            QLog.d("Perf", 2, paramString.toString());
           }
-          QLog.d("Perf", 2, "confBean = " + localLowEndPerfBean.toString());
           return localLowEndPerfBean;
         }
       }
@@ -114,36 +127,60 @@ public class LowEndPerfBean
       }
       boolean bool = false;
       continue;
-      label472:
+      label531:
       bool = false;
       continue;
-      label478:
+      label537:
       bool = false;
       continue;
-      label484:
+      label543:
       bool = false;
       continue;
-      label490:
+      label549:
       bool = false;
       continue;
-      label496:
+      label555:
       bool = false;
     }
   }
   
   public boolean a()
   {
-    return !this.e;
+    return this.e ^ true;
   }
   
   public String toString()
   {
-    return "LowEndPerfBean{mDisablePreloadProcess=" + this.jdField_a_of_type_Boolean + ",mDisablePredownload=" + this.jdField_b_of_type_Boolean + ",mDisableGetTroopList=" + this.jdField_c_of_type_Boolean + ",mEnableAutomatorDelay=" + this.d + ",mUserRatio=" + this.jdField_a_of_type_JavaLangString + ",mExtraSteps=" + this.jdField_b_of_type_JavaLangString + ",mPredownLoadWhiteList=" + this.jdField_c_of_type_JavaLangString + ",mUseApmConfig=" + this.e + ",mSuspend_Thread=" + this.f + ",mFake_Suspend_Thread = " + this.g + ",mSuspendWhiteListThreadOnly = " + this.h + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LowEndPerfBean{mDisablePreloadProcess=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",mDisablePredownload=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(",mDisableGetTroopList=");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(",mEnableAutomatorDelay=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",mUserRatio=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mExtraSteps=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",mPredownLoadWhiteList=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",mUseApmConfig=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",mSuspend_Thread=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",mFake_Suspend_Thread = ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(",mSuspendWhiteListThreadOnly = ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.suspendthread.LowEndPerfBean
  * JD-Core Version:    0.7.0.1
  */

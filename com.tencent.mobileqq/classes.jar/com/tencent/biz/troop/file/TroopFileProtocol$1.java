@@ -24,14 +24,12 @@ final class TroopFileProtocol$1
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
+    int i = 0;
     if (paramJSONObject != null) {}
     for (;;)
     {
-      ZipFilePresenter.FileData localFileData;
-      UUID localUUID;
       try
       {
-        Object localObject;
         if (!paramJSONObject.isNull("dirs"))
         {
           paramBundle = paramJSONObject.getJSONArray("dirs");
@@ -46,102 +44,119 @@ final class TroopFileProtocol$1
             continue;
           }
         }
-        if ((paramJSONObject != null) && (!paramJSONObject.isNull("files")))
-        {
-          JSONArray localJSONArray = paramJSONObject.getJSONArray("files");
-          paramInt = 0;
-          if (paramInt < localJSONArray.length())
-          {
-            localFileData = new ZipFilePresenter.FileData();
-            paramJSONObject = localJSONArray.getJSONObject(paramInt);
-            localFileData.jdField_a_of_type_JavaLangString = paramJSONObject.getString("filename");
-            localFileData.jdField_a_of_type_Long = paramJSONObject.getLong("size");
-            if (this.jdField_a_of_type_JavaLangString.equals("/"))
-            {
-              paramJSONObject = "/" + localFileData.jdField_a_of_type_JavaLangString;
-              localUUID = UUID.nameUUIDFromBytes((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath + this.jdField_a_of_type_JavaLangString + localFileData.jdField_a_of_type_JavaLangString).getBytes());
-              localObject = TroopFileTransferUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath);
-              if (localObject == null) {
-                break label690;
-              }
-              paramBundle = (Bundle)localObject;
-              if (((String)localObject).length() == 0) {
-                break label690;
-              }
-              paramBundle = UUID.nameUUIDFromBytes((paramBundle + this.jdField_a_of_type_JavaLangString + localFileData.jdField_a_of_type_JavaLangString).getBytes());
-              localObject = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
-              TroopFileStatusInfo localTroopFileStatusInfo = ((TroopFileTransferManager)localObject).a(localUUID);
-              if (localTroopFileStatusInfo != null)
-              {
-                paramBundle = FileManagerUtil.a(localTroopFileStatusInfo);
-                paramBundle.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-                paramBundle.zipInnerPath = paramJSONObject;
-                paramBundle.isZipInnerFile = true;
-                paramBundle.zipType = this.jdField_a_of_type_Int;
-                paramBundle.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
-                paramJSONObject = paramBundle;
-                paramJSONObject.isZipInnerFile = true;
-                localFileData.b = paramJSONObject.nSessionId;
-                this.jdField_a_of_type_JavaUtilList.add(localFileData);
-                paramInt += 1;
-              }
-            }
-            else
-            {
-              paramJSONObject = this.jdField_a_of_type_JavaLangString + "/" + localFileData.jdField_a_of_type_JavaLangString;
-              continue;
-            }
-            paramBundle = ((TroopFileTransferManager)localObject).a(paramBundle);
-            if (paramBundle == null) {
-              break label531;
-            }
-            paramBundle = FileManagerUtil.a(paramBundle);
-            paramBundle.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-            paramBundle.zipInnerPath = paramJSONObject;
-            paramBundle.isZipInnerFile = true;
-            paramBundle.zipType = this.jdField_a_of_type_Int;
-            paramBundle.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
-            paramJSONObject = paramBundle;
-            continue;
-          }
+        if ((paramJSONObject == null) || (paramJSONObject.isNull("files"))) {
+          continue;
         }
-        paramBundle = new FileManagerEntity();
+        Object localObject = paramJSONObject.getJSONArray("files");
+        paramInt = i;
+        if (paramInt >= ((JSONArray)localObject).length()) {
+          continue;
+        }
+        localFileData = new ZipFilePresenter.FileData();
+        paramJSONObject = ((JSONArray)localObject).getJSONObject(paramInt);
+        localFileData.jdField_a_of_type_JavaLangString = paramJSONObject.getString("filename");
+        localFileData.jdField_a_of_type_Long = paramJSONObject.getLong("size");
+        if (this.jdField_a_of_type_JavaLangString.equals("/"))
+        {
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append("/");
+          paramJSONObject.append(localFileData.jdField_a_of_type_JavaLangString);
+          str = paramJSONObject.toString();
+        }
+        else
+        {
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append(this.jdField_a_of_type_JavaLangString);
+          paramJSONObject.append("/");
+          paramJSONObject.append(localFileData.jdField_a_of_type_JavaLangString);
+          continue;
+        }
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath);
+        paramJSONObject.append(this.jdField_a_of_type_JavaLangString);
+        paramJSONObject.append(localFileData.jdField_a_of_type_JavaLangString);
+        localUUID = UUID.nameUUIDFromBytes(paramJSONObject.toString().getBytes());
+        paramBundle = TroopFileTransferUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath);
+        if (paramBundle == null) {
+          continue;
+        }
+        paramJSONObject = paramBundle;
+        if (paramBundle.length() != 0) {}
       }
       catch (JSONException paramJSONObject)
       {
-        paramJSONObject.printStackTrace();
-        if (this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$OnGetZipFileList != null) {
-          this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$OnGetZipFileList.a(this.jdField_a_of_type_JavaUtilList);
-        }
-        return;
+        ZipFilePresenter.FileData localFileData;
+        String str;
+        UUID localUUID;
+        TroopFileStatusInfo localTroopFileStatusInfo;
+        continue;
+        paramJSONObject = "0";
+        continue;
       }
-      label531:
-      paramBundle.fileName = localFileData.jdField_a_of_type_JavaLangString;
-      paramBundle.fileSize = localFileData.jdField_a_of_type_Long;
-      paramBundle.nSessionId = FileManagerUtil.a().longValue();
-      paramBundle.strTroopFilePath = localUUID.toString();
-      paramBundle.strTroopFileID = localUUID.toString();
-      paramBundle.zipInnerPath = paramJSONObject;
-      paramBundle.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
-      paramBundle.peerUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      paramBundle.peerType = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
-      paramBundle.busId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
-      paramBundle.cloudType = 4;
-      paramBundle.isZipInnerFile = true;
-      paramBundle.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-      paramBundle.zipType = this.jdField_a_of_type_Int;
-      paramBundle.TroopUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(paramBundle);
-      paramJSONObject = paramBundle;
-      continue;
-      label690:
-      paramBundle = "0";
+      paramBundle = new StringBuilder();
+      paramBundle.append(paramJSONObject);
+      paramBundle.append(this.jdField_a_of_type_JavaLangString);
+      paramBundle.append(localFileData.jdField_a_of_type_JavaLangString);
+      paramJSONObject = UUID.nameUUIDFromBytes(paramBundle.toString().getBytes());
+      paramBundle = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
+      localTroopFileStatusInfo = paramBundle.a(localUUID);
+      if (localTroopFileStatusInfo != null)
+      {
+        paramJSONObject = FileManagerUtil.a(localTroopFileStatusInfo);
+        paramJSONObject.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
+        paramJSONObject.zipInnerPath = str;
+        paramJSONObject.isZipInnerFile = true;
+        paramJSONObject.zipType = this.jdField_a_of_type_Int;
+        paramJSONObject.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
+      }
+      else
+      {
+        paramJSONObject = paramBundle.a(paramJSONObject);
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = FileManagerUtil.a(paramJSONObject);
+          paramJSONObject.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
+          paramJSONObject.zipInnerPath = str;
+          paramJSONObject.isZipInnerFile = true;
+          paramJSONObject.zipType = this.jdField_a_of_type_Int;
+          paramJSONObject.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
+        }
+        else
+        {
+          paramJSONObject = new FileManagerEntity();
+          paramJSONObject.fileName = localFileData.jdField_a_of_type_JavaLangString;
+          paramJSONObject.fileSize = localFileData.jdField_a_of_type_Long;
+          paramJSONObject.nSessionId = FileManagerUtil.a().longValue();
+          paramJSONObject.strTroopFilePath = localUUID.toString();
+          paramJSONObject.strTroopFileID = localUUID.toString();
+          paramJSONObject.zipInnerPath = str;
+          paramJSONObject.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
+          paramJSONObject.peerUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
+          paramJSONObject.peerType = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
+          paramJSONObject.busId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
+          paramJSONObject.cloudType = 4;
+          paramJSONObject.isZipInnerFile = true;
+          paramJSONObject.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
+          paramJSONObject.zipType = this.jdField_a_of_type_Int;
+          paramJSONObject.TroopUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(paramJSONObject);
+        }
+      }
+      paramJSONObject.isZipInnerFile = true;
+      localFileData.b = paramJSONObject.nSessionId;
+      this.jdField_a_of_type_JavaUtilList.add(localFileData);
+      paramInt += 1;
+    }
+    paramJSONObject.printStackTrace();
+    paramJSONObject = this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$OnGetZipFileList;
+    if (paramJSONObject != null) {
+      paramJSONObject.a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.TroopFileProtocol.1
  * JD-Core Version:    0.7.0.1
  */

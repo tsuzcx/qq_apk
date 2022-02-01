@@ -9,18 +9,20 @@ class GroupVideoManager$7$1
   
   public void run()
   {
-    GroupVideoManager.CheckListener localCheckListener = this.this$0.a;
-    if ((this.a != null) && (this.a.size() > 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localCheckListener.a(bool);
-      return;
+    IGroupVideoManager.CheckListener localCheckListener = this.this$0.a;
+    List localList = this.a;
+    boolean bool;
+    if ((localList != null) && (localList.size() > 0)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localCheckListener.a(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.7.1
  * JD-Core Version:    0.7.0.1
  */

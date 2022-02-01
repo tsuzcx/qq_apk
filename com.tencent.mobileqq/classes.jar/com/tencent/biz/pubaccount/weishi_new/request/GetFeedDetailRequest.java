@@ -14,12 +14,15 @@ public class GetFeedDetailRequest
     stSimpleGetFeedDetailReq localstSimpleGetFeedDetailReq = new stSimpleGetFeedDetailReq();
     localstSimpleGetFeedDetailReq.feedid = paramString;
     this.a = localstSimpleGetFeedDetailReq;
-    WSLog.b("SimpleGetFeedDetailRequest", "stSimpleGetFeedDetailReq = " + localstSimpleGetFeedDetailReq.toString());
+    paramString = new StringBuilder();
+    paramString.append("stSimpleGetFeedDetailReq = ");
+    paramString.append(localstSimpleGetFeedDetailReq.toString());
+    WSLog.b("SimpleGetFeedDetailRequest", paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.GetFeedDetailRequest
  * JD-Core Version:    0.7.0.1
  */

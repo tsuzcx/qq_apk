@@ -37,29 +37,27 @@ class OperatorZipIterable$1
   
   public void onNext(T1 paramT1)
   {
-    if (this.done) {}
-    for (;;)
-    {
+    if (this.done) {
       return;
-      try
+    }
+    try
+    {
+      this.val$subscriber.onNext(this.this$0.zipFunction.call(paramT1, this.val$iterator.next()));
+      if (!this.val$iterator.hasNext())
       {
-        this.val$subscriber.onNext(this.this$0.zipFunction.call(paramT1, this.val$iterator.next()));
-        if (!this.val$iterator.hasNext())
-        {
-          onCompleted();
-          return;
-        }
+        onCompleted();
+        return;
       }
-      catch (Throwable paramT1)
-      {
-        Exceptions.throwOrReport(paramT1, this);
-      }
+    }
+    catch (Throwable paramT1)
+    {
+      Exceptions.throwOrReport(paramT1, this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorZipIterable.1
  * JD-Core Version:    0.7.0.1
  */

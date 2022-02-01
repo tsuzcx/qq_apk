@@ -1,8 +1,10 @@
 package com.tencent.biz.pubaccount.weishi_new.commercial;
 
+import UserGrowth.stBusinessIconInfo;
 import UserGrowth.stFeedOpInfo;
 import UserGrowth.stGetFeedIconOpRsp;
 import UserGrowth.stSimpleMetaFeed;
+import com.google.gson.Gson;
 import com.tencent.biz.pubaccount.weishi_new.net.IWeishiServiceListener;
 import com.tencent.biz.pubaccount.weishi_new.net.WeishiBusinessLooper;
 import com.tencent.biz.pubaccount.weishi_new.net.WeishiTask;
@@ -30,17 +32,29 @@ public class WSWidgetDataManager
   
   private AbsWSRichWidgetData a(stGetFeedIconOpRsp paramstGetFeedIconOpRsp)
   {
-    if (paramstGetFeedIconOpRsp == null) {}
-    int i;
-    do
-    {
+    WSPublisherInfo localWSPublisherInfo = null;
+    if (paramstGetFeedIconOpRsp == null) {
       return null;
-      i = paramstGetFeedIconOpRsp.opInfo.iconType;
-      if (i == 3) {
-        return new WSCommercialInfo(paramstGetFeedIconOpRsp.businessIcon);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("convertRichWidgetData:");
+    localStringBuilder.append(new Gson().toJson(paramstGetFeedIconOpRsp));
+    WSLog.b("WSWidgetDataManager", localStringBuilder.toString());
+    int i = paramstGetFeedIconOpRsp.opInfo.iconType;
+    if (i == 3)
+    {
+      if ((paramstGetFeedIconOpRsp.businessIcon != null) && (paramstGetFeedIconOpRsp.businessIcon.cardSwitch != 0))
+      {
+        WSLog.a("WSWidgetDataManager", "covert to big card commercial data");
+        return new WSBigCardCommercialInfo(paramstGetFeedIconOpRsp.businessIcon, paramstGetFeedIconOpRsp.feedIconOpConf);
       }
-    } while (i != 1);
-    return new WSPublisherInfo(paramstGetFeedIconOpRsp.shootIconInfo);
+      WSLog.a("WSWidgetDataManager", "covert to commercial data");
+      return new WSCommercialInfo(paramstGetFeedIconOpRsp.businessIcon);
+    }
+    if (i == 1) {
+      localWSPublisherInfo = new WSPublisherInfo(paramstGetFeedIconOpRsp.shootIconInfo);
+    }
+    return localWSPublisherInfo;
   }
   
   public static WSWidgetDataManager a()
@@ -56,18 +70,22 @@ public class WSWidgetDataManager
   
   private ArrayList<stFeedOpInfo> a(List<WSVerticalItemData> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      stFeedOpInfo localstFeedOpInfo = ((WSVerticalItemData)paramList.next()).a().opInfo;
-      WSLog.a("WSWidgetDataManager", "[getOpInfoList]" + localstFeedOpInfo.toString());
-      localArrayList.add(localstFeedOpInfo);
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        stFeedOpInfo localstFeedOpInfo = ((WSVerticalItemData)paramList.next()).a().opInfo;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[getOpInfoList]");
+        localStringBuilder.append(localstFeedOpInfo.toString());
+        WSLog.a("WSWidgetDataManager", localStringBuilder.toString());
+        localArrayList.add(localstFeedOpInfo);
+      }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   @NotNull
@@ -82,46 +100,55 @@ public class WSWidgetDataManager
   private boolean a(WSVerticalItemData paramWSVerticalItemData)
   {
     Object localObject = paramWSVerticalItemData.a();
+    boolean bool = false;
     if (localObject != null)
     {
       localObject = ((stSimpleMetaFeed)localObject).opInfo;
-      if ((localObject == null) || (((stFeedOpInfo)localObject).iconType != 255)) {}
+      if ((localObject != null) && (((stFeedOpInfo)localObject).iconType == 255)) {
+        return false;
+      }
     }
-    while (paramWSVerticalItemData.a() != null) {
-      return false;
+    if (paramWSVerticalItemData.a() == null) {
+      bool = true;
     }
-    return true;
+    return bool;
   }
   
   public void a(int paramInt, List<WSVerticalItemData> paramList, WSWidgetDataManager.OnDataCallback paramOnDataCallback)
   {
-    WSLog.a("WSWidgetDataManager", "[getRichOpInfo] position:" + paramInt);
-    if ((paramInt < 0) || (paramInt > paramList.size())) {
-      WSLog.a("WSWidgetDataManager", "[getRichOpInfo] position exception");
-    }
-    WSVerticalItemData localWSVerticalItemData;
-    do
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[getRichOpInfo] position:");
+    ((StringBuilder)localObject1).append(paramInt);
+    WSLog.a("WSWidgetDataManager", ((StringBuilder)localObject1).toString());
+    if ((paramInt >= 0) && (paramInt <= paramList.size()))
     {
+      localObject1 = (WSVerticalItemData)paramList.get(paramInt);
+      if (!a((WSVerticalItemData)localObject1)) {
+        return;
+      }
+      Object localObject2 = a(paramList, Math.max(paramInt - 10, 0), Math.max(paramInt, 0));
+      Object localObject3 = a(paramList, Math.min(paramInt + 1, paramList.size() - 1), Math.min(paramInt + 10, paramList.size() - 1));
+      paramList = ((WSVerticalItemData)localObject1).a().opInfo;
+      paramList.isRequesting = 1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getRichOpInfo current");
+      localStringBuilder.append(paramList.toString());
+      WSLog.a("WSWidgetDataManager", localStringBuilder.toString());
+      WSLog.a("WSWidgetDataManager", "preList------------------------");
+      localObject2 = a((List)localObject2);
+      WSLog.a("WSWidgetDataManager", "postList-----------------------");
+      localObject3 = a((List)localObject3);
+      WSLog.a("WSWidgetDataManager", "endList-----------------------");
+      paramList = new WeishiTask(new GetRichOpInfoRequest(paramList, (ArrayList)localObject2, (ArrayList)localObject3), null, a((WSVerticalItemData)localObject1, paramOnDataCallback), 4018);
+      WeishiBusinessLooper.a().a(paramList);
       return;
-      localWSVerticalItemData = (WSVerticalItemData)paramList.get(paramInt);
-    } while (!a(localWSVerticalItemData));
-    Object localObject1 = a(paramList, Math.max(paramInt - 10, 0), Math.max(paramInt, 0));
-    Object localObject2 = a(paramList, Math.min(paramInt + 1, paramList.size() - 1), Math.min(paramInt + 10, paramList.size() - 1));
-    paramList = localWSVerticalItemData.a().opInfo;
-    paramList.isRequesting = 1;
-    WSLog.a("WSWidgetDataManager", "getRichOpInfo current" + paramList.toString());
-    WSLog.a("WSWidgetDataManager", "preList------------------------");
-    localObject1 = a((List)localObject1);
-    WSLog.a("WSWidgetDataManager", "postList-----------------------");
-    localObject2 = a((List)localObject2);
-    WSLog.a("WSWidgetDataManager", "endList-----------------------");
-    paramList = new WeishiTask(new GetRichOpInfoRequest(paramList, (ArrayList)localObject1, (ArrayList)localObject2), null, a(localWSVerticalItemData, paramOnDataCallback), 4018);
-    WeishiBusinessLooper.a().a(paramList);
+    }
+    WSLog.a("WSWidgetDataManager", "[getRichOpInfo] position exception");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.commercial.WSWidgetDataManager
  * JD-Core Version:    0.7.0.1
  */

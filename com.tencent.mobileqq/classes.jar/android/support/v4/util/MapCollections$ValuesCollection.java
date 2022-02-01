@@ -62,13 +62,13 @@ final class MapCollections$ValuesCollection
   
   public boolean removeAll(Collection<?> paramCollection)
   {
-    int i = 0;
     int j = this.this$0.colGetSize();
+    int i = 0;
     boolean bool = false;
     while (i < j)
     {
-      int m = i;
       int k = j;
+      int m = i;
       if (paramCollection.contains(this.this$0.colGetEntry(i, 1)))
       {
         this.this$0.colRemoveAt(i);
@@ -84,13 +84,13 @@ final class MapCollections$ValuesCollection
   
   public boolean retainAll(Collection<?> paramCollection)
   {
-    int i = 0;
     int j = this.this$0.colGetSize();
+    int i = 0;
     boolean bool = false;
     while (i < j)
     {
-      int m = i;
       int k = j;
+      int m = i;
       if (!paramCollection.contains(this.this$0.colGetEntry(i, 1)))
       {
         this.this$0.colRemoveAt(i);

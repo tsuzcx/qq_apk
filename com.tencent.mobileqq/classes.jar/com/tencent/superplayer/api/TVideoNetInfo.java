@@ -25,8 +25,9 @@ public class TVideoNetInfo
   
   public String getCurrentDefinitionStr()
   {
-    if (this.mCurrentDefinition != null) {
-      return this.mCurrentDefinition.getDefn();
+    TVideoNetInfo.DefinitionInfo localDefinitionInfo = this.mCurrentDefinition;
+    if (localDefinitionInfo != null) {
+      return localDefinitionInfo.getDefn();
     }
     return "";
   }
@@ -101,7 +102,7 @@ public class TVideoNetInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.api.TVideoNetInfo
  * JD-Core Version:    0.7.0.1
  */

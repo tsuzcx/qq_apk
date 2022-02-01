@@ -47,7 +47,12 @@ public final class AdPlaybackState
   public int getAdGroupIndexAfterPositionUs(long paramLong)
   {
     int i = 0;
-    while ((i < this.adGroupTimesUs.length) && (this.adGroupTimesUs[i] != -9223372036854775808L) && ((paramLong >= this.adGroupTimesUs[i]) || (!this.adGroups[i].hasUnplayedAds()))) {
+    for (;;)
+    {
+      long[] arrayOfLong = this.adGroupTimesUs;
+      if ((i >= arrayOfLong.length) || (arrayOfLong[i] == -9223372036854775808L) || ((paramLong < arrayOfLong[i]) && (this.adGroups[i].hasUnplayedAds()))) {
+        break;
+      }
       i += 1;
     }
     if (i < this.adGroupTimesUs.length) {
@@ -59,7 +64,12 @@ public final class AdPlaybackState
   public int getAdGroupIndexForPositionUs(long paramLong)
   {
     int i = this.adGroupTimesUs.length - 1;
-    while ((i >= 0) && ((this.adGroupTimesUs[i] == -9223372036854775808L) || (this.adGroupTimesUs[i] > paramLong))) {
+    while (i >= 0)
+    {
+      long[] arrayOfLong = this.adGroupTimesUs;
+      if ((arrayOfLong[i] != -9223372036854775808L) && (arrayOfLong[i] <= paramLong)) {
+        break;
+      }
       i -= 1;
     }
     if ((i >= 0) && (this.adGroups[i].hasUnplayedAds())) {
@@ -71,16 +81,18 @@ public final class AdPlaybackState
   @CheckResult
   public AdPlaybackState withAdCount(int paramInt1, int paramInt2)
   {
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      if (this.adGroups[paramInt1].count != paramInt2) {
-        break;
-      }
+    boolean bool;
+    if (paramInt2 > 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Assertions.checkArgument(bool);
+    if (this.adGroups[paramInt1].count == paramInt2) {
       return this;
     }
-    AdPlaybackState.AdGroup[] arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(this.adGroups, this.adGroups.length);
+    AdPlaybackState.AdGroup[] arrayOfAdGroup = this.adGroups;
+    arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(arrayOfAdGroup, arrayOfAdGroup.length);
     arrayOfAdGroup[paramInt1] = this.adGroups[paramInt1].withAdCount(paramInt2);
     return new AdPlaybackState(this.adGroupTimesUs, arrayOfAdGroup, this.adResumePositionUs, this.contentDurationUs);
   }
@@ -88,7 +100,8 @@ public final class AdPlaybackState
   @CheckResult
   public AdPlaybackState withAdDurationsUs(long[][] paramArrayOfLong)
   {
-    AdPlaybackState.AdGroup[] arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(this.adGroups, this.adGroups.length);
+    AdPlaybackState.AdGroup[] arrayOfAdGroup = this.adGroups;
+    arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(arrayOfAdGroup, arrayOfAdGroup.length);
     int i = 0;
     while (i < this.adGroupCount)
     {
@@ -101,7 +114,8 @@ public final class AdPlaybackState
   @CheckResult
   public AdPlaybackState withAdLoadError(int paramInt1, int paramInt2)
   {
-    AdPlaybackState.AdGroup[] arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(this.adGroups, this.adGroups.length);
+    AdPlaybackState.AdGroup[] arrayOfAdGroup = this.adGroups;
+    arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(arrayOfAdGroup, arrayOfAdGroup.length);
     arrayOfAdGroup[paramInt1] = arrayOfAdGroup[paramInt1].withAdState(4, paramInt2);
     return new AdPlaybackState(this.adGroupTimesUs, arrayOfAdGroup, this.adResumePositionUs, this.contentDurationUs);
   }
@@ -118,7 +132,8 @@ public final class AdPlaybackState
   @CheckResult
   public AdPlaybackState withAdUri(int paramInt1, int paramInt2, Uri paramUri)
   {
-    AdPlaybackState.AdGroup[] arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(this.adGroups, this.adGroups.length);
+    AdPlaybackState.AdGroup[] arrayOfAdGroup = this.adGroups;
+    arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(arrayOfAdGroup, arrayOfAdGroup.length);
     arrayOfAdGroup[paramInt1] = arrayOfAdGroup[paramInt1].withAdUri(paramUri, paramInt2);
     return new AdPlaybackState(this.adGroupTimesUs, arrayOfAdGroup, this.adResumePositionUs, this.contentDurationUs);
   }
@@ -135,7 +150,8 @@ public final class AdPlaybackState
   @CheckResult
   public AdPlaybackState withPlayedAd(int paramInt1, int paramInt2)
   {
-    AdPlaybackState.AdGroup[] arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(this.adGroups, this.adGroups.length);
+    AdPlaybackState.AdGroup[] arrayOfAdGroup = this.adGroups;
+    arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(arrayOfAdGroup, arrayOfAdGroup.length);
     arrayOfAdGroup[paramInt1] = arrayOfAdGroup[paramInt1].withAdState(3, paramInt2);
     return new AdPlaybackState(this.adGroupTimesUs, arrayOfAdGroup, this.adResumePositionUs, this.contentDurationUs);
   }
@@ -143,14 +159,15 @@ public final class AdPlaybackState
   @CheckResult
   public AdPlaybackState withSkippedAdGroup(int paramInt)
   {
-    AdPlaybackState.AdGroup[] arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(this.adGroups, this.adGroups.length);
+    AdPlaybackState.AdGroup[] arrayOfAdGroup = this.adGroups;
+    arrayOfAdGroup = (AdPlaybackState.AdGroup[])Arrays.copyOf(arrayOfAdGroup, arrayOfAdGroup.length);
     arrayOfAdGroup[paramInt] = arrayOfAdGroup[paramInt].withAllAdsSkipped();
     return new AdPlaybackState(this.adGroupTimesUs, arrayOfAdGroup, this.adResumePositionUs, this.contentDurationUs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ads.AdPlaybackState
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class qqconnect$Appinfo
   extends MessageMicro<Appinfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 66, 74, 82, 90, 98, 106, 168, 176, 184, 194, 202, 208, 218, 226, 232, 240, 248, 802, 810, 818, 826 }, new String[] { "appid", "app_type", "platform", "app_name", "app_key", "app_state", "iphone_url_scheme", "android_pack_name", "icon_url", "source_url", "icon_small_url", "icon_middle_url", "tencent_docs_appinfo", "developer_uin", "app_class", "app_subclass", "remark", "icon_mini_url", "auth_time", "app_url", "universal_link", "qqconnect_feature", "is_hatchery", "test_uin_list", "template_msg_config", "mini_app_info", "web_app_info", "mobile_app_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), "", "", "", "", "", "", null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", "", Long.valueOf(0L), "", "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null, null, null, null }, Appinfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField android_pack_name = PBField.initString("");
   public final PBUInt32Field app_class = PBField.initUInt32(0);
   public final PBStringField app_key = PBField.initString("");
@@ -41,10 +41,17 @@ public final class qqconnect$Appinfo
   public final PBRepeatField<Long> test_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBStringField universal_link = PBField.initString("");
   public qqconnect.WebAppInfo web_app_info = new qqconnect.WebAppInfo();
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 66, 74, 82, 90, 98, 106, 168, 176, 184, 194, 202, 208, 218, 226, 232, 240, 248, 802, 810, 818, 826 }, new String[] { "appid", "app_type", "platform", "app_name", "app_key", "app_state", "iphone_url_scheme", "android_pack_name", "icon_url", "source_url", "icon_small_url", "icon_middle_url", "tencent_docs_appinfo", "developer_uin", "app_class", "app_subclass", "remark", "icon_mini_url", "auth_time", "app_url", "universal_link", "qqconnect_feature", "is_hatchery", "test_uin_list", "template_msg_config", "mini_app_info", "web_app_info", "mobile_app_info" }, new Object[] { localInteger, localInteger, localInteger, "", "", localInteger, "", "", "", "", "", "", null, localLong, localInteger, localInteger, "", "", localLong, "", "", localInteger, localInteger, localLong, null, null, null, null }, Appinfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qqconnect.Appinfo
  * JD-Core Version:    0.7.0.1
  */

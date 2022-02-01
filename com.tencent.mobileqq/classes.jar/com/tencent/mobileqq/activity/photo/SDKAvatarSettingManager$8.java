@@ -11,19 +11,22 @@ class SDKAvatarSettingManager$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1) {
-      SDKAvatarSettingManager.a(this.a, SDKAvatarSettingManager.a(this.a));
-    }
-    while (paramInt != 0) {
+    if (paramInt == 1)
+    {
+      paramDialogInterface = this.a;
+      SDKAvatarSettingManager.a(paramDialogInterface, SDKAvatarSettingManager.a(paramDialogInterface));
       return;
     }
-    this.a.b();
-    SDKAvatarSettingManager.a(this.a).moveTaskToBack(true);
+    if (paramInt == 0)
+    {
+      this.a.b();
+      SDKAvatarSettingManager.a(this.a).moveTaskToBack(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.8
  * JD-Core Version:    0.7.0.1
  */

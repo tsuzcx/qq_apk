@@ -14,37 +14,44 @@ final class e
     if (this.a.b == null) {
       return;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 100)
     {
-    default: 
-      return;
-    case 100: 
-      paramMessage = (VoiceRecordState)paramMessage.obj;
-      this.a.b.onGetVoiceRecordState(paramMessage);
-      return;
-    case 200: 
+      if (i != 200)
+      {
+        if (i != 300)
+        {
+          if (i != 400)
+          {
+            if (i != 500) {
+              return;
+            }
+            Object localObject = paramMessage.getData();
+            paramMessage = ((Bundle)localObject).getByteArray("pack");
+            localObject = ((Bundle)localObject).getString("url");
+            this.a.b.onGetVoicePackage(paramMessage, (String)localObject);
+            return;
+          }
+          if (this.a.a != null) {
+            this.a.a.c();
+          }
+          paramMessage = (Integer)paramMessage.obj;
+          this.a.b.onGetError(paramMessage.intValue());
+          return;
+        }
+        paramMessage = (VoiceRecognizerResult)paramMessage.obj;
+        if ((this.a.a != null) && (!InfoRecognizer.f) && (paramMessage.isEnd)) {
+          this.a.a.b();
+        }
+        this.a.b.onGetResult(paramMessage);
+        return;
+      }
       paramMessage = (Integer)paramMessage.obj;
       this.a.b.onVolumeChanged(paramMessage.intValue());
       return;
-    case 300: 
-      paramMessage = (VoiceRecognizerResult)paramMessage.obj;
-      if ((this.a.a != null) && (!InfoRecognizer.f) && (paramMessage.isEnd)) {
-        this.a.a.b();
-      }
-      this.a.b.onGetResult(paramMessage);
-      return;
-    case 400: 
-      if (this.a.a != null) {
-        this.a.a.c();
-      }
-      paramMessage = (Integer)paramMessage.obj;
-      this.a.b.onGetError(paramMessage.intValue());
-      return;
     }
-    Object localObject = paramMessage.getData();
-    paramMessage = ((Bundle)localObject).getByteArray("pack");
-    localObject = ((Bundle)localObject).getString("url");
-    this.a.b.onGetVoicePackage(paramMessage, (String)localObject);
+    paramMessage = (VoiceRecordState)paramMessage.obj;
+    this.a.b.onGetVoiceRecordState(paramMessage);
   }
 }
 

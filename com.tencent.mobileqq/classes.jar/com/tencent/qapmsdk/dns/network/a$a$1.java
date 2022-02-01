@@ -13,49 +13,44 @@ class a$a$1
     b.a locala = b.a();
     String str = b.c();
     int i;
-    int j;
-    if (locala != b.a.a)
-    {
+    if (locala != b.a.a) {
       i = 1;
-      if ((this.a.b == null) || (locala == this.a.b)) {
-        break label270;
-      }
-      j = 1;
-      label44:
-      if ((locala != this.a.b) || (locala != b.a.c) || ((b.a(str)) && (b.a(this.a.c)) && (str.equals(this.a.c)))) {
-        break label275;
-      }
-    }
-    label270:
-    label275:
-    for (int k = 1;; k = 0)
-    {
-      if ((i != 0) && (j != 0))
-      {
-        Logger.INSTANCE.i(new String[] { "QAPM_DNS_NetworkHandler", "Network type changed, clear dns cache, curNetwork: ", String.valueOf(locala), ", lastNetwork: ", String.valueOf(this.a.a), ", lastValidNetwork: ", String.valueOf(this.a.b), ", curSsid: ", str, ", lastSsid: ", this.a.c });
-        a.a().c();
-      }
-      if ((i != 0) && (k != 0)) {
-        a.a().b();
-      }
-      this.a.a = locala;
-      if (i != 0) {
-        this.a.b = locala;
-      }
-      if (locala == b.a.c) {
-        this.a.c = str;
-      }
-      return;
+    } else {
       i = 0;
-      break;
+    }
+    int j;
+    if ((this.a.b != null) && (locala != this.a.b)) {
+      j = 1;
+    } else {
       j = 0;
-      break label44;
+    }
+    int k;
+    if ((locala == this.a.b) && (locala == b.a.c) && ((!b.a(str)) || (!b.a(this.a.c)) || (!str.equals(this.a.c)))) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    if ((i != 0) && (j != 0))
+    {
+      Logger.INSTANCE.i(new String[] { "QAPM_DNS_NetworkHandler", "Network type changed, clear dns cache, curNetwork: ", String.valueOf(locala), ", lastNetwork: ", String.valueOf(this.a.a), ", lastValidNetwork: ", String.valueOf(this.a.b), ", curSsid: ", str, ", lastSsid: ", this.a.c });
+      a.a().c();
+    }
+    if ((i != 0) && (k != 0)) {
+      a.a().b();
+    }
+    a.a locala1 = this.a;
+    locala1.a = locala;
+    if (i != 0) {
+      locala1.b = locala;
+    }
+    if (locala == b.a.c) {
+      this.a.c = str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.dns.network.a.a.1
  * JD-Core Version:    0.7.0.1
  */

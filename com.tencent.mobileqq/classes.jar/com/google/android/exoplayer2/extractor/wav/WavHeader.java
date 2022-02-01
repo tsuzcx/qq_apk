@@ -59,15 +59,23 @@ final class WavHeader
   
   public SeekMap.SeekPoints getSeekPoints(long paramLong)
   {
-    long l1 = Util.constrainValue(this.averageBytesPerSecond * paramLong / 1000000L / this.blockAlignment * this.blockAlignment, 0L, this.dataSize - this.blockAlignment);
+    long l1 = this.averageBytesPerSecond * paramLong / 1000000L;
+    int i = this.blockAlignment;
+    l1 = Util.constrainValue(l1 / i * i, 0L, this.dataSize - i);
     long l2 = this.dataStartPosition + l1;
     long l3 = getTimeUs(l2);
     SeekPoint localSeekPoint = new SeekPoint(l3, l2);
-    if ((l3 >= paramLong) || (l1 == this.dataSize - this.blockAlignment)) {
-      return new SeekMap.SeekPoints(localSeekPoint);
+    if (l3 < paramLong)
+    {
+      paramLong = this.dataSize;
+      i = this.blockAlignment;
+      if (l1 != paramLong - i)
+      {
+        paramLong = l2 + i;
+        return new SeekMap.SeekPoints(localSeekPoint, new SeekPoint(getTimeUs(paramLong), paramLong));
+      }
     }
-    paramLong = this.blockAlignment + l2;
-    return new SeekMap.SeekPoints(localSeekPoint, new SeekPoint(getTimeUs(paramLong), paramLong));
+    return new SeekMap.SeekPoints(localSeekPoint);
   }
   
   public long getTimeUs(long paramLong)
@@ -93,7 +101,7 @@ final class WavHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.wav.WavHeader
  * JD-Core Version:    0.7.0.1
  */

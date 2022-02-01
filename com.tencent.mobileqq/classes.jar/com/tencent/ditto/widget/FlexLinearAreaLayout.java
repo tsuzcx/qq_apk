@@ -24,69 +24,63 @@ public class FlexLinearAreaLayout
   
   public void measureHorizontal(int paramInt1, int paramInt2)
   {
-    if ((this.shrinkColumns < 0) || (this.shrinkColumns >= getChildCount())) {
+    int i = this.shrinkColumns;
+    if ((i < 0) || (i >= getChildCount())) {
       super.measureHorizontal(paramInt1, paramInt2);
     }
     int i1 = View.MeasureSpec.getMode(paramInt1);
-    int m = View.MeasureSpec.getSize(paramInt1);
-    if (m <= 0) {
+    int n = View.MeasureSpec.getSize(paramInt1);
+    if (n <= 0) {
       super.measureHorizontal(paramInt1, paramInt2);
     }
     measureChildrenHorizontal(paramInt1, paramInt2);
     int i2 = getChildCount();
-    int i = 0;
-    int j = m;
-    paramInt1 = 0;
-    Object localObject;
-    int k;
-    if (i < i2)
+    paramInt1 = n;
+    i = 0;
+    int j = 0;
+    while (i < i2)
     {
       localObject = getChildAt(i);
-      if (((DittoArea)localObject).getVisibility() == 8) {
-        break label297;
-      }
-      int i3 = ((DittoArea)localObject).getMeasuredWidth();
-      int n = Math.max(paramInt1, ((DittoArea)localObject).getMeasuredHeight());
-      k = j;
-      paramInt1 = n;
-      if (this.shrinkColumns != i)
+      int k = j;
+      int m = paramInt1;
+      if (((DittoArea)localObject).getVisibility() != 8)
       {
-        localObject = ((DittoArea)localObject).getLayoutAttr();
-        paramInt1 = ((LayoutAttrSet)localObject).leftMargin;
-        k = j - (((LayoutAttrSet)localObject).rightMargin + (paramInt1 + i3));
-        paramInt1 = n;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      j = k;
-      break;
-      localObject = getChildAt(this.shrinkColumns);
-      if (localObject == null) {
-        return;
-      }
-      if ((localObject != null) && (((DittoArea)localObject).getVisibility() != 8))
-      {
-        LayoutAttrSet localLayoutAttrSet = ((DittoArea)localObject).getLayoutAttr();
-        if (((DittoArea)localObject).getMeasuredWidth() + localLayoutAttrSet.leftMargin + localLayoutAttrSet.rightMargin > j)
+        int i3 = ((DittoArea)localObject).getMeasuredWidth();
+        j = Math.max(j, ((DittoArea)localObject).getMeasuredHeight());
+        k = j;
+        m = paramInt1;
+        if (this.shrinkColumns != i)
         {
-          i = getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(j - localLayoutAttrSet.leftMargin - localLayoutAttrSet.rightMargin, i1), getPaddingLeft() + getPaddingRight(), localLayoutAttrSet.width);
-          ((DittoArea)localObject).setMeasureDirty(true);
-          measureChildWithMargins((DittoArea)localObject, i, 0, paramInt2, 0);
-          ((DittoArea)localObject).setMeasureDirty(false);
+          localObject = ((DittoArea)localObject).getLayoutAttr();
+          m = paramInt1 - (i3 + ((LayoutAttrSet)localObject).leftMargin + ((LayoutAttrSet)localObject).rightMargin);
+          k = j;
         }
       }
-      setMeasuredDimension(m, resolveSize(paramInt1, paramInt2));
-      return;
-      label297:
-      k = j;
+      i += 1;
+      j = k;
+      paramInt1 = m;
     }
+    Object localObject = getChildAt(this.shrinkColumns);
+    if (localObject == null) {
+      return;
+    }
+    if ((localObject != null) && (((DittoArea)localObject).getVisibility() != 8))
+    {
+      LayoutAttrSet localLayoutAttrSet = ((DittoArea)localObject).getLayoutAttr();
+      if (((DittoArea)localObject).getMeasuredWidth() + localLayoutAttrSet.leftMargin + localLayoutAttrSet.rightMargin > paramInt1)
+      {
+        paramInt1 = getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(paramInt1 - localLayoutAttrSet.leftMargin - localLayoutAttrSet.rightMargin, i1), getPaddingLeft() + getPaddingRight(), localLayoutAttrSet.width);
+        ((DittoArea)localObject).setMeasureDirty(true);
+        measureChildWithMargins((DittoArea)localObject, paramInt1, 0, paramInt2, 0);
+        ((DittoArea)localObject).setMeasureDirty(false);
+      }
+    }
+    setMeasuredDimension(n, resolveSize(j, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.widget.FlexLinearAreaLayout
  * JD-Core Version:    0.7.0.1
  */

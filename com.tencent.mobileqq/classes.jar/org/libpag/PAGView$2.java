@@ -17,9 +17,14 @@ class PAGView$2
     {
       ArrayList localArrayList = new ArrayList(PAGView.access$500(this.this$0));
       ??? = localArrayList.iterator();
-      if (???.hasNext()) {
+      while (???.hasNext()) {
         ((PAGView.PAGViewListener)???.next()).onAnimationCancel(this.this$0);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -30,9 +35,14 @@ class PAGView$2
     {
       ArrayList localArrayList = new ArrayList(PAGView.access$500(this.this$0));
       ??? = localArrayList.iterator();
-      if (???.hasNext()) {
+      while (???.hasNext()) {
         ((PAGView.PAGViewListener)???.next()).onAnimationEnd(this.this$0);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -43,9 +53,14 @@ class PAGView$2
     {
       ArrayList localArrayList = new ArrayList(PAGView.access$500(this.this$0));
       ??? = localArrayList.iterator();
-      if (???.hasNext()) {
+      while (???.hasNext()) {
         ((PAGView.PAGViewListener)???.next()).onAnimationRepeat(this.this$0);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -56,15 +71,20 @@ class PAGView$2
     {
       ArrayList localArrayList = new ArrayList(PAGView.access$500(this.this$0));
       ??? = localArrayList.iterator();
-      if (???.hasNext()) {
+      while (???.hasNext()) {
         ((PAGView.PAGViewListener)???.next()).onAnimationStart(this.this$0);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.libpag.PAGView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,23 +15,21 @@ class DownloaderImpl$LockManager
   
   public Object obtaionLock(String paramString)
   {
-    for (;;)
+    synchronized (this.Lock)
     {
-      synchronized (this.Lock)
+      if (this.mActiveLocks.containsKey(paramString))
       {
-        if (this.mActiveLocks.containsKey(paramString))
-        {
-          paramString = this.mActiveLocks.get(paramString);
-          return paramString;
-        }
-        if (this.mIdleLockObjects.size() > 0)
-        {
-          localObject1 = this.mIdleLockObjects.remove(0);
-          this.mActiveLocks.put(paramString, localObject1);
-          return localObject1;
-        }
+        paramString = this.mActiveLocks.get(paramString);
+        return paramString;
       }
-      Object localObject1 = new Object();
+      Object localObject1;
+      if (this.mIdleLockObjects.size() > 0) {
+        localObject1 = this.mIdleLockObjects.remove(0);
+      } else {
+        localObject1 = new Object();
+      }
+      this.mActiveLocks.put(paramString, localObject1);
+      return localObject1;
     }
   }
   
@@ -52,7 +50,7 @@ class DownloaderImpl$LockManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.DownloaderImpl.LockManager
  * JD-Core Version:    0.7.0.1
  */

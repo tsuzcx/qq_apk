@@ -3,10 +3,10 @@ package com.tencent.mobileqq.troop.filemanager.download;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.troop.file.protocol.TroopFileReqDownloadFileObserver;
-import com.tencent.mobileqq.app.BizTroopHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopFileHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -27,50 +27,57 @@ class TroopFilePreviewWorker$1
   
   public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    if (!paramBundle.getBoolean("isPreview", false)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long);
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
+    if (!paramBundle.getBoolean("isPreview", false)) {
+      return;
+    }
+    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {
+      return;
+    }
+    paramBundle = paramBundle.getString("itemKey");
+    if (paramBundle == null) {
+      return;
+    }
+    if (!UUID.fromString(paramBundle).equals(this.a.a())) {
+      return;
+    }
     TroopFileTransferManager.PreviewInfo localPreviewInfo = new TroopFileTransferManager.PreviewInfo();
     localPreviewInfo.jdField_a_of_type_Int = -1;
     try
     {
       localPreviewInfo.e = this.a.a().toString();
-      localQQAppInterface = TroopFileTransferUtil.a();
-      if (localQQAppInterface == null)
-      {
-        TroopFileTransferUtil.Log.a("TroopFilePreviewWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult app=null");
-        return;
-      }
     }
     catch (NullPointerException paramBundle)
     {
+      label98:
       QQAppInterface localQQAppInterface;
-      for (;;)
-      {
-        localPreviewInfo.e = null;
-      }
-      BizTroopHandler localBizTroopHandler = (BizTroopHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.BIZ_TROOP_HANDLER);
-      if ((paramDownloadFileRspBody == null) || (!paramBoolean))
-      {
-        TroopFileTransferUtil.Log.a("TroopFilePreviewWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:false  errCode:" + paramInt);
-        TroopFileError.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
-        localPreviewInfo.jdField_a_of_type_Boolean = false;
-        localBizTroopHandler.c(localPreviewInfo);
-        return;
-      }
+      TroopFileHandler localTroopFileHandler;
+      String str;
+      int i;
+      break label98;
+    }
+    localPreviewInfo.e = null;
+    localQQAppInterface = TroopFileTransferUtil.a();
+    if (localQQAppInterface == null)
+    {
+      paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramDownloadFileRspBody = new StringBuilder();
+      paramDownloadFileRspBody.append("[");
+      paramDownloadFileRspBody.append(this.a.jdField_a_of_type_JavaLangString);
+      paramDownloadFileRspBody.append("] getPreviewInfoResult app=null");
+      TroopFileTransferUtil.Log.a("TroopFilePreviewWorker", paramInt, paramDownloadFileRspBody.toString());
+      return;
+    }
+    localTroopFileHandler = (TroopFileHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER);
+    if ((paramDownloadFileRspBody != null) && (paramBoolean))
+    {
       paramInt = paramDownloadFileRspBody.int32_ret_code.get();
       localPreviewInfo.jdField_a_of_type_Int = paramInt;
       localPreviewInfo.jdField_a_of_type_Boolean = false;
-      String str = paramDownloadFileRspBody.str_download_ip.get();
-      paramBundle = "";
+      str = paramDownloadFileRspBody.str_download_ip.get();
       if (paramDownloadFileRspBody.str_download_dns.get() != null) {
         paramBundle = paramDownloadFileRspBody.str_download_dns.get().toString();
+      } else {
+        paramBundle = "";
       }
       localPreviewInfo.jdField_a_of_type_JavaLangString = str;
       if ((TextUtils.isEmpty(localPreviewInfo.jdField_a_of_type_JavaLangString)) || (localPreviewInfo.jdField_a_of_type_JavaLangString.equals("0.0.0.0"))) {
@@ -82,24 +89,59 @@ class TroopFilePreviewWorker$1
       localPreviewInfo.f = paramBundle;
       if (paramInt < 0)
       {
-        TroopFileTransferUtil.Log.a("TroopFilePreviewWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult fail. retCode:" + paramInt + " retMsg:" + localPreviewInfo.c);
+        i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        paramDownloadFileRspBody = new StringBuilder();
+        paramDownloadFileRspBody.append("[");
+        paramDownloadFileRspBody.append(this.a.jdField_a_of_type_JavaLangString);
+        paramDownloadFileRspBody.append("] getPreviewInfoResult fail. retCode:");
+        paramDownloadFileRspBody.append(paramInt);
+        paramDownloadFileRspBody.append(" retMsg:");
+        paramDownloadFileRspBody.append(localPreviewInfo.c);
+        TroopFileTransferUtil.Log.a("TroopFilePreviewWorker", i, paramDownloadFileRspBody.toString());
         TroopFileError.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
         if (TextUtils.isEmpty(localPreviewInfo.c)) {
-          localPreviewInfo.c = HardCodeUtil.a(2131715205);
+          localPreviewInfo.c = HardCodeUtil.a(2131715128);
         }
         localPreviewInfo.jdField_a_of_type_Boolean = false;
-        localBizTroopHandler.c(localPreviewInfo);
+        localTroopFileHandler.c(localPreviewInfo);
         return;
       }
-      TroopFileTransferUtil.Log.c("TroopFilePreviewWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:true  downloadip:" + str + " downloadDns:" + paramBundle + " port:" + localPreviewInfo.b + " downloadKey:" + localPreviewInfo.d + " retMsg:" + localPreviewInfo.c + " httpsDomain:" + localPreviewInfo.f);
+      paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramDownloadFileRspBody = new StringBuilder();
+      paramDownloadFileRspBody.append("[");
+      paramDownloadFileRspBody.append(this.a.jdField_a_of_type_JavaLangString);
+      paramDownloadFileRspBody.append("] getPreviewInfoResult isSuccess:true  downloadip:");
+      paramDownloadFileRspBody.append(str);
+      paramDownloadFileRspBody.append(" downloadDns:");
+      paramDownloadFileRspBody.append(paramBundle);
+      paramDownloadFileRspBody.append(" port:");
+      paramDownloadFileRspBody.append(localPreviewInfo.b);
+      paramDownloadFileRspBody.append(" downloadKey:");
+      paramDownloadFileRspBody.append(localPreviewInfo.d);
+      paramDownloadFileRspBody.append(" retMsg:");
+      paramDownloadFileRspBody.append(localPreviewInfo.c);
+      paramDownloadFileRspBody.append(" httpsDomain:");
+      paramDownloadFileRspBody.append(localPreviewInfo.f);
+      TroopFileTransferUtil.Log.c("TroopFilePreviewWorker", paramInt, paramDownloadFileRspBody.toString());
       localPreviewInfo.jdField_a_of_type_Boolean = true;
-      localBizTroopHandler.c(localPreviewInfo);
+      localTroopFileHandler.c(localPreviewInfo);
+      return;
     }
+    i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    paramDownloadFileRspBody = new StringBuilder();
+    paramDownloadFileRspBody.append("[");
+    paramDownloadFileRspBody.append(this.a.jdField_a_of_type_JavaLangString);
+    paramDownloadFileRspBody.append("] getPreviewInfoResult isSuccess:false  errCode:");
+    paramDownloadFileRspBody.append(paramInt);
+    TroopFileTransferUtil.Log.a("TroopFilePreviewWorker", i, paramDownloadFileRspBody.toString());
+    TroopFileError.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
+    localPreviewInfo.jdField_a_of_type_Boolean = false;
+    localTroopFileHandler.c(localPreviewInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFilePreviewWorker.1
  * JD-Core Version:    0.7.0.1
  */

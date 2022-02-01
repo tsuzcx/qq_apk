@@ -25,63 +25,67 @@ final class ForwardPluginShareWebViewHelper$1
 {
   ForwardPluginShareWebViewHelper$1(QQProgressDialog paramQQProgressDialog, Activity paramActivity, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onError(int paramInt, String paramString, Bundle paramBundle)
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    int i;
-    if (paramInt == 0)
-    {
-      paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.size() <= 0)) {
-        break label219;
-      }
-      paramArrayOfByte = (oidb_cmd0xdc2.BatchSendRsp)paramArrayOfByte.get(0);
-      if (paramArrayOfByte.err_code.get() == 0)
-      {
-        paramArrayOfByte = "";
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-        paramBundle = BaseApplicationImpl.getContext().getString(2131692688);
-      }
-      for (;;)
-      {
-        ThreadManager.getUIHandler().postDelayed(new ForwardPluginShareWebViewHelper.1.1(this, paramBundle), 300L);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-        QLog.d("ForwardPluginShareWebViewHelper", 1, new Object[] { "webview send oidb_cmd0xdc2 errorCode=", Integer.valueOf(paramInt), ",errorMsg = ", paramArrayOfByte });
-        return;
-        paramArrayOfByte = paramArrayOfByte.rsp_body.wording.get();
-        i = 0;
-        break;
-        paramArrayOfByte = "sso error";
-        i = 0;
-        break;
-        paramBundle = BaseApplicationImpl.getContext().getString(2131719291) + ":" + paramArrayOfByte;
-        QQToast.a(BaseApplicationImpl.getContext(), paramBundle, 0).a();
-      }
-      label219:
-      paramArrayOfByte = "";
-      i = 0;
-    }
-  }
-  
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    QQToast.a(BaseApplicationImpl.getContext(), 2131719291, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 2131719009, 0).a();
     this.jdField_a_of_type_AndroidAppActivity.finish();
     QLog.e("ForwardPluginShareWebViewHelper", 1, new Object[] { "onError msg =", paramString });
     return true;
   }
+  
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    if (paramInt == 0)
+    {
+      List localList = ForwardUtils.a(paramArrayOfByte);
+      paramBundle = "";
+      paramArrayOfByte = paramBundle;
+      if (localList != null)
+      {
+        paramArrayOfByte = paramBundle;
+        if (localList.size() > 0)
+        {
+          paramArrayOfByte = (oidb_cmd0xdc2.BatchSendRsp)localList.get(0);
+          if (paramArrayOfByte.err_code.get() == 0)
+          {
+            i = 1;
+            paramArrayOfByte = paramBundle;
+            break label89;
+          }
+          paramArrayOfByte = paramArrayOfByte.rsp_body.wording.get();
+        }
+      }
+    }
+    else
+    {
+      paramArrayOfByte = "sso error";
+    }
+    int i = 0;
+    label89:
+    if (i != 0)
+    {
+      ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+      paramBundle = BaseApplicationImpl.getContext().getString(2131692645);
+    }
+    else
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append(BaseApplicationImpl.getContext().getString(2131719009));
+      paramBundle.append(":");
+      paramBundle.append(paramArrayOfByte);
+      paramBundle = paramBundle.toString();
+      QQToast.a(BaseApplicationImpl.getContext(), paramBundle, 0).a();
+    }
+    ThreadManager.getUIHandler().postDelayed(new ForwardPluginShareWebViewHelper.1.1(this, paramBundle), 300L);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    QLog.d("ForwardPluginShareWebViewHelper", 1, new Object[] { "webview send oidb_cmd0xdc2 errorCode=", Integer.valueOf(paramInt), ",errorMsg = ", paramArrayOfByte });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPluginShareWebViewHelper.1
  * JD-Core Version:    0.7.0.1
  */

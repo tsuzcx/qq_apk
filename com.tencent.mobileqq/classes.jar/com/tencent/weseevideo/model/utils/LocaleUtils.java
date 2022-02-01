@@ -18,29 +18,29 @@ public class LocaleUtils
   public static final String L_SIMPLE_CHINESE_2 = "zh_Hans";
   public static final String L_TRADITIONAL_CHINESE = "zh-Hant";
   private static final String TAIWAN = "zh_TW";
-  public static String mCurrentAppLanguage = null;
+  public static String mCurrentAppLanguage;
   
   private static String filterLanguage(String paramString)
   {
     String str1 = Locale.getDefault().getLanguage().trim();
     if (str1.equals("en")) {
-      paramString = "en";
+      return "en";
     }
-    do
+    String str2 = getLanguageCountryLocale();
+    if ((!str2.equals("zh_TW")) && (!str2.equals("zh_HK")))
     {
-      return paramString;
-      String str2 = getLanguageCountryLocale();
-      if ((str2.equals("zh_TW")) || (str2.equals("zh_HK"))) {
-        return "zh-Hant";
-      }
       if (str2.equals("zh_CN")) {
         return "zh-Hans";
       }
       if (str1.equals("ja")) {
         return "ja";
       }
-    } while (!str1.equals("ko"));
-    return "ko";
+      if (str1.equals("ko")) {
+        return "ko";
+      }
+      return paramString;
+    }
+    return "zh-Hant";
   }
   
   public static String getApplicationLanguage()
@@ -53,29 +53,34 @@ public class LocaleUtils
   
   private static String getLanguageCountryLocale()
   {
-    return Locale.getDefault().getLanguage().trim() + "_" + Locale.getDefault().getCountry().trim();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Locale.getDefault().getLanguage().trim());
+    localStringBuilder.append("_");
+    localStringBuilder.append(Locale.getDefault().getCountry().trim());
+    return localStringBuilder.toString();
   }
   
   public static Locale getLocale(String paramString)
   {
-    if (("zh_CN".equals(paramString)) || ("zh_Hans".equals(paramString))) {
-      return Locale.SIMPLIFIED_CHINESE;
+    if ((!"zh_CN".equals(paramString)) && (!"zh_Hans".equals(paramString)))
+    {
+      if ("zh_HK".equals(paramString)) {
+        return Locale.TRADITIONAL_CHINESE;
+      }
+      if ("ja_JP".equals(paramString)) {
+        return Locale.JAPAN;
+      }
+      if ("ko_KR".equals(paramString)) {
+        return Locale.KOREA;
+      }
+      return Locale.US;
     }
-    if ("zh_HK".equals(paramString)) {
-      return Locale.TRADITIONAL_CHINESE;
-    }
-    if ("ja_JP".equals(paramString)) {
-      return Locale.JAPAN;
-    }
-    if ("ko_KR".equals(paramString)) {
-      return Locale.KOREA;
-    }
-    return Locale.US;
+    return Locale.SIMPLIFIED_CHINESE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.utils.LocaleUtils
  * JD-Core Version:    0.7.0.1
  */

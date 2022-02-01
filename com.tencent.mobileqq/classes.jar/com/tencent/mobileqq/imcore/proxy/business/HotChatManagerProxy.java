@@ -9,8 +9,9 @@ public class HotChatManagerProxy
   
   public static HotChatInfoStub a(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    if (a != null) {
-      return a.a(paramBaseQQAppInterface, paramString);
+    HotChatManagerProxy.Proxy localProxy = a;
+    if (localProxy != null) {
+      return localProxy.a(paramBaseQQAppInterface, paramString);
     }
     return null;
   }
@@ -22,7 +23,7 @@ public class HotChatManagerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.business.HotChatManagerProxy
  * JD-Core Version:    0.7.0.1
  */

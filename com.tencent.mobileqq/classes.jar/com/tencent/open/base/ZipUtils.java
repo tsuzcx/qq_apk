@@ -32,114 +32,144 @@ public class ZipUtils
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: new 67	java/util/zip/ZipEntry
-    //   6: dup
-    //   7: new 69	java/lang/StringBuilder
-    //   10: dup
-    //   11: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   14: aload_2
-    //   15: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   18: aload_0
-    //   19: invokevirtual 78	java/io/File:getName	()Ljava/lang/String;
-    //   22: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokespecial 82	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   31: astore_2
-    //   32: aload_2
-    //   33: lconst_0
-    //   34: invokevirtual 86	java/util/zip/ZipEntry:setTime	(J)V
-    //   37: aload_1
-    //   38: aload_2
-    //   39: invokevirtual 90	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
-    //   42: new 92	java/io/BufferedInputStream
-    //   45: dup
-    //   46: new 94	java/io/FileInputStream
-    //   49: dup
-    //   50: aload_0
-    //   51: invokespecial 95	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   54: invokespecial 98	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   57: astore_2
-    //   58: aload_2
-    //   59: astore_0
-    //   60: sipush 8192
-    //   63: newarray byte
-    //   65: astore 4
-    //   67: aload_2
-    //   68: astore_0
-    //   69: aload_2
-    //   70: aload 4
-    //   72: iconst_0
-    //   73: sipush 8192
-    //   76: invokevirtual 102	java/io/BufferedInputStream:read	([BII)I
-    //   79: istore_3
-    //   80: iload_3
-    //   81: iconst_m1
-    //   82: if_icmpeq +43 -> 125
-    //   85: aload_2
-    //   86: astore_0
-    //   87: aload_1
-    //   88: aload 4
-    //   90: iconst_0
-    //   91: iload_3
-    //   92: invokevirtual 106	java/util/zip/ZipOutputStream:write	([BII)V
-    //   95: goto -28 -> 67
-    //   98: astore_1
-    //   99: aload_2
-    //   100: astore_0
-    //   101: new 65	java/lang/Exception
-    //   104: dup
-    //   105: aload_1
-    //   106: invokespecial 109	java/lang/Exception:<init>	(Ljava/lang/Throwable;)V
-    //   109: athrow
-    //   110: astore_2
-    //   111: aload_0
-    //   112: astore_1
-    //   113: aload_2
-    //   114: astore_0
-    //   115: aload_1
-    //   116: ifnull +7 -> 123
-    //   119: aload_1
-    //   120: invokevirtual 110	java/io/BufferedInputStream:close	()V
-    //   123: aload_0
-    //   124: athrow
-    //   125: aload_2
-    //   126: astore_0
-    //   127: aload_1
-    //   128: invokevirtual 113	java/util/zip/ZipOutputStream:closeEntry	()V
-    //   131: aload_2
-    //   132: ifnull +7 -> 139
-    //   135: aload_2
-    //   136: invokevirtual 110	java/io/BufferedInputStream:close	()V
-    //   139: return
-    //   140: astore_0
-    //   141: aload 4
-    //   143: astore_1
-    //   144: goto -29 -> 115
-    //   147: astore_1
-    //   148: aconst_null
-    //   149: astore_0
-    //   150: goto -49 -> 101
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: aload 6
+    //   8: astore 4
+    //   10: new 67	java/lang/StringBuilder
+    //   13: dup
+    //   14: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   17: astore 7
+    //   19: aload 6
+    //   21: astore 4
+    //   23: aload 7
+    //   25: aload_2
+    //   26: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: pop
+    //   30: aload 6
+    //   32: astore 4
+    //   34: aload 7
+    //   36: aload_0
+    //   37: invokevirtual 76	java/io/File:getName	()Ljava/lang/String;
+    //   40: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: pop
+    //   44: aload 6
+    //   46: astore 4
+    //   48: new 78	java/util/zip/ZipEntry
+    //   51: dup
+    //   52: aload 7
+    //   54: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: invokespecial 82	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   60: astore_2
+    //   61: aload 6
+    //   63: astore 4
+    //   65: aload_2
+    //   66: lconst_0
+    //   67: invokevirtual 86	java/util/zip/ZipEntry:setTime	(J)V
+    //   70: aload 6
+    //   72: astore 4
+    //   74: aload_1
+    //   75: aload_2
+    //   76: invokevirtual 90	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   79: aload 6
+    //   81: astore 4
+    //   83: new 92	java/io/BufferedInputStream
+    //   86: dup
+    //   87: new 94	java/io/FileInputStream
+    //   90: dup
+    //   91: aload_0
+    //   92: invokespecial 95	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   95: invokespecial 98	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   98: astore_0
+    //   99: sipush 8192
+    //   102: newarray byte
+    //   104: astore_2
+    //   105: aload_0
+    //   106: aload_2
+    //   107: iconst_0
+    //   108: sipush 8192
+    //   111: invokevirtual 102	java/io/BufferedInputStream:read	([BII)I
+    //   114: istore_3
+    //   115: iload_3
+    //   116: iconst_m1
+    //   117: if_icmpeq +13 -> 130
+    //   120: aload_1
+    //   121: aload_2
+    //   122: iconst_0
+    //   123: iload_3
+    //   124: invokevirtual 106	java/util/zip/ZipOutputStream:write	([BII)V
+    //   127: goto -22 -> 105
+    //   130: aload_1
+    //   131: invokevirtual 109	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   134: aload_0
+    //   135: invokevirtual 110	java/io/BufferedInputStream:close	()V
+    //   138: return
+    //   139: astore_1
+    //   140: aload_0
+    //   141: astore 4
+    //   143: aload_1
+    //   144: astore_0
+    //   145: goto +30 -> 175
+    //   148: astore_1
+    //   149: aload_0
+    //   150: astore 4
+    //   152: aload_1
+    //   153: astore_0
+    //   154: goto +12 -> 166
+    //   157: astore_0
+    //   158: goto +17 -> 175
+    //   161: astore_0
+    //   162: aload 5
+    //   164: astore 4
+    //   166: new 65	java/lang/Exception
+    //   169: dup
+    //   170: aload_0
+    //   171: invokespecial 113	java/lang/Exception:<init>	(Ljava/lang/Throwable;)V
+    //   174: athrow
+    //   175: aload 4
+    //   177: ifnull +8 -> 185
+    //   180: aload 4
+    //   182: invokevirtual 110	java/io/BufferedInputStream:close	()V
+    //   185: goto +5 -> 190
+    //   188: aload_0
+    //   189: athrow
+    //   190: goto -2 -> 188
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	153	0	paramFile	File
-    //   0	153	1	paramZipOutputStream	ZipOutputStream
-    //   0	153	2	paramString	String
-    //   79	13	3	i	int
-    //   1	141	4	arrayOfByte	byte[]
+    //   0	193	0	paramFile	File
+    //   0	193	1	paramZipOutputStream	ZipOutputStream
+    //   0	193	2	paramString	String
+    //   114	10	3	i	int
+    //   8	173	4	localObject1	Object
+    //   1	162	5	localObject2	Object
+    //   4	76	6	localObject3	Object
+    //   17	36	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   60	67	98	java/lang/Exception
-    //   69	80	98	java/lang/Exception
-    //   87	95	98	java/lang/Exception
-    //   127	131	98	java/lang/Exception
-    //   60	67	110	finally
-    //   69	80	110	finally
-    //   87	95	110	finally
-    //   101	110	110	finally
-    //   127	131	110	finally
-    //   3	58	140	finally
-    //   3	58	147	java/lang/Exception
+    //   99	105	139	finally
+    //   105	115	139	finally
+    //   120	127	139	finally
+    //   130	134	139	finally
+    //   99	105	148	java/lang/Exception
+    //   105	115	148	java/lang/Exception
+    //   120	127	148	java/lang/Exception
+    //   130	134	148	java/lang/Exception
+    //   10	19	157	finally
+    //   23	30	157	finally
+    //   34	44	157	finally
+    //   48	61	157	finally
+    //   65	70	157	finally
+    //   74	79	157	finally
+    //   83	99	157	finally
+    //   166	175	157	finally
+    //   10	19	161	java/lang/Exception
+    //   23	30	161	java/lang/Exception
+    //   34	44	161	java/lang/Exception
+    //   48	61	161	java/lang/Exception
+    //   65	70	161	java/lang/Exception
+    //   74	79	161	java/lang/Exception
+    //   83	99	161	java/lang/Exception
   }
   
   protected static void a(File paramFile, ZipOutputStream paramZipOutputStream, String paramString, boolean paramBoolean)
@@ -161,46 +191,51 @@ public class ZipUtils
   {
     File[] arrayOfFile = paramFile.listFiles();
     Arrays.sort(arrayOfFile);
-    int i;
-    label85:
-    File localFile;
+    Object localObject;
     if (arrayOfFile.length == 0)
     {
       if (paramBoolean)
       {
-        localObject = paramString + paramFile.getName() + a;
-        localObject = new ZipEntry((String)localObject);
-        ((ZipEntry)localObject).setTime(0L);
-        paramZipOutputStream.putNextEntry((ZipEntry)localObject);
-        paramZipOutputStream.closeEntry();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(paramFile.getName());
+        ((StringBuilder)localObject).append(a);
+        localObject = ((StringBuilder)localObject).toString();
       }
+      else
+      {
+        localObject = paramString;
+      }
+      localObject = new ZipEntry((String)localObject);
+      ((ZipEntry)localObject).setTime(0L);
+      paramZipOutputStream.putNextEntry((ZipEntry)localObject);
+      paramZipOutputStream.closeEntry();
     }
-    else
+    int j = arrayOfFile.length;
+    int i = 0;
+    while (i < j)
     {
-      int j = arrayOfFile.length;
-      i = 0;
-      if (i >= j) {
-        return;
+      File localFile = arrayOfFile[i];
+      if (paramBoolean)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(paramFile.getName());
+        ((StringBuilder)localObject).append(a);
+        localObject = ((StringBuilder)localObject).toString();
       }
-      localFile = arrayOfFile[i];
-      if (!paramBoolean) {
-        break label156;
+      else
+      {
+        localObject = paramString;
       }
-    }
-    label156:
-    for (Object localObject = paramString + paramFile.getName() + a;; localObject = paramString)
-    {
       a(localFile, paramZipOutputStream, (String)localObject, true);
       i += 1;
-      break label85;
-      localObject = paramString;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.ZipUtils
  * JD-Core Version:    0.7.0.1
  */

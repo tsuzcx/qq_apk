@@ -18,27 +18,30 @@ class TroopNameHelper$GenTroopNameTask$MemberInfo
   
   public int a(@NonNull MemberInfo paramMemberInfo)
   {
-    int i = -1;
-    if ((this.f != null) && (paramMemberInfo.f != null)) {
-      i = this.f.compareTo(paramMemberInfo.f);
-    }
-    do
+    String str1 = this.f;
+    if (str1 != null)
     {
-      do
-      {
-        return i;
-        if (this.f != null) {
-          break;
-        }
-      } while (paramMemberInfo.f == null);
-      return 1;
-    } while (paramMemberInfo.f == null);
+      String str2 = paramMemberInfo.f;
+      if (str2 != null) {
+        return str1.compareTo(str2);
+      }
+    }
+    if (this.f == null)
+    {
+      if (paramMemberInfo.f != null) {
+        return 1;
+      }
+      return -1;
+    }
+    if (paramMemberInfo.f == null) {
+      return -1;
+    }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.utils.TroopNameHelper.GenTroopNameTask.MemberInfo
  * JD-Core Version:    0.7.0.1
  */

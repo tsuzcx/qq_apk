@@ -68,32 +68,38 @@ public final class user_login_t
     paraml.a(this.session_id, 1);
     paraml.a(this.uin, 2);
     paraml.a(this.uip, 3);
-    if (this.imei != null) {
-      paraml.a(this.imei, 4);
+    String str = this.imei;
+    if (str != null) {
+      paraml.a(str, 4);
     }
     paraml.a(this.x, 5);
     paraml.a(this.y, 6);
-    if (this.pf != null) {
-      paraml.a(this.pf, 7);
+    str = this.pf;
+    if (str != null) {
+      paraml.a(str, 7);
     }
-    if (this.version != null) {
-      paraml.a(this.version, 8);
+    str = this.version;
+    if (str != null) {
+      paraml.a(str, 8);
     }
     paraml.a(this.is_login, 9);
-    if (this.fr != null) {
-      paraml.a(this.fr, 10);
+    str = this.fr;
+    if (str != null) {
+      paraml.a(str, 10);
     }
-    if (this.nettp != null) {
-      paraml.a(this.nettp, 11);
+    str = this.nettp;
+    if (str != null) {
+      paraml.a(str, 11);
     }
-    if (this.channel != null) {
-      paraml.a(this.channel, 12);
+    str = this.channel;
+    if (str != null) {
+      paraml.a(str, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.jce.user.user_login_t
  * JD-Core Version:    0.7.0.1
  */

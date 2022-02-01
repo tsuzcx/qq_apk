@@ -8,15 +8,15 @@ public class SearchWebHistoryManager
   implements Manager
 {
   public static final String a;
-  public static final String b = HardCodeUtil.a(2131713629);
-  public static final String c = HardCodeUtil.a(2131713628);
-  public static final String d = HardCodeUtil.a(2131713631);
+  public static final String b = HardCodeUtil.a(2131713596);
+  public static final String c = HardCodeUtil.a(2131713595);
+  public static final String d = HardCodeUtil.a(2131713598);
   int jdField_a_of_type_Int = -1;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   static
   {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713630);
+    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713597);
   }
   
   public SearchWebHistoryManager(QQAppInterface paramQQAppInterface) {}
@@ -28,7 +28,7 @@ public class SearchWebHistoryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.SearchWebHistoryManager
  * JD-Core Version:    0.7.0.1
  */

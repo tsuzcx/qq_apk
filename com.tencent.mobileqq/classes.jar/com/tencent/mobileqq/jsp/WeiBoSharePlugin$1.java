@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
+import android.app.Activity;
 import com.sina.weibo.sdk.common.UiError;
 import com.sina.weibo.sdk.share.WbShareCallback;
 import com.tencent.mobileqq.forward.ForwardSdkUtil;
@@ -25,12 +26,16 @@ class WeiBoSharePlugin$1
   public void onError(UiError paramUiError)
   {
     QLog.d("LoginPlugin_demo", 1, new Object[] { "onError errorMessage=", paramUiError.errorMessage, ", errorCode=", Integer.valueOf(paramUiError.errorCode) });
-    ForwardSdkUtil.a(WeiBoSharePlugin.a(this.a), "分享失败 message=" + paramUiError.errorMessage);
+    Activity localActivity = WeiBoSharePlugin.a(this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("分享失败 message=");
+    localStringBuilder.append(paramUiError.errorMessage);
+    ForwardSdkUtil.a(localActivity, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.WeiBoSharePlugin.1
  * JD-Core Version:    0.7.0.1
  */

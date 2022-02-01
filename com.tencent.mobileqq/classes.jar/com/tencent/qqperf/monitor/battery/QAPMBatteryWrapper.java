@@ -43,7 +43,7 @@ public class QAPMBatteryWrapper
     }
   }
   
-  public void a(APMModuleConfig paramAPMModuleConfig) {}
+  protected void a(APMModuleConfig paramAPMModuleConfig) {}
   
   public void a(String paramString, Object[] paramArrayOfObject)
   {
@@ -108,23 +108,19 @@ public class QAPMBatteryWrapper
       MainService.setServiceCmdCallback((IServiceCmdCallback)localObject2);
       QQBatteryMonitor.getInstance().setupConfig((BatteryConfig)localObject1);
       QLog.i("MagnifierSDK.QAPM.QAPMBatteryWrapper", 1, "openBattery");
-      this.jdField_a_of_type_JavaUtilList.add(new GPS());
-      this.jdField_a_of_type_JavaUtilList.add(new Wifi());
-      this.jdField_a_of_type_JavaUtilList.add(new WakeLock());
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.i("MagnifierSDK.QAPM.QAPMBatteryWrapper", 1, "openBattery", localException);
-      }
+      QLog.i("MagnifierSDK.QAPM.QAPMBatteryWrapper", 1, "openBattery", localException);
     }
+    this.jdField_a_of_type_JavaUtilList.add(new GPS());
+    this.jdField_a_of_type_JavaUtilList.add(new Wifi());
+    this.jdField_a_of_type_JavaUtilList.add(new WakeLock());
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) && (n_())) {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) && (o_())) {
       d();
     }
   }
@@ -142,7 +138,7 @@ public class QAPMBatteryWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.battery.QAPMBatteryWrapper
  * JD-Core Version:    0.7.0.1
  */

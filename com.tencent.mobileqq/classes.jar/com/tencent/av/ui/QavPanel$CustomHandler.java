@@ -19,40 +19,57 @@ class QavPanel$CustomHandler
   {
     switch (paramMessage.what)
     {
-    }
-    do
-    {
-      do
+    default: 
+    case 261: 
+      if (QavPanel.a(this.a) != null)
       {
-        do
-        {
+        QavPanel.a(this.a).a();
+        QavPanel.a(this.a).sendEmptyMessageDelayed(261, 4000L);
+        return;
+      }
+      break;
+    case 260: 
+      this.a.a("MSG_TRY_CLEAN_TIPS", 1);
+      return;
+    case 259: 
+      if ((!UITools.a(true)) && (this.a.h != null) && (this.a.h.isShown()))
+      {
+        if (!QavPanel.a(this.a).a()) {
           return;
-          QavPanel.a(this.a);
+        }
+        paramMessage = this.a;
+        paramMessage.a(paramMessage.getResources().getString(2131692834));
+        QavPanel.a(this.a).a();
+        QavPanel.a(this.a).sendEmptyMessageDelayed(260, 5000L);
+        UITools.a(true);
+        return;
+      }
+      return;
+    case 258: 
+      if ((!UITools.a(false)) && (this.a.h != null))
+      {
+        if (!this.a.h.isShown()) {
           return;
-          QavPanel.b(this.a);
-          return;
-        } while ((UITools.a(false)) || (this.a.h == null) || (!this.a.h.isShown()));
-        this.a.a(this.a.getResources().getString(2131692879));
+        }
+        paramMessage = this.a;
+        paramMessage.a(paramMessage.getResources().getString(2131692833));
         UITools.a(false);
         QavPanel.a(this.a).a();
         QavPanel.a(this.a).sendEmptyMessageDelayed(260, 5000L);
         return;
-      } while ((UITools.a(true)) || (this.a.h == null) || (!this.a.h.isShown()) || (!QavPanel.a(this.a).a()));
-      this.a.a(this.a.getResources().getString(2131692880));
-      QavPanel.a(this.a).a();
-      QavPanel.a(this.a).sendEmptyMessageDelayed(260, 5000L);
-      UITools.a(true);
+      }
       return;
-      this.a.a("MSG_TRY_CLEAN_TIPS", 1);
+    case 257: 
+      QavPanel.b(this.a);
       return;
-    } while (QavPanel.a(this.a) == null);
-    QavPanel.a(this.a).a();
-    QavPanel.a(this.a).sendEmptyMessageDelayed(261, 4000L);
+    case 256: 
+      QavPanel.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavPanel.CustomHandler
  * JD-Core Version:    0.7.0.1
  */

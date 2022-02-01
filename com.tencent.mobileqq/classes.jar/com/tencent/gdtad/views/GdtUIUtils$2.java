@@ -19,8 +19,14 @@ final class GdtUIUtils$2
     ((Rect)localObject).bottom += this.b;
     ((Rect)localObject).left -= this.c;
     ((Rect)localObject).right += this.d;
-    if (QLog.isColorLevel()) {
-      QLog.d("TouchDelegate", 2, " bounds.top=" + ((Rect)localObject).top + "bounds.bottom=" + ((Rect)localObject).bottom);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" bounds.top=");
+      localStringBuilder.append(((Rect)localObject).top);
+      localStringBuilder.append("bounds.bottom=");
+      localStringBuilder.append(((Rect)localObject).bottom);
+      QLog.d("TouchDelegate", 2, localStringBuilder.toString());
     }
     localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
     if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
@@ -30,7 +36,7 @@ final class GdtUIUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.GdtUIUtils.2
  * JD-Core Version:    0.7.0.1
  */

@@ -19,116 +19,118 @@ class ArConfigService$1
   
   public void a(int paramInt)
   {
-    if (ArConfigService.a(this.a) != null) {}
-    try
+    if (ArConfigService.a(this.a) != null)
     {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
+      try
       {
-        ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramInt);
-        i += 1;
+        int j = ArConfigService.a(this.a).beginBroadcast();
+        int i = 0;
+        while (i < j)
+        {
+          ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramInt);
+          i += 1;
+        }
+        ArConfigService.a(this.a).finishBroadcast();
       }
-      ArConfigService.a(this.a).finishBroadcast();
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
+      catch (RemoteException localRemoteException)
       {
-        QQAppInterface localQQAppInterface;
         localRemoteException.printStackTrace();
       }
-      ArConfigUtils.a(localRemoteException.getCurrentAccountUin(), false, paramInt);
-    }
-    localQQAppInterface = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "onDownloadError,mApp is null! ");
-      return;
+      QQAppInterface localQQAppInterface = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localQQAppInterface == null)
+      {
+        QLog.d("ArConfig_ArConfigService", 1, "onDownloadError,mApp is null! ");
+        return;
+      }
+      ArConfigUtils.a(localQQAppInterface.getCurrentAccountUin(), false, paramInt);
     }
   }
   
   public void a(long paramLong1, long paramLong2)
   {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
+    if (ArConfigService.a(this.a) != null) {
+      try
       {
-        ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramLong1, paramLong2);
-        i += 1;
+        int j = ArConfigService.a(this.a).beginBroadcast();
+        int i = 0;
+        while (i < j)
+        {
+          ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramLong1, paramLong2);
+          i += 1;
+        }
+        ArConfigService.a(this.a).finishBroadcast();
+        return;
       }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      localRemoteException.printStackTrace();
+      catch (RemoteException localRemoteException)
+      {
+        localRemoteException.printStackTrace();
+      }
     }
   }
   
   public void a(ARCommonConfigInfo paramARCommonConfigInfo)
   {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
+    if (ArConfigService.a(this.a) != null) {
+      try
       {
-        ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(null, null, paramARCommonConfigInfo);
-        i += 1;
+        int j = ArConfigService.a(this.a).beginBroadcast();
+        int i = 0;
+        while (i < j)
+        {
+          ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(null, null, paramARCommonConfigInfo);
+          i += 1;
+        }
+        ArConfigService.a(this.a).finishBroadcast();
+        return;
       }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException paramARCommonConfigInfo)
-    {
-      paramARCommonConfigInfo.printStackTrace();
+      catch (RemoteException paramARCommonConfigInfo)
+      {
+        paramARCommonConfigInfo.printStackTrace();
+      }
     }
   }
   
   public void a(ArConfigInfo paramArConfigInfo)
   {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
+    if (ArConfigService.a(this.a) != null) {
+      try
       {
-        ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramArConfigInfo, null, null);
-        i += 1;
+        int j = ArConfigService.a(this.a).beginBroadcast();
+        int i = 0;
+        while (i < j)
+        {
+          ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramArConfigInfo, null, null);
+          i += 1;
+        }
+        ArConfigService.a(this.a).finishBroadcast();
+        return;
       }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException paramArConfigInfo)
-    {
-      paramArConfigInfo.printStackTrace();
+      catch (RemoteException paramArConfigInfo)
+      {
+        paramArConfigInfo.printStackTrace();
+      }
     }
   }
   
   public void a(ArEffectConfig paramArEffectConfig)
   {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
+    if (ArConfigService.a(this.a) != null) {
+      try
       {
-        ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(null, paramArEffectConfig, null);
-        i += 1;
+        int j = ArConfigService.a(this.a).beginBroadcast();
+        int i = 0;
+        while (i < j)
+        {
+          ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(null, paramArEffectConfig, null);
+          i += 1;
+        }
+        ArConfigService.a(this.a).finishBroadcast();
+        return;
       }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException paramArEffectConfig)
-    {
-      paramArEffectConfig.printStackTrace();
+      catch (RemoteException paramArEffectConfig)
+      {
+        paramArEffectConfig.printStackTrace();
+      }
     }
   }
   
@@ -139,59 +141,58 @@ class ArConfigService$1
         QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess before sync");
       }
     }
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess  sync start");
-      }
-      try
+      int i;
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
       {
-        int j = ArConfigService.a(this.a).beginBroadcast();
-        int i = 0;
-        for (;;)
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess  sync start");
+        }
+        try
         {
+          int j = ArConfigService.a(this.a).beginBroadcast();
+          i = 0;
           if (i < j) {
             try
             {
               ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a();
-              i += 1;
             }
             catch (RemoteException localRemoteException)
             {
-              for (;;)
-              {
-                localRemoteException.printStackTrace();
-              }
+              localRemoteException.printStackTrace();
             }
           }
+          ArConfigService.a(this.a).finishBroadcast();
+          if (QLog.isColorLevel()) {
+            QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess  sync end");
+          }
         }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        QLog.d("ArConfig_ArConfigService", 1, "onDownloadSuccess  sync fail end,error reason:binder server muti-thread");
-      }
-      do
-      {
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          QLog.d("ArConfig_ArConfigService", 1, "onDownloadSuccess  sync fail end,error reason:binder server muti-thread");
+        }
         if (QLog.isColorLevel()) {
           QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess after sync");
         }
         ??? = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (??? != null) {
-          break;
+        if (??? == null)
+        {
+          QLog.d("ArConfig_ArConfigService", 1, "onDownloadSuccess,mApp is null! ");
+          return;
         }
-        QLog.d("ArConfig_ArConfigService", 1, "onDownloadSuccess,mApp is null! ");
+        ArConfigUtils.a(((QQAppInterface)???).getCurrentAccountUin(), true, 0);
         return;
-        ArConfigService.a(this.a).finishBroadcast();
-      } while (!QLog.isColorLevel());
-      QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess  sync end");
+      }
+      return;
+      i += 1;
     }
-    ArConfigUtils.a(((QQAppInterface)???).getCurrentAccountUin(), true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.1
  * JD-Core Version:    0.7.0.1
  */

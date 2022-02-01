@@ -80,11 +80,12 @@ public class RichStatusEditText
       paramInt = i;
       if (localClickableImageSpan != null)
       {
+        RichStatusEditText.RichStatusEditListener localRichStatusEditListener = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener;
         paramInt = i;
-        if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener != null)
+        if (localRichStatusEditListener != null)
         {
           paramInt = i;
-          if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener.a(localClickableImageSpan)) {
+          if (!localRichStatusEditListener.a(localClickableImageSpan)) {
             paramInt = i + 1;
           }
         }
@@ -100,21 +101,23 @@ public class RichStatusEditText
   
   private ClickableImageSpan a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
+    Object localObject1 = a();
+    int j = getText().length();
     int i = 0;
-    ClickableImageSpan[] arrayOfClickableImageSpan = (ClickableImageSpan[])a().getSpans(0, getText().length(), ClickableImageSpan.class);
-    while (i < arrayOfClickableImageSpan.length)
+    localObject1 = (ClickableImageSpan[])((Spannable)localObject1).getSpans(0, j, ClickableImageSpan.class);
+    while (i < localObject1.length)
     {
-      ClickableImageSpan localClickableImageSpan = arrayOfClickableImageSpan[i];
-      int j = a().getSpanStart(localClickableImageSpan);
-      int k = a().getSpanEnd(localClickableImageSpan);
+      Object localObject2 = localObject1[i];
+      j = a().getSpanStart(localObject2);
+      int k = a().getSpanEnd(localObject2);
       if ((paramInt > j) && (paramInt < k)) {
-        return localClickableImageSpan;
+        return localObject2;
       }
       if ((paramBoolean1) && (paramInt == j)) {
-        return localClickableImageSpan;
+        return localObject2;
       }
       if ((paramBoolean2) && (paramInt == k)) {
-        return localClickableImageSpan;
+        return localObject2;
       }
       i += 1;
     }
@@ -131,22 +134,24 @@ public class RichStatusEditText
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan != null)
+    ClickableImageSpan localClickableImageSpan = this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan;
+    if (localClickableImageSpan != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan.setDisselected(this);
+      localClickableImageSpan.setDisselected(this);
       this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan = null;
     }
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    ClickableImageSpan[] arrayOfClickableImageSpan = (ClickableImageSpan[])a().getSpans(paramInt1, paramInt1 + paramInt2, ClickableImageSpan.class);
+    ClickableImageSpan[] arrayOfClickableImageSpan = (ClickableImageSpan[])a().getSpans(paramInt1, paramInt2 + paramInt1, ClickableImageSpan.class);
     paramInt1 = 0;
     while (paramInt1 < arrayOfClickableImageSpan.length)
     {
       ClickableImageSpan localClickableImageSpan = arrayOfClickableImageSpan[paramInt1];
-      if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener.a(localClickableImageSpan);
+      RichStatusEditText.RichStatusEditListener localRichStatusEditListener = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener;
+      if (localRichStatusEditListener != null) {
+        localRichStatusEditListener.a(localClickableImageSpan);
       }
       if (localClickableImageSpan == this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan) {
         this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan = null;
@@ -161,21 +166,23 @@ public class RichStatusEditText
     ClickableImageSpan localClickableImageSpan1 = a(paramInt, false, true);
     ClickableImageSpan localClickableImageSpan2 = a(paramInt, true, false);
     int j;
+    int i;
     if (localClickableImageSpan1 != null)
     {
       j = a().getSpanEnd(localClickableImageSpan1);
       if (paramInt != j) {
         return paramInt;
       }
-      if ((j != getText().length()) && (localClickableImageSpan2 == null)) {
-        break label276;
+      if ((j != getText().length()) && (localClickableImageSpan2 == null))
+      {
+        i = 0;
       }
-      this.jdField_a_of_type_Boolean = false;
-      getText().insert(j, " ");
-    }
-    label276:
-    for (int i = 1;; i = 0)
-    {
+      else
+      {
+        this.jdField_a_of_type_Boolean = false;
+        getText().insert(j, " ");
+        i = 1;
+      }
       int k = getOffsetForPosition(getTextSize() * jdField_a_of_type_Float + paramFloat1, paramFloat2);
       if (i != 0)
       {
@@ -185,64 +192,77 @@ public class RichStatusEditText
       if (k == j) {
         return k - 1;
       }
-      if (localClickableImageSpan2 == null) {
-        break;
-      }
+    }
+    if (localClickableImageSpan2 != null)
+    {
       i = a().getSpanStart(localClickableImageSpan2);
       if (paramInt != i) {
-        break;
+        return paramInt;
       }
-      if ((i == 0) || (localClickableImageSpan1 != null))
+      if ((i != 0) && (localClickableImageSpan1 == null))
+      {
+        j = getOffsetForPosition(paramFloat1 - getTextSize() * jdField_a_of_type_Float, paramFloat2);
+        if (j == i) {
+          return j + 1;
+        }
+      }
+      else
       {
         this.jdField_a_of_type_Boolean = false;
         getText().insert(i, " ");
         j = getOffsetForPosition(paramFloat1 - getTextSize() * jdField_a_of_type_Float, paramFloat2);
         getText().replace(i, i + 1, "");
         this.jdField_a_of_type_Boolean = true;
-        if (j - 1 != i) {
-          break;
+        if (j - 1 == i) {
+          return j;
         }
-        return j;
       }
-      j = getOffsetForPosition(paramFloat1 - getTextSize() * jdField_a_of_type_Float, paramFloat2);
-      if (j != i) {
-        break;
-      }
-      return j + 1;
     }
+    return paramInt;
   }
   
   public RichStatusEditText.IntRange a(int paramInt)
   {
-    int k = getText().length();
-    if ((paramInt < 0) || (paramInt > k)) {
-      return new RichStatusEditText.IntRange(k, k);
-    }
-    ImageSpan[] arrayOfImageSpan = (ImageSpan[])a().getSpans(0, k, ImageSpan.class);
-    int i1 = arrayOfImageSpan.length;
-    int j = 0;
-    int i = 0;
-    int m;
-    if (j < i1)
+    int j = getText().length();
+    if ((paramInt >= 0) && (paramInt <= j))
     {
-      ImageSpan localImageSpan = arrayOfImageSpan[j];
-      m = a().getSpanStart(localImageSpan);
-      int n = a().getSpanEnd(localImageSpan);
-      if ((n <= paramInt) && (n > i)) {
-        i = n;
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if ((m >= paramInt) && (m < k))
+      Object localObject1 = a();
+      int i = 0;
+      localObject1 = (ImageSpan[])((Spannable)localObject1).getSpans(0, j, ImageSpan.class);
+      int i2 = localObject1.length;
+      int k = 0;
+      while (i < i2)
       {
+        Object localObject2 = localObject1[i];
+        int i1 = a().getSpanStart(localObject2);
+        int m = a().getSpanEnd(localObject2);
+        int n;
+        if ((m <= paramInt) && (m > k))
+        {
+          n = j;
+        }
+        else
+        {
+          m = k;
+          n = j;
+          if (i1 >= paramInt)
+          {
+            m = k;
+            n = j;
+            if (i1 < j)
+            {
+              n = i1;
+              m = k;
+            }
+          }
+        }
+        i += 1;
         k = m;
-        continue;
-        return new RichStatusEditText.IntRange(i, k);
+        j = n;
       }
+      return new RichStatusEditText.IntRange(k, j);
     }
+    return new RichStatusEditText.IntRange(j, j);
   }
   
   public void a(Context paramContext)
@@ -258,34 +278,36 @@ public class RichStatusEditText
     }
     int i = a().getSpanStart(paramClickableImageSpan1);
     int j = a().getSpanEnd(paramClickableImageSpan1);
-    if ((i == -1) || (j == -1)) {
-      return;
+    if (i != -1)
+    {
+      if (j == -1) {
+        return;
+      }
+      a(paramClickableImageSpan1, false, false);
+      setSpan(paramClickableImageSpan2, i, j);
     }
-    a(paramClickableImageSpan1, false, false);
-    setSpan(paramClickableImageSpan2, i, j);
   }
   
   public void a(ClickableImageSpan paramClickableImageSpan, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener != null) && (paramBoolean2)) {
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener.a(paramClickableImageSpan);
+    RichStatusEditText.RichStatusEditListener localRichStatusEditListener = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener;
+    if ((localRichStatusEditListener != null) && (paramBoolean2)) {
+      localRichStatusEditListener.a(paramClickableImageSpan);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan == paramClickableImageSpan) {
       this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan = null;
     }
-    if (!paramBoolean1) {
-      a().removeSpan(paramClickableImageSpan);
-    }
-    int i;
-    int j;
-    do
+    if (!paramBoolean1)
     {
-      return;
-      i = a().getSpanStart(paramClickableImageSpan);
-      j = a().getSpanEnd(paramClickableImageSpan);
       a().removeSpan(paramClickableImageSpan);
-    } while (i == -1);
-    getText().replace(i, j, "", 0, 0);
+      return;
+    }
+    int i = a().getSpanStart(paramClickableImageSpan);
+    int j = a().getSpanEnd(paramClickableImageSpan);
+    a().removeSpan(paramClickableImageSpan);
+    if (i != -1) {
+      getText().replace(i, j, "", 0, 0);
+    }
   }
   
   public int getOffsetForPosition(float paramFloat1, float paramFloat2)
@@ -296,7 +318,7 @@ public class RichStatusEditText
     return a(a(paramFloat2), paramFloat1);
   }
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu)
+  protected void onCreateContextMenu(ContextMenu paramContextMenu)
   {
     super.onCreateContextMenu(paramContextMenu);
     paramContextMenu.removeItem(16908319);
@@ -318,26 +340,25 @@ public class RichStatusEditText
         this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan = null;
         setSelection(paramInt);
         setCursorVisible(true);
-      }
-      ClickableImageSpan localClickableImageSpan;
-      do
-      {
         return true;
-        if (getSelectionStart() != getSelectionEnd())
+      }
+      if (getSelectionStart() != getSelectionEnd())
+      {
+        a(getSelectionStart(), getSelectionEnd() - getSelectionStart());
+        return super.onKeyDown(paramInt, paramKeyEvent);
+      }
+      ClickableImageSpan localClickableImageSpan = a(getSelectionStart(), false, true);
+      if (localClickableImageSpan != null)
+      {
+        if (localClickableImageSpan.isEnable())
         {
-          a(getSelectionStart(), getSelectionEnd() - getSelectionStart());
-          return super.onKeyDown(paramInt, paramKeyEvent);
+          this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan = a(localClickableImageSpan);
+          setCursorVisible(false);
         }
-        localClickableImageSpan = a(getSelectionStart(), false, true);
-        if (localClickableImageSpan == null) {
-          break;
-        }
-      } while (!localClickableImageSpan.isEnable());
-      this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan = a(localClickableImageSpan);
-      setCursorVisible(false);
-      return true;
+        return true;
+      }
     }
-    if ((paramInt == 21) && (paramKeyEvent.getAction() == 0))
+    else if ((paramInt == 21) && (paramKeyEvent.getAction() == 0))
     {
       if (this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan != null)
       {
@@ -370,100 +391,107 @@ public class RichStatusEditText
   
   protected void onSelectionChanged(int paramInt1, int paramInt2)
   {
-    Object localObject;
+    int j = 1;
     int i;
+    Object localObject;
     if ((paramInt1 != paramInt2) && (((ClickableImageSpan[])a().getSpans(Math.min(paramInt1, paramInt2), Math.max(paramInt1, paramInt2), ClickableImageSpan.class)).length != 0))
     {
-      if ((paramInt1 != 0) || (paramInt2 != getText().length())) {
-        break label207;
-      }
-      localObject = a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = ((RichStatusEditText.IntRange)localObject).jdField_a_of_type_Int;
-      this.b = ((RichStatusEditText.IntRange)localObject).b;
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        if ((this.b == -1) && (this.jdField_a_of_type_Int == -1))
+      i = j;
+      if (paramInt1 == 0)
+      {
+        i = j;
+        if (paramInt2 == getText().length())
         {
-          paramInt1 = getText().length();
-          this.b = paramInt1;
-          this.jdField_a_of_type_Int = paramInt1;
+          localObject = a(this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Int = ((RichStatusEditText.IntRange)localObject).jdField_a_of_type_Int;
+          this.b = ((RichStatusEditText.IntRange)localObject).b;
+          i = j;
         }
       }
-      try
-      {
-        setSelection(this.jdField_a_of_type_Int, this.b);
-        return;
-      }
-      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
-      {
-        return;
-      }
+    }
+    else
+    {
       if ((paramInt1 == paramInt2) && (paramInt1 == 0))
       {
         localObject = a(0, true, false);
-        if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener != null) && (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener.a((ClickableImageSpan)localObject)))
+        if (localObject != null)
         {
-          i = 1;
-          continue;
-          this.jdField_a_of_type_Int = paramInt1;
-          this.b = paramInt2;
-          super.onSelectionChanged(paramInt1, paramInt2);
-          return;
+          RichStatusEditText.RichStatusEditListener localRichStatusEditListener = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener;
+          if ((localRichStatusEditListener != null) && (!localRichStatusEditListener.a((ClickableImageSpan)localObject)))
+          {
+            i = j;
+            break label147;
+          }
         }
       }
       i = 0;
-      continue;
-      label207:
-      i = 1;
     }
+    label147:
+    if (i != 0) {
+      if ((this.b == -1) && (this.jdField_a_of_type_Int == -1))
+      {
+        paramInt1 = getText().length();
+        this.b = paramInt1;
+        this.jdField_a_of_type_Int = paramInt1;
+      }
+    }
+    try
+    {
+      setSelection(this.jdField_a_of_type_Int, this.b);
+      return;
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException) {}
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    super.onSelectionChanged(paramInt1, paramInt2);
+    return;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = false;
     int k = paramMotionEvent.getAction();
-    if ((!isFocused()) || (getSelectionEnd() != getSelectionStart()) || ((k != 0) && (k != 2) && (k != 3) && (k != 1)))
+    Object localObject;
+    if ((isFocused()) && (getSelectionEnd() == getSelectionStart()) && ((k == 0) || (k == 2) || (k == 3) || (k == 1)))
     {
-      if (k == 1)
+      float f1 = paramMotionEvent.getX();
+      float f2 = paramMotionEvent.getY();
+      int j = getOffsetForPosition(f1, f2);
+      int i = j;
+      if (j != -1) {
+        i = a(j, f1, f2);
+      }
+      int m = 0;
+      localObject = a(i, false, false);
+      if (k == 0)
       {
-        localObject = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.getHandler(EditActivity.class);
-        if (localObject != null) {
-          ((MqqHandler)localObject).sendMessage(((MqqHandler)localObject).obtainMessage(4));
+        if (this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan != null) {
+          a();
+        }
+        this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan = ((ClickableImageSpan)localObject);
+        if (this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan != null) {
+          setCursorVisible(false);
         }
       }
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    int j = getOffsetForPosition(f1, f2);
-    int i = j;
-    if (j != -1) {
-      i = a(j, f1, f2);
-    }
-    Object localObject = a(i, false, false);
-    if (k == 0)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan != null) {
-        a();
+      else if ((k == 1) || (k == 3))
+      {
+        setCursorVisible(true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan = ((ClickableImageSpan)localObject);
-      if (this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan != null) {
-        setCursorVisible(false);
-      }
-    }
-    for (;;)
-    {
       if ((localObject == null) && (this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan != null)) {
         paramMotionEvent.setAction(3);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan != null)
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan;
+      if (localObject != null)
       {
-        bool = this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan.onTouch(this, paramMotionEvent);
-        if ((k == 1) || (k == 3)) {
+        boolean bool = ((ClickableImageSpan)localObject).onTouch(this, paramMotionEvent);
+        if (k != 1)
+        {
+          m = bool;
+          if (k != 3) {}
+        }
+        else
+        {
           this.jdField_a_of_type_ComTencentMobileqqTextClickableImageSpan = null;
+          m = bool;
         }
       }
       if (k == 1)
@@ -473,12 +501,16 @@ public class RichStatusEditText
           ((MqqHandler)localObject).sendMessage(((MqqHandler)localObject).obtainMessage(4));
         }
       }
-      if (!bool) {
-        break;
+      if (m != 0) {
+        return true;
       }
-      return true;
-      if ((k == 1) || (k == 3)) {
-        setCursorVisible(true);
+      return super.onTouchEvent(paramMotionEvent);
+    }
+    if (k == 1)
+    {
+      localObject = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.getHandler(EditActivity.class);
+      if (localObject != null) {
+        ((MqqHandler)localObject).sendMessage(((MqqHandler)localObject).obtainMessage(4));
       }
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -504,7 +536,7 @@ public class RichStatusEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.RichStatusEditText
  * JD-Core Version:    0.7.0.1
  */

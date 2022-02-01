@@ -32,10 +32,16 @@ class EventNotifyManager
   private String getMapKey(Object paramObject, IEventNotifier paramIEventNotifier)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (paramObject == null) {}
-    for (int i = 0;; i = paramObject.hashCode()) {
-      return i + "_" + paramIEventNotifier.getReuseType();
+    int i;
+    if (paramObject == null) {
+      i = 0;
+    } else {
+      i = paramObject.hashCode();
     }
+    localStringBuilder.append(i);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramIEventNotifier.getReuseType());
+    return localStringBuilder.toString();
   }
   
   private void notifyEvent()
@@ -51,15 +57,24 @@ class EventNotifyManager
       while (localIterator.hasNext()) {
         notifySingleEvent((IEventNotifier)localIterator.next());
       }
-      localObject.clear();
+      localHashMap.clear();
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void notifySingleEvent(IEventNotifier paramIEventNotifier)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventNotifyManager", "notifyEvent, notifier = " + paramIEventNotifier.getClass().getSimpleName());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyEvent, notifier = ");
+      localStringBuilder.append(paramIEventNotifier.getClass().getSimpleName());
+      Log.i("EventNotifyManager", localStringBuilder.toString());
     }
     this.mListenerMgr.startNotify(new EventNotifyManager.3(this, paramIEventNotifier));
     paramIEventNotifier.reset();
@@ -68,15 +83,18 @@ class EventNotifyManager
   
   void addEventNotifier(Object paramObject, IEventNotifier paramIEventNotifier)
   {
-    Log.v("LazyInitSequence", "start notifier, notifier:" + paramIEventNotifier);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("start notifier, notifier:");
+    ((StringBuilder)localObject).append(paramIEventNotifier);
+    Log.v("LazyInitSequence", ((StringBuilder)localObject).toString());
     paramObject = getMapKey(paramObject, paramIEventNotifier);
     try
     {
-      IEventNotifier localIEventNotifier = (IEventNotifier)this.mNotifierMap.get(paramObject);
-      if (localIEventNotifier != null)
+      localObject = (IEventNotifier)this.mNotifierMap.get(paramObject);
+      if (localObject != null)
       {
-        localIEventNotifier.reset();
-        ReusablePool.recycle(localIEventNotifier, localIEventNotifier.getReuseType());
+        ((IEventNotifier)localObject).reset();
+        ReusablePool.recycle(localObject, ((IEventNotifier)localObject).getReuseType());
       }
       this.mNotifierMap.put(paramObject, paramIEventNotifier);
       this.mMainHandler.removeCallbacks(this.mNotifyRunnable);
@@ -86,18 +104,24 @@ class EventNotifyManager
     finally {}
   }
   
-  void addEventNotifierImmediately(Object arg1, IEventNotifier paramIEventNotifier)
+  void addEventNotifierImmediately(Object paramObject, IEventNotifier paramIEventNotifier)
   {
-    String str = getMapKey(???, paramIEventNotifier);
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventNotifyManager", "addEventNotifierImmediately, mapKey = " + str + ", notifier = " + paramIEventNotifier.getClass().getSimpleName());
+    paramObject = getMapKey(paramObject, paramIEventNotifier);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("addEventNotifierImmediately, mapKey = ");
+      ((StringBuilder)???).append(paramObject);
+      ((StringBuilder)???).append(", notifier = ");
+      ((StringBuilder)???).append(paramIEventNotifier.getClass().getSimpleName());
+      Log.i("EventNotifyManager", ((StringBuilder)???).toString());
     }
     synchronized (this.mImmediateNotifySetLock)
     {
-      if (this.mImmediateNotifySet.contains(str)) {
+      if (this.mImmediateNotifySet.contains(paramObject)) {
         return;
       }
-      this.mImmediateNotifySet.add(str);
+      this.mImmediateNotifySet.add(paramObject);
       notifySingleEvent(paramIEventNotifier);
       this.mMainHandler.removeCallbacks(this.mClearImmediateNotifierRunnable);
       this.mMainHandler.post(this.mClearImmediateNotifierRunnable);
@@ -107,50 +131,74 @@ class EventNotifyManager
   
   void onActivityCreate(Activity paramActivity)
   {
-    String str = "EventNotifyManager.onActivityCreate(" + paramActivity.getClass().getSimpleName() + ")";
-    SimpleTracer.begin(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("EventNotifyManager.onActivityCreate(");
+    ((StringBuilder)localObject).append(paramActivity.getClass().getSimpleName());
+    ((StringBuilder)localObject).append(")");
+    localObject = ((StringBuilder)localObject).toString();
+    SimpleTracer.begin((String)localObject);
     this.mListenerMgr.startNotify(new EventNotifyManager.4(this, paramActivity));
-    SimpleTracer.end(str);
+    SimpleTracer.end((String)localObject);
   }
   
   void onActivityDestroyed(Activity paramActivity)
   {
-    String str = "EventNotifyManager.onActivityDestroyed(" + paramActivity.getClass().getSimpleName() + ")";
-    SimpleTracer.begin(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("EventNotifyManager.onActivityDestroyed(");
+    ((StringBuilder)localObject).append(paramActivity.getClass().getSimpleName());
+    ((StringBuilder)localObject).append(")");
+    localObject = ((StringBuilder)localObject).toString();
+    SimpleTracer.begin((String)localObject);
     this.mListenerMgr.startNotify(new EventNotifyManager.9(this, paramActivity));
-    SimpleTracer.end(str);
+    SimpleTracer.end((String)localObject);
   }
   
   void onActivityPaused(Activity paramActivity)
   {
-    String str = "EventNotifyManager.onActivityPaused(" + paramActivity.getClass().getSimpleName() + ")";
-    SimpleTracer.begin(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("EventNotifyManager.onActivityPaused(");
+    ((StringBuilder)localObject).append(paramActivity.getClass().getSimpleName());
+    ((StringBuilder)localObject).append(")");
+    localObject = ((StringBuilder)localObject).toString();
+    SimpleTracer.begin((String)localObject);
     this.mListenerMgr.startNotify(new EventNotifyManager.7(this, paramActivity));
-    SimpleTracer.end(str);
+    SimpleTracer.end((String)localObject);
   }
   
   void onActivityResumed(Activity paramActivity)
   {
-    String str = "EventNotifyManager.onActivityResume(" + paramActivity.getClass().getSimpleName() + ")";
-    SimpleTracer.begin(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("EventNotifyManager.onActivityResume(");
+    ((StringBuilder)localObject).append(paramActivity.getClass().getSimpleName());
+    ((StringBuilder)localObject).append(")");
+    localObject = ((StringBuilder)localObject).toString();
+    SimpleTracer.begin((String)localObject);
     this.mListenerMgr.startNotify(new EventNotifyManager.6(this, paramActivity));
-    SimpleTracer.end(str);
+    SimpleTracer.end((String)localObject);
   }
   
   void onActivityStarted(Activity paramActivity)
   {
-    String str = "EventNotifyManager.onActivityStarted(" + paramActivity.getClass().getSimpleName() + ")";
-    SimpleTracer.begin(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("EventNotifyManager.onActivityStarted(");
+    ((StringBuilder)localObject).append(paramActivity.getClass().getSimpleName());
+    ((StringBuilder)localObject).append(")");
+    localObject = ((StringBuilder)localObject).toString();
+    SimpleTracer.begin((String)localObject);
     this.mListenerMgr.startNotify(new EventNotifyManager.5(this, paramActivity));
-    SimpleTracer.end(str);
+    SimpleTracer.end((String)localObject);
   }
   
   void onActivityStopped(Activity paramActivity)
   {
-    String str = "EventNotifyManager.onActivityStopped(" + paramActivity.getClass().getSimpleName() + ")";
-    SimpleTracer.begin(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("EventNotifyManager.onActivityStopped(");
+    ((StringBuilder)localObject).append(paramActivity.getClass().getSimpleName());
+    ((StringBuilder)localObject).append(")");
+    localObject = ((StringBuilder)localObject).toString();
+    SimpleTracer.begin((String)localObject);
     this.mListenerMgr.startNotify(new EventNotifyManager.8(this, paramActivity));
-    SimpleTracer.end(str);
+    SimpleTracer.end((String)localObject);
   }
   
   void onDialogHide(Activity paramActivity, Dialog paramDialog)
@@ -190,7 +238,7 @@ class EventNotifyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.collect.EventNotifyManager
  * JD-Core Version:    0.7.0.1
  */

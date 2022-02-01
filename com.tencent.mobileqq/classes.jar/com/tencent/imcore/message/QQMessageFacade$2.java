@@ -1,31 +1,36 @@
 package com.tencent.imcore.message;
 
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.UncommonMessageProcessor;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FMConstants.RevertMsgCallback;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class QQMessageFacade$2
-  implements Runnable
+  implements FMConstants.RevertMsgCallback
 {
-  QQMessageFacade$2(QQMessageFacade paramQQMessageFacade, MessageRecord paramMessageRecord, MessageObserver paramMessageObserver, boolean paramBoolean) {}
+  QQMessageFacade$2(QQMessageFacade paramQQMessageFacade, MessageForFile paramMessageForFile, FileManagerEntity paramFileManagerEntity) {}
   
-  public void run()
+  public void a()
   {
-    try
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop).e(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt == -6101) || (paramInt == -7003))
     {
-      this.this$0.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver, this.jdField_a_of_type_Boolean);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+      QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     }
-    catch (RuntimeException localRuntimeException)
-    {
-      QLog.e("Q.msg.QQMessageFacade", 1, "smr error :", localRuntimeException);
-      throw localRuntimeException;
-    }
+    QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).getMsgHandler().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop, BaseMessageProcessor.e, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.QQMessageFacade.2
  * JD-Core Version:    0.7.0.1
  */

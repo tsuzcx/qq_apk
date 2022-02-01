@@ -39,14 +39,15 @@ public final class Hamlet
   {
     paramJceOutputStream.write(this.uid, 0);
     paramJceOutputStream.write(this.locationtype, 1);
-    if (this.itemlist != null) {
-      paramJceOutputStream.write(this.itemlist, 2);
+    ArrayList localArrayList = this.itemlist;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.Hamlet
  * JD-Core Version:    0.7.0.1
  */

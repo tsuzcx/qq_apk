@@ -14,17 +14,21 @@ class RelativeFeedsAdapter$RelativeFeedVH$2$2
   public void a(boolean paramBoolean)
   {
     String str2 = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
-    if (paramBoolean) {}
-    for (String str1 = "cancel";; str1 = "dislike")
-    {
-      VSReporter.a(str2, "auth_feeds", str1, 0, 0, new String[] { "", this.a.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.getAdapterPosition() + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
-      return;
+    String str1;
+    if (paramBoolean) {
+      str1 = "cancel";
+    } else {
+      str1 = "dislike";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.getAdapterPosition());
+    localStringBuilder.append("");
+    VSReporter.a(str2, "auth_feeds", str1, 0, 0, new String[] { "", localStringBuilder.toString(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.RelativeFeedsAdapter.RelativeFeedVH.2.2
  * JD-Core Version:    0.7.0.1
  */

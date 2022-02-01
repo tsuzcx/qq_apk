@@ -29,14 +29,16 @@ public class ConversationHotChatCtrl
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      ((QQCustomDialog)localObject).dismiss();
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      ((QQProgressDialog)localObject).dismiss();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver != null) {
@@ -49,41 +51,40 @@ public class ConversationHotChatCtrl
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
     BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
     HotChatManager localHotChatManager = localQQAppInterface.getHotChatMng(false);
-    HotChatInfo localHotChatInfo;
     if ((localHotChatManager != null) && (localHotChatManager.b(paramRecentUser.uin)))
     {
       localHotChatManager.a(paramRecentUser.uin);
-      localHotChatInfo = localHotChatManager.a(paramRecentUser.uin);
+      HotChatInfo localHotChatInfo = localHotChatManager.a(paramRecentUser.uin);
       if (localHotChatInfo != null)
       {
-        if (localHotChatInfo.state == 0) {
-          break label117;
+        int i;
+        if (localHotChatInfo.state != 0)
+        {
+          if (localHotChatInfo.isWifiHotChat) {
+            i = 1;
+          } else {
+            i = 2;
+          }
+          ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8004D2A", "0X8004D2A", i, 0, "", "", "", "");
+          return;
         }
-        if (!localHotChatInfo.isWifiHotChat) {
-          break label112;
+        if (localHotChatInfo.adminLevel == 0)
+        {
+          if ((localHotChatInfo.ownerUin != null) && (localHotChatInfo.ownerUin.equals(localQQAppInterface.getCurrentAccountUin()))) {
+            return;
+          }
+          if (localHotChatInfo.isWifiHotChat) {
+            i = 1;
+          } else {
+            i = 2;
+          }
+          ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8004D29", "0X8004D29", i, 0, "", "", "", "");
+          if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver == null) {
+            this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new ConversationHotChatCtrl.1(this, localBaseActivity);
+          }
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = HotChatHelper.a(localHotChatManager.a(paramRecentUser.uin), new ConversationHotChatCtrl.2(this, localHotChatInfo, localQQAppInterface, localBaseActivity));
         }
-        i = 1;
-        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8004D2A", "0X8004D2A", i, 0, "", "", "", "");
       }
-    }
-    label112:
-    label117:
-    while ((localHotChatInfo.adminLevel != 0) || ((localHotChatInfo.ownerUin != null) && (localHotChatInfo.ownerUin.equals(localQQAppInterface.getCurrentAccountUin())))) {
-      for (;;)
-      {
-        return;
-        i = 2;
-      }
-    }
-    if (localHotChatInfo.isWifiHotChat) {}
-    for (int i = 1;; i = 2)
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8004D29", "0X8004D29", i, 0, "", "", "", "");
-      if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver == null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new ConversationHotChatCtrl.1(this, localBaseActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = HotChatHelper.a(localHotChatManager.a(paramRecentUser.uin), new ConversationHotChatCtrl.2(this, localHotChatInfo, localQQAppInterface, localBaseActivity));
-      return;
     }
   }
   
@@ -94,7 +95,7 @@ public class ConversationHotChatCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationHotChatCtrl
  * JD-Core Version:    0.7.0.1
  */

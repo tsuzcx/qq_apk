@@ -21,18 +21,21 @@ public class QimVideoInfoItem
   
   public static QimVideoInfoItem a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return null;
-    }
-    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
-    try
+    if (paramArrayOfByte != null)
     {
-      localQimVideoInfo.mergeFrom(paramArrayOfByte);
-      return new QimVideoInfoItem(localQimVideoInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      SLog.c("QimVideoInfoItem", "Error: parse db bytes error.", paramArrayOfByte);
+      if (paramArrayOfByte.length <= 0) {
+        return null;
+      }
+      qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
+      try
+      {
+        localQimVideoInfo.mergeFrom(paramArrayOfByte);
+        return new QimVideoInfoItem(localQimVideoInfo);
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        SLog.c("QimVideoInfoItem", "Error: parse db bytes error.", paramArrayOfByte);
+      }
     }
     return null;
   }
@@ -48,12 +51,23 @@ public class QimVideoInfoItem
   
   public String toString()
   {
-    return "QimVideoInfoItem{mOwnerUnionId='" + this.a + '\'' + ", mFeedId='" + this.b + '\'' + ", mVid='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QimVideoInfoItem{mOwnerUnionId='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mFeedId='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mVid='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.QimVideoInfoItem
  * JD-Core Version:    0.7.0.1
  */

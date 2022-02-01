@@ -11,15 +11,21 @@ class WSMiniAppJumpStrategy$1
   
   public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    WSLog.e("WSMiniAppJumpStrategy", "[WSMiniAppJumpStrategy.java][jumpAction] onLaunchResult isSuc:" + paramBoolean + ", bundle:" + paramBundle);
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniApiMiniAppLaunchListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMiniApiMiniAppLaunchListener.onLaunchResult(paramBoolean, paramBundle);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[WSMiniAppJumpStrategy.java][jumpAction] onLaunchResult isSuc:");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(", bundle:");
+    ((StringBuilder)localObject).append(paramBundle);
+    WSLog.e("WSMiniAppJumpStrategy", ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqMiniApiMiniAppLaunchListener;
+    if (localObject != null) {
+      ((MiniAppLaunchListener)localObject).onLaunchResult(paramBoolean, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.jump.WSMiniAppJumpStrategy.1
  * JD-Core Version:    0.7.0.1
  */

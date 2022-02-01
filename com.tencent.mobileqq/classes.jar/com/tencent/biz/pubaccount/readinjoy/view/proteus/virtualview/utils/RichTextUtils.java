@@ -2,7 +2,6 @@ package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils;
 
 import android.text.Layout;
 import android.text.SpannableStringBuilder;
-import android.text.method.LinkMovementMethod;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.ViewTreeObserver;
@@ -20,7 +19,7 @@ public class RichTextUtils
   public static void addClickSpan(TextView paramTextView, SpannableStringBuilder paramSpannableStringBuilder, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     paramSpannableStringBuilder.setSpan(new RichTextUtils.ClickSpan(paramString, paramInt1), paramInt2, paramInt3, 33);
-    paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    paramTextView.setMovementMethod(CommonLinkMovementMethod.a());
   }
   
   public static void addEllipsis2Text(TextView paramTextView, TruncateAttr paramTruncateAttr)
@@ -54,7 +53,7 @@ public class RichTextUtils
           else
           {
             if (isBeyondMaxLines(paramTextView, k, paramCharSequence, localSpannableStringBuilder, 0, j)) {
-              break label167;
+              break label173;
             }
             j += 1;
             continue;
@@ -62,18 +61,18 @@ public class RichTextUtils
           localSpannableStringBuilder.clear();
           addMoreText(paramTextView, localSpannableStringBuilder, paramCharSequence, j, paramTruncateAttr);
           paramTextView.setText(localSpannableStringBuilder);
-        }
-        else
-        {
           return;
         }
       }
       catch (Exception paramTextView)
       {
-        LogUtil.QLog.e("RichNativeText", 1, "getBlockText error! msg=" + paramTextView);
-        return;
+        paramCharSequence = new StringBuilder();
+        paramCharSequence.append("getBlockText error! msg=");
+        paramCharSequence.append(paramTextView);
+        LogUtil.QLog.e("RichNativeText", 1, paramCharSequence.toString());
       }
-      label167:
+      return;
+      label173:
       j -= 1;
     }
   }
@@ -109,22 +108,26 @@ public class RichTextUtils
   private static void addMoreTextSpan(TextView paramTextView, SpannableStringBuilder paramSpannableStringBuilder, TruncateAttr paramTruncateAttr, int paramInt1, int paramInt2)
   {
     addClickSpan(paramTextView, paramSpannableStringBuilder, paramTruncateAttr.href, paramTruncateAttr.color, paramInt1, paramInt2);
-    addFontSizeSpan(paramSpannableStringBuilder, (int)(paramTruncateAttr.fontSize * paramTruncateAttr.nodeRatio), paramInt1, paramInt2);
+    double d1 = paramTruncateAttr.fontSize;
+    double d2 = paramTruncateAttr.nodeRatio;
+    Double.isNaN(d1);
+    addFontSizeSpan(paramSpannableStringBuilder, (int)(d1 * d2), paramInt1, paramInt2);
     addFontWeightSpan(paramSpannableStringBuilder, paramTruncateAttr.fontWeight, paramInt1, paramInt2);
   }
   
   public static void adjustImageSpan(TextView paramTextView, TruncateAttr paramTruncateAttr)
   {
-    if (paramTextView.getLineCount() <= 1) {}
-    for (boolean bool = true;; bool = false)
+    int i = paramTextView.getLineCount();
+    boolean bool = true;
+    if (i > 1) {
+      bool = false;
+    }
+    paramTextView = paramTruncateAttr.imageSpans.iterator();
+    while (paramTextView.hasNext())
     {
-      paramTextView = paramTruncateAttr.imageSpans.iterator();
-      while (paramTextView.hasNext())
-      {
-        paramTruncateAttr = (RichTextParser.CustomImageSpan)paramTextView.next();
-        if (paramTruncateAttr != null) {
-          paramTruncateAttr.isSingleLine = bool;
-        }
+      paramTruncateAttr = (RichTextParser.CustomImageSpan)paramTextView.next();
+      if (paramTruncateAttr != null) {
+        paramTruncateAttr.isSingleLine = bool;
       }
     }
   }
@@ -134,17 +137,13 @@ public class RichTextUtils
     paramCharSequence1 = paramCharSequence1.subSequence(paramInt2, paramInt3);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     localSpannableStringBuilder.append(paramCharSequence1).append("…").append(paramCharSequence2);
-    boolean bool = false;
     paramTextView.setText(localSpannableStringBuilder);
-    if (paramTextView.getLineCount() > paramInt1) {
-      bool = true;
-    }
-    return bool;
+    return paramTextView.getLineCount() > paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.RichTextUtils
  * JD-Core Version:    0.7.0.1
  */

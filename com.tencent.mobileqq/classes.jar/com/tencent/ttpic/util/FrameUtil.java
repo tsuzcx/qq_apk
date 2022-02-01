@@ -11,7 +11,7 @@ import java.util.List;
 public class FrameUtil
 {
   private static final Frame EMPTY_FRAME = new Frame();
-  private static final String TAG = FrameUtil.class.getSimpleName();
+  private static final String TAG = "FrameUtil";
   
   public static void clearFrame(Frame paramFrame, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2)
   {
@@ -51,36 +51,32 @@ public class FrameUtil
   
   public static void filterList2Chain(List<BaseFilter> paramList)
   {
-    if (CollectionUtils.isEmpty(paramList)) {}
-    for (;;)
-    {
+    if (CollectionUtils.isEmpty(paramList)) {
       return;
-      BaseFilter localBaseFilter = (BaseFilter)paramList.get(0);
-      int i = 1;
-      while (i < paramList.size())
-      {
-        localBaseFilter.setNextFilter((BaseFilter)paramList.get(i), null);
-        localBaseFilter = (BaseFilter)paramList.get(i);
-        i += 1;
-      }
+    }
+    BaseFilter localBaseFilter = (BaseFilter)paramList.get(0);
+    int i = 1;
+    while (i < paramList.size())
+    {
+      localBaseFilter.setNextFilter((BaseFilter)paramList.get(i), null);
+      localBaseFilter = (BaseFilter)paramList.get(i);
+      i += 1;
     }
   }
   
   public static Frame getLastRenderFrame(Frame paramFrame)
   {
     if (!isValid(paramFrame)) {
-      paramFrame = EMPTY_FRAME;
+      return EMPTY_FRAME;
     }
-    for (;;)
+    Frame localFrame1 = paramFrame;
+    while (isValid(paramFrame))
     {
-      return paramFrame;
-      Frame localFrame;
-      for (Object localObject = paramFrame; isValid((Frame)localObject); localObject = localFrame)
-      {
-        localFrame = ((Frame)localObject).nextFrame;
-        paramFrame = (Frame)localObject;
-      }
+      Frame localFrame2 = paramFrame.nextFrame;
+      localFrame1 = paramFrame;
+      paramFrame = localFrame2;
     }
+    return localFrame1;
   }
   
   public static int getLength(Frame paramFrame)
@@ -107,25 +103,18 @@ public class FrameUtil
   
   public static Frame getSecondLastRenderFrame(Frame paramFrame)
   {
-    Frame localFrame2;
-    if ((!isValid(paramFrame)) || (!isValid(paramFrame.nextFrame)))
+    if ((isValid(paramFrame)) && (isValid(paramFrame.nextFrame)))
     {
-      localFrame2 = EMPTY_FRAME;
-      return localFrame2;
-    }
-    for (Frame localFrame1 = paramFrame;; localFrame1 = localFrame2)
-    {
-      localFrame2 = paramFrame;
-      if (!isValid(localFrame1)) {
-        break;
+      Frame localFrame1 = paramFrame;
+      while ((isValid(paramFrame)) && (isValid(paramFrame.nextFrame)))
+      {
+        Frame localFrame2 = paramFrame.nextFrame;
+        localFrame1 = paramFrame;
+        paramFrame = localFrame2;
       }
-      localFrame2 = paramFrame;
-      if (!isValid(localFrame1.nextFrame)) {
-        break;
-      }
-      localFrame2 = localFrame1.nextFrame;
-      paramFrame = localFrame1;
+      return localFrame1;
     }
+    return EMPTY_FRAME;
   }
   
   public static boolean isValid(Frame paramFrame)
@@ -139,7 +128,13 @@ public class FrameUtil
     int i = 0;
     while (paramBaseFilter != null)
     {
-      Log.d(TAG, "[FILTER] " + i + " " + paramBaseFilter);
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[FILTER] ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramBaseFilter);
+      Log.d(str, localStringBuilder.toString());
       paramBaseFilter = paramBaseFilter.getmNextFilter();
       i += 1;
     }
@@ -148,13 +143,12 @@ public class FrameUtil
   
   public static Frame renderProcessBySwitchFbo(int paramInt1, int paramInt2, int paramInt3, BaseFilter paramBaseFilter, Frame paramFrame1, Frame paramFrame2)
   {
-    if (paramFrame1.getTextureId() == paramInt1) {}
-    for (;;)
-    {
-      paramBaseFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, paramFrame2);
-      return paramFrame2;
-      paramFrame2 = paramFrame1;
+    Frame localFrame = paramFrame1;
+    if (paramFrame1.getTextureId() == paramInt1) {
+      localFrame = paramFrame2;
     }
+    paramBaseFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, localFrame);
+    return localFrame;
   }
   
   public static Frame rotateCorrect(Frame paramFrame, int paramInt1, int paramInt2, int paramInt3, BaseFilter paramBaseFilter)
@@ -187,23 +181,23 @@ public class FrameUtil
       return paramFrame1;
     }
     int i = (paramInt3 + 360) % 360;
-    if ((i == 90) || (i == 270))
+    if ((i != 90) && (i != 270))
+    {
+      paramInt3 = paramInt2;
+    }
+    else
     {
       paramInt3 = paramInt1;
       paramInt1 = paramInt2;
     }
-    for (;;)
-    {
-      paramBaseFilter.setRotationAndFlip(i, 0, 0);
-      paramBaseFilter.RenderProcess(paramFrame1.getTextureId(), paramInt1, paramInt3, -1, 0.0D, paramFrame2);
-      return paramFrame2;
-      paramInt3 = paramInt2;
-    }
+    paramBaseFilter.setRotationAndFlip(i, 0, 0);
+    paramBaseFilter.RenderProcess(paramFrame1.getTextureId(), paramInt1, paramInt3, -1, 0.0D, paramFrame2);
+    return paramFrame2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.FrameUtil
  * JD-Core Version:    0.7.0.1
  */

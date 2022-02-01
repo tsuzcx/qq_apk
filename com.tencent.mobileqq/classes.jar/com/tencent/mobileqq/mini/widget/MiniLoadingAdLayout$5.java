@@ -16,18 +16,28 @@ final class MiniLoadingAdLayout$5
     try
     {
       String str = HttpUtil.openUrl(BaseApplicationImpl.getContext(), "https://rpt.gdt.qq.com/mqq_log", "POST", this.val$reportParams, null);
-      QLog.i("MiniLoadingAdLayout", 1, "report reportParams=" + this.val$reportParams.toString() + " result=" + str);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report reportParams=");
+      localStringBuilder.append(this.val$reportParams.toString());
+      localStringBuilder.append(" result=");
+      localStringBuilder.append(str);
+      QLog.i("MiniLoadingAdLayout", 1, localStringBuilder.toString());
       return;
     }
     catch (Exception localException)
     {
-      QLog.e("MiniLoadingAdLayout", 1, "report error. url=" + "https://rpt.gdt.qq.com/mqq_log" + " reportParams=" + this.val$reportParams.toString(), localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report error. url=");
+      localStringBuilder.append("https://rpt.gdt.qq.com/mqq_log");
+      localStringBuilder.append(" reportParams=");
+      localStringBuilder.append(this.val$reportParams.toString());
+      QLog.e("MiniLoadingAdLayout", 1, localStringBuilder.toString(), localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.5
  * JD-Core Version:    0.7.0.1
  */

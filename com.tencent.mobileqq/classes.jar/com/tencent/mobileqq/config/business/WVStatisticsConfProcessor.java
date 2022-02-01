@@ -21,8 +21,12 @@ public class WVStatisticsConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
       WVStatisticsConfBean localWVStatisticsConfBean = WVStatisticsConfBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("WVStatisticsConfProcessor", 2, localStringBuilder.toString());
       }
       return localWVStatisticsConfBean;
     }
@@ -31,8 +35,12 @@ public class WVStatisticsConfProcessor
   
   public void a(WVStatisticsConfBean paramWVStatisticsConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramWVStatisticsConfBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramWVStatisticsConfBean.toString());
+      QLog.d("WVStatisticsConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -70,7 +78,7 @@ public class WVStatisticsConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.WVStatisticsConfProcessor
  * JD-Core Version:    0.7.0.1
  */

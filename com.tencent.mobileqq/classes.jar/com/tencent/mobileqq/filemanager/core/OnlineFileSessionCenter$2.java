@@ -8,69 +8,90 @@ class OnlineFileSessionCenter$2
 {
   OnlineFileSessionCenter$2(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
   
-  public void a(long paramLong)
+  protected void a(long paramLong)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
-    }
-    OnlineFileSessionWorker localOnlineFileSessionWorker;
-    do
+    if (0L == paramLong)
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OLfilesession[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("] OnOnlineFileProgressDirectDone sessionid error.return");
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return;
-      localOnlineFileSessionWorker = this.a.a(paramLong);
-      if (localOnlineFileSessionWorker == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
-        return;
-      }
-      localOnlineFileSessionWorker.h();
-    } while (!localOnlineFileSessionWorker.c());
-    this.a.c(paramLong);
+    }
+    Object localObject = this.a.a(paramLong);
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OLfilesession[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("]. not find worker.OnOnlineFileProgressDirectDone");
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    ((OnlineFileSessionWorker)localObject).h();
+    if (((OnlineFileSessionWorker)localObject).c()) {
+      this.a.c(paramLong);
+    }
   }
   
-  public void b(long paramLong)
+  protected void b(long paramLong)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
-    }
-    OnlineFileSessionWorker localOnlineFileSessionWorker;
-    do
+    if (0L == paramLong)
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OLfilesession[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return;
-      localOnlineFileSessionWorker = this.a.a(paramLong);
-      if (localOnlineFileSessionWorker == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
-        return;
-      }
-      localOnlineFileSessionWorker.j();
-    } while (!localOnlineFileSessionWorker.c());
-    this.a.c(paramLong);
+    }
+    Object localObject = this.a.a(paramLong);
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OLfilesession[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    ((OnlineFileSessionWorker)localObject).j();
+    if (((OnlineFileSessionWorker)localObject).c()) {
+      this.a.c(paramLong);
+    }
   }
   
-  public void c(long paramLong)
+  protected void c(long paramLong)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
-    }
-    OnlineFileSessionWorker localOnlineFileSessionWorker;
-    do
+    if (0L == paramLong)
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OLfilesession[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return;
-      localOnlineFileSessionWorker = this.a.a(paramLong);
-      if (localOnlineFileSessionWorker == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
-        return;
-      }
-      localOnlineFileSessionWorker.l();
-    } while (!localOnlineFileSessionWorker.c());
-    this.a.c(paramLong);
+    }
+    Object localObject = this.a.a(paramLong);
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OLfilesession[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    ((OnlineFileSessionWorker)localObject).l();
+    if (((OnlineFileSessionWorker)localObject).c()) {
+      this.a.c(paramLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.2
  * JD-Core Version:    0.7.0.1
  */

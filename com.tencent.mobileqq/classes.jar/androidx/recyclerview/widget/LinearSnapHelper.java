@@ -16,54 +16,61 @@ public class LinearSnapHelper
   
   private float computeDistancePerChild(RecyclerView.LayoutManager paramLayoutManager, OrientationHelper paramOrientationHelper)
   {
-    Object localObject1 = null;
-    int i = 2147483647;
-    int i1 = paramLayoutManager.getChildCount();
-    if (i1 == 0) {
+    int i2 = paramLayoutManager.getChildCount();
+    if (i2 == 0) {
       return 1.0F;
     }
-    int k = 0;
+    int m = 0;
+    Object localObject1 = null;
     Object localObject2 = null;
-    int m = -2147483648;
-    View localView;
-    int n;
-    if (k < i1)
+    int i = 2147483647;
+    int i1;
+    int j;
+    for (int k = -2147483648; m < i2; k = i1)
     {
-      localView = paramLayoutManager.getChildAt(k);
-      n = paramLayoutManager.getPosition(localView);
-      if (n != -1) {}
-    }
-    for (;;)
-    {
-      k += 1;
-      break;
-      int j = i;
-      if (n < i)
+      View localView = paramLayoutManager.getChildAt(m);
+      int n = paramLayoutManager.getPosition(localView);
+      Object localObject3;
+      if (n == -1)
       {
-        j = n;
-        localObject2 = localView;
-      }
-      if (n > m)
-      {
-        m = n;
-        i = j;
-        localObject1 = localView;
-        continue;
-        if ((localObject2 == null) || (localObject1 == null)) {
-          return 1.0F;
-        }
-        j = Math.min(paramOrientationHelper.getDecoratedStart(localObject2), paramOrientationHelper.getDecoratedStart(localObject1));
-        j = Math.max(paramOrientationHelper.getDecoratedEnd(localObject2), paramOrientationHelper.getDecoratedEnd(localObject1)) - j;
-        if (j == 0) {
-          return 1.0F;
-        }
-        return j * 1.0F / (m - i + 1);
+        localObject3 = localObject1;
+        i1 = k;
       }
       else
       {
+        j = i;
+        if (n < i)
+        {
+          localObject1 = localView;
+          j = n;
+        }
+        localObject3 = localObject1;
         i = j;
+        i1 = k;
+        if (n > k)
+        {
+          localObject2 = localView;
+          i1 = n;
+          i = j;
+          localObject3 = localObject1;
+        }
       }
+      m += 1;
+      localObject1 = localObject3;
     }
+    if (localObject1 != null)
+    {
+      if (localObject2 == null) {
+        return 1.0F;
+      }
+      j = Math.min(paramOrientationHelper.getDecoratedStart(localObject1), paramOrientationHelper.getDecoratedStart(localObject2));
+      j = Math.max(paramOrientationHelper.getDecoratedEnd(localObject1), paramOrientationHelper.getDecoratedEnd(localObject2)) - j;
+      if (j == 0) {
+        return 1.0F;
+      }
+      return j * 1.0F / (k - i + 1);
+    }
+    return 1.0F;
   }
   
   private int distanceToCenter(@NonNull RecyclerView.LayoutManager paramLayoutManager, @NonNull View paramView, OrientationHelper paramOrientationHelper)
@@ -78,50 +85,47 @@ public class LinearSnapHelper
     if (f <= 0.0F) {
       return 0;
     }
-    if (Math.abs(arrayOfInt[0]) > Math.abs(arrayOfInt[1])) {}
-    for (paramInt1 = arrayOfInt[0];; paramInt1 = arrayOfInt[1]) {
-      return Math.round(paramInt1 / f);
+    if (Math.abs(arrayOfInt[0]) > Math.abs(arrayOfInt[1])) {
+      paramInt1 = arrayOfInt[0];
+    } else {
+      paramInt1 = arrayOfInt[1];
     }
+    return Math.round(paramInt1 / f);
   }
   
   @Nullable
   private View findCenterView(RecyclerView.LayoutManager paramLayoutManager, OrientationHelper paramOrientationHelper)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    int m = paramLayoutManager.getChildCount();
-    if (m == 0) {}
-    int n;
-    int i1;
-    int i;
-    int j;
-    do
-    {
-      return localObject2;
-      n = paramOrientationHelper.getStartAfterPadding();
-      i1 = paramOrientationHelper.getTotalSpace() / 2;
-      i = 2147483647;
-      j = 0;
-      localObject2 = localObject1;
-    } while (j >= m);
-    localObject2 = paramLayoutManager.getChildAt(j);
-    int k = Math.abs(paramOrientationHelper.getDecoratedStart((View)localObject2) + paramOrientationHelper.getDecoratedMeasurement((View)localObject2) / 2 - (n + i1));
-    if (k < i)
-    {
-      localObject1 = localObject2;
-      i = k;
+    int n = paramLayoutManager.getChildCount();
+    Object localObject = null;
+    if (n == 0) {
+      return null;
     }
-    for (;;)
+    int i1 = paramOrientationHelper.getStartAfterPadding();
+    int i2 = paramOrientationHelper.getTotalSpace() / 2;
+    int j = 2147483647;
+    int i = 0;
+    while (i < n)
     {
-      j += 1;
-      break;
+      View localView = paramLayoutManager.getChildAt(i);
+      int m = Math.abs(paramOrientationHelper.getDecoratedStart(localView) + paramOrientationHelper.getDecoratedMeasurement(localView) / 2 - (i1 + i2));
+      int k = j;
+      if (m < j)
+      {
+        localObject = localView;
+        k = m;
+      }
+      i += 1;
+      j = k;
     }
+    return localObject;
   }
   
   @NonNull
   private OrientationHelper getHorizontalHelper(@NonNull RecyclerView.LayoutManager paramLayoutManager)
   {
-    if ((this.mHorizontalHelper == null) || (this.mHorizontalHelper.mLayoutManager != paramLayoutManager)) {
+    OrientationHelper localOrientationHelper = this.mHorizontalHelper;
+    if ((localOrientationHelper == null) || (localOrientationHelper.mLayoutManager != paramLayoutManager)) {
       this.mHorizontalHelper = OrientationHelper.createHorizontalHelper(paramLayoutManager);
     }
     return this.mHorizontalHelper;
@@ -130,7 +134,8 @@ public class LinearSnapHelper
   @NonNull
   private OrientationHelper getVerticalHelper(@NonNull RecyclerView.LayoutManager paramLayoutManager)
   {
-    if ((this.mVerticalHelper == null) || (this.mVerticalHelper.mLayoutManager != paramLayoutManager)) {
+    OrientationHelper localOrientationHelper = this.mVerticalHelper;
+    if ((localOrientationHelper == null) || (localOrientationHelper.mLayoutManager != paramLayoutManager)) {
       this.mVerticalHelper = OrientationHelper.createVerticalHelper(paramLayoutManager);
     }
     return this.mVerticalHelper;
@@ -141,12 +146,13 @@ public class LinearSnapHelper
     int[] arrayOfInt = new int[2];
     if (paramLayoutManager.canScrollHorizontally()) {
       arrayOfInt[0] = distanceToCenter(paramLayoutManager, paramView, getHorizontalHelper(paramLayoutManager));
+    } else {
+      arrayOfInt[0] = 0;
     }
-    while (paramLayoutManager.canScrollVertically())
+    if (paramLayoutManager.canScrollVertically())
     {
       arrayOfInt[1] = distanceToCenter(paramLayoutManager, paramView, getVerticalHelper(paramLayoutManager));
       return arrayOfInt;
-      arrayOfInt[0] = 0;
     }
     arrayOfInt[1] = 0;
     return arrayOfInt;
@@ -166,76 +172,72 @@ public class LinearSnapHelper
   public int findTargetSnapPosition(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
   {
     if (!(paramLayoutManager instanceof RecyclerView.SmoothScroller.ScrollVectorProvider)) {
-      paramInt2 = -1;
+      return -1;
+    }
+    int k = paramLayoutManager.getItemCount();
+    if (k == 0) {
+      return -1;
+    }
+    Object localObject = findSnapView(paramLayoutManager);
+    if (localObject == null) {
+      return -1;
+    }
+    int m = paramLayoutManager.getPosition((View)localObject);
+    if (m == -1) {
+      return -1;
+    }
+    localObject = (RecyclerView.SmoothScroller.ScrollVectorProvider)paramLayoutManager;
+    int i = k - 1;
+    localObject = ((RecyclerView.SmoothScroller.ScrollVectorProvider)localObject).computeScrollVectorForPosition(i);
+    if (localObject == null) {
+      return -1;
     }
     int j;
-    label152:
-    label170:
-    label175:
-    label180:
-    do
+    if (paramLayoutManager.canScrollHorizontally())
     {
-      return paramInt2;
-      j = paramLayoutManager.getItemCount();
-      if (j == 0) {
-        return -1;
+      j = estimateNextPositionDiffForFling(paramLayoutManager, getHorizontalHelper(paramLayoutManager), paramInt1, 0);
+      paramInt1 = j;
+      if (((PointF)localObject).x < 0.0F) {
+        paramInt1 = -j;
       }
-      Object localObject = findSnapView(paramLayoutManager);
-      if (localObject == null) {
-        return -1;
+    }
+    else
+    {
+      paramInt1 = 0;
+    }
+    if (paramLayoutManager.canScrollVertically())
+    {
+      j = estimateNextPositionDiffForFling(paramLayoutManager, getVerticalHelper(paramLayoutManager), 0, paramInt2);
+      paramInt2 = j;
+      if (((PointF)localObject).y < 0.0F) {
+        paramInt2 = -j;
       }
-      int k = paramLayoutManager.getPosition((View)localObject);
-      if (k == -1) {
-        return -1;
-      }
-      localObject = ((RecyclerView.SmoothScroller.ScrollVectorProvider)paramLayoutManager).computeScrollVectorForPosition(j - 1);
-      if (localObject == null) {
-        return -1;
-      }
-      if (paramLayoutManager.canScrollHorizontally())
-      {
-        int i = estimateNextPositionDiffForFling(paramLayoutManager, getHorizontalHelper(paramLayoutManager), paramInt1, 0);
-        paramInt1 = i;
-        if (((PointF)localObject).x < 0.0F) {
-          paramInt1 = -i;
-        }
-        if (!paramLayoutManager.canScrollVertically()) {
-          break label170;
-        }
-        i = estimateNextPositionDiffForFling(paramLayoutManager, getVerticalHelper(paramLayoutManager), 0, paramInt2);
-        paramInt2 = i;
-        if (((PointF)localObject).y < 0.0F) {
-          paramInt2 = -i;
-        }
-        if (!paramLayoutManager.canScrollVertically()) {
-          break label175;
-        }
-      }
-      for (;;)
-      {
-        if (paramInt2 != 0) {
-          break label180;
-        }
-        return -1;
-        paramInt1 = 0;
-        break;
-        paramInt2 = 0;
-        break label152;
-        paramInt2 = paramInt1;
-      }
-      paramInt2 = k + paramInt2;
+    }
+    else
+    {
+      paramInt2 = 0;
+    }
+    if (paramLayoutManager.canScrollVertically()) {
       paramInt1 = paramInt2;
-      if (paramInt2 < 0) {
-        paramInt1 = 0;
-      }
-      paramInt2 = paramInt1;
-    } while (paramInt1 < j);
-    return j - 1;
+    }
+    if (paramInt1 == 0) {
+      return -1;
+    }
+    paramInt2 = m + paramInt1;
+    paramInt1 = paramInt2;
+    if (paramInt2 < 0) {
+      paramInt1 = 0;
+    }
+    paramInt2 = paramInt1;
+    if (paramInt1 >= k) {
+      paramInt2 = i;
+    }
+    return paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.LinearSnapHelper
  * JD-Core Version:    0.7.0.1
  */

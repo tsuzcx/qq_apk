@@ -15,20 +15,26 @@ class TroopBarPublishLocationSelectActivity$4
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TroopBarPublishLocationSelectActivity.a(this.a), 2, "onLocationFinish() errCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      String str = TroopBarPublishLocationSelectActivity.a(this.a);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLocationFinish() errCode=");
+      localStringBuilder.append(paramInt);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
       double d1 = paramSosoLbsInfo.mLocation.mLat02;
       double d2 = paramSosoLbsInfo.mLocation.mLon02;
-      TroopBarPublishLocationSelectActivity.a(this.a, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.a);
+      paramSosoLbsInfo = this.a;
+      TroopBarPublishLocationSelectActivity.a(paramSosoLbsInfo, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, paramSosoLbsInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity.4
  * JD-Core Version:    0.7.0.1
  */

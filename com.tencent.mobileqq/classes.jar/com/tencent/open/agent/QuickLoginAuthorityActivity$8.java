@@ -18,35 +18,43 @@ class QuickLoginAuthorityActivity$8
   {
     switch (paramMessage.what)
     {
-    }
-    do
-    {
-      do
+    case 1005: 
+    default: 
+    case 1006: 
+      if (this.a.a.a != null)
       {
-        do
-        {
-          do
-          {
-            return;
-            paramMessage = (Bitmap)paramMessage.obj;
-          } while (paramMessage == null);
-          this.a.a.a("", "", paramMessage, true);
-          return;
-          paramMessage = (Bitmap)paramMessage.obj;
-        } while (paramMessage == null);
+        this.a.a.a.f();
+        return;
+      }
+      break;
+    case 1004: 
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        this.a.a.setAppType(paramMessage);
+        return;
+      }
+      break;
+    case 1003: 
+      paramMessage = (Bitmap)paramMessage.obj;
+      if (paramMessage != null)
+      {
         this.a.a.a("", paramMessage);
         return;
-        paramMessage = (String)paramMessage.obj;
-      } while (TextUtils.isEmpty(paramMessage));
-      this.a.a.setAppType(paramMessage);
-      return;
-    } while (this.a.a.a == null);
-    this.a.a.a.d();
+      }
+      break;
+    case 1002: 
+      paramMessage = (Bitmap)paramMessage.obj;
+      if (paramMessage != null) {
+        this.a.a.a("", "", paramMessage);
+      }
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.QuickLoginAuthorityActivity.8
  * JD-Core Version:    0.7.0.1
  */

@@ -25,144 +25,145 @@ public class TransDiskCache
   
   private File a(Context paramContext)
   {
-    String str = Environment.getExternalStorageDirectory().getPath() + "/Android/data/" + paramContext.getPackageName() + "/cache/";
-    Object localObject = Utils.a(paramContext);
-    if ((("mounted".equals(Environment.getExternalStorageState())) || (!Utils.a())) && (localObject != null)) {
-      paramContext = ((File)localObject).getPath();
-    }
-    for (;;)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getPath());
+    ((StringBuilder)localObject1).append("/Android/data/");
+    ((StringBuilder)localObject1).append(paramContext.getPackageName());
+    ((StringBuilder)localObject1).append("/cache/");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = Utils.a(paramContext);
+    if ((("mounted".equals(Environment.getExternalStorageState())) || (!Utils.a())) && (localObject2 != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Translator", 2, "[TransDiskCache] getDiskCacheDir:" + paramContext);
-      }
-      return new File(paramContext + File.separator + "TransDiskCache_simsun_qqi");
-      localObject = paramContext.getCacheDir().getPath();
-      if (localObject != null)
+      paramContext = ((File)localObject2).getPath();
+    }
+    else
+    {
+      localObject2 = paramContext.getCacheDir().getPath();
+      paramContext = (Context)localObject1;
+      if (localObject2 != null)
       {
-        paramContext = (Context)localObject;
-        if (((String)localObject).length() > 0) {}
-      }
-      else
-      {
-        paramContext = str;
+        paramContext = (Context)localObject1;
+        if (((String)localObject2).length() > 0) {
+          paramContext = (Context)localObject2;
+        }
       }
     }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[TransDiskCache] getDiskCacheDir:");
+      ((StringBuilder)localObject1).append(paramContext);
+      QLog.d("Translator", 2, ((StringBuilder)localObject1).toString());
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramContext);
+    ((StringBuilder)localObject1).append(File.separator);
+    ((StringBuilder)localObject1).append("TransDiskCache_simsun_qqi");
+    return new File(((StringBuilder)localObject1).toString());
   }
   
   /* Error */
   private String b(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_1
-    //   4: invokestatic 117	com/rookery/translate/model/Utils:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   7: astore_1
-    //   8: aload_0
-    //   9: getfield 34	com/rookery/translate/model/TransDiskCache:a	Lcom/jakewharton/disklrucache/DiskLruCache;
-    //   12: aload_1
-    //   13: invokevirtual 121	com/jakewharton/disklrucache/DiskLruCache:get	(Ljava/lang/String;)Lcom/jakewharton/disklrucache/DiskLruCache$Snapshot;
-    //   16: astore_1
-    //   17: aload_1
-    //   18: ifnull +25 -> 43
-    //   21: aload_1
-    //   22: astore_2
-    //   23: aload_1
-    //   24: iconst_0
-    //   25: invokevirtual 127	com/jakewharton/disklrucache/DiskLruCache$Snapshot:getString	(I)Ljava/lang/String;
-    //   28: astore_3
-    //   29: aload_3
-    //   30: astore_2
-    //   31: aload_1
-    //   32: ifnull +9 -> 41
-    //   35: aload_1
-    //   36: invokevirtual 130	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
-    //   39: aload_3
-    //   40: astore_2
-    //   41: aload_2
-    //   42: areturn
-    //   43: aload 4
-    //   45: astore_2
-    //   46: aload_1
-    //   47: ifnull -6 -> 41
-    //   50: aload_1
-    //   51: invokevirtual 130	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
+    //   0: aload_1
+    //   1: invokestatic 117	com/rookery/translate/model/Utils:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   4: astore_1
+    //   5: aconst_null
+    //   6: astore_2
+    //   7: aload_0
+    //   8: getfield 34	com/rookery/translate/model/TransDiskCache:a	Lcom/jakewharton/disklrucache/DiskLruCache;
+    //   11: aload_1
+    //   12: invokevirtual 121	com/jakewharton/disklrucache/DiskLruCache:get	(Ljava/lang/String;)Lcom/jakewharton/disklrucache/DiskLruCache$Snapshot;
+    //   15: astore_1
+    //   16: aload_1
+    //   17: ifnull +25 -> 42
+    //   20: aload_1
+    //   21: astore_2
+    //   22: aload_1
+    //   23: iconst_0
+    //   24: invokevirtual 127	com/jakewharton/disklrucache/DiskLruCache$Snapshot:getString	(I)Ljava/lang/String;
+    //   27: astore_3
+    //   28: aload_1
+    //   29: ifnull +7 -> 36
+    //   32: aload_1
+    //   33: invokevirtual 130	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
+    //   36: aload_3
+    //   37: areturn
+    //   38: astore_3
+    //   39: goto +17 -> 56
+    //   42: aload_1
+    //   43: ifnull +27 -> 70
+    //   46: goto +20 -> 66
+    //   49: astore_1
+    //   50: goto +23 -> 73
+    //   53: astore_3
     //   54: aconst_null
-    //   55: areturn
-    //   56: astore_3
-    //   57: aconst_null
-    //   58: astore_1
-    //   59: aload_1
-    //   60: astore_2
-    //   61: aload_3
-    //   62: invokevirtual 133	java/lang/Exception:printStackTrace	()V
-    //   65: aload 4
-    //   67: astore_2
-    //   68: aload_1
-    //   69: ifnull -28 -> 41
-    //   72: aload_1
-    //   73: invokevirtual 130	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
-    //   76: aconst_null
-    //   77: areturn
-    //   78: astore_1
-    //   79: aconst_null
-    //   80: astore_2
-    //   81: aload_2
-    //   82: ifnull +7 -> 89
-    //   85: aload_2
-    //   86: invokevirtual 130	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
-    //   89: aload_1
-    //   90: athrow
-    //   91: astore_1
-    //   92: goto -11 -> 81
-    //   95: astore_3
-    //   96: goto -37 -> 59
+    //   55: astore_1
+    //   56: aload_1
+    //   57: astore_2
+    //   58: aload_3
+    //   59: invokevirtual 133	java/lang/Exception:printStackTrace	()V
+    //   62: aload_1
+    //   63: ifnull +7 -> 70
+    //   66: aload_1
+    //   67: invokevirtual 130	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
+    //   70: aconst_null
+    //   71: areturn
+    //   72: astore_1
+    //   73: aload_2
+    //   74: ifnull +7 -> 81
+    //   77: aload_2
+    //   78: invokevirtual 130	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
+    //   81: aload_1
+    //   82: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	99	0	this	TransDiskCache
-    //   0	99	1	paramString	String
-    //   22	64	2	localObject1	Object
-    //   28	12	3	str	String
-    //   56	6	3	localException1	java.lang.Exception
-    //   95	1	3	localException2	java.lang.Exception
-    //   1	65	4	localObject2	Object
+    //   0	83	0	this	TransDiskCache
+    //   0	83	1	paramString	String
+    //   6	72	2	str1	String
+    //   27	10	3	str2	String
+    //   38	1	3	localException1	java.lang.Exception
+    //   53	6	3	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   8	17	56	java/lang/Exception
-    //   8	17	78	finally
-    //   23	29	91	finally
-    //   61	65	91	finally
-    //   23	29	95	java/lang/Exception
+    //   22	28	38	java/lang/Exception
+    //   7	16	49	finally
+    //   7	16	53	java/lang/Exception
+    //   22	28	72	finally
+    //   58	62	72	finally
   }
   
   private void b(String paramString1, String paramString2)
   {
-    DiskLruCache.Editor localEditor = null;
-    String str = Utils.a(paramString1);
-    paramString1 = localEditor;
+    Object localObject = Utils.a(paramString1);
+    paramString1 = null;
     try
     {
-      localEditor = this.a.edit(str);
-      if (localEditor == null) {
+      localObject = this.a.edit((String)localObject);
+      if (localObject == null) {
         return;
       }
-      paramString1 = localEditor;
-      localEditor.set(0, paramString2);
-      paramString1 = localEditor;
-      localEditor.commit();
+      paramString1 = (String)localObject;
+      ((DiskLruCache.Editor)localObject).set(0, paramString2);
+      paramString1 = (String)localObject;
+      ((DiskLruCache.Editor)localObject).commit();
       return;
     }
     catch (IOException paramString2)
     {
-      if (paramString1 != null) {
+      for (;;)
+      {
         try
         {
           paramString1.abort();
           return;
         }
         catch (IOException paramString1) {}
+        paramString2 = paramString2;
       }
     }
+    if (paramString1 != null) {}
   }
   
   public Trans_entity a(String paramString1, long paramLong, String paramString2)

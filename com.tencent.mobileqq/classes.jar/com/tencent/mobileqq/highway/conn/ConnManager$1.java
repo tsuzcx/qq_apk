@@ -7,20 +7,13 @@ class ConnManager$1
   
   public void run()
   {
-    ConnManager localConnManager = this.this$0;
-    int i = this.val$netType;
-    if (!this.val$ipv6First) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ConnManager.access$000(localConnManager, i, false, bool);
-      ConnManager.access$100(this.this$0).mRacingRunnable = null;
-      return;
-    }
+    ConnManager.access$000(this.this$0, this.val$netType, false, this.val$ipv6First ^ true);
+    ConnManager.access$100(this.this$0).mRacingRunnable = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.conn.ConnManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -26,12 +26,13 @@ class SpringFestivalRedpacketConfigManager$1
     catch (Throwable localThrowable)
     {
       QLog.e("shua2021_SpringFestivalRedpacketConfigManager", 1, localThrowable, new Object[0]);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

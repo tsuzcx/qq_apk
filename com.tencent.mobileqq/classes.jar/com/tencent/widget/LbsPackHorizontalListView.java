@@ -19,34 +19,43 @@ public class LbsPackHorizontalListView
   
   protected boolean checkScrollToChild()
   {
-    if (!this.mStayDisplayOffsetZero) {}
-    for (;;)
-    {
+    boolean bool1 = this.mStayDisplayOffsetZero;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      if (getChildAt(0) != null)
+    }
+    bool1 = bool2;
+    if (getChildAt(0) != null)
+    {
+      int i = this.mNextX;
+      if (this.mNextX == 0) {
+        return false;
+      }
+      int j = getChildAt(1).getMeasuredWidth();
+      int k = i % j;
+      double d1 = k;
+      double d2 = j;
+      Double.isNaN(d2);
+      if (d1 <= d2 * 0.5D) {
+        i -= k;
+      } else {
+        i = i - k + j;
+      }
+      OverScroller localOverScroller = this.mScroller;
+      j = this.mNextX;
+      bool1 = bool2;
+      if (localOverScroller.springBack(getScrollX() + j, 0, i, i, 0, 0, 1000))
       {
-        int i = this.mNextX;
-        if (this.mNextX != 0)
-        {
-          int j = getChildAt(1).getMeasuredWidth();
-          int k = i % j;
-          if (k <= j * 0.5D) {
-            i -= k;
-          }
-          while (this.mScroller.springBack(this.mNextX + getScrollX(), 0, i, i, 0, 0, 1000))
-          {
-            invalidate();
-            return true;
-            i = i - k + j;
-          }
-        }
+        invalidate();
+        bool1 = true;
       }
     }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.LbsPackHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

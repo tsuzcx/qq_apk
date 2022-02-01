@@ -32,8 +32,16 @@ public abstract class ShareUI
     long l2 = l1 - jdField_a_of_type_JavaLangLong.longValue();
     if ((l2 > 0L) && (l2 < 800L))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("isFastDoubleClick", 2, "time:" + l1 + ", mLastClickTIme:" + jdField_a_of_type_JavaLangLong + ", timeDiff:" + l2);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("time:");
+        localStringBuilder.append(l1);
+        localStringBuilder.append(", mLastClickTIme:");
+        localStringBuilder.append(jdField_a_of_type_JavaLangLong);
+        localStringBuilder.append(", timeDiff:");
+        localStringBuilder.append(l2);
+        QLog.i("isFastDoubleClick", 2, localStringBuilder.toString());
       }
       return true;
     }
@@ -66,29 +74,29 @@ public abstract class ShareUI
   
   public void b()
   {
-    if (!this.b) {}
-    do
+    if (!this.b) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
-      Activity localActivity;
-      do
-      {
+      Activity localActivity = a();
+      if (localActivity == null) {
         return;
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-          break;
-        }
-        localActivity = a();
-      } while (localActivity == null);
-      int i = localActivity.getResources().getDimensionPixelSize(2131299166);
+      }
+      int i = localActivity.getResources().getDimensionPixelSize(2131299168);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localActivity);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131713920));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131713848));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(i);
-    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    }
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
   }
@@ -96,28 +104,31 @@ public abstract class ShareUI
   public void d()
   {
     a();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener.a();
+    OnShareUIListener localOnShareUIListener = this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener;
+    if (localOnShareUIListener != null) {
+      localOnShareUIListener.a();
     }
   }
   
   protected void e()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener.b();
+    OnShareUIListener localOnShareUIListener = this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener;
+    if (localOnShareUIListener != null) {
+      localOnShareUIListener.b();
     }
   }
   
   protected void f()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener.c();
+    OnShareUIListener localOnShareUIListener = this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener;
+    if (localOnShareUIListener != null) {
+      localOnShareUIListener.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.ui.ShareUI
  * JD-Core Version:    0.7.0.1
  */

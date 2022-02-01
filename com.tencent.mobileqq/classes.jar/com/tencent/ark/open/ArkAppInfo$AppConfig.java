@@ -12,7 +12,6 @@ public class ArkAppInfo$AppConfig
   public int type;
   public ArkAppInfo.AppUrlWhiteList urlWhitelist;
   public long ver;
-  public ArrayList<ArkAppInfo.AppTemplateView> views;
 }
 
 

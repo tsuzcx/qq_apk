@@ -9,8 +9,10 @@ class SubscribePermissionSettingFragment$5
   
   public void run()
   {
-    if (SubscribePermissionSettingFragment.access$700(this.this$0) == null) {
-      SubscribePermissionSettingFragment.access$702(this.this$0, new MiniProgressDialog(this.this$0.getActivity()));
+    if (SubscribePermissionSettingFragment.access$700(this.this$0) == null)
+    {
+      SubscribePermissionSettingFragment localSubscribePermissionSettingFragment = this.this$0;
+      SubscribePermissionSettingFragment.access$702(localSubscribePermissionSettingFragment, new MiniProgressDialog(localSubscribePermissionSettingFragment.getActivity()));
     }
     if (!SubscribePermissionSettingFragment.access$700(this.this$0).isShowing())
     {
@@ -21,7 +23,7 @@ class SubscribePermissionSettingFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubscribePermissionSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

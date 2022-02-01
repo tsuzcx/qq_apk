@@ -19,21 +19,26 @@ class StickyNoteShopLayout$3
       int i = 0;
       if ((paramRecyclerView instanceof StaggeredGridLayoutManager))
       {
-        int[] arrayOfInt = new int[((StaggeredGridLayoutManager)paramRecyclerView).getSpanCount()];
-        arrayOfInt = ((StaggeredGridLayoutManager)paramRecyclerView).findLastVisibleItemPositions(arrayOfInt);
-        i = StickyNoteShopLayout.a(this.a, arrayOfInt);
+        Object localObject = (StaggeredGridLayoutManager)paramRecyclerView;
+        localObject = ((StaggeredGridLayoutManager)localObject).findLastVisibleItemPositions(new int[((StaggeredGridLayoutManager)localObject).getSpanCount()]);
+        i = StickyNoteShopLayout.a(this.a, (int[])localObject);
       }
       if ((paramRecyclerView.getChildCount() > 0) && (i >= paramRecyclerView.getItemCount() - 1))
       {
         this.a.a(true);
-        QLog.d("StickyNoteShopLayout", 2, " load more shop data newState:" + paramInt + " lastVisiblePosition:" + i);
+        paramRecyclerView = new StringBuilder();
+        paramRecyclerView.append(" load more shop data newState:");
+        paramRecyclerView.append(paramInt);
+        paramRecyclerView.append(" lastVisiblePosition:");
+        paramRecyclerView.append(i);
+        QLog.d("StickyNoteShopLayout", 2, paramRecyclerView.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout.3
  * JD-Core Version:    0.7.0.1
  */

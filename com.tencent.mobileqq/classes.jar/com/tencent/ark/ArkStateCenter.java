@@ -10,7 +10,7 @@ public class ArkStateCenter
   protected static String TAG = "ArkApp.ArkStateCenter";
   protected static ArkStateCenter mArkStateCenter = new ArkStateCenter();
   protected final ArkEnvironmentManager ENV = ArkEnvironmentManager.getInstance();
-  protected Set<WeakReference<ArkViewModelBase>> mArkViewModels = new HashSet();
+  protected final Set<WeakReference<ArkViewModelBase>> mArkViewModels = new HashSet();
   protected boolean mIsForeground = true;
   protected ArkStateCenter.ArkStateInterface mStateInterface = null;
   
@@ -23,7 +23,7 @@ public class ArkStateCenter
   {
     if (paramArkViewModelBase == null)
     {
-      this.ENV.logE(TAG, "addArkView fail:arkViewModel is null");
+      Logger.logE(TAG, "addArkView fail:arkViewModel is null");
       return;
     }
     WeakReference localWeakReference = new WeakReference(paramArkViewModelBase);
@@ -38,7 +38,7 @@ public class ArkStateCenter
   public boolean isForeground()
   {
     if (!this.mIsForeground) {
-      this.ENV.logE(TAG, "state is in backGround");
+      Logger.logE(TAG, "state is in backGround");
     }
     return this.mIsForeground;
   }
@@ -47,35 +47,39 @@ public class ArkStateCenter
   {
     Set localSet = this.mArkViewModels;
     if (paramBoolean) {}
+    try
+    {
+      Logger.logE(TAG, "ark state change to foreground");
+      break label30;
+      Logger.logE(TAG, "ark state change to  background");
+      label30:
+      this.mIsForeground = paramBoolean;
+      Iterator localIterator = this.mArkViewModels.iterator();
+      while (localIterator.hasNext())
+      {
+        ArkViewModelBase localArkViewModelBase = (ArkViewModelBase)((WeakReference)localIterator.next()).get();
+        if (localArkViewModelBase != null)
+        {
+          localArkViewModelBase.setForeground(paramBoolean);
+        }
+        else
+        {
+          Logger.logE(TAG, "arkViewModel has release");
+          localIterator.remove();
+        }
+      }
+      return;
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        this.ENV.logE(TAG, "ark state change to foreground");
-        this.mIsForeground = paramBoolean;
-        Iterator localIterator = this.mArkViewModels.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        ArkViewModelBase localArkViewModelBase = (ArkViewModelBase)((WeakReference)localIterator.next()).get();
-        if (localArkViewModelBase == null) {
-          break label98;
-        }
-        localArkViewModelBase.setForeground(paramBoolean);
-        continue;
-        this.ENV.logE(TAG, "ark state change to  background");
-      }
-      finally {}
-      continue;
-      label98:
-      this.ENV.logE(TAG, "arkViewModel has release");
-      localObject.remove();
+      throw localObject;
     }
   }
   
   public void setStateInterface(ArkStateCenter.ArkStateInterface paramArkStateInterface)
   {
-    this.ENV.logE(TAG, String.format("setStateInterface %h", new Object[] { paramArkStateInterface }));
+    Logger.logE(TAG, String.format("setStateInterface %h", new Object[] { paramArkStateInterface }));
     this.mStateInterface = paramArkStateInterface;
   }
 }

@@ -1,8 +1,21 @@
 package com.huawei.agconnect.config.a;
 
-public abstract interface b
+import android.content.Context;
+import com.huawei.agconnect.config.LazyInputStream;
+import java.io.InputStream;
+
+final class b
+  extends LazyInputStream
 {
-  public abstract String a(String paramString1, String paramString2);
+  b(Context paramContext, InputStream paramInputStream)
+  {
+    super(paramContext);
+  }
+  
+  public InputStream get(Context paramContext)
+  {
+    return this.a;
+  }
 }
 
 

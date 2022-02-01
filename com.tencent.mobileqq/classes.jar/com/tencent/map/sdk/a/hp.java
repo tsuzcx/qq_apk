@@ -31,16 +31,16 @@ public final class hp
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof hp)) {
-        break;
-      }
+    }
+    if ((paramObject instanceof hp))
+    {
       paramObject = (hp)paramObject;
-    } while ((this.b == paramObject.b) && (this.a == paramObject.a));
-    return false;
+      if ((this.b == paramObject.b) && (this.a == paramObject.a)) {
+        return true;
+      }
+    }
     return false;
   }
   
@@ -60,7 +60,7 @@ public final class hp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.hp
  * JD-Core Version:    0.7.0.1
  */

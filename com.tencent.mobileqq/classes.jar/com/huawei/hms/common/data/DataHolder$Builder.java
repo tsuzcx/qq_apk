@@ -11,21 +11,21 @@ import java.util.Set;
 
 public class DataHolder$Builder
 {
-  private String[] a;
-  private final ArrayList<HashMap<String, Object>> b;
-  private final String c;
-  private final HashMap<Object, Integer> d;
+  private String[] builderColumns;
+  private final ArrayList<HashMap<String, Object>> dataCollectionList;
+  private final String type;
+  private final HashMap<Object, Integer> typeAndDataCollectionCountMapping;
   
   private DataHolder$Builder(String[] paramArrayOfString, String paramString)
   {
     Preconditions.checkNotNull(paramArrayOfString, "builderColumnsP cannot be null");
-    this.a = paramArrayOfString;
-    this.b = new ArrayList();
-    this.c = paramString;
-    this.d = new HashMap();
+    this.builderColumns = paramArrayOfString;
+    this.dataCollectionList = new ArrayList();
+    this.type = paramString;
+    this.typeAndDataCollectionCountMapping = new HashMap();
   }
   
-  DataHolder$Builder(String[] paramArrayOfString, String paramString, a parama)
+  DataHolder$Builder(String[] paramArrayOfString, String paramString, DataHolderBuilderCreator paramDataHolderBuilderCreator)
   {
     this(paramArrayOfString, null);
   }
@@ -42,28 +42,33 @@ public class DataHolder$Builder
   
   public Builder setDataForContentValuesHashMap(HashMap<String, Object> paramHashMap)
   {
-    int j = 0;
     Preconditions.checkNotNull(paramHashMap, "contentValuesHashMap cannot be null");
-    Object localObject;
-    if (this.c != null)
+    Object localObject = this.type;
+    int j = 0;
+    if (localObject != null)
     {
-      localObject = paramHashMap.get(this.c);
+      localObject = paramHashMap.get(localObject);
       if (localObject != null)
       {
-        Integer localInteger = (Integer)this.d.get(localObject);
-        if (localInteger != null) {
+        Integer localInteger = (Integer)this.typeAndDataCollectionCountMapping.get(localObject);
+        if (localInteger != null)
+        {
           j = localInteger.intValue();
+          i = 1;
+          break label85;
         }
+        this.typeAndDataCollectionCountMapping.put(localObject, Integer.valueOf(this.dataCollectionList.size()));
       }
     }
-    for (int i = 1; i != 0; i = 0)
+    int i = 0;
+    label85:
+    if (i != 0)
     {
-      this.b.remove(j);
-      this.b.add(j, paramHashMap);
+      this.dataCollectionList.remove(j);
+      this.dataCollectionList.add(j, paramHashMap);
       return this;
-      this.d.put(localObject, Integer.valueOf(this.b.size()));
     }
-    this.b.add(paramHashMap);
+    this.dataCollectionList.add(paramHashMap);
     return this;
   }
   
@@ -82,7 +87,7 @@ public class DataHolder$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.data.DataHolder.Builder
  * JD-Core Version:    0.7.0.1
  */

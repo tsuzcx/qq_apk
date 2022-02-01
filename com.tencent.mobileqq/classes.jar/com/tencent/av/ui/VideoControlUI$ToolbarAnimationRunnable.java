@@ -15,26 +15,28 @@ class VideoControlUI$ToolbarAnimationRunnable
       return;
     }
     VideoControlUI localVideoControlUI;
-    if (this.this$0.h) {
-      localVideoControlUI = this.this$0;
-    }
-    for (localVideoControlUI.y += 1;; localVideoControlUI.y -= 1)
+    if (this.this$0.h)
     {
-      if (this.this$0.y > 5) {
-        this.this$0.y = 5;
-      }
-      if (this.this$0.y < 0) {
-        this.this$0.y = 0;
-      }
-      this.this$0.a.a().postDelayed(this, VideoControlUI.a(this.this$0));
-      return;
       localVideoControlUI = this.this$0;
+      localVideoControlUI.y += 1;
     }
+    else
+    {
+      localVideoControlUI = this.this$0;
+      localVideoControlUI.y -= 1;
+    }
+    if (this.this$0.y > 5) {
+      this.this$0.y = 5;
+    }
+    if (this.this$0.y < 0) {
+      this.this$0.y = 0;
+    }
+    this.this$0.a.a().postDelayed(this, VideoControlUI.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.ToolbarAnimationRunnable
  * JD-Core Version:    0.7.0.1
  */

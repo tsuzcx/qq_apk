@@ -22,13 +22,14 @@ public final class qqstory_struct$FeedCommentAtVideoInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48 }, new String[] { "timezone_offset", "create_time", "union_id", "start_index", "length", "role" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, FeedCommentAtVideoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48 }, new String[] { "timezone_offset", "create_time", "union_id", "start_index", "length", "role" }, new Object[] { localInteger, Long.valueOf(0L), localByteStringMicro, localInteger, localInteger, localInteger }, FeedCommentAtVideoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentAtVideoInfo
  * JD-Core Version:    0.7.0.1
  */

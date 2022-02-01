@@ -31,15 +31,15 @@ public final class JSONMethodCodec
           }
         }
       }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Invalid envelope: ");
+      ((StringBuilder)localObject1).append(paramByteBuffer);
+      throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
     }
     catch (JSONException paramByteBuffer)
     {
       throw new IllegalArgumentException("Invalid JSON", paramByteBuffer);
     }
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("Invalid envelope: ");
-    ((StringBuilder)localObject1).append(paramByteBuffer);
-    throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
   }
   
   public MethodCall decodeMethodCall(ByteBuffer paramByteBuffer)
@@ -109,7 +109,7 @@ public final class JSONMethodCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.JSONMethodCodec
  * JD-Core Version:    0.7.0.1
  */

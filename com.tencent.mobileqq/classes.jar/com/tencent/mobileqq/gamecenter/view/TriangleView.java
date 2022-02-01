@@ -25,39 +25,42 @@ public class TriangleView
   public TriangleView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.TriangleView, 0, 0);
-    for (;;)
+    int[] arrayOfInt = R.styleable.TriangleView;
+    int i = 0;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, arrayOfInt, 0, 0);
+    try
     {
-      try
+      int j = paramContext.getIndexCount();
+      while (i < j)
       {
-        int j = paramContext.getIndexCount();
-        if (i < j)
-        {
-          int k = paramContext.getIndex(i);
-          if (k == 1) {
-            setColor(paramContext.getColor(k, -16777216));
-          } else if (k == 0) {
-            setAngle(paramContext.getFloat(k, 0.0F));
-          }
+        int k = paramContext.getIndex(i);
+        if (k == 1) {
+          setColor(paramContext.getColor(k, -16777216));
+        } else if (k == 0) {
+          setAngle(paramContext.getFloat(k, 0.0F));
         }
-      }
-      finally
-      {
-        paramContext.recycle();
+        i += 1;
       }
       paramContext.recycle();
       return;
-      i += 1;
+    }
+    finally
+    {
+      paramContext.recycle();
+    }
+    for (;;)
+    {
+      throw paramAttributeSet;
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     paramCanvas.rotate(this.jdField_a_of_type_Float);
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt3 = paramInt1 / 2;
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
@@ -79,7 +82,7 @@ public class TriangleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.TriangleView
  * JD-Core Version:    0.7.0.1
  */

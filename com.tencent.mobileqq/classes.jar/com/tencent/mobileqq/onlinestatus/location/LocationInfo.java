@@ -35,54 +35,58 @@ public class LocationInfo
   
   public static boolean a(LocationInfo paramLocationInfo, double paramDouble1, double paramDouble2, String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1;
+    boolean bool = true;
     if (paramLocationInfo == null) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramString == null) {
+      return false;
+    }
+    if (!paramString.equals(paramLocationInfo.jdField_c_of_type_JavaLangString)) {
+      return true;
+    }
+    if (Math.abs(paramDouble1) >= 0.0001D)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool2;
-          } while (paramString == null);
-          if (!paramString.equals(paramLocationInfo.jdField_c_of_type_JavaLangString)) {
-            return true;
-          }
-          bool1 = bool2;
-        } while (Math.abs(paramDouble1) < 0.0001D);
-        bool1 = bool2;
-      } while (Math.abs(paramDouble2) < 0.0001D);
-      if (Math.abs(paramLocationInfo.jdField_a_of_type_Double - paramDouble1) > 0.001D) {
-        break;
+      if (Math.abs(paramDouble2) < 0.0001D) {
+        return false;
       }
-      bool1 = bool2;
-    } while (Math.abs(paramLocationInfo.jdField_b_of_type_Double - paramDouble2) <= 0.001D);
-    return true;
+      if (Math.abs(paramLocationInfo.jdField_a_of_type_Double - paramDouble1) <= 0.001D)
+      {
+        if (Math.abs(paramLocationInfo.jdField_b_of_type_Double - paramDouble2) > 0.001D) {
+          return true;
+        }
+        bool = false;
+      }
+      return bool;
+    }
+    return false;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("mLatitude:").append(this.jdField_a_of_type_Double);
-    localStringBuilder.append(" mLongitude:").append(this.jdField_b_of_type_Double);
-    localStringBuilder.append(" mDirection:").append(this.jdField_c_of_type_Double);
-    localStringBuilder.append(" mPoiName:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" mPoiAddr:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" adCode:").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(" mUpdateTime:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" mValidFlag:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("mLatitude:");
+    localStringBuilder.append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(" mLongitude:");
+    localStringBuilder.append(this.jdField_b_of_type_Double);
+    localStringBuilder.append(" mDirection:");
+    localStringBuilder.append(this.jdField_c_of_type_Double);
+    localStringBuilder.append(" mPoiName:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mPoiAddr:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" adCode:");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" mUpdateTime:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" mValidFlag:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.location.LocationInfo
  * JD-Core Version:    0.7.0.1
  */

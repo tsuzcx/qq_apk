@@ -28,7 +28,11 @@ public class MediaInfo
   
   public MediaInfo(String paramString)
   {
-    this.tag = (paramString + "_" + "MediaInfo.java");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append("MediaInfo.java");
+    this.tag = localStringBuilder.toString();
   }
   
   public static MediaInfo obtainMediaInfoFromString(String paramString1, String paramString2)
@@ -253,7 +257,7 @@ public class MediaInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.player.MediaInfo
  * JD-Core Version:    0.7.0.1
  */

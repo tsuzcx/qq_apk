@@ -21,13 +21,17 @@ public class SearchFEHotwordItems
       String str = new Gson().toJson(this.items);
       return str;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label17:
+      break label17;
+    }
     return "[]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchFEHotwordItems
  * JD-Core Version:    0.7.0.1
  */

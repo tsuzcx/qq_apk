@@ -19,56 +19,66 @@ class BirthdayActivatePage$1
   
   public void onClick(View paramView)
   {
-    Object localObject2;
-    long[] arrayOfLong;
-    Object localObject1;
     if ((BirthdayActivatePage.a(this.a) != null) && (BirthdayActivatePage.a(this.a).get() != null))
     {
-      localObject2 = QzoneConfig.getInstance().getConfig("H5Url", "SendBirthdayGift", "https://h5.qzone.qq.com/giftv2/detail?_wv=131075&_fv=0&_wwv=128&uin={uin}&clicktime={clicktime}&friends={uin_uin}&_proxy=1");
-      arrayOfLong = this.a.a.a();
+      Object localObject2 = QzoneConfig.getInstance().getConfig("H5Url", "SendBirthdayGift", "https://h5.qzone.qq.com/giftv2/detail?_wv=131075&_fv=0&_wwv=128&uin={uin}&clicktime={clicktime}&friends={uin_uin}&_proxy=1");
+      long[] arrayOfLong = this.a.a.a();
       String[] arrayOfString = this.a.a.a();
-      if (arrayOfLong.length <= 0) {
-        break label378;
-      }
-      localObject1 = "";
-      int i = 0;
-      while (i < arrayOfLong.length)
+      Object localObject1 = localObject2;
+      if (arrayOfLong.length > 0)
       {
-        localObject1 = (String)localObject1 + arrayOfLong[i];
-        localObject1 = (String)localObject1 + "_";
-        String str = (String)localObject1 + arrayOfString[i];
-        int j = i + 1;
-        i = j;
-        localObject1 = str;
-        if (j < arrayOfLong.length)
+        int i = 0;
+        localObject1 = "";
+        while (i < arrayOfLong.length)
         {
-          localObject1 = str + "|";
+          Object localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append(arrayOfLong[i]);
+          localObject1 = ((StringBuilder)localObject3).toString();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append("_");
+          localObject1 = ((StringBuilder)localObject3).toString();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append(arrayOfString[i]);
+          localObject3 = ((StringBuilder)localObject3).toString();
+          int j = i + 1;
           i = j;
+          localObject1 = localObject3;
+          if (j < arrayOfLong.length)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append((String)localObject3);
+            ((StringBuilder)localObject1).append("|");
+            localObject1 = ((StringBuilder)localObject1).toString();
+            i = j;
+          }
         }
+        localObject1 = ((String)localObject2).replace("{uin_uin}", Uri.encode((String)localObject1)).replace("{clicktime}", String.valueOf(System.currentTimeMillis()));
+        localObject2 = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
+        ((Intent)localObject2).putExtra("url", (String)localObject1);
+        ((Intent)localObject2).putExtra("injectrecommend", true);
+        ((Intent)localObject2).setData(Uri.parse((String)localObject1));
+        ((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).startActivityForResult((Intent)localObject2, 1000);
+        ReportController.b(((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E08", "0X8004E08", 0, 0, String.valueOf(arrayOfLong.length), "", "", "");
       }
-      localObject1 = ((String)localObject2).replace("{uin_uin}", Uri.encode((String)localObject1)).replace("{clicktime}", String.valueOf(System.currentTimeMillis()));
-      localObject2 = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      ((Intent)localObject2).putExtra("injectrecommend", true);
-      ((Intent)localObject2).setData(Uri.parse((String)localObject1));
-      ((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).startActivityForResult((Intent)localObject2, 1000);
-      ReportController.b(((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E08", "0X8004E08", 0, 0, String.valueOf(arrayOfLong.length), "", "", "");
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BirthdayActivatePage", 2, "friends length=" + arrayOfLong.length + " url = " + (String)localObject1);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("friends length=");
+        ((StringBuilder)localObject2).append(arrayOfLong.length);
+        ((StringBuilder)localObject2).append(" url = ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("BirthdayActivatePage", 2, ((StringBuilder)localObject2).toString());
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label378:
-      localObject1 = localObject2;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage.1
  * JD-Core Version:    0.7.0.1
  */

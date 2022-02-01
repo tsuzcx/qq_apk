@@ -16,8 +16,8 @@ public class OrderMediaMsgTimerController
   private OrderMediaMsgTimerController.IMsgTimeoutListener jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgTimerController$IMsgTimeoutListener;
   private Runnable jdField_a_of_type_JavaLangRunnable;
   private HashMap<Long, Runnable> jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean;
-  private Handler b = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private Handler jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private Runnable jdField_b_of_type_JavaLangRunnable;
   
   public OrderMediaMsgTimerController(OrderMediaMsgTimerController.IMsgTimeoutListener paramIMsgTimeoutListener)
   {
@@ -40,19 +40,22 @@ public class OrderMediaMsgTimerController
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_Boolean = false;
+      localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_JavaLangRunnable = null;
     }
   }
   
   public void a(long paramLong)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong))))
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    if ((localObject != null) && (((HashMap)localObject).containsKey(Long.valueOf(paramLong))))
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
+      localObject = this.jdField_a_of_type_AndroidOsHandler;
+      if (localObject != null) {
+        ((Handler)localObject).removeCallbacks((Runnable)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
       }
       this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
     }
@@ -73,83 +76,125 @@ public class OrderMediaMsgTimerController
   
   public void a(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramRunnable);
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null) {
+      localHandler.removeCallbacks(paramRunnable);
     }
   }
   
   public boolean a(long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
       return false;
     }
     this.jdField_a_of_type_JavaLangRunnable = new OrderMediaMsgTimerController.3(this, paramLong);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-    this.jdField_a_of_type_Boolean = true;
     return true;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext())
+      localHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+      this.jdField_b_of_type_JavaLangRunnable = null;
+    }
+  }
+  
+  public boolean b(long paramLong)
+  {
+    if (this.jdField_b_of_type_JavaLangRunnable != null) {
+      return false;
+    }
+    this.jdField_b_of_type_JavaLangRunnable = new OrderMediaMsgTimerController.5(this, paramLong);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 30000L);
+    return true;
+  }
+  
+  public void c()
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localObject != null)
+    {
+      localObject = ((HashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Runnable localRunnable = (Runnable)localIterator.next();
-        if (this.jdField_a_of_type_AndroidOsHandler != null) {
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localRunnable);
+        Runnable localRunnable = (Runnable)((Iterator)localObject).next();
+        Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+        if (localHandler != null) {
+          localHandler.removeCallbacks(localRunnable);
         }
       }
       this.jdField_a_of_type_JavaUtilHashMap.clear();
       this.jdField_a_of_type_JavaUtilHashMap = null;
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      ((Handler)localObject).removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
-    if (this.b != null)
+    localObject = this.jdField_b_of_type_AndroidOsHandler;
+    if (localObject != null)
     {
-      this.b.removeCallbacksAndMessages(null);
-      this.b = null;
+      ((Handler)localObject).removeCallbacksAndMessages(null);
+      this.jdField_b_of_type_AndroidOsHandler = null;
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
+    int i = paramMessage.what;
     long l = 0L;
-    switch (paramMessage.what)
+    OrderMediaMsgTimerController.IMsgTimeoutListener localIMsgTimeoutListener;
+    switch (i)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMessage.obj != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgTimerController$IMsgTimeoutListener != null))
+    default: 
+      break;
+    case 103: 
+      if (paramMessage.obj != null) {
+        l = ((Long)paramMessage.obj).longValue();
+      }
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgTimerController$IMsgTimeoutListener;
+      if (paramMessage != null) {
+        paramMessage.b(l);
+      }
+      break;
+    case 102: 
+      if (paramMessage.obj != null) {
+        l = ((Long)paramMessage.obj).longValue();
+      }
+      localIMsgTimeoutListener = this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgTimerController$IMsgTimeoutListener;
+      if (localIMsgTimeoutListener != null) {
+        localIMsgTimeoutListener.a(l, paramMessage.arg1, paramMessage.arg2);
+      }
+      break;
+    case 101: 
+      if (paramMessage.obj != null) {
+        l = ((Long)paramMessage.obj).longValue();
+      }
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgTimerController$IMsgTimeoutListener;
+      if (paramMessage != null) {
+        paramMessage.a(l);
+      }
+      break;
+    case 100: 
+      if (paramMessage.obj != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgTimerController$IMsgTimeoutListener.a(paramMessage.obj);
-        continue;
-        if (paramMessage.obj != null) {
-          l = ((Long)paramMessage.obj).longValue();
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgTimerController$IMsgTimeoutListener != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgTimerController$IMsgTimeoutListener.a(l);
-          continue;
-          if (paramMessage.obj != null) {
-            l = ((Long)paramMessage.obj).longValue();
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgTimerController$IMsgTimeoutListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgTimerController$IMsgTimeoutListener.a(l, paramMessage.arg1, paramMessage.arg2);
-          }
+        localIMsgTimeoutListener = this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgTimerController$IMsgTimeoutListener;
+        if (localIMsgTimeoutListener != null) {
+          localIMsgTimeoutListener.a(paramMessage.obj);
         }
       }
+      break;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgTimerController
  * JD-Core Version:    0.7.0.1
  */

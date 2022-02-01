@@ -34,60 +34,57 @@ public class BaseSystemActivity
   
   private static int a(long paramLong)
   {
-    int i = -1;
-    int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
-    int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
-    if (k == j) {
-      i = 2131719984;
+    long l = System.currentTimeMillis();
+    int j = jdField_a_of_type_Int;
+    int i = (int)((l + j) / 86400000L);
+    j = (int)((paramLong + j) / 86400000L);
+    if (j == i) {
+      return 2131719716;
     }
-    do
-    {
-      return i;
-      if (k == j - 1) {
-        return 2131720766;
-      }
-    } while (k != j - 2);
-    return 2131690703;
+    if (j == i - 1) {
+      return 2131720491;
+    }
+    if (j == i - 2) {
+      return 2131690631;
+    }
+    return -1;
   }
   
   public static String a(long paramLong, boolean paramBoolean)
   {
+    StringBuffer localStringBuffer = jdField_a_of_type_JavaLangStringBuffer;
     int i = 0;
-    jdField_a_of_type_JavaLangStringBuffer.setLength(0);
+    localStringBuffer.setLength(0);
     jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
     int k = a(paramLong);
     if (k != -1)
     {
-      if (k != 2131719984) {
+      if (k != 2131719716) {
         jdField_a_of_type_JavaLangStringBuffer.append(BaseApplication.getContext().getString(k));
       }
       i = 1;
     }
     int m = jdField_a_of_type_JavaUtilCalendar.get(11);
     int j = jdField_a_of_type_JavaUtilCalendar.get(12);
-    if (i != 0) {
-      if (k == 2131719984) {
-        if (m == 24)
-        {
-          i = 24;
-          if (i < 10) {
-            jdField_a_of_type_JavaLangStringBuffer.append('0');
-          }
-          jdField_a_of_type_JavaLangStringBuffer.append(i);
-          jdField_a_of_type_JavaLangStringBuffer.append(':');
-          if (j < 10) {
-            jdField_a_of_type_JavaLangStringBuffer.append('0');
-          }
-          jdField_a_of_type_JavaLangStringBuffer.append(j);
-        }
-      }
-    }
-    for (;;)
+    if (i != 0)
     {
-      return jdField_a_of_type_JavaLangStringBuffer.toString();
-      i = m % 24;
-      break;
-      if (!paramBoolean)
+      if (k == 2131719716)
+      {
+        i = 24;
+        if (m != 24) {
+          i = m % 24;
+        }
+        if (i < 10) {
+          jdField_a_of_type_JavaLangStringBuffer.append('0');
+        }
+        jdField_a_of_type_JavaLangStringBuffer.append(i);
+        jdField_a_of_type_JavaLangStringBuffer.append(':');
+        if (j < 10) {
+          jdField_a_of_type_JavaLangStringBuffer.append('0');
+        }
+        jdField_a_of_type_JavaLangStringBuffer.append(j);
+      }
+      else if (!paramBoolean)
       {
         jdField_a_of_type_JavaLangStringBuffer.append(' ');
         if (m < 10) {
@@ -99,41 +96,53 @@ public class BaseSystemActivity
           jdField_a_of_type_JavaLangStringBuffer.append('0');
         }
         jdField_a_of_type_JavaLangStringBuffer.append(j);
-        continue;
-        jdField_a_of_type_JavaLangStringBuffer.append(jdField_a_of_type_JavaUtilCalendar.get(1)).append('/').append(jdField_a_of_type_JavaUtilCalendar.get(2) + 1).append('/').append(jdField_a_of_type_JavaUtilCalendar.get(5));
-        if (!paramBoolean)
-        {
-          jdField_a_of_type_JavaLangStringBuffer.append(' ');
-          jdField_a_of_type_JavaLangStringBuffer.append(m);
-          jdField_a_of_type_JavaLangStringBuffer.append(':');
-          if (j < 10) {
-            jdField_a_of_type_JavaLangStringBuffer.append('0');
-          }
-          jdField_a_of_type_JavaLangStringBuffer.append(j);
-        }
       }
     }
+    else
+    {
+      localStringBuffer = jdField_a_of_type_JavaLangStringBuffer;
+      localStringBuffer.append(jdField_a_of_type_JavaUtilCalendar.get(1));
+      localStringBuffer.append('/');
+      localStringBuffer.append(jdField_a_of_type_JavaUtilCalendar.get(2) + 1);
+      localStringBuffer.append('/');
+      localStringBuffer.append(jdField_a_of_type_JavaUtilCalendar.get(5));
+      if (!paramBoolean)
+      {
+        jdField_a_of_type_JavaLangStringBuffer.append(' ');
+        jdField_a_of_type_JavaLangStringBuffer.append(m);
+        jdField_a_of_type_JavaLangStringBuffer.append(':');
+        if (j < 10) {
+          jdField_a_of_type_JavaLangStringBuffer.append('0');
+        }
+        jdField_a_of_type_JavaLangStringBuffer.append(j);
+      }
+    }
+    return jdField_a_of_type_JavaLangStringBuffer.toString();
   }
   
   private void c()
   {
-    super.setContentView(2131561663);
-    setContentBackgroundResource(2130838979);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131378809));
+    super.setContentView(2131561513);
+    setContentBackgroundResource(2130838739);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131378198));
     this.jdField_a_of_type_JavaLangString = a();
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      throw new Exception("peerUin is null");
-    }
-    this.jdField_a_of_type_AndroidWidgetCursorAdapter = a();
-    if (this.jdField_a_of_type_AndroidWidgetCursorAdapter == null) {
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetCursorAdapter = a();
+      CursorAdapter localCursorAdapter = this.jdField_a_of_type_AndroidWidgetCursorAdapter;
+      if (localCursorAdapter != null)
+      {
+        this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(localCursorAdapter);
+        this.jdField_a_of_type_ComTencentWidgetXListView.setTranscriptMode(1);
+        this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
+        this.app.getMessageFacade().addObserver(this);
+        setTitle(a());
+        jdField_a_of_type_Int = TimeZone.getDefault().getRawOffset();
+        return;
+      }
       throw new Exception("mAdapter is null");
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_AndroidWidgetCursorAdapter);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setTranscriptMode(1);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
-    this.app.getMessageFacade().addObserver(this);
-    setTitle(a());
-    jdField_a_of_type_Int = TimeZone.getDefault().getRawOffset();
+    throw new Exception("peerUin is null");
   }
   
   protected long a(long paramLong)
@@ -168,9 +177,10 @@ public class BaseSystemActivity
   
   protected void a(Cursor paramCursor)
   {
-    Object localObject1 = null;
     this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (paramCursor.moveToFirst()) {
+    if (paramCursor.moveToFirst())
+    {
+      Object localObject1 = null;
       do
       {
         long l1 = paramCursor.getLong(paramCursor.getColumnIndex("uniseq"));
@@ -211,7 +221,7 @@ public class BaseSystemActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     try
@@ -225,24 +235,25 @@ public class BaseSystemActivity
     }
   }
   
-  public View onCreateRightView()
+  protected View onCreateRightView()
   {
     super.onCreateRightView();
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130851071, 0, 0, 0);
+    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130851011, 0, 0, 0);
     return this.rightViewText;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     this.app.getMessageFacade().deleteObserver(this);
-    if (this.jdField_a_of_type_AndroidWidgetCursorAdapter != null) {
-      this.jdField_a_of_type_AndroidWidgetCursorAdapter.changeCursor(null);
+    CursorAdapter localCursorAdapter = this.jdField_a_of_type_AndroidWidgetCursorAdapter;
+    if (localCursorAdapter != null) {
+      localCursorAdapter.changeCursor(null);
     }
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     this.jdField_a_of_type_AndroidWidgetCursorAdapter.changeCursor(a());
@@ -255,7 +266,7 @@ public class BaseSystemActivity
       paramObservable = (MessageRecord)paramObject;
       if ((this.jdField_a_of_type_JavaLangString.equals(paramObservable.frienduin)) && (paramObservable.istroop == 0))
       {
-        this.app.getMessageFacade().c(this.jdField_a_of_type_JavaLangString, 0);
+        this.app.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, 0);
         runOnUiThread(new BaseSystemActivity.1(this));
       }
       if (!paramObservable.isSendFromLocal()) {
@@ -266,7 +277,7 @@ public class BaseSystemActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseSystemActivity
  * JD-Core Version:    0.7.0.1
  */

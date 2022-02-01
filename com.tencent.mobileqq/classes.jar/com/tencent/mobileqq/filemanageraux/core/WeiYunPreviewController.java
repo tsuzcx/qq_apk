@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.filemanageraux.core;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.filemanager.api.IQQFileEngine;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.core.FilePreViewControllerBase;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class WeiYunPreviewController
   extends FilePreViewControllerBase
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = null;
   String jdField_a_of_type_JavaLangString;
   String b;
   
-  public WeiYunPreviewController(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public WeiYunPreviewController(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
     b();
@@ -30,25 +31,25 @@ public class WeiYunPreviewController
   public void a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
     }
   }
   
   public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().c(this.jdField_a_of_type_JavaLangString, this.b);
+    ((IQQFileEngine)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQFileEngine.class, "")).getWeiYunPreview(this.jdField_a_of_type_JavaLangString, this.b);
     return true;
   }
   
   public void b()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new WeiYunPreviewController.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunPreviewController
  * JD-Core Version:    0.7.0.1
  */

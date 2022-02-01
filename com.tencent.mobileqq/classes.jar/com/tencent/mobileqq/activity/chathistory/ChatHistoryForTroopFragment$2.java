@@ -17,17 +17,18 @@ class ChatHistoryForTroopFragment$2
         QLog.i("chatHistory.troop.portal", 2, "get the first media data");
       }
     }
-    do
+    else
     {
-      return;
       this.a.a = null;
-    } while (!QLog.isColorLevel());
-    QLog.i("chatHistory.troop.portal", 2, "no media data found");
+      if (QLog.isColorLevel()) {
+        QLog.i("chatHistory.troop.portal", 2, "no media data found");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment.2
  * JD-Core Version:    0.7.0.1
  */

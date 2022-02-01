@@ -32,14 +32,15 @@ public final class VideoLayerUserActionInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.actions != null) {
-      paramJceOutputStream.write(this.actions, 0);
+    Map localMap = this.actions;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COMM.VideoLayerUserActionInfo
  * JD-Core Version:    0.7.0.1
  */

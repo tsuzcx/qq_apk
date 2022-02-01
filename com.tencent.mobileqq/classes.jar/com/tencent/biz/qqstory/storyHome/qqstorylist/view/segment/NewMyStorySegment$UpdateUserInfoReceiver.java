@@ -17,13 +17,14 @@ public class NewMyStorySegment$UpdateUserInfoReceiver
   
   public void a(@NonNull NewMyStorySegment paramNewMyStorySegment, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent == null) || (paramUpdateUserInfoEvent.a == null) || (TextUtils.isEmpty(paramUpdateUserInfoEvent.a.headUrl))) {
-      SLog.c(this.TAG, "GetUserInfoHandler return headUrl is null!", new IllegalStateException());
-    }
-    while (!paramUpdateUserInfoEvent.a.isMe()) {
+    if ((paramUpdateUserInfoEvent != null) && (paramUpdateUserInfoEvent.a != null) && (!TextUtils.isEmpty(paramUpdateUserInfoEvent.a.headUrl)))
+    {
+      if (paramUpdateUserInfoEvent.a.isMe()) {
+        NewMyStorySegment.b(paramNewMyStorySegment);
+      }
       return;
     }
-    NewMyStorySegment.b(paramNewMyStorySegment);
+    SLog.c(this.TAG, "GetUserInfoHandler return headUrl is null!", new IllegalStateException());
   }
   
   public Class acceptEventClass()
@@ -33,7 +34,7 @@ public class NewMyStorySegment$UpdateUserInfoReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.UpdateUserInfoReceiver
  * JD-Core Version:    0.7.0.1
  */

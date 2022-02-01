@@ -6,13 +6,13 @@ import android.view.View;
 import com.tencent.falco.utils.NetworkUtil;
 import com.tencent.ilive.litepages.room.webmodule.jsmodule.JsBizAdapter;
 import com.tencent.okweb.framework.core.manager.OkWebManager;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtX5WebView;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebSettings.PluginState;
-import com.tencent.smtt.sdk.WebView;
 import java.io.File;
 
 public class LiteWebView
-  extends WebView
+  extends DtX5WebView
 {
   private Context mContext;
   private JsBizAdapter mJsBizAdapter;
@@ -71,14 +71,23 @@ public class LiteWebView
     {
       String str2 = Build.VERSION.RELEASE;
       int j = NetworkUtil.getNetworkType(this.mContext);
-      localWebSettings.setUserAgentString(str1 + " NowLive/" + i + "_" + str2 + " NetType/" + j + " NowSDK/18_10.20");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" NowLive/");
+      localStringBuilder.append(i);
+      localStringBuilder.append("_");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" NetType/");
+      localStringBuilder.append(j);
+      localStringBuilder.append(" NowSDK/18_10.20");
+      localWebSettings.setUserAgentString(localStringBuilder.toString());
     }
     localWebSettings.setMixedContentMode(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.webmodule.LiteWebView
  * JD-Core Version:    0.7.0.1
  */

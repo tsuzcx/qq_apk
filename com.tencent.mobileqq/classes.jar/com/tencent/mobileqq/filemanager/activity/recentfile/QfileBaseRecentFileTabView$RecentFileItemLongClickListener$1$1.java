@@ -2,9 +2,9 @@ package com.tencent.mobileqq.filemanager.activity.recentfile;
 
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.filemanager.api.IQQFileDataCenter;
+import com.tencent.mobileqq.filemanager.api.IQQFileEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
@@ -16,13 +16,13 @@ class QfileBaseRecentFileTabView$RecentFileItemLongClickListener$1$1
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (QfileBaseRecentFileTabView.o(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$RecentFileItemLongClickListener$1.a.a).getFileManagerEngine().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId)) {}
+    ((IQQFileEngine)QfileBaseRecentFileTabView.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$RecentFileItemLongClickListener$1.a.a).getRuntimeService(IQQFileEngine.class)).delete(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$RecentFileItemLongClickListener$1.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid)) && (3000 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType)) {
-      QfileBaseRecentFileTabView.p(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$RecentFileItemLongClickListener$1.a.a).getFileManagerEngine().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend);
+      ((IQQFileEngine)QfileBaseRecentFileTabView.g(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$RecentFileItemLongClickListener$1.a.a).getRuntimeService(IQQFileEngine.class)).deleteOfflineFile(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend);
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM = true;
-    QfileBaseRecentFileTabView.q(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$RecentFileItemLongClickListener$1.a.a).getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    ((IQQFileDataCenter)QfileBaseRecentFileTabView.h(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$RecentFileItemLongClickListener$1.a.a).getRuntimeService(IQQFileDataCenter.class, "")).updateFileEntity(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$RecentFileItemLongClickListener$1.a.a.g();
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
@@ -31,7 +31,7 @@ class QfileBaseRecentFileTabView$RecentFileItemLongClickListener$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.RecentFileItemLongClickListener.1.1
  * JD-Core Version:    0.7.0.1
  */

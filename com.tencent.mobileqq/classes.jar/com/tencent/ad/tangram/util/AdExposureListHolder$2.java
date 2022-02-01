@@ -17,14 +17,18 @@ class AdExposureListHolder$2
     synchronized (AdExposureListHolder.access$100(this.this$0))
     {
       Iterator localIterator = AdExposureListHolder.access$200(this.this$0).iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         localJSONArray.put((String)localIterator.next());
       }
+      synchronized (AdExposureListHolder.access$300(this.this$0))
+      {
+        b.write(AdExposureListHolder.access$000(this.this$0, this.val$context, AdProcessManager.INSTANCE.getCurrentProcessName(this.val$context)), localJSONArray.toString());
+        return;
+      }
     }
-    synchronized (AdExposureListHolder.access$300(this.this$0))
+    for (;;)
     {
-      b.write(AdExposureListHolder.access$000(this.this$0, this.val$context, AdProcessManager.INSTANCE.getCurrentProcessName(this.val$context)), localObject1.toString());
-      return;
+      throw localObject2;
     }
   }
 }

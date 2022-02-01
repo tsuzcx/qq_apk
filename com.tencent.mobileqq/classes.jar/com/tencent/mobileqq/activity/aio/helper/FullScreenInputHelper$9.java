@@ -13,7 +13,7 @@ class FullScreenInputHelper$9
   
   public void onGlobalLayout()
   {
-    if ((FullScreenInputHelper.a(this.a).a.getLineCount() > 3) && (FullScreenInputHelper.a(this.a).f()) && (FullScreenInputHelper.a(this.a).A()) && (!SimpleUIUtil.a()))
+    if ((FullScreenInputHelper.a(this.a).a.getLineCount() > 3) && (FullScreenInputHelper.a(this.a)) && (this.a.a()) && (!SimpleUIUtil.a()))
     {
       this.a.a.setVisibility(0);
       return;
@@ -23,7 +23,7 @@ class FullScreenInputHelper$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.9
  * JD-Core Version:    0.7.0.1
  */

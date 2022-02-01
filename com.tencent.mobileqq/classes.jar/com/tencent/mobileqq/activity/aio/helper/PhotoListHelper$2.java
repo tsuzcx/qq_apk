@@ -9,14 +9,15 @@ class PhotoListHelper$2
   
   public void run()
   {
-    if (this.a != null) {
-      this.a.a = false;
+    PhotoListPanel localPhotoListPanel = this.a;
+    if (localPhotoListPanel != null) {
+      localPhotoListPanel.a = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PhotoListHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,7 @@ import com.tencent.ilive.litepages.room.webmodule.jsmodule.JsBizAdapter;
 import com.tencent.ilive.litepages.room.webmodule.jsmodule.JsBizAdapter.ValueCallback;
 import com.tencent.ilive.litepages.room.webmodule.model.RoomExtInfo;
 import com.tencent.livesdk.roomengine.RoomEngine;
+import com.tencent.mobileqq.litelivesdk.framework.room.RecordVideoStateManager;
 import org.json.JSONObject;
 
 class CustomWebModule$2
@@ -19,13 +20,26 @@ class CustomWebModule$2
   
   public void callJsFunctionByNative(String paramString, JSONObject paramJSONObject, JsBizAdapter.ValueCallback paramValueCallback)
   {
-    if (paramJSONObject != null) {}
-    for (paramString = "javascript:(" + paramString + "(" + paramJSONObject.toString() + "))";; paramString = "javascript:" + paramString + "()")
+    if (paramJSONObject != null)
     {
-      if (this.a.a != null) {
-        this.a.a.evaluateJavascript(paramString, new CustomWebModule.2.1(this, paramValueCallback));
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("javascript:(");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("(");
+      localStringBuilder.append(paramJSONObject.toString());
+      localStringBuilder.append("))");
+      paramString = localStringBuilder.toString();
+    }
+    else
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("javascript:");
+      paramJSONObject.append(paramString);
+      paramJSONObject.append("()");
+      paramString = paramJSONObject.toString();
+    }
+    if (this.a.a != null) {
+      this.a.a.evaluateJavascript(paramString, new CustomWebModule.2.1(this, paramValueCallback));
     }
   }
   
@@ -62,6 +76,7 @@ class CustomWebModule$2
   public void onPlayerPause()
   {
     CustomWebModule.a(this.a, true);
+    RecordVideoStateManager.a().a(true);
   }
   
   public void onPlayerResume()
@@ -76,7 +91,7 @@ class CustomWebModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.CustomWebModule.2
  * JD-Core Version:    0.7.0.1
  */

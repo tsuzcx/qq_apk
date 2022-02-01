@@ -17,24 +17,25 @@ class BirthdayActivatePageArkView$1
   
   public void onLoadState(int paramInt)
   {
-    if (paramInt == 1) {
+    if (paramInt == 1)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  SUCCESS");
       }
     }
-    while (paramInt != -1) {
-      return;
+    else if (paramInt == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  failed");
+      }
+      this.a.a(false);
+      BirthdayActivatePageArkView.a(this.a).setText(HardCodeUtil.a(2131701369));
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  failed");
-    }
-    this.a.a(false);
-    BirthdayActivatePageArkView.a(this.a).setText(HardCodeUtil.a(2131701228));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView.1
  * JD-Core Version:    0.7.0.1
  */

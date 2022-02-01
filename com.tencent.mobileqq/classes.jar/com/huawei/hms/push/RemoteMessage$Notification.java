@@ -11,36 +11,36 @@ import java.text.ParseException;
 public class RemoteMessage$Notification
   implements Serializable
 {
-  private final long[] A;
-  private final String B;
-  private final String a;
-  private final String b;
-  private final String[] c;
-  private final String d;
-  private final String e;
-  private final String[] f;
-  private final String g;
-  private final String h;
-  private final String i;
-  private final String j;
-  private final String k;
-  private final String l;
-  private final String m;
-  private final Uri n;
-  private final int o;
-  private final String p;
-  private final int q;
-  private final int r;
-  private final int s;
-  private final int[] t;
-  private final String u;
-  private final int v;
-  private final String w;
-  private final int x;
-  private final String y;
-  private final String z;
+  public final long[] A;
+  public final String B;
+  public final String a;
+  public final String b;
+  public final String[] c;
+  public final String d;
+  public final String e;
+  public final String[] f;
+  public final String g;
+  public final String h;
+  public final String i;
+  public final String j;
+  public final String k;
+  public final String l;
+  public final String m;
+  public final Uri n;
+  public final int o;
+  public final String p;
+  public final int q;
+  public final int r;
+  public final int s;
+  public final int[] t;
+  public final String u;
+  public final int v;
+  public final String w;
+  public final int x;
+  public final String y;
+  public final String z;
   
-  private RemoteMessage$Notification(Bundle paramBundle)
+  public RemoteMessage$Notification(Bundle paramBundle)
   {
     this.a = paramBundle.getString("notifyTitle");
     this.d = paramBundle.getString("content");
@@ -57,40 +57,46 @@ public class RemoteMessage$Notification
     this.l = paramBundle.getString("intentUri");
     this.o = paramBundle.getInt("notifyId");
     Object localObject = paramBundle.getString("url");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-    for (localObject = Uri.parse((String)localObject);; localObject = null)
-    {
-      this.n = ((Uri)localObject);
-      this.p = paramBundle.getString("notifyIcon");
-      this.q = paramBundle.getInt("defaultLightSettings");
-      this.r = paramBundle.getInt("defaultSound");
-      this.s = paramBundle.getInt("defaultVibrateTimings");
-      this.t = paramBundle.getIntArray("lightSettings");
-      this.u = paramBundle.getString("when");
-      this.v = paramBundle.getInt("localOnly");
-      this.w = paramBundle.getString("badgeSetNum", null);
-      this.x = paramBundle.getInt("autoCancel");
-      this.y = paramBundle.getString("priority", null);
-      this.z = paramBundle.getString("ticker");
-      this.A = paramBundle.getLongArray("vibrateTimings");
-      this.B = paramBundle.getString("visibility", null);
-      return;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      localObject = Uri.parse((String)localObject);
+    } else {
+      localObject = null;
     }
+    this.n = ((Uri)localObject);
+    this.p = paramBundle.getString("notifyIcon");
+    this.q = paramBundle.getInt("defaultLightSettings");
+    this.r = paramBundle.getInt("defaultSound");
+    this.s = paramBundle.getInt("defaultVibrateTimings");
+    this.t = paramBundle.getIntArray("lightSettings");
+    this.u = paramBundle.getString("when");
+    this.v = paramBundle.getInt("localOnly");
+    this.w = paramBundle.getString("badgeSetNum", null);
+    this.x = paramBundle.getInt("autoCancel");
+    this.y = paramBundle.getString("priority", null);
+    this.z = paramBundle.getString("ticker");
+    this.A = paramBundle.getLongArray("vibrateTimings");
+    this.B = paramBundle.getString("visibility", null);
   }
   
-  private Integer a(String paramString)
+  public final Integer a(String paramString)
   {
-    Integer localInteger = null;
     if (paramString != null) {}
     try
     {
-      localInteger = Integer.valueOf(paramString);
-      return localInteger;
+      localObject = Integer.valueOf(paramString);
+      return localObject;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      HMSLog.w("RemoteMessage", "NumberFormatException: get " + paramString + " failed.");
+      Object localObject;
+      label11:
+      break label11;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("NumberFormatException: get ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" failed.");
+    HMSLog.w("RemoteMessage", ((StringBuilder)localObject).toString());
     return null;
   }
   
@@ -106,10 +112,11 @@ public class RemoteMessage$Notification
   
   public String[] getBodyLocalizationArgs()
   {
-    if (this.f == null) {
-      return null;
+    String[] arrayOfString = this.f;
+    if (arrayOfString == null) {
+      return new String[0];
     }
-    return (String[])this.f.clone();
+    return (String[])arrayOfString.clone();
   }
   
   public String getBodyLocalizationKey()
@@ -139,10 +146,11 @@ public class RemoteMessage$Notification
   
   public Uri getImageUrl()
   {
-    if (this.p == null) {
+    String str = this.p;
+    if (str == null) {
       return null;
     }
-    return Uri.parse(this.p);
+    return Uri.parse(str);
   }
   
   public Integer getImportance()
@@ -157,10 +165,11 @@ public class RemoteMessage$Notification
   
   public int[] getLightSettings()
   {
-    if (this.t == null) {
-      return null;
+    int[] arrayOfInt = this.t;
+    if (arrayOfInt == null) {
+      return new int[0];
     }
-    return (int[])this.t.clone();
+    return (int[])arrayOfInt.clone();
   }
   
   public Uri getLink()
@@ -195,10 +204,11 @@ public class RemoteMessage$Notification
   
   public String[] getTitleLocalizationArgs()
   {
-    if (this.c == null) {
-      return null;
+    String[] arrayOfString = this.c;
+    if (arrayOfString == null) {
+      return new String[0];
     }
-    return (String[])this.c.clone();
+    return (String[])arrayOfString.clone();
   }
   
   public String getTitleLocalizationKey()
@@ -208,10 +218,11 @@ public class RemoteMessage$Notification
   
   public long[] getVibrateConfig()
   {
-    if (this.A == null) {
-      return null;
+    long[] arrayOfLong = this.A;
+    if (arrayOfLong == null) {
+      return new long[0];
     }
-    return (long[])this.A.clone();
+    return (long[])arrayOfLong.clone();
   }
   
   public Integer getVisibility()
@@ -221,23 +232,26 @@ public class RemoteMessage$Notification
   
   public Long getWhen()
   {
-    Long localLong = null;
     if (!TextUtils.isEmpty(this.u)) {}
     try
     {
       long l1 = DateUtil.parseUtcToMillisecond(this.u);
-      localLong = Long.valueOf(l1);
-      return localLong;
+      return Long.valueOf(l1);
     }
     catch (ParseException localParseException)
     {
-      HMSLog.w("RemoteMessage", "ParseException: parse when failed.");
-      return null;
+      break label34;
     }
     catch (StringIndexOutOfBoundsException localStringIndexOutOfBoundsException)
     {
-      HMSLog.w("RemoteMessage", "StringIndexOutOfBoundsException: parse when failed.");
+      label23:
+      break label23;
     }
+    HMSLog.w("RemoteMessage", "StringIndexOutOfBoundsException: parse when failed.");
+    break label42;
+    label34:
+    HMSLog.w("RemoteMessage", "ParseException: parse when failed.");
+    label42:
     return null;
   }
   

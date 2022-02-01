@@ -235,62 +235,74 @@ public final class MatroskaExtractor
   {
     this.reader = paramEbmlReader;
     this.reader.init(new MatroskaExtractor.InnerEbmlReaderOutput(this, null));
-    if ((paramInt & 0x1) == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.seekForCuesEnabled = bool;
-      this.varintReader = new VarintReader();
-      this.tracks = new SparseArray();
-      this.scratch = new ParsableByteArray(4);
-      this.vorbisNumPageSamples = new ParsableByteArray(ByteBuffer.allocate(4).putInt(-1).array());
-      this.seekEntryIdBytes = new ParsableByteArray(4);
-      this.nalStartCode = new ParsableByteArray(NalUnitUtil.NAL_START_CODE);
-      this.nalLength = new ParsableByteArray(4);
-      this.sampleStrippedBytes = new ParsableByteArray();
-      this.subtitleSample = new ParsableByteArray();
-      this.encryptionInitializationVector = new ParsableByteArray(8);
-      this.encryptionSubsampleData = new ParsableByteArray();
-      return;
+    boolean bool = true;
+    if ((paramInt & 0x1) != 0) {
+      bool = false;
     }
+    this.seekForCuesEnabled = bool;
+    this.varintReader = new VarintReader();
+    this.tracks = new SparseArray();
+    this.scratch = new ParsableByteArray(4);
+    this.vorbisNumPageSamples = new ParsableByteArray(ByteBuffer.allocate(4).putInt(-1).array());
+    this.seekEntryIdBytes = new ParsableByteArray(4);
+    this.nalStartCode = new ParsableByteArray(NalUnitUtil.NAL_START_CODE);
+    this.nalLength = new ParsableByteArray(4);
+    this.sampleStrippedBytes = new ParsableByteArray();
+    this.subtitleSample = new ParsableByteArray();
+    this.encryptionInitializationVector = new ParsableByteArray(8);
+    this.encryptionSubsampleData = new ParsableByteArray();
   }
   
   private SeekMap buildSeekMap()
   {
-    int k = 0;
-    if ((this.segmentContentPosition == -1L) || (this.durationUs == -9223372036854775807L) || (this.cueTimesUs == null) || (this.cueTimesUs.size() == 0) || (this.cueClusterPositions == null) || (this.cueClusterPositions.size() != this.cueTimesUs.size()))
+    if ((this.segmentContentPosition != -1L) && (this.durationUs != -9223372036854775807L))
     {
-      this.cueTimesUs = null;
-      this.cueClusterPositions = null;
-      return new SeekMap.Unseekable(this.durationUs);
-    }
-    int m = this.cueTimesUs.size();
-    int[] arrayOfInt = new int[m];
-    long[] arrayOfLong1 = new long[m];
-    long[] arrayOfLong2 = new long[m];
-    long[] arrayOfLong3 = new long[m];
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= m) {
-        break;
+      Object localObject = this.cueTimesUs;
+      if ((localObject != null) && (((LongArray)localObject).size() != 0))
+      {
+        localObject = this.cueClusterPositions;
+        if ((localObject != null) && (((LongArray)localObject).size() == this.cueTimesUs.size()))
+        {
+          int m = this.cueTimesUs.size();
+          localObject = new int[m];
+          long[] arrayOfLong1 = new long[m];
+          long[] arrayOfLong2 = new long[m];
+          long[] arrayOfLong3 = new long[m];
+          int k = 0;
+          int j = 0;
+          int i;
+          for (;;)
+          {
+            i = k;
+            if (j >= m) {
+              break;
+            }
+            arrayOfLong3[j] = this.cueTimesUs.get(j);
+            arrayOfLong1[j] = (this.segmentContentPosition + this.cueClusterPositions.get(j));
+            j += 1;
+          }
+          for (;;)
+          {
+            j = m - 1;
+            if (i >= j) {
+              break;
+            }
+            j = i + 1;
+            localObject[i] = ((int)(arrayOfLong1[j] - arrayOfLong1[i]));
+            arrayOfLong3[j] -= arrayOfLong3[i];
+            i = j;
+          }
+          localObject[j] = ((int)(this.segmentContentPosition + this.segmentContentSize - arrayOfLong1[j]));
+          arrayOfLong2[j] = (this.durationUs - arrayOfLong3[j]);
+          this.cueTimesUs = null;
+          this.cueClusterPositions = null;
+          return new ChunkIndex((int[])localObject, arrayOfLong1, arrayOfLong2, arrayOfLong3);
+        }
       }
-      arrayOfLong3[i] = this.cueTimesUs.get(i);
-      arrayOfLong1[i] = (this.segmentContentPosition + this.cueClusterPositions.get(i));
-      i += 1;
     }
-    while (j < m - 1)
-    {
-      arrayOfInt[j] = ((int)(arrayOfLong1[(j + 1)] - arrayOfLong1[j]));
-      arrayOfLong2[j] = (arrayOfLong3[(j + 1)] - arrayOfLong3[j]);
-      j += 1;
-    }
-    arrayOfInt[(m - 1)] = ((int)(this.segmentContentPosition + this.segmentContentSize - arrayOfLong1[(m - 1)]));
-    arrayOfLong2[(m - 1)] = (this.durationUs - arrayOfLong3[(m - 1)]);
     this.cueTimesUs = null;
     this.cueClusterPositions = null;
-    return new ChunkIndex(arrayOfInt, arrayOfLong1, arrayOfLong2, arrayOfLong3);
+    return new SeekMap.Unseekable(this.durationUs);
   }
   
   private void commitSampleToOutput(MatroskaExtractor.Track paramTrack, long paramLong)
@@ -298,41 +310,37 @@ public final class MatroskaExtractor
     if (paramTrack.trueHdSampleRechunker != null)
     {
       paramTrack.trueHdSampleRechunker.sampleMetadata(paramTrack, paramLong);
-      this.sampleRead = true;
-      resetSample();
-      return;
     }
-    if ("S_TEXT/UTF8".equals(paramTrack.codecId)) {
-      commitSubtitleSample(paramTrack, "%02d:%02d:%02d,%03d", 19, 1000L, SUBRIP_TIMECODE_EMPTY);
-    }
-    for (;;)
+    else
     {
-      paramTrack.output.sampleMetadata(paramLong, this.blockFlags, this.sampleBytesWritten, 0, paramTrack.cryptoData);
-      break;
-      if ("S_TEXT/ASS".equals(paramTrack.codecId)) {
+      if ("S_TEXT/UTF8".equals(paramTrack.codecId)) {
+        commitSubtitleSample(paramTrack, "%02d:%02d:%02d,%03d", 19, 1000L, SUBRIP_TIMECODE_EMPTY);
+      } else if ("S_TEXT/ASS".equals(paramTrack.codecId)) {
         commitSubtitleSample(paramTrack, "%01d:%02d:%02d:%02d", 21, 10000L, SSA_TIMECODE_EMPTY);
       }
+      paramTrack.output.sampleMetadata(paramLong, this.blockFlags, this.sampleBytesWritten, 0, paramTrack.cryptoData);
     }
+    this.sampleRead = true;
+    resetSample();
   }
   
   private void commitSubtitleSample(MatroskaExtractor.Track paramTrack, String paramString, int paramInt, long paramLong, byte[] paramArrayOfByte)
   {
     setSampleDuration(this.subtitleSample.data, this.blockDurationUs, paramString, paramInt, paramLong, paramArrayOfByte);
-    paramTrack.output.sampleData(this.subtitleSample, this.subtitleSample.limit());
+    paramTrack = paramTrack.output;
+    paramString = this.subtitleSample;
+    paramTrack.sampleData(paramString, paramString.limit());
     this.sampleBytesWritten += this.subtitleSample.limit();
   }
   
   private static int[] ensureArrayCapacity(int[] paramArrayOfInt, int paramInt)
   {
-    int[] arrayOfInt;
     if (paramArrayOfInt == null) {
-      arrayOfInt = new int[paramInt];
+      return new int[paramInt];
     }
-    do
-    {
-      return arrayOfInt;
-      arrayOfInt = paramArrayOfInt;
-    } while (paramArrayOfInt.length >= paramInt);
+    if (paramArrayOfInt.length >= paramInt) {
+      return paramArrayOfInt;
+    }
     return new int[Math.max(paramArrayOfInt.length * 2, paramInt)];
   }
   
@@ -350,11 +358,15 @@ public final class MatroskaExtractor
       this.seekForCues = false;
       return true;
     }
-    if ((this.sentSeekMap) && (this.seekPositionAfterBuildingCues != -1L))
+    if (this.sentSeekMap)
     {
-      paramPositionHolder.position = this.seekPositionAfterBuildingCues;
-      this.seekPositionAfterBuildingCues = -1L;
-      return true;
+      paramLong = this.seekPositionAfterBuildingCues;
+      if (paramLong != -1L)
+      {
+        paramPositionHolder.position = paramLong;
+        this.seekPositionAfterBuildingCues = -1L;
+        return true;
+      }
     }
     return false;
   }
@@ -364,8 +376,10 @@ public final class MatroskaExtractor
     if (this.scratch.limit() >= paramInt) {
       return;
     }
-    if (this.scratch.capacity() < paramInt) {
-      this.scratch.reset(Arrays.copyOf(this.scratch.data, Math.max(this.scratch.data.length * 2, paramInt)), this.scratch.limit());
+    if (this.scratch.capacity() < paramInt)
+    {
+      ParsableByteArray localParsableByteArray = this.scratch;
+      localParsableByteArray.reset(Arrays.copyOf(localParsableByteArray.data, Math.max(this.scratch.data.length * 2, paramInt)), this.scratch.limit());
     }
     paramExtractorInput.readFully(this.scratch.data, this.scratch.limit(), paramInt - this.scratch.limit());
     this.scratch.setLimit(paramInt);
@@ -379,13 +393,13 @@ public final class MatroskaExtractor
       paramInt = Math.min(paramInt, i);
       paramTrackOutput.sampleData(this.sampleStrippedBytes, paramInt);
     }
-    for (;;)
+    else
     {
-      this.sampleBytesRead += paramInt;
-      this.sampleBytesWritten += paramInt;
-      return paramInt;
       paramInt = paramTrackOutput.sampleData(paramExtractorInput, paramInt, false);
     }
+    this.sampleBytesRead += paramInt;
+    this.sampleBytesWritten += paramInt;
+    return paramInt;
   }
   
   private void readToTarget(ExtractorInput paramExtractorInput, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -414,93 +428,92 @@ public final class MatroskaExtractor
   
   private long scaleTimecodeToUs(long paramLong)
   {
-    if (this.timecodeScale == -9223372036854775807L) {
-      throw new ParserException("Can't scale timecode prior to timecodeScale being set.");
+    long l = this.timecodeScale;
+    if (l != -9223372036854775807L) {
+      return Util.scaleLargeTimestamp(paramLong, l, 1000L);
     }
-    return Util.scaleLargeTimestamp(paramLong, this.timecodeScale, 1000L);
+    throw new ParserException("Can't scale timecode prior to timecodeScale being set.");
   }
   
   private static void setSampleDuration(byte[] paramArrayOfByte1, long paramLong1, String paramString, int paramInt, long paramLong2, byte[] paramArrayOfByte2)
   {
-    if (paramLong1 == -9223372036854775807L) {}
-    int i;
-    int j;
-    int k;
-    int m;
-    for (paramString = paramArrayOfByte2;; paramString = Util.getUtf8Bytes(String.format(Locale.US, paramString, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) })))
+    if (paramLong1 == -9223372036854775807L)
     {
-      System.arraycopy(paramString, 0, paramArrayOfByte1, paramInt, paramArrayOfByte2.length);
-      return;
-      i = (int)(paramLong1 / 3600000000L);
-      paramLong1 -= i * 3600 * 1000000L;
-      j = (int)(paramLong1 / 60000000L);
-      paramLong1 -= j * 60 * 1000000L;
-      k = (int)(paramLong1 / 1000000L);
-      m = (int)((paramLong1 - k * 1000000L) / paramLong2);
+      paramString = paramArrayOfByte2;
     }
+    else
+    {
+      int i = (int)(paramLong1 / 3600000000L);
+      paramLong1 -= i * 3600 * 1000000L;
+      int j = (int)(paramLong1 / 60000000L);
+      paramLong1 -= j * 60 * 1000000L;
+      int k = (int)(paramLong1 / 1000000L);
+      int m = (int)((paramLong1 - k * 1000000L) / paramLong2);
+      paramString = Util.getUtf8Bytes(String.format(Locale.US, paramString, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) }));
+    }
+    System.arraycopy(paramString, 0, paramArrayOfByte1, paramInt, paramArrayOfByte2.length);
   }
   
   private void writeSampleData(ExtractorInput paramExtractorInput, MatroskaExtractor.Track paramTrack, int paramInt)
   {
-    boolean bool = true;
-    if ("S_TEXT/UTF8".equals(paramTrack.codecId)) {
-      writeSubtitleSampleData(paramExtractorInput, SUBRIP_PREFIX, paramInt);
-    }
-    TrackOutput localTrackOutput;
-    label190:
-    label510:
-    do
+    if ("S_TEXT/UTF8".equals(paramTrack.codecId))
     {
+      writeSubtitleSampleData(paramExtractorInput, SUBRIP_PREFIX, paramInt);
       return;
-      if ("S_TEXT/ASS".equals(paramTrack.codecId))
+    }
+    if ("S_TEXT/ASS".equals(paramTrack.codecId))
+    {
+      writeSubtitleSampleData(paramExtractorInput, SSA_PREFIX, paramInt);
+      return;
+    }
+    TrackOutput localTrackOutput = paramTrack.output;
+    boolean bool2 = this.sampleEncodingHandled;
+    boolean bool1 = true;
+    int k;
+    if (!bool2)
+    {
+      if (paramTrack.hasContentEncryption)
       {
-        writeSubtitleSampleData(paramExtractorInput, SSA_PREFIX, paramInt);
-        return;
-      }
-      localTrackOutput = paramTrack.output;
-      int i;
-      byte[] arrayOfByte;
-      int j;
-      if (!this.sampleEncodingHandled)
-      {
-        if (!paramTrack.hasContentEncryption) {
-          break label845;
-        }
         this.blockFlags &= 0xBFFFFFFF;
-        if (!this.sampleSignalByteRead)
+        bool2 = this.sampleSignalByteRead;
+        j = 128;
+        if (!bool2)
         {
           paramExtractorInput.readFully(this.scratch.data, 0, 1);
           this.sampleBytesRead += 1;
-          if ((this.scratch.data[0] & 0x80) == 128) {
+          if ((this.scratch.data[0] & 0x80) != 128)
+          {
+            this.sampleSignalByte = this.scratch.data[0];
+            this.sampleSignalByteRead = true;
+          }
+          else
+          {
             throw new ParserException("Extension bit is set in signal byte");
           }
-          this.sampleSignalByte = this.scratch.data[0];
-          this.sampleSignalByteRead = true;
         }
-        int m;
-        int k;
-        if ((this.sampleSignalByte & 0x1) == 1)
+        if ((this.sampleSignalByte & 0x1) == 1) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (i != 0)
         {
-          i = 1;
-          if (i == 0) {
-            break label667;
+          if ((this.sampleSignalByte & 0x2) == 2) {
+            i = 1;
+          } else {
+            i = 0;
           }
-          if ((this.sampleSignalByte & 0x2) != 2) {
-            break label568;
-          }
-          i = 1;
           this.blockFlags |= 0x40000000;
           if (!this.sampleInitializationVectorRead)
           {
             paramExtractorInput.readFully(this.encryptionInitializationVector.data, 0, 8);
             this.sampleBytesRead += 8;
             this.sampleInitializationVectorRead = true;
-            arrayOfByte = this.scratch.data;
+            localObject = this.scratch.data;
             if (i == 0) {
-              break label574;
+              j = 0;
             }
-            j = 128;
-            arrayOfByte[0] = ((byte)(j | 0x8));
+            localObject[0] = ((byte)(j | 0x8));
             this.scratch.setPosition(0);
             localTrackOutput.sampleData(this.scratch, 1);
             this.sampleBytesWritten += 1;
@@ -508,128 +521,114 @@ public final class MatroskaExtractor
             localTrackOutput.sampleData(this.encryptionInitializationVector, 8);
             this.sampleBytesWritten += 8;
           }
-          if (i == 0) {
-            break label667;
-          }
-          if (!this.samplePartitionCountRead)
+          if (i != 0)
           {
-            paramExtractorInput.readFully(this.scratch.data, 0, 1);
-            this.sampleBytesRead += 1;
-            this.scratch.setPosition(0);
-            this.samplePartitionCount = this.scratch.readUnsignedByte();
-            this.samplePartitionCountRead = true;
+            if (!this.samplePartitionCountRead)
+            {
+              paramExtractorInput.readFully(this.scratch.data, 0, 1);
+              this.sampleBytesRead += 1;
+              this.scratch.setPosition(0);
+              this.samplePartitionCount = this.scratch.readUnsignedByte();
+              this.samplePartitionCountRead = true;
+            }
+            i = this.samplePartitionCount * 4;
+            this.scratch.reset(i);
+            paramExtractorInput.readFully(this.scratch.data, 0, i);
+            this.sampleBytesRead += i;
+            short s = (short)(this.samplePartitionCount / 2 + 1);
+            int m = s * 6 + 2;
+            localObject = this.encryptionSubsampleDataBuffer;
+            if ((localObject == null) || (((ByteBuffer)localObject).capacity() < m)) {
+              this.encryptionSubsampleDataBuffer = ByteBuffer.allocate(m);
+            }
+            this.encryptionSubsampleDataBuffer.position(0);
+            this.encryptionSubsampleDataBuffer.putShort(s);
+            i = 0;
+            for (j = 0;; j = k)
+            {
+              k = this.samplePartitionCount;
+              if (i >= k) {
+                break;
+              }
+              k = this.scratch.readUnsignedIntToInt();
+              if (i % 2 == 0) {
+                this.encryptionSubsampleDataBuffer.putShort((short)(k - j));
+              } else {
+                this.encryptionSubsampleDataBuffer.putInt(k - j);
+              }
+              i += 1;
+            }
+            i = paramInt - this.sampleBytesRead - j;
+            if (k % 2 == 1)
+            {
+              this.encryptionSubsampleDataBuffer.putInt(i);
+            }
+            else
+            {
+              this.encryptionSubsampleDataBuffer.putShort((short)i);
+              this.encryptionSubsampleDataBuffer.putInt(0);
+            }
+            this.encryptionSubsampleData.reset(this.encryptionSubsampleDataBuffer.array(), m);
+            localTrackOutput.sampleData(this.encryptionSubsampleData, m);
+            this.sampleBytesWritten += m;
           }
-          i = this.samplePartitionCount * 4;
-          this.scratch.reset(i);
-          paramExtractorInput.readFully(this.scratch.data, 0, i);
-          this.sampleBytesRead = (i + this.sampleBytesRead);
-          short s = (short)(this.samplePartitionCount / 2 + 1);
-          m = s * 6 + 2;
-          if ((this.encryptionSubsampleDataBuffer == null) || (this.encryptionSubsampleDataBuffer.capacity() < m)) {
-            this.encryptionSubsampleDataBuffer = ByteBuffer.allocate(m);
-          }
-          this.encryptionSubsampleDataBuffer.position(0);
-          this.encryptionSubsampleDataBuffer.putShort(s);
-          i = 0;
-          j = 0;
-          if (i >= this.samplePartitionCount) {
-            break label596;
-          }
-          k = this.scratch.readUnsignedIntToInt();
-          if (i % 2 != 0) {
-            break label580;
-          }
-          this.encryptionSubsampleDataBuffer.putShort((short)(k - j));
-        }
-        for (;;)
-        {
-          i += 1;
-          j = k;
-          break label510;
-          i = 0;
-          break;
-          i = 0;
-          break label190;
-          j = 0;
-          break label260;
-          this.encryptionSubsampleDataBuffer.putInt(k - j);
-        }
-        i = paramInt - this.sampleBytesRead - j;
-        if (this.samplePartitionCount % 2 == 1)
-        {
-          this.encryptionSubsampleDataBuffer.putInt(i);
-          this.encryptionSubsampleData.reset(this.encryptionSubsampleDataBuffer.array(), m);
-          localTrackOutput.sampleData(this.encryptionSubsampleData, m);
-          this.sampleBytesWritten += m;
-          this.sampleEncodingHandled = true;
         }
       }
-      else
+      else if (paramTrack.sampleStrippedBytes != null)
       {
-        paramInt = this.sampleStrippedBytes.limit() + paramInt;
-        if ((!"V_MPEG4/ISO/AVC".equals(paramTrack.codecId)) && (!"V_MPEGH/ISO/HEVC".equals(paramTrack.codecId))) {
-          break label894;
+        this.sampleStrippedBytes.reset(paramTrack.sampleStrippedBytes, paramTrack.sampleStrippedBytes.length);
+      }
+      this.sampleEncodingHandled = true;
+    }
+    paramInt += this.sampleStrippedBytes.limit();
+    if ((!"V_MPEG4/ISO/AVC".equals(paramTrack.codecId)) && (!"V_MPEGH/ISO/HEVC".equals(paramTrack.codecId)))
+    {
+      if (paramTrack.trueHdSampleRechunker != null)
+      {
+        if (this.sampleStrippedBytes.limit() != 0) {
+          bool1 = false;
         }
-        arrayOfByte = this.nalLength.data;
-        arrayOfByte[0] = 0;
-        arrayOfByte[1] = 0;
-        arrayOfByte[2] = 0;
-        i = paramTrack.nalUnitLengthFieldLength;
-        j = paramTrack.nalUnitLengthFieldLength;
+        Assertions.checkState(bool1);
+        paramTrack.trueHdSampleRechunker.startSample(paramExtractorInput, this.blockFlags, paramInt);
       }
       for (;;)
       {
-        if (this.sampleBytesRead < paramInt)
-        {
-          if (this.sampleCurrentNalBytesRemaining == 0)
-          {
-            readToTarget(paramExtractorInput, arrayOfByte, 4 - j, i);
-            this.nalLength.setPosition(0);
-            this.sampleCurrentNalBytesRemaining = this.nalLength.readUnsignedIntToInt();
-            this.nalStartCode.setPosition(0);
-            localTrackOutput.sampleData(this.nalStartCode, 4);
-            this.sampleBytesWritten += 4;
-            continue;
-            this.encryptionSubsampleDataBuffer.putShort((short)i);
-            this.encryptionSubsampleDataBuffer.putInt(0);
-            break;
-            if (paramTrack.sampleStrippedBytes == null) {
-              break label667;
-            }
-            this.sampleStrippedBytes.reset(paramTrack.sampleStrippedBytes, paramTrack.sampleStrippedBytes.length);
-            break label667;
-          }
-          this.sampleCurrentNalBytesRemaining -= readToOutput(paramExtractorInput, localTrackOutput, this.sampleCurrentNalBytesRemaining);
-          continue;
-          if (paramTrack.trueHdSampleRechunker != null) {
-            if (this.sampleStrippedBytes.limit() != 0) {
-              break label954;
-            }
-          }
-          for (;;)
-          {
-            Assertions.checkState(bool);
-            paramTrack.trueHdSampleRechunker.startSample(paramExtractorInput, this.blockFlags, paramInt);
-            while (this.sampleBytesRead < paramInt) {
-              readToOutput(paramExtractorInput, localTrackOutput, paramInt - this.sampleBytesRead);
-            }
-            bool = false;
-          }
+        i = this.sampleBytesRead;
+        if (i >= paramInt) {
+          break;
         }
+        readToOutput(paramExtractorInput, localTrackOutput, paramInt - i);
       }
-    } while (!"A_VORBIS".equals(paramTrack.codecId));
-    label260:
-    label568:
-    label574:
-    label580:
-    label596:
-    label894:
-    this.vorbisNumPageSamples.setPosition(0);
-    label667:
-    label845:
-    localTrackOutput.sampleData(this.vorbisNumPageSamples, 4);
-    label954:
-    this.sampleBytesWritten += 4;
+    }
+    Object localObject = this.nalLength.data;
+    localObject[0] = 0;
+    localObject[1] = 0;
+    localObject[2] = 0;
+    int i = paramTrack.nalUnitLengthFieldLength;
+    int j = paramTrack.nalUnitLengthFieldLength;
+    while (this.sampleBytesRead < paramInt)
+    {
+      k = this.sampleCurrentNalBytesRemaining;
+      if (k == 0)
+      {
+        readToTarget(paramExtractorInput, (byte[])localObject, 4 - j, i);
+        this.nalLength.setPosition(0);
+        this.sampleCurrentNalBytesRemaining = this.nalLength.readUnsignedIntToInt();
+        this.nalStartCode.setPosition(0);
+        localTrackOutput.sampleData(this.nalStartCode, 4);
+        this.sampleBytesWritten += 4;
+      }
+      else
+      {
+        this.sampleCurrentNalBytesRemaining = (k - readToOutput(paramExtractorInput, localTrackOutput, k));
+      }
+    }
+    if ("A_VORBIS".equals(paramTrack.codecId))
+    {
+      this.vorbisNumPageSamples.setPosition(0);
+      localTrackOutput.sampleData(this.vorbisNumPageSamples, 4);
+      this.sampleBytesWritten += 4;
+    }
   }
   
   private void writeSubtitleSampleData(ExtractorInput paramExtractorInput, byte[] paramArrayOfByte, int paramInt)
@@ -637,44 +636,56 @@ public final class MatroskaExtractor
     int i = paramArrayOfByte.length + paramInt;
     if (this.subtitleSample.capacity() < i) {
       this.subtitleSample.data = Arrays.copyOf(paramArrayOfByte, i + paramInt);
-    }
-    for (;;)
-    {
-      paramExtractorInput.readFully(this.subtitleSample.data, paramArrayOfByte.length, paramInt);
-      this.subtitleSample.reset(i);
-      return;
+    } else {
       System.arraycopy(paramArrayOfByte, 0, this.subtitleSample.data, 0, paramArrayOfByte.length);
     }
+    paramExtractorInput.readFully(this.subtitleSample.data, paramArrayOfByte.length, paramInt);
+    this.subtitleSample.reset(i);
   }
   
   void binaryElement(int paramInt1, int paramInt2, ExtractorInput paramExtractorInput)
   {
-    switch (paramInt1)
+    if ((paramInt1 != 161) && (paramInt1 != 163))
     {
-    default: 
-      throw new ParserException("Unexpected id: " + paramInt1);
-    case 21419: 
-      Arrays.fill(this.seekEntryIdBytes.data, (byte)0);
-      paramExtractorInput.readFully(this.seekEntryIdBytes.data, 4 - paramInt2, paramInt2);
-      this.seekEntryIdBytes.setPosition(0);
-      this.seekEntryId = ((int)this.seekEntryIdBytes.readUnsignedInt());
-      return;
-    case 25506: 
-      this.currentTrack.codecPrivate = new byte[paramInt2];
-      paramExtractorInput.readFully(this.currentTrack.codecPrivate, 0, paramInt2);
-      return;
-    case 30322: 
-      this.currentTrack.projectionData = new byte[paramInt2];
-      paramExtractorInput.readFully(this.currentTrack.projectionData, 0, paramInt2);
-      return;
-    case 16981: 
-      this.currentTrack.sampleStrippedBytes = new byte[paramInt2];
-      paramExtractorInput.readFully(this.currentTrack.sampleStrippedBytes, 0, paramInt2);
-      return;
-    case 18402: 
-      localObject = new byte[paramInt2];
-      paramExtractorInput.readFully((byte[])localObject, 0, paramInt2);
-      this.currentTrack.cryptoData = new TrackOutput.CryptoData(1, (byte[])localObject, 0, 0);
+      if (paramInt1 != 16981)
+      {
+        if (paramInt1 != 18402)
+        {
+          if (paramInt1 != 21419)
+          {
+            if (paramInt1 != 25506)
+            {
+              if (paramInt1 == 30322)
+              {
+                localObject1 = this.currentTrack;
+                ((MatroskaExtractor.Track)localObject1).projectionData = new byte[paramInt2];
+                paramExtractorInput.readFully(((MatroskaExtractor.Track)localObject1).projectionData, 0, paramInt2);
+                return;
+              }
+              paramExtractorInput = new StringBuilder();
+              paramExtractorInput.append("Unexpected id: ");
+              paramExtractorInput.append(paramInt1);
+              throw new ParserException(paramExtractorInput.toString());
+            }
+            localObject1 = this.currentTrack;
+            ((MatroskaExtractor.Track)localObject1).codecPrivate = new byte[paramInt2];
+            paramExtractorInput.readFully(((MatroskaExtractor.Track)localObject1).codecPrivate, 0, paramInt2);
+            return;
+          }
+          Arrays.fill(this.seekEntryIdBytes.data, (byte)0);
+          paramExtractorInput.readFully(this.seekEntryIdBytes.data, 4 - paramInt2, paramInt2);
+          this.seekEntryIdBytes.setPosition(0);
+          this.seekEntryId = ((int)this.seekEntryIdBytes.readUnsignedInt());
+          return;
+        }
+        localObject1 = new byte[paramInt2];
+        paramExtractorInput.readFully((byte[])localObject1, 0, paramInt2);
+        this.currentTrack.cryptoData = new TrackOutput.CryptoData(1, (byte[])localObject1, 0, 0);
+        return;
+      }
+      localObject1 = this.currentTrack;
+      ((MatroskaExtractor.Track)localObject1).sampleStrippedBytes = new byte[paramInt2];
+      paramExtractorInput.readFully(((MatroskaExtractor.Track)localObject1).sampleStrippedBytes, 0, paramInt2);
       return;
     }
     if (this.blockState == 0)
@@ -685,297 +696,352 @@ public final class MatroskaExtractor
       this.blockState = 1;
       this.scratch.reset();
     }
-    Object localObject = (MatroskaExtractor.Track)this.tracks.get(this.blockTrackNumber);
-    if (localObject == null)
+    Object localObject1 = (MatroskaExtractor.Track)this.tracks.get(this.blockTrackNumber);
+    if (localObject1 == null)
     {
       paramExtractorInput.skipFully(paramInt2 - this.blockTrackNumberLength);
       this.blockState = 0;
       return;
     }
-    int i;
     if (this.blockState == 1)
     {
       readScratch(paramExtractorInput, 3);
-      i = (this.scratch.data[2] & 0x6) >> 1;
-      if (i != 0) {
-        break label627;
+      int i = (this.scratch.data[2] & 0x6) >> 1;
+      if (i == 0)
+      {
+        this.blockLacingSampleCount = 1;
+        this.blockLacingSampleSizes = ensureArrayCapacity(this.blockLacingSampleSizes, 1);
+        this.blockLacingSampleSizes[0] = (paramInt2 - this.blockTrackNumberLength - 3);
       }
-      this.blockLacingSampleCount = 1;
-      this.blockLacingSampleSizes = ensureArrayCapacity(this.blockLacingSampleSizes, 1);
-      this.blockLacingSampleSizes[0] = (paramInt2 - this.blockTrackNumberLength - 3);
+      else
+      {
+        if (paramInt1 != 163) {
+          break label1209;
+        }
+        readScratch(paramExtractorInput, 4);
+        this.blockLacingSampleCount = ((this.scratch.data[3] & 0xFF) + 1);
+        this.blockLacingSampleSizes = ensureArrayCapacity(this.blockLacingSampleSizes, this.blockLacingSampleCount);
+        int j;
+        if (i == 2)
+        {
+          j = this.blockTrackNumberLength;
+          i = this.blockLacingSampleCount;
+          paramInt2 = (paramInt2 - j - 4) / i;
+          Arrays.fill(this.blockLacingSampleSizes, 0, i, paramInt2);
+        }
+        else
+        {
+          int k;
+          int m;
+          int n;
+          Object localObject2;
+          if (i == 1)
+          {
+            k = 0;
+            i = 4;
+            j = 0;
+            for (;;)
+            {
+              m = this.blockLacingSampleCount;
+              if (k >= m - 1) {
+                break;
+              }
+              this.blockLacingSampleSizes[k] = 0;
+              m = i;
+              do
+              {
+                i = m + 1;
+                readScratch(paramExtractorInput, i);
+                n = this.scratch.data[(i - 1)] & 0xFF;
+                localObject2 = this.blockLacingSampleSizes;
+                localObject2[k] += n;
+                m = i;
+              } while (n == 255);
+              j += localObject2[k];
+              k += 1;
+            }
+            this.blockLacingSampleSizes[(m - 1)] = (paramInt2 - this.blockTrackNumberLength - i - j);
+          }
+          else
+          {
+            if (i != 3) {
+              break label1174;
+            }
+            k = 0;
+            i = 4;
+            j = 0;
+            for (;;)
+            {
+              m = this.blockLacingSampleCount;
+              if (k >= m - 1) {
+                break label999;
+              }
+              this.blockLacingSampleSizes[k] = 0;
+              n = i + 1;
+              readScratch(paramExtractorInput, n);
+              localObject2 = this.scratch.data;
+              int i1 = n - 1;
+              if (localObject2[i1] == 0) {
+                break label988;
+              }
+              long l2 = 0L;
+              m = 0;
+              long l1;
+              for (;;)
+              {
+                i = n;
+                l1 = l2;
+                if (m >= 8) {
+                  break;
+                }
+                i = 1 << 7 - m;
+                if ((this.scratch.data[i1] & i) != 0)
+                {
+                  n += m;
+                  readScratch(paramExtractorInput, n);
+                  l1 = this.scratch.data[i1] & 0xFF & (i ^ 0xFFFFFFFF);
+                  i = i1 + 1;
+                  for (;;)
+                  {
+                    l2 = l1;
+                    if (i >= n) {
+                      break;
+                    }
+                    l1 = l2 << 8 | this.scratch.data[i] & 0xFF;
+                    i += 1;
+                  }
+                  i = n;
+                  l1 = l2;
+                  if (k <= 0) {
+                    break;
+                  }
+                  l1 = l2 - ((1L << m * 7 + 6) - 1L);
+                  i = n;
+                  break;
+                }
+                m += 1;
+              }
+              if ((l1 < -2147483648L) || (l1 > 2147483647L)) {
+                break;
+              }
+              m = (int)l1;
+              localObject2 = this.blockLacingSampleSizes;
+              if (k != 0) {
+                m += localObject2[(k - 1)];
+              }
+              localObject2[k] = m;
+              j += this.blockLacingSampleSizes[k];
+              k += 1;
+            }
+            throw new ParserException("EBML lacing sample size out of range.");
+            label988:
+            throw new ParserException("No valid varint length mask found");
+            label999:
+            this.blockLacingSampleSizes[(m - 1)] = (paramInt2 - this.blockTrackNumberLength - i - j);
+          }
+        }
+      }
       paramInt2 = this.scratch.data[0];
       i = this.scratch.data[1];
       this.blockTimeUs = (this.clusterTimecodeUs + scaleTimecodeToUs(paramInt2 << 8 | i & 0xFF));
-      if ((this.scratch.data[2] & 0x8) != 8) {
-        break label1264;
+      if ((this.scratch.data[2] & 0x8) == 8) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      paramInt2 = 1;
-      label482:
-      if ((((MatroskaExtractor.Track)localObject).type != 2) && ((paramInt1 != 163) || ((this.scratch.data[2] & 0x80) != 128))) {
-        break label1269;
+      if ((((MatroskaExtractor.Track)localObject1).type != 2) && ((paramInt1 != 163) || ((this.scratch.data[2] & 0x80) != 128))) {
+        paramInt2 = 0;
+      } else {
+        paramInt2 = 1;
       }
-      i = 1;
-      label520:
-      if (i == 0) {
-        break label1275;
+      if (i != 0) {
+        i = -2147483648;
+      } else {
+        i = 0;
       }
-      i = 1;
-      label528:
-      if (paramInt2 == 0) {
-        break label1281;
-      }
-    }
-    label1281:
-    for (paramInt2 = -2147483648;; paramInt2 = 0)
-    {
       this.blockFlags = (paramInt2 | i);
       this.blockState = 2;
       this.blockLacingSampleIndex = 0;
-      if (paramInt1 != 163) {
-        break label1292;
-      }
-      while (this.blockLacingSampleIndex < this.blockLacingSampleCount)
+      break label1220;
+      label1174:
+      paramExtractorInput = new StringBuilder();
+      paramExtractorInput.append("Unexpected lacing value: ");
+      paramExtractorInput.append(i);
+      throw new ParserException(paramExtractorInput.toString());
+      label1209:
+      throw new ParserException("Lacing only supported in SimpleBlocks.");
+    }
+    label1220:
+    if (paramInt1 == 163)
+    {
+      for (;;)
       {
-        writeSampleData(paramExtractorInput, (MatroskaExtractor.Track)localObject, this.blockLacingSampleSizes[this.blockLacingSampleIndex]);
-        commitSampleToOutput((MatroskaExtractor.Track)localObject, this.blockTimeUs + this.blockLacingSampleIndex * ((MatroskaExtractor.Track)localObject).defaultSampleDurationNs / 1000);
+        paramInt1 = this.blockLacingSampleIndex;
+        if (paramInt1 >= this.blockLacingSampleCount) {
+          break;
+        }
+        writeSampleData(paramExtractorInput, (MatroskaExtractor.Track)localObject1, this.blockLacingSampleSizes[paramInt1]);
+        commitSampleToOutput((MatroskaExtractor.Track)localObject1, this.blockTimeUs + this.blockLacingSampleIndex * ((MatroskaExtractor.Track)localObject1).defaultSampleDurationNs / 1000);
         this.blockLacingSampleIndex += 1;
       }
-      label627:
-      if (paramInt1 != 163) {
-        throw new ParserException("Lacing only supported in SimpleBlocks.");
-      }
-      readScratch(paramExtractorInput, 4);
-      this.blockLacingSampleCount = ((this.scratch.data[3] & 0xFF) + 1);
-      this.blockLacingSampleSizes = ensureArrayCapacity(this.blockLacingSampleSizes, this.blockLacingSampleCount);
-      if (i == 2)
-      {
-        paramInt2 = (paramInt2 - this.blockTrackNumberLength - 4) / this.blockLacingSampleCount;
-        Arrays.fill(this.blockLacingSampleSizes, 0, this.blockLacingSampleCount, paramInt2);
-        break;
-      }
-      int j;
-      int k;
-      int m;
-      int n;
-      int[] arrayOfInt;
-      if (i == 1)
-      {
-        j = 0;
-        i = 4;
-        k = 0;
-        while (k < this.blockLacingSampleCount - 1)
-        {
-          this.blockLacingSampleSizes[k] = 0;
-          m = i;
-          do
-          {
-            i = m + 1;
-            readScratch(paramExtractorInput, i);
-            n = this.scratch.data[(i - 1)] & 0xFF;
-            arrayOfInt = this.blockLacingSampleSizes;
-            arrayOfInt[k] += n;
-            m = i;
-          } while (n == 255);
-          j += this.blockLacingSampleSizes[k];
-          k += 1;
-        }
-        this.blockLacingSampleSizes[(this.blockLacingSampleCount - 1)] = (paramInt2 - this.blockTrackNumberLength - i - j);
-        break;
-      }
-      if (i == 3)
-      {
-        j = 0;
-        i = 4;
-        k = 0;
-        if (k < this.blockLacingSampleCount - 1)
-        {
-          this.blockLacingSampleSizes[k] = 0;
-          n = i + 1;
-          readScratch(paramExtractorInput, n);
-          if (this.scratch.data[(n - 1)] == 0) {
-            throw new ParserException("No valid varint length mask found");
-          }
-          long l2 = 0L;
-          m = 0;
-          long l1;
-          for (;;)
-          {
-            i = n;
-            l1 = l2;
-            if (m < 8)
-            {
-              i = 1 << 7 - m;
-              if ((this.scratch.data[(n - 1)] & i) == 0) {
-                break label1139;
-              }
-              int i1 = n - 1;
-              n += m;
-              readScratch(paramExtractorInput, n);
-              l2 = this.scratch.data[i1] & 0xFF & (i ^ 0xFFFFFFFF);
-              i = i1 + 1;
-              while (i < n)
-              {
-                l2 = this.scratch.data[i] & 0xFF | l2 << 8;
-                i += 1;
-              }
-              i = n;
-              l1 = l2;
-              if (k > 0)
-              {
-                l1 = l2 - ((1L << m * 7 + 6) - 1L);
-                i = n;
-              }
-            }
-            if ((l1 >= -2147483648L) && (l1 <= 2147483647L)) {
-              break;
-            }
-            throw new ParserException("EBML lacing sample size out of range.");
-            label1139:
-            m += 1;
-          }
-          m = (int)l1;
-          arrayOfInt = this.blockLacingSampleSizes;
-          if (k == 0) {}
-          for (;;)
-          {
-            arrayOfInt[k] = m;
-            j += this.blockLacingSampleSizes[k];
-            k += 1;
-            break;
-            m += this.blockLacingSampleSizes[(k - 1)];
-          }
-        }
-        this.blockLacingSampleSizes[(this.blockLacingSampleCount - 1)] = (paramInt2 - this.blockTrackNumberLength - i - j);
-        break;
-      }
-      throw new ParserException("Unexpected lacing value: " + i);
-      label1264:
-      paramInt2 = 0;
-      break label482;
-      label1269:
-      i = 0;
-      break label520;
-      label1275:
-      i = 0;
-      break label528;
+      this.blockState = 0;
+      return;
     }
-    this.blockState = 0;
-    return;
-    label1292:
-    writeSampleData(paramExtractorInput, (MatroskaExtractor.Track)localObject, this.blockLacingSampleSizes[0]);
+    writeSampleData(paramExtractorInput, (MatroskaExtractor.Track)localObject1, this.blockLacingSampleSizes[0]);
   }
   
   void endMasterElement(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 160)
     {
-    default: 
-    case 357149030: 
-    case 19899: 
-    case 475249515: 
-    case 160: 
-    case 25152: 
-    case 28032: 
-      do
+      if (paramInt != 174)
       {
-        do
+        long l;
+        if (paramInt != 19899)
         {
-          do
+          if (paramInt != 25152)
           {
-            do
+            if (paramInt != 28032)
             {
-              do
+              if (paramInt != 357149030)
               {
-                do
+                if (paramInt != 374648427)
                 {
-                  return;
-                  if (this.timecodeScale == -9223372036854775807L) {
-                    this.timecodeScale = 1000000L;
+                  if (paramInt != 475249515) {
+                    return;
                   }
-                } while (this.durationTimecode == -9223372036854775807L);
-                this.durationUs = scaleTimecodeToUs(this.durationTimecode);
-                return;
-                if ((this.seekEntryId == -1) || (this.seekEntryPosition == -1L)) {
-                  throw new ParserException("Mandatory element SeekID or SeekPosition not found");
+                  if (!this.sentSeekMap)
+                  {
+                    this.extractorOutput.seekMap(buildSeekMap());
+                    this.sentSeekMap = true;
+                  }
                 }
-              } while (this.seekEntryId != 475249515);
-              this.cuesContentPosition = this.seekEntryPosition;
-              return;
-            } while (this.sentSeekMap);
-            this.extractorOutput.seekMap(buildSeekMap());
-            this.sentSeekMap = true;
-            return;
-          } while (this.blockState != 2);
-          if (!this.sampleSeenReferenceBlock) {
-            this.blockFlags |= 0x1;
+                else
+                {
+                  if (this.tracks.size() != 0)
+                  {
+                    this.extractorOutput.endTracks();
+                    return;
+                  }
+                  throw new ParserException("No valid tracks were found");
+                }
+              }
+              else
+              {
+                if (this.timecodeScale == -9223372036854775807L) {
+                  this.timecodeScale = 1000000L;
+                }
+                l = this.durationTimecode;
+                if (l != -9223372036854775807L) {
+                  this.durationUs = scaleTimecodeToUs(l);
+                }
+              }
+            }
+            else if (this.currentTrack.hasContentEncryption)
+            {
+              if (this.currentTrack.sampleStrippedBytes == null) {
+                return;
+              }
+              throw new ParserException("Combining encryption and compression is not supported");
+            }
           }
-          commitSampleToOutput((MatroskaExtractor.Track)this.tracks.get(this.blockTrackNumber), this.blockTimeUs);
-          this.blockState = 0;
-          return;
-        } while (!this.currentTrack.hasContentEncryption);
-        if (this.currentTrack.cryptoData == null) {
-          throw new ParserException("Encrypted Track found but ContentEncKeyID was not found");
+          else if (this.currentTrack.hasContentEncryption)
+          {
+            if (this.currentTrack.cryptoData != null)
+            {
+              this.currentTrack.drmInitData = new DrmInitData(new DrmInitData.SchemeData[] { new DrmInitData.SchemeData(C.UUID_NIL, "video/webm", this.currentTrack.cryptoData.encryptionKey) });
+              return;
+            }
+            throw new ParserException("Encrypted Track found but ContentEncKeyID was not found");
+          }
         }
-        this.currentTrack.drmInitData = new DrmInitData(new DrmInitData.SchemeData[] { new DrmInitData.SchemeData(C.UUID_NIL, "video/webm", this.currentTrack.cryptoData.encryptionKey) });
-        return;
-      } while ((!this.currentTrack.hasContentEncryption) || (this.currentTrack.sampleStrippedBytes == null));
-      throw new ParserException("Combining encryption and compression is not supported");
-    case 174: 
-      if (isCodecSupported(this.currentTrack.codecId))
-      {
-        this.currentTrack.initializeOutput(this.extractorOutput, this.currentTrack.number);
-        this.tracks.put(this.currentTrack.number, this.currentTrack);
+        else
+        {
+          paramInt = this.seekEntryId;
+          if (paramInt != -1)
+          {
+            l = this.seekEntryPosition;
+            if (l != -1L)
+            {
+              if (paramInt != 475249515) {
+                return;
+              }
+              this.cuesContentPosition = l;
+              return;
+            }
+          }
+          throw new ParserException("Mandatory element SeekID or SeekPosition not found");
+        }
       }
-      this.currentTrack = null;
-      return;
+      else
+      {
+        if (isCodecSupported(this.currentTrack.codecId))
+        {
+          MatroskaExtractor.Track localTrack = this.currentTrack;
+          localTrack.initializeOutput(this.extractorOutput, localTrack.number);
+          this.tracks.put(this.currentTrack.number, this.currentTrack);
+        }
+        this.currentTrack = null;
+      }
     }
-    if (this.tracks.size() == 0) {
-      throw new ParserException("No valid tracks were found");
+    else
+    {
+      if (this.blockState != 2) {
+        return;
+      }
+      if (!this.sampleSeenReferenceBlock) {
+        this.blockFlags |= 0x1;
+      }
+      commitSampleToOutput((MatroskaExtractor.Track)this.tracks.get(this.blockTrackNumber), this.blockTimeUs);
+      this.blockState = 0;
     }
-    this.extractorOutput.endTracks();
   }
   
   void floatElement(int paramInt, double paramDouble)
   {
-    switch (paramInt)
+    if (paramInt != 181)
     {
-    default: 
-      return;
-    case 17545: 
+      if (paramInt != 17545)
+      {
+        switch (paramInt)
+        {
+        default: 
+          return;
+        case 21978: 
+          this.currentTrack.minMasteringLuminance = ((float)paramDouble);
+          return;
+        case 21977: 
+          this.currentTrack.maxMasteringLuminance = ((float)paramDouble);
+          return;
+        case 21976: 
+          this.currentTrack.whitePointChromaticityY = ((float)paramDouble);
+          return;
+        case 21975: 
+          this.currentTrack.whitePointChromaticityX = ((float)paramDouble);
+          return;
+        case 21974: 
+          this.currentTrack.primaryBChromaticityY = ((float)paramDouble);
+          return;
+        case 21973: 
+          this.currentTrack.primaryBChromaticityX = ((float)paramDouble);
+          return;
+        case 21972: 
+          this.currentTrack.primaryGChromaticityY = ((float)paramDouble);
+          return;
+        case 21971: 
+          this.currentTrack.primaryGChromaticityX = ((float)paramDouble);
+          return;
+        case 21970: 
+          this.currentTrack.primaryRChromaticityY = ((float)paramDouble);
+          return;
+        }
+        this.currentTrack.primaryRChromaticityX = ((float)paramDouble);
+        return;
+      }
       this.durationTimecode = (paramDouble);
       return;
-    case 181: 
-      this.currentTrack.sampleRate = ((int)paramDouble);
-      return;
-    case 21969: 
-      this.currentTrack.primaryRChromaticityX = ((float)paramDouble);
-      return;
-    case 21970: 
-      this.currentTrack.primaryRChromaticityY = ((float)paramDouble);
-      return;
-    case 21971: 
-      this.currentTrack.primaryGChromaticityX = ((float)paramDouble);
-      return;
-    case 21972: 
-      this.currentTrack.primaryGChromaticityY = ((float)paramDouble);
-      return;
-    case 21973: 
-      this.currentTrack.primaryBChromaticityX = ((float)paramDouble);
-      return;
-    case 21974: 
-      this.currentTrack.primaryBChromaticityY = ((float)paramDouble);
-      return;
-    case 21975: 
-      this.currentTrack.whitePointChromaticityX = ((float)paramDouble);
-      return;
-    case 21976: 
-      this.currentTrack.whitePointChromaticityY = ((float)paramDouble);
-      return;
-    case 21977: 
-      this.currentTrack.maxMasteringLuminance = ((float)paramDouble);
-      return;
     }
-    this.currentTrack.minMasteringLuminance = ((float)paramDouble);
+    this.currentTrack.sampleRate = ((int)paramDouble);
   }
   
   int getElementType(int paramInt)
@@ -984,6 +1050,27 @@ public final class MatroskaExtractor
     {
     default: 
       return 0;
+    case 181: 
+    case 17545: 
+    case 21969: 
+    case 21970: 
+    case 21971: 
+    case 21972: 
+    case 21973: 
+    case 21974: 
+    case 21975: 
+    case 21976: 
+    case 21977: 
+    case 21978: 
+      return 5;
+    case 161: 
+    case 163: 
+    case 16981: 
+    case 18402: 
+    case 21419: 
+    case 25506: 
+    case 30322: 
+      return 4;
     case 160: 
     case 174: 
     case 183: 
@@ -1007,55 +1094,12 @@ public final class MatroskaExtractor
     case 475249515: 
     case 524531317: 
       return 1;
-    case 131: 
-    case 136: 
-    case 155: 
-    case 159: 
-    case 176: 
-    case 179: 
-    case 186: 
-    case 215: 
-    case 231: 
-    case 241: 
-    case 251: 
-    case 16980: 
-    case 17029: 
-    case 17143: 
-    case 18401: 
-    case 18408: 
-    case 20529: 
-    case 20530: 
-    case 21420: 
-    case 21432: 
-    case 21680: 
-    case 21682: 
-    case 21690: 
-    case 21930: 
-    case 21945: 
-    case 21946: 
-    case 21947: 
-    case 21948: 
-    case 21949: 
-    case 22186: 
-    case 22203: 
-    case 25188: 
-    case 2352003: 
-    case 2807729: 
-      return 2;
     case 134: 
     case 17026: 
     case 2274716: 
       return 3;
-    case 161: 
-    case 163: 
-    case 16981: 
-    case 18402: 
-    case 21419: 
-    case 25506: 
-    case 30322: 
-      return 4;
     }
-    return 5;
+    return 2;
   }
   
   public void init(ExtractorOutput paramExtractorOutput)
@@ -1065,195 +1109,246 @@ public final class MatroskaExtractor
   
   void integerElement(int paramInt, long paramLong)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    switch (paramInt)
+    if (paramInt != 20529)
     {
-    default: 
-    case 17143: 
-    case 17029: 
-    case 21420: 
-    case 2807729: 
-    case 176: 
-    case 186: 
-    case 21680: 
-    case 21690: 
-    case 21682: 
-    case 215: 
-    case 136: 
-    case 21930: 
-    case 131: 
-    case 2352003: 
-    case 22186: 
-    case 22203: 
-    case 159: 
-    case 25188: 
-    case 251: 
-    case 20529: 
-    case 20530: 
-    case 16980: 
-    case 18401: 
-    case 18408: 
-    case 179: 
-    case 241: 
-      do
+      if (paramInt != 20530)
       {
-        do
+        boolean bool2 = false;
+        boolean bool1 = false;
+        switch (paramInt)
         {
-          do
+        default: 
+          switch (paramInt)
           {
-            do
+          default: 
+            return;
+          case 21949: 
+            this.currentTrack.maxFrameAverageLuminance = ((int)paramLong);
+            return;
+          case 21948: 
+            this.currentTrack.maxContentLuminance = ((int)paramLong);
+            return;
+          case 21947: 
+            localObject = this.currentTrack;
+            ((MatroskaExtractor.Track)localObject).hasColorInfo = true;
+            paramInt = (int)paramLong;
+            if (paramInt != 1)
             {
-              do
+              if (paramInt != 9)
               {
-                do
+                if ((paramInt != 4) && (paramInt != 5) && (paramInt != 6) && (paramInt != 7)) {
+                  return;
+                }
+                this.currentTrack.colorSpace = 2;
+                return;
+              }
+              ((MatroskaExtractor.Track)localObject).colorSpace = 6;
+              return;
+            }
+            ((MatroskaExtractor.Track)localObject).colorSpace = 1;
+            return;
+          case 21946: 
+            paramInt = (int)paramLong;
+            if (paramInt != 1) {
+              if (paramInt != 16)
+              {
+                if (paramInt != 18)
                 {
-                  do
-                  {
-                    do
-                    {
-                      return;
-                    } while (paramLong == 1L);
-                    throw new ParserException("EBMLReadVersion " + paramLong + " not supported");
-                  } while ((paramLong >= 1L) && (paramLong <= 2L));
-                  throw new ParserException("DocTypeReadVersion " + paramLong + " not supported");
-                  this.seekEntryPosition = (this.segmentContentPosition + paramLong);
+                  if ((paramInt == 6) || (paramInt == 7)) {}
+                }
+                else {
+                  this.currentTrack.colorTransfer = 7;
+                }
+              }
+              else
+              {
+                this.currentTrack.colorTransfer = 6;
+                return;
+              }
+            }
+            this.currentTrack.colorTransfer = 3;
+            return;
+          }
+          paramInt = (int)paramLong;
+          if (paramInt != 1)
+          {
+            if (paramInt != 2) {
+              return;
+            }
+            this.currentTrack.colorRange = 1;
+            return;
+          }
+          this.currentTrack.colorRange = 2;
+          return;
+        case 2807729: 
+          this.timecodeScale = paramLong;
+          return;
+        case 2352003: 
+          this.currentTrack.defaultSampleDurationNs = ((int)paramLong);
+          return;
+        case 25188: 
+          this.currentTrack.audioBitDepth = ((int)paramLong);
+          return;
+        case 22203: 
+          this.currentTrack.seekPreRollNs = paramLong;
+          return;
+        case 22186: 
+          this.currentTrack.codecDelayNs = paramLong;
+          return;
+        case 21930: 
+          localObject = this.currentTrack;
+          if (paramLong == 1L) {
+            bool1 = true;
+          }
+          ((MatroskaExtractor.Track)localObject).flagDefault = bool1;
+          return;
+        case 21690: 
+          this.currentTrack.displayHeight = ((int)paramLong);
+          return;
+        case 21682: 
+          this.currentTrack.displayUnit = ((int)paramLong);
+          return;
+        case 21680: 
+          this.currentTrack.displayWidth = ((int)paramLong);
+          return;
+        case 21432: 
+          paramInt = (int)paramLong;
+          if (paramInt != 0)
+          {
+            if (paramInt != 1)
+            {
+              if (paramInt != 3)
+              {
+                if (paramInt != 15) {
                   return;
-                  this.timecodeScale = paramLong;
-                  return;
-                  this.currentTrack.width = ((int)paramLong);
-                  return;
-                  this.currentTrack.height = ((int)paramLong);
-                  return;
-                  this.currentTrack.displayWidth = ((int)paramLong);
-                  return;
-                  this.currentTrack.displayHeight = ((int)paramLong);
-                  return;
-                  this.currentTrack.displayUnit = ((int)paramLong);
-                  return;
-                  this.currentTrack.number = ((int)paramLong);
-                  return;
-                  MatroskaExtractor.Track localTrack = this.currentTrack;
-                  if (paramLong == 1L) {}
-                  for (;;)
-                  {
-                    localTrack.flagForced = bool1;
-                    return;
-                    bool1 = false;
-                  }
-                  localTrack = this.currentTrack;
-                  if (paramLong == 1L) {}
-                  for (bool1 = bool2;; bool1 = false)
-                  {
-                    localTrack.flagDefault = bool1;
-                    return;
-                  }
-                  this.currentTrack.type = ((int)paramLong);
-                  return;
-                  this.currentTrack.defaultSampleDurationNs = ((int)paramLong);
-                  return;
-                  this.currentTrack.codecDelayNs = paramLong;
-                  return;
-                  this.currentTrack.seekPreRollNs = paramLong;
-                  return;
-                  this.currentTrack.channelCount = ((int)paramLong);
-                  return;
-                  this.currentTrack.audioBitDepth = ((int)paramLong);
-                  return;
-                  this.sampleSeenReferenceBlock = true;
-                  return;
-                } while (paramLong == 0L);
-                throw new ParserException("ContentEncodingOrder " + paramLong + " not supported");
-              } while (paramLong == 1L);
-              throw new ParserException("ContentEncodingScope " + paramLong + " not supported");
-            } while (paramLong == 3L);
-            throw new ParserException("ContentCompAlgo " + paramLong + " not supported");
-          } while (paramLong == 5L);
-          throw new ParserException("ContentEncAlgo " + paramLong + " not supported");
-        } while (paramLong == 1L);
-        throw new ParserException("AESSettingsCipherMode " + paramLong + " not supported");
-        this.cueTimesUs.add(scaleTimecodeToUs(paramLong));
-        return;
-      } while (this.seenClusterPositionForCurrentCuePoint);
-      this.cueClusterPositions.add(paramLong);
-      this.seenClusterPositionForCurrentCuePoint = true;
-      return;
-    case 231: 
-      this.clusterTimecodeUs = scaleTimecodeToUs(paramLong);
-      return;
-    case 155: 
-      this.blockDurationUs = scaleTimecodeToUs(paramLong);
-      return;
-    case 21432: 
-      switch ((int)paramLong)
-      {
-      default: 
-        return;
-      case 0: 
-        this.currentTrack.stereoMode = 0;
-        return;
-      case 1: 
-        this.currentTrack.stereoMode = 2;
-        return;
-      case 3: 
-        this.currentTrack.stereoMode = 1;
-        return;
+                }
+                this.currentTrack.stereoMode = 3;
+                return;
+              }
+              this.currentTrack.stereoMode = 1;
+              return;
+            }
+            this.currentTrack.stereoMode = 2;
+            return;
+          }
+          this.currentTrack.stereoMode = 0;
+          return;
+        case 21420: 
+          this.seekEntryPosition = (paramLong + this.segmentContentPosition);
+          return;
+        case 18408: 
+          if (paramLong == 1L) {
+            return;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("AESSettingsCipherMode ");
+          ((StringBuilder)localObject).append(paramLong);
+          ((StringBuilder)localObject).append(" not supported");
+          throw new ParserException(((StringBuilder)localObject).toString());
+        case 18401: 
+          if (paramLong == 5L) {
+            return;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("ContentEncAlgo ");
+          ((StringBuilder)localObject).append(paramLong);
+          ((StringBuilder)localObject).append(" not supported");
+          throw new ParserException(((StringBuilder)localObject).toString());
+        case 17143: 
+          if (paramLong == 1L) {
+            return;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("EBMLReadVersion ");
+          ((StringBuilder)localObject).append(paramLong);
+          ((StringBuilder)localObject).append(" not supported");
+          throw new ParserException(((StringBuilder)localObject).toString());
+        case 17029: 
+          if ((paramLong >= 1L) && (paramLong <= 2L)) {
+            return;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("DocTypeReadVersion ");
+          ((StringBuilder)localObject).append(paramLong);
+          ((StringBuilder)localObject).append(" not supported");
+          throw new ParserException(((StringBuilder)localObject).toString());
+        case 16980: 
+          if (paramLong == 3L) {
+            return;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("ContentCompAlgo ");
+          ((StringBuilder)localObject).append(paramLong);
+          ((StringBuilder)localObject).append(" not supported");
+          throw new ParserException(((StringBuilder)localObject).toString());
+        case 251: 
+          this.sampleSeenReferenceBlock = true;
+          return;
+        case 241: 
+          if (this.seenClusterPositionForCurrentCuePoint) {
+            break;
+          }
+          this.cueClusterPositions.add(paramLong);
+          this.seenClusterPositionForCurrentCuePoint = true;
+          return;
+        case 231: 
+          this.clusterTimecodeUs = scaleTimecodeToUs(paramLong);
+          return;
+        case 215: 
+          this.currentTrack.number = ((int)paramLong);
+          return;
+        case 186: 
+          this.currentTrack.height = ((int)paramLong);
+          return;
+        case 179: 
+          this.cueTimesUs.add(scaleTimecodeToUs(paramLong));
+          return;
+        case 176: 
+          this.currentTrack.width = ((int)paramLong);
+          return;
+        case 159: 
+          this.currentTrack.channelCount = ((int)paramLong);
+          return;
+        case 155: 
+          this.blockDurationUs = scaleTimecodeToUs(paramLong);
+          return;
+        case 136: 
+          localObject = this.currentTrack;
+          bool1 = bool2;
+          if (paramLong == 1L) {
+            bool1 = true;
+          }
+          ((MatroskaExtractor.Track)localObject).flagForced = bool1;
+          return;
+        case 131: 
+          this.currentTrack.type = ((int)paramLong);
+          return;
+        }
       }
-      this.currentTrack.stereoMode = 3;
-      return;
-    case 21947: 
-      this.currentTrack.hasColorInfo = true;
-      switch ((int)paramLong)
+      else
       {
-      case 2: 
-      case 3: 
-      case 8: 
-      default: 
-        return;
-      case 1: 
-        this.currentTrack.colorSpace = 1;
-        return;
-      case 4: 
-      case 5: 
-      case 6: 
-      case 7: 
-        this.currentTrack.colorSpace = 2;
-        return;
+        if (paramLong == 1L) {
+          return;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("ContentEncodingScope ");
+        ((StringBuilder)localObject).append(paramLong);
+        ((StringBuilder)localObject).append(" not supported");
+        throw new ParserException(((StringBuilder)localObject).toString());
       }
-      this.currentTrack.colorSpace = 6;
-      return;
-    case 21946: 
-      switch ((int)paramLong)
-      {
-      default: 
-        return;
-      case 1: 
-      case 6: 
-      case 7: 
-        this.currentTrack.colorTransfer = 3;
-        return;
-      case 16: 
-        this.currentTrack.colorTransfer = 6;
-        return;
-      }
-      this.currentTrack.colorTransfer = 7;
-      return;
-    case 21945: 
-      switch ((int)paramLong)
-      {
-      default: 
-        return;
-      case 1: 
-        this.currentTrack.colorRange = 2;
-        return;
-      }
-      this.currentTrack.colorRange = 1;
-      return;
-    case 21948: 
-      this.currentTrack.maxContentLuminance = ((int)paramLong);
-      return;
     }
-    this.currentTrack.maxFrameAverageLuminance = ((int)paramLong);
+    else {
+      if (paramLong != 0L) {
+        break label1120;
+      }
+    }
+    return;
+    label1120:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ContentEncodingOrder ");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" not supported");
+    throw new ParserException(((StringBuilder)localObject).toString());
   }
   
   boolean isLevel1Element(int paramInt)
@@ -1268,28 +1363,26 @@ public final class MatroskaExtractor
     int j = 1;
     while ((j != 0) && (!this.sampleRead))
     {
-      bool = this.reader.read(paramExtractorInput);
+      boolean bool = this.reader.read(paramExtractorInput);
       j = bool;
       if (bool)
       {
         j = bool;
         if (maybeSeekForCues(paramPositionHolder, paramExtractorInput.getPosition())) {
-          i = 1;
+          return 1;
         }
       }
     }
-    while (j != 0)
+    if (j == 0)
     {
-      boolean bool;
-      return i;
+      while (i < this.tracks.size())
+      {
+        ((MatroskaExtractor.Track)this.tracks.valueAt(i)).outputPendingSampleMetadata();
+        i += 1;
+      }
+      return -1;
     }
-    i = 0;
-    while (i < this.tracks.size())
-    {
-      ((MatroskaExtractor.Track)this.tracks.valueAt(i)).outputPendingSampleMetadata();
-      i += 1;
-    }
-    return -1;
+    return 0;
   }
   
   public void release() {}
@@ -1297,11 +1390,11 @@ public final class MatroskaExtractor
   public void seek(long paramLong1, long paramLong2)
   {
     this.clusterTimecodeUs = -9223372036854775807L;
+    int i = 0;
     this.blockState = 0;
     this.reader.reset();
     this.varintReader.reset();
     resetSample();
-    int i = 0;
     while (i < this.tracks.size())
     {
       ((MatroskaExtractor.Track)this.tracks.valueAt(i)).reset();
@@ -1316,75 +1409,114 @@ public final class MatroskaExtractor
   
   void startMasterElement(int paramInt, long paramLong1, long paramLong2)
   {
-    switch (paramInt)
+    if (paramInt != 160)
     {
-    case 25152: 
-    default: 
-    case 408125543: 
-    case 19899: 
-    case 475249515: 
-    case 187: 
-    case 524531317: 
-      do
+      if (paramInt != 174)
       {
-        return;
-        if ((this.segmentContentPosition != -1L) && (this.segmentContentPosition != paramLong1)) {
-          throw new ParserException("Multiple Segment elements not supported");
+        if (paramInt != 187)
+        {
+          if (paramInt != 19899)
+          {
+            if (paramInt != 20533)
+            {
+              if (paramInt != 21968)
+              {
+                if (paramInt != 25152) {
+                  if (paramInt != 408125543)
+                  {
+                    if (paramInt != 475249515)
+                    {
+                      if (paramInt != 524531317) {
+                        return;
+                      }
+                      if (!this.sentSeekMap)
+                      {
+                        if ((this.seekForCuesEnabled) && (this.cuesContentPosition != -1L))
+                        {
+                          this.seekForCues = true;
+                          return;
+                        }
+                        this.extractorOutput.seekMap(new SeekMap.Unseekable(this.durationUs));
+                        this.sentSeekMap = true;
+                      }
+                    }
+                    else
+                    {
+                      this.cueTimesUs = new LongArray();
+                      this.cueClusterPositions = new LongArray();
+                    }
+                  }
+                  else
+                  {
+                    long l = this.segmentContentPosition;
+                    if ((l != -1L) && (l != paramLong1)) {
+                      throw new ParserException("Multiple Segment elements not supported");
+                    }
+                    this.segmentContentPosition = paramLong1;
+                    this.segmentContentSize = paramLong2;
+                  }
+                }
+              }
+              else {
+                this.currentTrack.hasColorInfo = true;
+              }
+            }
+            else {
+              this.currentTrack.hasContentEncryption = true;
+            }
+          }
+          else
+          {
+            this.seekEntryId = -1;
+            this.seekEntryPosition = -1L;
+          }
         }
-        this.segmentContentPosition = paramLong1;
-        this.segmentContentSize = paramLong2;
-        return;
-        this.seekEntryId = -1;
-        this.seekEntryPosition = -1L;
-        return;
-        this.cueTimesUs = new LongArray();
-        this.cueClusterPositions = new LongArray();
-        return;
-        this.seenClusterPositionForCurrentCuePoint = false;
-        return;
-      } while (this.sentSeekMap);
-      if ((this.seekForCuesEnabled) && (this.cuesContentPosition != -1L))
-      {
-        this.seekForCues = true;
-        return;
+        else {
+          this.seenClusterPositionForCurrentCuePoint = false;
+        }
       }
-      this.extractorOutput.seekMap(new SeekMap.Unseekable(this.durationUs));
-      this.sentSeekMap = true;
-      return;
-    case 160: 
-      this.sampleSeenReferenceBlock = false;
-      return;
-    case 20533: 
-      this.currentTrack.hasContentEncryption = true;
-      return;
-    case 174: 
-      this.currentTrack = new MatroskaExtractor.Track(null);
-      return;
+      else {
+        this.currentTrack = new MatroskaExtractor.Track(null);
+      }
     }
-    this.currentTrack.hasColorInfo = true;
+    else {
+      this.sampleSeenReferenceBlock = false;
+    }
   }
   
   void stringElement(int paramInt, String paramString)
   {
-    switch (paramInt)
+    if (paramInt != 134)
     {
-    default: 
-    case 17026: 
-      do
+      if (paramInt != 17026)
       {
+        if (paramInt != 2274716) {
+          return;
+        }
+        MatroskaExtractor.Track.access$202(this.currentTrack, paramString);
         return;
-      } while (("webm".equals(paramString)) || ("matroska".equals(paramString)));
-      throw new ParserException("DocType " + paramString + " not supported");
-    case 134: 
-      this.currentTrack.codecId = paramString;
-      return;
+      }
+      if (!"webm".equals(paramString))
+      {
+        if ("matroska".equals(paramString)) {
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("DocType ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" not supported");
+        throw new ParserException(localStringBuilder.toString());
+      }
     }
-    MatroskaExtractor.Track.access$202(this.currentTrack, paramString);
+    else
+    {
+      this.currentTrack.codecId = paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mkv.MatroskaExtractor
  * JD-Core Version:    0.7.0.1
  */

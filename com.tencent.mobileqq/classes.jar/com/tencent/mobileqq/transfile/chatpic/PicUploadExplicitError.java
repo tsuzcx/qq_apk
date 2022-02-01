@@ -3,10 +3,10 @@ package com.tencent.mobileqq.transfile.chatpic;
 import android.content.res.Resources;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyTimeUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.GIFPreDownloadLimit;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class PicUploadExplicitError
@@ -20,120 +20,114 @@ public class PicUploadExplicitError
   
   private static int getError(int paramInt, MessageRecord paramMessageRecord, String paramString)
   {
-    int i = 2;
-    if ((paramInt == 9063) || (paramInt == 90632)) {
-      paramInt = 1;
-    }
-    int j;
-    do
+    if (paramInt != 9063)
     {
-      do
+      if (paramInt == 90632) {
+        return 1;
+      }
+      if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000))
       {
-        return paramInt;
-        if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000)) {
-          break;
+        if (paramInt == -9527)
+        {
+          paramInt = getReasonServerErrCode(paramString);
+          if (paramInt == 199) {
+            return 2;
+          }
+          if ((paramInt == 206) || (paramInt == 207)) {
+            return 3;
+          }
         }
-        if (paramInt != -9527) {
-          break label119;
+      }
+      else if (paramInt == -9527)
+      {
+        paramInt = getReasonServerErrCode(paramString);
+        if (paramInt == 197) {
+          return 2;
         }
-        j = getReasonServerErrCode(paramString);
-        paramInt = i;
-      } while (j == 197);
-      if ((j != 202) && (j != 201)) {
-        break;
+        if ((paramInt == 202) || (paramInt == 201)) {
+          return 3;
+        }
       }
-      return 3;
-      if (paramInt != -9527) {
-        break;
-      }
-      j = getReasonServerErrCode(paramString);
-      paramInt = i;
-    } while (j == 199);
-    if ((j == 206) || (j == 207)) {
-      return 3;
+      return -1;
     }
-    label119:
-    return -1;
+    return 1;
   }
   
   private static String getFailedTip(int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt != 1) && (paramInt != 2))
     {
-    default: 
-      return null;
-    case 1: 
-    case 2: 
-      return BaseApplicationImpl.getApplication().getResources().getString(2131690010);
+      if (paramInt != 3) {
+        return null;
+      }
+      return BaseApplication.getContext().getResources().getString(2131689924);
     }
-    return BaseApplicationImpl.getApplication().getResources().getString(2131690009);
+    return BaseApplication.getContext().getResources().getString(2131689925);
   }
   
   public static String getFailedTip(MessageForPic paramMessageForPic)
   {
-    Object localObject2 = null;
-    int i;
     try
     {
       String str = paramMessageForPic.getExtInfoFromExtStr("PicUploadExplicitError");
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty(str)) {
-        break label155;
-      }
-      i = getError(Integer.parseInt(str), paramMessageForPic, paramMessageForPic.getExtInfoFromExtStr("PicUploadExplicitErrorReason"));
-      if (i == 3)
+      if (!TextUtils.isEmpty(str))
       {
-        str = paramMessageForPic.getExtInfoFromExtStr("SEND_PHOTO_DAY_KEY");
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty(str)) {
-          break label155;
-        }
-        long l1 = Long.parseLong(str);
-        long l2 = SystemClock.uptimeMillis();
-        if (ReadInJoyTimeUtils.a(l1, l2))
+        int i = getError(Integer.parseInt(str), paramMessageForPic, paramMessageForPic.getExtInfoFromExtStr("PicUploadExplicitErrorReason"));
+        if (i == 3)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("PicUploadExplicitError", 2, "getFailedTip,lastSendPicTime:" + l1 + " timeCurrent:" + l2);
+          str = paramMessageForPic.getExtInfoFromExtStr("SEND_PHOTO_DAY_KEY");
+          if (!TextUtils.isEmpty(str))
+          {
+            long l1 = Long.parseLong(str);
+            long l2 = SystemClock.uptimeMillis();
+            if (GIFPreDownloadLimit.a(l1, l2))
+            {
+              if (QLog.isColorLevel())
+              {
+                paramMessageForPic = new StringBuilder();
+                paramMessageForPic.append("getFailedTip,lastSendPicTime:");
+                paramMessageForPic.append(l1);
+                paramMessageForPic.append(" timeCurrent:");
+                paramMessageForPic.append(l2);
+                QLog.d("PicUploadExplicitError", 2, paramMessageForPic.toString());
+              }
+              return getFailedTip(i);
+            }
+            paramMessageForPic.removeExtInfoToExtStr("SEND_PHOTO_DAY_KEY");
+            paramMessageForPic.updateMsgExtFiled();
+            return null;
           }
-          return getFailedTip(i);
         }
-        paramMessageForPic.removeExtInfoToExtStr("SEND_PHOTO_DAY_KEY");
-        paramMessageForPic.updateMsgExtFiled();
-        return null;
+        else
+        {
+          paramMessageForPic = getFailedTip(i);
+          return paramMessageForPic;
+        }
       }
     }
     catch (Exception paramMessageForPic)
     {
       paramMessageForPic.printStackTrace();
-      return null;
     }
-    Object localObject1 = getFailedTip(i);
-    label155:
-    return localObject1;
+    return null;
   }
   
   private static int getReasonServerErrCode(String paramString)
   {
-    int j = 0;
-    int i = j;
     if (paramString != null)
     {
       paramString = paramString.split("_");
-      i = j;
-      if (paramString != null)
-      {
-        i = j;
-        if (paramString.length != 2) {}
+      if ((paramString != null) && (paramString.length == 2)) {
+        try
+        {
+          int i = Integer.parseInt(paramString[1]);
+          return i;
+        }
+        catch (NumberFormatException paramString)
+        {
+          paramString.printStackTrace();
+        }
       }
-    }
-    try
-    {
-      i = Integer.parseInt(paramString[1]);
-      return i;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
     }
     return 0;
   }
@@ -142,33 +136,41 @@ public class PicUploadExplicitError
   {
     if ((paramMessageRecord instanceof MessageForPic))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadExplicitError", 2, "uploadFailUpdateMsg,errCode:" + paramInt + " errStr:" + paramString1 + " uinType:" + paramMessageRecord.istroop + " msg:" + paramMessageRecord);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("uploadFailUpdateMsg,errCode:");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" errStr:");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(" uinType:");
+        localStringBuilder.append(paramMessageRecord.istroop);
+        localStringBuilder.append(" msg:");
+        localStringBuilder.append(paramMessageRecord);
+        QLog.d("PicUploadExplicitError", 2, localStringBuilder.toString());
       }
       int i = getError(paramInt, paramMessageRecord, paramString2);
       if (i > 0)
       {
-        if (i != 3) {
-          break label124;
+        if (i == 3)
+        {
+          paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
+          paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitErrorReason", paramString2);
+          paramMessageRecord.saveExtInfoToExtStr("SEND_PHOTO_DAY_KEY", String.valueOf(SystemClock.uptimeMillis()));
         }
-        paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
-        paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitErrorReason", paramString2);
-        paramMessageRecord.saveExtInfoToExtStr("SEND_PHOTO_DAY_KEY", String.valueOf(SystemClock.uptimeMillis()));
+        else
+        {
+          paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
+          paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitErrorReason", paramString2);
+        }
+        ((MessageForPic)paramMessageRecord).updateMsgExtFiled();
       }
-    }
-    for (;;)
-    {
-      ((MessageForPic)paramMessageRecord).updateMsgExtFiled();
-      return;
-      label124:
-      paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
-      paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitErrorReason", paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.chatpic.PicUploadExplicitError
  * JD-Core Version:    0.7.0.1
  */

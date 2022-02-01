@@ -33,15 +33,16 @@ public final class oidb_0x972$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 802, 810 }, new String[] { "key_word", "version", "search_request", "gander", "start_age", "end_age", "constellation", "boold_type", "country_id", "province_id", "city_id", "h_country_id", "h_province_id", "h_city_id", "career_id", "online", "video", "extension_request_info", "check_nick" }, new Object[] { localByteStringMicro1, localByteStringMicro2, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro3 }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 802, 810 }, new String[] { "key_word", "version", "search_request", "gander", "start_age", "end_age", "constellation", "boold_type", "country_id", "province_id", "city_id", "h_country_id", "h_province_id", "h_city_id", "career_id", "online", "video", "extension_request_info", "check_nick" }, new Object[] { localByteStringMicro1, localByteStringMicro2, null, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, null, localByteStringMicro3 }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x972.oidb_0x972.ReqBody
  * JD-Core Version:    0.7.0.1
  */

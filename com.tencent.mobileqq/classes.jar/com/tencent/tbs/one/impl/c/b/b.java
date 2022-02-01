@@ -49,37 +49,40 @@ public final class b
         ((ApplicationInfo)localObject).publicSourceDir = paramString;
       }
     }
-    for (;;)
+    try
     {
-      try
-      {
-        this.c = paramContext.getPackageManager().getResourcesForApplication((ApplicationInfo)localObject);
-        if (this.c != null)
-        {
-          this.d = this.c.newTheme();
-          paramContext = getBaseContext().getTheme();
-          if (paramContext != null) {
-            this.d.setTo(paramContext);
-          }
-          int i = ((ApplicationInfo)localObject).theme;
-          if (i != 0) {
-            this.d.applyStyle(i, true);
-          }
-          this.a = new a(this);
-          return;
-        }
+      this.c = paramContext.getPackageManager().getResourcesForApplication((ApplicationInfo)localObject);
+    }
+    catch (Throwable localThrowable)
+    {
+      label70:
+      int i;
+      break label70;
+    }
+    this.c = a(paramContext, paramString);
+    paramContext = this.c;
+    if (paramContext != null)
+    {
+      this.d = paramContext.newTheme();
+      paramContext = getBaseContext().getTheme();
+      if (paramContext != null) {
+        this.d.setTo(paramContext);
       }
-      catch (Throwable localThrowable)
-      {
-        this.c = a(paramContext, paramString);
-        continue;
-        f.b("Failed to create resource info from %s", new Object[] { paramString });
-        continue;
+      i = ((ApplicationInfo)localObject).theme;
+      if (i != 0) {
+        this.d.applyStyle(i, true);
       }
+    }
+    else
+    {
+      f.b("Failed to create resource info from %s", new Object[] { paramString });
+      break label183;
       f.b("Failed to get application info from %s", new Object[] { paramString });
-      continue;
+      break label183;
       f.b("Failed to get package info from %s", new Object[] { paramString });
     }
+    label183:
+    this.a = new a(this);
   }
   
   private Intent a(Intent paramIntent)
@@ -98,29 +101,35 @@ public final class b
     }
     try
     {
-      AssetManager localAssetManager = (AssetManager)AssetManager.class.newInstance();
+      localAssetManager = (AssetManager)AssetManager.class.newInstance();
       b.invoke(localAssetManager, new Object[] { paramString });
-      Object localObject = paramContext.getResources();
+      localObject = paramContext.getResources();
       paramContext = ((Resources)localObject).getDisplayMetrics();
-      Configuration localConfiguration = ((Resources)localObject).getConfiguration();
+      localConfiguration = ((Resources)localObject).getConfiguration();
       localObject = localObject.getClass();
       boolean bool = "android.taobao.atlas.runtime.DelegateResources".equals(((Class)localObject).getName());
-      if (!bool) {
-        try
-        {
-          localObject = (Resources)((Class)localObject).getConstructor(new Class[] { AssetManager.class, DisplayMetrics.class, Configuration.class }).newInstance(new Object[] { localAssetManager, paramContext, localConfiguration });
-          return localObject;
-        }
-        catch (Throwable localThrowable) {}
-      }
-      paramContext = new Resources(localAssetManager, paramContext, localConfiguration);
-      return paramContext;
+      if (bool) {}
     }
     catch (Throwable paramContext)
     {
+      AssetManager localAssetManager;
+      Object localObject;
+      Configuration localConfiguration;
+      label126:
       f.b("Failed to new resources from %s", new Object[] { paramString, paramContext });
+      return null;
     }
-    return null;
+    try
+    {
+      localObject = (Resources)((Class)localObject).getConstructor(new Class[] { AssetManager.class, DisplayMetrics.class, Configuration.class }).newInstance(new Object[] { localAssetManager, paramContext, localConfiguration });
+      return localObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label126;
+    }
+    paramContext = new Resources(localAssetManager, paramContext, localConfiguration);
+    return paramContext;
   }
   
   public final AssetManager getAssets()
@@ -138,16 +147,18 @@ public final class b
   
   public final String getPackageName()
   {
-    if (this.e != null) {
-      return this.e;
+    String str = this.e;
+    if (str != null) {
+      return str;
     }
     return super.getPackageName();
   }
   
   public final Resources getResources()
   {
-    if (this.c != null) {
-      return this.c;
+    Resources localResources = this.c;
+    if (localResources != null) {
+      return localResources;
     }
     return super.getResources();
   }
@@ -162,17 +173,19 @@ public final class b
   
   public final Resources.Theme getTheme()
   {
-    if (this.d != null) {
-      return this.d;
+    Resources.Theme localTheme = this.d;
+    if (localTheme != null) {
+      return localTheme;
     }
     return super.getTheme();
   }
   
   public final void setTheme(int paramInt)
   {
-    if (this.d != null)
+    Resources.Theme localTheme = this.d;
+    if (localTheme != null)
     {
-      this.d.applyStyle(paramInt, true);
+      localTheme.applyStyle(paramInt, true);
       return;
     }
     super.setTheme(paramInt);
@@ -190,7 +203,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c.b.b
  * JD-Core Version:    0.7.0.1
  */

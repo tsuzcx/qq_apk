@@ -31,8 +31,14 @@ public class DateUtil
     localSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
     String str = paramString.substring(0, paramString.indexOf("."));
     paramString = paramString.substring(paramString.indexOf("."));
-    paramString = paramString.substring(0, 4) + "Z";
-    return localSimpleDateFormat.parse(str + paramString).getTime();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString.substring(0, 4));
+    localStringBuilder.append("Z");
+    paramString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(paramString);
+    return localSimpleDateFormat.parse(localStringBuilder.toString()).getTime();
   }
 }
 

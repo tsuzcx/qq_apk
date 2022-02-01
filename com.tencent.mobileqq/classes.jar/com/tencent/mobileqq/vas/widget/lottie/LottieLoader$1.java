@@ -12,20 +12,20 @@ class LottieLoader$1
   
   public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (paramLottieComposition == null) {
+    if (paramLottieComposition == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("LottieLoader", 2, "composition is null ,return");
       }
-    }
-    do
-    {
       return;
-      if (!LottieLoader.access$000(this.this$0)) {
-        break;
+    }
+    if (LottieLoader.access$000(this.this$0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LottieLoader", 2, "anim is destroy ,return");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("LottieLoader", 2, "anim is destroy ,return");
-    return;
+      return;
+    }
     this.val$animationView.setComposition(paramLottieComposition);
     this.val$animationView.setImageAssetDelegate(new LottieLoader.1.1(this));
     if (this.val$autoPlay)
@@ -38,7 +38,7 @@ class LottieLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.widget.lottie.LottieLoader.1
  * JD-Core Version:    0.7.0.1
  */

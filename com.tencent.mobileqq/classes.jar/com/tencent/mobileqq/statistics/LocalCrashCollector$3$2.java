@@ -2,8 +2,10 @@ package com.tencent.mobileqq.statistics;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.activity.aio.core.AIOContext;
+import com.tencent.mobileqq.activity.aio.core.input.AIOInput;
+import com.tencent.mobileqq.activity.aio.coreui.input.EditTextUI;
+import com.tencent.mobileqq.activity.aio.coreui.input.InputUIContainer;
 
 class LocalCrashCollector$3$2
   implements DialogInterface.OnClickListener
@@ -14,7 +16,7 @@ class LocalCrashCollector$3$2
   {
     try
     {
-      LocalCrashCollector.a(this.a.this$0).a.setText("");
+      LocalCrashCollector.a(this.a.this$0).a().a().a().a("");
       LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
       paramDialogInterface.dismiss();
       return;
@@ -27,7 +29,7 @@ class LocalCrashCollector$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.LocalCrashCollector.3.2
  * JD-Core Version:    0.7.0.1
  */

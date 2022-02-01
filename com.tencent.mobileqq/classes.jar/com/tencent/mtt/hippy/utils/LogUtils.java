@@ -6,30 +6,28 @@ public class LogUtils
 {
   private static boolean DEBUG_ENABLE = false;
   
-  public static int d(String paramString1, String paramString2)
+  public static void d(String paramString1, String paramString2)
   {
     if (DEBUG_ENABLE) {
-      return Log.d(paramString1, paramString2);
+      Log.d(paramString1, paramString2);
     }
-    return 0;
   }
   
-  public static int d(String paramString1, String paramString2, Throwable paramThrowable)
+  public static void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
     if (DEBUG_ENABLE) {
-      return Log.d(paramString1, paramString2, paramThrowable);
+      Log.d(paramString1, paramString2, paramThrowable);
     }
-    return 0;
   }
   
-  public static int e(String paramString1, String paramString2)
+  public static void e(String paramString1, String paramString2)
   {
-    return Log.e(paramString1, paramString2);
+    Log.e(paramString1, paramString2);
   }
   
-  public static int e(String paramString1, String paramString2, Throwable paramThrowable)
+  public static void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return Log.e(paramString1, paramString2, paramThrowable);
+    Log.e(paramString1, paramString2, paramThrowable);
   }
   
   public static void enableDebugLog(boolean paramBoolean)
@@ -37,59 +35,49 @@ public class LogUtils
     DEBUG_ENABLE = paramBoolean;
   }
   
-  public static int i(String paramString1, String paramString2)
+  public static void i(String paramString1, String paramString2)
   {
     if (DEBUG_ENABLE) {
-      return Log.i(paramString1, paramString2);
+      Log.i(paramString1, paramString2);
     }
-    return 0;
   }
   
-  public static int l(String paramString1, String paramString2)
+  public static void l(String paramString1, String paramString2)
   {
-    if (DEBUG_ENABLE)
+    if (!DEBUG_ENABLE) {
+      return;
+    }
+    int k = 0;
+    int i = 3800;
+    while (k < paramString2.length())
     {
-      int i = 3800;
-      int j = 0;
-      if (j < paramString2.length())
-      {
-        String str;
-        if (paramString2.length() < i)
-        {
-          i = paramString2.length();
-          str = paramString2.substring(j, i);
-        }
-        for (j = i;; j = i)
-        {
-          Log.i(paramString1, str);
-          i = j + 3800;
-          break;
-          str = paramString2.substring(j, i);
-        }
+      int j = i;
+      if (paramString2.length() < i) {
+        j = paramString2.length();
       }
+      Log.i(paramString1, paramString2.substring(k, j));
+      i = j + 3800;
+      k = j;
     }
-    return 0;
   }
   
-  public static int v(String paramString1, String paramString2)
+  public static void v(String paramString1, String paramString2)
   {
     if (DEBUG_ENABLE) {
-      return Log.v(paramString1, paramString2);
+      Log.v(paramString1, paramString2);
     }
-    return 0;
   }
   
-  public static int w(String paramString1, String paramString2)
+  public static void w(String paramString1, String paramString2)
   {
     if (DEBUG_ENABLE) {
-      return Log.w(paramString1, paramString2);
+      Log.w(paramString1, paramString2);
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.LogUtils
  * JD-Core Version:    0.7.0.1
  */

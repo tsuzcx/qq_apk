@@ -2,7 +2,6 @@ package com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper;
 
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenContainer;
 import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoInnerStatusListener;
 import com.tencent.mobileqq.qqfloatingwindow.listener.IWindowStatusListener;
 
@@ -18,31 +17,32 @@ class FloatingVideoWrapper$1
       FloatingVideoWrapper.a(this.a).notifyVideoStop();
       FloatingVideoWrapper.a(this.a, 1);
     }
-    this.a.a(true, new View[] { FloatingVideoWrapper.a(this.a) });
+    FloatingVideoWrapper localFloatingVideoWrapper = this.a;
+    localFloatingVideoWrapper.a(true, new View[] { FloatingVideoWrapper.a(localFloatingVideoWrapper) });
   }
   
   public void a(boolean paramBoolean)
   {
-    if ((this.a.mFloatingContainer != null) && (this.a.mFloatingContainer.getVisibility() != 0))
+    if ((!this.a.a()) && (this.a.a() != 0))
     {
-      this.a.a(true, new View[] { this.a.mFloatingContainer });
+      this.a.a(true);
       if ((paramBoolean) && (FloatingVideoWrapper.a(this.a) != null) && (FloatingVideoWrapper.a(this.a) == 0))
       {
         FloatingVideoWrapper.a(this.a).notifyVideoStart();
-        this.a.a(false, new View[] { FloatingVideoWrapper.a(this.a) });
+        localFloatingVideoWrapper = this.a;
+        localFloatingVideoWrapper.a(false, new View[] { FloatingVideoWrapper.a(localFloatingVideoWrapper) });
+        return;
       }
+      if ((FloatingVideoWrapper.c(this.a) != null) && (FloatingVideoWrapper.c(this.a).getVisibility() == 0))
+      {
+        localFloatingVideoWrapper = this.a;
+        localFloatingVideoWrapper.a(false, new View[] { FloatingVideoWrapper.a(localFloatingVideoWrapper) });
+        return;
+      }
+      FloatingVideoWrapper localFloatingVideoWrapper = this.a;
+      localFloatingVideoWrapper.a(true, new View[] { FloatingVideoWrapper.a(localFloatingVideoWrapper) });
+      FloatingVideoWrapper.a(this.a, 1);
     }
-    else
-    {
-      return;
-    }
-    if ((FloatingVideoWrapper.c(this.a) != null) && (FloatingVideoWrapper.c(this.a).getVisibility() == 0))
-    {
-      this.a.a(false, new View[] { FloatingVideoWrapper.a(this.a) });
-      return;
-    }
-    this.a.a(true, new View[] { FloatingVideoWrapper.a(this.a) });
-    FloatingVideoWrapper.a(this.a, 1);
   }
   
   public void b()
@@ -50,8 +50,11 @@ class FloatingVideoWrapper$1
     if (FloatingVideoWrapper.a(this.a) != null) {
       FloatingVideoWrapper.a(this.a).notifyVideoStop();
     }
-    this.a.a(true, new View[] { FloatingVideoWrapper.a(this.a), FloatingVideoWrapper.a(this.a) });
-    this.a.a(false, new View[] { this.a.mFloatingContainer, FloatingVideoWrapper.b(this.a) });
+    FloatingVideoWrapper localFloatingVideoWrapper = this.a;
+    localFloatingVideoWrapper.a(true, new View[] { FloatingVideoWrapper.a(localFloatingVideoWrapper), FloatingVideoWrapper.a(this.a) });
+    localFloatingVideoWrapper = this.a;
+    localFloatingVideoWrapper.a(false, new View[] { FloatingVideoWrapper.b(localFloatingVideoWrapper) });
+    this.a.a(false);
   }
   
   public void c()
@@ -61,7 +64,7 @@ class FloatingVideoWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper.FloatingVideoWrapper.1
  * JD-Core Version:    0.7.0.1
  */

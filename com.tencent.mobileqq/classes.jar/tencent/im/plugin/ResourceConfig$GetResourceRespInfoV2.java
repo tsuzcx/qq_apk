@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class ResourceConfig$GetResourceRespInfoV2
   extends MessageMicro<GetResourceRespInfoV2>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 58, 66, 74, 82, 88, 96, 104, 112, 120, 128, 138, 146 }, new String[] { "pkgName", "newVer", "resSubType", "lanType", "priority", "resName", "resDesc", "resURLBig", "resURLSmall", "resConf", "defaultState", "canChangeState", "resId", "status", "push", "pluginType", "newPluginDesc", "newPluginURL" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "" }, GetResourceRespInfoV2.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field canChangeState = PBField.initUInt32(0);
   public final PBUInt32Field defaultState = PBField.initUInt32(0);
   public final PBUInt32Field lanType = PBField.initUInt32(0);
@@ -28,10 +28,16 @@ public final class ResourceConfig$GetResourceRespInfoV2
   public final PBStringField resURLBig = PBField.initString("");
   public final PBStringField resURLSmall = PBField.initString("");
   public final PBUInt32Field status = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 58, 66, 74, 82, 88, 96, 104, 112, 120, 128, 138, 146 }, new String[] { "pkgName", "newVer", "resSubType", "lanType", "priority", "resName", "resDesc", "resURLBig", "resURLSmall", "resConf", "defaultState", "canChangeState", "resId", "status", "push", "pluginType", "newPluginDesc", "newPluginURL" }, new Object[] { "", localInteger, localInteger, localInteger, localInteger, "", "", "", "", "", localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, "", "" }, GetResourceRespInfoV2.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.plugin.ResourceConfig.GetResourceRespInfoV2
  * JD-Core Version:    0.7.0.1
  */

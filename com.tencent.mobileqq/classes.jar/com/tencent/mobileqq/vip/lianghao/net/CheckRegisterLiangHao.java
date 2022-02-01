@@ -49,31 +49,37 @@ public class CheckRegisterLiangHao
       if (i == 200)
       {
         localObject = ((Response)localObject).body().string();
-        if (QLog.isColorLevel()) {
-          QLog.i("CheckRegisterLiangHao", 2, "json " + (String)localObject);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("json ");
+          localStringBuilder.append((String)localObject);
+          QLog.i("CheckRegisterLiangHao", 2, localStringBuilder.toString());
         }
         localObject = new JSONObject((String)localObject).optJSONObject("12196");
-        if (localObject != null)
-        {
-          localObject = ((JSONObject)localObject).optJSONObject("data");
-          if (localObject != null)
-          {
-            localObject = ((JSONObject)localObject).optJSONObject("mOut");
-            if (localObject != null) {
-              return new LiangHaoStatusRsp((JSONObject)localObject);
-            }
-          }
+        if (localObject == null) {
+          return null;
         }
+        localObject = ((JSONObject)localObject).optJSONObject("data");
+        if (localObject == null) {
+          return null;
+        }
+        localObject = ((JSONObject)localObject).optJSONObject("mOut");
+        if (localObject == null) {
+          return null;
+        }
+        return new LiangHaoStatusRsp((JSONObject)localObject);
       }
-      else
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("CheckRegisterLiangHao", 2, "sendRequest errorCode" + i);
-        }
-        localObject = new LiangHaoStatusRsp();
-        ((LiangHaoStatusRsp)localObject).a = i;
-        return localObject;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sendRequest errorCode");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("CheckRegisterLiangHao", 2, ((StringBuilder)localObject).toString());
       }
+      localObject = new LiangHaoStatusRsp();
+      ((LiangHaoStatusRsp)localObject).a = i;
+      return localObject;
     }
     catch (Throwable localThrowable)
     {
@@ -86,7 +92,12 @@ public class CheckRegisterLiangHao
   
   private String a()
   {
-    return "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?ts=" + System.currentTimeMillis() + "&data=" + a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?ts=");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("&data=");
+    localStringBuilder.append(a());
+    return localStringBuilder.toString();
   }
   
   private OkHttpClient a()
@@ -107,64 +118,61 @@ public class CheckRegisterLiangHao
       localJSONObject1.put("12196", localJSONObject2);
       return localJSONObject1;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label64:
+      break label64;
+    }
     return null;
   }
   
   private void a(LiangHaoStatusRsp paramLiangHaoStatusRsp)
   {
-    Object localObject2;
-    Object localObject1;
-    long l1;
-    long l2;
-    int i;
     if (QLog.isColorLevel())
     {
-      localObject2 = new StringBuilder().append("onResponse ");
-      if (paramLiangHaoStatusRsp == null)
-      {
-        localObject1 = "";
-        QLog.i("CheckRegisterLiangHao", 2, (String)localObject1);
-      }
-    }
-    else
-    {
-      l1 = SystemClock.elapsedRealtime();
-      l2 = this.jdField_a_of_type_Long;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onResponse ");
       if (paramLiangHaoStatusRsp == null) {
-        break label146;
+        localObject1 = "";
+      } else {
+        localObject1 = paramLiangHaoStatusRsp.toString();
       }
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("CheckRegisterLiangHao", 2, ((StringBuilder)localObject2).toString());
+    }
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = this.jdField_a_of_type_Long;
+    int i;
+    if (paramLiangHaoStatusRsp != null) {
       i = paramLiangHaoStatusRsp.a;
-      label63:
-      localObject1 = new HashMap();
-      ((HashMap)localObject1).put("param_FailCode", String.valueOf(i));
-      localObject2 = StatisticCollector.getInstance(BaseApplication.getContext());
-      if (i != 0) {
-        break label153;
-      }
-    }
-    label146:
-    label153:
-    for (boolean bool = true;; bool = false)
-    {
-      ((StatisticCollector)localObject2).collectPerformance(null, "reg_lh_check_uin", bool, l1 - l2, 0L, (HashMap)localObject1, "", true);
-      localObject1 = (CheckRegisterLiangHao.RequestCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject1 != null) {
-        break label159;
-      }
-      return;
-      localObject1 = paramLiangHaoStatusRsp.toString();
-      break;
+    } else {
       i = -30009;
-      break label63;
     }
-    label159:
+    Object localObject1 = new HashMap();
+    ((HashMap)localObject1).put("param_FailCode", String.valueOf(i));
+    Object localObject2 = StatisticCollector.getInstance(BaseApplication.getContext());
+    boolean bool;
+    if (i == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((StatisticCollector)localObject2).collectPerformance(null, "reg_lh_check_uin", bool, l1 - l2, 0L, (HashMap)localObject1, "", true);
+    localObject1 = (CheckRegisterLiangHao.RequestCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject1 == null) {
+      return;
+    }
     ThreadManagerV2.getUIHandlerV2().post(new CheckRegisterLiangHao.2(this, (CheckRegisterLiangHao.RequestCallBack)localObject1, paramLiangHaoStatusRsp));
   }
   
   private String b()
   {
-    return MD5.toMD5("uin=" + this.jdField_a_of_type_JavaLangString + "&key=" + "a4d7xwsbelhregistercard").toUpperCase();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("&key=");
+    localStringBuilder.append("a4d7xwsbelhregistercard");
+    return MD5.toMD5(localStringBuilder.toString()).toUpperCase();
   }
   
   public void a()
@@ -174,7 +182,7 @@ public class CheckRegisterLiangHao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.net.CheckRegisterLiangHao
  * JD-Core Version:    0.7.0.1
  */

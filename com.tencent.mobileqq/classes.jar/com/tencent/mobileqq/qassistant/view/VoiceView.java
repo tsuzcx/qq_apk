@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.qassistant.core.IViewPresenter;
 import com.tencent.mobileqq.qassistant.data.CommandInfo;
 import com.tencent.mobileqq.qassistant.data.FriendItemInfo;
@@ -15,11 +14,12 @@ import com.tencent.mobileqq.qassistant.data.VoiceItemInfo;
 import com.tencent.mobileqq.qassistant.listener.IPanelDragListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class VoiceView
   implements IViewPresenter, IPanelDragListener
 {
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+  private Context jdField_a_of_type_AndroidContentContext = MobileQQ.sMobileQQ;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -37,13 +37,13 @@ public class VoiceView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558746, null);
-    this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer = ((VoicePanelSlideContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131378243));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372861));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372862));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363070));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378242);
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381752));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558645, null);
+    this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer = ((VoicePanelSlideContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131377657));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372440));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372441));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363013));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377656);
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380982));
     d();
     e();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -53,19 +53,16 @@ public class VoiceView
   
   private void c(boolean paramBoolean)
   {
-    View localView;
-    if (this.jdField_b_of_type_AndroidViewView != null)
+    View localView = this.jdField_b_of_type_AndroidViewView;
+    if (localView != null)
     {
-      localView = this.jdField_b_of_type_AndroidViewView;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 4;
       }
-    }
-    label24:
-    for (int i = 0;; i = 4)
-    {
       localView.setVisibility(i);
-      return;
     }
   }
   
@@ -80,15 +77,17 @@ public class VoiceView
   
   private void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer.setPanelDragListener(this);
+    VoicePanelSlideContainer localVoicePanelSlideContainer = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer;
+    if (localVoicePanelSlideContainer != null) {
+      localVoicePanelSlideContainer.setPanelDragListener(this);
     }
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter.a();
+    VoiceAdapter localVoiceAdapter = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter;
+    if (localVoiceAdapter != null) {
+      return localVoiceAdapter.a();
     }
     return 3;
   }
@@ -101,64 +100,73 @@ public class VoiceView
   
   public CommandInfo a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter.a();
+    VoiceAdapter localVoiceAdapter = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter;
+    if (localVoiceAdapter != null) {
+      return localVoiceAdapter.a();
     }
     return null;
   }
   
   public List<VoiceItemInfo> a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter.a();
+    VoiceAdapter localVoiceAdapter = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter;
+    if (localVoiceAdapter != null) {
+      return localVoiceAdapter.a();
     }
     return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter.a();
+    IViewPresenter localIViewPresenter = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+    if (localIViewPresenter != null) {
+      localIViewPresenter.a();
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter.a(paramInt);
+    IViewPresenter localIViewPresenter = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+    if (localIViewPresenter != null) {
+      localIViewPresenter.a(paramInt);
     }
   }
   
   public void a(CommandInfo paramCommandInfo, List<VoiceItemInfo> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VoiceView", 2, "showCommandView infoList is empty");
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      VoiceAdapter localVoiceAdapter = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter;
+      if (localVoiceAdapter != null) {
+        localVoiceAdapter.a(paramCommandInfo, paramList);
       }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter.a(paramCommandInfo, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceView", 2, "showCommandView infoList is empty");
+    }
   }
   
   public void a(FriendItemInfo paramFriendItemInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter.a(paramFriendItemInfo);
+    IViewPresenter localIViewPresenter = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+    if (localIViewPresenter != null) {
+      localIViewPresenter.a(paramFriendItemInfo);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter.a(paramBoolean);
+    IViewPresenter localIViewPresenter = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+    if (localIViewPresenter != null) {
+      localIViewPresenter.a(paramBoolean);
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer != null) && (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer.a());
+    VoicePanelSlideContainer localVoicePanelSlideContainer = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer;
+    return (localVoicePanelSlideContainer != null) && (localVoicePanelSlideContainer.a());
   }
   
   public void b()
@@ -176,7 +184,7 @@ public class VoiceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.view.VoiceView
  * JD-Core Version:    0.7.0.1
  */

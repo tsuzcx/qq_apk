@@ -18,6 +18,7 @@ import com.tencent.mobileqq.utils.ConfigUtil;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Locale;
@@ -67,8 +68,10 @@ public class CfgProcess
   
   private CopyOnWriteArraySet<CfgProcess.OnGetConfigListener> a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.jdField_a_of_type_AndroidUtilSparseArray.indexOfValue(paramString) < 0) {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.indexOfValue(paramString) < 0) {
       return null;
     }
     return (CopyOnWriteArraySet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
@@ -92,193 +95,182 @@ public class CfgProcess
   public void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig, int paramInt)
   {
     String str1 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (TextUtils.isEmpty(str1)) {
+    if (TextUtils.isEmpty(str1))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("CfgProcess", 2, String.format(" handleConfig tag is null ! config: %s", new Object[] { Integer.valueOf(paramInt) }));
       }
-    }
-    String str2;
-    BaseApplication localBaseApplication;
-    CfgProcess.CfgParseResult localCfgParseResult;
-    do
-    {
       return;
-      str2 = paramQQAppInterface.getCurrentAccountUin();
-      localBaseApplication = paramQQAppInterface.getApp();
-      localCfgParseResult = new CfgProcess.CfgParseResult();
-      localCfgParseResult.jdField_b_of_type_Int = paramConfig.version.get();
-      localCfgParseResult.jdField_a_of_type_Int = SharedPreUtils.c(localBaseApplication, str2, str1);
-      if (localCfgParseResult.jdField_b_of_type_Int != localCfgParseResult.jdField_a_of_type_Int) {
-        break;
+    }
+    String str2 = paramQQAppInterface.getCurrentAccountUin();
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    CfgProcess.CfgParseResult localCfgParseResult = new CfgProcess.CfgParseResult();
+    localCfgParseResult.jdField_b_of_type_Int = paramConfig.version.get();
+    localCfgParseResult.jdField_a_of_type_Int = SharedPreUtils.c(localBaseApplication, str2, str1);
+    if (localCfgParseResult.jdField_b_of_type_Int == localCfgParseResult.jdField_a_of_type_Int)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CfgProcess", 2, new Object[] { " handleConfig config version is the same. [tag: %s, version: %s]", str1, Integer.valueOf(localCfgParseResult.jdField_b_of_type_Int) });
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("CfgProcess", 2, new Object[] { " handleConfig config version is the same. [tag: %s, version: %s]", str1, Integer.valueOf(localCfgParseResult.jdField_b_of_type_Int) });
-    return;
+      return;
+    }
     localCfgParseResult.c = 0;
-    Object localObject1 = null;
-    int j = 0;
+    ConfigurationService.Content localContent = null;
     int i;
+    int j;
     Object localObject2;
     if (paramConfig.msg_content_list.size() > 0)
     {
-      localObject1 = (ConfigurationService.Content)paramConfig.msg_content_list.get(0);
-      if (!"extend_friend_config_785".equals(str1)) {
-        break label931;
+      localContent = (ConfigurationService.Content)paramConfig.msg_content_list.get(0);
+      if ("extend_friend_config_785".equals(str1)) {
+        localContent = ConfigUtil.a(paramConfig.msg_content_list);
       }
-      i = 0;
-      while (i < paramConfig.msg_content_list.size())
-      {
-        localObject2 = localObject1;
-        if (((ConfigurationService.Content)paramConfig.msg_content_list.get(i)).task_id.get() > ((ConfigurationService.Content)localObject1).task_id.get()) {
-          localObject2 = (ConfigurationService.Content)paramConfig.msg_content_list.get(i);
-        }
-        i += 1;
-        localObject1 = localObject2;
-      }
-    }
-    label341:
-    ConfigurationService.Config localConfig;
-    label673:
-    label931:
-    for (paramConfig = (ConfigurationService.Config)localObject1;; paramConfig = localConfig)
-    {
-      if (paramConfig == null) {
+      if (localContent == null) {
         i = -1;
+      } else {
+        i = localContent.task_id.get();
       }
-      for (;;)
+      if (QLog.isDebugVersion())
       {
-        if (QLog.isDebugVersion()) {
-          QLog.d("CfgProcess", 2, " config task id " + i);
+        paramConfig = new StringBuilder();
+        paramConfig.append(" config task id ");
+        paramConfig.append(i);
+        QLog.d("CfgProcess", 2, paramConfig.toString());
+      }
+      if (localContent == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CfgProcess", 2, " handleConfig content is null !");
         }
-        if (paramConfig == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("CfgProcess", 2, " handleConfig content is null !");
-          }
-          localCfgParseResult.c = 1;
-          localObject1 = paramConfig;
-          j = i;
-          if (localCfgParseResult.jdField_a_of_type_JavaLangString == null) {
-            localCfgParseResult.jdField_a_of_type_JavaLangString = "";
-          }
-          localCfgParseResult.jdField_b_of_type_Boolean = true;
-          localCfgParseResult.jdField_a_of_type_Boolean = false;
-          if (localCfgParseResult.c != 0) {}
-        }
-        else
+        localCfgParseResult.c = 1;
+        paramConfig = localContent;
+        j = i;
+      }
+      else if (localContent.compress.get() == 1)
+      {
+        paramConfig = OlympicUtil.a(localContent.content.get().toByteArray());
+        if (paramConfig != null)
         {
           try
           {
-            for (;;)
-            {
-              ConfigUtil.a(paramQQAppInterface, str1, localCfgParseResult, j);
-              if (localCfgParseResult.jdField_a_of_type_Boolean) {
-                break label739;
-              }
-              SharedPreUtils.a(localBaseApplication, str2, str1, localCfgParseResult.jdField_a_of_type_JavaLangString);
-              paramConfig = a(str1);
-              if ((paramConfig == null) || (paramConfig.size() <= 0)) {
-                break label775;
-              }
-              paramConfig = paramConfig.iterator();
-              while (paramConfig.hasNext())
-              {
-                localObject2 = (CfgProcess.OnGetConfigListener)paramConfig.next();
-                try
-                {
-                  ((CfgProcess.OnGetConfigListener)localObject2).a(paramQQAppInterface, paramInt, str1, localCfgParseResult);
-                }
-                catch (Exception localException)
-                {
-                  localException.printStackTrace();
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.i("CfgProcess", 2, "handleConfig OnGetConfigListener fail:  " + str1);
-                }
-              }
-              i = paramConfig.task_id.get();
-              break;
-              if (paramConfig.compress.get() != 1) {
-                break label673;
-              }
-              localObject1 = OlympicUtil.a(paramConfig.content.get().toByteArray());
-              if (localObject1 == null) {
-                break label635;
-              }
-              try
-              {
-                localCfgParseResult.jdField_a_of_type_JavaLangString = new String((byte[])localObject1, "UTF-8");
-                j = i;
-                localObject1 = paramConfig;
-              }
-              catch (Throwable localThrowable)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("CfgProcess", 2, " handleConfig Throwable:" + localThrowable.getMessage());
-                }
-                localCfgParseResult.c = 2;
-                j = i;
-                localConfig = paramConfig;
-              }
-            }
-            break label341;
-            label635:
-            localCfgParseResult.c = 3;
+            localCfgParseResult.jdField_a_of_type_JavaLangString = new String(paramConfig, StandardCharsets.UTF_8);
+            paramConfig = localContent;
             j = i;
-            localConfig = paramConfig;
-            if (!QLog.isColorLevel()) {
-              break label341;
-            }
-            QLog.d("CfgProcess", 2, " handleConfig inflateConfigString error!");
-            j = i;
-            localConfig = paramConfig;
-            break label341;
-            localCfgParseResult.jdField_a_of_type_JavaLangString = paramConfig.content.get().toStringUtf8();
-            j = i;
-            localConfig = paramConfig;
           }
           catch (Throwable paramConfig)
           {
-            for (;;)
+            if (QLog.isColorLevel())
             {
-              paramConfig.printStackTrace();
-              if (QLog.isColorLevel())
-              {
-                QLog.i("CfgProcess", 2, "handleConfig call save individual fail:  " + str1);
-                continue;
-                label739:
-                if (QLog.isColorLevel()) {
-                  QLog.i("CfgProcess", 2, "handleConfig self save config tag: " + str1);
-                }
-              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append(" handleConfig Throwable:");
+              ((StringBuilder)localObject2).append(paramConfig.getMessage());
+              QLog.d("CfgProcess", 2, ((StringBuilder)localObject2).toString());
             }
+            localCfgParseResult.c = 2;
+            paramConfig = localContent;
+            j = i;
+          }
+        }
+        else
+        {
+          localCfgParseResult.c = 3;
+          paramConfig = localContent;
+          j = i;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("CfgProcess", 2, " handleConfig inflateConfigString error!");
+            paramConfig = localContent;
+            j = i;
           }
         }
       }
-      int k;
-      int m;
-      if (localCfgParseResult.jdField_b_of_type_Boolean)
+      else
       {
-        i = localCfgParseResult.jdField_b_of_type_Int;
-        SharedPreUtils.c(localBaseApplication, str2, str1, i);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        paramQQAppInterface = Locale.getDefault();
-        j = localCfgParseResult.jdField_a_of_type_Int;
-        k = localCfgParseResult.jdField_b_of_type_Int;
-        m = localCfgParseResult.c;
-        if (localConfig != null) {
-          break label918;
+        localCfgParseResult.jdField_a_of_type_JavaLangString = localContent.content.get().toStringUtf8();
+        paramConfig = localContent;
+        j = i;
+      }
+    }
+    else
+    {
+      j = 0;
+      paramConfig = localContent;
+    }
+    if (localCfgParseResult.jdField_a_of_type_JavaLangString == null) {
+      localCfgParseResult.jdField_a_of_type_JavaLangString = "";
+    }
+    localCfgParseResult.jdField_b_of_type_Boolean = true;
+    localCfgParseResult.jdField_a_of_type_Boolean = false;
+    if (localCfgParseResult.c == 0)
+    {
+      try
+      {
+        ConfigUtil.a(paramQQAppInterface, str1, localCfgParseResult, j);
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("handleConfig call save individual fail:  ");
+          ((StringBuilder)localObject1).append(str1);
+          QLog.i("CfgProcess", 2, ((StringBuilder)localObject1).toString());
         }
       }
-      for (i = 0;; i = localConfig.task_id.get())
+      if (!localCfgParseResult.jdField_a_of_type_Boolean)
       {
-        QLog.i("CfgProcess", 2, String.format(paramQQAppInterface, "handleConfigForTag  configId: %s, tag: %s, localVersion: %s, version: %s, result: %s, task_id:%s, strContent: %s", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i), localCfgParseResult.jdField_a_of_type_JavaLangString }));
-        return;
-        i = 0;
-        break;
+        SharedPreUtils.a(localBaseApplication, str2, str1, localCfgParseResult.jdField_a_of_type_JavaLangString);
       }
+      else if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handleConfig self save config tag: ");
+        ((StringBuilder)localObject1).append(str1);
+        QLog.i("CfgProcess", 2, ((StringBuilder)localObject1).toString());
+      }
+      Object localObject1 = a(str1);
+      if ((localObject1 != null) && (((CopyOnWriteArraySet)localObject1).size() > 0))
+      {
+        localObject1 = ((CopyOnWriteArraySet)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (CfgProcess.OnGetConfigListener)((Iterator)localObject1).next();
+          try
+          {
+            ((CfgProcess.OnGetConfigListener)localObject2).onGetConfig(paramQQAppInterface, paramInt, str1, localCfgParseResult);
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handleConfig OnGetConfigListener fail:  ");
+            localStringBuilder.append(str1);
+            QLog.i("CfgProcess", 2, localStringBuilder.toString());
+          }
+        }
+      }
+    }
+    if (localCfgParseResult.jdField_b_of_type_Boolean) {
+      i = localCfgParseResult.jdField_b_of_type_Int;
+    } else {
+      i = 0;
+    }
+    SharedPreUtils.c(localBaseApplication, str2, str1, i);
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = Locale.getDefault();
+      i = 0;
+      j = localCfgParseResult.jdField_a_of_type_Int;
+      int k = localCfgParseResult.jdField_b_of_type_Int;
+      int m = localCfgParseResult.c;
+      if (paramConfig != null) {
+        i = paramConfig.task_id.get();
+      }
+      QLog.i("CfgProcess", 2, String.format(paramQQAppInterface, "handleConfigForTag  configId: %s, tag: %s, localVersion: %s, version: %s, result: %s, task_id:%s, strContent: %s", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i), localCfgParseResult.jdField_a_of_type_JavaLangString }));
     }
   }
   
@@ -302,49 +294,48 @@ public class CfgProcess
       paramConfigSeq.version.set(0);
       i = 0;
     }
-    for (;;)
+    else
     {
-      paramConfigSeq.compress.set(1);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "initConfigVersion [id: %s, tag: %s, version: %s]", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(i) }));
-      return;
       i = SharedPreUtils.c(paramQQAppInterface, str2, str1);
       paramConfigSeq.version.set(i);
+    }
+    paramConfigSeq.compress.set(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "initConfigVersion [id: %s, tag: %s, version: %s]", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(i) }));
     }
   }
   
   public boolean a(CfgProcess.OnGetConfigListener paramOnGetConfigListener)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((CopyOnWriteArraySet)localIterator.next()).remove(paramOnGetConfigListener) | bool) {}
+    boolean bool = false;
+    while (localIterator.hasNext()) {
+      bool |= ((CopyOnWriteArraySet)localIterator.next()).remove(paramOnGetConfigListener);
+    }
     return bool;
   }
   
   public boolean a(String paramString, CfgProcess.OnGetConfigListener paramOnGetConfigListener)
   {
-    boolean bool = false;
     paramString = a(paramString);
     if (paramString != null) {
-      bool = paramString.add(paramOnGetConfigListener);
+      return paramString.add(paramOnGetConfigListener);
     }
-    return bool;
+    return false;
   }
   
   public boolean b(String paramString, CfgProcess.OnGetConfigListener paramOnGetConfigListener)
   {
-    boolean bool = false;
     paramString = a(paramString);
     if (paramString != null) {
-      bool = paramString.remove(paramOnGetConfigListener);
+      return paramString.remove(paramOnGetConfigListener);
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.CfgProcess
  * JD-Core Version:    0.7.0.1
  */

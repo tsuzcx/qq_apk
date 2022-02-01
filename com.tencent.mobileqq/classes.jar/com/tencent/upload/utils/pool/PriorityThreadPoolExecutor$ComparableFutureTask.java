@@ -23,29 +23,36 @@ class PriorityThreadPoolExecutor$ComparableFutureTask<V>
   
   public int compareTo(ComparableFutureTask<V> paramComparableFutureTask)
   {
-    if (this == paramComparableFutureTask) {}
-    do
-    {
+    if (this == paramComparableFutureTask) {
       return 0;
-      if (paramComparableFutureTask == null) {
-        return -1;
+    }
+    if (paramComparableFutureTask == null) {
+      return -1;
+    }
+    Object localObject = this.object;
+    if ((localObject != null) && (paramComparableFutureTask.object != null) && (localObject.getClass().equals(paramComparableFutureTask.object.getClass())))
+    {
+      localObject = this.object;
+      if ((localObject instanceof Comparable)) {
+        return ((Comparable)localObject).compareTo(paramComparableFutureTask.object);
       }
-    } while ((this.object == null) || (paramComparableFutureTask.object == null) || (!this.object.getClass().equals(paramComparableFutureTask.object.getClass())) || (!(this.object instanceof Comparable)));
-    return ((Comparable)this.object).compareTo(paramComparableFutureTask.object);
+    }
+    return 0;
   }
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof ComparableFutureTask))) {
-      return false;
+    if ((paramObject != null) && ((paramObject instanceof ComparableFutureTask)))
+    {
+      paramObject = (ComparableFutureTask)paramObject;
+      return this.object.equals(paramObject.object);
     }
-    paramObject = (ComparableFutureTask)paramObject;
-    return this.object.equals(paramObject.object);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.utils.pool.PriorityThreadPoolExecutor.ComparableFutureTask
  * JD-Core Version:    0.7.0.1
  */

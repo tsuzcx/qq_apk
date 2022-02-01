@@ -56,12 +56,12 @@ public class GetVidPollInfoHandler
   
   public static void a(@NonNull List<String> paramList)
   {
-    int j = paramList.size();
-    int i = 0;
-    while (i < j)
+    int k = paramList.size();
+    int j;
+    for (int i = 0; i < k; i = j)
     {
-      new GetVidPollInfoHandler(paramList.subList(i, Math.min(i + 5, j))).a();
-      i += 5;
+      j = i + 5;
+      new GetVidPollInfoHandler(paramList.subList(i, Math.min(j, k))).a();
     }
   }
   
@@ -80,97 +80,92 @@ public class GetVidPollInfoHandler
   
   public void a(@NonNull CommonRequest<qqstory_service.ReqBatchStoryPollData> paramCommonRequest, @Nullable CommonResponse paramCommonResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramErrorMessage.isFail()) || (paramCommonResponse == null))
+    if ((!paramErrorMessage.isFail()) && (paramCommonResponse != null))
     {
-      SLog.c("Q.qqstory.pollData.GetVidPollInfoHandler", "Error onCmdRespond:%s", paramErrorMessage);
-      return;
-    }
-    paramCommonRequest = new qqstory_service.RspBatchStoryPollData();
-    Object localObject;
-    StoryVideoItem localStoryVideoItem;
-    int j;
-    qqstory_struct.UserInfo localUserInfo;
-    QQUserUIItem localQQUserUIItem;
-    for (;;)
-    {
+      paramCommonRequest = new qqstory_service.RspBatchStoryPollData();
       try
       {
         paramCommonRequest.mergeFrom(paramCommonResponse.a);
         paramCommonResponse = (StoryManager)SuperManager.a(5);
         paramErrorMessage = new GetVidPollInfoHandler.GetVidPollInfoEvent();
-        i = 0;
-        if (i >= paramCommonRequest.poll_info_list.size()) {
-          break;
-        }
-        localObject = (qqstory_struct.VidPollInfo)paramCommonRequest.poll_info_list.get(i);
-        localStoryVideoItem = paramCommonResponse.a(((qqstory_struct.VidPollInfo)localObject).vid.get().toStringUtf8());
-        if (localStoryVideoItem == null) {
-          break label271;
-        }
-        localStoryVideoItem.mPollUsers.clear();
-        localStoryVideoItem.mPollResult = ((qqstory_struct.VidPollInfo)localObject).self_poll_result.get();
-        int k = ((qqstory_struct.VidPollInfo)localObject).video_poll_result.size();
-        localStoryVideoItem.mPollNumbers = new int[k];
-        j = 0;
-        if (j < k)
+        int i = 0;
+        Object localObject;
+        StoryVideoItem localStoryVideoItem;
+        int j;
+        qqstory_struct.UserInfo localUserInfo;
+        QQUserUIItem localQQUserUIItem;
+        while (i < paramCommonRequest.poll_info_list.size())
         {
-          localStoryVideoItem.mPollNumbers[j] = ((Integer)((qqstory_struct.VidPollInfo)localObject).video_poll_result.get(j)).intValue();
-          j += 1;
-          continue;
+          localObject = (qqstory_struct.VidPollInfo)paramCommonRequest.poll_info_list.get(i);
+          localStoryVideoItem = paramCommonResponse.a(((qqstory_struct.VidPollInfo)localObject).vid.get().toStringUtf8());
+          if (localStoryVideoItem != null)
+          {
+            localStoryVideoItem.mPollUsers.clear();
+            localStoryVideoItem.mPollResult = ((qqstory_struct.VidPollInfo)localObject).self_poll_result.get();
+            int k = ((qqstory_struct.VidPollInfo)localObject).video_poll_result.size();
+            localStoryVideoItem.mPollNumbers = new int[k];
+            j = 0;
+            while (j < k)
+            {
+              localStoryVideoItem.mPollNumbers[j] = ((Integer)((qqstory_struct.VidPollInfo)localObject).video_poll_result.get(j)).intValue();
+              j += 1;
+            }
+            j = 0;
+            while (j < ((qqstory_struct.VidPollInfo)localObject).video_poll_users.size())
+            {
+              localUserInfo = (qqstory_struct.UserInfo)((qqstory_struct.VidPollInfo)localObject).video_poll_users.get(j);
+              localQQUserUIItem = new QQUserUIItem();
+              localQQUserUIItem.convertFrom(localUserInfo);
+              localStoryVideoItem.mPollUsers.add(localQQUserUIItem);
+              j += 1;
+            }
+            paramCommonResponse.a(localStoryVideoItem);
+          }
+          paramErrorMessage.a.add(localObject);
+          i += 1;
         }
-        j = 0;
+        i = 0;
+        while (i < paramCommonRequest.rate_info_list.size())
+        {
+          localObject = (qqstory_struct.VidRateInfo)paramCommonRequest.rate_info_list.get(i);
+          SLog.b("Q.qqstory.pollData.GetVidPollInfoHandler", "onCmdRespond, VidRateInfo:[vid=%s, selfRateResult=%s, totalRateCount=%s, totalRateScore=%s]", ((qqstory_struct.VidRateInfo)localObject).vid.get().toStringUtf8(), Integer.valueOf(((qqstory_struct.VidRateInfo)localObject).self_rate_result.get()), Integer.valueOf(((qqstory_struct.VidRateInfo)localObject).total_rate_count.get()), Long.valueOf(((qqstory_struct.VidRateInfo)localObject).total_rate_score.get()));
+          localStoryVideoItem = paramCommonResponse.a(((qqstory_struct.VidRateInfo)localObject).vid.get().toStringUtf8());
+          if (localStoryVideoItem != null)
+          {
+            localStoryVideoItem.mRateResult = ((qqstory_struct.VidRateInfo)localObject).self_rate_result.get();
+            localStoryVideoItem.mTotalRateCount = ((qqstory_struct.VidRateInfo)localObject).total_rate_count.get();
+            localStoryVideoItem.mTotalScore = ((qqstory_struct.VidRateInfo)localObject).total_rate_score.get();
+            localStoryVideoItem.mRateUsers.clear();
+            j = 0;
+            while (j < ((qqstory_struct.VidRateInfo)localObject).video_rate_users.size())
+            {
+              localUserInfo = (qqstory_struct.UserInfo)((qqstory_struct.VidRateInfo)localObject).video_rate_users.get(j);
+              localQQUserUIItem = new QQUserUIItem();
+              localQQUserUIItem.convertFrom(localUserInfo);
+              localStoryVideoItem.mRateUsers.add(localQQUserUIItem);
+              j += 1;
+            }
+            paramCommonResponse.a(localStoryVideoItem);
+          }
+          paramErrorMessage.b.add(localObject);
+          i += 1;
+        }
+        StoryDispatcher.a().dispatch(paramErrorMessage);
+        StoryAIOUtils.a(QQStoryContext.a());
+        return;
       }
       catch (InvalidProtocolBufferMicroException paramCommonRequest)
       {
         SLog.c("Q.qqstory.pollData.GetVidPollInfoHandler", "onCmdRespond Request parse Error!", paramCommonRequest);
         return;
       }
-      while (j < ((qqstory_struct.VidPollInfo)localObject).video_poll_users.size())
-      {
-        localUserInfo = (qqstory_struct.UserInfo)((qqstory_struct.VidPollInfo)localObject).video_poll_users.get(j);
-        localQQUserUIItem = new QQUserUIItem();
-        localQQUserUIItem.convertFrom(localUserInfo);
-        localStoryVideoItem.mPollUsers.add(localQQUserUIItem);
-        j += 1;
-      }
-      paramCommonResponse.a(localStoryVideoItem);
-      label271:
-      paramErrorMessage.a.add(localObject);
-      i += 1;
     }
-    int i = 0;
-    while (i < paramCommonRequest.rate_info_list.size())
-    {
-      localObject = (qqstory_struct.VidRateInfo)paramCommonRequest.rate_info_list.get(i);
-      SLog.b("Q.qqstory.pollData.GetVidPollInfoHandler", "onCmdRespond, VidRateInfo:[vid=%s, selfRateResult=%s, totalRateCount=%s, totalRateScore=%s]", ((qqstory_struct.VidRateInfo)localObject).vid.get().toStringUtf8(), Integer.valueOf(((qqstory_struct.VidRateInfo)localObject).self_rate_result.get()), Integer.valueOf(((qqstory_struct.VidRateInfo)localObject).total_rate_count.get()), Long.valueOf(((qqstory_struct.VidRateInfo)localObject).total_rate_score.get()));
-      localStoryVideoItem = paramCommonResponse.a(((qqstory_struct.VidRateInfo)localObject).vid.get().toStringUtf8());
-      if (localStoryVideoItem != null)
-      {
-        localStoryVideoItem.mRateResult = ((qqstory_struct.VidRateInfo)localObject).self_rate_result.get();
-        localStoryVideoItem.mTotalRateCount = ((qqstory_struct.VidRateInfo)localObject).total_rate_count.get();
-        localStoryVideoItem.mTotalScore = ((qqstory_struct.VidRateInfo)localObject).total_rate_score.get();
-        localStoryVideoItem.mRateUsers.clear();
-        j = 0;
-        while (j < ((qqstory_struct.VidRateInfo)localObject).video_rate_users.size())
-        {
-          localUserInfo = (qqstory_struct.UserInfo)((qqstory_struct.VidRateInfo)localObject).video_rate_users.get(j);
-          localQQUserUIItem = new QQUserUIItem();
-          localQQUserUIItem.convertFrom(localUserInfo);
-          localStoryVideoItem.mRateUsers.add(localQQUserUIItem);
-          j += 1;
-        }
-        paramCommonResponse.a(localStoryVideoItem);
-      }
-      paramErrorMessage.b.add(localObject);
-      i += 1;
-    }
-    StoryDispatcher.a().dispatch(paramErrorMessage);
-    StoryAIOUtils.a(QQStoryContext.a());
+    SLog.c("Q.qqstory.pollData.GetVidPollInfoHandler", "Error onCmdRespond:%s", paramErrorMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetVidPollInfoHandler
  * JD-Core Version:    0.7.0.1
  */

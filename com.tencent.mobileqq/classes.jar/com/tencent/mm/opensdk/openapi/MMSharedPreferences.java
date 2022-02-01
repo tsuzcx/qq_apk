@@ -33,22 +33,24 @@ class MMSharedPreferences
     {
       try
       {
-        Cursor localCursor = this.cr.query(c.b.CONTENT_URI, this.columns, "key = ?", new String[] { paramString }, null);
-        if (localCursor == null) {
+        localObject = this.cr.query(c.b.CONTENT_URI, this.columns, "key = ?", new String[] { paramString }, null);
+        if (localObject == null) {
           return null;
         }
-        int i = localCursor.getColumnIndex("type");
-        int j = localCursor.getColumnIndex("value");
-        if (localCursor.moveToFirst())
+        int i = ((Cursor)localObject).getColumnIndex("type");
+        int j = ((Cursor)localObject).getColumnIndex("value");
+        if (((Cursor)localObject).moveToFirst())
         {
-          paramString = c.a.a(localCursor.getInt(i), localCursor.getString(j));
-          localCursor.close();
+          paramString = c.a.a(((Cursor)localObject).getInt(i), ((Cursor)localObject).getString(j));
+          ((Cursor)localObject).close();
           return paramString;
         }
       }
       catch (Exception paramString)
       {
-        Log.e("MicroMsg.SDK.SharedPreferences", "getValue exception:" + paramString.getMessage());
+        Object localObject = new StringBuilder("getValue exception:");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        Log.e("MicroMsg.SDK.SharedPreferences", ((StringBuilder)localObject).toString());
         return null;
       }
       paramString = null;
@@ -72,83 +74,65 @@ class MMSharedPreferences
   {
     try
     {
-      Cursor localCursor = this.cr.query(c.b.CONTENT_URI, this.columns, null, null, null);
-      if (localCursor == null) {
+      Object localObject1 = this.cr.query(c.b.CONTENT_URI, this.columns, null, null, null);
+      if (localObject1 == null) {
         return null;
       }
-      int i = localCursor.getColumnIndex("key");
-      int j = localCursor.getColumnIndex("type");
-      int k = localCursor.getColumnIndex("value");
-      while (localCursor.moveToNext())
+      int i = ((Cursor)localObject1).getColumnIndex("key");
+      int j = ((Cursor)localObject1).getColumnIndex("type");
+      int k = ((Cursor)localObject1).getColumnIndex("value");
+      while (((Cursor)localObject1).moveToNext())
       {
-        Object localObject = c.a.a(localCursor.getInt(j), localCursor.getString(k));
-        this.values.put(localCursor.getString(i), localObject);
+        localObject2 = c.a.a(((Cursor)localObject1).getInt(j), ((Cursor)localObject1).getString(k));
+        this.values.put(((Cursor)localObject1).getString(i), localObject2);
       }
-      localException.close();
+      ((Cursor)localObject1).close();
+      localObject1 = this.values;
+      return localObject1;
     }
     catch (Exception localException)
     {
-      Log.e("MicroMsg.SDK.SharedPreferences", "getAll exception:" + localException.getMessage());
-      return this.values;
+      Object localObject2 = new StringBuilder("getAll exception:");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      Log.e("MicroMsg.SDK.SharedPreferences", ((StringBuilder)localObject2).toString());
     }
-    HashMap localHashMap = this.values;
-    return localHashMap;
+    return this.values;
   }
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
     paramString = getValue(paramString);
-    boolean bool = paramBoolean;
-    if (paramString != null)
-    {
-      bool = paramBoolean;
-      if ((paramString instanceof Boolean)) {
-        bool = ((Boolean)paramString).booleanValue();
-      }
+    if ((paramString != null) && ((paramString instanceof Boolean))) {
+      return ((Boolean)paramString).booleanValue();
     }
-    return bool;
+    return paramBoolean;
   }
   
   public float getFloat(String paramString, float paramFloat)
   {
     paramString = getValue(paramString);
-    float f = paramFloat;
-    if (paramString != null)
-    {
-      f = paramFloat;
-      if ((paramString instanceof Float)) {
-        f = ((Float)paramString).floatValue();
-      }
+    if ((paramString != null) && ((paramString instanceof Float))) {
+      return ((Float)paramString).floatValue();
     }
-    return f;
+    return paramFloat;
   }
   
   public int getInt(String paramString, int paramInt)
   {
     paramString = getValue(paramString);
-    int i = paramInt;
-    if (paramString != null)
-    {
-      i = paramInt;
-      if ((paramString instanceof Integer)) {
-        i = ((Integer)paramString).intValue();
-      }
+    if ((paramString != null) && ((paramString instanceof Integer))) {
+      return ((Integer)paramString).intValue();
     }
-    return i;
+    return paramInt;
   }
   
   public long getLong(String paramString, long paramLong)
   {
     paramString = getValue(paramString);
-    long l = paramLong;
-    if (paramString != null)
-    {
-      l = paramLong;
-      if ((paramString instanceof Long)) {
-        l = ((Long)paramString).longValue();
-      }
+    if ((paramString != null) && ((paramString instanceof Long))) {
+      return ((Long)paramString).longValue();
     }
-    return l;
+    return paramLong;
   }
   
   public String getString(String paramString1, String paramString2)
@@ -171,7 +155,7 @@ class MMSharedPreferences
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.MMSharedPreferences
  * JD-Core Version:    0.7.0.1
  */

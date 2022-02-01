@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.publisher.impls;
 
-import com.tencent.mobileqq.vip.CUKingCardHelper;
+import com.tencent.mobileqq.vip.CUKingCardUtils;
 import com.tencent.tkd.topicsdk.interfaces.IBizConfig;
 import kotlin.Metadata;
 
@@ -10,12 +10,12 @@ public final class BizConfigImpl
 {
   public boolean a()
   {
-    return CUKingCardHelper.a() == 1;
+    return CUKingCardUtils.a() == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.BizConfigImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -16,20 +16,23 @@ class LivePlayerEmbeddedWidgetClient$2
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("VIDEO_BITRATE", paramBundle.get("VIDEO_BITRATE"));
-      localJSONObject.put("AUDIO_BITRATE", paramBundle.get("AUDIO_BITRATE"));
-      localJSONObject.put("VIDEO_FPS", paramBundle.get("VIDEO_FPS"));
-      localJSONObject.put("VIDEO_GOP", paramBundle.get("VIDEO_GOP"));
-      localJSONObject.put("NET_SPEED", paramBundle.get("NET_SPEED"));
-      localJSONObject.put("NET_JITTER", paramBundle.get("NET_JITTER"));
-      localJSONObject.put("VIDEO_WIDTH", paramBundle.get("VIDEO_WIDTH"));
-      localJSONObject.put("VIDEO_HEIGHT", paramBundle.get("VIDEO_HEIGHT"));
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("VIDEO_BITRATE", paramBundle.get("VIDEO_BITRATE"));
+      ((JSONObject)localObject).put("AUDIO_BITRATE", paramBundle.get("AUDIO_BITRATE"));
+      ((JSONObject)localObject).put("VIDEO_FPS", paramBundle.get("VIDEO_FPS"));
+      ((JSONObject)localObject).put("VIDEO_GOP", paramBundle.get("VIDEO_GOP"));
+      ((JSONObject)localObject).put("NET_SPEED", paramBundle.get("NET_SPEED"));
+      ((JSONObject)localObject).put("NET_JITTER", paramBundle.get("NET_JITTER"));
+      ((JSONObject)localObject).put("VIDEO_WIDTH", paramBundle.get("VIDEO_WIDTH"));
+      ((JSONObject)localObject).put("VIDEO_HEIGHT", paramBundle.get("VIDEO_HEIGHT"));
       paramBundle = new JSONObject();
       paramBundle.put("viewId", LivePlayerEmbeddedWidgetClient.access$000(this.this$0));
-      paramBundle.put("info", localJSONObject);
+      paramBundle.put("info", localObject);
       LivePlayerEmbeddedWidgetClient.access$200(this.this$0, "onXWebLivePlayerNetStatus", paramBundle.toString(), LivePlayerEmbeddedWidgetClient.access$100(this.this$0));
-      QMLog.e("miniapp-embedded-live-player", "operate start evaluateSubcribeJS onLivePlayerNetStatus = " + paramBundle.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("operate start evaluateSubcribeJS onLivePlayerNetStatus = ");
+      ((StringBuilder)localObject).append(paramBundle.toString());
+      QMLog.e("miniapp-embedded-live-player", ((StringBuilder)localObject).toString());
       return;
     }
     catch (JSONException paramBundle)
@@ -40,20 +43,25 @@ class LivePlayerEmbeddedWidgetClient$2
   
   public void onPlayEvent(int paramInt, Bundle paramBundle)
   {
-    QMLog.d("miniapp-embedded-live-player", "onPlayEvent code:" + paramInt);
-    JSONObject localJSONObject;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onPlayEvent code:");
+    ((StringBuilder)localObject).append(paramInt);
+    QMLog.d("miniapp-embedded-live-player", ((StringBuilder)localObject).toString());
     if (2028 == paramInt) {
       try
       {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("viewId", LivePlayerEmbeddedWidgetClient.access$000(this.this$0));
-        localJSONObject.put("errCode", paramInt);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("viewId", LivePlayerEmbeddedWidgetClient.access$000(this.this$0));
+        ((JSONObject)localObject).put("errCode", paramInt);
         paramBundle = paramBundle.get("EVT_GET_METADATA");
         if ((paramBundle instanceof HashMap)) {
-          localJSONObject.put("errMsg", new JSONObject((HashMap)paramBundle));
+          ((JSONObject)localObject).put("errMsg", new JSONObject((HashMap)paramBundle));
         }
-        LivePlayerEmbeddedWidgetClient.access$200(this.this$0, "onXWebLivePlayerMetadata", localJSONObject.toString(), LivePlayerEmbeddedWidgetClient.access$100(this.this$0));
-        QMLog.e("miniapp-embedded-live-player", "operate start evaluateSubcribeJS onXWebLivePlayerMetadata = " + localJSONObject.toString());
+        LivePlayerEmbeddedWidgetClient.access$200(this.this$0, "onXWebLivePlayerMetadata", ((JSONObject)localObject).toString(), LivePlayerEmbeddedWidgetClient.access$100(this.this$0));
+        paramBundle = new StringBuilder();
+        paramBundle.append("operate start evaluateSubcribeJS onXWebLivePlayerMetadata = ");
+        paramBundle.append(((JSONObject)localObject).toString());
+        QMLog.e("miniapp-embedded-live-player", paramBundle.toString());
         return;
       }
       catch (JSONException paramBundle)
@@ -64,12 +72,15 @@ class LivePlayerEmbeddedWidgetClient$2
     }
     try
     {
-      localJSONObject = new JSONObject();
-      localJSONObject.put("viewId", LivePlayerEmbeddedWidgetClient.access$000(this.this$0));
-      localJSONObject.put("errCode", paramInt);
-      localJSONObject.put("errMsg", paramBundle.get("EVT_MSG"));
-      LivePlayerEmbeddedWidgetClient.access$200(this.this$0, "onXWebLivePlayerEvent", localJSONObject.toString(), LivePlayerEmbeddedWidgetClient.access$100(this.this$0));
-      QMLog.e("miniapp-embedded-live-player", "operate start evaluateSubcribeJS onLivePlayerEvent = " + localJSONObject.toString());
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("viewId", LivePlayerEmbeddedWidgetClient.access$000(this.this$0));
+      ((JSONObject)localObject).put("errCode", paramInt);
+      ((JSONObject)localObject).put("errMsg", paramBundle.get("EVT_MSG"));
+      LivePlayerEmbeddedWidgetClient.access$200(this.this$0, "onXWebLivePlayerEvent", ((JSONObject)localObject).toString(), LivePlayerEmbeddedWidgetClient.access$100(this.this$0));
+      paramBundle = new StringBuilder();
+      paramBundle.append("operate start evaluateSubcribeJS onLivePlayerEvent = ");
+      paramBundle.append(((JSONObject)localObject).toString());
+      QMLog.e("miniapp-embedded-live-player", paramBundle.toString());
       return;
     }
     catch (JSONException paramBundle)
@@ -80,7 +91,7 @@ class LivePlayerEmbeddedWidgetClient$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePlayerEmbeddedWidgetClient.2
  * JD-Core Version:    0.7.0.1
  */

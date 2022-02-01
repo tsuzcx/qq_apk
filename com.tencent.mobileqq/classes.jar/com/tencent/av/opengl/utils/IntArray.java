@@ -21,16 +21,19 @@ public class IntArray
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfInt.length == this.jdField_a_of_type_Int)
+    int[] arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
+    int i = arrayOfInt1.length;
+    int j = this.jdField_a_of_type_Int;
+    if (i == j)
     {
-      arrayOfInt = new int[this.jdField_a_of_type_Int + this.jdField_a_of_type_Int];
-      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+      int[] arrayOfInt2 = new int[j + j];
+      System.arraycopy(arrayOfInt1, 0, arrayOfInt2, 0, j);
+      this.jdField_a_of_type_ArrayOfInt = arrayOfInt2;
     }
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    int i = this.jdField_a_of_type_Int;
+    arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
+    i = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_Int = (i + 1);
-    arrayOfInt[i] = paramInt;
+    arrayOfInt1[i] = paramInt;
   }
   
   public int[] a()
@@ -61,7 +64,7 @@ public class IntArray
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.utils.IntArray
  * JD-Core Version:    0.7.0.1
  */

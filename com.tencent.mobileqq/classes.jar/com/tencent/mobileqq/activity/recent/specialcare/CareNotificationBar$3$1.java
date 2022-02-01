@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.specialcare;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.view.View;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class CareNotificationBar$3$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   CareNotificationBar$3$1(CareNotificationBar.3 param3, ValueAnimator paramValueAnimator) {}
   
@@ -23,7 +23,7 @@ class CareNotificationBar$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3.1
  * JD-Core Version:    0.7.0.1
  */

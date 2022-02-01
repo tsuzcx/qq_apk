@@ -14,18 +14,19 @@ public enum ExceptionsUtils
   
   public static boolean addThrowable(AtomicReference<Throwable> paramAtomicReference, Throwable paramThrowable)
   {
-    Throwable localThrowable = (Throwable)paramAtomicReference.get();
-    if (localThrowable == TERMINATED) {
-      return false;
-    }
+    Throwable localThrowable;
     Object localObject;
-    if (localThrowable == null) {
-      localObject = paramThrowable;
-    }
-    while (paramAtomicReference.compareAndSet(localThrowable, localObject))
+    do
     {
-      return true;
-      if ((localThrowable instanceof CompositeException))
+      localThrowable = (Throwable)paramAtomicReference.get();
+      if (localThrowable == TERMINATED) {
+        return false;
+      }
+      if (localThrowable == null)
+      {
+        localObject = paramThrowable;
+      }
+      else if ((localThrowable instanceof CompositeException))
       {
         localObject = new ArrayList(((CompositeException)localThrowable).getExceptions());
         ((List)localObject).add(paramThrowable);
@@ -35,7 +36,8 @@ public enum ExceptionsUtils
       {
         localObject = new CompositeException(new Throwable[] { localThrowable, paramThrowable });
       }
-    }
+    } while (!paramAtomicReference.compareAndSet(localThrowable, localObject));
+    return true;
   }
   
   public static boolean isTerminated(Throwable paramThrowable)
@@ -51,16 +53,17 @@ public enum ExceptionsUtils
   public static Throwable terminate(AtomicReference<Throwable> paramAtomicReference)
   {
     Throwable localThrowable2 = (Throwable)paramAtomicReference.get();
+    Throwable localThrowable3 = TERMINATED;
     Throwable localThrowable1 = localThrowable2;
-    if (localThrowable2 != TERMINATED) {
-      localThrowable1 = (Throwable)paramAtomicReference.getAndSet(TERMINATED);
+    if (localThrowable2 != localThrowable3) {
+      localThrowable1 = (Throwable)paramAtomicReference.getAndSet(localThrowable3);
     }
     return localThrowable1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.ExceptionsUtils
  * JD-Core Version:    0.7.0.1
  */

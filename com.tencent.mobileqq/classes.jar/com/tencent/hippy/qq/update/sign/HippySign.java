@@ -11,19 +11,31 @@ public class HippySign
   
   public static String getSign(String paramString1, String paramString2)
   {
-    if (empty(paramString2)) {}
-    do
-    {
+    boolean bool = empty(paramString2);
+    Object localObject1 = null;
+    if (bool) {
       return null;
-      long l = System.currentTimeMillis() / 1000L;
-      int i = Math.abs(new Random().nextInt());
-      paramString1 = "a=" + paramString1 + "&t=" + l + "&r=" + i;
-      paramString2 = hashHmac(paramString1, paramString2);
-    } while (paramString2 == null);
-    byte[] arrayOfByte = new byte[paramString2.length + paramString1.getBytes().length];
-    System.arraycopy(paramString2, 0, arrayOfByte, 0, paramString2.length);
-    System.arraycopy(paramString1.getBytes(), 0, arrayOfByte, paramString2.length, paramString1.getBytes().length);
-    return Base64Util.encode(arrayOfByte);
+    }
+    long l = System.currentTimeMillis() / 1000L;
+    int i = Math.abs(new Random().nextInt());
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("a=");
+    ((StringBuilder)localObject2).append(paramString1);
+    ((StringBuilder)localObject2).append("&t=");
+    ((StringBuilder)localObject2).append(l);
+    ((StringBuilder)localObject2).append("&r=");
+    ((StringBuilder)localObject2).append(i);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    paramString2 = hashHmac((String)localObject2, paramString2);
+    paramString1 = localObject1;
+    if (paramString2 != null)
+    {
+      paramString1 = new byte[paramString2.length + ((String)localObject2).getBytes().length];
+      System.arraycopy(paramString2, 0, paramString1, 0, paramString2.length);
+      System.arraycopy(((String)localObject2).getBytes(), 0, paramString1, paramString2.length, ((String)localObject2).getBytes().length);
+      paramString1 = Base64Util.encode(paramString1);
+    }
+    return paramString1;
   }
   
   private static byte[] hashHmac(String paramString1, String paramString2)
@@ -42,7 +54,7 @@ public class HippySign
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.update.sign.HippySign
  * JD-Core Version:    0.7.0.1
  */

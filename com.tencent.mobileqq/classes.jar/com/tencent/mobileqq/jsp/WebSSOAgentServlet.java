@@ -23,25 +23,20 @@ public class WebSSOAgentServlet
     if (QLog.isColorLevel()) {
       QLog.d("WebSSOAgentServlet", 2, "onReceive");
     }
-    byte[] arrayOfByte;
+    byte[] arrayOfByte = null;
     if (paramFromServiceMsg.isSuccess())
     {
       int i = paramFromServiceMsg.getWupBuffer().length - 4;
       arrayOfByte = new byte[i];
       PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("extra_result_err_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
-      localBundle.putString("extra_callbackid", paramIntent.getStringExtra("extra_callbackid"));
-      localBundle.putByteArray("extra_data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
+    localBundle.putString("extra_result_err_msg", paramFromServiceMsg.getBusinessFailMsg());
+    localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
+    localBundle.putString("extra_callbackid", paramIntent.getStringExtra("extra_callbackid"));
+    localBundle.putByteArray("extra_data", arrayOfByte);
+    notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -63,27 +58,29 @@ public class WebSSOAgentServlet
           paramPacket.setNoResponse();
         }
       }
-      return;
     }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("extra_data");
-    paramPacket.setSSOCommand(str);
-    long l = paramIntent.getLongExtra("extra_timeout", -1L);
-    if (l > 0L) {
-      paramPacket.setTimeout(l);
-    }
-    if (arrayOfByte != null)
+    else
     {
-      paramIntent = new byte[arrayOfByte.length + 4];
-      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
-      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+      byte[] arrayOfByte = paramIntent.getByteArrayExtra("extra_data");
+      paramPacket.setSSOCommand(str);
+      long l = paramIntent.getLongExtra("extra_timeout", -1L);
+      if (l > 0L) {
+        paramPacket.setTimeout(l);
+      }
+      if (arrayOfByte != null)
+      {
+        paramIntent = new byte[arrayOfByte.length + 4];
+        PkgTools.dWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
+        PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+        paramPacket.putSendData(paramIntent);
+      }
+      b = System.currentTimeMillis();
     }
-    b = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.WebSSOAgentServlet
  * JD-Core Version:    0.7.0.1
  */

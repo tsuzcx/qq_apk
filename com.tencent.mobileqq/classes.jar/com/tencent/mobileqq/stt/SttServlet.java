@@ -3,15 +3,15 @@ package com.tencent.mobileqq.stt;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.ptt.temp.api.IQQRecorderTempApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.QQRecorder;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -32,13 +32,13 @@ import tencent.im.cs.cmd0x355.Stt.TransGroupPttResp;
 public class SttServlet
   extends MSFServlet
 {
-  public static void a(QQAppInterface paramQQAppInterface, MessageForPtt paramMessageForPtt, Long paramLong, int paramInt1, int paramInt2)
+  public static void a(AppRuntime paramAppRuntime, MessageForPtt paramMessageForPtt, Long paramLong, int paramInt1, int paramInt2)
   {
-    Object localObject = new NewIntent(paramQQAppInterface.getApp(), SttServlet.class);
+    Object localObject = new NewIntent(paramAppRuntime.getApp(), SttServlet.class);
     int j = paramMessageForPtt.voiceLength;
     int i = j;
     if (j == 0) {
-      i = QQRecorder.a(paramMessageForPtt);
+      i = ((IQQRecorderTempApi)QRoute.api(IQQRecorderTempApi.class)).getFilePlayTime(paramMessageForPtt);
     }
     j = paramMessageForPtt.voiceType;
     ((NewIntent)localObject).putExtra("k_stt_mode_version", paramInt2);
@@ -51,380 +51,431 @@ public class SttServlet
     ((NewIntent)localObject).putExtra("k_trans_type", paramInt1);
     ((NewIntent)localObject).putExtra("k_file_path", paramMessageForPtt.groupFileKeyStr);
     ((NewIntent)localObject).putExtra("k_md5", paramMessageForPtt.md5);
-    label208:
-    boolean bool;
-    if (paramMessageForPtt.autoToText >= 1)
-    {
+    paramInt1 = paramMessageForPtt.autoToText;
+    boolean bool2 = false;
+    if (paramInt1 >= 1) {
       paramInt1 = 1;
-      ((NewIntent)localObject).putExtra("k_ptt_type", paramInt1);
-      if (paramMessageForPtt.istroop != 0) {
-        break label612;
-      }
+    } else {
+      paramInt1 = 0;
+    }
+    ((NewIntent)localObject).putExtra("k_ptt_type", paramInt1);
+    if (paramMessageForPtt.istroop == 0)
+    {
       ((NewIntent)localObject).putExtra("k_file", paramMessageForPtt.urlAtServer);
       ((NewIntent)localObject).putExtra("k_cmd", 1);
       paramLong = paramMessageForPtt.urlAtServer;
-      QLog.d("SttServlet", 1, "translate l:" + paramMessageForPtt.voiceLength + " from:" + paramMessageForPtt.istroop + " issend:" + paramMessageForPtt.isSend() + " format:" + paramMessageForPtt.voiceType + " size:" + paramMessageForPtt.fileSize + " uuid:" + paramLong);
-      ((NewIntent)localObject).putExtra("k_retry", 0);
-      if (((paramMessageForPtt.istroop != 0) || (!TextUtils.isEmpty(paramMessageForPtt.urlAtServer))) && ((paramMessageForPtt.istroop == 0) || (paramMessageForPtt.groupFileID != 0L) || (!TextUtils.isEmpty(paramMessageForPtt.groupFileKeyStr)))) {
-        break label681;
-      }
-      bool = true;
     }
-    label398:
-    label681:
+    else
+    {
+      ((NewIntent)localObject).putExtra("k_cmd", 2);
+      ((NewIntent)localObject).putExtra("k_file", paramMessageForPtt.groupFileID);
+      paramLong = String.valueOf(paramMessageForPtt.groupFileID);
+    }
+    StringBuilder localStringBuilder = new StringBuilder("translate l:");
+    localStringBuilder.append(paramMessageForPtt.voiceLength);
+    localStringBuilder.append(" from:");
+    localStringBuilder.append(paramMessageForPtt.istroop);
+    localStringBuilder.append(" issend:");
+    localStringBuilder.append(paramMessageForPtt.isSend());
+    localStringBuilder.append(" format:");
+    localStringBuilder.append(paramMessageForPtt.voiceType);
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(paramMessageForPtt.fileSize);
+    localStringBuilder.append(" uuid:");
+    localStringBuilder.append(paramLong);
+    QLog.d("SttServlet", 1, localStringBuilder.toString());
+    ((NewIntent)localObject).putExtra("k_retry", 0);
+    boolean bool1;
+    if ((paramMessageForPtt.istroop != 0) || (!TextUtils.isEmpty(paramMessageForPtt.urlAtServer)))
+    {
+      bool1 = bool2;
+      if (paramMessageForPtt.istroop != 0)
+      {
+        bool1 = bool2;
+        if (paramMessageForPtt.groupFileID == 0L)
+        {
+          bool1 = bool2;
+          if (!TextUtils.isEmpty(paramMessageForPtt.groupFileKeyStr)) {}
+        }
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    ((NewIntent)localObject).putExtra("k_n_uuid", bool1);
+    paramAppRuntime.startServlet((NewIntent)localObject);
+    try
+    {
+      paramLong = StatisticCollector.getInstance(BaseApplication.getContext());
+      localObject = new HashMap();
+      ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
+      if (paramMessageForPtt.istroop != 0) {
+        break label728;
+      }
+      paramAppRuntime = "1";
+      ((HashMap)localObject).put("param_FailCode", paramAppRuntime);
+      ((HashMap)localObject).put("appversion", "8.7.0");
+      paramLong.collectPerformance("", "PttSttRequestV2", false, 0L, 0L, (HashMap)localObject, "");
+    }
+    catch (Exception paramAppRuntime)
+    {
+      paramAppRuntime.printStackTrace();
+    }
+    if (bool1) {
+      paramInt1 = 1000;
+    }
     for (;;)
     {
-      for (;;)
+      try
       {
-        ((NewIntent)localObject).putExtra("k_n_uuid", bool);
-        paramQQAppInterface.startServlet((NewIntent)localObject);
-        try
-        {
-          paramLong = StatisticCollector.getInstance(BaseApplication.getContext());
-          localObject = new HashMap();
-          ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
-          if (paramMessageForPtt.istroop == 0)
-          {
-            paramQQAppInterface = "1";
-            ((HashMap)localObject).put("param_FailCode", paramQQAppInterface);
-            ((HashMap)localObject).put("appversion", "8.5.5");
-            paramLong.collectPerformance("", "PttSttRequestV2", false, 0L, 0L, (HashMap)localObject, "");
-            label432:
-            if (bool) {
-              paramInt1 = 1000;
-            }
-          }
+        if (paramMessageForPtt.istroop != 0) {
+          paramInt1 = 2000;
         }
-        catch (Exception paramQQAppInterface)
-        {
-          try
-          {
-            if (paramMessageForPtt.istroop != 0) {
-              paramInt1 = 2000;
-            }
-            if (paramMessageForPtt.isSend())
-            {
-              paramInt1 += 100;
-              if (paramMessageForPtt.fileSize > 0L) {
-                paramInt1 += 10;
-              }
-            }
-            for (;;)
-            {
-              paramQQAppInterface = StatisticCollector.getInstance(BaseApplication.getContext());
-              paramLong = new HashMap();
-              paramLong.put(BaseConstants.RDM_NoChangeFailCode, "");
-              paramLong.put("param_FailCode", String.valueOf(paramInt1));
-              paramLong.put("sender", paramMessageForPtt.senderuin);
-              paramLong.put("receiver", paramMessageForPtt.frienduin);
-              paramLong.put("uinType", String.valueOf(paramMessageForPtt.istroop));
-              paramLong.put("uploadState", String.valueOf(paramMessageForPtt.fileSize));
-              paramLong.put("voiceType", String.valueOf(paramMessageForPtt.voiceType));
-              paramLong.put("url", String.valueOf(paramMessageForPtt.url));
-              paramQQAppInterface.collectPerformance("", "PttSttErrRequest", false, 0L, 0L, paramLong, "");
-              return;
-              paramInt1 = 0;
-              break;
-              label612:
-              ((NewIntent)localObject).putExtra("k_cmd", 2);
-              ((NewIntent)localObject).putExtra("k_file", paramMessageForPtt.groupFileID);
-              paramLong = String.valueOf(paramMessageForPtt.groupFileID);
-              break label208;
-              paramQQAppInterface = "2";
-              break label398;
-              paramQQAppInterface = paramQQAppInterface;
-              paramQQAppInterface.printStackTrace();
-              break label432;
-              paramInt1 += 20;
-              continue;
-              paramInt1 += 200;
-            }
-            bool = false;
-          }
-          catch (Exception paramQQAppInterface)
-          {
-            paramQQAppInterface.printStackTrace();
-            return;
-          }
+        if (!paramMessageForPtt.isSend()) {
+          break label742;
         }
+        paramInt1 += 100;
+        if (paramMessageForPtt.fileSize <= 0L) {
+          break label734;
+        }
+        paramInt1 += 10;
+        paramAppRuntime = StatisticCollector.getInstance(BaseApplication.getContext());
+        paramLong = new HashMap();
+        paramLong.put(BaseConstants.RDM_NoChangeFailCode, "");
+        paramLong.put("param_FailCode", String.valueOf(paramInt1));
+        paramLong.put("sender", paramMessageForPtt.senderuin);
+        paramLong.put("receiver", paramMessageForPtt.frienduin);
+        paramLong.put("uinType", String.valueOf(paramMessageForPtt.istroop));
+        paramLong.put("uploadState", String.valueOf(paramMessageForPtt.fileSize));
+        paramLong.put("voiceType", String.valueOf(paramMessageForPtt.voiceType));
+        paramLong.put("url", String.valueOf(paramMessageForPtt.url));
+        paramAppRuntime.collectPerformance("", "PttSttErrRequest", false, 0L, 0L, paramLong, "");
+        return;
       }
+      catch (Exception paramAppRuntime)
+      {
+        paramAppRuntime.printStackTrace();
+      }
+      return;
+      label728:
+      paramAppRuntime = "2";
+      break;
+      label734:
+      paramInt1 += 20;
+      continue;
+      label742:
+      paramInt1 += 200;
     }
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    boolean bool2 = paramFromServiceMsg.isSuccess();
-    long l3 = 30000L;
+    boolean bool1 = paramFromServiceMsg.isSuccess();
     int m = paramIntent.getIntExtra("k_cmd", 0);
+    long l2 = 30000L;
+    StringBuilder localStringBuilder = null;
     Object localObject1 = null;
-    Object localObject3 = null;
     Object localObject2 = null;
     long l1;
-    Object localObject4;
-    int i;
-    label197:
-    boolean bool1;
-    int j;
-    if (bool2)
+    if (bool1)
     {
-      localObject1 = localObject2;
-      l1 = l3;
+      l1 = l2;
+      localObject1 = localStringBuilder;
+    }
+    label955:
+    label961:
+    label967:
+    for (;;)
+    {
       try
       {
-        localObject4 = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        localObject1 = localObject2;
-        l1 = l3;
-        paramFromServiceMsg = new byte[((ByteBuffer)localObject4).getInt() - 4];
-        localObject1 = localObject2;
-        l1 = l3;
-        ((ByteBuffer)localObject4).get(paramFromServiceMsg);
-        localObject1 = localObject2;
-        l1 = l3;
-        localObject4 = new Stt.RspBody();
-        localObject1 = localObject2;
-        l1 = l3;
-        ((Stt.RspBody)localObject4).mergeFrom(paramFromServiceMsg);
-        switch (m)
+        Object localObject3 = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        l1 = l2;
+        localObject1 = localStringBuilder;
+        paramFromServiceMsg = new byte[((ByteBuffer)localObject3).getInt() - 4];
+        l1 = l2;
+        localObject1 = localStringBuilder;
+        ((ByteBuffer)localObject3).get(paramFromServiceMsg);
+        l1 = l2;
+        localObject1 = localStringBuilder;
+        localObject3 = new Stt.RspBody();
+        l1 = l2;
+        localObject1 = localStringBuilder;
+        ((Stt.RspBody)localObject3).mergeFrom(paramFromServiceMsg);
+        long l3;
+        if (m != 1)
         {
-        case 1: 
-          localObject1 = localObject2;
-          l1 = l3;
-          throw new RuntimeException("unknow cmd: " + m);
+          if (m == 2)
+          {
+            l1 = l2;
+            localObject1 = localStringBuilder;
+            if (((Stt.RspBody)localObject3).msg_group_ptt_resp.uint32_error_code.get() != 0) {
+              break label955;
+            }
+            bool2 = true;
+            l1 = l2;
+            localObject1 = localStringBuilder;
+            j = ((Stt.RspBody)localObject3).msg_group_ptt_resp.uint32_error_code.get();
+            l1 = l2;
+            localObject1 = localStringBuilder;
+            l3 = ((Stt.RspBody)localObject3).msg_group_ptt_resp.uint32_waittime.get();
+            l2 = l3;
+            paramFromServiceMsg = localObject2;
+            bool1 = bool2;
+            i = j;
+            l1 = l3;
+            localObject1 = localStringBuilder;
+            if (((Stt.RspBody)localObject3).msg_group_ptt_resp.str_text != null)
+            {
+              l2 = l3;
+              paramFromServiceMsg = localObject2;
+              bool1 = bool2;
+              i = j;
+              l1 = l3;
+              localObject1 = localStringBuilder;
+              if (((Stt.RspBody)localObject3).msg_group_ptt_resp.str_text.has())
+              {
+                l1 = l3;
+                localObject1 = localStringBuilder;
+                paramFromServiceMsg = ((Stt.RspBody)localObject3).msg_group_ptt_resp.str_text.get();
+                l2 = l3;
+                bool1 = bool2;
+                i = j;
+                break label967;
+              }
+            }
+          }
+          else
+          {
+            l1 = l2;
+            localObject1 = localStringBuilder;
+            paramFromServiceMsg = new StringBuilder();
+            l1 = l2;
+            localObject1 = localStringBuilder;
+            paramFromServiceMsg.append("unknow cmd: ");
+            l1 = l2;
+            localObject1 = localStringBuilder;
+            paramFromServiceMsg.append(m);
+            l1 = l2;
+            localObject1 = localStringBuilder;
+            throw new RuntimeException(paramFromServiceMsg.toString());
+          }
         }
+        else
+        {
+          l1 = l2;
+          localObject1 = localStringBuilder;
+          if (((Stt.RspBody)localObject3).msg_c2c_ptt_resp.uint32_error_code.get() != 0) {
+            break label961;
+          }
+          bool2 = true;
+          l1 = l2;
+          localObject1 = localStringBuilder;
+          j = ((Stt.RspBody)localObject3).msg_c2c_ptt_resp.uint32_error_code.get();
+          l1 = l2;
+          localObject1 = localStringBuilder;
+          l3 = ((Stt.RspBody)localObject3).msg_c2c_ptt_resp.uint32_waittime.get();
+          l2 = l3;
+          paramFromServiceMsg = localObject2;
+          bool1 = bool2;
+          i = j;
+          l1 = l3;
+          localObject1 = localStringBuilder;
+          if (((Stt.RspBody)localObject3).msg_c2c_ptt_resp.str_text != null)
+          {
+            l2 = l3;
+            paramFromServiceMsg = localObject2;
+            bool1 = bool2;
+            i = j;
+            l1 = l3;
+            localObject1 = localStringBuilder;
+            if (((Stt.RspBody)localObject3).msg_c2c_ptt_resp.str_text.has())
+            {
+              l1 = l3;
+              localObject1 = localStringBuilder;
+              paramFromServiceMsg = ((Stt.RspBody)localObject3).msg_c2c_ptt_resp.str_text.get();
+              l2 = l3;
+              bool1 = bool2;
+              i = j;
+              break label967;
+            }
+          }
+        }
+        l1 = l2;
+        localObject1 = paramFromServiceMsg;
+        if ((QLog.isColorLevel()) && (paramFromServiceMsg != null))
+        {
+          l1 = l2;
+          localObject1 = paramFromServiceMsg;
+          localStringBuilder = new StringBuilder();
+          l1 = l2;
+          localObject1 = paramFromServiceMsg;
+          localStringBuilder.append("onReceive  text =");
+          l1 = l2;
+          localObject1 = paramFromServiceMsg;
+          localStringBuilder.append(paramFromServiceMsg.length());
+          l1 = l2;
+          localObject1 = paramFromServiceMsg;
+          QLog.d("SttServlet", 1, localStringBuilder.toString());
+        }
+        l1 = l2;
       }
       catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
         i = 2001;
         paramFromServiceMsg.printStackTrace();
-        bool2 = false;
-        l3 = l1;
-        localObject2 = localObject1;
+        bool1 = false;
+        paramFromServiceMsg = (FromServiceMsg)localObject1;
       }
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onReceive  errormsg =");
+        localStringBuilder.append(paramFromServiceMsg.toString());
+        QLog.d("SttServlet", 1, localStringBuilder.toString());
+      }
+      int i = 0;
+      paramFromServiceMsg = (FromServiceMsg)localObject1;
+      l1 = l2;
       int k = paramIntent.getIntExtra("k_retry", 0);
-      bool1 = paramIntent.getBooleanExtra("k_n_uuid", false);
-      QLog.d("SttServlet", 1, "onReceive " + bool2 + " retry " + k + " nouuid" + bool1 + " resultCode=" + i);
-      j = k;
-      if (bool2) {
-        break label820;
-      }
-      j = k;
-      if (bool1) {
-        break label820;
-      }
-      j = k;
-      if (i == 48) {
-        break label820;
-      }
-      j = k + 1;
-      if (j >= 3) {
-        break label820;
-      }
-      paramIntent.putExtra("k_retry", j);
-      getAppRuntime().startServlet((NewIntent)paramIntent);
-      return;
-      localObject1 = localObject2;
-      l1 = l3;
-      if (((Stt.RspBody)localObject4).msg_c2c_ptt_resp.uint32_error_code.get() != 0) {
-        break label897;
-      }
-    }
-    label897:
-    for (bool2 = true;; bool2 = false)
-    {
-      localObject1 = localObject2;
-      l1 = l3;
-      i = ((Stt.RspBody)localObject4).msg_c2c_ptt_resp.uint32_error_code.get();
-      localObject1 = localObject2;
-      l1 = l3;
-      l3 = ((Stt.RspBody)localObject4).msg_c2c_ptt_resp.uint32_waittime.get();
-      localObject1 = localObject2;
-      l1 = l3;
-      paramFromServiceMsg = localObject3;
-      j = i;
-      bool1 = bool2;
-      long l2 = l3;
-      if (((Stt.RspBody)localObject4).msg_c2c_ptt_resp.str_text != null)
+      boolean bool2 = paramIntent.getBooleanExtra("k_n_uuid", false);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onReceive ");
+      ((StringBuilder)localObject1).append(bool1);
+      ((StringBuilder)localObject1).append(" retry ");
+      ((StringBuilder)localObject1).append(k);
+      ((StringBuilder)localObject1).append(" nouuid");
+      ((StringBuilder)localObject1).append(bool2);
+      ((StringBuilder)localObject1).append(" resultCode=");
+      ((StringBuilder)localObject1).append(i);
+      QLog.d("SttServlet", 1, ((StringBuilder)localObject1).toString());
+      int j = k;
+      if (!bool1)
       {
-        localObject1 = localObject2;
-        l1 = l3;
-        paramFromServiceMsg = localObject3;
-        j = i;
-        bool1 = bool2;
-        l2 = l3;
-        if (((Stt.RspBody)localObject4).msg_c2c_ptt_resp.str_text.has())
+        j = k;
+        if (!bool2)
         {
-          localObject1 = localObject2;
-          l1 = l3;
-          paramFromServiceMsg = ((Stt.RspBody)localObject4).msg_c2c_ptt_resp.str_text.get();
-          l2 = l3;
-          bool1 = bool2;
-          j = i;
+          j = k;
+          if (i != 48)
+          {
+            k += 1;
+            j = k;
+            if (k < 3)
+            {
+              paramIntent.putExtra("k_retry", k);
+              getAppRuntime().startServlet((NewIntent)paramIntent);
+              return;
+            }
+          }
         }
       }
-      localObject1 = paramFromServiceMsg;
-      l1 = l2;
-      localObject2 = paramFromServiceMsg;
-      i = j;
-      bool2 = bool1;
-      l3 = l2;
-      if (!QLog.isColorLevel()) {
-        break label197;
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putLong("k_session", paramIntent.getLongExtra("k_session", 0L));
+      ((Bundle)localObject1).putLong("k_time_out", l1);
+      ((Bundle)localObject1).putInt("k_result_code", i);
+      ((Bundle)localObject1).putInt("k_retry", j);
+      if (paramFromServiceMsg != null) {
+        ((Bundle)localObject1).putString("k_ptt_trans_txt", paramFromServiceMsg);
       }
-      localObject2 = paramFromServiceMsg;
-      i = j;
-      bool2 = bool1;
-      l3 = l2;
-      if (paramFromServiceMsg == null) {
-        break label197;
-      }
-      localObject1 = paramFromServiceMsg;
-      l1 = l2;
-      QLog.d("SttServlet", 1, "onReceive  text =" + paramFromServiceMsg.length());
-      localObject2 = paramFromServiceMsg;
-      i = j;
-      bool2 = bool1;
-      l3 = l2;
-      break label197;
-      localObject1 = localObject2;
-      l1 = l3;
-      if (((Stt.RspBody)localObject4).msg_group_ptt_resp.uint32_error_code.get() == 0) {}
-      for (bool2 = true;; bool2 = false)
-      {
-        localObject1 = localObject2;
-        l1 = l3;
-        i = ((Stt.RspBody)localObject4).msg_group_ptt_resp.uint32_error_code.get();
-        localObject1 = localObject2;
-        l1 = l3;
-        l3 = ((Stt.RspBody)localObject4).msg_group_ptt_resp.uint32_waittime.get();
-        localObject1 = localObject2;
-        l1 = l3;
-        paramFromServiceMsg = localObject3;
-        j = i;
-        bool1 = bool2;
-        l2 = l3;
-        if (((Stt.RspBody)localObject4).msg_group_ptt_resp.str_text == null) {
-          break;
-        }
-        localObject1 = localObject2;
-        l1 = l3;
-        paramFromServiceMsg = localObject3;
-        j = i;
-        bool1 = bool2;
-        l2 = l3;
-        if (!((Stt.RspBody)localObject4).msg_group_ptt_resp.str_text.has()) {
-          break;
-        }
-        localObject1 = localObject2;
-        l1 = l3;
-        paramFromServiceMsg = ((Stt.RspBody)localObject4).msg_group_ptt_resp.str_text.get();
-        j = i;
-        bool1 = bool2;
-        l2 = l3;
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SttServlet", 1, "onReceive  errormsg =" + paramFromServiceMsg.toString());
-      }
-      i = 0;
-      localObject2 = localObject1;
-      break label197;
-      label820:
-      paramFromServiceMsg = new Bundle();
-      paramFromServiceMsg.putLong("k_session", paramIntent.getLongExtra("k_session", 0L));
-      paramFromServiceMsg.putLong("k_time_out", l3);
-      paramFromServiceMsg.putInt("k_result_code", i);
-      paramFromServiceMsg.putInt("k_retry", j);
-      if (localObject2 != null) {
-        paramFromServiceMsg.putString("k_ptt_trans_txt", (String)localObject2);
-      }
-      notifyObserver(paramIntent, m, bool2, paramFromServiceMsg, SttManager.class);
+      notifyObserver(paramIntent, m, bool1, (Bundle)localObject1, SttManager.class);
       return;
-      break;
+      bool2 = false;
+      continue;
+      bool2 = false;
     }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     int i = paramIntent.getIntExtra("k_retry", 0);
-    byte[] arrayOfByte = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSliceUploadProcessor", 2, "str_filemd5" + paramIntent.getStringExtra("k_md5") + " uint32_msg_type=" + paramIntent.getIntExtra("k_ptt_type", 0));
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("str_filemd5");
+      ((StringBuilder)localObject1).append(paramIntent.getStringExtra("k_md5"));
+      ((StringBuilder)localObject1).append(" uint32_msg_type=");
+      ((StringBuilder)localObject1).append(paramIntent.getIntExtra("k_ptt_type", 0));
+      QLog.d("PttSliceUploadProcessor", 2, ((StringBuilder)localObject1).toString());
     }
-    Stt.ReqBody localReqBody;
-    String str;
-    Object localObject;
     if (i == 0)
     {
       i = paramIntent.getIntExtra("k_cmd", 0);
-      localReqBody = new Stt.ReqBody();
-      switch (i)
+      Object localObject2 = new Stt.ReqBody();
+      if (i != 1)
       {
-      default: 
-        throw new RuntimeException("unknow cmd: " + i);
-      case 1: 
-        str = "pttTrans.TransC2CPttReq";
-        localObject = new Stt.TransC2CPttReq();
-        ((Stt.TransC2CPttReq)localObject).uint64_sessionid.set(paramIntent.getLongExtra("k_session", 0L));
-        ((Stt.TransC2CPttReq)localObject).uint64_sender_uin.set(paramIntent.getLongExtra("k_sneder", 0L));
-        ((Stt.TransC2CPttReq)localObject).uint64_receiver_uin.set(paramIntent.getLongExtra("k_receiver", 0L));
-        ((Stt.TransC2CPttReq)localObject).str_file_path.set(paramIntent.getStringExtra("k_file"));
-        ((Stt.TransC2CPttReq)localObject).uint32_ptt_time.set(paramIntent.getIntExtra("k_ptt_time", 0));
-        ((Stt.TransC2CPttReq)localObject).uint32_filesize.set((int)paramIntent.getLongExtra("k_size", 0L));
-        ((Stt.TransC2CPttReq)localObject).uint32_ptt_format.set(paramIntent.getIntExtra("k_voice_type", 0));
-        ((Stt.TransC2CPttReq)localObject).uint32_event_type.set(paramIntent.getIntExtra("k_trans_type", 1));
-        ((Stt.TransC2CPttReq)localObject).str_filemd5.set(paramIntent.getStringExtra("k_md5"));
-        ((Stt.TransC2CPttReq)localObject).uint32_msg_type.set(paramIntent.getIntExtra("k_ptt_type", 0));
-        localReqBody.uint32_sub_cmd.set(2);
-        localReqBody.ptt_version.set(paramIntent.getIntExtra("k_stt_mode_version", 1));
-        localReqBody.msg_c2c_ptt_req.set((MessageMicro)localObject);
-        ((Stt.TransC2CPttReq)localObject).str_file_path.get();
-        localObject = str;
-        if (str != null)
+        if (i == 2)
         {
-          paramIntent.putExtra("k_sso_id", str);
-          arrayOfByte = localReqBody.toByteArray();
-          localObject = ByteBuffer.allocate(arrayOfByte.length + 4);
-          ((ByteBuffer)localObject).putInt(arrayOfByte.length + 4).put(arrayOfByte);
-          arrayOfByte = ((ByteBuffer)localObject).array();
-          paramIntent.putExtra("k_sso_data", arrayOfByte);
-          paramIntent.putExtra("k_request_hash", arrayOfByte.hashCode());
-          localObject = str;
+          localObject3 = new Stt.TransGroupPttReq();
+          ((Stt.TransGroupPttReq)localObject3).uint64_sessionid.set(paramIntent.getLongExtra("k_session", 0L));
+          ((Stt.TransGroupPttReq)localObject3).uint64_sender_uin.set(paramIntent.getLongExtra("k_sneder", 0L));
+          ((Stt.TransGroupPttReq)localObject3).uint64_group_uin.set(paramIntent.getLongExtra("k_receiver", 0L));
+          ((Stt.TransGroupPttReq)localObject3).uint32_fileid.set((int)paramIntent.getLongExtra("k_file", 0L));
+          ((Stt.TransGroupPttReq)localObject3).str_filemd5.set(paramIntent.getStringExtra("k_md5"));
+          ((Stt.TransGroupPttReq)localObject3).uint32_ptt_time.set(paramIntent.getIntExtra("k_ptt_time", 0));
+          ((Stt.TransGroupPttReq)localObject3).uint32_filesize.set((int)paramIntent.getLongExtra("k_size", 0L));
+          ((Stt.TransGroupPttReq)localObject3).uint32_ptt_format.set(paramIntent.getIntExtra("k_voice_type", 0));
+          ((Stt.TransGroupPttReq)localObject3).uint32_event_type.set(paramIntent.getIntExtra("k_trans_type", 1));
+          ((Stt.TransGroupPttReq)localObject3).uint32_msg_type.set(paramIntent.getIntExtra("k_ptt_type", 0));
+          if (paramIntent.getStringExtra("k_file_path") != null) {
+            ((Stt.TransGroupPttReq)localObject3).str_file_path.set(paramIntent.getStringExtra("k_file_path"));
+          }
+          localObject1 = localObject2;
+          ((Stt.ReqBody)localObject1).uint32_sub_cmd.set(1);
+          ((Stt.ReqBody)localObject1).ptt_version.set(paramIntent.getIntExtra("k_stt_mode_version", 1));
+          ((Stt.ReqBody)localObject1).msg_group_ptt_req.set((MessageMicro)localObject3);
+          localObject1 = "pttTrans.TransGroupPttReq";
         }
-        break;
+        else
+        {
+          paramIntent = new StringBuilder();
+          paramIntent.append("unknow cmd: ");
+          paramIntent.append(i);
+          throw new RuntimeException(paramIntent.toString());
+        }
       }
+      else
+      {
+        localObject3 = new Stt.TransC2CPttReq();
+        ((Stt.TransC2CPttReq)localObject3).uint64_sessionid.set(paramIntent.getLongExtra("k_session", 0L));
+        ((Stt.TransC2CPttReq)localObject3).uint64_sender_uin.set(paramIntent.getLongExtra("k_sneder", 0L));
+        ((Stt.TransC2CPttReq)localObject3).uint64_receiver_uin.set(paramIntent.getLongExtra("k_receiver", 0L));
+        ((Stt.TransC2CPttReq)localObject3).str_file_path.set(paramIntent.getStringExtra("k_file"));
+        ((Stt.TransC2CPttReq)localObject3).uint32_ptt_time.set(paramIntent.getIntExtra("k_ptt_time", 0));
+        ((Stt.TransC2CPttReq)localObject3).uint32_filesize.set((int)paramIntent.getLongExtra("k_size", 0L));
+        ((Stt.TransC2CPttReq)localObject3).uint32_ptt_format.set(paramIntent.getIntExtra("k_voice_type", 0));
+        ((Stt.TransC2CPttReq)localObject3).uint32_event_type.set(paramIntent.getIntExtra("k_trans_type", 1));
+        ((Stt.TransC2CPttReq)localObject3).str_filemd5.set(paramIntent.getStringExtra("k_md5"));
+        ((Stt.TransC2CPttReq)localObject3).uint32_msg_type.set(paramIntent.getIntExtra("k_ptt_type", 0));
+        localObject1 = localObject2;
+        ((Stt.ReqBody)localObject1).uint32_sub_cmd.set(2);
+        ((Stt.ReqBody)localObject1).ptt_version.set(paramIntent.getIntExtra("k_stt_mode_version", 1));
+        ((Stt.ReqBody)localObject1).msg_c2c_ptt_req.set((MessageMicro)localObject3);
+        ((Stt.TransC2CPttReq)localObject3).str_file_path.get();
+        localObject1 = "pttTrans.TransC2CPttReq";
+      }
+      paramIntent.putExtra("k_sso_id", (String)localObject1);
+      localObject2 = ((Stt.ReqBody)localObject2).toByteArray();
+      Object localObject3 = ByteBuffer.allocate(localObject2.length + 4);
+      ((ByteBuffer)localObject3).putInt(localObject2.length + 4).put((byte[])localObject2);
+      localObject2 = ((ByteBuffer)localObject3).array();
+      paramIntent.putExtra("k_sso_data", (byte[])localObject2);
+      paramIntent.putExtra("k_request_hash", localObject2.hashCode());
+      paramIntent = (Intent)localObject2;
     }
-    for (;;)
+    else
     {
-      paramPacket.setSSOCommand((String)localObject);
-      paramPacket.putSendData(arrayOfByte);
-      return;
-      str = "pttTrans.TransGroupPttReq";
-      localObject = new Stt.TransGroupPttReq();
-      ((Stt.TransGroupPttReq)localObject).uint64_sessionid.set(paramIntent.getLongExtra("k_session", 0L));
-      ((Stt.TransGroupPttReq)localObject).uint64_sender_uin.set(paramIntent.getLongExtra("k_sneder", 0L));
-      ((Stt.TransGroupPttReq)localObject).uint64_group_uin.set(paramIntent.getLongExtra("k_receiver", 0L));
-      ((Stt.TransGroupPttReq)localObject).uint32_fileid.set((int)paramIntent.getLongExtra("k_file", 0L));
-      ((Stt.TransGroupPttReq)localObject).str_filemd5.set(paramIntent.getStringExtra("k_md5"));
-      ((Stt.TransGroupPttReq)localObject).uint32_ptt_time.set(paramIntent.getIntExtra("k_ptt_time", 0));
-      ((Stt.TransGroupPttReq)localObject).uint32_filesize.set((int)paramIntent.getLongExtra("k_size", 0L));
-      ((Stt.TransGroupPttReq)localObject).uint32_ptt_format.set(paramIntent.getIntExtra("k_voice_type", 0));
-      ((Stt.TransGroupPttReq)localObject).uint32_event_type.set(paramIntent.getIntExtra("k_trans_type", 1));
-      ((Stt.TransGroupPttReq)localObject).uint32_msg_type.set(paramIntent.getIntExtra("k_ptt_type", 0));
-      if (paramIntent.getStringExtra("k_file_path") != null) {
-        ((Stt.TransGroupPttReq)localObject).str_file_path.set(paramIntent.getStringExtra("k_file_path"));
-      }
-      localReqBody.uint32_sub_cmd.set(1);
-      localReqBody.ptt_version.set(paramIntent.getIntExtra("k_stt_mode_version", 1));
-      localReqBody.msg_group_ptt_req.set((MessageMicro)localObject);
-      break;
-      localObject = paramIntent.getStringExtra("k_sso_id");
-      arrayOfByte = paramIntent.getByteArrayExtra("k_sso_data");
+      localObject1 = paramIntent.getStringExtra("k_sso_id");
+      paramIntent = paramIntent.getByteArrayExtra("k_sso_data");
     }
+    paramPacket.setSSOCommand((String)localObject1);
+    paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.stt.SttServlet
  * JD-Core Version:    0.7.0.1
  */

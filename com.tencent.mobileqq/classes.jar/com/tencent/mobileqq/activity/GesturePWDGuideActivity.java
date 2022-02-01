@@ -15,8 +15,8 @@ public class GesturePWDGuideActivity
   
   private void a()
   {
-    setTitle(2131692943);
-    this.a = ((Button)findViewById(2131367868));
+    setTitle(2131692903);
+    this.a = ((Button)findViewById(2131367635));
     this.a.setOnClickListener(new GesturePWDGuideActivity.1(this));
   }
   
@@ -29,7 +29,7 @@ public class GesturePWDGuideActivity
     return bool;
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt2 == -1) && (paramInt1 == 999))
     {
@@ -46,16 +46,16 @@ public class GesturePWDGuideActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131559325);
+    super.setContentView(2131559203);
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDGuideActivity
  * JD-Core Version:    0.7.0.1
  */

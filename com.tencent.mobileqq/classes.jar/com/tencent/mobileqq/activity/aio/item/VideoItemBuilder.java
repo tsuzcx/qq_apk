@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
@@ -34,13 +35,13 @@ import com.tencent.mobileqq.data.MessageForVideo;
 import com.tencent.mobileqq.pluspanel.appinfo.GroupVideoChatAppInfo;
 import com.tencent.mobileqq.qcall.UinUtils;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.troopgag.data.TroopGagInfo;
 import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.TroopGagInfo;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QAVGroupConfig;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
@@ -53,11 +54,11 @@ import java.util.Map;
 public class VideoItemBuilder
   extends BaseBubbleBuilder
 {
-  private static final int c = BaseChatItemLayout.h + BaseChatItemLayout.m;
+  private static final int jdField_a_of_type_Int = BaseChatItemLayout.h + BaseChatItemLayout.m;
   private static final int d = BaseChatItemLayout.i + BaseChatItemLayout.n;
   private static final int e;
   private static final int jdField_f_of_type_Int = BaseChatItemLayout.k + BaseChatItemLayout.p;
-  private View.OnClickListener a;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new VideoItemBuilder.1(this);
   private boolean jdField_f_of_type_Boolean = true;
   
   static
@@ -68,7 +69,6 @@ public class VideoItemBuilder
   public VideoItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new VideoItemBuilder.1(this);
   }
   
   private void a(TextView paramTextView, int paramInt)
@@ -80,34 +80,39 @@ public class VideoItemBuilder
     }
     Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
     Drawable localDrawable = localResources.getDrawable(paramInt);
-    int i = localDrawable.getIntrinsicWidth();
-    int j = localDrawable.getIntrinsicHeight();
-    switch (this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("setting_text_size", 0).getInt("chat_text_size_type", 0))
+    int j = localDrawable.getIntrinsicWidth();
+    int i = localDrawable.getIntrinsicHeight();
+    paramInt = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("setting_text_size", 0).getInt("chat_text_size_type", 0);
+    if ((paramInt != 1) && (paramInt != 2) && (paramInt != 3))
     {
-    default: 
       paramInt = j;
     }
-    for (;;)
+    else
     {
-      localDrawable.setBounds(0, 0, i, paramInt);
-      paramTextView.setCompoundDrawables(localDrawable, null, null, null);
-      paramTextView.setCompoundDrawablePadding(BaseChatItemLayout.r);
-      return;
-      int k = localResources.getDimensionPixelSize(2131297709);
-      int m = localResources.getDimensionPixelSize(2131297710);
+      int k = localResources.getDimensionPixelSize(2131297700);
+      int m = localResources.getDimensionPixelSize(2131297701);
       paramInt = k;
       if (k == 0) {
         paramInt = 1;
       }
-      i = i * this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int / paramInt;
-      paramInt = j * this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int / paramInt + m;
-      i += m;
+      j = j * this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int / paramInt + m;
+      i = i * this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int / paramInt + m;
+      paramInt = j;
     }
+    localDrawable.setBounds(0, 0, paramInt, i);
+    paramTextView.setCompoundDrawables(localDrawable, null, null, null);
+    paramTextView.setCompoundDrawablePadding(BaseChatItemLayout.r);
   }
   
   private static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt, boolean paramBoolean)
   {
-    QLog.w("ChatItemBuilder", 1, "qqVideo_group, avType[" + paramInt + "], isVideo[" + paramBoolean + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("qqVideo_group, avType[");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("], isVideo[");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append("]");
+    QLog.w("ChatItemBuilder", 1, ((StringBuilder)localObject).toString());
     if (paramInt == 2)
     {
       localObject = new HashMap();
@@ -115,143 +120,176 @@ public class VideoItemBuilder
       ((Map)localObject).put("from", "itemBuilder");
       GroupVideoChatAppInfo.startGroupVideoOrVoice(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, (Map)localObject);
       long l = Long.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-      if (paramSessionInfo.jdField_a_of_type_Int == 3000) {
+      if (paramSessionInfo.jdField_a_of_type_Int == 3000)
+      {
         if (paramQQAppInterface.getAVNotifyCenter().b() != l) {
           ReportController.b(paramQQAppInterface, "CliOper", "", "", "Multi_call", "Multi_call_disobj_launch", 0, 0, "", "", "", "");
         }
       }
-      while ((paramSessionInfo.jdField_a_of_type_Int != 1) || (paramQQAppInterface.getAVNotifyCenter().b(1, l))) {
-        return;
-      }
-      if (paramInt == 10)
+      else if ((paramSessionInfo.jdField_a_of_type_Int == 1) && (!paramQQAppInterface.getAVNotifyCenter().b(1, l)))
       {
-        if (paramQQAppInterface.getAVNotifyCenter().b() == 0L)
+        if (paramInt == 10)
         {
-          paramContext = paramQQAppInterface.getAVNotifyCenter().a(l, 10);
-          if ((paramContext == null) || (paramContext.jdField_a_of_type_Int <= 0)) {
-            break label242;
+          if (paramQQAppInterface.getAVNotifyCenter().b() == 0L)
+          {
+            paramContext = paramQQAppInterface.getAVNotifyCenter().a(l, 10);
+            if ((paramContext == null) || (paramContext.jdField_a_of_type_Int <= 0)) {
+              ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005925", "0X8005925", 0, 0, "", "", "", "");
+            }
           }
-        }
-        for (;;)
-        {
           ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005DC6", "0X8005DC6", 0, 0, "", "", "", "");
           return;
-          label242:
-          ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005925", "0X8005925", 0, 0, "", "", "", "");
         }
+        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80046CB", "0X80046CB", 0, 0, "", "", "", "");
       }
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80046CB", "0X80046CB", 0, 0, "", "", "", "");
-      return;
     }
-    boolean bool = QAVGroupConfig.a("qqVideoEx", paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString);
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("MultiAVType", paramInt);
-    ((Bundle)localObject).putBoolean("enableInvite", bool);
-    ((Bundle)localObject).putBoolean("isVideo", paramBoolean);
-    ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, (Bundle)localObject);
+    else
+    {
+      boolean bool = QAVGroupConfig.a("qqVideoEx", paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString);
+      localObject = new Bundle();
+      ((Bundle)localObject).putInt("MultiAVType", paramInt);
+      ((Bundle)localObject).putBoolean("enableInvite", bool);
+      ((Bundle)localObject).putBoolean("isVideo", paramBoolean);
+      ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, (Bundle)localObject);
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt, boolean paramBoolean, String paramString1, String paramString2)
   {
-    long l1 = AudioHelper.b();
+    long l1 = QQAudioHelper.b();
     int j = paramSessionInfo.jdField_a_of_type_Int;
     String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
     long l2 = UinUtils.b(str);
-    QLog.w("ChatItemBuilder", 1, "showGroupQavActionSheet, avType[" + paramInt + "], isVideo[" + paramBoolean + "], msgSelfUin[" + paramString1 + "], uinType[" + j + "], groupId[" + str + "], curFriendNick[" + paramSessionInfo.d + "], troopUin[" + paramSessionInfo.jdField_b_of_type_JavaLangString + "], fromWhere[" + paramString2 + "], isVideoActionSheetShown[" + VideoActionSheet.a() + "], seq[" + l1 + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showGroupQavActionSheet, avType[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], isVideo[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("], msgSelfUin[");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("], uinType[");
+    localStringBuilder.append(j);
+    localStringBuilder.append("], groupId[");
+    localStringBuilder.append(str);
+    localStringBuilder.append("], curFriendNick[");
+    localStringBuilder.append(paramSessionInfo.d);
+    localStringBuilder.append("], troopUin[");
+    localStringBuilder.append(paramSessionInfo.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("], fromWhere[");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("], isVideoActionSheetShown[");
+    localStringBuilder.append(VideoActionSheet.a());
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(l1);
+    localStringBuilder.append("]");
+    QLog.w("ChatItemBuilder", 1, localStringBuilder.toString());
+    int i;
     if (10 == paramInt)
     {
-      i = 0;
-      boolean bool = false;
       paramString1 = paramQQAppInterface.getAVNotifyCenter().a(l2, paramInt);
-      if ((paramString1 == null) || (paramString1.jdField_a_of_type_Int <= 0))
+      boolean bool;
+      if ((paramString1 != null) && (paramString1.jdField_a_of_type_Int > 0))
+      {
+        i = 0;
+        bool = false;
+      }
+      else
       {
         paramString1 = QAVGroupConfig.a(paramQQAppInterface, str);
         bool = paramString1.getBoolean("forceDisableInviteBox");
-        i = paramString1.getInt("errId", 2131695624);
+        i = paramString1.getInt("errId", 2131695638);
       }
       if (bool)
       {
-        DialogUtil.a(paramContext, 230, null, paramContext.getResources().getString(i), 2131695411, 2131720534, new VideoItemBuilder.2(), null).show();
+        DialogUtil.a(paramContext, 230, null, paramContext.getResources().getString(i), 2131695421, 2131720247, new VideoItemBuilder.2(), null).show();
         return;
       }
     }
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = 2;
-      label274:
-      if ((paramQQAppInterface.getAVNotifyCenter().a(paramContext, i, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)) || (paramQQAppInterface.getAVNotifyCenter().a(paramContext, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, paramBoolean))) {
-        break label443;
-      }
-      if (AudioHelper.a(19) != 1) {
-        break label445;
-      }
-    }
-    label443:
-    label445:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        AudioHelper.a(HardCodeUtil.a(2131716122));
-      }
-      if ((!paramQQAppInterface.getAVNotifyCenter().a(l1, str)) && (i == 0)) {
-        break label451;
-      }
-      paramSessionInfo = new Bundle();
-      paramSessionInfo.putInt("MultiAVType", UITools.a(j));
-      if (paramBoolean) {
-        paramSessionInfo.putBoolean("isVideo", true);
-      }
-      if (j == 1) {
-        paramSessionInfo.putBoolean("enableInvite", QAVGroupConfig.a("showGroupQavActionSheet", paramQQAppInterface, str));
-      }
-      paramSessionInfo.putString("Fromwhere", paramString2);
-      ChatActivityUtils.a(paramQQAppInterface, paramContext, j, str, true, true, null, paramSessionInfo);
-      return;
+    } else {
       i = 1;
-      break label274;
-      break;
     }
-    label451:
-    paramString1 = paramQQAppInterface.getAVNotifyCenter().a(UinUtils.b(str));
-    if ((paramString1 == null) || (paramString1.jdField_b_of_type_Int != paramInt))
+    if (paramQQAppInterface.getAVNotifyCenter().a(paramContext, i, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if (paramQQAppInterface.getAVNotifyCenter().a(paramContext, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, paramBoolean)) {
+      return;
+    }
+    if (QQAudioHelper.a(19) == 1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      QQAudioHelper.a(HardCodeUtil.a(2131716045));
+    }
+    if ((!paramQQAppInterface.getAVNotifyCenter().a(l1, str)) && (i == 0))
     {
+      paramString1 = paramQQAppInterface.getAVNotifyCenter().a(UinUtils.b(str));
+      if ((paramString1 != null) && (paramString1.jdField_b_of_type_Int == paramInt))
+      {
+        if ((paramString1 != null) && (paramString1.jdField_b_of_type_Int == 2) && (paramString1.d == 2) && (paramString1.jdField_e_of_type_Int == 4)) {
+          paramBoolean = true;
+        } else {
+          paramBoolean = false;
+        }
+        VideoStatusTipsBar.a(paramQQAppInterface, paramContext, j, str, paramInt, paramBoolean, paramString2);
+        return;
+      }
       VideoMsgTools.a(paramQQAppInterface, paramContext, j, str, paramSessionInfo.d, paramBoolean, paramString2);
       return;
     }
-    if ((paramString1 != null) && (paramString1.jdField_b_of_type_Int == 2) && (paramString1.d == 2) && (paramString1.jdField_e_of_type_Int == 4)) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      VideoStatusTipsBar.a(paramQQAppInterface, paramContext, j, str, paramInt, paramBoolean, paramString2);
-      return;
+    paramSessionInfo = new Bundle();
+    paramSessionInfo.putInt("MultiAVType", UITools.a(j));
+    if (paramBoolean) {
+      paramSessionInfo.putBoolean("isVideo", true);
     }
+    if (j == 1) {
+      paramSessionInfo.putBoolean("enableInvite", QAVGroupConfig.a("showGroupQavActionSheet", paramQQAppInterface, str));
+    }
+    paramSessionInfo.putString("Fromwhere", paramString2);
+    ChatActivityUtils.a(paramQQAppInterface, paramContext, j, str, true, true, null, paramSessionInfo);
   }
   
   private static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, MessageForVideo paramMessageForVideo)
   {
-    if ((!VcSystemInfo.isSupportSharpAudio()) || (VideoActionSheet.a())) {
-      return;
-    }
-    if (paramMessageForVideo.type == 13) {}
-    for (int i = 1;; i = 0)
+    if (VcSystemInfo.isSupportSharpAudio())
     {
-      if (i == 0) {
-        break label77;
+      if (VideoActionSheet.a()) {
+        return;
       }
-      i = paramMessageForVideo.istroop;
-      if ((i != 1) && (i != 3000)) {
-        break;
+      int i;
+      if (paramMessageForVideo.type == 13) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      a(paramQQAppInterface, paramContext, paramSessionInfo, paramMessageForVideo.extInt, paramMessageForVideo.isVideo, paramMessageForVideo.selfuin, "");
-      return;
+      if (i != 0)
+      {
+        i = paramMessageForVideo.istroop;
+        if ((i == 1) || (i == 3000)) {
+          a(paramQQAppInterface, paramContext, paramSessionInfo, paramMessageForVideo.extInt, paramMessageForVideo.isVideo, paramMessageForVideo.selfuin, "");
+        }
+      }
+      else
+      {
+        c(paramQQAppInterface, paramSessionInfo, paramMessageForVideo.isVideo, paramMessageForVideo.type);
+        if ((QLog.isDebugVersion()) || (QLog.isColorLevel()))
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("[qqVideo_double] content: ");
+          paramContext.append(paramMessageForVideo.getDebugInfo());
+          QLog.d("ChatItemBuilder", 0, paramContext.toString());
+        }
+        if (paramMessageForVideo.isVideo)
+        {
+          ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005642", "0X8005642", 0, 0, "", "", "", "");
+          return;
+        }
+        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005243", "0X8005243", 0, 0, "", "", "", "");
+      }
     }
-    label77:
-    c(paramQQAppInterface, paramSessionInfo, paramMessageForVideo.isVideo, paramMessageForVideo.type);
-    if (paramMessageForVideo.isVideo)
-    {
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005642", "0X8005642", 0, 0, "", "", "", "");
-      return;
-    }
-    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005243", "0X8005243", 0, 0, "", "", "", "");
   }
   
   static void a(QQAppInterface paramQQAppInterface, Context paramContext, MessageForVideo paramMessageForVideo, SessionInfo paramSessionInfo)
@@ -262,137 +300,147 @@ public class VideoItemBuilder
       a(paramQQAppInterface, paramMessageForVideo, paramSessionInfo);
       if ((paramSessionInfo.jdField_a_of_type_Int != 1) || (paramMessageForVideo.extInt == 10)) {}
     }
-    else
+    try
     {
-      try
-      {
-        l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
-        int i = UITools.b(paramSessionInfo.jdField_a_of_type_Int);
-        l = paramQQAppInterface.getAVNotifyCenter().a(i, l);
-        Object localObject = (TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER);
-        boolean bool1 = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramQQAppInterface.getCurrentAccountUin());
-        boolean bool2 = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
-        boolean bool3 = ((TroopGagMgr)localObject).b(paramSessionInfo.jdField_a_of_type_JavaLangString);
-        localObject = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
-        if ((l == 0L) && (((!bool3) && (bool1)) || ((!bool2) && (localObject != null) && (((TroopGagMgr.TroopGagInfo)localObject).a > 0L))))
-        {
-          QQToast.a(paramQQAppInterface.getApp(), HardCodeUtil.a(2131716121), 0).b(paramQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299166));
-          return;
-        }
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          long l = 0L;
-        }
-        a(paramQQAppInterface, paramContext, paramSessionInfo, paramMessageForVideo.extInt, paramMessageForVideo.isVideo);
-        return;
-      }
+      l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
     }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      long l;
+      label45:
+      int i;
+      Object localObject;
+      boolean bool1;
+      boolean bool2;
+      boolean bool3;
+      break label45;
+    }
+    l = 0L;
+    i = UITools.b(paramSessionInfo.jdField_a_of_type_Int);
+    l = paramQQAppInterface.getAVNotifyCenter().a(i, l);
+    localObject = (TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER);
+    bool1 = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramQQAppInterface.getCurrentAccountUin());
+    bool2 = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    bool3 = ((TroopGagMgr)localObject).b(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    localObject = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    if ((l == 0L) && (((!bool3) && (bool1)) || ((!bool2) && (localObject != null) && (((TroopGagInfo)localObject).a > 0L))))
+    {
+      QQToast.a(paramQQAppInterface.getApp(), HardCodeUtil.a(2131716044), 0).b(paramQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299168));
+      return;
+    }
+    a(paramQQAppInterface, paramContext, paramSessionInfo, paramMessageForVideo.extInt, paramMessageForVideo.isVideo);
+    return;
     a(paramQQAppInterface, paramContext, paramSessionInfo, paramMessageForVideo);
   }
   
   static void a(QQAppInterface paramQQAppInterface, MessageForVideo paramMessageForVideo, SessionInfo paramSessionInfo)
   {
     int i = paramMessageForVideo.istroop;
-    if (paramMessageForVideo.type == 13)
-    {
-      if (i != 3000) {
-        break label123;
-      }
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "Multi_call", "Multi_call_disobj", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      if ((paramMessageForVideo.type == 2) || (paramMessageForVideo.type == 24)) {
-        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004009", "", 0, 0, "1", "", "", "");
-      }
-      if (paramMessageForVideo.type == 0) {
-        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800400A", "", 0, 0, "1", "", "", "");
-      }
-      return;
-      label123:
-      if (i == 1) {
-        if (paramMessageForVideo.extInt == 10) {
+    if (paramMessageForVideo.type == 13) {
+      if (i == 3000) {
+        ReportController.b(paramQQAppInterface, "CliOper", "", "", "Multi_call", "Multi_call_disobj", 0, 0, "", "", "", "");
+      } else if (i == 1) {
+        if (paramMessageForVideo.extInt == 10)
+        {
           ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005924", "0X8005924", 0, 0, "", "", "", "");
-        } else {
-          ReportController.b(null, "dc00899", "Grp_video", "", "notice", "video", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, "" + TroopUtils.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString), "0", "");
+        }
+        else
+        {
+          String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append(TroopUtils.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString));
+          ReportController.b(null, "dc00899", "Grp_video", "", "notice", "video", 0, 0, str, localStringBuilder.toString(), "0", "");
         }
       }
+    }
+    if ((paramMessageForVideo.type == 2) || (paramMessageForVideo.type == 24)) {
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004009", "", 0, 0, "1", "", "", "");
+    }
+    if (paramMessageForVideo.type == 0) {
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800400A", "", 0, 0, "1", "", "", "");
     }
   }
   
   private void a(MessageForVideo paramMessageForVideo, Context paramContext, View paramView)
   {
-    Object localObject1 = "";
-    if (paramMessageForVideo == null) {
+    if (paramMessageForVideo == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("ChatItemBuilder", 2, "setMsgAccDescription-->message is null");
       }
-    }
-    do
-    {
       return;
-      if ((paramMessageForVideo.senderuin != null) && (paramMessageForVideo.selfuin != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ChatItemBuilder", 2, "setMsgAccDescription-->uin is null");
-    return;
-    int i;
-    if (paramMessageForVideo.selfuin.equals(paramMessageForVideo.senderuin))
+    }
+    if ((paramMessageForVideo.senderuin != null) && (paramMessageForVideo.selfuin != null))
     {
-      if (-2016 == paramMessageForVideo.msgtype) {
-        localObject1 = HardCodeUtil.a(2131716115);
+      if (paramMessageForVideo.selfuin.equals(paramMessageForVideo.senderuin))
+      {
+        if (-2016 == paramMessageForVideo.msgtype) {
+          localObject1 = HardCodeUtil.a(2131716038);
+        } else {
+          localObject1 = "";
+        }
+      }
+      else {
+        localObject1 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForVideo.senderuin, 0);
       }
       Object localObject2 = localObject1;
+      int i;
       if (paramMessageForVideo.msgtype == -2009)
       {
-        localObject1 = new StringBuilder().append((String)localObject1);
-        localObject2 = paramView.getResources();
-        if (!paramMessageForVideo.isVideo) {
-          break label259;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject1 = paramView.getResources();
+        if (paramMessageForVideo.isVideo) {
+          i = 2131719747;
+        } else {
+          i = 2131719733;
         }
-        i = 2131720015;
-        label132:
-        localObject2 = ((Resources)localObject2).getString(i);
+        ((StringBuilder)localObject2).append(((Resources)localObject1).getString(i));
+        localObject2 = ((StringBuilder)localObject2).toString();
       }
-      localObject1 = (String)localObject2 + paramMessageForVideo.text;
-      if (!paramMessageForVideo.text.contains(paramContext.getResources().getString(2131720530))) {
-        break label267;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append(paramMessageForVideo.text);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131720243)))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(a(paramMessageForVideo, paramContext, paramView));
+        localObject1 = ((StringBuilder)localObject2).toString();
       }
-      localObject1 = (String)localObject1 + a(paramMessageForVideo, paramContext, paramView);
-    }
-    for (;;)
-    {
-      paramView.setContentDescription(((String)localObject1).replace(HardCodeUtil.a(2131716123), HardCodeUtil.a(2131716114)));
-      return;
-      localObject1 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForVideo.senderuin, 0);
-      break;
-      label259:
-      i = 2131720001;
-      break label132;
-      label267:
-      if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131720519)))
+      else if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131720232)))
       {
         paramContext = paramContext.getResources();
-        if (paramMessageForVideo.isVideo) {}
-        for (i = 2131720538;; i = 2131690289)
-        {
-          localObject1 = paramContext.getString(i);
-          break;
+        if (paramMessageForVideo.isVideo) {
+          i = 2131720252;
+        } else {
+          i = 2131690207;
         }
+        localObject1 = paramContext.getString(i);
       }
-      if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695945))) {
-        localObject1 = paramContext.getResources().getString(2131719017);
-      } else if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695944))) {
-        localObject1 = paramContext.getResources().getString(2131718555);
-      } else if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695368))) {
-        localObject1 = paramContext.getResources().getString(2131719017);
-      } else if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695367))) {
-        localObject1 = paramContext.getResources().getString(2131718555);
+      else if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695960)))
+      {
+        localObject1 = paramContext.getResources().getString(2131718733);
       }
+      else if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695959)))
+      {
+        localObject1 = paramContext.getResources().getString(2131718223);
+      }
+      else if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695378)))
+      {
+        localObject1 = paramContext.getResources().getString(2131718733);
+      }
+      else if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695377)))
+      {
+        localObject1 = paramContext.getResources().getString(2131718223);
+      }
+      paramView.setContentDescription(((String)localObject1).replace(HardCodeUtil.a(2131716046), HardCodeUtil.a(2131716037)));
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "setMsgAccDescription-->uin is null");
     }
   }
   
@@ -404,81 +452,95 @@ public class VideoItemBuilder
     {
       str1 = "Two_call";
       str2 = "Two_call_launch";
-      switch (paramSessionInfo.jdField_a_of_type_Int)
-      {
-      default: 
-        paramSessionInfo = "0";
-        label72:
-        ReportController.b(paramQQAppInterface, "CliOper", "", "", str1, str2, 0, 0, paramSessionInfo, "", "", "");
-        if (paramInt == 2) {
-          ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004009", "", 0, 0, "2", "", "", "");
-        }
-        break;
-      }
     }
-    for (;;)
+    else
     {
-      if (!paramBoolean) {
-        break label238;
-      }
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005643", "0X8005643", 0, 0, "", "", "", "");
-      return;
       str1 = "Two_video_call";
       str2 = "Two_video_call_launch";
-      break;
-      paramSessionInfo = "0";
-      break label72;
-      paramSessionInfo = "1";
-      break label72;
-      paramSessionInfo = "2";
-      break label72;
-      paramSessionInfo = "3";
-      break label72;
-      paramSessionInfo = "4";
-      break label72;
-      if (paramInt == 0) {
-        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800400A", "", 0, 0, "2", "", "", "");
-      }
     }
-    label238:
+    int i = paramSessionInfo.jdField_a_of_type_Int;
+    if (i != 0)
+    {
+      if (i == 1004) {
+        break label98;
+      }
+      if (i == 1006) {
+        break label91;
+      }
+      if (i == 1000) {
+        break label84;
+      }
+      if (i == 1001) {}
+    }
+    else
+    {
+      paramSessionInfo = "0";
+      break label105;
+    }
+    paramSessionInfo = "4";
+    break label88;
+    label84:
+    paramSessionInfo = "2";
+    for (;;)
+    {
+      label88:
+      break;
+      label91:
+      paramSessionInfo = "3";
+      continue;
+      label98:
+      paramSessionInfo = "1";
+    }
+    label105:
+    ReportController.b(paramQQAppInterface, "CliOper", "", "", str1, str2, 0, 0, paramSessionInfo, "", "", "");
+    if (paramInt == 2) {
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004009", "", 0, 0, "2", "", "", "");
+    } else if (paramInt == 0) {
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800400A", "", 0, 0, "2", "", "", "");
+    }
+    if (paramBoolean)
+    {
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005643", "0X8005643", 0, 0, "", "", "", "");
+      return;
+    }
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005244", "0X8005244", 0, 0, "", "", "", "");
   }
   
   private static void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean, int paramInt)
   {
-    QLog.w("ChatItemBuilder", 1, "qqVideoEx, isVideo[" + paramBoolean + "], closeType[" + paramInt + "]");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("qqVideoEx, isVideo[");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    ((StringBuilder)localObject1).append("], closeType[");
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append("]");
+    QLog.w("ChatItemBuilder", 1, ((StringBuilder)localObject1).toString());
     b(paramQQAppInterface, paramSessionInfo, paramBoolean, paramInt);
     int i = paramSessionInfo.jdField_a_of_type_Int;
-    String str3 = paramSessionInfo.d;
-    String str2;
-    String str1;
+    String str = paramSessionInfo.d;
+    Object localObject2;
+    Object localObject3;
     if (i == 1006)
     {
-      str2 = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      str1 = null;
-      if (!paramBoolean) {
-        break label115;
-      }
+      localObject1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      localObject2 = null;
+      localObject3 = localObject1;
     }
-    label115:
-    for (paramInt = 2;; paramInt = 1)
+    else
     {
-      if (!paramQQAppInterface.getAVNotifyCenter().a(paramQQAppInterface.getApp(), paramInt, i, str1)) {
-        break label120;
-      }
-      return;
-      str1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      str2 = null;
-      break;
+      localObject1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      localObject3 = null;
+      localObject2 = localObject1;
     }
-    label120:
-    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ChatActivityUtils.a(paramQQAppInterface, localBaseApplication, i, str1, str3, str2, paramBoolean, paramSessionInfo.jdField_b_of_type_JavaLangString, true, true, null, "from_internal");
+    if (paramBoolean) {
+      paramInt = 2;
+    } else {
+      paramInt = 1;
+    }
+    if (paramQQAppInterface.getAVNotifyCenter().a(paramQQAppInterface.getApp(), paramInt, i, localObject2)) {
       return;
     }
+    ChatActivityUtils.a(paramQQAppInterface, paramQQAppInterface.getApp(), i, localObject2, str, localObject3, paramBoolean ^ true, paramSessionInfo.jdField_b_of_type_JavaLangString, true, true, null, "from_internal");
   }
   
   public int a(ChatMessage paramChatMessage)
@@ -486,29 +548,43 @@ public class VideoItemBuilder
     return 1;
   }
   
-  public View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    VideoItemBuilder.Holder localHolder = (VideoItemBuilder.Holder)paramViewHolder;
+    Object localObject = (VideoItemBuilder.Holder)paramViewHolder;
     paramBaseChatItemLayout = paramBaseChatItemLayout.getContext();
     Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    paramViewHolder = paramView;
     if (paramView == null)
     {
       paramViewHolder = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      paramViewHolder.setId(2131364637);
-      paramViewHolder.setTextColor(localResources.getColorStateList(2131167052));
-      paramViewHolder.setTextSize(localResources.getDimensionPixelOffset(2131296475));
+      paramViewHolder.setId(2131364524);
+      paramViewHolder.setTextColor(localResources.getColorStateList(2131167075));
+      paramViewHolder.setTextSize(localResources.getDimensionPixelOffset(2131296454));
       paramViewHolder.setGravity(16);
-      localHolder.a = paramViewHolder;
+      ((VideoItemBuilder.Holder)localObject).a = paramViewHolder;
+    }
+    else
+    {
+      paramViewHolder = paramView;
     }
     paramView = (MessageForVideo)paramChatMessage;
-    int i = VideoMsgTools.a(paramBaseChatItemLayout, paramView.type, paramView.text, paramView.isVideo, paramChatMessage.isSendFromLocal());
-    a(localHolder.a, i);
+    boolean bool;
+    if (paramView.isFromServer()) {
+      bool = TextUtils.equals(paramView.selfuin, paramView.senderuin);
+    } else {
+      bool = false;
+    }
+    int i = VideoMsgTools.a(paramBaseChatItemLayout, paramView.type, paramView.text, paramView.isVideo, paramChatMessage.isSendFromLocal(), bool);
+    a(((VideoItemBuilder.Holder)localObject).a, i);
     i = VideoMsgTools.a(paramBaseChatItemLayout, paramView.type, paramView.text, paramChatMessage.isSendFromLocal());
-    localHolder.a.setTextColor(localResources.getColor(i));
-    localHolder.a.setText(paramView.text);
-    if ((paramView.istroop == 1) && (this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695566).equals(paramView.text))) {
-      ReportController.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, paramView.frienduin, "" + TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.frienduin), "", "");
+    ((VideoItemBuilder.Holder)localObject).a.setTextColor(localResources.getColor(i));
+    ((VideoItemBuilder.Holder)localObject).a.setText(paramView.text);
+    if ((paramView.istroop == 1) && (this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695577).equals(paramView.text)))
+    {
+      paramChatMessage = paramView.frienduin;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.frienduin));
+      ReportController.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, paramChatMessage, ((StringBuilder)localObject).toString(), "", "");
     }
     paramViewHolder.setOnTouchListener(paramOnLongClickAndTouchListener);
     paramViewHolder.setOnLongClickListener(paramOnLongClickAndTouchListener);
@@ -519,80 +595,89 @@ public class VideoItemBuilder
     return paramViewHolder;
   }
   
-  public BaseBubbleBuilder.ViewHolder a()
+  protected BaseBubbleBuilder.ViewHolder a()
   {
     return new VideoItemBuilder.Holder(this);
   }
   
-  public String a(ChatMessage paramChatMessage)
+  protected String a(ChatMessage paramChatMessage)
   {
-    return HardCodeUtil.a(2131716120);
+    return HardCodeUtil.a(2131716043);
   }
   
   String a(MessageForVideo paramMessageForVideo, Context paramContext, View paramView)
   {
-    int j = 0;
-    Object localObject = "";
-    String str2 = paramMessageForVideo.text;
-    String str1 = paramContext.getResources().getString(2131720530) + ",";
-    paramContext = str2.substring(str2.indexOf(':') - 2, str2.lastIndexOf(':') + 3).split(":");
-    int k;
+    String str = paramMessageForVideo.text;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramContext.getResources().getString(2131720243));
+    ((StringBuilder)localObject).append(",");
+    localObject = ((StringBuilder)localObject).toString();
+    paramContext = UITools.a(str);
+    int k = 0;
+    int j;
     int i;
-    if (paramContext.length == 3)
+    if ((paramContext != null) && (paramContext.length == 3))
     {
       k = Integer.valueOf(paramContext[0]).intValue();
       j = Integer.valueOf(paramContext[1]).intValue();
       i = Integer.valueOf(paramContext[2]).intValue();
     }
-    for (;;)
+    else if ((paramContext != null) && (paramContext.length == 2))
     {
-      if ((k <= 0) && (j <= 0))
-      {
-        paramContext = (Context)localObject;
-        if (i <= 0) {}
-      }
-      else
-      {
-        if (k <= 0) {
-          break label331;
-        }
-      }
-      label331:
-      for (localObject = str1 + k + HardCodeUtil.a(2131716117);; localObject = str1)
-      {
-        paramContext = (Context)localObject;
-        if (j > 0) {
-          paramContext = (String)localObject + j + HardCodeUtil.a(2131716119);
-        }
-        localObject = paramContext;
-        if (i > 0) {
-          localObject = paramContext + i + HardCodeUtil.a(2131716118);
-        }
-        paramContext = paramView.getResources();
-        if (paramMessageForVideo.isVideo) {}
-        for (i = 2131720015;; i = 2131720001)
-        {
-          paramMessageForVideo = paramContext.getString(i);
-          paramContext = paramMessageForVideo + (String)localObject;
-          return paramContext;
-          if (paramContext.length != 2) {
-            break label338;
-          }
-          j = Integer.valueOf(paramContext[0]).intValue();
-          i = Integer.valueOf(paramContext[1]).intValue();
-          k = 0;
-          break;
-        }
-      }
-      label338:
-      i = 0;
-      k = 0;
+      j = Integer.valueOf(paramContext[0]).intValue();
+      i = Integer.valueOf(paramContext[1]).intValue();
     }
+    else
+    {
+      i = 0;
+      j = 0;
+    }
+    if ((k <= 0) && (j <= 0) && (i <= 0)) {
+      return "";
+    }
+    paramContext = (Context)localObject;
+    if (k > 0)
+    {
+      paramContext = new StringBuilder();
+      paramContext.append((String)localObject);
+      paramContext.append(k);
+      paramContext.append(HardCodeUtil.a(2131716040));
+      paramContext = paramContext.toString();
+    }
+    localObject = paramContext;
+    if (j > 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext);
+      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131716042));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    paramContext = (Context)localObject;
+    if (i > 0)
+    {
+      paramContext = new StringBuilder();
+      paramContext.append((String)localObject);
+      paramContext.append(i);
+      paramContext.append(HardCodeUtil.a(2131716041));
+      paramContext = paramContext.toString();
+    }
+    paramView = paramView.getResources();
+    if (paramMessageForVideo.isVideo) {
+      i = 2131719747;
+    } else {
+      i = 2131719733;
+    }
+    paramMessageForVideo = paramView.getString(i);
+    paramView = new StringBuilder();
+    paramView.append(paramMessageForVideo);
+    paramView.append(paramContext);
+    return paramView.toString();
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt == 2131365636)
+    if (paramInt == 2131365480)
     {
       ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
@@ -600,56 +685,56 @@ public class VideoItemBuilder
     super.a(paramInt, paramContext, paramChatMessage);
   }
   
-  public void a(View paramView, ChatMessage paramChatMessage)
+  protected void a(View paramView, ChatMessage paramChatMessage)
   {
     if (paramChatMessage.isSend())
     {
-      paramView.setPadding(jdField_f_of_type_Int, c, jdField_e_of_type_Int, d);
+      paramView.setPadding(jdField_f_of_type_Int, jdField_a_of_type_Int, jdField_e_of_type_Int, d);
       return;
     }
-    paramView.setPadding(jdField_e_of_type_Int, c, jdField_f_of_type_Int, d);
+    paramView.setPadding(jdField_e_of_type_Int, jdField_a_of_type_Int, jdField_f_of_type_Int, d);
   }
   
-  public void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
+  protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
   {
     VideoItemBuilder.Holder localHolder = (VideoItemBuilder.Holder)paramViewHolder;
     localHolder.a.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int);
-    if ((paramBubbleInfo.jdField_a_of_type_Int == 0) || (!paramBubbleInfo.a()))
+    if ((paramBubbleInfo.jdField_a_of_type_Int != 0) && (paramBubbleInfo.a()))
     {
-      paramView = paramView.getResources();
-      if (localHolder.a.getText().toString().contains(this.jdField_a_of_type_AndroidContentContext.getString(2131720516)))
+      if (paramBubbleInfo.jdField_b_of_type_Int == 0) {
+        localHolder.a.setTextColor(-16777216);
+      } else {
+        localHolder.a.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+      }
+      if (paramBubbleInfo.c == 0)
       {
-        paramViewHolder = paramView.getColorStateList(2131165954);
-        localHolder.a.setTextColor(paramViewHolder);
+        localHolder.a.setLinkTextColor(paramView.getResources().getColorStateList(2131167077));
         return;
       }
-      if (paramChatMessage.isSend())
-      {
-        paramViewHolder = paramView.getColorStateList(2131167056);
-        localHolder.a.setTextColor(paramViewHolder);
-        if (!paramChatMessage.isSend()) {
-          break label151;
-        }
-      }
-      label151:
-      for (paramViewHolder = paramView.getColorStateList(2131167055);; paramViewHolder = paramView.getColorStateList(2131167054))
-      {
-        localHolder.a.setLinkTextColor(paramViewHolder);
-        return;
-        paramViewHolder = paramView.getColorStateList(2131167052);
-        break;
-      }
-    }
-    if (paramBubbleInfo.jdField_b_of_type_Int == 0) {
-      localHolder.a.setTextColor(-16777216);
-    }
-    while (paramBubbleInfo.c == 0)
-    {
-      localHolder.a.setLinkTextColor(paramView.getResources().getColorStateList(2131167054));
+      localHolder.a.setLinkTextColor(paramBubbleInfo.c);
       return;
-      localHolder.a.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
     }
-    localHolder.a.setLinkTextColor(paramBubbleInfo.c);
+    paramViewHolder = paramView.getResources();
+    if (localHolder.a.getText().toString().contains(this.jdField_a_of_type_AndroidContentContext.getString(2131720229)))
+    {
+      paramViewHolder = paramViewHolder.getColorStateList(2131165965);
+      localHolder.a.setTextColor(paramViewHolder);
+      return;
+    }
+    int i;
+    if (paramChatMessage.isSend()) {
+      i = 2131167079;
+    } else {
+      i = 2131167075;
+    }
+    paramView = paramViewHolder.getColorStateList(i);
+    localHolder.a.setTextColor(paramView);
+    if (paramChatMessage.isSend()) {
+      paramViewHolder = paramViewHolder.getColorStateList(2131167078);
+    } else {
+      paramViewHolder = paramViewHolder.getColorStateList(2131167077);
+    }
+    localHolder.a.setLinkTextColor(paramViewHolder);
   }
   
   public void a(boolean paramBoolean)
@@ -662,14 +747,14 @@ public class VideoItemBuilder
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     AIOUtils.a(paramView);
     ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131371997, null, null);
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362524, null, null);
+    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131371603, null, null);
+    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
     return localQQCustomMenu.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.VideoItemBuilder
  * JD-Core Version:    0.7.0.1
  */

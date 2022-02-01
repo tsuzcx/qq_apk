@@ -13,7 +13,7 @@ public abstract class BaseTroopVidListPlayingListSync
   
   protected abstract TroopVidToVideoInfoPuller a();
   
-  public void a(int paramInt)
+  protected void a(int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller == null)
     {
@@ -30,7 +30,7 @@ public abstract class BaseTroopVidListPlayingListSync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.BaseTroopVidListPlayingListSync
  * JD-Core Version:    0.7.0.1
  */

@@ -17,33 +17,34 @@ public class WSVerticalPageErrorViewController
   
   private void f()
   {
-    if (this.a != null)
+    WSVerticalPageFragment localWSVerticalPageFragment = this.a;
+    if (localWSVerticalPageFragment != null)
     {
-      this.a.a(false, true);
+      localWSVerticalPageFragment.a(false, true);
       this.a.d();
       this.a.c();
     }
   }
   
-  public void a() {}
+  protected void a() {}
   
-  public int b()
+  protected int b()
   {
-    return 2131560126;
+    return 2131560006;
   }
   
-  public void b() {}
+  protected void b() {}
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
-    a(2131381190).setOnClickListener(new WSVerticalPageErrorViewController.1(this));
+    a(2131380443).setOnClickListener(new WSVerticalPageErrorViewController.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageErrorViewController
  * JD-Core Version:    0.7.0.1
  */

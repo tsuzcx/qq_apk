@@ -46,17 +46,19 @@ public final class mobile_main_page_req
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.visituin, 1);
     paramJceOutputStream.write(this.force, 2);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 3);
+    Object localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.mapTimeStamp != null) {
-      paramJceOutputStream.write(this.mapTimeStamp, 4);
+    localObject = this.mapTimeStamp;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_main_page_req
  * JD-Core Version:    0.7.0.1
  */

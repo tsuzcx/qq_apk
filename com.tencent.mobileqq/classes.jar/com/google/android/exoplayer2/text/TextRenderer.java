@@ -44,14 +44,14 @@ public final class TextRenderer
   {
     super(3);
     this.output = ((TextOutput)Assertions.checkNotNull(paramTextOutput));
-    if (paramLooper == null) {}
-    for (paramTextOutput = null;; paramTextOutput = new Handler(paramLooper, this))
-    {
-      this.outputHandler = paramTextOutput;
-      this.decoderFactory = paramSubtitleDecoderFactory;
-      this.formatHolder = new FormatHolder();
-      return;
+    if (paramLooper == null) {
+      paramTextOutput = null;
+    } else {
+      paramTextOutput = new Handler(paramLooper, this);
     }
+    this.outputHandler = paramTextOutput;
+    this.decoderFactory = paramSubtitleDecoderFactory;
+    this.formatHolder = new FormatHolder();
   }
   
   private void clearOutput()
@@ -61,10 +61,11 @@ public final class TextRenderer
   
   private long getNextEventTime()
   {
-    if ((this.nextSubtitleEventIndex == -1) || (this.nextSubtitleEventIndex >= this.subtitle.getEventTimeCount())) {
-      return 9223372036854775807L;
+    int i = this.nextSubtitleEventIndex;
+    if ((i != -1) && (i < this.subtitle.getEventTimeCount())) {
+      return this.subtitle.getEventTime(this.nextSubtitleEventIndex);
     }
-    return this.subtitle.getEventTime(this.nextSubtitleEventIndex);
+    return 9223372036854775807L;
   }
   
   private void invokeUpdateOutputInternal(List<Cue> paramList)
@@ -76,14 +77,16 @@ public final class TextRenderer
   {
     this.nextInputBuffer = null;
     this.nextSubtitleEventIndex = -1;
-    if (this.subtitle != null)
+    SubtitleOutputBuffer localSubtitleOutputBuffer = this.subtitle;
+    if (localSubtitleOutputBuffer != null)
     {
-      this.subtitle.release();
+      localSubtitleOutputBuffer.release();
       this.subtitle = null;
     }
-    if (this.nextSubtitle != null)
+    localSubtitleOutputBuffer = this.nextSubtitle;
+    if (localSubtitleOutputBuffer != null)
     {
-      this.nextSubtitle.release();
+      localSubtitleOutputBuffer.release();
       this.nextSubtitle = null;
     }
   }
@@ -104,9 +107,10 @@ public final class TextRenderer
   
   private void updateOutput(List<Cue> paramList)
   {
-    if (this.outputHandler != null)
+    Handler localHandler = this.outputHandler;
+    if (localHandler != null)
     {
-      this.outputHandler.obtainMessage(0, paramList).sendToTarget();
+      localHandler.obtainMessage(0, paramList).sendToTarget();
       return;
     }
     invokeUpdateOutputInternal(paramList);
@@ -114,13 +118,12 @@ public final class TextRenderer
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 0)
     {
-    default: 
-      throw new IllegalStateException();
+      invokeUpdateOutputInternal((List)paramMessage.obj);
+      return true;
     }
-    invokeUpdateOutputInternal((List)paramMessage.obj);
-    return true;
+    throw new IllegalStateException();
   }
   
   public boolean isEnded()
@@ -133,14 +136,14 @@ public final class TextRenderer
     return true;
   }
   
-  public void onDisabled()
+  protected void onDisabled()
   {
     this.streamFormat = null;
     clearOutput();
     releaseDecoder();
   }
   
-  public void onPositionReset(long paramLong, boolean paramBoolean)
+  protected void onPositionReset(long paramLong, boolean paramBoolean)
   {
     clearOutput();
     this.inputStreamEnded = false;
@@ -154,7 +157,7 @@ public final class TextRenderer
     this.decoder.flush();
   }
   
-  public void onStreamChanged(Format[] paramArrayOfFormat, long paramLong)
+  protected void onStreamChanged(Format[] paramArrayOfFormat, long paramLong)
   {
     this.streamFormat = paramArrayOfFormat[0];
     if (this.decoder != null)
@@ -167,125 +170,133 @@ public final class TextRenderer
   
   public void render(long paramLong1, long paramLong2)
   {
-    if (this.outputStreamEnded) {}
-    int i;
-    int j;
-    label167:
-    do
+    if (this.outputStreamEnded) {
+      return;
+    }
+    if (this.nextSubtitle == null)
     {
-      for (;;)
+      this.decoder.setPositionUs(paramLong1);
+      try
       {
-        return;
-        if (this.nextSubtitle == null) {
-          this.decoder.setPositionUs(paramLong1);
-        }
-        try
-        {
-          this.nextSubtitle = ((SubtitleOutputBuffer)this.decoder.dequeueOutputBuffer());
-          if (getState() == 2)
-          {
-            if (this.subtitle != null)
-            {
-              paramLong2 = getNextEventTime();
-              for (i = 0; paramLong2 <= paramLong1; i = 1)
-              {
-                this.nextSubtitleEventIndex += 1;
-                paramLong2 = getNextEventTime();
-              }
-            }
-            i = 0;
-          }
-        }
-        catch (SubtitleDecoderException localSubtitleDecoderException1)
-        {
-          throw ExoPlaybackException.createForRenderer(localSubtitleDecoderException1, getIndex());
-        }
+        this.nextSubtitle = ((SubtitleOutputBuffer)this.decoder.dequeueOutputBuffer());
       }
-      j = i;
-      if (this.nextSubtitle != null)
+      catch (SubtitleDecoderException localSubtitleDecoderException1)
       {
-        if (!this.nextSubtitle.isEndOfStream()) {
-          break label297;
-        }
+        throw ExoPlaybackException.createForRenderer(localSubtitleDecoderException1, getIndex());
+      }
+    }
+    if (getState() != 2) {
+      return;
+    }
+    if (this.subtitle != null)
+    {
+      paramLong2 = getNextEventTime();
+      for (i = 0; paramLong2 <= paramLong1; i = 1)
+      {
+        this.nextSubtitleEventIndex += 1;
+        paramLong2 = getNextEventTime();
+      }
+    }
+    int i = 0;
+    SubtitleOutputBuffer localSubtitleOutputBuffer = this.nextSubtitle;
+    int j = i;
+    if (localSubtitleOutputBuffer != null) {
+      if (localSubtitleOutputBuffer.isEndOfStream())
+      {
         j = i;
         if (i == 0)
         {
           j = i;
-          if (getNextEventTime() == 9223372036854775807L)
-          {
-            if (this.decoderReplacementState != 2) {
-              break;
+          if (getNextEventTime() == 9223372036854775807L) {
+            if (this.decoderReplacementState == 2)
+            {
+              replaceDecoder();
+              j = i;
             }
-            replaceDecoder();
-            j = i;
+            else
+            {
+              releaseBuffers();
+              this.outputStreamEnded = true;
+              j = i;
+            }
           }
         }
       }
-      if (j != 0) {
-        updateOutput(this.subtitle.getCues(paramLong1));
-      }
-    } while (this.decoderReplacementState == 2);
-    label297:
-    label358:
-    do
-    {
-      try
+      else
       {
-        if (this.inputStreamEnded) {
-          break;
-        }
-        if (this.nextInputBuffer == null)
+        j = i;
+        if (this.nextSubtitle.timeUs <= paramLong1)
         {
-          this.nextInputBuffer = ((SubtitleInputBuffer)this.decoder.dequeueInputBuffer());
-          if (this.nextInputBuffer == null) {
-            break;
+          localSubtitleOutputBuffer = this.subtitle;
+          if (localSubtitleOutputBuffer != null) {
+            localSubtitleOutputBuffer.release();
           }
+          this.subtitle = this.nextSubtitle;
+          this.nextSubtitle = null;
+          this.nextSubtitleEventIndex = this.subtitle.getNextEventTimeIndex(paramLong1);
+          j = 1;
         }
-        if (this.decoderReplacementState != 1) {
-          break label358;
-        }
-        this.nextInputBuffer.setFlags(4);
-        this.decoder.queueInputBuffer(this.nextInputBuffer);
-        this.nextInputBuffer = null;
-        this.decoderReplacementState = 2;
-        return;
       }
-      catch (SubtitleDecoderException localSubtitleDecoderException2)
+    }
+    if (j != 0) {
+      updateOutput(this.subtitle.getCues(paramLong1));
+    }
+    if (this.decoderReplacementState == 2) {
+      return;
+    }
+    label448:
+    ExoPlaybackException localExoPlaybackException;
+    try
+    {
+      do
       {
-        throw ExoPlaybackException.createForRenderer(localSubtitleDecoderException2, getIndex());
-      }
-      releaseBuffers();
-      this.outputStreamEnded = true;
-      j = i;
-      break label167;
-      j = i;
-      if (this.nextSubtitle.timeUs > paramLong1) {
-        break label167;
-      }
-      if (this.subtitle != null) {
-        this.subtitle.release();
-      }
-      this.subtitle = this.nextSubtitle;
-      this.nextSubtitle = null;
-      this.nextSubtitleEventIndex = this.subtitle.getNextEventTimeIndex(paramLong1);
-      j = 1;
-      break label167;
-      i = readSource(this.formatHolder, this.nextInputBuffer, false);
-      if (i == -4)
-      {
-        if (this.nextInputBuffer.isEndOfStream()) {
-          this.inputStreamEnded = true;
-        }
         for (;;)
         {
+          if (this.inputStreamEnded) {
+            break label448;
+          }
+          if (this.nextInputBuffer == null)
+          {
+            this.nextInputBuffer = ((SubtitleInputBuffer)this.decoder.dequeueInputBuffer());
+            if (this.nextInputBuffer == null) {
+              return;
+            }
+          }
+          if (this.decoderReplacementState == 1)
+          {
+            this.nextInputBuffer.setFlags(4);
+            this.decoder.queueInputBuffer(this.nextInputBuffer);
+            this.nextInputBuffer = null;
+            this.decoderReplacementState = 2;
+            return;
+          }
+          i = readSource(this.formatHolder, this.nextInputBuffer, false);
+          if (i != -4) {
+            break;
+          }
+          if (this.nextInputBuffer.isEndOfStream())
+          {
+            this.inputStreamEnded = true;
+          }
+          else
+          {
+            this.nextInputBuffer.subsampleOffsetUs = this.formatHolder.format.subsampleOffsetUs;
+            this.nextInputBuffer.flip();
+          }
           this.decoder.queueInputBuffer(this.nextInputBuffer);
           this.nextInputBuffer = null;
-          break;
-          this.nextInputBuffer.subsampleOffsetUs = this.formatHolder.format.subsampleOffsetUs;
-          this.nextInputBuffer.flip();
         }
-      }
-    } while (i != -3);
+      } while (i != -3);
+      return;
+    }
+    catch (SubtitleDecoderException localSubtitleDecoderException2)
+    {
+      localExoPlaybackException = ExoPlaybackException.createForRenderer(localSubtitleDecoderException2, getIndex());
+    }
+    for (;;)
+    {
+      throw localExoPlaybackException;
+    }
   }
   
   public int supportsFormat(Format paramFormat)
@@ -305,7 +316,7 @@ public final class TextRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.TextRenderer
  * JD-Core Version:    0.7.0.1
  */

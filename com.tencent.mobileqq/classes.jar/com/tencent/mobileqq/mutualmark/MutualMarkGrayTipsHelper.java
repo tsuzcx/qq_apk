@@ -2,6 +2,7 @@ package com.tencent.mobileqq.mutualmark;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.aio.ExtSnsRelationChainChangePushInfo;
 import com.tencent.mobileqq.activity.aio.ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo;
 import com.tencent.mobileqq.activity.aio.ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo;
@@ -10,8 +11,8 @@ import com.tencent.mobileqq.app.message.PushMsg0x210C7Info;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
 import com.tencent.mobileqq.mutualmark.alienation.MutualMarkAlienationHelper;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.utils.ContactUtils;
@@ -26,16 +27,18 @@ public class MutualMarkGrayTipsHelper
 {
   public static int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return -5040;
-    case 1: 
-      return -5020;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return -5040;
+        }
+        return -5022;
+      }
       return -5023;
     }
-    return -5022;
+    return -5020;
   }
   
   public static int a(long paramLong1, long paramLong2)
@@ -50,13 +53,15 @@ public class MutualMarkGrayTipsHelper
   {
     long l1 = paramExtSnsRelationChainChangePushInfo.a();
     long l2 = paramExtSnsRelationChainChangePushInfo.b();
-    if (l1 == 17L) {
-      if (!paramExtSnsRelationChainChangePushInfo.a()) {}
-    }
-    while (paramExtSnsRelationChainChangePushInfo.a())
+    if (l1 == 17L)
     {
-      return 999;
+      if (paramExtSnsRelationChainChangePushInfo.a()) {
+        return 999;
+      }
       return 0;
+    }
+    if (paramExtSnsRelationChainChangePushInfo.a()) {
+      return 999;
     }
     if (paramExtSnsRelationChainChangePushInfo.b()) {
       return 998;
@@ -64,25 +69,28 @@ public class MutualMarkGrayTipsHelper
     return a(l1, l2);
   }
   
-  public static ArrayList<MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo> a(QQAppInterface paramQQAppInterface, String paramString, StringBuilder paramStringBuilder)
+  public static ArrayList<MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo> a(AppInterface paramAppInterface, String paramString, StringBuilder paramStringBuilder)
   {
     Object localObject = Pattern.compile("#(name|icon)_(\\d+)").matcher(paramStringBuilder);
     ArrayList localArrayList = new ArrayList();
-    MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo localGrayTipHighlightItemInfo;
     int i;
-    if (((Matcher)localObject).find())
+    MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo localGrayTipHighlightItemInfo;
+    for (;;)
     {
+      boolean bool = ((Matcher)localObject).find();
+      i = 2;
+      if (!bool) {
+        break;
+      }
       localGrayTipHighlightItemInfo = new MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo();
       localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
       localGrayTipHighlightItemInfo.jdField_b_of_type_Int = ((Matcher)localObject).start();
       localGrayTipHighlightItemInfo.jdField_b_of_type_JavaLangString = ((Matcher)localObject).group(2);
-      if (localGrayTipHighlightItemInfo.a()) {}
-      for (i = 2;; i = 1)
-      {
-        localGrayTipHighlightItemInfo.jdField_a_of_type_Int = i;
-        localArrayList.add(localGrayTipHighlightItemInfo);
-        break;
+      if (!localGrayTipHighlightItemInfo.a()) {
+        i = 1;
       }
+      localGrayTipHighlightItemInfo.jdField_a_of_type_Int = i;
+      localArrayList.add(localGrayTipHighlightItemInfo);
     }
     localObject = Pattern.compile("\\(([^\\(]+?)\\)\\[\\]").matcher(paramStringBuilder);
     while (((Matcher)localObject).find())
@@ -113,7 +121,7 @@ public class MutualMarkGrayTipsHelper
       localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
       localGrayTipHighlightItemInfo.jdField_b_of_type_Int = ((Matcher)localObject).start();
       localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString = MutualMarkUtils.b(((Matcher)localObject).group(1));
-      localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString = MutualMarkAlienationHelper.a(paramQQAppInterface, paramString, localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString);
+      localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString = MutualMarkAlienationHelper.a(paramAppInterface, paramString, localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString);
       localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString.replace(((Matcher)localObject).group(1), localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString);
       localArrayList.add(localGrayTipHighlightItemInfo);
     }
@@ -128,22 +136,22 @@ public class MutualMarkGrayTipsHelper
         int j = localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString.length() + i;
         if ((i >= 0) && (j <= paramStringBuilder.length()))
         {
-          switch (localGrayTipHighlightItemInfo.jdField_a_of_type_Int)
+          int k = localGrayTipHighlightItemInfo.jdField_a_of_type_Int;
+          if (k != 1)
           {
-          }
-          for (;;)
-          {
-            if (localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString == null) {
-              localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString;
+            if (k == 2) {
+              localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = MutualMarkConfigHelper.a(paramAppInterface, paramString, localGrayTipHighlightItemInfo.jdField_b_of_type_JavaLangString);
             }
-            localGrayTipHighlightItemInfo.jdField_c_of_type_Int = i;
-            localGrayTipHighlightItemInfo.jdField_d_of_type_Int = (localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString.length() + i);
-            paramStringBuilder.replace(i, j, localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString);
-            break;
-            localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = MutualMarkConfigHelper.a(paramQQAppInterface, localGrayTipHighlightItemInfo.jdField_b_of_type_JavaLangString);
-            continue;
-            localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = MutualMarkConfigHelper.a(paramQQAppInterface, paramString, localGrayTipHighlightItemInfo.jdField_b_of_type_JavaLangString);
           }
+          else {
+            localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = MutualMarkConfigHelper.a(paramAppInterface, localGrayTipHighlightItemInfo.jdField_b_of_type_JavaLangString);
+          }
+          if (localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString == null) {
+            localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString;
+          }
+          localGrayTipHighlightItemInfo.jdField_c_of_type_Int = i;
+          localGrayTipHighlightItemInfo.jdField_d_of_type_Int = (localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString.length() + i);
+          paramStringBuilder.replace(i, j, localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString);
         }
       }
     }
@@ -152,76 +160,118 @@ public class MutualMarkGrayTipsHelper
   
   public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, ExtSnsRelationChainChangePushInfo paramExtSnsRelationChainChangePushInfo, PushMsg0x210C7Info paramPushMsg0x210C7Info)
   {
-    int i = 2097153;
     ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo localMutualMarkPushGrayTipInfo = paramExtSnsRelationChainChangePushInfo.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkGrayTipsHelper", 2, "checkAndInsertGrayTips grayInfo:" + localMutualMarkPushGrayTipInfo + " onlinePush:" + paramPushMsg0x210C7Info.a);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkAndInsertGrayTips grayInfo:");
+      localStringBuilder.append(localMutualMarkPushGrayTipInfo);
+      localStringBuilder.append(" onlinePush:");
+      localStringBuilder.append(paramPushMsg0x210C7Info.a);
+      QLog.i("MutualMarkGrayTipsHelper", 2, localStringBuilder.toString());
     }
-    int j;
     if ((localMutualMarkPushGrayTipInfo != null) && (localMutualMarkPushGrayTipInfo.a()))
     {
-      j = 0;
-      if (TextUtils.isEmpty(localMutualMarkPushGrayTipInfo.jdField_b_of_type_JavaLangString)) {
-        break label203;
-      }
-      paramPushMsg0x210C7Info = localMutualMarkPushGrayTipInfo.jdField_b_of_type_JavaLangString;
-      switch (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int)
+      if (!TextUtils.isEmpty(localMutualMarkPushGrayTipInfo.jdField_b_of_type_JavaLangString))
       {
-      default: 
-        label168:
-        i = 2097155;
-      }
-    }
-    for (;;)
-    {
-      int k = a(localMutualMarkPushGrayTipInfo.jdField_a_of_type_Int);
-      a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, localMutualMarkPushGrayTipInfo.jdField_a_of_type_JavaLangString, k, i, j, paramPushMsg0x210C7Info);
-      return;
-      label203:
-      paramPushMsg0x210C7Info = paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString + "_" + paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int + "_" + paramPushMsg0x210C7Info.b + "_" + localMutualMarkPushGrayTipInfo.jdField_a_of_type_Long;
-      break;
-      j = a(paramExtSnsRelationChainChangePushInfo);
-      continue;
-      i = 2097154;
-      continue;
-      if ((paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo == null) || (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo == null)) {
-        break label168;
-      }
-      if (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a() > paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a())
-      {
-        i = 2097154;
+        paramPushMsg0x210C7Info = localMutualMarkPushGrayTipInfo.jdField_b_of_type_JavaLangString;
       }
       else
       {
-        if (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a() >= paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a()) {
-          break label168;
-        }
-        j = a(paramExtSnsRelationChainChangePushInfo);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramPushMsg0x210C7Info.b);
+        localStringBuilder.append("_");
+        localStringBuilder.append(localMutualMarkPushGrayTipInfo.jdField_a_of_type_Long);
+        paramPushMsg0x210C7Info = localStringBuilder.toString();
       }
+      int i = paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int;
+      if (i != 1)
+      {
+        if (i != 2) {
+          if (i != 3)
+          {
+            if (i == 11000) {
+              break label332;
+            }
+            if (i == 11001) {
+              break label325;
+            }
+          }
+        }
+        switch (i)
+        {
+        default: 
+          break;
+          if ((paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) && (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null))
+          {
+            if (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a() > paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a()) {
+              break label325;
+            }
+            if (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a() < paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a()) {
+              i = a(paramExtSnsRelationChainChangePushInfo);
+            }
+          }
+          break;
+        case 10003: 
+          label325:
+          for (i = 2097155;; i = 2097154)
+          {
+            j = 0;
+            break;
+          }
+        }
+      }
+      label332:
+      i = a(paramExtSnsRelationChainChangePushInfo);
+      int k = 2097153;
+      int j = i;
+      i = k;
+      k = a(localMutualMarkPushGrayTipInfo.jdField_a_of_type_Int);
+      a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, localMutualMarkPushGrayTipInfo.jdField_a_of_type_JavaLangString, k, i, j, paramPushMsg0x210C7Info);
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, ExtSnsRelationChainChangePushInfo paramExtSnsRelationChainChangePushInfo, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkGrayTipsHelper", 2, "insertGrayTips friendUin:" + paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString + " grayType:" + paramInt1 + " grayID:" + paramInt2 + " subType:" + paramInt3 + " grayTipKey:" + paramString2 + " _grayTipTemplate:" + paramString1);
+    Object localObject1 = paramString1;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("insertGrayTips friendUin:");
+      ((StringBuilder)localObject2).append(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(" grayType:");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append(" grayID:");
+      ((StringBuilder)localObject2).append(paramInt2);
+      ((StringBuilder)localObject2).append(" subType:");
+      ((StringBuilder)localObject2).append(paramInt3);
+      ((StringBuilder)localObject2).append(" grayTipKey:");
+      ((StringBuilder)localObject2).append(paramString2);
+      ((StringBuilder)localObject2).append(" _grayTipTemplate:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("MutualMarkGrayTipsHelper", 2, ((StringBuilder)localObject2).toString());
     }
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    Object localObject = paramString1;
-    if (paramString1.contains("#nick")) {
-      localObject = paramString1.replaceAll("#nick", ContactUtils.m(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString));
+    paramString1 = (String)localObject1;
+    if (((String)localObject1).contains("#nick")) {
+      paramString1 = ((String)localObject1).replaceAll("#nick", ContactUtils.f(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString));
     }
-    localObject = new StringBuilder((String)localObject);
-    MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, (StringBuilder)localObject);
-    paramString1 = a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, (StringBuilder)localObject);
-    localObject = ((StringBuilder)localObject).toString();
-    UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, (String)localObject, 0, paramInt1, paramInt2, MessageCache.a());
+    localObject1 = new StringBuilder(paramString1);
+    MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, (StringBuilder)localObject1);
+    paramString1 = a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, (StringBuilder)localObject1);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new UniteGrayTipParam(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, (String)localObject1, 0, paramInt1, paramInt2, MessageCache.a());
     MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
     localMessageForUniteGrayTip.hasRead = 0;
     localMessageForUniteGrayTip.subType = paramInt3;
-    localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, localUniteGrayTipParam);
+    localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject2);
     localMessageForUniteGrayTip.tipParam.jdField_d_of_type_JavaLangString = paramString2;
     if (paramInt3 == 998)
     {
@@ -229,73 +279,82 @@ public class MutualMarkGrayTipsHelper
       localMessageForUniteGrayTip.caidanAnimUrl = MutualMarkUtils.b(localMessageForUniteGrayTip.caidanAnimUrl);
       localMessageForUniteGrayTip.caidanAnimUrl = MutualMarkAlienationHelper.a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, localMessageForUniteGrayTip.caidanAnimUrl);
     }
-    for (;;)
+    else if (paramInt3 == 999)
     {
-      a(paramQQAppInterface, (String)localObject, localUniteGrayTipParam, paramString1);
-      localMessageForUniteGrayTip.saveExtInfoToExtStr("mutualmark_id", MutualMarkUtils.a(paramExtSnsRelationChainChangePushInfo.a(), paramExtSnsRelationChainChangePushInfo.b()));
-      paramInt1 = paramExtSnsRelationChainChangePushInfo.c();
-      if (paramInt1 > 0) {
-        localMessageForUniteGrayTip.saveExtInfoToExtStr("sub_level", String.valueOf(paramInt1));
-      }
-      MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, (String)localObject, localUniteGrayTipParam, paramString1);
-      UniteGrayTipUtil.a(paramQQAppInterface, localMessageForUniteGrayTip);
-      MutualMarkBusinessLogicHelper.a(paramQQAppInterface, localMessageForUniteGrayTip, localMessageForUniteGrayTip.tipParam.jdField_b_of_type_Int);
-      MutualMarkBusinessLogicHelper.a(paramQQAppInterface, localMessageForUniteGrayTip.frienduin, localMessageForUniteGrayTip.istroop);
-      return;
-      if (paramInt3 == 999)
-      {
-        localMessageForUniteGrayTip.caidanAnimUrl = paramExtSnsRelationChainChangePushInfo.b();
-        localMessageForUniteGrayTip.caidanAnimUrl = MutualMarkUtils.b(localMessageForUniteGrayTip.caidanAnimUrl);
-        localMessageForUniteGrayTip.caidanAnimUrlMd5 = paramExtSnsRelationChainChangePushInfo.c();
-      }
+      localMessageForUniteGrayTip.caidanAnimUrl = paramExtSnsRelationChainChangePushInfo.b();
+      localMessageForUniteGrayTip.caidanAnimUrl = MutualMarkUtils.b(localMessageForUniteGrayTip.caidanAnimUrl);
+      localMessageForUniteGrayTip.caidanAnimUrlMd5 = paramExtSnsRelationChainChangePushInfo.c();
     }
+    a((UniteGrayTipParam)localObject2, paramString1);
+    localMessageForUniteGrayTip.saveExtInfoToExtStr("mutualmark_id", MutualMarkUtils.a(paramExtSnsRelationChainChangePushInfo.a(), paramExtSnsRelationChainChangePushInfo.b()));
+    paramInt1 = paramExtSnsRelationChainChangePushInfo.c();
+    if (paramInt1 > 0) {
+      localMessageForUniteGrayTip.saveExtInfoToExtStr("sub_level", String.valueOf(paramInt1));
+    }
+    MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, (String)localObject1, (UniteGrayTipParam)localObject2, paramString1);
+    UniteGrayTipMsgUtil.a(paramQQAppInterface, localMessageForUniteGrayTip);
+    MutualMarkBusinessLogicHelper.a(paramQQAppInterface, localMessageForUniteGrayTip, localMessageForUniteGrayTip.tipParam.jdField_b_of_type_Int);
+    MutualMarkBusinessLogicHelper.a(paramQQAppInterface, localMessageForUniteGrayTip.frienduin, localMessageForUniteGrayTip.istroop);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, UniteGrayTipParam paramUniteGrayTipParam, ArrayList<MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo> paramArrayList)
+  public static void a(UniteGrayTipParam paramUniteGrayTipParam, ArrayList<MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
-    for (;;)
+    if (paramArrayList != null)
     {
-      return;
-      paramQQAppInterface = paramArrayList.iterator();
-      while (paramQQAppInterface.hasNext())
+      if (paramArrayList.isEmpty()) {
+        return;
+      }
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
       {
-        paramString = (MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo)paramQQAppInterface.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("MutualMarkGrayTipsHelper", 2, "handleHighlightInfo item=" + paramString);
-        }
-        switch (paramString.jdField_a_of_type_Int)
+        MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo localGrayTipHighlightItemInfo = (MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo)paramArrayList.next();
+        Object localObject;
+        if (QLog.isColorLevel())
         {
-        default: 
-          break;
-        case 1: 
-        case 5: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putInt("key_action", 11);
-            paramArrayList.putString("key_action_DATA", paramString.jdField_c_of_type_JavaLangString);
-            paramUniteGrayTipParam.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handleHighlightInfo item=");
+          ((StringBuilder)localObject).append(localGrayTipHighlightItemInfo);
+          QLog.d("MutualMarkGrayTipsHelper", 2, ((StringBuilder)localObject).toString());
+        }
+        int i = localGrayTipHighlightItemInfo.jdField_a_of_type_Int;
+        if (i != 1)
+        {
+          if (i != 2) {
+            if (i != 3)
+            {
+              if (i != 4) {
+                if (i == 5) {
+                  break label226;
+                }
+              }
+            }
+            else
+            {
+              if ((TextUtils.isEmpty(localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString)) || (TextUtils.isEmpty(localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString))) {
+                continue;
+              }
+              localObject = new Bundle();
+              ((Bundle)localObject).putInt("key_action", 1);
+              ((Bundle)localObject).putString("key_action_DATA", localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString);
+              paramUniteGrayTipParam.a(localGrayTipHighlightItemInfo.jdField_c_of_type_Int, localGrayTipHighlightItemInfo.jdField_d_of_type_Int, (Bundle)localObject);
+              continue;
+            }
           }
-          break;
-        case 2: 
-        case 4: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putString("image_resource", paramString.jdField_c_of_type_JavaLangString);
-            paramUniteGrayTipParam.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
+          if (TextUtils.isEmpty(localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString)) {
+            continue;
           }
-          break;
-        case 3: 
-          if ((!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString.jdField_d_of_type_JavaLangString)))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putInt("key_action", 1);
-            paramArrayList.putString("key_action_DATA", paramString.jdField_d_of_type_JavaLangString);
-            paramUniteGrayTipParam.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
+          localObject = new Bundle();
+          ((Bundle)localObject).putString("image_resource", localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString);
+          paramUniteGrayTipParam.a(localGrayTipHighlightItemInfo.jdField_c_of_type_Int, localGrayTipHighlightItemInfo.jdField_d_of_type_Int, (Bundle)localObject);
+          continue;
+        }
+        label226:
+        if (!TextUtils.isEmpty(localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString))
+        {
+          localObject = new Bundle();
+          ((Bundle)localObject).putInt("key_action", 11);
+          ((Bundle)localObject).putString("key_action_DATA", localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString);
+          paramUniteGrayTipParam.a(localGrayTipHighlightItemInfo.jdField_c_of_type_Int, localGrayTipHighlightItemInfo.jdField_d_of_type_Int, (Bundle)localObject);
         }
       }
     }
@@ -303,7 +362,7 @@ public class MutualMarkGrayTipsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.MutualMarkGrayTipsHelper
  * JD-Core Version:    0.7.0.1
  */

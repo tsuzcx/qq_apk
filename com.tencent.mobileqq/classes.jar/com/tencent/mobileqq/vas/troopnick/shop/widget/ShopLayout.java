@@ -45,8 +45,8 @@ public class ShopLayout
   
   private void c()
   {
-    View.inflate(getContext(), 2131562221, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131378497));
+    View.inflate(getContext(), 2131562058, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131377908));
     GridLayoutManager localGridLayoutManager = new GridLayoutManager(getContext(), 3);
     localGridLayoutManager.setSpanSizeLookup(new ShopLayout.1(this));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localGridLayoutManager);
@@ -54,9 +54,9 @@ public class ShopLayout
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setBackgroundColor(-1);
-    findViewById(2131366314).setVisibility(8);
-    findViewById(2131380328).setOnClickListener(this);
-    findViewById(2131368807).setOnClickListener(this);
+    findViewById(2131366202).setVisibility(8);
+    findViewById(2131379649).setOnClickListener(this);
+    findViewById(2131368536).setOnClickListener(this);
     a();
     ReportHelper.a(0, 0, 0, 100);
   }
@@ -73,41 +73,41 @@ public class ShopLayout
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopAdapterIRequestData == null) {
+    IRequestData localIRequestData = this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopAdapterIRequestData;
+    if (localIRequestData == null) {
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopAdapterIRequestData.a();
+      localIRequestData.a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopAdapterIRequestData.b();
+    localIRequestData.b();
   }
   
   public void b()
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = l;
-    }
-    while (l - this.jdField_a_of_type_Long <= 2000L) {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    if (l2 == 0L)
+    {
+      this.jdField_a_of_type_Long = l1;
       return;
     }
-    this.jdField_a_of_type_Long = l;
-    a(false);
+    if (l1 - l2 > 2000L)
+    {
+      this.jdField_a_of_type_Long = l1;
+      a(false);
+    }
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    int i = paramView.getId();
+    if ((i == 2131368536) || (i == 2131379649)) {
       a(false);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setAppId(int paramInt)
@@ -138,7 +138,7 @@ public class ShopLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.widget.ShopLayout
  * JD-Core Version:    0.7.0.1
  */

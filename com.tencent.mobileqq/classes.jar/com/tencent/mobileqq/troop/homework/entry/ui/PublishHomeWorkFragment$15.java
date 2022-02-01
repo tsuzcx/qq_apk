@@ -1,18 +1,29 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.InputMethodUtil;
 
 class PublishHomeWorkFragment$15
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   PublishHomeWorkFragment$15(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    Object localObject = this.this$0;
+    localObject = ((PublishHomeWorkFragment)localObject).a(((PublishHomeWorkFragment)localObject).c);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublishHomeWorkFragment", 2, "弹起键盘");
+    }
+    if (localObject != null) {
+      InputMethodUtil.a((View)localObject);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.15
  * JD-Core Version:    0.7.0.1
  */

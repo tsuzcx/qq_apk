@@ -44,56 +44,78 @@ public class CustomHorizontallyScrollRecyclerView
     if (this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) {
       this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = ((LinearLayoutManager)getLayoutManager());
     }
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getChildCount() > 0)
+    int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getChildCount();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i > 0)
     {
       float f = this.jdField_a_of_type_Float;
       paramFloat2 -= this.b;
-      return (Math.abs(paramFloat2) > this.jdField_a_of_type_Int) && (Math.abs(paramFloat2) > Math.abs(paramFloat1 - f));
+      bool1 = bool2;
+      if (Math.abs(paramFloat2) > this.jdField_a_of_type_Int)
+      {
+        bool1 = bool2;
+        if (Math.abs(paramFloat2) > Math.abs(paramFloat1 - f)) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3) {
+            break label110;
+          }
+        }
+        else
+        {
+          if (a(paramMotionEvent.getX(), paramMotionEvent.getY()))
+          {
+            getParent().requestDisallowInterceptTouchEvent(false);
+            return super.dispatchTouchEvent(paramMotionEvent);
+          }
+          getParent().requestDisallowInterceptTouchEvent(true);
+          break label110;
+        }
+      }
+      getParent().requestDisallowInterceptTouchEvent(false);
     }
-    for (;;)
+    else
     {
-      return super.dispatchTouchEvent(paramMotionEvent);
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
       this.b = paramMotionEvent.getY();
       getParent().requestDisallowInterceptTouchEvent(true);
-      continue;
-      if (a(paramMotionEvent.getX(), paramMotionEvent.getY()))
-      {
-        getParent().requestDisallowInterceptTouchEvent(false);
-        return super.dispatchTouchEvent(paramMotionEvent);
-      }
-      getParent().requestDisallowInterceptTouchEvent(true);
-      continue;
-      getParent().requestDisallowInterceptTouchEvent(false);
     }
+    label110:
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public void setScrollingTouchSlop(int paramInt)
   {
     super.setScrollingTouchSlop(paramInt);
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_Int = localViewConfiguration.getScaledTouchSlop();
+      if (paramInt != 1) {
+        return;
+      }
+      this.jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(localViewConfiguration);
       return;
     }
-    this.jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(localViewConfiguration);
+    this.jdField_a_of_type_Int = localViewConfiguration.getScaledTouchSlop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.CustomHorizontallyScrollRecyclerView
  * JD-Core Version:    0.7.0.1
  */

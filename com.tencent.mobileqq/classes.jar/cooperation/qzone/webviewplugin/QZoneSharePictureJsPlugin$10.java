@@ -19,7 +19,7 @@ class QZoneSharePictureJsPlugin$10
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
     QZLog.w("QZoneSharePictureJsPlugin", "下载GIF组件失败，请稍后重试");
-    QZoneSharePictureJsPlugin.access$600(this.this$0, HardCodeUtil.a(2131712307), 1);
+    QZoneSharePictureJsPlugin.access$600(this.this$0, HardCodeUtil.a(2131712282), 1);
   }
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
@@ -29,16 +29,17 @@ class QZoneSharePictureJsPlugin$10
     QZLog.i("QZoneSharePictureJsPlugin", "下载GIF组件成功");
     if (this.this$0.parentPlugin != null)
     {
-      QZoneSharePictureJsPlugin.access$000(this.this$0, this.this$0.parentPlugin.mRuntime, this.val$args);
+      paramString = this.this$0;
+      QZoneSharePictureJsPlugin.access$000(paramString, paramString.parentPlugin.mRuntime, this.val$args);
       return;
     }
     QZLog.w("QZoneSharePictureJsPlugin", "parentPlugin is null");
-    QZoneSharePictureJsPlugin.access$600(this.this$0, HardCodeUtil.a(2131712286), 1);
+    QZoneSharePictureJsPlugin.access$600(this.this$0, HardCodeUtil.a(2131712261), 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin.10
  * JD-Core Version:    0.7.0.1
  */

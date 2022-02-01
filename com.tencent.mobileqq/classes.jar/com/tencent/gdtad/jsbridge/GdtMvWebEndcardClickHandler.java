@@ -1,7 +1,7 @@
 package com.tencent.gdtad.jsbridge;
 
 import android.app.Activity;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import org.json.JSONObject;
@@ -13,59 +13,65 @@ class GdtMvWebEndcardClickHandler
   
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    if (paramGdtAdWebPlugin != null) {}
-    for (localActivity = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (localActivity == null); localActivity = null)
-    {
-      QLog.i("WebGdtMvWebEndcardClickHandler", 1, "webPlugin == null || activity == null");
-      return true;
+    Activity localActivity;
+    if (paramGdtAdWebPlugin != null) {
+      localActivity = paramGdtAdWebPlugin.a();
+    } else {
+      localActivity = null;
     }
-    QLog.i("WebGdtMvWebEndcardClickHandler", 1, "args=" + Arrays.toString(paramVarArgs));
-    String str = "";
-    localObject = str;
-    try
+    if ((paramGdtAdWebPlugin != null) && (localActivity != null))
     {
-      QLog.i("WebGdtMvWebEndcardClickHandler", 1, "args = " + paramVarArgs[0]);
-      localObject = str;
-      JSONObject localJSONObject = new JSONObject(paramVarArgs[0]);
-      localObject = str;
-      paramVarArgs = localJSONObject.optString("antiSpam");
-      localObject = paramVarArgs;
-      int i = localJSONObject.optInt("atd");
-      if (i != 1) {
-        break label182;
-      }
-      bool = true;
-    }
-    catch (Throwable paramVarArgs)
-    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("args=");
+      ((StringBuilder)localObject).append(Arrays.toString(paramVarArgs));
+      QLog.i("WebGdtMvWebEndcardClickHandler", 1, ((StringBuilder)localObject).toString());
       try
       {
-        for (;;)
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("args = ");
+        ((StringBuilder)localObject).append(paramVarArgs[0]);
+        QLog.i("WebGdtMvWebEndcardClickHandler", 1, ((StringBuilder)localObject).toString());
+        localObject = new JSONObject(paramVarArgs[0]);
+        paramVarArgs = ((JSONObject)localObject).optString("antiSpam");
+        try
         {
-          paramGdtAdWebPlugin.callJs(paramString, new String[] { "" });
-          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "handleRewardVideoClick", paramGdtAdWebPlugin.a());
-          return true;
-          bool = false;
+          int i = ((JSONObject)localObject).optInt("atd");
+          localObject = paramVarArgs;
+          if (i != 1) {
+            break label170;
+          }
+          bool = true;
         }
-        paramVarArgs = paramVarArgs;
-        QLog.i("WebGdtMvWebEndcardClickHandler", 1, "json", paramVarArgs);
-        paramVarArgs = (String[])localObject;
-        boolean bool = false;
+        catch (Throwable localThrowable1) {}
+        QLog.i("WebGdtMvWebEndcardClickHandler", 1, "json", localThrowable2);
+      }
+      catch (Throwable localThrowable2)
+      {
+        paramVarArgs = "";
+      }
+      String[] arrayOfString = paramVarArgs;
+      label170:
+      boolean bool = false;
+      paramVarArgs = arrayOfString;
+      a(paramVarArgs, bool);
+      try
+      {
+        paramGdtAdWebPlugin.callJs(paramString, new String[] { "" });
       }
       catch (Throwable paramString)
       {
-        for (;;)
-        {
-          QLog.i("WebGdtMvWebEndcardClickHandler", 1, "callJs", paramString);
-        }
+        QLog.i("WebGdtMvWebEndcardClickHandler", 1, "callJs", paramString);
       }
+      AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "handleRewardVideoClick", paramGdtAdWebPlugin.a());
+      return true;
     }
-    a(paramVarArgs, bool);
+    QLog.i("WebGdtMvWebEndcardClickHandler", 1, "webPlugin == null || activity == null");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtMvWebEndcardClickHandler
  * JD-Core Version:    0.7.0.1
  */

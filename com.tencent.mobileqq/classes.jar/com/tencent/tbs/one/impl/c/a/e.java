@@ -12,12 +12,13 @@ public final class e
   {
     super(paramString1, paramString2, paramString3, paramClassLoader);
     this.a = paramArrayOfString;
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.b = bool;
-      return;
+    boolean bool;
+    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.b = bool;
   }
   
   private Class<?> a(String paramString)
@@ -68,7 +69,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c.a.e
  * JD-Core Version:    0.7.0.1
  */

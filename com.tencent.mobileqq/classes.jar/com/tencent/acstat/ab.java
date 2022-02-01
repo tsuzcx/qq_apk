@@ -11,7 +11,7 @@ import java.util.Map;
 
 class ab
 {
-  private static volatile long f = 0L;
+  private static volatile long f;
   private d a;
   private StatReportStrategy b = null;
   private boolean c = false;
@@ -33,64 +33,50 @@ class ab
   
   private void b()
   {
+    Object localObject1;
+    Object localObject2;
     if (this.a.a() == EventType.CUSTOM)
     {
-      String str = ((b)this.a).b().a;
-      if (StatConfig.isEventIdInDontReportEventIdsSet(str)) {
-        StatServiceImpl.f().w("eventid=" + str + " In DontReportEventIdsSet, droped.");
+      localObject1 = ((b)this.a).b().a;
+      if (StatConfig.isEventIdInDontReportEventIdsSet((String)localObject1))
+      {
+        localObject2 = StatServiceImpl.f();
+        StringBuilder localStringBuilder = new StringBuilder("eventid=");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(" In DontReportEventIdsSet, droped.");
+        ((StatLogger)localObject2).w(localStringBuilder.toString());
+        return;
       }
     }
-    do
+    if ((this.a.d() != null) && (this.a.d().isSendImmediately())) {
+      this.b = StatReportStrategy.INSTANT;
+    }
+    if ((StatConfig.j) && (NetworkManager.getInstance(StatServiceImpl.e()).isWifi())) {
+      this.b = StatReportStrategy.INSTANT;
+    }
+    if (StatConfig.isDebugEnable())
     {
-      do
+      localObject1 = StatServiceImpl.f();
+      localObject2 = new StringBuilder("strategy=");
+      ((StringBuilder)localObject2).append(this.b.name());
+      ((StatLogger)localObject1).i(((StringBuilder)localObject2).toString());
+    }
+    switch (s.a[this.b.ordinal()])
+    {
+    default: 
+      localObject1 = StatServiceImpl.f();
+      localObject2 = new StringBuilder("Invalid stat strategy:");
+      ((StringBuilder)localObject2).append(StatConfig.getStatSendStrategy());
+      ((StatLogger)localObject1).error(((StringBuilder)localObject2).toString());
+      return;
+    case 7: 
+      if (StatCommonHelper.isWiFiActive(this.d))
       {
+        a(new ad(this));
         return;
-        if ((this.a.d() != null) && (this.a.d().isSendImmediately())) {
-          this.b = StatReportStrategy.INSTANT;
-        }
-        if ((StatConfig.j) && (NetworkManager.getInstance(StatServiceImpl.e()).isWifi())) {
-          this.b = StatReportStrategy.INSTANT;
-        }
-        if (StatConfig.isDebugEnable()) {
-          StatServiceImpl.f().i("strategy=" + this.b.name());
-        }
-        switch (s.a[this.b.ordinal()])
-        {
-        default: 
-          StatServiceImpl.f().error("Invalid stat strategy:" + StatConfig.getStatSendStrategy());
-          return;
-        case 1: 
-          c();
-          return;
-        case 2: 
-          af.a(this.d).a(this.a, null, this.c, false);
-          if (StatConfig.isDebugEnable()) {
-            StatServiceImpl.f().i("PERIOD currTime=" + this.e + ",nextPeriodSendTs=" + StatServiceImpl.c + ",difftime=" + (StatServiceImpl.c - this.e));
-          }
-          if (StatServiceImpl.c == 0L)
-          {
-            StatServiceImpl.c = StatPreferences.getLong(this.d, "last_period_ts", 0L);
-            if (this.e > StatServiceImpl.c) {
-              StatServiceImpl.d(this.d);
-            }
-            long l = this.e + StatConfig.getSendPeriodMinutes() * 60 * 1000;
-            if (StatServiceImpl.c > l) {
-              StatServiceImpl.c = l;
-            }
-            c.a(this.d).a();
-          }
-          if (StatConfig.isDebugEnable()) {
-            StatServiceImpl.f().i("PERIOD currTime=" + this.e + ",nextPeriodSendTs=" + StatServiceImpl.c + ",difftime=" + (StatServiceImpl.c - this.e));
-          }
-          break;
-        }
-      } while (this.e <= StatServiceImpl.c);
-      StatServiceImpl.d(this.d);
-      return;
-      af.a(this.d).a(this.a, null, this.c, false);
-      return;
-      af.a(this.d).a(this.a, new ac(this), this.c, true);
-      return;
+      }
+      break;
+    case 6: 
       if (NetworkManager.getInstance(StatServiceImpl.e()).getNetworkType() == 1)
       {
         c();
@@ -98,8 +84,58 @@ class ab
       }
       af.a(this.d).a(this.a, null, this.c, false);
       return;
-    } while (!StatCommonHelper.isWiFiActive(this.d));
-    a(new ad(this));
+    case 5: 
+      af.a(this.d).a(this.a, new ac(this), this.c, true);
+      return;
+    case 3: 
+    case 4: 
+      af.a(this.d).a(this.a, null, this.c, false);
+      return;
+    case 2: 
+      af.a(this.d).a(this.a, null, this.c, false);
+      if (StatConfig.isDebugEnable())
+      {
+        localObject1 = StatServiceImpl.f();
+        localObject2 = new StringBuilder("PERIOD currTime=");
+        ((StringBuilder)localObject2).append(this.e);
+        ((StringBuilder)localObject2).append(",nextPeriodSendTs=");
+        ((StringBuilder)localObject2).append(StatServiceImpl.c);
+        ((StringBuilder)localObject2).append(",difftime=");
+        ((StringBuilder)localObject2).append(StatServiceImpl.c - this.e);
+        ((StatLogger)localObject1).i(((StringBuilder)localObject2).toString());
+      }
+      if (StatServiceImpl.c == 0L)
+      {
+        StatServiceImpl.c = StatPreferences.getLong(this.d, "last_period_ts", 0L);
+        if (this.e > StatServiceImpl.c) {
+          StatServiceImpl.d(this.d);
+        }
+        long l = this.e + StatConfig.getSendPeriodMinutes() * 60 * 1000;
+        if (StatServiceImpl.c > l) {
+          StatServiceImpl.c = l;
+        }
+        c.a(this.d).a();
+      }
+      if (StatConfig.isDebugEnable())
+      {
+        localObject1 = StatServiceImpl.f();
+        localObject2 = new StringBuilder("PERIOD currTime=");
+        ((StringBuilder)localObject2).append(this.e);
+        ((StringBuilder)localObject2).append(",nextPeriodSendTs=");
+        ((StringBuilder)localObject2).append(StatServiceImpl.c);
+        ((StringBuilder)localObject2).append(",difftime=");
+        ((StringBuilder)localObject2).append(StatServiceImpl.c - this.e);
+        ((StatLogger)localObject1).i(((StringBuilder)localObject2).toString());
+      }
+      if (this.e > StatServiceImpl.c)
+      {
+        StatServiceImpl.d(this.d);
+        return;
+      }
+      break;
+    case 1: 
+      c();
+    }
   }
   
   private void c()
@@ -121,26 +157,41 @@ class ab
       {
         StatServiceImpl.l().clear();
         StatServiceImpl.a(this.e + StatConfig.i);
-        if (StatConfig.isDebugEnable()) {
-          StatServiceImpl.f().i("clear methodsCalledLimitMap, nextLimitCallClearTime=" + StatServiceImpl.k());
+        if (StatConfig.isDebugEnable())
+        {
+          localObject1 = StatServiceImpl.f();
+          localObject2 = new StringBuilder("clear methodsCalledLimitMap, nextLimitCallClearTime=");
+          ((StringBuilder)localObject2).append(StatServiceImpl.k());
+          ((StatLogger)localObject1).i(((StringBuilder)localObject2).toString());
         }
       }
-      Integer localInteger1 = Integer.valueOf(this.a.a().a());
-      Integer localInteger2 = (Integer)StatServiceImpl.l().get(localInteger1);
-      if (localInteger2 != null)
+      Object localObject2 = Integer.valueOf(this.a.a().a());
+      Object localObject1 = (Integer)StatServiceImpl.l().get(localObject2);
+      if (localObject1 != null)
       {
-        StatServiceImpl.l().put(localInteger1, Integer.valueOf(localInteger2.intValue() + 1));
-        if (localInteger2.intValue() > StatConfig.h)
+        StatServiceImpl.l().put(localObject2, Integer.valueOf(((Integer)localObject1).intValue() + 1));
+        if (((Integer)localObject1).intValue() > StatConfig.h)
         {
-          if (StatConfig.isDebugEnable()) {
-            StatServiceImpl.f().e("event " + this.a.g() + " was discard, cause of called limit, current:" + localInteger2 + ", limit:" + StatConfig.h + ", period:" + StatConfig.i + " ms");
+          if (StatConfig.isDebugEnable())
+          {
+            localObject2 = StatServiceImpl.f();
+            StringBuilder localStringBuilder = new StringBuilder("event ");
+            localStringBuilder.append(this.a.g());
+            localStringBuilder.append(" was discard, cause of called limit, current:");
+            localStringBuilder.append(localObject1);
+            localStringBuilder.append(", limit:");
+            localStringBuilder.append(StatConfig.h);
+            localStringBuilder.append(", period:");
+            localStringBuilder.append(StatConfig.i);
+            localStringBuilder.append(" ms");
+            ((StatLogger)localObject2).e(localStringBuilder.toString());
           }
           return true;
         }
       }
       else
       {
-        StatServiceImpl.l().put(localInteger1, Integer.valueOf(1));
+        StatServiceImpl.l().put(localObject2, Integer.valueOf(1));
       }
     }
     return false;
@@ -148,23 +199,31 @@ class ab
   
   public void a()
   {
-    if (d()) {}
-    do
-    {
+    if (d()) {
       return;
-      if ((StatConfig.m > 0) && (this.e >= f))
+    }
+    StatLogger localStatLogger;
+    StringBuilder localStringBuilder;
+    if ((StatConfig.m > 0) && (this.e >= f))
+    {
+      StatServiceImpl.flushDataToDB(this.d);
+      f = this.e + StatConfig.n;
+      if (StatConfig.isDebugEnable())
       {
-        StatServiceImpl.flushDataToDB(this.d);
-        f = this.e + StatConfig.n;
-        if (StatConfig.isDebugEnable()) {
-          StatServiceImpl.f().i("nextFlushTime=" + f);
-        }
+        localStatLogger = StatServiceImpl.f();
+        localStringBuilder = new StringBuilder("nextFlushTime=");
+        localStringBuilder.append(f);
+        localStatLogger.i(localStringBuilder.toString());
       }
-      if (!NetworkManager.getInstance(this.d).isNetworkAvailable()) {
-        break;
-      }
-      if (StatConfig.isDebugEnable()) {
-        StatServiceImpl.f().i("sendFailedCount=" + StatServiceImpl.a);
+    }
+    if (NetworkManager.getInstance(this.d).isNetworkAvailable())
+    {
+      if (StatConfig.isDebugEnable())
+      {
+        localStatLogger = StatServiceImpl.f();
+        localStringBuilder = new StringBuilder("sendFailedCount=");
+        localStringBuilder.append(StatServiceImpl.a);
+        localStatLogger.i(localStringBuilder.toString());
       }
       if (!StatServiceImpl.a())
       {
@@ -172,9 +231,11 @@ class ab
         return;
       }
       af.a(this.d).a(this.a, null, this.c, false);
-    } while (this.e - StatServiceImpl.b <= 1800000L);
-    StatServiceImpl.e(this.d);
-    return;
+      if (this.e - StatServiceImpl.b > 1800000L) {
+        StatServiceImpl.e(this.d);
+      }
+      return;
+    }
     af.a(this.d).a(this.a, null, this.c, false);
   }
 }

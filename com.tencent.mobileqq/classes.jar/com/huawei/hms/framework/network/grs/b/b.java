@@ -1,86 +1,86 @@
 package com.huawei.hms.framework.network.grs.b;
 
 import android.content.Context;
-import android.net.Uri;
-import java.util.concurrent.Callable;
+import com.huawei.hms.framework.common.Logger;
+import com.huawei.hms.framework.network.grs.GrsBaseInfo;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class b
 {
-  protected d a;
-  private String b;
-  private a c;
-  private int d;
-  private Context e;
-  private String f;
+  private static Map<String, b> a = new ConcurrentHashMap(16);
+  private a b;
   
-  public b(String paramString1, int paramInt, a parama, Context paramContext, String paramString2)
+  public b(Context paramContext, GrsBaseInfo paramGrsBaseInfo, boolean paramBoolean)
   {
-    this.b = paramString1;
-    this.c = parama;
-    this.d = paramInt;
-    this.e = paramContext;
-    this.f = paramString2;
+    a(paramContext, paramBoolean);
+    Map localMap = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getPackageName());
+    localStringBuilder.append(paramGrsBaseInfo.uniqueCode());
+    localMap.put(localStringBuilder.toString(), this);
   }
   
-  private String a(String paramString)
+  public static b a(String paramString, GrsBaseInfo paramGrsBaseInfo)
   {
-    return Uri.parse(paramString).getPath();
+    Map localMap = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(paramGrsBaseInfo.uniqueCode());
+    return (b)localMap.get(localStringBuilder.toString());
   }
   
-  private b.a g()
+  public static void a(Context paramContext, GrsBaseInfo paramGrsBaseInfo)
   {
-    if (this.b.isEmpty()) {
-      return b.a.c;
+    paramContext = a(paramContext.getPackageName(), paramGrsBaseInfo);
+    if (paramContext != null)
+    {
+      paramContext = paramContext.a();
+      if (paramContext != null)
+      {
+        Logger.i("LocalManagerProxy", "appGrs is not null and clear services.");
+        paramContext.a();
+      }
     }
-    String str = a(this.b);
-    if (str.contains("1.0")) {
-      return b.a.b;
+  }
+  
+  public com.huawei.hms.framework.network.grs.local.model.a a()
+  {
+    return this.b.a();
+  }
+  
+  public String a(Context paramContext, com.huawei.hms.framework.network.grs.a.a parama, GrsBaseInfo paramGrsBaseInfo, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    return this.b.a(paramContext, parama, paramGrsBaseInfo, paramString1, paramString2, paramBoolean);
+  }
+  
+  public Map<String, String> a(Context paramContext, com.huawei.hms.framework.network.grs.a.a parama, GrsBaseInfo paramGrsBaseInfo, String paramString, boolean paramBoolean)
+  {
+    return this.b.a(paramContext, parama, paramGrsBaseInfo, paramString, paramBoolean);
+  }
+  
+  public void a(Context paramContext, boolean paramBoolean)
+  {
+    this.b = new d(paramContext, paramBoolean);
+    if (!this.b.c()) {
+      this.b = new c(paramContext, paramBoolean);
     }
-    if (str.contains("2.0")) {
-      return b.a.a;
-    }
-    return b.a.c;
   }
   
-  public String a()
+  public void a(GrsBaseInfo paramGrsBaseInfo)
   {
-    return this.b;
+    this.b.a(paramGrsBaseInfo);
   }
   
-  public a b()
+  public Set<String> b()
   {
-    return this.c;
-  }
-  
-  public int c()
-  {
-    return this.d;
-  }
-  
-  public Context d()
-  {
-    return this.e;
-  }
-  
-  public String e()
-  {
-    return this.f;
-  }
-  
-  public Callable<d> f()
-  {
-    if (b.a.c.equals(g())) {
-      return null;
-    }
-    if (b.a.b.equals(g())) {
-      return new f(this.b, this.d, this.c, this.e, this.f);
-    }
-    return new g(this.b, this.d, this.c, this.e, this.f);
+    return this.b.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.b.b
  * JD-Core Version:    0.7.0.1
  */

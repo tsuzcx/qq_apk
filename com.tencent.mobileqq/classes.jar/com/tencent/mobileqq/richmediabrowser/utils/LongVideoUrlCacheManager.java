@@ -1,19 +1,14 @@
 package com.tencent.mobileqq.richmediabrowser.utils;
 
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class LongVideoUrlCacheManager
 {
-  private static int a;
+  private static int a = 900000;
   public ConcurrentHashMap<Long, LongVideoUrlCacheManager.UrlsCacheBean> a;
-  
-  static
-  {
-    jdField_a_of_type_Int = 900000;
-  }
   
   private LongVideoUrlCacheManager()
   {
@@ -39,14 +34,14 @@ public class LongVideoUrlCacheManager
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
   
-  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageRecord paramMessageRecord, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new LongVideoUrlCacheManager.UrlsCacheBean(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new LongVideoUrlCacheManager.UrlsCacheBean(this, paramArrayOfString, paramLong2, paramMessageRecord, paramInt, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.utils.LongVideoUrlCacheManager
  * JD-Core Version:    0.7.0.1
  */

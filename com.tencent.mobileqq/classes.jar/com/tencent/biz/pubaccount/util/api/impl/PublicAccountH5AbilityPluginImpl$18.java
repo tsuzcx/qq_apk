@@ -91,52 +91,50 @@ class PublicAccountH5AbilityPluginImpl$18
           if (paramInt < ((ArrayList)localObject2).size())
           {
             String str = (String)PublicAccountH5AbilityPluginImpl.map.get(Integer.valueOf(paramInt));
-            if ((str != null) && (((Integer)((ArrayList)localObject2).get(paramInt)).intValue() == 1) && (this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.contains((ArrayList)localObject4, str))) {
-              ((ArrayList)localObject3).add(str);
+            if ((str == null) || (((Integer)((ArrayList)localObject2).get(paramInt)).intValue() != 1) || (!this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.contains((ArrayList)localObject4, str))) {
+              break label584;
             }
+            ((ArrayList)localObject3).add(str);
+            break label584;
           }
-          else
+          PublicAccountH5AbilityPluginImpl.authorizedLists.put(this.jdField_a_of_type_JavaLangString, localObject3);
+          PublicAccountH5AbilityPluginImpl.needAuthorizedLists.remove(this.jdField_a_of_type_JavaLangString);
+          localObject2 = new ArrayList();
+          if (localObject4 != null)
           {
-            PublicAccountH5AbilityPluginImpl.authorizedLists.put(this.jdField_a_of_type_JavaLangString, localObject3);
-            PublicAccountH5AbilityPluginImpl.needAuthorizedLists.remove(this.jdField_a_of_type_JavaLangString);
-            localObject2 = new ArrayList();
-            if (localObject4 != null)
+            paramInt = 0;
+            if (paramInt < ((ArrayList)localObject4).size())
             {
-              paramInt = 0;
-              if (paramInt < ((ArrayList)localObject4).size())
-              {
-                if (this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.contains((ArrayList)localObject3, (String)((ArrayList)localObject4).get(paramInt))) {
-                  break label591;
-                }
-                ((ArrayList)localObject2).add(Integer.valueOf(paramInt));
+              if (this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.contains((ArrayList)localObject3, (String)((ArrayList)localObject4).get(paramInt))) {
                 break label591;
               }
+              ((ArrayList)localObject2).add(Integer.valueOf(paramInt));
+              break label591;
             }
-            ((JSONObject)localObject1).put("forbidden", new JSONArray((Collection)localObject2));
-            paramInt = i;
           }
+          ((JSONObject)localObject1).put("forbidden", new JSONArray((Collection)localObject2));
+          paramInt = i;
         }
-        else
+        ((JSONObject)localObject1).put("msg", paramBundle);
+        ((JSONObject)localObject1).put("retCode", paramInt);
+        paramBundle = ((JSONObject)localObject1).toString();
+        if (this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.authCallback != null)
         {
-          ((JSONObject)localObject1).put("msg", paramBundle);
-          ((JSONObject)localObject1).put("retCode", paramInt);
-          paramBundle = ((JSONObject)localObject1).toString();
-          if (this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.authCallback != null) {
-            this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.authCallback, new String[] { paramBundle });
-          }
+          this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.authCallback, new String[] { paramBundle });
           return;
         }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
       }
       catch (JSONException paramBundle)
       {
         paramBundle.printStackTrace();
         return;
       }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
+      return;
+      label584:
       paramInt += 1;
       continue;
       label591:
@@ -146,7 +144,7 @@ class PublicAccountH5AbilityPluginImpl$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.18
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,10 @@ class CountDownClockNumLottieView$2
   {
     paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
     CountDownClockNumLottieView.a(this.a, paramValueAnimator.intValue());
-    if (CountDownClockNumLottieView.a(this.a) != 0.0F) {
-      CountDownClockNumLottieView.a(this.a, CountDownClockNumLottieView.a(this.a) - (int)(CountDownClockNumLottieView.a(this.a) / CountDownClockNumLottieView.a(this.a)));
+    if (CountDownClockNumLottieView.a(this.a) != 0.0F)
+    {
+      paramValueAnimator = this.a;
+      CountDownClockNumLottieView.a(paramValueAnimator, CountDownClockNumLottieView.a(paramValueAnimator) - (int)(CountDownClockNumLottieView.a(this.a) / CountDownClockNumLottieView.a(this.a)));
     }
     if ((CountDownClockNumLottieView.a(this.a) == 360) && (CountDownClockNumLottieView.a(this.a) != null) && (this.a.getVisibility() == 0)) {
       CountDownClockNumLottieView.a(this.a).a();
@@ -32,7 +34,7 @@ class CountDownClockNumLottieView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.util.CountDownClockNumLottieView.2
  * JD-Core Version:    0.7.0.1
  */

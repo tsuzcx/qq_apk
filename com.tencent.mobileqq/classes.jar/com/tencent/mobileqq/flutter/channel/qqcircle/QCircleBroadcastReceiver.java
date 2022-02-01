@@ -14,25 +14,34 @@ public class QCircleBroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleBroadcastReceiver", 2, "[onReceive] action=" + paramIntent.getAction());
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("[onReceive] action=");
+      paramContext.append(paramIntent.getAction());
+      QLog.d("QCircleBroadcastReceiver", 2, paramContext.toString());
     }
     paramContext = paramIntent.getStringExtra("uin");
     int i = paramIntent.getIntExtra("followstate", -1);
-    if ((TextUtils.isEmpty(paramContext)) || (i < 0))
+    if ((!TextUtils.isEmpty(paramContext)) && (i >= 0))
     {
-      QLog.e("QCircleBroadcastReceiver", 1, "[onReceive] invalid params, uin=" + paramContext + ", state=" + i);
+      paramIntent = new HashMap();
+      paramIntent.put("userId", paramContext);
+      paramIntent.put("followState", Integer.valueOf(i));
+      TencentQQCirclePlugin.sendEvent("tencent_qqcircle/follow", paramIntent);
       return;
     }
-    paramIntent = new HashMap();
-    paramIntent.put("userId", paramContext);
-    paramIntent.put("followState", Integer.valueOf(i));
-    TencentQQCirclePlugin.sendEvent("tencent_qqcircle/follow", paramIntent);
+    paramIntent = new StringBuilder();
+    paramIntent.append("[onReceive] invalid params, uin=");
+    paramIntent.append(paramContext);
+    paramIntent.append(", state=");
+    paramIntent.append(i);
+    QLog.e("QCircleBroadcastReceiver", 1, paramIntent.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.qqcircle.QCircleBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

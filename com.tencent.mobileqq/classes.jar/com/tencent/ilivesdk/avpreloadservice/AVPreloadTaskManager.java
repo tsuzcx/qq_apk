@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.falco.base.libapi.generalinfo.AppGeneralInfoService;
+import com.tencent.falco.base.libapi.http.HttpInterface;
 import com.tencent.falco.utils.ThreadCenter;
 import com.tencent.falco.utils.ThreadCenter.HandlerKeyable;
 import com.tencent.falco.utils.UIUtil;
@@ -21,29 +22,21 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class AVPreloadTaskManager
   implements ThreadCenter.HandlerKeyable, AVPreloadEngine.PreloadResultListener
 {
-  private int jdField_a_of_type_Int = 15;
+  private int jdField_a_of_type_Int = 60;
   private Context jdField_a_of_type_AndroidContentContext;
   private AVPreloadEngine jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new AVPreloadTaskManager.1(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new AVPreloadTaskManager.2(this);
   private String jdField_a_of_type_JavaLangString = "";
   private List<AVPreloadTask> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Set<AVPreloadServiceInterface.AVPreloadResultListener> jdField_a_of_type_JavaUtilSet = new HashSet();
   private int jdField_b_of_type_Int = 6;
   private List<AVPreloadTask> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private int jdField_c_of_type_Int = 1;
+  private int jdField_c_of_type_Int = 2;
   private List<AVPreloadTask> jdField_c_of_type_JavaUtilList = new ArrayList();
   private int jdField_d_of_type_Int = 6;
   private List<AVPreloadTask> jdField_d_of_type_JavaUtilList = new ArrayList();
-  
-  public AVPreloadTaskManager(Context paramContext, AppGeneralInfoService paramAppGeneralInfoService)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine = new AVPreloadEngine(paramContext);
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.a(paramContext, paramAppGeneralInfoService.getTPPlatform(), paramAppGeneralInfoService.getTPPlayerGuid());
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.a(this);
-    ThreadCenter.postDelayedUITask(this, this.jdField_a_of_type_JavaLangRunnable, 1000L);
-  }
+  private int e = 5;
   
   private AVPreloadTask a()
   {
@@ -64,22 +57,48 @@ public class AVPreloadTaskManager
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
+      Object localObject2;
       if (paramAVPreloadTask.e() <= 0)
       {
-        AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "task refresh cycle is " + paramAVPreloadTask.e() + " not to update!", new Object[0]);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("task refresh cycle is ");
+        ((StringBuilder)localObject2).append(paramAVPreloadTask.e());
+        ((StringBuilder)localObject2).append(" not to update!");
+        AVPreloadLog.c("AVPreload|AVPreloadTaskManager", ((StringBuilder)localObject2).toString(), new Object[0]);
         return false;
       }
-      if (this.jdField_c_of_type_JavaUtilList.size() > this.jdField_b_of_type_Int)
+      long l = paramAVPreloadTask.l() + 1L;
+      paramAVPreloadTask.l(l);
+      if (l > this.e)
       {
-        AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "update queue size:" + this.jdField_c_of_type_JavaUtilList.size() + "  > max size:" + this.jdField_b_of_type_Int, new Object[0]);
-        AVPreloadTask localAVPreloadTask = (AVPreloadTask)this.jdField_c_of_type_JavaUtilList.get(0);
-        this.jdField_c_of_type_JavaUtilList.remove(localAVPreloadTask);
-        b(localAVPreloadTask);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("refresh time out max time = ");
+        ((StringBuilder)localObject2).append(this.e);
+        AVPreloadLog.c("AVPreload|AVPreloadTaskManager", ((StringBuilder)localObject2).toString(), new Object[0]);
+        paramAVPreloadTask.l(0L);
+        b(paramAVPreloadTask);
+        return false;
       }
+      while (this.jdField_c_of_type_JavaUtilList.size() > this.jdField_b_of_type_Int)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("update queue size:");
+        ((StringBuilder)localObject2).append(this.jdField_c_of_type_JavaUtilList.size());
+        ((StringBuilder)localObject2).append("  > max size:");
+        ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+        AVPreloadLog.c("AVPreload|AVPreloadTaskManager", ((StringBuilder)localObject2).toString(), new Object[0]);
+        localObject2 = (AVPreloadTask)this.jdField_c_of_type_JavaUtilList.get(0);
+        this.jdField_c_of_type_JavaUtilList.remove(localObject2);
+        b((AVPreloadTask)localObject2);
+      }
+      paramAVPreloadTask.k(System.currentTimeMillis());
+      this.jdField_c_of_type_JavaUtilList.add(paramAVPreloadTask);
+      return true;
     }
-    paramAVPreloadTask.k(System.currentTimeMillis());
-    this.jdField_c_of_type_JavaUtilList.add(paramAVPreloadTask);
-    return true;
+    for (;;)
+    {
+      throw paramAVPreloadTask;
+    }
   }
   
   private boolean d(AVPreloadTask paramAVPreloadTask)
@@ -93,17 +112,23 @@ public class AVPreloadTaskManager
     {
       if (this.jdField_b_of_type_JavaUtilList.contains(paramAVPreloadTask))
       {
-        AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "preload queue is contain task  url= " + paramAVPreloadTask.b(), new Object[0]);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("preload queue is contain task  url= ");
+        localStringBuilder.append(paramAVPreloadTask.b());
+        AVPreloadLog.c("AVPreload|AVPreloadTaskManager", localStringBuilder.toString(), new Object[0]);
         return false;
       }
+      if (this.jdField_b_of_type_JavaUtilList.size() >= this.jdField_c_of_type_Int)
+      {
+        paramAVPreloadTask = new StringBuilder();
+        paramAVPreloadTask.append("preload queue is full, max count = ");
+        paramAVPreloadTask.append(this.jdField_c_of_type_Int);
+        AVPreloadLog.c("AVPreload|AVPreloadTaskManager", paramAVPreloadTask.toString(), new Object[0]);
+        return false;
+      }
+      this.jdField_b_of_type_JavaUtilList.add(paramAVPreloadTask);
+      return true;
     }
-    if (this.jdField_b_of_type_JavaUtilList.size() >= this.jdField_c_of_type_Int)
-    {
-      AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "preload queue is full, max count = " + this.jdField_c_of_type_Int, new Object[0]);
-      return false;
-    }
-    this.jdField_b_of_type_JavaUtilList.add(paramAVPreloadTask);
-    return true;
   }
   
   private boolean e(AVPreloadTask paramAVPreloadTask)
@@ -118,49 +143,68 @@ public class AVPreloadTaskManager
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      Object localObject2 = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        AVPreloadTask localAVPreloadTask = (AVPreloadTask)localIterator.next();
+        AVPreloadTask localAVPreloadTask = (AVPreloadTask)((Iterator)localObject2).next();
         if ((localAVPreloadTask.b().equalsIgnoreCase(paramAVPreloadTask.b())) || (localAVPreloadTask.a().equalsIgnoreCase(paramAVPreloadTask.a())))
         {
-          localIterator.remove();
-          AVPreloadLog.a("AVPreload|AVPreloadTaskManager", "remove task taskId=#" + paramAVPreloadTask.j() + " key id=" + paramAVPreloadTask.a(), new Object[0]);
+          ((Iterator)localObject2).remove();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("remove task taskId=#");
+          ((StringBuilder)localObject2).append(paramAVPreloadTask.j());
+          ((StringBuilder)localObject2).append(" key id=");
+          ((StringBuilder)localObject2).append(paramAVPreloadTask.a());
+          AVPreloadLog.a("AVPreload|AVPreloadTaskManager", ((StringBuilder)localObject2).toString(), new Object[0]);
           return true;
         }
       }
+      return false;
     }
-    return false;
+    for (;;)
+    {
+      throw paramAVPreloadTask;
+    }
   }
   
   private void f()
   {
-    AVPreloadTask localAVPreloadTask;
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
-      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      Object localObject3;
       while (localIterator.hasNext())
       {
-        localAVPreloadTask = (AVPreloadTask)localIterator.next();
-        long l = System.currentTimeMillis() - localAVPreloadTask.a();
+        localObject3 = (AVPreloadTask)localIterator.next();
+        long l = System.currentTimeMillis() - ((AVPreloadTask)localObject3).a();
         if (l >= 10000L)
         {
-          localCopyOnWriteArrayList.add(localAVPreloadTask);
-          AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "preload time out, preload time = " + l + " > max time = " + 10000, new Object[0]);
+          localCopyOnWriteArrayList.add(localObject3);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("preload time out, preload time = ");
+          ((StringBuilder)localObject3).append(l);
+          ((StringBuilder)localObject3).append(" > max time = ");
+          ((StringBuilder)localObject3).append(10000);
+          AVPreloadLog.c("AVPreload|AVPreloadTaskManager", ((StringBuilder)localObject3).toString(), new Object[0]);
         }
       }
+      localIterator = localCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject3 = (AVPreloadTask)localIterator.next();
+        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.c((AVPreloadTaskInterface)localObject3);
+        this.jdField_b_of_type_JavaUtilList.remove(localObject3);
+        ((AVPreloadTask)localObject3).e(50);
+        f((AVPreloadTask)localObject3);
+      }
+      localCopyOnWriteArrayList.clear();
+      return;
     }
-    Iterator localIterator = localObject2.iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      localAVPreloadTask = (AVPreloadTask)localIterator.next();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.c(localAVPreloadTask);
-      this.jdField_b_of_type_JavaUtilList.remove(localAVPreloadTask);
-      localAVPreloadTask.e(50);
-      f(localAVPreloadTask);
+      throw localObject2;
     }
-    localObject2.clear();
   }
   
   private boolean f(AVPreloadTask paramAVPreloadTask)
@@ -173,55 +217,66 @@ public class AVPreloadTaskManager
     if (paramAVPreloadTask.c())
     {
       b(paramAVPreloadTask);
-      AVPreloadLog.c("AVPreload|Core", "------enter waiting queue, but task is playing, taskId=#" + paramAVPreloadTask.j() + "url = " + paramAVPreloadTask.b(), new Object[0]);
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("------enter waiting queue, but task is playing, taskId=#");
+      ((StringBuilder)???).append(paramAVPreloadTask.j());
+      ((StringBuilder)???).append("url = ");
+      ((StringBuilder)???).append(paramAVPreloadTask.b());
+      AVPreloadLog.c("AVPreload|Core", ((StringBuilder)???).toString(), new Object[0]);
       return false;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        AVPreloadTask localAVPreloadTask = (AVPreloadTask)localIterator.next();
+        if (TextUtils.isEmpty(localAVPreloadTask.b()))
+        {
+          AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "item url is empty", new Object[0]);
+        }
+        else if (TextUtils.isEmpty(localAVPreloadTask.a()))
+        {
+          AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "item keyId is empty", new Object[0]);
+        }
+        else if ((localAVPreloadTask.b().equalsIgnoreCase(paramAVPreloadTask.b())) || (localAVPreloadTask.a().equalsIgnoreCase(paramAVPreloadTask.a())))
+        {
+          AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "waiting queue has the task.", new Object[0]);
+          return false;
+        }
+      }
+      this.jdField_a_of_type_JavaUtilList.add(0, paramAVPreloadTask);
+      paramAVPreloadTask = new StringBuilder();
+      paramAVPreloadTask.append("-----waiting queue max size:");
+      paramAVPreloadTask.append(this.jdField_b_of_type_Int);
+      paramAVPreloadTask.append(" waiting queue current size:");
+      paramAVPreloadTask.append(this.jdField_a_of_type_JavaUtilList.size());
+      AVPreloadLog.b("AVPreload|Core", paramAVPreloadTask.toString(), new Object[0]);
+      while (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_b_of_type_Int)
+      {
+        paramAVPreloadTask = (AVPreloadTask)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        this.jdField_c_of_type_JavaUtilList.remove(paramAVPreloadTask);
+        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        if (paramAVPreloadTask.f() < 200) {
+          paramAVPreloadTask.e(50);
+        }
+        b(paramAVPreloadTask);
+      }
+      return true;
     }
     for (;;)
     {
-      AVPreloadTask localAVPreloadTask;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localAVPreloadTask = (AVPreloadTask)localIterator.next();
-        if (TextUtils.isEmpty(localAVPreloadTask.b())) {
-          AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "item url is empty", new Object[0]);
-        }
-      }
-      if (TextUtils.isEmpty(localAVPreloadTask.a()))
-      {
-        AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "item keyId is empty", new Object[0]);
-      }
-      else if ((localAVPreloadTask.b().equalsIgnoreCase(paramAVPreloadTask.b())) || (localAVPreloadTask.a().equalsIgnoreCase(paramAVPreloadTask.a())))
-      {
-        AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "waiting queue has the task.", new Object[0]);
-        return false;
-      }
+      throw paramAVPreloadTask;
     }
-    this.jdField_a_of_type_JavaUtilList.add(0, paramAVPreloadTask);
-    AVPreloadLog.b("AVPreload|Core", "-----waiting queue max size:" + this.jdField_b_of_type_Int + " waiting queue current size:" + this.jdField_a_of_type_JavaUtilList.size(), new Object[0]);
-    while (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_b_of_type_Int)
-    {
-      paramAVPreloadTask = (AVPreloadTask)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
-      this.jdField_c_of_type_JavaUtilList.remove(paramAVPreloadTask);
-      this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
-      if (paramAVPreloadTask.f() < 200) {
-        paramAVPreloadTask.e(50);
-      }
-      b(paramAVPreloadTask);
-    }
-    return true;
   }
   
   private void g()
   {
-    AVPreloadTask localAVPreloadTask;
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
-      localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+      AVPreloadTask localAVPreloadTask;
       while (localIterator.hasNext())
       {
         localAVPreloadTask = (AVPreloadTask)localIterator.next();
@@ -229,20 +284,30 @@ public class AVPreloadTaskManager
           localCopyOnWriteArrayList.add(localAVPreloadTask);
         }
       }
-    }
-    Iterator localIterator = localObject2.iterator();
-    while (localIterator.hasNext())
-    {
-      localAVPreloadTask = (AVPreloadTask)localIterator.next();
-      this.jdField_c_of_type_JavaUtilList.remove(localAVPreloadTask);
-      if (localAVPreloadTask.f() < 200) {
-        localAVPreloadTask.e(50);
+      localIterator = localCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        localAVPreloadTask = (AVPreloadTask)localIterator.next();
+        this.jdField_c_of_type_JavaUtilList.remove(localAVPreloadTask);
+        if (localAVPreloadTask.f() < 200) {
+          localAVPreloadTask.e(50);
+        }
+        f(localAVPreloadTask);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("update time out url =");
+        localStringBuilder.append(localAVPreloadTask.b());
+        localStringBuilder.append("update queue task size=");
+        localStringBuilder.append(this.jdField_c_of_type_JavaUtilList.size());
+        AVPreloadLog.a("AVPreload|AVPreloadTaskManager", localStringBuilder.toString(), new Object[0]);
       }
-      f(localAVPreloadTask);
-      AVPreloadLog.a("AVPreload|AVPreloadTaskManager", "update time out url =" + localAVPreloadTask.b() + "update queue task size=" + this.jdField_c_of_type_JavaUtilList.size(), new Object[0]);
+      c();
+      localCopyOnWriteArrayList.clear();
+      return;
     }
-    c();
-    localObject2.clear();
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public AVPreloadTask a(long paramLong)
@@ -285,72 +350,54 @@ public class AVPreloadTaskManager
   
   public AVPreloadTask a(String paramString)
   {
-    Object localObject;
     if (TextUtils.isEmpty(paramString))
     {
       AVPreloadLog.b("AVPreload|AVPreloadTaskManager", "url2Task url is null.", new Object[0]);
-      localObject = null;
-      return localObject;
+      return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     AVPreloadTask localAVPreloadTask;
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
-      {
-        localAVPreloadTask = (AVPreloadTask)localIterator.next();
-        localObject = localAVPreloadTask;
-        if (localAVPreloadTask.b().equalsIgnoreCase(paramString)) {
-          break;
-        }
-        if ((localAVPreloadTask.a().equalsIgnoreCase(AVPreloadUtils.c(paramString))) && (!TextUtils.isEmpty(localAVPreloadTask.a()))) {
-          return localAVPreloadTask;
-        }
+      localAVPreloadTask = (AVPreloadTask)localIterator.next();
+      if (localAVPreloadTask.b().equalsIgnoreCase(paramString)) {
+        return localAVPreloadTask;
+      }
+      if ((localAVPreloadTask.a().equalsIgnoreCase(AVPreloadUtils.c(paramString))) && (!TextUtils.isEmpty(localAVPreloadTask.a()))) {
+        return localAVPreloadTask;
       }
     }
     localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
-      {
-        localAVPreloadTask = (AVPreloadTask)localIterator.next();
-        localObject = localAVPreloadTask;
-        if (localAVPreloadTask.b().equalsIgnoreCase(paramString)) {
-          break;
-        }
-        if ((localAVPreloadTask.a().equalsIgnoreCase(AVPreloadUtils.c(paramString))) && (!TextUtils.isEmpty(localAVPreloadTask.a()))) {
-          return localAVPreloadTask;
-        }
+      localAVPreloadTask = (AVPreloadTask)localIterator.next();
+      if (localAVPreloadTask.b().equalsIgnoreCase(paramString)) {
+        return localAVPreloadTask;
+      }
+      if ((localAVPreloadTask.a().equalsIgnoreCase(AVPreloadUtils.c(paramString))) && (!TextUtils.isEmpty(localAVPreloadTask.a()))) {
+        return localAVPreloadTask;
       }
     }
     localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
-      {
-        localAVPreloadTask = (AVPreloadTask)localIterator.next();
-        localObject = localAVPreloadTask;
-        if (localAVPreloadTask.b().equalsIgnoreCase(paramString)) {
-          break;
-        }
-        if ((localAVPreloadTask.a().equalsIgnoreCase(AVPreloadUtils.c(paramString))) && (!TextUtils.isEmpty(localAVPreloadTask.a()))) {
-          return localAVPreloadTask;
-        }
+      localAVPreloadTask = (AVPreloadTask)localIterator.next();
+      if (localAVPreloadTask.b().equalsIgnoreCase(paramString)) {
+        return localAVPreloadTask;
+      }
+      if ((localAVPreloadTask.a().equalsIgnoreCase(AVPreloadUtils.c(paramString))) && (!TextUtils.isEmpty(localAVPreloadTask.a()))) {
+        return localAVPreloadTask;
       }
     }
     localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
-      {
-        localAVPreloadTask = (AVPreloadTask)localIterator.next();
-        localObject = localAVPreloadTask;
-        if (localAVPreloadTask.b().equalsIgnoreCase(paramString)) {
-          break;
-        }
-        if ((localAVPreloadTask.a().equalsIgnoreCase(AVPreloadUtils.c(paramString))) && (!TextUtils.isEmpty(localAVPreloadTask.a()))) {
-          return localAVPreloadTask;
-        }
+      localAVPreloadTask = (AVPreloadTask)localIterator.next();
+      if (localAVPreloadTask.b().equalsIgnoreCase(paramString)) {
+        return localAVPreloadTask;
+      }
+      if ((localAVPreloadTask.a().equalsIgnoreCase(AVPreloadUtils.c(paramString))) && (!TextUtils.isEmpty(localAVPreloadTask.a()))) {
+        return localAVPreloadTask;
       }
     }
     return null;
@@ -374,6 +421,14 @@ public class AVPreloadTaskManager
     this.jdField_b_of_type_Int = paramInt;
   }
   
+  public void a(Context paramContext, AppGeneralInfoService paramAppGeneralInfoService, AVPreloadTaskManager.DLProxyInitCompletedListener paramDLProxyInitCompletedListener, HttpInterface paramHttpInterface)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine = new AVPreloadEngine(paramContext, paramHttpInterface);
+    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.a(this);
+    ThreadCenter.postLogicTask(new AVPreloadTaskManager.1(this, paramContext, paramAppGeneralInfoService, paramDLProxyInitCompletedListener), "init_dlproxy_thread");
+  }
+  
   public void a(AVPreloadTask paramAVPreloadTask)
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -389,10 +444,11 @@ public class AVPreloadTaskManager
         b(paramAVPreloadTask);
         return;
       }
-    }
-    if (this.jdField_c_of_type_JavaUtilList.contains(paramAVPreloadTask))
-    {
-      b(paramAVPreloadTask);
+      if (this.jdField_c_of_type_JavaUtilList.contains(paramAVPreloadTask))
+      {
+        b(paramAVPreloadTask);
+        return;
+      }
       return;
     }
   }
@@ -404,10 +460,15 @@ public class AVPreloadTaskManager
   
   public void a(AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    AVPreloadLog.b("AVPreload|Core", "------ task preload failed taskId=#" + paramAVPreloadTaskInterface.j() + " url = " + paramAVPreloadTaskInterface.b(), new Object[0]);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext()) {
-      ((AVPreloadServiceInterface.AVPreloadResultListener)localIterator.next()).b(paramAVPreloadTaskInterface.b(), paramAVPreloadTaskInterface);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("------ task preload failed taskId=#");
+    ((StringBuilder)localObject).append(paramAVPreloadTaskInterface.j());
+    ((StringBuilder)localObject).append(" url = ");
+    ((StringBuilder)localObject).append(paramAVPreloadTaskInterface.b());
+    AVPreloadLog.b("AVPreload|Core", ((StringBuilder)localObject).toString(), new Object[0]);
+    localObject = this.jdField_a_of_type_JavaUtilSet.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((AVPreloadServiceInterface.AVPreloadResultListener)((Iterator)localObject).next()).b(paramAVPreloadTaskInterface.b(), paramAVPreloadTaskInterface);
     }
     e((AVPreloadTask)paramAVPreloadTaskInterface);
     c();
@@ -415,7 +476,12 @@ public class AVPreloadTaskManager
   
   public void a(AVPreloadTaskInterface paramAVPreloadTaskInterface, Bitmap paramBitmap, boolean paramBoolean)
   {
-    AVPreloadLog.b("AVPreload|Core", "------ task first frame come taskId=#" + paramAVPreloadTaskInterface.j() + " url = " + paramAVPreloadTaskInterface.b(), new Object[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("------ task first frame come taskId=#");
+    localStringBuilder.append(paramAVPreloadTaskInterface.j());
+    localStringBuilder.append(" url = ");
+    localStringBuilder.append(paramAVPreloadTaskInterface.b());
+    AVPreloadLog.b("AVPreload|Core", localStringBuilder.toString(), new Object[0]);
     paramAVPreloadTaskInterface.a(paramBitmap);
     paramAVPreloadTaskInterface.b(paramBoolean);
     int i = UIUtil.getScreenWidth(this.jdField_a_of_type_AndroidContentContext);
@@ -429,7 +495,14 @@ public class AVPreloadTaskManager
   
   public void a(AVPreloadTaskInterface paramAVPreloadTaskInterface, String paramString, long paramLong)
   {
-    AVPreloadLog.b("AVPreload|Core", "------ task gap time come  taskId=#" + paramAVPreloadTaskInterface.j() + " url = " + paramAVPreloadTaskInterface.b() + " gap time = " + paramLong, new Object[0]);
+    paramString = new StringBuilder();
+    paramString.append("------ task gap time come  taskId=#");
+    paramString.append(paramAVPreloadTaskInterface.j());
+    paramString.append(" url = ");
+    paramString.append(paramAVPreloadTaskInterface.b());
+    paramString.append(" gap time = ");
+    paramString.append(paramLong);
+    AVPreloadLog.b("AVPreload|Core", paramString.toString(), new Object[0]);
     paramString = this.jdField_a_of_type_JavaUtilSet.iterator();
     while (paramString.hasNext()) {
       ((AVPreloadServiceInterface.AVPreloadResultListener)paramString.next()).a(paramAVPreloadTaskInterface.b(), paramLong, paramAVPreloadTaskInterface);
@@ -438,45 +511,70 @@ public class AVPreloadTaskManager
   
   public void a(AVPreloadTaskInterface paramAVPreloadTaskInterface, String paramString, AVPreloadTaskInterface.TaskReportInfo paramTaskReportInfo)
   {
-    AVPreloadLog.b("AVPreload|Core", "------ task preload finish taskId=#" + paramAVPreloadTaskInterface.j() + " url = " + paramAVPreloadTaskInterface.b(), new Object[0]);
+    paramString = new StringBuilder();
+    paramString.append("------ task preload finish taskId=#");
+    paramString.append(paramAVPreloadTaskInterface.j());
+    paramString.append(" url = ");
+    paramString.append(paramAVPreloadTaskInterface.b());
+    AVPreloadLog.b("AVPreload|Core", paramString.toString(), new Object[0]);
     paramAVPreloadTaskInterface.b(System.currentTimeMillis());
     paramString = this.jdField_a_of_type_JavaUtilSet.iterator();
     while (paramString.hasNext()) {
       ((AVPreloadServiceInterface.AVPreloadResultListener)paramString.next()).a(paramAVPreloadTaskInterface.b(), paramTaskReportInfo, paramAVPreloadTaskInterface);
     }
-    e((AVPreloadTask)paramAVPreloadTaskInterface);
-    c((AVPreloadTask)paramAVPreloadTaskInterface);
+    paramAVPreloadTaskInterface = (AVPreloadTask)paramAVPreloadTaskInterface;
+    e(paramAVPreloadTaskInterface);
+    c(paramAVPreloadTaskInterface);
     c();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.a(paramString);
   }
   
   public void a(List<Long> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (paramList != null)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if (paramList.size() == 0) {
+        return;
+      }
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        long l = ((Long)paramList.next()).longValue();
-        if (a(l) == null)
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
         {
-          this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.a((int)l);
-          AVPreloadLog.c("AVPreload|Core", "------task cache check, not find task id =#" + l, new Object[0]);
-          paramList.remove();
+          long l = ((Long)paramList.next()).longValue();
+          if (a(l) == null)
+          {
+            this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.a((int)l);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("------task cache check, not find task id =#");
+            localStringBuilder.append(l);
+            AVPreloadLog.c("AVPreload|Core", localStringBuilder.toString(), new Object[0]);
+            paramList.remove();
+          }
         }
+        return;
       }
     }
   }
   
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.a(paramBoolean);
+  }
+  
   public boolean a(AVPreloadTask paramAVPreloadTask)
   {
-    if (this.jdField_b_of_type_JavaUtilList.contains(paramAVPreloadTask)) {}
-    while ((this.jdField_a_of_type_JavaUtilList.contains(paramAVPreloadTask)) || (this.jdField_c_of_type_JavaUtilList.contains(paramAVPreloadTask))) {
+    if (this.jdField_b_of_type_JavaUtilList.contains(paramAVPreloadTask)) {
       return true;
     }
-    return false;
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramAVPreloadTask)) {
+      return true;
+    }
+    return this.jdField_c_of_type_JavaUtilList.contains(paramAVPreloadTask);
   }
   
   public List<AVPreloadTask> b()
@@ -487,6 +585,11 @@ public class AVPreloadTaskManager
   public void b()
   {
     this.jdField_a_of_type_JavaUtilSet.clear();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
   }
   
   public void b(AVPreloadTask paramAVPreloadTask)
@@ -507,14 +610,15 @@ public class AVPreloadTaskManager
         b(paramAVPreloadTask);
         return;
       }
-    }
-    if (this.jdField_c_of_type_JavaUtilList.contains(paramAVPreloadTask))
-    {
-      this.jdField_c_of_type_JavaUtilList.remove(paramAVPreloadTask);
-      b(paramAVPreloadTask);
+      if (this.jdField_c_of_type_JavaUtilList.contains(paramAVPreloadTask))
+      {
+        this.jdField_c_of_type_JavaUtilList.remove(paramAVPreloadTask);
+        b(paramAVPreloadTask);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.b(paramAVPreloadTask);
       return;
     }
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.b(paramAVPreloadTask);
   }
   
   public void b(AVPreloadServiceInterface.AVPreloadResultListener paramAVPreloadResultListener)
@@ -524,59 +628,95 @@ public class AVPreloadTaskManager
   
   public void b(AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    AVPreloadLog.b("AVPreload|Core", "------ task preload complete taskId=#" + paramAVPreloadTaskInterface.j() + " url = " + paramAVPreloadTaskInterface.b(), new Object[0]);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext()) {
-      ((AVPreloadServiceInterface.AVPreloadResultListener)localIterator.next()).c(paramAVPreloadTaskInterface.b(), paramAVPreloadTaskInterface);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("------ task preload complete taskId=#");
+    ((StringBuilder)localObject).append(paramAVPreloadTaskInterface.j());
+    ((StringBuilder)localObject).append(" url = ");
+    ((StringBuilder)localObject).append(paramAVPreloadTaskInterface.b());
+    AVPreloadLog.b("AVPreload|Core", ((StringBuilder)localObject).toString(), new Object[0]);
+    localObject = this.jdField_a_of_type_JavaUtilSet.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((AVPreloadServiceInterface.AVPreloadResultListener)((Iterator)localObject).next()).c(paramAVPreloadTaskInterface.b(), paramAVPreloadTaskInterface);
     }
     e((AVPreloadTask)paramAVPreloadTaskInterface);
     c();
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.b(paramString);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.b(paramBoolean);
   }
   
   public boolean b(AVPreloadTask paramAVPreloadTask)
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (this.jdField_d_of_type_JavaUtilList.contains(paramAVPreloadTask))
+      while (this.jdField_d_of_type_JavaUtilList.contains(paramAVPreloadTask))
       {
         this.jdField_d_of_type_JavaUtilList.remove(paramAVPreloadTask);
         AVPreloadLog.b("AVPreload|AVPreloadTaskManager", "enEliminatedQueue eliminated queue contain the task, remove the task", new Object[0]);
       }
-    }
-    AVPreloadTask localAVPreloadTask;
-    if ((paramAVPreloadTask.f() == 200) && (this.jdField_d_of_type_JavaUtilList.size() != 0) && (this.jdField_d_of_type_JavaUtilList.get(0) != null) && (((AVPreloadTask)this.jdField_d_of_type_JavaUtilList.get(0)).f() == 200))
-    {
-      localAVPreloadTask = (AVPreloadTask)this.jdField_d_of_type_JavaUtilList.get(0);
-      if (!localAVPreloadTask.c()) {
-        localAVPreloadTask.e(100);
-      }
-      this.jdField_d_of_type_JavaUtilList.remove(localAVPreloadTask);
-      this.jdField_d_of_type_JavaUtilList.add(0, paramAVPreloadTask);
-      AVPreloadLog.b("AVPreload|AVPreloadTaskManager", "TASK_PRIORITY_URGENT change to TASK_PRIORITY_NORMAL url = " + localAVPreloadTask.b(), new Object[0]);
-    }
-    AVPreloadLog.b("AVPreload|Core", "------enter eliminated queue url = " + paramAVPreloadTask.b() + " priority is " + paramAVPreloadTask.f(), new Object[0]);
-    this.jdField_d_of_type_JavaUtilList.add(0, paramAVPreloadTask);
-    Collections.sort(this.jdField_d_of_type_JavaUtilList, new AVPreloadTaskManager.2(this));
-    while (this.jdField_d_of_type_JavaUtilList.size() > this.jdField_d_of_type_Int)
-    {
-      localAVPreloadTask = (AVPreloadTask)this.jdField_d_of_type_JavaUtilList.get(this.jdField_d_of_type_JavaUtilList.size() - 1);
-      if (localAVPreloadTask != null)
+      if ((paramAVPreloadTask.f() == 200) && (this.jdField_d_of_type_JavaUtilList.size() != 0) && (this.jdField_d_of_type_JavaUtilList.get(0) != null) && (((AVPreloadTask)this.jdField_d_of_type_JavaUtilList.get(0)).f() == 200))
       {
-        this.jdField_d_of_type_JavaUtilList.remove(this.jdField_d_of_type_JavaUtilList.size() - 1);
-        if (localAVPreloadTask.c())
-        {
-          this.jdField_d_of_type_JavaUtilList.add(0, localAVPreloadTask);
-          AVPreloadLog.b("AVPreload|Core", "------playing task can not eliminated queue url = " + paramAVPreloadTask.b() + " priority is " + paramAVPreloadTask.f(), new Object[0]);
+        localObject2 = (AVPreloadTask)this.jdField_d_of_type_JavaUtilList.get(0);
+        if (!((AVPreloadTask)localObject2).c()) {
+          ((AVPreloadTask)localObject2).e(100);
         }
-        else
+        this.jdField_d_of_type_JavaUtilList.remove(localObject2);
+        this.jdField_d_of_type_JavaUtilList.add(0, paramAVPreloadTask);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("TASK_PRIORITY_URGENT change to TASK_PRIORITY_NORMAL url = ");
+        localStringBuilder.append(((AVPreloadTask)localObject2).b());
+        AVPreloadLog.b("AVPreload|AVPreloadTaskManager", localStringBuilder.toString(), new Object[0]);
+      }
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("------enter eliminated queue url = ");
+      ((StringBuilder)localObject2).append(paramAVPreloadTask.b());
+      ((StringBuilder)localObject2).append(" priority is ");
+      ((StringBuilder)localObject2).append(paramAVPreloadTask.f());
+      AVPreloadLog.b("AVPreload|Core", ((StringBuilder)localObject2).toString(), new Object[0]);
+      this.jdField_d_of_type_JavaUtilList.add(0, paramAVPreloadTask);
+      Collections.sort(this.jdField_d_of_type_JavaUtilList, new AVPreloadTaskManager.3(this));
+      while (this.jdField_d_of_type_JavaUtilList.size() > this.jdField_d_of_type_Int)
+      {
+        localObject2 = (AVPreloadTask)this.jdField_d_of_type_JavaUtilList.get(this.jdField_d_of_type_JavaUtilList.size() - 1);
+        if (localObject2 != null)
         {
-          this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.b(localAVPreloadTask);
-          localAVPreloadTask.a();
-          AVPreloadLog.b("AVPreload|Core", "------remove from eliminated queue url = " + paramAVPreloadTask.b() + " priority is " + paramAVPreloadTask.f(), new Object[0]);
+          this.jdField_d_of_type_JavaUtilList.remove(this.jdField_d_of_type_JavaUtilList.size() - 1);
+          if (((AVPreloadTask)localObject2).c())
+          {
+            this.jdField_d_of_type_JavaUtilList.add(0, localObject2);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("------playing task can not eliminated queue url = ");
+            ((StringBuilder)localObject2).append(paramAVPreloadTask.b());
+            ((StringBuilder)localObject2).append(" priority is ");
+            ((StringBuilder)localObject2).append(paramAVPreloadTask.f());
+            AVPreloadLog.b("AVPreload|Core", ((StringBuilder)localObject2).toString(), new Object[0]);
+          }
+          else
+          {
+            this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.b((AVPreloadTaskInterface)localObject2);
+            ((AVPreloadTask)localObject2).a();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("------remove from eliminated queue url = ");
+            ((StringBuilder)localObject2).append(paramAVPreloadTask.b());
+            ((StringBuilder)localObject2).append(" priority is ");
+            ((StringBuilder)localObject2).append(paramAVPreloadTask.f());
+            AVPreloadLog.b("AVPreload|Core", ((StringBuilder)localObject2).toString(), new Object[0]);
+          }
         }
       }
+      return true;
     }
-    return true;
+    for (;;)
+    {
+      throw paramAVPreloadTask;
+    }
   }
   
   public List<AVPreloadTask> c()
@@ -589,38 +729,66 @@ public class AVPreloadTaskManager
     if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
       return;
     }
-    if (this.jdField_b_of_type_JavaUtilList.size() >= 1)
+    if (this.jdField_b_of_type_JavaUtilList.size() >= 2)
     {
-      AVPreloadLog.c("AVPreload|AVPreloadTaskManager", "preload size=" + this.jdField_b_of_type_JavaUtilList.size() + ">= max count" + 1, new Object[0]);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("preload size=");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject).append(">= max count");
+      ((StringBuilder)localObject).append(2);
+      AVPreloadLog.c("AVPreload|AVPreloadTaskManager", ((StringBuilder)localObject).toString(), new Object[0]);
       return;
     }
-    AVPreloadTask localAVPreloadTask = a();
-    if (!localAVPreloadTask.c())
+    Object localObject = a();
+    if (!((AVPreloadTask)localObject).c())
     {
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.b(localAVPreloadTask);
-      if (d(localAVPreloadTask))
+      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.b((AVPreloadTaskInterface)localObject);
+      if (d((AVPreloadTask)localObject))
       {
-        localAVPreloadTask.a(System.currentTimeMillis());
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.a(localAVPreloadTask);
-        AVPreloadLog.b("AVPreload|Core", "------start preload task taskId =#" + localAVPreloadTask.j() + " url = " + localAVPreloadTask.b(), new Object[0]);
-        g(localAVPreloadTask);
+        ((AVPreloadTask)localObject).a(System.currentTimeMillis());
+        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.a((AVPreloadTaskInterface)localObject);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("------start preload task taskId =#");
+        localStringBuilder.append(((AVPreloadTask)localObject).j());
+        localStringBuilder.append(" url = ");
+        localStringBuilder.append(((AVPreloadTask)localObject).b());
+        AVPreloadLog.b("AVPreload|Core", localStringBuilder.toString(), new Object[0]);
+        g((AVPreloadTaskInterface)localObject);
+        return;
       }
-    }
-    else
-    {
-      AVPreloadLog.c("AVPreload|Core", "------start preload but task is playing taskId =#" + localAVPreloadTask.j() + " url = " + localAVPreloadTask.b(), new Object[0]);
+      AVPreloadLog.c("AVPreload|Core", "------start preload task failed, enter preload queue failed.", new Object[0]);
       return;
     }
-    AVPreloadLog.c("AVPreload|Core", "------start preload task failed, enter preload queue failed.", new Object[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("------start preload but task is playing taskId =#");
+    localStringBuilder.append(((AVPreloadTask)localObject).j());
+    localStringBuilder.append(" url = ");
+    localStringBuilder.append(((AVPreloadTask)localObject).b());
+    AVPreloadLog.c("AVPreload|Core", localStringBuilder.toString(), new Object[0]);
+  }
+  
+  public void c(int paramInt)
+  {
+    this.e = paramInt;
   }
   
   public void c(AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    AVPreloadLog.b("AVPreload|Core", "------ task preload stop taskId=#" + paramAVPreloadTaskInterface.j() + " url = " + paramAVPreloadTaskInterface.b(), new Object[0]);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext()) {
-      ((AVPreloadServiceInterface.AVPreloadResultListener)localIterator.next()).d(paramAVPreloadTaskInterface.b(), paramAVPreloadTaskInterface);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("------ task preload stop taskId=#");
+    ((StringBuilder)localObject).append(paramAVPreloadTaskInterface.j());
+    ((StringBuilder)localObject).append(" url = ");
+    ((StringBuilder)localObject).append(paramAVPreloadTaskInterface.b());
+    AVPreloadLog.b("AVPreload|Core", ((StringBuilder)localObject).toString(), new Object[0]);
+    localObject = this.jdField_a_of_type_JavaUtilSet.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((AVPreloadServiceInterface.AVPreloadResultListener)((Iterator)localObject).next()).d(paramAVPreloadTaskInterface.b(), paramAVPreloadTaskInterface);
     }
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.c(paramBoolean);
   }
   
   public List<AVPreloadTask> d()
@@ -650,47 +818,57 @@ public class AVPreloadTaskManager
   
   public void d(AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    AVPreloadLog.b("AVPreload|Core", "------ task can play  taskId=#" + paramAVPreloadTaskInterface.j() + " url = " + paramAVPreloadTaskInterface.b(), new Object[0]);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext()) {
-      ((AVPreloadServiceInterface.AVPreloadResultListener)localIterator.next()).f(paramAVPreloadTaskInterface.b(), paramAVPreloadTaskInterface);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("------ task can play  taskId=#");
+    ((StringBuilder)localObject).append(paramAVPreloadTaskInterface.j());
+    ((StringBuilder)localObject).append(" url = ");
+    ((StringBuilder)localObject).append(paramAVPreloadTaskInterface.b());
+    AVPreloadLog.b("AVPreload|Core", ((StringBuilder)localObject).toString(), new Object[0]);
+    localObject = this.jdField_a_of_type_JavaUtilSet.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((AVPreloadServiceInterface.AVPreloadResultListener)((Iterator)localObject).next()).f(paramAVPreloadTaskInterface.b(), paramAVPreloadTaskInterface);
     }
   }
   
   public void e()
   {
-    AVPreloadTask localAVPreloadTask;
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      Iterator localIterator1 = this.jdField_b_of_type_JavaUtilList.iterator();
-      if (localIterator1.hasNext())
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      AVPreloadTask localAVPreloadTask;
+      while (localIterator.hasNext())
       {
-        localAVPreloadTask = (AVPreloadTask)localIterator1.next();
+        localAVPreloadTask = (AVPreloadTask)localIterator.next();
         this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.b(localAVPreloadTask);
         if (localAVPreloadTask.f() < 200) {
           localAVPreloadTask.e(70);
         }
         localAVPreloadTask.d(false);
         localAVPreloadTask.c(System.currentTimeMillis());
-        localIterator1.remove();
+        localIterator.remove();
         b(localAVPreloadTask);
       }
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localAVPreloadTask = (AVPreloadTask)localIterator.next();
+        localAVPreloadTask.d(false);
+        localIterator.remove();
+        b(localAVPreloadTask);
+      }
+      localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localAVPreloadTask = (AVPreloadTask)localIterator.next();
+        localAVPreloadTask.d(false);
+        localIterator.remove();
+        b(localAVPreloadTask);
+      }
+      return;
     }
-    Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator2.hasNext())
+    for (;;)
     {
-      localAVPreloadTask = (AVPreloadTask)localIterator2.next();
-      localAVPreloadTask.d(false);
-      localIterator2.remove();
-      b(localAVPreloadTask);
-    }
-    localIterator2 = this.jdField_c_of_type_JavaUtilList.iterator();
-    while (localIterator2.hasNext())
-    {
-      localAVPreloadTask = (AVPreloadTask)localIterator2.next();
-      localAVPreloadTask.d(false);
-      localIterator2.remove();
-      b(localAVPreloadTask);
+      throw localObject2;
     }
   }
   
@@ -708,29 +886,43 @@ public class AVPreloadTaskManager
         paramAVPreloadTaskInterface.e(100);
       }
       f((AVPreloadTask)paramAVPreloadTaskInterface);
-      if (this.jdField_b_of_type_JavaUtilList.size() < 1)
+      if (this.jdField_b_of_type_JavaUtilList.size() < 2)
       {
-        AVPreloadLog.b("AVPreload|AVPreloadTaskManager", "add task current size=" + this.jdField_b_of_type_JavaUtilList.size() + " < max count=" + 1, new Object[0]);
+        paramAVPreloadTaskInterface = new StringBuilder();
+        paramAVPreloadTaskInterface.append("add task current size=");
+        paramAVPreloadTaskInterface.append(this.jdField_b_of_type_JavaUtilList.size());
+        paramAVPreloadTaskInterface.append(" < max count=");
+        paramAVPreloadTaskInterface.append(2);
+        AVPreloadLog.b("AVPreload|AVPreloadTaskManager", paramAVPreloadTaskInterface.toString(), new Object[0]);
+        c();
+        return;
+      }
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        Object localObject2 = this.jdField_b_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          AVPreloadTask localAVPreloadTask = (AVPreloadTask)((Iterator)localObject2).next();
+          if (localAVPreloadTask.f() < paramAVPreloadTaskInterface.f())
+          {
+            this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.c(localAVPreloadTask);
+            ((Iterator)localObject2).remove();
+            f(localAVPreloadTask);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("pause one low level task, add task taskId#");
+            ((StringBuilder)localObject2).append(paramAVPreloadTaskInterface.j());
+            ((StringBuilder)localObject2).append(" key id=");
+            ((StringBuilder)localObject2).append(paramAVPreloadTaskInterface.a());
+            AVPreloadLog.a("AVPreload|AVPreloadTaskManager", ((StringBuilder)localObject2).toString(), new Object[0]);
+          }
+        }
         c();
         return;
       }
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    for (;;)
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        AVPreloadTask localAVPreloadTask = (AVPreloadTask)localIterator.next();
-        if (localAVPreloadTask.f() < paramAVPreloadTaskInterface.f())
-        {
-          this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine.c(localAVPreloadTask);
-          localIterator.remove();
-          f(localAVPreloadTask);
-          AVPreloadLog.a("AVPreload|AVPreloadTaskManager", "pause one low level task, add task taskId#" + paramAVPreloadTaskInterface.j() + " key id=" + paramAVPreloadTaskInterface.a(), new Object[0]);
-        }
-      }
-      c();
-      return;
+      throw paramAVPreloadTaskInterface;
     }
   }
   
@@ -749,111 +941,111 @@ public class AVPreloadTaskManager
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getfield 49	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   15: getfield 51	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   18: aload_1
-    //   19: invokeinterface 177 2 0
-    //   24: ifeq +36 -> 60
+    //   19: invokeinterface 157 2 0
+    //   24: ifeq +31 -> 55
     //   27: aload_0
-    //   28: getfield 73	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine	Lcom/tencent/ilivesdk/avpreloadservice/AVPreloadEngine;
+    //   28: getfield 70	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine	Lcom/tencent/ilivesdk/avpreloadservice/AVPreloadEngine;
     //   31: aload_1
-    //   32: invokevirtual 388	com/tencent/ilivesdk/avpreloadservice/AVPreloadEngine:b	(Lcom/tencent/ilivesdk/avpreloadservice_interface/AVPreloadTaskInterface;)V
+    //   32: invokevirtual 399	com/tencent/ilivesdk/avpreloadservice/AVPreloadEngine:b	(Lcom/tencent/ilivesdk/avpreloadservice_interface/AVPreloadTaskInterface;)V
     //   35: aload_0
-    //   36: getfield 49	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   36: getfield 51	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   39: aload_1
-    //   40: invokeinterface 157 2 0
+    //   40: invokeinterface 141 2 0
     //   45: pop
     //   46: aload_1
-    //   47: invokeinterface 455 1 0
+    //   47: invokeinterface 471 1 0
     //   52: aload_2
     //   53: monitorexit
     //   54: return
-    //   55: astore_1
-    //   56: aload_2
-    //   57: monitorexit
-    //   58: aload_1
-    //   59: athrow
-    //   60: aload_0
-    //   61: getfield 47	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   64: aload_1
-    //   65: invokeinterface 177 2 0
-    //   70: ifeq +31 -> 101
-    //   73: aload_0
-    //   74: getfield 73	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine	Lcom/tencent/ilivesdk/avpreloadservice/AVPreloadEngine;
-    //   77: aload_1
-    //   78: invokevirtual 388	com/tencent/ilivesdk/avpreloadservice/AVPreloadEngine:b	(Lcom/tencent/ilivesdk/avpreloadservice_interface/AVPreloadTaskInterface;)V
-    //   81: aload_0
-    //   82: getfield 47	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   85: aload_1
-    //   86: invokeinterface 157 2 0
-    //   91: pop
-    //   92: aload_1
-    //   93: invokeinterface 455 1 0
-    //   98: aload_2
-    //   99: monitorexit
-    //   100: return
-    //   101: aload_0
-    //   102: getfield 51	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_c_of_type_JavaUtilList	Ljava/util/List;
-    //   105: aload_1
-    //   106: invokeinterface 177 2 0
-    //   111: ifeq +31 -> 142
-    //   114: aload_0
-    //   115: getfield 73	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine	Lcom/tencent/ilivesdk/avpreloadservice/AVPreloadEngine;
-    //   118: aload_1
-    //   119: invokevirtual 388	com/tencent/ilivesdk/avpreloadservice/AVPreloadEngine:b	(Lcom/tencent/ilivesdk/avpreloadservice_interface/AVPreloadTaskInterface;)V
-    //   122: aload_0
-    //   123: getfield 51	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_c_of_type_JavaUtilList	Ljava/util/List;
-    //   126: aload_1
-    //   127: invokeinterface 157 2 0
-    //   132: pop
-    //   133: aload_1
-    //   134: invokeinterface 455 1 0
-    //   139: aload_2
-    //   140: monitorexit
-    //   141: return
-    //   142: aload_0
-    //   143: getfield 53	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_d_of_type_JavaUtilList	Ljava/util/List;
-    //   146: aload_1
-    //   147: invokeinterface 177 2 0
-    //   152: ifeq +46 -> 198
-    //   155: aload_1
-    //   156: invokeinterface 446 1 0
-    //   161: sipush 200
-    //   164: if_icmpne +6 -> 170
-    //   167: aload_2
-    //   168: monitorexit
-    //   169: return
-    //   170: aload_0
-    //   171: getfield 73	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine	Lcom/tencent/ilivesdk/avpreloadservice/AVPreloadEngine;
-    //   174: aload_1
-    //   175: invokevirtual 388	com/tencent/ilivesdk/avpreloadservice/AVPreloadEngine:b	(Lcom/tencent/ilivesdk/avpreloadservice_interface/AVPreloadTaskInterface;)V
-    //   178: aload_0
-    //   179: getfield 53	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_d_of_type_JavaUtilList	Ljava/util/List;
-    //   182: aload_1
-    //   183: invokeinterface 157 2 0
-    //   188: pop
-    //   189: aload_1
-    //   190: invokeinterface 455 1 0
-    //   195: aload_2
-    //   196: monitorexit
-    //   197: return
-    //   198: aload_2
-    //   199: monitorexit
-    //   200: return
+    //   55: aload_0
+    //   56: getfield 49	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   59: aload_1
+    //   60: invokeinterface 157 2 0
+    //   65: ifeq +31 -> 96
+    //   68: aload_0
+    //   69: getfield 70	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine	Lcom/tencent/ilivesdk/avpreloadservice/AVPreloadEngine;
+    //   72: aload_1
+    //   73: invokevirtual 399	com/tencent/ilivesdk/avpreloadservice/AVPreloadEngine:b	(Lcom/tencent/ilivesdk/avpreloadservice_interface/AVPreloadTaskInterface;)V
+    //   76: aload_0
+    //   77: getfield 49	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   80: aload_1
+    //   81: invokeinterface 141 2 0
+    //   86: pop
+    //   87: aload_1
+    //   88: invokeinterface 471 1 0
+    //   93: aload_2
+    //   94: monitorexit
+    //   95: return
+    //   96: aload_0
+    //   97: getfield 53	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_c_of_type_JavaUtilList	Ljava/util/List;
+    //   100: aload_1
+    //   101: invokeinterface 157 2 0
+    //   106: ifeq +31 -> 137
+    //   109: aload_0
+    //   110: getfield 70	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine	Lcom/tencent/ilivesdk/avpreloadservice/AVPreloadEngine;
+    //   113: aload_1
+    //   114: invokevirtual 399	com/tencent/ilivesdk/avpreloadservice/AVPreloadEngine:b	(Lcom/tencent/ilivesdk/avpreloadservice_interface/AVPreloadTaskInterface;)V
+    //   117: aload_0
+    //   118: getfield 53	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_c_of_type_JavaUtilList	Ljava/util/List;
+    //   121: aload_1
+    //   122: invokeinterface 141 2 0
+    //   127: pop
+    //   128: aload_1
+    //   129: invokeinterface 471 1 0
+    //   134: aload_2
+    //   135: monitorexit
+    //   136: return
+    //   137: aload_0
+    //   138: getfield 55	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_d_of_type_JavaUtilList	Ljava/util/List;
+    //   141: aload_1
+    //   142: invokeinterface 157 2 0
+    //   147: ifeq +46 -> 193
+    //   150: aload_1
+    //   151: invokeinterface 462 1 0
+    //   156: sipush 200
+    //   159: if_icmpne +6 -> 165
+    //   162: aload_2
+    //   163: monitorexit
+    //   164: return
+    //   165: aload_0
+    //   166: getfield 70	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine	Lcom/tencent/ilivesdk/avpreloadservice/AVPreloadEngine;
+    //   169: aload_1
+    //   170: invokevirtual 399	com/tencent/ilivesdk/avpreloadservice/AVPreloadEngine:b	(Lcom/tencent/ilivesdk/avpreloadservice_interface/AVPreloadTaskInterface;)V
+    //   173: aload_0
+    //   174: getfield 55	com/tencent/ilivesdk/avpreloadservice/AVPreloadTaskManager:jdField_d_of_type_JavaUtilList	Ljava/util/List;
+    //   177: aload_1
+    //   178: invokeinterface 141 2 0
+    //   183: pop
+    //   184: aload_1
+    //   185: invokeinterface 471 1 0
+    //   190: aload_2
+    //   191: monitorexit
+    //   192: return
+    //   193: aload_2
+    //   194: monitorexit
+    //   195: return
+    //   196: astore_1
+    //   197: aload_2
+    //   198: monitorexit
+    //   199: aload_1
+    //   200: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	201	0	this	AVPreloadTaskManager
     //   0	201	1	paramAVPreloadTaskInterface	AVPreloadTaskInterface
-    //   4	195	2	localObject	Object
+    //   4	194	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   11	13	55	finally
-    //   14	54	55	finally
-    //   56	58	55	finally
-    //   60	100	55	finally
-    //   101	141	55	finally
-    //   142	169	55	finally
-    //   170	197	55	finally
-    //   198	200	55	finally
+    //   11	13	196	finally
+    //   14	54	196	finally
+    //   55	95	196	finally
+    //   96	136	196	finally
+    //   137	164	196	finally
+    //   165	192	196	finally
+    //   193	195	196	finally
+    //   197	199	196	finally
   }
   
   public void g(AVPreloadTaskInterface paramAVPreloadTaskInterface)
@@ -867,7 +1059,7 @@ public class AVPreloadTaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadTaskManager
  * JD-Core Version:    0.7.0.1
  */

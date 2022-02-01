@@ -20,35 +20,27 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.manager.Manager;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class URLInterceptManager
   implements Manager
 {
-  public static int a;
-  public static String a;
-  public static int b;
-  public static int c;
+  public static int a = -1;
+  public static String a = "URLInterceptManager";
+  public static int b = 1;
+  public static int c = 2;
   public static int d = 3;
   Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   Map<String, String> b;
   Map<String, String> c;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "URLInterceptManager";
-    jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Int = 1;
-    jdField_c_of_type_Int = 2;
-  }
-  
-  public URLInterceptManager(Context paramContext)
+  public URLInterceptManager()
   {
     this.jdField_b_of_type_JavaUtilMap = new HashMap();
     this.jdField_c_of_type_JavaUtilMap = new HashMap();
-    ThreadManager.post(new URLInterceptManager.1(this, paramContext), 8, null, true);
   }
   
   public URLInterceptManager(QQAppInterface paramQQAppInterface)
@@ -57,255 +49,262 @@ public class URLInterceptManager
     this.jdField_c_of_type_JavaUtilMap = new HashMap();
   }
   
+  private void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  {
+    if ((IndividuationConfigInfo.a("8.7.0", paramString4)) && (IndividuationConfigInfo.a(paramString3, "8.7.0")))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString3 = jdField_a_of_type_JavaLangString;
+        paramString4 = new StringBuilder();
+        paramString4.append("Parse from Json: URL = ");
+        paramString4.append(paramString1);
+        paramString4.append(" API = ");
+        paramString4.append(paramString2);
+        paramString4.append(" type = ");
+        paramString4.append(paramInt);
+        QLog.d(paramString3, 2, paramString4.toString());
+      }
+      if (paramInt == jdField_b_of_type_Int)
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+        return;
+      }
+      if (paramInt == jdField_c_of_type_Int)
+      {
+        this.jdField_b_of_type_JavaUtilMap.put(paramString1, paramString2);
+        return;
+      }
+      if (paramInt == d) {
+        this.jdField_c_of_type_JavaUtilMap.put(paramString1, paramString2);
+      }
+    }
+  }
+  
   private void a(JSONObject paramJSONObject)
   {
-    int i;
-    String str1;
-    label65:
-    String str2;
-    label84:
-    int j;
-    label120:
-    String str3;
-    if (paramJSONObject != null)
+    if (paramJSONObject != null) {}
+    for (;;)
     {
+      int i;
       try
       {
         if (!paramJSONObject.has("urltoapi")) {
-          break label399;
+          break label97;
         }
         paramJSONObject = paramJSONObject.getJSONArray("urltoapi");
       }
       catch (Exception paramJSONObject)
       {
-        label146:
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "doParseJson fail: " + paramJSONObject.getMessage());
+        String str = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("doParseJson fail: ");
+        localStringBuilder.append(paramJSONObject.getMessage());
+        QLog.e(str, 1, localStringBuilder.toString());
       }
-      if (i >= paramJSONObject.length()) {
-        break label369;
-      }
-      localObject = paramJSONObject.getJSONObject(i);
-      if (localObject == null) {
-        break label392;
-      }
-      if (!((JSONObject)localObject).has("url")) {
-        break label404;
-      }
-      str1 = ((JSONObject)localObject).getString("url");
-      break label387;
-      if (!((JSONObject)localObject).has("api")) {
-        break label308;
-      }
-      str2 = ((JSONObject)localObject).getString("api");
-      if ((TextUtils.isEmpty(str2)) || (!str2.startsWith("mqqapi"))) {
-        break label392;
-      }
-      if (!((JSONObject)localObject).has("match_type")) {
-        break label314;
-      }
-      j = ((JSONObject)localObject).getInt("match_type");
-      if (j == jdField_a_of_type_Int) {
-        break label392;
-      }
-      if (!((JSONObject)localObject).has("minVer")) {
-        break label410;
-      }
-      str3 = ((JSONObject)localObject).getString("minVer");
-      if (TextUtils.isEmpty(str3)) {
-        break label392;
-      }
-      if (!((JSONObject)localObject).has("maxVer")) {
-        break label416;
-      }
-    }
-    label387:
-    label392:
-    label399:
-    label402:
-    label404:
-    label408:
-    label410:
-    label416:
-    for (Object localObject = ((JSONObject)localObject).getString("maxVer");; localObject = null)
-    {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (IndividuationConfigInfo.a("8.5.5", (String)localObject)) && (IndividuationConfigInfo.a(str3, "8.5.5")))
+      if (i < paramJSONObject.length())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "Parse from Json: URL = " + str1 + " API = " + str2 + " type = " + j);
-        }
-        if (j == jdField_b_of_type_Int)
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(str1, str2);
-          break label392;
-          return;
-          label308:
-          str2 = null;
-          break label84;
-          label314:
-          j = jdField_a_of_type_Int;
-          break label120;
-        }
-        if (j == jdField_c_of_type_Int)
-        {
-          this.jdField_b_of_type_JavaUtilMap.put(str1, str2);
-        }
-        else if (j == d)
-        {
-          this.jdField_c_of_type_JavaUtilMap.put(str1, str2);
-          break label392;
-          label369:
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          return;
-          label378:
-          if (paramJSONObject == null) {
-            break label402;
-          }
-          i = 0;
-          break;
-        }
-      }
-      for (;;)
-      {
-        if (str1 != null) {
-          break label408;
-        }
+        a(paramJSONObject, i);
         i += 1;
-        break;
-        paramJSONObject = null;
-        break label378;
-        break label369;
-        str1 = null;
       }
-      break label65;
-      str3 = null;
-      break label146;
+      else
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        return;
+        return;
+        label97:
+        paramJSONObject = null;
+        if (paramJSONObject != null) {
+          i = 0;
+        }
+      }
     }
   }
   
-  public String a(String paramString)
+  private boolean a(String paramString)
   {
     if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
       if (QLog.isColorLevel()) {
         QLog.e(jdField_a_of_type_JavaLangString, 2, "checkURL fail config not load");
       }
-      return null;
+      return true;
     }
     if (TextUtils.isEmpty(paramString))
     {
       if (QLog.isColorLevel()) {
         QLog.e(jdField_a_of_type_JavaLangString, 2, "checkURL url = null");
       }
-      return null;
+      return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL original url = " + paramString);
-    }
-    String str1 = paramString;
-    if (paramString.contains("www.urlshare.cn/umirror_url_check"))
+    return false;
+  }
+  
+  private boolean a(JSONArray paramJSONArray, int paramInt)
+  {
+    Object localObject = paramJSONArray.getJSONObject(paramInt);
+    if (localObject != null)
     {
-      i = paramString.indexOf("&url=");
-      str1 = paramString;
-      if (i > 0)
-      {
-        i += 5;
-        j = paramString.indexOf("&src_uin", i);
-        str1 = paramString;
-        if (j > i) {
-          str1 = paramString.substring(i, j);
-        }
+      paramJSONArray = ((JSONObject)localObject).optString("url", null);
+      if (paramJSONArray == null) {
+        return true;
       }
-    }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(str1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL full match url=" + str1 + " Replace with: " + (String)this.jdField_a_of_type_JavaUtilMap.get(str1));
-      }
-      return (String)this.jdField_a_of_type_JavaUtilMap.get(str1);
-    }
-    int i = str1.indexOf("?");
-    int j = str1.indexOf("#");
-    int k = Math.min(i, j);
-    if (k > 0) {
-      paramString = str1.substring(0, k);
-    }
-    for (;;)
-    {
-      if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString))
+      String str1 = ((JSONObject)localObject).optString("api", null);
+      if (!TextUtils.isEmpty(str1))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL without param match url=" + str1 + " Replace with: " + (String)this.jdField_b_of_type_JavaUtilMap.get(paramString));
+        if (!str1.startsWith("mqqapi")) {
+          return true;
         }
-        return (String)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-        i = Math.max(i, j);
-        if (i > 0) {
-          paramString = str1.substring(0, i);
+        paramInt = ((JSONObject)localObject).optInt("match_type", jdField_a_of_type_Int);
+        if (paramInt == jdField_a_of_type_Int) {
+          return true;
         }
+        String str2 = ((JSONObject)localObject).optString("minVer", null);
+        if (TextUtils.isEmpty(str2)) {
+          return true;
+        }
+        localObject = ((JSONObject)localObject).optString("maxVer", null);
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          return true;
+        }
+        a(paramJSONArray, str1, paramInt, str2, (String)localObject);
       }
       else
       {
-        if (this.jdField_c_of_type_JavaUtilMap.keySet().size() > 0)
-        {
-          paramString = this.jdField_c_of_type_JavaUtilMap.keySet().iterator();
-          while (paramString.hasNext())
-          {
-            String str2 = (String)paramString.next();
-            if (str1.startsWith(str2))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL part match url=" + str1 + " Replace with: " + (String)this.jdField_c_of_type_JavaUtilMap.get(str1));
-              }
-              return (String)this.jdField_c_of_type_JavaUtilMap.get(str2);
-            }
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL not match! url = " + str1);
-        }
-        return null;
+        return true;
       }
-      paramString = str1;
     }
+    return false;
+  }
+  
+  @Nullable
+  private String b(String paramString)
+  {
+    int i = paramString.indexOf("?");
+    int j = paramString.indexOf("#");
+    int k = Math.min(i, j);
+    String str;
+    if (k > 0)
+    {
+      str = paramString.substring(0, k);
+    }
+    else
+    {
+      i = Math.max(i, j);
+      if (i > 0) {
+        str = paramString.substring(0, i);
+      } else {
+        str = paramString;
+      }
+    }
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (this.jdField_b_of_type_JavaUtilMap.containsKey(str))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkURL without param match url=");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" Replace with: ");
+        localStringBuilder.append((String)this.jdField_b_of_type_JavaUtilMap.get(str));
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
+      }
+      return (String)this.jdField_b_of_type_JavaUtilMap.get(str);
+    }
+    if (this.jdField_c_of_type_JavaUtilMap.keySet().size() > 0)
+    {
+      localObject = this.jdField_c_of_type_JavaUtilMap.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        str = (String)((Iterator)localObject).next();
+        if (paramString.startsWith(str))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = jdField_a_of_type_JavaLangString;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("checkURL part match url=");
+            localStringBuilder.append(paramString);
+            localStringBuilder.append(" Replace with: ");
+            localStringBuilder.append((String)this.jdField_c_of_type_JavaUtilMap.get(paramString));
+            QLog.d((String)localObject, 2, localStringBuilder.toString());
+          }
+          return (String)this.jdField_c_of_type_JavaUtilMap.get(str);
+        }
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      str = jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkURL not match! url = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d(str, 2, ((StringBuilder)localObject).toString());
+    }
+    return null;
+  }
+  
+  public String a(String paramString)
+  {
+    if (a(paramString)) {
+      return null;
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      str = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkURL original url = ");
+      localStringBuilder.append(paramString);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    String str = paramString;
+    if (paramString.contains("www.urlshare.cn/umirror_url_check"))
+    {
+      int i = paramString.indexOf("&url=");
+      str = paramString;
+      if (i > 0)
+      {
+        i += 5;
+        int j = paramString.indexOf("&src_uin", i);
+        str = paramString;
+        if (j > i) {
+          str = paramString.substring(i, j);
+        }
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(str))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkURL full match url=");
+        localStringBuilder.append(str);
+        localStringBuilder.append(" Replace with: ");
+        localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilMap.get(str));
+        QLog.d(paramString, 2, localStringBuilder.toString());
+      }
+      return (String)this.jdField_a_of_type_JavaUtilMap.get(str);
+    }
+    return b(str);
   }
   
   public void a(Context paramContext)
   {
-    String str = ClubContentJsonTask.h.jdField_a_of_type_JavaLangString;
-    paramContext = new File(paramContext.getFilesDir(), str);
-    if (paramContext.exists()) {
-      try
-      {
-        paramContext = FileUtils.a(paramContext);
-        if (paramContext == null) {}
-      }
-      catch (OutOfMemoryError paramContext)
-      {
-        for (;;)
-        {
-          try
-          {
-            a(new JSONObject(paramContext));
-            return;
-          }
-          catch (Exception paramContext)
-          {
-            QLog.e(jdField_a_of_type_JavaLangString, 1, "getJsonError,Exception:" + str + paramContext.getMessage());
-            return;
-          }
-          paramContext = paramContext;
-          if (QLog.isColorLevel()) {
-            QLog.e(jdField_a_of_type_JavaLangString, 2, "getJsonOOM,json_name:" + str + paramContext.getMessage());
-          }
-          paramContext = null;
-        }
-      }
-    }
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "json file not exist");
+    ThreadManager.post(new URLInterceptManager.1(this, paramContext), 8, null, true);
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
     a(ClubContentJsonTask.a(paramQQAppInterface, ClubContentJsonTask.h, true));
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
   
   public boolean a(Intent paramIntent, Activity paramActivity)
@@ -329,30 +328,77 @@ public class URLInterceptManager
   {
     if ((paramIntent.getComponent() != null) && ("com.tencent.mobileqq.activity.QQBrowserActivity".equals(paramIntent.getComponent().getClassName())))
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        break label51;
-      }
-      ThreadManager.post(new URLInterceptManager.2(this, paramQQAppInterface), 8, null, true);
-    }
-    label51:
-    do
-    {
-      do
+      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
       {
+        ThreadManager.post(new URLInterceptManager.2(this, paramQQAppInterface), 8, null, true);
         return false;
-        paramIntent = a(paramIntent.getStringExtra("url"));
-      } while (TextUtils.isEmpty(paramIntent));
-      paramIntent = JumpParser.a(paramQQAppInterface, paramContext, paramIntent);
-    } while (paramIntent == null);
-    paramIntent.a();
-    return true;
+      }
+      paramIntent = a(paramIntent.getStringExtra("url"));
+      if (!TextUtils.isEmpty(paramIntent))
+      {
+        paramIntent = JumpParser.a(paramQQAppInterface, paramContext, paramIntent);
+        if (paramIntent != null)
+        {
+          paramIntent.a();
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public void b(Context paramContext)
+  {
+    String str1 = ClubContentJsonTask.h.jdField_a_of_type_JavaLangString;
+    paramContext = new File(paramContext.getFilesDir(), str1);
+    if (paramContext.exists())
+    {
+      String str2;
+      StringBuilder localStringBuilder;
+      try
+      {
+        paramContext = FileUtils.readFileContent(paramContext);
+      }
+      catch (OutOfMemoryError paramContext)
+      {
+        if (QLog.isColorLevel())
+        {
+          str2 = jdField_a_of_type_JavaLangString;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getJsonOOM,json_name:");
+          localStringBuilder.append(str1);
+          localStringBuilder.append(paramContext.getMessage());
+          QLog.e(str2, 2, localStringBuilder.toString());
+        }
+        paramContext = null;
+      }
+      if (paramContext == null) {
+        return;
+      }
+      try
+      {
+        a(new JSONObject(paramContext));
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        str2 = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getJsonError,Exception:");
+        localStringBuilder.append(str1);
+        localStringBuilder.append(paramContext.getMessage());
+        QLog.e(str2, 1, localStringBuilder.toString());
+        return;
+      }
+    }
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "json file not exist");
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.URLInterceptManager
  * JD-Core Version:    0.7.0.1
  */

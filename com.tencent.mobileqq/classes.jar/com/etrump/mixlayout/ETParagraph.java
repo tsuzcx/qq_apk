@@ -48,65 +48,62 @@ public class ETParagraph
   
   private int a(ETEngine paramETEngine, String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {
-      return 0;
-    }
-    long l = paramETEngine.native_textLayoutLock(paramString, this.f, 1073741823, this.g, 0, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-    int j = paramETEngine.native_textLayoutLineTotal(l);
-    if (j < 1)
+    if (paramString != null)
     {
-      paramETEngine.native_textLayoutUnlock(l);
-      return 0;
-    }
-    if (paramETEngine.native_textLayoutHasPreLine(l) == true)
-    {
-      localObject = new ETFragment("");
-      ((ETFragment)localObject).d(this.e);
-      ((ETFragment)localObject).e(0);
-      ((ETFragment)localObject).a(this);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      this.g = 0;
-      this.e += 1;
-    }
-    Object localObject = new ETFragment[j];
-    int i = 0;
-    while (i < j)
-    {
-      localObject[i] = new ETFragment("");
-      i += 1;
-    }
-    i = 0;
-    while (i < j)
-    {
-      int k = paramETEngine.native_textLayoutLineRangeFrom(l, i);
-      int m = paramETEngine.native_textLayoutLineRangeTo(l, i);
-      int n = paramETEngine.native_textLayoutLineWidth(l, i);
-      int i1 = paramETEngine.native_textLayoutLineHeight(l, i);
-      localObject[i].a(paramString.substring(k, m));
-      localObject[i].b(n);
-      localObject[i].c(i1);
-      localObject[i].d(this.e + i);
-      localObject[i].e(0);
-      localObject[i].a(this);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject[i]);
-      i += 1;
-    }
-    if (paramString.substring(paramString.length() - 1).equals("\n"))
-    {
-      paramString = new ETFragment("");
-      paramString.d(this.e + j);
-      paramString.e(0);
-      paramString.a(this);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-      this.g = 0;
-      i = j + 1;
-    }
-    for (;;)
-    {
-      this.e += i - 1;
-      paramETEngine.native_textLayoutUnlock(l);
-      return i;
-      if (j == 1)
+      if (paramString.length() <= 0) {
+        return 0;
+      }
+      long l = paramETEngine.native_textLayoutLock(paramString, this.f, 1073741823, this.g, 0, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+      int j = paramETEngine.native_textLayoutLineTotal(l);
+      if (j < 1)
+      {
+        paramETEngine.native_textLayoutUnlock(l);
+        return 0;
+      }
+      if (paramETEngine.native_textLayoutHasPreLine(l) == true)
+      {
+        localObject = new ETFragment("");
+        ((ETFragment)localObject).d(this.e);
+        ((ETFragment)localObject).e(0);
+        ((ETFragment)localObject).a(this);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        this.g = 0;
+        this.e += 1;
+      }
+      Object localObject = new ETFragment[j];
+      int i = 0;
+      while (i < j)
+      {
+        localObject[i] = new ETFragment("");
+        i += 1;
+      }
+      i = 0;
+      while (i < j)
+      {
+        int k = paramETEngine.native_textLayoutLineRangeFrom(l, i);
+        int m = paramETEngine.native_textLayoutLineRangeTo(l, i);
+        int n = paramETEngine.native_textLayoutLineWidth(l, i);
+        int i1 = paramETEngine.native_textLayoutLineHeight(l, i);
+        localObject[i].a(paramString.substring(k, m));
+        localObject[i].b(n);
+        localObject[i].c(i1);
+        localObject[i].d(this.e + i);
+        localObject[i].e(0);
+        localObject[i].a(this);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject[i]);
+        i += 1;
+      }
+      if (paramString.substring(paramString.length() - 1).equals("\n"))
+      {
+        paramString = new ETFragment("");
+        paramString.d(this.e + j);
+        paramString.e(0);
+        paramString.a(this);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        this.g = 0;
+        i = j + 1;
+      }
+      else if (j == 1)
       {
         this.g += localObject[0].c();
         i = j;
@@ -116,7 +113,11 @@ public class ETParagraph
         this.g = localObject[(j - 1)].c();
         i = j;
       }
+      this.e += i - 1;
+      paramETEngine.native_textLayoutUnlock(l);
+      return i;
     }
+    return 0;
   }
   
   private void a(CharacterStyle paramCharacterStyle, int paramInt)
@@ -125,71 +126,71 @@ public class ETParagraph
       return;
     }
     int i = a(paramCharacterStyle);
-    if (this.jdField_b_of_type_Boolean == true) {
+    if (this.jdField_b_of_type_Boolean == true)
+    {
       if (this.g != 0)
       {
         this.g = i;
         this.e += 1;
       }
     }
-    for (;;)
+    else
     {
-      paramCharacterStyle = new ETFragment(paramCharacterStyle, paramInt);
-      paramCharacterStyle.d(this.e);
-      paramCharacterStyle.a(this);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramCharacterStyle);
-      if ((this.jdField_b_of_type_Boolean != true) || (this.g == 0)) {
-        break;
-      }
-      this.g = 0;
-      this.e += 1;
-      return;
-      if (this.g == 0)
+      int j = this.g;
+      if (j == 0)
       {
         this.g = i;
       }
-      else if (this.f < this.g + i)
+      else if (this.f < i + j)
       {
         this.g = i;
         this.e += 1;
       }
       else
       {
-        this.g = (i + this.g);
+        this.g = (j + i);
       }
+    }
+    paramCharacterStyle = new ETFragment(paramCharacterStyle, paramInt);
+    paramCharacterStyle.d(this.e);
+    paramCharacterStyle.a(this);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramCharacterStyle);
+    if ((this.jdField_b_of_type_Boolean == true) && (this.g != 0))
+    {
+      this.g = 0;
+      this.e += 1;
     }
   }
   
   private void a(ETEngine paramETEngine)
   {
-    int k = -1;
     int n = this.jdField_a_of_type_JavaLangString.length();
-    int j = 0;
-    if (j < n)
+    int k = -1;
+    int i = 0;
+    while (i < n)
     {
-      int m;
-      int i;
-      if ((Character.isHighSurrogate(this.jdField_a_of_type_JavaLangString.charAt(j))) && (j + 1 < n) && (Character.isLowSurrogate(this.jdField_a_of_type_JavaLangString.charAt(j + 1))))
+      if (Character.isHighSurrogate(this.jdField_a_of_type_JavaLangString.charAt(i)))
       {
-        a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(k + 1, j));
-        a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(j, j + 2));
-        m = j + 1;
-        i = m;
-      }
-      for (;;)
-      {
-        j = m + 1;
-        k = i;
-        break;
-        m = j;
-        i = k;
-        if (j + 1 == n)
+        j = i + 1;
+        if ((j < n) && (Character.isLowSurrogate(this.jdField_a_of_type_JavaLangString.charAt(j))))
         {
-          a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(k + 1, n));
-          i = n;
+          a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(k + 1, i));
+          a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(i, i + 2));
           m = j;
+          break label137;
         }
       }
+      int j = k;
+      int m = i;
+      if (i + 1 == n)
+      {
+        a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(k + 1, n));
+        j = n;
+        m = i;
+      }
+      label137:
+      i = m + 1;
+      k = j;
     }
   }
   
@@ -200,66 +201,68 @@ public class ETParagraph
     }
     int i = paramETEngine.sysMeasureText(paramString, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.getSize(), 0, 0, 0, 0, 0, 0, 0);
     int j = paramETEngine.sysFontHeight(paramString, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.getSize(), 0, 0, 0, 0, 0, 0, 0);
-    if (this.f < this.g + i)
+    int k = this.f;
+    int m = this.g;
+    if (k < i + m)
     {
       this.g = i;
       this.e += 1;
     }
-    for (;;)
+    else
     {
-      paramETEngine = new ETFragment(paramString);
-      paramETEngine.b(i);
-      paramETEngine.c(j);
-      paramETEngine.d(this.e);
-      paramETEngine.e(1);
-      paramETEngine.a(this);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramETEngine);
-      return;
-      this.g += i;
+      this.g = (m + i);
     }
+    paramETEngine = new ETFragment(paramString);
+    paramETEngine.b(i);
+    paramETEngine.c(j);
+    paramETEngine.d(this.e);
+    paramETEngine.e(1);
+    paramETEngine.a(this);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramETEngine);
   }
   
   private void b(ETEngine paramETEngine)
   {
-    int m = -1;
     int n = this.jdField_a_of_type_JavaLangString.length();
+    int k = -1;
     int i = 0;
-    if (i < n)
+    while (i < n)
     {
       char c1 = this.jdField_a_of_type_JavaLangString.charAt(i);
-      int k;
       int j;
-      if ((Character.isHighSurrogate(c1)) && (i + 1 < n) && (Character.isLowSurrogate(this.jdField_a_of_type_JavaLangString.charAt(i + 1))))
+      int m;
+      if (Character.isHighSurrogate(c1))
       {
-        a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(m + 1, i));
-        a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(i, i + 2));
-        k = i + 1;
+        j = i + 1;
+        if ((j < n) && (Character.isLowSurrogate(this.jdField_a_of_type_JavaLangString.charAt(j))))
+        {
+          a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(k + 1, i));
+          a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(i, i + 2));
+          m = j;
+          break label193;
+        }
+      }
+      if (!paramETEngine.native_isPaintableChar(c1, this.jdField_a_of_type_ComEtrumpMixlayoutETFont))
+      {
+        a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(k + 1, i));
+        a(paramETEngine, String.valueOf(c1));
+        j = i;
+        m = i;
+      }
+      else
+      {
         j = k;
-      }
-      for (;;)
-      {
-        i = k + 1;
-        m = j;
-        break;
-        if (!paramETEngine.native_isPaintableChar(c1, this.jdField_a_of_type_ComEtrumpMixlayoutETFont))
+        m = i;
+        if (i + 1 == n)
         {
-          a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(m + 1, i));
-          a(paramETEngine, String.valueOf(c1));
-          j = i;
-          k = i;
-        }
-        else
-        {
-          k = i;
-          j = m;
-          if (i + 1 == n)
-          {
-            a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(m + 1, n));
-            j = n;
-            k = i;
-          }
+          a(paramETEngine, this.jdField_a_of_type_JavaLangString.substring(k + 1, n));
+          j = n;
+          m = i;
         }
       }
+      label193:
+      i = m + 1;
+      k = j;
     }
   }
   
@@ -274,22 +277,22 @@ public class ETParagraph
     this.e = paramInt3;
     this.f = paramInt1;
     this.g = paramInt2;
-    if (this.jdField_a_of_type_AndroidTextStyleCharacterStyle != null)
+    CharacterStyle localCharacterStyle = this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+    if (localCharacterStyle != null)
     {
-      a(this.jdField_a_of_type_AndroidTextStyleCharacterStyle, this.jdField_a_of_type_Int);
+      a(localCharacterStyle, this.jdField_a_of_type_Int);
       return this.e;
     }
-    if ((paramETEngine == null) || (this.jdField_a_of_type_JavaLangString == null)) {
-      return this.e;
-    }
-    if (ETEngine.getInstance().isEnableCallbackDrawing()) {
-      a(paramETEngine);
-    }
-    for (;;)
+    if ((paramETEngine != null) && (this.jdField_a_of_type_JavaLangString != null))
     {
+      if (ETEngine.getInstance().isEnableCallbackDrawing()) {
+        a(paramETEngine);
+      } else {
+        b(paramETEngine);
+      }
       return this.e;
-      b(paramETEngine);
     }
+    return this.e;
   }
   
   public ETFont a()
@@ -329,7 +332,7 @@ public class ETParagraph
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.ETParagraph
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,19 @@ class AVBaseReport$2
   
   public void onResponse(int paramInt, JSONObject paramJSONObject)
   {
-    if (AVBaseReport.a(this.a) != null) {
-      AVBaseReport.a(this.a).i("AVReport", "report result code=" + paramInt, new Object[0]);
+    if (AVBaseReport.a(this.a) != null)
+    {
+      paramJSONObject = AVBaseReport.a(this.a);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report result code=");
+      localStringBuilder.append(paramInt);
+      paramJSONObject.i("AVReport", localStringBuilder.toString(), new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadplayerservice.report.AVBaseReport.2
  * JD-Core Version:    0.7.0.1
  */

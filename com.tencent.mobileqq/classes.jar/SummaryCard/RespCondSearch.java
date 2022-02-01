@@ -43,8 +43,9 @@ public final class RespCondSearch
     paramJceOutputStream.write(this.cEndFlag, 0);
     paramJceOutputStream.write(this.iPage, 1);
     paramJceOutputStream.write(this.dwSessionID, 2);
-    if (this.vUserList != null) {
-      paramJceOutputStream.write(this.vUserList, 3);
+    ArrayList localArrayList = this.vUserList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
   }
 }

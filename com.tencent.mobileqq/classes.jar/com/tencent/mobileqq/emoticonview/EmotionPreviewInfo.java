@@ -16,13 +16,12 @@ public class EmotionPreviewInfo
   public EmotionPreviewInfo(Parcel paramParcel)
   {
     this.path = paramParcel.readString();
-    if (paramParcel.readByte() == 1) {}
-    for (;;)
-    {
-      this.isCheck = bool;
-      return;
+    int i = paramParcel.readByte();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    this.isCheck = bool;
   }
   
   public int describeContents()
@@ -34,7 +33,8 @@ public class EmotionPreviewInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(" path: ").append(this.path);
+    localStringBuilder.append(" path: ");
+    localStringBuilder.append(this.path);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
@@ -42,17 +42,12 @@ public class EmotionPreviewInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.path);
-    if (this.isCheck) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      return;
-    }
+    paramParcel.writeByte((byte)this.isCheck);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPreviewInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -43,43 +43,43 @@ public class MsgProxyContainerCallback
   
   private BaseMsgProxy a(BaseMsgProxy paramBaseMsgProxy, Class<? extends MsgProxyWrapper>[] paramArrayOfClass)
   {
-    QLog.d("MsgProxyContainerCallback", 1, "wrapMsgProxy() called with: next = [" + paramBaseMsgProxy + "], wrapCls = [" + Arrays.toString(paramArrayOfClass) + "]");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("wrapMsgProxy() called with: next = [");
+    ((StringBuilder)localObject1).append(paramBaseMsgProxy);
+    ((StringBuilder)localObject1).append("], wrapCls = [");
+    ((StringBuilder)localObject1).append(Arrays.toString(paramArrayOfClass));
+    ((StringBuilder)localObject1).append("]");
+    QLog.d("MsgProxyContainerCallback", 1, ((StringBuilder)localObject1).toString());
     AppRuntime localAppRuntime = paramBaseMsgProxy.a();
     BaseProxyManager localBaseProxyManager = paramBaseMsgProxy.a();
     MsgPool localMsgPool = paramBaseMsgProxy.a();
-    int i = paramArrayOfClass.length - 1;
-    Object localObject1 = paramBaseMsgProxy;
-    if (i >= 0)
+    int i = paramArrayOfClass.length;
+    localObject1 = paramBaseMsgProxy;
+    i -= 1;
+    while (i >= 0)
     {
       Object localObject2 = paramArrayOfClass[i];
-      for (;;)
+      try
       {
+        localObject2 = (BaseMsgProxy)((Class)localObject2).getConstructor(new Class[] { AppRuntime.class, BaseProxyManager.class, MsgPool.class }).newInstance(new Object[] { localAppRuntime, localBaseProxyManager, localMsgPool });
         try
         {
-          localObject2 = (BaseMsgProxy)((Class)localObject2).getConstructor(new Class[] { AppRuntime.class, BaseProxyManager.class, MsgPool.class }).newInstance(new Object[] { localAppRuntime, localBaseProxyManager, localMsgPool });
+          ((MsgProxyWrapper)localObject2).a((BaseMsgProxy)localObject1);
+          paramBaseMsgProxy = (BaseMsgProxy)localObject2;
+          localObject1 = paramBaseMsgProxy;
         }
-        catch (Exception localException1)
+        catch (Exception localException2)
         {
-          try
-          {
-            ((MsgProxyWrapper)localObject2).a(paramBaseMsgProxy);
-            paramBaseMsgProxy = (BaseMsgProxy)localObject2;
-            i -= 1;
-            localObject1 = localObject2;
-          }
-          catch (Exception localException2)
-          {
-            break label157;
-          }
-          localException1 = localException1;
-          localObject2 = localObject1;
+          paramBaseMsgProxy = (BaseMsgProxy)localObject2;
+          localObject2 = localException2;
         }
-        label157:
         QLog.e("MsgProxyContainerCallback", 1, "wrapMsgProxy: ", localException1);
       }
+      catch (Exception localException1) {}
+      i -= 1;
     }
-    a((BaseMsgProxy)localObject1);
-    return localObject1;
+    a(paramBaseMsgProxy);
+    return paramBaseMsgProxy;
   }
   
   private BaseMsgProxy a(MsgProxyContainer paramMsgProxyContainer, AppRuntime paramAppRuntime, BaseProxyManager paramBaseProxyManager, MsgPool paramMsgPool)
@@ -90,21 +90,21 @@ public class MsgProxyContainerCallback
   private void a()
   {
     StatisticCollector.ReportContext localReportContext = new StatisticCollector.ReportContext();
-    localReportContext.MAINTHREAD_TAG = 0;
-    localReportContext.OPTTYPE_TAG = "select";
-    localReportContext.OPTSCENE_TAG = "launch";
-    if ((localReportContext.OPTCOUNT_TAG != 0) && (StatisticCollector.SQLite3OptimizeReport()))
+    localReportContext.mainthreadTag = 0;
+    localReportContext.opttypeTag = "select";
+    localReportContext.optsceneTag = "launch";
+    if ((localReportContext.optcountTag != 0) && (StatisticCollector.sqlite3Optimizereport()))
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("param_IsMainThread", String.valueOf(localReportContext.MAINTHREAD_TAG));
-      localHashMap.put("param_OptType", localReportContext.OPTTYPE_TAG);
-      localHashMap.put("param_OptTotalCost", String.valueOf(localReportContext.OPTTOTALCOST_TAG));
-      localHashMap.put("param_OptCount", String.valueOf(localReportContext.OPTCOUNT_TAG));
-      localHashMap.put("param_OptMsgCount", String.valueOf(localReportContext.OPTMSGCOUNT_TAG));
-      localHashMap.put("param_OptOneCost", String.valueOf(localReportContext.OPTONECOST_TAG));
-      localHashMap.put("param_OptScene", localReportContext.OPTSCENE_TAG);
+      localHashMap.put("param_IsMainThread", String.valueOf(localReportContext.mainthreadTag));
+      localHashMap.put("param_OptType", localReportContext.opttypeTag);
+      localHashMap.put("param_OptTotalCost", String.valueOf(localReportContext.opttotalcostTag));
+      localHashMap.put("param_OptCount", String.valueOf(localReportContext.optcountTag));
+      localHashMap.put("param_OptMsgCount", String.valueOf(localReportContext.optmsgcountTag));
+      localHashMap.put("param_OptOneCost", String.valueOf(localReportContext.optonecostTag));
+      localHashMap.put("param_OptScene", localReportContext.optsceneTag);
       localHashMap.put("param_WalSwitch", String.valueOf(SQLiteOpenHelper.WAL_ENABLE));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSqliteOptCost", true, localReportContext.OPTMSGCOUNT_TAG, 0L, localHashMap, null, false);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSqliteOptCost", true, localReportContext.optmsgcountTag, 0L, localHashMap, null, false);
     }
   }
   
@@ -113,14 +113,19 @@ public class MsgProxyContainerCallback
     StringBuilder localStringBuilder = new StringBuilder();
     while (paramBaseMsgProxy != null)
     {
-      localStringBuilder.append(paramBaseMsgProxy.toString()).append(", ");
+      localStringBuilder.append(paramBaseMsgProxy.toString());
+      localStringBuilder.append(", ");
       if ((paramBaseMsgProxy instanceof MsgProxyWrapper)) {
         paramBaseMsgProxy = ((MsgProxyWrapper)paramBaseMsgProxy).a();
       } else {
         paramBaseMsgProxy = null;
       }
     }
-    QLog.d("MsgProxyContainerCallback", 1, "printWrappers() called with:[" + localStringBuilder.toString() + "]");
+    paramBaseMsgProxy = new StringBuilder();
+    paramBaseMsgProxy.append("printWrappers() called with:[");
+    paramBaseMsgProxy.append(localStringBuilder.toString());
+    paramBaseMsgProxy.append("]");
+    QLog.d("MsgProxyContainerCallback", 1, paramBaseMsgProxy.toString());
   }
   
   public BaseMsgProxy a(int paramInt, MsgProxyContainer paramMsgProxyContainer)
@@ -128,16 +133,14 @@ public class MsgProxyContainerCallback
     AppRuntime localAppRuntime = paramMsgProxyContainer.a();
     BaseProxyManager localBaseProxyManager = paramMsgProxyContainer.a();
     MsgPool localMsgPool = paramMsgProxyContainer.a();
-    switch (paramInt)
+    if ((paramInt != 1) && (paramInt != 1026) && (paramInt != 3000))
     {
-    default: 
-      return a(paramInt, paramMsgProxyContainer, localAppRuntime, localBaseProxyManager, localMsgPool);
-    case 1: 
-    case 1026: 
-    case 3000: 
-      return a(new TroopAndDiscMsgProxy(localAppRuntime, localBaseProxyManager, localMsgPool), new Class[] { ChatMessageMsgProxy.class });
+      if ((paramInt != 1033) && (paramInt != 1034)) {
+        return a(paramInt, paramMsgProxyContainer, localAppRuntime, localBaseProxyManager, localMsgPool);
+      }
+      return a(paramMsgProxyContainer, localAppRuntime, localBaseProxyManager, localMsgPool);
     }
-    return a(paramMsgProxyContainer, localAppRuntime, localBaseProxyManager, localMsgPool);
+    return a(new TroopAndDiscMsgProxy(localAppRuntime, localBaseProxyManager, localMsgPool), new Class[] { ChatMessageMsgProxy.class });
   }
   
   public List<MsgProxyContainer.SessionKey> a(MsgProxyContainer paramMsgProxyContainer)
@@ -167,9 +170,9 @@ public class MsgProxyContainerCallback
   public void b(long paramLong, MsgProxyContainer.SessionKey paramSessionKey, MsgProxyContainer paramMsgProxyContainer)
   {
     StatisticCollector.ReportContext localReportContext = new StatisticCollector.ReportContext();
-    localReportContext.MAINTHREAD_TAG = 0;
-    localReportContext.OPTTYPE_TAG = "select";
-    localReportContext.OPTSCENE_TAG = "launch";
+    localReportContext.mainthreadTag = 0;
+    localReportContext.opttypeTag = "select";
+    localReportContext.optsceneTag = "launch";
     MsgProxyCallback.a(paramMsgProxyContainer.a(), paramSessionKey.a, paramSessionKey.a(), localReportContext, paramLong);
   }
   
@@ -182,12 +185,18 @@ public class MsgProxyContainerCallback
     paramMsgProxyContainer.a(1026);
     paramMsgProxyContainer.a(1033);
     paramMsgProxyContainer.a(1034);
-    QLog.d("MsgProxyContainerCallback", 2, "initProxies() called with: msgProxyContainer = [" + paramMsgProxyContainer + "], costTime =[" + (System.currentTimeMillis() - l) + "]ms");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initProxies() called with: msgProxyContainer = [");
+    localStringBuilder.append(paramMsgProxyContainer);
+    localStringBuilder.append("], costTime =[");
+    localStringBuilder.append(System.currentTimeMillis() - l);
+    localStringBuilder.append("]ms");
+    QLog.d("MsgProxyContainerCallback", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.MsgProxyContainerCallback
  * JD-Core Version:    0.7.0.1
  */

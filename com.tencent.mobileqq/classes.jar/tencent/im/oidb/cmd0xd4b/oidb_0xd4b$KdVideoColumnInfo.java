@@ -28,16 +28,18 @@ public final class oidb_0xd4b$KdVideoColumnInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 66, 74, 80, 88, 96 }, new String[] { "uint32_video_column_id", "int64_last_update_time", "uint32_video_num", "uint32_is_subscribed", "uint32_subscribe_num", "bytes_column_title", "bytes_column_intro", "bytes_cover_img", "bytes_icon_img", "uint32_cover_img_style", "uint64_kd_subscribe_num", "uint32_is_special_subscribed" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, KdVideoColumnInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 66, 74, 80, 88, 96 }, new String[] { "uint32_video_column_id", "int64_last_update_time", "uint32_video_num", "uint32_is_subscribed", "uint32_subscribe_num", "bytes_column_title", "bytes_column_intro", "bytes_cover_img", "bytes_icon_img", "uint32_cover_img_style", "uint64_kd_subscribe_num", "uint32_is_special_subscribed" }, new Object[] { localInteger, localLong, localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localInteger, localLong, localInteger }, KdVideoColumnInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xd4b.oidb_0xd4b.KdVideoColumnInfo
  * JD-Core Version:    0.7.0.1
  */

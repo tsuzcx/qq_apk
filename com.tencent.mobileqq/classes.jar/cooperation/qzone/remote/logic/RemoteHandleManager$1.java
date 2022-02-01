@@ -14,22 +14,23 @@ class RemoteHandleManager$1
   
   public void onRecvFromMsg(RecvMsg paramRecvMsg)
   {
-    if (paramRecvMsg == null) {}
-    for (;;)
-    {
+    if (paramRecvMsg == null) {
       return;
-      if ((!TextUtils.isEmpty(paramRecvMsg.getServiceCmd())) && (RemoteHandleManager.access$000(this.this$0) != null))
+    }
+    if (TextUtils.isEmpty(paramRecvMsg.getServiceCmd())) {
+      return;
+    }
+    if (RemoteHandleManager.access$000(this.this$0) != null)
+    {
+      Iterator localIterator = RemoteHandleManager.access$000(this.this$0).iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = RemoteHandleManager.access$000(this.this$0).iterator();
-        while (localIterator.hasNext())
+        Object localObject = (WeakReference)localIterator.next();
+        if (localObject != null)
         {
-          Object localObject = (WeakReference)localIterator.next();
-          if (localObject != null)
-          {
-            localObject = (WebEventListener)((WeakReference)localObject).get();
-            if (localObject != null) {
-              ((WebEventListener)localObject).onWebEvent(paramRecvMsg.getServiceCmd(), paramRecvMsg.extraData);
-            }
+          localObject = (WebEventListener)((WeakReference)localObject).get();
+          if (localObject != null) {
+            ((WebEventListener)localObject).onWebEvent(paramRecvMsg.getServiceCmd(), paramRecvMsg.extraData);
           }
         }
       }
@@ -38,7 +39,7 @@ class RemoteHandleManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.remote.logic.RemoteHandleManager.1
  * JD-Core Version:    0.7.0.1
  */

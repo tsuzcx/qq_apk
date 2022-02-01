@@ -10,10 +10,12 @@ public class RestrictedBitmap
   
   public RestrictedBitmap(Bitmap paramBitmap)
   {
-    if (paramBitmap == null) {
-      throw new NullPointerException("bitmap should not be null");
+    if (paramBitmap != null)
+    {
+      this.a = paramBitmap;
+      return;
     }
-    this.a = paramBitmap;
+    throw new NullPointerException("bitmap should not be null");
   }
   
   public int a()
@@ -33,7 +35,7 @@ public class RestrictedBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.icon.RestrictedBitmap
  * JD-Core Version:    0.7.0.1
  */

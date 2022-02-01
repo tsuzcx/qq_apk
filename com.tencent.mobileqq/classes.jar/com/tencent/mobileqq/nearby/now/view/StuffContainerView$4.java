@@ -2,7 +2,7 @@ package com.tencent.mobileqq.nearby.now.view;
 
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.IStoryPlayController;
 import com.tencent.qphone.base.util.QLog;
 
 class StuffContainerView$4
@@ -14,21 +14,21 @@ class StuffContainerView$4
   {
     long l1 = System.currentTimeMillis();
     long l2 = StuffContainerView.a(this.a);
-    if ((StuffContainerView.a(this.a) > 0L) && (l1 - l2 < 500L)) {}
-    do
-    {
+    if ((StuffContainerView.a(this.a) > 0L) && (l1 - l2 < 500L)) {
       return;
-      StuffContainerView.a(this.a, l1);
-      if (QLog.isColorLevel()) {
-        QLog.d("StuffContainerView", 2, "VideoInfoListenerImpl onLayoutChange");
-      }
-    } while (this.a.a == null);
-    this.a.a.l();
+    }
+    StuffContainerView.a(this.a, l1);
+    if (QLog.isColorLevel()) {
+      QLog.d("StuffContainerView", 2, "VideoInfoListenerImpl onLayoutChange");
+    }
+    if (this.a.a != null) {
+      this.a.a.handleDeviceNavChange();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.StuffContainerView.4
  * JD-Core Version:    0.7.0.1
  */

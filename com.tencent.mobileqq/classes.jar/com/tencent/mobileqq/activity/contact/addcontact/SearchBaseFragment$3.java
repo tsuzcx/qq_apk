@@ -12,12 +12,16 @@ class SearchBaseFragment$3
   
   public void onGetIcon(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
+    if (paramBitmap != null)
     {
-      return;
-      if ((this.a.e == 0) && (this.a.a != null))
+      if (paramInt2 == 201) {
+        return;
+      }
+      if (this.a.e == 0)
       {
+        if (this.a.a == null) {
+          return;
+        }
         int i = this.a.a.getChildCount();
         paramInt2 = 0;
         while (paramInt2 < i)
@@ -38,7 +42,7 @@ class SearchBaseFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment.3
  * JD-Core Version:    0.7.0.1
  */

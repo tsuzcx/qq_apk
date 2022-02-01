@@ -16,14 +16,15 @@ class QQEmoticonMainPanelApp$2
       if (QLog.isColorLevel()) {
         QLog.d("QQEmoticonMainPanelApp", 4, "registerOtherProcessCallback suc.");
       }
-      return;
     }
-    QLog.e("QQEmoticonMainPanelApp", 4, "registerOtherProcessCallback fail.");
+    else {
+      QLog.e("QQEmoticonMainPanelApp", 4, "registerOtherProcessCallback fail.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp.2
  * JD-Core Version:    0.7.0.1
  */

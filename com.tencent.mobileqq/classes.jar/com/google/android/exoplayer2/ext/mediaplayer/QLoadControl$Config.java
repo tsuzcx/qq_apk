@@ -10,12 +10,24 @@ public class QLoadControl$Config
   
   public String toString()
   {
-    return "QLoadControl.Config[bufferSegmentSize=" + this.bufferSegmentSize + ",minBufferMs=" + this.minBufferMs + ",maxBufferMs=" + this.maxBufferMs + ",bufferForPlaybackMs=" + this.bufferForPlaybackMs + ",bufferForPlaybackRebufferMs=" + this.bufferForPlaybackRebufferMs + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QLoadControl.Config[bufferSegmentSize=");
+    localStringBuilder.append(this.bufferSegmentSize);
+    localStringBuilder.append(",minBufferMs=");
+    localStringBuilder.append(this.minBufferMs);
+    localStringBuilder.append(",maxBufferMs=");
+    localStringBuilder.append(this.maxBufferMs);
+    localStringBuilder.append(",bufferForPlaybackMs=");
+    localStringBuilder.append(this.bufferForPlaybackMs);
+    localStringBuilder.append(",bufferForPlaybackRebufferMs=");
+    localStringBuilder.append(this.bufferForPlaybackRebufferMs);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ext.mediaplayer.QLoadControl.Config
  * JD-Core Version:    0.7.0.1
  */

@@ -25,9 +25,10 @@ public class DenoiseRender
   public void destroy()
   {
     super.destroy();
-    if (this.mDenoiseFilter != null)
+    QQAVImageDenoiseFilter localQQAVImageDenoiseFilter = this.mDenoiseFilter;
+    if (localQQAVImageDenoiseFilter != null)
     {
-      this.mDenoiseFilter.destroy();
+      localQQAVImageDenoiseFilter.destroy();
       this.mDenoiseFilter = null;
     }
   }
@@ -35,21 +36,23 @@ public class DenoiseRender
   public void preProcess(int paramInt1, int paramInt2)
   {
     baseProcess(paramInt1, paramInt2);
-    if (this.mDenoiseFilter != null) {
-      this.mDenoiseFilter.onOutputSizeChanged(paramInt1, paramInt2);
+    QQAVImageDenoiseFilter localQQAVImageDenoiseFilter = this.mDenoiseFilter;
+    if (localQQAVImageDenoiseFilter != null) {
+      localQQAVImageDenoiseFilter.onOutputSizeChanged(paramInt1, paramInt2);
     }
   }
   
   public EffectTexture process(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     EffectTexture localEffectTexture = super.process(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.mDenoiseFilter == null)
+    QQAVImageDenoiseFilter localQQAVImageDenoiseFilter = this.mDenoiseFilter;
+    if (localQQAVImageDenoiseFilter == null)
     {
       Log.d("DenoiseRender", "mDenoiseFilter = null");
       CommonUtils.glCheckError();
       return localEffectTexture;
     }
-    this.mDenoiseFilter.onOutputSizeChanged(this.mWidth, this.mHeight);
+    localQQAVImageDenoiseFilter.onOutputSizeChanged(this.mWidth, this.mHeight);
     this.mDenoiseFilter.onDraw2(localEffectTexture.getTextureId(), this.mOutFbo);
     CommonUtils.glCheckError();
     return new EffectTexture(this.mOutTextureId, this.mOutFbo, this.mWidth, this.mHeight);
@@ -57,13 +60,16 @@ public class DenoiseRender
   
   public void setUpdateRate(float paramFloat)
   {
-    Log.d("DenoiseRender", "setUpdateRate updateRate = " + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setUpdateRate updateRate = ");
+    localStringBuilder.append(paramFloat);
+    Log.d("DenoiseRender", localStringBuilder.toString());
     addTaskBeforeProcess(new DenoiseRender.2(this, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.denoise.DenoiseRender
  * JD-Core Version:    0.7.0.1
  */

@@ -22,17 +22,18 @@ class QzoneDynamicAlbumPlugin$2
     {
       QzoneDynamicAlbumPlugin.access$102(this.this$0, true);
       this.this$0.onAudioSessionActive();
-    }
-    while (((!"com.tencent.process.starting".equals(paramContext)) || (TextUtils.isEmpty(paramIntent)) || (!paramIntent.equals("com.tencent.mobileqq:tool")) || (!QzoneDynamicAlbumPlugin.access$200(this.this$0))) && (!"tencent.av.v2q.StopVideoChat".equals(paramContext))) {
       return;
     }
-    QzoneDynamicAlbumPlugin.access$102(this.this$0, false);
-    this.this$0.onAudioSessionDeactive();
+    if ((("com.tencent.process.starting".equals(paramContext)) && (!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("com.tencent.mobileqq:tool")) && (QzoneDynamicAlbumPlugin.access$200(this.this$0))) || ("tencent.av.v2q.StopVideoChat".equals(paramContext)))
+    {
+      QzoneDynamicAlbumPlugin.access$102(this.this$0, false);
+      this.this$0.onAudioSessionDeactive();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin.2
  * JD-Core Version:    0.7.0.1
  */

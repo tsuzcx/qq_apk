@@ -1,16 +1,20 @@
 package com.tencent.tkd.topicsdk.publisharticle.publishChecker;
 
+import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig;
 import com.tencent.tkd.topicsdk.bean.PublishArticleInfo;
 import java.util.ArrayList;
 import java.util.Collection;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/publisharticle/publishChecker/BasePublisherChecker;", "", "publishArticleInfo", "Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "(Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;)V", "countLimit", "", "getCountLimit", "()I", "setCountLimit", "(I)V", "getPublishArticleInfo", "()Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "getValidCode", "isContentNotEmpty", "", "setTextCountLimit", "limit", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/publisharticle/publishChecker/BasePublisherChecker;", "", "publishArticleInfo", "Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "config", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "(Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;)V", "getConfig", "()Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "countLimit", "", "getCountLimit", "()I", "setCountLimit", "(I)V", "getPublishArticleInfo", "()Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "getValidCode", "isContentNotEmpty", "", "setTextCountLimit", "limit", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public abstract class BasePublisherChecker
 {
   public static final BasePublisherChecker.Companion a;
   private int jdField_a_of_type_Int;
+  @Nullable
+  private final GlobalPublisherConfig jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig;
   @NotNull
   private final PublishArticleInfo jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo;
   
@@ -19,9 +23,10 @@ public abstract class BasePublisherChecker
     jdField_a_of_type_ComTencentTkdTopicsdkPublisharticlePublishCheckerBasePublisherChecker$Companion = new BasePublisherChecker.Companion(null);
   }
   
-  public BasePublisherChecker(@NotNull PublishArticleInfo paramPublishArticleInfo)
+  public BasePublisherChecker(@NotNull PublishArticleInfo paramPublishArticleInfo, @Nullable GlobalPublisherConfig paramGlobalPublisherConfig)
   {
     this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo = paramPublishArticleInfo;
+    this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig = paramGlobalPublisherConfig;
     this.jdField_a_of_type_Int = -1;
   }
   
@@ -30,10 +35,18 @@ public abstract class BasePublisherChecker
     if (!a()) {
       return 2;
     }
-    if ((this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getContentLength() > this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Int != -1)) {
+    int i = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getContentLength();
+    int j = this.jdField_a_of_type_Int;
+    if ((i > j) && (j != -1)) {
       return 1;
     }
     return 0;
+  }
+  
+  @Nullable
+  public final GlobalPublisherConfig a()
+  {
+    return this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig;
   }
   
   @NotNull
@@ -51,38 +64,28 @@ public abstract class BasePublisherChecker
   
   public boolean a()
   {
-    if (((CharSequence)this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getContent()).length() > 0)
-    {
+    int i = ((CharSequence)this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getContent()).length();
+    boolean bool = false;
+    if (i > 0) {
       i = 1;
-      if (i == 0)
-      {
-        ArrayList localArrayList = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getImageList();
-        if (localArrayList != null) {
-          if (((Collection)localArrayList).isEmpty()) {
-            break label72;
-          }
-        }
-      }
-    }
-    label72:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 1) {
-        if (this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getVideoInfo() == null) {
-          break label77;
-        }
-      }
-      return true;
+    } else {
       i = 0;
-      break;
     }
-    label77:
-    return false;
+    if (i == 0)
+    {
+      ArrayList localArrayList = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getImageList();
+      if (((localArrayList == null) || ((((Collection)localArrayList).isEmpty() ^ true) != true)) && (this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo.getVideoInfo() == null)) {}
+    }
+    else
+    {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.publishChecker.BasePublisherChecker
  * JD-Core Version:    0.7.0.1
  */

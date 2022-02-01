@@ -9,17 +9,22 @@ class WatchTogetherMediaPlayCtrl$1
   
   public void run()
   {
-    if ((WatchTogetherMediaPlayCtrl.a(this.this$0) == this.a) || (this.a == null)) {
-      return;
+    VideoSink localVideoSink1 = WatchTogetherMediaPlayCtrl.a(this.this$0);
+    VideoSink localVideoSink2 = this.a;
+    if (localVideoSink1 != localVideoSink2)
+    {
+      if (localVideoSink2 == null) {
+        return;
+      }
+      WatchTogetherMediaPlayCtrl.a(this.this$0, localVideoSink2);
+      WatchTogetherMediaPlayCtrl.a(this.this$0);
+      WatchTogetherMediaPlayCtrl.a(this.this$0).a(WatchTogetherMediaPlayCtrl.a(this.this$0));
     }
-    WatchTogetherMediaPlayCtrl.a(this.this$0, this.a);
-    WatchTogetherMediaPlayCtrl.a(this.this$0);
-    WatchTogetherMediaPlayCtrl.a(this.this$0).a(WatchTogetherMediaPlayCtrl.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl.1
  * JD-Core Version:    0.7.0.1
  */
